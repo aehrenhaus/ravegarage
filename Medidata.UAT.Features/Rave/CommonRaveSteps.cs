@@ -10,7 +10,7 @@ using Medidata.UAT.WebDrivers.Rave;
 namespace Medidata.UAT.Features.Rave
 {
 	[Binding]
-	public class RaveSteps : FeatureStepsUsingBrowser
+	public class CommonRaveSteps : FeatureStepsUsingBrowser
 	{
 
 		[When(@"I login")]

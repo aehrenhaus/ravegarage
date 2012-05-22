@@ -68,40 +68,56 @@ namespace Medidata.UAT.Features.Rave.EDC
             testRunner.CollectScenarioErrors();
         }
         
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Can enter search text")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Feaature 1")]
-        public virtual void CanEnterSearchText()
+        public virtual void FeatureBackground()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Can enter search text", new string[] {
-                        "Web"});
+#line 3
+#line hidden
+            TechTalk.SpecFlow.Table table1 = new TechTalk.SpecFlow.Table(new string[] {
+                        "User",
+                        "Study",
+                        "Role",
+                        "Site",
+                        "Site Number"});
+            table1.AddRow(new string[] {
+                        "editcheck",
+                        "Edit Check Study 1",
+                        "cdm1",
+                        "Edit Check Site 1",
+                        "10001"});
 #line 4
+   testRunner.When("user \"User\"  has study \"Study\" and role \"Role\" and site \"Site\" has Site Number in" +
+                    " database \"<EDC>\", from the table below", ((string)(null)), table1);
+#line hidden
+        }
+        
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("test")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Feaature 1")]
+        public virtual void Test()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("test", ((string[])(null)));
+#line 9
 this.ScenarioSetup(scenarioInfo);
-#line 5
- testRunner.When("I login");
-#line 6
- testRunner.And("I enter search text");
+#line 3
+this.FeatureBackground();
+#line 11
+ testRunner.When("bla");
 #line hidden
             this.ScenarioCleanup();
         }
         
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Can search")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("test2")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Feaature 1")]
-        public virtual void CanSearch()
+        public virtual void Test2()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Can search", new string[] {
-                        "Web"});
-#line 9
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("test2", ((string[])(null)));
+#line 14
 this.ScenarioSetup(scenarioInfo);
-#line 10
- testRunner.When("I login");
-#line 11
- testRunner.And("I enter search text");
-#line 12
- testRunner.And("I click search");
-#line 13
- testRunner.Then("I sould see result");
+#line 3
+this.FeatureBackground();
+#line 16
+ testRunner.When("bla2");
 #line hidden
             this.ScenarioCleanup();
         }

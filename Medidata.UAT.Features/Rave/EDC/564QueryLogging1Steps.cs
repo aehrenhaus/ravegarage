@@ -11,12 +11,41 @@ using OpenQA.Selenium.Firefox;
 using OpenQA.Selenium.Remote;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Medidata.UAT.Features.Rave;
+using Medidata.UAT.Features.Rave.DataModels;
 
 namespace Medidata.UAT.StepDefinitions.Rave
 {
 	[Binding]
 	public class Rave564QueryLogging1Steps : FeatureStepsUsingBrowser
 	{
+
+
+		[When(@"bla")]
+		public void fasfswefewsfe()
+		{
+			
+		}
+		[When(@"bla2")]
+		public void fasfswefewsfe1()
+		{
+
+		}
+
+		[When(@"user ""User""  has study ""Study"" and role ""Role"" and site ""Site"" has Site Number in database ""<EDC>"", from the table below")]
+		public void WhenUserUsersHasStudyStudyAndRoleRoleAndSiteSiteHasSiteNumberInDatabaseEDCFromTheTableBelow(Table table)
+		{
+			//ISet<UserStudySiteRole> assignments = table.CreateSet<UserStudySiteRole>();
+
+			//foreach (var assign in assignments)
+			//{
+
+			//}
+
+			foreach (var row in table.Rows)
+			{
+				string str = row["User"];
+			}
+		}
 
 		[When(@"I enter search text")]
 		public void IEnterSearchText()

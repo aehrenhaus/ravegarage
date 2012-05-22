@@ -58,13 +58,35 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="TestContextSetup.cs" />
-    <Compile Include="Rave\EDC\F21.feature.cs">
+    <Compile Include="Rave\CommonRaveSteps.cs" />
+    <Compile Include="Rave\DataModels\UserStudySiteRole.cs" />
+    <Compile Include="Rave\EDC\564QueryRefiringLogic2.feature.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>F2.feature</DependentUpon>
+      <DependentUpon>564QueryRefiringLogic2.feature</DependentUpon>
     </Compile>
-    <Compile Include="Rave\RaveSteps.cs" />
+    <Compile Include="Rave\EDC\564QueryRefiringLogic3.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>564QueryRefiringLogic3.feature</DependentUpon>
+    </Compile>
+    <Compile Include="Rave\EDC\564QueryRefiringLogic4.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>564QueryRefiringLogic4.feature</DependentUpon>
+    </Compile>
+    <Compile Include="Rave\EDC\564QueryRefiringLogic8.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>564QueryRefiringLogic8.feature</DependentUpon>
+    </Compile>
+    <Compile Include="Rave\EDC\564QueryRefiringLogic1.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>564QueryRefiringLogic1.feature</DependentUpon>
+    </Compile>
+    <Compile Include="TestContextSetup.cs" />
+    <Compile Include="Rave\EDC\CommonEDCSteps.cs" />
     <Compile Include="FeatureStepsUsingBrowser.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -75,7 +97,6 @@
       <DependentUpon>564QueryLogging1.feature</DependentUpon>
     </Compile>
     <Compile Include="Rave\EDC\564QueryLogging1Steps.cs" />
-    <Compile Include="Rave\EDC\F2Steps.cs" />
     <Compile Include="UATConfiguration.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -86,13 +107,29 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+    <None Include="Rave\EDC\564QueryRefiringLogic2.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>564QueryRefiringLogic2.feature.cs</LastGenOutput>
+    </None>
+    <None Include="Rave\EDC\564QueryRefiringLogic3.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>564QueryRefiringLogic3.feature.cs</LastGenOutput>
+    </None>
+    <None Include="Rave\EDC\564QueryRefiringLogic4.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>564QueryRefiringLogic4.feature.cs</LastGenOutput>
+    </None>
+    <None Include="Rave\EDC\564QueryRefiringLogic8.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>564QueryRefiringLogic8.feature.cs</LastGenOutput>
+    </None>
     <None Include="Rave\EDC\564QueryLogging1.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>564QueryLogging1.feature.cs</LastGenOutput>
     </None>
-    <None Include="Rave\EDC\F2.feature">
+    <None Include="Rave\EDC\564QueryRefiringLogic1.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
-      <LastGenOutput>F21.feature.cs</LastGenOutput>
+      <LastGenOutput>564QueryRefiringLogic1.feature.cs</LastGenOutput>
     </None>
   </ItemGroup>
   <ItemGroup>
