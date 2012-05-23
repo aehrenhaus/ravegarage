@@ -4,11 +4,18 @@ using System.Linq;
 using System.Text;
 using OpenQA.Selenium.Support.PageObjects;
 using OpenQA.Selenium;
+using OpenQA.Selenium.Remote;
 
 namespace Medidata.UAT.WebDrivers.Rave
 {
 	public  class LoginPage : PageBase
 	{
+		public static LoginPage New(RemoteWebDriver browser=null)
+		{
+			browser = browser ?? TestContextSetup.Browser;
+			return PageBase.GotoUrl<LoginPage>(browser, UATConfiguration.Default.RaveURL);
+		}
+
 		[FindsBy(How = How.Id, Using = "UserLoginBox")]
 		public IWebElement UsernameBox;
 

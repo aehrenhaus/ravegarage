@@ -42,6 +42,7 @@
       <HintPath>..\packages\Newtonsoft.Json.4.5.1\lib\net40\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Xml.Linq" />
@@ -86,13 +87,13 @@
     <Folder Include="TableModels\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Medidata.UAT.Features\Medidata.UAT.Features.csproj">
-      <Project>{D9B79234-B81B-43DC-BE61-1ECC79595B4D}</Project>
-      <Name>Medidata.UAT.Features</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Medidata.UAT.WebDrivers\Medidata.UAT.WebDrivers.csproj">
       <Project>{3A4DA743-26BA-41A5-9425-1A1C6B721100}</Project>
       <Name>Medidata.UAT.WebDrivers</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Medidata.UAT\Medidata.UAT.csproj">
+      <Project>{D9B79234-B81B-43DC-BE61-1ECC79595B4D}</Project>
+      <Name>Medidata.UAT</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -5,13 +5,12 @@ using System.Text;
 using OpenQA.Selenium.Remote;
 using TechTalk.SpecFlow;
 using OpenQA.Selenium.Firefox;
-using Medidata.UAT.WebDrivers;
 using OpenQA.Selenium;
 using System.IO;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Drawing.Imaging;
 
-namespace Medidata.UAT.Features
+namespace Medidata.UAT
 {
 
 	public class FeatureStepsUsingBrowser 

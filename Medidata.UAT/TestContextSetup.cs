@@ -7,9 +7,8 @@ using OpenQA.Selenium.Remote;
 using OpenQA.Selenium;
 using System.IO;
 using System.Drawing.Imaging;
-using Medidata.UAT.WebDrivers;
 
-namespace Medidata.UAT.Features
+namespace Medidata.UAT
 {
 	[Binding]
 	public class TestContextSetup

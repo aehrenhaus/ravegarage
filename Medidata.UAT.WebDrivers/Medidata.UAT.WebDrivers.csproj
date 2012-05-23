@@ -58,15 +58,18 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="PageBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Rave\HomePage.cs" />
     <Compile Include="Rave\LoginPage.cs" />
-    <Compile Include="WebDriversConfiguration.cs" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Medidata.UAT\Medidata.UAT.csproj">
+      <Project>{D9B79234-B81B-43DC-BE61-1ECC79595B4D}</Project>
+      <Name>Medidata.UAT</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

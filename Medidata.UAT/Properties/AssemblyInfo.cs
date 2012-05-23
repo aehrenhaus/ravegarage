@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Medidata.UAT")]
+[assembly: AssemblyTitle("Medidata.UAT.Features")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Microsoft")]
-[assembly: AssemblyProduct("Medidata.UAT")]
+[assembly: AssemblyProduct("Medidata.UAT.Features")]
 [assembly: AssemblyCopyright("Copyright © Microsoft 2012")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("443dc9b1-8af7-4981-adce-3174e1b3569e")]
+[assembly: Guid("50d49410-4be3-44e3-871f-68f421c6a782")]
 
 // Version information for an assembly consists of the following four values:
 //

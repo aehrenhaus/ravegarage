@@ -37,12 +37,6 @@ namespace Medidata.UAT
 			set { this["AutoCloseBrowser"] = value; }
 		}
 
-		[ConfigurationProperty("RaveURL", DefaultValue = "", IsRequired = true)]
-		public String RaveURL
-		{
-			get { return (String)this["RaveURL"]; }
-			set { this["RaveURL"] = value; }
-		}
 
 		[ConfigurationProperty("RaveDatabaseConnection", DefaultValue = "", IsRequired = true)]
 		public String RaveDatabaseConnection
@@ -50,7 +44,29 @@ namespace Medidata.UAT
 			get { return (String)this["RaveDatabaseConnection"]; }
 			set { this["RaveDatabaseConnection"] = value; }
 		}
-		
 
+		[ConfigurationProperty("BrowserName", DefaultValue = "Firefox", IsRequired = false)]
+		//[StringValidator( MinLength = 1, MaxLength = 60)]
+		public String BrowserName
+		{
+			get { return (String)this["BrowserName"]; }
+			set { this["BrowserName"] = value; }
+		}
+
+
+		[ConfigurationProperty("BrowserLocation", DefaultValue = "", IsRequired = false)]
+		public String BrowserLocation
+		{
+			get { return (String)this["BrowserLocation"]; }
+			set { this["BrowserLocation"] = value; }
+		}
+
+
+		[ConfigurationProperty("RaveURL", DefaultValue = "", IsRequired = true)]
+		public String RaveURL
+		{
+			get { return (String)this["RaveURL"]; }
+			set { this["RaveURL"] = value; }
+		}
 	}
 }

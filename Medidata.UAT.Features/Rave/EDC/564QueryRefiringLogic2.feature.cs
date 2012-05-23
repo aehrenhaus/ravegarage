@@ -1,6 +1,0 @@
-﻿#error Feature file already contains a scenario with name 'Verifies query firing between cross forms with no require response and no require manual close.'
-#error Parsing error near 'And	I navigate to form "Assessment Date Log2"'
-#error Parsing error near 'And	I select second log line'
-#error Feature file already contains a scenario with name 'Verifies query firing between cross folders with no require response and no require manual close.'
-#error Feature file already contains a scenario with name 'Verifies query firing between cross forms with no require response and no require manual close.'
-#error Feature file already contains a scenario with name 'Verifies query firing between cross forms with no require response and no require manual close.'
