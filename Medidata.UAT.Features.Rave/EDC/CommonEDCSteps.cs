@@ -57,9 +57,7 @@ namespace Medidata.UAT.Features.Rave
 		[Then(@"I create a Subject ""([^""]*)""")]
 		public void ICreateASubject____(string subjectName)
 		{
-			var url = new Uri(Browser.Url);
-			Assert.AreEqual(url.ToString(), UATConfiguration.Default.RaveURL + "HomePage");
-
+	
 		}
 
 		/// <summary>
