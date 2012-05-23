@@ -5,6 +5,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Medidata.UAT.Features", "Me
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Medidata.UAT.WebDrivers", "Medidata.UAT.WebDrivers\Medidata.UAT.WebDrivers.csproj", "{3A4DA743-26BA-41A5-9425-1A1C6B721100}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Medidata.UAT.Features.Rave", "Medidata.UAT.Features.Rave\Medidata.UAT.Features.Rave.csproj", "{13CCDE7B-550F-45EF-9A88-083CA6174BF4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -19,6 +21,10 @@ Global
 		{3A4DA743-26BA-41A5-9425-1A1C6B721100}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3A4DA743-26BA-41A5-9425-1A1C6B721100}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3A4DA743-26BA-41A5-9425-1A1C6B721100}.Release|Any CPU.Build.0 = Release|Any CPU
+		{13CCDE7B-550F-45EF-9A88-083CA6174BF4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{13CCDE7B-550F-45EF-9A88-083CA6174BF4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{13CCDE7B-550F-45EF-9A88-083CA6174BF4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{13CCDE7B-550F-45EF-9A88-083CA6174BF4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

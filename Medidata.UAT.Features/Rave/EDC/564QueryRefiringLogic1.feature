@@ -1,15 +1,12 @@
-Feature: Feaature 
- Query Issue: Edit Checks with require response and require manual close
+Feature: Query Issue: Edit Checks with require response and require manual close
 Open, answer and close a query, change the data and verify that the query did re-fire and verify no log
 
--- project to be uploaded in excel spreadsheet 'Edit Check Study 1'
 Background:
-    Given I am on Rave
-	And user "User"  has study "Study" has role "Role" has site "Site" has Site Number in database "<EDC>", from the table below
+	And Rave has user-study-site assignments from the table below:
 		|User		|Study		       |Role |Site		        |Site Number |
 		|editcheck  |Edit Check Study 1|cdm1 |Edit Check Site 1 |10001       |
-    And role "cdm1" has Query actions
-	And study "Edit Check Study" had draft "<Draft1>"
+    And  role "cdm1" has "Query" actions
+	And Rave  "Edit Check Study" had draft "<Draft1>"
 	And I publish and push "CRF Version<RANDOMNUMBER>" to site "Edit Check Site"
 
 	
@@ -26,7 +23,7 @@ Folder "Test A Single Edit" enter and save data on forms "Informed Consent Date 
 	    |Informed Consent Date 2 |10 Jan 2000 |
 	    |Numeric Field 1         |10          |
 	    |Numeric Field 2         |19          |
-	And I take a screenshot 1 of 155	
+	And I take a screenshot
 	And I navigate to form "Assessment Date Log2" within folder "Test A Single Edit"
     And I enter and save the following data, from the table below
 	    |Field             |Data        |
@@ -190,8 +187,7 @@ Folder "Test B Single Derivation" enter and save data on form "Assessment Date L
 	And I take a screenshot 22 of 155
 
 	
-Scenario: Verifies query firing between cross forms with require response and require manual close.
-Cross Forms: log form to Standard form 
+Scenario: Verifies query firing between cross forms with require response and require manual close. Cross Forms: log form to Standard form 
 Folder "Test B Single Derivation" enter and save data on forms "Assessment Date Log2" and "Informed Consent Date Form 1"
 			  
     And I create a subject "sub103"
@@ -303,8 +299,7 @@ Folder "Test B Single Derivation" enter and save data on forms "Assessment Date 
 	And I take a screenshot 37 of 155
 	
 
-Scenario: Verifies query firing between cross forms with require response and require manual close.
-Cross Forms: log form to log form 
+Scenario: Verifies query firing between cross forms with require response and require manual close.Cross Forms: log form to log form 
 Folder "Test A Single Edit" enter and save data on forms "Assessment Date Log2" and "Assessment Date Log3"
 			  
     And I create a subject "sub104"
@@ -466,9 +461,10 @@ Modify Standard form to different bad data, do not touch log form - query and no
 	  |Edit Check Study 1 |10001       |Edit Check Site 1 |PROD        |sub105       |Test A Single Edit          |Assessment Date Log2            |1                         |Numeric Field 2      |20                   |Test A Single Edit       |Informed Consent Date Form 1     |0                          |Numeric Field 2         |21               |*Is Not Equal to Open Query Log Cross Form* |Site             |Informed Consent numeric field 2 is not equal to assessment numeric field 2 |{DateTime} |
 	And I take a screenshot 56 of 155
 
-	
-Scenario: Verifies query firing between cross forms with require response and require manual close.
-Cross Forms: Standard form to log form
+@release_564_patch9
+@PB_2.7.2.1
+@Draft
+Scenario: Verifies query firing between cross forms with require response and require manual close.Cross Forms: Standard form to log form
 Folder "Test A Single Edit" enter and save data on forms "Informed Consent Date Form 1" and "Assessment Date Log2"
 Queries fired, Cancel queries in log fields, Modify Standard form to different bad data, do not touch log form - query and no logs in the Database
 	
@@ -512,10 +508,7 @@ Queries fired, Cancel queries in log fields, Modify Standard form to different b
 	And I take a screenshot 61 of 155
 
 	
-Scenario: Verifies query firing between cross forms with require response and require manual close.
-Cross Forms: log form to log form 
-Folder "Test A Single Edit" enter and save data on forms "Assessment Date Log2" and "Assessment Date Log3"
-Queries fired, Answer and  Manually close queries in log fields (second log form), 
+Scenario: Verifies query firing between cross forms with require response and require manual close. Cross Forms: log form to log form. Folder "Test A Single Edit" enter and save data on forms "Assessment Date Log2" and "Assessment Date Log3". Queries fired, Answer and  Manually close queries in log fields (second log form), 
 Modify log form (first log form) to different bad data, do not touch second log form - query and no logs in the Database
 			  
     And I create a subject "sub107"
@@ -658,11 +651,7 @@ Modify log fields to different good data, do not touch standard form - no query 
 	And I take a screenshot 78 of 155
 
 	
-Scenario: Verifies query firing between cross forms with require response and require manual close.
-Cross Forms: Standard form to log form
-Folder "Test A Single Edit" enter and save data on forms "Informed Consent Date Form 1" and "Assessment Date Log2"
-Queries fired, Answer and  Manually close queries in log fields, 
-Modify log fields to different bad data, do not touch standard form - query fires and no log in the Database
+Scenario:  Verifies query firing between cross forms with require response and require manual close.  Cross Forms: Standard form to log form. Folder "Test A Single Edit" enter and save data on forms "Informed Consent Date Form 1" and "Assessment Date Log2". Queries fired, Answer and  Manually close queries in log fields, Modify log fields to different bad data, do not touch standard form - query fires and no log in the Database
 	
     And I create a subject "sub110"
 	And I navigate to folder "Test A Single Edit"
