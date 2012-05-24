@@ -98,26 +98,27 @@ namespace Medidata.UAT.Features.Rave.EDC
         
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Verifies query firing between cross forms with require response and require manua" +
-            "l close.")]
+            "l close. 1")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Query Issue: Edit Checks with require response and require manual close")]
-        public virtual void VerifiesQueryFiringBetweenCrossFormsWithRequireResponseAndRequireManualClose_()
+        public virtual void VerifiesQueryFiringBetweenCrossFormsWithRequireResponseAndRequireManualClose_1()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Verifies query firing between cross forms with require response and require manua" +
-                    "l close.", new string[] {
-                        "Web"});
-#line 14
+                    "l close. 1", new string[] {
+                        "Web",
+                        "PB_1.1"});
+#line 15
 this.ScenarioSetup(scenarioInfo);
 #line 4
 this.FeatureBackground();
-#line 17
- testRunner.When("I login to Rave with username \"defuser\" and password \"password\"");
 #line 18
- testRunner.And("I select Study \"Edit Check Study 1\" and Site \"ZhanSite\"");
+ testRunner.When("I login to Rave with username \"defuser\" and password \"password\"");
 #line 19
-    testRunner.And("I create a Subject \"sub<RND_NUM,3>\"");
+ testRunner.And("I select Study \"Edit Check Study 1\" and Site \"ZhanSite\"");
 #line 20
- testRunner.And("I select Folder \"Test A Single Edit\"");
+    testRunner.And("I create a Subject \"sub<RND_NUM,3>\"");
 #line 21
+ testRunner.And("I select Folder \"Test A Single Edit\"");
+#line 22
  testRunner.And("I select Form \"Informed Consent Date Form 1\"");
 #line hidden
             TechTalk.SpecFlow.Table table2 = new TechTalk.SpecFlow.Table(new string[] {
@@ -135,13 +136,13 @@ this.FeatureBackground();
             table2.AddRow(new string[] {
                         "Numeric Field 2",
                         "19"});
-#line 22
- testRunner.And("I fill current Form with", ((string)(null)), table2);
-#line 28
- testRunner.And("I save current Form");
+#line 23
+ testRunner.And("I enter data in CRF", ((string)(null)), table2);
 #line 29
- testRunner.And("I take screenshot 1");
+ testRunner.And("I save CRF");
 #line 30
+ testRunner.And("I take screenshot");
+#line 31
  testRunner.And("I select Form \"Assessment Date Log2\"");
 #line hidden
             TechTalk.SpecFlow.Table table3 = new TechTalk.SpecFlow.Table(new string[] {
@@ -159,29 +160,29 @@ this.FeatureBackground();
             table3.AddRow(new string[] {
                         "Numeric Field 2",
                         "20"});
-#line 31
-    testRunner.And("I fill current Form with", ((string)(null)), table3);
-#line 37
- testRunner.And("I save current Form");
+#line 32
+    testRunner.And("I enter data in CRF", ((string)(null)), table3);
 #line 38
- testRunner.And("I verify Field \"Assessment Date 1\" displays Query and requires response");
+ testRunner.And("I save CRF");
 #line 39
-    testRunner.And("I verify Field \"Numeric Field 2\" displays Query and requires response");
+ testRunner.And("I verify Field \"Assessment Date 1\" displays Query with requires response");
 #line 40
- testRunner.And("I take screenshot 2");
+    testRunner.And("I verify Field \"Numeric Field 2\" displays Query with requires response");
 #line 41
- testRunner.And("I answer the Query on Field \"Assessment Date 1\" with \"<RND_TEXT,5>\"");
+ testRunner.And("I take screenshot");
 #line 42
- testRunner.And("I answer the Query on Field \"Numeric Field 2\" with \"<RND_TEXT,5>\"");
+ testRunner.And("I answer the Query on Field \"Assessment Date 1\" with \"<RND_TEXT,5>\"");
 #line 43
- testRunner.And("I save current Form");
+ testRunner.And("I answer the Query on Field \"Numeric Field 2\" with \"<RND_TEXT,5>\"");
 #line 44
- testRunner.And("I close the Query on Field \"Assessment Date 1, Numeric Field 2\"");
+ testRunner.And("I save CRF");
 #line 45
- testRunner.And("I save current Form");
+ testRunner.And("I close the Query on Field \"Assessment Date 1, Numeric Field 2\"");
 #line 46
- testRunner.And("I take screenshot 3");
-#line 48
+ testRunner.And("I save CRF");
+#line 47
+ testRunner.And("I take screenshot");
+#line 49
  testRunner.And("I open Log Line 1");
 #line hidden
             TechTalk.SpecFlow.Table table4 = new TechTalk.SpecFlow.Table(new string[] {
@@ -193,15 +194,15 @@ this.FeatureBackground();
             table4.AddRow(new string[] {
                         "Numeric Field 2",
                         "19"});
-#line 49
- testRunner.And("I fill current Form with", ((string)(null)), table4);
-#line 53
- testRunner.And("I save current Form");
+#line 50
+ testRunner.And("I enter data in CRF", ((string)(null)), table4);
 #line 54
-    testRunner.And("I verify Field \"Assessment Date 1, Numeric Field 2\" has NO Query");
+ testRunner.And("I save CRF");
 #line 55
- testRunner.And("I take screenshot 4");
+    testRunner.And("I verify Field \"Assessment Date 1, Numeric Field 2\" has NO Query");
 #line 56
+ testRunner.And("I take screenshot");
+#line 57
  testRunner.And("I open Log Line 1");
 #line hidden
             TechTalk.SpecFlow.Table table5 = new TechTalk.SpecFlow.Table(new string[] {
@@ -213,14 +214,16 @@ this.FeatureBackground();
             table5.AddRow(new string[] {
                         "Numeric Field 2",
                         "20"});
-#line 57
- testRunner.And("I fill current Form with", ((string)(null)), table5);
-#line 61
- testRunner.And("I save current Form");
+#line 58
+ testRunner.And("I enter data in CRF", ((string)(null)), table5);
 #line 62
- testRunner.And("I verify Field \"Assessment Date 1, Numeric Field 2\" has NO Query");
+ testRunner.And("I save CRF");
 #line 63
- testRunner.And("I take screenshot 5");
+ testRunner.And("I verify Field \"Assessment Date 1, Numeric Field 2\" has NO Query");
+#line 64
+ testRunner.And("I take screenshot");
+#line 65
+    testRunner.And("I run SQL Script \"Query Logging Script.sql\"");
 #line hidden
             TechTalk.SpecFlow.Table table6 = new TechTalk.SpecFlow.Table(new string[] {
                         "ProjectName",
@@ -282,11 +285,11 @@ this.FeatureBackground();
                         "Site",
                         "Informed Consent numeric field 2 is not equal to assessment numeric field 2",
                         "{DateTime}"});
-#line 64
-    testRunner.And("I run SQL Script \"Query Logging Script.sql\" I shoud see result", ((string)(null)), table6);
-#line 69
+#line 66
+ testRunner.And("I shoud see SQL result", ((string)(null)), table6);
+#line 71
  testRunner.And("I select Form \"Assessment Date Log2\" in Folder \"Test A Single Edit\"");
-#line 70
+#line 72
     testRunner.And("I add a new Log Line");
 #line hidden
             TechTalk.SpecFlow.Table table7 = new TechTalk.SpecFlow.Table(new string[] {
@@ -304,22 +307,22 @@ this.FeatureBackground();
             table7.AddRow(new string[] {
                         "Numeric Field 2",
                         "18"});
-#line 71
- testRunner.And("I fill current Form with", ((string)(null)), table7);
-#line 77
- testRunner.And("I save current Form");
-#line 78
- testRunner.And("I open Log Line 2");
+#line 73
+ testRunner.And("I enter data in CRF", ((string)(null)), table7);
 #line 79
- testRunner.And("I verify Field \"Assessment Date 1\" has NO Query");
+ testRunner.And("I save CRF");
 #line 80
- testRunner.And("I verify Field \"Numeric Field 2\" displays Query and requires response");
-#line 83
- testRunner.And("I verify Field \"Assessment Date 1\" displays Query and requires response");
-#line 84
- testRunner.And("I verify Field \"Numeric Field 2\" displays Query and requires response");
+ testRunner.And("I open Log Line 2");
+#line 81
+ testRunner.And("I verify Field \"Assessment Date 1\" has NO Query");
+#line 82
+ testRunner.And("I verify Field \"Numeric Field 2\" displays Query with requires response");
 #line 85
- testRunner.And("I take screenshot 7");
+ testRunner.And("I verify Field \"Assessment Date 1\" displays Query with requires response");
+#line 86
+ testRunner.And("I verify Field \"Numeric Field 2\" displays Query with requires response");
+#line 87
+ testRunner.And("I take screenshot");
 #line hidden
             TechTalk.SpecFlow.Table table8 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field",
@@ -330,23 +333,23 @@ this.FeatureBackground();
             table8.AddRow(new string[] {
                         "Numeric Field 2",
                         "19"});
-#line 86
- testRunner.And("I fill current Form with", ((string)(null)), table8);
-#line 91
- testRunner.And("I answer the Query on Field \"Assessment Date 1,Numeric Field 2\"");
-#line 92
- testRunner.And("I save current Form");
+#line 88
+ testRunner.And("I enter data in CRF", ((string)(null)), table8);
 #line 93
- testRunner.And("I close the Query on Field \"Assessment Date 1, Numeric Field 2\"");
+ testRunner.And("I answer the Query on Field \"Assessment Date 1,Numeric Field 2\"");
 #line 94
- testRunner.And("I save current Form");
+ testRunner.And("I save CRF");
+#line 95
+ testRunner.And("I close the Query on Field \"Assessment Date 1, Numeric Field 2\"");
 #line 96
- testRunner.And("I take screenshot 8");
-#line 97
- testRunner.And("I verify Field \"Assessment Date 1,Numeric Field 2\" has NO Query");
+ testRunner.And("I save CRF");
 #line 98
- testRunner.And("I take screenshot 9");
+ testRunner.And("I take screenshot");
 #line 99
+ testRunner.And("I verify Field \"Assessment Date 1,Numeric Field 2\" has NO Query");
+#line 100
+ testRunner.And("I take screenshot");
+#line 101
  testRunner.And("I open Log Line 2");
 #line hidden
             TechTalk.SpecFlow.Table table9 = new TechTalk.SpecFlow.Table(new string[] {
@@ -358,14 +361,16 @@ this.FeatureBackground();
             table9.AddRow(new string[] {
                         "Numeric Field 2",
                         "18"});
-#line 100
- testRunner.And("I fill current Form with", ((string)(null)), table9);
-#line 105
- testRunner.And("I save current Form");
-#line 106
- testRunner.And("I verify Field \"Assessment Date 1,Numeric Field 2\" has NO Query");
+#line 102
+ testRunner.And("I enter data in CRF", ((string)(null)), table9);
 #line 107
- testRunner.And("I take screenshot 10");
+ testRunner.And("I save CRF");
+#line 108
+ testRunner.And("I verify Field \"Assessment Date 1,Numeric Field 2\" has NO Query");
+#line 109
+ testRunner.And("I take screenshot");
+#line 111
+    testRunner.And("I run SQL Script \"Query Logging Script.sql\"");
 #line hidden
             TechTalk.SpecFlow.Table table10 = new TechTalk.SpecFlow.Table(new string[] {
                         "ProjectName",
@@ -427,10 +432,10 @@ this.FeatureBackground();
                         "Site",
                         "Informed Consent numeric field 2 is not equal to assessment numeric field 2",
                         "{DateTime}"});
-#line 109
-    testRunner.And("I run SQL Script \"Query Logging Script.sql\" I shoud NOT see result", ((string)(null)), table10);
-#line 113
- testRunner.And("I take screenshot 11");
+#line 112
+ testRunner.And("I shoud NOT see SQL result", ((string)(null)), table10);
+#line 116
+ testRunner.And("I take screenshot");
 #line hidden
             this.ScenarioCleanup();
         }

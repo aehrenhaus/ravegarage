@@ -11,7 +11,7 @@ using System.Drawing.Imaging;
 namespace Medidata.UAT
 {
 	[Binding]
-	public class TestContextSetup
+	public class TestContext
 	{
 
 		public static RemoteWebDriver Browser
@@ -57,14 +57,30 @@ namespace Medidata.UAT
 			set;
 		}
 
-		private static T GetContextValue<T>(string key)
+		public static int ScreenshotIndex
+		{
+			get;
+			private set;
+		}
+
+		public static string PB
+		{
+			get;
+			private set;
+		}
+
+		public static T GetContextValue<T>(string key)
 		{
 			if (!ScenarioContext.Current.ContainsKey(key))
 			{
 				return default(T);
 			}
 			return (T)ScenarioContext.Current[key];
+		}
 
+		public  static void SetContextValue<T>(string key, T val)
+		{
+			ScenarioContext.Current[key] = val;
 		}
 
 		[BeforeFeature()]
@@ -76,9 +92,19 @@ namespace Medidata.UAT
 		[BeforeScenario()]
 		public void ScenarioSetup()
 		{
+			//start time
 			CurrentScenarioStartTime = DateTime.Now;
+
+			//reset the screenshot counter
+			ScreenshotIndex = 1;
+
+			//set scenario name with tag that starts with PB_
+			PB =  ScenarioContext.Current.ScenarioInfo.Tags.FirstOrDefault(x=>x.StartsWith("PB_"));
+			if (PB == null)
+				PB = "[NO NAME]";
 		}
 
+		
 
 		[BeforeScenario("Web")]
 		public void ScenarioSetupWeb()
@@ -105,8 +131,7 @@ namespace Medidata.UAT
 
 		public static string GetTestResultPath()
 		{
-			string scenarioName = ReplaceIlligalFileNameChars("scenaroi");//ScenarioContext.Current.ScenarioInfo.Title)
-			string featureName = ReplaceIlligalFileNameChars("feature Name");
+			string featureName = MakeValidFileName("feature Name");
 			string featureStartTime = CurrentFeatureStartTime.ToString().Replace(":", "-").Replace("/", "-");
 
 			//file path
@@ -114,7 +139,7 @@ namespace Medidata.UAT
 				UATConfiguration.Default.TestResultPath,
 				featureStartTime,
 				featureName,
-				scenarioName);
+				PB);
 
 			return path;
 		}
@@ -129,9 +154,8 @@ namespace Medidata.UAT
 				{
 					string resultPath = GetTestResultPath();
 
-					string time = DateTime.Now.ToString().Replace(":", "-").Replace("/", "-");
-					fileName = fileName ?? time;
-					fileName += ".jpg";
+					fileName = fileName ?? ScreenshotIndex.ToString();
+					fileName = PB+"_"+fileName+ ".jpg";
 
 					//file path
 					string screenshotPath = Path.Combine(resultPath,fileName);
@@ -145,9 +169,11 @@ namespace Medidata.UAT
 			catch
 			{
 			}
+
+			ScreenshotIndex++;
 		}
 
-		private static string ReplaceIlligalFileNameChars(string name)
+		private static string MakeValidFileName(string name)
 		{
 			//TODO: implment
 			return name;

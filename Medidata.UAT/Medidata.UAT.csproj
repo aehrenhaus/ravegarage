@@ -73,7 +73,7 @@
     </Compile>
     <Compile Include="PageBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="TestContextSetup.cs">
+    <Compile Include="TestContext.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="UATConfiguration.cs">

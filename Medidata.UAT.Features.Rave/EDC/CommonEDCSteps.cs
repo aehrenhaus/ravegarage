@@ -52,6 +52,7 @@ namespace Medidata.UAT.Features.Rave
 			LoginPage page = new LoginPage().OpenNew < LoginPage>();
 			CurrentPage = page.Login(username, passowrd);
 		}
+
 		[When(@"I select Study ""([^""]*)"" and Site ""([^""]*)""")]
 		[Then(@"I select Study ""([^""]*)"" and Site ""([^""]*)""")]
 		public void ISelectStudy____AndSite____(string studyName,string siteName)
@@ -90,8 +91,8 @@ namespace Medidata.UAT.Features.Rave
 		}
 
 
-		[When(@"I fill current Form with")]
-		public void IFillCurrentFormWith(Table table)
+		[When(@"I enter data in CRF")]
+		public void IEnterDataInCRF(Table table)
 		{
 			CRFPage page = CurrentPage.As <CRFPage>();
 			page.ClickModify();
@@ -101,19 +102,12 @@ namespace Medidata.UAT.Features.Rave
 			}
 		}
 
-
-		[When(@"I take screenshot ([^""]*)")]
-		[When(@"I take screenshot ([^""]*)")]
-		public void ITakeScreenshot____(string screenshotName)
+		[When(@"I verify Field ""([^""]*)"" displays Query with requires response")]
+		public void IVerifyField____DisplaysQueryWithRequiresResponse(string fieldNames)
 		{
-			TestContextSetup.TrySaveScreenShot(screenshotName);
-		}
-
-
-		[When(@"I verify Field ""([^""]*)"" displays Query and requires response")]
-		public void IVerifyField____DisplaysQueryAndRequiresResponse(string fieldNames)
-		{
-
+			///Rave564/Img/i_query.gif
+			////Rave564/Img/i_response.gif
+			// label Cancel
 		}
 
 		[When(@"I answer the Query on Field ""([^""]*)"" with ""([^""]*)""")]
@@ -128,8 +122,8 @@ namespace Medidata.UAT.Features.Rave
 
 		}
 
-		[When(@"I save current Form")]
-		public void ISaveCurrentForm()
+		[When(@"I save CRF")]
+		public void ISaveCRF()
 		{
 			CurrentPage = CurrentPage.As<CRFPage>().SaveForm();
 		}

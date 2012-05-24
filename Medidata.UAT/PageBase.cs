@@ -65,7 +65,7 @@ namespace Medidata.UAT
 		protected void InitializeWithUrl(string url)
 		{
 			this.URL = url;
-			this.Browser = TestContextSetup.Browser;
+			this.Browser = TestContext.Browser;
 
 			Browser.Navigate().GoToUrl(url);
 			PageFactory.InitElements(Browser, this);
@@ -73,7 +73,7 @@ namespace Medidata.UAT
 
 		protected void Initialize()
 		{
-			this.Browser = TestContextSetup.Browser;
+			this.Browser = TestContext.Browser;
 			this.URL = Browser.Url;
 
 			PageFactory.InitElements(Browser, this);

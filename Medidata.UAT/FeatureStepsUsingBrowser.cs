@@ -21,12 +21,12 @@ namespace Medidata.UAT
 		{
 			get
 			{
-				return TestContextSetup.Browser;
+				return TestContext.Browser;
 			}
 			set
 			{
 
-				TestContextSetup.Browser = value;
+				TestContext.Browser = value;
 			}
 		}
 
@@ -35,12 +35,12 @@ namespace Medidata.UAT
 		{
 			get
 			{
-				return TestContextSetup.CurrentPage;
+				return TestContext.CurrentPage;
 
 			}
 			set
 			{
-				TestContextSetup.CurrentPage= value;
+				TestContext.CurrentPage= value;
 			}
 		}
 

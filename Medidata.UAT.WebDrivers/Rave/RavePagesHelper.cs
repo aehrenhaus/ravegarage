@@ -11,7 +11,7 @@ namespace Medidata.UAT.WebDrivers.Rave
 	{
 		public static void FillDataPoint(string label, string val, bool throwIfNotFound=true)
 		{
-			IWebElement labelTD = TestContextSetup.Browser.FindElement(By.XPath("//td[text()='" + label + "']"));
+			IWebElement labelTD = TestContext.Browser.FindElement(By.XPath("//td[text()='" + label + "']"));
 			IWebElement datapointTable = labelTD.FindElement(By.XPath("./ancestor::table/ancestor::tr//table[@class='crf_dataPointInternal']"));
 			
 
