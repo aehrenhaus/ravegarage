@@ -53,6 +53,26 @@ namespace Medidata.UAT.Features.Rave
 		}
 
 
+		[When(@"I login to Rave with username ""([^""]*)"" and password ""([^""]*)""")]
+		[Then(@"I login to Rave with username ""([^""]*)"" and password ""([^""]*)""")]
+		public void ILoginToRaveWithUsername____AndPassword____(string username, string passowrd)
+		{
+			LoginPage page = new LoginPage().OpenNew<LoginPage>();
+			CurrentPage = page.Login(username, passowrd);
+		}
+
+
+		[When(@"I login to Rave with user ""([^""]*)""")]
+		[Then(@"I login to Rave with user ""([^""]*)""")]
+		public void ILoginToRaveWithUser(string user)
+		{
+			string username,password =null;
+			username = UATConfiguration.Default.DefaultUser;
+			password = UATConfiguration.Default.DefaultUserPassword;
+
+			LoginPage page = new LoginPage().OpenNew<LoginPage>();
+			CurrentPage = page.Login(username, password);
+		}
 
 		#region Private
 

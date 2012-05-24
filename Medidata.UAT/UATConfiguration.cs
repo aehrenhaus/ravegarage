@@ -54,6 +54,40 @@ namespace Medidata.UAT
 			set { this["RaveDatabaseConnection"] = value; }
 		}
 
+
+
+		[ConfigurationProperty("DefaultUser", DefaultValue = "", IsRequired = true)]
+		public String DefaultUser
+		{
+			get { return (String)this["DefaultUser"]; }
+			set { this["DefaultUser"] = value; }
+		}
+
+
+		[ConfigurationProperty("DefaultUserPassword", DefaultValue = "", IsRequired = true)]
+		public String DefaultUserPassword
+		{
+			get { return (String)this["DefaultUserPassword"]; }
+			set { this["DefaultUserPassword"] = value; }
+		}
+
+
+		[ConfigurationProperty("CDMUser", DefaultValue = "", IsRequired = true)]
+		public String CDMUser
+		{
+			get { return (String)this["CDMUser"]; }
+			set { this["CDMUser"] = value; }
+		}
+
+
+		[ConfigurationProperty("CDMUserPassword", DefaultValue = "", IsRequired = true)]
+		public String CDMUserPassword
+		{
+			get { return (String)this["CDMUserPassword"]; }
+			set { this["CDMUserPassword"] = value; }
+		}
+
+
 		[ConfigurationProperty("BrowserName", DefaultValue = "Firefox", IsRequired = false)]
 		//[StringValidator( MinLength = 1, MaxLength = 60)]
 		public String BrowserName

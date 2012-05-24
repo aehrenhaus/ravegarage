@@ -45,13 +45,6 @@ namespace Medidata.UAT.Features.Rave
 		#region When Then
 
 
-		[When(@"I login to Rave with username ""([^""]*)"" and password ""([^""]*)""")]
-		[Then(@"I login to Rave with username ""([^""]*)"" and password ""([^""]*)""")]
-		public void ILoginToRaveWithUsername____AndPassword____(string username,string passowrd)
-		{
-			LoginPage page = new LoginPage().OpenNew < LoginPage>();
-			CurrentPage = page.Login(username, passowrd);
-		}
 
 		[When(@"I select Study ""([^""]*)"" and Site ""([^""]*)""")]
 		[Then(@"I select Study ""([^""]*)"" and Site ""([^""]*)""")]
@@ -102,13 +95,32 @@ namespace Medidata.UAT.Features.Rave
 			}
 		}
 
-		[When(@"I verify Field ""([^""]*)"" displays Query with requires response")]
+		[When(@"I verify Field ""([^""]*)"" displays Query with Requires Response")]
 		public void IVerifyField____DisplaysQueryWithRequiresResponse(string fieldNames)
 		{
 			///Rave564/Img/i_query.gif
 			////Rave564/Img/i_response.gif
 			// label Cancel
 		}
+
+
+		[When(@"I verify Field ""([^""]*)"" displays Query without Requires Response")]
+		public void IVerifyField____DisplaysQueryWithoutRequiresResponse(string fieldNames)
+		{
+			///Rave564/Img/i_query.gif
+			////Rave564/Img/i_response.gif
+			// label Cancel
+		}
+
+
+		[When(@"I verify Field ""([^""]*)"" displays Query")]
+		public void IVerifyField____DisplaysQuery(string fieldNames)
+		{
+			///Rave564/Img/i_query.gif
+			////Rave564/Img/i_response.gif
+			// label Cancel
+		}
+
 
 		[When(@"I answer the Query on Field ""([^""]*)"" with ""([^""]*)""")]
 		public void IAnswerTheQueryOnField____With____(string fieldName, string answer)

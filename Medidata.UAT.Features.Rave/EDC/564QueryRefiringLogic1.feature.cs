@@ -93,6 +93,8 @@ namespace Medidata.UAT.Features.Rave.EDC
  testRunner.And("Study  \"Edit Check Study\" has Draft \"<Draft1>\"");
 #line 10
  testRunner.And("CRF \"CRF Version<RANDOMNUMBER>\" is pushed in Site \"Edit Check Site\"");
+#line 11
+ testRunner.When("I login to Rave with user \"DefaultUser\"");
 #line hidden
         }
         
@@ -110,10 +112,8 @@ namespace Medidata.UAT.Features.Rave.EDC
 this.ScenarioSetup(scenarioInfo);
 #line 4
 this.FeatureBackground();
-#line 18
- testRunner.When("I login to Rave with username \"defuser\" and password \"password\"");
 #line 19
- testRunner.And("I select Study \"Edit Check Study 1\" and Site \"ZhanSite\"");
+ testRunner.When("I select Study \"Edit Check Study 1\" and Site \"ZhanSite\"");
 #line 20
     testRunner.And("I create a Subject \"sub<RND_NUM,3>\"");
 #line 21
@@ -165,9 +165,9 @@ this.FeatureBackground();
 #line 38
  testRunner.And("I save CRF");
 #line 39
- testRunner.And("I verify Field \"Assessment Date 1\" displays Query with requires response");
+ testRunner.And("I verify Field \"Assessment Date 1\" displays Query with Requires Response");
 #line 40
-    testRunner.And("I verify Field \"Numeric Field 2\" displays Query with requires response");
+    testRunner.And("I verify Field \"Numeric Field 2\" displays Query with Requires Response");
 #line 41
  testRunner.And("I take screenshot");
 #line 42
@@ -316,11 +316,11 @@ this.FeatureBackground();
 #line 81
  testRunner.And("I verify Field \"Assessment Date 1\" has NO Query");
 #line 82
- testRunner.And("I verify Field \"Numeric Field 2\" displays Query with requires response");
+ testRunner.And("I verify Field \"Numeric Field 2\" displays Query with Requires Response");
 #line 85
- testRunner.And("I verify Field \"Assessment Date 1\" displays Query with requires response");
+ testRunner.And("I verify Field \"Assessment Date 1\" displays Query with Requires Response");
 #line 86
- testRunner.And("I verify Field \"Numeric Field 2\" displays Query with requires response");
+ testRunner.And("I verify Field \"Numeric Field 2\" displays Query with Requires Response");
 #line 87
  testRunner.And("I take screenshot");
 #line hidden

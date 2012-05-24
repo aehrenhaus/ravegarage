@@ -1,7 +1,7 @@
 Feature: Feaature 8
 
 Background:
-    Given I am on Rave
+    Given I login to Rave with user "DefaultUser"
 	And user "User"  has study "Study" has role "Role" has site "Site" has Site Number in database "<EDC>", from the table below
 		|User			|Study		       	|Role |Site		        	|Site Number |
 		|editcheck  	|Edit Check Study 8	|cdm1 |Edit Check Site 8 	|80001       |
@@ -28,7 +28,8 @@ Folder "Test A Single Edit" enter and save data on forms "Informed Consent Date 
 	And I select "Edit Check Study 8, Prod, Edit Check Site 8"
 	And I enter "sub801"
 	And I select "Primary" form
-	And I enter and save the following data, from the table below
+	And I enter data in CRF
+And I save CRF
 	    |Field          |Data	|
 		|Subject Name	|sub	|
 		|Subject Number	|801	|
@@ -40,7 +41,7 @@ Folder "Test A Single Edit" enter and save data on forms "Informed Consent Date 
 	    |Informed Consent Date 2 |10 Jan 2000 |
 	    |Numeric Field 1         |10          |
 	    |Numeric Field 2         |19          |
-	And I take a screenshot 1 of 70 
+	And I take screenshot
     And I enter and submit the following data in folder "Test A Single Edit" form "Assessment Date Log2", from the table below
 	    |Field             |Data        |
         |Assessment Date 1 |08 Jan 2000 |
@@ -54,7 +55,8 @@ Folder "Test A Single Edit" enter and save data on forms "Informed Consent Date 
 	And I select "Edit Check Study 8, Prod, Edit Check Site 8"
 	And I enter "sub801"
 	And I select "Primary" form
-	And I enter and save the following data, from the table below
+	And I enter data in CRF
+And I save CRF
 	    |Field          |Data	|
 		|Subject Name	|sub	|
 		|Subject Number	|801	|
@@ -66,7 +68,7 @@ Folder "Test A Single Edit" enter and save data on forms "Informed Consent Date 
 	    |Informed Consent Date 2 |10 Jan 2000 |
 	    |Numeric Field 1         |10          |
 	    |Numeric Field 2         |19          |
-	And I take a screenshot 2 of 70
+	And I take screenshot
     And I enter and submit the following data in folder "Test A Single Edit" form "Assessment Date Log2", from the table below
 	    |Field             |Data        |
         |Assessment Date 1 |08 Jan 2000 |
@@ -79,102 +81,104 @@ Folder "Test A Single Edit" enter and save data on forms "Informed Consent Date 
 	And I Select "sub801"
 	And I navigate to folder "Test A Single Edit"
 	And I select form "Assessment Date Log2"
-	And I verify "Assessment Date 1" field displays query opened with require response
-    And I verify "Numeric Field 2" field displays query opened with require response
-	And I take a screenshot 3 of 70
+	And I verify Field "Assessment Date 1" displays Query with Requires Response
+    And I verify Field "Numeric Field 2" displays Query with Requires Response
+	And I take screenshot
 	And I answer the queries on "Assessment Date 1" and "Numeric Field 2" fields
-	And I save the form "Assessment Date Log2"
-	And I close the queries on "Assessment Date 1" field and "Numeric Field 2" fields
-	And I save the form "Assessment Date Log2"
-	And I take a screenshot 4 of 70
-	And I change the data on "Assessment Date 1" and "Numeric Field 2" fields, from the table below
+	And I save CRF
+	And I close the Query on Field "Assessment Date 1, Numeric Field 2"
+	And I save CRF
+	And I take screenshot
+	And I enter data in CRF
 		|Field             |Data        |
         |Assessment Date 1 |09 Jan 2000 |
 	    |Numeric Field 2   |19          |	
-	And I save the form "Assessment Date Log2"
+	And I save CRF
     And I verify the queries did not fire on "Assessment Date 1" field and "Numeric Field 2" fields
-	And I take a screenshot 5 of 70
-	And I change the data on "Assessment Date 1" and "Numeric Field 2" fields, from the table below
+	And I take screenshot
+	And I enter data in CRF
 		|Field             |Data        |
         |Assessment Date 1 |08 Jan 2000 |
 	    |Numeric Field 2   |20          |
-	And I save the form "Assessment Date Log2"	
+	And I save CRF	
 	And I verify new queries did not fire on "Assessment Date 1" field and "Numeric Field 2" fields
-	And I take a screenshot 6 of 70
-    When I run SQL Script "Query Logging Script" 
-    Then I should see the logging data for queries 
+	And I take screenshot
+    When I run SQL Script "Query Logging Script.sql"  
+    Then I shoud see SQL result 
       |ProjectName        |SiteNumber  |SiteName          |Environment |SubjectName  |CheckActionInstanceName     |CheckActionInstanceDataPageName |CheckActionRecordPosition |CheckActionFieldName |CheckActionFieldData |TriggerFieldInstanceName |TriggerFieldInstanceDatapageName |TriggerFieldRecordPosition |TriggerFieldName        |TriggerFieldData |EditCheckName                               |MarkingGroupName |QueryMessage                                                                |EventTime  |
       |Edit Check Study 8 |80001       |Edit Check Site 8 |PROD        |sub801       |Test A Single Edit          |Assessment Date Log2            |1                         |Assessment Date 1    |08 Jan 2000          |Test A Single Edit       |Assessment Date Log2			  |1                          |Assessment Date 1       |08 Jan 2000      |*Greater Than Open Query Log Cross Form     |Marking Group 1  |Informed Consent Date 1 is greater. Please revise.                          |{DateTime} |
 	  |Edit Check Study 8 |80001       |Edit Check Site 8 |PROD        |sub801       |Test A Single Edit          |Assessment Date Log2            |1                         |Numeric Field 2      |20                   |Test A Single Edit       |Assessment Date Log2             |1                          |Numeric Field 2         |20               |*Is Not Equal to Open Query Log Cross Form* |Site             |Informed Consent numeric field 2 is not equal to assessment numeric field 2 |{DateTime} |
-	And I take a screenshot 7 of 70
+	And I take screenshot
  
-	And I navigate to form "Assessment Date Log2" within folder "Test A Single Edit"
-    And I add a new log line, enter and save the data, from the table below
+	And I select Form "Assessment Date Log2" in Folder "Test A Single Edit"
+    And I add a new Log Line
+	And I enter data in CRF
 	    |Field             |Data        |
         |Assessment Date 1 |07 Jan 2000 |
 	    |Assessment Date 2 |12 Jan 2000 |
 	    |Numeric Field 1   |10          |
 	    |Numeric Field 2   |18          |
-	And I verify "Assessment Date 1" field displays query opened with require response on the second log line
-    And I verify "Numeric Field 2" field displays query opened with require response on the second log line
-	And I take a screenshot 8 of 70
-	And I answer the queries on "Assessment Date 1" and "Numeric Field 2" fields on the second log line
-	And I save the form "Assessment Date Log2"
-	And I change the data on "Assessment Date 1" and "Numeric Field 2" fields, from the table below
+	And I verify Field "Assessment Date 1" displays Query with Requires Response
+    And I verify Field "Numeric Field 2" displays Query with Requires Response
+	And I take screenshot
+	And I answer the Query on Field "Assessment Date 1, Numeric Field 2"
+	And I save CRF
+	And I enter data in CRF
 		|Field             |Data        |
         |Assessment Date 1 |09 Jan 2000 |
 	    |Numeric Field 2   |19          |
-	And I close the queries on "Assessment Date 1" and "Numeric Field 2" fields on the second log line
-	And I save the form "Assessment Date Log2"
-	And I take a screenshot 9 of 70
+	And I close the Query on Field "Assessment Date 1, Numeric Field 2"
+	And I save CRF
+	And I take screenshot
 	And I verify the queries did not fire on "Assessment Date 1" and "Numeric Field 2" fields
-	And I take a screenshot 10 of 70
-	And I change the data on "Assessment Date 1" and "Numeric Field 2" fields, from the table below
+	And I take screenshot
+	And I enter data in CRF
 		|Field             |Data        |
         |Assessment Date 1 |07 Jan 2000 |
 	    |Numeric Field 2   |18          |
-	And I save the form "Assessment Date Log2" 
+	And I save CRF 
 	And I verify new queries did fire on "Assessment Date 1" and "Numeric Field 2" fields	
-	And I take a screenshot 11 of 70
-    When I run SQL Script "Query Logging Script" 
-    Then I should not see the logging data for queries 
+	And I take screenshot
+    When I run SQL Script "Query Logging Script.sql"  
+    Then I shoud NOT see SQL result 
       |ProjectName        |SiteNumber  |SiteName          |Environment |SubjectName  |CheckActionInstanceName |CheckActionInstanceDataPageName |CheckActionRecordPosition |CheckActionFieldName |CheckActionFieldData |TriggerFieldInstanceName |TriggerFieldInstanceDatapageName |TriggerFieldRecordPosition |TriggerFieldName        |TriggerFieldData |EditCheckName                               |MarkingGroupName |QueryMessage                                                                |EventTime  |
       |Edit Check Study 8 |80001       |Edit Check Site 8 |PROD        |sub801       |Test A Single Edit      |Assessment Date Log2            |2                         |Assessment Date 1    |07 Jan 2000          |Test A Single Edit       |Assessment Date Log2             |2                          |Assessment Date 1       |07 Jan 2000      |*Greater Than Open Query Log Cross Form     |Marking Group 1  |Informed Consent Date 1 is greater. Please revise.                          |{DateTime} |
 	  |Edit Check Study 8 |80001       |Edit Check Site 8 |PROD        |sub801       |Test A Single Edit      |Assessment Date Log2            |2                         |Numeric Field 2      |18                   |Test A Single Edit       |Assessment Date Log2             |2                          |Numeric Field 2         |18               |*Is Not Equal to Open Query Log Cross Form* |Site             |Informed Consent numeric field 2 is not equal to assessment numeric field 2 |{DateTime} |
-	And I take a screenshot	12 of 70
+	And I take screenshot
 	
-	And I navigate to form "Assessment Date Log2" within folder "Test A Single Edit"
-    And I add a new log line, enter and save the data, from the table below
+	And I select Form "Assessment Date Log2" in Folder "Test A Single Edit"
+    And I add a new Log Line
+	And I enter data in CRF
 	    |Field             |Data        |
         |Assessment Date 1 |07 Jan 2000 |
 	    |Assessment Date 2 |12 Jan 2000 |
 	    |Numeric Field 1   |10          |
 	    |Numeric Field 2   |18          |
-	And I verify "Assessment Date 1" field displays query opened with require response on the third log line
-    And I verify "Numeric Field 2" field displays query opened with require response on the third log line
-	And I take a screenshot 13 of 70
-	And I change the data on "Assessment Date 1" and "Numeric Field 2" fields, from the table below
+	And I verify Field "Assessment Date 1" displays Query with Requires Response
+    And I verify Field "Numeric Field 2" displays Query with Requires Response
+	And I take screenshot
+	And I enter data in CRF
 		|Field             |Data        |
         |Assessment Date 1 |09 Jan 2000 |
 	    |Numeric Field 2   |19          |
-	And I cancel the queries on "Assessment Date 1" and "Numeric Field 2" fields on the third log line
-	And I save the form "Assessment Date Log2"
-	And I take a screenshot 14 of 70
+	And I cancel the queries on "Assessment Date 1" and "Numeric Field 2" fields
+	And I save CRF
+	And I take screenshot
 	And I verify the queries did not fire on "Assessment Date 1" and "Numeric Field 2" fields
-	And I take a screenshot 15 of 70
-	And I change the data on "Assessment Date 1" and "Numeric Field 2" fields, from the table below
+	And I take screenshot
+	And I enter data in CRF
 		|Field             |Data        |
         |Assessment Date 1 |07 Jan 2000 |
 	    |Numeric Field 2   |18          |
-	And I save the form "Assessment Date Log2" 
+	And I save CRF 
 	And I verify new queries did fire on "Assessment Date 1" and "Numeric Field 2" fields	
-	And I take a screenshot 16 of 70
-    When I run SQL Script "Query Logging Script" 
-    Then I should not see the logging data for queries 
+	And I take screenshot
+    When I run SQL Script "Query Logging Script.sql"  
+    Then I shoud NOT see SQL result 
       |ProjectName        |SiteNumber  |SiteName          |Environment |SubjectName  |CheckActionInstanceName |CheckActionInstanceDataPageName |CheckActionRecordPosition |CheckActionFieldName |CheckActionFieldData |TriggerFieldInstanceName |TriggerFieldInstanceDatapageName |TriggerFieldRecordPosition |TriggerFieldName        |TriggerFieldData |EditCheckName                               |MarkingGroupName |QueryMessage                                                                |EventTime  |
       |Edit Check Study 8 |80001       |Edit Check Site 8 |PROD        |sub801       |Test A Single Edit      |Assessment Date Log2            |3                         |Assessment Date 1    |07 Jan 2000          |Test A Single Edit       |Assessment Date Log2             |2                          |Assessment Date 1       |07 Jan 2000      |*Greater Than Open Query Log Cross Form     |Marking Group 1  |Informed Consent Date 1 is greater. Please revise.                          |{DateTime} |
 	  |Edit Check Study 8 |80001       |Edit Check Site 8 |PROD        |sub801       |Test A Single Edit      |Assessment Date Log2            |3                         |Numeric Field 2      |18                   |Test A Single Edit       |Assessment Date Log2             |2                          |Numeric Field 2         |18               |*Is Not Equal to Open Query Log Cross Form* |Site             |Informed Consent numeric field 2 is not equal to assessment numeric field 2 |{DateTime} |
-	And I take a screenshot	17 of 70
+	And I take screenshot
 
 #------------------------------------------------------------------------------------------------------------
 Scenario: Task Summary
@@ -185,18 +189,18 @@ Scenario: Task Summary
 	When I select right arrow image for "Open Queries" located in "Task Summary"
 	Then I should see added query on form 'Assessment Date Log2'
 	When I select 'Test A Single Edit-Assessment Date Log2'
-	Then I verify "Assessment Date 1" field displays query opened with require response
-    And I verify "Numeric Field 2" field displays query opened with require response
-	And I take a screenshot 18 of 70	
+	Then I verify Field "Assessment Date 1" displays Query with Requires Response
+    And I verify Field "Numeric Field 2" displays Query with Requires Response
+	And I take screenshot
 	
 	And I select subject "sub801"
 	And I select "Cancel Query" located in Task Summary
 	When I select right arrow image for "Cancel Queries" located in "Task Summary"
 	Then I should see added query on form 'Assessment Date Log2'
 	When I select 'Test A Single Edit-Assessment Date Log2'
-	Then I verify "Assessment Date 1" field displays query opened with require response and Cancel
-    And I verify "Numeric Field 2" field displays query opened with require response and Cancel
-	And I take a screenshot 19 of 70
+	Then I verify Field "Assessment Date 1" displays Query with Requires Response and Cancel
+    And I verify Field "Numeric Field 2" displays Query with Requires Response and Cancel
+	And I take screenshot
 	
 #------------------------------------------------------------------------------------------------------------
 Scenario: Query Management
@@ -205,80 +209,82 @@ Scenario: Query Management
 	And I seelct "Edit Check Study 8 (Prod),  World, Edit Check Site 8, sub801"
 	And I select link Search
 	And I select link form "Assessment Date Log2" for subject "sub801"
-	And I verify "Assessment Date 1" field displays query opened with require response on the second log line
-    And I verify "Numeric Field 2" field displays query opened with require response on the second log line
-	And I take a screenshot 20 of 70
-	And I verify "Assessment Date 1" field displays query opened with require response on the third log line
-    And I verify "Numeric Field 2" field displays query opened with require response on the third log line
-	And I take a screenshot 21 of 70
+	And I verify Field "Assessment Date 1" displays Query with Requires Response
+    And I verify Field "Numeric Field 2" displays Query with Requires Response
+	And I take screenshot
+	And I verify Field "Assessment Date 1" displays Query with Requires Response
+    And I verify Field "Numeric Field 2" displays Query with Requires Response
+	And I take screenshot
 	
-    And I add a new log line, enter and save the data, from the table below
+    And I add a new Log Line
+	And I enter data in CRF
 	    |Field             |Data        |
         |Assessment Date 1 |07 Jan 2000 |
 	    |Assessment Date 2 |12 Jan 2000 |
 	    |Numeric Field 1   |10          |
 	    |Numeric Field 2   |18          |
-	And I verify "Assessment Date 1" field displays query opened with require response on the fourth log line
-    And I verify "Numeric Field 2" field displays query opened with require response on the fourth log line
-	And I take a screenshot 22 of 70
-	And I change the data on "Assessment Date 1" and "Numeric Field 2" fields, from the table below
+	And I verify Field "Assessment Date 1" displays Query with Requires Response
+    And I verify Field "Numeric Field 2" displays Query with Requires Response
+	And I take screenshot
+	And I enter data in CRF
 		|Field             |Data        |
         |Assessment Date 1 |09 Jan 2000 |
 	    |Numeric Field 2   |19          |
-	And I cancel the queries on "Assessment Date 1" and "Numeric Field 2" fields on the fourth log line
-	And I save the form "Assessment Date Log2"
-	And I take a screenshot 23 of 70
+	And I cancel the queries on "Assessment Date 1" and "Numeric Field 2" fields
+	And I save CRF
+	And I take screenshot
 	And I verify the queries did not fire on "Assessment Date 1" and "Numeric Field 2" fields
-	And I take a screenshot 24 of 70
-	And I change the data on "Assessment Date 1" and "Numeric Field 2" fields, from the table below
+	And I take screenshot
+	And I enter data in CRF
 		|Field             |Data        |
         |Assessment Date 1 |07 Jan 2000 |
 	    |Numeric Field 2   |18          |
-	And I save the form "Assessment Date Log2" 
+	And I save CRF 
 	And I verify new queries did fire on "Assessment Date 1" and "Numeric Field 2" fields	
-	And I take a screenshot 25 of 70
-    When I run SQL Script "Query Logging Script" 
-    Then I should not see the logging data for queries 
+	And I take screenshot
+    When I run SQL Script "Query Logging Script.sql"  
+    Then I shoud NOT see SQL result 
       |ProjectName        |SiteNumber  |SiteName          |Environment |SubjectName  |CheckActionInstanceName |CheckActionInstanceDataPageName |CheckActionRecordPosition |CheckActionFieldName |CheckActionFieldData |TriggerFieldInstanceName |TriggerFieldInstanceDatapageName |TriggerFieldRecordPosition |TriggerFieldName        |TriggerFieldData |EditCheckName                               |MarkingGroupName |QueryMessage                                                                |EventTime  |
       |Edit Check Study 8 |80001       |Edit Check Site 8 |PROD        |sub801       |Test A Single Edit      |Assessment Date Log2            |4                         |Assessment Date 1    |07 Jan 2000          |Test A Single Edit       |Assessment Date Log2             |2                          |Assessment Date 1       |07 Jan 2000      |*Greater Than Open Query Log Cross Form     |Marking Group 1  |Informed Consent Date 1 is greater. Please revise.                          |{DateTime} |
 	  |Edit Check Study 8 |80001       |Edit Check Site 8 |PROD        |sub801       |Test A Single Edit      |Assessment Date Log2            |4                         |Numeric Field 2      |18                   |Test A Single Edit       |Assessment Date Log2             |2                          |Numeric Field 2         |18               |*Is Not Equal to Open Query Log Cross Form* |Site             |Informed Consent numeric field 2 is not equal to assessment numeric field 2 |{DateTime} |
-	And I take a screenshot 26 of 70
+	And I take screenshot
 	
-	And I navigate to form "Assessment Date Log2" within folder "Test A Single Edit"
-    And I add a new log line, enter and save the data, from the table below
+	And I select Form "Assessment Date Log2" in Folder "Test A Single Edit"
+    And I add a new Log Line
+	And I enter data in CRF
 	    |Field             |Data        |
         |Assessment Date 1 |07 Jan 2000 |
 	    |Assessment Date 2 |12 Jan 2000 |
 	    |Numeric Field 1   |10          |
 	    |Numeric Field 2   |18          |
-	And I verify "Assessment Date 1" field displays query opened with require response on the fifth log line
-    And I verify "Numeric Field 2" field displays query opened with require response on the fifth log line
-	And I take a screenshot 27 of 70
+	And I verify Field "Assessment Date 1" displays Query with Requires Response
+    And I verify Field "Numeric Field 2" displays Query with Requires Response
+	And I take screenshot
 	And I answer the queries on "Assessment Date 1" and "Numeric Field 2" fields
-	And I save the form "Assessment Date Log2"
-	And I change the data on "Assessment Date 1" and "Numeric Field 2" fields, from the table below
+	And I save CRF
+	And I enter data in CRF
 		|Field             |Data        |
         |Assessment Date 1 |09 Jan 2000 |
 	    |Numeric Field 2   |19          |
-	And I save the form "Assessment Date Log2"	
-	And I close the queries on "Assessment Date 1" field and "Numeric Field 2" fields
-	And I save the form "Assessment Date Log2"
-	And I take a screenshot 28 of 70
+	And I save CRF	
+	And I close the Query on Field "Assessment Date 1, Numeric Field 2"
+	And I save CRF
+	And I take screenshot
 	And I verify the queries did not fire on "Assessment Date 1" and "Numeric Field 2" fields
-	And I take a screenshot 29 of 70
-	And I change the data on "Assessment Date 1" and "Numeric Field 2" fields, from the table below
+	And I take screenshot
+	And I enter data in CRF
 		|Field             |Data        |
         |Assessment Date 1 |07 Jan 2000 |
 	    |Numeric Field 2   |18          |
-	And I save the form "Assessment Date Log2" 
+	And I save CRF 
 	And I verify new queries did fire on "Assessment Date 1" and "Numeric Field 2" fields	
-	And I take a screenshot 30 of 70
-    When I run SQL Script "Query Logging Script" 
-    Then I should not see the logging data for queries 
+	And I take screenshot
+    When I run SQL Script "Query Logging Script.sql"  
+    Then I shoud NOT see SQL result 
       |ProjectName        |SiteNumber  |SiteName          |Environment |SubjectName  |CheckActionInstanceName |CheckActionInstanceDataPageName |CheckActionRecordPosition |CheckActionFieldName |CheckActionFieldData |TriggerFieldInstanceName |TriggerFieldInstanceDatapageName |TriggerFieldRecordPosition |TriggerFieldName        |TriggerFieldData |EditCheckName                               |MarkingGroupName |QueryMessage                                                                |EventTime  |
       |Edit Check Study 8 |80001       |Edit Check Site 8 |PROD        |sub801       |Test A Single Edit      |Assessment Date Log2            |5                         |Assessment Date 1    |07 Jan 2000          |Test A Single Edit       |Assessment Date Log2             |2                          |Assessment Date 1       |07 Jan 2000      |*Greater Than Open Query Log Cross Form     |Marking Group 1  |Informed Consent Date 1 is greater. Please revise.                          |{DateTime} |
 	  |Edit Check Study 8 |80001       |Edit Check Site 8 |PROD        |sub801       |Test A Single Edit      |Assessment Date Log2            |5                         |Numeric Field 2      |18                   |Test A Single Edit       |Assessment Date Log2             |2                          |Numeric Field 2         |18               |*Is Not Equal to Open Query Log Cross Form* |Site             |Informed Consent numeric field 2 is not equal to assessment numeric field 2 |{DateTime} |
-	And I take a screenshot 31 of 70	
+	And I take screenshot
 	
 #------------------------------------------------------------------------------------------------------------
  Scenario: Generate the Data PDFs.
@@ -288,7 +294,7 @@ Scenario: Query Management
 	And I generate Data PDF
 	When I View Data PDF
 	Then I should see "Query Data" in Audits
-	And I take a screenshot 32 of 70
+	And I take screenshot
 	
 #------------------------------------------------------------------------------------------------------------
  Scenario: When I run the Report, then query related data are displayed in the report.
@@ -311,7 +317,7 @@ Stream-Query Detail
 	And I select Forms "Informed Consent Date Form ", "Assessment Date Log2"
 	When I select button "Submit Report"
 	Then I should see queries on "Assessment Date 1" and "Numeric Field 2" fields
-	And I take a screenshot 33 of 70
+	And I take screenshot
 	And I close report
 
 #Query Detail	
@@ -324,7 +330,7 @@ Stream-Query Detail
 	And I select Forms "Informed Consent Date Form ", "Assessment Date Log2"
 	When I select button "Submit Report"
 	Then I should see queries on "Assessment Date 1" and "Numeric Field 2" fields
-	And I take a screenshot 34 of 70
+	And I take screenshot
 	And I close report
 
 #Edit Check Log Report	
@@ -338,7 +344,7 @@ Stream-Query Detail
 	And I select checkbox Check "CheckExecution" for "Log Type"
 	When I select button "Submit Report"
 	Then I should see fired editchecks
-	And I take a screenshot 35 of 70
+	And I take screenshot
 	And I close report
 
 #Stream-Audit Trail	
@@ -358,7 +364,7 @@ Stream-Query Detail
 		|Save as Unicode	|Unchecked	|
 	And I open excel file
 	Then I should see queries on "Assessment Date 1" and "Numeric Field 2" fields
-	And I take a screenshot 36 of 70
+	And I take screenshot
 	And I close report
 
 #Stream-Query Detail	
@@ -378,7 +384,7 @@ Stream-Query Detail
 		|Save as Unicode	|Unchecked	|
 	And I open excel file
 	Then I should see queries on "Assessment Date 1" and "Numeric Field 2" fields
-	And I take a screenshot 37 of 70
+	And I take screenshot
 	And I close report
 
 #Stream-Edit Check Log Report	
@@ -399,7 +405,7 @@ Stream-Query Detail
 		|Save as Unicode	|Unchecked	|
 	When I open excel file
 	Then I should see fired editchecks
-	And I take a screenshot 38 of 70
+	And I take screenshot
 	And I close report
 	
 #------------------------------------------------------------------------------------------------------------
@@ -420,7 +426,7 @@ Stream-Query Detail
 	When I select button "Create Report"
 	Then I should see "sub801"
 	And I should see "Added Query" in "QueryText"
-	And I take a screenshot 39 of 70	
+	And I take screenshot
 	And I Close "Detail Data Listing" 
 	
 #------------------------------------------------------------------------------------------------------------
@@ -447,7 +453,7 @@ Stream-Query Detail
 	When I select button "Run Query"
 	Then I should see "sub801"
 	And I should see "Added Query" in "QueryText"
-	And I take a screenshot 40 of 70
+	And I take screenshot
 	And I Close "BOXI Report"
 	
 #------------------------------------------------------------------------------------------------------------
@@ -456,39 +462,41 @@ Stream-Query Detail
 	And I login to Rave as user "editcheck" with password "<Password>"
 	And I select "AM Edit Check Study"
 	And I select site "AM Edit Site"
-    And I create a subject "sub802"
+    And I create a Subject "sub802"
 	And I select form "Mixed Form"
-	And I enter and save the following data, from the table below
+	And I enter data in CRF
+And I save CRF
 	    |Field       |Data |
         |Standard 1  |6    |
 	    |Log Field 1 |5    |
 	    |Log Field 2 |2    |
-	And I verify "Log Field 1" field displays query opened with require response
+	And I verify Field "Log Field 1" displays Query with Requires Response
 	And I answer the query on "Log Field 1" field
-	And I save the form "Mixed Form"
+	And I save CRF
 	And I close the query on "Log Field 1" field
-	And I save the form "Mixed Form"
+	And I save CRF
 	And I note CRF Version "<Source CRF Version1>"
-	And I take a screenshot	41 of 70
+	And I take screenshot
 	
 	And I select site "AM Edit Site"
-    And I create a subject "sub803"
+    And I create a Subject "sub803"
 	And I select form "Mixed Form"
-	And I enter and save the following data, from the table below
+	And I enter data in CRF
+And I save CRF
 	    |Field       |Data |
         |Standard 1  |6    |
 	    |Log Field 1 |5    |
 	    |Log Field 2 |2    |
-	And I verify "Log Field 1" field displays query opened with require response	
+	And I verify Field "Log Field 1" displays Query with Requires Response	
 	And I answer the query on "Log Field 1" field
-	And I save the form "Mixed Form"
-	And I change the data on "Standard 1" field from the table below:
+	And I save CRF
+	And I enter data in CRF
 		|Field       |Data |
         |Standard 1  |5    |
 	And I close the query on "Log Field 1" field
-	And I save the form "Mixed Form"
+	And I save CRF
 	And I note CRF Version "<Source CRF Version1>"
-	And I take a screenshot 42 of 70
+	And I take screenshot
 	
 	And I select link "Home"
 	And I select link "Architect"
@@ -506,42 +514,44 @@ Stream-Query Detail
 	And I select "<Source CRF Version1>" from dropdown "Source CRF"
 	And I select "<Target CRF Version1>" from dropdown "Target CRF"
 	And I select button "Create Plan"
-	And I take a screenshot 43 of 70
+	And I take screenshot
 	
 	And I Migrate "All Subjects"
 	And I select Migration Results and verify Job Status is set to Complete
-	And I take a screenshot 44 of 70
+	And I take screenshot
 	
 	And I select link "Home"
 	And I select "AM Edit Check Study"
 	And I select site "AM Edit Site"
     And I select a subject "sub802"
 	And I select form "Mixed Form"
-	And I change the data on "Log Field 1" field from the table below:
+	And I enter data in CRF
 	    |Field       |Data |
 	    |Log Field 1 |4    |
 	And I verify new query did not fire on "Log Field 1" field
-	And I add a new log line, enter and save the data, from the table below	    
+	And I add a new Log Line
+	And I enter data in CRF	    
 		|Field       |Data |
 	    |Log Field 1 |3    |
 	    |Log Field 2 |2    |
 	And I verify new query did not fire on "Log Field 1" field
-	And I take a screenshot 45 of 70
+	And I take screenshot
 	
 	And I select site "AM Edit Site"
     And I select a subject "sub803"
 	And I select form "Mixed Form"
-	And I change the data on "Standard 1" field from the table below:
+	And I enter data in CRF
 		|Field       |Data |
         |Standard 1  |8	   |
-	And I save the form "Mixed Form"	
+	And I save CRF	
 	And I verify new query did not fire on "Log Field 1" field
-	And I add a new log line, enter and save the data, from the table below	    
+	And I add a new Log Line
+	And I enter data in CRF	    
 		|Field       |Data |
 	    |Log Field 1 |6    |
 	    |Log Field 2 |2    |
 	And I verify new query did not fire on "Log Field 1" field
-	And I take a screenshot 46 of 70
+	And I take screenshot
 	
 	And I select link "Home"
 	And I select link "Architect"
@@ -562,23 +572,23 @@ Stream-Query Detail
 	And I select link "Exceute Plan"
 	And I Migrate "All Subjects"
 	And I select Migration Results and verify Job Status is set to Complete
-	And I take a screenshot 47 of 70
+	And I take screenshot
 	
 	And I select link "Home"
 	And I select "AM Edit Check Study"
 	And I select site "AM Edit Site"
     And I select a subject "sub802"
 	And I select form "Mixed Form"
-	And I verify new query did fire on "Log Field 1" field with require response on the first log line
-	And I verify new query did fire on "Log Field 1" field with require response on the second log line
-	And I take a screenshot 48 of 70
+	And I verify new query did fire on "Log Field 1" field with require response
+	And I verify new query did fire on "Log Field 1" field with require response
+	And I take screenshot
 	
 	And I select site "AM Edit Site"
     And I select a subject "sub803"
 	And I select form "Mixed Form"
-	And I verify new query did fire on "Log Field 1" field with require response on the first log line
-	And I verify new query did fire on "Log Field 1" field with require response on the second log line
-	And I take a screenshot 49 of 70
+	And I verify new query did fire on "Log Field 1" field with require response
+	And I verify new query did fire on "Log Field 1" field with require response
+	And I take screenshot
 	
 #------------------------------------------------------------------------------------------------------------
  Scenario: Publish Checks
@@ -597,20 +607,21 @@ Stream-Query Detail
 	And I select link "Home"
 	And I select "AM Edit Check Study"
 	And I select site "AM Edit Site"
-    And I create a subject "sub804"
+    And I create a Subject "sub804"
 	And I select form "Mixed Form"
-	And I enter and save the following data, from the table below
+	And I enter data in CRF
+And I save CRF
 	    |Field       |Data |
         |Standard 1  |6    |
 	    |Log Field 1 |5    |
 	    |Log Field 2 |2    |
-	And I verify "Log Field 1" field displays query opened with require response
-	And I take a screenshot 50 of 70	
+	And I verify Field "Log Field 1" displays Query with Requires Response
+	And I take screenshot
 	And I answer the query on "Log Field 1" field
-	And I save the form "Mixed Form"
+	And I save CRF
 	And I close the query on "Log Field 1" field
-	And I save the form "Mixed Form"
-	And I take a screenshot 51 of 70
+	And I save CRF
+	And I take screenshot
 	
 	And I select link "Home"
 	And I select link "Architect"
@@ -621,22 +632,22 @@ Stream-Query Detail
 	And I select button "Create Plan"
 	And I check "Inactivate" checkbox for "Mixed Form Query" edit check
 	And I select link "Save"
-	And I take a screenshot 52 of 70	
+	And I take screenshot
 	And I select link "Publish" 
 	And I verify Job Status is set to Complete
-	And I take a screenshot 53 of 70
+	And I take screenshot
 	
 	And I select link "Home"
 	And I select "AM Edit Check Study"
 	And I select site "AM Edit Site"
     And I select a subject "sub804"
 	And I select form "Mixed Form"
-	And I change the data on "Standard 1" field from the table below:
+	And I enter data in CRF
 		|Field       |Data |
         |Standard 1  |7    |
-	And I save the form "Mixed Form"		
+	And I save CRF		
 	And I verify new query did not fire on "Log Field 1" field
-	And I take a screenshot 54 of 70	
+	And I take screenshot
 	
 	And I select link "Home"
 	And I select link "Architect"
@@ -647,10 +658,10 @@ Stream-Query Detail
 	And I select button "Create Plan"
 	And I check "Publish" checkbox for "Mixed Form Query" edit check
 	And I select link "Save"
-	And I take a screenshot 55 of 70	
+	And I take screenshot
 	And I select link "Publish" 
 	And I verify Job Status is set to Complete
-	And I take a screenshot 56 of 70	
+	And I take screenshot
 
 	And I select link "Home"
 	And I select "AM Edit Check Study"
@@ -659,100 +670,103 @@ Stream-Query Detail
 	And I select form "Mixed Form"
 	And I verify new query did fire on "Log Field 1" field
 	And I answer the query on "Log Field 1" field
-	And I save the form "Mixed Form"
-	And I take a screenshot 57 of 70	
+	And I save CRF
+	And I take screenshot
 	And I close the query on "Log Field 1" field
-	And I save the form "Mixed Form"
-	And I take a screenshot 58 of 70	
-	And I change the data on "Standard 1" field from the table below:
+	And I save CRF
+	And I take screenshot
+	And I enter data in CRF
 		|Field       |Data |
         |Standard 1  |8    |
-	And I save the form "Mixed Form"
+	And I save CRF
 	And I verify new query did fire on "Log Field 1" field.
-	And I take a screenshot 59 of 70	
+	And I take screenshot
 
 #------------------------------------------------------------------------------------------------------------
  Scenario: Queries verification on data points with Freeze, Hard lock and Inactive records
 
 	And I select "Edit Check Study 8"
 	And I select site "Edit Check Site 8"
-    And I create a subject "sub805"
+    And I create a Subject "sub805"
 	And I select form "Mixed Form"
-	And I enter and save the following data, from the table below
+	And I enter data in CRF
+And I save CRF
 	    |Field       |Data |
         |Standard 1  |6    |
 	    |Log Field 1 |5    |
 	    |Log Field 2 |2    |
-	And I verify "Log Field 1" field displays query opened with require response on first record position
-	And I take a screenshot 60 of 70	
+	And I verify Field "Log Field 1" displays Query with Requires Response on first record position
+	And I take screenshot
 	And I add new log line 2
-	And I enter and save the following data, from the table below
+	And I enter data in CRF
+And I save CRF
 	    |Field       |Data |
 	    |Log Field 1 |5    |
 	    |Log Field 2 |2    |
-	And I verify "Log Field 1" field displays query opened with require response on second record position
-	And I take a screenshot 61 of 70
+	And I verify Field "Log Field 1" displays Query with Requires Response on second record position
+	And I take screenshot
 	And I add new log line 3
-	And I enter and save the following data, from the table below
+	And I enter data in CRF
+And I save CRF
 	    |Field       |Data |
 	    |Log Field 1 |5    |
 	    |Log Field 2 |2    |
-	And I verify "Log Field 1" field displays query opened with require response on third record position
-	And I take a screenshot 62 of 70
+	And I verify Field "Log Field 1" displays Query with Requires Response on third record position
+	And I take screenshot
 	
 	And I answer the query on "Log Field 1" field on first record position
-	And I save the form "Mixed Form"
+	And I save CRF
 	And I answer the query on "Log Field 1" field on seond record position
-	And I save the form "Mixed Form"
+	And I save CRF
 	And I answer the query on "Log Field 1" field on third record position
-	And I save the form "Mixed Form"
+	And I save CRF
 	
-	And I change the data on "Log Field 1" field on first record position, from the table below:
+	And I enter data in CRF
 	    |Field       |Data |
 	    |Log Field 1 |6    |
 	And I close the query on "Log Field 1" field
-	And I save the form "Mixed Form"
-	And I take a screenshot 63 of 70
-	And I change the data on "Log Field 1" field on second record position, from the table below:
+	And I save CRF
+	And I take screenshot
+	And I enter data in CRF
 	    |Field       |Data |
 	    |Log Field 1 |6    |
 	And I close the query on "Log Field 1" field
-	And I save the form "Mixed Form"
-	And I take a screenshot 64 of 70
-	And I change the data on "Log Field 1" field on third record position, from the table below:
+	And I save CRF
+	And I take screenshot
+	And I enter data in CRF
 	    |Field       |Data |
 	    |Log Field 1 |6    |
 	And I close the query on "Log Field 1" field
-	And I save the form "Mixed Form"
-	And I take a screenshot 65 of 70
+	And I save CRF
+	And I take screenshot
 	
 	And I select edit icon on first record position
 	And I select checkbox "Freeze" on "Log Field 1" field on first record position
-	And I save the form "Mixed Form"
+	And I save CRF
 	And I select edit icon on second record position
 	And I select checkbox "Hadrd Lock" on "Log Field 1" field on second record position
-	And I save the form "Mixed Form"
+	And I save CRF
 	And I select link "Inactivate"
 	And I select "3" in dropdown
 	And I select "Inactivate" button
-	And I take a screenshot 66 of 70
+	And I take screenshot
 	
-	And I change the data on "Standard 1" field from the table below:
+	And I enter data in CRF
 		|Field       |Data |
         |Standard 1  |7    |
-	And I save the form "Mixed Form"		
+	And I save CRF		
 	And I verify new query did fire on "Log Field 1" field on first record position
-	And I take a screenshot 67 of 70	
+	And I take screenshot
 	And I verify new query did not fire on "Log Field 1" field on second record position
-	And I take a screenshot 68 of 70
+	And I take screenshot
 	And I verify new query did not fire on "Log Field 1" field on third record position
-	And I take a screenshot 69 of 70
-	When I run SQL Script "Query Logging Script" 
-    Then I should not see the logging data for queries 
+	And I take screenshot
+	When I run SQL Script "Query Logging Script.sql"  
+    Then I shoud NOT see SQL result 
       |ProjectName        |SiteNumber  |SiteName          |Environment |SubjectName  |CheckActionInstanceDataPageName 	|CheckActionRecordPosition |CheckActionFieldName 	|CheckActionFieldData |TriggerFieldInstanceName |TriggerFieldInstanceDatapageName 	|TriggerFieldRecordPosition |TriggerFieldName   |TriggerFieldData 	|EditCheckName		|MarkingGroupName 	|QueryMessage                   |EventTime  |
 	  |Edit Check Study 8 |80001       |Edit Check Site 8 |PROD        |sub805       |Mixed Form			            |2                         |Log Field 1      		|18                   |Test A Single Edit       |Standard 1			             	|2                          |Standard 1			|7               	|Mixed Form Query 	|Site             	|Query Opened on Log Field 1	|{DateTime} |
 	  |Edit Check Study 8 |80001       |Edit Check Site 8 |PROD        |sub805       |Mixed Form			            |3                         |Log Field 1      		|18                   |Test A Single Edit       |Standard 1			             	|2                          |Standard 1			|7               	|Mixed Form Query 	|Site             	|Query Opened on Log Field 1	|{DateTime} |
-	And I take a screenshot 70 of 70
+	And I take screenshot
 	
 #------------------------------------------------------------------------------------------------------------
 	
