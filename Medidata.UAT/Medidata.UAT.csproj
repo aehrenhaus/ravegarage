@@ -67,6 +67,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DbHelper.cs" />
     <Compile Include="FeatureStepsUsingBrowser.cs">
       <SubType>Code</SubType>
     </Compile>

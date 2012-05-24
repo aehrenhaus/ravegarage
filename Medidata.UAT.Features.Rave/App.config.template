@@ -7,10 +7,10 @@
 	</configSections>
 
 	<UATConfiguration
-		ScreenShotPath="C:\"
+		TestResultPath="C:\"
 		AutoCloseBrowser ="False"
 		TakeScreenShots ="False"
-		
+		SqlScriptsLocation="C:\"
 		BrowserName="Firefox"
 		BrowserLocation="D:\!!Soft\Firefox\firefox.exe"
 		RaveURL ="http://localhost/Rave564/"

@@ -20,11 +20,11 @@ namespace Medidata.UAT
 		{
 		}
 
-		[ConfigurationProperty("ScreenShotPath", DefaultValue = "", IsRequired = false)]
-		public String ScreenShotPath
+		[ConfigurationProperty("TestResultPath", DefaultValue = "", IsRequired = false)]
+		public String TestResultPath
 		{
-			get { return (String)this["ScreenShotPath"]; }
-			set { this["ScreenShotPath"] = value; }
+			get { return (String)this["TestResultPath"]; }
+			set { this["TestResultPath"] = value; }
 		}
 
 		[ConfigurationProperty("AutoCloseBrowser", DefaultValue = true, IsRequired = false)]
@@ -70,6 +70,12 @@ namespace Medidata.UAT
 			set { this["BrowserLocation"] = value; }
 		}
 
+		[ConfigurationProperty("SqlScriptsLocation", DefaultValue = "", IsRequired = false)]
+		public String SqlScriptsLocation
+		{
+			get { return (String)this["SqlScriptsLocation"]; }
+			set { this["SqlScriptsLocation"] = value; }
+		}
 
 		[ConfigurationProperty("RaveURL", DefaultValue = "", IsRequired = true)]
 		public String RaveURL

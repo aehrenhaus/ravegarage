@@ -283,7 +283,7 @@ this.FeatureBackground();
                         "Informed Consent numeric field 2 is not equal to assessment numeric field 2",
                         "{DateTime}"});
 #line 64
-    testRunner.And("I run SQL Script \"Query Logging Script\" I shoud see result", ((string)(null)), table6);
+    testRunner.And("I run SQL Script \"Query Logging Script.sql\" I shoud see result", ((string)(null)), table6);
 #line 69
  testRunner.And("I select Form \"Assessment Date Log2\" in Folder \"Test A Single Edit\"");
 #line 70
@@ -428,7 +428,7 @@ this.FeatureBackground();
                         "Informed Consent numeric field 2 is not equal to assessment numeric field 2",
                         "{DateTime}"});
 #line 109
-    testRunner.And("I run SQL Script \"Query Logging Script\" I shoud NOT see result", ((string)(null)), table10);
+    testRunner.And("I run SQL Script \"Query Logging Script.sql\" I shoud NOT see result", ((string)(null)), table10);
 #line 113
  testRunner.And("I take screenshot 11");
 #line hidden

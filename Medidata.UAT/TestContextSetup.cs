@@ -103,6 +103,22 @@ namespace Medidata.UAT
 
 		}
 
+		public static string GetTestResultPath()
+		{
+			string scenarioName = ReplaceIlligalFileNameChars("scenaroi");//ScenarioContext.Current.ScenarioInfo.Title)
+			string featureName = ReplaceIlligalFileNameChars("feature Name");
+			string featureStartTime = CurrentFeatureStartTime.ToString().Replace(":", "-").Replace("/", "-");
+
+			//file path
+			string path = Path.Combine(
+				UATConfiguration.Default.TestResultPath,
+				featureStartTime,
+				featureName,
+				scenarioName);
+
+			return path;
+		}
+
 		public static void TrySaveScreenShot(string fileName=null)
 		{
 			if (!UATConfiguration.Default.TakeScreenShots)
@@ -111,20 +127,14 @@ namespace Medidata.UAT
 			{
 				if (Browser is ITakesScreenshot)
 				{
-					string scenarioName = ReplaceIlligalFileNameChars("scenaroi");//ScenarioContext.Current.ScenarioInfo.Title)
-					string featureName = ReplaceIlligalFileNameChars("feature Name");
-					string featureStartTime = CurrentFeatureStartTime.ToString().Replace(":", "-").Replace("/", "-");
+					string resultPath = GetTestResultPath();
+
 					string time = DateTime.Now.ToString().Replace(":", "-").Replace("/", "-");
 					fileName = fileName ?? time;
 					fileName += ".jpg";
 
 					//file path
-					string screenshotPath = Path.Combine(
-						UATConfiguration.Default.ScreenShotPath,
-						featureStartTime,
-						featureName,
-						scenarioName,
-						fileName);
+					string screenshotPath = Path.Combine(resultPath,fileName);
 
 					Directory.CreateDirectory(new FileInfo(screenshotPath).DirectoryName);
 					var screenShot = ((ITakesScreenshot)Browser).GetScreenshot();

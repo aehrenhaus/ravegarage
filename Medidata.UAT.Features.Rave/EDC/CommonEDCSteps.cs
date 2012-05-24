@@ -148,23 +148,13 @@ namespace Medidata.UAT.Features.Rave
 
 
 		[When(@"I select Form ""([^""]*)"" in Folder ""([^""]*)""")]
-		public void ISelectForm____InFolder____(string fieldName,string folderName)
+		public void ISelectForm____InFolder____(string formName,string folderName)
 		{
-			
-		}
-
-		[When(@"I run SQL Script ""([^""]*)"" I shoud see result")]
-		public void IRunSQLScript____IShoudSeeResult(string scriptName, Table table)
-		{
-		
+			CurrentPage = CurrentPage.As<BaseEDCTreePage>().SelectFolder(folderName);
+			CurrentPage = CurrentPage.As<BaseEDCTreePage>().SelectForm(formName);
 		}
 
 
-		[When(@"I run SQL Script ""([^""]*)"" I shoud NOT see result")]
-		public void IRunSQLScript____IShoudNOTSeeResult(string scriptName, Table table)
-		{
-	
-		}
 
 		[When(@"I add a new Log Line")]
 		public void IAddANewLogLine()
