@@ -14,14 +14,20 @@ namespace Medidata.UAT.WebDrivers.Rave
 			IWebElement labelTD = TestContextSetup.Browser.FindElement(By.XPath("//td[text()='" + label + "']"));
 			IWebElement datapointTable = labelTD.FindElement(By.XPath("./ancestor::table/ancestor::tr//table[@class='crf_dataPointInternal']"));
 			
-			//if query presents, there will be a nobr arround the datapoint inputs.
-			IWebElement nobr = datapointTable.TryFindElementBy(By.TagName("nobr"));
-			if (nobr != null)
-				datapointTable = nobr;
 
 			var textboxes = datapointTable.FindElements(By.TagName("input"));
-			var dropdowns = datapointTable.FindElements(By.TagName("select"));
-
+			var dropdowns = datapointTable.FindElements(By.TagName("select")).ToList();
+		
+			//this dropdown does count
+			var dataEntyErrorDropdown = dropdowns.FirstOrDefault(x =>
+				{
+					var options = new SelectElement(x).Options;
+					return options.Count == 1 && options[0].Text == "Data Entry Error";
+				});
+		//	int dataEntyErrorDropdownCount = dataEntyErrorDropdown == null ? 0 : 1;
+			//int datapointDropdownCount =  dropdowns.Count - dataEntyErrorDropdownCount ;
+			if (dataEntyErrorDropdown != null)
+				dropdowns.Remove(dataEntyErrorDropdown);
 
 			if (textboxes.Count == 2 && dropdowns.Count == 1)//date field  .format: dd MM yyyy
 			{

@@ -16,12 +16,19 @@ namespace Medidata.UAT.WebDrivers.Rave
 			RavePagesHelper.FillDataPoint(label, val);
 			return this;
 		}
-
+		
+			
+		public CRFPage AddLogLine()
+		{
+			IWebElement saveButton = Browser.TryFindElementById("_ctl0_Content_R_log_log_AddLine");
+			saveButton.Click();
+			return this;
+		}
 		public CRFPage OpenLogLine(int lineNum)
 		{
-			IWebElement editButton = Browser.TryFindElementBy(
-				By.XPath("//table[@id='log']//input[@src='../../Img/i_pen.gif' and position()=" + lineNum + "]"));
-			editButton.Click();
+			var editButtons = Browser.FindElements(
+				By.XPath("//table[@id='log']//input[@src='../../Img/i_pen.gif']"));
+			editButtons[lineNum-1].Click();
 			return this;
 		}
 

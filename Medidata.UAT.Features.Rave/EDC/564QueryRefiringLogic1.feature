@@ -53,6 +53,7 @@ Folder "Test A Single Edit" enter and save data on forms "Informed Consent Date 
 	And I save current Form
     And I verify Field "Assessment Date 1, Numeric Field 2" has NO Query
 	And I take screenshot 4
+	And I open Log Line 1
 	And I fill current Form with
 		|Field             |Data        |
         |Assessment Date 1 |08 Jan 2000 |
@@ -82,7 +83,7 @@ Folder "Test A Single Edit" enter and save data on forms "Informed Consent Date 
 	And I verify Field "Assessment Date 1" displays Query and requires response
 	And I verify Field "Numeric Field 2" displays Query and requires response
 	And I take screenshot 7
-	And I fill current form with
+	And I fill current Form with
 		|Field             |Data        |
         |Assessment Date 1 |09 Jan 2000 |
 	    |Numeric Field 2   |19          |
@@ -95,8 +96,8 @@ Folder "Test A Single Edit" enter and save data on forms "Informed Consent Date 
 	And I take screenshot 8
 	And I verify Field "Assessment Date 1,Numeric Field 2" has NO Query
 	And I take screenshot 9
-
-	And I fill current form with
+	And I open Log Line 2
+	And I fill current Form with
 		|Field             |Data        |
         |Assessment Date 1 |07 Jan 2000 |
 	    |Numeric Field 2   |18          |

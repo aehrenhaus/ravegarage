@@ -169,7 +169,7 @@ namespace Medidata.UAT.Features.Rave
 		[When(@"I add a new Log Line")]
 		public void IAddANewLogLine()
 		{
-
+			CurrentPage.As<CRFPage>().AddLogLine();
 		}
 
 
