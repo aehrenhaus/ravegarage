@@ -75,6 +75,7 @@
       <AutoGen>True</AutoGen>
     </Compile>
     <Compile Include="EDC\CommonEDCSteps.cs" />
+    <Compile Include="EDC\TableModels\FieldData.cs" />
     <Compile Include="EDC\TableModels\UserStudySiteRole.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

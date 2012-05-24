@@ -13,13 +13,7 @@ namespace Medidata.UAT.Features.Rave
 	public class CommonRaveSteps : FeatureStepsUsingBrowser
 	{
 
-		[When(@"I login")]
-		public void ILogin()
-		{
-			string url = "http://localhost/Rave564/Login.aspx";
-			CurrentPage = PageBase.GotoUrl<LoginPage>(Browser, url);
-			CurrentPage = CurrentPage.As<LoginPage>().Login("cdm1", "password");
-		}
+
 
 	}
 }

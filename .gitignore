@@ -8,4 +8,4 @@
 *.cache
 
 /TestResults/
-
+/Medidata.UAT.Features.Rave/App.config

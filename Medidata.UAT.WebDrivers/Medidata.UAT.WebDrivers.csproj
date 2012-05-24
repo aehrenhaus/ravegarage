@@ -67,8 +67,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Rave\BaseEDCTreePage.cs" />
+    <Compile Include="Rave\CRFPage.cs" />
+    <Compile Include="Rave\RavePagesHelper.cs" />
+    <Compile Include="Rave\SubjectPage.cs" />
+    <Compile Include="Rave\PrimaryRecordPage.cs" />
     <Compile Include="Rave\HomePage.cs" />
     <Compile Include="Rave\LoginPage.cs" />
+    <Compile Include="RemoteWebDriverExend.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

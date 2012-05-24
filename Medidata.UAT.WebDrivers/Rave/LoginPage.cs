@@ -10,10 +10,11 @@ namespace Medidata.UAT.WebDrivers.Rave
 {
 	public  class LoginPage : PageBase
 	{
-		public static LoginPage New(RemoteWebDriver browser=null)
+
+		public override TPage OpenNew<TPage>() 
 		{
-			browser = browser ?? TestContextSetup.Browser;
-			return PageBase.GotoUrl<LoginPage>(browser, UATConfiguration.Default.RaveURL);
+			InitializeWithUrl(UATConfiguration.Default.RaveURL);
+			return this.As<TPage>();
 		}
 
 		[FindsBy(How = How.Id, Using = "UserLoginBox")]
@@ -32,7 +33,9 @@ namespace Medidata.UAT.WebDrivers.Rave
 			PasswordBox.SendKeys(password);
 			LoginButton.Click();
 
-			return PageBase.FromCurrentUrl<HomePage>(Browser);
+			return new HomePage().UseCurrent < HomePage>();
 		}
+
+	
 	}
 }

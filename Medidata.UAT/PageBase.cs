@@ -8,8 +8,24 @@ using OpenQA.Selenium.Firefox;
 
 namespace Medidata.UAT
 {
-	public class PageBase
+	//public static class PageBaseExtend
+	//{
+	//    public static TPage Go<TPage>(this TPage page) where TPage : PageBase
+	//    {
+	//        page.Go();
+	//        return page;
+	//    }
+
+	//    public static TPage UseCurrentUrl<TPage>(this TPage page) where TPage : PageBase
+	//    {
+	//        page.Initialize();
+	//        return page;
+	//    }
+	//}
+
+	public abstract class PageBase
 	{
+
 
 		public static RemoteWebDriver OpenBrowser(string browserName = null)
 		{
@@ -46,37 +62,50 @@ namespace Medidata.UAT
 
 		public string URL { get; protected set; }
 
-		public static TPage GotoUrl<TPage>(RemoteWebDriver browser, string url) where TPage:PageBase,new ()
+		protected void InitializeWithUrl(string url)
 		{
-			TPage page = new TPage()
-			{
-				URL = url,
-				Browser = browser
-			};
+			this.URL = url;
+			this.Browser = TestContextSetup.Browser;
 
-			browser.Navigate().GoToUrl(url);
+			Browser.Navigate().GoToUrl(url);
+			PageFactory.InitElements(Browser, this);
+		}
 
-			PageFactory.InitElements(browser, page);
-			return page;
+		protected void Initialize()
+		{
+			this.Browser = TestContextSetup.Browser;
+			this.URL = Browser.Url;
+
+			PageFactory.InitElements(Browser, this);
 		}
 
 
-	
-		public static TPage FromCurrentUrl<TPage>(RemoteWebDriver browser) where TPage : PageBase, new()
-		{
-			TPage page = new TPage()
-			{
-				URL = browser.Url,
-				Browser = browser
-			};
+		//public static TPage FromCurrentUrl<TPage>(RemoteWebDriver browser) where TPage : PageBase, new()
+		//{
+		//    TPage page = new TPage()
+		//    {
+		//        URL = browser.Url,
+		//        Browser = browser
+		//    };
 
-			PageFactory.InitElements(browser, page);
-			return page;
-		}
+		//    PageFactory.InitElements(browser, page);
+		//    return page;
+		//}
 
 		public TPage As<TPage>() where TPage : PageBase
 		{
 			return this as TPage;
+		}
+
+		public virtual TPage OpenNew<TPage>() where TPage:PageBase
+		{
+			throw new NotImplementedException("This page can not be opened directly.");
+		}
+
+		public virtual TPage UseCurrent<TPage>() where TPage : PageBase
+		{
+			Initialize();
+			return this.As <TPage>();
 		}
 
 		public PageBase()

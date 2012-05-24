@@ -36,7 +36,16 @@ namespace Medidata.UAT
 			}
 			set { this["AutoCloseBrowser"] = value; }
 		}
+		[ConfigurationProperty("TakeScreenShots", DefaultValue = true, IsRequired = false)]
+		public bool TakeScreenShots
+		{
 
+			get
+			{
+				return (bool)this["TakeScreenShots"];
+			}
+			set { this["TakeScreenShots"] = value; }
+		}
 
 		[ConfigurationProperty("RaveDatabaseConnection", DefaultValue = "", IsRequired = true)]
 		public String RaveDatabaseConnection

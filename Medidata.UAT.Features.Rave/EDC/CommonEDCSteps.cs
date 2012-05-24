@@ -49,15 +49,24 @@ namespace Medidata.UAT.Features.Rave
 		[Then(@"I login to Rave with username ""([^""]*)"" and password ""([^""]*)""")]
 		public void ILoginToRaveWithUsername____AndPassword____(string username,string passowrd)
 		{
-			LoginPage page = LoginPage.New();
+			LoginPage page = new LoginPage().OpenNew < LoginPage>();
 			CurrentPage = page.Login(username, passowrd);
 		}
+		[When(@"I select Study ""([^""]*)"" and Site ""([^""]*)""")]
+		[Then(@"I select Study ""([^""]*)"" and Site ""([^""]*)""")]
+		public void ISelectStudy____AndSite____(string studyName,string siteName)
+		{
+			CurrentPage = CurrentPage.As<HomePage>()
+				.SelectStudy(studyName)
+				.SelectSite(siteName);
+		}
+
 
 		[When(@"I create a Subject ""([^""]*)""")]
 		[Then(@"I create a Subject ""([^""]*)""")]
 		public void ICreateASubject____(string subjectName)
 		{
-	
+			CurrentPage = CurrentPage.As<HomePage>().CreateSubject(subjectName);
 		}
 
 		/// <summary>
@@ -68,7 +77,8 @@ namespace Medidata.UAT.Features.Rave
 		[Then(@"I select Folder ""([^""]*)""")]
 		public void ISelectFolder____(string folderName)
 		{
-			
+			CurrentPage = CurrentPage.As<BaseEDCTreePage>().SelectFolder(folderName);
+		
 		}
 
 
@@ -76,14 +86,19 @@ namespace Medidata.UAT.Features.Rave
 		[Then(@"I select Form ""([^""]*)""")]
 		public void ISelectForm____(string formName)
 		{
-	
+			CurrentPage = CurrentPage.As<BaseEDCTreePage>().SelectForm(formName);
 		}
 
 
 		[When(@"I fill current Form with")]
 		public void IFillCurrentFormWith(Table table)
 		{
-		
+			CRFPage page = CurrentPage.As <CRFPage>();
+			page.ClickModify();
+			foreach (var row in table.Rows)
+			{
+				page.FillDataPoint(row[0], row[1]);
+			}
 		}
 
 
@@ -91,7 +106,7 @@ namespace Medidata.UAT.Features.Rave
 		[When(@"I take screenshot ([^""]*)")]
 		public void ITakeScreenshot____(string screenshotName)
 		{
-			
+			TestContextSetup.TrySaveScreenShot(screenshotName);
 		}
 
 
@@ -116,7 +131,7 @@ namespace Medidata.UAT.Features.Rave
 		[When(@"I save current Form")]
 		public void ISaveCurrentForm()
 		{
-			;
+			CurrentPage = CurrentPage.As<CRFPage>().SaveForm();
 		}
 
 		[When(@"I close the Query on Field ""([^""]*)""")]
@@ -151,26 +166,18 @@ namespace Medidata.UAT.Features.Rave
 	
 		}
 
-		[When(@"I add a new log line")]
+		[When(@"I add a new Log Line")]
 		public void IAddANewLogLine()
 		{
 
 		}
 
 
-		[When(@"I open log line ([^""]*)")]
-		public void IOpenLogLine2(int lineNum)
+		[When(@"I open Log Line ([^""]*)")]
+		public void IOpenLogLine____(int lineNum)
 		{
-			
+			CurrentPage.As<CRFPage>().OpenLogLine(lineNum);
 		}
-
-		[When(@"I modify current form with")]
-		public void IModifyCurrentFormWith(Table table)
-		{
-
-		}
-
-
 
 		#endregion
 

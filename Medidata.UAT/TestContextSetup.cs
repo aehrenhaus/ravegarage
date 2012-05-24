@@ -18,12 +18,7 @@ namespace Medidata.UAT
 		{
 			get
 			{
-				if (!ScenarioContext.Current.ContainsKey("RemoteWebDriver"))
-				{
-					return null;
-				}
-				return ScenarioContext.Current["RemoteWebDriver"] as RemoteWebDriver;
-
+				return GetContextValue<RemoteWebDriver>("RemoteWebDriver");
 			}
 			set
 			{
@@ -32,17 +27,11 @@ namespace Medidata.UAT
 			}
 		}
 
-
 		public static PageBase CurrentPage
 		{
 			get
 			{
-				if (!ScenarioContext.Current.ContainsKey("PageBase"))
-				{
-					return null;
-				}
-				return ScenarioContext.Current["PageBase"] as PageBase;
-
+				return GetContextValue<PageBase>("PageBase");
 			}
 			set
 			{
@@ -50,10 +39,49 @@ namespace Medidata.UAT
 			}
 		}
 
+		public static DateTime? CurrentScenarioStartTime
+		{
+			get
+			{
+				return GetContextValue<DateTime?>("CurrentScenarioStartTime");
+			}
+			set
+			{
+				ScenarioContext.Current["CurrentScenarioStartTime"] = value;
+			}
+		}
+
+		public static DateTime? CurrentFeatureStartTime
+		{
+			get;
+			set;
+		}
+
+		private static T GetContextValue<T>(string key)
+		{
+			if (!ScenarioContext.Current.ContainsKey(key))
+			{
+				return default(T);
+			}
+			return (T)ScenarioContext.Current[key];
+
+		}
+
+		[BeforeFeature()]
+		public static void FeatureSetup()
+		{
+			CurrentFeatureStartTime = DateTime.Now;
+		}
+
+		[BeforeScenario()]
+		public void ScenarioSetup()
+		{
+			CurrentScenarioStartTime = DateTime.Now;
+		}
 
 
 		[BeforeScenario("Web")]
-		public void ScenarioSetup()
+		public void ScenarioSetupWeb()
 		{
 			if (Browser == null)
 			{
@@ -62,11 +90,11 @@ namespace Medidata.UAT
 		}
 
 		[AfterScenario("Web")]
-		public void ScenarioTearDown()
+		public void ScenarioTearDownWeb()
 		{
 			if (Browser != null)
 			{
-				TrySaveScreenShot(Browser);
+			//	TrySaveScreenShot(Browser);
 				
 				if(UATConfiguration.Default.AutoCloseBrowser)
 					Browser.Close();
@@ -75,22 +103,28 @@ namespace Medidata.UAT
 
 		}
 
-		private void TrySaveScreenShot(RemoteWebDriver driver)
+		public static void TrySaveScreenShot(string fileName=null)
 		{
+			if (!UATConfiguration.Default.TakeScreenShots)
+				return;
 			try
 			{
 				if (Browser is ITakesScreenshot)
 				{
-					string scenarioName = ReplaceIlligalFileNameChars(ScenarioContext.Current.ScenarioInfo.Title);
+					string scenarioName = ReplaceIlligalFileNameChars("scenaroi");//ScenarioContext.Current.ScenarioInfo.Title)
 					string featureName = ReplaceIlligalFileNameChars("feature Name");
+					string featureStartTime = CurrentFeatureStartTime.ToString().Replace(":", "-").Replace("/", "-");
 					string time = DateTime.Now.ToString().Replace(":", "-").Replace("/", "-");
+					fileName = fileName ?? time;
+					fileName += ".jpg";
 
 					//file path
 					string screenshotPath = Path.Combine(
 						UATConfiguration.Default.ScreenShotPath,
+						featureStartTime,
 						featureName,
 						scenarioName,
-						time + ".jpg");
+						fileName);
 
 					Directory.CreateDirectory(new FileInfo(screenshotPath).DirectoryName);
 					var screenShot = ((ITakesScreenshot)Browser).GetScreenshot();
@@ -103,7 +137,7 @@ namespace Medidata.UAT
 			}
 		}
 
-		private string ReplaceIlligalFileNameChars(string name)
+		private static string ReplaceIlligalFileNameChars(string name)
 		{
 			//TODO: implment
 			return name;
