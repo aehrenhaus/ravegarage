@@ -6,6 +6,6 @@
 *.pdb
 *.suo
 *.cache
-
+App.config
 /TestResults/
 /Medidata.UAT.Features.Rave/App.config

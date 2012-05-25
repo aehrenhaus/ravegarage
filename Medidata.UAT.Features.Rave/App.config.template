@@ -9,12 +9,16 @@
 	<UATConfiguration
 		TestResultPath="C:\"
 		AutoCloseBrowser ="False"
-		TakeScreenShots ="False"
+		TakeScreenShots ="True"
 		SqlScriptsLocation="C:\"
 		BrowserName="Firefox"
 		BrowserLocation="D:\!!Soft\Firefox\firefox.exe"
 		RaveURL ="http://localhost/Rave564/"
 		RaveDatabaseConnection="Server=.;Database=lily;uid=sa;pwd=pass;"
+		DefaultUser="defuser"
+		DefaultUserPassword="password"
+		CDMUser="cdm1"
+		CDMUserPassword="password"
 		/>
 
 	<specFlow>

@@ -114,3 +114,9 @@ Folder "Test A Single Edit" enter and save data on forms "Informed Consent Date 
       |Edit Check Study 1 |10001       |Edit Check Site 1 |PROD        |sub101       |Test A Single Edit          |Assessment Date Log2            |2                         |Assessment Date 1    |07 Jan 2000          |Test A Single Edit       |Assessment Date Log2             |2                          |Assessment Date 1       |07 Jan 2000      |*Greater Than Open Query Log Cross Form     |Marking Group 1  |Informed Consent Date 1 is greater. Please revise.                          |{DateTime} |
 	  |Edit Check Study 1 |10001       |Edit Check Site 1 |PROD        |sub101       |Test A Single Edit          |Assessment Date Log2            |2                         |Numeric Field 2      |18                   |Test A Single Edit       |Assessment Date Log2             |2                          |Numeric Field 2         |18               |*Is Not Equal to Open Query Log Cross Form* |Site             |Informed Consent numeric field 2 is not equal to assessment numeric field 2 |{DateTime} |
 	And I take screenshot
+
+@Web
+@PB_1.1
+Scenario: 2
+	
+	When I select Study "Edit Check Study 1" and Site "ZhanSite"

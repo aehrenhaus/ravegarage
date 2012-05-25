@@ -439,6 +439,24 @@ this.FeatureBackground();
 #line hidden
             this.ScenarioCleanup();
         }
+        
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("2")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Query Issue: Edit Checks with require response and require manual close")]
+        public virtual void _2()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("2", new string[] {
+                        "Web",
+                        "PB_1.1"});
+#line 120
+this.ScenarioSetup(scenarioInfo);
+#line 4
+this.FeatureBackground();
+#line 122
+ testRunner.When("I select Study \"Edit Check Study 1\" and Site \"ZhanSite\"");
+#line hidden
+            this.ScenarioCleanup();
+        }
     }
 }
 #pragma warning restore
