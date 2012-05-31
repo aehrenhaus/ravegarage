@@ -13,31 +13,43 @@ namespace Medidata.UAT.Features.Rave
 	[Binding]
 	public class CommonRaveSteps : FeatureStepsUsingBrowser
 	{
-		[When(@"I run SQL Script ""([^""]*)""")]
-		[Then(@"I run SQL Script ""([^""]*)""")]
+
+        [StepDefinition(@"I restore to snapshot")]
+        public void IRestoreToSnapshot____()
+        {
+            var builder = new System.Data.SqlClient.SqlConnectionStringBuilder();
+            builder.ConnectionString = UAT.UATConfiguration.Default.RaveDatabaseConnection;
+            var restoreQuery = String.Format("alter database {0} set single_user with rollback immediate RESTORE DATABASE {0} from DATABASE_SNAPSHOT = '{1}' alter database {0} set multi_user with rollback immediate", builder.InitialCatalog, UAT.UATConfiguration.Default.SnapshotName);
+
+            builder.InitialCatalog = "master";
+            DbHelper db = new DbHelper(builder.ConnectionString); //obtain conn string to "master" database
+
+            db.ExecuteNonQuery(db.GetSqlStringCommand(restoreQuery));
+        }
+
+
+        [StepDefinition(@"I run SQL Script ""([^""]*)""")]
 		public void IRunSQLScript____(string scriptName)
 		{
 			DbHelper db = new DbHelper(UAT.UATConfiguration.Default.RaveDatabaseConnection);
 
 			var sql = File.ReadAllText(Path.Combine(UATConfiguration.Default.SqlScriptsLocation, scriptName));
-			var dataTable = db.ExecuteDataTable(db.GetSqlStringCommond(sql));
+			var dataTable = db.ExecuteDataTable(db.GetSqlStringCommand(sql));
 			
 			SaveDataTable(dataTable);
 			TestContext.SetContextValue(LastSqlResultTable, dataTable);
 		}
 
-		[When(@"I shoud see SQL result")]
-		[Then(@"I shoud see SQL result")]
-		public void IShoudSeeResult(Table table)
+        [StepDefinition(@"I should see SQL result")]
+		public void IShouldSeeResult(Table table)
 		{
 			var dataTable = TestContext.GetContextValue<System.Data.DataTable>(LastSqlResultTable);
 			AssertAreSameTable(dataTable, table);
 
 		}
 
-		[When(@"I shoud NOT see SQL result")]
-		[Then(@"I shoud NOT see SQL result")]
-		public void IShoudNOTSeeResult(Table table)
+        [StepDefinition(@"I should NOT see SQL result")]
+		public void IShouldNOTSeeResult(Table table)
 		{
 			var dataTable = TestContext.GetContextValue<System.Data.DataTable>(LastSqlResultTable);
 			AssertAreNOTSameTable(dataTable, table);
@@ -45,16 +57,14 @@ namespace Medidata.UAT.Features.Rave
 
 
 
-		[When(@"I take screenshot")]
-		[Then(@"I take screenshot")]
+        [StepDefinition(@"I take screenshot")]
 		public void ITakeScreenshot()
 		{
 			TestContext.TrySaveScreenShot();
 		}
 
 
-		[When(@"I login to Rave with username ""([^""]*)"" and password ""([^""]*)""")]
-		[Then(@"I login to Rave with username ""([^""]*)"" and password ""([^""]*)""")]
+        [StepDefinition(@"I login to Rave with username ""([^""]*)"" and password ""([^""]*)""")]
 		public void ILoginToRaveWithUsername____AndPassword____(string username, string passowrd)
 		{
 			LoginPage page = new LoginPage().OpenNew<LoginPage>();
@@ -62,8 +72,7 @@ namespace Medidata.UAT.Features.Rave
 		}
 
 
-		[When(@"I login to Rave with user ""([^""]*)""")]
-		[Then(@"I login to Rave with user ""([^""]*)""")]
+        [StepDefinition(@"I login to Rave with user ""([^""]*)""")]
 		public void ILoginToRaveWithUser(string user)
 		{
 			string username,password =null;

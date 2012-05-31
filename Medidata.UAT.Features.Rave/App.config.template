@@ -15,6 +15,7 @@
 		BrowserLocation="D:\!!Soft\Firefox\firefox.exe"
 		RaveURL ="http://localhost/Rave564/"
 		RaveDatabaseConnection="Server=.;Database=lily;uid=sa;pwd=pass;"
+		SnapshotName="lily_snap"
 		DefaultUser="defuser"
 		DefaultUserPassword="password"
 		CDMUser="cdm1"

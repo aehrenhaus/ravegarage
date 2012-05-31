@@ -46,8 +46,7 @@ namespace Medidata.UAT.Features.Rave
 
 
 
-		[When(@"I select Study ""([^""]*)"" and Site ""([^""]*)""")]
-		[Then(@"I select Study ""([^""]*)"" and Site ""([^""]*)""")]
+		[StepDefinition(@"I select Study ""([^""]*)"" and Site ""([^""]*)""")]
 		public void ISelectStudy____AndSite____(string studyName,string siteName)
 		{
 			CurrentPage = CurrentPage.As<HomePage>()
@@ -56,8 +55,7 @@ namespace Medidata.UAT.Features.Rave
 		}
 
 
-		[When(@"I create a Subject ""([^""]*)""")]
-		[Then(@"I create a Subject ""([^""]*)""")]
+		[StepDefinition(@"I create a Subject ""([^""]*)""")]
 		public void ICreateASubject____(string subjectName)
 		{
 			CurrentPage = CurrentPage.As<HomePage>().CreateSubject(subjectName);
@@ -67,8 +65,7 @@ namespace Medidata.UAT.Features.Rave
 		/// 
 		/// </summary>
 		/// <param name="folderName"></param>
-		[When(@"I select Folder ""([^""]*)""")]
-		[Then(@"I select Folder ""([^""]*)""")]
+		[StepDefinition(@"I select Folder ""([^""]*)""")]
 		public void ISelectFolder____(string folderName)
 		{
 			CurrentPage = CurrentPage.As<BaseEDCTreePage>().SelectFolder(folderName);
@@ -76,8 +73,7 @@ namespace Medidata.UAT.Features.Rave
 		}
 
 
-		[When(@"I select Form ""([^""]*)""")]
-		[Then(@"I select Form ""([^""]*)""")]
+		[StepDefinition(@"I select Form ""([^""]*)""")]
 		public void ISelectForm____(string formName)
 		{
 			CurrentPage = CurrentPage.As<BaseEDCTreePage>().SelectForm(formName);

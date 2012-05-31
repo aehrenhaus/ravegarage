@@ -39,7 +39,7 @@ namespace Medidata.UAT
 			return dbCommand;
 		}
 
-		public DbCommand GetSqlStringCommond(string sqlQuery)
+		public DbCommand GetSqlStringCommand(string sqlQuery)
 		{
 			DbCommand dbCommand = connection.CreateCommand();
 			dbCommand.CommandText = sqlQuery;
