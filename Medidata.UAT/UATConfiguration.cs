@@ -15,10 +15,12 @@ namespace Medidata.UAT
 			Default = (UATConfiguration)System.Configuration.ConfigurationManager.GetSection(
 			"UATConfiguration");
 		}
-
-		public  UATConfiguration()
-		{
-		}
+        [ConfigurationProperty("SnapshotName", DefaultValue = "", IsRequired = true)]
+        public String SnapshotName
+        {
+            get { return (String)this["SnapshotName"]; }
+            set { this["SnapshotName"] = value; }
+        }
 
 		[ConfigurationProperty("TestResultPath", DefaultValue = "", IsRequired = false)]
 		public String TestResultPath
