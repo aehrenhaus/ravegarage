@@ -1,6 +1,0 @@
-﻿#error Parsing error near 'And	I navigate to form "Assessment Date Log2"'
-#error Parsing error near 'And	I select second log line'
-#error Parsing error near 'Open a query, cancel a query, change the correct data and change it back to previous data query didn'
-#error Feature file already contains a scenario with name 'Verifies query firing between cross folders with no require response and require manual close.'
-#error Feature file already contains a scenario with name 'Verifies query firing between cross forms in opposite direction with no require response and require manual close.'
-#error Feature file already contains a scenario with name 'Verifies query firing between cross forms in opposite direction in different folder with no require response and require manual close.'

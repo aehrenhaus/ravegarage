@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<configuration>
+	<configSections>
+		<section name="specFlow" type="TechTalk.SpecFlow.Configuration.ConfigurationSectionHandler,TechTalk.SpecFlow" />
+		<section name="RBTConfiguration" type="Medidata.RBT.RBTConfiguration, Medidata.RBT" />
+
+	</configSections>
+
+	<RBTConfiguration
+		TestResultPath="C:\"
+		AutoCloseBrowser ="True"
+		TakeScreenShots ="True"
+		SqlScriptsLocation="C:\"
+		BrowserName="Firefox"
+		BrowserLocation="D:\!!Soft\Firefox\firefox.exe"
+		RaveURL ="http://localhost/Rave564/"
+		RaveDatabaseConnection="Server=.;Database=lily;uid=sa;pwd=pass;"
+		DefaultUser="cdm1"
+		DefaultUserPassword="password"
+		CDMUser="cdm1"
+		CDMUserPassword="password"
+		SnapshotName=""
+		/>
+
+	<specFlow>
+		<language feature="en-US" tool="" />
+		<unitTestProvider name="MsTest" />
+		<stepAssemblies>
+			<stepAssembly assembly="Medidata.RBT" />
+		</stepAssemblies>
+	</specFlow>
+	<appSettings>
+		<add key="BrowserName"  value="firefox" />
+		<add key="BrowserPath"  value="" />
+
+	</appSettings>
+	<connectionStrings configSource="connections.config"></connectionStrings>
+</configuration>

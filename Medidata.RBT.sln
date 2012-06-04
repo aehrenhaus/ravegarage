@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Medidata.RBT", "Medidata.RBT\Medidata.RBT.csproj", "{89C8F41A-E7F8-4D94-BE93-C2C5B8097A32}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Medidata.RBT.Features.Rave", "Medidata.RBT.Features.Rave\Medidata.RBT.Features.Rave.csproj", "{DDE5AD07-B83F-4B1E-B0D5-E01120CF39AB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Medidata.RBT.WebDriver", "Medidata.RBT.WebDriver\Medidata.RBT.WebDriver.csproj", "{F9184636-DE5F-4896-88B5-289FB3A2FF7D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{89C8F41A-E7F8-4D94-BE93-C2C5B8097A32}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{89C8F41A-E7F8-4D94-BE93-C2C5B8097A32}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{89C8F41A-E7F8-4D94-BE93-C2C5B8097A32}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{89C8F41A-E7F8-4D94-BE93-C2C5B8097A32}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DDE5AD07-B83F-4B1E-B0D5-E01120CF39AB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DDE5AD07-B83F-4B1E-B0D5-E01120CF39AB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DDE5AD07-B83F-4B1E-B0D5-E01120CF39AB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DDE5AD07-B83F-4B1E-B0D5-E01120CF39AB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F9184636-DE5F-4896-88B5-289FB3A2FF7D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F9184636-DE5F-4896-88B5-289FB3A2FF7D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F9184636-DE5F-4896-88B5-289FB3A2FF7D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F9184636-DE5F-4896-88B5-289FB3A2FF7D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
