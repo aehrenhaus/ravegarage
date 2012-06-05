@@ -69,6 +69,8 @@
     </CodeAnalysisDependentAssemblyPaths>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Architect\CommonArchitectSteps.cs" />
+    <Compile Include="CommonConfigurationSteps.cs" />
     <Compile Include="CommonRaveSteps.cs" />
     <Compile Include="EDC\564QueryRefiringLogic3.feature.cs">
       <AutoGen>True</AutoGen>

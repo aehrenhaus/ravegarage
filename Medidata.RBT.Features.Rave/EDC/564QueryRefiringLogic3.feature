@@ -6,12 +6,12 @@ Feature: 3
 # Project to be uploaded in excel spreadsheet 'Edit Check Study 3'
 
 Background:
-    Given I am a User "editcheck" logged into Rave
-	And user "User"  has study "Study" has role "Role" has site "Site" from the table below:
+    Given I am logged in to Rave with username "cdm1" and password "password"
+	And following Study assignments exist
 		|User		|Study		       	|Role |Site		        	|Site Number|
-		|editcheck  |Edit Check Study 3	|CDM1 |Edit Check Site 3	|30001      |
-    And  Role "cdm1" has "Query" Action
-	And study "Edit Check Study" has draft "Draft 1" has "Edit Check"
+		|editcheck  |Edit Check Study 1	|CDM1 |Edit Check Site 3	|30001      |
+    And  Role "cdm1" has Action "Query"
+	And Study "Edit Check Study 1" has Draft "Draft 1" includes Edit Checks from the table below
 		|Edit Check												|Folder						|Form							|Field						|Query Message		|
 		|*Greater Than Log same form							|Test B Single Derivation	|Assessment Date Log2			|Assessment Date 2			|Date Field 1 can not be greater than Date Field 2.|
 		|*Greater Than Open Query Cross Folder					|Test B Single Derivation	|Assessment Date Log2			|Assessment Date 1 			|Date 1 can not be greater than.|
@@ -25,7 +25,9 @@ Background:
 		|*Is Not Equal to Open Query Log Cross Form*			|Test A Single Edit			|Assessment Date Log2			|Numeric Field 2			|Informed Consent numeric field 2 is not equal to assessment numeric field 2|
 		|*Is Not Equal To Open Query Log Same form 				|Test B Single Derivation	|Informed Consent Date Form 1	|Numeric Field 2			|Numeric fields are not equal.|
 		|*Greater Than or Equal To Open Query Log same form 	|Test B Single Derivation	|Informed Consent Date Form 1	|Informed Consent Date 2	|Dates are not equal.|
-	And I publish and push CRF Version "<RANDOMNUMBER>" to site "Edit Check Site 3"
+	
+	And Draft "Draft 1" in Study "Edit Check Study 1" has been published to CRF Version "<RANDOMNUMBER>" 
+	And CRF Version "<RANDOMNUMBER>" in Study "Edit Check Study 1" has been pushed to Site "Edit Check Site 1" in Environment "Prod"
 
 #----------------------------------------------------------------------------------------------------------------------------------------
 @release_564_Patch11
@@ -43,7 +45,7 @@ originally opened the query, then queries are not displayed.
         |Assessment Date 1 |08 Jan 2000 |
 	    |Numeric Field 2   |20          |
 	And I save CRF
-    Then I verify the Queries are NOT displayed on Field "Assessment Date 1" on logline 1
-	Then I verify the Queries are NOT displayed on Field "Numeric Field 2" on logline 1
+    Then I verify the Queries are not displayed on Field "Assessment Date 1" on log line 1
+	Then I verify the Queries are not displayed on Field "Numeric Field 2" on log line 1
 	And I take a screenshot
 #----------------------------------------------------------------------------------------------------------------------------------------

@@ -64,7 +64,7 @@ namespace Medidata.RBT.Features.Rave
 		}
 
 
-        [StepDefinition(@"I login to Rave with username ""([^""]*)"" and password ""([^""]*)""")]
+        [StepDefinition(@"I am logged in to Rave with username ""([^""]*)"" and password ""([^""]*)""")]
 		public void ILoginToRaveWithUsername____AndPassword____(string username, string passowrd)
 		{
 			LoginPage page = new LoginPage().OpenNew<LoginPage>();

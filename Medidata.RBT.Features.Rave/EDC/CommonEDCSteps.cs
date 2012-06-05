@@ -16,50 +16,25 @@ namespace Medidata.RBT.Features.Rave
 		#region Seeding
 
 
-		[StepDefinition(@"Rave has user-study-site assignments from the table below:")]
-		public void RaveHasUser_Study_SiteAssignmentsFromTheTableBelow(Table table)
+		[StepDefinition(@"following Study assignments exist")]
+		public void FollowingStudyAssignmentsExist(Table table)
 		{
 	
 		}
 
-		[StepDefinition(@"Role ""([^""]*)"" has ""([^""]*)"" Action")]
-		public void Role____Has____Action(string roleName,string actionNames)
-		{
-	
-		}
-
-		[StepDefinition(@"Study  ""([^""]*)"" has Draft ""([^""]*)""")]
-		public void Study____HasDraft____(string studyName, string draftName)
-		{
-			
-		}
-
-		[StepDefinition(@"Study ""[^""]*"" has Draft ""[^""]*"" has ""[^""]*""")]
-        public void Study____HasDraf____HasEditCheck(Table table)
-        {
-            
-        }
 
 
-		[StepDefinition(@"CRF ""([^""]*)"" is pushed in Site ""([^""]*)""")]
-        [StepDefinition(@"I publish and push CRF Version ""([^""]*)"" to site ""([^""]*)""")]
-		public void CRF____IsPushedInSite____(string crfName,string siteName)
-		{
-			
-		}
-
-        [StepDefinition(@"user ""[^""]*""  has study ""[^""]*"" has role ""[^""]*"" has site ""[^""]*"" from the table below:")]
-        public void UserHas_Study_Role_Site(Table table)
-        {
-           
-        }
-               
 
 		#endregion
 
 		#region Non seeding
 
+		[StepDefinition(@"I publish and push CRF Version ""([^""]*)"" of Draft  to site ""([^""]*)"" in Study ""([^""]*)""")]
+		public void IPublishAndPushCRFVersion____OfDraftToSite____InStudy____(string crfName, string siteName, string studyName)
+		{
 
+		}
+               
 
 		[StepDefinition(@"I select Study ""([^""]*)"" and Site ""([^""]*)""")]
 		public void ISelectStudy____AndSite____(string studyName,string siteName)
@@ -94,11 +69,18 @@ namespace Medidata.RBT.Features.Rave
 			CurrentPage = CurrentPage.As<BaseEDCTreePage>().SelectForm(formName);
 		}
 
+		//[StepDefinition(@"I enter <> in <>")]
+		//public void IEnterDataInCRF(string data,string form)
+		//{
+		//    CRFPage page = CurrentPage.As<CRFPage>();
+		//    page.ClickModify();
+		//    page.FillDataPoint(form,data);
+		//}
 
 		[StepDefinition(@"I enter data in CRF")]
 		public void IEnterDataInCRF(Table table)
 		{
-			CRFPage page = CurrentPage.As <CRFPage>();
+			CRFPage page = CurrentPage.As<CRFPage>();
 			page.ClickModify();
 			foreach (var row in table.Rows)
 			{
@@ -106,8 +88,8 @@ namespace Medidata.RBT.Features.Rave
 			}
 		}
 
-		[StepDefinition(@"I verify the Queries are NOT displayed on Field ""([^""]*)"" on logline (\d+)")]
-		public void ThenIVerifyTheQueriesAreNOTDisplayedOnField____OnLogline1(string fieldNames, int logLine)
+		[StepDefinition(@"I verify the Queries are not displayed on Field ""([^""]*)"" on log line (\d+)")]
+		public void ThenIVerifyTheQueriesAreNotDisplayedOnField____OnLogline____(string fieldNames, int logLine)
 		{
 			
 		}

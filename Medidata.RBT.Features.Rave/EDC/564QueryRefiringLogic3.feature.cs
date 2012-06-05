@@ -72,7 +72,7 @@ namespace Medidata.RBT.Features.Rave.EDC
         {
 #line 8
 #line 9
-    testRunner.Given("I am a User \"editcheck\" logged into Rave");
+    testRunner.Given("I am logged in to Rave with username \"cdm1\" and password \"password\"");
 #line hidden
             TechTalk.SpecFlow.Table table1 = new TechTalk.SpecFlow.Table(new string[] {
                         "User",
@@ -82,15 +82,14 @@ namespace Medidata.RBT.Features.Rave.EDC
                         "Site Number"});
             table1.AddRow(new string[] {
                         "editcheck",
-                        "Edit Check Study 3",
+                        "Edit Check Study 1",
                         "CDM1",
                         "Edit Check Site 3",
                         "30001"});
 #line 10
- testRunner.And("user \"User\"  has study \"Study\" has role \"Role\" has site \"Site\" from the table bel" +
-                    "ow:", ((string)(null)), table1);
+ testRunner.And("following Study assignments exist", ((string)(null)), table1);
 #line 13
-    testRunner.And("Role \"cdm1\" has \"Query\" Action");
+    testRunner.And("Role \"cdm1\" has Action \"Query\"");
 #line hidden
             TechTalk.SpecFlow.Table table2 = new TechTalk.SpecFlow.Table(new string[] {
                         "Edit Check",
@@ -171,9 +170,14 @@ namespace Medidata.RBT.Features.Rave.EDC
                         "Informed Consent Date 2",
                         "Dates are not equal."});
 #line 14
- testRunner.And("study \"Edit Check Study\" has draft \"Draft 1\" has \"Edit Check\"", ((string)(null)), table2);
-#line 28
- testRunner.And("I publish and push CRF Version \"<RANDOMNUMBER>\" to site \"Edit Check Site 3\"");
+ testRunner.And("Study \"Edit Check Study 1\" has Draft \"Draft 1\" includes Edit Checks from the tabl" +
+                    "e below", ((string)(null)), table2);
+#line 29
+ testRunner.And("Draft \"Draft 1\" in Study \"Edit Check Study 1\" has been published to CRF Version \"" +
+                    "<RANDOMNUMBER>\"");
+#line 30
+ testRunner.And("CRF Version \"<RANDOMNUMBER>\" in Study \"Edit Check Study 1\" has been pushed to Sit" +
+                    "e \"Edit Check Site 1\" in Environment \"Prod\"");
 #line hidden
         }
         
@@ -187,15 +191,15 @@ namespace Medidata.RBT.Features.Rave.EDC
                         "PB_3.1.1",
                         "Draft",
                         "Web"});
-#line 35
+#line 37
 this.ScenarioSetup(scenarioInfo);
 #line 8
 this.FeatureBackground();
-#line 39
+#line 41
  testRunner.Given("closed Queries exist on Fields \"Assessment Date 1, Numeric Field 2\" in Form \"Asse" +
                     "ssment Date Log2\" in Folder \"Test A Single Edit\" in Subject \"SUB301\" in Site \"Ed" +
                     "it Check Site 3\" in Study \"Edit Check Study 3\"");
-#line 40
+#line 42
  testRunner.And("I am on CRF page \"Assessment Date Log2\" in Folder \"Test A Single Edit\" in Subject" +
                     " \"SUB301\" in Site \"Edit Check Site 3\" in Study \"Edit Check Study 3\"");
 #line hidden
@@ -208,15 +212,16 @@ this.FeatureBackground();
             table3.AddRow(new string[] {
                         "Numeric Field 2",
                         "20"});
-#line 41
+#line 43
  testRunner.When("I enter data in CRF", ((string)(null)), table3);
-#line 45
- testRunner.And("I save CRF");
-#line 46
-    testRunner.Then("I verify the Queries are NOT displayed on Field \"Assessment Date 1\" on logline 1");
 #line 47
- testRunner.Then("I verify the Queries are NOT displayed on Field \"Numeric Field 2\" on logline 1");
+ testRunner.And("I save CRF");
 #line 48
+    testRunner.Then("I verify the Queries are not displayed on Field \"Assessment Date 1\" on log line 1" +
+                    "");
+#line 49
+ testRunner.Then("I verify the Queries are not displayed on Field \"Numeric Field 2\" on log line 1");
+#line 50
  testRunner.And("I take a screenshot");
 #line hidden
             this.ScenarioCleanup();
