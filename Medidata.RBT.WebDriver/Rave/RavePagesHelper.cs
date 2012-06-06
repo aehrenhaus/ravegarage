@@ -9,11 +9,27 @@ namespace Medidata.RBT.WebDriver.Rave
 {
 	class RavePagesHelper
 	{
+        public static IWebElement GetDatapointContainer(string label)
+        {
+            IWebElement leftSideTd = GetDatapointLabelContainer(label);
+            //leftSideTd and right side td share same tr. So go up a level, and find the right side
+            IWebElement datapointTable = leftSideTd.FindElement(By.XPath("./../td[@class='crf_rowRightSide']//table[@class='crf_dataPointInternal']"));
+            return datapointTable;
+			
+        }
+
+        //the table contains field and related data.s
+        public static IWebElement GetDatapointLabelContainer(string label)
+        {
+            IWebElement labelTD = TestContext.Browser.FindElement(By.XPath("//td[text()='" + label + "' and @class='crf_rowLeftSide']"));
+            return labelTD;
+
+        }
+
 		public static void FillDataPoint(string label, string val, bool throwIfNotFound=true)
 		{
-			IWebElement labelTD = TestContext.Browser.FindElement(By.XPath("//td[text()='" + label + "']"));
-			IWebElement datapointTable = labelTD.FindElement(By.XPath("./ancestor::table/ancestor::tr//table[@class='crf_dataPointInternal']"));
-			
+
+            var datapointTable = GetDatapointContainer(label);
 
 			var textboxes = datapointTable.FindElements(By.TagName("input"));
 			var dropdowns = datapointTable.FindElements(By.TagName("select")).ToList();
