@@ -34,7 +34,7 @@ Background:
 @PB_3.1.1
 @Draft
 @Web
-Scenario: On a Cross Form Standard form to log form, When a query has been answered and closed with the same data and I enter the same data that originally opened the query, then queries are not displayed. 
+Scenario: PB_3.1.1 On a Cross Form Standard form to log form, When a query has been answered and closed with the same data and I enter the same data that originally opened the query, then queries are not displayed. 
    
     #Manual steps
 
@@ -71,8 +71,8 @@ Scenario: On a Cross Form Standard form to log form, When a query has been answe
         |Assessment Date 1 |08 Jan 2000 |
 	    |Numeric Field 2   |20          |
 	And I save the CRF page
-    Then the Query with message "" is not displayed on Field "Assessment Date 1" on log line 1
-	And the Query with message "" is not displayed on Field "Numeric Field 2" on log line 1
+    Then the Query with message "test1" is not displayed on Field "Assessment Date 1" on log line 1
+	And the Query with message "test2" is not displayed on Field "Numeric Field 2" on log line 1
 	And I take a screenshot
 
 #----------------------------------------------------------------------------------------------------------------------------------------

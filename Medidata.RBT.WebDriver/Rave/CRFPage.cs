@@ -46,5 +46,11 @@ namespace Medidata.RBT.WebDriver.Rave
 			saveButton.Click();
 			return this;
 		}
+
+        public bool CanFindQueryMessage(string fieldName, string message)
+        {
+           var dpLeftTd =  RavePagesHelper.GetDatapointLabelContainer(fieldName);
+           return dpLeftTd.Text.IndexOf(message) != -1;
+        }
 	}
 }

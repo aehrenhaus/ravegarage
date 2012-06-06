@@ -182,15 +182,15 @@ namespace Medidata.RBT.Features.Rave.EDC
         }
         
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("On a Cross Form Standard form to log form, When a query has been answered and clo" +
-            "sed with the same data and I enter the same data that originally opened the quer" +
-            "y, then queries are not displayed.")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("PB_3.1.1 On a Cross Form Standard form to log form, When a query has been answere" +
+            "d and closed with the same data and I enter the same data that originally opened" +
+            " the query, then queries are not displayed.")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "3")]
-        public virtual void OnACrossFormStandardFormToLogFormWhenAQueryHasBeenAnsweredAndClosedWithTheSameDataAndIEnterTheSameDataThatOriginallyOpenedTheQueryThenQueriesAreNotDisplayed_()
+        public virtual void PB_3_1_1OnACrossFormStandardFormToLogFormWhenAQueryHasBeenAnsweredAndClosedWithTheSameDataAndIEnterTheSameDataThatOriginallyOpenedTheQueryThenQueriesAreNotDisplayed_()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("On a Cross Form Standard form to log form, When a query has been answered and clo" +
-                    "sed with the same data and I enter the same data that originally opened the quer" +
-                    "y, then queries are not displayed.", new string[] {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("PB_3.1.1 On a Cross Form Standard form to log form, When a query has been answere" +
+                    "d and closed with the same data and I enter the same data that originally opened" +
+                    " the query, then queries are not displayed.", new string[] {
                         "release_564_Patch11",
                         "PB_3.1.1",
                         "Draft",
@@ -227,11 +227,11 @@ this.FeatureBackground();
 #line 73
  testRunner.And("I save the CRF page");
 #line 74
-    testRunner.Then("the Query with message \"\" is not displayed on Field \"Assessment Date 1\" on log li" +
-                    "ne 1");
+    testRunner.Then("the Query with message \"test1\" is not displayed on Field \"Assessment Date 1\" on l" +
+                    "og line 1");
 #line 75
- testRunner.And("the Query with message \"\" is not displayed on Field \"Numeric Field 2\" on log line" +
-                    " 1");
+ testRunner.And("the Query with message \"test2\" is not displayed on Field \"Numeric Field 2\" on log" +
+                    " line 1");
 #line 76
  testRunner.And("I take a screenshot");
 #line hidden
