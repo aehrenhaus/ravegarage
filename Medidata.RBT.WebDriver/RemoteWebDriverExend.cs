@@ -51,6 +51,7 @@ namespace Medidata.RBT.WebDriver
 			IWebElement ele = null;
 			try
 			{
+	
 				ele = driver.FindElementByLinkText(LinkText);
 			}
 			catch

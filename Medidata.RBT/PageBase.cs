@@ -5,27 +5,18 @@ using System.Text;
 using OpenQA.Selenium.Remote;
 using OpenQA.Selenium.Support.PageObjects;
 using OpenQA.Selenium.Firefox;
+using OpenQA.Selenium.Chrome;
+using OpenQA.Selenium.IE;
+using System.IO;
 
 namespace Medidata.RBT
 {
-	//public static class PageBaseExtend
-	//{
-	//    public static TPage Go<TPage>(this TPage page) where TPage : PageBase
-	//    {
-	//        page.Go();
-	//        return page;
-	//    }
-
-	//    public static TPage UseCurrentUrl<TPage>(this TPage page) where TPage : PageBase
-	//    {
-	//        page.Initialize();
-	//        return page;
-	//    }
-	//}
-
-	public abstract class PageBase
+	public class PageBase
 	{
-
+		public PageBase()
+		{
+			InitializeWithCurrentUrl();
+		}
 
 		public static RemoteWebDriver OpenBrowser(string browserName = null)
 		{
@@ -34,25 +25,26 @@ namespace Medidata.RBT
 			switch (RBTConfiguration.Default.BrowserName.ToLower())
 			{
 				case "firefox":
-					if (!string.IsNullOrEmpty(RBTConfiguration.Default.BrowserLocation))
-					{
-						FirefoxProfile p = new FirefoxProfile();
-						FirefoxBinary bin = new FirefoxBinary(RBTConfiguration.Default.BrowserLocation);
+						FirefoxProfile p = new FirefoxProfile(RBTConfiguration.Default.FirefoxProfilePath);
+						FirefoxBinary bin = new FirefoxBinary(RBTConfiguration.Default.BrowserPath);
 						_webdriver = new FirefoxDriver(bin, p);
-					}
-					else
-						_webdriver = new FirefoxDriver();
-
 					break;
-				//case "chrome":
-				//    _webdriver = WebDriver.Chrome;
-				//    break;
-				//case "internet explorer":
-				//    _webdriver = WebDriver.IE;
-				//    break;
-				//case "headless":
-				//    _webdriver = WebDriver.Headless;
-				//    break;
+
+
+				case "chrome":
+					var chromeDriverPath = RBTConfiguration.Default.ChromeDriverPath;
+					if (!Path.IsPathRooted(chromeDriverPath))
+						chromeDriverPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, chromeDriverPath);
+					_webdriver = new ChromeDriver(chromeDriverPath);
+					break;
+
+
+				case "ie":
+					InternetExplorerOptions o = new InternetExplorerOptions();
+					o.IntroduceInstabilityByIgnoringProtectedModeSettings = true;
+					_webdriver = new InternetExplorerDriver(o);
+					break;
+
 			}
 
 			return _webdriver;
@@ -62,7 +54,7 @@ namespace Medidata.RBT
 
 		public string URL { get; protected set; }
 
-		protected void InitializeWithUrl(string url)
+		protected void InitializeWithNewUrl(string url)
 		{
 			this.URL = url;
 			this.Browser = TestContext.Browser;
@@ -71,7 +63,7 @@ namespace Medidata.RBT
 			PageFactory.InitElements(Browser, this);
 		}
 
-		protected void Initialize()
+		protected void InitializeWithCurrentUrl()
 		{
 			this.Browser = TestContext.Browser;
 			this.URL = Browser.Url;
@@ -80,18 +72,6 @@ namespace Medidata.RBT
 		}
 
 
-		//public static TPage FromCurrentUrl<TPage>(RemoteWebDriver browser) where TPage : PageBase, new()
-		//{
-		//    TPage page = new TPage()
-		//    {
-		//        URL = browser.Url,
-		//        Browser = browser
-		//    };
-
-		//    PageFactory.InitElements(browser, page);
-		//    return page;
-		//}
-
 		public TPage As<TPage>() where TPage : PageBase
 		{
 			return this as TPage;
@@ -99,17 +79,8 @@ namespace Medidata.RBT
 
 		public virtual TPage OpenNew<TPage>() where TPage:PageBase
 		{
-			throw new NotImplementedException("This page can not be opened directly.");
+			throw new NotImplementedException("This page object must override OpenNew method first.");
 		}
 
-		public virtual TPage UseCurrent<TPage>() where TPage : PageBase
-		{
-			Initialize();
-			return this.As <TPage>();
-		}
-
-		public PageBase()
-		{
-		}
 	}
 }

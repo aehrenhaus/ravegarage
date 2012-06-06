@@ -19,7 +19,7 @@ namespace Medidata.RBT.WebDriver.Rave
 
 			saveButton.Click();
 				
-			return new SubjectPage().UseCurrent<SubjectPage>();
+			return new SubjectPage();
 		}
 
 	}

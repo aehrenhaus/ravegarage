@@ -3,22 +3,22 @@
 	<configSections>
 		<section name="specFlow" type="TechTalk.SpecFlow.Configuration.ConfigurationSectionHandler,TechTalk.SpecFlow" />
 		<section name="RBTConfiguration" type="Medidata.RBT.RBTConfiguration, Medidata.RBT" />
-
+		<section name="dataConfiguration" type="Microsoft.Practices.EnterpriseLibrary.Data.Configuration.DatabaseSettings, Microsoft.Practices.EnterpriseLibrary.Data, Version=5.0.414.0, Culture=neutral, PublicKeyToken=null" requirePermission="true" />
 	</configSections>
 
 	<RBTConfiguration
 		TestResultPath="C:\"
-		AutoCloseBrowser ="True"
+		AutoCloseBrowser ="False"
 		TakeScreenShots ="True"
-		SqlScriptsLocation="C:\"
-		BrowserName="Firefox"
-		BrowserLocation="D:\!!Soft\Firefox\firefox.exe"
+		SqlScriptsPath="C:\"
+		BrowserName="firefox"
+		BrowserPath=""
+		FirefoxProfilePath=""
+		ChromeDriverPath="..\..\..\ExternalDlls"
 		RaveURL ="http://localhost/Rave564/"
-		RaveDatabaseConnection="Server=.;Database=lily;uid=sa;pwd=pass;"
+		RaveDatabaseConnection="RaveConnection"
 		DefaultUser="cdm1"
 		DefaultUserPassword="password"
-		CDMUser="cdm1"
-		CDMUserPassword="password"
 		SnapshotName=""
 		/>
 
@@ -34,5 +34,9 @@
 		<add key="BrowserPath"  value="" />
 
 	</appSettings>
-	<connectionStrings configSource="connections.config"></connectionStrings>
+	<dataConfiguration defaultDatabase="Connection String" />
+	<connectionStrings>
+		<add name="RaveConnection" connectionString="Server=.;Database=lily;uid=sa;pwd=pass;" providerName="System.Data.SqlClient" />
+		<add name="RaveConnectionMaster" connectionString="Server=.;Database=master;uid=sa;pwd=pass;" providerName="System.Data.SqlClient" />
+	</connectionStrings>
 </configuration>

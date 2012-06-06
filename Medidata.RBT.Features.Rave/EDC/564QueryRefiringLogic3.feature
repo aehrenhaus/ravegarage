@@ -9,7 +9,7 @@ Background:
     Given I am logged in to Rave with username "cdm1" and password "password"
 	And following Study assignments exist
 		|User		|Study		       	|Role |Site		        	|Site Number|
-		|editcheck  |Edit Check Study 1	|CDM1 |Edit Check Site 3	|30001      |
+		|editcheck  |Edit Check Study 1	|CDM1 |Edit Check Site 1	|30001      |
     And  Role "cdm1" has Action "Query"
 	And Study "Edit Check Study 1" has Draft "Draft 1" includes Edit Checks from the table below
 		|Edit Check												|Folder						|Form							|Field						|Query Message		|
@@ -62,15 +62,19 @@ Scenario: PB_3.1.1 On a Cross Form Standard form to log form, When a query has b
 	# And I save the form "Assessment Date Log2"
 	# And I take a screenshot 3 of 51
 
-	Given closed Query with message "" exists on Field "Assessment Date 1" in Form "Assessment Date Log2" in Folder "Test A Single Edit" in Subject "SUB301" in Site "Edit Check Site 3" in Study "Edit Check Study 3"
-	And closed Query with message "" exists on Field "Numeric Field 2" in Form "Assessment Date Log2" in Folder "Test A Single Edit" in Subject "SUB301" in Site "Edit Check Site 3" in Study "Edit Check Study 3"
-	And I am on CRF page "Assessment Date Log2" in Folder "Test A Single Edit" in Subject "SUB301" in Site "Edit Check Site 3" in Study "Edit Check Study 3"
+	Given closed Query with message "" exists on Field "Assessment Date 1" in Form "Assessment Date Log2" in Folder "Test A Single Edit" in Subject "SUB301" in Site "Edit Check Site 1" in Study "Edit Check Study 1"
+	And closed Query with message "" exists on Field "Numeric Field 2" in Form "Assessment Date Log2" in Folder "Test A Single Edit" in Subject "SUB301" in Site "Edit Check Site 1" in Study "Edit Check Study 1"
+	
+
+	When I am on CRF page "Assessment Date Log2" in Folder "Test A Single Edit" in Subject "SUB301" in Site "Edit Check Site 1" in Study "Edit Check Study 1"
 	And I edit log line 2
-	When I enter data in CRF
+	And I enter data in CRF
 		|Field             |Data        |
         |Assessment Date 1 |08 Jan 2000 |
 	    |Numeric Field 2   |20          |
 	And I save the CRF page
+
+
     Then the Query with message "test1" is not displayed on Field "Assessment Date 1" on log line 1
 	And the Query with message "test2" is not displayed on Field "Numeric Field 2" on log line 1
 	And I take a screenshot

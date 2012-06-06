@@ -15,6 +15,8 @@ namespace Medidata.RBT
 			Default = (RBTConfiguration)System.Configuration.ConfigurationManager.GetSection(
 			"RBTConfiguration");
 		}
+
+
         [ConfigurationProperty("SnapshotName", DefaultValue = "", IsRequired = true)]
         public String SnapshotName
         {
@@ -74,24 +76,8 @@ namespace Medidata.RBT
 		}
 
 
-		[ConfigurationProperty("CDMUser", DefaultValue = "", IsRequired = true)]
-		public String CDMUser
-		{
-			get { return (String)this["CDMUser"]; }
-			set { this["CDMUser"] = value; }
-		}
-
-
-		[ConfigurationProperty("CDMUserPassword", DefaultValue = "", IsRequired = true)]
-		public String CDMUserPassword
-		{
-			get { return (String)this["CDMUserPassword"]; }
-			set { this["CDMUserPassword"] = value; }
-		}
-
 
 		[ConfigurationProperty("BrowserName", DefaultValue = "Firefox", IsRequired = false)]
-		//[StringValidator( MinLength = 1, MaxLength = 60)]
 		public String BrowserName
 		{
 			get { return (String)this["BrowserName"]; }
@@ -99,18 +85,35 @@ namespace Medidata.RBT
 		}
 
 
-		[ConfigurationProperty("BrowserLocation", DefaultValue = "", IsRequired = false)]
-		public String BrowserLocation
+
+		[ConfigurationProperty("ChromeDriverPath", DefaultValue = "", IsRequired = false)]
+		public String ChromeDriverPath
 		{
-			get { return (String)this["BrowserLocation"]; }
-			set { this["BrowserLocation"] = value; }
+			get { return (String)this["ChromeDriverPath"]; }
+			set { this["ChromeDriverPath"] = value; }
 		}
 
-		[ConfigurationProperty("SqlScriptsLocation", DefaultValue = "", IsRequired = false)]
-		public String SqlScriptsLocation
+
+		[ConfigurationProperty("BrowserPath", DefaultValue = "", IsRequired = false)]
+		public String BrowserPath
 		{
-			get { return (String)this["SqlScriptsLocation"]; }
-			set { this["SqlScriptsLocation"] = value; }
+			get { return (String)this["BrowserPath"]; }
+			set { this["BrowserPath"] = value; }
+		}
+
+		[ConfigurationProperty("FirefoxProfilePath", DefaultValue = "", IsRequired = false)]
+		public String FirefoxProfilePath
+		{
+			get { return (String)this["FirefoxProfilePath"]; }
+			set { this["FirefoxProfilePath"] = value; }
+		}
+		
+
+		[ConfigurationProperty("SqlScriptsPath", DefaultValue = "", IsRequired = false)]
+		public String SqlScriptsPath
+		{
+			get { return (String)this["SqlScriptsPath"]; }
+			set { this["SqlScriptsPath"] = value; }
 		}
 
 		[ConfigurationProperty("RaveURL", DefaultValue = "", IsRequired = true)]
