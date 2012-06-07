@@ -131,15 +131,11 @@ namespace Medidata.RBT
 
 		public static string GetTestResultPath()
 		{
-			string featureName = MakeValidFileName("feature Name");
 			string featureStartTime = CurrentFeatureStartTime.ToString().Replace(":", "-").Replace("/", "-");
 
 			//file path
-			string path = Path.Combine(
-				RBTConfiguration.Default.TestResultPath,
-				featureStartTime,
-				featureName,
-				PB);
+			string path = RBTConfiguration.Default.TestResultPath
+				.Replace("{time}", featureStartTime);
 
 			return path;
 		}
@@ -156,6 +152,8 @@ namespace Medidata.RBT
 
 					fileName = fileName ?? ScreenshotIndex.ToString();
 					fileName = PB+"_"+fileName+ ".jpg";
+
+					Console.WriteLine("{img "+fileName+"}");
 
 					//file path
 					string screenshotPath = Path.Combine(resultPath,fileName);

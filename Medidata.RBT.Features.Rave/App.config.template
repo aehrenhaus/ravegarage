@@ -7,7 +7,7 @@
 	</configSections>
 
 	<RBTConfiguration
-		TestResultPath="C:\"
+		TestResultPath="Output"
 		AutoCloseBrowser ="False"
 		TakeScreenShots ="True"
 		SqlScriptsPath="C:\"
