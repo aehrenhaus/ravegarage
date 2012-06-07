@@ -13,7 +13,7 @@ namespace Medidata.RBT.WebDriver.Rave
 
 		public override TPage OpenNew<TPage>() 
 		{
-			InitializeWithUrl(RBTConfiguration.Default.RaveURL);
+			InitializeWithNewUrl(RBTConfiguration.Default.RaveURL);
 			return this.As<TPage>();
 		}
 
@@ -33,7 +33,7 @@ namespace Medidata.RBT.WebDriver.Rave
 			PasswordBox.SendKeys(password);
 			LoginButton.Click();
 
-			return new HomePage().UseCurrent < HomePage>();
+			return new HomePage();
 		}
 
 	

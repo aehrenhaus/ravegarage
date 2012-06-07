@@ -25,19 +25,21 @@ namespace Medidata.RBT.WebDriver.Rave
 		/// <returns></returns>
 		public HomePage SelectStudy(string studyName)
 		{
-			IWebElement studyTable = Browser.TryFindElementById("_ctl0_Content_ListDisplayNavigation_dgObjects");
+			IWebElement studyLink = Browser.FindElementByLinkText(studyName);
+			studyLink.Click();
+			//IWebElement studyTable = Browser.TryFindElementById("_ctl0_Content_ListDisplayNavigation_dgObjects");
 
-			if (studyTable != null)
-			{
-				IWebElement tableLink = studyTable.FindElement(By.XPath("//a[text()='" + studyName + "']"));
-				tableLink.Click();
-			}
-			else
-			{
-				IWebElement tabLink = Browser.FindElement(By.XPath("//a[@id='_ctl0_PgHeader_TabTextHyperlink1', text()='" + studyName + "']"));
-				if (tabLink == null)
-					throw new Exception("Can't find study to open");
-			}
+			//if (studyTable != null)
+			//{
+			//    IWebElement tableLink = studyTable.FindElement(By.XPath("//a[text()='" + studyName + "']"));
+			//    tableLink.Click();
+			//}
+			//else
+			//{
+			//    IWebElement tabLink = Browser.FindElement(By.XPath("//a[@id='_ctl0_PgHeader_TabTextHyperlink1', text()='" + studyName + "']"));
+			//    if (tabLink == null)
+			//        throw new Exception("Can't find study to open");
+			//}
 			return this;
 		}
 
@@ -46,7 +48,7 @@ namespace Medidata.RBT.WebDriver.Rave
 		{
 			IWebElement addSubjectLink = Browser.FindElementById("_ctl0_Content_ListDisplayNavigation_lbAddSubject");
 			addSubjectLink.Click();
-			var prp =new PrimaryRecordPage().UseCurrent<PrimaryRecordPage>();
+			var prp =new PrimaryRecordPage();
 			SubjectPage subPage = prp.FillNameAndSave(subjectName);
 			
 			return subPage;
@@ -59,22 +61,8 @@ namespace Medidata.RBT.WebDriver.Rave
 		/// <returns></returns>
 		public HomePage SelectSite(string siteName)
 		{
-
-			//TODO :find out the ID
-			IWebElement studyTable = Browser.TryFindElementById("siteTableControlID");
-
-			if (studyTable != null)
-			{
-				IWebElement tableLink = studyTable.FindElement(By.XPath("//a[text()='" + siteName + "']"));
-				tableLink.Click();
-			}
-			else
-			{
-				string xpath = "//a[@id='_ctl0_PgHeader_TabTextHyperlink2' and text()='" + siteName + "']";
-				IWebElement tabLink = Browser.TryFindElementBy(By.XPath(xpath));
-				if (tabLink == null)
-					throw new Exception("Can't find site to open");
-			}
+			IWebElement siteLink  = Browser.FindElementByLinkText(siteName);
+			siteLink.Click();
 			return this;
 		}
 
@@ -92,20 +80,22 @@ namespace Medidata.RBT.WebDriver.Rave
 
         public SubjectPage SelectSubject(string subjectName)
         {
-            IWebElement subjectTable = Browser.TryFindElementById("_ctl0_Content_ListDisplayNavigation_dgObjects");
+			IWebElement link = Browser.FindElementByLinkText(subjectName);
+			link.Click();
+            //IWebElement subjectTable = Browser.TryFindElementById("_ctl0_Content_ListDisplayNavigation_dgObjects");
 
-            if (subjectTable != null)
-            {
-                IWebElement tableLink = subjectTable.FindElement(By.XPath("//a[text()='" + subjectName + "']"));
-                tableLink.Click();
-            }
-            else
-            {
-                IWebElement tabLink = Browser.FindElement(By.XPath("//a[@id='_ctl0_PgHeader_TabTextHyperlink1', text()='" + subjectName + "']"));
-                if (tabLink == null)
-                    throw new Exception("Can't find study to open");
-            }
-            return new SubjectPage().UseCurrent<SubjectPage>();
+			//if (subjectTable != null)
+			//{
+			//    //IWebElement tableLink = subjectTable.tr(By.XPath("//a[text()='" + subjectName + "']"));
+			//    //tableLink.Click();
+			//}
+			//else
+			//{
+			//    IWebElement tabLink = Browser.FindElement(By.XPath("//a[@id='_ctl0_PgHeader_TabTextHyperlink1', text()='" + subjectName + "']"));
+			//    if (tabLink == null)
+			//        throw new Exception("Can't find study to open");
+			//}
+            return new SubjectPage();
         }
 
 	}

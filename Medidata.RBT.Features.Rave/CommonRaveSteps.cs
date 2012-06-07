@@ -7,6 +7,8 @@ using TechTalk.SpecFlow;
 using Medidata.RBT.WebDriver;
 using Medidata.RBT.WebDriver.Rave;
 using System.IO;
+using Microsoft.Practices.EnterpriseLibrary.Data;
+using System.Data;
 
 namespace Medidata.RBT.Features.Rave
 {
@@ -17,24 +19,25 @@ namespace Medidata.RBT.Features.Rave
         [StepDefinition(@"I restore to snapshot")]
         public void IRestoreToSnapshot____()
         {
-            var builder = new System.Data.SqlClient.SqlConnectionStringBuilder();
-            builder.ConnectionString = RBTConfiguration.Default.RaveDatabaseConnection;
-            var restoreQuery = String.Format("alter database {0} set single_user with rollback immediate RESTORE DATABASE {0} from DATABASE_SNAPSHOT = '{1}' alter database {0} set multi_user with rollback immediate", builder.InitialCatalog, RBTConfiguration.Default.SnapshotName);
-
-            builder.InitialCatalog = "master";
-            DbHelper db = new DbHelper(builder.ConnectionString); //obtain conn string to "master" database
-
-            db.ExecuteNonQuery(db.GetSqlStringCommand(restoreQuery));
+			Database database = DatabaseFactory.CreateDatabase(RBTConfiguration.Default.RaveDatabaseConnection);
+			
+			var builder = new System.Data.SqlClient.SqlConnectionStringBuilder();
+			builder.ConnectionString = database.ConnectionString;
+			var restoreQuery = String.Format("alter database {0} set single_user with rollback immediate RESTORE DATABASE {0} from DATABASE_SNAPSHOT = '{1}' alter database {0} set multi_user with rollback immediate", builder.InitialCatalog, RBTConfiguration.Default.SnapshotName);
+			
+			//TODO: shall it execut agains master database? 
+			database = DatabaseFactory.CreateDatabase(RBTConfiguration.Default.RaveDatabaseConnection+"Master");
+			database.ExecuteDataSet(CommandType.Text, restoreQuery);
         }
 
 
         [StepDefinition(@"I run SQL Script ""([^""]*)""")]
 		public void IRunSQLScript____(string scriptName)
 		{
-			DbHelper db = new DbHelper(RBTConfiguration.Default.RaveDatabaseConnection);
+			Database database = DatabaseFactory.CreateDatabase(RBTConfiguration.Default.RaveDatabaseConnection);
 
-			var sql = File.ReadAllText(Path.Combine(RBTConfiguration.Default.SqlScriptsLocation, scriptName));
-			var dataTable = db.ExecuteDataTable(db.GetSqlStringCommand(sql));
+			var sql = File.ReadAllText(Path.Combine(RBTConfiguration.Default.SqlScriptsPath, scriptName));
+			var dataTable = database.ExecuteDataSet(sql).Tables[0];
 			
 			SaveDataTable(dataTable);
 			TestContext.SetContextValue(LastSqlResultTable, dataTable);

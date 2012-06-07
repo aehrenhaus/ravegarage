@@ -19,7 +19,7 @@ namespace Medidata.RBT.WebDriver.Rave
 		{
 			IWebElement formFolderTable = Browser.FindElementById("_ctl0_LeftNav_EDCTaskList_TblTaskItems");
 			formFolderTable.FindElement(By.PartialLinkText(formName)).Click();
-			return new CRFPage().UseCurrent<CRFPage>();
+			return new CRFPage();
 		}
 	}
 }

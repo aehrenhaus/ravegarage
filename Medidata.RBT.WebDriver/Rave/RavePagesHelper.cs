@@ -15,14 +15,16 @@ namespace Medidata.RBT.WebDriver.Rave
             //leftSideTd and right side td share same tr. So go up a level, and find the right side
             IWebElement datapointTable = leftSideTd.FindElement(By.XPath("./../td[@class='crf_rowRightSide']//table[@class='crf_dataPointInternal']"));
             return datapointTable;
-			
+
         }
 
         //the table contains field and related data.s
         public static IWebElement GetDatapointLabelContainer(string label)
         {
-            IWebElement labelTD = TestContext.Browser.FindElement(By.XPath("//td[text()='" + label + "' and @class='crf_rowLeftSide']"));
-            return labelTD;
+			//"Assessment Date 1\r\ntet\r\nOpened To Site (06 Jun 2012)\r\nForward\r\nCancel"
+
+            var leftSideTds = TestContext.Browser.FindElements(By.XPath("//td[@class='crf_rowLeftSide']"));
+			return leftSideTds.FirstOrDefault(x => x.Text.Split(new string[] { "\r\n" }, StringSplitOptions.None)[0] == label);
 
         }
 
