@@ -3,38 +3,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using TechTalk.SpecFlow;
-using Medidata.RBT.WebDriver;
-using Medidata.RBT.WebDriver.Rave;
+using Medidata.RBT.PageObjects;
+using Medidata.RBT.PageObjects.Rave;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Medidata.RBT;
 
 namespace Medidata.RBT.Features.Rave
 {
 	[Binding]
-	public class CommonEDCSteps : FeatureStepsUsingBrowser
+	public class EDCSteps : BrowserStepsBase
 	{
-		#region Seeding
-
-
-		[StepDefinition(@"following Study assignments exist")]
-		public void FollowingStudyAssignmentsExist(Table table)
-		{
-	
-		}
-
-
-
-
-		#endregion
-
-		#region Non seeding
-
-		[StepDefinition(@"I publish and push CRF Version ""([^""]*)"" of Draft  to site ""([^""]*)"" in Study ""([^""]*)""")]
-		public void IPublishAndPushCRFVersion____OfDraftToSite____InStudy____(string crfName, string siteName, string studyName)
-		{
-
-		}
-               
 
 		[StepDefinition(@"I select Study ""([^""]*)"" and Site ""([^""]*)""")]
 		public void ISelectStudy____AndSite____(string studyName,string siteName)
@@ -97,41 +75,36 @@ namespace Medidata.RBT.Features.Rave
 		}
 
 
-		[StepDefinition(@"I verify Field ""([^""]*)"" displays Query with Requires Response")]
-		public void IVerifyField____DisplaysQueryWithRequiresResponse(string fieldNames)
+		[StepDefinition(@"the Requires Response Query with message ""([^""]*)"" is displayed on Field ""([^""]*)""")]
+		public void TheRequiresResponseQueryWithMessageIsDisplayedOnField____(string message, string fieldNames)
 		{
-			///Rave564/Img/i_query.gif
-			////Rave564/Img/i_response.gif
-			// label Cancel
 		}
 
 
-		[StepDefinition(@"I verify Field ""([^""]*)"" displays Query without Requires Response")]
-		public void IVerifyField____DisplaysQueryWithoutRequiresResponse(string fieldNames)
+		[StepDefinition(@"the Requires Response Query with message ""([^""]*)"" is not displayed on Field ""([^""]*)""")]
+		public void TheRequiresResponseQueryWithMessageIsNotDisplayedOnField____(string message, string fieldNames)
 		{
-			///Rave564/Img/i_query.gif
-			////Rave564/Img/i_response.gif
-			// label Cancel
+		}
+
+		[StepDefinition(@"the Query with message ""([^""]*)"" is displayed on Field ""([^""]*)""")]
+		public void TheQueryWithMessageIsDisplayedOnField____(string message, string fieldNames)
+		{
 		}
 
 
-		[StepDefinition(@"I verify Field ""([^""]*)"" displays Query")]
-		public void IVerifyField____DisplaysQuery(string fieldNames)
+		[StepDefinition(@"the Query with message ""([^""]*)"" is not displayed on Field ""([^""]*)""")]
+		public void TheQueryWithMessageIsNotDisplayedOnField____(string message, string fieldNames)
 		{
-			///Rave564/Img/i_query.gif
-			////Rave564/Img/i_response.gif
-			// label Cancel
 		}
 
-
-		[StepDefinition(@"I answer the Query on Field ""([^""]*)"" with ""([^""]*)""")]
-		public void IAnswerTheQueryOnField____With____(string fieldName, string answer)
+		[StepDefinition(@"I answer the Query ""([^""]*)"" on Field ""([^""]*)"" with ""([^""]*)""")]
+		public void IAnswerTheQueryOnField____With____(string message, string fieldName, string answer)
 		{
 
 		}
 
-		[StepDefinition(@"I answer the Query on Field ""([^""]*)""")]
-		public void IAnswerTheQueryOn____(string filedNames)
+		[StepDefinition(@"I answer the Query ""([^""]*)"" on Field ""([^""]*)""")]
+		public void IAnswerTheQueryOn____(string message, string filedNames)
 		{
 
 		}
@@ -171,9 +144,16 @@ namespace Medidata.RBT.Features.Rave
 			CurrentPage.As<CRFPage>().AddLogLine();
 		}
 
-        [StepDefinition(@"I edit log line ([^""]*)")]
-		[StepDefinition(@"I open Log Line ([^""]*)")]
+
+		[StepDefinition(@"I open log line ([^""]*)")]
 		public void IOpenLogLine____(int lineNum)
+		{
+			CurrentPage.As<CRFPage>().OpenLogLine(lineNum);
+		}
+
+
+		[StepDefinition(@"I open log line ([^""]*) for edit")]
+		public void IOpenLogLine____ForEdit(int lineNum)
 		{
 			CurrentPage.As<CRFPage>().OpenLogLine(lineNum);
 		}
@@ -201,13 +181,6 @@ namespace Medidata.RBT.Features.Rave
         {
             
         }
-        [StepDefinition(@"I enter data from the table below:")]
-        public void WhenIEnterDataFromTheTableBelow(Table table)
-        {
-           
-        }
-
-		#endregion
-
+		
 	}
 }

@@ -2,48 +2,45 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using Medidata.RBT.Features;
 using TechTalk.SpecFlow;
-using Medidata.RBT.WebDriver;
-using Medidata.RBT.WebDriver.Rave;
-using System.IO;
 using Microsoft.Practices.EnterpriseLibrary.Data;
 using System.Data;
+using System.IO;
 
-namespace Medidata.RBT.Features.Rave
+namespace Medidata.RBT.Common.Steps
 {
 	[Binding]
-	public class CommonRaveSteps : FeatureStepsUsingBrowser
+	public class DatabaseSteps : BrowserStepsBase
 	{
 
-        [StepDefinition(@"I restore to snapshot")]
-        public void IRestoreToSnapshot____()
-        {
+		[StepDefinition(@"I restore to snapshot")]
+		public void IRestoreToSnapshot____()
+		{
 			Database database = DatabaseFactory.CreateDatabase(RBTConfiguration.Default.RaveDatabaseConnection);
-			
+
 			var builder = new System.Data.SqlClient.SqlConnectionStringBuilder();
 			builder.ConnectionString = database.ConnectionString;
 			var restoreQuery = String.Format("alter database {0} set single_user with rollback immediate RESTORE DATABASE {0} from DATABASE_SNAPSHOT = '{1}' alter database {0} set multi_user with rollback immediate", builder.InitialCatalog, RBTConfiguration.Default.SnapshotName);
-			
+
 			//TODO: shall it execut agains master database? 
-			database = DatabaseFactory.CreateDatabase(RBTConfiguration.Default.RaveDatabaseConnection+"Master");
+			database = DatabaseFactory.CreateDatabase(RBTConfiguration.Default.RaveDatabaseConnection + "Master");
 			database.ExecuteDataSet(CommandType.Text, restoreQuery);
-        }
+		}
 
 
-        [StepDefinition(@"I run SQL Script ""([^""]*)""")]
+		[StepDefinition(@"I run SQL Script ""([^""]*)""")]
 		public void IRunSQLScript____(string scriptName)
 		{
 			Database database = DatabaseFactory.CreateDatabase(RBTConfiguration.Default.RaveDatabaseConnection);
 
 			var sql = File.ReadAllText(Path.Combine(RBTConfiguration.Default.SqlScriptsPath, scriptName));
 			var dataTable = database.ExecuteDataSet(sql).Tables[0];
-			
+
 			SaveDataTable(dataTable);
 			TestContext.SetContextValue(LastSqlResultTable, dataTable);
 		}
 
-        [StepDefinition(@"I should see SQL result")]
+		[StepDefinition(@"I should see SQL result")]
 		public void IShouldSeeResult(Table table)
 		{
 			var dataTable = TestContext.GetContextValue<System.Data.DataTable>(LastSqlResultTable);
@@ -51,7 +48,7 @@ namespace Medidata.RBT.Features.Rave
 
 		}
 
-        [StepDefinition(@"I should NOT see SQL result")]
+		[StepDefinition(@"I should NOT see SQL result")]
 		public void IShouldNOTSeeResult(Table table)
 		{
 			var dataTable = TestContext.GetContextValue<System.Data.DataTable>(LastSqlResultTable);
@@ -60,31 +57,12 @@ namespace Medidata.RBT.Features.Rave
 
 
 
-        [StepDefinition(@"I take a screenshot")]
+		[StepDefinition(@"I take a screenshot")]
 		public void ITakeScreenshot()
 		{
 			TestContext.TrySaveScreenShot();
 		}
 
-
-        [StepDefinition(@"I am logged in to Rave with username ""([^""]*)"" and password ""([^""]*)""")]
-		public void ILoginToRaveWithUsername____AndPassword____(string username, string passowrd)
-		{
-			LoginPage page = new LoginPage().OpenNew<LoginPage>();
-			CurrentPage = page.Login(username, passowrd);
-		}
-
-
-        [StepDefinition(@"I login to Rave with user ""([^""]*)""")]
-		public void ILoginToRaveWithUser(string user)
-		{
-			string username,password =null;
-			username = RBTConfiguration.Default.DefaultUser;
-			password = RBTConfiguration.Default.DefaultUserPassword;
-
-			LoginPage page = new LoginPage().OpenNew<LoginPage>();
-			CurrentPage = page.Login(username, password);
-		}
 
 		#region Private
 
@@ -102,12 +80,10 @@ namespace Medidata.RBT.Features.Rave
 		{
 			string resultPath = TestContext.GetTestResultPath();
 			Directory.CreateDirectory(resultPath);
-			File.WriteAllText(Path.Combine(resultPath,"a.txt"), DateTime.Now.ToString());
+			File.WriteAllText(Path.Combine(resultPath, "a.txt"), DateTime.Now.ToString());
 		}
 
 		#endregion
-
-
 
 	}
 }

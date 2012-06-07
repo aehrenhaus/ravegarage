@@ -7,7 +7,7 @@ using TechTalk.SpecFlow;
 namespace Medidata.RBT.Features.Rave
 {
 	[Binding]
-	public class CommonConfigurationSteps : FeatureStepsUsingBrowser
+	public class RoleSteps : BrowserStepsBase
 	{
 
 

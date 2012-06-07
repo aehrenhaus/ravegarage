@@ -6,7 +6,7 @@ using OpenQA.Selenium.Support.PageObjects;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Remote;
 
-namespace Medidata.RBT.WebDriver.Rave
+namespace Medidata.RBT.PageObjects.Rave
 {
 	public  class PrimaryRecordPage : PageBase
 	{

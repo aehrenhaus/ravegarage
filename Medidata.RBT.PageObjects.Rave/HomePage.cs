@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using Medidata.RBT.WebDriver;
+using Medidata.RBT.PageObjects;
 using OpenQA.Selenium.Support.PageObjects;
 using OpenQA.Selenium;
 
-namespace Medidata.RBT.WebDriver.Rave
+namespace Medidata.RBT.PageObjects.Rave
 {
 	public  class HomePage : PageBase
 	{

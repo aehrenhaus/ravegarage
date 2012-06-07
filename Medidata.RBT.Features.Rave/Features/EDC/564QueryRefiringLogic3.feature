@@ -67,7 +67,7 @@ Scenario: PB_3.1.1 On a Cross Form Standard form to log form, When a query has b
 	
 
 	When I am on CRF page "Assessment Date Log2" in Folder "Test A Single Edit" in Subject "SUB301" in Site "Edit Check Site 1" in Study "Edit Check Study 1"
-	And I edit log line 2
+	And I open log line 2 for edit
 	And I enter data in CRF
 		|Field             |Data        |
         |Assessment Date 1 |08 Jan 2000 |

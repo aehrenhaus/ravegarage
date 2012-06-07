@@ -13,7 +13,7 @@ using System.Drawing.Imaging;
 namespace Medidata.RBT
 {
 
-	public class FeatureStepsUsingBrowser 
+	public class BrowserStepsBase 
 	{
 	
 

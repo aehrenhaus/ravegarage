@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Medidata.RBT.WebDriver")]
+[assembly: AssemblyTitle("Medidata.RBT.Common.Steps")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Microsoft")]
-[assembly: AssemblyProduct("Medidata.RBT.WebDriver")]
+[assembly: AssemblyProduct("Medidata.RBT.Common.Steps")]
 [assembly: AssemblyCopyright("Copyright © Microsoft 2012")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("48594216-a925-49fb-87b5-408a39936c2a")]
+[assembly: Guid("21a21089-768c-4435-90b3-bd35ba06919d")]
 
 // Version information for an assembly consists of the following four values:
 //

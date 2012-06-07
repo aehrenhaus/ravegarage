@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using OpenQA.Selenium;
 
-namespace Medidata.RBT.WebDriver.Rave
+namespace Medidata.RBT.PageObjects.Rave
 {
 	public class BaseEDCTreePage :PageBase
 	{

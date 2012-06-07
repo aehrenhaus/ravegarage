@@ -3,18 +3,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using TechTalk.SpecFlow;
-using Medidata.RBT.WebDriver;
-using Medidata.RBT.WebDriver.Rave;
+using Medidata.RBT.PageObjects;
+using Medidata.RBT.PageObjects.Rave;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Medidata.RBT;
 
 namespace Medidata.RBT.Features.Rave
 {
 	[Binding]
-	public class CommonArchitectSteps : FeatureStepsUsingBrowser
+	public class StudySteps : BrowserStepsBase
 	{
-		#region Seeding
-
 
 		[StepDefinition(@"CRF Version ""([^""]*)"" in Study ""([^""]*)"" has been pushed to Site ""([^""]*)"" in Environment ""([^""]*)""")]
 		public void CRF____IsPushedInSite____InStudy____InEnvironment____(string crfName, string siteName, string studyName,string environmentName)
@@ -42,14 +40,10 @@ namespace Medidata.RBT.Features.Rave
 		}
 
 
-		#endregion
+		[StepDefinition(@"following Study assignments exist")]
+		public void FollowingStudyAssignmentsExist(Table table)
+		{
 
-		#region Non seeding
-
-
-
-
-		#endregion
-
+		}
 	}
 }
