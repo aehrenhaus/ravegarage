@@ -5,11 +5,11 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{F9184636-DE5F-4896-88B5-289FB3A2FF7D}</ProjectGuid>
+    <ProjectGuid>{14989202-B55D-4273-85E2-1BFD95A4BB80}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Medidata.RBT.WebDriver</RootNamespace>
-    <AssemblyName>Medidata.RBT.WebDriver</AssemblyName>
+    <RootNamespace>Medidata.RBT.PageObjectes.Rave</RootNamespace>
+    <AssemblyName>Medidata.RBT.PageObjectes.Rave</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -31,6 +31,15 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Castle.Core">
+      <HintPath>..\ExternalDlls\Castle.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Ionic.Zip">
+      <HintPath>..\ExternalDlls\Ionic.Zip.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\ExternalDlls\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
@@ -39,6 +48,9 @@
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
+    <Reference Include="TechTalk.SpecFlow">
+      <HintPath>..\ExternalDlls\TechTalk.SpecFlow.dll</HintPath>
+    </Reference>
     <Reference Include="WebDriver">
       <HintPath>..\ExternalDlls\WebDriver.dll</HintPath>
     </Reference>
@@ -47,15 +59,14 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BaseEDCTreePage.cs" />
+    <Compile Include="CRFPage.cs" />
+    <Compile Include="HomePage.cs" />
+    <Compile Include="LoginPage.cs" />
+    <Compile Include="PrimaryRecordPage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Rave\BaseEDCTreePage.cs" />
-    <Compile Include="Rave\CRFPage.cs" />
-    <Compile Include="Rave\HomePage.cs" />
-    <Compile Include="Rave\LoginPage.cs" />
-    <Compile Include="Rave\PrimaryRecordPage.cs" />
-    <Compile Include="Rave\RavePagesHelper.cs" />
-    <Compile Include="Rave\SubjectPage.cs" />
-    <Compile Include="RemoteWebDriverExend.cs" />
+    <Compile Include="Helpers\RavePagesHelper.cs" />
+    <Compile Include="SubjectPage.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Medidata.RBT\Medidata.RBT.csproj">

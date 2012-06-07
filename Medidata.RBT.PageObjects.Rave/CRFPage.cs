@@ -7,7 +7,8 @@ using OpenQA.Selenium;
 using OpenQA.Selenium.Remote;
 using OpenQA.Selenium.Support.UI;
 
-namespace Medidata.RBT.WebDriver.Rave
+
+namespace Medidata.RBT.PageObjects.Rave
 {
 	public  class CRFPage : BaseEDCTreePage
 	{

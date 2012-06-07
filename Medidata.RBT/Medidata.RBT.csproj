@@ -61,9 +61,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="FeatureStepsUsingBrowser.cs" />
+    <Compile Include="BrowserStepsBase.cs" />
     <Compile Include="PageBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RemoteWebDriverExtend.cs" />
     <Compile Include="TestContext.cs" />
     <Compile Include="RBTConfiguration.cs" />
   </ItemGroup>

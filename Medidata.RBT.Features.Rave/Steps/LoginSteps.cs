@@ -1,0 +1,44 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using Medidata.RBT.Features;
+using TechTalk.SpecFlow;
+using Medidata.RBT.PageObjects;
+using Medidata.RBT.PageObjects.Rave;
+using System.IO;
+using Microsoft.Practices.EnterpriseLibrary.Data;
+using System.Data;
+
+namespace Medidata.RBT.Features.Rave
+{
+	[Binding]
+	public class LoginSteps : BrowserStepsBase
+	{
+
+
+
+        [StepDefinition(@"I am logged in to Rave with username ""([^""]*)"" and password ""([^""]*)""")]
+		public void ILoginToRaveWithUsername____AndPassword____(string username, string passowrd)
+		{
+			LoginPage page = new LoginPage().OpenNew<LoginPage>();
+			CurrentPage = page.Login(username, passowrd);
+		}
+
+
+        [StepDefinition(@"I login to Rave with user ""([^""]*)""")]
+		public void ILoginToRaveWithUser(string user)
+		{
+			string username,password =null;
+			username = RBTConfiguration.Default.DefaultUser;
+			password = RBTConfiguration.Default.DefaultUserPassword;
+
+			LoginPage page = new LoginPage().OpenNew<LoginPage>();
+			CurrentPage = page.Login(username, password);
+		}
+
+
+
+
+	}
+}

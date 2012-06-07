@@ -11,7 +11,7 @@
 // ------------------------------------------------------------------------------
 #region Designer generated code
 #pragma warning disable
-namespace Medidata.RBT.Features.Rave.EDC
+namespace Medidata.RBT.Features.Rave.Features.EDC
 {
     using TechTalk.SpecFlow;
     
@@ -48,7 +48,7 @@ namespace Medidata.RBT.Features.Rave.EDC
             if (((TechTalk.SpecFlow.FeatureContext.Current != null) 
                         && (TechTalk.SpecFlow.FeatureContext.Current.FeatureInfo.Title != "3")))
             {
-                Medidata.RBT.Features.Rave.EDC._3Feature.FeatureSetup(null);
+                Medidata.RBT.Features.Rave.Features.EDC._3Feature.FeatureSetup(null);
             }
         }
         
@@ -211,7 +211,7 @@ this.FeatureBackground();
  testRunner.When("I am on CRF page \"Assessment Date Log2\" in Folder \"Test A Single Edit\" in Subject" +
                     " \"SUB301\" in Site \"Edit Check Site 1\" in Study \"Edit Check Study 1\"");
 #line 70
- testRunner.And("I edit log line 2");
+ testRunner.And("I open log line 2 for edit");
 #line hidden
             TechTalk.SpecFlow.Table table3 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field",

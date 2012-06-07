@@ -5,9 +5,9 @@ using System.Text;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Remote;
 
-namespace Medidata.RBT.WebDriver
+namespace Medidata.RBT.PageObjects
 {
-	public static class RemoteWebDriverExend
+	public static class RemoteWebDriverExtend
 	{
 		public static IWebElement TryFindElementBy(this ISearchContext driver,  By by)
 		{

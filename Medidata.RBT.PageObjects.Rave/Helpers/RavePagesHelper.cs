@@ -5,7 +5,7 @@ using System.Text;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
 
-namespace Medidata.RBT.WebDriver.Rave
+namespace Medidata.RBT.PageObjects.Rave
 {
 	class RavePagesHelper
 	{
