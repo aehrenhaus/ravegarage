@@ -21,7 +21,7 @@ namespace Medidata.RBT.Features.Rave
         [StepDefinition(@"I am logged in to Rave with username ""([^""]*)"" and password ""([^""]*)""")]
 		public void ILoginToRaveWithUsername____AndPassword____(string username, string passowrd)
 		{
-			LoginPage page = new LoginPage().OpenNew<LoginPage>();
+			LoginPage page = new LoginPage(RaveConfiguration.Default.RaveURL);
 			CurrentPage = page.Login(username, passowrd);
 		}
 
@@ -30,10 +30,10 @@ namespace Medidata.RBT.Features.Rave
 		public void ILoginToRaveWithUser(string user)
 		{
 			string username,password =null;
-			username = RBTConfiguration.Default.DefaultUser;
-			password = RBTConfiguration.Default.DefaultUserPassword;
+			username = RaveConfiguration.Default.DefaultUser;
+			password = RaveConfiguration.Default.DefaultUserPassword;
 
-			LoginPage page = new LoginPage().OpenNew<LoginPage>();
+			LoginPage page = new LoginPage(RaveConfiguration.Default.RaveURL);
 			CurrentPage = page.Login(username, password);
 		}
 

@@ -3,6 +3,7 @@
 	<configSections>
 		<section name="specFlow" type="TechTalk.SpecFlow.Configuration.ConfigurationSectionHandler,TechTalk.SpecFlow" />
 		<section name="RBTConfiguration" type="Medidata.RBT.RBTConfiguration, Medidata.RBT" />
+		<section name="RaveConfiguration" type="Medidata.RBT.Features.Rave.RaveConfiguration, Medidata.RBT.Features.Rave" />
 		<section name="dataConfiguration" type="Microsoft.Practices.EnterpriseLibrary.Data.Configuration.DatabaseSettings, Microsoft.Practices.EnterpriseLibrary.Data, Version=5.0.414.0, Culture=neutral, PublicKeyToken=null" requirePermission="true" />
 	</configSections>
 
@@ -14,24 +15,27 @@
 		BrowserName="firefox"
 		BrowserPath=""
 		FirefoxProfilePath=""
-		ChromeDriverPath="..\..\..\ExternalDlls"
-		RaveURL ="http://localhost/Rave564/"
-		RaveDatabaseConnection="RaveConnection"
+		WebDriverPath="..\..\..\ExternalDlls\WebDrivers\"
+		SnapshotName=""
+		DatabaseConnection="RaveConnection"
+		/>
+	
+	<RaveConfiguration
+		RaveURL ="http://localhost/Rave564/"	
 		DefaultUser="cdm1"
 		DefaultUserPassword="password"
-		SnapshotName=""
 		/>
-
+	
 	<specFlow>
 		<language feature="en-US" tool="" />
 		<unitTestProvider name="MsTest" />
 		<stepAssemblies>
 			<stepAssembly assembly="Medidata.RBT" />
+			<stepAssembly assembly="Medidata.RBT.Common.Steps" />
 		</stepAssemblies>
 	</specFlow>
 	<appSettings>
-		<add key="BrowserName"  value="firefox" />
-		<add key="BrowserPath"  value="" />
+
 
 	</appSettings>
 	<dataConfiguration defaultDatabase="Connection String" />
