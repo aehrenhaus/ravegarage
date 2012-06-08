@@ -21,7 +21,11 @@ namespace Medidata.RBT
 		public static RemoteWebDriver OpenBrowser(string browserName = null)
 		{
 			RemoteWebDriver _webdriver = null;
-			
+
+			var driverPath = RBTConfiguration.Default.WebDriverPath;
+			if (!Path.IsPathRooted(driverPath))
+				driverPath = new DirectoryInfo(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, driverPath)).FullName;
+
 			switch (RBTConfiguration.Default.BrowserName.ToLower())
 			{
 				case "firefox":
@@ -32,17 +36,13 @@ namespace Medidata.RBT
 
 
 				case "chrome":
-					var chromeDriverPath = RBTConfiguration.Default.ChromeDriverPath;
-					if (!Path.IsPathRooted(chromeDriverPath))
-						chromeDriverPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, chromeDriverPath);
-					_webdriver = new ChromeDriver(chromeDriverPath);
+		
+					_webdriver = new ChromeDriver(driverPath);
 					break;
 
 
 				case "ie":
-					InternetExplorerOptions o = new InternetExplorerOptions();
-					o.IntroduceInstabilityByIgnoringProtectedModeSettings = true;
-					_webdriver = new InternetExplorerDriver(o);
+					_webdriver = new InternetExplorerDriver(driverPath);
 					break;
 
 			}

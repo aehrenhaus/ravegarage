@@ -16,6 +16,12 @@ namespace Medidata.RBT
 			"RBTConfiguration");
 		}
 
+		[ConfigurationProperty("DatabaseConnection", DefaultValue = "", IsRequired = true)]
+		public String DatabaseConnection
+		{
+			get { return (String)this["DatabaseConnection"]; }
+			set { this["DatabaseConnection"] = value; }
+		}
 
         [ConfigurationProperty("SnapshotName", DefaultValue = "", IsRequired = true)]
         public String SnapshotName
@@ -52,29 +58,6 @@ namespace Medidata.RBT
 			set { this["TakeScreenShots"] = value; }
 		}
 
-		[ConfigurationProperty("RaveDatabaseConnection", DefaultValue = "", IsRequired = true)]
-		public String RaveDatabaseConnection
-		{
-			get { return (String)this["RaveDatabaseConnection"]; }
-			set { this["RaveDatabaseConnection"] = value; }
-		}
-
-
-		[ConfigurationProperty("DefaultUser", DefaultValue = "", IsRequired = true)]
-		public String DefaultUser
-		{
-			get { return (String)this["DefaultUser"]; }
-			set { this["DefaultUser"] = value; }
-		}
-
-
-		[ConfigurationProperty("DefaultUserPassword", DefaultValue = "", IsRequired = true)]
-		public String DefaultUserPassword
-		{
-			get { return (String)this["DefaultUserPassword"]; }
-			set { this["DefaultUserPassword"] = value; }
-		}
-
 
 
 		[ConfigurationProperty("BrowserName", DefaultValue = "Firefox", IsRequired = false)]
@@ -86,11 +69,11 @@ namespace Medidata.RBT
 
 
 
-		[ConfigurationProperty("ChromeDriverPath", DefaultValue = "", IsRequired = false)]
-		public String ChromeDriverPath
+		[ConfigurationProperty("WebDriverPath", DefaultValue = "", IsRequired = false)]
+		public String WebDriverPath
 		{
-			get { return (String)this["ChromeDriverPath"]; }
-			set { this["ChromeDriverPath"] = value; }
+			get { return (String)this["WebDriverPath"]; }
+			set { this["WebDriverPath"] = value; }
 		}
 
 
@@ -116,11 +99,6 @@ namespace Medidata.RBT
 			set { this["SqlScriptsPath"] = value; }
 		}
 
-		[ConfigurationProperty("RaveURL", DefaultValue = "", IsRequired = true)]
-		public String RaveURL
-		{
-			get { return (String)this["RaveURL"]; }
-			set { this["RaveURL"] = value; }
-		}
+
 	}
 }

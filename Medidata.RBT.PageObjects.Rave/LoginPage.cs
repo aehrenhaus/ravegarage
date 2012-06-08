@@ -10,12 +10,16 @@ namespace Medidata.RBT.PageObjects.Rave
 {
 	public  class LoginPage : PageBase
 	{
-
-		public override TPage OpenNew<TPage>() 
+		public LoginPage(string url)
 		{
-			InitializeWithNewUrl(RBTConfiguration.Default.RaveURL);
-			return this.As<TPage>();
+			InitializeWithNewUrl(url);
 		}
+
+		//public override TPage OpenNew<TPage>() 
+		//{
+		//    InitializeWithNewUrl(RaveConfiguration.Default.RaveURL);
+		//    return this.As<TPage>();
+		//}
 
 		[FindsBy(How = How.Id, Using = "UserLoginBox")]
 		public IWebElement UsernameBox;

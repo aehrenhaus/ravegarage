@@ -16,14 +16,14 @@ namespace Medidata.RBT.Common.Steps
 		[StepDefinition(@"I restore to snapshot")]
 		public void IRestoreToSnapshot____()
 		{
-			Database database = DatabaseFactory.CreateDatabase(RBTConfiguration.Default.RaveDatabaseConnection);
+			Database database = DatabaseFactory.CreateDatabase(RBTConfiguration.Default.DatabaseConnection);
 
 			var builder = new System.Data.SqlClient.SqlConnectionStringBuilder();
 			builder.ConnectionString = database.ConnectionString;
 			var restoreQuery = String.Format("alter database {0} set single_user with rollback immediate RESTORE DATABASE {0} from DATABASE_SNAPSHOT = '{1}' alter database {0} set multi_user with rollback immediate", builder.InitialCatalog, RBTConfiguration.Default.SnapshotName);
 
 			//TODO: shall it execut agains master database? 
-			database = DatabaseFactory.CreateDatabase(RBTConfiguration.Default.RaveDatabaseConnection + "Master");
+			database = DatabaseFactory.CreateDatabase(RBTConfiguration.Default.DatabaseConnection + "Master");
 			database.ExecuteDataSet(CommandType.Text, restoreQuery);
 		}
 
@@ -31,7 +31,7 @@ namespace Medidata.RBT.Common.Steps
 		[StepDefinition(@"I run SQL Script ""([^""]*)""")]
 		public void IRunSQLScript____(string scriptName)
 		{
-			Database database = DatabaseFactory.CreateDatabase(RBTConfiguration.Default.RaveDatabaseConnection);
+			Database database = DatabaseFactory.CreateDatabase(RBTConfiguration.Default.DatabaseConnection);
 
 			var sql = File.ReadAllText(Path.Combine(RBTConfiguration.Default.SqlScriptsPath, scriptName));
 			var dataTable = database.ExecuteDataSet(sql).Tables[0];
