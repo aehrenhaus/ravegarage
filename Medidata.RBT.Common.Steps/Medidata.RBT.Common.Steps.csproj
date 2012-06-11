@@ -37,6 +37,9 @@
     <Reference Include="Ionic.Zip">
       <HintPath>..\ExternalDlls\Ionic.Zip.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Common">
+      <HintPath>..\ExternalDlls\EnterpriseLibrary5\Microsoft.Practices.EnterpriseLibrary.Common.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Practices.EnterpriseLibrary.Data, Version=5.0.414.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\ExternalDlls\EnterpriseLibrary5\Microsoft.Practices.EnterpriseLibrary.Data.dll</HintPath>
@@ -68,6 +71,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DatabaseSteps.cs" />
+    <Compile Include="MiscSteps.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -6,10 +6,10 @@ Feature: 3
 # Project to be uploaded in excel spreadsheet 'Edit Check Study 3'
 
 Background:
-    Given I am logged in to Rave with username "cdm1" and password "password"
+    Given I am logged in to Rave with username "defuser" and password "password"
 	And following Study assignments exist
 		|User		|Study		       	|Role |Site		        	|Site Number|
-		|editcheck  |Edit Check Study 1	|CDM1 |Edit Check Site 1	|30001      |
+		|editcheck  |Edit Check Study 1	|CDM1 |Test Site 1	|30001      |
     And  Role "cdm1" has Action "Query"
 	And Study "Edit Check Study 1" has Draft "Draft 1" includes Edit Checks from the table below
 		|Edit Check												|Folder						|Form							|Field						|Query Message		|
@@ -27,13 +27,14 @@ Background:
 		|*Greater Than or Equal To Open Query Log same form 	|Test B Single Derivation	|Informed Consent Date Form 1	|Informed Consent Date 2	|Dates are not equal.|
 	
 	And Draft "Draft 1" in Study "Edit Check Study 1" has been published to CRF Version "<RANDOMNUMBER>" 
-	And CRF Version "<RANDOMNUMBER>" in Study "Edit Check Study 1" has been pushed to Site "Edit Check Site 1" in Environment "Prod"
+	And CRF Version "<RANDOMNUMBER>" in Study "Edit Check Study 1" has been pushed to Site "Test Site 1" in Environment "Prod"
+
+
 
 #----------------------------------------------------------------------------------------------------------------------------------------
 @release_564_Patch11
 @PB_3.1.1
 @Draft
-@Web
 Scenario: PB_3.1.1 On a Cross Form Standard form to log form, When a query has been answered and closed with the same data and I enter the same data that originally opened the query, then queries are not displayed. 
    
     #Manual steps
@@ -62,11 +63,11 @@ Scenario: PB_3.1.1 On a Cross Form Standard form to log form, When a query has b
 	# And I save the form "Assessment Date Log2"
 	# And I take a screenshot 3 of 51
 
-	Given closed Query with message "" exists on Field "Assessment Date 1" in Form "Assessment Date Log2" in Folder "Test A Single Edit" in Subject "SUB301" in Site "Edit Check Site 1" in Study "Edit Check Study 1"
-	And closed Query with message "" exists on Field "Numeric Field 2" in Form "Assessment Date Log2" in Folder "Test A Single Edit" in Subject "SUB301" in Site "Edit Check Site 1" in Study "Edit Check Study 1"
+	Given closed Query with message "" exists on Field "Assessment Date 1" in Form "Assessment Date Log2" in Folder "Test A Single Edit" in Subject "sub301" in Site "Test Site 1" in Study "Edit Check Study 1"
+	And closed Query with message "" exists on Field "Numeric Field 2" in Form "Assessment Date Log2" in Folder "Test A Single Edit" in Subject "sub301" in Site "Test Site 1" in Study "Edit Check Study 1"
 	
 
-	When I am on CRF page "Assessment Date Log2" in Folder "Test A Single Edit" in Subject "SUB301" in Site "Edit Check Site 1" in Study "Edit Check Study 1"
+	When I am on CRF page "Assessment Date Log2" in Folder "Test A Single Edit" in Subject "sub301" in Site "Test Site 1" in Study "Edit Check Study 1"
 	And I open log line 2 for edit
 	And I enter data in CRF
 		|Field             |Data        |
@@ -89,8 +90,8 @@ originally opened the query, then queries are displayed in SQL logs.
     When I run SQL Script "Query Logging Script"
     Then I should see the logging data for queries 
 		|ProjectName        |SiteNumber  |SiteName          |Environment |SubjectName  |CheckActionInstanceName     |CheckActionInstanceDataPageName |CheckActionRecordPosition |CheckActionFieldName |CheckActionFieldData |TriggerFieldInstanceName |TriggerFieldInstanceDatapageName 	|TriggerFieldRecordPosition |TriggerFieldName        |TriggerFieldData |EditCheckName                               |MarkingGroupName |QueryMessage                                                                |EventTime  |
-		|Edit Check Study 3 |30001       |Edit Check Site 3 |PROD        |SUB301       |Test A Single Edit          |Assessment Date Log2            |1                         |Assessment Date 1    |08 Jan 2000          |Test A Single Edit       |Assessment Date Log2			 	 	|1                          |Assessment Date 1       |08 Jan 2000      |*Greater Than Open Query Log Cross Form     |Marking Group 1  |Informed Consent Date 1 is greater. Please revise.                          |{DateTime} |
-		|Edit Check Study 3 |30001       |Edit Check Site 3 |PROD        |SUB301       |Test A Single Edit          |Assessment Date Log2            |1                         |Numeric Field 2      |20                   |Test A Single Edit       |Assessment Date Log2             	|1                          |Numeric Field 2         |20               |*Is Not Equal to Open Query Log Cross Form* |Site             |Informed Consent numeric field 2 is not equal to assessment numeric field 2 |{DateTime} |
+		|Edit Check Study 3 |30001       |Edit Check Site 3 |PROD        |sub301       |Test A Single Edit          |Assessment Date Log2            |1                         |Assessment Date 1    |08 Jan 2000          |Test A Single Edit       |Assessment Date Log2			 	 	|1                          |Assessment Date 1       |08 Jan 2000      |*Greater Than Open Query Log Cross Form     |Marking Group 1  |Informed Consent Date 1 is greater. Please revise.                          |{DateTime} |
+		|Edit Check Study 3 |30001       |Edit Check Site 3 |PROD        |sub301       |Test A Single Edit          |Assessment Date Log2            |1                         |Numeric Field 2      |20                   |Test A Single Edit       |Assessment Date Log2             	|1                          |Numeric Field 2         |20               |*Is Not Equal to Open Query Log Cross Form* |Site             |Informed Consent numeric field 2 is not equal to assessment numeric field 2 |{DateTime} |
 	And I take a screenshot
 
 #----------------------------------------------------------------------------------------------------------------------------------------
@@ -100,7 +101,7 @@ originally opened the query, then queries are displayed in SQL logs.
 Scenario: On a Cross Form Standard form to log form, When a query has been answered and closed with the different data and I enter the same data that 
 originally opened the query, then queries are displayed. 
 	
-	Given closed queries exist on fields "Assessment Date 1" and "Numeric Field 2" in folder "Test A Single Edit" in form "Assessment Date Log2" in subject "SUB301"
+	Given closed queries exist on fields "Assessment Date 1" and "Numeric Field 2" in folder "Test A Single Edit" in form "Assessment Date Log2" in subject "sub301"
 	And I add a new log line
 	When I enter data from the table below:
 		|Field             |Data        |
@@ -119,8 +120,8 @@ Scenario: On a Cross Form Standard form to log form, When a query has been answe
     When I run SQL Script "Query Logging Script" 
     Then I should not see the logging data for queries 
 		|ProjectName        |SiteNumber  |SiteName          |Environment |SubjectName  |CheckActionInstanceName     |CheckActionInstanceDataPageName |CheckActionRecordPosition |CheckActionFieldName |CheckActionFieldData |TriggerFieldInstanceName |TriggerFieldInstanceDatapageName |TriggerFieldRecordPosition |TriggerFieldName        |TriggerFieldData |EditCheckName                               |MarkingGroupName |QueryMessage                                                                |EventTime  |
-		|Edit Check Study 3 |30001       |Edit Check Site 3 |PROD        |SUB301       |Test A Single Edit          |Assessment Date Log2            |2                         |Assessment Date 1    |07 Jan 2000          |Test A Single Edit       |Assessment Date Log2             |2                          |Assessment Date 1       |07 Jan 2000      |*Greater Than Open Query Log Cross Form     |Marking Group 1  |Informed Consent Date 1 is greater. Please revise.                          |{DateTime} |
-		|Edit Check Study 3 |30001       |Edit Check Site 3 |PROD        |SUB301       |Test A Single Edit          |Assessment Date Log2            |2                         |Numeric Field 2      |18                   |Test A Single Edit       |Assessment Date Log2             |2                          |Numeric Field 2         |18               |*Is Not Equal to Open Query Log Cross Form* |Site             |Informed Consent numeric field 2 is not equal to assessment numeric field 2 |{DateTime} |
+		|Edit Check Study 3 |30001       |Edit Check Site 3 |PROD        |sub301       |Test A Single Edit          |Assessment Date Log2            |2                         |Assessment Date 1    |07 Jan 2000          |Test A Single Edit       |Assessment Date Log2             |2                          |Assessment Date 1       |07 Jan 2000      |*Greater Than Open Query Log Cross Form     |Marking Group 1  |Informed Consent Date 1 is greater. Please revise.                          |{DateTime} |
+		|Edit Check Study 3 |30001       |Edit Check Site 3 |PROD        |sub301       |Test A Single Edit          |Assessment Date Log2            |2                         |Numeric Field 2      |18                   |Test A Single Edit       |Assessment Date Log2             |2                          |Numeric Field 2         |18               |*Is Not Equal to Open Query Log Cross Form* |Site             |Informed Consent numeric field 2 is not equal to assessment numeric field 2 |{DateTime} |
 	And I take a screenshot	
 
 #----------------------------------------------------------------------------------------------------------------------------------------	
