@@ -27,11 +27,11 @@ namespace Medidata.RBT
 			}
 		}
 
-		public static PageBase CurrentPage
+		public static IPage CurrentPage
 		{
 			get
 			{
-				return GetContextValue<PageBase>("PageBase");
+				return GetContextValue<IPage>("PageBase");
 			}
 			set
 			{
@@ -109,7 +109,7 @@ namespace Medidata.RBT
 				PB = "(NO NAME)";
 
 			//restore snapshot
-			DbHelper.RestoreSnapshot();
+			//DbHelper.RestoreSnapshot();
 
 			//LAST step: open browser
 			if (Browser == null)

@@ -11,7 +11,7 @@ using System.IO;
 
 namespace Medidata.RBT
 {
-	public class PageBase
+	public class PageBase : IPage
 	{
 		public PageBase()
 		{
@@ -72,7 +72,7 @@ namespace Medidata.RBT
 		}
 
 
-		public TPage As<TPage>() where TPage : PageBase
+		public TPage As<TPage>() where TPage :class, IPage
 		{
 			return this as TPage;
 		}

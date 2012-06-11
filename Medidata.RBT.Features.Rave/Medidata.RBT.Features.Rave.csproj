@@ -92,7 +92,13 @@
     </CodeAnalysisDependentAssemblyPaths>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Features\UserAdministration\DT14168.feature.cs">
+      <DependentUpon>DT14168.feature</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Include="RaveConfiguration.cs" />
+    <Compile Include="Steps\UserAdministrationSteps.cs" />
     <Compile Include="Steps\LoginSteps.cs" />
     <Compile Include="Steps\Seeding\MarkingSteps.cs" />
     <Compile Include="Steps\Seeding\StudySteps.cs" />
@@ -128,6 +134,10 @@
     <None Include="Features\EDC\564QueryRefiringLogic3.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>564QueryRefiringLogic3.feature.cs</LastGenOutput>
+    </None>
+    <None Include="Features\UserAdministration\DT14168.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>DT14168.feature.cs</LastGenOutput>
     </None>
   </ItemGroup>
   <ItemGroup>
