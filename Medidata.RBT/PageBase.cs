@@ -8,6 +8,8 @@ using OpenQA.Selenium.Firefox;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.IE;
 using System.IO;
+using OpenQA.Selenium;
+using OpenQA.Selenium.Support.UI;
 
 namespace Medidata.RBT
 {
@@ -82,5 +84,27 @@ namespace Medidata.RBT
 			throw new NotImplementedException("This page object must override OpenNew method first.");
 		}
 
+		protected virtual IWebElement GetElementByName(string name)
+		{
+			throw new Exception("Must override");
+		}
+
+		public virtual IPage Click(string name)
+		{
+			GetElementByName(name).Click();
+			return this;
+		}
+
+		public virtual IPage Type(string name, string text)
+		{
+			GetElementByName(name).SendKeys(text);
+			return this;
+		}
+
+		public virtual IPage Choose(string name, string text)
+		{
+			new SelectElement(GetElementByName(name)).SelectByText(text);
+			return this;
+		}
 	}
 }

@@ -7,7 +7,7 @@ using TechTalk.SpecFlow;
 namespace Medidata.RBT.Common.Steps
 {
 	[Binding]
-	public class MiscSteps
+	public class MiscSteps:BrowserStepsBase
 	{
 
 		[StepDefinition(@"I take a screenshot")]

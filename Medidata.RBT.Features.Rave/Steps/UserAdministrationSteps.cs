@@ -18,35 +18,7 @@ namespace Medidata.RBT.Features.Rave
 	[Binding]
 	public class UserAdministrationSteps : BrowserStepsBase
 	{
-		[StepDefinition(@"I choose ""([^""]*)"" from ""([^""]*)""")]
-		public void IChoose____From____(string text, string dropdownName)
-		{
 		
-		}
-
-		[StepDefinition(@"I click ""([^""]*)""")]
-		public void IClick____(string buttonName)
-		{
-			
-
-		}
-
-		/// <summary>
-		/// Use mapping to figure out which link to click
-		/// </summary>
-		/// <param name="name"></param>
-		[StepDefinition(@"I navigate to ""([^""]*)""")]
-		public void INavigateTo____(string name)
-		{
-			CurrentPage = CurrentPage.As<INavigationPage>().NavigateTo(name);
-		}
-
-		[StepDefinition(@"I type ""([^""]*)"" in ""([^""]*)""")]
-		public void IType____In____(string text, string textboxName)
-		{
-		
-		}
-	
 		[StepDefinition(@"I shoud see following controls are disabled")]
 		public void IShoudSeeFollowingControlsAreDisabled(Table table)
 		{

@@ -70,6 +70,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="InterfaceSteps.cs" />
     <Compile Include="DatabaseSteps.cs" />
     <Compile Include="MiscSteps.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
