@@ -106,7 +106,7 @@ namespace Medidata.RBT
 			//set scenario name with tag that starts with PB_
 			PB =  ScenarioContext.Current.ScenarioInfo.Tags.FirstOrDefault(x=>x.StartsWith("PB_"));
 			if (PB == null)
-				PB = "(NO NAME)";
+				PB = "NONAME";
 
 			//restore snapshot
 			//DbHelper.RestoreSnapshot();

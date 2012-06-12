@@ -106,5 +106,10 @@ namespace Medidata.RBT
 			new SelectElement(GetElementByName(name)).SelectByText(text);
 			return this;
 		}
+
+		public virtual bool IsThePage()
+		{
+			return true;
+		}
 	}
 }

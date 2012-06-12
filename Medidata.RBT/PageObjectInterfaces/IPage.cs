@@ -50,5 +50,11 @@ namespace Medidata.RBT
 		/// <param name="text"></param>
 		/// <returns></returns>
 		IPage Choose(string name, string text);
+
+		/// <summary>
+		/// Is the page in browser the same page this object represents.
+		/// </summary>
+		/// <returns></returns>
+		bool IsThePage();
 	}
 }

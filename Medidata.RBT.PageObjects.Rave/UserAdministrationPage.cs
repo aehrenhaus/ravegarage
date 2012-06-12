@@ -104,10 +104,17 @@ namespace Medidata.RBT.PageObjects.Rave
 
 		public UserEditPage ClickUser(string userName)
 		{
-			var resultTable = Browser.TryFindElementBy(By.Id("_ctl0_Content_UserGrid"));
-			var link = resultTable.TryFindElementBy(By.XPath("tbody/tr[position()>1]/td[position()=1 and text()='"+userName+"']/../td[position()=8]/a"));
+			try
+			{
+				var resultTable = Browser.TryFindElementBy(By.Id("_ctl0_Content_UserGrid"));
+				var link = resultTable.TryFindElementBy(By.XPath("tbody/tr[position()>1]/td[position()=1 and text()='" + userName + "']/../td[position()=8]/a"));
 
-			link.Click();
+				link.Click();
+			}
+			catch
+			{
+				throw new Exception("User not found in result table: "+userName);
+			}
 			return new UserEditPage();
 		}
 	}
