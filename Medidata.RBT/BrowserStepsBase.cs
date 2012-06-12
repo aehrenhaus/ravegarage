@@ -16,7 +16,6 @@ namespace Medidata.RBT
 	public class BrowserStepsBase 
 	{
 	
-
 		public RemoteWebDriver Browser
 		{
 			get
@@ -31,7 +30,7 @@ namespace Medidata.RBT
 		}
 
 
-		public PageBase CurrentPage
+		public IPage CurrentPage
 		{
 			get
 			{

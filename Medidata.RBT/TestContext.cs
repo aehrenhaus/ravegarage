@@ -27,11 +27,11 @@ namespace Medidata.RBT
 			}
 		}
 
-		public static PageBase CurrentPage
+		public static IPage CurrentPage
 		{
 			get
 			{
-				return GetContextValue<PageBase>("PageBase");
+				return GetContextValue<IPage>("PageBase");
 			}
 			set
 			{
@@ -63,6 +63,11 @@ namespace Medidata.RBT
 			private set;
 		}
 
+		/// <summary>
+		/// This is read from a @PB.... tag on a scenario when it starts to run.
+		/// This is a convention, we use the tag name as a identifer of  a scenario
+		/// 
+		/// </summary>
 		public static string PB
 		{
 			get;
@@ -101,23 +106,22 @@ namespace Medidata.RBT
 			//set scenario name with tag that starts with PB_
 			PB =  ScenarioContext.Current.ScenarioInfo.Tags.FirstOrDefault(x=>x.StartsWith("PB_"));
 			if (PB == null)
-				PB = "[NO NAME]";
-		}
+				PB = "NONAME";
 
-		
+			//restore snapshot
+			//DbHelper.RestoreSnapshot();
 
-		[BeforeScenario("Web")]
-		public void ScenarioSetupWeb()
-		{
+			//LAST step: open browser
 			if (Browser == null)
 			{
 				Browser = PageBase.OpenBrowser();
 			}
 		}
-
-		[AfterScenario("Web")]
-		public void ScenarioTearDownWeb()
+		
+		[AfterScenario]
+		public void ScenarioTearDown()
 		{
+			//Close browser
 			if (Browser != null)
 			{
 			//	TrySaveScreenShot(Browser);

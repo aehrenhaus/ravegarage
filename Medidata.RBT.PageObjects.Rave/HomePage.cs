@@ -6,9 +6,11 @@ using Medidata.RBT.PageObjects;
 using OpenQA.Selenium.Support.PageObjects;
 using OpenQA.Selenium;
 
+using System.Collections.Specialized;
+
 namespace Medidata.RBT.PageObjects.Rave
 {
-	public  class HomePage : PageBase
+	public  class HomePage : PageBase, INavigationPage
 	{
 		[FindsBy(How = How.Id, Using = "_ctl0_Content_ListDisplayNavigation_txtSearch")]
 		IWebElement SearchBox;
@@ -98,5 +100,20 @@ namespace Medidata.RBT.PageObjects.Rave
             return new SubjectPage();
         }
 
+
+		public IPage NavigateTo(string name)
+		{
+
+			NameValueCollection poClassMapping = new NameValueCollection();
+			poClassMapping["Architect"] = "Architect";
+			poClassMapping["User Administration"] = "UserAdministration";
+			//TODO: other mappings
+
+			var leftNavContainer = Browser.FindElementById("TblOuter");
+			var link = leftNavContainer.TryFindElementBy(By.LinkText(name));
+			link.Click();
+			string className = poClassMapping[name];
+			return RavePageFactory.GetPage(className);
+		}
 	}
 }

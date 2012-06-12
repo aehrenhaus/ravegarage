@@ -8,8 +8,8 @@
     <ProjectGuid>{14989202-B55D-4273-85E2-1BFD95A4BB80}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Medidata.RBT.PageObjectes.Rave</RootNamespace>
-    <AssemblyName>Medidata.RBT.PageObjectes.Rave</AssemblyName>
+    <RootNamespace>Medidata.RBT.PageObjects.Rave</RootNamespace>
+    <AssemblyName>Medidata.RBT.PageObjects.Rave</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -60,6 +60,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BaseEDCTreePage.cs" />
+    <Compile Include="UserEditPage.cs" />
+    <Compile Include="RavePageFactory.cs" />
+    <Compile Include="UserAdministrationPage.cs" />
     <Compile Include="CRFPage.cs" />
     <Compile Include="HomePage.cs" />
     <Compile Include="LoginPage.cs" />

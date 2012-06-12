@@ -13,19 +13,18 @@ namespace Medidata.RBT.Common.Steps
 	public class DatabaseSteps : BrowserStepsBase
 	{
 
-		[StepDefinition(@"I restore to snapshot")]
-		public void IRestoreToSnapshot____()
-		{
-			Database database = DatabaseFactory.CreateDatabase(RBTConfiguration.Default.DatabaseConnection);
+		//[StepDefinition(@"I restore to snapshot ""([^""]*)""")]
+		//public void IRestoreToSnapshot____(string snapshotName)
+		//{
+		//    DbHelper.RestoreSnapshot(snapshotName);
+		//}
 
-			var builder = new System.Data.SqlClient.SqlConnectionStringBuilder();
-			builder.ConnectionString = database.ConnectionString;
-			var restoreQuery = String.Format("alter database {0} set single_user with rollback immediate RESTORE DATABASE {0} from DATABASE_SNAPSHOT = '{1}' alter database {0} set multi_user with rollback immediate", builder.InitialCatalog, RBTConfiguration.Default.SnapshotName);
-
-			//TODO: shall it execut agains master database? 
-			database = DatabaseFactory.CreateDatabase(RBTConfiguration.Default.DatabaseConnection + "Master");
-			database.ExecuteDataSet(CommandType.Text, restoreQuery);
-		}
+		//[StepDefinition(@"I restore to snapshot")]
+		//public void IRestoreToSnapshot()
+		//{
+		//    DbHelper.CreateSnapshot();
+		//    DbHelper.RestoreSnapshot();
+		//}
 
 
 		[StepDefinition(@"I run SQL Script ""([^""]*)""")]
@@ -53,14 +52,6 @@ namespace Medidata.RBT.Common.Steps
 		{
 			var dataTable = TestContext.GetContextValue<System.Data.DataTable>(LastSqlResultTable);
 			AssertAreNOTSameTable(dataTable, table);
-		}
-
-
-
-		[StepDefinition(@"I take a screenshot")]
-		public void ITakeScreenshot()
-		{
-			TestContext.TrySaveScreenShot();
 		}
 
 

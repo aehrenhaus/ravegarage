@@ -72,7 +72,7 @@ namespace Medidata.RBT.Features.Rave.Features.EDC
         {
 #line 8
 #line 9
-    testRunner.Given("I am logged in to Rave with username \"cdm1\" and password \"password\"");
+    testRunner.Given("I am logged in to Rave with username \"defuser\" and password \"password\"");
 #line hidden
             TechTalk.SpecFlow.Table table1 = new TechTalk.SpecFlow.Table(new string[] {
                         "User",
@@ -84,7 +84,7 @@ namespace Medidata.RBT.Features.Rave.Features.EDC
                         "editcheck",
                         "Edit Check Study 1",
                         "CDM1",
-                        "Edit Check Site 1",
+                        "Test Site 1",
                         "30001"});
 #line 10
  testRunner.And("following Study assignments exist", ((string)(null)), table1);
@@ -177,7 +177,7 @@ namespace Medidata.RBT.Features.Rave.Features.EDC
                     "<RANDOMNUMBER>\"");
 #line 30
  testRunner.And("CRF Version \"<RANDOMNUMBER>\" in Study \"Edit Check Study 1\" has been pushed to Sit" +
-                    "e \"Edit Check Site 1\" in Environment \"Prod\"");
+                    "e \"Test Site 1\" in Environment \"Prod\"");
 #line hidden
         }
         
@@ -193,24 +193,23 @@ namespace Medidata.RBT.Features.Rave.Features.EDC
                     " the query, then queries are not displayed.", new string[] {
                         "release_564_Patch11",
                         "PB_3.1.1",
-                        "Draft",
-                        "Web"});
-#line 37
+                        "Draft"});
+#line 38
 this.ScenarioSetup(scenarioInfo);
 #line 8
 this.FeatureBackground();
-#line 65
- testRunner.Given("closed Query with message \"\" exists on Field \"Assessment Date 1\" in Form \"Assessm" +
-                    "ent Date Log2\" in Folder \"Test A Single Edit\" in Subject \"SUB301\" in Site \"Edit " +
-                    "Check Site 1\" in Study \"Edit Check Study 1\"");
 #line 66
+ testRunner.Given("closed Query with message \"\" exists on Field \"Assessment Date 1\" in Form \"Assessm" +
+                    "ent Date Log2\" in Folder \"Test A Single Edit\" in Subject \"sub301\" in Site \"Test " +
+                    "Site 1\" in Study \"Edit Check Study 1\"");
+#line 67
  testRunner.And("closed Query with message \"\" exists on Field \"Numeric Field 2\" in Form \"Assessmen" +
-                    "t Date Log2\" in Folder \"Test A Single Edit\" in Subject \"SUB301\" in Site \"Edit Ch" +
-                    "eck Site 1\" in Study \"Edit Check Study 1\"");
-#line 69
- testRunner.When("I am on CRF page \"Assessment Date Log2\" in Folder \"Test A Single Edit\" in Subject" +
-                    " \"SUB301\" in Site \"Edit Check Site 1\" in Study \"Edit Check Study 1\"");
+                    "t Date Log2\" in Folder \"Test A Single Edit\" in Subject \"sub301\" in Site \"Test Si" +
+                    "te 1\" in Study \"Edit Check Study 1\"");
 #line 70
+ testRunner.When("I am on CRF page \"Assessment Date Log2\" in Folder \"Test A Single Edit\" in Subject" +
+                    " \"sub301\" in Site \"Test Site 1\" in Study \"Edit Check Study 1\"");
+#line 71
  testRunner.And("I open log line 2 for edit");
 #line hidden
             TechTalk.SpecFlow.Table table3 = new TechTalk.SpecFlow.Table(new string[] {
@@ -222,17 +221,17 @@ this.FeatureBackground();
             table3.AddRow(new string[] {
                         "Numeric Field 2",
                         "20"});
-#line 71
+#line 72
  testRunner.And("I enter data in CRF", ((string)(null)), table3);
-#line 75
+#line 76
  testRunner.And("I save the CRF page");
-#line 78
+#line 79
     testRunner.Then("the Query with message \"test1\" is not displayed on Field \"Assessment Date 1\" on l" +
                     "og line 1");
-#line 79
+#line 80
  testRunner.And("the Query with message \"test2\" is not displayed on Field \"Numeric Field 2\" on log" +
                     " line 1");
-#line 80
+#line 81
  testRunner.And("I take a screenshot");
 #line hidden
             this.ScenarioCleanup();
@@ -249,11 +248,11 @@ this.FeatureBackground();
                         "release_564_Patch11",
                         "PB_3.1.2",
                         "Draft"});
-#line 86
+#line 87
 this.ScenarioSetup(scenarioInfo);
 #line 8
 this.FeatureBackground();
-#line 89
+#line 90
     testRunner.When("I run SQL Script \"Query Logging Script\"");
 #line hidden
             TechTalk.SpecFlow.Table table4 = new TechTalk.SpecFlow.Table(new string[] {
@@ -281,7 +280,7 @@ this.FeatureBackground();
                         "30001",
                         "Edit Check Site 3",
                         "PROD",
-                        "SUB301",
+                        "sub301",
                         "Test A Single Edit",
                         "Assessment Date Log2",
                         "1",
@@ -301,7 +300,7 @@ this.FeatureBackground();
                         "30001",
                         "Edit Check Site 3",
                         "PROD",
-                        "SUB301",
+                        "sub301",
                         "Test A Single Edit",
                         "Assessment Date Log2",
                         "1",
@@ -316,9 +315,9 @@ this.FeatureBackground();
                         "Site",
                         "Informed Consent numeric field 2 is not equal to assessment numeric field 2",
                         "{DateTime}"});
-#line 90
+#line 91
     testRunner.Then("I should see the logging data for queries", ((string)(null)), table4);
-#line 94
+#line 95
  testRunner.And("I take a screenshot");
 #line hidden
             this.ScenarioCleanup();
@@ -335,14 +334,14 @@ this.FeatureBackground();
                         "release_564_Patch11",
                         "PB_3.1.3",
                         "Draft"});
-#line 100
+#line 101
 this.ScenarioSetup(scenarioInfo);
 #line 8
 this.FeatureBackground();
-#line 103
- testRunner.Given("closed queries exist on fields \"Assessment Date 1\" and \"Numeric Field 2\" in folde" +
-                    "r \"Test A Single Edit\" in form \"Assessment Date Log2\" in subject \"SUB301\"");
 #line 104
+ testRunner.Given("closed queries exist on fields \"Assessment Date 1\" and \"Numeric Field 2\" in folde" +
+                    "r \"Test A Single Edit\" in form \"Assessment Date Log2\" in subject \"sub301\"");
+#line 105
  testRunner.And("I add a new log line");
 #line hidden
             TechTalk.SpecFlow.Table table5 = new TechTalk.SpecFlow.Table(new string[] {
@@ -354,14 +353,14 @@ this.FeatureBackground();
             table5.AddRow(new string[] {
                         "Numeric Field 2",
                         "20"});
-#line 105
+#line 106
  testRunner.When("I enter data from the table below:", ((string)(null)), table5);
-#line 109
- testRunner.And("I save form \"Assessment Date Log2\"");
 #line 110
+ testRunner.And("I save form \"Assessment Date Log2\"");
+#line 111
  testRunner.Then("I verify the queries are displayed on fields \"Assessment Date 1\" and \"Numeric Fie" +
                     "ld 2\"\ton second logline");
-#line 111
+#line 112
  testRunner.And("I take a screenshot");
 #line hidden
             this.ScenarioCleanup();
@@ -380,11 +379,11 @@ this.FeatureBackground();
                         "release_564_Patch11",
                         "PB_3.1.4",
                         "Draft"});
-#line 117
+#line 118
 this.ScenarioSetup(scenarioInfo);
 #line 8
 this.FeatureBackground();
-#line 119
+#line 120
     testRunner.When("I run SQL Script \"Query Logging Script\"");
 #line hidden
             TechTalk.SpecFlow.Table table6 = new TechTalk.SpecFlow.Table(new string[] {
@@ -412,7 +411,7 @@ this.FeatureBackground();
                         "30001",
                         "Edit Check Site 3",
                         "PROD",
-                        "SUB301",
+                        "sub301",
                         "Test A Single Edit",
                         "Assessment Date Log2",
                         "2",
@@ -432,7 +431,7 @@ this.FeatureBackground();
                         "30001",
                         "Edit Check Site 3",
                         "PROD",
-                        "SUB301",
+                        "sub301",
                         "Test A Single Edit",
                         "Assessment Date Log2",
                         "2",
@@ -447,9 +446,9 @@ this.FeatureBackground();
                         "Site",
                         "Informed Consent numeric field 2 is not equal to assessment numeric field 2",
                         "{DateTime}"});
-#line 120
+#line 121
     testRunner.Then("I should not see the logging data for queries", ((string)(null)), table6);
-#line 124
+#line 125
  testRunner.And("I take a screenshot");
 #line hidden
             this.ScenarioCleanup();
@@ -466,11 +465,11 @@ this.FeatureBackground();
                         "release_564_Patch11",
                         "PB_3.2.1",
                         "Draft"});
-#line 130
+#line 131
 this.ScenarioSetup(scenarioInfo);
 #line 8
 this.FeatureBackground();
-#line 133
+#line 134
  testRunner.Given("closed queries exist on fields \"Assessment Date 1\" and \"Numeric Field 2\" in folde" +
                     "r \"Test B Single Derivation\" in form \"Assessment Date Log2\" in subject \"SUB302\"");
 #line hidden
@@ -483,14 +482,14 @@ this.FeatureBackground();
             table7.AddRow(new string[] {
                         "Numeric Field 2",
                         "99"});
-#line 134
+#line 135
  testRunner.When("I enter data from the table below:", ((string)(null)), table7);
-#line 138
- testRunner.And("I save form \"Assessment Date Log2\"");
 #line 139
+ testRunner.And("I save form \"Assessment Date Log2\"");
+#line 140
  testRunner.Then("I verify the queries are not displayed on fields \"Assessment Date 1\" and \"Numeric" +
                     " Field 2\"\ton first logline");
-#line 140
+#line 141
  testRunner.And("I take a screenshot");
 #line hidden
             this.ScenarioCleanup();
@@ -509,11 +508,11 @@ this.FeatureBackground();
                         "release_564_Patch11",
                         "PB_3.2.2",
                         "Draft"});
-#line 146
+#line 147
 this.ScenarioSetup(scenarioInfo);
 #line 8
 this.FeatureBackground();
-#line 148
+#line 149
     testRunner.When("I run SQL Script \"Query Logging Script\"");
 #line hidden
             TechTalk.SpecFlow.Table table8 = new TechTalk.SpecFlow.Table(new string[] {
@@ -576,9 +575,9 @@ this.FeatureBackground();
                         "Marking Group 1",
                         "Numeric Field 2 is not equal Numeric Field 2.",
                         "{DateTime}"});
-#line 149
+#line 150
     testRunner.Then("I should see the logging data for queries", ((string)(null)), table8);
-#line 153
+#line 154
  testRunner.And("I take a screenshot");
 #line hidden
             this.ScenarioCleanup();
@@ -597,14 +596,14 @@ this.FeatureBackground();
                         "release_564_Patch11",
                         "PB_3.2.3",
                         "Draft"});
-#line 159
+#line 160
 this.ScenarioSetup(scenarioInfo);
 #line 8
 this.FeatureBackground();
-#line 161
+#line 162
  testRunner.Given("closed queries exist on fields \"Assessment Date 1\" and \"Numeric Field 2\" in folde" +
                     "r \"Test B Single Derivation\" in form \"Assessment Date Log2\" in subject \"sub302\"");
-#line 162
+#line 163
  testRunner.And("I add a new log line");
 #line hidden
             TechTalk.SpecFlow.Table table9 = new TechTalk.SpecFlow.Table(new string[] {
@@ -616,14 +615,14 @@ this.FeatureBackground();
             table9.AddRow(new string[] {
                         "Numeric Field 2",
                         "98"});
-#line 163
+#line 164
  testRunner.When("I enter data from the table below:", ((string)(null)), table9);
-#line 167
- testRunner.And("I save form \"Assessment Date Log2\"");
 #line 168
+ testRunner.And("I save form \"Assessment Date Log2\"");
+#line 169
  testRunner.Then("I verify the queries are displayed on fields \"Assessment Date 1\" and \"Numeric Fie" +
                     "ld 2\"\ton second logline");
-#line 169
+#line 170
  testRunner.And("I take a screenshot");
 #line hidden
             this.ScenarioCleanup();
@@ -642,11 +641,11 @@ this.FeatureBackground();
                         "release_564_Patch11",
                         "PB_3.2.4",
                         "Draft"});
-#line 175
+#line 176
 this.ScenarioSetup(scenarioInfo);
 #line 8
 this.FeatureBackground();
-#line 177
+#line 178
  testRunner.When("I run SQL Script \"Query Logging Script\"");
 #line hidden
             TechTalk.SpecFlow.Table table10 = new TechTalk.SpecFlow.Table(new string[] {
@@ -709,9 +708,9 @@ this.FeatureBackground();
                         "Marking Group 1",
                         "Numeric Field 2 is not equal Numeric Field 2.",
                         "{DateTime}"});
-#line 178
+#line 179
     testRunner.Then("I should not see the logging data for queries", ((string)(null)), table10);
-#line 182
+#line 183
  testRunner.And("I take a screenshot");
 #line hidden
             this.ScenarioCleanup();
@@ -730,11 +729,11 @@ this.FeatureBackground();
                         "release_564_Patch11",
                         "PB_3.3.1",
                         "Draft"});
-#line 188
+#line 189
 this.ScenarioSetup(scenarioInfo);
 #line 8
 this.FeatureBackground();
-#line 190
+#line 191
  testRunner.Given("closed queries exist on fields \"Informed Consent Date 2\" and \"Numeric Field 2\" in" +
                     " folder \"Test B Single Derivation\" in form \"Informed Consent Date Form 1\" in sub" +
                     "ject \"SUB303\"");
@@ -748,14 +747,14 @@ this.FeatureBackground();
             table11.AddRow(new string[] {
                         "Numeric Field 2",
                         "101"});
-#line 191
+#line 192
  testRunner.When("I enter data from the table below:", ((string)(null)), table11);
-#line 195
- testRunner.And("I save form \"Assessment Date Log2\"");
 #line 196
+ testRunner.And("I save form \"Assessment Date Log2\"");
+#line 197
  testRunner.Then("I verify the queries are displayed on fields \"Informed Consent Date 2\" and \"Numer" +
                     "ic Field 2\"");
-#line 197
+#line 198
  testRunner.And("I take a screenshot");
 #line hidden
             this.ScenarioCleanup();
@@ -774,11 +773,11 @@ this.FeatureBackground();
                         "release_564_Patch11",
                         "PB_3.3.2",
                         "Draft"});
-#line 203
+#line 204
 this.ScenarioSetup(scenarioInfo);
 #line 8
 this.FeatureBackground();
-#line 205
+#line 206
     testRunner.When("I run SQL Script \"Query Logging Script\"");
 #line hidden
             TechTalk.SpecFlow.Table table12 = new TechTalk.SpecFlow.Table(new string[] {
@@ -841,9 +840,9 @@ this.FeatureBackground();
                         "Marking Group 1",
                         "Numeric fields are not equal.",
                         "{DateTime}"});
-#line 206
+#line 207
     testRunner.Then("I should not see the logging data for queries", ((string)(null)), table12);
-#line 210
+#line 211
  testRunner.And("I take a screenshot");
 #line hidden
             this.ScenarioCleanup();
@@ -862,11 +861,11 @@ this.FeatureBackground();
                         "release_564_Patch11",
                         "PB_3.4.1",
                         "Draft"});
-#line 216
+#line 217
 this.ScenarioSetup(scenarioInfo);
 #line 8
 this.FeatureBackground();
-#line 218
+#line 219
  testRunner.Given("closed queries exist on fields \"Assessment Date 1\", \"Assessment Date 2\", \"Numeric" +
                     " Field 1\" and \"Numeric Field 2\" in folder \"Test A Single Edit\" in form \"Assessme" +
                     "nt Date Log2\" in subject \"SUB304\"");
@@ -886,14 +885,14 @@ this.FeatureBackground();
             table13.AddRow(new string[] {
                         "Numeric Field 2",
                         "66"});
-#line 219
+#line 220
  testRunner.When("I enter data from the table below:", ((string)(null)), table13);
-#line 225
- testRunner.And("I save form \"Assessment Date Log2\"");
 #line 226
+ testRunner.And("I save form \"Assessment Date Log2\"");
+#line 227
  testRunner.Then("I verify the queries are not displayed on fields \"Assessment Date 1\", \"Assessment" +
                     " Date 2\", \"Numeric Field 1\" and \"Numeric Field 2\" on the first logline");
-#line 227
+#line 228
  testRunner.And("I take a screenshot");
 #line hidden
             this.ScenarioCleanup();
@@ -912,11 +911,11 @@ this.FeatureBackground();
                         "release_564_Patch11",
                         "PB_3.4.2",
                         "Draft"});
-#line 233
+#line 234
 this.ScenarioSetup(scenarioInfo);
 #line 8
 this.FeatureBackground();
-#line 235
+#line 236
  testRunner.When("I run SQL Script \"Query Logging Script\"");
 #line hidden
             TechTalk.SpecFlow.Table table14 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1019,9 +1018,9 @@ this.FeatureBackground();
                         "Marking Group 1",
                         "Numeric 2 can not equal each other.",
                         "{DateTime}"});
-#line 236
+#line 237
     testRunner.Then("I should see the logging data for queries", ((string)(null)), table14);
-#line 242
+#line 243
  testRunner.And("I take a screenshot");
 #line hidden
             this.ScenarioCleanup();
@@ -1040,11 +1039,11 @@ this.FeatureBackground();
                         "release_564_Patch11",
                         "PB_3.4.4",
                         "Draft"});
-#line 268
+#line 269
 this.ScenarioSetup(scenarioInfo);
 #line 8
 this.FeatureBackground();
-#line 270
+#line 271
  testRunner.When("I run SQL Script \"Query Logging Script\"");
 #line hidden
             TechTalk.SpecFlow.Table table15 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1147,9 +1146,9 @@ this.FeatureBackground();
                         "Marking Group 1",
                         "Numeric 2 can not equal each other.",
                         "{DateTime}"});
-#line 271
+#line 272
     testRunner.Then("I should not see the logging data for queries", ((string)(null)), table15);
-#line 277
+#line 278
  testRunner.And("I take a screenshot");
 #line hidden
             this.ScenarioCleanup();
