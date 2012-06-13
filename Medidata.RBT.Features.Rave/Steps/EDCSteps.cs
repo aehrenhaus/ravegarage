@@ -29,6 +29,13 @@ namespace Medidata.RBT.Features.Rave
 			CurrentPage = CurrentPage.As<HomePage>().CreateSubject(subjectName);
 		}
 
+        [StepDefinition(@"I create a Subject with name: ""([^""]*)"", number: ""([^""]*)""")]
+        public void ICreateASubject____(string subjectName, string subjectNumber)
+        {
+            subjectNumber = SpecialStringHelper.Replace(subjectNumber);
+            CurrentPage = CurrentPage.As<HomePage>().CreateSubject(subjectName, subjectNumber);
+        }
+
 		/// <summary>
 		/// 
 		/// </summary>
@@ -39,7 +46,6 @@ namespace Medidata.RBT.Features.Rave
 			CurrentPage = CurrentPage.As<BaseEDCTreePage>().SelectFolder(folderName);
 		
 		}
-
 
 		[StepDefinition(@"I select Form ""([^""]*)""")]
 		public void ISelectForm____(string formName)
@@ -75,7 +81,7 @@ namespace Medidata.RBT.Features.Rave
 		}
 
 
-		[StepDefinition(@"the Requires Response Query with message ""([^""]*)"" is displayed on Field ""([^""]*)""")]
+		[StepDefinition(@"I verify Query with message ""([^""]*)"" with Requires Response is displayed on Field ""([^""]*)""")]
 		public void TheRequiresResponseQueryWithMessageIsDisplayedOnField____(string message, string fieldNames)
 		{
 		}
@@ -138,7 +144,7 @@ namespace Medidata.RBT.Features.Rave
 
 
 
-		[StepDefinition(@"I add a new Log Line")]
+		[StepDefinition(@"I add a new log line")]
 		public void IAddANewLogLine()
 		{
 			CurrentPage.As<CRFPage>().AddLogLine();

@@ -11,10 +11,11 @@ namespace Medidata.RBT.PageObjects.Rave
 	public  class PrimaryRecordPage : PageBase
 	{
 
-		public SubjectPage FillNameAndSave(string subjectName)
+		public SubjectPage FillNameAndSave(string subjectName, string subjectNumber = "")
 		{//TODO: find the text box fo
 
 			RavePagesHelper.FillDataPoint("Subject Name", subjectName, false);
+            RavePagesHelper.FillDataPoint("Subject Number", subjectNumber, false);
 			IWebElement saveButton = Browser.TryFindElementById("_ctl0_Content_CRFRenderer_footer_SB");
 
 			saveButton.Click();

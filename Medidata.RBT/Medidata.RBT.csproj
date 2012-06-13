@@ -73,6 +73,9 @@
     <Compile Include="PageObjectInterfaces\INavigationPage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RemoteWebDriverExtend.cs" />
+    <Compile Include="StringReplacement\SpecialStringHelper.cs" />
+    <Compile Include="StringReplacement\IStringReplace.cs" />
+    <Compile Include="StringReplacement\NextSubjectNumReplace.cs" />
     <Compile Include="TestContext.cs" />
     <Compile Include="RBTConfiguration.cs" />
   </ItemGroup>
