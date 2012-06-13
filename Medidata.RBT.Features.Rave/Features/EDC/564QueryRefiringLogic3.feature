@@ -1,4 +1,8 @@
 Feature: 3 
+	As a Rave user
+	I want to change data
+	So I can see refired queries
+
 # Query Issue: Edit Checks with require response and no require manual close
 # Open a query and answer a query, change the correct data closes the query automatically and change it back to previous data query did refires and verify there is no log
 # Verifies query firing between cross forms with require response and no require manual close.
@@ -6,12 +10,12 @@ Feature: 3
 # Project to be uploaded in excel spreadsheet 'Edit Check Study 3'
 
 Background:
-    Given I am logged in to Rave with username "defuser" and password "password"
+    Given I am logged in to Rave with username "cdm1" and password "password"
 	And following Study assignments exist
 		|User		|Study		       	|Role |Site		        	|Site Number|
-		|editcheck  |Edit Check Study 1	|CDM1 |Test Site 1	|30001      |
-    And  Role "cdm1" has Action "Query"
-	And Study "Edit Check Study 1" has Draft "Draft 1" includes Edit Checks from the table below
+		|editcheck  |Edit Check Study 3	|CDM1 |Edit Check Site 3	|30001      |
+    And Role "cdm1" has Action "Query"
+	And Study "Edit Check Study 3" has Draft "Draft 1" includes Edit Checks from the table below
 		|Edit Check												|Folder						|Form							|Field						|Query Message		|
 		|*Greater Than Log same form							|Test B Single Derivation	|Assessment Date Log2			|Assessment Date 2			|Date Field 1 can not be greater than Date Field 2.|
 		|*Greater Than Open Query Cross Folder					|Test B Single Derivation	|Assessment Date Log2			|Assessment Date 1 			|Date 1 can not be greater than.|
@@ -25,20 +29,19 @@ Background:
 		|*Is Not Equal to Open Query Log Cross Form*			|Test A Single Edit			|Assessment Date Log2			|Numeric Field 2			|Informed Consent numeric field 2 is not equal to assessment numeric field 2|
 		|*Is Not Equal To Open Query Log Same form 				|Test B Single Derivation	|Informed Consent Date Form 1	|Numeric Field 2			|Numeric fields are not equal.|
 		|*Greater Than or Equal To Open Query Log same form 	|Test B Single Derivation	|Informed Consent Date Form 1	|Informed Consent Date 2	|Dates are not equal.|
-	
-	And Draft "Draft 1" in Study "Edit Check Study 1" has been published to CRF Version "<RANDOMNUMBER>" 
-	And CRF Version "<RANDOMNUMBER>" in Study "Edit Check Study 1" has been pushed to Site "Test Site 1" in Environment "Prod"
 
-
+	And Draft "Draft 1" in Study "Edit Check Study 3" has been published to CRF Version "<RANDOMNUMBER>" 
+	And CRF Version "<RANDOMNUMBER>" in Study "Edit Check Study 3" has been pushed to Site "Edit Check Site 3" in Environment "Prod"
 
 #----------------------------------------------------------------------------------------------------------------------------------------
 @release_564_Patch11
 @PB_3.1.1
 @Draft
-Scenario: PB_3.1.1 On a Cross Form Standard form to log form, When a query has been answered and closed with the same data and I enter the same data that originally opened the query, then queries are not displayed. 
+@Web
+Scenario: On a Cross Form Standard form to log form, When a query has been answered and closed with the same data and I enter the same data that originally opened the query, then queries are not displayed. 
    
-    #Manual steps
-
+	#Manual steps
+	# Given I am a Rave user
 	# And I create a subject "sub301"
 	# And I navigate to folder "Test A Single Edit"
 	# And I select form "Informed Consent Date Form 1"
@@ -48,7 +51,7 @@ Scenario: PB_3.1.1 On a Cross Form Standard form to log form, When a query has b
 	    # |Informed Consent Date 2 |10 Jan 2000 |
 	    # |Numeric Field 1         |10          |
 	    # |Numeric Field 2         |19          |
-	# And I take a screenshot 1 of 51		
+	# And I take a screenshot		
 	# And I navigate to form "Assessment Date Log2" within folder "Test A Single Edit"
     # And I enter and save the following data, from the table below
 	    # |Field             |Data        |
@@ -58,92 +61,147 @@ Scenario: PB_3.1.1 On a Cross Form Standard form to log form, When a query has b
 	    # |Numeric Field 2   |20          |	
 	# And I verify "Assessment Date 1" field displays query opened with require response
     # And I verify "Numeric Field 2" field displays query opened with require response
-	# And I take a screenshot 2 of 51	
+	# And I take a screenshot	
 	# And I answer the queries on "Assessment Date 1" and "Numeric Field 2" fields
 	# And I save the form "Assessment Date Log2"
-	# And I take a screenshot 3 of 51
+	# And I take a screenshot
 
-	Given closed Query with message "" exists on Field "Assessment Date 1" in Form "Assessment Date Log2" in Folder "Test A Single Edit" in Subject "sub301" in Site "Test Site 1" in Study "Edit Check Study 1"
-	And closed Query with message "" exists on Field "Numeric Field 2" in Form "Assessment Date Log2" in Folder "Test A Single Edit" in Subject "sub301" in Site "Test Site 1" in Study "Edit Check Study 1"
-	
-
-	When I am on CRF page "Assessment Date Log2" in Folder "Test A Single Edit" in Subject "sub301" in Site "Test Site 1" in Study "Edit Check Study 1"
-	And I open log line 2 for edit
-	And I enter data in CRF
+	Given closed Query with message "" exists on Field "Assessment Date 1" in Form "Assessment Date Log2" in Folder "Test A Single Edit" in Subject "SUB301" in Site "Edit Check Site 3" in Study "Edit Check Study 3"
+	And closed Query with message "" exists on Field "Numeric Field 2" in Form "Assessment Date Log2" in Folder "Test A Single Edit" in Subject "SUB301" in Site "Edit Check Site 3" in Study "Edit Check Study 3"
+	And I am on CRF page "Assessment Date Log2" in Folder "Test A Single Edit" in Subject "SUB301" in Site "Edit Check Site 3" in Study "Edit Check Study 3"
+	And I edit log line 1
+	When I enter data in CRF
 		|Field             |Data        |
         |Assessment Date 1 |08 Jan 2000 |
 	    |Numeric Field 2   |20          |
 	And I save the CRF page
-
-
-    Then the Query with message "test1" is not displayed on Field "Assessment Date 1" on log line 1
-	And the Query with message "test2" is not displayed on Field "Numeric Field 2" on log line 1
+    Then the Query with message "" is not displayed on Field "Assessment Date 1" on log line 1
+	And the Query with message "" is not displayed on Field "Numeric Field 2" on log line 1
 	And I take a screenshot
 
 #----------------------------------------------------------------------------------------------------------------------------------------
 @release_564_Patch11
 @PB_3.1.2
 @Draft
+@Web
 Scenario: On a Cross Form Standard form to log form, When a query has been answered and closed with the same data and I enter the same data that 
 originally opened the query, then queries are displayed in SQL logs. 
 	
     When I run SQL Script "Query Logging Script"
     Then I should see the logging data for queries 
 		|ProjectName        |SiteNumber  |SiteName          |Environment |SubjectName  |CheckActionInstanceName     |CheckActionInstanceDataPageName |CheckActionRecordPosition |CheckActionFieldName |CheckActionFieldData |TriggerFieldInstanceName |TriggerFieldInstanceDatapageName 	|TriggerFieldRecordPosition |TriggerFieldName        |TriggerFieldData |EditCheckName                               |MarkingGroupName |QueryMessage                                                                |EventTime  |
-		|Edit Check Study 3 |30001       |Edit Check Site 3 |PROD        |sub301       |Test A Single Edit          |Assessment Date Log2            |1                         |Assessment Date 1    |08 Jan 2000          |Test A Single Edit       |Assessment Date Log2			 	 	|1                          |Assessment Date 1       |08 Jan 2000      |*Greater Than Open Query Log Cross Form     |Marking Group 1  |Informed Consent Date 1 is greater. Please revise.                          |{DateTime} |
-		|Edit Check Study 3 |30001       |Edit Check Site 3 |PROD        |sub301       |Test A Single Edit          |Assessment Date Log2            |1                         |Numeric Field 2      |20                   |Test A Single Edit       |Assessment Date Log2             	|1                          |Numeric Field 2         |20               |*Is Not Equal to Open Query Log Cross Form* |Site             |Informed Consent numeric field 2 is not equal to assessment numeric field 2 |{DateTime} |
+		|Edit Check Study 3 |30001       |Edit Check Site 3 |PROD        |SUB301       |Test A Single Edit          |Assessment Date Log2            |1                         |Assessment Date 1    |08 Jan 2000          |Test A Single Edit       |Assessment Date Log2			 	 	|1                          |Assessment Date 1       |08 Jan 2000      |*Greater Than Open Query Log Cross Form     |Marking Group 1  |Informed Consent Date 1 is greater. Please revise.                          |{DateTime} |
+		|Edit Check Study 3 |30001       |Edit Check Site 3 |PROD        |SUB301       |Test A Single Edit          |Assessment Date Log2            |1                         |Numeric Field 2      |20                   |Test A Single Edit       |Assessment Date Log2             	|1                          |Numeric Field 2         |20               |*Is Not Equal to Open Query Log Cross Form* |Site             |Informed Consent numeric field 2 is not equal to assessment numeric field 2 |{DateTime} |
 	And I take a screenshot
 
 #----------------------------------------------------------------------------------------------------------------------------------------
 @release_564_Patch11
 @PB_3.1.3
 @Draft
+@Web
 Scenario: On a Cross Form Standard form to log form, When a query has been answered and closed with the different data and I enter the same data that 
 originally opened the query, then queries are displayed. 
 	
-	Given closed queries exist on fields "Assessment Date 1" and "Numeric Field 2" in folder "Test A Single Edit" in form "Assessment Date Log2" in subject "sub301"
-	And I add a new log line
-	When I enter data from the table below:
+	#Manual steps
+	# Given I am a Rave user
+	# And I navigate to form "Assessment Date Log2" within folder "Test A Single Edit"
+    # And I add a new log line enter and save the following data, from the table below
+	  #  |Field             |Data        |
+      #  |Assessment Date 1 |07 Jan 2000 |
+	  #  |Assessment Date 2 |12 Jan 2000 |
+	  #  |Numeric Field 1   |10          |
+	  #  |Numeric Field 2   |18          |	
+	# And I verify "Assessment Date 1" field displays query opened with require response on the second log line
+    # And I verify "Numeric Field 2" field displays query opened with require response on the second log line
+	# And I take a screenshot	
+	# And I change the data on "Assessment Date 1" and "Numeric Field 2" fields, from the table below
+		#|Field             |Data        |
+        #|Assessment Date 1 |09 Jan 2000 |
+	    #|Numeric Field 2   |19          |
+	# And I answer the queries on "Assessment Date 1" and "Numeric Field 2" fields on the second log line
+	# And I save the form "Assessment Date Log2"
+	# And I take a screenshot	
+	# And I verify the queries did not fire on "Assessment Date 1" and "Numeric Field 2" fields
+	# And I take a screenshot	
+
+	Given closed Query with message "" exists on "Assessment Date 1" in folder "Test A Single Edit" in form "Assessment Date Log2" in subject "SUB301"
+	And closed Query with message "" exists on "Numeric Field 2" in folder "Test A Single Edit" in form "Assessment Date Log2" in subject "SUB301"
+	And I am on CRF page "Assessment Date Log2" in Folder "Test A Single Edit" in Subject "SUB301" in Site "Edit Check Site 3" in Study "Edit Check Study 3"
+	And I edit log line 2
+	When I enter data in CRF
 		|Field             |Data        |
         |Assessment Date 1 |07 Jan 2000 |
 	    |Numeric Field 2   |20          |
-	And I save form "Assessment Date Log2" 
-	Then I verify the queries are displayed on fields "Assessment Date 1" and "Numeric Field 2"	on second logline
+	And I save the CRF page
+	Then the Query with message "" is displayed on Field "Assessment Date 1" on log line 2
+	And the Query with message "" is displayed on Field "Numeric Field 2" on log line 2
 	And I take a screenshot
 	
 #----------------------------------------------------------------------------------------------------------------------------------------
 @release_564_Patch11
 @PB_3.1.4
 @Draft
+@Web
 Scenario: On a Cross Form Standard form to log form, When a query has been answered and closed with the same data and I enter the same data that originally opened the query, then queries are not displayed in SQL logs. 
 	
     When I run SQL Script "Query Logging Script" 
     Then I should not see the logging data for queries 
 		|ProjectName        |SiteNumber  |SiteName          |Environment |SubjectName  |CheckActionInstanceName     |CheckActionInstanceDataPageName |CheckActionRecordPosition |CheckActionFieldName |CheckActionFieldData |TriggerFieldInstanceName |TriggerFieldInstanceDatapageName |TriggerFieldRecordPosition |TriggerFieldName        |TriggerFieldData |EditCheckName                               |MarkingGroupName |QueryMessage                                                                |EventTime  |
-		|Edit Check Study 3 |30001       |Edit Check Site 3 |PROD        |sub301       |Test A Single Edit          |Assessment Date Log2            |2                         |Assessment Date 1    |07 Jan 2000          |Test A Single Edit       |Assessment Date Log2             |2                          |Assessment Date 1       |07 Jan 2000      |*Greater Than Open Query Log Cross Form     |Marking Group 1  |Informed Consent Date 1 is greater. Please revise.                          |{DateTime} |
-		|Edit Check Study 3 |30001       |Edit Check Site 3 |PROD        |sub301       |Test A Single Edit          |Assessment Date Log2            |2                         |Numeric Field 2      |18                   |Test A Single Edit       |Assessment Date Log2             |2                          |Numeric Field 2         |18               |*Is Not Equal to Open Query Log Cross Form* |Site             |Informed Consent numeric field 2 is not equal to assessment numeric field 2 |{DateTime} |
+		|Edit Check Study 3 |30001       |Edit Check Site 3 |PROD        |SUB301       |Test A Single Edit          |Assessment Date Log2            |2                         |Assessment Date 1    |07 Jan 2000          |Test A Single Edit       |Assessment Date Log2             |2                          |Assessment Date 1       |07 Jan 2000      |*Greater Than Open Query Log Cross Form     |Marking Group 1  |Informed Consent Date 1 is greater. Please revise.                          |{DateTime} |
+		|Edit Check Study 3 |30001       |Edit Check Site 3 |PROD        |SUB301       |Test A Single Edit          |Assessment Date Log2            |2                         |Numeric Field 2      |18                   |Test A Single Edit       |Assessment Date Log2             |2                          |Numeric Field 2         |18               |*Is Not Equal to Open Query Log Cross Form* |Site             |Informed Consent numeric field 2 is not equal to assessment numeric field 2 |{DateTime} |
 	And I take a screenshot	
 
 #----------------------------------------------------------------------------------------------------------------------------------------	
 @release_564_Patch11
 @PB_3.2.1
 @Draft
+@Web
 Scenario: On a Cross Folder Standard form to log form, When a query has been answered and closed with the same data and I enter the same data that 
 originally opened the query, then queries are not displayed.
 		
-	Given closed queries exist on fields "Assessment Date 1" and "Numeric Field 2" in folder "Test B Single Derivation" in form "Assessment Date Log2" in subject "SUB302"
-	When I enter data from the table below:
+	#Manual steps
+	# Given I am a Rave user
+	# And I create a subject "sub302"
+	# And I navigate to folder "Test A Single Edit"
+	# And I select form "Informed Consent Date Form 1"
+	# And I enter and save the following data, from the table below
+	   # |Field                   |Data        |
+       # |Informed Consent Date 1 |10 Jan 2000 |
+	   # |Informed Consent Date 2 |10 Feb 2000 |
+	   # |Numeric Field 1         |100         |
+	   # |Numeric Field 2         |200         |
+	# And I take a screenshot		
+	# And I navigate to form "Assessment Date Log2" within folder "Test B Single Derivation"
+    # And I enter and save the following data, from the table below
+	 #   |Field             |Data        |
+     #   |Assessment Date 1 |09 Jan 2000 |
+	 #   |Assessment Date 2 |11 Feb 2000 |
+	 #   |Numeric Field 1   |100         |
+	 #   |Numeric Field 2   |99          |	
+	# And I verify "Assessment Date 1" field displays query opened with require response
+    # And I verify "Numeric Field 2" field displays query opened with require response
+	# And I take a screenshot	
+	# And I answer the queries on "Assessment Date 1" and "Numeric Field 2" fields
+	# And I save the form "Assessment Date Log2"
+	# And I take a screenshot	
+
+	Given closed Query with message "" exists on "Assessment Date 1" in folder "Test B Single Derivation" in form "Assessment Date Log2" in subject "SUB302"
+	And closed Query with message "" exists on "Numeric Field 2" in folder "Test B Single Derivation" in form "Assessment Date Log2" in subject "SUB302"
+	And I edit log line 1
+	When I enter data in CRF
 		|Field             |Data        |
         |Assessment Date 1 |09 Jan 2000 |
 	    |Numeric Field 2   |99          |
-	And I save form "Assessment Date Log2" 
-	Then I verify the queries are not displayed on fields "Assessment Date 1" and "Numeric Field 2"	on first logline
+	And I save the CRF page
+	Then the Query with message "" is not displayed on Field "Assessment Date 1" on log line 1
+	And the Query with message "" is not displayed on Field "Numeric Field 2" on log line 1
 	And I take a screenshot
 
 #----------------------------------------------------------------------------------------------------------------------------------------
 @release_564_Patch11
 @PB_3.2.2
 @Draft
+@Web
 Scenario: On a Cross Folder Standard form to log form, When a query has been answered and closed with the same data and I enter the same data that originally opened the query, then queries are displayed in SQL logs. 
 
     When I run SQL Script "Query Logging Script"
@@ -157,22 +215,50 @@ Scenario: On a Cross Folder Standard form to log form, When a query has been ans
 @release_564_Patch11
 @PB_3.2.3
 @Draft
+@Web
 Scenario: On a Cross Folder Standard form to log form, When a query has been answered and closed with the different data and I enter the same data that originally opened the query, then queries are displayed.
+	
+	#Manual steps
+	# Given I am a Rave user
+    # And I navigate to form "Assessment Date Log2" within folder "Test B Single Derivation"
+    # And I add a new log line enter and save the following data, from the table below
+	   # |Field             |Data        |
+       # |Assessment Date 1 |08 Jan 2000 |
+	   # |Assessment Date 2 |12 Feb 2000 |
+	   # |Numeric Field 1   |100         |
+	   # |Numeric Field 2   |98          |	
+	# And I verify "Assessment Date 1" field displays query opened with require response on the second log line
+    # And I verify "Numeric Field 2" field displays query opened with require response on the second log line
+	# And I take a screenshot	
+	# And I change the data on "Assessment Date 1", "Numeric Field 1" and "Numeric Field 2" fields, from the table below
+	#	|Field             |Data        |
+    #   |Assessment Date 1 |10 Jan 2000 |
+	#	|Numeric Field 1   |201         |
+	#   |Numeric Field 2   |200         |
+	# And I answer the queries on "Assessment Date 1" and "Numeric Field 2" fields on the second log line
+	# And I save the form "Assessment Date Log2"
+	# And I take a screenshot
+    # And I verify the queries did not fire on "Assessment Date 1" and "Numeric Field 2" fields on the second log line
+	# And I take a screenshot
 
-	Given closed queries exist on fields "Assessment Date 1" and "Numeric Field 2" in folder "Test B Single Derivation" in form "Assessment Date Log2" in subject "sub302"
+	Given closed Query with message "" exists on "Assessment Date 1" in folder "Test B Single Derivation" in form "Assessment Date Log2" in subject "SUB302"
+	And closed Query with message "" exists on "Numeric Field 2" in folder "Test B Single Derivation" in form "Assessment Date Log2" in subject "SUB302"
 	And I add a new log line
-	When I enter data from the table below:
+	And I edit log line 2
+	When I enter data in CRF
 		|Field             |Data        |
         |Assessment Date 1 |08 Jan 2000 |
 	    |Numeric Field 2   |98          |
-	And I save form "Assessment Date Log2" 
-	Then I verify the queries are displayed on fields "Assessment Date 1" and "Numeric Field 2"	on second logline
+	And I save the CRF page
+	Then the Query with message "" is displayed on Field "Assessment Date 1" on log line 2
+	And the Query with message "" is displayed on Field "Numeric Field 2" on log line 2
 	And I take a screenshot
 	
 #----------------------------------------------------------------------------------------------------------------------------------------
 @release_564_Patch11
 @PB_3.2.4
 @Draft
+@Web
 Scenario: On a Cross Folder Standard form to log form, When a query has been answered and closed with the same data and I enter the same data that originally opened the query, then queries are not displayed in SQL logs. 
 	
 	When I run SQL Script "Query Logging Script" 
@@ -186,21 +272,57 @@ Scenario: On a Cross Folder Standard form to log form, When a query has been ans
 @release_564_Patch11
 @PB_3.3.1
 @Draft
+@Web
 Scenario: On a Cross Forms log form to Standard form, When a query has been answered and closed with the different data and I enter the same data that originally opened the query, then queries are displayed. 
 
-	Given closed queries exist on fields "Informed Consent Date 2" and "Numeric Field 2" in folder "Test B Single Derivation" in form "Informed Consent Date Form 1" in subject "SUB303"
-	When I enter data from the table below:
+	#Manual steps
+	# Given I am a Rave user
+    # And I create a subject "sub303"
+	# And I navigate to folder "Test B Single Derivation"
+	# And I select form "Assessment Date Log2"
+	# And I enter and save the following data, from the table below
+	 #   |Field             |Data        |
+     #   |Assessment Date 1 |12 Jan 2000 |
+	 #   |Assessment Date 2 |11 Jan 2000 |
+	 #   |Numeric Field 1   |100         |
+	 #   |Numeric Field 2   |101         |
+    # And I navigate to form "Informed Consent Date Form 1" within folder "Test B Single Derivation"
+    # And I enter and save the following data, from the table below
+	#    |Field                   |Data        |
+    #    |Informed Consent Date 1 |12 Jan 2000 |
+	#    |Informed Consent Date 2 |11 Jan 2000 |
+	#    |Numeric Field 1         |100         |
+	#    |Numeric Field 2         |101         |	
+	# And I verify "Informed Consent Date 2" field displays query opened with require response
+	# And I verify "Numeric Field 2" field displays query opened with require response
+	# And I take a screenshot
+	# And I change the data on "Informed Consent Date 2" and "Numeric Field 2" fields, from the table below
+	 #   |Field                   |Data        |
+	 #   |Informed Consent Date 2 |13 Jan 2000 |
+	 #   |Numeric Field 2         |100         |		
+	# And I answer the queries on "Informed Consent Date 2" and "Numeric Field 2" fields
+	# And I save the form "Informed Consent Date Form 1"
+	# And I take a screenshot
+	# And I verify the queries did not fire on "Informed Consent Date 2" and "Numeric Field 2" fields 
+	# And I take a screenshot	
+
+	Given closed Query with message "" exists on "Informed Consent Date 2" in folder "Test B Single Derivation" in form "Informed Consent Date Form 1" in subject "SUB303"
+	And closed Query with message "" exists on "Numeric Field 2" in folder "Test B Single Derivation" in form "Informed Consent Date Form 1" in subject "SUB303"
+	And I edit log line 1
+	When I enter data in CRF
 		|Field                   |Data        |
 	    |Informed Consent Date 2 |11 Jan 2000 |
 	    |Numeric Field 2         |101         |	
-	And I save form "Assessment Date Log2" 
-	Then I verify the queries are displayed on fields "Informed Consent Date 2" and "Numeric Field 2"
+	And I save the CRF page
+	Then the Query with message "" is displayed on Field "Informed Consent Date 2" on log line 1
+	And the Query with message "" is displayed on Field  "Numeric Field 2" on log line 1
 	And I take a screenshot
 
 #----------------------------------------------------------------------------------------------------------------------------------------
 @release_564_Patch11
 @PB_3.3.2
 @Draft
+@Web
 Scenario: On a Cross Forms log form to Standard form, When a query has been answered and closed with the different data and I enter the same data that originally opened the query, then queries are not displayed. 
 
     When I run SQL Script "Query Logging Script" 
@@ -214,23 +336,71 @@ Scenario: On a Cross Forms log form to Standard form, When a query has been answ
 @release_564_Patch11
 @PB_3.4.1
 @Draft
-Scenario: On a Cross Forms log form to log form, When a query has been answered and closed with the different data and I enter the same data that originally opened the query, then queries are not displayed.
-	
-	Given closed queries exist on fields "Assessment Date 1", "Assessment Date 2", "Numeric Field 1" and "Numeric Field 2" in folder "Test A Single Edit" in form "Assessment Date Log2" in subject "SUB304"
-	When I enter data from the table below:
+@Web
+Scenario: On a Cross Forms log form to log form, When a query has been answered and closed with the same data and I enter the same data that originally opened the query, then queries are not displayed.
+
+	#Manual steps
+	# Given I am a Rave user	
+	# And I create a subject "sub304"
+	# And I navigate to folder "Test A Single Edit"
+	# And I select form "Assessment Date Log2"
+	# And I enter and save the following data, from the table below
+	#    |Field             |Data        |
+	#    |Assessment Date 1 |10 Jan 2000 |
+	#    |Assessment Date 2 |10 Feb 2000 |
+	#    |Numeric Field 1   |100         |
+	#    |Numeric Field 2   |66          |
+	# And I take a screenshot
+	# And I navigate to form "Assessment Date Log3" within folder "Test A Single Edit"
+    # And I enter and save the following data, from the table below
+	 #   |Field           |Data        |
+     #   |Date Field 1    |11 Jan 2000 |
+	 #   |Date Field 2    |09 Feb 2000 |
+	 #   |Numeric Field 1 |101         |
+	 #   |Numeric Field 2 |66          |
+	# And I take a screenshot
+    # And I navigate to form "Assessment Date Log2"		
+	# And I verify "Assessment Date 1" field displays query opened with require response
+	# And I verify "Assessment Date 2" field displays query opened with require response
+	# And I verify "Numeric Field 1" field displays query opened with require response
+	# And I verify "Numeric Field 2" field displays query opened with require response
+	# And I take a screenshot
+	# And I answer the queries on "Assessment Date 1", "Assessment Date 2", "Numeric Field 1" and "Numeric Field 2" fields
+	# And I save the form "Assessment Date Log2"
+	# And I take a screenshot
+	# And I change the data on "Assessment Date 1", "Assessment Date 2", "Numeric Field 1" and "Numeric Field 2" fields, from the table below
+	#  |Field             |Data        |
+    #  |Assessment Date 1 |11 Jan 2000 |
+	#  |Assessment Date 2 |09 Feb 2000 |
+	#  |Numeric Field 1   |102         |
+	#  |Numeric Field 2   |65          |	
+	# And I save the form "Assessment Date Log2"
+	# And I verify the queries did not fire on "Assessment Date 1", "Assessment Date 2", "Numeric Field 1" and "Numeric Field 2" fields
+	# And I take a screenshot	
+
+	Given closed Query with message "" exists on "Assessment Date 1" in folder "Test A Single Edit" in form "Assessment Date Log2" in subject "SUB304"
+	And closed Query with message "" exists on "Assessment Date 2" in folder "Test A Single Edit" in form "Assessment Date Log2" in subject "SUB304"
+	And closed Query with message "" exists on "Numeric Field 1" in folder "Test A Single Edit" in form "Assessment Date Log2" in subject "SUB304"
+	And closed Query with message "" exists on "Numeric Field 2" in folder "Test A Single Edit" in form "Assessment Date Log2" in subject "SUB304"
+	And I edit log line 1
+	When I enter data in CRF
 		|Field             |Data        |
         |Assessment Date 1 |10 Jan 2000 |
 	    |Assessment Date 2 |10 Feb 2000 |
 	    |Numeric Field 1   |100         |
 	    |Numeric Field 2   |66          |
-	And I save form "Assessment Date Log2" 
-	Then I verify the queries are not displayed on fields "Assessment Date 1", "Assessment Date 2", "Numeric Field 1" and "Numeric Field 2" on the first logline
+	And I save the CRF page
+	Then the Query with message "" is not displayed on Field "Assessment Date 1" on log line 1
+	And the Query with message "" is not displayed on Field "Assessment Date 2" on log line 1
+	And the Query with message "" is not displayed on Field "Numeric Field 1" on log line 1
+	And the Query with message "" is not displayed on Field "Numeric Field 2" on log line 1
 	And I take a screenshot
 
 #----------------------------------------------------------------------------------------------------------------------------------------	
 @release_564_Patch11
 @PB_3.4.2
 @Draft
+@Web
 Scenario: On a Cross Forms log form to log form, When a query has been answered and closed with the same data and I enter the same data that originally opened the query, then queries are displayed in SQL logs. .
 	
 	When I run SQL Script "Query Logging Script" 
@@ -245,27 +415,65 @@ Scenario: On a Cross Forms log form to log form, When a query has been answered 
 #----------------------------------------------------------------------------------------------------------------------------------------	
 
 #THIS IS DUPLICATE of @PB_3.4.1, please confirm
-# @release_564_Patch11
-# @PB_3.4.3
-# @Draft
-# Scenario: On a Cross Forms log form to log form, When a query has been answered and closed with the different data and I enter the same data that originally opened the query, then queries are not displayed.
-	
-	# Given closed queries exist on fields "Informed Consent Date 2" and "Numeric Field 2" in folder "Test A Single Edit" in form "Assessment Date Log2" in subject "SUB304"
-	# And I add a new log line
-	# When I enter data from the table below:
-		# |Field             |Data        |
-        # |Assessment Date 1 |10 Feb 2000 |
-	    # |Assessment Date 2 |10 Mar 2000 |
-	    # |Numeric Field 1   |200         |
-	    # |Numeric Field 2   |77          |
-	# And I save form "Assessment Date Log2" 
-	# Then I verify the queries are displayed on fields "Assessment Date 1", "Assessment Date 2", "Numeric Field 1" and "Numeric Field 2" on the second logline
+@release_564_Patch11
+@PB_3.4.3
+@Draft
+@Web
+Scenario: On a Cross Forms log form to log form, When a query has been answered and closed with the different data and I enter the same data that originally opened the query, then queries are not displayed.
+
+	#Manual steps
+	# Given I am a Rave user	
+	# And I navigate to form "Assessment Date Log2" within folder "Test A Single Edit"
+    # And I add a new log line as follows:
+	#    |Field             |Data        |
+    #    |Assessment Date 1 |10 Feb 2000 |
+	#    |Assessment Date 2 |10 Mar 2000 |
+	#    |Numeric Field 1   |200         |
+	#    |Numeric Field 2   |77          |
+	# And I take a screenshot	
+    # And I navigate to form "Assessment Date Log3" within folder "Test A Single Edit"
+    # And I add a new log line as follows:
+	#    |Field           |Data        |
+    #    |Date Field 1    |11 Feb 2000 |
+	#    |Date Field 2    |09 Mar 2000 |
+	#    |Numeric Field 1 |201         |
+	#    |Numeric Field 2 |77          |	
+	# And I take a screenshot	
+    # And I navigate to form "Assessment Date Log2"
+	# And I select second log line
+	# And I verify "Assessment Date 1" field displays query opened with require response
+	# And I verify "Assessment Date 2" field displays query opened with require response
+	# And I verify "Numeric Field 1" field displays query opened with require response
+	# And I verify "Numeric Field 2" field displays query opened with require response
 	# And I take a screenshot
+
+	Given closed Query with message "" exists on "Assessment Date 1" in folder "Test B Single Derivation" in form "Assessment Date Log2" in subject "SUB302"
+	And closed Query with message "" exists on "Numeric Field 2" in folder "Test B Single Derivation" in form "Assessment Date Log2" in subject "SUB302"
+
+	Given closed Query with message "" exists on "Assessment Date 1" in folder "Test A Single Edit" in form "Assessment Date Log2" in subject "SUB304"
+	And closed Query with message "" exists on "Assessment Date 2" in folder "Test A Single Edit" in form "Assessment Date Log2" in subject "SUB304"
+	And closed Query with message "" exists on "Numeric Field 1" in folder "Test A Single Edit" in form "Assessment Date Log2" in subject "SUB304"
+	And closed Query with message "" exists on "Numeric Field 2" in folder "Test A Single Edit" in form "Assessment Date Log2" in subject "SUB304"
+	And I add a new log line
+	And I edit log line 2
+	When I enter data in CRF
+		 |Field             |Data        |
+         |Assessment Date 1 |10 Feb 2000 |
+	     |Assessment Date 2 |10 Mar 2000 |
+	     |Numeric Field 1   |200         |
+	     |Numeric Field 2   |77          |
+	And I save the CRF page
+	Then the Query with message "" is displayed on Field "Assessment Date 1" on log line 2
+	And the Query with message "" is displayed on Field "Assessment Date 2" on log line 2
+	And the Query with message "" is displayed on Field "Numeric Field 1" on log line 2
+	And the Query with message "" is displayed on Field "Numeric Field 2" on log line 2
+	And I take a screenshot
 
 #----------------------------------------------------------------------------------------------------------------------------------------	
 @release_564_Patch11
 @PB_3.4.4
 @Draft
+@Web
 Scenario: On a Cross Forms log form to log form, When a query has been answered and closed with the different data and I enter the same data that originally opened the query, then queries are not displayed in SQL logs. .
 	
 	When I run SQL Script "Query Logging Script" 
