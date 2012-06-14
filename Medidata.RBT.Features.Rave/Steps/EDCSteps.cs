@@ -29,6 +29,12 @@ namespace Medidata.RBT.Features.Rave
 			CurrentPage = CurrentPage.As<HomePage>().CreateSubject(subjectName);
 		}
 
+        [StepDefinition(@"I select a Subject ""([^""]*)""")]
+        public void ISelectASubject____(string subjectName)
+        {
+           
+        }
+
         [StepDefinition(@"I create a Subject with name: ""([^""]*)"", number: ""([^""]*)""")]
         public void ICreateASubject____(string subjectName, string subjectNumber)
         {
