@@ -7,7 +7,6 @@
 *.suo
 *.cache
 
-*.feature.cs
 
 /TestResults/
 /Medidata.RBT.Features.Rave/App.config
