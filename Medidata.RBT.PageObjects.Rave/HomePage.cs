@@ -46,12 +46,12 @@ namespace Medidata.RBT.PageObjects.Rave
 		}
 
 		//
-		public SubjectPage CreateSubject(string subjectName)
+		public SubjectPage CreateSubject(string subjectName, string subjectNumber = "")
 		{
 			IWebElement addSubjectLink = Browser.FindElementById("_ctl0_Content_ListDisplayNavigation_lbAddSubject");
 			addSubjectLink.Click();
 			var prp =new PrimaryRecordPage();
-			SubjectPage subPage = prp.FillNameAndSave(subjectName);
+            SubjectPage subPage = prp.FillNameAndSave(subjectName, subjectNumber);
 			
 			return subPage;
 		}

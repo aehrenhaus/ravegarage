@@ -10,7 +10,7 @@ Feature: 3
 # Project to be uploaded in excel spreadsheet 'Edit Check Study 3'
 
 Background:
-    Given I am logged in to Rave with username "cdm1" and password "password"
+    Given I am logged in to Rave with username "defuser" and password "password"
 	And following Study assignments exist
 		|User		|Study		       	|Role |Site		        	|Site Number|
 		|editcheck  |Edit Check Study 3	|CDM1 |Edit Check Site 3	|30001      |
@@ -41,33 +41,40 @@ Background:
 Scenario: On a Cross Form Standard form to log form, When a query has been answered and closed with the same data and I enter the same data that originally opened the query, then queries are not displayed. 
    
 	#Manual steps
-	# Given I am a Rave user
-	# And I create a subject "sub301"
-	# And I navigate to folder "Test A Single Edit"
-	# And I select form "Informed Consent Date Form 1"
-	# And I enter and save the following data, from the table below
-	    # |Field                   |Data        |
-        # |Informed Consent Date 1 |09 Jan 2000 |
-	    # |Informed Consent Date 2 |10 Jan 2000 |
-	    # |Numeric Field 1         |10          |
-	    # |Numeric Field 2         |19          |
-	# And I take a screenshot		
-	# And I navigate to form "Assessment Date Log2" within folder "Test A Single Edit"
-    # And I enter and save the following data, from the table below
-	    # |Field             |Data        |
-        # |Assessment Date 1 |08 Jan 2000 |
-	    # |Assessment Date 2 |11 Jan 2000 |
-	    # |Numeric Field 1   |10          |
-	    # |Numeric Field 2   |20          |	
-	# And I verify "Assessment Date 1" field displays query opened with require response
-    # And I verify "Numeric Field 2" field displays query opened with require response
-	# And I take a screenshot	
-	# And I answer the queries on "Assessment Date 1" and "Numeric Field 2" fields
-	# And I save the form "Assessment Date Log2"
-	# And I take a screenshot
+	 #Given I am a Rave user
+	 #Given I create a Subject "sub301"
+	 #Given I create a Subject with name: "sub", number: "301"
+	
+	 Given I create a Subject with name: "sub", number: "{nextNumberInStudy(Edit Check Study 3,prod,Subject Number)}"
+	 And I select Folder "Test A Single Edit"
+	 And I select Form "Informed Consent Date Form 1"
+	 And I enter data in CRF
+	     |Field                   |Data        |
+         |Informed Consent Date 1 |09 Jan 2000 |
+	     |Informed Consent Date 2 |10 Jan 2000 |
+	     |Numeric Field 1         |10          |
+	     |Numeric Field 2         |19          |
+	And I save the CRF page
+	And I take a screenshot
+	And I select Form "Assessment Date Log2" in Folder "Test A Single Edit"
+	And I enter data in CRF
+	     |Field             |Data        |
+         |Assessment Date 1 |08 Jan 2000 |
+	     |Assessment Date 2 |11 Jan 2000 |
+	     |Numeric Field 1   |10          |
+	     |Numeric Field 2   |20          |	
+	And I save the CRF page
+	And I verify Query with message "Informed Consent Date 1 is greater. Please revise." with Requires Response is displayed on Field "Assessment Date 1"
+	And I verify Query with message "Informed Consent numeric field 2 is not equal to assessment numeric field 2" with Requires Response is displayed on Field "Numeric Field 2"
+	And I take a screenshot
+	And I answer the Query "Informed Consent Date 1 is greater. Please revise." on Field "Assessment Date 1" with "."
+	And I answer the Query "Informed Consent numeric field 2 is not equal to assessment numeric field 2" on Field "Numeric Field 2" with "."
+	And I save the CRF page
+	And I take a screenshot
 
-	Given closed Query with message "" exists on Field "Assessment Date 1" in Form "Assessment Date Log2" in Folder "Test A Single Edit" in Subject "SUB301" in Site "Edit Check Site 3" in Study "Edit Check Study 3"
-	And closed Query with message "" exists on Field "Numeric Field 2" in Form "Assessment Date Log2" in Folder "Test A Single Edit" in Subject "SUB301" in Site "Edit Check Site 3" in Study "Edit Check Study 3"
+
+	# Given closed Query with message "Informed Consent Date 1 is greater. Please revise" exists on Field "Assessment Date 1" in Form "Assessment Date Log2" in Folder "Test A Single Edit" in Subject "SUB301" in Site "Edit Check Site 3" in Study "Edit Check Study 3"
+	# And closed Query with message "Informed Consent numeric field 2 is not equal to assessment numeric field 2" exists on Field "Numeric Field 2" in Form "Assessment Date Log2" in Folder "Test A Single Edit" in Subject "SUB301" in Site "Edit Check Site 3" in Study "Edit Check Study 3"
 	And I am on CRF page "Assessment Date Log2" in Folder "Test A Single Edit" in Subject "SUB301" in Site "Edit Check Site 3" in Study "Edit Check Study 3"
 	And I edit log line 1
 	When I enter data in CRF
@@ -75,8 +82,8 @@ Scenario: On a Cross Form Standard form to log form, When a query has been answe
         |Assessment Date 1 |08 Jan 2000 |
 	    |Numeric Field 2   |20          |
 	And I save the CRF page
-    Then the Query with message "" is not displayed on Field "Assessment Date 1" on log line 1
-	And the Query with message "" is not displayed on Field "Numeric Field 2" on log line 1
+    Then the Query with message "Informed Consent Date 1 is greater. Please revise." is not displayed on Field "Assessment Date 1" on log line 1
+	And the Query with message "Informed Consent numeric field 2 is not equal to assessment numeric field 2" is not displayed on Field "Numeric Field 2" on log line 1
 	And I take a screenshot
 
 #----------------------------------------------------------------------------------------------------------------------------------------
