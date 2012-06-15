@@ -21,7 +21,7 @@
 		/>
 	
 	<RaveConfiguration
-		RaveURL ="http://localhost/Rave564/"	
+		RaveURL ="https://rave564package.mdsol.com/MedidataRave/"
 		DefaultUser="defuser"
 		DefaultUserPassword="password"
 		/>
@@ -40,7 +40,7 @@
 	</appSettings>
 	<dataConfiguration defaultDatabase="Connection String" />
 	<connectionStrings>
-		<add name="RaveConnection" connectionString="Server=NY1501DVDBS02P;Database=UAT;uid=demo;pwd=demo;" providerName="System.Data.SqlClient" />
-	
+		<add name="RaveConnection" connectionString="Server=ny1501dvdbs01v.lbm.mdsol.com;Database=rave564package_clean;uid=rave564package_clean;pwd=;" providerName="System.Data.SqlClient" />
+
 	</connectionStrings>
 </configuration>

@@ -23,23 +23,17 @@ namespace Medidata.RBT.Features.Rave
 		}
 
 
-		[StepDefinition(@"I create a Subject ""([^""]*)""")]
-		public void ICreateASubject____(string subjectName)
-		{
-			CurrentPage = CurrentPage.As<HomePage>().CreateSubject(subjectName);
-		}
-
         [StepDefinition(@"I select a Subject ""([^""]*)""")]
         public void ISelectASubject____(string subjectName)
         {
            
         }
 
-        [StepDefinition(@"I create a Subject with name: ""([^""]*)"", number: ""([^""]*)""")]
-        public void ICreateASubject____(string subjectName, string subjectNumber)
+        [StepDefinition(@"I create a Subject")]
+        public void ICreateASubject____(Table table)
         {
-            subjectNumber = SpecialStringHelper.Replace(subjectNumber);
-            CurrentPage = CurrentPage.As<HomePage>().CreateSubject(subjectName, subjectNumber);
+           
+            CurrentPage = CurrentPage.As<HomePage>().CreateSubject(table);
         }
 
 		/// <summary>

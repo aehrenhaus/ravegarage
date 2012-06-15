@@ -39,29 +39,29 @@ Background:
 @Draft
 Scenario: PB_3.1.1 On a Cross Form Standard form to log form, When a query has been answered and closed with the same data and I enter the same data that originally opened the query, then queries are not displayed. 
    
-	#Manual steps
-	 #Given I am a Rave user
-	 #Given I create a Subject "sub301"
-	 #Given I create a Subject with name: "sub", number: "301"
-	
-	 Given I create a Subject with name: "sub", number: "{nextNumberInStudy(Edit Check Study 3,prod,Subject Number)}"
+	Given  I select Study "Edit Check Study 3" and Site "Edit Check Site 3"
+	 Given I create a Subject
+		| Field            | Value                                                          |
+		| Subject Number   | {NextSubjectNum<num1>(Edit Check Study 3,prod,Subject Number)} |
+		| Subject Initials | sub                                                            |
+
 	 And I select Folder "Test A Single Edit"
 	 And I select Form "Informed Consent Date Form 1"
 	 And I enter data in CRF
-	     |Field                   |Data        |
-         |Informed Consent Date 1 |09 Jan 2000 |
-	     |Informed Consent Date 2 |10 Jan 2000 |
-	     |Numeric Field 1         |10          |
-	     |Numeric Field 2         |19          |
+	     | Field                   | Data        |
+	     | Informed Consent Date 1 | 09 Jan 2000 |
+	     | Informed Consent Date 2 | 10 Jan 2000 |
+	     | Numeric Field 1         | 10          |
+	     | Numeric Field 2         | 19          |
 	And I save the CRF page
 	And I take a screenshot
 	And I select Form "Assessment Date Log2" in Folder "Test A Single Edit"
 	And I enter data in CRF
-	     |Field             |Data        |
-         |Assessment Date 1 |08 Jan 2000 |
-	     |Assessment Date 2 |11 Jan 2000 |
-	     |Numeric Field 1   |10          |
-	     |Numeric Field 2   |20          |	
+	     | Field             | Data        |
+	     | Assessment Date 1 | 08 Jan 2000 |
+	     | Assessment Date 2 | 11 Jan 2000 |
+	     | Numeric Field 1   | 10          |
+	     | Numeric Field 2   | 20          |
 	And I save the CRF page
 	And I verify Query with message "Informed Consent Date 1 is greater. Please revise." with Requires Response is displayed on Field "Assessment Date 1"
 	And I verify Query with message "Informed Consent numeric field 2 is not equal to assessment numeric field 2" with Requires Response is displayed on Field "Numeric Field 2"
@@ -70,10 +70,6 @@ Scenario: PB_3.1.1 On a Cross Form Standard form to log form, When a query has b
 	And I answer the Query "Informed Consent numeric field 2 is not equal to assessment numeric field 2" on Field "Numeric Field 2" with "."
 	And I save the CRF page
 	And I take a screenshot
-
-
-	# Given closed Query with message "Informed Consent Date 1 is greater. Please revise" exists on Field "Assessment Date 1" in Form "Assessment Date Log2" in Folder "Test A Single Edit" in Subject "SUB301" in Site "Edit Check Site 3" in Study "Edit Check Study 3"
-	# And closed Query with message "Informed Consent numeric field 2 is not equal to assessment numeric field 2" exists on Field "Numeric Field 2" in Form "Assessment Date Log2" in Folder "Test A Single Edit" in Subject "SUB301" in Site "Edit Check Site 3" in Study "Edit Check Study 3"
 	And I am on CRF page "Assessment Date Log2" in Folder "Test A Single Edit" in Subject "SUB301" in Site "Edit Check Site 3" in Study "Edit Check Study 3"
 	And I open log line 1
 	When I enter data in CRF
@@ -106,7 +102,7 @@ originally opened the query, then queries are displayed in SQL logs.
 Scenario: PB_3.1.3 On a Cross Form Standard form to log form, When a query has been answered and closed with the different data and I enter the same data that 
 originally opened the query, then queries are displayed. 
 	
-	Given I select a Subject "{subjectName}"
+	Given I select a Subject "sub{Var(num1)}"
 	And I select Form "Assessment Date Log2" in Folder "Test A Single Edit"
 	And I add a new log line
 	And I enter data in CRF
@@ -132,9 +128,6 @@ originally opened the query, then queries are displayed.
 	And I verify Field "Assessment Date 1" has NO Query
 	And I verify Field "Numeric Field 2" has NO Query
 	And I take a screenshot	
-
-	# Given closed Query with message "" exists on "Assessment Date 1" in folder "Test A Single Edit" in form "Assessment Date Log2" in subject "SUB301"
-	# And closed Query with message "" exists on "Numeric Field 2" in folder "Test A Single Edit" in form "Assessment Date Log2" in subject "SUB301"
 	And I am on CRF page "Assessment Date Log2" in Folder "Test A Single Edit" in Subject "SUB301" in Site "Edit Check Site 3" in Study "Edit Check Study 3"
 	And I edit log line 2
 	When I enter data in CRF
@@ -167,7 +160,10 @@ Scenario: PB_3.1.4 On a Cross Form Standard form to log form, When a query has b
 Scenario: PB_3.2.1 On a Cross Folder Standard form to log form, When a query has been answered and closed with the same data and I enter the same data that 
 originally opened the query, then queries are not displayed.
 		
-	 Given I create a Subject with name: "sub", number: "{nextNumberInStudy(Edit Check Study 3,prod,Subject Number)}"
+	 Given I create a Subject
+		| Field            | Value                                                          |
+		| Subject Number   | {NextSubjectNum<num2>(Edit Check Study 3,prod,Subject Number)} |
+		| Subject Initials | sub                                                            |
 	 And I select Folder "Test A Single Edit"
 	 And I select Form "Informed Consent Date Form 1"
 	 And I enter data in CRF
@@ -194,9 +190,6 @@ originally opened the query, then queries are not displayed.
 	And I answer the Query "{message}" on Field "Numeric Field 2" with "{answer}"
 	And I save the CRF page
 	And I take a screenshot	
-
-	# Given closed Query with message "" exists on "Assessment Date 1" in folder "Test B Single Derivation" in form "Assessment Date Log2" in subject "SUB302"
-	# And closed Query with message "" exists on "Numeric Field 2" in folder "Test B Single Derivation" in form "Assessment Date Log2" in subject "SUB302"
 	And I open log line 1
 	When I enter data in CRF
 		|Field             |Data        |
@@ -226,7 +219,7 @@ Scenario: PB_3.2.2 On a Cross Folder Standard form to log form, When a query has
 @Draft
 Scenario: PB_3.2.3 On a Cross Folder Standard form to log form, When a query has been answered and closed with the different data and I enter the same data that originally opened the query, then queries are displayed.
 	
-	Given I select a Subject "{subjectName}"
+	Given I select a Subject "sub{Var(num2)}"
 	And I select Form "Assessment Date Log2" in Folder "Test B Single Derivation"
 	And I add a new log line
 	And I enter data in CRF
@@ -285,7 +278,10 @@ Scenario: PB_3.2.4 On a Cross Folder Standard form to log form, When a query has
 @Draft
 Scenario: PB_3.3.1 On a Cross Forms log form to Standard form, When a query has been answered and closed with the different data and I enter the same data that originally opened the query, then queries are displayed. 
 
-	Given I create a Subject with name: "sub", number: "{nextNumberInStudy(Edit Check Study 3,prod,Subject Number)}"
+	 Given I create a Subject
+		| Field            | Value                                                          |
+		| Subject Number   | {NextSubjectNum<num3>(Edit Check Study 3,prod,Subject Number)} |
+		| Subject Initials | sub                                                            |
 	And I select Folder "Test B Single Derivation"
 	And I select Form "Assessment Date Log2"
 	And I enter data in CRF
@@ -348,7 +344,10 @@ Scenario: PB_3.3.2 On a Cross Forms log form to Standard form, When a query has 
 @Draft
 Scenario: PB_3.4.1 On a Cross Forms log form to log form, When a query has been answered and closed with the same data and I enter the same data that originally opened the query, then queries are not displayed.
 
-	Given I create a Subject with name: "sub", number: "{nextNumberInStudy(Edit Check Study 3,prod,Subject Number)}"
+	 Given I create a Subject
+		| Field            | Value                                                          |
+		| Subject Number   | {NextSubjectNum<num4>(Edit Check Study 3,prod,Subject Number)} |
+		| Subject Initials | sub                                                            |
 	And I select Folder "Test A Single Edit"
 	And I select Form "Assessment Date Log2"
 	And I enter data in CRF
@@ -434,7 +433,7 @@ Scenario: PB_3.4.2 On a Cross Forms log form to log form, When a query has been 
 @Draft
 Scenario: PB_3.4.3 On a Cross Forms log form to log form, When a query has been answered and closed with the different data and I enter the same data that originally opened the query, then queries are not displayed.
 
-	Given I select a Subject "{subjectName}"
+	Given I select a Subject "sub{Var(num4)}"
 	And I select Form "Assessment Date Log2" in Folder "Test A Single Edit"
 	And I add a new log line
 	And I enter data in CRF
