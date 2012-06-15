@@ -11,15 +11,12 @@ namespace Medidata.RBT
     class NextSubjectNumReplace : IStringReplace
     {
 
-        public string Replace(string input)
+        public string Replace(string[] args)
         {
-            Regex regex_MaxSub = new Regex(@"{nextNumberInStudy\((?<project>.+?),(?<env>.+?),(?<numfield>.+?)\)}");
-            return regex_MaxSub.Replace(input, match =>
-            {
-                return GetNextSubNum(match.Groups["project"].Value, match.Groups["env"].Value, match.Groups["numfield"].Value);
-                //return null;
-            });
+			return GetNextSubNum(args[0], args[1], args[2]);
         }
+
+		public int ArgsCount { get { return 3; } }
 
         private  string GetNextSubNum(string project, string env, string field)
         {

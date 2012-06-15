@@ -5,17 +5,21 @@ using System.Text;
 using OpenQA.Selenium.Support.PageObjects;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Remote;
+using TechTalk.SpecFlow;
 
 namespace Medidata.RBT.PageObjects.Rave
 {
 	public  class PrimaryRecordPage : PageBase
 	{
 
-		public SubjectPage FillNameAndSave(string subjectName, string subjectNumber = "")
+		public SubjectPage FillNameAndSave(Table table)
 		{//TODO: find the text box fo
-
-			RavePagesHelper.FillDataPoint("Subject Name", subjectName, false);
-            RavePagesHelper.FillDataPoint("Subject Number", subjectNumber, false);
+			foreach (var row in table.Rows)
+			{
+				string val  = SpecialStringHelper.Replace(row["Value"]);
+				RavePagesHelper.FillDataPoint(row["Field"], val, false);
+			}
+      
 			IWebElement saveButton = Browser.TryFindElementById("_ctl0_Content_CRFRenderer_footer_SB");
 
 			saveButton.Click();

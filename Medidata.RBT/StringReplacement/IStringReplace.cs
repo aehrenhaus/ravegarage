@@ -7,6 +7,8 @@ namespace Medidata.RBT
 {
     public interface IStringReplace
     {
-        string Replace(string input);
+        string Replace(string[] args);
+
+		int ArgsCount { get; }
     }
 }

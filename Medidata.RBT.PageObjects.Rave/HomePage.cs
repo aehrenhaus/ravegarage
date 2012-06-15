@@ -7,6 +7,7 @@ using OpenQA.Selenium.Support.PageObjects;
 using OpenQA.Selenium;
 
 using System.Collections.Specialized;
+using TechTalk.SpecFlow;
 
 namespace Medidata.RBT.PageObjects.Rave
 {
@@ -46,12 +47,12 @@ namespace Medidata.RBT.PageObjects.Rave
 		}
 
 		//
-		public SubjectPage CreateSubject(string subjectName, string subjectNumber = "")
+		public SubjectPage CreateSubject(Table table)
 		{
 			IWebElement addSubjectLink = Browser.FindElementById("_ctl0_Content_ListDisplayNavigation_lbAddSubject");
 			addSubjectLink.Click();
 			var prp =new PrimaryRecordPage();
-            SubjectPage subPage = prp.FillNameAndSave(subjectName, subjectNumber);
+            SubjectPage subPage = prp.FillNameAndSave(table);
 			
 			return subPage;
 		}

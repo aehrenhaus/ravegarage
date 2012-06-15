@@ -7,6 +7,7 @@ using OpenQA.Selenium.Remote;
 using OpenQA.Selenium;
 using System.IO;
 using System.Drawing.Imaging;
+using System.Collections.Specialized;
 
 namespace Medidata.RBT
 {
@@ -72,6 +73,20 @@ namespace Medidata.RBT
 		{
 			get;
 			private set;
+		}
+
+		public static NameValueCollection Vars
+		{
+			get
+			{
+				var vars = GetContextValue<NameValueCollection>("Vars");
+				if (vars == null)
+				{
+					vars = new NameValueCollection();
+					SetContextValue("Vars",vars);
+				}
+				return vars;
+			}
 		}
 
 		public static T GetContextValue<T>(string key)
