@@ -22,18 +22,24 @@ namespace Medidata.RBT.Features.Rave
 				.SelectSite(siteName);
 		}
 
-
+		/// <summary>
+		/// subjectName accepts replacements
+		/// </summary>
         [StepDefinition(@"I select a Subject ""([^""]*)""")]
         public void ISelectASubject____(string subjectName)
         {
-           
+			CurrentPage = CurrentPage.As<HomePage>().SelectSubject(SpecialStringHelper.Replace(subjectName));
         }
-
+		
+		/// <summary>
+		/// value column accepts replacements
+		/// </summary>
+		/// <param name="table"></param>
         [StepDefinition(@"I create a Subject")]
         public void ICreateASubject____(Table table)
         {
-           
-            CurrentPage = CurrentPage.As<HomePage>().CreateSubject(table);
+			SpecialStringHelper.ReplaceTableColumn(table, "Value");
+			CurrentPage = CurrentPage.As<HomePage>().CreateSubject(table);
         }
 
 		/// <summary>
@@ -53,13 +59,6 @@ namespace Medidata.RBT.Features.Rave
 			CurrentPage = CurrentPage.As<BaseEDCTreePage>().SelectForm(formName);
 		}
 
-		//[StepDefinition(@"I enter <> in <>")]
-		//public void IEnterDataInCRF(string data,string form)
-		//{
-		//    CRFPage page = CurrentPage.As<CRFPage>();
-		//    page.ClickModify();
-		//    page.FillDataPoint(form,data);
-		//}
 
 		[StepDefinition(@"I enter data in CRF")]
 		public void IEnterDataInCRF(Table table)

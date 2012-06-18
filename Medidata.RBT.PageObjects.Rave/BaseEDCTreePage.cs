@@ -10,6 +10,10 @@ namespace Medidata.RBT.PageObjects.Rave
 	{
 		public BaseEDCTreePage SelectFolder(string folderName)
 		{
+			//navigate to subject first, incase it is alreay in a folder.
+			IWebElement subLink = Browser.FindElementById("_ctl0_PgHeader_TabTextHyperlink3");
+			subLink.Click();
+
 			IWebElement formFolderTable = Browser.FindElementById("_ctl0_LeftNav_EDCTaskList_TblTaskItems");
 			formFolderTable.FindElement(By.PartialLinkText(folderName)).Click();
 			return this;

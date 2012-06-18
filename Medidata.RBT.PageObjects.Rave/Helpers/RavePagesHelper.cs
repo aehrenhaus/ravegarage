@@ -40,7 +40,7 @@ namespace Medidata.RBT.PageObjects.Rave
 			var dataEntyErrorDropdown = dropdowns.FirstOrDefault(x =>
 				{
 					var options = new SelectElement(x).Options;
-					return options.Count == 1 && options[0].Text == "Data Entry Error";
+					return options.Count == 1 && (options[0].Text == "Data Entry Error"||options[0].Text == "Entry Error");
 				});
 		//	int dataEntyErrorDropdownCount = dataEntyErrorDropdown == null ? 0 : 1;
 			//int datapointDropdownCount =  dropdowns.Count - dataEntyErrorDropdownCount ;

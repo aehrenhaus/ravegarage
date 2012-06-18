@@ -79,11 +79,14 @@ namespace Medidata.RBT
 		{
 			get
 			{
-				var vars = GetContextValue<NameValueCollection>("Vars");
+				NameValueCollection vars = null;
+				if (FeatureContext.Current.ContainsKey("Vars"))
+					vars = FeatureContext.Current["Vars"] as NameValueCollection;
+
 				if (vars == null)
 				{
 					vars = new NameValueCollection();
-					SetContextValue("Vars",vars);
+					FeatureContext.Current["Vars"] = vars;
 				}
 				return vars;
 			}
@@ -97,7 +100,7 @@ namespace Medidata.RBT
 			}
 			return (T)ScenarioContext.Current[key];
 		}
-
+		
 		public  static void SetContextValue<T>(string key, T val)
 		{
 			ScenarioContext.Current[key] = val;

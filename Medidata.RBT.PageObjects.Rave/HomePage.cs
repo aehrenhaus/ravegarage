@@ -83,21 +83,28 @@ namespace Medidata.RBT.PageObjects.Rave
 
         public SubjectPage SelectSubject(string subjectName)
         {
-			IWebElement link = Browser.FindElementByLinkText(subjectName);
-			link.Click();
-            //IWebElement subjectTable = Browser.TryFindElementById("_ctl0_Content_ListDisplayNavigation_dgObjects");
+			int pageIndex = 1;
+			IWebElement subjectLink = null;
+			int count = 0;
+			do
+			{
+				subjectLink = Browser.TryFindElementByLinkText(subjectName);
+				if (subjectLink != null)
+					break;
+				var pageTable = Browser.FindElementById("_ctl0_Content_ListDisplayNavigation_DlPagination");
+				var pageLinks = pageTable.FindElements(By.XPath(".//a"));
+				count = pageLinks.Count;
+				if (pageIndex == count)
+					break;
 
-			//if (subjectTable != null)
-			//{
-			//    //IWebElement tableLink = subjectTable.tr(By.XPath("//a[text()='" + subjectName + "']"));
-			//    //tableLink.Click();
-			//}
-			//else
-			//{
-			//    IWebElement tabLink = Browser.FindElement(By.XPath("//a[@id='_ctl0_PgHeader_TabTextHyperlink1', text()='" + subjectName + "']"));
-			//    if (tabLink == null)
-			//        throw new Exception("Can't find study to open");
-			//}
+				pageLinks[pageIndex].Click();
+				pageIndex++;
+			} while (true);
+
+			if (subjectLink == null)
+				throw new Exception("Can't find sujbect: " + subjectName);
+			else
+				subjectLink.Click();
             return new SubjectPage();
         }
 

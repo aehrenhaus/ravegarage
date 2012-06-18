@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 using Microsoft.Practices.EnterpriseLibrary.Data;
+using TechTalk.SpecFlow;
 
 namespace Medidata.RBT
 {
@@ -50,6 +51,13 @@ namespace Medidata.RBT
             return input;
         }
 
-
+		public static Table ReplaceTableColumn(Table table, string colName)
+		{
+			foreach (var row in table.Rows)
+			{
+				row[colName] = Replace(row[colName]);
+			}
+			return table;
+		}
     }
 }

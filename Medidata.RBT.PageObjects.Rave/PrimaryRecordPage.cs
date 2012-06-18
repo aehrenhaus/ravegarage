@@ -13,10 +13,10 @@ namespace Medidata.RBT.PageObjects.Rave
 	{
 
 		public SubjectPage FillNameAndSave(Table table)
-		{//TODO: find the text box fo
+		{
 			foreach (var row in table.Rows)
 			{
-				string val  = SpecialStringHelper.Replace(row["Value"]);
+				string val  = row["Value"];
 				RavePagesHelper.FillDataPoint(row["Field"], val, false);
 			}
       
