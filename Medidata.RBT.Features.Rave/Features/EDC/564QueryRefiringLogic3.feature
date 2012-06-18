@@ -63,8 +63,8 @@ Scenario: PB_3.1.1 On a Cross Form Standard form to log form, When a query has b
 	     |Original Axis Number		|10          |
 	     |Current Axis Number		|20          |	
 	And I save the CRF page
-	And I verify Query with message "'Date Informed Consent Signed' is greater. Please revise." with Requires Response is displayed on Field "Start Date"
-	And I verify Query with message "Informed Consent numeric field 2 is not equal to assessment numeric field 2" with Requires Response is displayed on Field "Current Axis Number"
+	And I verify Query with message "'Date Informed Consent Signed' is greater. Please revise." is displayed on Field "Start Date"
+	And I verify Query with message "Informed Consent numeric field 2 is not equal to assessment numeric field 2" is displayed on Field "Current Axis Number"
 	And I take a screenshot
 	And I answer the Query "'Date Informed Consent Signed' is greater. Please revise." on Field "Start Date" with "."
 	And I answer the Query "Informed Consent numeric field 2 is not equal to assessment numeric field 2" on Field "Current Axis Number" with "."
@@ -81,8 +81,8 @@ Scenario: PB_3.1.1 On a Cross Form Standard form to log form, When a query has b
         |Start Date				|08 Jan 2000 |
 	    |Current Axis Number	|20          |
 	And I save the CRF page
-    Then the Query with message "'Date Informed Consent Signed' is greater. Please revise." is not displayed on Field "Start Date"
-	And the Query with message "Informed Consent numeric field 2 is not equal to assessment numeric field 2" is not displayed on Field "Current Axis Number"
+	Then I verify Query with message "'Date Informed Consent Signed' is greater. Please revise." is not displayed on Field "Start Date"
+	And I verify Query with message "Informed Consent numeric field 2 is not equal to assessment numeric field 2" is not displayed on Field "Current Axis Number"
 	And I take a screenshot
 
 #----------------------------------------------------------------------------------------------------------------------------------------
@@ -139,8 +139,8 @@ originally opened the query, then queries are displayed.
 	    |Current Axis Number	|20          |
 	And I save the CRF page
 	And I open log line 2
-	Then the Query with message "'Date Informed Consent Signed' is greater. Please revise." is displayed on Field "Start Date"
-	And the Query with message "Informed Consent numeric field 2 is not equal to assessment numeric field 2" is displayed on Field "Current Axis Number"
+	Then I verify Query with message "'Date Informed Consent Signed' is greater. Please revise." is displayed on Field "Start Date"
+	And I verify Query with message "Informed Consent numeric field 2 is not equal to assessment numeric field 2" is displayed on Field "Current Axis Number"
 	And I take a screenshot
 	
 #----------------------------------------------------------------------------------------------------------------------------------------
@@ -201,8 +201,8 @@ Scenario: PB_3.2.1 On a Cross Folder Standard form to log form, When a query has
         |Start Date				|09 Jan 2000 |
 	    |Current Axis Number	|99          |
 	And I save the CRF page
-	Then the Query with message "" is not displayed on Field "Start Date"
-	And the Query with message "" is not displayed on Field "Current Axis Number"
+	Then I verify Query with message "" is not displayed on Field "Start Date"
+	And I verify Query with message "" is not displayed on Field "Current Axis Number"
 	And I take a screenshot
 
 #----------------------------------------------------------------------------------------------------------------------------------------
@@ -260,8 +260,8 @@ Scenario: PB_3.2.3 On a Cross Folder Standard form to log form, When a query has
         |Start Date				|08 Jan 2000 |
 	    |Current Axis Number	|98          |
 	And I save the CRF page
-	Then the Query with message "" is displayed on Field "Start Date"
-	And the Query with message "" is displayed on Field "Current Axis Number"
+	Then I verify Query with message "" is displayed on Field "Start Date"
+	And I verify Query with message "" is displayed on Field "Current Axis Number"
 	And I take a screenshot
 	
 #----------------------------------------------------------------------------------------------------------------------------------------
@@ -363,6 +363,7 @@ Scenario: PB_3.4.1 On a Cross Forms log form to log form, When a query has been 
 	    |End Date				|10 Feb 2000 |
 	    |Original Axis Number   |100         |
 	    |Current Axis Number	|66          |
+	And I save the CRF page
 	And I take a screenshot
 	And I select Form "Adverse Events" in Folder "Screening"
 	And I enter data in CRF
@@ -371,8 +372,9 @@ Scenario: PB_3.4.1 On a Cross Forms log form to log form, When a query has been 
 	    |End Date			|09 Feb 2000 |
 	    |AE Number			|101         |
 	    |Duration			|66          |
+	And I save the CRF page
 	And I take a screenshot
-	And I select Form ""Concomitant Medications"
+	And I select Form "Concomitant Medications"
 	And I open log line 1
 	And I verify Query with message "{message}" with Requires Response is displayed on Field "Start Date"
 	And I verify Query with message "{message}" with Requires Response is displayed on Field "End Date"
@@ -385,6 +387,7 @@ Scenario: PB_3.4.1 On a Cross Forms log form to log form, When a query has been 
 	And I answer the Query "{message}" on Field "Numeric Field 2" with "{answer}"
 	And I save the CRF page
 	And I take a screenshot
+	And I open log line 1
 	And I enter data in CRF
 	  |Field					|Data        |
       |Start Date				|11 Jan 2000 |
@@ -411,10 +414,10 @@ Scenario: PB_3.4.1 On a Cross Forms log form to log form, When a query has been 
 	    |Original Axis Number		|100         |
 	    |Current Axis Number		|66          |
 	And I save the CRF page
-	Then the Query with message "" is not displayed on Field "Start Date"
-	And the Query with message "" is not displayed on Field "End Date"
-	And the Query with message "" is not displayed on Field "Original Axis Number"
-	And the Query with message "" is not displayed on Field "Current Axis Number"
+	Then I verify Query with message "" is not displayed on Field "Start Date"
+	And I verify Requires Response Query with message "" is not displayed on Field "End Date"
+	And I verify Requires Response Query with message "" is not displayed on Field "Original Axis Number"
+	And I verify Requires Response Query with message "" is not displayed on Field "Current Axis Number"
 	And I take a screenshot
 
 #----------------------------------------------------------------------------------------------------------------------------------------	
@@ -445,7 +448,7 @@ Scenario: PB_3.4.3 On a Cross Forms log form to log form, When a query has been 
 	And I add a new log line
 	And I enter data in CRF
 	    |Field					|Data        |
-        |Star Date				|10 Feb 2000 |
+        |Start Date				|10 Feb 2000 |
 	    |End Date				|10 Mar 2000 |
 	    |Original Axis Number   |200         |
 	    |Current Axis Number	|77          |
@@ -459,8 +462,9 @@ Scenario: PB_3.4.3 On a Cross Forms log form to log form, When a query has been 
 	    |End Date			|09 Mar 2000 |
 	    |AE Number			|201         |
 	    |Duration			|77          |
+	And I save the CRF page
 	And I take a screenshot	
-	And I select Form ""Concomitant Medications"
+	And I select Form "Concomitant Medications"
 	And I open log line 2
 	And I verify Query with message "{message}" with Requires Response is displayed on Field "Start Date"
 	And I verify Query with message "{message}" with Requires Response is displayed on Field "End Date"
@@ -500,10 +504,10 @@ Scenario: PB_3.4.3 On a Cross Forms log form to log form, When a query has been 
 	     |Original Axis Number		|200         |
 	     |Current Axis Number		|77          |
 	And I save the CRF page
-	Then the Query with message "" is displayed on Field "Start Date"
-	And the Query with message "" is displayed on Field "End Date"
-	And the Query with message "" is displayed on Field "Original Axis Number" 
-	And the Query with message "" is displayed on Field "Current Axis Number"
+	Then I verify Query with message "" is displayed on Field "Start Date"
+	And I verify Query with message "" is displayed on Field "End Date"
+	And I verify Query with message "" is displayed on Field "Original Axis Number" 
+	And I verify Query with message "" is displayed on Field "Current Axis Number"
 	And I take a screenshot
 
 #----------------------------------------------------------------------------------------------------------------------------------------	
