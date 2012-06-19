@@ -86,20 +86,22 @@ namespace Medidata.RBT.Features.Rave
 		}
 
 
-		[StepDefinition(@"the Requires Response Query with message ""([^""]*)"" is not displayed on Field ""([^""]*)""")]
+		[StepDefinition(@"I verify Requires Response Query with message ""([^""]*)"" is not displayed on Field ""([^""]*)""")]
 		public void TheRequiresResponseQueryWithMessageIsNotDisplayedOnField____(string message, string fieldNames)
 		{
 		}
 
-		[StepDefinition(@"the Query with message ""([^""]*)"" is displayed on Field ""([^""]*)""")]
+        [StepDefinition(@"I verify Query with message ""([^""]*)"" is displayed on Field ""([^""]*)""")]
 		public void TheQueryWithMessageIsDisplayedOnField____(string message, string fieldNames)
 		{
 		}
 
 
-		[StepDefinition(@"the Query with message ""([^""]*)"" is not displayed on Field ""([^""]*)""")]
+		[StepDefinition(@"I verify Query with message ""([^""]*)"" is not displayed on Field ""([^""]*)""")]
 		public void TheQueryWithMessageIsNotDisplayedOnField____(string message, string fieldNames)
 		{
+            //bool canFind = CurrentPage.As<CRFPage>().CanFindQueryMessage(fieldNames, message);
+            //Assert.IsFalse(canFind, "Can find message");
 		}
 
 		[StepDefinition(@"I answer the Query ""([^""]*)"" on Field ""([^""]*)"" with ""([^""]*)""")]
