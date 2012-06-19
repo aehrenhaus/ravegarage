@@ -55,13 +55,13 @@ namespace Medidata.RBT.PageObjects.Rave
 					throw new Exception("Expection date format for field " + label + " , got: " + val);
 				}
 				//assign 3 parts of the date format
-				textboxes[0].SendKeys(dateParts[0]);
+                textboxes[0].SetText(dateParts[0]);
 				new SelectElement(dropdowns[0]).SelectByValue(dateParts[1]);
-				textboxes[1].SendKeys(dateParts[2]);
+				textboxes[1].SetText(dateParts[2]);
 			}
 			else if (textboxes.Count == 1 && dropdowns.Count == 0) //normal text filed
 			{
-				textboxes[0].SendKeys(val);
+				textboxes[0].SetText(val);
 			}
 			else
 			{

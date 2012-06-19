@@ -9,6 +9,22 @@ namespace Medidata.RBT.PageObjects
 {
 	public static class RemoteWebDriverExtend
 	{
+        public static ICollection<IWebElement> FindTextboxes(this ISearchContext driver)
+        {
+            return driver.FindElements(By.XPath(".//input[@type='text']"));
+        }
+
+        public static ICollection<IWebElement> FindCheckboxes(this ISearchContext driver)
+        {
+            return driver.FindElements(By.XPath(".//input[@type='checkbox']"));
+        }
+
+        public static void SetText(this IWebElement driver, string text)
+        {
+            driver.Clear();
+            driver.SendKeys(text);
+        }
+
 		public static IWebElement TryFindElementBy(this ISearchContext driver,  By by)
 		{
 			IWebElement ele = null;

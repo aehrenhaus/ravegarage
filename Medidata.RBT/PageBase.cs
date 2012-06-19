@@ -10,6 +10,8 @@ using OpenQA.Selenium.IE;
 using System.IO;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
+using Medidata.RBT.PageObjects;
+
 
 namespace Medidata.RBT
 {
@@ -97,7 +99,7 @@ namespace Medidata.RBT
 
 		public virtual IPage Type(string name, string text)
 		{
-			GetElementByName(name).SendKeys(text);
+			GetElementByName(name).SetText(text);
 			return this;
 		}
 
