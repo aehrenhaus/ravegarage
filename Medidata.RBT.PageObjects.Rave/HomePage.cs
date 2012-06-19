@@ -76,7 +76,7 @@ namespace Medidata.RBT.PageObjects.Rave
 		/// <returns></returns>
 		public HomePage Search(string textToSearch)
 		{
-			SearchBox.SendKeys(textToSearch);
+			SearchBox.SetText(textToSearch);
 			SearchButton.Click();
 			return this;
 		}

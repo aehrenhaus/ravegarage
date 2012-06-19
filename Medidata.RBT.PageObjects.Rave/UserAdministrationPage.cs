@@ -83,13 +83,13 @@ namespace Medidata.RBT.PageObjects.Rave
 				new SelectElement(Authenticator).SelectByText(by.Authenticator);
 
 			if (by.LastName != null)
-				LastName.SendKeys(by.LastName);
+				LastName.SetText(by.LastName);
 
 			if (by.Site != null)
-				Site.SendKeys(by.Site);
+                Site.SetText(by.Site);
 
 			if (by.Login != null)
-				Login.SendKeys(by.Login);
+                Login.SetText(by.Login);
 
 			if (by.Role != null)
 				new SelectElement(Role).SelectByText(by.Role);

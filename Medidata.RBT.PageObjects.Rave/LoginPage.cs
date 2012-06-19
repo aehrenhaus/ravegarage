@@ -32,8 +32,8 @@ namespace Medidata.RBT.PageObjects.Rave
 
 		public HomePage Login(string userName, string password)
 		{
-			UsernameBox.SendKeys(userName);
-			PasswordBox.SendKeys(password);
+			UsernameBox.SetText(userName);
+            PasswordBox.SetText(password);
 			LoginButton.Click();
 
 			return new HomePage();

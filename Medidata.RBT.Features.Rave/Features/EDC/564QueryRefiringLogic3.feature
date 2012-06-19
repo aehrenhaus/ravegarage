@@ -16,19 +16,19 @@ Background:
 		|editcheck  |Edit Check Study 3	|CDM1 |Edit Check Site 3	|30001      |
     And Role "cdm1" has Action "Query"
 	And Study "Edit Check Study 3" has Draft "Draft 1" includes Edit Checks from the table below
-		| Edit Check												| Folder    | Form						| Field							| Query Message                                                   |
-		| *Greater Than Log same form								| Week 1    |Concomitant Medications	|End Date						| Start Date can not be greater than End Date.              |
-		| *Greater Than Open Query Cross Folder						| Week 1    |Concomitant Medications	|Start Date						| 'Date Informed Consent Signed' can not be greater than.                                 |
-		| *Greater Than Open Query Log Cross Form					| Screening |Concomitant Medications	|Start Date						| 'Date Informed Consent Signed' is greater. Please revise.              |
-		| *Is Greater Than or Equal To Open Query Log Cross Form	| Screening |Concomitant Medications	|Original Axis Number			| Numeric Field is greater than or Equal to Numeric Field on Log. |
-		| *Is Less Than Log same form								| Week 1    |Concomitant Medications	|Current Axis Number			| Date is Less Than Date on first Number field.                   |
-		| *Is Less Than Open Query Log Cross Form					| Screening |Concomitant Medications	|End Date						| Date is Less Than Date on the first log form.                   |
-		| *Is Less Than To Open Query Log Cross Form				| Screening |Concomitant Medications	|Start Date						| Date can not be less than.                                      |
-		| *Is Not Equal to Open Query Cross Folder					| Week 1    |Concomitant Medications	|Current Axis Number			| Numeric Field 2 is not equal Numeric Field 2.                   |
-		| *Is Not Equal To Open Query Log Cross Form				| Screening |Concomitant Medications	|Current Axis Number			|Numeric 2 can not equal each other.|
-		|*Is Not Equal to Open Query Log Cross Form*				| Screening	|Concomitant Medications	|Current Axis Number			|Informed Consent numeric field 2 is not equal to assessment numeric field 2|
-		|*Is Not Equal To Open Query Log Same form 					| Week 1	|Informed Consent			|Current Distribution Number	|Numeric fields are not equal.|
-		|*Greater Than or Equal To Open Query Log same form 		| Week 1	|Informed Consent			|End Date						|'Date Informed Consent Signed' is not equal to 'Current Date'.|
+		| Edit Check                                             | Folder    | Form                    | Field                       | Query Message                                                                                                 |
+		| *Greater Than Log same form                            | Week 1    | Concomitant Medications | End Date                    | Start Date can not be greater than End Date.                                                                  |
+		| *Greater Than Open Query Cross Folder                  | Week 1    | Concomitant Medications | Start Date                  | 'Date Informed Consent Signed' can not be greater than.                                                       |
+		| *Greater Than Open Query Log Cross Form                | Screening | Concomitant Medications | Start Date                  | 'Date Informed Consent Signed' is greater. Please revise.                                                     |
+		| *Is Greater Than or Equal To Open Query Log Cross Form | Screening | Concomitant Medications | Original Axis Number        | Numeric Field is greater than or Equal to Numeric Field on Log.                                               |
+		| *Is Less Than Log same form                            | Week 1    | Concomitant Medications | Current Axis Number         | Date is Less Than Date on first Number field.                                                                 |
+		| *Is Less Than Open Query Log Cross Form                | Screening | Concomitant Medications | End Date                    | Date is Less Than Date on the first log form.                                                                 |
+		| *Is Less Than To Open Query Log Cross Form             | Screening | Concomitant Medications | Start Date                  | Date can not be less than.                                                                                    |
+		| *Is Not Equal to Open Query Cross Folder               | Week 1    | Concomitant Medications | Current Axis Number         | Numeric Field 2 is not equal Numeric Field 2.                                                                 |
+		| *Is Not Equal To Open Query Log Cross Form             | Screening | Concomitant Medications | Current Axis Number         | Numeric 2 can not equal each other.                                                                           |
+		| *Is Not Equal to Open Query Log Cross Form*            | Screening | Concomitant Medications | Current Axis Number         | Informed Consent 'Current Distribution Number' is not equal to Concomitant Medications 'Current Axis Number'. |
+		| *Is Not Equal To Open Query Log Same form              | Week 1    | Informed Consent        | Current Distribution Number | Numeric fields are not equal.                                                                                 |
+		| *Greater Than or Equal To Open Query Log same form     | Week 1    | Informed Consent        | End Date                    | 'Date Informed Consent Signed' is not equal to 'Current Date'.                                                |
 	And Draft "Draft 1" in Study "Edit Check Study 3" has been published to CRF Version "<RANDOMNUMBER>" 
 	And CRF Version "<RANDOMNUMBER>" in Study "Edit Check Study 3" has been pushed to Site "Edit Check Site 3" in Environment "Prod"
 	And I select Study "Edit Check Study 3" and Site "Edit Check Site 3"
@@ -63,17 +63,18 @@ Scenario: PB_3.1.1 On a Cross Form Standard form to log form, When a query has b
 	     |Original Axis Number		|10          |
 	     |Current Axis Number		|20          |	
 	And I save the CRF page
+	And I open log line 1
 	And I verify Query with message "'Date Informed Consent Signed' is greater. Please revise." is displayed on Field "Start Date"
-	And I verify Query with message "Informed Consent numeric field 2 is not equal to assessment numeric field 2" is displayed on Field "Current Axis Number"
+	And I verify Query with message "Informed Consent 'Current Distribution Number' is not equal to Concomitant Medications 'Current Axis Number'." is displayed on Field "Current Axis Number"
 	And I take a screenshot
 	And I answer the Query "'Date Informed Consent Signed' is greater. Please revise." on Field "Start Date" with "."
-	And I answer the Query "Informed Consent numeric field 2 is not equal to assessment numeric field 2" on Field "Current Axis Number" with "."
+	And I answer the Query "Informed Consent 'Current Distribution Number' is not equal to Concomitant Medications 'Current Axis Number'." on Field "Current Axis Number" with "."
 	And I save the CRF page
 	And I take a screenshot
 
 
 	# Given closed Query with message "Informed Consent Date 1 is greater. Please revise" exists on Field "Start Date" in Form "Concomitant Medications" in Folder "Screening" in Subject "SUB301" in Site "Edit Check Site 3" in Study "Edit Check Study 3"
-	# And closed Query with message "Informed Consent numeric field 2 is not equal to assessment numeric field 2" exists on Field "Current Axis Number" in Form "Concomitant Medications" in Folder "Screening" in Subject "SUB301" in Site "Edit Check Site 3" in Study "Edit Check Study 3"
+	# And closed Query with message "Informed Consent 'Current Distribution Number' is not equal to Concomitant Medications 'Current Axis Number'." exists on Field "Current Axis Number" in Form "Concomitant Medications" in Folder "Screening" in Subject "SUB301" in Site "Edit Check Site 3" in Study "Edit Check Study 3"
 	#And I am on CRF page "Concomitant Medications" in Folder "Screening" in Subject "SUB301" in Site "Edit Check Site 3" in Study "Edit Check Study 3"
 	And I open log line 1
 	When I enter data in CRF
@@ -81,8 +82,9 @@ Scenario: PB_3.1.1 On a Cross Form Standard form to log form, When a query has b
         |Start Date				|08 Jan 2000 |
 	    |Current Axis Number	|20          |
 	And I save the CRF page
+	And I open log line 1
 	Then I verify Query with message "'Date Informed Consent Signed' is greater. Please revise." is not displayed on Field "Start Date"
-	And I verify Query with message "Informed Consent numeric field 2 is not equal to assessment numeric field 2" is not displayed on Field "Current Axis Number"
+	And I verify Query with message "Informed Consent 'Current Distribution Number' is not equal to Concomitant Medications 'Current Axis Number'." is not displayed on Field "Current Axis Number"
 	And I take a screenshot
 
 #----------------------------------------------------------------------------------------------------------------------------------------
@@ -96,7 +98,7 @@ originally opened the query, then queries are displayed in SQL logs.
     Then I should see the logging data for queries 
 		|ProjectName        |SiteNumber  |SiteName          |Environment |SubjectName  |CheckActionInstanceName     |CheckActionInstanceDataPageName |CheckActionRecordPosition |CheckActionFieldName		|CheckActionFieldData |TriggerFieldInstanceName |TriggerFieldInstanceDatapageName 	|TriggerFieldRecordPosition |TriggerFieldName        |TriggerFieldData |EditCheckName                               |MarkingGroupName |QueryMessage                                                                |EventTime  |
 		|Edit Check Study 3 |30001       |Edit Check Site 3 |PROD        |SUB301       |Screening					|Concomitant Medications            |1                         |Start Date				|08 Jan 2000          |Screening       |Concomitant Medications			 	 	|1                          |Assessment Date 1       |08 Jan 2000      |*Greater Than Open Query Log Cross Form     |Marking Group 1  |'Date Informed Consent Signed' is greater. Please revise.                          |{DateTime} |
-		|Edit Check Study 3 |30001       |Edit Check Site 3 |PROD        |SUB301       |Screening					|Concomitant Medications            |1                         |Current Axis Number		|20                   |Screening       |Concomitant Medications             	|1                          |Numeric Field 2         |20               |*Is Not Equal to Open Query Log Cross Form* |Site             |Informed Consent numeric field 2 is not equal to assessment numeric field 2 |{DateTime} |
+		|Edit Check Study 3 |30001       |Edit Check Site 3 |PROD        |SUB301       |Screening					|Concomitant Medications            |1                         |Current Axis Number		|20                   |Screening       |Concomitant Medications             	|1                          |Numeric Field 2         |20               |*Is Not Equal to Open Query Log Cross Form* |Site             |Informed Consent 'Current Distribution Number' is not equal to Concomitant Medications 'Current Axis Number'. |{DateTime} |
 	And I take a screenshot
 
 #----------------------------------------------------------------------------------------------------------------------------------------
@@ -118,14 +120,14 @@ originally opened the query, then queries are displayed.
 	And I save the CRF page
 	And I open log line 2
 	And I verify Query with message "'Date Informed Consent Signed' is greater. Please revise." with Requires Response is displayed on Field "Start Date"
-	And I verify Query with message "Informed Consent numeric field 2 is not equal to assessment numeric field 2" with Requires Response is displayed on Field "Current Axis Number"
+	And I verify Query with message "Informed Consent 'Current Distribution Number' is not equal to Concomitant Medications 'Current Axis Number'." with Requires Response is displayed on Field "Current Axis Number"
     And I take a screenshot
 	And I enter data in CRF
 		|Field					|Data        |
         |Start Date				|09 Jan 2000 |
 	    |Current Axis Number	|19          |
 	And I answer the Query "'Date Informed Consent Signed' is greater. Please revise." on Field "Start Date" with "."
-	And I answer the Query "Informed Consent numeric field 2 is not equal to assessment numeric field 2" on Field "Current Axis Number" with "."
+	And I answer the Query "Informed Consent 'Current Distribution Number' is not equal to Concomitant Medications 'Current Axis Number'." on Field "Current Axis Number" with "."
 	And I save the CRF page
 	And I take a screenshot	
 	And I open log line 2
@@ -140,7 +142,7 @@ originally opened the query, then queries are displayed.
 	And I save the CRF page
 	And I open log line 2
 	Then I verify Query with message "'Date Informed Consent Signed' is greater. Please revise." is displayed on Field "Start Date"
-	And I verify Query with message "Informed Consent numeric field 2 is not equal to assessment numeric field 2" is displayed on Field "Current Axis Number"
+	And I verify Query with message "Informed Consent 'Current Distribution Number' is not equal to Concomitant Medications 'Current Axis Number'." is displayed on Field "Current Axis Number"
 	And I take a screenshot
 	
 #----------------------------------------------------------------------------------------------------------------------------------------
@@ -153,7 +155,7 @@ Scenario: PB_3.1.4 On a Cross Form Standard form to log form, When a query has b
     Then I should not see the logging data for queries 
 		|ProjectName        |SiteNumber  |SiteName          |Environment |SubjectName  |CheckActionInstanceName     |CheckActionInstanceDataPageName |CheckActionRecordPosition |CheckActionFieldName |CheckActionFieldData |TriggerFieldInstanceName |TriggerFieldInstanceDatapageName |TriggerFieldRecordPosition |TriggerFieldName        |TriggerFieldData |EditCheckName                               |MarkingGroupName |QueryMessage                                                                |EventTime  |
 		|Edit Check Study 3 |30001       |Edit Check Site 3 |PROD        |SUB301       |Screening          |Concomitant Medications            |2                         |Start Date    |07 Jan 2000          |Screening       |Concomitant Medications             |2                          |Assessment Date 1       |07 Jan 2000      |*Greater Than Open Query Log Cross Form     |Marking Group 1  |'Date Informed Consent Signed' is greater. Please revise.                          |{DateTime} |
-		|Edit Check Study 3 |30001       |Edit Check Site 3 |PROD        |SUB301       |Screening          |Concomitant Medications            |2                         |Current Axis Number      |18                   |Screening       |Concomitant Medications             |2                          |Numeric Field 2         |18               |*Is Not Equal to Open Query Log Cross Form* |Site             |Informed Consent numeric field 2 is not equal to assessment numeric field 2 |{DateTime} |
+		|Edit Check Study 3 |30001       |Edit Check Site 3 |PROD        |SUB301       |Screening          |Concomitant Medications            |2                         |Current Axis Number      |18                   |Screening       |Concomitant Medications             |2                          |Numeric Field 2         |18               |*Is Not Equal to Open Query Log Cross Form* |Site             |Informed Consent 'Current Distribution Number' is not equal to Concomitant Medications 'Current Axis Number'. |{DateTime} |
 	And I take a screenshot	
 
 #----------------------------------------------------------------------------------------------------------------------------------------	
@@ -185,6 +187,7 @@ Scenario: PB_3.2.1 On a Cross Folder Standard form to log form, When a query has
 		|Original Axis Number	|100          |
 		|Current Axis Number	|99           |	
 	And I save the CRF page
+	And I open log line 1
 	And I verify Query with message "{message}" with Requires Response is displayed on Field "Start Date"
 	And I verify Query with message "{message}" with Requires Response is displayed on Field "Current Axis Number"
 	And I take a screenshot
@@ -482,6 +485,7 @@ Scenario: PB_3.4.3 On a Cross Forms log form to log form, When a query has been 
 	And I answer the Query "{message}" on Field "Original Axis Number" with "{answer}"
 	And I answer the Query "{message}" on Field "Current Axis Number" with "{answer}"
 	And I save the CRF page
+	And I open log line 2 
 	And I verify Field "Start Date" has NO Query
 	And I verify Field "End Date" has NO Query
 	And I verify Field "Original Axis Number" has NO Query
@@ -504,6 +508,7 @@ Scenario: PB_3.4.3 On a Cross Forms log form to log form, When a query has been 
 	     |Original Axis Number		|200         |
 	     |Current Axis Number		|77          |
 	And I save the CRF page
+	And I open log line 2
 	Then I verify Query with message "" is displayed on Field "Start Date"
 	And I verify Query with message "" is displayed on Field "End Date"
 	And I verify Query with message "" is displayed on Field "Original Axis Number" 

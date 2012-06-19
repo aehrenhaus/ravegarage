@@ -17,8 +17,32 @@ namespace Medidata.RBT.PageObjects.Rave
 			RavePagesHelper.FillDataPoint(label, val);
 			return this;
 		}
-		
-			
+
+        private IWebElement GetQueryResponseTextbox(string message, string fieldName)
+        {
+            var fieldArea = RavePagesHelper.GetDatapointLabelContainer(fieldName);
+            var queryTable = fieldArea.FindElements(
+                By.XPath(".//td[@class='crf_preText']/table"));
+            foreach (var table in queryTable)
+            {
+                if (table.Text.IndexOf(message) != -1)
+                {
+                    return table.FindTextboxes().ElementAt(0);
+                }
+            }
+            return null;
+        }
+
+        public CRFPage AnswerQuery(string message, string fieldName, string answer)
+        {
+            var queryTextbox = GetQueryResponseTextbox(message, fieldName);
+            if (queryTextbox == null)
+                throw new Exception(String.Format("Query textbox not found for message: {0}, field: {1}", message, fieldName));
+
+             queryTextbox.SetText(answer);
+            return this;
+        }
+
 		public CRFPage AddLogLine()
 		{
 			IWebElement saveButton = Browser.TryFindElementById("_ctl0_Content_R_log_log_AddLine");
@@ -52,6 +76,19 @@ namespace Medidata.RBT.PageObjects.Rave
         {
            var dpLeftTd =  RavePagesHelper.GetDatapointLabelContainer(fieldName);
            return dpLeftTd.Text.IndexOf(message) != -1;
+        }
+
+        public bool QueryExistOnField(string fieldName)
+        {
+            var fieldArea = RavePagesHelper.GetDatapointLabelContainer(fieldName);
+            var queryTable = fieldArea.FindElements(
+                By.XPath(".//td[@class='crf_preText']/table"));
+            return queryTable.Count > 0; 
+        }
+
+        public bool CanFindQueryRequiringResponse(string fieldName, string message)
+        {
+            return (GetQueryResponseTextbox(message, fieldName) != null);
         }
 	}
 }
