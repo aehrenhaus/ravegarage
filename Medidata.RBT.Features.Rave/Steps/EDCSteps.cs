@@ -11,11 +11,10 @@ using Medidata.RBT;
 namespace Medidata.RBT.Features.Rave
 {
 	[Binding]
-	public class EDCSteps : BrowserStepsBase
+	public partial class EDCSteps : BrowserStepsBase
 	{
-
 		[StepDefinition(@"I select Study ""([^""]*)"" and Site ""([^""]*)""")]
-		public void ISelectStudy____AndSite____(string studyName,string siteName)
+		public void ISelectStudy____AndSite____(string studyName, string siteName)
 		{
 			CurrentPage = CurrentPage.As<HomePage>()
 				.SelectStudy(studyName)
@@ -25,22 +24,22 @@ namespace Medidata.RBT.Features.Rave
 		/// <summary>
 		/// subjectName accepts replacements
 		/// </summary>
-        [StepDefinition(@"I select a Subject ""([^""]*)""")]
-        public void ISelectASubject____(string subjectName)
-        {
+		[StepDefinition(@"I select a Subject ""([^""]*)""")]
+		public void ISelectASubject____(string subjectName)
+		{
 			CurrentPage = CurrentPage.As<HomePage>().SelectSubject(SpecialStringHelper.Replace(subjectName));
-        }
-		
+		}
+
 		/// <summary>
 		/// value column accepts replacements
 		/// </summary>
 		/// <param name="table"></param>
-        [StepDefinition(@"I create a Subject")]
-        public void ICreateASubject____(Table table)
-        {
+		[StepDefinition(@"I create a Subject")]
+		public void ICreateASubject____(Table table)
+		{
 			SpecialStringHelper.ReplaceTableColumn(table, "Value");
 			CurrentPage = CurrentPage.As<HomePage>().CreateSubject(table);
-        }
+		}
 
 		/// <summary>
 		/// 
@@ -50,7 +49,7 @@ namespace Medidata.RBT.Features.Rave
 		public void ISelectFolder____(string folderName)
 		{
 			CurrentPage = CurrentPage.As<BaseEDCTreePage>().SelectFolder(folderName);
-		
+
 		}
 
 		[StepDefinition(@"I select Form ""([^""]*)""")]
@@ -71,121 +70,42 @@ namespace Medidata.RBT.Features.Rave
 			}
 		}
 
-        
-        [StepDefinition(@"the Query with message ""([^""]*)"" is not displayed on Field ""([^""]*)"" on log line (\d+)")]
-		public void ThenIVerifyTheQueriesAreNotDisplayedOnField____OnLogline____(string message , string fieldNames, int logLine)
+		[StepDefinition(@"I enter data in CRF and save")]
+		public void IEnterDataInCRFAndSave(Table table)
 		{
-            bool canFind = CurrentPage.As<CRFPage>().OpenLogLine(logLine).CanFindQueryMessage(fieldNames, message);
-            Assert.IsFalse(canFind,"Can find message");
+			IEnterDataInCRF(table);
+			ISaveCRF();
 		}
 
-
-		[StepDefinition(@"I verify Query with message ""([^""]*)"" with Requires Response is displayed on Field ""([^""]*)""")]
-		public void TheRequiresResponseQueryWithMessageIsDisplayedOnField____(string message, string fieldNames)
-		{
-            bool canFind = CurrentPage.As<CRFPage>().CanFindQueryRequiringResponse(fieldNames, message);
-            Assert.IsTrue(canFind, "Can't find message");
-		}
-
-
-		[StepDefinition(@"I verify Requires Response Query with message ""([^""]*)"" is not displayed on Field ""([^""]*)""")]
-		public void TheRequiresResponseQueryWithMessageIsNotDisplayedOnField____(string message, string fieldNames)
-		{
-            bool canFind = CurrentPage.As<CRFPage>().CanFindQueryRequiringResponse(fieldNames, message);
-            Assert.IsFalse(canFind, "Can find message");
-		}
-
-        [StepDefinition(@"I verify Query with message ""([^""]*)"" is displayed on Field ""([^""]*)""")]
-		public void TheQueryWithMessageIsDisplayedOnField____(string message, string fieldNames)
-		{
-            bool canFind = CurrentPage.As<CRFPage>().CanFindQueryMessage(fieldNames, message);
-            Assert.IsTrue(canFind, "Can't find message");
-		}
-
-
-		[StepDefinition(@"I verify Query with message ""([^""]*)"" is not displayed on Field ""([^""]*)""")]
-		public void TheQueryWithMessageIsNotDisplayedOnField____(string message, string fieldNames)
-		{
-            bool canFind = CurrentPage.As<CRFPage>().CanFindQueryMessage(fieldNames, message);
-            Assert.IsFalse(canFind, "Can find message");
-		}
-
-		[StepDefinition(@"I answer the Query ""([^""]*)"" on Field ""([^""]*)"" with ""([^""]*)""")]
-		public void IAnswerTheQueryOnField____With____(string message, string fieldName, string answer)
-		{
-            CRFPage page = CurrentPage.As<CRFPage>();
-            page.AnswerQuery(message, fieldName, answer);
-		
-		}
-
-		[StepDefinition(@"I answer the Query ""([^""]*)"" on Field ""([^""]*)""")]
-		public void IAnswerTheQueryOn____(string message, string fieldNames)
-		{
-            CRFPage page = CurrentPage.As<CRFPage>();
-            page.AnswerQuery(message, fieldNames, System.DateTime.Today.Ticks.ToString());
-		}
-
-        [StepDefinition(@"I save the ""[^""]*"" page")]
-		[StepDefinition(@"I save the CRF page")]
-		public void ISaveCRF()
-		{
-			CurrentPage = CurrentPage.As<CRFPage>().SaveForm();
-		}
-
-		[StepDefinition(@"I close the Query on Field ""([^""]*)""")]
-		public void ICloseTheQueryOnField____(string fieldNames)
-		{
-	
-		}
-
-		[StepDefinition(@"I verify Field ""([^""]*)"" has NO Query")]
-		public void IVerifyField____HasNOQuery(string fieldNames)
-		{
-            bool canFind = CurrentPage.As<CRFPage>().QueryExistOnField(fieldNames);
-            Assert.IsFalse(canFind, "Can find message");
-		}
 
 
 		[StepDefinition(@"I select Form ""([^""]*)"" in Folder ""([^""]*)""")]
-		public void ISelectForm____InFolder____(string formName,string folderName)
+		public void ISelectForm____InFolder____(string formName, string folderName)
 		{
 			CurrentPage = CurrentPage.As<BaseEDCTreePage>().SelectFolder(folderName);
 			CurrentPage = CurrentPage.As<BaseEDCTreePage>().SelectForm(formName);
 		}
 
 
-
-		[StepDefinition(@"I add a new log line")]
-		public void IAddANewLogLine()
+		[StepDefinition(@"I save the ""[^""]*"" page")]
+		[StepDefinition(@"I save the CRF page")]
+		public void ISaveCRF()
 		{
-			CurrentPage.As<CRFPage>().AddLogLine();
+			CurrentPage = CurrentPage.As<CRFPage>().SaveForm();
 		}
 
-
-		[StepDefinition(@"I open log line ([^""]*)")]
-		public void IOpenLogLine____(int lineNum)
+		[StepDefinition(@"I cancel the ""[^""]*"" page")]
+		[StepDefinition(@"I cancel the CRF page")]
+		public void ICancelCRF()
 		{
-			CurrentPage.As<CRFPage>().OpenLogLine(lineNum);
+			CurrentPage = CurrentPage.As<CRFPage>().CancelForm();
 		}
-
-
-		[StepDefinition(@"I open log line ([^""]*) for edit")]
-		public void IOpenLogLine____ForEdit(int lineNum)
-		{
-			CurrentPage.As<CRFPage>().OpenLogLine(lineNum);
-		}
-
 		
-        [StepDefinition(@"closed Query with message ""([^""]*)"" exists on Field ""([^""]*)"" in Form ""([^""]*)"" in Folder ""([^""]*)"" in Subject ""([^""]*)"" in Site ""([^""]*)"" in Study ""([^""]*)""")]
-        public void ClosedQueriesExistOnFields____InForm____InFolder___InSubject____InSite____InStudy____(string message, string fieldNames, string formName, string folderName, string subjectName,string siteName,string studyName)
-        {
-            
-        }
 
 		[StepDefinition(@"I am on CRF page ""([^""]*)"" in Folder ""([^""]*)"" in Subject ""([^""]*)"" in Site ""([^""]*)"" in Study ""([^""]*)""")]
 		public void IAmOnCRFPage____InFolder___InSubject____InSite____InStudy____(string formName, string folderName, string subjectName, string siteName, string studyName)
 		{
-            CurrentPage = CurrentPage.As<HomePage>()
+			CurrentPage = CurrentPage.As<HomePage>()
 				.SelectStudy(studyName)
 				.SelectSite(siteName)
 				.SelectSubject(subjectName)
@@ -193,11 +113,5 @@ namespace Medidata.RBT.Features.Rave
 				.SelectForm(formName);
 		}
 
-        [StepDefinition(@"I verify the queries are not displayed on fields ""([^""]*)"" and ""([^""]*)"" on first logline")]
-        public void IVerify_TheQueries_AreNotDisplayed_OnFields(string fields1, string fields2)
-        {
-            
-        }
-		
 	}
 }

@@ -49,7 +49,16 @@ namespace Medidata.RBT.PageObjects.Rave
 			saveButton.Click();
 			return this;
 		}
-		public CRFPage OpenLogLine(int lineNum)
+
+		public CRFPage OpenLastLogline()
+		{
+			var editButtons = Browser.FindElements(
+	By.XPath("//table[@id='log']//input[@src='../../Img/i_pen.gif']"));
+			editButtons[editButtons.Count-1].Click();
+			return this;
+		}
+
+		public CRFPage OpenLogline(int lineNum)
 		{
 			var editButtons = Browser.FindElements(
 				By.XPath("//table[@id='log']//input[@src='../../Img/i_pen.gif']"));
@@ -60,15 +69,29 @@ namespace Medidata.RBT.PageObjects.Rave
 		public CRFPage ClickModify()
 		{
 			IWebElement editButton = Browser.TryFindElementById("_ctl0_Content_R_header_SG_PencilButton");
+			if (editButton == null)
+				throw new Exception("Can not find the modify button");
 			editButton.Click();
 			return this;
 		}
+			
+		public CRFPage CancelForm()
+		{
+			IWebElement btn = Browser.TryFindElementById("_ctl0_Content_R_footer_CB");
+			if (btn == null)
+				throw new Exception("Can not find the Cancel button");
+			btn.Click();
+			return this;
+		}
 
+		
 
 		public CRFPage SaveForm()
 		{
-			IWebElement saveButton = Browser.TryFindElementById("_ctl0_Content_R_footer_SB");
-			saveButton.Click();
+			IWebElement btn = Browser.TryFindElementById("_ctl0_Content_R_footer_SB");
+			if (btn == null)
+				throw new Exception("Can not find the Save button");
+			btn.Click();
 			return this;
 		}
 
