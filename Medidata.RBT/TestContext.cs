@@ -17,15 +17,17 @@ namespace Medidata.RBT
 
 		public static RemoteWebDriver Browser
 		{
-			get
-			{
-				return GetContextValue<RemoteWebDriver>("RemoteWebDriver");
-			}
-			set
-			{
+			get;
+			set;
+			//get
+			//{
+			//    return GetContextValue<RemoteWebDriver>("RemoteWebDriver");
+			//}
+			//set
+			//{
 
-				ScenarioContext.Current["RemoteWebDriver"] = value;
-			}
+			//    ScenarioContext.Current["RemoteWebDriver"] = value;
+			//}
 		}
 
 		public static IPage CurrentPage
@@ -110,6 +112,15 @@ namespace Medidata.RBT
 		public static void FeatureSetup()
 		{
 			CurrentFeatureStartTime = DateTime.Now;
+			if (RBTConfiguration.Default.OneBrowserPerFeature)
+				OpenBrower();
+		}
+
+		[AfterFeature()]
+		public static void FeatureTeardown()
+		{
+			if (RBTConfiguration.Default.OneBrowserPerFeature)
+				CloseBrower();
 		}
 
 		[BeforeScenario()]
@@ -130,24 +141,34 @@ namespace Medidata.RBT
 			//DbHelper.RestoreSnapshot();
 
 			//LAST step: open browser
+			if(!RBTConfiguration.Default.OneBrowserPerFeature)
+				OpenBrower();
+		}
+
+		private static void OpenBrower()
+		{
 			if (Browser == null)
 			{
 				Browser = PageBase.OpenBrowser();
+			}
+		}
+
+		private static void CloseBrower()
+		{
+			//Close browser
+			if (Browser != null)
+			{
+				if (RBTConfiguration.Default.AutoCloseBrowser)
+					Browser.Close();
+				Browser = null;
 			}
 		}
 		
 		[AfterScenario]
 		public void ScenarioTearDown()
 		{
-			//Close browser
-			if (Browser != null)
-			{
-			//	TrySaveScreenShot(Browser);
-				
-				if(RBTConfiguration.Default.AutoCloseBrowser)
-					Browser.Close();
-				Browser = null;
-			}
+			if(!RBTConfiguration.Default.OneBrowserPerFeature)
+				CloseBrower();
 
 		}
 

@@ -19,6 +19,15 @@ Background:
 	#And I select Study "Edit Check Study 3" and Site "Edit Check Site 3"
 
 #----------------------------------------------------------------------------------------------------------------------------------------	
+
+Scenario: AAA
+	
+	Given I select Study "Edit Check Study 3" and Site "Edit Check Site 3"
+
+Scenario: BBB
+	
+	Given I select Study "Edit Check Study 3" and Site "Edit Check Site 3"
+
 @release_564_Patch11
 @PB_1.1.1
 @Draft
