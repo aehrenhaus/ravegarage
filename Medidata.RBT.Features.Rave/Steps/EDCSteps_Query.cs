@@ -21,7 +21,7 @@ namespace Medidata.RBT.Features.Rave
             Assert.IsFalse(canFind, "Can find message");
 		}
 
-
+		[StepDefinition(@"I verify Requires Response Query with message ""([^""]*)"" is displayed on Field ""([^""]*)""")]
 		[StepDefinition(@"I verify Query with message ""([^""]*)"" with Requires Response is displayed on Field ""([^""]*)""")]
 		public void TheRequiresResponseQueryWithMessageIsDisplayedOnField____(string message, string fieldNames)
 		{			
@@ -60,6 +60,17 @@ namespace Medidata.RBT.Features.Rave
 
 		}
 
+
+		[StepDefinition(@"I cancel the Query ""([^""]*)"" on Field ""([^""]*)""")]
+		public void ICancelTheQueryOnField____With____(string message, string fieldName)
+		{
+			//temp comment out
+			//CRFPage page = CurrentPage.As<CRFPage>();
+			//page.CancelQuery(message, fieldName, answer);
+
+		}
+
+
 		[StepDefinition(@"I answer the Query ""([^""]*)"" on Field ""([^""]*)""")]
 		public void IAnswerTheQueryOn____(string message, string fieldNames)
 		{
@@ -67,7 +78,11 @@ namespace Medidata.RBT.Features.Rave
             page.AnswerQuery(message, fieldNames, System.DateTime.Today.Ticks.ToString());
 		}
 
+		[StepDefinition(@"I close the Query ""([^""]*)"" on Field ""([^""]*)""")]
+		public void ICloseTheQuery____OnField____(string message, string fieldNames)
+		{
 
+		}
 
 		[StepDefinition(@"I close the Query on Field ""([^""]*)""")]
 		public void ICloseTheQueryOnField____(string fieldNames)

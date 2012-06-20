@@ -60,6 +60,8 @@ namespace Medidata.RBT.PageObjects.Rave
 
 		public CRFPage OpenLogline(int lineNum)
 		{
+			//TODO: this should not work in a non -log line form
+
 			var editButtons = Browser.FindElements(
 				By.XPath("//table[@id='log']//input[@src='../../Img/i_pen.gif']"));
 			editButtons[lineNum-1].Click();
