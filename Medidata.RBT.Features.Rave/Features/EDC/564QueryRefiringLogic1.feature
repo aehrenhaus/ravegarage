@@ -16,40 +16,41 @@ Background:
  #   And role "cdm1" has Query actions
 	#And Draft "Draft 3" in Study "Edit Check Study 3" has been published to CRF Version "<RANDOMNUMBER>" 
 	#And CRF Version "<RANDOMNUMBER>" in Study "Edit Check Study 3" has been pushed to Site "Edit Check Site 3" in Environment "Prod"
-	#And I select Study "Edit Check Study 3" and Site "Edit Check Site 3"
+	And I select Study "Edit Check Study 3" and Site "Edit Check Site 1"
 
 #----------------------------------------------------------------------------------------------------------------------------------------	
+
+
 @release_564_Patch11
 @PB_1.1.1
 @Draft
 Scenario: PB_1.1.1 On a Cross Forms Standard form to log form, when a query has been answered and closed with the same data and I enter the same data that originally opened the query, then queries are not displayed. 
 	
-	Given I select Study "Edit Check Study 3" and Site "Edit Check Site 3"
 	And I create a Subject
 		| Field            | Value                                                    |
 		| Subject Number   | {NextSubjectNum(Edit Check Study 3,prod,Subject Number)} |
-		| Subject Initials | sub101                                                   |
+		| Subject Initials | sub                                                   |
 	And I select Folder "Screening"
 	And I select Form "Informed Consent"
-	And I enter data in CRF
+	And I enter data in CRF and save
 	    | Field                        | Data        |
 	    | Date Informed Consent Signed | 09 Jan 2000 |
 	    | End Date                     | 10 Jan 2000 |
 	    | Original Distribution Number | 10          |
 	    | Current Distribution Number  | 19          |
-	And I save the CRF page		
+
 	And I take a screenshot
 	And I select Form "Concomitant Medications" in Folder "Screening"
-	And I enter data in CRF
+	And I enter data in CRF and save
 	    | Field                | Data        |
 	    | Start Date           | 08 Jan 2000 |
 	    | End Date             | 11 Jan 2000 |
 	    | Original Axis Number | 10          |
 	    | Current Axis Number  | 20          |
-	And I save the CRF page
+
 	And I open log line 1
 	And I verify Query with message "'Date Informed Consent Signed' is greater. Please revise." is displayed on Field "Start Date"
-    And I verify Query with message "{message}" with Requires Response is displayed on Field "Current Axis Number"
+    And I verify Requires Response Query with message "{message}" is displayed on Field "Current Axis Number"
 	And I take a screenshot
 	And I answer the Query "{message}" on Field "Start Date"
 	And I answer the Query "{message}" on Field "Current Axis Number"
@@ -59,24 +60,22 @@ Scenario: PB_1.1.1 On a Cross Forms Standard form to log form, when a query has 
 	And I close the Query on Field "Current Axis Number"
 	And I save the CRF page
 	And I take a screenshot
-	And I open log line 1
-	And I enter data in CRF
+	And I enter data in CRF on log line 1 and save and reopen
 		| Field               | Data        |
 		| Start Date          | 09 Jan 2000 |
 		| Current Axis Number | 19          |
-	And I save the CRF page
-	And I open log line 1
+	
     And I verify Requires Response Query with message "{message}" is not displayed on Field "Start Date"
 	And I verify Requires Response Query with message "{message}" is not displayed on Field "Current Axis Number"
 	And I take a screenshot
 	
 	# Given closed queries exist on fields "Start Date" and "Current Axis Number" in folder "Screening" in form "Concomitant Medications" in subject "SUB101"
-	And I open log line 1
-	And I enter data in CRF
+
+	And I enter data in CRF and save
 		| Field               | Data        |
-		| Start Date          | 09 Jan 2000 |
-		| Current Axis Number | 19          |
-	And I save the CRF page
+		| Start Date          | 08 Jan 2000 |
+		| Current Axis Number | 20          |
+
 	And I open log line 1
 	Then I verify Requires Response Query with message "{message}" is not displayed on Field "Start Date"
 	And I verify Requires Response Query with message "{message}" is not displayed on Field "Current Axis Number"
@@ -102,46 +101,38 @@ Scenario: PB_1.1.2
 Scenario: PB_1.1.3
 	And I select a Subject "sub{MaxSubjectNum(Edit Check Study 3,prod,Subject Number)}"
 	And I select Form "Concomitant Medications" in Folder "Screening"
-	And I add a new log line
-	And I enter data in CRF
+	And I enter data in CRF on a new log line and save and reopen
 	    | Field                | Data        |
 	    | Start Date           | 07 Jan 2000 |
 	    | End Date             | 12 Jan 2000 |
 	    | Original Axis Number | 10          |
 	    | Current Axis Number  | 18          |
-	And I save the CRF page
-	And I open log line 2
-	And I verify Query with message "{message}" with Requires Response is displayed on Field "Start Date"
-    And I verify Query with message "{message}" with Requires Response is displayed on Field "Current Axis Number"
+
+	And I verify Requires Response Query with message "{message}" is displayed on Field "Start Date"
+    And I verify Requires Response Query with message "{\" is displayed on Field ""
 	And I take a screenshot
 	And I enter data in CRF
 		| Field               | Data        |
 		| Start Date          | 09 Jan 2000 |
 		| Current Axis Number | 19          |
-
 	And I answer the Query "{message}" on Field "Start Date"
 	And I answer the Query "{message}" on Field "Current Axis Number"
 	And I save the CRF page
 	And I open log line 2	
 	And I close the Query on Field "Start Date"
 	And I close the Query on Field "Current Axis Number"
-	And I close the Query on Field "{fieldNames}"
 	And I save the CRF page
 	And I take a screenshot
 	And I open log line 2
 	And I verify Requires Response Query with message "{message}" is not displayed on Field "Start Date"
 	And I verify Requires Response Query with message "{message}" is not displayed on Field "Current Axis Number"
-	
 	And I take a screenshot
-	
-	And I enter data in CRF
+	And I enter data in CRF on log line 2 and save and reopen
 		| Field               | Data        |
 		| Start Date          | 07 Jan 2000 |
 		| Current Axis Number | 18          |
-	And I save the CRF page
-	And I open log line 1
-	Then I verify Query with message "{message}" with Requires Response is displayed on Field "Start Date"
-	And I verify Query with message "{message}" with Requires Response is displayed on Field "Current Axis Number"
+	Then I verify Requires Response Query with message "{message}" is displayed on Field "Start Date"
+	And I verify Requires Response Query with message "{message}" is displayed on Field "Current Axis Number"
 	And I take a screenshot
 
 #----------------------------------------------------------------------------------------------------------------------------------------	
@@ -163,20 +154,18 @@ Scenario: PB_1.1.4
 @Draft
 Scenario: PB_1.2.1 On a Cross Folders, Standard form to log form. Folder "Screening" enter and save data on form "Informed Consent"
 Folder "Week 1" enter and save data on form "Concomitant Medications"
-	Given I select Study "Edit Check Study 3" and Site "Edit Check Site 3"	
+
     And I create a Subject
-	| Field            | Value                                                    |
-	| Subject Number   | {NextSubjectNum(Edit Check Study 3,prod,Subject Number)} |
-	| Subject Initials | sub102                                                   |
-	And I select Folder "Screening"
-	And I select Form "Informed Consent"
-	And I enter data in CRF
+		| Field            | Value                                                    |
+		| Subject Number   | {NextSubjectNum(Edit Check Study 3,prod,Subject Number)} |
+		| Subject Initials | sub                                                      |
+	And I select Form "Informed Consent" in Folder "Screening"
+	And I enter data in CRF and save
 	    | Field                        | Data        |
 	    | Date Informed Consent Signed | 10 Jan 2000 |
 	    | End Date                     | 10 Feb 2000 |
 	    | Original Distribution Number | 100         |
 	    | Current Distribution Number  | 200         |
-	And I save the CRF page
 	And I take a screenshot
 	And I select Form "Concomitant Medications" in Folder "Week 1"
     And I enter data in CRF and save
@@ -185,13 +174,14 @@ Folder "Week 1" enter and save data on form "Concomitant Medications"
 	    | End Date             | 11 Feb 2000 |
 	    | Original Axis Number | 100         |
 	    | Current Axis Number  | 99          |
-
-	And I verify Query with message "{message}" with Requires Response is displayed on Field "Start Date"
-    And I verify Query with message "{message}" with Requires Response is displayed on Field "Current Axis Number"
+	And I open log line 1
+	And I verify Requires Response Query with message "{message}" is displayed on Field "Start Date"
+    And I verify Requires Response Query with message "{message}" is displayed on Field "Current Axis Number"
 	And I take a screenshot
 	And I answer the Query "{message}" on Field "Start Date"
 	And I answer the Query "{message}" on Field "Current Axis Number"
 	And I save the CRF page
+	And I open log line 1
 	And I close the Query on Field "Start Date"
 	And I close the Query on Field "Current Axis Number"
 	And I save the CRF page
@@ -209,9 +199,10 @@ Folder "Week 1" enter and save data on form "Concomitant Medications"
 	# Given closed queries exist on fields "Start Date" and "Current Axis Number" in folder "Week 1" in form "Concomitant Medications" in subject "SUB102"
 	When I enter data in CRF and save
 		| Field                | Data        |
-		| Start Date           | 10 Jan 2000 |
-		| Original Axis Number | 201         |
-		| Current Axis Number  | 200         |
+		| Start Date           | 09 Jan 2000 |
+		| Original Axis Number | 100         |
+		| Current Axis Number  | 99          |
+	And I open log line 1
 	Then I verify Requires Response Query with message "{message}" is not displayed on Field "Start Date"
 	And I verify Requires Response Query with message "{message}" is not displayed on Field "Current Axis Number"	
 	And I take a screenshot
@@ -236,14 +227,14 @@ Scenario: PB_1.2.2
 Scenario: PB_1.2.3 
 	And I select a Subject "sub{MaxSubjectNum(Edit Check Study 3,prod,Subject Number)}"
 	And I select Form "Concomitant Medications" in Folder "Week 1"
-	And I enter data in CRF on the last log line and save and reopen
+	And I enter data in CRF on a new log line and save and reopen
 	    | Field                | Data        |
 	    | Start Date           | 08 Jan 2000 |
 	    | End Date             | 12 Feb 2000 |
 	    | Original Axis Number | 100         |
 	    | Current Axis Number  | 98          |
-	And I verify Query with message "{message}" with Requires Response is displayed on Field "Start Date"
-    And I verify Query with message "{message}" with Requires Response is displayed on Field "Current Axis Number"
+	And I verify Requires Response Query with message "{message}" is displayed on Field "Start Date"
+    And I verify Requires Response Query with message "{message}" is displayed on Field "Current Axis Number"
 	And I take a screenshot
 	And I answer the Query "{message}" on Field "Start Date"
 	And I answer the Query "{message}" on Field "Current Axis Number"
@@ -263,13 +254,14 @@ Scenario: PB_1.2.3
 	And I take a screenshot
 	And I cancel the CRF page
 	#Given closed queries exist on fields "Start Date" and "Current Axis Number" in folder "Week 1" in form "Concomitant Medications" in subject "SUB102"
-	And I enter data in CRF on a new log line and save and reopen
+	When I enter data in CRF on the last log line and save and reopen
 		| Field                | Data        |
 		| Start Date           | 08 Jan 2000 |
 		| Original Axis Number | 100         |
 		| Current Axis Number  | 98          |
-	Then I verify Requires Response Query with message "{message}" is not displayed on Field "Start Date"
-	And I verify Requires Response Query with message "{message}" is not displayed on Field "Current Axis Number"	
+	Then I verify Requires Response Query with message "{message}" is displayed on Field "Start Date"
+	And I verify Requires Response Query with message "{message}" is displayed on Field "Current Axis Number"
+	
 	And I take a screenshot
 
 #----------------------------------------------------------------------------------------------------------------------------------------	
@@ -292,12 +284,11 @@ Scenario: PB_1.2.4
 Scenario: PB_1.3.1 Cross Forms log form to Standard form
  Folder "Week 1" enter and save data on forms "Concomitant Medications" and "Informed Consent"
 
-
-	Given I select Study "Edit Check Study 3" and Site "Edit Check Site 3"		  
+  
     And I create a Subject
 		| Field            | Value                                                    |
 		| Subject Number   | {NextSubjectNum(Edit Check Study 3,prod,Subject Number)} |
-		| Subject Initials | sub103                                                   |
+		| Subject Initials | sub                                                      |
 	And I select Form "Concomitant Medications" in Folder "Week 1"
 	And I enter data in CRF and save
 	    | Field                | Data        |
@@ -305,20 +296,24 @@ Scenario: PB_1.3.1 Cross Forms log form to Standard form
 	    | End Date             | 11 Jan 2000 |
 	    | Original Axis Number | 100         |
 	    | Current Axis Number  | 101         |
-	And I verify Query with message "{message}" with Requires Response is displayed on Field "End Date"
-	And I verify Query with message "{message}" with Requires Response is displayed on Field "Current Axis Number"
+	And I open log line 1
+	And I verify Requires Response Query with message "{message}" is displayed on Field "End Date"
+	And I verify Requires Response Query with message "{message}" is displayed on Field "Current Axis Number"
 	And I take a screenshot
 	And I answer the Query "{message}" on Field "End Date"
 	And I answer the Query "{message}" on Field "Current Axis Number"
 	And I save the CRF page
+	And I open log line 1
 	And I close the Query on Field "End Date"
 	And I close the Query on Field "Current Axis Number"
 	And I save the CRF page
 	And I take a screenshot
-	And I enter data in CRF on the last log line and save and reopen
+	And I open log line 1
+	And I enter data in CRF and save
 		| Field               | Data        |
 		| End Date            | 12 Jan 2000 |
 		| Current Axis Number | 100         | 
+	And I open log line 1
 	And I verify Requires Response Query with message "{message}" is not displayed on Field "End Date"
 	And I verify Requires Response Query with message "{message}" is not displayed on Field "Current Axis Number"
 	And I take a screenshot
@@ -326,6 +321,7 @@ Scenario: PB_1.3.1 Cross Forms log form to Standard form
 		| Field               | Data        |
 		| End Date            | 11 Jan 2000 |
 		| Current Axis Number | 101         |
+	And I open log line 1
 	And I verify Requires Response Query with message "{message}" is not displayed on Field "End Date"
 	And I verify Requires Response Query with message "{message}" is not displayed on Field "Current Axis Number"
 	And I take a screenshot
@@ -348,7 +344,7 @@ Scenario: PB_1.3.2
 @PB_1.3.3
 @Draft
 Scenario: PB_1.3.3
-	Given I select Study "Edit Check Study 3" and Site "Edit Check Site 3"	
+
 	And I select a Subject "sub{MaxSubjectNum(Edit Check Study 3,prod,Subject Number)}"
 	And I select Form "Concomitant Medications" in Folder "Week 1"
     And I enter data in CRF on a new log line and save and reopen
@@ -357,13 +353,14 @@ Scenario: PB_1.3.3
 	    | End Date             | 14 Feb 2000 |
 	    | Original Axis Number | 1999        |
 	    | Current Axis Number  | 2000        |
-	And I verify Query with message "{message}" with Requires Response is displayed on Field "End Date"
-	And I verify Query with message "{message}" with Requires Response is displayed on Field "Current Axis Number"
+	And I verify Requires Response Query with message "{message}" is displayed on Field "End Date"
+	And I verify Requires Response Query with message "{message}" is displayed on Field "Current Axis Number"
 	And I take a screenshot
 	And I answer the Query "{message}" on Field "End Date"
 	And I answer the Query "{message}" on Field "Current Axis Number"
 	And I save the CRF page
-	And I enter data in CRF on the last log line and save and reopen
+	And I open log line 1
+	And I enter data in CRF
 		| Field               | Data        |
 		| End Date            | 15 Feb 2000 |
 		| Current Axis Number | 1999        |
@@ -371,16 +368,18 @@ Scenario: PB_1.3.3
 	And I close the Query on Field "Current Axis Number"
 	And I save the CRF page
 	And I take a screenshot
-	And I open the last log line
+	And I open log line 2
 	And I verify Requires Response Query with message "{message}" is not displayed on Field "End Date"
 	And I verify Requires Response Query with message "{message}" is not displayed on Field "Current Axis Number"
 	And I take a screenshot
-	And I enter data in CRF and save
+	When I enter data in CRF and save
 		| Field               | Data        |
 		| End Date            | 14 Feb 2000 |
 		| Current Axis Number | 2000        |
 	And I open the last log line
-	#And I verify new queries did fire on "End Date" field and "Current Axis Number" fields
+
+	Then I verify Requires Response Query with message "{message}" is displayed on Field "End Date"
+	And I verify Requires Response Query with message "{message}" is displayed on Field "Current Axis Number"
 	And I take a screenshot
 	
 #----------------------------------------------------------------------------------------------------------------------------------------	
@@ -401,25 +400,25 @@ Scenario: PB_1.3.4
 @PB_1.3.5
 @Draft
 Scenario: PB_1.3.5
+
 	And I select a Subject "sub{MaxSubjectNum(Edit Check Study 3,prod,Subject Number)}"
-	And I select Form "Informed Consent" within folder "Week 1"
-    And I enter data in CRF
-	And I save the CRF page
-	    |Field                   |Data        |
-        |Date Informed Consent Signed |12 Jan 2000 |
-	    |End Date |11 Jan 2000 |
-	    |Original Distribution Number         |100         |
-	    |Current Distribution Number         |101         |	
-	And I verify Query with message "{message}" with Requires Response is displayed on Field "End Date"
-	And I verify Query with message "{message}" with Requires Response is displayed on Field "Current Distribution Number"
+	And I select Form "Informed Consent" in Folder "Week 1"
+    And I enter data in CRF and save
+	    | Field                        | Data        |
+	    | Date Informed Consent Signed | 12 Jan 2000 |
+	    | End Date                     | 11 Jan 2000 |
+	    | Original Distribution Number | 100         |
+	    | Current Distribution Number  | 101         |
+	And I verify Requires Response Query with message "{message}" is displayed on Field "End Date"
+	And I verify Requires Response Query with message "{message}" is displayed on Field "Current Distribution Number"
 	And I take a screenshot
 	And I answer the Query "{message}" on Field "End Date"
 	And I answer the Query "{message}" on Field "Current Distribution Number"
 	And I save the CRF page
 	And I enter data in CRF
-	    |Field                   |Data        |
-	    |End Date |13 Jan 2000 |
-	    |Current Distribution Number         |100         |	
+	    | Field                       | Data        |
+	    | End Date                    | 13 Jan 2000 |
+	    | Current Distribution Number | 100         |
 	And I close the Query on Field "End Date"
 	And I close the Query on Field "Current Distribution Number"
 	And I save the CRF page
@@ -428,11 +427,13 @@ Scenario: PB_1.3.5
 	And I verify Requires Response Query with message "{message}" is not displayed on Field "Current Distribution Number"
 	And I take a screenshot
     And I enter data in CRF
-	    |Field                   |Data        |
-	    |End Date |11 Jan 2000 |
-	    |Current Distribution Number         |101         |
+	    | Field                       | Data        |
+	    | End Date                    | 11 Jan 2000 |
+	    | Current Distribution Number | 101         |
 	And I save the CRF page
-	And I verify new queries did fire on "End Date" and "Current Distribution Number" fields
+
+	Then I verify Requires Response Query with message "{message}" is displayed on Field "End Date"
+	And I verify Requires Response Query with message "{message}" is displayed on Field "Current Distribution Number"
 	And I take a screenshot
 	
 #----------------------------------------------------------------------------------------------------------------------------------------	
@@ -456,56 +457,67 @@ Scenario: PB_1.4.1 On a Cross Forms log form to log form,
  Folder "Screening" enter and save data on forms "Concomitant Medications" and "Adverse Events"
 			  
     And I create a Subject
-	| Field            | Value                                                          |
-	| Subject Number   | {NextSubjectNum(Edit Check Study 3,prod,Subject Number)} |
-	| Subject Initials |sub104                                                            |
-	And I select Folder "Screening"
-	And I select Form "Concomitant Medications"
-	And I enter data in CRF
-	And I save the CRF page
-	    |Field             |Data        |
-        |Start Date |10 Jan 2000 |
-	    |End Date |10 Feb 2000 |
-	    |Original Axis Number   |100         |
-	    |Current Axis Number   |66          |
+		| Field            | Value                                                    |
+		| Subject Number   | {NextSubjectNum(Edit Check Study 3,prod,Subject Number)} |
+		| Subject Initials | sub                                                      |
+	And I select Form "Concomitant Medications" in Folder "Screening"
+	And I enter data in CRF and save
+	    | Field                | Data        |
+	    | Start Date           | 10 Jan 2000 |
+	    | End Date             | 10 Feb 2000 |
+	    | Original Axis Number | 100         |
+	    | Current Axis Number  | 66          |
 	And I take a screenshot
-	And I select Form "Adverse Events" within folder "Screening"
-    And I enter data in CRF
-	And I save the CRF page
-	    |Field           |Data        |
-        |Start Date    |11 Jan 2000 |
-	    |End Date    |09 Feb 2000 |
-	    |Original Axis Number |101         |
-	    |Current Axis Number |66          |
+	And I select Form "Adverse Events" in Folder "Screening"
+    And I enter data in CRF and save
+	    | Field      | Data        |
+	    | Start Date | 11 Jan 2000 |
+	    | End Date   | 09 Feb 2000 |
+	    | AE Number  | 101         |
+	    | Duration   | 66          |
 	And I take a screenshot
-    And I select Form "Concomitant Medications"		
-	And I verify Query with message "{message}" with Requires Response is displayed on Field "Start Date"
-	And I verify Query with message "{message}" with Requires Response is displayed on Field "End Date"
-	And I verify Query with message "{message}" with Requires Response is displayed on Field "Original Axis Number"
-	And I verify Query with message "{message}" with Requires Response is displayed on Field "Current Axis Number"
+    And I select Form "Concomitant Medications"	
+	And I open log line 1
+	And I verify Requires Response Query with message "{message}" is displayed on Field "Start Date"
+	And I verify Requires Response Query with message "{message}" is displayed on Field "End Date"
+	And I verify Requires Response Query with message "{message}" is displayed on Field "Original Axis Number"
+	And I verify Requires Response Query with message "{message}" is displayed on Field "Current Axis Number"
 	And I take a screenshot
-	And I answer the queries on "Start Date", "End Date", "Original Axis Number" and "Current Axis Number" fields
+	And I answer the Query "{message}" on Field "Start Date"
+	And I answer the Query "{message}" on Field "End Date"
+	And I answer the Query "{message}" on Field "Original Axis Number"
+	And I answer the Query "{message}" on Field "Current Axis Number"
 	And I save the CRF page
-	And I close the queries on "Start Date", "End Date", "Original Axis Number" and "Current Axis Number" fields
+	And I open log line 1
+	And I close the Query "{message}" on Field "Start Date"
+	And I close the Query "{message}" on Field "End Date"
+	And I close the Query "{message}" on Field "Original Axis Number"
+	And I close the Query "{message}" on Field "Current Axis Number"
 	And I save the CRF page
 	And I take a screenshot
-	And I enter data in CRF
-	    |Field             |Data        |
-        |Start Date |11 Jan 2000 |
-	    |End Date |09 Feb 2000 |
-	    |Original Axis Number   |102         |
-	    |Current Axis Number   |65          |	
-	And I save the CRF page
-	And I verify the queries did not fire on "Start Date", "End Date", "Original Axis Number" and "Current Axis Number" fields
+	And I enter data in CRF on log line 1 and save
+	    | Field                | Data        |
+	    | Start Date           | 11 Jan 2000 |
+	    | End Date             | 09 Feb 2000 |
+	    | Original Axis Number | 102         |
+	    | Current Axis Number  | 65          |	
+	And I open log line 1
+	And I verify Requires Response Query with message "{message}" is not displayed on Field "Start Date"
+	And I verify Requires Response Query with message "{message}" is not displayed on Field "End Date"
+	And I verify Requires Response Query with message "{message}" is not displayed on Field "Original Axis Number"
+	And I verify Requires Response Query with message "{message}" is not displayed on Field "Current Axis Number"
 	And I take a screenshot
-	And I enter data in CRF
-		|Field             |Data        |
-        |Start Date |10 Jan 2000 |
-	    |End Date |10 Feb 2000 |
-	    |Original Axis Number   |100         |
-	    |Current Axis Number   |66          |
-	And I save the CRF page	
-	And I verify new queries did not fire on "Start Date", "End Date", "Original Axis Number" and "Current Axis Number" fields
+	When I enter data in CRF and save
+		| Field                | Data        |
+		| Start Date           | 10 Jan 2000 |
+		| End Date             | 10 Feb 2000 |
+		| Original Axis Number | 100         |
+		| Current Axis Number  | 66          |
+	And I open log line 1
+	Then I verify Requires Response Query with message "{message}" is not displayed on Field "Start Date"
+	And I verify Requires Response Query with message "{message}" is not displayed on Field "End Date"
+	And I verify Requires Response Query with message "{message}" is not displayed on Field "Original Axis Number"
+	And I verify Requires Response Query with message "{message}" is not displayed on Field "Current Axis Number"
 	And I take a screenshot
 	
 #----------------------------------------------------------------------------------------------------------------------------------------	
@@ -529,53 +541,68 @@ Scenario: PB_1.4.2
 @Draft
 Scenario: PB_1.4.3   
 	And I select a Subject "sub{MaxSubjectNum(Edit Check Study 3,prod,Subject Number)}"
-	And I select Form "Concomitant Medications" within folder "Screening"
-    And I add a new log line
-	And I enter data in CRF
+	And I select Form "Concomitant Medications" in Folder "Screening"
+	And I enter data in CRF on a new log line and save
 	    | Field                | Data        |
 	    | Start Date           | 10 Feb 2000 |
 	    | End Date             | 10 Mar 2000 |
 	    | Original Axis Number | 200         |
 	    | Current Axis Number  | 77          |
 	And I take a screenshot
-	And I select Form "Adverse Events" within folder "Screening"
-    And I add a new log line
-	And I enter data in CRF
-	    | Field        | Data        |
-	    | Date Field 1 | 11 Feb 2000 |
-	    | End Date     | 09 Mar 2000 |
-	    | AE Number    | 201         |
-	    | Duration     | 77          |
+	And I select Form "Adverse Events" in Folder "Screening"
+	And I enter data in CRF on a new log line and save
+	    | Field      | Data        |
+	    | Start Date | 11 Feb 2000 |
+	    | End Date   | 09 Mar 2000 |
+	    | AE Number  | 201         |
+	    | Duration   | 77          |
 	And I take a screenshot
 	And I select Form "Concomitant Medications"
 	And I open log line 2
 	And I take a screenshot
-	And I verify Query with message "{message}" with Requires Response is displayed on Field "Start Date"
-	And I verify Query with message "{message}" with Requires Response is displayed on Field "End Date"
-	And I verify Query with message "{message}" with Requires Response is displayed on Field "Original Axis Number"
-	And I verify Query with message "{message}" with Requires Response is displayed on Field "Current Axis Number"
+	And I verify Requires Response Query with message "{message}" is displayed on Field "Start Date"
+	And I verify Requires Response Query with message "{message}" is displayed on Field "End Date"
+	And I verify Requires Response Query with message "{message}" is displayed on Field "Original Axis Number"
+	And I verify Requires Response Query with message "{message}" is displayed on Field "Current Axis Number"
 	And I take a screenshot
-	And I answer the queries on "Start Date", "End Date", "Original Axis Number" and "Current Axis Number" fields
+	And I answer the Query "{message}" on Field "Start Date"
+	And I answer the Query "{message}" on Field "End Date"
+	And I answer the Query "{message}" on Field "Original Axis Number"
+	And I answer the Query "{message}" on Field "Current Axis Number"
+
 	And I save the CRF page
+	And I open log line 2
     And I enter data in CRF
-	    |Field             |Data        |
-        |Start Date |11 Feb 2000 |
-	    |End Date |09 Mar 2000 |
-	    |Original Axis Number   |202         |
-	    |Current Axis Number   |76          |		
-	And I close the queries on "Start Date", "End Date", "Original Axis Number" and "Current Axis Number" fields
+	    | Field                | Data        |
+	    | Start Date           | 11 Feb 2000 |
+	    | End Date             | 09 Mar 2000 |
+	    | Original Axis Number | 202         |
+	    | Current Axis Number  | 76          |		
+	And I close the Query "{message}" on Field "Start Date"
+	And I close the Query "{message}" on Field "End Date"
+	And I close the Query "{message}" on Field "Original Axis Number"
+	And I close the Query "{message}" on Field "Current Axis Number"
 	And I save the CRF page
+	And I open log line 2
 	And I take a screenshot
-	And I verify the queries did not fire on "Start Date", "End Date", "Original Axis Number" and "Current Axis Number" fields
+
+	And I verify Requires Response Query with message "{message}" is not displayed on Field "Start Date"
+	And I verify Requires Response Query with message "{message}" is not displayed on Field "End Date"
+	And I verify Requires Response Query with message "{message}" is not displayed on Field "Original Axis Number"
+	And I verify Requires Response Query with message "{message}" is not displayed on Field "Current Axis Number"
 	And I take a screenshot
-	And I enter data in CRF
-		|Field             |Data        |
-        |Start Date |10 Feb 2000 |
-	    |End Date |10 Mar 2000 |
-	    |Original Axis Number   |200         |
-	    |Current Axis Number   |77          |
+	When I enter data in CRF
+		| Field                | Data        |
+		| Start Date           | 10 Feb 2000 |
+		| End Date             | 10 Mar 2000 |
+		| Original Axis Number | 200         |
+		| Current Axis Number  | 77          |
 	And I save the CRF page	
-	And I verify new queries did fire on "Start Date", "End Date", "Original Axis Number" and "Current Axis Number" fields
+	And I open log line 2
+	Then I verify Requires Response Query with message "{message}" is displayed on Field "Start Date"
+	And I verify Requires Response Query with message "ff" is displayed on Field "End Date"
+	And I verify Requires Response Query with message "{message}" is displayed on Field "Original Axis Number"
+	And I verify Requires Response Query with message "{message}" is displayed on Field "Current Axis Number"
 	And I take a screenshot
 	
 #----------------------------------------------------------------------------------------------------------------------------------------	
@@ -600,45 +627,46 @@ Scenario: PB_1.4.4
 Scenario: PB_1.5.1 Verifies query firing between cross forms with require response and require manual close. Cross Forms: Standard form to log form. Folder "Screening" enter and save data on forms "Informed Consent" and "Concomitant Medications". Queries fired, Answer and  Manually close queries in log fields, Modify Standard form to different bad data, do not touch log form - query and no logs in the Database.
 	
     And I create a Subject
-	| Field            | Value                                                          |
-	| Subject Number   | {NextSubjectNum(Edit Check Study 3,prod,Subject Number)} |
-	| Subject Initials |sub105                                                            |
-	And I select Folder "Screening"
-	And I select Form "Informed Consent"
-	And I enter data in CRF
-	And I save the CRF page
-	    |Field                   |Data        |
-        |Date Informed Consent Signed |09 Jan 2000 |
-	    |End Date |10 Jan 2000 |
-	    |Original Distribution Number         |10          |
-	    |Current Distribution Number         |19          |
+		| Field            | Value                                                    |
+		| Subject Number   | {NextSubjectNum(Edit Check Study 3,prod,Subject Number)} |
+		| Subject Initials | sub                                                      |
+	And I select Form "Informed Consent" in Folder "Screening"
+	And I enter data in CRF and save
+	    | Field                        | Data        |
+	    | Date Informed Consent Signed | 09 Jan 2000 |
+	    | End Date                     | 10 Jan 2000 |
+	    | Original Distribution Number | 10          |
+	    | Current Distribution Number  | 19          |
 	And I take a screenshot
-	And I select Form "Concomitant Medications" within folder "Screening"
-    And I enter data in CRF
-	And I save the CRF page
-	    |Field             |Data        |
-        |Start Date |08 Jan 2000 |
-	    |End Date |11 Jan 2000 |
-	    |Original Axis Number   |10          |
-	    |Current Axis Number   |20          |	
-	And I verify Query with message "{message}" with Requires Response is displayed on Field "Start Date"
-    And I verify Query with message "{message}" with Requires Response is displayed on Field "Current Axis Number"
+	And I select Form "Concomitant Medications" in Folder "Screening"
+    And I enter data in CRF and save
+	    | Field                | Data        |
+	    | Start Date           | 08 Jan 2000 |
+	    | End Date             | 11 Jan 2000 |
+	    | Original Axis Number | 10          |
+	    | Current Axis Number  | 20          |
+	And I open log line 1
+	And I verify Requires Response Query with message "{message}" is displayed on Field "Start Date"
+    And I verify Requires Response Query with message "{message}" is displayed on Field "Current Axis Number"
 	And I take a screenshot
 	And I answer the Query "{message}" on Field "Start Date"
 	And I answer the Query "{message}" on Field "Current Axis Number"
 	And I save the CRF page
+	And I open log line 1
 	And I close the Query on Field "Start Date"
 	And I close the Query on Field "Current Axis Number"
 	And I save the CRF page
 	And I take a screenshot
 	And I select Form "Informed Consent"
-	And I enter data in CRF
-		|Field                    |Data        |
-        |Date Informed Consent Signed  |20 Jan 2000 |
-	    |Current Distribution Number          |21          |
-	And I save the CRF page
-    And I select Form "Concomitant Medications"	
-	And I verify new queries did fire on "Start Date" and "Current Axis Number" fields
+	And I enter data in CRF and save
+		| Field                        | Data        |
+		| Date Informed Consent Signed | 20 Jan 2000 |
+		| Current Distribution Number  | 21          |
+
+    When I select Form "Concomitant Medications"	
+	And I open log line 1
+	Then I verify Requires Response Query with message "{message}" is displayed on Field "Start Date"
+    And I verify Requires Response Query with message "{message}" is displayed on Field "Current Axis Number"
 	And I take a screenshot
 	
 #----------------------------------------------------------------------------------------------------------------------------------------	
@@ -658,45 +686,47 @@ Scenario: PB_1.5.2
 @release_564_Patch11
 @PB_1.6.1
 @Draft
-Scenario: PB_1.5.3 On a Cross Forms, 
+Scenario: PB_1.6.1 On a Cross Forms, 
  Standard form to log form. Folder "Screening" enter and save data on forms "Informed Consent" and "Concomitant Medications". Queries fired, Cancel queries in log fields, Modify Standard form to different bad data, do not touch log form - query and no logs in the Database.
 	
     And I create a Subject
-	| Field            | Value                                                          |
-	| Subject Number   | {NextSubjectNum(Edit Check Study 3,prod,Subject Number)} |
-	| Subject Initials |sub106                                                            |
-	And I select Folder "Screening"
+		| Field            | Value                                                    |
+		| Subject Number   | {NextSubjectNum(Edit Check Study 3,prod,Subject Number)} |
+		| Subject Initials | sub                                                   |
+	And I select Form "Informed Consent" in Folder "Screening"
+	And I enter data in CRF and save
+	    | Field                        | Data        |
+	    | Date Informed Consent Signed | 09 Jan 2000 |
+	    | End Date                     | 10 Jan 2000 |
+	    | Original Distribution Number | 10          |
+	    | Current Distribution Number  | 19          |
+	And I take a screenshot
+	And I select Form "Concomitant Medications" in Folder "Screening"
+    And I enter data in CRF and save
+	    | Field                | Data        |
+	    | Start Date           | 08 Jan 2000 |
+	    | End Date             | 11 Jan 2000 |
+	    | Original Axis Number | 10          |
+	    | Current Axis Number  | 20          |
+	And I open log line 1
+	And I verify Requires Response Query with message "{message}" is displayed on Field "Start Date"
+    And I verify Requires Response Query with message "{message}" is displayed on Field "Current Axis Number"
+	And I take a screenshot
+	And I cancel the Query "{message}" on Field "Start Date"
+	And I cancel the Query "{message}" on Field "Current Axis Number"
+
+	And I save the CRF page
+	And I take a screenshot
 	And I select Form "Informed Consent"
-	And I enter data in CRF
-	And I save the CRF page
-	    |Field                   |Data        |
-        |Date Informed Consent Signed |09 Jan 2000 |
-	    |End Date |10 Jan 2000 |
-	    |Original Distribution Number         |10          |
-	    |Current Distribution Number         |19          |
-	And I take a screenshot
-	And I select Form "Concomitant Medications" within folder "Screening"
-    And I enter data in CRF
-	And I save the CRF page
-	    |Field             |Data        |
-        |Start Date |08 Jan 2000 |
-	    |End Date |11 Jan 2000 |
-	    |Original Axis Number   |10          |
-	    |Current Axis Number   |20          |	
-	And I verify Query with message "{message}" with Requires Response is displayed on Field "Start Date"
-    And I verify Query with message "{message}" with Requires Response is displayed on Field "Current Axis Number"
-	And I take a screenshot
-	And I cancel the queries on "Start Date" and "Current Axis Number" fields
-	And I save the CRF page
-	And I take a screenshot
-	And I select Form "Informed Consent"
-	And I enter data in CRF
-		|Field                    |Data        |
-        |Date Informed Consent Signed  |20 Jan 2000 |
-	    |Current Distribution Number          |21          |
-	And I save the CRF page
+	And I enter data in CRF and save
+		| Field                        | Data        |
+		| Date Informed Consent Signed | 20 Jan 2000 |
+		| Current Distribution Number  | 21          |
     And I select Form "Concomitant Medications"	
-	And I verify new queries did fire on "Start Date" and "Current Axis Number" fields
+	And I open log line 1
+	And I verify Requires Response Query with message "{message}" is displayed on Field "Start Date"
+    And I verify Requires Response Query with message "{message}" is displayed on Field "Current Axis Number"
+	
 	And I take a screenshot
 
 #----------------------------------------------------------------------------------------------------------------------------------------	
@@ -740,9 +770,9 @@ Scenario: PB_1.7.1 Verifies query firing between cross forms with require respon
 	    |Original Axis Number |101         |
 	And I take a screenshot
     And I select Form "Concomitant Medications"		
-	And I verify Query with message "{message}" with Requires Response is displayed on Field "Start Date"
-	And I verify Query with message "{message}" with Requires Response is displayed on Field "End Date"
-	And I verify Query with message "{message}" with Requires Response is displayed on Field "Original Axis Number"
+	And I verify Requires Response Query with message "{message}" is displayed on Field "Start Date"
+	And I verify Requires Response Query with message "{message}" is displayed on Field "End Date"
+	And I verify Requires Response Query with message "{message}" is displayed on Field "Original Axis Number"
 	And I take a screenshot
 	And I answer the queries on "Start Date", "End Date" and "Original Axis Number" fields
 	And I save the CRF page
@@ -802,9 +832,9 @@ Scenario: PB_1.8.1 On a Cross Forms log form to log form. Folder "Screening" ent
 	    |AE Number |101         |
 	And I take a screenshot
     And I select Form "Concomitant Medications"		
-	And I verify Query with message "{message}" with Requires Response is displayed on Field "Start Date"
-	And I verify Query with message "{message}" with Requires Response is displayed on Field "End Date"
-	And I verify Query with message "{message}" with Requires Response is displayed on Field "Original Axis Number"
+	And I verify Requires Response Query with message "{message}" is displayed on Field "Start Date"
+	And I verify Requires Response Query with message "{message}" is displayed on Field "End Date"
+	And I verify Requires Response Query with message "{message}" is displayed on Field "Original Axis Number"
 	And I take a screenshot
 	And I cancel the queries on "Start Date", "End Date" and "Original Axis Number" fields
 	And I save the CRF page
@@ -862,8 +892,8 @@ Scenario: PB_1.9.1 On a Cross Forms Standard form to log form. Folder "Screening
 	    |End Date |11 Jan 2000 |
 	    |Original Axis Number   |10          |
 	    |Current Axis Number   |20          |	
-	And I verify Query with message "{message}" with Requires Response is displayed on Field "Start Date"
-    And I verify Query with message "{message}" with Requires Response is displayed on Field "Current Axis Number"
+	And I verify Requires Response Query with message "{message}" is displayed on Field "Start Date"
+    And I verify Requires Response Query with message "{message}" is displayed on Field "Current Axis Number"
 	And I take a screenshot
 	And I answer the Query "{message}" on Field "Start Date"
 	And I answer the Query "{message}" on Field "Current Axis Number"
@@ -921,8 +951,8 @@ Scenario: PB_1.10.1 Verifies query firing between cross forms with require respo
 	    |End Date |11 Jan 2000 |
 	    |Original Axis Number   |10          |
 	    |Current Axis Number   |20          |	
-	And I verify Query with message "{message}" with Requires Response is displayed on Field "Start Date"
-    And I verify Query with message "{message}" with Requires Response is displayed on Field "Current Axis Number"
+	And I verify Requires Response Query with message "{message}" is displayed on Field "Start Date"
+    And I verify Requires Response Query with message "{message}" is displayed on Field "Current Axis Number"
 	And I take a screenshot
 	And I answer the Query "{message}" on Field "Start Date"
 	And I answer the Query "{message}" on Field "Current Axis Number"
@@ -981,8 +1011,8 @@ Folder "Screening" enter and save data on forms "Informed Consent" and "Concomit
 	    |End Date |11 Jan 2000 |
 	    |Original Axis Number   |10          |
 	    |Current Axis Number   |20          |	
-	And I verify Query with message "{message}" with Requires Response is displayed on Field "Start Date"
-    And I verify Query with message "{message}" with Requires Response is displayed on Field "Current Axis Number"
+	And I verify Requires Response Query with message "{message}" is displayed on Field "Start Date"
+    And I verify Requires Response Query with message "{message}" is displayed on Field "Current Axis Number"
 	And I take a screenshot
 	And I select Form "Informed Consent"
 	And I enter data in CRF
@@ -1035,8 +1065,8 @@ Scenario: PB_1.12.1 On a Cross Forms Standard form to log form. Folder "Screenin
 	    |End Date |11 Jan 2000 |
 	    |Original Axis Number   |10          |
 	    |Current Axis Number   |20          |	
-	And I verify Query with message "{message}" with Requires Response is displayed on Field "Start Date"
-    And I verify Query with message "{message}" with Requires Response is displayed on Field "Current Axis Number"
+	And I verify Requires Response Query with message "{message}" is displayed on Field "Start Date"
+    And I verify Requires Response Query with message "{message}" is displayed on Field "Current Axis Number"
 	And I take a screenshot
 	And I enter data in CRF
 		|Field             |Data        |
@@ -1080,8 +1110,8 @@ Scenario: PB_1.13.1 On a Cross Forms: Standard form to log form. Folder "Screeni
 	    |End Date |11 Jan 2000 |
 	    |Original Axis Number   |10          |
 	    |Current Axis Number   |20          |	
-	And I verify Query with message "{message}" with Requires Response is displayed on Field "Start Date"
-    And I verify Query with message "{message}" with Requires Response is displayed on Field "Current Axis Number"
+	And I verify Requires Response Query with message "{message}" is displayed on Field "Start Date"
+    And I verify Requires Response Query with message "{message}" is displayed on Field "Current Axis Number"
 	And I take a screenshot
 	And I select Form "Informed Consent"
 	And I enter data in CRF
@@ -1143,8 +1173,8 @@ Scenario: PB_1.14.1 Verifies query firing between cross forms with require respo
 	    |End Date |11 Jan 2000 |
 	    |Original Axis Number   |10          |
 	    |Current Axis Number   |20          |	
-	And I verify Query with message "{message}" with Requires Response is displayed on Field "Start Date"
-    And I verify Query with message "{message}" with Requires Response is displayed on Field "Current Axis Number"
+	And I verify Requires Response Query with message "{message}" is displayed on Field "Start Date"
+    And I verify Requires Response Query with message "{message}" is displayed on Field "Current Axis Number"
 	And I take a screenshot
 	And I enter data in CRF
 		|Field             |Data        |
@@ -1202,8 +1232,8 @@ And I save the CRF page
 	    |End Date    |09 Feb 2000 |
 	And I take a screenshot
     And I select Form "Concomitant Medications"		
-	And I verify Query with message "{message}" with Requires Response is displayed on Field "Start Date"
-	And I verify Query with message "{message}" with Requires Response is displayed on Field "End Date"
+	And I verify Requires Response Query with message "{message}" is displayed on Field "Start Date"
+	And I verify Requires Response Query with message "{message}" is displayed on Field "End Date"
 	And I take a screenshot
 	And I answer the Query "{message}" on Field "Start Date"
 	And I answer the Query "{message}" on Field "End Date"
@@ -1264,9 +1294,9 @@ And I save the CRF page
 	    |AE Number |101         |
 	And I take a screenshot
     And I select Form "Concomitant Medications"		
-	And I verify Query with message "{message}" with Requires Response is displayed on Field "Start Date"
-	And I verify Query with message "{message}" with Requires Response is displayed on Field "End Date"
-	And I verify Query with message "{message}" with Requires Response is displayed on Field "Original Axis Number"
+	And I verify Requires Response Query with message "{message}" is displayed on Field "Start Date"
+	And I verify Requires Response Query with message "{message}" is displayed on Field "End Date"
+	And I verify Requires Response Query with message "{message}" is displayed on Field "Original Axis Number"
 	And I take a screenshot
 	And I answer the queries on "Start Date", "End Date" and "Original Axis Number" fields
 	And I save the CRF page
@@ -1323,8 +1353,8 @@ And I save the CRF page
 	    |End Date    |09 Feb 2000 |
 	And I take a screenshot
     And I select Form "Concomitant Medications"		
-	And I verify Query with message "{message}" with Requires Response is displayed on Field "Start Date"
-	And I verify Query with message "{message}" with Requires Response is displayed on Field "End Date"
+	And I verify Requires Response Query with message "{message}" is displayed on Field "Start Date"
+	And I verify Requires Response Query with message "{message}" is displayed on Field "End Date"
 	And I take a screenshot
 	And I select Form "Adverse Events"
 	And I enter data in CRF
@@ -1376,8 +1406,8 @@ And I save the CRF page
 	    |End Date    |09 Feb 2000 |
 	And I take a screenshot
     And I select Form "Concomitant Medications"		
-	And I verify Query with message "{message}" with Requires Response is displayed on Field "Start Date"
-	And I verify Query with message "{message}" with Requires Response is displayed on Field "End Date"
+	And I verify Requires Response Query with message "{message}" is displayed on Field "Start Date"
+	And I verify Requires Response Query with message "{message}" is displayed on Field "End Date"
 	And I take a screenshot
 	And I enter data in CRF
 		|Field             |Data        |
@@ -1426,8 +1456,8 @@ And I save the CRF page
 	    |End Date    |09 Feb 2000 |
 	And I take a screenshot
     And I select Form "Concomitant Medications"		
-	And I verify Query with message "{message}" with Requires Response is displayed on Field "Start Date"
-	And I verify Query with message "{message}" with Requires Response is displayed on Field "End Date"
+	And I verify Requires Response Query with message "{message}" is displayed on Field "Start Date"
+	And I verify Requires Response Query with message "{message}" is displayed on Field "End Date"
 	And I take a screenshot
 	And I select Form "Adverse Events"
 	And I enter data in CRF
@@ -1490,8 +1520,8 @@ And I save the CRF page
 	    |End Date    |09 Feb 2000 |
 	And I take a screenshot
     And I select Form "Concomitant Medications"		
-	And I verify Query with message "{message}" with Requires Response is displayed on Field "Start Date"
-	And I verify Query with message "{message}" with Requires Response is displayed on Field "End Date"
+	And I verify Requires Response Query with message "{message}" is displayed on Field "Start Date"
+	And I verify Requires Response Query with message "{message}" is displayed on Field "End Date"
 	And I take a screenshot
 	And I enter data in CRF
 		|Field             |Data        |
@@ -1543,7 +1573,7 @@ And I save the CRF page
 	    |Log Field 1 |4    |
 	    |Log Field 2 |3    |
 	And I take a screenshot
-	And I verify Query with message "{message}" with Requires Response is displayed on Field "Log Field 1"
+	And I verify Requires Response Query with message "{message}" is displayed on Field "Log Field 1"
 	And I take a screenshot
 	And I answer the query on "Log Field 1" field
 	And I save the CRF page
@@ -1590,7 +1620,7 @@ And I save the CRF page
 	    |Log Field 1 |5    |
 	    |Log Field 2 |2    |
 	And I take a screenshot
-	And I verify Query with message "{message}" with Requires Response is displayed on Field "Log Field 1"
+	And I verify Requires Response Query with message "{message}" is displayed on Field "Log Field 1"
 	And I take a screenshot
 	And I cancel the query on "Log Field 1" field
 	And I save the CRF page
@@ -1614,7 +1644,7 @@ And I save the CRF page
 	    |Log Field 1 |4    |
 	    |Log Field 2 |2    |
 	And I take a screenshot
-	And I verify Query with message "{message}" with Requires Response is displayed on Field "Log Field 1"
+	And I verify Requires Response Query with message "{message}" is displayed on Field "Log Field 1"
 	And I take a screenshot
 	And I enter data in CRF
 		|Field       |Data |
@@ -1654,7 +1684,7 @@ Scenario: PB_1.22.3
 	    |Log Field 1 |4    |
 	    |Log Field 2 |2    |
 	And I take a screenshot
-	And I verify Query with message "{message}" with Requires Response is displayed on Field "Log Field 1"
+	And I verify Requires Response Query with message "{message}" is displayed on Field "Log Field 1"
 	And I take a screenshot
 	And I enter data in CRF
 		|Field       |Data |

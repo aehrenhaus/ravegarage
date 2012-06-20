@@ -98,7 +98,13 @@ namespace Medidata.RBT
 			get { return (String)this["SqlScriptsPath"]; }
 			set { this["SqlScriptsPath"] = value; }
 		}
-
+		[ConfigurationProperty("OneBrowserPerFeature", DefaultValue = false, IsRequired = false)]
+		public bool OneBrowserPerFeature
+		{
+			get { return (bool)this["OneBrowserPerFeature"]; }
+			set { this["OneBrowserPerFeature"] = value; }
+		}
+		
 
 	}
 }

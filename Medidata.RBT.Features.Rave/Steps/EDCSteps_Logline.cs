@@ -89,7 +89,7 @@ namespace Medidata.RBT.Features.Rave
 		[StepDefinition(@"I enter data in CRF on the last log line and save and reopen")]
 		public void IEnterDataInCRFOnTheLastLogLineAndSaveAndReopen(Table table)
 		{
-			IEnterDataInCRFOnANewLogLineAndSave(table);
+			IEnterDataInCRFOnTheLastLogLineAndSave(table);
 			IOpenTheLastLogLine();
 		}
 

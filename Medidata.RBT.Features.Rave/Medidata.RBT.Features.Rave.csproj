@@ -92,6 +92,11 @@
     </CodeAnalysisDependentAssemblyPaths>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Features\EDC\564QueryRefiringLogic8.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>564QueryRefiringLogic8.feature</DependentUpon>
+    </Compile>
     <Compile Include="Features\EDC\564QueryRefiringLogic1.feature.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -137,6 +142,10 @@
   <ItemGroup>
     <None Include="App.config">
       <SubType>Designer</SubType>
+    </None>
+    <None Include="Features\EDC\564QueryRefiringLogic8.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>564QueryRefiringLogic8.feature.cs</LastGenOutput>
     </None>
     <None Include="Features\EDC\564QueryRefiringLogic1.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
