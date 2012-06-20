@@ -83,28 +83,20 @@ namespace Medidata.RBT.PageObjects.Rave
 
         public SubjectPage SelectSubject(string subjectName)
         {
-			int pageIndex = 1;
-			IWebElement subjectLink = null;
-			int count = 0;
-			do
+			try
 			{
-				subjectLink = Browser.TryFindElementByLinkText(subjectName);
-				if (subjectLink != null)
-					break;
-				var pageTable = Browser.FindElementById("_ctl0_Content_ListDisplayNavigation_DlPagination");
-				var pageLinks = pageTable.FindElements(By.XPath(".//a"));
-				count = pageLinks.Count;
-				if (pageIndex == count)
-					break;
 
-				pageLinks[pageIndex].Click();
-				pageIndex++;
-			} while (true);
-
-			if (subjectLink == null)
-				throw new Exception("Can't find sujbect: " + subjectName);
-			else
-				subjectLink.Click();
+				IWebElement subjectLink = RavePagesHelper.FindLinkInPaginatedList(subjectName);
+				
+				if (subjectLink == null)
+					throw new Exception("Can't find sujbect: " + subjectName);
+				else
+					subjectLink.Click();
+			}
+			catch(Exception err)
+			{
+				throw new Exception(string.Format ("Failed to find subject [{0}], reason:{1}",subjectName,err.Message),err);
+			}
             return new SubjectPage();
         }
 

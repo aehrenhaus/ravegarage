@@ -13,7 +13,7 @@ namespace Medidata.RBT.PageObjects.Rave
         {
             IWebElement leftSideTd = GetDatapointLabelContainer(label);
             //leftSideTd and right side td share same tr. So go up a level, and find the right side
-            IWebElement datapointTable = leftSideTd.FindElement(By.XPath("./../td[@class='crf_rowRightSide']//table[@class='crf_dataPointInternal']"));
+            IWebElement datapointTable = leftSideTd.TryFindElementBy(By.XPath("./../td[@class='crf_rowRightSide']//table[@class='crf_dataPointInternal']"));
             return datapointTable;
 
         }
@@ -24,8 +24,12 @@ namespace Medidata.RBT.PageObjects.Rave
 			//"Assessment Date 1\r\ntet\r\nOpened To Site (06 Jun 2012)\r\nForward\r\nCancel"
 
             var leftSideTds = TestContext.Browser.FindElements(By.XPath("//td[@class='crf_rowLeftSide']"));
-			return leftSideTds.FirstOrDefault(x => x.Text.Split(new string[] { "\r\n" }, StringSplitOptions.None)[0] == label);
+			var area =  leftSideTds.FirstOrDefault(x => x.Text.Split(new string[] { "\r\n" }, StringSplitOptions.None)[0] == label);
 
+			if (area == null)
+				throw new Exception("Can't find field area:"+label);
+
+			return area;
         }
 
 		public static void FillDataPoint(string label, string val, bool throwIfNotFound=true)
@@ -68,6 +72,29 @@ namespace Medidata.RBT.PageObjects.Rave
 				if(throwIfNotFound)
 					throw new Exception("Not sure what kind of datapoint is this.");
 			}
+		}
+
+		public static IWebElement FindLinkInPaginatedList(string linkText)
+		{
+			IWebElement ele = null;
+			int pageIndex = 1;
+			int count = 0;
+			do
+			{
+				ele = TestContext.Browser.TryFindElementByLinkText(linkText);
+				if (ele != null)
+					break;
+				var pageTable = TestContext.Browser.FindElementById("_ctl0_Content_ListDisplayNavigation_DlPagination");
+				var pageLinks = pageTable.FindElements(By.XPath(".//a"));
+				count = pageLinks.Count;
+				if (pageIndex == count)
+					break;
+
+				pageLinks[pageIndex].Click();
+				pageIndex++;
+			} while (true);
+
+			return ele;
 		}
 	}
 }

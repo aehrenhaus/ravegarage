@@ -13,12 +13,19 @@ namespace Medidata.RBT
 
         public string Replace(string[] args)
         {
-			return GetNextSubNum(args[0], args[1], args[2]);
+			return GetNextSubNum(args[0], args[1], args[2]).ToString();
         }
 
 		public int ArgsCount { get { return 3; } }
 
-        private  string GetNextSubNum(string project, string env, string field)
+		/// <summary>
+		/// this will also be used by MaxSubjectNumReplace class .So make internal
+		/// </summary>
+		/// <param name="project"></param>
+		/// <param name="env"></param>
+		/// <param name="field"></param>
+		/// <returns></returns>
+        internal  int GetNextSubNum(string project, string env, string field)
         {
             int next = 0;
 
@@ -63,7 +70,7 @@ namespace Medidata.RBT
                 throw new Exception("Failed to get next subject Number");
             }
 
-            return next.ToString();
+            return next;
         }
     }
 }
