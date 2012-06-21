@@ -15,6 +15,6 @@ namespace Medidata.RBT.Features.Rave
 	[Binding]
 	public class RaveSteps : BrowserStepsBase
 	{
-	
+
 	}
 }

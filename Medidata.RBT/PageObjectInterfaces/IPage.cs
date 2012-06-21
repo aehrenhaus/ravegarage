@@ -28,12 +28,16 @@ namespace Medidata.RBT
 		/// </summary>
 		string URL { get; }
 
+		IPage ClickLink(string linkText);
+
+		IPage ClickLinkInArea(string linkText, string areaName);
+
 		/// <summary>
 		/// Click on a clickable control.
 		/// </summary>
 		/// <param name="name"></param>
 		/// <returns></returns>
-		IPage Click(string name);
+		IPage ClickButton(string name);
 
 		/// <summary>
 		/// Type in a typable control( text box and more)

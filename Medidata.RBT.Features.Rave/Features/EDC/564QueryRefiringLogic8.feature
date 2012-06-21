@@ -23,105 +23,141 @@ Feature: 8
 #Queries on Locked datapoints, Freezed datapoints, Inactive records
 
 Background:
+
     Given I am logged in to Rave with username "defuser" and password "password"
-	And following Study assignments exist
-		|User			|Study		       	|Role |Site		        	|Site Number |
-		|editcheck  	|Edit Check Study 3	|cdm1 |Edit Check Site 8 	|80001       |
-		|editcheck1 	|Edit Check Study 3	|cdm2 |Edit Check Site 8 	|80001       |
-		|editcheck	 	|AM Edit Check Study|cdm1 |AM Edit Site		 	|80002       |	
-	And role "cdm1" has Query actions
-	And role "cdm2" has Query actions
-	And Draft "Draft 1" in Study "Edit Check Study 3" has been published to CRF Version "<RANDOMNUMBER>" 
-	And CRF Version "<RANDOMNUMBER>" in Study "Edit Check Study 3" has been pushed to Site "Edit Check Site 3" in Environment "Prod"
-	And I set and save "Threshold" in Configuration, Other Settings, Advance Configuration to "Value", from the table below
-			|Threshold					|Value	|
-			|Check Resolution Threshold	|0		|
-			|Check Execution Threshold	|0		|
-			|Custom Function Threshold	|0		|
-	And I do cacheflush
-	And I select Study "Edit Check Study 3" and Site "Edit Check Site 8"
+	# And following Study assignments exist
+		# |User			|Study		       	|Role |Site		        	|Site Number | 
+		# |editcheck  	|Edit Check Study 3	|cdm1 |Edit Check Site 8 	|80001       |
+		# |editcheck1 	|Edit Check Study 3	|cdm2 |Edit Check Site 8 	|80001       |
+		# |editcheck	 	|AM Edit Check Study|cdm1 |AM Edit Site		 	|80002       |	
+	# And role "cdm1" has Query actions
+	# And role "cdm2" has Query actions
+	# And Draft "Draft 1" in Study "Edit Check Study 3" has been published to CRF Version "<RANDOMNUMBER>" 
+	# And CRF Version "<RANDOMNUMBER>" in Study "Edit Check Study 3" has been pushed to Site "Edit Check Site 3" in Environment "Prod"
+	# And I set and save "Threshold" in Configuration, Other Settings, Advance Configuration to "Value", from the table below
+			# |Threshold					|Value	|
+			# |Check Resolution Threshold	|0		|
+			# |Check Execution Threshold	|0		|
+			# |Custom Function Threshold	|0		|
+	# And I do cacheflush
+	# And I select Study "Edit Check Study 3" and Site "Edit Check Site 8"
 	
 #----------------------------------------------------------------------------------------------------------------------------------------	
+Scenario:  test
+	And I navigate to "DDE"
+	And I select "First Pass"
+	And I choose "Edit Check Study 3" from "Study"
+	And I choose "Prod" from "Environment"
+	And I choose "Edit Check Site 8" from "Site"
+	And I type "sub {NextSubjectNum(Edit Check Study 3,prod,Subject Number)}" in "Subject"
+	And I choose "Subject Identification" from "Form"
+
+
 @release_564_Patch11
 @PB_8.1.1
 @Draft
 Scenario: PB_8.1.1 Data setup and verification for query re-firing.
 Folder "Test A Single Edit" enter and save data on forms "Informed Consent Date Form 1" and "Assessment Date Log2"
 	
-	Given I am logged in to Rave with username "editcheck" and password "password"
-	And I select "DDE Module"
-	And I select link "First Pass"
-	And I select "Edit Check Study 3, Prod, Edit Check Site 8"
-	And I create a Subject
+	And I navigate to "DDE"
+	And I select "First Pass"
+	And I select "New Batch"
+	And I choose "Edit Check Study 3" from "Study"
+	And I choose "Prod" from "Environment"
+	And I choose "Edit Check Site 8" from "Site"
+	And I type "sub {NextSubjectNum(Edit Check Study 3,prod,Subject Number)}" in "Subject"
+	And I choose "Subject Identification" from "Form"
+	And I click button "Locate"
+
+	And I enter data in DDE and save
+		| Field            | Data                                                    |
+		| Subject Number   | {MaxSubjectNum(Edit Check Study 3,prod,Subject Number)} |
+		| Subject Initials | sub                                                   |
+	
+	And I choose "Screening" from "Folder"
+	And I choose "Informed Consent" from "Form"
+	And I click button "Locate"
+	And I enter data in DDE and save
+	    | Field                        | Data        |
+	    | Date Informed Consent Signed | 09 Jan 2000 |
+	    | End Date                     | 10 Jan 2000 |
+	    | Original Distribution Number | 10          |
+	    | Current Distribution Number  | 19          |
+	And I choose "Concomitant Medications" from "Form"
+	And I click button "Locate"	
+	And I enter data in DDE and save
+	    | Field                | Data        |
+	    | Start Date           | 08 Jan 2000 |
+	    | End Date             | 11 Jan 2000 |
+	    | Original Axis Number | 10          |
+	    | Current Axis Number  | 20          |
+	
+	And I am logged in to Rave with username "coderimport" and password "password"
+
+
+	And I navigate to "DDE"
+	And I select "Second Pass"
+	And I choose "Edit Check Study 3" from "Study"
+	And I choose "Prod" from "Environment"
+	And I choose "Edit Check Site 8" from "Site"
+	And I type "sub {<MaxSubjectNum(Edit Check Study 3,prod,Subject Number)}" in "Subject"
+	And I choose "Subject Identification" from "Form"
+	And I click button "Locate"
+	And I enter data in CRF
 		| Field            | Value                                                    |
-		| Subject Number   | {NextSubjectNum(Edit Check Study 3,prod,Subject Number)} |
+		| Subject Number   | {MaxSubjectNum(Edit Check Study 3,prod,Subject Number)} |
 		| Subject Initials | sub                                                   |
 	And I save the CRF page
-	And I select form "Informed Consent Date Form 1" in folder "Test A Single Edit" 
-	And I select button "Locate"
-	And I enter data in CRF and save and save
+	And I choose "Screening" from "Folder"
+	And I choose "Informed Consent" from "Form"
+	And I click button "Locate"
+	And I enter data in CRF and save
 	    |Field                   |Data        |
         |Informed Consent Date 1 |09 Jan 2000 |
 	    |Informed Consent Date 2 |10 Jan 2000 |
 	    |Numeric Field 1         |10          |
 	    |Numeric Field 2         |19          |
-	And I select form "Assessment Date Log2" in folder "Test A Single Edit" 
-	And I select button "Locate"	
+	And I choose "Concomitant Medications" from "Form"
+	And I click button "Locate"	
+	And I enter data in CRF and save
 	    |Field             |Data        |
         |Assessment Date 1 |08 Jan 2000 |
 	    |Assessment Date 2 |11 Jan 2000 |
 	    |Numeric Field 1   |10          |
 	    |Numeric Field 2   |20          |	
-	
-	And I logout and login to Rave as user "editcheck1" with password "<Password>"
-	And I select "DDE Module"
-	And I select link "Second Pass"
-	And I select "Edit Check Study 3, Prod, Edit Check Site 8"
-	And I enter "sub801"
-	And I enter data in CRF and save and save
-	    |Field          |Data	|
-		|Subject Name	|sub	|
-		|Subject Number	|801	|
-	And I select form "Informed Consent Date Form 1" in folder "Test A Single Edit" 
-	And I select button "Locate"
-	And I enter data in CRF and save and save
-	    |Field                   |Data        |
-        |Informed Consent Date 1 |09 Jan 2000 |
-	    |Informed Consent Date 2 |10 Jan 2000 |
-	    |Numeric Field 1         |10          |
-	    |Numeric Field 2         |19          |
-	And I take a screenshot
-    And I enter and submit the following data in folder "Test A Single Edit" form "Assessment Date Log2", from the table below
-	    |Field             |Data        |
-        |Assessment Date 1 |08 Jan 2000 |
-	    |Assessment Date 2 |11 Jan 2000 |
-	    |Numeric Field 1   |10          |
-	    |Numeric Field 2   |20          |		
+
 		
-	And I select link "Home"
-	And I select "Edit Check Study 3, Prod, Edit Check Site 8"
-	And I Select "sub801"
-	And I select Folder "Test A Single Edit"
-	And I select Form "Assessment Date Log2"
-	And I verify "Assessment Date 1" field displays query opened with require response
-    And I verify "Numeric Field 2" field displays query opened with require response
+	And I navigate to "Home"
+	And I select Study "Edit Check Study 3" and Site "Edit Check Site 8"
+	And I select a Subject "sub{MaxSubjectNum(Edit Check Study 3,prod,Subject Number)}"
+
+	And I select Form "Assessment Date Log2" in Folder "Test A Single Edit"
+	And I verify Requires Response Query with message "'Date Informed Consent Signed' is greater. Please revise." is displayed on Field "Assessment Date 1"
+	And I verify Requires Response Query with message "{message}" is displayed on Field "Current Axis Number"
+
 	And I take a screenshot
-	And I answer the queries on "Assessment Date 1" and "Numeric Field 2" fields
+	And I answer the Query "{message}" on Field "Assessment Date 1" with "{answer}"
+	And I answer the Query "{message}" on Field "Numeric Field 2" with "{answer}"
+
 	And I save the CRF page
-	And I close the queries on "Assessment Date 1" field and "Numeric Field 2" fields
+	And I close the Query "{message}" on Field "Assessment Date 1"
+	And I close the Query "{message}" on Field "Numeric Field 2"
 	And I save the CRF page
 	And I take a screenshot
 	And I enter data in CRF and save
 		|Field             |Data        |
         |Assessment Date 1 |09 Jan 2000 |
 	    |Numeric Field 2   |19          |	
-    And I verify the queries did not fire on "Assessment Date 1" field and "Numeric Field 2" fields
+    And I verify Requires Response Query with message "{message}" is not displayed on Field "Assessment Date 1"
+	And I verify Requires Response Query with message "{message}" is not displayed on Field "Numeric Field 2"
 	And I take a screenshot
-	And I enter data in CRF and save and save
+	And I enter data in CRF and save
 		|Field             |Data        |
         |Assessment Date 1 |08 Jan 2000 |
 	    |Numeric Field 2   |20          |
-	And I verify new queries did not fire on "Assessment Date 1" field and "Numeric Field 2" fields
+	And I verify Requires Response Query with message "{message}" is not displayed on Field "Assessment Date 1"
+	And I verify Requires Response Query with message "{message}" is not displayed on Field "Numeric Field 2"
+
 	And I take a screenshot
 	
 #----------------------------------------------------------------------------------------------------------------------------------------	
@@ -262,8 +298,8 @@ Scenario: PB_8.3.1 Query Management
 
 	And I select "Query Management"
 	And I seelct "Edit Check Study 3 (Prod),  World, Edit Check Site 8, sub801"
-	And I select link Search
-	And I select link form "Assessment Date Log2" for subject "sub801"
+	And I navigate to Search
+	And I navigate to form "Assessment Date Log2" for subject "sub801"
 	And I verify "Assessment Date 1" field displays query opened with require response on the second log line
     And I verify "Numeric Field 2" field displays query opened with require response on the second log line
 	And I take a screenshot
@@ -380,13 +416,13 @@ Scenario: PB_8.5.1 When I run the Report, then query related data are displayed 
 # Audit Trail Report
 	And I login to Rave as user "<User 1>" with password "<Password>"
 	And I select "Reporter Module"
-	And I select link "Audit Trail Report"
+	And I navigate to "Audit Trail Report"
 	And I select study "Edit Check Study 3"
 	And I select site "Edit Check Site 8"
 	And I select subject "sub801"
 	And I select Folders "Test A Single Edit"
 	And I select Forms "Informed Consent Date Form ", "Assessment Date Log2"
-	When I select button "Submit Report"
+	When I click button "Submit Report"
 	Then I should see queries on "Assessment Date 1" and "Numeric Field 2" fields
 	And I take a screenshot
 	And I close report
@@ -399,13 +435,13 @@ Scenario: PB_8.5.2 When I run the Report, then query related data are displayed 
 
 # Query Detail	
 	And I select "Reporter Module"
-	And I select link "Query Detail"
+	And I navigate to "Query Detail"
 	And I select study "Edit Check Study 3"
 	And I select site "Edit Check Site 8"
 	And I select subject "sub801"
 	And I select Folders "Test A Single Edit"
 	And I select Forms "Informed Consent Date Form ", "Assessment Date Log2"
-	When I select button "Submit Report"
+	When I click button "Submit Report"
 	Then I should see queries on "Assessment Date 1" and "Numeric Field 2" fields
 	And I take a screenshot
 	And I close report
@@ -418,14 +454,14 @@ Scenario: PB_8.5.3 When I run the Report, then query related data are displayed 
 
 #Edit Check Log Report	
 	And I select "Reporter Module"
-	And I select link "Edit Check Log Report"
+	And I navigate to "Edit Check Log Report"
 	And I select study "Edit Check Study 3"
 	And I select site "Edit Check Site 8"
 	And I select subject "sub801"
 	And I select Form "Assessment Date Log2"
 	And I select checkbox "Edit Check" for "Check Type"
 	And I select checkbox Check "CheckExecution" for "Log Type"
-	When I select button "Submit Report"
+	When I click button "Submit Report"
 	Then I should see fired editchecks
 	And I take a screenshot
 	And I close report
@@ -438,13 +474,13 @@ Scenario: PB_8.5.4 When I run the Report, then query related data are displayed 
 
 #Stream-Audit Trail	
 	And I select "Reporter Module"
-	And I select link "Stream-Audit Trail"
+	And I navigate to "Stream-Audit Trail"
 	And I select study "Edit Check Study 3"
 	And I select site  "Edit Check Site 8"
 	And I select subject "sub801"
 	And I select Folders "Test A Single Edit"
 	And I select Forms "Informed Consent Date Form ", "Assessment Date Log2"
-	And I select button "Submit Report"
+	And I click button "Submit Report"
 	When I select "Parameter" to "Value", from the tabe below
 		|Parameter			|Value		|
 		|Separator			|.			|	
@@ -464,13 +500,13 @@ Scenario: PB_8.5.5 When I run the Report, then query related data are displayed 
 
 #Stream-Query Detail	
 	And I select "Reporter Module"
-	And I select link "Stream-Query Detail"
+	And I navigate to "Stream-Query Detail"
 	And I select study "Edit Check Study 3"
 	And I select site  "Edit Check Site 8"
 	And I select subject "sub801"
 	And I select Folders "Test A Single Edit"
 	And I select Forms "Informed Consent Date Form ", "Assessment Date Log2"
-	And I select button "Submit Report"
+	And I click button "Submit Report"
 	When I select "Parameter" to "Value", from the tabe below
 		|Parameter			|Value		|
 		|Separator			|.			|	
@@ -490,14 +526,14 @@ Scenario: PB_8.5.6 When I run the Report, then query related data are displayed 
 
 #Stream-Edit Check Log Report	
 	And I select "Reporter Module"
-	And I select link "Stream-Edit Check Log Report"
+	And I navigate to "Stream-Edit Check Log Report"
 	And I select study "Edit Check Study 3"
 	And I select site "Edit Check Site 8"
 	And I select subject "sub801"
 	And I select Form "Assessment Date Log2"
 	And I select checkbox "Edit Check" for "Check Type"
 	And I select checkbox Check "CheckExecution" for "Log Type"
-	And I select button "Submit Report"
+	And I click button "Submit Report"
 	And I select "Parameter" to "Value", from the tabe below
 		|Parameter			|Value		|
 		|Separator			|.			|	
@@ -516,18 +552,18 @@ Scenario: PB_8.5.6 When I run the Report, then query related data are displayed 
 Scenario: PB_8.6.1 When I run the Report, then query related data are displayed in the report.J-Review verification.
 
 	And I login to Rave as user "<User 1>" with password "<Password>"	
-	And I select link "Home"
+	And I navigate to "Home"
 	And I select "Reporter Module"
 	And I select "J-Review"
 	And I select "Edit Check Study 3"
-	And I select button "Submit Report"
+	And I click button "Submit Report"
 	And I select "Edit Check Study 3" "Prod" from "Studies"
-	And I select button "Reports"
+	And I click button "Reports"
 	And I select "Detail Data Listing" report from "Type" in "Report Browser"
 	And I select "MetricViews" from "Panels"
 	And I select "Queries" from "MetricViews"
 	And I select "Project, Site, Subject, Datapage, Field, Record Position QueryText, QueryStatus, Answered Data, Answer Text"
-	When I select button "Create Report"
+	When I click button "Create Report"
 	Then I should see "sub801"
 	And I should see "Added Query" in "QueryText"
 	And I take a screenshot
@@ -543,7 +579,7 @@ Scenario: PB_8.7.1 When I run the Report, then query related data are displayed 
 	And I select "Reporter Module"
 	And I select "Business Objects XI"
 	And I select "Edit Check Study 3"
-	And I select button "Submit Report"
+	And I click button "Submit Report"
 	And I select dropdown "New"
 	And I select "Web Intelligence Document"
 	And I select "Rave 5.6 Universe"
@@ -557,7 +593,7 @@ Scenario: PB_8.7.1 When I run the Report, then query related data are displayed 
 	And Enter "Value(s) from list" "Test A Single Edit" in "Query Filters" for "Folder Name"
 	And I select "Equal To" from "In List" in "Query Filters" for "Form Name"		
 	And Enter "Value(s) from list" "Assessment Date Log2" in "Query Filters" for "Form Name"
-	When I select button "Run Query"
+	When I click button "Run Query"
 	Then I should see "sub801"
 	And I should see "Added Query" in "QueryText"
 	And I take a screenshot
@@ -614,29 +650,29 @@ And I save the CRF page
 	And I note CRF Version "<Source CRF Version1>"
 	And I take a screenshot
 	
-	And I select link "Home"
-	And I select link "Architect"
-	And I select link "AM Edit Check Study"
-	And I select link "Draft 1"
-	And I select link "Edit Checks"
+	And I navigate to "Home"
+	And I navigate to "Architect"
+	And I navigate to "AM Edit Check Study"
+	And I navigate to "Draft 1"
+	And I navigate to "Edit Checks"
 	And I select edit image for "Mixed Form Query" Edit Check
 	And I unselect checkbox "Active"
 	And I select  link "Update"
-	And I select link "Draft 1"	
+	And I navigate to "Draft 1"	
 	And I publish CRF Version
 	And I note CRF Version "<Target CRF Version1>"
-	And I select link "AM Edit Check Study"
-	And I select link "Amendment Manager"
+	And I navigate to "AM Edit Check Study"
+	And I navigate to "Amendment Manager"
 	And I select "<Source CRF Version1>" from dropdown "Source CRF"
 	And I select "<Target CRF Version1>" from dropdown "Target CRF"
-	And I select button "Create Plan"
+	And I click button "Create Plan"
 	And I take a screenshot
 	
 	And I Migrate "All Subjects"
 	And I select Migration Results and verify Job Status is set to Complete
 	And I take a screenshot
 	
-	And I select link "Home"
+	And I navigate to "Home"
 	And I select "AM Edit Check Study"
 	And I select site "AM Edit Site"
     And I select a subject "sub802"
@@ -667,28 +703,28 @@ And I save the CRF page
 	And I verify new query did not fire on "Log Field 1" field
 	And I take a screenshot
 	
-	And I select link "Home"
-	And I select link "Architect"
-	And I select link "AM Edit Check Study"
-	And I select link "Draft 1"
-	And I select link "Edit Checks"
+	And I navigate to "Home"
+	And I navigate to "Architect"
+	And I navigate to "AM Edit Check Study"
+	And I navigate to "Draft 1"
+	And I navigate to "Edit Checks"
 	And I select edit image for "Mixed Form Query" Edit Check
 	And I select checkbox "Active"
 	And I select  link "Update"
-	And I select link "Draft 1"	
+	And I navigate to "Draft 1"	
 	And I publish CRF Version
 	And I note CRF Version "<Target CRF Version2>"
-	And I select link "AM Edit Check Study"
-	And I select link "Amendment Manager"
+	And I navigate to "AM Edit Check Study"
+	And I navigate to "Amendment Manager"
 	And I select "<Target CRF Version1>" from dropdown "Source CRF"
 	And I select "<Target CRF Version2>" from dropdown "Target CRF"
-	And I select button "Create Plan"
-	And I select link "Exceute Plan"
+	And I click button "Create Plan"
+	And I navigate to "Exceute Plan"
 	And I Migrate "All Subjects"
 	And I select Migration Results and verify Job Status is set to Complete
 	And I take a screenshot
 	
-	And I select link "Home"
+	And I navigate to "Home"
 	And I select "AM Edit Check Study"
 	And I select site "AM Edit Site"
     And I select a subject "sub802"
@@ -711,9 +747,9 @@ And I save the CRF page
 Scenario: PB_8.9.1 When I run the Report, then query related data are displayed in the report. Publish Checks
 
 	And I login to Rave as user "editcheck" with password "<Password>"
-	And I select link "Architect"
-	And I select link "AM Edit Check Study"
-	And I select link "Draft 1"
+	And I navigate to "Architect"
+	And I navigate to "AM Edit Check Study"
+	And I navigate to "Draft 1"
 	And I publish and push CRF Version
 	And I note CRF Version "<Publish CRF Version1>"
 	And I publish CRF Version
@@ -721,7 +757,7 @@ Scenario: PB_8.9.1 When I run the Report, then query related data are displayed 
 	And I publish CRF Version
 	And I note CRF Version "<Publish CRF Version3>"
 	
-	And I select link "Home"
+	And I navigate to "Home"
 	And I select "AM Edit Check Study"
 	And I select site "AM Edit Site"
     And I create a Subject
@@ -743,21 +779,21 @@ And I save the CRF page
 	And I save the CRF page
 	And I take a screenshot
 	
-	And I select link "Home"
-	And I select link "Architect"
-	And I select link "AM Edit Check Study"
-	And I select link "Pulish Checks"
+	And I navigate to "Home"
+	And I navigate to "Architect"
+	And I navigate to "AM Edit Check Study"
+	And I navigate to "Pulish Checks"
 	And I select "<Publish CRF Version1>" from dropdown "Current CRF Version"
 	And I select "<Publish CRF Version2>" from dropdown "Reference CRF Version"
-	And I select button "Create Plan"
+	And I click button "Create Plan"
 	And I check "Inactivate" checkbox for "Mixed Form Query" edit check
-	And I select link "Save"
+	And I navigate to "Save"
 	And I take a screenshot
-	And I select link "Publish" 
+	And I navigate to "Publish" 
 	And I verify Job Status is set to Complete
 	And I take a screenshot
 	
-	And I select link "Home"
+	And I navigate to "Home"
 	And I select "AM Edit Check Study"
 	And I select site "AM Edit Site"
     And I select a subject "sub804"
@@ -769,21 +805,21 @@ And I save the CRF page
 	And I verify new query did not fire on "Log Field 1" field
 	And I take a screenshot
 	
-	And I select link "Home"
-	And I select link "Architect"
-	And I select link "AM Edit Check Study"
-	And I select link "Pulish Checks"
+	And I navigate to "Home"
+	And I navigate to "Architect"
+	And I navigate to "AM Edit Check Study"
+	And I navigate to "Pulish Checks"
 	And I select "<Publish CRF Version1>" from dropdown "Current CRF Version"
 	And I select "<Publish CRF Version3>" from dropdown "Reference CRF Version"
-	And I select button "Create Plan"
+	And I click button "Create Plan"
 	And I check "Publish" checkbox for "Mixed Form Query" edit check
-	And I select link "Save"
+	And I navigate to "Save"
 	And I take a screenshot
-	And I select link "Publish" 
+	And I navigate to "Publish" 
 	And I verify Job Status is set to Complete
 	And I take a screenshot
 
-	And I select link "Home"
+	And I navigate to "Home"
 	And I select "AM Edit Check Study"
 	And I select site "AM Edit Site"
     And I select a subject "sub804"
@@ -872,7 +908,7 @@ And I save the CRF page
 	And I select edit icon on second record position
 	And I select checkbox "Hadrd Lock" on "Log Field 1" field on second record position
 	And I save the CRF page
-	And I select link "Inactivate"
+	And I navigate to "Inactivate"
 	And I select "3" in dropdown
 	And I select "Inactivate" button
 	And I take a screenshot

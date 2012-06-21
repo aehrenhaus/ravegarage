@@ -113,6 +113,7 @@
       <DesignTime>True</DesignTime>
     </Compile>
     <Compile Include="RaveConfiguration.cs" />
+    <Compile Include="Steps\DDESteps.cs" />
     <Compile Include="Steps\EDCSteps_Logline.cs" />
     <Compile Include="Steps\EDCSteps_Query.cs" />
     <Compile Include="Steps\UserAdministrationSteps.cs" />

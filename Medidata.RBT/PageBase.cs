@@ -33,7 +33,7 @@ namespace Medidata.RBT
 			switch (RBTConfiguration.Default.BrowserName.ToLower())
 			{
 				case "firefox":
-						FirefoxProfile p = new FirefoxProfile(RBTConfiguration.Default.FirefoxProfilePath);
+						FirefoxProfile p = new FirefoxProfile(RBTConfiguration.Default.FirefoxProfilePath,true);
 						FirefoxBinary bin = new FirefoxBinary(RBTConfiguration.Default.BrowserPath);
 						_webdriver = new FirefoxDriver(bin, p);
 					break;
@@ -78,7 +78,10 @@ namespace Medidata.RBT
 
 		public TPage As<TPage>() where TPage :class, IPage
 		{
-			return this as TPage;
+			var page = this as TPage;
+			if (page == null)
+				throw new Exception("Expect current page to be "+typeof(TPage).Name+", but it's not.");
+			return page;
 		}
 
 		public virtual TPage OpenNew<TPage>() where TPage:PageBase
@@ -88,12 +91,38 @@ namespace Medidata.RBT
 
 		protected virtual IWebElement GetElementByName(string name)
 		{
-			throw new Exception("Must override");
+			throw new Exception("This page does not provide information about named page elements");
 		}
 
-		public virtual IPage Click(string name)
+		protected virtual IPage GetTargetPageObjectByLinkAreaName(string areaName)
 		{
-			GetElementByName(name).Click();
+			throw new Exception("This page does not provide information of target page obejct of a link area");
+		}
+
+		public virtual IPage ClickButton(string textOrName)
+		{
+            var button = Browser.TryFindElementBy(By.XPath("//input[text()='"+textOrName+"']"));
+            if (button == null)
+                button = GetElementByName(textOrName);
+
+            if (button == null)
+                throw new Exception("Can't find button:"+textOrName);
+            button.Click();
+			return this;
+		}
+
+		public virtual IPage ClickLinkInArea(string linkText, string areaName)
+		{
+			IWebElement area = GetElementByName(areaName);
+			ClickLink(linkText);
+			return GetTargetPageObjectByLinkAreaName(areaName);
+		}
+
+		public virtual IPage ClickLink(string linkText)
+		{
+			var link = Browser.TryFindElementBy(By.LinkText(linkText));
+			if (link == null)
+				throw new Exception("Can'f find hyperlink: "+linkText);
 			return this;
 		}
 
@@ -113,5 +142,24 @@ namespace Medidata.RBT
 		{
 			return true;
 		}
+
+        public IWebElement WaitForElement(Func<IWebDriver,IWebElement> getElement,string errorMessage=null, double timeOutSecond =3)
+        {
+
+            var wait = new WebDriverWait(Browser, TimeSpan.FromSeconds(timeOutSecond));
+            IWebElement ele = null;
+			try
+			{
+				ele = wait.Until(getElement);
+			}
+			catch
+			{
+				if (errorMessage == null)
+					throw;
+				else
+					throw new Exception(errorMessage);
+			}
+            return ele;
+        }
 	}
 }

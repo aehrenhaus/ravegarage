@@ -16,12 +16,35 @@ namespace Medidata.RBT.Common.Steps
 			CurrentPage.Choose(dropdownName, text);
 		}
 
-		[StepDefinition(@"I click ""([^""]*)""")]
-		public void IClick____(string buttonName)
+		[StepDefinition(@"I click button ""([^""]*)""")]
+		public void IClickButton____(string textOrName)
 		{
-			CurrentPage.Click(buttonName);
+            CurrentPage.ClickButton(textOrName);
 
 		}
+
+
+		/// <summary>
+		/// Warning: the page object is not changed.
+		/// If selecting a link causing the page changed, then use:
+		///		I select "" in "" 
+		///	
+		/// </summary>
+		/// <param name="linkText"></param>
+		[StepDefinition(@"I select ""([^""]*)""")]
+		public void ISelect____(string linkText)
+		{
+			CurrentPage.ClickLink(linkText);
+
+		}
+
+		[StepDefinition(@"I select ""([^""]*)"" in ""([^""]*)""")]
+		public void ISelect____In____(string linkText, string areaName)
+		{
+			CurrentPage = CurrentPage.ClickLinkInArea(linkText, areaName);
+			
+		}
+
 
 		/// <summary>
 		/// Use mapping to figure out which link to click
