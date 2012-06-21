@@ -74,27 +74,44 @@ namespace Medidata.RBT.PageObjects.Rave
 			}
 		}
 
-		public static IWebElement FindLinkInPaginatedList(string linkText)
-		{
-			IWebElement ele = null;
-			int pageIndex = 1;
-			int count = 0;
-			do
-			{
-				ele = TestContext.Browser.TryFindElementByLinkText(linkText);
-				if (ele != null)
-					break;
-				var pageTable = TestContext.Browser.FindElementById("_ctl0_Content_ListDisplayNavigation_DlPagination");
-				var pageLinks = pageTable.FindElements(By.XPath(".//a"));
-				count = pageLinks.Count;
-				if (pageIndex == count)
-					break;
+        public static IWebElement FindLinkInPaginatedList(string linkText)
+        {
+            IWebElement ele = null;
+            int pageIndex = 1;
+            int count = 0;
+            int lastValue = -1;
+            do
+            {
+                ele = TestContext.Browser.TryFindElementByLinkText(linkText);
+                if (ele != null)
+                    break;
+                var pageTable = TestContext.Browser.FindElementById("_ctl0_Content_ListDisplayNavigation_DlPagination");
+                var pageLinks = pageTable.FindElements(By.XPath(".//a"));
 
-				pageLinks[pageIndex].Click();
-				pageIndex++;
-			} while (true);
+                count = pageLinks.Count;
+                if (pageIndex == count)
+                    break;
 
-			return ele;
-		}
+                while (!pageLinks[pageIndex].Text.Equals("...") && int.Parse(pageLinks[pageIndex].Text) <= lastValue && pageIndex <= count)
+                {
+                    pageIndex++;
+                }
+
+                if (pageLinks[pageIndex].Text.Equals("..."))
+                {
+                    lastValue = int.Parse(pageLinks[pageIndex - 1].Text);
+                    pageLinks[pageIndex].Click();
+                    pageIndex = 1;
+                }
+                else
+                {
+                    pageLinks[pageIndex].Click();
+                    pageIndex++;
+                }
+            } while (true);
+
+            return ele;
+        }
+
 	}
 }
