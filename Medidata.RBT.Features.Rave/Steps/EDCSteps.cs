@@ -87,7 +87,7 @@ namespace Medidata.RBT.Features.Rave
 		}
 
 
-		[StepDefinition(@"I save the ""[^""]*"" page")]
+		//[StepDefinition(@"I save the ""[^""]*"" page")]
 		[StepDefinition(@"I save the CRF page")]
 		public void ISaveCRF()
 		{

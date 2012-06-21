@@ -107,13 +107,14 @@ namespace Medidata.RBT.PageObjects.Rave
 			NameValueCollection poClassMapping = new NameValueCollection();
 			poClassMapping["Architect"] = "Architect";
 			poClassMapping["User Administration"] = "UserAdministration";
+            poClassMapping["DDE"] = "DDE";
 			//TODO: other mappings
 
 			var leftNavContainer = Browser.FindElementById("TblOuter");
 			var link = leftNavContainer.TryFindElementBy(By.LinkText(name));
 			link.Click();
 			string className = poClassMapping[name];
-			return RavePageFactory.GetPage(className);
+			return RavePageObjectFactory.GetPage(className);
 		}
 	}
 }

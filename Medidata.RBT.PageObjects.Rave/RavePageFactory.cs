@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Medidata.RBT.PageObjects.Rave
 {
-	public class RavePageFactory
+	public class RavePageObjectFactory
 	{
 		static Dictionary<string, Type> pageObjectTypes;
 
@@ -14,7 +14,7 @@ namespace Medidata.RBT.PageObjects.Rave
 			if (pageObjectTypes == null)
 			{
 				pageObjectTypes = new Dictionary<string, Type>();
-				foreach (var poType in typeof(RavePageFactory).Assembly.GetTypes().Where(x => x.GetInterface("IPage")!=null))
+				foreach (var poType in typeof(RavePageObjectFactory).Assembly.GetTypes().Where(x => x.GetInterface("IPage")!=null))
 				{
 
 					pageObjectTypes[poType.Name] = poType;
