@@ -16,47 +16,47 @@ namespace Medidata.RBT.Features.Rave
 
 		[StepDefinition(@"the Query with message ""([^""]*)"" is not displayed on Field ""([^""]*)"" on log line (\d+)")]
 		public void ThenIVerifyTheQueriesAreNotDisplayedOnField____OnLogline____(string message, string fieldNames, int logLine)
-		{			
-            bool canFind = CurrentPage.As<CRFPage>().OpenLogline(logLine).CanFindQueryMessage(fieldNames, message);
-            Assert.IsFalse(canFind, "Can find message");
+		{
+			bool canFind = CurrentPage.As<CRFPage>().OpenLogline(logLine).CanFindQueryMessage(fieldNames, message);
+			Assert.IsFalse(canFind, "Can find message");
 		}
 
 		[StepDefinition(@"I verify Requires Response Query with message ""([^""]*)"" is displayed on Field ""([^""]*)""")]
 		[StepDefinition(@"I verify Query with message ""([^""]*)"" with Requires Response is displayed on Field ""([^""]*)""")]
 		public void TheRequiresResponseQueryWithMessageIsDisplayedOnField____(string message, string fieldNames)
-		{			
-            bool canFind = CurrentPage.As<CRFPage>().CanFindQueryRequiringResponse(fieldNames, message);
-            Assert.IsTrue(canFind, "Can't find message");
+		{
+			bool canFind = CurrentPage.As<CRFPage>().CanFindQueryRequiringResponse(fieldNames, message);
+			Assert.IsTrue(canFind, "Can't find message");
 		}
 
 
 		[StepDefinition(@"I verify Requires Response Query with message ""([^""]*)"" is not displayed on Field ""([^""]*)""")]
 		public void TheRequiresResponseQueryWithMessageIsNotDisplayedOnField____(string message, string fieldNames)
-		{			
-            bool canFind = CurrentPage.As<CRFPage>().CanFindQueryRequiringResponse(fieldNames, message);
-            Assert.IsFalse(canFind, "Can find message");
+		{
+			bool canFind = CurrentPage.As<CRFPage>().CanFindQueryRequiringResponse(fieldNames, message);
+			Assert.IsFalse(canFind, "Can find message");
 		}
 
 		[StepDefinition(@"I verify Query with message ""([^""]*)"" is displayed on Field ""([^""]*)""")]
 		public void TheQueryWithMessageIsDisplayedOnField____(string message, string fieldNames)
-		{			
-            bool canFind = CurrentPage.As<CRFPage>().CanFindQueryMessage(fieldNames, message);
-            Assert.IsTrue(canFind, "Can't find message");
+		{
+			bool canFind = CurrentPage.As<CRFPage>().CanFindQueryMessage(fieldNames, message);
+			Assert.IsTrue(canFind, "Can't find message");
 		}
 
 
 		[StepDefinition(@"I verify Query with message ""([^""]*)"" is not displayed on Field ""([^""]*)""")]
 		public void TheQueryWithMessageIsNotDisplayedOnField____(string message, string fieldNames)
-		{			
-            bool canFind = CurrentPage.As<CRFPage>().CanFindQueryMessage(fieldNames, message);
-            Assert.IsFalse(canFind, "Can find message");
+		{
+			bool canFind = CurrentPage.As<CRFPage>().CanFindQueryMessage(fieldNames, message);
+			Assert.IsFalse(canFind, "Can find message");
 		}
 
 		[StepDefinition(@"I answer the Query ""([^""]*)"" on Field ""([^""]*)"" with ""([^""]*)""")]
 		public void IAnswerTheQueryOnField____With____(string message, string fieldName, string answer)
 		{
-            CRFPage page = CurrentPage.As<CRFPage>();
-            page.AnswerQuery(message, fieldName, answer);
+			CRFPage page = CurrentPage.As<CRFPage>();
+			page.AnswerQuery(message, fieldName, answer);
 
 		}
 
@@ -74,8 +74,8 @@ namespace Medidata.RBT.Features.Rave
 		[StepDefinition(@"I answer the Query ""([^""]*)"" on Field ""([^""]*)""")]
 		public void IAnswerTheQueryOn____(string message, string fieldNames)
 		{
-            CRFPage page = CurrentPage.As<CRFPage>();
-            page.AnswerQuery(message, fieldNames, System.DateTime.Today.Ticks.ToString());
+			CRFPage page = CurrentPage.As<CRFPage>();
+			page.AnswerQuery(message, fieldNames, System.DateTime.Today.Ticks.ToString());
 		}
 
 		[StepDefinition(@"I close the Query ""([^""]*)"" on Field ""([^""]*)""")]

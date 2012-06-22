@@ -70,9 +70,9 @@
     <Compile Include="PageObjectInterfaces\IVerifyDisableConrolsPage.cs" />
     <Compile Include="PageObjectInterfaces\IPage.cs" />
     <Compile Include="PageObjectInterfaces\IPaginatedPage.cs" />
-    <Compile Include="PageObjectInterfaces\INavigationPage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RemoteWebDriverExtend.cs" />
+    <Compile Include="StringReplacement\RndNumReplace.cs" />
     <Compile Include="StringReplacement\MaxSubjectNumReplace.cs" />
     <Compile Include="StringReplacement\VarReplace.cs" />
     <Compile Include="StringReplacement\SpecialStringHelper.cs" />

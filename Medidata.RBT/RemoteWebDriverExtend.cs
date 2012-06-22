@@ -4,17 +4,18 @@ using System.Linq;
 using System.Text;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Remote;
+using System.Collections.ObjectModel;
 
 namespace Medidata.RBT.PageObjects
 {
 	public static class RemoteWebDriverExtend
 	{
-        public static ICollection<IWebElement> FindTextboxes(this ISearchContext driver)
+        public static ReadOnlyCollection<IWebElement> FindTextboxes(this ISearchContext driver)
         {
             return driver.FindElements(By.XPath(".//input[@type='text']"));
         }
 
-        public static ICollection<IWebElement> FindCheckboxes(this ISearchContext driver)
+		public static ReadOnlyCollection<IWebElement> FindCheckboxes(this ISearchContext driver)
         {
             return driver.FindElements(By.XPath(".//input[@type='checkbox']"));
         }

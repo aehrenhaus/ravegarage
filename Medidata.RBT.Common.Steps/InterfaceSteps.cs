@@ -13,7 +13,7 @@ namespace Medidata.RBT.Common.Steps
 		[StepDefinition(@"I choose ""([^""]*)"" from ""([^""]*)""")]
 		public void IChoose____From____(string text, string dropdownName)
 		{
-			CurrentPage.Choose(dropdownName, text);
+			CurrentPage.Choose(dropdownName,SpecialStringHelper.Replace( text));
 		}
 
 		[StepDefinition(@"I click button ""([^""]*)""")]
@@ -53,13 +53,13 @@ namespace Medidata.RBT.Common.Steps
 		[StepDefinition(@"I navigate to ""([^""]*)""")]
 		public void INavigateTo____(string name)
 		{
-			CurrentPage = CurrentPage.As<INavigationPage>().NavigateTo(name);
+			CurrentPage = CurrentPage.As<IPage>().NavigateTo(name);
 		}
 
 		[StepDefinition(@"I type ""([^""]*)"" in ""([^""]*)""")]
 		public void IType____In____(string text, string textboxName)
 		{
-			CurrentPage.Type(textboxName, text);
+			CurrentPage.Type(textboxName, SpecialStringHelper.Replace( text));
 		}
 	
 	}

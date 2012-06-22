@@ -8,7 +8,7 @@ using OpenQA.Selenium.Remote;
 
 namespace Medidata.RBT.PageObjects.Rave
 {
-	public  class LoginPage : PageBase
+	public class LoginPage : RavePageBase
 	{
 		public LoginPage(string url)
 		{
