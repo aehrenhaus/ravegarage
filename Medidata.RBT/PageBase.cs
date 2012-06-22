@@ -123,8 +123,14 @@ namespace Medidata.RBT
 			var link = Browser.TryFindElementBy(By.LinkText(linkText));
 			if (link == null)
 				throw new Exception("Can'f find hyperlink: "+linkText);
+			link.Click();
 			return this;
 		}
+		public virtual IPage NavigateTo(string name)
+		{
+			throw new Exception("page object does not implment NavigateTo()");
+		}
+
 
 		public virtual IPage Type(string name, string text)
 		{

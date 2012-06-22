@@ -25,7 +25,7 @@ namespace Medidata.RBT
         public static string Replace(string input)
         {
 			Regex reg = new Regex(@"{(?<name>.+?)(\<(?<var>.+?)\>)?\((?<args>.*)?\)}");
-			input = reg.Replace(input, m =>
+			var output = reg.Replace(input, m =>
 				{
 					string name = m.Groups["name"].Value;
 					string[] args = m.Groups["args"].Value.Split(',');
@@ -37,8 +37,13 @@ namespace Medidata.RBT
 
 					if (replaceMethod == null)
 						throw new Exception("Replace method not found: " + name);
-					if (replaceMethod.ArgsCount != args.Length)
-						throw new Exception("Replace method arguments count not match: " + name);
+
+
+
+					if (replaceMethod.ArgsDescription.Length != args.Length)
+					{
+						throw new Exception("Replace method arguments count not match: " + name+". Required arguments:"+string.Join(",",replaceMethod.ArgsDescription));
+					}
 					var replaced  = replaceMethod.Replace(args);
 
 					if (!string.IsNullOrWhiteSpace(var))
@@ -48,7 +53,12 @@ namespace Medidata.RBT
 					return replaced;
 				});
 
-            return input;
+			if (input != output)
+			{
+				Console.WriteLine("replace --> " + input+ " --> " + output);
+			}
+
+			return output;
         }
 
 		public static Table ReplaceTableColumn(Table table, string colName)

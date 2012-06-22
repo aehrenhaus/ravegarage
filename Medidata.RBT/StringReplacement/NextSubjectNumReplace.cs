@@ -16,7 +16,18 @@ namespace Medidata.RBT
 			return GetNextSubNum(args[0], args[1], args[2]).ToString();
         }
 
-		public int ArgsCount { get { return 3; } }
+		public string[] ArgsDescription
+		{
+			get
+			{
+
+				return new string[3] {
+				"Project",
+				"Environment",
+				"Number Field"
+			};
+			}
+		}
 
 		/// <summary>
 		/// this will also be used by MaxSubjectNumReplace class .So make internal

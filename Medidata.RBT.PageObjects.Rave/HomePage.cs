@@ -11,7 +11,7 @@ using TechTalk.SpecFlow;
 
 namespace Medidata.RBT.PageObjects.Rave
 {
-	public  class HomePage : PageBase, INavigationPage
+	public  class HomePage : RavePageBase
 	{
 		[FindsBy(How = How.Id, Using = "_ctl0_Content_ListDisplayNavigation_txtSearch")]
 		IWebElement SearchBox;
@@ -101,7 +101,7 @@ namespace Medidata.RBT.PageObjects.Rave
         }
 
 
-		public IPage NavigateTo(string name)
+		public override IPage NavigateTo(string name)
 		{
 
 			NameValueCollection poClassMapping = new NameValueCollection();
@@ -112,6 +112,10 @@ namespace Medidata.RBT.PageObjects.Rave
 
 			var leftNavContainer = Browser.FindElementById("TblOuter");
 			var link = leftNavContainer.TryFindElementBy(By.LinkText(name));
+
+			if (link == null)
+				return base.NavigateTo(name);
+
 			link.Click();
 			string className = poClassMapping[name];
 			return RavePageObjectFactory.GetPage(className);

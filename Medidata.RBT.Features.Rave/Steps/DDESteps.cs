@@ -24,8 +24,24 @@ namespace Medidata.RBT.Features.Rave
 			}
 		}
 
+		[StepDefinition(@"I enter data in DDE log line (\d+)")]
+		public void IEnterDataInDDELogLine____(int line, Table table)
+		{
+			var page = CurrentPage.As<DDEPage>();
+
+			page.FillLoglineDataPoints(line, table);
+		}
+
+		[StepDefinition(@"I enter data in DDE log line (\d+) and save")]
+		public void IEnterDataInDDELogLine____AndSave(int line, Table table)
+		{
+			IEnterDataInDDELogLine____(line, table);
+			ISaveDDE();
+		}
+
+
 		[StepDefinition(@"I enter data in DDE and save")]
-		public void IEnterDataInCRF(Table table)
+		public void IEnterDataInDDEAndSave(Table table)
 		{
 			IEnterDataInDDE(table);
 			ISaveDDE();
