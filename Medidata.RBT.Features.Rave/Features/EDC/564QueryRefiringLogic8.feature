@@ -65,14 +65,14 @@ Folder "Test A Single Edit" enter and save data on forms "Informed Consent Date 
 	And I choose "Edit Check Study 3" from "Study"
 	And I choose "Prod" from "Environment"
 	And I choose "Edit Check Site 8" from "Site"
-	And I type "sub {NextSubjectNum(Edit Check Study 3,prod,Subject Number)}" in "Subject"
+	And I type "sub {RndNum<num1>(5)}" in "Subject"
 	And I choose "Subject Identification" from "Form"
 	And I click button "Locate"
 
 	And I enter data in DDE and save
-		| Field            | Data                                                    |
-		| Subject Number   | {MaxSubjectNum(Edit Check Study 3,prod,Subject Number)} |
-		| Subject Initials | sub                                                   |
+		| Field            | Data        |
+		| Subject Number   | {Var(num1)} |
+		| Subject Initials | sub         |
 	
 	And I choose "Screening" from "Folder"
 	And I choose "Informed Consent" from "Form"
@@ -85,7 +85,7 @@ Folder "Test A Single Edit" enter and save data on forms "Informed Consent Date 
 	    | Current Distribution Number  | 19          |
 	And I choose "Concomitant Medications" from "Form"
 	And I click button "Locate"	
-	And I enter data in DDE and save
+	And I enter data in DDE log line 1 and save
 	    | Field                | Data        |
 	    | Start Date           | 08 Jan 2000 |
 	    | End Date             | 11 Jan 2000 |
@@ -100,36 +100,34 @@ Folder "Test A Single Edit" enter and save data on forms "Informed Consent Date 
 	And I choose "Edit Check Study 3" from "Study"
 	And I choose "Prod" from "Environment"
 	And I choose "Edit Check Site 8" from "Site"
-	And I type "sub {<MaxSubjectNum(Edit Check Study 3,prod,Subject Number)}" in "Subject"
+	And I choose "sub {Var(num1)}" from "Subject"
 	And I choose "Subject Identification" from "Form"
 	And I click button "Locate"
-	And I enter data in CRF
-		| Field            | Value                                                    |
-		| Subject Number   | {MaxSubjectNum(Edit Check Study 3,prod,Subject Number)} |
-		| Subject Initials | sub                                                   |
-	And I save the CRF page
+	And I enter data in DDE and save
+		| Field            | Data        |
+		| Subject Number   | {Var(num1)} |
+		| Subject Initials | sub         |
+
 	And I choose "Screening" from "Folder"
 	And I choose "Informed Consent" from "Form"
 	And I click button "Locate"
-	And I enter data in CRF and save
-	    |Field                   |Data        |
-        |Informed Consent Date 1 |09 Jan 2000 |
-	    |Informed Consent Date 2 |10 Jan 2000 |
-	    |Numeric Field 1         |10          |
-	    |Numeric Field 2         |19          |
+	And I enter data in DDE and save
+	    | Field                        | Data        |
+	    | Date Informed Consent Signed | 09 Jan 2000 |
+	    | End Date                     | 10 Jan 2000 |
+	    | Original Distribution Number | 10          |
+	    | Current Distribution Number  | 19          |
 	And I choose "Concomitant Medications" from "Form"
 	And I click button "Locate"	
-	And I enter data in CRF and save
-	    |Field             |Data        |
-        |Assessment Date 1 |08 Jan 2000 |
-	    |Assessment Date 2 |11 Jan 2000 |
-	    |Numeric Field 1   |10          |
-	    |Numeric Field 2   |20          |	
-
-		
+	And I enter data in DDE log line 1 and save
+	    | Field                | Data        |
+	    | Start Date           | 08 Jan 2000 |
+	    | End Date             | 11 Jan 2000 |
+	    | Original Axis Number | 10          |
+	    | Current Axis Number  | 20          |
 	And I navigate to "Home"
 	And I select Study "Edit Check Study 3" and Site "Edit Check Site 8"
-	And I select a Subject "sub{MaxSubjectNum(Edit Check Study 3,prod,Subject Number)}"
+	And I select a Subject "sub{Var(num1)}"
 
 	And I select Form "Assessment Date Log2" in Folder "Test A Single Edit"
 	And I verify Requires Response Query with message "'Date Informed Consent Signed' is greater. Please revise." is displayed on Field "Assessment Date 1"

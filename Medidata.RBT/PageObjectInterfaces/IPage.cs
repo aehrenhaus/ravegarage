@@ -56,6 +56,14 @@ namespace Medidata.RBT
 		IPage Choose(string name, string text);
 
 		/// <summary>
+		/// NavigateTo() is abstract while ClickLink() clicks concrete link text
+		/// </summary>
+		/// <param name="name"></param>
+		/// <returns></returns>
+		IPage NavigateTo(string name);
+
+
+		/// <summary>
 		/// Is the page in browser the same page this object represents.
 		/// </summary>
 		/// <returns></returns>

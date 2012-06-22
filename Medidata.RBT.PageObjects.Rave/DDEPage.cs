@@ -7,24 +7,16 @@ using OpenQA.Selenium;
 using OpenQA.Selenium.Remote;
 using System.Collections.Specialized;
 using OpenQA.Selenium.Support.UI;
+using TechTalk.SpecFlow;
 
 namespace Medidata.RBT.PageObjects.Rave
 {
-	public  class DDEPage : PageBase
+	public class DDEPage : RavePageBase
 	{
 		public DDEPage()
 		{
 		}
 
-        //[FindsBy(How = How.Id, Using = "UserLoginBox")]
-        //public IWebElement UsernameBox;
-
-        //[FindsBy(How = How.Id, Using = "UserPasswordBox")]
-        //public IWebElement PasswordBox;
-
-
-        //[FindsBy(How = How.Id, Using = "LoginButton")]
-        //IWebElement LoginButton;
 
         protected override IWebElement GetElementByName(string name)
         {
@@ -62,13 +54,15 @@ namespace Medidata.RBT.PageObjects.Rave
 
         public override IPage Choose(string name, string text)
         {
+			//first type ,then choose will limite the count of options.
+			Type(name, text);
+
             IWebElement field = GetElementByName(name);
 
-            IWebElement dropdownButton = field.TryFindElementBy(By.XPath("./span/input[position()=2]"));
-    
-
-
-            dropdownButton.Click();
+			//IF type first, then do not need to click the dropdown button.
+			//IF click, what you entered will not be the filter
+            //IWebElement dropdownButton = field.TryFindElementBy(By.XPath("./span/input[position()=2]"));
+            //dropdownButton.Click();
 
 			var option = WaitForElement(
 				driver => field.FindElements(By.XPath("./div[position()=2]/div")).FirstOrDefault(x => x.Text == text),
@@ -85,9 +79,46 @@ namespace Medidata.RBT.PageObjects.Rave
 			return this;
 		}
 
+		public DDEPage FillLoglineDataPoints(int line, Table table)
+		{
+			IWebElement tb = Browser.TryFindElementById("log");
+			var ths = tb.FindElements(By.XPath("./tbody/tr[position()=1]/td"));
+			Dictionary<string, int> ordinal = new Dictionary<string, int>();
+			var tds = tb.FindElements(By.XPath("./tbody/tr[position()="+(line+1)+"]/td"));
+			
+			for(int i =0;i<ths.Count;i++)
+			{
+				ordinal[ths[i].Text.Trim()] = i;
+			}
+
+			foreach (var row in table.Rows)
+			{
+				int index = 0;
+				try
+				{
+					index = ordinal[row["Field"]];
+				}
+				catch
+				{
+					throw new Exception("Field " + row["Field"] + "does not exist in log form");
+				}
+				FillLoglineDataPoint(tds[index], row["Data"]);
+			}
+
+			return this;
+		}
+
+		private void FillLoglineDataPoint(IWebElement fieldContainer, string value)
+		{
+			fieldContainer.FindTextboxes()[0].SetText(value);
+		}
+
 		public DDEPage SaveForm()
 		{
 			IWebElement btn = Browser.TryFindElementById("_ctl0_Content_dde1_header_SaveLink1");
+			if(btn==null)
+				btn = Browser.TryFindElementById("_ctl0_Content_dde2_header_SaveLink1");
+
 			if (btn == null)
 				throw new Exception("Can not find the Save button");
 			btn.Click();

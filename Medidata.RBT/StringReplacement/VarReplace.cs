@@ -16,8 +16,17 @@ namespace Medidata.RBT
 			return TestContext.Vars[args[0]];
         }
 
-		public int ArgsCount { get { return 1; } }
 
+		public string[] ArgsDescription
+		{
+			get
+			{
+
+				return new string[1] {
+				"Variable name"
+			};
+			}
+		}
        
     }
 }

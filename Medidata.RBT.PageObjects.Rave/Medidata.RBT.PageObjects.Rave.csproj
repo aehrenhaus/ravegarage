@@ -60,6 +60,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BaseEDCTreePage.cs" />
+    <Compile Include="RavePageBase.cs" />
     <Compile Include="DDEPage.cs" />
     <Compile Include="UserEditPage.cs" />
     <Compile Include="RavePageFactory.cs" />

@@ -6,7 +6,7 @@ using OpenQA.Selenium;
 
 namespace Medidata.RBT.PageObjects.Rave
 {
-	public class BaseEDCTreePage :PageBase
+	public class BaseEDCTreePage : RavePageBase
 	{
 		public BaseEDCTreePage SelectFolder(string folderName)
 		{

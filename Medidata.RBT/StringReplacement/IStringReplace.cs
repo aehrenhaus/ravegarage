@@ -9,6 +9,6 @@ namespace Medidata.RBT
     {
         string Replace(string[] args);
 
-		int ArgsCount { get; }
+		string[] ArgsDescription { get; }
     }
 }

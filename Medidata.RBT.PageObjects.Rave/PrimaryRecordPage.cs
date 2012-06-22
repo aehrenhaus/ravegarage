@@ -9,7 +9,7 @@ using TechTalk.SpecFlow;
 
 namespace Medidata.RBT.PageObjects.Rave
 {
-	public  class PrimaryRecordPage : PageBase
+	public class PrimaryRecordPage : RavePageBase
 	{
 
 		public SubjectPage FillNameAndSave(Table table)
