@@ -30,7 +30,7 @@ namespace Medidata.RBT.Features.Rave
         [StepDefinition(@"I go to the log page for logger ""([^""]*)""")]
         public PageBase WhenIGoToTheLogPageForLoggerQueryNotOpeningEvent(string logger)
         {
-            return new RWSLogPage(RaveConfiguration.Default.RWSURL, logger, RaveConfiguration.Default.RWSAuthanticationFilePath);
+            return new RWSLogPage(RaveConfiguration.Default.RWSURL, logger);
         }
 	}
 }
