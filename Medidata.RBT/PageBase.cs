@@ -101,7 +101,7 @@ namespace Medidata.RBT
 
 		public virtual IPage ClickButton(string textOrName)
 		{
-            var button = Browser.TryFindElementBy(By.XPath("//input[text()='"+textOrName+"']"));
+            var button = Browser.TryFindElementBy(By.XPath("//input[@value='"+textOrName+"']"));
             if (button == null)
                 button = GetElementByName(textOrName);
 
@@ -126,6 +126,7 @@ namespace Medidata.RBT
 			link.Click();
 			return this;
 		}
+
 		public virtual IPage NavigateTo(string name)
 		{
 			throw new Exception("page object does not implment NavigateTo()");

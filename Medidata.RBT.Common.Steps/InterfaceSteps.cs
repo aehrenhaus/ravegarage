@@ -13,13 +13,13 @@ namespace Medidata.RBT.Common.Steps
 		[StepDefinition(@"I choose ""([^""]*)"" from ""([^""]*)""")]
 		public void IChoose____From____(string text, string dropdownName)
 		{
-			CurrentPage.Choose(dropdownName,SpecialStringHelper.Replace( text));
+			CurrentPage = CurrentPage.Choose(dropdownName, SpecialStringHelper.Replace(text));
 		}
 
 		[StepDefinition(@"I click button ""([^""]*)""")]
 		public void IClickButton____(string textOrName)
 		{
-            CurrentPage.ClickButton(textOrName);
+			CurrentPage = CurrentPage.ClickButton(textOrName);
 
 		}
 
@@ -34,7 +34,7 @@ namespace Medidata.RBT.Common.Steps
 		[StepDefinition(@"I select ""([^""]*)""")]
 		public void ISelect____(string linkText)
 		{
-			CurrentPage.ClickLink(linkText);
+			CurrentPage = CurrentPage.ClickLink(linkText);
 
 		}
 

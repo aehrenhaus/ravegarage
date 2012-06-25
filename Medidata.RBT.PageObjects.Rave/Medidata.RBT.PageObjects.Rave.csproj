@@ -60,6 +60,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BaseEDCTreePage.cs" />
+    <Compile Include="TSDV\SubjectOverridePage.cs" />
+    <Compile Include="PromptsPage.cs" />
+    <Compile Include="ReportsPage.cs" />
     <Compile Include="RavePageBase.cs" />
     <Compile Include="DDEPage.cs" />
     <Compile Include="UserEditPage.cs" />

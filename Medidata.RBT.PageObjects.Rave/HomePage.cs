@@ -105,9 +105,10 @@ namespace Medidata.RBT.PageObjects.Rave
 		{
 
 			NameValueCollection poClassMapping = new NameValueCollection();
-			poClassMapping["Architect"] = "Architect";
-			poClassMapping["User Administration"] = "UserAdministration";
-            poClassMapping["DDE"] = "DDE";
+			poClassMapping["Architect"] = "ArchitectPage";
+			poClassMapping["User Administration"] = "UserAdministrationPage";
+            poClassMapping["DDE"] = "DDEPage";
+            poClassMapping["Reporter"] = "ReportsPage";
 			//TODO: other mappings
 
 			var leftNavContainer = Browser.FindElementById("TblOuter");
