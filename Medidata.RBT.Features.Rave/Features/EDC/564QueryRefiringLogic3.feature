@@ -93,8 +93,18 @@ Scenario: PB_3.1.1 On a Cross Form Standard form to log form, When a query has b
 @Draft
 Scenario: PB_3.1.2 On a Cross Form Standard form to log form, When a query has been answered and closed with the same data and I enter the same data that 
 originally opened the query, then queries are displayed in SQL logs. 
-	
-    When I run SQL Script "Query Logging Script"
+
+	Given closed Query with message "" exists on Field "Assessment Date 1" in Form "Assessment Date Log2" in Folder "Test A Single Edit" in Subject "SUB301" in Site "Test Site 1" in Study "Edit Check Study 1"
+	And closed Query with message "" exists on Field "Numeric Field 2" in Form "Assessment Date Log2" in Folder "Test A Single Edit" in Subject "SUB301" in Site "Test Site 1" in Study "Edit Check Study 1"
+	When I am on CRF page "Assessment Date Log2" in Folder "Test A Single Edit" in Subject "sub301" in Site "Test Site 1" in Study "Edit Check Study 1"
+	And I open log line 1 for edit
+	And I enter data in CRF
+		|Field             |Data        |
+        |Assessment Date 1 |08 Jan 2000 |
+	    |Numeric Field 2   |20          |
+	And I save the CRF page
+   # When I go to the log page for logger "Query not opening event"
+    When I verify the log messages for query not opening events for Project "Edit Check Study 3" and Site "Edit Check Site 3"
     Then I should see the logging data for queries 
 		|ProjectName        |SiteNumber  |SiteName          |Environment |SubjectName  |CheckActionInstanceName     |CheckActionInstanceDataPageName |CheckActionRecordPosition |CheckActionFieldName		|CheckActionFieldData |TriggerFieldInstanceName |TriggerFieldInstanceDatapageName 	|TriggerFieldRecordPosition |TriggerFieldName        |TriggerFieldData |EditCheckName                               |MarkingGroupName |QueryMessage                                                                |EventTime  |
 		|Edit Check Study 3 |30001       |Edit Check Site 3 |PROD        |SUB301       |Screening					|Concomitant Medications            |1                         |Start Date				|08 Jan 2000          |Screening       |Concomitant Medications			 	 	|1                          |Start Date       |08 Jan 2000      |*Greater Than Open Query Log Cross Form     |Marking Group 1  |'Date Informed Consent Signed' is greater. Please revise.                          |{DateTime} |
@@ -152,7 +162,7 @@ originally opened the query, then queries are displayed.
 @Draft
 Scenario: PB_3.1.4 On a Cross Form Standard form to log form, When a query has been answered and closed with the same data and I enter the same data that originally opened the query, then queries are not displayed in SQL logs. 
 	
-    When I run SQL Script "Query Logging Script" 
+    When I verify the log messages for queries
     Then I should not see the logging data for queries 
 		|ProjectName        |SiteNumber  |SiteName          |Environment |SubjectName  |CheckActionInstanceName     |CheckActionInstanceDataPageName 	|CheckActionRecordPosition |CheckActionFieldName 	|CheckActionFieldData |TriggerFieldInstanceName |TriggerFieldInstanceDatapageName |TriggerFieldRecordPosition |TriggerFieldName        |TriggerFieldData |EditCheckName                               |MarkingGroupName |QueryMessage                                                                |EventTime  |
 		|Edit Check Study 3 |30001       |Edit Check Site 3 |PROD        |SUB301       |Screening          			|Concomitant Medications            |2                         |Start Date    			|07 Jan 2000          |Screening       |Concomitant Medications             |2                          |Start Date       |07 Jan 2000      |*Greater Than Open Query Log Cross Form     |Marking Group 1  |'Date Informed Consent Signed' is greater. Please revise.                          |{DateTime} |

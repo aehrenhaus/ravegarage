@@ -55,6 +55,26 @@ namespace Medidata.RBT.Common.Steps
 		}
 
 
+
+		[StepDefinition(@"I take a screenshot")]
+		public void ITakeScreenshot()
+		{
+			TestContext.TrySaveScreenShot();
+		}
+
+        [When(@"I verify the log messages for query not opening events for Project ""([^""]*)"" and Site ""([^""]*)""")]
+        public void WhenIVerifyTheLogMessagesForQueryNotOpeningEventsForProjectEditCheckStudy3AndSiteEditCheckSite3(string projectName, string siteName)
+        {
+            Database database = DatabaseFactory.CreateDatabase(RBTConfiguration.Default.DatabaseConnection);
+
+            var sql = "spVerifyQueryLog";
+            var dataTable = database.ExecuteDataSet(sql, new object[]{projectName, siteName}).Tables[0];
+
+            SaveDataTable(dataTable);
+            TestContext.SetContextValue(LastSqlResultTable, dataTable);
+        }
+
+
 		#region Private
 
 		private const string LastSqlResultTable = "LastSqlResultTable";

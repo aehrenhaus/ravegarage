@@ -80,6 +80,7 @@
     <Compile Include="UserEditPage.cs" />
     <Compile Include="RavePageObjectFactory.cs" />
     <Compile Include="UserAdministrationPage.cs" />
+    <Compile Include="RWSLogPage.cs" />
     <Compile Include="CRFPage.cs" />
     <Compile Include="HomePage.cs" />
     <Compile Include="LoginPage.cs" />
