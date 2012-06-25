@@ -29,6 +29,12 @@ namespace Medidata.RBT.Features.Rave
 			Assert.IsTrue(canFind, "Can't find message");
 		}
 
+        [StepDefinition(@"I verify Query with message ""([^""]*)"" without Requires Response is displayed on Field ""([^""]*)""")]
+        public void QueryNotRequiringResponseIsDisplayedOnField____(string message, string fieldNames)
+        {
+            bool canFind = CurrentPage.As<CRFPage>().CanFindQueryNotRequiringResponse(fieldNames, message);
+            Assert.IsTrue(canFind, "Can't find message");
+        }
 
 		[StepDefinition(@"I verify Requires Response Query with message ""([^""]*)"" is not displayed on Field ""([^""]*)""")]
 		public void TheRequiresResponseQueryWithMessageIsNotDisplayedOnField____(string message, string fieldNames)

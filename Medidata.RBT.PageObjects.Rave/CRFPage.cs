@@ -33,6 +33,25 @@ namespace Medidata.RBT.PageObjects.Rave
             return null;
         }
 
+
+        private bool QueryWithNoRequiresResponseExists(string message, string fieldName)
+        {
+            var fieldArea = RavePagesHelper.GetDatapointLabelContainer(fieldName);
+            var queryTable = fieldArea.FindElements(
+                By.XPath(".//td[@class='crf_preText']/table"));
+            foreach (var table in queryTable)
+            {
+                if (table.Text.IndexOf(message) != -1)
+                {
+                    if (table.FindTextboxes().Count == 0)
+                        return true;
+                    else
+                        return false;
+                }
+            }
+            return false ;
+        }
+
         public CRFPage AnswerQuery(string message, string fieldName, string answer)
         {
             var queryTextbox = GetQueryResponseTextbox(message, fieldName);
@@ -115,5 +134,11 @@ namespace Medidata.RBT.PageObjects.Rave
         {
             return (GetQueryResponseTextbox(message, fieldName) != null);
         }
+
+        public bool CanFindQueryNotRequiringResponse(string fieldName, string message)
+        {
+            return (QueryWithNoRequiresResponseExists(message, fieldName));
+        }
+        
 	}
 }
