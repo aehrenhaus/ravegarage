@@ -5,6 +5,7 @@ using System.Text;
 using OpenQA.Selenium.Support.PageObjects;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Remote;
+using System.Collections.Specialized;
 
 namespace Medidata.RBT.PageObjects.Rave
 {
@@ -16,8 +17,18 @@ namespace Medidata.RBT.PageObjects.Rave
 
         public PromptsPage SelectReport(string reportName)
         {
+			var reportTable = Browser.FindElementById("MyReportGrid");
+			var reportLinks = reportTable.FindElements(By.XPath("./tbody/tr[position()>1]/td[position()=2]/a"));
 
-            return new PromptsPage();         
+			var link = reportLinks.FirstOrDefault(x => x.Text == reportName);
+			if (link == null)
+				throw new Exception("Report not found:"+reportName);
+			link.Click();
+
+			NameValueCollection mapping = new NameValueCollection();
+			mapping["Targeted SDV Subject Management"] = "SubjectOverridePage";
+
+			return new PromptsPage(mapping[reportName]);         
         }
           
 	

@@ -13,10 +13,25 @@ namespace Medidata.RBT.Features.Rave
 	[Binding]
 	public class ReportSteps : BrowserStepsBase
 	{
-        [When(@"I run Report ""([^""]*)"" on Study ""([^""]*)""")]
-        public void WhenIRunReportTargetedSDVSubjectManagementOnStudyMediflex(string reportName, Table reportParameters)
-        {
-           CurrentPage = CurrentPage.As<ReportsPage>().SelectReport(reportName);
-        }
+  
+
+		[Given(@"I select Report ""([^""]*)""")]
+		public void GivenISelectReport____(string reportName)
+		{
+			CurrentPage = CurrentPage.As<ReportsPage>().SelectReport(reportName);
+		}
+
+		[Given(@"I set report parameter ""([^""]*)"" with table")]
+		public void GivenISetReportParameter____WithTable(string name, Table table)
+		{
+			CurrentPage.As<PromptsPage>().SetParameter(name, table);
+		}
+
+		[Given(@"I set report parameter ""([^""]*)"" with ""([^""]*)""")]
+		public void GivenISetReportParameter____With____(string name, string value)
+		{
+			CurrentPage.As<PromptsPage>().SetParameter(name, value);
+		}
+
 	}
 }

@@ -107,11 +107,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>564QueryRefiringLogic1.feature</DependentUpon>
     </Compile>
-    <Compile Include="Features\TSDV\TSDVSubjectRandomization.feature.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>TSDVSubjectRandomization.feature</DependentUpon>
-    </Compile>
     <Compile Include="Features\TSDV\US11958_DT141771.feature.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -126,6 +121,7 @@
     <Compile Include="Steps\DDESteps.cs" />
     <Compile Include="Steps\EDCSteps_Logline.cs" />
     <Compile Include="Steps\EDCSteps_Query.cs" />
+    <Compile Include="Steps\ReportSteps.cs" />
     <Compile Include="Steps\UserAdministrationSteps.cs" />
     <Compile Include="Steps\LoginSteps.cs" />
     <Compile Include="Steps\Seeding\MarkingSteps.cs" />
@@ -174,10 +170,6 @@
     <None Include="Features\EDC\564QueryRefiringLogic3.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>564QueryRefiringLogic3.feature.cs</LastGenOutput>
-    </None>
-    <None Include="Features\TSDV\TSDVSubjectRandomization.feature">
-      <Generator>SpecFlowSingleFileGenerator</Generator>
-      <LastGenOutput>TSDVSubjectRandomization.feature.cs</LastGenOutput>
     </None>
     <None Include="Features\TSDV\US11958_DT14177.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>

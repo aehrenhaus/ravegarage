@@ -48,10 +48,10 @@ namespace Medidata.RBT
 		IPage Type(string name, string text);
 
 		/// <summary>
-		/// Choose by text from a choosable control( dropdown list and more)
+		/// Choose by text from a selectable control(single, multiple, radiobutton, checkbox, dropdown, compound control...) 
 		/// </summary>
 		/// <param name="name"></param>
-		/// <param name="text"></param>
+		/// <param name="text">Can be comma seperated values</param>
 		/// <returns></returns>
 		IPage Choose(string name, string text);
 
