@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using TechTalk.SpecFlow;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Medidata.RBT.Common.Steps
 {
@@ -13,7 +14,33 @@ namespace Medidata.RBT.Common.Steps
 		[StepDefinition(@"I choose ""([^""]*)"" from ""([^""]*)""")]
 		public void IChoose____From____(string text, string dropdownName)
 		{
-			CurrentPage = CurrentPage.Choose(dropdownName, SpecialStringHelper.Replace(text));
+			CurrentPage = CurrentPage.ChooseFromDropdown(dropdownName, SpecialStringHelper.Replace(text));
+		}
+
+		
+		[StepDefinition(@"I pick ""([^""]*)""")]
+		public void IPick____(string name)
+		{
+			CurrentPage = CurrentPage.ChooseFromRadiobuttons(null, name);
+		}
+
+		[StepDefinition(@"I pick ""([^""]*)"" in ""([^""]*)""")]
+		public void IPick____In____(string name, string areaName)
+		{
+			CurrentPage = CurrentPage.ChooseFromRadiobuttons(areaName, name);
+		}
+
+		[StepDefinition(@"I check ""([^""]*)"" in ""([^""]*)""")]
+		public void ICheck____In____(string names, string areaName)
+		{
+			CurrentPage = CurrentPage.ChooseFromCheckboxes(areaName, names.Split(','));
+		}
+
+
+		[StepDefinition(@"I check ""([^""]*)""")]
+		public void ICheck____(string names)
+		{
+			CurrentPage = CurrentPage.ChooseFromCheckboxes(null, names.Split(','));
 		}
 
 		[StepDefinition(@"I click button ""([^""]*)""")]
@@ -61,6 +88,14 @@ namespace Medidata.RBT.Common.Steps
 		{
 			CurrentPage.Type(textboxName, SpecialStringHelper.Replace( text));
 		}
+
+		[Then(@"I should see ""([^""]*)"" in ""([^""]*)""")]
+		public void ThenIShouldSee____In____(string text, string areaName)
+		{
+			var cansee = CurrentPage.As<IPage>().CanSeeTextInArea(text,areaName);
+			Assert.IsTrue(cansee, "Can't see {0} in {1}",text,areaName);
+		}
+
 	
 	}
 }

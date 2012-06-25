@@ -268,22 +268,24 @@ Scenario: PB_8.1.6
 @PB_8.2.1
 @Draft
 Scenario: PB_8.2.1 Task Summary
+	And I select Study "Edit Check Study 3" and Site "Edit Check Site 8"
+	And I select a Subject "sub22079"
+	And I expand "Open Queries" in Task Summary
+	Then I should see "Screening-Concomitant Medications" in "Open Queries"
+	And I select "Screening-Concomitant Medications" in "Open Queries"
 
-	And I navigate to a "Edit Check Study 3, Edit Check Site 8"
-	And I select subject "sub801"
-	And I select "Open Query" located in Task Summary
-	When I select right arrow image for "Open Queries" located in "Task Summary"
-	Then I should see added query on form 'Assessment Date Log2'
-	When I select 'Test A Single Edit-Assessment Date Log2'
+
 	Then I verify "Assessment Date 1" field displays query opened with require response
     And I verify "Numeric Field 2" field displays query opened with require response
 	And I take a screenshot
 	
-	And I select subject "sub801"
-	And I select "Cancel Query" located in Task Summary
-	When I select right arrow image for "Cancel Queries" located in "Task Summary"
-	Then I should see added query on form 'Assessment Date Log2'
-	When I select 'Test A Single Edit-Assessment Date Log2'
+	And I select a Subject "sub801"
+	And I expand "Cancel Query" in Task Summary
+
+	Then I should see "Test A Single Edit-Assessment Date Log2" in "Open Query"
+	And I select "Test A Single Edit-Assessment Date Log2" in "Open Query"
+
+
 	Then I verify "Assessment Date 1" field displays query opened with require response and Cancel
     And I verify "Numeric Field 2" field displays query opened with require response and Cancel
 	And I take a screenshot
@@ -293,10 +295,17 @@ Scenario: PB_8.2.1 Task Summary
 @PB_8.3.1
 @Draft
 Scenario: PB_8.3.1 Query Management
+	And I navigate to "Query Management"
+	And I choose "Edit Check Study 3 (Prod)" from "Study"
+	And I choose "World" from "Site Group"
+	And I choose "Edit Check Site 8" from "Site"
+	And I choose "sub801" from "Subject"
+	And I click button "Advanced Search"
 
-	And I select "Query Management"
-	And I seelct "Edit Check Study 3 (Prod),  World, Edit Check Site 8, sub801"
-	And I navigate to Search
+
+
+	And I select Form "" in search result.
+
 	And I navigate to form "Assessment Date Log2" for subject "sub801"
 	And I verify "Assessment Date 1" field displays query opened with require response on the second log line
     And I verify "Numeric Field 2" field displays query opened with require response on the second log line
@@ -397,11 +406,15 @@ Scenario: PB_8.3.4
 @PB_8.4.1
 @Draft
 Scenario: PB_8.4.1 Generate the Data PDFs.
+	And I navigate to "PDF Generator"
 
-	And I select "PDF Generator Module"
-	And I create Data PDF for Subject "sub801"
-	And I generate Data PDF
-	When I View Data PDF
+	And I create Data PDF
+	| Name   | Profile | Study                    | Role | SiteGroup | Site              | Subject |
+	| Sub801 | test1   | Edit Check Study 3(Prod) | CDM1 | World     | Edit Check Site 2 | sub 801 |
+	
+	And I generate Data PDF ""
+	And I wait for PDF "" to complete
+	When I View Data PDF ""
 	Then I should see "Query Data" in Audits
 	And I take a screenshot
 	
@@ -411,19 +424,31 @@ Scenario: PB_8.4.1 Generate the Data PDFs.
 @Draft
 Scenario: PB_8.5.1 When I run the Report, then query related data are displayed in the report.
 
-# Audit Trail Report
-	And I login to Rave as user "<User 1>" with password "<Password>"
-	And I select "Reporter Module"
-	And I navigate to "Audit Trail Report"
-	And I select study "Edit Check Study 3"
-	And I select site "Edit Check Site 8"
-	And I select subject "sub801"
-	And I select Folders "Test A Single Edit"
-	And I select Forms "Informed Consent Date Form ", "Assessment Date Log2"
-	When I click button "Submit Report"
-	Then I should see queries on "Assessment Date 1" and "Numeric Field 2" fields
-	And I take a screenshot
-	And I close report
+	And I navigate to "Reporter"
+	And I select Report "Audit Trail"
+	And I set report parameter "Study" with table
+		| Name               | Environment |
+		| Edit Check Study 3 | Prod        |
+	And I set report parameter "Sites" with table
+		| Name              |
+		| Edit Check Site 8 |
+	And I set report parameter "Subjects" with table
+		| Name   |
+		| sub 10250 |
+	And I set report parameter "Folders" with table
+		| Name      |
+		| Screening |
+	And I set report parameter "Forms" with table
+		| Name                    |
+		| Informed Consent        |
+		| Concomitant Medications |
+
+	And I click button "Submit Report"
+	#And I switch to "Targeted SDV Subject Override" window
+
+	#Then I should see queries on "Assessment Date 1" and "Numeric Field 2" fields
+	#And I take a screenshot
+	#And I close report
 	
 #----------------------------------------------------------------------------------------------------------------------------------------	
 @release_564_Patch11

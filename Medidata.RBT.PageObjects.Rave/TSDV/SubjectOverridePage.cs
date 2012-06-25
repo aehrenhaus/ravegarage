@@ -17,7 +17,7 @@ namespace Medidata.RBT.PageObjects.Rave
 			return base.GetElementByName(name);
 		}
 
-		public override IPage Choose(string name, string text)
+		public override IPage ChooseFromDropdown(string name, string text)
 		{
 			if (name == "Select Site")
 			{

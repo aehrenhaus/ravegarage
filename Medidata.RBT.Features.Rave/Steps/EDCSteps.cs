@@ -131,5 +131,14 @@ namespace Medidata.RBT.Features.Rave
 				.SelectForm(formName);
 		}
 
+
+
+		[Given(@"I expand ""([^""]*)"" in Task Summary")]
+		public void GivenIExpand____InTaskSummary(string header)
+		{
+			CurrentPage.As<SubjectPage>().ExpandTask(header);
+		}
+
+
 	}
 }

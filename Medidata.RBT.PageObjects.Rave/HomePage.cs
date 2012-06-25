@@ -109,6 +109,10 @@ namespace Medidata.RBT.PageObjects.Rave
 			poClassMapping["User Administration"] = "UserAdministrationPage";
             poClassMapping["DDE"] = "DDEPage";
             poClassMapping["Reporter"] = "ReportsPage";
+			poClassMapping["Query Management"] = "DCFQueriesPage";
+			poClassMapping["PDF Generator"] = "FileRequestPage";
+			
+
 			//TODO: other mappings
 
 			var leftNavContainer = Browser.FindElementById("TblOuter");
