@@ -21,10 +21,28 @@ namespace Medidata.RBT.Features.Rave
 				.SelectSite(siteName);
 		}
 
-		/// <summary>
-		/// subjectName accepts replacements
-		/// </summary>
-		[StepDefinition(@"I select a Subject ""([^""]*)""")]
+        [When(@"I create ([^""]*) random Subjects with name ""([^""]*)"" in Study ""([^""]*)"" in Site ""([^""]*)""")]
+        public void WhenICreate____RandomSubjectsWithName____inStudy____inSite____(int subjectCount, string subjectName, string studyName, string siteName)
+        {
+           
+           // var subjectNameTemplate = String.Concat(subjectName, " {RndNum<num1>(5)}");
+            for (int i = 0; i < subjectCount; i++)
+            {
+                var page = CurrentPage.As<HomePage>().SelectStudy(studyName).SelectSite(siteName);
+                var randomSubjectNumber = SpecialStringHelper.Replace("{RndNum<num1>(5)}");
+                Table table = new Table("Value", "Field");                
+                table.AddRow(randomSubjectNumber, "Subject Number");
+                table.AddRow(subjectName, "Subject Initials");
+                page.CreateSubject(table);
+                page.NavigateTo("Home");
+            }
+        }
+
+
+        /// <summary>
+        /// subjectName accepts replacements
+        /// </summary>
+        [StepDefinition(@"I select a Subject ""([^""]*)""")]
 		public void ISelectASubject____(string subjectName)
 		{
 			CurrentPage = CurrentPage.As<HomePage>().SelectSubject(SpecialStringHelper.Replace(subjectName));
