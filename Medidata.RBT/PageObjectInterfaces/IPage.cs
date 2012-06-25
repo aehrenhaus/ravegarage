@@ -48,12 +48,26 @@ namespace Medidata.RBT
 		IPage Type(string name, string text);
 
 		/// <summary>
-		/// Choose by text from a selectable control(single, multiple, radiobutton, checkbox, dropdown, compound control...) 
+		/// Choose by text from dropdown
 		/// </summary>
-		/// <param name="name"></param>
-		/// <param name="text">Can be comma seperated values</param>
-		/// <returns></returns>
-		IPage Choose(string name, string text);
+		IPage ChooseFromDropdown(string name, string text);
+
+		/// <summary>
+		/// Choose by text from checkbox
+		/// groupName can be ignored depends on the implementaion
+		/// </summary>
+		IPage ChooseFromCheckboxes(string areaName, string[] names);
+
+
+		/// <summary>
+		/// Choose by text from textboxes
+		/// groupName can be ignored depends on the implementaion
+		/// </summary>
+		IPage ChooseFromRadiobuttons(string areaName, string name);
+
+
+
+		bool CanSeeTextInArea(string text, string areaName);
 
 		/// <summary>
 		/// NavigateTo() is abstract while ClickLink() clicks concrete link text

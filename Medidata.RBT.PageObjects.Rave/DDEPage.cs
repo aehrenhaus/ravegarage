@@ -52,7 +52,7 @@ namespace Medidata.RBT.PageObjects.Rave
             return this;
         }
 
-        public override IPage Choose(string name, string text)
+        public override IPage ChooseFromDropdown(string name, string text)
         {
 			//first type ,then choose will limite the count of options.
 			Type(name, text);

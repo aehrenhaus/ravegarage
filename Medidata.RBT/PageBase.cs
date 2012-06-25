@@ -114,7 +114,12 @@ namespace Medidata.RBT
 		public virtual IPage ClickLinkInArea(string linkText, string areaName)
 		{
 			IWebElement area = GetElementByName(areaName);
-			ClickLink(linkText);
+
+			var link = area.TryFindElementBy(By.LinkText(linkText));
+			if (link == null)
+				throw new Exception("Can'f find hyperlink: " + linkText);
+			link.Click();
+		
 			return GetTargetPageObjectByLinkAreaName(areaName);
 		}
 
@@ -139,9 +144,26 @@ namespace Medidata.RBT
 			return this;
 		}
 
-		public virtual IPage Choose(string name, string text)
+		public virtual IPage ChooseFromDropdown(string name, string text)
 		{
 			new SelectElement(GetElementByName(name)).SelectByText(text);
+			return this;
+		}
+
+		public virtual IPage ChooseFromCheckboxes(string areaName, string[] names)
+		{
+			foreach (var name in names)
+			{
+				GetElementByName(name).Click();
+			}
+			return this;
+		}
+
+		public virtual IPage ChooseFromRadiobuttons(string areaName, string name)
+		{
+
+			GetElementByName(name).Click();
+
 			return this;
 		}
 
@@ -168,5 +190,11 @@ namespace Medidata.RBT
 			}
             return ele;
         }
+
+
+		public virtual bool CanSeeTextInArea(string text, string areaName)
+		{
+			throw new Exception("This page does not implement this method");
+		}
 	}
 }

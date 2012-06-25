@@ -18,6 +18,12 @@ namespace Medidata.RBT.PageObjects.Rave
 			//InitializeWithNewUrl(url+"cacheflush.aspx");
 			Browser.Navigate().GoToUrl(url+"login.aspx");
 			PageFactory.InitElements(Browser, this);
+
+		}
+
+		protected override IWebElement GetElementByName(string name)
+		{
+			return Browser.FindElementById("_ctl0_Content_chkReqResponse");
 		}
 
 		[FindsBy(How = How.Id, Using = "UserLoginBox")]
