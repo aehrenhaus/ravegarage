@@ -32,10 +32,19 @@ namespace Medidata.RBT.PageObjects
 			return driver.FindElements(By.XPath(".//img"));
 		}
 
+		public static ReadOnlyCollection<IWebElement> FindSpans(this ISearchContext driver)
+		{
+			return driver.FindElements(By.XPath(".//span"));
+		}
+		public static ReadOnlyCollection<IWebElement> FindDivs(this ISearchContext driver)
+		{
+			return driver.FindElements(By.XPath(".//div"));
+		}
+
 		/// <summary>
 		/// This will find the html rows(tr) that match the data in the Specflow.Table
 		/// 
-		/// Performance issue:
+		/// TODO:Performance issue:
 		/// 
 		/// If dataTable has N rows and htmlTable has M rows and dataTable has X columns
 		/// this method will scann N * M * X times .
@@ -46,7 +55,7 @@ namespace Medidata.RBT.PageObjects
 		/// <returns></returns>
 		public static ReadOnlyCollection<IWebElement> FindMatchTrs(this IWebElement htmlTable, Table dataTable)
 		{
-			//TODO:here could be th instead of td
+			//TODO:here could be th instead of td 
 			var ths = htmlTable.FindElements(By.XPath("./tbody/tr[position()=1]/td"));
 
 			//data rows
@@ -59,10 +68,18 @@ namespace Medidata.RBT.PageObjects
 				indexMapping[ths[i].Text] = i;
 			}
 
+			int maxTdCounts = 0;
 			var matchTrs = trs.Where(tr =>
 			{
 				var tds = tr.FindElements(By.TagName("td"));
+
+				//skip the trs that have less tds, these trs are not data rows usually.
+				maxTdCounts = Math.Max(tds.Count, maxTdCounts);
+				if (tds.Count != maxTdCounts)
+					return false;
+
 				//Is there ***ANY*** datarow that ***ALL*** columns match the html row's columns
+
 				return dataTable.Rows.Any(dr =>
 				{
 					return dr.All(x => x.Value == tds[indexMapping[x.Key]].Text);

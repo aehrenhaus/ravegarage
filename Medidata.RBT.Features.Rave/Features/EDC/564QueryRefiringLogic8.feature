@@ -409,15 +409,14 @@ Scenario: PB_8.4.1 Generate the Data PDFs.
 	And I navigate to "PDF Generator"
 
 	And I create Data PDF
-	| Name   | Profile | Study                    | Role | SiteGroup | Site              | Subject |
-	| Sub801 | test1   | Edit Check Study 3(Prod) | CDM1 | World     | Edit Check Site 2 | sub 801 |
+	| Name                | Profile | Study                     | Role | SiteGroup | Site              | Subject |
+	| pdf{RndNum<num>(3)} | test1   | Edit Check Study 3 (Prod) | CDM1 | World     | Edit Check Site 2 | SUB640  |
 	
-	And I generate Data PDF ""
-	And I wait for PDF "" to complete
-	When I View Data PDF ""
-	Then I should see "Query Data" in Audits
+	And I generate Data PDF "pdf{Var(num)}"
+	And I wait for PDF "pdf{Var(num)}" to complete
+	When I View Data PDF "pdf{Var(num)}"
+	#Then I should see "Query Data" in Audits
 	And I take a screenshot
-	
 #----------------------------------------------------------------------------------------------------------------------------------------	
 @release_564_Patch11
 @PB_8.5.1

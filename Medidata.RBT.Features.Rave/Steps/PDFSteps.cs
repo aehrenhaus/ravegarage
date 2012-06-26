@@ -22,26 +22,26 @@ namespace Medidata.RBT.Features.Rave
 		[StepDefinition(@"I create Data PDF")]
 		public void ICreateDataPDF(Table table)
 		{
-			CurrentPage.As<FileRequestPage>().CreateDataPDF(table);
+			CurrentPage = CurrentPage.As<FileRequestPage>().CreateDataPDF(SpecialStringHelper.ReplaceTableColumn(table,"Name"));
 		}
 
 		[StepDefinition(@"I generate Data PDF ""([^""]*)""")]
 		public void IGenerateDataPDF(string pdfName)
 		{
-			ScenarioContext.Current.Pending();
+			CurrentPage = CurrentPage.As<FileRequestPage>().Generate(SpecialStringHelper.Replace(pdfName));
 		}
 
 		[StepDefinition(@"I wait for PDF ""([^""]*)"" to complete")]
 		public void GivenIWaitForPDF____ToComplete(string pdfName)
 		{
-			ScenarioContext.Current.Pending();
+			CurrentPage.As<FileRequestPage>().WaitForPDFComplete(SpecialStringHelper.Replace(pdfName));
 		}
 
 
 		[StepDefinition(@"I View Data PDF ""([^""]*)""")]
 		public void WhenIViewDataPDF____(string pdfName)
 		{
-			ScenarioContext.Current.Pending();
+			CurrentPage.As<FileRequestPage>().ViewPDF(SpecialStringHelper.Replace(pdfName));
 		}
 
 		[StepDefinition(@"I should see ""Query Data"" in Audits")]

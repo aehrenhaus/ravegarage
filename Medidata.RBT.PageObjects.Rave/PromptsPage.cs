@@ -31,7 +31,7 @@ namespace Medidata.RBT.PageObjects.Rave
 			return base.ClickButton(textOrName);
 		}
 
-		private string SelectedReport;
+
 
 		public PromptsPage SetParameter(string name, Table table)
 		{
@@ -106,12 +106,5 @@ namespace Medidata.RBT.PageObjects.Rave
 			return this;
 		}
 
-		//protected override IWebElement GetElementByName(string name)
-		//{
-		//    if (name == "SubmitReport")
-		//        return Browser.FindElementById("RunTheReport");
-
-		//    return base.GetElementByName(name);
-		//}
 	}
 }
