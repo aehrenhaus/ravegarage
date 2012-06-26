@@ -60,6 +60,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BaseEDCTreePage.cs" />
+    <Compile Include="FileRequestViewPage.cs" />
     <Compile Include="FileRequestCreateDataRequestPage.cs" />
     <Compile Include="FileRequestPage.cs" />
     <Compile Include="DCFQueriesPage.cs" />

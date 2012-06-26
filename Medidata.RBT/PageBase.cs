@@ -99,28 +99,30 @@ namespace Medidata.RBT
 			throw new Exception("This page does not provide information of target page obejct of a link area");
 		}
 
-		public virtual IPage ClickButton(string textOrName)
+		public virtual IPage ClickButton(string identifer)
 		{
-            var button = Browser.TryFindElementBy(By.XPath("//input[@value='"+textOrName+"']"));
-            if (button == null)
-                button = GetElementByName(textOrName);
+            var element = Browser.TryFindElementBy(By.XPath("//input[@value='"+identifer+"']"));
+			if (element == null)
+				element = Browser.FindElementById(identifer);
+            if (element == null)
+                element = GetElementByName(identifer);
 
-            if (button == null)
-                throw new Exception("Can't find button:"+textOrName);
-            button.Click();
+            if (element == null)
+                throw new Exception("Can't find button:"+identifer);
+            element.Click();
 			return this;
 		}
 
-		public virtual IPage ClickLinkInArea(string linkText, string areaName)
+		public virtual IPage ClickLinkInArea(string linkText, string areaIdentifer)
 		{
-			IWebElement area = GetElementByName(areaName);
+			IWebElement area = GetElementByName(areaIdentifer);
 
 			var link = area.TryFindElementBy(By.LinkText(linkText));
 			if (link == null)
 				throw new Exception("Can'f find hyperlink: " + linkText);
 			link.Click();
 		
-			return GetTargetPageObjectByLinkAreaName(areaName);
+			return GetTargetPageObjectByLinkAreaName(areaIdentifer);
 		}
 
 		public virtual IPage ClickLink(string linkText)
@@ -132,37 +134,50 @@ namespace Medidata.RBT
 			return this;
 		}
 
-		public virtual IPage NavigateTo(string name)
+		public virtual IPage NavigateTo(string identifer)
 		{
 			throw new Exception("page object does not implment NavigateTo()");
 		}
 
 
-		public virtual IPage Type(string name, string text)
+		public virtual IPage Type(string identifer, string text)
 		{
-			GetElementByName(name).SetText(text);
+			IWebElement element = Browser.FindElementById(identifer);
+			if (element == null)
+				element = GetElementByName(identifer);
+			element.SetText(text);
 			return this;
 		}
 
-		public virtual IPage ChooseFromDropdown(string name, string text)
+		public virtual IPage ChooseFromDropdown(string identifer, string text)
 		{
-			new SelectElement(GetElementByName(name)).SelectByText(text);
+			IWebElement element = Browser.TryFindElementById(identifer);
+			if (element == null)
+				element = GetElementByName(identifer);
+
+			new SelectElement(element).SelectByText(text);
 			return this;
 		}
 
-		public virtual IPage ChooseFromCheckboxes(string areaName, string[] names)
+		public virtual IPage ChooseFromCheckboxes(string areaIdentifer, string identifer)
 		{
-			foreach (var name in names)
-			{
-				GetElementByName(name).Click();
-			}
+
+				IWebElement element = Browser.TryFindElementById(identifer);
+				if (element == null)
+					element = GetElementByName(identifer);
+
+				element.Click();
+		
 			return this;
 		}
 
-		public virtual IPage ChooseFromRadiobuttons(string areaName, string name)
+		public virtual IPage ChooseFromRadiobuttons(string areaIdentifer, string identifer)
 		{
+			IWebElement element = Browser.TryFindElementById(identifer);
+			if (element == null)
+				element = GetElementByName(identifer);
 
-			GetElementByName(name).Click();
+			element.Click();
 
 			return this;
 		}
@@ -191,10 +206,26 @@ namespace Medidata.RBT
             return ele;
         }
 
+		public IWebElement WaitForElement(By by, string errorMessage = null, double timeOutSecond = 3)
+		{
+			return WaitForElement(browser => Browser.FindElement(by),errorMessage,timeOutSecond);
+		}
 
-		public virtual bool CanSeeTextInArea(string text, string areaName)
+
+		public IWebElement WaitForElement(string id,Func<IWebElement,bool> predicate,  string errorMessage = null, double timeOutSecond = 3)
+		{
+			return WaitForElement(browser => Browser.FindElementsById(id).FirstOrDefault (predicate), errorMessage, timeOutSecond);
+		}
+
+		public virtual bool CanSeeTextInArea(string text, string areaIdentifer)
 		{
 			throw new Exception("This page does not implement this method");
+		}
+
+		public IAlert GetAlertWindow()
+		{
+			IAlert alert = Browser.SwitchTo().Alert();
+			return alert;
 		}
 	}
 }

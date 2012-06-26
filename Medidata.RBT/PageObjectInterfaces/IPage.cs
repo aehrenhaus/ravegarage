@@ -30,14 +30,14 @@ namespace Medidata.RBT
 
 		IPage ClickLink(string linkText);
 
-		IPage ClickLinkInArea(string linkText, string areaName);
+		IPage ClickLinkInArea(string linkText, string areaIdentifer);
 
 		/// <summary>
 		/// Click on a clickable control.
 		/// </summary>
 		/// <param name="name"></param>
 		/// <returns></returns>
-		IPage ClickButton(string name);
+		IPage ClickButton(string identifer);
 
 		/// <summary>
 		/// Type in a typable control( text box and more)
@@ -45,36 +45,36 @@ namespace Medidata.RBT
 		/// <param name="name"></param>
 		/// <param name="text"></param>
 		/// <returns></returns>
-		IPage Type(string name, string text);
+		IPage Type(string identifer, string text);
 
 		/// <summary>
 		/// Choose by text from dropdown
 		/// </summary>
-		IPage ChooseFromDropdown(string name, string text);
+		IPage ChooseFromDropdown(string identifer, string text);
 
 		/// <summary>
 		/// Choose by text from checkbox
 		/// groupName can be ignored depends on the implementaion
 		/// </summary>
-		IPage ChooseFromCheckboxes(string areaName, string[] names);
+		IPage ChooseFromCheckboxes(string areaIdentifer, string identifer);
 
 
 		/// <summary>
 		/// Choose by text from textboxes
 		/// groupName can be ignored depends on the implementaion
 		/// </summary>
-		IPage ChooseFromRadiobuttons(string areaName, string name);
+		IPage ChooseFromRadiobuttons(string areaIdentifer, string identifer);
 
 
 
-		bool CanSeeTextInArea(string text, string areaName);
+		bool CanSeeTextInArea(string text, string areaIdentifer);
 
 		/// <summary>
 		/// NavigateTo() is abstract while ClickLink() clicks concrete link text
 		/// </summary>
 		/// <param name="name"></param>
 		/// <returns></returns>
-		IPage NavigateTo(string name);
+		IPage NavigateTo(string identifer);
 
 
 		/// <summary>

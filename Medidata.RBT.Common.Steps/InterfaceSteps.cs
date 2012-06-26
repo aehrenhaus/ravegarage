@@ -12,41 +12,41 @@ namespace Medidata.RBT.Common.Steps
 	{
 
 		[StepDefinition(@"I choose ""([^""]*)"" from ""([^""]*)""")]
-		public void IChoose____From____(string text, string dropdownName)
+		public void IChoose____From____(string text, string identifer)
 		{
-			CurrentPage = CurrentPage.ChooseFromDropdown(dropdownName, SpecialStringHelper.Replace(text));
+			CurrentPage = CurrentPage.ChooseFromDropdown(identifer, SpecialStringHelper.Replace(text));
 		}
 
 		
 		[StepDefinition(@"I pick ""([^""]*)""")]
-		public void IPick____(string name)
+		public void IPick____(string identifer)
 		{
-			CurrentPage = CurrentPage.ChooseFromRadiobuttons(null, name);
+			CurrentPage = CurrentPage.ChooseFromRadiobuttons(null, identifer);
 		}
 
 		[StepDefinition(@"I pick ""([^""]*)"" in ""([^""]*)""")]
-		public void IPick____In____(string name, string areaName)
+		public void IPick____In____(string identifer, string areaName)
 		{
-			CurrentPage = CurrentPage.ChooseFromRadiobuttons(areaName, name);
+			CurrentPage.ChooseFromRadiobuttons(areaName, identifer);
 		}
 
 		[StepDefinition(@"I check ""([^""]*)"" in ""([^""]*)""")]
-		public void ICheck____In____(string names, string areaName)
+		public void ICheck____In____(string identifer, string areaName)
 		{
-			CurrentPage = CurrentPage.ChooseFromCheckboxes(areaName, names.Split(','));
+			CurrentPage.ChooseFromCheckboxes(areaName, identifer);
 		}
 
 
 		[StepDefinition(@"I check ""([^""]*)""")]
-		public void ICheck____(string names)
+		public void ICheck____(string identifer)
 		{
-			CurrentPage = CurrentPage.ChooseFromCheckboxes(null, names.Split(','));
+			CurrentPage = CurrentPage.ChooseFromCheckboxes(null, identifer);
 		}
 
 		[StepDefinition(@"I click button ""([^""]*)""")]
-		public void IClickButton____(string textOrName)
+		public void IClickButton____(string textOrIdentifer)
 		{
-			CurrentPage = CurrentPage.ClickButton(textOrName);
+			CurrentPage = CurrentPage.ClickButton(textOrIdentifer);
 
 		}
 
@@ -78,15 +78,15 @@ namespace Medidata.RBT.Common.Steps
 		/// </summary>
 		/// <param name="name"></param>
 		[StepDefinition(@"I navigate to ""([^""]*)""")]
-		public void INavigateTo____(string name)
+		public void INavigateTo____(string identifer)
 		{
-			CurrentPage = CurrentPage.As<IPage>().NavigateTo(name);
+			CurrentPage = CurrentPage.As<IPage>().NavigateTo(identifer);
 		}
 
 		[StepDefinition(@"I type ""([^""]*)"" in ""([^""]*)""")]
-		public void IType____In____(string text, string textboxName)
+		public void IType____In____(string text, string identifer)
 		{
-			CurrentPage.Type(textboxName, SpecialStringHelper.Replace( text));
+			CurrentPage.Type(identifer, SpecialStringHelper.Replace(text));
 		}
 
 		[Then(@"I should see ""([^""]*)"" in ""([^""]*)""")]
