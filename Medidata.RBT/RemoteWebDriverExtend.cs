@@ -32,6 +32,12 @@ namespace Medidata.RBT.PageObjects
 			return driver.FindElements(By.XPath(".//img"));
 		}
 
+        public static void SelectCheckbox(this IWebElement driver)
+        {
+            if (!driver.Selected)
+                driver.Click();
+        }
+
 		public static ReadOnlyCollection<IWebElement> FindSpans(this ISearchContext driver)
 		{
 			return driver.FindElements(By.XPath(".//span"));
