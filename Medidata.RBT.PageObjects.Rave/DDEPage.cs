@@ -8,7 +8,7 @@ using OpenQA.Selenium.Remote;
 using System.Collections.Specialized;
 using OpenQA.Selenium.Support.UI;
 using TechTalk.SpecFlow;
-
+using Medidata.RBT.SeleniumExtension;
 namespace Medidata.RBT.PageObjects.Rave
 {
 	public class DDEPage : RavePageBase
@@ -47,7 +47,7 @@ namespace Medidata.RBT.PageObjects.Rave
             text = SpecialStringHelper.Replace(text);
 
             IWebElement field = GetElementByName(name);
-            IWebElement input = field.TryFindElementBy(By.XPath("./span/input[position()=1]"));
+			var input = field.TryFindElementBy(By.XPath("./span/input[position()=1]")).EnhanceAs<Textbox>();
             input.SetText(text);
             return this;
         }
@@ -110,7 +110,7 @@ namespace Medidata.RBT.PageObjects.Rave
 
 		private void FillLoglineDataPoint(IWebElement fieldContainer, string value)
 		{
-			fieldContainer.FindTextboxes()[0].SetText(value);
+			fieldContainer.Textboxes()[0].SetText(value);
 		}
 
 		public DDEPage SaveForm()

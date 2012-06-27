@@ -7,7 +7,7 @@ using OpenQA.Selenium;
 using OpenQA.Selenium.Remote;
 using System.Collections.Specialized;
 using OpenQA.Selenium.Support.UI;
-
+using Medidata.RBT.SeleniumExtension;
 namespace Medidata.RBT.PageObjects.Rave
 {
 	public  class UserAdministrationPage : PageBase
@@ -83,13 +83,13 @@ namespace Medidata.RBT.PageObjects.Rave
 				new SelectElement(Authenticator).SelectByText(by.Authenticator);
 
 			if (by.LastName != null)
-				LastName.SetText(by.LastName);
+				LastName.EnhanceAs<Textbox>().SetText(by.LastName);
 
 			if (by.Site != null)
-                Site.SetText(by.Site);
+				Site.EnhanceAs<Textbox>().SetText(by.Site);
 
 			if (by.Login != null)
-                Login.SetText(by.Login);
+				Login.EnhanceAs<Textbox>().SetText(by.Login);
 
 			if (by.Role != null)
 				new SelectElement(Role).SelectByText(by.Role);

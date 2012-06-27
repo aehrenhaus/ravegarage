@@ -33,14 +33,27 @@ namespace Medidata.RBT.Common.Steps
 		[StepDefinition(@"I check ""([^""]*)"" in ""([^""]*)""")]
 		public void ICheck____In____(string identifer, string areaName)
 		{
-			CurrentPage.ChooseFromCheckboxes(areaName, identifer);
+			CurrentPage.ChooseFromCheckboxes(areaName, identifer, true);
 		}
 
 
 		[StepDefinition(@"I check ""([^""]*)""")]
 		public void ICheck____(string identifer)
 		{
-			CurrentPage = CurrentPage.ChooseFromCheckboxes(null, identifer);
+			CurrentPage = CurrentPage.ChooseFromCheckboxes(null, identifer,true);
+		}
+
+		[StepDefinition(@"I uncheck ""([^""]*)"" in ""([^""]*)""")]
+		public void IUncheck____In____(string identifer, string areaName)
+		{
+			CurrentPage.ChooseFromCheckboxes(areaName, identifer, false);
+		}
+
+
+		[StepDefinition(@"I uncheck ""([^""]*)""")]
+		public void IUncheck____(string identifer)
+		{
+			CurrentPage = CurrentPage.ChooseFromCheckboxes(null, identifer, false);
 		}
 
 		[StepDefinition(@"I click button ""([^""]*)""")]

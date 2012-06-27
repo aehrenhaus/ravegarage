@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using OpenQA.Selenium;
+using Medidata.RBT.SeleniumExtension;
 
 namespace Medidata.RBT.PageObjects.Rave
 {
@@ -15,7 +16,11 @@ namespace Medidata.RBT.PageObjects.Rave
 			subLink.Click();
 
 			IWebElement formFolderTable = Browser.FindElementById("_ctl0_LeftNav_EDCTaskList_TblTaskItems");
-			formFolderTable.FindElement(By.PartialLinkText(folderName)).Click();
+			var folderLink = formFolderTable.TryFindElementBy(By.PartialLinkText(folderName));
+				
+			if(folderLink==null)
+				throw new Exception("Folder not found:"+folderName);
+			folderLink.Click();
 			return this;
 		}
 

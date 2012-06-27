@@ -5,11 +5,11 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{89C8F41A-E7F8-4D94-BE93-C2C5B8097A32}</ProjectGuid>
+    <ProjectGuid>{22945718-331A-4CC1-A98A-A7E7500FAF76}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Medidata.RBT</RootNamespace>
-    <AssemblyName>Medidata.RBT</AssemblyName>
+    <RootNamespace>Medidata.RBT.SeleniumExtension</RootNamespace>
+    <AssemblyName>Medidata.RBT.SeleniumExtension</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -31,21 +31,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Castle.Core">
-      <HintPath>..\ExternalDlls\Castle.Core.dll</HintPath>
-    </Reference>
-    <Reference Include="Ionic.Zip">
-      <HintPath>..\ExternalDlls\Ionic.Zip.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Data">
-      <HintPath>..\ExternalDlls\EnterpriseLibrary5\Microsoft.Practices.EnterpriseLibrary.Data.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
     <Reference Include="Newtonsoft.Json">
       <HintPath>..\ExternalDlls\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System" />
-    <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Xml.Linq" />
@@ -64,27 +53,15 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BrowserStepsBase.cs" />
-    <Compile Include="DbHelper.cs" />
-    <Compile Include="PageBase.cs" />
-    <Compile Include="PageObjectInterfaces\IVerifyDisableConrolsPage.cs" />
-    <Compile Include="PageObjectInterfaces\IPage.cs" />
-    <Compile Include="PageObjectInterfaces\IPaginatedPage.cs" />
+    <Compile Include="EnhancedControls\Checkbox.cs" />
+    <Compile Include="WebDriverExtend.cs" />
+    <Compile Include="IWebElementExtend.cs" />
+    <Compile Include="EnhancedControls\HtmlTable.cs" />
+    <Compile Include="EnhancedControls\Textbox.cs" />
+    <Compile Include="EnhancedControls\Dropdown.cs" />
+    <Compile Include="EnhancedControls\EnhancedElement.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="StringReplacement\RndNumReplace.cs" />
-    <Compile Include="StringReplacement\MaxSubjectNumReplace.cs" />
-    <Compile Include="StringReplacement\VarReplace.cs" />
-    <Compile Include="StringReplacement\SpecialStringHelper.cs" />
-    <Compile Include="StringReplacement\IStringReplace.cs" />
-    <Compile Include="StringReplacement\NextSubjectNumReplace.cs" />
-    <Compile Include="TestContext.cs" />
-    <Compile Include="RBTConfiguration.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Medidata.RBT.SeleniumExtension\Medidata.RBT.SeleniumExtension.csproj">
-      <Project>{22945718-331A-4CC1-A98A-A7E7500FAF76}</Project>
-      <Name>Medidata.RBT.SeleniumExtension</Name>
-    </ProjectReference>
+    <Compile Include="ISearchContextExtend.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

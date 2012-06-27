@@ -44,14 +44,28 @@ Background:
 	
 #----------------------------------------------------------------------------------------------------------------------------------------	
 Scenario:  test
-	And I navigate to "DDE"
-	And I select "First Pass"
-	And I choose "Edit Check Study 3" from "Study"
-	And I choose "Prod" from "Environment"
-	And I choose "Edit Check Site 8" from "Site"
-	And I type "sub {NextSubjectNum(Edit Check Study 3,prod,Subject Number)}" in "Subject"
-	And I choose "Subject Identification" from "Form"
+	And I navigate to "Home"
+	And I navigate to "Architect"
+	And I select "AM Edit Check Study" in "Active Projects"
 
+	And I select "Add New Draft"
+	And I create Draft "Draft<num>{RndNum(3)}" from Project "AM Edit Check Study" and Version "V1"
+
+
+	And I navigate to "Edit Checks"
+
+	And I Inactivate "Mixed Form Query" in "Search Results"
+
+	And I select "Draft{Var(num)}"	
+	And I publish CRF Version "Target{RndNum(3)}"
+	
+	And I select "AM Edit Check Study"
+
+	And I navigate to "Amendment Manager"
+	And I select "V1" from "Source CRF"
+	And I select "Target{RndNum(3)}" from "Target CRF"
+	And I click button "Create Plan"
+	And I take a screenshot
 
 @release_564_Patch11
 @PB_8.1.1

@@ -5,7 +5,7 @@ using System.Text;
 using OpenQA.Selenium.Support.PageObjects;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Remote;
-
+using Medidata.RBT.SeleniumExtension;
 namespace Medidata.RBT.PageObjects.Rave
 {
     public class SubjectOverridePage : RavePageBase
@@ -21,7 +21,7 @@ namespace Medidata.RBT.PageObjects.Rave
 		{
 			if (name == "Select Site")
 			{
-				Browser.FindElementById("_ctl0_Content_HeaderControl_slSite_TxtBx").SetText(text);
+				Browser.Textbox("_ctl0_Content_HeaderControl_slSite_TxtBx").SetText(text);
 			}
 			return this;
 		}

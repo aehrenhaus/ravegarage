@@ -56,7 +56,7 @@ namespace Medidata.RBT
 		/// Choose by text from checkbox
 		/// groupName can be ignored depends on the implementaion
 		/// </summary>
-		IPage ChooseFromCheckboxes(string areaIdentifer, string identifer);
+		IPage ChooseFromCheckboxes(string areaIdentifer, string identifer, bool isChecked);
 
 
 		/// <summary>

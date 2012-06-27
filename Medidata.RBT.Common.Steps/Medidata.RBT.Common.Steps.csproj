@@ -77,6 +77,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Medidata.RBT.SeleniumExtension\Medidata.RBT.SeleniumExtension.csproj">
+      <Project>{22945718-331A-4CC1-A98A-A7E7500FAF76}</Project>
+      <Name>Medidata.RBT.SeleniumExtension</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Medidata.RBT\Medidata.RBT.csproj">
       <Project>{89C8F41A-E7F8-4D94-BE93-C2C5B8097A32}</Project>
       <Name>Medidata.RBT</Name>

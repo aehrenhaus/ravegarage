@@ -6,13 +6,13 @@ using OpenQA.Selenium.Support.PageObjects;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Remote;
 using OpenQA.Selenium.Support.UI;
-
+using Medidata.RBT.SeleniumExtension;
 
 namespace Medidata.RBT.PageObjects.Rave
 {
 	public  class CRFPage : BaseEDCTreePage
 	{
-        private IWebElement GetQueryCancelCheckbox(string message, string fieldName)
+        private Checkbox GetQueryCancelCheckbox(string message, string fieldName)
         {
             var fieldArea = RavePagesHelper.GetDatapointLabelContainer(fieldName);
             var queryTable = fieldArea.FindElements(
@@ -21,7 +21,7 @@ namespace Medidata.RBT.PageObjects.Rave
             {
                 if (table.Text.IndexOf(message) != -1)
                 {
-                    return table.FindCheckboxes().ElementAt(0);
+					return table.Checkboxes()[0];
                 }
             }
             return null;
@@ -34,7 +34,7 @@ namespace Medidata.RBT.PageObjects.Rave
             if (queryCancelCheckbox == null)
                 throw new Exception(String.Format("Query cancel checkbox not found for message: {0}, field: {1}", message, fieldName));
 
-            queryCancelCheckbox.SelectCheckbox();
+            queryCancelCheckbox.Check();
             return this;
         }
 
@@ -44,7 +44,7 @@ namespace Medidata.RBT.PageObjects.Rave
 			return this;
 		}
 
-        private IWebElement GetQueryResponseTextbox(string message, string fieldName)
+        private Textbox GetQueryResponseTextbox(string message, string fieldName)
         {
             var fieldArea = RavePagesHelper.GetDatapointLabelContainer(fieldName);
             var queryTable = fieldArea.FindElements(
@@ -53,7 +53,7 @@ namespace Medidata.RBT.PageObjects.Rave
             {
                 if (table.Text.IndexOf(message) != -1)
                 {
-                    return table.FindTextboxes().ElementAt(0);
+					return table.Textboxes()[0];
                 }
             }
             return null;
@@ -69,7 +69,7 @@ namespace Medidata.RBT.PageObjects.Rave
             {
                 if (table.Text.IndexOf(message) != -1)
                 {
-                    if (table.FindTextboxes().Count == 0)
+                    if (table.Textboxes().Count == 0)
                         return true;
                     else
                         return false;
@@ -84,7 +84,7 @@ namespace Medidata.RBT.PageObjects.Rave
             if (queryTextbox == null)
                 throw new Exception(String.Format("Query textbox not found for message: {0}, field: {1}", message, fieldName));
 
-             queryTextbox.SetText(answer);
+			queryTextbox.EnhanceAs<Textbox>().SetText(answer);
             return this;
         }
 

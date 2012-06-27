@@ -8,6 +8,8 @@ using OpenQA.Selenium.Remote;
 using TechTalk.SpecFlow;
 using System.Collections.ObjectModel;
 using System.Threading;
+using Medidata.RBT.SeleniumExtension;
+
 
 namespace Medidata.RBT.PageObjects.Rave
 {
@@ -39,14 +41,14 @@ namespace Medidata.RBT.PageObjects.Rave
 			//wait till the div div becomes visible, that means the table is loaded complete
 			var di = WaitForElement(x => paraTR.TryFindElementBy(By.XPath("./td[position()=2]/table/tbody/tr[position()=2]/td/div[@style='display: block;']")), "error",5);
 
-			var tbl = paraTR.FindElements(By.XPath(".//td[@style='border-width:0px;border-collapse:collapse;']/table"))[1];
+			var tbl = paraTR.FindElements(By.XPath(".//td[@style='border-width:0px;border-collapse:collapse;']/table"))[1].EnhanceAs<HtmlTable>();
 
 		//	Thread.Sleep(1000);
-			var matchRows = tbl.FindMatchTrs(table);
+			var matchRows = tbl.FindMatchRows(table);
 			foreach (var row in matchRows)
 			{
 
-				row.FindCheckboxes()[0].Click();
+				row.Checkboxes()[0].Click();
 			}
 
 			return this;
@@ -76,7 +78,7 @@ namespace Medidata.RBT.PageObjects.Rave
 		public PromptsPage SetParameter(string name, string value)
 		{
 			var paraTR = FindParameterTr(name);
-			var textbox = paraTR.FindTextboxes()[0];
+			var textbox = paraTR.Textboxes()[0];
 
 			if (textbox.GetAttribute("readonly") == "true")
 			{

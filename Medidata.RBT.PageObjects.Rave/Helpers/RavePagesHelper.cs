@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
+using Medidata.RBT.SeleniumExtension;
 
 namespace Medidata.RBT.PageObjects.Rave
 {
@@ -37,7 +38,7 @@ namespace Medidata.RBT.PageObjects.Rave
 
             var datapointTable = GetDatapointContainer(label);
 
-			var textboxes = datapointTable.FindElements(By.TagName("input"));
+			var textboxes = datapointTable.Textboxes();
 			var dropdowns = datapointTable.FindElements(By.TagName("select")).ToList();
 		
 			//this dropdown does count

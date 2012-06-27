@@ -87,20 +87,36 @@ this.ScenarioSetup(scenarioInfo);
 #line 25
 this.FeatureBackground();
 #line 47
- testRunner.And("I navigate to \"DDE\"");
+ testRunner.And("I navigate to \"Home\"");
 #line 48
- testRunner.And("I select \"First Pass\"");
+ testRunner.And("I navigate to \"Architect\"");
 #line 49
- testRunner.And("I choose \"Edit Check Study 3\" from \"Study\"");
-#line 50
- testRunner.And("I choose \"Prod\" from \"Environment\"");
+ testRunner.And("I select \"AM Edit Check Study\" in \"Active Projects\"");
 #line 51
- testRunner.And("I choose \"Edit Check Site 8\" from \"Site\"");
+ testRunner.And("I select \"Add New Draft\"");
 #line 52
- testRunner.And("I type \"sub {NextSubjectNum(Edit Check Study 3,prod,Subject Number)}\" in \"Subject" +
-                    "\"");
-#line 53
- testRunner.And("I choose \"Subject Identification\" from \"Form\"");
+ testRunner.And("I create Draft \"Draft<num>{RndNum(3)}\" from Project \"AM Edit Check Study\" and Ver" +
+                    "sion \"V1\"");
+#line 55
+ testRunner.And("I navigate to \"Edit Checks\"");
+#line 57
+ testRunner.And("I Inactivate \"Mixed Form Query\" in \"Search Results\"");
+#line 59
+ testRunner.And("I select \"Draft{Var(num)}\"");
+#line 60
+ testRunner.And("I publish CRF Version \"Target{RndNum(3)}\"");
+#line 62
+ testRunner.And("I select \"AM Edit Check Study\"");
+#line 64
+ testRunner.And("I navigate to \"Amendment Manager\"");
+#line 65
+ testRunner.And("I select \"V1\" from \"Source CRF\"");
+#line 66
+ testRunner.And("I select \"Target{RndNum(3)}\" from \"Target CRF\"");
+#line 67
+ testRunner.And("I click button \"Create Plan\"");
+#line 68
+ testRunner.And("I take a screenshot");
 #line hidden
             this.ScenarioCleanup();
         }
@@ -114,27 +130,27 @@ this.FeatureBackground();
                         "release_564_Patch11",
                         "PB_8.1.1",
                         "Draft"});
-#line 59
+#line 73
 this.ScenarioSetup(scenarioInfo);
 #line 25
 this.FeatureBackground();
-#line 62
+#line 76
  testRunner.And("I navigate to \"DDE\"");
-#line 63
+#line 77
  testRunner.And("I select \"First Pass\"");
-#line 64
+#line 78
  testRunner.And("I select \"New Batch\"");
-#line 65
+#line 79
  testRunner.And("I choose \"Edit Check Study 3\" from \"Study\"");
-#line 66
+#line 80
  testRunner.And("I choose \"Prod\" from \"Environment\"");
-#line 67
+#line 81
  testRunner.And("I choose \"Edit Check Site 8\" from \"Site\"");
-#line 68
+#line 82
  testRunner.And("I type \"sub {RndNum<num1>(5)}\" in \"Subject\"");
-#line 69
+#line 83
  testRunner.And("I choose \"Subject Identification\" from \"Form\"");
-#line 70
+#line 84
  testRunner.And("I click button \"Locate\"");
 #line hidden
             TechTalk.SpecFlow.Table table1 = new TechTalk.SpecFlow.Table(new string[] {
@@ -146,13 +162,13 @@ this.FeatureBackground();
             table1.AddRow(new string[] {
                         "Subject Initials",
                         "sub"});
-#line 72
+#line 86
  testRunner.And("I enter data in DDE and save", ((string)(null)), table1);
-#line 77
+#line 91
  testRunner.And("I choose \"Screening\" from \"Folder\"");
-#line 78
+#line 92
  testRunner.And("I choose \"Informed Consent\" from \"Form\"");
-#line 79
+#line 93
  testRunner.And("I click button \"Locate\"");
 #line hidden
             TechTalk.SpecFlow.Table table2 = new TechTalk.SpecFlow.Table(new string[] {
@@ -170,11 +186,11 @@ this.FeatureBackground();
             table2.AddRow(new string[] {
                         "Current Distribution Number",
                         "19"});
-#line 80
+#line 94
  testRunner.And("I enter data in DDE and save", ((string)(null)), table2);
-#line 86
+#line 100
  testRunner.And("I choose \"Concomitant Medications\" from \"Form\"");
-#line 87
+#line 101
  testRunner.And("I click button \"Locate\"");
 #line hidden
             TechTalk.SpecFlow.Table table3 = new TechTalk.SpecFlow.Table(new string[] {
@@ -192,25 +208,25 @@ this.FeatureBackground();
             table3.AddRow(new string[] {
                         "Current Axis Number",
                         "20"});
-#line 88
- testRunner.And("I enter data in DDE log line 1 and save", ((string)(null)), table3);
-#line 95
- testRunner.And("I am logged in to Rave with username \"coderimport\" and password \"password\"");
-#line 98
- testRunner.And("I navigate to \"DDE\"");
-#line 99
- testRunner.And("I select \"Second Pass\"");
-#line 100
- testRunner.And("I choose \"Edit Check Study 3\" from \"Study\"");
-#line 101
- testRunner.And("I choose \"Prod\" from \"Environment\"");
 #line 102
+ testRunner.And("I enter data in DDE log line 1 and save", ((string)(null)), table3);
+#line 109
+ testRunner.And("I am logged in to Rave with username \"coderimport\" and password \"password\"");
+#line 112
+ testRunner.And("I navigate to \"DDE\"");
+#line 113
+ testRunner.And("I select \"Second Pass\"");
+#line 114
+ testRunner.And("I choose \"Edit Check Study 3\" from \"Study\"");
+#line 115
+ testRunner.And("I choose \"Prod\" from \"Environment\"");
+#line 116
  testRunner.And("I choose \"Edit Check Site 8\" from \"Site\"");
-#line 103
+#line 117
  testRunner.And("I choose \"sub {Var(num1)}\" from \"Subject\"");
-#line 104
+#line 118
  testRunner.And("I choose \"Subject Identification\" from \"Form\"");
-#line 105
+#line 119
  testRunner.And("I click button \"Locate\"");
 #line hidden
             TechTalk.SpecFlow.Table table4 = new TechTalk.SpecFlow.Table(new string[] {
@@ -222,13 +238,13 @@ this.FeatureBackground();
             table4.AddRow(new string[] {
                         "Subject Initials",
                         "sub"});
-#line 106
+#line 120
  testRunner.And("I enter data in DDE and save", ((string)(null)), table4);
-#line 111
+#line 125
  testRunner.And("I choose \"Screening\" from \"Folder\"");
-#line 112
+#line 126
  testRunner.And("I choose \"Informed Consent\" from \"Form\"");
-#line 113
+#line 127
  testRunner.And("I click button \"Locate\"");
 #line hidden
             TechTalk.SpecFlow.Table table5 = new TechTalk.SpecFlow.Table(new string[] {
@@ -246,11 +262,11 @@ this.FeatureBackground();
             table5.AddRow(new string[] {
                         "Current Distribution Number",
                         "19"});
-#line 114
+#line 128
  testRunner.And("I enter data in DDE and save", ((string)(null)), table5);
-#line 120
+#line 134
  testRunner.And("I choose \"Concomitant Medications\" from \"Form\"");
-#line 121
+#line 135
  testRunner.And("I click button \"Locate\"");
 #line hidden
             TechTalk.SpecFlow.Table table6 = new TechTalk.SpecFlow.Table(new string[] {
@@ -268,37 +284,37 @@ this.FeatureBackground();
             table6.AddRow(new string[] {
                         "Current Axis Number",
                         "20"});
-#line 122
+#line 136
  testRunner.And("I enter data in DDE log line 1 and save", ((string)(null)), table6);
-#line 128
+#line 142
  testRunner.And("I navigate to \"Home\"");
-#line 129
+#line 143
  testRunner.And("I select Study \"Edit Check Study 3\" and Site \"Edit Check Site 8\"");
-#line 130
+#line 144
  testRunner.And("I select a Subject \"sub{Var(num1)}\"");
-#line 132
+#line 146
  testRunner.And("I select Form \"Assessment Date Log2\" in Folder \"Test A Single Edit\"");
-#line 133
+#line 147
  testRunner.And("I verify Requires Response Query with message \"\'Date Informed Consent Signed\' is " +
                     "greater. Please revise.\" is displayed on Field \"Assessment Date 1\"");
-#line 134
+#line 148
  testRunner.And("I verify Requires Response Query with message \"{message}\" is displayed on Field \"" +
                     "Current Axis Number\"");
-#line 136
+#line 150
  testRunner.And("I take a screenshot");
-#line 137
+#line 151
  testRunner.And("I answer the Query \"{message}\" on Field \"Assessment Date 1\" with \"{answer}\"");
-#line 138
+#line 152
  testRunner.And("I answer the Query \"{message}\" on Field \"Numeric Field 2\" with \"{answer}\"");
-#line 140
+#line 154
  testRunner.And("I save the CRF page");
-#line 141
+#line 155
  testRunner.And("I close the Query \"{message}\" on Field \"Assessment Date 1\"");
-#line 142
+#line 156
  testRunner.And("I close the Query \"{message}\" on Field \"Numeric Field 2\"");
-#line 143
+#line 157
  testRunner.And("I save the CRF page");
-#line 144
+#line 158
  testRunner.And("I take a screenshot");
 #line hidden
             TechTalk.SpecFlow.Table table7 = new TechTalk.SpecFlow.Table(new string[] {
@@ -310,15 +326,15 @@ this.FeatureBackground();
             table7.AddRow(new string[] {
                         "Numeric Field 2",
                         "19"});
-#line 145
+#line 159
  testRunner.And("I enter data in CRF and save", ((string)(null)), table7);
-#line 149
+#line 163
     testRunner.And("I verify Requires Response Query with message \"{message}\" is not displayed on Fie" +
                     "ld \"Assessment Date 1\"");
-#line 150
+#line 164
  testRunner.And("I verify Requires Response Query with message \"{message}\" is not displayed on Fie" +
                     "ld \"Numeric Field 2\"");
-#line 151
+#line 165
  testRunner.And("I take a screenshot");
 #line hidden
             TechTalk.SpecFlow.Table table8 = new TechTalk.SpecFlow.Table(new string[] {
@@ -330,15 +346,15 @@ this.FeatureBackground();
             table8.AddRow(new string[] {
                         "Numeric Field 2",
                         "20"});
-#line 152
+#line 166
  testRunner.And("I enter data in CRF and save", ((string)(null)), table8);
-#line 156
+#line 170
  testRunner.And("I verify Requires Response Query with message \"{message}\" is not displayed on Fie" +
                     "ld \"Assessment Date 1\"");
-#line 157
+#line 171
  testRunner.And("I verify Requires Response Query with message \"{message}\" is not displayed on Fie" +
                     "ld \"Numeric Field 2\"");
-#line 159
+#line 173
  testRunner.And("I take a screenshot");
 #line hidden
             this.ScenarioCleanup();
@@ -353,11 +369,11 @@ this.FeatureBackground();
                         "release_564_Patch11",
                         "PB_8.1.2",
                         "Draft"});
-#line 165
+#line 179
 this.ScenarioSetup(scenarioInfo);
 #line 25
 this.FeatureBackground();
-#line 167
+#line 181
     testRunner.When("I run SQL Script \"Query Logging Script\"");
 #line hidden
             TechTalk.SpecFlow.Table table9 = new TechTalk.SpecFlow.Table(new string[] {
@@ -420,9 +436,9 @@ this.FeatureBackground();
                         "Site",
                         "Informed Consent numeric field 2 is not equal to assessment numeric field 2",
                         "{DateTime}"});
-#line 168
+#line 182
     testRunner.Then("I should see the logging data for queries", ((string)(null)), table9);
-#line 172
+#line 186
  testRunner.And("I take a screenshot");
 #line hidden
             this.ScenarioCleanup();
@@ -437,11 +453,11 @@ this.FeatureBackground();
                         "release_564_Patch11",
                         "PB_8.1.3",
                         "Draft"});
-#line 178
+#line 192
 this.ScenarioSetup(scenarioInfo);
 #line 25
 this.FeatureBackground();
-#line 180
+#line 194
  testRunner.And("I select Form \"Assessment Date Log2\" within folder \"Test A Single Edit\"");
 #line hidden
             TechTalk.SpecFlow.Table table10 = new TechTalk.SpecFlow.Table(new string[] {
@@ -459,20 +475,20 @@ this.FeatureBackground();
             table10.AddRow(new string[] {
                         "Numeric Field 2",
                         "18"});
-#line 181
+#line 195
     testRunner.And("I add a new log line, enter and save the data, from the table below", ((string)(null)), table10);
-#line 187
+#line 201
  testRunner.And("I verify \"Assessment Date 1\" field displays query opened with require response on" +
                     " the second log line");
-#line 188
+#line 202
     testRunner.And("I verify \"Numeric Field 2\" field displays query opened with require response on t" +
                     "he second log line");
-#line 189
+#line 203
  testRunner.And("I take a screenshot");
-#line 190
+#line 204
  testRunner.And("I answer the queries on \"Assessment Date 1\" and \"Numeric Field 2\" fields on the s" +
                     "econd log line");
-#line 191
+#line 205
  testRunner.And("I save the CRF page");
 #line hidden
             TechTalk.SpecFlow.Table table11 = new TechTalk.SpecFlow.Table(new string[] {
@@ -484,19 +500,19 @@ this.FeatureBackground();
             table11.AddRow(new string[] {
                         "Numeric Field 2",
                         "19"});
-#line 192
+#line 206
  testRunner.And("I enter data in CRF", ((string)(null)), table11);
-#line 196
+#line 210
  testRunner.And("I close the queries on \"Assessment Date 1\" and \"Numeric Field 2\" fields on the se" +
                     "cond log line");
-#line 197
+#line 211
  testRunner.And("I save the CRF page");
-#line 198
+#line 212
  testRunner.And("I take a screenshot");
-#line 199
+#line 213
  testRunner.And("I verify the queries did not fire on \"Assessment Date 1\" and \"Numeric Field 2\" fi" +
                     "elds");
-#line 200
+#line 214
  testRunner.And("I take a screenshot");
 #line hidden
             TechTalk.SpecFlow.Table table12 = new TechTalk.SpecFlow.Table(new string[] {
@@ -508,12 +524,12 @@ this.FeatureBackground();
             table12.AddRow(new string[] {
                         "Numeric Field 2",
                         "18"});
-#line 201
+#line 215
  testRunner.And("I enter data in CRF and save", ((string)(null)), table12);
-#line 205
+#line 219
  testRunner.And("I verify new queries did fire on \"Assessment Date 1\" and \"Numeric Field 2\" fields" +
                     "");
-#line 206
+#line 220
  testRunner.And("I take a screenshot");
 #line hidden
             this.ScenarioCleanup();
@@ -528,11 +544,11 @@ this.FeatureBackground();
                         "release_564_Patch11",
                         "PB_8.1.4",
                         "Draft"});
-#line 212
+#line 226
 this.ScenarioSetup(scenarioInfo);
 #line 25
 this.FeatureBackground();
-#line 214
+#line 228
     testRunner.When("I run SQL Script \"Query Logging Script\"");
 #line hidden
             TechTalk.SpecFlow.Table table13 = new TechTalk.SpecFlow.Table(new string[] {
@@ -595,9 +611,9 @@ this.FeatureBackground();
                         "Site",
                         "Informed Consent numeric field 2 is not equal to assessment numeric field 2",
                         "{DateTime}"});
-#line 215
+#line 229
     testRunner.Then("I should not see the logging data for queries", ((string)(null)), table13);
-#line 219
+#line 233
  testRunner.And("I take a screenshot");
 #line hidden
             this.ScenarioCleanup();
@@ -612,11 +628,11 @@ this.FeatureBackground();
                         "release_564_Patch11",
                         "PB_8.1.5",
                         "Draft"});
-#line 225
+#line 239
 this.ScenarioSetup(scenarioInfo);
 #line 25
 this.FeatureBackground();
-#line 227
+#line 241
  testRunner.And("I select Form \"Assessment Date Log2\" within folder \"Test A Single Edit\"");
 #line hidden
             TechTalk.SpecFlow.Table table14 = new TechTalk.SpecFlow.Table(new string[] {
@@ -634,15 +650,15 @@ this.FeatureBackground();
             table14.AddRow(new string[] {
                         "Numeric Field 2",
                         "18"});
-#line 228
+#line 242
     testRunner.And("I add a new log line, enter and save the data, from the table below", ((string)(null)), table14);
-#line 234
+#line 248
  testRunner.And("I verify \"Assessment Date 1\" field displays query opened with require response on" +
                     " the third log line");
-#line 235
+#line 249
     testRunner.And("I verify \"Numeric Field 2\" field displays query opened with require response on t" +
                     "he third log line");
-#line 236
+#line 250
  testRunner.And("I take a screenshot");
 #line hidden
             TechTalk.SpecFlow.Table table15 = new TechTalk.SpecFlow.Table(new string[] {
@@ -654,19 +670,19 @@ this.FeatureBackground();
             table15.AddRow(new string[] {
                         "Numeric Field 2",
                         "19"});
-#line 237
+#line 251
  testRunner.And("I enter data in CRF", ((string)(null)), table15);
-#line 241
+#line 255
  testRunner.And("I cancel the queries on \"Assessment Date 1\" and \"Numeric Field 2\" fields on the t" +
                     "hird log line");
-#line 242
+#line 256
  testRunner.And("I save the CRF page");
-#line 243
+#line 257
  testRunner.And("I take a screenshot");
-#line 244
+#line 258
  testRunner.And("I verify the queries did not fire on \"Assessment Date 1\" and \"Numeric Field 2\" fi" +
                     "elds");
-#line 245
+#line 259
  testRunner.And("I take a screenshot");
 #line hidden
             TechTalk.SpecFlow.Table table16 = new TechTalk.SpecFlow.Table(new string[] {
@@ -678,12 +694,12 @@ this.FeatureBackground();
             table16.AddRow(new string[] {
                         "Numeric Field 2",
                         "18"});
-#line 246
+#line 260
  testRunner.And("I enter data in CRF and save", ((string)(null)), table16);
-#line 250
+#line 264
  testRunner.And("I verify new queries did fire on \"Assessment Date 1\" and \"Numeric Field 2\" fields" +
                     "");
-#line 251
+#line 265
  testRunner.And("I take a screenshot");
 #line hidden
             this.ScenarioCleanup();
@@ -698,11 +714,11 @@ this.FeatureBackground();
                         "release_564_Patch11",
                         "PB_8.1.6",
                         "Draft"});
-#line 257
+#line 271
 this.ScenarioSetup(scenarioInfo);
 #line 25
 this.FeatureBackground();
-#line 259
+#line 273
     testRunner.When("I run SQL Script \"Query Logging Script\"");
 #line hidden
             TechTalk.SpecFlow.Table table17 = new TechTalk.SpecFlow.Table(new string[] {
@@ -765,9 +781,9 @@ this.FeatureBackground();
                         "Site",
                         "Informed Consent numeric field 2 is not equal to assessment numeric field 2",
                         "{DateTime}"});
-#line 260
+#line 274
     testRunner.Then("I should not see the logging data for queries", ((string)(null)), table17);
-#line 264
+#line 278
  testRunner.And("I take a screenshot");
 #line hidden
             this.ScenarioCleanup();
@@ -782,41 +798,41 @@ this.FeatureBackground();
                         "release_564_Patch11",
                         "PB_8.2.1",
                         "Draft"});
-#line 270
+#line 284
 this.ScenarioSetup(scenarioInfo);
 #line 25
 this.FeatureBackground();
-#line 271
- testRunner.And("I select Study \"Edit Check Study 3\" and Site \"Edit Check Site 8\"");
-#line 272
- testRunner.And("I select a Subject \"sub22079\"");
-#line 273
- testRunner.And("I expand \"Open Queries\" in Task Summary");
-#line 274
- testRunner.Then("I should see \"Screening-Concomitant Medications\" in \"Open Queries\"");
-#line 275
- testRunner.And("I select \"Screening-Concomitant Medications\" in \"Open Queries\"");
-#line 278
- testRunner.Then("I verify \"Assessment Date 1\" field displays query opened with require response");
-#line 279
-    testRunner.And("I verify \"Numeric Field 2\" field displays query opened with require response");
-#line 280
- testRunner.And("I take a screenshot");
-#line 282
- testRunner.And("I select a Subject \"sub801\"");
-#line 283
- testRunner.And("I expand \"Cancel Query\" in Task Summary");
 #line 285
- testRunner.Then("I should see \"Test A Single Edit-Assessment Date Log2\" in \"Open Query\"");
+ testRunner.And("I select Study \"Edit Check Study 3\" and Site \"Edit Check Site 8\"");
 #line 286
- testRunner.And("I select \"Test A Single Edit-Assessment Date Log2\" in \"Open Query\"");
+ testRunner.And("I select a Subject \"sub22079\"");
+#line 287
+ testRunner.And("I expand \"Open Queries\" in Task Summary");
+#line 288
+ testRunner.Then("I should see \"Screening-Concomitant Medications\" in \"Open Queries\"");
 #line 289
+ testRunner.And("I select \"Screening-Concomitant Medications\" in \"Open Queries\"");
+#line 292
+ testRunner.Then("I verify \"Assessment Date 1\" field displays query opened with require response");
+#line 293
+    testRunner.And("I verify \"Numeric Field 2\" field displays query opened with require response");
+#line 294
+ testRunner.And("I take a screenshot");
+#line 296
+ testRunner.And("I select a Subject \"sub801\"");
+#line 297
+ testRunner.And("I expand \"Cancel Query\" in Task Summary");
+#line 299
+ testRunner.Then("I should see \"Test A Single Edit-Assessment Date Log2\" in \"Open Query\"");
+#line 300
+ testRunner.And("I select \"Test A Single Edit-Assessment Date Log2\" in \"Open Query\"");
+#line 303
  testRunner.Then("I verify \"Assessment Date 1\" field displays query opened with require response an" +
                     "d Cancel");
-#line 290
+#line 304
     testRunner.And("I verify \"Numeric Field 2\" field displays query opened with require response and " +
                     "Cancel");
-#line 291
+#line 305
  testRunner.And("I take a screenshot");
 #line hidden
             this.ScenarioCleanup();
@@ -831,41 +847,41 @@ this.FeatureBackground();
                         "release_564_Patch11",
                         "PB_8.3.1",
                         "Draft"});
-#line 297
+#line 311
 this.ScenarioSetup(scenarioInfo);
 #line 25
 this.FeatureBackground();
-#line 298
+#line 312
  testRunner.And("I navigate to \"Query Management\"");
-#line 299
+#line 313
  testRunner.And("I choose \"Edit Check Study 3 (Prod)\" from \"Study\"");
-#line 300
+#line 314
  testRunner.And("I choose \"World\" from \"Site Group\"");
-#line 301
+#line 315
  testRunner.And("I choose \"Edit Check Site 8\" from \"Site\"");
-#line 302
+#line 316
  testRunner.And("I choose \"sub801\" from \"Subject\"");
-#line 303
+#line 317
  testRunner.And("I click button \"Advanced Search\"");
-#line 307
+#line 321
  testRunner.And("I select Form \"\" in search result.");
-#line 309
+#line 323
  testRunner.And("I navigate to form \"Assessment Date Log2\" for subject \"sub801\"");
-#line 310
+#line 324
  testRunner.And("I verify \"Assessment Date 1\" field displays query opened with require response on" +
                     " the second log line");
-#line 311
+#line 325
     testRunner.And("I verify \"Numeric Field 2\" field displays query opened with require response on t" +
                     "he second log line");
-#line 312
+#line 326
  testRunner.And("I take a screenshot");
-#line 313
+#line 327
  testRunner.And("I verify \"Assessment Date 1\" field displays query opened with require response on" +
                     " the third log line");
-#line 314
+#line 328
     testRunner.And("I verify \"Numeric Field 2\" field displays query opened with require response on t" +
                     "he third log line");
-#line 315
+#line 329
  testRunner.And("I take a screenshot");
 #line hidden
             TechTalk.SpecFlow.Table table18 = new TechTalk.SpecFlow.Table(new string[] {
@@ -883,15 +899,15 @@ this.FeatureBackground();
             table18.AddRow(new string[] {
                         "Numeric Field 2",
                         "18"});
-#line 317
+#line 331
     testRunner.And("I add a new log line, enter and save the data, from the table below", ((string)(null)), table18);
-#line 323
+#line 337
  testRunner.And("I verify \"Assessment Date 1\" field displays query opened with require response on" +
                     " the fourth log line");
-#line 324
+#line 338
     testRunner.And("I verify \"Numeric Field 2\" field displays query opened with require response on t" +
                     "he fourth log line");
-#line 325
+#line 339
  testRunner.And("I take a screenshot");
 #line hidden
             TechTalk.SpecFlow.Table table19 = new TechTalk.SpecFlow.Table(new string[] {
@@ -903,19 +919,19 @@ this.FeatureBackground();
             table19.AddRow(new string[] {
                         "Numeric Field 2",
                         "19"});
-#line 326
+#line 340
  testRunner.And("I enter data in CRF", ((string)(null)), table19);
-#line 330
+#line 344
  testRunner.And("I cancel the queries on \"Assessment Date 1\" and \"Numeric Field 2\" fields on the f" +
                     "ourth log line");
-#line 331
+#line 345
  testRunner.And("I save the CRF page");
-#line 332
+#line 346
  testRunner.And("I take a screenshot");
-#line 333
+#line 347
  testRunner.And("I verify the queries did not fire on \"Assessment Date 1\" and \"Numeric Field 2\" fi" +
                     "elds");
-#line 334
+#line 348
  testRunner.And("I take a screenshot");
 #line hidden
             TechTalk.SpecFlow.Table table20 = new TechTalk.SpecFlow.Table(new string[] {
@@ -927,12 +943,12 @@ this.FeatureBackground();
             table20.AddRow(new string[] {
                         "Numeric Field 2",
                         "18"});
-#line 335
+#line 349
  testRunner.And("I enter data in CRF and save", ((string)(null)), table20);
-#line 339
+#line 353
  testRunner.And("I verify new queries did fire on \"Assessment Date 1\" and \"Numeric Field 2\" fields" +
                     "");
-#line 340
+#line 354
  testRunner.And("I take a screenshot");
 #line hidden
             this.ScenarioCleanup();
@@ -947,11 +963,11 @@ this.FeatureBackground();
                         "release_564_Patch11",
                         "PB_8.3.2",
                         "Draft"});
-#line 346
+#line 360
 this.ScenarioSetup(scenarioInfo);
 #line 25
 this.FeatureBackground();
-#line 348
+#line 362
     testRunner.When("I run SQL Script \"Query Logging Script\"");
 #line hidden
             TechTalk.SpecFlow.Table table21 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1014,9 +1030,9 @@ this.FeatureBackground();
                         "Site",
                         "Informed Consent numeric field 2 is not equal to assessment numeric field 2",
                         "{DateTime}"});
-#line 349
+#line 363
     testRunner.Then("I should not see the logging data for queries", ((string)(null)), table21);
-#line 353
+#line 367
  testRunner.And("I take a screenshot");
 #line hidden
             this.ScenarioCleanup();
@@ -1031,11 +1047,11 @@ this.FeatureBackground();
                         "release_564_Patch11",
                         "PB_8.3.3",
                         "Draft"});
-#line 359
+#line 373
 this.ScenarioSetup(scenarioInfo);
 #line 25
 this.FeatureBackground();
-#line 361
+#line 375
  testRunner.And("I select Form \"Assessment Date Log2\" within folder \"Test A Single Edit\"");
 #line hidden
             TechTalk.SpecFlow.Table table22 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1053,19 +1069,19 @@ this.FeatureBackground();
             table22.AddRow(new string[] {
                         "Numeric Field 2",
                         "18"});
-#line 362
+#line 376
     testRunner.And("I add a new log line enter and save", ((string)(null)), table22);
-#line 368
+#line 382
  testRunner.And("I verify \"Assessment Date 1\" field displays query opened with require response on" +
                     " the fifth log line");
-#line 369
+#line 383
     testRunner.And("I verify \"Numeric Field 2\" field displays query opened with require response on t" +
                     "he fifth log line");
-#line 370
+#line 384
  testRunner.And("I take a screenshot");
-#line 371
+#line 385
  testRunner.And("I answer the queries on \"Assessment Date 1\" and \"Numeric Field 2\" fields");
-#line 372
+#line 386
  testRunner.And("I save the CRF page");
 #line hidden
             TechTalk.SpecFlow.Table table23 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1077,20 +1093,20 @@ this.FeatureBackground();
             table23.AddRow(new string[] {
                         "Numeric Field 2",
                         "19"});
-#line 373
+#line 387
  testRunner.And("I enter data in CRF and save", ((string)(null)), table23);
-#line 377
+#line 391
  testRunner.And("I save the CRF page");
-#line 378
+#line 392
  testRunner.And("I close the queries on \"Assessment Date 1\" field and \"Numeric Field 2\" fields");
-#line 379
+#line 393
  testRunner.And("I save the CRF page");
-#line 380
+#line 394
  testRunner.And("I take a screenshot");
-#line 381
+#line 395
  testRunner.And("I verify the queries did not fire on \"Assessment Date 1\" and \"Numeric Field 2\" fi" +
                     "elds");
-#line 382
+#line 396
  testRunner.And("I take a screenshot");
 #line hidden
             TechTalk.SpecFlow.Table table24 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1102,14 +1118,14 @@ this.FeatureBackground();
             table24.AddRow(new string[] {
                         "Numeric Field 2",
                         "18"});
-#line 383
+#line 397
  testRunner.And("I enter data in CRF and save", ((string)(null)), table24);
-#line 387
+#line 401
  testRunner.And("I save the CRF page");
-#line 388
+#line 402
  testRunner.And("I verify new queries did fire on \"Assessment Date 1\" and \"Numeric Field 2\" fields" +
                     "");
-#line 389
+#line 403
  testRunner.And("I take a screenshot");
 #line hidden
             this.ScenarioCleanup();
@@ -1124,11 +1140,11 @@ this.FeatureBackground();
                         "release_564_Patch11",
                         "PB_8.3.4",
                         "Draft"});
-#line 395
+#line 409
 this.ScenarioSetup(scenarioInfo);
 #line 25
 this.FeatureBackground();
-#line 397
+#line 411
     testRunner.When("I run SQL Script \"Query Logging Script\"");
 #line hidden
             TechTalk.SpecFlow.Table table25 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1191,9 +1207,9 @@ this.FeatureBackground();
                         "Site",
                         "Informed Consent numeric field 2 is not equal to assessment numeric field 2",
                         "{DateTime}"});
-#line 398
+#line 412
     testRunner.Then("I should not see the logging data for queries", ((string)(null)), table25);
-#line 402
+#line 416
  testRunner.And("I take a screenshot");
 #line hidden
             this.ScenarioCleanup();
@@ -1208,11 +1224,11 @@ this.FeatureBackground();
                         "release_564_Patch11",
                         "PB_8.4.1",
                         "Draft"});
-#line 408
+#line 422
 this.ScenarioSetup(scenarioInfo);
 #line 25
 this.FeatureBackground();
-#line 409
+#line 423
  testRunner.And("I navigate to \"PDF Generator\"");
 #line hidden
             TechTalk.SpecFlow.Table table26 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1231,15 +1247,15 @@ this.FeatureBackground();
                         "World",
                         "Edit Check Site 2",
                         "SUB640"});
-#line 411
+#line 425
  testRunner.And("I create Data PDF", ((string)(null)), table26);
-#line 415
+#line 429
  testRunner.And("I generate Data PDF \"pdf{Var(num)}\"");
-#line 416
+#line 430
  testRunner.And("I wait for PDF \"pdf{Var(num)}\" to complete");
-#line 417
+#line 431
  testRunner.When("I View Data PDF \"pdf{Var(num)}\"");
-#line 419
+#line 433
  testRunner.And("I take a screenshot");
 #line hidden
             this.ScenarioCleanup();
@@ -1256,13 +1272,13 @@ this.FeatureBackground();
                         "release_564_Patch11",
                         "PB_8.5.1",
                         "Draft"});
-#line 424
+#line 438
 this.ScenarioSetup(scenarioInfo);
 #line 25
 this.FeatureBackground();
-#line 426
+#line 440
  testRunner.And("I navigate to \"Reporter\"");
-#line 427
+#line 441
  testRunner.And("I select Report \"Audit Trail\"");
 #line hidden
             TechTalk.SpecFlow.Table table27 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1271,28 +1287,28 @@ this.FeatureBackground();
             table27.AddRow(new string[] {
                         "Edit Check Study 3",
                         "Prod"});
-#line 428
+#line 442
  testRunner.And("I set report parameter \"Study\" with table", ((string)(null)), table27);
 #line hidden
             TechTalk.SpecFlow.Table table28 = new TechTalk.SpecFlow.Table(new string[] {
                         "Name"});
             table28.AddRow(new string[] {
                         "Edit Check Site 8"});
-#line 431
+#line 445
  testRunner.And("I set report parameter \"Sites\" with table", ((string)(null)), table28);
 #line hidden
             TechTalk.SpecFlow.Table table29 = new TechTalk.SpecFlow.Table(new string[] {
                         "Name"});
             table29.AddRow(new string[] {
                         "sub 10250"});
-#line 434
+#line 448
  testRunner.And("I set report parameter \"Subjects\" with table", ((string)(null)), table29);
 #line hidden
             TechTalk.SpecFlow.Table table30 = new TechTalk.SpecFlow.Table(new string[] {
                         "Name"});
             table30.AddRow(new string[] {
                         "Screening"});
-#line 437
+#line 451
  testRunner.And("I set report parameter \"Folders\" with table", ((string)(null)), table30);
 #line hidden
             TechTalk.SpecFlow.Table table31 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1301,11 +1317,11 @@ this.FeatureBackground();
                         "Informed Consent"});
             table31.AddRow(new string[] {
                         "Concomitant Medications"});
-#line 440
+#line 454
  testRunner.And("I set report parameter \"Forms\" with table", ((string)(null)), table31);
-#line 445
+#line 459
  testRunner.And("I click button \"Submit Report\"");
-#line 446
+#line 460
  testRunner.And("I switch to \"Targeted SDV Subject Override\" window");
 #line hidden
             this.ScenarioCleanup();
@@ -1322,13 +1338,13 @@ this.FeatureBackground();
                         "release_564_Patch11",
                         "PB_8.5.2",
                         "Draft"});
-#line 456
+#line 470
 this.ScenarioSetup(scenarioInfo);
 #line 25
 this.FeatureBackground();
-#line 459
+#line 473
  testRunner.And("I navigate to \"Reporter\"");
-#line 460
+#line 474
  testRunner.And("I select report \"Query Detail\"");
 #line hidden
             TechTalk.SpecFlow.Table table32 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1337,28 +1353,28 @@ this.FeatureBackground();
             table32.AddRow(new string[] {
                         "Edit Check Study 3",
                         "Prod"});
-#line 461
+#line 475
  testRunner.And("I set report parameter \"Study\" with table", ((string)(null)), table32);
 #line hidden
             TechTalk.SpecFlow.Table table33 = new TechTalk.SpecFlow.Table(new string[] {
                         "Name"});
             table33.AddRow(new string[] {
                         "Edit Check Site 8"});
-#line 464
+#line 478
  testRunner.And("I set report parameter \"Sites\" with table", ((string)(null)), table33);
 #line hidden
             TechTalk.SpecFlow.Table table34 = new TechTalk.SpecFlow.Table(new string[] {
                         "Name"});
             table34.AddRow(new string[] {
                         "sub 10250"});
-#line 467
+#line 481
  testRunner.And("I set report parameter \"Subjects\" with table", ((string)(null)), table34);
 #line hidden
             TechTalk.SpecFlow.Table table35 = new TechTalk.SpecFlow.Table(new string[] {
                         "Name"});
             table35.AddRow(new string[] {
                         "Screening"});
-#line 470
+#line 484
  testRunner.And("I set report parameter \"Folders\" with table", ((string)(null)), table35);
 #line hidden
             TechTalk.SpecFlow.Table table36 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1367,15 +1383,15 @@ this.FeatureBackground();
                         "Informed Consent"});
             table36.AddRow(new string[] {
                         "Concomitant Medications"});
-#line 473
+#line 487
  testRunner.And("I set report parameter \"Forms\" with table", ((string)(null)), table36);
-#line 477
+#line 491
  testRunner.When("I click button \"Submit Report\"");
-#line 478
+#line 492
  testRunner.And("I switch to \"Targeted SDV Subject Override\" window");
-#line 480
+#line 494
  testRunner.And("I take a screenshot");
-#line 481
+#line 495
  testRunner.And("I close report");
 #line hidden
             this.ScenarioCleanup();
@@ -1392,13 +1408,13 @@ this.FeatureBackground();
                         "release_564_Patch11",
                         "PB_8.5.3",
                         "Draft"});
-#line 487
+#line 501
 this.ScenarioSetup(scenarioInfo);
 #line 25
 this.FeatureBackground();
-#line 490
+#line 504
  testRunner.And("I navigate to \"Reporter\"");
-#line 491
+#line 505
  testRunner.And("I select report \"Edit Check Log Report\"");
 #line hidden
             TechTalk.SpecFlow.Table table37 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1407,49 +1423,49 @@ this.FeatureBackground();
             table37.AddRow(new string[] {
                         "Edit Check Study 3",
                         "Prod"});
-#line 492
+#line 506
  testRunner.And("I set report parameter \"Study\" with table", ((string)(null)), table37);
 #line hidden
             TechTalk.SpecFlow.Table table38 = new TechTalk.SpecFlow.Table(new string[] {
                         "Name"});
             table38.AddRow(new string[] {
                         "Edit Check Site 8"});
-#line 495
+#line 509
  testRunner.And("I set report parameter \"Sites\" with table", ((string)(null)), table38);
 #line hidden
             TechTalk.SpecFlow.Table table39 = new TechTalk.SpecFlow.Table(new string[] {
                         "Name"});
             table39.AddRow(new string[] {
                         "sub 10250"});
-#line 498
+#line 512
  testRunner.And("I set report parameter \"Subjects\" with table", ((string)(null)), table39);
 #line hidden
             TechTalk.SpecFlow.Table table40 = new TechTalk.SpecFlow.Table(new string[] {
                         "Name"});
             table40.AddRow(new string[] {
                         "Screening"});
-#line 501
+#line 515
  testRunner.And("I set report parameter \"Folders\" with table", ((string)(null)), table40);
 #line hidden
             TechTalk.SpecFlow.Table table41 = new TechTalk.SpecFlow.Table(new string[] {
                         "Name"});
             table41.AddRow(new string[] {
                         "Assessment Date Log2"});
-#line 504
+#line 518
  testRunner.And("I set report parameter \"Forms\" with table", ((string)(null)), table41);
-#line 509
+#line 523
  testRunner.And("I select checkbox \"Edit Check\" for \"Check Type\"");
-#line 510
+#line 524
  testRunner.And("I select checkbox Check \"CheckExecution\" for \"Log Type\"");
-#line 511
+#line 525
  testRunner.When("I click button \"Submit Report\"");
-#line 512
+#line 526
  testRunner.And("I switch to \"Targeted SDV Subject Override\" window");
-#line 513
+#line 527
  testRunner.Then("I should see fired editchecks");
-#line 514
+#line 528
  testRunner.And("I take a screenshot");
-#line 515
+#line 529
  testRunner.And("I close report");
 #line hidden
             this.ScenarioCleanup();
@@ -1466,13 +1482,13 @@ this.FeatureBackground();
                         "release_564_Patch11",
                         "PB_8.5.4",
                         "Draft"});
-#line 521
+#line 535
 this.ScenarioSetup(scenarioInfo);
 #line 25
 this.FeatureBackground();
-#line 524
+#line 538
  testRunner.And("I navigate to \"Reporter\"");
-#line 525
+#line 539
  testRunner.And("I select report \"Stream-Audit Trail\"");
 #line hidden
             TechTalk.SpecFlow.Table table42 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1481,28 +1497,28 @@ this.FeatureBackground();
             table42.AddRow(new string[] {
                         "Edit Check Study 3",
                         "Prod"});
-#line 526
+#line 540
 testRunner.And("I set report parameter \"Study\" with table", ((string)(null)), table42);
 #line hidden
             TechTalk.SpecFlow.Table table43 = new TechTalk.SpecFlow.Table(new string[] {
                         "Name"});
             table43.AddRow(new string[] {
                         "Edit Check Site 8"});
-#line 529
+#line 543
  testRunner.And("I set report parameter \"Sites\" with table", ((string)(null)), table43);
 #line hidden
             TechTalk.SpecFlow.Table table44 = new TechTalk.SpecFlow.Table(new string[] {
                         "Name"});
             table44.AddRow(new string[] {
                         "sub 10250"});
-#line 532
+#line 546
  testRunner.And("I set report parameter \"Subjects\" with table", ((string)(null)), table44);
 #line hidden
             TechTalk.SpecFlow.Table table45 = new TechTalk.SpecFlow.Table(new string[] {
                         "Name"});
             table45.AddRow(new string[] {
                         "Screening"});
-#line 535
+#line 549
  testRunner.And("I set report parameter \"Folders\" with table", ((string)(null)), table45);
 #line hidden
             TechTalk.SpecFlow.Table table46 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1511,9 +1527,9 @@ testRunner.And("I set report parameter \"Study\" with table", ((string)(null)), 
                         "Assessment Date Log2"});
             table46.AddRow(new string[] {
                         "form2"});
-#line 538
+#line 552
  testRunner.And("I set report parameter \"Forms\" with table", ((string)(null)), table46);
-#line 542
+#line 556
  testRunner.And("I click button \"Submit Report\"");
 #line hidden
             TechTalk.SpecFlow.Table table47 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1531,15 +1547,15 @@ testRunner.And("I set report parameter \"Study\" with table", ((string)(null)), 
             table47.AddRow(new string[] {
                         "Save as Unicode",
                         "Unchecked"});
-#line 546
+#line 560
  testRunner.When("I select \"Parameter\" to \"Value\", from the tabe below", ((string)(null)), table47);
-#line 552
+#line 566
  testRunner.And("I open excel file");
-#line 553
+#line 567
  testRunner.Then("I should see queries on \"Assessment Date 1\" and \"Numeric Field 2\" fields");
-#line 554
+#line 568
  testRunner.And("I take a screenshot");
-#line 555
+#line 569
  testRunner.And("I close report");
 #line hidden
             this.ScenarioCleanup();
@@ -1556,13 +1572,13 @@ testRunner.And("I set report parameter \"Study\" with table", ((string)(null)), 
                         "release_564_Patch11",
                         "PB_8.5.5",
                         "Draft"});
-#line 561
+#line 575
 this.ScenarioSetup(scenarioInfo);
 #line 25
 this.FeatureBackground();
-#line 564
+#line 578
  testRunner.And("I navigate to \"Reporter\"");
-#line 565
+#line 579
  testRunner.And("I select report \"Stream-Query Detail\"");
 #line hidden
             TechTalk.SpecFlow.Table table48 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1571,37 +1587,37 @@ this.FeatureBackground();
             table48.AddRow(new string[] {
                         "Edit Check Study 3",
                         "Prod"});
-#line 566
+#line 580
  testRunner.And("I set report parameter \"Study\" with table", ((string)(null)), table48);
 #line hidden
             TechTalk.SpecFlow.Table table49 = new TechTalk.SpecFlow.Table(new string[] {
                         "Name"});
             table49.AddRow(new string[] {
                         "Edit Check Site 8"});
-#line 569
+#line 583
  testRunner.And("I set report parameter \"Sites\" with table", ((string)(null)), table49);
 #line hidden
             TechTalk.SpecFlow.Table table50 = new TechTalk.SpecFlow.Table(new string[] {
                         "Name"});
             table50.AddRow(new string[] {
                         "sub 10250"});
-#line 572
+#line 586
  testRunner.And("I set report parameter \"Subjects\" with table", ((string)(null)), table50);
 #line hidden
             TechTalk.SpecFlow.Table table51 = new TechTalk.SpecFlow.Table(new string[] {
                         "Name"});
             table51.AddRow(new string[] {
                         "Screening"});
-#line 575
+#line 589
  testRunner.And("I set report parameter \"Folders\" with table", ((string)(null)), table51);
 #line hidden
             TechTalk.SpecFlow.Table table52 = new TechTalk.SpecFlow.Table(new string[] {
                         "Name"});
             table52.AddRow(new string[] {
                         "Assessment Date Log2"});
-#line 578
+#line 592
  testRunner.And("I set report parameter \"Forms\" with table", ((string)(null)), table52);
-#line 582
+#line 596
  testRunner.And("I click button \"Submit Report\"");
 #line hidden
             TechTalk.SpecFlow.Table table53 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1619,15 +1635,15 @@ this.FeatureBackground();
             table53.AddRow(new string[] {
                         "Save as Unicode",
                         "Unchecked"});
-#line 583
+#line 597
  testRunner.When("I select \"Parameter\" to \"Value\", from the tabe below", ((string)(null)), table53);
-#line 589
+#line 603
  testRunner.And("I open excel file");
-#line 590
+#line 604
  testRunner.Then("I should see queries on \"Assessment Date 1\" and \"Numeric Field 2\" fields");
-#line 591
+#line 605
  testRunner.And("I take a screenshot");
-#line 592
+#line 606
  testRunner.And("I close report");
 #line hidden
             this.ScenarioCleanup();
@@ -1644,13 +1660,13 @@ this.FeatureBackground();
                         "release_564_Patch11",
                         "PB_8.5.6",
                         "Draft"});
-#line 598
+#line 612
 this.ScenarioSetup(scenarioInfo);
 #line 25
 this.FeatureBackground();
-#line 601
+#line 615
  testRunner.And("I navigate to \"Reporter\"");
-#line 602
+#line 616
  testRunner.And("I select report \"Stream-Edit Check Log Report\"");
 #line hidden
             TechTalk.SpecFlow.Table table54 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1659,34 +1675,34 @@ this.FeatureBackground();
             table54.AddRow(new string[] {
                         "Edit Check Study 3",
                         "Prod"});
-#line 603
+#line 617
  testRunner.And("I set report parameter \"Study\" with table", ((string)(null)), table54);
 #line hidden
             TechTalk.SpecFlow.Table table55 = new TechTalk.SpecFlow.Table(new string[] {
                         "Name"});
             table55.AddRow(new string[] {
                         "Edit Check Site 8"});
-#line 606
+#line 620
  testRunner.And("I set report parameter \"Sites\" with table", ((string)(null)), table55);
 #line hidden
             TechTalk.SpecFlow.Table table56 = new TechTalk.SpecFlow.Table(new string[] {
                         "Name"});
             table56.AddRow(new string[] {
                         "sub 10250"});
-#line 609
+#line 623
  testRunner.And("I set report parameter \"Subjects\" with table", ((string)(null)), table56);
 #line hidden
             TechTalk.SpecFlow.Table table57 = new TechTalk.SpecFlow.Table(new string[] {
                         "Name"});
             table57.AddRow(new string[] {
                         "Assessment Date Log2"});
-#line 612
+#line 626
  testRunner.And("I set report parameter \"Forms\" with table", ((string)(null)), table57);
-#line 616
+#line 630
  testRunner.And("I select checkbox \"Edit Check\" for \"Check Type\"");
-#line 617
+#line 631
  testRunner.And("I select checkbox Check \"CheckExecution\" for \"Log Type\"");
-#line 618
+#line 632
  testRunner.And("I click button \"Submit Report\"");
 #line hidden
             TechTalk.SpecFlow.Table table58 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1704,15 +1720,15 @@ this.FeatureBackground();
             table58.AddRow(new string[] {
                         "Save as Unicode",
                         "Unchecked"});
-#line 619
+#line 633
  testRunner.And("I select \"Parameter\" to \"Value\", from the tabe below", ((string)(null)), table58);
-#line 625
+#line 639
  testRunner.When("I open excel file");
-#line 626
+#line 640
  testRunner.Then("I should see fired editchecks");
-#line 627
+#line 641
  testRunner.And("I take a screenshot");
-#line 628
+#line 642
  testRunner.And("I close report");
 #line hidden
             this.ScenarioCleanup();
@@ -1729,13 +1745,13 @@ this.FeatureBackground();
                         "release_564_Patch11",
                         "PB_8.6.1",
                         "Draft"});
-#line 634
+#line 648
 this.ScenarioSetup(scenarioInfo);
 #line 25
 this.FeatureBackground();
-#line 636
+#line 650
  testRunner.And("I navigate to \"Reporter\"");
-#line 637
+#line 651
  testRunner.And("I select report \"J-Review\"");
 #line hidden
             TechTalk.SpecFlow.Table table59 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1744,32 +1760,32 @@ this.FeatureBackground();
             table59.AddRow(new string[] {
                         "Edit Check Study 3",
                         "Prod"});
-#line 638
+#line 652
  testRunner.And("I set report parameter \"Study\" with table", ((string)(null)), table59);
-#line 641
+#line 655
  testRunner.And("I click button \"Submit Report\"");
-#line 642
+#line 656
  testRunner.And("I select \"Edit Check Study 3\" \"Prod\" from \"Studies\"");
-#line 643
+#line 657
  testRunner.And("I click button \"Reports\"");
-#line 644
+#line 658
  testRunner.And("I select \"Detail Data Listing\" report from \"Type\" in \"Report Browser\"");
-#line 645
+#line 659
  testRunner.And("I select \"MetricViews\" from \"Panels\"");
-#line 646
+#line 660
  testRunner.And("I select \"Queries\" from \"MetricViews\"");
-#line 647
+#line 661
  testRunner.And("I select \"Project, Site, Subject, Datapage, Field, Record Position QueryText, Que" +
                     "ryStatus, Answered Data, Answer Text\"");
-#line 648
+#line 662
  testRunner.When("I click button \"Create Report\"");
-#line 649
+#line 663
  testRunner.Then("I should see \"sub801\"");
-#line 650
+#line 664
  testRunner.And("I should see \"Added Query\" in \"QueryText\"");
-#line 651
+#line 665
  testRunner.And("I take a screenshot");
-#line 652
+#line 666
  testRunner.And("I Close \"Detail Data Listing\"");
 #line hidden
             this.ScenarioCleanup();
@@ -1786,13 +1802,13 @@ this.FeatureBackground();
                         "release_564_Patch11",
                         "PB_8.7.1",
                         "Draft"});
-#line 658
+#line 672
 this.ScenarioSetup(scenarioInfo);
 #line 25
 this.FeatureBackground();
-#line 660
+#line 674
  testRunner.And("I navigate to \"Reporter\"");
-#line 661
+#line 675
  testRunner.And("I select report \"Business Objects XI\"");
 #line hidden
             TechTalk.SpecFlow.Table table60 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1801,49 +1817,49 @@ this.FeatureBackground();
             table60.AddRow(new string[] {
                         "Edit Check Study 3",
                         "Prod"});
-#line 662
+#line 676
  testRunner.And("I set report parameter \"Study\" with table", ((string)(null)), table60);
-#line 665
+#line 679
  testRunner.And("I click button \"Submit Report\"");
-#line 666
+#line 680
  testRunner.And("I select dropdown \"New\"");
-#line 667
+#line 681
  testRunner.And("I select \"Web Intelligence Document\"");
-#line 668
+#line 682
  testRunner.And("I select \"Rave 5.6 Universe\"");
-#line 669
+#line 683
  testRunner.And("I select \"Project Name, Site Name, Subject Name, Folder Name, Form Name, Query Te" +
                     "xt\" in \"Results Objects\"");
-#line 670
+#line 684
  testRunner.And("I select \"Site Name, Subject Name, Folder Name, FormName\" in \"Query Filters\"");
-#line 671
+#line 685
  testRunner.And("I select \"Equal To\" from \"In List\" in \"Query Filters\" for \"Site Name\"");
-#line 672
+#line 686
  testRunner.And("Enter \"Value(s) from list\" \"Edit Check Site 8\" in \"Query Filters\" for \"Site Name\"" +
                     "");
-#line 673
+#line 687
  testRunner.And("I select \"Equal To\" from \"In List\" in \"Query Filters\" for \"Subject Name\"");
-#line 674
+#line 688
  testRunner.And("Enter \"Value(s) from list\" \"sub801\" in \"Query Filters\" for \"Subject Name\"");
-#line 675
+#line 689
  testRunner.And("I select \"Equal To\" from \"In List\" in \"Query Filters\" for \"Folder Name\"");
-#line 676
+#line 690
  testRunner.And("Enter \"Value(s) from list\" \"Test A Single Edit\" in \"Query Filters\" for \"Folder Na" +
                     "me\"");
-#line 677
+#line 691
  testRunner.And("I select \"Equal To\" from \"In List\" in \"Query Filters\" for \"Form Name\"");
-#line 678
+#line 692
  testRunner.And("Enter \"Value(s) from list\" \"Assessment Date Log2\" in \"Query Filters\" for \"Form Na" +
                     "me\"");
-#line 679
+#line 693
  testRunner.When("I click button \"Run Query\"");
-#line 680
+#line 694
  testRunner.Then("I should see \"sub801\"");
-#line 681
+#line 695
  testRunner.And("I should see \"Added Query\" in \"QueryText\"");
-#line 682
+#line 696
  testRunner.And("I take a screenshot");
-#line 683
+#line 697
  testRunner.And("I Close \"BOXI Report\"");
 #line hidden
             this.ScenarioCleanup();
@@ -1860,13 +1876,13 @@ this.FeatureBackground();
                         "release_564_Patch11",
                         "PB_8.8.1",
                         "Draft"});
-#line 689
+#line 703
 this.ScenarioSetup(scenarioInfo);
 #line 25
 this.FeatureBackground();
-#line 691
+#line 705
  testRunner.And("I select Study \"AM Edit Check Study\"");
-#line 692
+#line 706
  testRunner.And("I select Site \"AM Edit Site\"");
 #line hidden
             TechTalk.SpecFlow.Table table61 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1878,9 +1894,9 @@ this.FeatureBackground();
             table61.AddRow(new string[] {
                         "Subject Initials",
                         "sub802"});
-#line 693
+#line 707
     testRunner.And("I create a Subject", ((string)(null)), table61);
-#line 697
+#line 711
  testRunner.And("I select Form \"Mixed Form\"");
 #line hidden
             TechTalk.SpecFlow.Table table62 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1895,23 +1911,23 @@ this.FeatureBackground();
             table62.AddRow(new string[] {
                         "Log Field 2",
                         "2"});
-#line 698
+#line 712
  testRunner.And("I enter data in CRF and save", ((string)(null)), table62);
-#line 703
+#line 717
  testRunner.And("I verify \"Log Field 1\" field displays query opened with require response");
-#line 704
+#line 718
  testRunner.And("I answer the query on \"Log Field 1\" field");
-#line 705
+#line 719
  testRunner.And("I save the CRF page");
-#line 706
+#line 720
  testRunner.And("I close the query on \"Log Field 1\" field");
-#line 707
+#line 721
  testRunner.And("I save the CRF page");
-#line 708
+#line 722
  testRunner.And("I note CRF Version \"<Source CRF Version1>\"");
-#line 709
+#line 723
  testRunner.And("I take a screenshot");
-#line 711
+#line 725
  testRunner.And("I select site \"AM Edit Site\"");
 #line hidden
             TechTalk.SpecFlow.Table table63 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1923,11 +1939,11 @@ this.FeatureBackground();
             table63.AddRow(new string[] {
                         "Subject Initials",
                         "sub803"});
-#line 712
+#line 726
     testRunner.And("I create a Subject", ((string)(null)), table63);
-#line 716
+#line 730
  testRunner.And("I select Form \"Mixed Form\"");
-#line 717
+#line 731
  testRunner.And("I enter data in CRF and save");
 #line hidden
             TechTalk.SpecFlow.Table table64 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1942,13 +1958,13 @@ this.FeatureBackground();
             table64.AddRow(new string[] {
                         "Log Field 2",
                         "2"});
-#line 718
+#line 732
 testRunner.And("I save the CRF page", ((string)(null)), table64);
-#line 723
+#line 737
  testRunner.And("I verify \"Log Field 1\" field displays query opened with require response");
-#line 724
+#line 738
  testRunner.And("I answer the query on \"Log Field 1\" field");
-#line 725
+#line 739
  testRunner.And("I save the CRF page");
 #line hidden
             TechTalk.SpecFlow.Table table65 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1957,65 +1973,65 @@ testRunner.And("I save the CRF page", ((string)(null)), table64);
             table65.AddRow(new string[] {
                         "Standard 1",
                         "5"});
-#line 726
- testRunner.And("I enter data in CRF and save", ((string)(null)), table65);
-#line 729
- testRunner.And("I close the query on \"Log Field 1\" field");
-#line 730
- testRunner.And("I save the CRF page");
-#line 731
- testRunner.And("I note CRF Version \"<Source CRF Version1>\"");
-#line 732
- testRunner.And("I take a screenshot");
-#line 734
- testRunner.And("I navigate to \"Home\"");
-#line 735
- testRunner.And("I navigate to \"Architect\"");
-#line 736
- testRunner.And("I navigate to \"AM Edit Check Study\"");
-#line 737
- testRunner.And("I navigate to \"Draft 1\"");
-#line 738
- testRunner.And("I navigate to \"Edit Checks\"");
-#line 739
- testRunner.And("I select edit image for \"Mixed Form Query\" Edit Check");
 #line 740
- testRunner.And("I unselect checkbox \"Active\"");
-#line 741
- testRunner.And("I select  link \"Update\"");
-#line 742
- testRunner.And("I navigate to \"Draft 1\"");
+ testRunner.And("I enter data in CRF and save", ((string)(null)), table65);
 #line 743
- testRunner.And("I publish CRF Version");
+ testRunner.And("I close the query on \"Log Field 1\" field");
 #line 744
- testRunner.And("I note CRF Version \"<Target CRF Version1>\"");
+ testRunner.And("I save the CRF page");
 #line 745
- testRunner.And("I navigate to \"AM Edit Check Study\"");
+ testRunner.And("I note CRF Version \"<Source CRF Version1>\"");
 #line 746
- testRunner.And("I navigate to \"Amendment Manager\"");
-#line 747
- testRunner.And("I select \"<Source CRF Version1>\" from dropdown \"Source CRF\"");
+ testRunner.And("I take a screenshot");
 #line 748
- testRunner.And("I select \"<Target CRF Version1>\" from dropdown \"Target CRF\"");
-#line 749
- testRunner.And("I click button \"Create Plan\"");
-#line 750
- testRunner.And("I take a screenshot");
-#line 752
- testRunner.And("I Migrate \"All Subjects\"");
-#line 753
- testRunner.And("I select Migration Results and verify Job Status is set to Complete");
-#line 754
- testRunner.And("I take a screenshot");
-#line 756
  testRunner.And("I navigate to \"Home\"");
+#line 749
+ testRunner.And("I navigate to \"Architect\"");
+#line 750
+ testRunner.And("I navigate to \"AM Edit Check Study\"");
+#line 751
+ testRunner.And("I navigate to \"Draft 1\"");
+#line 752
+ testRunner.And("I navigate to \"Edit Checks\"");
+#line 753
+ testRunner.And("I select edit image for \"Mixed Form Query\" Edit Check");
+#line 754
+ testRunner.And("I unselect checkbox \"Active\"");
+#line 755
+ testRunner.And("I select  link \"Update\"");
+#line 756
+ testRunner.And("I navigate to \"Draft 1\"");
 #line 757
- testRunner.And("I select \"AM Edit Check Study\"");
+ testRunner.And("I publish CRF Version");
 #line 758
- testRunner.And("I select site \"AM Edit Site\"");
+ testRunner.And("I note CRF Version \"<Target CRF Version1>\"");
 #line 759
-    testRunner.And("I select a subject \"sub802\"");
+ testRunner.And("I navigate to \"AM Edit Check Study\"");
 #line 760
+ testRunner.And("I navigate to \"Amendment Manager\"");
+#line 761
+ testRunner.And("I select \"<Source CRF Version1>\" from dropdown \"Source CRF\"");
+#line 762
+ testRunner.And("I select \"<Target CRF Version1>\" from dropdown \"Target CRF\"");
+#line 763
+ testRunner.And("I click button \"Create Plan\"");
+#line 764
+ testRunner.And("I take a screenshot");
+#line 766
+ testRunner.And("I Migrate \"All Subjects\"");
+#line 767
+ testRunner.And("I select Migration Results and verify Job Status is set to Complete");
+#line 768
+ testRunner.And("I take a screenshot");
+#line 770
+ testRunner.And("I navigate to \"Home\"");
+#line 771
+ testRunner.And("I select \"AM Edit Check Study\"");
+#line 772
+ testRunner.And("I select site \"AM Edit Site\"");
+#line 773
+    testRunner.And("I select a subject \"sub802\"");
+#line 774
  testRunner.And("I select Form \"Mixed Form\"");
 #line hidden
             TechTalk.SpecFlow.Table table66 = new TechTalk.SpecFlow.Table(new string[] {
@@ -2024,9 +2040,9 @@ testRunner.And("I save the CRF page", ((string)(null)), table64);
             table66.AddRow(new string[] {
                         "Log Field 1",
                         "4"});
-#line 761
+#line 775
  testRunner.And("I enter data in CRF and save", ((string)(null)), table66);
-#line 764
+#line 778
  testRunner.And("I verify new query did not fire on \"Log Field 1\" field");
 #line hidden
             TechTalk.SpecFlow.Table table67 = new TechTalk.SpecFlow.Table(new string[] {
@@ -2038,17 +2054,17 @@ testRunner.And("I save the CRF page", ((string)(null)), table64);
             table67.AddRow(new string[] {
                         "Log Field 2",
                         "2"});
-#line 765
+#line 779
  testRunner.And("I add a new log line, enter and save the data, from the table below", ((string)(null)), table67);
-#line 769
+#line 783
  testRunner.And("I verify new query did not fire on \"Log Field 1\" field");
-#line 770
+#line 784
  testRunner.And("I take a screenshot");
-#line 772
+#line 786
  testRunner.And("I select site \"AM Edit Site\"");
-#line 773
+#line 787
     testRunner.And("I select a subject \"sub803\"");
-#line 774
+#line 788
  testRunner.And("I select Form \"Mixed Form\"");
 #line hidden
             TechTalk.SpecFlow.Table table68 = new TechTalk.SpecFlow.Table(new string[] {
@@ -2057,11 +2073,11 @@ testRunner.And("I save the CRF page", ((string)(null)), table64);
             table68.AddRow(new string[] {
                         "Standard 1",
                         "8"});
-#line 775
+#line 789
  testRunner.And("I enter data in CRF and save", ((string)(null)), table68);
-#line 778
+#line 792
  testRunner.And("I save the CRF page");
-#line 779
+#line 793
  testRunner.And("I verify new query did not fire on \"Log Field 1\" field");
 #line hidden
             TechTalk.SpecFlow.Table table69 = new TechTalk.SpecFlow.Table(new string[] {
@@ -2073,83 +2089,83 @@ testRunner.And("I save the CRF page", ((string)(null)), table64);
             table69.AddRow(new string[] {
                         "Log Field 2",
                         "2"});
-#line 780
- testRunner.And("I add a new log line, enter and save the data, from the table below", ((string)(null)), table69);
-#line 784
- testRunner.And("I verify new query did not fire on \"Log Field 1\" field");
-#line 785
- testRunner.And("I take a screenshot");
-#line 787
- testRunner.And("I navigate to \"Home\"");
-#line 788
- testRunner.And("I navigate to \"Architect\"");
-#line 789
- testRunner.And("I navigate to \"AM Edit Check Study\"");
-#line 790
- testRunner.And("I navigate to \"Draft 1\"");
-#line 791
- testRunner.And("I navigate to \"Edit Checks\"");
-#line 792
- testRunner.And("I select edit image for \"Mixed Form Query\" Edit Check");
-#line 793
- testRunner.And("I select checkbox \"Active\"");
 #line 794
- testRunner.And("I select  link \"Update\"");
-#line 795
- testRunner.And("I navigate to \"Draft 1\"");
-#line 796
- testRunner.And("I publish CRF Version");
-#line 797
- testRunner.And("I note CRF Version \"<Target CRF Version2>\"");
+ testRunner.And("I add a new log line, enter and save the data, from the table below", ((string)(null)), table69);
 #line 798
- testRunner.And("I navigate to \"AM Edit Check Study\"");
+ testRunner.And("I verify new query did not fire on \"Log Field 1\" field");
 #line 799
- testRunner.And("I navigate to \"Amendment Manager\"");
-#line 800
- testRunner.And("I select \"<Target CRF Version1>\" from dropdown \"Source CRF\"");
+ testRunner.And("I take a screenshot");
 #line 801
- testRunner.And("I select \"<Target CRF Version2>\" from dropdown \"Target CRF\"");
-#line 802
- testRunner.And("I click button \"Create Plan\"");
-#line 803
- testRunner.And("I navigate to \"Exceute Plan\"");
-#line 804
- testRunner.And("I Migrate \"All Subjects\"");
-#line 805
- testRunner.And("I select Migration Results and verify Job Status is set to Complete");
-#line 806
- testRunner.And("I take a screenshot");
-#line 808
  testRunner.And("I navigate to \"Home\"");
+#line 802
+ testRunner.And("I navigate to \"Architect\"");
+#line 803
+ testRunner.And("I navigate to \"AM Edit Check Study\"");
+#line 804
+ testRunner.And("I navigate to \"Draft 1\"");
+#line 805
+ testRunner.And("I navigate to \"Edit Checks\"");
+#line 806
+ testRunner.And("I select edit image for \"Mixed Form Query\" Edit Check");
+#line 807
+ testRunner.And("I select checkbox \"Active\"");
+#line 808
+ testRunner.And("I select  link \"Update\"");
 #line 809
- testRunner.And("I select \"AM Edit Check Study\"");
+ testRunner.And("I navigate to \"Draft 1\"");
 #line 810
- testRunner.And("I select site \"AM Edit Site\"");
+ testRunner.And("I publish CRF Version");
 #line 811
-    testRunner.And("I select a subject \"sub802\"");
+ testRunner.And("I note CRF Version \"<Target CRF Version2>\"");
 #line 812
- testRunner.And("I select Form \"Mixed Form\"");
+ testRunner.And("I navigate to \"AM Edit Check Study\"");
 #line 813
- testRunner.And("I verify new query did fire on \"Log Field 1\" field with require response on the f" +
-                    "irst log line");
+ testRunner.And("I navigate to \"Amendment Manager\"");
 #line 814
- testRunner.And("I verify new query did fire on \"Log Field 1\" field with require response on the s" +
-                    "econd log line");
+ testRunner.And("I select \"<Target CRF Version1>\" from dropdown \"Source CRF\"");
 #line 815
- testRunner.And("I take a screenshot");
+ testRunner.And("I select \"<Target CRF Version2>\" from dropdown \"Target CRF\"");
+#line 816
+ testRunner.And("I click button \"Create Plan\"");
 #line 817
- testRunner.And("I select site \"AM Edit Site\"");
+ testRunner.And("I navigate to \"Exceute Plan\"");
 #line 818
-    testRunner.And("I select a subject \"sub803\"");
+ testRunner.And("I Migrate \"All Subjects\"");
 #line 819
- testRunner.And("I select Form \"Mixed Form\"");
+ testRunner.And("I select Migration Results and verify Job Status is set to Complete");
 #line 820
+ testRunner.And("I take a screenshot");
+#line 822
+ testRunner.And("I navigate to \"Home\"");
+#line 823
+ testRunner.And("I select \"AM Edit Check Study\"");
+#line 824
+ testRunner.And("I select site \"AM Edit Site\"");
+#line 825
+    testRunner.And("I select a subject \"sub802\"");
+#line 826
+ testRunner.And("I select Form \"Mixed Form\"");
+#line 827
  testRunner.And("I verify new query did fire on \"Log Field 1\" field with require response on the f" +
                     "irst log line");
-#line 821
+#line 828
  testRunner.And("I verify new query did fire on \"Log Field 1\" field with require response on the s" +
                     "econd log line");
-#line 822
+#line 829
+ testRunner.And("I take a screenshot");
+#line 831
+ testRunner.And("I select site \"AM Edit Site\"");
+#line 832
+    testRunner.And("I select a subject \"sub803\"");
+#line 833
+ testRunner.And("I select Form \"Mixed Form\"");
+#line 834
+ testRunner.And("I verify new query did fire on \"Log Field 1\" field with require response on the f" +
+                    "irst log line");
+#line 835
+ testRunner.And("I verify new query did fire on \"Log Field 1\" field with require response on the s" +
+                    "econd log line");
+#line 836
  testRunner.And("I take a screenshot");
 #line hidden
             this.ScenarioCleanup();
@@ -2166,33 +2182,33 @@ testRunner.And("I save the CRF page", ((string)(null)), table64);
                         "release_564_Patch11",
                         "PB_8.9.1",
                         "Draft"});
-#line 828
+#line 842
 this.ScenarioSetup(scenarioInfo);
 #line 25
 this.FeatureBackground();
-#line 830
+#line 844
  testRunner.And("I navigate to \"Architect\"");
-#line 831
+#line 845
  testRunner.And("I navigate to \"AM Edit Check Study\"");
-#line 832
+#line 846
  testRunner.And("I navigate to \"Draft 1\"");
-#line 833
+#line 847
  testRunner.And("I publish and push CRF Version");
-#line 834
+#line 848
  testRunner.And("I note CRF Version \"<Publish CRF Version1>\"");
-#line 835
+#line 849
  testRunner.And("I publish CRF Version");
-#line 836
+#line 850
  testRunner.And("I note CRF Version \"<Publish CRF Version2>\"");
-#line 837
+#line 851
  testRunner.And("I publish CRF Version");
-#line 838
+#line 852
  testRunner.And("I note CRF Version \"<Publish CRF Version3>\"");
-#line 840
+#line 854
  testRunner.And("I navigate to \"Home\"");
-#line 841
+#line 855
  testRunner.And("I select \"AM Edit Check Study\"");
-#line 842
+#line 856
  testRunner.And("I select site \"AM Edit Site\"");
 #line hidden
             TechTalk.SpecFlow.Table table70 = new TechTalk.SpecFlow.Table(new string[] {
@@ -2204,11 +2220,11 @@ this.FeatureBackground();
             table70.AddRow(new string[] {
                         "Subject Initials",
                         "sub804"});
-#line 843
+#line 857
     testRunner.And("I create a Subject", ((string)(null)), table70);
-#line 847
+#line 861
  testRunner.And("I select Form \"Mixed Form\"");
-#line 848
+#line 862
  testRunner.And("I enter data in CRF and save");
 #line hidden
             TechTalk.SpecFlow.Table table71 = new TechTalk.SpecFlow.Table(new string[] {
@@ -2223,57 +2239,57 @@ this.FeatureBackground();
             table71.AddRow(new string[] {
                         "Log Field 2",
                         "2"});
-#line 849
-testRunner.And("I save the CRF page", ((string)(null)), table71);
-#line 854
- testRunner.And("I verify \"Log Field 1\" field displays query opened with require response");
-#line 855
- testRunner.And("I take a screenshot");
-#line 856
- testRunner.And("I answer the query on \"Log Field 1\" field");
-#line 857
- testRunner.And("I save the CRF page");
-#line 858
- testRunner.And("I close the query on \"Log Field 1\" field");
-#line 859
- testRunner.And("I save the CRF page");
-#line 860
- testRunner.And("I take a screenshot");
-#line 862
- testRunner.And("I navigate to \"Home\"");
 #line 863
- testRunner.And("I navigate to \"Architect\"");
-#line 864
- testRunner.And("I navigate to \"AM Edit Check Study\"");
-#line 865
- testRunner.And("I navigate to \"Pulish Checks\"");
-#line 866
- testRunner.And("I select \"<Publish CRF Version1>\" from dropdown \"Current CRF Version\"");
-#line 867
- testRunner.And("I select \"<Publish CRF Version2>\" from dropdown \"Reference CRF Version\"");
+testRunner.And("I save the CRF page", ((string)(null)), table71);
 #line 868
- testRunner.And("I click button \"Create Plan\"");
+ testRunner.And("I verify \"Log Field 1\" field displays query opened with require response");
 #line 869
- testRunner.And("I check \"Inactivate\" checkbox for \"Mixed Form Query\" edit check");
-#line 870
- testRunner.And("I navigate to \"Save\"");
-#line 871
  testRunner.And("I take a screenshot");
+#line 870
+ testRunner.And("I answer the query on \"Log Field 1\" field");
+#line 871
+ testRunner.And("I save the CRF page");
 #line 872
- testRunner.And("I navigate to \"Publish\"");
+ testRunner.And("I close the query on \"Log Field 1\" field");
 #line 873
- testRunner.And("I verify Job Status is set to Complete");
+ testRunner.And("I save the CRF page");
 #line 874
  testRunner.And("I take a screenshot");
 #line 876
  testRunner.And("I navigate to \"Home\"");
 #line 877
- testRunner.And("I select \"AM Edit Check Study\"");
+ testRunner.And("I navigate to \"Architect\"");
 #line 878
- testRunner.And("I select site \"AM Edit Site\"");
+ testRunner.And("I navigate to \"AM Edit Check Study\"");
 #line 879
-    testRunner.And("I select a subject \"sub804\"");
+ testRunner.And("I navigate to \"Pulish Checks\"");
 #line 880
+ testRunner.And("I select \"<Publish CRF Version1>\" from dropdown \"Current CRF Version\"");
+#line 881
+ testRunner.And("I select \"<Publish CRF Version2>\" from dropdown \"Reference CRF Version\"");
+#line 882
+ testRunner.And("I click button \"Create Plan\"");
+#line 883
+ testRunner.And("I check \"Inactivate\" checkbox for \"Mixed Form Query\" edit check");
+#line 884
+ testRunner.And("I navigate to \"Save\"");
+#line 885
+ testRunner.And("I take a screenshot");
+#line 886
+ testRunner.And("I navigate to \"Publish\"");
+#line 887
+ testRunner.And("I verify Job Status is set to Complete");
+#line 888
+ testRunner.And("I take a screenshot");
+#line 890
+ testRunner.And("I navigate to \"Home\"");
+#line 891
+ testRunner.And("I select \"AM Edit Check Study\"");
+#line 892
+ testRunner.And("I select site \"AM Edit Site\"");
+#line 893
+    testRunner.And("I select a subject \"sub804\"");
+#line 894
  testRunner.And("I select Form \"Mixed Form\"");
 #line hidden
             TechTalk.SpecFlow.Table table72 = new TechTalk.SpecFlow.Table(new string[] {
@@ -2282,63 +2298,63 @@ testRunner.And("I save the CRF page", ((string)(null)), table71);
             table72.AddRow(new string[] {
                         "Standard 1",
                         "7"});
-#line 881
- testRunner.And("I enter data in CRF and save", ((string)(null)), table72);
-#line 884
- testRunner.And("I save the CRF page");
-#line 885
- testRunner.And("I verify new query did not fire on \"Log Field 1\" field");
-#line 886
- testRunner.And("I take a screenshot");
-#line 888
- testRunner.And("I navigate to \"Home\"");
-#line 889
- testRunner.And("I navigate to \"Architect\"");
-#line 890
- testRunner.And("I navigate to \"AM Edit Check Study\"");
-#line 891
- testRunner.And("I navigate to \"Pulish Checks\"");
-#line 892
- testRunner.And("I select \"<Publish CRF Version1>\" from dropdown \"Current CRF Version\"");
-#line 893
- testRunner.And("I select \"<Publish CRF Version3>\" from dropdown \"Reference CRF Version\"");
-#line 894
- testRunner.And("I click button \"Create Plan\"");
 #line 895
- testRunner.And("I check \"Publish\" checkbox for \"Mixed Form Query\" edit check");
-#line 896
- testRunner.And("I navigate to \"Save\"");
-#line 897
- testRunner.And("I take a screenshot");
+ testRunner.And("I enter data in CRF and save", ((string)(null)), table72);
 #line 898
- testRunner.And("I navigate to \"Publish\"");
+ testRunner.And("I save the CRF page");
 #line 899
- testRunner.And("I verify Job Status is set to Complete");
+ testRunner.And("I verify new query did not fire on \"Log Field 1\" field");
 #line 900
  testRunner.And("I take a screenshot");
 #line 902
  testRunner.And("I navigate to \"Home\"");
 #line 903
- testRunner.And("I select \"AM Edit Check Study\"");
+ testRunner.And("I navigate to \"Architect\"");
 #line 904
- testRunner.And("I select site \"AM Edit Site\"");
+ testRunner.And("I navigate to \"AM Edit Check Study\"");
 #line 905
-    testRunner.And("I select a subject \"sub804\"");
+ testRunner.And("I navigate to \"Pulish Checks\"");
 #line 906
- testRunner.And("I select Form \"Mixed Form\"");
+ testRunner.And("I select \"<Publish CRF Version1>\" from dropdown \"Current CRF Version\"");
 #line 907
- testRunner.And("I verify new query did fire on \"Log Field 1\" field");
+ testRunner.And("I select \"<Publish CRF Version3>\" from dropdown \"Reference CRF Version\"");
 #line 908
- testRunner.And("I answer the query on \"Log Field 1\" field");
+ testRunner.And("I click button \"Create Plan\"");
 #line 909
- testRunner.And("I save the CRF page");
+ testRunner.And("I check \"Publish\" checkbox for \"Mixed Form Query\" edit check");
 #line 910
- testRunner.And("I take a screenshot");
+ testRunner.And("I navigate to \"Save\"");
 #line 911
- testRunner.And("I close the query on \"Log Field 1\" field");
+ testRunner.And("I take a screenshot");
 #line 912
- testRunner.And("I save the CRF page");
+ testRunner.And("I navigate to \"Publish\"");
 #line 913
+ testRunner.And("I verify Job Status is set to Complete");
+#line 914
+ testRunner.And("I take a screenshot");
+#line 916
+ testRunner.And("I navigate to \"Home\"");
+#line 917
+ testRunner.And("I select \"AM Edit Check Study\"");
+#line 918
+ testRunner.And("I select site \"AM Edit Site\"");
+#line 919
+    testRunner.And("I select a subject \"sub804\"");
+#line 920
+ testRunner.And("I select Form \"Mixed Form\"");
+#line 921
+ testRunner.And("I verify new query did fire on \"Log Field 1\" field");
+#line 922
+ testRunner.And("I answer the query on \"Log Field 1\" field");
+#line 923
+ testRunner.And("I save the CRF page");
+#line 924
+ testRunner.And("I take a screenshot");
+#line 925
+ testRunner.And("I close the query on \"Log Field 1\" field");
+#line 926
+ testRunner.And("I save the CRF page");
+#line 927
  testRunner.And("I take a screenshot");
 #line hidden
             TechTalk.SpecFlow.Table table73 = new TechTalk.SpecFlow.Table(new string[] {
@@ -2347,13 +2363,13 @@ testRunner.And("I save the CRF page", ((string)(null)), table71);
             table73.AddRow(new string[] {
                         "Standard 1",
                         "8"});
-#line 914
+#line 928
  testRunner.And("I enter data in CRF and save", ((string)(null)), table73);
-#line 917
+#line 931
  testRunner.And("I save the CRF page");
-#line 918
+#line 932
  testRunner.And("I verify new query did fire on \"Log Field 1\" field.");
-#line 919
+#line 933
  testRunner.And("I take a screenshot");
 #line hidden
             this.ScenarioCleanup();
@@ -2372,13 +2388,13 @@ testRunner.And("I save the CRF page", ((string)(null)), table71);
                         "release_564_Patch11",
                         "PB_8.10.1",
                         "Draft"});
-#line 925
+#line 939
 this.ScenarioSetup(scenarioInfo);
 #line 25
 this.FeatureBackground();
-#line 927
+#line 941
  testRunner.And("I select \"Edit Check Study 3\"");
-#line 928
+#line 942
  testRunner.And("I select site \"Edit Check Site 8\"");
 #line hidden
             TechTalk.SpecFlow.Table table74 = new TechTalk.SpecFlow.Table(new string[] {
@@ -2390,9 +2406,9 @@ this.FeatureBackground();
             table74.AddRow(new string[] {
                         "Subject Initials",
                         "sub805"});
-#line 929
+#line 943
     testRunner.And("I create a Subject", ((string)(null)), table74);
-#line 933
+#line 947
  testRunner.And("I select Form \"Mixed Form\"");
 #line hidden
             TechTalk.SpecFlow.Table table75 = new TechTalk.SpecFlow.Table(new string[] {
@@ -2407,14 +2423,14 @@ this.FeatureBackground();
             table75.AddRow(new string[] {
                         "Log Field 2",
                         "2"});
-#line 934
+#line 948
  testRunner.And("I enter data in CRF and save", ((string)(null)), table75);
-#line 939
+#line 953
  testRunner.And("I verify \"Log Field 1\" field displays query opened with require response on first" +
                     " record position");
-#line 940
+#line 954
  testRunner.And("I take a screenshot");
-#line 941
+#line 955
  testRunner.And("I add new log line 2");
 #line hidden
             TechTalk.SpecFlow.Table table76 = new TechTalk.SpecFlow.Table(new string[] {
@@ -2426,14 +2442,14 @@ this.FeatureBackground();
             table76.AddRow(new string[] {
                         "Log Field 2",
                         "2"});
-#line 942
+#line 956
  testRunner.And("I enter data in CRF and save", ((string)(null)), table76);
-#line 946
+#line 960
  testRunner.And("I verify \"Log Field 1\" field displays query opened with require response on secon" +
                     "d record position");
-#line 947
+#line 961
  testRunner.And("I take a screenshot");
-#line 948
+#line 962
  testRunner.And("I add new log line 3");
 #line hidden
             TechTalk.SpecFlow.Table table77 = new TechTalk.SpecFlow.Table(new string[] {
@@ -2445,24 +2461,24 @@ this.FeatureBackground();
             table77.AddRow(new string[] {
                         "Log Field 2",
                         "2"});
-#line 949
+#line 963
  testRunner.And("I enter data in CRF and save", ((string)(null)), table77);
-#line 953
+#line 967
  testRunner.And("I verify \"Log Field 1\" field displays query opened with require response on third" +
                     " record position");
-#line 954
+#line 968
  testRunner.And("I take a screenshot");
-#line 956
+#line 970
  testRunner.And("I answer the query on \"Log Field 1\" field on first record position");
-#line 957
+#line 971
  testRunner.And("I save the CRF page");
-#line 958
+#line 972
  testRunner.And("I answer the query on \"Log Field 1\" field on seond record position");
-#line 959
+#line 973
  testRunner.And("I save the CRF page");
-#line 960
+#line 974
  testRunner.And("I answer the query on \"Log Field 1\" field on third record position");
-#line 961
+#line 975
  testRunner.And("I save the CRF page");
 #line hidden
             TechTalk.SpecFlow.Table table78 = new TechTalk.SpecFlow.Table(new string[] {
@@ -2471,13 +2487,13 @@ this.FeatureBackground();
             table78.AddRow(new string[] {
                         "Log Field 1",
                         "6"});
-#line 963
+#line 977
  testRunner.And("I enter data in CRF and save", ((string)(null)), table78);
-#line 966
+#line 980
  testRunner.And("I close the query on \"Log Field 1\" field");
-#line 967
+#line 981
  testRunner.And("I save the CRF page");
-#line 968
+#line 982
  testRunner.And("I take a screenshot");
 #line hidden
             TechTalk.SpecFlow.Table table79 = new TechTalk.SpecFlow.Table(new string[] {
@@ -2486,13 +2502,13 @@ this.FeatureBackground();
             table79.AddRow(new string[] {
                         "Log Field 1",
                         "6"});
-#line 969
+#line 983
  testRunner.And("I enter data in CRF and save", ((string)(null)), table79);
-#line 972
+#line 986
  testRunner.And("I close the query on \"Log Field 1\" field");
-#line 973
+#line 987
  testRunner.And("I save the CRF page");
-#line 974
+#line 988
  testRunner.And("I take a screenshot");
 #line hidden
             TechTalk.SpecFlow.Table table80 = new TechTalk.SpecFlow.Table(new string[] {
@@ -2501,33 +2517,33 @@ this.FeatureBackground();
             table80.AddRow(new string[] {
                         "Log Field 1",
                         "6"});
-#line 975
- testRunner.And("I enter data in CRF and save", ((string)(null)), table80);
-#line 978
- testRunner.And("I close the query on \"Log Field 1\" field");
-#line 979
- testRunner.And("I save the CRF page");
-#line 980
- testRunner.And("I take a screenshot");
-#line 982
- testRunner.And("I select edit icon on first record position");
-#line 983
- testRunner.And("I select checkbox \"Freeze\" on \"Log Field 1\" field on first record position");
-#line 984
- testRunner.And("I save the CRF page");
-#line 985
- testRunner.And("I select edit icon on second record position");
-#line 986
- testRunner.And("I select checkbox \"Hadrd Lock\" on \"Log Field 1\" field on second record position");
-#line 987
- testRunner.And("I save the CRF page");
-#line 988
- testRunner.And("I navigate to \"Inactivate\"");
 #line 989
+ testRunner.And("I enter data in CRF and save", ((string)(null)), table80);
+#line 992
+ testRunner.And("I close the query on \"Log Field 1\" field");
+#line 993
+ testRunner.And("I save the CRF page");
+#line 994
+ testRunner.And("I take a screenshot");
+#line 996
+ testRunner.And("I select edit icon on first record position");
+#line 997
+ testRunner.And("I select checkbox \"Freeze\" on \"Log Field 1\" field on first record position");
+#line 998
+ testRunner.And("I save the CRF page");
+#line 999
+ testRunner.And("I select edit icon on second record position");
+#line 1000
+ testRunner.And("I select checkbox \"Hadrd Lock\" on \"Log Field 1\" field on second record position");
+#line 1001
+ testRunner.And("I save the CRF page");
+#line 1002
+ testRunner.And("I navigate to \"Inactivate\"");
+#line 1003
  testRunner.And("I select \"3\" in dropdown");
-#line 990
+#line 1004
  testRunner.And("I select \"Inactivate\" button");
-#line 991
+#line 1005
  testRunner.And("I take a screenshot");
 #line hidden
             TechTalk.SpecFlow.Table table81 = new TechTalk.SpecFlow.Table(new string[] {
@@ -2536,21 +2552,21 @@ this.FeatureBackground();
             table81.AddRow(new string[] {
                         "Standard 1",
                         "7"});
-#line 993
+#line 1007
  testRunner.And("I enter data in CRF and save", ((string)(null)), table81);
-#line 996
+#line 1010
  testRunner.And("I save the CRF page");
-#line 997
+#line 1011
  testRunner.And("I verify new query did fire on \"Log Field 1\" field on first record position");
-#line 998
+#line 1012
  testRunner.And("I take a screenshot");
-#line 999
+#line 1013
  testRunner.And("I verify new query did not fire on \"Log Field 1\" field on second record position");
-#line 1000
+#line 1014
  testRunner.And("I take a screenshot");
-#line 1001
+#line 1015
  testRunner.And("I verify new query did not fire on \"Log Field 1\" field on third record position");
-#line 1002
+#line 1016
  testRunner.And("I take a screenshot");
 #line hidden
             this.ScenarioCleanup();
@@ -2567,11 +2583,11 @@ this.FeatureBackground();
                         "release_564_Patch11",
                         "PB_8.10.2",
                         "Draft"});
-#line 1008
+#line 1022
 this.ScenarioSetup(scenarioInfo);
 #line 25
 this.FeatureBackground();
-#line 1010
+#line 1024
  testRunner.When("I run SQL Script \"Query Logging Script\"");
 #line hidden
             TechTalk.SpecFlow.Table table82 = new TechTalk.SpecFlow.Table(new string[] {
@@ -2631,9 +2647,9 @@ this.FeatureBackground();
                         "Site",
                         "Query Opened on Log Field 1",
                         "{DateTime}"});
-#line 1011
+#line 1025
     testRunner.Then("I should not see the logging data for queries", ((string)(null)), table82);
-#line 1015
+#line 1029
  testRunner.And("I take a screenshot");
 #line hidden
             this.ScenarioCleanup();
