@@ -443,7 +443,7 @@ Scenario: PB_8.5.1 When I run the Report, then query related data are displayed 
 		| Concomitant Medications |
 
 	And I click button "Submit Report"
-	#And I switch to "Targeted SDV Subject Override" window
+	And I switch to "Targeted SDV Subject Override" window
 
 	#Then I should see queries on "Assessment Date 1" and "Numeric Field 2" fields
 	#And I take a screenshot
@@ -456,15 +456,27 @@ Scenario: PB_8.5.1 When I run the Report, then query related data are displayed 
 Scenario: PB_8.5.2 When I run the Report, then query related data are displayed in the report.
 
 # Query Detail	
-	And I select "Reporter Module"
-	And I navigate to "Query Detail"
-	And I select study "Edit Check Study 3"
-	And I select site "Edit Check Site 8"
-	And I select subject "sub801"
-	And I select Folders "Test A Single Edit"
-	And I select Forms "Informed Consent Date Form ", "Assessment Date Log2"
+	And I navigate to "Reporter"
+	And I select report "Query Detail"
+	And I set report parameter "Study" with table
+		| Name               | Environment |
+		| Edit Check Study 3 | Prod        |
+	And I set report parameter "Sites" with table
+		| Name              |
+		| Edit Check Site 8 |
+	And I set report parameter "Subjects" with table
+		| Name   |
+		| sub 10250 |
+	And I set report parameter "Folders" with table
+		| Name      |
+		| Screening |
+	And I set report parameter "Forms" with table
+		| Name                    |
+		| Informed Consent        |
+		| Concomitant Medications |
 	When I click button "Submit Report"
-	Then I should see queries on "Assessment Date 1" and "Numeric Field 2" fields
+	And I switch to "Targeted SDV Subject Override" window
+	#Then I should see queries on "Assessment Date 1" and "Numeric Field 2" fields
 	And I take a screenshot
 	And I close report
 
@@ -475,15 +487,29 @@ Scenario: PB_8.5.2 When I run the Report, then query related data are displayed 
 Scenario: PB_8.5.3 When I run the Report, then query related data are displayed in the report.
 
 #Edit Check Log Report	
-	And I select "Reporter Module"
-	And I navigate to "Edit Check Log Report"
-	And I select study "Edit Check Study 3"
-	And I select site "Edit Check Site 8"
-	And I select subject "sub801"
-	And I select Form "Assessment Date Log2"
+	And I navigate to "Reporter"
+	And I select report "Edit Check Log Report"
+	And I set report parameter "Study" with table
+		| Name               | Environment |
+		| Edit Check Study 3 | Prod        |
+	And I set report parameter "Sites" with table
+		| Name              |
+		| Edit Check Site 8 |
+	And I set report parameter "Subjects" with table
+		| Name   |
+		| sub 10250 |
+	And I set report parameter "Folders" with table
+		| Name      |
+		| Screening |
+	And I set report parameter "Forms" with table
+		| Name                    |
+		| Assessment Date Log2       |
+	
+
 	And I select checkbox "Edit Check" for "Check Type"
 	And I select checkbox Check "CheckExecution" for "Log Type"
 	When I click button "Submit Report"
+	And I switch to "Targeted SDV Subject Override" window
 	Then I should see fired editchecks
 	And I take a screenshot
 	And I close report
@@ -495,14 +521,28 @@ Scenario: PB_8.5.3 When I run the Report, then query related data are displayed 
 Scenario: PB_8.5.4 When I run the Report, then query related data are displayed in the report.
 
 #Stream-Audit Trail	
-	And I select "Reporter Module"
-	And I navigate to "Stream-Audit Trail"
-	And I select study "Edit Check Study 3"
-	And I select site  "Edit Check Site 8"
-	And I select subject "sub801"
-	And I select Folders "Test A Single Edit"
-	And I select Forms "Informed Consent Date Form ", "Assessment Date Log2"
+	And I navigate to "Reporter"
+	And I select report "Stream-Audit Trail"
+And I set report parameter "Study" with table
+		| Name               | Environment |
+		| Edit Check Study 3 | Prod        |
+	And I set report parameter "Sites" with table
+		| Name              |
+		| Edit Check Site 8 |
+	And I set report parameter "Subjects" with table
+		| Name   |
+		| sub 10250 |
+	And I set report parameter "Folders" with table
+		| Name      |
+		| Screening |
+	And I set report parameter "Forms" with table
+		| Name                 |
+		| Assessment Date Log2 |
+		|                      form2|
 	And I click button "Submit Report"
+
+	#And Im on windows
+
 	When I select "Parameter" to "Value", from the tabe below
 		|Parameter			|Value		|
 		|Separator			|.			|	
@@ -521,13 +561,24 @@ Scenario: PB_8.5.4 When I run the Report, then query related data are displayed 
 Scenario: PB_8.5.5 When I run the Report, then query related data are displayed in the report.
 
 #Stream-Query Detail	
-	And I select "Reporter Module"
-	And I navigate to "Stream-Query Detail"
-	And I select study "Edit Check Study 3"
-	And I select site  "Edit Check Site 8"
-	And I select subject "sub801"
-	And I select Folders "Test A Single Edit"
-	And I select Forms "Informed Consent Date Form ", "Assessment Date Log2"
+	And I navigate to "Reporter"
+	And I select report "Stream-Query Detail"
+	And I set report parameter "Study" with table
+		| Name               | Environment |
+		| Edit Check Study 3 | Prod        |
+	And I set report parameter "Sites" with table
+		| Name              |
+		| Edit Check Site 8 |
+	And I set report parameter "Subjects" with table
+		| Name   |
+		| sub 10250 |
+	And I set report parameter "Folders" with table
+		| Name      |
+		| Screening |
+	And I set report parameter "Forms" with table
+		| Name                    |
+		| Assessment Date Log2       |
+
 	And I click button "Submit Report"
 	When I select "Parameter" to "Value", from the tabe below
 		|Parameter			|Value		|
@@ -547,12 +598,21 @@ Scenario: PB_8.5.5 When I run the Report, then query related data are displayed 
 Scenario: PB_8.5.6 When I run the Report, then query related data are displayed in the report.
 
 #Stream-Edit Check Log Report	
-	And I select "Reporter Module"
-	And I navigate to "Stream-Edit Check Log Report"
-	And I select study "Edit Check Study 3"
-	And I select site "Edit Check Site 8"
-	And I select subject "sub801"
-	And I select Form "Assessment Date Log2"
+	And I navigate to "Reporter"
+	And I select report "Stream-Edit Check Log Report"
+	And I set report parameter "Study" with table
+		| Name               | Environment |
+		| Edit Check Study 3 | Prod        |
+	And I set report parameter "Sites" with table
+		| Name              |
+		| Edit Check Site 8 |
+	And I set report parameter "Subjects" with table
+		| Name   |
+		| sub 10250 |
+	And I set report parameter "Forms" with table
+		| Name                    |
+		| Assessment Date Log2       |
+
 	And I select checkbox "Edit Check" for "Check Type"
 	And I select checkbox Check "CheckExecution" for "Log Type"
 	And I click button "Submit Report"
@@ -573,11 +633,11 @@ Scenario: PB_8.5.6 When I run the Report, then query related data are displayed 
 @Draft
 Scenario: PB_8.6.1 When I run the Report, then query related data are displayed in the report.J-Review verification.
 
-	And I login to Rave as user "<User 1>" with password "<Password>"	
-	And I navigate to "Home"
-	And I select "Reporter Module"
-	And I select "J-Review"
-	And I select "Edit Check Study 3"
+	And I navigate to "Reporter"
+	And I select report "J-Review"
+	And I set report parameter "Study" with table
+		| Name               | Environment |
+		| Edit Check Study 3 | Prod        |
 	And I click button "Submit Report"
 	And I select "Edit Check Study 3" "Prod" from "Studies"
 	And I click button "Reports"
@@ -597,10 +657,11 @@ Scenario: PB_8.6.1 When I run the Report, then query related data are displayed 
 @Draft
 Scenario: PB_8.7.1 When I run the Report, then query related data are displayed in the report. BOXI report verification.
 
-	And I login to Rave as user "editcheck1" with password "<Password>"	
-	And I select "Reporter Module"
-	And I select "Business Objects XI"
-	And I select "Edit Check Study 3"
+	And I navigate to "Reporter"
+	And I select report "Business Objects XI"
+	And I set report parameter "Study" with table
+		| Name               | Environment |
+		| Edit Check Study 3 | Prod        |
 	And I click button "Submit Report"
 	And I select dropdown "New"
 	And I select "Web Intelligence Document"
@@ -627,16 +688,14 @@ Scenario: PB_8.7.1 When I run the Report, then query related data are displayed 
 @Draft
 Scenario: PB_8.8.1 When I run the Report, then query related data are displayed in the report. Migrate Subject
 
-	And I login to Rave as user "editcheck" with password "<Password>"
-	And I select "AM Edit Check Study"
-	And I select site "AM Edit Site"
+	And I select Study "AM Edit Check Study"
+	And I select Site "AM Edit Site"
     And I create a Subject
 	| Field            | Value                                                          |
 	| Subject Number   | {NextSubjectNum<num1>(Edit Check Study 3,prod,Subject Number)} |
 	| Subject Initials |sub802                                                            |
 	And I select Form "Mixed Form"
 	And I enter data in CRF and save
-And I save the CRF page
 	    |Field       |Data |
         |Standard 1  |6    |
 	    |Log Field 1 |5    |
@@ -768,7 +827,6 @@ And I save the CRF page
 @Draft
 Scenario: PB_8.9.1 When I run the Report, then query related data are displayed in the report. Publish Checks
 
-	And I login to Rave as user "editcheck" with password "<Password>"
 	And I navigate to "Architect"
 	And I navigate to "AM Edit Check Study"
 	And I navigate to "Draft 1"
@@ -874,7 +932,6 @@ Scenario: PB_8.10.1 When I run the Report, then query related data are displayed
 	| Subject Initials |sub805                                                            |
 	And I select Form "Mixed Form"
 	And I enter data in CRF and save
-And I save the CRF page
 	    |Field       |Data |
         |Standard 1  |6    |
 	    |Log Field 1 |5    |
@@ -883,7 +940,6 @@ And I save the CRF page
 	And I take a screenshot
 	And I add new log line 2
 	And I enter data in CRF and save
-And I save the CRF page
 	    |Field       |Data |
 	    |Log Field 1 |5    |
 	    |Log Field 2 |2    |
@@ -891,7 +947,6 @@ And I save the CRF page
 	And I take a screenshot
 	And I add new log line 3
 	And I enter data in CRF and save
-And I save the CRF page
 	    |Field       |Data |
 	    |Log Field 1 |5    |
 	    |Log Field 2 |2    |
