@@ -70,10 +70,8 @@ namespace Medidata.RBT.Features.Rave
 		[StepDefinition(@"I cancel the Query ""([^""]*)"" on Field ""([^""]*)""")]
 		public void ICancelTheQueryOnField____With____(string message, string fieldName)
 		{
-			//temp comment out
-			//CRFPage page = CurrentPage.As<CRFPage>();
-			//page.CancelQuery(message, fieldName, answer);
-
+            CRFPage page = CurrentPage.As<CRFPage>();
+            page.CancelQuery(message, fieldName);
 		}
 
 
@@ -87,13 +85,13 @@ namespace Medidata.RBT.Features.Rave
 		[StepDefinition(@"I close the Query ""([^""]*)"" on Field ""([^""]*)""")]
 		public void ICloseTheQuery____OnField____(string message, string fieldNames)
 		{
-
+            throw new Exception("Method not implemented yet!");
 		}
 
 		[StepDefinition(@"I close the Query on Field ""([^""]*)""")]
 		public void ICloseTheQueryOnField____(string fieldNames)
 		{
-
+            throw new Exception("Method not implemented yet!");
 		}
 
 		[StepDefinition(@"I verify Field ""([^""]*)"" has NO Query")]
@@ -108,14 +106,14 @@ namespace Medidata.RBT.Features.Rave
 		[StepDefinition(@"closed Query with message ""([^""]*)"" exists on Field ""([^""]*)"" in Form ""([^""]*)"" in Folder ""([^""]*)"" in Subject ""([^""]*)"" in Site ""([^""]*)"" in Study ""([^""]*)""")]
 		public void ClosedQueriesExistOnFields____InForm____InFolder___InSubject____InSite____InStudy____(string message, string fieldNames, string formName, string folderName, string subjectName, string siteName, string studyName)
 		{
-
+            throw new Exception("Method not implemented yet!");
 		}
 
 
 		[StepDefinition(@"I verify the queries are not displayed on fields ""([^""]*)"" and ""([^""]*)"" on first logline")]
 		public void IVerify_TheQueries_AreNotDisplayed_OnFields(string fields1, string fields2)
 		{
-
+            throw new Exception("Method not implemented yet!");
 		}		
 
 

@@ -12,6 +12,32 @@ namespace Medidata.RBT.PageObjects.Rave
 {
 	public  class CRFPage : BaseEDCTreePage
 	{
+        private IWebElement GetQueryCancelCheckbox(string message, string fieldName)
+        {
+            var fieldArea = RavePagesHelper.GetDatapointLabelContainer(fieldName);
+            var queryTable = fieldArea.FindElements(
+                By.XPath(".//td[@class='crf_preText']/table"));
+            foreach (var table in queryTable)
+            {
+                if (table.Text.IndexOf(message) != -1)
+                {
+                    return table.FindCheckboxes().ElementAt(0);
+                }
+            }
+            return null;
+        }
+
+
+        public CRFPage CancelQuery(string message, string fieldName)
+        {
+            var queryCancelCheckbox = GetQueryCancelCheckbox(message, fieldName);
+            if (queryCancelCheckbox == null)
+                throw new Exception(String.Format("Query cancel checkbox not found for message: {0}, field: {1}", message, fieldName));
+
+            queryCancelCheckbox.SelectCheckbox();
+            return this;
+        }
+
 		public CRFPage FillDataPoint(string label, string val)
 		{
 			RavePagesHelper.FillDataPoint(label, val);

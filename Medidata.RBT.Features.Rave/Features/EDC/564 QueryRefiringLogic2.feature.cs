@@ -129,7 +129,7 @@ this.FeatureBackground();
                         "Subject Initials",
                         "SUB"});
 #line 29
-    testRunner.And("I create a Subject", ((string)(null)), table2);
+    testRunner.Given("I create a Subject", ((string)(null)), table2);
 #line 33
  testRunner.And("I select Form \"Informed Consent\" in Folder \"Screening\"");
 #line hidden
@@ -330,6 +330,10 @@ this.ScenarioSetup(scenarioInfo);
 #line 12
 this.FeatureBackground();
 #line 90
+    testRunner.Given("I select Study \"Edit Check Study 3\" and Site \"Edit Check Site 2\"");
+#line 91
+    testRunner.And("I select a Subject \"SUB{Var(num1)}\"");
+#line 92
  testRunner.And("I select Form \"Concomitant Medications\" in Folder \"Screening\"");
 #line hidden
             TechTalk.SpecFlow.Table table8 = new TechTalk.SpecFlow.Table(new string[] {
@@ -347,18 +351,18 @@ this.FeatureBackground();
             table8.AddRow(new string[] {
                         "Current Axis Number",
                         "18"});
-#line 91
+#line 93
     testRunner.And("I enter data in CRF on a new log line and save and reopen", ((string)(null)), table8);
-#line 97
+#line 99
  testRunner.And("I open log line 2");
-#line 98
+#line 100
  testRunner.And("I verify Query with message \"\'Date Informed Consent Signed\' is greater. Please re" +
                     "vise.\" without Requires Response is displayed on Field \"Start Date\"");
-#line 99
+#line 101
  testRunner.And("I verify Query with message \"Informed Consent \'Current Distribution Number\' is no" +
                     "t equal to Concomitant Medications \'Current Axis Number\'.\" without Requires Resp" +
                     "onse is displayed on Field \"Current Axis Number\"");
-#line 100
+#line 102
  testRunner.And("I take a screenshot");
 #line hidden
             TechTalk.SpecFlow.Table table9 = new TechTalk.SpecFlow.Table(new string[] {
@@ -370,15 +374,15 @@ this.FeatureBackground();
             table9.AddRow(new string[] {
                         "Current Axis Number",
                         "19"});
-#line 101
+#line 103
  testRunner.And("I enter data in CRF and save", ((string)(null)), table9);
-#line 105
- testRunner.And("I open log line 2");
-#line 106
- testRunner.And("I verify Field \"Start Date\" has NO Query");
 #line 107
- testRunner.And("I verify Field \"Current Axis Number\" has NO Query");
+ testRunner.And("I open log line 2");
 #line 108
+ testRunner.And("I verify Field \"Start Date\" has NO Query");
+#line 109
+ testRunner.And("I verify Field \"Current Axis Number\" has NO Query");
+#line 110
  testRunner.And("I take a screenshot");
 #line hidden
             TechTalk.SpecFlow.Table table10 = new TechTalk.SpecFlow.Table(new string[] {
@@ -390,18 +394,18 @@ this.FeatureBackground();
             table10.AddRow(new string[] {
                         "Current Axis Number",
                         "18"});
-#line 110
+#line 112
  testRunner.When("I enter data in CRF and save", ((string)(null)), table10);
-#line 114
+#line 116
  testRunner.And("I open log line 2");
-#line 115
+#line 117
  testRunner.Then("I verify Query with message \"\'Date Informed Consent Signed\' is greater. Please re" +
                     "vise.\" is displayed on Field \"Start Date\"");
-#line 116
+#line 118
     testRunner.And("I verify Query with message \"Informed Consent \'Current Distribution Number\' is no" +
                     "t equal to Concomitant Medications \'Current Axis Number\'.\" is displayed on Field" +
                     " \"Current Axis Number\"");
-#line 117
+#line 119
  testRunner.And("I take a screenshot");
 #line hidden
             this.ScenarioCleanup();
@@ -416,11 +420,11 @@ this.FeatureBackground();
                         "release_564_Patch11",
                         "PB_2.1.4",
                         "Draft"});
-#line 123
+#line 125
 this.ScenarioSetup(scenarioInfo);
 #line 12
 this.FeatureBackground();
-#line 125
+#line 127
     testRunner.When("I run SQL Script \"Query Logging Script\"");
 #line hidden
             TechTalk.SpecFlow.Table table11 = new TechTalk.SpecFlow.Table(new string[] {
@@ -484,9 +488,9 @@ this.FeatureBackground();
                         "Informed Consent \'Current Distribution Number\' is not equal to Concomitant Medica" +
                             "tions \'Current Axis Number\'.",
                         "{DateTime}"});
-#line 126
+#line 128
     testRunner.Then("I should not see the logging data for queries", ((string)(null)), table11);
-#line 130
+#line 132
  testRunner.And("I take a screenshot");
 #line hidden
             this.ScenarioCleanup();
@@ -501,10 +505,12 @@ this.FeatureBackground();
                         "release_564_Patch11",
                         "PB_2.2.1",
                         "Draft"});
-#line 136
+#line 138
 this.ScenarioSetup(scenarioInfo);
 #line 12
 this.FeatureBackground();
+#line 140
+    testRunner.Given("I select Study \"Edit Check Study 3\" and Site \"Edit Check Site 2\"");
 #line hidden
             TechTalk.SpecFlow.Table table12 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field",
@@ -515,9 +521,9 @@ this.FeatureBackground();
             table12.AddRow(new string[] {
                         "Subject Initials",
                         "SUB"});
-#line 138
+#line 141
     testRunner.And("I create a Subject", ((string)(null)), table12);
-#line 142
+#line 145
  testRunner.And("I select Form \"Informed Consent\" in Folder \"Screening\"");
 #line hidden
             TechTalk.SpecFlow.Table table13 = new TechTalk.SpecFlow.Table(new string[] {
@@ -535,11 +541,11 @@ this.FeatureBackground();
             table13.AddRow(new string[] {
                         "Current Distribution Number",
                         "200"});
-#line 143
+#line 146
  testRunner.And("I enter data in CRF and save", ((string)(null)), table13);
-#line 149
+#line 152
  testRunner.And("I take a screenshot");
-#line 150
+#line 153
  testRunner.And("I select Form \"Concomitant Medications\" in Folder \"Week 1\"");
 #line hidden
             TechTalk.SpecFlow.Table table14 = new TechTalk.SpecFlow.Table(new string[] {
@@ -557,18 +563,18 @@ this.FeatureBackground();
             table14.AddRow(new string[] {
                         "Current Axis Number",
                         "99"});
-#line 151
+#line 154
     testRunner.And("I enter data in CRF and save", ((string)(null)), table14);
-#line 157
+#line 160
  testRunner.And("I open log line 1");
-#line 158
+#line 161
  testRunner.And("I verify Query with message \"\'Date Informed Consent Signed\' can not be greater th" +
                     "an Start Date.\" without Requires Response is displayed on Field \"Start Date\"");
-#line 159
+#line 162
  testRunner.And("I verify Query with message \"\'Current Distribution Number\' is not equal \'Current " +
                     "Axis Number\'.\" without Requires Response is displayed on Field \"Current Axis Num" +
                     "ber\"");
-#line 160
+#line 163
  testRunner.And("I take a screenshot");
 #line hidden
             TechTalk.SpecFlow.Table table15 = new TechTalk.SpecFlow.Table(new string[] {
@@ -583,15 +589,15 @@ this.FeatureBackground();
             table15.AddRow(new string[] {
                         "Current Axis Number",
                         "200"});
-#line 161
+#line 164
  testRunner.And("I enter data in CRF and save", ((string)(null)), table15);
-#line 166
- testRunner.And("I open log line 1");
-#line 167
- testRunner.And("I verify Field \"Start Date\" has NO Query");
-#line 168
- testRunner.And("I verify Field \"Current Axis Number\" has NO Query");
 #line 169
+ testRunner.And("I open log line 1");
+#line 170
+ testRunner.And("I verify Field \"Start Date\" has NO Query");
+#line 171
+ testRunner.And("I verify Field \"Current Axis Number\" has NO Query");
+#line 172
  testRunner.And("I take a screenshot");
 #line hidden
             TechTalk.SpecFlow.Table table16 = new TechTalk.SpecFlow.Table(new string[] {
@@ -606,17 +612,17 @@ this.FeatureBackground();
             table16.AddRow(new string[] {
                         "Current Axis Number",
                         "99"});
-#line 171
+#line 174
  testRunner.When("I enter data in CRF and save", ((string)(null)), table16);
-#line 176
- testRunner.And("I open log line 1");
-#line 177
- testRunner.Then("I verify Query with message \"\'Date Informed Consent Signed\' can not be greater th" +
-                    "an Start Date.\" is not displayed on Field \"Start Date\"");
-#line 178
- testRunner.And("I verify Query with message \"\'Current Distribution Number\' is not equal \'Current " +
-                    "Axis Number\'.\" is not displayed on Field \"Current Axis Number\"");
 #line 179
+ testRunner.And("I open log line 1");
+#line 180
+ testRunner.Then("I verify Query with message \"\'Date Informed Consent Signed\' can not be greater th" +
+                    "an Start Date.\" is displayed on Field \"Start Date\"");
+#line 181
+ testRunner.And("I verify Query with message \"\'Current Distribution Number\' is not equal \'Current " +
+                    "Axis Number\'.\" is displayed on Field \"Current Axis Number\"");
+#line 182
  testRunner.And("I take a screenshot");
 #line hidden
             this.ScenarioCleanup();
@@ -631,11 +637,11 @@ this.FeatureBackground();
                         "release_564_Patch11",
                         "PB_2.2.2",
                         "Draft"});
-#line 185
+#line 188
 this.ScenarioSetup(scenarioInfo);
 #line 12
 this.FeatureBackground();
-#line 187
+#line 190
     testRunner.When("I run SQL Script \"Query Logging Script\"");
 #line hidden
             TechTalk.SpecFlow.Table table17 = new TechTalk.SpecFlow.Table(new string[] {
@@ -698,9 +704,9 @@ this.FeatureBackground();
                         "Marking Group 1",
                         "\'Current Distribution Number\' is not equal \'Current Axis Number\'.",
                         "{DateTime}"});
-#line 188
+#line 191
     testRunner.Then("I should not see the logging data for queries", ((string)(null)), table17);
-#line 192
+#line 195
  testRunner.And("I take a screenshot");
 #line hidden
             this.ScenarioCleanup();
@@ -715,14 +721,16 @@ this.FeatureBackground();
                         "release_564_Patch11",
                         "PB_2.2.3",
                         "Draft"});
-#line 198
+#line 201
 this.ScenarioSetup(scenarioInfo);
 #line 12
 this.FeatureBackground();
-#line 200
-  testRunner.And("I select a Subject \"sub{MaxSubjectNum(Edit Check Study 3,prod,Subject Number)}\"");
-#line 201
- testRunner.And("I select Form \"Concomitant Medications\" in folder \"Week 1\"");
+#line 203
+    testRunner.Given("I select Study \"Edit Check Study 3\" and Site \"Edit Check Site 2\"");
+#line 204
+    testRunner.And("I select a Subject \"SUB{Var(num1)}\"");
+#line 205
+ testRunner.And("I select Form \"Concomitant Medications\" in Folder \"Week 1\"");
 #line hidden
             TechTalk.SpecFlow.Table table18 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field",
@@ -739,16 +747,16 @@ this.FeatureBackground();
             table18.AddRow(new string[] {
                         "Current Axis Number",
                         "98"});
-#line 202
+#line 206
     testRunner.And("I enter data in CRF on a new log line and save and reopen", ((string)(null)), table18);
-#line 208
+#line 212
  testRunner.And("I verify Query with message \"\'Date Informed Consent Signed\' can not be greater th" +
                     "an Start Date.\" without Requires Response is displayed on Field \"Start Date\"");
-#line 209
+#line 213
  testRunner.And("I verify Query with message \"\'Current Distribution Number\' is not equal \'Current " +
                     "Axis Number\'.\" without Requires Response is displayed on Field \"Current Axis Num" +
                     "ber\"");
-#line 210
+#line 214
  testRunner.And("I take a screenshot");
 #line hidden
             TechTalk.SpecFlow.Table table19 = new TechTalk.SpecFlow.Table(new string[] {
@@ -763,15 +771,15 @@ this.FeatureBackground();
             table19.AddRow(new string[] {
                         "Current Axis Number",
                         "200"});
-#line 211
+#line 215
  testRunner.And("I enter data in CRF and save", ((string)(null)), table19);
-#line 216
+#line 220
  testRunner.And("I open log line 2");
-#line 217
+#line 221
  testRunner.And("I verify Field \"Start Date\" has NO Query");
-#line 218
+#line 222
  testRunner.And("I verify Field \"Current Axis Number\" has NO Query");
-#line 219
+#line 223
  testRunner.And("I take a screenshot");
 #line hidden
             TechTalk.SpecFlow.Table table20 = new TechTalk.SpecFlow.Table(new string[] {
@@ -786,19 +794,17 @@ this.FeatureBackground();
             table20.AddRow(new string[] {
                         "Current Axis Number",
                         "98"});
-#line 221
+#line 225
  testRunner.When("I enter data in CRF and save", ((string)(null)), table20);
-#line 226
+#line 230
  testRunner.And("I open log line 2");
-#line 227
+#line 231
  testRunner.Then("I verify Query with message \"\'Date Informed Consent Signed\' can not be greater th" +
                     "an Start Date.\" is displayed on Field \"Start Date\"");
-#line 228
+#line 232
  testRunner.And("I verify Query with message \"\'Current Distribution Number\' is not equal \'Current " +
                     "Axis Number\'.\" is displayed on Field \"Current Axis Number\"");
-#line 229
- testRunner.And("I take a screenshot");
-#line 230
+#line 233
  testRunner.And("I take a screenshot");
 #line hidden
             this.ScenarioCleanup();
@@ -813,11 +819,11 @@ this.FeatureBackground();
                         "release_564_Patch11",
                         "PB_2.2.4",
                         "Draft"});
-#line 236
+#line 239
 this.ScenarioSetup(scenarioInfo);
 #line 12
 this.FeatureBackground();
-#line 238
+#line 241
     testRunner.When("I run SQL Script \"Query Logging Script\"");
 #line hidden
             TechTalk.SpecFlow.Table table21 = new TechTalk.SpecFlow.Table(new string[] {
@@ -880,9 +886,9 @@ this.FeatureBackground();
                         "Marking Group 1",
                         "\'Current Distribution Number\' is not equal \'Current Axis Number\'.",
                         "{DateTime}"});
-#line 239
+#line 242
     testRunner.Then("I should not see the logging data for queries", ((string)(null)), table21);
-#line 243
+#line 246
  testRunner.And("I take a screenshot");
 #line hidden
             this.ScenarioCleanup();
@@ -899,10 +905,12 @@ this.FeatureBackground();
                         "release_564_Patch11",
                         "PB_2.3.1",
                         "Draft"});
-#line 249
+#line 252
 this.ScenarioSetup(scenarioInfo);
 #line 12
 this.FeatureBackground();
+#line 254
+ testRunner.Given("I select Study \"Edit Check Study 3\" and Site \"Edit Check Site 2\"");
 #line hidden
             TechTalk.SpecFlow.Table table22 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field",
@@ -913,9 +921,9 @@ this.FeatureBackground();
             table22.AddRow(new string[] {
                         "Subject Initials",
                         "SUB"});
-#line 251
-    testRunner.And("I create a Subject", ((string)(null)), table22);
 #line 255
+    testRunner.And("I create a Subject", ((string)(null)), table22);
+#line 259
  testRunner.And("I select Form \"Concomitant Medications\" in Folder \"Week 1\"");
 #line hidden
             TechTalk.SpecFlow.Table table23 = new TechTalk.SpecFlow.Table(new string[] {
@@ -933,18 +941,18 @@ this.FeatureBackground();
             table23.AddRow(new string[] {
                         "Current Axis Number",
                         "101"});
-#line 256
+#line 260
  testRunner.And("I enter data in CRF and save", ((string)(null)), table23);
-#line 262
+#line 266
  testRunner.And("I open log line 1");
-#line 263
+#line 267
  testRunner.And("I verify Query with message \"Start Date can not be greater than End Date.\" withou" +
                     "t Requires Response is displayed on Field \"End Date\"");
-#line 264
+#line 268
  testRunner.And("I verify Query with message \"\'Original Axis Number\' is Less Than \'Current Axis Nu" +
                     "mber\' on first Number field.\" without Requires Response is displayed on Field \"C" +
                     "urrent Axis Number\"");
-#line 265
+#line 269
  testRunner.And("I take a screenshot");
 #line hidden
             TechTalk.SpecFlow.Table table24 = new TechTalk.SpecFlow.Table(new string[] {
@@ -956,15 +964,15 @@ this.FeatureBackground();
             table24.AddRow(new string[] {
                         "Current Axis Number",
                         "100"});
-#line 266
- testRunner.And("I enter data in CRF and save", ((string)(null)), table24);
 #line 270
+ testRunner.And("I enter data in CRF and save", ((string)(null)), table24);
+#line 274
  testRunner.And("I open log line 1");
-#line 271
+#line 275
  testRunner.And("I verify Field \"End Date\" has NO Query");
-#line 272
+#line 276
  testRunner.And("I verify Field \"Current Axis Number\" has NO Query");
-#line 273
+#line 277
  testRunner.And("I take a screenshot");
 #line hidden
             TechTalk.SpecFlow.Table table25 = new TechTalk.SpecFlow.Table(new string[] {
@@ -976,17 +984,17 @@ this.FeatureBackground();
             table25.AddRow(new string[] {
                         "Current Axis Number",
                         "101"});
-#line 275
- testRunner.When("I enter data in CRF and save", ((string)(null)), table25);
 #line 279
+ testRunner.When("I enter data in CRF and save", ((string)(null)), table25);
+#line 283
  testRunner.And("I open log line 1");
-#line 280
+#line 284
  testRunner.Then("I verify Query with message \"Start Date can not be greater than End Date.\" is dis" +
                     "played on Field \"End Date\"");
-#line 281
+#line 285
     testRunner.And("I verify Query with message \"\'Original Axis Number\' is Less Than \'Current Axis Nu" +
                     "mber\' on first Number field.\" is displayed on Field \"Current Axis Number\"");
-#line 282
+#line 286
  testRunner.And("I take a screenshot");
 #line hidden
             this.ScenarioCleanup();
@@ -1001,11 +1009,11 @@ this.FeatureBackground();
                         "release_564_Patch11",
                         "PB_2.3.2",
                         "Draft"});
-#line 288
+#line 292
 this.ScenarioSetup(scenarioInfo);
 #line 12
 this.FeatureBackground();
-#line 290
+#line 294
     testRunner.When("I run SQL Script \"Query Logging Script\"");
 #line hidden
             TechTalk.SpecFlow.Table table26 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1068,9 +1076,9 @@ this.FeatureBackground();
                         "Marking Group 1",
                         "\'Original Axis Number\' is Less Than \'Current Axis Number\' on first Number field.",
                         "{DateTime}"});
-#line 291
-    testRunner.Then("I should not see the logging data for queries", ((string)(null)), table26);
 #line 295
+    testRunner.Then("I should not see the logging data for queries", ((string)(null)), table26);
+#line 299
  testRunner.And("I take a screenshot");
 #line hidden
             this.ScenarioCleanup();
@@ -1085,13 +1093,15 @@ this.FeatureBackground();
                         "release_564_Patch11",
                         "PB_2.3.3",
                         "Draft"});
-#line 301
+#line 305
 this.ScenarioSetup(scenarioInfo);
 #line 12
 this.FeatureBackground();
-#line 303
- testRunner.And("I select a Subject \"sub{MaxSubjectNum(Edit Check Study 3,prod,Subject Number)}\"");
-#line 304
+#line 307
+    testRunner.Given("I select Study \"Edit Check Study 3\" and Site \"Edit Check Site 2\"");
+#line 308
+    testRunner.And("I select a Subject \"SUB{Var(num1)}\"");
+#line 309
  testRunner.And("I select Form \"Concomitant Medications\" in Folder \"Week 1\"");
 #line hidden
             TechTalk.SpecFlow.Table table27 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1109,16 +1119,16 @@ this.FeatureBackground();
             table27.AddRow(new string[] {
                         "Current Axis Number",
                         "2000"});
-#line 305
+#line 310
  testRunner.And("I enter data in CRF on a new log line and save and reopen", ((string)(null)), table27);
-#line 311
+#line 316
  testRunner.And("I verify Query with message \"Start Date can not be greater than End Date.\" withou" +
                     "t Requires Response is displayed on Field \"End Date\"");
-#line 312
+#line 317
  testRunner.And("I verify Query with message \"\'Original Axis Number\' is Less Than \'Current Axis Nu" +
                     "mber\' on first Number field.\" without Requires Response is displayed on Field \"C" +
                     "urrent Axis Number\"");
-#line 313
+#line 318
  testRunner.And("I take a screenshot");
 #line hidden
             TechTalk.SpecFlow.Table table28 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1130,15 +1140,15 @@ this.FeatureBackground();
             table28.AddRow(new string[] {
                         "Current Axis Number",
                         "1999"});
-#line 314
- testRunner.And("I enter data in CRF abd save", ((string)(null)), table28);
-#line 318
- testRunner.And("I open log line 2");
 #line 319
+ testRunner.And("I enter data in CRF and save", ((string)(null)), table28);
+#line 323
+ testRunner.And("I open log line 2");
+#line 324
  testRunner.And("I verify Field \"End Date\" has NO Query");
-#line 320
+#line 325
  testRunner.And("I verify Field \"Current Axis Number\" has NO Query");
-#line 321
+#line 326
  testRunner.And("I take a screenshot");
 #line hidden
             TechTalk.SpecFlow.Table table29 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1150,17 +1160,17 @@ this.FeatureBackground();
             table29.AddRow(new string[] {
                         "Current Axis Number",
                         "2000"});
-#line 323
- testRunner.When("I enter data in CRF and save", ((string)(null)), table29);
-#line 327
- testRunner.And("I open log line 2");
 #line 328
+ testRunner.When("I enter data in CRF and save", ((string)(null)), table29);
+#line 332
+ testRunner.And("I open log line 2");
+#line 333
  testRunner.Then("I verify Query with message \"Start Date can not be greater than End Date.\" is dis" +
                     "played on Field \"End Date\"");
-#line 329
+#line 334
     testRunner.And("I verify Query with message \"\'Original Axis Number\' is Less Than \'Current Axis Nu" +
                     "mber\' on first Number field.\" is displayed on Field \"Current Axis Number\"");
-#line 330
+#line 335
  testRunner.And("I take a screenshot");
 #line hidden
             this.ScenarioCleanup();
@@ -1175,11 +1185,11 @@ this.FeatureBackground();
                         "release_564_Patch11",
                         "PB_2.3.4",
                         "Draft"});
-#line 336
+#line 341
 this.ScenarioSetup(scenarioInfo);
 #line 12
 this.FeatureBackground();
-#line 338
+#line 343
     testRunner.When("I run SQL Script \"Query Logging Script\"");
 #line hidden
             TechTalk.SpecFlow.Table table30 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1242,9 +1252,9 @@ this.FeatureBackground();
                         "Marking Group 1",
                         "\'Original Axis Number\' is Less Than \'Current Axis Number\' on first Number field.",
                         "{DateTime}"});
-#line 339
+#line 344
     testRunner.Then("I should not see the logging data for queries", ((string)(null)), table30);
-#line 343
+#line 348
  testRunner.And("I take a screenshot");
 #line hidden
             this.ScenarioCleanup();
@@ -1259,11 +1269,15 @@ this.FeatureBackground();
                         "release_564_Patch11",
                         "PB_2.3.5",
                         "Draft"});
-#line 348
+#line 353
 this.ScenarioSetup(scenarioInfo);
 #line 12
 this.FeatureBackground();
-#line 350
+#line 355
+    testRunner.Given("I select Study \"Edit Check Study 3\" and Site \"Edit Check Site 2\"");
+#line 356
+    testRunner.And("I select a Subject \"SUB{Var(num1)}\"");
+#line 357
  testRunner.And("I select Form \"Informed Consent\" in Folder \"Week 1\"");
 #line hidden
             TechTalk.SpecFlow.Table table31 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1276,21 +1290,21 @@ this.FeatureBackground();
                         "End Date",
                         "11 Jan 2000"});
             table31.AddRow(new string[] {
-                        "Numeric Field 1",
+                        "Original Distribution Number",
                         "100"});
             table31.AddRow(new string[] {
                         "Current Distribution Number",
                         "101"});
-#line 351
+#line 358
     testRunner.And("I enter data in CRF and save", ((string)(null)), table31);
-#line 357
+#line 364
  testRunner.And("I verify Query with message \"\'Date Informed Consent Signed\' is not equal to Curre" +
                     "nt Date.\" without Requires Response is displayed on Field \"End Date\"");
-#line 358
+#line 365
  testRunner.And("I verify Query with message \"\'Original Distribution Number\' and \'Current Distribu" +
                     "tion Number\' fields are not equal.\" without Requires Response is displayed on Fi" +
                     "eld \"Current Distribution Number\"");
-#line 359
+#line 366
  testRunner.And("I take a screenshot");
 #line hidden
             TechTalk.SpecFlow.Table table32 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1302,13 +1316,13 @@ this.FeatureBackground();
             table32.AddRow(new string[] {
                         "Current Distribution Number",
                         "100"});
-#line 360
+#line 367
  testRunner.And("I enter data in CRF and save", ((string)(null)), table32);
-#line 364
+#line 371
  testRunner.And("I verify Field \"End Date\" has NO Query");
-#line 365
+#line 372
  testRunner.And("I verify Field \"Current Distribution Number\" has NO Query");
-#line 366
+#line 373
  testRunner.And("I take a screenshot");
 #line hidden
             TechTalk.SpecFlow.Table table33 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1320,18 +1334,18 @@ this.FeatureBackground();
             table33.AddRow(new string[] {
                         "Current Distribution Number",
                         "101"});
-#line 368
+#line 375
     testRunner.When("I enter data in CRF and save", ((string)(null)), table33);
-#line 372
+#line 379
  testRunner.And("I save the CRF page");
-#line 373
+#line 380
  testRunner.Then("I verify Query with message \"\'Date Informed Consent Signed\' is not equal to Curre" +
                     "nt Date.\" is displayed on Field \"End Date\"");
-#line 374
+#line 381
     testRunner.And("I verify Query with message \"\'Original Distribution Number\' and \'Current Distribu" +
                     "tion Number\' fields are not equal.\" is displayed on Field \"Current Distribution " +
                     "Number\"");
-#line 375
+#line 382
  testRunner.And("I take a screenshot");
 #line hidden
             this.ScenarioCleanup();
@@ -1346,11 +1360,11 @@ this.FeatureBackground();
                         "release_564_Patch11",
                         "PB_2.3.6",
                         "Draft"});
-#line 381
+#line 388
 this.ScenarioSetup(scenarioInfo);
 #line 12
 this.FeatureBackground();
-#line 383
+#line 390
     testRunner.When("I run SQL Script \"Query Logging Script\"");
 #line hidden
             TechTalk.SpecFlow.Table table34 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1413,9 +1427,9 @@ this.FeatureBackground();
                         "Marking Group 1",
                         "Numeric fields are not equal.",
                         "{DateTime}"});
-#line 384
+#line 391
     testRunner.Then("I should not see the logging data for queries", ((string)(null)), table34);
-#line 388
+#line 395
  testRunner.And("I take a screenshot");
 #line hidden
             this.ScenarioCleanup();
@@ -1432,10 +1446,12 @@ this.FeatureBackground();
                         "release_564_Patch11",
                         "PB_2.4.1",
                         "Draft"});
-#line 394
+#line 401
 this.ScenarioSetup(scenarioInfo);
 #line 12
 this.FeatureBackground();
+#line 405
+    testRunner.Given("I select Study \"Edit Check Study 3\" and Site \"Edit Check Site 2\"");
 #line hidden
             TechTalk.SpecFlow.Table table35 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field",
@@ -1446,9 +1462,9 @@ this.FeatureBackground();
             table35.AddRow(new string[] {
                         "Subject Initials",
                         "SUB"});
-#line 398
+#line 406
     testRunner.And("I create a Subject", ((string)(null)), table35);
-#line 402
+#line 410
  testRunner.And("I select Form \"Concomitant Medications\" in Folder \"Screening\"");
 #line hidden
             TechTalk.SpecFlow.Table table36 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1466,11 +1482,11 @@ this.FeatureBackground();
             table36.AddRow(new string[] {
                         "Current Axis Number",
                         "66"});
-#line 403
+#line 411
  testRunner.And("I enter data in CRF and save", ((string)(null)), table36);
-#line 409
+#line 417
  testRunner.And("I take a screenshot");
-#line 410
+#line 418
  testRunner.And("I select Form \"Adverse Events\"");
 #line hidden
             TechTalk.SpecFlow.Table table37 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1488,28 +1504,28 @@ this.FeatureBackground();
             table37.AddRow(new string[] {
                         "Duration",
                         "66"});
-#line 411
-    testRunner.And("I enter data in CRF and save", ((string)(null)), table37);
-#line 417
- testRunner.And("I take a screenshot");
-#line 418
-    testRunner.And("I select Form \"Concomitant Medications\"");
 #line 419
+    testRunner.And("I enter data in CRF and save", ((string)(null)), table37);
+#line 425
+ testRunner.And("I take a screenshot");
+#line 426
+    testRunner.And("I select Form \"Concomitant Medications\"");
+#line 427
  testRunner.And("I open log line 1");
-#line 420
+#line 428
  testRunner.And("I verify Query with message \"Date can not be less than.\" without Requires Respons" +
                     "e is displayed on Field \"Start Date\"");
-#line 421
+#line 429
  testRunner.And("I verify Query with message \"Date is Less Than Date on the first log form.\" witho" +
                     "ut Requires Response is displayed on Field \"End Date\"");
-#line 422
+#line 430
  testRunner.And("I verify Query with message \"\'Current Distribution Number\' is greater than or Equ" +
                     "al to \'Current Axis Number\' on Log.\" without Requires Response is displayed on F" +
                     "ield \"Original Axis Number\"");
-#line 423
+#line 431
  testRunner.And("I verify Query with message \"\'AE Number\' and \'Current Axis Number\' cannot equal.\"" +
                     " without Requires Response is displayed on Field \"Current Axis Number\"");
-#line 424
+#line 432
  testRunner.And("I take a screenshot");
 #line hidden
             TechTalk.SpecFlow.Table table38 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1527,19 +1543,19 @@ this.FeatureBackground();
             table38.AddRow(new string[] {
                         "Current Axis Number",
                         "65"});
-#line 425
- testRunner.And("I enter data in CRF and save", ((string)(null)), table38);
-#line 431
- testRunner.And("I open log line 1");
-#line 432
- testRunner.And("I verify Field \"Start Date\" has NO Query");
 #line 433
+ testRunner.And("I enter data in CRF and save", ((string)(null)), table38);
+#line 439
+ testRunner.And("I open log line 1");
+#line 440
+ testRunner.And("I verify Field \"Start Date\" has NO Query");
+#line 441
  testRunner.And("I verify Field \"End Date\" has NO Query");
-#line 434
+#line 442
  testRunner.And("I verify Field \"Original Axis Number\" has NO Query");
-#line 435
+#line 443
  testRunner.And("I verify Field \"Current Axis Number\" has NO Query");
-#line 436
+#line 444
  testRunner.And("I take a screenshot");
 #line hidden
             TechTalk.SpecFlow.Table table39 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1557,24 +1573,24 @@ this.FeatureBackground();
             table39.AddRow(new string[] {
                         "Current Axis Number",
                         "66"});
-#line 438
+#line 446
  testRunner.When("I enter data in CRF and save", ((string)(null)), table39);
-#line 444
+#line 452
  testRunner.And("I open log line 1");
-#line 445
+#line 453
  testRunner.Then("I verify Query with message \"Date can not be less than.\" is displayed on Field \"S" +
                     "tart Date\"");
-#line 446
+#line 454
     testRunner.And("I verify Query with message \"Date is Less Than Date on the first log form.\" is di" +
                     "splayed on Field \"End Date\"");
-#line 447
+#line 455
  testRunner.And("I verify Query with message \"\'Current Distribution Number\' is greater than or Equ" +
                     "al to \'Current Axis Number\' on Log.\" is displayed on Field \"Original Axis Number" +
                     "\"");
-#line 448
+#line 456
     testRunner.And("I verify Query with message \"\'AE Number\' and \'Current Axis Number\' cannot equal.\"" +
                     " is displayed on Field \"Current Axis Number\"");
-#line 449
+#line 457
  testRunner.And("I take a screenshot");
 #line hidden
             this.ScenarioCleanup();
@@ -1589,11 +1605,11 @@ this.FeatureBackground();
                         "release_564_Patch11",
                         "PB_2.4.2",
                         "Draft"});
-#line 455
+#line 463
 this.ScenarioSetup(scenarioInfo);
 #line 12
 this.FeatureBackground();
-#line 457
+#line 465
     testRunner.When("I run SQL Script \"Query Logging Script\"");
 #line hidden
             TechTalk.SpecFlow.Table table40 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1670,7 +1686,7 @@ this.FeatureBackground();
                         "Screening",
                         "Concomitant Medications",
                         "1",
-                        "Numeric Field 1",
+                        "Original Axis Number",
                         "100",
                         "*Is Greater Than or Equal To Open Query Log Cross Form",
                         "Marking Group 1",
@@ -1697,9 +1713,9 @@ this.FeatureBackground();
                         "Marking Group 1",
                         "\'AE Number\' and \'Current Axis Number\' cannot equal.",
                         "{DateTime}"});
-#line 458
+#line 466
     testRunner.Then("I should not see the logging data for queries", ((string)(null)), table40);
-#line 464
+#line 472
  testRunner.And("I take a screenshot");
 #line hidden
             this.ScenarioCleanup();
@@ -1714,11 +1730,15 @@ this.FeatureBackground();
                         "release_564_Patch11",
                         "PB_2.4.3",
                         "Draft"});
-#line 470
+#line 478
 this.ScenarioSetup(scenarioInfo);
 #line 12
 this.FeatureBackground();
-#line 472
+#line 480
+    testRunner.Given("I select Study \"Edit Check Study 3\" and Site \"Edit Check Site 2\"");
+#line 481
+    testRunner.And("I select a Subject \"SUB{Var(num1)}\"");
+#line 482
  testRunner.And("I select Form \"Concomitant Medications\" in Folder \"Screening\"");
 #line hidden
             TechTalk.SpecFlow.Table table41 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1736,11 +1756,11 @@ this.FeatureBackground();
             table41.AddRow(new string[] {
                         "Current Axis Number",
                         "77"});
-#line 473
+#line 483
  testRunner.And("I enter data in CRF on a new log line and save", ((string)(null)), table41);
-#line 479
+#line 489
  testRunner.And("I take a screenshot");
-#line 480
+#line 490
     testRunner.And("I select Form \"Adverse Events\" in Folder \"Screening\"");
 #line hidden
             TechTalk.SpecFlow.Table table42 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1758,28 +1778,28 @@ this.FeatureBackground();
             table42.AddRow(new string[] {
                         "Duration",
                         "77"});
-#line 481
+#line 491
  testRunner.And("I enter data in CRF on a new log line and save", ((string)(null)), table42);
-#line 487
+#line 497
  testRunner.And("I take a screenshot");
-#line 488
+#line 498
  testRunner.And("I select Form \"Concomitant Medications\"");
-#line 489
+#line 499
  testRunner.And("I open log line 2");
-#line 490
+#line 500
  testRunner.And("I verify Query with message \"Date can not be less than.\" without Requires Respons" +
                     "e is displayed on Field \"Start Date\"");
-#line 491
+#line 501
  testRunner.And("I verify Query with message \"Date is Less Than Date on the first log form.\" witho" +
                     "ut Requires Response is displayed on Field \"End Date\"");
-#line 492
+#line 502
  testRunner.And("I verify Query with message \"\'Current Distribution Number\' is greater than or Equ" +
                     "al to \'Current Axis Number\' on Log.\" without Requires Response is displayed on F" +
                     "ield \"Original Axis Number\"");
-#line 493
+#line 503
  testRunner.And("I verify Query with message \"\'AE Number\' and \'Current Axis Number\' cannot equal.\"" +
                     " without Requires Response is displayed on Field \"Current Axis Number\"");
-#line 494
+#line 504
  testRunner.And("I take a screenshot");
 #line hidden
             TechTalk.SpecFlow.Table table43 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1792,24 +1812,24 @@ this.FeatureBackground();
                         "End Date",
                         "09 Mar 2000"});
             table43.AddRow(new string[] {
-                        "Numeric Field 1",
+                        "Original Axis Number",
                         "202"});
             table43.AddRow(new string[] {
                         "Current Axis Number",
                         "76"});
-#line 495
-    testRunner.And("I enter data in CRF and save", ((string)(null)), table43);
-#line 501
- testRunner.And("I open log line 2");
-#line 502
- testRunner.And("I verify Field \"Start Date\" has NO Query");
-#line 503
- testRunner.And("I verify Field \"End Date\" has NO Query");
-#line 504
- testRunner.And("I verify Field \"Original Axis Number\" has NO Query");
 #line 505
+    testRunner.And("I enter data in CRF and save", ((string)(null)), table43);
+#line 511
+ testRunner.And("I open log line 2");
+#line 512
+ testRunner.And("I verify Field \"Start Date\" has NO Query");
+#line 513
+ testRunner.And("I verify Field \"End Date\" has NO Query");
+#line 514
+ testRunner.And("I verify Field \"Original Axis Number\" has NO Query");
+#line 515
  testRunner.And("I verify Field \"Current Axis Number\" has NO Query");
-#line 506
+#line 516
  testRunner.And("I take a screenshot");
 #line hidden
             TechTalk.SpecFlow.Table table44 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1827,24 +1847,24 @@ this.FeatureBackground();
             table44.AddRow(new string[] {
                         "Current Axis Number",
                         "77"});
-#line 508
+#line 518
  testRunner.When("I enter data in CRF and save", ((string)(null)), table44);
-#line 514
+#line 524
  testRunner.And("I open log line 2");
-#line 515
+#line 525
  testRunner.Then("I verify Query with message \"Date can not be less than.\" is displayed on Field \"S" +
                     "tart Date\"");
-#line 516
+#line 526
     testRunner.And("I verify Query with message \"Date is Less Than Date on the first log form.\" is di" +
                     "splayed on Field \"End Date\"");
-#line 517
+#line 527
  testRunner.And("I verify Query with message \"\'Current Distribution Number\' is greater than or Equ" +
                     "al to \'Current Axis Number\' on Log.\" is displayed on Field \"Original Axis Number" +
                     "\"");
-#line 518
+#line 528
     testRunner.And("I verify Query with message \"\'AE Number\' and \'Current Axis Number\' cannot equal.\"" +
                     " is displayed on Field \"Current Axis Number\"");
-#line 519
+#line 529
  testRunner.And("I take a screenshot");
 #line hidden
             this.ScenarioCleanup();
@@ -1859,11 +1879,11 @@ this.FeatureBackground();
                         "release_564_Patch11",
                         "PB_2.4.4",
                         "Draft"});
-#line 525
+#line 535
 this.ScenarioSetup(scenarioInfo);
 #line 12
 this.FeatureBackground();
-#line 527
+#line 537
     testRunner.When("I run SQL Script \"Query Logging Script\"");
 #line hidden
             TechTalk.SpecFlow.Table table45 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1940,7 +1960,7 @@ this.FeatureBackground();
                         "Screening",
                         "Concomitant Medications",
                         "2",
-                        "Numeric Field 1",
+                        "Original Axis Number",
                         "200",
                         "*Is Greater Than or Equal To Open Query Log Cross Form",
                         "Marking Group 1",
@@ -1967,9 +1987,9 @@ this.FeatureBackground();
                         "Marking Group 1",
                         "\'AE Number\' and \'Current Axis Number\' cannot equal.",
                         "{DateTime}"});
-#line 528
+#line 538
     testRunner.Then("I should not see the logging data for queries", ((string)(null)), table45);
-#line 534
+#line 544
  testRunner.And("I take a screenshot");
 #line hidden
             this.ScenarioCleanup();
@@ -1986,10 +2006,12 @@ this.FeatureBackground();
                         "release_564_Patch11",
                         "PB_2.5.1",
                         "Draft"});
-#line 542
+#line 552
 this.ScenarioSetup(scenarioInfo);
 #line 12
 this.FeatureBackground();
+#line 556
+    testRunner.Given("I select Study \"Edit Check Study 3\" and Site \"Edit Check Site 2\"");
 #line hidden
             TechTalk.SpecFlow.Table table46 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field",
@@ -2000,9 +2022,9 @@ this.FeatureBackground();
             table46.AddRow(new string[] {
                         "Subject Initials",
                         "SUB"});
-#line 546
+#line 557
     testRunner.And("I create a Subject", ((string)(null)), table46);
-#line 550
+#line 561
  testRunner.And("I select Form \"Informed Consent\" in Folder \"Screening\"");
 #line hidden
             TechTalk.SpecFlow.Table table47 = new TechTalk.SpecFlow.Table(new string[] {
@@ -2020,11 +2042,11 @@ this.FeatureBackground();
             table47.AddRow(new string[] {
                         "Current Distribution Number",
                         "19"});
-#line 551
+#line 562
  testRunner.And("I enter data in CRF and save", ((string)(null)), table47);
-#line 557
+#line 568
  testRunner.And("I take a screenshot");
-#line 558
+#line 569
  testRunner.And("I select Form \"Concomitant Medications\"");
 #line hidden
             TechTalk.SpecFlow.Table table48 = new TechTalk.SpecFlow.Table(new string[] {
@@ -2042,31 +2064,31 @@ this.FeatureBackground();
             table48.AddRow(new string[] {
                         "Current Axis Number",
                         "20"});
-#line 559
+#line 570
     testRunner.And("I enter data in CRF and save", ((string)(null)), table48);
-#line 565
+#line 576
  testRunner.And("I open log line 1");
-#line 566
+#line 577
  testRunner.And("I verify Query with message \"\'Date Informed Consent Signed\' is greater. Please re" +
                     "vise.\" without Requires Response is displayed on Field \"Start Date\"");
-#line 567
+#line 578
  testRunner.And("I verify Query with message \"Informed Consent \'Current Distribution Number\' is no" +
                     "t equal to Concomitant Medications \'Current Axis Number\'.\" without Requires Resp" +
                     "onse is displayed on Field \"Current Axis Number\"");
-#line 568
+#line 579
  testRunner.And("I take a screenshot");
-#line 569
+#line 580
  testRunner.And("I cancel the Query \"\'Date Informed Consent Signed\' is greater. Please revise.\" on" +
                     " Field \"Start Date\"");
-#line 570
+#line 581
  testRunner.And("I cancel the Query \"Informed Consent \'Current Distribution Number\' is not equal t" +
                     "o Concomitant Medications \'Current Axis Number\'.\" on Field \"Current Axis Number\"" +
                     "");
-#line 571
+#line 582
  testRunner.And("I save the CRF page");
-#line 572
+#line 583
  testRunner.And("I take a screenshot");
-#line 573
+#line 584
  testRunner.And("I open log line 1");
 #line hidden
             TechTalk.SpecFlow.Table table49 = new TechTalk.SpecFlow.Table(new string[] {
@@ -2078,15 +2100,15 @@ this.FeatureBackground();
             table49.AddRow(new string[] {
                         "Current Axis Number",
                         "19"});
-#line 574
+#line 585
  testRunner.And("I enter data in CRF and save", ((string)(null)), table49);
-#line 578
+#line 589
  testRunner.And("I open log line 1");
-#line 579
+#line 590
  testRunner.And("I verify Field \"Start Date\" has NO Query");
-#line 580
+#line 591
  testRunner.And("I verify Field \"Current Axis Number\" has NO Query");
-#line 581
+#line 592
  testRunner.And("I take a screenshot");
 #line hidden
             TechTalk.SpecFlow.Table table50 = new TechTalk.SpecFlow.Table(new string[] {
@@ -2098,18 +2120,18 @@ this.FeatureBackground();
             table50.AddRow(new string[] {
                         "Current Axis Number",
                         "20"});
-#line 583
+#line 594
  testRunner.When("I enter data in CRF and save", ((string)(null)), table50);
-#line 587
+#line 598
  testRunner.And("I open log line 1");
-#line 588
+#line 599
  testRunner.Then("I verify Query with message \"\'Date Informed Consent Signed\' is greater. Please re" +
-                    "vise.\" is displayed on Field \"Start Date\"");
-#line 589
+                    "vise.\" is not displayed on Field \"Start Date\"");
+#line 600
     testRunner.And("I verify Query with message \"Informed Consent \'Current Distribution Number\' is no" +
-                    "t equal to Concomitant Medications \'Current Axis Number\'.\" is displayed on Field" +
-                    " \"Current Axis Number\"");
-#line 590
+                    "t equal to Concomitant Medications \'Current Axis Number\'.\" is not displayed on F" +
+                    "ield \"Current Axis Number\"");
+#line 601
  testRunner.And("I take a screenshot");
 #line hidden
             this.ScenarioCleanup();
@@ -2124,11 +2146,11 @@ this.FeatureBackground();
                         "release_564_Patch11",
                         "PB_2.5.2",
                         "Draft"});
-#line 596
+#line 607
 this.ScenarioSetup(scenarioInfo);
 #line 12
 this.FeatureBackground();
-#line 598
+#line 609
     testRunner.When("I run SQL Script \"Query Logging Script\"");
 #line hidden
             TechTalk.SpecFlow.Table table51 = new TechTalk.SpecFlow.Table(new string[] {
@@ -2192,9 +2214,9 @@ this.FeatureBackground();
                         "Informed Consent \'Current Distribution Number\' is not equal to Concomitant Medica" +
                             "tions \'Current Axis Number\'.",
                         "{DateTime}"});
-#line 599
+#line 610
     testRunner.Then("I should see the logging data for queries", ((string)(null)), table51);
-#line 603
+#line 614
  testRunner.And("I take a screenshot");
 #line hidden
             this.ScenarioCleanup();
@@ -2209,12 +2231,16 @@ this.FeatureBackground();
                         "release_564_Patch11",
                         "PB_2.5.3",
                         "Draft"});
-#line 609
+#line 620
 this.ScenarioSetup(scenarioInfo);
 #line 12
 this.FeatureBackground();
-#line 611
- testRunner.And("I select Form \"Concomitant Medications\" within folder \"Screening\"");
+#line 622
+    testRunner.Given("I select Study \"Edit Check Study 3\" and Site \"Edit Check Site 2\"");
+#line 623
+    testRunner.And("I select a Subject \"SUB{Var(num1)}\"");
+#line 624
+ testRunner.And("I select Form \"Concomitant Medications\" in Folder \"Screening\"");
 #line hidden
             TechTalk.SpecFlow.Table table52 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field",
@@ -2231,16 +2257,16 @@ this.FeatureBackground();
             table52.AddRow(new string[] {
                         "Current Axis Number",
                         "18"});
-#line 612
-    testRunner.And("I enter data in CRF on a new log line and save and reopen", ((string)(null)), table52);
-#line 618
+#line 625
+ testRunner.And("I enter data in CRF on a new log line and save and reopen", ((string)(null)), table52);
+#line 631
  testRunner.And("I verify Query with message \"\'Date Informed Consent Signed\' is greater. Please re" +
                     "vise.\" without Requires Response is displayed on Field \"Start Date\"");
-#line 619
+#line 632
  testRunner.And("I verify Query with message \"Informed Consent \'Current Distribution Number\' is no" +
                     "t equal to Concomitant Medications \'Current Axis Number\'.\" without Requires Resp" +
                     "onse is displayed on Field \"Current Axis Number\"");
-#line 620
+#line 633
  testRunner.And("I take a screenshot");
 #line hidden
             TechTalk.SpecFlow.Table table53 = new TechTalk.SpecFlow.Table(new string[] {
@@ -2252,26 +2278,26 @@ this.FeatureBackground();
             table53.AddRow(new string[] {
                         "Current Axis Number",
                         "19"});
-#line 621
+#line 634
  testRunner.And("I enter data in CRF", ((string)(null)), table53);
-#line 625
+#line 638
  testRunner.And("I cancel the Query \"\'Date Informed Consent Signed\' is greater. Please revise.\" on" +
                     " Field \"Start Date\"");
-#line 626
+#line 639
  testRunner.And("I cancel the Query \"Informed Consent \'Current Distribution Number\' is not equal t" +
                     "o Concomitant Medications \'Current Axis Number\'.\" on Field \"Current Axis Number\"" +
                     "");
-#line 627
+#line 640
  testRunner.And("I save the CRF page");
-#line 628
+#line 641
  testRunner.And("I take a screenshot");
-#line 629
+#line 642
  testRunner.And("I open log line 2");
-#line 630
+#line 643
  testRunner.And("I verify Field \"Start Date\" has NO Query");
-#line 631
+#line 644
  testRunner.And("I verify Field \"Current Axis Number\" has NO Query");
-#line 632
+#line 645
  testRunner.And("I take a screenshot");
 #line hidden
             TechTalk.SpecFlow.Table table54 = new TechTalk.SpecFlow.Table(new string[] {
@@ -2283,18 +2309,18 @@ this.FeatureBackground();
             table54.AddRow(new string[] {
                         "Current Axis Number",
                         "18"});
-#line 634
+#line 647
  testRunner.When("I enter data in CRF and save", ((string)(null)), table54);
-#line 638
+#line 651
  testRunner.And("I open log line 2");
-#line 639
+#line 652
  testRunner.Then("I verify Query with message \"\'Date Informed Consent Signed\' is greater. Please re" +
                     "vise.\" is displayed on Field \"Start Date\"");
-#line 640
+#line 653
     testRunner.And("I verify Query with message \"Informed Consent \'Current Distribution Number\' is no" +
                     "t equal to Concomitant Medications \'Current Axis Number\'.\" is displayed on Field" +
                     " \"Current Axis Number\"");
-#line 641
+#line 654
  testRunner.And("I take a screenshot");
 #line hidden
             this.ScenarioCleanup();
@@ -2309,11 +2335,11 @@ this.FeatureBackground();
                         "release_564_Patch11",
                         "PB_2.5.4",
                         "Draft"});
-#line 647
+#line 660
 this.ScenarioSetup(scenarioInfo);
 #line 12
 this.FeatureBackground();
-#line 649
+#line 662
     testRunner.When("I run SQL Script \"Query Logging Script\"");
 #line hidden
             TechTalk.SpecFlow.Table table55 = new TechTalk.SpecFlow.Table(new string[] {
@@ -2377,9 +2403,9 @@ this.FeatureBackground();
                         "Informed Consent \'Current Distribution Number\' is not equal to Concomitant Medica" +
                             "tions \'Current Axis Number\'.",
                         "{DateTime}"});
-#line 650
+#line 663
     testRunner.Then("I should not see the logging data for queries", ((string)(null)), table55);
-#line 654
+#line 667
  testRunner.And("I take a screenshot");
 #line hidden
             this.ScenarioCleanup();
@@ -2394,10 +2420,12 @@ this.FeatureBackground();
                         "release_564_Patch11",
                         "PB_2.6.1",
                         "Draft"});
-#line 660
+#line 673
 this.ScenarioSetup(scenarioInfo);
 #line 12
 this.FeatureBackground();
+#line 677
+    testRunner.Given("I select Study \"Edit Check Study 3\" and Site \"Edit Check Site 2\"");
 #line hidden
             TechTalk.SpecFlow.Table table56 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field",
@@ -2408,9 +2436,9 @@ this.FeatureBackground();
             table56.AddRow(new string[] {
                         "Subject Initials",
                         "SUB"});
-#line 664
+#line 678
     testRunner.And("I create a Subject", ((string)(null)), table56);
-#line 668
+#line 682
  testRunner.And("I select Form \"Informed Consent\" in Folder \"Screening\"");
 #line hidden
             TechTalk.SpecFlow.Table table57 = new TechTalk.SpecFlow.Table(new string[] {
@@ -2428,11 +2456,11 @@ this.FeatureBackground();
             table57.AddRow(new string[] {
                         "Current Distribution Number",
                         "200"});
-#line 669
+#line 683
  testRunner.And("I enter data in CRF and save", ((string)(null)), table57);
-#line 675
+#line 689
  testRunner.And("I take a screenshot");
-#line 676
+#line 690
  testRunner.And("I select Form \"Concomitant Medications\" in Folder \"Week 1\"");
 #line hidden
             TechTalk.SpecFlow.Table table58 = new TechTalk.SpecFlow.Table(new string[] {
@@ -2450,30 +2478,30 @@ this.FeatureBackground();
             table58.AddRow(new string[] {
                         "Current Axis Number",
                         "99"});
-#line 677
+#line 691
     testRunner.And("I enter data in CRF and save", ((string)(null)), table58);
-#line 683
+#line 697
  testRunner.And("I open log line 1");
-#line 684
+#line 698
  testRunner.And("I verify Query with message \"\'Date Informed Consent Signed\' can not be greater th" +
                     "an Start Date.\" without Requires Response is displayed on Field \"Start Date\"");
-#line 685
+#line 699
  testRunner.And("I verify Query with message \"\'Current Distribution Number\' is not equal \'Current " +
                     "Axis Number\'.\" without Requires Response is displayed on Field \"Current Axis Num" +
                     "ber\"");
-#line 686
+#line 700
  testRunner.And("I take a screenshot");
-#line 687
+#line 701
  testRunner.And("I cancel the Query \"\'Date Informed Consent Signed\' can not be greater than Start " +
                     "Date.\" on Field \"Start Date\"");
-#line 688
+#line 702
  testRunner.And("I cancel the Query \"\'Current Distribution Number\' is not equal \'Current Axis Numb" +
                     "er\'.\" on Field \"Current Axis Number\"");
-#line 689
+#line 703
  testRunner.And("I save the CRF page");
-#line 690
+#line 704
  testRunner.And("I take a screenshot");
-#line 691
+#line 705
  testRunner.And("I open log line 1");
 #line hidden
             TechTalk.SpecFlow.Table table59 = new TechTalk.SpecFlow.Table(new string[] {
@@ -2488,15 +2516,15 @@ this.FeatureBackground();
             table59.AddRow(new string[] {
                         "Current Axis Number",
                         "200"});
-#line 692
+#line 706
  testRunner.And("I enter data in CRF and save", ((string)(null)), table59);
-#line 697
+#line 711
  testRunner.And("I open log line 1");
-#line 698
+#line 712
  testRunner.And("I verify Field \"Start Date\" has NO Query");
-#line 699
+#line 713
  testRunner.And("I verify Field \"Current Axis Number\" has NO Query");
-#line 700
+#line 714
  testRunner.And("I take a screenshot");
 #line hidden
             TechTalk.SpecFlow.Table table60 = new TechTalk.SpecFlow.Table(new string[] {
@@ -2511,19 +2539,19 @@ this.FeatureBackground();
             table60.AddRow(new string[] {
                         "Current Axis Number",
                         "99"});
-#line 702
+#line 716
  testRunner.When("I enter data in CRF", ((string)(null)), table60);
-#line 707
+#line 721
  testRunner.And("I save the CRF page");
-#line 708
+#line 722
  testRunner.And("I open log line 1");
-#line 709
+#line 723
  testRunner.Then("I verify Query with message \"\'Date Informed Consent Signed\' can not be greater th" +
-                    "an Start Date.\" is displayed on Field \"Start Date\"");
-#line 710
+                    "an Start Date.\" is not displayed on Field \"Start Date\"");
+#line 724
     testRunner.And("I verify Query with message \"\'Current Distribution Number\' is not equal \'Current " +
-                    "Axis Number\'.\" is displayed on Field \"Current Axis Number\"");
-#line 711
+                    "Axis Number\'.\" is not displayed on Field \"Current Axis Number\"");
+#line 725
  testRunner.And("I take a screenshot");
 #line hidden
             this.ScenarioCleanup();
@@ -2538,11 +2566,11 @@ this.FeatureBackground();
                         "release_564_Patch11",
                         "PB_2.6.2",
                         "Draft"});
-#line 717
+#line 731
 this.ScenarioSetup(scenarioInfo);
 #line 12
 this.FeatureBackground();
-#line 719
+#line 733
     testRunner.When("I run SQL Script \"Query Logging Script\"");
 #line hidden
             TechTalk.SpecFlow.Table table61 = new TechTalk.SpecFlow.Table(new string[] {
@@ -2605,9 +2633,9 @@ this.FeatureBackground();
                         "Marking Group 1",
                         "\'Current Distribution Number\' is not equal \'Current Axis Number\'.",
                         "{DateTime}"});
-#line 720
+#line 734
     testRunner.Then("I should see the logging data for queries", ((string)(null)), table61);
-#line 724
+#line 738
  testRunner.And("I take a screenshot");
 #line hidden
             this.ScenarioCleanup();
@@ -2622,11 +2650,15 @@ this.FeatureBackground();
                         "release_564_Patch11",
                         "PB_2.6.3",
                         "Draft"});
-#line 730
+#line 744
 this.ScenarioSetup(scenarioInfo);
 #line 12
 this.FeatureBackground();
-#line 732
+#line 746
+    testRunner.Given("I select Study \"Edit Check Study 3\" and Site \"Edit Check Site 2\"");
+#line 747
+    testRunner.And("I select a Subject \"SUB{Var(num1)}\"");
+#line 748
  testRunner.And("I select Form \"Concomitant Medications\" in Folder \"Week 1\"");
 #line hidden
             TechTalk.SpecFlow.Table table62 = new TechTalk.SpecFlow.Table(new string[] {
@@ -2644,18 +2676,16 @@ this.FeatureBackground();
             table62.AddRow(new string[] {
                         "Current Axis Number",
                         "98"});
-#line 733
-    testRunner.And("I enter data in CRF on a new log line and save and reopen", ((string)(null)), table62);
-#line 739
- testRunner.And("I open log line 2");
-#line 740
+#line 749
+ testRunner.And("I enter data in CRF on a new log line and save and reopen", ((string)(null)), table62);
+#line 755
  testRunner.And("I verify Query with message \"\'Date Informed Consent Signed\' can not be greater th" +
                     "an Start Date.\" without Requires Response is displayed on Field \"Start Date\"");
-#line 741
+#line 756
  testRunner.And("I verify Query with message \"\'Current Distribution Number\' is not equal \'Current " +
                     "Axis Number\'.\" without Requires Response is displayed on Field \"Current Axis Num" +
                     "ber\"");
-#line 742
+#line 757
  testRunner.And("I take a screenshot");
 #line hidden
             TechTalk.SpecFlow.Table table63 = new TechTalk.SpecFlow.Table(new string[] {
@@ -2670,25 +2700,25 @@ this.FeatureBackground();
             table63.AddRow(new string[] {
                         "Current Axis Number",
                         "200"});
-#line 743
+#line 758
  testRunner.And("I enter data in CRF", ((string)(null)), table63);
-#line 748
+#line 763
  testRunner.And("I cancel the Query \"\'Date Informed Consent Signed\' can not be greater than Start " +
                     "Date.\" on Field \"Start Date\"");
-#line 749
+#line 764
  testRunner.And("I cancel the Query \"\'Current Distribution Number\' is not equal \'Current Axis Numb" +
                     "er\'.\" on Field \"Current Axis Number\"");
-#line 750
+#line 765
  testRunner.And("I save the CRF page");
-#line 751
+#line 766
  testRunner.And("I take a screenshot");
-#line 752
+#line 767
  testRunner.And("I open log line 2");
-#line 753
+#line 768
  testRunner.And("I verify Field \"Start Date\" has NO Query");
-#line 754
+#line 769
  testRunner.And("I verify Field \"Current Axis Number\" has NO Query");
-#line 755
+#line 770
  testRunner.And("I take a screenshot");
 #line hidden
             TechTalk.SpecFlow.Table table64 = new TechTalk.SpecFlow.Table(new string[] {
@@ -2703,17 +2733,17 @@ this.FeatureBackground();
             table64.AddRow(new string[] {
                         "Current Axis Number",
                         "98"});
-#line 756
+#line 771
  testRunner.And("I enter data in CRF and save", ((string)(null)), table64);
-#line 761
+#line 776
  testRunner.And("I open log line 2");
-#line 762
+#line 777
  testRunner.And("I verify Query with message \"\'Date Informed Consent Signed\' can not be greater th" +
                     "an Start Date.\" is displayed on Field \"Start Date\"");
-#line 763
+#line 778
     testRunner.And("I verify Query with message \"\'Current Distribution Number\' is not equal \'Current " +
                     "Axis Number\'.\" is displayed on Field \"Current Axis Number\"");
-#line 764
+#line 779
  testRunner.And("I take a screenshot");
 #line hidden
             this.ScenarioCleanup();
@@ -2728,11 +2758,11 @@ this.FeatureBackground();
                         "release_564_Patch11",
                         "PB_2.6.4",
                         "Draft"});
-#line 770
+#line 785
 this.ScenarioSetup(scenarioInfo);
 #line 12
 this.FeatureBackground();
-#line 772
+#line 787
     testRunner.When("I run SQL Script \"Query Logging Script\"");
 #line hidden
             TechTalk.SpecFlow.Table table65 = new TechTalk.SpecFlow.Table(new string[] {
@@ -2795,29 +2825,31 @@ this.FeatureBackground();
                         "Marking Group 1",
                         "\'Current Distribution Number\' is not equal \'Current Axis Number\'.",
                         "{DateTime}"});
-#line 773
+#line 788
     testRunner.Then("I should not see the logging data for queries", ((string)(null)), table65);
-#line 777
+#line 792
  testRunner.And("I take a screenshot");
 #line hidden
             this.ScenarioCleanup();
         }
         
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("PB_2.7.1  Verifies query firing between cross forms with no require response and " +
-            "no require manual close.")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("PB_2.7.1 On a Cross Forms log form to Standard form, Folder \"Week 1\" enter and sa" +
+            "ve data on forms \"Concomitant Medications\" and \"Informed Consent\"")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "2")]
-        public virtual void PB_2_7_1VerifiesQueryFiringBetweenCrossFormsWithNoRequireResponseAndNoRequireManualClose_()
+        public virtual void PB_2_7_1OnACrossFormsLogFormToStandardFormFolderWeek1EnterAndSaveDataOnFormsConcomitantMedicationsAndInformedConsent()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("PB_2.7.1  Verifies query firing between cross forms with no require response and " +
-                    "no require manual close.", new string[] {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("PB_2.7.1 On a Cross Forms log form to Standard form, Folder \"Week 1\" enter and sa" +
+                    "ve data on forms \"Concomitant Medications\" and \"Informed Consent\"", new string[] {
                         "release_564_Patch11",
                         "PB_2.7.1",
                         "Draft"});
-#line 783
+#line 798
 this.ScenarioSetup(scenarioInfo);
 #line 12
 this.FeatureBackground();
+#line 800
+    testRunner.Given("I select Study \"Edit Check Study 3\" and Site \"Edit Check Site 2\"");
 #line hidden
             TechTalk.SpecFlow.Table table66 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field",
@@ -2828,14 +2860,12 @@ this.FeatureBackground();
             table66.AddRow(new string[] {
                         "Subject Initials",
                         "SUB"});
-#line 787
+#line 801
     testRunner.And("I create a Subject", ((string)(null)), table66);
-#line 791
+#line 805
  testRunner.And("I select Folder \"Week 1\"");
-#line 792
+#line 806
  testRunner.And("I select Form \"Concomitant Medications\"");
-#line 793
- testRunner.And("I enter data in CRF");
 #line hidden
             TechTalk.SpecFlow.Table table67 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field",
@@ -2847,36 +2877,36 @@ this.FeatureBackground();
                         "End Date",
                         "11 Jan 2000"});
             table67.AddRow(new string[] {
-                        "Numeric Field 1",
+                        "Original Axis Number",
                         "100"});
             table67.AddRow(new string[] {
                         "Current Axis Number",
                         "101"});
-#line 794
-testRunner.And("I save the CRF page", ((string)(null)), table67);
-#line 800
- testRunner.And("I verify Query with message \"\" without Requires Response is displayed on Field \"\"" +
-                    "");
-#line 801
- testRunner.And("I verify Query with message \"\" without Requires Response is displayed on Field \"\"" +
-                    "");
-#line 803
- testRunner.And("I verify \"End Date\" field displays query opened with no require response");
-#line 804
- testRunner.And("I verify \"Current Axis Number\" field displays query opened with no require respon" +
-                    "se");
-#line 805
- testRunner.And("I take a screenshot");
 #line 807
- testRunner.And("I cancel the Query \"{message}\" on Field \"{fieldName}\"");
-#line 808
- testRunner.And("I cancel the Query \"{message}\" on Field \"{fieldName}\"");
-#line 810
- testRunner.And("I cancel the queries on \"End Date\" and \"Current Axis Number\" fields");
-#line 811
- testRunner.And("I save the CRF page");
-#line 812
+ testRunner.And("I enter data in CRF and save", ((string)(null)), table67);
+#line 813
+ testRunner.And("I open log line 1");
+#line 814
+ testRunner.And("I verify Query with message \"Start Date can not be greater than End Date.\" withou" +
+                    "t Requires Response is displayed on Field \"End Date\"");
+#line 815
+ testRunner.And("I verify Query with message \"\'Original Axis Number\' is Less Than \'Current Axis Nu" +
+                    "mber\' on first Number field.\" without Requires Response is displayed on Field \"C" +
+                    "urrent Axis Number\"");
+#line 816
  testRunner.And("I take a screenshot");
+#line 817
+ testRunner.And("I cancel the Query \"Start Date can not be greater than End Date.\" on Field \"End D" +
+                    "ate\"");
+#line 818
+ testRunner.And("I cancel the Query \"\'Original Axis Number\' is Less Than \'Current Axis Number\' on " +
+                    "first Number field.\" on Field \"Current Axis Number\"");
+#line 819
+ testRunner.And("I save the CRF page");
+#line 820
+ testRunner.And("I take a screenshot");
+#line 821
+ testRunner.And("I open log line 1");
 #line hidden
             TechTalk.SpecFlow.Table table68 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field",
@@ -2887,19 +2917,15 @@ testRunner.And("I save the CRF page", ((string)(null)), table67);
             table68.AddRow(new string[] {
                         "Current Axis Number",
                         "100"});
-#line 813
- testRunner.And("I enter data in CRF", ((string)(null)), table68);
-#line 817
- testRunner.And("I save the CRF page");
-#line 819
+#line 822
+ testRunner.And("I enter data in CRF and save", ((string)(null)), table68);
+#line 826
  testRunner.And("I open log line 1");
-#line 820
- testRunner.And("I verify Field \"Start Date\" has NO Query");
-#line 821
+#line 827
+ testRunner.And("I verify Field \"End Date\" has NO Query");
+#line 828
  testRunner.And("I verify Field \"Current Axis Number\" has NO Query");
-#line 823
- testRunner.And("I verify the queries did not fire on \"End Date\" and \"Current Axis Number\" fields");
-#line 824
+#line 829
  testRunner.And("I take a screenshot");
 #line hidden
             TechTalk.SpecFlow.Table table69 = new TechTalk.SpecFlow.Table(new string[] {
@@ -2911,18 +2937,17 @@ testRunner.And("I save the CRF page", ((string)(null)), table67);
             table69.AddRow(new string[] {
                         "Current Axis Number",
                         "101"});
-#line 825
- testRunner.And("I enter data in CRF", ((string)(null)), table69);
-#line 829
- testRunner.And("I save the CRF page");
-#line 830
- testRunner.And("I verify Query with message \"\" is displayed on Field \"\"");
 #line 831
-    testRunner.And("I verify Query with message \"\" is displayed on Field \"\"");
-#line 833
-    testRunner.And("I verify the new queries did not fire on \"End Date\" and \"Current Axis Number\" fie" +
-                    "lds");
-#line 834
+ testRunner.When("I enter data in CRF and save", ((string)(null)), table69);
+#line 835
+ testRunner.And("I open log line 1");
+#line 836
+ testRunner.Then("I verify Query with message \"Start Date can not be greater than End Date.\" is not" +
+                    " displayed on Field \"End Date\"");
+#line 837
+    testRunner.And("I verify Query with message \"\'Original Axis Number\' is Less Than \'Current Axis Nu" +
+                    "mber\' on first Number field.\" is not displayed on Field \"Current Axis Number\"");
+#line 838
  testRunner.And("I take a screenshot");
 #line hidden
             this.ScenarioCleanup();
@@ -2937,11 +2962,11 @@ testRunner.And("I save the CRF page", ((string)(null)), table67);
                         "release_564_Patch11",
                         "PB_2.7.2",
                         "Draft"});
-#line 840
+#line 844
 this.ScenarioSetup(scenarioInfo);
 #line 12
 this.FeatureBackground();
-#line 842
+#line 846
     testRunner.When("I run SQL Script \"Query Logging Script\"");
 #line hidden
             TechTalk.SpecFlow.Table table70 = new TechTalk.SpecFlow.Table(new string[] {
@@ -2982,7 +3007,7 @@ this.FeatureBackground();
                         "11 Jan 2000",
                         "*Greater Than Log same form",
                         "Marking Group 1",
-                        "Date Field 1 can not be greater than Date Field 2.",
+                        "Start Date can not be greater than End Date.",
                         "{DateTime}"});
             table70.AddRow(new string[] {
                         "Edit Check Study 3",
@@ -3002,11 +3027,11 @@ this.FeatureBackground();
                         "101",
                         "*Is Less Than Log same form",
                         "Marking Group 1",
-                        "Date is Less Than Date on first Number field.",
+                        "\'Original Axis Number\' is Less Than \'Current Axis Number\' on first Number field.",
                         "{DateTime}"});
-#line 843
-    testRunner.Then("I should see the logging data for queries", ((string)(null)), table70);
 #line 847
+    testRunner.Then("I should see the logging data for queries", ((string)(null)), table70);
+#line 851
  testRunner.And("I take a screenshot");
 #line hidden
             this.ScenarioCleanup();
@@ -3021,12 +3046,16 @@ this.FeatureBackground();
                         "release_564_Patch11",
                         "PB_2.7.3",
                         "Draft"});
-#line 853
+#line 857
 this.ScenarioSetup(scenarioInfo);
 #line 12
 this.FeatureBackground();
-#line 855
- testRunner.And("I add a new log line to form \"Concomitant Medications\" within folder \"Week 1\"");
+#line 859
+    testRunner.Given("I select Study \"Edit Check Study 3\" and Site \"Edit Check Site 2\"");
+#line 860
+    testRunner.And("I select a Subject \"SUB{Var(num1)}\"");
+#line 861
+ testRunner.And("I select Form \"Concomitant Medications\" in Folder \"Week 1\"");
 #line hidden
             TechTalk.SpecFlow.Table table71 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field",
@@ -3038,26 +3067,20 @@ this.FeatureBackground();
                         "End Date",
                         "14 Feb 2000"});
             table71.AddRow(new string[] {
-                        "Numeric Field 1",
+                        "Original Axis Number",
                         "1999"});
             table71.AddRow(new string[] {
                         "Current Axis Number",
                         "2000"});
-#line 856
-    testRunner.And("I enter data in CRF and save", ((string)(null)), table71);
 #line 862
- testRunner.And("I verify Query with message \"\" without Requires Response is displayed on Field \"\"" +
-                    "");
-#line 863
- testRunner.And("I verify Query with message \"\" without Requires Response is displayed on Field \"\"" +
-                    "");
-#line 865
- testRunner.And("I verify \"End Date\" field displays query opened with no require response on the s" +
-                    "econd log line");
-#line 866
- testRunner.And("I verify \"Current Axis Number\" field displays query opened with no require respon" +
-                    "se on the second log line");
-#line 867
+ testRunner.And("I enter data in CRF on a new log line and save and reopen", ((string)(null)), table71);
+#line 868
+ testRunner.And("I verify Query with message \"Start Date can not be greater than End Date.\" withou" +
+                    "t Requires Response is displayed on Field \"End Date\"");
+#line 869
+ testRunner.And("I verify Query with message \"\" without Requires Response is displayed on Field \"C" +
+                    "urrent Axis Number\"");
+#line 870
  testRunner.And("I take a screenshot");
 #line hidden
             TechTalk.SpecFlow.Table table72 = new TechTalk.SpecFlow.Table(new string[] {
@@ -3069,29 +3092,25 @@ this.FeatureBackground();
             table72.AddRow(new string[] {
                         "Current Axis Number",
                         "1999"});
-#line 868
+#line 871
  testRunner.And("I enter data in CRF", ((string)(null)), table72);
-#line 873
- testRunner.And("I cancel the Query \"{message}\" on Field \"{fieldName}\"");
-#line 874
- testRunner.And("I cancel the Query \"{message}\" on Field \"{fieldName}\"");
+#line 875
+ testRunner.And("I cancel the Query \"Start Date can not be greater than End Date.\" on Field \"End D" +
+                    "ate\"");
 #line 876
- testRunner.And("I cancel the queries on the second log line on \"End Date\" and \"Current Axis Numbe" +
-                    "r\" fields");
+ testRunner.And("I cancel the Query \"\'Original Axis Number\' is Less Than \'Current Axis Number\' on " +
+                    "first Number field.\" on Field \"Current Axis Number\"");
 #line 877
  testRunner.And("I save the CRF page");
 #line 878
  testRunner.And("I take a screenshot");
+#line 879
+ testRunner.And("I open log line 2");
 #line 880
- testRunner.And("I open log line 1");
+ testRunner.And("I verify Field \"End Date\" has NO Query");
 #line 881
- testRunner.And("I verify Field \"Start Date\" has NO Query");
-#line 882
  testRunner.And("I verify Field \"Current Axis Number\" has NO Query");
-#line 884
- testRunner.And("I verify the queries did not fire on the second log line on \"End Date\" and \"Curre" +
-                    "nt Axis Number\" fields");
-#line 885
+#line 882
  testRunner.And("I take a screenshot");
 #line hidden
             TechTalk.SpecFlow.Table table73 = new TechTalk.SpecFlow.Table(new string[] {
@@ -3103,18 +3122,17 @@ this.FeatureBackground();
             table73.AddRow(new string[] {
                         "Current Axis Number",
                         "2000"});
-#line 886
- testRunner.And("I enter data in CRF", ((string)(null)), table73);
+#line 883
+ testRunner.When("I enter data in CRF and save", ((string)(null)), table73);
+#line 887
+ testRunner.And("I open log line 2");
+#line 888
+ testRunner.Then("I verify Query with message \"Start Date can not be greater than End Date.\" is dis" +
+                    "played on Field \"End Date\"");
+#line 889
+    testRunner.And("I verify Query with message \"\'Original Axis Number\' is Less Than \'Current Axis Nu" +
+                    "mber\' on first Number field.\" is displayed on Field \"Current Axis Number\"");
 #line 890
- testRunner.And("I save the CRF page");
-#line 891
- testRunner.And("I verify Query with message \"\" is displayed on Field \"\"");
-#line 892
-    testRunner.And("I verify Query with message \"\" is displayed on Field \"\"");
-#line 894
- testRunner.And("I verify the new queries did fire on the second log line on \"End Date\" and \"Curre" +
-                    "nt Axis Number\" fields");
-#line 895
  testRunner.And("I take a screenshot");
 #line hidden
             this.ScenarioCleanup();
@@ -3129,11 +3147,11 @@ this.FeatureBackground();
                         "release_564_Patch11",
                         "PB_2.7.4",
                         "Draft"});
-#line 901
+#line 897
 this.ScenarioSetup(scenarioInfo);
 #line 12
 this.FeatureBackground();
-#line 903
+#line 899
     testRunner.When("I run SQL Script \"Query Logging Script\"");
 #line hidden
             TechTalk.SpecFlow.Table table74 = new TechTalk.SpecFlow.Table(new string[] {
@@ -3174,7 +3192,7 @@ this.FeatureBackground();
                         "14 Feb 2000",
                         "*Greater Than Log same form",
                         "Marking Group 1",
-                        "Date Field 1 can not be greater than Date Field 2.",
+                        "Start Date can not be greater than End Date.",
                         "{DateTime}"});
             table74.AddRow(new string[] {
                         "Edit Check Study 3",
@@ -3194,11 +3212,11 @@ this.FeatureBackground();
                         "2000",
                         "*Is Less Than Log same form",
                         "Marking Group 1",
-                        "Date is Less Than Date on first Number field.",
+                        "\'Original Axis Number\' is Less Than \'Current Axis Number\' on first Number field.",
                         "{DateTime}"});
-#line 904
+#line 900
     testRunner.Then("I should not see the logging data for queries", ((string)(null)), table74);
-#line 908
+#line 904
  testRunner.And("I take a screenshot");
 #line hidden
             this.ScenarioCleanup();
@@ -3213,14 +3231,16 @@ this.FeatureBackground();
                         "release_564_Patch11",
                         "PB_2.7.5",
                         "Draft"});
-#line 914
+#line 910
 this.ScenarioSetup(scenarioInfo);
 #line 12
 this.FeatureBackground();
-#line 916
- testRunner.And("I select Form \"Informed Consent\" within folder \"Week 1\"");
-#line 917
-    testRunner.And("I enter data in CRF");
+#line 912
+    testRunner.Given("I select Study \"Edit Check Study 3\" and Site \"Edit Check Site 2\"");
+#line 913
+    testRunner.And("I select a Subject \"SUB{Var(num1)}\"");
+#line 914
+ testRunner.And("I select Form \"Informed Consent\" in Folder \"Week 1\"");
 #line hidden
             TechTalk.SpecFlow.Table table75 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field",
@@ -3232,25 +3252,21 @@ this.FeatureBackground();
                         "End Date",
                         "11 Jan 2000"});
             table75.AddRow(new string[] {
-                        "Numeric Field 1",
+                        "Original Distribution Number",
                         "100"});
             table75.AddRow(new string[] {
                         "Current Distribution Number",
                         "101"});
-#line 918
-testRunner.And("I save the CRF page", ((string)(null)), table75);
-#line 924
- testRunner.And("I verify Query with message \"\" without Requires Response is displayed on Field \"\"" +
-                    "");
-#line 925
- testRunner.And("I verify Query with message \"\" without Requires Response is displayed on Field \"\"" +
-                    "");
-#line 927
- testRunner.And("I verify \"End Date\" field displays query opened with no require response");
-#line 928
- testRunner.And("I verify \"Current Distribution Number\" field displays query opened with no requir" +
-                    "e response");
-#line 929
+#line 915
+ testRunner.And("I enter data in CRF and save", ((string)(null)), table75);
+#line 921
+ testRunner.And("I verify Query with message \"\'Date Informed Consent Signed\' is not equal to Curre" +
+                    "nt Date.\" without Requires Response is displayed on Field \"End Date\"");
+#line 922
+ testRunner.And("I verify Query with message \"\'Original Distribution Number\' and \'Current Distribu" +
+                    "tion Number\' fields are not equal.\" without Requires Response is displayed on Fi" +
+                    "eld \"Current Distribution Number\"");
+#line 923
  testRunner.And("I take a screenshot");
 #line hidden
             TechTalk.SpecFlow.Table table76 = new TechTalk.SpecFlow.Table(new string[] {
@@ -3262,28 +3278,23 @@ testRunner.And("I save the CRF page", ((string)(null)), table75);
             table76.AddRow(new string[] {
                         "Current Distribution Number",
                         "100"});
-#line 930
+#line 924
  testRunner.And("I enter data in CRF", ((string)(null)), table76);
-#line 935
- testRunner.And("I cancel the Query \"{message}\" on Field \"{fieldName}\"");
-#line 936
- testRunner.And("I cancel the Query \"{message}\" on Field \"{fieldName}\"");
-#line 938
- testRunner.And("I cancel the queries on \"End Date\" and \"Current Distribution Number\" fields");
-#line 939
+#line 928
+ testRunner.And("I cancel the Query \"\'Date Informed Consent Signed\' is not equal to Current Date.\"" +
+                    " on Field \"End Date\"");
+#line 929
+ testRunner.And("I cancel the Query \"\'Original Distribution Number\' and \'Current Distribution Numb" +
+                    "er\' fields are not equal.\" on Field \"Current Distribution Number\"");
+#line 930
  testRunner.And("I save the CRF page");
-#line 940
+#line 931
  testRunner.And("I take a screenshot");
-#line 942
- testRunner.And("I open log line 1");
-#line 943
- testRunner.And("I verify Field \"Start Date\" has NO Query");
-#line 944
- testRunner.And("I verify Field \"Current Axis Number\" has NO Query");
-#line 946
- testRunner.And("I verify the new queries did not fire on \"End Date\" and \"Current Distribution Num" +
-                    "ber\" fields");
-#line 947
+#line 932
+ testRunner.And("I verify Field \"End Date\" has NO Query");
+#line 933
+ testRunner.And("I verify Field \"Current Distribution Number\" has NO Query");
+#line 934
  testRunner.And("I take a screenshot");
 #line hidden
             TechTalk.SpecFlow.Table table77 = new TechTalk.SpecFlow.Table(new string[] {
@@ -3295,18 +3306,18 @@ testRunner.And("I save the CRF page", ((string)(null)), table75);
             table77.AddRow(new string[] {
                         "Current Distribution Number",
                         "101"});
-#line 948
-    testRunner.And("I enter data in CRF", ((string)(null)), table77);
-#line 952
+#line 936
+    testRunner.When("I enter data in CRF", ((string)(null)), table77);
+#line 940
  testRunner.And("I save the CRF page");
-#line 953
- testRunner.And("I verify Query with message \"\" is displayed on Field \"\"");
-#line 954
-    testRunner.And("I verify Query with message \"\" is displayed on Field \"\"");
-#line 956
- testRunner.And("I verify the new queries did fire on \"End Date\" and \"Current Distribution Number\"" +
-                    " fields");
-#line 957
+#line 941
+ testRunner.Then("I verify Query with message \"\'Date Informed Consent Signed\' is not equal to Curre" +
+                    "nt Date.\" is displayed on Field \"End Date\"");
+#line 942
+    testRunner.And("I verify Query with message \"\'Original Distribution Number\' and \'Current Distribu" +
+                    "tion Number\' fields are not equal.\" is displayed on Field \"Current Distribution " +
+                    "Number\"");
+#line 943
  testRunner.And("I take a screenshot");
 #line hidden
             this.ScenarioCleanup();
@@ -3321,11 +3332,11 @@ testRunner.And("I save the CRF page", ((string)(null)), table75);
                         "release_564_Patch11",
                         "PB_2.7.6",
                         "Draft"});
-#line 963
+#line 949
 this.ScenarioSetup(scenarioInfo);
 #line 12
 this.FeatureBackground();
-#line 965
+#line 951
     testRunner.When("I run SQL Script \"Query Logging Script\"");
 #line hidden
             TechTalk.SpecFlow.Table table78 = new TechTalk.SpecFlow.Table(new string[] {
@@ -3366,7 +3377,7 @@ this.FeatureBackground();
                         "11 Jan 2000",
                         "*Greater Than or Equal To Open Query Log same form",
                         "Marking Group 1",
-                        "Dates are not equal.",
+                        "\'Date Informed Consent Signed\' is not equal to Current Date.",
                         "{DateTime}"});
             table78.AddRow(new string[] {
                         "Edit Check Study 3",
@@ -3386,11 +3397,12 @@ this.FeatureBackground();
                         "101",
                         "*Is Not Equal To Open Query Log Same form",
                         "Marking Group 1",
-                        "Numeric fields are not equal.",
+                        "\'Original Distribution Number\' and \'Current Distribution Number\' fields are not e" +
+                            "qual.",
                         "{DateTime}"});
-#line 966
+#line 952
     testRunner.Then("I should not see the logging data for queries", ((string)(null)), table78);
-#line 970
+#line 956
  testRunner.And("I take a screenshot");
 #line hidden
             this.ScenarioCleanup();
@@ -3407,10 +3419,12 @@ this.FeatureBackground();
                         "release_564_Patch11",
                         "PB_2.8.1",
                         "Draft"});
-#line 976
+#line 962
 this.ScenarioSetup(scenarioInfo);
 #line 12
 this.FeatureBackground();
+#line 966
+    testRunner.Given("I select Study \"Edit Check Study 3\" and Site \"Edit Check Site 2\"");
 #line hidden
             TechTalk.SpecFlow.Table table79 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field",
@@ -3421,14 +3435,10 @@ this.FeatureBackground();
             table79.AddRow(new string[] {
                         "Subject Initials",
                         "SUB"});
-#line 980
+#line 967
     testRunner.And("I create a Subject", ((string)(null)), table79);
-#line 984
- testRunner.And("I select Folder \"Screening\"");
-#line 985
- testRunner.And("I select Form \"Concomitant Medications\"");
-#line 986
- testRunner.And("I enter data in CRF");
+#line 971
+ testRunner.And("I select Form \"Concomitant Medications\" in Folder \"Screening\"");
 #line hidden
             TechTalk.SpecFlow.Table table80 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field",
@@ -3440,79 +3450,73 @@ this.FeatureBackground();
                         "End Date",
                         "10 Feb 2000"});
             table80.AddRow(new string[] {
-                        "Numeric Field 1",
+                        "Original Axis Number",
                         "100"});
             table80.AddRow(new string[] {
                         "Current Axis Number",
                         "66"});
-#line 987
-testRunner.And("I save the CRF page", ((string)(null)), table80);
-#line 993
+#line 972
+ testRunner.And("I enter data in CRF and save", ((string)(null)), table80);
+#line 978
  testRunner.And("I take a screenshot");
-#line 994
- testRunner.And("I select Form \"Adverse Events\" within folder \"Screening\"");
-#line 995
-    testRunner.And("I enter data in CRF");
+#line 979
+ testRunner.And("I select Form \"Adverse Events\" in Folder \"Screening\"");
 #line hidden
             TechTalk.SpecFlow.Table table81 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field",
                         "Data"});
             table81.AddRow(new string[] {
-                        "Date Field 1",
+                        "Start Date",
                         "11 Jan 2000"});
             table81.AddRow(new string[] {
-                        "Date Field 2",
+                        "End Date",
                         "09 Feb 2000"});
             table81.AddRow(new string[] {
-                        "Numeric Field 1",
+                        "AE Number",
                         "101"});
             table81.AddRow(new string[] {
-                        "Numeric Field 2",
+                        "Duration",
                         "66"});
+#line 980
+    testRunner.And("I enter data in CRF and save", ((string)(null)), table81);
+#line 986
+ testRunner.And("I take a screenshot");
+#line 987
+    testRunner.And("I select Form \"Concomitant Medications\" in Folder \"Screening\"");
+#line 988
+ testRunner.And("I open log line 1");
+#line 989
+ testRunner.And("I verify Query with message \"Date can not be less than.\" without Requires Respons" +
+                    "e is displayed on Field \"Start Date\"");
+#line 990
+ testRunner.And("I verify Query with message \"Date is Less Than Date on the first log form.\" witho" +
+                    "ut Requires Response is displayed on Field \"End Date\"");
+#line 991
+ testRunner.And("I verify Query with message \"\'Current Distribution Number\' is greater than or Equ" +
+                    "al to \'Current Axis Number\' on Log.\" without Requires Response is displayed on F" +
+                    "ield \"Original Axis Number\"");
+#line 992
+ testRunner.And("I verify Query with message \"\'AE Number\' and \'Current Axis Number\' cannot equal.\"" +
+                    " without Requires Response is displayed on Field \"Current Axis Number\"");
+#line 993
+ testRunner.And("I take a screenshot");
+#line 994
+ testRunner.And("I cancel the Query \"Date can not be less than.\" on Field \"Start Date\"");
+#line 995
+ testRunner.And("I cancel the Query \"Date is Less Than Date on the first log form.\" on Field \"End " +
+                    "Date\"");
 #line 996
-testRunner.And("I save the CRF page", ((string)(null)), table81);
-#line 1002
- testRunner.And("I take a screenshot");
-#line 1003
-    testRunner.And("I select Form \"Concomitant Medications\"");
-#line 1005
- testRunner.And("I verify Query with message \"\" without Requires Response is displayed on Field \"\"" +
-                    "");
-#line 1006
- testRunner.And("I verify Query with message \"\" without Requires Response is displayed on Field \"\"" +
-                    "");
-#line 1007
- testRunner.And("I verify Query with message \"\" without Requires Response is displayed on Field \"\"" +
-                    "");
-#line 1008
- testRunner.And("I verify Query with message \"\" without Requires Response is displayed on Field \"\"" +
-                    "");
-#line 1010
- testRunner.And("I verify \"Start Date\" field displays query opened with no require response");
-#line 1011
- testRunner.And("I verify \"End Date\" field displays query opened with no require response");
-#line 1012
- testRunner.And("I verify \"Numeric Field 1\" field displays query opened with no require response");
-#line 1013
- testRunner.And("I verify \"Current Axis Number\" field displays query opened with no require respon" +
-                    "se");
-#line 1014
- testRunner.And("I take a screenshot");
-#line 1016
- testRunner.And("I cancel the Query \"{message}\" on Field \"{fieldName}\"");
-#line 1017
- testRunner.And("I cancel the Query \"{message}\" on Field \"{fieldName}\"");
-#line 1018
- testRunner.And("I cancel the Query \"{message}\" on Field \"{fieldName}\"");
-#line 1019
- testRunner.And("I cancel the Query \"{message}\" on Field \"{fieldName}\"");
-#line 1021
- testRunner.And("I cancel the queries on \"Start Date\", \"End Date\", \"Numeric Field 1\" and \"Current " +
-                    "Axis Number\" fields");
-#line 1022
+ testRunner.And("I cancel the Query \"\'Current Distribution Number\' is greater than or Equal to \'Cu" +
+                    "rrent Axis Number\' on Log.\" on Field \"Original Axis Number\"");
+#line 997
+ testRunner.And("I cancel the Query \"\'AE Number\' and \'Current Axis Number\' cannot equal.\" on Field" +
+                    " \"Current Axis Number\"");
+#line 998
  testRunner.And("I save the CRF page");
-#line 1023
+#line 999
  testRunner.And("I take a screenshot");
+#line 1000
+ testRunner.And("I open log line 1");
 #line hidden
             TechTalk.SpecFlow.Table table82 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field",
@@ -3524,30 +3528,27 @@ testRunner.And("I save the CRF page", ((string)(null)), table81);
                         "End Date",
                         "09 Feb 2000"});
             table82.AddRow(new string[] {
-                        "Numeric Field 1",
+                        "Original Axis Number",
                         "102"});
             table82.AddRow(new string[] {
                         "Current Axis Number",
                         "65"});
-#line 1024
- testRunner.And("I enter data in CRF", ((string)(null)), table82);
-#line 1030
- testRunner.And("I save the CRF page");
-#line 1032
+#line 1001
+ testRunner.And("I enter data in CRF and save", ((string)(null)), table82);
+#line 1007
  testRunner.And("I open log line 1");
-#line 1033
+#line 1008
  testRunner.And("I verify Field \"Start Date\" has NO Query");
-#line 1034
+#line 1009
+ testRunner.And("I verify Field \"Original Axis Number\" has NO Query");
+#line 1010
+ testRunner.And("I verify Field \"End Date\" has NO Query");
+#line 1011
  testRunner.And("I verify Field \"Current Axis Number\" has NO Query");
-#line 1035
- testRunner.And("I verify Field \"Start Date\" has NO Query");
-#line 1036
- testRunner.And("I verify Field \"Current Axis Number\" has NO Query");
-#line 1038
- testRunner.And("I verify the queries did not fire on \"Start Date\", \"End Date\", \"Numeric Field 1\" " +
-                    "and \"Current Axis Number\" fields");
-#line 1039
+#line 1012
  testRunner.And("I take a screenshot");
+#line 1013
+ testRunner.And("I open log line 1");
 #line hidden
             TechTalk.SpecFlow.Table table83 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field",
@@ -3559,27 +3560,29 @@ testRunner.And("I save the CRF page", ((string)(null)), table81);
                         "End Date",
                         "10 Feb 2000"});
             table83.AddRow(new string[] {
-                        "Numeric Field 1",
+                        "Original Axis Number",
                         "100"});
             table83.AddRow(new string[] {
                         "Current Axis Number",
                         "66"});
-#line 1040
- testRunner.And("I enter data in CRF", ((string)(null)), table83);
-#line 1046
- testRunner.And("I save the CRF page");
-#line 1047
- testRunner.And("I verify Query with message \"\" is displayed on Field \"\"");
-#line 1048
-    testRunner.And("I verify Query with message \"\" is displayed on Field \"\"");
-#line 1049
- testRunner.And("I verify Query with message \"\" is displayed on Field \"\"");
-#line 1050
-    testRunner.And("I verify Query with message \"\" is displayed on Field \"\"");
-#line 1052
- testRunner.And("I verify the new queries did not fire on \"Start Date\", \"End Date\", \"Numeric Field" +
-                    " 1\" and \"Current Axis Number\" fields");
-#line 1053
+#line 1014
+ testRunner.And("I enter data in CRF and save", ((string)(null)), table83);
+#line 1020
+ testRunner.And("I open log line 1");
+#line 1021
+ testRunner.And("I verify Query with message \"Date can not be less than.\" is not displayed on Fiel" +
+                    "d \"Start Date\"");
+#line 1022
+    testRunner.And("I verify Query with message \"Date is Less Than Date on the first log form.\" is no" +
+                    "t displayed on Field \"End Date\"");
+#line 1023
+ testRunner.And("I verify Query with message \"\'Current Distribution Number\' is greater than or Equ" +
+                    "al to \'Current Axis Number\' on Log.\" is not displayed on Field \"Original Axis Nu" +
+                    "mber\"");
+#line 1024
+    testRunner.And("I verify Query with message \"\'AE Number\' and \'Current Axis Number\' cannot equal.\"" +
+                    " is not displayed on Field \"Current Axis Number\"");
+#line 1025
  testRunner.And("I take a screenshot");
 #line hidden
             this.ScenarioCleanup();
@@ -3594,11 +3597,11 @@ testRunner.And("I save the CRF page", ((string)(null)), table81);
                         "release_564_Patch11",
                         "PB_2.8.2",
                         "Draft"});
-#line 1059
+#line 1031
 this.ScenarioSetup(scenarioInfo);
 #line 12
 this.FeatureBackground();
-#line 1061
+#line 1033
     testRunner.When("I run SQL Script \"Query Logging Script\"");
 #line hidden
             TechTalk.SpecFlow.Table table84 = new TechTalk.SpecFlow.Table(new string[] {
@@ -3670,16 +3673,17 @@ this.FeatureBackground();
                         "Screening",
                         "Concomitant Medications",
                         "1",
-                        "Numeric Field 1",
+                        "Original Axis Number",
                         "100",
                         "Screening",
                         "Concomitant Medications",
                         "1",
-                        "Numeric Field 1",
+                        "Original Axis Number",
                         "100",
                         "*Is Greater Than or Equal To Open Query Log Cross Form",
                         "Marking Group 1",
-                        "Numeric Field is greater than or Equal to Numeric Field on Log.",
+                        "\'Current Distribution Number\' is greater than or Equal to \'Current Axis Number\' o" +
+                            "n Log.",
                         "{DateTime}"});
             table84.AddRow(new string[] {
                         "Edit Check Study 3",
@@ -3699,11 +3703,11 @@ this.FeatureBackground();
                         "66",
                         "*Is Not Equal To Open Query Log Cross Form",
                         "Marking Group 1",
-                        "Numeric 2 can not equal each other.",
+                        "\'AE Number\' and \'Current Axis Number\' cannot equal.",
                         "{DateTime}"});
-#line 1062
+#line 1034
     testRunner.Then("I should see the logging data for queries", ((string)(null)), table84);
-#line 1068
+#line 1040
  testRunner.And("I take a screenshot");
 #line hidden
             this.ScenarioCleanup();
@@ -3718,12 +3722,18 @@ this.FeatureBackground();
                         "release_564_Patch11",
                         "PB_2.8.3",
                         "Draft"});
-#line 1074
+#line 1046
 this.ScenarioSetup(scenarioInfo);
 #line 12
 this.FeatureBackground();
-#line 1076
- testRunner.And("I select Form \"Concomitant Medications\" within folder \"Screening\"");
+#line 1048
+    testRunner.Given("I select Study \"Edit Check Study 3\" and Site \"Edit Check Site 2\"");
+#line 1049
+    testRunner.And("I select a Subject \"SUB{Var(num1)}\"");
+#line 1050
+ testRunner.And("I select Form \"Concomitant Medications\" in Folder \"Screening\"");
+#line 1051
+ testRunner.And("I add a new log line");
 #line hidden
             TechTalk.SpecFlow.Table table85 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field",
@@ -3735,63 +3745,57 @@ this.FeatureBackground();
                         "End Date",
                         "10 Mar 2000"});
             table85.AddRow(new string[] {
-                        "Numeric Field 1",
+                        "Original Axis Number",
                         "200"});
             table85.AddRow(new string[] {
                         "Current Axis Number",
                         "77"});
-#line 1077
-    testRunner.And("I add and save new log line, from the table below, from the table below", ((string)(null)), table85);
-#line 1083
+#line 1052
+ testRunner.And("I enter data in CRF and save", ((string)(null)), table85);
+#line 1058
  testRunner.And("I take a screenshot");
-#line 1084
-    testRunner.And("I select Form \"Adverse Events\" within folder \"Screening\"");
+#line 1059
+    testRunner.And("I select Form \"Adverse Events\" in Folder \"Screening\"");
+#line 1060
+ testRunner.And("I add a new log line");
 #line hidden
             TechTalk.SpecFlow.Table table86 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field",
                         "Data"});
             table86.AddRow(new string[] {
-                        "Date Field 1",
+                        "Start Date",
                         "11 Feb 2000"});
             table86.AddRow(new string[] {
-                        "Date Field 2",
+                        "End Date",
                         "09 Mar 2000"});
             table86.AddRow(new string[] {
-                        "Numeric Field 1",
+                        "AE Number",
                         "201"});
             table86.AddRow(new string[] {
-                        "Numeric Field 2",
+                        "Duration",
                         "77"});
-#line 1085
-    testRunner.And("I add and save new log line, from the table below, from the table below", ((string)(null)), table86);
-#line 1091
+#line 1061
+ testRunner.And("I enter data in CRF and save", ((string)(null)), table86);
+#line 1067
  testRunner.And("I take a screenshot");
-#line 1092
- testRunner.And("I select Form \"Concomitant Medications\"");
-#line 1093
+#line 1068
+ testRunner.And("I select Form \"Concomitant Medications\" in Folder \"Screening\"");
+#line 1069
  testRunner.And("I open log line 2");
-#line 1094
- testRunner.And("I verify Query with message \"\" without Requires Response is displayed on Field \"\"" +
-                    "");
-#line 1095
- testRunner.And("I verify Query with message \"\" without Requires Response is displayed on Field \"\"" +
-                    "");
-#line 1096
- testRunner.And("I verify Query with message \"\" without Requires Response is displayed on Field \"\"" +
-                    "");
-#line 1097
- testRunner.And("I verify Query with message \"\" without Requires Response is displayed on Field \"\"" +
-                    "");
-#line 1099
- testRunner.And("I verify \"Start Date\" field displays query opened with no require response");
-#line 1100
- testRunner.And("I verify \"End Date\" field displays query opened with no require response");
-#line 1101
- testRunner.And("I verify \"Numeric Field 1\" field displays query opened with no require response");
-#line 1102
- testRunner.And("I verify \"Current Axis Number\" field displays query opened with no require respon" +
-                    "se");
-#line 1103
+#line 1070
+ testRunner.And("I verify Query with message \"Date can not be less than.\" without Requires Respons" +
+                    "e is displayed on Field \"Start Date\"");
+#line 1071
+ testRunner.And("I verify Query with message \"Date is Less Than Date on the first log form.\" witho" +
+                    "ut Requires Response is displayed on Field \"End Date\"");
+#line 1072
+ testRunner.And("I verify Query with message \"\'Current Distribution Number\' is greater than or Equ" +
+                    "al to \'Current Axis Number\' on Log.\" without Requires Response is displayed on F" +
+                    "ield \"Original Axis Number\"");
+#line 1073
+ testRunner.And("I verify Query with message \"\'AE Number\' and \'Current Axis Number\' cannot equal.\"" +
+                    " without Requires Response is displayed on Field \"Current Axis Number\"");
+#line 1074
  testRunner.And("I take a screenshot");
 #line hidden
             TechTalk.SpecFlow.Table table87 = new TechTalk.SpecFlow.Table(new string[] {
@@ -3804,42 +3808,37 @@ this.FeatureBackground();
                         "End Date",
                         "09 Mar 2000"});
             table87.AddRow(new string[] {
-                        "Numeric Field 1",
+                        "Original Axis Number",
                         "202"});
             table87.AddRow(new string[] {
                         "Current Axis Number",
                         "76"});
-#line 1104
+#line 1075
  testRunner.And("I enter data in CRF", ((string)(null)), table87);
-#line 1110
- testRunner.And("I cancel the Query \"{message}\" on Field \"{fieldName}\"");
-#line 1111
- testRunner.And("I cancel the Query \"{message}\" on Field \"{fieldName}\"");
-#line 1112
- testRunner.And("I cancel the Query \"{message}\" on Field \"{fieldName}\"");
-#line 1113
- testRunner.And("I cancel the Query \"{message}\" on Field \"{fieldName}\"");
-#line 1116
- testRunner.And("I cancel the queries on the second log line on \"Start Date\", \"End Date\", \"Numeric" +
-                    " Field 1\" and \"Current Axis Number\" fields");
-#line 1117
+#line 1081
+ testRunner.And("I cancel the Query \"Date can not be less than.\" on Field \"Start Date\"");
+#line 1082
+ testRunner.And("I cancel the Query \"Date is Less Than Date on the first log form.\" on Field \"End " +
+                    "Date\"");
+#line 1083
+ testRunner.And("I cancel the Query \"\'Current Distribution Number\' is greater than or Equal to \'Cu" +
+                    "rrent Axis Number\' on Log.\" on Field \"Original Axis Number\"");
+#line 1084
+ testRunner.And("I cancel the Query \"\'AE Number\' and \'Current Axis Number\' cannot equal.\" on Field" +
+                    " \"Current Axis Number\"");
+#line 1085
  testRunner.And("I save the CRF page");
-#line 1118
- testRunner.And("I take a screenshot");
-#line 1120
- testRunner.And("I open log line 1");
-#line 1121
+#line 1086
+ testRunner.And("I open log line 2");
+#line 1087
  testRunner.And("I verify Field \"Start Date\" has NO Query");
-#line 1122
+#line 1088
+ testRunner.And("I verify Field \"End Date\" has NO Query");
+#line 1089
+ testRunner.And("I verify Field \"Original Axis Number\" has NO Query");
+#line 1090
  testRunner.And("I verify Field \"Current Axis Number\" has NO Query");
-#line 1123
- testRunner.And("I verify Field \"Start Date\" has NO Query");
-#line 1124
- testRunner.And("I verify Field \"Current Axis Number\" has NO Query");
-#line 1127
- testRunner.And("I verify the queries did not fire on the second log line on \"Start Date\", \"End Da" +
-                    "te\", \"Numeric Field 1\" and \"Current Axis Number\" fields");
-#line 1128
+#line 1091
  testRunner.And("I take a screenshot");
 #line hidden
             TechTalk.SpecFlow.Table table88 = new TechTalk.SpecFlow.Table(new string[] {
@@ -3852,27 +3851,29 @@ this.FeatureBackground();
                         "End Date",
                         "10 Mar 2000"});
             table88.AddRow(new string[] {
-                        "Numeric Field 1",
+                        "Original Axis Number",
                         "200"});
             table88.AddRow(new string[] {
                         "Current Axis Number",
                         "77"});
-#line 1129
- testRunner.And("I enter data in CRF", ((string)(null)), table88);
-#line 1135
- testRunner.And("I save the CRF page");
-#line 1136
- testRunner.And("I verify Query with message \"\" is displayed on Field \"\"");
-#line 1137
-    testRunner.And("I verify Query with message \"\" is displayed on Field \"\"");
-#line 1138
- testRunner.And("I verify Query with message \"\" is displayed on Field \"\"");
-#line 1139
-    testRunner.And("I verify Query with message \"\" is displayed on Field \"\"");
-#line 1141
- testRunner.And("I verify the new queries did fire on the second log line on \"Start Date\", \"End Da" +
-                    "te\", \"Numeric Field 1\" and \"Current Axis Number\" fields");
-#line 1142
+#line 1092
+ testRunner.And("I enter data in CRF and save", ((string)(null)), table88);
+#line 1098
+ testRunner.And("I open log line 2");
+#line 1099
+ testRunner.And("I verify Query with message \"Date can not be less than.\" is displayed on Field \"S" +
+                    "tart Date\"");
+#line 1100
+    testRunner.And("I verify Query with message \"Date is Less Than Date on the first log form.\" is di" +
+                    "splayed on Field \"End Date\"");
+#line 1101
+ testRunner.And("I verify Query with message \"\'Current Distribution Number\' is greater than or Equ" +
+                    "al to \'Current Axis Number\' on Log.\" is displayed on Field \"Original Axis Number" +
+                    "\"");
+#line 1102
+    testRunner.And("I verify Query with message \"\'AE Number\' and \'Current Axis Number\' cannot equal.\"" +
+                    " is displayed on Field \"Current Axis Number\"");
+#line 1103
  testRunner.And("I take a screenshot");
 #line hidden
             this.ScenarioCleanup();
@@ -3887,11 +3888,11 @@ this.FeatureBackground();
                         "release_564_Patch11",
                         "PB_2.8.4",
                         "Draft"});
-#line 1147
+#line 1109
 this.ScenarioSetup(scenarioInfo);
 #line 12
 this.FeatureBackground();
-#line 1149
+#line 1111
     testRunner.When("I run SQL Script \"Query Logging Script\"");
 #line hidden
             TechTalk.SpecFlow.Table table89 = new TechTalk.SpecFlow.Table(new string[] {
@@ -3963,16 +3964,17 @@ this.FeatureBackground();
                         "Screening",
                         "Concomitant Medications",
                         "2",
-                        "Numeric Field 1",
+                        "Original Axis Number",
                         "200",
                         "Screening",
                         "Concomitant Medications",
                         "2",
-                        "Numeric Field 1",
+                        "Original Axis Number",
                         "200",
                         "*Is Greater Than or Equal To Open Query Log Cross Form",
                         "Marking Group 1",
-                        "Numeric Field is greater than or Equal to Numeric Field on Log.",
+                        "\'Current Distribution Number\' is greater than or Equal to \'Current Axis Number\' o" +
+                            "n Log.",
                         "{DateTime}"});
             table89.AddRow(new string[] {
                         "Edit Check Study 3",
@@ -3992,11 +3994,11 @@ this.FeatureBackground();
                         "77",
                         "*Is Not Equal To Open Query Log Cross Form",
                         "Marking Group 1",
-                        "Numeric 2 can not equal each other.",
+                        "\'AE Number\' and \'Current Axis Number\' cannot equal.",
                         "{DateTime}"});
-#line 1150
+#line 1112
     testRunner.Then("I should not see the logging data for queries", ((string)(null)), table89);
-#line 1156
+#line 1118
  testRunner.And("I take a screenshot");
 #line hidden
             this.ScenarioCleanup();
