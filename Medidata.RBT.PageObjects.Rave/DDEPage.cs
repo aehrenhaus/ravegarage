@@ -64,7 +64,7 @@ namespace Medidata.RBT.PageObjects.Rave
             //IWebElement dropdownButton = field.TryFindElementBy(By.XPath("./span/input[position()=2]"));
             //dropdownButton.Click();
 
-			var option = WaitForElement(
+			var option = Browser.WaitForElement(
 				driver => field.FindElements(By.XPath("./div[position()=2]/div")).FirstOrDefault(x => x.Text == text),
 				name + " not found: " + text
 				);
