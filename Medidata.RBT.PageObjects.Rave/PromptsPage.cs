@@ -39,7 +39,7 @@ namespace Medidata.RBT.PageObjects.Rave
 		{
 			var paraTR = FindParameterTr(name);
 			//wait till the div div becomes visible, that means the table is loaded complete
-			var di = WaitForElement(x => paraTR.TryFindElementBy(By.XPath("./td[position()=2]/table/tbody/tr[position()=2]/td/div[@style='display: block;']")), "error",5);
+			var di = Browser.WaitForElement(x => paraTR.TryFindElementBy(By.XPath("./td[position()=2]/table/tbody/tr[position()=2]/td/div[@style='display: block;']")), "error", 5);
 
 			var tbl = paraTR.FindElements(By.XPath(".//td[@style='border-width:0px;border-collapse:collapse;']/table"))[1].EnhanceAs<HtmlTable>();
 

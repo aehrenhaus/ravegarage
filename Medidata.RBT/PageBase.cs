@@ -29,7 +29,7 @@ namespace Medidata.RBT
 			var driverPath = RBTConfiguration.Default.WebDriverPath;
 			if (!Path.IsPathRooted(driverPath))
 				driverPath = new DirectoryInfo(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, driverPath)).FullName;
-
+	
 			switch (RBTConfiguration.Default.BrowserName.ToLower())
 			{
 				case "firefox":
@@ -190,36 +190,7 @@ namespace Medidata.RBT
 			return true;
 		}
 
-        public IWebElement WaitForElement(Func<IWebDriver,IWebElement> getElement,string errorMessage=null, double timeOutSecond =3)
-        {
-
-            var wait = new WebDriverWait(Browser, TimeSpan.FromSeconds(timeOutSecond));
-            IWebElement ele = null;
-			try
-			{
-				ele = wait.Until(getElement);
-			}
-			catch
-			{
-				if (errorMessage == null)
-					throw;
-				else
-					throw new Exception(errorMessage);
-			}
-            return ele;
-        }
-
-		public IWebElement WaitForElement(By by, string errorMessage = null, double timeOutSecond = 3)
-		{
-			return WaitForElement(browser => Browser.FindElement(by),errorMessage,timeOutSecond);
-		}
-
-
-		public IWebElement WaitForElement(string id,Func<IWebElement,bool> predicate,  string errorMessage = null, double timeOutSecond = 3)
-		{
-			return WaitForElement(browser => Browser.FindElementsById(id).FirstOrDefault (predicate), errorMessage, timeOutSecond);
-		}
-
+   
 		public virtual bool CanSeeTextInArea(string text, string areaIdentifer)
 		{
 			throw new Exception("This page does not implement this method");

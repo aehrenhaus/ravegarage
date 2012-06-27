@@ -31,7 +31,7 @@ namespace Medidata.RBT.PageObjects.Rave
 						ChooseFromDropdown("Study", val);
 						break;
 					case "Role":
-						WaitForElement("Role",x => x.GetAttribute("disabled") == "false");
+						Browser.WaitForElement("Role",x => x.GetAttribute("disabled") == "false");
 						ChooseFromDropdown("Role", val);
 						break;
 					case "SiteGroup":
@@ -44,15 +44,15 @@ namespace Medidata.RBT.PageObjects.Rave
 						
 				
 						var div = Browser.TryFindElementById("DSitesSitegroups_SG_1");
-						var span = WaitForElement(b => div.FindSpans().FirstOrDefault(x => x.Text == val));
+						var span = Browser.WaitForElement(b => div.FindSpans().FirstOrDefault(x => x.Text == val));
 						span.Checkboxes()[0].Click();
 
 						break;
 					case "Subject":
 						var expandBtn = Browser.FindElementById("Subjects_ShowHideBtn");
 						expandBtn.Click();
-				
-						var tr = WaitForElement(b=>b.FindElements(By.XPath("//table[@id='Subjects_FrontEndCBList']/tbody/tr")).FirstOrDefault(x=>x.Text==val));
+
+						var tr = Browser.WaitForElement(b => b.FindElements(By.XPath("//table[@id='Subjects_FrontEndCBList']/tbody/tr")).FirstOrDefault(x => x.Text == val));
 
 						tr.Checkboxes()[0].Click();
 						break;
