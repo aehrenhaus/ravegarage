@@ -6,6 +6,7 @@ using OpenQA.Selenium.Support.PageObjects;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Remote;
 using TechTalk.SpecFlow;
+using Medidata.RBT.SeleniumExtension;
 
 namespace Medidata.RBT.PageObjects.Rave
 {
@@ -44,7 +45,7 @@ namespace Medidata.RBT.PageObjects.Rave
 				
 						var div = Browser.TryFindElementById("DSitesSitegroups_SG_1");
 						var span = WaitForElement(b => div.FindSpans().FirstOrDefault(x => x.Text == val));
-						span.FindCheckboxes()[0].Click();
+						span.Checkboxes()[0].Click();
 
 						break;
 					case "Subject":
@@ -53,7 +54,7 @@ namespace Medidata.RBT.PageObjects.Rave
 				
 						var tr = WaitForElement(b=>b.FindElements(By.XPath("//table[@id='Subjects_FrontEndCBList']/tbody/tr")).FirstOrDefault(x=>x.Text==val));
 
-						tr.FindCheckboxes()[0].Click();
+						tr.Checkboxes()[0].Click();
 						break;
 
 				}

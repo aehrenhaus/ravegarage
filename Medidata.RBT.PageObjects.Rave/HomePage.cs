@@ -8,6 +8,7 @@ using OpenQA.Selenium;
 
 using System.Collections.Specialized;
 using TechTalk.SpecFlow;
+using Medidata.RBT.SeleniumExtension;
 
 namespace Medidata.RBT.PageObjects.Rave
 {
@@ -76,7 +77,7 @@ namespace Medidata.RBT.PageObjects.Rave
 		/// <returns></returns>
 		public HomePage Search(string textToSearch)
 		{
-			SearchBox.SetText(textToSearch);
+			SearchBox.EnhanceAs<Textbox>().SetText(textToSearch);
 			SearchButton.Click();
 			return this;
 		}

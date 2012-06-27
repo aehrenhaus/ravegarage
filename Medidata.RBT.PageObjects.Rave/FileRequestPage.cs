@@ -6,7 +6,7 @@ using OpenQA.Selenium.Support.PageObjects;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Remote;
 using TechTalk.SpecFlow;
-
+using Medidata.RBT.SeleniumExtension;
 namespace Medidata.RBT.PageObjects.Rave
 {
 	public class FileRequestPage : RavePageBase
@@ -20,11 +20,11 @@ namespace Medidata.RBT.PageObjects.Rave
 
 		public FileRequestPage Generate(string pdf)
 		{
-			var table = Browser.FindElementById("_ctl0_Content_Results");
+			var table = Browser.Table("_ctl0_Content_Results");
 			Table dt = new Table("Name");
 			dt.AddRow(pdf);
-			var tr = table.FindMatchTrs(dt).FirstOrDefault() ;
-			ChooseFromCheckboxes(null, "Live Status Update");
+			var tr = table.FindMatchRows(dt).FirstOrDefault();
+			ChooseFromCheckboxes(null, "Live Status Update",true);
 
 			var genButton  = tr.FindImagebuttons().FirstOrDefault(x => x.GetAttribute("id").EndsWith("imgGenerateNow"));
 			genButton.Click();
@@ -35,10 +35,10 @@ namespace Medidata.RBT.PageObjects.Rave
 
 		public FileRequestPage WaitForPDFComplete(string pdf)
 		{
-			var table = Browser.FindElementById("_ctl0_Content_Results");
+			var table = Browser.Table("_ctl0_Content_Results");
 			Table dt = new Table("Name");
 			dt.AddRow(pdf);
-			var tr = table.FindMatchTrs(dt).FirstOrDefault();
+			var tr = table.FindMatchRows(dt).FirstOrDefault();
 
 			int waitTime = 60;
 			WaitForElement(b =>

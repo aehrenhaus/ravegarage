@@ -10,7 +10,7 @@ using OpenQA.Selenium.IE;
 using System.IO;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
-using Medidata.RBT.PageObjects;
+using Medidata.RBT.SeleniumExtension;
 
 
 namespace Medidata.RBT
@@ -103,7 +103,7 @@ namespace Medidata.RBT
 		{
             var element = Browser.TryFindElementBy(By.XPath("//input[@value='"+identifer+"']"));
 			if (element == null)
-				element = Browser.FindElementById(identifer);
+				element = Browser.TryFindElementById(identifer);
             if (element == null)
                 element = GetElementByName(identifer);
 
@@ -142,31 +142,34 @@ namespace Medidata.RBT
 
 		public virtual IPage Type(string identifer, string text)
 		{
-			IWebElement element = Browser.FindElementById(identifer);
+			var element = Browser.Textbox(identifer);
 			if (element == null)
-				element = GetElementByName(identifer);
+				element = GetElementByName(identifer).EnhanceAs<Textbox>();
 			element.SetText(text);
 			return this;
 		}
 
 		public virtual IPage ChooseFromDropdown(string identifer, string text)
 		{
-			IWebElement element = Browser.TryFindElementById(identifer);
+			var element = Browser.Dropdown(identifer);
 			if (element == null)
-				element = GetElementByName(identifer);
+				element = GetElementByName(identifer).EnhanceAs<Dropdown>();
 
-			new SelectElement(element).SelectByText(text);
+			element.SelectByText(text);
 			return this;
 		}
 
-		public virtual IPage ChooseFromCheckboxes(string areaIdentifer, string identifer)
+		public virtual IPage ChooseFromCheckboxes(string areaIdentifer, string identifer, bool isChecked)
 		{
 
-				IWebElement element = Browser.TryFindElementById(identifer);
-				if (element == null)
-					element = GetElementByName(identifer);
+			var element = Browser.Checkbox(identifer);
+			if (element == null)
+				element = GetElementByName(identifer).EnhanceAs <Checkbox>();
 
-				element.Click();
+			if (isChecked)
+				element.Check();
+			else
+				element.Uncheck();
 		
 			return this;
 		}

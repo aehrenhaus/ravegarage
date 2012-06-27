@@ -140,6 +140,19 @@ namespace Medidata.RBT.PageObjects
 			GetJsExecutor(element).ExecuteScript("arguments[0].removeAttribute(arguments[1])", element, attributeName);
 		}
 
+		public static IWebElement TryFindElementByPartialID(this ISearchContext driver, string partialID)
+		{
+			IWebElement ele = null;
+			try
+			{
+				ele = driver.FindElement(By.XPath(".//*[contains(@id,'"+partialID+"')]"));
+			}
+			catch
+			{
+			}
+			return ele;
+		}
+
 		public static IWebElement TryFindElementBy(this ISearchContext driver,  By by)
 		{
 			IWebElement ele = null;
