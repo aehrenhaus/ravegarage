@@ -28,12 +28,33 @@ namespace Medidata.RBT
 		/// </summary>
 		string URL { get; }
 
+		/// <summary>
+		/// Expected Url, this will be used to verify that current page is the page expected.
+		/// </summary>
+		string ExpectedURL { get; }
+
+		/// <summary>
+		/// Click a link in all page area.
+		/// There is no way to know what page is next page. 
+		/// So when clicking a link causes a change of URL, use ClickLinkInArea() method. 
+		/// See more details on summary of ClickLinkInArea()
+		/// </summary>
+		/// <param name="linkText"></param>
+		/// <returns></returns>
 		IPage ClickLink(string linkText);
 
+		/// <summary>
+		/// Click a hyperlink in a certen area.
+		/// areaIdentifer not only points out the area, but also implies what is the target page type.
+		/// This is very useful for a system that adopts page object design pattern.
+		/// </summary>
+		/// <param name="linkText"></param>
+		/// <param name="areaIdentifer"></param>
+		/// <returns></returns>
 		IPage ClickLinkInArea(string linkText, string areaIdentifer);
 
 		/// <summary>
-		/// Click on a clickable control.
+		/// Click on a clickable control(button and more).
 		/// </summary>
 		/// <param name="name"></param>
 		/// <returns></returns>
@@ -79,6 +100,7 @@ namespace Medidata.RBT
 
 		/// <summary>
 		/// Is the page in browser the same page this object represents.
+		/// This method can use ExpectedURL property to verify, but can verify more than that.
 		/// </summary>
 		/// <returns></returns>
 		bool IsThePage();
