@@ -78,6 +78,21 @@ namespace Medidata.RBT.PageObjects.Rave
             return false ;
         }
 
+        private Dropdown GetQueryCloseDropdown(string message, string fieldName)
+        {
+            var fieldArea = RavePagesHelper.GetDatapointLabelContainer(fieldName);
+            var queryTable = fieldArea.FindElements(
+                By.XPath(".//td[@class='crf_preText']/table"));
+            foreach (var table in queryTable)
+            {
+                if (table.Text.IndexOf(message) != -1)
+                {
+                    return table.Dropdowns()[0];
+                }
+            }
+            return null;
+        }
+
         public CRFPage AnswerQuery(string message, string fieldName, string answer)
         {
             var queryTextbox = GetQueryResponseTextbox(message, fieldName);
@@ -85,6 +100,16 @@ namespace Medidata.RBT.PageObjects.Rave
                 throw new Exception(String.Format("Query textbox not found for message: {0}, field: {1}", message, fieldName));
 
 			queryTextbox.EnhanceAs<Textbox>().SetText(answer);
+            return this;
+        }
+
+        public CRFPage CloseQuery(string message, string fieldName)
+        {
+            var queryAnswerDropdown = GetQueryCloseDropdown(message, fieldName);
+            if (queryAnswerDropdown == null)
+                throw new Exception(String.Format("Query Answer Dropdown not found for message: {0}, field: {1}", message, fieldName));
+
+            queryAnswerDropdown.SelectByText("Close Query");
             return this;
         }
 
