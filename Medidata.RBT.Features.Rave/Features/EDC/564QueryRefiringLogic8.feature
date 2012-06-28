@@ -49,12 +49,12 @@ Scenario:  test
 	And I select "AM Edit Check Study" in "Active Projects"
 
 	And I select "Add New Draft"
-	And I create Draft "Draft<num>{RndNum(3)}" from Project "AM Edit Check Study" and Version "V1"
+	And I create Draft "Draft{RndNum<num>(3)}" from Project "AM Edit Check Study" and Version "V1 (25)"
 
 
 	And I navigate to "Edit Checks"
 
-	And I Inactivate "Mixed Form Query" in "Search Results"
+	And I Inactivate Edit check "Mixed Form Query"
 
 	And I select "Draft{Var(num)}"	
 	And I publish CRF Version "Target{RndNum(3)}"

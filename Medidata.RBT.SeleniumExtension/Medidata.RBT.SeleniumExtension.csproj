@@ -54,6 +54,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="EnhancedControls\Checkbox.cs" />
+    <Compile Include="EnhancedControls\Hyperlink.cs" />
     <Compile Include="WebDriverExtend.cs" />
     <Compile Include="IWebElementExtend.cs" />
     <Compile Include="EnhancedControls\HtmlTable.cs" />

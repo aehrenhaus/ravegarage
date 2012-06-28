@@ -95,12 +95,12 @@ this.FeatureBackground();
 #line 51
  testRunner.And("I select \"Add New Draft\"");
 #line 52
- testRunner.And("I create Draft \"Draft<num>{RndNum(3)}\" from Project \"AM Edit Check Study\" and Ver" +
-                    "sion \"V1\"");
+ testRunner.And("I create Draft \"Draft{RndNum<num>(3)}\" from Project \"AM Edit Check Study\" and Ver" +
+                    "sion \"V1 (25)\"");
 #line 55
  testRunner.And("I navigate to \"Edit Checks\"");
 #line 57
- testRunner.And("I Inactivate \"Mixed Form Query\" in \"Search Results\"");
+ testRunner.And("I Inactivate Edit check \"Mixed Form Query\"");
 #line 59
  testRunner.And("I select \"Draft{Var(num)}\"");
 #line 60

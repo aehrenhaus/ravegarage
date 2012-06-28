@@ -106,7 +106,22 @@ namespace Medidata.RBT.SeleniumExtension
 
 		#endregion
 
+		#region Hyperlink
 
+		public static Hyperlink Link(this ISearchContext context, string linktext)
+		{
+			return context.TryFindElementBy(By.LinkText(linktext)).EnhanceAs<Hyperlink>();
+		}
+
+
+		public static ReadOnlyCollection<Hyperlink> Links(this ISearchContext context)
+		{
+			return context.FindElements(By.XPath(".//a")).CastReadOnlyCollection<Hyperlink>();
+		}
+
+		
+
+		#endregion
 		public static ReadOnlyCollection<EnhancedElement> FindImagebuttons(this ISearchContext context)
 		{
 			return context.FindElements(By.XPath(".//input[@type='image']")).CastReadOnlyCollection < EnhancedElement>();

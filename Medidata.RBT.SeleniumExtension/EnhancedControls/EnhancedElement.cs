@@ -8,27 +8,17 @@ using OpenQA.Selenium.Internal;
 
 namespace Medidata.RBT.SeleniumExtension
 {
+	/// <summary>
+	/// This class use decoration pattern to decorate IWebElement, also enhance it by adding new methods and properties.
+	/// Base on this class, many subclasses will be derived to represent differnt controls in DOM.
+	/// 
+	/// 
+	/// </summary>
 	public class EnhancedElement:IWebElement
 	{
-		private IWebElement ele;
+		#region Private 
 
-		public T SetComponent<T>(IWebElement ele) where T:EnhancedElement
-		{
-
-			this.ele = ele;
-			return this as T;
-		}
-
-		public EnhancedElement()
-		{
-		}
-
-		public EnhancedElement(IWebElement ele)
-		{
-			this.ele = ele;
-		}
-
-
+		private IWebElement ele; // the inner element
 
 		private IJavaScriptExecutor GetJsExecutor(IWebElement element)
 		{
@@ -45,6 +35,76 @@ namespace Medidata.RBT.SeleniumExtension
 			return javascript;
 		}
 
+		#endregion
+
+		/// <summary>
+		/// This is a typical method of 'decoration pattern' to set the inner element to decorate
+		/// </summary>
+		/// <typeparam name="T"></typeparam>
+		/// <param name="ele"></param>
+		/// <returns></returns>
+		public T SetComponent<T>(IWebElement ele) where T:EnhancedElement
+		{
+
+			this.ele = ele;
+			return this as T;
+		}
+
+		public EnhancedElement()
+		{
+		}
+
+		public EnhancedElement(IWebElement ele)
+		{
+			this.ele = ele;
+		}
+
+		#region Enhanced Properties
+
+		public string Id
+		{
+			get
+			{
+				return this.GetAttribute("id");
+			}
+	
+		}
+
+		public string Class
+		{
+			get
+			{
+				return this.GetAttribute("class");
+			}
+			set
+			{
+				if (value == null)
+					this.RemoveAttribute("class");
+				else
+				this.SetAttribute("class", value);
+			}
+		}
+
+		public string Value
+		{
+			get
+			{
+				return  this.GetAttribute("value");
+			}
+			set
+			{
+				
+				if(value==null)
+					this.RemoveAttribute("value");
+				else
+					this.SetAttribute("value", value);
+			}
+		}
+
+		#endregion
+
+		#region Enhanced Methods
+
 		public void SetAttribute(string attributeName, string value)
 		{
 			GetJsExecutor(this).ExecuteScript("arguments[0].setAttribute(arguments[1], arguments[2])", this, attributeName, value);
@@ -55,6 +115,7 @@ namespace Medidata.RBT.SeleniumExtension
 			GetJsExecutor(this).ExecuteScript("arguments[0].removeAttribute(arguments[1])", this, attributeName);
 		}
 
+		#endregion
 
 		#region IWebElement
 

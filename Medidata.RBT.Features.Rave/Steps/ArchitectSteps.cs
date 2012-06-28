@@ -18,5 +18,37 @@ namespace Medidata.RBT.Features.Rave
 		{
 
 		}
+
+		[StepDefinition(@"I create Draft ""([^""]*)"" from Project ""([^""]*)"" and Version ""([^""]*)""")]
+		public void GivenICreateDraft____FromProject____AndVersion____(string draftName, string project, string version)
+		{
+			CurrentPage = CurrentPage.As<ArchitectLibraryPage>().CreateDraftFromProject(SpecialStringHelper.Replace( draftName),
+				SpecialStringHelper.Replace(project),
+				SpecialStringHelper.Replace(version));
+		}
+
+		[StepDefinition(@"I Inactivate ""Mixed Form Query"" in ""Search Results""")]
+		public void GivenIInactivateMixedFormQueryInSearchResults()
+		{
+			ScenarioContext.Current.Pending();
+		}
+
+		[Given(@"I publish CRF Version ""Target\{RndNum\(3\)}""")]
+		public void GivenIPublishCRFVersionTargetRndNum3()
+		{
+			ScenarioContext.Current.Pending();
+		}
+
+		[Given(@"I select ""Target\{RndNum\(3\)}"" from ""Target CRF""")]
+		public void GivenISelectTargetRndNum3FromTargetCRF()
+		{
+			ScenarioContext.Current.Pending();
+		}
+
+		[Given(@"I select ""V1"" from ""Source CRF""")]
+		public void GivenISelectV1FromSourceCRF()
+		{
+			ScenarioContext.Current.Pending();
+		}
 	}
 }

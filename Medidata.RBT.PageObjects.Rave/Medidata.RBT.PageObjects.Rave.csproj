@@ -61,6 +61,10 @@
   <ItemGroup>
     <Compile Include="BaseEDCTreePage.cs" />
     <Compile Include="ArchitectPage.cs" />
+    <Compile Include="ArchitectLibraryPage.cs" />
+    <Compile Include="ArchitectNewDraftPage.cs" />
+    <Compile Include="ArchitectCRFDraftPage.cs" />
+    <Compile Include="ArchitectChecksPage.cs" />
     <Compile Include="FileRequestViewPage.cs" />
     <Compile Include="FileRequestCreateDataRequestPage.cs" />
     <Compile Include="FileRequestPage.cs" />

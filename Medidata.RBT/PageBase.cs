@@ -17,11 +17,19 @@ namespace Medidata.RBT
 {
 	public class PageBase : IPage
 	{
+		#region .ctor and initialization
+
+
 		public PageBase()
 		{
 			InitializeWithCurrentUrl();
 		}
 
+		/// <summary>
+		/// Open a brower according to configuration
+		/// </summary>
+		/// <param name="browserName"></param>
+		/// <returns></returns>
 		public static RemoteWebDriver OpenBrowser(string browserName = null)
 		{
 			RemoteWebDriver _webdriver = null;
@@ -54,10 +62,15 @@ namespace Medidata.RBT
 			return _webdriver;
 		}
 
+		/// <summary>
+		/// Represents the actual browser
+		/// </summary>
 		protected RemoteWebDriver Browser { get; set; }
 
-		public string URL { get; protected set; }
-
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="url"></param>
 		protected void InitializeWithNewUrl(string url)
 		{
 			this.URL = url;
@@ -67,6 +80,9 @@ namespace Medidata.RBT
 			PageFactory.InitElements(Browser, this);
 		}
 
+		/// <summary>
+		/// 
+		/// </summary>
 		protected void InitializeWithCurrentUrl()
 		{
 			this.Browser = TestContext.Browser;
@@ -74,7 +90,27 @@ namespace Medidata.RBT
 
 			PageFactory.InitElements(Browser, this);
 		}
+	
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <typeparam name="TPage"></typeparam>
+		/// <returns></returns>
+		public virtual TPage OpenNew<TPage>() where TPage:PageBase
+		{
+			throw new NotImplementedException("This page object must override OpenNew method first.");
+		}
 
+		#endregion
+
+		/// <summary>
+		/// For summary of these methods, please see IPage interface
+		/// </summary>
+		#region IPage
+			
+		public string URL { get; protected set; }
+
+		public string ExpectedURL { get {throw new Exception ("ExpectedURL not provied by current Page Object") ;} }
 
 		public TPage As<TPage>() where TPage :class, IPage
 		{
@@ -82,21 +118,6 @@ namespace Medidata.RBT
 			if (page == null)
 				throw new Exception("Expect current page to be "+typeof(TPage).Name+", but it's not.");
 			return page;
-		}
-
-		public virtual TPage OpenNew<TPage>() where TPage:PageBase
-		{
-			throw new NotImplementedException("This page object must override OpenNew method first.");
-		}
-
-		protected virtual IWebElement GetElementByName(string name)
-		{
-			throw new Exception("This page does not provide information about named page elements");
-		}
-
-		protected virtual IPage GetTargetPageObjectByLinkAreaName(string areaName)
-		{
-			throw new Exception("This page does not provide information of target page obejct of a link area");
 		}
 
 		public virtual IPage ClickButton(string identifer)
@@ -115,7 +136,9 @@ namespace Medidata.RBT
 
 		public virtual IPage ClickLinkInArea(string linkText, string areaIdentifer)
 		{
-			IWebElement area = GetElementByName(areaIdentifer);
+			IWebElement area = Browser.TryFindElementById(areaIdentifer);
+			if(area==null)
+				area = GetElementByName(areaIdentifer);
 
 			var link = area.TryFindElementBy(By.LinkText(linkText));
 			if (link == null)
@@ -190,12 +213,64 @@ namespace Medidata.RBT
 			return true;
 		}
 
-   
+		#endregion 
+
+
+		/// <summary>
+		/// This method is used by many default implmentation of IPage methods, where a friendly name is used to find a IWebElement
+		/// In many case you will only need to orverride this method to provide mappings on your specific page obejct in order for a step to work.
+		/// <example>
+		/// 
+		///protected override IWebElement GetElementByName(string name)
+		///{
+		///    if (name == "Active Projects")
+		///        return Browser.Table("_ctl0_Content_ProjectGrid");
+		///    if (name == "Inactive Projects")
+		///        return Browser.Table("_ctl0_Content_InactiveProjectGrid");
+		///
+		///    return base.GetElementByName(name);
+		///}
+		/// 
+		/// </example>
+		/// </summary>
+		/// <param name="name"></param>
+		/// <returns></returns>
+		protected virtual IWebElement GetElementByName(string name)
+		{
+			throw new Exception("This page does not provide information about named page elements");
+		}
+
+		/// <summary>
+		/// This is only used by default implementaion of ClickLinkInArea()
+		/// which tries to find out the target page object of the linkarea.
+		/// 
+		/// This is useful when a group of links will navigate to same kind of Url's ,just with different parameters.
+		/// 
+		/// If a group of links will go to different Urls, use IPage.Navigate() method instead.
+		/// 
+		/// </summary>
+		/// <param name="areaName"></param>
+		/// <returns></returns>
+		protected virtual IPage GetTargetPageObjectByLinkAreaName(string areaName)
+		{
+			throw new Exception("This page does not provide information of target page obejct of a link area");
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="text"></param>
+		/// <param name="areaIdentifer"></param>
+		/// <returns></returns>
 		public virtual bool CanSeeTextInArea(string text, string areaIdentifer)
 		{
 			throw new Exception("This page does not implement this method");
 		}
 
+		/// <summary>
+		/// Get the alert reference inorder to click yes, no etc.
+		/// </summary>
+		/// <returns></returns>
 		public IAlert GetAlertWindow()
 		{
 			IAlert alert = Browser.SwitchTo().Alert();
