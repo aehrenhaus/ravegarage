@@ -97,6 +97,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>564 QueryRefiringLogic2.feature</DependentUpon>
     </Compile>
+    <Compile Include="Features\EDC\564 QueryRefiringLogic4.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>564 QueryRefiringLogic4.feature</DependentUpon>
+    </Compile>
     <Compile Include="Features\EDC\564QueryRefiringLogic8.feature.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -159,6 +164,10 @@
     <None Include="Features\EDC\564 QueryRefiringLogic2.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>564 QueryRefiringLogic2.feature.cs</LastGenOutput>
+    </None>
+    <None Include="Features\EDC\564 QueryRefiringLogic4.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>564 QueryRefiringLogic4.feature.cs</LastGenOutput>
     </None>
     <None Include="Features\EDC\564QueryRefiringLogic8.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>

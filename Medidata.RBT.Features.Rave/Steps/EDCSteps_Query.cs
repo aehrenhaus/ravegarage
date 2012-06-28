@@ -82,11 +82,12 @@ namespace Medidata.RBT.Features.Rave
 			page.AnswerQuery(message, fieldNames, System.DateTime.Today.Ticks.ToString());
 		}
 
-		[StepDefinition(@"I close the Query ""([^""]*)"" on Field ""([^""]*)""")]
-		public void ICloseTheQuery____OnField____(string message, string fieldNames)
-		{
-            throw new Exception("Method not implemented yet!");
-		}
+        [StepDefinition(@"I close the Query ""([^""]*)"" on Field ""([^""]*)""")]
+        public void ICloseTheQuery____OnField____(string message, string fieldNames)
+        {
+            CRFPage page = CurrentPage.As<CRFPage>();
+            page.CloseQuery(message, fieldNames);
+        }
 
 		[StepDefinition(@"I close the Query on Field ""([^""]*)""")]
 		public void ICloseTheQueryOnField____(string fieldNames)
