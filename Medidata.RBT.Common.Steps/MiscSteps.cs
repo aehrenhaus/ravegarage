@@ -18,7 +18,7 @@ namespace Medidata.RBT.Common.Steps
 			TestContext.TrySaveScreenShot();
 		}
 
-		[StepDefinition(@"I switch to ""([^""]*)"" window")]
+        [StepDefinition(@"I switch to ""([^""]*)"" window")]
 		public void ISwitchTo____Window(string windowName)
 		{
 			IWebDriver window = null;
@@ -30,7 +30,6 @@ namespace Medidata.RBT.Common.Steps
 			}
 			Browser = (window as RemoteWebDriver);
 		}
-
 
 
 	}

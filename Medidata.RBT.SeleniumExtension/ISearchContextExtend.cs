@@ -133,6 +133,22 @@ namespace Medidata.RBT.SeleniumExtension
 		
 
 		#endregion
+
+        #region HiddenInput
+        
+        public static ReadOnlyCollection<EnhancedElement> HiddenInputs(this ISearchContext context)
+        {
+            return context.FindElements(By.XPath(".//input[@type='hidden']")).CastReadOnlyCollection<EnhancedElement>();
+        }
+
+        #endregion
+
+        public static ReadOnlyCollection<EnhancedElement> FindElementsByPartialId(this ISearchContext context, string partialID)
+        {
+            return context.FindElements(By.XPath(".//*[contains(@id,'" + partialID + "')]")).CastReadOnlyCollection<EnhancedElement>();
+        }
+
+
 		public static ReadOnlyCollection<EnhancedElement> FindImagebuttons(this ISearchContext context)
 		{
 			return context.FindElements(By.XPath(".//input[@type='image']")).CastReadOnlyCollection < EnhancedElement>();
