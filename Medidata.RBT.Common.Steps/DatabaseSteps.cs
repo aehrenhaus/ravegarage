@@ -6,6 +6,7 @@ using TechTalk.SpecFlow;
 using Microsoft.Practices.EnterpriseLibrary.Data;
 using System.Data;
 using System.IO;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Medidata.RBT.Common.Steps
 {
@@ -54,15 +55,7 @@ namespace Medidata.RBT.Common.Steps
 			AssertAreNOTSameTable(dataTable, table);
 		}
 
-
-
-		[StepDefinition(@"I take a screenshot")]
-		public void ITakeScreenshot()
-		{
-			TestContext.TrySaveScreenShot();
-		}
-
-        [When(@"I verify the log messages for query not opening events for Project ""([^""]*)"" and Site ""([^""]*)""")]
+        [When(@"I verify the log message for query not opening event for Project ""([^""]*)"" and Site ""([^""]*)""")]
         public void WhenIVerifyTheLogMessagesForQueryNotOpeningEventsForProjectEditCheckStudy3AndSiteEditCheckSite3(string projectName, string siteName)
         {
             Database database = DatabaseFactory.CreateDatabase(RBTConfiguration.Default.DatabaseConnection);
@@ -81,10 +74,37 @@ namespace Medidata.RBT.Common.Steps
 
 		private void AssertAreSameTable(System.Data.DataTable dataTable, Table table)
 		{
+            //foreach (var columnheader in table.Header)
+            //{
+            //    Assert.IsTrue(dataTable.Columns.Contains(columnheader));
+            //}
+
+            //foreach (var row in table.Rows)
+            //{
+            //    bool matchFound = false;
+            //    foreach (DataRow dataRow in dataTable.Rows)
+            //    {
+            //        try
+            //        {
+            //            CollectionAssert.IsSubsetOf(row.Values.ToArray(), dataRow.ItemArray);
+            //            matchFound = true;
+            //            break;
+            //        }
+            //        catch 
+            //        { 
+            //            //intentionally swallowing the exception if collection not the same
+            //        }
+            //    }
+
+            //    Assert.IsTrue(matchFound);
+
+            
+            //}
 		}
 
 		private void AssertAreNOTSameTable(System.Data.DataTable dataTable, Table table)
 		{
+            throw new Exception("method not implemented");
 		}
 
 		private void SaveDataTable(System.Data.DataTable dataTable)
