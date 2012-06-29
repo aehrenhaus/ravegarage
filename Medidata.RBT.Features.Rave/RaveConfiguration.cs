@@ -31,6 +31,13 @@ namespace Medidata.RBT.Features.Rave
 			set { this["DefaultUserPassword"] = value; }
 		}
 
+        [ConfigurationProperty("RWSAuthanticationFilePath", DefaultValue = "", IsRequired = false)]
+        public String RWSAuthanticationFilePath
+        {
+            get { return (String)this["RWSAuthanticationFilePath"]; }
+            set { this["RWSAuthanticationFilePath"] = value; }
+        }
+
 
 		[ConfigurationProperty("RaveURL", DefaultValue = "", IsRequired = true)]
 		public String RaveURL

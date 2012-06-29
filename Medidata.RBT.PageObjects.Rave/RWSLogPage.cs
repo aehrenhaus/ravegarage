@@ -12,7 +12,7 @@ namespace Medidata.RBT.PageObjects.Rave
     public class RWSLogPage : PageBase
     {
 
-        public RWSLogPage(string rwsAppName, string logger)
+        public RWSLogPage(string rwsAppName, string logger, string authPath)
         {
             string time = "2012-06-06T00:01:10";
             //TODO - remove following line
@@ -24,8 +24,10 @@ namespace Medidata.RBT.PageObjects.Rave
           //  Browser.Close();
            // TestContext.Browser = PageBase.OpenBrowser();
             //System.Runtime.getRuntime().exec("C:\\Program Files\\AutoIt3\\Examples\\authenticationFF.exe");
-            
-            ProcessStartInfo procStartInfo = new ProcessStartInfo(@"C:\\Users\\dsilberberg\\Documents\\GitHub\\ravegarage\\Medidata.RBT.Features.Rave\RWSAuthentication.exe");
+
+
+            string filename = authPath;
+            ProcessStartInfo procStartInfo = new ProcessStartInfo(filename);
             procStartInfo.Arguments = string.Format("\"{0}\" \"{1}\" \"{2}\"", dialogTitle, username, password);
             Process proc = new Process();
 
