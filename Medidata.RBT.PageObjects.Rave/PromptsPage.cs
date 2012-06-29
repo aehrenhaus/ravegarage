@@ -67,7 +67,7 @@ namespace Medidata.RBT.PageObjects.Rave
 				.FirstOrDefault(x => x.GetAttribute("src").EndsWith("arrow_small_right.gif"));
 			if (extendButton == null)
 				extendButton = paraTR
-				.FindImages()
+				.Images()
 				.FirstOrDefault(x => x.GetAttribute("src").EndsWith("arrow_small_right.gif"));
 			
 			extendButton.Click();

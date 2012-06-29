@@ -46,7 +46,7 @@ namespace Medidata.RBT.PageObjects.Rave
             var subjectsDiv = Browser.TryFindElementBy(By.Id("SubjectOverrideDiv"));
             foreach (TableRow row in table.Rows)
             {
-                IWebElement rowTable = subjectsDiv.TryFindElementByPartialID(String.Format("_ctl{0}_SubjectOverrideItemsTable", row[1]));
+                IWebElement rowTable = subjectsDiv.TryFindElementByPartialID<EnhancedElement>(String.Format("_ctl{0}_SubjectOverrideItemsTable", row[1]));
                 IsSubjectsRandomized = !rowTable.FindElements(By.TagName("td"))[2].Text.Trim().ToLower().Contains(row[0].ToString().Trim().ToLower());
                 if (IsSubjectsRandomized) break;
             }

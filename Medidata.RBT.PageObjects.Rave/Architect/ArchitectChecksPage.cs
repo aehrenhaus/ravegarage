@@ -39,7 +39,7 @@ namespace Medidata.RBT.PageObjects.Rave
 			if (rows.Count == 0)
 				throw new Exception("Can't find target to inactivate:"+identifer);
 
-			rows[0].FindImages().First(x => x.GetAttribute("src").EndsWith("i_cedit.gif")).Click();
+			rows[0].Images().First(x => x.GetAttribute("src").EndsWith("i_cedit.gif")).Click();
 
 			//redo ,because page refreshed
 			matchTable = new Table("Name");

@@ -8,7 +8,7 @@ using OpenQA.Selenium.Remote;
 using Medidata.RBT.SeleniumExtension;
 namespace Medidata.RBT.PageObjects.Rave
 {
-	public class MigrationHomePage : RavePageBase
+	public class AMMigrationHomePage : RavePageBase
 	{
 		protected override IWebElement GetElementByName(string name)
 		{
@@ -16,7 +16,19 @@ namespace Medidata.RBT.PageObjects.Rave
 				return Browser.Dropdown("_ddlSimpleSourceVersionId");
 			if (name == "Target CRF")
 				return Browser.Dropdown("ddlSimpleTargetVersionId");
+		
 			return base.GetElementByName(name);
+		}
+
+
+		public override IPage NavigateTo(string name)
+		{
+			if (name == "Execute Plan")
+			{
+				ClickLink("Execute Plan");
+				return new AMMigrationExecutePage();
+			}
+			return base.NavigateTo(name);
 		}
 	}
 }
