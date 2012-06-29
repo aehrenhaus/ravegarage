@@ -44,16 +44,20 @@ Background:
 	
 #----------------------------------------------------------------------------------------------------------------------------------------	
 Scenario:  test
-
-	And I go to "Architect Library" page with url "/Modules/Architect/LibraryPage.aspx?ProjectID=4"
-
-	And I select Study "AM Edit Check Study" in "Header"
-
+	And I navigate to "Architect"
+	And I select "AM Edit Check Study" in "Active Projects"
+	
 	And I navigate to "Amendment Manager"
 	And I choose "V1 (25)" from "Source CRF"
 	And I choose "Target003 (39)" from "Target CRF"
 	And I click button "Create Plan"
 	And I take a screenshot
+	And I navigate to "Execute Plan"
+	And I migrate all Subjects
+	And I select Migration Results and verify Job Status is set to Complete
+	And I take a screenshot
+
+
 
 @release_564_Patch11
 @PB_8.1.1
@@ -735,25 +739,27 @@ And I save the CRF page
 	
 	And I navigate to "Home"
 	And I navigate to "Architect"
-	And I navigate to "AM Edit Check Study"
-	And I navigate to "Draft 1"
+	And I select "AM Edit Check Study" in "Active Projects"
+	And I select "Draft123" in "CRF Drafts"
 	And I navigate to "Edit Checks"
-	And I select edit image for "Mixed Form Query" Edit Check
-	And I unselect checkbox "Active"
-	And I select  link "Update"
-	And I navigate to "Draft 1"	
-	And I publish CRF Version
-	And I note CRF Version "<Target CRF Version1>"
-	And I navigate to "AM Edit Check Study"
+	And I inactivate edit check "Mixed Form Query"
+
+	And I select Draft "Draft123" in "Header"
+
+
+	And I publish CRF Version "Target{RndNum<num1>(3)}"
+
+	And I select Study "AM Edit Check Study" in "Header"
 	And I navigate to "Amendment Manager"
-	And I select "<Source CRF Version1>" from dropdown "Source CRF"
-	And I select "<Target CRF Version1>" from dropdown "Target CRF"
+	And I choose "V1 (25)" from "Source CRF"
+	And I choose "Target003 (39)" from "Target CRF"
 	And I click button "Create Plan"
 	And I take a screenshot
-	
-	And I Migrate "All Subjects"
+	And I navigate to "Execute Plan"
+	And I migrate all Subjects
 	And I select Migration Results and verify Job Status is set to Complete
 	And I take a screenshot
+
 	
 	And I navigate to "Home"
 	And I select "AM Edit Check Study"

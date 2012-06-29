@@ -195,11 +195,11 @@ namespace Medidata.RBT
 
 		public virtual IPage ChooseFromRadiobuttons(string areaIdentifer, string identifer)
 		{
-			IWebElement element = Browser.TryFindElementById(identifer);
+			var element = Browser.RadioButton(identifer, true);
 			if (element == null)
-				element = GetElementByName(identifer);
+				element = GetElementByName(identifer) as RadioButton;
 
-			element.Click();
+			element.Set();
 
 			return this;
 		}
@@ -247,10 +247,10 @@ namespace Medidata.RBT
 		/// </summary>
 		/// <param name="areaName"></param>
 		/// <returns></returns>
-		protected virtual IPage GetTargetPageObjectByLinkAreaName(string areaName)
-		{
-			return GetTargetPageObjectByLinkAreaName(null, areaName);
-		}
+		//protected virtual IPage GetTargetPageObjectByLinkAreaName(string areaName)
+		//{
+		//    return GetTargetPageObjectByLinkAreaName(null, areaName);
+		//}
 
 		protected virtual IPage GetTargetPageObjectByLinkAreaName(string type, string areaName)
 		{

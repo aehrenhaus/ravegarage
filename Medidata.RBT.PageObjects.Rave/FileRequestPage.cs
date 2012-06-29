@@ -42,7 +42,7 @@ namespace Medidata.RBT.PageObjects.Rave
 
 			int waitTime = 60;
 			Browser.WaitForElement(b =>
-				tr.FindSpans().FirstOrDefault(x => x.GetAttribute("id").EndsWith("StatusValue") && x.Text == "Completed"),
+				tr.Spans().FirstOrDefault(x => x.GetAttribute("id").EndsWith("StatusValue") && x.Text == "Completed"),
 				"Did not complete in time("+waitTime+"s)", waitTime
 				);
 

@@ -57,9 +57,11 @@ namespace Medidata.RBT.SeleniumExtension
 		}
 
 
-		public static IWebElement WaitForElement(this IWebDriver driver, string id, Func<IWebElement, bool> predicate, string errorMessage = null, double timeOutSecond = 3)
+		public static IWebElement WaitForElement(this IWebDriver driver, string partialID, Func<IWebElement, bool> predicate=null, string errorMessage = null, double timeOutSecond = 3)
 		{
-			return waitForElement(driver, browser => browser.FindElements(By.Id(id)).FirstOrDefault(predicate), errorMessage, timeOutSecond);
+			Func<IWebDriver, IWebElement> func =browser => browser.FindElements(By.XPath(".//*[contains(@id,'" + partialID + "')]")).FirstOrDefault((predicate==null)?(c=>true):predicate);
+		
+			return waitForElement(driver, func, errorMessage, timeOutSecond);
 		}
 
 

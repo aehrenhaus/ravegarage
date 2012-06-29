@@ -31,9 +31,26 @@ namespace Medidata.RBT.PageObjects.Rave
 			{
 				var link = leftNavContainer.Link("Amendment Manager");
 				link.Click();
-				return new MigrationHomePage();
+				return new AMMigrationHomePage();
 			}
 			return base.NavigateTo(name);
+		}
+
+		protected override IPage GetTargetPageObjectByLinkAreaName(string type, string areaName)
+		{
+			if (areaName == "CRF Drafts")
+				return new ArchitectCRFDraftPage();
+
+			return base.GetTargetPageObjectByLinkAreaName(type, areaName);
+		}
+
+		protected override IWebElement GetElementByName(string name)
+		
+		{
+			if (name == "CRF Drafts")
+				return Browser.Table("DraftsGrid");
+
+			return base.GetElementByName(name);
 		}
 	}
 }

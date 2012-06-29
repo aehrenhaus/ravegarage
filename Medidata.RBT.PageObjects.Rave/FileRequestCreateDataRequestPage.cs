@@ -44,7 +44,7 @@ namespace Medidata.RBT.PageObjects.Rave
 						
 				
 						var div = Browser.TryFindElementById("DSitesSitegroups_SG_1");
-						var span = Browser.WaitForElement(b => div.FindSpans().FirstOrDefault(x => x.Text == val));
+						var span = Browser.WaitForElement(b => div.Spans().FirstOrDefault(x => x.Text == val));
 						span.Checkboxes()[0].Click();
 
 						break;

@@ -24,7 +24,7 @@ namespace Medidata.RBT.PageObjects.Rave
 		{
 			var TR = GetTaskSummaryArea(header);
 
-			var expandButton = TR.FindImages().FirstOrDefault(x => x.GetAttribute("src").EndsWith("arrow_right.gif"));
+			var expandButton = TR.Images().FirstOrDefault(x => x.GetAttribute("src").EndsWith("arrow_right.gif"));
 			expandButton.Click();
 
 			return this;
@@ -45,7 +45,7 @@ namespace Medidata.RBT.PageObjects.Rave
 			return tr;
 		}
 
-		protected override IPage GetTargetPageObjectByLinkAreaName(string areaName)
+		protected override IPage GetTargetPageObjectByLinkAreaName(string type, string areaName)
 		{
 			//if (areaName == "")
 			return RavePageObjectFactory.GetPage("CRFPage");

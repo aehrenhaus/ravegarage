@@ -29,23 +29,40 @@ namespace Medidata.RBT.Features.Rave
 
 
 
-		[Given(@"I publish CRF Version ""([^""]*)""")]
+		[StepDefinition(@"I publish CRF Version ""([^""]*)""")]
 		public void GivenIPublishCRFVersion____(string crfVersion)
 		{
 			CurrentPage.As<ArchitectCRFDraftPage>().PublishCRF(SpecialStringHelper.Replace(crfVersion));
 			
 		}
 
-		[Given(@"I select ""Target\{RndNum\(3\)}"" from ""Target CRF""")]
+		[StepDefinition(@"I select ""Target\{RndNum\(3\)}"" from ""Target CRF""")]
 		public void GivenISelectTargetRndNum3FromTargetCRF()
 		{
 			ScenarioContext.Current.Pending();
 		}
 
-		[Given(@"I select ""V1"" from ""Source CRF""")]
+		[StepDefinition(@"I select ""V1"" from ""Source CRF""")]
 		public void GivenISelectV1FromSourceCRF()
 		{
 			ScenarioContext.Current.Pending();
 		}
+
+		[StepDefinition(@"I migrate all Subjects")]
+		public void IMigrateAllSubjects()
+		{
+			CurrentPage = CurrentPage.As<AMMigrationExecutePage>().Migrate();
+		}
+
+		[Given(@"I select Migration Results and verify Job Status is set to Complete")]
+		public void GivenISelectMigrationResultsAndVerifyJobStatusIsSetToComplete()
+		{
+			var isComplete = CurrentPage.As<AMMigrationExecutePage>().SeeIfComplete();
+			Assert.IsTrue(isComplete, "Not complete");
+		}
+
+
 	}
+
+
 }

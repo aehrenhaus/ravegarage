@@ -59,14 +59,15 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Architect\AMMigrationExecutePage.cs" />
     <Compile Include="BaseEDCTreePage.cs" />
-    <Compile Include="ArchitectPage.cs" />
-    <Compile Include="ArchitectLibraryPage.cs" />
-    <Compile Include="ArchitectNewDraftPage.cs" />
-    <Compile Include="ArchitectCRFDraftPage.cs" />
-    <Compile Include="ArchitectChecksPage.cs" />
-    <Compile Include="ArchitectBasePage.cs" />
-    <Compile Include="MigrationHomePage.cs" />
+    <Compile Include="Architect\ArchitectPage.cs" />
+    <Compile Include="Architect\ArchitectLibraryPage.cs" />
+    <Compile Include="Architect\ArchitectNewDraftPage.cs" />
+    <Compile Include="Architect\ArchitectCRFDraftPage.cs" />
+    <Compile Include="Architect\ArchitectChecksPage.cs" />
+    <Compile Include="Architect\ArchitectBasePage.cs" />
+    <Compile Include="Architect\AMMigrationHomePage.cs" />
     <Compile Include="FileRequestViewPage.cs" />
     <Compile Include="FileRequestCreateDataRequestPage.cs" />
     <Compile Include="FileRequestPage.cs" />
@@ -96,6 +97,9 @@
       <Project>{89C8F41A-E7F8-4D94-BE93-C2C5B8097A32}</Project>
       <Name>Medidata.RBT</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="EDC\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
