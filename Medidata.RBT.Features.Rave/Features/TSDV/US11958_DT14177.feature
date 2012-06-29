@@ -31,7 +31,7 @@ Background:
 
 @PB-US11958-01
 Scenario: Enroll two subjects in each of three sites to verify at least one site has randomized the subjects in non sequential order.
-	#When I create 1 random Subjects with name "TSDV" in Study "Edit Check Study 3" in Site "Edit Check Site 3"
+	#When I create 10 random Subjects with name "TSDV" in Study "Edit Check Study 3" in Site "Edit Check Site 2"
 	And I navigate to "Reporter"
 	And I select Report "Targeted SDV Subject Management"
 	And I set report parameter "Study" with table
@@ -39,17 +39,17 @@ Scenario: Enroll two subjects in each of three sites to verify at least one site
 		| Edit Check Study 3 | Prod        |
 	And I click button "Submit Report"
 	And I switch to "Targeted SDV Subject Override" window
-	And I choose "Edit Check Site 1: 10001" from "Select Site"
+	And I choose "Edit Check Site 2: 20001" from "Select Site"
 	And I click button "Search"
-	#Then verify that Tiers in subject override table are not in the following order
-	#	| Tier Name         |
-	#	| All Forms         |
-	#	| No Forms          |
-	#	| Architect Defined |
-	#	| Custom Tier 1     |
-	#	| Custom Tier 2     |
-	#	| Custom Tier 3     |
-	#	| Custom Tier 4     |
-	#	| Custom Tier 5     |
-	#	| Custom Tier 6     |
-	#	| Custom Tier 7     |
+	Then I verify that Tiers in subject override table are not in the following order
+		| Tier Name         | Row |
+		| All Forms         | 1   |
+		| No Forms          | 2   |
+		| Architect Defined | 3   |
+		| Custom Tier 1     | 4   |
+		| Custom Tier 2     | 5   |
+		| Custom Tier 3     | 6   |
+		| Custom Tier 4     | 7   |
+		| Custom Tier 5     | 8   |
+		| Custom Tier 6     | 9   |
+		| Custom Tier 7     | 10  |

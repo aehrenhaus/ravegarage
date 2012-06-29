@@ -65,6 +65,8 @@
     <Compile Include="ArchitectNewDraftPage.cs" />
     <Compile Include="ArchitectCRFDraftPage.cs" />
     <Compile Include="ArchitectChecksPage.cs" />
+    <Compile Include="ArchitectBasePage.cs" />
+    <Compile Include="MigrationHomePage.cs" />
     <Compile Include="FileRequestViewPage.cs" />
     <Compile Include="FileRequestCreateDataRequestPage.cs" />
     <Compile Include="FileRequestPage.cs" />
@@ -75,7 +77,7 @@
     <Compile Include="RavePageBase.cs" />
     <Compile Include="DDEPage.cs" />
     <Compile Include="UserEditPage.cs" />
-    <Compile Include="RavePageFactory.cs" />
+    <Compile Include="RavePageObjectFactory.cs" />
     <Compile Include="UserAdministrationPage.cs" />
     <Compile Include="CRFPage.cs" />
     <Compile Include="HomePage.cs" />

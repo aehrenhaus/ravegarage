@@ -15,6 +15,11 @@ namespace Medidata.RBT.Features.Rave
 	[Binding]
 	public class RaveSteps : BrowserStepsBase
 	{
-
+		[StepDefinition(@"I go to ""([^""]*)"" page with url ""([^""]*)""")]
+		public void ISwitchTo____Window(string pageName, string url)
+		{
+			Browser.Navigate().GoToUrl(TestContext.GetContextValue<string>("BaseUrl") + url);
+			CurrentPage = RavePageObjectFactory.GetPage(pageName.Replace(" ","") + "Page");
+		}
 	}
 }

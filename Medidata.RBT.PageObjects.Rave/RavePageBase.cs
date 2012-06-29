@@ -8,6 +8,8 @@ using OpenQA.Selenium;
 
 using System.Collections.Specialized;
 using TechTalk.SpecFlow;
+using Medidata.RBT.SeleniumExtension;
+
 
 namespace Medidata.RBT.PageObjects.Rave
 {
@@ -21,7 +23,17 @@ namespace Medidata.RBT.PageObjects.Rave
 				return new HomePage();
 			}
 
+
 			throw new Exception("Don't know how to navigate to "+name);
 		}
+
+
+		protected override IWebElement GetElementByName(string name)
+		{
+			if (name == "Header")
+				return Browser.Table("_ctl0_PgHeader_TabTable");
+			return base.GetElementByName(name);
+		}
+
 	}
 }

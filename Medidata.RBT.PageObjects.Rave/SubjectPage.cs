@@ -38,10 +38,6 @@ namespace Medidata.RBT.PageObjects.Rave
 			return TR.Text.Contains(text);
 		}
 
-		public override IPage ClickLinkInArea(string linkText, string areaName)
-		{
-			return base.ClickLinkInArea(linkText, areaName);
-		}
 
 		protected override IWebElement GetElementByName(string name)
 		{

@@ -27,16 +27,13 @@ namespace Medidata.RBT.Features.Rave
 				SpecialStringHelper.Replace(version));
 		}
 
-		[StepDefinition(@"I Inactivate ""Mixed Form Query"" in ""Search Results""")]
-		public void GivenIInactivateMixedFormQueryInSearchResults()
-		{
-			ScenarioContext.Current.Pending();
-		}
 
-		[Given(@"I publish CRF Version ""Target\{RndNum\(3\)}""")]
-		public void GivenIPublishCRFVersionTargetRndNum3()
+
+		[Given(@"I publish CRF Version ""([^""]*)""")]
+		public void GivenIPublishCRFVersion____(string crfVersion)
 		{
-			ScenarioContext.Current.Pending();
+			CurrentPage.As<ArchitectCRFDraftPage>().PublishCRF(SpecialStringHelper.Replace(crfVersion));
+			
 		}
 
 		[Given(@"I select ""Target\{RndNum\(3\)}"" from ""Target CRF""")]

@@ -12,9 +12,17 @@ namespace Medidata.RBT.SeleniumExtension
 {
 	public static class ISearchContextExtend
 	{
-		private static T SelectExtendElement<T>(ISearchContext context, string partialID) where T : EnhancedElement,new()
+		private static T SelectExtendElement<T>(ISearchContext context, string partialID, bool nullable) where T : EnhancedElement, new()
 		{
-			return context.TryFindElementBy(By.XPath(".//*[contains(@id,'" + partialID + "')]")).EnhanceAs<T>();
+			var ele = context.TryFindElementBy(By.XPath(".//*[contains(@id,'" + partialID + "')]"));
+			if (ele == null)
+			{
+				if (nullable)
+					return null;
+				else
+					throw new Exception("Can't find element by partialID:" + partialID);
+			}
+			return ele.EnhanceAs<T>();
 		}
 		
 		private static ReadOnlyCollection<T> CastReadOnlyCollection<T>(this ReadOnlyCollection<IWebElement> coll)
@@ -36,9 +44,9 @@ namespace Medidata.RBT.SeleniumExtension
 			return context.FindElements(By.XPath(xpath)).CastReadOnlyCollection<HtmlTable>();
 		}
 
-		public static HtmlTable Table(this ISearchContext context, string partialID)
+		public static HtmlTable Table(this ISearchContext context, string partialID, bool nullable=false)
 		{
-			return SelectExtendElement<HtmlTable>(context, partialID);
+			return SelectExtendElement<HtmlTable>(context, partialID, nullable);
 		}
 
 		#endregion
@@ -46,9 +54,9 @@ namespace Medidata.RBT.SeleniumExtension
 
 		#region Textbox
 
-		public static Textbox Textbox(this ISearchContext context, string partialID)
+		public static Textbox Textbox(this ISearchContext context, string partialID, bool nullable=false)
 		{
-			return SelectExtendElement<Textbox>(context, partialID);
+			return SelectExtendElement<Textbox>(context, partialID, nullable);
 		}
 
 		public static ReadOnlyCollection<Textbox> Textboxes(this ISearchContext context)
@@ -67,9 +75,9 @@ namespace Medidata.RBT.SeleniumExtension
 		#region Checkbox
 
 
-		public static Checkbox Checkbox(this ISearchContext context, string partialID)
+		public static Checkbox Checkbox(this ISearchContext context, string partialID, bool nullable = false)
 		{
-			return SelectExtendElement<Checkbox>(context, partialID);
+			return SelectExtendElement<Checkbox>(context, partialID, nullable);
 		}
 
 
@@ -88,9 +96,9 @@ namespace Medidata.RBT.SeleniumExtension
 		#region Dropdown
 
 
-		public static Dropdown Dropdown(this ISearchContext context, string partialID)
+		public static Dropdown Dropdown(this ISearchContext context, string partialID, bool nullable=false)
 		{
-			return SelectExtendElement<Dropdown>(context, partialID);
+			return SelectExtendElement<Dropdown>(context, partialID, nullable);
 		}
 
 
@@ -110,7 +118,10 @@ namespace Medidata.RBT.SeleniumExtension
 
 		public static Hyperlink Link(this ISearchContext context, string linktext)
 		{
-			return context.TryFindElementBy(By.LinkText(linktext)).EnhanceAs<Hyperlink>();
+			var ele = context.TryFindElementBy(By.LinkText(linktext));
+			if (ele == null)
+				throw new Exception("Can't find hyperlink by text:" + linktext);
+			return ele.EnhanceAs<Hyperlink>();
 		}
 
 
@@ -122,6 +133,22 @@ namespace Medidata.RBT.SeleniumExtension
 		
 
 		#endregion
+
+        #region HiddenInput
+        
+        public static ReadOnlyCollection<EnhancedElement> HiddenInputs(this ISearchContext context)
+        {
+            return context.FindElements(By.XPath(".//input[@type='hidden']")).CastReadOnlyCollection<EnhancedElement>();
+        }
+
+        #endregion
+
+        public static ReadOnlyCollection<EnhancedElement> FindElementsByPartialId(this ISearchContext context, string partialID)
+        {
+            return context.FindElements(By.XPath(".//*[contains(@id,'" + partialID + "')]")).CastReadOnlyCollection<EnhancedElement>();
+        }
+
+
 		public static ReadOnlyCollection<EnhancedElement> FindImagebuttons(this ISearchContext context)
 		{
 			return context.FindElements(By.XPath(".//input[@type='image']")).CastReadOnlyCollection < EnhancedElement>();

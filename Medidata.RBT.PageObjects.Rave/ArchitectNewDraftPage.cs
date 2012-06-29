@@ -10,7 +10,7 @@ using TechTalk.SpecFlow;
 
 namespace Medidata.RBT.PageObjects.Rave
 {
-	public class ArchitectNewDraftPage : RavePageBase
+	public class ArchitectNewDraftPage : ArchitectBasePage
 	{
 	
 

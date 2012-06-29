@@ -123,6 +123,7 @@
       <DesignTime>True</DesignTime>
     </Compile>
     <Compile Include="RaveConfiguration.cs" />
+    <Compile Include="Steps\TsdvSteps.cs" />
     <Compile Include="Steps\PDFSteps.cs" />
     <Compile Include="Steps\DDESteps.cs" />
     <Compile Include="Steps\EDCSteps_Logline.cs" />

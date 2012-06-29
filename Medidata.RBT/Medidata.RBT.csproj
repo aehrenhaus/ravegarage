@@ -67,6 +67,7 @@
     <Compile Include="BrowserStepsBase.cs" />
     <Compile Include="DbHelper.cs" />
     <Compile Include="PageBase.cs" />
+    <Compile Include="PageObjectInterfaces\IActivatePage.cs" />
     <Compile Include="PageObjectInterfaces\IVerifyDisableConrolsPage.cs" />
     <Compile Include="PageObjectInterfaces\IPage.cs" />
     <Compile Include="PageObjectInterfaces\IPaginatedPage.cs" />
