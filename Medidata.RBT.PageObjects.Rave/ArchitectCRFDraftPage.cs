@@ -10,12 +10,18 @@ using TechTalk.SpecFlow;
 
 namespace Medidata.RBT.PageObjects.Rave
 {
-	public class ArchitectCRFDraftPage : RavePageBase
+	public class ArchitectCRFDraftPage : ArchitectBasePage
 	{
+		public ArchitectCRFDraftPage PublishCRF(string crfVersion)
+		{
+			Type("_ctl0_Content_TxtCRFVersion", crfVersion);
+			ClickButton("Publish to CRF Version");
+			return this;
+		}
 
 		protected override IWebElement GetElementByName(string name)
 		{
-
+			
 			return base.GetElementByName(name);
 		}
 

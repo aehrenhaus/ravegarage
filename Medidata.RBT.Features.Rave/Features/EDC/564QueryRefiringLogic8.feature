@@ -44,26 +44,14 @@ Background:
 	
 #----------------------------------------------------------------------------------------------------------------------------------------	
 Scenario:  test
-	And I navigate to "Home"
-	And I navigate to "Architect"
-	And I select "AM Edit Check Study" in "Active Projects"
 
-	And I select "Add New Draft"
-	And I create Draft "Draft{RndNum<num>(3)}" from Project "AM Edit Check Study" and Version "V1 (25)"
+	And I go to "Architect Library" page with url "/Modules/Architect/LibraryPage.aspx?ProjectID=4"
 
-
-	And I navigate to "Edit Checks"
-
-	And I Inactivate Edit check "Mixed Form Query"
-
-	And I select "Draft{Var(num)}"	
-	And I publish CRF Version "Target{RndNum(3)}"
-	
-	And I select "AM Edit Check Study"
+	And I select Study "AM Edit Check Study" in "Header"
 
 	And I navigate to "Amendment Manager"
-	And I select "V1" from "Source CRF"
-	And I select "Target{RndNum(3)}" from "Target CRF"
+	And I choose "V1 (25)" from "Source CRF"
+	And I choose "Target003 (39)" from "Target CRF"
 	And I click button "Create Plan"
 	And I take a screenshot
 

@@ -8,7 +8,7 @@ using OpenQA.Selenium.Remote;
 using Medidata.RBT.SeleniumExtension;
 namespace Medidata.RBT.PageObjects.Rave
 {
-	public class ArchitectLibraryPage : RavePageBase
+	public class ArchitectLibraryPage : ArchitectBasePage
 	{
 
 		public ArchitectCRFDraftPage CreateDraftFromProject(string draftName, string project, string version)
@@ -20,6 +20,20 @@ namespace Medidata.RBT.PageObjects.Rave
 			ClickButton("_ctl0_Content_CreateButton");
 
 			return new ArchitectCRFDraftPage();
+		}
+
+		public override IPage NavigateTo(string name)
+		{
+			var leftNavContainer = Browser.FindElementById("TblOuter");
+		
+
+			if (name == "Amendment Manager")
+			{
+				var link = leftNavContainer.Link("Amendment Manager");
+				link.Click();
+				return new MigrationHomePage();
+			}
+			return base.NavigateTo(name);
 		}
 	}
 }

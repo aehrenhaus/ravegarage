@@ -12,13 +12,15 @@ namespace Medidata.RBT.PageObjects.Rave
 	{
 		public LoginPage(string url)
 		{
-		
 
+			
 			//After restroing snapshot, Rave will throw a TCP closed exception when trying to visit database for the first time,
 			//so go to cacheflush.aspx to trigger this exception first,  then goto Login page
 			//TODO: Get rid of the line that goes to cacheflush.aspx when there is a solution to the problem above
 			//InitializeWithNewUrl(url+"cacheflush.aspx");
 			Browser.Navigate().GoToUrl(url+"login.aspx");
+			TestContext.SetContextValue("BaseUrl", Browser.Url.Substring(0, Browser.Url.LastIndexOf("/")));
+
 			PageFactory.InitElements(Browser, this);
 
 		}

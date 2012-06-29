@@ -134,25 +134,21 @@ namespace Medidata.RBT
 			return this;
 		}
 
-		public virtual IPage ClickLinkInArea(string linkText, string areaIdentifer)
+		public virtual IPage ClickLinkInArea(string type, string linkText, string areaIdentifer)
 		{
 			IWebElement area = Browser.TryFindElementById(areaIdentifer);
 			if(area==null)
 				area = GetElementByName(areaIdentifer);
 
-			var link = area.TryFindElementBy(By.LinkText(linkText));
-			if (link == null)
-				throw new Exception("Can'f find hyperlink: " + linkText);
+			var link = area.Link(linkText);
 			link.Click();
-		
-			return GetTargetPageObjectByLinkAreaName(areaIdentifer);
+
+			return GetTargetPageObjectByLinkAreaName(type, areaIdentifer);
 		}
 
 		public virtual IPage ClickLink(string linkText)
 		{
-			var link = Browser.TryFindElementBy(By.LinkText(linkText));
-			if (link == null)
-				throw new Exception("Can'f find hyperlink: "+linkText);
+			var link = Browser.Link(linkText);
 			link.Click();
 			return this;
 		}
@@ -174,7 +170,7 @@ namespace Medidata.RBT
 
 		public virtual IPage ChooseFromDropdown(string identifer, string text)
 		{
-			var element = Browser.Dropdown(identifer);
+			var element = Browser.Dropdown(identifer,true);
 			if (element == null)
 				element = GetElementByName(identifer).EnhanceAs<Dropdown>();
 
@@ -185,7 +181,7 @@ namespace Medidata.RBT
 		public virtual IPage ChooseFromCheckboxes(string areaIdentifer, string identifer, bool isChecked)
 		{
 
-			var element = Browser.Checkbox(identifer);
+			var element = Browser.Checkbox(identifer, true);
 			if (element == null)
 				element = GetElementByName(identifer).EnhanceAs <Checkbox>();
 
@@ -252,6 +248,11 @@ namespace Medidata.RBT
 		/// <param name="areaName"></param>
 		/// <returns></returns>
 		protected virtual IPage GetTargetPageObjectByLinkAreaName(string areaName)
+		{
+			return GetTargetPageObjectByLinkAreaName(null, areaName);
+		}
+
+		protected virtual IPage GetTargetPageObjectByLinkAreaName(string type, string areaName)
 		{
 			throw new Exception("This page does not provide information of target page obejct of a link area");
 		}

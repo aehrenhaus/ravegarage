@@ -51,7 +51,7 @@ namespace Medidata.RBT
 		/// <param name="linkText"></param>
 		/// <param name="areaIdentifer"></param>
 		/// <returns></returns>
-		IPage ClickLinkInArea(string linkText, string areaIdentifer);
+		IPage ClickLinkInArea(string type, string linkText, string areaIdentifer);
 
 		/// <summary>
 		/// Click on a clickable control(button and more).

@@ -8,7 +8,7 @@ using OpenQA.Selenium.Remote;
 using Medidata.RBT.SeleniumExtension;
 namespace Medidata.RBT.PageObjects.Rave
 {
-	public class ArchitectPage : RavePageBase
+	public class ArchitectPage : ArchitectBasePage
 	{
 		protected override IWebElement GetElementByName(string name)
 		{

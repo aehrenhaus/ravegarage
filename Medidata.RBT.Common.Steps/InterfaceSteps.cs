@@ -81,10 +81,16 @@ namespace Medidata.RBT.Common.Steps
 		[StepDefinition(@"I select ""([^""]*)"" in ""([^""]*)""")]
 		public void ISelect____In____(string linkText, string areaName)
 		{
-			CurrentPage = CurrentPage.ClickLinkInArea(linkText, areaName);
+			CurrentPage = CurrentPage.ClickLinkInArea(null,linkText, areaName);
 			
 		}
 
+		[StepDefinition(@"I select ([^""]*) ""([^""]*)"" in ""([^""]*)""")]
+		public void ISelect________In____(string type, string linkText, string areaName)
+		{
+			CurrentPage = CurrentPage.ClickLinkInArea(type, linkText, areaName);
+
+		}
 
 		/// <summary>
 		/// Use mapping to figure out which link to click
@@ -109,6 +115,16 @@ namespace Medidata.RBT.Common.Steps
 			Assert.IsTrue(cansee, "Can't see {0} in {1}",text,areaName);
 		}
 
-	
+		[StepDefinition(@"I activate (.+) ""([^""]*)""")]
+		public void IActivate________(string type, string identifer)
+		{
+			CurrentPage.As<IActivatePage>().Activate(type, identifer);
+		}
+
+		[StepDefinition(@"I inactivate (.+) ""([^""]*)""")]
+		public void IInactivate________(string type, string identifer)
+		{
+			CurrentPage.As<IActivatePage>().Inactivate(type, identifer);
+		}
 	}
 }
