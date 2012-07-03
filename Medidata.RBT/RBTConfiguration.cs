@@ -76,6 +76,12 @@ namespace Medidata.RBT
 			set { this["WebDriverPath"] = value; }
 		}
 
+		[ConfigurationProperty("GenerateReportAfterTest", DefaultValue = false, IsRequired = false)]
+		public bool GenerateReportAfterTest
+		{
+			get { return (bool)this["GenerateReportAfterTest"]; }
+			set { this["GenerateReportAfterTest"] = value; }
+		}
 
 		[ConfigurationProperty("BrowserPath", DefaultValue = "", IsRequired = false)]
 		public String BrowserPath
