@@ -192,6 +192,21 @@ namespace Medidata.RBT.PageObjects.Rave
            return dpLeftTd.Text.IndexOf(message) != -1;
         }
 
+		public bool CanFindClosedQueryMessage(string fieldName, string message)
+		{
+		
+			var dpLeftTd = RavePagesHelper.GetDatapointLabelContainer(fieldName).EnhanceAs<EnhancedElement>();
+
+			var fieldTable = dpLeftTd.Ascestor("table");
+
+			//for a closed query that still shows on the filed, the container table's class should be evenRow/oddRow
+			//  a still opened query's container table should have evenWarning/oddWarning
+
+
+
+			return fieldTable.Class.IndexOf("Warning") == -1 && dpLeftTd.Text.IndexOf(message) != -1;
+		}
+
         public bool QueryExistOnField(string fieldName)
         {
             var fieldArea = RavePagesHelper.GetDatapointLabelContainer(fieldName);

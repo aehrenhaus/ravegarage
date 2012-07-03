@@ -115,6 +115,21 @@ namespace Medidata.RBT.SeleniumExtension
 			GetJsExecutor(this).ExecuteScript("arguments[0].removeAttribute(arguments[1])", this, attributeName);
 		}
 
+		public EnhancedElement Parent()
+		{
+			return this.TryFindElementBy(By.XPath("./..")).EnhanceAs < EnhancedElement>();
+		}
+		public EnhancedElement Ascestor(string name)
+		{
+			EnhancedElement parent = this.Parent();
+			while (parent != null && parent.TagName != name)
+			{
+				parent = parent.Parent();
+			}
+			return parent;
+		}
+		
+
 		#endregion
 
 		#region IWebElement
