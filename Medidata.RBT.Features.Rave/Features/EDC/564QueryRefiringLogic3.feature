@@ -93,9 +93,54 @@ Scenario: PB_3.1.1 On a Cross Form Standard form to log form, When a query has b
 @Draft
 Scenario: PB_3.1.2 On a Cross Form Standard form to log form, When a query has been answered and closed with the same data and I enter the same data that 
 originally opened the query, then queries are displayed in SQL logs. 
+
+	 Given I select Study "Edit Check Study 3" and Site "Edit Check Site 3"
+	 And I create a Subject
+		| Field            | Value                                                          |
+		| Subject Number   | {NextSubjectNum<num1>(Edit Check Study 3,prod,Subject Number)} |
+		| Subject Initials | sub                                                            |
+	 And I select Folder "Screening"
+	 And I select Form "Informed Consent"
+	 And I enter data in CRF
+	     |Field							|Data        |
+         |Date Informed Consent Signed	|09 Jan 2000 |
+	     |End Date						|10 Jan 2000 |
+	     |Original Distribution Number	|10          |
+	     |Current Distribution Number	|19          |
+	And I save the CRF page
+	And I take a screenshot
+	And I select Form "Concomitant Medications" in Folder "Screening"
+	And I enter data in CRF
+	     |Field						|Data        |
+         |Start Date				|08 Jan 2000 |
+	     |End Date					|11 Jan 2000 |
+	     |Original Axis Number		|10          |
+	     |Current Axis Number		|20          |	
+	And I save the CRF page
+	And I open log line 1
+	And I verify Query with message "'Date Informed Consent Signed' is greater. Please revise." is displayed on Field "Start Date"
+	And I verify Query with message "Informed Consent 'Current Distribution Number' is not equal to Concomitant Medications 'Current Axis Number'." is displayed on Field "Current Axis Number"
+	And I take a screenshot
+	And I answer the Query "'Date Informed Consent Signed' is greater. Please revise." on Field "Start Date" with "{answer}"
+	And I answer the Query "Informed Consent 'Current Distribution Number' is not equal to Concomitant Medications 'Current Axis Number'." on Field "Current Axis Number" with "{answer}"
+	And I save the CRF page
+	And I take a screenshot
+
+
+	# Given closed Query with message "Informed Consent Date 1 is greater. Please revise" exists on Field "Start Date" in Form "Concomitant Medications" in Folder "Screening" in Subject "SUB301" in Site "Edit Check Site 3" in Study "Edit Check Study 3"
+	# And closed Query with message "Informed Consent 'Current Distribution Number' is not equal to Concomitant Medications 'Current Axis Number'." exists on Field "Current Axis Number" in Form "Concomitant Medications" in Folder "Screening" in Subject "SUB301" in Site "Edit Check Site 3" in Study "Edit Check Study 3"
+	#And I am on CRF page "Concomitant Medications" in Folder "Screening" in Subject "SUB301" in Site "Edit Check Site 3" in Study "Edit Check Study 3"
 	
-    When I run SQL Script "Query Logging Script"
-    Then I should see the logging data for queries 
+	And I open log line 1
+	When I enter data in CRF
+		|Field					|Data        |
+        |Start Date				|08 Jan 2000 |
+	    |Current Axis Number	|20          |
+	And I save the CRF page
+	And I open log line 1
+   # When I go to the log page for logger "Query not opening event"
+    When I verify the log message for query not opening event for Project "Edit Check Study 3" and Site "Edit Check Site 3"
+    Then I should see SQL result 
 		|ProjectName        |SiteNumber  |SiteName          |Environment |SubjectName  |CheckActionInstanceName     |CheckActionInstanceDataPageName |CheckActionRecordPosition |CheckActionFieldName		|CheckActionFieldData |TriggerFieldInstanceName |TriggerFieldInstanceDatapageName 	|TriggerFieldRecordPosition |TriggerFieldName        |TriggerFieldData |EditCheckName                               |MarkingGroupName |QueryMessage                                                                |EventTime  |
 		|Edit Check Study 3 |30001       |Edit Check Site 3 |PROD        |SUB301       |Screening					|Concomitant Medications            |1                         |Start Date				|08 Jan 2000          |Screening       |Concomitant Medications			 	 	|1                          |Start Date       |08 Jan 2000      |*Greater Than Open Query Log Cross Form     |Marking Group 1  |'Date Informed Consent Signed' is greater. Please revise.                          |{DateTime} |
 		|Edit Check Study 3 |30001       |Edit Check Site 3 |PROD        |SUB301       |Screening					|Concomitant Medications            |1                         |Current Axis Number		|20                   |Screening       |Concomitant Medications             	|1                          |Current Axis Number         |20               |*Is Not Equal to Open Query Log Cross Form* |Site             |Informed Consent 'Current Distribution Number' is not equal to Concomitant Medications 'Current Axis Number'. |{DateTime} |
@@ -152,7 +197,7 @@ originally opened the query, then queries are displayed.
 @Draft
 Scenario: PB_3.1.4 On a Cross Form Standard form to log form, When a query has been answered and closed with the same data and I enter the same data that originally opened the query, then queries are not displayed in SQL logs. 
 	
-    When I run SQL Script "Query Logging Script" 
+    When I verify the log messages for queries
     Then I should not see the logging data for queries 
 		|ProjectName        |SiteNumber  |SiteName          |Environment |SubjectName  |CheckActionInstanceName     |CheckActionInstanceDataPageName 	|CheckActionRecordPosition |CheckActionFieldName 	|CheckActionFieldData |TriggerFieldInstanceName |TriggerFieldInstanceDatapageName |TriggerFieldRecordPosition |TriggerFieldName        |TriggerFieldData |EditCheckName                               |MarkingGroupName |QueryMessage                                                                |EventTime  |
 		|Edit Check Study 3 |30001       |Edit Check Site 3 |PROD        |SUB301       |Screening          			|Concomitant Medications            |2                         |Start Date    			|07 Jan 2000          |Screening       |Concomitant Medications             |2                          |Start Date       |07 Jan 2000      |*Greater Than Open Query Log Cross Form     |Marking Group 1  |'Date Informed Consent Signed' is greater. Please revise.                          |{DateTime} |

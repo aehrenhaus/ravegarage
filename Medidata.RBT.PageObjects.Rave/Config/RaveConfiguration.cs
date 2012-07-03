@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Configuration;
 
-namespace Medidata.RBT.Features.Rave
+namespace Medidata.RBT.PageObjects.Rave
 {
 	public class RaveConfiguration : ConfigurationSection
 	{
@@ -31,6 +31,13 @@ namespace Medidata.RBT.Features.Rave
 			set { this["DefaultUserPassword"] = value; }
 		}
 
+        [ConfigurationProperty("RWSAuthanticationFilePath", DefaultValue = "", IsRequired = false)]
+        public String RWSAuthanticationFilePath
+        {
+            get { return (String)this["RWSAuthanticationFilePath"]; }
+            set { this["RWSAuthanticationFilePath"] = value; }
+        }
+
 
 		[ConfigurationProperty("RaveURL", DefaultValue = "", IsRequired = true)]
 		public String RaveURL
@@ -38,5 +45,12 @@ namespace Medidata.RBT.Features.Rave
 			get { return (String)this["RaveURL"]; }
 			set { this["RaveURL"] = value; }
 		}
+
+        [ConfigurationProperty("RWSURL", DefaultValue = "", IsRequired = true)]
+        public String RWSURL
+        {
+            get { return (String)this["RWSURL"]; }
+            set { this["RWSURL"] = value; }
+        }
 	}
 }

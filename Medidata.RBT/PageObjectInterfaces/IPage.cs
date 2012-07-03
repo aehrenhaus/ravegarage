@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Collections.Specialized;
 
 namespace Medidata.RBT
 {
@@ -28,10 +29,7 @@ namespace Medidata.RBT
 		/// </summary>
 		string URL { get; }
 
-		/// <summary>
-		/// Expected Url, this will be used to verify that current page is the page expected.
-		/// </summary>
-		string ExpectedURL { get; }
+        string BaseURL { get; }
 
 		/// <summary>
 		/// Click a link in all page area.
@@ -97,10 +95,15 @@ namespace Medidata.RBT
 		/// <returns></returns>
 		IPage NavigateTo(string identifer);
 
+        /// <summary>
+        /// uses the pages url and params to go to itself
+        /// </summary>
+        /// <returns></returns>
+        IPage NavigateToSelf();
 
 		/// <summary>
 		/// Is the page in browser the same page this object represents.
-		/// This method can use ExpectedURL property to verify, but can verify more than that.
+		/// This method can use URL property to verify, but can verify more than that.
 		/// </summary>
 		/// <returns></returns>
 		bool IsThePage();

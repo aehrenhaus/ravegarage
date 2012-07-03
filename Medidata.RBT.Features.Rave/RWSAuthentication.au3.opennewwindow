@@ -1,0 +1,7 @@
+Run( "C:\Program Files (x86)\Mozilla Firefox\firefox.exe" & " " & "https://rave564conlabtesting7.mdsol.com/ravewebservices/datasets/Logmessagedata?Start=2012-06-06T00:01:10&rows=1000&Logger=Medidata.Core.Objects.DeferredRollupQueue")
+Sleep(500)
+WinWaitActive("Authentication Required","","10")
+If WinExists("Authentication Required") Then
+Send("defuser{TAB}")
+Send("password{Enter}")
+EndIf

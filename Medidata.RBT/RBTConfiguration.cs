@@ -110,6 +110,7 @@ namespace Medidata.RBT
 			get { return (bool)this["OneBrowserPerFeature"]; }
 			set { this["OneBrowserPerFeature"] = value; }
 		}
+       
 		
 
 	}

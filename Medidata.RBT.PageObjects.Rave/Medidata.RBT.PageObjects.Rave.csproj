@@ -72,6 +72,7 @@
     <Compile Include="FileRequestCreateDataRequestPage.cs" />
     <Compile Include="FileRequestPage.cs" />
     <Compile Include="DCFQueriesPage.cs" />
+    <Compile Include="Config\RaveConfiguration.cs" />
     <Compile Include="TSDV\SubjectOverridePage.cs" />
     <Compile Include="PromptsPage.cs" />
     <Compile Include="ReportsPage.cs" />
@@ -80,6 +81,7 @@
     <Compile Include="UserEditPage.cs" />
     <Compile Include="RavePageObjectFactory.cs" />
     <Compile Include="UserAdministrationPage.cs" />
+    <Compile Include="RWSLogPage.cs" />
     <Compile Include="CRFPage.cs" />
     <Compile Include="HomePage.cs" />
     <Compile Include="LoginPage.cs" />
