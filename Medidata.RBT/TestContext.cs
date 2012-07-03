@@ -179,6 +179,9 @@ namespace Medidata.RBT
 		[AfterScenario]
 		public void ScenarioTearDown()
 		{
+			//take a snapshot after every scenario
+			TrySaveScreenShot();
+
 			if(!RBTConfiguration.Default.OneBrowserPerFeature)
 				CloseBrower();
 
