@@ -126,5 +126,7 @@ namespace Medidata.RBT.PageObjects.Rave
 			string className = poClassMapping[name];
 			return RavePageObjectFactory.GetPage(className);
 		}
+
+        public override string URL { get { return "homepage.aspx"; } }
 	}
 }

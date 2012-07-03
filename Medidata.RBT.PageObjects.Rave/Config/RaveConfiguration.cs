@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Configuration;
 
-namespace Medidata.RBT.Features.Rave
+namespace Medidata.RBT.PageObjects.Rave
 {
 	public class RaveConfiguration : ConfigurationSection
 	{
