@@ -107,6 +107,18 @@ namespace Medidata.RBT
 		{
 			ScenarioContext.Current[key] = val;
 		}
+		[AfterTestRun]
+		public static void TestAfterTest()
+		{
+			if (RBTConfiguration.Default.GenerateReportAfterTest)
+			{
+				System.Diagnostics.Process p = new System.Diagnostics.Process();
+				p.StartInfo = new System.Diagnostics.ProcessStartInfo(
+					@"C:\Windows\SysWOW64\WindowsPowerShell\v1.0\powershell.exe",
+					"../../../reportGen.ps1");
+				p.Start();
+			}
+		}
 
 		[BeforeFeature()]
 		public static void FeatureSetup()
