@@ -19,7 +19,7 @@ namespace Medidata.RBT.Features.Rave.Features.EDC
     [System.CodeDom.Compiler.GeneratedCodeAttribute("TechTalk.SpecFlow", "1.8.1.0")]
     [System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     [Microsoft.VisualStudio.TestTools.UnitTesting.TestClassAttribute()]
-    public partial class QueryRefiringLogicFeature
+    public partial class QueryRefiringLogic5Feature
     {
         
         private static TechTalk.SpecFlow.ITestRunner testRunner;
@@ -31,7 +31,7 @@ namespace Medidata.RBT.Features.Rave.Features.EDC
         public static void FeatureSetup(Microsoft.VisualStudio.TestTools.UnitTesting.TestContext testContext)
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
-            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Query Refiring Logic", "As a Rave user\r\nWhen I manually close a query or cancel, the query should not re-" +
+            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Query Refiring Logic5", "As a Rave user\r\nWhen I manually close a query or cancel, the query should not re-" +
                     "fire if the exact same data is entered into the system\r\nSo that I dont have to r" +
                     "e-enter the exact same response", ProgrammingLanguage.CSharp, ((string[])(null)));
             testRunner.OnFeatureStart(featureInfo);
@@ -48,9 +48,9 @@ namespace Medidata.RBT.Features.Rave.Features.EDC
         public virtual void TestInitialize()
         {
             if (((TechTalk.SpecFlow.FeatureContext.Current != null) 
-                        && (TechTalk.SpecFlow.FeatureContext.Current.FeatureInfo.Title != "Query Refiring Logic")))
+                        && (TechTalk.SpecFlow.FeatureContext.Current.FeatureInfo.Title != "Query Refiring Logic5")))
             {
-                Medidata.RBT.Features.Rave.Features.EDC.QueryRefiringLogicFeature.FeatureSetup(null);
+                Medidata.RBT.Features.Rave.Features.EDC.QueryRefiringLogic5Feature.FeatureSetup(null);
             }
         }
         
@@ -95,13 +95,14 @@ namespace Medidata.RBT.Features.Rave.Features.EDC
 #line 18
  testRunner.And("Study \"Standard Study\" has Draft \"<Draft1>\"");
 #line 19
- testRunner.And("I publish and push \"CRF Version<RANDOMNUMBER>\" to site \"Site 1\"");
+ testRunner.And("I publish and push CRF Version \"CRF Version<RANDOMNUMBER>\" of Draft \"<Draft1>\" to" +
+                    " site \"Site 1\" in Study \"Standard Study\"");
 #line hidden
         }
         
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute(@"PB_5.1.1 As an EDC user, when I entered bad data in lab field A and lab field B that resulted in the system opening a query on lab field B, and I answered the query without changing the data, and the query is then closed, and I entered good data in lab field A, if I then entered the same bad data in lab field A as when the query was closed, then the system should not refire a query on lab field B.  Query with requires response = true and requires manual close = true.")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Query Refiring Logic")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Query Refiring Logic5")]
         public virtual void PB_5_1_1AsAnEDCUserWhenIEnteredBadDataInLabFieldAAndLabFieldBThatResultedInTheSystemOpeningAQueryOnLabFieldBAndIAnsweredTheQueryWithoutChangingTheDataAndTheQueryIsThenClosedAndIEnteredGoodDataInLabFieldAIfIThenEnteredTheSameBadDataInLabFieldAAsWhenTheQueryWasClosedThenTheSystemShouldNotRefireAQueryOnLabFieldB_QueryWithRequiresResponseTrueAndRequiresManualCloseTrue_()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo(@"PB_5.1.1 As an EDC user, when I entered bad data in lab field A and lab field B that resulted in the system opening a query on lab field B, and I answered the query without changing the data, and the query is then closed, and I entered good data in lab field A, if I then entered the same bad data in lab field A as when the query was closed, then the system should not refire a query on lab field B.  Query with requires response = true and requires manual close = true.", new string[] {
