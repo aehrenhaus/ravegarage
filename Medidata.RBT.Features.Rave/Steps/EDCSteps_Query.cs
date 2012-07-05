@@ -44,12 +44,18 @@ namespace Medidata.RBT.Features.Rave
 		}
 
 		[StepDefinition(@"I verify Query with message ""([^""]*)"" is displayed on Field ""([^""]*)""")]
-		public void TheQueryWithMessageIsDisplayedOnField____(string message, string fieldNames)
+		public void IVerifyQueryWithMessage____IsDisplayedOnField____(string message, string fieldNames)
 		{
 			bool canFind = CurrentPage.As<CRFPage>().CanFindQueryMessage(fieldNames, message);
 			Assert.IsTrue(canFind, "Can't find message");
 		}
 
+		[StepDefinition(@"I verify closed Query with message ""([^""]*)"" is displayed on Field ""([^""]*)""")]
+		public void IVerifyClosedQueryWithMessage____IsDisplayedOnField____(string message, string fieldNames)
+		{
+			bool canFind = CurrentPage.As<CRFPage>().CanFindClosedQueryMessage(fieldNames, message);
+			Assert.IsTrue(canFind, "Can't find message");
+		}
 
 		[StepDefinition(@"I verify Query with message ""([^""]*)"" is not displayed on Field ""([^""]*)""")]
 		public void TheQueryWithMessageIsNotDisplayedOnField____(string message, string fieldNames)

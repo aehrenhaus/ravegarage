@@ -3,7 +3,7 @@
 	<configSections>
 		<section name="specFlow" type="TechTalk.SpecFlow.Configuration.ConfigurationSectionHandler,TechTalk.SpecFlow" />
 		<section name="RBTConfiguration" type="Medidata.RBT.RBTConfiguration, Medidata.RBT" />
-		<section name="RaveConfiguration" type="Medidata.RBT.Features.Rave.RaveConfiguration, Medidata.RBT.Features.Rave" />
+		<section name="RaveConfiguration" type="Medidata.RBT.PageObjects.Rave.RaveConfiguration, Medidata.RBT.PageObjects.Rave" />
 		<section name="dataConfiguration" type="Microsoft.Practices.EnterpriseLibrary.Data.Configuration.DatabaseSettings, Microsoft.Practices.EnterpriseLibrary.Data, Version=5.0.414.0, Culture=neutral, PublicKeyToken=null" requirePermission="true" />
 	</configSections>
 
@@ -14,20 +14,21 @@
 		TakeScreenShots ="True"
 		SqlScriptsPath="C:\"
 		BrowserName="firefox"
-		BrowserPath=""
+		BrowserPath="D:\MDSOL\Firefox12\firefox.exe"
 		FirefoxProfilePath=""
 		WebDriverPath="..\..\..\ExternalDlls\WebDrivers\"
-		SnapshotName=""
+		SnapshotName="UAT_Snap"
 		DatabaseConnection="RaveConnection"
 		GenerateReportAfterTest="true"
 		/>
-	
+
 	<RaveConfiguration
 		RaveURL ="https://rave564package.mdsol.com/MedidataRave/"
+		RWSURL=""
 		DefaultUser="defuser"
 		DefaultUserPassword="password"
 		/>
-	
+
 	<specFlow>
 		<language feature="en-US" tool="" />
 		<unitTestProvider name="MsTest" />
@@ -37,7 +38,6 @@
 		</stepAssemblies>
 	</specFlow>
 	<appSettings>
-
 
 	</appSettings>
 	<dataConfiguration defaultDatabase="Connection String" />

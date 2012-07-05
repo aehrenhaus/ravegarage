@@ -165,8 +165,8 @@ Folder "Screening" enter and save data on forms "Informed Consent" and "Concomit
 		| Start Date          | 08 Jan 2000 |
 		| Current Axis Number | 20          |
 	And I open log line 1
-	And I verify Requires Response Query with message "'Date Informed Consent Signed' is greater. Please revise." is not displayed on Field "Start Date"
-	And I verify Requires Response Query with message "Informed Consent 'Current Distribution Number' is not equal to Concomitant Medications 'Current Axis Number'." is not displayed on Field "Current Axis Number"
+	And I verify closed Query with message "'Date Informed Consent Signed' is greater. Please revise." is displayed on Field "Start Date"
+	And I verify closed Query with message "Informed Consent 'Current Distribution Number' is not equal to Concomitant Medications 'Current Axis Number'." is displayed on Field "Current Axis Number"
 
 	And I take a screenshot
 	
@@ -298,26 +298,29 @@ Scenario: PB_8.1.6
 @PB_8.2.1
 @Draft
 Scenario: PB_8.2.1 Task Summary
-	And I select Study "Edit Check Study 8" and Site "Edit Check Site 8"
+
+	And I select Study "Edit Check Study 3" and Site "Edit Check Site 8"
 	And I select a Subject "sub22079"
-	And I expand "Open Queries" in Task Summary
+#New Step Def
+	When I expand "Open Queries" in Task Summary
 	Then I should see "Screening-Concomitant Medications" in "Open Queries"
 	And I select "Screening-Concomitant Medications" in "Open Queries"
-
-
-	Then I verify "Start Date" field displays query opened with require response
-    And I verify "Current Axis Number" field displays query opened with require response
+	And I open log line 3
+	And I verify Requires Response Query with message "'Date Informed Consent Signed' is greater. Please revise." is displayed on Field "Start Date"
+	And I verify Requires Response Query with message "Informed Consent 'Current Distribution Number' is not equal to Concomitant Medications 'Current Axis Number'." is displayed on Field "Current Axis Number"
 	And I take a screenshot
 	
-	And I select a Subject "sub801"
-	And I expand "Cancel Query" in Task Summary
-
+	And I select a Subject "sub22079"
+#New Step Def
+	When I expand "Cancel Query" in Task Summary
 	Then I should see "Screening-Concomitant Medications" in "Open Query"
 	And I select "Screening-Concomitant Medications" in "Open Query"
-
-
-	Then I verify "Start Date" field displays query opened with require response and Cancel
-    And I verify "Current Axis Number" field displays query opened with require response and Cancel
+	And I open log line 3
+	And I verify Requires Response Query with message "'Date Informed Consent Signed' is greater. Please revise." is displayed on Field "Start Date"
+	And I verify Requires Response Query with message "Informed Consent 'Current Distribution Number' is not equal to Concomitant Medications 'Current Axis Number'." is displayed on Field "Current Axis Number"
+# Need new step def
+	And I verify Cancel Query with message "'Date Informed Consent Signed' is greater. Please revise." is displayed on Field "Start Date"
+	And I verify Cancel Query with message "Informed Consent 'Current Distribution Number' is not equal to Concomitant Medications 'Current Axis Number'." is displayed on Field "Start Date"
 	And I take a screenshot
 	
 #----------------------------------------------------------------------------------------------------------------------------------------	
@@ -325,48 +328,53 @@ Scenario: PB_8.2.1 Task Summary
 @PB_8.3.1
 @Draft
 Scenario: PB_8.3.1 Query Management
+
 	And I navigate to "Query Management"
-	And I choose "Edit Check Study 8 (Prod)" from "Study"
+	And I choose "Edit Check Study 3 (Prod)" from "Study"
 	And I choose "World" from "Site Group"
 	And I choose "Edit Check Site 8" from "Site"
-	And I choose "sub801" from "Subject"
+	And I choose "sub22079" from "Subject"
 	And I click button "Advanced Search"
 
-
-
-	And I select Form "" in search result.
-
-	And I navigate to form "Concomitant Medications" for subject "sub801"
-	And I verify "Start Date" field displays query opened with require response on the second log line
-    And I verify "Current Axis Number" field displays query opened with require response on the second log line
+	And I select Form "Concomitant Medications" in search result
+	And I open log line 2
+	And I verify Requires Response Query with message "'Date Informed Consent Signed' is greater. Please revise." is displayed on Field "Start Date"
+	And I verify Requires Response Query with message "Informed Consent 'Current Distribution Number' is not equal to Concomitant Medications 'Current Axis Number'." is displayed on Field "Current Axis Number"	
 	And I take a screenshot
-	And I verify "Start Date" field displays query opened with require response on the third log line
-    And I verify "Current Axis Number" field displays query opened with require response on the third log line
+	And I open log line 3
+	And I verify Requires Response Query with message "'Date Informed Consent Signed' is greater. Please revise." is displayed on Field "Start Date"
+	And I verify Requires Response Query with message "Informed Consent 'Current Distribution Number' is not equal to Concomitant Medications 'Current Axis Number'." is displayed on Field "Current Axis Number"	
 	And I take a screenshot
 	
-    And I add a new log line, enter and save the data, from the table below
-	    |Field             |Data        |
-        |Start Date |07 Jan 2000 |
-	    |End Date |12 Jan 2000 |
-	    |Original Axis Numbe   |10          |
-	    |Current Axis Number   |18          |
-	And I verify "Start Date" field displays query opened with require response on the fourth log line
-    And I verify "Current Axis Number" field displays query opened with require response on the fourth log line
+#New Step Def
+	And I select "Cancel"
+	And I enter data in CRF on new log line 4 and save and reopen
+	    | Field               | Data        |
+	    | Start Date          | 07 Jan 2000 |
+	    | End Date            | 12 Jan 2000 |
+	    | Original Axis Numbe | 10          |
+	And I verify Requires Response Query with message "'Date Informed Consent Signed' is greater. Please revise." is displayed on Field "Start Date"
+	And I verify Requires Response Query with message "Informed Consent 'Current Distribution Number' is not equal to Concomitant Medications 'Current Axis Number'." is displayed on Field "Current Axis Number"	
 	And I take a screenshot
 	And I enter data in CRF
-		|Field             |Data        |
-        |Start Date |09 Jan 2000 |
-	    |Current Axis Number   |19          |
-	And I cancel the queries on "Start Date" and "Current Axis Number" fields on the fourth log line
+		| Field               | Data        |
+		| Start Date          | 09 Jan 2000 |
+		| Current Axis Number | 19          |
+	And I cancel the Query "'Date Informed Consent Signed' is greater. Please revise." on Field "Start Date"
+	And I cancel the Query "Informed Consent 'Current Distribution Number' is not equal to Concomitant Medications 'Current Axis Number'." on Field "Current Axis Number"
 	And I save the CRF page
 	And I take a screenshot
-	And I verify the queries did not fire on "Start Date" and "Current Axis Number" fields
+	And I open log line 4
+	And I verify Field "Start Date" has NO Query
+	And I verify Field "Current Axis Number" has NO Query
 	And I take a screenshot
 	And I enter data in CRF and save
-		|Field             |Data        |
-        |Start Date |07 Jan 2000 |
-	    |Current Axis Number   |18          |
-	And I verify new queries did fire on "Start Date" and "Current Axis Number" fields	
+		| Field               | Data        |
+		| Start Date          | 07 Jan 2000 |
+		| Current Axis Number | 18          |
+	And I open log line 4
+	And I verify Requires Response Query with message "'Date Informed Consent Signed' is greater. Please revise." is displayed on Field "Start Date"
+	And I verify Requires Response Query with message "Informed Consent 'Current Distribution Number' is not equal to Concomitant Medications 'Current Axis Number'." is displayed on Field "Current Axis Number"
 	And I take a screenshot
 	
 #----------------------------------------------------------------------------------------------------------------------------------------	
@@ -388,34 +396,48 @@ Scenario: PB_8.3.2
 @Draft
 Scenario: PB_8.3.3
 	
-	And I select Form "Concomitant Medications" within folder "Screening"
-    And I add a new log line enter and save
-	    |Field             |Data        |
-        |Start Date |07 Jan 2000 |
-	    |End Date |12 Jan 2000 |
-	    |Original Axis Numbe   |10          |
-	    |Current Axis Number   |18          |
-	And I verify "Start Date" field displays query opened with require response on the fifth log line
-    And I verify "Current Axis Number" field displays query opened with require response on the fifth log line
+	And I navigate to "Query Management"
+	And I choose "Edit Check Study 3 (Prod)" from "Study"
+	And I choose "World" from "Site Group"
+	And I choose "Edit Check Site 8" from "Site"
+	And I choose "sub22079" from "Subject"
+	And I click button "Advanced Search"
+
+	And I select Form "Concomitant Medications" in search result
+	And I enter data in CRF on new log line 5 and save and reopen
+	    | Field               | Data        |
+	    | Start Date          | 07 Jan 2000 |
+	    | End Date            | 12 Jan 2000 |
+	    | Original Axis Numbe | 10          |
+	    | Current Axis Number | 18          |
+	And I open log line 5
+	And I verify Requires Response Query with message "'Date Informed Consent Signed' is greater. Please revise." is displayed on Field "Start Date"
+	And I verify Requires Response Query with message "Informed Consent 'Current Distribution Number' is not equal to Concomitant Medications 'Current Axis Number'." is displayed on Field "Current Axis Number"		
 	And I take a screenshot
-	And I answer the queries on "Start Date" and "Current Axis Number" fields
+	And I answer the Query "'Date Informed Consent Signed' is greater. Please revise." on Field "Start Date" with "{answer}"
+	And I answer the Query "Informed Consent 'Current Distribution Number' is not equal to Concomitant Medications 'Current Axis Number'." on Field "Current Axis Number" with "{answer}"
 	And I save the CRF page
+	And I open log line 5
 	And I enter data in CRF and save
-		|Field             |Data        |
-        |Start Date |09 Jan 2000 |
-	    |Current Axis Number   |19          |
-	And I save the CRF page	
-	And I close the queries on "Start Date" field and "Current Axis Number" fields
+		| Field               | Data        |
+		| Start Date          | 09 Jan 2000 |
+		| Current Axis Number | 19          |
+	And I open log line 5
+	And I close the Query "'Date Informed Consent Signed' is greater. Please revise." on Field "Start Date"
+	And I close the Query "Informed Consent 'Current Distribution Number' is not equal to Concomitant Medications 'Current Axis Number'." on Field "Current Axis Number"	
 	And I save the CRF page
 	And I take a screenshot
-	And I verify the queries did not fire on "Start Date" and "Current Axis Number" fields
+	And I open log line 5
+	And I verify Field "Start Date" has NO Query
+	And I verify Field "Current Axis Number" has NO Query
 	And I take a screenshot
 	And I enter data in CRF and save
-		|Field             |Data        |
-        |Start Date |07 Jan 2000 |
-	    |Current Axis Number   |18          |
-	And I save the CRF page 
-	And I verify new queries did fire on "Start Date" and "Current Axis Number" fields	
+		| Field               | Data        |
+		| Start Date          | 07 Jan 2000 |
+		| Current Axis Number | 18          |
+	And I open log line 5
+	And I verify Requires Response Query with message "'Date Informed Consent Signed' is greater. Please revise." is displayed on Field "Start Date"
+	And I verify Requires Response Query with message "Informed Consent 'Current Distribution Number' is not equal to Concomitant Medications 'Current Axis Number'." is displayed on Field "Current Axis Number"
 	And I take a screenshot
 	
 #----------------------------------------------------------------------------------------------------------------------------------------	

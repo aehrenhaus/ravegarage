@@ -107,9 +107,14 @@ namespace Medidata.RBT
 		{
 			ScenarioContext.Current[key] = val;
 		}
+		
+		/// <summary>
+		/// After whole test
+		/// </summary>
 		[AfterTestRun]
-		public static void TestAfterTest()
+		public static void TestTearDown()
 		{
+			//generate report using powershell
 			if (RBTConfiguration.Default.GenerateReportAfterTest)
 			{
 				System.Diagnostics.Process p = new System.Diagnostics.Process();
@@ -120,6 +125,9 @@ namespace Medidata.RBT
 			}
 		}
 
+		/// <summary>
+		/// Before each feature
+		/// </summary>
 		[BeforeFeature()]
 		public static void FeatureSetup()
 		{
@@ -128,6 +136,9 @@ namespace Medidata.RBT
 				OpenBrower();
 		}
 
+		/// <summary>
+		/// After each feature
+		/// </summary>
 		[AfterFeature()]
 		public static void FeatureTeardown()
 		{
@@ -135,6 +146,9 @@ namespace Medidata.RBT
 				CloseBrower();
 		}
 
+		/// <summary>
+		/// Before each scenario
+		/// </summary>
 		[BeforeScenario()]
 		public void ScenarioSetup()
 		{
@@ -176,14 +190,24 @@ namespace Medidata.RBT
 			}
 		}
 		
+		/// <summary>
+		/// After each scenario
+		/// </summary>
 		[AfterScenario]
 		public void ScenarioTearDown()
 		{
+			//take a snapshot after every scenario
+			TrySaveScreenShot();
+
 			if(!RBTConfiguration.Default.OneBrowserPerFeature)
 				CloseBrower();
 
 		}
 
+		/// <summary>
+		/// Points to the folder that contains result files(Screenshots etc.)
+		/// </summary>
+		/// <returns></returns>
 		public static string GetTestResultPath()
 		{
 			string featureStartTime = CurrentFeatureStartTime.ToString().Replace(":", "-").Replace("/", "-");

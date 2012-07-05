@@ -15,8 +15,12 @@ namespace Medidata.RBT
         {
 			string str = DateTime.Now.Ticks.ToString();
 			int digits = int.Parse(args[0]);
-			//TODO: handle the case when digits is larger than str' length
-			return str.Substring(str.Length-digits);
+			Random rnd = new Random();
+			int startNum = (int)Math.Pow(10, digits-1);
+			int endNum = (int)Math.Pow(10, digits)-1;
+			int num = rnd.Next(startNum,endNum);
+			
+			return num.ToString();
         }
 
 		public string[] ArgsDescription
