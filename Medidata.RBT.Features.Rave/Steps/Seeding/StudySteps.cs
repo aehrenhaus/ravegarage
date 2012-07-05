@@ -21,7 +21,7 @@ namespace Medidata.RBT.Features.Rave
 		}
 
 
-		[StepDefinition(@"Study  ""([^""]*)"" has Draft ""([^""]*)""")]
+		[StepDefinition(@"Study ""([^""]*)"" has Draft ""([^""]*)""")]
 		public void Study____HasDraft____(string studyName, string draftName)
 		{
 
