@@ -197,7 +197,7 @@ namespace Medidata.RBT.PageObjects.Rave
 		
 			var dpLeftTd = RavePagesHelper.GetDatapointLabelContainer(fieldName).EnhanceAs<EnhancedElement>();
 
-			var fieldTable = dpLeftTd.Ascestor("table");
+			var fieldTable = dpLeftTd.Ancestor("table");
 
 			//for a closed query that still shows on the filed, the container table's class should be evenRow/oddRow
 			//  a still opened query's container table should have evenWarning/oddWarning

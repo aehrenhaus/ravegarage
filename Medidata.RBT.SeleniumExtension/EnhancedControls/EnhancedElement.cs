@@ -119,7 +119,7 @@ namespace Medidata.RBT.SeleniumExtension
 		{
 			return this.TryFindElementBy(By.XPath("./..")).EnhanceAs < EnhancedElement>();
 		}
-		public EnhancedElement Ascestor(string name)
+		public EnhancedElement Ancestor(string name)
 		{
 			EnhancedElement parent = this.Parent();
 			while (parent != null && parent.TagName != name)

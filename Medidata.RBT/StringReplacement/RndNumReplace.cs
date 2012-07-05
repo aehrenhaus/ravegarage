@@ -15,11 +15,11 @@ namespace Medidata.RBT
         {
 			string str = DateTime.Now.Ticks.ToString();
 			int digits = int.Parse(args[0]);
+			Random rnd = new Random();
+			int startNum = (int)Math.Pow(10, digits-1);
+			int endNum = (int)Math.Pow(10, digits)-1;
+			int num = rnd.Next(startNum,endNum);
 			
-			long num = int.Parse( str.Substring(str.Length-digits));
-			//make sure it does not start with a 0. 
-			while (num < Math.Pow(10, digits-1))
-				num *= 10;
 			return num.ToString();
         }
 
