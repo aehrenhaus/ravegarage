@@ -4,7 +4,7 @@
 #TESTING FOR LAB FORM WITH 2 FIELDS INVOLVED IN QUERY FIRING
 
 #-- project to be uploaded in excel spreadsheet 'Standard Study'
-Feature: Query Refiring Logic
+Feature: Query Refiring Logic5
 	As a Rave user
 	When I manually close a query or cancel, the query should not re-fire if the exact same data is entered into the system
 	So that I dont have to re-enter the exact same response
@@ -16,7 +16,7 @@ Background:
 		|User 1 |Standard Study	|cdm1 |Site 1 |S100			|
 	And Role "cdm1" has Action "Query"
 	And Study "Standard Study" has Draft "<Draft1>"
-	And I publish and push "CRF Version<RANDOMNUMBER>" to site "Site 1" 
+	And I publish and push CRF Version "CRF Version<RANDOMNUMBER>" of Draft "<Draft1>" to site "Site 1" in Study "Standard Study"
 
 
 @release_564_Patch11

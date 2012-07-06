@@ -13,8 +13,8 @@ namespace Medidata.RBT.Features.Rave
 	[Binding]
 	public class ArchitectSteps : BrowserStepsBase
 	{
-		[StepDefinition(@"I publish and push CRF Version ""([^""]*)"" of Draft  to site ""([^""]*)"" in Study ""([^""]*)""")]
-		public void IPublishAndPushCRFVersion____OfDraftToSite____InStudy____(string crfName, string siteName, string studyName)
+		[StepDefinition(@"I publish and push CRF Version ""([^""]*)"" of Draft ""([^""]*)"" to site ""([^""]*)"" in Study ""([^""]*)""")]
+		public void IPublishAndPushCRFVersion____OfDraftToSite____InStudy____(string crfName, string draftName, string siteName, string studyName)
 		{
 
 		}
