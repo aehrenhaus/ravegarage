@@ -8,130 +8,18 @@ using OpenQA.Selenium.Remote;
 using OpenQA.Selenium.Support.UI;
 using Medidata.RBT.SeleniumExtension;
 using TechTalk.SpecFlow;
+using TechTalk.SpecFlow.Assist;
 
 namespace Medidata.RBT.PageObjects.Rave
 {
 	public  class CRFPage : BaseEDCTreePage
 	{
-        private Checkbox GetQueryCancelCheckbox(string message, string fieldName)
-        {
-            var fieldArea = RavePagesHelper.GetDatapointLabelContainer(fieldName);
-            var queryTable = fieldArea.FindElements(
-                By.XPath(".//td[@class='crf_preText']/table"));
-            foreach (var table in queryTable)
-            {
-                if (table.Text.IndexOf(message) != -1)
-                {
-					return table.Checkboxes()[0];
-                }
-            }
-            return null;
-        }
-
-
-        public CRFPage CancelQuery(string message, string fieldName)
-        {
-            var queryCancelCheckbox = GetQueryCancelCheckbox(message, fieldName);
-            if (queryCancelCheckbox == null)
-                throw new Exception(String.Format("Query cancel checkbox not found for message: {0}, field: {1}", message, fieldName));
-
-            queryCancelCheckbox.Check();
-            return this;
-        }
 
 		public CRFPage FillDataPoint(string label, string val)
 		{
 			RavePagesHelper.FillDataPoint(label, val);
 			return this;
 		}
-
-        private Textbox GetQueryResponseTextbox(string message, string fieldName)
-        {
-            var fieldArea = RavePagesHelper.GetDatapointLabelContainer(fieldName);
-            var queryTable = fieldArea.FindElements(
-                By.XPath(".//td[@class='crf_preText']/table"));
-            foreach (var table in queryTable)
-            {
-                if (table.Text.IndexOf(message) != -1)
-                {
-					return table.Textboxes()[0];
-                }
-            }
-            return null;
-        }
-
-
-        private bool QueryWithNoRequiresResponseExists(string message, string fieldName)
-        {
-            var fieldArea = RavePagesHelper.GetDatapointLabelContainer(fieldName);
-            var queryTable = fieldArea.FindElements(
-                By.XPath(".//td[@class='crf_preText']/table"));
-            foreach (var table in queryTable)
-            {
-                if (table.Text.IndexOf(message) != -1)
-                {
-                    if (table.Textboxes().Count == 0)
-                        return true;
-                    else
-                        return false;
-                }
-            }
-            return false ;
-        }
-
-        private Dropdown GetQueryCloseDropdown(string message, string fieldName)
-        {
-            var fieldArea = RavePagesHelper.GetDatapointLabelContainer(fieldName);
-            var queryTable = fieldArea.FindElements(
-                By.XPath(".//td[@class='crf_preText']/table"));
-            foreach (var table in queryTable)
-            {
-                if (table.Text.IndexOf(message) != -1)
-                {
-                    return table.Dropdowns()[0];
-                }
-            }
-            return null;
-        }
-
-
-		//private bool QueryWithNoRequiresResponseExists(string message, string fieldName)
-		//{
-		//    var fieldArea = RavePagesHelper.GetDatapointLabelContainer(fieldName);
-		//    var queryTable = fieldArea.FindElements(
-		//        By.XPath(".//td[@class='crf_preText']/table"));
-		//    foreach (var table in queryTable)
-		//    {
-		//        if (table.Text.IndexOf(message) != -1)
-		//        {
-		//            if (table.Textboxes().Count == 0)
-		//                return true;
-		//            else
-		//                return false;
-		//        }
-		//    }
-		//    return false ;
-		//}
-
-        public CRFPage AnswerQuery(string message, string fieldName, string answer)
-        {
-            var queryTextbox = GetQueryResponseTextbox(message, fieldName);
-            if (queryTextbox == null)
-                throw new Exception(String.Format("Query textbox not found for message: {0}, field: {1}", message, fieldName));
-
-			queryTextbox.EnhanceAs<Textbox>().SetText(answer);
-            return this;
-        }
-
-        public CRFPage CloseQuery(string message, string fieldName)
-        {
-            var queryAnswerDropdown = GetQueryCloseDropdown(message, fieldName);
-            if (queryAnswerDropdown == null)
-                throw new Exception(String.Format("Query Answer Dropdown not found for message: {0}, field: {1}", message, fieldName));
-
-            queryAnswerDropdown.SelectByText("Close Query");
-            return this;
-        }
 
 		public CRFPage AddLogLine()
 		{
@@ -187,49 +75,100 @@ namespace Medidata.RBT.PageObjects.Rave
 			return this;
 		}
 
-		public bool CanFindQuery(Table table)
+		#region Query related
+
+		public bool CanFindQuery(QuerySearchFilter filter)
 		{
-			return false;
+			return CanFindQuery(filter.Field,filter.Message,filter.RR, filter.RC,filter.Closed);
 		}
 
-        public bool CanFindQueryMessage(string fieldName, string message)
-        {
-           var dpLeftTd =  RavePagesHelper.GetDatapointLabelContainer(fieldName);
-           return dpLeftTd.Text.IndexOf(message) != -1;
-        }
-
-		public bool CanFindClosedQueryMessage(string fieldName, string message)
+		public bool CanFindQuery(string fieldName, string message = null, bool? requiresResponse = null, bool? requiresClose = null, bool? closed=null)
 		{
-		
-			var dpLeftTd = RavePagesHelper.GetDatapointLabelContainer(fieldName).EnhanceAs<EnhancedElement>();
+			IWebElement queryContainer = null;
+			try
+			{
+				queryContainer = FindQuery(fieldName, message, requiresResponse, requiresClose, closed);
+			}
+			catch
+			{
+			}
+			return queryContainer != null;
 
+		}
+
+		//the table that contains the Query(left side)
+		public IWebElement FindQuery(string fieldName, string message = null, bool? requiresResponse = null, bool? requiresClose = null, bool? closed = null)
+		{
+			var dpLeftTd = RavePagesHelper.GetDatapointLabelContainer(fieldName).EnhanceAs<EnhancedElement>();
+			var queryTables = dpLeftTd.FindElements(
+					By.XPath(".//td[@class='crf_preText']/table"));
+			IWebElement queryTable = null;
+
+			//if message is null, means find the only query
+			if (message != null)
+			{
+				queryTable = queryTables.FirstOrDefault(x => x.Text.LastIndexOf(message) != -1);
+				if (queryTable == null)
+					throw new Exception("Query not found");
+			}
+			else
+			{
+				if (queryTables.Count != 1)
+					throw new Exception("Expecting only one query on field");
+				queryTable = queryTables[0];
+			}
+
+
+			//is closed query?
 			var fieldTable = dpLeftTd.Ancestor("table");
 
-			//for a closed query that still shows on the filed, the container table's class should be evenRow/oddRow
-			//  a still opened query's container table should have evenWarning/oddWarning
+			bool isClosed = fieldTable.Class.IndexOf("Warning") == -1;
+			if (closed == true && !isClosed)
+				throw new Exception("Expect query to be a closed query.");
+			if (closed == false && isClosed)
+				throw new Exception("Expect query to be a open query.");
 
+			//having the textbox means rr
+			bool rr = dpLeftTd.Textboxes().Count==1;
+			if (requiresResponse == true && !rr)
+				throw new Exception("Expect query to require response.");
+			if (requiresResponse == false && rr)
+				throw new Exception("Expect query to not require response.");
 
+			//having the dropdown means requires manual close
+			bool rc = dpLeftTd.Dropdowns().Count == 1;
+			if (requiresClose == true && !rc)
+				throw new Exception("Expect query to require close.");
+			if (requiresClose == false && rc)
+				throw new Exception("Expect query to not require close.");
 
-			return fieldTable.Class.IndexOf("Warning") == -1 && dpLeftTd.Text.IndexOf(message) != -1;
+			return queryTable;
 		}
 
-        public bool QueryExistOnField(string fieldName)
-        {
-            var fieldArea = RavePagesHelper.GetDatapointLabelContainer(fieldName);
-            var queryTable = fieldArea.FindElements(
-                By.XPath(".//td[@class='crf_preText']/table"));
-            return queryTable.Count > 0; 
-        }
+		public CRFPage AnswerQuery(string message, string fieldName, string answer)
+		{
+			var queryContainer = FindQuery(fieldName, message);
+			queryContainer.Textboxes()[0].SetText(answer);
+			return this;
+		}
 
-        public bool CanFindQueryRequiringResponse(string fieldName, string message)
-        {
-            return (GetQueryResponseTextbox(message, fieldName) != null);
-        }
+		public CRFPage CloseQuery(string message, string fieldName)
+		{
+			var queryContainer = FindQuery(fieldName, message);
+			queryContainer.Dropdowns()[0].SelectByText("Close Query");
+		
+			return this;
+		}
 
-        public bool CanFindQueryNotRequiringResponse(string fieldName, string message)
-        {
-            return (QueryWithNoRequiresResponseExists(message, fieldName));
-        }
-        
+		public CRFPage CancelQuery(string message, string fieldName)
+		{
+			var queryContainer = FindQuery(fieldName, message);
+			queryContainer.Checkboxes()[0].Check();
+		
+			return this;
+		}
+
+		#endregion
+
 	}
 }

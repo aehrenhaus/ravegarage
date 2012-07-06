@@ -73,6 +73,7 @@
     <Compile Include="FileRequestPage.cs" />
     <Compile Include="DCFQueriesPage.cs" />
     <Compile Include="Config\RaveConfiguration.cs" />
+    <Compile Include="QuerySearchFilter.cs" />
     <Compile Include="TSDV\SubjectOverridePage.cs" />
     <Compile Include="PromptsPage.cs" />
     <Compile Include="ReportsPage.cs" />

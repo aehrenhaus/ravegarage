@@ -46,8 +46,8 @@ Scenario: PB_4.1.1 On a Cross Forms Standard form to log form, when a query has 
 	    | Original Axis Number | 10          |
 	    | Current Axis Number  | 20          |
 	And I open log line 1
-	And I verify Query with message "'Date Informed Consent Signed' is greater. Please revise." without Requires Response is displayed on Field "Start Date"
-	And I verify Query with message "Informed Consent 'Current Distribution Number' is not equal to Concomitant Medications 'Current Axis Number'." without Requires Response is displayed on Field "Current Axis Number"
+	And I verify Not Requires Response Query with message "'Date Informed Consent Signed' is greater. Please revise." is displayed on Field "Start Date"
+	And I verify Not Requires Response Query with message "Informed Consent 'Current Distribution Number' is not equal to Concomitant Medications 'Current Axis Number'." is displayed on Field "Current Axis Number"
 	And I take a screenshot
 	And I enter data in CRF and save
 		| Field               | Data        |
@@ -101,8 +101,8 @@ Scenario: PB_4.1.3
 	    | End Date             | 12 Jan 2000 |
 	    | Original Axis Number | 10          |
 	    | Current Axis Number  | 18          |	
-	And I verify Query with message "'Date Informed Consent Signed' is greater. Please revise." without Requires Response is displayed on Field "Start Date"
-	And I verify Query with message "Informed Consent 'Current Distribution Number' is not equal to Concomitant Medications 'Current Axis Number'." without Requires Response is displayed on Field "Current Axis Number"
+	And I verify Not Requires Response Query with message "'Date Informed Consent Signed' is greater. Please revise." is displayed on Field "Start Date"
+	And I verify Not Requires Response Query with message "Informed Consent 'Current Distribution Number' is not equal to Concomitant Medications 'Current Axis Number'." is displayed on Field "Current Axis Number"
 	And I take a screenshot
 	And I enter data in CRF
 		| Field               | Data        |
@@ -165,8 +165,8 @@ Scenario: PB_4.2.1 On a Cross Folders Standard form to log form, Folder "Screeni
 	    | Original Axis Number | 100         |
 	    | Current Axis Number  | 99          |
 	And I open log line 1
-	And I verify Query with message "'Date Informed Consent Signed' can not be greater than.'" without Requires Response is displayed on Field "Start Date"
-	And I verify Query with message "'Current Distribution Number' is not equal 'Current Axis Number'." without Requires Response is displayed on Field "Current Axis Number"
+	And I verify Not Requires Response Query with message "'Date Informed Consent Signed' can not be greater than.'" is displayed on Field "Start Date"
+	And I verify Not Requires Response Query with message "'Current Distribution Number' is not equal 'Current Axis Number'." is displayed on Field "Current Axis Number"
 	And I take a screenshot
 	And I enter data in CRF
 		| Field                | Data        |
@@ -221,8 +221,8 @@ Scenario: PB_4.2.3
 	    | End Date             | 12 Feb 2000 |
 	    | Original Axis Number | 100         |
 	    | Current Axis Number  | 98          |		
-	And I verify Query with message "'Date Informed Consent Signed' can not be greater than.'" without Requires Response is displayed on Field "Start Date"
-	And I verify Query with message "'Current Distribution Number' is not equal 'Current Axis Number'." without Requires Response is displayed on Field "Current Axis Number"
+	And I verify Not Requires Response Query with message "'Date Informed Consent Signed' can not be greater than.'" is displayed on Field "Start Date"
+	And I verify Not Requires Response Query with message "'Current Distribution Number' is not equal 'Current Axis Number'." is displayed on Field "Current Axis Number"
 	And I take a screenshot
 	And I enter data in CRF
 		| Field                | Data        |
@@ -281,8 +281,8 @@ Folder "Week 1" enter and save data on forms "Concomitant Medications" and "Info
 	    | Original Axis Number | 100         |
 	    | Current Axis Number  | 101         |
 	And I open log line 1	
-	And I verify Query with message "Start Date can not be greater than End Date." without Requires Response is displayed on Field "End Date"
-	And I verify Query with message "'Original Axis Number' is Less Than 'Current Axis Number' on first Number field." without Requires Response is displayed on Field "Current Axis Number"
+	And I verify Not Requires Response Query with message "Start Date can not be greater than End Date." is displayed on Field "End Date"
+	And I verify Not Requires Response Query with message "'Original Axis Number' is Less Than 'Current Axis Number' on first Number field." is displayed on Field "Current Axis Number"
 	And I take a screenshot
 	And I enter data in CRF and save
 		| Field               | Data        |
@@ -334,8 +334,8 @@ Scenario: PB_4.3.3
 	    | End Date             | 14 Feb 2000 |
 	    | Original Axis Number | 1999        |
 	    | Current Axis Number  | 2000        |
-	And I verify Query with message "Start Date can not be greater than End Date." without Requires Response is displayed on Field "End Date"
-	And I verify Query with message "'Original Axis Number' is Less Than 'Current Axis Number' on first Number field." without Requires Response is displayed on Field "Current Axis Number"
+	And I verify Not Requires Response Query with message "Start Date can not be greater than End Date." is displayed on Field "End Date"
+	And I verify Not Requires Response Query with message "'Original Axis Number' is Less Than 'Current Axis Number' on first Number field." is displayed on Field "Current Axis Number"
 	And I take a screenshot
 	And I enter data in CRF
 		| Field               | Data        |
@@ -386,8 +386,8 @@ Scenario: PB_4.3.5
 	    | End Date                     | 11 Jan 2000 |
 	    | Original Distribution Number | 100         |
 	    | Current Distribution Number  | 101         |
-	And I verify Query with message "'Date Informed Consent Signed' is not equal to Current Date" without Requires Response is displayed on Field "End Date"
-	And I verify Query with message "'Original Distribution Number' and 'Current Distribution Number' fields are not equal." without Requires Response is displayed on Field "Current Distribution Number"
+	And I verify Not Requires Response Query with message "'Date Informed Consent Signed' is not equal to Current Date" is displayed on Field "End Date"
+	And I verify Not Requires Response Query with message "'Original Distribution Number' and 'Current Distribution Number' fields are not equal." is displayed on Field "Current Distribution Number"
 	And I take a screenshot
 	And I enter data in CRF
 	    | Field                       | Data        |
@@ -452,10 +452,10 @@ Folder "Screening" enter and save data on forms "Concomitant Medications" and "A
 	And I take a screenshot
     And I select Form "Concomitant Medications"		
 	And I open log line 1
-	And I verify Query with message "Date can not be less than." without Requires Response is displayed on Field "Start Date"
-	And I verify Query with message "'Original Axis Number' is Less Than 'Current Axis Number' on first Number field." without Requires Response is displayed on Field "End Date"
-	And I verify Query with message "'Current Distribution Number' is greater than or Equal to 'Current Axis Number' on Log." without Requires Response is displayed on Field "Original Axis Number"
-	And I verify Query with message "'AE Number' and 'Current Axis Number' cannot equal." without Requires Response is displayed on Field "Current Axis Number"
+	And I verify Not Requires Response Query with message "Date can not be less than." is displayed on Field "Start Date"
+	And I verify Not Requires Response Query with message "'Original Axis Number' is Less Than 'Current Axis Number' on first Number field." is displayed on Field "End Date"
+	And I verify Not Requires Response Query with message "'Current Distribution Number' is greater than or Equal to 'Current Axis Number' on Log." is displayed on Field "Original Axis Number"
+	And I verify Not Requires Response Query with message "'AE Number' and 'Current Axis Number' cannot equal." is displayed on Field "Current Axis Number"
 	And I take a screenshot
 	And I enter data in CRF and save
 	    | Field                | Data        |
@@ -528,10 +528,10 @@ Scenario: PB_4.4.3
 	And I take a screenshot
 	And I select Form "Concomitant Medications"
 	And I open log line 2
-	And I verify Query with message "Date can not be less than." without Requires Response is displayed on Field "Start Date"
-	And I verify Query with message "'Original Axis Number' is Less Than 'Current Axis Number' on first Number field." without Requires Response is displayed on Field "End Date"
-	And I verify Query with message "'Current Distribution Number' is greater than or Equal to 'Current Axis Number' on Log." without Requires Response is displayed on Field "Original Axis Number"
-	And I verify Query with message "'AE Number' and 'Current Axis Number' cannot equal." without Requires Response is displayed on Field "Current Axis Number"
+	And I verify Not Requires Response Query with message "Date can not be less than." is displayed on Field "Start Date"
+	And I verify Not Requires Response Query with message "'Original Axis Number' is Less Than 'Current Axis Number' on first Number field." is displayed on Field "End Date"
+	And I verify Not Requires Response Query with message "'Current Distribution Number' is greater than or Equal to 'Current Axis Number' on Log." is displayed on Field "Original Axis Number"
+	And I verify Not Requires Response Query with message "'AE Number' and 'Current Axis Number' cannot equal." is displayed on Field "Current Axis Number"
 	And I take a screenshot
     And I enter data in CRF
 	    | Field                | Data        |
@@ -609,8 +609,8 @@ Folder "Screening" enter and save data on forms "Informed Consent" and "Concomit
 	    | Original Axis Number | 10          |
 	    | Current Axis Number  | 20          |
 	And I open log line 1
-	And I verify Query with message "'Date Informed Consent Signed' is greater. Please revise." without Requires Response is displayed on Field "Start Date"
-	And I verify Query with message "Informed Consent 'Current Distribution Number' is not equal to Concomitant Medications 'Current Axis Number'." without Requires Response is displayed on Field "Current Axis Number"			
+	And I verify Not Requires Response Query with message "'Date Informed Consent Signed' is greater. Please revise." is displayed on Field "Start Date"
+	And I verify Not Requires Response Query with message "Informed Consent 'Current Distribution Number' is not equal to Concomitant Medications 'Current Axis Number'." is displayed on Field "Current Axis Number"			
 	And I take a screenshot
 	And I cancel the Query "'Date Informed Consent Signed' is greater. Please revise." on Field "Start Date"
 	And I cancel the Query "Informed Consent 'Current Distribution Number' is not equal to Concomitant Medications 'Current Axis Number'." on Field "Current Axis Number"
@@ -622,8 +622,8 @@ Folder "Screening" enter and save data on forms "Informed Consent" and "Concomit
 		| Start Date          | 09 Jan 2000 |
 		| Current Axis Number | 19          |
 	And I open log line 1			
-	And I verify Field "Start Date" has NO Query
-	And I verify Field "Current Axis Number" has NO Query
+	And I verify Field "Start Date" has no Query
+	And I verify Field "Current Axis Number" has no Query
 	And I take a screenshot
 
 	When I enter data in CRF and save
@@ -665,8 +665,8 @@ Scenario: PB_4.5.3
 	    | End Date             | 12 Jan 2000 |
 	    | Original Axis Number | 10          |
 	    | Current Axis Number  | 18          |		
-	And I verify Query with message "'Date Informed Consent Signed' is greater. Please revise." without Requires Response is displayed on Field "Start Date"
-	And I verify Query with message "Informed Consent 'Current Distribution Number' is not equal to Concomitant Medications 'Current Axis Number'." without Requires Response is displayed on Field "Current Axis Number"
+	And I verify Not Requires Response Query with message "'Date Informed Consent Signed' is greater. Please revise." is displayed on Field "Start Date"
+	And I verify Not Requires Response Query with message "Informed Consent 'Current Distribution Number' is not equal to Concomitant Medications 'Current Axis Number'." is displayed on Field "Current Axis Number"
 	And I take a screenshot
 	And I enter Data in CRF
 		| Field               | Data        |
@@ -677,8 +677,8 @@ Scenario: PB_4.5.3
 	And I save the CRF page
 	And I take a screenshot
 	And I open log line 2
-	And I verify Field "Start Date" has NO Query
-	And I verify Field "Current Axis Number" has NO Query
+	And I verify Field "Start Date" has no Query
+	And I verify Field "Current Axis Number" has no Query
 	And I take a screenshot
 	
 	When I enter data in CRF and save
@@ -735,8 +735,8 @@ Folder "Week 1" enter and save data on form "Concomitant Medications"
 	    | Original Axis Number | 100         |
 	    | Current Axis Number  | 99          |
 	And I open log line 1
-	And I verify Query with message "'Date Informed Consent Signed' can not be greater than." without Requires Response is displayed on Field "Start Date"
-	And I verify Query with message "'Current Distribution Number' is not equal 'Current Axis Number'." without Requires Response is displayed on Field "Current Axis Number"
+	And I verify Not Requires Response Query with message "'Date Informed Consent Signed' can not be greater than." is displayed on Field "Start Date"
+	And I verify Not Requires Response Query with message "'Current Distribution Number' is not equal 'Current Axis Number'." is displayed on Field "Current Axis Number"
 	And I take a screenshot
 	And I cancel the Query "'Date Informed Consent Signed' can not be greater than." on Field "Start Date"
 	And I cancel the Query "'Current Distribution Number' is not equal 'Current Axis Number'." on Field "Current Axis Number"
@@ -749,8 +749,8 @@ Folder "Week 1" enter and save data on form "Concomitant Medications"
 		| Original Axis Number | 201         |
 		| Current Axis Number  | 200         |
 	And I open log line 1
-	And I verify Field "Start Date" has NO Query
-	And I verify Field "Current Axis Number" has NO Query
+	And I verify Field "Start Date" has no Query
+	And I verify Field "Current Axis Number" has no Query
 	And I take a screenshot
 	
 	When I enter data in CRF and save
@@ -793,8 +793,8 @@ Scenario: PB_4.6.3
 	    | End Date             | 12 Feb 2000 |
 	    | Original Axis Number | 100         |
 	    | Current Axis Number  | 98          |
-	And I verify Query with message "'Date Informed Consent Signed' can not be greater than." without Requires Response is displayed on Field "Start Date"
-	And I verify Query with message "'Current Distribution Number' is not equal 'Current Axis Number'." without Requires Response is displayed on Field "Current Axis Number"
+	And I verify Not Requires Response Query with message "'Date Informed Consent Signed' can not be greater than." is displayed on Field "Start Date"
+	And I verify Not Requires Response Query with message "'Current Distribution Number' is not equal 'Current Axis Number'." is displayed on Field "Current Axis Number"
 	And I take a screenshot
 	And I enter data in CRF
 		| Field                | Data        |
@@ -806,8 +806,8 @@ Scenario: PB_4.6.3
 	And I save the CRF page
 	And I open log line 2
 	And I take a screenshot
-	And I verify Field "Start Date" has NO Query
-	And I verify Field "Current Axis Number" has NO Query
+	And I verify Field "Start Date" has no Query
+	And I verify Field "Current Axis Number" has no Query
 	And I take a screenshot
 
 	When I enter data in CRF and save
@@ -856,8 +856,8 @@ Folder "Week 1" enter and save data on forms "Concomitant Medications" and "Info
 	    | Original Axis Number | 100         |
 	    | Current Axis Number  | 101         |
 	And I open log line 1
-	And I verify Query with message "Start Date can not be greater than End Date." without Requires Response is displayed on Field "End Date"
-	And I verify Query with message "Original Axis Number' is Less Than 'Current Axis Number' on first Number field." without Requires Response is displayed on Field "Current Axis Number"
+	And I verify Not Requires Response Query with message "Start Date can not be greater than End Date." is displayed on Field "End Date"
+	And I verify Not Requires Response Query with message "Original Axis Number' is Less Than 'Current Axis Number' on first Number field." is displayed on Field "Current Axis Number"
 	And I take a screenshot
 	And I cancel the Query "Start Date can not be greater than End Date." on Field "End Date"
 	And I cancel the Query "Original Axis Number' is Less Than 'Current Axis Number' on first Number field." on Field "Current Axis Number"
@@ -869,8 +869,8 @@ Folder "Week 1" enter and save data on forms "Concomitant Medications" and "Info
 		| End Date            | 12 Jan 2000 |
 		| Current Axis Number | 100         |
 	And I open log line 1
-	And I verify Field "End Date" has NO Query
-	And I verify Field "Current Axis Number" has NO Query
+	And I verify Field "End Date" has no Query
+	And I verify Field "Current Axis Number" has no Query
 	And I take a screenshot
 	
 	When I enter data in CRF and save
@@ -914,8 +914,8 @@ Scenario: PB_4.7.3
 	    | Original Axis Number | 1999        |
 	    | Current Axis Number  | 2000        |
 	And I open log line 2	
-	And I verify Query with message "Start Date can not be greater than End Date." without Requires Response is displayed on Field "End Date"
-	And I verify Query with message "Original Axis Number' is Less Than 'Current Axis Number' on first Number field." without Requires Response is displayed on Field "Current Axis Number"
+	And I verify Not Requires Response Query with message "Start Date can not be greater than End Date." is displayed on Field "End Date"
+	And I verify Not Requires Response Query with message "Original Axis Number' is Less Than 'Current Axis Number' on first Number field." is displayed on Field "Current Axis Number"
 	And I take a screenshot
 	And I enter data in CRF
 		| Field               | Data        |
@@ -926,8 +926,8 @@ Scenario: PB_4.7.3
 	And I save the CRF page
 	And I take a screenshot
 	And I open log line 2
-	And I verify Field "End Date" has NO Query
-	And I verify Field "Current Axis Number" has NO Query
+	And I verify Field "End Date" has no Query
+	And I verify Field "Current Axis Number" has no Query
 	And I take a screenshot
 	
 	When I enter data in CRF and save
@@ -969,8 +969,8 @@ Scenario: PB_4.7.5
 	    | End Date                     | 11 Jan 2000 |
 	    | Original Distribution Number | 100         |
 	    | Current Distribution Number  | 101         |
-	And I verify Query with message "'Date Informed Consent Signed' is not equal to Current Date." without Requires Response is displayed on Field "End Date"
-	And I verify Query with message "'Original Distribution Number' and 'Current Distribution Number' fields are not equal." without Requires Response is displayed on Field "Current Distribution Number"
+	And I verify Not Requires Response Query with message "'Date Informed Consent Signed' is not equal to Current Date." is displayed on Field "End Date"
+	And I verify Not Requires Response Query with message "'Original Distribution Number' and 'Current Distribution Number' fields are not equal." is displayed on Field "Current Distribution Number"
 	And I take a screenshot
 	And I enter data in CRF
 	    | Field                       | Data        |
@@ -980,8 +980,8 @@ Scenario: PB_4.7.5
 	And I cancel the Query "'Original Distribution Number' and 'Current Distribution Number' fields are not equal." on Field "Current Distribution Number"
 	And I save the CRF page
 	And I take a screenshot
-	And I verify Field "End Date" has NO Query
-	And I verify Field "Current Distribution Number" has NO Query
+	And I verify Field "End Date" has no Query
+	And I verify Field "Current Distribution Number" has no Query
 	And I take a screenshot
 
     When I enter data in CRF and save
@@ -1038,10 +1038,10 @@ Folder "Screening" enter and save data on forms "Concomitant Medications" and "A
 	And I take a screenshot
     And I select Form "Concomitant Medications"	
 	And I open log line 1	
-	And I verify Query with message "Date can not be less than." without Requires Response is displayed on Field "Start Date"
-	And I verify Query with message "Original Axis Number' is Less Than 'Current Axis Number' on first Number field." without Requires Response is displayed on Field "End Date"
-	And I verify Query with message "'Current Distribution Number' is greater than or Equal to 'Current Axis Number' on Log." without Requires Response is displayed on Field "Original Axis Number"
-	And I verify Query with message "'AE Number' and 'Current Axis Number' cannot equal." without Requires Response is displayed on Field "Current Axis Number"		
+	And I verify Not Requires Response Query with message "Date can not be less than." is displayed on Field "Start Date"
+	And I verify Not Requires Response Query with message "Original Axis Number' is Less Than 'Current Axis Number' on first Number field." is displayed on Field "End Date"
+	And I verify Not Requires Response Query with message "'Current Distribution Number' is greater than or Equal to 'Current Axis Number' on Log." is displayed on Field "Original Axis Number"
+	And I verify Not Requires Response Query with message "'AE Number' and 'Current Axis Number' cannot equal." is displayed on Field "Current Axis Number"		
 	And I take a screenshot
 	And I cancel the Query "Date can not be less than." on Field "Start Date"
 	And I cancel the Query "Original Axis Number' is Less Than 'Current Axis Number' on first Number field." on Field "End Date"
@@ -1057,10 +1057,10 @@ Folder "Screening" enter and save data on forms "Concomitant Medications" and "A
 	    | Original Axis Number | 102         |
 	    | Current Axis Number  | 65          |	
 	And I open log line 1
-	And I verify Field "Start Date" has NO Query
-	And I verify Field "End Date" has NO Query
-	And I verify Field "Original Axis Number" has NO Query
-	And I verify Field "Current Axis Number" has NO Query
+	And I verify Field "Start Date" has no Query
+	And I verify Field "End Date" has no Query
+	And I verify Field "Original Axis Number" has no Query
+	And I verify Field "Current Axis Number" has no Query
 	And I take a screenshot
 	
 	When I enter data in CRF and save
@@ -1121,10 +1121,10 @@ Scenario: PB_4.8.3
 	And I take a screenshot
 	And I select Form "Concomitant Medications"
 	And I open log line 2
-	And I verify Query with message "Date can not be less than." without Requires Response is displayed on Field "Start Date"
-	And I verify Query with message "Original Axis Number' is Less Than 'Current Axis Number' on first Number field." without Requires Response is displayed on Field "End Date"
-	And I verify Query with message "'Current Distribution Number' is greater than or Equal to 'Current Axis Number' on Log." without Requires Response is displayed on Field "Original Axis Number"
-	And I verify Query with message "'AE Number' and 'Current Axis Number' cannot equal." without Requires Response is displayed on Field "Current Axis Number"
+	And I verify Not Requires Response Query with message "Date can not be less than." is displayed on Field "Start Date"
+	And I verify Not Requires Response Query with message "Original Axis Number' is Less Than 'Current Axis Number' on first Number field." is displayed on Field "End Date"
+	And I verify Not Requires Response Query with message "'Current Distribution Number' is greater than or Equal to 'Current Axis Number' on Log." is displayed on Field "Original Axis Number"
+	And I verify Not Requires Response Query with message "'AE Number' and 'Current Axis Number' cannot equal." is displayed on Field "Current Axis Number"
 	And I take a screenshot
     And I enter data in CRF
 	    | Field                | Data        |
@@ -1139,10 +1139,10 @@ Scenario: PB_4.8.3
 	And I save the CRF page
 	And I take a screenshot
 	And I open log line 2
-	And I verify Field "Start Date" has NO Query
-	And I verify Field "End Date" has NO Query
-	And I verify Field "Original Axis Number" has NO Query
-	And I verify Field "Current Axis Number" has NO Query
+	And I verify Field "Start Date" has no Query
+	And I verify Field "End Date" has no Query
+	And I verify Field "Original Axis Number" has no Query
+	And I verify Field "Current Axis Number" has no Query
 	And I take a screenshot
 
 	When I enter data in CRF and save
