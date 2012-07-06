@@ -119,38 +119,50 @@ namespace Medidata.RBT
 			{
 				System.Diagnostics.Process p = new System.Diagnostics.Process();
 				p.StartInfo = new System.Diagnostics.ProcessStartInfo(
-					@"C:\Windows\SysWOW64\WindowsPowerShell\v1.0\powershell.exe",
+					@"powershell.exe",
 					"../../../reportGen.ps1");
 				p.Start();
 			}
+
+			//close browser
+			if (RBTConfiguration.Default.AutoCloseBrowser)
+				Browser.Close();
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[BeforeTestRun]
+		public static void BeforeTestRun()
+		{
+			OpenBrower();
 		}
 
 		/// <summary>
 		/// Before each feature
 		/// </summary>
 		[BeforeFeature()]
-		public static void FeatureSetup()
+		public static void BeforeFeature()
 		{
 			CurrentFeatureStartTime = DateTime.Now;
-			if (RBTConfiguration.Default.OneBrowserPerFeature)
-				OpenBrower();
+
+				
 		}
 
 		/// <summary>
 		/// After each feature
 		/// </summary>
 		[AfterFeature()]
-		public static void FeatureTeardown()
+		public static void AfterFeature()
 		{
-			if (RBTConfiguration.Default.OneBrowserPerFeature)
-				CloseBrower();
+
 		}
 
 		/// <summary>
 		/// Before each scenario
 		/// </summary>
 		[BeforeScenario()]
-		public void ScenarioSetup()
+		public void BeforeScenario()
 		{
 			//start time
 			CurrentScenarioStartTime = DateTime.Now;
@@ -166,42 +178,17 @@ namespace Medidata.RBT
 			//restore snapshot
 			//DbHelper.RestoreSnapshot();
 
-			//LAST step: open browser
-			if(!RBTConfiguration.Default.OneBrowserPerFeature)
-				OpenBrower();
 		}
 
-		private static void OpenBrower()
-		{
-			if (Browser == null)
-			{
-				Browser = PageBase.OpenBrowser();
-			}
-		}
-
-		private static void CloseBrower()
-		{
-			//Close browser
-			if (Browser != null)
-			{
-				if (RBTConfiguration.Default.AutoCloseBrowser)
-					Browser.Close();
-				Browser = null;
-			}
-		}
 		
 		/// <summary>
 		/// After each scenario
 		/// </summary>
 		[AfterScenario]
-		public void ScenarioTearDown()
+		public void AfterScenario()
 		{
 			//take a snapshot after every scenario
 			TrySaveScreenShot();
-
-			if(!RBTConfiguration.Default.OneBrowserPerFeature)
-				CloseBrower();
-
 		}
 
 		/// <summary>
@@ -250,10 +237,33 @@ namespace Medidata.RBT
 			ScreenshotIndex++;
 		}
 
+		#region Private methods
+
 		private static string MakeValidFileName(string name)
 		{
 			//TODO: implment
 			return name;
 		}
+
+
+		private static void OpenBrower()
+		{
+			if (Browser == null)
+			{
+				Browser = PageBase.OpenBrowser();
+			}
+		}
+
+		private static void CloseBrower()
+		{
+			//Close browser
+			if (Browser != null)
+			{
+				Browser.Close();
+				Browser = null;
+			}
+		}
+
+		#endregion
 	}
 }
