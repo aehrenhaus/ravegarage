@@ -44,19 +44,11 @@ Background:F
 	
 #----------------------------------------------------------------------------------------------------------------------------------------	
 Scenario:  test
-	And I navigate to "Architect"
-	And I select "AM Edit Check Study" in "Active Projects"
-	
-	And I navigate to "Amendment Manager"
-	And I choose "V1 (25)" from "Source CRF"
-	And I choose "Target003 (39)" from "Target CRF"
-	And I click button "Create Plan"
-	And I take a screenshot
-	And I navigate to "Execute Plan"
-	And I migrate all Subjects
-	And I select Migration Results and verify Job Status is set to Complete
-	And I take a screenshot
-
+	And I select Study "Edit Check Study 3" and Site "Edit Check Site 3"
+	And I select a Subject "sub315"
+	And I select Form "Concomitant Medications" in Folder "Screening"
+	And I open log line 1
+	And I answer the only Query on Field "Start Date" with "bla"
 
 
 @release_564_Patch11
@@ -156,8 +148,8 @@ Folder "Screening" enter and save data on forms "Informed Consent" and "Concomit
 		| Start Date          | 09 Jan 2000 |
 		| Current Axis Number | 19          |
 	And I open log line 1
-	And I verify Field "Start Date" has NO Query
-	And I verify Field "Current Axis Number" has NO Query
+	And I verify Field "Start Date" has no Query
+	And I verify Field "Current Axis Number" has no Query
 
 	And I take a screenshot
 	And I enter data in CRF and save
@@ -215,8 +207,8 @@ Scenario: PB_8.1.3
 	And I save the CRF page
 	And I take a screenshot
 	And I open log line 2
-	And I verify Field "Start Date" has NO Query
-	And I verify Field "Current Axis Number" has NO Query
+	And I verify Field "Start Date" has no Query
+	And I verify Field "Current Axis Number" has no Query
 	And I take a screenshot
 	And I enter data in CRF and save
 		| Field               | Data        |
@@ -268,8 +260,8 @@ Scenario: PB_8.1.5
 	And I save the CRF page
 	And I take a screenshot
 	And I open log line 3
-	And I verify Field "Start Date" has NO Query
-	And I verify Field "Current Axis Number" has NO Query
+	And I verify Field "Start Date" has no Query
+	And I verify Field "Current Axis Number" has no Query
 	And I take a screenshot
 	And I enter data in CRF and save
 		| Field               | Data        |
@@ -365,8 +357,8 @@ Scenario: PB_8.3.1 Query Management
 	And I save the CRF page
 	And I take a screenshot
 	And I open log line 4
-	And I verify Field "Start Date" has NO Query
-	And I verify Field "Current Axis Number" has NO Query
+	And I verify Field "Start Date" has no Query
+	And I verify Field "Current Axis Number" has no Query
 	And I take a screenshot
 	And I enter data in CRF and save
 		| Field               | Data        |
@@ -428,8 +420,8 @@ Scenario: PB_8.3.3
 	And I save the CRF page
 	And I take a screenshot
 	And I open log line 5
-	And I verify Field "Start Date" has NO Query
-	And I verify Field "Current Axis Number" has NO Query
+	And I verify Field "Start Date" has no Query
+	And I verify Field "Current Axis Number" has no Query
 	And I take a screenshot
 	And I enter data in CRF and save
 		| Field               | Data        |

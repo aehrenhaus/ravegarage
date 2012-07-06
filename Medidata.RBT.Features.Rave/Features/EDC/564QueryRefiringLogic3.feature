@@ -177,8 +177,8 @@ originally opened the query, then queries are displayed.
 	And I save the CRF page
 	And I take a screenshot	
 	And I open log line 2
-	And I verify Field "Start Date" has NO Query
-	And I verify Field "Current Axis Number" has NO Query
+	And I verify Field "Start Date" has no Query
+	And I verify Field "Current Axis Number" has no Query
 	And I take a screenshot	
 
 	When I enter data in CRF
@@ -298,8 +298,8 @@ Scenario: PB_3.2.3 On a Cross Folder Standard form to log form, When a query has
 	And I save the CRF page
 	And I take a screenshot
 	And I open log line 2
-	And I verify Field "Start Date" has NO Query
-	And I verify Field "Current Axis Number" has NO Query
+	And I verify Field "Start Date" has no Query
+	And I verify Field "Current Axis Number" has no Query
 	And I take a screenshot
 
 	# Given closed Query with message "'Date Informed Consent Signed' can not be greater than." exists on "Start Date" in folder "Week 1" in form "Concomitant Medications" in subject "SUB302"
@@ -367,8 +367,8 @@ Scenario: PB_3.3.1 On a Cross Forms log form to Standard form, When a query has 
 	And I answer the Query "'Date Informed Consent Signed' is not equal to Current Date" on Field "End Date" with "{answer}"
 	And I answer the Query "'Original Distribution Number' and 'Current Distribution Number' fields are not equal." on Field "Current Distribution Number" with "{answer}"
 	And I save the CRF page
-	And I verify Field "End Date" has NO Query
-	And I verify Field "Current Distribution Number" has NO Query
+	And I verify Field "End Date" has no Query
+	And I verify Field "Current Distribution Number" has no Query
 	And I take a screenshot	
 
 	# Given closed Query with message "'Date Informed Consent Signed' is not equal to Current Date" exists on "End Date" in folder "Week 1" in form "Informed Consent" in subject "SUB303"
@@ -448,10 +448,10 @@ Scenario: PB_3.4.1 On a Cross Forms log form to log form, When a query has been 
 	  |Current Axis Number		|65          |	
 	And I save the CRF page
 	And I open log line 1	
-	And I verify Field "Start Date" has NO Query
-	And I verify Field "End Date" has NO Query
-	And I verify Field "Original Axis Number" has NO Query
-	And I verify Field "Current Axis Number" has NO Query
+	And I verify Field "Start Date" has no Query
+	And I verify Field "End Date" has no Query
+	And I verify Field "Original Axis Number" has no Query
+	And I verify Field "Current Axis Number" has no Query
 	And I take a screenshot	
 
 	# Given closed Query with message "Date can not be less than." exists on "Start Date" in folder "Screening" in form "Concomitant Medications" in subject "SUB304"
@@ -537,10 +537,10 @@ Scenario: PB_3.4.3 On a Cross Forms log form to log form, When a query has been 
 	#And I answer the Query "'AE Number' and 'Current Axis Number' cannot equal." on Field "Current Axis Number" with "{answer}"
 	And I save the CRF page
 	And I open log line 2 
-	And I verify Field "Start Date" has NO Query
-	And I verify Field "End Date" has NO Query
-	And I verify Field "Original Axis Number" has NO Query
-	And I verify Field "Current Axis Number" has NO Query
+	And I verify Field "Start Date" has no Query
+	And I verify Field "End Date" has no Query
+	And I verify Field "Original Axis Number" has no Query
+	And I verify Field "Current Axis Number" has no Query
 	And I take a screenshot	
 
 	# Given closed Query with message "Date can not be less than." exists on "Start Date" in folder "Week 1" in form "Concomitant Medications" in subject "SUB302"

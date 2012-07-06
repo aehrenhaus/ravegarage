@@ -8,6 +8,7 @@ using OpenQA.Selenium;
 using System.IO;
 using System.Drawing.Imaging;
 using System.Collections.Specialized;
+using System.Threading;
 
 namespace Medidata.RBT
 {
@@ -117,6 +118,7 @@ namespace Medidata.RBT
 			//generate report using powershell
 			if (RBTConfiguration.Default.GenerateReportAfterTest)
 			{
+		
 				System.Diagnostics.Process p = new System.Diagnostics.Process();
 				p.StartInfo = new System.Diagnostics.ProcessStartInfo(
 					@"powershell.exe",
@@ -126,7 +128,7 @@ namespace Medidata.RBT
 
 			//close browser
 			if (RBTConfiguration.Default.AutoCloseBrowser)
-				Browser.Close();
+				CloseBrower();
 		}
 
 		/// <summary>

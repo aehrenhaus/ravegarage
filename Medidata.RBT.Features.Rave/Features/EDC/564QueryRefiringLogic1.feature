@@ -868,7 +868,7 @@ Scenario: PB_1.8.2
 @release_564_Patch11
 @PB_1.9.1
 @Draft
-Scenario: PB_1.9.1 On a Cross Forms Standard form to log form. Folder "Screening" enter and save data on forms "Informed Consent" and "Concomitant Medications". Queries fired, Answer and  Manually close queries in log fields, Modify log fields to different good data, do not touch standard form - no query and no log in the Database.
+Scenario: PB_1.9.1 On a Cross Forms Standard form to log form. Folder "Screening" enter and save data on forms "Informed Consent" and "Concomitant Medications". Queries fired, Answer and  Manually close queries in log fields, Modify log fields to different good data, do not touch standard form - no Query and no log in the Database.
 	
     And I create a Subject
 	| Field            | Value                                                          |

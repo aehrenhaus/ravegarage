@@ -7,6 +7,8 @@ using Medidata.RBT.PageObjects;
 using Medidata.RBT.PageObjects.Rave;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Medidata.RBT;
+using TechTalk.SpecFlow.Assist;
+
 
 namespace Medidata.RBT.Features.Rave
 {
@@ -14,19 +16,21 @@ namespace Medidata.RBT.Features.Rave
 	{
 		#region Verify with table
 
+
+
 		//table, logline, not exist
 		[StepDefinition(@"I verify Query is not displayed on log line (\d+)")]
-		public void IVerifyQueryIsNotDisplayedOnLogline____(Table table, int logLine)
+		public void IVerifyQueryIsNotDisplayedOnLogline____(int logLine, Table table)
 		{
-			bool canFind = CurrentPage.As<CRFPage>().OpenLogline(logLine).CanFindQuery(table);
+			bool canFind =CurrentPage.As<CRFPage>().OpenLogline(logLine).CanFindQuery( table.CreateInstance<QuerySearchFilter>());
 			Assert.IsFalse(canFind, "Query exists");
 		}
 
 		//table, logline exist
 		[StepDefinition(@"I verify Query is displayed on log line (\d+)")]
-		public void IVerifyQueryIsDisplayedOnLogline____(Table table, int logLine)
+		public void IVerifyQueryIsDisplayedOnLogline____(int logLine, Table table)
 		{
-			bool canFind = CurrentPage.As<CRFPage>().OpenLogline(logLine).CanFindQuery(table);
+			bool canFind = CurrentPage.As<CRFPage>().OpenLogline(logLine).CanFindQuery( table.CreateInstance<QuerySearchFilter>());
 			Assert.IsTrue(canFind, "Query doesn't exist");
 		}
 
@@ -34,7 +38,7 @@ namespace Medidata.RBT.Features.Rave
 		[StepDefinition(@"I verify Query is not displayed")]
 		public void IVerifyQueryIsNotDisplayed(Table table)
 		{
-			bool canFind = CurrentPage.As<CRFPage>().CanFindQuery(table);
+			bool canFind = CurrentPage.As<CRFPage>().CanFindQuery( table.CreateInstance<QuerySearchFilter>());
 			Assert.IsFalse(canFind, "Query exists");
 		}
 
@@ -42,7 +46,7 @@ namespace Medidata.RBT.Features.Rave
 		[StepDefinition(@"I verify Query is displayed")]
 		public void IVerifyQueryIsDisplayed(Table table)
 		{
-			bool canFind = CurrentPage.As<CRFPage>().CanFindQuery(table);
+			bool canFind = CurrentPage.As<CRFPage>().CanFindQuery( table.CreateInstance<QuerySearchFilter>());
 			Assert.IsTrue(canFind, "Query doesn't exist");
 		}
 
@@ -55,7 +59,7 @@ namespace Medidata.RBT.Features.Rave
 		[StepDefinition(@"I verify Field ""([^""]*)"" has no Query")]
 		public void IVerifyField____HasNoQuery(string fieldNames)
 		{
-			bool canFind = CurrentPage.As<CRFPage>().QueryExistOnField(fieldNames);
+			bool canFind = CurrentPage.As<CRFPage>().CanFindQuery(fieldNames);
 			Assert.IsFalse(canFind, "Queries found");
 		}
 
@@ -63,7 +67,7 @@ namespace Medidata.RBT.Features.Rave
 		[StepDefinition(@"I verify Field ""([^""]*)"" has no Query on log line (\d+)")]
 		public void IVerifyField____HasNoQuery(string fieldNames, int logline)
 		{
-			bool canFind = CurrentPage.As<CRFPage>().OpenLogline(logline).QueryExistOnField(fieldNames);
+			bool canFind = CurrentPage.As<CRFPage>().OpenLogline(logline).CanFindQuery(fieldNames);
 			Assert.IsFalse(canFind, "Queries found");
 		}	
 
@@ -72,26 +76,26 @@ namespace Medidata.RBT.Features.Rave
 		#region Inline verification
 
 		// not displayed , logline
-		[StepDefinition(@"I verify the Query with message ""([^""]*)"" is not displayed on Field ""([^""]*)"" on log line (\d+)")]
-		public void IVerifyTheQueryWithMesage____IsNotDisplayedOnField____OnLogline____(string message, string fieldNames, int logLine)
+		[StepDefinition(@"I verify Query with message ""([^""]*)"" is not displayed on Field ""([^""]*)"" on log line (\d+)")]
+		public void IVerifyQueryWithMesage____IsNotDisplayedOnField____OnLogline____(string message, string fieldNames, int logLine)
 		{
-			bool canFind = CurrentPage.As<CRFPage>().OpenLogline(logLine).CanFindQueryMessage(fieldNames, message);
+			bool canFind = CurrentPage.As<CRFPage>().OpenLogline(logLine).CanFindQuery(fieldNames, message);
 			Assert.IsFalse(canFind, "Can find message");
 		}
 
 		// displayed , logline
-		[StepDefinition(@"I verify the Query with message ""([^""]*)"" is displayed on Field ""([^""]*)"" on log line (\d+)")]
-		public void IVerifyTheQueryWithMesage____IsDisplayedOnField____OnLogline____(string message, string fieldNames, int logLine)
+		[StepDefinition(@"I verify Query with message ""([^""]*)"" is displayed on Field ""([^""]*)"" on log line (\d+)")]
+		public void IVerifyQueryWithMesage____IsDisplayedOnField____OnLogline____(string message, string fieldNames, int logLine)
 		{
-			bool canFind = CurrentPage.As<CRFPage>().OpenLogline(logLine).CanFindQueryMessage(fieldNames, message);
-			Assert.IsFalse(canFind, "Can find message");
+			bool canFind = CurrentPage.As<CRFPage>().OpenLogline(logLine).CanFindQuery(fieldNames, message);
+			Assert.IsTrue(canFind, "Can't find message");
 		}
 
 		//displayed
 		[StepDefinition(@"I verify Query with message ""([^""]*)"" is displayed on Field ""([^""]*)""")]
 		public void IVerifyQueryWithMessage____IsDisplayedOnField____(string message, string fieldNames)
 		{
-			bool canFind = CurrentPage.As<CRFPage>().CanFindQueryMessage(fieldNames, message);
+			bool canFind = CurrentPage.As<CRFPage>().CanFindQuery(fieldNames, message);
 			Assert.IsTrue(canFind, "Can't find message");
 		}
 
@@ -99,24 +103,23 @@ namespace Medidata.RBT.Features.Rave
 		[StepDefinition(@"I verify Query with message ""([^""]*)"" is not displayed on Field ""([^""]*)""")]
 		public void IVerifyQueryWithMessage____IsNotDisplayedOnField____(string message, string fieldNames)
 		{
-			bool canFind = CurrentPage.As<CRFPage>().CanFindQueryMessage(fieldNames, message);
+			bool canFind = CurrentPage.As<CRFPage>().CanFindQuery(fieldNames, message);
 			Assert.IsFalse(canFind, "Can find message");
 		}
 
 		//RR, displayed
 		[StepDefinition(@"I verify Requires Response Query with message ""([^""]*)"" is displayed on Field ""([^""]*)""")]
-		[StepDefinition(@"I verify Query with message ""([^""]*)"" with Requires Response is displayed on Field ""([^""]*)""")]
-		public void TheRequiresResponseQueryWithMessageIsDisplayedOnField____(string message, string fieldNames)
+		public void IVerifyRequiresResponseQueryWithMessage____IsDisplayedOnField____(string message, string fieldNames)
 		{
-			bool canFind = CurrentPage.As<CRFPage>().CanFindQueryRequiringResponse(fieldNames, message);
+			bool canFind = CurrentPage.As<CRFPage>().CanFindQuery(fieldNames, message, true);
 			Assert.IsTrue(canFind, "Can't find message");
 		}
 
 		//not RR, displayed
-        [StepDefinition(@"I verify Query with message ""([^""]*)"" without Requires Response is displayed on Field ""([^""]*)""")]
-        public void QueryNotRequiringResponseIsDisplayedOnField____(string message, string fieldNames)
+		[StepDefinition(@"I verify Not Requires Response Query with message ""([^""]*)"" is displayed on Field ""([^""]*)""")]
+		public void IVerifyNotRequiresResponseQueryWithMessage____IsDisplayedOnField____(string message, string fieldNames)
         {
-            bool canFind = CurrentPage.As<CRFPage>().CanFindQueryNotRequiringResponse(fieldNames, message);
+			bool canFind = CurrentPage.As<CRFPage>().CanFindQuery(fieldNames, message, false);
             Assert.IsTrue(canFind, "Can't find message");
         }
 
@@ -125,7 +128,7 @@ namespace Medidata.RBT.Features.Rave
 		[StepDefinition(@"I verify closed Query with message ""([^""]*)"" is displayed on Field ""([^""]*)""")]
 		public void IVerifyClosedQueryWithMessage____IsDisplayedOnField____(string message, string fieldNames)
 		{
-			bool canFind = CurrentPage.As<CRFPage>().CanFindClosedQueryMessage(fieldNames, message);
+			bool canFind = CurrentPage.As<CRFPage>().CanFindQuery(fieldNames, message,null,null,true);
 			Assert.IsTrue(canFind, "Can't find message");
 		}
 
@@ -152,20 +155,20 @@ namespace Medidata.RBT.Features.Rave
 		}
 
 		//answer the only query
-		[StepDefinition(@"I answer the only Query ""([^""]*)"" on Field ""([^""]*)"" with ""([^""]*)""")]
-		public void IAnswerTheOnlyQueryOnField____With____(string message, string fieldName, string answer)
+		[StepDefinition(@"I answer the only Query on Field ""([^""]*)"" with ""([^""]*)""")]
+		public void IAnswerTheOnlyQueryOnField____With____(string fieldName, string answer)
 		{
 			CRFPage page = CurrentPage.As<CRFPage>();
-			page.AnswerQuery(message, fieldName, answer);
+			page.AnswerQuery(null, fieldName, answer);
 
 		}
 
 		//answer the only query with random text
-		[StepDefinition(@"I answer the only Query ""([^""]*)"" on Field ""([^""]*)""")]
-		public void IAnswerTheOnlyQueryOn____(string message, string fieldNames)
+		[StepDefinition(@"I answer the only Query on Field ""([^""]*)""")]
+		public void IAnswerTheOnlyQueryOn____(string fieldNames)
 		{
 			CRFPage page = CurrentPage.As<CRFPage>();
-			page.AnswerQuery(message, fieldNames, System.DateTime.Today.Ticks.ToString());
+			page.AnswerQuery(null, fieldNames, System.DateTime.Today.Ticks.ToString());
 		}
 
 		//cancel
@@ -174,6 +177,14 @@ namespace Medidata.RBT.Features.Rave
 		{
             CRFPage page = CurrentPage.As<CRFPage>();
             page.CancelQuery(message, fieldName);
+		}
+
+		//cancel the only query
+		[StepDefinition(@"I cancel the only Query on Field ""([^""]*)""")]
+		public void ICancelTheQueryOnField____With____(string fieldName)
+		{
+			CRFPage page = CurrentPage.As<CRFPage>();
+			page.CancelQuery(null, fieldName);
 		}
 
 
@@ -189,7 +200,8 @@ namespace Medidata.RBT.Features.Rave
 		[StepDefinition(@"I close the only Query on Field ""([^""]*)""")]
 		public void ICloseTheQueryOnField____(string fieldNames)
 		{
-            throw new Exception("Method not implemented yet!");
+			CRFPage page = CurrentPage.As<CRFPage>();
+			page.CloseQuery(null, fieldNames);
 		}
 
 		#endregion
