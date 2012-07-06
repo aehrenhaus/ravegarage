@@ -10,7 +10,6 @@
 	<RBTConfiguration
 		TestResultPath="Output"
 		AutoCloseBrowser ="False"
-		OneBrowserPerFeature ="True"
 		TakeScreenShots ="True"
 		SqlScriptsPath="C:\"
 		BrowserName="firefox"

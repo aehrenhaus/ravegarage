@@ -7,6 +7,7 @@ using OpenQA.Selenium;
 using OpenQA.Selenium.Remote;
 using OpenQA.Selenium.Support.UI;
 using Medidata.RBT.SeleniumExtension;
+using TechTalk.SpecFlow;
 
 namespace Medidata.RBT.PageObjects.Rave
 {
@@ -184,6 +185,11 @@ namespace Medidata.RBT.PageObjects.Rave
 				throw new Exception("Can not find the Save button");
 			btn.Click();
 			return this;
+		}
+
+		public bool CanFindQuery(Table table)
+		{
+			return false;
 		}
 
         public bool CanFindQueryMessage(string fieldName, string message)
