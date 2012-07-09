@@ -73,9 +73,9 @@ namespace Medidata.RBT.PageObjects.Rave
             return this;
         }
 
-		public DDEPage FillDataPoint(string label, string val)
+		public DDEPage FillDataPoints(IEnumerable<FieldModel> fields)
 		{
-			RavePagesHelper.FillDataPoint(label, val);
+			RavePagesHelper.FillDataPoints(fields);
 			return this;
 		}
 

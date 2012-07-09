@@ -7,6 +7,8 @@ using Medidata.RBT.PageObjects;
 using Medidata.RBT.PageObjects.Rave;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Medidata.RBT;
+using TechTalk.SpecFlow.Assist;
+
 
 namespace Medidata.RBT.Features.Rave
 {
@@ -17,11 +19,8 @@ namespace Medidata.RBT.Features.Rave
 		public void IEnterDataInDDE(Table table)
 		{
 			var page = CurrentPage.As<DDEPage>();
+			page.FillDataPoints(table.CreateSet<FieldModel>());
 	
-			foreach (var row in table.Rows)
-			{
-				page.FillDataPoint(row[0], SpecialStringHelper.Replace( row[1]));
-			}
 		}
 
 		[StepDefinition(@"I enter data in DDE log line (\d+)")]

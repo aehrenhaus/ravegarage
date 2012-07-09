@@ -7,6 +7,8 @@ using Medidata.RBT.PageObjects;
 using Medidata.RBT.PageObjects.Rave;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Medidata.RBT;
+using TechTalk.SpecFlow.Assist;
+
 
 namespace Medidata.RBT.Features.Rave
 {
@@ -55,7 +57,7 @@ namespace Medidata.RBT.Features.Rave
 		[StepDefinition(@"I create a Subject")]
 		public void ICreateASubject____(Table table)
 		{
-			SpecialStringHelper.ReplaceTableColumn(table, "Value");
+			SpecialStringHelper.ReplaceTableColumn(table, "Data");
 			CurrentPage = CurrentPage.As<HomePage>().CreateSubject(table);
 		}
 
@@ -82,10 +84,8 @@ namespace Medidata.RBT.Features.Rave
 		{
 			CRFPage page = CurrentPage.As<CRFPage>();
 			page.ClickModify();
-			foreach (var row in table.Rows)
-			{
-				page.FillDataPoint(row[0], row[1]);
-			}
+			
+			page.FillDataPoints(table.CreateSet<FieldModel>());
 		}
 
 		[StepDefinition(@"I enter data in CRF and save")]

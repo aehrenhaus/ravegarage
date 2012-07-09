@@ -7,7 +7,7 @@ using OpenQA.Selenium;
 using OpenQA.Selenium.Remote;
 using TechTalk.SpecFlow;
 using Medidata.RBT.SeleniumExtension;
-
+using TechTalk.SpecFlow.Assist;
 
 namespace Medidata.RBT.PageObjects.Rave
 {
@@ -16,11 +16,7 @@ namespace Medidata.RBT.PageObjects.Rave
 
 		public SubjectPage FillNameAndSave(Table table)
 		{
-			foreach (var row in table.Rows)
-			{
-				string val  = row["Value"];
-				RavePagesHelper.FillDataPoint(row["Field"], val, false);
-			}
+			RavePagesHelper.FillDataPoints(table.CreateSet<FieldModel>());
       
 			IWebElement saveButton = Browser.TryFindElementById("_ctl0_Content_CRFRenderer_footer_SB");
 

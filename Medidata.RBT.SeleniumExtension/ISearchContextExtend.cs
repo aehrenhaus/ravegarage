@@ -35,9 +35,10 @@ namespace Medidata.RBT.SeleniumExtension
 
 		#region Table
 
-		public static ReadOnlyCollection<HtmlTable> Tables(this ISearchContext context)
+		public static ReadOnlyCollection<HtmlTable> Tables(this ISearchContext context, bool allLevel = true)
 		{
-			return context.FindElements(By.XPath(".//table")).CastReadOnlyCollection<HtmlTable>();
+			string xpath = allLevel ? ".//table" : "./table";
+			return context.FindElements(By.XPath(xpath)).CastReadOnlyCollection<HtmlTable>();
 		}
 
 		public static ReadOnlyCollection<HtmlTable> Tables(this ISearchContext context, string xpath)
@@ -52,7 +53,6 @@ namespace Medidata.RBT.SeleniumExtension
 
 		#endregion
 
-
 		#region Textbox
 
 		public static Textbox Textbox(this ISearchContext context, string partialID, bool nullable=false)
@@ -60,9 +60,10 @@ namespace Medidata.RBT.SeleniumExtension
 			return SelectExtendElement<Textbox>(context,"input", partialID, nullable);
 		}
 
-		public static ReadOnlyCollection<Textbox> Textboxes(this ISearchContext context)
+		public static ReadOnlyCollection<Textbox> Textboxes(this ISearchContext context, bool allLevel = true)
 		{
-			return context.FindElements(By.XPath(".//input[@type='text']")).CastReadOnlyCollection<Textbox>();
+			string xpath = allLevel ? ".//input[@type='text']" : "./input[@type='text']";
+			return context.FindElements(By.XPath(xpath)).CastReadOnlyCollection<Textbox>();
 		}
 
 		public static ReadOnlyCollection<Textbox> Textboxes(this ISearchContext context,string xpath)
@@ -71,7 +72,6 @@ namespace Medidata.RBT.SeleniumExtension
 		}
 
 		#endregion
-
 
 		#region Checkbox
 
@@ -82,9 +82,10 @@ namespace Medidata.RBT.SeleniumExtension
 		}
 
 
-		public static ReadOnlyCollection<Checkbox> Checkboxes(this ISearchContext context)
+		public static ReadOnlyCollection<Checkbox> Checkboxes(this ISearchContext context, bool allLevel = true)
         {
-			return context.FindElements(By.XPath(".//input[@type='checkbox']")).CastReadOnlyCollection<Checkbox>();
+			string xpath = allLevel ? ".//input[@type='checkbox']" : "./input[@type='checkbox']";
+			return context.FindElements(By.XPath(xpath)).CastReadOnlyCollection<Checkbox>();
         }
 
 		public static ReadOnlyCollection<Checkbox> Checkboxes(this ISearchContext context, string xpath)
@@ -103,9 +104,10 @@ namespace Medidata.RBT.SeleniumExtension
 		}
 
 
-		public static ReadOnlyCollection<Dropdown> Dropdowns(this ISearchContext context)
+		public static ReadOnlyCollection<Dropdown> Dropdowns(this ISearchContext context, bool allLevel = true)
 		{
-			return context.FindElements(By.XPath(".//select")).CastReadOnlyCollection<Dropdown>();
+			string xpath = allLevel ? ".//select" : "./select";
+			return context.FindElements(By.XPath(xpath)).CastReadOnlyCollection<Dropdown>();
 		}
 
 		public static ReadOnlyCollection<Dropdown> Dropdowns(this ISearchContext context, string xpath)
@@ -126,9 +128,10 @@ namespace Medidata.RBT.SeleniumExtension
 		}
 
 
-		public static ReadOnlyCollection<Hyperlink> Links(this ISearchContext context)
+		public static ReadOnlyCollection<Hyperlink> Links(this ISearchContext context, bool allLevel= true)
 		{
-			return context.FindElements(By.XPath(".//a")).CastReadOnlyCollection<Hyperlink>();
+			string xpath = allLevel ? ".//a" : "./a";
+			return context.FindElements(By.XPath(xpath)).CastReadOnlyCollection<Hyperlink>();
 		}
 
 		
@@ -153,9 +156,10 @@ namespace Medidata.RBT.SeleniumExtension
 		}
 
 
-		public static ReadOnlyCollection<Checkbox> Images(this ISearchContext context)
+		public static ReadOnlyCollection<Checkbox> Images(this ISearchContext context, bool allLevel =true)
 		{
-			return context.FindElements(By.XPath(".//img")).CastReadOnlyCollection<Checkbox>();
+			string xpath = allLevel ? ".//img" : "./img";
+			return context.FindElements(By.XPath(xpath)).CastReadOnlyCollection<Checkbox>();
 		}
 
 		public static ReadOnlyCollection<Checkbox> Images(this ISearchContext context, string xpath)
@@ -164,7 +168,6 @@ namespace Medidata.RBT.SeleniumExtension
 		}
 
 		#endregion
-
 
 		#region Div
 
@@ -175,9 +178,10 @@ namespace Medidata.RBT.SeleniumExtension
 		}
 
 
-		public static ReadOnlyCollection<Checkbox> Divs(this ISearchContext context)
+		public static ReadOnlyCollection<Checkbox> Divs(this ISearchContext context, bool allLevel = true)
 		{
-			return context.FindElements(By.XPath(".//div")).CastReadOnlyCollection<Checkbox>();
+			string xpath = allLevel ? ".//div" : "./div";
+			return context.FindElements(By.XPath(xpath)).CastReadOnlyCollection<Checkbox>();
 		}
 
 		public static ReadOnlyCollection<Checkbox> Divs(this ISearchContext context, string xpath)
@@ -207,6 +211,13 @@ namespace Medidata.RBT.SeleniumExtension
 		}
 
 		#endregion
+
+
+		public static ReadOnlyCollection<IWebElement> Children(this ISearchContext context)
+		{
+			return context.FindElements(By.XPath("./*"));
+		}
+
 
 		#region RadioButton
 
@@ -247,6 +258,11 @@ namespace Medidata.RBT.SeleniumExtension
 			where T : EnhancedElement, new()
 		{
 			return SelectExtendElement<T>(context, tag, partialID, true);
+		}
+		public static IWebElement TryFindElementByPartialID(this ISearchContext context, string partialID)
+		{
+			var ele = context.TryFindElementBy(By.XPath(".//*[contains(@id,'" + partialID + "')]"));
+			return ele;
 		}
 
 		public static IWebElement TryFindElementBy(this ISearchContext context,  By by)

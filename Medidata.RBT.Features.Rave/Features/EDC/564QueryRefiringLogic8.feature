@@ -44,19 +44,24 @@ Background:F
 	
 #----------------------------------------------------------------------------------------------------------------------------------------	
 Scenario:  test
-	And I select Study "Edit Check Study 3" and Site "Edit Check Site 3"
-	And I select a Subject "sub315"
-	And I select Form "Concomitant Medications" in Folder "Screening"
-	And I open log line 1
-	And I answer the only Query on Field "Start Date" with "bla"
+	
+	And I navigate to "CRF" page with parameters
+	| Name | Value |
+	| DP   | 14907 |
 
+	And I verify Query is displayed
+	| Field                      | Message                                                                               |
+	| Diastolic Blood Pressure 2 | Systolic Blood Pressure must be greater than Diastolic Blood Pressure. Please verify. |
+		
 
 @release_564_Patch11
 @PB_8.1.1
 @Draft
 Scenario: PB_8.1.1 Data setup and verification for query re-firing.
 Folder "Screening" enter and save data on forms "Informed Consent" and "Concomitant Medications"
-	
+		And I enter data in CRF
+	| Field                                        | Data |
+	| Lab Field 1 - NEUTROPHILS - rr = T ; rmc = T | test |
 	And I navigate to "DDE"
 	And I select "First Pass"
 	And I select "New Batch"
