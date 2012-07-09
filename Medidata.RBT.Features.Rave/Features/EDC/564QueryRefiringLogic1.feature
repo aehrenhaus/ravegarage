@@ -27,9 +27,9 @@ Background:
 Scenario: PB_1.1.1 On a Cross Forms Standard form to log form, when a query has been answered and closed with the same data and I enter the same data that originally opened the query, then queries are not displayed. 
 	
 	Given I create a Subject
-		| Field            | Value                                                    |
-		| Subject Number   | {NextSubjectNum(Edit Check Study 3,prod,Subject Number)} |
-		| Subject Initials | SUB                                                      |
+		| Field            | Value                                                          |
+		| Subject Number   | {NextSubjectNum<num1>(Edit Check Study 3,prod,Subject Number)} |
+		| Subject Initials | SUB                                                            |
 	And I select Form "Informed Consent" in Folder "Screening"
 	And I enter data in CRF and save
 	    | Field                        | Data        |
@@ -60,9 +60,11 @@ Scenario: PB_1.1.1 On a Cross Forms Standard form to log form, when a query has 
 	And I enter data in CRF on log line 1 and save and reopen
 		| Field               | Data        |
 		| Start Date          | 09 Jan 2000 |
-		| Current Axis Number | 19          |	
-    And I verify Requires Response Query with message "'Date Informed Consent Signed' is greater. Please revise." is not displayed on Field "Start Date"
-	And I verify Requires Response Query with message "Informed Consent 'Current Distribution Number' is not equal to Concomitant Medications 'Current Axis Number'." is not displayed on Field "Current Axis Number"
+		| Current Axis Number | 19          |
+	And I verify Query is not displayed
+		| Message                                                                                                       | Closed |
+		| 'Date Informed Consent Signed' is greater. Please revise.                                                     | true   |
+		| Informed Consent 'Current Distribution Number' is not equal to Concomitant Medications 'Current Axis Number'. | true   |	
 	And I take a screenshot
 	
 	# Given closed queries exist on fields "Start Date" and "Current Axis Number" in folder "Screening" in form "Concomitant Medications" in subject "SUB101"
@@ -72,8 +74,8 @@ Scenario: PB_1.1.1 On a Cross Forms Standard form to log form, when a query has 
 		| Start Date          | 08 Jan 2000 |
 		| Current Axis Number | 20          |
 	And I open log line 1
-	Then I verify Requires Response Query with message "'Date Informed Consent Signed' is greater. Please revise." is not displayed on Field "Start Date"
-	And I verify Requires Response Query with message "Informed Consent 'Current Distribution Number' is not equal to Concomitant Medications 'Current Axis Number'." is not displayed on Field "Current Axis Number"
+	Then I verify closed Query with message "'Date Informed Consent Signed' is greater. Please revise." is displayed on Field "Start Date"
+	And I verify closed Query with message "Informed Consent 'Current Distribution Number' is not equal to Concomitant Medications 'Current Axis Number'." is displayed on Field "Current Axis Number"
 	And I take a screenshot
 
 #----------------------------------------------------------------------------------------------------------------------------------------	
@@ -96,7 +98,7 @@ Scenario: PB_1.1.2
 Scenario: PB_1.1.3
 
 	Given I select Study "Edit Check Study 3" and Site "Edit Check Site 1"
-	And I select a Subject "SUB{MaxSubjectNum(Edit Check Study 3,prod,Subject Number)}"
+	And I select a Subject "SUB{Var(num1)}"
 	And I select Form "Concomitant Medications" in Folder "Screening"
 	And I enter data in CRF on a new log line and save and reopen
 	    | Field                | Data        |
@@ -107,12 +109,12 @@ Scenario: PB_1.1.3
 	And I verify Requires Response Query with message "'Date Informed Consent Signed' is greater. Please revise." is displayed on Field "Start Date"
     And I verify Requires Response Query with message "Informed Consent 'Current Distribution Number' is not equal to Concomitant Medications 'Current Axis Number'." is displayed on Field "Current Axis Number"
 	And I take a screenshot
+	And I answer the Query "'Date Informed Consent Signed' is greater. Please revise." on Field "Start Date" with "query answered"
+	And I answer the Query "Informed Consent 'Current Distribution Number' is not equal to Concomitant Medications 'Current Axis Number'." on Field "Current Axis Number" with "query answered"
 	And I enter data in CRF
 		| Field               | Data        |
 		| Start Date          | 09 Jan 2000 |
 		| Current Axis Number | 19          |
-	And I answer the Query "'Date Informed Consent Signed' is greater. Please revise." on Field "Start Date" with "query answered"
-	And I answer the Query "Informed Consent 'Current Distribution Number' is not equal to Concomitant Medications 'Current Axis Number'." on Field "Current Axis Number" with "query answered"
 	And I save the CRF page
 	And I open log line 2	
 	And I close the Query "'Date Informed Consent Signed' is greater. Please revise." on Field "Start Date"
@@ -120,8 +122,10 @@ Scenario: PB_1.1.3
 	And I save the CRF page
 	And I take a screenshot
 	And I open log line 2
-	And I verify Requires Response Query with message "'Date Informed Consent Signed' is greater. Please revise." is not displayed on Field "Start Date"
-	And I verify Requires Response Query with message "Informed Consent 'Current Distribution Number' is not equal to Concomitant Medications 'Current Axis Number'." is not displayed on Field "Current Axis Number"
+	And I verify Query is not displayed
+		| Message                                                                                                       | Closed |
+		| 'Date Informed Consent Signed' is greater. Please revise.                                                     | true   |
+		| Informed Consent 'Current Distribution Number' is not equal to Concomitant Medications 'Current Axis Number'. | true   |	
 	And I take a screenshot
 	
 	When I enter data in CRF on log line 2 and save and reopen
@@ -154,9 +158,9 @@ Folder "Week 1" enter and save data on form "Concomitant Medications"
 	
 	Given I select Study "Edit Check Study 3" and Site "Edit Check Site 1"
     And I create a Subject
-		| Field            | Value                                                    |
-		| Subject Number   | {NextSubjectNum(Edit Check Study 3,prod,Subject Number)} |
-		| Subject Initials | SUB                                                      |
+		| Field            | Value                                                          |
+		| Subject Number   | {NextSubjectNum<num1>(Edit Check Study 3,prod,Subject Number)} |
+		| Subject Initials | SUB                                                            |
 	And I select Form "Informed Consent" in Folder "Screening"
 	And I enter data in CRF and save
 	    | Field                        | Data        |
@@ -189,8 +193,10 @@ Folder "Week 1" enter and save data on form "Concomitant Medications"
 		| Start Date           | 10 Jan 2000 |
 		| Original Axis Number | 201         |
 		| Current Axis Number  | 200         |
-	And I verify Requires Response Query with message "'Date Informed Consent Signed' can not be greater than." is not displayed on Field "Start Date"
-	And I verify Requires Response Query with message "'Current Distribution Number' is not equal 'Current Axis Number'." is not displayed on Field "Current Axis Number"
+	And I verify Query is not displayed
+		| Message                                                           | Closed |
+		| 'Date Informed Consent Signed' can not be greater than.           | true   |
+		| 'Current Distribution Number' is not equal 'Current Axis Number'. | true   |
 	And I take a screenshot
 	
 	# Given closed queries exist on fields "Start Date" and "Current Axis Number" in folder "Week 1" in form "Concomitant Medications" in subject "SUB102"
@@ -200,8 +206,8 @@ Folder "Week 1" enter and save data on form "Concomitant Medications"
 		| Original Axis Number | 100         |
 		| Current Axis Number  | 99          |
 	And I open log line 1
-	Then I verify Requires Response Query with message "'Date Informed Consent Signed' can not be greater than." is not displayed on Field "Start Date"
-	And I verify Requires Response Query with message "'Current Distribution Number' is not equal 'Current Axis Number'." is not displayed on Field "Current Axis Number"	
+	Then I verify closed Query with message "'Date Informed Consent Signed' can not be greater than." is displayed on Field "Start Date"
+	And I verify closed Query with message "'Current Distribution Number' is not equal 'Current Axis Number'." is displayed on Field "Current Axis Number"	
 	And I take a screenshot
 
 #----------------------------------------------------------------------------------------------------------------------------------------	
@@ -224,7 +230,7 @@ Scenario: PB_1.2.2
 Scenario: PB_1.2.3 
 
 	Given I select Study "Edit Check Study 3" and Site "Edit Check Site 1"
-	And I select a Subject "SUB{MaxSubjectNum(Edit Check Study 3,prod,Subject Number)}"
+	And I select a Subject "SUB{Var(num1)}"
 	And I select Form "Concomitant Medications" in Folder "Week 1"
 	And I enter data in CRF on a new log line and save and reopen
 	    | Field                | Data        |
@@ -239,18 +245,20 @@ Scenario: PB_1.2.3
 	And I answer the Query "'Current Distribution Number' is not equal 'Current Axis Number'." on Field "Current Axis Number" with "query answered"
 	And I save the CRF page
 	And I open log line 2	
+	And I close the Query "'Date Informed Consent Signed' can not be greater than." on Field "Start Date"
+	And I close the Query "'Current Distribution Number' is not equal 'Current Axis Number'." on Field "Current Axis Number"
 	And I enter data in CRF
 		| Field                | Data        |
 		| Start Date           | 10 Jan 2000 |
 		| Original Axis Number | 201         |
 		| Current Axis Number  | 200         |
-	And I close the Query "'Date Informed Consent Signed' is greater. Please revise." on Field "Start Date"
-	And I close the Query "'Current Distribution Number' is not equal 'Current Axis Number'." on Field "Current Axis Number"
 	And I save the CRF page	
 	And I take a screenshot
 	And I open log line 2
-    And I verify Requires Response Query with message "'Date Informed Consent Signed' can not be greater than." is not displayed on Field "Start Date"
-	And I verify Requires Response Query with message "'Current Distribution Number' is not equal 'Current Axis Number'." is not displayed on Field "Current Axis Number"
+	And I verify Query is not displayed
+		| Message                                                           | Closed |
+		| 'Date Informed Consent Signed' can not be greater than.           | true   |
+		| 'Current Distribution Number' is not equal 'Current Axis Number'. | true   |
 	And I take a screenshot
 	And I cancel the CRF page
 
@@ -286,9 +294,9 @@ Scenario: PB_1.3.1 Cross Forms log form to Standard form
 
  	Given I select Study "Edit Check Study 3" and Site "Edit Check Site 1" 
     And I create a Subject
-		| Field            | Value                                                    |
-		| Subject Number   | {NextSubjectNum(Edit Check Study 3,prod,Subject Number)} |
-		| Subject Initials | SUB                                                      |
+		| Field            | Value                                                          |
+		| Subject Number   | {NextSubjectNum<num1>(Edit Check Study 3,prod,Subject Number)} |
+		| Subject Initials | SUB                                                            |
 	And I select Form "Concomitant Medications" in Folder "Week 1"
 	And I enter data in CRF and save
 	    | Field                | Data        |
@@ -314,8 +322,10 @@ Scenario: PB_1.3.1 Cross Forms log form to Standard form
 		| End Date            | 12 Jan 2000 |
 		| Current Axis Number | 100         | 
 	And I open log line 1
-	And I verify Requires Response Query with message "Start Date can not be greater than End Date." is not displayed on Field "End Date"
-	And I verify Requires Response Query with message "Original Axis Number' is Less Than 'Current Axis Number' on first Number field." is not displayed on Field "Current Axis Number"
+	And I verify Query is not displayed
+		| Message                                                                         | Closed |
+		| Start Date can not be greater than End Date.                                    | true   |
+		| Original Axis Number' is Less Than 'Current Axis Number' on first Number field. | true   |
 	And I take a screenshot
 	
 	When I enter data in CRF and save
@@ -323,8 +333,8 @@ Scenario: PB_1.3.1 Cross Forms log form to Standard form
 		| End Date            | 11 Jan 2000 |
 		| Current Axis Number | 101         |
 	And I open log line 1
-	And I verify Requires Response Query with message "Start Date can not be greater than End Date." is not displayed on Field "End Date"
-	And I verify Requires Response Query with message "Original Axis Number' is Less Than 'Current Axis Number' on first Number field." is not displayed on Field "Current Axis Number"
+	And I verify closed Query with message "Start Date can not be greater than End Date." is displayed on Field "End Date"
+	And I verify closed Query with message "Original Axis Number' is Less Than 'Current Axis Number' on first Number field." is displayed on Field "Current Axis Number"
 	And I take a screenshot
 	
 #----------------------------------------------------------------------------------------------------------------------------------------	
@@ -347,7 +357,7 @@ Scenario: PB_1.3.2
 Scenario: PB_1.3.3
 
 	Given I select Study "Edit Check Study 3" and Site "Edit Check Site 1"
-	And I select a Subject "SUB{MaxSubjectNum(Edit Check Study 3,prod,Subject Number)}"
+	And I select a Subject "SUB{Var(num1)}"
 	And I select Form "Concomitant Medications" in Folder "Week 1"
     And I enter data in CRF on a new log line and save and reopen
 	    | Field                | Data        |
@@ -362,17 +372,19 @@ Scenario: PB_1.3.3
 	And I answer the Query "Original Axis Number' is Less Than 'Current Axis Number' on first Number field." on Field "Current Axis Number" with "query answered"
 	And I save the CRF page
 	And I open log line 2
+	And I close the Query "Start Date can not be greater than End Date." on Field "End Date"
+	And I close the Query "Original Axis Number' is Less Than 'Current Axis Number' on first Number field." on Field "Current Axis Number"
 	And I enter data in CRF
 		| Field               | Data        |
 		| End Date            | 15 Feb 2000 |
 		| Current Axis Number | 1999        |
-	And I close the Query "Start Date can not be greater than End Date." on Field "End Date"
-	And I close the Query "Original Axis Number' is Less Than 'Current Axis Number' on first Number field." on Field "Current Axis Number"
 	And I save the CRF page
 	And I take a screenshot
 	And I open log line 2
-	And I verify Requires Response Query with message "Start Date can not be greater than End Date." is not displayed on Field "End Date"
-	And I verify Requires Response Query with message "Original Axis Number' is Less Than 'Current Axis Number' on first Number field." is not displayed on Field "Current Axis Number"
+	And I verify Query is not displayed
+		| Message                                                                         | Closed |
+		| Start Date can not be greater than End Date.                                    | true   |
+		| Original Axis Number' is Less Than 'Current Axis Number' on first Number field. | true   |
 	And I take a screenshot
 	
 	When I enter data in CRF and save
@@ -404,7 +416,7 @@ Scenario: PB_1.3.4
 Scenario: PB_1.3.5
 
 	Given I select Study "Edit Check Study 3" and Site "Edit Check Site 1"
-	And I select a Subject "SUB{MaxSubjectNum(Edit Check Study 3,prod,Subject Number)}"
+	And I select a Subject "SUB{Var(num1)}"
 	And I select Form "Informed Consent" in Folder "Week 1"
     And I enter data in CRF and save
 	    | Field                        | Data        |
@@ -418,16 +430,18 @@ Scenario: PB_1.3.5
 	And I answer the Query "'Date Informed Consent Signed' is not equal to Current Date." on Field "End Date" with "query answered"
 	And I answer the Query "Original Distribution Number' and 'Current Distribution Number' fields are not equal." on Field "Current Distribution Number" with "query answered"
 	And I save the CRF page
+	And I close the Query "'Date Informed Consent Signed' is not equal to Current Date." on Field "End Date"
+	And I close the Query "Original Distribution Number' and 'Current Distribution Number' fields are not equal." on Field "Current Distribution Number"
 	And I enter data in CRF
 	    | Field                       | Data        |
 	    | End Date                    | 13 Jan 2000 |
 	    | Current Distribution Number | 100         |
-	And I close the Query "'Date Informed Consent Signed' is not equal to Current Date." on Field "End Date"
-	And I close the Query "Original Distribution Number' and 'Current Distribution Number' fields are not equal." on Field "Current Distribution Number"
 	And I save the CRF page
 	And I take a screenshot
-	And I verify Requires Response Query with message "'Date Informed Consent Signed' is not equal to Current Date." is not displayed on Field "End Date"
-	And I verify Requires Response Query with message "Original Distribution Number' and 'Current Distribution Number' fields are not equal." is not displayed on Field "Current Distribution Number"
+	And I verify Query is not displayed
+		| Message                                                                               | Closed |
+		| 'Date Informed Consent Signed' is not equal to Current Date.                          | true   |
+		| Original Distribution Number' and 'Current Distribution Number' fields are not equal. | true   |
 	And I take a screenshot
    
     When I enter data in CRF
@@ -461,9 +475,9 @@ Scenario: PB_1.4.1 On a Cross Forms log form to log form,
 
 	Given I select Study "Edit Check Study 3" and Site "Edit Check Site 1"			  
     And I create a Subject
-		| Field            | Value                                                    |
-		| Subject Number   | {NextSubjectNum(Edit Check Study 3,prod,Subject Number)} |
-		| Subject Initials | SUB                                                      |
+		| Field            | Value                                                          |
+		| Subject Number   | {NextSubjectNum<num1>(Edit Check Study 3,prod,Subject Number)} |
+		| Subject Initials | SUB                                                            |
 	And I select Form "Concomitant Medications" in Folder "Screening"
 	And I enter data in CRF and save
 	    | Field                | Data        |
@@ -484,18 +498,18 @@ Scenario: PB_1.4.1 On a Cross Forms log form to log form,
 	And I open log line 1
 	And I verify Requires Response Query with message "Date can not be less than." is displayed on Field "Start Date"
 	And I verify Requires Response Query with message "Date is Less Than Date on the first log form." is displayed on Field "End Date"
-	And I verify Requires Response Query with message "AE Number is greater than or Equal to 'Current Axis Number' on Log." is displayed on Field "Original Axis Number"
+	And I verify Requires Response Query with message "'AE Number' is greater than or Equal to 'Original Axis Number' on Log." is displayed on Field "Original Axis Number"
 	And I verify Requires Response Query with message "'Duration' and 'Current Axis Number' cannot equal." is displayed on Field "Current Axis Number"
 	And I take a screenshot
 	And I answer the Query "Date can not be less than." on Field "Start Date" with "query answered"
 	And I answer the Query "Date is Less Than Date on the first log form." on Field "End Date" with "query answered"
-	And I answer the Query "AE Number is greater than or Equal to 'Current Axis Number' on Log." on Field "Original Axis Number" with "query answered"
+	And I answer the Query "'AE Number' is greater than or Equal to 'Original Axis Number' on Log." on Field "Original Axis Number" with "query answered"
 	And I answer the Query "'Duration' and 'Current Axis Number' cannot equal." on Field "Current Axis Number" with "query answered"
 	And I save the CRF page
 	And I open log line 1
 	And I close the Query "Date can not be less than." on Field "Start Date"
 	And I close the Query "Date is Less Than Date on the first log form." on Field "End Date"
-	And I close the Query "AE Number is greater than or Equal to 'Current Axis Number' on Log." on Field "Original Axis Number"
+	And I close the Query "'AE Number' is greater than or Equal to 'Original Axis Number' on Log." on Field "Original Axis Number"
 	And I close the Query "'Duration' and 'Current Axis Number' cannot equal." on Field "Current Axis Number"
 	And I save the CRF page
 	And I take a screenshot
@@ -506,10 +520,12 @@ Scenario: PB_1.4.1 On a Cross Forms log form to log form,
 	    | Original Axis Number | 102         |
 	    | Current Axis Number  | 65          |	
 	And I open log line 1
-	And I verify Requires Response Query with message "Date can not be less than." is not displayed on Field "Start Date"
-	And I verify Requires Response Query with message "Date is Less Than Date on the first log form." is not displayed on Field "End Date"
-	And I verify Requires Response Query with message "AE Number is greater than or Equal to 'Current Axis Number' on Log." is not displayed on Field "Original Axis Number"
-	And I verify Requires Response Query with message "'Duration' and 'Current Axis Number' cannot equal." is not displayed on Field "Current Axis Number"
+	And I verify Query is not displayed
+		| Message                                                                | Closed |
+		| Date can not be less than.                                             | true   |
+		| Date is Less Than Date on the first log form.                          | true   |
+		| 'AE Number' is greater than or Equal to 'Original Axis Number' on Log. | true   |
+		| 'Duration' and 'Current Axis Number' cannot equal.                     | true   |
 	And I take a screenshot
 	
 	When I enter data in CRF and save
@@ -519,10 +535,10 @@ Scenario: PB_1.4.1 On a Cross Forms log form to log form,
 		| Original Axis Number | 100         |
 		| Current Axis Number  | 66          |
 	And I open log line 1
-	Then I verify Requires Response Query with message "Date can not be less than." is not displayed on Field "Start Date"
-	And I verify Requires Response Query with message "Date is Less Than Date on the first log form." is not displayed on Field "End Date"
-	And I verify Requires Response Query with message "AE Number is greater than or Equal to 'Current Axis Number' on Log." is not displayed on Field "Original Axis Number"
-	And I verify Requires Response Query with message "'Duration' and 'Current Axis Number' cannot equal." is not displayed on Field "Current Axis Number"
+	And I verify closed Query with message "Date can not be less than." is displayed on Field "Start Date"
+	And I verify closed Query with message "Date is Less Than Date on the first log form." is displayed on Field "End Date"
+	And I verify closed Query with message "'AE Number' is greater than or Equal to 'Original Axis Number' on Log." is displayed on Field "Original Axis Number"
+	And I verify closed Query with message "'Duration' and 'Current Axis Number' cannot equal." is displayed on Field "Current Axis Number"
 	And I take a screenshot
 	
 #----------------------------------------------------------------------------------------------------------------------------------------	
@@ -533,11 +549,11 @@ Scenario: PB_1.4.2
 
     When I run SQL Script "Query Logging Script" 
     Then I should see the logging data for queries 
-      | ProjectName        | SiteNumber | SiteName          | Environment | SubjectName | CheckActionInstanceName | CheckActionInstanceDataPageName | CheckActionRecordPosition | CheckActionFieldName | CheckActionFieldData | TriggerFieldInstanceName | TriggerFieldInstanceDatapageName | TriggerFieldRecordPosition | TriggerFieldName     | TriggerFieldData | EditCheckName                                          | MarkingGroupName | QueryMessage                                                        | EventTime  |
-      | Edit Check Study 1 | 10001      | Edit Check Site 1 | PROD        | sub104      | Screening               | Concomitant Medications         | 1                         | Start Date           | 10 Jan 2000          | Screening                | Concomitant Medications          | 1                          | Start Date           | 10 Jan 2000      | *Is Less Than To Open Query Log Cross Form             | Marking Group 1  | Date can not be less than.                                          | {DateTime} |
-      | Edit Check Study 1 | 10001      | Edit Check Site 1 | PROD        | sub104      | Screening               | Concomitant Medications         | 1                         | End Date             | 10 Feb 2000          | Screening                | Concomitant Medications          | 1                          | End Date             | 10 Feb 2000      | *Is Less Than Open Query Log Cross Form                | Marking Group 1  | Date is Less Than Date on the first log form.                       | {DateTime} |
-      | Edit Check Study 1 | 10001      | Edit Check Site 1 | PROD        | sub104      | Screening               | Concomitant Medications         | 1                         | Original Axis Number | 100                  | Screening                | Concomitant Medications          | 1                          | Original Axis Number | 100              | *Is Greater Than or Equal To Open Query Log Cross Form | Marking Group 1  | AE Number is greater than or Equal to 'Current Axis Number' on Log. | {DateTime} |
-      | Edit Check Study 1 | 10001      | Edit Check Site 1 | PROD        | sub104      | Screening               | Concomitant Medications         | 1                         | Current Axis Number  | 66                   | Screening                | Concomitant Medications          | 1                          | Current Axis Number  | 66               | *Is Not Equal To Open Query Log Cross Form             | Marking Group 1  | 'Duration' and 'Current Axis Number' cannot equal.                  | {DateTime} |
+      | ProjectName        | SiteNumber | SiteName          | Environment | SubjectName | CheckActionInstanceName | CheckActionInstanceDataPageName | CheckActionRecordPosition | CheckActionFieldName | CheckActionFieldData | TriggerFieldInstanceName | TriggerFieldInstanceDatapageName | TriggerFieldRecordPosition | TriggerFieldName     | TriggerFieldData | EditCheckName                                          | MarkingGroupName | QueryMessage                                                           | EventTime  |
+      | Edit Check Study 1 | 10001      | Edit Check Site 1 | PROD        | sub104      | Screening               | Concomitant Medications         | 1                         | Start Date           | 10 Jan 2000          | Screening                | Concomitant Medications          | 1                          | Start Date           | 10 Jan 2000      | *Is Less Than To Open Query Log Cross Form             | Marking Group 1  | Date can not be less than.                                             | {DateTime} |
+      | Edit Check Study 1 | 10001      | Edit Check Site 1 | PROD        | sub104      | Screening               | Concomitant Medications         | 1                         | End Date             | 10 Feb 2000          | Screening                | Concomitant Medications          | 1                          | End Date             | 10 Feb 2000      | *Is Less Than Open Query Log Cross Form                | Marking Group 1  | Date is Less Than Date on the first log form.                          | {DateTime} |
+      | Edit Check Study 1 | 10001      | Edit Check Site 1 | PROD        | sub104      | Screening               | Concomitant Medications         | 1                         | Original Axis Number | 100                  | Screening                | Concomitant Medications          | 1                          | Original Axis Number | 100              | *Is Greater Than or Equal To Open Query Log Cross Form | Marking Group 1  | 'AE Number' is greater than or Equal to 'Original Axis Number' on Log. | {DateTime} |
+      | Edit Check Study 1 | 10001      | Edit Check Site 1 | PROD        | sub104      | Screening               | Concomitant Medications         | 1                         | Current Axis Number  | 66                   | Screening                | Concomitant Medications          | 1                          | Current Axis Number  | 66               | *Is Not Equal To Open Query Log Cross Form             | Marking Group 1  | 'Duration' and 'Current Axis Number' cannot equal.                     | {DateTime} |
 	And I take a screenshot
    
 #----------------------------------------------------------------------------------------------------------------------------------------	
@@ -547,7 +563,7 @@ Scenario: PB_1.4.2
 Scenario: PB_1.4.3   
 
 	Given I select Study "Edit Check Study 3" and Site "Edit Check Site 1"
-	And I select a Subject "SUB{MaxSubjectNum(Edit Check Study 3,prod,Subject Number)}"
+	And I select a Subject "SUB{Var(num1)}"
 	And I select Form "Concomitant Medications" in Folder "Screening"
 	And I enter data in CRF on a new log line and save
 	    | Field                | Data        |
@@ -569,12 +585,12 @@ Scenario: PB_1.4.3
 	And I take a screenshot
 	And I verify Requires Response Query with message "Date can not be less than." is displayed on Field "Start Date"
 	And I verify Requires Response Query with message "Date is Less Than Date on the first log form." is displayed on Field "End Date"
-	And I verify Requires Response Query with message "AE Number is greater than or Equal to 'Current Axis Number' on Log." is displayed on Field "Original Axis Number"
+	And I verify Requires Response Query with message "'AE Number' is greater than or Equal to 'Original Axis Number' on Log." is displayed on Field "Original Axis Number"
 	And I verify Requires Response Query with message "'Duration' and 'Current Axis Number' cannot equal." is displayed on Field "Current Axis Number"
 	And I take a screenshot
 	And I answer the Query "Date can not be less than." on Field "Start Date" with "query answered"
 	And I answer the Query "Date is Less Than Date on the first log form." on Field "End Date" with "query answered"
-	And I answer the Query "AE Number is greater than or Equal to 'Current Axis Number' on Log." on Field "Original Axis Number" with "query answered"
+	And I answer the Query "'AE Number' is greater than or Equal to 'Original Axis Number' on Log." on Field "Original Axis Number" with "query answered"
 	And I answer the Query "'Duration' and 'Current Axis Number' cannot equal." on Field "Current Axis Number" with "query answered"
 	And I save the CRF page
 	And I open log line 2
@@ -586,15 +602,17 @@ Scenario: PB_1.4.3
 	    | Current Axis Number  | 76          |		
 	And I close the Query "Date can not be less than." on Field "Start Date"
 	And I close the Query "Date is Less Than Date on the first log form." on Field "End Date"
-	And I close the Query "AE Number is greater than or Equal to 'Current Axis Number' on Log." on Field "Original Axis Number"
+	And I close the Query "'AE Number' is greater than or Equal to 'Original Axis Number' on Log." on Field "Original Axis Number"
 	And I close the Query "'Duration' and 'Current Axis Number' cannot equal." on Field "Current Axis Number"
 	And I save the CRF page
 	And I open log line 2
 	And I take a screenshot
-	And I verify Requires Response Query with message "Date can not be less than." is not displayed on Field "Start Date"
-	And I verify Requires Response Query with message "Date is Less Than Date on the first log form." is not displayed on Field "End Date"
-	And I verify Requires Response Query with message "AE Number is greater than or Equal to 'Current Axis Number' on Log." is not displayed on Field "Original Axis Number"
-	And I verify Requires Response Query with message "'Duration' and 'Current Axis Number' cannot equal." is not displayed on Field "Current Axis Number"
+	And I verify Query is not displayed
+		| Message                                                                | Closed |
+		| Date can not be less than.                                             | true   |
+		| Date is Less Than Date on the first log form.                          | true   |
+		| 'AE Number' is greater than or Equal to 'Original Axis Number' on Log. | true   |
+		| 'Duration' and 'Current Axis Number' cannot equal.                     | true   |
 	And I take a screenshot
 	
 	When I enter data in CRF
@@ -607,7 +625,7 @@ Scenario: PB_1.4.3
 	And I open log line 2
 	Then I verify Requires Response Query with message "Date can not be less than." is displayed on Field "Start Date"
 	And I verify Requires Response Query with message "Date is Less Than Date on the first log form." is displayed on Field "End Date"
-	And I verify Requires Response Query with message "AE Number is greater than or Equal to 'Current Axis Number' on Log." is displayed on Field "Original Axis Number"
+	And I verify Requires Response Query with message "'AE Number' is greater than or Equal to 'Original Axis Number' on Log." is displayed on Field "Original Axis Number"
 	And I verify Requires Response Query with message "'Duration' and 'Current Axis Number' cannot equal." is displayed on Field "Current Axis Number"
 	And I take a screenshot
 	
@@ -619,11 +637,11 @@ Scenario: PB_1.4.4
 	
     When I run SQL Script "Query Logging Script" 
     Then I should not see the logging data for queries 
-      | ProjectName        | SiteNumber | SiteName          | Environment | SubjectName | CheckActionInstanceName | CheckActionInstanceDataPageName | CheckActionRecordPosition | CheckActionFieldName | CheckActionFieldData | TriggerFieldInstanceName | TriggerFieldInstanceDatapageName | TriggerFieldRecordPosition | TriggerFieldName     | TriggerFieldData | EditCheckName                                          | MarkingGroupName | QueryMessage                                                        | EventTime  |
-      | Edit Check Study 1 | 10001      | Edit Check Site 1 | PROD        | sub104      | Screening               | Concomitant Medications         | 2                         | Start Date           | 10 Feb 2000          | Screening                | Concomitant Medications          | 2                          | Start Date           | 10 Feb 2000      | *Is Less Than To Open Query Log Cross Form             | Marking Group 1  | Date can not be less than.                                          | {DateTime} |
-      | Edit Check Study 1 | 10001      | Edit Check Site 1 | PROD        | sub104      | Screening               | Concomitant Medications         | 2                         | End Date             | 10 Mar 2000          | Screening                | Concomitant Medications          | 2                          | End Date             | 10 Mar 2000      | *Is Less Than Open Query Log Cross Form                | Marking Group 1  | Date is Less Than Date on the first log form.                       | {DateTime} |
-      | Edit Check Study 1 | 10001      | Edit Check Site 1 | PROD        | sub104      | Screening               | Concomitant Medications         | 2                         | Original Axis Number | 200                  | Screening                | Concomitant Medications          | 2                          | Original Axis Number | 200              | *Is Greater Than or Equal To Open Query Log Cross Form | Marking Group 1  | AE Number is greater than or Equal to 'Current Axis Number' on Log. | {DateTime} |
-      | Edit Check Study 1 | 10001      | Edit Check Site 1 | PROD        | sub104      | Screening               | Concomitant Medications         | 2                         | Current Axis Number  | 77                   | Screening                | Concomitant Medications          | 2                          | Current Axis Number  | 77               | *Is Not Equal To Open Query Log Cross Form             | Marking Group 1  | 'Duration' and 'Current Axis Number' cannot equal.                  | {DateTime} |
+      | ProjectName        | SiteNumber | SiteName          | Environment | SubjectName | CheckActionInstanceName | CheckActionInstanceDataPageName | CheckActionRecordPosition | CheckActionFieldName | CheckActionFieldData | TriggerFieldInstanceName | TriggerFieldInstanceDatapageName | TriggerFieldRecordPosition | TriggerFieldName     | TriggerFieldData | EditCheckName                                          | MarkingGroupName | QueryMessage                                                           | EventTime  |
+      | Edit Check Study 1 | 10001      | Edit Check Site 1 | PROD        | sub104      | Screening               | Concomitant Medications         | 2                         | Start Date           | 10 Feb 2000          | Screening                | Concomitant Medications          | 2                          | Start Date           | 10 Feb 2000      | *Is Less Than To Open Query Log Cross Form             | Marking Group 1  | Date can not be less than.                                             | {DateTime} |
+      | Edit Check Study 1 | 10001      | Edit Check Site 1 | PROD        | sub104      | Screening               | Concomitant Medications         | 2                         | End Date             | 10 Mar 2000          | Screening                | Concomitant Medications          | 2                          | End Date             | 10 Mar 2000      | *Is Less Than Open Query Log Cross Form                | Marking Group 1  | Date is Less Than Date on the first log form.                          | {DateTime} |
+      | Edit Check Study 1 | 10001      | Edit Check Site 1 | PROD        | sub104      | Screening               | Concomitant Medications         | 2                         | Original Axis Number | 200                  | Screening                | Concomitant Medications          | 2                          | Original Axis Number | 200              | *Is Greater Than or Equal To Open Query Log Cross Form | Marking Group 1  | 'AE Number' is greater than or Equal to 'Original Axis Number' on Log. | {DateTime} |
+      | Edit Check Study 1 | 10001      | Edit Check Site 1 | PROD        | sub104      | Screening               | Concomitant Medications         | 2                         | Current Axis Number  | 77                   | Screening                | Concomitant Medications          | 2                          | Current Axis Number  | 77               | *Is Not Equal To Open Query Log Cross Form             | Marking Group 1  | 'Duration' and 'Current Axis Number' cannot equal.                     | {DateTime} |
 	And I take a screenshot
 
 #----------------------------------------------------------------------------------------------------------------------------------------	
@@ -1541,9 +1559,9 @@ Scenario: PB_1.19.2
 	
     When I run SQL Script "Query Logging Script" 
     Then I should not see the logging data for queries 
-      |ProjectName        |SiteNumber  |SiteName          |Environment |SubjectName  |CheckActionInstanceName     |CheckActionInstanceDataPageName |CheckActionRecordPosition |CheckActionFieldName |CheckActionFieldData |TriggerFieldInstanceName |TriggerFieldInstanceDatapageName |TriggerFieldRecordPosition |TriggerFieldName |TriggerFieldData |EditCheckName                               |MarkingGroupName |QueryMessage                                  |EventTime  |
-      |Edit Check Study 1 |10001       |Edit Check Site 1 |PROD        |sub119       |Screening          |Concomitant Medications            |1                         |Start Date    |10 Jan 2000          |Screening       |Adverse Events             |1                          |Start Date     |11 Jan 2000      |*Greater Than Open Query Log Cross Form     |Marking Group 1  |Date can not be less than.                    |{DateTime} |
-	  |Edit Check Study 1 |10001       |Edit Check Site 1 |PROD        |sub119       |Screening          |Concomitant Medications            |1                         |End Date    |10 Feb 2000          |Screening       |Adverse Events             |1                          |End Date     |09 Feb 2000      |*Is Not Equal to Open Query Log Cross Form* |Site             |Date is Less Than Date on the first log form. |{DateTime} |
+      | ProjectName        | SiteNumber | SiteName          | Environment | SubjectName | CheckActionInstanceName | CheckActionInstanceDataPageName | CheckActionRecordPosition | CheckActionFieldName | CheckActionFieldData | TriggerFieldInstanceName | TriggerFieldInstanceDatapageName | TriggerFieldRecordPosition | TriggerFieldName | TriggerFieldData | EditCheckName                               | MarkingGroupName | QueryMessage                                  | EventTime  |
+      | Edit Check Study 1 | 10001      | Edit Check Site 1 | PROD        | sub119      | Screening               | Concomitant Medications         | 1                         | Start Date           | 10 Jan 2000          | Screening                | Adverse Events                   | 1                          | Start Date       | 11 Jan 2000      | *Greater Than Open Query Log Cross Form     | Marking Group 1  | Date can not be less than.                    | {DateTime} |
+      | Edit Check Study 1 | 10001      | Edit Check Site 1 | PROD        | sub119      | Screening               | Concomitant Medications         | 1                         | End Date             | 10 Feb 2000          | Screening                | Adverse Events                   | 1                          | End Date         | 09 Feb 2000      | *Is Not Equal to Open Query Log Cross Form* | Site             | Date is Less Than Date on the first log form. | {DateTime} |
 	And I take a screenshot
 
 #----------------------------------------------------------------------------------------------------------------------------------------	

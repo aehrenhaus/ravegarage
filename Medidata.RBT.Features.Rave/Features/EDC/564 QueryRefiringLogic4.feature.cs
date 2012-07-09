@@ -177,11 +177,11 @@ this.FeatureBackground();
  testRunner.And("I open log line 1");
 #line 49
  testRunner.And("I verify Query with message \"\'Date Informed Consent Signed\' is greater. Please re" +
-                    "vise.\" without Requires Response is displayed on Field \"Start Date\"");
+                    "vise.\" is displayed on Field \"Start Date\"");
 #line 50
  testRunner.And("I verify Query with message \"Informed Consent \'Current Distribution Number\' is no" +
-                    "t equal to Concomitant Medications \'Current Axis Number\'.\" without Requires Resp" +
-                    "onse is displayed on Field \"Current Axis Number\"");
+                    "t equal to Concomitant Medications \'Current Axis Number\'.\" is displayed on Field" +
+                    " \"Current Axis Number\"");
 #line 51
  testRunner.And("I take a screenshot");
 #line hidden
@@ -362,12 +362,12 @@ this.FeatureBackground();
 #line 98
     testRunner.And("I enter data in CRF on a new log line and save and reopen", ((string)(null)), table8);
 #line 104
- testRunner.And("I verify Query with message \"\'Date Informed Consent Signed\' is greater. Please re" +
-                    "vise.\" without Requires Response is displayed on Field \"Start Date\"");
+ testRunner.And("I verify Not Requires Response Query with message \"\'Date Informed Consent Signed\'" +
+                    " is greater. Please revise.\" is displayed on Field \"Start Date\"");
 #line 105
- testRunner.And("I verify Query with message \"Informed Consent \'Current Distribution Number\' is no" +
-                    "t equal to Concomitant Medications \'Current Axis Number\'.\" without Requires Resp" +
-                    "onse is displayed on Field \"Current Axis Number\"");
+ testRunner.And("I verify Not Requires Response Query with message \"Informed Consent \'Current Dist" +
+                    "ribution Number\' is not equal to Concomitant Medications \'Current Axis Number\'.\"" +
+                    " is displayed on Field \"Current Axis Number\"");
 #line 106
  testRunner.And("I take a screenshot");
 #line 107
@@ -587,12 +587,12 @@ this.FeatureBackground();
 #line 168
  testRunner.And("I open log line 1");
 #line 169
- testRunner.And("I verify Query with message \"\'Date Informed Consent Signed\' can not be greater th" +
-                    "an.\" without Requires Response is displayed on Field \"Start Date\"");
+ testRunner.And("I verify Not Requires Response Query with message \"\'Date Informed Consent Signed\'" +
+                    " can not be greater than.\" is displayed on Field \"Start Date\"");
 #line 170
- testRunner.And("I verify Query with message \"\'Current Distribution Number\' is not equal \'Current " +
-                    "Axis Number\'.\" without Requires Response is displayed on Field \"Current Axis Num" +
-                    "ber\"");
+ testRunner.And("I verify Not Requires Response Query with message \"\'Current Distribution Number\' " +
+                    "is not equal \'Current Axis Number\'.\" is displayed on Field \"Current Axis Number\"" +
+                    "");
 #line 171
  testRunner.And("I take a screenshot");
 #line hidden
@@ -777,12 +777,12 @@ this.FeatureBackground();
 #line 218
     testRunner.And("I enter data in CRF on a new log line and save and reopen", ((string)(null)), table18);
 #line 224
- testRunner.And("I verify Query with message \"\'Date Informed Consent Signed\' can not be greater th" +
-                    "an.\" without Requires Response is displayed on Field \"Start Date\"");
+ testRunner.And("I verify Not Requires Response Query with message \"\'Date Informed Consent Signed\'" +
+                    " can not be greater than.\" is displayed on Field \"Start Date\"");
 #line 225
- testRunner.And("I verify Query with message \"\'Current Distribution Number\' is not equal \'Current " +
-                    "Axis Number\'.\" without Requires Response is displayed on Field \"Current Axis Num" +
-                    "ber\"");
+ testRunner.And("I verify Not Requires Response Query with message \"\'Current Distribution Number\' " +
+                    "is not equal \'Current Axis Number\'.\" is displayed on Field \"Current Axis Number\"" +
+                    "");
 #line 226
  testRunner.And("I take a screenshot");
 #line hidden
@@ -979,12 +979,12 @@ this.FeatureBackground();
 #line 283
  testRunner.And("I open log line 1");
 #line 284
- testRunner.And("I verify Query with message \"Start Date can not be greater than End Date.\" withou" +
-                    "t Requires Response is displayed on Field \"End Date\"");
+ testRunner.And("I verify Not Requires Response Query with message \"Start Date can not be greater " +
+                    "than End Date.\" is displayed on Field \"End Date\"");
 #line 285
- testRunner.And("I verify Query with message \"\'Original Axis Number\' is Less Than \'Current Axis Nu" +
-                    "mber\' on first Number field.\" without Requires Response is displayed on Field \"C" +
-                    "urrent Axis Number\"");
+ testRunner.And("I verify Not Requires Response Query with message \"\'Original Axis Number\' is Less" +
+                    " Than \'Current Axis Number\' on first Number field.\" is displayed on Field \"Curre" +
+                    "nt Axis Number\"");
 #line 286
  testRunner.And("I take a screenshot");
 #line hidden
@@ -1163,12 +1163,12 @@ this.FeatureBackground();
 #line 331
     testRunner.And("I enter data in CRF on a new log line and save and reopen", ((string)(null)), table27);
 #line 337
- testRunner.And("I verify Query with message \"Start Date can not be greater than End Date.\" withou" +
-                    "t Requires Response is displayed on Field \"End Date\"");
+ testRunner.And("I verify Not Requires Response Query with message \"Start Date can not be greater " +
+                    "than End Date.\" is displayed on Field \"End Date\"");
 #line 338
- testRunner.And("I verify Query with message \"\'Original Axis Number\' is Less Than \'Current Axis Nu" +
-                    "mber\' on first Number field.\" without Requires Response is displayed on Field \"C" +
-                    "urrent Axis Number\"");
+ testRunner.And("I verify Not Requires Response Query with message \"\'Original Axis Number\' is Less" +
+                    " Than \'Current Axis Number\' on first Number field.\" is displayed on Field \"Curre" +
+                    "nt Axis Number\"");
 #line 339
  testRunner.And("I take a screenshot");
 #line hidden
@@ -1345,12 +1345,12 @@ this.FeatureBackground();
 #line 383
  testRunner.And("I enter data in CRF and save", ((string)(null)), table31);
 #line 389
- testRunner.And("I verify Query with message \"\'Date Informed Consent Signed\' is not equal to Curre" +
-                    "nt Date\" without Requires Response is displayed on Field \"End Date\"");
+ testRunner.And("I verify Not Requires Response Query with message \"\'Date Informed Consent Signed\'" +
+                    " is not equal to Current Date\" is displayed on Field \"End Date\"");
 #line 390
- testRunner.And("I verify Query with message \"\'Original Distribution Number\' and \'Current Distribu" +
-                    "tion Number\' fields are not equal.\" without Requires Response is displayed on Fi" +
-                    "eld \"Current Distribution Number\"");
+ testRunner.And("I verify Not Requires Response Query with message \"\'Original Distribution Number\'" +
+                    " and \'Current Distribution Number\' fields are not equal.\" is displayed on Field " +
+                    "\"Current Distribution Number\"");
 #line 391
  testRunner.And("I take a screenshot");
 #line hidden
@@ -1565,19 +1565,19 @@ this.FeatureBackground();
 #line 454
  testRunner.And("I open log line 1");
 #line 455
- testRunner.And("I verify Query with message \"Date can not be less than.\" without Requires Respons" +
-                    "e is displayed on Field \"Start Date\"");
+ testRunner.And("I verify Not Requires Response Query with message \"Date can not be less than.\" is" +
+                    " displayed on Field \"Start Date\"");
 #line 456
- testRunner.And("I verify Query with message \"\'Original Axis Number\' is Less Than \'Current Axis Nu" +
-                    "mber\' on first Number field.\" without Requires Response is displayed on Field \"E" +
-                    "nd Date\"");
+ testRunner.And("I verify Not Requires Response Query with message \"\'Original Axis Number\' is Less" +
+                    " Than \'Current Axis Number\' on first Number field.\" is displayed on Field \"End D" +
+                    "ate\"");
 #line 457
- testRunner.And("I verify Query with message \"\'Current Distribution Number\' is greater than or Equ" +
-                    "al to \'Current Axis Number\' on Log.\" without Requires Response is displayed on F" +
-                    "ield \"Original Axis Number\"");
+ testRunner.And("I verify Not Requires Response Query with message \"\'AE Number\' is greater than or" +
+                    " Equal to \'Original Axis Number\' on Log.\" is displayed on Field \"Original Axis N" +
+                    "umber\"");
 #line 458
- testRunner.And("I verify Query with message \"\'AE Number\' and \'Current Axis Number\' cannot equal.\"" +
-                    " without Requires Response is displayed on Field \"Current Axis Number\"");
+ testRunner.And("I verify Not Requires Response Query with message \"\'Duration\' and \'Current Axis N" +
+                    "umber\' cannot equal.\" is displayed on Field \"Current Axis Number\"");
 #line 459
  testRunner.And("I take a screenshot");
 #line hidden
@@ -1606,11 +1606,11 @@ this.FeatureBackground();
  testRunner.And("I close the Query \"\'Original Axis Number\' is Less Than \'Current Axis Number\' on f" +
                     "irst Number field.\" on Field \"End Date\"");
 #line 469
- testRunner.And("I close the Query \"\'Current Distribution Number\' is greater than or Equal to \'Cur" +
-                    "rent Axis Number\' on Log.\" on Field \"Original Axis Number\"");
+ testRunner.And("I close the Query \"\'AE Number\' is greater than or Equal to \'Original Axis Number\'" +
+                    " on Log.\" on Field \"Original Axis Number\"");
 #line 470
- testRunner.And("I close the Query \"\'AE Number\' and \'Current Axis Number\' cannot equal.\" on Field " +
-                    "\"Current Axis Number\"");
+ testRunner.And("I close the Query \"\'Duration\' and \'Current Axis Number\' cannot equal.\" on Field \"" +
+                    "Current Axis Number\"");
 #line 471
  testRunner.And("I save the CRF page");
 #line 472
@@ -1644,12 +1644,11 @@ this.FeatureBackground();
  testRunner.And("I verify Query with message \"\'Original Axis Number\' is Less Than \'Current Axis Nu" +
                     "mber\' on first Number field.\" is displayed on Field \"End Date\"");
 #line 484
- testRunner.And("I verify Query with message \"\'Current Distribution Number\' is greater than or Equ" +
-                    "al to \'Current Axis Number\' on Log.\" is displayed on Field \"Original Axis Number" +
-                    "\"");
+ testRunner.And("I verify Query with message \"\'AE Number\' is greater than or Equal to \'Original Ax" +
+                    "is Number\' on Log.\" is displayed on Field \"Original Axis Number\"");
 #line 485
- testRunner.And("I verify Query with message \"\'AE Number\' and \'Current Axis Number\' cannot equal.\"" +
-                    " is displayed on Field \"Current Axis Number\"");
+ testRunner.And("I verify Query with message \"\'Duration\' and \'Current Axis Number\' cannot equal.\" " +
+                    "is displayed on Field \"Current Axis Number\"");
 #line 486
  testRunner.And("I take a screenshot");
 #line hidden
@@ -1751,8 +1750,7 @@ this.FeatureBackground();
                         "100",
                         "*Is Greater Than or Equal To Open Query Log Cross Form",
                         "Marking Group 1",
-                        "\'Current Distribution Number\' is greater than or Equal to \'Current Axis Number\' o" +
-                            "n Log.",
+                        "\'AE Number\' is greater than or Equal to \'Original Axis Number\' on Log.",
                         "{DateTime}"});
             table40.AddRow(new string[] {
                         "Edit Check Study 3",
@@ -1772,7 +1770,7 @@ this.FeatureBackground();
                         "66",
                         "*Is Not Equal To Open Query Log Cross Form",
                         "Marking Group 1",
-                        "\'AE Number\' and \'Current Axis Number\' cannot equal.",
+                        "\'Duration\' and \'Current Axis Number\' cannot equal.",
                         "{DateTime}"});
 #line 496
     testRunner.Then("I should not see the logging data for queries", ((string)(null)), table40);
@@ -1849,19 +1847,19 @@ this.FeatureBackground();
 #line 530
  testRunner.And("I open log line 2");
 #line 531
- testRunner.And("I verify Query with message \"Date can not be less than.\" without Requires Respons" +
-                    "e is displayed on Field \"Start Date\"");
+ testRunner.And("I verify Not Requires Response Query with message \"Date can not be less than.\" is" +
+                    " displayed on Field \"Start Date\"");
 #line 532
- testRunner.And("I verify Query with message \"\'Original Axis Number\' is Less Than \'Current Axis Nu" +
-                    "mber\' on first Number field.\" without Requires Response is displayed on Field \"E" +
-                    "nd Date\"");
+ testRunner.And("I verify Not Requires Response Query with message \"\'Original Axis Number\' is Less" +
+                    " Than \'Current Axis Number\' on first Number field.\" is displayed on Field \"End D" +
+                    "ate\"");
 #line 533
- testRunner.And("I verify Query with message \"\'Current Distribution Number\' is greater than or Equ" +
-                    "al to \'Current Axis Number\' on Log.\" without Requires Response is displayed on F" +
-                    "ield \"Original Axis Number\"");
+ testRunner.And("I verify Not Requires Response Query with message \"\'AE Number\' is greater than or" +
+                    " Equal to \'Original Axis Number\' on Log.\" is displayed on Field \"Original Axis N" +
+                    "umber\"");
 #line 534
- testRunner.And("I verify Query with message \"\'AE Number\' and \'Current Axis Number\' cannot equal.\"" +
-                    " without Requires Response is displayed on Field \"Current Axis Number\"");
+ testRunner.And("I verify Not Requires Response Query with message \"\'Duration\' and \'Current Axis N" +
+                    "umber\' cannot equal.\" is displayed on Field \"Current Axis Number\"");
 #line 535
  testRunner.And("I take a screenshot");
 #line hidden
@@ -1888,11 +1886,11 @@ this.FeatureBackground();
  testRunner.And("I cancel the Query \"\'Original Axis Number\' is Less Than \'Current Axis Number\' on " +
                     "first Number field.\" on Field \"End Date\"");
 #line 544
- testRunner.And("I cancel the Query \"\'Current Distribution Number\' is greater than or Equal to \'Cu" +
-                    "rrent Axis Number\' on Log.\" on Field \"Original Axis Number\"");
+ testRunner.And("I cancel the Query \"\'AE Number\' is greater than or Equal to \'Original Axis Number" +
+                    "\' on Log.\" on Field \"Original Axis Number\"");
 #line 545
- testRunner.And("I cancel the Query \"\'AE Number\' and \'Current Axis Number\' cannot equal.\" on Field" +
-                    " \"Current Axis Number\"");
+ testRunner.And("I cancel the Query \"\'Duration\' and \'Current Axis Number\' cannot equal.\" on Field " +
+                    "\"Current Axis Number\"");
 #line 546
  testRunner.And("I save the CRF page");
 #line 547
@@ -1926,12 +1924,11 @@ this.FeatureBackground();
  testRunner.And("I verify Query with message \"\'Original Axis Number\' is Less Than \'Current Axis Nu" +
                     "mber\' on first Number field.\" is displayed on Field \"End Date\"");
 #line 559
- testRunner.And("I verify Query with message \"\'Current Distribution Number\' is greater than or Equ" +
-                    "al to \'Current Axis Number\' on Log.\" is displayed on Field \"Original Axis Number" +
-                    "\"");
+ testRunner.And("I verify Query with message \"\'AE Number\' is greater than or Equal to \'Original Ax" +
+                    "is Number\' on Log.\" is displayed on Field \"Original Axis Number\"");
 #line 560
- testRunner.And("I verify Query with message \"\'AE Number\' and \'Current Axis Number\' cannot equal.\"" +
-                    " is displayed on Field \"Current Axis Number\"");
+ testRunner.And("I verify Query with message \"\'Duration\' and \'Current Axis Number\' cannot equal.\" " +
+                    "is displayed on Field \"Current Axis Number\"");
 #line 561
  testRunner.And("I take a screenshot");
 #line hidden
@@ -2033,8 +2030,7 @@ this.FeatureBackground();
                         "200",
                         "*Is Greater Than or Equal To Open Query Log Cross Form",
                         "Marking Group 1",
-                        "\'Current Distribution Number\' is greater than or Equal to \'Current Axis Number\' o" +
-                            "n Log.",
+                        "\'AE Number\' is greater than or Equal to \'Original Axis Number\' on Log.",
                         "{DateTime}"});
             table45.AddRow(new string[] {
                         "Edit Check Study 3",
@@ -2054,7 +2050,7 @@ this.FeatureBackground();
                         "77",
                         "*Is Not Equal To Open Query Log Cross Form",
                         "Marking Group 1",
-                        "\'AE Number\' and \'Current Axis Number\' cannot equal.",
+                        "\'Duration\' and \'Current Axis Number\' cannot equal.",
                         "{DateTime}"});
 #line 571
     testRunner.Then("I should not see the logging data for queries", ((string)(null)), table45);
@@ -2137,12 +2133,12 @@ this.FeatureBackground();
 #line 611
  testRunner.And("I open log line 1");
 #line 612
- testRunner.And("I verify Query with message \"\'Date Informed Consent Signed\' is greater. Please re" +
-                    "vise.\" without Requires Response is displayed on Field \"Start Date\"");
+ testRunner.And("I verify Not Requires Response Query with message \"\'Date Informed Consent Signed\'" +
+                    " is greater. Please revise.\" is displayed on Field \"Start Date\"");
 #line 613
- testRunner.And("I verify Query with message \"Informed Consent \'Current Distribution Number\' is no" +
-                    "t equal to Concomitant Medications \'Current Axis Number\'.\" without Requires Resp" +
-                    "onse is displayed on Field \"Current Axis Number\"");
+ testRunner.And("I verify Not Requires Response Query with message \"Informed Consent \'Current Dist" +
+                    "ribution Number\' is not equal to Concomitant Medications \'Current Axis Number\'.\"" +
+                    " is displayed on Field \"Current Axis Number\"");
 #line 614
  testRunner.And("I take a screenshot");
 #line 615
@@ -2173,9 +2169,9 @@ this.FeatureBackground();
 #line 624
  testRunner.And("I open log line 1");
 #line 625
- testRunner.And("I verify Field \"Start Date\" has NO Query");
+ testRunner.And("I verify Field \"Start Date\" has no Query");
 #line 626
- testRunner.And("I verify Field \"Current Axis Number\" has NO Query");
+ testRunner.And("I verify Field \"Current Axis Number\" has no Query");
 #line 627
  testRunner.And("I take a screenshot");
 #line hidden
@@ -2330,12 +2326,12 @@ this.FeatureBackground();
 #line 662
     testRunner.And("I enter data in CRF on a new log line and save and reopen", ((string)(null)), table52);
 #line 668
- testRunner.And("I verify Query with message \"\'Date Informed Consent Signed\' is greater. Please re" +
-                    "vise.\" without Requires Response is displayed on Field \"Start Date\"");
+ testRunner.And("I verify Not Requires Response Query with message \"\'Date Informed Consent Signed\'" +
+                    " is greater. Please revise.\" is displayed on Field \"Start Date\"");
 #line 669
- testRunner.And("I verify Query with message \"Informed Consent \'Current Distribution Number\' is no" +
-                    "t equal to Concomitant Medications \'Current Axis Number\'.\" without Requires Resp" +
-                    "onse is displayed on Field \"Current Axis Number\"");
+ testRunner.And("I verify Not Requires Response Query with message \"Informed Consent \'Current Dist" +
+                    "ribution Number\' is not equal to Concomitant Medications \'Current Axis Number\'.\"" +
+                    " is displayed on Field \"Current Axis Number\"");
 #line 670
  testRunner.And("I take a screenshot");
 #line hidden
@@ -2364,9 +2360,9 @@ this.FeatureBackground();
 #line 679
  testRunner.And("I open log line 2");
 #line 680
- testRunner.And("I verify Field \"Start Date\" has NO Query");
+ testRunner.And("I verify Field \"Start Date\" has no Query");
 #line 681
- testRunner.And("I verify Field \"Current Axis Number\" has NO Query");
+ testRunner.And("I verify Field \"Current Axis Number\" has no Query");
 #line 682
  testRunner.And("I take a screenshot");
 #line hidden
@@ -2555,12 +2551,12 @@ this.FeatureBackground();
 #line 737
  testRunner.And("I open log line 1");
 #line 738
- testRunner.And("I verify Query with message \"\'Date Informed Consent Signed\' can not be greater th" +
-                    "an.\" without Requires Response is displayed on Field \"Start Date\"");
+ testRunner.And("I verify Not Requires Response Query with message \"\'Date Informed Consent Signed\'" +
+                    " can not be greater than.\" is displayed on Field \"Start Date\"");
 #line 739
- testRunner.And("I verify Query with message \"\'Current Distribution Number\' is not equal \'Current " +
-                    "Axis Number\'.\" without Requires Response is displayed on Field \"Current Axis Num" +
-                    "ber\"");
+ testRunner.And("I verify Not Requires Response Query with message \"\'Current Distribution Number\' " +
+                    "is not equal \'Current Axis Number\'.\" is displayed on Field \"Current Axis Number\"" +
+                    "");
 #line 740
  testRunner.And("I take a screenshot");
 #line 741
@@ -2593,9 +2589,9 @@ this.FeatureBackground();
 #line 751
  testRunner.And("I open log line 1");
 #line 752
- testRunner.And("I verify Field \"Start Date\" has NO Query");
+ testRunner.And("I verify Field \"Start Date\" has no Query");
 #line 753
- testRunner.And("I verify Field \"Current Axis Number\" has NO Query");
+ testRunner.And("I verify Field \"Current Axis Number\" has no Query");
 #line 754
  testRunner.And("I take a screenshot");
 #line hidden
@@ -2751,12 +2747,12 @@ this.FeatureBackground();
 #line 790
     testRunner.And("I enter data in CRF on a new log line and save and reopen", ((string)(null)), table62);
 #line 796
- testRunner.And("I verify Query with message \"\'Date Informed Consent Signed\' can not be greater th" +
-                    "an.\" without Requires Response is displayed on Field \"Start Date\"");
+ testRunner.And("I verify Not Requires Response Query with message \"\'Date Informed Consent Signed\'" +
+                    " can not be greater than.\" is displayed on Field \"Start Date\"");
 #line 797
- testRunner.And("I verify Query with message \"\'Current Distribution Number\' is not equal \'Current " +
-                    "Axis Number\'.\" without Requires Response is displayed on Field \"Current Axis Num" +
-                    "ber\"");
+ testRunner.And("I verify Not Requires Response Query with message \"\'Current Distribution Number\' " +
+                    "is not equal \'Current Axis Number\'.\" is displayed on Field \"Current Axis Number\"" +
+                    "");
 #line 798
  testRunner.And("I take a screenshot");
 #line hidden
@@ -2787,9 +2783,9 @@ this.FeatureBackground();
 #line 808
  testRunner.And("I take a screenshot");
 #line 809
- testRunner.And("I verify Field \"Start Date\" has NO Query");
+ testRunner.And("I verify Field \"Start Date\" has no Query");
 #line 810
- testRunner.And("I verify Field \"Current Axis Number\" has NO Query");
+ testRunner.And("I verify Field \"Current Axis Number\" has no Query");
 #line 811
  testRunner.And("I take a screenshot");
 #line hidden
@@ -2959,12 +2955,12 @@ this.FeatureBackground();
 #line 858
  testRunner.And("I open log line 1");
 #line 859
- testRunner.And("I verify Query with message \"Start Date can not be greater than End Date.\" withou" +
-                    "t Requires Response is displayed on Field \"End Date\"");
+ testRunner.And("I verify Not Requires Response Query with message \"Start Date can not be greater " +
+                    "than End Date.\" is displayed on Field \"End Date\"");
 #line 860
- testRunner.And("I verify Query with message \"Original Axis Number\' is Less Than \'Current Axis Num" +
-                    "ber\' on first Number field.\" without Requires Response is displayed on Field \"Cu" +
-                    "rrent Axis Number\"");
+ testRunner.And("I verify Not Requires Response Query with message \"Original Axis Number\' is Less " +
+                    "Than \'Current Axis Number\' on first Number field.\" is displayed on Field \"Curren" +
+                    "t Axis Number\"");
 #line 861
  testRunner.And("I take a screenshot");
 #line 862
@@ -2994,9 +2990,9 @@ this.FeatureBackground();
 #line 871
  testRunner.And("I open log line 1");
 #line 872
- testRunner.And("I verify Field \"End Date\" has NO Query");
+ testRunner.And("I verify Field \"End Date\" has no Query");
 #line 873
- testRunner.And("I verify Field \"Current Axis Number\" has NO Query");
+ testRunner.And("I verify Field \"Current Axis Number\" has no Query");
 #line 874
  testRunner.And("I take a screenshot");
 #line hidden
@@ -3153,12 +3149,12 @@ this.FeatureBackground();
 #line 916
  testRunner.And("I open log line 2");
 #line 917
- testRunner.And("I verify Query with message \"Start Date can not be greater than End Date.\" withou" +
-                    "t Requires Response is displayed on Field \"End Date\"");
+ testRunner.And("I verify Not Requires Response Query with message \"Start Date can not be greater " +
+                    "than End Date.\" is displayed on Field \"End Date\"");
 #line 918
- testRunner.And("I verify Query with message \"Original Axis Number\' is Less Than \'Current Axis Num" +
-                    "ber\' on first Number field.\" without Requires Response is displayed on Field \"Cu" +
-                    "rrent Axis Number\"");
+ testRunner.And("I verify Not Requires Response Query with message \"Original Axis Number\' is Less " +
+                    "Than \'Current Axis Number\' on first Number field.\" is displayed on Field \"Curren" +
+                    "t Axis Number\"");
 #line 919
  testRunner.And("I take a screenshot");
 #line hidden
@@ -3186,9 +3182,9 @@ this.FeatureBackground();
 #line 928
  testRunner.And("I open log line 2");
 #line 929
- testRunner.And("I verify Field \"End Date\" has NO Query");
+ testRunner.And("I verify Field \"End Date\" has no Query");
 #line 930
- testRunner.And("I verify Field \"Current Axis Number\" has NO Query");
+ testRunner.And("I verify Field \"Current Axis Number\" has no Query");
 #line 931
  testRunner.And("I take a screenshot");
 #line hidden
@@ -3341,12 +3337,12 @@ this.FeatureBackground();
 #line 966
     testRunner.And("I enter data in CRF and save", ((string)(null)), table75);
 #line 972
- testRunner.And("I verify Query with message \"\'Date Informed Consent Signed\' is not equal to Curre" +
-                    "nt Date.\" without Requires Response is displayed on Field \"End Date\"");
+ testRunner.And("I verify Not Requires Response Query with message \"\'Date Informed Consent Signed\'" +
+                    " is not equal to Current Date.\" is displayed on Field \"End Date\"");
 #line 973
- testRunner.And("I verify Query with message \"\'Original Distribution Number\' and \'Current Distribu" +
-                    "tion Number\' fields are not equal.\" without Requires Response is displayed on Fi" +
-                    "eld \"Current Distribution Number\"");
+ testRunner.And("I verify Not Requires Response Query with message \"\'Original Distribution Number\'" +
+                    " and \'Current Distribution Number\' fields are not equal.\" is displayed on Field " +
+                    "\"Current Distribution Number\"");
 #line 974
  testRunner.And("I take a screenshot");
 #line hidden
@@ -3372,9 +3368,9 @@ this.FeatureBackground();
 #line 982
  testRunner.And("I take a screenshot");
 #line 983
- testRunner.And("I verify Field \"End Date\" has NO Query");
+ testRunner.And("I verify Field \"End Date\" has no Query");
 #line 984
- testRunner.And("I verify Field \"Current Distribution Number\" has NO Query");
+ testRunner.And("I verify Field \"Current Distribution Number\" has no Query");
 #line 985
  testRunner.And("I take a screenshot");
 #line hidden
@@ -3567,19 +3563,19 @@ this.FeatureBackground();
 #line 1040
  testRunner.And("I open log line 1");
 #line 1041
- testRunner.And("I verify Query with message \"Date can not be less than.\" without Requires Respons" +
-                    "e is displayed on Field \"Start Date\"");
+ testRunner.And("I verify Not Requires Response Query with message \"Date can not be less than.\" is" +
+                    " displayed on Field \"Start Date\"");
 #line 1042
- testRunner.And("I verify Query with message \"Original Axis Number\' is Less Than \'Current Axis Num" +
-                    "ber\' on first Number field.\" without Requires Response is displayed on Field \"En" +
-                    "d Date\"");
+ testRunner.And("I verify Not Requires Response Query with message \"Original Axis Number\' is Less " +
+                    "Than \'Current Axis Number\' on first Number field.\" is displayed on Field \"End Da" +
+                    "te\"");
 #line 1043
- testRunner.And("I verify Query with message \"\'Current Distribution Number\' is greater than or Equ" +
-                    "al to \'Current Axis Number\' on Log.\" without Requires Response is displayed on F" +
-                    "ield \"Original Axis Number\"");
+ testRunner.And("I verify Not Requires Response Query with message \"\'AE Number\' is greater than or" +
+                    " Equal to \'Original Axis Number\' on Log.\" is displayed on Field \"Original Axis N" +
+                    "umber\"");
 #line 1044
- testRunner.And("I verify Query with message \"\'AE Number\' and \'Current Axis Number\' cannot equal.\"" +
-                    " without Requires Response is displayed on Field \"Current Axis Number\"");
+ testRunner.And("I verify Not Requires Response Query with message \"\'Duration\' and \'Current Axis N" +
+                    "umber\' cannot equal.\" is displayed on Field \"Current Axis Number\"");
 #line 1045
  testRunner.And("I take a screenshot");
 #line 1046
@@ -3588,11 +3584,11 @@ this.FeatureBackground();
  testRunner.And("I cancel the Query \"Original Axis Number\' is Less Than \'Current Axis Number\' on f" +
                     "irst Number field.\" on Field \"End Date\"");
 #line 1048
- testRunner.And("I cancel the Query \"\'Current Distribution Number\' is greater than or Equal to \'Cu" +
-                    "rrent Axis Number\' on Log.\" on Field \"Original Axis Number\"");
+ testRunner.And("I cancel the Query \"\'AE Number\' is greater than or Equal to \'Original Axis Number" +
+                    "\' on Log.\" on Field \"Original Axis Number\"");
 #line 1049
- testRunner.And("I cancel the Query \"\'AE Number\' and \'Current Axis Number\' cannot equal.\" on Field" +
-                    " \"Current Axis Number\"");
+ testRunner.And("I cancel the Query \"\'Duration\' and \'Current Axis Number\' cannot equal.\" on Field " +
+                    "\"Current Axis Number\"");
 #line 1050
  testRunner.And("I save the CRF page");
 #line 1051
@@ -3620,13 +3616,13 @@ this.FeatureBackground();
 #line 1059
  testRunner.And("I open log line 1");
 #line 1060
- testRunner.And("I verify Field \"Start Date\" has NO Query");
+ testRunner.And("I verify Field \"Start Date\" has no Query");
 #line 1061
- testRunner.And("I verify Field \"End Date\" has NO Query");
+ testRunner.And("I verify Field \"End Date\" has no Query");
 #line 1062
- testRunner.And("I verify Field \"Original Axis Number\" has NO Query");
+ testRunner.And("I verify Field \"Original Axis Number\" has no Query");
 #line 1063
- testRunner.And("I verify Field \"Current Axis Number\" has NO Query");
+ testRunner.And("I verify Field \"Current Axis Number\" has no Query");
 #line 1064
  testRunner.And("I take a screenshot");
 #line hidden
@@ -3656,12 +3652,11 @@ this.FeatureBackground();
  testRunner.And("I verify Query with message \"Original Axis Number\' is Less Than \'Current Axis Num" +
                     "ber\' on first Number field.\" is not displayed on Field \"End Date\"");
 #line 1075
- testRunner.And("I verify Query with message \"\'Current Distribution Number\' is greater than or Equ" +
-                    "al to \'Current Axis Number\' on Log.\" is not displayed on Field \"Original Axis Nu" +
-                    "mber\"");
+ testRunner.And("I verify Query with message \"\'AE Number\' is greater than or Equal to \'Original Ax" +
+                    "is Number\' on Log.\" is not displayed on Field \"Original Axis Number\"");
 #line 1076
- testRunner.And("I verify Query with message \"\'AE Number\' and \'Current Axis Number\' cannot equal.\"" +
-                    " is not displayed on Field \"Current Axis Number\"");
+ testRunner.And("I verify Query with message \"\'Duration\' and \'Current Axis Number\' cannot equal.\" " +
+                    "is not displayed on Field \"Current Axis Number\"");
 #line 1077
  testRunner.And("I take a screenshot");
 #line hidden
@@ -3763,8 +3758,7 @@ this.FeatureBackground();
                         "100",
                         "*Is Greater Than or Equal To Open Query Log Cross Form",
                         "Marking Group 1",
-                        "\'Current Distribution Number\' is greater than or Equal to \'Current Axis Number\' o" +
-                            "n Log.",
+                        "\'AE Number\' is greater than or Equal to \'Original Axis Number\' on Log.",
                         "{DateTime}"});
             table84.AddRow(new string[] {
                         "Edit Check Study 3",
@@ -3784,7 +3778,7 @@ this.FeatureBackground();
                         "66",
                         "*Is Not Equal To Open Query Log Cross Form",
                         "Marking Group 1",
-                        "\'AE Number\' and \'Current Axis Number\' cannot equal.",
+                        "\'Duration\' and \'Current Axis Number\' cannot equal.",
                         "{DateTime}"});
 #line 1087
     testRunner.Then("I should see the logging data for queries", ((string)(null)), table84);
@@ -3865,19 +3859,19 @@ this.FeatureBackground();
 #line 1123
  testRunner.And("I open log line 2");
 #line 1124
- testRunner.And("I verify Query with message \"Date can not be less than.\" without Requires Respons" +
-                    "e is displayed on Field \"Start Date\"");
+ testRunner.And("I verify Not Requires Response Query with message \"Date can not be less than.\" is" +
+                    " displayed on Field \"Start Date\"");
 #line 1125
- testRunner.And("I verify Query with message \"Original Axis Number\' is Less Than \'Current Axis Num" +
-                    "ber\' on first Number field.\" without Requires Response is displayed on Field \"En" +
-                    "d Date\"");
+ testRunner.And("I verify Not Requires Response Query with message \"Original Axis Number\' is Less " +
+                    "Than \'Current Axis Number\' on first Number field.\" is displayed on Field \"End Da" +
+                    "te\"");
 #line 1126
- testRunner.And("I verify Query with message \"\'Current Distribution Number\' is greater than or Equ" +
-                    "al to \'Current Axis Number\' on Log.\" without Requires Response is displayed on F" +
-                    "ield \"Original Axis Number\"");
+ testRunner.And("I verify Not Requires Response Query with message \"\'AE Number\' is greater than or" +
+                    " Equal to \'Original Axis Number\' on Log.\" is displayed on Field \"Original Axis N" +
+                    "umber\"");
 #line 1127
- testRunner.And("I verify Query with message \"\'AE Number\' and \'Current Axis Number\' cannot equal.\"" +
-                    " without Requires Response is displayed on Field \"Current Axis Number\"");
+ testRunner.And("I verify Not Requires Response Query with message \"\'Duration\' and \'Current Axis N" +
+                    "umber\' cannot equal.\" is displayed on Field \"Current Axis Number\"");
 #line 1128
  testRunner.And("I take a screenshot");
 #line hidden
@@ -3904,11 +3898,11 @@ this.FeatureBackground();
  testRunner.And("I cancel the Query \"Original Axis Number\' is Less Than \'Current Axis Number\' on f" +
                     "irst Number field.\" on Field \"End Date\"");
 #line 1137
- testRunner.And("I cancel the Query \"\'Current Distribution Number\' is greater than or Equal to \'Cu" +
-                    "rrent Axis Number\' on Log.\" on Field \"Original Axis Number\"");
+ testRunner.And("I cancel the Query \"\'AE Number\' is greater than or Equal to \'Original Axis Number" +
+                    "\' on Log.\" on Field \"Original Axis Number\"");
 #line 1138
- testRunner.And("I cancel the Query \"\'AE Number\' and \'Current Axis Number\' cannot equal.\" on Field" +
-                    " \"Current Axis Number\"");
+ testRunner.And("I cancel the Query \"\'Duration\' and \'Current Axis Number\' cannot equal.\" on Field " +
+                    "\"Current Axis Number\"");
 #line 1139
  testRunner.And("I save the CRF page");
 #line 1140
@@ -3916,13 +3910,13 @@ this.FeatureBackground();
 #line 1141
  testRunner.And("I open log line 2");
 #line 1142
- testRunner.And("I verify Field \"Start Date\" has NO Query");
+ testRunner.And("I verify Field \"Start Date\" has no Query");
 #line 1143
- testRunner.And("I verify Field \"End Date\" has NO Query");
+ testRunner.And("I verify Field \"End Date\" has no Query");
 #line 1144
- testRunner.And("I verify Field \"Original Axis Number\" has NO Query");
+ testRunner.And("I verify Field \"Original Axis Number\" has no Query");
 #line 1145
- testRunner.And("I verify Field \"Current Axis Number\" has NO Query");
+ testRunner.And("I verify Field \"Current Axis Number\" has no Query");
 #line 1146
  testRunner.And("I take a screenshot");
 #line hidden
@@ -3952,12 +3946,11 @@ this.FeatureBackground();
  testRunner.And("I verify Query with message \"Original Axis Number\' is Less Than \'Current Axis Num" +
                     "ber\' on first Number field.\" is displayed on Field \"End Date\"");
 #line 1157
- testRunner.And("I verify Query with message \"\'Current Distribution Number\' is greater than or Equ" +
-                    "al to \'Current Axis Number\' on Log.\" is displayed on Field \"Original Axis Number" +
-                    "\"");
+ testRunner.And("I verify Query with message \"\'AE Number\' is greater than or Equal to \'Original Ax" +
+                    "is Number\' on Log.\" is displayed on Field \"Original Axis Number\"");
 #line 1158
- testRunner.And("I verify Query with message \"\'AE Number\' and \'Current Axis Number\' cannot equal.\"" +
-                    " is displayed on Field \"Current Axis Number\"");
+ testRunner.And("I verify Query with message \"\'Duration\' and \'Current Axis Number\' cannot equal.\" " +
+                    "is displayed on Field \"Current Axis Number\"");
 #line 1159
  testRunner.And("I take a screenshot");
 #line hidden
@@ -4059,8 +4052,7 @@ this.FeatureBackground();
                         "200",
                         "*Is Greater Than or Equal To Open Query Log Cross Form",
                         "Marking Group 1",
-                        "\'Current Distribution Number\' is greater than or Equal to \'Current Axis Number\' o" +
-                            "n Log.",
+                        "\'AE Number\' is greater than or Equal to \'Original Axis Number\' on Log.",
                         "{DateTime}"});
             table89.AddRow(new string[] {
                         "Edit Check Study 3",
@@ -4080,7 +4072,7 @@ this.FeatureBackground();
                         "77",
                         "*Is Not Equal To Open Query Log Cross Form",
                         "Marking Group 1",
-                        "\'AE Number\' and \'Current Axis Number\' cannot equal.",
+                        "\'Duration\' and \'Current Axis Number\' cannot equal.",
                         "{DateTime}"});
 #line 1169
     testRunner.Then("I should not see the logging data for queries", ((string)(null)), table89);

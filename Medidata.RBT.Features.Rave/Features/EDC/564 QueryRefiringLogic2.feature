@@ -427,8 +427,8 @@ Folder "Screening" enter and save data on forms "Concomitant Medications" and "A
 	And I open log line 1
 	And I verify Not Requires Response Query with message "Date can not be less than." is displayed on Field "Start Date"
 	And I verify Not Requires Response Query with message "Date is Less Than Date on the first log form." is displayed on Field "End Date"
-	And I verify Not Requires Response Query with message "'Current Distribution Number' is greater than or Equal to 'Current Axis Number' on Log." is displayed on Field "Original Axis Number"
-	And I verify Not Requires Response Query with message "'AE Number' and 'Current Axis Number' cannot equal." is displayed on Field "Current Axis Number"
+	And I verify Not Requires Response Query with message "'AE Number' is greater than or Equal to 'Original Axis Number' on Log." is displayed on Field "Original Axis Number"
+	And I verify Not Requires Response Query with message "'Duration' and 'Current Axis Number' cannot equal." is displayed on Field "Current Axis Number"
 	And I take a screenshot
 	And I enter data in CRF and save
 	    | Field                | Data        |
@@ -452,8 +452,8 @@ Folder "Screening" enter and save data on forms "Concomitant Medications" and "A
 	And I open log line 1
 	Then I verify Query with message "Date can not be less than." is displayed on Field "Start Date"
     And I verify Query with message "Date is Less Than Date on the first log form." is displayed on Field "End Date"
-	And I verify Query with message "'Current Distribution Number' is greater than or Equal to 'Current Axis Number' on Log." is displayed on Field "Original Axis Number"
-    And I verify Query with message "'AE Number' and 'Current Axis Number' cannot equal." is displayed on Field "Current Axis Number"	
+	And I verify Query with message "'AE Number' is greater than or Equal to 'Original Axis Number' on Log." is displayed on Field "Original Axis Number"
+    And I verify Query with message "'Duration' and 'Current Axis Number' cannot equal." is displayed on Field "Current Axis Number"	
 	And I take a screenshot
 	
 #----------------------------------------------------------------------------------------------------------------------------------------	
@@ -467,8 +467,8 @@ Scenario: PB_2.4.2
       | ProjectName        | SiteNumber | SiteName          | Environment | SubjectName | CheckActionInstanceName | CheckActionInstanceDataPageName | CheckActionRecordPosition | CheckActionFieldName | CheckActionFieldData | TriggerFieldInstanceName | TriggerFieldInstanceDatapageName | TriggerFieldRecordPosition | TriggerFieldName     | TriggerFieldData | EditCheckName                                          | MarkingGroupName | QueryMessage                                                                            | EventTime  |
       | Edit Check Study 3 | 20001      | Edit Check Site 2 | PROD        | sub204      | Screening               | Concomitant Medications         | 1                         | Start Date           | 10 Jan 2000          | Screening                | Concomitant Medications          | 1                          | Start Date           | 10 Jan 2000      | *Is Less Than To Open Query Log Cross Form             | Marking Group 1  | Date can not be less than.                                                              | {DateTime} |
       | Edit Check Study 3 | 20001      | Edit Check Site 2 | PROD        | sub204      | Screening               | Concomitant Medications         | 1                         | End Date             | 10 Feb 2000          | Screening                | Concomitant Medications          | 1                          | End Date             | 10 Feb 2000      | *Is Less Than Open Query Log Cross Form                | Marking Group 1  | Date is Less Than Date on the first log form.                                           | {DateTime} |
-      | Edit Check Study 3 | 20001      | Edit Check Site 2 | PROD        | sub204      | Screening               | Concomitant Medications         | 1                         | Original Axis Number | 100                  | Screening                | Concomitant Medications          | 1                          | Original Axis Number | 100              | *Is Greater Than or Equal To Open Query Log Cross Form | Marking Group 1  | 'Current Distribution Number' is greater than or Equal to 'Current Axis Number' on Log. | {DateTime} |
-      | Edit Check Study 3 | 20001      | Edit Check Site 2 | PROD        | sub204      | Screening               | Concomitant Medications         | 1                         | Current Axis Number  | 66                   | Screening                | Concomitant Medications          | 1                          | Current Axis Number  | 66               | *Is Not Equal To Open Query Log Cross Form             | Marking Group 1  | 'AE Number' and 'Current Axis Number' cannot equal.                                     | {DateTime} |
+      | Edit Check Study 3 | 20001      | Edit Check Site 2 | PROD        | sub204      | Screening               | Concomitant Medications         | 1                         | Original Axis Number | 100                  | Screening                | Concomitant Medications          | 1                          | Original Axis Number | 100              | *Is Greater Than or Equal To Open Query Log Cross Form | Marking Group 1  | 'AE Number' is greater than or Equal to 'Original Axis Number' on Log. | {DateTime} |
+      | Edit Check Study 3 | 20001      | Edit Check Site 2 | PROD        | sub204      | Screening               | Concomitant Medications         | 1                         | Current Axis Number  | 66                   | Screening                | Concomitant Medications          | 1                          | Current Axis Number  | 66               | *Is Not Equal To Open Query Log Cross Form             | Marking Group 1  | 'Duration' and 'Current Axis Number' cannot equal.                                     | {DateTime} |
 	And I take a screenshot
    
 #----------------------------------------------------------------------------------------------------------------------------------------	
@@ -499,8 +499,8 @@ Scenario: PB_2.4.3
 	And I open log line 2
 	And I verify Not Requires Response Query with message "Date can not be less than." is displayed on Field "Start Date"
 	And I verify Not Requires Response Query with message "Date is Less Than Date on the first log form." is displayed on Field "End Date"
-	And I verify Not Requires Response Query with message "'Current Distribution Number' is greater than or Equal to 'Current Axis Number' on Log." is displayed on Field "Original Axis Number"
-	And I verify Not Requires Response Query with message "'AE Number' and 'Current Axis Number' cannot equal." is displayed on Field "Current Axis Number"
+	And I verify Not Requires Response Query with message "'AE Number' is greater than or Equal to 'Original Axis Number' on Log." is displayed on Field "Original Axis Number"
+	And I verify Not Requires Response Query with message "'Duration' and 'Current Axis Number' cannot equal." is displayed on Field "Current Axis Number"
 	And I take a screenshot
     And I enter data in CRF and save
 	    | Field                | Data        |
@@ -524,8 +524,8 @@ Scenario: PB_2.4.3
 	And I open log line 2
 	Then I verify Query with message "Date can not be less than." is displayed on Field "Start Date"
     And I verify Query with message "Date is Less Than Date on the first log form." is displayed on Field "End Date"
-	And I verify Query with message "'Current Distribution Number' is greater than or Equal to 'Current Axis Number' on Log." is displayed on Field "Original Axis Number"
-    And I verify Query with message "'AE Number' and 'Current Axis Number' cannot equal." is displayed on Field "Current Axis Number"	
+	And I verify Query with message "'AE Number' is greater than or Equal to 'Original Axis Number' on Log." is displayed on Field "Original Axis Number"
+    And I verify Query with message "'Duration' and 'Current Axis Number' cannot equal." is displayed on Field "Current Axis Number"	
 	And I take a screenshot
 	
 #----------------------------------------------------------------------------------------------------------------------------------------	
@@ -539,8 +539,8 @@ Scenario: PB_2.4.4
       | ProjectName        | SiteNumber | SiteName          | Environment | SubjectName | CheckActionInstanceName | CheckActionInstanceDataPageName | CheckActionRecordPosition | CheckActionFieldName | CheckActionFieldData | TriggerFieldInstanceName | TriggerFieldInstanceDatapageName | TriggerFieldRecordPosition | TriggerFieldName     | TriggerFieldData | EditCheckName                                          | MarkingGroupName | QueryMessage                                                                            | EventTime  |
       | Edit Check Study 3 | 20001      | Edit Check Site 2 | PROD        | sub204      | Screening               | Concomitant Medications         | 2                         | Start Date           | 10 Feb 2000          | Screening                | Concomitant Medications          | 2                          | Start Date           | 10 Feb 2000      | *Is Less Than To Open Query Log Cross Form             | Marking Group 1  | Date can not be less than.                                                              | {DateTime} |
       | Edit Check Study 3 | 20001      | Edit Check Site 2 | PROD        | sub204      | Screening               | Concomitant Medications         | 2                         | End Date             | 10 Mar 2000          | Screening                | Concomitant Medications          | 2                          | End Date             | 10 Mar 2000      | *Is Less Than Open Query Log Cross Form                | Marking Group 1  | Date is Less Than Date on the first log form.                                           | {DateTime} |
-      | Edit Check Study 3 | 20001      | Edit Check Site 2 | PROD        | sub204      | Screening               | Concomitant Medications         | 2                         | Original Axis Number | 200                  | Screening                | Concomitant Medications          | 2                          | Original Axis Number | 200              | *Is Greater Than or Equal To Open Query Log Cross Form | Marking Group 1  | 'Current Distribution Number' is greater than or Equal to 'Current Axis Number' on Log. | {DateTime} |
-      | Edit Check Study 3 | 20001      | Edit Check Site 2 | PROD        | sub204      | Screening               | Concomitant Medications         | 2                         | Current Axis Number  | 77                   | Screening                | Concomitant Medications          | 2                          | Current Axis Number  | 77               | *Is Not Equal To Open Query Log Cross Form             | Marking Group 1  | 'AE Number' and 'Current Axis Number' cannot equal.                                     | {DateTime} |
+      | Edit Check Study 3 | 20001      | Edit Check Site 2 | PROD        | sub204      | Screening               | Concomitant Medications         | 2                         | Original Axis Number | 200                  | Screening                | Concomitant Medications          | 2                          | Original Axis Number | 200              | *Is Greater Than or Equal To Open Query Log Cross Form | Marking Group 1  | 'AE Number' is greater than or Equal to 'Original Axis Number' on Log. | {DateTime} |
+      | Edit Check Study 3 | 20001      | Edit Check Site 2 | PROD        | sub204      | Screening               | Concomitant Medications         | 2                         | Current Axis Number  | 77                   | Screening                | Concomitant Medications          | 2                          | Current Axis Number  | 77               | *Is Not Equal To Open Query Log Cross Form             | Marking Group 1  | 'Duration' and 'Current Axis Number' cannot equal.                                     | {DateTime} |
 	And I take a screenshot
 
 #----------------------------------------------------------------------------------------------------------------------------------------	
@@ -866,7 +866,7 @@ Scenario: PB_2.7.3
 	    | Original Axis Number | 1999        |
 	    | Current Axis Number  | 2000        |
 	And I verify Not Requires Response Query with message "Start Date can not be greater than End Date." is displayed on Field "End Date"
-	And I verify Query with message "" without Requires Response is displayed on Field "Current Axis Number"
+	And I verify Not Requires Response Query with message "'Original Axis Number' is Less Than 'Current Axis Number' on first Number field." is displayed on Field "Current Axis Number"
 	And I take a screenshot
 	And I enter data in CRF
 		| Field               | Data        |
@@ -988,13 +988,13 @@ Folder "Screening" enter and save data on forms "Concomitant Medications" and "A
 	And I open log line 1
 	And I verify Not Requires Response Query with message "Date can not be less than." is displayed on Field "Start Date"
 	And I verify Not Requires Response Query with message "Date is Less Than Date on the first log form." is displayed on Field "End Date"
-	And I verify Not Requires Response Query with message "'Current Distribution Number' is greater than or Equal to 'Current Axis Number' on Log." is displayed on Field "Original Axis Number"
-	And I verify Not Requires Response Query with message "'AE Number' and 'Current Axis Number' cannot equal." is displayed on Field "Current Axis Number"
+	And I verify Not Requires Response Query with message "'AE Number' is greater than or Equal to 'Original Axis Number' on Log." is displayed on Field "Original Axis Number"
+	And I verify Not Requires Response Query with message "'Duration' and 'Current Axis Number' cannot equal." is displayed on Field "Current Axis Number"
 	And I take a screenshot
 	And I cancel the Query "Date can not be less than." on Field "Start Date"
 	And I cancel the Query "Date is Less Than Date on the first log form." on Field "End Date"
-	And I cancel the Query "'Current Distribution Number' is greater than or Equal to 'Current Axis Number' on Log." on Field "Original Axis Number"
-	And I cancel the Query "'AE Number' and 'Current Axis Number' cannot equal." on Field "Current Axis Number"
+	And I cancel the Query "'AE Number' is greater than or Equal to 'Original Axis Number' on Log." on Field "Original Axis Number"
+	And I cancel the Query "'Duration' and 'Current Axis Number' cannot equal." on Field "Current Axis Number"
 	And I save the CRF page
 	And I take a screenshot
 	And I open log line 1
@@ -1020,8 +1020,8 @@ Folder "Screening" enter and save data on forms "Concomitant Medications" and "A
 	And I open log line 1
 	And I verify Query with message "Date can not be less than." is not displayed on Field "Start Date"
     And I verify Query with message "Date is Less Than Date on the first log form." is not displayed on Field "End Date"
-	And I verify Query with message "'Current Distribution Number' is greater than or Equal to 'Current Axis Number' on Log." is not displayed on Field "Original Axis Number"
-    And I verify Query with message "'AE Number' and 'Current Axis Number' cannot equal." is not displayed on Field "Current Axis Number"	
+	And I verify Query with message "'AE Number' is greater than or Equal to 'Original Axis Number' on Log." is not displayed on Field "Original Axis Number"
+    And I verify Query with message "'Duration' and 'Current Axis Number' cannot equal." is not displayed on Field "Current Axis Number"	
 	And I take a screenshot
 	
 #----------------------------------------------------------------------------------------------------------------------------------------	
@@ -1035,8 +1035,8 @@ Scenario: PB_2.8.2
       | ProjectName        | SiteNumber | SiteName          | Environment | SubjectName | CheckActionInstanceName | CheckActionInstanceDataPageName | CheckActionRecordPosition | CheckActionFieldName | CheckActionFieldData | TriggerFieldInstanceName | TriggerFieldInstanceDatapageName | TriggerFieldRecordPosition | TriggerFieldName     | TriggerFieldData | EditCheckName                                          | MarkingGroupName | QueryMessage                                                                            | EventTime  |
       | Edit Check Study 3 | 20001      | Edit Check Site 2 | PROD        | sub208      | Screening               | Concomitant Medications         | 1                         | Start Date           | 10 Jan 2000          | Screening                | Concomitant Medications          | 1                          | Start Date           | 10 Jan 2000      | *Is Less Than To Open Query Log Cross Form             | Marking Group 1  | Date can not be less than.                                                              | {DateTime} |
       | Edit Check Study 3 | 20001      | Edit Check Site 2 | PROD        | sub208      | Screening               | Concomitant Medications         | 1                         | End Date             | 10 Feb 2000          | Screening                | Concomitant Medications          | 1                          | End Date             | 10 Feb 2000      | *Is Less Than Open Query Log Cross Form                | Marking Group 1  | Date is Less Than Date on the first log form.                                           | {DateTime} |
-      | Edit Check Study 3 | 20001      | Edit Check Site 2 | PROD        | sub208      | Screening               | Concomitant Medications         | 1                         | Original Axis Number | 100                  | Screening                | Concomitant Medications          | 1                          | Original Axis Number | 100              | *Is Greater Than or Equal To Open Query Log Cross Form | Marking Group 1  | 'Current Distribution Number' is greater than or Equal to 'Current Axis Number' on Log. | {DateTime} |
-      | Edit Check Study 3 | 20001      | Edit Check Site 2 | PROD        | sub208      | Screening               | Concomitant Medications         | 1                         | Current Axis Number  | 66                   | Screening                | Concomitant Medications          | 1                          | Current Axis Number  | 66               | *Is Not Equal To Open Query Log Cross Form             | Marking Group 1  | 'AE Number' and 'Current Axis Number' cannot equal.                                     | {DateTime} |
+      | Edit Check Study 3 | 20001      | Edit Check Site 2 | PROD        | sub208      | Screening               | Concomitant Medications         | 1                         | Original Axis Number | 100                  | Screening                | Concomitant Medications          | 1                          | Original Axis Number | 100              | *Is Greater Than or Equal To Open Query Log Cross Form | Marking Group 1  | 'AE Number' is greater than or Equal to 'Original Axis Number' on Log. | {DateTime} |
+      | Edit Check Study 3 | 20001      | Edit Check Site 2 | PROD        | sub208      | Screening               | Concomitant Medications         | 1                         | Current Axis Number  | 66                   | Screening                | Concomitant Medications          | 1                          | Current Axis Number  | 66               | *Is Not Equal To Open Query Log Cross Form             | Marking Group 1  | 'Duration' and 'Current Axis Number' cannot equal.                                     | {DateTime} |
 	And I take a screenshot
    
 #----------------------------------------------------------------------------------------------------------------------------------------	
@@ -1069,8 +1069,8 @@ Scenario: PB_2.8.3
 	And I open log line 2
 	And I verify Not Requires Response Query with message "Date can not be less than." is displayed on Field "Start Date"
 	And I verify Not Requires Response Query with message "Date is Less Than Date on the first log form." is displayed on Field "End Date"
-	And I verify Not Requires Response Query with message "'Current Distribution Number' is greater than or Equal to 'Current Axis Number' on Log." is displayed on Field "Original Axis Number"
-	And I verify Not Requires Response Query with message "'AE Number' and 'Current Axis Number' cannot equal." is displayed on Field "Current Axis Number"
+	And I verify Not Requires Response Query with message "'AE Number' is greater than or Equal to 'Original Axis Number' on Log." is displayed on Field "Original Axis Number"
+	And I verify Not Requires Response Query with message "'Duration' and 'Current Axis Number' cannot equal." is displayed on Field "Current Axis Number"
 	And I take a screenshot
 	And I enter data in CRF 
 	    | Field                | Data        |
@@ -1080,8 +1080,8 @@ Scenario: PB_2.8.3
 	    | Current Axis Number  | 76          |
 	And I cancel the Query "Date can not be less than." on Field "Start Date"
 	And I cancel the Query "Date is Less Than Date on the first log form." on Field "End Date"	
-	And I cancel the Query "'Current Distribution Number' is greater than or Equal to 'Current Axis Number' on Log." on Field "Original Axis Number"
-	And I cancel the Query "'AE Number' and 'Current Axis Number' cannot equal." on Field "Current Axis Number"
+	And I cancel the Query "'AE Number' is greater than or Equal to 'Original Axis Number' on Log." on Field "Original Axis Number"
+	And I cancel the Query "'Duration' and 'Current Axis Number' cannot equal." on Field "Current Axis Number"
 	And I save the CRF page
 	And I open log line 2
 	And I verify Field "Start Date" has no Query
@@ -1098,8 +1098,8 @@ Scenario: PB_2.8.3
 	And I open log line 2
 	And I verify Query with message "Date can not be less than." is displayed on Field "Start Date"
     And I verify Query with message "Date is Less Than Date on the first log form." is displayed on Field "End Date"
-	And I verify Query with message "'Current Distribution Number' is greater than or Equal to 'Current Axis Number' on Log." is displayed on Field "Original Axis Number"
-    And I verify Query with message "'AE Number' and 'Current Axis Number' cannot equal." is displayed on Field "Current Axis Number"	
+	And I verify Query with message "'AE Number' is greater than or Equal to 'Original Axis Number' on Log." is displayed on Field "Original Axis Number"
+    And I verify Query with message "'Duration' and 'Current Axis Number' cannot equal." is displayed on Field "Current Axis Number"	
 	And I take a screenshot
 
 #----------------------------------------------------------------------------------------------------------------------------------------	
@@ -1113,8 +1113,8 @@ Scenario: PB_2.8.4
       | ProjectName        | SiteNumber | SiteName          | Environment | SubjectName | CheckActionInstanceName | CheckActionInstanceDataPageName | CheckActionRecordPosition | CheckActionFieldName | CheckActionFieldData | TriggerFieldInstanceName | TriggerFieldInstanceDatapageName | TriggerFieldRecordPosition | TriggerFieldName     | TriggerFieldData | EditCheckName                                          | MarkingGroupName | QueryMessage                                                                            | EventTime  |
       | Edit Check Study 3 | 20001      | Edit Check Site 2 | PROD        | sub208      | Screening               | Concomitant Medications         | 2                         | Start Date           | 10 Feb 2000          | Screening                | Concomitant Medications          | 2                          | Start Date           | 10 Feb 2000      | *Is Less Than To Open Query Log Cross Form             | Marking Group 1  | Date can not be less than.                                                              | {DateTime} |
       | Edit Check Study 3 | 20001      | Edit Check Site 2 | PROD        | sub208      | Screening               | Concomitant Medications         | 2                         | End Date             | 10 Mar 2000          | Screening                | Concomitant Medications          | 2                          | End Date             | 10 Mar 2000      | *Is Less Than Open Query Log Cross Form                | Marking Group 1  | Date is Less Than Date on the first log form.                                           | {DateTime} |
-      | Edit Check Study 3 | 20001      | Edit Check Site 2 | PROD        | sub208      | Screening               | Concomitant Medications         | 2                         | Original Axis Number | 200                  | Screening                | Concomitant Medications          | 2                          | Original Axis Number | 200              | *Is Greater Than or Equal To Open Query Log Cross Form | Marking Group 1  | 'Current Distribution Number' is greater than or Equal to 'Current Axis Number' on Log. | {DateTime} |
-      | Edit Check Study 3 | 20001      | Edit Check Site 2 | PROD        | sub208      | Screening               | Concomitant Medications         | 2                         | Current Axis Number  | 77                   | Screening                | Concomitant Medications          | 2                          | Current Axis Number  | 77               | *Is Not Equal To Open Query Log Cross Form             | Marking Group 1  | 'AE Number' and 'Current Axis Number' cannot equal.                                     | {DateTime} |
+      | Edit Check Study 3 | 20001      | Edit Check Site 2 | PROD        | sub208      | Screening               | Concomitant Medications         | 2                         | Original Axis Number | 200                  | Screening                | Concomitant Medications          | 2                          | Original Axis Number | 200              | *Is Greater Than or Equal To Open Query Log Cross Form | Marking Group 1  | 'AE Number' is greater than or Equal to 'Original Axis Number' on Log. | {DateTime} |
+      | Edit Check Study 3 | 20001      | Edit Check Site 2 | PROD        | sub208      | Screening               | Concomitant Medications         | 2                         | Current Axis Number  | 77                   | Screening                | Concomitant Medications          | 2                          | Current Axis Number  | 77               | *Is Not Equal To Open Query Log Cross Form             | Marking Group 1  | 'Duration' and 'Current Axis Number' cannot equal.                                     | {DateTime} |
 	And I take a screenshot
 	
 #----------------------------------------------------------------------------------------------------------------------------------------	
