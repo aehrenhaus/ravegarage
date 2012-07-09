@@ -124,5 +124,7 @@ namespace Medidata.RBT.PageObjects.Rave
 			btn.Click();
 			return this;
 		}
+
+		public override string URL { get { return "Modules/DDE/DdePage.aspx"; } }
 	}
 }

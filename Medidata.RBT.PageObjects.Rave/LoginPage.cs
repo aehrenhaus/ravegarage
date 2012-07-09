@@ -18,8 +18,6 @@ namespace Medidata.RBT.PageObjects.Rave
 			//TODO: Get rid of the line that goes to cacheflush.aspx when there is a solution to the problem above
 			//InitializeWithNewUrl(url+"cacheflush.aspx");
             this.NavigateToSelf();
-//            Browser.Navigate().GoToUrl(url+ URLs);
-			TestContext.SetContextValue("BaseUrl", Browser.Url.Substring(0, Browser.Url.LastIndexOf("/")));
 
 			PageFactory.InitElements(Browser, this);
 

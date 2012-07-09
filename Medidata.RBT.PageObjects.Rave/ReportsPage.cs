@@ -30,7 +30,13 @@ namespace Medidata.RBT.PageObjects.Rave
 
 			return new PromptsPage(mapping[reportName]);         
         }
-          
-	
+
+		public override string URL
+		{
+			get
+			{
+				return "Modules/Reporting/ReportsPage.aspx";
+			}
+		}
 	}
 }

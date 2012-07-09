@@ -35,7 +35,6 @@ namespace Medidata.RBT.PageObjects.Rave
 			return base.GetElementByName(name);
 		}
 
-
         public override string BaseURL
         {
             get 

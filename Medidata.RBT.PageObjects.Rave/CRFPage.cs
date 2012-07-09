@@ -170,5 +170,7 @@ namespace Medidata.RBT.PageObjects.Rave
 
 		#endregion
 
+		public override string URL { get { return "Modules/EDC/CRFPage.aspx"; } }
+		
 	}
 }
