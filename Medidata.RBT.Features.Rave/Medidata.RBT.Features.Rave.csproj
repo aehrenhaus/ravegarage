@@ -117,10 +117,10 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>564QueryRefiringLogic1.feature</DependentUpon>
     </Compile>
-    <Compile Include="Features\EDC\564QueryRefiringLogic_LogForm_2FldEC.feature.cs">
-      <DesignTime>True</DesignTime>
+    <Compile Include="Features\EDC\SpecFlowFeature1.feature.cs">
       <AutoGen>True</AutoGen>
-      <DependentUpon>564QueryRefiringLogic_LogForm_2FldEC.feature</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SpecFlowFeature1.feature</DependentUpon>
     </Compile>
     <Compile Include="Features\TSDV\US11958_DT141771.feature.cs">
       <AutoGen>True</AutoGen>
@@ -196,9 +196,9 @@
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>564QueryRefiringLogic3.feature.cs</LastGenOutput>
     </None>
-    <None Include="Features\EDC\564QueryRefiringLogic_LogForm_2FldEC.feature">
+    <None Include="Features\EDC\SpecFlowFeature1.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
-      <LastGenOutput>564QueryRefiringLogic_LogForm_2FldEC.feature.cs</LastGenOutput>
+      <LastGenOutput>SpecFlowFeature1.feature.cs</LastGenOutput>
     </None>
     <None Include="Features\TSDV\US11958_DT14177.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
