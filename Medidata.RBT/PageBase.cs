@@ -189,48 +189,45 @@ namespace Medidata.RBT
 			return Browser.Url.Contains(this.URL);
         }
 
-		/// <summary>
-		/// 
-		/// </summary>
-		public virtual IPage NavigateToSelf()
-		{
-			string baseURLwithSession = TestContext.GetContextValue<string>("baseURLwithSession");
-		
+        /// <summary>
+        /// 
+        /// </summary>
+        public IPage NavigateToSelf()
+        {
+            string contextSessionIdstring = TestContext.GetContextValue<string>("UrlSessionID");
+            string url = string.Format("{0}{1}{2}", BaseURL, string.IsNullOrEmpty(contextSessionIdstring) ? string.Empty : contextSessionIdstring + "/", URL);
+            string querystring = string.Empty;
 
-			string url = (baseURLwithSession??BaseURL) + URL;
-			string querystring = string.Empty;
+            foreach (string key in Parameters.Keys)
+            {
+                //allows params within url for MVC routes
+                string keyReplacement = string.Format("{{{0}}}", key);
+                if (url.Contains(keyReplacement))
+                    url = url.Replace(keyReplacement, Parameters[key]);
+                else
+                {
+                    //any querystring params
+                    querystring = string.Format("{0}{1}{2}={3}", querystring, string.IsNullOrEmpty(querystring) ? string.Empty : "&", key, Parameters[key]);
+                }
+            }
 
-			foreach (string key in Parameters.Keys)
-			{
-				//allows params within url for MVC routes
-				string keyReplacement = "{" + key + "}";
-				if (url.Contains(keyReplacement))
-					url = url.Replace(keyReplacement, Parameters[key]);
-				else
-				{
-					//any querystring params
-					querystring = string.Format("{0}{1}{2}={3}", querystring, string.IsNullOrEmpty(querystring) ? string.Empty : "&", key, Parameters[key]);
-				}
-			}
+            if (!string.IsNullOrEmpty(querystring))
+                url = url + "?" + querystring;
 
-			if (!string.IsNullOrEmpty(querystring))
-				url = url + "?" + querystring;
+            Browser.Url = url;
+            string modifiedUrl = Browser.Url;
+            if (modifiedUrl.Contains("S(") && string.IsNullOrEmpty(contextSessionIdstring))
+            {
+                int sessionidstart = modifiedUrl.IndexOf("(S(");
+                string sessionIdstring = modifiedUrl.Substring(sessionidstart, (modifiedUrl.IndexOf("/", sessionidstart) - sessionidstart));
+                TestContext.SetContextValue("UrlSessionID", sessionIdstring);
+            }
 
-			Browser.Url = url;
-			Browser = TestContext.Browser;
-			PageFactory.InitElements(Browser, this);
+            Browser = TestContext.Browser;
+            PageFactory.InitElements(Browser, this);
 
-			if (baseURLwithSession == null)
-			{
-				int index = Browser.Url.IndexOf("))/");
-				if (index >= 0)
-				{
-					baseURLwithSession = Browser.Url.Substring(0, index + 3);
-					TestContext.SetContextValue<string>("baseURLwithSession", baseURLwithSession);
-				}
-			}
-			return this;
-		}
+            return this;
+        }
 
         #endregion
 
