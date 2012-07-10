@@ -68,18 +68,6 @@ namespace Medidata.RBT
         /// </summary>
         protected RemoteWebDriver Browser { get; set; }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="url"></param>
-        protected void InitializeWithNewUrl(string url)
-        {
-            //this.URL = url;
-            this.Browser = TestContext.Browser;
-
-            Browser.Navigate().GoToUrl(url);
-            PageFactory.InitElements(Browser, this);
-        }
 
         /// <summary>
         /// 
@@ -92,47 +80,6 @@ namespace Medidata.RBT
             PageFactory.InitElements(Browser, this);
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        public IPage NavigateToSelf()
-        {
-            string url = BaseURL + URL;
-            string querystring = string.Empty;
-            
-            foreach (string key in Parameters.Keys)
-	        {
-                //allows params within url for MVC routes
-                string keyReplacement = string.Format("{{{0}}", key);
-                if (url.Contains(keyReplacement))
-                    url = url.Replace(keyReplacement, Parameters[key]);
-                else
-                {
-                    //any querystring params
-                    querystring = string.Format("{0}{1}{2}={3}", querystring, string.IsNullOrEmpty(querystring) ? string.Empty : "&", key, Parameters[key]);
-                }
-            }
-           
-            if (!string.IsNullOrEmpty(querystring))
-                 url = url + "?" + querystring;
-
-            Browser.Url = url;
-            Browser = TestContext.Browser;
-            PageFactory.InitElements(Browser, this);
-
-            return this;
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <typeparam name="TPage"></typeparam>
-        /// <returns></returns>
-        public virtual TPage OpenNew<TPage>() where TPage : PageBase
-        {
-            throw new NotImplementedException("This page object must override OpenNew method first.");
-        }
-
         #endregion
 
         /// <summary>
@@ -140,7 +87,7 @@ namespace Medidata.RBT
         /// </summary>
         #region IPage
 
-        public virtual string URL { get; protected set; }
+		public virtual string URL { get { throw new Exception("Must override URL property"); } }
 
         public virtual string BaseURL { get; protected set; }
 
@@ -238,19 +185,61 @@ namespace Medidata.RBT
 
         public virtual bool IsThePage()
         {
-            return true;
+			//TODO: this does not take the {} template into account, provide fix later
+			return Browser.Url.Contains(this.URL);
         }
 
-        public virtual NameValueCollection Parameters
-        {
-            get
-            {
-                NameValueCollection param = new NameValueCollection();
-                return param;
-            }
-        }
+		/// <summary>
+		/// 
+		/// </summary>
+		public virtual IPage NavigateToSelf()
+		{
+			string baseURLwithSession = TestContext.GetContextValue<string>("baseURLwithSession");
+		
+
+			string url = (baseURLwithSession??BaseURL) + URL;
+			string querystring = string.Empty;
+
+			foreach (string key in Parameters.Keys)
+			{
+				//allows params within url for MVC routes
+				string keyReplacement = "{" + key + "}";
+				if (url.Contains(keyReplacement))
+					url = url.Replace(keyReplacement, Parameters[key]);
+				else
+				{
+					//any querystring params
+					querystring = string.Format("{0}{1}{2}={3}", querystring, string.IsNullOrEmpty(querystring) ? string.Empty : "&", key, Parameters[key]);
+				}
+			}
+
+			if (!string.IsNullOrEmpty(querystring))
+				url = url + "?" + querystring;
+
+			Browser.Url = url;
+			Browser = TestContext.Browser;
+			PageFactory.InitElements(Browser, this);
+
+			if (baseURLwithSession == null)
+			{
+				int index = Browser.Url.IndexOf("))/");
+				if (index >= 0)
+				{
+					baseURLwithSession = Browser.Url.Substring(0, index + 3);
+					TestContext.SetContextValue<string>("baseURLwithSession", baseURLwithSession);
+				}
+			}
+			return this;
+		}
 
         #endregion
+
+
+		private NameValueCollection param = new NameValueCollection();
+		public virtual NameValueCollection Parameters
+		{
+			get { return param; }
+		}
 
 
         /// <summary>

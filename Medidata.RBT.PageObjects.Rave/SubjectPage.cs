@@ -50,5 +50,13 @@ namespace Medidata.RBT.PageObjects.Rave
 			//if (areaName == "")
 			return RavePageObjectFactory.GetPage("CRFPage");
 		}
+
+		public override string URL
+		{
+			get
+			{
+				return "Modules/EDC/SubjectPage.aspx";
+			}
+		}
 	}
 }

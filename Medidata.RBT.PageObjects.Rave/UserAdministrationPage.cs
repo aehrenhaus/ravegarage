@@ -117,5 +117,13 @@ namespace Medidata.RBT.PageObjects.Rave
 			}
 			return new UserEditPage();
 		}
+
+		public override string URL
+		{
+			get
+			{
+				return "Modules/UserAdmin/UsersPage.aspx";
+			}
+		}
 	}
 }

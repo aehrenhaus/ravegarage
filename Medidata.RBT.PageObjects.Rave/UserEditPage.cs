@@ -51,5 +51,13 @@ namespace Medidata.RBT.PageObjects.Rave
 
 			return allDisabled;
 		}
+
+		public override string URL
+		{
+			get
+			{
+				return "Modules/UserAdmin/UsersDetails.aspx";
+			}
+		}
 	}
 }

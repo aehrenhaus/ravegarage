@@ -21,12 +21,25 @@ namespace Medidata.RBT.Features.Rave
             
         }
 
-		[StepDefinition(@"I go to ""([^""]*)"" page with url ""([^""]*)""")]
-		public void ISwitchTo____Window(string pageName, string url)
+		[StepDefinition(@"I navigate to ""([^""]*)"" page with parameters")]
+		public void INavigateTo____PageWithParameters(string pageName, Table table)
 		{
-			Browser.Navigate().GoToUrl(TestContext.GetContextValue<string>("BaseUrl") + url);
-			CurrentPage = RavePageObjectFactory.GetPage(pageName.Replace(" ","") + "Page");
+			//TODO:Set parameters from table
+			PageBase page = RavePageObjectFactory.GetPage(pageName.Replace(" ", "") + "Page") as PageBase;
+			foreach (var row in table.Rows)
+			{
+				page.Parameters[row["Name"]]=row["Value"];
+			}
+			CurrentPage = page.NavigateToSelf();
 		}
+
+		[StepDefinition(@"I navigate to ""([^""]*)"" page")]
+		public void INavigateTo____Page(string pageName)
+		{
+		
+			CurrentPage = RavePageObjectFactory.GetPage(pageName.Replace(" ", "") + "Page").NavigateToSelf();
+		}
+
         [StepDefinition(@"I go to the log page for logger ""([^""]*)""")]
         public PageBase WhenIGoToTheLogPageForLoggerQueryNotOpeningEvent(string logger)
         {
