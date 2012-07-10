@@ -14,10 +14,10 @@ namespace Medidata.RBT.PageObjects.Rave
 {
 	public  class CRFPage : BaseEDCTreePage
 	{
-
-		public CRFPage FillDataPoint(string label, string val)
+		public CRFPage FillDataPoints(IEnumerable<FieldModel> fields)
 		{
-			RavePagesHelper.FillDataPoint(label, val);
+			RavePagesHelper.FillDataPoints(fields);
+			
 			return this;
 		}
 
@@ -77,17 +77,13 @@ namespace Medidata.RBT.PageObjects.Rave
 
 		#region Query related
 
-		public bool CanFindQuery(QuerySearchFilter filter)
-		{
-			return CanFindQuery(filter.Field,filter.Message,filter.RR, filter.RC,filter.Closed);
-		}
 
-		public bool CanFindQuery(string fieldName, string message = null, bool? requiresResponse = null, bool? requiresClose = null, bool? closed=null)
+		public bool CanFindQuery(QuerySearchModel filter)
 		{
 			IWebElement queryContainer = null;
 			try
 			{
-				queryContainer = FindQuery(fieldName, message, requiresResponse, requiresClose, closed);
+				queryContainer = RavePagesHelper.FindQuery(filter);
 			}
 			catch
 			{
@@ -97,64 +93,32 @@ namespace Medidata.RBT.PageObjects.Rave
 		}
 
 		//the table that contains the Query(left side)
-		public IWebElement FindQuery(string fieldName, string message = null, bool? requiresResponse = null, bool? requiresClose = null, bool? closed = null)
+		public IWebElement FindQuery(QuerySearchModel filter)
 		{
-			var dpLeftTd = RavePagesHelper.GetDatapointLabelContainer(fieldName).EnhanceAs<EnhancedElement>();
-			var queryTables = dpLeftTd.FindElements(
-					By.XPath(".//td[@class='crf_preText']/table"));
-			IWebElement queryTable = null;
-
-			//if message is null, means find the only query
-			if (message != null)
-			{
-				queryTable = queryTables.FirstOrDefault(x => x.Text.LastIndexOf(message) != -1);
-				if (queryTable == null)
-					throw new Exception("Query not found");
-			}
-			else
-			{
-				if (queryTables.Count != 1)
-					throw new Exception("Expecting only one query on field");
-				queryTable = queryTables[0];
-			}
-
-
-			//is closed query?
-			var fieldTable = dpLeftTd.Ancestor("table");
-
-			bool isClosed = fieldTable.Class.IndexOf("Warning") == -1;
-			if (closed == true && !isClosed)
-				throw new Exception("Expect query to be a closed query.");
-			if (closed == false && isClosed)
-				throw new Exception("Expect query to be a open query.");
-
-			//having the textbox means rr
-			bool rr = dpLeftTd.Textboxes().Count==1;
-			if (requiresResponse == true && !rr)
-				throw new Exception("Expect query to require response.");
-			if (requiresResponse == false && rr)
-				throw new Exception("Expect query to not require response.");
-
-			//having the dropdown means requires manual close
-			bool rc = dpLeftTd.Dropdowns().Count == 1;
-			if (requiresClose == true && !rc)
-				throw new Exception("Expect query to require close.");
-			if (requiresClose == false && rc)
-				throw new Exception("Expect query to not require close.");
-
-			return queryTable;
+		
+			return RavePagesHelper.FindQuery(filter);
 		}
 
 		public CRFPage AnswerQuery(string message, string fieldName, string answer)
 		{
-			var queryContainer = FindQuery(fieldName, message);
+			var queryContainer = FindQuery(new QuerySearchModel { Message = message, Field = fieldName });
 			queryContainer.Textboxes()[0].SetText(answer);
+			return this;
+		}
+
+		public CRFPage AnswerQuery(QuerySearchModel model)
+		{
+			var queryContainer = FindQuery(model);
+			var boxes = queryContainer.Textboxes();
+			if(boxes.Count==0)
+				throw new Exception ("Can't find answer textbox");
+			boxes[0].SetText(model.Answer);
 			return this;
 		}
 
 		public CRFPage CloseQuery(string message, string fieldName)
 		{
-			var queryContainer = FindQuery(fieldName, message);
+			var queryContainer = FindQuery(new QuerySearchModel { Message = message, Field = fieldName });
 			queryContainer.Dropdowns()[0].SelectByText("Close Query");
 		
 			return this;
@@ -162,7 +126,7 @@ namespace Medidata.RBT.PageObjects.Rave
 
 		public CRFPage CancelQuery(string message, string fieldName)
 		{
-			var queryContainer = FindQuery(fieldName, message);
+			var queryContainer = FindQuery(new QuerySearchModel { Message = message, Field = fieldName });
 			queryContainer.Checkboxes()[0].Check();
 		
 			return this;
