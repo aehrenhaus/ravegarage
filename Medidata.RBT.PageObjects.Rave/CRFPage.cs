@@ -48,7 +48,7 @@ namespace Medidata.RBT.PageObjects.Rave
 
 		public CRFPage ClickModify()
 		{
-			IWebElement editButton = Browser.TryFindElementById("_ctl0_Content_R_header_SG_PencilButton");
+			IWebElement editButton = Browser.WaitForElement("header_SG_PencilButton");
 			if (editButton == null)
 				throw new Exception("Can not find the modify button");
 			editButton.Click();
@@ -57,7 +57,7 @@ namespace Medidata.RBT.PageObjects.Rave
 			
 		public CRFPage CancelForm()
 		{
-			IWebElement btn = Browser.TryFindElementById("_ctl0_Content_R_footer_CB");
+			IWebElement btn = Browser.WaitForElement("Content_R_footer_CB");
 			if (btn == null)
 				throw new Exception("Can not find the Cancel button");
 			btn.Click();
@@ -68,7 +68,7 @@ namespace Medidata.RBT.PageObjects.Rave
 
 		public CRFPage SaveForm()
 		{
-			IWebElement btn = Browser.TryFindElementById("_ctl0_Content_R_footer_SB");
+			IWebElement btn = Browser.WaitForElement("Content_R_footer_SB");
 			if (btn == null)
 				throw new Exception("Can not find the Save button");
 			btn.Click();
@@ -101,7 +101,7 @@ namespace Medidata.RBT.PageObjects.Rave
 
 		public CRFPage AnswerQuery(string message, string fieldName, string answer)
 		{
-			var queryContainer = FindQuery(new QuerySearchModel { Message = message, Field = fieldName });
+			var queryContainer = FindQuery(new QuerySearchModel { QueryMessage = message, Field = fieldName });
 			queryContainer.Textboxes()[0].SetText(answer);
 			return this;
 		}
@@ -118,7 +118,7 @@ namespace Medidata.RBT.PageObjects.Rave
 
 		public CRFPage CloseQuery(string message, string fieldName)
 		{
-			var queryContainer = FindQuery(new QuerySearchModel { Message = message, Field = fieldName });
+			var queryContainer = FindQuery(new QuerySearchModel { QueryMessage = message, Field = fieldName });
 			queryContainer.Dropdowns()[0].SelectByText("Close Query");
 		
 			return this;
@@ -126,7 +126,7 @@ namespace Medidata.RBT.PageObjects.Rave
 
 		public CRFPage CancelQuery(string message, string fieldName)
 		{
-			var queryContainer = FindQuery(new QuerySearchModel { Message = message, Field = fieldName });
+			var queryContainer = FindQuery(new QuerySearchModel { QueryMessage = message, Field = fieldName });
 			queryContainer.Checkboxes()[0].Check();
 		
 			return this;

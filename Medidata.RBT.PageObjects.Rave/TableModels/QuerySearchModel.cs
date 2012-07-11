@@ -8,7 +8,7 @@ namespace Medidata.RBT.PageObjects.Rave
 	public class QuerySearchModel
 	{
 		public string Field { set; get; }
-		public string Message { set; get; }
+		public string QueryMessage { set; get; }
 
 		public bool? Response { set; get; }
 		public bool? ManualClose { set; get; }

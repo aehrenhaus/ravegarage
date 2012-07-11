@@ -29,7 +29,7 @@ namespace Medidata.RBT.PageObjects.Rave
 		/// <returns></returns>
 		public HomePage SelectStudy(string studyName)
 		{
-			IWebElement studyLink = Browser.FindElementByLinkText(studyName);
+			IWebElement studyLink = Browser.WaitForElement(By.LinkText(studyName));
 			studyLink.Click();
 			//IWebElement studyTable = Browser.TryFindElementById("_ctl0_Content_ListDisplayNavigation_dgObjects");
 
@@ -50,7 +50,7 @@ namespace Medidata.RBT.PageObjects.Rave
 		//
 		public SubjectPage CreateSubject(Table table)
 		{
-			IWebElement addSubjectLink = Browser.FindElementById("_ctl0_Content_ListDisplayNavigation_lbAddSubject");
+			IWebElement addSubjectLink = Browser.WaitForElement("lbAddSubject");
 			addSubjectLink.Click();
 			var prp =new PrimaryRecordPage();
             SubjectPage subPage = prp.FillNameAndSave(table);
@@ -65,7 +65,7 @@ namespace Medidata.RBT.PageObjects.Rave
 		/// <returns></returns>
 		public HomePage SelectSite(string siteName)
 		{
-			IWebElement siteLink  = Browser.FindElementByLinkText(siteName);
+			IWebElement siteLink = Browser.WaitForElement(By.LinkText(siteName));
 			siteLink.Click();
 			return this;
 		}

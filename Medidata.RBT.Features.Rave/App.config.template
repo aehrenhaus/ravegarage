@@ -30,7 +30,7 @@
 
 	<specFlow>
 		<language feature="en-US" tool="" />
-		<unitTestProvider name="MsTest" />
+		<unitTestProvider name="MsTest.2010" />
 		<stepAssemblies>
 			<stepAssembly assembly="Medidata.RBT" />
 			<stepAssembly assembly="Medidata.RBT.Common.Steps" />
