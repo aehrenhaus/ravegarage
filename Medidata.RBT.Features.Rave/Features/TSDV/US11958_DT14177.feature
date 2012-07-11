@@ -11,7 +11,7 @@ Background:
 		# | Site 3     | 3003              |
 		# | Site 4     | 3004              |
 	#And site Site 1 is assigned to site group Asia
-	#And site Site 2 is assigned to site group Europ
+	#And site Site 2 is assigned to site group Europe
 	#And site Site 3 is assigned to site group World
 	#And site Site 4 is assigned to site group North America
  #And TSDV Study Plan has been setup for Study "Mediflex"
