@@ -37,13 +37,13 @@ Background:
 @release_564_Patch11
 @PB_3.1.1
 @Draft
-Scenario: PB_3.1.1 On a Cross Form Standard form to log form, When a query has been answered and closed with the same data and I enter the same data that originally opened the query, then queries are not displayed. 
+Scenario: PB_3.1.1 As an EDC user, On a Cross Form Standard form to log form, When a query has been answered and closed with the same data and I enter the same data that originally opened the query, then queries are not displayed. 
    
 	Given I select Study "Edit Check Study 3" and Site "Edit Check Site 3"
 	 And I create a Subject
-		| Field            | Value                                                          |
-		| Subject Number   | {NextSubjectNum<num1>(Edit Check Study 3,prod,Subject Number)} |
-		| Subject Initials | sub                                                            |
+		| Field            | Value             |
+		| Subject Number   | {RndNum<num1>(5)} |
+		| Subject Initials | sub               |
 	 And I select Folder "Screening"
 	 And I select Form "Informed Consent"
 	 And I enter data in CRF
@@ -70,8 +70,7 @@ Scenario: PB_3.1.1 On a Cross Form Standard form to log form, When a query has b
 	And I answer the Query "Informed Consent 'Current Distribution Number' is not equal to Concomitant Medications 'Current Axis Number'." on Field "Current Axis Number" with "answered query"
 	And I save the CRF page
 	And I take a screenshot
-
-
+	
 	# Given closed Query with message "Informed Consent Date 1 is greater. Please revise" exists on Field "Start Date" in Form "Concomitant Medications" in Folder "Screening" in Subject "SUB301" in Site "Edit Check Site 3" in Study "Edit Check Study 3"
 	# And closed Query with message "Informed Consent 'Current Distribution Number' is not equal to Concomitant Medications 'Current Axis Number'." exists on Field "Current Axis Number" in Form "Concomitant Medications" in Folder "Screening" in Subject "SUB301" in Site "Edit Check Site 3" in Study "Edit Check Study 3"
 	#And I am on CRF page "Concomitant Medications" in Folder "Screening" in Subject "SUB301" in Site "Edit Check Site 3" in Study "Edit Check Study 3"
@@ -91,21 +90,7 @@ Scenario: PB_3.1.1 On a Cross Form Standard form to log form, When a query has b
 @release_564_Patch11
 @PB_3.1.2
 @Draft
-Scenario: PB_3.1.2 On a Cross Form Standard form to log form, When a query has been answered and closed with the same data and I enter the same data that 
-originally opened the query, then queries are displayed in SQL logs. 
-
-    When I run SQL Script "Query Logging Script"
-    Then I should see the logging data for queries 
-		| ProjectName        | SiteNumber | SiteName          | Environment | SubjectName | CheckActionInstanceName | CheckActionInstanceDataPageName | CheckActionRecordPosition | CheckActionFieldName | CheckActionFieldData | TriggerFieldInstanceName | TriggerFieldInstanceDatapageName | TriggerFieldRecordPosition | TriggerFieldName    | TriggerFieldData | EditCheckName                               | MarkingGroupName | QueryMessage                                                                                                  | EventTime  |
-		| Edit Check Study 3 | 30001      | Edit Check Site 3 | PROD        | SUB301      | Screening               | Concomitant Medications         | 1                         | Start Date           | 08 Jan 2000          | Screening                | Concomitant Medications          | 1                          | Start Date          | 08 Jan 2000      | *Greater Than Open Query Log Cross Form     | Marking Group 1  | 'Date Informed Consent Signed' is greater. Please revise.                                                     | {DateTime} |
-		| Edit Check Study 3 | 30001      | Edit Check Site 3 | PROD        | SUB301      | Screening               | Concomitant Medications         | 1                         | Current Axis Number  | 20                   | Screening                | Concomitant Medications          | 1                          | Current Axis Number | 20               | *Is Not Equal to Open Query Log Cross Form* | Site             | Informed Consent 'Current Distribution Number' is not equal to Concomitant Medications 'Current Axis Number'. | {DateTime} |
-	And I take a screenshot
-
-#----------------------------------------------------------------------------------------------------------------------------------------
-@release_564_Patch11
-@PB_3.1.3
-@Draft
-Scenario: PB_3.1.3 On a Cross Form Standard form to log form, When a query has been answered and closed with the different data and I enter the same data that 
+Scenario: PB_3.1.2 As an EDC user, On a Cross Form Standard form to log form, When a query has been answered and closed with the different data and I enter the same data that 
 originally opened the query, then queries are displayed. 
 
 	Given I select Study "Edit Check Study 3" and Site "Edit Check Site 3"
@@ -145,30 +130,17 @@ originally opened the query, then queries are displayed.
 	Then I verify Query with message "'Date Informed Consent Signed' is greater. Please revise." is displayed on Field "Start Date"
 	And I verify Query with message "Informed Consent 'Current Distribution Number' is not equal to Concomitant Medications 'Current Axis Number'." is displayed on Field "Current Axis Number"
 	And I take a screenshot
-	
-#----------------------------------------------------------------------------------------------------------------------------------------
-@release_564_Patch11
-@PB_3.1.4
-@Draft
-Scenario: PB_3.1.4 On a Cross Form Standard form to log form, When a query has been answered and closed with the same data and I enter the same data that originally opened the query, then queries are not displayed in SQL logs. 
-	
-    When I verify the log messages for queries
-    Then I should not see the logging data for queries 
-		| ProjectName        | SiteNumber | SiteName          | Environment | SubjectName | CheckActionInstanceName | CheckActionInstanceDataPageName | CheckActionRecordPosition | CheckActionFieldName | CheckActionFieldData | TriggerFieldInstanceName | TriggerFieldInstanceDatapageName | TriggerFieldRecordPosition | TriggerFieldName    | TriggerFieldData | EditCheckName                               | MarkingGroupName | QueryMessage                                                                                                  | EventTime  |
-		| Edit Check Study 3 | 30001      | Edit Check Site 3 | PROD        | SUB301      | Screening               | Concomitant Medications         | 2                         | Start Date           | 07 Jan 2000          | Screening                | Concomitant Medications          | 2                          | Start Date          | 07 Jan 2000      | *Greater Than Open Query Log Cross Form     | Marking Group 1  | 'Date Informed Consent Signed' is greater. Please revise.                                                     | {DateTime} |
-		| Edit Check Study 3 | 30001      | Edit Check Site 3 | PROD        | SUB301      | Screening               | Concomitant Medications         | 2                         | Current Axis Number  | 18                   | Screening                | Concomitant Medications          | 2                          | Current Axis Number | 18               | *Is Not Equal to Open Query Log Cross Form* | Site             | Informed Consent 'Current Distribution Number' is not equal to Concomitant Medications 'Current Axis Number'. | {DateTime} |
-	And I take a screenshot	
 
 #----------------------------------------------------------------------------------------------------------------------------------------	
 @release_564_Patch11
 @PB_3.2.1
 @Draft
-Scenario: PB_3.2.1 On a Cross Folder Standard form to log form, When a query has been answered and closed with the same data and I enter the same data that originally opened the query, then queries are not displayed.
+Scenario: PB_3.2.1 As an EDC user, On a Cross Folder Standard form to log form, When a query has been answered and closed with the same data and I enter the same data that originally opened the query, then queries are not displayed.
 		
 	 Given I select Study "Edit Check Study 3" and Site "Edit Check Site 3"
 	 And I create a Subject
 		| Field            | Value                                                          |
-		| Subject Number   | {NextSubjectNum<num2>(Edit Check Study 3,prod,Subject Number)} |
+		| Subject Number   | {RndNum<num1>(5)} |
 		| Subject Initials | sub                                                            |   
 	 And I select Folder "Screening"
 	 And I select Form "Informed Consent"
@@ -209,26 +181,13 @@ Scenario: PB_3.2.1 On a Cross Folder Standard form to log form, When a query has
 	And I verify Query with message "'Current Distribution Number' is not equal 'Current Axis Number'." is not displayed on Field "Current Axis Number"
 	And I take a screenshot
 
-#----------------------------------------------------------------------------------------------------------------------------------------
+#----------------------------------------------------------------------------------------------------------------------------------------	
 @release_564_Patch11
 @PB_3.2.2
 @Draft
-Scenario: PB_3.2.2 On a Cross Folder Standard form to log form, When a query has been answered and closed with the same data and I enter the same data that originally opened the query, then queries are displayed in SQL logs. 
-
-    When I run SQL Script "Query Logging Script"
-    Then I should see the logging data for queries 
-		| ProjectName        | SiteNumber | SiteName          | Environment | SubjectName | CheckActionInstanceName | CheckActionInstanceDataPageName | CheckActionRecordPosition | CheckActionFieldName | CheckActionFieldData | TriggerFieldInstanceName | TriggerFieldInstanceDatapageName | TriggerFieldRecordPosition | TriggerFieldName    | TriggerFieldData | EditCheckName                            | MarkingGroupName | QueryMessage                                                      | EventTime  |
-		| Edit Check Study 3 | 30001      | Edit Check Site 3 | PROD        | SUB302      | Week 1                  | Concomitant Medications         | 1                         | Start Date           | 09 Jan 2000          | Week 1                   | Concomitant Medications          | 1                          | Start Date          | 09 Jan 2000      | *Greater Than Open Query Cross Folder    | Marking Group 1  | 'Date Informed Consent Signed' can not be greater than.           | {DateTime} |
-		| Edit Check Study 3 | 30001      | Edit Check Site 3 | PROD        | SUB302      | Week 1                  | Concomitant Medications         | 1                         | Current Axis Number  | 99                   | Week 1                   | Concomitant Medications          | 1                          | Current Axis Number | 99               | *Is Not Equal to Open Query Cross Folder | Marking Group 1  | 'Current Distribution Number' is not equal 'Current Axis Number'. | {DateTime} |
-	And I take a screenshot
-
-#----------------------------------------------------------------------------------------------------------------------------------------	
-@release_564_Patch11
-@PB_3.2.3
-@Draft
-Scenario: PB_3.2.3 On a Cross Folder Standard form to log form, When a query has been answered and closed with the different data and I enter the same data that originally opened the query, then queries are displayed.
+Scenario: PB_3.2.2 As an EDC user, On a Cross Folder Standard form to log form, When a query has been answered and closed with the different data and I enter the same data that originally opened the query, then queries are displayed.
 	
-	Given I select a Subject "sub{Var(num2)}"
+	Given I select a Subject "sub{Var(num1)}"
 	And I select Form "Concomitant Medications" in Folder "Week 1"
 	And I add a new log line
 	And I enter data in CRF
@@ -271,27 +230,14 @@ Scenario: PB_3.2.3 On a Cross Folder Standard form to log form, When a query has
 	
 #----------------------------------------------------------------------------------------------------------------------------------------
 @release_564_Patch11
-@PB_3.2.4
-@Draft
-Scenario: PB_3.2.4 On a Cross Folder Standard form to log form, When a query has been answered and closed with the same data and I enter the same data that originally opened the query, then queries are not displayed in SQL logs. 
-	
-	When I run SQL Script "Query Logging Script" 
-    Then I should not see the logging data for queries 
-		| ProjectName        | SiteNumber | SiteName          | Environment | SubjectName | CheckActionInstanceName | CheckActionInstanceDataPageName | CheckActionRecordPosition | CheckActionFieldName | CheckActionFieldData | TriggerFieldInstanceName | TriggerFieldInstanceDatapageName | TriggerFieldRecordPosition | TriggerFieldName    | TriggerFieldData | EditCheckName                            | MarkingGroupName | QueryMessage                                                      | EventTime  |
-		| Edit Check Study 3 | 30001      | Edit Check Site 3 | PROD        | SUB302      | Week 1                  | Concomitant Medications         | 2                         | Start Date           | 08 Jan 2000          | Week 1                   | Concomitant Medications          | 2                          | Start Date          | 08 Jan 2000      | *Greater Than Open Query Cross Folder    | Marking Group 1  | 'Date Informed Consent Signed' can not be greater than.           | {DateTime} |
-		| Edit Check Study 3 | 30001      | Edit Check Site 3 | PROD        | SUB302      | Week 1                  | Concomitant Medications         | 2                         | Current Axis Number  | 98                   | Week 1                   | Concomitant Medications          | 2                          | Current Axis Number | 98               | *Is Not Equal to Open Query Cross Folder | Marking Group 1  | 'Current Distribution Number' is not equal 'Current Axis Number'. | {DateTime} |
-	And I take a screenshot	
-	
-#----------------------------------------------------------------------------------------------------------------------------------------
-@release_564_Patch11
 @PB_3.3.1
 @Draft
-Scenario: PB_3.3.1 On a Cross Forms log form to Standard form, When a query has been answered and closed with the different data and I enter the same data that originally opened the query, then queries are displayed. 
+Scenario: PB_3.3.1 As an EDC user, On a Cross Forms log form to Standard form, When a query has been answered and closed with the different data and I enter the same data that originally opened the query, then queries are displayed. 
 
 	Given I select Study "Edit Check Study 3" and Site "Edit Check Site 3"
 	And I create a Subject
 		| Field            | Value                                                          |
-		| Subject Number   | {NextSubjectNum<num3>(Edit Check Study 3,prod,Subject Number)} |
+		| Subject Number   | {RndNum<num1>(5)} |
 		| Subject Initials | sub                                                            |
 	And I select Folder "Week 1"
 	And I select Form "Concomitant Medications"
@@ -326,8 +272,7 @@ Scenario: PB_3.3.1 On a Cross Forms log form to Standard form, When a query has 
 	And I take a screenshot	
 
 	# Given closed Query with message "'Date Informed Consent Signed' is not equal to Current Date" exists on "End Date" in folder "Week 1" in form "Informed Consent" in subject "SUB303"
-	# And closed Query with message "'Original Distribution Number' and 'Current Distribution Number' fields are not equal." exists on "Current Distribution Number" in folder "Week 1" in form "Informed Consent" in subject "SUB303"
-	
+	# And closed Query with message "'Original Distribution Number' and 'Current Distribution Number' fields are not equal." exists on "Current Distribution Number" in folder "Week 1" in form "Informed Consent" in subject "SUB303"	
 	When I enter data in CRF
 		|Field							|Data			|
 	    |End Date						|11 Jan 2000	|
@@ -337,30 +282,17 @@ Scenario: PB_3.3.1 On a Cross Forms log form to Standard form, When a query has 
 	Then I verify Requires Response Query with message "'Original Distribution Number' and 'Current Distribution Number' fields are not equal." is displayed on Field "Current Distribution Number"
 	And I take a screenshot
 
-#----------------------------------------------------------------------------------------------------------------------------------------
-@release_564_Patch11
-@PB_3.3.2
-@Draft
-Scenario: PB_3.3.2 On a Cross Forms log form to Standard form, When a query has been answered and closed with the different data and I enter the same data that originally opened the query, then queries are not displayed. 
-
-    When I run SQL Script "Query Logging Script" 
-    Then I should not see the logging data for queries 
-		| ProjectName        | SiteNumber | SiteName          | Environment | SubjectName | CheckActionInstanceName | CheckActionInstanceDataPageName | CheckActionRecordPosition | CheckActionFieldName        | CheckActionFieldData | TriggerFieldInstanceName | TriggerFieldInstanceDatapageName | TriggerFieldRecordPosition | TriggerFieldName            | TriggerFieldData | EditCheckName                                      | MarkingGroupName | QueryMessage                                                                            | EventTime  |
-		| Edit Check Study 3 | 30001      | Edit Check Site 3 | PROD        | SUB303      | Week 1                  | Informed Consent                | 0                         | End Date                    | 11 Jan 2000          | Week 1                   | Informed Consent                 | 0                          | End Date                    | 11 Jan 2000      | *Greater Than or Equal To Open Query Log same form | Marking Group 1  | 'Date Informed Consent Signed' is not equal to 'Current Date'.                          | {DateTime} |
-		| Edit Check Study 3 | 30001      | Edit Check Site 3 | PROD        | SUB303      | Week 1                  | Informed Consent                | 0                         | Current Distribution Number | 101                  | Week 1                   | Informed Consent                 | 0                          | Current Distribution Number | 101              | *Is Not Equal To Open Query Log Same form          | Marking Group 1  | 'Original Distribution Number' and 'Current Distribution Number' fields are not equal.' | {DateTime} |
-	And I take a screenshot	
-
 #----------------------------------------------------------------------------------------------------------------------------------------	
 @release_564_Patch11
 @PB_3.4.1
 @Draft
-Scenario: PB_3.4.1 On a Cross Forms log form to log form, When a query has been answered and closed with the same data and I enter the same data that originally opened the query, then queries are not displayed.
+Scenario: PB_3.4.1 As an EDC user, On a Cross Forms log form to log form, When a query has been answered and closed with the same data and I enter the same data that originally opened the query, then queries are not displayed.
 
 	Given I select Study "Edit Check Study 3" and Site "Edit Check Site 3"
 	And I create a Subject
-		| Field            | Value                                                          |
-		| Subject Number   | {NextSubjectNum<num4>(Edit Check Study 3,prod,Subject Number)} |
-		| Subject Initials | sub                                                            |
+		| Field            | Value             |
+		| Subject Number   | {RndNum<num1>(5)} |
+		| Subject Initials | sub               |
 	And I select Folder "Screening"
 	And I select Form "Concomitant Medications"
 	And I enter data in CRF
@@ -429,29 +361,14 @@ Scenario: PB_3.4.1 On a Cross Forms log form to log form, When a query has been 
 	And I take a screenshot
 
 #----------------------------------------------------------------------------------------------------------------------------------------	
-@release_564_Patch11
-@PB_3.4.2
-@Draft
-Scenario: PB_3.4.2 On a Cross Forms log form to log form, When a query has been answered and closed with the same data and I enter the same data that originally opened the query, then queries are displayed in SQL logs. .
-	
-	When I run SQL Script "Query Logging Script" 
-    Then I should see the logging data for queries 
-		| ProjectName        | SiteNumber | SiteName          | Environment | SubjectName | CheckActionInstanceName | CheckActionInstanceDataPageName | CheckActionRecordPosition | CheckActionFieldName | CheckActionFieldData | TriggerFieldInstanceName | TriggerFieldInstanceDatapageName | TriggerFieldRecordPosition | TriggerFieldName     | TriggerFieldData | EditCheckName                                          | MarkingGroupName | QueryMessage                                                           | EventTime  |
-		| Edit Check Study 3 | 30001      | Edit Check Site 3 | PROD        | SUB304      | Screening               | Concomitant Medications         | 1                         | Start Date           | 10 Jan 2000          | Screening                | Concomitant Medications          | 1                          | Start Date           | 10 Jan 2000      | *Is Less Than To Open Query Log Cross Form             | Marking Group 1  | Date can not be less than.                                             | {DateTime} |
-		| Edit Check Study 3 | 30001      | Edit Check Site 3 | PROD        | SUB304      | Screening               | Concomitant Medications         | 1                         | End Date             | 10 Feb 2000          | Screening                | Concomitant Medications          | 1                          | End Date             | 10 Feb 2000      | *Is Less Than Open Query Log Cross Form                | Marking Group 1  | Date is Less Than Date on the first log form.                          | {DateTime} |
-		| Edit Check Study 3 | 30001      | Edit Check Site 3 | PROD        | SUB304      | Screening               | Concomitant Medications         | 1                         | Original Axis Number | 100                  | Screening                | Concomitant Medications          | 1                          | Original Axis Number | 100              | *Is Greater Than or Equal To Open Query Log Cross Form | Marking Group 1  | 'AE Number' is greater than or Equal to 'Original Axis Number' on Log. | {DateTime} |
-		| Edit Check Study 3 | 30001      | Edit Check Site 3 | PROD        | SUB304      | Screening               | Concomitant Medications         | 1                         | Current Axis Number  | 66                   | Screening                | Concomitant Medications          | 1                          | Current Axis Number  | 66               | *Is Not Equal To Open Query Log Cross Form             | Marking Group 1  | 'Duration' and 'Current Axis Number' cannot equal.                     | {DateTime} |
-	And I take a screenshot
-	
-#----------------------------------------------------------------------------------------------------------------------------------------	
 
 #THIS IS DUPLICATE of @PB_3.4.1, please confirm
 @release_564_Patch11
-@PB_3.4.3
+@PB_3.4.2
 @Draft
-Scenario: PB_3.4.3 On a Cross Forms log form to log form, When a query has been answered and closed with the different data and I enter the same data that originally opened the query, then queries are not displayed.
+Scenario: PB_3.4.2 As an EDC user, On a Cross Forms log form to log form, When a query has been answered and closed with the different data and I enter the same data that originally opened the query, then queries are not displayed.
 
-	Given I select a Subject "sub{Var(num4)}"
+	Given I select a Subject "sub{Var(num1)}"
 	And I select Form "Concomitant Medications" in Folder "Screening"
 	And I add a new log line
 	And I enter data in CRF
@@ -520,19 +437,4 @@ Scenario: PB_3.4.3 On a Cross Forms log form to log form, When a query has been 
 	And I verify Query with message "'Duration' and 'Current Axis Number' cannot equal." is displayed on Field "Current Axis Number"
 	And I take a screenshot
 
-#----------------------------------------------------------------------------------------------------------------------------------------	
-@release_564_Patch11
-@PB_3.4.4
-@Draft
-Scenario: PB_3.4.4 On a Cross Forms log form to log form, When a query has been answered and closed with the different data and I enter the same data that originally opened the query, then queries are not displayed in SQL logs. .
-	
-	When I run SQL Script "Query Logging Script" 
-    Then I should not see the logging data for queries 
-		| ProjectName        | SiteNumber | SiteName          | Environment | SubjectName | CheckActionInstanceName | CheckActionInstanceDataPageName | CheckActionRecordPosition | CheckActionFieldName | CheckActionFieldData | TriggerFieldInstanceName | TriggerFieldInstanceDatapageName | TriggerFieldRecordPosition | TriggerFieldName     | TriggerFieldData | EditCheckName                                          | MarkingGroupName | QueryMessage                                                           | EventTime  |
-		| Edit Check Study 3 | 30001      | Edit Check Site 3 | PROD        | SUB304      | Screening               | Concomitant Medications         | 2                         | Start Date           | 10 Feb 2000          | Screening                | Concomitant Medications          | 2                          | Start Date           | 10 Feb 2000      | *Is Less Than To Open Query Log Cross Form             | Marking Group 1  | Date can not be less than.                                             | {DateTime} |
-		| Edit Check Study 3 | 30001      | Edit Check Site 3 | PROD        | SUB304      | Screening               | Concomitant Medications         | 2                         | End Date             | 10 Mar 2000          | Screening                | Concomitant Medications          | 2                          | End Date             | 10 Mar 2000      | *Is Less Than Open Query Log Cross Form                | Marking Group 1  | Date is Less Than Date on the first log form.                          | {DateTime} |
-		| Edit Check Study 3 | 30001      | Edit Check Site 3 | PROD        | SUB304      | Screening               | Concomitant Medications         | 2                         | Original Axis Number | 200                  | Screening                | Concomitant Medications          | 2                          | Original Axis Number | 200              | *Is Greater Than or Equal To Open Query Log Cross Form | Marking Group 1  | 'AE Number' is greater than or Equal to 'Original Axis Number' on Log. | {DateTime} |
-		| Edit Check Study 3 | 30001      | Edit Check Site 3 | PROD        | SUB304      | Screening               | Concomitant Medications         | 2                         | Current Axis Number  | 77                   | Screening                | Concomitant Medications          | 2                          | Current Axis Number  | 77               | *Is Not Equal To Open Query Log Cross Form             | Marking Group 1  | 'Duration' and 'Current Axis Number' cannot equal.                     | {DateTime} |
-	And I take a screenshot	
-	
 #---------------------------------------------------------------------------------------------------------------------------------------- 
