@@ -127,6 +127,7 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
+    <Compile Include="ReferenceFix.cs" />
     <Compile Include="Steps\TsdvSteps.cs" />
     <Compile Include="Steps\PDFSteps.cs" />
     <Compile Include="Steps\DDESteps.cs" />
