@@ -7,14 +7,12 @@ Feature: 8
 
 #Data PDF
 #Task Summary
-
 #Reports - Audit Trail
 #Edit Check Log Report
 #Query Detail
 #Stream-Audit Trail
 #Stream-Edit Check Log Report
 #Stream-Query Detail
-
 #Query Management
 #J-Review
 #BOXI
@@ -22,14 +20,14 @@ Feature: 8
 #Publish Checks
 #Queries on Locked datapoints, Freezed datapoints, Inactive records
 
-Background:F
+Background:
 
     Given I am logged in to Rave with username "defuser" and password "password"
-	# And following Study assignments exist
-		# |User			|Study		       	|Role |Site		        	|Site Number | 
-		# |editcheck  	|Edit Check Study 8	|cdm1 |Edit Check Site 8 	|80001       |
-		# |editcheck1 	|Edit Check Study 8	|cdm2 |Edit Check Site 8 	|80001       |
-		# |editcheck	 	|AM Edit Check Study|cdm1 |AM Edit Site		 	|80002       |	
+	#And following Study assignments exist
+	# | User       | Study               | Role | Site              | Site Number |
+	# | editcheck  | Edit Check Study 8  | cdm1 | Edit Check Site 8 | 80001       |
+	# | editcheck1 | Edit Check Study 8  | cdm2 | Edit Check Site 8 | 80001       |
+	# | editcheck  | AM Edit Check Study | cdm1 | AM Edit Site      | 80002       |
 	# And role "cdm1" has Query actions
 	# And role "cdm2" has Query actions
 	# And Draft "Draft 1" in Study "Edit Check Study 8" has been published to CRF Version "<RANDOMNUMBER>" 
@@ -44,24 +42,18 @@ Background:F
 	
 #----------------------------------------------------------------------------------------------------------------------------------------	
 Scenario:  test
-	
-	And I navigate to "CRF" page with parameters
-	| Name | Value |
-	| DP   | 14907 |
+	And I select Study "Edit Check Study 3" and Site "Edit Check Site 3"
+	And I select a Subject "sub315"
+	And I select Form "Concomitant Medications" in Folder "Screening"
+	And I open log line 1
+	And I answer the only Query on Field "Start Date" with "bla"
 
-	And I verify Query is displayed
-	| Field                      | Message                                                                               |
-	| Diastolic Blood Pressure 2 | Systolic Blood Pressure must be greater than Diastolic Blood Pressure. Please verify. |
-		
 
 @release_564_Patch11
 @PB_8.1.1
 @Draft
-Scenario: PB_8.1.1 Data setup and verification for query re-firing.
-Folder "Screening" enter and save data on forms "Informed Consent" and "Concomitant Medications"
-		And I enter data in CRF
-	| Field                                        | Data |
-	| Lab Field 1 - NEUTROPHILS - rr = T ; rmc = T | test |
+Scenario: PB_8.1.1 As an EDC user, Data setup and verification for query re-firing. Folder "Screening" enter and save data on forms "Informed Consent" and "Concomitant Medications"
+	
 	And I navigate to "DDE"
 	And I select "First Pass"
 	And I select "New Batch"
@@ -71,12 +63,10 @@ Folder "Screening" enter and save data on forms "Informed Consent" and "Concomit
 	And I type "sub {RndNum<num1>(5)}" in "Subject"
 	And I choose "Subject Identification" from "Form"
 	And I click button "Locate"
-
 	And I enter data in DDE and save
 		| Field            | Data        |
 		| Subject Number   | {Var(num1)} |
-		| Subject Initials | sub         |
-	
+		| Subject Initials | sub         |	
 	And I choose "Screening" from "Folder"
 	And I choose "Informed Consent" from "Form"
 	And I click button "Locate"
@@ -96,8 +86,6 @@ Folder "Screening" enter and save data on forms "Informed Consent" and "Concomit
 	    | Current Axis Number  | 20          |
 	
 	And I am logged in to Rave with username "coderimport" and password "password"
-
-
 	And I navigate to "DDE"
 	And I select "Second Pass"
 	And I choose "Edit Check Study 3" from "Study"
@@ -110,7 +98,6 @@ Folder "Screening" enter and save data on forms "Informed Consent" and "Concomit
 		| Field            | Data        |
 		| Subject Number   | {Var(num1)} |
 		| Subject Initials | sub         |
-
 	And I choose "Screening" from "Folder"
 	And I choose "Informed Consent" from "Form"
 	And I click button "Locate"
@@ -128,19 +115,17 @@ Folder "Screening" enter and save data on forms "Informed Consent" and "Concomit
 	    | End Date             | 11 Jan 2000 |
 	    | Original Axis Number | 10          |
 	    | Current Axis Number  | 20          |
+	
 	And I navigate to "Home"
 	And I select Study "Edit Check Study 3" and Site "Edit Check Site 8"
 	And I select a Subject "sub{Var(num1)}"
-
 	And I select Form "Concomitant Medications" in Folder "Screening"
 	And I open log line 1
 	And I verify Requires Response Query with message "'Date Informed Consent Signed' is greater. Please revise." is displayed on Field "Start Date"
 	And I verify Requires Response Query with message "Informed Consent 'Current Distribution Number' is not equal to Concomitant Medications 'Current Axis Number'." is displayed on Field "Current Axis Number"
-
 	And I take a screenshot
 	And I answer the Query "'Date Informed Consent Signed' is greater. Please revise." on Field "Start Date" with "{answer}"
 	And I answer the Query "Informed Consent 'Current Distribution Number' is not equal to Concomitant Medications 'Current Axis Number'." on Field "Current Axis Number" with "{answer}"
-
 	And I save the CRF page
 	And I open log line 1
 	And I close the Query "'Date Informed Consent Signed' is greater. Please revise." on Field "Start Date"
@@ -153,16 +138,17 @@ Folder "Screening" enter and save data on forms "Informed Consent" and "Concomit
 		| Start Date          | 09 Jan 2000 |
 		| Current Axis Number | 19          |
 	And I open log line 1
-	And I verify Field "Start Date" has no Query
-	And I verify Field "Current Axis Number" has no Query
-
+	And I verify Query is not displayed
+		| Field               | Message                                                                                                       | Closed |
+		| Start Date          | 'Date Informed Consent Signed' is greater. Please revise.                                                     | true   |
+		| Current Axis Number | Informed Consent 'Current Distribution Number' is not equal to Concomitant Medications 'Current Axis Number'. | true   |
 	And I take a screenshot
-	And I enter data in CRF and save
+	When I enter data in CRF and save
 		| Field               | Data        |
 		| Start Date          | 08 Jan 2000 |
 		| Current Axis Number | 20          |
 	And I open log line 1
-	And I verify closed Query with message "'Date Informed Consent Signed' is greater. Please revise." is displayed on Field "Start Date"
+	Then I verify closed Query with message "'Date Informed Consent Signed' is greater. Please revise." is displayed on Field "Start Date"
 	And I verify closed Query with message "Informed Consent 'Current Distribution Number' is not equal to Concomitant Medications 'Current Axis Number'." is displayed on Field "Current Axis Number"
 
 	And I take a screenshot
@@ -172,19 +158,6 @@ Folder "Screening" enter and save data on forms "Informed Consent" and "Concomit
 @PB_8.1.2
 @Draft
 Scenario: PB_8.1.2
-	
-    When I run SQL Script "Query Logging Script" 
-    Then I should see the logging data for queries 
-      |ProjectName        |SiteNumber  |SiteName          |Environment |SubjectName  |CheckActionInstanceName     |CheckActionInstanceDataPageName |CheckActionRecordPosition |CheckActionFieldName |CheckActionFieldData |TriggerFieldInstanceName |TriggerFieldInstanceDatapageName |TriggerFieldRecordPosition |TriggerFieldName        |TriggerFieldData |EditCheckName                               |MarkingGroupName |QueryMessage                                                                |EventTime  |
-      |Edit Check Study 8 |80001       |Edit Check Site 8 |PROD        |sub801       |Screening          |Concomitant Medications            |1                         |Start Date    |08 Jan 2000          |Screening       |Concomitant Medications			  |1                          |Start Date       |08 Jan 2000      |*Greater Than Open Query Log Cross Form     |Marking Group 1  |Informed Consent Date 1 is greater. Please revise.                          |{DateTime} |
-	  |Edit Check Study 8 |80001       |Edit Check Site 8 |PROD        |sub801       |Screening          |Concomitant Medications            |1                         |Current Axis Number      |20                   |Screening       |Concomitant Medications             |1                          |Numeric Field 2         |20               |*Is Not Equal to Open Query Log Cross Form* |Site             |Informed Consent numeric field 2 is not equal to assessment numeric field 2 |{DateTime} |
-	And I take a screenshot
- 
-#----------------------------------------------------------------------------------------------------------------------------------------	
-@release_564_Patch11
-@PB_8.1.3
-@Draft
-Scenario: PB_8.1.3
  
     Given I select Study "Edit Check Study 3" and Site "Edit Check Site 8"
     And I select a Subject "sub{Var(num1)}"
@@ -203,12 +176,12 @@ Scenario: PB_8.1.3
 	And I answer the Query "Informed Consent 'Current Distribution Number' is not equal to Concomitant Medications 'Current Axis Number'." on Field "Current Axis Number" with "{answer}"
 	And I save the CRF page
 	And I open log line 2
+	And I close the Query "'Date Informed Consent Signed' is greater. Please revise." on Field "Start Date"
+	And I close the Query "Informed Consent 'Current Distribution Number' is not equal to Concomitant Medications 'Current Axis Number'." on Field "Current Axis Number"
 	And I enter data in CRF
 		| Field               | Data        |
 		| Start Date          | 09 Jan 2000 |
 		| Current Axis Number | 19          |
-	And I close the Query "'Date Informed Consent Signed' is greater. Please revise." on Field "Start Date"
-	And I close the Query "Informed Consent 'Current Distribution Number' is not equal to Concomitant Medications 'Current Axis Number'." on Field "Current Axis Number"
 	And I save the CRF page
 	And I take a screenshot
 	And I open log line 2
@@ -226,25 +199,12 @@ Scenario: PB_8.1.3
 	
 #----------------------------------------------------------------------------------------------------------------------------------------	
 @release_564_Patch11
-@PB_8.1.4
+@PB_8.1.3
 @Draft
-Scenario: PB_8.1.4
-	
-    When I run SQL Script "Query Logging Script" 
-    Then I should not see the logging data for queries 
-      |ProjectName        |SiteNumber  |SiteName          |Environment |SubjectName  |CheckActionInstanceName |CheckActionInstanceDataPageName |CheckActionRecordPosition |CheckActionFieldName |CheckActionFieldData |TriggerFieldInstanceName |TriggerFieldInstanceDatapageName |TriggerFieldRecordPosition |TriggerFieldName        |TriggerFieldData |EditCheckName                               |MarkingGroupName |QueryMessage                                                                |EventTime  |
-      |Edit Check Study 8 |80001       |Edit Check Site 8 |PROD        |sub801       |Screening      |Concomitant Medications            |2                         |Start Date    |07 Jan 2000          |Screening       |Concomitant Medications             |2                          |Start Date       |07 Jan 2000      |*Greater Than Open Query Log Cross Form     |Marking Group 1  |Informed Consent Date 1 is greater. Please revise.                          |{DateTime} |
-	  |Edit Check Study 8 |80001       |Edit Check Site 8 |PROD        |sub801       |Screening      |Concomitant Medications            |2                         |Current Axis Number      |18                   |Screening       |Concomitant Medications             |2                          |Current Axis Number         |18               |*Is Not Equal to Open Query Log Cross Form* |Site             |Informed Consent numeric field 2 is not equal to assessment numeric field 2 |{DateTime} |
-	And I take a screenshot
-
-#----------------------------------------------------------------------------------------------------------------------------------------	
-@release_564_Patch11
-@PB_8.1.5
-@Draft
-Scenario: PB_8.1.5
+Scenario: PB_8.1.3
 	
     Given I select Study "Edit Check Study 3" and Site "Edit Check Site 8"
-    And I select a Subject "sub72317"
+    And I select a Subject "sub{Var(num1)}"
 	And I select Form "Concomitant Medications" in Folder "Screening"
 	And I enter data in CRF on a new log line and save
 	    | Field                | Data        |
@@ -256,12 +216,12 @@ Scenario: PB_8.1.5
 	And I verify Requires Response Query with message "'Date Informed Consent Signed' is greater. Please revise." is displayed on Field "Start Date"
 	And I verify Requires Response Query with message "Informed Consent 'Current Distribution Number' is not equal to Concomitant Medications 'Current Axis Number'." is displayed on Field "Current Axis Number"
 	And I take a screenshot
+	And I cancel the Query "'Date Informed Consent Signed' is greater. Please revise." on Field "Start Date"
+	And I cancel the Query "Informed Consent 'Current Distribution Number' is not equal to Concomitant Medications 'Current Axis Number'." on Field "Current Axis Number"
 	And I enter data in CRF
 		| Field               | Data        |
 		| Start Date          | 09 Jan 2000 |
 		| Current Axis Number | 19          |
-	And I cancel the Query "'Date Informed Consent Signed' is greater. Please revise." on Field "Start Date"
-	And I cancel the Query "Informed Consent 'Current Distribution Number' is not equal to Concomitant Medications 'Current Axis Number'." on Field "Current Axis Number"
 	And I save the CRF page
 	And I take a screenshot
 	And I open log line 3
@@ -279,25 +239,12 @@ Scenario: PB_8.1.5
 	
 #----------------------------------------------------------------------------------------------------------------------------------------	
 @release_564_Patch11
-@PB_8.1.6
-@Draft
-Scenario: PB_8.1.6
-
-    When I run SQL Script "Query Logging Script" 
-    Then I should not see the logging data for queries 
-      |ProjectName        |SiteNumber  |SiteName          |Environment |SubjectName  |CheckActionInstanceName |CheckActionInstanceDataPageName |CheckActionRecordPosition |CheckActionFieldName |CheckActionFieldData |TriggerFieldInstanceName |TriggerFieldInstanceDatapageName |TriggerFieldRecordPosition |TriggerFieldName        |TriggerFieldData |EditCheckName                               |MarkingGroupName |QueryMessage                                                                |EventTime  |
-      |Edit Check Study 8 |80001       |Edit Check Site 8 |PROD        |sub801       |Screening      |Concomitant Medications            |3                         |Start Date    |07 Jan 2000          |Screening       |Concomitant Medications             |2                          |Start Date       |07 Jan 2000      |*Greater Than Open Query Log Cross Form     |Marking Group 1  |Informed Consent Date 1 is greater. Please revise.                          |{DateTime} |
-	  |Edit Check Study 8 |80001       |Edit Check Site 8 |PROD        |sub801       |Screening      |Concomitant Medications            |3                         |Current Axis Number      |18                   |Screening       |Concomitant Medications             |2                          |Current Axis Number         |18               |*Is Not Equal to Open Query Log Cross Form* |Site             |Informed Consent numeric field 2 is not equal to assessment numeric field 2 |{DateTime} |
-	And I take a screenshot
-
-#----------------------------------------------------------------------------------------------------------------------------------------	
-@release_564_Patch11
 @PB_8.2.1
 @Draft
 Scenario: PB_8.2.1 Task Summary
 
 	And I select Study "Edit Check Study 3" and Site "Edit Check Site 8"
-	And I select a Subject "sub22079"
+    And I select a Subject "sub{Var(num1)}"
 #New Step Def
 	When I expand "Open Queries" in Task Summary
 	Then I should see "Screening-Concomitant Medications" in "Open Queries"
@@ -307,7 +254,7 @@ Scenario: PB_8.2.1 Task Summary
 	And I verify Requires Response Query with message "Informed Consent 'Current Distribution Number' is not equal to Concomitant Medications 'Current Axis Number'." is displayed on Field "Current Axis Number"
 	And I take a screenshot
 	
-	And I select a Subject "sub22079"
+    And I select a Subject "sub{Var(num1)}"
 #New Step Def
 	When I expand "Cancel Query" in Task Summary
 	Then I should see "Screening-Concomitant Medications" in "Open Query"
@@ -330,7 +277,7 @@ Scenario: PB_8.3.1 Query Management
 	And I choose "Edit Check Study 3 (Prod)" from "Study"
 	And I choose "World" from "Site Group"
 	And I choose "Edit Check Site 8" from "Site"
-	And I choose "sub22079" from "Subject"
+	And I choose "sub{Var(num1)}" from "Subject"
 	And I click button "Advanced Search"
 
 	And I select Form "Concomitant Medications" in search result
@@ -380,24 +327,11 @@ Scenario: PB_8.3.1 Query Management
 @Draft
 Scenario: PB_8.3.2
 	
-    When I run SQL Script "Query Logging Script" 
-    Then I should not see the logging data for queries 
-      |ProjectName        |SiteNumber  |SiteName          |Environment |SubjectName  |CheckActionInstanceName |CheckActionInstanceDataPageName |CheckActionRecordPosition |CheckActionFieldName |CheckActionFieldData |TriggerFieldInstanceName |TriggerFieldInstanceDatapageName |TriggerFieldRecordPosition |TriggerFieldName        |TriggerFieldData |EditCheckName                               |MarkingGroupName |QueryMessage                                                                |EventTime  |
-      |Edit Check Study 8 |80001       |Edit Check Site 8 |PROD        |sub801       |Screening      |Concomitant Medications            |4                         |Start Date    |07 Jan 2000          |Screening       |Concomitant Medications             |2                          |Start Date       |07 Jan 2000      |*Greater Than Open Query Log Cross Form     |Marking Group 1  |Informed Consent Date 1 is greater. Please revise.                          |{DateTime} |
-	  |Edit Check Study 8 |80001       |Edit Check Site 8 |PROD        |sub801       |Screening      |Concomitant Medications            |4                         |Current Axis Number      |18                   |Screening       |Concomitant Medications             |2                          |Current Axis Number         |18               |*Is Not Equal to Open Query Log Cross Form* |Site             |Informed Consent numeric field 2 is not equal to assessment numeric field 2 |{DateTime} |
-	And I take a screenshot
-
-#----------------------------------------------------------------------------------------------------------------------------------------	
-@release_564_Patch11
-@PB_8.3.3
-@Draft
-Scenario: PB_8.3.3
-	
 	And I navigate to "Query Management"
 	And I choose "Edit Check Study 3 (Prod)" from "Study"
 	And I choose "World" from "Site Group"
 	And I choose "Edit Check Site 8" from "Site"
-	And I choose "sub22079" from "Subject"
+	And I choose "sub{Var(num1)}" from "Subject"
 	And I click button "Advanced Search"
 
 	And I select Form "Concomitant Medications" in search result
@@ -439,19 +373,6 @@ Scenario: PB_8.3.3
 	
 #----------------------------------------------------------------------------------------------------------------------------------------	
 @release_564_Patch11
-@PB_8.3.4
-@Draft
-Scenario: PB_8.3.4
-	
-    When I run SQL Script "Query Logging Script" 
-    Then I should not see the logging data for queries 
-      |ProjectName        |SiteNumber  |SiteName          |Environment |SubjectName  |CheckActionInstanceName |CheckActionInstanceDataPageName |CheckActionRecordPosition |CheckActionFieldName |CheckActionFieldData |TriggerFieldInstanceName |TriggerFieldInstanceDatapageName |TriggerFieldRecordPosition |TriggerFieldName        |TriggerFieldData |EditCheckName                               |MarkingGroupName |QueryMessage                                                                |EventTime  |
-      |Edit Check Study 8 |80001       |Edit Check Site 8 |PROD        |sub801       |Screening      |Concomitant Medications            |5                         |Start Date    |07 Jan 2000          |Screening       |Concomitant Medications             |2                          |Start Date       |07 Jan 2000      |*Greater Than Open Query Log Cross Form     |Marking Group 1  |Informed Consent Date 1 is greater. Please revise.                          |{DateTime} |
-	  |Edit Check Study 8 |80001       |Edit Check Site 8 |PROD        |sub801       |Screening      |Concomitant Medications            |5                         |Current Axis Number      |18                   |Screening       |Concomitant Medications             |2                          |Current Axis Number         |18               |*Is Not Equal to Open Query Log Cross Form* |Site             |Informed Consent numeric field 2 is not equal to assessment numeric field 2 |{DateTime} |
-	And I take a screenshot
-	
-#----------------------------------------------------------------------------------------------------------------------------------------	
-@release_564_Patch11
 @PB_8.4.1
 @Draft
 Scenario: PB_8.4.1 Generate the Data PDFs.
@@ -466,6 +387,7 @@ Scenario: PB_8.4.1 Generate the Data PDFs.
 	When I View Data PDF "pdf{Var(num)}"
 	#Then I should see "Query Data" in Audits
 	And I take a screenshot
+
 #----------------------------------------------------------------------------------------------------------------------------------------	
 @release_564_Patch11
 @PB_8.5.1
@@ -1050,19 +972,6 @@ Scenario: PB_8.10.1 When I run the Report, then query related data are displayed
 	And I verify new query did not fire on "Log Field 1" field on second record position
 	And I take a screenshot
 	And I verify new query did not fire on "Log Field 1" field on third record position
-	And I take a screenshot
-
-#----------------------------------------------------------------------------------------------------------------------------------------	
-@release_564_Patch11
-@PB_8.10.2
-@Draft
-Scenario: PB_8.10.2 When I run the Report, then query related data are displayed in the report.
-	
-	When I run SQL Script "Query Logging Script" 
-    Then I should not see the logging data for queries 
-      |ProjectName        |SiteNumber  |SiteName          |Environment |SubjectName  |CheckActionInstanceDataPageName 	|CheckActionRecordPosition |CheckActionFieldName 	|CheckActionFieldData |TriggerFieldInstanceName |TriggerFieldInstanceDatapageName 	|TriggerFieldRecordPosition |TriggerFieldName   |TriggerFieldData 	|EditCheckName		|MarkingGroupName 	|QueryMessage                   |EventTime  |
-	  |Edit Check Study 8 |80001       |Edit Check Site 8 |PROD        |sub805       |Mixed Form			            |2                         |Log Field 1      		|18                   |Screening       |Standard 1			             	|2                          |Standard 1			|7               	|Mixed Form Query 	|Site             	|Query Opened on Log Field 1	|{DateTime} |
-	  |Edit Check Study 8 |80001       |Edit Check Site 8 |PROD        |sub805       |Mixed Form			            |3                         |Log Field 1      		|18                   |Screening       |Standard 1			             	|2                          |Standard 1			|7               	|Mixed Form Query 	|Site             	|Query Opened on Log Field 1	|{DateTime} |
 	And I take a screenshot
 	
 #------------------------------------------------------------------------------------------------------------

@@ -23,13 +23,13 @@ Background:
 @release_564_Patch11
 @PB_2.1.1 
 @Draft
-Scenario: PB_2.1.1 On a Cross Forms Standard form to log form, when a query has been answered and closed with the same data and I enter the same data that originally opened the query, then queries are not displayed. 
+Scenario: PB_2.1.1 As an EDC user, On a Cross Forms - Standard form to log form, when a query has been answered and closed with the same data and I enter the same data that originally opened the query, then queries are not displayed. 
 Folder "Screening" enter and save data on forms "Informed Consent" and "Concomitant Medications"
 	
     Given I create a Subject
-		| Field            | Value                                                          |
-		| Subject Number   | {NextSubjectNum<num1>(Edit Check Study 3,prod,Subject Number)} |
-		| Subject Initials | SUB                                                          	|
+		| Field            | Value             |
+		| Subject Number   | {RndNum<num1>(5)} |
+		| Subject Initials | SUB               |
 	And I select Form "Informed Consent" in Folder "Screening" 
 	And I enter data in CRF and save
 	    | Field                        | Data        |
@@ -67,25 +67,12 @@ Folder "Screening" enter and save data on forms "Informed Consent" and "Concomit
 	Then I verify Query with message "'Date Informed Consent Signed' is greater. Please revise." is displayed on Field "Start Date"
     And I verify Query with message "Informed Consent 'Current Distribution Number' is not equal to Concomitant Medications 'Current Axis Number'." is displayed on Field "Current Axis Number"	
 	And I take a screenshot
-	
+	  
 #----------------------------------------------------------------------------------------------------------------------------------------	
 @release_564_Patch11
 @PB_2.1.2
 @Draft
 Scenario: PB_2.1.2
-	
-    When I run SQL Script "Query Logging Script" 
-    Then I should not see the logging data for queries 
-      | ProjectName        | SiteNumber | SiteName          | Environment | SubjectName | CheckActionInstanceName | CheckActionInstanceDataPageName | CheckActionRecordPosition | CheckActionFieldName | CheckActionFieldData | TriggerFieldInstanceName | TriggerFieldInstanceDatapageName | TriggerFieldRecordPosition | TriggerFieldName    | TriggerFieldData | EditCheckName                               | MarkingGroupName | QueryMessage                                                                | EventTime  |
-      | Edit Check Study 3 | 20001      | Edit Check Site 2 | PROD        | sub201      | Screening               | Concomitant Medications         | 1                         | Start Date           | 08 Jan 2000          | Screening                | Concomitant Medications          | 1                          | Start Date          | 08 Jan 2000      | *Greater Than Open Query Log Cross Form     | Marking Group 1  | Date Informed Consent Signed is greater. Please revise.                     | {DateTime} |
-      | Edit Check Study 3 | 20001      | Edit Check Site 2 | PROD        | sub201      | Screening               | Concomitant Medications         | 1                         | Current Axis Number  | 20                   | Screening                | Concomitant Medications          | 1                          | Current Axis Number | 20               | *Is Not Equal to Open Query Log Cross Form* | Site             | Informed Consent numeric field 2 is not equal to assessment numeric field 2 | {DateTime} |
-	And I take a screenshot
-   
-#----------------------------------------------------------------------------------------------------------------------------------------	
-@release_564_Patch11
-@PB_2.1.3
-@Draft
-Scenario: PB_2.1.3
    
     Given I select Study "Edit Check Study 3" and Site "Edit Check Site 2"
     And I select a Subject "SUB{Var(num1)}"
@@ -120,28 +107,16 @@ Scenario: PB_2.1.3
 	
 #----------------------------------------------------------------------------------------------------------------------------------------	
 @release_564_Patch11
-@PB_2.1.4
-@Draft
-Scenario: PB_2.1.4
-	
-    When I run SQL Script "Query Logging Script" 
-    Then I should not see the logging data for queries 
-      | ProjectName        | SiteNumber | SiteName          | Environment | SubjectName | CheckActionInstanceName | CheckActionInstanceDataPageName | CheckActionRecordPosition | CheckActionFieldName | CheckActionFieldData | TriggerFieldInstanceName | TriggerFieldInstanceDatapageName | TriggerFieldRecordPosition | TriggerFieldName    | TriggerFieldData | EditCheckName                               | MarkingGroupName | QueryMessage                                                                                                  | EventTime  |
-      | Edit Check Study 3 | 20001      | Edit Check Site 2 | PROD        | sub201      | Screening               | Concomitant Medications         | 2                         | Start Date           | 07 Jan 2000          | Screening                | Concomitant Medications          | 2                          | Start Date          | 07 Jan 2000      | *Greater Than Open Query Log Cross Form     | Marking Group 1  | 'Date Informed Consent Signed' is greater. Please revise.                                                     | {DateTime} |
-      | Edit Check Study 3 | 20001      | Edit Check Site 2 | PROD        | sub201      | Screening               | Concomitant Medications         | 2                         | Current Axis Number  | 18                   | Screening                | Concomitant Medications          | 2                          | Current Axis Number | 18               | *Is Not Equal to Open Query Log Cross Form* | Site             | Informed Consent 'Current Distribution Number' is not equal to Concomitant Medications 'Current Axis Number'. | {DateTime} |
-	And I take a screenshot
-	
-#----------------------------------------------------------------------------------------------------------------------------------------	
-@release_564_Patch11
 @PB_2.2.1
 @Draft
-Scenario: PB_2.2.1 Verifies query firing between cross folders with no require response and no require manual close. Cross Folders: Standard form to log form, Folder "Screening" enter and save data on form "Informed Consent", Folder "Week 1" enter and save data on form "Concomitant Medications". 			  
+Scenario: PB_2.2.1 On a Cross Folders - Standard form to log form, 
+Folder "Screening" enter and save data on form "Informed Consent", Folder "Week 1" enter and save data on form "Concomitant Medications". 			  
 
     Given I select Study "Edit Check Study 3" and Site "Edit Check Site 2"
     And I create a Subject
-		| Field            | Value                                                          |
-		| Subject Number   | {NextSubjectNum<num1>(Edit Check Study 3,prod,Subject Number)} |
-		| Subject Initials | SUB                                                          	|
+		| Field            | Value             |
+		| Subject Number   | {RndNum<num1>(5)} |
+		| Subject Initials | SUB               |
 	And I select Form "Informed Consent" in Folder "Screening"
 	And I enter data in CRF and save
 	    | Field                        | Data        |
@@ -186,19 +161,6 @@ Scenario: PB_2.2.1 Verifies query firing between cross folders with no require r
 @PB_2.2.2
 @Draft
 Scenario: PB_2.2.2
-	
-    When I run SQL Script "Query Logging Script" 
-    Then I should not see the logging data for queries 
-      | ProjectName        | SiteNumber | SiteName          | Environment | SubjectName | CheckActionInstanceName | CheckActionInstanceDataPageName | CheckActionRecordPosition | CheckActionFieldName | CheckActionFieldData | TriggerFieldInstanceName | TriggerFieldInstanceDatapageName | TriggerFieldRecordPosition | TriggerFieldName    | TriggerFieldData | EditCheckName                            | MarkingGroupName | QueryMessage                                                       | EventTime  |
-      | Edit Check Study 3 | 20001      | Edit Check Site 2 | PROD        | sub202      | Week 1                  | Concomitant Medications         | 1                         | Start Date           | 09 Jan 2000          | Screening                | Concomitant Medications          | 1                          | Start Date          | 09 Jan 2000      | *Greater Than Open Query Cross Folder    | Marking Group 1  | 'Date Informed Consent Signed' can not be greater than Start Date. | {DateTime} |
-      | Edit Check Study 3 | 20001      | Edit Check Site 2 | PROD        | sub202      | Week 1                  | Concomitant Medications         | 1                         | Current Axis Number  | 99                   | Screening                | Concomitant Medications          | 1                          | Current Axis Number | 99               | *Is Not Equal to Open Query Cross Folder | Marking Group 1  | 'Current Distribution Number' is not equal 'Current Axis Number'.  | {DateTime} |
-	And I take a screenshot
- 
-#----------------------------------------------------------------------------------------------------------------------------------------	
-@release_564_Patch11
-@PB_2.2.3
-@Draft
-Scenario: PB_2.2.3
  
     Given I select Study "Edit Check Study 3" and Site "Edit Check Site 2"
     And I select a Subject "SUB{Var(num1)}"
@@ -232,19 +194,6 @@ Scenario: PB_2.2.3
 	And I verify Query with message "'Current Distribution Number' is not equal 'Current Axis Number'." is displayed on Field "Current Axis Number"
 	And I take a screenshot
 
-#------------------------------------------S----------------------------------------------------------------------------------------------	
-@release_564_Patch11
-@PB_2.2.4
-@Draft
-Scenario: PB_2.2.4
-	
-    When I run SQL Script "Query Logging Script" 
-    Then I should not see the logging data for queries 
-      | ProjectName        | SiteNumber | SiteName          | Environment | SubjectName | CheckActionInstanceName | CheckActionInstanceDataPageName | CheckActionRecordPosition | CheckActionFieldName | CheckActionFieldData | TriggerFieldInstanceName | TriggerFieldInstanceDatapageName | TriggerFieldRecordPosition | TriggerFieldName    | TriggerFieldData | EditCheckName                            | MarkingGroupName | QueryMessage                                                       | EventTime  |
-      | Edit Check Study 3 | 20001      | Edit Check Site 2 | PROD        | sub202      | Week 1                  | Concomitant Medications         | 2                         | Start Date           | 08 Jan 2000          | Screening                | Concomitant Medications          | 2                          | Start Date          | 08 Jan 2000      | *Greater Than Open Query Cross Folder    | Marking Group 1  | 'Date Informed Consent Signed' can not be greater than Start Date. | {DateTime} |
-      | Edit Check Study 3 | 20001      | Edit Check Site 2 | PROD        | sub202      | Week 1                  | Concomitant Medications         | 2                         | Current Axis Number  | 98                   | Screening                | Concomitant Medications          | 2                          | Current Axis Number | 98               | *Is Not Equal to Open Query Cross Folder | Marking Group 1  | 'Current Distribution Number' is not equal 'Current Axis Number'.  | {DateTime} |
-	And I take a screenshot
-
 #----------------------------------------------------------------------------------------------------------------------------------------	
 @release_564_Patch11
 @PB_2.3.1
@@ -253,9 +202,9 @@ Scenario: PB_2.3.1 On a Cross Forms log form to Standard form, Folder "Week 1" e
     
 	Given I select Study "Edit Check Study 3" and Site "Edit Check Site 2"
     And I create a Subject
-		| Field            | Value                                                          |
-		| Subject Number   | {NextSubjectNum<num1>(Edit Check Study 3,prod,Subject Number)} |
-		| Subject Initials | SUB                                                            |
+		| Field            | Value             |
+		| Subject Number   | {RndNum<num1>(5)} |
+		| Subject Initials | SUB               |
 	And I select Form "Concomitant Medications" in Folder "Week 1" 
 	And I enter data in CRF and save
 	    | Field                | Data        |
@@ -291,19 +240,6 @@ Scenario: PB_2.3.1 On a Cross Forms log form to Standard form, Folder "Week 1" e
 @Draft
 Scenario: PB_2.3.2
 	
-    When I run SQL Script "Query Logging Script" 
-    Then I should not see the logging data for queries 
-      | ProjectName        | SiteNumber | SiteName          | Environment | SubjectName | CheckActionInstanceName | CheckActionInstanceDataPageName | CheckActionRecordPosition | CheckActionFieldName | CheckActionFieldData | TriggerFieldInstanceName | TriggerFieldInstanceDatapageName | TriggerFieldRecordPosition | TriggerFieldName    | TriggerFieldData | EditCheckName               | MarkingGroupName | QueryMessage                                                                     | EventTime  |
-      | Edit Check Study 3 | 20001      | Edit Check Site 2 | PROD        | sub203      | Week 1                  | Concomitant Medications         | 1                         | End Date             | 11 Jan 2000          | Week 1                   | Concomitant Medications          | 1                          | End Date            | 11 Jan 2000      | *Greater Than Log same form | Marking Group 1  | Start Date can not be greater than End Date.                                     | {DateTime} |
-      | Edit Check Study 3 | 20001      | Edit Check Site 2 | PROD        | sub203      | Week 1                  | Concomitant Medications         | 1                         | Current Axis Number  | 101                  | Week 1                   | Concomitant Medications          | 1                          | Current Axis Number | 101              | *Is Less Than Log same form | Marking Group 1  | 'Original Axis Number' is Less Than 'Current Axis Number' on first Number field. | {DateTime} |
-	And I take a screenshot
-
-#----------------------------------------------------------------------------------------------------------------------------------------	
-@release_564_Patch11
-@PB_2.3.3
-@Draft
-Scenario: PB_2.3.3
-	
     Given I select Study "Edit Check Study 3" and Site "Edit Check Site 2"
     And I select a Subject "SUB{Var(num1)}"
 	And I select Form "Concomitant Medications" in Folder "Week 1"
@@ -333,24 +269,12 @@ Scenario: PB_2.3.3
 	Then I verify Query with message "Start Date can not be greater than End Date." is displayed on Field "End Date"
     And I verify Query with message "'Original Axis Number' is Less Than 'Current Axis Number' on first Number field." is displayed on Field "Current Axis Number"
 	And I take a screenshot
-	
+
 #----------------------------------------------------------------------------------------------------------------------------------------	
 @release_564_Patch11
-@PB_2.3.4
+@PB_2.3.3
 @Draft
-Scenario: PB_2.3.4
-	
-    When I run SQL Script "Query Logging Script" 
-    Then I should not see the logging data for queries 
-      | ProjectName        | SiteNumber | SiteName          | Environment | SubjectName | CheckActionInstanceName | CheckActionInstanceDataPageName | CheckActionRecordPosition | CheckActionFieldName | CheckActionFieldData | TriggerFieldInstanceName | TriggerFieldInstanceDatapageName | TriggerFieldRecordPosition | TriggerFieldName    | TriggerFieldData | EditCheckName               | MarkingGroupName | QueryMessage                                                                     | EventTime  |
-      | Edit Check Study 3 | 20001      | Edit Check Site 2 | PROD        | sub203      | Week 1                  | Concomitant Medications         | 2                         | End Date             | 14 Feb 2000          | Week 1                   | Concomitant Medications          | 2                          | End Date            | 14 Feb 2000      | *Greater Than Log same form | Marking Group 1  | Start Date can not be greater than End Date.                                     | {DateTime} |
-      | Edit Check Study 3 | 20001      | Edit Check Site 2 | PROD        | sub203      | Week 1                  | Concomitant Medications         | 2                         | Current Axis Number  | 2000                 | Week 1                   | Concomitant Medications          | 2                          | Current Axis Number | 2000             | *Is Less Than Log same form | Marking Group 1  | 'Original Axis Number' is Less Than 'Current Axis Number' on first Number field. | {DateTime} |
-	And I take a screenshot
-#----------------------------------------------------------------------------------------------------------------------------------------	
-@release_564_Patch11
-@PB_2.3.5
-@Draft
-Scenario: PB_2.3.5
+Scenario: PB_2.3.3
 
     Given I select Study "Edit Check Study 3" and Site "Edit Check Site 2"
     And I select a Subject "SUB{Var(num1)}"
@@ -383,19 +307,6 @@ Scenario: PB_2.3.5
 	
 #----------------------------------------------------------------------------------------------------------------------------------------	
 @release_564_Patch11
-@PB_2.3.6
-@Draft
-Scenario: PB_2.3.6
-
-    When I run SQL Script "Query Logging Script" 
-    Then I should not see the logging data for queries 
-      | ProjectName        | SiteNumber | SiteName          | Environment | SubjectName | CheckActionInstanceName | CheckActionInstanceDataPageName | CheckActionRecordPosition | CheckActionFieldName        | CheckActionFieldData | TriggerFieldInstanceName | TriggerFieldInstanceDatapageName | TriggerFieldRecordPosition | TriggerFieldName            | TriggerFieldData | EditCheckName                                      | MarkingGroupName | QueryMessage                  | EventTime  |
-      | Edit Check Study 3 | 20001      | Edit Check Site 2 | PROD        | sub203      | Week 1                  | Informed Consent                | 0                         | End Date                    | 11 Jan 2000          | Week 1                   | Informed Consent                 | 0                          | End Date                    | 11 Jan 2000      | *Greater Than or Equal To Open Query Log same form | Marking Group 1  | Dates are not equal.          | {DateTime} |
-      | Edit Check Study 3 | 20001      | Edit Check Site 2 | PROD        | sub203      | Week 1                  | Informed Consent                | 0                         | Current Distribution Number | 101                  | Week 1                   | Informed Consent                 | 0                          | Current Distribution Number | 101              | *Is Not Equal To Open Query Log Same form          | Marking Group 1  | Numeric fields are not equal. | {DateTime} |
-	And I take a screenshot
-
-#----------------------------------------------------------------------------------------------------------------------------------------	
-@release_564_Patch11
 @PB_2.4.1
 @Draft
 Scenario: PB_2.4.1 Verifies query firing between cross forms in different folder with no require response and no require manual close.
@@ -404,9 +315,9 @@ Folder "Screening" enter and save data on forms "Concomitant Medications" and "A
 			  
     Given I select Study "Edit Check Study 3" and Site "Edit Check Site 2"
     And I create a Subject
-		| Field            | Value                                                          |
-		| Subject Number   | {NextSubjectNum<num1>(Edit Check Study 3,prod,Subject Number)} |
-		| Subject Initials | SUB															|
+		| Field            | Value             |
+		| Subject Number   | {RndNum<num1>(5)} |
+		| Subject Initials | SUB               |
 	And I select Form "Concomitant Medications" in Folder "Screening"
 	And I enter data in CRF and save
 	    | Field                | Data        |
@@ -455,27 +366,12 @@ Folder "Screening" enter and save data on forms "Concomitant Medications" and "A
 	And I verify Query with message "'AE Number' is greater than or Equal to 'Original Axis Number' on Log." is displayed on Field "Original Axis Number"
     And I verify Query with message "'Duration' and 'Current Axis Number' cannot equal." is displayed on Field "Current Axis Number"	
 	And I take a screenshot
-	
+	 
 #----------------------------------------------------------------------------------------------------------------------------------------	
 @release_564_Patch11
 @PB_2.4.2
 @Draft
-Scenario: PB_2.4.2 
-	
-    When I run SQL Script "Query Logging Script" 
-    Then I should not see the logging data for queries 
-      | ProjectName        | SiteNumber | SiteName          | Environment | SubjectName | CheckActionInstanceName | CheckActionInstanceDataPageName | CheckActionRecordPosition | CheckActionFieldName | CheckActionFieldData | TriggerFieldInstanceName | TriggerFieldInstanceDatapageName | TriggerFieldRecordPosition | TriggerFieldName     | TriggerFieldData | EditCheckName                                          | MarkingGroupName | QueryMessage                                                                            | EventTime  |
-      | Edit Check Study 3 | 20001      | Edit Check Site 2 | PROD        | sub204      | Screening               | Concomitant Medications         | 1                         | Start Date           | 10 Jan 2000          | Screening                | Concomitant Medications          | 1                          | Start Date           | 10 Jan 2000      | *Is Less Than To Open Query Log Cross Form             | Marking Group 1  | Date can not be less than.                                                              | {DateTime} |
-      | Edit Check Study 3 | 20001      | Edit Check Site 2 | PROD        | sub204      | Screening               | Concomitant Medications         | 1                         | End Date             | 10 Feb 2000          | Screening                | Concomitant Medications          | 1                          | End Date             | 10 Feb 2000      | *Is Less Than Open Query Log Cross Form                | Marking Group 1  | Date is Less Than Date on the first log form.                                           | {DateTime} |
-      | Edit Check Study 3 | 20001      | Edit Check Site 2 | PROD        | sub204      | Screening               | Concomitant Medications         | 1                         | Original Axis Number | 100                  | Screening                | Concomitant Medications          | 1                          | Original Axis Number | 100              | *Is Greater Than or Equal To Open Query Log Cross Form | Marking Group 1  | 'AE Number' is greater than or Equal to 'Original Axis Number' on Log. | {DateTime} |
-      | Edit Check Study 3 | 20001      | Edit Check Site 2 | PROD        | sub204      | Screening               | Concomitant Medications         | 1                         | Current Axis Number  | 66                   | Screening                | Concomitant Medications          | 1                          | Current Axis Number  | 66               | *Is Not Equal To Open Query Log Cross Form             | Marking Group 1  | 'Duration' and 'Current Axis Number' cannot equal.                                     | {DateTime} |
-	And I take a screenshot
-   
-#----------------------------------------------------------------------------------------------------------------------------------------	
-@release_564_Patch11
-@PB_2.4.3
-@Draft
-Scenario: PB_2.4.3
+Scenario: PB_2.4.2
    
     Given I select Study "Edit Check Study 3" and Site "Edit Check Site 2"
     And I select a Subject "SUB{Var(num1)}"
@@ -529,21 +425,6 @@ Scenario: PB_2.4.3
 	And I take a screenshot
 	
 #----------------------------------------------------------------------------------------------------------------------------------------	
-@release_564_Patch11
-@PB_2.4.4
-@Draft
-Scenario: PB_2.4.4
-	
-    When I run SQL Script "Query Logging Script" 
-    Then I should not see the logging data for queries 
-      | ProjectName        | SiteNumber | SiteName          | Environment | SubjectName | CheckActionInstanceName | CheckActionInstanceDataPageName | CheckActionRecordPosition | CheckActionFieldName | CheckActionFieldData | TriggerFieldInstanceName | TriggerFieldInstanceDatapageName | TriggerFieldRecordPosition | TriggerFieldName     | TriggerFieldData | EditCheckName                                          | MarkingGroupName | QueryMessage                                                                            | EventTime  |
-      | Edit Check Study 3 | 20001      | Edit Check Site 2 | PROD        | sub204      | Screening               | Concomitant Medications         | 2                         | Start Date           | 10 Feb 2000          | Screening                | Concomitant Medications          | 2                          | Start Date           | 10 Feb 2000      | *Is Less Than To Open Query Log Cross Form             | Marking Group 1  | Date can not be less than.                                                              | {DateTime} |
-      | Edit Check Study 3 | 20001      | Edit Check Site 2 | PROD        | sub204      | Screening               | Concomitant Medications         | 2                         | End Date             | 10 Mar 2000          | Screening                | Concomitant Medications          | 2                          | End Date             | 10 Mar 2000      | *Is Less Than Open Query Log Cross Form                | Marking Group 1  | Date is Less Than Date on the first log form.                                           | {DateTime} |
-      | Edit Check Study 3 | 20001      | Edit Check Site 2 | PROD        | sub204      | Screening               | Concomitant Medications         | 2                         | Original Axis Number | 200                  | Screening                | Concomitant Medications          | 2                          | Original Axis Number | 200              | *Is Greater Than or Equal To Open Query Log Cross Form | Marking Group 1  | 'AE Number' is greater than or Equal to 'Original Axis Number' on Log. | {DateTime} |
-      | Edit Check Study 3 | 20001      | Edit Check Site 2 | PROD        | sub204      | Screening               | Concomitant Medications         | 2                         | Current Axis Number  | 77                   | Screening                | Concomitant Medications          | 2                          | Current Axis Number  | 77               | *Is Not Equal To Open Query Log Cross Form             | Marking Group 1  | 'Duration' and 'Current Axis Number' cannot equal.                                     | {DateTime} |
-	And I take a screenshot
-
-#----------------------------------------------------------------------------------------------------------------------------------------	
 # Query Issue: Edit Checks with no require response and no require manual close. Open a query, cancel a query, change the correct data and change it back to previous data query didn't fired and verify log
 	
 @release_564_Patch11
@@ -555,9 +436,9 @@ Folder "Screening" enter and save data on forms "Informed Consent" and "Concomit
 	
     Given I select Study "Edit Check Study 3" and Site "Edit Check Site 2"
     And I create a Subject
-		| Field            | Value                                                          |
-		| Subject Number   | {NextSubjectNum<num1>(Edit Check Study 3,prod,Subject Number)} |
-		| Subject Initials | SUB                                                            |
+		| Field            | Value             |
+		| Subject Number   | {RndNum<num1>(5)} |
+		| Subject Initials | SUB               |
 	And I select Form "Informed Consent" in Folder "Screening"
 	And I enter data in CRF and save
 	    | Field                        | Data        |
@@ -605,19 +486,6 @@ Folder "Screening" enter and save data on forms "Informed Consent" and "Concomit
 @PB_2.5.2
 @Draft
 Scenario: PB_2.5.2
-	
-    When I run SQL Script "Query Logging Script" 
-    Then I should see the logging data for queries 
-      | ProjectName        | SiteNumber | SiteName          | Environment | SubjectName | CheckActionInstanceName | CheckActionInstanceDataPageName | CheckActionRecordPosition | CheckActionFieldName | CheckActionFieldData | TriggerFieldInstanceName | TriggerFieldInstanceDatapageName | TriggerFieldRecordPosition | TriggerFieldName    | TriggerFieldData | EditCheckName                               | MarkingGroupName | QueryMessage                                                                                                  | EventTime  |
-      | Edit Check Study 3 | 20001      | Edit Check Site 2 | PROD        | sub205      | Screening               | Concomitant Medications         | 1                         | Start Date           | 08 Jan 2000          | Screening                | Concomitant Medications          | 1                          | Start Date          | 08 Jan 2000      | *Greater Than Open Query Log Cross Form     | Marking Group 1  | Date Informed Consent Signed is greater. Please revise.                                                       | {DateTime} |
-      | Edit Check Study 3 | 20001      | Edit Check Site 2 | PROD        | sub205      | Screening               | Concomitant Medications         | 1                         | Current Axis Number  | 20                   | Screening                | Concomitant Medications          | 1                          | Current Axis Number | 20               | *Is Not Equal to Open Query Log Cross Form* | Site             | Informed Consent 'Current Distribution Number' is not equal to Concomitant Medications 'Current Axis Number'. | {DateTime} |
-	And I take a screenshot
-   
-#----------------------------------------------------------------------------------------------------------------------------------------	
-@release_564_Patch11
-@PB_2.5.3
-@Draft
-Scenario: PB_2.5.3 
    
     Given I select Study "Edit Check Study 3" and Site "Edit Check Site 2"
     And I select a Subject "SUB{Var(num1)}"
@@ -655,19 +523,6 @@ Scenario: PB_2.5.3
 	
 #----------------------------------------------------------------------------------------------------------------------------------------	
 @release_564_Patch11
-@PB_2.5.4
-@Draft
-Scenario: PB_2.5.4
-	
-    When I run SQL Script "Query Logging Script" 
-    Then I should not see the logging data for queries 
-      | ProjectName        | SiteNumber | SiteName          | Environment | SubjectName | CheckActionInstanceName | CheckActionInstanceDataPageName | CheckActionRecordPosition | CheckActionFieldName | CheckActionFieldData | TriggerFieldInstanceName | TriggerFieldInstanceDatapageName | TriggerFieldRecordPosition | TriggerFieldName    | TriggerFieldData | EditCheckName                               | MarkingGroupName | QueryMessage                                                                                                  | EventTime  |
-      | Edit Check Study 3 | 20001      | Edit Check Site 2 | PROD        | sub205      | Screening               | Concomitant Medications         | 2                         | Start Date           | 07 Jan 2000          | Screening                | Concomitant Medications          | 2                          | Start Date          | 07 Jan 2000      | *Greater Than Open Query Log Cross Form     | Marking Group 1  | Date Informed Consent Signed is greater. Please revise.                                                       | {DateTime} |
-      | Edit Check Study 3 | 20001      | Edit Check Site 2 | PROD        | sub205      | Screening               | Concomitant Medications         | 2                         | Current Axis Number  | 18                   | Screening                | Concomitant Medications          | 2                          | Current Axis Number | 18               | *Is Not Equal to Open Query Log Cross Form* | Site             | Informed Consent 'Current Distribution Number' is not equal to Concomitant Medications 'Current Axis Number'. | {DateTime} |
-	And I take a screenshot
-	
-#----------------------------------------------------------------------------------------------------------------------------------------	
-@release_564_Patch11
 @PB_2.6.1
 @Draft
 Scenario: PB_2.6.1
@@ -676,9 +531,9 @@ Scenario: PB_2.6.1
 			  
     Given I select Study "Edit Check Study 3" and Site "Edit Check Site 2"
     And I create a Subject
-		| Field            | Value                                                          |
-		| Subject Number   | {NextSubjectNum<num1>(Edit Check Study 3,prod,Subject Number)} |
-		| Subject Initials | SUB															|
+		| Field            | Value             |
+		| Subject Number   | {RndNum<num1>(5)} |
+		| Subject Initials | SUB               |
 	And I select Form "Informed Consent" in Folder "Screening"
 	And I enter data in CRF and save
 	    | Field                        | Data        |
@@ -723,25 +578,12 @@ Scenario: PB_2.6.1
 	Then I verify Query with message "'Date Informed Consent Signed' can not be greater than Start Date." is not displayed on Field "Start Date"
     And I verify Query with message "'Current Distribution Number' is not equal 'Current Axis Number'." is not displayed on Field "Current Axis Number"
 	And I take a screenshot
-	
+	 
 #----------------------------------------------------------------------------------------------------------------------------------------	
 @release_564_Patch11
 @PB_2.6.2
 @Draft
 Scenario: PB_2.6.2
-	
-    When I run SQL Script "Query Logging Script" 
-    Then I should see the logging data for queries 
-      | ProjectName        | SiteNumber | SiteName          | Environment | SubjectName | CheckActionInstanceName | CheckActionInstanceDataPageName | CheckActionRecordPosition | CheckActionFieldName | CheckActionFieldData | TriggerFieldInstanceName | TriggerFieldInstanceDatapageName | TriggerFieldRecordPosition | TriggerFieldName    | TriggerFieldData | EditCheckName                            | MarkingGroupName | QueryMessage                                                       | EventTime  |
-      | Edit Check Study 3 | 20001      | Edit Check Site 2 | PROD        | sub206      | Week 1                  | Concomitant Medications         | 1                         | Start Date           | 09 Jan 2000          | Week 1                   | Concomitant Medications          | 1                          | Start Date          | 09 Jan 2000      | *Greater Than Open Query Cross Folder    | Marking Group 1  | 'Date Informed Consent Signed' can not be greater than Start Date. | {DateTime} |
-      | Edit Check Study 3 | 20001      | Edit Check Site 2 | PROD        | sub206      | Week 1                  | Concomitant Medications         | 1                         | Current Axis Number  | 99                   | Week 1                   | Concomitant Medications          | 1                          | Current Axis Number | 99               | *Is Not Equal to Open Query Cross Folder | Marking Group 1  | 'Current Distribution Number' is not equal 'Current Axis Number'.  | {DateTime} |
-	And I take a screenshot
- 
-#----------------------------------------------------------------------------------------------------------------------------------------	
-@release_564_Patch11
-@PB_2.6.3
-@Draft
-Scenario: PB_2.6.3
  
     Given I select Study "Edit Check Study 3" and Site "Edit Check Site 2"
     And I select a Subject "SUB{Var(num1)}"
@@ -780,28 +622,15 @@ Scenario: PB_2.6.3
 	
 #----------------------------------------------------------------------------------------------------------------------------------------	
 @release_564_Patch11
-@PB_2.6.4
-@Draft
-Scenario: PB_2.6.4 
-	
-    When I run SQL Script "Query Logging Script" 
-    Then I should not see the logging data for queries 
-      | ProjectName        | SiteNumber | SiteName          | Environment | SubjectName | CheckActionInstanceName | CheckActionInstanceDataPageName | CheckActionRecordPosition | CheckActionFieldName | CheckActionFieldData | TriggerFieldInstanceName | TriggerFieldInstanceDatapageName | TriggerFieldRecordPosition | TriggerFieldName    | TriggerFieldData | EditCheckName                            | MarkingGroupName | QueryMessage                                                       | EventTime  |
-      | Edit Check Study 3 | 20001      | Edit Check Site 2 | PROD        | sub206      | Week 1                  | Concomitant Medications         | 2                         | Start Date           | 08 Jan 2000          | Week 1                   | Concomitant Medications          | 2                          | Start Date          | 08 Jan 2000      | *Greater Than Open Query Cross Folder    | Marking Group 1  | 'Date Informed Consent Signed' can not be greater than Start Date. | {DateTime} |
-      | Edit Check Study 3 | 20001      | Edit Check Site 2 | PROD        | sub206      | Week 1                  | Concomitant Medications         | 2                         | Current Axis Number  | 98                   | Week 1                   | Concomitant Medications          | 2                          | Current Axis Number | 98               | *Is Not Equal to Open Query Cross Folder | Marking Group 1  | 'Current Distribution Number' is not equal 'Current Axis Number'.  | {DateTime} |
-	And I take a screenshot
-
-#----------------------------------------------------------------------------------------------------------------------------------------	
-@release_564_Patch11
 @PB_2.7.1
 @Draft
 Scenario: PB_2.7.1 On a Cross Forms log form to Standard form, Folder "Week 1" enter and save data on forms "Concomitant Medications" and "Informed Consent"
 			  
     Given I select Study "Edit Check Study 3" and Site "Edit Check Site 2"
     And I create a Subject
-		| Field            | Value                                                          |
-		| Subject Number   | {NextSubjectNum<num1>(Edit Check Study 3,prod,Subject Number)} |
-		| Subject Initials | SUB                                                            |
+		| Field            | Value             |
+		| Subject Number   | {RndNum<num1>(5)} |
+		| Subject Initials | SUB               |
 	And I select Folder "Week 1"
 	And I select Form "Concomitant Medications"
 	And I enter data in CRF and save
@@ -843,19 +672,6 @@ Scenario: PB_2.7.1 On a Cross Forms log form to Standard form, Folder "Week 1" e
 @Draft
 Scenario: PB_2.7.2
 	
-    When I run SQL Script "Query Logging Script" 
-    Then I should see the logging data for queries 
-      | ProjectName        | SiteNumber | SiteName          | Environment | SubjectName | CheckActionInstanceName | CheckActionInstanceDataPageName | CheckActionRecordPosition | CheckActionFieldName | CheckActionFieldData | TriggerFieldInstanceName | TriggerFieldInstanceDatapageName | TriggerFieldRecordPosition | TriggerFieldName    | TriggerFieldData | EditCheckName               | MarkingGroupName | QueryMessage                                                                     | EventTime  |
-      | Edit Check Study 3 | 20001      | Edit Check Site 2 | PROD        | sub207      | Week 1                  | Concomitant Medications         | 1                         | End Date             | 11 Jan 2000          | Week 1                   | Concomitant Medications          | 1                          | End Date            | 11 Jan 2000      | *Greater Than Log same form | Marking Group 1  | Start Date can not be greater than End Date.                                     | {DateTime} |
-      | Edit Check Study 3 | 20001      | Edit Check Site 2 | PROD        | sub207      | Week 1                  | Concomitant Medications         | 1                         | Current Axis Number  | 101                  | Week 1                   | Concomitant Medications          | 1                          | Current Axis Number | 101              | *Is Less Than Log same form | Marking Group 1  | 'Original Axis Number' is Less Than 'Current Axis Number' on first Number field. | {DateTime} |
-	And I take a screenshot
-
-#----------------------------------------------------------------------------------------------------------------------------------------	
-@release_564_Patch11
-@PB_2.7.3
-@Draft
-Scenario: PB_2.7.3
-	
     Given I select Study "Edit Check Study 3" and Site "Edit Check Site 2"
     And I select a Subject "SUB{Var(num1)}"
 	And I select Form "Concomitant Medications" in Folder "Week 1"
@@ -888,26 +704,12 @@ Scenario: PB_2.7.3
 	Then I verify Query with message "Start Date can not be greater than End Date." is displayed on Field "End Date"
     And I verify Query with message "'Original Axis Number' is Less Than 'Current Axis Number' on first Number field." is displayed on Field "Current Axis Number"
 	And I take a screenshot
-
-	
-#----------------------------------------------------------------------------------------------------------------------------------------	
-@release_564_Patch11
-@PB_2.7.4
-@Draft
-Scenario: PB_2.7.4
-	
-    When I run SQL Script "Query Logging Script" 
-    Then I should not see the logging data for queries 
-      | ProjectName        | SiteNumber | SiteName          | Environment | SubjectName | CheckActionInstanceName | CheckActionInstanceDataPageName | CheckActionRecordPosition | CheckActionFieldName | CheckActionFieldData | TriggerFieldInstanceName | TriggerFieldInstanceDatapageName | TriggerFieldRecordPosition | TriggerFieldName    | TriggerFieldData | EditCheckName               | MarkingGroupName | QueryMessage                                                                     | EventTime  |
-      | Edit Check Study 3 | 20001      | Edit Check Site 2 | PROD        | sub207      | Week 1                  | Concomitant Medications         | 2                         | End Date             | 14 Feb 2000          | Week 1                   | Concomitant Medications          | 2                          | End Date            | 14 Feb 2000      | *Greater Than Log same form | Marking Group 1  | Start Date can not be greater than End Date.                                     | {DateTime} |
-      | Edit Check Study 3 | 20001      | Edit Check Site 2 | PROD        | sub207      | Week 1                  | Concomitant Medications         | 2                         | Current Axis Number  | 2000                 | Week 1                   | Concomitant Medications          | 2                          | Current Axis Number | 2000             | *Is Less Than Log same form | Marking Group 1  | 'Original Axis Number' is Less Than 'Current Axis Number' on first Number field. | {DateTime} |
-	And I take a screenshot
   
 #----------------------------------------------------------------------------------------------------------------------------------------	
 @release_564_Patch11
-@PB_2.7.5
+@PB_2.7.3
 @Draft
-Scenario: PB_2.7.5
+Scenario: PB_2.7.3
   
     Given I select Study "Edit Check Study 3" and Site "Edit Check Site 2"
     And I select a Subject "SUB{Var(num1)}"
@@ -944,19 +746,6 @@ Scenario: PB_2.7.5
 
 #----------------------------------------------------------------------------------------------------------------------------------------	
 @release_564_Patch11
-@PB_2.7.6
-@Draft
-Scenario: PB_2.7.6
-	
-    When I run SQL Script "Query Logging Script" 
-    Then I should not see the logging data for queries 
-      | ProjectName        | SiteNumber | SiteName          | Environment | SubjectName | CheckActionInstanceName | CheckActionInstanceDataPageName | CheckActionRecordPosition | CheckActionFieldName        | CheckActionFieldData | TriggerFieldInstanceName | TriggerFieldInstanceDatapageName | TriggerFieldRecordPosition | TriggerFieldName            | TriggerFieldData | EditCheckName                                      | MarkingGroupName | QueryMessage                                                                           | EventTime  |
-      | Edit Check Study 3 | 20001      | Edit Check Site 2 | PROD        | sub207      | Week 1                  | Informed Consent                | 0                         | End Date                    | 11 Jan 2000          | Week 1                   | Informed Consent                 | 0                          | End Date                    | 11 Jan 2000      | *Greater Than or Equal To Open Query Log same form | Marking Group 1  | 'Date Informed Consent Signed' is not equal to Current Date.                           | {DateTime} |
-      | Edit Check Study 3 | 20001      | Edit Check Site 2 | PROD        | sub207      | Week 1                  | Informed Consent                | 0                         | Current Distribution Number | 101                  | Week 1                   | Informed Consent                 | 0                          | Current Distribution Number | 101              | *Is Not Equal To Open Query Log Same form          | Marking Group 1  | 'Original Distribution Number' and 'Current Distribution Number' fields are not equal. | {DateTime} |
-	And I take a screenshot
-
-#----------------------------------------------------------------------------------------------------------------------------------------	
-@release_564_Patch11
 @PB_2.8.1
 @Draft
 Scenario: PB_2.8.1 Verifies query firing between cross forms with no require response and no require manual close.
@@ -965,9 +754,9 @@ Folder "Screening" enter and save data on forms "Concomitant Medications" and "A
 			  
     Given I select Study "Edit Check Study 3" and Site "Edit Check Site 2"
     And I create a Subject
-		| Field            | Value                                                          |
-		| Subject Number   | {NextSubjectNum<num1>(Edit Check Study 3,prod,Subject Number)} |
-		| Subject Initials | SUB                                                            |
+		| Field            | Value             |
+		| Subject Number   | {RndNum<num1>(5)} |
+		| Subject Initials | SUB               |
 	And I select Form "Concomitant Medications" in Folder "Screening"
 	And I enter data in CRF and save
 	    | Field                | Data        |
@@ -1023,27 +812,12 @@ Folder "Screening" enter and save data on forms "Concomitant Medications" and "A
 	And I verify Query with message "'AE Number' is greater than or Equal to 'Original Axis Number' on Log." is not displayed on Field "Original Axis Number"
     And I verify Query with message "'Duration' and 'Current Axis Number' cannot equal." is not displayed on Field "Current Axis Number"	
 	And I take a screenshot
-	
+   
 #----------------------------------------------------------------------------------------------------------------------------------------	
 @release_564_Patch11
 @PB_2.8.2
 @Draft
 Scenario: PB_2.8.2
-	
-    When I run SQL Script "Query Logging Script" 
-    Then I should see the logging data for queries 
-      | ProjectName        | SiteNumber | SiteName          | Environment | SubjectName | CheckActionInstanceName | CheckActionInstanceDataPageName | CheckActionRecordPosition | CheckActionFieldName | CheckActionFieldData | TriggerFieldInstanceName | TriggerFieldInstanceDatapageName | TriggerFieldRecordPosition | TriggerFieldName     | TriggerFieldData | EditCheckName                                          | MarkingGroupName | QueryMessage                                                                            | EventTime  |
-      | Edit Check Study 3 | 20001      | Edit Check Site 2 | PROD        | sub208      | Screening               | Concomitant Medications         | 1                         | Start Date           | 10 Jan 2000          | Screening                | Concomitant Medications          | 1                          | Start Date           | 10 Jan 2000      | *Is Less Than To Open Query Log Cross Form             | Marking Group 1  | Date can not be less than.                                                              | {DateTime} |
-      | Edit Check Study 3 | 20001      | Edit Check Site 2 | PROD        | sub208      | Screening               | Concomitant Medications         | 1                         | End Date             | 10 Feb 2000          | Screening                | Concomitant Medications          | 1                          | End Date             | 10 Feb 2000      | *Is Less Than Open Query Log Cross Form                | Marking Group 1  | Date is Less Than Date on the first log form.                                           | {DateTime} |
-      | Edit Check Study 3 | 20001      | Edit Check Site 2 | PROD        | sub208      | Screening               | Concomitant Medications         | 1                         | Original Axis Number | 100                  | Screening                | Concomitant Medications          | 1                          | Original Axis Number | 100              | *Is Greater Than or Equal To Open Query Log Cross Form | Marking Group 1  | 'AE Number' is greater than or Equal to 'Original Axis Number' on Log. | {DateTime} |
-      | Edit Check Study 3 | 20001      | Edit Check Site 2 | PROD        | sub208      | Screening               | Concomitant Medications         | 1                         | Current Axis Number  | 66                   | Screening                | Concomitant Medications          | 1                          | Current Axis Number  | 66               | *Is Not Equal To Open Query Log Cross Form             | Marking Group 1  | 'Duration' and 'Current Axis Number' cannot equal.                                     | {DateTime} |
-	And I take a screenshot
-   
-#----------------------------------------------------------------------------------------------------------------------------------------	
-@release_564_Patch11
-@PB_2.8.3
-@Draft
-Scenario: PB_2.8.3 
   
     Given I select Study "Edit Check Study 3" and Site "Edit Check Site 2"
     And I select a Subject "SUB{Var(num1)}"
@@ -1100,21 +874,6 @@ Scenario: PB_2.8.3
     And I verify Query with message "Date is Less Than Date on the first log form." is displayed on Field "End Date"
 	And I verify Query with message "'AE Number' is greater than or Equal to 'Original Axis Number' on Log." is displayed on Field "Original Axis Number"
     And I verify Query with message "'Duration' and 'Current Axis Number' cannot equal." is displayed on Field "Current Axis Number"	
-	And I take a screenshot
-
-#----------------------------------------------------------------------------------------------------------------------------------------	
-@release_564_Patch11
-@PB_2.8.4
-@Draft
-Scenario: PB_2.8.4
-
-    When I run SQL Script "Query Logging Script" 
-    Then I should not see the logging data for queries 
-      | ProjectName        | SiteNumber | SiteName          | Environment | SubjectName | CheckActionInstanceName | CheckActionInstanceDataPageName | CheckActionRecordPosition | CheckActionFieldName | CheckActionFieldData | TriggerFieldInstanceName | TriggerFieldInstanceDatapageName | TriggerFieldRecordPosition | TriggerFieldName     | TriggerFieldData | EditCheckName                                          | MarkingGroupName | QueryMessage                                                                            | EventTime  |
-      | Edit Check Study 3 | 20001      | Edit Check Site 2 | PROD        | sub208      | Screening               | Concomitant Medications         | 2                         | Start Date           | 10 Feb 2000          | Screening                | Concomitant Medications          | 2                          | Start Date           | 10 Feb 2000      | *Is Less Than To Open Query Log Cross Form             | Marking Group 1  | Date can not be less than.                                                              | {DateTime} |
-      | Edit Check Study 3 | 20001      | Edit Check Site 2 | PROD        | sub208      | Screening               | Concomitant Medications         | 2                         | End Date             | 10 Mar 2000          | Screening                | Concomitant Medications          | 2                          | End Date             | 10 Mar 2000      | *Is Less Than Open Query Log Cross Form                | Marking Group 1  | Date is Less Than Date on the first log form.                                           | {DateTime} |
-      | Edit Check Study 3 | 20001      | Edit Check Site 2 | PROD        | sub208      | Screening               | Concomitant Medications         | 2                         | Original Axis Number | 200                  | Screening                | Concomitant Medications          | 2                          | Original Axis Number | 200              | *Is Greater Than or Equal To Open Query Log Cross Form | Marking Group 1  | 'AE Number' is greater than or Equal to 'Original Axis Number' on Log. | {DateTime} |
-      | Edit Check Study 3 | 20001      | Edit Check Site 2 | PROD        | sub208      | Screening               | Concomitant Medications         | 2                         | Current Axis Number  | 77                   | Screening                | Concomitant Medications          | 2                          | Current Axis Number  | 77               | *Is Not Equal To Open Query Log Cross Form             | Marking Group 1  | 'Duration' and 'Current Axis Number' cannot equal.                                     | {DateTime} |
 	And I take a screenshot
 	
 #----------------------------------------------------------------------------------------------------------------------------------------	
