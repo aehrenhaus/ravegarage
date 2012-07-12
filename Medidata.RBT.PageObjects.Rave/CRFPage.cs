@@ -78,6 +78,21 @@ namespace Medidata.RBT.PageObjects.Rave
 		#region Query related
 
 
+		public bool CanFindCancelledQuery(QueryCancelModel filter)
+		{
+			var auditPage = this.ClickAudit(filter.Field);
+			bool exist = auditPage.AuditExist_CloseQuery(filter.QueryMessage);
+			Browser.Navigate().Back();
+			return exist;
+		}
+
+		public AuditsPage ClickAudit(string fieldName)
+		{
+			var auditButton  = RavePagesHelper.GetNonlabFieldContainer(fieldName).TryFindElementByPartialID("DataStatusHyperlink");
+			auditButton.Click();
+			return new AuditsPage();
+		}
+
 		public bool CanFindQuery(QuerySearchModel filter)
 		{
 			IWebElement queryContainer = null;

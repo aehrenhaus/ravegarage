@@ -19,6 +19,7 @@
 		SnapshotName="UAT_Snap"
 		DatabaseConnection="RaveConnection"
 		GenerateReportAfterTest="true"
+		ScenarioNamePrefix="PB_"
 		/>
 
 	<RaveConfiguration

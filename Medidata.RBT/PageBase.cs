@@ -121,7 +121,8 @@ namespace Medidata.RBT
 
             var link = area.Link(linkText);
             link.Click();
-
+			
+	
             return GetTargetPageObjectByLinkAreaName(type, areaIdentifer);
         }
 
@@ -281,8 +282,11 @@ namespace Medidata.RBT
 
         protected virtual IPage GetTargetPageObjectByLinkAreaName(string type, string areaName)
         {
-            throw new Exception("This page does not provide information of target page obejct of a link area");
-        }
+			if (string.IsNullOrEmpty(type))
+				return this;
+            throw new Exception(string.Format("This page does not provide information of target page obejct of a link area(type={0}, area={1}",type,areaName));
+      
+		}
 
         /// <summary>
         /// 

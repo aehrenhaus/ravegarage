@@ -35,6 +35,11 @@ namespace Medidata.RBT.PageObjects.Rave
 			return base.GetElementByName(name);
 		}
 
+		protected override IPage GetTargetPageObjectByLinkAreaName(string type, string areaName)
+		{
+			return base.GetTargetPageObjectByLinkAreaName(type, areaName);
+		}
+
         public override string BaseURL
         {
             get 

@@ -68,11 +68,13 @@
     <Compile Include="Architect\ArchitectChecksPage.cs" />
     <Compile Include="Architect\ArchitectBasePage.cs" />
     <Compile Include="Architect\AMMigrationHomePage.cs" />
+    <Compile Include="AuditsPage.cs" />
     <Compile Include="FileRequestViewPage.cs" />
     <Compile Include="FileRequestCreateDataRequestPage.cs" />
     <Compile Include="FileRequestPage.cs" />
     <Compile Include="DCFQueriesPage.cs" />
     <Compile Include="Config\RaveConfiguration.cs" />
+    <Compile Include="TableModels\QueryCancelModel.cs" />
     <Compile Include="TableModels\FieldModel.cs" />
     <Compile Include="TableModels\QuerySearchModel.cs" />
     <Compile Include="TSDV\SubjectOverridePage.cs" />

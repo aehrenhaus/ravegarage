@@ -105,5 +105,12 @@ namespace Medidata.RBT
 			set { this["SqlScriptsPath"] = value; }
 		}
 
+		[ConfigurationProperty("ScenarioNamePrefix", DefaultValue = "", IsRequired = true)]
+		public String ScenarioNamePrefix
+		{
+			get { return (String)this["ScenarioNamePrefix"]; }
+			set { this["ScenarioNamePrefix"] = value; }
+		}
+		
 	}
 }

@@ -54,6 +54,16 @@ namespace Medidata.RBT.Features.Rave
 			Assert.IsTrue(canFind, "Query doesn't exist");
 		}
 
+
+		//table ,canceled
+		[StepDefinition(@"I verify Query is cancelled")]
+		public void IVerifyQueryIsCancelled(Table table)
+		{
+			var filter = table.CreateInstance<QueryCancelModel>();
+			bool canFind = CurrentPage.As<CRFPage>().CanFindCancelledQuery(filter);
+			Assert.IsTrue(canFind, "Query doesn't exist");
+		}
+
 		#endregion 
 
 		#region No query at all
