@@ -75,6 +75,8 @@ namespace Medidata.RBT.Features.Rave.Features.EDC
 #line 12
 #line 13
     testRunner.Given("I am logged in to Rave with username \"defuser\" and password \"password\"");
+#line 14
+ testRunner.And("I select Study \"Standard Study\" and Site \"Site 1\"");
 #line hidden
             TechTalk.SpecFlow.Table table1 = new TechTalk.SpecFlow.Table(new string[] {
                         "User",
@@ -88,26 +90,26 @@ namespace Medidata.RBT.Features.Rave.Features.EDC
                         "cdm1",
                         "Site 1",
                         "S100"});
-#line 14
+#line 15
  testRunner.And("following Study assignments exist", ((string)(null)), table1);
-#line 17
- testRunner.And("Role \"cdm1\" has Action \"Query\"");
 #line 18
- testRunner.And("Study \"Standard Study\" has Draft \"<Draft1>\"");
+ testRunner.And("Role \"cdm1\" has Action \"Query\"");
 #line 19
+ testRunner.And("Study \"Standard Study\" has Draft \"<Draft1>\"");
+#line 20
  testRunner.And("I publish and push CRF Version \"CRF Version<RANDOMNUMBER>\" of Draft \"<Draft1>\" to" +
                     " site \"Site 1\" in Study \"Standard Study\"");
 #line hidden
         }
         
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute(@"@PB-US12940-01A As an EDC user, when I entered bad data in lab field A and lab field B that resulted in the system opening a query on lab field B, and I answered the query without changing the data, and the query is then closed, and I entered good data in lab field A, if I then entered the same bad data in lab field A as when the query was closed, then the system should not refire a query on lab field B.")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute(@"@PB-US12940-01A As an EDC user, when I entered bad data in lab field A and lab field B that resulted in the system opening a query on lab field B, and I answered the query without changing the data, and the query is then closed, and I entered good data in lab field A, if I then entered the same bad data in lab field A as when the query was closed, then the system should not refire a query on lab field B. Query with requires response = true and requires manual close = true.")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Query Refiring Logic5")]
-        public virtual void PB_US12940_01AAsAnEDCUserWhenIEnteredBadDataInLabFieldAAndLabFieldBThatResultedInTheSystemOpeningAQueryOnLabFieldBAndIAnsweredTheQueryWithoutChangingTheDataAndTheQueryIsThenClosedAndIEnteredGoodDataInLabFieldAIfIThenEnteredTheSameBadDataInLabFieldAAsWhenTheQueryWasClosedThenTheSystemShouldNotRefireAQueryOnLabFieldB_()
+        public virtual void PB_US12940_01AAsAnEDCUserWhenIEnteredBadDataInLabFieldAAndLabFieldBThatResultedInTheSystemOpeningAQueryOnLabFieldBAndIAnsweredTheQueryWithoutChangingTheDataAndTheQueryIsThenClosedAndIEnteredGoodDataInLabFieldAIfIThenEnteredTheSameBadDataInLabFieldAAsWhenTheQueryWasClosedThenTheSystemShouldNotRefireAQueryOnLabFieldB_QueryWithRequiresResponseTrueAndRequiresManualCloseTrue_()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo(@"@PB-US12940-01A As an EDC user, when I entered bad data in lab field A and lab field B that resulted in the system opening a query on lab field B, and I answered the query without changing the data, and the query is then closed, and I entered good data in lab field A, if I then entered the same bad data in lab field A as when the query was closed, then the system should not refire a query on lab field B.", new string[] {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo(@"@PB-US12940-01A As an EDC user, when I entered bad data in lab field A and lab field B that resulted in the system opening a query on lab field B, and I answered the query without changing the data, and the query is then closed, and I entered good data in lab field A, if I then entered the same bad data in lab field A as when the query was closed, then the system should not refire a query on lab field B. Query with requires response = true and requires manual close = true.", new string[] {
                         "PB-US12940-01A"});
-#line 22
+#line 23
 this.ScenarioSetup(scenarioInfo);
 #line 12
 this.FeatureBackground();
@@ -117,13 +119,16 @@ this.FeatureBackground();
                         "Data"});
             table2.AddRow(new string[] {
                         "Subject Number",
-                        "{NextSubjectNum<num1>(Standard Study,prod,Subject Number)}"});
+                        "{RndNum<num1>(5)}"});
             table2.AddRow(new string[] {
                         "Subject Initials",
                         "SUB"});
+            table2.AddRow(new string[] {
+                        "Subject ID",
+                        "SUB {Var(num1)}"});
 #line 25
  testRunner.And("I create a Subject", ((string)(null)), table2);
-#line 29
+#line 30
  testRunner.And("I select Form \"Lab Form 8\"");
 #line hidden
             TechTalk.SpecFlow.Table table3 = new TechTalk.SpecFlow.Table(new string[] {
@@ -135,36 +140,36 @@ this.FeatureBackground();
             table3.AddRow(new string[] {
                         "Lab Field 2 - WBC - rr = T ; rmc = T",
                         "3"});
-#line 30
+#line 31
  testRunner.And("I enter data in CRF and save", ((string)(null)), table3);
 #line hidden
             TechTalk.SpecFlow.Table table4 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field",
-                        "Response",
-                        "ManualClose",
-                        "Query Message"});
+                        "Query Message",
+                        "Answered",
+                        "Closed"});
             table4.AddRow(new string[] {
                         "Lab Field 2 - WBC - rr = T ; rmc = T",
-                        "true",
-                        "true",
-                        "Lab Field 2 must be greater than Lab Field 1. Please verify."});
-#line 34
+                        "Lab Field 2 must be greater than Lab Field 1. Please verify.",
+                        "false",
+                        "false"});
+#line 35
  testRunner.And("I verify Query is displayed", ((string)(null)), table4);
-#line 37
- testRunner.And("I take a screenshot");
 #line 38
- testRunner.And("I answer the Query \"Data will be changed.\" on Field \"Lab Field 2 - WBC - rr = T ;" +
-                    " rmc = T\"");
+ testRunner.And("I take a screenshot");
 #line 39
- testRunner.And("I save the CRF page");
+ testRunner.And("I answer the Query \"Lab Field 2 must be greater than Lab Field 1. Please verify.\"" +
+                    " on Field \"Lab Field 2 - WBC - rr = T ; rmc = T\" with \"Data will be changed.\"");
 #line 40
- testRunner.And("I close the only Query on Field \"Lab Field 2 - WBC - rr = T ; rmc = T\"");
-#line 41
  testRunner.And("I save the CRF page");
+#line 41
+ testRunner.And("I close the only Query on Field \"Lab Field 2 - WBC - rr = T ; rmc = T\"");
 #line 42
+ testRunner.And("I save the CRF page");
+#line 43
  testRunner.And("I verify closed Query with message \"Lab Field 2 must be greater than Lab Field 1." +
                     " Please verify.\" is displayed on Field \"Lab Field 2 - WBC - rr = T ; rmc = T\"");
-#line 43
+#line 44
  testRunner.And("I take a screenshot");
 #line hidden
             TechTalk.SpecFlow.Table table5 = new TechTalk.SpecFlow.Table(new string[] {
@@ -173,20 +178,20 @@ this.FeatureBackground();
             table5.AddRow(new string[] {
                         "Lab Field 1 - NEUTROPHILS - rr = T ; rmc = T",
                         "2"});
-#line 44
+#line 45
  testRunner.And("I enter data in CRF and save", ((string)(null)), table5);
 #line hidden
             TechTalk.SpecFlow.Table table6 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field",
-                        "Response",
-                        "ManualClose",
-                        "Query Message"});
+                        "Query Message",
+                        "Answered",
+                        "Closed"});
             table6.AddRow(new string[] {
                         "Lab Field 2 - WBC - rr = T ; rmc = T",
-                        "true",
-                        "true",
-                        "Lab Field 2 must be greater than Lab Field 1. Please verify."});
-#line 47
+                        "Lab Field 2 must be greater than Lab Field 1. Please verify.",
+                        "false",
+                        "false"});
+#line 48
  testRunner.And("I verify Query is not displayed", ((string)(null)), table6);
 #line hidden
             TechTalk.SpecFlow.Table table7 = new TechTalk.SpecFlow.Table(new string[] {
@@ -195,69 +200,6021 @@ this.FeatureBackground();
             table7.AddRow(new string[] {
                         "Lab Field 1 - NEUTROPHILS - rr = T ; rmc = T",
                         "5"});
-#line 50
+#line 51
  testRunner.When("I enter data in CRF and save", ((string)(null)), table7);
 #line hidden
             TechTalk.SpecFlow.Table table8 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field",
-                        "Response",
-                        "ManualClose",
-                        "Query Message"});
+                        "Query Message",
+                        "Answered",
+                        "Closed"});
             table8.AddRow(new string[] {
                         "Lab Field 2 - WBC - rr = T ; rmc = T",
-                        "true",
-                        "true",
-                        "Lab Field 2 must be greater than Lab Field 1. Please verify."});
-#line 53
+                        "Lab Field 2 must be greater than Lab Field 1. Please verify.",
+                        "false",
+                        "false"});
+#line 54
  testRunner.Then("I verify Query is not displayed", ((string)(null)), table8);
-#line 56
- testRunner.And("I take a screenshot");
 #line 57
- testRunner.When("I run SQL Script \"Query Logging Script\"");
+ testRunner.And("I take a screenshot");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute(@"@PB-US12940-01B As an EDC user, when I entered bad data in lab field A and lab field B that resulted in the system opening a query on lab field B, and I answered the query without changing the data, and the query is then closed, and I entered good data in lab field A, if I then entered the same bad data in lab field A as when the query was closed, then the system should refire a query on lab field B. Query with requires response = false and requires manual close = false.")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Query Refiring Logic5")]
+        public virtual void PB_US12940_01BAsAnEDCUserWhenIEnteredBadDataInLabFieldAAndLabFieldBThatResultedInTheSystemOpeningAQueryOnLabFieldBAndIAnsweredTheQueryWithoutChangingTheDataAndTheQueryIsThenClosedAndIEnteredGoodDataInLabFieldAIfIThenEnteredTheSameBadDataInLabFieldAAsWhenTheQueryWasClosedThenTheSystemShouldRefireAQueryOnLabFieldB_QueryWithRequiresResponseFalseAndRequiresManualCloseFalse_()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo(@"@PB-US12940-01B As an EDC user, when I entered bad data in lab field A and lab field B that resulted in the system opening a query on lab field B, and I answered the query without changing the data, and the query is then closed, and I entered good data in lab field A, if I then entered the same bad data in lab field A as when the query was closed, then the system should refire a query on lab field B. Query with requires response = false and requires manual close = false.", new string[] {
+                        "PB-US12940-01B"});
+#line 60
+this.ScenarioSetup(scenarioInfo);
+#line 12
+this.FeatureBackground();
 #line hidden
             TechTalk.SpecFlow.Table table9 = new TechTalk.SpecFlow.Table(new string[] {
-                        "ProjectName",
-                        "SiteNumber",
-                        "SiteName",
-                        "Environment",
-                        "SubjectName",
-                        "CheckActionInstanceName",
-                        "CheckActionInstanceDataPageName",
-                        "CheckActionRecordPosition",
-                        "CheckActionFieldName",
-                        "CheckActionFieldData",
-                        "TriggerFieldInstanceName",
-                        "TriggerFieldInstanceDatapageName",
-                        "TriggerFieldRecordPosition",
-                        "TriggerFieldName",
-                        "TriggerFieldData",
-                        "EditCheckName",
-                        "MarkingGroupName",
-                        "QueryMessage",
-                        "EventTime"});
+                        "Field",
+                        "Data"});
             table9.AddRow(new string[] {
-                        "Standard Study",
-                        "S100",
-                        "Site 1",
-                        "PROD",
-                        "SUB7001A",
-                        "<null>",
-                        "Lab Form 8",
-                        "0",
-                        "Lab Field 2 - WBC - rr = T ; rmc = T",
-                        "3",
-                        "<null>",
-                        "Lab Form 8",
-                        "0",
+                        "Subject Number",
+                        "{RndNum<num1>(5)}"});
+            table9.AddRow(new string[] {
+                        "Subject Initials",
+                        "SUB"});
+            table9.AddRow(new string[] {
+                        "Subject ID",
+                        "SUB {Var(num1)}"});
+#line 62
+ testRunner.And("I create a Subject", ((string)(null)), table9);
+#line 67
+ testRunner.And("I select Form \"Lab Form 8\"");
+#line hidden
+            TechTalk.SpecFlow.Table table10 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Data"});
+            table10.AddRow(new string[] {
+                        "Lab Field 3 - NEUTROPHILS - rr = F ; rmc = F",
+                        "5"});
+            table10.AddRow(new string[] {
+                        "Lab Field 4 - WBC - rr = F ; rmc = F",
+                        "3"});
+#line 68
+ testRunner.And("I enter data in CRF and save", ((string)(null)), table10);
+#line hidden
+            TechTalk.SpecFlow.Table table11 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Query Message",
+                        "Answered",
+                        "Closed"});
+            table11.AddRow(new string[] {
+                        "Lab Field 4 - WBC - rr = F ; rmc = F",
+                        "Lab Field 4 must be greater than Lab Field 3. Please verify.",
+                        "false",
+                        "false"});
+#line 72
+ testRunner.And("I verify Query is displayed", ((string)(null)), table11);
+#line 75
+ testRunner.And("I take a screenshot");
+#line hidden
+            TechTalk.SpecFlow.Table table12 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Data"});
+            table12.AddRow(new string[] {
+                        "Lab Field 3 - NEUTROPHILS - rr = F ; rmc = F",
+                        "2"});
+#line 76
+ testRunner.And("I enter data in CRF and save", ((string)(null)), table12);
+#line hidden
+            TechTalk.SpecFlow.Table table13 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Query Message",
+                        "Answered",
+                        "Closed"});
+            table13.AddRow(new string[] {
+                        "Lab Field 4 - WBC - rr = F ; rmc = F",
+                        "Lab Field 4 must be greater than Lab Field 3. Please verify.",
+                        "false",
+                        "false"});
+#line 79
+ testRunner.And("I verify Query is not displayed", ((string)(null)), table13);
+#line 82
+ testRunner.And("I take a screenshot");
+#line hidden
+            TechTalk.SpecFlow.Table table14 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Data"});
+            table14.AddRow(new string[] {
+                        "Lab Field 3 - NEUTROPHILS - rr = F ; rmc = F",
+                        "5"});
+#line 83
+ testRunner.When("I enter data in CRF and save", ((string)(null)), table14);
+#line hidden
+            TechTalk.SpecFlow.Table table15 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Query Message",
+                        "Answered",
+                        "Closed"});
+            table15.AddRow(new string[] {
+                        "Lab Field 4 - WBC - rr = F ; rmc = F",
+                        "Lab Field 4 must be greater than Lab Field 3. Please verify.",
+                        "false",
+                        "false"});
+#line 86
+ testRunner.Then("I verify Query is displayed", ((string)(null)), table15);
+#line 89
+ testRunner.And("I take a screenshot");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute(@"@PB-US12940-01C As an EDC user, when I entered bad data in lab field A and lab field B that resulted in the system opening a query on lab field B, and I answered the query without changing the data, and the query is then closed, and I entered good data in lab field A, if I then entered the same bad data in lab field A as when the query was closed, then the system should not refire a query on lab field B. Query with requires response = true and requires manual close = false.")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Query Refiring Logic5")]
+        public virtual void PB_US12940_01CAsAnEDCUserWhenIEnteredBadDataInLabFieldAAndLabFieldBThatResultedInTheSystemOpeningAQueryOnLabFieldBAndIAnsweredTheQueryWithoutChangingTheDataAndTheQueryIsThenClosedAndIEnteredGoodDataInLabFieldAIfIThenEnteredTheSameBadDataInLabFieldAAsWhenTheQueryWasClosedThenTheSystemShouldNotRefireAQueryOnLabFieldB_QueryWithRequiresResponseTrueAndRequiresManualCloseFalse_()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo(@"@PB-US12940-01C As an EDC user, when I entered bad data in lab field A and lab field B that resulted in the system opening a query on lab field B, and I answered the query without changing the data, and the query is then closed, and I entered good data in lab field A, if I then entered the same bad data in lab field A as when the query was closed, then the system should not refire a query on lab field B. Query with requires response = true and requires manual close = false.", new string[] {
+                        "PB-US12940-01C"});
+#line 92
+this.ScenarioSetup(scenarioInfo);
+#line 12
+this.FeatureBackground();
+#line hidden
+            TechTalk.SpecFlow.Table table16 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Data"});
+            table16.AddRow(new string[] {
+                        "Subject Number",
+                        "{RndNum<num1>(5)}"});
+            table16.AddRow(new string[] {
+                        "Subject Initials",
+                        "SUB"});
+            table16.AddRow(new string[] {
+                        "Subject ID",
+                        "SUB {Var(num1)}"});
+#line 94
+ testRunner.And("I create a Subject", ((string)(null)), table16);
+#line 99
+ testRunner.And("I select Form \"Lab Form 8\"");
+#line hidden
+            TechTalk.SpecFlow.Table table17 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Data"});
+            table17.AddRow(new string[] {
+                        "Lab Field 5 - NEUTROPHILS - rr = T ; rmc = F",
+                        "5"});
+            table17.AddRow(new string[] {
+                        "Lab Field 6 - WBC - rr = T ; rmc = F",
+                        "3"});
+#line 100
+ testRunner.And("I enter data in CRF and save", ((string)(null)), table17);
+#line hidden
+            TechTalk.SpecFlow.Table table18 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Query Message",
+                        "Answered",
+                        "Closed"});
+            table18.AddRow(new string[] {
+                        "Lab Field 6 - WBC - rr = T ; rmc = F",
+                        "Lab Field 6 must be greater than Lab Field 5. Please verify.",
+                        "false",
+                        "false"});
+#line 104
+ testRunner.And("I verify Query is displayed", ((string)(null)), table18);
+#line 107
+ testRunner.And("I take a screenshot");
+#line 108
+ testRunner.And("I answer the Query \"Lab Field 6 must be greater than Lab Field 5. Please verify.\"" +
+                    " on Field \"Lab Field 6 - WBC - rr = T ; rmc = F\" with \"Data will be changed.\"");
+#line 109
+ testRunner.And("I save the CRF page");
+#line hidden
+            TechTalk.SpecFlow.Table table19 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Query Message",
+                        "Answered",
+                        "Closed"});
+            table19.AddRow(new string[] {
+                        "Lab Field 6 - WBC - rr = T ; rmc = F",
+                        "Lab Field 6 must be greater than Lab Field 5. Please verify.",
+                        "true",
+                        "true"});
+#line 110
+    testRunner.And("I verify Query is not displayed", ((string)(null)), table19);
+#line 113
+ testRunner.And("I take a screenshot");
+#line hidden
+            TechTalk.SpecFlow.Table table20 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Data"});
+            table20.AddRow(new string[] {
+                        "Lab Field 5 - NEUTROPHILS - rr = T ; rmc = F",
+                        "2"});
+#line 114
+ testRunner.And("I enter data in CRF and save", ((string)(null)), table20);
+#line hidden
+            TechTalk.SpecFlow.Table table21 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Query Message",
+                        "Answered",
+                        "Closed"});
+            table21.AddRow(new string[] {
+                        "Lab Field 6 - WBC - rr = T ; rmc = F",
+                        "Lab Field 6 must be greater than Lab Field 5. Please verify.",
+                        "false",
+                        "false"});
+#line 117
+ testRunner.And("I verify Query is not displayed", ((string)(null)), table21);
+#line 120
+ testRunner.And("I take a screenshot");
+#line hidden
+            TechTalk.SpecFlow.Table table22 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Data"});
+            table22.AddRow(new string[] {
+                        "Lab Field 5 - NEUTROPHILS - rr = T ; rmc = F",
+                        "5"});
+#line 121
+ testRunner.When("I enter data in CRF and save", ((string)(null)), table22);
+#line hidden
+            TechTalk.SpecFlow.Table table23 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Query Message",
+                        "Answered",
+                        "Closed"});
+            table23.AddRow(new string[] {
+                        "Lab Field 6 - WBC - rr = T ; rmc = F",
+                        "Lab Field 6 must be greater than Lab Field 5. Please verify.",
+                        "false",
+                        "false"});
+#line 124
+ testRunner.Then("I verify Query is not displayed", ((string)(null)), table23);
+#line 127
+ testRunner.And("I take a screenshot");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute(@"@PB-US12940-01D As an EDC user, when I entered bad data in lab field A and lab field B that resulted in the system opening a query on lab field B, and I answered the query without changing the data, and the query is then closed, and I entered good data in lab field A, if I then entered the same bad data in lab field A as when the query was closed, then the system should refire a query on lab field B. Query with requires response = false and requires manual close = true.")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Query Refiring Logic5")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.IgnoreAttribute()]
+        public virtual void PB_US12940_01DAsAnEDCUserWhenIEnteredBadDataInLabFieldAAndLabFieldBThatResultedInTheSystemOpeningAQueryOnLabFieldBAndIAnsweredTheQueryWithoutChangingTheDataAndTheQueryIsThenClosedAndIEnteredGoodDataInLabFieldAIfIThenEnteredTheSameBadDataInLabFieldAAsWhenTheQueryWasClosedThenTheSystemShouldRefireAQueryOnLabFieldB_QueryWithRequiresResponseFalseAndRequiresManualCloseTrue_()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo(@"@PB-US12940-01D As an EDC user, when I entered bad data in lab field A and lab field B that resulted in the system opening a query on lab field B, and I answered the query without changing the data, and the query is then closed, and I entered good data in lab field A, if I then entered the same bad data in lab field A as when the query was closed, then the system should refire a query on lab field B. Query with requires response = false and requires manual close = true.", new string[] {
+                        "PB-US12940-01D",
+                        "ignore"});
+#line 132
+this.ScenarioSetup(scenarioInfo);
+#line 12
+this.FeatureBackground();
+#line hidden
+            TechTalk.SpecFlow.Table table24 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Data"});
+            table24.AddRow(new string[] {
+                        "Subject Number",
+                        "{RndNum<num1>(5)}"});
+            table24.AddRow(new string[] {
+                        "Subject Initials",
+                        "SUB"});
+            table24.AddRow(new string[] {
+                        "Subject ID",
+                        "SUB {Var(num1)}"});
+#line 134
+ testRunner.And("I create a Subject", ((string)(null)), table24);
+#line 139
+ testRunner.And("I select Form \"Lab Form 8\"");
+#line hidden
+            TechTalk.SpecFlow.Table table25 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Data"});
+            table25.AddRow(new string[] {
+                        "Lab Field 7 - NEUTROPHILS - rr = F ; rmc = T",
+                        "5"});
+            table25.AddRow(new string[] {
+                        "Lab Field 8 - WBC - rr = F ; rmc = T",
+                        "3"});
+#line 140
+ testRunner.And("I enter data in CRF and save", ((string)(null)), table25);
+#line hidden
+            TechTalk.SpecFlow.Table table26 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Query Message",
+                        "Answered",
+                        "Closed"});
+            table26.AddRow(new string[] {
+                        "Lab Field 8 - WBC - rr = F ; rmc = T",
+                        "Lab Field 8 must be greater than Lab Field 7. Please verify.",
+                        "false",
+                        "false"});
+#line 144
+ testRunner.And("I verify Query is displayed", ((string)(null)), table26);
+#line 147
+ testRunner.And("I take a screenshot");
+#line hidden
+            TechTalk.SpecFlow.Table table27 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Data"});
+            table27.AddRow(new string[] {
+                        "Lab Field 7 - NEUTROPHILS - rr = F ; rmc = T",
+                        "2"});
+#line 148
+ testRunner.And("I enter data in CRF and save", ((string)(null)), table27);
+#line hidden
+            TechTalk.SpecFlow.Table table28 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Query Message",
+                        "Answered",
+                        "Closed"});
+            table28.AddRow(new string[] {
+                        "Lab Field 8 - WBC - rr = F ; rmc = T",
+                        "Lab Field 8 must be greater than Lab Field 7. Please verify.",
+                        "false",
+                        "false"});
+#line 151
+ testRunner.And("I verify Query is not displayed", ((string)(null)), table28);
+#line hidden
+            TechTalk.SpecFlow.Table table29 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Query Message",
+                        "Answered",
+                        "Closed"});
+            table29.AddRow(new string[] {
+                        "Lab Field 8 - WBC - rr = F ; rmc = T",
+                        "Lab Field 8 must be greater than Lab Field 7. Please verify.",
+                        "True",
+                        "false"});
+#line 154
+ testRunner.And("I verify Query is displayed", ((string)(null)), table29);
+#line 157
+ testRunner.And("I take a screenshot");
+#line hidden
+            TechTalk.SpecFlow.Table table30 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Data"});
+            table30.AddRow(new string[] {
+                        "Lab Field 7 - NEUTROPHILS - rr = F ; rmc = T",
+                        "5"});
+#line 158
+ testRunner.When("I enter data in CRF and save", ((string)(null)), table30);
+#line hidden
+            TechTalk.SpecFlow.Table table31 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Query Message",
+                        "Answered",
+                        "Closed"});
+            table31.AddRow(new string[] {
+                        "Lab Field 8 - WBC - rr = F ; rmc = T",
+                        "Lab Field 8 must be greater than Lab Field 7. Please verify.",
+                        "false",
+                        "false"});
+#line 161
+ testRunner.Then("I verify Query is displayed", ((string)(null)), table31);
+#line 164
+ testRunner.And("I take a screenshot");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute(@"@PB-US12940-02A As an EDC user, when I entered bad data in lab field A and lab field B that resulted in the system opening a query on lab field B, and I answered the query without changing the data, and the query is then closed, and I entered good data in lab field B, if I then entered the same bad data in lab field B as when the query was closed, then the system should not refire a query on lab field B. Query with requires response = true and requires manual close = true.")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Query Refiring Logic5")]
+        public virtual void PB_US12940_02AAsAnEDCUserWhenIEnteredBadDataInLabFieldAAndLabFieldBThatResultedInTheSystemOpeningAQueryOnLabFieldBAndIAnsweredTheQueryWithoutChangingTheDataAndTheQueryIsThenClosedAndIEnteredGoodDataInLabFieldBIfIThenEnteredTheSameBadDataInLabFieldBAsWhenTheQueryWasClosedThenTheSystemShouldNotRefireAQueryOnLabFieldB_QueryWithRequiresResponseTrueAndRequiresManualCloseTrue_()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo(@"@PB-US12940-02A As an EDC user, when I entered bad data in lab field A and lab field B that resulted in the system opening a query on lab field B, and I answered the query without changing the data, and the query is then closed, and I entered good data in lab field B, if I then entered the same bad data in lab field B as when the query was closed, then the system should not refire a query on lab field B. Query with requires response = true and requires manual close = true.", new string[] {
+                        "PB-US12940-02A"});
+#line 167
+this.ScenarioSetup(scenarioInfo);
+#line 12
+this.FeatureBackground();
+#line hidden
+            TechTalk.SpecFlow.Table table32 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Data"});
+            table32.AddRow(new string[] {
+                        "Subject Number",
+                        "{RndNum<num1>(5)}"});
+            table32.AddRow(new string[] {
+                        "Subject Initials",
+                        "SUB"});
+            table32.AddRow(new string[] {
+                        "Subject ID",
+                        "SUB {Var(num1)}"});
+#line 169
+ testRunner.And("I create a Subject", ((string)(null)), table32);
+#line 174
+ testRunner.And("I select Form \"Lab Form 8\"");
+#line hidden
+            TechTalk.SpecFlow.Table table33 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Data"});
+            table33.AddRow(new string[] {
                         "Lab Field 1 - NEUTROPHILS - rr = T ; rmc = T",
-                        "5",
-                        "EC37",
-                        "Site",
+                        "5"});
+            table33.AddRow(new string[] {
+                        "Lab Field 2 - WBC - rr = T ; rmc = T",
+                        "3"});
+#line 175
+ testRunner.And("I enter data in CRF and save", ((string)(null)), table33);
+#line hidden
+            TechTalk.SpecFlow.Table table34 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Query Message",
+                        "Answered",
+                        "Closed"});
+            table34.AddRow(new string[] {
+                        "Lab Field 2 - WBC - rr = T ; rmc = T",
                         "Lab Field 2 must be greater than Lab Field 1. Please verify.",
-                        "{DateTime}"});
-#line 58
- testRunner.Then("I should see the logging data for queries", ((string)(null)), table9);
-#line 61
+                        "false",
+                        "false"});
+#line 179
+ testRunner.And("I verify Query is displayed", ((string)(null)), table34);
+#line 182
+ testRunner.And("I take a screenshot");
+#line 183
+ testRunner.And("I answer the Query \"Lab Field 2 must be greater than Lab Field 1. Please verify.\"" +
+                    " on Field \"Lab Field 2 - WBC - rr = T ; rmc = T\" with \"Data will be changed.\"");
+#line 184
+ testRunner.And("I save the CRF page");
+#line 185
+ testRunner.And("I take a screenshot");
+#line 186
+ testRunner.And("I close the only Query on Field \"Lab Field 2 - WBC - rr = T ; rmc = T\"");
+#line 187
+ testRunner.And("I save the CRF page");
+#line 188
+ testRunner.And("I verify closed Query with message \"Lab Field 2 must be greater than Lab Field 1." +
+                    " Please verify.\" is displayed on Field \"Lab Field 2 - WBC - rr = T ; rmc = T\"");
+#line 189
+ testRunner.And("I take a screenshot");
+#line hidden
+            TechTalk.SpecFlow.Table table35 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Data"});
+            table35.AddRow(new string[] {
+                        "Lab Field 2 - WBC - rr = T ; rmc = T",
+                        "6"});
+#line 190
+ testRunner.And("I enter data in CRF and save", ((string)(null)), table35);
+#line hidden
+            TechTalk.SpecFlow.Table table36 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Query Message",
+                        "Answered",
+                        "Closed"});
+            table36.AddRow(new string[] {
+                        "Lab Field 2 - WBC - rr = T ; rmc = T",
+                        "Lab Field 2 must be greater than Lab Field 1. Please verify.",
+                        "false",
+                        "false"});
+#line 193
+ testRunner.And("I verify Query is not displayed", ((string)(null)), table36);
+#line 196
+ testRunner.And("I take a screenshot");
+#line hidden
+            TechTalk.SpecFlow.Table table37 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Data"});
+            table37.AddRow(new string[] {
+                        "Lab Field 2 - WBC - rr = T ; rmc = T",
+                        "3"});
+#line 197
+ testRunner.When("I enter data in CRF and save", ((string)(null)), table37);
+#line hidden
+            TechTalk.SpecFlow.Table table38 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Query Message",
+                        "Answered",
+                        "Closed"});
+            table38.AddRow(new string[] {
+                        "Lab Field 2 - WBC - rr = T ; rmc = T",
+                        "Lab Field 2 must be greater than Lab Field 1. Please verify.",
+                        "false",
+                        "false"});
+#line 200
+ testRunner.Then("I verify Query is not displayed", ((string)(null)), table38);
+#line 203
+ testRunner.And("I take a screenshot");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute(@"@PB-US12940-02B As an EDC user, when I entered bad data in lab field A and lab field B that resulted in the system opening a query on lab field B, and I answered the query without changing the data, and the query is then closed, and I entered good data in lab field B, if I then entered the same bad data in lab field B as when the query was closed, then the system should not refire a query on lab field B. Query with requires response = false and requires manual close = false.")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Query Refiring Logic5")]
+        public virtual void PB_US12940_02BAsAnEDCUserWhenIEnteredBadDataInLabFieldAAndLabFieldBThatResultedInTheSystemOpeningAQueryOnLabFieldBAndIAnsweredTheQueryWithoutChangingTheDataAndTheQueryIsThenClosedAndIEnteredGoodDataInLabFieldBIfIThenEnteredTheSameBadDataInLabFieldBAsWhenTheQueryWasClosedThenTheSystemShouldNotRefireAQueryOnLabFieldB_QueryWithRequiresResponseFalseAndRequiresManualCloseFalse_()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo(@"@PB-US12940-02B As an EDC user, when I entered bad data in lab field A and lab field B that resulted in the system opening a query on lab field B, and I answered the query without changing the data, and the query is then closed, and I entered good data in lab field B, if I then entered the same bad data in lab field B as when the query was closed, then the system should not refire a query on lab field B. Query with requires response = false and requires manual close = false.", new string[] {
+                        "PB-US12940-02B"});
+#line 206
+this.ScenarioSetup(scenarioInfo);
+#line 12
+this.FeatureBackground();
+#line hidden
+            TechTalk.SpecFlow.Table table39 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Data"});
+            table39.AddRow(new string[] {
+                        "Subject Number",
+                        "{RndNum<num1>(5)}"});
+            table39.AddRow(new string[] {
+                        "Subject Initials",
+                        "SUB"});
+            table39.AddRow(new string[] {
+                        "Subject ID",
+                        "SUB {Var(num1)}"});
+#line 208
+ testRunner.And("I create a Subject", ((string)(null)), table39);
+#line 213
+ testRunner.And("I select Form \"Lab Form 8\"");
+#line hidden
+            TechTalk.SpecFlow.Table table40 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Data"});
+            table40.AddRow(new string[] {
+                        "Lab Field 3 - NEUTROPHILS - rr = F ; rmc = F",
+                        "5"});
+            table40.AddRow(new string[] {
+                        "Lab Field 4 - WBC - rr = F ; rmc = F",
+                        "3"});
+#line 214
+ testRunner.And("I enter data in CRF and save", ((string)(null)), table40);
+#line hidden
+            TechTalk.SpecFlow.Table table41 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Query Message",
+                        "Answered",
+                        "Closed"});
+            table41.AddRow(new string[] {
+                        "Lab Field 4 - WBC - rr = F ; rmc = F",
+                        "Lab Field 4 must be greater than Lab Field 3. Please verify.",
+                        "false",
+                        "false"});
+#line 218
+ testRunner.And("I verify Query is displayed", ((string)(null)), table41);
+#line 221
+ testRunner.And("I take a screenshot");
+#line hidden
+            TechTalk.SpecFlow.Table table42 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Data"});
+            table42.AddRow(new string[] {
+                        "Lab Field 4 - WBC - rr = F ; rmc = F",
+                        "6"});
+#line 222
+ testRunner.And("I enter data in CRF and save", ((string)(null)), table42);
+#line hidden
+            TechTalk.SpecFlow.Table table43 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Query Message",
+                        "Answered",
+                        "Closed"});
+            table43.AddRow(new string[] {
+                        "Lab Field 4 - WBC - rr = F ; rmc = F",
+                        "Lab Field 4 must be greater than Lab Field 3. Please verify.",
+                        "false",
+                        "true"});
+#line 225
+ testRunner.And("I verify Query is not displayed", ((string)(null)), table43);
+#line 228
+ testRunner.And("I take a screenshot");
+#line hidden
+            TechTalk.SpecFlow.Table table44 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Data"});
+            table44.AddRow(new string[] {
+                        "Lab Field 4 - WBC - rr = F ; rmc = F",
+                        "3"});
+#line 229
+ testRunner.When("I enter data in CRF and save", ((string)(null)), table44);
+#line hidden
+            TechTalk.SpecFlow.Table table45 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Query Message",
+                        "Answered",
+                        "Closed"});
+            table45.AddRow(new string[] {
+                        "Lab Field 4 - WBC - rr = F ; rmc = F",
+                        "Lab Field 4 must be greater than Lab Field 3. Please verify.",
+                        "false",
+                        "false"});
+#line 232
+ testRunner.Then("I verify Query is displayed", ((string)(null)), table45);
+#line 235
+ testRunner.And("I take a screenshot");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute(@"@PB-US12940-02C As an EDC user, when I entered bad data in lab field A and lab field B that resulted in the system opening a query on lab field B, and I answered the query without changing the data, and the query is then closed, and I entered good data in lab field B, if I then entered the same bad data in lab field B as when the query was closed, then the system should not refire a query on lab field B. Query with requires response = true and requires manual close = false.")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Query Refiring Logic5")]
+        public virtual void PB_US12940_02CAsAnEDCUserWhenIEnteredBadDataInLabFieldAAndLabFieldBThatResultedInTheSystemOpeningAQueryOnLabFieldBAndIAnsweredTheQueryWithoutChangingTheDataAndTheQueryIsThenClosedAndIEnteredGoodDataInLabFieldBIfIThenEnteredTheSameBadDataInLabFieldBAsWhenTheQueryWasClosedThenTheSystemShouldNotRefireAQueryOnLabFieldB_QueryWithRequiresResponseTrueAndRequiresManualCloseFalse_()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo(@"@PB-US12940-02C As an EDC user, when I entered bad data in lab field A and lab field B that resulted in the system opening a query on lab field B, and I answered the query without changing the data, and the query is then closed, and I entered good data in lab field B, if I then entered the same bad data in lab field B as when the query was closed, then the system should not refire a query on lab field B. Query with requires response = true and requires manual close = false.", new string[] {
+                        "PB-US12940-02C"});
+#line 238
+this.ScenarioSetup(scenarioInfo);
+#line 12
+this.FeatureBackground();
+#line hidden
+            TechTalk.SpecFlow.Table table46 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Data"});
+            table46.AddRow(new string[] {
+                        "Subject Number",
+                        "{RndNum<num1>(5)}"});
+            table46.AddRow(new string[] {
+                        "Subject Initials",
+                        "SUB"});
+            table46.AddRow(new string[] {
+                        "Subject ID",
+                        "SUB {Var(num1)}"});
+#line 240
+ testRunner.And("I create a Subject", ((string)(null)), table46);
+#line 245
+ testRunner.And("I select Form \"Lab Form 8\"");
+#line hidden
+            TechTalk.SpecFlow.Table table47 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Data"});
+            table47.AddRow(new string[] {
+                        "Lab Field 5 - NEUTROPHILS - rr = T ; rmc = F",
+                        "5"});
+            table47.AddRow(new string[] {
+                        "Lab Field 6 - WBC - rr = T ; rmc = F",
+                        "3"});
+#line 246
+ testRunner.And("I enter data in CRF and save", ((string)(null)), table47);
+#line hidden
+            TechTalk.SpecFlow.Table table48 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Query Message",
+                        "Answered",
+                        "Closed"});
+            table48.AddRow(new string[] {
+                        "Lab Field 6 - WBC - rr = T ; rmc = F",
+                        "Lab Field 6 must be greater than Lab Field 5. Please verify.",
+                        "false",
+                        "false"});
+#line 250
+ testRunner.And("I verify Query is displayed", ((string)(null)), table48);
+#line 253
+ testRunner.And("I take a screenshot");
+#line 254
+ testRunner.And("I answer the Query \"Lab Field 6 must be greater than Lab Field 5. Please verify.\"" +
+                    " on Field \"Lab Field 6 - WBC - rr = T ; rmc = F\" with \"Data will be changed.\"");
+#line 255
+ testRunner.And("I save the CRF page");
+#line hidden
+            TechTalk.SpecFlow.Table table49 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Query Message",
+                        "Answered",
+                        "Closed"});
+            table49.AddRow(new string[] {
+                        "Lab Field 6 - WBC - rr = T ; rmc = F",
+                        "Lab Field 6 must be greater than Lab Field 5. Please verify.",
+                        "true",
+                        "true"});
+#line 256
+ testRunner.And("I verify Query is not displayed", ((string)(null)), table49);
+#line 259
+ testRunner.And("I take a screenshot");
+#line hidden
+            TechTalk.SpecFlow.Table table50 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Data"});
+            table50.AddRow(new string[] {
+                        "Lab Field 6 - WBC - rr = T ; rmc = F",
+                        "6"});
+#line 260
+ testRunner.And("I enter data in CRF and save", ((string)(null)), table50);
+#line hidden
+            TechTalk.SpecFlow.Table table51 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Query Message",
+                        "Answered",
+                        "Closed"});
+            table51.AddRow(new string[] {
+                        "Lab Field 6 - WBC - rr = T ; rmc = F",
+                        "Lab Field 6 must be greater than Lab Field 5. Please verify.",
+                        "false",
+                        "false"});
+#line 263
+ testRunner.And("I verify Query is not displayed", ((string)(null)), table51);
+#line 266
+ testRunner.And("I take a screenshot");
+#line hidden
+            TechTalk.SpecFlow.Table table52 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Data"});
+            table52.AddRow(new string[] {
+                        "Lab Field 6 - WBC - rr = T ; rmc = F",
+                        "3"});
+#line 267
+ testRunner.When("I enter data in CRF and save", ((string)(null)), table52);
+#line hidden
+            TechTalk.SpecFlow.Table table53 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Query Message",
+                        "Answered",
+                        "Closed"});
+            table53.AddRow(new string[] {
+                        "Lab Field 6 - WBC - rr = T ; rmc = F",
+                        "Lab Field 6 must be greater than Lab Field 5. Please verify.",
+                        "false",
+                        "false"});
+#line 270
+ testRunner.Then("I verify Query is not displayed", ((string)(null)), table53);
+#line 273
+ testRunner.And("I take a screenshot");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute(@"@PB-US12940-02D As an EDC user, when I entered bad data in lab field A and lab field B that resulted in the system opening a query on lab field B, and I answered the query without changing the data, and the query is then closed, and I entered good data in lab field B, if I then entered the same bad data in lab field B as when the query was closed, then the system should refire a query on lab field B. Query with requires response = false and requires manual close = true.")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Query Refiring Logic5")]
+        public virtual void PB_US12940_02DAsAnEDCUserWhenIEnteredBadDataInLabFieldAAndLabFieldBThatResultedInTheSystemOpeningAQueryOnLabFieldBAndIAnsweredTheQueryWithoutChangingTheDataAndTheQueryIsThenClosedAndIEnteredGoodDataInLabFieldBIfIThenEnteredTheSameBadDataInLabFieldBAsWhenTheQueryWasClosedThenTheSystemShouldRefireAQueryOnLabFieldB_QueryWithRequiresResponseFalseAndRequiresManualCloseTrue_()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo(@"@PB-US12940-02D As an EDC user, when I entered bad data in lab field A and lab field B that resulted in the system opening a query on lab field B, and I answered the query without changing the data, and the query is then closed, and I entered good data in lab field B, if I then entered the same bad data in lab field B as when the query was closed, then the system should refire a query on lab field B. Query with requires response = false and requires manual close = true.", new string[] {
+                        "PB-US12940-02D"});
+#line 276
+this.ScenarioSetup(scenarioInfo);
+#line 12
+this.FeatureBackground();
+#line hidden
+            TechTalk.SpecFlow.Table table54 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Data"});
+            table54.AddRow(new string[] {
+                        "Subject Number",
+                        "{RndNum<num1>(5)}"});
+            table54.AddRow(new string[] {
+                        "Subject Initials",
+                        "SUB"});
+            table54.AddRow(new string[] {
+                        "Subject ID",
+                        "SUB {Var(num1)}"});
+#line 278
+ testRunner.And("I create a Subject", ((string)(null)), table54);
+#line 283
+ testRunner.And("I select Form \"Lab Form 8\"");
+#line hidden
+            TechTalk.SpecFlow.Table table55 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Data"});
+            table55.AddRow(new string[] {
+                        "Lab Field 7 - NEUTROPHILS - rr = F ; rmc = T",
+                        "5"});
+            table55.AddRow(new string[] {
+                        "Lab Field 8 - WBC - rr = F ; rmc = T",
+                        "3"});
+#line 284
+ testRunner.And("I enter data in CRF and save", ((string)(null)), table55);
+#line hidden
+            TechTalk.SpecFlow.Table table56 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Query Message",
+                        "Answered",
+                        "Closed"});
+            table56.AddRow(new string[] {
+                        "Lab Field 8 - WBC - rr = F ; rmc = T",
+                        "Lab Field 8 must be greater than Lab Field 7. Please verify.",
+                        "false",
+                        "false"});
+#line 288
+ testRunner.And("I verify Query is displayed", ((string)(null)), table56);
+#line 291
+ testRunner.And("I take a screenshot");
+#line hidden
+            TechTalk.SpecFlow.Table table57 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Data"});
+            table57.AddRow(new string[] {
+                        "Lab Field 8 - WBC - rr = F ; rmc = T",
+                        "6"});
+#line 292
+ testRunner.And("I enter data in CRF and save", ((string)(null)), table57);
+#line hidden
+            TechTalk.SpecFlow.Table table58 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Query Message",
+                        "Answered",
+                        "Closed"});
+            table58.AddRow(new string[] {
+                        "Lab Field 8 - WBC - rr = F ; rmc = T",
+                        "Lab Field 8 must be greater than Lab Field 7. Please verify.",
+                        "true",
+                        "false"});
+#line 295
+ testRunner.And("I verify Query is displayed", ((string)(null)), table58);
+#line 298
+ testRunner.And("I take a screenshot");
+#line 299
+ testRunner.And("I close the only Query on Field \"Lab Field 8 - WBC - rr = F ; rmc = T\"");
+#line 300
+ testRunner.And("I save the CRF page");
+#line 301
+ testRunner.And("I verify closed Query with message \"Lab Field 8 must be greater than Lab Field 7." +
+                    " Please verify.\" is displayed on Field \"Lab Field 8 - WBC - rr = F ; rmc = T\"");
+#line 302
+ testRunner.And("I take a screenshot");
+#line hidden
+            TechTalk.SpecFlow.Table table59 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Data"});
+            table59.AddRow(new string[] {
+                        "Lab Field 8 - WBC - rr = F ; rmc = T",
+                        "3"});
+#line 303
+ testRunner.When("I enter data in CRF and save", ((string)(null)), table59);
+#line hidden
+            TechTalk.SpecFlow.Table table60 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Query Message",
+                        "Answered",
+                        "Closed"});
+            table60.AddRow(new string[] {
+                        "Lab Field 8 - WBC - rr = F ; rmc = T",
+                        "Lab Field 8 must be greater than Lab Field 7. Please verify.",
+                        "false",
+                        "false"});
+#line 306
+ testRunner.Then("I verify Query is displayed", ((string)(null)), table60);
+#line 309
+ testRunner.And("I take a screenshot");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute(@"@PB-US12940-03A As an EDC user, when I entered bad data in lab field A and lab field B that resulted in the system opening a query on lab field B, and I answered the query and I changed the data in lab field A to another bad data, and the query is then closed, if I entered good data in lab field A and then again entered the same bad data in lab field A as when the query was closed, then the system should not refire a query on lab field B. Query with requires response = true and requires manual close = true.")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Query Refiring Logic5")]
+        public virtual void PB_US12940_03AAsAnEDCUserWhenIEnteredBadDataInLabFieldAAndLabFieldBThatResultedInTheSystemOpeningAQueryOnLabFieldBAndIAnsweredTheQueryAndIChangedTheDataInLabFieldAToAnotherBadDataAndTheQueryIsThenClosedIfIEnteredGoodDataInLabFieldAAndThenAgainEnteredTheSameBadDataInLabFieldAAsWhenTheQueryWasClosedThenTheSystemShouldNotRefireAQueryOnLabFieldB_QueryWithRequiresResponseTrueAndRequiresManualCloseTrue_()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo(@"@PB-US12940-03A As an EDC user, when I entered bad data in lab field A and lab field B that resulted in the system opening a query on lab field B, and I answered the query and I changed the data in lab field A to another bad data, and the query is then closed, if I entered good data in lab field A and then again entered the same bad data in lab field A as when the query was closed, then the system should not refire a query on lab field B. Query with requires response = true and requires manual close = true.", new string[] {
+                        "PB-US12940-03A"});
+#line 312
+this.ScenarioSetup(scenarioInfo);
+#line 12
+this.FeatureBackground();
+#line hidden
+            TechTalk.SpecFlow.Table table61 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Data"});
+            table61.AddRow(new string[] {
+                        "Subject Number",
+                        "{RndNum<num1>(5)}"});
+            table61.AddRow(new string[] {
+                        "Subject Initials",
+                        "SUB"});
+            table61.AddRow(new string[] {
+                        "Subject ID",
+                        "SUB {Var(num1)}"});
+#line 314
+ testRunner.And("I create a Subject", ((string)(null)), table61);
+#line 319
+ testRunner.And("I select Form \"Lab Form 8\"");
+#line hidden
+            TechTalk.SpecFlow.Table table62 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Data"});
+            table62.AddRow(new string[] {
+                        "Lab Field 1 - NEUTROPHILS - rr = T ; rmc = T",
+                        "5"});
+            table62.AddRow(new string[] {
+                        "Lab Field 2 - WBC - rr = T ; rmc = T",
+                        "3"});
+#line 320
+ testRunner.And("I enter data in CRF and save", ((string)(null)), table62);
+#line hidden
+            TechTalk.SpecFlow.Table table63 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Query Message",
+                        "Answered",
+                        "Closed"});
+            table63.AddRow(new string[] {
+                        "Lab Field 2 - WBC - rr = T ; rmc = T",
+                        "Lab Field 2 must be greater than Lab Field 1. Please verify.",
+                        "false",
+                        "false"});
+#line 324
+ testRunner.And("I verify Query is displayed", ((string)(null)), table63);
+#line 327
+ testRunner.And("I take a screenshot");
+#line 328
+ testRunner.And("I answer the Query \"Lab Field 2 must be greater than Lab Field 1. Please verify.\"" +
+                    " on Field \"Lab Field 2 - WBC - rr = T ; rmc = T\" with \"Data will be changed.\"");
+#line hidden
+            TechTalk.SpecFlow.Table table64 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Data"});
+            table64.AddRow(new string[] {
+                        "Lab Field 1 - NEUTROPHILS - rr = T ; rmc = T",
+                        "4"});
+#line 329
+ testRunner.And("I enter data in CRF and save", ((string)(null)), table64);
+#line hidden
+            TechTalk.SpecFlow.Table table65 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Query Message",
+                        "Answered",
+                        "Closed"});
+            table65.AddRow(new string[] {
+                        "Lab Field 2 - WBC - rr = T ; rmc = T",
+                        "Lab Field 2 must be greater than Lab Field 1. Please verify.",
+                        "true",
+                        "false"});
+#line 332
+ testRunner.And("I verify Query is displayed", ((string)(null)), table65);
+#line 335
+ testRunner.And("I take a screenshot");
+#line 336
+ testRunner.And("I close the only Query on Field \"Lab Field 2 - WBC - rr = T ; rmc = T\"");
+#line 337
+ testRunner.And("I save the CRF page");
+#line 338
+ testRunner.And("I verify closed Query with message \"Lab Field 2 must be greater than Lab Field 1." +
+                    " Please verify.\" is displayed on Field \"Lab Field 2 - WBC - rr = T ; rmc = T\"");
+#line 339
+ testRunner.And("I take a screenshot");
+#line hidden
+            TechTalk.SpecFlow.Table table66 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Data"});
+            table66.AddRow(new string[] {
+                        "Lab Field 1 - NEUTROPHILS - rr = T ; rmc = T",
+                        "2"});
+#line 340
+ testRunner.When("I enter data in CRF and save", ((string)(null)), table66);
+#line hidden
+            TechTalk.SpecFlow.Table table67 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Query Message",
+                        "Answered",
+                        "Closed"});
+            table67.AddRow(new string[] {
+                        "Lab Field 2 - WBC - rr = T ; rmc = T",
+                        "Lab Field 2 must be greater than Lab Field 1. Please verify.",
+                        "false",
+                        "false"});
+#line 343
+ testRunner.And("I verify Query is not displayed", ((string)(null)), table67);
+#line 346
+ testRunner.And("I take a screenshot");
+#line hidden
+            TechTalk.SpecFlow.Table table68 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Data"});
+            table68.AddRow(new string[] {
+                        "Lab Field 1 - NEUTROPHILS - rr = T ; rmc = T",
+                        "4"});
+#line 347
+ testRunner.When("I enter data in CRF and save", ((string)(null)), table68);
+#line hidden
+            TechTalk.SpecFlow.Table table69 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Query Message",
+                        "Answered",
+                        "Closed"});
+            table69.AddRow(new string[] {
+                        "Lab Field 2 - WBC - rr = T ; rmc = T",
+                        "Lab Field 2 must be greater than Lab Field 1. Please verify.",
+                        "false",
+                        "false"});
+#line 350
+    testRunner.Then("I verify Query is not displayed", ((string)(null)), table69);
+#line 353
+ testRunner.And("I take a screenshot");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute(@"@PB-US12940-03B As an EDC user, when I entered bad data in lab field A and lab field B that resulted in the system opening a query on lab field B, and I answered the query and I changed the data in lab field A to another bad data, and the query is then closed, if I entered good data in lab field A and then again entered the same bad data in lab field A as when the query was closed, then the system should not refire a query on lab field B. Query with requires response = false and requires manual close = false.")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Query Refiring Logic5")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.IgnoreAttribute()]
+        public virtual void PB_US12940_03BAsAnEDCUserWhenIEnteredBadDataInLabFieldAAndLabFieldBThatResultedInTheSystemOpeningAQueryOnLabFieldBAndIAnsweredTheQueryAndIChangedTheDataInLabFieldAToAnotherBadDataAndTheQueryIsThenClosedIfIEnteredGoodDataInLabFieldAAndThenAgainEnteredTheSameBadDataInLabFieldAAsWhenTheQueryWasClosedThenTheSystemShouldNotRefireAQueryOnLabFieldB_QueryWithRequiresResponseFalseAndRequiresManualCloseFalse_()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo(@"@PB-US12940-03B As an EDC user, when I entered bad data in lab field A and lab field B that resulted in the system opening a query on lab field B, and I answered the query and I changed the data in lab field A to another bad data, and the query is then closed, if I entered good data in lab field A and then again entered the same bad data in lab field A as when the query was closed, then the system should not refire a query on lab field B. Query with requires response = false and requires manual close = false.", new string[] {
+                        "PB-US12940-03B",
+                        "ignore"});
+#line 358
+this.ScenarioSetup(scenarioInfo);
+#line 12
+this.FeatureBackground();
+#line hidden
+            TechTalk.SpecFlow.Table table70 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Data"});
+            table70.AddRow(new string[] {
+                        "Subject Number",
+                        "{RndNum<num1>(5)}"});
+            table70.AddRow(new string[] {
+                        "Subject Initials",
+                        "SUB"});
+            table70.AddRow(new string[] {
+                        "Subject ID",
+                        "SUB {Var(num1)}"});
+#line 360
+ testRunner.And("I create a Subject", ((string)(null)), table70);
+#line 365
+ testRunner.And("I select Form \"Lab Form 8\"");
+#line hidden
+            TechTalk.SpecFlow.Table table71 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Data"});
+            table71.AddRow(new string[] {
+                        "Lab Field 3 - NEUTROPHILS - rr = F ; rmc = F",
+                        "5"});
+            table71.AddRow(new string[] {
+                        "Lab Field 4 - WBC - rr = F ; rmc = F",
+                        "3"});
+#line 366
+ testRunner.And("I enter data in CRF and save", ((string)(null)), table71);
+#line hidden
+            TechTalk.SpecFlow.Table table72 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Query Message",
+                        "Answered",
+                        "Closed"});
+            table72.AddRow(new string[] {
+                        "Lab Field 4 - WBC - rr = F ; rmc = F",
+                        "Lab Field 4 must be greater than Lab Field 3. Please verify.",
+                        "false",
+                        "false"});
+#line 370
+ testRunner.And("I verify Query is displayed", ((string)(null)), table72);
+#line 373
+ testRunner.And("I take a screenshot");
+#line hidden
+            TechTalk.SpecFlow.Table table73 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Data"});
+            table73.AddRow(new string[] {
+                        "Lab Field 3 - NEUTROPHILS - rr = F ; rmc = F",
+                        "4"});
+#line 374
+ testRunner.And("I enter data in CRF and save", ((string)(null)), table73);
+#line hidden
+            TechTalk.SpecFlow.Table table74 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Query Message",
+                        "Answered",
+                        "Closed"});
+            table74.AddRow(new string[] {
+                        "Lab Field 4 - WBC - rr = F ; rmc = F",
+                        "Lab Field 4 must be greater than Lab Field 3. Please verify.",
+                        "false",
+                        "false"});
+#line 377
+ testRunner.And("I verify Query is displayed", ((string)(null)), table74);
+#line 380
+ testRunner.And("I take a screenshot");
+#line hidden
+            TechTalk.SpecFlow.Table table75 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Data"});
+            table75.AddRow(new string[] {
+                        "Lab Field 3 - NEUTROPHILS - rr = F ; rmc = F",
+                        "2"});
+#line 381
+ testRunner.And("I enter data in CRF and save", ((string)(null)), table75);
+#line hidden
+            TechTalk.SpecFlow.Table table76 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Query Message",
+                        "Answered",
+                        "Closed"});
+            table76.AddRow(new string[] {
+                        "Lab Field 4 - WBC - rr = F ; rmc = F",
+                        "Lab Field 4 must be greater than Lab Field 3. Please verify.",
+                        "false",
+                        "false"});
+#line 384
+ testRunner.And("I verify Query is not displayed", ((string)(null)), table76);
+#line 387
+ testRunner.And("I take a screenshot");
+#line hidden
+            TechTalk.SpecFlow.Table table77 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Data"});
+            table77.AddRow(new string[] {
+                        "Lab Field 3 - NEUTROPHILS - rr = F ; rmc = F",
+                        "4"});
+#line 388
+ testRunner.When("I enter data in CRF and save", ((string)(null)), table77);
+#line hidden
+            TechTalk.SpecFlow.Table table78 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Query Message",
+                        "Answered",
+                        "Closed"});
+            table78.AddRow(new string[] {
+                        "Lab Field 4 - WBC - rr = F ; rmc = F",
+                        "Lab Field 4 must be greater than Lab Field 3. Please verify.",
+                        "false",
+                        "false"});
+#line 391
+ testRunner.Then("I verify Query is displayed", ((string)(null)), table78);
+#line 394
+ testRunner.And("I take a screenshot");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute(@"@PB-US12940-03C As an EDC user, when I entered bad data in lab field A and lab field B that resulted in the system opening a query on lab field B, and I answered the query and I changed the data in lab field A to another bad data, and the query is then closed, if I entered good data in lab field A and then again entered the same bad data in lab field A as when the query was closed, then the system should not refire a query on lab field B. Query with requires response = true and requires manual close = false.")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Query Refiring Logic5")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.IgnoreAttribute()]
+        public virtual void PB_US12940_03CAsAnEDCUserWhenIEnteredBadDataInLabFieldAAndLabFieldBThatResultedInTheSystemOpeningAQueryOnLabFieldBAndIAnsweredTheQueryAndIChangedTheDataInLabFieldAToAnotherBadDataAndTheQueryIsThenClosedIfIEnteredGoodDataInLabFieldAAndThenAgainEnteredTheSameBadDataInLabFieldAAsWhenTheQueryWasClosedThenTheSystemShouldNotRefireAQueryOnLabFieldB_QueryWithRequiresResponseTrueAndRequiresManualCloseFalse_()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo(@"@PB-US12940-03C As an EDC user, when I entered bad data in lab field A and lab field B that resulted in the system opening a query on lab field B, and I answered the query and I changed the data in lab field A to another bad data, and the query is then closed, if I entered good data in lab field A and then again entered the same bad data in lab field A as when the query was closed, then the system should not refire a query on lab field B. Query with requires response = true and requires manual close = false.", new string[] {
+                        "PB-US12940-03C",
+                        "ignore"});
+#line 399
+this.ScenarioSetup(scenarioInfo);
+#line 12
+this.FeatureBackground();
+#line hidden
+            TechTalk.SpecFlow.Table table79 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Data"});
+            table79.AddRow(new string[] {
+                        "Subject Number",
+                        "{RndNum<num1>(5)}"});
+            table79.AddRow(new string[] {
+                        "Subject Initials",
+                        "SUB"});
+            table79.AddRow(new string[] {
+                        "Subject ID",
+                        "SUB {Var(num1)}"});
+#line 401
+ testRunner.And("I create a Subject", ((string)(null)), table79);
+#line 406
+ testRunner.And("I select Form \"Lab Form 8\"");
+#line hidden
+            TechTalk.SpecFlow.Table table80 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Data"});
+            table80.AddRow(new string[] {
+                        "Lab Field 5 - NEUTROPHILS - rr = T ; rmc = F",
+                        "5"});
+            table80.AddRow(new string[] {
+                        "Lab Field 6 - WBC - rr = T ; rmc = F",
+                        "3"});
+#line 407
+ testRunner.And("I enter data in CRF and save", ((string)(null)), table80);
+#line hidden
+            TechTalk.SpecFlow.Table table81 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Query Message",
+                        "Answered",
+                        "Closed"});
+            table81.AddRow(new string[] {
+                        "Lab Field 6 - WBC - rr = T ; rmc = F",
+                        "Lab Field 6 must be greater than Lab Field 5. Please verify.",
+                        "false",
+                        "false"});
+#line 411
+ testRunner.And("I verify Query is displayed", ((string)(null)), table81);
+#line 414
+ testRunner.And("I take a screenshot");
+#line 415
+ testRunner.And("I answer the Query \"Lab Field 6 must be greater than Lab Field 5. Please verify.\"" +
+                    " on Field \"Lab Field 6 - WBC - rr = T ; rmc = F\" with \"Data will be changed.\"");
+#line hidden
+            TechTalk.SpecFlow.Table table82 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Data"});
+            table82.AddRow(new string[] {
+                        "Lab Field 5 - NEUTROPHILS - rr = T ; rmc = F",
+                        "4"});
+#line 416
+ testRunner.And("I enter data in CRF and save", ((string)(null)), table82);
+#line hidden
+            TechTalk.SpecFlow.Table table83 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Query Message",
+                        "Answered",
+                        "Closed"});
+            table83.AddRow(new string[] {
+                        "Lab Field 6 - WBC - rr = T ; rmc = F",
+                        "Lab Field 6 must be greater than Lab Field 5. Please verify.",
+                        "true",
+                        "true"});
+#line 419
+ testRunner.And("I verify Query is not displayed", ((string)(null)), table83);
+#line 422
+ testRunner.And("I take a screenshot");
+#line hidden
+            TechTalk.SpecFlow.Table table84 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Data"});
+            table84.AddRow(new string[] {
+                        "Lab Field 5 - NEUTROPHILS - rr = T ; rmc = F",
+                        "2"});
+#line 423
+ testRunner.And("I enter data in CRF and save", ((string)(null)), table84);
+#line hidden
+            TechTalk.SpecFlow.Table table85 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Query Message",
+                        "Answered",
+                        "Closed"});
+            table85.AddRow(new string[] {
+                        "Lab Field 6 - WBC - rr = T ; rmc = F",
+                        "Lab Field 6 must be greater than Lab Field 5. Please verify.",
+                        "false",
+                        "false"});
+#line 426
+ testRunner.And("I verify Query is not displayed", ((string)(null)), table85);
+#line 429
+ testRunner.And("I take a screenshot");
+#line hidden
+            TechTalk.SpecFlow.Table table86 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Data"});
+            table86.AddRow(new string[] {
+                        "Lab Field 5 - NEUTROPHILS - rr = T ; rmc = F",
+                        "4"});
+#line 430
+ testRunner.And("I enter data in CRF and save", ((string)(null)), table86);
+#line hidden
+            TechTalk.SpecFlow.Table table87 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Query Message",
+                        "Answered",
+                        "Closed"});
+            table87.AddRow(new string[] {
+                        "Lab Field 6 - WBC - rr = T ; rmc = F",
+                        "Lab Field 6 must be greater than Lab Field 5. Please verify.",
+                        "false",
+                        "false"});
+#line 433
+ testRunner.And("I verify Query is not displayed", ((string)(null)), table87);
+#line 436
+ testRunner.And("I take a screenshot");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute(@"@PB-US12940-03D As an EDC user, when I entered bad data in lab field A and lab field B that resulted in the system opening a query on lab field B, and I answered the query and I changed the data in lab field A to another bad data, and the query is then closed, if I entered good data in lab field A and then again entered the same bad data in lab field A as when the query was closed, then the system should not refire a query on lab field B. Query with requires response = false and requires manual close = true.")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Query Refiring Logic5")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.IgnoreAttribute()]
+        public virtual void PB_US12940_03DAsAnEDCUserWhenIEnteredBadDataInLabFieldAAndLabFieldBThatResultedInTheSystemOpeningAQueryOnLabFieldBAndIAnsweredTheQueryAndIChangedTheDataInLabFieldAToAnotherBadDataAndTheQueryIsThenClosedIfIEnteredGoodDataInLabFieldAAndThenAgainEnteredTheSameBadDataInLabFieldAAsWhenTheQueryWasClosedThenTheSystemShouldNotRefireAQueryOnLabFieldB_QueryWithRequiresResponseFalseAndRequiresManualCloseTrue_()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo(@"@PB-US12940-03D As an EDC user, when I entered bad data in lab field A and lab field B that resulted in the system opening a query on lab field B, and I answered the query and I changed the data in lab field A to another bad data, and the query is then closed, if I entered good data in lab field A and then again entered the same bad data in lab field A as when the query was closed, then the system should not refire a query on lab field B. Query with requires response = false and requires manual close = true.", new string[] {
+                        "PB-US12940-03D",
+                        "ignore"});
+#line 441
+this.ScenarioSetup(scenarioInfo);
+#line 12
+this.FeatureBackground();
+#line hidden
+            TechTalk.SpecFlow.Table table88 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Data"});
+            table88.AddRow(new string[] {
+                        "Subject Number",
+                        "{RndNum<num1>(5)}"});
+            table88.AddRow(new string[] {
+                        "Subject Initials",
+                        "SUB"});
+            table88.AddRow(new string[] {
+                        "Subject ID",
+                        "SUB {Var(num1)}"});
+#line 443
+ testRunner.And("I create a Subject", ((string)(null)), table88);
+#line 448
+ testRunner.And("I select Form \"Lab Form 8\"");
+#line hidden
+            TechTalk.SpecFlow.Table table89 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Data"});
+            table89.AddRow(new string[] {
+                        "Lab Field 7 - NEUTROPHILS - rr = F ; rmc = T",
+                        "5"});
+            table89.AddRow(new string[] {
+                        "Lab Field 8 - WBC - rr = F ; rmc = T",
+                        "3"});
+#line 449
+ testRunner.And("I enter data in CRF and save", ((string)(null)), table89);
+#line hidden
+            TechTalk.SpecFlow.Table table90 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Query Message",
+                        "Answered",
+                        "Closed"});
+            table90.AddRow(new string[] {
+                        "Lab Field 8 - WBC - rr = F ; rmc = T",
+                        "Lab Field 8 must be greater than Lab Field 7. Please verify.",
+                        "false",
+                        "false"});
+#line 453
+ testRunner.And("I verify Query is displayed", ((string)(null)), table90);
+#line 456
+ testRunner.And("I take a screenshot");
+#line hidden
+            TechTalk.SpecFlow.Table table91 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Data"});
+            table91.AddRow(new string[] {
+                        "Lab Field 7 - NEUTROPHILS - rr = F ; rmc = T",
+                        "4"});
+#line 457
+ testRunner.And("I enter data in CRF and save", ((string)(null)), table91);
+#line 460
+ testRunner.And("I save the CRF page");
+#line hidden
+            TechTalk.SpecFlow.Table table92 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Query Message",
+                        "Answered",
+                        "Closed"});
+            table92.AddRow(new string[] {
+                        "Lab Field 8 - WBC - rr = F ; rmc = T",
+                        "Lab Field 8 must be greater than Lab Field 7. Please verify.",
+                        "false",
+                        "false"});
+#line 461
+ testRunner.And("I verify Query is displayed", ((string)(null)), table92);
+#line hidden
+            TechTalk.SpecFlow.Table table93 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Query Message",
+                        "Answered",
+                        "Closed"});
+            table93.AddRow(new string[] {
+                        "Lab Field 8 - WBC - rr = F ; rmc = T",
+                        "Lab Field 8 must be greater than Lab Field 7. Please verify.",
+                        "true",
+                        "false"});
+#line 464
+ testRunner.And("I verify Query is displayed", ((string)(null)), table93);
+#line 467
+ testRunner.And("I take a screenshot");
+#line 468
+ testRunner.And("I close the only Query on Field \"Lab Field 8 - WBC - rr = F ; rmc = T\"");
+#line 469
+ testRunner.And("I save the CRF page");
+#line 470
+ testRunner.And("I verify closed Query with message \"Lab Field 8 must be greater than Lab Field 7." +
+                    " Please verify.\" is displayed on Field \"Lab Field 8 - WBC - rr = F ; rmc = T\"");
+#line 471
+ testRunner.And("I take a screenshot");
+#line hidden
+            TechTalk.SpecFlow.Table table94 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Data"});
+            table94.AddRow(new string[] {
+                        "Lab Field 7 - NEUTROPHILS - rr = F ; rmc = T",
+                        "2"});
+#line 472
+ testRunner.And("I enter data in CRF and save", ((string)(null)), table94);
+#line hidden
+            TechTalk.SpecFlow.Table table95 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Query Message",
+                        "Answered",
+                        "Closed"});
+            table95.AddRow(new string[] {
+                        "Lab Field 8 - WBC - rr = F ; rmc = T",
+                        "Lab Field 8 must be greater than Lab Field 7. Please verify.",
+                        "false",
+                        "false"});
+#line 475
+ testRunner.And("I verify Query is not displayed", ((string)(null)), table95);
+#line 478
+ testRunner.And("I take a screenshot");
+#line hidden
+            TechTalk.SpecFlow.Table table96 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Data"});
+            table96.AddRow(new string[] {
+                        "Lab Field 7 - NEUTROPHILS - rr = F ; rmc = T",
+                        "4"});
+#line 479
+ testRunner.When("I enter data in CRF and save", ((string)(null)), table96);
+#line hidden
+            TechTalk.SpecFlow.Table table97 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Query Message",
+                        "Answered",
+                        "Closed"});
+            table97.AddRow(new string[] {
+                        "Lab Field 8 - WBC - rr = F ; rmc = T",
+                        "Lab Field 8 must be greater than Lab Field 7. Please verify.",
+                        "false",
+                        "false"});
+#line 482
+ testRunner.And("I verify Query is not displayed", ((string)(null)), table97);
+#line 485
+ testRunner.And("I take a screenshot");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute(@"@PB-US12940-04A As an EDC user, when I entered bad data in lab field A and lab field B that resulted in the system opening a query on lab field B, and I answered the query and I changed the data in lab field B to another bad data, and the query is then closed, if I entered good data in lab field B and then again entered the same bad data in lab field B as when the query was closed, then the system should not refire a query on lab field B. Query with requires response = true and requires manual close = true.")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Query Refiring Logic5")]
+        public virtual void PB_US12940_04AAsAnEDCUserWhenIEnteredBadDataInLabFieldAAndLabFieldBThatResultedInTheSystemOpeningAQueryOnLabFieldBAndIAnsweredTheQueryAndIChangedTheDataInLabFieldBToAnotherBadDataAndTheQueryIsThenClosedIfIEnteredGoodDataInLabFieldBAndThenAgainEnteredTheSameBadDataInLabFieldBAsWhenTheQueryWasClosedThenTheSystemShouldNotRefireAQueryOnLabFieldB_QueryWithRequiresResponseTrueAndRequiresManualCloseTrue_()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo(@"@PB-US12940-04A As an EDC user, when I entered bad data in lab field A and lab field B that resulted in the system opening a query on lab field B, and I answered the query and I changed the data in lab field B to another bad data, and the query is then closed, if I entered good data in lab field B and then again entered the same bad data in lab field B as when the query was closed, then the system should not refire a query on lab field B. Query with requires response = true and requires manual close = true.", new string[] {
+                        "PB-US12940-04A"});
+#line 488
+this.ScenarioSetup(scenarioInfo);
+#line 12
+this.FeatureBackground();
+#line hidden
+            TechTalk.SpecFlow.Table table98 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Data"});
+            table98.AddRow(new string[] {
+                        "Subject Number",
+                        "{RndNum<num1>(5)}"});
+            table98.AddRow(new string[] {
+                        "Subject Initials",
+                        "SUB"});
+            table98.AddRow(new string[] {
+                        "Subject ID",
+                        "SUB {Var(num1)}"});
+#line 490
+    testRunner.And("I create a Subject", ((string)(null)), table98);
+#line 495
+ testRunner.And("I select Form \"Lab Form 8\"");
+#line hidden
+            TechTalk.SpecFlow.Table table99 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Data"});
+            table99.AddRow(new string[] {
+                        "Lab Field 1 - NEUTROPHILS - rr = T ; rmc = T",
+                        "5"});
+            table99.AddRow(new string[] {
+                        "Lab Field 2 - WBC - rr = T ; rmc = T",
+                        "3"});
+#line 496
+ testRunner.And("I enter data in CRF and save", ((string)(null)), table99);
+#line hidden
+            TechTalk.SpecFlow.Table table100 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Query Message",
+                        "Answered",
+                        "Closed"});
+            table100.AddRow(new string[] {
+                        "Lab Field 2 - WBC - rr = T ; rmc = T",
+                        "Lab Field 2 must be greater than Lab Field 1. Please verify.",
+                        "false",
+                        "false"});
+#line 500
+ testRunner.And("I verify Query is displayed", ((string)(null)), table100);
+#line 503
+ testRunner.And("I take a screenshot");
+#line 504
+ testRunner.And("I answer the Query \"Lab Field 2 must be greater than Lab Field 1. Please verify.\"" +
+                    " on Field \"Lab Field 2 - WBC - rr = T ; rmc = T\" with \"Data will be changed.\"");
+#line hidden
+            TechTalk.SpecFlow.Table table101 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Data"});
+            table101.AddRow(new string[] {
+                        "Lab Field 2 - WBC - rr = T ; rmc = T",
+                        "2"});
+#line 505
+ testRunner.And("I enter data in CRF and save", ((string)(null)), table101);
+#line hidden
+            TechTalk.SpecFlow.Table table102 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Query Message",
+                        "Answered",
+                        "Closed"});
+            table102.AddRow(new string[] {
+                        "Lab Field 2 - WBC - rr = T ; rmc = T",
+                        "Lab Field 2 must be greater than Lab Field 1. Please verify.",
+                        "true",
+                        "false"});
+#line 508
+ testRunner.And("I verify Query is displayed", ((string)(null)), table102);
+#line 511
+ testRunner.And("I take a screenshot");
+#line 512
+ testRunner.And("I close the only Query on Field \"Lab Field 2 - WBC - rr = T ; rmc = T\"");
+#line 513
+ testRunner.And("I save the CRF page");
+#line 514
+ testRunner.And("I verify closed Query with message \"Lab Field 2 must be greater than Lab Field 1." +
+                    " Please verify.\" is displayed on Field \"Lab Field 2 - WBC - rr = T ; rmc = T\"");
+#line 515
+ testRunner.And("I take a screenshot");
+#line hidden
+            TechTalk.SpecFlow.Table table103 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Data"});
+            table103.AddRow(new string[] {
+                        "Lab Field 2 - WBC - rr = T ; rmc = T",
+                        "6"});
+#line 516
+ testRunner.And("I enter data in CRF and save", ((string)(null)), table103);
+#line hidden
+            TechTalk.SpecFlow.Table table104 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Query Message",
+                        "Answered",
+                        "Closed"});
+            table104.AddRow(new string[] {
+                        "Lab Field 2 - WBC - rr = T ; rmc = T",
+                        "Lab Field 2 must be greater than Lab Field 1. Please verify.",
+                        "false",
+                        "false"});
+#line 519
+ testRunner.And("I verify Query is not displayed", ((string)(null)), table104);
+#line 522
+ testRunner.And("I take a screenshot");
+#line hidden
+            TechTalk.SpecFlow.Table table105 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Data"});
+            table105.AddRow(new string[] {
+                        "Lab Field 2 - WBC - rr = T ; rmc = T",
+                        "2"});
+#line 523
+ testRunner.When("I enter data in CRF and save", ((string)(null)), table105);
+#line hidden
+            TechTalk.SpecFlow.Table table106 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Query Message",
+                        "Answered",
+                        "Closed"});
+            table106.AddRow(new string[] {
+                        "Lab Field 2 - WBC - rr = T ; rmc = T",
+                        "Lab Field 2 must be greater than Lab Field 1. Please verify.",
+                        "false",
+                        "false"});
+#line 527
+    testRunner.And("I verify Query is not displayed", ((string)(null)), table106);
+#line 530
+ testRunner.And("I take a screenshot");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute(@"@PB-US12940-04B	As an EDC user, when I entered bad data in lab field A and lab field B that resulted in the system opening a query on lab field B, and I answered the query and I changed the data in lab field B to another bad data, and the query is then closed, if I entered good data in lab field B and then again entered the same bad data in lab field B as when the query was closed, then the system should not refire a query on lab field B. Query with requires response = false and requires manual close = false.")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Query Refiring Logic5")]
+        public virtual void PB_US12940_04BAsAnEDCUserWhenIEnteredBadDataInLabFieldAAndLabFieldBThatResultedInTheSystemOpeningAQueryOnLabFieldBAndIAnsweredTheQueryAndIChangedTheDataInLabFieldBToAnotherBadDataAndTheQueryIsThenClosedIfIEnteredGoodDataInLabFieldBAndThenAgainEnteredTheSameBadDataInLabFieldBAsWhenTheQueryWasClosedThenTheSystemShouldNotRefireAQueryOnLabFieldB_QueryWithRequiresResponseFalseAndRequiresManualCloseFalse_()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo(@"@PB-US12940-04B	As an EDC user, when I entered bad data in lab field A and lab field B that resulted in the system opening a query on lab field B, and I answered the query and I changed the data in lab field B to another bad data, and the query is then closed, if I entered good data in lab field B and then again entered the same bad data in lab field B as when the query was closed, then the system should not refire a query on lab field B. Query with requires response = false and requires manual close = false.", new string[] {
+                        "PB-US12940-04B"});
+#line 533
+this.ScenarioSetup(scenarioInfo);
+#line 12
+this.FeatureBackground();
+#line hidden
+            TechTalk.SpecFlow.Table table107 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Data"});
+            table107.AddRow(new string[] {
+                        "Subject Number",
+                        "{RndNum<num1>(5)}"});
+            table107.AddRow(new string[] {
+                        "Subject Initials",
+                        "SUB"});
+            table107.AddRow(new string[] {
+                        "Subject ID",
+                        "SUB {Var(num1)}"});
+#line 535
+    testRunner.And("I create a Subject", ((string)(null)), table107);
+#line 540
+ testRunner.And("I select Form \"Lab Form 8\"");
+#line hidden
+            TechTalk.SpecFlow.Table table108 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Data"});
+            table108.AddRow(new string[] {
+                        "Lab Field 3 - NEUTROPHILS - rr = F ; rmc = F",
+                        "5"});
+            table108.AddRow(new string[] {
+                        "Lab Field 4 - WBC - rr = F ; rmc = F",
+                        "3"});
+#line 541
+ testRunner.And("I enter data in CRF and save", ((string)(null)), table108);
+#line hidden
+            TechTalk.SpecFlow.Table table109 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Query Message",
+                        "Answered",
+                        "Closed"});
+            table109.AddRow(new string[] {
+                        "Lab Field 4 - WBC - rr = F ; rmc = F",
+                        "Lab Field 4 must be greater than Lab Field 3. Please verify.",
+                        "false",
+                        "false"});
+#line 545
+ testRunner.And("I verify Query is displayed", ((string)(null)), table109);
+#line 548
+ testRunner.And("I take a screenshot");
+#line hidden
+            TechTalk.SpecFlow.Table table110 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Data"});
+            table110.AddRow(new string[] {
+                        "Lab Field 4 - WBC - rr = F ; rmc = F",
+                        "2"});
+#line 549
+   testRunner.And("I enter data in CRF and save", ((string)(null)), table110);
+#line 552
+ testRunner.And("I save the CRF page");
+#line hidden
+            TechTalk.SpecFlow.Table table111 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Query Message",
+                        "Answered",
+                        "Closed"});
+            table111.AddRow(new string[] {
+                        "Lab Field 4 - WBC - rr = F ; rmc = F",
+                        "Lab Field 4 must be greater than Lab Field 3. Please verify.",
+                        "false",
+                        "false"});
+#line 553
+ testRunner.And("I verify Query is displayed", ((string)(null)), table111);
+#line 556
+ testRunner.And("I take a screenshot");
+#line hidden
+            TechTalk.SpecFlow.Table table112 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Query Message",
+                        "Answered",
+                        "Closed"});
+            table112.AddRow(new string[] {
+                        "Lab Field 4 - WBC - rr = F ; rmc = F",
+                        "Lab Field 4 must be greater than Lab Field 3. Please verify.",
+                        "false",
+                        "true"});
+#line 557
+ testRunner.And("I verify Query is not displayed", ((string)(null)), table112);
+#line 560
+ testRunner.And("I take a screenshot");
+#line hidden
+            TechTalk.SpecFlow.Table table113 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Data"});
+            table113.AddRow(new string[] {
+                        "Lab Field 4 - WBC - rr = F ; rmc = F",
+                        "6"});
+#line 561
+ testRunner.And("I enter data in CRF and save", ((string)(null)), table113);
+#line hidden
+            TechTalk.SpecFlow.Table table114 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Query Message",
+                        "Answered",
+                        "Closed"});
+            table114.AddRow(new string[] {
+                        "Lab Field 4 - WBC - rr = F ; rmc = F",
+                        "Lab Field 4 must be greater than Lab Field 3. Please verify.",
+                        "false",
+                        "true"});
+#line 564
+ testRunner.And("I verify Query is not displayed", ((string)(null)), table114);
+#line 567
+ testRunner.And("I take a screenshot");
+#line hidden
+            TechTalk.SpecFlow.Table table115 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Data"});
+            table115.AddRow(new string[] {
+                        "Lab Field 4 - WBC - rr = F ; rmc = F",
+                        "2"});
+#line 568
+ testRunner.When("I enter data in CRF and save", ((string)(null)), table115);
+#line hidden
+            TechTalk.SpecFlow.Table table116 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Query Message",
+                        "Answered",
+                        "Closed"});
+            table116.AddRow(new string[] {
+                        "Lab Field 4 - WBC - rr = F ; rmc = F",
+                        "Lab Field 4 must be greater than Lab Field 3. Please verify.",
+                        "false",
+                        "false"});
+#line 571
+ testRunner.And("I verify Query is displayed", ((string)(null)), table116);
+#line 574
+ testRunner.And("I take a screenshot");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute(@"@PB-US12940-04C As an EDC user, when I entered bad data in lab field A and lab field B that resulted in the system opening a query on lab field B, and I answered the query and I changed the data in lab field B to another bad data, and the query is then closed, if I entered good data in lab field B and then again entered the same bad data in lab field B as when the query was closed, then the system should not refire a query on lab field B. Query with requires response = true and requires manual close = false.")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Query Refiring Logic5")]
+        public virtual void PB_US12940_04CAsAnEDCUserWhenIEnteredBadDataInLabFieldAAndLabFieldBThatResultedInTheSystemOpeningAQueryOnLabFieldBAndIAnsweredTheQueryAndIChangedTheDataInLabFieldBToAnotherBadDataAndTheQueryIsThenClosedIfIEnteredGoodDataInLabFieldBAndThenAgainEnteredTheSameBadDataInLabFieldBAsWhenTheQueryWasClosedThenTheSystemShouldNotRefireAQueryOnLabFieldB_QueryWithRequiresResponseTrueAndRequiresManualCloseFalse_()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo(@"@PB-US12940-04C As an EDC user, when I entered bad data in lab field A and lab field B that resulted in the system opening a query on lab field B, and I answered the query and I changed the data in lab field B to another bad data, and the query is then closed, if I entered good data in lab field B and then again entered the same bad data in lab field B as when the query was closed, then the system should not refire a query on lab field B. Query with requires response = true and requires manual close = false.", new string[] {
+                        "PB-US12940-04C"});
+#line 577
+this.ScenarioSetup(scenarioInfo);
+#line 12
+this.FeatureBackground();
+#line hidden
+            TechTalk.SpecFlow.Table table117 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Data"});
+            table117.AddRow(new string[] {
+                        "Subject Number",
+                        "{RndNum<num1>(5)}"});
+            table117.AddRow(new string[] {
+                        "Subject Initials",
+                        "SUB"});
+            table117.AddRow(new string[] {
+                        "Subject ID",
+                        "SUB {Var(num1)}"});
+#line 579
+    testRunner.And("I create a Subject", ((string)(null)), table117);
+#line 584
+ testRunner.And("I select Form \"Lab Form 8\"");
+#line hidden
+            TechTalk.SpecFlow.Table table118 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Data"});
+            table118.AddRow(new string[] {
+                        "Lab Field 5 - NEUTROPHILS - rr = T ; rmc = F",
+                        "5"});
+            table118.AddRow(new string[] {
+                        "Lab Field 6 - WBC - rr = T ; rmc = F",
+                        "3"});
+#line 585
+ testRunner.And("I enter data in CRF and save", ((string)(null)), table118);
+#line hidden
+            TechTalk.SpecFlow.Table table119 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Query Message",
+                        "Answered",
+                        "Closed"});
+            table119.AddRow(new string[] {
+                        "Lab Field 6 - WBC - rr = T ; rmc = F",
+                        "Lab Field 6 must be greater than Lab Field 5. Please verify.",
+                        "false",
+                        "false"});
+#line 589
+ testRunner.And("I verify Query is displayed", ((string)(null)), table119);
+#line 592
+ testRunner.And("I take a screenshot");
+#line 593
+ testRunner.And("I answer the Query \"Lab Field 6 must be greater than Lab Field 5. Please verify.\"" +
+                    " on Field \"Lab Field 6 - WBC - rr = T ; rmc = F\" with \"Data will be changed.\"");
+#line hidden
+            TechTalk.SpecFlow.Table table120 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Data"});
+            table120.AddRow(new string[] {
+                        "Lab Field 6 - WBC - rr = T ; rmc = F",
+                        "2"});
+#line 594
+   testRunner.And("I enter data in CRF and save", ((string)(null)), table120);
+#line hidden
+            TechTalk.SpecFlow.Table table121 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Query Message",
+                        "Answered",
+                        "Closed"});
+            table121.AddRow(new string[] {
+                        "Lab Field 6 - WBC - rr = T ; rmc = F",
+                        "Lab Field 6 must be greater than Lab Field 5. Please verify.",
+                        "false",
+                        "false"});
+#line 597
+ testRunner.And("I verify Query is displayed", ((string)(null)), table121);
+#line 600
+ testRunner.And("I take a screenshot");
+#line hidden
+            TechTalk.SpecFlow.Table table122 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Query Message",
+                        "Answered",
+                        "Closed"});
+            table122.AddRow(new string[] {
+                        "Lab Field 6 - WBC - rr = T ; rmc = F",
+                        "Lab Field 6 must be greater than Lab Field 5. Please verify.",
+                        "true",
+                        "true"});
+#line 601
+ testRunner.And("I verify Query is not displayed", ((string)(null)), table122);
+#line 604
+ testRunner.And("I take a screenshot");
+#line hidden
+            TechTalk.SpecFlow.Table table123 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Data"});
+            table123.AddRow(new string[] {
+                        "Lab Field 6 - WBC - rr = T ; rmc = F",
+                        "6"});
+#line 605
+ testRunner.And("I enter data in CRF and save", ((string)(null)), table123);
+#line hidden
+            TechTalk.SpecFlow.Table table124 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Query Message",
+                        "Answered",
+                        "Closed"});
+            table124.AddRow(new string[] {
+                        "Lab Field 6 - WBC - rr = T ; rmc = F",
+                        "Lab Field 6 must be greater than Lab Field 5. Please verify.",
+                        "true",
+                        "true"});
+#line 608
+ testRunner.And("I verify Query is not displayed", ((string)(null)), table124);
+#line 611
+ testRunner.And("I take a screenshot");
+#line hidden
+            TechTalk.SpecFlow.Table table125 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Data"});
+            table125.AddRow(new string[] {
+                        "Lab Field 6 - WBC - rr = T ; rmc = F",
+                        "2"});
+#line 612
+ testRunner.When("I enter data in CRF and save", ((string)(null)), table125);
+#line hidden
+            TechTalk.SpecFlow.Table table126 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Query Message",
+                        "Answered",
+                        "Closed"});
+            table126.AddRow(new string[] {
+                        "Lab Field 6 - WBC - rr = T ; rmc = F",
+                        "Lab Field 6 must be greater than Lab Field 5. Please verify.",
+                        "false",
+                        "false"});
+#line 615
+ testRunner.And("I verify Query is displayed", ((string)(null)), table126);
+#line 618
+ testRunner.And("I take a screenshot");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute(@"@PB-US12940-04D As an EDC user, when I entered bad data in lab field A and lab field B that resulted in the system opening a query on lab field B, and I answered the query and I changed the data in lab field B to another bad data, and the query is then closed, if I entered good data in lab field B and then again entered the same bad data in lab field B as when the query was closed, then the system should not refire a query on lab field B. Query with requires response = false and requires manual close = true.")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Query Refiring Logic5")]
+        public virtual void PB_US12940_04DAsAnEDCUserWhenIEnteredBadDataInLabFieldAAndLabFieldBThatResultedInTheSystemOpeningAQueryOnLabFieldBAndIAnsweredTheQueryAndIChangedTheDataInLabFieldBToAnotherBadDataAndTheQueryIsThenClosedIfIEnteredGoodDataInLabFieldBAndThenAgainEnteredTheSameBadDataInLabFieldBAsWhenTheQueryWasClosedThenTheSystemShouldNotRefireAQueryOnLabFieldB_QueryWithRequiresResponseFalseAndRequiresManualCloseTrue_()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo(@"@PB-US12940-04D As an EDC user, when I entered bad data in lab field A and lab field B that resulted in the system opening a query on lab field B, and I answered the query and I changed the data in lab field B to another bad data, and the query is then closed, if I entered good data in lab field B and then again entered the same bad data in lab field B as when the query was closed, then the system should not refire a query on lab field B. Query with requires response = false and requires manual close = true.", new string[] {
+                        "PB-US12940-04D"});
+#line 621
+this.ScenarioSetup(scenarioInfo);
+#line 12
+this.FeatureBackground();
+#line hidden
+            TechTalk.SpecFlow.Table table127 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Data"});
+            table127.AddRow(new string[] {
+                        "Subject Number",
+                        "{RndNum<num1>(5)}"});
+            table127.AddRow(new string[] {
+                        "Subject Initials",
+                        "SUB"});
+            table127.AddRow(new string[] {
+                        "Subject ID",
+                        "SUB {Var(num1)}"});
+#line 623
+ testRunner.And("I create a Subject", ((string)(null)), table127);
+#line 628
+ testRunner.And("I select Form \"Lab Form 8\"");
+#line hidden
+            TechTalk.SpecFlow.Table table128 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Data"});
+            table128.AddRow(new string[] {
+                        "Lab Field 7 - NEUTROPHILS - rr = F ; rmc = T",
+                        "5"});
+            table128.AddRow(new string[] {
+                        "Lab Field 8 - WBC - rr = F ; rmc = T",
+                        "3"});
+#line 629
+ testRunner.And("I enter data in CRF and save", ((string)(null)), table128);
+#line hidden
+            TechTalk.SpecFlow.Table table129 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Query Message",
+                        "Answered",
+                        "Closed"});
+            table129.AddRow(new string[] {
+                        "Lab Field 8 - WBC - rr = F ; rmc = T",
+                        "Lab Field 8 must be greater than Lab Field 7. Please verify.",
+                        "false",
+                        "false"});
+#line 633
+ testRunner.And("I verify Query is displayed", ((string)(null)), table129);
+#line 636
+ testRunner.And("I take a screenshot");
+#line hidden
+            TechTalk.SpecFlow.Table table130 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Data"});
+            table130.AddRow(new string[] {
+                        "Lab Field 8 - WBC - rr = F ; rmc = T",
+                        "2"});
+#line 637
+   testRunner.And("I enter data in CRF and save", ((string)(null)), table130);
+#line hidden
+            TechTalk.SpecFlow.Table table131 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Query Message",
+                        "Answered",
+                        "Closed"});
+            table131.AddRow(new string[] {
+                        "Lab Field 8 - WBC - rr = F ; rmc = T",
+                        "Lab Field 8 must be greater than Lab Field 7. Please verify.",
+                        "true",
+                        "false"});
+#line 640
+ testRunner.And("I verify Query is displayed", ((string)(null)), table131);
+#line 643
+ testRunner.And("I take a screenshot");
+#line 644
+ testRunner.And("I close the only Query on Field \"Lab Field 8 - WBC - rr = F ; rmc = T\"");
+#line 645
+ testRunner.And("I save the CRF page");
+#line 646
+ testRunner.And("I verify closed Query with message \"Lab Field 8 must be greater than Lab Field 7." +
+                    " Please verify.\" is displayed on Field \"Lab Field 8 - WBC - rr = F ; rmc = T\"");
+#line 647
+ testRunner.And("I take a screenshot");
+#line hidden
+            TechTalk.SpecFlow.Table table132 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Data"});
+            table132.AddRow(new string[] {
+                        "Lab Field 8 - WBC - rr = F ; rmc = T",
+                        "6"});
+#line 648
+ testRunner.And("I enter data in CRF and save", ((string)(null)), table132);
+#line hidden
+            TechTalk.SpecFlow.Table table133 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Query Message",
+                        "Answered",
+                        "Closed"});
+            table133.AddRow(new string[] {
+                        "Lab Field 8 - WBC - rr = F ; rmc = T",
+                        "Lab Field 8 must be greater than Lab Field 7. Please verify.",
+                        "false",
+                        "false"});
+#line 651
+ testRunner.And("I verify Query is not displayed", ((string)(null)), table133);
+#line 654
+ testRunner.And("I take a screenshot");
+#line hidden
+            TechTalk.SpecFlow.Table table134 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Data"});
+            table134.AddRow(new string[] {
+                        "Lab Field 8 - WBC - rr = F ; rmc = T",
+                        "2"});
+#line 655
+ testRunner.When("I enter data in CRF and save", ((string)(null)), table134);
+#line hidden
+            TechTalk.SpecFlow.Table table135 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Query Message",
+                        "Answered",
+                        "Closed"});
+            table135.AddRow(new string[] {
+                        "Lab Field 8 - WBC - rr = F ; rmc = T",
+                        "Lab Field 8 must be greater than Lab Field 7. Please verify.",
+                        "false",
+                        "false"});
+#line 659
+    testRunner.And("I verify Query is not displayed", ((string)(null)), table135);
+#line 662
+ testRunner.And("I take a screenshot");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute(@"@PB-US12940-05A As an EDC user, when I entered bad data in lab field A and lab field B that resulted in the system opening a query on lab field B, and I answered the query and I changed the data in lab field A to another bad data, and the query is then closed, if I then entered the original bad data in lab field A, then the system should refire a query on lab field B. Query with requires response = true and requires manual close = true.")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Query Refiring Logic5")]
+        public virtual void PB_US12940_05AAsAnEDCUserWhenIEnteredBadDataInLabFieldAAndLabFieldBThatResultedInTheSystemOpeningAQueryOnLabFieldBAndIAnsweredTheQueryAndIChangedTheDataInLabFieldAToAnotherBadDataAndTheQueryIsThenClosedIfIThenEnteredTheOriginalBadDataInLabFieldAThenTheSystemShouldRefireAQueryOnLabFieldB_QueryWithRequiresResponseTrueAndRequiresManualCloseTrue_()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo(@"@PB-US12940-05A As an EDC user, when I entered bad data in lab field A and lab field B that resulted in the system opening a query on lab field B, and I answered the query and I changed the data in lab field A to another bad data, and the query is then closed, if I then entered the original bad data in lab field A, then the system should refire a query on lab field B. Query with requires response = true and requires manual close = true.", new string[] {
+                        "PB-US12940-05A"});
+#line 665
+this.ScenarioSetup(scenarioInfo);
+#line 12
+this.FeatureBackground();
+#line hidden
+            TechTalk.SpecFlow.Table table136 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Data"});
+            table136.AddRow(new string[] {
+                        "Subject Number",
+                        "{RndNum<num1>(5)}"});
+            table136.AddRow(new string[] {
+                        "Subject Initials",
+                        "SUB"});
+            table136.AddRow(new string[] {
+                        "Subject ID",
+                        "SUB {Var(num1)}"});
+#line 667
+    testRunner.And("I create a Subject", ((string)(null)), table136);
+#line 672
+ testRunner.And("I select Form \"Lab Form 8\"");
+#line hidden
+            TechTalk.SpecFlow.Table table137 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Data"});
+            table137.AddRow(new string[] {
+                        "Lab Field 1 - NEUTROPHILS - rr = T ; rmc = T",
+                        "5"});
+            table137.AddRow(new string[] {
+                        "Lab Field 2 - WBC - rr = T ; rmc = T",
+                        "3"});
+#line 673
+ testRunner.And("I enter data in CRF and save", ((string)(null)), table137);
+#line hidden
+            TechTalk.SpecFlow.Table table138 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Query Message",
+                        "Answered",
+                        "Closed"});
+            table138.AddRow(new string[] {
+                        "Lab Field 2 - WBC - rr = T ; rmc = T",
+                        "Lab Field 2 must be greater than Lab Field 1. Please verify.",
+                        "false",
+                        "false"});
+#line 677
+ testRunner.And("I verify Query is displayed", ((string)(null)), table138);
+#line 680
+ testRunner.And("I take a screenshot");
+#line 681
+ testRunner.And("I answer the Query \"Lab Field 2 must be greater than Lab Field 1. Please verify.\"" +
+                    " on Field \"Lab Field 2 - WBC - rr = T ; rmc = T\" with \"Data will be changed.\"");
+#line hidden
+            TechTalk.SpecFlow.Table table139 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Data"});
+            table139.AddRow(new string[] {
+                        "Lab Field 1 - NEUTROPHILS - rr = T ; rmc = T",
+                        "4"});
+#line 682
+ testRunner.And("I enter data in CRF and save", ((string)(null)), table139);
+#line hidden
+            TechTalk.SpecFlow.Table table140 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Query Message",
+                        "Answered",
+                        "Closed"});
+            table140.AddRow(new string[] {
+                        "Lab Field 2 - WBC - rr = T ; rmc = T",
+                        "Lab Field 2 must be greater than Lab Field 1. Please verify.",
+                        "true",
+                        "false"});
+#line 685
+ testRunner.And("I verify Query is displayed", ((string)(null)), table140);
+#line 688
+ testRunner.And("I take a screenshot");
+#line 689
+ testRunner.And("I close the only Query on Field \"Lab Field 2 - WBC - rr = T ; rmc = T\"");
+#line 690
+ testRunner.And("I save the CRF page");
+#line 691
+ testRunner.And("I verify closed Query with message \"Lab Field 2 must be greater than Lab Field 1." +
+                    " Please verify.\" is displayed on Field \"Lab Field 2 - WBC - rr = T ; rmc = T\"");
+#line 692
+ testRunner.And("I take a screenshot");
+#line hidden
+            TechTalk.SpecFlow.Table table141 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Data"});
+            table141.AddRow(new string[] {
+                        "Lab Field 1 - NEUTROPHILS - rr = T ; rmc = T",
+                        "5"});
+#line 693
+ testRunner.When("I enter data in CRF and save", ((string)(null)), table141);
+#line hidden
+            TechTalk.SpecFlow.Table table142 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Query Message",
+                        "Answered",
+                        "Closed"});
+            table142.AddRow(new string[] {
+                        "Lab Field 2 - WBC - rr = T ; rmc = T",
+                        "Lab Field 2 must be greater than Lab Field 1. Please verify.",
+                        "false",
+                        "false"});
+#line 697
+    testRunner.And("I verify Query is displayed", ((string)(null)), table142);
+#line 700
+ testRunner.And("I take a screenshot");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute(@"@PB-US12940-05B As an EDC user, when I entered bad data in lab field A and lab field B that resulted in the system opening a query on lab field B, and I answered the query and I changed the data in lab field A to another bad data, and the query is then closed, if I then entered the original bad data in lab field A, then the system should refire a query on lab field B. Query with requires response = false and requires manual close = false.")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Query Refiring Logic5")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.IgnoreAttribute()]
+        public virtual void PB_US12940_05BAsAnEDCUserWhenIEnteredBadDataInLabFieldAAndLabFieldBThatResultedInTheSystemOpeningAQueryOnLabFieldBAndIAnsweredTheQueryAndIChangedTheDataInLabFieldAToAnotherBadDataAndTheQueryIsThenClosedIfIThenEnteredTheOriginalBadDataInLabFieldAThenTheSystemShouldRefireAQueryOnLabFieldB_QueryWithRequiresResponseFalseAndRequiresManualCloseFalse_()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo(@"@PB-US12940-05B As an EDC user, when I entered bad data in lab field A and lab field B that resulted in the system opening a query on lab field B, and I answered the query and I changed the data in lab field A to another bad data, and the query is then closed, if I then entered the original bad data in lab field A, then the system should refire a query on lab field B. Query with requires response = false and requires manual close = false.", new string[] {
+                        "PB-US12940-05B",
+                        "ignore"});
+#line 705
+this.ScenarioSetup(scenarioInfo);
+#line 12
+this.FeatureBackground();
+#line hidden
+            TechTalk.SpecFlow.Table table143 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Data"});
+            table143.AddRow(new string[] {
+                        "Subject Number",
+                        "{RndNum<num1>(5)}"});
+            table143.AddRow(new string[] {
+                        "Subject Initials",
+                        "SUB"});
+            table143.AddRow(new string[] {
+                        "Subject ID",
+                        "SUB {Var(num1)}"});
+#line 707
+    testRunner.And("I create a Subject", ((string)(null)), table143);
+#line 712
+ testRunner.And("I select Form \"Lab Form 8\"");
+#line hidden
+            TechTalk.SpecFlow.Table table144 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Data"});
+            table144.AddRow(new string[] {
+                        "Lab Field 3 - NEUTROPHILS - rr = F ; rmc = F",
+                        "5"});
+            table144.AddRow(new string[] {
+                        "Lab Field 4 - WBC - rr = F ; rmc = F",
+                        "3"});
+#line 713
+ testRunner.And("I enter data in CRF and save", ((string)(null)), table144);
+#line hidden
+            TechTalk.SpecFlow.Table table145 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Query Message",
+                        "Answered",
+                        "Closed"});
+            table145.AddRow(new string[] {
+                        "Lab Field 4 - WBC - rr = F ; rmc = F",
+                        "Lab Field 4 must be greater than Lab Field 3. Please verify.",
+                        "false",
+                        "false"});
+#line 717
+ testRunner.And("I verify Query is displayed", ((string)(null)), table145);
+#line 720
+ testRunner.And("I take a screenshot");
+#line hidden
+            TechTalk.SpecFlow.Table table146 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Data"});
+            table146.AddRow(new string[] {
+                        "Lab Field 3 - NEUTROPHILS - rr = F ; rmc = F",
+                        "4"});
+#line 721
+ testRunner.And("I enter data in CRF and save", ((string)(null)), table146);
+#line hidden
+            TechTalk.SpecFlow.Table table147 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Query Message",
+                        "Answered",
+                        "Closed"});
+            table147.AddRow(new string[] {
+                        "Lab Field 4 - WBC - rr = F ; rmc = F",
+                        "Lab Field 4 must be greater than Lab Field 3. Please verify.",
+                        "false",
+                        "false"});
+#line 724
+ testRunner.And("I verify Query is displayed", ((string)(null)), table147);
+#line 727
+ testRunner.And("I take a screenshot");
+#line hidden
+            TechTalk.SpecFlow.Table table148 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Data"});
+            table148.AddRow(new string[] {
+                        "Lab Field 3 - NEUTROPHILS - rr = F ; rmc = F",
+                        "5"});
+#line 728
+ testRunner.When("I enter data in CRF and save", ((string)(null)), table148);
+#line hidden
+            TechTalk.SpecFlow.Table table149 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Query Message",
+                        "Answered",
+                        "Closed"});
+            table149.AddRow(new string[] {
+                        "Lab Field 4 - WBC - rr = F ; rmc = F",
+                        "Lab Field 4 must be greater than Lab Field 3. Please verify.",
+                        "false",
+                        "false"});
+#line 731
+ testRunner.And("I verify Query is displayed", ((string)(null)), table149);
+#line 734
+ testRunner.And("I take a screenshot");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute(@"@PB-US12940-05C As an EDC user, when I entered bad data in lab field A and lab field B that resulted in the system opening a query on lab field B, and I answered the query and I changed the data in lab field A to another bad data, and the query is then closed, if I then entered the original bad data in lab field A, then the system should refire a query on lab field B. Query with requires response = true and requires manual close = false.")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Query Refiring Logic5")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.IgnoreAttribute()]
+        public virtual void PB_US12940_05CAsAnEDCUserWhenIEnteredBadDataInLabFieldAAndLabFieldBThatResultedInTheSystemOpeningAQueryOnLabFieldBAndIAnsweredTheQueryAndIChangedTheDataInLabFieldAToAnotherBadDataAndTheQueryIsThenClosedIfIThenEnteredTheOriginalBadDataInLabFieldAThenTheSystemShouldRefireAQueryOnLabFieldB_QueryWithRequiresResponseTrueAndRequiresManualCloseFalse_()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo(@"@PB-US12940-05C As an EDC user, when I entered bad data in lab field A and lab field B that resulted in the system opening a query on lab field B, and I answered the query and I changed the data in lab field A to another bad data, and the query is then closed, if I then entered the original bad data in lab field A, then the system should refire a query on lab field B. Query with requires response = true and requires manual close = false.", new string[] {
+                        "PB-US12940-05C",
+                        "ignore"});
+#line 739
+this.ScenarioSetup(scenarioInfo);
+#line 12
+this.FeatureBackground();
+#line hidden
+            TechTalk.SpecFlow.Table table150 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Data"});
+            table150.AddRow(new string[] {
+                        "Subject Number",
+                        "{RndNum<num1>(5)}"});
+            table150.AddRow(new string[] {
+                        "Subject Initials",
+                        "SUB"});
+            table150.AddRow(new string[] {
+                        "Subject ID",
+                        "SUB {Var(num1)}"});
+#line 741
+    testRunner.And("I create a Subject", ((string)(null)), table150);
+#line 746
+ testRunner.And("I select Form \"Lab Form 8\"");
+#line hidden
+            TechTalk.SpecFlow.Table table151 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Data"});
+            table151.AddRow(new string[] {
+                        "Lab Field 5 - NEUTROPHILS - rr = T ; rmc = F",
+                        "5"});
+            table151.AddRow(new string[] {
+                        "Lab Field 6 - WBC - rr = T ; rmc = F",
+                        "3"});
+#line 747
+ testRunner.And("I enter data in CRF and save", ((string)(null)), table151);
+#line hidden
+            TechTalk.SpecFlow.Table table152 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Query Message",
+                        "Answered",
+                        "Closed"});
+            table152.AddRow(new string[] {
+                        "Lab Field 6 - WBC - rr = T ; rmc = F",
+                        "Lab Field 6 must be greater than Lab Field 5. Please verify.",
+                        "false",
+                        "false"});
+#line 751
+ testRunner.And("I verify Query is displayed", ((string)(null)), table152);
+#line 754
+ testRunner.And("I take a screenshot");
+#line 755
+ testRunner.And("I answer the Query \"Lab Field 6 must be greater than Lab Field 5. Please verify.\"" +
+                    " on Field \"Lab Field 6 - WBC - rr = T ; rmc = F\" with \"Data will be changed.\"");
+#line hidden
+            TechTalk.SpecFlow.Table table153 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Data"});
+            table153.AddRow(new string[] {
+                        "Lab Field 5 - NEUTROPHILS - rr = T ; rmc = F",
+                        "4"});
+#line 756
+ testRunner.And("I enter data in CRF and save", ((string)(null)), table153);
+#line hidden
+            TechTalk.SpecFlow.Table table154 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Query Message",
+                        "Answered",
+                        "Closed"});
+            table154.AddRow(new string[] {
+                        "Lab Field 6 - WBC - rr = T ; rmc = F",
+                        "Lab Field 6 must be greater than Lab Field 5. Please verify.",
+                        "true",
+                        "true"});
+#line 760
+    testRunner.And("I verify Query is not displayed", ((string)(null)), table154);
+#line 763
+ testRunner.And("I take a screenshot");
+#line hidden
+            TechTalk.SpecFlow.Table table155 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Data"});
+            table155.AddRow(new string[] {
+                        "Lab Field 5 - NEUTROPHILS - rr = T ; rmc = F",
+                        "5"});
+#line 764
+ testRunner.When("I enter data in CRF and save", ((string)(null)), table155);
+#line hidden
+            TechTalk.SpecFlow.Table table156 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Query Message",
+                        "Answered",
+                        "Closed"});
+            table156.AddRow(new string[] {
+                        "Lab Field 6 - WBC - rr = T ; rmc = F",
+                        "Lab Field 6 must be greater than Lab Field 5. Please verify.",
+                        "false",
+                        "false"});
+#line 768
+    testRunner.And("I verify Query is displayed", ((string)(null)), table156);
+#line 771
+ testRunner.And("I take a screenshot");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute(@"@PB-US12940-05D As an EDC user, when I entered bad data in lab field A and lab field B that resulted in the system opening a query on lab field B, and I answered the query and I changed the data in lab field A to another bad data, and the query is then closed, if I then entered the original bad data in lab field A, then the system should refire a query on lab field B. Query with requires response = false and requires manual close = true.")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Query Refiring Logic5")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.IgnoreAttribute()]
+        public virtual void PB_US12940_05DAsAnEDCUserWhenIEnteredBadDataInLabFieldAAndLabFieldBThatResultedInTheSystemOpeningAQueryOnLabFieldBAndIAnsweredTheQueryAndIChangedTheDataInLabFieldAToAnotherBadDataAndTheQueryIsThenClosedIfIThenEnteredTheOriginalBadDataInLabFieldAThenTheSystemShouldRefireAQueryOnLabFieldB_QueryWithRequiresResponseFalseAndRequiresManualCloseTrue_()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo(@"@PB-US12940-05D As an EDC user, when I entered bad data in lab field A and lab field B that resulted in the system opening a query on lab field B, and I answered the query and I changed the data in lab field A to another bad data, and the query is then closed, if I then entered the original bad data in lab field A, then the system should refire a query on lab field B. Query with requires response = false and requires manual close = true.", new string[] {
+                        "PB-US12940-05D",
+                        "ignore"});
+#line 776
+this.ScenarioSetup(scenarioInfo);
+#line 12
+this.FeatureBackground();
+#line hidden
+            TechTalk.SpecFlow.Table table157 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Data"});
+            table157.AddRow(new string[] {
+                        "Subject Number",
+                        "{RndNum<num1>(5)}"});
+            table157.AddRow(new string[] {
+                        "Subject Initials",
+                        "SUB"});
+            table157.AddRow(new string[] {
+                        "Subject ID",
+                        "SUB {Var(num1)}"});
+#line 778
+ testRunner.And("I create a Subject", ((string)(null)), table157);
+#line 783
+ testRunner.And("I select Form \"Lab Form 8\"");
+#line hidden
+            TechTalk.SpecFlow.Table table158 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Data"});
+            table158.AddRow(new string[] {
+                        "Lab Field 7 - NEUTROPHILS - rr = F ; rmc = T",
+                        "5"});
+            table158.AddRow(new string[] {
+                        "Lab Field 8 - WBC - rr = F ; rmc = T",
+                        "3"});
+#line 784
+ testRunner.And("I enter data in CRF and save", ((string)(null)), table158);
+#line hidden
+            TechTalk.SpecFlow.Table table159 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Query Message",
+                        "Answered",
+                        "Closed"});
+            table159.AddRow(new string[] {
+                        "Lab Field 8 - WBC - rr = F ; rmc = T",
+                        "Lab Field 8 must be greater than Lab Field 7. Please verify.",
+                        "false",
+                        "false"});
+#line 788
+ testRunner.And("I verify Query is displayed", ((string)(null)), table159);
+#line 791
+ testRunner.And("I take a screenshot");
+#line hidden
+            TechTalk.SpecFlow.Table table160 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Data"});
+            table160.AddRow(new string[] {
+                        "Lab Field 7 - NEUTROPHILS - rr = F ; rmc = T",
+                        "4"});
+#line 792
+ testRunner.And("I enter data in CRF and save", ((string)(null)), table160);
+#line hidden
+            TechTalk.SpecFlow.Table table161 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Query Message",
+                        "Answered",
+                        "Closed"});
+            table161.AddRow(new string[] {
+                        "Lab Field 8 - WBC - rr = F ; rmc = T",
+                        "Lab Field 8 must be greater than Lab Field 7. Please verify.",
+                        "true",
+                        "false"});
+#line 796
+    testRunner.And("I verify Query is displayed", ((string)(null)), table161);
+#line 799
+ testRunner.And("I take a screenshot");
+#line 800
+ testRunner.And("I close the only Query on Field \"Lab Field 8 - WBC - rr = F ; rmc = T\"");
+#line 801
+ testRunner.And("I save the CRF page");
+#line 802
+ testRunner.And("I verify closed Query with message \"Lab Field 8 must be greater than Lab Field 7." +
+                    " Please verify.\" is displayed on Field \"Lab Field 8 - WBC - rr = F ; rmc = T\"");
+#line 803
+ testRunner.And("I take a screenshot");
+#line hidden
+            TechTalk.SpecFlow.Table table162 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Data"});
+            table162.AddRow(new string[] {
+                        "Lab Field 7 - NEUTROPHILS - rr = F ; rmc = T",
+                        "5"});
+#line 804
+ testRunner.When("I enter data in CRF and save", ((string)(null)), table162);
+#line hidden
+            TechTalk.SpecFlow.Table table163 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Query Message",
+                        "Answered",
+                        "Closed"});
+            table163.AddRow(new string[] {
+                        "Lab Field 8 - WBC - rr = F ; rmc = T",
+                        "Lab Field 8 must be greater than Lab Field 7. Please verify.",
+                        "false",
+                        "false"});
+#line 807
+ testRunner.And("I verify Query is displayed", ((string)(null)), table163);
+#line 810
+ testRunner.And("I take a screenshot");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute(@"@PB-US12940-06A As an EDC user, when I entered bad data in lab field A and lab field B that resulted in the system opening a query on lab field B, and I answered the query and I changed the data in lab field B to another bad data, and the query is then closed, if I then entered the original bad data in lab field B, then the system should refire a query on lab field B. Query with requires response = true and requires manual close = true.")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Query Refiring Logic5")]
+        public virtual void PB_US12940_06AAsAnEDCUserWhenIEnteredBadDataInLabFieldAAndLabFieldBThatResultedInTheSystemOpeningAQueryOnLabFieldBAndIAnsweredTheQueryAndIChangedTheDataInLabFieldBToAnotherBadDataAndTheQueryIsThenClosedIfIThenEnteredTheOriginalBadDataInLabFieldBThenTheSystemShouldRefireAQueryOnLabFieldB_QueryWithRequiresResponseTrueAndRequiresManualCloseTrue_()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo(@"@PB-US12940-06A As an EDC user, when I entered bad data in lab field A and lab field B that resulted in the system opening a query on lab field B, and I answered the query and I changed the data in lab field B to another bad data, and the query is then closed, if I then entered the original bad data in lab field B, then the system should refire a query on lab field B. Query with requires response = true and requires manual close = true.", new string[] {
+                        "PB-US12940-06A"});
+#line 813
+this.ScenarioSetup(scenarioInfo);
+#line 12
+this.FeatureBackground();
+#line hidden
+            TechTalk.SpecFlow.Table table164 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Data"});
+            table164.AddRow(new string[] {
+                        "Subject Number",
+                        "{RndNum<num1>(5)}"});
+            table164.AddRow(new string[] {
+                        "Subject Initials",
+                        "SUB"});
+            table164.AddRow(new string[] {
+                        "Subject ID",
+                        "SUB {Var(num1)}"});
+#line 815
+    testRunner.And("I create a Subject", ((string)(null)), table164);
+#line 820
+ testRunner.And("I select Form \"Lab Form 8\"");
+#line hidden
+            TechTalk.SpecFlow.Table table165 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Data"});
+            table165.AddRow(new string[] {
+                        "Lab Field 1 - NEUTROPHILS - rr = T ; rmc = T",
+                        "5"});
+            table165.AddRow(new string[] {
+                        "Lab Field 2 - WBC - rr = T ; rmc = T",
+                        "3"});
+#line 821
+ testRunner.And("I enter data in CRF and save", ((string)(null)), table165);
+#line hidden
+            TechTalk.SpecFlow.Table table166 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Query Message",
+                        "Answered",
+                        "Closed"});
+            table166.AddRow(new string[] {
+                        "Lab Field 2 - WBC - rr = T ; rmc = T",
+                        "Lab Field 2 must be greater than Lab Field 1. Please verify.",
+                        "false",
+                        "false"});
+#line 825
+ testRunner.And("I verify Query is displayed", ((string)(null)), table166);
+#line 828
+ testRunner.And("I take a screenshot");
+#line 829
+ testRunner.And("I answer the Query \"Lab Field 2 must be greater than Lab Field 1. Please verify.\"" +
+                    " on Field \"Lab Field 2 - WBC - rr = T ; rmc = T\" with \"Data will be changed.\"");
+#line hidden
+            TechTalk.SpecFlow.Table table167 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Data"});
+            table167.AddRow(new string[] {
+                        "Lab Field 2 - WBC - rr = T ; rmc = T",
+                        "2"});
+#line 830
+   testRunner.And("I enter data in CRF and save", ((string)(null)), table167);
+#line hidden
+            TechTalk.SpecFlow.Table table168 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Query Message",
+                        "Answered",
+                        "Closed"});
+            table168.AddRow(new string[] {
+                        "Lab Field 2 - WBC - rr = T ; rmc = T",
+                        "Lab Field 2 must be greater than Lab Field 1. Please verify.",
+                        "true",
+                        "false"});
+#line 833
+ testRunner.And("I verify Query is displayed", ((string)(null)), table168);
+#line 836
+ testRunner.And("I take a screenshot");
+#line 837
+ testRunner.And("I close the only Query on Field \"Lab Field 2 - WBC - rr = T ; rmc = T\"");
+#line 838
+ testRunner.And("I save the CRF page");
+#line 839
+ testRunner.And("I verify closed Query with message \"Lab Field 2 must be greater than Lab Field 1." +
+                    " Please verify.\" is displayed on Field \"Lab Field 2 - WBC - rr = T ; rmc = T\"");
+#line 840
+ testRunner.And("I take a screenshot");
+#line hidden
+            TechTalk.SpecFlow.Table table169 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Data"});
+            table169.AddRow(new string[] {
+                        "Lab Field 2 - WBC - rr = T ; rmc = T",
+                        "3"});
+#line 841
+ testRunner.When("I enter data in CRF and save", ((string)(null)), table169);
+#line hidden
+            TechTalk.SpecFlow.Table table170 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Query Message",
+                        "Answered",
+                        "Closed"});
+            table170.AddRow(new string[] {
+                        "Lab Field 2 - WBC - rr = T ; rmc = T",
+                        "Lab Field 2 must be greater than Lab Field 1. Please verify.",
+                        "false",
+                        "false"});
+#line 845
+ testRunner.And("I verify Query is displayed", ((string)(null)), table170);
+#line 848
+ testRunner.And("I take a screenshot");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute(@"@PB-US12940-06B As an EDC user, when I entered bad data in lab field A and lab field B that resulted in the system opening a query on lab field B, and I answered the query and I changed the data in lab field B to another bad data, and the query is then closed, if I then entered the original bad data in lab field B, then the system should refire a query on lab field B. Query with requires response = false and requires manual close = false.")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Query Refiring Logic5")]
+        public virtual void PB_US12940_06BAsAnEDCUserWhenIEnteredBadDataInLabFieldAAndLabFieldBThatResultedInTheSystemOpeningAQueryOnLabFieldBAndIAnsweredTheQueryAndIChangedTheDataInLabFieldBToAnotherBadDataAndTheQueryIsThenClosedIfIThenEnteredTheOriginalBadDataInLabFieldBThenTheSystemShouldRefireAQueryOnLabFieldB_QueryWithRequiresResponseFalseAndRequiresManualCloseFalse_()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo(@"@PB-US12940-06B As an EDC user, when I entered bad data in lab field A and lab field B that resulted in the system opening a query on lab field B, and I answered the query and I changed the data in lab field B to another bad data, and the query is then closed, if I then entered the original bad data in lab field B, then the system should refire a query on lab field B. Query with requires response = false and requires manual close = false.", new string[] {
+                        "PB-US12940-06B"});
+#line 851
+this.ScenarioSetup(scenarioInfo);
+#line 12
+this.FeatureBackground();
+#line hidden
+            TechTalk.SpecFlow.Table table171 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Data"});
+            table171.AddRow(new string[] {
+                        "Subject Number",
+                        "{RndNum<num1>(5)}"});
+            table171.AddRow(new string[] {
+                        "Subject Initials",
+                        "SUB"});
+            table171.AddRow(new string[] {
+                        "Subject ID",
+                        "SUB {Var(num1)}"});
+#line 853
+    testRunner.And("I create a Subject", ((string)(null)), table171);
+#line 858
+ testRunner.And("I select Form \"Lab Form 8\"");
+#line hidden
+            TechTalk.SpecFlow.Table table172 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Data"});
+            table172.AddRow(new string[] {
+                        "Lab Field 3 - NEUTROPHILS - rr = F ; rmc = F",
+                        "5"});
+            table172.AddRow(new string[] {
+                        "Lab Field 4 - WBC - rr = F ; rmc = F",
+                        "3"});
+#line 859
+ testRunner.And("I enter data in CRF and save", ((string)(null)), table172);
+#line hidden
+            TechTalk.SpecFlow.Table table173 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Query Message",
+                        "Answered",
+                        "Closed"});
+            table173.AddRow(new string[] {
+                        "Lab Field 4 - WBC - rr = F ; rmc = F",
+                        "Lab Field 4 must be greater than Lab Field 3. Please verify.",
+                        "false",
+                        "false"});
+#line 863
+ testRunner.And("I verify Query is displayed", ((string)(null)), table173);
+#line 866
+ testRunner.And("I take a screenshot");
+#line hidden
+            TechTalk.SpecFlow.Table table174 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Data"});
+            table174.AddRow(new string[] {
+                        "Lab Field 4 - WBC - rr = F ; rmc = F",
+                        "2"});
+#line 867
+   testRunner.And("I enter data in CRF and save", ((string)(null)), table174);
+#line hidden
+            TechTalk.SpecFlow.Table table175 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Query Message",
+                        "Answered",
+                        "Closed"});
+            table175.AddRow(new string[] {
+                        "Lab Field 4 - WBC - rr = F ; rmc = F",
+                        "Lab Field 4 must be greater than Lab Field 3. Please verify.",
+                        "false",
+                        "true"});
+#line 870
+ testRunner.And("I verify Query is not displayed", ((string)(null)), table175);
+#line hidden
+            TechTalk.SpecFlow.Table table176 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Query Message",
+                        "Answered",
+                        "Closed"});
+            table176.AddRow(new string[] {
+                        "Lab Field 4 - WBC - rr = F ; rmc = F",
+                        "Lab Field 4 must be greater than Lab Field 3. Please verify.",
+                        "false",
+                        "false"});
+#line 873
+ testRunner.And("I verify Query is displayed", ((string)(null)), table176);
+#line 876
+ testRunner.And("I take a screenshot");
+#line hidden
+            TechTalk.SpecFlow.Table table177 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Data"});
+            table177.AddRow(new string[] {
+                        "Lab Field 4 - WBC - rr = F ; rmc = F",
+                        "3"});
+#line 877
+ testRunner.When("I enter data in CRF and save", ((string)(null)), table177);
+#line hidden
+            TechTalk.SpecFlow.Table table178 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Query Message",
+                        "Answered",
+                        "Closed"});
+            table178.AddRow(new string[] {
+                        "Lab Field 4 - WBC - rr = F ; rmc = F",
+                        "Lab Field 4 must be greater than Lab Field 3. Please verify.",
+                        "false",
+                        "false"});
+#line 880
+ testRunner.Then("I verify Query is displayed", ((string)(null)), table178);
+#line 883
+ testRunner.And("I take a screenshot");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute(@"@PB-US12940-06C As an EDC user, when I entered bad data in lab field A and lab field B that resulted in the system opening a query on lab field B, and I answered the query and I changed the data in lab field B to another bad data, and the query is then closed, if I then entered the original bad data in lab field B, then the system should refire a query on lab field B. Query with requires response = true and requires manual close = false.")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Query Refiring Logic5")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.IgnoreAttribute()]
+        public virtual void PB_US12940_06CAsAnEDCUserWhenIEnteredBadDataInLabFieldAAndLabFieldBThatResultedInTheSystemOpeningAQueryOnLabFieldBAndIAnsweredTheQueryAndIChangedTheDataInLabFieldBToAnotherBadDataAndTheQueryIsThenClosedIfIThenEnteredTheOriginalBadDataInLabFieldBThenTheSystemShouldRefireAQueryOnLabFieldB_QueryWithRequiresResponseTrueAndRequiresManualCloseFalse_()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo(@"@PB-US12940-06C As an EDC user, when I entered bad data in lab field A and lab field B that resulted in the system opening a query on lab field B, and I answered the query and I changed the data in lab field B to another bad data, and the query is then closed, if I then entered the original bad data in lab field B, then the system should refire a query on lab field B. Query with requires response = true and requires manual close = false.", new string[] {
+                        "PB-US12940-06C",
+                        "ignore"});
+#line 888
+this.ScenarioSetup(scenarioInfo);
+#line 12
+this.FeatureBackground();
+#line hidden
+            TechTalk.SpecFlow.Table table179 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Data"});
+            table179.AddRow(new string[] {
+                        "Subject Number",
+                        "{RndNum<num1>(5)}"});
+            table179.AddRow(new string[] {
+                        "Subject Initials",
+                        "SUB"});
+            table179.AddRow(new string[] {
+                        "Subject ID",
+                        "SUB {Var(num1)}"});
+#line 890
+    testRunner.And("I create a Subject", ((string)(null)), table179);
+#line 895
+ testRunner.And("I select Form \"Lab Form 8\"");
+#line hidden
+            TechTalk.SpecFlow.Table table180 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Data"});
+            table180.AddRow(new string[] {
+                        "Lab Field 5 - NEUTROPHILS - rr = T ; rmc = F",
+                        "5"});
+            table180.AddRow(new string[] {
+                        "Lab Field 6 - WBC - rr = T ; rmc = F",
+                        "3"});
+#line 896
+ testRunner.And("I enter data in CRF and save", ((string)(null)), table180);
+#line hidden
+            TechTalk.SpecFlow.Table table181 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Query Message",
+                        "Answered",
+                        "Closed"});
+            table181.AddRow(new string[] {
+                        "Lab Field 6 - WBC - rr = T ; rmc = F",
+                        "Lab Field 6 must be greater than Lab Field 5. Please verify.",
+                        "false",
+                        "false"});
+#line 900
+ testRunner.And("I verify Query is displayed", ((string)(null)), table181);
+#line 903
+ testRunner.And("I take a screenshot");
+#line 904
+ testRunner.And("I answer the Query \"Lab Field 6 must be greater than Lab Field 5. Please verify.\"" +
+                    " on Field \"Lab Field 6 - WBC - rr = T ; rmc = F\" with \"Data will be changed.\"");
+#line hidden
+            TechTalk.SpecFlow.Table table182 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Data"});
+            table182.AddRow(new string[] {
+                        "Lab Field 6 - WBC - rr = T ; rmc = F",
+                        "2"});
+#line 905
+   testRunner.And("I enter data in CRF and save", ((string)(null)), table182);
+#line hidden
+            TechTalk.SpecFlow.Table table183 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Query Message",
+                        "Answered",
+                        "Closed"});
+            table183.AddRow(new string[] {
+                        "Lab Field 6 - WBC - rr = T ; rmc = F",
+                        "Lab Field 6 must be greater than Lab Field 5. Please verify.",
+                        "true",
+                        "true"});
+#line 909
+    testRunner.And("I verify Query is not displayed", ((string)(null)), table183);
+#line 912
+ testRunner.And("I take a screenshot");
+#line hidden
+            TechTalk.SpecFlow.Table table184 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Data"});
+            table184.AddRow(new string[] {
+                        "Lab Field 6 - WBC - rr = T ; rmc = F",
+                        "3"});
+#line 913
+ testRunner.When("I enter data in CRF and save", ((string)(null)), table184);
+#line hidden
+            TechTalk.SpecFlow.Table table185 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Query Message",
+                        "Answered",
+                        "Closed"});
+            table185.AddRow(new string[] {
+                        "Lab Field 6 - WBC - rr = T ; rmc = F",
+                        "Lab Field 6 must be greater than Lab Field 5. Please verify.",
+                        "false",
+                        "false"});
+#line 916
+ testRunner.Then("I verify Query is displayed", ((string)(null)), table185);
+#line 919
+ testRunner.And("I take a screenshot");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute(@"@PB-US12940-06D As an EDC user, when I entered bad data in lab field A and lab field B that resulted in the system opening a query on lab field B, and I answered the query and I changed the data in lab field B to another bad data, and the query is then closed, if I then entered the original bad data in lab field B, then the system should refire a query on lab field B. Query with requires response = false and requires manual close = true.")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Query Refiring Logic5")]
+        public virtual void PB_US12940_06DAsAnEDCUserWhenIEnteredBadDataInLabFieldAAndLabFieldBThatResultedInTheSystemOpeningAQueryOnLabFieldBAndIAnsweredTheQueryAndIChangedTheDataInLabFieldBToAnotherBadDataAndTheQueryIsThenClosedIfIThenEnteredTheOriginalBadDataInLabFieldBThenTheSystemShouldRefireAQueryOnLabFieldB_QueryWithRequiresResponseFalseAndRequiresManualCloseTrue_()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo(@"@PB-US12940-06D As an EDC user, when I entered bad data in lab field A and lab field B that resulted in the system opening a query on lab field B, and I answered the query and I changed the data in lab field B to another bad data, and the query is then closed, if I then entered the original bad data in lab field B, then the system should refire a query on lab field B. Query with requires response = false and requires manual close = true.", new string[] {
+                        "PB-US12940-06D"});
+#line 922
+this.ScenarioSetup(scenarioInfo);
+#line 12
+this.FeatureBackground();
+#line hidden
+            TechTalk.SpecFlow.Table table186 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Data"});
+            table186.AddRow(new string[] {
+                        "Subject Number",
+                        "{RndNum<num1>(5)}"});
+            table186.AddRow(new string[] {
+                        "Subject Initials",
+                        "SUB"});
+            table186.AddRow(new string[] {
+                        "Subject ID",
+                        "SUB {Var(num1)}"});
+#line 924
+ testRunner.And("I create a Subject", ((string)(null)), table186);
+#line 929
+ testRunner.And("I select Form \"Lab Form 8\"");
+#line hidden
+            TechTalk.SpecFlow.Table table187 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Data"});
+            table187.AddRow(new string[] {
+                        "Lab Field 7 - NEUTROPHILS - rr = F ; rmc = T",
+                        "5"});
+            table187.AddRow(new string[] {
+                        "Lab Field 8 - WBC - rr = F ; rmc = T",
+                        "3"});
+#line 930
+ testRunner.And("I enter data in CRF and save", ((string)(null)), table187);
+#line hidden
+            TechTalk.SpecFlow.Table table188 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Query Message",
+                        "Answered",
+                        "Closed"});
+            table188.AddRow(new string[] {
+                        "Lab Field 8 - WBC - rr = F ; rmc = T",
+                        "Lab Field 8 must be greater than Lab Field 7. Please verify.",
+                        "false",
+                        "false"});
+#line 934
+ testRunner.And("I verify Query is displayed", ((string)(null)), table188);
+#line 937
+ testRunner.And("I take a screenshot");
+#line hidden
+            TechTalk.SpecFlow.Table table189 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Data"});
+            table189.AddRow(new string[] {
+                        "Lab Field 8 - WBC - rr = F ; rmc = T",
+                        "2"});
+#line 938
+   testRunner.And("I enter data in CRF and save", ((string)(null)), table189);
+#line hidden
+            TechTalk.SpecFlow.Table table190 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Query Message",
+                        "Answered",
+                        "Closed"});
+            table190.AddRow(new string[] {
+                        "Lab Field 8 - WBC - rr = F ; rmc = T",
+                        "Lab Field 8 must be greater than Lab Field 7. Please verify.",
+                        "true",
+                        "false"});
+#line 941
+ testRunner.And("I verify Query is displayed", ((string)(null)), table190);
+#line 944
+ testRunner.And("I take a screenshot");
+#line 945
+ testRunner.And("I close the only Query on Field \"Lab Field 8 - WBC - rr = F ; rmc = T\"");
+#line 946
+ testRunner.And("I save the CRF page");
+#line 947
+ testRunner.And("I verify closed Query with message \"Lab Field 8 must be greater than Lab Field 7." +
+                    " Please verify.\" is displayed on Field \"Lab Field 8 - WBC - rr = F ; rmc = T\"");
+#line 948
+ testRunner.And("I take a screenshot");
+#line hidden
+            TechTalk.SpecFlow.Table table191 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Data"});
+            table191.AddRow(new string[] {
+                        "Lab Field 8 - WBC - rr = F ; rmc = T",
+                        "3"});
+#line 949
+ testRunner.When("I enter data in CRF and save", ((string)(null)), table191);
+#line hidden
+            TechTalk.SpecFlow.Table table192 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Query Message",
+                        "Answered",
+                        "Closed"});
+            table192.AddRow(new string[] {
+                        "Lab Field 8 - WBC - rr = F ; rmc = T",
+                        "Lab Field 8 must be greater than Lab Field 7. Please verify.",
+                        "false",
+                        "false"});
+#line 953
+    testRunner.Then("I verify Query is displayed", ((string)(null)), table192);
+#line 956
+ testRunner.And("I take a screenshot");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute(@"@PB-US12940-07A As an EDC user, when I entered bad data in lab field A and lab field B that resulted in the system opening a query on lab field B, and I answered the query without changing the data, and the query is then closed, if I then entered new bad data in lab field A, then the system should refire a query on lab field B. Query with requires response = true and requires manual close = true.")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Query Refiring Logic5")]
+        public virtual void PB_US12940_07AAsAnEDCUserWhenIEnteredBadDataInLabFieldAAndLabFieldBThatResultedInTheSystemOpeningAQueryOnLabFieldBAndIAnsweredTheQueryWithoutChangingTheDataAndTheQueryIsThenClosedIfIThenEnteredNewBadDataInLabFieldAThenTheSystemShouldRefireAQueryOnLabFieldB_QueryWithRequiresResponseTrueAndRequiresManualCloseTrue_()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo(@"@PB-US12940-07A As an EDC user, when I entered bad data in lab field A and lab field B that resulted in the system opening a query on lab field B, and I answered the query without changing the data, and the query is then closed, if I then entered new bad data in lab field A, then the system should refire a query on lab field B. Query with requires response = true and requires manual close = true.", new string[] {
+                        "PB-US12940-07A"});
+#line 959
+this.ScenarioSetup(scenarioInfo);
+#line 12
+this.FeatureBackground();
+#line hidden
+            TechTalk.SpecFlow.Table table193 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Data"});
+            table193.AddRow(new string[] {
+                        "Subject Number",
+                        "{RndNum<num1>(5)}"});
+            table193.AddRow(new string[] {
+                        "Subject Initials",
+                        "SUB"});
+            table193.AddRow(new string[] {
+                        "Subject ID",
+                        "SUB {Var(num1)}"});
+#line 961
+ testRunner.And("I create a Subject", ((string)(null)), table193);
+#line 966
+ testRunner.And("I select Form \"Lab Form 8\"");
+#line hidden
+            TechTalk.SpecFlow.Table table194 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Data"});
+            table194.AddRow(new string[] {
+                        "Lab Field 1 - NEUTROPHILS - rr = T ; rmc = T",
+                        "5"});
+            table194.AddRow(new string[] {
+                        "Lab Field 2 - WBC - rr = T ; rmc = T",
+                        "3"});
+#line 967
+ testRunner.And("I enter data in CRF and save", ((string)(null)), table194);
+#line hidden
+            TechTalk.SpecFlow.Table table195 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Query Message",
+                        "Answered",
+                        "Closed"});
+            table195.AddRow(new string[] {
+                        "Lab Field 2 - WBC - rr = T ; rmc = T",
+                        "Lab Field 2 must be greater than Lab Field 1. Please verify.",
+                        "false",
+                        "false"});
+#line 971
+ testRunner.And("I verify Query is displayed", ((string)(null)), table195);
+#line 974
+ testRunner.And("I take a screenshot");
+#line 975
+ testRunner.And("I answer the Query \"Lab Field 2 must be greater than Lab Field 1. Please verify.\"" +
+                    " on Field \"Lab Field 2 - WBC - rr = T ; rmc = T\" with \"Data will be changed.\"");
+#line 976
+ testRunner.And("I save the CRF page");
+#line 977
+ testRunner.And("I take a screenshot");
+#line 978
+ testRunner.And("I close the only Query on Field \"Lab Field 2 - WBC - rr = T ; rmc = T\"");
+#line 979
+ testRunner.And("I save the CRF page");
+#line 980
+ testRunner.And("I verify closed Query with message \"Lab Field 2 must be greater than Lab Field 1." +
+                    " Please verify.\" is displayed on Field \"Lab Field 2 - WBC - rr = T ; rmc = T\"");
+#line 981
+ testRunner.And("I take a screenshot");
+#line hidden
+            TechTalk.SpecFlow.Table table196 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Data"});
+            table196.AddRow(new string[] {
+                        "Lab Field 1 - NEUTROPHILS - rr = T ; rmc = T",
+                        "6"});
+#line 982
+ testRunner.When("I enter data in CRF and save", ((string)(null)), table196);
+#line hidden
+            TechTalk.SpecFlow.Table table197 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Query Message",
+                        "Answered",
+                        "Closed"});
+            table197.AddRow(new string[] {
+                        "Lab Field 2 - WBC - rr = T ; rmc = T",
+                        "Lab Field 2 must be greater than Lab Field 1. Please verify.",
+                        "false",
+                        "false"});
+#line 985
+ testRunner.And("I verify Query is displayed", ((string)(null)), table197);
+#line 988
+ testRunner.And("I take a screenshot");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute(@"@PB-US12940-07B As an EDC user, when I entered bad data in lab field A and lab field B that resulted in the system opening a query on lab field B, and I answered the query without changing the data, and the query is then closed, if I then entered new bad data in lab field A, then the system should refire a query on lab field B. Query with requires response = false and requires manual close = false.")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Query Refiring Logic5")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.IgnoreAttribute()]
+        public virtual void PB_US12940_07BAsAnEDCUserWhenIEnteredBadDataInLabFieldAAndLabFieldBThatResultedInTheSystemOpeningAQueryOnLabFieldBAndIAnsweredTheQueryWithoutChangingTheDataAndTheQueryIsThenClosedIfIThenEnteredNewBadDataInLabFieldAThenTheSystemShouldRefireAQueryOnLabFieldB_QueryWithRequiresResponseFalseAndRequiresManualCloseFalse_()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo(@"@PB-US12940-07B As an EDC user, when I entered bad data in lab field A and lab field B that resulted in the system opening a query on lab field B, and I answered the query without changing the data, and the query is then closed, if I then entered new bad data in lab field A, then the system should refire a query on lab field B. Query with requires response = false and requires manual close = false.", new string[] {
+                        "PB-US12940-07B",
+                        "ignore"});
+#line 993
+this.ScenarioSetup(scenarioInfo);
+#line 12
+this.FeatureBackground();
+#line hidden
+            TechTalk.SpecFlow.Table table198 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Data"});
+            table198.AddRow(new string[] {
+                        "Subject Number",
+                        "{RndNum<num1>(5)}"});
+            table198.AddRow(new string[] {
+                        "Subject Initials",
+                        "SUB"});
+            table198.AddRow(new string[] {
+                        "Subject ID",
+                        "SUB {Var(num1)}"});
+#line 995
+ testRunner.And("I create a Subject", ((string)(null)), table198);
+#line 1000
+ testRunner.And("I select Form \"Lab Form 8\"");
+#line hidden
+            TechTalk.SpecFlow.Table table199 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Data"});
+            table199.AddRow(new string[] {
+                        "Lab Field 3 - NEUTROPHILS - rr = F ; rmc = F",
+                        "5"});
+            table199.AddRow(new string[] {
+                        "Lab Field 4 - WBC - rr = F ; rmc = F",
+                        "3"});
+#line 1001
+ testRunner.And("I enter data in CRF and save", ((string)(null)), table199);
+#line hidden
+            TechTalk.SpecFlow.Table table200 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Query Message",
+                        "Answered",
+                        "Closed"});
+            table200.AddRow(new string[] {
+                        "Lab Field 4 - WBC - rr = F ; rmc = F",
+                        "Lab Field 4 must be greater than Lab Field 3. Please verify.",
+                        "false",
+                        "false"});
+#line 1005
+ testRunner.And("I verify Query is displayed", ((string)(null)), table200);
+#line 1008
+ testRunner.And("I take a screenshot");
+#line hidden
+            TechTalk.SpecFlow.Table table201 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Data"});
+            table201.AddRow(new string[] {
+                        "Lab Field 3 - NEUTROPHILS - rr = F ; rmc = F",
+                        "6"});
+#line 1009
+ testRunner.When("I enter data in CRF and save", ((string)(null)), table201);
+#line hidden
+            TechTalk.SpecFlow.Table table202 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Query Message",
+                        "Answered",
+                        "Closed"});
+            table202.AddRow(new string[] {
+                        "Lab Field 4 - WBC - rr = F ; rmc = F",
+                        "Lab Field 4 must be greater than Lab Field 3. Please verify.",
+                        "false",
+                        "false"});
+#line 1013
+    testRunner.And("I verify Query is displayed", ((string)(null)), table202);
+#line 1016
+ testRunner.And("I take a screenshot");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute(@"@PB-US12940-07C As an EDC user, when I entered bad data in lab field A and lab field B that resulted in the system opening a query on lab field B, and I answered the query without changing the data, and the query is then closed, if I then entered new bad data in lab field A, then the system should refire a query on lab field B. Query with requires response = true and requires manual close = false.")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Query Refiring Logic5")]
+        public virtual void PB_US12940_07CAsAnEDCUserWhenIEnteredBadDataInLabFieldAAndLabFieldBThatResultedInTheSystemOpeningAQueryOnLabFieldBAndIAnsweredTheQueryWithoutChangingTheDataAndTheQueryIsThenClosedIfIThenEnteredNewBadDataInLabFieldAThenTheSystemShouldRefireAQueryOnLabFieldB_QueryWithRequiresResponseTrueAndRequiresManualCloseFalse_()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo(@"@PB-US12940-07C As an EDC user, when I entered bad data in lab field A and lab field B that resulted in the system opening a query on lab field B, and I answered the query without changing the data, and the query is then closed, if I then entered new bad data in lab field A, then the system should refire a query on lab field B. Query with requires response = true and requires manual close = false.", new string[] {
+                        "PB-US12940-07C"});
+#line 1019
+this.ScenarioSetup(scenarioInfo);
+#line 12
+this.FeatureBackground();
+#line hidden
+            TechTalk.SpecFlow.Table table203 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Data"});
+            table203.AddRow(new string[] {
+                        "Subject Number",
+                        "{RndNum<num1>(5)}"});
+            table203.AddRow(new string[] {
+                        "Subject Initials",
+                        "SUB"});
+            table203.AddRow(new string[] {
+                        "Subject ID",
+                        "SUB {Var(num1)}"});
+#line 1021
+ testRunner.And("I create a Subject", ((string)(null)), table203);
+#line 1026
+ testRunner.And("I select Form \"Lab Form 8\"");
+#line hidden
+            TechTalk.SpecFlow.Table table204 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Data"});
+            table204.AddRow(new string[] {
+                        "Lab Field 5 - NEUTROPHILS - rr = T ; rmc = F",
+                        "5"});
+            table204.AddRow(new string[] {
+                        "Lab Field 6 - WBC - rr = T ; rmc = F",
+                        "3"});
+#line 1027
+ testRunner.And("I enter data in CRF and save", ((string)(null)), table204);
+#line hidden
+            TechTalk.SpecFlow.Table table205 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Query Message",
+                        "Answered",
+                        "Closed"});
+            table205.AddRow(new string[] {
+                        "Lab Field 6 - WBC - rr = T ; rmc = F",
+                        "Lab Field 6 must be greater than Lab Field 5. Please verify.",
+                        "false",
+                        "false"});
+#line 1031
+ testRunner.And("I verify Query is displayed", ((string)(null)), table205);
+#line 1034
+ testRunner.And("I take a screenshot");
+#line 1035
+ testRunner.And("I answer the Query \"Lab Field 6 must be greater than Lab Field 5. Please verify.\"" +
+                    " on Field \"Lab Field 6 - WBC - rr = T ; rmc = F\" with \"Data will be changed.\"");
+#line 1036
+ testRunner.And("I save the CRF page");
+#line hidden
+            TechTalk.SpecFlow.Table table206 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Query Message",
+                        "Answered",
+                        "Closed"});
+            table206.AddRow(new string[] {
+                        "Lab Field 6 - WBC - rr = T ; rmc = F",
+                        "Lab Field 6 must be greater than Lab Field 5. Please verify.",
+                        "true",
+                        "true"});
+#line 1037
+    testRunner.And("I verify Query is not displayed", ((string)(null)), table206);
+#line 1040
+ testRunner.And("I take a screenshot");
+#line hidden
+            TechTalk.SpecFlow.Table table207 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Data"});
+            table207.AddRow(new string[] {
+                        "Lab Field 5 - NEUTROPHILS - rr = T ; rmc = F",
+                        "6"});
+#line 1041
+ testRunner.When("I enter data in CRF and save", ((string)(null)), table207);
+#line hidden
+            TechTalk.SpecFlow.Table table208 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Query Message",
+                        "Answered",
+                        "Closed"});
+            table208.AddRow(new string[] {
+                        "Lab Field 6 - WBC - rr = T ; rmc = F",
+                        "Lab Field 6 must be greater than Lab Field 5. Please verify.",
+                        "false",
+                        "false"});
+#line 1044
+ testRunner.Then("I verify Query is displayed", ((string)(null)), table208);
+#line 1047
+ testRunner.And("I take a screenshot");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute(@"@PB-US12940-07D As an EDC user, when I entered bad data in lab field A and lab field B that resulted in the system opening a query on lab field B, and I answered the query without changing the data, and the query is then closed, if I then entered new bad data in lab field A, then the system should refire a query on lab field B. Query with requires response = false and requires manual close = true.")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Query Refiring Logic5")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.IgnoreAttribute()]
+        public virtual void PB_US12940_07DAsAnEDCUserWhenIEnteredBadDataInLabFieldAAndLabFieldBThatResultedInTheSystemOpeningAQueryOnLabFieldBAndIAnsweredTheQueryWithoutChangingTheDataAndTheQueryIsThenClosedIfIThenEnteredNewBadDataInLabFieldAThenTheSystemShouldRefireAQueryOnLabFieldB_QueryWithRequiresResponseFalseAndRequiresManualCloseTrue_()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo(@"@PB-US12940-07D As an EDC user, when I entered bad data in lab field A and lab field B that resulted in the system opening a query on lab field B, and I answered the query without changing the data, and the query is then closed, if I then entered new bad data in lab field A, then the system should refire a query on lab field B. Query with requires response = false and requires manual close = true.", new string[] {
+                        "PB-US12940-07D",
+                        "ignore"});
+#line 1053
+this.ScenarioSetup(scenarioInfo);
+#line 12
+this.FeatureBackground();
+#line hidden
+            TechTalk.SpecFlow.Table table209 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Data"});
+            table209.AddRow(new string[] {
+                        "Subject Number",
+                        "{RndNum<num1>(5)}"});
+            table209.AddRow(new string[] {
+                        "Subject Initials",
+                        "SUB"});
+            table209.AddRow(new string[] {
+                        "Subject ID",
+                        "SUB {Var(num1)}"});
+#line 1055
+ testRunner.And("I create a Subject", ((string)(null)), table209);
+#line 1060
+ testRunner.And("I select Form \"Lab Form 8\"");
+#line hidden
+            TechTalk.SpecFlow.Table table210 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Data"});
+            table210.AddRow(new string[] {
+                        "Lab Field 7 - NEUTROPHILS - rr = F ; rmc = T",
+                        "5"});
+            table210.AddRow(new string[] {
+                        "Lab Field 8 - WBC - rr = F ; rmc = T",
+                        "3"});
+#line 1061
+ testRunner.And("I enter data in CRF and save", ((string)(null)), table210);
+#line hidden
+            TechTalk.SpecFlow.Table table211 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Query Message",
+                        "Answered",
+                        "Closed"});
+            table211.AddRow(new string[] {
+                        "Lab Field 8 - WBC - rr = F ; rmc = T",
+                        "Lab Field 8 must be greater than Lab Field 7. Please verify.",
+                        "false",
+                        "false"});
+#line 1065
+ testRunner.And("I verify Query is displayed", ((string)(null)), table211);
+#line 1068
+ testRunner.And("I take a screenshot");
+#line hidden
+            TechTalk.SpecFlow.Table table212 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Data"});
+            table212.AddRow(new string[] {
+                        "Lab Field 7 - NEUTROPHILS - rr = F ; rmc = T",
+                        "6"});
+#line 1069
+ testRunner.When("I enter data in CRF and save", ((string)(null)), table212);
+#line hidden
+            TechTalk.SpecFlow.Table table213 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Query Message",
+                        "Answered",
+                        "Closed"});
+            table213.AddRow(new string[] {
+                        "Lab Field 8 - WBC - rr = F ; rmc = T",
+                        "Lab Field 8 must be greater than Lab Field 7. Please verify.",
+                        "true",
+                        "true"});
+#line 1073
+    testRunner.Then("I verify Query is not displayed", ((string)(null)), table213);
+#line 1076
+ testRunner.And("I take a screenshot");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute(@"@PB-US12940-08A As an EDC user, when I entered bad data in lab field A and lab field B that resulted in the system opening a query on lab field B, and I answered the query without changing the data, and the query is then closed, if I then entered new bad data in lab field B, then the system should refire a query on lab field B. Query with requires response = true and requires manual close = true.")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Query Refiring Logic5")]
+        public virtual void PB_US12940_08AAsAnEDCUserWhenIEnteredBadDataInLabFieldAAndLabFieldBThatResultedInTheSystemOpeningAQueryOnLabFieldBAndIAnsweredTheQueryWithoutChangingTheDataAndTheQueryIsThenClosedIfIThenEnteredNewBadDataInLabFieldBThenTheSystemShouldRefireAQueryOnLabFieldB_QueryWithRequiresResponseTrueAndRequiresManualCloseTrue_()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo(@"@PB-US12940-08A As an EDC user, when I entered bad data in lab field A and lab field B that resulted in the system opening a query on lab field B, and I answered the query without changing the data, and the query is then closed, if I then entered new bad data in lab field B, then the system should refire a query on lab field B. Query with requires response = true and requires manual close = true.", new string[] {
+                        "PB-US12940-08A"});
+#line 1079
+this.ScenarioSetup(scenarioInfo);
+#line 12
+this.FeatureBackground();
+#line hidden
+            TechTalk.SpecFlow.Table table214 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Data"});
+            table214.AddRow(new string[] {
+                        "Subject Number",
+                        "{RndNum<num1>(5)}"});
+            table214.AddRow(new string[] {
+                        "Subject Initials",
+                        "SUB"});
+            table214.AddRow(new string[] {
+                        "Subject ID",
+                        "SUB {Var(num1)}"});
+#line 1081
+    testRunner.And("I create a Subject", ((string)(null)), table214);
+#line 1086
+ testRunner.And("I select Form \"Lab Form 8\"");
+#line hidden
+            TechTalk.SpecFlow.Table table215 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Data"});
+            table215.AddRow(new string[] {
+                        "Lab Field 1 - NEUTROPHILS - rr = T ; rmc = T",
+                        "5"});
+            table215.AddRow(new string[] {
+                        "Lab Field 2 - WBC - rr = T ; rmc = T",
+                        "3"});
+#line 1087
+ testRunner.And("I enter data in CRF and save", ((string)(null)), table215);
+#line hidden
+            TechTalk.SpecFlow.Table table216 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Query Message",
+                        "Answered",
+                        "Closed"});
+            table216.AddRow(new string[] {
+                        "Lab Field 2 - WBC - rr = T ; rmc = T",
+                        "Lab Field 2 must be greater than Lab Field 1. Please verify.",
+                        "false",
+                        "false"});
+#line 1091
+ testRunner.And("I verify Query is displayed", ((string)(null)), table216);
+#line 1094
+    testRunner.And("I take a screenshot");
+#line 1095
+ testRunner.And("I answer the Query \"Lab Field 2 must be greater than Lab Field 1. Please verify.\"" +
+                    " on Field \"Lab Field 2 - WBC - rr = T ; rmc = T\" with \"Data will be changed.\"");
+#line 1096
+ testRunner.And("I save the CRF page");
+#line 1097
+ testRunner.And("I take a screenshot");
+#line 1098
+ testRunner.And("I close the only Query on Field \"Lab Field 2 - WBC - rr = T ; rmc = T\"");
+#line 1099
+ testRunner.And("I save the CRF page");
+#line 1100
+ testRunner.And("I verify closed Query with message \"Lab Field 2 must be greater than Lab Field 1." +
+                    " Please verify.\" is displayed on Field \"Lab Field 2 - WBC - rr = T ; rmc = T\"");
+#line 1101
+ testRunner.And("I take a screenshot");
+#line hidden
+            TechTalk.SpecFlow.Table table217 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Data"});
+            table217.AddRow(new string[] {
+                        "Lab Field 2 - WBC - rr = T ; rmc = T",
+                        "2"});
+#line 1102
+ testRunner.When("I enter data in CRF and save", ((string)(null)), table217);
+#line hidden
+            TechTalk.SpecFlow.Table table218 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Query Message",
+                        "Answered",
+                        "Closed"});
+            table218.AddRow(new string[] {
+                        "Lab Field 2 - WBC - rr = T ; rmc = T",
+                        "Lab Field 2 must be greater than Lab Field 1. Please verify.",
+                        "false",
+                        "false"});
+#line 1105
+ testRunner.And("I verify Query is displayed", ((string)(null)), table218);
+#line 1108
+ testRunner.And("I take a screenshot");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute(@"@PB-US12940-08B As an EDC user, when I entered bad data in lab field A and lab field B that resulted in the system opening a query on lab field B, and I answered the query without changing the data, and the query is then closed, if I then entered new bad data in lab field B, then the system should refire a query on lab field B. Query with requires response = false and requires manual close = false.")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Query Refiring Logic5")]
+        public virtual void PB_US12940_08BAsAnEDCUserWhenIEnteredBadDataInLabFieldAAndLabFieldBThatResultedInTheSystemOpeningAQueryOnLabFieldBAndIAnsweredTheQueryWithoutChangingTheDataAndTheQueryIsThenClosedIfIThenEnteredNewBadDataInLabFieldBThenTheSystemShouldRefireAQueryOnLabFieldB_QueryWithRequiresResponseFalseAndRequiresManualCloseFalse_()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo(@"@PB-US12940-08B As an EDC user, when I entered bad data in lab field A and lab field B that resulted in the system opening a query on lab field B, and I answered the query without changing the data, and the query is then closed, if I then entered new bad data in lab field B, then the system should refire a query on lab field B. Query with requires response = false and requires manual close = false.", new string[] {
+                        "PB-US12940-08B"});
+#line 1111
+this.ScenarioSetup(scenarioInfo);
+#line 12
+this.FeatureBackground();
+#line hidden
+            TechTalk.SpecFlow.Table table219 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Data"});
+            table219.AddRow(new string[] {
+                        "Subject Number",
+                        "{RndNum<num1>(5)}"});
+            table219.AddRow(new string[] {
+                        "Subject Initials",
+                        "SUB"});
+            table219.AddRow(new string[] {
+                        "Subject ID",
+                        "SUB {Var(num1)}"});
+#line 1113
+    testRunner.And("I create a Subject", ((string)(null)), table219);
+#line 1118
+ testRunner.And("I select Form \"Lab Form 8\"");
+#line hidden
+            TechTalk.SpecFlow.Table table220 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Data"});
+            table220.AddRow(new string[] {
+                        "Lab Field 3 - NEUTROPHILS - rr = F ; rmc = F",
+                        "5"});
+            table220.AddRow(new string[] {
+                        "Lab Field 4 - WBC - rr = F ; rmc = F",
+                        "3"});
+#line 1119
+ testRunner.And("I enter data in CRF and save", ((string)(null)), table220);
+#line hidden
+            TechTalk.SpecFlow.Table table221 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Query Message",
+                        "Answered",
+                        "Closed"});
+            table221.AddRow(new string[] {
+                        "Lab Field 4 - WBC - rr = F ; rmc = F",
+                        "Lab Field 4 must be greater than Lab Field 3. Please verify.",
+                        "false",
+                        "false"});
+#line 1123
+ testRunner.And("I verify Query is displayed", ((string)(null)), table221);
+#line 1126
+ testRunner.And("I take a screenshot");
+#line hidden
+            TechTalk.SpecFlow.Table table222 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Data"});
+            table222.AddRow(new string[] {
+                        "Lab Field 4 - WBC - rr = F ; rmc = F",
+                        "2"});
+#line 1127
+ testRunner.When("I enter data in CRF and save", ((string)(null)), table222);
+#line hidden
+            TechTalk.SpecFlow.Table table223 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Query Message",
+                        "Answered",
+                        "Closed"});
+            table223.AddRow(new string[] {
+                        "Lab Field 4 - WBC - rr = F ; rmc = F",
+                        "Lab Field 4 must be greater than Lab Field 3. Please verify.",
+                        "false",
+                        "true"});
+#line 1130
+ testRunner.And("I verify Query is not displayed", ((string)(null)), table223);
+#line hidden
+            TechTalk.SpecFlow.Table table224 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Query Message",
+                        "Answered",
+                        "Closed"});
+            table224.AddRow(new string[] {
+                        "Lab Field 4 - WBC - rr = F ; rmc = F",
+                        "Lab Field 4 must be greater than Lab Field 3. Please verify.",
+                        "false",
+                        "false"});
+#line 1133
+ testRunner.And("I verify Query is displayed", ((string)(null)), table224);
+#line 1136
+ testRunner.And("I take a screenshot");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute(@"@PB-US12940-08C As an EDC user, when I entered bad data in lab field A and lab field B that resulted in the system opening a query on lab field B, and I answered the query without changing the data, and the query is then closed, if I then entered new bad data in lab field B, then the system should refire a query on lab field B. Query with requires response = true and requires manual close = false.")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Query Refiring Logic5")]
+        public virtual void PB_US12940_08CAsAnEDCUserWhenIEnteredBadDataInLabFieldAAndLabFieldBThatResultedInTheSystemOpeningAQueryOnLabFieldBAndIAnsweredTheQueryWithoutChangingTheDataAndTheQueryIsThenClosedIfIThenEnteredNewBadDataInLabFieldBThenTheSystemShouldRefireAQueryOnLabFieldB_QueryWithRequiresResponseTrueAndRequiresManualCloseFalse_()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo(@"@PB-US12940-08C As an EDC user, when I entered bad data in lab field A and lab field B that resulted in the system opening a query on lab field B, and I answered the query without changing the data, and the query is then closed, if I then entered new bad data in lab field B, then the system should refire a query on lab field B. Query with requires response = true and requires manual close = false.", new string[] {
+                        "PB-US12940-08C"});
+#line 1139
+this.ScenarioSetup(scenarioInfo);
+#line 12
+this.FeatureBackground();
+#line hidden
+            TechTalk.SpecFlow.Table table225 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Data"});
+            table225.AddRow(new string[] {
+                        "Subject Number",
+                        "{RndNum<num1>(5)}"});
+            table225.AddRow(new string[] {
+                        "Subject Initials",
+                        "SUB"});
+            table225.AddRow(new string[] {
+                        "Subject ID",
+                        "SUB {Var(num1)}"});
+#line 1141
+    testRunner.And("I create a Subject", ((string)(null)), table225);
+#line 1146
+ testRunner.And("I select Form \"Lab Form 8\"");
+#line hidden
+            TechTalk.SpecFlow.Table table226 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Data"});
+            table226.AddRow(new string[] {
+                        "Lab Field 5 - NEUTROPHILS - rr = T ; rmc = F",
+                        "5"});
+            table226.AddRow(new string[] {
+                        "Lab Field 6 - WBC - rr = T ; rmc = F",
+                        "3"});
+#line 1147
+ testRunner.And("I enter data in CRF and save", ((string)(null)), table226);
+#line hidden
+            TechTalk.SpecFlow.Table table227 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Query Message",
+                        "Answered",
+                        "Closed"});
+            table227.AddRow(new string[] {
+                        "Lab Field 6 - WBC - rr = T ; rmc = F",
+                        "Lab Field 6 must be greater than Lab Field 5. Please verify.",
+                        "false",
+                        "false"});
+#line 1151
+ testRunner.And("I verify Query is displayed", ((string)(null)), table227);
+#line 1154
+ testRunner.And("I take a screenshot");
+#line 1155
+ testRunner.And("I answer the Query \"Lab Field 6 must be greater than Lab Field 5. Please verify.\"" +
+                    " on Field \"Lab Field 6 - WBC - rr = T ; rmc = F\" with \"Data will be changed.\"");
+#line 1156
+ testRunner.And("I save the CRF page");
+#line hidden
+            TechTalk.SpecFlow.Table table228 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Query Message",
+                        "Answered",
+                        "Closed"});
+            table228.AddRow(new string[] {
+                        "Lab Field 6 - WBC - rr = T ; rmc = F",
+                        "Lab Field 6 must be greater than Lab Field 5. Please verify.",
+                        "true",
+                        "true"});
+#line 1157
+ testRunner.And("I verify Query is not displayed", ((string)(null)), table228);
+#line 1160
+ testRunner.And("I take a screenshot");
+#line hidden
+            TechTalk.SpecFlow.Table table229 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Data"});
+            table229.AddRow(new string[] {
+                        "Lab Field 6 - WBC - rr = T ; rmc = F",
+                        "2"});
+#line 1161
+ testRunner.When("I enter data in CRF and save", ((string)(null)), table229);
+#line hidden
+            TechTalk.SpecFlow.Table table230 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Query Message",
+                        "Answered",
+                        "Closed"});
+            table230.AddRow(new string[] {
+                        "Lab Field 6 - WBC - rr = T ; rmc = F",
+                        "Lab Field 6 must be greater than Lab Field 5. Please verify.",
+                        "false",
+                        "false"});
+#line 1164
+ testRunner.And("I verify Query is displayed", ((string)(null)), table230);
+#line 1167
+ testRunner.And("I take a screenshot");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute(@"@PB-US12940-08D As an EDC user, when I entered bad data in lab field A and lab field B that resulted in the system opening a query on lab field B, if I then entered new bad data in lab field B, then the system should answers the old query on lab field B. Then I should not see logging.Query with requires response = false and requires manual close = true.")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Query Refiring Logic5")]
+        public virtual void PB_US12940_08DAsAnEDCUserWhenIEnteredBadDataInLabFieldAAndLabFieldBThatResultedInTheSystemOpeningAQueryOnLabFieldBIfIThenEnteredNewBadDataInLabFieldBThenTheSystemShouldAnswersTheOldQueryOnLabFieldB_ThenIShouldNotSeeLogging_QueryWithRequiresResponseFalseAndRequiresManualCloseTrue_()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo(@"@PB-US12940-08D As an EDC user, when I entered bad data in lab field A and lab field B that resulted in the system opening a query on lab field B, if I then entered new bad data in lab field B, then the system should answers the old query on lab field B. Then I should not see logging.Query with requires response = false and requires manual close = true.", new string[] {
+                        "PB-US12940-08D"});
+#line 1170
+this.ScenarioSetup(scenarioInfo);
+#line 12
+this.FeatureBackground();
+#line hidden
+            TechTalk.SpecFlow.Table table231 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Data"});
+            table231.AddRow(new string[] {
+                        "Subject Number",
+                        "{RndNum<num1>(5)}"});
+            table231.AddRow(new string[] {
+                        "Subject Initials",
+                        "SUB"});
+            table231.AddRow(new string[] {
+                        "Subject ID",
+                        "SUB {Var(num1)}"});
+#line 1172
+ testRunner.And("I create a Subject", ((string)(null)), table231);
+#line 1177
+ testRunner.And("I select Form \"Lab Form 8\"");
+#line hidden
+            TechTalk.SpecFlow.Table table232 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Data"});
+            table232.AddRow(new string[] {
+                        "Lab Field 7 - NEUTROPHILS - rr = F ; rmc = T",
+                        "5"});
+            table232.AddRow(new string[] {
+                        "Lab Field 8 - WBC - rr = F ; rmc = T",
+                        "3"});
+#line 1178
+ testRunner.And("I enter data in CRF and save", ((string)(null)), table232);
+#line hidden
+            TechTalk.SpecFlow.Table table233 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Query Message",
+                        "Answered",
+                        "Closed"});
+            table233.AddRow(new string[] {
+                        "Lab Field 8 - WBC - rr = F ; rmc = T",
+                        "Lab Field 8 must be greater than Lab Field 7. Please verify.",
+                        "false",
+                        "false"});
+#line 1182
+ testRunner.And("I verify Query is displayed", ((string)(null)), table233);
+#line 1185
+ testRunner.And("I take a screenshot");
+#line hidden
+            TechTalk.SpecFlow.Table table234 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Data"});
+            table234.AddRow(new string[] {
+                        "Lab Field 8 - WBC - rr = F ; rmc = T",
+                        "2"});
+#line 1186
+ testRunner.When("I enter data in CRF and save", ((string)(null)), table234);
+#line hidden
+            TechTalk.SpecFlow.Table table235 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Query Message",
+                        "Answered",
+                        "Closed"});
+            table235.AddRow(new string[] {
+                        "Lab Field 8 - WBC - rr = F ; rmc = T",
+                        "Lab Field 8 must be greater than Lab Field 7. Please verify.",
+                        "true",
+                        "false"});
+#line 1189
+ testRunner.And("I verify Query is displayed", ((string)(null)), table235);
+#line 1192
+ testRunner.And("I take a screenshot");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute(@"@PB-US12940-09A As an EDC user, when I entered bad data in lab field A and lab field B that resulted in the system opening a query on lab field B, and I answered the query and I changed the data in lab field A to another bad data, and the query is then closed, if I then entered the new bad data in lab field A, then the system should refire a query on lab field B. And I should not see the logging.Query with requires response = true and requires manual close = true.")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Query Refiring Logic5")]
+        public virtual void PB_US12940_09AAsAnEDCUserWhenIEnteredBadDataInLabFieldAAndLabFieldBThatResultedInTheSystemOpeningAQueryOnLabFieldBAndIAnsweredTheQueryAndIChangedTheDataInLabFieldAToAnotherBadDataAndTheQueryIsThenClosedIfIThenEnteredTheNewBadDataInLabFieldAThenTheSystemShouldRefireAQueryOnLabFieldB_AndIShouldNotSeeTheLogging_QueryWithRequiresResponseTrueAndRequiresManualCloseTrue_()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo(@"@PB-US12940-09A As an EDC user, when I entered bad data in lab field A and lab field B that resulted in the system opening a query on lab field B, and I answered the query and I changed the data in lab field A to another bad data, and the query is then closed, if I then entered the new bad data in lab field A, then the system should refire a query on lab field B. And I should not see the logging.Query with requires response = true and requires manual close = true.", new string[] {
+                        "PB-US12940-09A"});
+#line 1195
+this.ScenarioSetup(scenarioInfo);
+#line 12
+this.FeatureBackground();
+#line hidden
+            TechTalk.SpecFlow.Table table236 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Data"});
+            table236.AddRow(new string[] {
+                        "Subject Number",
+                        "{RndNum<num1>(5)}"});
+            table236.AddRow(new string[] {
+                        "Subject Initials",
+                        "SUB"});
+            table236.AddRow(new string[] {
+                        "Subject ID",
+                        "SUB {Var(num1)}"});
+#line 1197
+    testRunner.And("I create a Subject", ((string)(null)), table236);
+#line 1202
+ testRunner.And("I select Form \"Lab Form 8\"");
+#line hidden
+            TechTalk.SpecFlow.Table table237 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Data"});
+            table237.AddRow(new string[] {
+                        "Lab Field 1 - NEUTROPHILS - rr = T ; rmc = T",
+                        "5"});
+            table237.AddRow(new string[] {
+                        "Lab Field 2 - WBC - rr = T ; rmc = T",
+                        "3"});
+#line 1203
+ testRunner.And("I enter data in CRF and save", ((string)(null)), table237);
+#line hidden
+            TechTalk.SpecFlow.Table table238 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Query Message",
+                        "Answered",
+                        "Closed"});
+            table238.AddRow(new string[] {
+                        "Lab Field 2 - WBC - rr = T ; rmc = T",
+                        "Lab Field 2 must be greater than Lab Field 1. Please verify.",
+                        "false",
+                        "false"});
+#line 1207
+ testRunner.And("I verify Query is displayed", ((string)(null)), table238);
+#line 1210
+ testRunner.And("I take a screenshot");
+#line 1211
+ testRunner.And("I answer the Query \"Lab Field 2 must be greater than Lab Field 1. Please verify.\"" +
+                    " on Field \"Lab Field 2 - WBC - rr = T ; rmc = T\" with \"Data will be changed.\"");
+#line hidden
+            TechTalk.SpecFlow.Table table239 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Data"});
+            table239.AddRow(new string[] {
+                        "Lab Field 1 - NEUTROPHILS - rr = T ; rmc = T",
+                        "7"});
+#line 1212
+ testRunner.And("I enter data in CRF and save", ((string)(null)), table239);
+#line hidden
+            TechTalk.SpecFlow.Table table240 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Query Message",
+                        "Answered",
+                        "Closed"});
+            table240.AddRow(new string[] {
+                        "Lab Field 2 - WBC - rr = T ; rmc = T",
+                        "Lab Field 2 must be greater than Lab Field 1. Please verify.",
+                        "true",
+                        "false"});
+#line 1215
+ testRunner.And("I verify Query is displayed", ((string)(null)), table240);
+#line 1218
+ testRunner.And("I take a screenshot");
+#line 1219
+ testRunner.And("I close the only Query on Field \"Lab Field 2 - WBC - rr = T ; rmc = T\"");
+#line 1220
+ testRunner.And("I save the CRF page");
+#line 1221
+ testRunner.And("I verify closed Query with message \"Lab Field 2 must be greater than Lab Field 1." +
+                    " Please verify.\" is displayed on Field \"Lab Field 2 - WBC - rr = T ; rmc = T\"");
+#line 1222
+ testRunner.And("I take a screenshot");
+#line hidden
+            TechTalk.SpecFlow.Table table241 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Data"});
+            table241.AddRow(new string[] {
+                        "Lab Field 1 - NEUTROPHILS - rr = T ; rmc = T",
+                        "6"});
+#line 1223
+ testRunner.When("I enter data in CRF and save", ((string)(null)), table241);
+#line hidden
+            TechTalk.SpecFlow.Table table242 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Query Message",
+                        "Answered",
+                        "Closed"});
+            table242.AddRow(new string[] {
+                        "Lab Field 2 - WBC - rr = T ; rmc = T",
+                        "Lab Field 2 must be greater than Lab Field 1. Please verify.",
+                        "false",
+                        "false"});
+#line 1226
+ testRunner.Then("I verify Query is displayed", ((string)(null)), table242);
+#line 1229
+ testRunner.And("I take a screenshot");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute(@"@PB-US12940-09B As an EDC user, when I entered bad data in lab field A and lab field B that resulted in the system opening a query on lab field B, and I answered the query and I changed the data in lab field A to another bad data, and the query is then closed, if I then entered the new bad data in lab field A, then the system should refire a query on lab field B. Query with requires response = false and requires manual close = false.")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Query Refiring Logic5")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.IgnoreAttribute()]
+        public virtual void PB_US12940_09BAsAnEDCUserWhenIEnteredBadDataInLabFieldAAndLabFieldBThatResultedInTheSystemOpeningAQueryOnLabFieldBAndIAnsweredTheQueryAndIChangedTheDataInLabFieldAToAnotherBadDataAndTheQueryIsThenClosedIfIThenEnteredTheNewBadDataInLabFieldAThenTheSystemShouldRefireAQueryOnLabFieldB_QueryWithRequiresResponseFalseAndRequiresManualCloseFalse_()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo(@"@PB-US12940-09B As an EDC user, when I entered bad data in lab field A and lab field B that resulted in the system opening a query on lab field B, and I answered the query and I changed the data in lab field A to another bad data, and the query is then closed, if I then entered the new bad data in lab field A, then the system should refire a query on lab field B. Query with requires response = false and requires manual close = false.", new string[] {
+                        "PB-US12940-09B",
+                        "ignore"});
+#line 1234
+this.ScenarioSetup(scenarioInfo);
+#line 12
+this.FeatureBackground();
+#line hidden
+            TechTalk.SpecFlow.Table table243 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Data"});
+            table243.AddRow(new string[] {
+                        "Subject Number",
+                        "{RndNum<num1>(5)}"});
+            table243.AddRow(new string[] {
+                        "Subject Initials",
+                        "SUB"});
+            table243.AddRow(new string[] {
+                        "Subject ID",
+                        "SUB {Var(num1)}"});
+#line 1236
+    testRunner.And("I create a Subject", ((string)(null)), table243);
+#line 1241
+ testRunner.And("I select Form \"Lab Form 8\"");
+#line hidden
+            TechTalk.SpecFlow.Table table244 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Data"});
+            table244.AddRow(new string[] {
+                        "Lab Field 3 - NEUTROPHILS - rr = F ; rmc = F",
+                        "5"});
+            table244.AddRow(new string[] {
+                        "Lab Field 4 - WBC - rr = F ; rmc = F",
+                        "3"});
+#line 1242
+ testRunner.And("I enter data in CRF and save", ((string)(null)), table244);
+#line hidden
+            TechTalk.SpecFlow.Table table245 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Query Message",
+                        "Answered",
+                        "Closed"});
+            table245.AddRow(new string[] {
+                        "Lab Field 4 - WBC - rr = F ; rmc = F",
+                        "Lab Field 4 must be greater than Lab Field 3. Please verify.",
+                        "false",
+                        "false"});
+#line 1246
+ testRunner.And("I verify Query is displayed", ((string)(null)), table245);
+#line 1249
+ testRunner.And("I take a screenshot");
+#line hidden
+            TechTalk.SpecFlow.Table table246 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Data"});
+            table246.AddRow(new string[] {
+                        "Lab Field 3 - NEUTROPHILS - rr = F ; rmc = F",
+                        "7"});
+#line 1250
+ testRunner.And("I enter data in CRF and save", ((string)(null)), table246);
+#line 1253
+ testRunner.And("I save the CRF page");
+#line hidden
+            TechTalk.SpecFlow.Table table247 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Query Message",
+                        "Answered",
+                        "Closed"});
+            table247.AddRow(new string[] {
+                        "Lab Field 4 - WBC - rr = F ; rmc = F",
+                        "Lab Field 4 must be greater than Lab Field 3. Please verify.",
+                        "false",
+                        "false"});
+#line 1255
+    testRunner.And("I verify Query is displayed", ((string)(null)), table247);
+#line 1258
+ testRunner.And("I take a screenshot");
+#line hidden
+            TechTalk.SpecFlow.Table table248 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Data"});
+            table248.AddRow(new string[] {
+                        "Lab Field 3 - NEUTROPHILS - rr = F ; rmc = F",
+                        "6"});
+#line 1259
+ testRunner.When("I enter data in CRF and save", ((string)(null)), table248);
+#line hidden
+            TechTalk.SpecFlow.Table table249 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Query Message",
+                        "Answered",
+                        "Closed"});
+            table249.AddRow(new string[] {
+                        "Lab Field 4 - WBC - rr = F ; rmc = F",
+                        "Lab Field 4 must be greater than Lab Field 3. Please verify.",
+                        "false",
+                        "false"});
+#line 1262
+ testRunner.Then("I verify Query is displayed", ((string)(null)), table249);
+#line 1265
+ testRunner.And("I take a screenshot");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute(@"@PB-US12940-09C As an EDC user, when I entered bad data in lab field A and lab field B that resulted in the system opening a query on lab field B, and I answered the query and I changed the data in lab field A to another bad data, and the query is then closed, if I then entered the new bad data in lab field A, then the system should refire a query on lab field B. Query with requires response = true and requires manual close = false.")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Query Refiring Logic5")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.IgnoreAttribute()]
+        public virtual void PB_US12940_09CAsAnEDCUserWhenIEnteredBadDataInLabFieldAAndLabFieldBThatResultedInTheSystemOpeningAQueryOnLabFieldBAndIAnsweredTheQueryAndIChangedTheDataInLabFieldAToAnotherBadDataAndTheQueryIsThenClosedIfIThenEnteredTheNewBadDataInLabFieldAThenTheSystemShouldRefireAQueryOnLabFieldB_QueryWithRequiresResponseTrueAndRequiresManualCloseFalse_()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo(@"@PB-US12940-09C As an EDC user, when I entered bad data in lab field A and lab field B that resulted in the system opening a query on lab field B, and I answered the query and I changed the data in lab field A to another bad data, and the query is then closed, if I then entered the new bad data in lab field A, then the system should refire a query on lab field B. Query with requires response = true and requires manual close = false.", new string[] {
+                        "PB-US12940-09C",
+                        "ignore"});
+#line 1270
+this.ScenarioSetup(scenarioInfo);
+#line 12
+this.FeatureBackground();
+#line hidden
+            TechTalk.SpecFlow.Table table250 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Data"});
+            table250.AddRow(new string[] {
+                        "Subject Number",
+                        "{RndNum<num1>(5)}"});
+            table250.AddRow(new string[] {
+                        "Subject Initials",
+                        "SUB"});
+            table250.AddRow(new string[] {
+                        "Subject ID",
+                        "SUB {Var(num1)}"});
+#line 1272
+    testRunner.And("I create a Subject", ((string)(null)), table250);
+#line 1277
+ testRunner.And("I select Form \"Lab Form 8\"");
+#line hidden
+            TechTalk.SpecFlow.Table table251 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Data"});
+            table251.AddRow(new string[] {
+                        "Lab Field 5 - NEUTROPHILS - rr = T ; rmc = F",
+                        "5"});
+            table251.AddRow(new string[] {
+                        "Lab Field 6 - WBC - rr = T ; rmc = F",
+                        "3"});
+#line 1278
+ testRunner.And("I enter data in CRF and save", ((string)(null)), table251);
+#line hidden
+            TechTalk.SpecFlow.Table table252 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Query Message",
+                        "Answered",
+                        "Closed"});
+            table252.AddRow(new string[] {
+                        "Lab Field 6 - WBC - rr = T ; rmc = F",
+                        "Lab Field 6 must be greater than Lab Field 5. Please verify.",
+                        "false",
+                        "false"});
+#line 1282
+ testRunner.And("I verify Query is displayed", ((string)(null)), table252);
+#line 1285
+ testRunner.And("I take a screenshot");
+#line 1286
+ testRunner.And("I answer the Query \"Lab Field 6 must be greater than Lab Field 5. Please verify.\"" +
+                    " on Field \"Lab Field 6 - WBC - rr = T ; rmc = F\" with \"Data will be changed.\"");
+#line hidden
+            TechTalk.SpecFlow.Table table253 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Data"});
+            table253.AddRow(new string[] {
+                        "Lab Field 5 - NEUTROPHILS - rr = T ; rmc = F",
+                        "7"});
+#line 1287
+ testRunner.And("I enter data in CRF and save", ((string)(null)), table253);
+#line hidden
+            TechTalk.SpecFlow.Table table254 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Query Message",
+                        "Answered",
+                        "Closed"});
+            table254.AddRow(new string[] {
+                        "Lab Field 6 - WBC - rr = T ; rmc = F",
+                        "Lab Field 6 must be greater than Lab Field 5. Please verify.",
+                        "true",
+                        "true"});
+#line 1291
+    testRunner.And("I verify Query is not displayed", ((string)(null)), table254);
+#line 1294
+ testRunner.And("I take a screenshot");
+#line hidden
+            TechTalk.SpecFlow.Table table255 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Data"});
+            table255.AddRow(new string[] {
+                        "Lab Field 5 - NEUTROPHILS - rr = T ; rmc = F",
+                        "6"});
+#line 1295
+ testRunner.When("I enter data in CRF and save", ((string)(null)), table255);
+#line hidden
+            TechTalk.SpecFlow.Table table256 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Query Message",
+                        "Answered",
+                        "Closed"});
+            table256.AddRow(new string[] {
+                        "Lab Field 6 - WBC - rr = T ; rmc = F",
+                        "Lab Field 6 must be greater than Lab Field 5. Please verify.",
+                        "false",
+                        "false"});
+#line 1298
+ testRunner.And("I verify Query is displayed", ((string)(null)), table256);
+#line 1301
+ testRunner.And("I take a screenshot");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute(@"@PB-US12940-09D As an EDC user, when I entered bad data in lab field A and lab field B that resulted in the system opening a query on lab field B, and I answered the query and I changed the data in lab field A to another bad data, and the query is then closed, if I then entered the new bad data in lab field A, then the system should refire a query on lab field B. Query with requires response = false and requires manual close = true.")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Query Refiring Logic5")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.IgnoreAttribute()]
+        public virtual void PB_US12940_09DAsAnEDCUserWhenIEnteredBadDataInLabFieldAAndLabFieldBThatResultedInTheSystemOpeningAQueryOnLabFieldBAndIAnsweredTheQueryAndIChangedTheDataInLabFieldAToAnotherBadDataAndTheQueryIsThenClosedIfIThenEnteredTheNewBadDataInLabFieldAThenTheSystemShouldRefireAQueryOnLabFieldB_QueryWithRequiresResponseFalseAndRequiresManualCloseTrue_()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo(@"@PB-US12940-09D As an EDC user, when I entered bad data in lab field A and lab field B that resulted in the system opening a query on lab field B, and I answered the query and I changed the data in lab field A to another bad data, and the query is then closed, if I then entered the new bad data in lab field A, then the system should refire a query on lab field B. Query with requires response = false and requires manual close = true.", new string[] {
+                        "PB-US12940-09D",
+                        "ignore"});
+#line 1306
+this.ScenarioSetup(scenarioInfo);
+#line 12
+this.FeatureBackground();
+#line hidden
+            TechTalk.SpecFlow.Table table257 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Data"});
+            table257.AddRow(new string[] {
+                        "Subject Number",
+                        "{RndNum<num1>(5)}"});
+            table257.AddRow(new string[] {
+                        "Subject Initials",
+                        "SUB"});
+            table257.AddRow(new string[] {
+                        "Subject ID",
+                        "SUB {Var(num1)}"});
+#line 1308
+ testRunner.And("I create a Subject", ((string)(null)), table257);
+#line 1313
+ testRunner.And("I select Form \"Lab Form 8\"");
+#line hidden
+            TechTalk.SpecFlow.Table table258 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Data"});
+            table258.AddRow(new string[] {
+                        "Lab Field 7 - NEUTROPHILS - rr = F ; rmc = T",
+                        "5"});
+            table258.AddRow(new string[] {
+                        "Lab Field 8 - WBC - rr = F ; rmc = T",
+                        "3"});
+#line 1314
+ testRunner.And("I enter data in CRF and save", ((string)(null)), table258);
+#line hidden
+            TechTalk.SpecFlow.Table table259 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Query Message",
+                        "Answered",
+                        "Closed"});
+            table259.AddRow(new string[] {
+                        "Lab Field 8 - WBC - rr = F ; rmc = T",
+                        "Lab Field 8 must be greater than Lab Field 7. Please verify.",
+                        "false",
+                        "false"});
+#line 1318
+ testRunner.And("I verify Query is displayed", ((string)(null)), table259);
+#line 1321
+ testRunner.And("I take a screenshot");
+#line hidden
+            TechTalk.SpecFlow.Table table260 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Data"});
+            table260.AddRow(new string[] {
+                        "Lab Field 7 - NEUTROPHILS - rr = F ; rmc = T",
+                        "7"});
+#line 1322
+ testRunner.And("I enter data in CRF and save", ((string)(null)), table260);
+#line hidden
+            TechTalk.SpecFlow.Table table261 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Query Message",
+                        "Answered",
+                        "Closed"});
+            table261.AddRow(new string[] {
+                        "Lab Field 8 - WBC - rr = F ; rmc = T",
+                        "Lab Field 8 must be greater than Lab Field 7. Please verify.",
+                        "false",
+                        "false"});
+#line 1325
+ testRunner.And("I verify Query is not displayed", ((string)(null)), table261);
+#line hidden
+            TechTalk.SpecFlow.Table table262 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Query Message",
+                        "Answered",
+                        "Closed"});
+            table262.AddRow(new string[] {
+                        "Lab Field 8 - WBC - rr = F ; rmc = T",
+                        "Lab Field 8 must be greater than Lab Field 7. Please verify.",
+                        "true",
+                        "false"});
+#line 1329
+    testRunner.And("I verify Query is displayed", ((string)(null)), table262);
+#line 1332
+ testRunner.And("I take a screenshot");
+#line 1333
+ testRunner.And("I close the only Query on Field \"Lab Field 8 - WBC - rr = F ; rmc = T\"");
+#line 1334
+ testRunner.And("I save the CRF page");
+#line 1335
+    testRunner.And("I verify closed Query with message \"Lab Field 8 must be greater than Lab Field 7." +
+                    " Please verify.\" is displayed on Field \"Lab Field 8 - WBC - rr = F ; rmc = T\"");
+#line 1336
+ testRunner.And("I take a screenshot");
+#line hidden
+            TechTalk.SpecFlow.Table table263 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Data"});
+            table263.AddRow(new string[] {
+                        "Lab Field 7 - NEUTROPHILS - rr = F ; rmc = T",
+                        "6"});
+#line 1337
+ testRunner.When("I enter data in CRF and save", ((string)(null)), table263);
+#line hidden
+            TechTalk.SpecFlow.Table table264 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Query Message",
+                        "Answered",
+                        "Closed"});
+            table264.AddRow(new string[] {
+                        "Lab Field 8 - WBC - rr = F ; rmc = T",
+                        "Lab Field 8 must be greater than Lab Field 7. Please verify.",
+                        "false",
+                        "false"});
+#line 1340
+ testRunner.Then("I verify Query is displayed", ((string)(null)), table264);
+#line 1343
+ testRunner.And("I take a screenshot");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute(@"@PB-US12940-10A As an EDC user, when I entered bad data in lab field A and lab field B that resulted in the system opening a query on lab field B, and I answered the query and I changed the data in lab field B to another bad data, and the query is then closed, if I then entered the new bad data in lab field B, then the system should refire a query on lab field B. Query with requires response = true and requires manual close = true.")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Query Refiring Logic5")]
+        public virtual void PB_US12940_10AAsAnEDCUserWhenIEnteredBadDataInLabFieldAAndLabFieldBThatResultedInTheSystemOpeningAQueryOnLabFieldBAndIAnsweredTheQueryAndIChangedTheDataInLabFieldBToAnotherBadDataAndTheQueryIsThenClosedIfIThenEnteredTheNewBadDataInLabFieldBThenTheSystemShouldRefireAQueryOnLabFieldB_QueryWithRequiresResponseTrueAndRequiresManualCloseTrue_()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo(@"@PB-US12940-10A As an EDC user, when I entered bad data in lab field A and lab field B that resulted in the system opening a query on lab field B, and I answered the query and I changed the data in lab field B to another bad data, and the query is then closed, if I then entered the new bad data in lab field B, then the system should refire a query on lab field B. Query with requires response = true and requires manual close = true.", new string[] {
+                        "PB-US12940-10A"});
+#line 1346
+this.ScenarioSetup(scenarioInfo);
+#line 12
+this.FeatureBackground();
+#line hidden
+            TechTalk.SpecFlow.Table table265 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Data"});
+            table265.AddRow(new string[] {
+                        "Subject Number",
+                        "{RndNum<num1>(5)}"});
+            table265.AddRow(new string[] {
+                        "Subject Initials",
+                        "SUB"});
+            table265.AddRow(new string[] {
+                        "Subject ID",
+                        "SUB {Var(num1)}"});
+#line 1348
+    testRunner.And("I create a Subject", ((string)(null)), table265);
+#line 1353
+ testRunner.And("I select Form \"Lab Form 8\"");
+#line hidden
+            TechTalk.SpecFlow.Table table266 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Data"});
+            table266.AddRow(new string[] {
+                        "Lab Field 1 - NEUTROPHILS - rr = T ; rmc = T",
+                        "5"});
+            table266.AddRow(new string[] {
+                        "Lab Field 2 - WBC - rr = T ; rmc = T",
+                        "3"});
+#line 1354
+ testRunner.And("I enter data in CRF and save", ((string)(null)), table266);
+#line hidden
+            TechTalk.SpecFlow.Table table267 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Query Message",
+                        "Answered",
+                        "Closed"});
+            table267.AddRow(new string[] {
+                        "Lab Field 2 - WBC - rr = T ; rmc = T",
+                        "Lab Field 2 must be greater than Lab Field 1. Please verify.",
+                        "false",
+                        "false"});
+#line 1358
+ testRunner.And("I verify Query is displayed", ((string)(null)), table267);
+#line 1361
+ testRunner.And("I take a screenshot");
+#line 1362
+ testRunner.And("I answer the Query \"Lab Field 2 must be greater than Lab Field 1. Please verify.\"" +
+                    " on Field \"Lab Field 2 - WBC - rr = T ; rmc = T\" with \"Data will be changed.\"");
+#line hidden
+            TechTalk.SpecFlow.Table table268 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Data"});
+            table268.AddRow(new string[] {
+                        "Lab Field 2 - WBC - rr = T ; rmc = T",
+                        "2"});
+#line 1363
+   testRunner.And("I enter data in CRF and save", ((string)(null)), table268);
+#line 1366
+ testRunner.And("I save the CRF page");
+#line hidden
+            TechTalk.SpecFlow.Table table269 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Query Message",
+                        "Answered",
+                        "Closed"});
+            table269.AddRow(new string[] {
+                        "Lab Field 2 - WBC - rr = T ; rmc = T",
+                        "Lab Field 2 must be greater than Lab Field 1. Please verify.",
+                        "true",
+                        "false"});
+#line 1367
+ testRunner.And("I verify Query is displayed", ((string)(null)), table269);
+#line 1370
+ testRunner.And("I take a screenshot");
+#line 1371
+ testRunner.And("I close the only Query on Field \"Lab Field 2 - WBC - rr = T ; rmc = T\"");
+#line 1372
+ testRunner.And("I save the CRF page");
+#line 1373
+    testRunner.And("I verify closed Query with message \"Lab Field 2 must be greater than Lab Field 1." +
+                    " Please verify.\" is displayed on Field \"Lab Field 2 - WBC - rr = T ; rmc = T\"");
+#line 1374
+ testRunner.And("I take a screenshot");
+#line hidden
+            TechTalk.SpecFlow.Table table270 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Data"});
+            table270.AddRow(new string[] {
+                        "Lab Field 2 - WBC - rr = T ; rmc = T",
+                        "1"});
+#line 1375
+ testRunner.When("I enter data in CRF and save", ((string)(null)), table270);
+#line hidden
+            TechTalk.SpecFlow.Table table271 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Query Message",
+                        "Answered",
+                        "Closed"});
+            table271.AddRow(new string[] {
+                        "Lab Field 2 - WBC - rr = T ; rmc = T",
+                        "Lab Field 2 must be greater than Lab Field 1. Please verify.",
+                        "false",
+                        "false"});
+#line 1378
+ testRunner.And("I verify Query is displayed", ((string)(null)), table271);
+#line 1381
+ testRunner.And("I take a screenshot");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute(@"@PB-US12940-10B As an EDC user, when I entered bad data in lab field A and lab field B that resulted in the system opening a query on lab field B, and I answered the query and I changed the data in lab field B to another bad data, and the query is then closed, if I then entered the new bad data in lab field B, then the system should refire a query on lab field B. Query with requires response = false and requires manual close = false.")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Query Refiring Logic5")]
+        public virtual void PB_US12940_10BAsAnEDCUserWhenIEnteredBadDataInLabFieldAAndLabFieldBThatResultedInTheSystemOpeningAQueryOnLabFieldBAndIAnsweredTheQueryAndIChangedTheDataInLabFieldBToAnotherBadDataAndTheQueryIsThenClosedIfIThenEnteredTheNewBadDataInLabFieldBThenTheSystemShouldRefireAQueryOnLabFieldB_QueryWithRequiresResponseFalseAndRequiresManualCloseFalse_()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo(@"@PB-US12940-10B As an EDC user, when I entered bad data in lab field A and lab field B that resulted in the system opening a query on lab field B, and I answered the query and I changed the data in lab field B to another bad data, and the query is then closed, if I then entered the new bad data in lab field B, then the system should refire a query on lab field B. Query with requires response = false and requires manual close = false.", new string[] {
+                        "PB-US12940-10B"});
+#line 1384
+this.ScenarioSetup(scenarioInfo);
+#line 12
+this.FeatureBackground();
+#line hidden
+            TechTalk.SpecFlow.Table table272 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Data"});
+            table272.AddRow(new string[] {
+                        "Subject Number",
+                        "{RndNum<num1>(5)}"});
+            table272.AddRow(new string[] {
+                        "Subject Initials",
+                        "SUB"});
+            table272.AddRow(new string[] {
+                        "Subject ID",
+                        "SUB {Var(num1)}"});
+#line 1386
+    testRunner.And("I create a Subject", ((string)(null)), table272);
+#line 1391
+ testRunner.And("I select Form \"Lab Form 8\"");
+#line hidden
+            TechTalk.SpecFlow.Table table273 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Data"});
+            table273.AddRow(new string[] {
+                        "Lab Field 3 - NEUTROPHILS - rr = F ; rmc = F",
+                        "5"});
+            table273.AddRow(new string[] {
+                        "Lab Field 4 - WBC - rr = F ; rmc = F",
+                        "3"});
+#line 1392
+ testRunner.And("I enter data in CRF and save", ((string)(null)), table273);
+#line hidden
+            TechTalk.SpecFlow.Table table274 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Query Message",
+                        "Answered",
+                        "Closed"});
+            table274.AddRow(new string[] {
+                        "Lab Field 4 - WBC - rr = F ; rmc = F",
+                        "Lab Field 4 must be greater than Lab Field 3. Please verify.",
+                        "false",
+                        "false"});
+#line 1396
+ testRunner.And("I verify Query is displayed", ((string)(null)), table274);
+#line 1399
+ testRunner.And("I take a screenshot");
+#line hidden
+            TechTalk.SpecFlow.Table table275 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Data"});
+            table275.AddRow(new string[] {
+                        "Lab Field 4 - WBC - rr = F ; rmc = F",
+                        "2"});
+#line 1400
+   testRunner.And("I enter data in CRF and save", ((string)(null)), table275);
+#line 1403
+ testRunner.And("I save the CRF page");
+#line hidden
+            TechTalk.SpecFlow.Table table276 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Query Message",
+                        "Answered",
+                        "Closed"});
+            table276.AddRow(new string[] {
+                        "Lab Field 4 - WBC - rr = F ; rmc = F",
+                        "Lab Field 4 must be greater than Lab Field 3. Please verify.",
+                        "false",
+                        "true"});
+#line 1404
+    testRunner.And("I verify Query is not displayed", ((string)(null)), table276);
+#line hidden
+            TechTalk.SpecFlow.Table table277 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Query Message",
+                        "Answered",
+                        "Closed"});
+            table277.AddRow(new string[] {
+                        "Lab Field 4 - WBC - rr = F ; rmc = F",
+                        "Lab Field 4 must be greater than Lab Field 3. Please verify.",
+                        "false",
+                        "false"});
+#line 1407
+ testRunner.And("I verify Query is displayed", ((string)(null)), table277);
+#line 1410
+ testRunner.And("I take a screenshot");
+#line hidden
+            TechTalk.SpecFlow.Table table278 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Data"});
+            table278.AddRow(new string[] {
+                        "Lab Field 4 - WBC - rr = F ; rmc = F",
+                        "1"});
+#line 1411
+ testRunner.When("I enter data in CRF and save", ((string)(null)), table278);
+#line hidden
+            TechTalk.SpecFlow.Table table279 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Query Message",
+                        "Answered",
+                        "Closed"});
+            table279.AddRow(new string[] {
+                        "Lab Field 4 - WBC - rr = F ; rmc = F",
+                        "Lab Field 4 must be greater than Lab Field 3. Please verify.",
+                        "false",
+                        "false"});
+#line 1414
+ testRunner.And("I verify Query is displayed", ((string)(null)), table279);
+#line 1417
+ testRunner.And("I take a screenshot");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute(@"@PB-US12940-10C As an EDC user, when I entered bad data in lab field A and lab field B that resulted in the system opening a query on lab field B, and I answered the query and I changed the data in lab field B to another bad data, and the query is then closed, if I then entered the new bad data in lab field B, then the system should refire a query on lab field B. Query with requires response = true and requires manual close = false.")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Query Refiring Logic5")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.IgnoreAttribute()]
+        public virtual void PB_US12940_10CAsAnEDCUserWhenIEnteredBadDataInLabFieldAAndLabFieldBThatResultedInTheSystemOpeningAQueryOnLabFieldBAndIAnsweredTheQueryAndIChangedTheDataInLabFieldBToAnotherBadDataAndTheQueryIsThenClosedIfIThenEnteredTheNewBadDataInLabFieldBThenTheSystemShouldRefireAQueryOnLabFieldB_QueryWithRequiresResponseTrueAndRequiresManualCloseFalse_()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo(@"@PB-US12940-10C As an EDC user, when I entered bad data in lab field A and lab field B that resulted in the system opening a query on lab field B, and I answered the query and I changed the data in lab field B to another bad data, and the query is then closed, if I then entered the new bad data in lab field B, then the system should refire a query on lab field B. Query with requires response = true and requires manual close = false.", new string[] {
+                        "PB-US12940-10C",
+                        "ignore"});
+#line 1422
+this.ScenarioSetup(scenarioInfo);
+#line 12
+this.FeatureBackground();
+#line hidden
+            TechTalk.SpecFlow.Table table280 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Data"});
+            table280.AddRow(new string[] {
+                        "Subject Number",
+                        "{RndNum<num1>(5)}"});
+            table280.AddRow(new string[] {
+                        "Subject Initials",
+                        "SUB"});
+            table280.AddRow(new string[] {
+                        "Subject ID",
+                        "SUB {Var(num1)}"});
+#line 1424
+    testRunner.And("I create a Subject", ((string)(null)), table280);
+#line 1429
+ testRunner.And("I select Form \"Lab Form 8\"");
+#line hidden
+            TechTalk.SpecFlow.Table table281 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Data"});
+            table281.AddRow(new string[] {
+                        "Lab Field 5 - NEUTROPHILS - rr = T ; rmc = F",
+                        "5"});
+            table281.AddRow(new string[] {
+                        "Lab Field 6 - WBC - rr = T ; rmc = F",
+                        "3"});
+#line 1430
+ testRunner.And("I enter data in CRF and save", ((string)(null)), table281);
+#line hidden
+            TechTalk.SpecFlow.Table table282 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Query Message",
+                        "Answered",
+                        "Closed"});
+            table282.AddRow(new string[] {
+                        "Lab Field 6 - WBC - rr = T ; rmc = F",
+                        "Lab Field 6 must be greater than Lab Field 5. Please verify.",
+                        "false",
+                        "false"});
+#line 1434
+ testRunner.And("I verify Query is displayed", ((string)(null)), table282);
+#line 1437
+ testRunner.And("I take a screenshot");
+#line 1438
+ testRunner.And("I answer the Query \"Lab Field 6 must be greater than Lab Field 5. Please verify.\"" +
+                    " on Field \"Lab Field 6 - WBC - rr = T ; rmc = F\" with \"Data will be changed.\"");
+#line hidden
+            TechTalk.SpecFlow.Table table283 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Data"});
+            table283.AddRow(new string[] {
+                        "Lab Field 6 - WBC - rr = T ; rmc = F",
+                        "2"});
+#line 1439
+   testRunner.And("I enter data in CRF and save", ((string)(null)), table283);
+#line hidden
+            TechTalk.SpecFlow.Table table284 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Query Message",
+                        "Answered",
+                        "Closed"});
+            table284.AddRow(new string[] {
+                        "Lab Field 6 - WBC - rr = T ; rmc = F",
+                        "Lab Field 6 must be greater than Lab Field 5. Please verify.",
+                        "true",
+                        "true"});
+#line 1443
+    testRunner.And("I verify Query is not displayed", ((string)(null)), table284);
+#line 1446
+ testRunner.And("I take a screenshot");
+#line hidden
+            TechTalk.SpecFlow.Table table285 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Data"});
+            table285.AddRow(new string[] {
+                        "Lab Field 6 - WBC - rr = T ; rmc = F",
+                        "1"});
+#line 1447
+ testRunner.When("I enter data in CRF and save", ((string)(null)), table285);
+#line hidden
+            TechTalk.SpecFlow.Table table286 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Query Message",
+                        "Answered",
+                        "Closed"});
+            table286.AddRow(new string[] {
+                        "Lab Field 6 - WBC - rr = T ; rmc = F",
+                        "Lab Field 6 must be greater than Lab Field 5. Please verify.",
+                        "false",
+                        "false"});
+#line 1450
+ testRunner.And("I verify Query is displayed", ((string)(null)), table286);
+#line 1453
+ testRunner.And("I take a screenshot");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute(@"@PB-US12940-10D As an EDC user, when I entered bad data in lab field A and lab field B that resulted in the system opening a query on lab field B, and I answered the query and I changed the data in lab field B to another bad data, and the query is then closed, if I then entered the new bad data in lab field B, then the system should refire a query on lab field B. Query with requires response = false and requires manual close = true.")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Query Refiring Logic5")]
+        public virtual void PB_US12940_10DAsAnEDCUserWhenIEnteredBadDataInLabFieldAAndLabFieldBThatResultedInTheSystemOpeningAQueryOnLabFieldBAndIAnsweredTheQueryAndIChangedTheDataInLabFieldBToAnotherBadDataAndTheQueryIsThenClosedIfIThenEnteredTheNewBadDataInLabFieldBThenTheSystemShouldRefireAQueryOnLabFieldB_QueryWithRequiresResponseFalseAndRequiresManualCloseTrue_()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo(@"@PB-US12940-10D As an EDC user, when I entered bad data in lab field A and lab field B that resulted in the system opening a query on lab field B, and I answered the query and I changed the data in lab field B to another bad data, and the query is then closed, if I then entered the new bad data in lab field B, then the system should refire a query on lab field B. Query with requires response = false and requires manual close = true.", new string[] {
+                        "PB-US12940-10D"});
+#line 1456
+this.ScenarioSetup(scenarioInfo);
+#line 12
+this.FeatureBackground();
+#line hidden
+            TechTalk.SpecFlow.Table table287 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Data"});
+            table287.AddRow(new string[] {
+                        "Subject Number",
+                        "{RndNum<num1>(5)}"});
+            table287.AddRow(new string[] {
+                        "Subject Initials",
+                        "SUB"});
+            table287.AddRow(new string[] {
+                        "Subject ID",
+                        "SUB {Var(num1)}"});
+#line 1458
+ testRunner.And("I create a Subject", ((string)(null)), table287);
+#line 1463
+ testRunner.And("I select Form \"Lab Form 8\"");
+#line hidden
+            TechTalk.SpecFlow.Table table288 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Data"});
+            table288.AddRow(new string[] {
+                        "Lab Field 7 - NEUTROPHILS - rr = F ; rmc = T",
+                        "5"});
+            table288.AddRow(new string[] {
+                        "Lab Field 8 - WBC - rr = F ; rmc = T",
+                        "3"});
+#line 1464
+ testRunner.And("I enter data in CRF and save", ((string)(null)), table288);
+#line hidden
+            TechTalk.SpecFlow.Table table289 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Query Message",
+                        "Answered",
+                        "Closed"});
+            table289.AddRow(new string[] {
+                        "Lab Field 8 - WBC - rr = F ; rmc = T",
+                        "Lab Field 8 must be greater than Lab Field 7. Please verify.",
+                        "false",
+                        "false"});
+#line 1468
+ testRunner.And("I verify Query is displayed", ((string)(null)), table289);
+#line 1471
+ testRunner.And("I take a screenshot");
+#line hidden
+            TechTalk.SpecFlow.Table table290 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Data"});
+            table290.AddRow(new string[] {
+                        "Lab Field 8 - WBC - rr = F ; rmc = T",
+                        "2"});
+#line 1472
+   testRunner.And("I enter data in CRF and save", ((string)(null)), table290);
+#line hidden
+            TechTalk.SpecFlow.Table table291 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Query Message",
+                        "Answered",
+                        "Closed"});
+            table291.AddRow(new string[] {
+                        "Lab Field 8 - WBC - rr = F ; rmc = T",
+                        "Lab Field 8 must be greater than Lab Field 7. Please verify.",
+                        "false",
+                        "false"});
+#line 1475
+ testRunner.And("I verify Query is not displayed", ((string)(null)), table291);
+#line hidden
+            TechTalk.SpecFlow.Table table292 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Query Message",
+                        "Answered",
+                        "Closed"});
+            table292.AddRow(new string[] {
+                        "Lab Field 8 - WBC - rr = F ; rmc = T",
+                        "Lab Field 8 must be greater than Lab Field 7. Please verify.",
+                        "true",
+                        "false"});
+#line 1478
+ testRunner.And("I verify Query is displayed", ((string)(null)), table292);
+#line 1481
+ testRunner.And("I take a screenshot");
+#line 1482
+ testRunner.And("I close the only Query on Field \"Lab Field 8 - WBC - rr = F ; rmc = T\"");
+#line 1483
+ testRunner.And("I save the CRF page");
+#line 1484
+ testRunner.And("I verify closed Query with message \"Lab Field 8 must be greater than Lab Field 7." +
+                    " Please verify.\" is displayed on Field \"Lab Field 8 - WBC - rr = F ; rmc = T\"");
+#line 1485
+    testRunner.And("I take a screenshot");
+#line hidden
+            TechTalk.SpecFlow.Table table293 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Data"});
+            table293.AddRow(new string[] {
+                        "Lab Field 8 - WBC - rr = F ; rmc = T",
+                        "1"});
+#line 1486
+ testRunner.When("I enter data in CRF and save", ((string)(null)), table293);
+#line hidden
+            TechTalk.SpecFlow.Table table294 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Query Message",
+                        "Answered",
+                        "Closed"});
+            table294.AddRow(new string[] {
+                        "Lab Field 8 - WBC - rr = F ; rmc = T",
+                        "Lab Field 8 must be greater than Lab Field 7. Please verify.",
+                        "false",
+                        "false"});
+#line 1489
+ testRunner.Then("I verify Query is displayed", ((string)(null)), table294);
+#line 1492
+ testRunner.And("I take a screenshot");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute(@"@PB-US12940-11A As an EDC user, when I entered bad data in lab field A and lab field B that resulted in the system opening a query on lab field B, and I canceled the query, and I entered good data in lab field A, if I then entered the same bad data in lab field A as when the query was canceled, then the system should not refire a query on lab field B. Query with requires response = true and requires manual close = true.")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Query Refiring Logic5")]
+        public virtual void PB_US12940_11AAsAnEDCUserWhenIEnteredBadDataInLabFieldAAndLabFieldBThatResultedInTheSystemOpeningAQueryOnLabFieldBAndICanceledTheQueryAndIEnteredGoodDataInLabFieldAIfIThenEnteredTheSameBadDataInLabFieldAAsWhenTheQueryWasCanceledThenTheSystemShouldNotRefireAQueryOnLabFieldB_QueryWithRequiresResponseTrueAndRequiresManualCloseTrue_()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo(@"@PB-US12940-11A As an EDC user, when I entered bad data in lab field A and lab field B that resulted in the system opening a query on lab field B, and I canceled the query, and I entered good data in lab field A, if I then entered the same bad data in lab field A as when the query was canceled, then the system should not refire a query on lab field B. Query with requires response = true and requires manual close = true.", new string[] {
+                        "PB-US12940-11A"});
+#line 1495
+this.ScenarioSetup(scenarioInfo);
+#line 12
+this.FeatureBackground();
+#line hidden
+            TechTalk.SpecFlow.Table table295 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Data"});
+            table295.AddRow(new string[] {
+                        "Subject Number",
+                        "{RndNum<num1>(5)}"});
+            table295.AddRow(new string[] {
+                        "Subject Initials",
+                        "SUB"});
+            table295.AddRow(new string[] {
+                        "Subject ID",
+                        "SUB {Var(num1)}"});
+#line 1497
+    testRunner.And("I create a Subject", ((string)(null)), table295);
+#line 1502
+ testRunner.And("I select Form \"Lab Form 8\"");
+#line hidden
+            TechTalk.SpecFlow.Table table296 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Data"});
+            table296.AddRow(new string[] {
+                        "Lab Field 1 - NEUTROPHILS - rr = T ; rmc = T",
+                        "5"});
+            table296.AddRow(new string[] {
+                        "Lab Field 2 - WBC - rr = T ; rmc = T",
+                        "3"});
+#line 1503
+ testRunner.And("I enter data in CRF and save", ((string)(null)), table296);
+#line hidden
+            TechTalk.SpecFlow.Table table297 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Query Message",
+                        "Answered",
+                        "Closed"});
+            table297.AddRow(new string[] {
+                        "Lab Field 2 - WBC - rr = T ; rmc = T",
+                        "Lab Field 2 must be greater than Lab Field 1. Please verify.",
+                        "false",
+                        "false"});
+#line 1507
+ testRunner.And("I verify Query is displayed", ((string)(null)), table297);
+#line 1510
+    testRunner.And("I take a screenshot");
+#line 1511
+ testRunner.And("I cancel the Query \"Lab Field 2 must be greater than Lab Field 1. Please verify.\"" +
+                    " on Field \"Lab Field 2 - WBC - rr = T ; rmc = T\"  \t|");
+#line 1512
+ testRunner.And("I save the CRF page");
+#line hidden
+            TechTalk.SpecFlow.Table table298 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Query Message"});
+            table298.AddRow(new string[] {
+                        "Lab Field 2 - WBC - rr = T ; rmc = T",
+                        "Lab Field 2 must be greater than Lab Field 1. Please verify."});
+#line 1513
+ testRunner.And("I verify Query is cancelled", ((string)(null)), table298);
+#line 1516
+ testRunner.And("I take a screenshot");
+#line hidden
+            TechTalk.SpecFlow.Table table299 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Data"});
+            table299.AddRow(new string[] {
+                        "Lab Field 1 - NEUTROPHILS - rr = T ; rmc = T",
+                        "2"});
+#line 1517
+ testRunner.And("I enter data in CRF and save", ((string)(null)), table299);
+#line hidden
+            TechTalk.SpecFlow.Table table300 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Query Message",
+                        "Answered",
+                        "Closed"});
+            table300.AddRow(new string[] {
+                        "Lab Field 2 - WBC - rr = T ; rmc = T",
+                        "Lab Field 2 must be greater than Lab Field 1. Please verify.",
+                        "false",
+                        "false"});
+#line 1520
+ testRunner.And("I verify Query is not displayed", ((string)(null)), table300);
+#line 1523
+ testRunner.And("I take a screenshot");
+#line hidden
+            TechTalk.SpecFlow.Table table301 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Data"});
+            table301.AddRow(new string[] {
+                        "Lab Field 1 - NEUTROPHILS - rr = T ; rmc = T",
+                        "5"});
+#line 1524
+ testRunner.When("I enter data in CRF and save", ((string)(null)), table301);
+#line hidden
+            TechTalk.SpecFlow.Table table302 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Query Message",
+                        "Answered",
+                        "Closed"});
+            table302.AddRow(new string[] {
+                        "Lab Field 2 - WBC - rr = T ; rmc = T",
+                        "Lab Field 2 must be greater than Lab Field 1. Please verify.",
+                        "false",
+                        "false"});
+#line 1527
+ testRunner.And("I verify Query is not displayed", ((string)(null)), table302);
+#line 1530
+ testRunner.And("I take a screenshot");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute(@"@PB-US12940-11B As an EDC user, when I entered bad data in lab field A and lab field B that resulted in the system opening a query on lab field B, and I canceled the query, and I entered good data in lab field A, if I then entered the same bad data in lab field A as when the query was canceled, then the system should not refire a query on lab field B. Query with requires response = false and requires manual close = false.")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Query Refiring Logic5")]
+        public virtual void PB_US12940_11BAsAnEDCUserWhenIEnteredBadDataInLabFieldAAndLabFieldBThatResultedInTheSystemOpeningAQueryOnLabFieldBAndICanceledTheQueryAndIEnteredGoodDataInLabFieldAIfIThenEnteredTheSameBadDataInLabFieldAAsWhenTheQueryWasCanceledThenTheSystemShouldNotRefireAQueryOnLabFieldB_QueryWithRequiresResponseFalseAndRequiresManualCloseFalse_()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo(@"@PB-US12940-11B As an EDC user, when I entered bad data in lab field A and lab field B that resulted in the system opening a query on lab field B, and I canceled the query, and I entered good data in lab field A, if I then entered the same bad data in lab field A as when the query was canceled, then the system should not refire a query on lab field B. Query with requires response = false and requires manual close = false.", new string[] {
+                        "PB-US12940-11B"});
+#line 1534
+this.ScenarioSetup(scenarioInfo);
+#line 12
+this.FeatureBackground();
+#line hidden
+            TechTalk.SpecFlow.Table table303 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Data"});
+            table303.AddRow(new string[] {
+                        "Subject Number",
+                        "{RndNum<num1>(5)}"});
+            table303.AddRow(new string[] {
+                        "Subject Initials",
+                        "SUB"});
+            table303.AddRow(new string[] {
+                        "Subject ID",
+                        "SUB {Var(num1)}"});
+#line 1536
+    testRunner.And("I create a Subject", ((string)(null)), table303);
+#line 1541
+ testRunner.And("I select Form \"Lab Form 8\"");
+#line hidden
+            TechTalk.SpecFlow.Table table304 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Data"});
+            table304.AddRow(new string[] {
+                        "Lab Field 3 - NEUTROPHILS - rr = F ; rmc = F",
+                        "5"});
+            table304.AddRow(new string[] {
+                        "Lab Field 4 - WBC - rr = F ; rmc = F",
+                        "3"});
+#line 1542
+ testRunner.And("I enter data in CRF and save", ((string)(null)), table304);
+#line hidden
+            TechTalk.SpecFlow.Table table305 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Query Message",
+                        "Answered",
+                        "Closed"});
+            table305.AddRow(new string[] {
+                        "Lab Field 4 - WBC - rr = F ; rmc = F",
+                        "Lab Field 4 must be greater than Lab Field 3. Please verify.",
+                        "false",
+                        "false"});
+#line 1546
+ testRunner.And("I verify Query is displayed", ((string)(null)), table305);
+#line 1549
+ testRunner.And("I take a screenshot");
+#line 1550
+ testRunner.And("I cancel the Query \"Lab Field 4 must be greater than Lab Field 3. Please verify.\"" +
+                    " on Field \"Lab Field 4 - WBC - rr = F ; rmc = F\"");
+#line 1551
+ testRunner.And("I save the CRF page");
+#line hidden
+            TechTalk.SpecFlow.Table table306 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Query Message"});
+            table306.AddRow(new string[] {
+                        "Lab Field 4 - WBC - rr = F ; rmc = F",
+                        "Lab Field 4 must be greater than Lab Field 3. Please verify."});
+#line 1552
+ testRunner.And("I verify Query is cancelled", ((string)(null)), table306);
+#line 1555
+ testRunner.And("I take a screenshot");
+#line hidden
+            TechTalk.SpecFlow.Table table307 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Data"});
+            table307.AddRow(new string[] {
+                        "Lab Field 3 - NEUTROPHILS - rr = F ; rmc = F",
+                        "2"});
+#line 1556
+ testRunner.And("I enter data in CRF and save", ((string)(null)), table307);
+#line hidden
+            TechTalk.SpecFlow.Table table308 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Query Message",
+                        "Answered",
+                        "Closed"});
+            table308.AddRow(new string[] {
+                        "Lab Field 4 - WBC - rr = F ; rmc = F",
+                        "Lab Field 4 must be greater than Lab Field 3. Please verify.",
+                        "false",
+                        "false"});
+#line 1559
+ testRunner.And("I verify Query is not displayed", ((string)(null)), table308);
+#line 1562
+ testRunner.And("I take a screenshot");
+#line hidden
+            TechTalk.SpecFlow.Table table309 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Data"});
+            table309.AddRow(new string[] {
+                        "Lab Field 3 - NEUTROPHILS - rr = F ; rmc = F",
+                        "5"});
+#line 1563
+ testRunner.When("I enter data in CRF and save", ((string)(null)), table309);
+#line hidden
+            TechTalk.SpecFlow.Table table310 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Query Message",
+                        "Answered",
+                        "Closed"});
+            table310.AddRow(new string[] {
+                        "Lab Field 4 - WBC - rr = F ; rmc = F",
+                        "Lab Field 4 must be greater than Lab Field 3. Please verify.",
+                        "false",
+                        "false"});
+#line 1566
+ testRunner.Then("I verify Query is not displayed", ((string)(null)), table310);
+#line 1569
+ testRunner.And("I take a screenshot");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute(@"@PB-US12940-11C As an EDC user, when I entered bad data in lab field A and lab field B that resulted in the system opening a query on lab field B, and I canceled the query, and I entered good data in lab field A, if I then entered the same bad data in lab field A as when the query was canceled, then the system should not refire a query on lab field B. Query with requires response = true and requires manual close = false.")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Query Refiring Logic5")]
+        public virtual void PB_US12940_11CAsAnEDCUserWhenIEnteredBadDataInLabFieldAAndLabFieldBThatResultedInTheSystemOpeningAQueryOnLabFieldBAndICanceledTheQueryAndIEnteredGoodDataInLabFieldAIfIThenEnteredTheSameBadDataInLabFieldAAsWhenTheQueryWasCanceledThenTheSystemShouldNotRefireAQueryOnLabFieldB_QueryWithRequiresResponseTrueAndRequiresManualCloseFalse_()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo(@"@PB-US12940-11C As an EDC user, when I entered bad data in lab field A and lab field B that resulted in the system opening a query on lab field B, and I canceled the query, and I entered good data in lab field A, if I then entered the same bad data in lab field A as when the query was canceled, then the system should not refire a query on lab field B. Query with requires response = true and requires manual close = false.", new string[] {
+                        "PB-US12940-11C"});
+#line 1573
+this.ScenarioSetup(scenarioInfo);
+#line 12
+this.FeatureBackground();
+#line hidden
+            TechTalk.SpecFlow.Table table311 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Data"});
+            table311.AddRow(new string[] {
+                        "Subject Number",
+                        "{RndNum<num1>(5)}"});
+            table311.AddRow(new string[] {
+                        "Subject Initials",
+                        "SUB"});
+            table311.AddRow(new string[] {
+                        "Subject ID",
+                        "SUB {Var(num1)}"});
+#line 1575
+    testRunner.And("I create a Subject", ((string)(null)), table311);
+#line 1580
+ testRunner.And("I select Form \"Lab Form 8\"");
+#line hidden
+            TechTalk.SpecFlow.Table table312 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Data"});
+            table312.AddRow(new string[] {
+                        "Lab Field 5 - NEUTROPHILS - rr = T ; rmc = F",
+                        "5"});
+            table312.AddRow(new string[] {
+                        "Lab Field 6 - WBC - rr = T ; rmc = F",
+                        "3"});
+#line 1581
+ testRunner.And("I enter data in CRF and save", ((string)(null)), table312);
+#line hidden
+            TechTalk.SpecFlow.Table table313 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Query Message",
+                        "Answered",
+                        "Closed"});
+            table313.AddRow(new string[] {
+                        "Lab Field 6 - WBC - rr = T ; rmc = F",
+                        "Lab Field 6 must be greater than Lab Field 5. Please verify.",
+                        "false",
+                        "false"});
+#line 1585
+ testRunner.And("I verify Query is displayed", ((string)(null)), table313);
+#line 1588
+ testRunner.And("I take a screenshot");
+#line 1589
+ testRunner.And("I cancel the Query \"Lab Field 6 must be greater than Lab Field 5. Please verify.\"" +
+                    " on Field \"Lab Field 6 - WBC - rr = T ; rmc = F\"");
+#line 1590
+ testRunner.And("I save the CRF page");
+#line hidden
+            TechTalk.SpecFlow.Table table314 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Query Message"});
+            table314.AddRow(new string[] {
+                        "Lab Field 6 - WBC - rr = T ; rmc = F",
+                        "Lab Field 6 must be greater than Lab Field 5. Please verify."});
+#line 1591
+ testRunner.And("I verify Query is cancelled", ((string)(null)), table314);
+#line 1594
+ testRunner.And("I take a screenshot");
+#line hidden
+            TechTalk.SpecFlow.Table table315 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Data"});
+            table315.AddRow(new string[] {
+                        "Lab Field 5 - NEUTROPHILS - rr = T ; rmc = F",
+                        "2"});
+#line 1595
+ testRunner.And("I enter data in CRF and save", ((string)(null)), table315);
+#line hidden
+            TechTalk.SpecFlow.Table table316 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Query Message",
+                        "Answered",
+                        "Closed"});
+            table316.AddRow(new string[] {
+                        "Lab Field 6 - WBC - rr = T ; rmc = F",
+                        "Lab Field 6 must be greater than Lab Field 5. Please verify.",
+                        "false",
+                        "false"});
+#line 1598
+ testRunner.And("I verify Query is not displayed", ((string)(null)), table316);
+#line 1601
+ testRunner.And("I take a screenshot");
+#line hidden
+            TechTalk.SpecFlow.Table table317 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Data"});
+            table317.AddRow(new string[] {
+                        "Lab Field 5 - NEUTROPHILS - rr = T ; rmc = F",
+                        "5"});
+#line 1602
+ testRunner.When("I enter data in CRF and save", ((string)(null)), table317);
+#line hidden
+            TechTalk.SpecFlow.Table table318 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Query Message",
+                        "Answered",
+                        "Closed"});
+            table318.AddRow(new string[] {
+                        "Lab Field 6 - WBC - rr = T ; rmc = F",
+                        "Lab Field 6 must be greater than Lab Field 5. Please verify.",
+                        "false",
+                        "false"});
+#line 1605
+ testRunner.Then("I verify Query is not displayed", ((string)(null)), table318);
+#line 1608
+ testRunner.And("I take a screenshot");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute(@"@PB-US12940-11D As an EDC user, when I entered bad data in lab field A and lab field B that resulted in the system opening a query on lab field B, and I canceled the query, and I entered good data in lab field A, if I then entered the same bad data in lab field A as when the query was canceled, then the system should not refire a query on lab field B. Query with requires response = false and requires manual close = true.")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Query Refiring Logic5")]
+        public virtual void PB_US12940_11DAsAnEDCUserWhenIEnteredBadDataInLabFieldAAndLabFieldBThatResultedInTheSystemOpeningAQueryOnLabFieldBAndICanceledTheQueryAndIEnteredGoodDataInLabFieldAIfIThenEnteredTheSameBadDataInLabFieldAAsWhenTheQueryWasCanceledThenTheSystemShouldNotRefireAQueryOnLabFieldB_QueryWithRequiresResponseFalseAndRequiresManualCloseTrue_()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo(@"@PB-US12940-11D As an EDC user, when I entered bad data in lab field A and lab field B that resulted in the system opening a query on lab field B, and I canceled the query, and I entered good data in lab field A, if I then entered the same bad data in lab field A as when the query was canceled, then the system should not refire a query on lab field B. Query with requires response = false and requires manual close = true.", new string[] {
+                        "PB-US12940-11D"});
+#line 1611
+this.ScenarioSetup(scenarioInfo);
+#line 12
+this.FeatureBackground();
+#line hidden
+            TechTalk.SpecFlow.Table table319 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Data"});
+            table319.AddRow(new string[] {
+                        "Subject Number",
+                        "{RndNum<num1>(5)}"});
+            table319.AddRow(new string[] {
+                        "Subject Initials",
+                        "SUB"});
+            table319.AddRow(new string[] {
+                        "Subject ID",
+                        "SUB {Var(num1)}"});
+#line 1613
+ testRunner.And("I create a Subject", ((string)(null)), table319);
+#line 1618
+ testRunner.And("I select Form \"Lab Form 8\"");
+#line hidden
+            TechTalk.SpecFlow.Table table320 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Data"});
+            table320.AddRow(new string[] {
+                        "Lab Field 7 - NEUTROPHILS - rr = F ; rmc = T",
+                        "5"});
+            table320.AddRow(new string[] {
+                        "Lab Field 8 - WBC - rr = F ; rmc = T",
+                        "3"});
+#line 1619
+ testRunner.And("I enter data in CRF and save", ((string)(null)), table320);
+#line hidden
+            TechTalk.SpecFlow.Table table321 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Query Message",
+                        "Answered",
+                        "Closed"});
+            table321.AddRow(new string[] {
+                        "Lab Field 8 - WBC - rr = F ; rmc = T",
+                        "Lab Field 8 must be greater than Lab Field 7. Please verify.",
+                        "false",
+                        "false"});
+#line 1623
+ testRunner.And("I verify Query is displayed", ((string)(null)), table321);
+#line 1626
+ testRunner.And("I take a screenshot");
+#line 1627
+ testRunner.And("I cancel the Query \"Lab Field 8 must be greater than Lab Field 7. Please verify.\"" +
+                    " on Field \"Lab Field 8 - WBC - rr = F ; rmc = T\"");
+#line 1628
+ testRunner.And("I save the CRF page");
+#line hidden
+            TechTalk.SpecFlow.Table table322 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Query Message"});
+            table322.AddRow(new string[] {
+                        "Lab Field 8 - WBC - rr = F ; rmc = T",
+                        "Lab Field 8 must be greater than Lab Field 7. Please verify."});
+#line 1629
+ testRunner.And("I verify Query is cancelled", ((string)(null)), table322);
+#line 1632
+ testRunner.And("I take a screenshot");
+#line hidden
+            TechTalk.SpecFlow.Table table323 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Data"});
+            table323.AddRow(new string[] {
+                        "Lab Field 7 - NEUTROPHILS - rr = F ; rmc = T",
+                        "2"});
+#line 1633
+ testRunner.And("I enter data in CRF and save", ((string)(null)), table323);
+#line hidden
+            TechTalk.SpecFlow.Table table324 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Query Message",
+                        "Answered",
+                        "Closed"});
+            table324.AddRow(new string[] {
+                        "Lab Field 8 - WBC - rr = F ; rmc = T",
+                        "Lab Field 8 must be greater than Lab Field 7. Please verify.",
+                        "false",
+                        "false"});
+#line 1636
+ testRunner.And("I verify Query is not displayed", ((string)(null)), table324);
+#line 1639
+ testRunner.And("I take a screenshot");
+#line hidden
+            TechTalk.SpecFlow.Table table325 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Data"});
+            table325.AddRow(new string[] {
+                        "Lab Field 7 - NEUTROPHILS - rr = F ; rmc = T",
+                        "5"});
+#line 1640
+ testRunner.When("I enter data in CRF and save", ((string)(null)), table325);
+#line hidden
+            TechTalk.SpecFlow.Table table326 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Query Message",
+                        "Answered",
+                        "Closed"});
+            table326.AddRow(new string[] {
+                        "Lab Field 8 - WBC - rr = F ; rmc = T",
+                        "Lab Field 8 must be greater than Lab Field 7. Please verify.",
+                        "false",
+                        "false"});
+#line 1643
+ testRunner.And("I verify Query is not displayed", ((string)(null)), table326);
+#line 1646
+ testRunner.And("I take a screenshot");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute(@"@PB-US12940-12A As an EDC user, when I entered bad data in field A and lab field B that resulted in the system opening a query on lab field B, and I canceled the query, and I entered good data in lab field B, if I then entered the same bad data in lab field B as when the query was canceled, then the system should not refire a query on lab field B. Query with requires response = true and requires manual close = true.")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Query Refiring Logic5")]
+        public virtual void PB_US12940_12AAsAnEDCUserWhenIEnteredBadDataInFieldAAndLabFieldBThatResultedInTheSystemOpeningAQueryOnLabFieldBAndICanceledTheQueryAndIEnteredGoodDataInLabFieldBIfIThenEnteredTheSameBadDataInLabFieldBAsWhenTheQueryWasCanceledThenTheSystemShouldNotRefireAQueryOnLabFieldB_QueryWithRequiresResponseTrueAndRequiresManualCloseTrue_()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo(@"@PB-US12940-12A As an EDC user, when I entered bad data in field A and lab field B that resulted in the system opening a query on lab field B, and I canceled the query, and I entered good data in lab field B, if I then entered the same bad data in lab field B as when the query was canceled, then the system should not refire a query on lab field B. Query with requires response = true and requires manual close = true.", new string[] {
+                        "PB-US12940-12A"});
+#line 1649
+this.ScenarioSetup(scenarioInfo);
+#line 12
+this.FeatureBackground();
+#line hidden
+            TechTalk.SpecFlow.Table table327 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Data"});
+            table327.AddRow(new string[] {
+                        "Subject Number",
+                        "{RndNum<num1>(5)}"});
+            table327.AddRow(new string[] {
+                        "Subject Initials",
+                        "SUB"});
+            table327.AddRow(new string[] {
+                        "Subject ID",
+                        "SUB {Var(num1)}"});
+#line 1651
+    testRunner.And("I create a Subject", ((string)(null)), table327);
+#line 1656
+ testRunner.And("I select Form \"Lab Form 8\"");
+#line hidden
+            TechTalk.SpecFlow.Table table328 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Data"});
+            table328.AddRow(new string[] {
+                        "Lab Field 1 - NEUTROPHILS - rr = T ; rmc = T",
+                        "5"});
+            table328.AddRow(new string[] {
+                        "Lab Field 2 - WBC - rr = T ; rmc = T",
+                        "3"});
+#line 1657
+ testRunner.And("I enter data in CRF and save", ((string)(null)), table328);
+#line hidden
+            TechTalk.SpecFlow.Table table329 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Query Message",
+                        "Answered",
+                        "Closed"});
+            table329.AddRow(new string[] {
+                        "Lab Field 2 - WBC - rr = T ; rmc = T",
+                        "Lab Field 2 must be greater than Lab Field 1. Please verify.",
+                        "false",
+                        "false"});
+#line 1661
+ testRunner.And("I verify Query is displayed", ((string)(null)), table329);
+#line 1664
+ testRunner.And("I take a screenshot");
+#line 1665
+ testRunner.And("I cancel the Query \"Lab Field 2 must be greater than Lab Field 1. Please verify.\"" +
+                    " on Field \"Lab Field 2 - WBC - rr = T ; rmc = T\"");
+#line 1666
+ testRunner.And("I save the CRF page");
+#line hidden
+            TechTalk.SpecFlow.Table table330 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Query Message"});
+            table330.AddRow(new string[] {
+                        "Lab Field 2 - WBC - rr = T ; rmc = T",
+                        "Lab Field 2 must be greater than Lab Field 1. Please verify."});
+#line 1667
+ testRunner.And("I verify Query is cancelled", ((string)(null)), table330);
+#line 1670
+ testRunner.And("I take a screenshot");
+#line hidden
+            TechTalk.SpecFlow.Table table331 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Data"});
+            table331.AddRow(new string[] {
+                        "Lab Field 2 - WBC - rr = T ; rmc = T",
+                        "6"});
+#line 1671
+ testRunner.And("I enter data in CRF and save", ((string)(null)), table331);
+#line hidden
+            TechTalk.SpecFlow.Table table332 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Query Message",
+                        "Answered",
+                        "Closed"});
+            table332.AddRow(new string[] {
+                        "Lab Field 2 - WBC - rr = T ; rmc = T",
+                        "Lab Field 2 must be greater than Lab Field 1. Please verify.",
+                        "false",
+                        "false"});
+#line 1674
+ testRunner.And("I verify Query is not displayed", ((string)(null)), table332);
+#line 1677
+ testRunner.And("I take a screenshot");
+#line hidden
+            TechTalk.SpecFlow.Table table333 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Data"});
+            table333.AddRow(new string[] {
+                        "Lab Field 2 - WBC - rr = T ; rmc = T",
+                        "3"});
+#line 1678
+ testRunner.When("I enter data in CRF and save", ((string)(null)), table333);
+#line hidden
+            TechTalk.SpecFlow.Table table334 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Query Message",
+                        "Answered",
+                        "Closed"});
+            table334.AddRow(new string[] {
+                        "Lab Field 2 - WBC - rr = T ; rmc = T",
+                        "Lab Field 2 must be greater than Lab Field 1. Please verify.",
+                        "false",
+                        "false"});
+#line 1681
+ testRunner.Then("I verify Query is not displayed", ((string)(null)), table334);
+#line 1684
+ testRunner.And("I take a screenshot");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute(@"@PB-US12940-12B As an EDC user, when I entered bad data in field A and lab field B that resulted in the system opening a query on lab field B, and I canceled the query, and I entered good data in lab field B, if I then entered the same bad data in lab field B as when the query was canceled, then the system should not refire a query on lab field B. Query with requires response = false and requires manual close = false.")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Query Refiring Logic5")]
+        public virtual void PB_US12940_12BAsAnEDCUserWhenIEnteredBadDataInFieldAAndLabFieldBThatResultedInTheSystemOpeningAQueryOnLabFieldBAndICanceledTheQueryAndIEnteredGoodDataInLabFieldBIfIThenEnteredTheSameBadDataInLabFieldBAsWhenTheQueryWasCanceledThenTheSystemShouldNotRefireAQueryOnLabFieldB_QueryWithRequiresResponseFalseAndRequiresManualCloseFalse_()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo(@"@PB-US12940-12B As an EDC user, when I entered bad data in field A and lab field B that resulted in the system opening a query on lab field B, and I canceled the query, and I entered good data in lab field B, if I then entered the same bad data in lab field B as when the query was canceled, then the system should not refire a query on lab field B. Query with requires response = false and requires manual close = false.", new string[] {
+                        "PB-US12940-12B"});
+#line 1687
+this.ScenarioSetup(scenarioInfo);
+#line 12
+this.FeatureBackground();
+#line hidden
+            TechTalk.SpecFlow.Table table335 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Data"});
+            table335.AddRow(new string[] {
+                        "Subject Number",
+                        "{RndNum<num1>(5)}"});
+            table335.AddRow(new string[] {
+                        "Subject Initials",
+                        "SUB"});
+            table335.AddRow(new string[] {
+                        "Subject ID",
+                        "SUB {Var(num1)}"});
+#line 1689
+    testRunner.And("I create a Subject", ((string)(null)), table335);
+#line 1694
+ testRunner.And("I select Form \"Lab Form 8\"");
+#line hidden
+            TechTalk.SpecFlow.Table table336 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Data"});
+            table336.AddRow(new string[] {
+                        "Lab Field 3 - NEUTROPHILS - rr = F ; rmc = F",
+                        "5"});
+            table336.AddRow(new string[] {
+                        "Lab Field 4 - WBC - rr = F ; rmc = F",
+                        "3"});
+#line 1695
+ testRunner.And("I enter data in CRF and save", ((string)(null)), table336);
+#line hidden
+            TechTalk.SpecFlow.Table table337 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Query Message",
+                        "Answered",
+                        "Closed"});
+            table337.AddRow(new string[] {
+                        "Lab Field 4 - WBC - rr = F ; rmc = F",
+                        "Lab Field 4 must be greater than Lab Field 3. Please verify.",
+                        "false",
+                        "false"});
+#line 1699
+ testRunner.And("I verify Query is displayed", ((string)(null)), table337);
+#line 1702
+    testRunner.And("I take a screenshot");
+#line 1703
+ testRunner.And("I cancel the Query \"Lab Field 4 must be greater than Lab Field 3. Please verify.\"" +
+                    " on Field \"Lab Field 4 - WBC - rr = F ; rmc = F\"");
+#line 1704
+ testRunner.And("I save the CRF page");
+#line hidden
+            TechTalk.SpecFlow.Table table338 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Query Message"});
+            table338.AddRow(new string[] {
+                        "Lab Field 4 - WBC - rr = F ; rmc = F",
+                        "Lab Field 4 must be greater than Lab Field 3. Please verify."});
+#line 1705
+ testRunner.And("I verify Query is cancelled", ((string)(null)), table338);
+#line 1708
+ testRunner.And("I take a screenshot");
+#line hidden
+            TechTalk.SpecFlow.Table table339 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Data"});
+            table339.AddRow(new string[] {
+                        "Lab Field 4 - WBC - rr = F ; rmc = F",
+                        "6"});
+#line 1709
+ testRunner.And("I enter data in CRF and save", ((string)(null)), table339);
+#line hidden
+            TechTalk.SpecFlow.Table table340 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Query Message",
+                        "Answered",
+                        "Closed"});
+            table340.AddRow(new string[] {
+                        "Lab Field 4 - WBC - rr = F ; rmc = F",
+                        "Lab Field 4 must be greater than Lab Field 3. Please verify.",
+                        "false",
+                        "false"});
+#line 1712
+ testRunner.And("I verify Query is not displayed", ((string)(null)), table340);
+#line 1715
+ testRunner.And("I take a screenshot");
+#line hidden
+            TechTalk.SpecFlow.Table table341 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Data"});
+            table341.AddRow(new string[] {
+                        "Lab Field 4 - WBC - rr = F ; rmc = F",
+                        "3"});
+#line 1716
+ testRunner.When("I enter data in CRF and save", ((string)(null)), table341);
+#line hidden
+            TechTalk.SpecFlow.Table table342 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Query Message",
+                        "Answered",
+                        "Closed"});
+            table342.AddRow(new string[] {
+                        "Lab Field 4 - WBC - rr = F ; rmc = F",
+                        "Lab Field 4 must be greater than Lab Field 3. Please verify.",
+                        "false",
+                        "false"});
+#line 1719
+ testRunner.Then("I verify Query is not displayed", ((string)(null)), table342);
+#line 1722
+ testRunner.And("I take a screenshot");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute(@"@PB-US12940-12C As an EDC user, when I entered bad data in field A and lab field B that resulted in the system opening a query on lab field B, and I canceled the query, and I entered good data in lab field B, if I then entered the same bad data in lab field B as when the query was canceled, then the system should not refire a query on lab field B. Query with requires response = true and requires manual close = false.")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Query Refiring Logic5")]
+        public virtual void PB_US12940_12CAsAnEDCUserWhenIEnteredBadDataInFieldAAndLabFieldBThatResultedInTheSystemOpeningAQueryOnLabFieldBAndICanceledTheQueryAndIEnteredGoodDataInLabFieldBIfIThenEnteredTheSameBadDataInLabFieldBAsWhenTheQueryWasCanceledThenTheSystemShouldNotRefireAQueryOnLabFieldB_QueryWithRequiresResponseTrueAndRequiresManualCloseFalse_()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo(@"@PB-US12940-12C As an EDC user, when I entered bad data in field A and lab field B that resulted in the system opening a query on lab field B, and I canceled the query, and I entered good data in lab field B, if I then entered the same bad data in lab field B as when the query was canceled, then the system should not refire a query on lab field B. Query with requires response = true and requires manual close = false.", new string[] {
+                        "PB-US12940-12C"});
+#line 1725
+this.ScenarioSetup(scenarioInfo);
+#line 12
+this.FeatureBackground();
+#line hidden
+            TechTalk.SpecFlow.Table table343 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Data"});
+            table343.AddRow(new string[] {
+                        "Subject Number",
+                        "{RndNum<num1>(5)}"});
+            table343.AddRow(new string[] {
+                        "Subject Initials",
+                        "SUB"});
+            table343.AddRow(new string[] {
+                        "Subject ID",
+                        "SUB {Var(num1)}"});
+#line 1727
+    testRunner.And("I create a Subject", ((string)(null)), table343);
+#line 1732
+ testRunner.And("I select Form \"Lab Form 8\"");
+#line hidden
+            TechTalk.SpecFlow.Table table344 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Data"});
+            table344.AddRow(new string[] {
+                        "Lab Field 5 - NEUTROPHILS - rr = T ; rmc = F",
+                        "5"});
+            table344.AddRow(new string[] {
+                        "Lab Field 6 - WBC - rr = T ; rmc = F",
+                        "3"});
+#line 1733
+ testRunner.And("I enter data in CRF and save", ((string)(null)), table344);
+#line hidden
+            TechTalk.SpecFlow.Table table345 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Query Message",
+                        "Answered",
+                        "Closed"});
+            table345.AddRow(new string[] {
+                        "Lab Field 6 - WBC - rr = T ; rmc = F",
+                        "Lab Field 6 must be greater than Lab Field 5. Please verify.",
+                        "false",
+                        "false"});
+#line 1737
+ testRunner.And("I verify Query is displayed", ((string)(null)), table345);
+#line 1740
+ testRunner.And("I take a screenshot");
+#line 1741
+ testRunner.And("I cancel the Query \"Lab Field 6 must be greater than Lab Field 5. Please verify.\"" +
+                    " on Field \"Lab Field 6 - WBC - rr = T ; rmc = F\"");
+#line 1742
+ testRunner.And("I save the CRF page");
+#line hidden
+            TechTalk.SpecFlow.Table table346 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Query Message"});
+            table346.AddRow(new string[] {
+                        "Lab Field 6 - WBC - rr = T ; rmc = F",
+                        "Lab Field 6 must be greater than Lab Field 5. Please verify."});
+#line 1743
+ testRunner.And("I verify Query is cancelled", ((string)(null)), table346);
+#line 1746
+ testRunner.And("I take a screenshot");
+#line hidden
+            TechTalk.SpecFlow.Table table347 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Data"});
+            table347.AddRow(new string[] {
+                        "Lab Field 6 - WBC - rr = T ; rmc = F",
+                        "6"});
+#line 1747
+ testRunner.And("I enter data in CRF and save", ((string)(null)), table347);
+#line hidden
+            TechTalk.SpecFlow.Table table348 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Query Message",
+                        "Answered",
+                        "Closed"});
+            table348.AddRow(new string[] {
+                        "Lab Field 6 - WBC - rr = T ; rmc = F",
+                        "Lab Field 6 must be greater than Lab Field 5. Please verify.",
+                        "false",
+                        "false"});
+#line 1750
+ testRunner.And("I verify Query is not displayed", ((string)(null)), table348);
+#line 1753
+ testRunner.And("I take a screenshot");
+#line hidden
+            TechTalk.SpecFlow.Table table349 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Data"});
+            table349.AddRow(new string[] {
+                        "Lab Field 6 - WBC - rr = T ; rmc = F",
+                        "3"});
+#line 1754
+ testRunner.When("I enter data in CRF and save", ((string)(null)), table349);
+#line hidden
+            TechTalk.SpecFlow.Table table350 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Query Message",
+                        "Answered",
+                        "Closed"});
+            table350.AddRow(new string[] {
+                        "Lab Field 6 - WBC - rr = T ; rmc = F",
+                        "Lab Field 6 must be greater than Lab Field 5. Please verify.",
+                        "false",
+                        "false"});
+#line 1757
+ testRunner.And("I verify Query is not displayed", ((string)(null)), table350);
+#line 1760
+ testRunner.And("I take a screenshot");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute(@"@PB-US12940-12D As an EDC user, when I entered bad data in field A and lab field B that resulted in the system opening a query on lab field B, and I canceled the query, and I entered good data in lab field B, if I then entered the same bad data in lab field B as when the query was canceled, then the system should not refire a query on lab field B. Query with requires response = false and requires manual close = true.")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Query Refiring Logic5")]
+        public virtual void PB_US12940_12DAsAnEDCUserWhenIEnteredBadDataInFieldAAndLabFieldBThatResultedInTheSystemOpeningAQueryOnLabFieldBAndICanceledTheQueryAndIEnteredGoodDataInLabFieldBIfIThenEnteredTheSameBadDataInLabFieldBAsWhenTheQueryWasCanceledThenTheSystemShouldNotRefireAQueryOnLabFieldB_QueryWithRequiresResponseFalseAndRequiresManualCloseTrue_()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo(@"@PB-US12940-12D As an EDC user, when I entered bad data in field A and lab field B that resulted in the system opening a query on lab field B, and I canceled the query, and I entered good data in lab field B, if I then entered the same bad data in lab field B as when the query was canceled, then the system should not refire a query on lab field B. Query with requires response = false and requires manual close = true.", new string[] {
+                        "PB-US12940-12D"});
+#line 1763
+this.ScenarioSetup(scenarioInfo);
+#line 12
+this.FeatureBackground();
+#line hidden
+            TechTalk.SpecFlow.Table table351 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Data"});
+            table351.AddRow(new string[] {
+                        "Subject Number",
+                        "{RndNum<num1>(5)}"});
+            table351.AddRow(new string[] {
+                        "Subject Initials",
+                        "SUB"});
+            table351.AddRow(new string[] {
+                        "Subject ID",
+                        "SUB {Var(num1)}"});
+#line 1765
+ testRunner.And("I create a Subject", ((string)(null)), table351);
+#line 1770
+ testRunner.And("I select Form \"Lab Form 8\"");
+#line hidden
+            TechTalk.SpecFlow.Table table352 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Data"});
+            table352.AddRow(new string[] {
+                        "Lab Field 7 - NEUTROPHILS - rr = F ; rmc = T",
+                        "5"});
+            table352.AddRow(new string[] {
+                        "Lab Field 8 - WBC - rr = F ; rmc = T",
+                        "3"});
+#line 1771
+ testRunner.And("I enter data in CRF and save", ((string)(null)), table352);
+#line hidden
+            TechTalk.SpecFlow.Table table353 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Query Message",
+                        "Answered",
+                        "Closed"});
+            table353.AddRow(new string[] {
+                        "Lab Field 8 - WBC - rr = F ; rmc = T",
+                        "Lab Field 8 must be greater than Lab Field 7. Please verify.",
+                        "false",
+                        "false"});
+#line 1775
+ testRunner.And("I verify Query is displayed", ((string)(null)), table353);
+#line 1778
+ testRunner.And("I take a screenshot");
+#line 1779
+ testRunner.And("I cancel the Query \"Lab Field 8 must be greater than Lab Field 7. Please verify.\"" +
+                    " on Field \"Lab Field 8 - WBC - rr = F ; rmc = T\"");
+#line 1780
+ testRunner.And("I save the CRF page");
+#line hidden
+            TechTalk.SpecFlow.Table table354 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Query Message"});
+            table354.AddRow(new string[] {
+                        "Lab Field 8 - WBC - rr = F ; rmc = T",
+                        "Lab Field 8 must be greater than Lab Field 7. Please verify."});
+#line 1781
+ testRunner.And("I verify Query is cancelled", ((string)(null)), table354);
+#line 1785
+ testRunner.And("I take a screenshot");
+#line hidden
+            TechTalk.SpecFlow.Table table355 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Data"});
+            table355.AddRow(new string[] {
+                        "Lab Field 8 - WBC - rr = F ; rmc = T",
+                        "6"});
+#line 1786
+ testRunner.And("I enter data in CRF and save", ((string)(null)), table355);
+#line hidden
+            TechTalk.SpecFlow.Table table356 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Query Message",
+                        "Answered",
+                        "Closed"});
+            table356.AddRow(new string[] {
+                        "Lab Field 8 - WBC - rr = F ; rmc = T",
+                        "Lab Field 8 must be greater than Lab Field 7. Please verify.",
+                        "false",
+                        "false"});
+#line 1789
+ testRunner.And("I verify Query is not displayed", ((string)(null)), table356);
+#line 1792
+ testRunner.And("I take a screenshot");
+#line hidden
+            TechTalk.SpecFlow.Table table357 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Data"});
+            table357.AddRow(new string[] {
+                        "Lab Field 8 - WBC - rr = F ; rmc = T",
+                        "3"});
+#line 1793
+ testRunner.When("I enter data in CRF and save", ((string)(null)), table357);
+#line hidden
+            TechTalk.SpecFlow.Table table358 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Query Message",
+                        "Answered",
+                        "Closed"});
+            table358.AddRow(new string[] {
+                        "Lab Field 8 - WBC - rr = F ; rmc = T",
+                        "Lab Field 8 must be greater than Lab Field 7. Please verify.",
+                        "false",
+                        "false"});
+#line 1796
+ testRunner.Then("I verify Query is not displayed", ((string)(null)), table358);
+#line 1799
+ testRunner.And("I take a screenshot");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute(@"@PB-US12940-13A As an EDC user, when I entered bad data in lab field A and lab field B that resulted in the system opening a query on lab field B, and I canceled the query, if I then entered bad data in lab field A, then the system should refire a query on lab field B, then the system should not log a record in the database for those queries that refired.Query with requires response = true and requires manual close = true.")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Query Refiring Logic5")]
+        public virtual void PB_US12940_13AAsAnEDCUserWhenIEnteredBadDataInLabFieldAAndLabFieldBThatResultedInTheSystemOpeningAQueryOnLabFieldBAndICanceledTheQueryIfIThenEnteredBadDataInLabFieldAThenTheSystemShouldRefireAQueryOnLabFieldBThenTheSystemShouldNotLogARecordInTheDatabaseForThoseQueriesThatRefired_QueryWithRequiresResponseTrueAndRequiresManualCloseTrue_()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo(@"@PB-US12940-13A As an EDC user, when I entered bad data in lab field A and lab field B that resulted in the system opening a query on lab field B, and I canceled the query, if I then entered bad data in lab field A, then the system should refire a query on lab field B, then the system should not log a record in the database for those queries that refired.Query with requires response = true and requires manual close = true.", new string[] {
+                        "PB-US12940-13A"});
+#line 1802
+this.ScenarioSetup(scenarioInfo);
+#line 12
+this.FeatureBackground();
+#line hidden
+            TechTalk.SpecFlow.Table table359 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Data"});
+            table359.AddRow(new string[] {
+                        "Subject Number",
+                        "{RndNum<num1>(5)}"});
+            table359.AddRow(new string[] {
+                        "Subject Initials",
+                        "SUB"});
+            table359.AddRow(new string[] {
+                        "Subject ID",
+                        "SUB {Var(num1)}"});
+#line 1804
+ testRunner.And("I create a Subject", ((string)(null)), table359);
+#line 1809
+ testRunner.And("I select Form \"Lab Form 8\"");
+#line hidden
+            TechTalk.SpecFlow.Table table360 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Data"});
+            table360.AddRow(new string[] {
+                        "Lab Field 1 - NEUTROPHILS - rr = T ; rmc = T",
+                        "5"});
+            table360.AddRow(new string[] {
+                        "Lab Field 2 - WBC - rr = T ; rmc = T",
+                        "3"});
+#line 1810
+ testRunner.And("I enter data in CRF and save", ((string)(null)), table360);
+#line hidden
+            TechTalk.SpecFlow.Table table361 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Query Message",
+                        "Answered",
+                        "Closed"});
+            table361.AddRow(new string[] {
+                        "Lab Field 2 - WBC - rr = T ; rmc = T",
+                        "Lab Field 2 must be greater than Lab Field 1. Please verify.",
+                        "false",
+                        "false"});
+#line 1814
+ testRunner.And("I verify Query is displayed", ((string)(null)), table361);
+#line 1817
+ testRunner.And("I take a screenshot");
+#line 1818
+ testRunner.And("I cancel the Query \"Lab Field 2 must be greater than Lab Field 1. Please verify.\"" +
+                    " on Field \"Lab Field 2 - WBC - rr = T ; rmc = T\"");
+#line 1819
+ testRunner.And("I save the CRF page");
+#line hidden
+            TechTalk.SpecFlow.Table table362 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Query Message"});
+            table362.AddRow(new string[] {
+                        "Lab Field 2 - WBC - rr = T ; rmc = T",
+                        "Lab Field 2 must be greater than Lab Field 1. Please verify."});
+#line 1820
+ testRunner.And("I verify Query is cancelled", ((string)(null)), table362);
+#line 1823
+ testRunner.And("I take a screenshot");
+#line hidden
+            TechTalk.SpecFlow.Table table363 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Data"});
+            table363.AddRow(new string[] {
+                        "Lab Field 1 - NEUTROPHILS - rr = T ; rmc = T",
+                        "7"});
+#line 1824
+ testRunner.And("I enter data in CRF and save", ((string)(null)), table363);
+#line hidden
+            TechTalk.SpecFlow.Table table364 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Query Message",
+                        "Answered",
+                        "Closed"});
+            table364.AddRow(new string[] {
+                        "Lab Field 2 - WBC - rr = T ; rmc = T",
+                        "Lab Field 2 must be greater than Lab Field 1. Please verify.",
+                        "false",
+                        "false"});
+#line 1827
+ testRunner.And("I verify Query is displayed", ((string)(null)), table364);
+#line 1830
+ testRunner.And("I take a screenshot");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute(@"@PB-US12940-13B As an EDC user, when I entered bad data in lab field A and lab field B that resulted in the system opening a query on lab field B, and I canceled the query, if I then entered bad data in lab field A, then the system should refire a query on lab field B, then the system should not log a record in the database for those queries that refired.Query with requires response = false and requires manual close = false.")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Query Refiring Logic5")]
+        public virtual void PB_US12940_13BAsAnEDCUserWhenIEnteredBadDataInLabFieldAAndLabFieldBThatResultedInTheSystemOpeningAQueryOnLabFieldBAndICanceledTheQueryIfIThenEnteredBadDataInLabFieldAThenTheSystemShouldRefireAQueryOnLabFieldBThenTheSystemShouldNotLogARecordInTheDatabaseForThoseQueriesThatRefired_QueryWithRequiresResponseFalseAndRequiresManualCloseFalse_()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo(@"@PB-US12940-13B As an EDC user, when I entered bad data in lab field A and lab field B that resulted in the system opening a query on lab field B, and I canceled the query, if I then entered bad data in lab field A, then the system should refire a query on lab field B, then the system should not log a record in the database for those queries that refired.Query with requires response = false and requires manual close = false.", new string[] {
+                        "PB-US12940-13B"});
+#line 1833
+this.ScenarioSetup(scenarioInfo);
+#line 12
+this.FeatureBackground();
+#line hidden
+            TechTalk.SpecFlow.Table table365 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Data"});
+            table365.AddRow(new string[] {
+                        "Subject Number",
+                        "{RndNum<num1>(5)}"});
+            table365.AddRow(new string[] {
+                        "Subject Initials",
+                        "SUB"});
+            table365.AddRow(new string[] {
+                        "Subject ID",
+                        "SUB {Var(num1)}"});
+#line 1835
+ testRunner.And("I create a Subject", ((string)(null)), table365);
+#line 1840
+ testRunner.And("I select Form \"Lab Form 8\"");
+#line 1841
+ testRunner.And("I take a screenshot");
+#line hidden
+            TechTalk.SpecFlow.Table table366 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Data"});
+            table366.AddRow(new string[] {
+                        "Lab Field 3 - NEUTROPHILS - rr = F ; rmc = F",
+                        "5"});
+            table366.AddRow(new string[] {
+                        "Lab Field 4 - WBC - rr = F ; rmc = F",
+                        "3"});
+#line 1842
+ testRunner.And("I enter data in CRF and save", ((string)(null)), table366);
+#line hidden
+            TechTalk.SpecFlow.Table table367 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Query Message",
+                        "Answered",
+                        "Closed"});
+            table367.AddRow(new string[] {
+                        "Lab Field 4 - WBC - rr = F ; rmc = F",
+                        "Lab Field 4 must be greater than Lab Field 3. Please verify.",
+                        "false",
+                        "false"});
+#line 1846
+ testRunner.And("I verify Query is displayed", ((string)(null)), table367);
+#line 1849
+ testRunner.And("I take a screenshot");
+#line 1850
+ testRunner.And("I cancel the Query \"Lab Field 4 must be greater than Lab Field 3. Please verify.\"" +
+                    " on Field \"Lab Field 4 - WBC - rr = F ; rmc = F\"");
+#line 1851
+ testRunner.And("I save the CRF page");
+#line hidden
+            TechTalk.SpecFlow.Table table368 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Query Message"});
+            table368.AddRow(new string[] {
+                        "Lab Field 4 - WBC - rr = F ; rmc = F",
+                        "Lab Field 4 must be greater than Lab Field 3. Please verify."});
+#line 1852
+ testRunner.And("I verify Query is cancelled", ((string)(null)), table368);
+#line 1855
+ testRunner.And("I take a screenshot");
+#line hidden
+            TechTalk.SpecFlow.Table table369 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Data"});
+            table369.AddRow(new string[] {
+                        "Lab Field 3 - NEUTROPHILS - rr = F ; rmc = F",
+                        "7"});
+#line 1856
+ testRunner.When("I enter data in CRF and save", ((string)(null)), table369);
+#line hidden
+            TechTalk.SpecFlow.Table table370 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Query Message",
+                        "Answered",
+                        "Closed"});
+            table370.AddRow(new string[] {
+                        "Lab Field 4 - WBC - rr = F ; rmc = F",
+                        "Lab Field 4 must be greater than Lab Field 3. Please verify.",
+                        "false",
+                        "false"});
+#line 1859
+ testRunner.And("I verify Query is displayed", ((string)(null)), table370);
+#line 1862
+ testRunner.And("I take a screenshot");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute(@"@PB-US12940-13C As an EDC user, when I entered bad data in lab field A and lab field B that resulted in the system opening a query on lab field B, and I canceled the query, if I then entered bad data in lab field A, then the system should refire a query on lab field B, then the system should not log a record in the database for those queries that refired.Query with requires response = true and requires manual close = false.")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Query Refiring Logic5")]
+        public virtual void PB_US12940_13CAsAnEDCUserWhenIEnteredBadDataInLabFieldAAndLabFieldBThatResultedInTheSystemOpeningAQueryOnLabFieldBAndICanceledTheQueryIfIThenEnteredBadDataInLabFieldAThenTheSystemShouldRefireAQueryOnLabFieldBThenTheSystemShouldNotLogARecordInTheDatabaseForThoseQueriesThatRefired_QueryWithRequiresResponseTrueAndRequiresManualCloseFalse_()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo(@"@PB-US12940-13C As an EDC user, when I entered bad data in lab field A and lab field B that resulted in the system opening a query on lab field B, and I canceled the query, if I then entered bad data in lab field A, then the system should refire a query on lab field B, then the system should not log a record in the database for those queries that refired.Query with requires response = true and requires manual close = false.", new string[] {
+                        "PB-US12940-13C"});
+#line 1865
+this.ScenarioSetup(scenarioInfo);
+#line 12
+this.FeatureBackground();
+#line hidden
+            TechTalk.SpecFlow.Table table371 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Data"});
+            table371.AddRow(new string[] {
+                        "Subject Number",
+                        "{RndNum<num1>(5)}"});
+            table371.AddRow(new string[] {
+                        "Subject Initials",
+                        "SUB"});
+            table371.AddRow(new string[] {
+                        "Subject ID",
+                        "SUB {Var(num1)}"});
+#line 1867
+ testRunner.And("I create a Subject", ((string)(null)), table371);
+#line 1872
+ testRunner.And("I select Form \"Lab Form 8\"");
+#line 1873
+ testRunner.And("I take a screenshot");
+#line hidden
+            TechTalk.SpecFlow.Table table372 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Data"});
+            table372.AddRow(new string[] {
+                        "Lab Field 5 - NEUTROPHILS - rr = T ; rmc = F",
+                        "5"});
+            table372.AddRow(new string[] {
+                        "Lab Field 6 - WBC - rr = T ; rmc = F",
+                        "3"});
+#line 1874
+ testRunner.And("I enter data in CRF and save", ((string)(null)), table372);
+#line hidden
+            TechTalk.SpecFlow.Table table373 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Query Message",
+                        "Answered",
+                        "Closed"});
+            table373.AddRow(new string[] {
+                        "Lab Field 6 - WBC - rr = T ; rmc = F",
+                        "Lab Field 6 must be greater than Lab Field 5. Please verify.",
+                        "false",
+                        "false"});
+#line 1878
+ testRunner.And("I verify Query is displayed", ((string)(null)), table373);
+#line 1881
+ testRunner.And("I take a screenshot");
+#line 1882
+ testRunner.And("I cancel the Query \"Lab Field 6 must be greater than Lab Field 5. Please verify.\"" +
+                    " on Field \"Lab Field 6 - WBC - rr = T ; rmc = F\"");
+#line 1883
+ testRunner.And("I save the CRF page");
+#line hidden
+            TechTalk.SpecFlow.Table table374 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Query Message"});
+            table374.AddRow(new string[] {
+                        "Lab Field 6 - WBC - rr = T ; rmc = F",
+                        "Lab Field 6 must be greater than Lab Field 5. Please verify."});
+#line 1884
+ testRunner.And("I verify Query is cancelled", ((string)(null)), table374);
+#line 1887
+ testRunner.And("I take a screenshot");
+#line hidden
+            TechTalk.SpecFlow.Table table375 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Data"});
+            table375.AddRow(new string[] {
+                        "Lab Field 5 - NEUTROPHILS - rr = T ; rmc = F",
+                        "7"});
+#line 1888
+ testRunner.When("I enter data in CRF and save", ((string)(null)), table375);
+#line hidden
+            TechTalk.SpecFlow.Table table376 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Query Message",
+                        "Answered",
+                        "Closed"});
+            table376.AddRow(new string[] {
+                        "Lab Field 6 - WBC - rr = T ; rmc = F",
+                        "Lab Field 6 must be greater than Lab Field 5. Please verify.",
+                        "false",
+                        "false"});
+#line 1891
+ testRunner.Then("I verify Query is displayed", ((string)(null)), table376);
+#line 1894
+ testRunner.And("I take a screenshot");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute(@"@PB-US12940-13D As an EDC user, when I entered bad data in lab field A and lab field B that resulted in the system opening a query on lab field B, and I canceled the query, if I then entered bad data in lab field A, then the system should refire a query on lab field B, then the system should not log a record in the database for those queries that refired.Query with requires response = false and requires manual close = true.")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Query Refiring Logic5")]
+        public virtual void PB_US12940_13DAsAnEDCUserWhenIEnteredBadDataInLabFieldAAndLabFieldBThatResultedInTheSystemOpeningAQueryOnLabFieldBAndICanceledTheQueryIfIThenEnteredBadDataInLabFieldAThenTheSystemShouldRefireAQueryOnLabFieldBThenTheSystemShouldNotLogARecordInTheDatabaseForThoseQueriesThatRefired_QueryWithRequiresResponseFalseAndRequiresManualCloseTrue_()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo(@"@PB-US12940-13D As an EDC user, when I entered bad data in lab field A and lab field B that resulted in the system opening a query on lab field B, and I canceled the query, if I then entered bad data in lab field A, then the system should refire a query on lab field B, then the system should not log a record in the database for those queries that refired.Query with requires response = false and requires manual close = true.", new string[] {
+                        "PB-US12940-13D"});
+#line 1897
+this.ScenarioSetup(scenarioInfo);
+#line 12
+this.FeatureBackground();
+#line hidden
+            TechTalk.SpecFlow.Table table377 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Data"});
+            table377.AddRow(new string[] {
+                        "Subject Number",
+                        "{RndNum<num1>(5)}"});
+            table377.AddRow(new string[] {
+                        "Subject Initials",
+                        "SUB"});
+            table377.AddRow(new string[] {
+                        "Subject ID",
+                        "SUB {Var(num1)}"});
+#line 1899
+ testRunner.And("I create a Subject", ((string)(null)), table377);
+#line 1904
+ testRunner.And("I select Form \"Lab Form 8\"");
+#line 1905
+ testRunner.And("I take a screenshot");
+#line hidden
+            TechTalk.SpecFlow.Table table378 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Data"});
+            table378.AddRow(new string[] {
+                        "Lab Field 7 - NEUTROPHILS - rr = F ; rmc = T",
+                        "5"});
+            table378.AddRow(new string[] {
+                        "Lab Field 8 - WBC - rr = F ; rmc = T",
+                        "3"});
+#line 1906
+ testRunner.And("I enter data in CRF and save", ((string)(null)), table378);
+#line hidden
+            TechTalk.SpecFlow.Table table379 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Query Message",
+                        "Answered",
+                        "Closed"});
+            table379.AddRow(new string[] {
+                        "Lab Field 8 - WBC - rr = F ; rmc = T",
+                        "Lab Field 8 must be greater than Lab Field 7. Please verify.",
+                        "false",
+                        "false"});
+#line 1910
+ testRunner.And("I verify Query is displayed", ((string)(null)), table379);
+#line 1913
+ testRunner.And("I take a screenshot");
+#line 1914
+ testRunner.And("I cancel the Query \"Lab Field 8 must be greater than Lab Field 7. Please verify.\"" +
+                    " on Field \"Lab Field 8 - WBC - rr = F ; rmc = T\"");
+#line 1915
+ testRunner.And("I save the CRF page");
+#line hidden
+            TechTalk.SpecFlow.Table table380 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Query Message"});
+            table380.AddRow(new string[] {
+                        "Lab Field 8 - WBC - rr = F ; rmc = T",
+                        "Lab Field 8 must be greater than Lab Field 7. Please verify."});
+#line 1916
+ testRunner.And("I verify Query is cancelled", ((string)(null)), table380);
+#line 1919
+ testRunner.And("I take a screenshot");
+#line hidden
+            TechTalk.SpecFlow.Table table381 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Data"});
+            table381.AddRow(new string[] {
+                        "Lab Field 7 - NEUTROPHILS - rr = F ; rmc = T",
+                        "7"});
+#line 1920
+ testRunner.When("I enter data in CRF and save", ((string)(null)), table381);
+#line hidden
+            TechTalk.SpecFlow.Table table382 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Query Message",
+                        "Answered",
+                        "Closed"});
+            table382.AddRow(new string[] {
+                        "Lab Field 8 - WBC - rr = F ; rmc = T",
+                        "Lab Field 8 must be greater than Lab Field 7. Please verify.",
+                        "false",
+                        "false"});
+#line 1923
+ testRunner.Then("I verify Query is displayed", ((string)(null)), table382);
+#line 1926
  testRunner.And("I take a screenshot");
 #line hidden
             this.ScenarioCleanup();
