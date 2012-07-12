@@ -64,9 +64,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BrowserStepsBase.cs" />
     <Compile Include="DbHelper.cs" />
-    <Compile Include="PageBase.cs" />
     <Compile Include="PageObjectInterfaces\IActivatePage.cs" />
     <Compile Include="PageObjectInterfaces\IVerifyDisableConrolsPage.cs" />
     <Compile Include="PageObjectInterfaces\IPage.cs" />
@@ -80,12 +78,6 @@
     <Compile Include="StringReplacement\NextSubjectNumReplace.cs" />
     <Compile Include="TestContext.cs" />
     <Compile Include="RBTConfiguration.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Medidata.RBT.SeleniumExtension\Medidata.RBT.SeleniumExtension.csproj">
-      <Project>{22945718-331A-4CC1-A98A-A7E7500FAF76}</Project>
-      <Name>Medidata.RBT.SeleniumExtension</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

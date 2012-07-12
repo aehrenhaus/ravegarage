@@ -55,7 +55,13 @@ namespace Medidata.RBT.PageObjects.Rave
 		//                                        Message and <br> table
 		//                        td 3 class=crf_rowRightSide
 
+		//
 
+		/// <summary>
+		/// the data point area
+		/// </summary>
+		/// <param name="label"></param>
+		/// <returns></returns>
         private static IWebElement GetNonlabDatapointContainer(string label)
         {
             IWebElement leftSideTd = GetNonlabDatapointLabelContainer(label);
@@ -65,11 +71,9 @@ namespace Medidata.RBT.PageObjects.Rave
 
         }
 
-        //the table contains field and related data.s
+        //left label area
 		private static IWebElement GetNonlabDatapointLabelContainer(string label)
         {
-			//"Assessment Date 1\r\ntet\r\nOpened To Site (06 Jun 2012)\r\nForward\r\nCancel"
-
             var leftSideTds = TestContext.Browser.FindElements(By.XPath("//td[@class='crf_rowLeftSide']"));
 			var area =  leftSideTds.FirstOrDefault(x => x.Text.Split(new string[] { "\r\n" }, StringSplitOptions.None)[0] == label);
 
@@ -78,6 +82,15 @@ namespace Medidata.RBT.PageObjects.Rave
 
 			return area;
         }
+
+		//whole row for the field
+		public static IWebElement GetNonlabFieldContainer(string label)
+		{
+			IWebElement leftSideTd = GetNonlabDatapointLabelContainer(label);
+			//leftSideTd and right side td share same tr. So go up a level, and find the right side
+			IWebElement fieldTable = leftSideTd.Ancestor("table");
+			return fieldTable;
+		}
 
 		public static void FillDataPoints(IEnumerable<FieldModel> fields)
 		{
@@ -318,5 +331,6 @@ namespace Medidata.RBT.PageObjects.Rave
 			throw new Exception ("should not get here");
 		}
 
+	
 	}
 }

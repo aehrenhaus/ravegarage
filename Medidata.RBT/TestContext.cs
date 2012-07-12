@@ -9,6 +9,9 @@ using System.IO;
 using System.Drawing.Imaging;
 using System.Collections.Specialized;
 using System.Threading;
+using OpenQA.Selenium.Firefox;
+using OpenQA.Selenium.Chrome;
+using OpenQA.Selenium.IE;
 
 namespace Medidata.RBT
 {
@@ -72,7 +75,7 @@ namespace Medidata.RBT
 		/// This is a convention, we use the tag name as a identifer of  a scenario
 		/// 
 		/// </summary>
-		public static string PB
+		public static string ScenarioUniqueName
 		{
 			get;
 			private set;
@@ -173,9 +176,9 @@ namespace Medidata.RBT
 			ScreenshotIndex = 1;
 
 			//set scenario name with tag that starts with PB_
-			PB =  ScenarioContext.Current.ScenarioInfo.Tags.FirstOrDefault(x=>x.StartsWith("PB_"));
-			if (PB == null)
-				PB = "Scenario_" + DateTime.Now.Ticks.ToString() ;
+			ScenarioUniqueName =  ScenarioContext.Current.ScenarioInfo.Tags.FirstOrDefault(x=>x.StartsWith(RBTConfiguration.Default.ScenarioNamePrefix));
+			if (ScenarioUniqueName == null)
+				ScenarioUniqueName = "Scenario_" + DateTime.Now.Ticks.ToString() ;
 
 			//restore snapshot
 			//DbHelper.RestoreSnapshot();
@@ -219,7 +222,7 @@ namespace Medidata.RBT
 					string resultPath = GetTestResultPath();
 
 					fileName = fileName ?? ScreenshotIndex.ToString();
-					fileName = PB+"_"+fileName+ ".jpg";
+					fileName = ScenarioUniqueName+"_"+fileName+ ".jpg";
 
 					Console.WriteLine("{img "+fileName+"}");
 
@@ -252,9 +255,48 @@ namespace Medidata.RBT
 		{
 			if (Browser == null)
 			{
-				Browser = PageBase.OpenBrowser();
+				Browser = OpenBrowser();
 			}
 		}
+
+
+		/// <summary>
+		/// Open a brower according to configuration
+		/// </summary>
+		/// <param name="browserName"></param>
+		/// <returns></returns>
+		private static RemoteWebDriver OpenBrowser(string browserName = null)
+		{
+			RemoteWebDriver _webdriver = null;
+
+			var driverPath = RBTConfiguration.Default.WebDriverPath;
+			if (!Path.IsPathRooted(driverPath))
+				driverPath = new DirectoryInfo(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, driverPath)).FullName;
+
+			switch (RBTConfiguration.Default.BrowserName.ToLower())
+			{
+				case "firefox":
+					FirefoxProfile p = new FirefoxProfile(RBTConfiguration.Default.FirefoxProfilePath, true);
+					FirefoxBinary bin = new FirefoxBinary(RBTConfiguration.Default.BrowserPath);
+					_webdriver = new FirefoxDriver(bin, p);
+					break;
+
+
+				case "chrome":
+
+					_webdriver = new ChromeDriver(driverPath);
+					break;
+
+
+				case "ie":
+					_webdriver = new InternetExplorerDriver(driverPath);
+					break;
+
+			}
+
+			return _webdriver;
+		}
+
 
 		private static void CloseBrower()
 		{

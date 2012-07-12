@@ -35,6 +35,7 @@
       <HintPath>..\ExternalDlls\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Xml.Linq" />
@@ -64,6 +65,12 @@
     <Compile Include="EnhancedControls\EnhancedElement.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ISearchContextExtend.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Medidata.RBT\Medidata.RBT.csproj">
+      <Project>{89C8F41A-E7F8-4D94-BE93-C2C5B8097A32}</Project>
+      <Name>Medidata.RBT</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

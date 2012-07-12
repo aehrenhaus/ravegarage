@@ -105,5 +105,20 @@ namespace Medidata.RBT
 			set { this["SqlScriptsPath"] = value; }
 		}
 
+		[ConfigurationProperty("ScenarioNamePrefix", DefaultValue = "", IsRequired = true)]
+		public String ScenarioNamePrefix
+		{
+			get { return (String)this["ScenarioNamePrefix"]; }
+			set { this["ScenarioNamePrefix"] = value; }
+		}
+
+		[ConfigurationProperty("ElementWaitTimeout", DefaultValue = 5, IsRequired = false)]
+		public int ElementWaitTimeout
+		{
+			get { return (int)this["ElementWaitTimeout"]; }
+			set { this["ElementWaitTimeout"] = value; }
+		}
+		
+		
 	}
 }
