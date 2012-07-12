@@ -187,14 +187,14 @@ namespace Medidata.RBT.Features.Rave.Features.EDC
         
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("PB_3.1.1 As an EDC user, On a Cross Form Standard form to log form, When a query " +
-            "has been answered and closed with the same data and I enter the same data that o" +
-            "riginally opened the query, then queries are not displayed.")]
+            "has been answered and auto closed with the same data and I enter the same data t" +
+            "hat originally opened the query, then queries are not displayed.")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "3")]
-        public virtual void PB_3_1_1AsAnEDCUserOnACrossFormStandardFormToLogFormWhenAQueryHasBeenAnsweredAndClosedWithTheSameDataAndIEnterTheSameDataThatOriginallyOpenedTheQueryThenQueriesAreNotDisplayed_()
+        public virtual void PB_3_1_1AsAnEDCUserOnACrossFormStandardFormToLogFormWhenAQueryHasBeenAnsweredAndAutoClosedWithTheSameDataAndIEnterTheSameDataThatOriginallyOpenedTheQueryThenQueriesAreNotDisplayed_()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("PB_3.1.1 As an EDC user, On a Cross Form Standard form to log form, When a query " +
-                    "has been answered and closed with the same data and I enter the same data that o" +
-                    "riginally opened the query, then queries are not displayed.", new string[] {
+                    "has been answered and auto closed with the same data and I enter the same data t" +
+                    "hat originally opened the query, then queries are not displayed.", new string[] {
                         "release_564_Patch11",
                         "PB_3.1.1",
                         "Draft"});
@@ -207,7 +207,7 @@ this.FeatureBackground();
 #line hidden
             TechTalk.SpecFlow.Table table3 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field",
-                        "Value"});
+                        "Data"});
             table3.AddRow(new string[] {
                         "Subject Number",
                         "{RndNum<num1>(5)}"});
@@ -319,14 +319,14 @@ this.FeatureBackground();
         
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("PB_3.1.2 As an EDC user, On a Cross Form Standard form to log form, When a query " +
-            "has been answered and closed with the different data and I enter the same data t" +
-            "hat")]
+            "has been answered and auto closed with the different data and I enter the same d" +
+            "ata that")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "3")]
-        public virtual void PB_3_1_2AsAnEDCUserOnACrossFormStandardFormToLogFormWhenAQueryHasBeenAnsweredAndClosedWithTheDifferentDataAndIEnterTheSameDataThat()
+        public virtual void PB_3_1_2AsAnEDCUserOnACrossFormStandardFormToLogFormWhenAQueryHasBeenAnsweredAndAutoClosedWithTheDifferentDataAndIEnterTheSameDataThat()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("PB_3.1.2 As an EDC user, On a Cross Form Standard form to log form, When a query " +
-                    "has been answered and closed with the different data and I enter the same data t" +
-                    "hat", new string[] {
+                    "has been answered and auto closed with the different data and I enter the same d" +
+                    "ata that", new string[] {
                         "release_564_Patch11",
                         "PB_3.1.2",
                         "Draft"});
@@ -435,14 +435,14 @@ this.FeatureBackground();
         
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("PB_3.2.1 As an EDC user, On a Cross Folder Standard form to log form, When a quer" +
-            "y has been answered and closed with the same data and I enter the same data that" +
-            " originally opened the query, then queries are not displayed.")]
+            "y has been answered and auto closed with the same data and I enter the same data" +
+            " that originally opened the query, then queries are not displayed.")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "3")]
-        public virtual void PB_3_2_1AsAnEDCUserOnACrossFolderStandardFormToLogFormWhenAQueryHasBeenAnsweredAndClosedWithTheSameDataAndIEnterTheSameDataThatOriginallyOpenedTheQueryThenQueriesAreNotDisplayed_()
+        public virtual void PB_3_2_1AsAnEDCUserOnACrossFolderStandardFormToLogFormWhenAQueryHasBeenAnsweredAndAutoClosedWithTheSameDataAndIEnterTheSameDataThatOriginallyOpenedTheQueryThenQueriesAreNotDisplayed_()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("PB_3.2.1 As an EDC user, On a Cross Folder Standard form to log form, When a quer" +
-                    "y has been answered and closed with the same data and I enter the same data that" +
-                    " originally opened the query, then queries are not displayed.", new string[] {
+                    "y has been answered and auto closed with the same data and I enter the same data" +
+                    " that originally opened the query, then queries are not displayed.", new string[] {
                         "release_564_Patch11",
                         "PB_3.2.1",
                         "Draft"});
@@ -455,7 +455,7 @@ this.FeatureBackground();
 #line hidden
             TechTalk.SpecFlow.Table table10 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field",
-                        "Value"});
+                        "Data"});
             table10.AddRow(new string[] {
                         "Subject Number",
                         "{RndNum<num1>(5)}"});
@@ -566,14 +566,14 @@ this.FeatureBackground();
         
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("PB_3.2.2 As an EDC user, On a Cross Folder Standard form to log form, When a quer" +
-            "y has been answered and closed with the different data and I enter the same data" +
-            " that originally opened the query, then queries are displayed.")]
+            "y has been answered and auto closed with the different data and I enter the same" +
+            " data that originally opened the query, then queries are displayed.")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "3")]
-        public virtual void PB_3_2_2AsAnEDCUserOnACrossFolderStandardFormToLogFormWhenAQueryHasBeenAnsweredAndClosedWithTheDifferentDataAndIEnterTheSameDataThatOriginallyOpenedTheQueryThenQueriesAreDisplayed_()
+        public virtual void PB_3_2_2AsAnEDCUserOnACrossFolderStandardFormToLogFormWhenAQueryHasBeenAnsweredAndAutoClosedWithTheDifferentDataAndIEnterTheSameDataThatOriginallyOpenedTheQueryThenQueriesAreDisplayed_()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("PB_3.2.2 As an EDC user, On a Cross Folder Standard form to log form, When a quer" +
-                    "y has been answered and closed with the different data and I enter the same data" +
-                    " that originally opened the query, then queries are displayed.", new string[] {
+                    "y has been answered and auto closed with the different data and I enter the same" +
+                    " data that originally opened the query, then queries are displayed.", new string[] {
                         "release_564_Patch11",
                         "PB_3.2.2",
                         "Draft"});
@@ -680,14 +680,14 @@ this.FeatureBackground();
         
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("PB_3.3.1 As an EDC user, On a Cross Forms log form to Standard form, When a query" +
-            " has been answered and closed with the different data and I enter the same data " +
-            "that originally opened the query, then queries are displayed.")]
+            " has been answered and auto closed with the different data and I enter the same " +
+            "data that originally opened the query, then queries are displayed.")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "3")]
-        public virtual void PB_3_3_1AsAnEDCUserOnACrossFormsLogFormToStandardFormWhenAQueryHasBeenAnsweredAndClosedWithTheDifferentDataAndIEnterTheSameDataThatOriginallyOpenedTheQueryThenQueriesAreDisplayed_()
+        public virtual void PB_3_3_1AsAnEDCUserOnACrossFormsLogFormToStandardFormWhenAQueryHasBeenAnsweredAndAutoClosedWithTheDifferentDataAndIEnterTheSameDataThatOriginallyOpenedTheQueryThenQueriesAreDisplayed_()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("PB_3.3.1 As an EDC user, On a Cross Forms log form to Standard form, When a query" +
-                    " has been answered and closed with the different data and I enter the same data " +
-                    "that originally opened the query, then queries are displayed.", new string[] {
+                    " has been answered and auto closed with the different data and I enter the same " +
+                    "data that originally opened the query, then queries are displayed.", new string[] {
                         "release_564_Patch11",
                         "PB_3.3.1",
                         "Draft"});
@@ -700,7 +700,7 @@ this.FeatureBackground();
 #line hidden
             TechTalk.SpecFlow.Table table17 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field",
-                        "Value"});
+                        "Data"});
             table17.AddRow(new string[] {
                         "Subject Number",
                         "{RndNum<num1>(5)}"});
@@ -822,14 +822,14 @@ this.FeatureBackground();
         
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("PB_3.4.1 As an EDC user, On a Cross Forms log form to log form, When a query has " +
-            "been answered and closed with the same data and I enter the same data that origi" +
-            "nally opened the query, then queries are not displayed.")]
+            "been answered and auto closed with the same data and I enter the same data that " +
+            "originally opened the query, then queries are not displayed.")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "3")]
-        public virtual void PB_3_4_1AsAnEDCUserOnACrossFormsLogFormToLogFormWhenAQueryHasBeenAnsweredAndClosedWithTheSameDataAndIEnterTheSameDataThatOriginallyOpenedTheQueryThenQueriesAreNotDisplayed_()
+        public virtual void PB_3_4_1AsAnEDCUserOnACrossFormsLogFormToLogFormWhenAQueryHasBeenAnsweredAndAutoClosedWithTheSameDataAndIEnterTheSameDataThatOriginallyOpenedTheQueryThenQueriesAreNotDisplayed_()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("PB_3.4.1 As an EDC user, On a Cross Forms log form to log form, When a query has " +
-                    "been answered and closed with the same data and I enter the same data that origi" +
-                    "nally opened the query, then queries are not displayed.", new string[] {
+                    "been answered and auto closed with the same data and I enter the same data that " +
+                    "originally opened the query, then queries are not displayed.", new string[] {
                         "release_564_Patch11",
                         "PB_3.4.1",
                         "Draft"});
@@ -842,7 +842,7 @@ this.FeatureBackground();
 #line hidden
             TechTalk.SpecFlow.Table table22 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field",
-                        "Value"});
+                        "Data"});
             table22.AddRow(new string[] {
                         "Subject Number",
                         "{RndNum<num1>(5)}"});
@@ -1014,14 +1014,14 @@ this.FeatureBackground();
         
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("PB_3.4.2 As an EDC user, On a Cross Forms log form to log form, When a query has " +
-            "been answered and closed with the different data and I enter the same data that " +
-            "originally opened the query, then queries are not displayed.")]
+            "been answered and auto closed with the different data and I enter the same data " +
+            "that originally opened the query, then queries are not displayed.")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "3")]
-        public virtual void PB_3_4_2AsAnEDCUserOnACrossFormsLogFormToLogFormWhenAQueryHasBeenAnsweredAndClosedWithTheDifferentDataAndIEnterTheSameDataThatOriginallyOpenedTheQueryThenQueriesAreNotDisplayed_()
+        public virtual void PB_3_4_2AsAnEDCUserOnACrossFormsLogFormToLogFormWhenAQueryHasBeenAnsweredAndAutoClosedWithTheDifferentDataAndIEnterTheSameDataThatOriginallyOpenedTheQueryThenQueriesAreNotDisplayed_()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("PB_3.4.2 As an EDC user, On a Cross Forms log form to log form, When a query has " +
-                    "been answered and closed with the different data and I enter the same data that " +
-                    "originally opened the query, then queries are not displayed.", new string[] {
+                    "been answered and auto closed with the different data and I enter the same data " +
+                    "that originally opened the query, then queries are not displayed.", new string[] {
                         "release_564_Patch11",
                         "PB_3.4.2",
                         "Draft"});

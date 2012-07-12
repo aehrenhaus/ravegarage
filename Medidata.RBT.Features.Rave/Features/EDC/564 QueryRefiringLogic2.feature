@@ -23,11 +23,11 @@ Background:
 @release_564_Patch11
 @PB_2.1.1 
 @Draft
-Scenario: PB_2.1.1 As an EDC user, On a Cross Forms - Standard form to log form, when a query has been answered and closed with the same data and I enter the same data that originally opened the query, then queries are not displayed. 
-Folder "Screening" enter and save data on forms "Informed Consent" and "Concomitant Medications"
+Scenario: PB_2.1.1 As an EDC user, On a Cross Forms - Standard form to log form, when a query has been auto answered and auto closed with the same data and I enter the same data that originally opened the query, then queries are displayed. 
+#Folder "Screening" enter and save data on forms "Informed Consent" and "Concomitant Medications"
 	
     Given I create a Subject
-		| Field            | Value             |
+		| Field            | Data              |
 		| Subject Number   | {RndNum<num1>(5)} |
 		| Subject Initials | SUB               |
 	And I select Form "Informed Consent" in Folder "Screening" 
@@ -72,7 +72,7 @@ Folder "Screening" enter and save data on forms "Informed Consent" and "Concomit
 @release_564_Patch11
 @PB_2.1.2
 @Draft
-Scenario: PB_2.1.2
+Scenario: PB_2.1.2 when a query has been auto answered and auto closed with the different data and I enter the same data that originally opened the query, then queries are displayed. 
    
     Given I select Study "Edit Check Study 3" and Site "Edit Check Site 2"
     And I select a Subject "SUB{Var(num1)}"
@@ -109,12 +109,12 @@ Scenario: PB_2.1.2
 @release_564_Patch11
 @PB_2.2.1
 @Draft
-Scenario: PB_2.2.1 On a Cross Folders - Standard form to log form, 
-Folder "Screening" enter and save data on form "Informed Consent", Folder "Week 1" enter and save data on form "Concomitant Medications". 			  
+Scenario: PB_2.2.1 As an EDC user, On a Cross Folders - Standard form to log form, when a query has been auto answered and auto closed with the same data and I enter the same data that originally opened the query, then queries are displayed. 
+#Folder "Screening" enter and save data on form "Informed Consent", Folder "Week 1" enter and save data on form "Concomitant Medications". 			  
 
     Given I select Study "Edit Check Study 3" and Site "Edit Check Site 2"
     And I create a Subject
-		| Field            | Value             |
+		| Field            | Data              |
 		| Subject Number   | {RndNum<num1>(5)} |
 		| Subject Initials | SUB               |
 	And I select Form "Informed Consent" in Folder "Screening"
@@ -160,7 +160,7 @@ Folder "Screening" enter and save data on form "Informed Consent", Folder "Week 
 @release_564_Patch11
 @PB_2.2.2
 @Draft
-Scenario: PB_2.2.2
+Scenario: PB_2.2.2 when a query has been auto answered and auto closed with the differnt data and I enter the same data that originally opened the query, then queries are displayed. 
  
     Given I select Study "Edit Check Study 3" and Site "Edit Check Site 2"
     And I select a Subject "SUB{Var(num1)}"
@@ -198,11 +198,12 @@ Scenario: PB_2.2.2
 @release_564_Patch11
 @PB_2.3.1
 @Draft
-Scenario: PB_2.3.1 On a Cross Forms log form to Standard form, Folder "Week 1" enter and save data on forms "Concomitant Medications" and "Informed Consent"
+Scenario: PB_2.3.1 On a Cross Forms - log form to Standard form, when a query has been auto answered and auto closed with the same data and I enter the same data that originally opened the query, then queries are displayed. 
+#Folder "Week 1" enter and save data on forms "Concomitant Medications" and "Informed Consent"
     
 	Given I select Study "Edit Check Study 3" and Site "Edit Check Site 2"
     And I create a Subject
-		| Field            | Value             |
+		| Field            | Data              |
 		| Subject Number   | {RndNum<num1>(5)} |
 		| Subject Initials | SUB               |
 	And I select Form "Concomitant Medications" in Folder "Week 1" 
@@ -238,7 +239,7 @@ Scenario: PB_2.3.1 On a Cross Forms log form to Standard form, Folder "Week 1" e
 @release_564_Patch11
 @PB_2.3.2
 @Draft
-Scenario: PB_2.3.2
+Scenario: PB_2.3.2 when a query has been auto answered and auto closed with the same data and I enter the same data that originally opened the query, then queries are displayed. 
 	
     Given I select Study "Edit Check Study 3" and Site "Edit Check Site 2"
     And I select a Subject "SUB{Var(num1)}"
@@ -274,7 +275,7 @@ Scenario: PB_2.3.2
 @release_564_Patch11
 @PB_2.3.3
 @Draft
-Scenario: PB_2.3.3
+Scenario: PB_2.3.3 when a query has been auto answered and auto closed with the differnt data and I enter the same data that originally opened the query, then queries are displayed. 
 
     Given I select Study "Edit Check Study 3" and Site "Edit Check Site 2"
     And I select a Subject "SUB{Var(num1)}"
@@ -309,13 +310,12 @@ Scenario: PB_2.3.3
 @release_564_Patch11
 @PB_2.4.1
 @Draft
-Scenario: PB_2.4.1 Verifies query firing between cross forms in different folder with no require response and no require manual close.
-Cross Forms: log form to log form 
-Folder "Screening" enter and save data on forms "Concomitant Medications" and "Adverse Events"
+Scenario: PB_2.4.1 As and EDC user, On a Cross Forms: log form to log form, when a query has been auto answered and auto closed with the same data and I enter the same data that originally opened the query, then queries are displayed. 
+#Folder "Screening" enter and save data on forms "Concomitant Medications" and "Adverse Events"
 			  
     Given I select Study "Edit Check Study 3" and Site "Edit Check Site 2"
     And I create a Subject
-		| Field            | Value             |
+		| Field            | Data              |
 		| Subject Number   | {RndNum<num1>(5)} |
 		| Subject Initials | SUB               |
 	And I select Form "Concomitant Medications" in Folder "Screening"
@@ -371,7 +371,7 @@ Folder "Screening" enter and save data on forms "Concomitant Medications" and "A
 @release_564_Patch11
 @PB_2.4.2
 @Draft
-Scenario: PB_2.4.2
+Scenario: PB_2.4.2 when a query has been auto answered and auto closed with the differnt data and I enter the same data that originally opened the query, then queries are displayed. 
    
     Given I select Study "Edit Check Study 3" and Site "Edit Check Site 2"
     And I select a Subject "SUB{Var(num1)}"
@@ -430,13 +430,12 @@ Scenario: PB_2.4.2
 @release_564_Patch11
 @PB_2.5.1
 @Draft
-Scenario: PB_2.5.1  Verifies query firing between cross forms with no require response and no require manual close.
-Cross Forms: Standard form to log form
-Folder "Screening" enter and save data on forms "Informed Consent" and "Concomitant Medications"
+Scenario: PB_2.5.1  As an EDC user, on a Cross Forms - Standard form to log form, when a query has been auto answered and auto closed with the same data and I enter the same data that originally opened the query, then queries are not displayed. 
+#Folder "Screening" enter and save data on forms "Informed Consent" and "Concomitant Medications"
 	
     Given I select Study "Edit Check Study 3" and Site "Edit Check Site 2"
     And I create a Subject
-		| Field            | Value             |
+		| Field            | Data              |
 		| Subject Number   | {RndNum<num1>(5)} |
 		| Subject Initials | SUB               |
 	And I select Form "Informed Consent" in Folder "Screening"
@@ -485,7 +484,7 @@ Folder "Screening" enter and save data on forms "Informed Consent" and "Concomit
 @release_564_Patch11
 @PB_2.5.2
 @Draft
-Scenario: PB_2.5.2
+Scenario: PB_2.5.2 when a query has been auto answered and auto closed with the differnt data and I enter the same data that originally opened the query, then queries are displayed. 
    
     Given I select Study "Edit Check Study 3" and Site "Edit Check Site 2"
     And I select a Subject "SUB{Var(num1)}"
@@ -525,13 +524,12 @@ Scenario: PB_2.5.2
 @release_564_Patch11
 @PB_2.6.1
 @Draft
-Scenario: PB_2.6.1
-
-#On a Cross Folders, Standard form Sto log form, when a user Folder "Screening" enter and save data on form "Informed Consent", sFolder "Week 1" enter and save data on form "Concomitant Medications"
+Scenario: PB_2.6.1 As an EDC user, On a Cross Folders - Standard form Sto log form, when a query has been auto answered and auto closed with the same data and I enter the same data that originally opened the query, then queries are not displayed. 
+#Folder "Screening" enter and save data on form "Informed Consent", Folder "Week 1" enter and save data on form "Concomitant Medications"
 			  
     Given I select Study "Edit Check Study 3" and Site "Edit Check Site 2"
     And I create a Subject
-		| Field            | Value             |
+		| Field            | Data              |
 		| Subject Number   | {RndNum<num1>(5)} |
 		| Subject Initials | SUB               |
 	And I select Form "Informed Consent" in Folder "Screening"
@@ -583,7 +581,7 @@ Scenario: PB_2.6.1
 @release_564_Patch11
 @PB_2.6.2
 @Draft
-Scenario: PB_2.6.2
+Scenario: PB_2.6.2 when a query has been auto answered and auto closed with the differnt data and I enter the same data that originally opened the query, then queries are displayed. 
  
     Given I select Study "Edit Check Study 3" and Site "Edit Check Site 2"
     And I select a Subject "SUB{Var(num1)}"
@@ -624,11 +622,12 @@ Scenario: PB_2.6.2
 @release_564_Patch11
 @PB_2.7.1
 @Draft
-Scenario: PB_2.7.1 On a Cross Forms log form to Standard form, Folder "Week 1" enter and save data on forms "Concomitant Medications" and "Informed Consent"
+Scenario: PB_2.7.1 As an EDC user, On a Cross Forms log - form to Standard form, when a query has been auto answered and auto closed with the same data and I enter the same data that originally opened the query, then queries are  not displayed. 
+#Folder "Week 1" enter and save data on forms "Concomitant Medications" and "Informed Consent"
 			  
     Given I select Study "Edit Check Study 3" and Site "Edit Check Site 2"
     And I create a Subject
-		| Field            | Value             |
+		| Field            | Data              |
 		| Subject Number   | {RndNum<num1>(5)} |
 		| Subject Initials | SUB               |
 	And I select Folder "Week 1"
@@ -670,7 +669,7 @@ Scenario: PB_2.7.1 On a Cross Forms log form to Standard form, Folder "Week 1" e
 @release_564_Patch11
 @PB_2.7.2
 @Draft
-Scenario: PB_2.7.2
+Scenario: PB_2.7.2 when a query has been auto answered and auto closed with the differnt data and I enter the same data that originally opened the query, then queries are displayed. 
 	
     Given I select Study "Edit Check Study 3" and Site "Edit Check Site 2"
     And I select a Subject "SUB{Var(num1)}"
@@ -709,7 +708,7 @@ Scenario: PB_2.7.2
 @release_564_Patch11
 @PB_2.7.3
 @Draft
-Scenario: PB_2.7.3
+Scenario: PB_2.7.3 As an EDC user, when a query has been auto answered and auto closed with the differnt data and I enter the same data that originally opened the query, then queries are displayed. 
   
     Given I select Study "Edit Check Study 3" and Site "Edit Check Site 2"
     And I select a Subject "SUB{Var(num1)}"
@@ -748,13 +747,12 @@ Scenario: PB_2.7.3
 @release_564_Patch11
 @PB_2.8.1
 @Draft
-Scenario: PB_2.8.1 Verifies query firing between cross forms with no require response and no require manual close.
-Cross Forms: log form to log form 
-Folder "Screening" enter and save data on forms "Concomitant Medications" and "Adverse Events"
+Scenario: PB_2.8.1	As and EDC user, on a Cross Forms - log form to log form, when a query has been auto answered and auto closed with the same data and I enter the same data that originally opened the query, then queries are not displayed. 
+#Folder "Screening" enter and save data on forms "Concomitant Medications" and "Adverse Events"
 			  
     Given I select Study "Edit Check Study 3" and Site "Edit Check Site 2"
     And I create a Subject
-		| Field            | Value             |
+		| Field            | Data              |
 		| Subject Number   | {RndNum<num1>(5)} |
 		| Subject Initials | SUB               |
 	And I select Form "Concomitant Medications" in Folder "Screening"
@@ -817,7 +815,7 @@ Folder "Screening" enter and save data on forms "Concomitant Medications" and "A
 @release_564_Patch11
 @PB_2.8.2
 @Draft
-Scenario: PB_2.8.2
+Scenario: PB_2.8.2 when a query has been auto answered and auto closed with the differnt data and I enter the same data that originally opened the query, then queries are displayed. 
   
     Given I select Study "Edit Check Study 3" and Site "Edit Check Site 2"
     And I select a Subject "SUB{Var(num1)}"

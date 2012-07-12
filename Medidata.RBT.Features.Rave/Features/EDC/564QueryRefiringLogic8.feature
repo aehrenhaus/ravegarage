@@ -42,11 +42,15 @@ Background:
 	
 #----------------------------------------------------------------------------------------------------------------------------------------	
 Scenario:  test
-	And I select Study "Edit Check Study 3" and Site "Edit Check Site 3"
-	And I select a Subject "sub315"
-	And I select Form "Concomitant Medications" in Folder "Screening"
-	And I open log line 1
-	And I answer the only Query on Field "Start Date" with "bla"
+	And I navigate to "DDE"
+	And I select "First Pass"
+	And I select "New Batch"
+	And I choose "Edit Check Study 3" from "Study"
+	And I choose "Prod" from "Environment"
+	And I choose "Edit Check Site 8" from "Site"
+	And I type "sub {RndNum<num1>(5)}" in "Subject"
+	And I choose "Subject Identification" from "Form"
+	And I click button "Locate"
 
 
 @release_564_Patch11
@@ -85,7 +89,7 @@ Scenario: PB_8.1.1 As an EDC user, Data setup and verification for query re-firi
 	    | Original Axis Number | 10          |
 	    | Current Axis Number  | 20          |
 	
-	And I am logged in to Rave with username "coderimport" and password "password"
+	And I am logged in to Rave with username "Defuser01" and password "password"
 	And I navigate to "DDE"
 	And I select "Second Pass"
 	And I choose "Edit Check Study 3" from "Study"

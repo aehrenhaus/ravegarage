@@ -27,7 +27,7 @@ Background:
 Scenario: PB_4.1.1 As an EDC user, On a Cross Forms Standard form to log form, when a query has been answered and closed with the same data and I enter the same data that originally opened the query, then queries are not displayed.
 
     Given I create a Subject
-		| Field            | Value             |
+		| Field            | Data              |
 		| Subject Number   | {RndNum<num1>(5)} |
 		| Subject Initials | SUB               |
 	And I select Form "Informed Consent" in Folder "Screening"
@@ -119,7 +119,7 @@ Scenario: PB_4.2.1 On a Cross Folders Standard form to log form, Folder "Screeni
 
     Given I select Study "Edit Check Study 3" and Site "Edit Check Site 4"			  
     And I create a Subject
-		| Field            | Value             |
+		| Field            | Data              |
 		| Subject Number   | {RndNum<num1>(5)} |
 		| Subject Initials | SUB               |
 	And I select Form "Informed Consent" in Folder "Screening"
@@ -214,7 +214,7 @@ Folder "Week 1" enter and save data on forms "Concomitant Medications" and "Info
 
     Given I select Study "Edit Check Study 3" and Site "Edit Check Site 4"			  
     And I create a Subject
-		| Field            | Value             |
+		| Field            | Data              |
 		| Subject Number   | {RndNum<num1>(5)} |
 		| Subject Initials | SUB               |
 	And I select Form "Concomitant Medications" in Folder "Week 1"
@@ -333,7 +333,7 @@ Folder "Screening" enter and save data on forms "Concomitant Medications" and "A
 
     Given I select Study "Edit Check Study 3" and Site "Edit Check Site 4"			  
     And I create a Subject
-		| Field            | Value             |
+		| Field            | Data              |
 		| Subject Number   | {RndNum<num1>(5)} |
 		| Subject Initials | SUB               |
 	And I select Form "Concomitant Medications" in Folder "Screening"
@@ -460,7 +460,7 @@ Folder "Screening" enter and save data on forms "Informed Consent" and "Concomit
 
     Given I select Study "Edit Check Study 3" and Site "Edit Check Site 4"	
     And I create a Subject
-		| Field            | Value             |
+		| Field            | Data              |
 		| Subject Number   | {RndNum<num1>(5)} |
 		| Subject Initials | SUB               |
 	And I select Form "Informed Consent" in Folder "Screening"
@@ -558,7 +558,7 @@ Folder "Week 1" enter and save data on form "Concomitant Medications"
 
     Given I select Study "Edit Check Study 3" and Site "Edit Check Site 4"			  
     And I create a Subject
-		| Field            | Value             |
+		| Field            | Data              |
 		| Subject Number   | {RndNum<num1>(5)} |
 		| Subject Initials | SUB               |
 	And I select Form "Informed Consent" in Folder "Screening"
@@ -659,7 +659,7 @@ Folder "Week 1" enter and save data on forms "Concomitant Medications" and "Info
 
     Given I select Study "Edit Check Study 3" and Site "Edit Check Site 4"			  
     And I create a Subject
-		| Field            | Value             |
+		| Field            | Data              |
 		| Subject Number   | {RndNum<num1>(5)} |
 		| Subject Initials | SUB               |
 	And I select Form "Concomitant Medications" in Folder "Week 1"
@@ -789,7 +789,7 @@ Folder "Screening" enter and save data on forms "Concomitant Medications" and "A
 
     Given I select Study "Edit Check Study 3" and Site "Edit Check Site 4"			  
     And I create a Subject
-		| Field            | Value             |
+		| Field            | Data              |
 		| Subject Number   | {RndNum<num1>(5)} |
 		| Subject Initials | SUB               |
 	And I select Form "Concomitant Medications" in Folder "Screening"

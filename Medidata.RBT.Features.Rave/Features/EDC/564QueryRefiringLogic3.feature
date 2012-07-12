@@ -37,11 +37,11 @@ Background:
 @release_564_Patch11
 @PB_3.1.1
 @Draft
-Scenario: PB_3.1.1 As an EDC user, On a Cross Form Standard form to log form, When a query has been answered and closed with the same data and I enter the same data that originally opened the query, then queries are not displayed. 
+Scenario: PB_3.1.1 As an EDC user, On a Cross Form Standard form to log form, When a query has been answered and auto closed with the same data and I enter the same data that originally opened the query, then queries are not displayed. 
    
 	Given I select Study "Edit Check Study 3" and Site "Edit Check Site 3"
 	 And I create a Subject
-		| Field            | Value             |
+		| Field            | Data              |
 		| Subject Number   | {RndNum<num1>(5)} |
 		| Subject Initials | sub               |
 	 And I select Folder "Screening"
@@ -90,7 +90,7 @@ Scenario: PB_3.1.1 As an EDC user, On a Cross Form Standard form to log form, Wh
 @release_564_Patch11
 @PB_3.1.2
 @Draft
-Scenario: PB_3.1.2 As an EDC user, On a Cross Form Standard form to log form, When a query has been answered and closed with the different data and I enter the same data that 
+Scenario: PB_3.1.2 As an EDC user, On a Cross Form Standard form to log form, When a query has been answered and auto closed with the different data and I enter the same data that 
 originally opened the query, then queries are displayed. 
 
 	Given I select Study "Edit Check Study 3" and Site "Edit Check Site 3"
@@ -135,13 +135,13 @@ originally opened the query, then queries are displayed.
 @release_564_Patch11
 @PB_3.2.1
 @Draft
-Scenario: PB_3.2.1 As an EDC user, On a Cross Folder Standard form to log form, When a query has been answered and closed with the same data and I enter the same data that originally opened the query, then queries are not displayed.
+Scenario: PB_3.2.1 As an EDC user, On a Cross Folder Standard form to log form, When a query has been answered and auto closed with the same data and I enter the same data that originally opened the query, then queries are not displayed.
 		
 	 Given I select Study "Edit Check Study 3" and Site "Edit Check Site 3"
 	 And I create a Subject
-		| Field            | Value                                                          |
+		| Field            | Data              |
 		| Subject Number   | {RndNum<num1>(5)} |
-		| Subject Initials | sub                                                            |   
+		| Subject Initials | sub               |
 	 And I select Folder "Screening"
 	 And I select Form "Informed Consent"
 	 And I enter data in CRF
@@ -185,7 +185,7 @@ Scenario: PB_3.2.1 As an EDC user, On a Cross Folder Standard form to log form, 
 @release_564_Patch11
 @PB_3.2.2
 @Draft
-Scenario: PB_3.2.2 As an EDC user, On a Cross Folder Standard form to log form, When a query has been answered and closed with the different data and I enter the same data that originally opened the query, then queries are displayed.
+Scenario: PB_3.2.2 As an EDC user, On a Cross Folder Standard form to log form, When a query has been answered and auto closed with the different data and I enter the same data that originally opened the query, then queries are displayed.
 	
 	Given I select a Subject "sub{Var(num1)}"
 	And I select Form "Concomitant Medications" in Folder "Week 1"
@@ -232,13 +232,13 @@ Scenario: PB_3.2.2 As an EDC user, On a Cross Folder Standard form to log form, 
 @release_564_Patch11
 @PB_3.3.1
 @Draft
-Scenario: PB_3.3.1 As an EDC user, On a Cross Forms log form to Standard form, When a query has been answered and closed with the different data and I enter the same data that originally opened the query, then queries are displayed. 
+Scenario: PB_3.3.1 As an EDC user, On a Cross Forms log form to Standard form, When a query has been answered and auto closed with the different data and I enter the same data that originally opened the query, then queries are displayed. 
 
 	Given I select Study "Edit Check Study 3" and Site "Edit Check Site 3"
 	And I create a Subject
-		| Field            | Value                                                          |
+		| Field            | Data              |
 		| Subject Number   | {RndNum<num1>(5)} |
-		| Subject Initials | sub                                                            |
+		| Subject Initials | sub               |
 	And I select Folder "Week 1"
 	And I select Form "Concomitant Medications"
 	And I enter data in CRF
@@ -286,11 +286,11 @@ Scenario: PB_3.3.1 As an EDC user, On a Cross Forms log form to Standard form, W
 @release_564_Patch11
 @PB_3.4.1
 @Draft
-Scenario: PB_3.4.1 As an EDC user, On a Cross Forms log form to log form, When a query has been answered and closed with the same data and I enter the same data that originally opened the query, then queries are not displayed.
+Scenario: PB_3.4.1 As an EDC user, On a Cross Forms log form to log form, When a query has been answered and auto closed with the same data and I enter the same data that originally opened the query, then queries are not displayed.
 
 	Given I select Study "Edit Check Study 3" and Site "Edit Check Site 3"
 	And I create a Subject
-		| Field            | Value             |
+		| Field            | Data              |
 		| Subject Number   | {RndNum<num1>(5)} |
 		| Subject Initials | sub               |
 	And I select Folder "Screening"
@@ -366,7 +366,7 @@ Scenario: PB_3.4.1 As an EDC user, On a Cross Forms log form to log form, When a
 @release_564_Patch11
 @PB_3.4.2
 @Draft
-Scenario: PB_3.4.2 As an EDC user, On a Cross Forms log form to log form, When a query has been answered and closed with the different data and I enter the same data that originally opened the query, then queries are not displayed.
+Scenario: PB_3.4.2 As an EDC user, On a Cross Forms log form to log form, When a query has been answered and auto closed with the different data and I enter the same data that originally opened the query, then queries are not displayed.
 
 	Given I select a Subject "sub{Var(num1)}"
 	And I select Form "Concomitant Medications" in Folder "Screening"
