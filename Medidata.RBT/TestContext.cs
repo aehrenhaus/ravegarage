@@ -9,6 +9,9 @@ using System.IO;
 using System.Drawing.Imaging;
 using System.Collections.Specialized;
 using System.Threading;
+using OpenQA.Selenium.Firefox;
+using OpenQA.Selenium.Chrome;
+using OpenQA.Selenium.IE;
 
 namespace Medidata.RBT
 {
@@ -252,9 +255,48 @@ namespace Medidata.RBT
 		{
 			if (Browser == null)
 			{
-				Browser = PageBase.OpenBrowser();
+				Browser = OpenBrowser();
 			}
 		}
+
+
+		/// <summary>
+		/// Open a brower according to configuration
+		/// </summary>
+		/// <param name="browserName"></param>
+		/// <returns></returns>
+		private static RemoteWebDriver OpenBrowser(string browserName = null)
+		{
+			RemoteWebDriver _webdriver = null;
+
+			var driverPath = RBTConfiguration.Default.WebDriverPath;
+			if (!Path.IsPathRooted(driverPath))
+				driverPath = new DirectoryInfo(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, driverPath)).FullName;
+
+			switch (RBTConfiguration.Default.BrowserName.ToLower())
+			{
+				case "firefox":
+					FirefoxProfile p = new FirefoxProfile(RBTConfiguration.Default.FirefoxProfilePath, true);
+					FirefoxBinary bin = new FirefoxBinary(RBTConfiguration.Default.BrowserPath);
+					_webdriver = new FirefoxDriver(bin, p);
+					break;
+
+
+				case "chrome":
+
+					_webdriver = new ChromeDriver(driverPath);
+					break;
+
+
+				case "ie":
+					_webdriver = new InternetExplorerDriver(driverPath);
+					break;
+
+			}
+
+			return _webdriver;
+		}
+
 
 		private static void CloseBrower()
 		{

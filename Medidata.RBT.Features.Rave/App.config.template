@@ -20,6 +20,7 @@
 		DatabaseConnection="RaveConnection"
 		GenerateReportAfterTest="true"
 		ScenarioNamePrefix="PB_"
+		ElementWaitTimeout="5"
 		/>
 
 	<RaveConfiguration

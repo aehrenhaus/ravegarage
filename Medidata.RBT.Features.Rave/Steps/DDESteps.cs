@@ -42,6 +42,7 @@ namespace Medidata.RBT.Features.Rave
 		[StepDefinition(@"I enter data in DDE and save")]
 		public void IEnterDataInDDEAndSave(Table table)
 		{
+			SpecialStringHelper.ReplaceTableColumn(table, "Data");
 			IEnterDataInDDE(table);
 			ISaveDDE();
 		}

@@ -23,44 +23,8 @@ namespace Medidata.RBT
 
         public PageBase()
         {
-            InitializeWithCurrentUrl();
-        }
-
-        /// <summary>
-        /// Open a brower according to configuration
-        /// </summary>
-        /// <param name="browserName"></param>
-        /// <returns></returns>
-        public static RemoteWebDriver OpenBrowser(string browserName = null)
-        {
-            RemoteWebDriver _webdriver = null;
-
-            var driverPath = RBTConfiguration.Default.WebDriverPath;
-            if (!Path.IsPathRooted(driverPath))
-                driverPath = new DirectoryInfo(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, driverPath)).FullName;
-
-            switch (RBTConfiguration.Default.BrowserName.ToLower())
-            {
-                case "firefox":
-                    FirefoxProfile p = new FirefoxProfile(RBTConfiguration.Default.FirefoxProfilePath, true);
-                    FirefoxBinary bin = new FirefoxBinary(RBTConfiguration.Default.BrowserPath);
-                    _webdriver = new FirefoxDriver(bin, p);
-                    break;
-
-
-                case "chrome":
-
-                    _webdriver = new ChromeDriver(driverPath);
-                    break;
-
-
-                case "ie":
-                    _webdriver = new InternetExplorerDriver(driverPath);
-                    break;
-
-            }
-
-            return _webdriver;
+			this.Browser = TestContext.Browser;
+			PageFactory.InitElements(Browser, this);
         }
 
         /// <summary>
@@ -69,17 +33,7 @@ namespace Medidata.RBT
         protected RemoteWebDriver Browser { get; set; }
 
 
-        /// <summary>
-        /// 
-        /// </summary>
-        protected void InitializeWithCurrentUrl()
-        {
-            this.Browser = TestContext.Browser;
-            //this.URL = Browser.Url;
-
-            PageFactory.InitElements(Browser, this);
-        }
-
+  
         #endregion
 
         /// <summary>
