@@ -25,7 +25,7 @@ Background:
 Scenario: PB_1.1.1 As an EDC user, On a Cross Forms - Standard form to log form, when a query has been answered and closed with the same data and I enter the same data that originally opened the query, then queries are not displayed. 
 	
 	Given I create a Subject
-		| Field            | Value             |
+		| Field            | Data              |
 		| Subject Number   | {RndNum<num1>(5)} |
 		| Subject Initials | SUB               |
 	And I select Form "Informed Consent" in Folder "Screening"
@@ -134,10 +134,10 @@ Scenario: PB_1.2.1 As an EDC user, On a Cross Folders, Standard form to log form
 	
 	Given I select Study "Edit Check Study 3" and Site "Edit Check Site 1"
     And I create a Subject
-		| Field            | Value             |
+		| Field            | Data              |
 		| Subject Number   | {RndNum<num1>(5)} |
 		| Subject Initials | SUB               |
-	And I select Form "Informed Consent" in Folder "Screening"
+			And I select Form "Informed Consent" in Folder "Screening"
 	And I enter data in CRF and save
 	    | Field                        | Data        |
 	    | Date Informed Consent Signed | 10 Jan 2000 |
@@ -247,7 +247,7 @@ Scenario: PB_1.3.1 As an EDC user, on a Cross Forms log form to Standard form Fo
 
  	Given I select Study "Edit Check Study 3" and Site "Edit Check Site 1" 
     And I create a Subject
-		| Field            | Value             |
+		| Field            | Data              |
 		| Subject Number   | {RndNum<num1>(5)} |
 		| Subject Initials | SUB               |
 	And I select Form "Concomitant Medications" in Folder "Week 1"
@@ -392,7 +392,7 @@ Scenario: PB_1.4.1 As an EDC user, On a Cross Forms log form to log form, Folder
 
 	Given I select Study "Edit Check Study 3" and Site "Edit Check Site 1"			  
     And I create a Subject
-		| Field            | Value             |
+		| Field            | Data             |
 		| Subject Number   | {RndNum<num1>(5)} |
 		| Subject Initials | SUB               |
 	And I select Form "Concomitant Medications" in Folder "Screening"
@@ -539,7 +539,7 @@ Scenario: PB_1.5.1 As an EDC user, Cross Forms - Standard form to log form. Fold
 
 	Given I select Study "Edit Check Study 3" and Site "Edit Check Site 1"	
     And I create a Subject
-		| Field            | Value             |
+		| Field            | Data             |
 		| Subject Number   | {RndNum<num1>(5)} |
 		| Subject Initials | SUB               |
 	And I select Form "Informed Consent" in Folder "Screening"
@@ -590,7 +590,7 @@ Scenario: PB_1.6.1 As an EDC user, On a Cross Forms,
 
 	Given I select Study "Edit Check Study 3" and Site "Edit Check Site 1"	
     And I create a Subject
-		| Field            | Value             |
+		| Field            | Data             |
 		| Subject Number   | {RndNum<num1>(5)} |
 		| Subject Initials | SUB               |
 	And I select Form "Informed Consent" in Folder "Screening"
@@ -636,7 +636,7 @@ Scenario: PB_1.7.1 As an EDC user, Cross Forms: log form to log form. Folder "Sc
 
 	Given I select Study "Edit Check Study 3" and Site "Edit Check Site 1"			  
     And I create a Subject
-		| Field            | Value             |
+		| Field            | Data             |
 		| Subject Number   | {RndNum<num1>(5)} |
 		| Subject Initials | SUB               |  
 	And I select Form "Concomitant Medications" in Folder "Screening"
@@ -692,7 +692,7 @@ Scenario: PB_1.8.1 As an EDC user, On a Cross Forms log form to log form. Folder
 	
 	Given I select Study "Edit Check Study 3" and Site "Edit Check Site 1"			  
     And I create a Subject
-		| Field            | Value             |
+		| Field            | Data             |
 		| Subject Number   | {RndNum<num1>(5)} |
 		| Subject Initials | SUB               |
 	And I select Form "Concomitant Medications" in Folder "Screening"
@@ -743,7 +743,7 @@ Scenario: PB_1.9.1 As an EDC user, On a Cross Forms Standard form to log form. F
 
 	Given I select Study "Edit Check Study 3" and Site "Edit Check Site 1"	
     And I create a Subject
-		| Field            | Value             |
+		| Field            | Data             |
 		| Subject Number   | {RndNum<num1>(5)} |
 		| Subject Initials | SUB               |
 	And I select Form "Informed Consent" in Folder "Screening"
@@ -792,7 +792,7 @@ Scenario: PB_1.10.1 As an EDC user, Cross Forms: Standard form to log form. Fold
 
 	Given I select Study "Edit Check Study 3" and Site "Edit Check Site 1"	
     And I create a Subject
-		| Field            | Value             |
+		| Field            | Data             |
 		| Subject Number   | {RndNum<num1>(5)} |
 		| Subject Initials | SUB               |
 	And I select Form "Informed Consent" in Folder "Screening"
@@ -838,11 +838,11 @@ Scenario: PB_1.10.1 As an EDC user, Cross Forms: Standard form to log form. Fold
 @PB_1.11.1
 @Draft
 Scenario: PB_1.11.1 As an EDC user, On a Cross Forms Standard form to log form, 
-Folder "Screening" enter and save data on forms "Informed Consent" and "Concomitant Medications" Queries fired on log form, Modify standard fields to different good data, new value results in system close of edit check on log form - queries closed by system and no log in the Database.
+Folder "Screening" enter and save data on forms "Informed Consent" and "Concomitant Medications" Queries fired on log form, Modify standard fields to different good data, new Data results in system close of edit check on log form - queries closed by system and no log in the Database.
 
 	Given I select Study "Edit Check Study 3" and Site "Edit Check Site 1"	
     And I create a Subject
-		| Field            | Value             |
+		| Field            | Data             |
 		| Subject Number   | {RndNum<num1>(5)} |
 		| Subject Initials | SUB               |
 	And I select Form "Informed Consent" in Folder "Screening"
@@ -884,7 +884,7 @@ Scenario: PB_1.12.1 As an EDC user, On a Cross Forms Standard form to log form. 
 
 	Given I select Study "Edit Check Study 3" and Site "Edit Check Site 1"	
     And I create a Subject
-		| Field            | Value             |
+		| Field            | Data             |
 		| Subject Number   | {RndNum<num1>(5)} |
 		| Subject Initials | SUB               |
 	And I select Form "Informed Consent" in Folder "Screening"
@@ -924,7 +924,7 @@ Scenario: PB_1.13.1 As an EDC user, On a Cross Forms: Standard form to log form.
 	
 	Given I select Study "Edit Check Study 3" and Site "Edit Check Site 1"
 	And I create a Subject
-		| Field            | Value             |
+		| Field            | Data             |
 		| Subject Number   | {RndNum<num1>(5)} |
 		| Subject Initials | SUB               |
 	And I select Form "Informed Consent" in Folder "Screening"
@@ -977,7 +977,7 @@ Scenario: PB_1.14.1 As an EDC user, Cross Forms: Standard form to log form. Fold
 	
 	Given I select Study "Edit Check Study 3" and Site "Edit Check Site 1"
     And I create a Subject
-		| Field            | Value             |
+		| Field            | Data             |
 		| Subject Number   | {RndNum<num1>(5)} |
 		| Subject Initials | SUB               |
 	And I select Form "Informed Consent" in Folder "Screening"
@@ -1028,7 +1028,7 @@ Scenario: PB_1.15.1 As an EDC user, On a Cross Forms log form to log form, Folde
 
 	Given I select Study "Edit Check Study 3" and Site "Edit Check Site 1"	
     And I create a Subject
-		| Field            | Value             |
+		| Field            | Data             |
 		| Subject Number   | {RndNum<num1>(5)} |
 		| Subject Initials | SUB               |
 	And I select Form "Concomitant Medications" in Folder "Screening"
@@ -1078,7 +1078,7 @@ Folder "Screening" enter and save data on forms "Concomitant Medications" and "A
 
 	Given I select Study "Edit Check Study 3" and Site "Edit Check Site 1"	
     And I create a Subject
-		| Field            | Value             |
+		| Field            | Data             |
 		| Subject Number   | {RndNum<num1>(5)} |
 		| Subject Initials | SUB               |
 	And I select Form "Concomitant Medications" in Folder "Screening"
@@ -1132,7 +1132,7 @@ Scenario: PB_1.17.1 As an EDC user, On a Cross Forms log form to log form,
 
 	Given I select Study "Edit Check Study 3" and Site "Edit Check Site 1"	
     And I create a Subject
-		| Field            | Value             |
+		| Field            | Data              |
 		| Subject Number   | {RndNum<num1>(5)} |
 		| Subject Initials | SUB               |
 	And I select Form "Concomitant Medications" in Folder "Screening"
@@ -1174,7 +1174,7 @@ Scenario: PB_1.18.1 As an EDC user, On a Cross Forms log form to log form,
 
 	Given I select Study "Edit Check Study 3" and Site "Edit Check Site 1"	
     And I create a Subject
-		| Field            | Value             |
+		| Field            | Data              |
 		| Subject Number   | {RndNum<num1>(5)} |
 		| Subject Initials | SUB               |
 	And I select Form "Concomitant Medications" in Folder "Screening"
@@ -1212,7 +1212,7 @@ Scenario: PB_1.19.1 As an EDC user, On a Cross Forms: log form to log form. Fold
 
 	Given I select Study "Edit Check Study 3" and Site "Edit Check Site 1"	
     And I create a Subject
-		| Field            | Value             |
+		| Field            | Data              |
 		| Subject Number   | {RndNum<num1>(5)} |
 		| Subject Initials | SUB               |
 	And I select Form "Concomitant Medications" in Folder "Screening"
@@ -1268,7 +1268,7 @@ new value results in system close of edit check on second log form. Navigate to 
 
 	Given I select Study "Edit Check Study 3" and Site "Edit Check Site 1"	
     And I create a Subject
-		| Field            | Value             |
+		| Field            | Data              |
 		| Subject Number   | {RndNum<num1>(5)} |
 		| Subject Initials | SUB               |
 	And I select Form "Concomitant Medications" in Folder "Screening"
@@ -1321,7 +1321,7 @@ do not touch log field - query and no logs in the Database
 
 	Given I select Study "Edit Check Study 3" and Site "Edit Check Site 1"
     And I create a Subject
-	| Field            | Value             |
+	| Field            | Data              |
 	| Subject Number   | {RndNum<num1>(5)} |
 	| Subject Initials | SUB               |
 	And I select Form "Mixed Form"
@@ -1359,7 +1359,7 @@ Modify log field to different bad data, do not touch standard field - query re-f
 
 	Given I select Study "Edit Check Study 3" and Site "Edit Check Site 1"
     And I create a Subject
-		| Field            | Value             |
+		| Field            | Data              |
 		| Subject Number   | {RndNum<num1>(5)} |
 		| Subject Initials | SUB               |
 	And I select Form "Mixed Form"
