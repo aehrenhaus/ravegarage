@@ -60,7 +60,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Architect\AMMigrationExecutePage.cs" />
-    <Compile Include="BaseEDCTreePage.cs" />
+    <Compile Include="EDC\BaseEDCTreePage.cs" />
     <Compile Include="Architect\ArchitectPage.cs" />
     <Compile Include="Architect\ArchitectLibraryPage.cs" />
     <Compile Include="Architect\ArchitectNewDraftPage.cs" />
@@ -68,31 +68,34 @@
     <Compile Include="Architect\ArchitectChecksPage.cs" />
     <Compile Include="Architect\ArchitectBasePage.cs" />
     <Compile Include="Architect\AMMigrationHomePage.cs" />
-    <Compile Include="AuditsPage.cs" />
-    <Compile Include="FileRequestViewPage.cs" />
-    <Compile Include="FileRequestCreateDataRequestPage.cs" />
-    <Compile Include="FileRequestPage.cs" />
-    <Compile Include="DCFQueriesPage.cs" />
-    <Compile Include="Config\RaveConfiguration.cs" />
+    <Compile Include="EDC\AuditsPage.cs" />
+    <Compile Include="EDC\NonLabFieldControl.cs" />
+    <Compile Include="EDC\LabFieldControl.cs" />
+    <Compile Include="EDC\IEDCFieldControl.cs" />
+    <Compile Include="PDF\FileRequestViewPage.cs" />
+    <Compile Include="PDF\FileRequestCreateDataRequestPage.cs" />
+    <Compile Include="PDF\FileRequestPage.cs" />
+    <Compile Include="OtherPages\DCFQueriesPage.cs" />
+    <Compile Include="RaveConfiguration.cs" />
     <Compile Include="TableModels\QueryCancelModel.cs" />
     <Compile Include="TableModels\FieldModel.cs" />
     <Compile Include="TableModels\QuerySearchModel.cs" />
     <Compile Include="TSDV\SubjectOverridePage.cs" />
-    <Compile Include="PromptsPage.cs" />
-    <Compile Include="ReportsPage.cs" />
+    <Compile Include="Reports\PromptsPage.cs" />
+    <Compile Include="Reports\ReportsPage.cs" />
     <Compile Include="RavePageBase.cs" />
-    <Compile Include="DDEPage.cs" />
-    <Compile Include="UserEditPage.cs" />
+    <Compile Include="DDE\DDEPage.cs" />
+    <Compile Include="UserAdministrator\UserEditPage.cs" />
     <Compile Include="RavePageObjectFactory.cs" />
-    <Compile Include="UserAdministrationPage.cs" />
-    <Compile Include="RWSLogPage.cs" />
-    <Compile Include="CRFPage.cs" />
-    <Compile Include="HomePage.cs" />
-    <Compile Include="LoginPage.cs" />
-    <Compile Include="PrimaryRecordPage.cs" />
+    <Compile Include="UserAdministrator\UserAdministrationPage.cs" />
+    <Compile Include="OtherPages\RWSLogPage.cs" />
+    <Compile Include="EDC\CRFPage.cs" />
+    <Compile Include="OtherPages\HomePage.cs" />
+    <Compile Include="OtherPages\LoginPage.cs" />
+    <Compile Include="EDC\PrimaryRecordPage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Helpers\RavePagesHelper.cs" />
-    <Compile Include="SubjectPage.cs" />
+    <Compile Include="EDC\SubjectPage.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Medidata.RBT.Common.Steps\Medidata.RBT.Common.Steps.csproj">
@@ -108,9 +111,7 @@
       <Name>Medidata.RBT</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="EDC\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

@@ -80,18 +80,18 @@ namespace Medidata.RBT.PageObjects.Rave
 
 		public bool CanFindCancelledQuery(QueryCancelModel filter)
 		{
-			var auditPage = this.ClickAudit(filter.Field);
+			var auditPage = this.GetField(filter.Field).ClickAudit();
 			bool exist = auditPage.AuditExist_CloseQuery(filter.QueryMessage);
 			Browser.Navigate().Back();
 			return exist;
 		}
 
-		public AuditsPage ClickAudit(string fieldName)
+		public IEDCFieldControl GetField(string fieldName)
 		{
-			var auditButton  = RavePagesHelper.GetNonlabFieldContainer(fieldName).TryFindElementByPartialID("DataStatusHyperlink");
-			auditButton.Click();
-			return new AuditsPage();
+			var control = RavePagesHelper.GetNonlabFieldContainer(fieldName);
+			return new NonLabFieldControl(this,control);
 		}
+	
 
 		public bool CanFindQuery(QuerySearchModel filter)
 		{
