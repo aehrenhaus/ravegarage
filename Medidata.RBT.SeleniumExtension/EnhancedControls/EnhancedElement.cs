@@ -56,6 +56,21 @@ namespace Medidata.RBT.SeleniumExtension
 	
 		}
 
+		public string Style
+		{
+			get
+			{
+				return this.GetAttribute("style");
+			}
+			set
+			{
+				if (value == null)
+					this.RemoveAttribute("style");
+				else
+					this.SetAttribute("style", value);
+			}
+		}
+
 		public string Class
 		{
 			get

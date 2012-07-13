@@ -198,7 +198,8 @@ namespace Medidata.RBT.Features.Rave
 		[StepDefinition(@"I answer the Query")]
 		public void IAnswerTheQuery(Table table)
 		{
-			CurrentPage.As<CRFPage>().AnswerQuery(table.CreateInstance<QuerySearchModel>());
+			var model = table.CreateInstance<QuerySearchModel>();
+			CurrentPage.As<CRFPage>().AnswerQuery(model.QueryMessage, model.Field, model.Answer);
 	
 		}
 

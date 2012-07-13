@@ -133,7 +133,7 @@ namespace Medidata.RBT.Features.Rave
 
 
 
-		[Given(@"I expand ""([^""]*)"" in Task Summary")]
+		[StepDefinition(@"I expand ""([^""]*)"" in Task Summary")]
 		public void GivenIExpand____InTaskSummary(string header)
 		{
 			CurrentPage.As<SubjectPage>().ExpandTask(header);

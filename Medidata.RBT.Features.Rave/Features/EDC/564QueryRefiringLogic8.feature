@@ -189,16 +189,21 @@ Scenario: PB_8.1.2
 	And I save the CRF page
 	And I take a screenshot
 	And I open log line 2
-	And I verify Field "Start Date" has no Query
-	And I verify Field "Current Axis Number" has no Query
+	And I verify Query is not displayed
+         | Field      | Closed |
+         | Start Date | false  |
+	And I verify Query is displayed
+         | Field               | Closed |
+         | Current Axis Number | true  |
+
 	And I take a screenshot
 	And I enter data in CRF and save
 		| Field               | Data        |
 		| Start Date          | 07 Jan 2000 |
 		| Current Axis Number | 18          |
 	And I open log line 2
-	And I verify Requires Response Query with message "'Date Informed Consent Signed' is greater. Please revise." is not displayed on Field "Start Date"
-	And I verify Requires Response Query with message "Informed Consent 'Current Distribution Number' is not equal to Concomitant Medications 'Current Axis Number'." is not displayed on Field "Current Axis Number"
+	And I verify Query with message "'Date Informed Consent Signed' is greater. Please revise." is displayed on Field "Start Date"
+	And I verify Query with message "Informed Consent 'Current Distribution Number' is not equal to Concomitant Medications 'Current Axis Number'." is displayed on Field "Current Axis Number"
 	And I take a screenshot
 	
 #----------------------------------------------------------------------------------------------------------------------------------------	
@@ -248,7 +253,7 @@ Scenario: PB_8.1.3
 Scenario: PB_8.2.1 Task Summary
 
 	And I select Study "Edit Check Study 3" and Site "Edit Check Site 8"
-    And I select a Subject "sub{Var(num1)}"
+    And I select a Subject "sub35900"
 #New Step Def
 	When I expand "Open Queries" in Task Summary
 	Then I should see "Screening-Concomitant Medications" in "Open Queries"
@@ -258,17 +263,18 @@ Scenario: PB_8.2.1 Task Summary
 	And I verify Requires Response Query with message "Informed Consent 'Current Distribution Number' is not equal to Concomitant Medications 'Current Axis Number'." is displayed on Field "Current Axis Number"
 	And I take a screenshot
 	
-    And I select a Subject "sub{Var(num1)}"
+	And I select Study "Edit Check Site 8" in "Header"
+    And I select a Subject "sub35900"
 #New Step Def
-	When I expand "Cancel Query" in Task Summary
-	Then I should see "Screening-Concomitant Medications" in "Open Query"
-	And I select "Screening-Concomitant Medications" in "Open Query"
+	When I expand "Cancel Queries" in Task Summary
+	Then I should see "Screening-Concomitant Medications" in "Cancel Queries"
+	And I select "Screening-Concomitant Medications" in "Cancel Queries"
 	And I open log line 3
 	And I verify Requires Response Query with message "'Date Informed Consent Signed' is greater. Please revise." is displayed on Field "Start Date"
 	And I verify Requires Response Query with message "Informed Consent 'Current Distribution Number' is not equal to Concomitant Medications 'Current Axis Number'." is displayed on Field "Current Axis Number"
 # Need new step def
-	And I verify Cancel Query with message "'Date Informed Consent Signed' is greater. Please revise." is displayed on Field "Start Date"
-	And I verify Cancel Query with message "Informed Consent 'Current Distribution Number' is not equal to Concomitant Medications 'Current Axis Number'." is displayed on Field "Start Date"
+
+
 	And I take a screenshot
 	
 #----------------------------------------------------------------------------------------------------------------------------------------	

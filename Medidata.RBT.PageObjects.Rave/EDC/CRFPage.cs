@@ -16,8 +16,9 @@ namespace Medidata.RBT.PageObjects.Rave
 	{
 		public CRFPage FillDataPoints(IEnumerable<FieldModel> fields)
 		{
-			RavePagesHelper.FillDataPoints(fields);
-			
+			foreach (var field in fields)
+				FindField(field.Field).EnterData(field.Data);
+
 			return this;
 		}
 
@@ -80,25 +81,38 @@ namespace Medidata.RBT.PageObjects.Rave
 
 		public bool CanFindCancelledQuery(QueryCancelModel filter)
 		{
-			var auditPage = this.ClickAudit(filter.Field);
+			var auditPage = this.FindField(filter.Field).ClickAudit();
 			bool exist = auditPage.AuditExist_CloseQuery(filter.QueryMessage);
 			Browser.Navigate().Back();
 			return exist;
 		}
 
-		public AuditsPage ClickAudit(string fieldName)
+		public bool IsLabForm
 		{
-			var auditButton  = RavePagesHelper.GetNonlabFieldContainer(fieldName).TryFindElementByPartialID("DataStatusHyperlink");
-			auditButton.Click();
-			return new AuditsPage();
+			get
+			{
+				var contentR = TestContext.Browser.FindElementsByPartialId("Content_R")[0];
+				var labDropdown = contentR.Dropdown("LOC_DropDown", true);
+				bool isLabform = labDropdown != null;
+				return isLabform;
+			}
 		}
+
+		public IEDCFieldControl FindField(string fieldName)
+		{
+			if (IsLabForm)
+				return new LabDataPageControl(this).FindField(fieldName);
+			else
+				return new NonLabDataPageControl(this).FindField(fieldName);
+		}
+	
 
 		public bool CanFindQuery(QuerySearchModel filter)
 		{
 			IWebElement queryContainer = null;
 			try
 			{
-				queryContainer = RavePagesHelper.FindQuery(filter);
+				queryContainer = FindField(filter.Field).FindQuery(filter);
 			}
 			catch
 			{
@@ -107,43 +121,25 @@ namespace Medidata.RBT.PageObjects.Rave
 
 		}
 
-		//the table that contains the Query(left side)
-		public IWebElement FindQuery(QuerySearchModel filter)
-		{
-		
-			return RavePagesHelper.FindQuery(filter);
-		}
 
 		public CRFPage AnswerQuery(string message, string fieldName, string answer)
 		{
-			var queryContainer = FindQuery(new QuerySearchModel { QueryMessage = message, Field = fieldName });
-			queryContainer.Textboxes()[0].SetText(answer);
-			return this;
-		}
-
-		public CRFPage AnswerQuery(QuerySearchModel model)
-		{
-			var queryContainer = FindQuery(model);
-			var boxes = queryContainer.Textboxes();
-			if(boxes.Count==0)
-				throw new Exception ("Can't find answer textbox");
-			boxes[0].SetText(model.Answer);
+			FindField(fieldName)
+				.AnswerQuery(new QuerySearchModel { QueryMessage = message, Field = fieldName, Answer = answer });
+		
+			
 			return this;
 		}
 
 		public CRFPage CloseQuery(string message, string fieldName)
 		{
-			var queryContainer = FindQuery(new QuerySearchModel { QueryMessage = message, Field = fieldName });
-			queryContainer.Dropdowns()[0].SelectByText("Close Query");
-		
+			FindField(fieldName).CloseQuery(new QuerySearchModel{QueryMessage = message,Field = fieldName});		
 			return this;
 		}
 
 		public CRFPage CancelQuery(string message, string fieldName)
 		{
-			var queryContainer = FindQuery(new QuerySearchModel { QueryMessage = message, Field = fieldName });
-			queryContainer.Checkboxes()[0].Check();
-		
+			FindField(fieldName).CancelQuery(new QuerySearchModel { QueryMessage = message, Field = fieldName });
 			return this;
 		}
 

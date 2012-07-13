@@ -44,40 +44,34 @@ namespace Medidata.RBT.PageObjects.Rave
 
         public override IPage Type(string name, string text)
         {
-            text = SpecialStringHelper.Replace(text);
-
-            IWebElement field = GetElementByName(name);
-			var input = field.TryFindElementBy(By.XPath("./span/input[position()=1]")).EnhanceAs<Textbox>();
-            input.SetText(text);
+			IWebElement dropdownTD = GetElementByName(name);
+			CompositeDropdown dropdown = new CompositeDropdown(this,name, dropdownTD);
+			dropdown.Type(text);
             return this;
         }
 
         public override IPage ChooseFromDropdown(string name, string text)
         {
-			//first type ,then choose will limite the count of options.
-			Type(name, text);
-
-            IWebElement field = GetElementByName(name);
-
-			//IF type first, then do not need to click the dropdown button.
-			//IF click, what you entered will not be the filter
-            //IWebElement dropdownButton = field.TryFindElementBy(By.XPath("./span/input[position()=2]"));
-            //dropdownButton.Click();
-
-			var option = this.WaitForElement(
-				driver => field.FindElements(By.XPath("./div[position()=2]/div")).FirstOrDefault(x => x.Text == text),
-				name + " not found: " + text
-				);
-		
-			option.Click();
+            IWebElement dropdownTD = GetElementByName(name);
+			CompositeDropdown dropdown = new CompositeDropdown(this,name, dropdownTD);
+			dropdown.TypeAndSelect(text);
+			
             return this;
         }
 
 		public DDEPage FillDataPoints(IEnumerable<FieldModel> fields)
 		{
-			RavePagesHelper.FillDataPoints(fields);
+			foreach (var field in fields)
+				FindField(field.Field).EnterData(field.Data);
+
 			return this;
 		}
+
+		public IEDCFieldControl FindField(string fieldName)
+		{
+			return new NonLabDataPageControl(this).FindField(fieldName);
+		}
+	
 
 		public DDEPage FillLoglineDataPoints(int line, Table table)
 		{
