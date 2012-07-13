@@ -37,6 +37,12 @@ namespace Medidata.RBT.PageObjects.Rave
 
 		protected override IPage GetTargetPageObjectByLinkAreaName(string type, string areaName)
 		{
+			if (type == "Study" && areaName=="Header")
+				return new HomePage();
+			if (type == "Site" && areaName == "Header")
+				return new HomePage();
+
+
 			return base.GetTargetPageObjectByLinkAreaName(type, areaName);
 		}
 

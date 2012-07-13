@@ -56,9 +56,9 @@ namespace Medidata.RBT.PageObjects.Rave
 				queryTable = queryTables[0];
 			}
 
-			var hasDropdown = LeftSideTD.Dropdowns().Count == 1;
-			var hasCancelCheck = LeftSideTD.Checkboxes().Count == 1;
-			var hasReplyTextbox = LeftSideTD.Textboxes().Count == 1;
+			var hasDropdown = queryTable.Dropdowns().Count == 1;
+			var hasCancelCheck = queryTable.Checkboxes().Count == 1;
+			var hasReplyTextbox = queryTable.Textboxes().Count == 1;
 
 			//is closed query?
 			if (filter.Closed != null)
@@ -159,7 +159,9 @@ namespace Medidata.RBT.PageObjects.Rave
 
 		public void AnswerQuery(QuerySearchModel filter)
 		{
-			FindQuery(filter).Textboxes()[0].SetText(filter.Answer);
+			string answer = filter.Answer;
+			filter.Answer = null;
+			FindQuery(filter).Textboxes()[0].SetText(answer);
 		}
 
 

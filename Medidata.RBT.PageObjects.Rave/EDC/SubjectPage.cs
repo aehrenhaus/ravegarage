@@ -17,6 +17,7 @@ namespace Medidata.RBT.PageObjects.Rave
 			var TRs = Browser.FindElementsByXPath("//span[@id='_ctl0_Content_TsBox_CBoxC']/table/tbody/tr[position()>1]");
 
 			var TR = TRs.FirstOrDefault(x => x.Text.Contains(header));
+
 			return TR;
 		}
 
@@ -26,6 +27,10 @@ namespace Medidata.RBT.PageObjects.Rave
 
 			var expandButton = TR.Images().FirstOrDefault(x => x.GetAttribute("src").EndsWith("arrow_right.gif"));
 			expandButton.Click();
+			
+			//wait for contents to load
+			this.WaitForElement(driver => Browser.FindElementByXPath("//body[@style='cursor: default;']"));
+
 
 			return this;
 		}

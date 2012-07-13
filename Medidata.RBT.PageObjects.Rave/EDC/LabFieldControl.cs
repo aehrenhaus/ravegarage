@@ -118,7 +118,9 @@ namespace Medidata.RBT.PageObjects.Rave
 
 		public void AnswerQuery(QuerySearchModel filter)
 		{
-			throw new NotImplementedException();
+			string answer = filter.Answer;
+			filter.Answer = null;
+			FindQuery(filter).Textboxes()[0].SetText(answer);
 		}
 
 		public void CloseQuery(QuerySearchModel filter)
