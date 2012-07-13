@@ -75,9 +75,17 @@ namespace Medidata.RBT.PageObjects.Rave
 
 		public DDEPage FillDataPoints(IEnumerable<FieldModel> fields)
 		{
-			RavePagesHelper.FillDataPoints(fields);
+			foreach (var field in fields)
+				FindField(field.Field).EnterData(field.Data);
+
 			return this;
 		}
+
+		public IEDCFieldControl FindField(string fieldName)
+		{
+			return new NonLabDataPageControl(this).FindField(fieldName);
+		}
+	
 
 		public DDEPage FillLoglineDataPoints(int line, Table table)
 		{

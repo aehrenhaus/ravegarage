@@ -9,7 +9,5 @@ namespace Medidata.RBT
 	public interface IControl
 	{
 		IPage Page { get; }
-		IWebElement Element { get; }
-
 	}
 }

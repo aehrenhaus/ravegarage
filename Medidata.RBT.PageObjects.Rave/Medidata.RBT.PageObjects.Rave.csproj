@@ -69,6 +69,9 @@
     <Compile Include="Architect\ArchitectBasePage.cs" />
     <Compile Include="Architect\AMMigrationHomePage.cs" />
     <Compile Include="EDC\AuditsPage.cs" />
+    <Compile Include="EDC\NonLabDataPageControl.cs" />
+    <Compile Include="EDC\LabDataPageControl.cs" />
+    <Compile Include="EDC\IEDCDataPageControl.cs" />
     <Compile Include="EDC\NonLabFieldControl.cs" />
     <Compile Include="EDC\LabFieldControl.cs" />
     <Compile Include="EDC\IEDCFieldControl.cs" />

@@ -16,7 +16,8 @@ namespace Medidata.RBT.PageObjects.Rave
 
 		public SubjectPage FillNameAndSave(Table table)
 		{
-			RavePagesHelper.FillDataPoints(table.CreateSet<FieldModel>());
+			throw new NotImplementedException();
+			//RavePagesHelper.FillDataPoints(table.CreateSet<FieldModel>());
       
 			IWebElement saveButton = Browser.TryFindElementById("_ctl0_Content_CRFRenderer_footer_SB");
 

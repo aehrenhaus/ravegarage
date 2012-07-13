@@ -18,19 +18,12 @@ namespace Medidata.RBT
 {
     public class ControlBase : IControl
     {
-		public ControlBase(IPage page, IWebElement ele)
+		public ControlBase(IPage page)
 		{
 			this.Page = page;
-			this.Element = ele;
 		}
 
 		public IPage Page
-		{
-			get;
-			protected set;
-		}
-
-		public IWebElement Element
 		{
 			get;
 			protected set;

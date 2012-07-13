@@ -10,18 +10,8 @@ using System.Collections.Specialized;
 
 namespace Medidata.RBT.PageObjects.Rave
 {
-	public interface IEDCFieldControl : IControl
+	public interface IEDCDataPageControl : IControl
 	{
-		AuditsPage ClickAudit();
-
-		void EnterData(string text);
-
-		IWebElement FindQuery(QuerySearchModel filter);
-
-		void AnswerQuery(QuerySearchModel filter);
-
-		void CloseQuery(QuerySearchModel filter);
-
-		void CancelQuery(QuerySearchModel filter);
+		IEDCFieldControl FindField(string fieldName);
 	}
 }
