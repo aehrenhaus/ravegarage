@@ -44,7 +44,7 @@ namespace Medidata.RBT.PageObjects.Rave
 						
 				
 						var div = Browser.TryFindElementById("DSitesSitegroups_SG_1");
-						var span = Browser.WaitForElement(b => div.Spans().FirstOrDefault(x => x.Text == val));
+						var span = this.WaitForElement(b => div.Spans().FirstOrDefault(x => x.Text == val));
 						span.Checkboxes()[0].Click();
 
 						break;
@@ -52,7 +52,7 @@ namespace Medidata.RBT.PageObjects.Rave
 						var expandBtn = Browser.FindElementById("Subjects_ShowHideBtn");
 						expandBtn.Click();
 
-						var tr = Browser.WaitForElement(b => b.FindElements(By.XPath("//table[@id='Subjects_FrontEndCBList']/tbody/tr")).FirstOrDefault(x => x.Text == val));
+						var tr = this.WaitForElement(b => b.FindElements(By.XPath("//table[@id='Subjects_FrontEndCBList']/tbody/tr")).FirstOrDefault(x => x.Text == val));
 
 						tr.Checkboxes()[0].Click();
 						break;

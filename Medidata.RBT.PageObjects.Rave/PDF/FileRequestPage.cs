@@ -41,7 +41,7 @@ namespace Medidata.RBT.PageObjects.Rave
 			var tr = table.FindMatchRows(dt).FirstOrDefault();
 
 			int waitTime = 60;
-			Browser.WaitForElement(b =>
+			this.WaitForElement(b =>
 				tr.Spans().FirstOrDefault(x => x.GetAttribute("id").EndsWith("StatusValue") && x.Text == "Completed"),
 				"Did not complete in time("+waitTime+"s)", waitTime
 				);
