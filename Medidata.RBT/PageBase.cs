@@ -262,5 +262,29 @@ namespace Medidata.RBT
             IAlert alert = Browser.SwitchTo().Alert();
             return alert;
         }
+
+
+		public IWebElement WaitForElement(Func<IWebDriver, IWebElement> getElement, string errorMessage = null, double timeOutSecond = 0)
+		{
+			if (timeOutSecond == 0)
+				timeOutSecond = RBTConfiguration.Default.ElementWaitTimeout;
+			return Browser.WaitForElement( getElement, errorMessage, timeOutSecond);
+		}
+
+		public IWebElement WaitForElement(By by, string errorMessage = null, double timeOutSecond = 0)
+		{
+			if (timeOutSecond == 0)
+				timeOutSecond = RBTConfiguration.Default.ElementWaitTimeout;
+			return Browser.WaitForElement( browser => browser.FindElement(by), errorMessage, timeOutSecond);
+		}
+
+
+		public IWebElement WaitForElement(string partialID, Func<IWebElement, bool> predicate = null, string errorMessage = null, double timeOutSecond = 0)
+		{
+			if (timeOutSecond == 0)
+				timeOutSecond = RBTConfiguration.Default.ElementWaitTimeout;
+	
+			return Browser.WaitForElement(partialID,predicate, errorMessage, timeOutSecond);
+		}
     }
 }

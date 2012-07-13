@@ -72,11 +72,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BrowserStepsBase.cs" />
     <Compile Include="InterfaceSteps.cs" />
     <Compile Include="DatabaseSteps.cs" />
     <Compile Include="MiscSteps.cs" />
-    <Compile Include="PageBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

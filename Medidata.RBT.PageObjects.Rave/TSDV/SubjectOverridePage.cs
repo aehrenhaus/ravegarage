@@ -25,7 +25,7 @@ namespace Medidata.RBT.PageObjects.Rave
 			{
 				Browser.Textbox("_ctl0_Content_HeaderControl_slSite_TxtBx").SetText(text);
                 Browser.FindElementById("_ctl0_Content_HeaderControl_slSite").Textboxes()[1].Click();
-                var option = Browser.WaitForElement(b=>b.FindElements(By.XPath("//div[@id='_ctl0_Content_HeaderControl_slSite_PickListBox']/div")).First(elm => elm.Text == text),
+				var option = this.WaitForElement(b => b.FindElements(By.XPath("//div[@id='_ctl0_Content_HeaderControl_slSite_PickListBox']/div")).First(elm => elm.Text == text),
                     "");
                 option.Click();
 
