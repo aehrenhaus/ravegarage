@@ -1530,8 +1530,6 @@ As an EDC user, when I entered bad data in lab field A and lab field B that resu
       |Field		                       |Query Message  												|Answered| Closed |
       |Lab Field 8 - WBC - rr = F ; rmc = T|Lab Field 8 must be greater than Lab Field 7. Please verify.|false   |false   | 
 	And I take a screenshot
-
-	
 @PB-US12940-11A		
 Scenario: @PB-US12940-11A 
 As an EDC user, when I entered bad data in lab field A and lab field B that resulted in the system opening a query on lab field B, and I canceled the query, and I entered good data in lab field A, if I then entered the same bad data in lab field A as when the query was canceled, then the system should not refire a query on lab field B. Query with requires response = true and requires manual close = true.
@@ -1552,10 +1550,12 @@ As an EDC user, when I entered bad data in lab field A and lab field B that resu
     And I take a screenshot
 	And I cancel the Query "Lab Field 2 must be greater than Lab Field 1. Please verify." on Field "Lab Field 2 - WBC - rr = T ; rmc = T"
 	And I save the CRF page
-	And I verify Query is cancelled
-      |Field		                                |Query Message  												|
-      |Lab Field 2 - WBC - rr = T ; rmc = T      	|Lab Field 2 must be greater than Lab Field 1. Please verify.	|
+	And I click audit on Field "Lab Field 2 - WBC - rr = T ; rmc = T"
+	And I verify Audits exist
+	| Audit Type     | Query Message                                                      |
+	| Query Canceled | Lab Field 2 must be greater than Lab Field 1. Please verify.       |
 	And I take a screenshot
+	And I select Form "Lab Form 8" in "Header"
 	And I enter data in CRF and save	  
       |Field		                                |Data   |
       |Lab Field 1 - NEUTROPHILS - rr = T ; rmc = T	|2		| 	
@@ -1592,10 +1592,12 @@ As an EDC user, when I entered bad data in lab field A and lab field B that resu
 	And I take a screenshot
 	And I cancel the Query "Lab Field 4 must be greater than Lab Field 3. Please verify." on Field "Lab Field 4 - WBC - rr = F ; rmc = F"  	  
 	And I save the CRF page
-	And I verify Query is cancelled
-      |Field		                                |Query Message  												|
-      |Lab Field 4 - WBC - rr = F ; rmc = F    	    |Lab Field 4 must be greater than Lab Field 3. Please verify.	|
+	And I click audit on Field "Lab Field 4 - WBC - rr = F ; rmc = F"
+	And I verify Audits exist
+	| Audit Type     | Query Message                                                      |
+	| Query Canceled | Lab Field 4 must be greater than Lab Field 3. Please verify.       |
 	And I take a screenshot
+	And I select Form "Lab Form 8" in "Header"
 	And I enter data in CRF and save	  
       |Field		                                |Data   |
       |Lab Field 3 - NEUTROPHILS - rr = F ; rmc = F	|2		|
@@ -1632,10 +1634,12 @@ As an EDC user, when I entered bad data in lab field A and lab field B that resu
 	And I take a screenshot
 	And I cancel the Query "Lab Field 6 must be greater than Lab Field 5. Please verify." on Field "Lab Field 6 - WBC - rr = T ; rmc = F"  
 	And I save the CRF page
-	And I verify Query is cancelled
-      |Field		                        |Query Message  												|
-      |Lab Field 6 - WBC - rr = T ; rmc = F |Lab Field 6 must be greater than Lab Field 5. Please verify.	|
+	And I click audit on Field "Lab Field 6 - WBC - rr = T ; rmc = F"
+	And I verify Audits exist
+	| Audit Type     | Query Message                                                      |
+	| Query Canceled | Lab Field 6 must be greater than Lab Field 5. Please verify.       |
 	And I take a screenshot
+	And I select Form "Lab Form 8" in "Header"
 	And I enter data in CRF and save	  
       |Field		                               |Data    |
       |Lab Field 5 - NEUTROPHILS - rr = T ; rmc = F|2		|
@@ -1671,10 +1675,12 @@ As an EDC user, when I entered bad data in lab field A and lab field B that resu
 	And I take a screenshot
 	And I cancel the Query "Lab Field 8 must be greater than Lab Field 7. Please verify." on Field "Lab Field 8 - WBC - rr = F ; rmc = T"   	  
 	And I save the CRF page
-	And I verify Query is cancelled
-      |Field		                       |Query Message  												|
-      |Lab Field 8 - WBC - rr = F ; rmc = T|Lab Field 8 must be greater than Lab Field 7. Please verify.|
+	And I click audit on Field "Lab Field 8 - WBC - rr = F ; rmc = T"
+	And I verify Audits exist
+	| Audit Type     | Query Message                                                      |
+	| Query Canceled | Lab Field 8 must be greater than Lab Field 7. Please verify.       |
 	And I take a screenshot
+	And I select Form "Lab Form 8" in "Header"
 	And I enter data in CRF and save	  
       |Field		                               |Data    |
       |Lab Field 7 - NEUTROPHILS - rr = F ; rmc = T|2		|  	
@@ -1689,7 +1695,7 @@ As an EDC user, when I entered bad data in lab field A and lab field B that resu
       |Field		                       |Query Message  												|Answered| Closed |
       |Lab Field 8 - WBC - rr = F ; rmc = T|Lab Field 8 must be greater than Lab Field 7. Please verify.|false   |false   |  		
 	And I take a screenshot
-	  
+		  
 @PB-US12940-12A		
 Scenario: @PB-US12940-12A
 As an EDC user, when I entered bad data in field A and lab field B that resulted in the system opening a query on lab field B, and I canceled the query, and I entered good data in lab field B, if I then entered the same bad data in lab field B as when the query was canceled, then the system should not refire a query on lab field B. Query with requires response = true and requires manual close = true.
