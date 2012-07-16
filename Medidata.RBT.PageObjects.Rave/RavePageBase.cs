@@ -42,6 +42,8 @@ namespace Medidata.RBT.PageObjects.Rave
 			if (type == "Site" && areaName == "Header")
 				return new HomePage();
 
+			if (type == "Form" && areaName == "Header")
+				return new CRFPage();
 
 			return base.GetTargetPageObjectByLinkAreaName(type, areaName);
 		}
@@ -54,5 +56,9 @@ namespace Medidata.RBT.PageObjects.Rave
             }
         }
 
+		public IPage GoBack()
+		{
+			throw new NotImplementedException();
+		}
 	}
 }

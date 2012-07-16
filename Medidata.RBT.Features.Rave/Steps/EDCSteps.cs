@@ -139,6 +139,23 @@ namespace Medidata.RBT.Features.Rave
 			CurrentPage.As<SubjectPage>().ExpandTask(header);
 		}
 
+		
+		[StepDefinition(@"I click audit on Field ""([^""]*)""")]
+		public void IClickAuditOnField____(string fieldName)
+		{
+			CurrentPage = CurrentPage.As<CRFPage>().ClickAuditOnField(fieldName);
+		}
+
+		[StepDefinition(@"I verify Audits exist")]
+		public void IVerifyAuditsExist(Table table)
+		{
+			var audits = table.CreateSet<AuditModel>();
+			foreach (var a in audits)
+			{
+				bool exist = CurrentPage.As<AuditsPage>().AuditExist(a);
+				Assert.IsTrue(exist, "Audit does not exist");
+			}
+		}
 
 	}
 }
