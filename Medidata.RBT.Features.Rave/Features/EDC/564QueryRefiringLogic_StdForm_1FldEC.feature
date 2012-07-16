@@ -560,10 +560,10 @@ Scenario: PB_US12940_04D As an EDC user, when I entered bad data in field A that
 @PB_US12940_05A		
 Scenario: PB_US12940_05A As an EDC user, when I entered bad data in field A that resulted in the system opening a query on field A, and I answered the query and I changed the data in field A to another bad data, and the query is then closed, if I then entered the original bad data in field A, then the system should refire a query on field A. Query with requires response = true and requires manual close = true.
 	And I create a Subject
-	| Field            | Data                                                       |
-	| Subject Initials | SUB                                                        |
+	| Field            | Data              |
+	| Subject Initials | SUB               |
 	| Subject Number   | {RndNum<num1>(5)} |
-	| Subject ID       | SUB {Var(num1)}                                            |
+	| Subject ID       | SUB {Var(num1)}   |
 	And I select Form "Form 1"
 	And I enter data in CRF and save
       |Field		|Data	 |
