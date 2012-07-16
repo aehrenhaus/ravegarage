@@ -42,15 +42,8 @@ Background:
 	
 #----------------------------------------------------------------------------------------------------------------------------------------	
 Scenario:  test
-	And I navigate to "DDE"
-	And I select "First Pass"
-	And I select "New Batch"
-	And I choose "Edit Check Study 3" from "Study"
-	And I choose "Prod" from "Environment"
-	And I choose "Edit Check Site 8" from "Site"
-	And I type "sub {RndNum<num1>(5)}" in "Subject"
-	And I choose "Subject Identification" from "Form"
-	And I click button "Locate"
+    Given I select Study "Edit Check Study 3" and Site "Edit Check Site 1"
+    And I select a Subject "SUB25483"
 
 
 @release_564_Patch11
@@ -341,34 +334,34 @@ Scenario: PB_8.3.2
 	And I choose "Edit Check Study 3 (Prod)" from "Study"
 	And I choose "World" from "Site Group"
 	And I choose "Edit Check Site 8" from "Site"
-	And I choose "sub{Var(num1)}" from "Subject"
+	And I choose "sub50070" from "Subject"
 	And I click button "Advanced Search"
 
-	And I select Form "Concomitant Medications" in search result
-	And I enter data in CRF on new log line 5 and save and reopen
-	    | Field               | Data        |
-	    | Start Date          | 07 Jan 2000 |
-	    | End Date            | 12 Jan 2000 |
-	    | Original Axis Numbe | 10          |
-	    | Current Axis Number | 18          |
-	And I open log line 5
+	And I select Form "Concomitant Medications" in "search result"
+	And I enter data in CRF on a new log line and save and reopen
+	    | Field                | Data        |
+	    | Start Date           | 07 Jan 2000 |
+	    | End Date             | 12 Jan 2000 |
+	    | Original Axis Number | 10          |
+	    | Current Axis Number  | 18          |
+
 	And I verify Requires Response Query with message "'Date Informed Consent Signed' is greater. Please revise." is displayed on Field "Start Date"
 	And I verify Requires Response Query with message "Informed Consent 'Current Distribution Number' is not equal to Concomitant Medications 'Current Axis Number'." is displayed on Field "Current Axis Number"		
 	And I take a screenshot
 	And I answer the Query "'Date Informed Consent Signed' is greater. Please revise." on Field "Start Date" with "{answer}"
 	And I answer the Query "Informed Consent 'Current Distribution Number' is not equal to Concomitant Medications 'Current Axis Number'." on Field "Current Axis Number" with "{answer}"
 	And I save the CRF page
-	And I open log line 5
+	And I open the last log line
 	And I enter data in CRF and save
 		| Field               | Data        |
 		| Start Date          | 09 Jan 2000 |
 		| Current Axis Number | 19          |
-	And I open log line 5
+	And I open the last log line
 	And I close the Query "'Date Informed Consent Signed' is greater. Please revise." on Field "Start Date"
 	And I close the Query "Informed Consent 'Current Distribution Number' is not equal to Concomitant Medications 'Current Axis Number'." on Field "Current Axis Number"	
 	And I save the CRF page
 	And I take a screenshot
-	And I open log line 5
+	And I open the last log line
 	And I verify Field "Start Date" has no Query
 	And I verify Field "Current Axis Number" has no Query
 	And I take a screenshot
@@ -376,9 +369,9 @@ Scenario: PB_8.3.2
 		| Field               | Data        |
 		| Start Date          | 07 Jan 2000 |
 		| Current Axis Number | 18          |
-	And I open log line 5
-	And I verify Requires Response Query with message "'Date Informed Consent Signed' is greater. Please revise." is displayed on Field "Start Date"
-	And I verify Requires Response Query with message "Informed Consent 'Current Distribution Number' is not equal to Concomitant Medications 'Current Axis Number'." is displayed on Field "Current Axis Number"
+	And I open the last log line
+	#And I verify Requires Response Query with message "'Date Informed Consent Signed' is greater. Please revise." is displayed on Field "Start Date"
+	#And I verify Requires Response Query with message "Informed Consent 'Current Distribution Number' is not equal to Concomitant Medications 'Current Axis Number'." is displayed on Field "Current Axis Number"
 	And I take a screenshot
 	
 #----------------------------------------------------------------------------------------------------------------------------------------	
@@ -389,8 +382,8 @@ Scenario: PB_8.4.1 Generate the Data PDFs.
 	And I navigate to "PDF Generator"
 
 	And I create Data PDF
-	| Name                | Profile | Study                     | Role | SiteGroup | Site              | Subject |
-	| pdf{RndNum<num>(3)} | test1   | Edit Check Study 8 (Prod) | CDM1 | World     | Edit Check Site 2 | SUB640  |
+	| Name                | Profile | Study                     | Role | SiteGroup | Site              | Subject  |
+	| pdf{RndNum<num>(3)} | GLOBAL1 | Edit Check Study 3 (Prod) | CDM1 | World     | Edit Check Site 8 | SUB50070 |
 	
 	And I generate Data PDF "pdf{Var(num)}"
 	And I wait for PDF "pdf{Var(num)}" to complete
@@ -668,9 +661,8 @@ Scenario: PB_8.7.1 When I run the Report, then query related data are displayed 
 @PB_8.8.1
 @Draft
 Scenario: PB_8.8.1 When I run the Report, then query related data are displayed in the report. Migrate Subject
+	And I select Study "AM Edit Check Study" and Site "AM Edit Site"
 
-	And I select Study "AM Edit Check Study"
-	And I select Site "AM Edit Site"
     And I create a Subject
 	| Field            | Value                                                          |
 	| Subject Number   | {NextSubjectNum<num1>(Edit Check Study 8,prod,Subject Number)} |

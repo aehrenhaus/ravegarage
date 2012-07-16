@@ -13,12 +13,25 @@ namespace Medidata.RBT.PageObjects.Rave
 {
 	public class PrimaryRecordPage : RavePageBase
 	{
+		public PrimaryRecordPage FillDataPoints(IEnumerable<FieldModel> fields)
+		{
+			foreach (var field in fields)
+				FindField(field.Field).EnterData(field.Data);
+
+			return this;
+		}
+
+
+		public IEDCFieldControl FindField(string fieldName)
+		{
+			return new NonLabDataPageControl(this).FindField(fieldName);
+		}
+	
 
 		public SubjectPage FillNameAndSave(Table table)
 		{
-			throw new NotImplementedException();
-			//RavePagesHelper.FillDataPoints(table.CreateSet<FieldModel>());
-      
+			var dps = table.CreateSet<FieldModel>();
+			FillDataPoints(dps);
 			IWebElement saveButton = Browser.TryFindElementById("_ctl0_Content_CRFRenderer_footer_SB");
 
 			saveButton.Click();

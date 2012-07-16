@@ -12,7 +12,7 @@ using Medidata.RBT.SeleniumExtension;
 
 namespace Medidata.RBT.PageObjects.Rave
 {
-	public  class HomePage : RavePageBase
+	public  class HomePage : RavePageBase, IPaginatedPage
 	{
 		[FindsBy(How = How.Id, Using = "_ctl0_Content_ListDisplayNavigation_txtSearch")]
 		IWebElement SearchBox;
@@ -84,24 +84,66 @@ namespace Medidata.RBT.PageObjects.Rave
 
         public SubjectPage SelectSubject(string subjectName)
         {
-			try
-			{
+			int foundOnPage; 
 
-				IWebElement subjectLink = RavePagesHelper.FindLinkInPaginatedList(subjectName);
-				
-				if (subjectLink == null)
-					throw new Exception("Can't find sujbect: " + subjectName);
-				else
-					subjectLink.Click();
-			}
-			catch(Exception err)
-			{
-				throw new Exception(string.Format ("Failed to find subject [{0}], reason:{1}",subjectName,err.Message),err);
-			}
+			IWebElement subjectLink  = this.FindInPaginatedList("",()=>{
+				return TestContext.Browser.TryFindElementByLinkText(subjectName);
+			},out foundOnPage);
+
+			if(subjectLink==null)
+				throw new Exception(string.Format("Failed to find subject [{0}]", subjectName ));
+			subjectLink.Click();
+		
+
             return new SubjectPage();
         }
 
+		#region IPaginatedPage
 
+		//TODO: clean these vars, they are uesd in GoNextPage()
+		int pageIndex = 1;
+		int count = 0;
+		int lastValue = -1;
+
+		public bool GoNextPage(string areaIdentifer)
+		{
+			var pageTable = TestContext.Browser.FindElementById("_ctl0_Content_ListDisplayNavigation_DlPagination");
+			var pageLinks = pageTable.FindElements(By.XPath(".//a"));
+
+			count = pageLinks.Count;
+			if (pageIndex == count)
+				return false;
+
+			while (!pageLinks[pageIndex].Text.Equals("...") && int.Parse(pageLinks[pageIndex].Text) <= lastValue && pageIndex <= count)
+			{
+				pageIndex++;
+			}
+
+			if (pageLinks[pageIndex].Text.Equals("..."))
+			{
+				lastValue = int.Parse(pageLinks[pageIndex - 1].Text);
+				pageLinks[pageIndex].Click();
+				pageIndex = 1;
+			}
+			else
+			{
+				pageLinks[pageIndex].Click();
+				pageIndex++;
+			}
+			return true;
+		}
+
+		public bool GoPreviousPage(string areaIdentifer)
+		{
+			throw new NotImplementedException();
+		}
+
+		public bool GoToPage(string areaIdentifer, int page)
+		{
+			throw new NotImplementedException();
+		}
+
+		#endregion
 		public override IPage NavigateTo(string name)
 		{
 
@@ -128,5 +170,8 @@ namespace Medidata.RBT.PageObjects.Rave
 		}
 
         public override string URL { get { return "homepage.aspx"; } }
+
+
+
 	}
 }
