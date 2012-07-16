@@ -423,15 +423,15 @@ Scenario: PB_US12940_04A As an EDC user, when I entered bad data in field A that
       | Field | Data |
       | Age 1 | 20   |
 	And I verify Query is not displayed
-      |Field		|
-      |Age 1		|
+      |Field		| Query Message                                                                        | Closed |
+      |Age 1		| Age must be greater than or equal to 18 and less than or equal to 65. Please verify. | false  |
 	And I take a screenshot
 	And I enter data in CRF and save
       | Field | Data |
       | Age 1 | 71   |
 	And I verify Query is not displayed
 	  | Field | Query Message                                                                        | Closed |
-	  | Age 1 | Age must be greater than or equal to 18 and less than or equal to 65. Please verify. | true   |
+	  | Age 1 | Age must be greater than or equal to 18 and less than or equal to 65. Please verify. | false  |
 	And I take a screenshot	
 
 @PB_US12940_04B		
@@ -546,15 +546,15 @@ Scenario: PB_US12940_04D As an EDC user, when I entered bad data in field A that
       | Field | Data |
       | Age 4 | 20   |
 	And I verify Query is not displayed
-      |Field		|
-      |Age 4		|	
+      |Field		| Query Message                                                                        | Closed |
+      |Age 4		| Age must be greater than or equal to 18 and less than or equal to 65. Please verify. | false  |	
 	And I take a screenshot 
 	And I enter data in CRF and save
       | Field | Data |
       | Age 4 | 71   |
 	And I verify Query is not displayed
 	| Field | Query Message                                                                        | Closed |
-	| Age 4 | Age must be greater than or equal to 18 and less than or equal to 65. Please verify. | true   |
+	| Age 4 | Age must be greater than or equal to 18 and less than or equal to 65. Please verify. | false  |
 	And I take a screenshot
 
 @PB_US12940_05A		

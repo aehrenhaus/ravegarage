@@ -107,6 +107,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>564QueryRefiringLogic5_LabForm_2FldEC.feature</DependentUpon>
     </Compile>
+    <Compile Include="Features\EDC\564QueryRefiringLogic5_StdForm_1FldEC.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>564QueryRefiringLogic5_StdForm_1FldEC.feature</DependentUpon>
+    </Compile>
     <Compile Include="Features\EDC\564QueryRefiringLogic8.feature.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -117,10 +122,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>564QueryRefiringLogic1.feature</DependentUpon>
     </Compile>
-    <Compile Include="Features\EDC\SpecFlowFeature1.feature.cs">
-      <AutoGen>True</AutoGen>
+    <Compile Include="Features\EDC\QueryRefiringLogic_LogForm_MultiFldEC.feature.cs">
+      <DependentUpon>QueryRefiringLogic_LogForm_MultiFldEC.feature</DependentUpon>
+      <SubType>Code</SubType>
       <DesignTime>True</DesignTime>
-      <DependentUpon>SpecFlowFeature1.feature</DependentUpon>
+      <AutoGen>True</AutoGen>
     </Compile>
     <Compile Include="Features\TSDV\US11958_DT141771.feature.cs">
       <AutoGen>True</AutoGen>
@@ -184,6 +190,10 @@
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>564QueryRefiringLogic5_LabForm_2FldEC.feature.cs</LastGenOutput>
     </None>
+    <None Include="Features\EDC\564QueryRefiringLogic5_StdForm_1FldEC.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>564QueryRefiringLogic5_StdForm_1FldEC.feature.cs</LastGenOutput>
+    </None>
     <None Include="Features\EDC\564QueryRefiringLogic8.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>564QueryRefiringLogic8.feature.cs</LastGenOutput>
@@ -196,9 +206,9 @@
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>564QueryRefiringLogic3.feature.cs</LastGenOutput>
     </None>
-    <None Include="Features\EDC\SpecFlowFeature1.feature">
+    <None Include="Features\EDC\QueryRefiringLogic_LogForm_MultiFldEC.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
-      <LastGenOutput>SpecFlowFeature1.feature.cs</LastGenOutput>
+      <LastGenOutput>QueryRefiringLogic_LogForm_MultiFldEC.feature.cs</LastGenOutput>
     </None>
     <None Include="Features\TSDV\US11958_DT14177.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>

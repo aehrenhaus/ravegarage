@@ -24,7 +24,7 @@ namespace Medidata.RBT.Features.Rave.Features.EDC
         
         private static TechTalk.SpecFlow.ITestRunner testRunner;
         
-#line 1 "SpecFlowFeature1.feature"
+#line 1 "564QueryRefiringLogic5_StdForm_1FldEC.feature"
 #line hidden
         
         [Microsoft.VisualStudio.TestTools.UnitTesting.ClassInitializeAttribute()]
@@ -1391,9 +1391,14 @@ this.FeatureBackground();
  testRunner.And("I enter data in CRF and save", ((string)(null)), table85);
 #line hidden
             TechTalk.SpecFlow.Table table86 = new TechTalk.SpecFlow.Table(new string[] {
-                        "Field"});
+                        "Field",
+                        "Query Message",
+                        "Closed"});
             table86.AddRow(new string[] {
-                        "Age 1"});
+                        "Age 1",
+                        "Age must be greater than or equal to 18 and less than or equal to 65. Please veri" +
+                            "fy.",
+                        "false"});
 #line 425
  testRunner.And("I verify Query is not displayed", ((string)(null)), table86);
 #line 428
@@ -1416,7 +1421,7 @@ this.FeatureBackground();
                         "Age 1",
                         "Age must be greater than or equal to 18 and less than or equal to 65. Please veri" +
                             "fy.",
-                        "true"});
+                        "false"});
 #line 432
  testRunner.And("I verify Query is not displayed", ((string)(null)), table88);
 #line 435
@@ -1762,9 +1767,14 @@ this.FeatureBackground();
  testRunner.And("I enter data in CRF and save", ((string)(null)), table113);
 #line hidden
             TechTalk.SpecFlow.Table table114 = new TechTalk.SpecFlow.Table(new string[] {
-                        "Field"});
+                        "Field",
+                        "Query Message",
+                        "Closed"});
             table114.AddRow(new string[] {
-                        "Age 4"});
+                        "Age 4",
+                        "Age must be greater than or equal to 18 and less than or equal to 65. Please veri" +
+                            "fy.",
+                        "false"});
 #line 548
  testRunner.And("I verify Query is not displayed", ((string)(null)), table114);
 #line 551
@@ -1787,7 +1797,7 @@ this.FeatureBackground();
                         "Age 4",
                         "Age must be greater than or equal to 18 and less than or equal to 65. Please veri" +
                             "fy.",
-                        "true"});
+                        "false"});
 #line 555
  testRunner.And("I verify Query is not displayed", ((string)(null)), table116);
 #line 558
