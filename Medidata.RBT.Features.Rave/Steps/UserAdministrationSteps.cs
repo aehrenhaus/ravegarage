@@ -11,6 +11,7 @@ using Microsoft.Practices.EnterpriseLibrary.Data;
 using System.Data;
 using System.Collections.Specialized;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using TechTalk.SpecFlow.Assist;
 
 namespace Medidata.RBT.Features.Rave
 {
@@ -34,11 +35,10 @@ namespace Medidata.RBT.Features.Rave
 		[StepDefinition(@"I search User by")]
 		public void ISearchUserBy(Table table)
 		{
-			NameValueCollection filters =new NameValueCollection();
-			foreach (var row in table.Rows)
-				filters.Add(row["Control"], row["Value"]);
+			var model = table.CreateInstance<UserAdministrationPage.SearchByModel>();
 
-			CurrentPage.As<UserAdministrationPage>().SearchUser(filters);
+			CurrentPage.As<UserAdministrationPage>()
+				.SearchUser(model);
 		}
 	}
 }

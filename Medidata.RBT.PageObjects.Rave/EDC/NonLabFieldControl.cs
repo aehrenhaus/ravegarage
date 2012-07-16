@@ -96,10 +96,11 @@ namespace Medidata.RBT.PageObjects.Rave
 			
 			if (filter.Answered != null)
 			{
-				if (answerTD != null && answerTD.Text.Trim() != "")
-					;
-				else
-					throw new Exception("not answered");
+				if (filter.Answered == true && answerTD.Text.Trim() == "")
+					throw new Exception("Expect to be answered , but not answered");
+
+				if (filter.Answered == false && answerTD.Text.Trim() != "")
+					throw new Exception("Expect to be not answered , but answered");
 			}
 
 
@@ -108,7 +109,7 @@ namespace Medidata.RBT.PageObjects.Rave
 				if (answerTD != null && answerTD.Text.Trim() == filter.Answer)
 					;
 				else
-					throw new Exception("not answered with "+filter.Answer);
+					throw new Exception("Not answered with " + filter.Answer);
 			}
 
 
