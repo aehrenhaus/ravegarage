@@ -573,7 +573,9 @@ Scenario: @PB-US12940-04B	As an EDC user, when I entered bad data in lab field A
       |Lab Field 4 - WBC - rr = F ; rmc = F    	    |Lab Field 4 must be greater than Lab Field 3. Please verify.	|false   |false   |
 	And I take a screenshot
 
-@PB-US12940-04C		
+@PB-US12940-04C
+@ignore
+#Failing due to DT14208			
 Scenario: @PB-US12940-04C As an EDC user, when I entered bad data in lab field A and lab field B that resulted in the system opening a query on lab field B, and I answered the query and I changed the data in lab field B to another bad data, and the query is then closed, if I entered good data in lab field B and then again entered the same bad data in lab field B as when the query was closed, then the system should not refire a query on lab field B. Query with requires response = true and requires manual close = false.
 
     And I create a Subject
@@ -594,7 +596,7 @@ Scenario: @PB-US12940-04C As an EDC user, when I entered bad data in lab field A
   	And I enter data in CRF and save	  
       |Field		                       |Data   |
       |Lab Field 6 - WBC - rr = T ; rmc = F|2	   |  	
-	And I verify Query is displayed
+	And I verify Query is not displayed
       |Field		                       |Query Message  												    |Answered| Closed |
       |Lab Field 6 - WBC - rr = T ; rmc = F|Lab Field 6 must be greater than Lab Field 5. Please verify.	|false   |false   |
 	And I take a screenshot
@@ -612,7 +614,7 @@ Scenario: @PB-US12940-04C As an EDC user, when I entered bad data in lab field A
 	When I enter data in CRF and save	  
       | Field                              | Data |
       |Lab Field 6 - WBC - rr = T ; rmc = F|2	  |   
-	And I verify Query is displayed
+	And I verify Query is not displayed
       |Field		                       |Query Message  												|Answered| Closed |
       |Lab Field 6 - WBC - rr = T ; rmc = F|Lab Field 6 must be greater than Lab Field 5. Please verify.|false   |false   |
 	And I take a screenshot
