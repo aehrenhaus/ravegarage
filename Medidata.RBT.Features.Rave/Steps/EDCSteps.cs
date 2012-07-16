@@ -143,7 +143,7 @@ namespace Medidata.RBT.Features.Rave
 		[StepDefinition(@"I click audit on Field ""([^""]*)""")]
 		public void IClickAuditOnField____(string fieldName)
 		{
-			CurrentPage = CurrentPage.As<CRFPage>().ClickAuditOnField(fieldName);
+			CurrentPage = CurrentPage.As<CRFPage>().FindField(fieldName).ClickAudit();
 		}
 
 		[StepDefinition(@"I verify Audits exist")]

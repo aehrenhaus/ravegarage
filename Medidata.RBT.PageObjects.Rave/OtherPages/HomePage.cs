@@ -29,21 +29,14 @@ namespace Medidata.RBT.PageObjects.Rave
 		/// <returns></returns>
 		public HomePage SelectStudy(string studyName)
 		{
-			IWebElement studyLink = Browser.WaitForElement(By.LinkText(studyName));
-			studyLink.Click();
-			//IWebElement studyTable = Browser.TryFindElementById("_ctl0_Content_ListDisplayNavigation_dgObjects");
+			int foundOnPage;
+			IWebElement studyLink = this.FindInPaginatedList("", () =>
+			{
+				return TestContext.Browser.TryFindElementByLinkText(studyName);
+			}, out foundOnPage);
 
-			//if (studyTable != null)
-			//{
-			//    IWebElement tableLink = studyTable.FindElement(By.XPath("//a[text()='" + studyName + "']"));
-			//    tableLink.Click();
-			//}
-			//else
-			//{
-			//    IWebElement tabLink = Browser.FindElement(By.XPath("//a[@id='_ctl0_PgHeader_TabTextHyperlink1', text()='" + studyName + "']"));
-			//    if (tabLink == null)
-			//        throw new Exception("Can't find study to open");
-			//}
+			studyLink.Click();
+
 			return this;
 		}
 
@@ -65,8 +58,15 @@ namespace Medidata.RBT.PageObjects.Rave
 		/// <returns></returns>
 		public HomePage SelectSite(string siteName)
 		{
-			IWebElement siteLink = Browser.WaitForElement(By.LinkText(siteName));
+
+			int foundOnPage;
+			IWebElement siteLink = this.FindInPaginatedList("", () =>
+			{
+				return TestContext.Browser.TryFindElementByLinkText(siteName);
+			}, out foundOnPage);
+
 			siteLink.Click();
+
 			return this;
 		}
 
