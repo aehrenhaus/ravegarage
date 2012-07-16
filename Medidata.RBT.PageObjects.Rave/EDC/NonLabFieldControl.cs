@@ -99,8 +99,9 @@ namespace Medidata.RBT.PageObjects.Rave
 				if (filter.Answered == true && answerTD.Text.Trim() == "")
 					throw new Exception("Expect to be answered , but not answered");
 
-				if (filter.Answered == false && answerTD.Text.Trim() != "")
-					throw new Exception("Expect to be not answered , but answered");
+				if (filter.Answered == false)
+					if (answerTD != null && answerTD.Text.Trim() != "")
+						throw new Exception("Expect to be not answered , but answered");
 			}
 
 

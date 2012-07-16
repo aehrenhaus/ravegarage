@@ -58,12 +58,15 @@ namespace Medidata.RBT.PageObjects.Rave
 		/// <returns></returns>
 		public HomePage SelectSite(string siteName)
 		{
+			//TODO: the pagination does not work on Inna's site where there is no page buttons for sites list
+			//fix this later, but comment for now
 
-			int foundOnPage;
-			IWebElement siteLink = this.FindInPaginatedList("", () =>
-			{
-				return TestContext.Browser.TryFindElementByLinkText(siteName);
-			}, out foundOnPage);
+			var siteLink = TestContext.Browser.TryFindElementByLinkText(siteName);
+			//int foundOnPage;
+			//IWebElement siteLink = this.FindInPaginatedList("", () =>
+			//{
+			//    return TestContext.Browser.TryFindElementByLinkText(siteName);
+			//}, out foundOnPage);
 
 			siteLink.Click();
 
