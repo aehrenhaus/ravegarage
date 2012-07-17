@@ -72,8 +72,8 @@ namespace Medidata.RBT.Features.Rave.Features.EDC
         
         public virtual void FeatureBackground()
         {
-#line 6
-#line 7
+#line 12
+#line 13
     testRunner.Given("I am logged in to Rave with username \"defuser\" and password \"password\"");
 #line hidden
             TechTalk.SpecFlow.Table table1 = new TechTalk.SpecFlow.Table(new string[] {
@@ -88,9 +88,9 @@ namespace Medidata.RBT.Features.Rave.Features.EDC
                         "cdm1",
                         "Site 1",
                         "S100"});
-#line 8
+#line 14
  testRunner.And("following Study assignments exist", ((string)(null)), table1);
-#line 11
+#line 17
  testRunner.And("I select Study \"Standard Study\" and Site \"Site 1\"");
 #line hidden
         }
@@ -102,9 +102,9 @@ namespace Medidata.RBT.Features.Rave.Features.EDC
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo(@"PB_US12940_01A As an EDC user, when I entered bad data in log field A and log field B that resulted in the system opening a query on log field B, and I answered the query without changing the data, and the query is then closed, and I entered good data in log field A, if I then entered the same bad data in log field A as when the query was closed, then the system should not refire a query on log field B. Query with requires response = true and requires manual close = true.", new string[] {
                         "PB_US12940_01A"});
-#line 14
+#line 20
 this.ScenarioSetup(scenarioInfo);
-#line 6
+#line 12
 this.FeatureBackground();
 #line hidden
             TechTalk.SpecFlow.Table table2 = new TechTalk.SpecFlow.Table(new string[] {
@@ -119,9 +119,9 @@ this.FeatureBackground();
             table2.AddRow(new string[] {
                         "Subject ID",
                         "SUB {Var(num1)}"});
-#line 16
+#line 22
     testRunner.And("I create a Subject", ((string)(null)), table2);
-#line 21
+#line 27
  testRunner.And("I select Form \"Form 6\"");
 #line hidden
             TechTalk.SpecFlow.Table table3 = new TechTalk.SpecFlow.Table(new string[] {
@@ -136,9 +136,9 @@ this.FeatureBackground();
             table3.AddRow(new string[] {
                         "Log Field 3",
                         "data3"});
-#line 22
+#line 28
  testRunner.And("I enter data in CRF and save", ((string)(null)), table3);
-#line 27
+#line 33
  testRunner.And("I open log line 1");
 #line hidden
             TechTalk.SpecFlow.Table table4 = new TechTalk.SpecFlow.Table(new string[] {
@@ -149,25 +149,25 @@ this.FeatureBackground();
                         "Log Field 3",
                         "Answer must be provided. Please review.",
                         "false"});
-#line 28
+#line 34
  testRunner.And("I verify Query is displayed", ((string)(null)), table4);
-#line 31
+#line 37
  testRunner.And("I take a screenshot");
-#line 32
+#line 38
  testRunner.And("I answer the Query \"Answer must be provided. Please review.\" on Field \"Log Field " +
                     "3\" with \"Data will be changed.\"");
-#line 33
+#line 39
  testRunner.And("I save the CRF page");
-#line 34
+#line 40
  testRunner.And("I take a screenshot");
-#line 35
+#line 41
  testRunner.And("I open log line 1");
-#line 36
+#line 42
  testRunner.And("I close the Query \"Answer must be provided. Please review.\" on Field \"Log Field 3" +
                     "\"");
-#line 37
+#line 43
  testRunner.And("I save the CRF page");
-#line 38
+#line 44
  testRunner.And("I open log line 1");
 #line hidden
             TechTalk.SpecFlow.Table table5 = new TechTalk.SpecFlow.Table(new string[] {
@@ -178,9 +178,9 @@ this.FeatureBackground();
                         "Log Field 3",
                         "Answer must be provided. Please review.",
                         "false"});
-#line 39
+#line 45
  testRunner.And("I verify Query is not displayed", ((string)(null)), table5);
-#line 42
+#line 48
  testRunner.And("I take a screenshot");
 #line hidden
             TechTalk.SpecFlow.Table table6 = new TechTalk.SpecFlow.Table(new string[] {
@@ -189,9 +189,9 @@ this.FeatureBackground();
             table6.AddRow(new string[] {
                         "Log Field 1",
                         "data1"});
-#line 43
+#line 49
  testRunner.And("I enter data in CRF and save", ((string)(null)), table6);
-#line 46
+#line 52
  testRunner.And("I open log line 1");
 #line hidden
             TechTalk.SpecFlow.Table table7 = new TechTalk.SpecFlow.Table(new string[] {
@@ -202,9 +202,9 @@ this.FeatureBackground();
                         "Log Field 3",
                         "Answer must be provided. Please review.",
                         "false"});
-#line 47
+#line 53
  testRunner.And("I verify Query is not displayed", ((string)(null)), table7);
-#line 50
+#line 56
  testRunner.And("I take a screenshot");
 #line hidden
             TechTalk.SpecFlow.Table table8 = new TechTalk.SpecFlow.Table(new string[] {
@@ -213,9 +213,9 @@ this.FeatureBackground();
             table8.AddRow(new string[] {
                         "Log Field 1",
                         ""});
-#line 51
+#line 57
  testRunner.And("I enter data in CRF and save", ((string)(null)), table8);
-#line 54
+#line 60
  testRunner.And("I open log line 1");
 #line hidden
             TechTalk.SpecFlow.Table table9 = new TechTalk.SpecFlow.Table(new string[] {
@@ -226,9 +226,9 @@ this.FeatureBackground();
                         "Log Field 3",
                         "Answer must be provided. Please review.",
                         "false"});
-#line 55
+#line 61
  testRunner.And("I verify Query is not displayed", ((string)(null)), table9);
-#line 58
+#line 64
  testRunner.And("I take a screenshot");
 #line hidden
             this.ScenarioCleanup();
@@ -241,9 +241,9 @@ this.FeatureBackground();
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo(@"PB_US12940_01B As an EDC user, when I entered bad data in log field A and log field B that resulted in the system opening a query on log field B, and I answered the query without changing the data, and the query is then closed, and I entered good data in log field A, if I then entered the same bad data in log field A as when the query was closed, then the system should not refire a query on log field B. Query with requires response = false and requires manual close = false.", new string[] {
                         "PB_US12940_01B"});
-#line 61
+#line 67
 this.ScenarioSetup(scenarioInfo);
-#line 6
+#line 12
 this.FeatureBackground();
 #line hidden
             TechTalk.SpecFlow.Table table10 = new TechTalk.SpecFlow.Table(new string[] {
@@ -258,9 +258,9 @@ this.FeatureBackground();
             table10.AddRow(new string[] {
                         "Subject ID",
                         "SUB {Var(num1)}"});
-#line 63
+#line 69
     testRunner.And("I create a Subject", ((string)(null)), table10);
-#line 68
+#line 74
  testRunner.And("I select Form \"Form 6\"");
 #line hidden
             TechTalk.SpecFlow.Table table11 = new TechTalk.SpecFlow.Table(new string[] {
@@ -275,9 +275,9 @@ this.FeatureBackground();
             table11.AddRow(new string[] {
                         "Log Field 6",
                         "data6"});
-#line 69
+#line 75
  testRunner.And("I enter data in CRF and save", ((string)(null)), table11);
-#line 74
+#line 80
  testRunner.And("I open log line 1");
 #line hidden
             TechTalk.SpecFlow.Table table12 = new TechTalk.SpecFlow.Table(new string[] {
@@ -288,9 +288,9 @@ this.FeatureBackground();
                         "Log Field 6",
                         "Answer must be provided. Please review.",
                         "false"});
-#line 75
+#line 81
  testRunner.And("I verify Query is displayed", ((string)(null)), table12);
-#line 78
+#line 84
  testRunner.And("I take a screenshot");
 #line hidden
             TechTalk.SpecFlow.Table table13 = new TechTalk.SpecFlow.Table(new string[] {
@@ -299,9 +299,9 @@ this.FeatureBackground();
             table13.AddRow(new string[] {
                         "Log Field 4",
                         "data4"});
-#line 79
+#line 85
  testRunner.And("I enter data in CRF and save", ((string)(null)), table13);
-#line 82
+#line 88
  testRunner.And("I open log line 1");
 #line hidden
             TechTalk.SpecFlow.Table table14 = new TechTalk.SpecFlow.Table(new string[] {
@@ -312,9 +312,9 @@ this.FeatureBackground();
                         "Log Field 6",
                         "Answer must be provided. Please review.",
                         "false"});
-#line 83
+#line 89
  testRunner.And("I verify Query is not displayed", ((string)(null)), table14);
-#line 86
+#line 92
  testRunner.And("I take a screenshot");
 #line hidden
             TechTalk.SpecFlow.Table table15 = new TechTalk.SpecFlow.Table(new string[] {
@@ -323,9 +323,9 @@ this.FeatureBackground();
             table15.AddRow(new string[] {
                         "Log Field 4",
                         ""});
-#line 87
+#line 93
  testRunner.And("I enter data in CRF and save", ((string)(null)), table15);
-#line 90
+#line 96
  testRunner.And("I open log line 1");
 #line hidden
             TechTalk.SpecFlow.Table table16 = new TechTalk.SpecFlow.Table(new string[] {
@@ -336,9 +336,9 @@ this.FeatureBackground();
                         "Log Field 6",
                         "Answer must be provided. Please review.",
                         "false"});
-#line 91
+#line 97
  testRunner.And("I verify Query is displayed", ((string)(null)), table16);
-#line 94
+#line 100
  testRunner.And("I take a screenshot");
 #line hidden
             this.ScenarioCleanup();
@@ -351,9 +351,9 @@ this.FeatureBackground();
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo(@"PB_US12940_01C As an EDC user, when I entered bad data in log field A and log field B that resulted in the system opening a query on log field B, and I answered the query without changing the data, and the query is then closed, and I entered good data in log field A, if I then entered the same bad data in log field A as when the query was closed, then the system should not refire a query on log field B. Query with requires response = true and requires manual close = false.", new string[] {
                         "PB_US12940_01C"});
-#line 97
+#line 103
 this.ScenarioSetup(scenarioInfo);
-#line 6
+#line 12
 this.FeatureBackground();
 #line hidden
             TechTalk.SpecFlow.Table table17 = new TechTalk.SpecFlow.Table(new string[] {
@@ -368,9 +368,9 @@ this.FeatureBackground();
             table17.AddRow(new string[] {
                         "Subject ID",
                         "SUB {Var(num1)}"});
-#line 99
+#line 105
     testRunner.And("I create a Subject", ((string)(null)), table17);
-#line 104
+#line 110
  testRunner.And("I select Form \"Form 6\"");
 #line hidden
             TechTalk.SpecFlow.Table table18 = new TechTalk.SpecFlow.Table(new string[] {
@@ -385,9 +385,9 @@ this.FeatureBackground();
             table18.AddRow(new string[] {
                         "Log Field 9",
                         "data9"});
-#line 105
+#line 111
  testRunner.And("I enter data in CRF and save", ((string)(null)), table18);
-#line 110
+#line 116
  testRunner.And("I open log line 1");
 #line hidden
             TechTalk.SpecFlow.Table table19 = new TechTalk.SpecFlow.Table(new string[] {
@@ -398,16 +398,16 @@ this.FeatureBackground();
                         "Log Field 9",
                         "Answer must be provided. Please review.",
                         "false"});
-#line 111
+#line 117
  testRunner.And("I verify Query is displayed", ((string)(null)), table19);
-#line 114
+#line 120
  testRunner.And("I take a screenshot");
-#line 115
+#line 121
  testRunner.And("I answer the Query \"Answer must be provided. Please review.\" on Field \"Log Field " +
                     "9\" with \"Data will be changed.\"");
-#line 116
+#line 122
  testRunner.And("I save the CRF page");
-#line 117
+#line 123
  testRunner.And("I open log line 1");
 #line hidden
             TechTalk.SpecFlow.Table table20 = new TechTalk.SpecFlow.Table(new string[] {
@@ -418,9 +418,9 @@ this.FeatureBackground();
                         "Log Field 9",
                         "Answer must be provided. Please review.",
                         "false"});
-#line 118
+#line 124
  testRunner.And("I verify Query is not displayed", ((string)(null)), table20);
-#line 121
+#line 127
  testRunner.And("I take a screenshot");
 #line hidden
             TechTalk.SpecFlow.Table table21 = new TechTalk.SpecFlow.Table(new string[] {
@@ -429,9 +429,9 @@ this.FeatureBackground();
             table21.AddRow(new string[] {
                         "Log Field 7",
                         "data7"});
-#line 122
+#line 128
  testRunner.And("I enter data in CRF and save", ((string)(null)), table21);
-#line 125
+#line 131
  testRunner.And("I open log line 1");
 #line hidden
             TechTalk.SpecFlow.Table table22 = new TechTalk.SpecFlow.Table(new string[] {
@@ -442,9 +442,9 @@ this.FeatureBackground();
                         "Log Field 9",
                         "Answer must be provided. Please review.",
                         "false"});
-#line 126
+#line 132
  testRunner.And("I verify Query is not displayed", ((string)(null)), table22);
-#line 129
+#line 135
  testRunner.And("I take a screenshot");
 #line hidden
             TechTalk.SpecFlow.Table table23 = new TechTalk.SpecFlow.Table(new string[] {
@@ -453,7 +453,7 @@ this.FeatureBackground();
             table23.AddRow(new string[] {
                         "Log Field 7",
                         ""});
-#line 130
+#line 136
  testRunner.And("I enter data in CRF and save", ((string)(null)), table23);
 #line hidden
             TechTalk.SpecFlow.Table table24 = new TechTalk.SpecFlow.Table(new string[] {
@@ -464,9 +464,9 @@ this.FeatureBackground();
                         "Log Field 9",
                         "Answer must be provided. Please review.",
                         "false"});
-#line 133
+#line 139
  testRunner.And("I verify Query is not displayed", ((string)(null)), table24);
-#line 136
+#line 142
  testRunner.And("I take a screenshot");
 #line hidden
             this.ScenarioCleanup();
@@ -481,9 +481,9 @@ this.FeatureBackground();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo(@"PB_US12940_01D As an EDC user, when I entered bad data in log field A and log field B that resulted in the system opening a query on log field B, and I answered the query without changing the data, and the query is then closed, and I entered good data in log field A, if I then entered the same bad data in log field A as when the query was closed, then the system should not refire a query on log field B. Query with requires response = false and requires manual close = true.", new string[] {
                         "PB_US12940_01D",
                         "ignore"});
-#line 141
+#line 147
 this.ScenarioSetup(scenarioInfo);
-#line 6
+#line 12
 this.FeatureBackground();
 #line hidden
             TechTalk.SpecFlow.Table table25 = new TechTalk.SpecFlow.Table(new string[] {
@@ -498,9 +498,9 @@ this.FeatureBackground();
             table25.AddRow(new string[] {
                         "Subject ID",
                         "SUB {Var(num1)}"});
-#line 143
+#line 149
  testRunner.And("I create a Subject", ((string)(null)), table25);
-#line 148
+#line 154
  testRunner.And("I select Form \"Form 6\"");
 #line hidden
             TechTalk.SpecFlow.Table table26 = new TechTalk.SpecFlow.Table(new string[] {
@@ -515,9 +515,9 @@ this.FeatureBackground();
             table26.AddRow(new string[] {
                         "Log Field 12",
                         "data12"});
-#line 149
+#line 155
  testRunner.And("I enter data in CRF and save", ((string)(null)), table26);
-#line 154
+#line 160
  testRunner.And("I open log line 1");
 #line hidden
             TechTalk.SpecFlow.Table table27 = new TechTalk.SpecFlow.Table(new string[] {
@@ -528,9 +528,9 @@ this.FeatureBackground();
                         "Log Field 12",
                         "Answer must be provided. Please review.",
                         "false"});
-#line 155
+#line 161
  testRunner.And("I verify Query is displayed", ((string)(null)), table27);
-#line 158
+#line 164
  testRunner.And("I take a screenshot");
 #line hidden
             TechTalk.SpecFlow.Table table28 = new TechTalk.SpecFlow.Table(new string[] {
@@ -539,9 +539,9 @@ this.FeatureBackground();
             table28.AddRow(new string[] {
                         "Log Field 10",
                         "data10"});
-#line 159
+#line 165
  testRunner.And("I enter data in CRF and save", ((string)(null)), table28);
-#line 162
+#line 168
  testRunner.And("I open log line 1");
 #line hidden
             TechTalk.SpecFlow.Table table29 = new TechTalk.SpecFlow.Table(new string[] {
@@ -554,14 +554,14 @@ this.FeatureBackground();
                         "Answer must be provided. Please review.",
                         "false",
                         "true"});
-#line 163
+#line 169
  testRunner.And("I verify Query is displayed", ((string)(null)), table29);
-#line 166
+#line 172
  testRunner.And("I take a screenshot");
-#line 167
+#line 173
  testRunner.And("I close the Query \"Answer must be provided. Please review.\" on Field \"Log Field 1" +
                     "2\"");
-#line 168
+#line 174
  testRunner.And("I open log line 1");
 #line hidden
             TechTalk.SpecFlow.Table table30 = new TechTalk.SpecFlow.Table(new string[] {
@@ -572,9 +572,9 @@ this.FeatureBackground();
                         "Log Field 12",
                         "Answer must be provided. Please review.",
                         "false"});
-#line 169
+#line 175
  testRunner.And("I verify Query is not displayed", ((string)(null)), table30);
-#line 172
+#line 178
  testRunner.And("I take a screenshot");
 #line hidden
             TechTalk.SpecFlow.Table table31 = new TechTalk.SpecFlow.Table(new string[] {
@@ -583,9 +583,9 @@ this.FeatureBackground();
             table31.AddRow(new string[] {
                         "Log Field 10",
                         ""});
-#line 173
+#line 179
  testRunner.And("I enter data in CRF and save", ((string)(null)), table31);
-#line 176
+#line 182
  testRunner.And("I open log line 1");
 #line hidden
             TechTalk.SpecFlow.Table table32 = new TechTalk.SpecFlow.Table(new string[] {
@@ -596,9 +596,9 @@ this.FeatureBackground();
                         "Log Field 12",
                         "Answer must be provided. Please review.",
                         "false"});
-#line 177
+#line 183
  testRunner.And("I verify Query is displayed", ((string)(null)), table32);
-#line 180
+#line 186
  testRunner.And("I take a screenshot");
 #line hidden
             this.ScenarioCleanup();
@@ -611,9 +611,9 @@ this.FeatureBackground();
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo(@"PB_US12940_02A As an EDC user, when I entered bad data in log field A and log field B that resulted in the system opening a query on log field B, and I answered the query without changing the data, and the query is then closed, and I entered good data in log field B, if I then entered the same bad data in log field B as when the query was closed, then the system should not refire a query on log field B. Query with requires response = true and requires manual close = true.", new string[] {
                         "PB_US12940_02A"});
-#line 183
+#line 189
 this.ScenarioSetup(scenarioInfo);
-#line 6
+#line 12
 this.FeatureBackground();
 #line hidden
             TechTalk.SpecFlow.Table table33 = new TechTalk.SpecFlow.Table(new string[] {
@@ -628,9 +628,9 @@ this.FeatureBackground();
             table33.AddRow(new string[] {
                         "Subject ID",
                         "SUB {Var(num1)}"});
-#line 185
+#line 191
     testRunner.And("I create a Subject", ((string)(null)), table33);
-#line 190
+#line 196
  testRunner.And("I select Form \"Form 6\"");
 #line hidden
             TechTalk.SpecFlow.Table table34 = new TechTalk.SpecFlow.Table(new string[] {
@@ -645,9 +645,9 @@ this.FeatureBackground();
             table34.AddRow(new string[] {
                         "Log Field 3",
                         ""});
-#line 191
+#line 197
  testRunner.And("I enter data in CRF and save", ((string)(null)), table34);
-#line 196
+#line 202
  testRunner.And("I open log line 1");
 #line hidden
             TechTalk.SpecFlow.Table table35 = new TechTalk.SpecFlow.Table(new string[] {
@@ -658,21 +658,21 @@ this.FeatureBackground();
                         "Log Field 3",
                         "Answer must be provided. Please review.",
                         "false"});
-#line 197
+#line 203
  testRunner.And("I verify Query is displayed", ((string)(null)), table35);
-#line 200
+#line 206
  testRunner.And("I take a screenshot");
-#line 201
+#line 207
  testRunner.And("I answer the Query \"Answer must be provided. Please review.\" on Field \"Log Field " +
                     "3\" with \"Data will be changed.\"");
-#line 202
+#line 208
  testRunner.And("I save the CRF page");
-#line 203
+#line 209
  testRunner.And("I open log line 1");
-#line 204
+#line 210
  testRunner.And("I close the Query \"Answer must be provided. Please review.\" on Field \"Log Field 3" +
                     "\"");
-#line 205
+#line 211
  testRunner.And("I save the CRF page");
 #line hidden
             TechTalk.SpecFlow.Table table36 = new TechTalk.SpecFlow.Table(new string[] {
@@ -683,11 +683,11 @@ this.FeatureBackground();
                         "Log Field 3",
                         "Answer must be provided. Please review.",
                         "false"});
-#line 206
+#line 212
  testRunner.And("I verify Query is not displayed", ((string)(null)), table36);
-#line 209
+#line 215
  testRunner.And("I take a screenshot");
-#line 210
+#line 216
  testRunner.And("I open log line 1");
 #line hidden
             TechTalk.SpecFlow.Table table37 = new TechTalk.SpecFlow.Table(new string[] {
@@ -696,9 +696,9 @@ this.FeatureBackground();
             table37.AddRow(new string[] {
                         "Log Field 3",
                         "data3"});
-#line 211
+#line 217
  testRunner.And("I enter data in CRF and save", ((string)(null)), table37);
-#line 214
+#line 220
  testRunner.And("I open log line 1");
 #line hidden
             TechTalk.SpecFlow.Table table38 = new TechTalk.SpecFlow.Table(new string[] {
@@ -709,11 +709,11 @@ this.FeatureBackground();
                         "Log Field 3",
                         "Answer must be provided. Please review.",
                         "false"});
-#line 215
+#line 221
  testRunner.And("I verify Query is not displayed", ((string)(null)), table38);
-#line 218
+#line 224
  testRunner.And("I take a screenshot");
-#line 219
+#line 225
    testRunner.And("I open log line 1");
 #line hidden
             TechTalk.SpecFlow.Table table39 = new TechTalk.SpecFlow.Table(new string[] {
@@ -722,9 +722,9 @@ this.FeatureBackground();
             table39.AddRow(new string[] {
                         "Log Field 3",
                         ""});
-#line 220
+#line 226
  testRunner.And("I enter data in CRF and save", ((string)(null)), table39);
-#line 223
+#line 229
  testRunner.And("I open log line 1");
 #line hidden
             TechTalk.SpecFlow.Table table40 = new TechTalk.SpecFlow.Table(new string[] {
@@ -735,9 +735,9 @@ this.FeatureBackground();
                         "Log Field 3",
                         "Answer must be provided. Please review.",
                         "false"});
-#line 224
+#line 230
  testRunner.And("I verify Query is not displayed", ((string)(null)), table40);
-#line 227
+#line 233
  testRunner.And("I take a screenshot");
 #line hidden
             this.ScenarioCleanup();
@@ -750,9 +750,9 @@ this.FeatureBackground();
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo(@"PB_US12940_02B As an EDC user, when I entered bad data in log field A and log field B that resulted in the system opening a query on log field B, and I answered the query without changing the data, and the query is then closed, and I entered good data in log field B, if I then entered the same bad data in log field B as when the query was closed, then the system should not refire a query on log field B. Query with requires response = false and requires manual close = false.", new string[] {
                         "PB_US12940_02B"});
-#line 230
+#line 236
 this.ScenarioSetup(scenarioInfo);
-#line 6
+#line 12
 this.FeatureBackground();
 #line hidden
             TechTalk.SpecFlow.Table table41 = new TechTalk.SpecFlow.Table(new string[] {
@@ -767,9 +767,9 @@ this.FeatureBackground();
             table41.AddRow(new string[] {
                         "Subject ID",
                         "SUB {Var(num1)}"});
-#line 232
+#line 238
     testRunner.And("I create a Subject", ((string)(null)), table41);
-#line 237
+#line 243
  testRunner.And("I select Form \"Form 6\"");
 #line hidden
             TechTalk.SpecFlow.Table table42 = new TechTalk.SpecFlow.Table(new string[] {
@@ -784,9 +784,9 @@ this.FeatureBackground();
             table42.AddRow(new string[] {
                         "Log Field 6",
                         ""});
-#line 238
+#line 244
  testRunner.And("I enter data in CRF and save", ((string)(null)), table42);
-#line 243
+#line 249
  testRunner.And("I open log line 1");
 #line hidden
             TechTalk.SpecFlow.Table table43 = new TechTalk.SpecFlow.Table(new string[] {
@@ -797,9 +797,9 @@ this.FeatureBackground();
                         "Log Field 6",
                         "Answer must be provided. Please review.",
                         "false"});
-#line 244
+#line 250
  testRunner.And("I verify Query is displayed", ((string)(null)), table43);
-#line 247
+#line 253
  testRunner.And("I take a screenshot");
 #line hidden
             TechTalk.SpecFlow.Table table44 = new TechTalk.SpecFlow.Table(new string[] {
@@ -808,9 +808,9 @@ this.FeatureBackground();
             table44.AddRow(new string[] {
                         "Log Field 6",
                         "data6"});
-#line 248
+#line 254
  testRunner.And("I enter data in CRF and save", ((string)(null)), table44);
-#line 251
+#line 257
  testRunner.And("I open log line 1");
 #line hidden
             TechTalk.SpecFlow.Table table45 = new TechTalk.SpecFlow.Table(new string[] {
@@ -821,9 +821,9 @@ this.FeatureBackground();
                         "Log Field 6",
                         "Answer must be provided. Please review.",
                         "false"});
-#line 252
+#line 258
  testRunner.And("I verify Query is not displayed", ((string)(null)), table45);
-#line 255
+#line 261
  testRunner.And("I take a screenshot");
 #line hidden
             TechTalk.SpecFlow.Table table46 = new TechTalk.SpecFlow.Table(new string[] {
@@ -832,9 +832,9 @@ this.FeatureBackground();
             table46.AddRow(new string[] {
                         "Log Field 6",
                         ""});
-#line 256
+#line 262
  testRunner.And("I enter data in CRF and save", ((string)(null)), table46);
-#line 259
+#line 265
  testRunner.And("I open log line 1");
 #line hidden
             TechTalk.SpecFlow.Table table47 = new TechTalk.SpecFlow.Table(new string[] {
@@ -845,9 +845,9 @@ this.FeatureBackground();
                         "Log Field 6",
                         "Answer must be provided. Please review.",
                         "false"});
-#line 260
+#line 266
  testRunner.And("I verify Query is displayed", ((string)(null)), table47);
-#line 263
+#line 269
  testRunner.And("I take a screenshot");
 #line hidden
             this.ScenarioCleanup();
@@ -860,9 +860,9 @@ this.FeatureBackground();
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo(@"PB_US12940_02C As an EDC user, when I entered bad data in log field A and log field B that resulted in the system opening a query on log field B, and I answered the query without changing the data, and the query is then closed, and I entered good data in log field B, if I then entered the same bad data in log field B as when the query was closed, then the system should not refire a query on log field B. Query with requires response = true and requires manual close = false.", new string[] {
                         "PB_US12940_02C"});
-#line 266
+#line 272
 this.ScenarioSetup(scenarioInfo);
-#line 6
+#line 12
 this.FeatureBackground();
 #line hidden
             TechTalk.SpecFlow.Table table48 = new TechTalk.SpecFlow.Table(new string[] {
@@ -877,9 +877,9 @@ this.FeatureBackground();
             table48.AddRow(new string[] {
                         "Subject ID",
                         "SUB {Var(num1)}"});
-#line 268
+#line 274
     testRunner.And("I create a Subject", ((string)(null)), table48);
-#line 273
+#line 279
  testRunner.And("I select Form \"Form 6\"");
 #line hidden
             TechTalk.SpecFlow.Table table49 = new TechTalk.SpecFlow.Table(new string[] {
@@ -894,9 +894,9 @@ this.FeatureBackground();
             table49.AddRow(new string[] {
                         "Log Field 9",
                         ""});
-#line 274
+#line 280
  testRunner.And("I enter data in CRF and save", ((string)(null)), table49);
-#line 279
+#line 285
  testRunner.And("I open log line 1");
 #line hidden
             TechTalk.SpecFlow.Table table50 = new TechTalk.SpecFlow.Table(new string[] {
@@ -907,16 +907,16 @@ this.FeatureBackground();
                         "Log Field 9",
                         "Answer must be provided. Please review.",
                         "false"});
-#line 280
+#line 286
  testRunner.And("I verify Query is displayed", ((string)(null)), table50);
-#line 283
+#line 289
  testRunner.And("I take a screenshot");
-#line 284
+#line 290
  testRunner.And("I answer the Query \"Answer must be provided. Please review.\" on Field \"Log Field " +
                     "9\" with \"Data will be changed.\"");
-#line 285
+#line 291
  testRunner.And("I save the CRF page");
-#line 286
+#line 292
  testRunner.And("I open log line 1");
 #line hidden
             TechTalk.SpecFlow.Table table51 = new TechTalk.SpecFlow.Table(new string[] {
@@ -927,9 +927,9 @@ this.FeatureBackground();
                         "Log Field 9",
                         "Answer must be provided. Please review.",
                         "false"});
-#line 287
+#line 293
  testRunner.And("I verify Query is not displayed", ((string)(null)), table51);
-#line 290
+#line 296
  testRunner.And("I take a screenshot");
 #line hidden
             TechTalk.SpecFlow.Table table52 = new TechTalk.SpecFlow.Table(new string[] {
@@ -938,9 +938,9 @@ this.FeatureBackground();
             table52.AddRow(new string[] {
                         "Log Field 9",
                         "data9"});
-#line 291
+#line 297
  testRunner.And("I enter data in CRF and save", ((string)(null)), table52);
-#line 294
+#line 300
  testRunner.And("I open log line 1");
 #line hidden
             TechTalk.SpecFlow.Table table53 = new TechTalk.SpecFlow.Table(new string[] {
@@ -951,9 +951,9 @@ this.FeatureBackground();
                         "Log Field 9",
                         "Answer must be provided. Please review.",
                         "false"});
-#line 295
+#line 301
  testRunner.And("I verify Query is not displayed", ((string)(null)), table53);
-#line 298
+#line 304
  testRunner.And("I take a screenshot");
 #line hidden
             TechTalk.SpecFlow.Table table54 = new TechTalk.SpecFlow.Table(new string[] {
@@ -962,9 +962,9 @@ this.FeatureBackground();
             table54.AddRow(new string[] {
                         "Log Field 9",
                         ""});
-#line 299
+#line 305
  testRunner.And("I enter data in CRF and save", ((string)(null)), table54);
-#line 302
+#line 308
  testRunner.And("I open log line 1");
 #line hidden
             TechTalk.SpecFlow.Table table55 = new TechTalk.SpecFlow.Table(new string[] {
@@ -975,9 +975,9 @@ this.FeatureBackground();
                         "Log Field 9",
                         "Answer must be provided. Please review.",
                         "false"});
-#line 303
+#line 309
  testRunner.And("I verify Query is not displayed", ((string)(null)), table55);
-#line 306
+#line 312
  testRunner.And("I take a screenshot");
 #line hidden
             this.ScenarioCleanup();
@@ -990,9 +990,9 @@ this.FeatureBackground();
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo(@"PB_US12940_02D As an EDC user, when I entered bad data in log field A and log field B that resulted in the system opening a query on log field B, and I answered the query without changing the data, and the query is then closed, and I entered good data in log field B, if I then entered the same bad data in log field B as when the query was closed, then the system should not refire a query on log field B. Query with requires response = false and requires manual close = true.", new string[] {
                         "PB_US12940_02D"});
-#line 309
+#line 315
 this.ScenarioSetup(scenarioInfo);
-#line 6
+#line 12
 this.FeatureBackground();
 #line hidden
             TechTalk.SpecFlow.Table table56 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1007,9 +1007,9 @@ this.FeatureBackground();
             table56.AddRow(new string[] {
                         "Subject ID",
                         "SUB {Var(num1)}"});
-#line 311
+#line 317
  testRunner.And("I create a Subject", ((string)(null)), table56);
-#line 316
+#line 322
  testRunner.And("I select Form \"Form 6\"");
 #line hidden
             TechTalk.SpecFlow.Table table57 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1024,9 +1024,9 @@ this.FeatureBackground();
             table57.AddRow(new string[] {
                         "Log Field 12",
                         ""});
-#line 317
+#line 323
  testRunner.And("I enter data in CRF and save", ((string)(null)), table57);
-#line 322
+#line 328
  testRunner.And("I open log line 1");
 #line hidden
             TechTalk.SpecFlow.Table table58 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1037,9 +1037,9 @@ this.FeatureBackground();
                         "Log Field 12",
                         "Answer must be provided. Please review.",
                         "false"});
-#line 323
+#line 329
  testRunner.And("I verify Query is displayed", ((string)(null)), table58);
-#line 326
+#line 332
  testRunner.And("I take a screenshot");
 #line hidden
             TechTalk.SpecFlow.Table table59 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1048,9 +1048,9 @@ this.FeatureBackground();
             table59.AddRow(new string[] {
                         "Log Field 12",
                         "data12"});
-#line 327
+#line 333
  testRunner.And("I enter data in CRF and save", ((string)(null)), table59);
-#line 330
+#line 336
  testRunner.And("I open log line 1");
 #line hidden
             TechTalk.SpecFlow.Table table60 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1061,16 +1061,16 @@ this.FeatureBackground();
                         "Log Field 12",
                         "Answer must be provided. Please review.",
                         "false"});
-#line 331
+#line 337
  testRunner.And("I verify Query is displayed", ((string)(null)), table60);
-#line 334
+#line 340
  testRunner.And("I take a screenshot");
-#line 335
+#line 341
  testRunner.And("I close the Query \"Answer must be provided. Please review.\" on Field \"Log Field 1" +
                     "2\"");
-#line 336
+#line 342
  testRunner.And("I save the CRF page");
-#line 337
+#line 343
  testRunner.And("I open log line 1");
 #line hidden
             TechTalk.SpecFlow.Table table61 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1081,9 +1081,9 @@ this.FeatureBackground();
                         "Log Field 12",
                         "Answer must be provided. Please review.",
                         "false"});
-#line 338
+#line 344
  testRunner.And("I verify Query is not displayed", ((string)(null)), table61);
-#line 341
+#line 347
  testRunner.And("I take a screenshot");
 #line hidden
             TechTalk.SpecFlow.Table table62 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1092,9 +1092,9 @@ this.FeatureBackground();
             table62.AddRow(new string[] {
                         "Log Field 12",
                         ""});
-#line 342
+#line 348
  testRunner.And("I enter data in CRF and save", ((string)(null)), table62);
-#line 345
+#line 351
  testRunner.And("I open log line 1");
 #line hidden
             TechTalk.SpecFlow.Table table63 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1105,9 +1105,9 @@ this.FeatureBackground();
                         "Log Field 12",
                         "Answer must be provided. Please review.",
                         "false"});
-#line 346
+#line 352
  testRunner.And("I verify Query is displayed", ((string)(null)), table63);
-#line 349
+#line 355
  testRunner.And("I take a screenshot");
 #line hidden
             this.ScenarioCleanup();
@@ -1120,9 +1120,9 @@ this.FeatureBackground();
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo(@"PB_US12940_03A As an EDC user, when I entered bad data in log field A and log field B that resulted in the system opening a query on log field B, and I answered the query and I changed the data in log field A to another bad data, and the query is then closed, if I entered good data in log field A and then again entered the same bad data in log field A as when the query was closed, then the system should not refire a query on log field B. Query with requires response = true and requires manual close = true.", new string[] {
                         "PB_US12940_03A"});
-#line 352
+#line 358
 this.ScenarioSetup(scenarioInfo);
-#line 6
+#line 12
 this.FeatureBackground();
 #line hidden
             TechTalk.SpecFlow.Table table64 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1137,9 +1137,9 @@ this.FeatureBackground();
             table64.AddRow(new string[] {
                         "Subject ID",
                         "SUB {Var(num1)}"});
-#line 354
+#line 360
     testRunner.And("I create a Subject", ((string)(null)), table64);
-#line 359
+#line 365
  testRunner.And("I select Form \"Form 6\"");
 #line hidden
             TechTalk.SpecFlow.Table table65 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1154,9 +1154,9 @@ this.FeatureBackground();
             table65.AddRow(new string[] {
                         "Log Field 3",
                         "data3"});
-#line 360
+#line 366
  testRunner.And("I enter data in CRF and save", ((string)(null)), table65);
-#line 365
+#line 371
  testRunner.And("I open log line 1");
 #line hidden
             TechTalk.SpecFlow.Table table66 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1167,11 +1167,11 @@ this.FeatureBackground();
                         "Log Field 3",
                         "Answer must be provided. Please review.",
                         "false"});
-#line 366
+#line 372
  testRunner.And("I verify Query is displayed", ((string)(null)), table66);
-#line 369
+#line 375
  testRunner.And("I take a screenshot");
-#line 370
+#line 376
  testRunner.And("I answer the Query \"Answer must be provided. Please review.\" on Field \"Log Field " +
                     "3\" with \"Data will be changed.\"");
 #line hidden
@@ -1184,9 +1184,9 @@ this.FeatureBackground();
             table67.AddRow(new string[] {
                         "Log Field 2",
                         ""});
-#line 371
+#line 377
  testRunner.And("I enter data in CRF and save", ((string)(null)), table67);
-#line 375
+#line 381
  testRunner.And("I open log line 1");
 #line hidden
             TechTalk.SpecFlow.Table table68 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1199,16 +1199,16 @@ this.FeatureBackground();
                         "Answer must be provided. Please review.",
                         "false",
                         "true"});
-#line 376
+#line 382
  testRunner.And("I verify Query is displayed", ((string)(null)), table68);
-#line 379
+#line 385
  testRunner.And("I take a screenshot");
-#line 380
+#line 386
  testRunner.And("I close the Query \"Answer must be provided. Please review.\" on Field \"Log Field 3" +
                     "\"");
-#line 381
+#line 387
  testRunner.And("I save the CRF page");
-#line 382
+#line 388
  testRunner.And("I open log line 1");
 #line hidden
             TechTalk.SpecFlow.Table table69 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1219,9 +1219,9 @@ this.FeatureBackground();
                         "Log Field 3",
                         "Answer must be provided. Please review.",
                         "false"});
-#line 383
+#line 389
  testRunner.And("I verify Query is not displayed", ((string)(null)), table69);
-#line 386
+#line 392
  testRunner.And("I take a screenshot");
 #line hidden
             TechTalk.SpecFlow.Table table70 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1230,9 +1230,9 @@ this.FeatureBackground();
             table70.AddRow(new string[] {
                         "Log Field 2",
                         "Data2"});
-#line 387
+#line 393
  testRunner.And("I enter data in CRF and save", ((string)(null)), table70);
-#line 390
+#line 396
  testRunner.And("I open log line 1");
 #line hidden
             TechTalk.SpecFlow.Table table71 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1243,9 +1243,9 @@ this.FeatureBackground();
                         "Log Field 3",
                         "Answer must be provided. Please review.",
                         "false"});
-#line 391
+#line 397
  testRunner.And("I verify Query is not displayed", ((string)(null)), table71);
-#line 394
+#line 400
  testRunner.And("I take a screenshot");
 #line hidden
             TechTalk.SpecFlow.Table table72 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1254,9 +1254,9 @@ this.FeatureBackground();
             table72.AddRow(new string[] {
                         "Log Field 2",
                         ""});
-#line 395
+#line 401
  testRunner.And("I enter data in CRF and save", ((string)(null)), table72);
-#line 398
+#line 404
  testRunner.And("I open log line 1");
 #line hidden
             TechTalk.SpecFlow.Table table73 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1267,9 +1267,9 @@ this.FeatureBackground();
                         "Log Field 3",
                         "Answer must be provided. Please review.",
                         "false"});
-#line 399
+#line 405
  testRunner.And("I verify Query is not displayed", ((string)(null)), table73);
-#line 402
+#line 408
  testRunner.And("I take a screenshot");
 #line hidden
             this.ScenarioCleanup();
@@ -1282,9 +1282,9 @@ this.FeatureBackground();
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo(@"PB_US12940_03B As an EDC user, when I entered bad data in log field A and log field B that resulted in the system opening a query on log field B, and I answered the query and I changed the data in log field A to another bad data, and the query is then closed, if I entered good data in log field A and then again entered the same bad data in log field A as when the query was closed, then the system should not refire a query on log field B. Query with requires response = false and requires manual close = false.", new string[] {
                         "PB_US12940_03B"});
-#line 405
+#line 411
 this.ScenarioSetup(scenarioInfo);
-#line 6
+#line 12
 this.FeatureBackground();
 #line hidden
             TechTalk.SpecFlow.Table table74 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1299,9 +1299,9 @@ this.FeatureBackground();
             table74.AddRow(new string[] {
                         "Subject ID",
                         "SUB {Var(num1)}"});
-#line 407
+#line 413
     testRunner.And("I create a Subject", ((string)(null)), table74);
-#line 412
+#line 418
  testRunner.And("I select Form \"Form 6\"");
 #line hidden
             TechTalk.SpecFlow.Table table75 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1316,9 +1316,9 @@ this.FeatureBackground();
             table75.AddRow(new string[] {
                         "Log Field 6",
                         "data6"});
-#line 413
+#line 419
  testRunner.And("I enter data in CRF and save", ((string)(null)), table75);
-#line 418
+#line 424
  testRunner.And("I open log line 1");
 #line hidden
             TechTalk.SpecFlow.Table table76 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1329,9 +1329,9 @@ this.FeatureBackground();
                         "Log Field 6",
                         "Answer must be provided. Please review.",
                         "false"});
-#line 419
+#line 425
  testRunner.And("I verify Query is displayed", ((string)(null)), table76);
-#line 422
+#line 428
  testRunner.And("I take a screenshot");
 #line hidden
             TechTalk.SpecFlow.Table table77 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1343,9 +1343,9 @@ this.FeatureBackground();
             table77.AddRow(new string[] {
                         "Log Field 5",
                         ""});
-#line 423
+#line 429
  testRunner.And("I enter data in CRF and save", ((string)(null)), table77);
-#line 427
+#line 433
  testRunner.And("I open log line 1");
 #line hidden
             TechTalk.SpecFlow.Table table78 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1356,9 +1356,9 @@ this.FeatureBackground();
                         "Log Field 6",
                         "Answer must be provided. Please review.",
                         "false"});
-#line 428
+#line 434
  testRunner.And("I verify Query is displayed", ((string)(null)), table78);
-#line 431
+#line 437
  testRunner.And("I take a screenshot");
 #line hidden
             TechTalk.SpecFlow.Table table79 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1367,9 +1367,9 @@ this.FeatureBackground();
             table79.AddRow(new string[] {
                         "Log Field 5",
                         "Data5"});
-#line 432
+#line 438
  testRunner.And("I enter data in CRF and save", ((string)(null)), table79);
-#line 435
+#line 441
  testRunner.And("I open log line 1");
 #line hidden
             TechTalk.SpecFlow.Table table80 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1380,9 +1380,9 @@ this.FeatureBackground();
                         "Log Field 6",
                         "Answer must be provided. Please review.",
                         "false"});
-#line 436
+#line 442
  testRunner.And("I verify Query is not displayed", ((string)(null)), table80);
-#line 439
+#line 445
  testRunner.And("I take a screenshot");
 #line hidden
             TechTalk.SpecFlow.Table table81 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1391,9 +1391,9 @@ this.FeatureBackground();
             table81.AddRow(new string[] {
                         "Log Field 5",
                         ""});
-#line 440
+#line 446
  testRunner.And("I enter data in CRF and save", ((string)(null)), table81);
-#line 443
+#line 449
  testRunner.And("I open log line 1");
 #line hidden
             TechTalk.SpecFlow.Table table82 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1404,9 +1404,9 @@ this.FeatureBackground();
                         "Log Field 6",
                         "Answer must be provided. Please review.",
                         "false"});
-#line 444
+#line 450
  testRunner.And("I verify Query is displayed", ((string)(null)), table82);
-#line 447
+#line 453
  testRunner.And("I take a screenshot");
 #line hidden
             this.ScenarioCleanup();
@@ -1419,9 +1419,9 @@ this.FeatureBackground();
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo(@"PB_US12940_03C As an EDC user, when I entered bad data in log field A and log field B that resulted in the system opening a query on log field B, and I answered the query and I changed the data in log field A to another bad data, and the query is then closed, if I entered good data in log field A and then again entered the same bad data in log field A as when the query was closed, then the system should not refire a query on log field B. Query with requires response = true and requires manual close = false.", new string[] {
                         "PB_US12940_03C"});
-#line 450
+#line 456
 this.ScenarioSetup(scenarioInfo);
-#line 6
+#line 12
 this.FeatureBackground();
 #line hidden
             TechTalk.SpecFlow.Table table83 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1436,9 +1436,9 @@ this.FeatureBackground();
             table83.AddRow(new string[] {
                         "Subject ID",
                         "SUB {Var(num1)}"});
-#line 452
+#line 458
     testRunner.And("I create a Subject", ((string)(null)), table83);
-#line 457
+#line 463
  testRunner.And("I select Form \"Form 6\"");
 #line hidden
             TechTalk.SpecFlow.Table table84 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1453,9 +1453,9 @@ this.FeatureBackground();
             table84.AddRow(new string[] {
                         "Log Field 9",
                         "data9"});
-#line 458
+#line 464
  testRunner.And("I enter data in CRF and save", ((string)(null)), table84);
-#line 463
+#line 469
  testRunner.And("I open log line 1");
 #line hidden
             TechTalk.SpecFlow.Table table85 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1466,11 +1466,11 @@ this.FeatureBackground();
                         "Log Field 9",
                         "Answer must be provided. Please review.",
                         "false"});
-#line 464
+#line 470
  testRunner.And("I verify Query is displayed", ((string)(null)), table85);
-#line 467
+#line 473
  testRunner.And("I take a screenshot");
-#line 468
+#line 474
  testRunner.And("I answer the Query \"Answer must be provided. Please review.\" on Field \"Log Field " +
                     "9\" with \"Data will be changed.\"");
 #line hidden
@@ -1483,9 +1483,9 @@ this.FeatureBackground();
             table86.AddRow(new string[] {
                         "Log Field 8",
                         ""});
-#line 469
+#line 475
  testRunner.And("I enter data in CRF and save", ((string)(null)), table86);
-#line 473
+#line 479
  testRunner.And("I open log line 1");
 #line hidden
             TechTalk.SpecFlow.Table table87 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1496,9 +1496,9 @@ this.FeatureBackground();
                         "Log Field 9",
                         "Answer must be provided. Please review.",
                         "false"});
-#line 474
+#line 480
  testRunner.And("I verify Query is displayed", ((string)(null)), table87);
-#line 477
+#line 483
  testRunner.And("I take a screenshot");
 #line hidden
             TechTalk.SpecFlow.Table table88 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1507,9 +1507,9 @@ this.FeatureBackground();
             table88.AddRow(new string[] {
                         "Log Field 8",
                         "Data8"});
-#line 478
+#line 484
  testRunner.And("I enter data in CRF and save", ((string)(null)), table88);
-#line 481
+#line 487
  testRunner.And("I open log line 1");
 #line hidden
             TechTalk.SpecFlow.Table table89 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1520,9 +1520,9 @@ this.FeatureBackground();
                         "Log Field 9",
                         "Answer must be provided. Please review.",
                         "false"});
-#line 482
+#line 488
  testRunner.And("I verify Query is not displayed", ((string)(null)), table89);
-#line 485
+#line 491
  testRunner.And("I take a screenshot");
 #line hidden
             TechTalk.SpecFlow.Table table90 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1531,9 +1531,9 @@ this.FeatureBackground();
             table90.AddRow(new string[] {
                         "Log Field 8",
                         ""});
-#line 486
+#line 492
  testRunner.And("I enter data in CRF and save", ((string)(null)), table90);
-#line 489
+#line 495
  testRunner.And("I open log line 1");
 #line hidden
             TechTalk.SpecFlow.Table table91 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1544,9 +1544,9 @@ this.FeatureBackground();
                         "Log Field 9",
                         "Answer must be provided. Please review.",
                         "false"});
-#line 490
+#line 496
  testRunner.And("I verify Query is displayed", ((string)(null)), table91);
-#line 493
+#line 499
  testRunner.And("I take a screenshot");
 #line hidden
             this.ScenarioCleanup();
@@ -1561,9 +1561,9 @@ this.FeatureBackground();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo(@"PB_US12940_03D As an EDC user, when I entered bad data in log field A and log field B that resulted in the system opening a query on log field B, and I answered the query and I changed the data in log field A to another bad data, and the query is then closed, if I entered good data in log field A and then again entered the same bad data in log field A as when the query was closed, then the system should not refire a query on log field B. Query with requires response = false and requires manual close = true.", new string[] {
                         "PB_US12940_03D",
                         "ignore"});
-#line 498
+#line 504
 this.ScenarioSetup(scenarioInfo);
-#line 6
+#line 12
 this.FeatureBackground();
 #line hidden
             TechTalk.SpecFlow.Table table92 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1578,9 +1578,9 @@ this.FeatureBackground();
             table92.AddRow(new string[] {
                         "Subject ID",
                         "SUB {Var(num1)}"});
-#line 500
+#line 506
  testRunner.And("I create a Subject", ((string)(null)), table92);
-#line 505
+#line 511
  testRunner.And("I select Form \"Form 6\"");
 #line hidden
             TechTalk.SpecFlow.Table table93 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1595,9 +1595,9 @@ this.FeatureBackground();
             table93.AddRow(new string[] {
                         "Log Field 12",
                         "data12"});
-#line 506
+#line 512
  testRunner.And("I enter data in CRF and save", ((string)(null)), table93);
-#line 511
+#line 517
  testRunner.And("I open log line 1");
 #line hidden
             TechTalk.SpecFlow.Table table94 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1608,9 +1608,9 @@ this.FeatureBackground();
                         "Log Field 12",
                         "Answer must be provided. Please review.",
                         "false"});
-#line 512
+#line 518
  testRunner.And("I verify Query is displayed", ((string)(null)), table94);
-#line 515
+#line 521
  testRunner.And("I take a screenshot");
 #line hidden
             TechTalk.SpecFlow.Table table95 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1622,9 +1622,9 @@ this.FeatureBackground();
             table95.AddRow(new string[] {
                         "Log Field 11",
                         ""});
-#line 516
+#line 522
  testRunner.And("I enter data in CRF and save", ((string)(null)), table95);
-#line 520
+#line 526
  testRunner.And("I open log line 1");
 #line hidden
             TechTalk.SpecFlow.Table table96 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1637,16 +1637,16 @@ this.FeatureBackground();
                         "Answer must be provided. Please review.",
                         "false",
                         "true"});
-#line 521
+#line 527
  testRunner.And("I verify Query is displayed", ((string)(null)), table96);
-#line 524
+#line 530
  testRunner.And("I take a screenshot");
-#line 525
+#line 531
  testRunner.And("I close the Query \"Answer must be provided. Please review.\" on Field \"Log Field 1" +
                     "2\"");
-#line 526
+#line 532
  testRunner.And("I save the CRF page");
-#line 527
+#line 533
  testRunner.And("I open log line 1");
 #line hidden
             TechTalk.SpecFlow.Table table97 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1657,9 +1657,9 @@ this.FeatureBackground();
                         "Log Field 12",
                         "Answer must be provided. Please review.",
                         "false"});
-#line 528
+#line 534
  testRunner.And("I verify Query is not displayed", ((string)(null)), table97);
-#line 531
+#line 537
  testRunner.And("I take a screenshot");
 #line hidden
             TechTalk.SpecFlow.Table table98 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1668,9 +1668,9 @@ this.FeatureBackground();
             table98.AddRow(new string[] {
                         "Log Field 11",
                         "Data11"});
-#line 532
+#line 538
  testRunner.And("I enter data in CRF and save", ((string)(null)), table98);
-#line 535
+#line 541
  testRunner.And("I open log line 1");
 #line hidden
             TechTalk.SpecFlow.Table table99 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1681,9 +1681,9 @@ this.FeatureBackground();
                         "Log Field 12",
                         "Answer must be provided. Please review.",
                         "false"});
-#line 536
+#line 542
  testRunner.And("I verify Query is not displayed", ((string)(null)), table99);
-#line 539
+#line 545
  testRunner.And("I take a screenshot");
 #line hidden
             TechTalk.SpecFlow.Table table100 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1692,9 +1692,9 @@ this.FeatureBackground();
             table100.AddRow(new string[] {
                         "Log Field 11",
                         ""});
-#line 540
+#line 546
  testRunner.And("I enter data in CRF and save", ((string)(null)), table100);
-#line 543
+#line 549
  testRunner.And("I open log line 1");
 #line hidden
             TechTalk.SpecFlow.Table table101 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1705,9 +1705,9 @@ this.FeatureBackground();
                         "Log Field 12",
                         "Answer must be provided. Please review.",
                         "false"});
-#line 544
+#line 550
  testRunner.And("I verify Query is not displayed", ((string)(null)), table101);
-#line 547
+#line 553
  testRunner.And("I take a screenshot");
 #line hidden
             this.ScenarioCleanup();
@@ -1720,9 +1720,9 @@ this.FeatureBackground();
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo(@"PB-US12940-04A As an EDC user, when I entered bad data in log field A and log field B that resulted in the system opening a query on log field B, and I answered the query and I changed the data in log field A to another bad data, and the query is then closed, if I then entered the original bad data in log field A, then the system should refire a query on log field B. Query with requires response = true and requires manual close = true.", new string[] {
                         "PB-US12940-04A"});
-#line 550
+#line 556
 this.ScenarioSetup(scenarioInfo);
-#line 6
+#line 12
 this.FeatureBackground();
 #line hidden
             TechTalk.SpecFlow.Table table102 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1737,9 +1737,9 @@ this.FeatureBackground();
             table102.AddRow(new string[] {
                         "Subject ID",
                         "SUB {Var(num1)}"});
-#line 552
+#line 558
     testRunner.And("I create a Subject", ((string)(null)), table102);
-#line 557
+#line 563
  testRunner.And("I select Form \"Form 6\"");
 #line hidden
             TechTalk.SpecFlow.Table table103 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1754,9 +1754,9 @@ this.FeatureBackground();
             table103.AddRow(new string[] {
                         "Log Field 3",
                         "data3"});
-#line 558
+#line 564
  testRunner.And("I enter data in CRF and save", ((string)(null)), table103);
-#line 563
+#line 569
  testRunner.And("I open log line 1");
 #line hidden
             TechTalk.SpecFlow.Table table104 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1769,11 +1769,11 @@ this.FeatureBackground();
                         "Answer must be provided. Please review.",
                         "false",
                         "false"});
-#line 564
+#line 570
     testRunner.And("I verify Query is displayed", ((string)(null)), table104);
-#line 567
+#line 573
  testRunner.And("I take a screenshot");
-#line 568
+#line 574
  testRunner.And("I answer the Query \"Answer must be provided. Please review.\" on Field \"Log Field " +
                     "3\" with \"Data will be changed.\"");
 #line hidden
@@ -1786,9 +1786,9 @@ this.FeatureBackground();
             table105.AddRow(new string[] {
                         "Log Field 2",
                         ""});
-#line 569
+#line 575
  testRunner.And("I enter data in CRF and save", ((string)(null)), table105);
-#line 573
+#line 579
  testRunner.And("I open log line 1");
 #line hidden
             TechTalk.SpecFlow.Table table106 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1801,20 +1801,20 @@ this.FeatureBackground();
                         "Answer must be provided. Please review.",
                         "true",
                         "false"});
-#line 574
- testRunner.And("I verify Query is displayed", ((string)(null)), table106);
-#line 577
- testRunner.And("I take a screenshot");
-#line 578
- testRunner.And("I close the only Query on Field \"Log Field 3\"");
-#line 579
- testRunner.And("I save the CRF page");
 #line 580
+ testRunner.And("I verify Query is displayed", ((string)(null)), table106);
+#line 583
+ testRunner.And("I take a screenshot");
+#line 584
+ testRunner.And("I close the only Query on Field \"Log Field 3\"");
+#line 585
+ testRunner.And("I save the CRF page");
+#line 586
  testRunner.And("I open log line 1");
-#line 581
+#line 587
  testRunner.And("I verify closed Query with message \"Answer must be provided. Please review.\" is d" +
                     "isplayed on Field \"Log Field 3\"");
-#line 582
+#line 588
  testRunner.And("I take a screenshot");
 #line hidden
             TechTalk.SpecFlow.Table table107 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1826,9 +1826,9 @@ this.FeatureBackground();
             table107.AddRow(new string[] {
                         "Log Field 2",
                         "data2"});
-#line 583
+#line 589
  testRunner.When("I enter data in CRF and save", ((string)(null)), table107);
-#line 587
+#line 593
  testRunner.And("I open log line 1");
 #line hidden
             TechTalk.SpecFlow.Table table108 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1841,9 +1841,9 @@ this.FeatureBackground();
                         "Answer must be provided. Please review.",
                         "false",
                         "false"});
-#line 588
+#line 594
  testRunner.Then("I verify Query is displayed", ((string)(null)), table108);
-#line 591
+#line 597
  testRunner.And("I take a screenshot");
 #line hidden
             this.ScenarioCleanup();
@@ -1858,9 +1858,9 @@ this.FeatureBackground();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo(@"PB-US12940-04B As an EDC user, when I entered bad data in log field A and log field B that resulted in the system opening a query on log field B, and I answered the query and I changed the data in log field A to another bad data, and the query is then closed, if I then entered the original bad data in log field A, then the system should refire a query on log field B. Query with requires response = false and requires manual close = false.", new string[] {
                         "PB-US12940-04B",
                         "ignore"});
-#line 596
+#line 602
 this.ScenarioSetup(scenarioInfo);
-#line 6
+#line 12
 this.FeatureBackground();
 #line hidden
             TechTalk.SpecFlow.Table table109 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1875,9 +1875,9 @@ this.FeatureBackground();
             table109.AddRow(new string[] {
                         "Subject ID",
                         "SUB {Var(num1)}"});
-#line 598
+#line 604
     testRunner.And("I create a Subject", ((string)(null)), table109);
-#line 603
+#line 609
  testRunner.And("I select Form \"Form 6\"");
 #line hidden
             TechTalk.SpecFlow.Table table110 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1892,9 +1892,9 @@ this.FeatureBackground();
             table110.AddRow(new string[] {
                         "Log Field 6",
                         "data6"});
-#line 604
+#line 610
  testRunner.And("I enter data in CRF and save", ((string)(null)), table110);
-#line 609
+#line 615
  testRunner.And("I open log line 1");
 #line hidden
             TechTalk.SpecFlow.Table table111 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1907,9 +1907,9 @@ this.FeatureBackground();
                         "Answer must be provided. Please review.",
                         "false",
                         "false"});
-#line 610
+#line 616
  testRunner.And("I verify Query is displayed", ((string)(null)), table111);
-#line 613
+#line 619
  testRunner.And("I take a screenshot");
 #line hidden
             TechTalk.SpecFlow.Table table112 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1921,9 +1921,9 @@ this.FeatureBackground();
             table112.AddRow(new string[] {
                         "Log Field 5",
                         ""});
-#line 614
+#line 620
  testRunner.And("I enter data in CRF and save", ((string)(null)), table112);
-#line 618
+#line 624
  testRunner.And("I open log line 1");
 #line hidden
             TechTalk.SpecFlow.Table table113 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1936,9 +1936,9 @@ this.FeatureBackground();
                         "Answer must be provided. Please review.",
                         "false",
                         "false"});
-#line 619
+#line 625
  testRunner.Then("I verify Query is displayed", ((string)(null)), table113);
-#line 622
+#line 628
  testRunner.And("I take a screenshot");
 #line hidden
             TechTalk.SpecFlow.Table table114 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1950,9 +1950,9 @@ this.FeatureBackground();
             table114.AddRow(new string[] {
                         "Log Field 5",
                         "data5"});
-#line 623
+#line 629
  testRunner.When("I enter data in CRF and save", ((string)(null)), table114);
-#line 627
+#line 633
  testRunner.And("I open log line 1");
 #line hidden
             TechTalk.SpecFlow.Table table115 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1965,9 +1965,9 @@ this.FeatureBackground();
                         "Answer must be provided. Please review.",
                         "false",
                         "false"});
-#line 628
+#line 634
  testRunner.Then("I verify Query is displayed", ((string)(null)), table115);
-#line 631
+#line 637
  testRunner.And("I take a screenshot");
 #line hidden
             this.ScenarioCleanup();
@@ -1980,9 +1980,9 @@ this.FeatureBackground();
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo(@"PB-US12940-04C As an EDC user, when I entered bad data in log field A and log field B that resulted in the system opening a query on log field B, and I answered the query and I changed the data in log field A to another bad data, and the query is then closed, if I then entered the original bad data in log field A, then the system should refire a query on log field B. Query with requires response = true and requires manual close = false.", new string[] {
                         "PB-US12940-04C"});
-#line 634
+#line 640
 this.ScenarioSetup(scenarioInfo);
-#line 6
+#line 12
 this.FeatureBackground();
 #line hidden
             TechTalk.SpecFlow.Table table116 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1997,9 +1997,9 @@ this.FeatureBackground();
             table116.AddRow(new string[] {
                         "Subject ID",
                         "SUB {Var(num1)}"});
-#line 636
+#line 642
     testRunner.And("I create a Subject", ((string)(null)), table116);
-#line 641
+#line 647
  testRunner.And("I select Form \"Form 6\"");
 #line hidden
             TechTalk.SpecFlow.Table table117 = new TechTalk.SpecFlow.Table(new string[] {
@@ -2014,9 +2014,9 @@ this.FeatureBackground();
             table117.AddRow(new string[] {
                         "Log Field 9",
                         "data9"});
-#line 642
+#line 648
  testRunner.And("I enter data in CRF and save", ((string)(null)), table117);
-#line 647
+#line 653
  testRunner.And("I open log line 1");
 #line hidden
             TechTalk.SpecFlow.Table table118 = new TechTalk.SpecFlow.Table(new string[] {
@@ -2029,11 +2029,11 @@ this.FeatureBackground();
                         "Answer must be provided. Please review.",
                         "false",
                         "false"});
-#line 648
+#line 654
  testRunner.And("I verify Query is displayed", ((string)(null)), table118);
-#line 651
+#line 657
  testRunner.And("I take a screenshot");
-#line 652
+#line 658
  testRunner.And("I answer the Query \"Answer must be provided. Please review.\" on Field \"Log Field " +
                     "9\" with \"Data will be changed.\"");
 #line hidden
@@ -2046,9 +2046,9 @@ this.FeatureBackground();
             table119.AddRow(new string[] {
                         "Log Field 8",
                         ""});
-#line 653
+#line 659
  testRunner.And("I enter data in CRF and save", ((string)(null)), table119);
-#line 657
+#line 663
  testRunner.And("I open log line 1");
 #line hidden
             TechTalk.SpecFlow.Table table120 = new TechTalk.SpecFlow.Table(new string[] {
@@ -2061,9 +2061,9 @@ this.FeatureBackground();
                         "Answer must be provided. Please review.",
                         "true",
                         "true"});
-#line 658
+#line 664
     testRunner.And("I verify Query is not displayed", ((string)(null)), table120);
-#line 661
+#line 667
  testRunner.And("I take a screenshot");
 #line hidden
             TechTalk.SpecFlow.Table table121 = new TechTalk.SpecFlow.Table(new string[] {
@@ -2075,9 +2075,9 @@ this.FeatureBackground();
             table121.AddRow(new string[] {
                         "Log Field 8",
                         "data8"});
-#line 662
+#line 668
  testRunner.When("I enter data in CRF and save", ((string)(null)), table121);
-#line 666
+#line 672
  testRunner.And("I open log line 1");
 #line hidden
             TechTalk.SpecFlow.Table table122 = new TechTalk.SpecFlow.Table(new string[] {
@@ -2090,9 +2090,9 @@ this.FeatureBackground();
                         "Answer must be provided. Please review.",
                         "false",
                         "false"});
-#line 667
+#line 673
  testRunner.Then("I verify Query is displayed", ((string)(null)), table122);
-#line 670
+#line 676
  testRunner.And("I take a screenshot");
 #line hidden
             this.ScenarioCleanup();
@@ -2107,9 +2107,9 @@ this.FeatureBackground();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo(@"PB-US12940-04D As an EDC user, when I entered bad data in log field A and log field B that resulted in the system opening a query on log field B, and I answered the query and I changed the data in log field A to another bad data, and the query is then closed, if I then entered the original bad data in log field A, then the system should refire a query on log field B. Query with requires response = false and requires manual close = true.", new string[] {
                         "PB-US12940-04D",
                         "ignore"});
-#line 675
+#line 681
 this.ScenarioSetup(scenarioInfo);
-#line 6
+#line 12
 this.FeatureBackground();
 #line hidden
             TechTalk.SpecFlow.Table table123 = new TechTalk.SpecFlow.Table(new string[] {
@@ -2124,9 +2124,9 @@ this.FeatureBackground();
             table123.AddRow(new string[] {
                         "Subject ID",
                         "SUB {Var(num1)}"});
-#line 677
+#line 683
  testRunner.And("I create a Subject", ((string)(null)), table123);
-#line 682
+#line 688
  testRunner.And("I select Form \"Form 6\"");
 #line hidden
             TechTalk.SpecFlow.Table table124 = new TechTalk.SpecFlow.Table(new string[] {
@@ -2141,9 +2141,9 @@ this.FeatureBackground();
             table124.AddRow(new string[] {
                         "Log Field 12",
                         "data12"});
-#line 683
+#line 689
  testRunner.And("I enter data in CRF and save", ((string)(null)), table124);
-#line 688
+#line 694
  testRunner.And("I open log line 1");
 #line hidden
             TechTalk.SpecFlow.Table table125 = new TechTalk.SpecFlow.Table(new string[] {
@@ -2156,9 +2156,9 @@ this.FeatureBackground();
                         "Answer must be provided. Please review.",
                         "false",
                         "false"});
-#line 689
+#line 695
     testRunner.And("I verify Query is displayed", ((string)(null)), table125);
-#line 692
+#line 698
  testRunner.And("I take a screenshot");
 #line hidden
             TechTalk.SpecFlow.Table table126 = new TechTalk.SpecFlow.Table(new string[] {
@@ -2170,9 +2170,9 @@ this.FeatureBackground();
             table126.AddRow(new string[] {
                         "Log Field 11",
                         ""});
-#line 693
+#line 699
  testRunner.And("I enter data in CRF and save", ((string)(null)), table126);
-#line 697
+#line 703
  testRunner.And("I open log line 1");
 #line hidden
             TechTalk.SpecFlow.Table table127 = new TechTalk.SpecFlow.Table(new string[] {
@@ -2185,23 +2185,23 @@ this.FeatureBackground();
                         "Answer must be provided. Please review.",
                         "false",
                         "false"});
-#line 698
+#line 704
  testRunner.And("I verify Query is displayed", ((string)(null)), table127);
-#line 701
+#line 707
  testRunner.And("I take a screenshot");
-#line 702
+#line 708
  testRunner.And("I close the only Query on Field \"Log Field 12\"");
-#line 703
+#line 709
  testRunner.And("I close the Query \"Answer must be provided. Please review.\" on Field \"Log Field 1" +
                     "2\"");
-#line 704
+#line 710
  testRunner.And("I save the CRF page");
-#line 705
+#line 711
  testRunner.And("I open log line 1");
-#line 706
+#line 712
  testRunner.And("I verify closed Query with message \"Answer must be provided. Please review.\" is d" +
                     "isplayed on Field \"Log Field 12\"");
-#line 707
+#line 713
  testRunner.And("I take a screenshot");
 #line hidden
             TechTalk.SpecFlow.Table table128 = new TechTalk.SpecFlow.Table(new string[] {
@@ -2213,9 +2213,9 @@ this.FeatureBackground();
             table128.AddRow(new string[] {
                         "Log Field 11",
                         "data11"});
-#line 708
+#line 714
  testRunner.When("I enter data in CRF and save", ((string)(null)), table128);
-#line 712
+#line 718
  testRunner.And("I open log line 1");
 #line hidden
             TechTalk.SpecFlow.Table table129 = new TechTalk.SpecFlow.Table(new string[] {
@@ -2228,9 +2228,9 @@ this.FeatureBackground();
                         "Answer must be provided. Please review.",
                         "false",
                         "false"});
-#line 713
+#line 719
  testRunner.Then("I verify Query is displayed", ((string)(null)), table129);
-#line 716
+#line 722
  testRunner.And("I take a screenshot");
 #line hidden
             this.ScenarioCleanup();
@@ -2243,9 +2243,9 @@ this.FeatureBackground();
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo(@"PB-US12940-05A As an EDC user, when I entered bad data in log field A and log field B that resulted in the system opening a query on log field B, and I answered the query without changing the data, and the query is then closed, if I then entered new bad data in log field A, then the system should refire a query on log field B. Query with requires response = true and requires manual close = true.", new string[] {
                         "PB-US12940-05A"});
-#line 719
+#line 725
 this.ScenarioSetup(scenarioInfo);
-#line 6
+#line 12
 this.FeatureBackground();
 #line hidden
             TechTalk.SpecFlow.Table table130 = new TechTalk.SpecFlow.Table(new string[] {
@@ -2260,9 +2260,9 @@ this.FeatureBackground();
             table130.AddRow(new string[] {
                         "Subject ID",
                         "SUB {Var(num1)}"});
-#line 721
+#line 727
     testRunner.And("I create a Subject", ((string)(null)), table130);
-#line 726
+#line 732
  testRunner.And("I select Form \"Form 6\"");
 #line hidden
             TechTalk.SpecFlow.Table table131 = new TechTalk.SpecFlow.Table(new string[] {
@@ -2277,9 +2277,9 @@ this.FeatureBackground();
             table131.AddRow(new string[] {
                         "Log Field 3",
                         "data3"});
-#line 727
+#line 733
  testRunner.And("I enter data in CRF and save", ((string)(null)), table131);
-#line 732
+#line 738
  testRunner.And("I open log line 1");
 #line hidden
             TechTalk.SpecFlow.Table table132 = new TechTalk.SpecFlow.Table(new string[] {
@@ -2292,29 +2292,29 @@ this.FeatureBackground();
                         "Answer must be provided. Please review.",
                         "false",
                         "false"});
-#line 733
+#line 739
  testRunner.And("I verify Query is displayed", ((string)(null)), table132);
-#line 736
+#line 742
  testRunner.And("I take a screenshot");
-#line 737
+#line 743
  testRunner.And("I answer the Query \"Answer must be provided. Please review.\" on Field \"Log Field " +
                     "3\" with \"Data will be changed.\"");
-#line 738
- testRunner.And("I save the CRF page");
-#line 739
- testRunner.And("I take a screenshot");
-#line 740
- testRunner.And("I open log line 1");
-#line 741
- testRunner.And("I close the only Query on Field \"Log Field 3\"");
-#line 742
- testRunner.And("I save the CRF page");
-#line 743
- testRunner.And("I open log line 1");
 #line 744
+ testRunner.And("I save the CRF page");
+#line 745
+ testRunner.And("I take a screenshot");
+#line 746
+ testRunner.And("I open log line 1");
+#line 747
+ testRunner.And("I close the only Query on Field \"Log Field 3\"");
+#line 748
+ testRunner.And("I save the CRF page");
+#line 749
+ testRunner.And("I open log line 1");
+#line 750
  testRunner.And("I verify closed Query with message \"Answer must be provided. Please review.\" is d" +
                     "isplayed on Field \"Log Field 3\"");
-#line 745
+#line 751
  testRunner.And("I take a screenshot");
 #line hidden
             TechTalk.SpecFlow.Table table133 = new TechTalk.SpecFlow.Table(new string[] {
@@ -2326,9 +2326,9 @@ this.FeatureBackground();
             table133.AddRow(new string[] {
                         "Log Field 2",
                         ""});
-#line 746
+#line 752
  testRunner.When("I enter data in CRF and save", ((string)(null)), table133);
-#line 750
+#line 756
  testRunner.And("I open log line 1");
 #line hidden
             TechTalk.SpecFlow.Table table134 = new TechTalk.SpecFlow.Table(new string[] {
@@ -2341,9 +2341,9 @@ this.FeatureBackground();
                         "Answer must be provided. Please review.",
                         "false",
                         "false"});
-#line 751
+#line 757
  testRunner.Then("I verify Query is displayed", ((string)(null)), table134);
-#line 754
+#line 760
  testRunner.And("I take a screenshot");
 #line hidden
             this.ScenarioCleanup();
@@ -2356,9 +2356,9 @@ this.FeatureBackground();
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo(@"PB-US12940-05B As an EDC user, when I entered bad data in log field A and log field B that resulted in the system opening a query on log field B, and I answered the query without changing the data, and the query is then closed, if I then entered new bad data in log field A, then the system should refire a query on log field B. Query with requires response = false and requires manual close = false.", new string[] {
                         "PB-US12940-05B"});
-#line 757
+#line 763
 this.ScenarioSetup(scenarioInfo);
-#line 6
+#line 12
 this.FeatureBackground();
 #line hidden
             TechTalk.SpecFlow.Table table135 = new TechTalk.SpecFlow.Table(new string[] {
@@ -2373,9 +2373,9 @@ this.FeatureBackground();
             table135.AddRow(new string[] {
                         "Subject ID",
                         "SUB {Var(num1)}"});
-#line 759
+#line 765
     testRunner.And("I create a Subject", ((string)(null)), table135);
-#line 764
+#line 770
  testRunner.And("I select Form \"Form 6\"");
 #line hidden
             TechTalk.SpecFlow.Table table136 = new TechTalk.SpecFlow.Table(new string[] {
@@ -2390,9 +2390,9 @@ this.FeatureBackground();
             table136.AddRow(new string[] {
                         "Log Field 6",
                         "data6"});
-#line 765
+#line 771
  testRunner.And("I enter data in CRF and save", ((string)(null)), table136);
-#line 770
+#line 776
  testRunner.And("I open log line 1");
 #line hidden
             TechTalk.SpecFlow.Table table137 = new TechTalk.SpecFlow.Table(new string[] {
@@ -2405,9 +2405,9 @@ this.FeatureBackground();
                         "Answer must be provided. Please review.",
                         "false",
                         "false"});
-#line 771
+#line 777
  testRunner.And("I verify Query is displayed", ((string)(null)), table137);
-#line 774
+#line 780
  testRunner.And("I take a screenshot");
 #line hidden
             TechTalk.SpecFlow.Table table138 = new TechTalk.SpecFlow.Table(new string[] {
@@ -2419,9 +2419,9 @@ this.FeatureBackground();
             table138.AddRow(new string[] {
                         "Log Field 5",
                         ""});
-#line 775
+#line 781
  testRunner.When("I enter data in CRF and save", ((string)(null)), table138);
-#line 779
+#line 785
  testRunner.And("I open log line 1");
 #line hidden
             TechTalk.SpecFlow.Table table139 = new TechTalk.SpecFlow.Table(new string[] {
@@ -2434,9 +2434,9 @@ this.FeatureBackground();
                         "Answer must be provided. Please review.",
                         "false",
                         "false"});
-#line 780
+#line 786
  testRunner.Then("I verify Query is displayed", ((string)(null)), table139);
-#line 783
+#line 789
  testRunner.And("I take a screenshot");
 #line hidden
             this.ScenarioCleanup();
@@ -2449,9 +2449,9 @@ this.FeatureBackground();
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo(@"PB-US12940-05C As an EDC user, when I entered bad data in log field A and log field B that resulted in the system opening a query on log field B, and I answered the query without changing the data, and the query is then closed, if I then entered new bad data in log field A, then the system should refire a query on log field B. Query with requires response = true and requires manual close = false.", new string[] {
                         "PB-US12940-05C"});
-#line 786
+#line 792
 this.ScenarioSetup(scenarioInfo);
-#line 6
+#line 12
 this.FeatureBackground();
 #line hidden
             TechTalk.SpecFlow.Table table140 = new TechTalk.SpecFlow.Table(new string[] {
@@ -2466,9 +2466,9 @@ this.FeatureBackground();
             table140.AddRow(new string[] {
                         "Subject ID",
                         "SUB {Var(num1)}"});
-#line 788
+#line 794
     testRunner.And("I create a Subject", ((string)(null)), table140);
-#line 793
+#line 799
  testRunner.And("I select Form \"Form 6\"");
 #line hidden
             TechTalk.SpecFlow.Table table141 = new TechTalk.SpecFlow.Table(new string[] {
@@ -2483,9 +2483,9 @@ this.FeatureBackground();
             table141.AddRow(new string[] {
                         "Log Field 9",
                         "data9"});
-#line 794
+#line 800
  testRunner.And("I enter data in CRF and save", ((string)(null)), table141);
-#line 799
+#line 805
  testRunner.And("I open log line 1");
 #line hidden
             TechTalk.SpecFlow.Table table142 = new TechTalk.SpecFlow.Table(new string[] {
@@ -2498,16 +2498,16 @@ this.FeatureBackground();
                         "Answer must be provided. Please review.",
                         "false",
                         "false"});
-#line 800
+#line 806
     testRunner.And("I verify Query is displayed", ((string)(null)), table142);
-#line 803
+#line 809
  testRunner.And("I take a screenshot");
-#line 804
+#line 810
  testRunner.And("I answer the Query \"Answer must be provided. Please review.\" on Field \"Log Field " +
                     "9\" with \"Data will be changed.\"");
-#line 805
+#line 811
  testRunner.And("I save the CRF page");
-#line 806
+#line 812
  testRunner.And("I open log line 1");
 #line hidden
             TechTalk.SpecFlow.Table table143 = new TechTalk.SpecFlow.Table(new string[] {
@@ -2520,9 +2520,9 @@ this.FeatureBackground();
                         "Answer must be provided. Please review.",
                         "true",
                         "true"});
-#line 807
+#line 813
     testRunner.And("I verify Query is not displayed", ((string)(null)), table143);
-#line 810
+#line 816
  testRunner.And("I take a screenshot");
 #line hidden
             TechTalk.SpecFlow.Table table144 = new TechTalk.SpecFlow.Table(new string[] {
@@ -2534,9 +2534,9 @@ this.FeatureBackground();
             table144.AddRow(new string[] {
                         "Log Field 8",
                         ""});
-#line 811
+#line 817
  testRunner.When("I enter data in CRF and save", ((string)(null)), table144);
-#line 815
+#line 821
  testRunner.And("I open log line 1");
 #line hidden
             TechTalk.SpecFlow.Table table145 = new TechTalk.SpecFlow.Table(new string[] {
@@ -2549,9 +2549,9 @@ this.FeatureBackground();
                         "Answer must be provided. Please review.",
                         "false",
                         "false"});
-#line 816
+#line 822
  testRunner.Then("I verify Query is displayed", ((string)(null)), table145);
-#line 819
+#line 825
  testRunner.And("I take a screenshot");
 #line hidden
             this.ScenarioCleanup();
@@ -2564,9 +2564,9 @@ this.FeatureBackground();
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo(@"PB-US12940-05D As an EDC user, when I entered bad data in log field A and log field B that resulted in the system opening a query on log field B, and I answered the query without changing the data, and the query is then closed, if I then entered new bad data in log field A, then the system should refire a query on log field B. Query with requires response = false and requires manual close = true.", new string[] {
                         "PB-US12940-05D"});
-#line 822
+#line 828
 this.ScenarioSetup(scenarioInfo);
-#line 6
+#line 12
 this.FeatureBackground();
 #line hidden
             TechTalk.SpecFlow.Table table146 = new TechTalk.SpecFlow.Table(new string[] {
@@ -2581,9 +2581,9 @@ this.FeatureBackground();
             table146.AddRow(new string[] {
                         "Subject ID",
                         "SUB {Var(num1)}"});
-#line 824
+#line 830
  testRunner.And("I create a Subject", ((string)(null)), table146);
-#line 829
+#line 835
  testRunner.And("I select Form \"Form 6\"");
 #line hidden
             TechTalk.SpecFlow.Table table147 = new TechTalk.SpecFlow.Table(new string[] {
@@ -2598,9 +2598,9 @@ this.FeatureBackground();
             table147.AddRow(new string[] {
                         "Log Field 12",
                         "data12"});
-#line 830
+#line 836
  testRunner.And("I enter data in CRF and save", ((string)(null)), table147);
-#line 835
+#line 841
  testRunner.And("I open log line 1");
 #line hidden
             TechTalk.SpecFlow.Table table148 = new TechTalk.SpecFlow.Table(new string[] {
@@ -2613,9 +2613,9 @@ this.FeatureBackground();
                         "Answer must be provided. Please review.",
                         "false",
                         "false"});
-#line 836
+#line 842
  testRunner.And("I verify Query is displayed", ((string)(null)), table148);
-#line 839
+#line 845
  testRunner.And("I take a screenshot");
 #line hidden
             TechTalk.SpecFlow.Table table149 = new TechTalk.SpecFlow.Table(new string[] {
@@ -2627,9 +2627,9 @@ this.FeatureBackground();
             table149.AddRow(new string[] {
                         "Log Field 11",
                         ""});
-#line 840
+#line 846
  testRunner.When("I enter data in CRF and save", ((string)(null)), table149);
-#line 844
+#line 850
  testRunner.And("I open log line 1");
 #line hidden
             TechTalk.SpecFlow.Table table150 = new TechTalk.SpecFlow.Table(new string[] {
@@ -2642,9 +2642,9 @@ this.FeatureBackground();
                         "Answer must be provided. Please review.",
                         "false",
                         "false"});
-#line 845
+#line 851
  testRunner.Then("I verify Query is displayed", ((string)(null)), table150);
-#line 848
+#line 854
  testRunner.And("I take a screenshot");
 #line hidden
             this.ScenarioCleanup();
@@ -2657,9 +2657,9 @@ this.FeatureBackground();
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo(@"PB-US12940-06A As an EDC user, when I entered bad data in log field A and log field B that resulted in the system opening a query on log field B, and I canceled the query, and I entered good data in log field A, if I then entered the same bad data in log field A as when the query was canceled, then the system should not refire a query on log field B. Query with requires response = true and requires manual close = true.", new string[] {
                         "PB-US12940-06A"});
-#line 851
+#line 857
 this.ScenarioSetup(scenarioInfo);
-#line 6
+#line 12
 this.FeatureBackground();
 #line hidden
             TechTalk.SpecFlow.Table table151 = new TechTalk.SpecFlow.Table(new string[] {
@@ -2674,9 +2674,9 @@ this.FeatureBackground();
             table151.AddRow(new string[] {
                         "Subject ID",
                         "SUB {Var(num1)}"});
-#line 853
+#line 859
     testRunner.And("I create a Subject", ((string)(null)), table151);
-#line 858
+#line 864
  testRunner.And("I select Form \"Form 6\"");
 #line hidden
             TechTalk.SpecFlow.Table table152 = new TechTalk.SpecFlow.Table(new string[] {
@@ -2691,9 +2691,9 @@ this.FeatureBackground();
             table152.AddRow(new string[] {
                         "Log Field 3",
                         "data3"});
-#line 859
+#line 865
  testRunner.And("I enter data in CRF and save", ((string)(null)), table152);
-#line 864
+#line 870
  testRunner.And("I open log line 1");
 #line hidden
             TechTalk.SpecFlow.Table table153 = new TechTalk.SpecFlow.Table(new string[] {
@@ -2706,20 +2706,20 @@ this.FeatureBackground();
                         "Answer must be provided. Please review.",
                         "false",
                         "false"});
-#line 865
+#line 871
  testRunner.And("I verify Query is displayed", ((string)(null)), table153);
-#line 868
+#line 874
  testRunner.And("I take a screenshot");
-#line 869
+#line 875
  testRunner.And("I cancel the Query \"Answer must be provided. Please review.\" on Field \"Log Field " +
                     "3\"");
-#line 870
+#line 876
  testRunner.And("I save the CRF page");
-#line 871
+#line 877
  testRunner.And("I open log line 1");
-#line 872
+#line 878
  testRunner.And("I click audit on Field \"Log Field 3\"");
-#line 873
+#line 879
  testRunner.And("I take a screenshot");
 #line hidden
             TechTalk.SpecFlow.Table table154 = new TechTalk.SpecFlow.Table(new string[] {
@@ -2728,11 +2728,11 @@ this.FeatureBackground();
             table154.AddRow(new string[] {
                         "Query Canceled",
                         "Answer must be provided. Please review."});
-#line 874
+#line 880
  testRunner.And("I verify Audits exist", ((string)(null)), table154);
-#line 877
+#line 883
  testRunner.And("I select Form \"Form 6\" in \"Header\"");
-#line 878
+#line 884
  testRunner.And("I open log line 1");
 #line hidden
             TechTalk.SpecFlow.Table table155 = new TechTalk.SpecFlow.Table(new string[] {
@@ -2741,9 +2741,9 @@ this.FeatureBackground();
             table155.AddRow(new string[] {
                         "Log Field 1",
                         "data1"});
-#line 879
+#line 885
  testRunner.And("I enter data in CRF and save", ((string)(null)), table155);
-#line 882
+#line 888
  testRunner.And("I open log line 1");
 #line hidden
             TechTalk.SpecFlow.Table table156 = new TechTalk.SpecFlow.Table(new string[] {
@@ -2756,9 +2756,9 @@ this.FeatureBackground();
                         "Answer must be provided. Please review.",
                         "false",
                         "false"});
-#line 883
+#line 889
     testRunner.And("I verify Query is not displayed", ((string)(null)), table156);
-#line 886
+#line 892
  testRunner.And("I take a screenshot");
 #line hidden
             TechTalk.SpecFlow.Table table157 = new TechTalk.SpecFlow.Table(new string[] {
@@ -2767,9 +2767,9 @@ this.FeatureBackground();
             table157.AddRow(new string[] {
                         "Log Field 1",
                         ""});
-#line 887
+#line 893
  testRunner.When("I enter data in CRF and save", ((string)(null)), table157);
-#line 890
+#line 896
  testRunner.And("I open log line 1");
 #line hidden
             TechTalk.SpecFlow.Table table158 = new TechTalk.SpecFlow.Table(new string[] {
@@ -2782,9 +2782,9 @@ this.FeatureBackground();
                         "Answer must be provided. Please review.",
                         "false",
                         "false"});
-#line 891
+#line 897
  testRunner.Then("I verify Query is not displayed", ((string)(null)), table158);
-#line 894
+#line 900
  testRunner.And("I take a screenshot");
 #line hidden
             this.ScenarioCleanup();
@@ -2797,9 +2797,9 @@ this.FeatureBackground();
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo(@"PB-US12940-06B As an EDC user, when I entered bad data in log field A and log field B that resulted in the system opening a query on log field B, and I canceled the query, and I entered good data in log field A, if I then entered the same bad data in log field A as when the query was canceled, then the system should not refire a query on log field B. Query with requires response = false and requires manual close = false.", new string[] {
                         "PB-US12940-06B"});
-#line 897
+#line 903
 this.ScenarioSetup(scenarioInfo);
-#line 6
+#line 12
 this.FeatureBackground();
 #line hidden
             TechTalk.SpecFlow.Table table159 = new TechTalk.SpecFlow.Table(new string[] {
@@ -2814,9 +2814,9 @@ this.FeatureBackground();
             table159.AddRow(new string[] {
                         "Subject ID",
                         "SUB {Var(num1)}"});
-#line 899
+#line 905
     testRunner.And("I create a Subject", ((string)(null)), table159);
-#line 904
+#line 910
  testRunner.And("I select Form \"Form 6\"");
 #line hidden
             TechTalk.SpecFlow.Table table160 = new TechTalk.SpecFlow.Table(new string[] {
@@ -2831,9 +2831,9 @@ this.FeatureBackground();
             table160.AddRow(new string[] {
                         "Log Field 6",
                         "data6"});
-#line 905
+#line 911
  testRunner.And("I enter data in CRF and save", ((string)(null)), table160);
-#line 910
+#line 916
  testRunner.And("I open log line 1");
 #line hidden
             TechTalk.SpecFlow.Table table161 = new TechTalk.SpecFlow.Table(new string[] {
@@ -2846,20 +2846,20 @@ this.FeatureBackground();
                         "Answer must be provided. Please review.",
                         "false",
                         "false"});
-#line 911
+#line 917
  testRunner.And("I verify Query is displayed", ((string)(null)), table161);
-#line 914
+#line 920
  testRunner.And("I take a screenshot");
-#line 915
+#line 921
  testRunner.And("I cancel the Query \"Answer must be provided. Please review.\" on Field \"Log Field " +
                     "6\"");
-#line 916
+#line 922
  testRunner.And("I save the CRF page");
-#line 917
+#line 923
  testRunner.And("I open log line 1");
-#line 918
+#line 924
  testRunner.And("I click audit on Field \"Log Field 6\"");
-#line 919
+#line 925
  testRunner.And("I take a screenshot");
 #line hidden
             TechTalk.SpecFlow.Table table162 = new TechTalk.SpecFlow.Table(new string[] {
@@ -2868,11 +2868,11 @@ this.FeatureBackground();
             table162.AddRow(new string[] {
                         "Query Canceled",
                         "Answer must be provided. Please review."});
-#line 920
+#line 926
  testRunner.And("I verify Audits exist", ((string)(null)), table162);
-#line 923
+#line 929
  testRunner.And("I select Form \"Form 6\" in \"Header\"");
-#line 924
+#line 930
  testRunner.And("I open log line 1");
 #line hidden
             TechTalk.SpecFlow.Table table163 = new TechTalk.SpecFlow.Table(new string[] {
@@ -2881,9 +2881,9 @@ this.FeatureBackground();
             table163.AddRow(new string[] {
                         "Log Field 4",
                         "data4"});
-#line 925
+#line 931
  testRunner.And("I enter data in CRF and save", ((string)(null)), table163);
-#line 928
+#line 934
  testRunner.And("I open log line 1");
 #line hidden
             TechTalk.SpecFlow.Table table164 = new TechTalk.SpecFlow.Table(new string[] {
@@ -2896,9 +2896,9 @@ this.FeatureBackground();
                         "Answer must be provided. Please review.",
                         "false",
                         "false"});
-#line 929
+#line 935
     testRunner.And("I verify Query is not displayed", ((string)(null)), table164);
-#line 932
+#line 938
  testRunner.And("I take a screenshot");
 #line hidden
             TechTalk.SpecFlow.Table table165 = new TechTalk.SpecFlow.Table(new string[] {
@@ -2907,9 +2907,9 @@ this.FeatureBackground();
             table165.AddRow(new string[] {
                         "Log Field 4",
                         ""});
-#line 933
+#line 939
  testRunner.When("I enter data in CRF and save", ((string)(null)), table165);
-#line 936
+#line 942
  testRunner.And("I open log line 1");
 #line hidden
             TechTalk.SpecFlow.Table table166 = new TechTalk.SpecFlow.Table(new string[] {
@@ -2922,9 +2922,9 @@ this.FeatureBackground();
                         "Answer must be provided. Please review.",
                         "false",
                         "false"});
-#line 937
+#line 943
  testRunner.Then("I verify Query is not displayed", ((string)(null)), table166);
-#line 940
+#line 946
  testRunner.And("I take a screenshot");
 #line hidden
             this.ScenarioCleanup();
@@ -2937,9 +2937,9 @@ this.FeatureBackground();
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo(@"PB-US12940-06C As an EDC user, when I entered bad data in log field A and log field B that resulted in the system opening a query on log field B, and I canceled the query, and I entered good data in log field A, if I then entered the same bad data in log field A as when the query was canceled, then the system should not refire a query on log field B. Query with requires response = true and requires manual close = false.", new string[] {
                         "PB-US12940-06C"});
-#line 943
+#line 949
 this.ScenarioSetup(scenarioInfo);
-#line 6
+#line 12
 this.FeatureBackground();
 #line hidden
             TechTalk.SpecFlow.Table table167 = new TechTalk.SpecFlow.Table(new string[] {
@@ -2954,9 +2954,9 @@ this.FeatureBackground();
             table167.AddRow(new string[] {
                         "Subject ID",
                         "SUB {Var(num1)}"});
-#line 945
+#line 951
     testRunner.And("I create a Subject", ((string)(null)), table167);
-#line 950
+#line 956
  testRunner.And("I select Form \"Form 6\"");
 #line hidden
             TechTalk.SpecFlow.Table table168 = new TechTalk.SpecFlow.Table(new string[] {
@@ -2971,9 +2971,9 @@ this.FeatureBackground();
             table168.AddRow(new string[] {
                         "Log Field 9",
                         "data9"});
-#line 951
+#line 957
  testRunner.And("I enter data in CRF and save", ((string)(null)), table168);
-#line 956
+#line 962
  testRunner.And("I open log line 1");
 #line hidden
             TechTalk.SpecFlow.Table table169 = new TechTalk.SpecFlow.Table(new string[] {
@@ -2986,20 +2986,20 @@ this.FeatureBackground();
                         "Answer must be provided. Please review.",
                         "false",
                         "false"});
-#line 957
+#line 963
  testRunner.And("I verify Query is displayed", ((string)(null)), table169);
-#line 960
+#line 966
  testRunner.And("I take a screenshot");
-#line 961
+#line 967
  testRunner.And("I cancel the Query \"Answer must be provided. Please review.\" on Field \"Log Field " +
                     "9\"");
-#line 962
+#line 968
  testRunner.And("I save the CRF page");
-#line 963
+#line 969
  testRunner.And("I open log line 1");
-#line 964
+#line 970
  testRunner.And("I click audit on Field \"Log Field 9\"");
-#line 965
+#line 971
  testRunner.And("I take a screenshot");
 #line hidden
             TechTalk.SpecFlow.Table table170 = new TechTalk.SpecFlow.Table(new string[] {
@@ -3008,11 +3008,11 @@ this.FeatureBackground();
             table170.AddRow(new string[] {
                         "Query Canceled",
                         "Answer must be provided. Please review."});
-#line 966
+#line 972
  testRunner.And("I verify Audits exist", ((string)(null)), table170);
-#line 969
+#line 975
  testRunner.And("I select Form \"Form 6\" in \"Header\"");
-#line 970
+#line 976
  testRunner.And("I open log line 1");
 #line hidden
             TechTalk.SpecFlow.Table table171 = new TechTalk.SpecFlow.Table(new string[] {
@@ -3021,9 +3021,9 @@ this.FeatureBackground();
             table171.AddRow(new string[] {
                         "Log Field 7",
                         "data7"});
-#line 971
+#line 977
  testRunner.And("I enter data in CRF and save", ((string)(null)), table171);
-#line 974
+#line 980
  testRunner.And("I open log line 1");
 #line hidden
             TechTalk.SpecFlow.Table table172 = new TechTalk.SpecFlow.Table(new string[] {
@@ -3036,9 +3036,9 @@ this.FeatureBackground();
                         "Answer must be provided. Please review.",
                         "false",
                         "false"});
-#line 975
+#line 981
  testRunner.And("I verify Query is not displayed", ((string)(null)), table172);
-#line 978
+#line 984
  testRunner.And("I take a screenshot");
 #line hidden
             TechTalk.SpecFlow.Table table173 = new TechTalk.SpecFlow.Table(new string[] {
@@ -3047,9 +3047,9 @@ this.FeatureBackground();
             table173.AddRow(new string[] {
                         "Log Field 7",
                         ""});
-#line 979
+#line 985
  testRunner.When("I enter data in CRF and save", ((string)(null)), table173);
-#line 982
+#line 988
  testRunner.And("I open log line 1");
 #line hidden
             TechTalk.SpecFlow.Table table174 = new TechTalk.SpecFlow.Table(new string[] {
@@ -3062,9 +3062,9 @@ this.FeatureBackground();
                         "Answer must be provided. Please review.",
                         "false",
                         "false"});
-#line 983
+#line 989
  testRunner.Then("I verify Query is not displayed", ((string)(null)), table174);
-#line 986
+#line 992
  testRunner.And("I take a screenshot");
 #line hidden
             this.ScenarioCleanup();
@@ -3077,9 +3077,9 @@ this.FeatureBackground();
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo(@"PB-US12940-06D As an EDC user, when I entered bad data in log field A and log field B that resulted in the system opening a query on log field B, and I canceled the query, and I entered good data in log field A, if I then entered the same bad data in log field A as when the query was canceled, then the system should not refire a query on log field B. Query with requires response = false and requires manual close = true.", new string[] {
                         "PB-US12940-06D"});
-#line 989
+#line 995
 this.ScenarioSetup(scenarioInfo);
-#line 6
+#line 12
 this.FeatureBackground();
 #line hidden
             TechTalk.SpecFlow.Table table175 = new TechTalk.SpecFlow.Table(new string[] {
@@ -3094,9 +3094,9 @@ this.FeatureBackground();
             table175.AddRow(new string[] {
                         "Subject ID",
                         "SUB {Var(num1)}"});
-#line 991
+#line 997
  testRunner.And("I create a Subject", ((string)(null)), table175);
-#line 996
+#line 1002
  testRunner.And("I select Form \"Form 6\"");
 #line hidden
             TechTalk.SpecFlow.Table table176 = new TechTalk.SpecFlow.Table(new string[] {
@@ -3111,9 +3111,9 @@ this.FeatureBackground();
             table176.AddRow(new string[] {
                         "Log Field 12",
                         "data12"});
-#line 997
+#line 1003
  testRunner.And("I enter data in CRF and save", ((string)(null)), table176);
-#line 1002
+#line 1008
  testRunner.And("I open log line 1");
 #line hidden
             TechTalk.SpecFlow.Table table177 = new TechTalk.SpecFlow.Table(new string[] {
@@ -3126,20 +3126,20 @@ this.FeatureBackground();
                         "Answer must be provided. Please review.",
                         "false",
                         "false"});
-#line 1003
+#line 1009
  testRunner.And("I verify Query is displayed", ((string)(null)), table177);
-#line 1006
+#line 1012
  testRunner.And("I take a screenshot");
-#line 1007
+#line 1013
  testRunner.And("I cancel the Query \"Answer must be provided. Please review.\" on Field \"Log Field " +
                     "12\"");
-#line 1008
+#line 1014
  testRunner.And("I save the CRF page");
-#line 1009
+#line 1015
  testRunner.And("I open log line 1");
-#line 1010
+#line 1016
  testRunner.And("I click audit on Field \"Log Field 12\"");
-#line 1011
+#line 1017
  testRunner.And("I take a screenshot");
 #line hidden
             TechTalk.SpecFlow.Table table178 = new TechTalk.SpecFlow.Table(new string[] {
@@ -3148,11 +3148,11 @@ this.FeatureBackground();
             table178.AddRow(new string[] {
                         "Query Canceled",
                         "Answer must be provided. Please review."});
-#line 1012
+#line 1018
  testRunner.And("I verify Audits exist", ((string)(null)), table178);
-#line 1015
+#line 1021
  testRunner.And("I select Form \"Form 6\" in \"Header\"");
-#line 1016
+#line 1022
  testRunner.And("I open log line 1");
 #line hidden
             TechTalk.SpecFlow.Table table179 = new TechTalk.SpecFlow.Table(new string[] {
@@ -3161,9 +3161,9 @@ this.FeatureBackground();
             table179.AddRow(new string[] {
                         "Log Field 10",
                         "data10"});
-#line 1017
+#line 1023
  testRunner.And("I enter data in CRF and save", ((string)(null)), table179);
-#line 1020
+#line 1026
  testRunner.And("I open log line 1");
 #line hidden
             TechTalk.SpecFlow.Table table180 = new TechTalk.SpecFlow.Table(new string[] {
@@ -3176,9 +3176,9 @@ this.FeatureBackground();
                         "Answer must be provided. Please review.",
                         "false",
                         "false"});
-#line 1021
+#line 1027
     testRunner.And("I verify Query is not displayed", ((string)(null)), table180);
-#line 1024
+#line 1030
  testRunner.And("I take a screenshot");
 #line hidden
             TechTalk.SpecFlow.Table table181 = new TechTalk.SpecFlow.Table(new string[] {
@@ -3187,9 +3187,9 @@ this.FeatureBackground();
             table181.AddRow(new string[] {
                         "Log Field 10",
                         ""});
-#line 1025
+#line 1031
  testRunner.When("I enter data in CRF and save", ((string)(null)), table181);
-#line 1028
+#line 1034
  testRunner.And("I open log line 1");
 #line hidden
             TechTalk.SpecFlow.Table table182 = new TechTalk.SpecFlow.Table(new string[] {
@@ -3202,9 +3202,9 @@ this.FeatureBackground();
                         "Answer must be provided. Please review.",
                         "false",
                         "false"});
-#line 1029
+#line 1035
  testRunner.Then("I verify Query is not displayed", ((string)(null)), table182);
-#line 1032
+#line 1038
  testRunner.And("I take a screenshot");
 #line hidden
             this.ScenarioCleanup();
@@ -3217,9 +3217,9 @@ this.FeatureBackground();
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo(@"PB-US12940-07A As an EDC user, when I entered bad data in field A and log field B that resulted in the system opening a query on log field B, and I canceled the query, and I entered good data in log field B, if I then entered the same bad data in log field B as when the query was canceled, then the system should not refire a query on log field B. Query with requires response = true and requires manual close = true.", new string[] {
                         "PB-US12940-07A"});
-#line 1035
+#line 1041
 this.ScenarioSetup(scenarioInfo);
-#line 6
+#line 12
 this.FeatureBackground();
 #line hidden
             TechTalk.SpecFlow.Table table183 = new TechTalk.SpecFlow.Table(new string[] {
@@ -3234,9 +3234,9 @@ this.FeatureBackground();
             table183.AddRow(new string[] {
                         "Subject ID",
                         "SUB {Var(num1)}"});
-#line 1037
+#line 1043
     testRunner.And("I create a Subject", ((string)(null)), table183);
-#line 1042
+#line 1048
  testRunner.And("I select Form \"Form 6\"");
 #line hidden
             TechTalk.SpecFlow.Table table184 = new TechTalk.SpecFlow.Table(new string[] {
@@ -3251,9 +3251,9 @@ this.FeatureBackground();
             table184.AddRow(new string[] {
                         "Log Field 3",
                         ""});
-#line 1043
+#line 1049
  testRunner.And("I enter data in CRF and save", ((string)(null)), table184);
-#line 1048
+#line 1054
  testRunner.And("I open log line 1");
 #line hidden
             TechTalk.SpecFlow.Table table185 = new TechTalk.SpecFlow.Table(new string[] {
@@ -3266,20 +3266,20 @@ this.FeatureBackground();
                         "Answer must be provided. Please review.",
                         "false",
                         "false"});
-#line 1049
+#line 1055
  testRunner.And("I verify Query is displayed", ((string)(null)), table185);
-#line 1052
+#line 1058
  testRunner.And("I take a screenshot");
-#line 1053
+#line 1059
  testRunner.And("I cancel the Query \"Answer must be provided. Please review.\" on Field \"Log Field " +
                     "3\"");
-#line 1054
+#line 1060
  testRunner.And("I save the CRF page");
-#line 1055
+#line 1061
  testRunner.And("I open log line 1");
-#line 1056
+#line 1062
  testRunner.And("I click audit on Field \"Log Field 3\"");
-#line 1057
+#line 1063
  testRunner.And("I take a screenshot");
 #line hidden
             TechTalk.SpecFlow.Table table186 = new TechTalk.SpecFlow.Table(new string[] {
@@ -3288,11 +3288,11 @@ this.FeatureBackground();
             table186.AddRow(new string[] {
                         "Query Canceled",
                         "Answer must be provided. Please review."});
-#line 1058
- testRunner.And("I verify Audits exist", ((string)(null)), table186);
-#line 1061
- testRunner.And("I select Form \"Form 6\" in \"Header\"");
 #line 1064
+ testRunner.And("I verify Audits exist", ((string)(null)), table186);
+#line 1067
+ testRunner.And("I select Form \"Form 6\" in \"Header\"");
+#line 1070
  testRunner.And("I open log line 1");
 #line hidden
             TechTalk.SpecFlow.Table table187 = new TechTalk.SpecFlow.Table(new string[] {
@@ -3301,9 +3301,9 @@ this.FeatureBackground();
             table187.AddRow(new string[] {
                         "Log Field 3",
                         "data3"});
-#line 1065
+#line 1071
  testRunner.And("I enter data in CRF and save", ((string)(null)), table187);
-#line 1068
+#line 1074
  testRunner.And("I open log line 1");
 #line hidden
             TechTalk.SpecFlow.Table table188 = new TechTalk.SpecFlow.Table(new string[] {
@@ -3316,9 +3316,9 @@ this.FeatureBackground();
                         "Answer must be provided. Please review.",
                         "false",
                         "false"});
-#line 1069
+#line 1075
  testRunner.And("I verify Query is not displayed", ((string)(null)), table188);
-#line 1072
+#line 1078
  testRunner.And("I take a screenshot");
 #line hidden
             TechTalk.SpecFlow.Table table189 = new TechTalk.SpecFlow.Table(new string[] {
@@ -3327,9 +3327,9 @@ this.FeatureBackground();
             table189.AddRow(new string[] {
                         "Log Field 3",
                         ""});
-#line 1073
+#line 1079
  testRunner.When("I enter data in CRF and save", ((string)(null)), table189);
-#line 1076
+#line 1082
  testRunner.And("I open log line 1");
 #line hidden
             TechTalk.SpecFlow.Table table190 = new TechTalk.SpecFlow.Table(new string[] {
@@ -3342,9 +3342,9 @@ this.FeatureBackground();
                         "Answer must be provided. Please review.",
                         "false",
                         "false"});
-#line 1077
+#line 1083
  testRunner.Then("I verify Query is not displayed", ((string)(null)), table190);
-#line 1080
+#line 1086
  testRunner.And("I take a screenshot");
 #line hidden
             this.ScenarioCleanup();
@@ -3357,9 +3357,9 @@ this.FeatureBackground();
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo(@"PB-US12940-07B As an EDC user, when I entered bad data in field A and log field B that resulted in the system opening a query on log field B, and I canceled the query, and I entered good data in log field B, if I then entered the same bad data in log field B as when the query was canceled, then the system should not refire a query on log field B. Query with requires response = false and requires manual close = false.", new string[] {
                         "PB-US12940-07B"});
-#line 1083
+#line 1089
 this.ScenarioSetup(scenarioInfo);
-#line 6
+#line 12
 this.FeatureBackground();
 #line hidden
             TechTalk.SpecFlow.Table table191 = new TechTalk.SpecFlow.Table(new string[] {
@@ -3374,9 +3374,9 @@ this.FeatureBackground();
             table191.AddRow(new string[] {
                         "Subject ID",
                         "SUB {Var(num1)}"});
-#line 1085
+#line 1091
     testRunner.And("I create a Subject", ((string)(null)), table191);
-#line 1090
+#line 1096
  testRunner.And("I select Form \"Form 6\"");
 #line hidden
             TechTalk.SpecFlow.Table table192 = new TechTalk.SpecFlow.Table(new string[] {
@@ -3391,9 +3391,9 @@ this.FeatureBackground();
             table192.AddRow(new string[] {
                         "Log Field 6",
                         ""});
-#line 1091
+#line 1097
  testRunner.And("I enter data in CRF and save", ((string)(null)), table192);
-#line 1096
+#line 1102
  testRunner.And("I open log line 1");
 #line hidden
             TechTalk.SpecFlow.Table table193 = new TechTalk.SpecFlow.Table(new string[] {
@@ -3406,20 +3406,20 @@ this.FeatureBackground();
                         "Answer must be provided. Please review.",
                         "false",
                         "false"});
-#line 1097
+#line 1103
     testRunner.And("I verify Query is displayed", ((string)(null)), table193);
-#line 1100
+#line 1106
  testRunner.And("I take a screenshot");
-#line 1101
+#line 1107
  testRunner.And("I cancel the Query \"Answer must be provided. Please review.\" on Field \"Log Field " +
                     "6\"");
-#line 1102
+#line 1108
  testRunner.And("I save the CRF page");
-#line 1103
+#line 1109
  testRunner.And("I open log line 1");
-#line 1104
+#line 1110
  testRunner.And("I click audit on Field \"Log Field 6\"");
-#line 1105
+#line 1111
  testRunner.And("I take a screenshot");
 #line hidden
             TechTalk.SpecFlow.Table table194 = new TechTalk.SpecFlow.Table(new string[] {
@@ -3428,11 +3428,11 @@ this.FeatureBackground();
             table194.AddRow(new string[] {
                         "Query Canceled",
                         "Answer must be provided. Please review."});
-#line 1106
+#line 1112
  testRunner.And("I verify Audits exist", ((string)(null)), table194);
-#line 1109
+#line 1115
  testRunner.And("I select Form \"Form 6\" in \"Header\"");
-#line 1110
+#line 1116
  testRunner.And("I open log line 1");
 #line hidden
             TechTalk.SpecFlow.Table table195 = new TechTalk.SpecFlow.Table(new string[] {
@@ -3441,9 +3441,9 @@ this.FeatureBackground();
             table195.AddRow(new string[] {
                         "Log Field 6",
                         "data6"});
-#line 1111
+#line 1117
  testRunner.And("I enter data in CRF and save", ((string)(null)), table195);
-#line 1114
+#line 1120
  testRunner.And("I open log line 1");
 #line hidden
             TechTalk.SpecFlow.Table table196 = new TechTalk.SpecFlow.Table(new string[] {
@@ -3456,9 +3456,9 @@ this.FeatureBackground();
                         "Answer must be provided. Please review.",
                         "false",
                         "false"});
-#line 1115
+#line 1121
     testRunner.And("I verify Query is not displayed", ((string)(null)), table196);
-#line 1118
+#line 1124
  testRunner.And("I take a screenshot");
 #line hidden
             TechTalk.SpecFlow.Table table197 = new TechTalk.SpecFlow.Table(new string[] {
@@ -3467,9 +3467,9 @@ this.FeatureBackground();
             table197.AddRow(new string[] {
                         "Log Field 6",
                         ""});
-#line 1119
+#line 1125
  testRunner.When("I enter data in CRF and save", ((string)(null)), table197);
-#line 1122
+#line 1128
  testRunner.And("I open log line 1");
 #line hidden
             TechTalk.SpecFlow.Table table198 = new TechTalk.SpecFlow.Table(new string[] {
@@ -3482,9 +3482,9 @@ this.FeatureBackground();
                         "Answer must be provided. Please review.",
                         "false",
                         "false"});
-#line 1123
+#line 1129
  testRunner.Then("I verify Query is not displayed", ((string)(null)), table198);
-#line 1126
+#line 1132
  testRunner.And("I take a screenshot");
 #line hidden
             this.ScenarioCleanup();
@@ -3497,9 +3497,9 @@ this.FeatureBackground();
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo(@"PB-US12940-07C As an EDC user, when I entered bad data in field A and log field B that resulted in the system opening a query on log field B, and I canceled the query, and I entered good data in log field B, if I then entered the same bad data in log field B as when the query was canceled, then the system should not refire a query on log field B. Query with requires response = true and requires manual close = false.", new string[] {
                         "PB-US12940-07C"});
-#line 1129
+#line 1135
 this.ScenarioSetup(scenarioInfo);
-#line 6
+#line 12
 this.FeatureBackground();
 #line hidden
             TechTalk.SpecFlow.Table table199 = new TechTalk.SpecFlow.Table(new string[] {
@@ -3514,9 +3514,9 @@ this.FeatureBackground();
             table199.AddRow(new string[] {
                         "Subject ID",
                         "SUB {Var(num1)}"});
-#line 1131
+#line 1137
     testRunner.And("I create a Subject", ((string)(null)), table199);
-#line 1136
+#line 1142
  testRunner.And("I select Form \"Form 6\"");
 #line hidden
             TechTalk.SpecFlow.Table table200 = new TechTalk.SpecFlow.Table(new string[] {
@@ -3531,9 +3531,9 @@ this.FeatureBackground();
             table200.AddRow(new string[] {
                         "Log Field 9",
                         ""});
-#line 1137
+#line 1143
  testRunner.And("I enter data in CRF and save", ((string)(null)), table200);
-#line 1142
+#line 1148
  testRunner.And("I open log line 1");
 #line hidden
             TechTalk.SpecFlow.Table table201 = new TechTalk.SpecFlow.Table(new string[] {
@@ -3546,20 +3546,20 @@ this.FeatureBackground();
                         "Answer must be provided. Please review.",
                         "false",
                         "false"});
-#line 1143
+#line 1149
  testRunner.And("I verify Query is displayed", ((string)(null)), table201);
-#line 1146
+#line 1152
  testRunner.And("I take a screenshot");
-#line 1147
+#line 1153
  testRunner.And("I cancel the Query \"Answer must be provided. Please review.\" on Field \"Log Field " +
                     "9\"");
-#line 1148
+#line 1154
  testRunner.And("I save the CRF page");
-#line 1149
+#line 1155
  testRunner.And("I open log line 1");
-#line 1150
+#line 1156
  testRunner.And("I click audit on Field \"Log Field 9\"");
-#line 1151
+#line 1157
  testRunner.And("I take a screenshot");
 #line hidden
             TechTalk.SpecFlow.Table table202 = new TechTalk.SpecFlow.Table(new string[] {
@@ -3568,11 +3568,11 @@ this.FeatureBackground();
             table202.AddRow(new string[] {
                         "Query Canceled",
                         "Answer must be provided. Please review."});
-#line 1152
+#line 1158
  testRunner.And("I verify Audits exist", ((string)(null)), table202);
-#line 1155
+#line 1161
  testRunner.And("I select Form \"Form 6\" in \"Header\"");
-#line 1156
+#line 1162
  testRunner.And("I open log line 1");
 #line hidden
             TechTalk.SpecFlow.Table table203 = new TechTalk.SpecFlow.Table(new string[] {
@@ -3581,9 +3581,9 @@ this.FeatureBackground();
             table203.AddRow(new string[] {
                         "Log Field 9",
                         "data9"});
-#line 1157
+#line 1163
  testRunner.And("I enter data in CRF and save", ((string)(null)), table203);
-#line 1160
+#line 1166
  testRunner.And("I open log line 1");
 #line hidden
             TechTalk.SpecFlow.Table table204 = new TechTalk.SpecFlow.Table(new string[] {
@@ -3596,9 +3596,9 @@ this.FeatureBackground();
                         "Answer must be provided. Please review.",
                         "false",
                         "false"});
-#line 1161
+#line 1167
  testRunner.And("I verify Query is not displayed", ((string)(null)), table204);
-#line 1164
+#line 1170
  testRunner.And("I take a screenshot");
 #line hidden
             TechTalk.SpecFlow.Table table205 = new TechTalk.SpecFlow.Table(new string[] {
@@ -3607,9 +3607,9 @@ this.FeatureBackground();
             table205.AddRow(new string[] {
                         "Log Field 9",
                         ""});
-#line 1165
+#line 1171
  testRunner.When("I enter data in CRF and save", ((string)(null)), table205);
-#line 1168
+#line 1174
  testRunner.And("I open log line 1");
 #line hidden
             TechTalk.SpecFlow.Table table206 = new TechTalk.SpecFlow.Table(new string[] {
@@ -3622,9 +3622,9 @@ this.FeatureBackground();
                         "Answer must be provided. Please review.",
                         "false",
                         "false"});
-#line 1169
+#line 1175
  testRunner.Then("I verify Query is not displayed", ((string)(null)), table206);
-#line 1172
+#line 1178
  testRunner.And("I take a screenshot");
 #line hidden
             this.ScenarioCleanup();
@@ -3637,9 +3637,9 @@ this.FeatureBackground();
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo(@"PB-US12940-07D As an EDC user, when I entered bad data in field A and log field B that resulted in the system opening a query on log field B, and I canceled the query, and I entered good data in log field B, if I then entered the same bad data in log field B as when the query was canceled, then the system should not refire a query on log field B. Query with requires response = false and requires manual close = true.", new string[] {
                         "PB-US12940-07D"});
-#line 1175
+#line 1181
 this.ScenarioSetup(scenarioInfo);
-#line 6
+#line 12
 this.FeatureBackground();
 #line hidden
             TechTalk.SpecFlow.Table table207 = new TechTalk.SpecFlow.Table(new string[] {
@@ -3654,9 +3654,9 @@ this.FeatureBackground();
             table207.AddRow(new string[] {
                         "Subject ID",
                         "SUB {Var(num1)}"});
-#line 1177
+#line 1183
  testRunner.And("I create a Subject", ((string)(null)), table207);
-#line 1182
+#line 1188
  testRunner.And("I select Form \"Form 6\"");
 #line hidden
             TechTalk.SpecFlow.Table table208 = new TechTalk.SpecFlow.Table(new string[] {
@@ -3671,9 +3671,9 @@ this.FeatureBackground();
             table208.AddRow(new string[] {
                         "Log Field 12",
                         ""});
-#line 1183
+#line 1189
  testRunner.And("I enter data in CRF and save", ((string)(null)), table208);
-#line 1188
+#line 1194
  testRunner.And("I open log line 1");
 #line hidden
             TechTalk.SpecFlow.Table table209 = new TechTalk.SpecFlow.Table(new string[] {
@@ -3686,20 +3686,20 @@ this.FeatureBackground();
                         "Answer must be provided. Please review.",
                         "false",
                         "false"});
-#line 1189
+#line 1195
     testRunner.And("I verify Query is displayed", ((string)(null)), table209);
-#line 1192
+#line 1198
  testRunner.And("I take a screenshot");
-#line 1193
+#line 1199
  testRunner.And("I cancel the Query \"Answer must be provided. Please review.\" on Field \"Log Field " +
                     "12\"");
-#line 1194
+#line 1200
  testRunner.And("I save the CRF page");
-#line 1195
+#line 1201
  testRunner.And("I open log line 1");
-#line 1196
+#line 1202
  testRunner.And("I click audit on Field \"Log Field 12\"");
-#line 1197
+#line 1203
  testRunner.And("I take a screenshot");
 #line hidden
             TechTalk.SpecFlow.Table table210 = new TechTalk.SpecFlow.Table(new string[] {
@@ -3708,11 +3708,11 @@ this.FeatureBackground();
             table210.AddRow(new string[] {
                         "Query Canceled",
                         "Answer must be provided. Please review."});
-#line 1198
+#line 1204
  testRunner.And("I verify Audits exist", ((string)(null)), table210);
-#line 1201
+#line 1207
  testRunner.And("I select Form \"Form 6\" in \"Header\"");
-#line 1202
+#line 1208
  testRunner.And("I open log line 1");
 #line hidden
             TechTalk.SpecFlow.Table table211 = new TechTalk.SpecFlow.Table(new string[] {
@@ -3721,9 +3721,9 @@ this.FeatureBackground();
             table211.AddRow(new string[] {
                         "Log Field 12",
                         "data12"});
-#line 1203
+#line 1209
  testRunner.And("I enter data in CRF and save", ((string)(null)), table211);
-#line 1206
+#line 1212
  testRunner.And("I open log line 1");
 #line hidden
             TechTalk.SpecFlow.Table table212 = new TechTalk.SpecFlow.Table(new string[] {
@@ -3736,9 +3736,9 @@ this.FeatureBackground();
                         "Answer must be provided. Please review.",
                         "false",
                         "false"});
-#line 1207
+#line 1213
     testRunner.And("I verify Query is not displayed", ((string)(null)), table212);
-#line 1210
+#line 1216
  testRunner.And("I take a screenshot");
 #line hidden
             TechTalk.SpecFlow.Table table213 = new TechTalk.SpecFlow.Table(new string[] {
@@ -3747,9 +3747,9 @@ this.FeatureBackground();
             table213.AddRow(new string[] {
                         "Log Field 12",
                         ""});
-#line 1211
+#line 1217
  testRunner.When("I enter data in CRF and save", ((string)(null)), table213);
-#line 1214
+#line 1220
  testRunner.And("I open log line 1");
 #line hidden
             TechTalk.SpecFlow.Table table214 = new TechTalk.SpecFlow.Table(new string[] {
@@ -3762,9 +3762,9 @@ this.FeatureBackground();
                         "Answer must be provided. Please review.",
                         "false",
                         "false"});
-#line 1215
+#line 1221
  testRunner.Then("I verify Query is not displayed", ((string)(null)), table214);
-#line 1218
+#line 1224
  testRunner.And("I take a screenshot");
 #line hidden
             this.ScenarioCleanup();
