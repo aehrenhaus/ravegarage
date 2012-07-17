@@ -79,7 +79,6 @@ Scenario: PB_1.1.1 As an EDC user, On a Cross Forms - Standard form to log form,
 	And I verify closed Query with message "'Date Informed Consent Signed' is greater. Please revise." is displayed on Field "Start Date"
 	And I verify closed Query with message "Informed Consent 'Current Distribution Number' is not equal to Concomitant Medications 'Current Axis Number'." is displayed on Field "Current Axis Number"
 	And I take a screenshot
-
  
 #----------------------------------------------------------------------------------------------------------------------------------------	
 @release_564_Patch11
@@ -130,7 +129,8 @@ Scenario: PB_1.1.2 As an EDC user, On a Cross Forms - Standard form to log form,
 @release_564_Patch11
 @PB_1.2.1
 @Draft
-Scenario: PB_1.2.1 As an EDC user, On a Cross Folders, Standard form to log form. Folder "Screening" enter and save data on form "Informed Consent" Folder "Week 1" enter and save data on form "Concomitant Medications"
+Scenario: PB_1.2.1 As an EDC user, On a Cross Folders, Standard form to log form. when a query has been answered and closed with the same data and I enter the same data that originally opened the query, then queries are not displayed.
+#Folder "Screening" enter and save data on form "Informed Consent" Folder "Week 1" enter and save data on form "Concomitant Medications"
 	
 	Given I select Study "Edit Check Study 3" and Site "Edit Check Site 1"
     And I create a Subject
@@ -194,7 +194,7 @@ Scenario: PB_1.2.1 As an EDC user, On a Cross Folders, Standard form to log form
 @release_564_Patch11
 @PB_1.2.2
 @Draft
-Scenario: PB_1.2.2 As an EDC user,
+Scenario: PB_1.2.2 As an EDC user, On a Cross Folders, Standard form to log form. when a query has been answered and closed with the same data and I enter the same data that originally opened the query, then queries are displayed.
 
 	Given I select Study "Edit Check Study 3" and Site "Edit Check Site 1"
 	And I select a Subject "SUB{Var(num1)}"
@@ -235,15 +235,16 @@ Scenario: PB_1.2.2 As an EDC user,
 		| Start Date           | 08 Jan 2000 |
 		| Original Axis Number | 100         |
 		| Current Axis Number  | 98          |
-	Then I verify Requires Response Query with message "'Date Informed Consent Signed' can not be greater than." is displayed on Field "Start Date"
-	And I verify Requires Response Query with message "'Current Distribution Number' is not equal 'Current Axis Number'." is displayed on Field "Current Axis Number"	
+	Then I verify Not Requires Response Query with message "'Date Informed Consent Signed' can not be greater than." is displayed on Field "Start Date"
+	And I verify Not Requires Response Query with message "'Current Distribution Number' is not equal 'Current Axis Number'." is displayed on Field "Current Axis Number"	
 	And I take a screenshot
 
 #----------------------------------------------------------------------------------------------------------------------------------------	
 @release_564_Patch11
 @PB_1.3.1
 @Draft
-Scenario: PB_1.3.1 As an EDC user, on a Cross Forms log form to Standard form Folder "Week 1" enter and save data on forms "Concomitant Medications" and "Informed Consent"
+Scenario: PB_1.3.1 As an EDC user, on a Cross Forms log form to Standard form, when a query has been answered and closed with the same data and I enter the same data that originally opened the query, then queries are not displayed.
+#Folder "Week 1" enter and save data on forms "Concomitant Medications" and "Informed Consent"
 
  	Given I select Study "Edit Check Study 3" and Site "Edit Check Site 1" 
     And I create a Subject
@@ -298,7 +299,7 @@ Scenario: PB_1.3.1 As an EDC user, on a Cross Forms log form to Standard form Fo
 @release_564_Patch11
 @PB_1.3.2
 @Draft
-Scenario: PB_1.3.2 As an EDC user,
+Scenario: PB_1.3.2 As an EDC user, on a Cross Forms log form to Standard form, when a query has been answered and closed with the different data and I enter the same data that originally opened the query, then queries are displayed.
 
 	Given I select Study "Edit Check Study 3" and Site "Edit Check Site 1"
 	And I select a Subject "SUB{Var(num1)}"
@@ -336,15 +337,15 @@ Scenario: PB_1.3.2 As an EDC user,
 		| End Date            | 14 Feb 2000 |
 		| Current Axis Number | 2000        |
 	And I open log line 2
-	Then I verify Requires Response Query with message "Start Date can not be greater than End Date." is displayed on Field "End Date"
-	And I verify Requires Response Query with message "Original Axis Number' is Less Than 'Current Axis Number' on first Number field." is displayed on Field "Current Axis Number"
+	Then I verify Not Requires Response Query with message "Start Date can not be greater than End Date." is displayed on Field "End Date"
+	And I verify Not Requires Response Query with message "Original Axis Number' is Less Than 'Current Axis Number' on first Number field." is displayed on Field "Current Axis Number"
 	And I take a screenshot
 	 
 #----------------------------------------------------------------------------------------------------------------------------------------	
 @release_564_Patch11
 @PB_1.3.3
 @Draft
-Scenario: PB_1.3.3 As an EDC user,
+Scenario: PB_1.3.3 As an EDC user, on a Cross Forms log form to Standard form, when a query has been answered and closed with the different data and I enter the same data that originally opened the query, then queries are displayed.
 
 	Given I select Study "Edit Check Study 3" and Site "Edit Check Site 1"
 	And I select a Subject "SUB{Var(num1)}"
@@ -380,6 +381,7 @@ Scenario: PB_1.3.3 As an EDC user,
 	    | End Date                    | 11 Jan 2000 |
 	    | Current Distribution Number | 101         |
 	And I save the CRF page
+#Investigate for 2nd Query Message
 	Then I verify Requires Response Query with message "'Date Informed Consent Signed' is not equal to Current Date." is displayed on Field "End Date"
 	And I verify Requires Response Query with message "Original Distribution Number' and 'Current Distribution Number' fields are not equal." is displayed on Field "Current Distribution Number"
 	And I take a screenshot
@@ -388,7 +390,8 @@ Scenario: PB_1.3.3 As an EDC user,
 @release_564_Patch11
 @PB_1.4.1
 @Draft
-Scenario: PB_1.4.1 As an EDC user, On a Cross Forms log form to log form, Folder "Screening" enter and save data on forms "Concomitant Medications" and "Adverse Events"
+Scenario: PB_1.4.1 As an EDC user, On a Cross Forms log form to log form, when a query has been answered and closed with the same data and I enter the same data that originally opened the query, then queries are not displayed.
+#Folder "Screening" enter and save data on forms "Concomitant Medications" and "Adverse Events"
 
 	Given I select Study "Edit Check Study 3" and Site "Edit Check Site 1"			  
     And I create a Subject
@@ -462,7 +465,7 @@ Scenario: PB_1.4.1 As an EDC user, On a Cross Forms log form to log form, Folder
 @release_564_Patch11
 @PB_1.4.2
 @Draft
-Scenario: PB_1.4.2 As an EDC user,  
+Scenario: PB_1.4.2 As an EDC user, On a Cross Forms log form to log form, when a query has been answered and closed with the different data and I enter the same data that originally opened the query, then queries are displayed.  
 
 	Given I select Study "Edit Check Study 3" and Site "Edit Check Site 1"
 	And I select a Subject "SUB{Var(num1)}"
@@ -525,6 +528,7 @@ Scenario: PB_1.4.2 As an EDC user,
 		| Current Axis Number  | 77          |
 	And I save the CRF page	
 	And I open log line 2
+#Double Query Verification
 	Then I verify Requires Response Query with message "Date can not be less than." is displayed on Field "Start Date"
 	And I verify Requires Response Query with message "Date is Less Than Date on the first log form." is displayed on Field "End Date"
 	And I verify Requires Response Query with message "'AE Number' is greater than or Equal to 'Original Axis Number' on Log." is displayed on Field "Original Axis Number"
@@ -535,7 +539,8 @@ Scenario: PB_1.4.2 As an EDC user,
 @release_564_Patch11
 @PB_1.5.1
 @Draft
-Scenario: PB_1.5.1 As an EDC user, Cross Forms - Standard form to log form. Folder "Screening" enter and save data on forms "Informed Consent" and "Concomitant Medications". Queries fired, Answer and  Manually close queries in log fields, Modify Standard form to different bad data, do not touch log form - query and no logs in the Database.
+Scenario: PB_1.5.1 As an EDC user, Cross Forms - Standard form to log form, when a query has been answered and closed with the same data and I enter the same data that originally opened the query, then queries are displayed.  
+#Folder "Screening" enter and save data on forms "Informed Consent" and "Concomitant Medications". Queries fired, Answer and  Manually close queries in log fields, Modify Standard form to different bad data, do not touch log form - query and no logs in the Database.
 
 	Given I select Study "Edit Check Study 3" and Site "Edit Check Site 1"	
     And I create a Subject
@@ -577,6 +582,7 @@ Scenario: PB_1.5.1 As an EDC user, Cross Forms - Standard form to log form. Fold
 
     When I select Form "Concomitant Medications"	
 	And I open log line 1
+#Investigate for Double Query Message
 	Then I verify Requires Response Query with message "'Date Informed Consent Signed' is greater. Please revise." is displayed on Field "Start Date"
     And I verify Requires Response Query with message "Informed Consent 'Current Distribution Number' is not equal to Concomitant Medications 'Current Axis Number'" is displayed on Field "Current Axis Number"
 	And I take a screenshot
@@ -585,8 +591,8 @@ Scenario: PB_1.5.1 As an EDC user, Cross Forms - Standard form to log form. Fold
 @release_564_Patch11
 @PB_1.6.1
 @Draft
-Scenario: PB_1.6.1 As an EDC user, On a Cross Forms, 
- Standard form to log form. Folder "Screening" enter and save data on forms "Informed Consent" and "Concomitant Medications". Queries fired, Cancel queries in log fields, Modify Standard form to different bad data, do not touch log form - query and no logs in the Database.
+Scenario: PB_1.6.1 As an EDC user, On a Cross Forms - Standard form to log form. when a query has been answered and closed with the same data and I enter the same data that originally opened the query, then queries are displayed. 
+#Folder "Screening" enter and save data on forms "Informed Consent" and "Concomitant Medications". Queries fired, Cancel queries in log fields, Modify Standard form to different bad data, do not touch log form - query and no logs in the Database.
 
 	Given I select Study "Edit Check Study 3" and Site "Edit Check Site 1"	
     And I create a Subject
@@ -632,7 +638,8 @@ Scenario: PB_1.6.1 As an EDC user, On a Cross Forms,
 @release_564_Patch11
 @PB_1.7.1
 @Draft
-Scenario: PB_1.7.1 As an EDC user, Cross Forms: log form to log form. Folder "Screening" enter and save data on forms "Concomitant Medications" and "Adverse Events". Queries fired, Answer and  Manually close queries in log fields (second log form), Modify log form (first log form) to different bad data, do not touch second log form - query and no logs in the Database.
+Scenario: PB_1.7.1 As an EDC user, Cross Forms - log form to log form, when a query has been answered and closed with the different data and I enter the same data that originally opened the query, then queries are displayed.  
+Folder "Screening" enter and save data on forms "Concomitant Medications" and "Adverse Events". Queries fired, Answer and  Manually close queries in log fields (second log form), Modify log form (first log form) to different bad data, do not touch second log form - query and no logs in the Database.
 
 	Given I select Study "Edit Check Study 3" and Site "Edit Check Site 1"			  
     And I create a Subject
@@ -679,6 +686,7 @@ Scenario: PB_1.7.1 As an EDC user, Cross Forms: log form to log form. Folder "Sc
 
 	When I select Form "Concomitant Medications"
 	And I open log line 1
+#Investigate for Double Query Message
 	Then I verify Requires Response Query with message "Date can not be less than." is displayed on Field "Start Date"
 	And I verify Requires Response Query with message "Date is Less Than Date on the first log form." is displayed on Field "End Date"
 	And I verify Requires Response Query with message "'AE Number' is greater than or Equal to 'Original Axis Number' on Log." is displayed on Field "Original Axis Number"
@@ -688,7 +696,8 @@ Scenario: PB_1.7.1 As an EDC user, Cross Forms: log form to log form. Folder "Sc
 @release_564_Patch11
 @PB_1.8.1
 @Draft
-Scenario: PB_1.8.1 As an EDC user, On a Cross Forms log form to log form. Folder "Screening" enter and save data on forms "Concomitant Medications" and "Adverse Events". Queries fired, cancel queries in log fields (second log form), Modify log form (first log form) to different bad data, do not touch second log form - query and no logs in the Database.
+Scenario: PB_1.8.1 As an EDC user, On a Cross Forms - log form to log form, when a query has been answered and closed with the different data and I enter the same data that originally opened the query, then queries are displayed.  
+#Folder "Screening" enter and save data on forms "Concomitant Medications" and "Adverse Events". Queries fired, cancel queries in log fields (second log form), Modify log form (first log form) to different bad data, do not touch second log form - query and no logs in the Database.
 	
 	Given I select Study "Edit Check Study 3" and Site "Edit Check Site 1"			  
     And I create a Subject
@@ -739,7 +748,8 @@ Scenario: PB_1.8.1 As an EDC user, On a Cross Forms log form to log form. Folder
 @release_564_Patch11
 @PB_1.9.1
 @Draft
-Scenario: PB_1.9.1 As an EDC user, On a Cross Forms Standard form to log form. Folder "Screening" enter and save data on forms "Informed Consent" and "Concomitant Medications". Queries fired, Answer and  Manually close queries in log fields, Modify log fields to different good data, do not touch standard form - no query and no log in the Database.
+Scenario: PB_1.9.1 As an EDC user, On a Cross Forms - Standard form to log form, when a query has been answered and closed with the different data and I enter the same data that originally opened the query, then queries are not displayed.  
+#Folder "Screening" enter and save data on forms "Informed Consent" and "Concomitant Medications". Queries fired, Answer and  Manually close queries in log fields, Modify log fields to different good data, do not touch standard form - no query and no log in the Database.
 
 	Given I select Study "Edit Check Study 3" and Site "Edit Check Site 1"	
     And I create a Subject
@@ -788,7 +798,8 @@ Scenario: PB_1.9.1 As an EDC user, On a Cross Forms Standard form to log form. F
 @release_564_Patch11
 @PB_1.10.1
 @Draft
-Scenario: PB_1.10.1 As an EDC user, Cross Forms: Standard form to log form. Folder "Screening" enter and save data on forms "Informed Consent" and "Concomitant Medications" Queries fired, Answer and  Manually close queries in log fields, Modify log fields to different bad data, do not touch standard form - query fires and no log in the Database.
+Scenario: PB_1.10.1 As an EDC user, Cross Forms: Standard form to log form, when a query has been answered and closed with the different data and I enter the same data that originally opened the query, then queries are displayed. 
+#Folder "Screening" enter and save data on forms "Informed Consent" and "Concomitant Medications" Queries fired, Answer and  Manually close queries in log fields, Modify log fields to different bad data, do not touch standard form - query fires and no log in the Database.
 
 	Given I select Study "Edit Check Study 3" and Site "Edit Check Site 1"	
     And I create a Subject
@@ -837,8 +848,8 @@ Scenario: PB_1.10.1 As an EDC user, Cross Forms: Standard form to log form. Fold
 @release_564_Patch11
 @PB_1.11.1
 @Draft
-Scenario: PB_1.11.1 As an EDC user, On a Cross Forms Standard form to log form, 
-Folder "Screening" enter and save data on forms "Informed Consent" and "Concomitant Medications" Queries fired on log form, Modify standard fields to different good data, new Data results in system close of edit check on log form - queries closed by system and no log in the Database.
+Scenario: PB_1.11.1 As an EDC user, On a Cross Forms Standard form to log form, when a query has been answered and closed with the different data and I enter the same data that originally opened the query, then queries are displayed.  
+#Folder "Screening" enter and save data on forms "Informed Consent" and "Concomitant Medications" Queries fired on log form, Modify standard fields to different good data, new Data results in system close of edit check on log form - queries closed by system and no log in the Database.
 
 	Given I select Study "Edit Check Study 3" and Site "Edit Check Site 1"	
     And I create a Subject
@@ -880,7 +891,8 @@ Folder "Screening" enter and save data on forms "Informed Consent" and "Concomit
 @release_564_Patch11
 @PB_1.12.1
 @Draft
-Scenario: PB_1.12.1 As an EDC user, On a Cross Forms Standard form to log form. Folder "Screening" enter and save data on forms "Informed Consent" and "Concomitant Medications". Queries fired on log form, Modify log fields to different good data, new value results in system close of edit check on log form - queries closed by system and no log in the Database.
+Scenario: PB_1.12.1 As an EDC user, On a Cross Forms - Standard form to log form, when a query has been answered and closed with the different data and I enter the same data that originally opened the query, then queries are displayed.  
+#Folder "Screening" enter and save data on forms "Informed Consent" and "Concomitant Medications". Queries fired on log form, Modify log fields to different good data, new value results in system close of edit check on log form - queries closed by system and no log in the Database.
 
 	Given I select Study "Edit Check Study 3" and Site "Edit Check Site 1"	
     And I create a Subject
@@ -920,7 +932,8 @@ Scenario: PB_1.12.1 As an EDC user, On a Cross Forms Standard form to log form. 
 @release_564_Patch11
 @PB_1.13.1
 @Draft
-Scenario: PB_1.13.1 As an EDC user, On a Cross Forms: Standard form to log form. Folder "Screening" enter and save data on forms "Informed Consent" and "Concomitant Medications". Queries fired on log form, Modify standard fields to different good data, new value results in system close of edit check on log form and update \new value on standard fields in violation of edit check on log form- queries refires on log form and no log in the Database.
+Scenario: PB_1.13.1 As an EDC user, On a Cross Forms - Standard form to log form, when a query has been answered and closed with the different data and I enter the same data that originally opened the query, then queries are displayed.  
+#Folder "Screening" enter and save data on forms "Informed Consent" and "Concomitant Medications". Queries fired on log form, Modify standard fields to different good data, new value results in system close of edit check on log form and update \new value on standard fields in violation of edit check on log form- queries refires on log form and no log in the Database.
 	
 	Given I select Study "Edit Check Study 3" and Site "Edit Check Site 1"
 	And I create a Subject
@@ -953,9 +966,9 @@ Scenario: PB_1.13.1 As an EDC user, On a Cross Forms: Standard form to log form.
 		| Current Distribution Number  | 20          |      
 	And I select Form "Concomitant Medications"
 	And I open log line 1
-#Investigate
-  	And I verify Query with message "'Date Informed Consent Signed' is greater. Please revise." is not displayed on Field "Start Date"
-	And I verify Query with message "Informed Consent 'Current Distribution Number' is not equal to Concomitant Medications 'Current Axis Number'." is not displayed on Field "Current Axis Number"
+#Investigate - Since Its not Closed -Fixed
+  	And I verify Query with message "'Date Informed Consent Signed' is greater. Please revise." is displayed on Field "Start Date"
+	And I verify Query with message "Informed Consent 'Current Distribution Number' is not equal to Concomitant Medications 'Current Axis Number'." is displayed on Field "Current Axis Number"
 	And I take a screenshot
 	And I select Form "Informed Consent"
 	And I enter data in CRF and save
@@ -973,7 +986,8 @@ Scenario: PB_1.13.1 As an EDC user, On a Cross Forms: Standard form to log form.
 @release_564_Patch11
 @PB_1.14.1
 @Draft
-Scenario: PB_1.14.1 As an EDC user, Cross Forms: Standard form to log form. Folder "Screening" enter and save data on forms "Informed Consent" and "Concomitant Medications". Queries fired on log form, Modify log fields to different good data, new value results in system close of edit check on log form and update new value on standard fields in violation of edit check on log form- queries refires on log form and no log in the Database.
+Scenario: PB_1.14.1 As an EDC user, Cross Forms - Standard form to log form, when a query has been answered and closed with the different data and I enter the same data that originally opened the query, then queries are displayed.  
+#Folder "Screening" enter and save data on forms "Informed Consent" and "Concomitant Medications". Queries fired on log form, Modify log fields to different good data, new value results in system close of edit check on log form and update new value on standard fields in violation of edit check on log form- queries refires on log form and no log in the Database.
 	
 	Given I select Study "Edit Check Study 3" and Site "Edit Check Site 1"
     And I create a Subject
@@ -1004,9 +1018,9 @@ Scenario: PB_1.14.1 As an EDC user, Cross Forms: Standard form to log form. Fold
 		| Start Date          | 09 Jan 2000 |
 		| Current Axis Number | 19          |	
 	And I open log line 1
-#Investigate
- 	And I verify Query with message "'Date Informed Consent Signed' is greater. Please revise." is not displayed on Field "Start Date"
-	And I verify Query with message "Informed Consent 'Current Distribution Number' is not equal to Concomitant Medications 'Current Axis Number'." is not displayed on Field "Current Axis Number"
+#Investigate - Since Its not Closed -Fixed
+ 	And I verify Query with message "'Date Informed Consent Signed' is greater. Please revise." is displayed on Field "Start Date"
+	And I verify Query with message "Informed Consent 'Current Distribution Number' is not equal to Concomitant Medications 'Current Axis Number'." is displayed on Field "Current Axis Number"
 	And I take a screenshot
 
 	And I select Form "Informed Consent"
@@ -1024,7 +1038,8 @@ Scenario: PB_1.14.1 As an EDC user, Cross Forms: Standard form to log form. Fold
 @release_564_Patch11
 @PB_1.15.1
 @Draft
-Scenario: PB_1.15.1 As an EDC user, On a Cross Forms log form to log form, Folder "Screening" enter and save data on forms "Concomitant Medications" and "Adverse Events". Queries fired, Answer and  Manually close queries on "Concomitant Medications" form, Modify log fields to different good data on "Adverse Events" form, do not touch "Concomitant Medications" form - no queries on "Concomitant Medications" and no log in the Database.
+Scenario: PB_1.15.1 As an EDC user, On a Cross Forms - log form to log form, when a query has been answered and closed with the different data and I enter the same data that originally opened the query, then queries are displayed.  
+#Folder "Screening" enter and save data on forms "Concomitant Medications" and "Adverse Events". Queries fired, Answer and  Manually close queries on "Concomitant Medications" form, Modify log fields to different good data on "Adverse Events" form, do not touch "Concomitant Medications" form - no queries on "Concomitant Medications" and no log in the Database.
 
 	Given I select Study "Edit Check Study 3" and Site "Edit Check Site 1"	
     And I create a Subject
@@ -1065,16 +1080,16 @@ Scenario: PB_1.15.1 As an EDC user, On a Cross Forms log form to log form, Folde
 	    | End Date   | 10 Feb 2000 |
 	And I select Form "Concomitant Medications"
 	And I open log line 1
-	Then I verify Query with message "Date can not be less than." is displayed on Field "Start Date"
-	And I verify Query with message "Date is Less Than Date on the first log form." is displayed on Field "End Date"
+	Then I verify Query with message "Date can not be less than." is not displayed on Field "Start Date"
+	And I verify Query with message "Date is Less Than Date on the first log form." is not displayed on Field "End Date"
 	And I take a screenshot
 	
 #----------------------------------------------------------------------------------------------------------------------------------------	
 @release_564_Patch11
 @PB_1.16.1
 @Draft
-Scenario: PB_1.16.1 As an EDC user, On a Cross Forms log form to log form. 
-Folder "Screening" enter and save data on forms "Concomitant Medications" and "Adverse Events". Queries fired, Answer and  Manually close queries on "Concomitant Medications" form, Modify log fields to different bad data on "Adverse Events" form, do not touch "Concomitant Medications" form - queries fire on "Concomitant Medications" and no log in the Database.
+Scenario: PB_1.16.1 As an EDC user, On a Cross Forms - log form to log form, when a query has been answered and closed with the different data and I enter the same data that originally opened the query, then queries are displayed.   
+#Folder "Screening" enter and save data on forms "Concomitant Medications" and "Adverse Events". Queries fired, Answer and  Manually close queries on "Concomitant Medications" form, Modify log fields to different bad data on "Adverse Events" form, do not touch "Concomitant Medications" form - queries fire on "Concomitant Medications" and no log in the Database.
 
 	Given I select Study "Edit Check Study 3" and Site "Edit Check Site 1"	
     And I create a Subject
@@ -1127,8 +1142,8 @@ Folder "Screening" enter and save data on forms "Concomitant Medications" and "A
 @release_564_Patch11
 @PB_1.17.1
 @Draft
-Scenario: PB_1.17.1 As an EDC user, On a Cross Forms log form to log form,
- Folder "Screening" enter and save data on forms "Concomitant Medications" and "Adverse Events". Queries fired on second log form, Modify log fields on first log form to different good data, new value results in system close of edit check on second log form - queries closed by system on second log form and no log in the Database.
+Scenario: PB_1.17.1 As an EDC user, On a Cross Forms - log form to log form, when a query has not been answered and closed with the different data and I enter the same data that originally opened the query, then queries are displayed.  
+#Folder "Screening" enter and save data on forms "Concomitant Medications" and "Adverse Events". Queries fired on second log form, Modify log fields on first log form to different good data, new value results in system close of edit check on second log form - queries closed by system on second log form and no log in the Database.
 
 	Given I select Study "Edit Check Study 3" and Site "Edit Check Site 1"	
     And I create a Subject
@@ -1161,16 +1176,16 @@ Scenario: PB_1.17.1 As an EDC user, On a Cross Forms log form to log form,
 	And I select Form "Concomitant Medications"	
 	And I open log line 1
 #Investigate
-	And I verify Query with message "Date can not be less than." is not displayed on Field "Start Date"
-	And I verify Query with message "Date is Less Than Date on the first log form." is not displayed on Field "End Date"
+	And I verify Query with message "Date can not be less than." is displayed on Field "Start Date"
+	And I verify Query with message "Date is Less Than Date on the first log form." is displayed on Field "End Date"
 	And I take a screenshot
 	
 #----------------------------------------------------------------------------------------------------------------------------------------	
 @release_564_Patch11
 @PB_1.18.1
 @Draft
-Scenario: PB_1.18.1 As an EDC user, On a Cross Forms log form to log form,
- Folder "Screening" enter and save data on forms "Concomitant Medications" and "Adverse Events". Queries fired on second log form, Modify log fields on same second log form to different good data, new value results in system close of edit check on second log form - queries closed by system on second log form and no log in the Database.
+Scenario: PB_1.18.1 As an EDC user, On a Cross Forms - log form to log form, when a query has not been answered and closed with the different data and I enter the same data that originally opened the query, then queries are displayed.  
+#Folder "Screening" enter and save data on forms "Concomitant Medications" and "Adverse Events". Queries fired on second log form, Modify log fields on same second log form to different good data, new value results in system close of edit check on second log form - queries closed by system on second log form and no log in the Database.
 
 	Given I select Study "Edit Check Study 3" and Site "Edit Check Site 1"	
     And I create a Subject
@@ -1194,21 +1209,21 @@ Scenario: PB_1.18.1 As an EDC user, On a Cross Forms log form to log form,
 	And I verify Requires Response Query with message "Date can not be less than." is displayed on Field "Start Date"
 	And I verify Requires Response Query with message "Date is Less Than Date on the first log form." is displayed on Field "End Date"
 	And I take a screenshot
-	And I enter data in CRF and save
+	When I enter data in CRF and save
 		| Field      | Data        |
 		| Start Date | 11 Jan 2000 |
 		| End Date   | 09 Feb 2000 |			
 	And I open log line 1
-#Investigate
-	And I verify Query with message "Date can not be less than." is not displayed on Field "Start Date"
-	And I verify Query with message "Date is Less Than Date on the first log form." is not displayed on Field "End Date"
+	Then I verify Query with message "Date can not be less than." is displayed on Field "Start Date"
+	And I verify Query with message "Date is Less Than Date on the first log form." is displayed on Field "End Date"
 	And I take a screenshot
 	
 #----------------------------------------------------------------------------------------------------------------------------------------	
 @release_564_Patch11
 @PB_1.19.1
 @Draft
-Scenario: PB_1.19.1 As an EDC user, On a Cross Forms: log form to log form. Folder "Screening" enter and save data on forms "Concomitant Medications" and "Adverse Events". Queries fired on second log form, Modify log fields on first log form to different good data, new value results in system close of edit check on second log form. Navigate to first log form and enter new value in violation of edit check - queries refired on second log form and no log in the Database
+Scenario: PB_1.19.1 As an EDC user, On a Cross Forms - log form to log form, when a query has been answered and closed with the different data and I enter the same data that originally opened the query, then queries are displayed.  
+#Folder "Screening" enter and save data on forms "Concomitant Medications" and "Adverse Events". Queries fired on second log form, Modify log fields on first log form to different good data, new value results in system close of edit check on second log form. Navigate to first log form and enter new value in violation of edit check - queries refired on second log form and no log in the Database
 
 	Given I select Study "Edit Check Study 3" and Site "Edit Check Site 1"	
     And I create a Subject
@@ -1240,9 +1255,8 @@ Scenario: PB_1.19.1 As an EDC user, On a Cross Forms: log form to log form. Fold
 		| End Date   | 10 Feb 2000 |
 	And I select Form "Concomitant Medications"
 	And I open log line 1
-#Investigate
-	And I verify Query with message "Date can not be less than." is not displayed on Field "Start Date"
-	And I verify Query with message "Date is Less Than Date on the first log form." is not displayed on Field "End Date" 
+	And I verify Query with message "Date can not be less than." is displayed on Field "Start Date"
+	And I verify Query with message "Date is Less Than Date on the first log form." is displayed on Field "End Date" 
 	And I take a screenshot
 	
 	And I select Form "Adverse Events"
@@ -1261,10 +1275,8 @@ Scenario: PB_1.19.1 As an EDC user, On a Cross Forms: log form to log form. Fold
 @release_564_Patch11
 @PB_1.20.1
 @Draft
-Scenario: PB_1.20.1 As an EDC user, On a Cross Forms log form to log form,
-Folder "Screening" enter and save data on forms "Concomitant Medications" and "Adverse Events"
-Queries fired on second log form, Modify log fields on second log form to different good data, 
-new value results in system close of edit check on second log form. Navigate to first log form and enter new value in violation of edit check - queries refired on second log form and no log in the Database
+Scenario: PB_1.20.1 As an EDC user, On a Cross Forms log form to log form, when a query has not been answered and closed with the different data and I enter the same data that originally opened the query, then queries are displayed.  
+#Folder "Screening" enter and save data on forms "Concomitant Medications" and "Adverse Events" Queries fired on second log form, Modify log fields on second log form to different good data, new value results in system close of edit check on second log form. Navigate to first log form and enter new value in violation of edit check - queries refired on second log form and no log in the Database
 
 	Given I select Study "Edit Check Study 3" and Site "Edit Check Site 1"	
     And I create a Subject
@@ -1294,9 +1306,8 @@ new value results in system close of edit check on second log form. Navigate to 
 		| End Date   | 09 Feb 2000 |	
 	And I save the CRF page
 	And I open log line 1	
-#Investigate
-	And I verify Query with message "Date can not be less than." is not displayed on Field "Start Date"
-	And I verify Query with message "Date is Less Than Date on the first log form." is not displayed on Field "End Date" 
+	And I verify Query with message "Date can not be less than." is displayed on Field "Start Date"
+	And I verify Query with message "Date is Less Than Date on the first log form." is displayed on Field "End Date" 
 	And I take a screenshot
 
 	And I select Form "Adverse Events"
@@ -1315,9 +1326,8 @@ new value results in system close of edit check on second log form. Navigate to 
 @release_564_Patch11
 @PB_1.21.1
 @Draft
-Scenario: PB_1.21.1 As an EDC user, 
-Queries fired, Answer and  Manually close query on log field, Modify Standard field to different bad data, 
-do not touch log field - query and no logs in the Database
+Scenario: PB_1.21.1 As an EDC user, when a query has been answered and closed with the different data and I enter the same data that originally opened the query, then queries are displayed.
+#Queries fired, Answer and  Manually close query on log field, Modify Standard field to different bad data, do not touch log field - query and no logs in the Database
 
 	Given I select Study "Edit Check Study 3" and Site "Edit Check Site 1"
     And I create a Subject
@@ -1352,10 +1362,8 @@ do not touch log field - query and no logs in the Database
 @release_564_Patch11
 @PB_1.22.1
 @Draft
-Scenario: PB_1.22.1 As an EDC user, 
-Queries fired, cancel query on log field, 
-Modify Standard field to different bad data, do not touch log field - query re-fires and no logs in the Database
-Modify log field to different bad data, do not touch standard field - query re-fires and no logs in the Database
+Scenario: PB_1.22.1 As an EDC user, when a query has been canceled with the same data and I enter the same data that originally opened the query, then queries are displayed.  
+#Queries fired, cancel query on log field, Modify Standard field to different bad data, do not touch log field - query re-fires and no logs in the Database. Modify log field to different bad data, do not touch standard field - query re-fires and no logs in the Database.
 
 	Given I select Study "Edit Check Study 3" and Site "Edit Check Site 1"
     And I create a Subject
@@ -1386,7 +1394,7 @@ Modify log field to different bad data, do not touch standard field - query re-f
 @release_564_Patch11
 @PB_1.22.2
 @Draft
-Scenario: PB_1.22.2 As an EDC user,
+Scenario: PB_1.22.2 As an EDC user, when a query has been canceled with the different data and I enter the same data that originally opened the query, then queries are displayed.  
 	
 	Given I select Study "Edit Check Study 3" and Site "Edit Check Site 1"
 	And I select a Subject "SUB{Var(num1)}"
@@ -1418,7 +1426,7 @@ Scenario: PB_1.22.2 As an EDC user,
 @release_564_Patch11
 @PB_1.22.3
 @Draft
-Scenario: PB_1.22.3 As an EDC user,
+Scenario: PB_1.22.3 As an EDC user, when a query has been cancel with the different data and I enter the same data that originally opened the query, then queries are displayed.  
 
 	Given I select Study "Edit Check Study 3" and Site "Edit Check Site 1"
 	And I select a Subject "SUB{Var(num1)}"

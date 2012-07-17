@@ -246,7 +246,7 @@ Scenario: PB_8.1.3
 Scenario: PB_8.2.1 Task Summary
 
 	And I select Study "Edit Check Study 3" and Site "Edit Check Site 8"
-    And I select a Subject "sub35900"
+    And I select a Subject "sub{Var(num1)}"
 #New Step Def
 	When I expand "Open Queries" in Task Summary
 	Then I should see "Screening-Concomitant Medications" in "Open Queries"
@@ -257,7 +257,7 @@ Scenario: PB_8.2.1 Task Summary
 	And I take a screenshot
 	
 	And I select Study "Edit Check Site 8" in "Header"
-    And I select a Subject "sub35900"
+    And I select a Subject "sub{Var(num1)}"
 #New Step Def
 	When I expand "Cancel Queries" in Task Summary
 	Then I should see "Screening-Concomitant Medications" in "Cancel Queries"
