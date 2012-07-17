@@ -45,7 +45,7 @@ namespace Medidata.RBT.PageObjects.Rave
 			mapping["Marking Group"] = "_ctl0_Content_ddlMarkingGroup";
 			mapping["Advanced Search"] = "_ctl0_Content_lbtnAdvSearch";
 			mapping["Query Status"] = "_ctl0_Content_ddlQueryStatus";
-			mapping["search result"] = "_ctl0_Content_grdSearchResult";
+			mapping["Search Result"] = "_ctl0_Content_grdSearchResult";
 			
 
 			IWebElement ele = Browser.TryFindElementById(mapping[name]);
@@ -60,7 +60,7 @@ namespace Medidata.RBT.PageObjects.Rave
 
 		protected override IPage GetTargetPageObjectByLinkAreaName(string type, string areaName)
 		{
-			if (type == "Form" && areaName == "search result")
+			if (type == "Form" && areaName == "Search Result")
 				return new CRFPage();
 				
 			return base.GetTargetPageObjectByLinkAreaName(type, areaName);

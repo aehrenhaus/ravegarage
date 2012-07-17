@@ -11,16 +11,16 @@ namespace Medidata.RBT.PageObjects.Rave
 {
 	public class FileRequestPage : RavePageBase
 	{
-		public FileRequestPage CreateDataPDF(Table table)
+		public FileRequestPage CreateDataPDF(PDFCreationModel args)
 		{
 			ClickLink("Create Data Request");
 			var page = new FileRequestCreateDataRequestPage();
-			return page.CreateDataPDF(table) ;
+			return page.CreateDataPDF(args);
 		}
 
 		public FileRequestPage Generate(string pdf)
 		{
-			var table = Browser.Table("_ctl0_Content_Results");
+			var table = Browser.WaitForElement("_ctl0_Content_Results").EnhanceAs<HtmlTable>();
 			Table dt = new Table("Name");
 			dt.AddRow(pdf);
 			var tr = table.FindMatchRows(dt).FirstOrDefault();

@@ -19,7 +19,16 @@ namespace Medidata.RBT.SeleniumExtension
 		#region Private 
 
 		private IWebElement ele; // the inner element
-
+		public IWebElement Element
+		{
+			get
+			{
+				IWebElement e = ele;
+				if (e is EnhancedElement)
+					e = (e as EnhancedElement).Element;
+				return e;
+			}
+		}
 	
 		#endregion
 

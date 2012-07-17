@@ -280,10 +280,10 @@ Scenario: PB_8.3.1 Query Management
 	And I choose "Edit Check Study 3 (Prod)" from "Study"
 	And I choose "World" from "Site Group"
 	And I choose "Edit Check Site 8" from "Site"
-	And I choose "sub{Var(num1)}" from "Subject"
+	And I choose "sub70841" from "Subject"
 	And I click button "Advanced Search"
 
-	And I select Form "Concomitant Medications" in search result
+	And I select Form "Concomitant Medications" in "Search Result"
 	And I open log line 2
 	And I verify Requires Response Query with message "'Date Informed Consent Signed' is greater. Please revise." is displayed on Field "Start Date"
 	And I verify Requires Response Query with message "Informed Consent 'Current Distribution Number' is not equal to Concomitant Medications 'Current Axis Number'." is displayed on Field "Current Axis Number"	
@@ -292,14 +292,13 @@ Scenario: PB_8.3.1 Query Management
 	And I verify Requires Response Query with message "'Date Informed Consent Signed' is greater. Please revise." is displayed on Field "Start Date"
 	And I verify Requires Response Query with message "Informed Consent 'Current Distribution Number' is not equal to Concomitant Medications 'Current Axis Number'." is displayed on Field "Current Axis Number"	
 	And I take a screenshot
-	
-#New Step Def
-	And I select "Cancel"
-	And I enter data in CRF on new log line 4 and save and reopen
-	    | Field               | Data        |
-	    | Start Date          | 07 Jan 2000 |
-	    | End Date            | 12 Jan 2000 |
-	    | Original Axis Numbe | 10          |
+	And I click button "Cancel"
+	And I enter data in CRF on a new log line and save and reopen
+	    | Field                | Data        |
+	    | Start Date           | 07 Jan 2000 |
+	    | End Date             | 12 Jan 2000 |
+	    | Original Axis Number | 10          |
+	    | Current Axis Number  | 20          |
 	And I verify Requires Response Query with message "'Date Informed Consent Signed' is greater. Please revise." is displayed on Field "Start Date"
 	And I verify Requires Response Query with message "Informed Consent 'Current Distribution Number' is not equal to Concomitant Medications 'Current Axis Number'." is displayed on Field "Current Axis Number"	
 	And I take a screenshot
@@ -311,7 +310,7 @@ Scenario: PB_8.3.1 Query Management
 	And I cancel the Query "Informed Consent 'Current Distribution Number' is not equal to Concomitant Medications 'Current Axis Number'." on Field "Current Axis Number"
 	And I save the CRF page
 	And I take a screenshot
-	And I open log line 4
+	And I open the last log line
 	And I verify Field "Start Date" has no Query
 	And I verify Field "Current Axis Number" has no Query
 	And I take a screenshot
@@ -319,7 +318,7 @@ Scenario: PB_8.3.1 Query Management
 		| Field               | Data        |
 		| Start Date          | 07 Jan 2000 |
 		| Current Axis Number | 18          |
-	And I open log line 4
+	And I open the last log line
 	And I verify Requires Response Query with message "'Date Informed Consent Signed' is greater. Please revise." is displayed on Field "Start Date"
 	And I verify Requires Response Query with message "Informed Consent 'Current Distribution Number' is not equal to Concomitant Medications 'Current Axis Number'." is displayed on Field "Current Axis Number"
 	And I take a screenshot
@@ -334,7 +333,7 @@ Scenario: PB_8.3.2
 	And I choose "Edit Check Study 3 (Prod)" from "Study"
 	And I choose "World" from "Site Group"
 	And I choose "Edit Check Site 8" from "Site"
-	And I choose "sub50070" from "Subject"
+	And I choose "sub70841" from "Subject"
 	And I click button "Advanced Search"
 
 	And I select Form "Concomitant Medications" in "search result"
@@ -383,11 +382,12 @@ Scenario: PB_8.4.1 Generate the Data PDFs.
 
 	And I create Data PDF
 	| Name                | Profile | Study                     | Role | SiteGroup | Site              | Subject  |
-	| pdf{RndNum<num>(3)} | GLOBAL1 | Edit Check Study 3 (Prod) | CDM1 | World     | Edit Check Site 8 | SUB50070 |
+	| pdf{RndNum<num>(3)} | GLOBAL1 | Edit Check Study 3 (Prod) | CDM1 | World     | Edit Check Site 8 | sub70841 |
 	
 	And I generate Data PDF "pdf{Var(num)}"
 	And I wait for PDF "pdf{Var(num)}" to complete
-	When I View Data PDF "pdf{Var(num)}"
+	#Can not handle save dialog, must verify manually
+	When I View Data PDF "pdf{Var(num)}"  
 	#Then I should see "Query Data" in Audits
 	And I take a screenshot
 
@@ -399,15 +399,16 @@ Scenario: PB_8.5.1 When I run the Report, then query related data are displayed 
 
 	And I navigate to "Reporter"
 	And I select Report "Audit Trail"
+	And I search report parameter "Study" with "Edit Check Study 3"
 	And I set report parameter "Study" with table
 		| Name               | Environment |
-		| Edit Check Study 8 | Prod        |
+		| Edit Check Study 3 | Prod        |
 	And I set report parameter "Sites" with table
 		| Name              |
 		| Edit Check Site 8 |
 	And I set report parameter "Subjects" with table
-		| Name   |
-		| sub 10250 |
+		| Name     |
+		| sub70841 |
 	And I set report parameter "Folders" with table
 		| Name      |
 		| Screening |
@@ -415,10 +416,25 @@ Scenario: PB_8.5.1 When I run the Report, then query related data are displayed 
 		| Name                    |
 		| Informed Consent        |
 		| Concomitant Medications |
-
+	And I set report parameter "Fields" with table
+		| Name          |
+		| CM_STRT_DT    |
+		| CURR_AXIS_NUM |
+	And I set report parameter "Start Date" with "{Date()}"
+	And I set report parameter "End Date" with "{Date()}"
+	And I search report parameter "Audit Type" with "Query"
+	And I set report parameter "Audit Type" with table
+		| SubCategory |
+		| QueryOpen   |
+	And I search report parameter "User" with "Default User"
+	And I set report parameter "User" with table
+		| Full Name    |
+		| Default User |
 	And I click button "Submit Report"
-	And I switch to "Targeted SDV Subject Override" window
-
+	And I switch to "ReportViewer" window
+	And I take a screenshot
+	And I switch to main window
+	
 	#Then I should see queries on "Start Date" and "Current Axis Number" fields
 	#And I take a screenshot
 	#And I close report
@@ -434,13 +450,13 @@ Scenario: PB_8.5.2 When I run the Report, then query related data are displayed 
 	And I select report "Query Detail"
 	And I set report parameter "Study" with table
 		| Name               | Environment |
-		| Edit Check Study 8 | Prod        |
+		| Edit Check Study 3 | Prod        |
 	And I set report parameter "Sites" with table
 		| Name              |
 		| Edit Check Site 8 |
 	And I set report parameter "Subjects" with table
-		| Name   |
-		| sub 10250 |
+		| Name     |
+		| sub70841 |
 	And I set report parameter "Folders" with table
 		| Name      |
 		| Screening |
@@ -448,6 +464,23 @@ Scenario: PB_8.5.2 When I run the Report, then query related data are displayed 
 		| Name                    |
 		| Informed Consent        |
 		| Concomitant Medications |
+	And I set report parameter "Fields" with table
+		| Name          |
+		| CM_STRT_DT    |
+		| CURR_AXIS_NUM |
+	And I set report parameter "Marking Groups" with table
+		| Name          |
+		| Open Query    |
+	And I set report parameter "Query Status" with table
+		| Name         |
+		| Default User |
+	And I set report parameter "Start Date" with table
+		| Name         |
+		| Current Date |
+	And I set report parameter "End Date" with table
+		| Name         |
+		| Current Date |
+
 	When I click button "Submit Report"
 	And I switch to "Targeted SDV Subject Override" window
 	#Then I should see queries on "Start Date" and "Current Axis Number" fields
@@ -465,10 +498,11 @@ Scenario: PB_8.5.3 When I run the Report, then query related data are displayed 
 	And I select report "Edit Check Log Report"
 	And I set report parameter "Study" with table
 		| Name               | Environment |
-		| Edit Check Study 8 | Prod        |
-	And I set report parameter "Sites" with table
-		| Name              |
-		| Edit Check Site 8 |
+		| Edit Check Study 3 | Prod        |
+	And I set report parameter "Forms" with table
+		| Name                    |
+		| Concomitant Medications |
+		| Informed Consent        |
 	And I set report parameter "Subjects" with table
 		| Name   |
 		| sub 10250 |
@@ -477,7 +511,7 @@ Scenario: PB_8.5.3 When I run the Report, then query related data are displayed 
 		| Screening |
 	And I set report parameter "Forms" with table
 		| Name                    |
-		| Concomitant Medications       |
+		| Concomitant Medications |
 	
 
 	And I select checkbox "Edit Check" for "Check Type"

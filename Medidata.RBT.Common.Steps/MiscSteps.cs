@@ -31,6 +31,19 @@ namespace Medidata.RBT.Common.Steps
 			Browser = (window as RemoteWebDriver);
 		}
 
+		[StepDefinition(@"I switch to main window")]
+		public void ISwitchToMainWindow()
+		{
+			Browser.Close();
+			IWebDriver window = null;
+			foreach (var handle in Browser.WindowHandles)
+			{
+				
+				window = Browser.SwitchTo().Window(handle);
+					break;
+			}
+			Browser = (window as RemoteWebDriver);
+		}
 
 	}
 }

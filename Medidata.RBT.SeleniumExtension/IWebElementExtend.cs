@@ -23,27 +23,39 @@ namespace Medidata.RBT.SeleniumExtension
 
 		private static IJavaScriptExecutor GetJsExecutor(IWebElement element)
 		{
-
 			IWrapsDriver wrappedElement = element as IWrapsDriver;
 			if (wrappedElement == null)
 				throw new ArgumentException("element", "Element must wrap a web driver");
-
 			IWebDriver driver = wrappedElement.WrappedDriver;
-			IJavaScriptExecutor javascript = driver as IJavaScriptExecutor;
-			if (javascript == null)
+			IJavaScriptExecutor jsExe = driver as IJavaScriptExecutor;
+			if (jsExe == null)
 				throw new ArgumentException("element", "Element must wrap a web driver that supports javascript execution");
 
-			return javascript;
+			return jsExe;
 		}
 
-		public static void  SetAttribute(this IWebElement element, string attributeName, string value)
+		public static string GetInnerHtml(this IWebElement element)
 		{
-			GetJsExecutor(element).ExecuteScript("arguments[0].setAttribute(arguments[1], arguments[2])", element, attributeName, value);
+			IJavaScriptExecutor jsExe = GetJsExecutor(element);
+			object obj = jsExe.ExecuteScript("return arguments[0].innerHTML", element);
+			return obj as string;
+		}
+		 
+		public static void SetInnerHtml(this IWebElement element, string html)
+		{
+			IJavaScriptExecutor jsExe = GetJsExecutor(element);
+			jsExe.ExecuteScript("arguments[0].innerHTML = arguments[1]", element, html);
+		}
+		public static void SetAttribute(this IWebElement element, string attributeName, string value)
+		{
+			IJavaScriptExecutor jsExe = GetJsExecutor(element);
+			jsExe.ExecuteScript("arguments[0].setAttribute(arguments[1], arguments[2])", element, attributeName, value);
 		}
 
 		public static void RemoveAttribute(this IWebElement element, string attributeName)
 		{
-			GetJsExecutor(element).ExecuteScript("arguments[0].removeAttribute(arguments[1])", element, attributeName);
+			IJavaScriptExecutor	jsExe = GetJsExecutor(element);
+			jsExe.ExecuteScript("arguments[0].removeAttribute(arguments[1])", element, attributeName);
 		}
 
 

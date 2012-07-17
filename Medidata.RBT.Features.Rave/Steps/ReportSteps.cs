@@ -30,7 +30,15 @@ namespace Medidata.RBT.Features.Rave
         [StepDefinition(@"I set report parameter ""([^""]*)"" with ""([^""]*)""")]
 		public void GivenISetReportParameter____With____(string name, string value)
 		{
-			CurrentPage.As<PromptsPage>().SetParameter(name, value);
+			value = SpecialStringHelper.Replace(value);
+			CurrentPage.As<PromptsPage>().SetParameter(name,value);
+		}
+
+		[StepDefinition(@"I search report parameter ""([^""]*)"" with ""([^""]*)""")]
+		public void ISearchReportParameter____With_____(string name, string value)
+		{
+			value = SpecialStringHelper.Replace(value);
+			CurrentPage.As<PromptsPage>().SearchInParameter(name, value);
 		}
 
 	}

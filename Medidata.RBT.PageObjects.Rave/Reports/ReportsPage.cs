@@ -25,10 +25,13 @@ namespace Medidata.RBT.PageObjects.Rave
 				throw new Exception("Report not found:"+reportName);
 			link.Click();
 
-			NameValueCollection mapping = new NameValueCollection();
-			mapping["Targeted SDV Subject Management"] = "SubjectOverridePage";
+			NameValueCollection mappingPO = new NameValueCollection();
+			mappingPO["Targeted SDV Subject Management"] = "SubjectOverridePage";
 
-			return new PromptsPage(mapping[reportName]);         
+			string poName = mappingPO[reportName];
+			if (poName == null)
+				poName = "CrystalReportPage";
+			return new PromptsPage(poName);         
         }
 
 		public override string URL

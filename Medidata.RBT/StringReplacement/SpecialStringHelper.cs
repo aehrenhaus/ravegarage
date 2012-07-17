@@ -28,7 +28,7 @@ namespace Medidata.RBT
 			var output = reg.Replace(input, m =>
 				{
 					string name = m.Groups["name"].Value;
-					string[] args = m.Groups["args"].Value.Split(',');
+					string[] args = m.Groups["args"].Value.Split(new char[]{','}, StringSplitOptions.RemoveEmptyEntries);
 					string var = m.Groups["var"].Value;
 
 					IStringReplace replaceMethod = null;
