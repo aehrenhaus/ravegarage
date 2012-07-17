@@ -37,6 +37,24 @@ namespace Medidata.RBT.PageObjects.Rave
 
 			return base.NavigateTo(name);
 		}
+
+		public override string GetText(string identifer)
+		{
+			if (identifer == "crfversion")
+				return GetLatestCRFVersion();
+			return base.GetText(identifer);
+		}
+
+
+		public string GetLatestCRFVersion()
+		{
+			var trs = Browser.Table("VersionGrid").Children()[0].Children();
+			var tr = trs[1];
+			var td = tr.Children()[0];
+			var text = td.Text.Trim();
+			return text;
+		}
+
 	
 	}
 }

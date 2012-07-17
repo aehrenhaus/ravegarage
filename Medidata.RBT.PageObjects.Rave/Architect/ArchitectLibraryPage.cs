@@ -13,11 +13,12 @@ namespace Medidata.RBT.PageObjects.Rave
 
 		public ArchitectCRFDraftPage CreateDraftFromProject(string draftName, string project, string version)
 		{
+			ClickLink("Add New Draft");
 			ChooseFromRadiobuttons(null, "_ctl0_Content_RadioButtonList1_1");
 			ChooseFromDropdown("_ctl0_Content_ProjectDropDown", project);
 			ChooseFromDropdown("_ctl0_Content_VersionDropDown", version);
 			Type("_ctl0_Content_DraftText", draftName);
-			ClickButton("_ctl0_Content_CreateButton");
+			ClickButton("Create Draft");
 
 			return new ArchitectCRFDraftPage();
 		}
@@ -45,12 +46,22 @@ namespace Medidata.RBT.PageObjects.Rave
 		}
 
 		protected override IWebElement GetElementByName(string name)
-		
 		{
 			if (name == "CRF Drafts")
 				return Browser.Table("DraftsGrid");
 
 			return base.GetElementByName(name);
 		}
+
+		//public override IPage ClickLinkInArea(string type, string linkText, string areaIdentifer)
+		//{
+		//    if (areaIdentifer == "CRFDrafts")
+		//    {
+		//        Browser.Link(linkText).Click();
+		//        return new ArchitectCRFDraftPage();
+		//    }
+
+		//    return base.ClickLinkInArea(type, linkText, areaIdentifer);
+		//}
 	}
 }

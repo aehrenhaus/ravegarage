@@ -9,6 +9,9 @@ using Medidata.RBT.PageObjects.Rave;
 using System.IO;
 using Microsoft.Practices.EnterpriseLibrary.Data;
 using System.Data;
+using OpenQA.Selenium;
+using OpenQA.Selenium.Remote;
+using System.Threading;
 
 namespace Medidata.RBT.Features.Rave
 {
@@ -45,5 +48,24 @@ namespace Medidata.RBT.Features.Rave
         {
             return new RWSLogPage(logger);
         }
+
+
+		//TODO: this method should not exist.
+		[StepDefinition(@"I switch to ""([^""]*)"" window of type ""([^""]*)""")]
+		public void ISwitchTo____WindowOfType____(string windowName, string potype)
+		{
+			IWebDriver window = null;
+			foreach (var handle in Browser.WindowHandles)
+			{
+				window = Browser.SwitchTo().Window(handle);
+				if (window.Title == windowName)
+					break;
+			}
+			Browser = (window as RemoteWebDriver);
+			CurrentPage = RavePageObjectFactory.GetPage(potype);
+
+			Thread.Sleep(2000);
+		}
+
 	}
 }

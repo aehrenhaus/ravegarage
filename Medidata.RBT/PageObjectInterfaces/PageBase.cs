@@ -184,6 +184,15 @@ namespace Medidata.RBT
             return this;
         }
 
+		/// <summary>
+		/// Get some critical text from the page
+		/// </summary>
+		/// <param name="identifer"></param>
+		public virtual string GetText(string identifer)
+		{
+			throw new Exception("Donn't know how to get text from "+identifer);
+		}
+
         #endregion
 
 
@@ -286,5 +295,6 @@ namespace Medidata.RBT
 	
 			return Browser.WaitForElement(partialID,predicate, errorMessage, timeOutSecond);
 		}
-    }
+   
+	}
 }

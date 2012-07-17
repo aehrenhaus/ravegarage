@@ -61,6 +61,11 @@ namespace Medidata.RBT
 			return output;
         }
 
+		public static void SetVar(string varName, string value)
+		{
+			TestContext.Vars[varName] = value;
+		}
+
 		public static Table ReplaceTableColumn(Table table, string colName)
 		{
 			foreach (var row in table.Rows)

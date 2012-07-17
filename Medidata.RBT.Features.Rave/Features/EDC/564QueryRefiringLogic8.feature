@@ -42,8 +42,25 @@ Background:
 	
 #----------------------------------------------------------------------------------------------------------------------------------------	
 Scenario:  test
-    Given I select Study "Edit Check Study 3" and Site "Edit Check Site 1"
-    And I select a Subject "SUB25483"
+
+ 	And I select Study "AM Edit Check Study" and Site "AM Edit Site"
+	And I create a Subject
+	| Field            | Data              |
+	| Subject Number   | {RndNum<num2>(5)} |
+	| Subject Initials | sub               |
+
+	And I note down crfversion to "ver#"
+	 And I navigate to "Home"
+	And I navigate to "Architect"
+	And I select "AM Edit Check Study" in "Active Projects"
+	And I create Draft "Draft {RndNum<num1>(5)}" from Project "AM Edit Check Study" and Version "{Var(ver#)}"
+
+	And I navigate to "Edit Checks"
+	And I inactivate edit check "Mixed Form Query"
+
+	And I select Draft "Draft1" in "Header"
+	And I publish CRF Version "Target{RndNum<num1>(3)}"
+	
 
 
 @release_564_Patch11
@@ -247,7 +264,6 @@ Scenario: PB_8.2.1 Task Summary
 
 	And I select Study "Edit Check Study 3" and Site "Edit Check Site 8"
     And I select a Subject "sub{Var(num1)}"
-#New Step Def
 	When I expand "Open Queries" in Task Summary
 	Then I should see "Screening-Concomitant Medications" in "Open Queries"
 	And I select "Screening-Concomitant Medications" in "Open Queries"
@@ -258,16 +274,12 @@ Scenario: PB_8.2.1 Task Summary
 	
 	And I select Study "Edit Check Site 8" in "Header"
     And I select a Subject "sub{Var(num1)}"
-#New Step Def
 	When I expand "Cancel Queries" in Task Summary
 	Then I should see "Screening-Concomitant Medications" in "Cancel Queries"
 	And I select "Screening-Concomitant Medications" in "Cancel Queries"
 	And I open log line 3
 	And I verify Requires Response Query with message "'Date Informed Consent Signed' is greater. Please revise." is displayed on Field "Start Date"
 	And I verify Requires Response Query with message "Informed Consent 'Current Distribution Number' is not equal to Concomitant Medications 'Current Axis Number'." is displayed on Field "Current Axis Number"
-# Need new step def
-
-
 	And I take a screenshot
 	
 #----------------------------------------------------------------------------------------------------------------------------------------	
@@ -386,7 +398,7 @@ Scenario: PB_8.4.1 Generate the Data PDFs.
 	
 	And I generate Data PDF "pdf{Var(num)}"
 	And I wait for PDF "pdf{Var(num)}" to complete
-	#Can not handle save dialog, must verify manually
+#Can not handle save dialog, must verify manually
 	When I View Data PDF "pdf{Var(num)}"  
 	#Then I should see "Query Data" in Audits
 	And I take a screenshot
@@ -407,8 +419,8 @@ Scenario: PB_8.5.1 When I run the Report, then query related data are displayed 
 		| Name              |
 		| Edit Check Site 8 |
 	And I set report parameter "Subjects" with table
-		| Name     |
-		| sub70841 |
+		| Name           |
+		| sub{Var(num1)} |
 	And I set report parameter "Folders" with table
 		| Name      |
 		| Screening |
@@ -447,7 +459,7 @@ Scenario: PB_8.5.2 When I run the Report, then query related data are displayed 
 
 # Query Detail	
 	And I navigate to "Reporter"
-	And I select report "Query Detail"
+	And I select Report "Query Detail"
 	And I set report parameter "Study" with table
 		| Name               | Environment |
 		| Edit Check Study 3 | Prod        |
@@ -455,8 +467,8 @@ Scenario: PB_8.5.2 When I run the Report, then query related data are displayed 
 		| Name              |
 		| Edit Check Site 8 |
 	And I set report parameter "Subjects" with table
-		| Name     |
-		| sub70841 |
+		| Name           |
+		| sub{Var(num1)} |
 	And I set report parameter "Folders" with table
 		| Name      |
 		| Screening |
@@ -469,23 +481,21 @@ Scenario: PB_8.5.2 When I run the Report, then query related data are displayed 
 		| CM_STRT_DT    |
 		| CURR_AXIS_NUM |
 	And I set report parameter "Marking Groups" with table
-		| Name          |
-		| Open Query    |
+		| Group Name      |
+		| Site            |
+		| Marking Group 1 |
 	And I set report parameter "Query Status" with table
-		| Name         |
-		| Default User |
-	And I set report parameter "Start Date" with table
-		| Name         |
-		| Current Date |
-	And I set report parameter "End Date" with table
-		| Name         |
-		| Current Date |
+		| Name |
+		| Open |
+	And I set report parameter "Start Date" with "{Date()}"
+	And I set report parameter "End Date" with "{Date()}"
 
 	When I click button "Submit Report"
-	And I switch to "Targeted SDV Subject Override" window
+
 	#Then I should see queries on "Start Date" and "Current Axis Number" fields
+	And I switch to "ReportViewer" window
 	And I take a screenshot
-	And I close report
+	And I switch to main window
 
 #----------------------------------------------------------------------------------------------------------------------------------------	
 @release_564_Patch11
@@ -495,32 +505,28 @@ Scenario: PB_8.5.3 When I run the Report, then query related data are displayed 
 
 #Edit Check Log Report	
 	And I navigate to "Reporter"
-	And I select report "Edit Check Log Report"
+	And I select Report "Edit Check Log Report"
 	And I set report parameter "Study" with table
 		| Name               | Environment |
 		| Edit Check Study 3 | Prod        |
 	And I set report parameter "Forms" with table
-		| Name                    |
+		| Form Name               |
 		| Concomitant Medications |
 		| Informed Consent        |
-	And I set report parameter "Subjects" with table
-		| Name   |
-		| sub 10250 |
-	And I set report parameter "Folders" with table
-		| Name      |
-		| Screening |
-	And I set report parameter "Forms" with table
-		| Name                    |
-		| Concomitant Medications |
-	
 
-	And I select checkbox "Edit Check" for "Check Type"
-	And I select checkbox Check "CheckExecution" for "Log Type"
+	And I set report parameter "Check Type" with table
+		| Check Type |
+		| Edit Check |
+	
+	And I set report parameter "Check Log Type" with table
+		| Check Log Type |
+		| CheckExecution |
 	When I click button "Submit Report"
-	And I switch to "Targeted SDV Subject Override" window
-	Then I should see fired editchecks
+
+	#Then I should see fired editchecks
+	And I switch to "ReportViewer" window
 	And I take a screenshot
-	And I close report
+	And I switch to main window
 
 #----------------------------------------------------------------------------------------------------------------------------------------	
 @release_564_Patch11
@@ -530,37 +536,38 @@ Scenario: PB_8.5.4 When I run the Report, then query related data are displayed 
 
 #Stream-Audit Trail	
 	And I navigate to "Reporter"
-	And I select report "Stream-Audit Trail"
-And I set report parameter "Study" with table
+	And I select Report "Stream-Audit Trail"
+	And I set report parameter "Study" with table
 		| Name               | Environment |
-		| Edit Check Study 8 | Prod        |
+		| Edit Check Study 3 | Prod        |
 	And I set report parameter "Sites" with table
 		| Name              |
 		| Edit Check Site 8 |
 	And I set report parameter "Subjects" with table
-		| Name   |
-		| sub 10250 |
+		| Name           |
+		| sub{Var(num1)} |
 	And I set report parameter "Folders" with table
 		| Name      |
 		| Screening |
 	And I set report parameter "Forms" with table
-		| Name                 |
+		| Name                    |
 		| Concomitant Medications |
-		|                      form2|
+
 	And I click button "Submit Report"
-
+	And I switch to "Stream Report" window of type "StreamReport"
 	#And Im on windows
-
-	When I select "Parameter" to "Value", from the tabe below
-		|Parameter			|Value		|
-		|Separator			|.			|	
-		|File type			|.csv		|
-		|Export type		|attachment	|
-		|Save as Unicode	|Unchecked	|
-	And I open excel file
-	Then I should see queries on "Start Date" and "Current Axis Number" fields
+	And I type "." in "Separator"
+	And I choose ".csv (text/plain)" from "File type"
+	And I choose "attachment" from "Export type"
+	And I check "Save as Unicode"
+	And I click button "Download File"
 	And I take a screenshot
-	And I close report
+	And I switch to main window
+
+	#And I open excel file
+	#Then I should see queries on "Start Date" and "Current Axis Number" fields
+	#And I take a screenshot
+	#And I close report
 	
 #----------------------------------------------------------------------------------------------------------------------------------------	
 @release_564_Patch11
@@ -570,16 +577,16 @@ Scenario: PB_8.5.5 When I run the Report, then query related data are displayed 
 
 #Stream-Query Detail	
 	And I navigate to "Reporter"
-	And I select report "Stream-Query Detail"
+	And I select Report "Stream-Query Detail"
 	And I set report parameter "Study" with table
 		| Name               | Environment |
-		| Edit Check Study 8 | Prod        |
+		| Edit Check Study 3 | Prod        |
 	And I set report parameter "Sites" with table
 		| Name              |
 		| Edit Check Site 8 |
 	And I set report parameter "Subjects" with table
-		| Name   |
-		| sub 10250 |
+		| Name           |
+		| sub{Var(num1)} |
 	And I set report parameter "Folders" with table
 		| Name      |
 		| Screening |
@@ -588,16 +595,22 @@ Scenario: PB_8.5.5 When I run the Report, then query related data are displayed 
 		| Concomitant Medications       |
 
 	And I click button "Submit Report"
-	When I select "Parameter" to "Value", from the tabe below
-		|Parameter			|Value		|
-		|Separator			|.			|	
-		|File type			|.csv		|
-		|Export type		|attachment	|
-		|Save as Unicode	|Unchecked	|
-	And I open excel file
-	Then I should see queries on "Start Date" and "Current Axis Number" fields
+
+	And I switch to "Stream Report" window of type "StreamReport"
+	#And Im on windows
+	And I type "." in "Separator"
+	And I choose ".csv (text/plain)" from "File type"
+	And I choose "attachment" from "Export type"
+	And I uncheck "Save as Unicode"
+	And I click button "Download File"
 	And I take a screenshot
-	And I close report
+	And I switch to main window
+
+
+	#And I open excel file
+	#Then I should see queries on "Start Date" and "Current Axis Number" fields
+	#And I take a screenshot
+	#And I close report
 
 #----------------------------------------------------------------------------------------------------------------------------------------	
 @release_564_Patch11
@@ -607,45 +620,50 @@ Scenario: PB_8.5.6 When I run the Report, then query related data are displayed 
 
 #Stream-Edit Check Log Report	
 	And I navigate to "Reporter"
-	And I select report "Stream-Edit Check Log Report"
+	And I select Report "Stream-Edit Check Log Report"
 	And I set report parameter "Study" with table
 		| Name               | Environment |
-		| Edit Check Study 8 | Prod        |
-	And I set report parameter "Sites" with table
-		| Name              |
-		| Edit Check Site 8 |
-	And I set report parameter "Subjects" with table
-		| Name   |
-		| sub 10250 |
+		| Edit Check Study 3 | Prod        |
+	
 	And I set report parameter "Forms" with table
-		| Name                    |
+		| Form Name                    |
 		| Concomitant Medications       |
-
-	And I select checkbox "Edit Check" for "Check Type"
-	And I select checkbox Check "CheckExecution" for "Log Type"
+	And I set report parameter "Check Type" with table
+		| Check Type |
+		| Edit Check |
+	
+	And I set report parameter "Check Log Type" with table
+		| Check Log Type |
+		| CheckExecution |
+	
 	And I click button "Submit Report"
-	And I select "Parameter" to "Value", from the tabe below
-		|Parameter			|Value		|
-		|Separator			|.			|	
-		|File type			|.csv		|
-		|Export type		|attachment	|
-		|Save as Unicode	|Unchecked	|
-	When I open excel file
-	Then I should see fired editchecks
+	
+	And I switch to "Stream Report" window of type "StreamReport"
+	#And Im on windows
+	And I type "." in "Separator"
+	And I choose ".csv (text/plain)" from "File type"
+	And I choose "attachment" from "Export type"
+	And I uncheck "Save as Unicode"
+	And I click button "Download File"
 	And I take a screenshot
-	And I close report
+	And I switch to main window
+
+	#And I open excel file
+	#Then I should see queries on "Start Date" and "Current Axis Number" fields
+	#And I take a screenshot
+	#And I close report
 	
 #----------------------------------------------------------------------------------------------------------------------------------------	
 @release_564_Patch11
 @PB_8.6.1
 @Draft
 Scenario: PB_8.6.1 When I run the Report, then query related data are displayed in the report.J-Review verification.
-
+#MANUAL
 	And I navigate to "Reporter"
-	And I select report "J-Review"
+	And I select Report "J-Review"
 	And I set report parameter "Study" with table
 		| Name               | Environment |
-		| Edit Check Study 8 | Prod        |
+		| Edit Check Study 3 | Prod        |
 	And I click button "Submit Report"
 	And I select "Edit Check Study 8" "Prod" from "Studies"
 	And I click button "Reports"
@@ -664,7 +682,7 @@ Scenario: PB_8.6.1 When I run the Report, then query related data are displayed 
 @PB_8.7.1
 @Draft
 Scenario: PB_8.7.1 When I run the Report, then query related data are displayed in the report. BOXI report verification.
-
+#MANUAL
 	And I navigate to "Reporter"
 	And I select report "Business Objects XI"
 	And I set report parameter "Study" with table
@@ -695,139 +713,151 @@ Scenario: PB_8.7.1 When I run the Report, then query related data are displayed 
 @PB_8.8.1
 @Draft
 Scenario: PB_8.8.1 When I run the Report, then query related data are displayed in the report. Migrate Subject
+	
 	And I select Study "AM Edit Check Study" and Site "AM Edit Site"
-
-    And I create a Subject
-	| Field            | Value                                                          |
-	| Subject Number   | {NextSubjectNum<num1>(Edit Check Study 8,prod,Subject Number)} |
-	| Subject Initials |sub802                                                            |
+	And I create a Subject
+	| Field            | Data              |
+	| Subject Number   | {RndNum<num2>(5)} |
+	| Subject Initials | sub               |
+	And I note down "crfversion" to "ver#"
 	And I select Form "Mixed Form"
 	And I enter data in CRF and save
 	    |Field       |Data |
         |Standard 1  |6    |
 	    |Log Field 1 |5    |
 	    |Log Field 2 |2    |
-	And I verify "Log Field 1" field displays query opened with require response
-	And I answer the query on "Log Field 1" field
+	And I open log line 1
+	And I verify Requires Response Query with message "Query Opened on Log Field 1" is displayed on Field "Log Field 1"
+	And I answer the Query "Query Opened on Log Field 1" on Field "Log Field 1" with "answer query"
 	And I save the CRF page
-	And I close the query on "Log Field 1" field
+	And I open log line 1
+	And I close the Query "Query Opened on Log Field 1" on Field "Log Field 1"
 	And I save the CRF page
-	And I note CRF Version "<Source CRF Version1>"
+	#And I note CRF Version "<Source CRF Version1>"
 	And I take a screenshot
 	
-	And I select site "AM Edit Site"
+	And I select Site "AM Edit Site" in "Header"
     And I create a Subject
-	| Field            | Value                                                          |
-	| Subject Number   | {NextSubjectNum<num1>(Edit Check Study 8,prod,Subject Number)} |
-	| Subject Initials |sub803                                                            |
+		| Field            | Data              |
+		| Subject Number   | {RndNum<num3>(5)} |
+		| Subject Initials | sub               |
 	And I select Form "Mixed Form"
 	And I enter data in CRF and save
-And I save the CRF page
 	    |Field       |Data |
         |Standard 1  |6    |
 	    |Log Field 1 |5    |
 	    |Log Field 2 |2    |
-	And I verify "Log Field 1" field displays query opened with require response	
-	And I answer the query on "Log Field 1" field
+	And I open log line 1
+	And I verify Requires Response Query with message "Query Opened on Log Field 1" is displayed on Field "Log Field 1"	
+	And I answer the Query "Query Opened on Log Field 1" on Field "Log Field 1" with "answer query"
 	And I save the CRF page
+	And I open log line 1
 	And I enter data in CRF and save
 		|Field       |Data |
         |Standard 1  |5    |
-	And I close the query on "Log Field 1" field
+	And I open log line 1
+	And I close the Query "Query Opened on Log Field 1" on Field "Log Field 1"
 	And I save the CRF page
-	And I note CRF Version "<Source CRF Version1>"
+	#And I note CRF Version "<Source CRF Version1>"
 	And I take a screenshot
 	
 	And I navigate to "Home"
 	And I navigate to "Architect"
 	And I select "AM Edit Check Study" in "Active Projects"
-	And I select "Draft123" in "CRF Drafts"
+	And I create Draft "Draft {RndNum<d#>(5)}" from Project "AM Edit Check Study" and Version "V1 ({Var(ver#)})"
+
 	And I navigate to "Edit Checks"
 	And I inactivate edit check "Mixed Form Query"
 
-	And I select Draft "Draft123" in "Header"
-
-
-	And I publish CRF Version "Target{RndNum<num1>(3)}"
-
+	And I select Draft "Draft {Var(num1)}" in "Header"
+	And I publish CRF Version "Target{RndNum<TV#>(3)}"
+	And I note down "crfversion" to "newversion#"
 	And I select Study "AM Edit Check Study" in "Header"
 	And I navigate to "Amendment Manager"
-	And I choose "V1 (25)" from "Source CRF"
-	And I choose "Target003 (39)" from "Target CRF"
+	And I choose "V1 ({Var(ver#)})" from "Source CRF"
+	And I choose "{Var(newversion#)}" from "Target CRF"
 	And I click button "Create Plan"
 	And I take a screenshot
 	And I navigate to "Execute Plan"
 	And I migrate all Subjects
 	And I select Migration Results and verify Job Status is set to Complete
 	And I take a screenshot
-
 	
 	And I navigate to "Home"
-	And I select "AM Edit Check Study"
-	And I select site "AM Edit Site"
-    And I select a subject "sub802"
+	And I select Study "AM Edit Check Study" and Site "AM Edit Site"
+    And I select a Subject "sub{Var(num2)}"
 	And I select Form "Mixed Form"
+	And I open the last log line
 	And I enter data in CRF and save
 	    |Field       |Data |
 	    |Log Field 1 |4    |
-	And I verify new query did not fire on "Log Field 1" field
-	And I add a new log line, enter and save the data, from the table below	    
+	And I verify Query with message "Query Opened on Log Field 1" is not displayed on Field "Log Field 1"
+	#And I verify new query did not fire on "Log Field 1" field
+	And I enter data in CRF on a new log line and save
 		|Field       |Data |
 	    |Log Field 1 |3    |
 	    |Log Field 2 |2    |
-	And I verify new query did not fire on "Log Field 1" field
+	And I open the last log line
+	And I verify Query with message "Query Opened on Log Field 1" is not displayed on Field "Log Field 1"
 	And I take a screenshot
 	
-	And I select site "AM Edit Site"
-    And I select a subject "sub803"
+	And I select Site "AM Edit Site" in "Header"
+    And I select a Subject "sub{Var(num3)}"
 	And I select Form "Mixed Form"
+	And I open the last log line
 	And I enter data in CRF and save
 		|Field       |Data |
         |Standard 1  |8	   |
 	And I save the CRF page	
-	And I verify new query did not fire on "Log Field 1" field
-	And I add a new log line, enter and save the data, from the table below	    
+	And I verify Query with message "Query Opened on Log Field 1" is not displayed on Field "Log Field 1"
+	And I enter data in CRF on a new log line and save 
 		|Field       |Data |
 	    |Log Field 1 |6    |
 	    |Log Field 2 |2    |
-	And I verify new query did not fire on "Log Field 1" field
+	And I open the last log line
+	And I verify Query with message "Query Opened on Log Field 1" is not displayed on Field "Log Field 1"
 	And I take a screenshot
 	
 	And I navigate to "Home"
 	And I navigate to "Architect"
-	And I navigate to "AM Edit Check Study"
-	And I navigate to "Draft 1"
+	And I select "AM Edit Check Study" in "Active Projects"
+	And I select "Draft {Var(d#)}" in "CRF Drafts"
+
 	And I navigate to "Edit Checks"
-	And I select edit image for "Mixed Form Query" Edit Check
-	And I select checkbox "Active"
-	And I select  link "Update"
-	And I navigate to "Draft 1"	
-	And I publish CRF Version
-	And I note CRF Version "<Target CRF Version2>"
-	And I navigate to "AM Edit Check Study"
+	And I activate edit check "Mixed Form Query"
+
+	And I select Draft "Draft {Var(d#)}" in "Header"
+	And I publish CRF Version "Target{RndNum<TV#>(3)}"
+	And I note down "crfversion" to "newversion1#"
+	And I select Study "AM Edit Check Study" in "Header"
 	And I navigate to "Amendment Manager"
-	And I select "<Target CRF Version1>" from dropdown "Source CRF"
-	And I select "<Target CRF Version2>" from dropdown "Target CRF"
+	And I choose "{Var(newversion#)}" from "Source CRF"
+	And I choose "{Var(newversion1#)}" from "Target CRF"
 	And I click button "Create Plan"
 	And I navigate to "Exceute Plan"
-	And I Migrate "All Subjects"
+	And I migrate all Subjects
 	And I select Migration Results and verify Job Status is set to Complete
 	And I take a screenshot
 	
 	And I navigate to "Home"
-	And I select "AM Edit Check Study"
-	And I select site "AM Edit Site"
-    And I select a subject "sub802"
+	And I select Study "AM Edit Check Study" and Site "AM Edit Site"
+    And I select a Subject "sub{Var(num2)}"
 	And I select Form "Mixed Form"
-	And I verify new query did fire on "Log Field 1" field with require response on the first log line
-	And I verify new query did fire on "Log Field 1" field with require response on the second log line
+	And I open log line 1
+	And I verify Query with message "Query Opened on Log Field 1" is displayed on Field "Log Field 1"
+	And I click button "Cancel"
+	And I open log line 2
+	And I verify Query with message "Query Opened on Log Field 1" is displayed on Field "Log Field 1"
 	And I take a screenshot
 	
-	And I select site "AM Edit Site"
-    And I select a subject "sub803"
+	And I select Site "AM Edit Site" in "Header"
+    And I select a Subject "sub{Var(num3)}"
 	And I select Form "Mixed Form"
-	And I verify new query did fire on "Log Field 1" field with require response on the first log line
-	And I verify new query did fire on "Log Field 1" field with require response on the second log line
+	And I open log line 1
+	And I verify Query with message "Query Opened on Log Field 1" is displayed on Field "Log Field 1"
+	And I click button "Cancel"
+	And I open log line 2
+	And I verify Query with message "Query Opened on Log Field 1" is displayed on Field "Log Field 1"
 	And I take a screenshot
 	
 #----------------------------------------------------------------------------------------------------------------------------------------	
@@ -837,43 +867,44 @@ And I save the CRF page
 Scenario: PB_8.9.1 When I run the Report, then query related data are displayed in the report. Publish Checks
 
 	And I navigate to "Architect"
-	And I navigate to "AM Edit Check Study"
+	And I select "AM Edit Check Study" in "Active Projects"
 	And I navigate to "Draft 1"
-	And I publish and push CRF Version
-	And I note CRF Version "<Publish CRF Version1>"
-	And I publish CRF Version
-	And I note CRF Version "<Publish CRF Version2>"
-	And I publish CRF Version
-	And I note CRF Version "<Publish CRF Version3>"
+	And I publish CRF Version "Version1{RndNum<num1>(3)}"
+	And I note down "crfversion" to "newversion1"
+	And I publish CRF Version "Version2{RndNum<num2>(3)}"
+	And I note down "crfversion" to "newversion2"
+	And I publish CRF Version "Version3{RndNum<num3>(3)}"
+	And I note down "crfversion" to "newversion3"
 	
 	And I navigate to "Home"
-	And I select "AM Edit Check Study"
-	And I select site "AM Edit Site"
+	And I select Study "AM Edit Check Study" and Site "AM Edit Site"
     And I create a Subject
-	| Field            | Value                                                          |
-	| Subject Number   | {NextSubjectNum<num1>(Edit Check Study 8,prod,Subject Number)} |
-	| Subject Initials |sub804                                                            |
+		| Field            | Value             |
+		| Subject Number   | {RndNum<num4>(5)} |
+		| Subject Initials | sub               |
 	And I select Form "Mixed Form"
 	And I enter data in CRF and save
-And I save the CRF page
 	    |Field       |Data |
         |Standard 1  |6    |
 	    |Log Field 1 |5    |
 	    |Log Field 2 |2    |
-	And I verify "Log Field 1" field displays query opened with require response
+	And I open the last log line
+	And I verify Query with message "Query Opened on Log Field 1" is displayed on Field "Log Field 1"
 	And I take a screenshot
-	And I answer the query on "Log Field 1" field
+	And I answer the Query "Query Opened on Log Field 1" on Field "Log Field 1" with "answer query"
 	And I save the CRF page
-	And I close the query on "Log Field 1" field
+	And I open the last log line
+	And I close the Query "Query Opened on Log Field 1" on Field "Log Field 1"
 	And I save the CRF page
+	And I open the last log line
 	And I take a screenshot
 	
 	And I navigate to "Home"
 	And I navigate to "Architect"
-	And I navigate to "AM Edit Check Study"
+	And I select "AM Edit Check Study" in "Active Projects"
 	And I navigate to "Pulish Checks"
-	And I select "<Publish CRF Version1>" from dropdown "Current CRF Version"
-	And I select "<Publish CRF Version2>" from dropdown "Reference CRF Version"
+	And I select "{Var(newversion1)}" from "Current CRF Version"
+	And I select "{Var(newversion2)}" from "Reference CRF Version"
 	And I click button "Create Plan"
 	And I check "Inactivate" checkbox for "Mixed Form Query" edit check
 	And I navigate to "Save"
@@ -883,23 +914,22 @@ And I save the CRF page
 	And I take a screenshot
 	
 	And I navigate to "Home"
-	And I select "AM Edit Check Study"
-	And I select site "AM Edit Site"
-    And I select a subject "sub804"
+	And I select Study "AM Edit Check Study" and Site "AM Edit Site"
+    And I select a Subject "sub{Var(num4)}"
 	And I select Form "Mixed Form"
 	And I enter data in CRF and save
 		|Field       |Data |
         |Standard 1  |7    |
-	And I save the CRF page		
-	And I verify new query did not fire on "Log Field 1" field
+	And I open the last log line
+	And I verify Query with message "Query Opened on Log Field 1" is not displayed on Field "Log Field 1"
 	And I take a screenshot
 	
 	And I navigate to "Home"
 	And I navigate to "Architect"
-	And I navigate to "AM Edit Check Study"
+	And I select "AM Edit Check Study" in "Active Projects"
 	And I navigate to "Pulish Checks"
-	And I select "<Publish CRF Version1>" from dropdown "Current CRF Version"
-	And I select "<Publish CRF Version3>" from dropdown "Reference CRF Version"
+	And I select "{Var(newversion1)}" from "Current CRF Version"
+	And I select "{Var(newversion3)}" from "Reference CRF Version"
 	And I click button "Create Plan"
 	And I check "Publish" checkbox for "Mixed Form Query" edit check
 	And I navigate to "Save"
@@ -910,11 +940,12 @@ And I save the CRF page
 
 	And I navigate to "Home"
 	And I select "AM Edit Check Study"
-	And I select site "AM Edit Site"
-    And I select a subject "sub804"
+	And I select Study "AM Edit Check Study" and Site "AM Edit Site"
+    And I select a Subject "sub{Var(num4)}"
 	And I select Form "Mixed Form"
-	And I verify new query did fire on "Log Field 1" field
-	And I answer the query on "Log Field 1" field
+	And I open the last log line
+	And I verify Query with message "Query Opened on Log Field 1" is displayed on Field "Log Field 1"
+	And I answer the Query "Query Opened on Log Field 1" on Field "Log Field 1" with "answer query"
 	And I save the CRF page
 	And I take a screenshot
 	And I close the query on "Log Field 1" field
@@ -936,9 +967,9 @@ Scenario: PB_8.10.1 When I run the Report, then query related data are displayed
 	And I select "Edit Check Study 8"
 	And I select site "Edit Check Site 8"
     And I create a Subject
-	| Field            | Value                                                          |
-	| Subject Number   | {NextSubjectNum<num1>(Edit Check Study 8,prod,Subject Number)} |
-	| Subject Initials |sub805                                                            |
+	| Field            | Value             |
+	| Subject Number   | {RndNum<num1>(5)} |
+	| Subject Initials | sub               |
 	And I select Form "Mixed Form"
 	And I enter data in CRF and save
 	    |Field       |Data |
