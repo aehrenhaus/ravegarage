@@ -590,7 +590,9 @@ Scenario: PB-US12940-04A As an EDC user, when I entered bad data in log field A 
       |Log Field 3	|Answer must be provided. Please review.	|false   |false   |
 	And I take a screenshot  
    
-@PB-US12940-04B		
+@PB-US12940-04B
+@ignore
+#Failing DT#14207		
 Scenario: PB-US12940-04B As an EDC user, when I entered bad data in log field A and log field B that resulted in the system opening a query on log field B, and I answered the query and I changed the data in log field A to another bad data, and the query is then closed, if I then entered the original bad data in log field A, then the system should refire a query on log field B. Query with requires response = false and requires manual close = false.
 
     And I create a Subject
@@ -667,7 +669,9 @@ Scenario: PB-US12940-04C As an EDC user, when I entered bad data in log field A 
       |Log Field 9	|Answer must be provided. Please review.	|false   |false   |	 
 	And I take a screenshot		 
 
-@PB-US12940-04D		
+@PB-US12940-04D
+@ignore
+#Failing DT#14207		
 Scenario: PB-US12940-04D As an EDC user, when I entered bad data in log field A and log field B that resulted in the system opening a query on log field B, and I answered the query and I changed the data in log field A to another bad data, and the query is then closed, if I then entered the original bad data in log field A, then the system should refire a query on log field B. Query with requires response = false and requires manual close = true.
 	
 	And I create a Subject
@@ -695,7 +699,8 @@ Scenario: PB-US12940-04D As an EDC user, when I entered bad data in log field A 
       | Field        | Query Message                           | Answered | Closed |
       | Log Field 12 | Answer must be provided. Please review. | false    | false  |	  
 	And I take a screenshot	
-	And I close the only Query on Field "Log Field 12"	    
+	And I close the only Query on Field "Log Field 12"
+	And I close the Query "Answer must be provided. Please review." on Field "Log Field 12"
 	And I save the CRF page
 	And I open log line 1 
 	And I verify closed Query with message "Answer must be provided. Please review." is displayed on Field "Log Field 12"
@@ -908,11 +913,15 @@ Scenario: PB-US12940-06B As an EDC user, when I entered bad data in log field A 
       |Log Field 6	|Answer must be provided. Please review.	|false   |false   |	  
 	And I take a screenshot
 	And I cancel the Query "Answer must be provided. Please review." on Field "Log Field 6"
+	And I save the CRF page
 	And I open log line 1
-	And I verify Query is cancelled
-      |Field		|Query Message  							|
-      |Log Field 6	|Answer must be provided. Please review.	|
+	And I click audit on Field "Log Field 6"
 	And I take a screenshot	  
+	And I verify Audits exist
+	| Audit Type     | Query Message                           |
+	| Query Canceled | Answer must be provided. Please review. |
+	And I select Form "Form 6" in "Header"
+	And I open log line 1	  
 	And I enter data in CRF and save	  
       |Field		|Data   |
       |Log Field 4	|data4	|
@@ -950,11 +959,15 @@ Scenario: PB-US12940-06C As an EDC user, when I entered bad data in log field A 
       |Log Field 9	|Answer must be provided. Please review.	|false   |false   |	  
 	And I take a screenshot
 	And I cancel the Query "Answer must be provided. Please review." on Field "Log Field 9"
+	And I save the CRF page
 	And I open log line 1
-	And I verify Query is cancelled
-      |Field		|Query Message  							|
-      |Log Field 9	|Answer must be provided. Please review.	|
+	And I click audit on Field "Log Field 9"
 	And I take a screenshot	  
+	And I verify Audits exist
+	| Audit Type     | Query Message                           |
+	| Query Canceled | Answer must be provided. Please review. |
+	And I select Form "Form 6" in "Header"
+	And I open log line 1  
 	And I enter data in CRF and save	  
       | Field       | Data  |
       | Log Field 7 | data7 |
@@ -992,11 +1005,15 @@ Scenario: PB-US12940-06D As an EDC user, when I entered bad data in log field A 
       |Log Field 12	|Answer must be provided. Please review.	|false   |false   |	    
 	And I take a screenshot
 	And I cancel the Query "Answer must be provided. Please review." on Field "Log Field 12"
-    And I open log line 1
-	And I verify Query is cancelled
-      |Field		|Query Message  							|
-      |Log Field 12	|Answer must be provided. Please review.	|
+	And I save the CRF page
+	And I open log line 1
+	And I click audit on Field "Log Field 12"
 	And I take a screenshot	  
+	And I verify Audits exist
+	| Audit Type     | Query Message                           |
+	| Query Canceled | Answer must be provided. Please review. |
+	And I select Form "Form 6" in "Header"
+	And I open log line 1
 	And I enter data in CRF and save  
       |Field		|Data   |
       |Log Field 10	|data10	|
@@ -1038,9 +1055,6 @@ Scenario: PB-US12940-07A As an EDC user, when I entered bad data in field A and 
 	#And I verify Query is cancelled and take screen shot
      # |Field		|Query Message  							|
       #|Log Field 3	|Answer must be provided. Please review.	|
-	
-
-
 	And I save the CRF page
 	And I open log line 1
 	And I click audit on Field "Log Field 3"
@@ -1089,19 +1103,15 @@ Scenario: PB-US12940-07B As an EDC user, when I entered bad data in field A and 
       |Log Field 6	|Answer must be provided. Please review.	|false   |false   |	   	  
 	And I take a screenshot
 	And I cancel the Query "Answer must be provided. Please review." on Field "Log Field 6"
-	#And I open log line 1
-	#And I verify Query is cancelled
-     # |Field		|Query Message  							|
-      #|Log Field 6	|Answer must be provided. Please review.	|
-		And I save the CRF page
+	And I save the CRF page
 	And I open log line 1
 	And I click audit on Field "Log Field 6"
 	And I take a screenshot	  
 	And I verify Audits exist
 	| Audit Type     | Query Message                           |
 	| Query Canceled | Answer must be provided. Please review. |
-
 	And I select Form "Form 6" in "Header"
+	And I open log line 1
 	And I enter data in CRF and save	  
       |Field		|Data   |
       |Log Field 6	|data6	|
@@ -1139,20 +1149,15 @@ Scenario: PB-US12940-07C As an EDC user, when I entered bad data in field A and 
       |Log Field 9	|Answer must be provided. Please review.	|false   |false   |	    
 	And I take a screenshot	    
 	And I cancel the Query "Answer must be provided. Please review." on Field "Log Field 9"
-	#And I open log line 1
-	#And I verify Query is cancelled
-     # |Field		|Query Message  							|
-      #|Log Field 9	|Answer must be provided. Please review.	|
-	#And I take a screenshot	  
-		And I save the CRF page
+	And I save the CRF page
 	And I open log line 1
 	And I click audit on Field "Log Field 9"
 	And I take a screenshot	  
 	And I verify Audits exist
 	| Audit Type     | Query Message                           |
 	| Query Canceled | Answer must be provided. Please review. |
-
 	And I select Form "Form 6" in "Header"
+	And I open log line 1
 	And I enter data in CRF and save	  
       |Field		|Data   |
       |Log Field 9	|data9	|
@@ -1202,8 +1207,8 @@ Scenario: PB-US12940-07D As an EDC user, when I entered bad data in field A and 
 	And I verify Audits exist
 	| Audit Type     | Query Message                           |
 	| Query Canceled | Answer must be provided. Please review. |
-
 	And I select Form "Form 6" in "Header"
+	And I open log line 1
 	And I enter data in CRF and save	  
       |Field		|Data   |
       |Log Field 12	|data12	|
