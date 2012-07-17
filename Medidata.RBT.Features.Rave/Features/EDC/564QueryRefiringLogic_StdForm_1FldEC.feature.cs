@@ -1411,11 +1411,13 @@ this.FeatureBackground();
             TechTalk.SpecFlow.Table table88 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field",
                         "Query Message",
-                        "Closed"});
+                        "Closed",
+                        "Answered"});
             table88.AddRow(new string[] {
                         "Age 1",
                         "Age must be greater than or equal to 18 and less than or equal to 65. Please veri" +
                             "fy.",
+                        "true",
                         "true"});
 #line 432
  testRunner.And("I verify Query is not displayed", ((string)(null)), table88);
@@ -1782,11 +1784,13 @@ this.FeatureBackground();
             TechTalk.SpecFlow.Table table116 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field",
                         "Query Message",
-                        "Closed"});
+                        "Closed",
+                        "Answered"});
             table116.AddRow(new string[] {
                         "Age 4",
                         "Age must be greater than or equal to 18 and less than or equal to 65. Please veri" +
                             "fy.",
+                        "true",
                         "true"});
 #line 555
  testRunner.And("I verify Query is not displayed", ((string)(null)), table116);
@@ -1870,7 +1874,7 @@ this.FeatureBackground();
                         "Age must be greater than or equal to 18 and less than or equal to 65. Please veri" +
                             "fy.",
                         "false",
-                        "false"});
+                        "true"});
 #line 579
  testRunner.And("I verify Query is displayed", ((string)(null)), table121);
 #line 582
@@ -2116,11 +2120,13 @@ this.FeatureBackground();
             TechTalk.SpecFlow.Table table139 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field",
                         "Query Message",
-                        "Closed"});
+                        "Closed",
+                        "Answered"});
             table139.AddRow(new string[] {
                         "Age 3",
                         "Age must be greater than or equal to 18 and less than or equal to 65. Please veri" +
                             "fy.",
+                        "false",
                         "false"});
 #line 659
     testRunner.And("I verify Query is displayed", ((string)(null)), table139);

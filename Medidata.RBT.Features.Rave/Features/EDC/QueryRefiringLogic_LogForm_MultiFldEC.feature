@@ -1051,10 +1051,6 @@ Scenario: PB-US12940-07A As an EDC user, when I entered bad data in field A and 
       |Log Field 3	|Answer must be provided. Please review.	|false   |false   |	    
 	And I take a screenshot
 	And I cancel the Query "Answer must be provided. Please review." on Field "Log Field 3"
-	#And I open log line 1
-	#And I verify Query is cancelled and take screen shot
-     # |Field		|Query Message  							|
-      #|Log Field 3	|Answer must be provided. Please review.	|
 	And I save the CRF page
 	And I open log line 1
 	And I click audit on Field "Log Field 3"
@@ -1195,12 +1191,7 @@ Scenario: PB-US12940-07D As an EDC user, when I entered bad data in field A and 
        |Log Field 12	|Answer must be provided. Please review.	|false   |false   |		  
 	And I take a screenshot	
 	And I cancel the Query "Answer must be provided. Please review." on Field "Log Field 12"
-	#And I open log line 1
-	#And I verify Query is cancelled
-     # |Field		|Query Message  							|
-     # |Log Field 12	|Answer must be provided. Please review.	|
-	#And I take a screenshot
-		And I save the CRF page
+	And I save the CRF page
 	And I open log line 1
 	And I click audit on Field "Log Field 12"
 	And I take a screenshot	  
