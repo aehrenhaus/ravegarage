@@ -19,7 +19,7 @@ namespace Medidata.RBT.Features.Rave.Features.EDC
     [System.CodeDom.Compiler.GeneratedCodeAttribute("TechTalk.SpecFlow", "1.8.1.0")]
     [System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     [Microsoft.VisualStudio.TestTools.UnitTesting.TestClassAttribute()]
-    public partial class _564QueryRefiringLogic6_LogForm_2FldECFeature
+    public partial class _564QueryRefiringLogic_LogForm_2FldECFeature
     {
         
         private static TechTalk.SpecFlow.ITestRunner testRunner;
@@ -31,7 +31,7 @@ namespace Medidata.RBT.Features.Rave.Features.EDC
         public static void FeatureSetup(Microsoft.VisualStudio.TestTools.UnitTesting.TestContext testContext)
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
-            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "564QueryRefiringLogic6_LogForm_2FldEC", "  Query Refiring Logic\r\nAs a Rave user\r\nWhen I manually close a query or cancel, " +
+            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "564QueryRefiringLogic_LogForm_2FldEC", "  Query Refiring Logic\r\nAs a Rave user\r\nWhen I manually close a query or cancel, " +
                     "the query should not re-fire if the exact same data is entered into the system\r\n" +
                     "So that I don\'t have to re-enter the exact same response", ProgrammingLanguage.CSharp, ((string[])(null)));
             testRunner.OnFeatureStart(featureInfo);
@@ -48,9 +48,9 @@ namespace Medidata.RBT.Features.Rave.Features.EDC
         public virtual void TestInitialize()
         {
             if (((TechTalk.SpecFlow.FeatureContext.Current != null) 
-                        && (TechTalk.SpecFlow.FeatureContext.Current.FeatureInfo.Title != "564QueryRefiringLogic6_LogForm_2FldEC")))
+                        && (TechTalk.SpecFlow.FeatureContext.Current.FeatureInfo.Title != "564QueryRefiringLogic_LogForm_2FldEC")))
             {
-                Medidata.RBT.Features.Rave.Features.EDC._564QueryRefiringLogic6_LogForm_2FldECFeature.FeatureSetup(null);
+                Medidata.RBT.Features.Rave.Features.EDC._564QueryRefiringLogic_LogForm_2FldECFeature.FeatureSetup(null);
             }
         }
         
@@ -103,11 +103,12 @@ namespace Medidata.RBT.Features.Rave.Features.EDC
         }
         
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute(@"PB-US12940-01A As an EDC user, when I entered bad data in log field A and log field B that resulted in the system opening a query on log field B, and I answered the query and I changed the data in log field B to another bad data, and the query is then closed, if I entered good data in log field B and then again entered the same bad data in log field B as when the query was closed, then the system should not refire a query on log field B.")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "564QueryRefiringLogic6_LogForm_2FldEC")]
-        public virtual void PB_US12940_01AAsAnEDCUserWhenIEnteredBadDataInLogFieldAAndLogFieldBThatResultedInTheSystemOpeningAQueryOnLogFieldBAndIAnsweredTheQueryAndIChangedTheDataInLogFieldBToAnotherBadDataAndTheQueryIsThenClosedIfIEnteredGoodDataInLogFieldBAndThenAgainEnteredTheSameBadDataInLogFieldBAsWhenTheQueryWasClosedThenTheSystemShouldNotRefireAQueryOnLogFieldB_()
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("PB-US12940-01A")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "564QueryRefiringLogic_LogForm_2FldEC")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("PB-US12940-01A")]
+        public virtual void PB_US12940_01A()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo(@"PB-US12940-01A As an EDC user, when I entered bad data in log field A and log field B that resulted in the system opening a query on log field B, and I answered the query and I changed the data in log field B to another bad data, and the query is then closed, if I entered good data in log field B and then again entered the same bad data in log field B as when the query was closed, then the system should not refire a query on log field B.", new string[] {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("PB-US12940-01A", new string[] {
                         "PB-US12940-01A"});
 #line 25
 this.ScenarioSetup(scenarioInfo);
@@ -126,9 +127,9 @@ this.FeatureBackground();
             table2.AddRow(new string[] {
                         "Subject ID",
                         "SUB {Var(num1)}"});
-#line 28
+#line 29
  testRunner.And("I create a Subject", ((string)(null)), table2);
-#line 33
+#line 34
  testRunner.And("I select Form \"Form 9\"");
 #line hidden
             TechTalk.SpecFlow.Table table3 = new TechTalk.SpecFlow.Table(new string[] {
@@ -140,11 +141,11 @@ this.FeatureBackground();
             table3.AddRow(new string[] {
                         "Log Field 2",
                         "4"});
-#line 34
+#line 35
  testRunner.And("I enter data in CRF", ((string)(null)), table3);
-#line 38
- testRunner.When("I save the CRF page");
 #line 39
+ testRunner.When("I save the CRF page");
+#line 40
  testRunner.And("I open log line 1");
 #line hidden
             TechTalk.SpecFlow.Table table4 = new TechTalk.SpecFlow.Table(new string[] {
@@ -157,11 +158,11 @@ this.FeatureBackground();
                         "Log field 2 must be equal to Log field 1. Please verify.",
                         "False",
                         "False"});
-#line 40
+#line 41
  testRunner.Then("I verify Query is displayed", ((string)(null)), table4);
-#line 43
- testRunner.And("I take a screenshot");
 #line 44
+ testRunner.And("I take a screenshot");
+#line 45
  testRunner.When("I answer the Query \"Log field 2 must be equal to Log field 1. Please verify.\" on " +
                     "Field \"Log Field 2\" with \"Data will be changed.\"");
 #line hidden
@@ -171,11 +172,11 @@ this.FeatureBackground();
             table5.AddRow(new string[] {
                         "Log Field 2",
                         "3"});
-#line 45
+#line 46
  testRunner.And("I enter data in CRF", ((string)(null)), table5);
-#line 48
- testRunner.And("I save the CRF page");
 #line 49
+ testRunner.And("I save the CRF page");
+#line 50
  testRunner.And("I open log line 1");
 #line hidden
             TechTalk.SpecFlow.Table table6 = new TechTalk.SpecFlow.Table(new string[] {
@@ -188,16 +189,16 @@ this.FeatureBackground();
                         "Log field 2 must be equal to Log field 1. Please verify.",
                         "True",
                         "False"});
-#line 50
+#line 51
  testRunner.Then("I verify Query is displayed", ((string)(null)), table6);
-#line 53
- testRunner.And("I take a screenshot");
 #line 54
+ testRunner.And("I take a screenshot");
+#line 55
  testRunner.When("I close the Query \"Log field 2 must be equal to Log field 1. Please verify.\" on F" +
                     "ield \"Log Field 2\"");
-#line 55
- testRunner.And("I save the CRF page");
 #line 56
+ testRunner.And("I save the CRF page");
+#line 57
  testRunner.And("I open log line 1");
 #line hidden
             TechTalk.SpecFlow.Table table7 = new TechTalk.SpecFlow.Table(new string[] {
@@ -210,9 +211,9 @@ this.FeatureBackground();
                         "Log field 2 must be equal to Log field 1. Please verify.",
                         "True",
                         "True"});
-#line 57
+#line 58
  testRunner.Then("I verify Query is displayed", ((string)(null)), table7);
-#line 60
+#line 61
  testRunner.And("I take a screenshot");
 #line hidden
             TechTalk.SpecFlow.Table table8 = new TechTalk.SpecFlow.Table(new string[] {
@@ -221,11 +222,11 @@ this.FeatureBackground();
             table8.AddRow(new string[] {
                         "Log Field 2",
                         "5"});
-#line 61
+#line 62
  testRunner.When("I enter data in CRF", ((string)(null)), table8);
-#line 64
- testRunner.And("I save the CRF page");
 #line 65
+ testRunner.And("I save the CRF page");
+#line 66
  testRunner.And("I open log line 1");
 #line hidden
             TechTalk.SpecFlow.Table table9 = new TechTalk.SpecFlow.Table(new string[] {
@@ -238,9 +239,9 @@ this.FeatureBackground();
                         "Log field 2 must be equal to Log field 1. Please verify.",
                         "False",
                         "False"});
-#line 66
+#line 67
  testRunner.Then("I verify Query is not displayed", ((string)(null)), table9);
-#line 69
+#line 70
  testRunner.And("I take a screenshot");
 #line hidden
             TechTalk.SpecFlow.Table table10 = new TechTalk.SpecFlow.Table(new string[] {
@@ -249,9 +250,9 @@ this.FeatureBackground();
             table10.AddRow(new string[] {
                         "Log Field 2",
                         "3"});
-#line 70
+#line 71
  testRunner.When("I enter data in CRF", ((string)(null)), table10);
-#line 73
+#line 74
  testRunner.And("I save the CRF page");
 #line hidden
             TechTalk.SpecFlow.Table table11 = new TechTalk.SpecFlow.Table(new string[] {
@@ -264,9 +265,9 @@ this.FeatureBackground();
                         "Log field 2 must be equal to Log field 1. Please verify.",
                         "False",
                         "False"});
-#line 74
+#line 75
  testRunner.Then("I verify Query is not displayed", ((string)(null)), table11);
-#line 77
+#line 78
  testRunner.And("I take a screenshot");
 #line hidden
             this.ScenarioCleanup();
@@ -274,12 +275,13 @@ this.FeatureBackground();
         
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute(@"PB-US12940-01B As an EDC user, when I entered bad data in log field A and log field B that resulted in the system opening a query on log field B, and I changed the data in log field B to another bad data, and the new query will open, if I entered good data in log field B and then again entered the same bad data in log field B as when the query was closed, then the system should refire a query on log field B.")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "564QueryRefiringLogic6_LogForm_2FldEC")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "564QueryRefiringLogic_LogForm_2FldEC")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("PB-US12940-01B")]
         public virtual void PB_US12940_01BAsAnEDCUserWhenIEnteredBadDataInLogFieldAAndLogFieldBThatResultedInTheSystemOpeningAQueryOnLogFieldBAndIChangedTheDataInLogFieldBToAnotherBadDataAndTheNewQueryWillOpenIfIEnteredGoodDataInLogFieldBAndThenAgainEnteredTheSameBadDataInLogFieldBAsWhenTheQueryWasClosedThenTheSystemShouldRefireAQueryOnLogFieldB_()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo(@"PB-US12940-01B As an EDC user, when I entered bad data in log field A and log field B that resulted in the system opening a query on log field B, and I changed the data in log field B to another bad data, and the new query will open, if I entered good data in log field B and then again entered the same bad data in log field B as when the query was closed, then the system should refire a query on log field B.", new string[] {
                         "PB-US12940-01B"});
-#line 80
+#line 81
 this.ScenarioSetup(scenarioInfo);
 #line 14
 this.FeatureBackground();
@@ -296,9 +298,9 @@ this.FeatureBackground();
             table12.AddRow(new string[] {
                         "Subject ID",
                         "SUB {Var(num1)}"});
-#line 83
+#line 84
  testRunner.And("I create a Subject", ((string)(null)), table12);
-#line 88
+#line 89
  testRunner.And("I select Form \"Form 9\"");
 #line hidden
             TechTalk.SpecFlow.Table table13 = new TechTalk.SpecFlow.Table(new string[] {
@@ -310,11 +312,11 @@ this.FeatureBackground();
             table13.AddRow(new string[] {
                         "Log Field 4",
                         "4"});
-#line 89
+#line 90
  testRunner.And("I enter data in CRF", ((string)(null)), table13);
-#line 93
- testRunner.When("I save the CRF page");
 #line 94
+ testRunner.When("I save the CRF page");
+#line 95
  testRunner.And("I open log line 1");
 #line hidden
             TechTalk.SpecFlow.Table table14 = new TechTalk.SpecFlow.Table(new string[] {
@@ -327,9 +329,9 @@ this.FeatureBackground();
                         "Log field 4 must be equal to Log field 3. Please verify.",
                         "False",
                         "False"});
-#line 95
+#line 96
  testRunner.Then("I verify Query is displayed", ((string)(null)), table14);
-#line 98
+#line 99
  testRunner.And("I take a screenshot");
 #line hidden
             TechTalk.SpecFlow.Table table15 = new TechTalk.SpecFlow.Table(new string[] {
@@ -338,11 +340,11 @@ this.FeatureBackground();
             table15.AddRow(new string[] {
                         "Log Field 4",
                         "3"});
-#line 99
+#line 100
  testRunner.When("I enter data in CRF", ((string)(null)), table15);
-#line 102
- testRunner.And("I save the CRF page");
 #line 103
+ testRunner.And("I save the CRF page");
+#line 104
  testRunner.And("I open log line 1");
 #line hidden
             TechTalk.SpecFlow.Table table16 = new TechTalk.SpecFlow.Table(new string[] {
@@ -355,9 +357,9 @@ this.FeatureBackground();
                         "Log field 4 must be equal to Log field 3. Please verify.",
                         "False",
                         "False"});
-#line 104
+#line 105
  testRunner.Then("I verify Query is displayed", ((string)(null)), table16);
-#line 107
+#line 108
  testRunner.And("I take a screenshot");
 #line hidden
             TechTalk.SpecFlow.Table table17 = new TechTalk.SpecFlow.Table(new string[] {
@@ -366,11 +368,11 @@ this.FeatureBackground();
             table17.AddRow(new string[] {
                         "Log Field 4",
                         "5"});
-#line 108
+#line 109
  testRunner.And("I enter data in CRF", ((string)(null)), table17);
-#line 111
- testRunner.When("I save the CRF page");
 #line 112
+ testRunner.When("I save the CRF page");
+#line 113
  testRunner.And("I open log line 1");
 #line hidden
             TechTalk.SpecFlow.Table table18 = new TechTalk.SpecFlow.Table(new string[] {
@@ -379,9 +381,9 @@ this.FeatureBackground();
             table18.AddRow(new string[] {
                         "Log Field 4",
                         "Log field 4 must be equal to Log field 3. Please verify."});
-#line 113
+#line 114
  testRunner.Then("I verify Query is not displayed", ((string)(null)), table18);
-#line 116
+#line 117
  testRunner.And("I take a screenshot");
 #line hidden
             TechTalk.SpecFlow.Table table19 = new TechTalk.SpecFlow.Table(new string[] {
@@ -390,11 +392,11 @@ this.FeatureBackground();
             table19.AddRow(new string[] {
                         "Log Field 4",
                         "3"});
-#line 117
+#line 118
  testRunner.And("I enter data in CRF", ((string)(null)), table19);
-#line 120
- testRunner.When("I save the CRF page");
 #line 121
+ testRunner.When("I save the CRF page");
+#line 122
  testRunner.And("I open log line 1");
 #line hidden
             TechTalk.SpecFlow.Table table20 = new TechTalk.SpecFlow.Table(new string[] {
@@ -407,9 +409,9 @@ this.FeatureBackground();
                         "Log field 4 must be equal to Log field 3. Please verify.",
                         "False",
                         "False"});
-#line 122
+#line 123
  testRunner.Then("I verify Query is displayed", ((string)(null)), table20);
-#line 125
+#line 126
  testRunner.And("I take a screenshot");
 #line hidden
             this.ScenarioCleanup();
@@ -417,12 +419,13 @@ this.FeatureBackground();
         
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute(@"PB-US12940-01C As an EDC user, when I entered bad data in log field A and log field B that resulted in the system opening a query on log field B, and I answered the query and I changed the data in log field B to another bad data, and the query is then closed, if I entered good data in log field B and then again entered the same bad data in log field B as when the query was closed, then the system should refire a query on log field B.")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "564QueryRefiringLogic6_LogForm_2FldEC")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "564QueryRefiringLogic_LogForm_2FldEC")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("PB-US12940-01C")]
         public virtual void PB_US12940_01CAsAnEDCUserWhenIEnteredBadDataInLogFieldAAndLogFieldBThatResultedInTheSystemOpeningAQueryOnLogFieldBAndIAnsweredTheQueryAndIChangedTheDataInLogFieldBToAnotherBadDataAndTheQueryIsThenClosedIfIEnteredGoodDataInLogFieldBAndThenAgainEnteredTheSameBadDataInLogFieldBAsWhenTheQueryWasClosedThenTheSystemShouldRefireAQueryOnLogFieldB_()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo(@"PB-US12940-01C As an EDC user, when I entered bad data in log field A and log field B that resulted in the system opening a query on log field B, and I answered the query and I changed the data in log field B to another bad data, and the query is then closed, if I entered good data in log field B and then again entered the same bad data in log field B as when the query was closed, then the system should refire a query on log field B.", new string[] {
                         "PB-US12940-01C"});
-#line 128
+#line 129
 this.ScenarioSetup(scenarioInfo);
 #line 14
 this.FeatureBackground();
@@ -439,9 +442,9 @@ this.FeatureBackground();
             table21.AddRow(new string[] {
                         "Subject ID",
                         "SUB {Var(num1)}"});
-#line 131
+#line 132
  testRunner.And("I create a Subject", ((string)(null)), table21);
-#line 136
+#line 137
  testRunner.And("I select Form \"Form 9\"");
 #line hidden
             TechTalk.SpecFlow.Table table22 = new TechTalk.SpecFlow.Table(new string[] {
@@ -453,11 +456,11 @@ this.FeatureBackground();
             table22.AddRow(new string[] {
                         "Log Field 6",
                         "4"});
-#line 137
+#line 138
  testRunner.When("I enter data in CRF", ((string)(null)), table22);
-#line 141
-    testRunner.And("I save the CRF page");
 #line 142
+    testRunner.And("I save the CRF page");
+#line 143
  testRunner.And("I open log line 1");
 #line hidden
             TechTalk.SpecFlow.Table table23 = new TechTalk.SpecFlow.Table(new string[] {
@@ -470,11 +473,11 @@ this.FeatureBackground();
                         "Log field 6 must be equal to Log field 5. Please verify.",
                         "False",
                         "False"});
-#line 143
+#line 144
  testRunner.Then("I verify Query is displayed", ((string)(null)), table23);
-#line 146
- testRunner.And("I take a screenshot");
 #line 147
+ testRunner.And("I take a screenshot");
+#line 148
  testRunner.When("I answer the Query \"Log field 6 must be equal to Log field 5. Please verify.\" on " +
                     "Field \"Log Field 6\" with \"Data will be changed.\"");
 #line hidden
@@ -484,11 +487,11 @@ this.FeatureBackground();
             table24.AddRow(new string[] {
                         "Log Field 6",
                         "3"});
-#line 148
+#line 149
  testRunner.And("I enter data in CRF", ((string)(null)), table24);
-#line 151
-    testRunner.And("I save the CRF page");
 #line 152
+    testRunner.And("I save the CRF page");
+#line 153
  testRunner.And("I open log line 1");
 #line hidden
             TechTalk.SpecFlow.Table table25 = new TechTalk.SpecFlow.Table(new string[] {
@@ -501,9 +504,9 @@ this.FeatureBackground();
                         "Log field 6 must be equal to Log field 5. Please verify.",
                         "False",
                         "False"});
-#line 153
+#line 154
  testRunner.Then("I verify Query is displayed", ((string)(null)), table25);
-#line 156
+#line 157
  testRunner.And("I take a screenshot");
 #line hidden
             TechTalk.SpecFlow.Table table26 = new TechTalk.SpecFlow.Table(new string[] {
@@ -512,11 +515,11 @@ this.FeatureBackground();
             table26.AddRow(new string[] {
                         "Log Field 6",
                         "5"});
-#line 157
+#line 158
  testRunner.When("I enter data in CRF", ((string)(null)), table26);
-#line 160
- testRunner.And("I save the CRF page");
 #line 161
+ testRunner.And("I save the CRF page");
+#line 162
  testRunner.And("I open log line 1");
 #line hidden
             TechTalk.SpecFlow.Table table27 = new TechTalk.SpecFlow.Table(new string[] {
@@ -525,9 +528,9 @@ this.FeatureBackground();
             table27.AddRow(new string[] {
                         "Log Field 6",
                         "Log field 6 must be equal to Log field 5. Please verify."});
-#line 162
+#line 163
  testRunner.Then("I verify Query is not displayed", ((string)(null)), table27);
-#line 165
+#line 166
  testRunner.And("I take a screenshot");
 #line hidden
             TechTalk.SpecFlow.Table table28 = new TechTalk.SpecFlow.Table(new string[] {
@@ -536,11 +539,11 @@ this.FeatureBackground();
             table28.AddRow(new string[] {
                         "Log Field 6",
                         "3"});
-#line 166
+#line 167
  testRunner.And("I enter data in CRF", ((string)(null)), table28);
-#line 169
- testRunner.And("I save the CRF page");
 #line 170
+ testRunner.And("I save the CRF page");
+#line 171
  testRunner.And("I open log line 1");
 #line hidden
             TechTalk.SpecFlow.Table table29 = new TechTalk.SpecFlow.Table(new string[] {
@@ -553,9 +556,9 @@ this.FeatureBackground();
                         "Log field 6 must be equal to Log field 5. Please verify.",
                         "False",
                         "False"});
-#line 171
+#line 172
  testRunner.Then("I verify Query is displayed", ((string)(null)), table29);
-#line 174
+#line 175
  testRunner.And("I take a screenshot");
 #line hidden
             this.ScenarioCleanup();
@@ -563,12 +566,13 @@ this.FeatureBackground();
         
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute(@"PB-US12940-01D As an EDC user, when I entered bad data in log field A and log field B that resulted in the system opening a query on log field B, and I answered the query and I changed the data in log field B to another bad data, and the query is then closed, if I entered good data in log field B and then again entered the same bad data in log field B as when the query was closed, then the system should not refire a query on log field B.")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "564QueryRefiringLogic6_LogForm_2FldEC")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "564QueryRefiringLogic_LogForm_2FldEC")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("PB-US12940-01D")]
         public virtual void PB_US12940_01DAsAnEDCUserWhenIEnteredBadDataInLogFieldAAndLogFieldBThatResultedInTheSystemOpeningAQueryOnLogFieldBAndIAnsweredTheQueryAndIChangedTheDataInLogFieldBToAnotherBadDataAndTheQueryIsThenClosedIfIEnteredGoodDataInLogFieldBAndThenAgainEnteredTheSameBadDataInLogFieldBAsWhenTheQueryWasClosedThenTheSystemShouldNotRefireAQueryOnLogFieldB_()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo(@"PB-US12940-01D As an EDC user, when I entered bad data in log field A and log field B that resulted in the system opening a query on log field B, and I answered the query and I changed the data in log field B to another bad data, and the query is then closed, if I entered good data in log field B and then again entered the same bad data in log field B as when the query was closed, then the system should not refire a query on log field B.", new string[] {
                         "PB-US12940-01D"});
-#line 177
+#line 178
 this.ScenarioSetup(scenarioInfo);
 #line 14
 this.FeatureBackground();
@@ -585,9 +589,9 @@ this.FeatureBackground();
             table30.AddRow(new string[] {
                         "Subject ID",
                         "SUB {Var(num1)}"});
-#line 180
+#line 181
  testRunner.And("I create a Subject", ((string)(null)), table30);
-#line 185
+#line 186
  testRunner.And("I select Form \"Form 9\"");
 #line hidden
             TechTalk.SpecFlow.Table table31 = new TechTalk.SpecFlow.Table(new string[] {
@@ -599,11 +603,11 @@ this.FeatureBackground();
             table31.AddRow(new string[] {
                         "Log Field 8",
                         "4"});
-#line 186
+#line 187
  testRunner.When("I enter data in CRF", ((string)(null)), table31);
-#line 190
- testRunner.And("I save the CRF page");
 #line 191
+ testRunner.And("I save the CRF page");
+#line 192
  testRunner.And("I open log line 1");
 #line hidden
             TechTalk.SpecFlow.Table table32 = new TechTalk.SpecFlow.Table(new string[] {
@@ -616,9 +620,9 @@ this.FeatureBackground();
                         "Log field 8 must be equal to Log field 7. Please verify.",
                         "False",
                         "False"});
-#line 192
+#line 193
  testRunner.Then("I verify Query is displayed", ((string)(null)), table32);
-#line 195
+#line 196
  testRunner.And("I take a screenshot");
 #line hidden
             TechTalk.SpecFlow.Table table33 = new TechTalk.SpecFlow.Table(new string[] {
@@ -627,11 +631,11 @@ this.FeatureBackground();
             table33.AddRow(new string[] {
                         "Log Field 8",
                         "3"});
-#line 196
+#line 197
  testRunner.When("I enter data in CRF", ((string)(null)), table33);
-#line 199
- testRunner.And("I save the CRF page");
 #line 200
+ testRunner.And("I save the CRF page");
+#line 201
  testRunner.And("I open log line 1");
 #line hidden
             TechTalk.SpecFlow.Table table34 = new TechTalk.SpecFlow.Table(new string[] {
@@ -644,16 +648,16 @@ this.FeatureBackground();
                         "Log field 8 must be equal to Log field 7. Please verify.",
                         "True",
                         "False"});
-#line 201
+#line 202
  testRunner.Then("I verify Query is displayed", ((string)(null)), table34);
-#line 204
- testRunner.And("I take a screenshot");
 #line 205
+ testRunner.And("I take a screenshot");
+#line 206
  testRunner.When("I close the Query \"Log field 8 must be equal to Log field 7. Please verify.\" on F" +
                     "ield \"Log Field 8\"");
-#line 206
- testRunner.And("I save the CRF page");
 #line 207
+ testRunner.And("I save the CRF page");
+#line 208
  testRunner.And("I open log line 1");
 #line hidden
             TechTalk.SpecFlow.Table table35 = new TechTalk.SpecFlow.Table(new string[] {
@@ -666,9 +670,9 @@ this.FeatureBackground();
                         "Log field 8 must be equal to Log field 7. Please verify.",
                         "True",
                         "True"});
-#line 208
+#line 209
  testRunner.Then("I verify Query is displayed", ((string)(null)), table35);
-#line 211
+#line 212
  testRunner.And("I take a screenshot");
 #line hidden
             TechTalk.SpecFlow.Table table36 = new TechTalk.SpecFlow.Table(new string[] {
@@ -677,11 +681,11 @@ this.FeatureBackground();
             table36.AddRow(new string[] {
                         "Log Field 8",
                         "5"});
-#line 212
+#line 213
  testRunner.When("I enter data in CRF", ((string)(null)), table36);
-#line 215
- testRunner.And("I save the CRF page");
 #line 216
+ testRunner.And("I save the CRF page");
+#line 217
  testRunner.And("I open log line 1");
 #line hidden
             TechTalk.SpecFlow.Table table37 = new TechTalk.SpecFlow.Table(new string[] {
@@ -690,7 +694,7 @@ this.FeatureBackground();
             table37.AddRow(new string[] {
                         "Log Field 8",
                         "Log field 8 must be equal to Log field 7. Please verify."});
-#line 217
+#line 218
  testRunner.Then("I verify Query is not displayed", ((string)(null)), table37);
 #line hidden
             TechTalk.SpecFlow.Table table38 = new TechTalk.SpecFlow.Table(new string[] {
@@ -699,11 +703,11 @@ this.FeatureBackground();
             table38.AddRow(new string[] {
                         "Log Field 8",
                         "3"});
-#line 220
+#line 221
  testRunner.When("I enter data in CRF", ((string)(null)), table38);
-#line 223
- testRunner.And("I save the CRF page");
 #line 224
+ testRunner.And("I save the CRF page");
+#line 225
  testRunner.And("I open log line 1");
 #line hidden
             TechTalk.SpecFlow.Table table39 = new TechTalk.SpecFlow.Table(new string[] {
@@ -716,9 +720,9 @@ this.FeatureBackground();
                         "Log field 8 must be equal to Log field 7. Please verify.",
                         "True",
                         "True"});
-#line 225
+#line 226
  testRunner.Then("I verify Query is displayed", ((string)(null)), table39);
-#line 228
+#line 229
  testRunner.And("I take a screenshot");
 #line hidden
             this.ScenarioCleanup();
@@ -726,13 +730,15 @@ this.FeatureBackground();
         
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute(@"PB-US12940-02A As an EDC user, when I entered bad data in log field A and log field B that resulted in the system opening a query on log field B, and I answered the query and I changed the data in log field B to another bad data, and the query is then closed, if I then entered the original bad data in log field B, then the system should refire a query on log field B.")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "564QueryRefiringLogic6_LogForm_2FldEC")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "564QueryRefiringLogic_LogForm_2FldEC")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("PB-US12940-02A")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("draft")]
         public virtual void PB_US12940_02AAsAnEDCUserWhenIEnteredBadDataInLogFieldAAndLogFieldBThatResultedInTheSystemOpeningAQueryOnLogFieldBAndIAnsweredTheQueryAndIChangedTheDataInLogFieldBToAnotherBadDataAndTheQueryIsThenClosedIfIThenEnteredTheOriginalBadDataInLogFieldBThenTheSystemShouldRefireAQueryOnLogFieldB_()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo(@"PB-US12940-02A As an EDC user, when I entered bad data in log field A and log field B that resulted in the system opening a query on log field B, and I answered the query and I changed the data in log field B to another bad data, and the query is then closed, if I then entered the original bad data in log field B, then the system should refire a query on log field B.", new string[] {
                         "PB-US12940-02A",
                         "draft"});
-#line 233
+#line 234
 this.ScenarioSetup(scenarioInfo);
 #line 14
 this.FeatureBackground();
@@ -749,9 +755,9 @@ this.FeatureBackground();
             table40.AddRow(new string[] {
                         "Subject ID",
                         "SUB {Var(num1)}"});
-#line 236
+#line 237
  testRunner.And("I create a Subject", ((string)(null)), table40);
-#line 241
+#line 242
  testRunner.And("I select Form \"Form 9\"");
 #line hidden
             TechTalk.SpecFlow.Table table41 = new TechTalk.SpecFlow.Table(new string[] {
@@ -763,11 +769,11 @@ this.FeatureBackground();
             table41.AddRow(new string[] {
                         "Log Field 2",
                         "4"});
-#line 242
+#line 243
  testRunner.When("I enter data in CRF", ((string)(null)), table41);
-#line 246
- testRunner.And("I save the CRF page");
 #line 247
+ testRunner.And("I save the CRF page");
+#line 248
  testRunner.And("I open log line 1");
 #line hidden
             TechTalk.SpecFlow.Table table42 = new TechTalk.SpecFlow.Table(new string[] {
@@ -780,11 +786,11 @@ this.FeatureBackground();
                         "Log field 2 must be equal to Log field 1. Please verify.",
                         "False",
                         "False"});
-#line 248
+#line 249
  testRunner.Then("I verify Query is displayed", ((string)(null)), table42);
-#line 251
- testRunner.And("I take a screenshot");
 #line 252
+ testRunner.And("I take a screenshot");
+#line 253
  testRunner.When("I answer the Query \"Log field 2 must be equal to Log field 1. Please verify.\" on " +
                     "Field \"Log Field 2\" with \"Data will be changed.\"");
 #line hidden
@@ -794,11 +800,11 @@ this.FeatureBackground();
             table43.AddRow(new string[] {
                         "Log Field 2",
                         "3"});
-#line 253
+#line 254
  testRunner.And("I enter data in CRF", ((string)(null)), table43);
-#line 256
- testRunner.And("I save the CRF page");
 #line 257
+ testRunner.And("I save the CRF page");
+#line 258
  testRunner.And("I open log line 1");
 #line hidden
             TechTalk.SpecFlow.Table table44 = new TechTalk.SpecFlow.Table(new string[] {
@@ -811,16 +817,16 @@ this.FeatureBackground();
                         "Log field 2 must be equal to Log field 1. Please verify.",
                         "True",
                         "False"});
-#line 258
+#line 259
  testRunner.Then("I verify Query is displayed", ((string)(null)), table44);
-#line 261
- testRunner.And("I take a screenshot");
 #line 262
+ testRunner.And("I take a screenshot");
+#line 263
  testRunner.When("I close the Query \"Log field 2 must be equal to Log field 1. Please verify.\" on F" +
                     "ield \"Log Field 2\"");
-#line 263
- testRunner.And("I save the CRF page");
 #line 264
+ testRunner.And("I save the CRF page");
+#line 265
  testRunner.And("I open log line 1");
 #line hidden
             TechTalk.SpecFlow.Table table45 = new TechTalk.SpecFlow.Table(new string[] {
@@ -833,9 +839,9 @@ this.FeatureBackground();
                         "Log field 2 must be equal to Log field 1. Please verify.",
                         "True",
                         "True"});
-#line 265
+#line 266
  testRunner.Then("I verify Query is displayed", ((string)(null)), table45);
-#line 268
+#line 269
     testRunner.And("I take a screenshot");
 #line hidden
             TechTalk.SpecFlow.Table table46 = new TechTalk.SpecFlow.Table(new string[] {
@@ -844,11 +850,11 @@ this.FeatureBackground();
             table46.AddRow(new string[] {
                         "Log Field 2",
                         "5"});
-#line 269
+#line 270
  testRunner.When("I enter data in CRF", ((string)(null)), table46);
-#line 272
- testRunner.And("I save the CRF page");
 #line 273
+ testRunner.And("I save the CRF page");
+#line 274
  testRunner.And("I open log line 1");
 #line hidden
             TechTalk.SpecFlow.Table table47 = new TechTalk.SpecFlow.Table(new string[] {
@@ -857,9 +863,9 @@ this.FeatureBackground();
             table47.AddRow(new string[] {
                         "Log Field 2",
                         "Log field 2 must be equal to Log field 1. Please verify."});
-#line 274
+#line 275
  testRunner.Then("I verify Query is not displayed", ((string)(null)), table47);
-#line 277
+#line 278
  testRunner.And("I take a screenshot");
 #line hidden
             TechTalk.SpecFlow.Table table48 = new TechTalk.SpecFlow.Table(new string[] {
@@ -868,11 +874,11 @@ this.FeatureBackground();
             table48.AddRow(new string[] {
                         "Log Field 2",
                         "4"});
-#line 278
+#line 279
  testRunner.When("I enter data in CRF", ((string)(null)), table48);
-#line 281
-    testRunner.And("I save the CRF page");
 #line 282
+    testRunner.And("I save the CRF page");
+#line 283
  testRunner.And("I open log line 1");
 #line hidden
             TechTalk.SpecFlow.Table table49 = new TechTalk.SpecFlow.Table(new string[] {
@@ -885,9 +891,9 @@ this.FeatureBackground();
                         "Log field 2 must be equal to Log field 1. Please verify.",
                         "False",
                         "False"});
-#line 283
+#line 284
  testRunner.Then("I verify Query is displayed", ((string)(null)), table49);
-#line 286
+#line 287
  testRunner.And("I take a screenshot");
 #line hidden
             this.ScenarioCleanup();
@@ -895,12 +901,13 @@ this.FeatureBackground();
         
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute(@"PB-US12940-02B	As an EDC user, when I entered bad data in log field A and log field B that resulted in the system opening a query on log field B, and I answered the query and I changed the data in log field B to another bad data, and the query is then closed, if I then entered the original bad data in log field B, then the system should refire a query on log field B.")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "564QueryRefiringLogic6_LogForm_2FldEC")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "564QueryRefiringLogic_LogForm_2FldEC")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("PB-US12940-02B")]
         public virtual void PB_US12940_02BAsAnEDCUserWhenIEnteredBadDataInLogFieldAAndLogFieldBThatResultedInTheSystemOpeningAQueryOnLogFieldBAndIAnsweredTheQueryAndIChangedTheDataInLogFieldBToAnotherBadDataAndTheQueryIsThenClosedIfIThenEnteredTheOriginalBadDataInLogFieldBThenTheSystemShouldRefireAQueryOnLogFieldB_()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo(@"PB-US12940-02B	As an EDC user, when I entered bad data in log field A and log field B that resulted in the system opening a query on log field B, and I answered the query and I changed the data in log field B to another bad data, and the query is then closed, if I then entered the original bad data in log field B, then the system should refire a query on log field B.", new string[] {
                         "PB-US12940-02B"});
-#line 289
+#line 290
 this.ScenarioSetup(scenarioInfo);
 #line 14
 this.FeatureBackground();
@@ -917,9 +924,9 @@ this.FeatureBackground();
             table50.AddRow(new string[] {
                         "Subject ID",
                         "SUB {Var(num1)}"});
-#line 292
+#line 293
  testRunner.And("I create a Subject", ((string)(null)), table50);
-#line 297
+#line 298
  testRunner.And("I select Form \"Form 9\"");
 #line hidden
             TechTalk.SpecFlow.Table table51 = new TechTalk.SpecFlow.Table(new string[] {
@@ -931,11 +938,11 @@ this.FeatureBackground();
             table51.AddRow(new string[] {
                         "Log Field 4",
                         "4"});
-#line 298
+#line 299
  testRunner.When("I enter data in CRF", ((string)(null)), table51);
-#line 302
-    testRunner.And("I save the CRF page");
 #line 303
+    testRunner.And("I save the CRF page");
+#line 304
  testRunner.And("I open log line 1");
 #line hidden
             TechTalk.SpecFlow.Table table52 = new TechTalk.SpecFlow.Table(new string[] {
@@ -948,9 +955,9 @@ this.FeatureBackground();
                         "Log field 4 must be equal to Log field 3. Please verify.",
                         "False",
                         "False"});
-#line 304
+#line 305
  testRunner.Then("I verify Query is displayed", ((string)(null)), table52);
-#line 307
+#line 308
  testRunner.And("I take a screenshot");
 #line hidden
             TechTalk.SpecFlow.Table table53 = new TechTalk.SpecFlow.Table(new string[] {
@@ -959,11 +966,11 @@ this.FeatureBackground();
             table53.AddRow(new string[] {
                         "Log Field 4",
                         "3"});
-#line 308
+#line 309
  testRunner.When("I enter data in CRF", ((string)(null)), table53);
-#line 311
- testRunner.And("I save the CRF page");
 #line 312
+ testRunner.And("I save the CRF page");
+#line 313
  testRunner.And("I open log line 1");
 #line hidden
             TechTalk.SpecFlow.Table table54 = new TechTalk.SpecFlow.Table(new string[] {
@@ -976,7 +983,7 @@ this.FeatureBackground();
                         "Log field 4 must be equal to Log field 3. Please verify.",
                         "False",
                         "False"});
-#line 313
+#line 314
     testRunner.Then("I verify Query is displayed", ((string)(null)), table54);
 #line hidden
             TechTalk.SpecFlow.Table table55 = new TechTalk.SpecFlow.Table(new string[] {
@@ -985,11 +992,11 @@ this.FeatureBackground();
             table55.AddRow(new string[] {
                         "Log Field 4",
                         "5"});
-#line 316
+#line 317
  testRunner.When("I enter data in CRF", ((string)(null)), table55);
-#line 319
- testRunner.And("I save the CRF page");
 #line 320
+ testRunner.And("I save the CRF page");
+#line 321
  testRunner.And("I open log line 1");
 #line hidden
             TechTalk.SpecFlow.Table table56 = new TechTalk.SpecFlow.Table(new string[] {
@@ -998,9 +1005,9 @@ this.FeatureBackground();
             table56.AddRow(new string[] {
                         "Log Field 4",
                         "Log field 4 must be equal to Log field 3. Please verify."});
-#line 321
+#line 322
  testRunner.Then("I verify Query is not displayed", ((string)(null)), table56);
-#line 324
+#line 325
  testRunner.And("I take a screenshot");
 #line hidden
             TechTalk.SpecFlow.Table table57 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1009,11 +1016,11 @@ this.FeatureBackground();
             table57.AddRow(new string[] {
                         "Log Field 4",
                         "4"});
-#line 325
+#line 326
  testRunner.When("I enter data in CRF", ((string)(null)), table57);
-#line 328
- testRunner.And("I save the CRF page");
 #line 329
+ testRunner.And("I save the CRF page");
+#line 330
  testRunner.And("I open log line 1");
 #line hidden
             TechTalk.SpecFlow.Table table58 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1026,9 +1033,9 @@ this.FeatureBackground();
                         "Log field 4 must be equal to Log field 3. Please verify.",
                         "False",
                         "False"});
-#line 330
+#line 331
     testRunner.Then("I verify Query is displayed", ((string)(null)), table58);
-#line 333
+#line 334
     testRunner.And("I take a screenshot");
 #line hidden
             this.ScenarioCleanup();
@@ -1036,14 +1043,15 @@ this.FeatureBackground();
         
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute(@"As an EDC user, when I entered bad data in log field A and log field B that resulted in the system opening a query on log field B, and I answered the query and I changed the data in log field B to another bad data, and the query is then closed, if I then entered the original bad data in log field B, then the system should refire a query on log field B.")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "564QueryRefiringLogic6_LogForm_2FldEC")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "564QueryRefiringLogic_LogForm_2FldEC")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("PB-US12940-02C")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.IgnoreAttribute()]
         public virtual void AsAnEDCUserWhenIEnteredBadDataInLogFieldAAndLogFieldBThatResultedInTheSystemOpeningAQueryOnLogFieldBAndIAnsweredTheQueryAndIChangedTheDataInLogFieldBToAnotherBadDataAndTheQueryIsThenClosedIfIThenEnteredTheOriginalBadDataInLogFieldBThenTheSystemShouldRefireAQueryOnLogFieldB_()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo(@"As an EDC user, when I entered bad data in log field A and log field B that resulted in the system opening a query on log field B, and I answered the query and I changed the data in log field B to another bad data, and the query is then closed, if I then entered the original bad data in log field B, then the system should refire a query on log field B.", new string[] {
                         "PB-US12940-02C",
                         "ignore"});
-#line 338
+#line 339
 this.ScenarioSetup(scenarioInfo);
 #line 14
 this.FeatureBackground();
@@ -1060,9 +1068,9 @@ this.FeatureBackground();
             table59.AddRow(new string[] {
                         "Subject ID",
                         "SUB {Var(num1)}"});
-#line 341
+#line 342
  testRunner.And("I create a Subject", ((string)(null)), table59);
-#line 346
+#line 347
  testRunner.And("I select Form \"Form 9\"");
 #line hidden
             TechTalk.SpecFlow.Table table60 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1074,11 +1082,11 @@ this.FeatureBackground();
             table60.AddRow(new string[] {
                         "Log Field 6",
                         "4"});
-#line 347
+#line 348
  testRunner.When("I enter data in CRF", ((string)(null)), table60);
-#line 351
-    testRunner.And("I save the CRF page");
 #line 352
+    testRunner.And("I save the CRF page");
+#line 353
  testRunner.And("I open log line 1");
 #line hidden
             TechTalk.SpecFlow.Table table61 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1091,11 +1099,11 @@ this.FeatureBackground();
                         "Log field 6 must be equal to Log field 5. Please verify.",
                         "False",
                         "False"});
-#line 353
+#line 354
  testRunner.Then("I verify Query is displayed", ((string)(null)), table61);
-#line 356
- testRunner.And("I take a screenshot");
 #line 357
+ testRunner.And("I take a screenshot");
+#line 358
  testRunner.When("I answer the Query \"Log field 6 must be equal to Log field 5. Please verify.\" on " +
                     "Field \"Log Field 6\" with \"Data will be changed.\"");
 #line hidden
@@ -1105,11 +1113,11 @@ this.FeatureBackground();
             table62.AddRow(new string[] {
                         "Log Field 6",
                         "3"});
-#line 358
+#line 359
  testRunner.And("I enter data in CRF", ((string)(null)), table62);
-#line 361
- testRunner.And("I save the CRF page");
 #line 362
+ testRunner.And("I save the CRF page");
+#line 363
  testRunner.And("I open log line 1");
 #line hidden
             TechTalk.SpecFlow.Table table63 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1122,9 +1130,9 @@ this.FeatureBackground();
                         "Log field 6 must be equal to Log field 5. Please verify.",
                         "False",
                         "False"});
-#line 363
+#line 364
  testRunner.Then("I verify Query is displayed", ((string)(null)), table63);
-#line 366
+#line 367
  testRunner.And("I take a screenshot");
 #line hidden
             TechTalk.SpecFlow.Table table64 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1133,11 +1141,11 @@ this.FeatureBackground();
             table64.AddRow(new string[] {
                         "Log Field 6",
                         "5"});
-#line 368
+#line 369
  testRunner.When("I enter data in CRF", ((string)(null)), table64);
-#line 371
-    testRunner.And("I save the CRF page");
 #line 372
+    testRunner.And("I save the CRF page");
+#line 373
  testRunner.And("I open log line 1");
 #line hidden
             TechTalk.SpecFlow.Table table65 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1146,9 +1154,9 @@ this.FeatureBackground();
             table65.AddRow(new string[] {
                         "Log Field 6",
                         "Log field 6 must be equal to Log field 5. Please verify."});
-#line 373
+#line 374
  testRunner.Then("I verify Query is not displayed", ((string)(null)), table65);
-#line 376
+#line 377
     testRunner.And("I take a screenshot");
 #line hidden
             TechTalk.SpecFlow.Table table66 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1157,11 +1165,11 @@ this.FeatureBackground();
             table66.AddRow(new string[] {
                         "Log Field 6",
                         "4"});
-#line 377
+#line 378
  testRunner.When("I enter data in CRF", ((string)(null)), table66);
-#line 380
- testRunner.And("I save the CRF page");
 #line 381
+ testRunner.And("I save the CRF page");
+#line 382
  testRunner.And("I open log line 1");
 #line hidden
             TechTalk.SpecFlow.Table table67 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1174,9 +1182,9 @@ this.FeatureBackground();
                         "Log field 6 must be equal to Log field 5. Please verify.",
                         "False",
                         "False"});
-#line 382
+#line 383
  testRunner.Then("I verify Query is displayed", ((string)(null)), table67);
-#line 385
+#line 386
  testRunner.And("I take a screenshot");
 #line hidden
             this.ScenarioCleanup();
@@ -1184,12 +1192,13 @@ this.FeatureBackground();
         
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute(@"PB-US12940-02D As an EDC user, when I entered bad data in log field A and log field B that resulted in the system opening a query on log field B, and I answered the query and I changed the data in log field B to another bad data, and the query is then closed, if I then entered the original bad data in log field B, then the system should refire a query on log field B.")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "564QueryRefiringLogic6_LogForm_2FldEC")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "564QueryRefiringLogic_LogForm_2FldEC")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("PB-US12940-02D")]
         public virtual void PB_US12940_02DAsAnEDCUserWhenIEnteredBadDataInLogFieldAAndLogFieldBThatResultedInTheSystemOpeningAQueryOnLogFieldBAndIAnsweredTheQueryAndIChangedTheDataInLogFieldBToAnotherBadDataAndTheQueryIsThenClosedIfIThenEnteredTheOriginalBadDataInLogFieldBThenTheSystemShouldRefireAQueryOnLogFieldB_()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo(@"PB-US12940-02D As an EDC user, when I entered bad data in log field A and log field B that resulted in the system opening a query on log field B, and I answered the query and I changed the data in log field B to another bad data, and the query is then closed, if I then entered the original bad data in log field B, then the system should refire a query on log field B.", new string[] {
                         "PB-US12940-02D"});
-#line 389
+#line 390
 this.ScenarioSetup(scenarioInfo);
 #line 14
 this.FeatureBackground();
@@ -1206,9 +1215,9 @@ this.FeatureBackground();
             table68.AddRow(new string[] {
                         "Subject ID",
                         "SUB {Var(num1)}"});
-#line 392
+#line 393
  testRunner.And("I create a Subject", ((string)(null)), table68);
-#line 397
+#line 398
  testRunner.And("I select Form \"Form 9\"");
 #line hidden
             TechTalk.SpecFlow.Table table69 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1220,11 +1229,11 @@ this.FeatureBackground();
             table69.AddRow(new string[] {
                         "Log Field 8",
                         "4"});
-#line 398
+#line 399
  testRunner.When("I enter data in CRF", ((string)(null)), table69);
-#line 402
-    testRunner.And("I save the CRF page");
 #line 403
+    testRunner.And("I save the CRF page");
+#line 404
  testRunner.And("I open log line 1");
 #line hidden
             TechTalk.SpecFlow.Table table70 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1237,9 +1246,9 @@ this.FeatureBackground();
                         "Log field 8 must be equal to Log field 7. Please verify.",
                         "False",
                         "False"});
-#line 404
+#line 405
  testRunner.Then("I verify Query is displayed", ((string)(null)), table70);
-#line 407
+#line 408
     testRunner.And("I take a screenshot");
 #line hidden
             TechTalk.SpecFlow.Table table71 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1248,11 +1257,11 @@ this.FeatureBackground();
             table71.AddRow(new string[] {
                         "Log Field 8",
                         "3"});
-#line 408
+#line 409
  testRunner.When("I enter data in CRF", ((string)(null)), table71);
-#line 411
- testRunner.And("I save the CRF page");
 #line 412
+ testRunner.And("I save the CRF page");
+#line 413
  testRunner.And("I open log line 1");
 #line hidden
             TechTalk.SpecFlow.Table table72 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1265,16 +1274,16 @@ this.FeatureBackground();
                         "Log field 8 must be equal to Log field 7. Please verify.",
                         "True",
                         "False"});
-#line 413
+#line 414
  testRunner.Then("I verify Query is displayed", ((string)(null)), table72);
-#line 416
-    testRunner.And("I take a screenshot");
 #line 417
+    testRunner.And("I take a screenshot");
+#line 418
  testRunner.When("I close the Query \"Log field 8 must be equal to Log field 7. Please verify.\" on F" +
                     "ield \"Log Field 8\"");
-#line 418
- testRunner.And("I save the CRF page");
 #line 419
+ testRunner.And("I save the CRF page");
+#line 420
  testRunner.And("I open log line 1");
 #line hidden
             TechTalk.SpecFlow.Table table73 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1287,9 +1296,9 @@ this.FeatureBackground();
                         "Log field 8 must be equal to Log field 7. Please verify.",
                         "False",
                         "False"});
-#line 420
+#line 421
  testRunner.Then("I verify Query is not displayed", ((string)(null)), table73);
-#line 423
+#line 424
     testRunner.And("I take a screenshot");
 #line hidden
             TechTalk.SpecFlow.Table table74 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1298,11 +1307,11 @@ this.FeatureBackground();
             table74.AddRow(new string[] {
                         "Log Field 8",
                         "5"});
-#line 424
+#line 425
  testRunner.When("I enter data in CRF", ((string)(null)), table74);
-#line 427
-    testRunner.And("I save the CRF page");
 #line 428
+    testRunner.And("I save the CRF page");
+#line 429
  testRunner.And("I open log line 1");
 #line hidden
             TechTalk.SpecFlow.Table table75 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1311,9 +1320,9 @@ this.FeatureBackground();
             table75.AddRow(new string[] {
                         "Log Field 8",
                         "Log field 8 must be equal to Log field 7. Please verify."});
-#line 429
+#line 430
  testRunner.Then("I verify Query is not displayed", ((string)(null)), table75);
-#line 432
+#line 433
     testRunner.And("I take a screenshot");
 #line hidden
             TechTalk.SpecFlow.Table table76 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1322,11 +1331,11 @@ this.FeatureBackground();
             table76.AddRow(new string[] {
                         "Log Field 8",
                         "4"});
-#line 433
+#line 434
  testRunner.When("I enter data in CRF", ((string)(null)), table76);
-#line 436
-    testRunner.And("I save the CRF page");
 #line 437
+    testRunner.And("I save the CRF page");
+#line 438
  testRunner.And("I open log line 1");
 #line hidden
             TechTalk.SpecFlow.Table table77 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1339,7 +1348,7 @@ this.FeatureBackground();
                         "Log field 8 must be equal to Log field 7. Please verify.",
                         "False",
                         "False"});
-#line 438
+#line 439
  testRunner.Then("I verify Query is displayed", ((string)(null)), table77);
 #line hidden
             this.ScenarioCleanup();
@@ -1347,12 +1356,13 @@ this.FeatureBackground();
         
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute(@"PB-US12940-03A As an EDC user, when I entered bad data in log field A and log field B that resulted in the system opening a query on log field B, and I answered the query without changing the data, and the query is then closed, if I then entered new bad data in log field B, then the system should refire a query on log field B.")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "564QueryRefiringLogic6_LogForm_2FldEC")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "564QueryRefiringLogic_LogForm_2FldEC")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("PB-US12940-03A")]
         public virtual void PB_US12940_03AAsAnEDCUserWhenIEnteredBadDataInLogFieldAAndLogFieldBThatResultedInTheSystemOpeningAQueryOnLogFieldBAndIAnsweredTheQueryWithoutChangingTheDataAndTheQueryIsThenClosedIfIThenEnteredNewBadDataInLogFieldBThenTheSystemShouldRefireAQueryOnLogFieldB_()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo(@"PB-US12940-03A As an EDC user, when I entered bad data in log field A and log field B that resulted in the system opening a query on log field B, and I answered the query without changing the data, and the query is then closed, if I then entered new bad data in log field B, then the system should refire a query on log field B.", new string[] {
                         "PB-US12940-03A"});
-#line 444
+#line 445
 this.ScenarioSetup(scenarioInfo);
 #line 14
 this.FeatureBackground();
@@ -1369,9 +1379,9 @@ this.FeatureBackground();
             table78.AddRow(new string[] {
                         "Subject ID",
                         "SUB {Var(num1)}"});
-#line 447
+#line 448
  testRunner.And("I create a Subject", ((string)(null)), table78);
-#line 452
+#line 453
  testRunner.And("I select Form \"Form 9\"");
 #line hidden
             TechTalk.SpecFlow.Table table79 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1383,11 +1393,11 @@ this.FeatureBackground();
             table79.AddRow(new string[] {
                         "Log Field 2",
                         "4"});
-#line 453
+#line 454
  testRunner.When("I enter data in CRF", ((string)(null)), table79);
-#line 457
-    testRunner.And("I save the CRF page");
 #line 458
+    testRunner.And("I save the CRF page");
+#line 459
  testRunner.And("I open log line 1");
 #line hidden
             TechTalk.SpecFlow.Table table80 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1400,11 +1410,11 @@ this.FeatureBackground();
                         "Log field 2 must be equal to Log field 1. Please verify.",
                         "False",
                         "False"});
-#line 459
+#line 460
  testRunner.Then("I verify Query is displayed", ((string)(null)), table80);
-#line 462
- testRunner.And("I take a screenshot");
 #line 463
+ testRunner.And("I take a screenshot");
+#line 464
  testRunner.When("I answer the Query \"Log field 2 must be equal to Log field 1. Please verify.\" on " +
                     "Field \"Log Field 2\" with \"Data will be changed.\"");
 #line hidden
@@ -1414,11 +1424,11 @@ this.FeatureBackground();
             table81.AddRow(new string[] {
                         "Log Field 2",
                         "3"});
-#line 464
+#line 465
  testRunner.And("I enter data in CRF", ((string)(null)), table81);
-#line 467
- testRunner.And("I save the CRF page");
 #line 468
+ testRunner.And("I save the CRF page");
+#line 469
  testRunner.And("I open log line 1");
 #line hidden
             TechTalk.SpecFlow.Table table82 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1431,16 +1441,16 @@ this.FeatureBackground();
                         "Log field 2 must be equal to Log field 1. Please verify.",
                         "True",
                         "False"});
-#line 469
+#line 470
  testRunner.Then("I verify Query is displayed", ((string)(null)), table82);
-#line 472
-    testRunner.And("I take a screenshot");
 #line 473
+    testRunner.And("I take a screenshot");
+#line 474
  testRunner.When("I close the Query \"Log field 2 must be equal to Log field 1. Please verify.\" on F" +
                     "ield \"Log Field 2\"");
-#line 474
-    testRunner.And("I save the CRF page");
 #line 475
+    testRunner.And("I save the CRF page");
+#line 476
  testRunner.And("I open log line 1");
 #line hidden
             TechTalk.SpecFlow.Table table83 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1453,9 +1463,9 @@ this.FeatureBackground();
                         "Log field 2 must be equal to Log field 1. Please verify.",
                         "False",
                         "False"});
-#line 476
+#line 477
  testRunner.Then("I verify Query is not displayed", ((string)(null)), table83);
-#line 479
+#line 480
     testRunner.And("I take a screenshot");
 #line hidden
             TechTalk.SpecFlow.Table table84 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1464,11 +1474,11 @@ this.FeatureBackground();
             table84.AddRow(new string[] {
                         "Log Field 2",
                         "5"});
-#line 480
+#line 481
  testRunner.And("I enter data in CRF", ((string)(null)), table84);
-#line 483
- testRunner.And("I save the CRF page");
 #line 484
+ testRunner.And("I save the CRF page");
+#line 485
  testRunner.And("I open log line 1");
 #line hidden
             TechTalk.SpecFlow.Table table85 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1481,9 +1491,9 @@ this.FeatureBackground();
                         "Log field 2 must be equal to Log field 1. Please verify.",
                         "False",
                         "False"});
-#line 485
+#line 486
  testRunner.Then("I verify Query is not displayed", ((string)(null)), table85);
-#line 488
+#line 489
     testRunner.And("I take a screenshot");
 #line hidden
             TechTalk.SpecFlow.Table table86 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1492,11 +1502,11 @@ this.FeatureBackground();
             table86.AddRow(new string[] {
                         "Log Field 2",
                         "7"});
-#line 489
+#line 490
  testRunner.And("I enter data in CRF", ((string)(null)), table86);
-#line 492
- testRunner.And("I save the CRF page");
 #line 493
+ testRunner.And("I save the CRF page");
+#line 494
  testRunner.And("I open log line 1");
 #line hidden
             TechTalk.SpecFlow.Table table87 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1509,9 +1519,9 @@ this.FeatureBackground();
                         "Log field 2 must be equal to Log field 1. Please verify.",
                         "False",
                         "False"});
-#line 494
+#line 495
  testRunner.Then("I verify Query is displayed", ((string)(null)), table87);
-#line 497
+#line 498
  testRunner.And("I take a screenshot");
 #line hidden
             this.ScenarioCleanup();
@@ -1519,12 +1529,13 @@ this.FeatureBackground();
         
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute(@"PB-US12940-03B	 As an EDC user, when I entered bad data in log field A and log field B that resulted in the system opening a query on log field B, and I answered the query without changing the data, and the query is then closed, if I then entered new bad data in log field B, then the system should refire a query on log field B.")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "564QueryRefiringLogic6_LogForm_2FldEC")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "564QueryRefiringLogic_LogForm_2FldEC")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("PB-US12940-03B")]
         public virtual void PB_US12940_03BAsAnEDCUserWhenIEnteredBadDataInLogFieldAAndLogFieldBThatResultedInTheSystemOpeningAQueryOnLogFieldBAndIAnsweredTheQueryWithoutChangingTheDataAndTheQueryIsThenClosedIfIThenEnteredNewBadDataInLogFieldBThenTheSystemShouldRefireAQueryOnLogFieldB_()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo(@"PB-US12940-03B	 As an EDC user, when I entered bad data in log field A and log field B that resulted in the system opening a query on log field B, and I answered the query without changing the data, and the query is then closed, if I then entered new bad data in log field B, then the system should refire a query on log field B.", new string[] {
                         "PB-US12940-03B"});
-#line 500
+#line 501
 this.ScenarioSetup(scenarioInfo);
 #line 14
 this.FeatureBackground();
@@ -1541,9 +1552,9 @@ this.FeatureBackground();
             table88.AddRow(new string[] {
                         "Subject ID",
                         "SUB {Var(num1)}"});
-#line 503
+#line 504
  testRunner.And("I create a Subject", ((string)(null)), table88);
-#line 508
+#line 509
  testRunner.And("I select Form \"Form 9\"");
 #line hidden
             TechTalk.SpecFlow.Table table89 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1555,11 +1566,11 @@ this.FeatureBackground();
             table89.AddRow(new string[] {
                         "Log Field 4",
                         "4"});
-#line 509
+#line 510
  testRunner.When("I enter data in CRF", ((string)(null)), table89);
-#line 513
-    testRunner.And("I save the CRF page");
 #line 514
+    testRunner.And("I save the CRF page");
+#line 515
  testRunner.And("I open log line 1");
 #line hidden
             TechTalk.SpecFlow.Table table90 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1572,9 +1583,9 @@ this.FeatureBackground();
                         "Log field 4 must be equal to Log field 3. Please verify.",
                         "False",
                         "False"});
-#line 515
+#line 516
  testRunner.Then("I verify Query is displayed", ((string)(null)), table90);
-#line 518
+#line 519
  testRunner.And("I take a screenshot");
 #line hidden
             TechTalk.SpecFlow.Table table91 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1583,11 +1594,11 @@ this.FeatureBackground();
             table91.AddRow(new string[] {
                         "Log Field 4",
                         "7"});
-#line 519
+#line 520
  testRunner.And("I enter data in CRF", ((string)(null)), table91);
-#line 522
- testRunner.And("I save the CRF page");
 #line 523
+ testRunner.And("I save the CRF page");
+#line 524
  testRunner.And("I open log line 1");
 #line hidden
             TechTalk.SpecFlow.Table table92 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1600,9 +1611,9 @@ this.FeatureBackground();
                         "Log field 4 must be equal to Log field 3. Please verify.",
                         "False",
                         "False"});
-#line 524
+#line 525
  testRunner.Then("I verify Query is displayed", ((string)(null)), table92);
-#line 527
+#line 528
  testRunner.And("I take a screenshot");
 #line hidden
             this.ScenarioCleanup();
@@ -1610,12 +1621,13 @@ this.FeatureBackground();
         
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute(@"PB-US12940-03C As an EDC user, when I entered bad data in log field A and log field B that resulted in the system opening a query on log field B, and I answered the query without changing the data, and the query is then closed, if I then entered new bad data in log field B, then the system should refire a query on log field B.")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "564QueryRefiringLogic6_LogForm_2FldEC")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "564QueryRefiringLogic_LogForm_2FldEC")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("PB-US12940-03C")]
         public virtual void PB_US12940_03CAsAnEDCUserWhenIEnteredBadDataInLogFieldAAndLogFieldBThatResultedInTheSystemOpeningAQueryOnLogFieldBAndIAnsweredTheQueryWithoutChangingTheDataAndTheQueryIsThenClosedIfIThenEnteredNewBadDataInLogFieldBThenTheSystemShouldRefireAQueryOnLogFieldB_()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo(@"PB-US12940-03C As an EDC user, when I entered bad data in log field A and log field B that resulted in the system opening a query on log field B, and I answered the query without changing the data, and the query is then closed, if I then entered new bad data in log field B, then the system should refire a query on log field B.", new string[] {
                         "PB-US12940-03C"});
-#line 531
+#line 532
 this.ScenarioSetup(scenarioInfo);
 #line 14
 this.FeatureBackground();
@@ -1632,9 +1644,9 @@ this.FeatureBackground();
             table93.AddRow(new string[] {
                         "Subject ID",
                         "SUB {Var(num1)}"});
-#line 534
+#line 535
  testRunner.And("I create a Subject", ((string)(null)), table93);
-#line 539
+#line 540
  testRunner.And("I select Form \"Form 9\"");
 #line hidden
             TechTalk.SpecFlow.Table table94 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1646,11 +1658,11 @@ this.FeatureBackground();
             table94.AddRow(new string[] {
                         "Log Field 6",
                         "4"});
-#line 540
+#line 541
  testRunner.When("I enter data in CRF", ((string)(null)), table94);
-#line 544
-    testRunner.And("I save the CRF page");
 #line 545
+    testRunner.And("I save the CRF page");
+#line 546
  testRunner.And("I open log line 1");
 #line hidden
             TechTalk.SpecFlow.Table table95 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1663,16 +1675,16 @@ this.FeatureBackground();
                         "Log field 6 must be equal to Log field 5. Please verify.",
                         "False",
                         "False"});
-#line 546
+#line 547
  testRunner.Then("I verify Query is displayed", ((string)(null)), table95);
-#line 549
- testRunner.And("I take a screenshot");
 #line 550
+ testRunner.And("I take a screenshot");
+#line 551
  testRunner.When("I answer the Query \"Log field 6 must be equal to Log field 5. Please verify.\" on " +
                     "Field \"Log Field 6\" with \"Data will be changed.\"");
-#line 551
- testRunner.And("I save the CRF page");
 #line 552
+ testRunner.And("I save the CRF page");
+#line 553
  testRunner.And("I open log line 1");
 #line hidden
             TechTalk.SpecFlow.Table table96 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1685,9 +1697,9 @@ this.FeatureBackground();
                         "Log field 6 must be equal to Log field 5. Please verify.",
                         "False",
                         "False"});
-#line 553
+#line 554
  testRunner.Then("I verify Query is not displayed", ((string)(null)), table96);
-#line 556
+#line 557
  testRunner.And("I take a screenshot");
 #line hidden
             TechTalk.SpecFlow.Table table97 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1696,11 +1708,11 @@ this.FeatureBackground();
             table97.AddRow(new string[] {
                         "Log Field 6",
                         "7"});
-#line 557
+#line 558
  testRunner.When("I enter data in CRF", ((string)(null)), table97);
-#line 560
-    testRunner.And("I save the CRF page");
 #line 561
+    testRunner.And("I save the CRF page");
+#line 562
  testRunner.And("I open log line 1");
 #line hidden
             TechTalk.SpecFlow.Table table98 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1713,9 +1725,9 @@ this.FeatureBackground();
                         "Log field 6 must be equal to Log field 5. Please verify.",
                         "False",
                         "False"});
-#line 562
+#line 563
  testRunner.Then("I verify Query is displayed", ((string)(null)), table98);
-#line 565
+#line 566
  testRunner.And("I take a screenshot");
 #line hidden
             this.ScenarioCleanup();
@@ -1723,12 +1735,13 @@ this.FeatureBackground();
         
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute(@"PB-US12940-03D As an EDC user, when I entered bad data in log field A and log field B that resulted in the system opening a query on log field B, and I answered the query without changing the data, and the query is then closed, if I then entered new bad data in log field B, then the system should refire a query on log field B.")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "564QueryRefiringLogic6_LogForm_2FldEC")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "564QueryRefiringLogic_LogForm_2FldEC")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("PB-US12940-03D")]
         public virtual void PB_US12940_03DAsAnEDCUserWhenIEnteredBadDataInLogFieldAAndLogFieldBThatResultedInTheSystemOpeningAQueryOnLogFieldBAndIAnsweredTheQueryWithoutChangingTheDataAndTheQueryIsThenClosedIfIThenEnteredNewBadDataInLogFieldBThenTheSystemShouldRefireAQueryOnLogFieldB_()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo(@"PB-US12940-03D As an EDC user, when I entered bad data in log field A and log field B that resulted in the system opening a query on log field B, and I answered the query without changing the data, and the query is then closed, if I then entered new bad data in log field B, then the system should refire a query on log field B.", new string[] {
                         "PB-US12940-03D"});
-#line 569
+#line 570
 this.ScenarioSetup(scenarioInfo);
 #line 14
 this.FeatureBackground();
@@ -1745,9 +1758,9 @@ this.FeatureBackground();
             table99.AddRow(new string[] {
                         "Subject ID",
                         "SUB {Var(num1)}"});
-#line 572
+#line 573
  testRunner.And("I create a Subject", ((string)(null)), table99);
-#line 577
+#line 578
  testRunner.And("I select Form \"Form 9\"");
 #line hidden
             TechTalk.SpecFlow.Table table100 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1759,11 +1772,11 @@ this.FeatureBackground();
             table100.AddRow(new string[] {
                         "Log Field 8",
                         "4"});
-#line 578
+#line 579
  testRunner.When("I enter data in CRF", ((string)(null)), table100);
-#line 582
-    testRunner.And("I save the CRF page");
 #line 583
+    testRunner.And("I save the CRF page");
+#line 584
  testRunner.And("I open log line 1");
 #line hidden
             TechTalk.SpecFlow.Table table101 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1776,9 +1789,9 @@ this.FeatureBackground();
                         "Log field 8 must be equal to Log field 7. Please verify.",
                         "False",
                         "False"});
-#line 584
+#line 585
  testRunner.Then("I verify Query is displayed", ((string)(null)), table101);
-#line 587
+#line 588
     testRunner.And("I take a screenshot");
 #line hidden
             TechTalk.SpecFlow.Table table102 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1787,11 +1800,11 @@ this.FeatureBackground();
             table102.AddRow(new string[] {
                         "Log Field 8",
                         "7"});
-#line 588
+#line 589
  testRunner.When("I enter data in CRF", ((string)(null)), table102);
-#line 591
-    testRunner.And("I save the CRF page");
 #line 592
+    testRunner.And("I save the CRF page");
+#line 593
  testRunner.And("I open log line 1");
 #line hidden
             TechTalk.SpecFlow.Table table103 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1804,9 +1817,9 @@ this.FeatureBackground();
                         "Log field 8 must be equal to Log field 7. Please verify.",
                         "True",
                         "False"});
-#line 593
+#line 594
  testRunner.Then("I verify Query is displayed", ((string)(null)), table103);
-#line 596
+#line 597
  testRunner.And("I take a screenshot");
 #line hidden
             this.ScenarioCleanup();
@@ -1814,12 +1827,13 @@ this.FeatureBackground();
         
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute(@"PB-US12940-04A As an EDC user, when I entered bad data in log field A and log field B that resulted in the system opening a query on log field B, and I answered the query and I changed the data in log field A to another bad data, and the query is then closed, if I then entered the new bad data in log field A, then the system should refire a query on log field B.")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "564QueryRefiringLogic6_LogForm_2FldEC")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "564QueryRefiringLogic_LogForm_2FldEC")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("PB-US12940-04A")]
         public virtual void PB_US12940_04AAsAnEDCUserWhenIEnteredBadDataInLogFieldAAndLogFieldBThatResultedInTheSystemOpeningAQueryOnLogFieldBAndIAnsweredTheQueryAndIChangedTheDataInLogFieldAToAnotherBadDataAndTheQueryIsThenClosedIfIThenEnteredTheNewBadDataInLogFieldAThenTheSystemShouldRefireAQueryOnLogFieldB_()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo(@"PB-US12940-04A As an EDC user, when I entered bad data in log field A and log field B that resulted in the system opening a query on log field B, and I answered the query and I changed the data in log field A to another bad data, and the query is then closed, if I then entered the new bad data in log field A, then the system should refire a query on log field B.", new string[] {
                         "PB-US12940-04A"});
-#line 600
+#line 601
 this.ScenarioSetup(scenarioInfo);
 #line 14
 this.FeatureBackground();
@@ -1836,9 +1850,9 @@ this.FeatureBackground();
             table104.AddRow(new string[] {
                         "Subject ID",
                         "SUB {Var(num1)}"});
-#line 603
+#line 604
  testRunner.And("I create a Subject", ((string)(null)), table104);
-#line 608
+#line 609
  testRunner.And("I select Form \"Form 9\"");
 #line hidden
             TechTalk.SpecFlow.Table table105 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1850,11 +1864,11 @@ this.FeatureBackground();
             table105.AddRow(new string[] {
                         "Log Field 2",
                         "4"});
-#line 609
+#line 610
  testRunner.When("I enter data in CRF", ((string)(null)), table105);
-#line 613
-    testRunner.And("I save the CRF page");
 #line 614
+    testRunner.And("I save the CRF page");
+#line 615
  testRunner.And("I open log line 1");
 #line hidden
             TechTalk.SpecFlow.Table table106 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1867,11 +1881,11 @@ this.FeatureBackground();
                         "Log field 2 must be equal to Log field 1. Please verify.",
                         "False",
                         "False"});
-#line 615
+#line 616
  testRunner.Then("I verify Query is displayed", ((string)(null)), table106);
-#line 618
-    testRunner.And("I take a screenshot");
 #line 619
+    testRunner.And("I take a screenshot");
+#line 620
  testRunner.When("I answer the Query \"Log field 2 must be equal to Log field 1. Please verify.\" on " +
                     "Field \"Log Field 2\" with \"Data will be changed.\"");
 #line hidden
@@ -1881,11 +1895,11 @@ this.FeatureBackground();
             table107.AddRow(new string[] {
                         "Log Field 1",
                         "3"});
-#line 620
+#line 621
  testRunner.And("I enter data in CRF", ((string)(null)), table107);
-#line 623
- testRunner.And("I save the CRF page");
 #line 624
+ testRunner.And("I save the CRF page");
+#line 625
  testRunner.And("I open log line 1");
 #line hidden
             TechTalk.SpecFlow.Table table108 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1898,16 +1912,16 @@ this.FeatureBackground();
                         "Log field 2 must be equal to Log field 1. Please verify.",
                         "True",
                         "False"});
-#line 625
+#line 626
  testRunner.Then("I verify Query is displayed", ((string)(null)), table108);
-#line 628
-    testRunner.And("I take a screenshot");
 #line 629
+    testRunner.And("I take a screenshot");
+#line 630
  testRunner.When("I close the Query \"Log field 2 must be equal to Log field 1. Please verify.\" on F" +
                     "ield \"Log Field 2\"");
-#line 630
-    testRunner.And("I save the CRF page");
 #line 631
+    testRunner.And("I save the CRF page");
+#line 632
  testRunner.And("I open log line 1");
 #line hidden
             TechTalk.SpecFlow.Table table109 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1920,9 +1934,9 @@ this.FeatureBackground();
                         "Log field 2 must be equal to Log field 1. Please verify.",
                         "True",
                         "True"});
-#line 632
+#line 633
  testRunner.Then("I verify Query is displayed", ((string)(null)), table109);
-#line 635
+#line 636
  testRunner.And("I take a screenshot");
 #line hidden
             TechTalk.SpecFlow.Table table110 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1931,11 +1945,11 @@ this.FeatureBackground();
             table110.AddRow(new string[] {
                         "Log Field 1",
                         "7"});
-#line 636
+#line 637
  testRunner.And("I enter data in CRF", ((string)(null)), table110);
-#line 639
- testRunner.And("I save the CRF page");
 #line 640
+ testRunner.And("I save the CRF page");
+#line 641
  testRunner.And("I open log line 1");
 #line hidden
             TechTalk.SpecFlow.Table table111 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1948,9 +1962,9 @@ this.FeatureBackground();
                         "Log field 2 must be equal to Log field 1. Please verify.",
                         "False",
                         "False"});
-#line 641
+#line 642
     testRunner.Then("I verify Query is displayed", ((string)(null)), table111);
-#line 644
+#line 645
  testRunner.And("I take a screenshot");
 #line hidden
             this.ScenarioCleanup();
@@ -1958,14 +1972,15 @@ this.FeatureBackground();
         
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute(@"PB-US12940-04B As an EDC user, when I entered bad data in log field A and log field B that resulted in the system opening a query on log field B, and I answered the query and I changed the data in log field A to another bad data, and the query is then closed, if I then entered the new bad data in log field A, then the system should refire a query on log field B.")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "564QueryRefiringLogic6_LogForm_2FldEC")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "564QueryRefiringLogic_LogForm_2FldEC")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("PB-US12940-04B")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.IgnoreAttribute()]
         public virtual void PB_US12940_04BAsAnEDCUserWhenIEnteredBadDataInLogFieldAAndLogFieldBThatResultedInTheSystemOpeningAQueryOnLogFieldBAndIAnsweredTheQueryAndIChangedTheDataInLogFieldAToAnotherBadDataAndTheQueryIsThenClosedIfIThenEnteredTheNewBadDataInLogFieldAThenTheSystemShouldRefireAQueryOnLogFieldB_()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo(@"PB-US12940-04B As an EDC user, when I entered bad data in log field A and log field B that resulted in the system opening a query on log field B, and I answered the query and I changed the data in log field A to another bad data, and the query is then closed, if I then entered the new bad data in log field A, then the system should refire a query on log field B.", new string[] {
                         "PB-US12940-04B",
                         "ignore"});
-#line 650
+#line 651
 this.ScenarioSetup(scenarioInfo);
 #line 14
 this.FeatureBackground();
@@ -1982,9 +1997,9 @@ this.FeatureBackground();
             table112.AddRow(new string[] {
                         "Subject ID",
                         "SUB {Var(num1)}"});
-#line 653
+#line 654
  testRunner.And("I create a Subject", ((string)(null)), table112);
-#line 658
+#line 659
  testRunner.And("I select Form \"Form 9\"");
 #line hidden
             TechTalk.SpecFlow.Table table113 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1996,11 +2011,11 @@ this.FeatureBackground();
             table113.AddRow(new string[] {
                         "Log Field 4",
                         "4"});
-#line 659
+#line 660
  testRunner.When("I enter data in CRF", ((string)(null)), table113);
-#line 663
-    testRunner.And("I save the CRF page");
 #line 664
+    testRunner.And("I save the CRF page");
+#line 665
  testRunner.And("I open log line 1");
 #line hidden
             TechTalk.SpecFlow.Table table114 = new TechTalk.SpecFlow.Table(new string[] {
@@ -2013,9 +2028,9 @@ this.FeatureBackground();
                         "Log field 4 must be equal to Log field 3. Please verify.",
                         "False",
                         "False"});
-#line 665
+#line 666
  testRunner.Then("I verify Query is displayed", ((string)(null)), table114);
-#line 668
+#line 669
  testRunner.And("I take a screenshot");
 #line hidden
             TechTalk.SpecFlow.Table table115 = new TechTalk.SpecFlow.Table(new string[] {
@@ -2024,11 +2039,11 @@ this.FeatureBackground();
             table115.AddRow(new string[] {
                         "Log Field 3",
                         "3"});
-#line 669
+#line 670
  testRunner.When("I enter data in CRF", ((string)(null)), table115);
-#line 672
-    testRunner.And("I save the CRF page");
 #line 673
+    testRunner.And("I save the CRF page");
+#line 674
  testRunner.And("I open log line 1");
 #line hidden
             TechTalk.SpecFlow.Table table116 = new TechTalk.SpecFlow.Table(new string[] {
@@ -2041,9 +2056,9 @@ this.FeatureBackground();
                         "Log field 4 must be equal to Log field 3. Please verify.",
                         "False",
                         "False"});
-#line 675
+#line 676
  testRunner.Then("I verify Query is displayed", ((string)(null)), table116);
-#line 678
+#line 679
  testRunner.And("I take a screenshot");
 #line hidden
             TechTalk.SpecFlow.Table table117 = new TechTalk.SpecFlow.Table(new string[] {
@@ -2052,11 +2067,11 @@ this.FeatureBackground();
             table117.AddRow(new string[] {
                         "Log Field 3",
                         "7"});
-#line 679
+#line 680
  testRunner.When("I enter data in CRF", ((string)(null)), table117);
-#line 682
-    testRunner.And("I save the CRF page");
 #line 683
+    testRunner.And("I save the CRF page");
+#line 684
  testRunner.And("I open log line 1");
 #line hidden
             TechTalk.SpecFlow.Table table118 = new TechTalk.SpecFlow.Table(new string[] {
@@ -2069,9 +2084,9 @@ this.FeatureBackground();
                         "Log field 4 must be equal to Log field 3. Please verify.",
                         "False",
                         "False"});
-#line 684
+#line 685
  testRunner.Then("I verify Query is displayed", ((string)(null)), table118);
-#line 687
+#line 688
  testRunner.And("I takea screenshot");
 #line hidden
             this.ScenarioCleanup();
@@ -2079,14 +2094,15 @@ this.FeatureBackground();
         
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute(@"PB-US12940-04C As an EDC user, when I entered bad data in log field A and log field B that resulted in the system opening a query on log field B, and I answered the query and I changed the data in log field A to another bad data, and the query is then closed, if I then entered the new bad data in log field A, then the system should refire a query on log field B.")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "564QueryRefiringLogic6_LogForm_2FldEC")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "564QueryRefiringLogic_LogForm_2FldEC")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("PB-US12940-04C")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.IgnoreAttribute()]
         public virtual void PB_US12940_04CAsAnEDCUserWhenIEnteredBadDataInLogFieldAAndLogFieldBThatResultedInTheSystemOpeningAQueryOnLogFieldBAndIAnsweredTheQueryAndIChangedTheDataInLogFieldAToAnotherBadDataAndTheQueryIsThenClosedIfIThenEnteredTheNewBadDataInLogFieldAThenTheSystemShouldRefireAQueryOnLogFieldB_()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo(@"PB-US12940-04C As an EDC user, when I entered bad data in log field A and log field B that resulted in the system opening a query on log field B, and I answered the query and I changed the data in log field A to another bad data, and the query is then closed, if I then entered the new bad data in log field A, then the system should refire a query on log field B.", new string[] {
                         "PB-US12940-04C",
                         "ignore"});
-#line 693
+#line 694
 this.ScenarioSetup(scenarioInfo);
 #line 14
 this.FeatureBackground();
@@ -2103,9 +2119,9 @@ this.FeatureBackground();
             table119.AddRow(new string[] {
                         "Subject ID",
                         "SUB {Var(num1)}"});
-#line 696
+#line 697
  testRunner.And("I create a Subject", ((string)(null)), table119);
-#line 701
+#line 702
  testRunner.And("I select Form \"Form 9\"");
 #line hidden
             TechTalk.SpecFlow.Table table120 = new TechTalk.SpecFlow.Table(new string[] {
@@ -2117,11 +2133,11 @@ this.FeatureBackground();
             table120.AddRow(new string[] {
                         "Log Field 6",
                         "4"});
-#line 702
+#line 703
  testRunner.When("I enter data in CRF", ((string)(null)), table120);
-#line 706
-    testRunner.And("I save the CRF page");
 #line 707
+    testRunner.And("I save the CRF page");
+#line 708
  testRunner.And("I open log line 1");
 #line hidden
             TechTalk.SpecFlow.Table table121 = new TechTalk.SpecFlow.Table(new string[] {
@@ -2134,11 +2150,11 @@ this.FeatureBackground();
                         "Log field 6 must be equal to Log field 5. Please verify.",
                         "False",
                         "False"});
-#line 708
+#line 709
  testRunner.Then("I verify Query is displayed", ((string)(null)), table121);
-#line 711
- testRunner.And("I take a screenshot");
 #line 712
+ testRunner.And("I take a screenshot");
+#line 713
  testRunner.When("I answer the Query \"Log field 6 must be equal to Log field 5. Please verify.\" on " +
                     "Field \"Log Field 6\" with \"Data will be changed.\"");
 #line hidden
@@ -2148,11 +2164,11 @@ this.FeatureBackground();
             table122.AddRow(new string[] {
                         "Log Field 5",
                         "3"});
-#line 713
+#line 714
     testRunner.And("I enter data in CRF", ((string)(null)), table122);
-#line 716
-    testRunner.And("I save the CRF page");
 #line 717
+    testRunner.And("I save the CRF page");
+#line 718
  testRunner.And("I open log line 1");
 #line hidden
             TechTalk.SpecFlow.Table table123 = new TechTalk.SpecFlow.Table(new string[] {
@@ -2165,9 +2181,9 @@ this.FeatureBackground();
                         "Log field 6 must be equal to Log field 5. Please verify.",
                         "True",
                         "True"});
-#line 718
+#line 719
  testRunner.Then("I verify Query is displayed", ((string)(null)), table123);
-#line 722
+#line 723
  testRunner.And("I take a screenshot");
 #line hidden
             TechTalk.SpecFlow.Table table124 = new TechTalk.SpecFlow.Table(new string[] {
@@ -2176,11 +2192,11 @@ this.FeatureBackground();
             table124.AddRow(new string[] {
                         "Log Field 5",
                         "7"});
-#line 723
+#line 724
  testRunner.And("I enter data in CRF", ((string)(null)), table124);
-#line 726
-    testRunner.And("I save the CRF page");
 #line 727
+    testRunner.And("I save the CRF page");
+#line 728
  testRunner.And("I open log line 1");
 #line hidden
             TechTalk.SpecFlow.Table table125 = new TechTalk.SpecFlow.Table(new string[] {
@@ -2193,9 +2209,9 @@ this.FeatureBackground();
                         "Log field 6 must be equal to Log field 5. Please verify.",
                         "False",
                         "False"});
-#line 728
+#line 729
  testRunner.Then("I verify Query is displayed", ((string)(null)), table125);
-#line 731
+#line 732
  testRunner.And("I take a screenshot");
 #line hidden
             this.ScenarioCleanup();
@@ -2203,14 +2219,15 @@ this.FeatureBackground();
         
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute(@"PB-US12940-04D As an EDC user, when I entered bad data in log field A and log field B that resulted in the system opening a query on log field B, and I answered the query and I changed the data in log field A to another bad data, and the query is then closed, if I then entered the new bad data in log field A, then the system should refire a query on log field B.")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "564QueryRefiringLogic6_LogForm_2FldEC")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "564QueryRefiringLogic_LogForm_2FldEC")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("PB-US12940-04D")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.IgnoreAttribute()]
         public virtual void PB_US12940_04DAsAnEDCUserWhenIEnteredBadDataInLogFieldAAndLogFieldBThatResultedInTheSystemOpeningAQueryOnLogFieldBAndIAnsweredTheQueryAndIChangedTheDataInLogFieldAToAnotherBadDataAndTheQueryIsThenClosedIfIThenEnteredTheNewBadDataInLogFieldAThenTheSystemShouldRefireAQueryOnLogFieldB_()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo(@"PB-US12940-04D As an EDC user, when I entered bad data in log field A and log field B that resulted in the system opening a query on log field B, and I answered the query and I changed the data in log field A to another bad data, and the query is then closed, if I then entered the new bad data in log field A, then the system should refire a query on log field B.", new string[] {
                         "PB-US12940-04D",
                         "ignore"});
-#line 737
+#line 738
 this.ScenarioSetup(scenarioInfo);
 #line 14
 this.FeatureBackground();
@@ -2227,9 +2244,9 @@ this.FeatureBackground();
             table126.AddRow(new string[] {
                         "Subject ID",
                         "SUB {Var(num1)}"});
-#line 740
+#line 741
  testRunner.And("I create a Subject", ((string)(null)), table126);
-#line 745
+#line 746
  testRunner.And("I select Form \"Form 9\"");
 #line hidden
             TechTalk.SpecFlow.Table table127 = new TechTalk.SpecFlow.Table(new string[] {
@@ -2241,11 +2258,11 @@ this.FeatureBackground();
             table127.AddRow(new string[] {
                         "Log Field 8",
                         "4"});
-#line 746
+#line 747
  testRunner.When("I enter data in CRF", ((string)(null)), table127);
-#line 750
-    testRunner.And("I save the CRF page");
 #line 751
+    testRunner.And("I save the CRF page");
+#line 752
  testRunner.And("I open log line 1");
 #line hidden
             TechTalk.SpecFlow.Table table128 = new TechTalk.SpecFlow.Table(new string[] {
@@ -2258,9 +2275,9 @@ this.FeatureBackground();
                         "Log field 8 must be equal to Log field 7. Please verify.",
                         "False",
                         "False"});
-#line 752
+#line 753
  testRunner.Then("I verify Query is displayed", ((string)(null)), table128);
-#line 755
+#line 756
  testRunner.And("I take a screenshot");
 #line hidden
             TechTalk.SpecFlow.Table table129 = new TechTalk.SpecFlow.Table(new string[] {
@@ -2269,11 +2286,11 @@ this.FeatureBackground();
             table129.AddRow(new string[] {
                         "Log Field 7",
                         "3"});
-#line 756
+#line 757
  testRunner.When("I enter data in CRF", ((string)(null)), table129);
-#line 759
- testRunner.And("I save the CRF page");
 #line 760
+ testRunner.And("I save the CRF page");
+#line 761
  testRunner.And("I open log line 1");
 #line hidden
             TechTalk.SpecFlow.Table table130 = new TechTalk.SpecFlow.Table(new string[] {
@@ -2286,14 +2303,14 @@ this.FeatureBackground();
                         "Log field 8 must be equal to Log field 7. Please verify.",
                         "True",
                         "False"});
-#line 761
+#line 762
  testRunner.Then("I verify Query is displayed", ((string)(null)), table130);
-#line 764
- testRunner.And("I take a screenshot");
 #line 765
+ testRunner.And("I take a screenshot");
+#line 766
  testRunner.When("I close the Query \"Log field 8 must be equal to Log field 7. Please verify.\" on F" +
                     "ield \"Log Field 8\"");
-#line 767
+#line 768
  testRunner.And("I save the CRF page");
 #line hidden
             TechTalk.SpecFlow.Table table131 = new TechTalk.SpecFlow.Table(new string[] {
@@ -2306,9 +2323,9 @@ this.FeatureBackground();
                         "Log field 8 must be equal to Log field 7. Please verify.",
                         "False",
                         "False"});
-#line 768
+#line 769
  testRunner.Then("I verify Query is not displayed", ((string)(null)), table131);
-#line 771
+#line 772
  testRunner.And("I take a screenshot");
 #line hidden
             TechTalk.SpecFlow.Table table132 = new TechTalk.SpecFlow.Table(new string[] {
@@ -2317,11 +2334,11 @@ this.FeatureBackground();
             table132.AddRow(new string[] {
                         "Log Field 7",
                         "7"});
-#line 772
+#line 773
  testRunner.When("I enter data in CRF", ((string)(null)), table132);
-#line 775
- testRunner.And("I save the CRF page");
 #line 776
+ testRunner.And("I save the CRF page");
+#line 777
  testRunner.And("I open log line 1");
 #line hidden
             TechTalk.SpecFlow.Table table133 = new TechTalk.SpecFlow.Table(new string[] {
@@ -2334,9 +2351,9 @@ this.FeatureBackground();
                         "Log field 8 must be equal to Log field 7. Please verify.",
                         "False",
                         "False"});
-#line 777
+#line 778
  testRunner.Then("I verify Query is displayed", ((string)(null)), table133);
-#line 780
+#line 781
  testRunner.And("I take a screenshot");
 #line hidden
             this.ScenarioCleanup();
@@ -2344,12 +2361,13 @@ this.FeatureBackground();
         
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute(@"PB-US12940-05A As an EDC user, when I entered bad data in log field A and log field B that resulted in the system opening a query on log field B, and I answered the query and I changed the data in log field B to another bad data, and the query is then closed, if I then entered the new bad data in log field B, then the system should refire a query on log field B.")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "564QueryRefiringLogic6_LogForm_2FldEC")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "564QueryRefiringLogic_LogForm_2FldEC")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("PB-US12940-05A")]
         public virtual void PB_US12940_05AAsAnEDCUserWhenIEnteredBadDataInLogFieldAAndLogFieldBThatResultedInTheSystemOpeningAQueryOnLogFieldBAndIAnsweredTheQueryAndIChangedTheDataInLogFieldBToAnotherBadDataAndTheQueryIsThenClosedIfIThenEnteredTheNewBadDataInLogFieldBThenTheSystemShouldRefireAQueryOnLogFieldB_()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo(@"PB-US12940-05A As an EDC user, when I entered bad data in log field A and log field B that resulted in the system opening a query on log field B, and I answered the query and I changed the data in log field B to another bad data, and the query is then closed, if I then entered the new bad data in log field B, then the system should refire a query on log field B.", new string[] {
                         "PB-US12940-05A"});
-#line 785
+#line 786
 this.ScenarioSetup(scenarioInfo);
 #line 14
 this.FeatureBackground();
@@ -2366,9 +2384,9 @@ this.FeatureBackground();
             table134.AddRow(new string[] {
                         "Subject ID",
                         "SUB {Var(num1)}"});
-#line 788
+#line 789
  testRunner.And("I create a Subject", ((string)(null)), table134);
-#line 793
+#line 794
  testRunner.And("I select Form \"Form 9\"");
 #line hidden
             TechTalk.SpecFlow.Table table135 = new TechTalk.SpecFlow.Table(new string[] {
@@ -2380,11 +2398,11 @@ this.FeatureBackground();
             table135.AddRow(new string[] {
                         "Log Field 2",
                         "4"});
-#line 794
+#line 795
  testRunner.When("I enter data in CRF", ((string)(null)), table135);
-#line 798
-    testRunner.And("I save the CRF page");
 #line 799
+    testRunner.And("I save the CRF page");
+#line 800
  testRunner.And("I open log line 1");
 #line hidden
             TechTalk.SpecFlow.Table table136 = new TechTalk.SpecFlow.Table(new string[] {
@@ -2397,11 +2415,11 @@ this.FeatureBackground();
                         "Log field 2 must be equal to Log field 1. Please verify.",
                         "False",
                         "False"});
-#line 800
+#line 801
  testRunner.Then("I verify Query is displayed", ((string)(null)), table136);
-#line 803
- testRunner.And("I take a screenshot");
 #line 804
+ testRunner.And("I take a screenshot");
+#line 805
  testRunner.When("I answer the Query \"Log field 2 must be equal to Log field 1. Please verify.\" on " +
                     "Field \"Log Field 2\" with \"Data will be changed.\"");
 #line hidden
@@ -2411,11 +2429,11 @@ this.FeatureBackground();
             table137.AddRow(new string[] {
                         "Log Field 2",
                         "3"});
-#line 805
+#line 806
     testRunner.And("I enter data in CRF", ((string)(null)), table137);
-#line 808
-    testRunner.And("I save the CRF page");
 #line 809
+    testRunner.And("I save the CRF page");
+#line 810
  testRunner.And("I open log line 1");
 #line hidden
             TechTalk.SpecFlow.Table table138 = new TechTalk.SpecFlow.Table(new string[] {
@@ -2428,16 +2446,16 @@ this.FeatureBackground();
                         "Log field 2 must be equal to Log field 1. Please verify.",
                         "True",
                         "False"});
-#line 810
+#line 811
  testRunner.Then("I verify Query is displayed", ((string)(null)), table138);
-#line 813
- testRunner.And("I take a screenshot");
 #line 814
+ testRunner.And("I take a screenshot");
+#line 815
  testRunner.When("I close the Query \"Log field 2 must be equal to Log field 1. Please verify.\" on F" +
                     "ield \"Log Field 2\"");
-#line 815
-    testRunner.And("I save the CRF page");
 #line 816
+    testRunner.And("I save the CRF page");
+#line 817
  testRunner.And("I open log line 1");
 #line hidden
             TechTalk.SpecFlow.Table table139 = new TechTalk.SpecFlow.Table(new string[] {
@@ -2450,9 +2468,9 @@ this.FeatureBackground();
                         "Log field 2 must be equal to Log field 1. Please verify.",
                         "True",
                         "True"});
-#line 817
+#line 818
  testRunner.Then("I verify Query is displayed", ((string)(null)), table139);
-#line 820
+#line 821
  testRunner.And("I take a screenshot");
 #line hidden
             TechTalk.SpecFlow.Table table140 = new TechTalk.SpecFlow.Table(new string[] {
@@ -2461,11 +2479,11 @@ this.FeatureBackground();
             table140.AddRow(new string[] {
                         "Log Field 2",
                         "7"});
-#line 821
+#line 822
  testRunner.And("I enter data in CRF", ((string)(null)), table140);
-#line 824
-    testRunner.And("I save the CRF page");
 #line 825
+    testRunner.And("I save the CRF page");
+#line 826
  testRunner.And("I open log line 1");
 #line hidden
             TechTalk.SpecFlow.Table table141 = new TechTalk.SpecFlow.Table(new string[] {
@@ -2478,9 +2496,9 @@ this.FeatureBackground();
                         "Log field 2 must be equal to Log field 1. Please verify.",
                         "False",
                         "False"});
-#line 826
+#line 827
  testRunner.Then("I verify Query is displayed", ((string)(null)), table141);
-#line 829
+#line 830
  testRunner.And("I take a screenshot");
 #line hidden
             this.ScenarioCleanup();
@@ -2488,12 +2506,13 @@ this.FeatureBackground();
         
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute(@"PB-US12940-05B As an EDC user, when I entered bad data in log field A and log field B that resulted in the system opening a query on log field B, and I answered the query and I changed the data in log field B to another bad data, and the query is then closed, if I then entered the new bad data in log field B, then the system should refire a query on log field B.")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "564QueryRefiringLogic6_LogForm_2FldEC")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "564QueryRefiringLogic_LogForm_2FldEC")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("PB-US12940-05B")]
         public virtual void PB_US12940_05BAsAnEDCUserWhenIEnteredBadDataInLogFieldAAndLogFieldBThatResultedInTheSystemOpeningAQueryOnLogFieldBAndIAnsweredTheQueryAndIChangedTheDataInLogFieldBToAnotherBadDataAndTheQueryIsThenClosedIfIThenEnteredTheNewBadDataInLogFieldBThenTheSystemShouldRefireAQueryOnLogFieldB_()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo(@"PB-US12940-05B As an EDC user, when I entered bad data in log field A and log field B that resulted in the system opening a query on log field B, and I answered the query and I changed the data in log field B to another bad data, and the query is then closed, if I then entered the new bad data in log field B, then the system should refire a query on log field B.", new string[] {
                         "PB-US12940-05B"});
-#line 833
+#line 834
 this.ScenarioSetup(scenarioInfo);
 #line 14
 this.FeatureBackground();
@@ -2510,9 +2529,9 @@ this.FeatureBackground();
             table142.AddRow(new string[] {
                         "Subject ID",
                         "SUB {Var(num1)}"});
-#line 836
+#line 837
  testRunner.And("I create a Subject", ((string)(null)), table142);
-#line 841
+#line 842
  testRunner.And("I select Form \"Form 9\"");
 #line hidden
             TechTalk.SpecFlow.Table table143 = new TechTalk.SpecFlow.Table(new string[] {
@@ -2524,11 +2543,11 @@ this.FeatureBackground();
             table143.AddRow(new string[] {
                         "Log Field 4",
                         "4"});
-#line 842
+#line 843
  testRunner.When("I enter data in CRF", ((string)(null)), table143);
-#line 846
-    testRunner.And("I save the CRF page");
 #line 847
+    testRunner.And("I save the CRF page");
+#line 848
  testRunner.And("I open log line 1");
 #line hidden
             TechTalk.SpecFlow.Table table144 = new TechTalk.SpecFlow.Table(new string[] {
@@ -2541,9 +2560,9 @@ this.FeatureBackground();
                         "Log field 4 must be equal to Log field 3. Please verify.",
                         "False",
                         "False"});
-#line 848
+#line 849
  testRunner.Then("I verify Query is displayed", ((string)(null)), table144);
-#line 851
+#line 852
  testRunner.And("I take a screenshot");
 #line hidden
             TechTalk.SpecFlow.Table table145 = new TechTalk.SpecFlow.Table(new string[] {
@@ -2552,11 +2571,11 @@ this.FeatureBackground();
             table145.AddRow(new string[] {
                         "Log Field 4",
                         "3"});
-#line 852
+#line 853
  testRunner.When("I enter data in CRF", ((string)(null)), table145);
-#line 855
- testRunner.And("I save the CRF page");
 #line 856
+ testRunner.And("I save the CRF page");
+#line 857
  testRunner.And("I open log line 1");
 #line hidden
             TechTalk.SpecFlow.Table table146 = new TechTalk.SpecFlow.Table(new string[] {
@@ -2569,9 +2588,9 @@ this.FeatureBackground();
                         "Log field 4 must be equal to Log field 3. Please verify.",
                         "False",
                         "False"});
-#line 857
+#line 858
  testRunner.Then("I verify Query is displayed", ((string)(null)), table146);
-#line 860
+#line 861
  testRunner.And("I take a screenshot");
 #line hidden
             TechTalk.SpecFlow.Table table147 = new TechTalk.SpecFlow.Table(new string[] {
@@ -2580,11 +2599,11 @@ this.FeatureBackground();
             table147.AddRow(new string[] {
                         "Log Field 4",
                         "7"});
-#line 861
+#line 862
  testRunner.When("I enter data in CRF", ((string)(null)), table147);
-#line 864
-    testRunner.And("I save the CRF page");
 #line 865
+    testRunner.And("I save the CRF page");
+#line 866
  testRunner.And("I open log line 1");
 #line hidden
             TechTalk.SpecFlow.Table table148 = new TechTalk.SpecFlow.Table(new string[] {
@@ -2597,9 +2616,9 @@ this.FeatureBackground();
                         "Log field 4 must be equal to Log field 3. Please verify.",
                         "False",
                         "False"});
-#line 866
+#line 867
  testRunner.Then("I verify Query is displayed", ((string)(null)), table148);
-#line 869
+#line 870
  testRunner.And("I take a screenshot");
 #line hidden
             this.ScenarioCleanup();
@@ -2607,14 +2626,15 @@ this.FeatureBackground();
         
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute(@"PB-US12940-05C As an EDC user, when I entered bad data in log field A and log field B that resulted in the system opening a query on log field B, and I answered the query and I changed the data in log field B to another bad data, and the query is then closed, if I then entered the new bad data in log field B, then the system should refire a query on log field B.")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "564QueryRefiringLogic6_LogForm_2FldEC")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "564QueryRefiringLogic_LogForm_2FldEC")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("PB-US12940-05C")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.IgnoreAttribute()]
         public virtual void PB_US12940_05CAsAnEDCUserWhenIEnteredBadDataInLogFieldAAndLogFieldBThatResultedInTheSystemOpeningAQueryOnLogFieldBAndIAnsweredTheQueryAndIChangedTheDataInLogFieldBToAnotherBadDataAndTheQueryIsThenClosedIfIThenEnteredTheNewBadDataInLogFieldBThenTheSystemShouldRefireAQueryOnLogFieldB_()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo(@"PB-US12940-05C As an EDC user, when I entered bad data in log field A and log field B that resulted in the system opening a query on log field B, and I answered the query and I changed the data in log field B to another bad data, and the query is then closed, if I then entered the new bad data in log field B, then the system should refire a query on log field B.", new string[] {
                         "PB-US12940-05C",
                         "ignore"});
-#line 875
+#line 876
 this.ScenarioSetup(scenarioInfo);
 #line 14
 this.FeatureBackground();
@@ -2631,9 +2651,9 @@ this.FeatureBackground();
             table149.AddRow(new string[] {
                         "Subject ID",
                         "SUB {Var(num1)}"});
-#line 878
+#line 879
  testRunner.And("I create a Subject", ((string)(null)), table149);
-#line 883
+#line 884
  testRunner.And("I select Form \"Form 9\"");
 #line hidden
             TechTalk.SpecFlow.Table table150 = new TechTalk.SpecFlow.Table(new string[] {
@@ -2645,11 +2665,11 @@ this.FeatureBackground();
             table150.AddRow(new string[] {
                         "Log Field 6",
                         "4"});
-#line 884
+#line 885
  testRunner.When("I enter data in CRF", ((string)(null)), table150);
-#line 888
-    testRunner.And("I save the CRF page");
 #line 889
+    testRunner.And("I save the CRF page");
+#line 890
  testRunner.And("I open log line 1");
 #line hidden
             TechTalk.SpecFlow.Table table151 = new TechTalk.SpecFlow.Table(new string[] {
@@ -2662,11 +2682,11 @@ this.FeatureBackground();
                         "Log field 6 must be equal to Log field 5. Please verify.",
                         "False",
                         "False"});
-#line 890
+#line 891
  testRunner.Then("I verify Query is displayed", ((string)(null)), table151);
-#line 893
- testRunner.And("I take a screenshot");
 #line 894
+ testRunner.And("I take a screenshot");
+#line 895
  testRunner.When("I answer the Query \"Log field 6 must be equal to Log field 5. Please verify.\" on " +
                     "Field \"Log Field 6\" with \"Data will be changed.\"");
 #line hidden
@@ -2676,11 +2696,11 @@ this.FeatureBackground();
             table152.AddRow(new string[] {
                         "Log Field 6",
                         "3"});
-#line 895
+#line 896
     testRunner.And("I enter data in CRF", ((string)(null)), table152);
-#line 898
-    testRunner.And("I save the CRF page");
 #line 899
+    testRunner.And("I save the CRF page");
+#line 900
  testRunner.And("I open log line 1");
 #line hidden
             TechTalk.SpecFlow.Table table153 = new TechTalk.SpecFlow.Table(new string[] {
@@ -2693,9 +2713,9 @@ this.FeatureBackground();
                         "Log field 6 must be equal to Log field 5. Please verify.",
                         "True",
                         "True"});
-#line 900
+#line 901
  testRunner.Then("I verify Query is displayed", ((string)(null)), table153);
-#line 903
+#line 904
  testRunner.And("I take a screenshot");
 #line hidden
             TechTalk.SpecFlow.Table table154 = new TechTalk.SpecFlow.Table(new string[] {
@@ -2704,11 +2724,11 @@ this.FeatureBackground();
             table154.AddRow(new string[] {
                         "Log Field 6",
                         "7"});
-#line 905
+#line 906
   testRunner.And("I enter data in CRF", ((string)(null)), table154);
-#line 908
-    testRunner.And("I save the CRF page");
 #line 909
+    testRunner.And("I save the CRF page");
+#line 910
  testRunner.And("I open log line 1");
 #line hidden
             TechTalk.SpecFlow.Table table155 = new TechTalk.SpecFlow.Table(new string[] {
@@ -2721,9 +2741,9 @@ this.FeatureBackground();
                         "Log field 6 must be equal to Log field 5. Please verify.",
                         "False",
                         "False"});
-#line 910
+#line 911
  testRunner.Then("I verify Query is displayed", ((string)(null)), table155);
-#line 913
+#line 914
  testRunner.And("I take a screenshot");
 #line hidden
             this.ScenarioCleanup();
@@ -2731,12 +2751,13 @@ this.FeatureBackground();
         
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute(@"@PB-US12940-05D As an EDC user, when I entered bad data in log field A and log field B that resulted in the system opening a query on log field B, and I answered the query and I changed the data in log field B to another bad data, and the query is then closed, if I then entered the new bad data in log field B, then the system should refire a query on log field B.")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "564QueryRefiringLogic6_LogForm_2FldEC")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "564QueryRefiringLogic_LogForm_2FldEC")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("PB-US12940-05D")]
         public virtual void PB_US12940_05DAsAnEDCUserWhenIEnteredBadDataInLogFieldAAndLogFieldBThatResultedInTheSystemOpeningAQueryOnLogFieldBAndIAnsweredTheQueryAndIChangedTheDataInLogFieldBToAnotherBadDataAndTheQueryIsThenClosedIfIThenEnteredTheNewBadDataInLogFieldBThenTheSystemShouldRefireAQueryOnLogFieldB_()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo(@"@PB-US12940-05D As an EDC user, when I entered bad data in log field A and log field B that resulted in the system opening a query on log field B, and I answered the query and I changed the data in log field B to another bad data, and the query is then closed, if I then entered the new bad data in log field B, then the system should refire a query on log field B.", new string[] {
                         "PB-US12940-05D"});
-#line 917
+#line 918
 this.ScenarioSetup(scenarioInfo);
 #line 14
 this.FeatureBackground();
@@ -2753,9 +2774,9 @@ this.FeatureBackground();
             table156.AddRow(new string[] {
                         "Subject ID",
                         "SUB {Var(num1)}"});
-#line 920
+#line 921
  testRunner.And("I create a Subject", ((string)(null)), table156);
-#line 925
+#line 926
  testRunner.And("I select Form \"Form 9\"");
 #line hidden
             TechTalk.SpecFlow.Table table157 = new TechTalk.SpecFlow.Table(new string[] {
@@ -2767,11 +2788,11 @@ this.FeatureBackground();
             table157.AddRow(new string[] {
                         "Log Field 8",
                         "4"});
-#line 926
+#line 927
  testRunner.When("I enter data in CRF", ((string)(null)), table157);
-#line 930
-    testRunner.And("I save the CRF page");
 #line 931
+    testRunner.And("I save the CRF page");
+#line 932
  testRunner.And("I open log line 1");
 #line hidden
             TechTalk.SpecFlow.Table table158 = new TechTalk.SpecFlow.Table(new string[] {
@@ -2784,9 +2805,9 @@ this.FeatureBackground();
                         "Log field 8 must be equal to Log field 7. Please verify.",
                         "False",
                         "False"});
-#line 932
+#line 933
  testRunner.Then("I verify Query is displayed", ((string)(null)), table158);
-#line 935
+#line 936
  testRunner.And("I take a screenshot");
 #line hidden
             TechTalk.SpecFlow.Table table159 = new TechTalk.SpecFlow.Table(new string[] {
@@ -2795,11 +2816,11 @@ this.FeatureBackground();
             table159.AddRow(new string[] {
                         "Log Field 8",
                         "3"});
-#line 936
+#line 937
  testRunner.When("I enter data in CRF", ((string)(null)), table159);
-#line 939
-    testRunner.And("I save the CRF page");
 #line 940
+    testRunner.And("I save the CRF page");
+#line 941
  testRunner.And("I open log line 1");
 #line hidden
             TechTalk.SpecFlow.Table table160 = new TechTalk.SpecFlow.Table(new string[] {
@@ -2812,16 +2833,16 @@ this.FeatureBackground();
                         "Log field 8 must be equal to Log field 7. Please verify.",
                         "True",
                         "False"});
-#line 941
+#line 942
  testRunner.Then("I verify Query is displayed", ((string)(null)), table160);
-#line 944
- testRunner.And("I take a screenshot");
 #line 945
+ testRunner.And("I take a screenshot");
+#line 946
  testRunner.When("I close the Query \"Log field 8 must be equal to Log field 7. Please verify.\" on F" +
                     "ield \"Log Field 8\"");
-#line 946
- testRunner.And("I save the CRF page");
 #line 947
+ testRunner.And("I save the CRF page");
+#line 948
  testRunner.And("I open log line 1");
 #line hidden
             TechTalk.SpecFlow.Table table161 = new TechTalk.SpecFlow.Table(new string[] {
@@ -2834,9 +2855,9 @@ this.FeatureBackground();
                         "Log field 8 must be equal to Log field 7. Please verify.",
                         "True",
                         "True"});
-#line 948
+#line 949
  testRunner.Then("I verify Query is displayed", ((string)(null)), table161);
-#line 951
+#line 952
  testRunner.And("I take a screenshot");
 #line hidden
             TechTalk.SpecFlow.Table table162 = new TechTalk.SpecFlow.Table(new string[] {
@@ -2845,11 +2866,11 @@ this.FeatureBackground();
             table162.AddRow(new string[] {
                         "Log Field 8",
                         "7"});
-#line 952
+#line 953
  testRunner.When("I enter data in CRF", ((string)(null)), table162);
-#line 955
-    testRunner.And("I save the CRF page");
 #line 956
+    testRunner.And("I save the CRF page");
+#line 957
  testRunner.And("I open log line 1");
 #line hidden
             TechTalk.SpecFlow.Table table163 = new TechTalk.SpecFlow.Table(new string[] {
@@ -2862,9 +2883,9 @@ this.FeatureBackground();
                         "Log field 8 must be equal to Log field 7. Please verify.",
                         "False",
                         "False"});
-#line 957
+#line 958
  testRunner.Then("I verify Query is displayed", ((string)(null)), table163);
-#line 960
+#line 961
  testRunner.And("I take a screenshot");
 #line hidden
             this.ScenarioCleanup();

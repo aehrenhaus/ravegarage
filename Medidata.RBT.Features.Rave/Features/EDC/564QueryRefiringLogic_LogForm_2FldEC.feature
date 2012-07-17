@@ -5,7 +5,7 @@
 
 # project to be uploaded in excel spreadsheet 'Standard Study'
 
-Feature: 564QueryRefiringLogic6_LogForm_2FldEC
+Feature: 564QueryRefiringLogic_LogForm_2FldEC
     Query Refiring Logic
 	As a Rave user
 	When I manually close a query or cancel, the query should not re-fire if the exact same data is entered into the system
@@ -21,8 +21,9 @@ Background:
 	And I publish and push CRF Version "CRF Version<RANDOMNUMBER>" of Draft "<Draft1>" to site "Site 1" in Study "Standard Study"
 	And I select Study "Standard Study" and Site "Site 1"
 	
-@PB-US12940-01A	 
-Scenario: PB-US12940-01A As an EDC user, when I entered bad data in log field A and log field B that resulted in the system opening a query on log field B, and I answered the query and I changed the data in log field B to another bad data, and the query is then closed, if I entered good data in log field B and then again entered the same bad data in log field B as when the query was closed, then the system should not refire a query on log field B. 
+@PB-US12940-01A	
+Scenario: PB-US12940-01A
+ As an EDC user, when I entered bad data in log field A and log field B that resulted in the system opening a query on log field B, and I answered the query and I changed the data in log field B to another bad data, and the query is then closed, if I entered good data in log field B and then again entered the same bad data in log field B as when the query was closed, then the system should not refire a query on log field B. 
 Query with requires response = true and requires manual close = true.
 	
 	And I create a Subject
