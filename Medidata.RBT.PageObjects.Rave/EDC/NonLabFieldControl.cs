@@ -54,30 +54,30 @@ namespace Medidata.RBT.PageObjects.Rave
 
 				if (filter.Closed != null)
 				{
-					bool isClosed = !hasDropdown && !hasCancelCheck && !hasReplyTextbox;
-					if (filter.Closed == true && !isClosed)
+					bool actualClosed = !hasDropdown && !hasCancelCheck && !hasReplyTextbox;
+					if (filter.Closed == true && !actualClosed)
 						continue;
-					if (filter.Closed == false && isClosed)
+					if (filter.Closed == false && actualClosed)
 						continue;
 				}
 
 
 				if (filter.Response != null)
 				{
-					bool rr = hasReplyTextbox;
-					if (filter.Response == true && !rr)
+					bool actualRequireResponse = hasReplyTextbox;
+					if (filter.Response == true && !actualRequireResponse)
 						continue;
-					if (filter.Response == false && rr)
+					if (filter.Response == false && actualRequireResponse)
 						continue;
 				}
 
 				//having the dropdown means requires manual close
 				if (filter.ManualClose != null)
 				{
-					bool rc = hasDropdown;
-					if (filter.ManualClose == true && !rc)
+					bool actualRequireClose = hasDropdown;
+					if (filter.ManualClose == true && !actualRequireClose)
 						continue;
-					if (filter.ManualClose == false && rc)
+					if (filter.ManualClose == false && actualRequireClose)
 						continue;
 				}
 
@@ -96,9 +96,7 @@ namespace Medidata.RBT.PageObjects.Rave
 
 				if (filter.Answer != null)
 				{
-					if (answerTD != null && answerTD.Text.Trim() == filter.Answer)
-						;
-					else
+					if (!(answerTD != null && answerTD.Text.Trim() == filter.Answer))
 						continue;
 				}
 

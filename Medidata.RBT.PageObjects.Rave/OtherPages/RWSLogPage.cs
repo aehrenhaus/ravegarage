@@ -12,6 +12,9 @@ namespace Medidata.RBT.PageObjects.Rave
 {
     public class RWSLogPage : PageBase
     {
+		public RWSLogPage()
+		{
+		}
 
         public RWSLogPage(string logger)
         {

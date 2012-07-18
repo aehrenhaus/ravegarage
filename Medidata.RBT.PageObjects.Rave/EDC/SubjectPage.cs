@@ -50,10 +50,28 @@ namespace Medidata.RBT.PageObjects.Rave
 			return tr;
 		}
 
-		protected override IPage GetTargetPageObjectByLinkAreaName(string type, string areaName)
+		//protected override IPage GetTargetPageObjectByLinkAreaName(string type, string areaName)
+		//{
+		//    //if (areaName == "")
+		//    return TestContext.POFactory.GetPage("CRFPage");
+		//}
+
+
+		public override string GetInfomation(string identifer)
 		{
-			//if (areaName == "")
-			return RavePageObjectFactory.GetPage("CRFPage");
+			if (identifer == "crfversion")
+				return GetCRFVersion();
+			return base.GetInfomation(identifer);
+		}
+
+		public string GetCRFVersion()
+		{
+			var trs = Browser.Table("Table1").Children()[0].Children();
+			var tr = trs[trs.Count - 1];
+			var text = tr.Text.Trim();
+			//CRF Version 1410 - Page Generated: 17 Jul 2012 10:00:25 FLE Daylight Time
+			string version = text.Substring(11, text.IndexOf("-") -12).Trim();
+			return version;
 		}
 
 		public override string URL

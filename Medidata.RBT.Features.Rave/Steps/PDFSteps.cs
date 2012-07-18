@@ -11,6 +11,7 @@ using Microsoft.Practices.EnterpriseLibrary.Data;
 using System.Data;
 using System.Collections.Specialized;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using TechTalk.SpecFlow.Assist;
 
 namespace Medidata.RBT.Features.Rave
 {
@@ -22,7 +23,9 @@ namespace Medidata.RBT.Features.Rave
 		[StepDefinition(@"I create Data PDF")]
 		public void ICreateDataPDF(Table table)
 		{
-			CurrentPage = CurrentPage.As<FileRequestPage>().CreateDataPDF(SpecialStringHelper.ReplaceTableColumn(table,"Name"));
+			var args = table.CreateInstance<PDFCreationModel>();
+			args.Name = SpecialStringHelper.Replace(args.Name);
+			CurrentPage = CurrentPage.As<FileRequestPage>().CreateDataPDF(args);
 		}
 
 		[StepDefinition(@"I generate Data PDF ""([^""]*)""")]

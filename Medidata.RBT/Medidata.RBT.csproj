@@ -67,13 +67,17 @@
     <Compile Include="BrowserStepsBase.cs" />
     <Compile Include="PageObjectInterfaces\ControlBase.cs" />
     <Compile Include="DbHelper.cs" />
+    <Compile Include="PageObjectInterfaces\IPageObjectFactory.cs" />
     <Compile Include="PageObjectInterfaces\PageBase.cs" />
     <Compile Include="PageObjectInterfaces\IControl.cs" />
     <Compile Include="PageObjectInterfaces\IActivatePage.cs" />
     <Compile Include="PageObjectInterfaces\IVerifyDisableConrolsPage.cs" />
     <Compile Include="PageObjectInterfaces\IPage.cs" />
     <Compile Include="PageObjectInterfaces\IPaginatedPage.cs" />
+    <Compile Include="PageObjectInterfaces\AbstractPageObjectFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="StringReplacement\DateFReplace.cs" />
+    <Compile Include="StringReplacement\DateReplace.cs" />
     <Compile Include="StringReplacement\RndNumReplace.cs" />
     <Compile Include="StringReplacement\MaxSubjectNumReplace.cs" />
     <Compile Include="StringReplacement\VarReplace.cs" />

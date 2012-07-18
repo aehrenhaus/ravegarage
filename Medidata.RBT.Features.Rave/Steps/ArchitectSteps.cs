@@ -22,9 +22,10 @@ namespace Medidata.RBT.Features.Rave
 		[StepDefinition(@"I create Draft ""([^""]*)"" from Project ""([^""]*)"" and Version ""([^""]*)""")]
 		public void GivenICreateDraft____FromProject____AndVersion____(string draftName, string project, string version)
 		{
-			CurrentPage = CurrentPage.As<ArchitectLibraryPage>().CreateDraftFromProject(SpecialStringHelper.Replace( draftName),
-				SpecialStringHelper.Replace(project),
-				SpecialStringHelper.Replace(version));
+			draftName = SpecialStringHelper.Replace( draftName);
+			project =SpecialStringHelper.Replace(project);
+			version = SpecialStringHelper.Replace(version);
+			CurrentPage = CurrentPage.As<ArchitectLibraryPage>().CreateDraftFromProject(draftName,project,version);
 		}
 
 
@@ -57,10 +58,8 @@ namespace Medidata.RBT.Features.Rave
 		[Given(@"I select Migration Results and verify Job Status is set to Complete")]
 		public void GivenISelectMigrationResultsAndVerifyJobStatusIsSetToComplete()
 		{
-			var isComplete = CurrentPage.As<AMMigrationExecutePage>().SeeIfComplete();
-			Assert.IsTrue(isComplete, "Not complete");
+			CurrentPage.As<AMMigrationExecutePage>().WaitForComplete();
 		}
-
 
 	}
 

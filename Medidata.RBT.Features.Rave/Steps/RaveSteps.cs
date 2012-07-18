@@ -9,6 +9,9 @@ using Medidata.RBT.PageObjects.Rave;
 using System.IO;
 using Microsoft.Practices.EnterpriseLibrary.Data;
 using System.Data;
+using OpenQA.Selenium;
+using OpenQA.Selenium.Remote;
+using System.Threading;
 
 namespace Medidata.RBT.Features.Rave
 {
@@ -25,7 +28,7 @@ namespace Medidata.RBT.Features.Rave
 		public void INavigateTo____PageWithParameters(string pageName, Table table)
 		{
 			//TODO:Set parameters from table
-			PageBase page = RavePageObjectFactory.GetPage(pageName.Replace(" ", "") + "Page") as PageBase;
+			PageBase page = TestContext.POFactory.GetPage(pageName.Replace(" ", "") + "Page") as PageBase;
 			foreach (var row in table.Rows)
 			{
 				page.Parameters[row["Name"]]=row["Value"];
@@ -36,8 +39,8 @@ namespace Medidata.RBT.Features.Rave
 		[StepDefinition(@"I navigate to ""([^""]*)"" page")]
 		public void INavigateTo____Page(string pageName)
 		{
-		
-			CurrentPage = RavePageObjectFactory.GetPage(pageName.Replace(" ", "") + "Page").NavigateToSelf();
+
+			CurrentPage = TestContext.POFactory.GetPage(pageName.Replace(" ", "") + "Page").NavigateToSelf();
 		}
 
         [StepDefinition(@"I go to the log page for logger ""([^""]*)""")]
@@ -45,5 +48,8 @@ namespace Medidata.RBT.Features.Rave
         {
             return new RWSLogPage(logger);
         }
+
+
+
 	}
 }

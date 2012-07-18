@@ -309,5 +309,24 @@ namespace Medidata.RBT
 		}
 
 		#endregion
+
+		private static IPageObjectFactory _POFactory;
+		public static  IPageObjectFactory POFactory
+		{
+			get
+			{
+				//TODO: this will initiallize _POFactory by the CurrentPage.
+				//This is not very nice because if CurrentPage is null, the this process will fail
+				if (_POFactory == null)
+				{
+					Type factoryType = CurrentPage.GetType()
+						.Assembly
+						.GetTypes()
+						.FirstOrDefault(x => x.GetInterface("IPageObjectFactory") != null) ;
+					_POFactory = Activator.CreateInstance(factoryType) as IPageObjectFactory;
+				}
+				return _POFactory;
+			}
+		}
 	}
 }

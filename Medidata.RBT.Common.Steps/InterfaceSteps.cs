@@ -14,7 +14,8 @@ namespace Medidata.RBT.Common.Steps
 		[StepDefinition(@"I choose ""([^""]*)"" from ""([^""]*)""")]
 		public void IChoose____From____(string text, string identifer)
 		{
-			CurrentPage = CurrentPage.ChooseFromDropdown(identifer, SpecialStringHelper.Replace(text));
+			text = SpecialStringHelper.Replace(text);
+			CurrentPage = CurrentPage.ChooseFromDropdown(identifer, text);
 		}
 
 		
@@ -74,6 +75,7 @@ namespace Medidata.RBT.Common.Steps
 		[StepDefinition(@"I select ""([^""]*)""")]
 		public void ISelect____(string linkText)
 		{
+			linkText = SpecialStringHelper.Replace(linkText);
 			CurrentPage = CurrentPage.ClickLink(linkText);
 
 		}
@@ -81,6 +83,7 @@ namespace Medidata.RBT.Common.Steps
 		[StepDefinition(@"I select ""([^""]*)"" in ""([^""]*)""")]
 		public void ISelect____In____(string linkText, string areaName)
 		{
+			linkText = SpecialStringHelper.Replace(linkText);
 			CurrentPage = CurrentPage.ClickLinkInArea(null,linkText, areaName);
 			
 		}
@@ -88,6 +91,7 @@ namespace Medidata.RBT.Common.Steps
 		[StepDefinition(@"I select ([^""]*) ""([^""]*)"" in ""([^""]*)""")]
 		public void ISelect________In____(string type, string linkText, string areaName)
 		{
+			linkText = SpecialStringHelper.Replace(linkText);
 			CurrentPage = CurrentPage.ClickLinkInArea(type, linkText, areaName);
 
 		}
@@ -105,12 +109,14 @@ namespace Medidata.RBT.Common.Steps
 		[StepDefinition(@"I type ""([^""]*)"" in ""([^""]*)""")]
 		public void IType____In____(string text, string identifer)
 		{
-			CurrentPage.Type(identifer, SpecialStringHelper.Replace(text));
+			text = SpecialStringHelper.Replace(text);
+			CurrentPage.Type(identifer, text);
 		}
 
 		[Then(@"I should see ""([^""]*)"" in ""([^""]*)""")]
 		public void ThenIShouldSee____In____(string text, string areaName)
 		{
+			text = SpecialStringHelper.Replace(text);
 			var cansee = CurrentPage.As<IPage>().CanSeeTextInArea(text,areaName);
 			Assert.IsTrue(cansee, "Can't see {0} in {1}",text,areaName);
 		}
@@ -125,6 +131,13 @@ namespace Medidata.RBT.Common.Steps
 		public void IInactivate________(string type, string identifer)
 		{
 			CurrentPage.As<IActivatePage>().Inactivate(type, identifer);
+		}
+
+		[StepDefinition(@"I note down ""([^""]*)"" to ""([^""]*)""")]
+		public void INoteDownCrfversionTo____(string identifer, string varName)
+		{
+			string text = CurrentPage.GetInfomation(identifer);
+			SpecialStringHelper.SetVar(varName, text);
 		}
 	}
 }

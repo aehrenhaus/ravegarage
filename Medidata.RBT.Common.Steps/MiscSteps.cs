@@ -5,6 +5,7 @@ using System.Text;
 using TechTalk.SpecFlow;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Remote;
+using System.Threading;
 
 namespace Medidata.RBT.Common.Steps
 {
@@ -29,8 +30,26 @@ namespace Medidata.RBT.Common.Steps
 					break;
 			}
 			Browser = (window as RemoteWebDriver);
+			Thread.Sleep(1000);
+			CurrentPage = TestContext.POFactory.GetPageByUrl(new Uri(Browser.Url));
 		}
 
+
+
+		[StepDefinition(@"I switch to main window")]
+		public void ISwitchToMainWindow()
+		{
+			//Browser.Close();
+			IWebDriver window = null;
+			foreach (var handle in Browser.WindowHandles)
+			{
+				window = Browser.SwitchTo().Window(handle);
+					break;
+			}
+			Browser = (window as RemoteWebDriver);
+			Thread.Sleep(1000);
+			CurrentPage = TestContext.POFactory.GetPageByUrl(new Uri(Browser.Url));
+		}
 
 	}
 }
