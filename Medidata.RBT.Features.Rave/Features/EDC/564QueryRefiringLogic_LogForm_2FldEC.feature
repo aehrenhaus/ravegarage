@@ -5,7 +5,7 @@
 
 # project to be uploaded in excel spreadsheet 'Standard Study'
 
-Feature: 564QueryRefiringLogic6_LogForm_2FldEC
+Feature: 564QueryRefiringLogic_LogForm_2FldEC
     Query Refiring Logic
 	As a Rave user
 	When I manually close a query or cancel, the query should not re-fire if the exact same data is entered into the system
@@ -21,15 +21,16 @@ Background:
 	And I publish and push CRF Version "CRF Version<RANDOMNUMBER>" of Draft "<Draft1>" to site "Site 1" in Study "Standard Study"
 	And I select Study "Standard Study" and Site "Site 1"
 	
-@PB-US12940-01A	 
-Scenario: PB-US12940-01A As an EDC user, when I entered bad data in log field A and log field B that resulted in the system opening a query on log field B, and I answered the query and I changed the data in log field B to another bad data, and the query is then closed, if I entered good data in log field B and then again entered the same bad data in log field B as when the query was closed, then the system should not refire a query on log field B. 
+
+@PB-US12940-01A	
+Scenario: @PB-US12940-01A As an EDC user, when I entered bad data in log field A and log field B that resulted in the system opening a query on log field B, and I answered the query and I changed the data in log field B to another bad data, and the query is then closed, if I entered good data in log field B and then again entered the same bad data in log field B as when the query was closed, then the system should not refire a query on log field B. 
 Query with requires response = true and requires manual close = true.
 	
 	And I create a Subject
-	  | Field            | Data                                                           |
-	  | Subject Number   | {NextSubjectNum<num1>(Standard Study,prod,Subject Number)}     |
-	  | Subject Initials | SUB                                                            |
-	  | Subject ID       | SUB {Var(num1)}                                                |
+	  | Field            | Data              |
+	  | Subject Number   | {RndNum<num1>(5)} |
+	  | Subject Initials | SUB               |
+	  | Subject ID       | SUB {Var(num1)}   |
 	And I select Form "Form 9"
 	And I enter data in CRF
 	  |Field		|Data   |
@@ -77,14 +78,14 @@ Query with requires response = true and requires manual close = true.
 	And I take a screenshot 	
 
 @PB-US12940-01B	 
-Scenario: PB-US12940-01B As an EDC user, when I entered bad data in log field A and log field B that resulted in the system opening a query on log field B, and I changed the data in log field B to another bad data, and the new query will open, if I entered good data in log field B and then again entered the same bad data in log field B as when the query was closed, then the system should refire a query on log field B. 
+Scenario: @PB-US12940-01B As an EDC user, when I entered bad data in log field A and log field B that resulted in the system opening a query on log field B, and I changed the data in log field B to another bad data, and the new query will open, if I entered good data in log field B and then again entered the same bad data in log field B as when the query was closed, then the system should refire a query on log field B. 
 Query with requires response = false and requires manual close = false.
 	
 	And I create a Subject
-	  | Field            | Data                                                           |
-	  | Subject Number   | {NextSubjectNum<num1>(Standard Study,prod,Subject Number)}     |
-	  | Subject Initials | SUB                                                            |
-	  | Subject ID       | SUB {Var(num1)}                                                |                                         
+	  | Field            | Data              |
+	  | Subject Number   | {RndNum<num1>(5)} |
+	  | Subject Initials | SUB               |
+	  | Subject ID       | SUB {Var(num1)}   |                                         
 	And I select Form "Form 9"
 	And I enter data in CRF	
       | Field       | Data |
@@ -124,15 +125,17 @@ Query with requires response = false and requires manual close = false.
 	  | Log Field 4 | Log field 4 must be equal to Log field 3. Please verify. | False    | False  |
 	And I take a screenshot 	
 
-@PB-US12940-01C	 
-Scenario: PB-US12940-01C As an EDC user, when I entered bad data in log field A and log field B that resulted in the system opening a query on log field B, and I answered the query and I changed the data in log field B to another bad data, and the query is then closed, if I entered good data in log field B and then again entered the same bad data in log field B as when the query was closed, then the system should refire a query on log field B. 
+@PB-US12940-01C	
+@ignore
+# Due to DT 14208 
+Scenario: @PB-US12940-01C As an EDC user, when I entered bad data in log field A and log field B that resulted in the system opening a query on log field B, and I answered the query and I changed the data in log field B to another bad data, and the query is then closed, if I entered good data in log field B and then again entered the same bad data in log field B as when the query was closed, then the system should refire a query on log field B. 
 Query with requires response = true and requires manual close = false.
 	
 	And I create a Subject
-	  | Field            | Data                                                           |
-	  | Subject Number   | {NextSubjectNum<num1>(Standard Study,prod,Subject Number)}     |
-	  | Subject Initials | SUB9001C                                                       |	
-	  | Subject ID       | SUB {Var(num1)}                                                | 
+	  | Field            | Data              |
+	  | Subject Number   | {RndNum<num1>(5)} |
+	  | Subject Initials | SUB9001C          |
+	  | Subject ID       | SUB {Var(num1)}   | 
 	And I select Form "Form 9"
 	When I enter data in CRF	
       | Field       | Data |
@@ -160,28 +163,29 @@ Query with requires response = true and requires manual close = false.
 	And I save the CRF page 
 	And I open log line 1
 	Then I verify Query is not displayed
-	 | Field       | Message                                                  |  
-	 | Log Field 6 | Log field 6 must be equal to Log field 5. Please verify. |  
+	 | Field       | Message                                                  | Answered | Closed |
+	 | Log Field 6 | Log field 6 must be equal to Log field 5. Please verify. | False    | False  | 
 	And I take a screenshot 
 	And I enter data in CRF    		  	  
       | Field       | Data |
       | Log Field 6 | 3    |
 	And I save the CRF page 
 	And I open log line 1		  
-	Then I verify Query is displayed
+	Then I verify Query is not displayed
 	 | Field       | Message                                                  | Answered | Closed |
 	 | Log Field 6 | Log field 6 must be equal to Log field 5. Please verify. | False    | False  |
 	And I take a screenshot 	
+# DT 14208
 		
 @PB-US12940-01D	 
-Scenario: PB-US12940-01D As an EDC user, when I entered bad data in log field A and log field B that resulted in the system opening a query on log field B, and I answered the query and I changed the data in log field B to another bad data, and the query is then closed, if I entered good data in log field B and then again entered the same bad data in log field B as when the query was closed, then the system should not refire a query on log field B. 
+Scenario: @PB-US12940-01D As an EDC user, when I entered bad data in log field A and log field B that resulted in the system opening a query on log field B, and I answered the query and I changed the data in log field B to another bad data, and the query is then closed, if I entered good data in log field B and then again entered the same bad data in log field B as when the query was closed, then the system should not refire a query on log field B. 
 Query with requires response = false and requires manual close = true
 	
 	And I create a Subject
-	  | Field            | Data                                                       |
-	  | Subject Initials | SUB9001D                                                   |
-	  | Subject Number   | {NextSubjectNum<num1>(Standard Study,prod,Subject Number)} |
-	  | Subject ID       | SUB {Var(num1)}                                            |
+	  | Field            | Data              |
+	  | Subject Number   | {RndNum<num1>(5)} |
+	  | Subject Initials | SUB9001D          |
+	  | Subject ID       | SUB {Var(num1)}   |
 	And I select Form "Form 9"
 	When I enter data in CRF	
       | Field       | Data |  
@@ -215,8 +219,12 @@ Query with requires response = false and requires manual close = true
 	And I save the CRF page 
 	And I open log line 1 	
 	Then I verify Query is not displayed
-	  | Field       | Message                                                  | 
-	  | Log Field 8 | Log field 8 must be equal to Log field 7. Please verify. |   	  
+	  | Field       | Message                                                  | Answered | Closed |
+	  | Log Field 8 | Log field 8 must be equal to Log field 7. Please verify. | False    | False  | 
+	And I verify Query is displayed
+	  | Field       | Message                                                  | Answered | Closed |
+	  | Log Field 8 | Log field 8 must be equal to Log field 7. Please verify. | True     | True   | 
+	And I take a screenshot 	  
 	When I enter data in CRF	  
       | Field       | Data |
       | Log Field 8 | 3    |	 
@@ -225,19 +233,21 @@ Query with requires response = false and requires manual close = true
 	Then I verify Query is displayed  
       | Field       | Message                                                  | Answered | Closed |
       | Log Field 8 | Log field 8 must be equal to Log field 7. Please verify. | True     | True   |	 	 	  
-	And I take a screenshot 
-	
-		 
+	And I verify Query is not displayed
+	  | Field       | Message                                                  | Answered | Closed |
+	  | Log Field 8 | Log field 8 must be equal to Log field 7. Please verify. | False    | False  | 
+	And I take a screenshot	
+	 
 @PB-US12940-02A		
 @draft
-Scenario: PB-US12940-02A As an EDC user, when I entered bad data in log field A and log field B that resulted in the system opening a query on log field B, and I answered the query and I changed the data in log field B to another bad data, and the query is then closed, if I then entered the original bad data in log field B, then the system should refire a query on log field B. 
+Scenario: @PB-US12940-02A As an EDC user, when I entered bad data in log field A and log field B that resulted in the system opening a query on log field B, and I answered the query and I changed the data in log field B to another bad data, and the query is then closed, if I then entered the original bad data in log field B, then the system should refire a query on log field B. 
 Query with requires response = true and requires manual close = true
 	
 	And I create a Subject
-	  | Field            | Data                                                           |
-	  | Subject Number   | {NextSubjectNum<num1>(Standard Study,prod,Subject Number)}     |
-	  | Subject Initials | SUB9002A                                                       |
-	   | Subject ID       | SUB {Var(num1)}                                               |
+	  | Field            | Data              |
+	  | Subject Number   | {RndNum<num1>(5)} |
+	  | Subject Initials | SUB9002A          |
+	  | Subject ID       | SUB {Var(num1)}   |
 	And I select Form "Form 9"
 	When I enter data in CRF	
       | Field       | Data |  
@@ -272,8 +282,8 @@ Query with requires response = true and requires manual close = true
 	And I save the CRF page 
 	And I open log line 1
 	Then I verify Query is not displayed
-      | Field       | Message                                                  |  
-      | Log Field 2 | Log field 2 must be equal to Log field 1. Please verify. | 	 
+      | Field       | Message                                                  | Answered | Closed | 
+      | Log Field 2 | Log field 2 must be equal to Log field 1. Please verify. | False    | False  | 	 
 	And I take a screenshot 		  
 	When I enter data in CRF  
       | Field       | Data |
@@ -286,14 +296,14 @@ Query with requires response = true and requires manual close = true
 	And I take a screenshot 
 	
 @PB-US12940-02B		
-Scenario:PB-US12940-02B	As an EDC user, when I entered bad data in log field A and log field B that resulted in the system opening a query on log field B, and I answered the query and I changed the data in log field B to another bad data, and the query is then closed, if I then entered the original bad data in log field B, then the system should refire a query on log field B. 
+Scenario: @PB-US12940-02B	As an EDC user, when I entered bad data in log field A and log field B that resulted in the system opening a query on log field B, and I answered the query and I changed the data in log field B to another bad data, and the query is then closed, if I then entered the original bad data in log field B, then the system should refire a query on log field B. 
 Query with requires response = false and requires manual close = false.
 	
 	And I create a Subject
-	  | Field            | Data                                                       |
-	  | Subject Number   | {NextSubjectNum<num1>(Standard Study,prod,Subject Number)} |
-	  | Subject Initials | SUB9002B                                                   |
-	  | Subject ID       | SUB {Var(num1)}                                            |  
+	  | Field            | Data              |
+	  | Subject Number   | {RndNum<num1>(5)} |
+	  | Subject Initials | SUB9002B          |
+	  | Subject ID       | SUB {Var(num1)}   |  
 	And I select Form "Form 9"
 	When I enter data in CRF	
       | Field       | Data |
@@ -319,8 +329,8 @@ Query with requires response = false and requires manual close = false.
 	And I save the CRF page 
 	And I open log line 1	
 	Then I verify Query is not displayed
-      | Field       | Message                                                  |
-      | Log Field 4 | Log field 4 must be equal to Log field 3. Please verify. |  	  
+      | Field       | Message                                                  | Answered  | Closed |
+      | Log Field 4 | Log field 4 must be equal to Log field 3. Please verify. | False     | False  | 	  
 	And I take a screenshot		  
 	When I enter data in CRF	  	  	  
       | Field       | Data |
@@ -335,14 +345,14 @@ Query with requires response = false and requires manual close = false.
 @PB-US12940-02C
 @ignore
 # Failed due to DT 14208		
-Scenario: As an EDC user, when I entered bad data in log field A and log field B that resulted in the system opening a query on log field B, and I answered the query and I changed the data in log field B to another bad data, and the query is then closed, if I then entered the original bad data in log field B, then the system should refire a query on log field B. 
+Scenario: @PB-US12940-02C As an EDC user, when I entered bad data in log field A and log field B that resulted in the system opening a query on log field B, and I answered the query and I changed the data in log field B to another bad data, and the query is then closed, if I then entered the original bad data in log field B, then the system should refire a query on log field B. 
 Query with requires response = true and requires manual close = false.
 	
 	And I create a Subject
-	  | Field            | Data                                                       |
-	  | Subject Number   | {NextSubjectNum<num1>(Standard Study,prod,Subject Number)} |
-	  | Subject Initials | SUB9002C                                                   |
-	  | Subject ID       | SUB {Var(num1)}                                            | 
+	  | Field            | Data              |
+	  | Subject Number   | {RndNum<num1>(5)} |
+	  | Subject Initials | SUB9002C          |
+	  | Subject ID       | SUB {Var(num1)}   | 
 	And I select Form "Form 9"
 	When I enter data in CRF	
       | Field       | Data |
@@ -371,8 +381,8 @@ Query with requires response = true and requires manual close = false.
     And I save the CRF page 
 	And I open log line 1
 	Then I verify Query is not displayed
-	  | Field       | Message                                                  | 
-      | Log Field 6 | Log field 6 must be equal to Log field 5. Please verify. | 		
+	  | Field       | Message                                                  | Answered | Closed |
+      | Log Field 6 | Log field 6 must be equal to Log field 5. Please verify. | False    | False  | 		
     And I take a screenshot 
 	When I enter data in CRF		    
       | Field       | Data |
@@ -386,14 +396,14 @@ Query with requires response = true and requires manual close = false.
 
 		
 @PB-US12940-02D		
-Scenario: PB-US12940-02D As an EDC user, when I entered bad data in log field A and log field B that resulted in the system opening a query on log field B, and I answered the query and I changed the data in log field B to another bad data, and the query is then closed, if I then entered the original bad data in log field B, then the system should refire a query on log field B. 
+Scenario: @PB-US12940-02D As an EDC user, when I entered bad data in log field A and log field B that resulted in the system opening a query on log field B, and I answered the query and I changed the data in log field B to another bad data, and the query is then closed, if I then entered the original bad data in log field B, then the system should refire a query on log field B. 
 Query with requires response = false and requires manual close = true.
 	
 	And I create a Subject
-	  | Field            | Data                                                       |
-	  | Subject Number   | {NextSubjectNum<num1>(Standard Study,prod,Subject Number)} |
-	  | Subject Initials | SUB9002D                                                   |
-	  | Subject ID       | SUB {Var(num1)}                                            | 
+	  | Field            | Data              |
+	  | Subject Initials | SUB9002D          |	  
+	  | Subject Number   | {RndNum<num1>(5)} |
+	  | Subject ID       | SUB {Var(num1)}   | 
 	And I select Form "Form 9"
 	When I enter data in CRF	
       | Field       | Data |
@@ -427,8 +437,8 @@ Query with requires response = false and requires manual close = true.
     And I save the CRF page 
 	And I open log line 1
 	Then I verify Query is not displayed
-	  | Field       | Message                                                  |
-	  | Log Field 8 | Log field 8 must be equal to Log field 7. Please verify. |
+	  | Field       | Message                                                  | Answered | Closed |
+	  | Log Field 8 | Log field 8 must be equal to Log field 7. Please verify. | False    | False  |
     And I take a screenshot
 	When I enter data in CRF	
       | Field       | Data |
@@ -441,14 +451,14 @@ Query with requires response = false and requires manual close = true.
 
 
 @PB-US12940-03A		
-Scenario: PB-US12940-03A As an EDC user, when I entered bad data in log field A and log field B that resulted in the system opening a query on log field B, and I answered the query without changing the data, and the query is then closed, if I then entered new bad data in log field B, then the system should refire a query on log field B. 
+Scenario: @PB-US12940-03A As an EDC user, when I entered bad data in log field A and log field B that resulted in the system opening a query on log field B, and I answered the query without changing the data, and the query is then closed, if I then entered new bad data in log field B, then the system should refire a query on log field B. 
 Query with requires response = true and requires manual close = true.
 	
 	And I create a Subject
-	  | Field            | Data                                                       |
-	  | Subject Number   | {NextSubjectNum<num1>(Standard Study,prod,Subject Number)} |
-	  | Subject Initials | SUB9003A                                                   |
-	  | Subject ID       | SUB {Var(num1)}                                            |	
+	  | Field            | Data              |
+	  | Subject Number   | {RndNum<num1>(5)} |
+	  | Subject Initials | SUB9003A          |
+	  | Subject ID       | SUB {Var(num1)}   |  	
 	And I select Form "Form 9"
 	When I enter data in CRF	
       | Field       | Data |
@@ -497,14 +507,14 @@ Query with requires response = true and requires manual close = true.
 	And I take a screenshot	 
 
 @PB-US12940-03B		
-Scenario: PB-US12940-03B	 As an EDC user, when I entered bad data in log field A and log field B that resulted in the system opening a query on log field B, and I answered the query without changing the data, and the query is then closed, if I then entered new bad data in log field B, then the system should refire a query on log field B. 
+Scenario: @PB-US12940-03B	 As an EDC user, when I entered bad data in log field A and log field B that resulted in the system opening a query on log field B, and I answered the query without changing the data, and the query is then closed, if I then entered new bad data in log field B, then the system should refire a query on log field B. 
 Query with requires response = false and requires manual close = false.
 	
 	And I create a Subject
-	  | Field            | Data                                                       |
-	  | Subject Number   | {NextSubjectNum<num1>(Standard Study,prod,Subject Number)} |
-	  | Subject Initials | SUB9003B                                                   |
-	  | Subject ID       | SUB {Var(num1)}                                            |
+	  | Field            | Data              |
+	  | Subject Number   | {RndNum<num1>(5)} |
+	  | Subject Initials | SUB9003B          |
+	  | Subject ID       | SUB {Var(num1)}   |
 	And I select Form "Form 9"
 	When I enter data in CRF	
       | Field       | Data |
@@ -528,14 +538,14 @@ Query with requires response = false and requires manual close = false.
 
 		
 @PB-US12940-03C		
-Scenario: PB-US12940-03C As an EDC user, when I entered bad data in log field A and log field B that resulted in the system opening a query on log field B, and I answered the query without changing the data, and the query is then closed, if I then entered new bad data in log field B, then the system should refire a query on log field B. 
+Scenario: @PB-US12940-03C As an EDC user, when I entered bad data in log field A and log field B that resulted in the system opening a query on log field B, and I answered the query without changing the data, and the query is then closed, if I then entered new bad data in log field B, then the system should refire a query on log field B. 
 Query with requires response = true and requires manual close = false
 	
 	And I create a Subject
-	  | Field            | Data                                                       |
-	  | Subject Number   | {NextSubjectNum<num1>(Standard Study,prod,Subject Number)} |
-	  | Subject Initials | SUB9003C                                                   |
-	  | Subject ID       | SUB {Var(num1)}                                            |
+	  | Field            | Data              |
+	  | Subject Number   | {RndNum<num1>(5)} |
+	  | Subject Initials | SUB9003C          |
+	  | Subject ID       | SUB {Var(num1)}   |
 	And I select Form "Form 9"
 	When I enter data in CRF	
       | Field       | Data |
@@ -566,14 +576,14 @@ Query with requires response = true and requires manual close = false
 
 		
 @PB-US12940-03D		
-Scenario: PB-US12940-03D As an EDC user, when I entered bad data in log field A and log field B that resulted in the system opening a query on log field B, and I answered the query without changing the data, and the query is then closed, if I then entered new bad data in log field B, then the system should refire a query on log field B. 
+Scenario: @PB-US12940-03D As an EDC user, when I entered bad data in log field A and log field B that resulted in the system opening a query on log field B, and I answered the query without changing the data, and the query is then closed, if I then entered new bad data in log field B, then the system should refire a query on log field B. 
 Query with requires response = false and requires manual close = true.
 	
 	And I create a Subject
-	  | Field            | Data                                                       |
-	  | Subject Number   | {NextSubjectNum<num1>(Standard Study,prod,Subject Number)} |
-	  | Subject Initials | SUB9003D                                                   |
-	  | Subject ID       | SUB {Var(num1)}                                            |
+	  | Field            | Data              |
+	  | Subject Number   | {RndNum<num1>(5)} |
+	  | Subject Initials | SUB9003D          |
+	  | Subject ID       | SUB {Var(num1)}   |
 	And I select Form "Form 9"
 	When I enter data in CRF	
       | Field       | Data |
@@ -597,14 +607,14 @@ Query with requires response = false and requires manual close = true.
 
 	
 @PB-US12940-04A		
-Scenario: PB-US12940-04A As an EDC user, when I entered bad data in log field A and log field B that resulted in the system opening a query on log field B, and I answered the query and I changed the data in log field A to another bad data, and the query is then closed, if I then entered the new bad data in log field A, then the system should refire a query on log field B. 
+Scenario: @PB-US12940-04A As an EDC user, when I entered bad data in log field A and log field B that resulted in the system opening a query on log field B, and I answered the query and I changed the data in log field A to another bad data, and the query is then closed, if I then entered the new bad data in log field A, then the system should refire a query on log field B. 
 Query with requires response = true and requires manual close = true
 	
 	And I create a Subject
-	  | Field            | Data                                                       |
-	  | Subject Number   | {NextSubjectNum<num1>(Standard Study,prod,Subject Number)} |
-	  | Subject Initials | SUB9004A                                                   |
-	  | Subject ID       | SUB {Var(num1)}                                            |
+	  | Field            | Data              |
+	  | Subject Number   | {RndNum<num1>(5)} |
+	  | Subject Initials | SUB9004A          |
+	  | Subject ID       | SUB {Var(num1)}   |
 	And I select Form "Form 9"
 	When I enter data in CRF	
       | Field       | Data |
@@ -647,14 +657,14 @@ Query with requires response = true and requires manual close = true
 @PB-US12940-04B
 @ignore
 # DT14207		
-Scenario: PB-US12940-04B As an EDC user, when I entered bad data in log field A and log field B that resulted in the system opening a query on log field B, and I answered the query and I changed the data in log field A to another bad data, and the query is then closed, if I then entered the new bad data in log field A, then the system should refire a query on log field B. 
+Scenario: @PB-US12940-04B As an EDC user, when I entered bad data in log field A and log field B that resulted in the system opening a query on log field B, and I answered the query and I changed the data in log field A to another bad data, and the query is then closed, if I then entered the new bad data in log field A, then the system should refire a query on log field B. 
 Query with requires response = false and requires manual close = false
 	
 	And I create a Subject
-	  | Field            | Data                                                       |
-	  | Subject Number   | {NextSubjectNum<num1>(Standard Study,prod,Subject Number)} |
-	  | Subject Initials | SUB9004B                                                   |
-	  | Subject ID       | SUB {Var(num1)}                                            |	
+	  | Field            | Data              |
+	  | Subject Number   | {RndNum<num1>(5)} |
+	  | Subject Initials | SUB9004B          |
+	  | Subject ID       | SUB {Var(num1)}   |	
 	And I select Form "Form 9"
 	When I enter data in CRF	
       | Field       | Data |
@@ -690,14 +700,14 @@ Query with requires response = false and requires manual close = false
 @PB-US12940-04C
 @ignore 
 # failing due to DT 14208	
-Scenario: PB-US12940-04C As an EDC user, when I entered bad data in log field A and log field B that resulted in the system opening a query on log field B, and I answered the query and I changed the data in log field A to another bad data, and the query is then closed, if I then entered the new bad data in log field A, then the system should refire a query on log field B. 
+Scenario: @PB-US12940-04C As an EDC user, when I entered bad data in log field A and log field B that resulted in the system opening a query on log field B, and I answered the query and I changed the data in log field A to another bad data, and the query is then closed, if I then entered the new bad data in log field A, then the system should refire a query on log field B. 
 Query with requires response = true and requires manual close = false
 	
 	And I create a Subject
-	  | Field            | Data                                                       |
-	  | Subject Number   | {NextSubjectNum<num1>(Standard Study,prod,Subject Number)} |
-	  | Subject Initials | SUB9004C                                                   |
-	  | Subject ID       | SUB {Var(num1)}                                            |
+	  | Field            | Data              |
+	  | Subject Number   | {RndNum<num1>(5)} |
+	  | Subject Initials | SUB9004C          |
+	  | Subject ID       | SUB {Var(num1)}   |
 	And I select Form "Form 9"
 	When I enter data in CRF	
       | Field       | Data |
@@ -734,14 +744,14 @@ Query with requires response = true and requires manual close = false
 @PB-US12940-04D	
 @ignore	
 # Failed due to DT 14207
-Scenario: PB-US12940-04D As an EDC user, when I entered bad data in log field A and log field B that resulted in the system opening a query on log field B, and I answered the query and I changed the data in log field A to another bad data, and the query is then closed, if I then entered the new bad data in log field A, then the system should refire a query on log field B. 
+Scenario: @PB-US12940-04D As an EDC user, when I entered bad data in log field A and log field B that resulted in the system opening a query on log field B, and I answered the query and I changed the data in log field A to another bad data, and the query is then closed, if I then entered the new bad data in log field A, then the system should refire a query on log field B. 
 Query with requires response = false and requires manual close = true.
 	
 	And I create a Subject
-	  | Field            | Data                                                       |
-	  | Subject Number   | {NextSubjectNum<num1>(Standard Study,prod,Subject Number)} |
-	  | Subject Initials | SUB9004D                                                   |
-	  | Subject ID       | SUB {Var(num1)}                                            |
+	  | Field            | Data              |
+	  | Subject Number   | {RndNum<num1>(5)} |
+	  | Subject Initials | SUB9004D          |
+	  | Subject ID       | SUB {Var(num1)}   |
 	And I select Form "Form 9"
 	When I enter data in CRF	
       | Field       | Data |
@@ -782,14 +792,14 @@ Query with requires response = false and requires manual close = true.
 	
 	
 @PB-US12940-05A		
-Scenario: PB-US12940-05A As an EDC user, when I entered bad data in log field A and log field B that resulted in the system opening a query on log field B, and I answered the query and I changed the data in log field B to another bad data, and the query is then closed, if I then entered the new bad data in log field B, then the system should refire a query on log field B. 
+Scenario: @PB-US12940-05A As an EDC user, when I entered bad data in log field A and log field B that resulted in the system opening a query on log field B, and I answered the query and I changed the data in log field B to another bad data, and the query is then closed, if I then entered the new bad data in log field B, then the system should refire a query on log field B. 
 Query with requires response = true and requires manual close = true.
 	
 	And I create a Subject
-	  | Field            | Data                                                       |
-	  | Subject Number   | {NextSubjectNum<num1>(Standard Study,prod,Subject Number)} |
-	  | Subject Initials | SUB9005A                                                   |
-	  | Subject ID       | SUB {Var(num1)}                                            |
+	  | Field            | Data              |
+	  | Subject Initials | SUB9005A          |
+	  | Subject Number   | {RndNum<num1>(5)} |
+	  | Subject ID       | SUB {Var(num1)}   |
 	And I select Form "Form 9"
 	When I enter data in CRF	
       | Field       | Data |
@@ -830,14 +840,14 @@ Query with requires response = true and requires manual close = true.
 
 		
 @PB-US12940-05B		
-Scenario: PB-US12940-05B As an EDC user, when I entered bad data in log field A and log field B that resulted in the system opening a query on log field B, and I answered the query and I changed the data in log field B to another bad data, and the query is then closed, if I then entered the new bad data in log field B, then the system should refire a query on log field B. 
+Scenario: @PB-US12940-05B As an EDC user, when I entered bad data in log field A and log field B that resulted in the system opening a query on log field B, and I answered the query and I changed the data in log field B to another bad data, and the query is then closed, if I then entered the new bad data in log field B, then the system should refire a query on log field B. 
 Query with requires response = false and requires manual close = false
 	
 	And I create a Subject
-	  | Field            | Data                                                       |
-	  | Subject Number   | {NextSubjectNum<num1>(Standard Study,prod,Subject Number)} |
-	  | Subject Initials | SUB9005B                                                   |
-	  | Subject ID       | SUB {Var(num1)}                                            |
+	  | Field            | Data              |
+	  | Subject Initials | SUB9005B          |
+	  | Subject Number   | {RndNum<num1>(5)} |
+	  | Subject ID       | SUB {Var(num1)}   |
 	And I select Form "Form 9"
 	When I enter data in CRF	
       | Field       | Data |
@@ -872,14 +882,14 @@ Query with requires response = false and requires manual close = false
 @PB-US12940-05C	
 @ignore
 # failing due to DT 14208	
-Scenario: PB-US12940-05C As an EDC user, when I entered bad data in log field A and log field B that resulted in the system opening a query on log field B, and I answered the query and I changed the data in log field B to another bad data, and the query is then closed, if I then entered the new bad data in log field B, then the system should refire a query on log field B. 
+Scenario: @PB-US12940-05C As an EDC user, when I entered bad data in log field A and log field B that resulted in the system opening a query on log field B, and I answered the query and I changed the data in log field B to another bad data, and the query is then closed, if I then entered the new bad data in log field B, then the system should refire a query on log field B. 
 Query with requires response = true and requires manual close = false.
 	
 	And I create a Subject
-	  | Field            | Data                                                       |
-	  | Subject Number   | {NextSubjectNum<num1>(Standard Study,prod,Subject Number)} |
-	  | Subject Initials | SUB9005C                                                   |
-	  | Subject ID       | SUB {Var(num1)}                                            |	
+	  | Field            | Data              |
+	  | Subject Number   | {RndNum<num1>(5)} |
+	  | Subject Initials | SUB9005C          |
+	  | Subject ID       | SUB {Var(num1)}   |	
 	And I select Form "Form 9"
 	When I enter data in CRF	
       | Field       | Data |
@@ -918,10 +928,10 @@ Scenario: @PB-US12940-05D As an EDC user, when I entered bad data in log field A
 Query with requires response = false and requires manual close = true.
 	
 	And I create a Subject
-	  | Field            | Data                                                       |
-	  | Subject Number   | {NextSubjectNum<num1>(Standard Study,prod,Subject Number)} |
-	  | Subject Initials | SUB9005D                                                   |
-	  | Subject ID       | SUB {Var(num1)}                                            |	
+	  | Field            | Data              |
+	  | Subject Number   | {RndNum<num1>(5)} |
+	  | Subject Initials | SUB9005D          |
+	  | Subject ID       | SUB {Var(num1)}   |	
 	And I select Form "Form 9"
 	When I enter data in CRF	
       | Field       | Data |
