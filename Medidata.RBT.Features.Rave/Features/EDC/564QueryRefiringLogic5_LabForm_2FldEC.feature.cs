@@ -103,13 +103,15 @@ namespace Medidata.RBT.Features.Rave.Features.EDC
         }
         
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("@PB-US12940-01A")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("@PB_US12940_01A")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Query Refiring Logic5")]
         public virtual void PB_US12940_01A()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("@PB-US12940-01A", new string[] {
-                        "PB-US12940-01A"});
-#line 23
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("@PB_US12940_01A", new string[] {
+                        "release_564_Patch11",
+                        "PB_US12940_01A",
+                        "Validation"});
+#line 25
 this.ScenarioSetup(scenarioInfo);
 #line 12
 this.FeatureBackground();
@@ -126,9 +128,9 @@ this.FeatureBackground();
             table2.AddRow(new string[] {
                         "Subject ID",
                         "SUB {Var(num1)}"});
-#line 26
+#line 28
  testRunner.And("I create a Subject", ((string)(null)), table2);
-#line 31
+#line 33
  testRunner.And("I select Form \"Lab Form 8\"");
 #line hidden
             TechTalk.SpecFlow.Table table3 = new TechTalk.SpecFlow.Table(new string[] {
@@ -140,7 +142,7 @@ this.FeatureBackground();
             table3.AddRow(new string[] {
                         "Lab Field 2 - WBC - rr = T ; rmc = T",
                         "3"});
-#line 32
+#line 34
  testRunner.And("I enter data in CRF and save", ((string)(null)), table3);
 #line hidden
             TechTalk.SpecFlow.Table table4 = new TechTalk.SpecFlow.Table(new string[] {
@@ -153,23 +155,23 @@ this.FeatureBackground();
                         "Lab Field 2 must be greater than Lab Field 1. Please verify.",
                         "false",
                         "false"});
-#line 36
+#line 38
  testRunner.And("I verify Query is displayed", ((string)(null)), table4);
-#line 39
+#line 41
  testRunner.And("I take a screenshot");
-#line 40
+#line 42
  testRunner.And("I answer the Query \"Lab Field 2 must be greater than Lab Field 1. Please verify.\"" +
                     " on Field \"Lab Field 2 - WBC - rr = T ; rmc = T\" with \"Data will be changed.\"");
-#line 41
- testRunner.And("I save the CRF page");
-#line 42
- testRunner.And("I close the only Query on Field \"Lab Field 2 - WBC - rr = T ; rmc = T\"");
 #line 43
  testRunner.And("I save the CRF page");
 #line 44
+ testRunner.And("I close the only Query on Field \"Lab Field 2 - WBC - rr = T ; rmc = T\"");
+#line 45
+ testRunner.And("I save the CRF page");
+#line 46
  testRunner.And("I verify closed Query with message \"Lab Field 2 must be greater than Lab Field 1." +
                     " Please verify.\" is displayed on Field \"Lab Field 2 - WBC - rr = T ; rmc = T\"");
-#line 45
+#line 47
  testRunner.And("I take a screenshot");
 #line hidden
             TechTalk.SpecFlow.Table table5 = new TechTalk.SpecFlow.Table(new string[] {
@@ -178,7 +180,7 @@ this.FeatureBackground();
             table5.AddRow(new string[] {
                         "Lab Field 1 - NEUTROPHILS - rr = T ; rmc = T",
                         "2"});
-#line 46
+#line 48
  testRunner.And("I enter data in CRF and save", ((string)(null)), table5);
 #line hidden
             TechTalk.SpecFlow.Table table6 = new TechTalk.SpecFlow.Table(new string[] {
@@ -191,7 +193,7 @@ this.FeatureBackground();
                         "Lab Field 2 must be greater than Lab Field 1. Please verify.",
                         "false",
                         "false"});
-#line 49
+#line 51
  testRunner.And("I verify Query is not displayed", ((string)(null)), table6);
 #line hidden
             TechTalk.SpecFlow.Table table7 = new TechTalk.SpecFlow.Table(new string[] {
@@ -200,7 +202,7 @@ this.FeatureBackground();
             table7.AddRow(new string[] {
                         "Lab Field 1 - NEUTROPHILS - rr = T ; rmc = T",
                         "5"});
-#line 52
+#line 54
  testRunner.When("I enter data in CRF and save", ((string)(null)), table7);
 #line hidden
             TechTalk.SpecFlow.Table table8 = new TechTalk.SpecFlow.Table(new string[] {
@@ -213,22 +215,24 @@ this.FeatureBackground();
                         "Lab Field 2 must be greater than Lab Field 1. Please verify.",
                         "false",
                         "false"});
-#line 55
+#line 57
  testRunner.Then("I verify Query is not displayed", ((string)(null)), table8);
-#line 58
+#line 60
  testRunner.And("I take a screenshot");
 #line hidden
             this.ScenarioCleanup();
         }
         
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("@PB-US12940-01B")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("@PB_US12940_01B")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Query Refiring Logic5")]
         public virtual void PB_US12940_01B()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("@PB-US12940-01B", new string[] {
-                        "PB-US12940-01B"});
-#line 61
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("@PB_US12940_01B", new string[] {
+                        "release_564_Patch11",
+                        "PB_US12940_01B",
+                        "Validation"});
+#line 65
 this.ScenarioSetup(scenarioInfo);
 #line 12
 this.FeatureBackground();
@@ -245,9 +249,9 @@ this.FeatureBackground();
             table9.AddRow(new string[] {
                         "Subject ID",
                         "SUB {Var(num1)}"});
-#line 64
+#line 68
  testRunner.And("I create a Subject", ((string)(null)), table9);
-#line 69
+#line 73
  testRunner.And("I select Form \"Lab Form 8\"");
 #line hidden
             TechTalk.SpecFlow.Table table10 = new TechTalk.SpecFlow.Table(new string[] {
@@ -259,7 +263,7 @@ this.FeatureBackground();
             table10.AddRow(new string[] {
                         "Lab Field 4 - WBC - rr = F ; rmc = F",
                         "3"});
-#line 70
+#line 74
  testRunner.And("I enter data in CRF and save", ((string)(null)), table10);
 #line hidden
             TechTalk.SpecFlow.Table table11 = new TechTalk.SpecFlow.Table(new string[] {
@@ -272,9 +276,9 @@ this.FeatureBackground();
                         "Lab Field 4 must be greater than Lab Field 3. Please verify.",
                         "false",
                         "false"});
-#line 74
+#line 78
  testRunner.And("I verify Query is displayed", ((string)(null)), table11);
-#line 77
+#line 81
  testRunner.And("I take a screenshot");
 #line hidden
             TechTalk.SpecFlow.Table table12 = new TechTalk.SpecFlow.Table(new string[] {
@@ -283,7 +287,7 @@ this.FeatureBackground();
             table12.AddRow(new string[] {
                         "Lab Field 3 - NEUTROPHILS - rr = F ; rmc = F",
                         "2"});
-#line 78
+#line 82
  testRunner.And("I enter data in CRF and save", ((string)(null)), table12);
 #line hidden
             TechTalk.SpecFlow.Table table13 = new TechTalk.SpecFlow.Table(new string[] {
@@ -296,9 +300,9 @@ this.FeatureBackground();
                         "Lab Field 4 must be greater than Lab Field 3. Please verify.",
                         "false",
                         "false"});
-#line 81
+#line 85
  testRunner.And("I verify Query is not displayed", ((string)(null)), table13);
-#line 84
+#line 88
  testRunner.And("I take a screenshot");
 #line hidden
             TechTalk.SpecFlow.Table table14 = new TechTalk.SpecFlow.Table(new string[] {
@@ -307,7 +311,7 @@ this.FeatureBackground();
             table14.AddRow(new string[] {
                         "Lab Field 3 - NEUTROPHILS - rr = F ; rmc = F",
                         "5"});
-#line 85
+#line 89
  testRunner.When("I enter data in CRF and save", ((string)(null)), table14);
 #line hidden
             TechTalk.SpecFlow.Table table15 = new TechTalk.SpecFlow.Table(new string[] {
@@ -320,22 +324,24 @@ this.FeatureBackground();
                         "Lab Field 4 must be greater than Lab Field 3. Please verify.",
                         "false",
                         "false"});
-#line 88
+#line 92
  testRunner.Then("I verify Query is displayed", ((string)(null)), table15);
-#line 91
+#line 95
  testRunner.And("I take a screenshot");
 #line hidden
             this.ScenarioCleanup();
         }
         
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("@PB-US12940-01C")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("@PB_US12940_01C")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Query Refiring Logic5")]
         public virtual void PB_US12940_01C()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("@PB-US12940-01C", new string[] {
-                        "PB-US12940-01C"});
-#line 94
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("@PB_US12940_01C", new string[] {
+                        "release_564_Patch11",
+                        "PB_US12940_01C",
+                        "Validation"});
+#line 100
 this.ScenarioSetup(scenarioInfo);
 #line 12
 this.FeatureBackground();
@@ -352,9 +358,9 @@ this.FeatureBackground();
             table16.AddRow(new string[] {
                         "Subject ID",
                         "SUB {Var(num1)}"});
-#line 97
+#line 103
  testRunner.And("I create a Subject", ((string)(null)), table16);
-#line 102
+#line 108
  testRunner.And("I select Form \"Lab Form 8\"");
 #line hidden
             TechTalk.SpecFlow.Table table17 = new TechTalk.SpecFlow.Table(new string[] {
@@ -366,7 +372,7 @@ this.FeatureBackground();
             table17.AddRow(new string[] {
                         "Lab Field 6 - WBC - rr = T ; rmc = F",
                         "3"});
-#line 103
+#line 109
  testRunner.And("I enter data in CRF and save", ((string)(null)), table17);
 #line hidden
             TechTalk.SpecFlow.Table table18 = new TechTalk.SpecFlow.Table(new string[] {
@@ -379,14 +385,14 @@ this.FeatureBackground();
                         "Lab Field 6 must be greater than Lab Field 5. Please verify.",
                         "false",
                         "false"});
-#line 107
+#line 113
  testRunner.And("I verify Query is displayed", ((string)(null)), table18);
-#line 110
+#line 116
  testRunner.And("I take a screenshot");
-#line 111
+#line 117
  testRunner.And("I answer the Query \"Lab Field 6 must be greater than Lab Field 5. Please verify.\"" +
                     " on Field \"Lab Field 6 - WBC - rr = T ; rmc = F\" with \"Data will be changed.\"");
-#line 112
+#line 118
  testRunner.And("I save the CRF page");
 #line hidden
             TechTalk.SpecFlow.Table table19 = new TechTalk.SpecFlow.Table(new string[] {
@@ -399,9 +405,9 @@ this.FeatureBackground();
                         "Lab Field 6 must be greater than Lab Field 5. Please verify.",
                         "true",
                         "true"});
-#line 113
+#line 119
     testRunner.And("I verify Query is not displayed", ((string)(null)), table19);
-#line 116
+#line 122
  testRunner.And("I take a screenshot");
 #line hidden
             TechTalk.SpecFlow.Table table20 = new TechTalk.SpecFlow.Table(new string[] {
@@ -410,7 +416,7 @@ this.FeatureBackground();
             table20.AddRow(new string[] {
                         "Lab Field 5 - NEUTROPHILS - rr = T ; rmc = F",
                         "2"});
-#line 117
+#line 123
  testRunner.And("I enter data in CRF and save", ((string)(null)), table20);
 #line hidden
             TechTalk.SpecFlow.Table table21 = new TechTalk.SpecFlow.Table(new string[] {
@@ -423,9 +429,9 @@ this.FeatureBackground();
                         "Lab Field 6 must be greater than Lab Field 5. Please verify.",
                         "false",
                         "false"});
-#line 120
+#line 126
  testRunner.And("I verify Query is not displayed", ((string)(null)), table21);
-#line 123
+#line 129
  testRunner.And("I take a screenshot");
 #line hidden
             TechTalk.SpecFlow.Table table22 = new TechTalk.SpecFlow.Table(new string[] {
@@ -434,7 +440,7 @@ this.FeatureBackground();
             table22.AddRow(new string[] {
                         "Lab Field 5 - NEUTROPHILS - rr = T ; rmc = F",
                         "5"});
-#line 124
+#line 130
  testRunner.When("I enter data in CRF and save", ((string)(null)), table22);
 #line hidden
             TechTalk.SpecFlow.Table table23 = new TechTalk.SpecFlow.Table(new string[] {
@@ -447,24 +453,26 @@ this.FeatureBackground();
                         "Lab Field 6 must be greater than Lab Field 5. Please verify.",
                         "false",
                         "false"});
-#line 127
+#line 133
  testRunner.Then("I verify Query is not displayed", ((string)(null)), table23);
-#line 130
+#line 136
  testRunner.And("I take a screenshot");
 #line hidden
             this.ScenarioCleanup();
         }
         
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("@PB-US12940-01D")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("@PB_US12940_01D")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Query Refiring Logic5")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.IgnoreAttribute()]
         public virtual void PB_US12940_01D()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("@PB-US12940-01D", new string[] {
-                        "PB-US12940-01D",
-                        "ignore"});
-#line 135
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("@PB_US12940_01D", new string[] {
+                        "release_564_Patch11",
+                        "PB_US12940_01D",
+                        "ignore",
+                        "Validation"});
+#line 143
 this.ScenarioSetup(scenarioInfo);
 #line 12
 this.FeatureBackground();
@@ -481,9 +489,9 @@ this.FeatureBackground();
             table24.AddRow(new string[] {
                         "Subject ID",
                         "SUB {Var(num1)}"});
-#line 138
+#line 146
  testRunner.And("I create a Subject", ((string)(null)), table24);
-#line 143
+#line 151
  testRunner.And("I select Form \"Lab Form 8\"");
 #line hidden
             TechTalk.SpecFlow.Table table25 = new TechTalk.SpecFlow.Table(new string[] {
@@ -495,7 +503,7 @@ this.FeatureBackground();
             table25.AddRow(new string[] {
                         "Lab Field 8 - WBC - rr = F ; rmc = T",
                         "3"});
-#line 144
+#line 152
  testRunner.And("I enter data in CRF and save", ((string)(null)), table25);
 #line hidden
             TechTalk.SpecFlow.Table table26 = new TechTalk.SpecFlow.Table(new string[] {
@@ -508,9 +516,9 @@ this.FeatureBackground();
                         "Lab Field 8 must be greater than Lab Field 7. Please verify.",
                         "false",
                         "false"});
-#line 148
+#line 156
  testRunner.And("I verify Query is displayed", ((string)(null)), table26);
-#line 151
+#line 159
  testRunner.And("I take a screenshot");
 #line hidden
             TechTalk.SpecFlow.Table table27 = new TechTalk.SpecFlow.Table(new string[] {
@@ -519,7 +527,7 @@ this.FeatureBackground();
             table27.AddRow(new string[] {
                         "Lab Field 7 - NEUTROPHILS - rr = F ; rmc = T",
                         "2"});
-#line 152
+#line 160
  testRunner.And("I enter data in CRF and save", ((string)(null)), table27);
 #line hidden
             TechTalk.SpecFlow.Table table28 = new TechTalk.SpecFlow.Table(new string[] {
@@ -532,7 +540,7 @@ this.FeatureBackground();
                         "Lab Field 8 must be greater than Lab Field 7. Please verify.",
                         "false",
                         "false"});
-#line 155
+#line 163
  testRunner.And("I verify Query is not displayed", ((string)(null)), table28);
 #line hidden
             TechTalk.SpecFlow.Table table29 = new TechTalk.SpecFlow.Table(new string[] {
@@ -545,9 +553,9 @@ this.FeatureBackground();
                         "Lab Field 8 must be greater than Lab Field 7. Please verify.",
                         "True",
                         "false"});
-#line 158
+#line 166
  testRunner.And("I verify Query is displayed", ((string)(null)), table29);
-#line 161
+#line 169
  testRunner.And("I take a screenshot");
 #line hidden
             TechTalk.SpecFlow.Table table30 = new TechTalk.SpecFlow.Table(new string[] {
@@ -556,7 +564,7 @@ this.FeatureBackground();
             table30.AddRow(new string[] {
                         "Lab Field 7 - NEUTROPHILS - rr = F ; rmc = T",
                         "5"});
-#line 162
+#line 170
  testRunner.When("I enter data in CRF and save", ((string)(null)), table30);
 #line hidden
             TechTalk.SpecFlow.Table table31 = new TechTalk.SpecFlow.Table(new string[] {
@@ -569,22 +577,24 @@ this.FeatureBackground();
                         "Lab Field 8 must be greater than Lab Field 7. Please verify.",
                         "false",
                         "false"});
-#line 165
+#line 173
  testRunner.Then("I verify Query is displayed", ((string)(null)), table31);
-#line 168
+#line 176
  testRunner.And("I take a screenshot");
 #line hidden
             this.ScenarioCleanup();
         }
         
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("@PB-US12940-02A")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("@PB_US12940_02A")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Query Refiring Logic5")]
         public virtual void PB_US12940_02A()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("@PB-US12940-02A", new string[] {
-                        "PB-US12940-02A"});
-#line 171
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("@PB_US12940_02A", new string[] {
+                        "release_564_Patch11",
+                        "PB_US12940_02A",
+                        "Validation"});
+#line 181
 this.ScenarioSetup(scenarioInfo);
 #line 12
 this.FeatureBackground();
@@ -601,9 +611,9 @@ this.FeatureBackground();
             table32.AddRow(new string[] {
                         "Subject ID",
                         "SUB {Var(num1)}"});
-#line 174
+#line 184
  testRunner.And("I create a Subject", ((string)(null)), table32);
-#line 179
+#line 189
  testRunner.And("I select Form \"Lab Form 8\"");
 #line hidden
             TechTalk.SpecFlow.Table table33 = new TechTalk.SpecFlow.Table(new string[] {
@@ -615,7 +625,7 @@ this.FeatureBackground();
             table33.AddRow(new string[] {
                         "Lab Field 2 - WBC - rr = T ; rmc = T",
                         "3"});
-#line 180
+#line 190
  testRunner.And("I enter data in CRF and save", ((string)(null)), table33);
 #line hidden
             TechTalk.SpecFlow.Table table34 = new TechTalk.SpecFlow.Table(new string[] {
@@ -628,25 +638,25 @@ this.FeatureBackground();
                         "Lab Field 2 must be greater than Lab Field 1. Please verify.",
                         "false",
                         "false"});
-#line 184
+#line 194
  testRunner.And("I verify Query is displayed", ((string)(null)), table34);
-#line 187
+#line 197
  testRunner.And("I take a screenshot");
-#line 188
+#line 198
  testRunner.And("I answer the Query \"Lab Field 2 must be greater than Lab Field 1. Please verify.\"" +
                     " on Field \"Lab Field 2 - WBC - rr = T ; rmc = T\" with \"Data will be changed.\"");
-#line 189
+#line 199
  testRunner.And("I save the CRF page");
-#line 190
+#line 200
  testRunner.And("I take a screenshot");
-#line 191
+#line 201
  testRunner.And("I close the only Query on Field \"Lab Field 2 - WBC - rr = T ; rmc = T\"");
-#line 192
+#line 202
  testRunner.And("I save the CRF page");
-#line 193
+#line 203
  testRunner.And("I verify closed Query with message \"Lab Field 2 must be greater than Lab Field 1." +
                     " Please verify.\" is displayed on Field \"Lab Field 2 - WBC - rr = T ; rmc = T\"");
-#line 194
+#line 204
  testRunner.And("I take a screenshot");
 #line hidden
             TechTalk.SpecFlow.Table table35 = new TechTalk.SpecFlow.Table(new string[] {
@@ -655,7 +665,7 @@ this.FeatureBackground();
             table35.AddRow(new string[] {
                         "Lab Field 2 - WBC - rr = T ; rmc = T",
                         "6"});
-#line 195
+#line 205
  testRunner.And("I enter data in CRF and save", ((string)(null)), table35);
 #line hidden
             TechTalk.SpecFlow.Table table36 = new TechTalk.SpecFlow.Table(new string[] {
@@ -668,9 +678,9 @@ this.FeatureBackground();
                         "Lab Field 2 must be greater than Lab Field 1. Please verify.",
                         "false",
                         "false"});
-#line 198
+#line 208
  testRunner.And("I verify Query is not displayed", ((string)(null)), table36);
-#line 201
+#line 211
  testRunner.And("I take a screenshot");
 #line hidden
             TechTalk.SpecFlow.Table table37 = new TechTalk.SpecFlow.Table(new string[] {
@@ -679,7 +689,7 @@ this.FeatureBackground();
             table37.AddRow(new string[] {
                         "Lab Field 2 - WBC - rr = T ; rmc = T",
                         "3"});
-#line 202
+#line 212
  testRunner.When("I enter data in CRF and save", ((string)(null)), table37);
 #line hidden
             TechTalk.SpecFlow.Table table38 = new TechTalk.SpecFlow.Table(new string[] {
@@ -692,22 +702,24 @@ this.FeatureBackground();
                         "Lab Field 2 must be greater than Lab Field 1. Please verify.",
                         "false",
                         "false"});
-#line 205
+#line 215
  testRunner.Then("I verify Query is not displayed", ((string)(null)), table38);
-#line 208
+#line 218
  testRunner.And("I take a screenshot");
 #line hidden
             this.ScenarioCleanup();
         }
         
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("@PB-US12940-02B")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("@PB_US12940_02B")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Query Refiring Logic5")]
         public virtual void PB_US12940_02B()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("@PB-US12940-02B", new string[] {
-                        "PB-US12940-02B"});
-#line 211
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("@PB_US12940_02B", new string[] {
+                        "release_564_Patch11",
+                        "PB_US12940_02B",
+                        "Validation"});
+#line 223
 this.ScenarioSetup(scenarioInfo);
 #line 12
 this.FeatureBackground();
@@ -724,9 +736,9 @@ this.FeatureBackground();
             table39.AddRow(new string[] {
                         "Subject ID",
                         "SUB {Var(num1)}"});
-#line 214
+#line 226
  testRunner.And("I create a Subject", ((string)(null)), table39);
-#line 219
+#line 231
  testRunner.And("I select Form \"Lab Form 8\"");
 #line hidden
             TechTalk.SpecFlow.Table table40 = new TechTalk.SpecFlow.Table(new string[] {
@@ -738,7 +750,7 @@ this.FeatureBackground();
             table40.AddRow(new string[] {
                         "Lab Field 4 - WBC - rr = F ; rmc = F",
                         "3"});
-#line 220
+#line 232
  testRunner.And("I enter data in CRF and save", ((string)(null)), table40);
 #line hidden
             TechTalk.SpecFlow.Table table41 = new TechTalk.SpecFlow.Table(new string[] {
@@ -751,9 +763,9 @@ this.FeatureBackground();
                         "Lab Field 4 must be greater than Lab Field 3. Please verify.",
                         "false",
                         "false"});
-#line 224
+#line 236
  testRunner.And("I verify Query is displayed", ((string)(null)), table41);
-#line 227
+#line 239
  testRunner.And("I take a screenshot");
 #line hidden
             TechTalk.SpecFlow.Table table42 = new TechTalk.SpecFlow.Table(new string[] {
@@ -762,7 +774,7 @@ this.FeatureBackground();
             table42.AddRow(new string[] {
                         "Lab Field 4 - WBC - rr = F ; rmc = F",
                         "6"});
-#line 228
+#line 240
  testRunner.And("I enter data in CRF and save", ((string)(null)), table42);
 #line hidden
             TechTalk.SpecFlow.Table table43 = new TechTalk.SpecFlow.Table(new string[] {
@@ -775,9 +787,9 @@ this.FeatureBackground();
                         "Lab Field 4 must be greater than Lab Field 3. Please verify.",
                         "false",
                         "true"});
-#line 231
+#line 243
  testRunner.And("I verify Query is not displayed", ((string)(null)), table43);
-#line 234
+#line 246
  testRunner.And("I take a screenshot");
 #line hidden
             TechTalk.SpecFlow.Table table44 = new TechTalk.SpecFlow.Table(new string[] {
@@ -786,7 +798,7 @@ this.FeatureBackground();
             table44.AddRow(new string[] {
                         "Lab Field 4 - WBC - rr = F ; rmc = F",
                         "3"});
-#line 235
+#line 247
  testRunner.When("I enter data in CRF and save", ((string)(null)), table44);
 #line hidden
             TechTalk.SpecFlow.Table table45 = new TechTalk.SpecFlow.Table(new string[] {
@@ -799,22 +811,24 @@ this.FeatureBackground();
                         "Lab Field 4 must be greater than Lab Field 3. Please verify.",
                         "false",
                         "false"});
-#line 238
+#line 250
  testRunner.Then("I verify Query is displayed", ((string)(null)), table45);
-#line 241
+#line 253
  testRunner.And("I take a screenshot");
 #line hidden
             this.ScenarioCleanup();
         }
         
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("@PB-US12940-02C")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("@PB_US12940_02C")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Query Refiring Logic5")]
         public virtual void PB_US12940_02C()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("@PB-US12940-02C", new string[] {
-                        "PB-US12940-02C"});
-#line 244
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("@PB_US12940_02C", new string[] {
+                        "release_564_Patch11",
+                        "PB_US12940_02C",
+                        "Validation"});
+#line 258
 this.ScenarioSetup(scenarioInfo);
 #line 12
 this.FeatureBackground();
@@ -831,9 +845,9 @@ this.FeatureBackground();
             table46.AddRow(new string[] {
                         "Subject ID",
                         "SUB {Var(num1)}"});
-#line 247
+#line 261
  testRunner.And("I create a Subject", ((string)(null)), table46);
-#line 252
+#line 266
  testRunner.And("I select Form \"Lab Form 8\"");
 #line hidden
             TechTalk.SpecFlow.Table table47 = new TechTalk.SpecFlow.Table(new string[] {
@@ -845,7 +859,7 @@ this.FeatureBackground();
             table47.AddRow(new string[] {
                         "Lab Field 6 - WBC - rr = T ; rmc = F",
                         "3"});
-#line 253
+#line 267
  testRunner.And("I enter data in CRF and save", ((string)(null)), table47);
 #line hidden
             TechTalk.SpecFlow.Table table48 = new TechTalk.SpecFlow.Table(new string[] {
@@ -858,14 +872,14 @@ this.FeatureBackground();
                         "Lab Field 6 must be greater than Lab Field 5. Please verify.",
                         "false",
                         "false"});
-#line 257
+#line 271
  testRunner.And("I verify Query is displayed", ((string)(null)), table48);
-#line 260
+#line 274
  testRunner.And("I take a screenshot");
-#line 261
+#line 275
  testRunner.And("I answer the Query \"Lab Field 6 must be greater than Lab Field 5. Please verify.\"" +
                     " on Field \"Lab Field 6 - WBC - rr = T ; rmc = F\" with \"Data will be changed.\"");
-#line 262
+#line 276
  testRunner.And("I save the CRF page");
 #line hidden
             TechTalk.SpecFlow.Table table49 = new TechTalk.SpecFlow.Table(new string[] {
@@ -878,9 +892,9 @@ this.FeatureBackground();
                         "Lab Field 6 must be greater than Lab Field 5. Please verify.",
                         "true",
                         "true"});
-#line 263
+#line 277
  testRunner.And("I verify Query is not displayed", ((string)(null)), table49);
-#line 266
+#line 280
  testRunner.And("I take a screenshot");
 #line hidden
             TechTalk.SpecFlow.Table table50 = new TechTalk.SpecFlow.Table(new string[] {
@@ -889,7 +903,7 @@ this.FeatureBackground();
             table50.AddRow(new string[] {
                         "Lab Field 6 - WBC - rr = T ; rmc = F",
                         "6"});
-#line 267
+#line 281
  testRunner.And("I enter data in CRF and save", ((string)(null)), table50);
 #line hidden
             TechTalk.SpecFlow.Table table51 = new TechTalk.SpecFlow.Table(new string[] {
@@ -902,9 +916,9 @@ this.FeatureBackground();
                         "Lab Field 6 must be greater than Lab Field 5. Please verify.",
                         "false",
                         "false"});
-#line 270
+#line 284
  testRunner.And("I verify Query is not displayed", ((string)(null)), table51);
-#line 273
+#line 287
  testRunner.And("I take a screenshot");
 #line hidden
             TechTalk.SpecFlow.Table table52 = new TechTalk.SpecFlow.Table(new string[] {
@@ -913,7 +927,7 @@ this.FeatureBackground();
             table52.AddRow(new string[] {
                         "Lab Field 6 - WBC - rr = T ; rmc = F",
                         "3"});
-#line 274
+#line 288
  testRunner.When("I enter data in CRF and save", ((string)(null)), table52);
 #line hidden
             TechTalk.SpecFlow.Table table53 = new TechTalk.SpecFlow.Table(new string[] {
@@ -926,22 +940,24 @@ this.FeatureBackground();
                         "Lab Field 6 must be greater than Lab Field 5. Please verify.",
                         "false",
                         "false"});
-#line 277
+#line 291
  testRunner.Then("I verify Query is not displayed", ((string)(null)), table53);
-#line 280
+#line 294
  testRunner.And("I take a screenshot");
 #line hidden
             this.ScenarioCleanup();
         }
         
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("@PB-US12940-02D")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("@PB_US12940_02D")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Query Refiring Logic5")]
         public virtual void PB_US12940_02D()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("@PB-US12940-02D", new string[] {
-                        "PB-US12940-02D"});
-#line 283
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("@PB_US12940_02D", new string[] {
+                        "release_564_Patch11",
+                        "PB_US12940_02D",
+                        "Validation"});
+#line 299
 this.ScenarioSetup(scenarioInfo);
 #line 12
 this.FeatureBackground();
@@ -958,9 +974,9 @@ this.FeatureBackground();
             table54.AddRow(new string[] {
                         "Subject ID",
                         "SUB {Var(num1)}"});
-#line 286
+#line 302
  testRunner.And("I create a Subject", ((string)(null)), table54);
-#line 291
+#line 307
  testRunner.And("I select Form \"Lab Form 8\"");
 #line hidden
             TechTalk.SpecFlow.Table table55 = new TechTalk.SpecFlow.Table(new string[] {
@@ -972,7 +988,7 @@ this.FeatureBackground();
             table55.AddRow(new string[] {
                         "Lab Field 8 - WBC - rr = F ; rmc = T",
                         "3"});
-#line 292
+#line 308
  testRunner.And("I enter data in CRF and save", ((string)(null)), table55);
 #line hidden
             TechTalk.SpecFlow.Table table56 = new TechTalk.SpecFlow.Table(new string[] {
@@ -985,9 +1001,9 @@ this.FeatureBackground();
                         "Lab Field 8 must be greater than Lab Field 7. Please verify.",
                         "false",
                         "false"});
-#line 296
+#line 312
  testRunner.And("I verify Query is displayed", ((string)(null)), table56);
-#line 299
+#line 315
  testRunner.And("I take a screenshot");
 #line hidden
             TechTalk.SpecFlow.Table table57 = new TechTalk.SpecFlow.Table(new string[] {
@@ -996,7 +1012,7 @@ this.FeatureBackground();
             table57.AddRow(new string[] {
                         "Lab Field 8 - WBC - rr = F ; rmc = T",
                         "6"});
-#line 300
+#line 316
  testRunner.And("I enter data in CRF and save", ((string)(null)), table57);
 #line hidden
             TechTalk.SpecFlow.Table table58 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1009,18 +1025,18 @@ this.FeatureBackground();
                         "Lab Field 8 must be greater than Lab Field 7. Please verify.",
                         "true",
                         "false"});
-#line 303
+#line 319
  testRunner.And("I verify Query is displayed", ((string)(null)), table58);
-#line 306
+#line 322
  testRunner.And("I take a screenshot");
-#line 307
+#line 323
  testRunner.And("I close the only Query on Field \"Lab Field 8 - WBC - rr = F ; rmc = T\"");
-#line 308
+#line 324
  testRunner.And("I save the CRF page");
-#line 309
+#line 325
  testRunner.And("I verify closed Query with message \"Lab Field 8 must be greater than Lab Field 7." +
                     " Please verify.\" is displayed on Field \"Lab Field 8 - WBC - rr = F ; rmc = T\"");
-#line 310
+#line 326
  testRunner.And("I take a screenshot");
 #line hidden
             TechTalk.SpecFlow.Table table59 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1029,7 +1045,7 @@ this.FeatureBackground();
             table59.AddRow(new string[] {
                         "Lab Field 8 - WBC - rr = F ; rmc = T",
                         "3"});
-#line 311
+#line 327
  testRunner.When("I enter data in CRF and save", ((string)(null)), table59);
 #line hidden
             TechTalk.SpecFlow.Table table60 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1042,22 +1058,24 @@ this.FeatureBackground();
                         "Lab Field 8 must be greater than Lab Field 7. Please verify.",
                         "false",
                         "false"});
-#line 314
+#line 330
  testRunner.Then("I verify Query is displayed", ((string)(null)), table60);
-#line 317
+#line 333
  testRunner.And("I take a screenshot");
 #line hidden
             this.ScenarioCleanup();
         }
         
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("@PB-US12940-03A")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("@PB_US12940_03A")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Query Refiring Logic5")]
         public virtual void PB_US12940_03A()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("@PB-US12940-03A", new string[] {
-                        "PB-US12940-03A"});
-#line 320
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("@PB_US12940_03A", new string[] {
+                        "release_564_Patch11",
+                        "PB_US12940_03A",
+                        "Validation"});
+#line 338
 this.ScenarioSetup(scenarioInfo);
 #line 12
 this.FeatureBackground();
@@ -1074,9 +1092,9 @@ this.FeatureBackground();
             table61.AddRow(new string[] {
                         "Subject ID",
                         "SUB {Var(num1)}"});
-#line 323
+#line 341
  testRunner.And("I create a Subject", ((string)(null)), table61);
-#line 328
+#line 346
  testRunner.And("I select Form \"Lab Form 8\"");
 #line hidden
             TechTalk.SpecFlow.Table table62 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1088,7 +1106,7 @@ this.FeatureBackground();
             table62.AddRow(new string[] {
                         "Lab Field 2 - WBC - rr = T ; rmc = T",
                         "3"});
-#line 329
+#line 347
  testRunner.And("I enter data in CRF and save", ((string)(null)), table62);
 #line hidden
             TechTalk.SpecFlow.Table table63 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1101,11 +1119,11 @@ this.FeatureBackground();
                         "Lab Field 2 must be greater than Lab Field 1. Please verify.",
                         "false",
                         "false"});
-#line 333
+#line 351
  testRunner.And("I verify Query is displayed", ((string)(null)), table63);
-#line 336
+#line 354
  testRunner.And("I take a screenshot");
-#line 337
+#line 355
  testRunner.And("I answer the Query \"Lab Field 2 must be greater than Lab Field 1. Please verify.\"" +
                     " on Field \"Lab Field 2 - WBC - rr = T ; rmc = T\" with \"Data will be changed.\"");
 #line hidden
@@ -1115,7 +1133,7 @@ this.FeatureBackground();
             table64.AddRow(new string[] {
                         "Lab Field 1 - NEUTROPHILS - rr = T ; rmc = T",
                         "4"});
-#line 338
+#line 356
  testRunner.And("I enter data in CRF and save", ((string)(null)), table64);
 #line hidden
             TechTalk.SpecFlow.Table table65 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1128,18 +1146,18 @@ this.FeatureBackground();
                         "Lab Field 2 must be greater than Lab Field 1. Please verify.",
                         "true",
                         "false"});
-#line 341
+#line 359
  testRunner.And("I verify Query is displayed", ((string)(null)), table65);
-#line 344
+#line 362
  testRunner.And("I take a screenshot");
-#line 345
+#line 363
  testRunner.And("I close the only Query on Field \"Lab Field 2 - WBC - rr = T ; rmc = T\"");
-#line 346
+#line 364
  testRunner.And("I save the CRF page");
-#line 347
+#line 365
  testRunner.And("I verify closed Query with message \"Lab Field 2 must be greater than Lab Field 1." +
                     " Please verify.\" is displayed on Field \"Lab Field 2 - WBC - rr = T ; rmc = T\"");
-#line 348
+#line 366
  testRunner.And("I take a screenshot");
 #line hidden
             TechTalk.SpecFlow.Table table66 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1148,7 +1166,7 @@ this.FeatureBackground();
             table66.AddRow(new string[] {
                         "Lab Field 1 - NEUTROPHILS - rr = T ; rmc = T",
                         "2"});
-#line 349
+#line 367
  testRunner.When("I enter data in CRF and save", ((string)(null)), table66);
 #line hidden
             TechTalk.SpecFlow.Table table67 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1161,9 +1179,9 @@ this.FeatureBackground();
                         "Lab Field 2 must be greater than Lab Field 1. Please verify.",
                         "false",
                         "false"});
-#line 352
+#line 370
  testRunner.And("I verify Query is not displayed", ((string)(null)), table67);
-#line 355
+#line 373
  testRunner.And("I take a screenshot");
 #line hidden
             TechTalk.SpecFlow.Table table68 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1172,7 +1190,7 @@ this.FeatureBackground();
             table68.AddRow(new string[] {
                         "Lab Field 1 - NEUTROPHILS - rr = T ; rmc = T",
                         "4"});
-#line 356
+#line 374
  testRunner.When("I enter data in CRF and save", ((string)(null)), table68);
 #line hidden
             TechTalk.SpecFlow.Table table69 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1185,24 +1203,26 @@ this.FeatureBackground();
                         "Lab Field 2 must be greater than Lab Field 1. Please verify.",
                         "false",
                         "false"});
-#line 359
+#line 377
     testRunner.Then("I verify Query is not displayed", ((string)(null)), table69);
-#line 362
+#line 380
  testRunner.And("I take a screenshot");
 #line hidden
             this.ScenarioCleanup();
         }
         
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("@PB-US12940-03B")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("@PB_US12940_03B")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Query Refiring Logic5")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.IgnoreAttribute()]
         public virtual void PB_US12940_03B()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("@PB-US12940-03B", new string[] {
-                        "PB-US12940-03B",
-                        "ignore"});
-#line 367
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("@PB_US12940_03B", new string[] {
+                        "release_564_Patch11",
+                        "PB_US12940_03B",
+                        "ignore",
+                        "Validation"});
+#line 387
 this.ScenarioSetup(scenarioInfo);
 #line 12
 this.FeatureBackground();
@@ -1219,9 +1239,9 @@ this.FeatureBackground();
             table70.AddRow(new string[] {
                         "Subject ID",
                         "SUB {Var(num1)}"});
-#line 370
+#line 390
  testRunner.And("I create a Subject", ((string)(null)), table70);
-#line 375
+#line 395
  testRunner.And("I select Form \"Lab Form 8\"");
 #line hidden
             TechTalk.SpecFlow.Table table71 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1233,7 +1253,7 @@ this.FeatureBackground();
             table71.AddRow(new string[] {
                         "Lab Field 4 - WBC - rr = F ; rmc = F",
                         "3"});
-#line 376
+#line 396
  testRunner.And("I enter data in CRF and save", ((string)(null)), table71);
 #line hidden
             TechTalk.SpecFlow.Table table72 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1246,9 +1266,9 @@ this.FeatureBackground();
                         "Lab Field 4 must be greater than Lab Field 3. Please verify.",
                         "false",
                         "false"});
-#line 380
+#line 400
  testRunner.And("I verify Query is displayed", ((string)(null)), table72);
-#line 383
+#line 403
  testRunner.And("I take a screenshot");
 #line hidden
             TechTalk.SpecFlow.Table table73 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1257,7 +1277,7 @@ this.FeatureBackground();
             table73.AddRow(new string[] {
                         "Lab Field 3 - NEUTROPHILS - rr = F ; rmc = F",
                         "4"});
-#line 384
+#line 404
  testRunner.And("I enter data in CRF and save", ((string)(null)), table73);
 #line hidden
             TechTalk.SpecFlow.Table table74 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1270,9 +1290,9 @@ this.FeatureBackground();
                         "Lab Field 4 must be greater than Lab Field 3. Please verify.",
                         "false",
                         "false"});
-#line 387
+#line 407
  testRunner.And("I verify Query is displayed", ((string)(null)), table74);
-#line 390
+#line 410
  testRunner.And("I take a screenshot");
 #line hidden
             TechTalk.SpecFlow.Table table75 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1281,7 +1301,7 @@ this.FeatureBackground();
             table75.AddRow(new string[] {
                         "Lab Field 3 - NEUTROPHILS - rr = F ; rmc = F",
                         "2"});
-#line 391
+#line 411
  testRunner.And("I enter data in CRF and save", ((string)(null)), table75);
 #line hidden
             TechTalk.SpecFlow.Table table76 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1294,9 +1314,9 @@ this.FeatureBackground();
                         "Lab Field 4 must be greater than Lab Field 3. Please verify.",
                         "false",
                         "false"});
-#line 394
+#line 414
  testRunner.And("I verify Query is not displayed", ((string)(null)), table76);
-#line 397
+#line 417
  testRunner.And("I take a screenshot");
 #line hidden
             TechTalk.SpecFlow.Table table77 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1305,7 +1325,7 @@ this.FeatureBackground();
             table77.AddRow(new string[] {
                         "Lab Field 3 - NEUTROPHILS - rr = F ; rmc = F",
                         "4"});
-#line 398
+#line 418
  testRunner.When("I enter data in CRF and save", ((string)(null)), table77);
 #line hidden
             TechTalk.SpecFlow.Table table78 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1318,24 +1338,26 @@ this.FeatureBackground();
                         "Lab Field 4 must be greater than Lab Field 3. Please verify.",
                         "false",
                         "false"});
-#line 401
+#line 421
  testRunner.Then("I verify Query is displayed", ((string)(null)), table78);
-#line 404
+#line 424
  testRunner.And("I take a screenshot");
 #line hidden
             this.ScenarioCleanup();
         }
         
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("@PB-US12940-03C")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("@PB_US12940_03C")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Query Refiring Logic5")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.IgnoreAttribute()]
         public virtual void PB_US12940_03C()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("@PB-US12940-03C", new string[] {
-                        "PB-US12940-03C",
-                        "ignore"});
-#line 409
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("@PB_US12940_03C", new string[] {
+                        "release_564_Patch11",
+                        "PB_US12940_03C",
+                        "ignore",
+                        "Validation"});
+#line 431
 this.ScenarioSetup(scenarioInfo);
 #line 12
 this.FeatureBackground();
@@ -1352,9 +1374,9 @@ this.FeatureBackground();
             table79.AddRow(new string[] {
                         "Subject ID",
                         "SUB {Var(num1)}"});
-#line 412
+#line 434
  testRunner.And("I create a Subject", ((string)(null)), table79);
-#line 417
+#line 439
  testRunner.And("I select Form \"Lab Form 8\"");
 #line hidden
             TechTalk.SpecFlow.Table table80 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1366,7 +1388,7 @@ this.FeatureBackground();
             table80.AddRow(new string[] {
                         "Lab Field 6 - WBC - rr = T ; rmc = F",
                         "3"});
-#line 418
+#line 440
  testRunner.And("I enter data in CRF and save", ((string)(null)), table80);
 #line hidden
             TechTalk.SpecFlow.Table table81 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1379,11 +1401,11 @@ this.FeatureBackground();
                         "Lab Field 6 must be greater than Lab Field 5. Please verify.",
                         "false",
                         "false"});
-#line 422
+#line 444
  testRunner.And("I verify Query is displayed", ((string)(null)), table81);
-#line 425
+#line 447
  testRunner.And("I take a screenshot");
-#line 426
+#line 448
  testRunner.And("I answer the Query \"Lab Field 6 must be greater than Lab Field 5. Please verify.\"" +
                     " on Field \"Lab Field 6 - WBC - rr = T ; rmc = F\" with \"Data will be changed.\"");
 #line hidden
@@ -1393,7 +1415,7 @@ this.FeatureBackground();
             table82.AddRow(new string[] {
                         "Lab Field 5 - NEUTROPHILS - rr = T ; rmc = F",
                         "4"});
-#line 427
+#line 449
  testRunner.And("I enter data in CRF and save", ((string)(null)), table82);
 #line hidden
             TechTalk.SpecFlow.Table table83 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1406,9 +1428,9 @@ this.FeatureBackground();
                         "Lab Field 6 must be greater than Lab Field 5. Please verify.",
                         "true",
                         "true"});
-#line 430
+#line 452
  testRunner.And("I verify Query is not displayed", ((string)(null)), table83);
-#line 433
+#line 455
  testRunner.And("I take a screenshot");
 #line hidden
             TechTalk.SpecFlow.Table table84 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1417,7 +1439,7 @@ this.FeatureBackground();
             table84.AddRow(new string[] {
                         "Lab Field 5 - NEUTROPHILS - rr = T ; rmc = F",
                         "2"});
-#line 434
+#line 456
  testRunner.And("I enter data in CRF and save", ((string)(null)), table84);
 #line hidden
             TechTalk.SpecFlow.Table table85 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1430,9 +1452,9 @@ this.FeatureBackground();
                         "Lab Field 6 must be greater than Lab Field 5. Please verify.",
                         "false",
                         "false"});
-#line 437
+#line 459
  testRunner.And("I verify Query is not displayed", ((string)(null)), table85);
-#line 440
+#line 462
  testRunner.And("I take a screenshot");
 #line hidden
             TechTalk.SpecFlow.Table table86 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1441,7 +1463,7 @@ this.FeatureBackground();
             table86.AddRow(new string[] {
                         "Lab Field 5 - NEUTROPHILS - rr = T ; rmc = F",
                         "4"});
-#line 441
+#line 463
  testRunner.And("I enter data in CRF and save", ((string)(null)), table86);
 #line hidden
             TechTalk.SpecFlow.Table table87 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1454,24 +1476,26 @@ this.FeatureBackground();
                         "Lab Field 6 must be greater than Lab Field 5. Please verify.",
                         "false",
                         "false"});
-#line 444
+#line 466
  testRunner.And("I verify Query is not displayed", ((string)(null)), table87);
-#line 447
+#line 469
  testRunner.And("I take a screenshot");
 #line hidden
             this.ScenarioCleanup();
         }
         
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("@PB-US12940-03D")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("@PB_US12940_03D")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Query Refiring Logic5")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.IgnoreAttribute()]
         public virtual void PB_US12940_03D()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("@PB-US12940-03D", new string[] {
-                        "PB-US12940-03D",
-                        "ignore"});
-#line 452
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("@PB_US12940_03D", new string[] {
+                        "release_564_Patch11",
+                        "PB_US12940_03D",
+                        "ignore",
+                        "Validation"});
+#line 476
 this.ScenarioSetup(scenarioInfo);
 #line 12
 this.FeatureBackground();
@@ -1488,9 +1512,9 @@ this.FeatureBackground();
             table88.AddRow(new string[] {
                         "Subject ID",
                         "SUB {Var(num1)}"});
-#line 455
+#line 479
  testRunner.And("I create a Subject", ((string)(null)), table88);
-#line 460
+#line 484
  testRunner.And("I select Form \"Lab Form 8\"");
 #line hidden
             TechTalk.SpecFlow.Table table89 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1502,7 +1526,7 @@ this.FeatureBackground();
             table89.AddRow(new string[] {
                         "Lab Field 8 - WBC - rr = F ; rmc = T",
                         "3"});
-#line 461
+#line 485
  testRunner.And("I enter data in CRF and save", ((string)(null)), table89);
 #line hidden
             TechTalk.SpecFlow.Table table90 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1515,9 +1539,9 @@ this.FeatureBackground();
                         "Lab Field 8 must be greater than Lab Field 7. Please verify.",
                         "false",
                         "false"});
-#line 465
+#line 489
  testRunner.And("I verify Query is displayed", ((string)(null)), table90);
-#line 468
+#line 492
  testRunner.And("I take a screenshot");
 #line hidden
             TechTalk.SpecFlow.Table table91 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1526,9 +1550,9 @@ this.FeatureBackground();
             table91.AddRow(new string[] {
                         "Lab Field 7 - NEUTROPHILS - rr = F ; rmc = T",
                         "4"});
-#line 469
+#line 493
  testRunner.And("I enter data in CRF and save", ((string)(null)), table91);
-#line 472
+#line 496
  testRunner.And("I save the CRF page");
 #line hidden
             TechTalk.SpecFlow.Table table92 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1541,7 +1565,7 @@ this.FeatureBackground();
                         "Lab Field 8 must be greater than Lab Field 7. Please verify.",
                         "false",
                         "false"});
-#line 473
+#line 497
  testRunner.And("I verify Query is displayed", ((string)(null)), table92);
 #line hidden
             TechTalk.SpecFlow.Table table93 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1554,18 +1578,18 @@ this.FeatureBackground();
                         "Lab Field 8 must be greater than Lab Field 7. Please verify.",
                         "true",
                         "false"});
-#line 476
+#line 500
  testRunner.And("I verify Query is displayed", ((string)(null)), table93);
-#line 479
+#line 503
  testRunner.And("I take a screenshot");
-#line 480
+#line 504
  testRunner.And("I close the only Query on Field \"Lab Field 8 - WBC - rr = F ; rmc = T\"");
-#line 481
+#line 505
  testRunner.And("I save the CRF page");
-#line 482
+#line 506
  testRunner.And("I verify closed Query with message \"Lab Field 8 must be greater than Lab Field 7." +
                     " Please verify.\" is displayed on Field \"Lab Field 8 - WBC - rr = F ; rmc = T\"");
-#line 483
+#line 507
  testRunner.And("I take a screenshot");
 #line hidden
             TechTalk.SpecFlow.Table table94 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1574,7 +1598,7 @@ this.FeatureBackground();
             table94.AddRow(new string[] {
                         "Lab Field 7 - NEUTROPHILS - rr = F ; rmc = T",
                         "2"});
-#line 484
+#line 508
  testRunner.And("I enter data in CRF and save", ((string)(null)), table94);
 #line hidden
             TechTalk.SpecFlow.Table table95 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1587,9 +1611,9 @@ this.FeatureBackground();
                         "Lab Field 8 must be greater than Lab Field 7. Please verify.",
                         "false",
                         "false"});
-#line 487
+#line 511
  testRunner.And("I verify Query is not displayed", ((string)(null)), table95);
-#line 490
+#line 514
  testRunner.And("I take a screenshot");
 #line hidden
             TechTalk.SpecFlow.Table table96 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1598,7 +1622,7 @@ this.FeatureBackground();
             table96.AddRow(new string[] {
                         "Lab Field 7 - NEUTROPHILS - rr = F ; rmc = T",
                         "4"});
-#line 491
+#line 515
  testRunner.When("I enter data in CRF and save", ((string)(null)), table96);
 #line hidden
             TechTalk.SpecFlow.Table table97 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1611,22 +1635,24 @@ this.FeatureBackground();
                         "Lab Field 8 must be greater than Lab Field 7. Please verify.",
                         "false",
                         "false"});
-#line 494
+#line 518
  testRunner.And("I verify Query is not displayed", ((string)(null)), table97);
-#line 497
+#line 521
  testRunner.And("I take a screenshot");
 #line hidden
             this.ScenarioCleanup();
         }
         
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("@PB-US12940-04A")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("@PB_US12940_04A")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Query Refiring Logic5")]
         public virtual void PB_US12940_04A()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("@PB-US12940-04A", new string[] {
-                        "PB-US12940-04A"});
-#line 500
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("@PB_US12940_04A", new string[] {
+                        "release_564_Patch11",
+                        "PB_US12940_04A",
+                        "Validation"});
+#line 526
 this.ScenarioSetup(scenarioInfo);
 #line 12
 this.FeatureBackground();
@@ -1643,9 +1669,9 @@ this.FeatureBackground();
             table98.AddRow(new string[] {
                         "Subject ID",
                         "SUB {Var(num1)}"});
-#line 503
+#line 529
     testRunner.And("I create a Subject", ((string)(null)), table98);
-#line 508
+#line 534
  testRunner.And("I select Form \"Lab Form 8\"");
 #line hidden
             TechTalk.SpecFlow.Table table99 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1657,7 +1683,7 @@ this.FeatureBackground();
             table99.AddRow(new string[] {
                         "Lab Field 2 - WBC - rr = T ; rmc = T",
                         "3"});
-#line 509
+#line 535
  testRunner.And("I enter data in CRF and save", ((string)(null)), table99);
 #line hidden
             TechTalk.SpecFlow.Table table100 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1670,11 +1696,11 @@ this.FeatureBackground();
                         "Lab Field 2 must be greater than Lab Field 1. Please verify.",
                         "false",
                         "false"});
-#line 513
+#line 539
  testRunner.And("I verify Query is displayed", ((string)(null)), table100);
-#line 516
+#line 542
  testRunner.And("I take a screenshot");
-#line 517
+#line 543
  testRunner.And("I answer the Query \"Lab Field 2 must be greater than Lab Field 1. Please verify.\"" +
                     " on Field \"Lab Field 2 - WBC - rr = T ; rmc = T\" with \"Data will be changed.\"");
 #line hidden
@@ -1684,7 +1710,7 @@ this.FeatureBackground();
             table101.AddRow(new string[] {
                         "Lab Field 2 - WBC - rr = T ; rmc = T",
                         "2"});
-#line 518
+#line 544
  testRunner.And("I enter data in CRF and save", ((string)(null)), table101);
 #line hidden
             TechTalk.SpecFlow.Table table102 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1697,18 +1723,18 @@ this.FeatureBackground();
                         "Lab Field 2 must be greater than Lab Field 1. Please verify.",
                         "true",
                         "false"});
-#line 521
+#line 547
  testRunner.And("I verify Query is displayed", ((string)(null)), table102);
-#line 524
+#line 550
  testRunner.And("I take a screenshot");
-#line 525
+#line 551
  testRunner.And("I close the only Query on Field \"Lab Field 2 - WBC - rr = T ; rmc = T\"");
-#line 526
+#line 552
  testRunner.And("I save the CRF page");
-#line 527
+#line 553
  testRunner.And("I verify closed Query with message \"Lab Field 2 must be greater than Lab Field 1." +
                     " Please verify.\" is displayed on Field \"Lab Field 2 - WBC - rr = T ; rmc = T\"");
-#line 528
+#line 554
  testRunner.And("I take a screenshot");
 #line hidden
             TechTalk.SpecFlow.Table table103 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1717,7 +1743,7 @@ this.FeatureBackground();
             table103.AddRow(new string[] {
                         "Lab Field 2 - WBC - rr = T ; rmc = T",
                         "6"});
-#line 529
+#line 555
  testRunner.And("I enter data in CRF and save", ((string)(null)), table103);
 #line hidden
             TechTalk.SpecFlow.Table table104 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1730,9 +1756,9 @@ this.FeatureBackground();
                         "Lab Field 2 must be greater than Lab Field 1. Please verify.",
                         "false",
                         "false"});
-#line 532
+#line 558
  testRunner.And("I verify Query is not displayed", ((string)(null)), table104);
-#line 535
+#line 561
  testRunner.And("I take a screenshot");
 #line hidden
             TechTalk.SpecFlow.Table table105 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1741,7 +1767,7 @@ this.FeatureBackground();
             table105.AddRow(new string[] {
                         "Lab Field 2 - WBC - rr = T ; rmc = T",
                         "2"});
-#line 536
+#line 562
  testRunner.When("I enter data in CRF and save", ((string)(null)), table105);
 #line hidden
             TechTalk.SpecFlow.Table table106 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1754,22 +1780,24 @@ this.FeatureBackground();
                         "Lab Field 2 must be greater than Lab Field 1. Please verify.",
                         "false",
                         "false"});
-#line 539
+#line 565
     testRunner.And("I verify Query is not displayed", ((string)(null)), table106);
-#line 542
+#line 568
  testRunner.And("I take a screenshot");
 #line hidden
             this.ScenarioCleanup();
         }
         
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("@PB-US12940-04B")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("@PB_US12940_04B")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Query Refiring Logic5")]
         public virtual void PB_US12940_04B()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("@PB-US12940-04B", new string[] {
-                        "PB-US12940-04B"});
-#line 545
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("@PB_US12940_04B", new string[] {
+                        "release_564_Patch11",
+                        "PB_US12940_04B",
+                        "Validation"});
+#line 573
 this.ScenarioSetup(scenarioInfo);
 #line 12
 this.FeatureBackground();
@@ -1786,9 +1814,9 @@ this.FeatureBackground();
             table107.AddRow(new string[] {
                         "Subject ID",
                         "SUB {Var(num1)}"});
-#line 548
+#line 576
     testRunner.And("I create a Subject", ((string)(null)), table107);
-#line 553
+#line 581
  testRunner.And("I select Form \"Lab Form 8\"");
 #line hidden
             TechTalk.SpecFlow.Table table108 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1800,7 +1828,7 @@ this.FeatureBackground();
             table108.AddRow(new string[] {
                         "Lab Field 4 - WBC - rr = F ; rmc = F",
                         "3"});
-#line 554
+#line 582
  testRunner.And("I enter data in CRF and save", ((string)(null)), table108);
 #line hidden
             TechTalk.SpecFlow.Table table109 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1813,9 +1841,9 @@ this.FeatureBackground();
                         "Lab Field 4 must be greater than Lab Field 3. Please verify.",
                         "false",
                         "false"});
-#line 558
+#line 586
  testRunner.And("I verify Query is displayed", ((string)(null)), table109);
-#line 561
+#line 589
  testRunner.And("I take a screenshot");
 #line hidden
             TechTalk.SpecFlow.Table table110 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1824,9 +1852,9 @@ this.FeatureBackground();
             table110.AddRow(new string[] {
                         "Lab Field 4 - WBC - rr = F ; rmc = F",
                         "2"});
-#line 562
+#line 590
    testRunner.And("I enter data in CRF and save", ((string)(null)), table110);
-#line 565
+#line 593
  testRunner.And("I save the CRF page");
 #line hidden
             TechTalk.SpecFlow.Table table111 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1839,146 +1867,148 @@ this.FeatureBackground();
                         "Lab Field 4 must be greater than Lab Field 3. Please verify.",
                         "false",
                         "false"});
-#line 566
+#line 594
  testRunner.And("I verify Query is displayed", ((string)(null)), table111);
-#line 569
+#line 597
  testRunner.And("I take a screenshot");
 #line hidden
             TechTalk.SpecFlow.Table table112 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field",
-                        "Query Message",
-                        "Answered",
-                        "Closed"});
+                        "Data"});
             table112.AddRow(new string[] {
                         "Lab Field 4 - WBC - rr = F ; rmc = F",
-                        "Lab Field 4 must be greater than Lab Field 3. Please verify.",
-                        "false",
-                        "true"});
-#line 570
- testRunner.And("I verify Query is not displayed", ((string)(null)), table112);
-#line 573
- testRunner.And("I take a screenshot");
+                        "6"});
+#line 598
+ testRunner.And("I enter data in CRF and save", ((string)(null)), table112);
 #line hidden
             TechTalk.SpecFlow.Table table113 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field",
-                        "Data"});
-            table113.AddRow(new string[] {
-                        "Lab Field 4 - WBC - rr = F ; rmc = F",
-                        "6"});
-#line 574
- testRunner.And("I enter data in CRF and save", ((string)(null)), table113);
-#line hidden
-            TechTalk.SpecFlow.Table table114 = new TechTalk.SpecFlow.Table(new string[] {
-                        "Field",
                         "Query Message",
                         "Answered",
                         "Closed"});
-            table114.AddRow(new string[] {
+            table113.AddRow(new string[] {
                         "Lab Field 4 - WBC - rr = F ; rmc = F",
                         "Lab Field 4 must be greater than Lab Field 3. Please verify.",
                         "false",
                         "true"});
-#line 577
- testRunner.And("I verify Query is not displayed", ((string)(null)), table114);
-#line 580
+#line 601
+ testRunner.And("I verify Query is not displayed", ((string)(null)), table113);
+#line 604
  testRunner.And("I take a screenshot");
 #line hidden
-            TechTalk.SpecFlow.Table table115 = new TechTalk.SpecFlow.Table(new string[] {
+            TechTalk.SpecFlow.Table table114 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field",
                         "Data"});
-            table115.AddRow(new string[] {
+            table114.AddRow(new string[] {
                         "Lab Field 4 - WBC - rr = F ; rmc = F",
                         "2"});
-#line 581
- testRunner.When("I enter data in CRF and save", ((string)(null)), table115);
+#line 605
+ testRunner.When("I enter data in CRF and save", ((string)(null)), table114);
 #line hidden
-            TechTalk.SpecFlow.Table table116 = new TechTalk.SpecFlow.Table(new string[] {
+            TechTalk.SpecFlow.Table table115 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field",
                         "Query Message",
                         "Answered",
                         "Closed"});
-            table116.AddRow(new string[] {
+            table115.AddRow(new string[] {
                         "Lab Field 4 - WBC - rr = F ; rmc = F",
                         "Lab Field 4 must be greater than Lab Field 3. Please verify.",
                         "false",
                         "false"});
-#line 584
- testRunner.And("I verify Query is displayed", ((string)(null)), table116);
-#line 587
+#line 608
+ testRunner.And("I verify Query is displayed", ((string)(null)), table115);
+#line 611
  testRunner.And("I take a screenshot");
 #line hidden
             this.ScenarioCleanup();
         }
         
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("@PB-US12940-04C")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("@PB_US12940_04C")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Query Refiring Logic5")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.IgnoreAttribute()]
         public virtual void PB_US12940_04C()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("@PB-US12940-04C", new string[] {
-                        "PB-US12940-04C",
-                        "ignore"});
-#line 592
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("@PB_US12940_04C", new string[] {
+                        "release_564_Patch11",
+                        "PB_US12940_04C",
+                        "ignore",
+                        "Validation"});
+#line 618
 this.ScenarioSetup(scenarioInfo);
 #line 12
 this.FeatureBackground();
+#line hidden
+            TechTalk.SpecFlow.Table table116 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Data"});
+            table116.AddRow(new string[] {
+                        "Subject Number",
+                        "{RndNum<num1>(5)}"});
+            table116.AddRow(new string[] {
+                        "Subject Initials",
+                        "SUB"});
+            table116.AddRow(new string[] {
+                        "Subject ID",
+                        "SUB {Var(num1)}"});
+#line 621
+    testRunner.And("I create a Subject", ((string)(null)), table116);
+#line 626
+ testRunner.And("I select Form \"Lab Form 8\"");
 #line hidden
             TechTalk.SpecFlow.Table table117 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field",
                         "Data"});
             table117.AddRow(new string[] {
-                        "Subject Number",
-                        "{RndNum<num1>(5)}"});
-            table117.AddRow(new string[] {
-                        "Subject Initials",
-                        "SUB"});
-            table117.AddRow(new string[] {
-                        "Subject ID",
-                        "SUB {Var(num1)}"});
-#line 595
-    testRunner.And("I create a Subject", ((string)(null)), table117);
-#line 600
- testRunner.And("I select Form \"Lab Form 8\"");
-#line hidden
-            TechTalk.SpecFlow.Table table118 = new TechTalk.SpecFlow.Table(new string[] {
-                        "Field",
-                        "Data"});
-            table118.AddRow(new string[] {
                         "Lab Field 5 - NEUTROPHILS - rr = T ; rmc = F",
                         "5"});
-            table118.AddRow(new string[] {
+            table117.AddRow(new string[] {
                         "Lab Field 6 - WBC - rr = T ; rmc = F",
                         "3"});
-#line 601
- testRunner.And("I enter data in CRF and save", ((string)(null)), table118);
+#line 627
+ testRunner.And("I enter data in CRF and save", ((string)(null)), table117);
 #line hidden
-            TechTalk.SpecFlow.Table table119 = new TechTalk.SpecFlow.Table(new string[] {
+            TechTalk.SpecFlow.Table table118 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field",
                         "Query Message",
                         "Answered",
                         "Closed"});
-            table119.AddRow(new string[] {
+            table118.AddRow(new string[] {
                         "Lab Field 6 - WBC - rr = T ; rmc = F",
                         "Lab Field 6 must be greater than Lab Field 5. Please verify.",
                         "false",
                         "false"});
-#line 605
- testRunner.And("I verify Query is displayed", ((string)(null)), table119);
-#line 608
+#line 631
+ testRunner.And("I verify Query is displayed", ((string)(null)), table118);
+#line 634
  testRunner.And("I take a screenshot");
-#line 609
+#line 635
  testRunner.And("I answer the Query \"Lab Field 6 must be greater than Lab Field 5. Please verify.\"" +
                     " on Field \"Lab Field 6 - WBC - rr = T ; rmc = F\" with \"Data will be changed.\"");
 #line hidden
-            TechTalk.SpecFlow.Table table120 = new TechTalk.SpecFlow.Table(new string[] {
+            TechTalk.SpecFlow.Table table119 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field",
                         "Data"});
-            table120.AddRow(new string[] {
+            table119.AddRow(new string[] {
                         "Lab Field 6 - WBC - rr = T ; rmc = F",
                         "2"});
-#line 610
-   testRunner.And("I enter data in CRF and save", ((string)(null)), table120);
+#line 636
+   testRunner.And("I enter data in CRF and save", ((string)(null)), table119);
+#line hidden
+            TechTalk.SpecFlow.Table table120 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Query Message",
+                        "Answered",
+                        "Closed"});
+            table120.AddRow(new string[] {
+                        "Lab Field 6 - WBC - rr = T ; rmc = F",
+                        "Lab Field 6 must be greater than Lab Field 5. Please verify.",
+                        "false",
+                        "false"});
+#line 639
+ testRunner.And("I verify Query is not displayed", ((string)(null)), table120);
+#line 642
+ testRunner.And("I take a screenshot");
 #line hidden
             TechTalk.SpecFlow.Table table121 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field",
@@ -1988,873 +2018,883 @@ this.FeatureBackground();
             table121.AddRow(new string[] {
                         "Lab Field 6 - WBC - rr = T ; rmc = F",
                         "Lab Field 6 must be greater than Lab Field 5. Please verify.",
-                        "false",
-                        "false"});
-#line 613
+                        "true",
+                        "true"});
+#line 643
  testRunner.And("I verify Query is not displayed", ((string)(null)), table121);
-#line 616
+#line 646
  testRunner.And("I take a screenshot");
 #line hidden
             TechTalk.SpecFlow.Table table122 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field",
-                        "Query Message",
-                        "Answered",
-                        "Closed"});
+                        "Data"});
             table122.AddRow(new string[] {
                         "Lab Field 6 - WBC - rr = T ; rmc = F",
-                        "Lab Field 6 must be greater than Lab Field 5. Please verify.",
-                        "true",
-                        "true"});
-#line 617
- testRunner.And("I verify Query is not displayed", ((string)(null)), table122);
-#line 620
- testRunner.And("I take a screenshot");
+                        "6"});
+#line 647
+ testRunner.And("I enter data in CRF and save", ((string)(null)), table122);
 #line hidden
             TechTalk.SpecFlow.Table table123 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field",
-                        "Data"});
-            table123.AddRow(new string[] {
-                        "Lab Field 6 - WBC - rr = T ; rmc = F",
-                        "6"});
-#line 621
- testRunner.And("I enter data in CRF and save", ((string)(null)), table123);
-#line hidden
-            TechTalk.SpecFlow.Table table124 = new TechTalk.SpecFlow.Table(new string[] {
-                        "Field",
                         "Query Message",
                         "Answered",
                         "Closed"});
-            table124.AddRow(new string[] {
+            table123.AddRow(new string[] {
                         "Lab Field 6 - WBC - rr = T ; rmc = F",
                         "Lab Field 6 must be greater than Lab Field 5. Please verify.",
                         "true",
                         "true"});
-#line 624
- testRunner.And("I verify Query is not displayed", ((string)(null)), table124);
-#line 627
+#line 650
+ testRunner.And("I verify Query is not displayed", ((string)(null)), table123);
+#line 653
  testRunner.And("I take a screenshot");
 #line hidden
-            TechTalk.SpecFlow.Table table125 = new TechTalk.SpecFlow.Table(new string[] {
+            TechTalk.SpecFlow.Table table124 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field",
                         "Data"});
-            table125.AddRow(new string[] {
+            table124.AddRow(new string[] {
                         "Lab Field 6 - WBC - rr = T ; rmc = F",
                         "2"});
-#line 628
- testRunner.When("I enter data in CRF and save", ((string)(null)), table125);
+#line 654
+ testRunner.When("I enter data in CRF and save", ((string)(null)), table124);
 #line hidden
-            TechTalk.SpecFlow.Table table126 = new TechTalk.SpecFlow.Table(new string[] {
+            TechTalk.SpecFlow.Table table125 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field",
                         "Query Message",
                         "Answered",
                         "Closed"});
-            table126.AddRow(new string[] {
+            table125.AddRow(new string[] {
                         "Lab Field 6 - WBC - rr = T ; rmc = F",
                         "Lab Field 6 must be greater than Lab Field 5. Please verify.",
                         "false",
                         "false"});
-#line 631
- testRunner.And("I verify Query is not displayed", ((string)(null)), table126);
-#line 634
+#line 657
+ testRunner.And("I verify Query is not displayed", ((string)(null)), table125);
+#line 660
  testRunner.And("I take a screenshot");
 #line hidden
             this.ScenarioCleanup();
         }
         
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("@PB-US12940-04D")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("@PB_US12940_04D")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Query Refiring Logic5")]
         public virtual void PB_US12940_04D()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("@PB-US12940-04D", new string[] {
-                        "PB-US12940-04D"});
-#line 637
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("@PB_US12940_04D", new string[] {
+                        "release_564_Patch11",
+                        "PB_US12940_04D",
+                        "Validation"});
+#line 665
 this.ScenarioSetup(scenarioInfo);
 #line 12
 this.FeatureBackground();
+#line hidden
+            TechTalk.SpecFlow.Table table126 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Data"});
+            table126.AddRow(new string[] {
+                        "Subject Number",
+                        "{RndNum<num1>(5)}"});
+            table126.AddRow(new string[] {
+                        "Subject Initials",
+                        "SUB"});
+            table126.AddRow(new string[] {
+                        "Subject ID",
+                        "SUB {Var(num1)}"});
+#line 668
+ testRunner.And("I create a Subject", ((string)(null)), table126);
+#line 673
+ testRunner.And("I select Form \"Lab Form 8\"");
 #line hidden
             TechTalk.SpecFlow.Table table127 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field",
                         "Data"});
             table127.AddRow(new string[] {
-                        "Subject Number",
-                        "{RndNum<num1>(5)}"});
-            table127.AddRow(new string[] {
-                        "Subject Initials",
-                        "SUB"});
-            table127.AddRow(new string[] {
-                        "Subject ID",
-                        "SUB {Var(num1)}"});
-#line 640
- testRunner.And("I create a Subject", ((string)(null)), table127);
-#line 645
- testRunner.And("I select Form \"Lab Form 8\"");
-#line hidden
-            TechTalk.SpecFlow.Table table128 = new TechTalk.SpecFlow.Table(new string[] {
-                        "Field",
-                        "Data"});
-            table128.AddRow(new string[] {
                         "Lab Field 7 - NEUTROPHILS - rr = F ; rmc = T",
                         "5"});
-            table128.AddRow(new string[] {
+            table127.AddRow(new string[] {
                         "Lab Field 8 - WBC - rr = F ; rmc = T",
                         "3"});
-#line 646
- testRunner.And("I enter data in CRF and save", ((string)(null)), table128);
+#line 674
+ testRunner.And("I enter data in CRF and save", ((string)(null)), table127);
 #line hidden
-            TechTalk.SpecFlow.Table table129 = new TechTalk.SpecFlow.Table(new string[] {
+            TechTalk.SpecFlow.Table table128 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field",
                         "Query Message",
                         "Answered",
                         "Closed"});
-            table129.AddRow(new string[] {
+            table128.AddRow(new string[] {
                         "Lab Field 8 - WBC - rr = F ; rmc = T",
                         "Lab Field 8 must be greater than Lab Field 7. Please verify.",
                         "false",
                         "false"});
-#line 650
- testRunner.And("I verify Query is displayed", ((string)(null)), table129);
-#line 653
+#line 678
+ testRunner.And("I verify Query is displayed", ((string)(null)), table128);
+#line 681
  testRunner.And("I take a screenshot");
 #line hidden
-            TechTalk.SpecFlow.Table table130 = new TechTalk.SpecFlow.Table(new string[] {
+            TechTalk.SpecFlow.Table table129 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field",
                         "Data"});
-            table130.AddRow(new string[] {
+            table129.AddRow(new string[] {
                         "Lab Field 8 - WBC - rr = F ; rmc = T",
                         "2"});
-#line 654
-   testRunner.And("I enter data in CRF and save", ((string)(null)), table130);
+#line 682
+   testRunner.And("I enter data in CRF and save", ((string)(null)), table129);
 #line hidden
-            TechTalk.SpecFlow.Table table131 = new TechTalk.SpecFlow.Table(new string[] {
+            TechTalk.SpecFlow.Table table130 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field",
                         "Query Message",
                         "Answered",
                         "Closed"});
-            table131.AddRow(new string[] {
+            table130.AddRow(new string[] {
                         "Lab Field 8 - WBC - rr = F ; rmc = T",
                         "Lab Field 8 must be greater than Lab Field 7. Please verify.",
                         "true",
                         "false"});
-#line 657
- testRunner.And("I verify Query is displayed", ((string)(null)), table131);
-#line 660
+#line 685
+ testRunner.And("I verify Query is displayed", ((string)(null)), table130);
+#line 688
  testRunner.And("I take a screenshot");
-#line 661
+#line 689
  testRunner.And("I close the only Query on Field \"Lab Field 8 - WBC - rr = F ; rmc = T\"");
-#line 662
+#line 690
  testRunner.And("I save the CRF page");
-#line 663
+#line 691
  testRunner.And("I verify closed Query with message \"Lab Field 8 must be greater than Lab Field 7." +
                     " Please verify.\" is displayed on Field \"Lab Field 8 - WBC - rr = F ; rmc = T\"");
-#line 664
+#line 692
  testRunner.And("I take a screenshot");
+#line hidden
+            TechTalk.SpecFlow.Table table131 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Data"});
+            table131.AddRow(new string[] {
+                        "Lab Field 8 - WBC - rr = F ; rmc = T",
+                        "6"});
+#line 693
+ testRunner.And("I enter data in CRF and save", ((string)(null)), table131);
 #line hidden
             TechTalk.SpecFlow.Table table132 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field",
-                        "Data"});
+                        "Query Message",
+                        "Answered",
+                        "Closed"});
             table132.AddRow(new string[] {
                         "Lab Field 8 - WBC - rr = F ; rmc = T",
-                        "6"});
-#line 665
- testRunner.And("I enter data in CRF and save", ((string)(null)), table132);
+                        "Lab Field 8 must be greater than Lab Field 7. Please verify.",
+                        "false",
+                        "false"});
+#line 696
+ testRunner.And("I verify Query is not displayed", ((string)(null)), table132);
+#line 699
+ testRunner.And("I take a screenshot");
 #line hidden
             TechTalk.SpecFlow.Table table133 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field",
-                        "Query Message",
-                        "Answered",
-                        "Closed"});
+                        "Data"});
             table133.AddRow(new string[] {
                         "Lab Field 8 - WBC - rr = F ; rmc = T",
-                        "Lab Field 8 must be greater than Lab Field 7. Please verify.",
-                        "false",
-                        "false"});
-#line 668
- testRunner.And("I verify Query is not displayed", ((string)(null)), table133);
-#line 671
- testRunner.And("I take a screenshot");
+                        "2"});
+#line 700
+ testRunner.When("I enter data in CRF and save", ((string)(null)), table133);
 #line hidden
             TechTalk.SpecFlow.Table table134 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field",
-                        "Data"});
-            table134.AddRow(new string[] {
-                        "Lab Field 8 - WBC - rr = F ; rmc = T",
-                        "2"});
-#line 672
- testRunner.When("I enter data in CRF and save", ((string)(null)), table134);
-#line hidden
-            TechTalk.SpecFlow.Table table135 = new TechTalk.SpecFlow.Table(new string[] {
-                        "Field",
                         "Query Message",
                         "Answered",
                         "Closed"});
-            table135.AddRow(new string[] {
+            table134.AddRow(new string[] {
                         "Lab Field 8 - WBC - rr = F ; rmc = T",
                         "Lab Field 8 must be greater than Lab Field 7. Please verify.",
                         "false",
                         "false"});
-#line 675
-    testRunner.And("I verify Query is not displayed", ((string)(null)), table135);
-#line 678
+#line 703
+    testRunner.And("I verify Query is not displayed", ((string)(null)), table134);
+#line 706
  testRunner.And("I take a screenshot");
 #line hidden
             this.ScenarioCleanup();
         }
         
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("@PB-US12940-05A")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("@PB_US12940_05A")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Query Refiring Logic5")]
         public virtual void PB_US12940_05A()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("@PB-US12940-05A", new string[] {
-                        "PB-US12940-05A"});
-#line 681
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("@PB_US12940_05A", new string[] {
+                        "release_564_Patch11",
+                        "PB_US12940_05A",
+                        "Validation"});
+#line 711
 this.ScenarioSetup(scenarioInfo);
 #line 12
 this.FeatureBackground();
+#line hidden
+            TechTalk.SpecFlow.Table table135 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Data"});
+            table135.AddRow(new string[] {
+                        "Subject Number",
+                        "{RndNum<num1>(5)}"});
+            table135.AddRow(new string[] {
+                        "Subject Initials",
+                        "SUB"});
+            table135.AddRow(new string[] {
+                        "Subject ID",
+                        "SUB {Var(num1)}"});
+#line 714
+    testRunner.And("I create a Subject", ((string)(null)), table135);
+#line 719
+ testRunner.And("I select Form \"Lab Form 8\"");
 #line hidden
             TechTalk.SpecFlow.Table table136 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field",
                         "Data"});
             table136.AddRow(new string[] {
-                        "Subject Number",
-                        "{RndNum<num1>(5)}"});
-            table136.AddRow(new string[] {
-                        "Subject Initials",
-                        "SUB"});
-            table136.AddRow(new string[] {
-                        "Subject ID",
-                        "SUB {Var(num1)}"});
-#line 684
-    testRunner.And("I create a Subject", ((string)(null)), table136);
-#line 689
- testRunner.And("I select Form \"Lab Form 8\"");
-#line hidden
-            TechTalk.SpecFlow.Table table137 = new TechTalk.SpecFlow.Table(new string[] {
-                        "Field",
-                        "Data"});
-            table137.AddRow(new string[] {
                         "Lab Field 1 - NEUTROPHILS - rr = T ; rmc = T",
                         "5"});
-            table137.AddRow(new string[] {
+            table136.AddRow(new string[] {
                         "Lab Field 2 - WBC - rr = T ; rmc = T",
                         "3"});
-#line 690
- testRunner.And("I enter data in CRF and save", ((string)(null)), table137);
+#line 720
+ testRunner.And("I enter data in CRF and save", ((string)(null)), table136);
 #line hidden
-            TechTalk.SpecFlow.Table table138 = new TechTalk.SpecFlow.Table(new string[] {
+            TechTalk.SpecFlow.Table table137 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field",
                         "Query Message",
                         "Answered",
                         "Closed"});
-            table138.AddRow(new string[] {
+            table137.AddRow(new string[] {
                         "Lab Field 2 - WBC - rr = T ; rmc = T",
                         "Lab Field 2 must be greater than Lab Field 1. Please verify.",
                         "false",
                         "false"});
-#line 694
- testRunner.And("I verify Query is displayed", ((string)(null)), table138);
-#line 697
+#line 724
+ testRunner.And("I verify Query is displayed", ((string)(null)), table137);
+#line 727
  testRunner.And("I take a screenshot");
-#line 698
+#line 728
  testRunner.And("I answer the Query \"Lab Field 2 must be greater than Lab Field 1. Please verify.\"" +
                     " on Field \"Lab Field 2 - WBC - rr = T ; rmc = T\" with \"Data will be changed.\"");
 #line hidden
-            TechTalk.SpecFlow.Table table139 = new TechTalk.SpecFlow.Table(new string[] {
+            TechTalk.SpecFlow.Table table138 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field",
                         "Data"});
-            table139.AddRow(new string[] {
+            table138.AddRow(new string[] {
                         "Lab Field 1 - NEUTROPHILS - rr = T ; rmc = T",
                         "4"});
-#line 699
- testRunner.And("I enter data in CRF and save", ((string)(null)), table139);
+#line 729
+ testRunner.And("I enter data in CRF and save", ((string)(null)), table138);
 #line hidden
-            TechTalk.SpecFlow.Table table140 = new TechTalk.SpecFlow.Table(new string[] {
+            TechTalk.SpecFlow.Table table139 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field",
                         "Query Message",
                         "Answered",
                         "Closed"});
-            table140.AddRow(new string[] {
+            table139.AddRow(new string[] {
                         "Lab Field 2 - WBC - rr = T ; rmc = T",
                         "Lab Field 2 must be greater than Lab Field 1. Please verify.",
                         "true",
                         "false"});
-#line 702
- testRunner.And("I verify Query is displayed", ((string)(null)), table140);
-#line 705
+#line 732
+ testRunner.And("I verify Query is displayed", ((string)(null)), table139);
+#line 735
  testRunner.And("I take a screenshot");
-#line 706
+#line 736
  testRunner.And("I close the only Query on Field \"Lab Field 2 - WBC - rr = T ; rmc = T\"");
-#line 707
+#line 737
  testRunner.And("I save the CRF page");
-#line 708
+#line 738
  testRunner.And("I verify closed Query with message \"Lab Field 2 must be greater than Lab Field 1." +
                     " Please verify.\" is displayed on Field \"Lab Field 2 - WBC - rr = T ; rmc = T\"");
-#line 709
+#line 739
  testRunner.And("I take a screenshot");
 #line hidden
-            TechTalk.SpecFlow.Table table141 = new TechTalk.SpecFlow.Table(new string[] {
+            TechTalk.SpecFlow.Table table140 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field",
                         "Data"});
-            table141.AddRow(new string[] {
+            table140.AddRow(new string[] {
                         "Lab Field 1 - NEUTROPHILS - rr = T ; rmc = T",
                         "5"});
-#line 710
- testRunner.When("I enter data in CRF and save", ((string)(null)), table141);
+#line 740
+ testRunner.When("I enter data in CRF and save", ((string)(null)), table140);
 #line hidden
-            TechTalk.SpecFlow.Table table142 = new TechTalk.SpecFlow.Table(new string[] {
+            TechTalk.SpecFlow.Table table141 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field",
                         "Query Message",
                         "Answered",
                         "Closed"});
-            table142.AddRow(new string[] {
+            table141.AddRow(new string[] {
                         "Lab Field 2 - WBC - rr = T ; rmc = T",
                         "Lab Field 2 must be greater than Lab Field 1. Please verify.",
                         "false",
                         "false"});
-#line 713
-    testRunner.And("I verify Query is displayed", ((string)(null)), table142);
-#line 716
+#line 743
+    testRunner.And("I verify Query is displayed", ((string)(null)), table141);
+#line 746
  testRunner.And("I take a screenshot");
 #line hidden
             this.ScenarioCleanup();
         }
         
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("@PB-US12940-05B")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("@PB_US12940_05B")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Query Refiring Logic5")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.IgnoreAttribute()]
         public virtual void PB_US12940_05B()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("@PB-US12940-05B", new string[] {
-                        "PB-US12940-05B",
-                        "ignore"});
-#line 721
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("@PB_US12940_05B", new string[] {
+                        "release_564_Patch11",
+                        "PB_US12940_05B",
+                        "ignore",
+                        "Validation"});
+#line 753
 this.ScenarioSetup(scenarioInfo);
 #line 12
 this.FeatureBackground();
+#line hidden
+            TechTalk.SpecFlow.Table table142 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Data"});
+            table142.AddRow(new string[] {
+                        "Subject Number",
+                        "{RndNum<num1>(5)}"});
+            table142.AddRow(new string[] {
+                        "Subject Initials",
+                        "SUB"});
+            table142.AddRow(new string[] {
+                        "Subject ID",
+                        "SUB {Var(num1)}"});
+#line 756
+    testRunner.And("I create a Subject", ((string)(null)), table142);
+#line 761
+ testRunner.And("I select Form \"Lab Form 8\"");
 #line hidden
             TechTalk.SpecFlow.Table table143 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field",
                         "Data"});
             table143.AddRow(new string[] {
-                        "Subject Number",
-                        "{RndNum<num1>(5)}"});
+                        "Lab Field 3 - NEUTROPHILS - rr = F ; rmc = F",
+                        "5"});
             table143.AddRow(new string[] {
-                        "Subject Initials",
-                        "SUB"});
-            table143.AddRow(new string[] {
-                        "Subject ID",
-                        "SUB {Var(num1)}"});
-#line 724
-    testRunner.And("I create a Subject", ((string)(null)), table143);
-#line 729
- testRunner.And("I select Form \"Lab Form 8\"");
+                        "Lab Field 4 - WBC - rr = F ; rmc = F",
+                        "3"});
+#line 762
+ testRunner.And("I enter data in CRF and save", ((string)(null)), table143);
 #line hidden
             TechTalk.SpecFlow.Table table144 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field",
-                        "Data"});
-            table144.AddRow(new string[] {
-                        "Lab Field 3 - NEUTROPHILS - rr = F ; rmc = F",
-                        "5"});
+                        "Query Message",
+                        "Answered",
+                        "Closed"});
             table144.AddRow(new string[] {
                         "Lab Field 4 - WBC - rr = F ; rmc = F",
-                        "3"});
-#line 730
- testRunner.And("I enter data in CRF and save", ((string)(null)), table144);
+                        "Lab Field 4 must be greater than Lab Field 3. Please verify.",
+                        "false",
+                        "false"});
+#line 766
+ testRunner.And("I verify Query is displayed", ((string)(null)), table144);
+#line 769
+ testRunner.And("I take a screenshot");
 #line hidden
             TechTalk.SpecFlow.Table table145 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field",
-                        "Query Message",
-                        "Answered",
-                        "Closed"});
+                        "Data"});
             table145.AddRow(new string[] {
-                        "Lab Field 4 - WBC - rr = F ; rmc = F",
-                        "Lab Field 4 must be greater than Lab Field 3. Please verify.",
-                        "false",
-                        "false"});
-#line 734
- testRunner.And("I verify Query is displayed", ((string)(null)), table145);
-#line 737
- testRunner.And("I take a screenshot");
+                        "Lab Field 3 - NEUTROPHILS - rr = F ; rmc = F",
+                        "4"});
+#line 770
+ testRunner.And("I enter data in CRF and save", ((string)(null)), table145);
 #line hidden
             TechTalk.SpecFlow.Table table146 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field",
-                        "Data"});
+                        "Query Message",
+                        "Answered",
+                        "Closed"});
             table146.AddRow(new string[] {
-                        "Lab Field 3 - NEUTROPHILS - rr = F ; rmc = F",
-                        "4"});
-#line 738
- testRunner.And("I enter data in CRF and save", ((string)(null)), table146);
+                        "Lab Field 4 - WBC - rr = F ; rmc = F",
+                        "Lab Field 4 must be greater than Lab Field 3. Please verify.",
+                        "false",
+                        "false"});
+#line 773
+ testRunner.And("I verify Query is displayed", ((string)(null)), table146);
+#line 776
+ testRunner.And("I take a screenshot");
 #line hidden
             TechTalk.SpecFlow.Table table147 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field",
-                        "Query Message",
-                        "Answered",
-                        "Closed"});
+                        "Data"});
             table147.AddRow(new string[] {
-                        "Lab Field 4 - WBC - rr = F ; rmc = F",
-                        "Lab Field 4 must be greater than Lab Field 3. Please verify.",
-                        "false",
-                        "false"});
-#line 741
- testRunner.And("I verify Query is displayed", ((string)(null)), table147);
-#line 744
- testRunner.And("I take a screenshot");
+                        "Lab Field 3 - NEUTROPHILS - rr = F ; rmc = F",
+                        "5"});
+#line 777
+ testRunner.When("I enter data in CRF and save", ((string)(null)), table147);
 #line hidden
             TechTalk.SpecFlow.Table table148 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field",
-                        "Data"});
-            table148.AddRow(new string[] {
-                        "Lab Field 3 - NEUTROPHILS - rr = F ; rmc = F",
-                        "5"});
-#line 745
- testRunner.When("I enter data in CRF and save", ((string)(null)), table148);
-#line hidden
-            TechTalk.SpecFlow.Table table149 = new TechTalk.SpecFlow.Table(new string[] {
-                        "Field",
                         "Query Message",
                         "Answered",
                         "Closed"});
-            table149.AddRow(new string[] {
+            table148.AddRow(new string[] {
                         "Lab Field 4 - WBC - rr = F ; rmc = F",
                         "Lab Field 4 must be greater than Lab Field 3. Please verify.",
                         "false",
                         "false"});
-#line 748
- testRunner.And("I verify Query is displayed", ((string)(null)), table149);
-#line 751
+#line 780
+ testRunner.And("I verify Query is displayed", ((string)(null)), table148);
+#line 783
  testRunner.And("I take a screenshot");
 #line hidden
             this.ScenarioCleanup();
         }
         
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("@PB-US12940-05C")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("@PB_US12940_05C")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Query Refiring Logic5")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.IgnoreAttribute()]
         public virtual void PB_US12940_05C()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("@PB-US12940-05C", new string[] {
-                        "PB-US12940-05C",
-                        "ignore"});
-#line 756
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("@PB_US12940_05C", new string[] {
+                        "release_564_Patch11",
+                        "PB_US12940_05C",
+                        "ignore",
+                        "Validation"});
+#line 790
 this.ScenarioSetup(scenarioInfo);
 #line 12
 this.FeatureBackground();
+#line hidden
+            TechTalk.SpecFlow.Table table149 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Data"});
+            table149.AddRow(new string[] {
+                        "Subject Number",
+                        "{RndNum<num1>(5)}"});
+            table149.AddRow(new string[] {
+                        "Subject Initials",
+                        "SUB"});
+            table149.AddRow(new string[] {
+                        "Subject ID",
+                        "SUB {Var(num1)}"});
+#line 793
+    testRunner.And("I create a Subject", ((string)(null)), table149);
+#line 798
+ testRunner.And("I select Form \"Lab Form 8\"");
 #line hidden
             TechTalk.SpecFlow.Table table150 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field",
                         "Data"});
             table150.AddRow(new string[] {
-                        "Subject Number",
-                        "{RndNum<num1>(5)}"});
-            table150.AddRow(new string[] {
-                        "Subject Initials",
-                        "SUB"});
-            table150.AddRow(new string[] {
-                        "Subject ID",
-                        "SUB {Var(num1)}"});
-#line 759
-    testRunner.And("I create a Subject", ((string)(null)), table150);
-#line 764
- testRunner.And("I select Form \"Lab Form 8\"");
-#line hidden
-            TechTalk.SpecFlow.Table table151 = new TechTalk.SpecFlow.Table(new string[] {
-                        "Field",
-                        "Data"});
-            table151.AddRow(new string[] {
                         "Lab Field 5 - NEUTROPHILS - rr = T ; rmc = F",
                         "5"});
-            table151.AddRow(new string[] {
+            table150.AddRow(new string[] {
                         "Lab Field 6 - WBC - rr = T ; rmc = F",
                         "3"});
-#line 765
- testRunner.And("I enter data in CRF and save", ((string)(null)), table151);
+#line 799
+ testRunner.And("I enter data in CRF and save", ((string)(null)), table150);
 #line hidden
-            TechTalk.SpecFlow.Table table152 = new TechTalk.SpecFlow.Table(new string[] {
+            TechTalk.SpecFlow.Table table151 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field",
                         "Query Message",
                         "Answered",
                         "Closed"});
-            table152.AddRow(new string[] {
+            table151.AddRow(new string[] {
                         "Lab Field 6 - WBC - rr = T ; rmc = F",
                         "Lab Field 6 must be greater than Lab Field 5. Please verify.",
                         "false",
                         "false"});
-#line 769
- testRunner.And("I verify Query is displayed", ((string)(null)), table152);
-#line 772
+#line 803
+ testRunner.And("I verify Query is displayed", ((string)(null)), table151);
+#line 806
  testRunner.And("I take a screenshot");
-#line 773
+#line 807
  testRunner.And("I answer the Query \"Lab Field 6 must be greater than Lab Field 5. Please verify.\"" +
                     " on Field \"Lab Field 6 - WBC - rr = T ; rmc = F\" with \"Data will be changed.\"");
 #line hidden
-            TechTalk.SpecFlow.Table table153 = new TechTalk.SpecFlow.Table(new string[] {
+            TechTalk.SpecFlow.Table table152 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field",
                         "Data"});
-            table153.AddRow(new string[] {
+            table152.AddRow(new string[] {
                         "Lab Field 5 - NEUTROPHILS - rr = T ; rmc = F",
                         "4"});
-#line 774
- testRunner.And("I enter data in CRF and save", ((string)(null)), table153);
+#line 808
+ testRunner.And("I enter data in CRF and save", ((string)(null)), table152);
 #line hidden
-            TechTalk.SpecFlow.Table table154 = new TechTalk.SpecFlow.Table(new string[] {
+            TechTalk.SpecFlow.Table table153 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field",
                         "Query Message",
                         "Answered",
                         "Closed"});
-            table154.AddRow(new string[] {
+            table153.AddRow(new string[] {
                         "Lab Field 6 - WBC - rr = T ; rmc = F",
                         "Lab Field 6 must be greater than Lab Field 5. Please verify.",
                         "true",
                         "true"});
-#line 778
-    testRunner.And("I verify Query is not displayed", ((string)(null)), table154);
-#line 781
+#line 812
+    testRunner.And("I verify Query is not displayed", ((string)(null)), table153);
+#line 815
  testRunner.And("I take a screenshot");
 #line hidden
-            TechTalk.SpecFlow.Table table155 = new TechTalk.SpecFlow.Table(new string[] {
+            TechTalk.SpecFlow.Table table154 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field",
                         "Data"});
-            table155.AddRow(new string[] {
+            table154.AddRow(new string[] {
                         "Lab Field 5 - NEUTROPHILS - rr = T ; rmc = F",
                         "5"});
-#line 782
- testRunner.When("I enter data in CRF and save", ((string)(null)), table155);
+#line 816
+ testRunner.When("I enter data in CRF and save", ((string)(null)), table154);
 #line hidden
-            TechTalk.SpecFlow.Table table156 = new TechTalk.SpecFlow.Table(new string[] {
+            TechTalk.SpecFlow.Table table155 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field",
                         "Query Message",
                         "Answered",
                         "Closed"});
-            table156.AddRow(new string[] {
+            table155.AddRow(new string[] {
                         "Lab Field 6 - WBC - rr = T ; rmc = F",
                         "Lab Field 6 must be greater than Lab Field 5. Please verify.",
                         "false",
                         "false"});
-#line 786
-    testRunner.And("I verify Query is displayed", ((string)(null)), table156);
-#line 789
+#line 820
+    testRunner.And("I verify Query is displayed", ((string)(null)), table155);
+#line 823
  testRunner.And("I take a screenshot");
 #line hidden
             this.ScenarioCleanup();
         }
         
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("@PB-US12940-05D")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("@PB_US12940_05D")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Query Refiring Logic5")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.IgnoreAttribute()]
         public virtual void PB_US12940_05D()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("@PB-US12940-05D", new string[] {
-                        "PB-US12940-05D",
-                        "ignore"});
-#line 794
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("@PB_US12940_05D", new string[] {
+                        "release_564_Patch11",
+                        "PB_US12940_05D",
+                        "ignore",
+                        "Validation"});
+#line 830
 this.ScenarioSetup(scenarioInfo);
 #line 12
 this.FeatureBackground();
+#line hidden
+            TechTalk.SpecFlow.Table table156 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Data"});
+            table156.AddRow(new string[] {
+                        "Subject Number",
+                        "{RndNum<num1>(5)}"});
+            table156.AddRow(new string[] {
+                        "Subject Initials",
+                        "SUB"});
+            table156.AddRow(new string[] {
+                        "Subject ID",
+                        "SUB {Var(num1)}"});
+#line 833
+ testRunner.And("I create a Subject", ((string)(null)), table156);
+#line 838
+ testRunner.And("I select Form \"Lab Form 8\"");
 #line hidden
             TechTalk.SpecFlow.Table table157 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field",
                         "Data"});
             table157.AddRow(new string[] {
-                        "Subject Number",
-                        "{RndNum<num1>(5)}"});
+                        "Lab Field 7 - NEUTROPHILS - rr = F ; rmc = T",
+                        "5"});
             table157.AddRow(new string[] {
-                        "Subject Initials",
-                        "SUB"});
-            table157.AddRow(new string[] {
-                        "Subject ID",
-                        "SUB {Var(num1)}"});
-#line 797
- testRunner.And("I create a Subject", ((string)(null)), table157);
-#line 802
- testRunner.And("I select Form \"Lab Form 8\"");
+                        "Lab Field 8 - WBC - rr = F ; rmc = T",
+                        "3"});
+#line 839
+ testRunner.And("I enter data in CRF and save", ((string)(null)), table157);
 #line hidden
             TechTalk.SpecFlow.Table table158 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field",
-                        "Data"});
-            table158.AddRow(new string[] {
-                        "Lab Field 7 - NEUTROPHILS - rr = F ; rmc = T",
-                        "5"});
+                        "Query Message",
+                        "Answered",
+                        "Closed"});
             table158.AddRow(new string[] {
                         "Lab Field 8 - WBC - rr = F ; rmc = T",
-                        "3"});
-#line 803
- testRunner.And("I enter data in CRF and save", ((string)(null)), table158);
+                        "Lab Field 8 must be greater than Lab Field 7. Please verify.",
+                        "false",
+                        "false"});
+#line 843
+ testRunner.And("I verify Query is displayed", ((string)(null)), table158);
+#line 846
+ testRunner.And("I take a screenshot");
 #line hidden
             TechTalk.SpecFlow.Table table159 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field",
-                        "Query Message",
-                        "Answered",
-                        "Closed"});
+                        "Data"});
             table159.AddRow(new string[] {
-                        "Lab Field 8 - WBC - rr = F ; rmc = T",
-                        "Lab Field 8 must be greater than Lab Field 7. Please verify.",
-                        "false",
-                        "false"});
-#line 807
- testRunner.And("I verify Query is displayed", ((string)(null)), table159);
-#line 810
- testRunner.And("I take a screenshot");
+                        "Lab Field 7 - NEUTROPHILS - rr = F ; rmc = T",
+                        "4"});
+#line 847
+ testRunner.And("I enter data in CRF and save", ((string)(null)), table159);
 #line hidden
             TechTalk.SpecFlow.Table table160 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field",
-                        "Data"});
+                        "Query Message",
+                        "Answered",
+                        "Closed"});
             table160.AddRow(new string[] {
-                        "Lab Field 7 - NEUTROPHILS - rr = F ; rmc = T",
-                        "4"});
-#line 811
- testRunner.And("I enter data in CRF and save", ((string)(null)), table160);
+                        "Lab Field 8 - WBC - rr = F ; rmc = T",
+                        "Lab Field 8 must be greater than Lab Field 7. Please verify.",
+                        "true",
+                        "false"});
+#line 851
+    testRunner.And("I verify Query is displayed", ((string)(null)), table160);
+#line 854
+ testRunner.And("I take a screenshot");
+#line 855
+ testRunner.And("I close the only Query on Field \"Lab Field 8 - WBC - rr = F ; rmc = T\"");
+#line 856
+ testRunner.And("I save the CRF page");
+#line 857
+ testRunner.And("I verify closed Query with message \"Lab Field 8 must be greater than Lab Field 7." +
+                    " Please verify.\" is displayed on Field \"Lab Field 8 - WBC - rr = F ; rmc = T\"");
+#line 858
+ testRunner.And("I take a screenshot");
 #line hidden
             TechTalk.SpecFlow.Table table161 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field",
-                        "Query Message",
-                        "Answered",
-                        "Closed"});
+                        "Data"});
             table161.AddRow(new string[] {
-                        "Lab Field 8 - WBC - rr = F ; rmc = T",
-                        "Lab Field 8 must be greater than Lab Field 7. Please verify.",
-                        "true",
-                        "false"});
-#line 815
-    testRunner.And("I verify Query is displayed", ((string)(null)), table161);
-#line 818
- testRunner.And("I take a screenshot");
-#line 819
- testRunner.And("I close the only Query on Field \"Lab Field 8 - WBC - rr = F ; rmc = T\"");
-#line 820
- testRunner.And("I save the CRF page");
-#line 821
- testRunner.And("I verify closed Query with message \"Lab Field 8 must be greater than Lab Field 7." +
-                    " Please verify.\" is displayed on Field \"Lab Field 8 - WBC - rr = F ; rmc = T\"");
-#line 822
- testRunner.And("I take a screenshot");
+                        "Lab Field 7 - NEUTROPHILS - rr = F ; rmc = T",
+                        "5"});
+#line 859
+ testRunner.When("I enter data in CRF and save", ((string)(null)), table161);
 #line hidden
             TechTalk.SpecFlow.Table table162 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field",
-                        "Data"});
-            table162.AddRow(new string[] {
-                        "Lab Field 7 - NEUTROPHILS - rr = F ; rmc = T",
-                        "5"});
-#line 823
- testRunner.When("I enter data in CRF and save", ((string)(null)), table162);
-#line hidden
-            TechTalk.SpecFlow.Table table163 = new TechTalk.SpecFlow.Table(new string[] {
-                        "Field",
                         "Query Message",
                         "Answered",
                         "Closed"});
-            table163.AddRow(new string[] {
+            table162.AddRow(new string[] {
                         "Lab Field 8 - WBC - rr = F ; rmc = T",
                         "Lab Field 8 must be greater than Lab Field 7. Please verify.",
                         "false",
                         "false"});
-#line 826
- testRunner.And("I verify Query is displayed", ((string)(null)), table163);
-#line 829
+#line 862
+ testRunner.And("I verify Query is displayed", ((string)(null)), table162);
+#line 865
  testRunner.And("I take a screenshot");
 #line hidden
             this.ScenarioCleanup();
         }
         
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("@PB-US12940-06A")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("@PB_US12940_06A")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Query Refiring Logic5")]
         public virtual void PB_US12940_06A()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("@PB-US12940-06A", new string[] {
-                        "PB-US12940-06A"});
-#line 832
-this.ScenarioSetup(scenarioInfo);
-#line 12
-this.FeatureBackground();
-#line hidden
-            TechTalk.SpecFlow.Table table164 = new TechTalk.SpecFlow.Table(new string[] {
-                        "Field",
-                        "Data"});
-            table164.AddRow(new string[] {
-                        "Subject Number",
-                        "{RndNum<num1>(5)}"});
-            table164.AddRow(new string[] {
-                        "Subject Initials",
-                        "SUB"});
-            table164.AddRow(new string[] {
-                        "Subject ID",
-                        "SUB {Var(num1)}"});
-#line 835
-    testRunner.And("I create a Subject", ((string)(null)), table164);
-#line 840
- testRunner.And("I select Form \"Lab Form 8\"");
-#line hidden
-            TechTalk.SpecFlow.Table table165 = new TechTalk.SpecFlow.Table(new string[] {
-                        "Field",
-                        "Data"});
-            table165.AddRow(new string[] {
-                        "Lab Field 1 - NEUTROPHILS - rr = T ; rmc = T",
-                        "5"});
-            table165.AddRow(new string[] {
-                        "Lab Field 2 - WBC - rr = T ; rmc = T",
-                        "3"});
-#line 841
- testRunner.And("I enter data in CRF and save", ((string)(null)), table165);
-#line hidden
-            TechTalk.SpecFlow.Table table166 = new TechTalk.SpecFlow.Table(new string[] {
-                        "Field",
-                        "Query Message",
-                        "Answered",
-                        "Closed"});
-            table166.AddRow(new string[] {
-                        "Lab Field 2 - WBC - rr = T ; rmc = T",
-                        "Lab Field 2 must be greater than Lab Field 1. Please verify.",
-                        "false",
-                        "false"});
-#line 845
- testRunner.And("I verify Query is displayed", ((string)(null)), table166);
-#line 848
- testRunner.And("I take a screenshot");
-#line 849
- testRunner.And("I answer the Query \"Lab Field 2 must be greater than Lab Field 1. Please verify.\"" +
-                    " on Field \"Lab Field 2 - WBC - rr = T ; rmc = T\" with \"Data will be changed.\"");
-#line hidden
-            TechTalk.SpecFlow.Table table167 = new TechTalk.SpecFlow.Table(new string[] {
-                        "Field",
-                        "Data"});
-            table167.AddRow(new string[] {
-                        "Lab Field 2 - WBC - rr = T ; rmc = T",
-                        "2"});
-#line 850
-   testRunner.And("I enter data in CRF and save", ((string)(null)), table167);
-#line hidden
-            TechTalk.SpecFlow.Table table168 = new TechTalk.SpecFlow.Table(new string[] {
-                        "Field",
-                        "Query Message",
-                        "Answered",
-                        "Closed"});
-            table168.AddRow(new string[] {
-                        "Lab Field 2 - WBC - rr = T ; rmc = T",
-                        "Lab Field 2 must be greater than Lab Field 1. Please verify.",
-                        "true",
-                        "false"});
-#line 853
- testRunner.And("I verify Query is displayed", ((string)(null)), table168);
-#line 856
- testRunner.And("I take a screenshot");
-#line 857
- testRunner.And("I close the only Query on Field \"Lab Field 2 - WBC - rr = T ; rmc = T\"");
-#line 858
- testRunner.And("I save the CRF page");
-#line 859
- testRunner.And("I verify closed Query with message \"Lab Field 2 must be greater than Lab Field 1." +
-                    " Please verify.\" is displayed on Field \"Lab Field 2 - WBC - rr = T ; rmc = T\"");
-#line 860
- testRunner.And("I take a screenshot");
-#line hidden
-            TechTalk.SpecFlow.Table table169 = new TechTalk.SpecFlow.Table(new string[] {
-                        "Field",
-                        "Data"});
-            table169.AddRow(new string[] {
-                        "Lab Field 2 - WBC - rr = T ; rmc = T",
-                        "3"});
-#line 861
- testRunner.When("I enter data in CRF and save", ((string)(null)), table169);
-#line hidden
-            TechTalk.SpecFlow.Table table170 = new TechTalk.SpecFlow.Table(new string[] {
-                        "Field",
-                        "Query Message",
-                        "Answered",
-                        "Closed"});
-            table170.AddRow(new string[] {
-                        "Lab Field 2 - WBC - rr = T ; rmc = T",
-                        "Lab Field 2 must be greater than Lab Field 1. Please verify.",
-                        "false",
-                        "false"});
-#line 864
- testRunner.And("I verify Query is displayed", ((string)(null)), table170);
-#line 867
- testRunner.And("I take a screenshot");
-#line hidden
-            this.ScenarioCleanup();
-        }
-        
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("@PB-US12940-06B")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Query Refiring Logic5")]
-        public virtual void PB_US12940_06B()
-        {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("@PB-US12940-06B", new string[] {
-                        "PB-US12940-06B"});
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("@PB_US12940_06A", new string[] {
+                        "release_564_Patch11",
+                        "PB_US12940_06A",
+                        "Validation"});
 #line 870
 this.ScenarioSetup(scenarioInfo);
 #line 12
 this.FeatureBackground();
 #line hidden
+            TechTalk.SpecFlow.Table table163 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Data"});
+            table163.AddRow(new string[] {
+                        "Subject Number",
+                        "{RndNum<num1>(5)}"});
+            table163.AddRow(new string[] {
+                        "Subject Initials",
+                        "SUB"});
+            table163.AddRow(new string[] {
+                        "Subject ID",
+                        "SUB {Var(num1)}"});
+#line 873
+    testRunner.And("I create a Subject", ((string)(null)), table163);
+#line 878
+ testRunner.And("I select Form \"Lab Form 8\"");
+#line hidden
+            TechTalk.SpecFlow.Table table164 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Data"});
+            table164.AddRow(new string[] {
+                        "Lab Field 1 - NEUTROPHILS - rr = T ; rmc = T",
+                        "5"});
+            table164.AddRow(new string[] {
+                        "Lab Field 2 - WBC - rr = T ; rmc = T",
+                        "3"});
+#line 879
+ testRunner.And("I enter data in CRF and save", ((string)(null)), table164);
+#line hidden
+            TechTalk.SpecFlow.Table table165 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Query Message",
+                        "Answered",
+                        "Closed"});
+            table165.AddRow(new string[] {
+                        "Lab Field 2 - WBC - rr = T ; rmc = T",
+                        "Lab Field 2 must be greater than Lab Field 1. Please verify.",
+                        "false",
+                        "false"});
+#line 883
+ testRunner.And("I verify Query is displayed", ((string)(null)), table165);
+#line 886
+ testRunner.And("I take a screenshot");
+#line 887
+ testRunner.And("I answer the Query \"Lab Field 2 must be greater than Lab Field 1. Please verify.\"" +
+                    " on Field \"Lab Field 2 - WBC - rr = T ; rmc = T\" with \"Data will be changed.\"");
+#line hidden
+            TechTalk.SpecFlow.Table table166 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Data"});
+            table166.AddRow(new string[] {
+                        "Lab Field 2 - WBC - rr = T ; rmc = T",
+                        "2"});
+#line 888
+   testRunner.And("I enter data in CRF and save", ((string)(null)), table166);
+#line hidden
+            TechTalk.SpecFlow.Table table167 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Query Message",
+                        "Answered",
+                        "Closed"});
+            table167.AddRow(new string[] {
+                        "Lab Field 2 - WBC - rr = T ; rmc = T",
+                        "Lab Field 2 must be greater than Lab Field 1. Please verify.",
+                        "true",
+                        "false"});
+#line 891
+ testRunner.And("I verify Query is displayed", ((string)(null)), table167);
+#line 894
+ testRunner.And("I take a screenshot");
+#line 895
+ testRunner.And("I close the only Query on Field \"Lab Field 2 - WBC - rr = T ; rmc = T\"");
+#line 896
+ testRunner.And("I save the CRF page");
+#line 897
+ testRunner.And("I verify closed Query with message \"Lab Field 2 must be greater than Lab Field 1." +
+                    " Please verify.\" is displayed on Field \"Lab Field 2 - WBC - rr = T ; rmc = T\"");
+#line 898
+ testRunner.And("I take a screenshot");
+#line hidden
+            TechTalk.SpecFlow.Table table168 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Data"});
+            table168.AddRow(new string[] {
+                        "Lab Field 2 - WBC - rr = T ; rmc = T",
+                        "3"});
+#line 899
+ testRunner.When("I enter data in CRF and save", ((string)(null)), table168);
+#line hidden
+            TechTalk.SpecFlow.Table table169 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Query Message",
+                        "Answered",
+                        "Closed"});
+            table169.AddRow(new string[] {
+                        "Lab Field 2 - WBC - rr = T ; rmc = T",
+                        "Lab Field 2 must be greater than Lab Field 1. Please verify.",
+                        "false",
+                        "false"});
+#line 902
+ testRunner.And("I verify Query is displayed", ((string)(null)), table169);
+#line 905
+ testRunner.And("I take a screenshot");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("@PB_US12940_06B")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Query Refiring Logic5")]
+        public virtual void PB_US12940_06B()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("@PB_US12940_06B", new string[] {
+                        "release_564_Patch11",
+                        "PB_US12940_06B",
+                        "Validation"});
+#line 910
+this.ScenarioSetup(scenarioInfo);
+#line 12
+this.FeatureBackground();
+#line hidden
+            TechTalk.SpecFlow.Table table170 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Data"});
+            table170.AddRow(new string[] {
+                        "Subject Number",
+                        "{RndNum<num1>(5)}"});
+            table170.AddRow(new string[] {
+                        "Subject Initials",
+                        "SUB"});
+            table170.AddRow(new string[] {
+                        "Subject ID",
+                        "SUB {Var(num1)}"});
+#line 913
+    testRunner.And("I create a Subject", ((string)(null)), table170);
+#line 918
+ testRunner.And("I select Form \"Lab Form 8\"");
+#line hidden
             TechTalk.SpecFlow.Table table171 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field",
                         "Data"});
             table171.AddRow(new string[] {
-                        "Subject Number",
-                        "{RndNum<num1>(5)}"});
-            table171.AddRow(new string[] {
-                        "Subject Initials",
-                        "SUB"});
-            table171.AddRow(new string[] {
-                        "Subject ID",
-                        "SUB {Var(num1)}"});
-#line 873
-    testRunner.And("I create a Subject", ((string)(null)), table171);
-#line 878
- testRunner.And("I select Form \"Lab Form 8\"");
-#line hidden
-            TechTalk.SpecFlow.Table table172 = new TechTalk.SpecFlow.Table(new string[] {
-                        "Field",
-                        "Data"});
-            table172.AddRow(new string[] {
                         "Lab Field 3 - NEUTROPHILS - rr = F ; rmc = F",
                         "5"});
-            table172.AddRow(new string[] {
+            table171.AddRow(new string[] {
                         "Lab Field 4 - WBC - rr = F ; rmc = F",
                         "3"});
-#line 879
- testRunner.And("I enter data in CRF and save", ((string)(null)), table172);
+#line 919
+ testRunner.And("I enter data in CRF and save", ((string)(null)), table171);
 #line hidden
-            TechTalk.SpecFlow.Table table173 = new TechTalk.SpecFlow.Table(new string[] {
+            TechTalk.SpecFlow.Table table172 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field",
                         "Query Message",
                         "Answered",
                         "Closed"});
-            table173.AddRow(new string[] {
+            table172.AddRow(new string[] {
                         "Lab Field 4 - WBC - rr = F ; rmc = F",
                         "Lab Field 4 must be greater than Lab Field 3. Please verify.",
                         "false",
                         "false"});
-#line 883
- testRunner.And("I verify Query is displayed", ((string)(null)), table173);
-#line 886
+#line 923
+ testRunner.And("I verify Query is displayed", ((string)(null)), table172);
+#line 926
  testRunner.And("I take a screenshot");
 #line hidden
-            TechTalk.SpecFlow.Table table174 = new TechTalk.SpecFlow.Table(new string[] {
+            TechTalk.SpecFlow.Table table173 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field",
                         "Data"});
-            table174.AddRow(new string[] {
+            table173.AddRow(new string[] {
                         "Lab Field 4 - WBC - rr = F ; rmc = F",
                         "2"});
-#line 887
-   testRunner.And("I enter data in CRF and save", ((string)(null)), table174);
+#line 927
+   testRunner.And("I enter data in CRF and save", ((string)(null)), table173);
 #line hidden
-            TechTalk.SpecFlow.Table table175 = new TechTalk.SpecFlow.Table(new string[] {
+            TechTalk.SpecFlow.Table table174 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field",
                         "Query Message",
                         "Answered",
                         "Closed"});
-            table175.AddRow(new string[] {
+            table174.AddRow(new string[] {
                         "Lab Field 4 - WBC - rr = F ; rmc = F",
                         "Lab Field 4 must be greater than Lab Field 3. Please verify.",
                         "false",
-                        "true"});
-#line 890
- testRunner.And("I verify Query is not displayed", ((string)(null)), table175);
+                        "false"});
+#line 930
+ testRunner.And("I verify Query is displayed", ((string)(null)), table174);
+#line 933
+ testRunner.And("I take a screenshot");
+#line hidden
+            TechTalk.SpecFlow.Table table175 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Data"});
+            table175.AddRow(new string[] {
+                        "Lab Field 4 - WBC - rr = F ; rmc = F",
+                        "3"});
+#line 934
+ testRunner.When("I enter data in CRF and save", ((string)(null)), table175);
 #line hidden
             TechTalk.SpecFlow.Table table176 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field",
@@ -2866,80 +2906,85 @@ this.FeatureBackground();
                         "Lab Field 4 must be greater than Lab Field 3. Please verify.",
                         "false",
                         "false"});
-#line 893
- testRunner.And("I verify Query is displayed", ((string)(null)), table176);
-#line 896
- testRunner.And("I take a screenshot");
-#line hidden
-            TechTalk.SpecFlow.Table table177 = new TechTalk.SpecFlow.Table(new string[] {
-                        "Field",
-                        "Data"});
-            table177.AddRow(new string[] {
-                        "Lab Field 4 - WBC - rr = F ; rmc = F",
-                        "3"});
-#line 897
- testRunner.When("I enter data in CRF and save", ((string)(null)), table177);
-#line hidden
-            TechTalk.SpecFlow.Table table178 = new TechTalk.SpecFlow.Table(new string[] {
-                        "Field",
-                        "Query Message",
-                        "Answered",
-                        "Closed"});
-            table178.AddRow(new string[] {
-                        "Lab Field 4 - WBC - rr = F ; rmc = F",
-                        "Lab Field 4 must be greater than Lab Field 3. Please verify.",
-                        "false",
-                        "false"});
-#line 900
- testRunner.Then("I verify Query is displayed", ((string)(null)), table178);
-#line 903
+#line 937
+ testRunner.Then("I verify Query is displayed", ((string)(null)), table176);
+#line 940
  testRunner.And("I take a screenshot");
 #line hidden
             this.ScenarioCleanup();
         }
         
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("@PB-US12940-06C")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("@PB_US12940_06C")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Query Refiring Logic5")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.IgnoreAttribute()]
         public virtual void PB_US12940_06C()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("@PB-US12940-06C", new string[] {
-                        "PB-US12940-06C",
-                        "ignore"});
-#line 908
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("@PB_US12940_06C", new string[] {
+                        "release_564_Patch11",
+                        "PB_US12940_06C",
+                        "ignore",
+                        "Validation"});
+#line 947
 this.ScenarioSetup(scenarioInfo);
 #line 12
 this.FeatureBackground();
 #line hidden
-            TechTalk.SpecFlow.Table table179 = new TechTalk.SpecFlow.Table(new string[] {
+            TechTalk.SpecFlow.Table table177 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field",
                         "Data"});
-            table179.AddRow(new string[] {
+            table177.AddRow(new string[] {
                         "Subject Number",
                         "{RndNum<num1>(5)}"});
-            table179.AddRow(new string[] {
+            table177.AddRow(new string[] {
                         "Subject Initials",
                         "SUB"});
-            table179.AddRow(new string[] {
+            table177.AddRow(new string[] {
                         "Subject ID",
                         "SUB {Var(num1)}"});
-#line 911
-    testRunner.And("I create a Subject", ((string)(null)), table179);
-#line 916
+#line 950
+    testRunner.And("I create a Subject", ((string)(null)), table177);
+#line 955
  testRunner.And("I select Form \"Lab Form 8\"");
+#line hidden
+            TechTalk.SpecFlow.Table table178 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Data"});
+            table178.AddRow(new string[] {
+                        "Lab Field 5 - NEUTROPHILS - rr = T ; rmc = F",
+                        "5"});
+            table178.AddRow(new string[] {
+                        "Lab Field 6 - WBC - rr = T ; rmc = F",
+                        "3"});
+#line 956
+ testRunner.And("I enter data in CRF and save", ((string)(null)), table178);
+#line hidden
+            TechTalk.SpecFlow.Table table179 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Query Message",
+                        "Answered",
+                        "Closed"});
+            table179.AddRow(new string[] {
+                        "Lab Field 6 - WBC - rr = T ; rmc = F",
+                        "Lab Field 6 must be greater than Lab Field 5. Please verify.",
+                        "false",
+                        "false"});
+#line 960
+ testRunner.And("I verify Query is displayed", ((string)(null)), table179);
+#line 963
+ testRunner.And("I take a screenshot");
+#line 964
+ testRunner.And("I answer the Query \"Lab Field 6 must be greater than Lab Field 5. Please verify.\"" +
+                    " on Field \"Lab Field 6 - WBC - rr = T ; rmc = F\" with \"Data will be changed.\"");
 #line hidden
             TechTalk.SpecFlow.Table table180 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field",
                         "Data"});
             table180.AddRow(new string[] {
-                        "Lab Field 5 - NEUTROPHILS - rr = T ; rmc = F",
-                        "5"});
-            table180.AddRow(new string[] {
                         "Lab Field 6 - WBC - rr = T ; rmc = F",
-                        "3"});
-#line 917
- testRunner.And("I enter data in CRF and save", ((string)(null)), table180);
+                        "2"});
+#line 965
+   testRunner.And("I enter data in CRF and save", ((string)(null)), table180);
 #line hidden
             TechTalk.SpecFlow.Table table181 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field",
@@ -2949,24 +2994,21 @@ this.FeatureBackground();
             table181.AddRow(new string[] {
                         "Lab Field 6 - WBC - rr = T ; rmc = F",
                         "Lab Field 6 must be greater than Lab Field 5. Please verify.",
-                        "false",
-                        "false"});
-#line 921
- testRunner.And("I verify Query is displayed", ((string)(null)), table181);
-#line 924
+                        "true",
+                        "true"});
+#line 969
+    testRunner.And("I verify Query is not displayed", ((string)(null)), table181);
+#line 972
  testRunner.And("I take a screenshot");
-#line 925
- testRunner.And("I answer the Query \"Lab Field 6 must be greater than Lab Field 5. Please verify.\"" +
-                    " on Field \"Lab Field 6 - WBC - rr = T ; rmc = F\" with \"Data will be changed.\"");
 #line hidden
             TechTalk.SpecFlow.Table table182 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field",
                         "Data"});
             table182.AddRow(new string[] {
                         "Lab Field 6 - WBC - rr = T ; rmc = F",
-                        "2"});
-#line 926
-   testRunner.And("I enter data in CRF and save", ((string)(null)), table182);
+                        "3"});
+#line 973
+ testRunner.When("I enter data in CRF and save", ((string)(null)), table182);
 #line hidden
             TechTalk.SpecFlow.Table table183 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field",
@@ -2976,80 +3018,82 @@ this.FeatureBackground();
             table183.AddRow(new string[] {
                         "Lab Field 6 - WBC - rr = T ; rmc = F",
                         "Lab Field 6 must be greater than Lab Field 5. Please verify.",
-                        "true",
-                        "true"});
-#line 930
-    testRunner.And("I verify Query is not displayed", ((string)(null)), table183);
-#line 933
- testRunner.And("I take a screenshot");
-#line hidden
-            TechTalk.SpecFlow.Table table184 = new TechTalk.SpecFlow.Table(new string[] {
-                        "Field",
-                        "Data"});
-            table184.AddRow(new string[] {
-                        "Lab Field 6 - WBC - rr = T ; rmc = F",
-                        "3"});
-#line 934
- testRunner.When("I enter data in CRF and save", ((string)(null)), table184);
-#line hidden
-            TechTalk.SpecFlow.Table table185 = new TechTalk.SpecFlow.Table(new string[] {
-                        "Field",
-                        "Query Message",
-                        "Answered",
-                        "Closed"});
-            table185.AddRow(new string[] {
-                        "Lab Field 6 - WBC - rr = T ; rmc = F",
-                        "Lab Field 6 must be greater than Lab Field 5. Please verify.",
                         "false",
                         "false"});
-#line 937
- testRunner.Then("I verify Query is displayed", ((string)(null)), table185);
-#line 940
+#line 976
+ testRunner.Then("I verify Query is displayed", ((string)(null)), table183);
+#line 979
  testRunner.And("I take a screenshot");
 #line hidden
             this.ScenarioCleanup();
         }
         
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("@PB-US12940-06D")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("@PB_US12940_06D")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Query Refiring Logic5")]
         public virtual void PB_US12940_06D()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("@PB-US12940-06D", new string[] {
-                        "PB-US12940-06D"});
-#line 943
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("@PB_US12940_06D", new string[] {
+                        "release_564_Patch11",
+                        "PB_US12940_06D",
+                        "Validation"});
+#line 984
 this.ScenarioSetup(scenarioInfo);
 #line 12
 this.FeatureBackground();
 #line hidden
-            TechTalk.SpecFlow.Table table186 = new TechTalk.SpecFlow.Table(new string[] {
+            TechTalk.SpecFlow.Table table184 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field",
                         "Data"});
-            table186.AddRow(new string[] {
+            table184.AddRow(new string[] {
                         "Subject Number",
                         "{RndNum<num1>(5)}"});
-            table186.AddRow(new string[] {
+            table184.AddRow(new string[] {
                         "Subject Initials",
                         "SUB"});
-            table186.AddRow(new string[] {
+            table184.AddRow(new string[] {
                         "Subject ID",
                         "SUB {Var(num1)}"});
-#line 946
- testRunner.And("I create a Subject", ((string)(null)), table186);
-#line 951
+#line 987
+ testRunner.And("I create a Subject", ((string)(null)), table184);
+#line 992
  testRunner.And("I select Form \"Lab Form 8\"");
+#line hidden
+            TechTalk.SpecFlow.Table table185 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Data"});
+            table185.AddRow(new string[] {
+                        "Lab Field 7 - NEUTROPHILS - rr = F ; rmc = T",
+                        "5"});
+            table185.AddRow(new string[] {
+                        "Lab Field 8 - WBC - rr = F ; rmc = T",
+                        "3"});
+#line 993
+ testRunner.And("I enter data in CRF and save", ((string)(null)), table185);
+#line hidden
+            TechTalk.SpecFlow.Table table186 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Query Message",
+                        "Answered",
+                        "Closed"});
+            table186.AddRow(new string[] {
+                        "Lab Field 8 - WBC - rr = F ; rmc = T",
+                        "Lab Field 8 must be greater than Lab Field 7. Please verify.",
+                        "false",
+                        "false"});
+#line 997
+ testRunner.And("I verify Query is displayed", ((string)(null)), table186);
+#line 1000
+ testRunner.And("I take a screenshot");
 #line hidden
             TechTalk.SpecFlow.Table table187 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field",
                         "Data"});
             table187.AddRow(new string[] {
-                        "Lab Field 7 - NEUTROPHILS - rr = F ; rmc = T",
-                        "5"});
-            table187.AddRow(new string[] {
                         "Lab Field 8 - WBC - rr = F ; rmc = T",
-                        "3"});
-#line 952
- testRunner.And("I enter data in CRF and save", ((string)(null)), table187);
+                        "2"});
+#line 1001
+   testRunner.And("I enter data in CRF and save", ((string)(null)), table187);
 #line hidden
             TechTalk.SpecFlow.Table table188 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field",
@@ -3059,11 +3103,20 @@ this.FeatureBackground();
             table188.AddRow(new string[] {
                         "Lab Field 8 - WBC - rr = F ; rmc = T",
                         "Lab Field 8 must be greater than Lab Field 7. Please verify.",
-                        "false",
+                        "true",
                         "false"});
-#line 956
+#line 1004
  testRunner.And("I verify Query is displayed", ((string)(null)), table188);
-#line 959
+#line 1007
+ testRunner.And("I take a screenshot");
+#line 1008
+ testRunner.And("I close the only Query on Field \"Lab Field 8 - WBC - rr = F ; rmc = T\"");
+#line 1009
+ testRunner.And("I save the CRF page");
+#line 1010
+ testRunner.And("I verify closed Query with message \"Lab Field 8 must be greater than Lab Field 7." +
+                    " Please verify.\" is displayed on Field \"Lab Field 8 - WBC - rr = F ; rmc = T\"");
+#line 1011
  testRunner.And("I take a screenshot");
 #line hidden
             TechTalk.SpecFlow.Table table189 = new TechTalk.SpecFlow.Table(new string[] {
@@ -3071,9 +3124,9 @@ this.FeatureBackground();
                         "Data"});
             table189.AddRow(new string[] {
                         "Lab Field 8 - WBC - rr = F ; rmc = T",
-                        "2"});
-#line 960
-   testRunner.And("I enter data in CRF and save", ((string)(null)), table189);
+                        "3"});
+#line 1012
+ testRunner.When("I enter data in CRF and save", ((string)(null)), table189);
 #line hidden
             TechTalk.SpecFlow.Table table190 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field",
@@ -3083,89 +3136,98 @@ this.FeatureBackground();
             table190.AddRow(new string[] {
                         "Lab Field 8 - WBC - rr = F ; rmc = T",
                         "Lab Field 8 must be greater than Lab Field 7. Please verify.",
-                        "true",
-                        "false"});
-#line 963
- testRunner.And("I verify Query is displayed", ((string)(null)), table190);
-#line 966
- testRunner.And("I take a screenshot");
-#line 967
- testRunner.And("I close the only Query on Field \"Lab Field 8 - WBC - rr = F ; rmc = T\"");
-#line 968
- testRunner.And("I save the CRF page");
-#line 969
- testRunner.And("I verify closed Query with message \"Lab Field 8 must be greater than Lab Field 7." +
-                    " Please verify.\" is displayed on Field \"Lab Field 8 - WBC - rr = F ; rmc = T\"");
-#line 970
- testRunner.And("I take a screenshot");
-#line hidden
-            TechTalk.SpecFlow.Table table191 = new TechTalk.SpecFlow.Table(new string[] {
-                        "Field",
-                        "Data"});
-            table191.AddRow(new string[] {
-                        "Lab Field 8 - WBC - rr = F ; rmc = T",
-                        "3"});
-#line 971
- testRunner.When("I enter data in CRF and save", ((string)(null)), table191);
-#line hidden
-            TechTalk.SpecFlow.Table table192 = new TechTalk.SpecFlow.Table(new string[] {
-                        "Field",
-                        "Query Message",
-                        "Answered",
-                        "Closed"});
-            table192.AddRow(new string[] {
-                        "Lab Field 8 - WBC - rr = F ; rmc = T",
-                        "Lab Field 8 must be greater than Lab Field 7. Please verify.",
                         "false",
                         "false"});
-#line 974
-    testRunner.Then("I verify Query is displayed", ((string)(null)), table192);
-#line 977
+#line 1015
+    testRunner.Then("I verify Query is displayed", ((string)(null)), table190);
+#line 1018
  testRunner.And("I take a screenshot");
 #line hidden
             this.ScenarioCleanup();
         }
         
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("@PB-US12940-07A")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("@PB_US12940_07A")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Query Refiring Logic5")]
         public virtual void PB_US12940_07A()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("@PB-US12940-07A", new string[] {
-                        "PB-US12940-07A"});
-#line 980
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("@PB_US12940_07A", new string[] {
+                        "release_564_Patch11",
+                        "PB_US12940_07A",
+                        "Validation"});
+#line 1023
 this.ScenarioSetup(scenarioInfo);
 #line 12
 this.FeatureBackground();
 #line hidden
-            TechTalk.SpecFlow.Table table193 = new TechTalk.SpecFlow.Table(new string[] {
+            TechTalk.SpecFlow.Table table191 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field",
                         "Data"});
-            table193.AddRow(new string[] {
+            table191.AddRow(new string[] {
                         "Subject Number",
                         "{RndNum<num1>(5)}"});
-            table193.AddRow(new string[] {
+            table191.AddRow(new string[] {
                         "Subject Initials",
                         "SUB"});
-            table193.AddRow(new string[] {
+            table191.AddRow(new string[] {
                         "Subject ID",
                         "SUB {Var(num1)}"});
-#line 983
- testRunner.And("I create a Subject", ((string)(null)), table193);
-#line 988
+#line 1026
+ testRunner.And("I create a Subject", ((string)(null)), table191);
+#line 1031
  testRunner.And("I select Form \"Lab Form 8\"");
+#line hidden
+            TechTalk.SpecFlow.Table table192 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Data"});
+            table192.AddRow(new string[] {
+                        "Lab Field 1 - NEUTROPHILS - rr = T ; rmc = T",
+                        "5"});
+            table192.AddRow(new string[] {
+                        "Lab Field 2 - WBC - rr = T ; rmc = T",
+                        "3"});
+#line 1032
+ testRunner.And("I enter data in CRF and save", ((string)(null)), table192);
+#line hidden
+            TechTalk.SpecFlow.Table table193 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Query Message",
+                        "Answered",
+                        "Closed"});
+            table193.AddRow(new string[] {
+                        "Lab Field 2 - WBC - rr = T ; rmc = T",
+                        "Lab Field 2 must be greater than Lab Field 1. Please verify.",
+                        "false",
+                        "false"});
+#line 1036
+ testRunner.And("I verify Query is displayed", ((string)(null)), table193);
+#line 1039
+ testRunner.And("I take a screenshot");
+#line 1040
+ testRunner.And("I answer the Query \"Lab Field 2 must be greater than Lab Field 1. Please verify.\"" +
+                    " on Field \"Lab Field 2 - WBC - rr = T ; rmc = T\" with \"Data will be changed.\"");
+#line 1041
+ testRunner.And("I save the CRF page");
+#line 1042
+ testRunner.And("I take a screenshot");
+#line 1043
+ testRunner.And("I close the only Query on Field \"Lab Field 2 - WBC - rr = T ; rmc = T\"");
+#line 1044
+ testRunner.And("I save the CRF page");
+#line 1045
+ testRunner.And("I verify closed Query with message \"Lab Field 2 must be greater than Lab Field 1." +
+                    " Please verify.\" is displayed on Field \"Lab Field 2 - WBC - rr = T ; rmc = T\"");
+#line 1046
+ testRunner.And("I take a screenshot");
 #line hidden
             TechTalk.SpecFlow.Table table194 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field",
                         "Data"});
             table194.AddRow(new string[] {
                         "Lab Field 1 - NEUTROPHILS - rr = T ; rmc = T",
-                        "5"});
-            table194.AddRow(new string[] {
-                        "Lab Field 2 - WBC - rr = T ; rmc = T",
-                        "3"});
-#line 989
- testRunner.And("I enter data in CRF and save", ((string)(null)), table194);
+                        "6"});
+#line 1047
+ testRunner.When("I enter data in CRF and save", ((string)(null)), table194);
 #line hidden
             TechTalk.SpecFlow.Table table195 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field",
@@ -3177,96 +3239,82 @@ this.FeatureBackground();
                         "Lab Field 2 must be greater than Lab Field 1. Please verify.",
                         "false",
                         "false"});
-#line 993
+#line 1050
  testRunner.And("I verify Query is displayed", ((string)(null)), table195);
-#line 996
- testRunner.And("I take a screenshot");
-#line 997
- testRunner.And("I answer the Query \"Lab Field 2 must be greater than Lab Field 1. Please verify.\"" +
-                    " on Field \"Lab Field 2 - WBC - rr = T ; rmc = T\" with \"Data will be changed.\"");
-#line 998
- testRunner.And("I save the CRF page");
-#line 999
- testRunner.And("I take a screenshot");
-#line 1000
- testRunner.And("I close the only Query on Field \"Lab Field 2 - WBC - rr = T ; rmc = T\"");
-#line 1001
- testRunner.And("I save the CRF page");
-#line 1002
- testRunner.And("I verify closed Query with message \"Lab Field 2 must be greater than Lab Field 1." +
-                    " Please verify.\" is displayed on Field \"Lab Field 2 - WBC - rr = T ; rmc = T\"");
-#line 1003
- testRunner.And("I take a screenshot");
-#line hidden
-            TechTalk.SpecFlow.Table table196 = new TechTalk.SpecFlow.Table(new string[] {
-                        "Field",
-                        "Data"});
-            table196.AddRow(new string[] {
-                        "Lab Field 1 - NEUTROPHILS - rr = T ; rmc = T",
-                        "6"});
-#line 1004
- testRunner.When("I enter data in CRF and save", ((string)(null)), table196);
-#line hidden
-            TechTalk.SpecFlow.Table table197 = new TechTalk.SpecFlow.Table(new string[] {
-                        "Field",
-                        "Query Message",
-                        "Answered",
-                        "Closed"});
-            table197.AddRow(new string[] {
-                        "Lab Field 2 - WBC - rr = T ; rmc = T",
-                        "Lab Field 2 must be greater than Lab Field 1. Please verify.",
-                        "false",
-                        "false"});
-#line 1007
- testRunner.And("I verify Query is displayed", ((string)(null)), table197);
-#line 1010
+#line 1053
  testRunner.And("I take a screenshot");
 #line hidden
             this.ScenarioCleanup();
         }
         
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("@PB-US12940-07B")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("@PB_US12940_07B")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Query Refiring Logic5")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.IgnoreAttribute()]
         public virtual void PB_US12940_07B()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("@PB-US12940-07B", new string[] {
-                        "PB-US12940-07B",
-                        "ignore"});
-#line 1015
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("@PB_US12940_07B", new string[] {
+                        "release_564_Patch11",
+                        "PB_US12940_07B",
+                        "ignore",
+                        "Validation"});
+#line 1060
 this.ScenarioSetup(scenarioInfo);
 #line 12
 this.FeatureBackground();
 #line hidden
-            TechTalk.SpecFlow.Table table198 = new TechTalk.SpecFlow.Table(new string[] {
+            TechTalk.SpecFlow.Table table196 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field",
                         "Data"});
-            table198.AddRow(new string[] {
+            table196.AddRow(new string[] {
                         "Subject Number",
                         "{RndNum<num1>(5)}"});
-            table198.AddRow(new string[] {
+            table196.AddRow(new string[] {
                         "Subject Initials",
                         "SUB"});
-            table198.AddRow(new string[] {
+            table196.AddRow(new string[] {
                         "Subject ID",
                         "SUB {Var(num1)}"});
-#line 1018
- testRunner.And("I create a Subject", ((string)(null)), table198);
-#line 1023
+#line 1063
+ testRunner.And("I create a Subject", ((string)(null)), table196);
+#line 1068
  testRunner.And("I select Form \"Lab Form 8\"");
+#line hidden
+            TechTalk.SpecFlow.Table table197 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Data"});
+            table197.AddRow(new string[] {
+                        "Lab Field 3 - NEUTROPHILS - rr = F ; rmc = F",
+                        "5"});
+            table197.AddRow(new string[] {
+                        "Lab Field 4 - WBC - rr = F ; rmc = F",
+                        "3"});
+#line 1069
+ testRunner.And("I enter data in CRF and save", ((string)(null)), table197);
+#line hidden
+            TechTalk.SpecFlow.Table table198 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Query Message",
+                        "Answered",
+                        "Closed"});
+            table198.AddRow(new string[] {
+                        "Lab Field 4 - WBC - rr = F ; rmc = F",
+                        "Lab Field 4 must be greater than Lab Field 3. Please verify.",
+                        "false",
+                        "false"});
+#line 1073
+ testRunner.And("I verify Query is displayed", ((string)(null)), table198);
+#line 1076
+ testRunner.And("I take a screenshot");
 #line hidden
             TechTalk.SpecFlow.Table table199 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field",
                         "Data"});
             table199.AddRow(new string[] {
                         "Lab Field 3 - NEUTROPHILS - rr = F ; rmc = F",
-                        "5"});
-            table199.AddRow(new string[] {
-                        "Lab Field 4 - WBC - rr = F ; rmc = F",
-                        "3"});
-#line 1024
- testRunner.And("I enter data in CRF and save", ((string)(null)), table199);
+                        "6"});
+#line 1077
+ testRunner.When("I enter data in CRF and save", ((string)(null)), table199);
 #line hidden
             TechTalk.SpecFlow.Table table200 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field",
@@ -3278,98 +3326,100 @@ this.FeatureBackground();
                         "Lab Field 4 must be greater than Lab Field 3. Please verify.",
                         "false",
                         "false"});
-#line 1028
- testRunner.And("I verify Query is displayed", ((string)(null)), table200);
-#line 1031
- testRunner.And("I take a screenshot");
-#line hidden
-            TechTalk.SpecFlow.Table table201 = new TechTalk.SpecFlow.Table(new string[] {
-                        "Field",
-                        "Data"});
-            table201.AddRow(new string[] {
-                        "Lab Field 3 - NEUTROPHILS - rr = F ; rmc = F",
-                        "6"});
-#line 1032
- testRunner.When("I enter data in CRF and save", ((string)(null)), table201);
-#line hidden
-            TechTalk.SpecFlow.Table table202 = new TechTalk.SpecFlow.Table(new string[] {
-                        "Field",
-                        "Query Message",
-                        "Answered",
-                        "Closed"});
-            table202.AddRow(new string[] {
-                        "Lab Field 4 - WBC - rr = F ; rmc = F",
-                        "Lab Field 4 must be greater than Lab Field 3. Please verify.",
-                        "false",
-                        "false"});
-#line 1036
-    testRunner.And("I verify Query is displayed", ((string)(null)), table202);
-#line 1039
+#line 1081
+    testRunner.And("I verify Query is displayed", ((string)(null)), table200);
+#line 1084
  testRunner.And("I take a screenshot");
 #line hidden
             this.ScenarioCleanup();
         }
         
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("@PB-US12940-07C")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("@PB_US12940_07C")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Query Refiring Logic5")]
         public virtual void PB_US12940_07C()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("@PB-US12940-07C", new string[] {
-                        "PB-US12940-07C"});
-#line 1042
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("@PB_US12940_07C", new string[] {
+                        "release_564_Patch11",
+                        "PB_US12940_07C",
+                        "Validation"});
+#line 1089
 this.ScenarioSetup(scenarioInfo);
 #line 12
 this.FeatureBackground();
 #line hidden
-            TechTalk.SpecFlow.Table table203 = new TechTalk.SpecFlow.Table(new string[] {
+            TechTalk.SpecFlow.Table table201 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field",
                         "Data"});
-            table203.AddRow(new string[] {
+            table201.AddRow(new string[] {
                         "Subject Number",
                         "{RndNum<num1>(5)}"});
-            table203.AddRow(new string[] {
+            table201.AddRow(new string[] {
                         "Subject Initials",
                         "SUB"});
-            table203.AddRow(new string[] {
+            table201.AddRow(new string[] {
                         "Subject ID",
                         "SUB {Var(num1)}"});
-#line 1045
- testRunner.And("I create a Subject", ((string)(null)), table203);
-#line 1050
+#line 1092
+ testRunner.And("I create a Subject", ((string)(null)), table201);
+#line 1097
  testRunner.And("I select Form \"Lab Form 8\"");
 #line hidden
-            TechTalk.SpecFlow.Table table204 = new TechTalk.SpecFlow.Table(new string[] {
+            TechTalk.SpecFlow.Table table202 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field",
                         "Data"});
-            table204.AddRow(new string[] {
+            table202.AddRow(new string[] {
                         "Lab Field 5 - NEUTROPHILS - rr = T ; rmc = F",
                         "5"});
-            table204.AddRow(new string[] {
+            table202.AddRow(new string[] {
                         "Lab Field 6 - WBC - rr = T ; rmc = F",
                         "3"});
-#line 1051
- testRunner.And("I enter data in CRF and save", ((string)(null)), table204);
+#line 1098
+ testRunner.And("I enter data in CRF and save", ((string)(null)), table202);
 #line hidden
-            TechTalk.SpecFlow.Table table205 = new TechTalk.SpecFlow.Table(new string[] {
+            TechTalk.SpecFlow.Table table203 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field",
                         "Query Message",
                         "Answered",
                         "Closed"});
-            table205.AddRow(new string[] {
+            table203.AddRow(new string[] {
                         "Lab Field 6 - WBC - rr = T ; rmc = F",
                         "Lab Field 6 must be greater than Lab Field 5. Please verify.",
                         "false",
                         "false"});
-#line 1055
- testRunner.And("I verify Query is displayed", ((string)(null)), table205);
-#line 1058
+#line 1102
+ testRunner.And("I verify Query is displayed", ((string)(null)), table203);
+#line 1105
  testRunner.And("I take a screenshot");
-#line 1059
+#line 1106
  testRunner.And("I answer the Query \"Lab Field 6 must be greater than Lab Field 5. Please verify.\"" +
                     " on Field \"Lab Field 6 - WBC - rr = T ; rmc = F\" with \"Data will be changed.\"");
-#line 1060
+#line 1107
  testRunner.And("I save the CRF page");
+#line hidden
+            TechTalk.SpecFlow.Table table204 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Query Message",
+                        "Answered",
+                        "Closed"});
+            table204.AddRow(new string[] {
+                        "Lab Field 6 - WBC - rr = T ; rmc = F",
+                        "Lab Field 6 must be greater than Lab Field 5. Please verify.",
+                        "true",
+                        "true"});
+#line 1108
+    testRunner.And("I verify Query is not displayed", ((string)(null)), table204);
+#line 1111
+ testRunner.And("I take a screenshot");
+#line hidden
+            TechTalk.SpecFlow.Table table205 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Data"});
+            table205.AddRow(new string[] {
+                        "Lab Field 5 - NEUTROPHILS - rr = T ; rmc = F",
+                        "6"});
+#line 1112
+ testRunner.When("I enter data in CRF and save", ((string)(null)), table205);
 #line hidden
             TechTalk.SpecFlow.Table table206 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field",
@@ -3379,82 +3429,84 @@ this.FeatureBackground();
             table206.AddRow(new string[] {
                         "Lab Field 6 - WBC - rr = T ; rmc = F",
                         "Lab Field 6 must be greater than Lab Field 5. Please verify.",
-                        "true",
-                        "true"});
-#line 1061
-    testRunner.And("I verify Query is not displayed", ((string)(null)), table206);
-#line 1064
- testRunner.And("I take a screenshot");
-#line hidden
-            TechTalk.SpecFlow.Table table207 = new TechTalk.SpecFlow.Table(new string[] {
-                        "Field",
-                        "Data"});
-            table207.AddRow(new string[] {
-                        "Lab Field 5 - NEUTROPHILS - rr = T ; rmc = F",
-                        "6"});
-#line 1065
- testRunner.When("I enter data in CRF and save", ((string)(null)), table207);
-#line hidden
-            TechTalk.SpecFlow.Table table208 = new TechTalk.SpecFlow.Table(new string[] {
-                        "Field",
-                        "Query Message",
-                        "Answered",
-                        "Closed"});
-            table208.AddRow(new string[] {
-                        "Lab Field 6 - WBC - rr = T ; rmc = F",
-                        "Lab Field 6 must be greater than Lab Field 5. Please verify.",
                         "false",
                         "false"});
-#line 1068
- testRunner.Then("I verify Query is displayed", ((string)(null)), table208);
-#line 1071
+#line 1115
+ testRunner.Then("I verify Query is displayed", ((string)(null)), table206);
+#line 1118
  testRunner.And("I take a screenshot");
 #line hidden
             this.ScenarioCleanup();
         }
         
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("@PB-US12940-07D")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("@PB_US12940_07D")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Query Refiring Logic5")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.IgnoreAttribute()]
         public virtual void PB_US12940_07D()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("@PB-US12940-07D", new string[] {
-                        "PB-US12940-07D",
-                        "ignore"});
-#line 1076
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("@PB_US12940_07D", new string[] {
+                        "release_564_Patch11",
+                        "PB_US12940_07D",
+                        "ignore",
+                        "Validation"});
+#line 1125
 this.ScenarioSetup(scenarioInfo);
 #line 12
 this.FeatureBackground();
 #line hidden
-            TechTalk.SpecFlow.Table table209 = new TechTalk.SpecFlow.Table(new string[] {
+            TechTalk.SpecFlow.Table table207 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field",
                         "Data"});
-            table209.AddRow(new string[] {
+            table207.AddRow(new string[] {
                         "Subject Number",
                         "{RndNum<num1>(5)}"});
-            table209.AddRow(new string[] {
+            table207.AddRow(new string[] {
                         "Subject Initials",
                         "SUB"});
-            table209.AddRow(new string[] {
+            table207.AddRow(new string[] {
                         "Subject ID",
                         "SUB {Var(num1)}"});
-#line 1079
- testRunner.And("I create a Subject", ((string)(null)), table209);
-#line 1084
+#line 1128
+ testRunner.And("I create a Subject", ((string)(null)), table207);
+#line 1133
  testRunner.And("I select Form \"Lab Form 8\"");
+#line hidden
+            TechTalk.SpecFlow.Table table208 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Data"});
+            table208.AddRow(new string[] {
+                        "Lab Field 7 - NEUTROPHILS - rr = F ; rmc = T",
+                        "5"});
+            table208.AddRow(new string[] {
+                        "Lab Field 8 - WBC - rr = F ; rmc = T",
+                        "3"});
+#line 1134
+ testRunner.And("I enter data in CRF and save", ((string)(null)), table208);
+#line hidden
+            TechTalk.SpecFlow.Table table209 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Query Message",
+                        "Answered",
+                        "Closed"});
+            table209.AddRow(new string[] {
+                        "Lab Field 8 - WBC - rr = F ; rmc = T",
+                        "Lab Field 8 must be greater than Lab Field 7. Please verify.",
+                        "false",
+                        "false"});
+#line 1138
+ testRunner.And("I verify Query is displayed", ((string)(null)), table209);
+#line 1141
+ testRunner.And("I take a screenshot");
 #line hidden
             TechTalk.SpecFlow.Table table210 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field",
                         "Data"});
             table210.AddRow(new string[] {
                         "Lab Field 7 - NEUTROPHILS - rr = F ; rmc = T",
-                        "5"});
-            table210.AddRow(new string[] {
-                        "Lab Field 8 - WBC - rr = F ; rmc = T",
-                        "3"});
-#line 1085
- testRunner.And("I enter data in CRF and save", ((string)(null)), table210);
+                        "6"});
+#line 1142
+ testRunner.When("I enter data in CRF and save", ((string)(null)), table210);
 #line hidden
             TechTalk.SpecFlow.Table table211 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field",
@@ -3464,80 +3516,98 @@ this.FeatureBackground();
             table211.AddRow(new string[] {
                         "Lab Field 8 - WBC - rr = F ; rmc = T",
                         "Lab Field 8 must be greater than Lab Field 7. Please verify.",
-                        "false",
-                        "false"});
-#line 1089
- testRunner.And("I verify Query is displayed", ((string)(null)), table211);
-#line 1092
- testRunner.And("I take a screenshot");
-#line hidden
-            TechTalk.SpecFlow.Table table212 = new TechTalk.SpecFlow.Table(new string[] {
-                        "Field",
-                        "Data"});
-            table212.AddRow(new string[] {
-                        "Lab Field 7 - NEUTROPHILS - rr = F ; rmc = T",
-                        "6"});
-#line 1093
- testRunner.When("I enter data in CRF and save", ((string)(null)), table212);
-#line hidden
-            TechTalk.SpecFlow.Table table213 = new TechTalk.SpecFlow.Table(new string[] {
-                        "Field",
-                        "Query Message",
-                        "Answered",
-                        "Closed"});
-            table213.AddRow(new string[] {
-                        "Lab Field 8 - WBC - rr = F ; rmc = T",
-                        "Lab Field 8 must be greater than Lab Field 7. Please verify.",
                         "true",
                         "true"});
-#line 1097
-    testRunner.Then("I verify Query is not displayed", ((string)(null)), table213);
-#line 1100
+#line 1146
+    testRunner.Then("I verify Query is not displayed", ((string)(null)), table211);
+#line 1149
  testRunner.And("I take a screenshot");
 #line hidden
             this.ScenarioCleanup();
         }
         
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("@PB-US12940-08A")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("@PB_US12940_08A")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Query Refiring Logic5")]
         public virtual void PB_US12940_08A()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("@PB-US12940-08A", new string[] {
-                        "PB-US12940-08A"});
-#line 1103
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("@PB_US12940_08A", new string[] {
+                        "release_564_Patch11",
+                        "PB_US12940_08A",
+                        "Validation"});
+#line 1154
 this.ScenarioSetup(scenarioInfo);
 #line 12
 this.FeatureBackground();
 #line hidden
-            TechTalk.SpecFlow.Table table214 = new TechTalk.SpecFlow.Table(new string[] {
+            TechTalk.SpecFlow.Table table212 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field",
                         "Data"});
-            table214.AddRow(new string[] {
+            table212.AddRow(new string[] {
                         "Subject Number",
                         "{RndNum<num1>(5)}"});
-            table214.AddRow(new string[] {
+            table212.AddRow(new string[] {
                         "Subject Initials",
                         "SUB"});
-            table214.AddRow(new string[] {
+            table212.AddRow(new string[] {
                         "Subject ID",
                         "SUB {Var(num1)}"});
-#line 1106
-    testRunner.And("I create a Subject", ((string)(null)), table214);
-#line 1111
+#line 1157
+    testRunner.And("I create a Subject", ((string)(null)), table212);
+#line 1162
  testRunner.And("I select Form \"Lab Form 8\"");
+#line hidden
+            TechTalk.SpecFlow.Table table213 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Data"});
+            table213.AddRow(new string[] {
+                        "Lab Field 1 - NEUTROPHILS - rr = T ; rmc = T",
+                        "5"});
+            table213.AddRow(new string[] {
+                        "Lab Field 2 - WBC - rr = T ; rmc = T",
+                        "3"});
+#line 1163
+ testRunner.And("I enter data in CRF and save", ((string)(null)), table213);
+#line hidden
+            TechTalk.SpecFlow.Table table214 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Query Message",
+                        "Answered",
+                        "Closed"});
+            table214.AddRow(new string[] {
+                        "Lab Field 2 - WBC - rr = T ; rmc = T",
+                        "Lab Field 2 must be greater than Lab Field 1. Please verify.",
+                        "false",
+                        "false"});
+#line 1167
+ testRunner.And("I verify Query is displayed", ((string)(null)), table214);
+#line 1170
+    testRunner.And("I take a screenshot");
+#line 1171
+ testRunner.And("I answer the Query \"Lab Field 2 must be greater than Lab Field 1. Please verify.\"" +
+                    " on Field \"Lab Field 2 - WBC - rr = T ; rmc = T\" with \"Data will be changed.\"");
+#line 1172
+ testRunner.And("I save the CRF page");
+#line 1173
+ testRunner.And("I take a screenshot");
+#line 1174
+ testRunner.And("I close the only Query on Field \"Lab Field 2 - WBC - rr = T ; rmc = T\"");
+#line 1175
+ testRunner.And("I save the CRF page");
+#line 1176
+ testRunner.And("I verify closed Query with message \"Lab Field 2 must be greater than Lab Field 1." +
+                    " Please verify.\" is displayed on Field \"Lab Field 2 - WBC - rr = T ; rmc = T\"");
+#line 1177
+ testRunner.And("I take a screenshot");
 #line hidden
             TechTalk.SpecFlow.Table table215 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field",
                         "Data"});
             table215.AddRow(new string[] {
-                        "Lab Field 1 - NEUTROPHILS - rr = T ; rmc = T",
-                        "5"});
-            table215.AddRow(new string[] {
                         "Lab Field 2 - WBC - rr = T ; rmc = T",
-                        "3"});
-#line 1112
- testRunner.And("I enter data in CRF and save", ((string)(null)), table215);
+                        "2"});
+#line 1178
+ testRunner.When("I enter data in CRF and save", ((string)(null)), table215);
 #line hidden
             TechTalk.SpecFlow.Table table216 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field",
@@ -3549,94 +3619,80 @@ this.FeatureBackground();
                         "Lab Field 2 must be greater than Lab Field 1. Please verify.",
                         "false",
                         "false"});
-#line 1116
+#line 1181
  testRunner.And("I verify Query is displayed", ((string)(null)), table216);
-#line 1119
-    testRunner.And("I take a screenshot");
-#line 1120
- testRunner.And("I answer the Query \"Lab Field 2 must be greater than Lab Field 1. Please verify.\"" +
-                    " on Field \"Lab Field 2 - WBC - rr = T ; rmc = T\" with \"Data will be changed.\"");
-#line 1121
- testRunner.And("I save the CRF page");
-#line 1122
- testRunner.And("I take a screenshot");
-#line 1123
- testRunner.And("I close the only Query on Field \"Lab Field 2 - WBC - rr = T ; rmc = T\"");
-#line 1124
- testRunner.And("I save the CRF page");
-#line 1125
- testRunner.And("I verify closed Query with message \"Lab Field 2 must be greater than Lab Field 1." +
-                    " Please verify.\" is displayed on Field \"Lab Field 2 - WBC - rr = T ; rmc = T\"");
-#line 1126
- testRunner.And("I take a screenshot");
-#line hidden
-            TechTalk.SpecFlow.Table table217 = new TechTalk.SpecFlow.Table(new string[] {
-                        "Field",
-                        "Data"});
-            table217.AddRow(new string[] {
-                        "Lab Field 2 - WBC - rr = T ; rmc = T",
-                        "2"});
-#line 1127
- testRunner.When("I enter data in CRF and save", ((string)(null)), table217);
-#line hidden
-            TechTalk.SpecFlow.Table table218 = new TechTalk.SpecFlow.Table(new string[] {
-                        "Field",
-                        "Query Message",
-                        "Answered",
-                        "Closed"});
-            table218.AddRow(new string[] {
-                        "Lab Field 2 - WBC - rr = T ; rmc = T",
-                        "Lab Field 2 must be greater than Lab Field 1. Please verify.",
-                        "false",
-                        "false"});
-#line 1130
- testRunner.And("I verify Query is displayed", ((string)(null)), table218);
-#line 1133
+#line 1184
  testRunner.And("I take a screenshot");
 #line hidden
             this.ScenarioCleanup();
         }
         
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("@PB-US12940-08B")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("@PB_US12940_08B")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Query Refiring Logic5")]
         public virtual void PB_US12940_08B()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("@PB-US12940-08B", new string[] {
-                        "PB-US12940-08B"});
-#line 1136
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("@PB_US12940_08B", new string[] {
+                        "release_564_Patch11",
+                        "PB_US12940_08B",
+                        "Validation"});
+#line 1189
 this.ScenarioSetup(scenarioInfo);
 #line 12
 this.FeatureBackground();
 #line hidden
-            TechTalk.SpecFlow.Table table219 = new TechTalk.SpecFlow.Table(new string[] {
+            TechTalk.SpecFlow.Table table217 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field",
                         "Data"});
-            table219.AddRow(new string[] {
+            table217.AddRow(new string[] {
                         "Subject Number",
                         "{RndNum<num1>(5)}"});
-            table219.AddRow(new string[] {
+            table217.AddRow(new string[] {
                         "Subject Initials",
                         "SUB"});
-            table219.AddRow(new string[] {
+            table217.AddRow(new string[] {
                         "Subject ID",
                         "SUB {Var(num1)}"});
-#line 1139
-    testRunner.And("I create a Subject", ((string)(null)), table219);
-#line 1144
+#line 1192
+    testRunner.And("I create a Subject", ((string)(null)), table217);
+#line 1197
  testRunner.And("I select Form \"Lab Form 8\"");
+#line hidden
+            TechTalk.SpecFlow.Table table218 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Data"});
+            table218.AddRow(new string[] {
+                        "Lab Field 3 - NEUTROPHILS - rr = F ; rmc = F",
+                        "5"});
+            table218.AddRow(new string[] {
+                        "Lab Field 4 - WBC - rr = F ; rmc = F",
+                        "3"});
+#line 1198
+ testRunner.And("I enter data in CRF and save", ((string)(null)), table218);
+#line hidden
+            TechTalk.SpecFlow.Table table219 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Query Message",
+                        "Answered",
+                        "Closed"});
+            table219.AddRow(new string[] {
+                        "Lab Field 4 - WBC - rr = F ; rmc = F",
+                        "Lab Field 4 must be greater than Lab Field 3. Please verify.",
+                        "false",
+                        "false"});
+#line 1202
+ testRunner.And("I verify Query is displayed", ((string)(null)), table219);
+#line 1205
+ testRunner.And("I take a screenshot");
 #line hidden
             TechTalk.SpecFlow.Table table220 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field",
                         "Data"});
             table220.AddRow(new string[] {
-                        "Lab Field 3 - NEUTROPHILS - rr = F ; rmc = F",
-                        "5"});
-            table220.AddRow(new string[] {
                         "Lab Field 4 - WBC - rr = F ; rmc = F",
-                        "3"});
-#line 1145
- testRunner.And("I enter data in CRF and save", ((string)(null)), table220);
+                        "2"});
+#line 1206
+ testRunner.When("I enter data in CRF and save", ((string)(null)), table220);
 #line hidden
             TechTalk.SpecFlow.Table table221 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field",
@@ -3648,32 +3704,56 @@ this.FeatureBackground();
                         "Lab Field 4 must be greater than Lab Field 3. Please verify.",
                         "false",
                         "false"});
-#line 1149
+#line 1209
  testRunner.And("I verify Query is displayed", ((string)(null)), table221);
-#line 1152
+#line 1212
  testRunner.And("I take a screenshot");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("@PB_US12940_08C")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Query Refiring Logic5")]
+        public virtual void PB_US12940_08C()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("@PB_US12940_08C", new string[] {
+                        "release_564_Patch11",
+                        "PB_US12940_08C",
+                        "Validation"});
+#line 1217
+this.ScenarioSetup(scenarioInfo);
+#line 12
+this.FeatureBackground();
 #line hidden
             TechTalk.SpecFlow.Table table222 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field",
                         "Data"});
             table222.AddRow(new string[] {
-                        "Lab Field 4 - WBC - rr = F ; rmc = F",
-                        "2"});
-#line 1153
- testRunner.When("I enter data in CRF and save", ((string)(null)), table222);
+                        "Subject Number",
+                        "{RndNum<num1>(5)}"});
+            table222.AddRow(new string[] {
+                        "Subject Initials",
+                        "SUB"});
+            table222.AddRow(new string[] {
+                        "Subject ID",
+                        "SUB {Var(num1)}"});
+#line 1220
+    testRunner.And("I create a Subject", ((string)(null)), table222);
+#line 1225
+ testRunner.And("I select Form \"Lab Form 8\"");
 #line hidden
             TechTalk.SpecFlow.Table table223 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field",
-                        "Query Message",
-                        "Answered",
-                        "Closed"});
+                        "Data"});
             table223.AddRow(new string[] {
-                        "Lab Field 4 - WBC - rr = F ; rmc = F",
-                        "Lab Field 4 must be greater than Lab Field 3. Please verify.",
-                        "false",
-                        "true"});
-#line 1156
- testRunner.And("I verify Query is not displayed", ((string)(null)), table223);
+                        "Lab Field 5 - NEUTROPHILS - rr = T ; rmc = F",
+                        "5"});
+            table223.AddRow(new string[] {
+                        "Lab Field 6 - WBC - rr = T ; rmc = F",
+                        "3"});
+#line 1226
+ testRunner.And("I enter data in CRF and save", ((string)(null)), table223);
 #line hidden
             TechTalk.SpecFlow.Table table224 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field",
@@ -3681,58 +3761,43 @@ this.FeatureBackground();
                         "Answered",
                         "Closed"});
             table224.AddRow(new string[] {
-                        "Lab Field 4 - WBC - rr = F ; rmc = F",
-                        "Lab Field 4 must be greater than Lab Field 3. Please verify.",
+                        "Lab Field 6 - WBC - rr = T ; rmc = F",
+                        "Lab Field 6 must be greater than Lab Field 5. Please verify.",
                         "false",
                         "false"});
-#line 1159
+#line 1230
  testRunner.And("I verify Query is displayed", ((string)(null)), table224);
-#line 1162
+#line 1233
  testRunner.And("I take a screenshot");
-#line hidden
-            this.ScenarioCleanup();
-        }
-        
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("@PB-US12940-08C")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Query Refiring Logic5")]
-        public virtual void PB_US12940_08C()
-        {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("@PB-US12940-08C", new string[] {
-                        "PB-US12940-08C"});
-#line 1165
-this.ScenarioSetup(scenarioInfo);
-#line 12
-this.FeatureBackground();
+#line 1234
+ testRunner.And("I answer the Query \"Lab Field 6 must be greater than Lab Field 5. Please verify.\"" +
+                    " on Field \"Lab Field 6 - WBC - rr = T ; rmc = F\" with \"Data will be changed.\"");
+#line 1235
+ testRunner.And("I save the CRF page");
 #line hidden
             TechTalk.SpecFlow.Table table225 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field",
-                        "Data"});
+                        "Query Message",
+                        "Answered",
+                        "Closed"});
             table225.AddRow(new string[] {
-                        "Subject Number",
-                        "{RndNum<num1>(5)}"});
-            table225.AddRow(new string[] {
-                        "Subject Initials",
-                        "SUB"});
-            table225.AddRow(new string[] {
-                        "Subject ID",
-                        "SUB {Var(num1)}"});
-#line 1168
-    testRunner.And("I create a Subject", ((string)(null)), table225);
-#line 1173
- testRunner.And("I select Form \"Lab Form 8\"");
+                        "Lab Field 6 - WBC - rr = T ; rmc = F",
+                        "Lab Field 6 must be greater than Lab Field 5. Please verify.",
+                        "true",
+                        "true"});
+#line 1236
+ testRunner.And("I verify Query is not displayed", ((string)(null)), table225);
+#line 1239
+ testRunner.And("I take a screenshot");
 #line hidden
             TechTalk.SpecFlow.Table table226 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field",
                         "Data"});
             table226.AddRow(new string[] {
-                        "Lab Field 5 - NEUTROPHILS - rr = T ; rmc = F",
-                        "5"});
-            table226.AddRow(new string[] {
                         "Lab Field 6 - WBC - rr = T ; rmc = F",
-                        "3"});
-#line 1174
- testRunner.And("I enter data in CRF and save", ((string)(null)), table226);
+                        "2"});
+#line 1240
+ testRunner.When("I enter data in CRF and save", ((string)(null)), table226);
 #line hidden
             TechTalk.SpecFlow.Table table227 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field",
@@ -3744,39 +3809,56 @@ this.FeatureBackground();
                         "Lab Field 6 must be greater than Lab Field 5. Please verify.",
                         "false",
                         "false"});
-#line 1178
+#line 1243
  testRunner.And("I verify Query is displayed", ((string)(null)), table227);
-#line 1181
+#line 1246
  testRunner.And("I take a screenshot");
-#line 1182
- testRunner.And("I answer the Query \"Lab Field 6 must be greater than Lab Field 5. Please verify.\"" +
-                    " on Field \"Lab Field 6 - WBC - rr = T ; rmc = F\" with \"Data will be changed.\"");
-#line 1183
- testRunner.And("I save the CRF page");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("@PB_US12940_08D")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Query Refiring Logic5")]
+        public virtual void PB_US12940_08D()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("@PB_US12940_08D", new string[] {
+                        "release_564_Patch11",
+                        "PB_US12940_08D",
+                        "Validation"});
+#line 1251
+this.ScenarioSetup(scenarioInfo);
+#line 12
+this.FeatureBackground();
 #line hidden
             TechTalk.SpecFlow.Table table228 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field",
-                        "Query Message",
-                        "Answered",
-                        "Closed"});
+                        "Data"});
             table228.AddRow(new string[] {
-                        "Lab Field 6 - WBC - rr = T ; rmc = F",
-                        "Lab Field 6 must be greater than Lab Field 5. Please verify.",
-                        "true",
-                        "true"});
-#line 1184
- testRunner.And("I verify Query is not displayed", ((string)(null)), table228);
-#line 1187
- testRunner.And("I take a screenshot");
+                        "Subject Number",
+                        "{RndNum<num1>(5)}"});
+            table228.AddRow(new string[] {
+                        "Subject Initials",
+                        "SUB"});
+            table228.AddRow(new string[] {
+                        "Subject ID",
+                        "SUB {Var(num1)}"});
+#line 1254
+ testRunner.And("I create a Subject", ((string)(null)), table228);
+#line 1259
+ testRunner.And("I select Form \"Lab Form 8\"");
 #line hidden
             TechTalk.SpecFlow.Table table229 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field",
                         "Data"});
             table229.AddRow(new string[] {
-                        "Lab Field 6 - WBC - rr = T ; rmc = F",
-                        "2"});
-#line 1188
- testRunner.When("I enter data in CRF and save", ((string)(null)), table229);
+                        "Lab Field 7 - NEUTROPHILS - rr = F ; rmc = T",
+                        "5"});
+            table229.AddRow(new string[] {
+                        "Lab Field 8 - WBC - rr = F ; rmc = T",
+                        "3"});
+#line 1260
+ testRunner.And("I enter data in CRF and save", ((string)(null)), table229);
 #line hidden
             TechTalk.SpecFlow.Table table230 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field",
@@ -3784,82 +3866,84 @@ this.FeatureBackground();
                         "Answered",
                         "Closed"});
             table230.AddRow(new string[] {
-                        "Lab Field 6 - WBC - rr = T ; rmc = F",
-                        "Lab Field 6 must be greater than Lab Field 5. Please verify.",
+                        "Lab Field 8 - WBC - rr = F ; rmc = T",
+                        "Lab Field 8 must be greater than Lab Field 7. Please verify.",
                         "false",
                         "false"});
-#line 1191
+#line 1264
  testRunner.And("I verify Query is displayed", ((string)(null)), table230);
-#line 1194
+#line 1267
+ testRunner.And("I take a screenshot");
+#line hidden
+            TechTalk.SpecFlow.Table table231 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Data"});
+            table231.AddRow(new string[] {
+                        "Lab Field 8 - WBC - rr = F ; rmc = T",
+                        "2"});
+#line 1268
+ testRunner.When("I enter data in CRF and save", ((string)(null)), table231);
+#line hidden
+            TechTalk.SpecFlow.Table table232 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Query Message",
+                        "Answered",
+                        "Closed"});
+            table232.AddRow(new string[] {
+                        "Lab Field 8 - WBC - rr = F ; rmc = T",
+                        "Lab Field 8 must be greater than Lab Field 7. Please verify.",
+                        "true",
+                        "false"});
+#line 1271
+ testRunner.And("I verify Query is displayed", ((string)(null)), table232);
+#line 1274
  testRunner.And("I take a screenshot");
 #line hidden
             this.ScenarioCleanup();
         }
         
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("@PB-US12940-08D")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("@PB_US12940_09A")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Query Refiring Logic5")]
-        public virtual void PB_US12940_08D()
+        public virtual void PB_US12940_09A()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("@PB-US12940-08D", new string[] {
-                        "PB-US12940-08D"});
-#line 1197
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("@PB_US12940_09A", new string[] {
+                        "release_564_Patch11",
+                        "PB_US12940_09A",
+                        "Validation"});
+#line 1279
 this.ScenarioSetup(scenarioInfo);
 #line 12
 this.FeatureBackground();
 #line hidden
-            TechTalk.SpecFlow.Table table231 = new TechTalk.SpecFlow.Table(new string[] {
-                        "Field",
-                        "Data"});
-            table231.AddRow(new string[] {
-                        "Subject Number",
-                        "{RndNum<num1>(5)}"});
-            table231.AddRow(new string[] {
-                        "Subject Initials",
-                        "SUB"});
-            table231.AddRow(new string[] {
-                        "Subject ID",
-                        "SUB {Var(num1)}"});
-#line 1200
- testRunner.And("I create a Subject", ((string)(null)), table231);
-#line 1205
- testRunner.And("I select Form \"Lab Form 8\"");
-#line hidden
-            TechTalk.SpecFlow.Table table232 = new TechTalk.SpecFlow.Table(new string[] {
-                        "Field",
-                        "Data"});
-            table232.AddRow(new string[] {
-                        "Lab Field 7 - NEUTROPHILS - rr = F ; rmc = T",
-                        "5"});
-            table232.AddRow(new string[] {
-                        "Lab Field 8 - WBC - rr = F ; rmc = T",
-                        "3"});
-#line 1206
- testRunner.And("I enter data in CRF and save", ((string)(null)), table232);
-#line hidden
             TechTalk.SpecFlow.Table table233 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field",
-                        "Query Message",
-                        "Answered",
-                        "Closed"});
+                        "Data"});
             table233.AddRow(new string[] {
-                        "Lab Field 8 - WBC - rr = F ; rmc = T",
-                        "Lab Field 8 must be greater than Lab Field 7. Please verify.",
-                        "false",
-                        "false"});
-#line 1210
- testRunner.And("I verify Query is displayed", ((string)(null)), table233);
-#line 1213
- testRunner.And("I take a screenshot");
+                        "Subject Number",
+                        "{RndNum<num1>(5)}"});
+            table233.AddRow(new string[] {
+                        "Subject Initials",
+                        "SUB"});
+            table233.AddRow(new string[] {
+                        "Subject ID",
+                        "SUB {Var(num1)}"});
+#line 1282
+    testRunner.And("I create a Subject", ((string)(null)), table233);
+#line 1287
+ testRunner.And("I select Form \"Lab Form 8\"");
 #line hidden
             TechTalk.SpecFlow.Table table234 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field",
                         "Data"});
             table234.AddRow(new string[] {
-                        "Lab Field 8 - WBC - rr = F ; rmc = T",
-                        "2"});
-#line 1214
- testRunner.When("I enter data in CRF and save", ((string)(null)), table234);
+                        "Lab Field 1 - NEUTROPHILS - rr = T ; rmc = T",
+                        "5"});
+            table234.AddRow(new string[] {
+                        "Lab Field 2 - WBC - rr = T ; rmc = T",
+                        "3"});
+#line 1288
+ testRunner.And("I enter data in CRF and save", ((string)(null)), table234);
 #line hidden
             TechTalk.SpecFlow.Table table235 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field",
@@ -3867,118 +3951,122 @@ this.FeatureBackground();
                         "Answered",
                         "Closed"});
             table235.AddRow(new string[] {
-                        "Lab Field 8 - WBC - rr = F ; rmc = T",
-                        "Lab Field 8 must be greater than Lab Field 7. Please verify.",
+                        "Lab Field 2 - WBC - rr = T ; rmc = T",
+                        "Lab Field 2 must be greater than Lab Field 1. Please verify.",
+                        "false",
+                        "false"});
+#line 1292
+ testRunner.And("I verify Query is displayed", ((string)(null)), table235);
+#line 1295
+ testRunner.And("I take a screenshot");
+#line 1296
+ testRunner.And("I answer the Query \"Lab Field 2 must be greater than Lab Field 1. Please verify.\"" +
+                    " on Field \"Lab Field 2 - WBC - rr = T ; rmc = T\" with \"Data will be changed.\"");
+#line hidden
+            TechTalk.SpecFlow.Table table236 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Data"});
+            table236.AddRow(new string[] {
+                        "Lab Field 1 - NEUTROPHILS - rr = T ; rmc = T",
+                        "7"});
+#line 1297
+ testRunner.And("I enter data in CRF and save", ((string)(null)), table236);
+#line hidden
+            TechTalk.SpecFlow.Table table237 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Query Message",
+                        "Answered",
+                        "Closed"});
+            table237.AddRow(new string[] {
+                        "Lab Field 2 - WBC - rr = T ; rmc = T",
+                        "Lab Field 2 must be greater than Lab Field 1. Please verify.",
                         "true",
                         "false"});
-#line 1217
- testRunner.And("I verify Query is displayed", ((string)(null)), table235);
-#line 1220
+#line 1300
+ testRunner.And("I verify Query is displayed", ((string)(null)), table237);
+#line 1303
+ testRunner.And("I take a screenshot");
+#line 1304
+ testRunner.And("I close the only Query on Field \"Lab Field 2 - WBC - rr = T ; rmc = T\"");
+#line 1305
+ testRunner.And("I save the CRF page");
+#line 1306
+ testRunner.And("I verify closed Query with message \"Lab Field 2 must be greater than Lab Field 1." +
+                    " Please verify.\" is displayed on Field \"Lab Field 2 - WBC - rr = T ; rmc = T\"");
+#line 1307
+ testRunner.And("I take a screenshot");
+#line hidden
+            TechTalk.SpecFlow.Table table238 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Data"});
+            table238.AddRow(new string[] {
+                        "Lab Field 1 - NEUTROPHILS - rr = T ; rmc = T",
+                        "6"});
+#line 1308
+ testRunner.When("I enter data in CRF and save", ((string)(null)), table238);
+#line hidden
+            TechTalk.SpecFlow.Table table239 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Query Message",
+                        "Answered",
+                        "Closed"});
+            table239.AddRow(new string[] {
+                        "Lab Field 2 - WBC - rr = T ; rmc = T",
+                        "Lab Field 2 must be greater than Lab Field 1. Please verify.",
+                        "false",
+                        "false"});
+#line 1311
+ testRunner.Then("I verify Query is displayed", ((string)(null)), table239);
+#line 1314
  testRunner.And("I take a screenshot");
 #line hidden
             this.ScenarioCleanup();
         }
         
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("@PB-US12940-09A")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("@PB_US12940_09B")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Query Refiring Logic5")]
-        public virtual void PB_US12940_09A()
+        [Microsoft.VisualStudio.TestTools.UnitTesting.IgnoreAttribute()]
+        public virtual void PB_US12940_09B()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("@PB-US12940-09A", new string[] {
-                        "PB-US12940-09A"});
-#line 1223
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("@PB_US12940_09B", new string[] {
+                        "release_564_Patch11",
+                        "PB_US12940_09B",
+                        "ignore",
+                        "Validation"});
+#line 1321
 this.ScenarioSetup(scenarioInfo);
 #line 12
 this.FeatureBackground();
 #line hidden
-            TechTalk.SpecFlow.Table table236 = new TechTalk.SpecFlow.Table(new string[] {
-                        "Field",
-                        "Data"});
-            table236.AddRow(new string[] {
-                        "Subject Number",
-                        "{RndNum<num1>(5)}"});
-            table236.AddRow(new string[] {
-                        "Subject Initials",
-                        "SUB"});
-            table236.AddRow(new string[] {
-                        "Subject ID",
-                        "SUB {Var(num1)}"});
-#line 1226
-    testRunner.And("I create a Subject", ((string)(null)), table236);
-#line 1231
- testRunner.And("I select Form \"Lab Form 8\"");
-#line hidden
-            TechTalk.SpecFlow.Table table237 = new TechTalk.SpecFlow.Table(new string[] {
-                        "Field",
-                        "Data"});
-            table237.AddRow(new string[] {
-                        "Lab Field 1 - NEUTROPHILS - rr = T ; rmc = T",
-                        "5"});
-            table237.AddRow(new string[] {
-                        "Lab Field 2 - WBC - rr = T ; rmc = T",
-                        "3"});
-#line 1232
- testRunner.And("I enter data in CRF and save", ((string)(null)), table237);
-#line hidden
-            TechTalk.SpecFlow.Table table238 = new TechTalk.SpecFlow.Table(new string[] {
-                        "Field",
-                        "Query Message",
-                        "Answered",
-                        "Closed"});
-            table238.AddRow(new string[] {
-                        "Lab Field 2 - WBC - rr = T ; rmc = T",
-                        "Lab Field 2 must be greater than Lab Field 1. Please verify.",
-                        "false",
-                        "false"});
-#line 1236
- testRunner.And("I verify Query is displayed", ((string)(null)), table238);
-#line 1239
- testRunner.And("I take a screenshot");
-#line 1240
- testRunner.And("I answer the Query \"Lab Field 2 must be greater than Lab Field 1. Please verify.\"" +
-                    " on Field \"Lab Field 2 - WBC - rr = T ; rmc = T\" with \"Data will be changed.\"");
-#line hidden
-            TechTalk.SpecFlow.Table table239 = new TechTalk.SpecFlow.Table(new string[] {
-                        "Field",
-                        "Data"});
-            table239.AddRow(new string[] {
-                        "Lab Field 1 - NEUTROPHILS - rr = T ; rmc = T",
-                        "7"});
-#line 1241
- testRunner.And("I enter data in CRF and save", ((string)(null)), table239);
-#line hidden
             TechTalk.SpecFlow.Table table240 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field",
-                        "Query Message",
-                        "Answered",
-                        "Closed"});
+                        "Data"});
             table240.AddRow(new string[] {
-                        "Lab Field 2 - WBC - rr = T ; rmc = T",
-                        "Lab Field 2 must be greater than Lab Field 1. Please verify.",
-                        "true",
-                        "false"});
-#line 1244
- testRunner.And("I verify Query is displayed", ((string)(null)), table240);
-#line 1247
- testRunner.And("I take a screenshot");
-#line 1248
- testRunner.And("I close the only Query on Field \"Lab Field 2 - WBC - rr = T ; rmc = T\"");
-#line 1249
- testRunner.And("I save the CRF page");
-#line 1250
- testRunner.And("I verify closed Query with message \"Lab Field 2 must be greater than Lab Field 1." +
-                    " Please verify.\" is displayed on Field \"Lab Field 2 - WBC - rr = T ; rmc = T\"");
-#line 1251
- testRunner.And("I take a screenshot");
+                        "Subject Number",
+                        "{RndNum<num1>(5)}"});
+            table240.AddRow(new string[] {
+                        "Subject Initials",
+                        "SUB"});
+            table240.AddRow(new string[] {
+                        "Subject ID",
+                        "SUB {Var(num1)}"});
+#line 1324
+    testRunner.And("I create a Subject", ((string)(null)), table240);
+#line 1329
+ testRunner.And("I select Form \"Lab Form 8\"");
 #line hidden
             TechTalk.SpecFlow.Table table241 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field",
                         "Data"});
             table241.AddRow(new string[] {
-                        "Lab Field 1 - NEUTROPHILS - rr = T ; rmc = T",
-                        "6"});
-#line 1252
- testRunner.When("I enter data in CRF and save", ((string)(null)), table241);
+                        "Lab Field 3 - NEUTROPHILS - rr = F ; rmc = F",
+                        "5"});
+            table241.AddRow(new string[] {
+                        "Lab Field 4 - WBC - rr = F ; rmc = F",
+                        "3"});
+#line 1330
+ testRunner.And("I enter data in CRF and save", ((string)(null)), table241);
 #line hidden
             TechTalk.SpecFlow.Table table242 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field",
@@ -3986,110 +4074,112 @@ this.FeatureBackground();
                         "Answered",
                         "Closed"});
             table242.AddRow(new string[] {
-                        "Lab Field 2 - WBC - rr = T ; rmc = T",
-                        "Lab Field 2 must be greater than Lab Field 1. Please verify.",
+                        "Lab Field 4 - WBC - rr = F ; rmc = F",
+                        "Lab Field 4 must be greater than Lab Field 3. Please verify.",
                         "false",
                         "false"});
-#line 1255
- testRunner.Then("I verify Query is displayed", ((string)(null)), table242);
-#line 1258
+#line 1334
+ testRunner.And("I verify Query is displayed", ((string)(null)), table242);
+#line 1337
+ testRunner.And("I take a screenshot");
+#line hidden
+            TechTalk.SpecFlow.Table table243 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Data"});
+            table243.AddRow(new string[] {
+                        "Lab Field 3 - NEUTROPHILS - rr = F ; rmc = F",
+                        "7"});
+#line 1338
+ testRunner.And("I enter data in CRF and save", ((string)(null)), table243);
+#line 1341
+ testRunner.And("I save the CRF page");
+#line hidden
+            TechTalk.SpecFlow.Table table244 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Query Message",
+                        "Answered",
+                        "Closed"});
+            table244.AddRow(new string[] {
+                        "Lab Field 4 - WBC - rr = F ; rmc = F",
+                        "Lab Field 4 must be greater than Lab Field 3. Please verify.",
+                        "false",
+                        "false"});
+#line 1343
+    testRunner.And("I verify Query is displayed", ((string)(null)), table244);
+#line 1346
+ testRunner.And("I take a screenshot");
+#line hidden
+            TechTalk.SpecFlow.Table table245 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Data"});
+            table245.AddRow(new string[] {
+                        "Lab Field 3 - NEUTROPHILS - rr = F ; rmc = F",
+                        "6"});
+#line 1347
+ testRunner.When("I enter data in CRF and save", ((string)(null)), table245);
+#line hidden
+            TechTalk.SpecFlow.Table table246 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Query Message",
+                        "Answered",
+                        "Closed"});
+            table246.AddRow(new string[] {
+                        "Lab Field 4 - WBC - rr = F ; rmc = F",
+                        "Lab Field 4 must be greater than Lab Field 3. Please verify.",
+                        "false",
+                        "false"});
+#line 1350
+ testRunner.Then("I verify Query is displayed", ((string)(null)), table246);
+#line 1353
  testRunner.And("I take a screenshot");
 #line hidden
             this.ScenarioCleanup();
         }
         
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("@PB-US12940-09B")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("@PB_US12940_09C")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Query Refiring Logic5")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.IgnoreAttribute()]
-        public virtual void PB_US12940_09B()
+        public virtual void PB_US12940_09C()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("@PB-US12940-09B", new string[] {
-                        "PB-US12940-09B",
-                        "ignore"});
-#line 1263
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("@PB_US12940_09C", new string[] {
+                        "release_564_Patch11",
+                        "PB_US12940_09C",
+                        "ignore",
+                        "Validation"});
+#line 1360
 this.ScenarioSetup(scenarioInfo);
 #line 12
 this.FeatureBackground();
 #line hidden
-            TechTalk.SpecFlow.Table table243 = new TechTalk.SpecFlow.Table(new string[] {
-                        "Field",
-                        "Data"});
-            table243.AddRow(new string[] {
-                        "Subject Number",
-                        "{RndNum<num1>(5)}"});
-            table243.AddRow(new string[] {
-                        "Subject Initials",
-                        "SUB"});
-            table243.AddRow(new string[] {
-                        "Subject ID",
-                        "SUB {Var(num1)}"});
-#line 1266
-    testRunner.And("I create a Subject", ((string)(null)), table243);
-#line 1271
- testRunner.And("I select Form \"Lab Form 8\"");
-#line hidden
-            TechTalk.SpecFlow.Table table244 = new TechTalk.SpecFlow.Table(new string[] {
-                        "Field",
-                        "Data"});
-            table244.AddRow(new string[] {
-                        "Lab Field 3 - NEUTROPHILS - rr = F ; rmc = F",
-                        "5"});
-            table244.AddRow(new string[] {
-                        "Lab Field 4 - WBC - rr = F ; rmc = F",
-                        "3"});
-#line 1272
- testRunner.And("I enter data in CRF and save", ((string)(null)), table244);
-#line hidden
-            TechTalk.SpecFlow.Table table245 = new TechTalk.SpecFlow.Table(new string[] {
-                        "Field",
-                        "Query Message",
-                        "Answered",
-                        "Closed"});
-            table245.AddRow(new string[] {
-                        "Lab Field 4 - WBC - rr = F ; rmc = F",
-                        "Lab Field 4 must be greater than Lab Field 3. Please verify.",
-                        "false",
-                        "false"});
-#line 1276
- testRunner.And("I verify Query is displayed", ((string)(null)), table245);
-#line 1279
- testRunner.And("I take a screenshot");
-#line hidden
-            TechTalk.SpecFlow.Table table246 = new TechTalk.SpecFlow.Table(new string[] {
-                        "Field",
-                        "Data"});
-            table246.AddRow(new string[] {
-                        "Lab Field 3 - NEUTROPHILS - rr = F ; rmc = F",
-                        "7"});
-#line 1280
- testRunner.And("I enter data in CRF and save", ((string)(null)), table246);
-#line 1283
- testRunner.And("I save the CRF page");
-#line hidden
             TechTalk.SpecFlow.Table table247 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field",
-                        "Query Message",
-                        "Answered",
-                        "Closed"});
+                        "Data"});
             table247.AddRow(new string[] {
-                        "Lab Field 4 - WBC - rr = F ; rmc = F",
-                        "Lab Field 4 must be greater than Lab Field 3. Please verify.",
-                        "false",
-                        "false"});
-#line 1285
-    testRunner.And("I verify Query is displayed", ((string)(null)), table247);
-#line 1288
- testRunner.And("I take a screenshot");
+                        "Subject Number",
+                        "{RndNum<num1>(5)}"});
+            table247.AddRow(new string[] {
+                        "Subject Initials",
+                        "SUB"});
+            table247.AddRow(new string[] {
+                        "Subject ID",
+                        "SUB {Var(num1)}"});
+#line 1363
+    testRunner.And("I create a Subject", ((string)(null)), table247);
+#line 1368
+ testRunner.And("I select Form \"Lab Form 8\"");
 #line hidden
             TechTalk.SpecFlow.Table table248 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field",
                         "Data"});
             table248.AddRow(new string[] {
-                        "Lab Field 3 - NEUTROPHILS - rr = F ; rmc = F",
-                        "6"});
-#line 1289
- testRunner.When("I enter data in CRF and save", ((string)(null)), table248);
+                        "Lab Field 5 - NEUTROPHILS - rr = T ; rmc = F",
+                        "5"});
+            table248.AddRow(new string[] {
+                        "Lab Field 6 - WBC - rr = T ; rmc = F",
+                        "3"});
+#line 1369
+ testRunner.And("I enter data in CRF and save", ((string)(null)), table248);
 #line hidden
             TechTalk.SpecFlow.Table table249 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field",
@@ -4097,111 +4187,113 @@ this.FeatureBackground();
                         "Answered",
                         "Closed"});
             table249.AddRow(new string[] {
-                        "Lab Field 4 - WBC - rr = F ; rmc = F",
-                        "Lab Field 4 must be greater than Lab Field 3. Please verify.",
+                        "Lab Field 6 - WBC - rr = T ; rmc = F",
+                        "Lab Field 6 must be greater than Lab Field 5. Please verify.",
                         "false",
                         "false"});
-#line 1292
- testRunner.Then("I verify Query is displayed", ((string)(null)), table249);
-#line 1295
+#line 1373
+ testRunner.And("I verify Query is displayed", ((string)(null)), table249);
+#line 1376
+ testRunner.And("I take a screenshot");
+#line 1377
+ testRunner.And("I answer the Query \"Lab Field 6 must be greater than Lab Field 5. Please verify.\"" +
+                    " on Field \"Lab Field 6 - WBC - rr = T ; rmc = F\" with \"Data will be changed.\"");
+#line hidden
+            TechTalk.SpecFlow.Table table250 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Data"});
+            table250.AddRow(new string[] {
+                        "Lab Field 5 - NEUTROPHILS - rr = T ; rmc = F",
+                        "7"});
+#line 1378
+ testRunner.And("I enter data in CRF and save", ((string)(null)), table250);
+#line hidden
+            TechTalk.SpecFlow.Table table251 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Query Message",
+                        "Answered",
+                        "Closed"});
+            table251.AddRow(new string[] {
+                        "Lab Field 6 - WBC - rr = T ; rmc = F",
+                        "Lab Field 6 must be greater than Lab Field 5. Please verify.",
+                        "true",
+                        "true"});
+#line 1382
+    testRunner.And("I verify Query is not displayed", ((string)(null)), table251);
+#line 1385
+ testRunner.And("I take a screenshot");
+#line hidden
+            TechTalk.SpecFlow.Table table252 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Data"});
+            table252.AddRow(new string[] {
+                        "Lab Field 5 - NEUTROPHILS - rr = T ; rmc = F",
+                        "6"});
+#line 1386
+ testRunner.When("I enter data in CRF and save", ((string)(null)), table252);
+#line hidden
+            TechTalk.SpecFlow.Table table253 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Query Message",
+                        "Answered",
+                        "Closed"});
+            table253.AddRow(new string[] {
+                        "Lab Field 6 - WBC - rr = T ; rmc = F",
+                        "Lab Field 6 must be greater than Lab Field 5. Please verify.",
+                        "false",
+                        "false"});
+#line 1389
+ testRunner.And("I verify Query is displayed", ((string)(null)), table253);
+#line 1392
  testRunner.And("I take a screenshot");
 #line hidden
             this.ScenarioCleanup();
         }
         
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("@PB-US12940-09C")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("@PB_US12940_09D")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Query Refiring Logic5")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.IgnoreAttribute()]
-        public virtual void PB_US12940_09C()
+        public virtual void PB_US12940_09D()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("@PB-US12940-09C", new string[] {
-                        "PB-US12940-09C",
-                        "ignore"});
-#line 1300
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("@PB_US12940_09D", new string[] {
+                        "release_564_Patch11",
+                        "PB_US12940_09D",
+                        "ignore",
+                        "Validation"});
+#line 1399
 this.ScenarioSetup(scenarioInfo);
 #line 12
 this.FeatureBackground();
 #line hidden
-            TechTalk.SpecFlow.Table table250 = new TechTalk.SpecFlow.Table(new string[] {
-                        "Field",
-                        "Data"});
-            table250.AddRow(new string[] {
-                        "Subject Number",
-                        "{RndNum<num1>(5)}"});
-            table250.AddRow(new string[] {
-                        "Subject Initials",
-                        "SUB"});
-            table250.AddRow(new string[] {
-                        "Subject ID",
-                        "SUB {Var(num1)}"});
-#line 1303
-    testRunner.And("I create a Subject", ((string)(null)), table250);
-#line 1308
- testRunner.And("I select Form \"Lab Form 8\"");
-#line hidden
-            TechTalk.SpecFlow.Table table251 = new TechTalk.SpecFlow.Table(new string[] {
-                        "Field",
-                        "Data"});
-            table251.AddRow(new string[] {
-                        "Lab Field 5 - NEUTROPHILS - rr = T ; rmc = F",
-                        "5"});
-            table251.AddRow(new string[] {
-                        "Lab Field 6 - WBC - rr = T ; rmc = F",
-                        "3"});
-#line 1309
- testRunner.And("I enter data in CRF and save", ((string)(null)), table251);
-#line hidden
-            TechTalk.SpecFlow.Table table252 = new TechTalk.SpecFlow.Table(new string[] {
-                        "Field",
-                        "Query Message",
-                        "Answered",
-                        "Closed"});
-            table252.AddRow(new string[] {
-                        "Lab Field 6 - WBC - rr = T ; rmc = F",
-                        "Lab Field 6 must be greater than Lab Field 5. Please verify.",
-                        "false",
-                        "false"});
-#line 1313
- testRunner.And("I verify Query is displayed", ((string)(null)), table252);
-#line 1316
- testRunner.And("I take a screenshot");
-#line 1317
- testRunner.And("I answer the Query \"Lab Field 6 must be greater than Lab Field 5. Please verify.\"" +
-                    " on Field \"Lab Field 6 - WBC - rr = T ; rmc = F\" with \"Data will be changed.\"");
-#line hidden
-            TechTalk.SpecFlow.Table table253 = new TechTalk.SpecFlow.Table(new string[] {
-                        "Field",
-                        "Data"});
-            table253.AddRow(new string[] {
-                        "Lab Field 5 - NEUTROPHILS - rr = T ; rmc = F",
-                        "7"});
-#line 1318
- testRunner.And("I enter data in CRF and save", ((string)(null)), table253);
-#line hidden
             TechTalk.SpecFlow.Table table254 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field",
-                        "Query Message",
-                        "Answered",
-                        "Closed"});
+                        "Data"});
             table254.AddRow(new string[] {
-                        "Lab Field 6 - WBC - rr = T ; rmc = F",
-                        "Lab Field 6 must be greater than Lab Field 5. Please verify.",
-                        "true",
-                        "true"});
-#line 1322
-    testRunner.And("I verify Query is not displayed", ((string)(null)), table254);
-#line 1325
- testRunner.And("I take a screenshot");
+                        "Subject Number",
+                        "{RndNum<num1>(5)}"});
+            table254.AddRow(new string[] {
+                        "Subject Initials",
+                        "SUB"});
+            table254.AddRow(new string[] {
+                        "Subject ID",
+                        "SUB {Var(num1)}"});
+#line 1402
+ testRunner.And("I create a Subject", ((string)(null)), table254);
+#line 1407
+ testRunner.And("I select Form \"Lab Form 8\"");
 #line hidden
             TechTalk.SpecFlow.Table table255 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field",
                         "Data"});
             table255.AddRow(new string[] {
-                        "Lab Field 5 - NEUTROPHILS - rr = T ; rmc = F",
-                        "6"});
-#line 1326
- testRunner.When("I enter data in CRF and save", ((string)(null)), table255);
+                        "Lab Field 7 - NEUTROPHILS - rr = F ; rmc = T",
+                        "5"});
+            table255.AddRow(new string[] {
+                        "Lab Field 8 - WBC - rr = F ; rmc = T",
+                        "3"});
+#line 1408
+ testRunner.And("I enter data in CRF and save", ((string)(null)), table255);
 #line hidden
             TechTalk.SpecFlow.Table table256 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field",
@@ -4209,60 +4301,36 @@ this.FeatureBackground();
                         "Answered",
                         "Closed"});
             table256.AddRow(new string[] {
-                        "Lab Field 6 - WBC - rr = T ; rmc = F",
-                        "Lab Field 6 must be greater than Lab Field 5. Please verify.",
+                        "Lab Field 8 - WBC - rr = F ; rmc = T",
+                        "Lab Field 8 must be greater than Lab Field 7. Please verify.",
                         "false",
                         "false"});
-#line 1329
+#line 1412
  testRunner.And("I verify Query is displayed", ((string)(null)), table256);
-#line 1332
+#line 1415
  testRunner.And("I take a screenshot");
-#line hidden
-            this.ScenarioCleanup();
-        }
-        
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("@PB-US12940-09D")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Query Refiring Logic5")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.IgnoreAttribute()]
-        public virtual void PB_US12940_09D()
-        {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("@PB-US12940-09D", new string[] {
-                        "PB-US12940-09D",
-                        "ignore"});
-#line 1337
-this.ScenarioSetup(scenarioInfo);
-#line 12
-this.FeatureBackground();
 #line hidden
             TechTalk.SpecFlow.Table table257 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field",
                         "Data"});
             table257.AddRow(new string[] {
-                        "Subject Number",
-                        "{RndNum<num1>(5)}"});
-            table257.AddRow(new string[] {
-                        "Subject Initials",
-                        "SUB"});
-            table257.AddRow(new string[] {
-                        "Subject ID",
-                        "SUB {Var(num1)}"});
-#line 1340
- testRunner.And("I create a Subject", ((string)(null)), table257);
-#line 1345
- testRunner.And("I select Form \"Lab Form 8\"");
+                        "Lab Field 7 - NEUTROPHILS - rr = F ; rmc = T",
+                        "7"});
+#line 1416
+ testRunner.And("I enter data in CRF and save", ((string)(null)), table257);
 #line hidden
             TechTalk.SpecFlow.Table table258 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field",
-                        "Data"});
-            table258.AddRow(new string[] {
-                        "Lab Field 7 - NEUTROPHILS - rr = F ; rmc = T",
-                        "5"});
+                        "Query Message",
+                        "Answered",
+                        "Closed"});
             table258.AddRow(new string[] {
                         "Lab Field 8 - WBC - rr = F ; rmc = T",
-                        "3"});
-#line 1346
- testRunner.And("I enter data in CRF and save", ((string)(null)), table258);
+                        "Lab Field 8 must be greater than Lab Field 7. Please verify.",
+                        "false",
+                        "false"});
+#line 1419
+ testRunner.And("I verify Query is not displayed", ((string)(null)), table258);
 #line hidden
             TechTalk.SpecFlow.Table table259 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field",
@@ -4272,11 +4340,20 @@ this.FeatureBackground();
             table259.AddRow(new string[] {
                         "Lab Field 8 - WBC - rr = F ; rmc = T",
                         "Lab Field 8 must be greater than Lab Field 7. Please verify.",
-                        "false",
+                        "true",
                         "false"});
-#line 1350
- testRunner.And("I verify Query is displayed", ((string)(null)), table259);
-#line 1353
+#line 1423
+    testRunner.And("I verify Query is displayed", ((string)(null)), table259);
+#line 1426
+ testRunner.And("I take a screenshot");
+#line 1427
+ testRunner.And("I close the only Query on Field \"Lab Field 8 - WBC - rr = F ; rmc = T\"");
+#line 1428
+ testRunner.And("I save the CRF page");
+#line 1429
+    testRunner.And("I verify closed Query with message \"Lab Field 8 must be greater than Lab Field 7." +
+                    " Please verify.\" is displayed on Field \"Lab Field 8 - WBC - rr = F ; rmc = T\"");
+#line 1430
  testRunner.And("I take a screenshot");
 #line hidden
             TechTalk.SpecFlow.Table table260 = new TechTalk.SpecFlow.Table(new string[] {
@@ -4284,9 +4361,9 @@ this.FeatureBackground();
                         "Data"});
             table260.AddRow(new string[] {
                         "Lab Field 7 - NEUTROPHILS - rr = F ; rmc = T",
-                        "7"});
-#line 1354
- testRunner.And("I enter data in CRF and save", ((string)(null)), table260);
+                        "6"});
+#line 1431
+ testRunner.When("I enter data in CRF and save", ((string)(null)), table260);
 #line hidden
             TechTalk.SpecFlow.Table table261 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field",
@@ -4298,41 +4375,56 @@ this.FeatureBackground();
                         "Lab Field 8 must be greater than Lab Field 7. Please verify.",
                         "false",
                         "false"});
-#line 1357
- testRunner.And("I verify Query is not displayed", ((string)(null)), table261);
+#line 1434
+ testRunner.Then("I verify Query is displayed", ((string)(null)), table261);
+#line 1437
+ testRunner.And("I take a screenshot");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("@PB_US12940_10A")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Query Refiring Logic5")]
+        public virtual void PB_US12940_10A()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("@PB_US12940_10A", new string[] {
+                        "release_564_Patch11",
+                        "PB_US12940_10A",
+                        "Validation"});
+#line 1442
+this.ScenarioSetup(scenarioInfo);
+#line 12
+this.FeatureBackground();
 #line hidden
             TechTalk.SpecFlow.Table table262 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field",
-                        "Query Message",
-                        "Answered",
-                        "Closed"});
+                        "Data"});
             table262.AddRow(new string[] {
-                        "Lab Field 8 - WBC - rr = F ; rmc = T",
-                        "Lab Field 8 must be greater than Lab Field 7. Please verify.",
-                        "true",
-                        "false"});
-#line 1361
-    testRunner.And("I verify Query is displayed", ((string)(null)), table262);
-#line 1364
- testRunner.And("I take a screenshot");
-#line 1365
- testRunner.And("I close the only Query on Field \"Lab Field 8 - WBC - rr = F ; rmc = T\"");
-#line 1366
- testRunner.And("I save the CRF page");
-#line 1367
-    testRunner.And("I verify closed Query with message \"Lab Field 8 must be greater than Lab Field 7." +
-                    " Please verify.\" is displayed on Field \"Lab Field 8 - WBC - rr = F ; rmc = T\"");
-#line 1368
- testRunner.And("I take a screenshot");
+                        "Subject Number",
+                        "{RndNum<num1>(5)}"});
+            table262.AddRow(new string[] {
+                        "Subject Initials",
+                        "SUB"});
+            table262.AddRow(new string[] {
+                        "Subject ID",
+                        "SUB {Var(num1)}"});
+#line 1445
+    testRunner.And("I create a Subject", ((string)(null)), table262);
+#line 1450
+ testRunner.And("I select Form \"Lab Form 8\"");
 #line hidden
             TechTalk.SpecFlow.Table table263 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field",
                         "Data"});
             table263.AddRow(new string[] {
-                        "Lab Field 7 - NEUTROPHILS - rr = F ; rmc = T",
-                        "6"});
-#line 1369
- testRunner.When("I enter data in CRF and save", ((string)(null)), table263);
+                        "Lab Field 1 - NEUTROPHILS - rr = T ; rmc = T",
+                        "5"});
+            table263.AddRow(new string[] {
+                        "Lab Field 2 - WBC - rr = T ; rmc = T",
+                        "3"});
+#line 1451
+ testRunner.And("I enter data in CRF and save", ((string)(null)), table263);
 #line hidden
             TechTalk.SpecFlow.Table table264 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field",
@@ -4340,120 +4432,122 @@ this.FeatureBackground();
                         "Answered",
                         "Closed"});
             table264.AddRow(new string[] {
-                        "Lab Field 8 - WBC - rr = F ; rmc = T",
-                        "Lab Field 8 must be greater than Lab Field 7. Please verify.",
+                        "Lab Field 2 - WBC - rr = T ; rmc = T",
+                        "Lab Field 2 must be greater than Lab Field 1. Please verify.",
                         "false",
                         "false"});
-#line 1372
- testRunner.Then("I verify Query is displayed", ((string)(null)), table264);
-#line 1375
+#line 1455
+ testRunner.And("I verify Query is displayed", ((string)(null)), table264);
+#line 1458
+ testRunner.And("I take a screenshot");
+#line 1459
+ testRunner.And("I answer the Query \"Lab Field 2 must be greater than Lab Field 1. Please verify.\"" +
+                    " on Field \"Lab Field 2 - WBC - rr = T ; rmc = T\" with \"Data will be changed.\"");
+#line hidden
+            TechTalk.SpecFlow.Table table265 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Data"});
+            table265.AddRow(new string[] {
+                        "Lab Field 2 - WBC - rr = T ; rmc = T",
+                        "2"});
+#line 1460
+   testRunner.And("I enter data in CRF and save", ((string)(null)), table265);
+#line 1463
+ testRunner.And("I save the CRF page");
+#line hidden
+            TechTalk.SpecFlow.Table table266 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Query Message",
+                        "Answered",
+                        "Closed"});
+            table266.AddRow(new string[] {
+                        "Lab Field 2 - WBC - rr = T ; rmc = T",
+                        "Lab Field 2 must be greater than Lab Field 1. Please verify.",
+                        "true",
+                        "false"});
+#line 1464
+ testRunner.And("I verify Query is displayed", ((string)(null)), table266);
+#line 1467
+ testRunner.And("I take a screenshot");
+#line 1468
+ testRunner.And("I close the only Query on Field \"Lab Field 2 - WBC - rr = T ; rmc = T\"");
+#line 1469
+ testRunner.And("I save the CRF page");
+#line 1470
+    testRunner.And("I verify closed Query with message \"Lab Field 2 must be greater than Lab Field 1." +
+                    " Please verify.\" is displayed on Field \"Lab Field 2 - WBC - rr = T ; rmc = T\"");
+#line 1471
+ testRunner.And("I take a screenshot");
+#line hidden
+            TechTalk.SpecFlow.Table table267 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Data"});
+            table267.AddRow(new string[] {
+                        "Lab Field 2 - WBC - rr = T ; rmc = T",
+                        "1"});
+#line 1472
+ testRunner.When("I enter data in CRF and save", ((string)(null)), table267);
+#line hidden
+            TechTalk.SpecFlow.Table table268 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Query Message",
+                        "Answered",
+                        "Closed"});
+            table268.AddRow(new string[] {
+                        "Lab Field 2 - WBC - rr = T ; rmc = T",
+                        "Lab Field 2 must be greater than Lab Field 1. Please verify.",
+                        "false",
+                        "false"});
+#line 1475
+ testRunner.And("I verify Query is displayed", ((string)(null)), table268);
+#line 1478
  testRunner.And("I take a screenshot");
 #line hidden
             this.ScenarioCleanup();
         }
         
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("@PB-US12940-10A")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("@PB_US12940_10B")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Query Refiring Logic5")]
-        public virtual void PB_US12940_10A()
+        public virtual void PB_US12940_10B()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("@PB-US12940-10A", new string[] {
-                        "PB-US12940-10A"});
-#line 1378
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("@PB_US12940_10B", new string[] {
+                        "release_564_Patch11",
+                        "PB_US12940_10B",
+                        "Validation"});
+#line 1483
 this.ScenarioSetup(scenarioInfo);
 #line 12
 this.FeatureBackground();
 #line hidden
-            TechTalk.SpecFlow.Table table265 = new TechTalk.SpecFlow.Table(new string[] {
-                        "Field",
-                        "Data"});
-            table265.AddRow(new string[] {
-                        "Subject Number",
-                        "{RndNum<num1>(5)}"});
-            table265.AddRow(new string[] {
-                        "Subject Initials",
-                        "SUB"});
-            table265.AddRow(new string[] {
-                        "Subject ID",
-                        "SUB {Var(num1)}"});
-#line 1381
-    testRunner.And("I create a Subject", ((string)(null)), table265);
-#line 1386
- testRunner.And("I select Form \"Lab Form 8\"");
-#line hidden
-            TechTalk.SpecFlow.Table table266 = new TechTalk.SpecFlow.Table(new string[] {
-                        "Field",
-                        "Data"});
-            table266.AddRow(new string[] {
-                        "Lab Field 1 - NEUTROPHILS - rr = T ; rmc = T",
-                        "5"});
-            table266.AddRow(new string[] {
-                        "Lab Field 2 - WBC - rr = T ; rmc = T",
-                        "3"});
-#line 1387
- testRunner.And("I enter data in CRF and save", ((string)(null)), table266);
-#line hidden
-            TechTalk.SpecFlow.Table table267 = new TechTalk.SpecFlow.Table(new string[] {
-                        "Field",
-                        "Query Message",
-                        "Answered",
-                        "Closed"});
-            table267.AddRow(new string[] {
-                        "Lab Field 2 - WBC - rr = T ; rmc = T",
-                        "Lab Field 2 must be greater than Lab Field 1. Please verify.",
-                        "false",
-                        "false"});
-#line 1391
- testRunner.And("I verify Query is displayed", ((string)(null)), table267);
-#line 1394
- testRunner.And("I take a screenshot");
-#line 1395
- testRunner.And("I answer the Query \"Lab Field 2 must be greater than Lab Field 1. Please verify.\"" +
-                    " on Field \"Lab Field 2 - WBC - rr = T ; rmc = T\" with \"Data will be changed.\"");
-#line hidden
-            TechTalk.SpecFlow.Table table268 = new TechTalk.SpecFlow.Table(new string[] {
-                        "Field",
-                        "Data"});
-            table268.AddRow(new string[] {
-                        "Lab Field 2 - WBC - rr = T ; rmc = T",
-                        "2"});
-#line 1396
-   testRunner.And("I enter data in CRF and save", ((string)(null)), table268);
-#line 1399
- testRunner.And("I save the CRF page");
-#line hidden
             TechTalk.SpecFlow.Table table269 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field",
-                        "Query Message",
-                        "Answered",
-                        "Closed"});
+                        "Data"});
             table269.AddRow(new string[] {
-                        "Lab Field 2 - WBC - rr = T ; rmc = T",
-                        "Lab Field 2 must be greater than Lab Field 1. Please verify.",
-                        "true",
-                        "false"});
-#line 1400
- testRunner.And("I verify Query is displayed", ((string)(null)), table269);
-#line 1403
- testRunner.And("I take a screenshot");
-#line 1404
- testRunner.And("I close the only Query on Field \"Lab Field 2 - WBC - rr = T ; rmc = T\"");
-#line 1405
- testRunner.And("I save the CRF page");
-#line 1406
-    testRunner.And("I verify closed Query with message \"Lab Field 2 must be greater than Lab Field 1." +
-                    " Please verify.\" is displayed on Field \"Lab Field 2 - WBC - rr = T ; rmc = T\"");
-#line 1407
- testRunner.And("I take a screenshot");
+                        "Subject Number",
+                        "{RndNum<num1>(5)}"});
+            table269.AddRow(new string[] {
+                        "Subject Initials",
+                        "SUB"});
+            table269.AddRow(new string[] {
+                        "Subject ID",
+                        "SUB {Var(num1)}"});
+#line 1486
+    testRunner.And("I create a Subject", ((string)(null)), table269);
+#line 1491
+ testRunner.And("I select Form \"Lab Form 8\"");
 #line hidden
             TechTalk.SpecFlow.Table table270 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field",
                         "Data"});
             table270.AddRow(new string[] {
-                        "Lab Field 2 - WBC - rr = T ; rmc = T",
-                        "1"});
-#line 1408
- testRunner.When("I enter data in CRF and save", ((string)(null)), table270);
+                        "Lab Field 3 - NEUTROPHILS - rr = F ; rmc = F",
+                        "5"});
+            table270.AddRow(new string[] {
+                        "Lab Field 4 - WBC - rr = F ; rmc = F",
+                        "3"});
+#line 1492
+ testRunner.And("I enter data in CRF and save", ((string)(null)), table270);
 #line hidden
             TechTalk.SpecFlow.Table table271 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field",
@@ -4461,182 +4555,163 @@ this.FeatureBackground();
                         "Answered",
                         "Closed"});
             table271.AddRow(new string[] {
-                        "Lab Field 2 - WBC - rr = T ; rmc = T",
-                        "Lab Field 2 must be greater than Lab Field 1. Please verify.",
+                        "Lab Field 4 - WBC - rr = F ; rmc = F",
+                        "Lab Field 4 must be greater than Lab Field 3. Please verify.",
                         "false",
                         "false"});
-#line 1411
+#line 1496
  testRunner.And("I verify Query is displayed", ((string)(null)), table271);
-#line 1414
+#line 1499
  testRunner.And("I take a screenshot");
-#line hidden
-            this.ScenarioCleanup();
-        }
-        
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("@PB-US12940-10B")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Query Refiring Logic5")]
-        public virtual void PB_US12940_10B()
-        {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("@PB-US12940-10B", new string[] {
-                        "PB-US12940-10B"});
-#line 1417
-this.ScenarioSetup(scenarioInfo);
-#line 12
-this.FeatureBackground();
 #line hidden
             TechTalk.SpecFlow.Table table272 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field",
                         "Data"});
             table272.AddRow(new string[] {
-                        "Subject Number",
-                        "{RndNum<num1>(5)}"});
-            table272.AddRow(new string[] {
-                        "Subject Initials",
-                        "SUB"});
-            table272.AddRow(new string[] {
-                        "Subject ID",
-                        "SUB {Var(num1)}"});
-#line 1420
-    testRunner.And("I create a Subject", ((string)(null)), table272);
-#line 1425
- testRunner.And("I select Form \"Lab Form 8\"");
+                        "Lab Field 4 - WBC - rr = F ; rmc = F",
+                        "2"});
+#line 1500
+   testRunner.And("I enter data in CRF and save", ((string)(null)), table272);
+#line 1503
+ testRunner.And("I save the CRF page");
 #line hidden
             TechTalk.SpecFlow.Table table273 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field",
-                        "Data"});
-            table273.AddRow(new string[] {
-                        "Lab Field 3 - NEUTROPHILS - rr = F ; rmc = F",
-                        "5"});
+                        "Query Message",
+                        "Answered",
+                        "Closed"});
             table273.AddRow(new string[] {
                         "Lab Field 4 - WBC - rr = F ; rmc = F",
-                        "3"});
-#line 1426
- testRunner.And("I enter data in CRF and save", ((string)(null)), table273);
+                        "Lab Field 4 must be greater than Lab Field 3. Please verify.",
+                        "false",
+                        "false"});
+#line 1504
+ testRunner.And("I verify Query is displayed", ((string)(null)), table273);
+#line 1507
+ testRunner.And("I take a screenshot");
 #line hidden
             TechTalk.SpecFlow.Table table274 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field",
-                        "Query Message",
-                        "Answered",
-                        "Closed"});
+                        "Data"});
             table274.AddRow(new string[] {
                         "Lab Field 4 - WBC - rr = F ; rmc = F",
-                        "Lab Field 4 must be greater than Lab Field 3. Please verify.",
-                        "false",
-                        "false"});
-#line 1430
- testRunner.And("I verify Query is displayed", ((string)(null)), table274);
-#line 1433
- testRunner.And("I take a screenshot");
+                        "1"});
+#line 1508
+ testRunner.When("I enter data in CRF and save", ((string)(null)), table274);
 #line hidden
             TechTalk.SpecFlow.Table table275 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field",
-                        "Data"});
+                        "Query Message",
+                        "Answered",
+                        "Closed"});
             table275.AddRow(new string[] {
                         "Lab Field 4 - WBC - rr = F ; rmc = F",
-                        "2"});
-#line 1434
-   testRunner.And("I enter data in CRF and save", ((string)(null)), table275);
-#line 1437
- testRunner.And("I save the CRF page");
-#line hidden
-            TechTalk.SpecFlow.Table table276 = new TechTalk.SpecFlow.Table(new string[] {
-                        "Field",
-                        "Query Message",
-                        "Answered",
-                        "Closed"});
-            table276.AddRow(new string[] {
-                        "Lab Field 4 - WBC - rr = F ; rmc = F",
-                        "Lab Field 4 must be greater than Lab Field 3. Please verify.",
-                        "false",
-                        "true"});
-#line 1438
-    testRunner.And("I verify Query is not displayed", ((string)(null)), table276);
-#line hidden
-            TechTalk.SpecFlow.Table table277 = new TechTalk.SpecFlow.Table(new string[] {
-                        "Field",
-                        "Query Message",
-                        "Answered",
-                        "Closed"});
-            table277.AddRow(new string[] {
-                        "Lab Field 4 - WBC - rr = F ; rmc = F",
                         "Lab Field 4 must be greater than Lab Field 3. Please verify.",
                         "false",
                         "false"});
-#line 1441
- testRunner.And("I verify Query is displayed", ((string)(null)), table277);
-#line 1444
- testRunner.And("I take a screenshot");
-#line hidden
-            TechTalk.SpecFlow.Table table278 = new TechTalk.SpecFlow.Table(new string[] {
-                        "Field",
-                        "Data"});
-            table278.AddRow(new string[] {
-                        "Lab Field 4 - WBC - rr = F ; rmc = F",
-                        "1"});
-#line 1445
- testRunner.When("I enter data in CRF and save", ((string)(null)), table278);
-#line hidden
-            TechTalk.SpecFlow.Table table279 = new TechTalk.SpecFlow.Table(new string[] {
-                        "Field",
-                        "Query Message",
-                        "Answered",
-                        "Closed"});
-            table279.AddRow(new string[] {
-                        "Lab Field 4 - WBC - rr = F ; rmc = F",
-                        "Lab Field 4 must be greater than Lab Field 3. Please verify.",
-                        "false",
-                        "false"});
-#line 1448
- testRunner.And("I verify Query is displayed", ((string)(null)), table279);
-#line 1451
+#line 1511
+ testRunner.And("I verify Query is displayed", ((string)(null)), table275);
+#line 1514
  testRunner.And("I take a screenshot");
 #line hidden
             this.ScenarioCleanup();
         }
         
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("@PB-US12940-10C")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("@PB_US12940_10C")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Query Refiring Logic5")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.IgnoreAttribute()]
         public virtual void PB_US12940_10C()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("@PB-US12940-10C", new string[] {
-                        "PB-US12940-10C",
-                        "ignore"});
-#line 1456
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("@PB_US12940_10C", new string[] {
+                        "release_564_Patch11",
+                        "PB_US12940_10C",
+                        "ignore",
+                        "Validation"});
+#line 1521
 this.ScenarioSetup(scenarioInfo);
 #line 12
 this.FeatureBackground();
 #line hidden
-            TechTalk.SpecFlow.Table table280 = new TechTalk.SpecFlow.Table(new string[] {
+            TechTalk.SpecFlow.Table table276 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field",
                         "Data"});
-            table280.AddRow(new string[] {
+            table276.AddRow(new string[] {
                         "Subject Number",
                         "{RndNum<num1>(5)}"});
-            table280.AddRow(new string[] {
+            table276.AddRow(new string[] {
                         "Subject Initials",
                         "SUB"});
-            table280.AddRow(new string[] {
+            table276.AddRow(new string[] {
                         "Subject ID",
                         "SUB {Var(num1)}"});
-#line 1459
-    testRunner.And("I create a Subject", ((string)(null)), table280);
-#line 1464
+#line 1524
+    testRunner.And("I create a Subject", ((string)(null)), table276);
+#line 1529
  testRunner.And("I select Form \"Lab Form 8\"");
+#line hidden
+            TechTalk.SpecFlow.Table table277 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Data"});
+            table277.AddRow(new string[] {
+                        "Lab Field 5 - NEUTROPHILS - rr = T ; rmc = F",
+                        "5"});
+            table277.AddRow(new string[] {
+                        "Lab Field 6 - WBC - rr = T ; rmc = F",
+                        "3"});
+#line 1530
+ testRunner.And("I enter data in CRF and save", ((string)(null)), table277);
+#line hidden
+            TechTalk.SpecFlow.Table table278 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Query Message",
+                        "Answered",
+                        "Closed"});
+            table278.AddRow(new string[] {
+                        "Lab Field 6 - WBC - rr = T ; rmc = F",
+                        "Lab Field 6 must be greater than Lab Field 5. Please verify.",
+                        "false",
+                        "false"});
+#line 1534
+ testRunner.And("I verify Query is displayed", ((string)(null)), table278);
+#line 1537
+ testRunner.And("I take a screenshot");
+#line 1538
+ testRunner.And("I answer the Query \"Lab Field 6 must be greater than Lab Field 5. Please verify.\"" +
+                    " on Field \"Lab Field 6 - WBC - rr = T ; rmc = F\" with \"Data will be changed.\"");
+#line hidden
+            TechTalk.SpecFlow.Table table279 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Data"});
+            table279.AddRow(new string[] {
+                        "Lab Field 6 - WBC - rr = T ; rmc = F",
+                        "2"});
+#line 1539
+   testRunner.And("I enter data in CRF and save", ((string)(null)), table279);
+#line hidden
+            TechTalk.SpecFlow.Table table280 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Query Message",
+                        "Answered",
+                        "Closed"});
+            table280.AddRow(new string[] {
+                        "Lab Field 6 - WBC - rr = T ; rmc = F",
+                        "Lab Field 6 must be greater than Lab Field 5. Please verify.",
+                        "true",
+                        "true"});
+#line 1543
+    testRunner.And("I verify Query is not displayed", ((string)(null)), table280);
+#line 1546
+ testRunner.And("I take a screenshot");
 #line hidden
             TechTalk.SpecFlow.Table table281 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field",
                         "Data"});
             table281.AddRow(new string[] {
-                        "Lab Field 5 - NEUTROPHILS - rr = T ; rmc = F",
-                        "5"});
-            table281.AddRow(new string[] {
                         "Lab Field 6 - WBC - rr = T ; rmc = F",
-                        "3"});
-#line 1465
- testRunner.And("I enter data in CRF and save", ((string)(null)), table281);
+                        "1"});
+#line 1547
+ testRunner.When("I enter data in CRF and save", ((string)(null)), table281);
 #line hidden
             TechTalk.SpecFlow.Table table282 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field",
@@ -4648,1623 +4723,1592 @@ this.FeatureBackground();
                         "Lab Field 6 must be greater than Lab Field 5. Please verify.",
                         "false",
                         "false"});
-#line 1469
+#line 1550
  testRunner.And("I verify Query is displayed", ((string)(null)), table282);
-#line 1472
+#line 1553
  testRunner.And("I take a screenshot");
-#line 1473
- testRunner.And("I answer the Query \"Lab Field 6 must be greater than Lab Field 5. Please verify.\"" +
-                    " on Field \"Lab Field 6 - WBC - rr = T ; rmc = F\" with \"Data will be changed.\"");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("@PB_US12940_10D")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Query Refiring Logic5")]
+        public virtual void PB_US12940_10D()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("@PB_US12940_10D", new string[] {
+                        "release_564_Patch11",
+                        "PB_US12940_10D",
+                        "Validation"});
+#line 1558
+this.ScenarioSetup(scenarioInfo);
+#line 12
+this.FeatureBackground();
 #line hidden
             TechTalk.SpecFlow.Table table283 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field",
                         "Data"});
             table283.AddRow(new string[] {
-                        "Lab Field 6 - WBC - rr = T ; rmc = F",
-                        "2"});
-#line 1474
-   testRunner.And("I enter data in CRF and save", ((string)(null)), table283);
+                        "Subject Number",
+                        "{RndNum<num1>(5)}"});
+            table283.AddRow(new string[] {
+                        "Subject Initials",
+                        "SUB"});
+            table283.AddRow(new string[] {
+                        "Subject ID",
+                        "SUB {Var(num1)}"});
+#line 1561
+ testRunner.And("I create a Subject", ((string)(null)), table283);
+#line 1566
+ testRunner.And("I select Form \"Lab Form 8\"");
 #line hidden
             TechTalk.SpecFlow.Table table284 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field",
-                        "Query Message",
-                        "Answered",
-                        "Closed"});
+                        "Data"});
             table284.AddRow(new string[] {
-                        "Lab Field 6 - WBC - rr = T ; rmc = F",
-                        "Lab Field 6 must be greater than Lab Field 5. Please verify.",
-                        "true",
-                        "true"});
-#line 1478
-    testRunner.And("I verify Query is not displayed", ((string)(null)), table284);
-#line 1481
- testRunner.And("I take a screenshot");
+                        "Lab Field 7 - NEUTROPHILS - rr = F ; rmc = T",
+                        "5"});
+            table284.AddRow(new string[] {
+                        "Lab Field 8 - WBC - rr = F ; rmc = T",
+                        "3"});
+#line 1567
+ testRunner.And("I enter data in CRF and save", ((string)(null)), table284);
 #line hidden
             TechTalk.SpecFlow.Table table285 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field",
-                        "Data"});
+                        "Query Message",
+                        "Answered",
+                        "Closed"});
             table285.AddRow(new string[] {
-                        "Lab Field 6 - WBC - rr = T ; rmc = F",
-                        "1"});
-#line 1482
- testRunner.When("I enter data in CRF and save", ((string)(null)), table285);
+                        "Lab Field 8 - WBC - rr = F ; rmc = T",
+                        "Lab Field 8 must be greater than Lab Field 7. Please verify.",
+                        "false",
+                        "false"});
+#line 1571
+ testRunner.And("I verify Query is displayed", ((string)(null)), table285);
+#line 1574
+ testRunner.And("I take a screenshot");
 #line hidden
             TechTalk.SpecFlow.Table table286 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field",
-                        "Query Message",
-                        "Answered",
-                        "Closed"});
+                        "Data"});
             table286.AddRow(new string[] {
-                        "Lab Field 6 - WBC - rr = T ; rmc = F",
-                        "Lab Field 6 must be greater than Lab Field 5. Please verify.",
-                        "false",
-                        "false"});
-#line 1485
- testRunner.And("I verify Query is displayed", ((string)(null)), table286);
-#line 1488
- testRunner.And("I take a screenshot");
-#line hidden
-            this.ScenarioCleanup();
-        }
-        
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("@PB-US12940-10D")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Query Refiring Logic5")]
-        public virtual void PB_US12940_10D()
-        {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("@PB-US12940-10D", new string[] {
-                        "PB-US12940-10D"});
-#line 1491
-this.ScenarioSetup(scenarioInfo);
-#line 12
-this.FeatureBackground();
+                        "Lab Field 8 - WBC - rr = F ; rmc = T",
+                        "2"});
+#line 1575
+   testRunner.And("I enter data in CRF and save", ((string)(null)), table286);
 #line hidden
             TechTalk.SpecFlow.Table table287 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field",
-                        "Data"});
+                        "Query Message",
+                        "Answered",
+                        "Closed"});
             table287.AddRow(new string[] {
-                        "Subject Number",
-                        "{RndNum<num1>(5)}"});
-            table287.AddRow(new string[] {
-                        "Subject Initials",
-                        "SUB"});
-            table287.AddRow(new string[] {
-                        "Subject ID",
-                        "SUB {Var(num1)}"});
-#line 1494
- testRunner.And("I create a Subject", ((string)(null)), table287);
-#line 1499
- testRunner.And("I select Form \"Lab Form 8\"");
+                        "Lab Field 8 - WBC - rr = F ; rmc = T",
+                        "Lab Field 8 must be greater than Lab Field 7. Please verify.",
+                        "false",
+                        "false"});
+#line 1578
+ testRunner.And("I verify Query is not displayed", ((string)(null)), table287);
 #line hidden
             TechTalk.SpecFlow.Table table288 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field",
-                        "Data"});
+                        "Query Message",
+                        "Answered",
+                        "Closed"});
             table288.AddRow(new string[] {
-                        "Lab Field 7 - NEUTROPHILS - rr = F ; rmc = T",
-                        "5"});
-            table288.AddRow(new string[] {
-                        "Lab Field 8 - WBC - rr = F ; rmc = T",
-                        "3"});
-#line 1500
- testRunner.And("I enter data in CRF and save", ((string)(null)), table288);
-#line hidden
-            TechTalk.SpecFlow.Table table289 = new TechTalk.SpecFlow.Table(new string[] {
-                        "Field",
-                        "Query Message",
-                        "Answered",
-                        "Closed"});
-            table289.AddRow(new string[] {
-                        "Lab Field 8 - WBC - rr = F ; rmc = T",
-                        "Lab Field 8 must be greater than Lab Field 7. Please verify.",
-                        "false",
-                        "false"});
-#line 1504
- testRunner.And("I verify Query is displayed", ((string)(null)), table289);
-#line 1507
- testRunner.And("I take a screenshot");
-#line hidden
-            TechTalk.SpecFlow.Table table290 = new TechTalk.SpecFlow.Table(new string[] {
-                        "Field",
-                        "Data"});
-            table290.AddRow(new string[] {
-                        "Lab Field 8 - WBC - rr = F ; rmc = T",
-                        "2"});
-#line 1508
-   testRunner.And("I enter data in CRF and save", ((string)(null)), table290);
-#line hidden
-            TechTalk.SpecFlow.Table table291 = new TechTalk.SpecFlow.Table(new string[] {
-                        "Field",
-                        "Query Message",
-                        "Answered",
-                        "Closed"});
-            table291.AddRow(new string[] {
-                        "Lab Field 8 - WBC - rr = F ; rmc = T",
-                        "Lab Field 8 must be greater than Lab Field 7. Please verify.",
-                        "false",
-                        "false"});
-#line 1511
- testRunner.And("I verify Query is not displayed", ((string)(null)), table291);
-#line hidden
-            TechTalk.SpecFlow.Table table292 = new TechTalk.SpecFlow.Table(new string[] {
-                        "Field",
-                        "Query Message",
-                        "Answered",
-                        "Closed"});
-            table292.AddRow(new string[] {
                         "Lab Field 8 - WBC - rr = F ; rmc = T",
                         "Lab Field 8 must be greater than Lab Field 7. Please verify.",
                         "true",
                         "false"});
-#line 1514
- testRunner.And("I verify Query is displayed", ((string)(null)), table292);
-#line 1517
+#line 1581
+ testRunner.And("I verify Query is displayed", ((string)(null)), table288);
+#line 1584
  testRunner.And("I take a screenshot");
-#line 1518
+#line 1585
  testRunner.And("I close the only Query on Field \"Lab Field 8 - WBC - rr = F ; rmc = T\"");
-#line 1519
+#line 1586
  testRunner.And("I save the CRF page");
-#line 1520
+#line 1587
  testRunner.And("I verify closed Query with message \"Lab Field 8 must be greater than Lab Field 7." +
                     " Please verify.\" is displayed on Field \"Lab Field 8 - WBC - rr = F ; rmc = T\"");
-#line 1521
+#line 1588
     testRunner.And("I take a screenshot");
 #line hidden
-            TechTalk.SpecFlow.Table table293 = new TechTalk.SpecFlow.Table(new string[] {
+            TechTalk.SpecFlow.Table table289 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field",
                         "Data"});
-            table293.AddRow(new string[] {
+            table289.AddRow(new string[] {
                         "Lab Field 8 - WBC - rr = F ; rmc = T",
                         "1"});
-#line 1522
- testRunner.When("I enter data in CRF and save", ((string)(null)), table293);
+#line 1589
+ testRunner.When("I enter data in CRF and save", ((string)(null)), table289);
 #line hidden
-            TechTalk.SpecFlow.Table table294 = new TechTalk.SpecFlow.Table(new string[] {
+            TechTalk.SpecFlow.Table table290 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field",
                         "Query Message",
                         "Answered",
                         "Closed"});
-            table294.AddRow(new string[] {
+            table290.AddRow(new string[] {
                         "Lab Field 8 - WBC - rr = F ; rmc = T",
                         "Lab Field 8 must be greater than Lab Field 7. Please verify.",
                         "false",
                         "false"});
-#line 1525
- testRunner.Then("I verify Query is displayed", ((string)(null)), table294);
-#line 1528
+#line 1592
+ testRunner.Then("I verify Query is displayed", ((string)(null)), table290);
+#line 1595
  testRunner.And("I take a screenshot");
 #line hidden
             this.ScenarioCleanup();
         }
         
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("@PB-US12940-11A")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("@PB_US12940_11A")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Query Refiring Logic5")]
         public virtual void PB_US12940_11A()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("@PB-US12940-11A", new string[] {
-                        "PB-US12940-11A"});
-#line 1532
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("@PB_US12940_11A", new string[] {
+                        "release_564_Patch11",
+                        "PB_US12940_11A",
+                        "Validation"});
+#line 1600
 this.ScenarioSetup(scenarioInfo);
 #line 12
 this.FeatureBackground();
+#line hidden
+            TechTalk.SpecFlow.Table table291 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Data"});
+            table291.AddRow(new string[] {
+                        "Subject Number",
+                        "{RndNum<num1>(5)}"});
+            table291.AddRow(new string[] {
+                        "Subject Initials",
+                        "SUB"});
+            table291.AddRow(new string[] {
+                        "Subject ID",
+                        "SUB {Var(num1)}"});
+#line 1603
+    testRunner.And("I create a Subject", ((string)(null)), table291);
+#line 1608
+ testRunner.And("I select Form \"Lab Form 8\"");
+#line hidden
+            TechTalk.SpecFlow.Table table292 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Data"});
+            table292.AddRow(new string[] {
+                        "Lab Field 1 - NEUTROPHILS - rr = T ; rmc = T",
+                        "5"});
+            table292.AddRow(new string[] {
+                        "Lab Field 2 - WBC - rr = T ; rmc = T",
+                        "3"});
+#line 1609
+ testRunner.And("I enter data in CRF and save", ((string)(null)), table292);
+#line hidden
+            TechTalk.SpecFlow.Table table293 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Query Message",
+                        "Answered",
+                        "Closed"});
+            table293.AddRow(new string[] {
+                        "Lab Field 2 - WBC - rr = T ; rmc = T",
+                        "Lab Field 2 must be greater than Lab Field 1. Please verify.",
+                        "false",
+                        "false"});
+#line 1613
+ testRunner.And("I verify Query is displayed", ((string)(null)), table293);
+#line 1616
+    testRunner.And("I take a screenshot");
+#line 1617
+ testRunner.And("I cancel the Query \"Lab Field 2 must be greater than Lab Field 1. Please verify.\"" +
+                    " on Field \"Lab Field 2 - WBC - rr = T ; rmc = T\"");
+#line 1618
+ testRunner.And("I save the CRF page");
+#line 1619
+ testRunner.And("I click audit on Field \"Lab Field 2 - WBC - rr = T ; rmc = T\"");
+#line hidden
+            TechTalk.SpecFlow.Table table294 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Audit Type",
+                        "Query Message"});
+            table294.AddRow(new string[] {
+                        "Query Canceled",
+                        "Lab Field 2 must be greater than Lab Field 1. Please verify."});
+#line 1620
+ testRunner.And("I verify Audits exist", ((string)(null)), table294);
+#line 1623
+ testRunner.And("I take a screenshot");
+#line 1624
+ testRunner.And("I select Form \"Lab Form 8\" in \"Header\"");
 #line hidden
             TechTalk.SpecFlow.Table table295 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field",
                         "Data"});
             table295.AddRow(new string[] {
-                        "Subject Number",
-                        "{RndNum<num1>(5)}"});
-            table295.AddRow(new string[] {
-                        "Subject Initials",
-                        "SUB"});
-            table295.AddRow(new string[] {
-                        "Subject ID",
-                        "SUB {Var(num1)}"});
-#line 1535
-    testRunner.And("I create a Subject", ((string)(null)), table295);
-#line 1540
- testRunner.And("I select Form \"Lab Form 8\"");
+                        "Lab Field 1 - NEUTROPHILS - rr = T ; rmc = T",
+                        "2"});
+#line 1625
+ testRunner.And("I enter data in CRF and save", ((string)(null)), table295);
 #line hidden
             TechTalk.SpecFlow.Table table296 = new TechTalk.SpecFlow.Table(new string[] {
-                        "Field",
-                        "Data"});
-            table296.AddRow(new string[] {
-                        "Lab Field 1 - NEUTROPHILS - rr = T ; rmc = T",
-                        "5"});
-            table296.AddRow(new string[] {
-                        "Lab Field 2 - WBC - rr = T ; rmc = T",
-                        "3"});
-#line 1541
- testRunner.And("I enter data in CRF and save", ((string)(null)), table296);
-#line hidden
-            TechTalk.SpecFlow.Table table297 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field",
                         "Query Message",
                         "Answered",
                         "Closed"});
-            table297.AddRow(new string[] {
+            table296.AddRow(new string[] {
                         "Lab Field 2 - WBC - rr = T ; rmc = T",
                         "Lab Field 2 must be greater than Lab Field 1. Please verify.",
                         "false",
                         "false"});
-#line 1545
- testRunner.And("I verify Query is displayed", ((string)(null)), table297);
-#line 1548
-    testRunner.And("I take a screenshot");
-#line 1549
- testRunner.And("I cancel the Query \"Lab Field 2 must be greater than Lab Field 1. Please verify.\"" +
-                    " on Field \"Lab Field 2 - WBC - rr = T ; rmc = T\"");
-#line 1550
- testRunner.And("I save the CRF page");
-#line 1551
- testRunner.And("I click audit on Field \"Lab Field 2 - WBC - rr = T ; rmc = T\"");
+#line 1628
+ testRunner.And("I verify Query is not displayed", ((string)(null)), table296);
+#line 1631
+ testRunner.And("I take a screenshot");
+#line hidden
+            TechTalk.SpecFlow.Table table297 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Data"});
+            table297.AddRow(new string[] {
+                        "Lab Field 1 - NEUTROPHILS - rr = T ; rmc = T",
+                        "5"});
+#line 1632
+ testRunner.When("I enter data in CRF and save", ((string)(null)), table297);
 #line hidden
             TechTalk.SpecFlow.Table table298 = new TechTalk.SpecFlow.Table(new string[] {
-                        "Audit Type",
-                        "Query Message"});
+                        "Field",
+                        "Query Message",
+                        "Answered",
+                        "Closed"});
             table298.AddRow(new string[] {
-                        "Query Canceled",
-                        "Lab Field 2 must be greater than Lab Field 1. Please verify."});
-#line 1552
- testRunner.And("I verify Audits exist", ((string)(null)), table298);
-#line 1555
+                        "Lab Field 2 - WBC - rr = T ; rmc = T",
+                        "Lab Field 2 must be greater than Lab Field 1. Please verify.",
+                        "false",
+                        "false"});
+#line 1635
+ testRunner.And("I verify Query is not displayed", ((string)(null)), table298);
+#line 1638
  testRunner.And("I take a screenshot");
-#line 1556
- testRunner.And("I select Form \"Lab Form 8\" in \"Header\"");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("@PB_US12940_11B")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Query Refiring Logic5")]
+        public virtual void PB_US12940_11B()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("@PB_US12940_11B", new string[] {
+                        "release_564_Patch11",
+                        "PB_US12940_11B",
+                        "Validation"});
+#line 1643
+this.ScenarioSetup(scenarioInfo);
+#line 12
+this.FeatureBackground();
 #line hidden
             TechTalk.SpecFlow.Table table299 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field",
                         "Data"});
             table299.AddRow(new string[] {
-                        "Lab Field 1 - NEUTROPHILS - rr = T ; rmc = T",
-                        "2"});
-#line 1557
- testRunner.And("I enter data in CRF and save", ((string)(null)), table299);
+                        "Subject Number",
+                        "{RndNum<num1>(5)}"});
+            table299.AddRow(new string[] {
+                        "Subject Initials",
+                        "SUB"});
+            table299.AddRow(new string[] {
+                        "Subject ID",
+                        "SUB {Var(num1)}"});
+#line 1646
+    testRunner.And("I create a Subject", ((string)(null)), table299);
+#line 1651
+ testRunner.And("I select Form \"Lab Form 8\"");
 #line hidden
             TechTalk.SpecFlow.Table table300 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field",
-                        "Query Message",
-                        "Answered",
-                        "Closed"});
+                        "Data"});
             table300.AddRow(new string[] {
-                        "Lab Field 2 - WBC - rr = T ; rmc = T",
-                        "Lab Field 2 must be greater than Lab Field 1. Please verify.",
-                        "false",
-                        "false"});
-#line 1560
- testRunner.And("I verify Query is not displayed", ((string)(null)), table300);
-#line 1563
- testRunner.And("I take a screenshot");
+                        "Lab Field 3 - NEUTROPHILS - rr = F ; rmc = F",
+                        "5"});
+            table300.AddRow(new string[] {
+                        "Lab Field 4 - WBC - rr = F ; rmc = F",
+                        "3"});
+#line 1652
+ testRunner.And("I enter data in CRF and save", ((string)(null)), table300);
 #line hidden
             TechTalk.SpecFlow.Table table301 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field",
-                        "Data"});
-            table301.AddRow(new string[] {
-                        "Lab Field 1 - NEUTROPHILS - rr = T ; rmc = T",
-                        "5"});
-#line 1564
- testRunner.When("I enter data in CRF and save", ((string)(null)), table301);
-#line hidden
-            TechTalk.SpecFlow.Table table302 = new TechTalk.SpecFlow.Table(new string[] {
-                        "Field",
                         "Query Message",
                         "Answered",
                         "Closed"});
-            table302.AddRow(new string[] {
-                        "Lab Field 2 - WBC - rr = T ; rmc = T",
-                        "Lab Field 2 must be greater than Lab Field 1. Please verify.",
+            table301.AddRow(new string[] {
+                        "Lab Field 4 - WBC - rr = F ; rmc = F",
+                        "Lab Field 4 must be greater than Lab Field 3. Please verify.",
                         "false",
                         "false"});
-#line 1567
- testRunner.And("I verify Query is not displayed", ((string)(null)), table302);
-#line 1570
+#line 1656
+ testRunner.And("I verify Query is displayed", ((string)(null)), table301);
+#line 1659
  testRunner.And("I take a screenshot");
+#line 1660
+ testRunner.And("I cancel the Query \"Lab Field 4 must be greater than Lab Field 3. Please verify.\"" +
+                    " on Field \"Lab Field 4 - WBC - rr = F ; rmc = F\"");
+#line 1661
+ testRunner.And("I save the CRF page");
+#line 1662
+ testRunner.And("I click audit on Field \"Lab Field 4 - WBC - rr = F ; rmc = F\"");
 #line hidden
-            this.ScenarioCleanup();
-        }
-        
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("@PB-US12940-11B")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Query Refiring Logic5")]
-        public virtual void PB_US12940_11B()
-        {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("@PB-US12940-11B", new string[] {
-                        "PB-US12940-11B"});
-#line 1574
-this.ScenarioSetup(scenarioInfo);
-#line 12
-this.FeatureBackground();
+            TechTalk.SpecFlow.Table table302 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Audit Type",
+                        "Query Message"});
+            table302.AddRow(new string[] {
+                        "Query Canceled",
+                        "Lab Field 4 must be greater than Lab Field 3. Please verify."});
+#line 1663
+ testRunner.And("I verify Audits exist", ((string)(null)), table302);
+#line 1666
+ testRunner.And("I take a screenshot");
+#line 1667
+ testRunner.And("I select Form \"Lab Form 8\" in \"Header\"");
 #line hidden
             TechTalk.SpecFlow.Table table303 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field",
                         "Data"});
             table303.AddRow(new string[] {
-                        "Subject Number",
-                        "{RndNum<num1>(5)}"});
-            table303.AddRow(new string[] {
-                        "Subject Initials",
-                        "SUB"});
-            table303.AddRow(new string[] {
-                        "Subject ID",
-                        "SUB {Var(num1)}"});
-#line 1577
-    testRunner.And("I create a Subject", ((string)(null)), table303);
-#line 1582
- testRunner.And("I select Form \"Lab Form 8\"");
+                        "Lab Field 3 - NEUTROPHILS - rr = F ; rmc = F",
+                        "2"});
+#line 1668
+ testRunner.And("I enter data in CRF and save", ((string)(null)), table303);
 #line hidden
             TechTalk.SpecFlow.Table table304 = new TechTalk.SpecFlow.Table(new string[] {
-                        "Field",
-                        "Data"});
-            table304.AddRow(new string[] {
-                        "Lab Field 3 - NEUTROPHILS - rr = F ; rmc = F",
-                        "5"});
-            table304.AddRow(new string[] {
-                        "Lab Field 4 - WBC - rr = F ; rmc = F",
-                        "3"});
-#line 1583
- testRunner.And("I enter data in CRF and save", ((string)(null)), table304);
-#line hidden
-            TechTalk.SpecFlow.Table table305 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field",
                         "Query Message",
                         "Answered",
                         "Closed"});
-            table305.AddRow(new string[] {
+            table304.AddRow(new string[] {
                         "Lab Field 4 - WBC - rr = F ; rmc = F",
                         "Lab Field 4 must be greater than Lab Field 3. Please verify.",
                         "false",
                         "false"});
-#line 1587
- testRunner.And("I verify Query is displayed", ((string)(null)), table305);
-#line 1590
+#line 1671
+ testRunner.And("I verify Query is not displayed", ((string)(null)), table304);
+#line 1674
  testRunner.And("I take a screenshot");
-#line 1591
- testRunner.And("I cancel the Query \"Lab Field 4 must be greater than Lab Field 3. Please verify.\"" +
-                    " on Field \"Lab Field 4 - WBC - rr = F ; rmc = F\"");
-#line 1592
- testRunner.And("I save the CRF page");
-#line 1593
- testRunner.And("I click audit on Field \"Lab Field 4 - WBC - rr = F ; rmc = F\"");
+#line hidden
+            TechTalk.SpecFlow.Table table305 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Data"});
+            table305.AddRow(new string[] {
+                        "Lab Field 3 - NEUTROPHILS - rr = F ; rmc = F",
+                        "5"});
+#line 1675
+ testRunner.When("I enter data in CRF and save", ((string)(null)), table305);
 #line hidden
             TechTalk.SpecFlow.Table table306 = new TechTalk.SpecFlow.Table(new string[] {
-                        "Audit Type",
-                        "Query Message"});
+                        "Field",
+                        "Query Message",
+                        "Answered",
+                        "Closed"});
             table306.AddRow(new string[] {
-                        "Query Canceled",
-                        "Lab Field 4 must be greater than Lab Field 3. Please verify."});
-#line 1594
- testRunner.And("I verify Audits exist", ((string)(null)), table306);
-#line 1597
+                        "Lab Field 4 - WBC - rr = F ; rmc = F",
+                        "Lab Field 4 must be greater than Lab Field 3. Please verify.",
+                        "false",
+                        "false"});
+#line 1678
+ testRunner.Then("I verify Query is not displayed", ((string)(null)), table306);
+#line 1681
  testRunner.And("I take a screenshot");
-#line 1598
- testRunner.And("I select Form \"Lab Form 8\" in \"Header\"");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("@PB_US12940_11C")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Query Refiring Logic5")]
+        public virtual void PB_US12940_11C()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("@PB_US12940_11C", new string[] {
+                        "release_564_Patch11",
+                        "PB_US12940_11C",
+                        "Validation"});
+#line 1686
+this.ScenarioSetup(scenarioInfo);
+#line 12
+this.FeatureBackground();
 #line hidden
             TechTalk.SpecFlow.Table table307 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field",
                         "Data"});
             table307.AddRow(new string[] {
-                        "Lab Field 3 - NEUTROPHILS - rr = F ; rmc = F",
-                        "2"});
-#line 1599
- testRunner.And("I enter data in CRF and save", ((string)(null)), table307);
+                        "Subject Number",
+                        "{RndNum<num1>(5)}"});
+            table307.AddRow(new string[] {
+                        "Subject Initials",
+                        "SUB"});
+            table307.AddRow(new string[] {
+                        "Subject ID",
+                        "SUB {Var(num1)}"});
+#line 1689
+    testRunner.And("I create a Subject", ((string)(null)), table307);
+#line 1694
+ testRunner.And("I select Form \"Lab Form 8\"");
 #line hidden
             TechTalk.SpecFlow.Table table308 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field",
-                        "Query Message",
-                        "Answered",
-                        "Closed"});
+                        "Data"});
             table308.AddRow(new string[] {
-                        "Lab Field 4 - WBC - rr = F ; rmc = F",
-                        "Lab Field 4 must be greater than Lab Field 3. Please verify.",
-                        "false",
-                        "false"});
-#line 1602
- testRunner.And("I verify Query is not displayed", ((string)(null)), table308);
-#line 1605
- testRunner.And("I take a screenshot");
+                        "Lab Field 5 - NEUTROPHILS - rr = T ; rmc = F",
+                        "5"});
+            table308.AddRow(new string[] {
+                        "Lab Field 6 - WBC - rr = T ; rmc = F",
+                        "3"});
+#line 1695
+ testRunner.And("I enter data in CRF and save", ((string)(null)), table308);
 #line hidden
             TechTalk.SpecFlow.Table table309 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field",
-                        "Data"});
-            table309.AddRow(new string[] {
-                        "Lab Field 3 - NEUTROPHILS - rr = F ; rmc = F",
-                        "5"});
-#line 1606
- testRunner.When("I enter data in CRF and save", ((string)(null)), table309);
-#line hidden
-            TechTalk.SpecFlow.Table table310 = new TechTalk.SpecFlow.Table(new string[] {
-                        "Field",
                         "Query Message",
                         "Answered",
                         "Closed"});
-            table310.AddRow(new string[] {
-                        "Lab Field 4 - WBC - rr = F ; rmc = F",
-                        "Lab Field 4 must be greater than Lab Field 3. Please verify.",
+            table309.AddRow(new string[] {
+                        "Lab Field 6 - WBC - rr = T ; rmc = F",
+                        "Lab Field 6 must be greater than Lab Field 5. Please verify.",
                         "false",
                         "false"});
-#line 1609
- testRunner.Then("I verify Query is not displayed", ((string)(null)), table310);
-#line 1612
+#line 1699
+ testRunner.And("I verify Query is displayed", ((string)(null)), table309);
+#line 1702
  testRunner.And("I take a screenshot");
+#line 1703
+ testRunner.And("I cancel the Query \"Lab Field 6 must be greater than Lab Field 5. Please verify.\"" +
+                    " on Field \"Lab Field 6 - WBC - rr = T ; rmc = F\"");
+#line 1704
+ testRunner.And("I save the CRF page");
+#line 1705
+ testRunner.And("I click audit on Field \"Lab Field 6 - WBC - rr = T ; rmc = F\"");
 #line hidden
-            this.ScenarioCleanup();
-        }
-        
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("@PB-US12940-11C")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Query Refiring Logic5")]
-        public virtual void PB_US12940_11C()
-        {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("@PB-US12940-11C", new string[] {
-                        "PB-US12940-11C"});
-#line 1616
-this.ScenarioSetup(scenarioInfo);
-#line 12
-this.FeatureBackground();
+            TechTalk.SpecFlow.Table table310 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Audit Type",
+                        "Query Message"});
+            table310.AddRow(new string[] {
+                        "Query Canceled",
+                        "Lab Field 6 must be greater than Lab Field 5. Please verify."});
+#line 1706
+ testRunner.And("I verify Audits exist", ((string)(null)), table310);
+#line 1709
+ testRunner.And("I take a screenshot");
+#line 1710
+ testRunner.And("I select Form \"Lab Form 8\" in \"Header\"");
 #line hidden
             TechTalk.SpecFlow.Table table311 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field",
                         "Data"});
             table311.AddRow(new string[] {
-                        "Subject Number",
-                        "{RndNum<num1>(5)}"});
-            table311.AddRow(new string[] {
-                        "Subject Initials",
-                        "SUB"});
-            table311.AddRow(new string[] {
-                        "Subject ID",
-                        "SUB {Var(num1)}"});
-#line 1619
-    testRunner.And("I create a Subject", ((string)(null)), table311);
-#line 1624
- testRunner.And("I select Form \"Lab Form 8\"");
+                        "Lab Field 5 - NEUTROPHILS - rr = T ; rmc = F",
+                        "2"});
+#line 1711
+ testRunner.And("I enter data in CRF and save", ((string)(null)), table311);
 #line hidden
             TechTalk.SpecFlow.Table table312 = new TechTalk.SpecFlow.Table(new string[] {
-                        "Field",
-                        "Data"});
-            table312.AddRow(new string[] {
-                        "Lab Field 5 - NEUTROPHILS - rr = T ; rmc = F",
-                        "5"});
-            table312.AddRow(new string[] {
-                        "Lab Field 6 - WBC - rr = T ; rmc = F",
-                        "3"});
-#line 1625
- testRunner.And("I enter data in CRF and save", ((string)(null)), table312);
-#line hidden
-            TechTalk.SpecFlow.Table table313 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field",
                         "Query Message",
                         "Answered",
                         "Closed"});
-            table313.AddRow(new string[] {
+            table312.AddRow(new string[] {
                         "Lab Field 6 - WBC - rr = T ; rmc = F",
                         "Lab Field 6 must be greater than Lab Field 5. Please verify.",
                         "false",
                         "false"});
-#line 1629
- testRunner.And("I verify Query is displayed", ((string)(null)), table313);
-#line 1632
+#line 1714
+ testRunner.And("I verify Query is not displayed", ((string)(null)), table312);
+#line 1717
  testRunner.And("I take a screenshot");
-#line 1633
- testRunner.And("I cancel the Query \"Lab Field 6 must be greater than Lab Field 5. Please verify.\"" +
-                    " on Field \"Lab Field 6 - WBC - rr = T ; rmc = F\"");
-#line 1634
- testRunner.And("I save the CRF page");
-#line 1635
- testRunner.And("I click audit on Field \"Lab Field 6 - WBC - rr = T ; rmc = F\"");
+#line hidden
+            TechTalk.SpecFlow.Table table313 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Data"});
+            table313.AddRow(new string[] {
+                        "Lab Field 5 - NEUTROPHILS - rr = T ; rmc = F",
+                        "5"});
+#line 1718
+ testRunner.When("I enter data in CRF and save", ((string)(null)), table313);
 #line hidden
             TechTalk.SpecFlow.Table table314 = new TechTalk.SpecFlow.Table(new string[] {
-                        "Audit Type",
-                        "Query Message"});
+                        "Field",
+                        "Query Message",
+                        "Answered",
+                        "Closed"});
             table314.AddRow(new string[] {
-                        "Query Canceled",
-                        "Lab Field 6 must be greater than Lab Field 5. Please verify."});
-#line 1636
- testRunner.And("I verify Audits exist", ((string)(null)), table314);
-#line 1639
+                        "Lab Field 6 - WBC - rr = T ; rmc = F",
+                        "Lab Field 6 must be greater than Lab Field 5. Please verify.",
+                        "false",
+                        "false"});
+#line 1721
+ testRunner.Then("I verify Query is not displayed", ((string)(null)), table314);
+#line 1724
  testRunner.And("I take a screenshot");
-#line 1640
- testRunner.And("I select Form \"Lab Form 8\" in \"Header\"");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("@PB_US12940_11D")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Query Refiring Logic5")]
+        public virtual void PB_US12940_11D()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("@PB_US12940_11D", new string[] {
+                        "release_564_Patch11",
+                        "PB_US12940_11D",
+                        "Validation"});
+#line 1729
+this.ScenarioSetup(scenarioInfo);
+#line 12
+this.FeatureBackground();
 #line hidden
             TechTalk.SpecFlow.Table table315 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field",
                         "Data"});
             table315.AddRow(new string[] {
-                        "Lab Field 5 - NEUTROPHILS - rr = T ; rmc = F",
-                        "2"});
-#line 1641
- testRunner.And("I enter data in CRF and save", ((string)(null)), table315);
+                        "Subject Number",
+                        "{RndNum<num1>(5)}"});
+            table315.AddRow(new string[] {
+                        "Subject Initials",
+                        "SUB"});
+            table315.AddRow(new string[] {
+                        "Subject ID",
+                        "SUB {Var(num1)}"});
+#line 1732
+ testRunner.And("I create a Subject", ((string)(null)), table315);
+#line 1737
+ testRunner.And("I select Form \"Lab Form 8\"");
 #line hidden
             TechTalk.SpecFlow.Table table316 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field",
-                        "Query Message",
-                        "Answered",
-                        "Closed"});
+                        "Data"});
             table316.AddRow(new string[] {
-                        "Lab Field 6 - WBC - rr = T ; rmc = F",
-                        "Lab Field 6 must be greater than Lab Field 5. Please verify.",
-                        "false",
-                        "false"});
-#line 1644
- testRunner.And("I verify Query is not displayed", ((string)(null)), table316);
-#line 1647
- testRunner.And("I take a screenshot");
+                        "Lab Field 7 - NEUTROPHILS - rr = F ; rmc = T",
+                        "5"});
+            table316.AddRow(new string[] {
+                        "Lab Field 8 - WBC - rr = F ; rmc = T",
+                        "3"});
+#line 1738
+ testRunner.And("I enter data in CRF and save", ((string)(null)), table316);
 #line hidden
             TechTalk.SpecFlow.Table table317 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field",
-                        "Data"});
-            table317.AddRow(new string[] {
-                        "Lab Field 5 - NEUTROPHILS - rr = T ; rmc = F",
-                        "5"});
-#line 1648
- testRunner.When("I enter data in CRF and save", ((string)(null)), table317);
-#line hidden
-            TechTalk.SpecFlow.Table table318 = new TechTalk.SpecFlow.Table(new string[] {
-                        "Field",
                         "Query Message",
                         "Answered",
                         "Closed"});
-            table318.AddRow(new string[] {
-                        "Lab Field 6 - WBC - rr = T ; rmc = F",
-                        "Lab Field 6 must be greater than Lab Field 5. Please verify.",
+            table317.AddRow(new string[] {
+                        "Lab Field 8 - WBC - rr = F ; rmc = T",
+                        "Lab Field 8 must be greater than Lab Field 7. Please verify.",
                         "false",
                         "false"});
-#line 1651
- testRunner.Then("I verify Query is not displayed", ((string)(null)), table318);
-#line 1654
+#line 1742
+ testRunner.And("I verify Query is displayed", ((string)(null)), table317);
+#line 1745
  testRunner.And("I take a screenshot");
+#line 1746
+ testRunner.And("I cancel the Query \"Lab Field 8 must be greater than Lab Field 7. Please verify.\"" +
+                    " on Field \"Lab Field 8 - WBC - rr = F ; rmc = T\"");
+#line 1747
+ testRunner.And("I save the CRF page");
+#line 1748
+ testRunner.And("I click audit on Field \"Lab Field 8 - WBC - rr = F ; rmc = T\"");
 #line hidden
-            this.ScenarioCleanup();
-        }
-        
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("@PB-US12940-11D")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Query Refiring Logic5")]
-        public virtual void PB_US12940_11D()
-        {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("@PB-US12940-11D", new string[] {
-                        "PB-US12940-11D"});
-#line 1657
-this.ScenarioSetup(scenarioInfo);
-#line 12
-this.FeatureBackground();
+            TechTalk.SpecFlow.Table table318 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Audit Type",
+                        "Query Message"});
+            table318.AddRow(new string[] {
+                        "Query Canceled",
+                        "Lab Field 8 must be greater than Lab Field 7. Please verify."});
+#line 1749
+ testRunner.And("I verify Audits exist", ((string)(null)), table318);
+#line 1752
+ testRunner.And("I take a screenshot");
+#line 1753
+ testRunner.And("I select Form \"Lab Form 8\" in \"Header\"");
 #line hidden
             TechTalk.SpecFlow.Table table319 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field",
                         "Data"});
             table319.AddRow(new string[] {
-                        "Subject Number",
-                        "{RndNum<num1>(5)}"});
-            table319.AddRow(new string[] {
-                        "Subject Initials",
-                        "SUB"});
-            table319.AddRow(new string[] {
-                        "Subject ID",
-                        "SUB {Var(num1)}"});
-#line 1660
- testRunner.And("I create a Subject", ((string)(null)), table319);
-#line 1665
- testRunner.And("I select Form \"Lab Form 8\"");
+                        "Lab Field 7 - NEUTROPHILS - rr = F ; rmc = T",
+                        "2"});
+#line 1754
+ testRunner.And("I enter data in CRF and save", ((string)(null)), table319);
 #line hidden
             TechTalk.SpecFlow.Table table320 = new TechTalk.SpecFlow.Table(new string[] {
-                        "Field",
-                        "Data"});
-            table320.AddRow(new string[] {
-                        "Lab Field 7 - NEUTROPHILS - rr = F ; rmc = T",
-                        "5"});
-            table320.AddRow(new string[] {
-                        "Lab Field 8 - WBC - rr = F ; rmc = T",
-                        "3"});
-#line 1666
- testRunner.And("I enter data in CRF and save", ((string)(null)), table320);
-#line hidden
-            TechTalk.SpecFlow.Table table321 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field",
                         "Query Message",
                         "Answered",
                         "Closed"});
-            table321.AddRow(new string[] {
+            table320.AddRow(new string[] {
                         "Lab Field 8 - WBC - rr = F ; rmc = T",
                         "Lab Field 8 must be greater than Lab Field 7. Please verify.",
                         "false",
                         "false"});
-#line 1670
- testRunner.And("I verify Query is displayed", ((string)(null)), table321);
-#line 1673
+#line 1757
+ testRunner.And("I verify Query is not displayed", ((string)(null)), table320);
+#line 1760
  testRunner.And("I take a screenshot");
-#line 1674
- testRunner.And("I cancel the Query \"Lab Field 8 must be greater than Lab Field 7. Please verify.\"" +
-                    " on Field \"Lab Field 8 - WBC - rr = F ; rmc = T\"");
-#line 1675
- testRunner.And("I save the CRF page");
-#line 1676
- testRunner.And("I click audit on Field \"Lab Field 8 - WBC - rr = F ; rmc = T\"");
+#line hidden
+            TechTalk.SpecFlow.Table table321 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Data"});
+            table321.AddRow(new string[] {
+                        "Lab Field 7 - NEUTROPHILS - rr = F ; rmc = T",
+                        "5"});
+#line 1761
+ testRunner.When("I enter data in CRF and save", ((string)(null)), table321);
 #line hidden
             TechTalk.SpecFlow.Table table322 = new TechTalk.SpecFlow.Table(new string[] {
-                        "Audit Type",
-                        "Query Message"});
+                        "Field",
+                        "Query Message",
+                        "Answered",
+                        "Closed"});
             table322.AddRow(new string[] {
-                        "Query Canceled",
-                        "Lab Field 8 must be greater than Lab Field 7. Please verify."});
-#line 1677
- testRunner.And("I verify Audits exist", ((string)(null)), table322);
-#line 1680
+                        "Lab Field 8 - WBC - rr = F ; rmc = T",
+                        "Lab Field 8 must be greater than Lab Field 7. Please verify.",
+                        "false",
+                        "false"});
+#line 1764
+ testRunner.And("I verify Query is not displayed", ((string)(null)), table322);
+#line 1767
  testRunner.And("I take a screenshot");
-#line 1681
- testRunner.And("I select Form \"Lab Form 8\" in \"Header\"");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("@PB_US12940_12A")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Query Refiring Logic5")]
+        public virtual void PB_US12940_12A()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("@PB_US12940_12A", new string[] {
+                        "release_564_Patch11",
+                        "PB_US12940_12A",
+                        "Validation"});
+#line 1772
+this.ScenarioSetup(scenarioInfo);
+#line 12
+this.FeatureBackground();
 #line hidden
             TechTalk.SpecFlow.Table table323 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field",
                         "Data"});
             table323.AddRow(new string[] {
-                        "Lab Field 7 - NEUTROPHILS - rr = F ; rmc = T",
-                        "2"});
-#line 1682
- testRunner.And("I enter data in CRF and save", ((string)(null)), table323);
+                        "Subject Number",
+                        "{RndNum<num1>(5)}"});
+            table323.AddRow(new string[] {
+                        "Subject Initials",
+                        "SUB"});
+            table323.AddRow(new string[] {
+                        "Subject ID",
+                        "SUB {Var(num1)}"});
+#line 1775
+    testRunner.And("I create a Subject", ((string)(null)), table323);
+#line 1780
+ testRunner.And("I select Form \"Lab Form 8\"");
 #line hidden
             TechTalk.SpecFlow.Table table324 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field",
-                        "Query Message",
-                        "Answered",
-                        "Closed"});
+                        "Data"});
             table324.AddRow(new string[] {
-                        "Lab Field 8 - WBC - rr = F ; rmc = T",
-                        "Lab Field 8 must be greater than Lab Field 7. Please verify.",
-                        "false",
-                        "false"});
-#line 1685
- testRunner.And("I verify Query is not displayed", ((string)(null)), table324);
-#line 1688
- testRunner.And("I take a screenshot");
+                        "Lab Field 1 - NEUTROPHILS - rr = T ; rmc = T",
+                        "5"});
+            table324.AddRow(new string[] {
+                        "Lab Field 2 - WBC - rr = T ; rmc = T",
+                        "3"});
+#line 1781
+ testRunner.And("I enter data in CRF and save", ((string)(null)), table324);
 #line hidden
             TechTalk.SpecFlow.Table table325 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field",
-                        "Data"});
-            table325.AddRow(new string[] {
-                        "Lab Field 7 - NEUTROPHILS - rr = F ; rmc = T",
-                        "5"});
-#line 1689
- testRunner.When("I enter data in CRF and save", ((string)(null)), table325);
-#line hidden
-            TechTalk.SpecFlow.Table table326 = new TechTalk.SpecFlow.Table(new string[] {
-                        "Field",
                         "Query Message",
                         "Answered",
                         "Closed"});
-            table326.AddRow(new string[] {
-                        "Lab Field 8 - WBC - rr = F ; rmc = T",
-                        "Lab Field 8 must be greater than Lab Field 7. Please verify.",
+            table325.AddRow(new string[] {
+                        "Lab Field 2 - WBC - rr = T ; rmc = T",
+                        "Lab Field 2 must be greater than Lab Field 1. Please verify.",
                         "false",
                         "false"});
-#line 1692
- testRunner.And("I verify Query is not displayed", ((string)(null)), table326);
-#line 1695
+#line 1785
+ testRunner.And("I verify Query is displayed", ((string)(null)), table325);
+#line 1788
  testRunner.And("I take a screenshot");
+#line 1789
+ testRunner.And("I cancel the Query \"Lab Field 2 must be greater than Lab Field 1. Please verify.\"" +
+                    " on Field \"Lab Field 2 - WBC - rr = T ; rmc = T\"");
+#line 1790
+ testRunner.And("I save the CRF page");
+#line 1791
+ testRunner.And("I click audit on Field \"Lab Field 2 - WBC - rr = T ; rmc = T\"");
 #line hidden
-            this.ScenarioCleanup();
-        }
-        
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("@PB-US12940-12A")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Query Refiring Logic5")]
-        public virtual void PB_US12940_12A()
-        {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("@PB-US12940-12A", new string[] {
-                        "PB-US12940-12A"});
-#line 1698
-this.ScenarioSetup(scenarioInfo);
-#line 12
-this.FeatureBackground();
+            TechTalk.SpecFlow.Table table326 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Audit Type",
+                        "Query Message"});
+            table326.AddRow(new string[] {
+                        "Query Canceled",
+                        "Lab Field 2 must be greater than Lab Field 1. Please verify."});
+#line 1792
+ testRunner.And("I verify Audits exist", ((string)(null)), table326);
+#line 1795
+ testRunner.And("I take a screenshot");
+#line 1796
+ testRunner.And("I select Form \"Lab Form 8\" in \"Header\"");
 #line hidden
             TechTalk.SpecFlow.Table table327 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field",
                         "Data"});
             table327.AddRow(new string[] {
-                        "Subject Number",
-                        "{RndNum<num1>(5)}"});
-            table327.AddRow(new string[] {
-                        "Subject Initials",
-                        "SUB"});
-            table327.AddRow(new string[] {
-                        "Subject ID",
-                        "SUB {Var(num1)}"});
-#line 1701
-    testRunner.And("I create a Subject", ((string)(null)), table327);
-#line 1706
- testRunner.And("I select Form \"Lab Form 8\"");
+                        "Lab Field 2 - WBC - rr = T ; rmc = T",
+                        "6"});
+#line 1797
+ testRunner.And("I enter data in CRF and save", ((string)(null)), table327);
 #line hidden
             TechTalk.SpecFlow.Table table328 = new TechTalk.SpecFlow.Table(new string[] {
-                        "Field",
-                        "Data"});
-            table328.AddRow(new string[] {
-                        "Lab Field 1 - NEUTROPHILS - rr = T ; rmc = T",
-                        "5"});
-            table328.AddRow(new string[] {
-                        "Lab Field 2 - WBC - rr = T ; rmc = T",
-                        "3"});
-#line 1707
- testRunner.And("I enter data in CRF and save", ((string)(null)), table328);
-#line hidden
-            TechTalk.SpecFlow.Table table329 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field",
                         "Query Message",
                         "Answered",
                         "Closed"});
-            table329.AddRow(new string[] {
+            table328.AddRow(new string[] {
                         "Lab Field 2 - WBC - rr = T ; rmc = T",
                         "Lab Field 2 must be greater than Lab Field 1. Please verify.",
                         "false",
                         "false"});
-#line 1711
- testRunner.And("I verify Query is displayed", ((string)(null)), table329);
-#line 1714
+#line 1800
+ testRunner.And("I verify Query is not displayed", ((string)(null)), table328);
+#line 1803
  testRunner.And("I take a screenshot");
-#line 1715
- testRunner.And("I cancel the Query \"Lab Field 2 must be greater than Lab Field 1. Please verify.\"" +
-                    " on Field \"Lab Field 2 - WBC - rr = T ; rmc = T\"");
-#line 1716
- testRunner.And("I save the CRF page");
-#line 1717
- testRunner.And("I click audit on Field \"Lab Field 2 - WBC - rr = T ; rmc = T\"");
+#line hidden
+            TechTalk.SpecFlow.Table table329 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Data"});
+            table329.AddRow(new string[] {
+                        "Lab Field 2 - WBC - rr = T ; rmc = T",
+                        "3"});
+#line 1804
+ testRunner.When("I enter data in CRF and save", ((string)(null)), table329);
 #line hidden
             TechTalk.SpecFlow.Table table330 = new TechTalk.SpecFlow.Table(new string[] {
-                        "Audit Type",
-                        "Query Message"});
+                        "Field",
+                        "Query Message",
+                        "Answered",
+                        "Closed"});
             table330.AddRow(new string[] {
-                        "Query Canceled",
-                        "Lab Field 2 must be greater than Lab Field 1. Please verify."});
-#line 1718
- testRunner.And("I verify Audits exist", ((string)(null)), table330);
-#line 1721
+                        "Lab Field 2 - WBC - rr = T ; rmc = T",
+                        "Lab Field 2 must be greater than Lab Field 1. Please verify.",
+                        "false",
+                        "false"});
+#line 1807
+ testRunner.Then("I verify Query is not displayed", ((string)(null)), table330);
+#line 1810
  testRunner.And("I take a screenshot");
-#line 1722
- testRunner.And("I select Form \"Lab Form 8\" in \"Header\"");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("@PB_US12940_12B")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Query Refiring Logic5")]
+        public virtual void PB_US12940_12B()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("@PB_US12940_12B", new string[] {
+                        "release_564_Patch11",
+                        "PB_US12940_12B",
+                        "Validation"});
+#line 1815
+this.ScenarioSetup(scenarioInfo);
+#line 12
+this.FeatureBackground();
 #line hidden
             TechTalk.SpecFlow.Table table331 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field",
                         "Data"});
             table331.AddRow(new string[] {
-                        "Lab Field 2 - WBC - rr = T ; rmc = T",
-                        "6"});
-#line 1723
- testRunner.And("I enter data in CRF and save", ((string)(null)), table331);
+                        "Subject Number",
+                        "{RndNum<num1>(5)}"});
+            table331.AddRow(new string[] {
+                        "Subject Initials",
+                        "SUB"});
+            table331.AddRow(new string[] {
+                        "Subject ID",
+                        "SUB {Var(num1)}"});
+#line 1818
+    testRunner.And("I create a Subject", ((string)(null)), table331);
+#line 1823
+ testRunner.And("I select Form \"Lab Form 8\"");
 #line hidden
             TechTalk.SpecFlow.Table table332 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field",
-                        "Query Message",
-                        "Answered",
-                        "Closed"});
+                        "Data"});
             table332.AddRow(new string[] {
-                        "Lab Field 2 - WBC - rr = T ; rmc = T",
-                        "Lab Field 2 must be greater than Lab Field 1. Please verify.",
-                        "false",
-                        "false"});
-#line 1726
- testRunner.And("I verify Query is not displayed", ((string)(null)), table332);
-#line 1729
- testRunner.And("I take a screenshot");
+                        "Lab Field 3 - NEUTROPHILS - rr = F ; rmc = F",
+                        "5"});
+            table332.AddRow(new string[] {
+                        "Lab Field 4 - WBC - rr = F ; rmc = F",
+                        "3"});
+#line 1824
+ testRunner.And("I enter data in CRF and save", ((string)(null)), table332);
 #line hidden
             TechTalk.SpecFlow.Table table333 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field",
-                        "Data"});
-            table333.AddRow(new string[] {
-                        "Lab Field 2 - WBC - rr = T ; rmc = T",
-                        "3"});
-#line 1730
- testRunner.When("I enter data in CRF and save", ((string)(null)), table333);
-#line hidden
-            TechTalk.SpecFlow.Table table334 = new TechTalk.SpecFlow.Table(new string[] {
-                        "Field",
                         "Query Message",
                         "Answered",
                         "Closed"});
-            table334.AddRow(new string[] {
-                        "Lab Field 2 - WBC - rr = T ; rmc = T",
-                        "Lab Field 2 must be greater than Lab Field 1. Please verify.",
+            table333.AddRow(new string[] {
+                        "Lab Field 4 - WBC - rr = F ; rmc = F",
+                        "Lab Field 4 must be greater than Lab Field 3. Please verify.",
                         "false",
                         "false"});
-#line 1733
- testRunner.Then("I verify Query is not displayed", ((string)(null)), table334);
-#line 1736
- testRunner.And("I take a screenshot");
+#line 1828
+ testRunner.And("I verify Query is displayed", ((string)(null)), table333);
+#line 1831
+    testRunner.And("I take a screenshot");
+#line 1832
+ testRunner.And("I cancel the Query \"Lab Field 4 must be greater than Lab Field 3. Please verify.\"" +
+                    " on Field \"Lab Field 4 - WBC - rr = F ; rmc = F\"");
+#line 1833
+ testRunner.And("I save the CRF page");
+#line 1834
+ testRunner.And("I click audit on Field \"Lab Field 4 - WBC - rr = F ; rmc = F\"");
 #line hidden
-            this.ScenarioCleanup();
-        }
-        
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("@PB-US12940-12B")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Query Refiring Logic5")]
-        public virtual void PB_US12940_12B()
-        {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("@PB-US12940-12B", new string[] {
-                        "PB-US12940-12B"});
-#line 1739
-this.ScenarioSetup(scenarioInfo);
-#line 12
-this.FeatureBackground();
+            TechTalk.SpecFlow.Table table334 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Audit Type",
+                        "Query Message"});
+            table334.AddRow(new string[] {
+                        "Query Canceled",
+                        "Lab Field 4 must be greater than Lab Field 3. Please verify."});
+#line 1835
+ testRunner.And("I verify Audits exist", ((string)(null)), table334);
+#line 1838
+ testRunner.And("I take a screenshot");
+#line 1839
+ testRunner.And("I select Form \"Lab Form 8\" in \"Header\"");
 #line hidden
             TechTalk.SpecFlow.Table table335 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field",
                         "Data"});
             table335.AddRow(new string[] {
-                        "Subject Number",
-                        "{RndNum<num1>(5)}"});
-            table335.AddRow(new string[] {
-                        "Subject Initials",
-                        "SUB"});
-            table335.AddRow(new string[] {
-                        "Subject ID",
-                        "SUB {Var(num1)}"});
-#line 1742
-    testRunner.And("I create a Subject", ((string)(null)), table335);
-#line 1747
- testRunner.And("I select Form \"Lab Form 8\"");
+                        "Lab Field 4 - WBC - rr = F ; rmc = F",
+                        "6"});
+#line 1840
+ testRunner.And("I enter data in CRF and save", ((string)(null)), table335);
 #line hidden
             TechTalk.SpecFlow.Table table336 = new TechTalk.SpecFlow.Table(new string[] {
-                        "Field",
-                        "Data"});
-            table336.AddRow(new string[] {
-                        "Lab Field 3 - NEUTROPHILS - rr = F ; rmc = F",
-                        "5"});
-            table336.AddRow(new string[] {
-                        "Lab Field 4 - WBC - rr = F ; rmc = F",
-                        "3"});
-#line 1748
- testRunner.And("I enter data in CRF and save", ((string)(null)), table336);
-#line hidden
-            TechTalk.SpecFlow.Table table337 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field",
                         "Query Message",
                         "Answered",
                         "Closed"});
-            table337.AddRow(new string[] {
+            table336.AddRow(new string[] {
                         "Lab Field 4 - WBC - rr = F ; rmc = F",
                         "Lab Field 4 must be greater than Lab Field 3. Please verify.",
                         "false",
                         "false"});
-#line 1752
- testRunner.And("I verify Query is displayed", ((string)(null)), table337);
-#line 1755
-    testRunner.And("I take a screenshot");
-#line 1756
- testRunner.And("I cancel the Query \"Lab Field 4 must be greater than Lab Field 3. Please verify.\"" +
-                    " on Field \"Lab Field 4 - WBC - rr = F ; rmc = F\"");
-#line 1757
- testRunner.And("I save the CRF page");
-#line 1758
- testRunner.And("I click audit on Field \"Lab Field 4 - WBC - rr = F ; rmc = F\"");
+#line 1843
+ testRunner.And("I verify Query is not displayed", ((string)(null)), table336);
+#line 1846
+ testRunner.And("I take a screenshot");
+#line hidden
+            TechTalk.SpecFlow.Table table337 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Data"});
+            table337.AddRow(new string[] {
+                        "Lab Field 4 - WBC - rr = F ; rmc = F",
+                        "3"});
+#line 1847
+ testRunner.When("I enter data in CRF and save", ((string)(null)), table337);
 #line hidden
             TechTalk.SpecFlow.Table table338 = new TechTalk.SpecFlow.Table(new string[] {
-                        "Audit Type",
-                        "Query Message"});
+                        "Field",
+                        "Query Message",
+                        "Answered",
+                        "Closed"});
             table338.AddRow(new string[] {
-                        "Query Canceled",
-                        "Lab Field 4 must be greater than Lab Field 3. Please verify."});
-#line 1759
- testRunner.And("I verify Audits exist", ((string)(null)), table338);
-#line 1762
+                        "Lab Field 4 - WBC - rr = F ; rmc = F",
+                        "Lab Field 4 must be greater than Lab Field 3. Please verify.",
+                        "false",
+                        "false"});
+#line 1850
+ testRunner.Then("I verify Query is not displayed", ((string)(null)), table338);
+#line 1853
  testRunner.And("I take a screenshot");
-#line 1763
- testRunner.And("I select Form \"Lab Form 8\" in \"Header\"");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("@PB_US12940_12C")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Query Refiring Logic5")]
+        public virtual void PB_US12940_12C()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("@PB_US12940_12C", new string[] {
+                        "release_564_Patch11",
+                        "PB_US12940_12C",
+                        "Validation"});
+#line 1858
+this.ScenarioSetup(scenarioInfo);
+#line 12
+this.FeatureBackground();
 #line hidden
             TechTalk.SpecFlow.Table table339 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field",
                         "Data"});
             table339.AddRow(new string[] {
-                        "Lab Field 4 - WBC - rr = F ; rmc = F",
-                        "6"});
-#line 1764
- testRunner.And("I enter data in CRF and save", ((string)(null)), table339);
+                        "Subject Number",
+                        "{RndNum<num1>(5)}"});
+            table339.AddRow(new string[] {
+                        "Subject Initials",
+                        "SUB"});
+            table339.AddRow(new string[] {
+                        "Subject ID",
+                        "SUB {Var(num1)}"});
+#line 1861
+    testRunner.And("I create a Subject", ((string)(null)), table339);
+#line 1866
+ testRunner.And("I select Form \"Lab Form 8\"");
 #line hidden
             TechTalk.SpecFlow.Table table340 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field",
-                        "Query Message",
-                        "Answered",
-                        "Closed"});
+                        "Data"});
             table340.AddRow(new string[] {
-                        "Lab Field 4 - WBC - rr = F ; rmc = F",
-                        "Lab Field 4 must be greater than Lab Field 3. Please verify.",
-                        "false",
-                        "false"});
-#line 1767
- testRunner.And("I verify Query is not displayed", ((string)(null)), table340);
-#line 1770
- testRunner.And("I take a screenshot");
+                        "Lab Field 5 - NEUTROPHILS - rr = T ; rmc = F",
+                        "5"});
+            table340.AddRow(new string[] {
+                        "Lab Field 6 - WBC - rr = T ; rmc = F",
+                        "3"});
+#line 1867
+ testRunner.And("I enter data in CRF and save", ((string)(null)), table340);
 #line hidden
             TechTalk.SpecFlow.Table table341 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field",
-                        "Data"});
-            table341.AddRow(new string[] {
-                        "Lab Field 4 - WBC - rr = F ; rmc = F",
-                        "3"});
-#line 1771
- testRunner.When("I enter data in CRF and save", ((string)(null)), table341);
-#line hidden
-            TechTalk.SpecFlow.Table table342 = new TechTalk.SpecFlow.Table(new string[] {
-                        "Field",
                         "Query Message",
                         "Answered",
                         "Closed"});
-            table342.AddRow(new string[] {
-                        "Lab Field 4 - WBC - rr = F ; rmc = F",
-                        "Lab Field 4 must be greater than Lab Field 3. Please verify.",
+            table341.AddRow(new string[] {
+                        "Lab Field 6 - WBC - rr = T ; rmc = F",
+                        "Lab Field 6 must be greater than Lab Field 5. Please verify.",
                         "false",
                         "false"});
-#line 1774
- testRunner.Then("I verify Query is not displayed", ((string)(null)), table342);
-#line 1777
+#line 1871
+ testRunner.And("I verify Query is displayed", ((string)(null)), table341);
+#line 1874
  testRunner.And("I take a screenshot");
+#line 1875
+ testRunner.And("I cancel the Query \"Lab Field 6 must be greater than Lab Field 5. Please verify.\"" +
+                    " on Field \"Lab Field 6 - WBC - rr = T ; rmc = F\"");
+#line 1876
+ testRunner.And("I save the CRF page");
+#line 1877
+ testRunner.And("I click audit on Field \"Lab Field 6 - WBC - rr = T ; rmc = F\"");
 #line hidden
-            this.ScenarioCleanup();
-        }
-        
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("@PB-US12940-12C")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Query Refiring Logic5")]
-        public virtual void PB_US12940_12C()
-        {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("@PB-US12940-12C", new string[] {
-                        "PB-US12940-12C"});
-#line 1780
-this.ScenarioSetup(scenarioInfo);
-#line 12
-this.FeatureBackground();
+            TechTalk.SpecFlow.Table table342 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Audit Type",
+                        "Query Message"});
+            table342.AddRow(new string[] {
+                        "Query Canceled",
+                        "Lab Field 6 must be greater than Lab Field 5. Please verify."});
+#line 1878
+ testRunner.And("I verify Audits exist", ((string)(null)), table342);
+#line 1881
+ testRunner.And("I take a screenshot");
+#line 1882
+ testRunner.And("I select Form \"Lab Form 8\" in \"Header\"");
 #line hidden
             TechTalk.SpecFlow.Table table343 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field",
                         "Data"});
             table343.AddRow(new string[] {
-                        "Subject Number",
-                        "{RndNum<num1>(5)}"});
-            table343.AddRow(new string[] {
-                        "Subject Initials",
-                        "SUB"});
-            table343.AddRow(new string[] {
-                        "Subject ID",
-                        "SUB {Var(num1)}"});
-#line 1783
-    testRunner.And("I create a Subject", ((string)(null)), table343);
-#line 1788
- testRunner.And("I select Form \"Lab Form 8\"");
+                        "Lab Field 6 - WBC - rr = T ; rmc = F",
+                        "6"});
+#line 1883
+ testRunner.And("I enter data in CRF and save", ((string)(null)), table343);
 #line hidden
             TechTalk.SpecFlow.Table table344 = new TechTalk.SpecFlow.Table(new string[] {
-                        "Field",
-                        "Data"});
-            table344.AddRow(new string[] {
-                        "Lab Field 5 - NEUTROPHILS - rr = T ; rmc = F",
-                        "5"});
-            table344.AddRow(new string[] {
-                        "Lab Field 6 - WBC - rr = T ; rmc = F",
-                        "3"});
-#line 1789
- testRunner.And("I enter data in CRF and save", ((string)(null)), table344);
-#line hidden
-            TechTalk.SpecFlow.Table table345 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field",
                         "Query Message",
                         "Answered",
                         "Closed"});
-            table345.AddRow(new string[] {
+            table344.AddRow(new string[] {
                         "Lab Field 6 - WBC - rr = T ; rmc = F",
                         "Lab Field 6 must be greater than Lab Field 5. Please verify.",
                         "false",
                         "false"});
-#line 1793
- testRunner.And("I verify Query is displayed", ((string)(null)), table345);
-#line 1796
+#line 1886
+ testRunner.And("I verify Query is not displayed", ((string)(null)), table344);
+#line 1889
  testRunner.And("I take a screenshot");
-#line 1797
- testRunner.And("I cancel the Query \"Lab Field 6 must be greater than Lab Field 5. Please verify.\"" +
-                    " on Field \"Lab Field 6 - WBC - rr = T ; rmc = F\"");
-#line 1798
- testRunner.And("I save the CRF page");
-#line 1799
- testRunner.And("I click audit on Field \"Lab Field 6 - WBC - rr = T ; rmc = F\"");
+#line hidden
+            TechTalk.SpecFlow.Table table345 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Data"});
+            table345.AddRow(new string[] {
+                        "Lab Field 6 - WBC - rr = T ; rmc = F",
+                        "3"});
+#line 1890
+ testRunner.When("I enter data in CRF and save", ((string)(null)), table345);
 #line hidden
             TechTalk.SpecFlow.Table table346 = new TechTalk.SpecFlow.Table(new string[] {
-                        "Audit Type",
-                        "Query Message"});
+                        "Field",
+                        "Query Message",
+                        "Answered",
+                        "Closed"});
             table346.AddRow(new string[] {
-                        "Query Canceled",
-                        "Lab Field 6 must be greater than Lab Field 5. Please verify."});
-#line 1800
- testRunner.And("I verify Audits exist", ((string)(null)), table346);
-#line 1803
+                        "Lab Field 6 - WBC - rr = T ; rmc = F",
+                        "Lab Field 6 must be greater than Lab Field 5. Please verify.",
+                        "false",
+                        "false"});
+#line 1893
+ testRunner.And("I verify Query is not displayed", ((string)(null)), table346);
+#line 1896
  testRunner.And("I take a screenshot");
-#line 1804
- testRunner.And("I select Form \"Lab Form 8\" in \"Header\"");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("@PB_US12940_12D")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Query Refiring Logic5")]
+        public virtual void PB_US12940_12D()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("@PB_US12940_12D", new string[] {
+                        "release_564_Patch11",
+                        "PB_US12940_12D",
+                        "Validation"});
+#line 1901
+this.ScenarioSetup(scenarioInfo);
+#line 12
+this.FeatureBackground();
 #line hidden
             TechTalk.SpecFlow.Table table347 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field",
                         "Data"});
             table347.AddRow(new string[] {
-                        "Lab Field 6 - WBC - rr = T ; rmc = F",
-                        "6"});
-#line 1805
- testRunner.And("I enter data in CRF and save", ((string)(null)), table347);
+                        "Subject Number",
+                        "{RndNum<num1>(5)}"});
+            table347.AddRow(new string[] {
+                        "Subject Initials",
+                        "SUB"});
+            table347.AddRow(new string[] {
+                        "Subject ID",
+                        "SUB {Var(num1)}"});
+#line 1904
+ testRunner.And("I create a Subject", ((string)(null)), table347);
+#line 1909
+ testRunner.And("I select Form \"Lab Form 8\"");
 #line hidden
             TechTalk.SpecFlow.Table table348 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field",
-                        "Query Message",
-                        "Answered",
-                        "Closed"});
+                        "Data"});
             table348.AddRow(new string[] {
-                        "Lab Field 6 - WBC - rr = T ; rmc = F",
-                        "Lab Field 6 must be greater than Lab Field 5. Please verify.",
-                        "false",
-                        "false"});
-#line 1808
- testRunner.And("I verify Query is not displayed", ((string)(null)), table348);
-#line 1811
- testRunner.And("I take a screenshot");
+                        "Lab Field 7 - NEUTROPHILS - rr = F ; rmc = T",
+                        "5"});
+            table348.AddRow(new string[] {
+                        "Lab Field 8 - WBC - rr = F ; rmc = T",
+                        "3"});
+#line 1910
+ testRunner.And("I enter data in CRF and save", ((string)(null)), table348);
 #line hidden
             TechTalk.SpecFlow.Table table349 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field",
-                        "Data"});
-            table349.AddRow(new string[] {
-                        "Lab Field 6 - WBC - rr = T ; rmc = F",
-                        "3"});
-#line 1812
- testRunner.When("I enter data in CRF and save", ((string)(null)), table349);
-#line hidden
-            TechTalk.SpecFlow.Table table350 = new TechTalk.SpecFlow.Table(new string[] {
-                        "Field",
                         "Query Message",
                         "Answered",
                         "Closed"});
-            table350.AddRow(new string[] {
-                        "Lab Field 6 - WBC - rr = T ; rmc = F",
-                        "Lab Field 6 must be greater than Lab Field 5. Please verify.",
+            table349.AddRow(new string[] {
+                        "Lab Field 8 - WBC - rr = F ; rmc = T",
+                        "Lab Field 8 must be greater than Lab Field 7. Please verify.",
                         "false",
                         "false"});
-#line 1815
- testRunner.And("I verify Query is not displayed", ((string)(null)), table350);
-#line 1818
+#line 1914
+ testRunner.And("I verify Query is displayed", ((string)(null)), table349);
+#line 1917
  testRunner.And("I take a screenshot");
+#line 1918
+ testRunner.And("I cancel the Query \"Lab Field 8 must be greater than Lab Field 7. Please verify.\"" +
+                    " on Field \"Lab Field 8 - WBC - rr = F ; rmc = T\"");
+#line 1919
+ testRunner.And("I save the CRF page");
+#line 1920
+ testRunner.And("I click audit on Field \"Lab Field 8 - WBC - rr = F ; rmc = T\"");
 #line hidden
-            this.ScenarioCleanup();
-        }
-        
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("@PB-US12940-12D")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Query Refiring Logic5")]
-        public virtual void PB_US12940_12D()
-        {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("@PB-US12940-12D", new string[] {
-                        "PB-US12940-12D"});
-#line 1821
-this.ScenarioSetup(scenarioInfo);
-#line 12
-this.FeatureBackground();
+            TechTalk.SpecFlow.Table table350 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Audit Type",
+                        "Query Message"});
+            table350.AddRow(new string[] {
+                        "Query Canceled",
+                        "Lab Field 8 must be greater than Lab Field 7. Please verify."});
+#line 1921
+ testRunner.And("I verify Audits exist", ((string)(null)), table350);
+#line 1924
+ testRunner.And("I take a screenshot");
+#line 1925
+ testRunner.And("I select Form \"Lab Form 8\" in \"Header\"");
 #line hidden
             TechTalk.SpecFlow.Table table351 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field",
                         "Data"});
             table351.AddRow(new string[] {
-                        "Subject Number",
-                        "{RndNum<num1>(5)}"});
-            table351.AddRow(new string[] {
-                        "Subject Initials",
-                        "SUB"});
-            table351.AddRow(new string[] {
-                        "Subject ID",
-                        "SUB {Var(num1)}"});
-#line 1824
- testRunner.And("I create a Subject", ((string)(null)), table351);
-#line 1829
- testRunner.And("I select Form \"Lab Form 8\"");
+                        "Lab Field 8 - WBC - rr = F ; rmc = T",
+                        "6"});
+#line 1926
+ testRunner.And("I enter data in CRF and save", ((string)(null)), table351);
 #line hidden
             TechTalk.SpecFlow.Table table352 = new TechTalk.SpecFlow.Table(new string[] {
-                        "Field",
-                        "Data"});
-            table352.AddRow(new string[] {
-                        "Lab Field 7 - NEUTROPHILS - rr = F ; rmc = T",
-                        "5"});
-            table352.AddRow(new string[] {
-                        "Lab Field 8 - WBC - rr = F ; rmc = T",
-                        "3"});
-#line 1830
- testRunner.And("I enter data in CRF and save", ((string)(null)), table352);
-#line hidden
-            TechTalk.SpecFlow.Table table353 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field",
                         "Query Message",
                         "Answered",
                         "Closed"});
-            table353.AddRow(new string[] {
+            table352.AddRow(new string[] {
                         "Lab Field 8 - WBC - rr = F ; rmc = T",
                         "Lab Field 8 must be greater than Lab Field 7. Please verify.",
                         "false",
                         "false"});
-#line 1834
- testRunner.And("I verify Query is displayed", ((string)(null)), table353);
-#line 1837
+#line 1929
+ testRunner.And("I verify Query is not displayed", ((string)(null)), table352);
+#line 1932
  testRunner.And("I take a screenshot");
-#line 1838
- testRunner.And("I cancel the Query \"Lab Field 8 must be greater than Lab Field 7. Please verify.\"" +
-                    " on Field \"Lab Field 8 - WBC - rr = F ; rmc = T\"");
-#line 1839
- testRunner.And("I save the CRF page");
-#line 1840
- testRunner.And("I click audit on Field \"Lab Field 8 - WBC - rr = F ; rmc = T\"");
+#line hidden
+            TechTalk.SpecFlow.Table table353 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Data"});
+            table353.AddRow(new string[] {
+                        "Lab Field 8 - WBC - rr = F ; rmc = T",
+                        "3"});
+#line 1933
+ testRunner.When("I enter data in CRF and save", ((string)(null)), table353);
 #line hidden
             TechTalk.SpecFlow.Table table354 = new TechTalk.SpecFlow.Table(new string[] {
-                        "Audit Type",
-                        "Query Message"});
+                        "Field",
+                        "Query Message",
+                        "Answered",
+                        "Closed"});
             table354.AddRow(new string[] {
-                        "Query Canceled",
-                        "Lab Field 8 must be greater than Lab Field 7. Please verify."});
-#line 1841
- testRunner.And("I verify Audits exist", ((string)(null)), table354);
-#line 1844
+                        "Lab Field 8 - WBC - rr = F ; rmc = T",
+                        "Lab Field 8 must be greater than Lab Field 7. Please verify.",
+                        "false",
+                        "false"});
+#line 1936
+ testRunner.Then("I verify Query is not displayed", ((string)(null)), table354);
+#line 1939
  testRunner.And("I take a screenshot");
-#line 1845
- testRunner.And("I select Form \"Lab Form 8\" in \"Header\"");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("@PB_US12940_13A")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Query Refiring Logic5")]
+        public virtual void PB_US12940_13A()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("@PB_US12940_13A", new string[] {
+                        "release_564_Patch11",
+                        "PB_US12940_13A",
+                        "Validation"});
+#line 1944
+this.ScenarioSetup(scenarioInfo);
+#line 12
+this.FeatureBackground();
 #line hidden
             TechTalk.SpecFlow.Table table355 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field",
                         "Data"});
             table355.AddRow(new string[] {
-                        "Lab Field 8 - WBC - rr = F ; rmc = T",
-                        "6"});
-#line 1846
- testRunner.And("I enter data in CRF and save", ((string)(null)), table355);
+                        "Subject Number",
+                        "{RndNum<num1>(5)}"});
+            table355.AddRow(new string[] {
+                        "Subject Initials",
+                        "SUB"});
+            table355.AddRow(new string[] {
+                        "Subject ID",
+                        "SUB {Var(num1)}"});
+#line 1947
+ testRunner.And("I create a Subject", ((string)(null)), table355);
+#line 1952
+ testRunner.And("I select Form \"Lab Form 8\"");
 #line hidden
             TechTalk.SpecFlow.Table table356 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field",
-                        "Query Message",
-                        "Answered",
-                        "Closed"});
+                        "Data"});
             table356.AddRow(new string[] {
-                        "Lab Field 8 - WBC - rr = F ; rmc = T",
-                        "Lab Field 8 must be greater than Lab Field 7. Please verify.",
-                        "false",
-                        "false"});
-#line 1849
- testRunner.And("I verify Query is not displayed", ((string)(null)), table356);
-#line 1852
- testRunner.And("I take a screenshot");
+                        "Lab Field 1 - NEUTROPHILS - rr = T ; rmc = T",
+                        "5"});
+            table356.AddRow(new string[] {
+                        "Lab Field 2 - WBC - rr = T ; rmc = T",
+                        "3"});
+#line 1953
+ testRunner.And("I enter data in CRF and save", ((string)(null)), table356);
 #line hidden
             TechTalk.SpecFlow.Table table357 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field",
-                        "Data"});
-            table357.AddRow(new string[] {
-                        "Lab Field 8 - WBC - rr = F ; rmc = T",
-                        "3"});
-#line 1853
- testRunner.When("I enter data in CRF and save", ((string)(null)), table357);
-#line hidden
-            TechTalk.SpecFlow.Table table358 = new TechTalk.SpecFlow.Table(new string[] {
-                        "Field",
                         "Query Message",
                         "Answered",
                         "Closed"});
-            table358.AddRow(new string[] {
-                        "Lab Field 8 - WBC - rr = F ; rmc = T",
-                        "Lab Field 8 must be greater than Lab Field 7. Please verify.",
+            table357.AddRow(new string[] {
+                        "Lab Field 2 - WBC - rr = T ; rmc = T",
+                        "Lab Field 2 must be greater than Lab Field 1. Please verify.",
                         "false",
                         "false"});
-#line 1856
- testRunner.Then("I verify Query is not displayed", ((string)(null)), table358);
-#line 1859
+#line 1957
+ testRunner.And("I verify Query is displayed", ((string)(null)), table357);
+#line 1960
  testRunner.And("I take a screenshot");
+#line 1961
+ testRunner.And("I cancel the Query \"Lab Field 2 must be greater than Lab Field 1. Please verify.\"" +
+                    " on Field \"Lab Field 2 - WBC - rr = T ; rmc = T\"");
+#line 1962
+ testRunner.And("I save the CRF page");
+#line 1963
+ testRunner.And("I click audit on Field \"Lab Field 2 - WBC - rr = T ; rmc = T\"");
 #line hidden
-            this.ScenarioCleanup();
-        }
-        
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("@PB-US12940-13A")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Query Refiring Logic5")]
-        public virtual void PB_US12940_13A()
-        {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("@PB-US12940-13A", new string[] {
-                        "PB-US12940-13A"});
-#line 1862
-this.ScenarioSetup(scenarioInfo);
-#line 12
-this.FeatureBackground();
+            TechTalk.SpecFlow.Table table358 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Audit Type",
+                        "Query Message"});
+            table358.AddRow(new string[] {
+                        "Query Canceled",
+                        "Lab Field 2 must be greater than Lab Field 1. Please verify."});
+#line 1964
+ testRunner.And("I verify Audits exist", ((string)(null)), table358);
+#line 1967
+ testRunner.And("I take a screenshot");
+#line 1968
+ testRunner.And("I select Form \"Lab Form 8\" in \"Header\"");
 #line hidden
             TechTalk.SpecFlow.Table table359 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field",
                         "Data"});
             table359.AddRow(new string[] {
-                        "Subject Number",
-                        "{RndNum<num1>(5)}"});
-            table359.AddRow(new string[] {
-                        "Subject Initials",
-                        "SUB"});
-            table359.AddRow(new string[] {
-                        "Subject ID",
-                        "SUB {Var(num1)}"});
-#line 1865
- testRunner.And("I create a Subject", ((string)(null)), table359);
-#line 1870
- testRunner.And("I select Form \"Lab Form 8\"");
+                        "Lab Field 1 - NEUTROPHILS - rr = T ; rmc = T",
+                        "7"});
+#line 1969
+ testRunner.And("I enter data in CRF and save", ((string)(null)), table359);
 #line hidden
             TechTalk.SpecFlow.Table table360 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field",
-                        "Data"});
-            table360.AddRow(new string[] {
-                        "Lab Field 1 - NEUTROPHILS - rr = T ; rmc = T",
-                        "5"});
-            table360.AddRow(new string[] {
-                        "Lab Field 2 - WBC - rr = T ; rmc = T",
-                        "3"});
-#line 1871
- testRunner.And("I enter data in CRF and save", ((string)(null)), table360);
-#line hidden
-            TechTalk.SpecFlow.Table table361 = new TechTalk.SpecFlow.Table(new string[] {
-                        "Field",
                         "Query Message",
                         "Answered",
                         "Closed"});
-            table361.AddRow(new string[] {
+            table360.AddRow(new string[] {
                         "Lab Field 2 - WBC - rr = T ; rmc = T",
                         "Lab Field 2 must be greater than Lab Field 1. Please verify.",
                         "false",
                         "false"});
-#line 1875
- testRunner.And("I verify Query is displayed", ((string)(null)), table361);
-#line 1878
- testRunner.And("I take a screenshot");
-#line 1879
- testRunner.And("I cancel the Query \"Lab Field 2 must be greater than Lab Field 1. Please verify.\"" +
-                    " on Field \"Lab Field 2 - WBC - rr = T ; rmc = T\"");
-#line 1880
- testRunner.And("I save the CRF page");
-#line 1881
- testRunner.And("I click audit on Field \"Lab Field 2 - WBC - rr = T ; rmc = T\"");
-#line hidden
-            TechTalk.SpecFlow.Table table362 = new TechTalk.SpecFlow.Table(new string[] {
-                        "Audit Type",
-                        "Query Message"});
-            table362.AddRow(new string[] {
-                        "Query Canceled",
-                        "Lab Field 2 must be greater than Lab Field 1. Please verify."});
-#line 1882
- testRunner.And("I verify Audits exist", ((string)(null)), table362);
-#line 1885
- testRunner.And("I take a screenshot");
-#line 1886
- testRunner.And("I select Form \"Lab Form 8\" in \"Header\"");
-#line hidden
-            TechTalk.SpecFlow.Table table363 = new TechTalk.SpecFlow.Table(new string[] {
-                        "Field",
-                        "Data"});
-            table363.AddRow(new string[] {
-                        "Lab Field 1 - NEUTROPHILS - rr = T ; rmc = T",
-                        "7"});
-#line 1887
- testRunner.And("I enter data in CRF and save", ((string)(null)), table363);
-#line hidden
-            TechTalk.SpecFlow.Table table364 = new TechTalk.SpecFlow.Table(new string[] {
-                        "Field",
-                        "Query Message",
-                        "Answered",
-                        "Closed"});
-            table364.AddRow(new string[] {
-                        "Lab Field 2 - WBC - rr = T ; rmc = T",
-                        "Lab Field 2 must be greater than Lab Field 1. Please verify.",
-                        "false",
-                        "false"});
-#line 1890
- testRunner.And("I verify Query is displayed", ((string)(null)), table364);
-#line 1893
+#line 1972
+ testRunner.And("I verify Query is displayed", ((string)(null)), table360);
+#line 1975
  testRunner.And("I take a screenshot");
 #line hidden
             this.ScenarioCleanup();
         }
         
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("@PB-US12940-13B")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("@PB_US12940_13B")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Query Refiring Logic5")]
         public virtual void PB_US12940_13B()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("@PB-US12940-13B", new string[] {
-                        "PB-US12940-13B"});
-#line 1896
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("@PB_US12940_13B", new string[] {
+                        "release_564_Patch11",
+                        "PB_US12940_13B",
+                        "Validation"});
+#line 1980
 this.ScenarioSetup(scenarioInfo);
 #line 12
 this.FeatureBackground();
+#line hidden
+            TechTalk.SpecFlow.Table table361 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Data"});
+            table361.AddRow(new string[] {
+                        "Subject Number",
+                        "{RndNum<num1>(5)}"});
+            table361.AddRow(new string[] {
+                        "Subject Initials",
+                        "SUB"});
+            table361.AddRow(new string[] {
+                        "Subject ID",
+                        "SUB {Var(num1)}"});
+#line 1983
+ testRunner.And("I create a Subject", ((string)(null)), table361);
+#line 1988
+ testRunner.And("I select Form \"Lab Form 8\"");
+#line hidden
+            TechTalk.SpecFlow.Table table362 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Data"});
+            table362.AddRow(new string[] {
+                        "Lab Field 3 - NEUTROPHILS - rr = F ; rmc = F",
+                        "5"});
+            table362.AddRow(new string[] {
+                        "Lab Field 4 - WBC - rr = F ; rmc = F",
+                        "3"});
+#line 1989
+ testRunner.And("I enter data in CRF and save", ((string)(null)), table362);
+#line hidden
+            TechTalk.SpecFlow.Table table363 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Query Message",
+                        "Answered",
+                        "Closed"});
+            table363.AddRow(new string[] {
+                        "Lab Field 4 - WBC - rr = F ; rmc = F",
+                        "Lab Field 4 must be greater than Lab Field 3. Please verify.",
+                        "false",
+                        "false"});
+#line 1993
+ testRunner.And("I verify Query is displayed", ((string)(null)), table363);
+#line 1996
+ testRunner.And("I take a screenshot");
+#line 1997
+ testRunner.And("I cancel the Query \"Lab Field 4 must be greater than Lab Field 3. Please verify.\"" +
+                    " on Field \"Lab Field 4 - WBC - rr = F ; rmc = F\"");
+#line 1998
+ testRunner.And("I save the CRF page");
+#line 1999
+ testRunner.And("I click audit on Field \"Lab Field 4 - WBC - rr = F ; rmc = F\"");
+#line hidden
+            TechTalk.SpecFlow.Table table364 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Audit Type",
+                        "Query Message"});
+            table364.AddRow(new string[] {
+                        "Query Canceled",
+                        "Lab Field 4 must be greater than Lab Field 3. Please verify."});
+#line 2000
+ testRunner.And("I verify Audits exist", ((string)(null)), table364);
+#line 2003
+ testRunner.And("I take a screenshot");
+#line 2004
+ testRunner.And("I select Form \"Lab Form 8\" in \"Header\"");
 #line hidden
             TechTalk.SpecFlow.Table table365 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field",
                         "Data"});
             table365.AddRow(new string[] {
-                        "Subject Number",
-                        "{RndNum<num1>(5)}"});
-            table365.AddRow(new string[] {
-                        "Subject Initials",
-                        "SUB"});
-            table365.AddRow(new string[] {
-                        "Subject ID",
-                        "SUB {Var(num1)}"});
-#line 1899
- testRunner.And("I create a Subject", ((string)(null)), table365);
-#line 1904
- testRunner.And("I select Form \"Lab Form 8\"");
-#line 1905
- testRunner.And("I take a screenshot");
+                        "Lab Field 3 - NEUTROPHILS - rr = F ; rmc = F",
+                        "7"});
+#line 2005
+ testRunner.When("I enter data in CRF and save", ((string)(null)), table365);
 #line hidden
             TechTalk.SpecFlow.Table table366 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field",
-                        "Data"});
-            table366.AddRow(new string[] {
-                        "Lab Field 3 - NEUTROPHILS - rr = F ; rmc = F",
-                        "5"});
-            table366.AddRow(new string[] {
-                        "Lab Field 4 - WBC - rr = F ; rmc = F",
-                        "3"});
-#line 1906
- testRunner.And("I enter data in CRF and save", ((string)(null)), table366);
-#line hidden
-            TechTalk.SpecFlow.Table table367 = new TechTalk.SpecFlow.Table(new string[] {
-                        "Field",
                         "Query Message",
                         "Answered",
                         "Closed"});
-            table367.AddRow(new string[] {
+            table366.AddRow(new string[] {
                         "Lab Field 4 - WBC - rr = F ; rmc = F",
                         "Lab Field 4 must be greater than Lab Field 3. Please verify.",
                         "false",
                         "false"});
-#line 1910
- testRunner.And("I verify Query is displayed", ((string)(null)), table367);
-#line 1913
- testRunner.And("I take a screenshot");
-#line 1914
- testRunner.And("I cancel the Query \"Lab Field 4 must be greater than Lab Field 3. Please verify.\"" +
-                    " on Field \"Lab Field 4 - WBC - rr = F ; rmc = F\"");
-#line 1915
- testRunner.And("I save the CRF page");
-#line 1916
- testRunner.And("I click audit on Field \"Lab Field 4 - WBC - rr = F ; rmc = F\"");
-#line hidden
-            TechTalk.SpecFlow.Table table368 = new TechTalk.SpecFlow.Table(new string[] {
-                        "Audit Type",
-                        "Query Message"});
-            table368.AddRow(new string[] {
-                        "Query Canceled",
-                        "Lab Field 4 must be greater than Lab Field 3. Please verify."});
-#line 1917
- testRunner.And("I verify Audits exist", ((string)(null)), table368);
-#line 1920
- testRunner.And("I take a screenshot");
-#line 1921
- testRunner.And("I select Form \"Lab Form 8\" in \"Header\"");
-#line hidden
-            TechTalk.SpecFlow.Table table369 = new TechTalk.SpecFlow.Table(new string[] {
-                        "Field",
-                        "Data"});
-            table369.AddRow(new string[] {
-                        "Lab Field 3 - NEUTROPHILS - rr = F ; rmc = F",
-                        "7"});
-#line 1922
- testRunner.When("I enter data in CRF and save", ((string)(null)), table369);
-#line hidden
-            TechTalk.SpecFlow.Table table370 = new TechTalk.SpecFlow.Table(new string[] {
-                        "Field",
-                        "Query Message",
-                        "Answered",
-                        "Closed"});
-            table370.AddRow(new string[] {
-                        "Lab Field 4 - WBC - rr = F ; rmc = F",
-                        "Lab Field 4 must be greater than Lab Field 3. Please verify.",
-                        "false",
-                        "false"});
-#line 1925
- testRunner.And("I verify Query is displayed", ((string)(null)), table370);
-#line 1928
+#line 2008
+ testRunner.And("I verify Query is displayed", ((string)(null)), table366);
+#line 2011
  testRunner.And("I take a screenshot");
 #line hidden
             this.ScenarioCleanup();
         }
         
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("@PB-US12940-13C")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("@PB_US12940_13C")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Query Refiring Logic5")]
         public virtual void PB_US12940_13C()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("@PB-US12940-13C", new string[] {
-                        "PB-US12940-13C"});
-#line 1931
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("@PB_US12940_13C", new string[] {
+                        "release_564_Patch11",
+                        "PB_US12940_13C",
+                        "Validation"});
+#line 2016
 this.ScenarioSetup(scenarioInfo);
 #line 12
 this.FeatureBackground();
+#line hidden
+            TechTalk.SpecFlow.Table table367 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Data"});
+            table367.AddRow(new string[] {
+                        "Subject Number",
+                        "{RndNum<num1>(5)}"});
+            table367.AddRow(new string[] {
+                        "Subject Initials",
+                        "SUB"});
+            table367.AddRow(new string[] {
+                        "Subject ID",
+                        "SUB {Var(num1)}"});
+#line 2019
+ testRunner.And("I create a Subject", ((string)(null)), table367);
+#line 2024
+ testRunner.And("I select Form \"Lab Form 8\"");
+#line hidden
+            TechTalk.SpecFlow.Table table368 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Data"});
+            table368.AddRow(new string[] {
+                        "Lab Field 5 - NEUTROPHILS - rr = T ; rmc = F",
+                        "5"});
+            table368.AddRow(new string[] {
+                        "Lab Field 6 - WBC - rr = T ; rmc = F",
+                        "3"});
+#line 2025
+ testRunner.And("I enter data in CRF and save", ((string)(null)), table368);
+#line hidden
+            TechTalk.SpecFlow.Table table369 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Query Message",
+                        "Answered",
+                        "Closed"});
+            table369.AddRow(new string[] {
+                        "Lab Field 6 - WBC - rr = T ; rmc = F",
+                        "Lab Field 6 must be greater than Lab Field 5. Please verify.",
+                        "false",
+                        "false"});
+#line 2029
+ testRunner.And("I verify Query is displayed", ((string)(null)), table369);
+#line 2032
+ testRunner.And("I take a screenshot");
+#line 2033
+ testRunner.And("I cancel the Query \"Lab Field 6 must be greater than Lab Field 5. Please verify.\"" +
+                    " on Field \"Lab Field 6 - WBC - rr = T ; rmc = F\"");
+#line 2034
+ testRunner.And("I save the CRF page");
+#line 2035
+ testRunner.And("I click audit on Field \"Lab Field 6 - WBC - rr = T ; rmc = F\"");
+#line hidden
+            TechTalk.SpecFlow.Table table370 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Audit Type",
+                        "Query Message"});
+            table370.AddRow(new string[] {
+                        "Query Canceled",
+                        "Lab Field 6 must be greater than Lab Field 5. Please verify."});
+#line 2036
+ testRunner.And("I verify Audits exist", ((string)(null)), table370);
+#line 2039
+ testRunner.And("I take a screenshot");
+#line 2040
+ testRunner.And("I select Form \"Lab Form 8\" in \"Header\"");
 #line hidden
             TechTalk.SpecFlow.Table table371 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field",
                         "Data"});
             table371.AddRow(new string[] {
-                        "Subject Number",
-                        "{RndNum<num1>(5)}"});
-            table371.AddRow(new string[] {
-                        "Subject Initials",
-                        "SUB"});
-            table371.AddRow(new string[] {
-                        "Subject ID",
-                        "SUB {Var(num1)}"});
-#line 1934
- testRunner.And("I create a Subject", ((string)(null)), table371);
-#line 1939
- testRunner.And("I select Form \"Lab Form 8\"");
-#line 1940
- testRunner.And("I take a screenshot");
+                        "Lab Field 5 - NEUTROPHILS - rr = T ; rmc = F",
+                        "7"});
+#line 2041
+ testRunner.When("I enter data in CRF and save", ((string)(null)), table371);
 #line hidden
             TechTalk.SpecFlow.Table table372 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field",
-                        "Data"});
-            table372.AddRow(new string[] {
-                        "Lab Field 5 - NEUTROPHILS - rr = T ; rmc = F",
-                        "5"});
-            table372.AddRow(new string[] {
-                        "Lab Field 6 - WBC - rr = T ; rmc = F",
-                        "3"});
-#line 1941
- testRunner.And("I enter data in CRF and save", ((string)(null)), table372);
-#line hidden
-            TechTalk.SpecFlow.Table table373 = new TechTalk.SpecFlow.Table(new string[] {
-                        "Field",
                         "Query Message",
                         "Answered",
                         "Closed"});
-            table373.AddRow(new string[] {
+            table372.AddRow(new string[] {
                         "Lab Field 6 - WBC - rr = T ; rmc = F",
                         "Lab Field 6 must be greater than Lab Field 5. Please verify.",
                         "false",
                         "false"});
-#line 1945
- testRunner.And("I verify Query is displayed", ((string)(null)), table373);
-#line 1948
- testRunner.And("I take a screenshot");
-#line 1949
- testRunner.And("I cancel the Query \"Lab Field 6 must be greater than Lab Field 5. Please verify.\"" +
-                    " on Field \"Lab Field 6 - WBC - rr = T ; rmc = F\"");
-#line 1950
- testRunner.And("I save the CRF page");
-#line 1951
- testRunner.And("I click audit on Field \"Lab Field 6 - WBC - rr = T ; rmc = F\"");
-#line hidden
-            TechTalk.SpecFlow.Table table374 = new TechTalk.SpecFlow.Table(new string[] {
-                        "Audit Type",
-                        "Query Message"});
-            table374.AddRow(new string[] {
-                        "Query Canceled",
-                        "Lab Field 6 must be greater than Lab Field 5. Please verify."});
-#line 1952
- testRunner.And("I verify Audits exist", ((string)(null)), table374);
-#line 1955
- testRunner.And("I take a screenshot");
-#line 1956
- testRunner.And("I select Form \"Lab Form 8\" in \"Header\"");
-#line hidden
-            TechTalk.SpecFlow.Table table375 = new TechTalk.SpecFlow.Table(new string[] {
-                        "Field",
-                        "Data"});
-            table375.AddRow(new string[] {
-                        "Lab Field 5 - NEUTROPHILS - rr = T ; rmc = F",
-                        "7"});
-#line 1957
- testRunner.When("I enter data in CRF and save", ((string)(null)), table375);
-#line hidden
-            TechTalk.SpecFlow.Table table376 = new TechTalk.SpecFlow.Table(new string[] {
-                        "Field",
-                        "Query Message",
-                        "Answered",
-                        "Closed"});
-            table376.AddRow(new string[] {
-                        "Lab Field 6 - WBC - rr = T ; rmc = F",
-                        "Lab Field 6 must be greater than Lab Field 5. Please verify.",
-                        "false",
-                        "false"});
-#line 1960
- testRunner.Then("I verify Query is displayed", ((string)(null)), table376);
-#line 1963
+#line 2044
+ testRunner.Then("I verify Query is displayed", ((string)(null)), table372);
+#line 2047
  testRunner.And("I take a screenshot");
 #line hidden
             this.ScenarioCleanup();
         }
         
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("@PB-US12940-13D")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("@PB_US12940_13D")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Query Refiring Logic5")]
         public virtual void PB_US12940_13D()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("@PB-US12940-13D", new string[] {
-                        "PB-US12940-13D"});
-#line 1966
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("@PB_US12940_13D", new string[] {
+                        "release_564_Patch11",
+                        "PB_US12940_13D",
+                        "Validation"});
+#line 2052
 this.ScenarioSetup(scenarioInfo);
 #line 12
 this.FeatureBackground();
+#line hidden
+            TechTalk.SpecFlow.Table table373 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Data"});
+            table373.AddRow(new string[] {
+                        "Subject Number",
+                        "{RndNum<num1>(5)}"});
+            table373.AddRow(new string[] {
+                        "Subject Initials",
+                        "SUB"});
+            table373.AddRow(new string[] {
+                        "Subject ID",
+                        "SUB {Var(num1)}"});
+#line 2055
+ testRunner.And("I create a Subject", ((string)(null)), table373);
+#line 2060
+ testRunner.And("I select Form \"Lab Form 8\"");
+#line hidden
+            TechTalk.SpecFlow.Table table374 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Data"});
+            table374.AddRow(new string[] {
+                        "Lab Field 7 - NEUTROPHILS - rr = F ; rmc = T",
+                        "5"});
+            table374.AddRow(new string[] {
+                        "Lab Field 8 - WBC - rr = F ; rmc = T",
+                        "3"});
+#line 2061
+ testRunner.And("I enter data in CRF and save", ((string)(null)), table374);
+#line hidden
+            TechTalk.SpecFlow.Table table375 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Query Message",
+                        "Answered",
+                        "Closed"});
+            table375.AddRow(new string[] {
+                        "Lab Field 8 - WBC - rr = F ; rmc = T",
+                        "Lab Field 8 must be greater than Lab Field 7. Please verify.",
+                        "false",
+                        "false"});
+#line 2065
+ testRunner.And("I verify Query is displayed", ((string)(null)), table375);
+#line 2068
+ testRunner.And("I take a screenshot");
+#line 2069
+ testRunner.And("I cancel the Query \"Lab Field 8 must be greater than Lab Field 7. Please verify.\"" +
+                    " on Field \"Lab Field 8 - WBC - rr = F ; rmc = T\"");
+#line 2070
+ testRunner.And("I save the CRF page");
+#line 2071
+ testRunner.And("I click audit on Field \"Lab Field 8 - WBC - rr = F ; rmc = T\"");
+#line hidden
+            TechTalk.SpecFlow.Table table376 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Audit Type",
+                        "Query Message"});
+            table376.AddRow(new string[] {
+                        "Query Canceled",
+                        "Lab Field 8 must be greater than Lab Field 7. Please verify."});
+#line 2072
+ testRunner.And("I verify Audits exist", ((string)(null)), table376);
+#line 2075
+ testRunner.And("I take a screenshot");
+#line 2076
+ testRunner.And("I select Form \"Lab Form 8\" in \"Header\"");
 #line hidden
             TechTalk.SpecFlow.Table table377 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field",
                         "Data"});
             table377.AddRow(new string[] {
-                        "Subject Number",
-                        "{RndNum<num1>(5)}"});
-            table377.AddRow(new string[] {
-                        "Subject Initials",
-                        "SUB"});
-            table377.AddRow(new string[] {
-                        "Subject ID",
-                        "SUB {Var(num1)}"});
-#line 1969
- testRunner.And("I create a Subject", ((string)(null)), table377);
-#line 1974
- testRunner.And("I select Form \"Lab Form 8\"");
-#line 1975
- testRunner.And("I take a screenshot");
+                        "Lab Field 7 - NEUTROPHILS - rr = F ; rmc = T",
+                        "7"});
+#line 2077
+ testRunner.When("I enter data in CRF and save", ((string)(null)), table377);
 #line hidden
             TechTalk.SpecFlow.Table table378 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field",
-                        "Data"});
-            table378.AddRow(new string[] {
-                        "Lab Field 7 - NEUTROPHILS - rr = F ; rmc = T",
-                        "5"});
-            table378.AddRow(new string[] {
-                        "Lab Field 8 - WBC - rr = F ; rmc = T",
-                        "3"});
-#line 1976
- testRunner.And("I enter data in CRF and save", ((string)(null)), table378);
-#line hidden
-            TechTalk.SpecFlow.Table table379 = new TechTalk.SpecFlow.Table(new string[] {
-                        "Field",
                         "Query Message",
                         "Answered",
                         "Closed"});
-            table379.AddRow(new string[] {
+            table378.AddRow(new string[] {
                         "Lab Field 8 - WBC - rr = F ; rmc = T",
                         "Lab Field 8 must be greater than Lab Field 7. Please verify.",
                         "false",
                         "false"});
-#line 1980
- testRunner.And("I verify Query is displayed", ((string)(null)), table379);
-#line 1983
- testRunner.And("I take a screenshot");
-#line 1984
- testRunner.And("I cancel the Query \"Lab Field 8 must be greater than Lab Field 7. Please verify.\"" +
-                    " on Field \"Lab Field 8 - WBC - rr = F ; rmc = T\"");
-#line 1985
- testRunner.And("I save the CRF page");
-#line 1986
- testRunner.And("I click audit on Field \"Lab Field 8 - WBC - rr = F ; rmc = T\"");
-#line hidden
-            TechTalk.SpecFlow.Table table380 = new TechTalk.SpecFlow.Table(new string[] {
-                        "Audit Type",
-                        "Query Message"});
-            table380.AddRow(new string[] {
-                        "Query Canceled",
-                        "Lab Field 8 must be greater than Lab Field 7. Please verify."});
-#line 1987
- testRunner.And("I verify Audits exist", ((string)(null)), table380);
-#line 1990
- testRunner.And("I take a screenshot");
-#line 1991
- testRunner.And("I select Form \"Lab Form 8\" in \"Header\"");
-#line hidden
-            TechTalk.SpecFlow.Table table381 = new TechTalk.SpecFlow.Table(new string[] {
-                        "Field",
-                        "Data"});
-            table381.AddRow(new string[] {
-                        "Lab Field 7 - NEUTROPHILS - rr = F ; rmc = T",
-                        "7"});
-#line 1992
- testRunner.When("I enter data in CRF and save", ((string)(null)), table381);
-#line hidden
-            TechTalk.SpecFlow.Table table382 = new TechTalk.SpecFlow.Table(new string[] {
-                        "Field",
-                        "Query Message",
-                        "Answered",
-                        "Closed"});
-            table382.AddRow(new string[] {
-                        "Lab Field 8 - WBC - rr = F ; rmc = T",
-                        "Lab Field 8 must be greater than Lab Field 7. Please verify.",
-                        "false",
-                        "false"});
-#line 1995
- testRunner.Then("I verify Query is displayed", ((string)(null)), table382);
-#line 1998
+#line 2080
+ testRunner.Then("I verify Query is displayed", ((string)(null)), table378);
+#line 2083
  testRunner.And("I take a screenshot");
 #line hidden
             this.ScenarioCleanup();
