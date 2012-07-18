@@ -28,7 +28,7 @@ namespace Medidata.RBT.Features.Rave
 		public void INavigateTo____PageWithParameters(string pageName, Table table)
 		{
 			//TODO:Set parameters from table
-			PageBase page = RavePageObjectFactory.GetPage(pageName.Replace(" ", "") + "Page") as PageBase;
+			PageBase page = TestContext.POFactory.GetPage(pageName.Replace(" ", "") + "Page") as PageBase;
 			foreach (var row in table.Rows)
 			{
 				page.Parameters[row["Name"]]=row["Value"];
@@ -39,8 +39,8 @@ namespace Medidata.RBT.Features.Rave
 		[StepDefinition(@"I navigate to ""([^""]*)"" page")]
 		public void INavigateTo____Page(string pageName)
 		{
-		
-			CurrentPage = RavePageObjectFactory.GetPage(pageName.Replace(" ", "") + "Page").NavigateToSelf();
+
+			CurrentPage = TestContext.POFactory.GetPage(pageName.Replace(" ", "") + "Page").NavigateToSelf();
 		}
 
         [StepDefinition(@"I go to the log page for logger ""([^""]*)""")]
@@ -50,22 +50,6 @@ namespace Medidata.RBT.Features.Rave
         }
 
 
-		//TODO: this method should not exist.
-		[StepDefinition(@"I switch to ""([^""]*)"" window of type ""([^""]*)""")]
-		public void ISwitchTo____WindowOfType____(string windowName, string potype)
-		{
-			IWebDriver window = null;
-			foreach (var handle in Browser.WindowHandles)
-			{
-				window = Browser.SwitchTo().Window(handle);
-				if (window.Title == windowName)
-					break;
-			}
-			Browser = (window as RemoteWebDriver);
-			CurrentPage = RavePageObjectFactory.GetPage(potype);
-
-			Thread.Sleep(2000);
-		}
 
 	}
 }

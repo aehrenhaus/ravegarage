@@ -136,7 +136,7 @@ namespace Medidata.RBT.Common.Steps
 		[StepDefinition(@"I note down ""([^""]*)"" to ""([^""]*)""")]
 		public void INoteDownCrfversionTo____(string identifer, string varName)
 		{
-			string text = CurrentPage.GetText(identifer);
+			string text = CurrentPage.GetInfomation(identifer);
 			SpecialStringHelper.SetVar(varName, text);
 		}
 	}

@@ -43,25 +43,9 @@ Background:
 #----------------------------------------------------------------------------------------------------------------------------------------	
 Scenario:  test
 
- 	And I select Study "AM Edit Check Study" and Site "AM Edit Site"
-	And I create a Subject
-	| Field            | Data              |
-	| Subject Number   | {RndNum<num2>(5)} |
-	| Subject Initials | sub               |
-
-	And I note down crfversion to "ver#"
-	 And I navigate to "Home"
-	And I navigate to "Architect"
-	And I select "AM Edit Check Study" in "Active Projects"
-	And I create Draft "Draft {RndNum<num1>(5)}" from Project "AM Edit Check Study" and Version "{Var(ver#)}"
-
-	And I navigate to "Edit Checks"
-	And I inactivate edit check "Mixed Form Query"
-
-	And I select Draft "Draft1" in "Header"
-	And I publish CRF Version "Target{RndNum<num1>(3)}"
-	
-
+ And I navigate to "CRF" page with parameters
+	| Name | Value |
+	| DP   | 521646 |
 
 @release_564_Patch11
 @PB_8.1.1

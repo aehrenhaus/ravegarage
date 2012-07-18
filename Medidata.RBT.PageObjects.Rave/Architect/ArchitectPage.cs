@@ -20,15 +20,15 @@ namespace Medidata.RBT.PageObjects.Rave
 			return base.GetElementByName(name);
 		}
 
-		protected override IPage GetTargetPageObjectByLinkAreaName(string type, string areaName)
-		{
-			if (areaName == "Active Projects" || areaName == "Inactive Projects")
-			{
-				return new ArchitectLibraryPage();
-			}
+		//protected override IPage GetTargetPageObjectByLinkAreaName(string type, string areaName)
+		//{
+		//    if (areaName == "Active Projects" || areaName == "Inactive Projects")
+		//    {
+		//        return new ArchitectLibraryPage();
+		//    }
 
-			return base.GetTargetPageObjectByLinkAreaName(type, areaName);
-		}
+		//    return base.GetTargetPageObjectByLinkAreaName(type, areaName);
+		//}
 
 		public override IPage ClickLink(string linkText)
 		{

@@ -2,34 +2,15 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Reflection;
 
 namespace Medidata.RBT.PageObjects.Rave
 {
-	public class RavePageObjectFactory
+	public class RavePageObjectFactory : AbstractPageObjectFactory
 	{
-		static Dictionary<string, Type> pageObjectTypes;
-
-		public static IPage GetPage(string className) 
+		protected override System.Reflection.Assembly[] GetContainingAssemblies()
 		{
-			if (pageObjectTypes == null)
-			{
-				pageObjectTypes = new Dictionary<string, Type>();
-				foreach (var poType in typeof(RavePageObjectFactory).Assembly.GetTypes().Where(x => x.GetInterface("IPage")!=null))
-				{
-
-					pageObjectTypes[poType.Name] = poType;
-				}
-			}
-
-			if (!className.EndsWith("Page"))
-				className += "Page";
-
-			if (!pageObjectTypes.ContainsKey(className))
-				throw new Exception("Page class not found:"+className);
-
-			var po = Activator.CreateInstance(pageObjectTypes[className]) as IPage;
-
-			return po;
+			return new Assembly[] { typeof(RavePageObjectFactory).Assembly };
 		}
 	}
 }

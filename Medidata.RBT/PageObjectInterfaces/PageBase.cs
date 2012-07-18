@@ -75,16 +75,16 @@ namespace Medidata.RBT
 
             var link = area.Link(linkText);
             link.Click();
-			
-	
-            return GetTargetPageObjectByLinkAreaName(type, areaIdentifer);
+
+
+			return TestContext.POFactory.GetPageByUrl(new Uri(Browser.Url));
         }
 
         public virtual IPage ClickLink(string linkText)
         {
             var link = Browser.Link(linkText);
             link.Click();
-            return this;
+			return TestContext.POFactory.GetPageByUrl(new Uri(Browser.Url)); ;
         }
 
         public virtual IPage NavigateTo(string identifer)
@@ -141,6 +141,9 @@ namespace Medidata.RBT
         public virtual bool IsThePage()
         {
 			//TODO: this does not take the {} template into account, provide fix later
+			if (string.IsNullOrEmpty(this.URL))
+				return false;
+
 			return Browser.Url.Contains(this.URL);
         }
 
@@ -188,9 +191,9 @@ namespace Medidata.RBT
 		/// Get some critical text from the page
 		/// </summary>
 		/// <param name="identifer"></param>
-		public virtual string GetText(string identifer)
+		public virtual string GetInfomation(string identifer)
 		{
-			throw new Exception("Donn't know how to get text from "+identifer);
+			throw new Exception("Don't know how to get text from "+identifer);
 		}
 
         #endregion
@@ -243,13 +246,13 @@ namespace Medidata.RBT
         //    return GetTargetPageObjectByLinkAreaName(null, areaName);
         //}
 
-        protected virtual IPage GetTargetPageObjectByLinkAreaName(string type, string areaName)
-        {
-			if (string.IsNullOrEmpty(type))
-				return this;
-            throw new Exception(string.Format("This page does not provide information of target page obejct of a link area(type={0}, area={1}",type,areaName));
+		//protected virtual IPage GetTargetPageObjectByLinkAreaName(string type, string areaName)
+		//{
+		//    if (string.IsNullOrEmpty(type))
+		//        return this;
+		//    throw new Exception(string.Format("This page does not provide information of target page obejct of a link area(type={0}, area={1}",type,areaName));
       
-		}
+		//}
 
         /// <summary>
         /// 

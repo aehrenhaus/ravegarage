@@ -9,16 +9,17 @@ using System.Data.SqlClient;
 namespace Medidata.RBT
 {
 	/// <summary>
-	/// Date
+	/// Date with format
 	/// </summary>
-    class DateReplace : IStringReplace
+    class DateFReplace : IStringReplace
     {
-		public string Replace(string[] args)
-		{
-			int dayDiff = int.Parse(args[0]);
 
-			return DateTime.Today.AddDays(dayDiff).ToString("dd MMM yyyy");
-		}
+        public string Replace(string[] args)
+        {
+			int dayDiff = int.Parse(args[0]);
+			string format = args[1];
+			return DateTime.Today.AddDays(dayDiff).ToString(format);
+        }
 
 
 		public string[] ArgsDescription
@@ -26,8 +27,9 @@ namespace Medidata.RBT
 			get
 			{
 
-				return new string[] { 
-					"Day difference from today"
+				return new string[2] { 
+					"Day difference from today",
+					"Format"
 			
 			};
 			}

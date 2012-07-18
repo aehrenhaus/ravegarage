@@ -37,13 +37,13 @@ namespace Medidata.RBT.PageObjects.Rave
 			return base.NavigateTo(name);
 		}
 
-		protected override IPage GetTargetPageObjectByLinkAreaName(string type, string areaName)
-		{
-			if (areaName == "CRF Drafts")
-				return new ArchitectCRFDraftPage();
+		//protected override IPage GetTargetPageObjectByLinkAreaName(string type, string areaName)
+		//{
+		//    if (areaName == "CRF Drafts")
+		//        return new ArchitectCRFDraftPage();
 
-			return base.GetTargetPageObjectByLinkAreaName(type, areaName);
-		}
+		//    return base.GetTargetPageObjectByLinkAreaName(type, areaName);
+		//}
 
 		protected override IWebElement GetElementByName(string name)
 		{

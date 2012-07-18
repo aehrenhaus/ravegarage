@@ -169,7 +169,7 @@ namespace Medidata.RBT.PageObjects.Rave
 
 			link.Click();
 			string className = poClassMapping[name];
-			return RavePageObjectFactory.GetPage(className);
+			return TestContext.POFactory.GetPage(className);
 		}
 
         public override string URL { get { return "homepage.aspx"; } }

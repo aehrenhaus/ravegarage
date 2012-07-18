@@ -108,6 +108,6 @@ namespace Medidata.RBT
 		/// <returns></returns>
 		bool IsThePage();
 
-		string GetText(string identifer);
+		string GetInfomation(string identifer);
 	}
 }

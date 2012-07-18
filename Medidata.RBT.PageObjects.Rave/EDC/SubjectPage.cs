@@ -50,18 +50,18 @@ namespace Medidata.RBT.PageObjects.Rave
 			return tr;
 		}
 
-		protected override IPage GetTargetPageObjectByLinkAreaName(string type, string areaName)
-		{
-			//if (areaName == "")
-			return RavePageObjectFactory.GetPage("CRFPage");
-		}
+		//protected override IPage GetTargetPageObjectByLinkAreaName(string type, string areaName)
+		//{
+		//    //if (areaName == "")
+		//    return TestContext.POFactory.GetPage("CRFPage");
+		//}
 
 
-		public override string GetText(string identifer)
+		public override string GetInfomation(string identifer)
 		{
 			if (identifer == "crfversion")
 				return GetCRFVersion();
-			return base.GetText(identifer);
+			return base.GetInfomation(identifer);
 		}
 
 		public string GetCRFVersion()

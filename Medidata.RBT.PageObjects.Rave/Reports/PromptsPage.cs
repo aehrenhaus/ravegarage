@@ -15,6 +15,10 @@ namespace Medidata.RBT.PageObjects.Rave
 {
     public class PromptsPage : RavePageBase
 	{
+		public PromptsPage()
+		{
+		}
+
 		public PromptsPage(string reportPOName)
 		{
 			this.reportPOName = reportPOName;
@@ -28,7 +32,7 @@ namespace Medidata.RBT.PageObjects.Rave
 			if (textOrName == "Submit Report")
 			{
 				base.ClickButton(textOrName);
-				return RavePageObjectFactory.GetPage(reportPOName);
+				return TestContext.POFactory.GetPage(reportPOName);
 			}
 			return base.ClickButton(textOrName);
 		}
@@ -112,6 +116,9 @@ namespace Medidata.RBT.PageObjects.Rave
 			if (textbox.GetAttribute("readonly") == "true")
 			{
 				//a datetime control
+				//This is a hack 
+				//Because selecting a date from the calendar control is hard
+				//I fill the textbox directly. And 'readonly' must be removed before setting the text
 				textbox.Element.RemoveAttribute("readonly");
 
 				textbox.SetText(value);
