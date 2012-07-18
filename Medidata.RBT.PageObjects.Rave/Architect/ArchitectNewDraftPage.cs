@@ -12,8 +12,14 @@ namespace Medidata.RBT.PageObjects.Rave
 {
 	public class ArchitectNewDraftPage : ArchitectBasePage
 	{
-	
 
+		public override string URL
+		{
+			get
+			{
+				return "Modules/Architect/NewDraft.aspx";
+			}
+		}
 	
 	}
 }

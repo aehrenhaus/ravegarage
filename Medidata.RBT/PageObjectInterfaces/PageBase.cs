@@ -158,7 +158,7 @@ namespace Medidata.RBT
 			if (string.IsNullOrEmpty(this.URL))
 				return false;
 
-			return Browser.Url.Contains(this.URL);
+			return Browser.Url.ToLower().Contains(this.URL.ToLower());
         }
 
         /// <summary>
@@ -243,30 +243,6 @@ namespace Medidata.RBT
         {
             throw new Exception("This page does not provide information about named page elements");
         }
-
-        /// <summary>
-        /// This is only used by default implementaion of ClickLinkInArea()
-        /// which tries to find out the target page object of the linkarea.
-        /// 
-        /// This is useful when a group of links will navigate to same kind of Url's ,just with different parameters.
-        /// 
-        /// If a group of links will go to different Urls, use IPage.Navigate() method instead.
-        /// 
-        /// </summary>
-        /// <param name="areaName"></param>
-        /// <returns></returns>
-        //protected virtual IPage GetTargetPageObjectByLinkAreaName(string areaName)
-        //{
-        //    return GetTargetPageObjectByLinkAreaName(null, areaName);
-        //}
-
-		//protected virtual IPage GetTargetPageObjectByLinkAreaName(string type, string areaName)
-		//{
-		//    if (string.IsNullOrEmpty(type))
-		//        return this;
-		//    throw new Exception(string.Format("This page does not provide information of target page obejct of a link area(type={0}, area={1}",type,areaName));
-      
-		//}
 
         /// <summary>
         /// 

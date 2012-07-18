@@ -416,8 +416,8 @@ Scenario: PB_8.5.1 When I run the Report, then query related data are displayed 
 		| Name          |
 		| CM_STRT_DT    |
 		| CURR_AXIS_NUM |
-	And I set report parameter "Start Date" with "{Date()}"
-	And I set report parameter "End Date" with "{Date()}"
+	And I set report parameter "Start Date" with "{Date(0)}"
+	And I set report parameter "End Date" with "{Date(0)}"
 	And I search report parameter "Audit Type" with "Query"
 	And I set report parameter "Audit Type" with table
 		| SubCategory |
@@ -471,8 +471,8 @@ Scenario: PB_8.5.2 When I run the Report, then query related data are displayed 
 	And I set report parameter "Query Status" with table
 		| Name |
 		| Open |
-	And I set report parameter "Start Date" with "{Date()}"
-	And I set report parameter "End Date" with "{Date()}"
+	And I set report parameter "Start Date" with "{Date(0)}"
+	And I set report parameter "End Date" with "{Date(0)}"
 
 	When I click button "Submit Report"
 
@@ -752,8 +752,8 @@ Scenario: PB_8.8.1 When I run the Report, then query related data are displayed 
 
 	And I navigate to "Edit Checks"
 	And I inactivate edit check "Mixed Form Query"
-
-	And I select Draft "Draft {Var(num1)}" in "Header"
+	And I take a screenshot
+	And I select Draft "Draft {Var(d#)}" in "Header"
 	And I publish CRF Version "Target{RndNum<TV#>(3)}"
 	And I note down "crfversion" to "newversion#"
 	And I select Study "AM Edit Check Study" in "Header"
@@ -818,7 +818,7 @@ Scenario: PB_8.8.1 When I run the Report, then query related data are displayed 
 	And I choose "{Var(newversion#)}" from "Source CRF"
 	And I choose "{Var(newversion1#)}" from "Target CRF"
 	And I click button "Create Plan"
-	And I navigate to "Exceute Plan"
+	And I navigate to "Execute Plan"
 	And I migrate all Subjects
 	And I select Migration Results and verify Job Status is set to Complete
 	And I take a screenshot
@@ -848,22 +848,22 @@ Scenario: PB_8.8.1 When I run the Report, then query related data are displayed 
 @release_564_Patch11
 @PB_8.9.1
 @Draft
-Scenario: PB_8.9.1 When I run the Report, then query related data are displayed in the report. Publish Checks
+Scenario: PB_8.9.1 Publish Checks
 
 	And I navigate to "Architect"
 	And I select "AM Edit Check Study" in "Active Projects"
-	And I navigate to "Draft 1"
-	And I publish CRF Version "Version1{RndNum<num1>(3)}"
-	And I note down "crfversion" to "newversion1"
-	And I publish CRF Version "Version2{RndNum<num2>(3)}"
-	And I note down "crfversion" to "newversion2"
-	And I publish CRF Version "Version3{RndNum<num3>(3)}"
-	And I note down "crfversion" to "newversion3"
+	And I select "Draft 1" in "CRF Drafts"
+	And I publish CRF Version "Pub1{RndNum<TV#>(3)}"
+	And I note down "crfversion" to "newversion1#"
+	And I publish CRF Version "Pub2{RndNum<TV#>(3)}"
+	And I note down "crfversion" to "newversion2#"
+	And I publish CRF Version "Pub1{RndNum<TV#>(3)}"
+	And I note down "crfversion" to "newversion3#"
 	
 	And I navigate to "Home"
 	And I select Study "AM Edit Check Study" and Site "AM Edit Site"
     And I create a Subject
-		| Field            | Value             |
+		| Field            | Data              |
 		| Subject Number   | {RndNum<num4>(5)} |
 		| Subject Initials | sub               |
 	And I select Form "Mixed Form"
@@ -886,11 +886,11 @@ Scenario: PB_8.9.1 When I run the Report, then query related data are displayed 
 	And I navigate to "Home"
 	And I navigate to "Architect"
 	And I select "AM Edit Check Study" in "Active Projects"
-	And I navigate to "Pulish Checks"
-	And I select "{Var(newversion1)}" from "Current CRF Version"
-	And I select "{Var(newversion2)}" from "Reference CRF Version"
+	And I select "Publish Checks"
+	And I choose "{Var(newversion1#)}" from "Current CRF Version"
+	And I choose "{Var(newversion2#)}" from "Reference CRF Version"
 	And I click button "Create Plan"
-	And I check "Inactivate" checkbox for "Mixed Form Query" edit check
+	And I check "Inactivate" in "Mixed Form Query"
 	And I navigate to "Save"
 	And I take a screenshot
 	And I navigate to "Publish" 
@@ -916,9 +916,10 @@ Scenario: PB_8.9.1 When I run the Report, then query related data are displayed 
 	And I select "{Var(newversion3)}" from "Reference CRF Version"
 	And I click button "Create Plan"
 	And I check "Publish" checkbox for "Mixed Form Query" edit check
-	And I navigate to "Save"
+	And I select "Save"
+	And I select "Publish"
 	And I take a screenshot
-	And I navigate to "Publish" 
+
 	And I verify Job Status is set to Complete
 	And I take a screenshot
 
@@ -948,10 +949,10 @@ Scenario: PB_8.9.1 When I run the Report, then query related data are displayed 
 @Draft
 Scenario: PB_8.10.1 When I run the Report, then query related data are displayed in the report. Queries verification on data points with Freeze, Hard lock and Inactive records
 
-	And I select "Edit Check Study 8"
+	And I select "Edit Check Study 3"
 	And I select site "Edit Check Site 8"
     And I create a Subject
-	| Field            | Value             |
+	| Field            | Data              |
 	| Subject Number   | {RndNum<num1>(5)} |
 	| Subject Initials | sub               |
 	And I select Form "Mixed Form"

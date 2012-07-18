@@ -22,7 +22,7 @@ namespace Medidata.RBT.PageObjects.Rave
 
 		public void WaitForComplete()
 		{
-			int timeout = 60;
+			int timeout = 500;
 			var result = Browser.WaitForElement(By.LinkText("Migration Results"),null,timeout);
 			result.Click();
 			var span = Browser.WaitForElement(b=>
@@ -33,6 +33,14 @@ namespace Medidata.RBT.PageObjects.Rave
 					return null;
 				},"Take forever to complete", timeout);
 
+		}
+
+		public override string URL
+		{
+			get
+			{
+				return "Modules/AmendmentManager/MigrationExecute.aspx";
+			}
 		}
 
 	}
