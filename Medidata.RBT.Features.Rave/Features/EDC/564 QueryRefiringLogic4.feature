@@ -57,11 +57,10 @@ Scenario: PB_4.1.1 As an EDC user, On a Cross Forms Standard form to log form, w
 	And I close the Query "'Date Informed Consent Signed' is greater. Please revise." on Field "Start Date"
 	And I close the Query "Informed Consent 'Current Distribution Number' is not equal to Concomitant Medications 'Current Axis Number'." on Field "Current Axis Number"
 	And I save the CRF page	
-	And I take a screenshot
-
-	# Given closed Query with message "" exists on Field "Start Date" in Form "Concomitant Medications" in Folder "Screening" in Subject "SUB301" in Site "Edit Check Site 3" in Study "Edit Check Study 3"
-
 	And I open log line 1
+	And I verify closed Query with message "'Date Informed Consent Signed' is greater. Please revise." is displayed on Field "Start Date"
+	And I verify closed Query with message "Informed Consent 'Current Distribution Number' is not equal to Concomitant Medications 'Current Axis Number'." is displayed on Field "Current Axis Number"
+	And I take a screenshot
 	When I enter data in CRF and save
 		| Field               | Data        |
 		| Start Date          | 08 Jan 2000 |
@@ -69,6 +68,12 @@ Scenario: PB_4.1.1 As an EDC user, On a Cross Forms Standard form to log form, w
 	And I open log line 1
 	Then I verify Query with message "'Date Informed Consent Signed' is greater. Please revise." is displayed on Field "Start Date"
 	And I verify Query with message "Informed Consent 'Current Distribution Number' is not equal to Concomitant Medications 'Current Axis Number'." is displayed on Field "Current Axis Number"
+	And I verify Query is displayed
+      | Field      | Query Message                                             | Answered | Closed |
+      | Start Date | 'Date Informed Consent Signed' is greater. Please revise. | false    | false  |
+	Then I verify Query is displayed
+      | Field               | Query Message                                                                                                 | Answered | Closed |
+      | Current Axis Number | Informed Consent 'Current Distribution Number' is not equal to Concomitant Medications 'Current Axis Number'. | false    | false  |
 	And I take a screenshot
  
 #----------------------------------------------------------------------------------------------------------------------------------------	
@@ -99,8 +104,7 @@ Scenario: PB_4.1.2
 	And I cancel the Query "Informed Consent 'Current Distribution Number' is not equal to Concomitant Medications 'Current Axis Number'." on Field "Current Axis Number"
 	And I save the CRF page
 	And I take a screenshot
-	And I open log line 2	
-	
+	And I open log line 2		
 	When I enter data in CRF and save
 		| Field               | Data        |
 		| Start Date          | 07 Jan 2000 |
@@ -108,6 +112,12 @@ Scenario: PB_4.1.2
 	And I open log line 2
 	Then I verify Query with message "'Date Informed Consent Signed' is greater. Please revise." is displayed on Field "Start Date"
 	And I verify Query with message "Informed Consent 'Current Distribution Number' is not equal to Concomitant Medications 'Current Axis Number'." is displayed on Field "Current Axis Number"
+	And I verify Query is displayed
+      | Field      | Query Message                                             | Answered | Closed |
+      | Start Date | 'Date Informed Consent Signed' is greater. Please revise. | false    | false  |
+	Then I verify Query is displayed
+      | Field               | Query Message                                                                                                 | Answered | Closed |
+      | Current Axis Number | Informed Consent 'Current Distribution Number' is not equal to Concomitant Medications 'Current Axis Number'. | false    | false  |
 	And I take a screenshot
 	
 #----------------------------------------------------------------------------------------------------------------------------------------	
@@ -150,6 +160,12 @@ Scenario: PB_4.2.1 On a Cross Folders Standard form to log form, Folder "Screeni
 	And I close the Query "'Date Informed Consent Signed' can not be greater than." on Field "Start Date"
 	And I close the Query "'Current Distribution Number' is not equal 'Current Axis Number'." on Field "Current Axis Number"
 	And I save the CRF page	
+	And I verify Query is not displayed
+      | Field      | Query Message                                           | Answered | Closed |
+      | Start Date | 'Date Informed Consent Signed' can not be greater than. | true     | true   |
+	Then I verify Query is not displayed
+      | Field               | Query Message                                                     | Answered | Closed |
+      | Current Axis Number | 'Current Distribution Number' is not equal 'Current Axis Number'. | true     | true   |
 	And I take a screenshot
 
 	And I open log line 1
@@ -161,6 +177,12 @@ Scenario: PB_4.2.1 On a Cross Folders Standard form to log form, Folder "Screeni
 	And I open log line 1
 	Then I verify Query with message "'Date Informed Consent Signed' can not be greater than." is displayed on Field "Start Date"
 	And I verify Query with message "'Current Distribution Number' is not equal 'Current Axis Number'." is displayed on Field "Current Axis Number"
+	And I verify Query is displayed
+      | Field      | Query Message                                           | Answered | Closed |
+      | Start Date | 'Date Informed Consent Signed' can not be greater than. | false    | false  |
+	Then I verify Query is displayed
+      | Field               | Query Message                                                     | Answered | Closed |
+      | Current Axis Number | 'Current Distribution Number' is not equal 'Current Axis Number'. | false    | false  |
 	And I take a screenshot
     
 #----------------------------------------------------------------------------------------------------------------------------------------	
