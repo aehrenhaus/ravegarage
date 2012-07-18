@@ -44,10 +44,10 @@ namespace Medidata.RBT.Common.Steps
         [When(@"I dismiss alert window")]
         public void WhenIDismissAlertWindow()
         {
-            CurrentPage.As<PageBase>().GetAlertWindow().Dismiss(); ; ;
+            CurrentPage.As<PageBase>().GetAlertWindow().Dismiss();
         }
 
-    }
+    
 
 		[StepDefinition(@"I switch to main window")]
 		public void ISwitchToMainWindow()
