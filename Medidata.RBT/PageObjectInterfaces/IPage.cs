@@ -95,6 +95,13 @@ namespace Medidata.RBT
 		/// <returns></returns>
 		IPage ClickButton(string identifer);
 
+        /// <summary>
+        /// Press a key on the keyboard
+        /// </summary>
+        /// <param name="name"></param>
+        /// <returns></returns>
+        void PressKey(string key);
+		
 		/// <summary>
 		/// Type in a typable UI control
 		/// </summary>
@@ -162,5 +169,10 @@ namespace Medidata.RBT
         /// </summary>
         /// <returns></returns>
         void SelectLink(string linkText);
+
+        void FocusOnElementById(string id);
+        IWebElement GetCurrentActiveElement();
+        long GetPageOffsetX();
+        long GetPageOffsetY();
 	}
 }

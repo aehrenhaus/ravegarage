@@ -30,15 +30,15 @@ namespace Medidata.RBT
 			PageFactory.InitElements(Browser, this);
         }
 
-   
+
         #endregion
 
- 
+  
         #region IPage
 
-		/// <summary>
+        /// <summary>
 		/// See IPage interface
-		/// </summary>
+        /// </summary>
 		public RemoteWebDriver Browser { get; set; }
 
 
@@ -77,7 +77,7 @@ namespace Medidata.RBT
         public virtual IPage ClickButton(string identifer)
         {
             var element = Browser.TryFindElementBy(By.XPath("//button[text()='" + identifer + "']"));
-			if(element ==null)
+            if (element == null)
 				element = Browser.TryFindElementBy(By.XPath("//input[@value='" + identifer + "']"));
             if (element == null)
                 element = Browser.TryFindElementById(identifer);
@@ -90,6 +90,14 @@ namespace Medidata.RBT
 
 			var uri = new Uri(Browser.Url);
 			return TestContext.POFactory.GetPageByUrl(uri); ;
+        }
+		
+		public virtual void PressKey(string key)
+        {
+            if (key == "<tab>" || key == "tab")
+                Browser.Keyboard.PressKey("\t");
+            else
+                Browser.Keyboard.PressKey(key);
         }
 
 		/// <summary>
@@ -160,6 +168,9 @@ namespace Medidata.RBT
 			return GetPageByCurrentUrlIfNoAlert();
         }
 
+        /// <summary>
+		/// See IPage interface
+        /// </summary>
         public virtual IPage NavigateTo(string identifer)
         {
             throw new Exception("Don't know how to navigate to "+identifer);
@@ -235,9 +246,9 @@ namespace Medidata.RBT
 			return Browser.Url.ToLower().Contains(this.URL.ToLower());
         }
 
-		/// <summary>
+        /// <summary>
 		/// See IPage interface
-		/// </summary>
+        /// </summary>
 		public virtual IPage NavigateToSelf(NameValueCollection parameters = null)
         {
             string contextSessionIdstring = TestContext.GetContextValue<string>("UrlSessionID");
@@ -245,19 +256,19 @@ namespace Medidata.RBT
             string querystring = string.Empty;
 
 			if(parameters != null)
-			{
+            {
 				foreach (string key in parameters.Keys)
 				{
-					//allows params within url for MVC routes
-					string keyReplacement = string.Format("{{{0}}}", key);
-					if (url.Contains(keyReplacement))
+                //allows params within url for MVC routes
+                string keyReplacement = string.Format("{{{0}}}", key);
+                if (url.Contains(keyReplacement))
 						url = url.Replace(keyReplacement, parameters[key]);
-					else
-					{
-						//any querystring params
+                else
+                {
+                    //any querystring params
 						querystring = string.Format("{0}{1}{2}={3}", querystring, string.IsNullOrEmpty(querystring) ? string.Empty : "&", key, parameters[key]);
-					}
-				}
+                }
+            }
 			}
 
             if (!string.IsNullOrEmpty(querystring))
@@ -300,7 +311,7 @@ namespace Medidata.RBT
 
         /// <summary>
         /// This method is used by many default implmentation of IPage methods, where a friendly name is used to find a IWebElement
-        /// In many case you will only need to orverride this method to provide mappings on your specific page obejct in order for a step to work.
+        /// In many case you will only need to orverride this method to provide mappings on your specific page object in order for a step to work.
         /// <example>
         /// 
         ///protected override IWebElement GetElementByName(string name)
@@ -364,7 +375,6 @@ namespace Medidata.RBT
 			return Browser.WaitForElement( browser => browser.FindElement(by), errorMessage, timeOutSecond);
 		}
 
-
 		public IWebElement WaitForElement(string partialID, Func<IWebElement, bool> predicate = null, string errorMessage = null, double timeOutSecond = 0)
 		{
 			if (timeOutSecond == 0)
@@ -373,6 +383,28 @@ namespace Medidata.RBT
 			return Browser.WaitForElement(partialID,predicate, errorMessage, timeOutSecond);
 		}
 
+        public void FocusOnElementById(string id)
+        {
+            this.Browser
+                .TryExecuteJavascript("document.getElementById('" + id + "').focus()");
+        }
 
-	}
+        public long GetPageOffsetX()
+        {
+            IJavaScriptExecutor js = Browser as IJavaScriptExecutor;
+            return (long)js.ExecuteScript("return window.pageXOffset");
+        }
+
+        public long GetPageOffsetY()
+        {
+            IJavaScriptExecutor js = Browser as IJavaScriptExecutor;
+            return (long)js.ExecuteScript("return window.pageYOffset");
+        }
+
+
+        public IWebElement GetCurrentActiveElement()
+        {
+            return Browser.SwitchTo().ActiveElement();
+        }
+    }
 }

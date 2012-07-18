@@ -59,6 +59,20 @@ namespace Medidata.RBT.PageObjects.Rave
             }
         }
 
+        public IWebElement GetElementByControlTypeAndValue(ControlTypeInformation.ControlType controlType, string value)
+        {
+            if (controlType == ControlTypeInformation.ControlType.Button)
+            {
+                return TestContext.Browser.TryFindElementBy(By.XPath("//input[contains(@value, '" + value + "')]"));
+            }
+            else if (controlType == ControlTypeInformation.ControlType.Link)
+            {
+                return TestContext.Browser.TryFindElementBy(By.XPath("//a[text() = '" + value + "']"));
+            }
+            else
+                return null;
+        }
+
 		public IPage GoBack()
 		{
 			throw new NotImplementedException();

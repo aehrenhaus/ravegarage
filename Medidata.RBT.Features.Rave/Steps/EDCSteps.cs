@@ -8,7 +8,7 @@ using Medidata.RBT.PageObjects.Rave;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Medidata.RBT;
 using TechTalk.SpecFlow.Assist;
-
+using OpenQA.Selenium;
 
 namespace Medidata.RBT.Features.Rave
 {
@@ -95,8 +95,6 @@ namespace Medidata.RBT.Features.Rave
 			ISaveCRF();
 		}
 
-
-
 		[StepDefinition(@"I select Form ""([^""]*)"" in Folder ""([^""]*)""")]
 		public void ISelectForm____InFolder____(string formName, string folderName)
 		{
@@ -131,8 +129,6 @@ namespace Medidata.RBT.Features.Rave
 				.SelectForm(formName);
 		}
 
-
-
 		[StepDefinition(@"I expand ""([^""]*)"" in Task Summary")]
 		public void GivenIExpand____InTaskSummary(string header)
 		{
@@ -146,20 +142,6 @@ namespace Medidata.RBT.Features.Rave
 			CurrentPage = CurrentPage.As<CRFPage>().FindField(fieldName).ClickAudit();
 		}
 
-		[StepDefinition(@"I check ""([^""]*)"" on ""([^""]*)""")]
-		public void ICheck____OnLog____(string chkName, string fieldName)
-		{
-			CurrentPage.As<CRFPage>().FindField(fieldName).Check(chkName);
-		}
-
-
-		[StepDefinition(@"I uncheck ""([^""]*)"" on ""([^""]*)""")]
-		public void IUncheck____OnLog____(string chkName, string fieldName)
-		{
-			CurrentPage.As<CRFPage>().FindField(fieldName).Uncheck(chkName);
-		}
-
-
 		[StepDefinition(@"I verify Audits exist")]
 		public void IVerifyAuditsExist(Table table)
 		{
@@ -171,13 +153,88 @@ namespace Medidata.RBT.Features.Rave
 			}
 		}
 
+		[StepDefinition(@"I select link ""([^""]*)"" located in ""([^""]*)""")]        public void WhenISelectLink____LocatedIn____(string logForm, string leftNav)        {
+            CurrentPage = CurrentPage.As<SubjectPage>().SelectForm(logForm);
+        }
 
-		[StepDefinition(@"I sign CRF with ""([^""]*)"" and ""([^""]*)""")]
-		public void ISignCRFWith____And____(string username , string password)
-		{
-			CurrentPage.As<BaseEDCTreePage>().SignForm(username, password);
-		}
+        [Then(@"the cursor focus is ([^""]*)located on ""([^""]*)"" in the column labeled ""([^""]*)"" in the ""([^""]*)"" position in the ""([^""]*)"" row")]
+        public void TheCursorFocusIs____LocatedOn____InTheColumnLabeled____InThe____RowAndThe____PositionInThatRow(string not, string controlType, string fieldName, string positionText, string rowText)
+        {
+            var type = ControlTypeInformation.GetEnum<ControlTypeInformation.ControlType>(controlType);
+            var row = Constants.GetNumberByWord(rowText);
+            var position = Constants.GetZeroBasedIndex(positionText);
 
+            if (not.Trim().ToLower() != "not")
+                Assert.IsTrue(CurrentPage.As<CRFPage>()
+                    .FindLandscapeLogField(fieldName, row)
+                    .IsElementFocused(type, position));
+            else
+                Assert.IsFalse(CurrentPage.As<CRFPage>()
+                    .FindLandscapeLogField(fieldName, row)
+                    .IsElementFocused(type, position));
+        }
 
+        [Then(@"the cursor focus is ([^""]*)located on ""([^""]*)"" in the row labeled ""([^""]*)"" in the ""([^""]*)"" position in the row")]
+        public void TheCursorFocusIs____LocatedOn____InTheRowLabeled____InThe____PositionInThatRow(string not, string controlType, string fieldName, string positionText)
+        {
+            var type = ControlTypeInformation.GetEnum<ControlTypeInformation.ControlType>(controlType);
+            var position = Constants.GetZeroBasedIndex(positionText);
+
+            if (not.Trim().ToLower() != "not")
+                Assert.IsTrue(CurrentPage.As<CRFPage>()
+                    .FindPortraitLogField(fieldName)
+                    .IsElementFocused(type, position));
+            else
+                Assert.IsFalse(CurrentPage.As<CRFPage>()
+                    .FindPortraitLogField(fieldName)
+                    .IsElementFocused(type, position));
+        }
+
+        [Then(@"the browser scrolls to the right")]
+        public void TheBrowserScrollsToTheRight()
+        {
+            Assert.AreNotEqual(0, CurrentPage.As<CRFPage>().GetPageOffsetX());
+        }
+
+        [Then(@"the browser scrolls down")]
+        public void TheBrowserScrollsDown()
+        {
+            Assert.AreNotEqual(0, CurrentPage.As<CRFPage>().GetPageOffsetY());
+        }
+
+        [Given(@"move cursor focus to ""([^""]*)"" in the column labeled ""([^""]*)"" in the ""([^""]*)"" position in the ""([^""]*)"" row")]
+        public void MoveCursorFocusTo____InTheColumnLabeled____InThe____RowAndThe____PositionInThatRow
+            (string controlType, string fieldName, string positionText, string rowText)
+        {
+            var type = ControlTypeInformation.GetEnum<ControlTypeInformation.ControlType>(controlType);
+            var row = Constants.GetNumberByWord(rowText);
+            var position = Constants.GetZeroBasedIndex(positionText);
+
+            CurrentPage.As<CRFPage>()
+                .FindLandscapeLogField(fieldName, row)
+                .FocusElement(type, position);
+        }
+
+        [Given(@"move cursor focus to ""([^""]*)"" in the row labeled ""([^""]*)"" in the ""([^""]*)"" position in the row")]
+        public void MoveCursorFocusTo____InTheRowLabeled____InThe____PositionInThatRow(string controlType, string fieldName, string positionText)
+        {
+            var type = ControlTypeInformation.GetEnum<ControlTypeInformation.ControlType>(controlType);
+            var position = Constants.GetZeroBasedIndex(positionText);
+
+            CurrentPage.As<CRFPage>()
+                .FindPortraitLogField(fieldName)
+                .FocusElement(type, position);
+        }
+
+        [Then(@"the cursor focus is on ""([^""]*)"" labeled ""([^""]*)""")]
+        public void IShouldSeeTheCursorFocusOn____Labeled____(string controlTypeString, string value)
+        {
+            ControlTypeInformation.ControlType controlType = ControlTypeInformation
+                .GetEnum<ControlTypeInformation.ControlType>(controlTypeString.ToLower());
+
+            IWebElement elementForCheck = CurrentPage.As<CRFPage>().GetElementByControlTypeAndValue(controlType, value);
+
+            Assert.AreEqual(CurrentPage.As<CRFPage>().GetCurrentActiveElement().GetAttribute("ID"), elementForCheck.GetAttribute("ID"));
+        }
 	}
 }
