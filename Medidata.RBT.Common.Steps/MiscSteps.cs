@@ -9,15 +9,15 @@ using System.Threading;
 
 namespace Medidata.RBT.Common.Steps
 {
-	[Binding]
-	public class MiscSteps:BrowserStepsBase
-	{
+    [Binding]
+    public class MiscSteps : BrowserStepsBase
+    {
 
-		[StepDefinition(@"I take a screenshot")]
-		public void ITakeScreenshot()
-		{
-			TestContext.TrySaveScreenShot();
-		}
+        [StepDefinition(@"I take a screenshot")]
+        public void ITakeScreenshot()
+        {
+            TestContext.TrySaveScreenShot();
+        }
 
         [StepDefinition(@"I switch to ""([^""]*)"" window")]
 		public void ISwitchTo____Window(string windowName)
@@ -34,7 +34,20 @@ namespace Medidata.RBT.Common.Steps
 			CurrentPage = TestContext.POFactory.GetPageByUrl(new Uri(Browser.Url));
 		}
 
+        [When(@"I accept alert window")]
+        public void WhenIAcceptAlertWindow()
+        {
+            CurrentPage.As<PageBase>().GetAlertWindow().Accept();
+        }
 
+
+        [When(@"I dismiss alert window")]
+        public void WhenIDismissAlertWindow()
+        {
+            CurrentPage.As<PageBase>().GetAlertWindow().Dismiss(); ; ;
+        }
+
+    }
 
 		[StepDefinition(@"I switch to main window")]
 		public void ISwitchToMainWindow()
