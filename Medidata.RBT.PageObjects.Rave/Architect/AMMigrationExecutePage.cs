@@ -20,20 +20,7 @@ namespace Medidata.RBT.PageObjects.Rave
 			return this;
 		}
 
-		public void WaitForComplete()
-		{
-			int timeout = 500;
-			var result = Browser.WaitForElement(By.LinkText("Migration Results"),null,timeout);
-			result.Click();
-			var span = Browser.WaitForElement(b=>
-				{
-					var firstJob = Browser.TryFindElementByPartialID("_lblStatusValue");
-					if(firstJob.Text=="Complete")
-						return firstJob;
-					return null;
-				},"Take forever to complete", timeout);
 
-		}
 
 		public override string URL
 		{

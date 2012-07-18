@@ -764,7 +764,8 @@ Scenario: PB_8.8.1 When I run the Report, then query related data are displayed 
 	And I take a screenshot
 	And I navigate to "Execute Plan"
 	And I migrate all Subjects
-	And I select Migration Results and verify Job Status is set to Complete
+	And I select "Migration Results"
+	And I verify Job Status is set to Complete
 	And I take a screenshot
 	
 	And I navigate to "Home"
@@ -820,7 +821,8 @@ Scenario: PB_8.8.1 When I run the Report, then query related data are displayed 
 	And I click button "Create Plan"
 	And I navigate to "Execute Plan"
 	And I migrate all Subjects
-	And I select Migration Results and verify Job Status is set to Complete
+	And I select "Migration Results"
+	And I verify Job Status is set to Complete
 	And I take a screenshot
 	
 	And I navigate to "Home"
@@ -866,6 +868,7 @@ Scenario: PB_8.9.1 Publish Checks
 		| Field            | Data              |
 		| Subject Number   | {RndNum<num4>(5)} |
 		| Subject Initials | sub               |
+	And I note down "crfversion" to "ver#"
 	And I select Form "Mixed Form"
 	And I enter data in CRF and save
 	    |Field       |Data |
@@ -887,13 +890,15 @@ Scenario: PB_8.9.1 Publish Checks
 	And I navigate to "Architect"
 	And I select "AM Edit Check Study" in "Active Projects"
 	And I select "Publish Checks"
-	And I choose "{Var(newversion1#)}" from "Current CRF Version"
-	And I choose "{Var(newversion2#)}" from "Reference CRF Version"
+	And I choose "V3 ({Var(ver#)})" from "Current CRF Version"
+	And I choose "{Var(newversion1#)}" from "Reference CRF Version"
 	And I click button "Create Plan"
 	And I check "Inactivate" in "Mixed Form Query"
-	And I navigate to "Save"
+	And I select "Save"
 	And I take a screenshot
-	And I navigate to "Publish" 
+	And I select "Publish"
+	And I accept alert window
+	And I select "Migration Results"
 	And I verify Job Status is set to Complete
 	And I take a screenshot
 	
@@ -911,15 +916,16 @@ Scenario: PB_8.9.1 Publish Checks
 	And I navigate to "Home"
 	And I navigate to "Architect"
 	And I select "AM Edit Check Study" in "Active Projects"
-	And I navigate to "Pulish Checks"
-	And I select "{Var(newversion1)}" from "Current CRF Version"
-	And I select "{Var(newversion3)}" from "Reference CRF Version"
+	And I select "Pulish Checks"
+	And I select "V3 ({Var(ver#)})" from "Current CRF Version"
+	And I select "{Var(newversion2#)}" from "Reference CRF Version"
 	And I click button "Create Plan"
-	And I check "Publish" checkbox for "Mixed Form Query" edit check
+	And I check "Publish" in "Mixed Form Query"
 	And I select "Save"
-	And I select "Publish"
 	And I take a screenshot
-
+	And I select "Publish"
+	And I accept alert window
+	And I select "Migration Results"
 	And I verify Job Status is set to Complete
 	And I take a screenshot
 

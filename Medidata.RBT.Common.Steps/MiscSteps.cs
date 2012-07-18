@@ -34,14 +34,14 @@ namespace Medidata.RBT.Common.Steps
 			CurrentPage = TestContext.POFactory.GetPageByUrl(new Uri(Browser.Url));
 		}
 
-        [When(@"I accept alert window")]
+		[StepDefinition(@"I accept alert window")]
         public void WhenIAcceptAlertWindow()
         {
             CurrentPage.As<PageBase>().GetAlertWindow().Accept();
         }
 
 
-        [When(@"I dismiss alert window")]
+		[StepDefinition(@"I dismiss alert window")]
         public void WhenIDismissAlertWindow()
         {
             CurrentPage.As<PageBase>().GetAlertWindow().Dismiss();

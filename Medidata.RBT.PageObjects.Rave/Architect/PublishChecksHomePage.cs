@@ -28,7 +28,9 @@ namespace Medidata.RBT.PageObjects.Rave
 			filter.AddRow (areaIdentifer);
 			var foundRow = table.FindMatchRows(filter);
 
-			var chk = foundRow[0].Checkbox("chkSelectInactivate");
+			string id = (identifer == "Inactivate") ? "chkSelectInactivate" : "chkSelectCopy";
+
+			var chk = foundRow[0].Checkbox(id);
 
 			chk.Check();
 
