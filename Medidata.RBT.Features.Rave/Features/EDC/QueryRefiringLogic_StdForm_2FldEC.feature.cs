@@ -415,11 +415,11 @@ this.FeatureBackground();
                         "Field",
                         "Data"});
             table18.AddRow(new string[] {
-                        "Subject Number",
-                        "{RndNum<num1>(5)}"});
-            table18.AddRow(new string[] {
                         "Subject Initials",
                         "SUB"});
+            table18.AddRow(new string[] {
+                        "Subject Number",
+                        "{RndNum<num1>(5)}"});
             table18.AddRow(new string[] {
                         "Subject ID",
                         "SUB {Var(num1)}"});
@@ -538,22 +538,22 @@ this.FeatureBackground();
         }
         
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute(@"@PB-US12940-01D As an EDC user, when I entered bad data in field A and field B that resulted in the system opening a query on field B, and I entered good data in field A, if I then entered the same bad data in field A as when the query was opened, then the system should not refire a query on field B.")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute(@"@PB-US12940-01D As an EDC user, when I entered bad data in field A and field B that resulted in the system opening a query on field B, and I entered good data in field A, if I then entered the same bad data in field A as when the query was opened, then the system should refire a query on field B.")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "QueryRefiringLogic4tgt")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("release_564_Patch11")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("PB-US12940-01D")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("draft")]
-        public virtual void PB_US12940_01DAsAnEDCUserWhenIEnteredBadDataInFieldAAndFieldBThatResultedInTheSystemOpeningAQueryOnFieldBAndIEnteredGoodDataInFieldAIfIThenEnteredTheSameBadDataInFieldAAsWhenTheQueryWasOpenedThenTheSystemShouldNotRefireAQueryOnFieldB_()
+        public virtual void PB_US12940_01DAsAnEDCUserWhenIEnteredBadDataInFieldAAndFieldBThatResultedInTheSystemOpeningAQueryOnFieldBAndIEnteredGoodDataInFieldAIfIThenEnteredTheSameBadDataInFieldAAsWhenTheQueryWasOpenedThenTheSystemShouldRefireAQueryOnFieldB_()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo(@"@PB-US12940-01D As an EDC user, when I entered bad data in field A and field B that resulted in the system opening a query on field B, and I entered good data in field A, if I then entered the same bad data in field A as when the query was opened, then the system should not refire a query on field B.", new string[] {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo(@"@PB-US12940-01D As an EDC user, when I entered bad data in field A and field B that resulted in the system opening a query on field B, and I entered good data in field A, if I then entered the same bad data in field A as when the query was opened, then the system should refire a query on field B.", new string[] {
                         "release_564_Patch11",
                         "PB-US12940-01D",
                         "draft"});
-#line 164
+#line 163
 this.ScenarioSetup(scenarioInfo);
 #line 11
 this.FeatureBackground();
-#line 167
+#line 166
  testRunner.Given("I select Study \"Standard Study\" and Site \"Site 1\"");
 #line hidden
             TechTalk.SpecFlow.Table table26 = new TechTalk.SpecFlow.Table(new string[] {
@@ -568,9 +568,9 @@ this.FeatureBackground();
             table26.AddRow(new string[] {
                         "Subject ID",
                         "SUB {Var(num1)}"});
-#line 168
+#line 167
   testRunner.And("I create a Subject", ((string)(null)), table26);
-#line 173
+#line 172
  testRunner.And("I select Form \"Form 2\"");
 #line hidden
             TechTalk.SpecFlow.Table table27 = new TechTalk.SpecFlow.Table(new string[] {
@@ -582,9 +582,9 @@ this.FeatureBackground();
             table27.AddRow(new string[] {
                         "Diastolic Blood Pressure 4",
                         "90"});
-#line 174
+#line 173
  testRunner.When("I enter data in CRF", ((string)(null)), table27);
-#line 178
+#line 177
     testRunner.And("I save the CRF page");
 #line hidden
             TechTalk.SpecFlow.Table table28 = new TechTalk.SpecFlow.Table(new string[] {
@@ -598,9 +598,9 @@ this.FeatureBackground();
                             "ify.",
                         "False",
                         "False"});
-#line 179
+#line 178
  testRunner.Then("I verify Query is displayed", ((string)(null)), table28);
-#line 182
+#line 181
  testRunner.And("I take a screenshot");
 #line hidden
             TechTalk.SpecFlow.Table table29 = new TechTalk.SpecFlow.Table(new string[] {
@@ -609,14 +609,14 @@ this.FeatureBackground();
             table29.AddRow(new string[] {
                         "Systolic Blood Pressure 4",
                         "100"});
-#line 183
+#line 182
  testRunner.When("I enter data in CRF", ((string)(null)), table29);
-#line 186
+#line 185
  testRunner.And("I save the CRF page");
-#line 187
+#line 186
  testRunner.When("I close the Query \"Systolic Blood Pressure must be greater than Diastolic Blood P" +
                     "ressure. Please verify.\" on Field \"Diastolic Blood Pressure 4\"");
-#line 189
+#line 187
  testRunner.And("I save the CRF page");
 #line hidden
             TechTalk.SpecFlow.Table table30 = new TechTalk.SpecFlow.Table(new string[] {
@@ -630,9 +630,9 @@ this.FeatureBackground();
                             "ify.",
                         "False",
                         "False"});
-#line 190
+#line 188
  testRunner.Then("I verify Query is not displayed", ((string)(null)), table30);
-#line 193
+#line 191
  testRunner.And("I take a screenshot");
 #line hidden
             TechTalk.SpecFlow.Table table31 = new TechTalk.SpecFlow.Table(new string[] {
@@ -641,9 +641,9 @@ this.FeatureBackground();
             table31.AddRow(new string[] {
                         "Systolic Blood Pressure 4",
                         "80"});
-#line 194
+#line 192
  testRunner.When("I enter data in CRF", ((string)(null)), table31);
-#line 197
+#line 195
  testRunner.And("I save the CRF page");
 #line hidden
             TechTalk.SpecFlow.Table table32 = new TechTalk.SpecFlow.Table(new string[] {
@@ -652,14 +652,14 @@ this.FeatureBackground();
                         "Answered",
                         "Closed"});
             table32.AddRow(new string[] {
-                        "Diastolic Blood Pressure 3",
+                        "Diastolic Blood Pressure 4",
                         "Systolic Blood Pressure must be greater than Diastolic Blood Pressure. Please ver" +
                             "ify.",
                         "False",
                         "False"});
-#line 198
- testRunner.Then("I verify Query is not displayed", ((string)(null)), table32);
-#line 201
+#line 196
+ testRunner.Then("I verify Query is displayed", ((string)(null)), table32);
+#line 199
  testRunner.And("I take a screenshot");
 #line hidden
             this.ScenarioCleanup();
@@ -677,28 +677,28 @@ this.FeatureBackground();
                         "release_564_Patch11",
                         "PB-US12940-02A",
                         "Draft"});
-#line 208
+#line 206
 this.ScenarioSetup(scenarioInfo);
 #line 11
 this.FeatureBackground();
-#line 211
+#line 209
  testRunner.Given("I select Study \"Standard Study\" and Site \"Site 1\"");
 #line hidden
             TechTalk.SpecFlow.Table table33 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field",
                         "Data"});
             table33.AddRow(new string[] {
-                        "Subject Number",
-                        "{RndNum<num1>(5)}"});
-            table33.AddRow(new string[] {
                         "Subject Initials",
                         "SUB"});
             table33.AddRow(new string[] {
+                        "Subject Number",
+                        "{RndNum<num1>(5)}"});
+            table33.AddRow(new string[] {
                         "Subject ID",
                         "SUB {Var(num1)}"});
-#line 212
+#line 210
  testRunner.And("I create a Subject", ((string)(null)), table33);
-#line 217
+#line 215
  testRunner.And("I select Form \"Form 2\"");
 #line hidden
             TechTalk.SpecFlow.Table table34 = new TechTalk.SpecFlow.Table(new string[] {
@@ -710,9 +710,9 @@ this.FeatureBackground();
             table34.AddRow(new string[] {
                         "Diastolic Blood Pressure 1",
                         "90"});
-#line 218
+#line 216
  testRunner.When("I enter data in CRF", ((string)(null)), table34);
-#line 222
+#line 220
  testRunner.And("I save the CRF page");
 #line hidden
             TechTalk.SpecFlow.Table table35 = new TechTalk.SpecFlow.Table(new string[] {
@@ -726,15 +726,15 @@ this.FeatureBackground();
                             "ify.",
                         "False",
                         "False"});
-#line 223
+#line 221
  testRunner.Then("I verify Query is displayed", ((string)(null)), table35);
-#line 226
+#line 224
  testRunner.And("I take a screenshot");
-#line 227
+#line 225
  testRunner.When("I answer the Query \"Systolic Blood Pressure must be greater than Diastolic Blood " +
                     "Pressure. Please verify.\" on Field \"Diastolic Blood Pressure 1\" with \"Data is co" +
                     "rrect.\"");
-#line 228
+#line 226
  testRunner.And("I save the CRF page");
 #line hidden
             TechTalk.SpecFlow.Table table36 = new TechTalk.SpecFlow.Table(new string[] {
@@ -748,14 +748,14 @@ this.FeatureBackground();
                             "ify.",
                         "True",
                         "False"});
-#line 229
+#line 227
  testRunner.Then("I verify Query is displayed", ((string)(null)), table36);
-#line 232
+#line 230
     testRunner.And("I take a screenshot");
-#line 233
+#line 231
  testRunner.When("I close the Query \"Systolic Blood Pressure must be greater than Diastolic Blood P" +
                     "ressure. Please verify.\" on Field \"Diastolic Blood Pressure 1\"");
-#line 234
+#line 232
  testRunner.And("I save the CRF page");
 #line hidden
             TechTalk.SpecFlow.Table table37 = new TechTalk.SpecFlow.Table(new string[] {
@@ -769,9 +769,9 @@ this.FeatureBackground();
                             "ify.",
                         "True",
                         "True"});
-#line 235
+#line 233
  testRunner.Then("I verify Query is displayed", ((string)(null)), table37);
-#line 238
+#line 236
  testRunner.And("I take a screenshot");
 #line hidden
             TechTalk.SpecFlow.Table table38 = new TechTalk.SpecFlow.Table(new string[] {
@@ -780,9 +780,9 @@ this.FeatureBackground();
             table38.AddRow(new string[] {
                         "Diastolic Blood Pressure 1",
                         "70"});
-#line 239
+#line 237
  testRunner.When("I enter data in CRF", ((string)(null)), table38);
-#line 242
+#line 240
  testRunner.And("I save the CRF page");
 #line hidden
             TechTalk.SpecFlow.Table table39 = new TechTalk.SpecFlow.Table(new string[] {
@@ -796,9 +796,9 @@ this.FeatureBackground();
                             "ify.",
                         "False",
                         "False"});
-#line 243
+#line 241
  testRunner.Then("I verify Query is not displayed", ((string)(null)), table39);
-#line 246
+#line 244
  testRunner.And("I take a screenshot");
 #line hidden
             TechTalk.SpecFlow.Table table40 = new TechTalk.SpecFlow.Table(new string[] {
@@ -807,9 +807,9 @@ this.FeatureBackground();
             table40.AddRow(new string[] {
                         "Diastolic Blood Pressure 1",
                         "90"});
-#line 247
+#line 245
  testRunner.When("I enter data in CRF", ((string)(null)), table40);
-#line 250
+#line 248
  testRunner.And("I save the CRF page");
 #line hidden
             TechTalk.SpecFlow.Table table41 = new TechTalk.SpecFlow.Table(new string[] {
@@ -823,9 +823,9 @@ this.FeatureBackground();
                             "ify.",
                         "False",
                         "False"});
-#line 251
+#line 249
  testRunner.Then("I verify Query is not displayed", ((string)(null)), table41);
-#line 254
+#line 252
  testRunner.And("I take a screenshot");
 #line hidden
             this.ScenarioCleanup();
@@ -843,28 +843,28 @@ this.FeatureBackground();
                         "release_564_Patch11",
                         "PB-US12940-02B",
                         "Draft"});
-#line 260
+#line 258
 this.ScenarioSetup(scenarioInfo);
 #line 11
 this.FeatureBackground();
-#line 263
+#line 261
  testRunner.Given("I select Study \"Standard Study\" and Site \"Site 1\"");
 #line hidden
             TechTalk.SpecFlow.Table table42 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field",
                         "Data"});
             table42.AddRow(new string[] {
-                        "Subject Number",
-                        "{RndNum<num1>(5)}"});
-            table42.AddRow(new string[] {
                         "Subject Initials",
                         "SUB"});
             table42.AddRow(new string[] {
+                        "Subject Number",
+                        "{RndNum<num1>(5)}"});
+            table42.AddRow(new string[] {
                         "Subject ID",
                         "SUB {Var(num1)}"});
-#line 264
+#line 262
  testRunner.And("I create a Subject", ((string)(null)), table42);
-#line 269
+#line 267
  testRunner.And("I select Form \"Form 2\"");
 #line hidden
             TechTalk.SpecFlow.Table table43 = new TechTalk.SpecFlow.Table(new string[] {
@@ -876,9 +876,9 @@ this.FeatureBackground();
             table43.AddRow(new string[] {
                         "Diastolic Blood Pressure 2",
                         "90"});
-#line 270
+#line 268
  testRunner.When("I enter data in CRF", ((string)(null)), table43);
-#line 274
+#line 272
     testRunner.And("I save the CRF page");
 #line hidden
             TechTalk.SpecFlow.Table table44 = new TechTalk.SpecFlow.Table(new string[] {
@@ -892,9 +892,9 @@ this.FeatureBackground();
                             "ify.",
                         "False",
                         "False"});
-#line 275
+#line 273
  testRunner.Then("I verify Query is displayed", ((string)(null)), table44);
-#line 278
+#line 276
  testRunner.And("I take a screenshot");
 #line hidden
             TechTalk.SpecFlow.Table table45 = new TechTalk.SpecFlow.Table(new string[] {
@@ -903,9 +903,9 @@ this.FeatureBackground();
             table45.AddRow(new string[] {
                         "Diastolic Blood Pressure 2",
                         "70"});
-#line 279
+#line 277
  testRunner.When("I enter data in CRF", ((string)(null)), table45);
-#line 282
+#line 280
     testRunner.And("I save the CRF page");
 #line hidden
             TechTalk.SpecFlow.Table table46 = new TechTalk.SpecFlow.Table(new string[] {
@@ -919,9 +919,9 @@ this.FeatureBackground();
                             "ify.",
                         "False",
                         "False"});
-#line 283
+#line 281
  testRunner.Then("I verify Query is not displayed", ((string)(null)), table46);
-#line 286
+#line 284
  testRunner.And("I take a screenshot");
 #line hidden
             TechTalk.SpecFlow.Table table47 = new TechTalk.SpecFlow.Table(new string[] {
@@ -930,9 +930,9 @@ this.FeatureBackground();
             table47.AddRow(new string[] {
                         "Diastolic Blood Pressure 2",
                         "90"});
-#line 288
+#line 285
  testRunner.When("I enter data in CRF", ((string)(null)), table47);
-#line 291
+#line 288
  testRunner.And("I save the CRF page");
 #line hidden
             TechTalk.SpecFlow.Table table48 = new TechTalk.SpecFlow.Table(new string[] {
@@ -946,9 +946,9 @@ this.FeatureBackground();
                             "ify.",
                         "False",
                         "False"});
-#line 292
+#line 289
  testRunner.Then("I verify Query is displayed", ((string)(null)), table48);
-#line 295
+#line 292
  testRunner.And("I take a screenshot");
 #line hidden
             this.ScenarioCleanup();
@@ -966,11 +966,11 @@ this.FeatureBackground();
                         "release_564_Patch11",
                         "PB-US12940-02C",
                         "Draft"});
-#line 301
+#line 298
 this.ScenarioSetup(scenarioInfo);
 #line 11
 this.FeatureBackground();
-#line 304
+#line 301
  testRunner.Given("I select Study \"Standard Study\" and Site \"Site 1\"");
 #line hidden
             TechTalk.SpecFlow.Table table49 = new TechTalk.SpecFlow.Table(new string[] {
@@ -985,9 +985,9 @@ this.FeatureBackground();
             table49.AddRow(new string[] {
                         "Subject ID",
                         "SUB {Var(num1)}"});
-#line 305
+#line 302
  testRunner.And("I create a Subject", ((string)(null)), table49);
-#line 310
+#line 307
  testRunner.And("I select Form \"Form 2\"");
 #line hidden
             TechTalk.SpecFlow.Table table50 = new TechTalk.SpecFlow.Table(new string[] {
@@ -999,9 +999,9 @@ this.FeatureBackground();
             table50.AddRow(new string[] {
                         "Diastolic Blood Pressure 3",
                         "90"});
-#line 311
+#line 308
  testRunner.When("I enter data in CRF", ((string)(null)), table50);
-#line 315
+#line 312
     testRunner.And("I save the CRF page");
 #line hidden
             TechTalk.SpecFlow.Table table51 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1015,15 +1015,15 @@ this.FeatureBackground();
                             "ify.",
                         "False",
                         "False"});
-#line 316
+#line 313
  testRunner.Then("I verify Query is displayed", ((string)(null)), table51);
-#line 319
+#line 316
  testRunner.And("I take a screenshot");
-#line 320
+#line 317
  testRunner.When("I answer the Query \"Systolic Blood Pressure must be greater than Diastolic Blood " +
                     "Pressure. Please verify.\" on Field \"Diastolic Blood Pressure 3\" with \"Data is co" +
                     "rrect\"");
-#line 321
+#line 318
  testRunner.And("I save the CRF page");
 #line hidden
             TechTalk.SpecFlow.Table table52 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1037,9 +1037,9 @@ this.FeatureBackground();
                             "ify.",
                         "False",
                         "False"});
-#line 322
+#line 319
  testRunner.Then("I verify Query is not displayed", ((string)(null)), table52);
-#line 325
+#line 322
  testRunner.And("I take a screenshot");
 #line hidden
             TechTalk.SpecFlow.Table table53 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1048,9 +1048,9 @@ this.FeatureBackground();
             table53.AddRow(new string[] {
                         "Diastolic Blood Pressure 3",
                         "70"});
-#line 326
+#line 323
  testRunner.When("I enter data in CRF", ((string)(null)), table53);
-#line 329
+#line 326
     testRunner.And("I save the CRF page");
 #line hidden
             TechTalk.SpecFlow.Table table54 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1064,9 +1064,9 @@ this.FeatureBackground();
                             "ify.",
                         "False",
                         "False"});
-#line 330
+#line 327
  testRunner.Then("I verify Query is not displayed", ((string)(null)), table54);
-#line 333
+#line 330
     testRunner.And("I take a screenshot");
 #line hidden
             TechTalk.SpecFlow.Table table55 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1075,9 +1075,9 @@ this.FeatureBackground();
             table55.AddRow(new string[] {
                         "Diastolic Blood Pressure 3",
                         "90"});
-#line 334
+#line 331
  testRunner.When("I enter data in CRF", ((string)(null)), table55);
-#line 337
+#line 334
  testRunner.And("I save the CRF page");
 #line hidden
             TechTalk.SpecFlow.Table table56 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1091,9 +1091,9 @@ this.FeatureBackground();
                             "ify.",
                         "False",
                         "False"});
-#line 338
+#line 335
     testRunner.Then("I verify Query is not displayed", ((string)(null)), table56);
-#line 341
+#line 338
  testRunner.And("I take a screenshot");
 #line hidden
             this.ScenarioCleanup();
@@ -1111,11 +1111,11 @@ this.FeatureBackground();
                         "release_564_Patch11",
                         "PB-US12940-02D",
                         "Draft"});
-#line 347
+#line 344
 this.ScenarioSetup(scenarioInfo);
 #line 11
 this.FeatureBackground();
-#line 350
+#line 347
  testRunner.Given("I select Study \"Standard Study\" and Site \"Site 1\"");
 #line hidden
             TechTalk.SpecFlow.Table table57 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1130,9 +1130,9 @@ this.FeatureBackground();
             table57.AddRow(new string[] {
                         "Subject ID",
                         "SUB {Var(num1)}"});
-#line 351
+#line 348
  testRunner.And("I create a Subject", ((string)(null)), table57);
-#line 356
+#line 353
  testRunner.And("I select Form \"Form 2\"");
 #line hidden
             TechTalk.SpecFlow.Table table58 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1144,9 +1144,9 @@ this.FeatureBackground();
             table58.AddRow(new string[] {
                         "Diastolic Blood Pressure 4",
                         "90"});
-#line 357
+#line 354
  testRunner.When("I enter data in CRF", ((string)(null)), table58);
-#line 361
+#line 358
     testRunner.And("I save the CRF page");
 #line hidden
             TechTalk.SpecFlow.Table table59 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1160,9 +1160,9 @@ this.FeatureBackground();
                             "ify.",
                         "False",
                         "False"});
-#line 362
+#line 359
  testRunner.Then("I verify Query is displayed", ((string)(null)), table59);
-#line 365
+#line 362
  testRunner.And("I take a screenshot");
 #line hidden
             TechTalk.SpecFlow.Table table60 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1171,9 +1171,9 @@ this.FeatureBackground();
             table60.AddRow(new string[] {
                         "Diastolic Blood Pressure 4",
                         "70"});
-#line 366
+#line 363
  testRunner.When("I enter data in CRF", ((string)(null)), table60);
-#line 369
+#line 366
  testRunner.And("I save the CRF page");
 #line hidden
             TechTalk.SpecFlow.Table table61 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1187,14 +1187,14 @@ this.FeatureBackground();
                             "ify.",
                         "True",
                         "False"});
-#line 370
+#line 367
  testRunner.Then("I verify Query is displayed", ((string)(null)), table61);
-#line 373
+#line 370
  testRunner.And("I take a screenshot");
-#line 374
+#line 371
  testRunner.When("I close the Query \"Systolic Blood Pressure must be greater than Diastolic Blood P" +
                     "ressure. Please verify.\" on Field \"Diastolic Blood Pressure 4\"");
-#line 375
+#line 372
  testRunner.And("I save the CRF page");
 #line hidden
             TechTalk.SpecFlow.Table table62 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1208,9 +1208,9 @@ this.FeatureBackground();
                             "ify.",
                         "True",
                         "True"});
-#line 376
+#line 373
  testRunner.Then("I verify Query is displayed", ((string)(null)), table62);
-#line 379
+#line 376
     testRunner.And("I take a screenshot");
 #line hidden
             TechTalk.SpecFlow.Table table63 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1219,9 +1219,9 @@ this.FeatureBackground();
             table63.AddRow(new string[] {
                         "Diastolic Blood Pressure 4",
                         "90"});
-#line 380
+#line 377
  testRunner.When("I enter data in CRF", ((string)(null)), table63);
-#line 383
+#line 380
     testRunner.And("I save the CRF page");
 #line hidden
             TechTalk.SpecFlow.Table table64 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1235,9 +1235,9 @@ this.FeatureBackground();
                             "ify.",
                         "False",
                         "False"});
-#line 384
+#line 381
  testRunner.Then("I verify Query is displayed", ((string)(null)), table64);
-#line 387
+#line 384
  testRunner.And("I take a screenshot");
 #line hidden
             this.ScenarioCleanup();
@@ -1255,11 +1255,11 @@ this.FeatureBackground();
                         "release_564_Patch11",
                         "PB-US12940-03A",
                         "Draft"});
-#line 394
+#line 391
 this.ScenarioSetup(scenarioInfo);
 #line 11
 this.FeatureBackground();
-#line 397
+#line 394
  testRunner.Given("I select Study \"Standard Study\" and Site \"Site 1\"");
 #line hidden
             TechTalk.SpecFlow.Table table65 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1274,9 +1274,9 @@ this.FeatureBackground();
             table65.AddRow(new string[] {
                         "Subject ID",
                         "SUB {Var(num1)}"});
-#line 398
+#line 395
  testRunner.And("I create a Subject", ((string)(null)), table65);
-#line 403
+#line 400
  testRunner.And("I select Form \"Form 2\"");
 #line hidden
             TechTalk.SpecFlow.Table table66 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1288,9 +1288,9 @@ this.FeatureBackground();
             table66.AddRow(new string[] {
                         "Diastolic Blood Pressure 1",
                         "90"});
-#line 404
+#line 401
  testRunner.When("I enter data in CRF", ((string)(null)), table66);
-#line 408
+#line 405
  testRunner.And("I save the CRF page");
 #line hidden
             TechTalk.SpecFlow.Table table67 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1304,11 +1304,11 @@ this.FeatureBackground();
                             "ify.",
                         "False",
                         "False"});
-#line 409
+#line 406
  testRunner.Then("I verify Query is displayed", ((string)(null)), table67);
-#line 412
+#line 409
  testRunner.And("I take a screenshot");
-#line 413
+#line 410
  testRunner.When("I answer the Query \"Systolic Blood Pressure must be greater than Diastolic Blood " +
                     "Pressure. Please verify.\" on Field \"Diastolic Blood Pressure 1\" with \"Data is co" +
                     "rrect\"");
@@ -1319,9 +1319,9 @@ this.FeatureBackground();
             table68.AddRow(new string[] {
                         "Systolic Blood Pressure 1",
                         "85"});
-#line 414
+#line 411
  testRunner.When("I enter data in CRF", ((string)(null)), table68);
-#line 417
+#line 414
  testRunner.And("I save the CRF page");
 #line hidden
             TechTalk.SpecFlow.Table table69 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1335,14 +1335,14 @@ this.FeatureBackground();
                             "ify.",
                         "True",
                         "False"});
-#line 418
+#line 415
  testRunner.Then("I verify Query is displayed", ((string)(null)), table69);
-#line 421
+#line 418
  testRunner.And("I take a screenshot");
-#line 422
+#line 419
  testRunner.When("I close the Query \"Systolic Blood Pressure must be greater than Diastolic Blood P" +
                     "ressure. Please verify.\" on Field \"Diastolic Blood Pressure 1\"");
-#line 423
+#line 420
  testRunner.And("I save the CRF page");
 #line hidden
             TechTalk.SpecFlow.Table table70 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1356,9 +1356,9 @@ this.FeatureBackground();
                             "ify.",
                         "True",
                         "True"});
-#line 424
+#line 421
     testRunner.Then("I verify Query is displayed", ((string)(null)), table70);
-#line 427
+#line 424
  testRunner.And("I take a screenshot");
 #line hidden
             TechTalk.SpecFlow.Table table71 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1367,9 +1367,9 @@ this.FeatureBackground();
             table71.AddRow(new string[] {
                         "Systolic Blood Pressure 1",
                         "100"});
-#line 428
+#line 425
  testRunner.When("I enter data in CRF", ((string)(null)), table71);
-#line 431
+#line 428
     testRunner.And("I save the CRF page");
 #line hidden
             TechTalk.SpecFlow.Table table72 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1383,9 +1383,9 @@ this.FeatureBackground();
                             "ify.",
                         "False",
                         "False"});
-#line 432
+#line 429
  testRunner.Then("I verify Query is not displayed", ((string)(null)), table72);
-#line 435
+#line 432
  testRunner.And("I take a screenshot");
 #line hidden
             TechTalk.SpecFlow.Table table73 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1394,8 +1394,10 @@ this.FeatureBackground();
             table73.AddRow(new string[] {
                         "Systolic Blood Pressure 1",
                         "85"});
-#line 436
+#line 433
  testRunner.And("I enter data in CRF", ((string)(null)), table73);
+#line 436
+ testRunner.And("I save the CRF page");
 #line hidden
             TechTalk.SpecFlow.Table table74 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field",
@@ -1408,9 +1410,9 @@ this.FeatureBackground();
                             "ify.",
                         "False",
                         "False"});
-#line 439
+#line 437
  testRunner.Then("I verify Query is not displayed", ((string)(null)), table74);
-#line 442
+#line 440
  testRunner.And("I take a screenshot");
 #line hidden
             this.ScenarioCleanup();
@@ -1428,11 +1430,11 @@ this.FeatureBackground();
                         "release_564_Patch11",
                         "PB-US12940-03B",
                         "Draft"});
-#line 449
+#line 447
 this.ScenarioSetup(scenarioInfo);
 #line 11
 this.FeatureBackground();
-#line 452
+#line 450
  testRunner.Given("I select Study \"Standard Study\" and Site \"Site 1\"");
 #line hidden
             TechTalk.SpecFlow.Table table75 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1447,9 +1449,9 @@ this.FeatureBackground();
             table75.AddRow(new string[] {
                         "Subject ID",
                         "SUB {Var(num1)}"});
-#line 453
+#line 451
  testRunner.And("I create a Subject", ((string)(null)), table75);
-#line 458
+#line 456
  testRunner.And("I select Form \"Form 2\"");
 #line hidden
             TechTalk.SpecFlow.Table table76 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1461,9 +1463,9 @@ this.FeatureBackground();
             table76.AddRow(new string[] {
                         "Diastolic Blood Pressure 2",
                         "90"});
-#line 459
+#line 457
  testRunner.When("I enter data in CRF", ((string)(null)), table76);
-#line 463
+#line 461
     testRunner.And("I save the CRF page");
 #line hidden
             TechTalk.SpecFlow.Table table77 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1477,9 +1479,9 @@ this.FeatureBackground();
                             "ify.",
                         "False",
                         "False"});
-#line 464
+#line 462
  testRunner.Then("I verify Query is displayed", ((string)(null)), table77);
-#line 467
+#line 465
  testRunner.And("I take a screenshot");
 #line hidden
             TechTalk.SpecFlow.Table table78 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1488,9 +1490,9 @@ this.FeatureBackground();
             table78.AddRow(new string[] {
                         "Systolic Blood Pressure 2",
                         "100"});
-#line 468
+#line 466
  testRunner.When("I enter data in CRF", ((string)(null)), table78);
-#line 471
+#line 469
     testRunner.And("I save the CRF page");
 #line hidden
             TechTalk.SpecFlow.Table table79 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1504,9 +1506,9 @@ this.FeatureBackground();
                             "ify.",
                         "False",
                         "False"});
-#line 472
+#line 470
  testRunner.Then("I verify Query is not displayed", ((string)(null)), table79);
-#line 475
+#line 473
  testRunner.And("I take a screenshot");
 #line hidden
             TechTalk.SpecFlow.Table table80 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1515,9 +1517,9 @@ this.FeatureBackground();
             table80.AddRow(new string[] {
                         "Systolic Blood Pressure 2",
                         "80"});
-#line 476
+#line 474
  testRunner.When("I enter data in CRF", ((string)(null)), table80);
-#line 479
+#line 477
  testRunner.And("I save the CRF page");
 #line hidden
             TechTalk.SpecFlow.Table table81 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1531,9 +1533,9 @@ this.FeatureBackground();
                             "ify.",
                         "False",
                         "False"});
-#line 480
+#line 478
  testRunner.Then("I verify Query is displayed", ((string)(null)), table81);
-#line 483
+#line 481
  testRunner.And("I take a screenshot");
 #line hidden
             this.ScenarioCleanup();
@@ -1551,11 +1553,11 @@ this.FeatureBackground();
                         "release_564_Patch11",
                         "PB-US12940-03C",
                         "ignore"});
-#line 490
+#line 488
 this.ScenarioSetup(scenarioInfo);
 #line 11
 this.FeatureBackground();
-#line 493
+#line 491
  testRunner.Given("I select Study \"Standard Study\" and Site \"Site 1\"");
 #line hidden
             TechTalk.SpecFlow.Table table82 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1570,9 +1572,9 @@ this.FeatureBackground();
             table82.AddRow(new string[] {
                         "Subject ID",
                         "SUB {Var(num1)}"});
-#line 494
+#line 492
  testRunner.And("I create a Subject", ((string)(null)), table82);
-#line 499
+#line 497
  testRunner.And("I select Form \"Form 2\"");
 #line hidden
             TechTalk.SpecFlow.Table table83 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1584,9 +1586,9 @@ this.FeatureBackground();
             table83.AddRow(new string[] {
                         "Diastolic Blood Pressure 3",
                         "90"});
-#line 500
+#line 498
  testRunner.When("I enter data in CRF", ((string)(null)), table83);
-#line 504
+#line 502
     testRunner.And("I save the CRF page");
 #line hidden
             TechTalk.SpecFlow.Table table84 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1600,11 +1602,11 @@ this.FeatureBackground();
                             "ify.",
                         "False",
                         "False"});
-#line 505
+#line 503
  testRunner.Then("I verify Query is displayed", ((string)(null)), table84);
-#line 508
+#line 506
  testRunner.And("I take a screenshot");
-#line 509
+#line 507
  testRunner.When("I answer the Query \"Systolic Blood Pressure must be greater than Diastolic Blood " +
                     "Pressure. Please verify.\" on Field \"Diastolic Blood Pressure 3\" with \"Data is co" +
                     "rrect\"");
@@ -1615,9 +1617,9 @@ this.FeatureBackground();
             table85.AddRow(new string[] {
                         "Systolic Blood Pressure 3",
                         "85"});
-#line 510
+#line 508
  testRunner.And("I enter data in CRF", ((string)(null)), table85);
-#line 513
+#line 511
  testRunner.And("I save the CRF page");
 #line hidden
             TechTalk.SpecFlow.Table table86 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1631,9 +1633,9 @@ this.FeatureBackground();
                             "ify.",
                         "False",
                         "False"});
-#line 514
+#line 512
  testRunner.Then("I verify Query is displayed", ((string)(null)), table86);
-#line 517
+#line 515
  testRunner.And("I take a screenshot");
 #line hidden
             TechTalk.SpecFlow.Table table87 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1642,9 +1644,9 @@ this.FeatureBackground();
             table87.AddRow(new string[] {
                         "Systolic Blood Pressure 3",
                         "100"});
-#line 518
+#line 516
  testRunner.When("I enter data in CRF", ((string)(null)), table87);
-#line 521
+#line 519
  testRunner.And("I save the CRF page");
 #line hidden
             TechTalk.SpecFlow.Table table88 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1658,9 +1660,9 @@ this.FeatureBackground();
                             "ify.",
                         "False",
                         "False"});
-#line 522
+#line 520
  testRunner.Then("I verify Query is not displayed", ((string)(null)), table88);
-#line 525
+#line 523
  testRunner.And("I take a screenshot");
 #line hidden
             TechTalk.SpecFlow.Table table89 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1669,9 +1671,9 @@ this.FeatureBackground();
             table89.AddRow(new string[] {
                         "Systolic Blood Pressure 3",
                         "85"});
-#line 526
+#line 524
  testRunner.When("I enter data in CRF", ((string)(null)), table89);
-#line 529
+#line 527
  testRunner.And("I save the CRF page");
 #line hidden
             TechTalk.SpecFlow.Table table90 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1685,9 +1687,9 @@ this.FeatureBackground();
                             "ify.",
                         "False",
                         "False"});
-#line 530
+#line 528
  testRunner.Then("I verify Query is not displayed", ((string)(null)), table90);
-#line 533
+#line 531
  testRunner.And("I take a screenshot");
 #line hidden
             this.ScenarioCleanup();
@@ -1705,11 +1707,11 @@ this.FeatureBackground();
                         "release_564_Patch11",
                         "PB-US12940-03D",
                         "ignore"});
-#line 541
+#line 539
 this.ScenarioSetup(scenarioInfo);
 #line 11
 this.FeatureBackground();
-#line 544
+#line 542
  testRunner.Given("I select Study \"Standard Study\" and Site \"Site 1\"");
 #line hidden
             TechTalk.SpecFlow.Table table91 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1724,9 +1726,9 @@ this.FeatureBackground();
             table91.AddRow(new string[] {
                         "Subject ID",
                         "SUB {Var(num1)}"});
-#line 545
+#line 543
  testRunner.And("I create a Subject", ((string)(null)), table91);
-#line 550
+#line 548
  testRunner.And("I select Form \"Form 2\"");
 #line hidden
             TechTalk.SpecFlow.Table table92 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1738,9 +1740,9 @@ this.FeatureBackground();
             table92.AddRow(new string[] {
                         "Diastolic Blood Pressure 4",
                         "90"});
-#line 551
+#line 549
  testRunner.When("I enter data in CRF", ((string)(null)), table92);
-#line 555
+#line 553
     testRunner.And("I save the CRF page");
 #line hidden
             TechTalk.SpecFlow.Table table93 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1754,9 +1756,9 @@ this.FeatureBackground();
                             "ify.",
                         "False",
                         "False"});
-#line 556
+#line 554
  testRunner.Then("I verify Query is displayed", ((string)(null)), table93);
-#line 559
+#line 557
  testRunner.And("I take a screenshot");
 #line hidden
             TechTalk.SpecFlow.Table table94 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1765,9 +1767,9 @@ this.FeatureBackground();
             table94.AddRow(new string[] {
                         "Systolic Blood Pressure 4",
                         "85"});
-#line 560
+#line 558
  testRunner.When("I enter data in CRF", ((string)(null)), table94);
-#line 563
+#line 561
  testRunner.And("I save the CRF page");
 #line hidden
             TechTalk.SpecFlow.Table table95 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1781,14 +1783,14 @@ this.FeatureBackground();
                             "ify.",
                         "True",
                         "False"});
-#line 564
+#line 562
  testRunner.Then("I verify Query is displayed", ((string)(null)), table95);
-#line 567
+#line 566
  testRunner.And("I take a screenshot");
-#line 568
+#line 567
  testRunner.When("I close the Query \"Systolic Blood Pressure must be greater than Diastolic Blood P" +
                     "ressure. Please verify.\" on Field \"Systolic Blood Pressure 4\"");
-#line 569
+#line 568
  testRunner.And("I save the CRF page");
 #line hidden
             TechTalk.SpecFlow.Table table96 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1802,9 +1804,9 @@ this.FeatureBackground();
                             "ify.",
                         "True",
                         "True"});
-#line 570
+#line 569
  testRunner.Then("I verify Query is displayed", ((string)(null)), table96);
-#line 573
+#line 572
     testRunner.And("I take a screenshot");
 #line hidden
             TechTalk.SpecFlow.Table table97 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1813,9 +1815,9 @@ this.FeatureBackground();
             table97.AddRow(new string[] {
                         "Systolic Blood Pressure 4",
                         "100"});
-#line 574
+#line 573
  testRunner.And("I enter data in CRF", ((string)(null)), table97);
-#line 577
+#line 576
     testRunner.And("I save the CRF page");
 #line hidden
             TechTalk.SpecFlow.Table table98 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1829,9 +1831,9 @@ this.FeatureBackground();
                             "ify.",
                         "False",
                         "False"});
-#line 578
+#line 577
  testRunner.Then("I verify Query is not displayed", ((string)(null)), table98);
-#line 581
+#line 580
     testRunner.And("I take a screenshot");
 #line hidden
             TechTalk.SpecFlow.Table table99 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1840,9 +1842,9 @@ this.FeatureBackground();
             table99.AddRow(new string[] {
                         "Systolic Blood Pressure 4",
                         "85"});
-#line 582
+#line 581
  testRunner.And("I enter data in CRF", ((string)(null)), table99);
-#line 585
+#line 584
     testRunner.And("I save the CRF page");
 #line hidden
             TechTalk.SpecFlow.Table table100 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1856,9 +1858,9 @@ this.FeatureBackground();
                             "ify.",
                         "False",
                         "False"});
-#line 586
- testRunner.Then("I verify Query is not  displayed", ((string)(null)), table100);
-#line 589
+#line 585
+ testRunner.Then("I verify Query is not displayed", ((string)(null)), table100);
+#line 588
     testRunner.And("I take a screenshot");
 #line hidden
             this.ScenarioCleanup();
@@ -1876,28 +1878,28 @@ this.FeatureBackground();
                         "release_564_Patch11",
                         "PB-US12940-04A",
                         "Draft"});
-#line 596
+#line 595
 this.ScenarioSetup(scenarioInfo);
 #line 11
 this.FeatureBackground();
-#line 599
+#line 598
  testRunner.Given("I select Study \"Standard Study\" and Site \"Site 1\"");
 #line hidden
             TechTalk.SpecFlow.Table table101 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field",
                         "Data"});
             table101.AddRow(new string[] {
-                        "Subject Number",
-                        "{RndNum<num1>(5)}"});
-            table101.AddRow(new string[] {
                         "Subject Initials",
                         "SUB"});
             table101.AddRow(new string[] {
+                        "Subject Number",
+                        "{RndNum<num1>(5)}"});
+            table101.AddRow(new string[] {
                         "Subject ID",
                         "SUB {Var(num1)}"});
-#line 600
+#line 599
  testRunner.And("I create a Subject", ((string)(null)), table101);
-#line 605
+#line 604
  testRunner.And("I select Form \"Form 2\"");
 #line hidden
             TechTalk.SpecFlow.Table table102 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1909,10 +1911,10 @@ this.FeatureBackground();
             table102.AddRow(new string[] {
                         "Diastolic Blood Pressure 1",
                         "90"});
-#line 606
+#line 605
  testRunner.And("I enter data in CRF", ((string)(null)), table102);
-#line 610
-    testRunner.And("I save CRF page");
+#line 609
+    testRunner.And("I save the CRF page");
 #line hidden
             TechTalk.SpecFlow.Table table103 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field",
@@ -1925,11 +1927,11 @@ this.FeatureBackground();
                             "ify.",
                         "False",
                         "False"});
-#line 611
+#line 610
  testRunner.Then("I verify Query is displayed", ((string)(null)), table103);
-#line 614
+#line 613
  testRunner.And("I take a screenshot");
-#line 615
+#line 614
  testRunner.When("I answer the Query \"Systolic Blood Pressure must be greater than Diastolic Blood " +
                     "Pressure. Please verify.\" on Field \"Diastolic Blood Pressure 1\" with \"Data is co" +
                     "rrect\"");
@@ -1940,9 +1942,9 @@ this.FeatureBackground();
             table104.AddRow(new string[] {
                         "Diastolic Blood Pressure 1",
                         "85"});
-#line 616
+#line 615
    testRunner.And("I enter data in CRF", ((string)(null)), table104);
-#line 619
+#line 618
  testRunner.And("I save the CRF page");
 #line hidden
             TechTalk.SpecFlow.Table table105 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1956,13 +1958,15 @@ this.FeatureBackground();
                             "ify.",
                         "True",
                         "False"});
-#line 620
+#line 619
  testRunner.Then("I verify Query is displayed", ((string)(null)), table105);
-#line 623
+#line 622
     testRunner.And("I take a screenshot");
-#line 624
+#line 623
  testRunner.When("I close the Query \"Systolic Blood Pressure must be greater than Diastolic Blood P" +
                     "ressure. Please verify.\" on Field \"Diastolic Blood Pressure 1\"");
+#line 624
+    testRunner.And("I save the CRF page");
 #line hidden
             TechTalk.SpecFlow.Table table106 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field",
@@ -2030,7 +2034,7 @@ this.FeatureBackground();
                         "False",
                         "False"});
 #line 641
- testRunner.Then("I verify Query is not  displayed", ((string)(null)), table110);
+ testRunner.Then("I verify Query is not displayed", ((string)(null)), table110);
 #line 644
     testRunner.And("I take a screenshot");
 #line hidden
@@ -2165,18 +2169,18 @@ this.FeatureBackground();
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "QueryRefiringLogic4tgt")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("release_564_Patch11")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("PB-US12940-04C")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Draft")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.IgnoreAttribute()]
         public virtual void PB_US12940_04CAsAnEDCUserWhenIEnteredBadDataInFieldAAndFieldBThatResultedInTheSystemOpeningAQueryOnFieldBAndIAnsweredTheQueryAndIChangedTheDataInFieldBToAnotherBadDataAndTheQueryIsThenClosedIfIEnteredGoodDataInFieldBAndThenAgainEnteredTheSameBadDataInFieldBAsWhenTheQueryWasClosedThenTheSystemShouldNotRefireAQueryOnFieldB_()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo(@"@PB-US12940-04C As an EDC user, when I entered bad data in field A and field B that resulted in the system opening a query on field B, and I answered the query and I changed the data in field B to another bad data, and the query is then closed, if I entered good data in field B and then again entered the same bad data in field B as when the query was closed, then the system should not refire a query on field B.", new string[] {
                         "release_564_Patch11",
                         "PB-US12940-04C",
-                        "Draft"});
-#line 690
+                        "ignore"});
+#line 691
 this.ScenarioSetup(scenarioInfo);
 #line 11
 this.FeatureBackground();
-#line 693
+#line 694
  testRunner.Given("I select Study \"Standard Study\" and Site \"Site 1\"");
 #line hidden
             TechTalk.SpecFlow.Table table118 = new TechTalk.SpecFlow.Table(new string[] {
@@ -2191,9 +2195,9 @@ this.FeatureBackground();
             table118.AddRow(new string[] {
                         "Subject ID",
                         "SUB {Var(num1)}"});
-#line 694
+#line 695
  testRunner.And("I create a Subject", ((string)(null)), table118);
-#line 699
+#line 700
  testRunner.And("I select Form \"Form 2\"");
 #line hidden
             TechTalk.SpecFlow.Table table119 = new TechTalk.SpecFlow.Table(new string[] {
@@ -2205,9 +2209,9 @@ this.FeatureBackground();
             table119.AddRow(new string[] {
                         "Diastolic Blood Pressure 3",
                         "90"});
-#line 700
+#line 701
  testRunner.And("I enter data in CRF", ((string)(null)), table119);
-#line 704
+#line 705
  testRunner.And("I save the CRF page");
 #line hidden
             TechTalk.SpecFlow.Table table120 = new TechTalk.SpecFlow.Table(new string[] {
@@ -2221,11 +2225,11 @@ this.FeatureBackground();
                             "ify.",
                         "False",
                         "False"});
-#line 705
+#line 706
  testRunner.Then("I verify Query is displayed", ((string)(null)), table120);
-#line 708
- testRunner.And("I take a screenshot");
 #line 709
+ testRunner.And("I take a screenshot");
+#line 710
  testRunner.When("I answer the Query \"Systolic Blood Pressure must be greater than Diastolic Blood " +
                     "Pressure. Please verify.\" on Field \"Diastolic Blood Pressure 3\" with \"Data is co" +
                     "rrect\"");
@@ -2234,11 +2238,11 @@ this.FeatureBackground();
                         "Field",
                         "Data"});
             table121.AddRow(new string[] {
-                        "Diastolic Blood Pressure 1",
+                        "Diastolic Blood Pressure 3",
                         "85"});
-#line 710
-   testRunner.And("I enter data in CRF", ((string)(null)), table121);
-#line 713
+#line 711
+ testRunner.And("I enter data in CRF", ((string)(null)), table121);
+#line 714
  testRunner.And("I save the CRF page");
 #line hidden
             TechTalk.SpecFlow.Table table122 = new TechTalk.SpecFlow.Table(new string[] {
@@ -2250,11 +2254,11 @@ this.FeatureBackground();
                         "Diastolic Blood Pressure 3",
                         "Systolic Blood Pressure must be greater than Diastolic Blood Pressure. Please ver" +
                             "ify.",
-                        "False",
-                        "False"});
-#line 714
+                        "True",
+                        "True"});
+#line 715
  testRunner.Then("I verify Query is displayed", ((string)(null)), table122);
-#line 717
+#line 719
  testRunner.And("I take a screenshot");
 #line hidden
             TechTalk.SpecFlow.Table table123 = new TechTalk.SpecFlow.Table(new string[] {
@@ -2263,9 +2267,9 @@ this.FeatureBackground();
             table123.AddRow(new string[] {
                         "Diastolic Blood Pressure 3",
                         "70"});
-#line 718
+#line 720
  testRunner.And("I enter data in CRF", ((string)(null)), table123);
-#line 721
+#line 723
  testRunner.And("I save the CRF page");
 #line hidden
             TechTalk.SpecFlow.Table table124 = new TechTalk.SpecFlow.Table(new string[] {
@@ -2279,9 +2283,9 @@ this.FeatureBackground();
                             "ify.",
                         "False",
                         "False"});
-#line 722
+#line 724
  testRunner.Then("I verify Query is not displayed", ((string)(null)), table124);
-#line 725
+#line 727
  testRunner.And("I take a screenshot");
 #line hidden
             TechTalk.SpecFlow.Table table125 = new TechTalk.SpecFlow.Table(new string[] {
@@ -2290,9 +2294,9 @@ this.FeatureBackground();
             table125.AddRow(new string[] {
                         "Diastolic Blood Pressure 3",
                         "85"});
-#line 726
+#line 728
  testRunner.And("I enter data in CRF", ((string)(null)), table125);
-#line 729
+#line 731
  testRunner.And("I save the CRF page");
 #line hidden
             TechTalk.SpecFlow.Table table126 = new TechTalk.SpecFlow.Table(new string[] {
@@ -2306,9 +2310,9 @@ this.FeatureBackground();
                             "ify.",
                         "False",
                         "False"});
-#line 730
+#line 732
  testRunner.Then("I verify Query is not displayed", ((string)(null)), table126);
-#line 733
+#line 735
  testRunner.And("I take a screenshot");
 #line hidden
             this.ScenarioCleanup();
@@ -2337,11 +2341,11 @@ this.FeatureBackground();
                         "Field",
                         "Data"});
             table127.AddRow(new string[] {
-                        "Subject Number",
-                        "{RndNum<num1>(5)}"});
-            table127.AddRow(new string[] {
                         "Subject Initials",
                         "SUB"});
+            table127.AddRow(new string[] {
+                        "Subject Number",
+                        "{RndNum<num1>(5)}"});
             table127.AddRow(new string[] {
                         "Subject ID",
                         "SUB {Var(num1)}"});
@@ -2422,7 +2426,7 @@ this.FeatureBackground();
  testRunner.And("I take a screenshot");
 #line 771
  testRunner.When("I close the Query \"Systolic Blood Pressure must be greater than Diastolic Blood P" +
-                    "ressure. Please verify.\" on Field \"Diastolic Blood Pressure 4 \"");
+                    "ressure. Please verify.\" on Field \"Diastolic Blood Pressure 4\"");
 #line 772
  testRunner.And("I save the CRF page");
 #line hidden
@@ -2802,18 +2806,18 @@ this.FeatureBackground();
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "QueryRefiringLogic4tgt")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("release_564_Patch11")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("PB-US12940-05C")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Draft")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.IgnoreAttribute()]
         public virtual void PB_US12940_05CAsAnEDCUserWhenIEnteredBadDataInFieldAAndFieldBThatResultedInTheSystemOpeningAQueryOnFieldBAndIAnsweredTheQueryAndIChangedTheDataInFieldAToAnotherBadDataAndTheQueryIsThenClosedIfIThenEnteredTheOriginalBadDataInFieldAThenTheSystemShouldRefireAQueryOnFieldB_()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo(@"@PB-US12940-05C As an EDC user, when I entered bad data in field A and field B that resulted in the system opening a query on field B, and I answered the query and I changed the data in field A to another bad data, and the query is then closed, if I then entered the original bad data in field A, then the system should refire a query on field B.", new string[] {
                         "release_564_Patch11",
                         "PB-US12940-05C",
-                        "Draft"});
-#line 894
+                        "ignore"});
+#line 895
 this.ScenarioSetup(scenarioInfo);
 #line 11
 this.FeatureBackground();
-#line 897
+#line 898
  testRunner.Given("I select Study \"Standard Study\" and Site \"Site 1\"");
 #line hidden
             TechTalk.SpecFlow.Table table155 = new TechTalk.SpecFlow.Table(new string[] {
@@ -2828,9 +2832,9 @@ this.FeatureBackground();
             table155.AddRow(new string[] {
                         "Subject ID",
                         "SUB {Var(num1)}"});
-#line 898
+#line 899
  testRunner.And("I create a Subject", ((string)(null)), table155);
-#line 903
+#line 904
  testRunner.And("I select Form \"Form 2\"");
 #line hidden
             TechTalk.SpecFlow.Table table156 = new TechTalk.SpecFlow.Table(new string[] {
@@ -2842,9 +2846,9 @@ this.FeatureBackground();
             table156.AddRow(new string[] {
                         "Diastolic Blood Pressure 3",
                         "90"});
-#line 904
+#line 905
  testRunner.When("I enter data in CRF", ((string)(null)), table156);
-#line 908
+#line 909
  testRunner.And("I save the CRF page");
 #line hidden
             TechTalk.SpecFlow.Table table157 = new TechTalk.SpecFlow.Table(new string[] {
@@ -2858,11 +2862,11 @@ this.FeatureBackground();
                             "ify.",
                         "False",
                         "False"});
-#line 909
+#line 910
  testRunner.Then("I verify Query is displayed", ((string)(null)), table157);
-#line 912
- testRunner.And("I take a screenshot");
 #line 913
+ testRunner.And("I take a screenshot");
+#line 914
  testRunner.When("I answer the Query \"Systolic Blood Pressure must be greater than Diastolic Blood " +
                     "Pressure. Please verify.\" on Field \"Diastolic Blood Pressure 3\" with \"Data is co" +
                     "rrect\"");
@@ -2873,9 +2877,9 @@ this.FeatureBackground();
             table158.AddRow(new string[] {
                         "Systolic Blood Pressure 3",
                         "85"});
-#line 914
+#line 915
  testRunner.And("I enter data in CRF", ((string)(null)), table158);
-#line 917
+#line 918
  testRunner.And("I save the CRF page");
 #line hidden
             TechTalk.SpecFlow.Table table159 = new TechTalk.SpecFlow.Table(new string[] {
@@ -2889,7 +2893,7 @@ this.FeatureBackground();
                             "ify.",
                         "True",
                         "True"});
-#line 918
+#line 919
  testRunner.Then("I verify Query is displayed", ((string)(null)), table159);
 #line hidden
             TechTalk.SpecFlow.Table table160 = new TechTalk.SpecFlow.Table(new string[] {
@@ -2903,9 +2907,9 @@ this.FeatureBackground();
                             "ify.",
                         "False",
                         "False"});
-#line 921
+#line 922
  testRunner.And("verify Query is not displayed", ((string)(null)), table160);
-#line 924
+#line 926
  testRunner.And("I take a screenshot");
 #line hidden
             TechTalk.SpecFlow.Table table161 = new TechTalk.SpecFlow.Table(new string[] {
@@ -2914,9 +2918,9 @@ this.FeatureBackground();
             table161.AddRow(new string[] {
                         "Systolic Blood Pressure 3",
                         "100"});
-#line 925
+#line 927
  testRunner.When("I enter data in CRF", ((string)(null)), table161);
-#line 928
+#line 930
  testRunner.And("I save the CRF page");
 #line hidden
             TechTalk.SpecFlow.Table table162 = new TechTalk.SpecFlow.Table(new string[] {
@@ -2930,9 +2934,9 @@ this.FeatureBackground();
                             "ify.",
                         "False",
                         "False"});
-#line 929
+#line 931
  testRunner.Then("I verify Query is not displayed", ((string)(null)), table162);
-#line 932
+#line 934
  testRunner.And("I take a screenshot");
 #line hidden
             TechTalk.SpecFlow.Table table163 = new TechTalk.SpecFlow.Table(new string[] {
@@ -2941,9 +2945,9 @@ this.FeatureBackground();
             table163.AddRow(new string[] {
                         "Systolic Blood Pressure 3",
                         "80"});
-#line 933
+#line 935
  testRunner.When("I enter data in CRF", ((string)(null)), table163);
-#line 936
+#line 938
  testRunner.And("I save the CRF page");
 #line hidden
             TechTalk.SpecFlow.Table table164 = new TechTalk.SpecFlow.Table(new string[] {
@@ -2957,9 +2961,9 @@ this.FeatureBackground();
                             "ify.",
                         "False",
                         "False"});
-#line 937
+#line 939
  testRunner.Then("I verify Query is displayed", ((string)(null)), table164);
-#line 940
+#line 942
  testRunner.And("I take a screenshot");
 #line hidden
             this.ScenarioCleanup();
@@ -2970,35 +2974,35 @@ this.FeatureBackground();
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "QueryRefiringLogic4tgt")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("release_564_Patch11")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("PB-US12940-05D")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Draft")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.IgnoreAttribute()]
         public virtual void PB_US12940_05DAsAnEDCUserWhenIEnteredBadDataInFieldAAndFieldBThatResultedInTheSystemOpeningAQueryOnFieldBAndIChangedTheDataInFieldAToAnotherBadDataAndTheSystemAnsweredTheQueryAndTheQueryIsThenClosedIfIThenEnteredTheOriginalBadDataInFieldAThenTheSystemShouldRefireAQueryOnFieldB_()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo(@"@PB-US12940-05D As an EDC user, when I entered bad data in field A and field B that resulted in the system opening a query on field B, and I changed the data in field A to another bad data and the system answered the query, and the query is then closed, if I then entered the original bad data in field A, then the system should refire a query on field B.", new string[] {
                         "release_564_Patch11",
                         "PB-US12940-05D",
-                        "Draft"});
-#line 947
+                        "ignore"});
+#line 949
 this.ScenarioSetup(scenarioInfo);
 #line 11
 this.FeatureBackground();
-#line 950
+#line 952
  testRunner.Given("I select Study \"Standard Study\" and Site \"Site 1\"");
 #line hidden
             TechTalk.SpecFlow.Table table165 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field",
                         "Data"});
             table165.AddRow(new string[] {
-                        "Subject Number",
-                        "{RndNum<num1>(5)}"});
-            table165.AddRow(new string[] {
                         "Subject Initials",
                         "SUB"});
             table165.AddRow(new string[] {
+                        "Subject Number",
+                        "{RndNum<num1>(5)}"});
+            table165.AddRow(new string[] {
                         "Subject ID",
                         "SUB {Var(num1)}"});
-#line 951
+#line 953
  testRunner.And("I create a Subject", ((string)(null)), table165);
-#line 956
+#line 958
  testRunner.And("I select Form \"Form 2\"");
 #line hidden
             TechTalk.SpecFlow.Table table166 = new TechTalk.SpecFlow.Table(new string[] {
@@ -3010,9 +3014,9 @@ this.FeatureBackground();
             table166.AddRow(new string[] {
                         "Diastolic Blood Pressure 4",
                         "90"});
-#line 957
+#line 959
  testRunner.When("I enter data in CRF", ((string)(null)), table166);
-#line 961
+#line 963
  testRunner.And("I save the CRF page");
 #line hidden
             TechTalk.SpecFlow.Table table167 = new TechTalk.SpecFlow.Table(new string[] {
@@ -3026,9 +3030,9 @@ this.FeatureBackground();
                             "ify.",
                         "False",
                         "False"});
-#line 962
+#line 964
  testRunner.Then("I verify Query is displayed", ((string)(null)), table167);
-#line 965
+#line 967
  testRunner.And("I take a screenshot");
 #line hidden
             TechTalk.SpecFlow.Table table168 = new TechTalk.SpecFlow.Table(new string[] {
@@ -3037,9 +3041,9 @@ this.FeatureBackground();
             table168.AddRow(new string[] {
                         "Systolic Blood Pressure 4",
                         "85"});
-#line 966
+#line 968
  testRunner.When("I enter data in CRF", ((string)(null)), table168);
-#line 969
+#line 971
  testRunner.And("I save the CRF page");
 #line hidden
             TechTalk.SpecFlow.Table table169 = new TechTalk.SpecFlow.Table(new string[] {
@@ -3053,14 +3057,14 @@ this.FeatureBackground();
                             "ify.",
                         "True",
                         "False"});
-#line 970
+#line 972
  testRunner.Then("I verify Query is displayed", ((string)(null)), table169);
-#line 973
+#line 976
  testRunner.And("I take a screenshot");
-#line 974
+#line 977
  testRunner.When("I close the Query \"Systolic Blood Pressure must be greater than Diastolic Blood P" +
                     "ressure. Please verify.\" on Field \"Diastolic Blood Pressure 4\"");
-#line 975
+#line 978
  testRunner.And("I save the CRF page");
 #line hidden
             TechTalk.SpecFlow.Table table170 = new TechTalk.SpecFlow.Table(new string[] {
@@ -3074,9 +3078,9 @@ this.FeatureBackground();
                             "ify.",
                         "True",
                         "True"});
-#line 976
- testRunner.Then("I verify Query is displayed", ((string)(null)), table170);
 #line 979
+ testRunner.Then("I verify Query is displayed", ((string)(null)), table170);
+#line 982
  testRunner.And("I take a screenshot");
 #line hidden
             TechTalk.SpecFlow.Table table171 = new TechTalk.SpecFlow.Table(new string[] {
@@ -3085,9 +3089,9 @@ this.FeatureBackground();
             table171.AddRow(new string[] {
                         "Systolic Blood Pressure 4",
                         "100"});
-#line 980
- testRunner.When("I enter data in CRF", ((string)(null)), table171);
 #line 983
+ testRunner.When("I enter data in CRF", ((string)(null)), table171);
+#line 986
  testRunner.And("I save the CRF page");
 #line hidden
             TechTalk.SpecFlow.Table table172 = new TechTalk.SpecFlow.Table(new string[] {
@@ -3101,9 +3105,9 @@ this.FeatureBackground();
                             "ify.",
                         "False",
                         "False"});
-#line 984
- testRunner.Then("I verify Query is not displayed", ((string)(null)), table172);
 #line 987
+ testRunner.Then("I verify Query is not displayed", ((string)(null)), table172);
+#line 990
  testRunner.And("I take a screenshot");
 #line hidden
             TechTalk.SpecFlow.Table table173 = new TechTalk.SpecFlow.Table(new string[] {
@@ -3112,9 +3116,9 @@ this.FeatureBackground();
             table173.AddRow(new string[] {
                         "Systolic Blood Pressure 4",
                         "80"});
-#line 988
- testRunner.When("I enter data in CRF", ((string)(null)), table173);
 #line 991
+ testRunner.When("I enter data in CRF", ((string)(null)), table173);
+#line 994
  testRunner.And("I save the CRF page");
 #line hidden
             TechTalk.SpecFlow.Table table174 = new TechTalk.SpecFlow.Table(new string[] {
@@ -3128,9 +3132,9 @@ this.FeatureBackground();
                             "ify.",
                         "False",
                         "False"});
-#line 992
- testRunner.Then("I verify Query is displayed", ((string)(null)), table174);
 #line 995
+ testRunner.Then("I verify Query is displayed", ((string)(null)), table174);
+#line 998
  testRunner.And("I take a screenshot");
 #line hidden
             this.ScenarioCleanup();
@@ -3148,11 +3152,11 @@ this.FeatureBackground();
                         "release_564_Patch11",
                         "PB-US12940-06A",
                         "Draft"});
-#line 1002
+#line 1004
 this.ScenarioSetup(scenarioInfo);
 #line 11
 this.FeatureBackground();
-#line 1005
+#line 1007
  testRunner.Given("I select Study \"Standard Study\" and Site \"Site 1\"");
 #line hidden
             TechTalk.SpecFlow.Table table175 = new TechTalk.SpecFlow.Table(new string[] {
@@ -3167,9 +3171,9 @@ this.FeatureBackground();
             table175.AddRow(new string[] {
                         "Subject ID",
                         "SUB {Var(num1)}"});
-#line 1006
+#line 1008
  testRunner.And("I create a Subject", ((string)(null)), table175);
-#line 1011
+#line 1013
  testRunner.And("I select Form \"Form 2\"");
 #line hidden
             TechTalk.SpecFlow.Table table176 = new TechTalk.SpecFlow.Table(new string[] {
@@ -3181,9 +3185,9 @@ this.FeatureBackground();
             table176.AddRow(new string[] {
                         "Diastolic Blood Pressure 1",
                         "90"});
-#line 1012
+#line 1014
  testRunner.When("I enter data in CRF", ((string)(null)), table176);
-#line 1016
+#line 1018
  testRunner.And("I save the CRF page");
 #line hidden
             TechTalk.SpecFlow.Table table177 = new TechTalk.SpecFlow.Table(new string[] {
@@ -3197,11 +3201,11 @@ this.FeatureBackground();
                             "ify.",
                         "False",
                         "False"});
-#line 1017
+#line 1019
  testRunner.Then("I verify Query is displayed", ((string)(null)), table177);
-#line 1020
+#line 1022
  testRunner.And("I take a screenshot");
-#line 1021
+#line 1023
  testRunner.When("I answer the Query \"Systolic Blood Pressure must be greater than Diastolic Blood " +
                     "Pressure. Please verify.\" on Field \"Diastolic Blood Pressure 1\" with \"Data is co" +
                     "rrect\"");
@@ -3212,9 +3216,9 @@ this.FeatureBackground();
             table178.AddRow(new string[] {
                         "Diastolic Blood Pressure 1",
                         "85"});
-#line 1022
+#line 1024
  testRunner.And("I enter data in CRF", ((string)(null)), table178);
-#line 1025
+#line 1027
  testRunner.And("I save the CRF page");
 #line hidden
             TechTalk.SpecFlow.Table table179 = new TechTalk.SpecFlow.Table(new string[] {
@@ -3228,14 +3232,14 @@ this.FeatureBackground();
                             "ify.",
                         "True",
                         "False"});
-#line 1026
+#line 1028
     testRunner.Then("I verify Query is displayed", ((string)(null)), table179);
-#line 1029
+#line 1031
  testRunner.And("I take a screenshot");
-#line 1030
+#line 1032
  testRunner.When("I close the Query \"Systolic Blood Pressure must be greater than Diastolic Blood P" +
                     "ressure. Please verify.\" on Field \"Diastolic Blood Pressure 1\"");
-#line 1031
+#line 1033
     testRunner.And("I save the CRF page");
 #line hidden
             TechTalk.SpecFlow.Table table180 = new TechTalk.SpecFlow.Table(new string[] {
@@ -3249,9 +3253,9 @@ this.FeatureBackground();
                             "ify.",
                         "True",
                         "True"});
-#line 1032
+#line 1034
  testRunner.Then("I verify Query is displayed", ((string)(null)), table180);
-#line 1035
+#line 1037
  testRunner.And("I take a screenshot");
 #line hidden
             TechTalk.SpecFlow.Table table181 = new TechTalk.SpecFlow.Table(new string[] {
@@ -3260,9 +3264,9 @@ this.FeatureBackground();
             table181.AddRow(new string[] {
                         "Diastolic Blood Pressure 1",
                         "70"});
-#line 1036
+#line 1038
  testRunner.When("I enter data in CRF", ((string)(null)), table181);
-#line 1039
+#line 1041
  testRunner.And("I save the CRF page");
 #line hidden
             TechTalk.SpecFlow.Table table182 = new TechTalk.SpecFlow.Table(new string[] {
@@ -3276,9 +3280,9 @@ this.FeatureBackground();
                             "ify.",
                         "False",
                         "False"});
-#line 1040
+#line 1042
  testRunner.Then("I verify Query is not displayed", ((string)(null)), table182);
-#line 1043
+#line 1045
  testRunner.And("I take a screenshot");
 #line hidden
             TechTalk.SpecFlow.Table table183 = new TechTalk.SpecFlow.Table(new string[] {
@@ -3287,9 +3291,9 @@ this.FeatureBackground();
             table183.AddRow(new string[] {
                         "Diastolic Blood Pressure 1",
                         "90"});
-#line 1044
+#line 1046
  testRunner.When("I enter data in CRF", ((string)(null)), table183);
-#line 1047
+#line 1049
  testRunner.And("I save the CRF page");
 #line hidden
             TechTalk.SpecFlow.Table table184 = new TechTalk.SpecFlow.Table(new string[] {
@@ -3303,9 +3307,9 @@ this.FeatureBackground();
                             "ify.",
                         "False",
                         "False"});
-#line 1048
+#line 1050
  testRunner.Then("I verify Query is displayed", ((string)(null)), table184);
-#line 1051
+#line 1053
  testRunner.And("I take a screenshot");
 #line hidden
             this.ScenarioCleanup();
@@ -3323,11 +3327,11 @@ this.FeatureBackground();
                         "release_564_Patch11",
                         "PB-US12940-06B",
                         "Draft"});
-#line 1058
+#line 1060
 this.ScenarioSetup(scenarioInfo);
 #line 11
 this.FeatureBackground();
-#line 1061
+#line 1063
  testRunner.Given("I select Study \"Standard Study\" and Site \"Site 1\"");
 #line hidden
             TechTalk.SpecFlow.Table table185 = new TechTalk.SpecFlow.Table(new string[] {
@@ -3342,9 +3346,9 @@ this.FeatureBackground();
             table185.AddRow(new string[] {
                         "Subject ID",
                         "SUB {Var(num1)}"});
-#line 1062
+#line 1064
  testRunner.And("I create a Subject", ((string)(null)), table185);
-#line 1067
+#line 1069
  testRunner.And("I select Form \"Form 2\"");
 #line hidden
             TechTalk.SpecFlow.Table table186 = new TechTalk.SpecFlow.Table(new string[] {
@@ -3356,9 +3360,9 @@ this.FeatureBackground();
             table186.AddRow(new string[] {
                         "Diastolic Blood Pressure 2",
                         "90"});
-#line 1068
+#line 1070
  testRunner.When("I enter data in CRF", ((string)(null)), table186);
-#line 1072
+#line 1074
  testRunner.And("I save the CRF page");
 #line hidden
             TechTalk.SpecFlow.Table table187 = new TechTalk.SpecFlow.Table(new string[] {
@@ -3372,9 +3376,9 @@ this.FeatureBackground();
                             "ify.",
                         "False",
                         "False"});
-#line 1073
+#line 1075
  testRunner.Then("I verify Query is displayed", ((string)(null)), table187);
-#line 1076
+#line 1078
  testRunner.And("I take a screenshot");
 #line hidden
             TechTalk.SpecFlow.Table table188 = new TechTalk.SpecFlow.Table(new string[] {
@@ -3383,9 +3387,9 @@ this.FeatureBackground();
             table188.AddRow(new string[] {
                         "Diastolic Blood Pressure 2",
                         "70"});
-#line 1077
+#line 1079
  testRunner.When("I enter data in CRF", ((string)(null)), table188);
-#line 1080
+#line 1082
  testRunner.And("I save the CRF page");
 #line hidden
             TechTalk.SpecFlow.Table table189 = new TechTalk.SpecFlow.Table(new string[] {
@@ -3399,9 +3403,9 @@ this.FeatureBackground();
                             "ify.",
                         "False",
                         "False"});
-#line 1081
+#line 1083
  testRunner.Then("I verify Query is not displayed", ((string)(null)), table189);
-#line 1084
+#line 1086
  testRunner.And("I take a screenshot");
 #line hidden
             TechTalk.SpecFlow.Table table190 = new TechTalk.SpecFlow.Table(new string[] {
@@ -3410,9 +3414,9 @@ this.FeatureBackground();
             table190.AddRow(new string[] {
                         "Diastolic Blood Pressure 2",
                         "90"});
-#line 1085
+#line 1087
  testRunner.When("I enter data in CRF", ((string)(null)), table190);
-#line 1088
+#line 1090
  testRunner.And("I save the CRF page");
 #line hidden
             TechTalk.SpecFlow.Table table191 = new TechTalk.SpecFlow.Table(new string[] {
@@ -3426,9 +3430,9 @@ this.FeatureBackground();
                             "ify.",
                         "False",
                         "False"});
-#line 1089
+#line 1091
  testRunner.Then("I verify Query is displayed", ((string)(null)), table191);
-#line 1092
+#line 1094
  testRunner.And("I take a screenshot");
 #line hidden
             this.ScenarioCleanup();
@@ -3439,18 +3443,18 @@ this.FeatureBackground();
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "QueryRefiringLogic4tgt")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("release_564_Patch11")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("PB-US12940-06C")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Draft")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.IgnoreAttribute()]
         public virtual void PB_US12940_06CAsAnEDCUserWhenIEnteredBadDataInFieldAAndFieldBThatResultedInTheSystemOpeningAQueryOnFieldBAndIAnsweredTheQueryAndIChangedTheDataInFieldBToAnotherBadDataAndTheQueryIsThenClosedIfIThenEnteredTheOriginalBadDataInFieldBThenTheSystemShouldRefireAQueryOnFieldB_()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo(@"@PB-US12940-06C	As an EDC user, when I entered bad data in field A and field B that resulted in the system opening a query on field B, and I answered the query and I changed the data in field B to another bad data, and the query is then closed, if I then entered the original bad data in field B, then the system should refire a query on field B.", new string[] {
                         "release_564_Patch11",
                         "PB-US12940-06C",
-                        "Draft"});
-#line 1099
+                        "ignore"});
+#line 1101
 this.ScenarioSetup(scenarioInfo);
 #line 11
 this.FeatureBackground();
-#line 1102
+#line 1104
  testRunner.Given("I select Study \"Standard Study\" and Site \"Site 1\"");
 #line hidden
             TechTalk.SpecFlow.Table table192 = new TechTalk.SpecFlow.Table(new string[] {
@@ -3462,9 +3466,9 @@ this.FeatureBackground();
             table192.AddRow(new string[] {
                         "Subject Initials",
                         "sub"});
-#line 1103
+#line 1105
  testRunner.And("I create a Subject", ((string)(null)), table192);
-#line 1107
+#line 1109
  testRunner.And("I select Form \"Form 2\"");
 #line hidden
             TechTalk.SpecFlow.Table table193 = new TechTalk.SpecFlow.Table(new string[] {
@@ -3476,9 +3480,9 @@ this.FeatureBackground();
             table193.AddRow(new string[] {
                         "Diastolic Blood Pressure 3",
                         "90"});
-#line 1108
+#line 1110
  testRunner.And("I enter data in CRF", ((string)(null)), table193);
-#line 1112
+#line 1114
  testRunner.And("I save the CRF page");
 #line hidden
             TechTalk.SpecFlow.Table table194 = new TechTalk.SpecFlow.Table(new string[] {
@@ -3492,11 +3496,11 @@ this.FeatureBackground();
                             "ify.",
                         "False",
                         "False"});
-#line 1113
+#line 1115
  testRunner.Then("I verify Query is displayed", ((string)(null)), table194);
-#line 1116
+#line 1118
  testRunner.And("I take a screenshot");
-#line 1117
+#line 1119
  testRunner.When("I answer the Query \"Systolic Blood Pressure must be greater than Diastolic Blood " +
                     "Pressure. Please verify.\" on Field \"Diastolic Blood Pressure 3\" with \"Data is co" +
                     "rrect\"");
@@ -3507,9 +3511,9 @@ this.FeatureBackground();
             table195.AddRow(new string[] {
                         "Diastolic Blood Pressure 3",
                         "85"});
-#line 1118
+#line 1120
   testRunner.And("I enter data in CRF", ((string)(null)), table195);
-#line 1121
+#line 1123
  testRunner.And("I save the CRF page");
 #line hidden
             TechTalk.SpecFlow.Table table196 = new TechTalk.SpecFlow.Table(new string[] {
@@ -3523,7 +3527,7 @@ this.FeatureBackground();
                             "ify.",
                         "True",
                         "True"});
-#line 1122
+#line 1124
  testRunner.Then("I verify Query is displayed", ((string)(null)), table196);
 #line hidden
             TechTalk.SpecFlow.Table table197 = new TechTalk.SpecFlow.Table(new string[] {
@@ -3537,9 +3541,9 @@ this.FeatureBackground();
                             "ify.",
                         "False",
                         "False"});
-#line 1125
+#line 1127
  testRunner.And("I verify Query is not displayed", ((string)(null)), table197);
-#line 1128
+#line 1130
  testRunner.And("I take a screenshot");
 #line hidden
             TechTalk.SpecFlow.Table table198 = new TechTalk.SpecFlow.Table(new string[] {
@@ -3548,9 +3552,9 @@ this.FeatureBackground();
             table198.AddRow(new string[] {
                         "Diastolic Blood Pressure 3",
                         "70"});
-#line 1130
+#line 1132
  testRunner.And("I enter data in CRF", ((string)(null)), table198);
-#line 1133
+#line 1135
  testRunner.And("I save the CRF page");
 #line hidden
             TechTalk.SpecFlow.Table table199 = new TechTalk.SpecFlow.Table(new string[] {
@@ -3564,9 +3568,9 @@ this.FeatureBackground();
                             "ify.",
                         "False",
                         "False"});
-#line 1134
+#line 1136
  testRunner.Then("I verify Query is not displayed", ((string)(null)), table199);
-#line 1137
+#line 1139
  testRunner.And("I take a screenshot");
 #line hidden
             TechTalk.SpecFlow.Table table200 = new TechTalk.SpecFlow.Table(new string[] {
@@ -3575,9 +3579,9 @@ this.FeatureBackground();
             table200.AddRow(new string[] {
                         "Diastolic Blood Pressure 3",
                         "90"});
-#line 1138
+#line 1140
  testRunner.And("I enter data in CRF", ((string)(null)), table200);
-#line 1141
+#line 1143
  testRunner.And("I save the CRF page");
 #line hidden
             TechTalk.SpecFlow.Table table201 = new TechTalk.SpecFlow.Table(new string[] {
@@ -3591,9 +3595,9 @@ this.FeatureBackground();
                             "ify.",
                         "False",
                         "False"});
-#line 1142
+#line 1144
  testRunner.Then("I verify Query is displayed", ((string)(null)), table201);
-#line 1145
+#line 1147
  testRunner.And("I take a screenshot");
 #line hidden
             this.ScenarioCleanup();
@@ -3611,11 +3615,11 @@ this.FeatureBackground();
                         "release_564_Patch11",
                         "PB-US12940-06D",
                         "Draft"});
-#line 1151
+#line 1153
 this.ScenarioSetup(scenarioInfo);
 #line 11
 this.FeatureBackground();
-#line 1154
+#line 1156
  testRunner.Given("I select Study \"Standard Study\" and Site \"Site 1\"");
 #line hidden
             TechTalk.SpecFlow.Table table202 = new TechTalk.SpecFlow.Table(new string[] {
@@ -3630,9 +3634,9 @@ this.FeatureBackground();
             table202.AddRow(new string[] {
                         "Subject ID",
                         "SUB {Var(num1)}"});
-#line 1155
+#line 1157
  testRunner.And("I create a Subject", ((string)(null)), table202);
-#line 1160
+#line 1162
  testRunner.And("I select Form \"Form 2\"");
 #line hidden
             TechTalk.SpecFlow.Table table203 = new TechTalk.SpecFlow.Table(new string[] {
@@ -3644,9 +3648,9 @@ this.FeatureBackground();
             table203.AddRow(new string[] {
                         "Diastolic Blood Pressure 4",
                         "90"});
-#line 1161
+#line 1163
  testRunner.And("I enter data in CRF", ((string)(null)), table203);
-#line 1165
+#line 1167
  testRunner.And("I save the CRF page");
 #line hidden
             TechTalk.SpecFlow.Table table204 = new TechTalk.SpecFlow.Table(new string[] {
@@ -3660,9 +3664,9 @@ this.FeatureBackground();
                             "ify.",
                         "False",
                         "False"});
-#line 1166
+#line 1168
  testRunner.Then("I verify Query is displayed", ((string)(null)), table204);
-#line 1169
+#line 1171
  testRunner.And("I take a screenshot");
 #line hidden
             TechTalk.SpecFlow.Table table205 = new TechTalk.SpecFlow.Table(new string[] {
@@ -3671,9 +3675,9 @@ this.FeatureBackground();
             table205.AddRow(new string[] {
                         "Diastolic Blood Pressure 4",
                         "85"});
-#line 1170
+#line 1172
  testRunner.And("I enter data in CRF", ((string)(null)), table205);
-#line 1173
+#line 1175
  testRunner.And("I save the CRF page");
 #line hidden
             TechTalk.SpecFlow.Table table206 = new TechTalk.SpecFlow.Table(new string[] {
@@ -3687,15 +3691,14 @@ this.FeatureBackground();
                             "ify.",
                         "True",
                         "False"});
-#line 1174
+#line 1176
  testRunner.Then("I verify Query is displayed", ((string)(null)), table206);
-#line 1177
- testRunner.And("I take a screenshot");
-#line 1178
- testRunner.When("I close the Query \"Systolic Blood Pressure must be greater than Diastolic Blood P" +
-                    "ressure. Please verify.\" on Field \"Diastolic Blood Pressure 4\"       |Field\t\t\t\t\t" +
-                    "\t|");
 #line 1179
+ testRunner.And("I take a screenshot");
+#line 1180
+ testRunner.When("I close the Query \"Systolic Blood Pressure must be greater than Diastolic Blood P" +
+                    "ressure. Please verify.\" on Field \"Diastolic Blood Pressure 4\"");
+#line 1181
  testRunner.And("I save the CRF page");
 #line hidden
             TechTalk.SpecFlow.Table table207 = new TechTalk.SpecFlow.Table(new string[] {
@@ -3709,9 +3712,9 @@ this.FeatureBackground();
                             "ify.",
                         "True",
                         "True"});
-#line 1180
+#line 1182
  testRunner.Then("I verify Query is displayed", ((string)(null)), table207);
-#line 1183
+#line 1185
  testRunner.And("I take a screenshot");
 #line hidden
             TechTalk.SpecFlow.Table table208 = new TechTalk.SpecFlow.Table(new string[] {
@@ -3720,9 +3723,9 @@ this.FeatureBackground();
             table208.AddRow(new string[] {
                         "Diastolic Blood Pressure 4",
                         "70"});
-#line 1184
+#line 1186
  testRunner.And("I enter data in CRF", ((string)(null)), table208);
-#line 1187
+#line 1189
  testRunner.And("I save the CRF page");
 #line hidden
             TechTalk.SpecFlow.Table table209 = new TechTalk.SpecFlow.Table(new string[] {
@@ -3736,9 +3739,9 @@ this.FeatureBackground();
                             "ify.",
                         "False",
                         "False"});
-#line 1188
+#line 1190
  testRunner.Then("I verify Query is not displayed", ((string)(null)), table209);
-#line 1191
+#line 1193
  testRunner.And("I take a screenshot");
 #line hidden
             TechTalk.SpecFlow.Table table210 = new TechTalk.SpecFlow.Table(new string[] {
@@ -3747,9 +3750,9 @@ this.FeatureBackground();
             table210.AddRow(new string[] {
                         "Diastolic Blood Pressure 4",
                         "90"});
-#line 1192
+#line 1194
  testRunner.And("I enter data in CRF", ((string)(null)), table210);
-#line 1195
+#line 1197
  testRunner.And("I save the CRF page");
 #line hidden
             TechTalk.SpecFlow.Table table211 = new TechTalk.SpecFlow.Table(new string[] {
@@ -3763,9 +3766,9 @@ this.FeatureBackground();
                             "ify.",
                         "False",
                         "False"});
-#line 1196
+#line 1198
  testRunner.Then("I verify Query is displayed", ((string)(null)), table211);
-#line 1199
+#line 1201
  testRunner.And("I take a screenshot");
 #line hidden
             this.ScenarioCleanup();
@@ -3783,11 +3786,11 @@ this.FeatureBackground();
                         "release_564_Patch11",
                         "PB-US12940-07A",
                         "Draft"});
-#line 1206
+#line 1208
 this.ScenarioSetup(scenarioInfo);
 #line 11
 this.FeatureBackground();
-#line 1209
+#line 1211
  testRunner.Given("I select Study \"Standard Study\" and Site \"Site 1\"");
 #line hidden
             TechTalk.SpecFlow.Table table212 = new TechTalk.SpecFlow.Table(new string[] {
@@ -3802,9 +3805,9 @@ this.FeatureBackground();
             table212.AddRow(new string[] {
                         "Subject ID",
                         "SUB {Var(num1)}"});
-#line 1210
+#line 1212
  testRunner.And("I create a Subject", ((string)(null)), table212);
-#line 1215
+#line 1217
  testRunner.And("I select Form \"Form 2\"");
 #line hidden
             TechTalk.SpecFlow.Table table213 = new TechTalk.SpecFlow.Table(new string[] {
@@ -3816,9 +3819,9 @@ this.FeatureBackground();
             table213.AddRow(new string[] {
                         "Diastolic Blood Pressure 1",
                         "90"});
-#line 1216
+#line 1218
  testRunner.And("I enter data in CRF", ((string)(null)), table213);
-#line 1220
+#line 1222
  testRunner.And("I save the CRF page");
 #line hidden
             TechTalk.SpecFlow.Table table214 = new TechTalk.SpecFlow.Table(new string[] {
@@ -3832,15 +3835,15 @@ this.FeatureBackground();
                             "ify.",
                         "False",
                         "False"});
-#line 1221
+#line 1223
  testRunner.Then("I verify Query is displayed", ((string)(null)), table214);
-#line 1224
+#line 1226
  testRunner.And("I take a screenshot");
-#line 1225
+#line 1227
  testRunner.When("I answer the Query \"Systolic Blood Pressure must be greater than Diastolic Blood " +
                     "Pressure. Please verify.\" on Field \"Diastolic Blood Pressure 1\" with \"Data is co" +
                     "rrect\"");
-#line 1226
+#line 1228
  testRunner.And("I save the CRF page");
 #line hidden
             TechTalk.SpecFlow.Table table215 = new TechTalk.SpecFlow.Table(new string[] {
@@ -3854,14 +3857,14 @@ this.FeatureBackground();
                             "ify.",
                         "True",
                         "False"});
-#line 1227
+#line 1229
  testRunner.Then("I verify Query is displayed", ((string)(null)), table215);
-#line 1230
+#line 1232
  testRunner.And("I take a screenshot");
-#line 1231
+#line 1233
  testRunner.When("I close the Query \"Systolic Blood Pressure must be greater than Diastolic Blood P" +
                     "ressure. Please verify.\" on Field \"Diastolic Blood Pressure 1\"");
-#line 1232
+#line 1234
  testRunner.And("I save the CRF page");
 #line hidden
             TechTalk.SpecFlow.Table table216 = new TechTalk.SpecFlow.Table(new string[] {
@@ -3875,9 +3878,9 @@ this.FeatureBackground();
                             "ify.",
                         "True",
                         "True"});
-#line 1233
+#line 1235
  testRunner.Then("I verify Query is displayed", ((string)(null)), table216);
-#line 1236
+#line 1238
  testRunner.And("I take a screenshot");
 #line hidden
             TechTalk.SpecFlow.Table table217 = new TechTalk.SpecFlow.Table(new string[] {
@@ -3886,9 +3889,9 @@ this.FeatureBackground();
             table217.AddRow(new string[] {
                         "Systolic Blood Pressure 1",
                         "85"});
-#line 1237
+#line 1239
  testRunner.And("I enter data in CRF", ((string)(null)), table217);
-#line 1240
+#line 1242
  testRunner.And("I save the CRF page");
 #line hidden
             TechTalk.SpecFlow.Table table218 = new TechTalk.SpecFlow.Table(new string[] {
@@ -3902,9 +3905,9 @@ this.FeatureBackground();
                             "ify.",
                         "False",
                         "False"});
-#line 1241
+#line 1243
  testRunner.Then("I verify Query is displayed", ((string)(null)), table218);
-#line 1244
+#line 1246
  testRunner.And("I take a screenshot");
 #line hidden
             this.ScenarioCleanup();
@@ -3926,11 +3929,11 @@ this.FeatureBackground();
                         "release_564_Patch11",
                         "PB-US12940-07B",
                         "Draft"});
-#line 1251
+#line 1253
 this.ScenarioSetup(scenarioInfo);
 #line 11
 this.FeatureBackground();
-#line 1254
+#line 1256
  testRunner.Given("I select Study \"Standard Study\" and Site \"Site 1\"");
 #line hidden
             TechTalk.SpecFlow.Table table219 = new TechTalk.SpecFlow.Table(new string[] {
@@ -3945,9 +3948,9 @@ this.FeatureBackground();
             table219.AddRow(new string[] {
                         "Subject ID",
                         "SUB {Var(num1)}"});
-#line 1255
+#line 1257
  testRunner.And("I create a Subject", ((string)(null)), table219);
-#line 1260
+#line 1262
  testRunner.And("I select Form \"Form 2\"");
 #line hidden
             TechTalk.SpecFlow.Table table220 = new TechTalk.SpecFlow.Table(new string[] {
@@ -3959,9 +3962,9 @@ this.FeatureBackground();
             table220.AddRow(new string[] {
                         "Diastolic Blood Pressure 2",
                         "90"});
-#line 1261
+#line 1263
  testRunner.And("I enter data in CRF", ((string)(null)), table220);
-#line 1265
+#line 1267
  testRunner.And("I save the CRF page");
 #line hidden
             TechTalk.SpecFlow.Table table221 = new TechTalk.SpecFlow.Table(new string[] {
@@ -3975,9 +3978,9 @@ this.FeatureBackground();
                             "ify.",
                         "False",
                         "False"});
-#line 1266
+#line 1268
  testRunner.Then("I verify Query is displayed", ((string)(null)), table221);
-#line 1269
+#line 1271
  testRunner.And("I take a screenshot");
 #line hidden
             TechTalk.SpecFlow.Table table222 = new TechTalk.SpecFlow.Table(new string[] {
@@ -3986,9 +3989,9 @@ this.FeatureBackground();
             table222.AddRow(new string[] {
                         "Systolic Blood Pressure 2",
                         "85"});
-#line 1270
+#line 1272
  testRunner.And("I enter data in CRF", ((string)(null)), table222);
-#line 1273
+#line 1275
  testRunner.And("I save the CRF page");
 #line hidden
             TechTalk.SpecFlow.Table table223 = new TechTalk.SpecFlow.Table(new string[] {
@@ -4002,9 +4005,9 @@ this.FeatureBackground();
                             "ify.",
                         "False",
                         "False"});
-#line 1274
+#line 1276
  testRunner.Then("I verify Query is displayed", ((string)(null)), table223);
-#line 1277
+#line 1279
  testRunner.And("I take a screenshot");
 #line hidden
             this.ScenarioCleanup();
@@ -4022,11 +4025,11 @@ this.FeatureBackground();
                         "release_564_Patch11",
                         "PB-US12940-07C",
                         "Draft"});
-#line 1284
+#line 1286
 this.ScenarioSetup(scenarioInfo);
 #line 11
 this.FeatureBackground();
-#line 1287
+#line 1289
  testRunner.Given("I select Study \"Standard Study\" and Site \"Site 1\"");
 #line hidden
             TechTalk.SpecFlow.Table table224 = new TechTalk.SpecFlow.Table(new string[] {
@@ -4041,9 +4044,9 @@ this.FeatureBackground();
             table224.AddRow(new string[] {
                         "Subject ID",
                         "SUB {Var(num1)}"});
-#line 1288
+#line 1290
  testRunner.And("I create a Subject", ((string)(null)), table224);
-#line 1293
+#line 1295
  testRunner.And("I select Form \"Form 2\"");
 #line hidden
             TechTalk.SpecFlow.Table table225 = new TechTalk.SpecFlow.Table(new string[] {
@@ -4055,9 +4058,9 @@ this.FeatureBackground();
             table225.AddRow(new string[] {
                         "Diastolic Blood Pressure 3",
                         "90"});
-#line 1294
+#line 1296
  testRunner.And("I enter data in CRF", ((string)(null)), table225);
-#line 1298
+#line 1300
  testRunner.And("I save the CRF page");
 #line hidden
             TechTalk.SpecFlow.Table table226 = new TechTalk.SpecFlow.Table(new string[] {
@@ -4071,15 +4074,15 @@ this.FeatureBackground();
                             "ify.",
                         "False",
                         "False"});
-#line 1299
+#line 1301
  testRunner.Then("I verify Query is displayed", ((string)(null)), table226);
-#line 1302
+#line 1304
  testRunner.And("I take a screenshot");
-#line 1303
+#line 1305
  testRunner.When("I answer the Query \"Systolic Blood Pressure must be greater than Diastolic Blood " +
                     "Pressure. Please verify.\" on Field \"Diastolic Blood Pressure 3\" with \"Data is co" +
                     "rrect\"");
-#line 1304
+#line 1306
  testRunner.And("I save the CRF page");
 #line hidden
             TechTalk.SpecFlow.Table table227 = new TechTalk.SpecFlow.Table(new string[] {
@@ -4093,9 +4096,9 @@ this.FeatureBackground();
                             "ify.",
                         "False",
                         "False"});
-#line 1305
+#line 1307
  testRunner.Then("I verify Query is not displayed", ((string)(null)), table227);
-#line 1308
+#line 1310
  testRunner.And("I take a screenshot");
 #line hidden
             TechTalk.SpecFlow.Table table228 = new TechTalk.SpecFlow.Table(new string[] {
@@ -4104,9 +4107,9 @@ this.FeatureBackground();
             table228.AddRow(new string[] {
                         "Systolic Blood Pressure 3",
                         "85"});
-#line 1309
+#line 1311
  testRunner.And("I enter data in CRF", ((string)(null)), table228);
-#line 1312
+#line 1314
  testRunner.And("I save the CRF page");
 #line hidden
             TechTalk.SpecFlow.Table table229 = new TechTalk.SpecFlow.Table(new string[] {
@@ -4120,9 +4123,9 @@ this.FeatureBackground();
                             "ify.",
                         "False",
                         "False"});
-#line 1313
- testRunner.Then("I verify Query is not displayed", ((string)(null)), table229);
-#line 1316
+#line 1315
+ testRunner.Then("I verify Query is displayed", ((string)(null)), table229);
+#line 1318
  testRunner.And("I take a screenshot");
 #line hidden
             this.ScenarioCleanup();
@@ -4133,18 +4136,18 @@ this.FeatureBackground();
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "QueryRefiringLogic4tgt")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("release_564_Patch11")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("PB-US12940-07D")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Draft")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.IgnoreAttribute()]
         public virtual void PB_US12940_07DAsAnEDCUserWhenIEnteredBadDataInFieldAAndFieldBThatResultedInTheSystemOpeningAQueryOnFieldBIfIThenEnteredNewBadDataInFieldAThenTheSystemShouldAnswerAQueryOnFieldBAndThenICloseQueryAndIEnterNewBadDataOnFieldAThenSystemShouldRefireQueryOnFieldB_()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo(@"@PB-US12940-07D	As an EDC user, when I entered bad data in field A and field B that resulted in the system opening a query on field B, if I then entered new bad data in field A, then the system should answer a query on field B, and then I close query, and I enter new bad data on Field A, then system should refire query on Field B.", new string[] {
                         "release_564_Patch11",
                         "PB-US12940-07D",
-                        "Draft"});
-#line 1323
+                        "ignore"});
+#line 1325
 this.ScenarioSetup(scenarioInfo);
 #line 11
 this.FeatureBackground();
-#line 1326
+#line 1328
  testRunner.Given("I select Study \"Standard Study\" and Site \"Site 1\"");
 #line hidden
             TechTalk.SpecFlow.Table table230 = new TechTalk.SpecFlow.Table(new string[] {
@@ -4159,9 +4162,9 @@ this.FeatureBackground();
             table230.AddRow(new string[] {
                         "Subject ID",
                         "SUB {Var(num1)}"});
-#line 1327
+#line 1329
  testRunner.And("I create a Subject", ((string)(null)), table230);
-#line 1332
+#line 1334
  testRunner.And("I select Form \"Form 2\"");
 #line hidden
             TechTalk.SpecFlow.Table table231 = new TechTalk.SpecFlow.Table(new string[] {
@@ -4173,9 +4176,9 @@ this.FeatureBackground();
             table231.AddRow(new string[] {
                         "Diastolic Blood Pressure 4",
                         "90"});
-#line 1333
+#line 1335
  testRunner.And("I enter data in CRF", ((string)(null)), table231);
-#line 1337
+#line 1339
  testRunner.And("I save the CRF page");
 #line hidden
             TechTalk.SpecFlow.Table table232 = new TechTalk.SpecFlow.Table(new string[] {
@@ -4189,9 +4192,9 @@ this.FeatureBackground();
                             "ify.",
                         "False",
                         "False"});
-#line 1338
- testRunner.Then("I verify Query is not displayed", ((string)(null)), table232);
-#line 1341
+#line 1340
+ testRunner.Then("I verify Query is displayed", ((string)(null)), table232);
+#line 1343
  testRunner.And("I take a screenshot");
 #line hidden
             TechTalk.SpecFlow.Table table233 = new TechTalk.SpecFlow.Table(new string[] {
@@ -4200,9 +4203,9 @@ this.FeatureBackground();
             table233.AddRow(new string[] {
                         "Systolic Blood Pressure 4",
                         "85"});
-#line 1342
+#line 1344
  testRunner.And("I enter data in CRF", ((string)(null)), table233);
-#line 1345
+#line 1347
  testRunner.And("I save the CRF page");
 #line hidden
             TechTalk.SpecFlow.Table table234 = new TechTalk.SpecFlow.Table(new string[] {
@@ -4216,14 +4219,14 @@ this.FeatureBackground();
                             "ify.",
                         "True",
                         "False"});
-#line 1346
+#line 1348
  testRunner.Then("I verify Query is displayed", ((string)(null)), table234);
-#line 1349
+#line 1352
  testRunner.And("I take a screenshot");
-#line 1350
+#line 1353
  testRunner.When("I close the Query \"Systolic Blood Pressure must be greater than Diastolic Blood P" +
                     "ressure. Please verify.\" on Field \"Diastolic Blood Pressure 4\"");
-#line 1351
+#line 1354
  testRunner.And("I save the CRF page");
 #line hidden
             TechTalk.SpecFlow.Table table235 = new TechTalk.SpecFlow.Table(new string[] {
@@ -4237,9 +4240,9 @@ this.FeatureBackground();
                             "ify.",
                         "False",
                         "False"});
-#line 1352
- testRunner.Then("I verify Query is not displayed", ((string)(null)), table235);
 #line 1355
+ testRunner.Then("I verify Query is not displayed", ((string)(null)), table235);
+#line 1358
  testRunner.And("I take a screenshot");
 #line hidden
             TechTalk.SpecFlow.Table table236 = new TechTalk.SpecFlow.Table(new string[] {
@@ -4248,9 +4251,9 @@ this.FeatureBackground();
             table236.AddRow(new string[] {
                         "Systolic Blood Pressure 4",
                         "70"});
-#line 1356
- testRunner.And("I enter data in CRF", ((string)(null)), table236);
 #line 1359
+ testRunner.And("I enter data in CRF", ((string)(null)), table236);
+#line 1362
  testRunner.And("I save the CRF page");
 #line hidden
             TechTalk.SpecFlow.Table table237 = new TechTalk.SpecFlow.Table(new string[] {
@@ -4264,9 +4267,9 @@ this.FeatureBackground();
                             "ify.",
                         "False",
                         "False"});
-#line 1360
- testRunner.Then("I verify Query is displayed", ((string)(null)), table237);
 #line 1363
+ testRunner.Then("I verify Query is displayed", ((string)(null)), table237);
+#line 1366
  testRunner.And("I take a screenshot");
 #line hidden
             this.ScenarioCleanup();
@@ -4284,11 +4287,11 @@ this.FeatureBackground();
                         "release_564_Patch11",
                         "PB-US12940-08A",
                         "Draft"});
-#line 1369
+#line 1372
 this.ScenarioSetup(scenarioInfo);
 #line 11
 this.FeatureBackground();
-#line 1372
+#line 1375
  testRunner.Given("I select Study \"Standard Study\" and Site \"Site 1\"");
 #line hidden
             TechTalk.SpecFlow.Table table238 = new TechTalk.SpecFlow.Table(new string[] {
@@ -4303,9 +4306,9 @@ this.FeatureBackground();
             table238.AddRow(new string[] {
                         "Subject ID",
                         "SUB {Var(num1)}"});
-#line 1373
+#line 1376
  testRunner.And("I create a Subject", ((string)(null)), table238);
-#line 1378
+#line 1381
  testRunner.And("I select Form \"Form 2\"");
 #line hidden
             TechTalk.SpecFlow.Table table239 = new TechTalk.SpecFlow.Table(new string[] {
@@ -4317,9 +4320,9 @@ this.FeatureBackground();
             table239.AddRow(new string[] {
                         "Diastolic Blood Pressure 1",
                         "90"});
-#line 1379
+#line 1382
  testRunner.And("I enter data in CRF", ((string)(null)), table239);
-#line 1383
+#line 1386
  testRunner.And("I save the CRF page");
 #line hidden
             TechTalk.SpecFlow.Table table240 = new TechTalk.SpecFlow.Table(new string[] {
@@ -4333,15 +4336,15 @@ this.FeatureBackground();
                             "ify.",
                         "False",
                         "False"});
-#line 1384
- testRunner.Then("I verify Query is not displayed", ((string)(null)), table240);
 #line 1387
+ testRunner.Then("I verify Query is displayed", ((string)(null)), table240);
+#line 1390
  testRunner.And("I take a screenshot");
-#line 1388
+#line 1391
  testRunner.When("I answer the Query \"Systolic Blood Pressure must be greater than Diastolic Blood " +
                     "Pressure. Please verify.\" on Field \"Diastolic Blood Pressure 1\" with \"Data is co" +
                     "rrect\"");
-#line 1389
+#line 1392
  testRunner.And("I save the CRF page");
 #line hidden
             TechTalk.SpecFlow.Table table241 = new TechTalk.SpecFlow.Table(new string[] {
@@ -4355,14 +4358,14 @@ this.FeatureBackground();
                             "ify.",
                         "True",
                         "False"});
-#line 1390
- testRunner.Then("I verify Query is not displayed", ((string)(null)), table241);
 #line 1393
+ testRunner.Then("I verify Query is displayed", ((string)(null)), table241);
+#line 1396
  testRunner.And("I take a screenshot");
-#line 1394
+#line 1397
  testRunner.When("I close the Query \"Systolic Blood Pressure must be greater than Diastolic Blood P" +
                     "ressure. Please verify.\" on Field \"Diastolic Blood Pressure 1\"");
-#line 1395
+#line 1398
  testRunner.And("I save the CRF page");
 #line hidden
             TechTalk.SpecFlow.Table table242 = new TechTalk.SpecFlow.Table(new string[] {
@@ -4376,9 +4379,9 @@ this.FeatureBackground();
                             "ify.",
                         "True",
                         "True"});
-#line 1396
- testRunner.Then("I verify Query is displayed", ((string)(null)), table242);
 #line 1399
+ testRunner.Then("I verify Query is displayed", ((string)(null)), table242);
+#line 1402
  testRunner.And("I take a screenshot");
 #line hidden
             TechTalk.SpecFlow.Table table243 = new TechTalk.SpecFlow.Table(new string[] {
@@ -4387,9 +4390,9 @@ this.FeatureBackground();
             table243.AddRow(new string[] {
                         "Diastolic Blood Pressure 1",
                         "100"});
-#line 1400
- testRunner.And("I enter data in CRF", ((string)(null)), table243);
 #line 1403
+ testRunner.And("I enter data in CRF", ((string)(null)), table243);
+#line 1406
  testRunner.And("I save the CRF page");
 #line hidden
             TechTalk.SpecFlow.Table table244 = new TechTalk.SpecFlow.Table(new string[] {
@@ -4403,9 +4406,9 @@ this.FeatureBackground();
                             "ify.",
                         "False",
                         "False"});
-#line 1404
- testRunner.Then("I verify Query is displayed", ((string)(null)), table244);
 #line 1407
+ testRunner.Then("I verify Query is displayed", ((string)(null)), table244);
+#line 1410
  testRunner.And("I take a screenshot");
 #line hidden
             this.ScenarioCleanup();
@@ -4427,11 +4430,11 @@ this.FeatureBackground();
                         "release_564_Patch11",
                         "PB-US12940-08B",
                         "Draft"});
-#line 1413
+#line 1416
 this.ScenarioSetup(scenarioInfo);
 #line 11
 this.FeatureBackground();
-#line 1416
+#line 1419
  testRunner.Given("I select Study \"Standard Study\" and Site \"Site 1\"");
 #line hidden
             TechTalk.SpecFlow.Table table245 = new TechTalk.SpecFlow.Table(new string[] {
@@ -4446,9 +4449,9 @@ this.FeatureBackground();
             table245.AddRow(new string[] {
                         "Subject ID",
                         "SUB {Var(num1)}"});
-#line 1417
+#line 1420
  testRunner.And("I create a Subject", ((string)(null)), table245);
-#line 1422
+#line 1425
  testRunner.And("I select Form \"Form 2\"");
 #line hidden
             TechTalk.SpecFlow.Table table246 = new TechTalk.SpecFlow.Table(new string[] {
@@ -4460,9 +4463,9 @@ this.FeatureBackground();
             table246.AddRow(new string[] {
                         "Diastolic Blood Pressure 2",
                         "90"});
-#line 1423
+#line 1426
  testRunner.When("I enter data in CRF", ((string)(null)), table246);
-#line 1427
+#line 1430
  testRunner.And("I save the CRF page");
 #line hidden
             TechTalk.SpecFlow.Table table247 = new TechTalk.SpecFlow.Table(new string[] {
@@ -4471,14 +4474,14 @@ this.FeatureBackground();
                         "Answered",
                         "Closed"});
             table247.AddRow(new string[] {
-                        "Diastolic Blood Pressure 1",
+                        "Diastolic Blood Pressure 2",
                         "Systolic Blood Pressure must be greater than Diastolic Blood Pressure. Please ver" +
                             "ify.",
                         "False",
                         "False"});
-#line 1428
- testRunner.Then("I verify Query is displayed", ((string)(null)), table247);
 #line 1431
+ testRunner.Then("I verify Query is displayed", ((string)(null)), table247);
+#line 1434
  testRunner.And("I take a screenshot");
 #line hidden
             TechTalk.SpecFlow.Table table248 = new TechTalk.SpecFlow.Table(new string[] {
@@ -4487,9 +4490,9 @@ this.FeatureBackground();
             table248.AddRow(new string[] {
                         "Diastolic Blood Pressure 2",
                         "100"});
-#line 1432
- testRunner.When("I enter data in CRF", ((string)(null)), table248);
 #line 1435
+ testRunner.When("I enter data in CRF", ((string)(null)), table248);
+#line 1438
  testRunner.And("I save the CRF page");
 #line hidden
             TechTalk.SpecFlow.Table table249 = new TechTalk.SpecFlow.Table(new string[] {
@@ -4498,14 +4501,14 @@ this.FeatureBackground();
                         "Answered",
                         "Closed"});
             table249.AddRow(new string[] {
-                        "Diastolic Blood Pressure 1",
+                        "Diastolic Blood Pressure 2",
                         "Systolic Blood Pressure must be greater than Diastolic Blood Pressure. Please ver" +
                             "ify.",
                         "False",
                         "False"});
-#line 1436
- testRunner.Then("I verify Query is displayed", ((string)(null)), table249);
 #line 1439
+ testRunner.Then("I verify Query is displayed", ((string)(null)), table249);
+#line 1442
  testRunner.And("I take a screenshot");
 #line hidden
             this.ScenarioCleanup();
@@ -4523,11 +4526,11 @@ this.FeatureBackground();
                         "release_564_Patch11",
                         "PB-US12940-08C",
                         "Draft"});
-#line 1446
+#line 1449
 this.ScenarioSetup(scenarioInfo);
 #line 11
 this.FeatureBackground();
-#line 1449
+#line 1452
  testRunner.Given("I select Study \"Standard Study\" and Site \"Site 1\"");
 #line hidden
             TechTalk.SpecFlow.Table table250 = new TechTalk.SpecFlow.Table(new string[] {
@@ -4542,9 +4545,9 @@ this.FeatureBackground();
             table250.AddRow(new string[] {
                         "Subject ID",
                         "SUB {Var(num1)}"});
-#line 1450
+#line 1453
  testRunner.And("I create a Subject", ((string)(null)), table250);
-#line 1455
+#line 1458
  testRunner.And("I select Form \"Form 2\"");
 #line hidden
             TechTalk.SpecFlow.Table table251 = new TechTalk.SpecFlow.Table(new string[] {
@@ -4556,9 +4559,9 @@ this.FeatureBackground();
             table251.AddRow(new string[] {
                         "Diastolic Blood Pressure 3",
                         "90"});
-#line 1456
+#line 1459
  testRunner.And("I enter data in CRF", ((string)(null)), table251);
-#line 1460
+#line 1463
  testRunner.And("I save the CRF page");
 #line hidden
             TechTalk.SpecFlow.Table table252 = new TechTalk.SpecFlow.Table(new string[] {
@@ -4572,15 +4575,15 @@ this.FeatureBackground();
                             "ify.",
                         "False",
                         "False"});
-#line 1461
- testRunner.Then("I verify Query is displayed", ((string)(null)), table252);
 #line 1464
+ testRunner.Then("I verify Query is displayed", ((string)(null)), table252);
+#line 1467
  testRunner.And("I take a screenshot");
-#line 1465
+#line 1468
  testRunner.When("I answer the Query \"Systolic Blood Pressure must be greater than Diastolic Blood " +
                     "Pressure. Please verify.\" on Field \"Diastolic Blood Pressure 3\" with \"Data is co" +
                     "rrect\"");
-#line 1466
+#line 1469
  testRunner.And("I save the CRF page");
 #line hidden
             TechTalk.SpecFlow.Table table253 = new TechTalk.SpecFlow.Table(new string[] {
@@ -4594,9 +4597,9 @@ this.FeatureBackground();
                             "ify.",
                         "False",
                         "False"});
-#line 1467
- testRunner.Then("I verify Query is not displayed", ((string)(null)), table253);
 #line 1470
+ testRunner.Then("I verify Query is not displayed", ((string)(null)), table253);
+#line 1473
  testRunner.And("I take a screenshot");
 #line hidden
             TechTalk.SpecFlow.Table table254 = new TechTalk.SpecFlow.Table(new string[] {
@@ -4605,9 +4608,9 @@ this.FeatureBackground();
             table254.AddRow(new string[] {
                         "Diastolic Blood Pressure 3",
                         "100"});
-#line 1471
- testRunner.And("I enter data in CRF", ((string)(null)), table254);
 #line 1474
+ testRunner.And("I enter data in CRF", ((string)(null)), table254);
+#line 1477
  testRunner.And("I save the CRF page");
 #line hidden
             TechTalk.SpecFlow.Table table255 = new TechTalk.SpecFlow.Table(new string[] {
@@ -4621,9 +4624,9 @@ this.FeatureBackground();
                             "ify.",
                         "False",
                         "False"});
-#line 1475
- testRunner.Then("I verify Query is displayed", ((string)(null)), table255);
 #line 1478
+ testRunner.Then("I verify Query is displayed", ((string)(null)), table255);
+#line 1481
  testRunner.And("I take a screenshot");
 #line hidden
             this.ScenarioCleanup();
@@ -4641,11 +4644,11 @@ this.FeatureBackground();
                         "release_564_Patch11",
                         "PB-US12940-08D",
                         "Draft"});
-#line 1485
+#line 1488
 this.ScenarioSetup(scenarioInfo);
 #line 11
 this.FeatureBackground();
-#line 1488
+#line 1491
  testRunner.Given("I select Study \"Standard Study\" and Site \"Site 1\"");
 #line hidden
             TechTalk.SpecFlow.Table table256 = new TechTalk.SpecFlow.Table(new string[] {
@@ -4660,9 +4663,9 @@ this.FeatureBackground();
             table256.AddRow(new string[] {
                         "Subject ID",
                         "SUB {Var(num1)}"});
-#line 1489
+#line 1492
  testRunner.And("I create a Subject", ((string)(null)), table256);
-#line 1494
+#line 1497
  testRunner.And("I select Form \"Form 2\"");
 #line hidden
             TechTalk.SpecFlow.Table table257 = new TechTalk.SpecFlow.Table(new string[] {
@@ -4674,9 +4677,9 @@ this.FeatureBackground();
             table257.AddRow(new string[] {
                         "Diastolic Blood Pressure 4",
                         "90"});
-#line 1495
+#line 1498
  testRunner.When("I enter data in CRF", ((string)(null)), table257);
-#line 1499
+#line 1502
  testRunner.And("I save the CRF page");
 #line hidden
             TechTalk.SpecFlow.Table table258 = new TechTalk.SpecFlow.Table(new string[] {
@@ -4690,9 +4693,9 @@ this.FeatureBackground();
                             "ify.",
                         "False",
                         "False"});
-#line 1500
- testRunner.Then("I verify Query is displayed", ((string)(null)), table258);
 #line 1503
+ testRunner.Then("I verify Query is displayed", ((string)(null)), table258);
+#line 1506
  testRunner.And("I take a screenshot");
 #line hidden
             TechTalk.SpecFlow.Table table259 = new TechTalk.SpecFlow.Table(new string[] {
@@ -4701,9 +4704,9 @@ this.FeatureBackground();
             table259.AddRow(new string[] {
                         "Diastolic Blood Pressure 4",
                         "100"});
-#line 1504
- testRunner.When("I enter data in CRF", ((string)(null)), table259);
 #line 1507
+ testRunner.When("I enter data in CRF", ((string)(null)), table259);
+#line 1510
  testRunner.And("I save the CRF page");
 #line hidden
             TechTalk.SpecFlow.Table table260 = new TechTalk.SpecFlow.Table(new string[] {
@@ -4717,14 +4720,14 @@ this.FeatureBackground();
                             "ify.",
                         "True",
                         "False"});
-#line 1508
- testRunner.Then("I verify Query is displayed", ((string)(null)), table260);
 #line 1511
+ testRunner.Then("I verify Query is displayed", ((string)(null)), table260);
+#line 1514
  testRunner.And("I take a screenshot");
-#line 1512
+#line 1515
  testRunner.When("I close the Query \"Systolic Blood Pressure must be greater than Diastolic Blood P" +
                     "ressure. Please verify.\" on Field \"Diastolic Blood Pressure 4\"");
-#line 1513
+#line 1516
  testRunner.And("I save the CRF page");
 #line hidden
             TechTalk.SpecFlow.Table table261 = new TechTalk.SpecFlow.Table(new string[] {
@@ -4738,9 +4741,9 @@ this.FeatureBackground();
                             "ify.",
                         "True",
                         "True"});
-#line 1514
- testRunner.Then("I verify Query is displayed", ((string)(null)), table261);
 #line 1517
+ testRunner.Then("I verify Query is displayed", ((string)(null)), table261);
+#line 1520
  testRunner.And("I take a screenshot");
 #line hidden
             TechTalk.SpecFlow.Table table262 = new TechTalk.SpecFlow.Table(new string[] {
@@ -4749,9 +4752,9 @@ this.FeatureBackground();
             table262.AddRow(new string[] {
                         "Diastolic Blood Pressure 4",
                         "110"});
-#line 1518
- testRunner.When("I enter data in CRF", ((string)(null)), table262);
 #line 1521
+ testRunner.When("I enter data in CRF", ((string)(null)), table262);
+#line 1524
  testRunner.And("I save the CRF page");
 #line hidden
             TechTalk.SpecFlow.Table table263 = new TechTalk.SpecFlow.Table(new string[] {
@@ -4763,11 +4766,11 @@ this.FeatureBackground();
                         "Diastolic Blood Pressure 4",
                         "Systolic Blood Pressure must be greater than Diastolic Blood Pressure. Please ver" +
                             "ify.",
-                        "True",
-                        "True"});
-#line 1522
- testRunner.Then("I verify Query is displayed", ((string)(null)), table263);
+                        "False",
+                        "False"});
 #line 1525
+ testRunner.Then("I verify Query is displayed", ((string)(null)), table263);
+#line 1528
  testRunner.And("I take a screenshot");
 #line hidden
             this.ScenarioCleanup();
@@ -4785,11 +4788,11 @@ this.FeatureBackground();
                         "release_564_Patch11",
                         "PB-US12940-09A",
                         "Draft"});
-#line 1533
+#line 1536
 this.ScenarioSetup(scenarioInfo);
 #line 11
 this.FeatureBackground();
-#line 1536
+#line 1539
  testRunner.Given("I select Study \"Standard Study\" and Site \"Site 1\"");
 #line hidden
             TechTalk.SpecFlow.Table table264 = new TechTalk.SpecFlow.Table(new string[] {
@@ -4804,9 +4807,9 @@ this.FeatureBackground();
             table264.AddRow(new string[] {
                         "Subject ID",
                         "SUB {Var(num1)}"});
-#line 1537
+#line 1540
  testRunner.And("I create a Subject", ((string)(null)), table264);
-#line 1542
+#line 1545
  testRunner.And("I select Form \"Form 2\"");
 #line hidden
             TechTalk.SpecFlow.Table table265 = new TechTalk.SpecFlow.Table(new string[] {
@@ -4818,9 +4821,9 @@ this.FeatureBackground();
             table265.AddRow(new string[] {
                         "Diastolic Blood Pressure 1",
                         "90"});
-#line 1543
+#line 1546
  testRunner.When("I enter data in CRF", ((string)(null)), table265);
-#line 1547
+#line 1550
  testRunner.And("I save the CRF page");
 #line hidden
             TechTalk.SpecFlow.Table table266 = new TechTalk.SpecFlow.Table(new string[] {
@@ -4834,11 +4837,11 @@ this.FeatureBackground();
                             "ify.",
                         "False",
                         "False"});
-#line 1548
- testRunner.Then("I verify Query is displayed", ((string)(null)), table266);
 #line 1551
+ testRunner.Then("I verify Query is displayed", ((string)(null)), table266);
+#line 1554
  testRunner.And("I take a screenshot");
-#line 1552
+#line 1555
  testRunner.When("I answer the Query \"Systolic Blood Pressure must be greater than Diastolic Blood " +
                     "Pressure. Please verify.\" on Field \"Diastolic Blood Pressure 1\" with \"Data is co" +
                     "rrect\"");
@@ -4849,9 +4852,9 @@ this.FeatureBackground();
             table267.AddRow(new string[] {
                         "Systolic Blood Pressure 1",
                         "85"});
-#line 1553
- testRunner.And("I enter data in CRF", ((string)(null)), table267);
 #line 1556
+ testRunner.And("I enter data in CRF", ((string)(null)), table267);
+#line 1559
  testRunner.And("I save the CRF page");
 #line hidden
             TechTalk.SpecFlow.Table table268 = new TechTalk.SpecFlow.Table(new string[] {
@@ -4865,14 +4868,14 @@ this.FeatureBackground();
                             "ify.",
                         "True",
                         "False"});
-#line 1557
- testRunner.Then("I verify Query is displayed", ((string)(null)), table268);
 #line 1560
+ testRunner.Then("I verify Query is displayed", ((string)(null)), table268);
+#line 1563
  testRunner.And("I take a screenshot");
-#line 1561
+#line 1564
  testRunner.When("I close the Query \"Systolic Blood Pressure must be greater than Diastolic Blood P" +
                     "ressure. Please verify.\" on Field \"Diastolic Blood Pressure 1\"");
-#line 1562
+#line 1565
  testRunner.And("I save the CRF page");
 #line hidden
             TechTalk.SpecFlow.Table table269 = new TechTalk.SpecFlow.Table(new string[] {
@@ -4886,9 +4889,9 @@ this.FeatureBackground();
                             "ify.",
                         "True",
                         "True"});
-#line 1563
- testRunner.Then("I verify Query is displayed", ((string)(null)), table269);
 #line 1566
+ testRunner.Then("I verify Query is displayed", ((string)(null)), table269);
+#line 1569
  testRunner.And("I take a screenshot");
 #line hidden
             TechTalk.SpecFlow.Table table270 = new TechTalk.SpecFlow.Table(new string[] {
@@ -4897,9 +4900,9 @@ this.FeatureBackground();
             table270.AddRow(new string[] {
                         "Systolic Blood Pressure 1",
                         "70"});
-#line 1567
- testRunner.When("I enter data in CRF", ((string)(null)), table270);
 #line 1570
+ testRunner.When("I enter data in CRF", ((string)(null)), table270);
+#line 1573
  testRunner.And("I save the CRF page");
 #line hidden
             TechTalk.SpecFlow.Table table271 = new TechTalk.SpecFlow.Table(new string[] {
@@ -4913,9 +4916,9 @@ this.FeatureBackground();
                             "ify.",
                         "False",
                         "False"});
-#line 1571
- testRunner.Then("I verify Query is displayed", ((string)(null)), table271);
 #line 1574
+ testRunner.Then("I verify Query is displayed", ((string)(null)), table271);
+#line 1577
  testRunner.And("I take a screenshot");
 #line hidden
             this.ScenarioCleanup();
@@ -4937,11 +4940,11 @@ this.FeatureBackground();
                         "release_564_Patch11",
                         "PB-US12940-09B",
                         "Draft"});
-#line 1580
+#line 1583
 this.ScenarioSetup(scenarioInfo);
 #line 11
 this.FeatureBackground();
-#line 1583
+#line 1586
  testRunner.Given("I select Study \"Standard Study\" and Site \"Site 1\"");
 #line hidden
             TechTalk.SpecFlow.Table table272 = new TechTalk.SpecFlow.Table(new string[] {
@@ -4956,9 +4959,9 @@ this.FeatureBackground();
             table272.AddRow(new string[] {
                         "Subject ID",
                         "SUB {Var(num1)}"});
-#line 1584
+#line 1587
  testRunner.And("I create a Subject", ((string)(null)), table272);
-#line 1589
+#line 1592
  testRunner.And("I select Form \"Form 2\"");
 #line hidden
             TechTalk.SpecFlow.Table table273 = new TechTalk.SpecFlow.Table(new string[] {
@@ -4970,9 +4973,9 @@ this.FeatureBackground();
             table273.AddRow(new string[] {
                         "Diastolic Blood Pressure 2",
                         "90"});
-#line 1590
+#line 1593
  testRunner.When("I enter data in CRF", ((string)(null)), table273);
-#line 1594
+#line 1597
  testRunner.And("I save the CRF page");
 #line hidden
             TechTalk.SpecFlow.Table table274 = new TechTalk.SpecFlow.Table(new string[] {
@@ -4986,9 +4989,9 @@ this.FeatureBackground();
                             "ify.",
                         "False",
                         "False"});
-#line 1595
- testRunner.Then("I verify Query is displayed", ((string)(null)), table274);
 #line 1598
+ testRunner.Then("I verify Query is displayed", ((string)(null)), table274);
+#line 1601
  testRunner.And("I take a screenshot");
 #line hidden
             TechTalk.SpecFlow.Table table275 = new TechTalk.SpecFlow.Table(new string[] {
@@ -4997,9 +5000,9 @@ this.FeatureBackground();
             table275.AddRow(new string[] {
                         "Systolic Blood Pressure 2",
                         "85"});
-#line 1599
- testRunner.And("I enter data in CRF", ((string)(null)), table275);
 #line 1602
+ testRunner.And("I enter data in CRF", ((string)(null)), table275);
+#line 1605
  testRunner.And("I save the CRF page");
 #line hidden
             TechTalk.SpecFlow.Table table276 = new TechTalk.SpecFlow.Table(new string[] {
@@ -5013,9 +5016,9 @@ this.FeatureBackground();
                             "ify.",
                         "False",
                         "False"});
-#line 1603
- testRunner.Then("I verify Query is displayed", ((string)(null)), table276);
 #line 1606
+ testRunner.Then("I verify Query is displayed", ((string)(null)), table276);
+#line 1609
  testRunner.And("I take a screenshot");
 #line hidden
             this.ScenarioCleanup();
@@ -5033,11 +5036,11 @@ this.FeatureBackground();
                         "release_564_Patch11",
                         "PB-US12940-09C",
                         "ignore"});
-#line 1613
+#line 1616
 this.ScenarioSetup(scenarioInfo);
 #line 11
 this.FeatureBackground();
-#line 1616
+#line 1619
  testRunner.Given("I select Study \"Standard Study\" and Site \"Site 1\"");
 #line hidden
             TechTalk.SpecFlow.Table table277 = new TechTalk.SpecFlow.Table(new string[] {
@@ -5052,9 +5055,9 @@ this.FeatureBackground();
             table277.AddRow(new string[] {
                         "Subject ID",
                         "SUB {Var(num1)}"});
-#line 1617
+#line 1620
  testRunner.And("I create a Subject", ((string)(null)), table277);
-#line 1622
+#line 1625
  testRunner.And("I select Form \"Form 2\"");
 #line hidden
             TechTalk.SpecFlow.Table table278 = new TechTalk.SpecFlow.Table(new string[] {
@@ -5066,9 +5069,9 @@ this.FeatureBackground();
             table278.AddRow(new string[] {
                         "Diastolic Blood Pressure 3",
                         "90"});
-#line 1623
+#line 1626
  testRunner.When("I enter data in CRF", ((string)(null)), table278);
-#line 1627
+#line 1630
  testRunner.And("I save the CRF page");
 #line hidden
             TechTalk.SpecFlow.Table table279 = new TechTalk.SpecFlow.Table(new string[] {
@@ -5082,11 +5085,11 @@ this.FeatureBackground();
                             "ify.",
                         "False",
                         "False"});
-#line 1628
- testRunner.Then("I verify Query is displayed", ((string)(null)), table279);
 #line 1631
+ testRunner.Then("I verify Query is displayed", ((string)(null)), table279);
+#line 1634
  testRunner.And("I take a screenshot");
-#line 1632
+#line 1635
  testRunner.When("I answer the Query \"Systolic Blood Pressure must be greater than Diastolic Blood " +
                     "Pressure. Please verify.\" on Field \"Diastolic Blood Pressure 3\" with \"Data is co" +
                     "rrect\"");
@@ -5097,9 +5100,9 @@ this.FeatureBackground();
             table280.AddRow(new string[] {
                         "Systolic Blood Pressure 3",
                         "85"});
-#line 1633
- testRunner.And("I enter data in CRF", ((string)(null)), table280);
 #line 1636
+ testRunner.And("I enter data in CRF", ((string)(null)), table280);
+#line 1639
  testRunner.And("I save the CRF page");
 #line hidden
             TechTalk.SpecFlow.Table table281 = new TechTalk.SpecFlow.Table(new string[] {
@@ -5113,7 +5116,7 @@ this.FeatureBackground();
                             "ify.",
                         "False",
                         "False"});
-#line 1637
+#line 1640
  testRunner.Then("I verify Query is not displayed", ((string)(null)), table281);
 #line hidden
             TechTalk.SpecFlow.Table table282 = new TechTalk.SpecFlow.Table(new string[] {
@@ -5127,9 +5130,9 @@ this.FeatureBackground();
                             "ify.",
                         "True",
                         "True"});
-#line 1641
- testRunner.And("I verify Query is displayed", ((string)(null)), table282);
 #line 1644
+ testRunner.And("I verify Query is displayed", ((string)(null)), table282);
+#line 1647
  testRunner.And("I take a screenshot");
 #line hidden
             TechTalk.SpecFlow.Table table283 = new TechTalk.SpecFlow.Table(new string[] {
@@ -5138,9 +5141,9 @@ this.FeatureBackground();
             table283.AddRow(new string[] {
                         "Systolic Blood Pressure 3",
                         "70"});
-#line 1645
- testRunner.When("I enter data in CRF", ((string)(null)), table283);
 #line 1648
+ testRunner.When("I enter data in CRF", ((string)(null)), table283);
+#line 1651
  testRunner.And("I save the CRF page");
 #line hidden
             TechTalk.SpecFlow.Table table284 = new TechTalk.SpecFlow.Table(new string[] {
@@ -5154,9 +5157,9 @@ this.FeatureBackground();
                             "ify.",
                         "False",
                         "False"});
-#line 1649
- testRunner.Then("I verify Query is displayed", ((string)(null)), table284);
 #line 1652
+ testRunner.Then("I verify Query is displayed", ((string)(null)), table284);
+#line 1655
  testRunner.And("I take a screenshot");
 #line hidden
             this.ScenarioCleanup();
@@ -5167,18 +5170,18 @@ this.FeatureBackground();
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "QueryRefiringLogic4tgt")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("release_564_Patch11")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("PB-US12940-09D")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Draft")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.IgnoreAttribute()]
         public virtual void PB_US12940_09DAsAnEDCUserWhenIEnteredBadDataInFieldAAndFieldBThatResultedInTheSystemOpeningAQueryOnFieldBAndIChangedTheDataInFieldAToAnotherBadDataAndTheSystemAnswersQueryAndTheQueryIsClosedIfIThenEnteredTheNewBadDataInFieldAThenTheSystemShouldRefireAQueryOnFieldB_()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo(@"@PB-US12940-09D	As an EDC user, when I entered bad data in field A and field B that resulted in the system opening a query on field B, and I changed the data in field A to another bad data, and the system answers query and the query is closed, if I then entered the new bad data in field A, then the system should refire a query on field B.", new string[] {
                         "release_564_Patch11",
                         "PB-US12940-09D",
-                        "Draft"});
-#line 1659
+                        "ignore"});
+#line 1662
 this.ScenarioSetup(scenarioInfo);
 #line 11
 this.FeatureBackground();
-#line 1662
+#line 1665
  testRunner.Given("I select Study \"Standard Study\" and Site \"Site 1\"");
 #line hidden
             TechTalk.SpecFlow.Table table285 = new TechTalk.SpecFlow.Table(new string[] {
@@ -5193,9 +5196,9 @@ this.FeatureBackground();
             table285.AddRow(new string[] {
                         "Subject ID",
                         "SUB {Var(num1)}"});
-#line 1663
+#line 1666
  testRunner.And("I create a Subject", ((string)(null)), table285);
-#line 1668
+#line 1671
  testRunner.And("I select Form \"Form 2\"");
 #line hidden
             TechTalk.SpecFlow.Table table286 = new TechTalk.SpecFlow.Table(new string[] {
@@ -5207,9 +5210,9 @@ this.FeatureBackground();
             table286.AddRow(new string[] {
                         "Diastolic Blood Pressure 4",
                         "90"});
-#line 1669
+#line 1672
  testRunner.When("I enter data in CRF", ((string)(null)), table286);
-#line 1673
+#line 1676
  testRunner.And("I save the CRF page");
 #line hidden
             TechTalk.SpecFlow.Table table287 = new TechTalk.SpecFlow.Table(new string[] {
@@ -5223,9 +5226,9 @@ this.FeatureBackground();
                             "ify.",
                         "False",
                         "False"});
-#line 1674
- testRunner.Then("I verify Query is displayed", ((string)(null)), table287);
 #line 1677
+ testRunner.Then("I verify Query is displayed", ((string)(null)), table287);
+#line 1680
  testRunner.And("I take a screenshot");
 #line hidden
             TechTalk.SpecFlow.Table table288 = new TechTalk.SpecFlow.Table(new string[] {
@@ -5234,9 +5237,9 @@ this.FeatureBackground();
             table288.AddRow(new string[] {
                         "Systolic Blood Pressure 4",
                         "85"});
-#line 1678
- testRunner.When("I enter data in CRF", ((string)(null)), table288);
 #line 1681
+ testRunner.When("I enter data in CRF", ((string)(null)), table288);
+#line 1684
  testRunner.And("I save the CRF page");
 #line hidden
             TechTalk.SpecFlow.Table table289 = new TechTalk.SpecFlow.Table(new string[] {
@@ -5250,7 +5253,7 @@ this.FeatureBackground();
                             "ify.",
                         "True",
                         "False"});
-#line 1682
+#line 1685
  testRunner.Then("I verify Query is displayed", ((string)(null)), table289);
 #line hidden
             TechTalk.SpecFlow.Table table290 = new TechTalk.SpecFlow.Table(new string[] {
@@ -5264,14 +5267,14 @@ this.FeatureBackground();
                             "ify.",
                         "False",
                         "False"});
-#line 1685
- testRunner.And("I verify Query is not displayed", ((string)(null)), table290);
 #line 1688
+ testRunner.And("I verify Query is not displayed", ((string)(null)), table290);
+#line 1691
  testRunner.And("I take a screenshot");
-#line 1689
+#line 1692
  testRunner.When("I close the Query \"Systolic Blood Pressure must be greater than Diastolic Blood P" +
                     "ressure. Please verify.\" on Field \"Diastolic Blood Pressure 4\"");
-#line 1690
+#line 1693
  testRunner.And("I save the CRF page");
 #line hidden
             TechTalk.SpecFlow.Table table291 = new TechTalk.SpecFlow.Table(new string[] {
@@ -5285,9 +5288,9 @@ this.FeatureBackground();
                             "ify.",
                         "True",
                         "True"});
-#line 1691
- testRunner.Then("I verify Query is displayed", ((string)(null)), table291);
 #line 1694
+ testRunner.Then("I verify Query is displayed", ((string)(null)), table291);
+#line 1697
  testRunner.And("I take a screenshot");
 #line hidden
             TechTalk.SpecFlow.Table table292 = new TechTalk.SpecFlow.Table(new string[] {
@@ -5296,9 +5299,9 @@ this.FeatureBackground();
             table292.AddRow(new string[] {
                         "Systolic Blood Pressure 4",
                         "70"});
-#line 1696
- testRunner.When("I enter data in CRF", ((string)(null)), table292);
 #line 1699
+ testRunner.When("I enter data in CRF", ((string)(null)), table292);
+#line 1702
  testRunner.And("I save the CRF page");
 #line hidden
             TechTalk.SpecFlow.Table table293 = new TechTalk.SpecFlow.Table(new string[] {
@@ -5312,9 +5315,9 @@ this.FeatureBackground();
                             "ify.",
                         "False",
                         "False"});
-#line 1700
- testRunner.Then("I verify Query is displayed", ((string)(null)), table293);
 #line 1703
+ testRunner.Then("I verify Query is displayed", ((string)(null)), table293);
+#line 1706
  testRunner.And("I take a screenshot");
 #line hidden
             this.ScenarioCleanup();
@@ -5332,11 +5335,11 @@ this.FeatureBackground();
                         "release_564_Patch11",
                         "PB-US12940-10A",
                         "Draft"});
-#line 1709
+#line 1712
 this.ScenarioSetup(scenarioInfo);
 #line 11
 this.FeatureBackground();
-#line 1712
+#line 1715
  testRunner.Given("I select Study \"Standard Study\" and Site \"Site 1\"");
 #line hidden
             TechTalk.SpecFlow.Table table294 = new TechTalk.SpecFlow.Table(new string[] {
@@ -5351,9 +5354,9 @@ this.FeatureBackground();
             table294.AddRow(new string[] {
                         "Subject ID",
                         "SUB {Var(num1)}"});
-#line 1713
+#line 1716
  testRunner.And("I create a Subject", ((string)(null)), table294);
-#line 1718
+#line 1721
  testRunner.And("I select Form \"Form 2\"");
 #line hidden
             TechTalk.SpecFlow.Table table295 = new TechTalk.SpecFlow.Table(new string[] {
@@ -5365,9 +5368,9 @@ this.FeatureBackground();
             table295.AddRow(new string[] {
                         "Diastolic Blood Pressure 1",
                         "90"});
-#line 1719
+#line 1722
  testRunner.When("I enter data in CRF", ((string)(null)), table295);
-#line 1723
+#line 1726
  testRunner.And("I save the CRF page");
 #line hidden
             TechTalk.SpecFlow.Table table296 = new TechTalk.SpecFlow.Table(new string[] {
@@ -5381,11 +5384,11 @@ this.FeatureBackground();
                             "ify.",
                         "False",
                         "False"});
-#line 1724
- testRunner.Then("I verify Query is displayed", ((string)(null)), table296);
 #line 1727
+ testRunner.Then("I verify Query is displayed", ((string)(null)), table296);
+#line 1730
  testRunner.And("I take a screenshot");
-#line 1728
+#line 1731
  testRunner.When("I answer the Query \"Systolic Blood Pressure must be greater than Diastolic Blood " +
                     "Pressure. Please verify.\" on Field \"Diastolic Blood Pressure 1\" with \"Data is co" +
                     "rrect\"");
@@ -5396,9 +5399,9 @@ this.FeatureBackground();
             table297.AddRow(new string[] {
                         "Diastolic Blood Pressure 1",
                         "85"});
-#line 1729
- testRunner.And("I enter data in CRF", ((string)(null)), table297);
 #line 1732
+ testRunner.And("I enter data in CRF", ((string)(null)), table297);
+#line 1735
  testRunner.And("I save the CRF page");
 #line hidden
             TechTalk.SpecFlow.Table table298 = new TechTalk.SpecFlow.Table(new string[] {
@@ -5412,14 +5415,14 @@ this.FeatureBackground();
                             "ify.",
                         "True",
                         "False"});
-#line 1733
- testRunner.Then("I verify Query is displayed", ((string)(null)), table298);
 #line 1736
+ testRunner.Then("I verify Query is displayed", ((string)(null)), table298);
+#line 1739
  testRunner.And("I take a screenshot");
-#line 1737
+#line 1740
  testRunner.When("I close the Query \"Systolic Blood Pressure must be greater than Diastolic Blood P" +
                     "ressure. Please verify.\" on Field \"Diastolic Blood Pressure 1\"");
-#line 1738
+#line 1741
  testRunner.And("I save the CRF page");
 #line hidden
             TechTalk.SpecFlow.Table table299 = new TechTalk.SpecFlow.Table(new string[] {
@@ -5433,9 +5436,9 @@ this.FeatureBackground();
                             "ify.",
                         "True",
                         "True"});
-#line 1739
- testRunner.Then("I verify Query is displayed", ((string)(null)), table299);
 #line 1742
+ testRunner.Then("I verify Query is displayed", ((string)(null)), table299);
+#line 1745
  testRunner.And("I take a screenshot");
 #line hidden
             TechTalk.SpecFlow.Table table300 = new TechTalk.SpecFlow.Table(new string[] {
@@ -5444,9 +5447,9 @@ this.FeatureBackground();
             table300.AddRow(new string[] {
                         "Diastolic Blood Pressure 1",
                         "100"});
-#line 1743
- testRunner.When("I enter data in CRF", ((string)(null)), table300);
 #line 1746
+ testRunner.When("I enter data in CRF", ((string)(null)), table300);
+#line 1749
  testRunner.And("I save the CRF page");
 #line hidden
             TechTalk.SpecFlow.Table table301 = new TechTalk.SpecFlow.Table(new string[] {
@@ -5460,9 +5463,9 @@ this.FeatureBackground();
                             "ify.",
                         "False",
                         "False"});
-#line 1747
- testRunner.Then("I verify Query is displayed", ((string)(null)), table301);
 #line 1750
+ testRunner.Then("I verify Query is displayed", ((string)(null)), table301);
+#line 1753
  testRunner.And("I take a screenshot");
 #line hidden
             this.ScenarioCleanup();
@@ -5484,11 +5487,11 @@ this.FeatureBackground();
                         "release_564_Patch11",
                         "PB-US12940-10B",
                         "Draft"});
-#line 1756
+#line 1759
 this.ScenarioSetup(scenarioInfo);
 #line 11
 this.FeatureBackground();
-#line 1759
+#line 1762
  testRunner.Given("I select Study \"Standard Study\" and Site \"Site 1\"");
 #line hidden
             TechTalk.SpecFlow.Table table302 = new TechTalk.SpecFlow.Table(new string[] {
@@ -5503,9 +5506,9 @@ this.FeatureBackground();
             table302.AddRow(new string[] {
                         "Subject ID",
                         "SUB {Var(num1)}"});
-#line 1760
+#line 1763
  testRunner.And("I create a Subject", ((string)(null)), table302);
-#line 1765
+#line 1768
  testRunner.And("I select Form \"Form 2\"");
 #line hidden
             TechTalk.SpecFlow.Table table303 = new TechTalk.SpecFlow.Table(new string[] {
@@ -5517,9 +5520,9 @@ this.FeatureBackground();
             table303.AddRow(new string[] {
                         "Diastolic Blood Pressure 2",
                         "90"});
-#line 1766
+#line 1769
  testRunner.When("I enter data in CRF", ((string)(null)), table303);
-#line 1770
+#line 1773
  testRunner.And("I save the CRF page");
 #line hidden
             TechTalk.SpecFlow.Table table304 = new TechTalk.SpecFlow.Table(new string[] {
@@ -5528,14 +5531,14 @@ this.FeatureBackground();
                         "Answered",
                         "Closed"});
             table304.AddRow(new string[] {
-                        "Diastolic Blood Pressure 1",
+                        "Diastolic Blood Pressure 2",
                         "Systolic Blood Pressure must be greater than Diastolic Blood Pressure. Please ver" +
                             "ify.",
                         "False",
                         "False"});
-#line 1771
- testRunner.Then("I verify Query is displayed", ((string)(null)), table304);
 #line 1774
+ testRunner.Then("I verify Query is displayed", ((string)(null)), table304);
+#line 1777
  testRunner.And("I take a screenshot");
 #line hidden
             TechTalk.SpecFlow.Table table305 = new TechTalk.SpecFlow.Table(new string[] {
@@ -5544,9 +5547,9 @@ this.FeatureBackground();
             table305.AddRow(new string[] {
                         "Diastolic Blood Pressure 2",
                         "85"});
-#line 1775
- testRunner.When("I enter data in CRF", ((string)(null)), table305);
 #line 1778
+ testRunner.When("I enter data in CRF", ((string)(null)), table305);
+#line 1781
  testRunner.And("I save the CRF page");
 #line hidden
             TechTalk.SpecFlow.Table table306 = new TechTalk.SpecFlow.Table(new string[] {
@@ -5560,9 +5563,9 @@ this.FeatureBackground();
                             "ify.",
                         "False",
                         "False"});
-#line 1779
- testRunner.Then("I verify Query is displayed", ((string)(null)), table306);
 #line 1782
+ testRunner.Then("I verify Query is displayed", ((string)(null)), table306);
+#line 1785
  testRunner.And("I take a screenshot");
 #line hidden
             this.ScenarioCleanup();
@@ -5573,18 +5576,18 @@ this.FeatureBackground();
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "QueryRefiringLogic4tgt")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("release_564_Patch11")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("PB-US12940-10C")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Draft")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.IgnoreAttribute()]
         public virtual void PB_US12940_10CAsAnEDCUserWhenIEnteredBadDataInFieldAAndFieldBThatResultedInTheSystemOpeningAQueryOnFieldBAndIAnsweredTheQueryAndIChangedTheDataInFieldBToAnotherBadDataAndTheQueryIsThenClosedIfIThenEnteredTheNewBadDataInFieldBThenTheSystemShouldRefireAQueryOnFieldB_()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo(@"@PB-US12940-10C As an EDC user, when I entered bad data in field A and field B that resulted in the system opening a query on field B, and I answered the query and I changed the data in field B to another bad data, and the query is then closed, if I then entered the new bad data in field B, then the system should refire a query on field B.", new string[] {
                         "release_564_Patch11",
                         "PB-US12940-10C",
-                        "Draft"});
-#line 1790
+                        "ignore"});
+#line 1793
 this.ScenarioSetup(scenarioInfo);
 #line 11
 this.FeatureBackground();
-#line 1793
+#line 1796
  testRunner.Given("I select Study \"Standard Study\" and Site \"Site 1\"");
 #line hidden
             TechTalk.SpecFlow.Table table307 = new TechTalk.SpecFlow.Table(new string[] {
@@ -5599,9 +5602,9 @@ this.FeatureBackground();
             table307.AddRow(new string[] {
                         "Subject ID",
                         "SUB {Var(num1)}"});
-#line 1794
+#line 1797
  testRunner.And("I create a Subject", ((string)(null)), table307);
-#line 1799
+#line 1802
  testRunner.And("I select Form \"Form 2\"");
 #line hidden
             TechTalk.SpecFlow.Table table308 = new TechTalk.SpecFlow.Table(new string[] {
@@ -5613,9 +5616,9 @@ this.FeatureBackground();
             table308.AddRow(new string[] {
                         "Diastolic Blood Pressure 3",
                         "90"});
-#line 1800
+#line 1803
  testRunner.When("I enter data in CRF", ((string)(null)), table308);
-#line 1804
+#line 1807
  testRunner.And("I save the CRF page");
 #line hidden
             TechTalk.SpecFlow.Table table309 = new TechTalk.SpecFlow.Table(new string[] {
@@ -5629,14 +5632,16 @@ this.FeatureBackground();
                             "ify.",
                         "False",
                         "False"});
-#line 1805
- testRunner.Then("I verify Query is displayed", ((string)(null)), table309);
 #line 1808
+ testRunner.Then("I verify Query is displayed", ((string)(null)), table309);
+#line 1811
  testRunner.And("I take a screenshot");
-#line 1809
+#line 1812
  testRunner.When("I answer the Query \"Systolic Blood Pressure must be greater than Diastolic Blood " +
                     "Pressure. Please verify.\" on Field \"Diastolic Blood Pressure 3\" with \"Data is co" +
                     "rrect\"");
+#line 1813
+   testRunner.And("I save the CRF page");
 #line hidden
             TechTalk.SpecFlow.Table table310 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field",
@@ -5644,9 +5649,9 @@ this.FeatureBackground();
             table310.AddRow(new string[] {
                         "Diastolic Blood Pressure 3",
                         "85"});
-#line 1810
-   testRunner.And("I enter data in CRF", ((string)(null)), table310);
-#line 1813
+#line 1814
+ testRunner.And("I enter data in CRF", ((string)(null)), table310);
+#line 1817
  testRunner.And("I save the CRF page");
 #line hidden
             TechTalk.SpecFlow.Table table311 = new TechTalk.SpecFlow.Table(new string[] {
@@ -5660,7 +5665,7 @@ this.FeatureBackground();
                             "ify.",
                         "True",
                         "True"});
-#line 1814
+#line 1818
  testRunner.Then("I verify Query is displayed", ((string)(null)), table311);
 #line hidden
             TechTalk.SpecFlow.Table table312 = new TechTalk.SpecFlow.Table(new string[] {
@@ -5674,9 +5679,9 @@ this.FeatureBackground();
                             "ify.",
                         "False",
                         "False"});
-#line 1817
- testRunner.And("I verify Query is not displayed", ((string)(null)), table312);
 #line 1821
+ testRunner.And("I verify Query is not displayed", ((string)(null)), table312);
+#line 1825
  testRunner.And("I take a screenshot");
 #line hidden
             TechTalk.SpecFlow.Table table313 = new TechTalk.SpecFlow.Table(new string[] {
@@ -5685,7 +5690,7 @@ this.FeatureBackground();
             table313.AddRow(new string[] {
                         "Diastolic Blood Pressure 3",
                         "100"});
-#line 1822
+#line 1826
  testRunner.When("I enter data in CRF", ((string)(null)), table313);
 #line hidden
             TechTalk.SpecFlow.Table table314 = new TechTalk.SpecFlow.Table(new string[] {
@@ -5699,9 +5704,9 @@ this.FeatureBackground();
                             "ify.",
                         "False",
                         "False"});
-#line 1825
+#line 1829
  testRunner.Then("I verify Query is displayed", ((string)(null)), table314);
-#line 1828
+#line 1832
  testRunner.And("I take a screenshot");
 #line hidden
             this.ScenarioCleanup();
@@ -5719,11 +5724,11 @@ this.FeatureBackground();
                         "release_564_Patch11",
                         "PB-US12940-10D",
                         "Draft"});
-#line 1834
+#line 1838
 this.ScenarioSetup(scenarioInfo);
 #line 11
 this.FeatureBackground();
-#line 1837
+#line 1841
  testRunner.Given("I select Study \"Standard Study\" and Site \"Site 1\"");
 #line hidden
             TechTalk.SpecFlow.Table table315 = new TechTalk.SpecFlow.Table(new string[] {
@@ -5738,9 +5743,9 @@ this.FeatureBackground();
             table315.AddRow(new string[] {
                         "Subject ID",
                         "SUB {Var(num1)}"});
-#line 1838
+#line 1842
  testRunner.And("I create a Subject", ((string)(null)), table315);
-#line 1843
+#line 1847
  testRunner.And("I select Form \"Form 2\"");
 #line hidden
             TechTalk.SpecFlow.Table table316 = new TechTalk.SpecFlow.Table(new string[] {
@@ -5752,8 +5757,10 @@ this.FeatureBackground();
             table316.AddRow(new string[] {
                         "Diastolic Blood Pressure 4",
                         "90"});
-#line 1844
+#line 1848
  testRunner.When("I enter data in CRF", ((string)(null)), table316);
+#line 1852
+ testRunner.And("I save the CRF page");
 #line hidden
             TechTalk.SpecFlow.Table table317 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field",
@@ -5766,9 +5773,9 @@ this.FeatureBackground();
                             "ify.",
                         "False",
                         "False"});
-#line 1848
+#line 1853
  testRunner.Then("I verify Query is displayed", ((string)(null)), table317);
-#line 1851
+#line 1856
  testRunner.And("I take a screenshot");
 #line hidden
             TechTalk.SpecFlow.Table table318 = new TechTalk.SpecFlow.Table(new string[] {
@@ -5777,9 +5784,9 @@ this.FeatureBackground();
             table318.AddRow(new string[] {
                         "Diastolic Blood Pressure 4",
                         "85"});
-#line 1852
+#line 1857
  testRunner.When("I enter data in CRF", ((string)(null)), table318);
-#line 1855
+#line 1860
  testRunner.And("I save the CRF page");
 #line hidden
             TechTalk.SpecFlow.Table table319 = new TechTalk.SpecFlow.Table(new string[] {
@@ -5793,7 +5800,7 @@ this.FeatureBackground();
                             "ify.",
                         "True",
                         "False"});
-#line 1856
+#line 1861
  testRunner.Then("I verify Query is displayed", ((string)(null)), table319);
 #line hidden
             TechTalk.SpecFlow.Table table320 = new TechTalk.SpecFlow.Table(new string[] {
@@ -5807,14 +5814,14 @@ this.FeatureBackground();
                             "ify.",
                         "False",
                         "False"});
-#line 1859
+#line 1864
  testRunner.And("I verify Query is not displayed", ((string)(null)), table320);
-#line 1862
+#line 1867
  testRunner.And("I take a screenshot");
-#line 1863
+#line 1868
  testRunner.When("I close the Query \"Systolic Blood Pressure must be greater than Diastolic Blood P" +
                     "ressure. Please verify.\" on Field \"Diastolic Blood Pressure 4\"");
-#line 1864
+#line 1869
    testRunner.And("I save the CRF page");
 #line hidden
             TechTalk.SpecFlow.Table table321 = new TechTalk.SpecFlow.Table(new string[] {
@@ -5828,9 +5835,9 @@ this.FeatureBackground();
                             "ify.",
                         "True",
                         "True"});
-#line 1865
+#line 1870
  testRunner.Then("I verify Query is displayed", ((string)(null)), table321);
-#line 1868
+#line 1873
  testRunner.And("I take a screenshot");
 #line hidden
             TechTalk.SpecFlow.Table table322 = new TechTalk.SpecFlow.Table(new string[] {
@@ -5839,9 +5846,9 @@ this.FeatureBackground();
             table322.AddRow(new string[] {
                         "Diastolic Blood Pressure 4",
                         "100"});
-#line 1869
+#line 1874
  testRunner.When("I enter data in CRF", ((string)(null)), table322);
-#line 1872
+#line 1877
  testRunner.And("I save the CRF page");
 #line hidden
             TechTalk.SpecFlow.Table table323 = new TechTalk.SpecFlow.Table(new string[] {
@@ -5855,9 +5862,9 @@ this.FeatureBackground();
                             "ify.",
                         "False",
                         "False"});
-#line 1873
+#line 1878
  testRunner.Then("I verify Query is displayed", ((string)(null)), table323);
-#line 1876
+#line 1881
  testRunner.And("I take a screenshot");
 #line hidden
             this.ScenarioCleanup();
@@ -5875,11 +5882,11 @@ this.FeatureBackground();
                         "release_564_Patch11",
                         "PB-US12940-11A",
                         "Draft"});
-#line 1882
+#line 1887
 this.ScenarioSetup(scenarioInfo);
 #line 11
 this.FeatureBackground();
-#line 1885
+#line 1890
  testRunner.Given("I select Study \"Standard Study\" and Site \"Site 1\"");
 #line hidden
             TechTalk.SpecFlow.Table table324 = new TechTalk.SpecFlow.Table(new string[] {
@@ -5894,9 +5901,9 @@ this.FeatureBackground();
             table324.AddRow(new string[] {
                         "Subject ID",
                         "SUB {Var(num1)}"});
-#line 1886
- testRunner.And("I create a Subject", ((string)(null)), table324);
 #line 1891
+ testRunner.And("I create a Subject", ((string)(null)), table324);
+#line 1896
  testRunner.And("I select Form \"Form 2\"");
 #line hidden
             TechTalk.SpecFlow.Table table325 = new TechTalk.SpecFlow.Table(new string[] {
@@ -5908,9 +5915,9 @@ this.FeatureBackground();
             table325.AddRow(new string[] {
                         "Diastolic Blood Pressure 1",
                         "90"});
-#line 1892
+#line 1897
  testRunner.When("I enter data in CRF", ((string)(null)), table325);
-#line 1896
+#line 1901
  testRunner.And("I save the CRF page");
 #line hidden
             TechTalk.SpecFlow.Table table326 = new TechTalk.SpecFlow.Table(new string[] {
@@ -5924,14 +5931,14 @@ this.FeatureBackground();
                             "ify.",
                         "False",
                         "False"});
-#line 1897
+#line 1902
  testRunner.Then("I verify Query is displayed", ((string)(null)), table326);
-#line 1900
+#line 1905
  testRunner.And("I take a screenshot");
-#line 1901
+#line 1906
  testRunner.When("I cancel the Query \"Systolic Blood Pressure must be greater than Diastolic Blood " +
                     "Pressure. Please verify.\" on Field \"Diastolic Blood Pressure 1\"");
-#line 1902
+#line 1907
  testRunner.And("I save the CRF page");
 #line hidden
             TechTalk.SpecFlow.Table table327 = new TechTalk.SpecFlow.Table(new string[] {
@@ -5945,63 +5952,79 @@ this.FeatureBackground();
                             "ify.",
                         "False",
                         "False"});
-#line 1903
+#line 1908
  testRunner.Then("I verify Query is not displayed", ((string)(null)), table327);
-#line 1906
- testRunner.And("I");
-#line 1907
+#line 1911
  testRunner.And("I take a screenshot");
+#line 1912
+ testRunner.And("I click audit on Field \"Diastolic Blood Pressure 1\"");
 #line hidden
             TechTalk.SpecFlow.Table table328 = new TechTalk.SpecFlow.Table(new string[] {
-                        "Field",
-                        "Data"});
+                        "Audit Type",
+                        "Query Message"});
             table328.AddRow(new string[] {
-                        "Systolic Blood Pressure 1",
-                        "100"});
-#line 1908
- testRunner.When("I enter data in CRF", ((string)(null)), table328);
-#line 1911
- testRunner.And("I save the CRF page");
+                        "Query Canceled",
+                        "Systolic Blood Pressure must be greater than Diastolic Blood Pressure. Please ver" +
+                            "ify."});
+#line 1913
+ testRunner.And("I verify Audits exist", ((string)(null)), table328);
+#line 1916
+ testRunner.And("I take a screenshot");
+#line 1917
+ testRunner.And("I select Form \"Form 2\" in \"Header\"");
 #line hidden
             TechTalk.SpecFlow.Table table329 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field",
-                        "Query Message",
-                        "Answered",
-                        "Closed"});
+                        "Data"});
             table329.AddRow(new string[] {
-                        "Diastolic Blood Pressure 1",
-                        "Systolic Blood Pressure must be greater than Diastolic Blood Pressure. Please ver" +
-                            "ify.",
-                        "False",
-                        "False"});
-#line 1912
- testRunner.Then("I verify Query is not displayed", ((string)(null)), table329);
-#line 1915
- testRunner.And("I take a screenshot");
+                        "Systolic Blood Pressure 1",
+                        "100"});
+#line 1918
+ testRunner.When("I enter data in CRF", ((string)(null)), table329);
+#line 1921
+ testRunner.And("I save the CRF page");
 #line hidden
             TechTalk.SpecFlow.Table table330 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field",
-                        "Data"});
-            table330.AddRow(new string[] {
-                        "Systolic Blood Pressure 1",
-                        "80"});
-#line 1916
- testRunner.And("I enter data in CRF", ((string)(null)), table330);
-#line hidden
-            TechTalk.SpecFlow.Table table331 = new TechTalk.SpecFlow.Table(new string[] {
-                        "Field",
                         "Query Message",
                         "Answered",
                         "Closed"});
-            table331.AddRow(new string[] {
+            table330.AddRow(new string[] {
                         "Diastolic Blood Pressure 1",
                         "Systolic Blood Pressure must be greater than Diastolic Blood Pressure. Please ver" +
                             "ify.",
                         "False",
                         "False"});
-#line 1919
- testRunner.Then("I verify Query is not displayed", ((string)(null)), table331);
 #line 1922
+ testRunner.Then("I verify Query is not displayed", ((string)(null)), table330);
+#line 1925
+ testRunner.And("I take a screenshot");
+#line hidden
+            TechTalk.SpecFlow.Table table331 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Data"});
+            table331.AddRow(new string[] {
+                        "Systolic Blood Pressure 1",
+                        "80"});
+#line 1926
+ testRunner.And("I enter data in CRF", ((string)(null)), table331);
+#line 1929
+ testRunner.And("I save the CRF page");
+#line hidden
+            TechTalk.SpecFlow.Table table332 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Query Message",
+                        "Answered",
+                        "Closed"});
+            table332.AddRow(new string[] {
+                        "Diastolic Blood Pressure 1",
+                        "Systolic Blood Pressure must be greater than Diastolic Blood Pressure. Please ver" +
+                            "ify.",
+                        "False",
+                        "False"});
+#line 1930
+ testRunner.Then("I verify Query is not displayed", ((string)(null)), table332);
+#line 1933
  testRunner.And("I take a screenshot");
 #line hidden
             this.ScenarioCleanup();
@@ -6019,63 +6042,42 @@ this.FeatureBackground();
                         "release_564_Patch11",
                         "PB-US12940-11B",
                         "Draft"});
-#line 1928
+#line 1939
 this.ScenarioSetup(scenarioInfo);
 #line 11
 this.FeatureBackground();
-#line 1931
+#line 1942
  testRunner.Given("I select Study \"Standard Study\" and Site \"Site 1\"");
-#line hidden
-            TechTalk.SpecFlow.Table table332 = new TechTalk.SpecFlow.Table(new string[] {
-                        "Field",
-                        "Data"});
-            table332.AddRow(new string[] {
-                        "Subject Number",
-                        "{RndNum<num1>(5)}"});
-            table332.AddRow(new string[] {
-                        "Subject Initials",
-                        "SUB"});
-            table332.AddRow(new string[] {
-                        "Subject ID",
-                        "SUB {Var(num1)}"});
-#line 1932
- testRunner.And("I create a Subject", ((string)(null)), table332);
-#line 1937
- testRunner.And("I select Form \"Form 2\"");
 #line hidden
             TechTalk.SpecFlow.Table table333 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field",
                         "Data"});
             table333.AddRow(new string[] {
-                        "Systolic Blood Pressure 2",
-                        "80"});
+                        "Subject Number",
+                        "{RndNum<num1>(5)}"});
             table333.AddRow(new string[] {
-                        "Diastolic Blood Pressure 2",
-                        "90"});
-#line 1938
- testRunner.When("I enter data in CRF", ((string)(null)), table333);
-#line 1942
- testRunner.And("I save the CRF page");
+                        "Subject Initials",
+                        "SUB"});
+            table333.AddRow(new string[] {
+                        "Subject ID",
+                        "SUB {Var(num1)}"});
+#line 1943
+ testRunner.And("I create a Subject", ((string)(null)), table333);
+#line 1948
+ testRunner.And("I select Form \"Form 2\"");
 #line hidden
             TechTalk.SpecFlow.Table table334 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field",
-                        "Query Message",
-                        "Answered",
-                        "Closed"});
+                        "Data"});
+            table334.AddRow(new string[] {
+                        "Systolic Blood Pressure 2",
+                        "80"});
             table334.AddRow(new string[] {
                         "Diastolic Blood Pressure 2",
-                        "Systolic Blood Pressure must be greater than Diastolic Blood Pressure. Please ver" +
-                            "ify.",
-                        "False",
-                        "False"});
-#line 1943
- testRunner.Then("I verify Query is displayed", ((string)(null)), table334);
-#line 1946
- testRunner.And("I take a screenshot");
-#line 1947
- testRunner.When("I cancel the Query \"Systolic Blood Pressure must be greater than Diastolic Blood " +
-                    "Pressure. Please verify.\" on Field \"Diastolic Blood Pressure 2\"");
-#line 1948
+                        "90"});
+#line 1949
+ testRunner.When("I enter data in CRF", ((string)(null)), table334);
+#line 1953
  testRunner.And("I save the CRF page");
 #line hidden
             TechTalk.SpecFlow.Table table335 = new TechTalk.SpecFlow.Table(new string[] {
@@ -6089,47 +6091,57 @@ this.FeatureBackground();
                             "ify.",
                         "False",
                         "False"});
-#line 1949
- testRunner.Then("I verify Query is not displayed", ((string)(null)), table335);
-#line 1952
+#line 1954
+ testRunner.Then("I verify Query is displayed", ((string)(null)), table335);
+#line 1957
  testRunner.And("I take a screenshot");
-#line hidden
-            TechTalk.SpecFlow.Table table336 = new TechTalk.SpecFlow.Table(new string[] {
-                        "Field",
-                        "Data"});
-            table336.AddRow(new string[] {
-                        "Systolic Blood Pressure 2",
-                        "100"});
-#line 1953
- testRunner.When("I enter data in CRF", ((string)(null)), table336);
-#line 1956
+#line 1958
+ testRunner.When("I cancel the Query \"Systolic Blood Pressure must be greater than Diastolic Blood " +
+                    "Pressure. Please verify.\" on Field \"Diastolic Blood Pressure 2\"");
+#line 1959
  testRunner.And("I save the CRF page");
 #line hidden
-            TechTalk.SpecFlow.Table table337 = new TechTalk.SpecFlow.Table(new string[] {
+            TechTalk.SpecFlow.Table table336 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field",
                         "Query Message",
                         "Answered",
                         "Closed"});
-            table337.AddRow(new string[] {
+            table336.AddRow(new string[] {
                         "Diastolic Blood Pressure 2",
                         "Systolic Blood Pressure must be greater than Diastolic Blood Pressure. Please ver" +
                             "ify.",
                         "False",
                         "False"});
-#line 1957
- testRunner.Then("I verify Query is not displayed", ((string)(null)), table337);
 #line 1960
+ testRunner.Then("I verify Query is not displayed", ((string)(null)), table336);
+#line 1963
  testRunner.And("I take a screenshot");
+#line 1964
+ testRunner.And("I click audit on Field \"Diastolic Blood Pressure 2\"");
+#line hidden
+            TechTalk.SpecFlow.Table table337 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Audit Type",
+                        "Query Message"});
+            table337.AddRow(new string[] {
+                        "Query Canceled",
+                        "Systolic Blood Pressure must be greater than Diastolic Blood Pressure. Please ver" +
+                            "ify."});
+#line 1965
+ testRunner.And("I verify Audits exist", ((string)(null)), table337);
+#line 1968
+ testRunner.And("I take a screenshot");
+#line 1969
+ testRunner.And("I select Form \"Form 2\" in \"Header\"");
 #line hidden
             TechTalk.SpecFlow.Table table338 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field",
                         "Data"});
             table338.AddRow(new string[] {
                         "Systolic Blood Pressure 2",
-                        "80"});
-#line 1961
+                        "100"});
+#line 1970
  testRunner.When("I enter data in CRF", ((string)(null)), table338);
-#line 1964
+#line 1973
  testRunner.And("I save the CRF page");
 #line hidden
             TechTalk.SpecFlow.Table table339 = new TechTalk.SpecFlow.Table(new string[] {
@@ -6143,9 +6155,36 @@ this.FeatureBackground();
                             "ify.",
                         "False",
                         "False"});
-#line 1965
+#line 1974
  testRunner.Then("I verify Query is not displayed", ((string)(null)), table339);
-#line 1968
+#line 1977
+ testRunner.And("I take a screenshot");
+#line hidden
+            TechTalk.SpecFlow.Table table340 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Data"});
+            table340.AddRow(new string[] {
+                        "Systolic Blood Pressure 2",
+                        "80"});
+#line 1978
+ testRunner.When("I enter data in CRF", ((string)(null)), table340);
+#line 1981
+ testRunner.And("I save the CRF page");
+#line hidden
+            TechTalk.SpecFlow.Table table341 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Query Message",
+                        "Answered",
+                        "Closed"});
+            table341.AddRow(new string[] {
+                        "Diastolic Blood Pressure 2",
+                        "Systolic Blood Pressure must be greater than Diastolic Blood Pressure. Please ver" +
+                            "ify.",
+                        "False",
+                        "False"});
+#line 1982
+ testRunner.Then("I verify Query is not displayed", ((string)(null)), table341);
+#line 1985
  testRunner.And("I take a screenshot");
 #line hidden
             this.ScenarioCleanup();
@@ -6163,90 +6202,63 @@ this.FeatureBackground();
                         "release_564_Patch11",
                         "PB-US12940-11C",
                         "Draft"});
-#line 1974
+#line 1991
 this.ScenarioSetup(scenarioInfo);
 #line 11
 this.FeatureBackground();
-#line 1977
+#line 1994
  testRunner.Given("I select Study \"Standard Study\" and Site \"Site 1\"");
-#line hidden
-            TechTalk.SpecFlow.Table table340 = new TechTalk.SpecFlow.Table(new string[] {
-                        "Field",
-                        "Data"});
-            table340.AddRow(new string[] {
-                        "Subject Number",
-                        "{RndNum<num1>(5)}"});
-            table340.AddRow(new string[] {
-                        "Subject Initials",
-                        "SUB"});
-            table340.AddRow(new string[] {
-                        "Subject ID",
-                        "SUB {Var(num1)}"});
-#line 1978
- testRunner.And("I create a Subject", ((string)(null)), table340);
-#line 1983
- testRunner.And("I select Form \"Form 2\"");
-#line hidden
-            TechTalk.SpecFlow.Table table341 = new TechTalk.SpecFlow.Table(new string[] {
-                        "Field",
-                        "Data"});
-            table341.AddRow(new string[] {
-                        "Systolic Blood Pressure 3",
-                        "80"});
-            table341.AddRow(new string[] {
-                        "Diastolic Blood Pressure 3",
-                        "90"});
-#line 1984
- testRunner.When("I enter data in CRF", ((string)(null)), table341);
-#line 1988
- testRunner.And("I save the CRF page");
 #line hidden
             TechTalk.SpecFlow.Table table342 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field",
-                        "Query Message",
-                        "Answered",
-                        "Closed"});
+                        "Data"});
             table342.AddRow(new string[] {
-                        "Diastolic Blood Pressure 3",
-                        "Systolic Blood Pressure must be greater than Diastolic Blood Pressure. Please ver" +
-                            "ify.",
-                        "False",
-                        "False"});
-#line 1989
- testRunner.Then("I verify Query is displayed", ((string)(null)), table342);
-#line 1992
- testRunner.And("I take a screenshot");
-#line 1993
- testRunner.When("I cancel the Query \"Systolic Blood Pressure must be greater than Diastolic Blood " +
-                    "Pressure. Please verify.\" on Field \"Diastolic Blood Pressure 3\"");
-#line 1994
- testRunner.And("I save the CRF page");
+                        "Subject Number",
+                        "{RndNum<num1>(5)}"});
+            table342.AddRow(new string[] {
+                        "Subject Initials",
+                        "SUB"});
+            table342.AddRow(new string[] {
+                        "Subject ID",
+                        "SUB {Var(num1)}"});
+#line 1995
+ testRunner.And("I create a Subject", ((string)(null)), table342);
+#line 2000
+ testRunner.And("I select Form \"Form 2\"");
 #line hidden
             TechTalk.SpecFlow.Table table343 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field",
+                        "Data"});
+            table343.AddRow(new string[] {
+                        "Systolic Blood Pressure 3",
+                        "80"});
+            table343.AddRow(new string[] {
+                        "Diastolic Blood Pressure 3",
+                        "90"});
+#line 2001
+ testRunner.When("I enter data in CRF", ((string)(null)), table343);
+#line 2005
+ testRunner.And("I save the CRF page");
+#line hidden
+            TechTalk.SpecFlow.Table table344 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
                         "Query Message",
                         "Answered",
                         "Closed"});
-            table343.AddRow(new string[] {
+            table344.AddRow(new string[] {
                         "Diastolic Blood Pressure 3",
                         "Systolic Blood Pressure must be greater than Diastolic Blood Pressure. Please ver" +
                             "ify.",
                         "False",
                         "False"});
-#line 1995
- testRunner.Then("I verify Query is not displayed", ((string)(null)), table343);
-#line 1998
+#line 2006
+ testRunner.Then("I verify Query is displayed", ((string)(null)), table344);
+#line 2009
  testRunner.And("I take a screenshot");
-#line hidden
-            TechTalk.SpecFlow.Table table344 = new TechTalk.SpecFlow.Table(new string[] {
-                        "Field",
-                        "Data"});
-            table344.AddRow(new string[] {
-                        "Systolic Blood Pressure 3",
-                        "100"});
-#line 1999
- testRunner.When("I enter data in CRF", ((string)(null)), table344);
-#line 2002
+#line 2010
+ testRunner.When("I cancel the Query \"Systolic Blood Pressure must be greater than Diastolic Blood " +
+                    "Pressure. Please verify.\" on Field \"Diastolic Blood Pressure 3\"");
+#line 2011
  testRunner.And("I save the CRF page");
 #line hidden
             TechTalk.SpecFlow.Table table345 = new TechTalk.SpecFlow.Table(new string[] {
@@ -6260,34 +6272,79 @@ this.FeatureBackground();
                             "ify.",
                         "False",
                         "False"});
-#line 2003
+#line 2012
  testRunner.Then("I verify Query is not displayed", ((string)(null)), table345);
-#line 2006
+#line 2015
  testRunner.And("I take a screenshot");
+#line 2016
+ testRunner.And("I click audit on Field \"Diastolic Blood Pressure 3\"");
 #line hidden
             TechTalk.SpecFlow.Table table346 = new TechTalk.SpecFlow.Table(new string[] {
-                        "Field",
-                        "Data"});
+                        "Audit Type",
+                        "Query Message"});
             table346.AddRow(new string[] {
-                        "Systolic Blood Pressure 3",
-                        "80"});
-#line 2007
- testRunner.And("I enter data in CRF", ((string)(null)), table346);
+                        "Query Canceled",
+                        "Systolic Blood Pressure must be greater than Diastolic Blood Pressure. Please ver" +
+                            "ify."});
+#line 2017
+ testRunner.And("I verify Audits exist", ((string)(null)), table346);
+#line 2020
+ testRunner.And("I take a screenshot");
+#line 2021
+ testRunner.And("I select Form \"Form 2\" in \"Header\"");
 #line hidden
             TechTalk.SpecFlow.Table table347 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Data"});
+            table347.AddRow(new string[] {
+                        "Systolic Blood Pressure 3",
+                        "100"});
+#line 2022
+ testRunner.When("I enter data in CRF", ((string)(null)), table347);
+#line 2025
+ testRunner.And("I save the CRF page");
+#line hidden
+            TechTalk.SpecFlow.Table table348 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field",
                         "Query Message",
                         "Answered",
                         "Closed"});
-            table347.AddRow(new string[] {
+            table348.AddRow(new string[] {
                         "Diastolic Blood Pressure 3",
                         "Systolic Blood Pressure must be greater than Diastolic Blood Pressure. Please ver" +
                             "ify.",
                         "False",
                         "False"});
-#line 2010
- testRunner.Then("I verify Query is not displayed", ((string)(null)), table347);
-#line 2013
+#line 2026
+ testRunner.Then("I verify Query is not displayed", ((string)(null)), table348);
+#line 2029
+ testRunner.And("I take a screenshot");
+#line hidden
+            TechTalk.SpecFlow.Table table349 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Data"});
+            table349.AddRow(new string[] {
+                        "Systolic Blood Pressure 3",
+                        "80"});
+#line 2030
+ testRunner.And("I enter data in CRF", ((string)(null)), table349);
+#line 2033
+ testRunner.And("I save the CRF page");
+#line hidden
+            TechTalk.SpecFlow.Table table350 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Query Message",
+                        "Answered",
+                        "Closed"});
+            table350.AddRow(new string[] {
+                        "Diastolic Blood Pressure 3",
+                        "Systolic Blood Pressure must be greater than Diastolic Blood Pressure. Please ver" +
+                            "ify.",
+                        "False",
+                        "False"});
+#line 2034
+ testRunner.Then("I verify Query is not displayed", ((string)(null)), table350);
+#line 2037
  testRunner.And("I take a screenshot");
 #line hidden
             this.ScenarioCleanup();
@@ -6305,90 +6362,42 @@ this.FeatureBackground();
                         "release_564_Patch11",
                         "PB-US12940-11D",
                         "Draft"});
-#line 2019
+#line 2043
 this.ScenarioSetup(scenarioInfo);
 #line 11
 this.FeatureBackground();
-#line 2022
+#line 2046
  testRunner.Given("I select Study \"Standard Study\" and Site \"Site 1\"");
-#line hidden
-            TechTalk.SpecFlow.Table table348 = new TechTalk.SpecFlow.Table(new string[] {
-                        "Field",
-                        "Data"});
-            table348.AddRow(new string[] {
-                        "Subject Number",
-                        "{RndNum<num1>(5)}"});
-            table348.AddRow(new string[] {
-                        "Subject Initials",
-                        "SUB"});
-            table348.AddRow(new string[] {
-                        "Subject ID",
-                        "SUB {Var(num1)}"});
-#line 2023
- testRunner.And("I create a Subject", ((string)(null)), table348);
-#line 2028
- testRunner.And("I select Form \"Form 2\"");
-#line hidden
-            TechTalk.SpecFlow.Table table349 = new TechTalk.SpecFlow.Table(new string[] {
-                        "Field",
-                        "Data"});
-            table349.AddRow(new string[] {
-                        "Systolic Blood Pressure 4",
-                        "80"});
-            table349.AddRow(new string[] {
-                        "Diastolic Blood Pressure 4",
-                        "90"});
-#line 2029
- testRunner.When("I enter data in CRF", ((string)(null)), table349);
-#line 2033
- testRunner.And("I save the CRF page");
-#line hidden
-            TechTalk.SpecFlow.Table table350 = new TechTalk.SpecFlow.Table(new string[] {
-                        "Field",
-                        "Query Message",
-                        "Answered",
-                        "Closed"});
-            table350.AddRow(new string[] {
-                        "Diastolic Blood Pressure 4",
-                        "Systolic Blood Pressure must be greater than Diastolic Blood Pressure. Please ver" +
-                            "ify.",
-                        "False",
-                        "False"});
-#line 2034
- testRunner.Then("I verify Query is displayed", ((string)(null)), table350);
-#line 2037
- testRunner.And("I take a screenshot");
-#line 2038
- testRunner.When("I cancel the Query \"Systolic Blood Pressure must be greater than Diastolic Blood " +
-                    "Pressure. Please verify.\" on Field \"Diastolic Blood Pressure 4\"");
-#line 2039
- testRunner.And("I save the CRF page");
 #line hidden
             TechTalk.SpecFlow.Table table351 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field",
-                        "Query Message",
-                        "Answered",
-                        "Closed"});
+                        "Data"});
             table351.AddRow(new string[] {
-                        "Diastolic Blood Pressure 4",
-                        "Systolic Blood Pressure must be greater than Diastolic Blood Pressure. Please ver" +
-                            "ify.",
-                        "False",
-                        "False"});
-#line 2040
- testRunner.Then("I verify Query is not displayed", ((string)(null)), table351);
-#line 2043
- testRunner.And("I take a screenshot");
+                        "Subject Number",
+                        "{RndNum<num1>(5)}"});
+            table351.AddRow(new string[] {
+                        "Subject Initials",
+                        "SUB"});
+            table351.AddRow(new string[] {
+                        "Subject ID",
+                        "SUB {Var(num1)}"});
+#line 2047
+ testRunner.And("I create a Subject", ((string)(null)), table351);
+#line 2052
+ testRunner.And("I select Form \"Form 2\"");
 #line hidden
             TechTalk.SpecFlow.Table table352 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field",
                         "Data"});
             table352.AddRow(new string[] {
                         "Systolic Blood Pressure 4",
-                        "100"});
-#line 2044
+                        "80"});
+            table352.AddRow(new string[] {
+                        "Diastolic Blood Pressure 4",
+                        "90"});
+#line 2053
  testRunner.When("I enter data in CRF", ((string)(null)), table352);
-#line 2047
+#line 2057
  testRunner.And("I save the CRF page");
 #line hidden
             TechTalk.SpecFlow.Table table353 = new TechTalk.SpecFlow.Table(new string[] {
@@ -6402,36 +6411,100 @@ this.FeatureBackground();
                             "ify.",
                         "False",
                         "False"});
-#line 2048
- testRunner.Then("I verify Query is not displayed", ((string)(null)), table353);
-#line 2051
+#line 2058
+ testRunner.Then("I verify Query is displayed", ((string)(null)), table353);
+#line 2061
  testRunner.And("I take a screenshot");
-#line hidden
-            TechTalk.SpecFlow.Table table354 = new TechTalk.SpecFlow.Table(new string[] {
-                        "Field",
-                        "Data"});
-            table354.AddRow(new string[] {
-                        "Systolic Blood Pressure 4",
-                        "80"});
-#line 2052
- testRunner.When("I enter data in CRF", ((string)(null)), table354);
-#line 2055
+#line 2062
+ testRunner.When("I cancel the Query \"Systolic Blood Pressure must be greater than Diastolic Blood " +
+                    "Pressure. Please verify.\" on Field \"Diastolic Blood Pressure 4\"");
+#line 2063
  testRunner.And("I save the CRF page");
 #line hidden
-            TechTalk.SpecFlow.Table table355 = new TechTalk.SpecFlow.Table(new string[] {
+            TechTalk.SpecFlow.Table table354 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field",
                         "Query Message",
                         "Answered",
                         "Closed"});
-            table355.AddRow(new string[] {
+            table354.AddRow(new string[] {
                         "Diastolic Blood Pressure 4",
                         "Systolic Blood Pressure must be greater than Diastolic Blood Pressure. Please ver" +
                             "ify.",
                         "False",
                         "False"});
-#line 2056
- testRunner.Then("I verify Query is not displayed", ((string)(null)), table355);
-#line 2059
+#line 2064
+ testRunner.Then("I verify Query is not displayed", ((string)(null)), table354);
+#line 2067
+ testRunner.And("I take a screenshot");
+#line 2068
+ testRunner.And("I click audit on Field \"Diastolic Blood Pressure 4\"");
+#line hidden
+            TechTalk.SpecFlow.Table table355 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Audit Type",
+                        "Query Message"});
+            table355.AddRow(new string[] {
+                        "Query Canceled",
+                        "Systolic Blood Pressure must be greater than Diastolic Blood Pressure. Please ver" +
+                            "ify."});
+#line 2069
+ testRunner.And("I verify Audits exist", ((string)(null)), table355);
+#line 2072
+ testRunner.And("I take a screenshot");
+#line 2073
+ testRunner.And("I select Form \"Form 2\" in \"Header\"");
+#line hidden
+            TechTalk.SpecFlow.Table table356 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Data"});
+            table356.AddRow(new string[] {
+                        "Systolic Blood Pressure 4",
+                        "100"});
+#line 2074
+ testRunner.When("I enter data in CRF", ((string)(null)), table356);
+#line 2077
+ testRunner.And("I save the CRF page");
+#line hidden
+            TechTalk.SpecFlow.Table table357 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Query Message",
+                        "Answered",
+                        "Closed"});
+            table357.AddRow(new string[] {
+                        "Diastolic Blood Pressure 4",
+                        "Systolic Blood Pressure must be greater than Diastolic Blood Pressure. Please ver" +
+                            "ify.",
+                        "False",
+                        "False"});
+#line 2078
+ testRunner.Then("I verify Query is not displayed", ((string)(null)), table357);
+#line 2081
+ testRunner.And("I take a screenshot");
+#line hidden
+            TechTalk.SpecFlow.Table table358 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Data"});
+            table358.AddRow(new string[] {
+                        "Systolic Blood Pressure 4",
+                        "80"});
+#line 2082
+ testRunner.When("I enter data in CRF", ((string)(null)), table358);
+#line 2085
+ testRunner.And("I save the CRF page");
+#line hidden
+            TechTalk.SpecFlow.Table table359 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Query Message",
+                        "Answered",
+                        "Closed"});
+            table359.AddRow(new string[] {
+                        "Diastolic Blood Pressure 4",
+                        "Systolic Blood Pressure must be greater than Diastolic Blood Pressure. Please ver" +
+                            "ify.",
+                        "False",
+                        "False"});
+#line 2086
+ testRunner.Then("I verify Query is not displayed", ((string)(null)), table359);
+#line 2089
  testRunner.And("I take a screenshot");
 #line hidden
             this.ScenarioCleanup();
@@ -6449,116 +6522,64 @@ this.FeatureBackground();
                         "release_564_Patch11",
                         "PB-US12940-12A",
                         "Draft"});
-#line 2065
+#line 2095
 this.ScenarioSetup(scenarioInfo);
 #line 11
 this.FeatureBackground();
-#line 2068
+#line 2098
  testRunner.Given("I select Study \"Standard Study\" and Site \"Site 1\"");
-#line hidden
-            TechTalk.SpecFlow.Table table356 = new TechTalk.SpecFlow.Table(new string[] {
-                        "Field",
-                        "Data"});
-            table356.AddRow(new string[] {
-                        "Subject Number",
-                        "{RndNum<num1>(5)}"});
-            table356.AddRow(new string[] {
-                        "Subject Initials",
-                        "SUB"});
-            table356.AddRow(new string[] {
-                        "Subject ID",
-                        "SUB {Var(num1)}"});
-#line 2069
- testRunner.And("I create a Subject", ((string)(null)), table356);
-#line 2074
- testRunner.And("I select Form \"Form 2\"");
-#line hidden
-            TechTalk.SpecFlow.Table table357 = new TechTalk.SpecFlow.Table(new string[] {
-                        "Field",
-                        "Data"});
-            table357.AddRow(new string[] {
-                        "Systolic Blood Pressure 1",
-                        "80"});
-            table357.AddRow(new string[] {
-                        "Diastolic Blood Pressure 1",
-                        "90"});
-#line 2075
- testRunner.When("I enter data in CRF", ((string)(null)), table357);
-#line 2079
- testRunner.And("I save the CRF page");
-#line hidden
-            TechTalk.SpecFlow.Table table358 = new TechTalk.SpecFlow.Table(new string[] {
-                        "Field",
-                        "Query Message",
-                        "Answered",
-                        "Closed"});
-            table358.AddRow(new string[] {
-                        "Diastolic Blood Pressure 1",
-                        "Systolic Blood Pressure must be greater than Diastolic Blood Pressure. Please ver" +
-                            "ify.",
-                        "False",
-                        "False"});
-#line 2080
- testRunner.Then("I verify Query is displayed", ((string)(null)), table358);
-#line 2083
- testRunner.And("I take a screenshot");
-#line 2084
- testRunner.When("I cancel the Query \"Systolic Blood Pressure must be greater than Diastolic Blood " +
-                    "Pressure. Please verify.\" on Field \"Diastolic Blood Pressure 1\"");
-#line 2085
- testRunner.And("I save the CRF page");
-#line hidden
-            TechTalk.SpecFlow.Table table359 = new TechTalk.SpecFlow.Table(new string[] {
-                        "Field",
-                        "Query Message",
-                        "Answered",
-                        "Closed"});
-            table359.AddRow(new string[] {
-                        "Diastolic Blood Pressure 1",
-                        "Systolic Blood Pressure must be greater than Diastolic Blood Pressure. Please ver" +
-                            "ify.",
-                        "False",
-                        "False"});
-#line 2086
- testRunner.Then("I verify Query is not displayed", ((string)(null)), table359);
-#line 2089
- testRunner.And("I take a screenshot");
 #line hidden
             TechTalk.SpecFlow.Table table360 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field",
                         "Data"});
             table360.AddRow(new string[] {
-                        "Diastolic Blood Pressure 1",
-                        "75"});
-#line 2090
- testRunner.And("I enter data in CRF", ((string)(null)), table360);
-#line 2093
- testRunner.And("I save the CRF page");
+                        "Subject Number",
+                        "{RndNum<num1>(5)}"});
+            table360.AddRow(new string[] {
+                        "Subject Initials",
+                        "SUB"});
+            table360.AddRow(new string[] {
+                        "Subject ID",
+                        "SUB {Var(num1)}"});
+#line 2099
+ testRunner.And("I create a Subject", ((string)(null)), table360);
+#line 2104
+ testRunner.And("I select Form \"Form 2\"");
 #line hidden
             TechTalk.SpecFlow.Table table361 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Data"});
+            table361.AddRow(new string[] {
+                        "Systolic Blood Pressure 1",
+                        "80"});
+            table361.AddRow(new string[] {
+                        "Diastolic Blood Pressure 1",
+                        "90"});
+#line 2105
+ testRunner.When("I enter data in CRF", ((string)(null)), table361);
+#line 2109
+ testRunner.And("I save the CRF page");
+#line hidden
+            TechTalk.SpecFlow.Table table362 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field",
                         "Query Message",
                         "Answered",
                         "Closed"});
-            table361.AddRow(new string[] {
+            table362.AddRow(new string[] {
                         "Diastolic Blood Pressure 1",
                         "Systolic Blood Pressure must be greater than Diastolic Blood Pressure. Please ver" +
                             "ify.",
                         "False",
                         "False"});
-#line 2094
- testRunner.Then("I verify Query is not displayed", ((string)(null)), table361);
-#line 2097
+#line 2110
+ testRunner.Then("I verify Query is displayed", ((string)(null)), table362);
+#line 2113
  testRunner.And("I take a screenshot");
-#line hidden
-            TechTalk.SpecFlow.Table table362 = new TechTalk.SpecFlow.Table(new string[] {
-                        "Field",
-                        "Data"});
-            table362.AddRow(new string[] {
-                        "Diastolic Blood Pressure 1",
-                        "90"});
-#line 2098
- testRunner.And("I enter data in CRF", ((string)(null)), table362);
+#line 2114
+ testRunner.When("I cancel the Query \"Systolic Blood Pressure must be greater than Diastolic Blood " +
+                    "Pressure. Please verify.\" on Field \"Diastolic Blood Pressure 1\"");
+#line 2115
+ testRunner.And("I save the CRF page");
 #line hidden
             TechTalk.SpecFlow.Table table363 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field",
@@ -6571,9 +6592,79 @@ this.FeatureBackground();
                             "ify.",
                         "False",
                         "False"});
-#line 2101
+#line 2116
  testRunner.Then("I verify Query is not displayed", ((string)(null)), table363);
-#line 2104
+#line 2119
+ testRunner.And("I take a screenshot");
+#line 2120
+ testRunner.And("I click audit on Field \"Diastolic Blood Pressure 1\"");
+#line hidden
+            TechTalk.SpecFlow.Table table364 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Audit Type",
+                        "Query Message"});
+            table364.AddRow(new string[] {
+                        "Query Canceled",
+                        "Systolic Blood Pressure must be greater than Diastolic Blood Pressure. Please ver" +
+                            "ify."});
+#line 2121
+ testRunner.And("I verify Audits exist", ((string)(null)), table364);
+#line 2124
+ testRunner.And("I take a screenshot");
+#line 2125
+ testRunner.And("I select Form \"Form 2\" in \"Header\"");
+#line hidden
+            TechTalk.SpecFlow.Table table365 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Data"});
+            table365.AddRow(new string[] {
+                        "Diastolic Blood Pressure 1",
+                        "75"});
+#line 2126
+ testRunner.And("I enter data in CRF", ((string)(null)), table365);
+#line 2129
+ testRunner.And("I save the CRF page");
+#line hidden
+            TechTalk.SpecFlow.Table table366 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Query Message",
+                        "Answered",
+                        "Closed"});
+            table366.AddRow(new string[] {
+                        "Diastolic Blood Pressure 1",
+                        "Systolic Blood Pressure must be greater than Diastolic Blood Pressure. Please ver" +
+                            "ify.",
+                        "False",
+                        "False"});
+#line 2130
+ testRunner.Then("I verify Query is not displayed", ((string)(null)), table366);
+#line 2133
+ testRunner.And("I take a screenshot");
+#line hidden
+            TechTalk.SpecFlow.Table table367 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Data"});
+            table367.AddRow(new string[] {
+                        "Diastolic Blood Pressure 1",
+                        "90"});
+#line 2134
+ testRunner.And("I enter data in CRF", ((string)(null)), table367);
+#line 2137
+ testRunner.And("I save the CRF page");
+#line hidden
+            TechTalk.SpecFlow.Table table368 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Query Message",
+                        "Answered",
+                        "Closed"});
+            table368.AddRow(new string[] {
+                        "Diastolic Blood Pressure 1",
+                        "Systolic Blood Pressure must be greater than Diastolic Blood Pressure. Please ver" +
+                            "ify.",
+                        "False",
+                        "False"});
+#line 2138
+ testRunner.Then("I verify Query is not displayed", ((string)(null)), table368);
+#line 2141
  testRunner.And("I take a screenshot");
 #line hidden
             this.ScenarioCleanup();
@@ -6591,117 +6682,42 @@ this.FeatureBackground();
                         "release_564_Patch11",
                         "PB-US12940-12B",
                         "Draft"});
-#line 2110
+#line 2147
 this.ScenarioSetup(scenarioInfo);
 #line 11
 this.FeatureBackground();
-#line 2113
+#line 2150
  testRunner.Given("I select Study \"Standard Study\" and Site \"Site 1\"");
-#line hidden
-            TechTalk.SpecFlow.Table table364 = new TechTalk.SpecFlow.Table(new string[] {
-                        "Field",
-                        "Data"});
-            table364.AddRow(new string[] {
-                        "Subject Number",
-                        "{RndNum<num1>(5)}"});
-            table364.AddRow(new string[] {
-                        "Subject Initials",
-                        "SUB"});
-            table364.AddRow(new string[] {
-                        "Subject ID",
-                        "SUB {Var(num1)}"});
-#line 2114
- testRunner.And("I create a Subject", ((string)(null)), table364);
-#line 2119
- testRunner.And("I select Form \"Form 2\"");
-#line hidden
-            TechTalk.SpecFlow.Table table365 = new TechTalk.SpecFlow.Table(new string[] {
-                        "Field",
-                        "Data"});
-            table365.AddRow(new string[] {
-                        "Systolic Blood Pressure 2",
-                        "80"});
-            table365.AddRow(new string[] {
-                        "Diastolic Blood Pressure 2",
-                        "90"});
-#line 2120
- testRunner.When("I enter data in CRF", ((string)(null)), table365);
-#line 2124
- testRunner.And("I save the CRF page");
-#line hidden
-            TechTalk.SpecFlow.Table table366 = new TechTalk.SpecFlow.Table(new string[] {
-                        "Field",
-                        "Query Message",
-                        "Answered",
-                        "Closed"});
-            table366.AddRow(new string[] {
-                        "Diastolic Blood Pressure 2",
-                        "Systolic Blood Pressure must be greater than Diastolic Blood Pressure. Please ver" +
-                            "ify.",
-                        "False",
-                        "False"});
-#line 2125
- testRunner.Then("I verify Query is displayed", ((string)(null)), table366);
-#line 2128
- testRunner.And("I take a screenshot");
-#line 2129
- testRunner.When("I cancel the Query \"Systolic Blood Pressure must be greater than Diastolic Blood " +
-                    "Pressure. Please verify.\" on Field \"Diastolic Blood Pressure 2\"");
-#line 2130
- testRunner.And("I save the CRF page");
-#line hidden
-            TechTalk.SpecFlow.Table table367 = new TechTalk.SpecFlow.Table(new string[] {
-                        "Field",
-                        "Query Message",
-                        "Answered",
-                        "Closed"});
-            table367.AddRow(new string[] {
-                        "Diastolic Blood Pressure 2",
-                        "Systolic Blood Pressure must be greater than Diastolic Blood Pressure. Please ver" +
-                            "ify.",
-                        "False",
-                        "False"});
-#line 2131
- testRunner.Then("I verify Query is not displayed", ((string)(null)), table367);
-#line 2134
- testRunner.And("I take a screenshot");
-#line hidden
-            TechTalk.SpecFlow.Table table368 = new TechTalk.SpecFlow.Table(new string[] {
-                        "Field",
-                        "Data"});
-            table368.AddRow(new string[] {
-                        "Diastolic Blood Pressure 2",
-                        "75"});
-#line 2135
- testRunner.When("I enter data in CRF", ((string)(null)), table368);
-#line 2138
- testRunner.And("I save the CRF page");
 #line hidden
             TechTalk.SpecFlow.Table table369 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field",
-                        "Query Message",
-                        "Answered",
-                        "Closed"});
+                        "Data"});
             table369.AddRow(new string[] {
-                        "Diastolic Blood Pressure 2",
-                        "Systolic Blood Pressure must be greater than Diastolic Blood Pressure. Please ver" +
-                            "ify.",
-                        "False",
-                        "False"});
-#line 2139
- testRunner.Then("I verify Query is not displayed", ((string)(null)), table369);
-#line 2142
- testRunner.And("I take a screenshot");
+                        "Subject Number",
+                        "{RndNum<num1>(5)}"});
+            table369.AddRow(new string[] {
+                        "Subject Initials",
+                        "SUB"});
+            table369.AddRow(new string[] {
+                        "Subject ID",
+                        "SUB {Var(num1)}"});
+#line 2151
+ testRunner.And("I create a Subject", ((string)(null)), table369);
+#line 2156
+ testRunner.And("I select Form \"Form 2\"");
 #line hidden
             TechTalk.SpecFlow.Table table370 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field",
                         "Data"});
             table370.AddRow(new string[] {
+                        "Systolic Blood Pressure 2",
+                        "80"});
+            table370.AddRow(new string[] {
                         "Diastolic Blood Pressure 2",
                         "90"});
-#line 2143
+#line 2157
  testRunner.When("I enter data in CRF", ((string)(null)), table370);
-#line 2146
+#line 2161
  testRunner.And("I save the CRF page");
 #line hidden
             TechTalk.SpecFlow.Table table371 = new TechTalk.SpecFlow.Table(new string[] {
@@ -6715,9 +6731,100 @@ this.FeatureBackground();
                             "ify.",
                         "False",
                         "False"});
-#line 2147
- testRunner.Then("I verify Query is not displayed", ((string)(null)), table371);
-#line 2150
+#line 2162
+ testRunner.Then("I verify Query is displayed", ((string)(null)), table371);
+#line 2165
+ testRunner.And("I take a screenshot");
+#line 2166
+ testRunner.When("I cancel the Query \"Systolic Blood Pressure must be greater than Diastolic Blood " +
+                    "Pressure. Please verify.\" on Field \"Diastolic Blood Pressure 2\"");
+#line 2167
+ testRunner.And("I save the CRF page");
+#line hidden
+            TechTalk.SpecFlow.Table table372 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Query Message",
+                        "Answered",
+                        "Closed"});
+            table372.AddRow(new string[] {
+                        "Diastolic Blood Pressure 2",
+                        "Systolic Blood Pressure must be greater than Diastolic Blood Pressure. Please ver" +
+                            "ify.",
+                        "False",
+                        "False"});
+#line 2168
+ testRunner.Then("I verify Query is not displayed", ((string)(null)), table372);
+#line 2171
+ testRunner.And("I take a screenshot");
+#line 2172
+ testRunner.And("I click audit on Field \"Diastolic Blood Pressure 2\"");
+#line hidden
+            TechTalk.SpecFlow.Table table373 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Audit Type",
+                        "Query Message"});
+            table373.AddRow(new string[] {
+                        "Query Canceled",
+                        "Systolic Blood Pressure must be greater than Diastolic Blood Pressure. Please ver" +
+                            "ify."});
+#line 2173
+ testRunner.And("I verify Audits exist", ((string)(null)), table373);
+#line 2176
+ testRunner.And("I take a screenshot");
+#line 2177
+ testRunner.And("I select Form \"Form 2\" in \"Header\"");
+#line hidden
+            TechTalk.SpecFlow.Table table374 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Data"});
+            table374.AddRow(new string[] {
+                        "Diastolic Blood Pressure 2",
+                        "75"});
+#line 2178
+ testRunner.When("I enter data in CRF", ((string)(null)), table374);
+#line 2181
+ testRunner.And("I save the CRF page");
+#line hidden
+            TechTalk.SpecFlow.Table table375 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Query Message",
+                        "Answered",
+                        "Closed"});
+            table375.AddRow(new string[] {
+                        "Diastolic Blood Pressure 2",
+                        "Systolic Blood Pressure must be greater than Diastolic Blood Pressure. Please ver" +
+                            "ify.",
+                        "False",
+                        "False"});
+#line 2182
+ testRunner.Then("I verify Query is not displayed", ((string)(null)), table375);
+#line 2185
+ testRunner.And("I take a screenshot");
+#line hidden
+            TechTalk.SpecFlow.Table table376 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Data"});
+            table376.AddRow(new string[] {
+                        "Diastolic Blood Pressure 2",
+                        "90"});
+#line 2186
+ testRunner.When("I enter data in CRF", ((string)(null)), table376);
+#line 2189
+ testRunner.And("I save the CRF page");
+#line hidden
+            TechTalk.SpecFlow.Table table377 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Query Message",
+                        "Answered",
+                        "Closed"});
+            table377.AddRow(new string[] {
+                        "Diastolic Blood Pressure 2",
+                        "Systolic Blood Pressure must be greater than Diastolic Blood Pressure. Please ver" +
+                            "ify.",
+                        "False",
+                        "False"});
+#line 2190
+ testRunner.Then("I verify Query is not displayed", ((string)(null)), table377);
+#line 2193
  testRunner.And("I take a screenshot");
 #line hidden
             this.ScenarioCleanup();
@@ -6735,133 +6842,149 @@ this.FeatureBackground();
                         "release_564_Patch11",
                         "PB-US12940-12C",
                         "Draft"});
-#line 2156
+#line 2199
 this.ScenarioSetup(scenarioInfo);
 #line 11
 this.FeatureBackground();
-#line 2159
+#line 2202
  testRunner.Given("I select Study \"Standard Study\" and Site \"Site 1\"");
-#line hidden
-            TechTalk.SpecFlow.Table table372 = new TechTalk.SpecFlow.Table(new string[] {
-                        "Field",
-                        "Data"});
-            table372.AddRow(new string[] {
-                        "Subject Number",
-                        "{RndNum<num1>(5)}"});
-            table372.AddRow(new string[] {
-                        "Subject Initials",
-                        "SUB"});
-            table372.AddRow(new string[] {
-                        "Subject ID",
-                        "SUB {Var(num1)}"});
-#line 2160
- testRunner.And("I create a Subject", ((string)(null)), table372);
-#line 2165
- testRunner.And("I select Form \"Form 2\"");
-#line hidden
-            TechTalk.SpecFlow.Table table373 = new TechTalk.SpecFlow.Table(new string[] {
-                        "Field",
-                        "Data"});
-            table373.AddRow(new string[] {
-                        "Systolic Blood Pressure 3",
-                        "80"});
-            table373.AddRow(new string[] {
-                        "Diastolic Blood Pressure 3",
-                        "90"});
-#line 2166
- testRunner.When("I enter data in CRF", ((string)(null)), table373);
-#line 2170
- testRunner.And("I save the CRF page");
-#line hidden
-            TechTalk.SpecFlow.Table table374 = new TechTalk.SpecFlow.Table(new string[] {
-                        "Field",
-                        "Query Message",
-                        "Answered",
-                        "Closed"});
-            table374.AddRow(new string[] {
-                        "Diastolic Blood Pressure 3",
-                        "Systolic Blood Pressure must be greater than Diastolic Blood Pressure. Please ver" +
-                            "ify.",
-                        "False",
-                        "False"});
-#line 2171
- testRunner.Then("I verify Query is displayed", ((string)(null)), table374);
-#line 2174
- testRunner.And("I take a screenshot");
-#line 2175
- testRunner.When("I cancel the Query \"Systolic Blood Pressure must be greater than Diastolic Blood " +
-                    "Pressure. Please verify.\" on Field \"Diastolic Blood Pressure 3\"");
-#line 2176
- testRunner.And("I save the CRF page");
-#line hidden
-            TechTalk.SpecFlow.Table table375 = new TechTalk.SpecFlow.Table(new string[] {
-                        "Field",
-                        "Query Message",
-                        "Answered",
-                        "Closed"});
-            table375.AddRow(new string[] {
-                        "Diastolic Blood Pressure 3",
-                        "Systolic Blood Pressure must be greater than Diastolic Blood Pressure. Please ver" +
-                            "ify.",
-                        "False",
-                        "False"});
-#line 2177
- testRunner.Then("I verify Query is not displayed", ((string)(null)), table375);
-#line 2180
- testRunner.And("I take a screenshot");
-#line hidden
-            TechTalk.SpecFlow.Table table376 = new TechTalk.SpecFlow.Table(new string[] {
-                        "Field",
-                        "Data"});
-            table376.AddRow(new string[] {
-                        "Diastolic Blood Pressure 3",
-                        "75"});
-#line 2181
- testRunner.When("I enter data in CRF", ((string)(null)), table376);
-#line 2184
- testRunner.And("I save the CRF page");
-#line hidden
-            TechTalk.SpecFlow.Table table377 = new TechTalk.SpecFlow.Table(new string[] {
-                        "Field",
-                        "Query Message",
-                        "Answered",
-                        "Closed"});
-            table377.AddRow(new string[] {
-                        "Diastolic Blood Pressure 3",
-                        "Systolic Blood Pressure must be greater than Diastolic Blood Pressure. Please ver" +
-                            "ify.",
-                        "False",
-                        "False"});
-#line 2185
- testRunner.Then("I verify Query is not displayed", ((string)(null)), table377);
-#line 2188
- testRunner.And("I take a screenshot");
 #line hidden
             TechTalk.SpecFlow.Table table378 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field",
                         "Data"});
             table378.AddRow(new string[] {
-                        "Diastolic Blood Pressure 3",
-                        "90"});
-#line 2189
- testRunner.When("I enter data in CRF", ((string)(null)), table378);
-#line 2192
- testRunner.And("I save the CRF page");
+                        "Subject Number",
+                        "{RndNum<num1>(5)}"});
+            table378.AddRow(new string[] {
+                        "Subject Initials",
+                        "SUB"});
+            table378.AddRow(new string[] {
+                        "Subject ID",
+                        "SUB {Var(num1)}"});
+#line 2203
+ testRunner.And("I create a Subject", ((string)(null)), table378);
+#line 2208
+ testRunner.And("I select Form \"Form 2\"");
 #line hidden
             TechTalk.SpecFlow.Table table379 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Data"});
+            table379.AddRow(new string[] {
+                        "Systolic Blood Pressure 3",
+                        "80"});
+            table379.AddRow(new string[] {
+                        "Diastolic Blood Pressure 3",
+                        "90"});
+#line 2209
+ testRunner.When("I enter data in CRF", ((string)(null)), table379);
+#line 2213
+ testRunner.And("I save the CRF page");
+#line hidden
+            TechTalk.SpecFlow.Table table380 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field",
                         "Query Message",
                         "Answered",
                         "Closed"});
-            table379.AddRow(new string[] {
+            table380.AddRow(new string[] {
                         "Diastolic Blood Pressure 3",
                         "Systolic Blood Pressure must be greater than Diastolic Blood Pressure. Please ver" +
                             "ify.",
                         "False",
                         "False"});
-#line 2193
- testRunner.Then("I verify Query is not displayed", ((string)(null)), table379);
-#line 2196
+#line 2214
+ testRunner.Then("I verify Query is displayed", ((string)(null)), table380);
+#line 2217
+ testRunner.And("I take a screenshot");
+#line 2218
+ testRunner.When("I cancel the Query \"Systolic Blood Pressure must be greater than Diastolic Blood " +
+                    "Pressure. Please verify.\" on Field \"Diastolic Blood Pressure 3\"");
+#line 2219
+ testRunner.And("I save the CRF page");
+#line hidden
+            TechTalk.SpecFlow.Table table381 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Query Message",
+                        "Answered",
+                        "Closed"});
+            table381.AddRow(new string[] {
+                        "Diastolic Blood Pressure 3",
+                        "Systolic Blood Pressure must be greater than Diastolic Blood Pressure. Please ver" +
+                            "ify.",
+                        "False",
+                        "False"});
+#line 2220
+ testRunner.Then("I verify Query is not displayed", ((string)(null)), table381);
+#line 2223
+ testRunner.And("I take a screenshot");
+#line 2224
+ testRunner.And("I click audit on Field \"Diastolic Blood Pressure 3\"");
+#line hidden
+            TechTalk.SpecFlow.Table table382 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Audit Type",
+                        "Query Message"});
+            table382.AddRow(new string[] {
+                        "Query Canceled",
+                        "Systolic Blood Pressure must be greater than Diastolic Blood Pressure. Please ver" +
+                            "ify."});
+#line 2225
+ testRunner.And("I verify Audits exist", ((string)(null)), table382);
+#line 2228
+ testRunner.And("I take a screenshot");
+#line 2229
+ testRunner.And("I select Form \"Form 2\" in \"Header\"");
+#line hidden
+            TechTalk.SpecFlow.Table table383 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Data"});
+            table383.AddRow(new string[] {
+                        "Diastolic Blood Pressure 3",
+                        "75"});
+#line 2230
+ testRunner.When("I enter data in CRF", ((string)(null)), table383);
+#line 2233
+ testRunner.And("I save the CRF page");
+#line hidden
+            TechTalk.SpecFlow.Table table384 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Query Message",
+                        "Answered",
+                        "Closed"});
+            table384.AddRow(new string[] {
+                        "Diastolic Blood Pressure 3",
+                        "Systolic Blood Pressure must be greater than Diastolic Blood Pressure. Please ver" +
+                            "ify.",
+                        "False",
+                        "False"});
+#line 2234
+ testRunner.Then("I verify Query is not displayed", ((string)(null)), table384);
+#line 2237
+ testRunner.And("I take a screenshot");
+#line hidden
+            TechTalk.SpecFlow.Table table385 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Data"});
+            table385.AddRow(new string[] {
+                        "Diastolic Blood Pressure 3",
+                        "90"});
+#line 2238
+ testRunner.When("I enter data in CRF", ((string)(null)), table385);
+#line 2241
+ testRunner.And("I save the CRF page");
+#line hidden
+            TechTalk.SpecFlow.Table table386 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Query Message",
+                        "Answered",
+                        "Closed"});
+            table386.AddRow(new string[] {
+                        "Diastolic Blood Pressure 3",
+                        "Systolic Blood Pressure must be greater than Diastolic Blood Pressure. Please ver" +
+                            "ify.",
+                        "False",
+                        "False"});
+#line 2242
+ testRunner.Then("I verify Query is not displayed", ((string)(null)), table386);
+#line 2245
  testRunner.And("I take a screenshot");
 #line hidden
             this.ScenarioCleanup();
@@ -6879,133 +7002,149 @@ this.FeatureBackground();
                         "release_564_Patch11",
                         "PB-US12940-12D",
                         "Draft"});
-#line 2202
+#line 2251
 this.ScenarioSetup(scenarioInfo);
 #line 11
 this.FeatureBackground();
-#line 2205
+#line 2254
  testRunner.Given("I select Study \"Standard Study\" and Site \"Site 1\"");
-#line hidden
-            TechTalk.SpecFlow.Table table380 = new TechTalk.SpecFlow.Table(new string[] {
-                        "Field",
-                        "Data"});
-            table380.AddRow(new string[] {
-                        "Subject Number",
-                        "{RndNum<num1>(5)}"});
-            table380.AddRow(new string[] {
-                        "Subject Initials",
-                        "SUB"});
-            table380.AddRow(new string[] {
-                        "Subject ID",
-                        "SUB {Var(num1)}"});
-#line 2206
- testRunner.And("I create a Subject", ((string)(null)), table380);
-#line 2211
- testRunner.And("I select Form \"Form 2\"");
-#line hidden
-            TechTalk.SpecFlow.Table table381 = new TechTalk.SpecFlow.Table(new string[] {
-                        "Field",
-                        "Data"});
-            table381.AddRow(new string[] {
-                        "Systolic Blood Pressure 4",
-                        "80"});
-            table381.AddRow(new string[] {
-                        "Diastolic Blood Pressure 4",
-                        "90"});
-#line 2212
- testRunner.And("I enter data in CRF", ((string)(null)), table381);
-#line 2216
- testRunner.And("I save the CRF page");
-#line hidden
-            TechTalk.SpecFlow.Table table382 = new TechTalk.SpecFlow.Table(new string[] {
-                        "Field",
-                        "Query Message",
-                        "Answered",
-                        "Closed"});
-            table382.AddRow(new string[] {
-                        "Diastolic Blood Pressure 4",
-                        "Systolic Blood Pressure must be greater than Diastolic Blood Pressure. Please ver" +
-                            "ify.",
-                        "False",
-                        "False"});
-#line 2217
- testRunner.Then("I verify Query is displayed", ((string)(null)), table382);
-#line 2220
- testRunner.And("I take a screenshot");
-#line 2221
- testRunner.When("I cancel the Query \"Systolic Blood Pressure must be greater than Diastolic Blood " +
-                    "Pressure. Please verify.\" on Field \"Diastolic Blood Pressure 1\"");
-#line 2222
- testRunner.And("I save the CRF page");
-#line hidden
-            TechTalk.SpecFlow.Table table383 = new TechTalk.SpecFlow.Table(new string[] {
-                        "Field",
-                        "Query Message",
-                        "Answered",
-                        "Closed"});
-            table383.AddRow(new string[] {
-                        "Diastolic Blood Pressure 4",
-                        "Systolic Blood Pressure must be greater than Diastolic Blood Pressure. Please ver" +
-                            "ify.",
-                        "False",
-                        "False"});
-#line 2223
- testRunner.Then("I verify Query is not displayed", ((string)(null)), table383);
-#line 2226
- testRunner.And("I take a screenshot");
-#line hidden
-            TechTalk.SpecFlow.Table table384 = new TechTalk.SpecFlow.Table(new string[] {
-                        "Field",
-                        "Data"});
-            table384.AddRow(new string[] {
-                        "Diastolic Blood Pressure 4",
-                        "75"});
-#line 2227
- testRunner.When("I enter data in CRF", ((string)(null)), table384);
-#line 2230
- testRunner.And("I save the CRF page");
-#line hidden
-            TechTalk.SpecFlow.Table table385 = new TechTalk.SpecFlow.Table(new string[] {
-                        "Field",
-                        "Query Message",
-                        "Answered",
-                        "Closed"});
-            table385.AddRow(new string[] {
-                        "Diastolic Blood Pressure 4",
-                        "Systolic Blood Pressure must be greater than Diastolic Blood Pressure. Please ver" +
-                            "ify.",
-                        "False",
-                        "False"});
-#line 2231
- testRunner.Then("I verify Query is not displayed", ((string)(null)), table385);
-#line 2234
- testRunner.And("I take a screenshot");
-#line hidden
-            TechTalk.SpecFlow.Table table386 = new TechTalk.SpecFlow.Table(new string[] {
-                        "Field",
-                        "Data"});
-            table386.AddRow(new string[] {
-                        "Diastolic Blood Pressure 4",
-                        "90"});
-#line 2235
- testRunner.When("I enter data in CRF", ((string)(null)), table386);
-#line 2238
- testRunner.And("I save the CRF page");
 #line hidden
             TechTalk.SpecFlow.Table table387 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field",
+                        "Data"});
+            table387.AddRow(new string[] {
+                        "Subject Number",
+                        "{RndNum<num1>(5)}"});
+            table387.AddRow(new string[] {
+                        "Subject Initials",
+                        "SUB"});
+            table387.AddRow(new string[] {
+                        "Subject ID",
+                        "SUB {Var(num1)}"});
+#line 2255
+ testRunner.And("I create a Subject", ((string)(null)), table387);
+#line 2260
+ testRunner.And("I select Form \"Form 2\"");
+#line hidden
+            TechTalk.SpecFlow.Table table388 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Data"});
+            table388.AddRow(new string[] {
+                        "Systolic Blood Pressure 4",
+                        "80"});
+            table388.AddRow(new string[] {
+                        "Diastolic Blood Pressure 4",
+                        "90"});
+#line 2261
+ testRunner.And("I enter data in CRF", ((string)(null)), table388);
+#line 2265
+ testRunner.And("I save the CRF page");
+#line hidden
+            TechTalk.SpecFlow.Table table389 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
                         "Query Message",
                         "Answered",
                         "Closed"});
-            table387.AddRow(new string[] {
+            table389.AddRow(new string[] {
                         "Diastolic Blood Pressure 4",
                         "Systolic Blood Pressure must be greater than Diastolic Blood Pressure. Please ver" +
                             "ify.",
                         "False",
                         "False"});
-#line 2239
- testRunner.Then("I verify Query is not displayed", ((string)(null)), table387);
-#line 2242
+#line 2266
+ testRunner.Then("I verify Query is displayed", ((string)(null)), table389);
+#line 2269
+ testRunner.And("I take a screenshot");
+#line 2270
+ testRunner.When("I cancel the Query \"Systolic Blood Pressure must be greater than Diastolic Blood " +
+                    "Pressure. Please verify.\" on Field \"Diastolic Blood Pressure 4\"");
+#line 2271
+ testRunner.And("I save the CRF page");
+#line hidden
+            TechTalk.SpecFlow.Table table390 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Query Message",
+                        "Answered",
+                        "Closed"});
+            table390.AddRow(new string[] {
+                        "Diastolic Blood Pressure 4",
+                        "Systolic Blood Pressure must be greater than Diastolic Blood Pressure. Please ver" +
+                            "ify.",
+                        "False",
+                        "False"});
+#line 2272
+ testRunner.Then("I verify Query is not displayed", ((string)(null)), table390);
+#line 2275
+ testRunner.And("I take a screenshot");
+#line 2276
+ testRunner.And("I click audit on Field \"Diastolic Blood Pressure 4\"");
+#line hidden
+            TechTalk.SpecFlow.Table table391 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Audit Type",
+                        "Query Message"});
+            table391.AddRow(new string[] {
+                        "Query Canceled",
+                        "Systolic Blood Pressure must be greater than Diastolic Blood Pressure. Please ver" +
+                            "ify."});
+#line 2277
+ testRunner.And("I verify Audits exist", ((string)(null)), table391);
+#line 2280
+ testRunner.And("I take a screenshot");
+#line 2281
+ testRunner.And("I select Form \"Form 2\" in \"Header\"");
+#line hidden
+            TechTalk.SpecFlow.Table table392 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Data"});
+            table392.AddRow(new string[] {
+                        "Diastolic Blood Pressure 4",
+                        "75"});
+#line 2282
+ testRunner.When("I enter data in CRF", ((string)(null)), table392);
+#line 2285
+ testRunner.And("I save the CRF page");
+#line hidden
+            TechTalk.SpecFlow.Table table393 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Query Message",
+                        "Answered",
+                        "Closed"});
+            table393.AddRow(new string[] {
+                        "Diastolic Blood Pressure 4",
+                        "Systolic Blood Pressure must be greater than Diastolic Blood Pressure. Please ver" +
+                            "ify.",
+                        "False",
+                        "False"});
+#line 2286
+ testRunner.Then("I verify Query is not displayed", ((string)(null)), table393);
+#line 2289
+ testRunner.And("I take a screenshot");
+#line hidden
+            TechTalk.SpecFlow.Table table394 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Data"});
+            table394.AddRow(new string[] {
+                        "Diastolic Blood Pressure 4",
+                        "90"});
+#line 2290
+ testRunner.When("I enter data in CRF", ((string)(null)), table394);
+#line 2293
+ testRunner.And("I save the CRF page");
+#line hidden
+            TechTalk.SpecFlow.Table table395 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Query Message",
+                        "Answered",
+                        "Closed"});
+            table395.AddRow(new string[] {
+                        "Diastolic Blood Pressure 4",
+                        "Systolic Blood Pressure must be greater than Diastolic Blood Pressure. Please ver" +
+                            "ify.",
+                        "False",
+                        "False"});
+#line 2294
+ testRunner.Then("I verify Query is not displayed", ((string)(null)), table395);
+#line 2297
  testRunner.And("I take a screenshot");
 #line hidden
             this.ScenarioCleanup();

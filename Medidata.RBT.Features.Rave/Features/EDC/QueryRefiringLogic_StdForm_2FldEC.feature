@@ -120,8 +120,8 @@ Query with requires response = true and requires manual close = false.
 	Given I select Study "Standard Study" and Site "Site 1"
 	 And I create a Subject
 	  | Field            | Data              |
-	  | Subject Number   | {RndNum<num1>(5)} |
 	  | Subject Initials | SUB               |
+	  | Subject Number   | {RndNum<num1>(5)} |
 	  | Subject ID       | SUB {Var(num1)}   |
 	And I select Form "Form 2"
 	When I enter data in CRF 
@@ -159,9 +159,8 @@ Query with requires response = true and requires manual close = false.
 #----------------------------------------------------------------------------------------------------------------------------------------
 @release_564_Patch11	
 @PB-US12940-01D
-@draft	
-# DT 14121	
-Scenario: @PB-US12940-01D As an EDC user, when I entered bad data in field A and field B that resulted in the system opening a query on field B, and I entered good data in field A, if I then entered the same bad data in field A as when the query was opened, then the system should not refire a query on field B. 
+@draft		
+Scenario: @PB-US12940-01D As an EDC user, when I entered bad data in field A and field B that resulted in the system opening a query on field B, and I entered good data in field A, if I then entered the same bad data in field A as when the query was opened, then the system should refire a query on field B. 
 Query with requires response = false and requires manual close = true
 
 	Given I select Study "Standard Study" and Site "Site 1"
@@ -185,7 +184,6 @@ Query with requires response = false and requires manual close = true
       | Systolic Blood Pressure 4 | 100  |  
 	And I save the CRF page
 	When I close the Query "Systolic Blood Pressure must be greater than Diastolic Blood Pressure. Please verify." on Field "Diastolic Blood Pressure 4"
-	 #DT 14121
 	And I save the CRF page  
 	Then I verify Query is not displayed
       | Field                      | Query Message                                                                         | Answered | Closed |
@@ -195,9 +193,9 @@ Query with requires response = false and requires manual close = true
       | Field                     | Data |
       | Systolic Blood Pressure 4 | 80   |
 	And I save the CRF page
-	Then I verify Query is not displayed
+	Then I verify Query is displayed
       | Field                      | Query Message                                                                         | Answered | Closed |
-      | Diastolic Blood Pressure 3 | Systolic Blood Pressure must be greater than Diastolic Blood Pressure. Please verify. | False    | False  |
+      | Diastolic Blood Pressure 4 | Systolic Blood Pressure must be greater than Diastolic Blood Pressure. Please verify. | False    | False  |
 	And I take a screenshot
  
 
@@ -211,8 +209,8 @@ Query with requires response = true and requires manual close = true.
 	Given I select Study "Standard Study" and Site "Site 1"
 	And I create a Subject
 	  | Field            | Data              |
-	  | Subject Number   | {RndNum<num1>(5)} |
 	  | Subject Initials | SUB               |
+	  | Subject Number   | {RndNum<num1>(5)} |
 	  | Subject ID       | SUB {Var(num1)}   |
 	And I select Form "Form 2"
 	When I enter data in CRF 
@@ -263,8 +261,8 @@ Scenario: @PB-US12940-02B As an EDC user, when I entered bad data in field A and
 	Given I select Study "Standard Study" and Site "Site 1"
 	And I create a Subject
 	  | Field            | Data              |
-	  | Subject Number   | {RndNum<num1>(5)} |
 	  | Subject Initials | SUB               |
+	  | Subject Number   | {RndNum<num1>(5)} |
 	  | Subject ID       | SUB {Var(num1)}   |	
 	And I select Form "Form 2"
 	When I enter data in CRF 
@@ -283,8 +281,7 @@ Scenario: @PB-US12940-02B As an EDC user, when I entered bad data in field A and
 	Then I verify Query is not displayed
       | Field                      | Query Message                                                                         | Answered | Closed |
       | Diastolic Blood Pressure 2 | Systolic Blood Pressure must be greater than Diastolic Blood Pressure. Please verify. | False    | False  |
-	And I take a screenshot	
-	# Ask Lily
+	And I take a screenshot
 	When I enter data in CRF 
       | Field                      | Data |
       | Diastolic Blood Pressure 2 | 90   |
@@ -436,6 +433,7 @@ Query with requires response = true and requires manual close = true.
 	And I enter data in CRF 
       | Field                     | Data |
       | Systolic Blood Pressure 1 | 85   |	
+	And I save the CRF page
 	Then I verify Query is not displayed	 
        | Field                      | Query Message                                                                         | Answered | Closed |
        | Diastolic Blood Pressure 1 | Systolic Blood Pressure must be greater than Diastolic Blood Pressure. Please verify. | False    | False  |
@@ -535,10 +533,10 @@ Query with requires response = true and requires manual close = false.
 
 #----------------------------------------------------------------------------------------------------------------------------------------
 @release_564_Patch11
-@PB-US12940-03D	
-@ignore	
-# DT 14121
-Scenario:@PB-US12940-03D As an EDC user, when I entered bad data in field A and field B that resulted in the system opening a query on field B, and I changed the data in field A to another bad data and the system answered the query, and the query is then closed, if I entered good data in field A and then again entered the same bad data in field A as when the query was closed, then the system should not refire a query on field B. 
+@PB-US12940-03D
+@ignore
+# Due to DT 14207
+Scenario: @PB-US12940-03D As an EDC user, when I entered bad data in field A and field B that resulted in the system opening a query on field B, and I changed the data in field A to another bad data and the system answered the query, and the query is then closed, if I entered good data in field A and then again entered the same bad data in field A as when the query was closed, then the system should not refire a query on field B. 
 Query with requires response = false and requires manual close = true.
 	
 	Given I select Study "Standard Study" and Site "Site 1"
@@ -564,6 +562,7 @@ Query with requires response = false and requires manual close = true.
 	Then I verify Query is displayed
       | Field                      | Query Message                                                                         | Answered | Closed |
       | Diastolic Blood Pressure 4 | Systolic Blood Pressure must be greater than Diastolic Blood Pressure. Please verify. | True     | False  |
+	# DT 14207
 	And I take a screenshot			  
 	When I close the Query "Systolic Blood Pressure must be greater than Diastolic Blood Pressure. Please verify." on Field "Systolic Blood Pressure 4"		  
 	And I save the CRF page  	  
@@ -583,11 +582,11 @@ Query with requires response = false and requires manual close = true.
       | Field                     | Data |
       | Systolic Blood Pressure 4 | 85   |	
     And I save the CRF page
-	Then I verify Query is not  displayed
+	Then I verify Query is not displayed
       | Field                      | Query Message                                                                         | Answered | Closed |
       | Diastolic Blood Pressure 4 | Systolic Blood Pressure must be greater than Diastolic Blood Pressure. Please verify. | False    | False  |
    	And I take a screenshot		
- # DT 14121
+
 	
 #----------------------------------------------------------------------------------------------------------------------------------------
 @release_564_Patch11
@@ -599,15 +598,15 @@ Query with requires response = true and requires manual close = true.
 	Given I select Study "Standard Study" and Site "Site 1"
 	And I create a Subject
 		| Field            | Data              |
-		| Subject Number   | {RndNum<num1>(5)} |
 		| Subject Initials | SUB               |
+		| Subject Number   | {RndNum<num1>(5)} |
 		| Subject ID       | SUB {Var(num1)}   |
 	And I select Form "Form 2"
 	And I enter data in CRF 
       | Field                      | Data |
       | Systolic Blood Pressure 1  | 80   |
       | Diastolic Blood Pressure 1 | 90   |
-    And I save CRF page
+    And I save the CRF page
 	Then I verify Query is displayed
       | Field                      | Query Message                                                                         | Answered | Closed |
       | Diastolic Blood Pressure 1 | Systolic Blood Pressure must be greater than Diastolic Blood Pressure. Please verify. | False    | False  |
@@ -622,6 +621,7 @@ Query with requires response = true and requires manual close = true.
       | Diastolic Blood Pressure 1 | Systolic Blood Pressure must be greater than Diastolic Blood Pressure. Please verify. | True     | False  |
     And I take a screenshot	
 	When I close the Query "Systolic Blood Pressure must be greater than Diastolic Blood Pressure. Please verify." on Field "Diastolic Blood Pressure 1" 
+    And I save the CRF page
     Then I verify Query is displayed
       | Field                      | Query Message                                                                         | Answered | Closed |
       | Diastolic Blood Pressure 1 | Systolic Blood Pressure must be greater than Diastolic Blood Pressure. Please verify. | True     | True   |
@@ -632,13 +632,13 @@ Query with requires response = true and requires manual close = true.
 	And I save the CRF page
 	Then I verify Query is not displayed
       | Field                      | Query Message                                                                         | Answered | Closed |
-      | Diastolic Blood Pressure 1 | Systolic Blood Pressure must be greater than Diastolic Blood Pressure. Please verify. | False     | False  |
+      | Diastolic Blood Pressure 1 | Systolic Blood Pressure must be greater than Diastolic Blood Pressure. Please verify. | False    | False  |
     And I take a screenshot	
 	And I enter data in CRF 	  
       | Field                      | Data |
       | Diastolic Blood Pressure 1 | 85   |
 	And I save the CRF page		  
-	Then I verify Query is not  displayed
+	Then I verify Query is not displayed
       | Field                      | Query Message                                                                         | Answered | Closed |
       | Diastolic Blood Pressure 1 | Systolic Blood Pressure must be greater than Diastolic Blood Pressure. Please verify. | False    | False  |
     And I take a screenshot	
@@ -686,7 +686,8 @@ Query with requires response = false and requires manual close = false.
 #----------------------------------------------------------------------------------------------------------------------------------------
 @release_564_Patch11	
 @PB-US12940-04C		
-@Draft
+@ignore
+# due to DT 14208
 Scenario: @PB-US12940-04C As an EDC user, when I entered bad data in field A and field B that resulted in the system opening a query on field B, and I answered the query and I changed the data in field B to another bad data, and the query is then closed, if I entered good data in field B and then again entered the same bad data in field B as when the query was closed, then the system should not refire a query on field B. 
 Query with requires response = true and requires manual close = false.
 	
@@ -707,13 +708,14 @@ Query with requires response = true and requires manual close = false.
       | Diastolic Blood Pressure 3 | Systolic Blood Pressure must be greater than Diastolic Blood Pressure. Please verify. | False    | False  |
 	And I take a screenshot	
 	When I answer the Query "Systolic Blood Pressure must be greater than Diastolic Blood Pressure. Please verify." on Field "Diastolic Blood Pressure 3" with "Data is correct" 
-  	And I enter data in CRF	  
+	And I enter data in CRF	  
       | Field                      | Data |
-      | Diastolic Blood Pressure 1 | 85   |	  
+      | Diastolic Blood Pressure 3 | 85   |	  
 	And I save the CRF page 	
 	Then I verify Query is displayed
       | Field                      | Query Message                                                                         | Answered | Closed |
-      | Diastolic Blood Pressure 3 | Systolic Blood Pressure must be greater than Diastolic Blood Pressure. Please verify. | False    | False  |
+      | Diastolic Blood Pressure 3 | Systolic Blood Pressure must be greater than Diastolic Blood Pressure. Please verify. | True     | True   |
+	# DT 14208
 	And I take a screenshot	
 	And I enter data in CRF 	  
       | Field                      | Data |
@@ -731,9 +733,7 @@ Query with requires response = true and requires manual close = false.
       | Field                      | Query Message                                                                         | Answered | Closed |
       | Diastolic Blood Pressure 3 | Systolic Blood Pressure must be greater than Diastolic Blood Pressure. Please verify. | False    | False  |
 	And I take a screenshot
-	
-	# Zhan
-	# If it still fails if the lsat still has open query DT 14208
+
 #----------------------------------------------------------------------------------------------------------------------------------------
 @release_564_Patch11
 @PB-US12940-04D	
@@ -744,8 +744,8 @@ Query with requires response = false and requires manual close = true.
 	Given I select Study "Standard Study" and Site "Site 1"
 	And I create a Subject
 		| Field            | Data              |
-		| Subject Number   | {RndNum<num1>(5)} |
 		| Subject Initials | SUB               |
+		| Subject Number   | {RndNum<num1>(5)} |
 		| Subject ID       | SUB {Var(num1)}   |
 	And I select Form "Form 2"
 	When I enter data in CRF 
@@ -768,7 +768,7 @@ Query with requires response = false and requires manual close = true.
       | Field                      | Query Message                                                                         | Answered | Closed |
       | Diastolic Blood Pressure 4 | Systolic Blood Pressure must be greater than Diastolic Blood Pressure. Please verify. | False    | False  |
 	And I take a screenshot	
-	When I close the Query "Systolic Blood Pressure must be greater than Diastolic Blood Pressure. Please verify." on Field "Diastolic Blood Pressure 4 "
+	When I close the Query "Systolic Blood Pressure must be greater than Diastolic Blood Pressure. Please verify." on Field "Diastolic Blood Pressure 4"
 	And I save the CRF page 	  
 	Then I verify Query is displayed
       | Field                      | Query Message                                                                         | Answered | Closed |
@@ -890,7 +890,8 @@ Query with requires response = false and requires manual close = false.
 #----------------------------------------------------------------------------------------------------------------------------------------
 @release_564_Patch11	
 @PB-US12940-05C	
-@Draft	
+@ignore
+# Due to DT 14208	
 Scenario: @PB-US12940-05C As an EDC user, when I entered bad data in field A and field B that resulted in the system opening a query on field B, and I answered the query and I changed the data in field A to another bad data, and the query is then closed, if I then entered the original bad data in field A, then the system should refire a query on field B. 
 Query with requires response = true and requires manual close = false.
 	
@@ -921,6 +922,7 @@ Query with requires response = true and requires manual close = false.
 	And  verify Query is not displayed
       | Field                      | Query Message                                                                         | Answered | Closed |
       | Diastolic Blood Pressure 3 | Systolic Blood Pressure must be greater than Diastolic Blood Pressure. Please verify. | False    | False  |
+	# Dt 14208
 	And I take a screenshot	
 	When I enter data in CRF 
       | Field                     | Data |
@@ -942,16 +944,16 @@ Query with requires response = true and requires manual close = false.
 #----------------------------------------------------------------------------------------------------------------------------------------
 @release_564_Patch11	
 @PB-US12940-05D	
-@Draft	
-# DT 14121
+@ignore
+# Due to 14207	
 Scenario: @PB-US12940-05D As an EDC user, when I entered bad data in field A and field B that resulted in the system opening a query on field B, and I changed the data in field A to another bad data and the system answered the query, and the query is then closed, if I then entered the original bad data in field A, then the system should refire a query on field B. 
 Query with requires response = false and requires manual close = true.
 	
 	Given I select Study "Standard Study" and Site "Site 1"
 	And I create a Subject
 		| Field            | Data              |
-		| Subject Number   | {RndNum<num1>(5)} |
 		| Subject Initials | SUB               |
+		| Subject Number   | {RndNum<num1>(5)} |
 		| Subject ID       | SUB {Var(num1)}   |
 	And I select Form "Form 2"
 	When I enter data in CRF 
@@ -970,6 +972,7 @@ Query with requires response = false and requires manual close = true.
 	Then I verify Query is displayed
       | Field                      | Query Message                                                                         | Answered | Closed |
       | Diastolic Blood Pressure 4 | Systolic Blood Pressure must be greater than Diastolic Blood Pressure. Please verify. | True     | False  |
+	# DT 14207
 	And I take a screenshot	
 	When I close the Query "Systolic Blood Pressure must be greater than Diastolic Blood Pressure. Please verify." on Field "Diastolic Blood Pressure 4" 	  
 	And I save the CRF page  	  
@@ -992,8 +995,7 @@ Query with requires response = false and requires manual close = true.
 	Then I verify Query is displayed
       | Field                      | Query Message                                                                         | Answered | Closed |
       | Diastolic Blood Pressure 4 | Systolic Blood Pressure must be greater than Diastolic Blood Pressure. Please verify. | False    | False  |
-	And I take a screenshot	
-# DT 14121
+	And I take a screenshot
 
 #----------------------------------------------------------------------------------------------------------------------------------------
 @release_564_Patch11	  
@@ -1094,7 +1096,7 @@ Query with requires response = false and requires manual close = false.
 #----------------------------------------------------------------------------------------------------------------------------------------
 @release_564_Patch11
 @PB-US12940-06C	
-@Draft	
+@ignore	
 # DT14208
 Scenario: @PB-US12940-06C	As an EDC user, when I entered bad data in field A and field B that resulted in the system opening a query on field B, and I answered the query and I changed the data in field B to another bad data, and the query is then closed, if I then entered the original bad data in field B, then the system should refire a query on field B. 
 Query with requires response = true and requires manual close = false.
@@ -1175,7 +1177,7 @@ Query with requires response = false and requires manual close = true.
       | Field                      | Query Message                                                                         | Answered | Closed |
       | Diastolic Blood Pressure 4 | Systolic Blood Pressure must be greater than Diastolic Blood Pressure. Please verify. | True     | False  |
 	And I take a screenshot	
-	When I close the Query "Systolic Blood Pressure must be greater than Diastolic Blood Pressure. Please verify." on Field "Diastolic Blood Pressure 4"       |Field						|
+	When I close the Query "Systolic Blood Pressure must be greater than Diastolic Blood Pressure. Please verify." on Field "Diastolic Blood Pressure 4"       
 	And I save the CRF page 	  
 	Then I verify Query is displayed
       | Field                      | Query Message                                                                         | Answered | Closed |
@@ -1310,7 +1312,7 @@ Query with requires response = true and requires manual close = false.
       | Field                     | Data |
       | Systolic Blood Pressure 3 | 85   |
 	And I save the CRF page
-	Then I verify Query is not displayed
+	Then I verify Query is displayed
       | Field                      | Query Message                                                                         | Answered | Closed |
       | Diastolic Blood Pressure 3 | Systolic Blood Pressure must be greater than Diastolic Blood Pressure. Please verify. | False    | False  |
 	And I take a screenshot
@@ -1318,8 +1320,8 @@ Query with requires response = true and requires manual close = false.
 #----------------------------------------------------------------------------------------------------------------------------------------
 @release_564_Patch11
 @PB-US12940-07D
-@Draft
-# due to DT 14121		
+@ignore
+# Due to DT 14208		
 Scenario: @PB-US12940-07D	As an EDC user, when I entered bad data in field A and field B that resulted in the system opening a query on field B, if I then entered new bad data in field A, then the system should answer a query on field B, and then I close query, and I enter new bad data on Field A, then system should refire query on Field B.
 Query with requires response = false and requires manual close = true.
 	
@@ -1335,7 +1337,7 @@ Query with requires response = false and requires manual close = true.
       | Systolic Blood Pressure 4  | 80   |
       | Diastolic Blood Pressure 4 | 90   |
 	And I save the CRF page
-	Then I verify Query is not displayed
+	Then I verify Query is displayed
       | Field                      | Query Message                                                                         | Answered | Closed |
       | Diastolic Blood Pressure 4 | Systolic Blood Pressure must be greater than Diastolic Blood Pressure. Please verify. | False    | False  |
 	And I take a screenshot
@@ -1346,6 +1348,7 @@ Query with requires response = false and requires manual close = true.
 	Then I verify Query is displayed
       | Field                      | Query Message                                                                         | Answered | Closed |
       | Diastolic Blood Pressure 4 | Systolic Blood Pressure must be greater than Diastolic Blood Pressure. Please verify. | True     | False  |
+	# Dt 14208
 	And I take a screenshot
 	When I close the Query "Systolic Blood Pressure must be greater than Diastolic Blood Pressure. Please verify." on Field "Diastolic Blood Pressure 4" 
 	And I save the CRF page 
@@ -1381,13 +1384,13 @@ Query with requires response = true and requires manual close = true
       | Systolic Blood Pressure 1  | 80   |
       | Diastolic Blood Pressure 1 | 90   |
 	And I save the CRF page
-	Then I verify Query is not displayed
+	Then I verify Query is displayed
       | Field                      | Query Message                                                                         | Answered | Closed |
       | Diastolic Blood Pressure 1 | Systolic Blood Pressure must be greater than Diastolic Blood Pressure. Please verify. | False    | False  |
 	And I take a screenshot
 	When I answer the Query "Systolic Blood Pressure must be greater than Diastolic Blood Pressure. Please verify." on Field "Diastolic Blood Pressure 1" with "Data is correct"
 	And I save the CRF page 	
-	Then I verify Query is not displayed
+	Then I verify Query is displayed
       | Field                      | Query Message                                                                         | Answered | Closed |
       | Diastolic Blood Pressure 1 | Systolic Blood Pressure must be greater than Diastolic Blood Pressure. Please verify. | True     | False  |
 	And I take a screenshot
@@ -1427,7 +1430,7 @@ Query with requires response = false and requires manual close = false.
 	And I save the CRF page
 	Then I verify Query is displayed
       | Field                      | Query Message                                                                         | Answered | Closed |
-      | Diastolic Blood Pressure 1 | Systolic Blood Pressure must be greater than Diastolic Blood Pressure. Please verify. | False    | False  |
+      | Diastolic Blood Pressure 2 | Systolic Blood Pressure must be greater than Diastolic Blood Pressure. Please verify. | False    | False  |
 	And I take a screenshot
 	When I enter data in CRF 
       | Field                      | Data |
@@ -1435,7 +1438,7 @@ Query with requires response = false and requires manual close = false.
 	And I save the CRF page
 	Then I verify Query is displayed
       | Field                      | Query Message                                                                         | Answered | Closed |
-      | Diastolic Blood Pressure 1 | Systolic Blood Pressure must be greater than Diastolic Blood Pressure. Please verify. | False    | False  |
+      | Diastolic Blood Pressure 2 | Systolic Blood Pressure must be greater than Diastolic Blood Pressure. Please verify. | False    | False  |
 	And I take a screenshot
 
 
@@ -1521,7 +1524,7 @@ Query with requires response = false and requires manual close = true.
 	And I save the CRF page		
 	Then I verify Query is displayed
       | Field                      | Query Message                                                                         | Answered | Closed |
-      | Diastolic Blood Pressure 4 | Systolic Blood Pressure must be greater than Diastolic Blood Pressure. Please verify. | True     | True   |
+      | Diastolic Blood Pressure 4 | Systolic Blood Pressure must be greater than Diastolic Blood Pressure. Please verify. | False    | False  |
 	And I take a screenshot
 
 
@@ -1654,8 +1657,8 @@ Query with requires response = true and requires manual close = false.
 #----------------------------------------------------------------------------------------------------------------------------------------
 @release_564_Patch11
 @PB-US12940-09D	
-@Draft	
-# Due to DT # 14121
+@ignore	
+# Due to DT # 14207
 Scenario: @PB-US12940-09D	As an EDC user, when I entered bad data in field A and field B that resulted in the system opening a query on field B, and I changed the data in field A to another bad data, and the system answers query and the query is closed, if I then entered the new bad data in field A, then the system should refire a query on field B. 
 Query with requires response = false and requires manual close = true.
 	
@@ -1692,7 +1695,7 @@ Query with requires response = false and requires manual close = true.
       | Field                      | Query Message                                                                         | Answered | Closed |
       | Diastolic Blood Pressure 4 | Systolic Blood Pressure must be greater than Diastolic Blood Pressure. Please verify. | True     | True   |
 	And I take a screenshot	
-	# DT 14121 
+	# DT 14207 
 	When I enter data in CRF 
       | Field                     | Data |
       | Systolic Blood Pressure 4 | 70   |
@@ -1770,7 +1773,7 @@ Query with requires response = false and requires manual close = false.
 	And I save the CRF page 
 	Then I verify Query is displayed
       | Field                      | Query Message                                                                         | Answered | Closed |
-      | Diastolic Blood Pressure 1 | Systolic Blood Pressure must be greater than Diastolic Blood Pressure. Please verify. | False    | False  |
+      | Diastolic Blood Pressure 2 | Systolic Blood Pressure must be greater than Diastolic Blood Pressure. Please verify. | False    | False  |
 	And I take a screenshot		
 	When I enter data in CRF	  
       | Field                      | Data |
@@ -1785,7 +1788,7 @@ Query with requires response = false and requires manual close = false.
 #----------------------------------------------------------------------------------------------------------------------------------------
 @release_564_Patch11
 @PB-US12940-10C	
-@Draft
+@ignore
 # Due to DT14208	
 Scenario: @PB-US12940-10C As an EDC user, when I entered bad data in field A and field B that resulted in the system opening a query on field B, and I answered the query and I changed the data in field B to another bad data, and the query is then closed, if I then entered the new bad data in field B, then the system should refire a query on field B. 
 Query with requires response = true and requires manual close = false.
@@ -1807,7 +1810,8 @@ Query with requires response = true and requires manual close = false.
       | Diastolic Blood Pressure 3 | Systolic Blood Pressure must be greater than Diastolic Blood Pressure. Please verify. | False    | False  |
 	And I take a screenshot	
 	When I answer the Query "Systolic Blood Pressure must be greater than Diastolic Blood Pressure. Please verify." on Field "Diastolic Blood Pressure 3" with "Data is correct"
-  	And I enter data in CRF	  
+  	And I save the CRF page
+	And I enter data in CRF	  
       | Field                      | Data |
       | Diastolic Blood Pressure 3 | 85   |	  
 	And I save the CRF page 	
@@ -1845,6 +1849,7 @@ Query with requires response = false and requires manual close = true.
       | Field                      | Data |
       | Systolic Blood Pressure 4  | 80   |
       | Diastolic Blood Pressure 4 | 90   |
+	And I save the CRF page
 	Then I verify Query is displayed
       | Field                      | Query Message                                                                         | Answered | Closed |
       | Diastolic Blood Pressure 4 | Systolic Blood Pressure must be greater than Diastolic Blood Pressure. Please verify. | False    | False  |
@@ -1874,7 +1879,7 @@ Query with requires response = false and requires manual close = true.
       | Field                      | Query Message                                                                         | Answered | Closed |
       | Diastolic Blood Pressure 4 | Systolic Blood Pressure must be greater than Diastolic Blood Pressure. Please verify. | False    | False  |
 	And I take a screenshot	
-	# start
+	
 #----------------------------------------------------------------------------------------------------------------------------------------
 @release_564_Patch11 
 @PB-US12940-11A		
@@ -1897,14 +1902,19 @@ Query with requires response = true and requires manual close = true.
 	Then I verify Query is displayed
       | Field                      | Query Message                                                                         | Answered | Closed |
       | Diastolic Blood Pressure 1 | Systolic Blood Pressure must be greater than Diastolic Blood Pressure. Please verify. | False    | False  |
-	And I take a screenshot	
+	And I take a screenshot
 	When I cancel the Query "Systolic Blood Pressure must be greater than Diastolic Blood Pressure. Please verify." on Field "Diastolic Blood Pressure 1"  
 	And I save the CRF page
-	Then I verify Query is not displayed
+	Then I verify Query is not displayed 
       | Field                      | Query Message                                                                         | Answered | Closed |
       | Diastolic Blood Pressure 1 | Systolic Blood Pressure must be greater than Diastolic Blood Pressure. Please verify. | False    | False  |
-	And I 
 	And I take a screenshot	
+	And I click audit on Field "Diastolic Blood Pressure 1"
+	And I verify Audits exist
+	| Audit Type     | Query Message                                                                         |
+	| Query Canceled | Systolic Blood Pressure must be greater than Diastolic Blood Pressure. Please verify. |
+	And I take a screenshot
+	And I select Form "Form 2" in "Header"
 	When I enter data in CRF 	  
       | Field                     | Data |
       | Systolic Blood Pressure 1 | 100  |
@@ -1915,7 +1925,8 @@ Query with requires response = true and requires manual close = true.
 	And I take a screenshot
 	And I enter data in CRF 	  
       | Field                     | Data |
-      | Systolic Blood Pressure 1 | 80   |	
+      | Systolic Blood Pressure 1 | 80   |
+	And I save the CRF page	
 	Then I verify Query is not displayed
       | Field                      | Query Message                                                                         | Answered | Closed |
       | Diastolic Blood Pressure 1 | Systolic Blood Pressure must be greater than Diastolic Blood Pressure. Please verify. | False    | False  |
@@ -1949,7 +1960,13 @@ Query with requires response = false and requires manual close = false.
 	Then I verify Query is not displayed
       | Field                      | Query Message                                                                         | Answered | Closed |
       | Diastolic Blood Pressure 2 | Systolic Blood Pressure must be greater than Diastolic Blood Pressure. Please verify. | False    | False  |
-	And I take a screenshot	
+	And I take a screenshot
+	And I click audit on Field "Diastolic Blood Pressure 2"
+	And I verify Audits exist
+	| Audit Type     | Query Message                                                                         |
+	| Query Canceled | Systolic Blood Pressure must be greater than Diastolic Blood Pressure. Please verify. |
+	And I take a screenshot
+	And I select Form "Form 2" in "Header"	
 	When  I enter data in CRF 	  
       | Field                     | Data |
       | Systolic Blood Pressure 2 | 100  |
@@ -1995,7 +2012,13 @@ Query with requires response = true and requires manual close = false.
 	Then I verify Query is not displayed
       | Field                      | Query Message                                                                         | Answered | Closed |
       | Diastolic Blood Pressure 3 | Systolic Blood Pressure must be greater than Diastolic Blood Pressure. Please verify. | False    | False  |
-	And I take a screenshot		
+	And I take a screenshot	
+	And I click audit on Field "Diastolic Blood Pressure 3"
+	And I verify Audits exist
+	| Audit Type     | Query Message                                                                         |
+	| Query Canceled | Systolic Blood Pressure must be greater than Diastolic Blood Pressure. Please verify. |
+	And I take a screenshot
+	And I select Form "Form 2" in "Header"	
 	When I enter data in CRF 	  
       | Field                     | Data |
       | Systolic Blood Pressure 3 | 100  |
@@ -2007,6 +2030,7 @@ Query with requires response = true and requires manual close = false.
 	And I enter data in CRF 	  
       | Field                     | Data |
       | Systolic Blood Pressure 3 | 80   |	
+	And I save the CRF page	
 	Then I verify Query is not displayed
       | Field                      | Query Message                                                                         | Answered | Closed |
       | Diastolic Blood Pressure 3 | Systolic Blood Pressure must be greater than Diastolic Blood Pressure. Please verify. | False    | False  |
@@ -2040,7 +2064,13 @@ Query with requires response = false and requires manual close = true.
 	Then I verify Query is not displayed
       | Field                      | Query Message                                                                         | Answered | Closed |
       | Diastolic Blood Pressure 4 | Systolic Blood Pressure must be greater than Diastolic Blood Pressure. Please verify. | False    | False  |
-	And I take a screenshot		
+	And I take a screenshot	
+	And I click audit on Field "Diastolic Blood Pressure 4"
+	And I verify Audits exist
+	| Audit Type     | Query Message                                                                         |
+	| Query Canceled | Systolic Blood Pressure must be greater than Diastolic Blood Pressure. Please verify. |
+	And I take a screenshot
+	And I select Form "Form 2" in "Header"	
 	When I enter data in CRF 	  
       | Field                     | Data |
       | Systolic Blood Pressure 4 | 100  |
@@ -2086,7 +2116,13 @@ Query with requires response = false and requires manual close = true.
 	Then I verify Query is not displayed
       | Field                      | Query Message                                                                         | Answered | Closed |
       | Diastolic Blood Pressure 1 | Systolic Blood Pressure must be greater than Diastolic Blood Pressure. Please verify. | False    | False  |
-	And I take a screenshot	
+	And I take a screenshot
+	And I click audit on Field "Diastolic Blood Pressure 1"
+	And I verify Audits exist
+	| Audit Type     | Query Message                                                                         |
+	| Query Canceled | Systolic Blood Pressure must be greater than Diastolic Blood Pressure. Please verify. |
+	And I take a screenshot
+	And I select Form "Form 2" in "Header"	
 	And I enter data in CRF 	  
       | Field                      | Data |
       | Diastolic Blood Pressure 1 | 75   |	
@@ -2098,6 +2134,7 @@ Query with requires response = false and requires manual close = true.
 	And I enter data in CRF 	  
       | Field                      | Data |
       | Diastolic Blood Pressure 1 | 90   |	
+	And I save the CRF page	
 	Then I verify Query is not displayed
       | Field                      | Query Message                                                                         | Answered | Closed |
       | Diastolic Blood Pressure 1 | Systolic Blood Pressure must be greater than Diastolic Blood Pressure. Please verify. | False    | False  |
@@ -2132,6 +2169,12 @@ Query with requires response = false and requires manual close = false.
 	  | Field                      | Query Message                                                                         | Answered | Closed |
       | Diastolic Blood Pressure 2 | Systolic Blood Pressure must be greater than Diastolic Blood Pressure. Please verify. | False    | False  |
 	And I take a screenshot	
+	And I click audit on Field "Diastolic Blood Pressure 2"
+	And I verify Audits exist
+	| Audit Type     | Query Message                                                                         |
+	| Query Canceled | Systolic Blood Pressure must be greater than Diastolic Blood Pressure. Please verify. |
+	And I take a screenshot
+	And I select Form "Form 2" in "Header"
 	When I enter data in CRF 	  
       | Field                      | Data |
       | Diastolic Blood Pressure 2 | 75   |	
@@ -2178,6 +2221,12 @@ Query with requires response = true and requires manual close = false
 	    | Field                      | Query Message                                                                         | Answered | Closed |
         | Diastolic Blood Pressure 3 | Systolic Blood Pressure must be greater than Diastolic Blood Pressure. Please verify. | False    | False  |
 	And I take a screenshot	
+	And I click audit on Field "Diastolic Blood Pressure 3"
+	And I verify Audits exist
+	| Audit Type     | Query Message                                                                         |
+	| Query Canceled | Systolic Blood Pressure must be greater than Diastolic Blood Pressure. Please verify. |
+	And I take a screenshot
+	And I select Form "Form 2" in "Header"
 	When I enter data in CRF 	  
         | Field                      | Data |
         | Diastolic Blood Pressure 3 | 75   |	
@@ -2218,12 +2267,18 @@ Query with requires response = false and requires manual close = true.
 		 | Field                      | Query Message                                                                         | Answered | Closed |
 		 | Diastolic Blood Pressure 4 | Systolic Blood Pressure must be greater than Diastolic Blood Pressure. Please verify. | False    | False  |
 	And I take a screenshot	
-	When I cancel the Query "Systolic Blood Pressure must be greater than Diastolic Blood Pressure. Please verify." on Field "Diastolic Blood Pressure 1"  
+	When I cancel the Query "Systolic Blood Pressure must be greater than Diastolic Blood Pressure. Please verify." on Field "Diastolic Blood Pressure 4"  
 	And I save the CRF page
 	Then I verify Query is not displayed
 	    | Field                      | Query Message                                                                         | Answered | Closed |
         | Diastolic Blood Pressure 4 | Systolic Blood Pressure must be greater than Diastolic Blood Pressure. Please verify. | False    | False  |
 	And I take a screenshot	
+	And I click audit on Field "Diastolic Blood Pressure 4"
+	And I verify Audits exist
+	| Audit Type     | Query Message                                                                         |
+	| Query Canceled | Systolic Blood Pressure must be greater than Diastolic Blood Pressure. Please verify. |
+	And I take a screenshot
+	And I select Form "Form 2" in "Header"
 	When I enter data in CRF 	  
         | Field                      | Data |
         | Diastolic Blood Pressure 4 | 75   |	
