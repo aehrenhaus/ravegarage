@@ -194,20 +194,20 @@ namespace Medidata.RBT.SeleniumExtension
 		#region Span
 
 
-		public static Checkbox Span(this ISearchContext context, string partialID, bool nullable = false)
+        public static IWebElement Span(this ISearchContext context, string partialID, bool nullable = false)
 		{
 			return SelectExtendElement<Checkbox>(context, "span", partialID, nullable);
 		}
 
 
-		public static ReadOnlyCollection<Checkbox> Spans(this ISearchContext context)
+		public static ReadOnlyCollection<IWebElement> Spans(this ISearchContext context)
 		{
-			return context.FindElements(By.XPath(".//span")).CastReadOnlyCollection<Checkbox>();
+			return context.FindElements(By.XPath(".//span"));
 		}
 
-		public static ReadOnlyCollection<Checkbox> Spans(this ISearchContext context, string xpath)
+        public static ReadOnlyCollection<IWebElement> Spans(this ISearchContext context, string xpath)
 		{
-			return context.FindElements(By.XPath(xpath)).CastReadOnlyCollection<Checkbox>();
+			return context.FindElements(By.XPath(xpath));
 		}
 
 		#endregion

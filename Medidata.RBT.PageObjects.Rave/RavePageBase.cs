@@ -35,18 +35,21 @@ namespace Medidata.RBT.PageObjects.Rave
 			return base.GetElementByName(name);
 		}
 
-		//protected override IPage GetTargetPageObjectByLinkAreaName(string type, string areaName)
-		//{
-		//    if (type == "Study" && areaName=="Header")
-		//        return new HomePage();
-		//    if (type == "Site" && areaName == "Header")
-		//        return new HomePage();
+        public override IPage ClickLink(string linkText)
+        {
+            IPage page = null;
+            try 
+            {
+                page = base.ClickLink(linkText);
+                
+            }
+            catch(Exception e)
+            {
+                page = this.ClickSpanLink(linkText);
+            }
+            return page;
+        }
 
-		//    if (type == "Form" && areaName == "Header")
-		//        return new CRFPage();
-
-		//    return base.GetTargetPageObjectByLinkAreaName(type, areaName);
-		//}
 
         public override string BaseURL
         {
