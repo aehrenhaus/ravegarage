@@ -71,10 +71,10 @@ Scenario: PB_3.1.1 As an EDC user, On a Cross Form Standard form to log form, Wh
 	And I open log line 1
 	And I verify Query is not displayed
       | Field      | Query Message                                             | Answered | Closed |
-      | Start Date | 'Date Informed Consent Signed' is greater. Please revise. | false    | false  |
+      | Start Date | 'Date Informed Consent Signed' is greater. Please revise. | true     | true   |
 	And I verify Query is not displayed
       | Field               | Query Message                                                                                                 | Answered | Closed |
-      | Current Axis Number | Informed Consent 'Current Distribution Number' is not equal to Concomitant Medications 'Current Axis Number'. | false    | false  |
+      | Current Axis Number | Informed Consent 'Current Distribution Number' is not equal to Concomitant Medications 'Current Axis Number'. | true     | true   |
 	And I take a screenshot
 	When I enter data in CRF
 		| Field               | Data        |
@@ -84,14 +84,19 @@ Scenario: PB_3.1.1 As an EDC user, On a Cross Form Standard form to log form, Wh
 	And I open log line 1
 	Then I verify Query with message "'Date Informed Consent Signed' is greater. Please revise." is not displayed on Field "Start Date"
 	And I verify Query with message "Informed Consent 'Current Distribution Number' is not equal to Concomitant Medications 'Current Axis Number'." is not displayed on Field "Current Axis Number"
+	And I verify Query is not displayed
+      | Field      | Query Message                                             |
+      | Start Date | 'Date Informed Consent Signed' is greater. Please revise. |
+	And I verify Query is displayed
+      | Field               | Query Message                                                                                                 |
+      | Current Axis Number | Informed Consent 'Current Distribution Number' is not equal to Concomitant Medications 'Current Axis Number'. |
 	And I take a screenshot
 
 #----------------------------------------------------------------------------------------------------------------------------------------
 @release_564_Patch11
 @PB_3.1.2
 @Draft
-Scenario: PB_3.1.2 As an EDC user, On a Cross Form Standard form to log form, When a query has been answered and auto closed with the different data and I enter the same data that 
-originally opened the query, then queries are displayed. 
+Scenario: PB_3.1.2 As an EDC user, On a Cross Form Standard form to log form, When a query has been answered and auto closed with the different data and I enter the same data that originally opened the query, then queries are displayed. 
 
 	And I select a Subject "sub{Var(num1)}"
 	And I select Form "Concomitant Medications" in Folder "Screening"
@@ -131,14 +136,19 @@ originally opened the query, then queries are displayed.
 	And I open log line 2
 	Then I verify Query with message "'Date Informed Consent Signed' is greater. Please revise." is displayed on Field "Start Date"
 	And I verify Query with message "Informed Consent 'Current Distribution Number' is not equal to Concomitant Medications 'Current Axis Number'." is displayed on Field "Current Axis Number"
+	And I verify Query is displayed
+      | Field      | Query Message                                             | Answered | Closed |
+      | Start Date | 'Date Informed Consent Signed' is greater. Please revise. | false    | false  |
+	And I verify Query is displayed
+      | Field               | Query Message                                                                                                 | Answered | Closed |
+      | Current Axis Number | Informed Consent 'Current Distribution Number' is not equal to Concomitant Medications 'Current Axis Number'. | false    | false  |
 	And I take a screenshot
 
 #----------------------------------------------------------------------------------------------------------------------------------------
 @release_564_Patch11
 @PB_3.1.3
 @Draft
-Scenario: PB_3.1.3 As an EDC user, On a Cross Form Standard form to log form, When a query has been canceled with the different data and I enter the same data that 
-originally opened the query, then queries are displayed. 
+Scenario: PB_3.1.3 As an EDC user, On a Cross Form Standard form to log form, When a query has been canceled with the different data and I enter the same data that originally opened the query, then queries are displayed. 
 
 	And I select a Subject "sub{Var(num1)}"
 	And I select Form "Concomitant Medications" in Folder "Screening"
@@ -169,7 +179,20 @@ originally opened the query, then queries are displayed.
 	And I verify Query is not displayed
       | Field               | Query Message                                                                                                 | Answered | Closed |
       | Current Axis Number | Informed Consent 'Current Distribution Number' is not equal to Concomitant Medications 'Current Axis Number'. | false    | false  |
+	And I click audit on Field "Start Date"
+	And I verify Audits exist
+		| Audit Type     | Query Message                                             |
+		| Query Canceled | 'Date Informed Consent Signed' is greater. Please revise. |
 	And I take a screenshot	
+	And I select Form "Concomitant Medications" in "Header"
+	And I open log line 3
+	And I click audit on Field "Current Axis Number"
+	And I verify Audits exist
+		| Audit Type     | Query Message                                                                                                 |
+		| Query Canceled | Informed Consent 'Current Distribution Number' is not equal to Concomitant Medications 'Current Axis Number'. |
+	And I take a screenshot	
+	And I select Form "Concomitant Medications" in "Header"
+	And I open log line 3
 	When I enter data in CRF
 		| Field               | Data        |
 		| Start Date          | 07 Jan 2000 |
@@ -184,8 +207,7 @@ originally opened the query, then queries are displayed.
 @release_564_Patch11
 @PB_3.1.4
 @Draft
-Scenario: PB_3.1.4 As an EDC user, On a Cross Form Standard form to log form, When a query has been canceled with the same data and I enter the same data that 
-originally opened the query, then queries are displayed. 
+Scenario: PB_3.1.4 As an EDC user, On a Cross Form Standard form to log form, When a query has been canceled with the same data and I enter the same data that originally opened the query, then queries are displayed. 
 
 	And I select a Subject "sub{Var(num1)}"
 	And I select Form "Concomitant Medications" in Folder "Screening"
@@ -207,7 +229,20 @@ originally opened the query, then queries are displayed.
 	And I open log line 4
 	And I verify Field "Start Date" has no Query
 	And I verify Field "Current Axis Number" has no Query
-	And I take a screenshot
+	And I click audit on Field "Start Date"
+	And I verify Audits exist
+		| Audit Type     | Query Message                                             |
+		| Query Canceled | 'Date Informed Consent Signed' is greater. Please revise. |
+	And I take a screenshot	
+	And I select Form "Concomitant Medications" in "Header"
+	And I open log line 4
+	And I click audit on Field "Current Axis Number"
+	And I verify Audits exist
+		| Audit Type     | Query Message                                                                                                 |
+		| Query Canceled | Informed Consent 'Current Distribution Number' is not equal to Concomitant Medications 'Current Axis Number'. |
+	And I take a screenshot	
+	And I select Form "Concomitant Medications" in "Header"
+	And I open log line 4
 	And I enter data in CRF and save
 		| Field               | Data        |
 		| Start Date          | 09 Jan 2000 |
@@ -368,11 +403,20 @@ Scenario: PB_3.2.3 As an EDC user, On a Cross Folder Standard form to log form, 
 	And I verify Query is not displayed
       | Field               | Query Message                                                     | Answered | Closed |
       | Current Axis Number | 'Current Distribution Number' is not equal 'Current Axis Number'. | false    | false  |
-	And I take a screenshot
-
-	# Given closed Query with message "'Date Informed Consent Signed' can not be greater than." exists on "Start Date" in folder "Week 1" in form "Concomitant Medications" in subject "SUB302"
-	# And closed Query with message "'Current Distribution Number' is not equal 'Current Axis Number'." exists on "Current Axis Number" in folder "Week 1" in form "Concomitant Medications" in subject "SUB302"
-
+	And I click audit on Field "Start Date"
+	And I verify Audits exist
+		| Audit Type     | Query Message                                           |
+		| Query Canceled | 'Date Informed Consent Signed' can not be greater than. |
+	And I take a screenshot	
+	And I select Form "Concomitant Medications" in "Header"
+	And I open log line 3
+	And I click audit on Field "Current Axis Number"
+	And I verify Audits exist
+		| Audit Type     | Query Message                                                     |
+		| Query Canceled | 'Current Distribution Number' is not equal 'Current Axis Number'. |
+	And I take a screenshot	
+	And I select Form "Concomitant Medications" in "Header"
+	And I open log line 3
 	When I enter data in CRF
 		| Field               | Data        |
 		| Start Date          | 08 Jan 2000 |
@@ -427,9 +471,6 @@ Scenario: PB_3.3.1 As an EDC user, On a Cross Forms log form to Standard form, W
       | Field                       | Query Message                                                                          | Answered | Closed |
       | Current Distribution Number | 'Original Distribution Number' and 'Current Distribution Number' fields are not equal. | false    | false  |
 	And I take a screenshot	
-
-	# Given closed Query with message "'Date Informed Consent Signed' is not equal to Current Date" exists on "End Date" in folder "Week 1" in form "Informed Consent" in subject "SUB303"
-	# And closed Query with message "'Original Distribution Number' and 'Current Distribution Number' fields are not equal." exists on "Current Distribution Number" in folder "Week 1" in form "Informed Consent" in subject "SUB303"	
 	When I enter data in CRF
 		|Field							|Data			|
 	    |End Date						|11 Jan 2000	|
@@ -483,7 +524,18 @@ Scenario: PB_3.3.2 As an EDC user, On a Cross Forms log form to Standard form, W
 	And I verify Query is not displayed
       | Field                       | Query Message                                                                          | Answered | Closed |
       | Current Distribution Number | 'Original Distribution Number' and 'Current Distribution Number' fields are not equal. | false    | false  |
+	And I click audit on Field "End Date"
+	And I verify Audits exist
+		| Audit Type     | Query Message                                               |
+		| Query Canceled | 'Date Informed Consent Signed' is not equal to Current Date |
 	And I take a screenshot	
+	And I select Form "Informed Consent" in "Header"
+	And I click audit on Field "Current Distribution Number"
+	And I verify Audits exist
+		| Audit Type     | Query Message                                                                          |
+		| Query Canceled | 'Original Distribution Number' and 'Current Distribution Number' fields are not equal. |
+	And I take a screenshot	
+	And I select Form "Informed Consent" in "Header"
 	When I enter data in CRF
 		|Field							|Data			|
 	    |End Date						|11 Jan 2000	|
@@ -709,24 +761,28 @@ Scenario: PB_3.4.3 As an EDC user, On a Cross Forms log form to log form, When a
 		| Query Canceled | Date can not be less than. |
 	And I take a screenshot	
 	And I select Form "Concomitant Medications" in "Header"
+	And I open log line 3
 	And I click audit on Field "End Date"
 	And I verify Audits exist
 		| Audit Type     | Query Message                                 |
 		| Query Canceled | Date is Less Than Date on the first log form. |
 	And I take a screenshot	
 	And I select Form "Concomitant Medications" in "Header"
+	And I open log line 3
 	And I click audit on Field "Original Axis Number"
 	And I verify Audits exist
 		| Audit Type     |Query Message                                                          |
 		| Query Canceled |'AE Number' is greater than or Equal to 'Original Axis Number' on Log. |
 	And I take a screenshot	
 	And I select Form "Concomitant Medications" in "Header"
+	And I open log line 3
 	And I click audit on Field "Current Axis Number"
 	And I verify Audits exist
 		| Audit Type     | Query Message                                      |
 		| Query Canceled | 'Duration' and 'Current Axis Number' cannot equal. |
 	And I take a screenshot	
 	And I select Form "Concomitant Medications" in "Header"
+	And I open log line 3
 	When I enter data in CRF
 		 |Field						|Data        |
          |Start Date				|10 Feb 2000 |
@@ -798,7 +854,6 @@ Scenario: PB_3.1.5 As an EDC user, On a Cross Form Standard form to log form, Wh
 	And I select Form "Concomitant Medications" in "Header"
 	And I open log line 1
 	And I take a screenshot
-	
 	When I enter data in CRF
 		| Field               | Data        |
 		| Start Date          | 08 Jan 2000 |
