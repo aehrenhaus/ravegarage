@@ -65,6 +65,15 @@ namespace Medidata.RBT.PageObjects.Rave
 			return base.GetElementByName(name);
 		}
 
+
+        public override string URL
+        {
+            get
+            {
+                return "Modules/PDF/FileRequest.aspx";
+            }
+        }
+
 		
 	}
 }
