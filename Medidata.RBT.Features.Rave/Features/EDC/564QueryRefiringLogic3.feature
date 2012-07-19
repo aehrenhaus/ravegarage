@@ -87,7 +87,7 @@ Scenario: PB_3.1.1 As an EDC user, On a Cross Form Standard form to log form, Wh
 	And I verify Query is not displayed
       | Field      | Query Message                                             |
       | Start Date | 'Date Informed Consent Signed' is greater. Please revise. |
-	And I verify Query is displayed
+	And I verify Query is not displayed
       | Field               | Query Message                                                                                                 |
       | Current Axis Number | Informed Consent 'Current Distribution Number' is not equal to Concomitant Medications 'Current Axis Number'. |
 	And I take a screenshot
@@ -454,19 +454,19 @@ Scenario: PB_3.3.1 As an EDC user, On a Cross Forms log form to Standard form, W
 	    |Original Distribution Number   |100         |
 	    |Current Distribution Number    |101         |	
 	And I save the CRF page
-	And I verify Requires Response Query with message "'Date Informed Consent Signed' is not equal to Current Date" is displayed on Field "End Date"
+	And I verify Requires Response Query with message "'Date Informed Consent Signed' is not equal to Current Date." is displayed on Field "End Date"
 	And I verify Requires Response Query with message "'Original Distribution Number' and 'Current Distribution Number' fields are not equal." is displayed on Field "Current Distribution Number"
 	And I take a screenshot
 	And I enter data in CRF
 		|Field                  		|Data			|
 	    |End Date						|13 Jan 2000	|
 	    |Current Distribution Number    |100			|	
-	And I answer the Query "'Date Informed Consent Signed' is not equal to Current Date" on Field "End Date" with "answered query"
+	And I answer the Query "'Date Informed Consent Signed' is not equal to Current Date." on Field "End Date" with "answered query"
 	And I answer the Query "'Original Distribution Number' and 'Current Distribution Number' fields are not equal." on Field "Current Distribution Number" with "answered query"
 	And I save the CRF page
 	And I verify Query is not displayed
-      | Field    | Query Message                                               | Answered | Closed |
-      | End Date | 'Date Informed Consent Signed' is not equal to Current Date | false    | false  |
+      | Field    | Query Message                                                | Answered | Closed |
+      | End Date | 'Date Informed Consent Signed' is not equal to Current Date. | false    | false  |
 	And I verify Query is not displayed
       | Field                       | Query Message                                                                          | Answered | Closed |
       | Current Distribution Number | 'Original Distribution Number' and 'Current Distribution Number' fields are not equal. | false    | false  |
@@ -476,7 +476,7 @@ Scenario: PB_3.3.1 As an EDC user, On a Cross Forms log form to Standard form, W
 	    |End Date						|11 Jan 2000	|
 	    |Current Distribution Number    |101			|	
 	And I save the CRF page
-	Then I verify Requires Response Query with message "'Date Informed Consent Signed' is not equal to Current Date" is displayed on Field "End Date"
+	Then I verify Requires Response Query with message "'Date Informed Consent Signed' is not equal to Current Date." is displayed on Field "End Date"
 	Then I verify Requires Response Query with message "'Original Distribution Number' and 'Current Distribution Number' fields are not equal." is displayed on Field "Current Distribution Number"
 	And I take a screenshot
 
@@ -508,26 +508,26 @@ Scenario: PB_3.3.2 As an EDC user, On a Cross Forms log form to Standard form, W
 	    |Original Distribution Number   |100         |
 	    |Current Distribution Number    |101         |	
 	And I save the CRF page
-	And I verify Requires Response Query with message "'Date Informed Consent Signed' is not equal to Current Date" is displayed on Field "End Date"
+	And I verify Requires Response Query with message "'Date Informed Consent Signed' is not equal to Current Date." is displayed on Field "End Date"
 	And I verify Requires Response Query with message "'Original Distribution Number' and 'Current Distribution Number' fields are not equal." is displayed on Field "Current Distribution Number"
 	And I take a screenshot
 	And I enter data in CRF
 		|Field                  		|Data			|
 	    |End Date						|13 Jan 2000	|
 	    |Current Distribution Number    |100			|	
-	And I cancel the Query "'Date Informed Consent Signed' is not equal to Current Date" on Field "End Date"
+	And I cancel the Query "'Date Informed Consent Signed' is not equal to Current Date." on Field "End Date"
 	And I cancel the Query "'Original Distribution Number' and 'Current Distribution Number' fields are not equal." on Field "Current Distribution Number"
 	And I save the CRF page
 	And I verify Query is not displayed
-      | Field    | Query Message                                               | Answered | Closed |
-      | End Date | 'Date Informed Consent Signed' is not equal to Current Date | false    | false  |
+      | Field    | Query Message                                                | Answered | Closed |
+      | End Date | 'Date Informed Consent Signed' is not equal to Current Date. | false    | false  |
 	And I verify Query is not displayed
       | Field                       | Query Message                                                                          | Answered | Closed |
       | Current Distribution Number | 'Original Distribution Number' and 'Current Distribution Number' fields are not equal. | false    | false  |
 	And I click audit on Field "End Date"
 	And I verify Audits exist
-		| Audit Type     | Query Message                                               |
-		| Query Canceled | 'Date Informed Consent Signed' is not equal to Current Date |
+		| Audit Type     | Query Message                                                |
+		| Query Canceled | 'Date Informed Consent Signed' is not equal to Current Date. |
 	And I take a screenshot	
 	And I select Form "Informed Consent" in "Header"
 	And I click audit on Field "Current Distribution Number"
@@ -541,7 +541,7 @@ Scenario: PB_3.3.2 As an EDC user, On a Cross Forms log form to Standard form, W
 	    |End Date						|11 Jan 2000	|
 	    |Current Distribution Number    |101			|	
 	And I save the CRF page
-	Then I verify Requires Response Query with message "'Date Informed Consent Signed' is not equal to Current Date" is displayed on Field "End Date"
+	Then I verify Requires Response Query with message "'Date Informed Consent Signed' is not equal to Current Date." is displayed on Field "End Date"
 	Then I verify Requires Response Query with message "'Original Distribution Number' and 'Current Distribution Number' fields are not equal." is displayed on Field "Current Distribution Number"
 	And I take a screenshot
 
@@ -848,8 +848,8 @@ Scenario: PB_3.1.5 As an EDC user, On a Cross Form Standard form to log form, Wh
 	And I open log line 1
 	And I click audit on Field "Current Axis Number"
 	And I verify Audits exist
-		| Audit Type          | Query Message                                                                                                 |
-		| Current Axis Number | Informed Consent 'Current Distribution Number' is not equal to Concomitant Medications 'Current Axis Number'. |
+		| Audit Type     | Query Message                                                                                                 |
+		| Query Canceled | Informed Consent 'Current Distribution Number' is not equal to Concomitant Medications 'Current Axis Number'. |
 	And I take a screenshot	
 	And I select Form "Concomitant Medications" in "Header"
 	And I open log line 1

@@ -357,7 +357,7 @@ this.FeatureBackground();
                         "Informed Consent \'Current Distribution Number\' is not equal to Concomitant Medica" +
                             "tions \'Current Axis Number\'."});
 #line 90
- testRunner.And("I verify Query is displayed", ((string)(null)), table10);
+ testRunner.And("I verify Query is not displayed", ((string)(null)), table10);
 #line 93
  testRunner.And("I take a screenshot");
 #line hidden
@@ -1435,7 +1435,7 @@ this.FeatureBackground();
  testRunner.And("I save the CRF page");
 #line 457
  testRunner.And("I verify Requires Response Query with message \"\'Date Informed Consent Signed\' is " +
-                    "not equal to Current Date\" is displayed on Field \"End Date\"");
+                    "not equal to Current Date.\" is displayed on Field \"End Date\"");
 #line 458
  testRunner.And("I verify Requires Response Query with message \"\'Original Distribution Number\' and" +
                     " \'Current Distribution Number\' fields are not equal.\" is displayed on Field \"Cur" +
@@ -1455,8 +1455,8 @@ this.FeatureBackground();
 #line 460
  testRunner.And("I enter data in CRF", ((string)(null)), table53);
 #line 464
- testRunner.And("I answer the Query \"\'Date Informed Consent Signed\' is not equal to Current Date\" " +
-                    "on Field \"End Date\" with \"answered query\"");
+ testRunner.And("I answer the Query \"\'Date Informed Consent Signed\' is not equal to Current Date.\"" +
+                    " on Field \"End Date\" with \"answered query\"");
 #line 465
  testRunner.And("I answer the Query \"\'Original Distribution Number\' and \'Current Distribution Numb" +
                     "er\' fields are not equal.\" on Field \"Current Distribution Number\" with \"answered" +
@@ -1471,7 +1471,7 @@ this.FeatureBackground();
                         "Closed"});
             table54.AddRow(new string[] {
                         "End Date",
-                        "\'Date Informed Consent Signed\' is not equal to Current Date",
+                        "\'Date Informed Consent Signed\' is not equal to Current Date.",
                         "false",
                         "false"});
 #line 467
@@ -1508,7 +1508,7 @@ this.FeatureBackground();
  testRunner.And("I save the CRF page");
 #line 479
  testRunner.Then("I verify Requires Response Query with message \"\'Date Informed Consent Signed\' is " +
-                    "not equal to Current Date\" is displayed on Field \"End Date\"");
+                    "not equal to Current Date.\" is displayed on Field \"End Date\"");
 #line 480
  testRunner.Then("I verify Requires Response Query with message \"\'Original Distribution Number\' and" +
                     " \'Current Distribution Number\' fields are not equal.\" is displayed on Field \"Cur" +
@@ -1601,7 +1601,7 @@ this.FeatureBackground();
  testRunner.And("I save the CRF page");
 #line 511
  testRunner.And("I verify Requires Response Query with message \"\'Date Informed Consent Signed\' is " +
-                    "not equal to Current Date\" is displayed on Field \"End Date\"");
+                    "not equal to Current Date.\" is displayed on Field \"End Date\"");
 #line 512
  testRunner.And("I verify Requires Response Query with message \"\'Original Distribution Number\' and" +
                     " \'Current Distribution Number\' fields are not equal.\" is displayed on Field \"Cur" +
@@ -1621,8 +1621,8 @@ this.FeatureBackground();
 #line 514
  testRunner.And("I enter data in CRF", ((string)(null)), table60);
 #line 518
- testRunner.And("I cancel the Query \"\'Date Informed Consent Signed\' is not equal to Current Date\" " +
-                    "on Field \"End Date\"");
+ testRunner.And("I cancel the Query \"\'Date Informed Consent Signed\' is not equal to Current Date.\"" +
+                    " on Field \"End Date\"");
 #line 519
  testRunner.And("I cancel the Query \"\'Original Distribution Number\' and \'Current Distribution Numb" +
                     "er\' fields are not equal.\" on Field \"Current Distribution Number\"");
@@ -1636,7 +1636,7 @@ this.FeatureBackground();
                         "Closed"});
             table61.AddRow(new string[] {
                         "End Date",
-                        "\'Date Informed Consent Signed\' is not equal to Current Date",
+                        "\'Date Informed Consent Signed\' is not equal to Current Date.",
                         "false",
                         "false"});
 #line 521
@@ -1663,7 +1663,7 @@ this.FeatureBackground();
                         "Query Message"});
             table63.AddRow(new string[] {
                         "Query Canceled",
-                        "\'Date Informed Consent Signed\' is not equal to Current Date"});
+                        "\'Date Informed Consent Signed\' is not equal to Current Date."});
 #line 528
  testRunner.And("I verify Audits exist", ((string)(null)), table63);
 #line 531
@@ -1702,7 +1702,7 @@ this.FeatureBackground();
  testRunner.And("I save the CRF page");
 #line 544
  testRunner.Then("I verify Requires Response Query with message \"\'Date Informed Consent Signed\' is " +
-                    "not equal to Current Date\" is displayed on Field \"End Date\"");
+                    "not equal to Current Date.\" is displayed on Field \"End Date\"");
 #line 545
  testRunner.Then("I verify Requires Response Query with message \"\'Original Distribution Number\' and" +
                     " \'Current Distribution Number\' fields are not equal.\" is displayed on Field \"Cur" +
@@ -2602,7 +2602,7 @@ this.FeatureBackground();
                         "Audit Type",
                         "Query Message"});
             table100.AddRow(new string[] {
-                        "Current Axis Number",
+                        "Query Canceled",
                         "Informed Consent \'Current Distribution Number\' is not equal to Concomitant Medica" +
                             "tions \'Current Axis Number\'."});
 #line 850

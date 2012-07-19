@@ -12,8 +12,8 @@ Feature: 2
 Background:
     Given I am logged in to Rave with username "defuser" and password "password"
 	And following Study assignments exist
-		|User		|Study		       	|Role |Site		        	|Site Number|
-		|editcheck  |Edit Check Study 3	|CDM1 |Edit Check Site 2	|20001      |
+		| User      | Study              | Role | Site              | Site Number |
+		| editcheck | Edit Check Study 3 | CDM1 | Edit Check Site 2 | 20001       |
     And Role "cdm1" has Action "Query"
 	And Draft "Draft 2" in Study "Edit Check Study 3" has been published to CRF Version "<RANDOMNUMBER>" 
 	And CRF Version "<RANDOMNUMBER>" in Study "Edit Check Study 3" has been pushed to Site "Edit Check Site 2" in Environment "Prod"
@@ -76,6 +76,7 @@ Scenario: PB_2.1.1 As an EDC user, On a Cross Forms - Standard form to log form,
 	And I verify Query is displayed
       | Field               | Query Message                                                                                                 | Answered | Closed |
       | Current Axis Number | Informed Consent 'Current Distribution Number' is not equal to Concomitant Medications 'Current Axis Number'. | false    | false  |
+	And I take a screenshot
 	And I take a screenshot
 	  
 #----------------------------------------------------------------------------------------------------------------------------------------	

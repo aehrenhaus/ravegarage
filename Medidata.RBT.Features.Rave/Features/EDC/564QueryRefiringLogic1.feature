@@ -66,9 +66,6 @@ Scenario: PB_1.1.1 As an EDC user, On a Cross Forms - Standard form to log form,
 		| Field               | Query Message                                                                                                 | Answered | Closed |
 		| Current Axis Number | Informed Consent 'Current Distribution Number' is not equal to Concomitant Medications 'Current Axis Number'. | false    | false  |
 	And I take a screenshot
-	
-	# Given closed queries exist on fields "Start Date" and "Current Axis Number" in folder "Screening" in form "Concomitant Medications" in subject "SUB101"
-
 	When I enter data in CRF and save
 		| Field               | Data        |
 		| Start Date          | 08 Jan 2000 |
