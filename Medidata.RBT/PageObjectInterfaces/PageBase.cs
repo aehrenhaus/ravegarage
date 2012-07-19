@@ -55,7 +55,9 @@ namespace Medidata.RBT
 
         public virtual IPage ClickButton(string identifer)
         {
-            var element = Browser.TryFindElementBy(By.XPath("//input[@value='" + identifer + "']"));
+            var element = Browser.TryFindElementBy(By.XPath("//button[text()='" + identifer + "']"));
+			if(element ==null)
+				Browser.TryFindElementBy(By.XPath("//input[@value='" + identifer + "']"));
             if (element == null)
                 element = Browser.TryFindElementById(identifer);
             if (element == null)

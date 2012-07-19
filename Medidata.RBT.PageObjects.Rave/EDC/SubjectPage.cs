@@ -10,7 +10,7 @@ using Medidata.RBT.SeleniumExtension;
 
 namespace Medidata.RBT.PageObjects.Rave
 {
-	public  class SubjectPage : BaseEDCTreePage
+	public class SubjectPage : BaseEDCTreePage
 	{
 		public IWebElement GetTaskSummaryArea(string header)
 		{

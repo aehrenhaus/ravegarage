@@ -30,5 +30,13 @@ namespace Medidata.RBT.PageObjects.Rave
 			formFolderTable.FindElement(By.PartialLinkText(formName)).Click();
 			return new CRFPage();
 		}
+
+
+		public void SignForm(string username, string password)
+		{
+			Browser.Textbox("TwoPart").SetText(username);
+			Browser.Textbox("SignatureBox").SetText(password);
+			this.ClickButton("Sign and Save");//ValidateSignAndSave
+		}
 	}
 }
