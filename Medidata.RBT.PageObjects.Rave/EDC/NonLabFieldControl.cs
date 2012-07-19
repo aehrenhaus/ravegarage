@@ -166,6 +166,24 @@ namespace Medidata.RBT.PageObjects.Rave
 			FindQuery(filter).Checkboxes()[0].Check();
 		}
 
+		public void Check(string checkName)
+		{
+			if (checkName == "Freeze")
+			{
+				RightSideTD.Checkbox("EntryLockBox").Check();
+			}
+
+			if (checkName == "Hard Lock")
+			{
+				RightSideTD.Checkbox("HardLockBox").Check();
+			}
+		}
+
+		public void Uncheck(string checkName)
+		{
+			throw new NotImplementedException();
+		}
+
 		#endregion
 
 	}

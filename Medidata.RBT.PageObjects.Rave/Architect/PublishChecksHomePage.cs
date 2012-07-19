@@ -21,6 +21,7 @@ namespace Medidata.RBT.PageObjects.Rave
 			return base.GetElementByName(name);
 		}
 
+
 		public override IPage ChooseFromCheckboxes(string areaIdentifer, string identifer, bool isChecked)
 		{
 			var table = Browser.Table("dgObjects");

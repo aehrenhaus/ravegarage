@@ -128,5 +128,24 @@ namespace Medidata.RBT.PageObjects.Rave
 
 
 		#endregion
+
+
+		public void Check(string checkName)
+		{
+			if (checkName == "Freeze")
+			{
+				MainTR.Checkbox("EntryLockBox").Check();
+			}
+
+			if (checkName == "Hard Lock")
+			{
+				MainTR.Checkbox("HardLockBox").Check();
+			}
+		}
+
+		public void Uncheck(string checkName)
+		{
+			throw new NotImplementedException();
+		}
 	}
 }

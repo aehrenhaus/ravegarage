@@ -146,6 +146,20 @@ namespace Medidata.RBT.Features.Rave
 			CurrentPage = CurrentPage.As<CRFPage>().FindField(fieldName).ClickAudit();
 		}
 
+		[StepDefinition(@"I check ""([^""]*)"" on ""([^""]*)""")]
+		public void ICheck____OnLog____(string chkName, string fieldName)
+		{
+			CurrentPage.As<CRFPage>().FindField(fieldName).Check(chkName);
+		}
+
+
+		[StepDefinition(@"I uncheck ""([^""]*)"" on ""([^""]*)""")]
+		public void IUncheck____OnLog____(string chkName, string fieldName)
+		{
+			CurrentPage.As<CRFPage>().FindField(fieldName).Uncheck(chkName);
+		}
+
+
 		[StepDefinition(@"I verify Audits exist")]
 		public void IVerifyAuditsExist(Table table)
 		{

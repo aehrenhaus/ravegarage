@@ -64,11 +64,14 @@ namespace Medidata.RBT
             if (element == null)
                 throw new Exception("Can't find button:" + identifer);
             element.Click();
-            return this;
+
+			var uri = new Uri(Browser.Url);
+			return TestContext.POFactory.GetPageByUrl(uri); ;
         }
 
         public virtual IPage ClickLinkInArea(string type, string linkText, string areaIdentifer)
         {
+			
             IWebElement area = Browser.TryFindElementById(areaIdentifer);
             if (area == null)
                 area = GetElementByName(areaIdentifer);
@@ -76,16 +79,36 @@ namespace Medidata.RBT
             var link = area.Link(linkText);
             link.Click();
 
-
-			return TestContext.POFactory.GetPageByUrl(new Uri(Browser.Url));
+			return GetPageByCurrentUrlIfNoAlert();
         }
 
         public virtual IPage ClickLink(string linkText)
         {
             var link = Browser.Link(linkText);
             link.Click();
-			return TestContext.POFactory.GetPageByUrl(new Uri(Browser.Url)); ;
+
+
+			return GetPageByCurrentUrlIfNoAlert();
         }
+
+		protected IPage GetPageByCurrentUrlIfNoAlert()
+		{
+			//if a model dialog presents, then Browser.Url will throw error
+			//In this case there are usually more step the handle the situaltion, like accept or dismiss the dialog first.
+				
+			try
+			{
+				var alert = this.GetAlertWindow();
+			}
+			catch
+			{
+				var uri = new Uri(Browser.Url);
+				return TestContext.POFactory.GetPageByUrl(uri);
+				
+			}
+			return this;
+	
+		}
 
 
         /// <summary>
@@ -95,15 +118,19 @@ namespace Medidata.RBT
         /// <returns></returns>
         public virtual IPage ClickSpanLink(string linkText)
         {
+		
             var item = Browser.Spans().FirstOrDefault(x=> x.Text == linkText);
-            if (item != null) item.Click();
-            else throw new Exception("Can't find link by text:" + linkText);
-            return this;
+            if (item != null) 
+				item.Click();
+            else 
+				throw new Exception("Can't find link by text:" + linkText);
+
+			return GetPageByCurrentUrlIfNoAlert();
         }
 
         public virtual IPage NavigateTo(string identifer)
         {
-            throw new Exception("page object does not implment NavigateTo()");
+            throw new Exception("Don't know how to navigate to "+identifer);
         }
 
 
@@ -123,7 +150,8 @@ namespace Medidata.RBT
                 element = GetElementByName(identifer).EnhanceAs<Dropdown>();
 
             element.SelectByText(text);
-            return this;
+
+			return GetPageByCurrentUrlIfNoAlert();
         }
 
         public virtual IPage ChooseFromCheckboxes(string areaIdentifer, string identifer, bool isChecked)
@@ -138,7 +166,7 @@ namespace Medidata.RBT
             else
                 element.Uncheck();
 
-            return this;
+			return GetPageByCurrentUrlIfNoAlert();
         }
 
         public virtual IPage ChooseFromRadiobuttons(string areaIdentifer, string identifer)

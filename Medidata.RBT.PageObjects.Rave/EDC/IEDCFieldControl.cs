@@ -23,5 +23,9 @@ namespace Medidata.RBT.PageObjects.Rave
 		void CloseQuery(QuerySearchModel filter);
 
 		void CancelQuery(QuerySearchModel filter);
+
+		void Check(string checkName);
+
+		void Uncheck(string checkName);
 	}
 }
