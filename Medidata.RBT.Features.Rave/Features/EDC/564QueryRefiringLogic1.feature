@@ -179,8 +179,6 @@ Scenario: PB_1.2.1 As an EDC user, On a Cross Folders, Standard form to log form
 		| Field               | Query Message                                                     | Answered | Closed |
 		| Current Axis Number | 'Current Distribution Number' is not equal 'Current Axis Number'. | false    | false  |
 	And I take a screenshot
-	
-	# Given closed queries exist on fields "Start Date" and "Current Axis Number" in folder "Week 1" in form "Concomitant Medications" in subject "SUB102"
 	When I enter data in CRF and save
 		| Field                | Data        |
 		| Start Date           | 09 Jan 2000 |
@@ -190,7 +188,7 @@ Scenario: PB_1.2.1 As an EDC user, On a Cross Folders, Standard form to log form
 	Then I verify Query is not displayed
 		| Field      | Query Message                                           | Answered | Closed |
 		| Start Date | 'Date Informed Consent Signed' can not be greater than. | false    | false  |
-	Then I verify Query is not displayed
+	And I verify Query is not displayed
 		| Field               | Query Message                                                     | Answered | Closed |
 		| Current Axis Number | 'Current Distribution Number' is not equal 'Current Axis Number'. | false    | false  |
 	And I verify closed Query with message "'Date Informed Consent Signed' can not be greater than." is displayed on Field "Start Date"
@@ -237,8 +235,6 @@ Scenario: PB_1.2.2 As an EDC user, On a Cross Folders, Standard form to log form
 		| Current Axis Number | 'Current Distribution Number' is not equal 'Current Axis Number'. | false    | false  |
 	And I take a screenshot
 	And I cancel the CRF page
-
-	#Given closed queries exist on fields "Start Date" and "Current Axis Number" in folder "Week 1" in form "Concomitant Medications" in subject "SUB102"
 	When I enter data in CRF on the last log line and save and reopen
 		| Field                | Data        |
 		| Start Date           | 08 Jan 2000 |
@@ -291,8 +287,7 @@ Scenario: PB_1.3.1 As an EDC user, on a Cross Forms log form to Standard form, w
 	And I verify Query is not displayed
 		| Field               | Query Message                                                                   | Answered | Closed |
 		| Current Axis Number | Original Axis Number' is Less Than 'Current Axis Number' on first Number field. | false    | false  |
-	And I take a screenshot
-	
+	And I take a screenshot	
 	When I enter data in CRF and save
 		| Field               | Data        |
 		| End Date            | 11 Jan 2000 |
@@ -301,7 +296,7 @@ Scenario: PB_1.3.1 As an EDC user, on a Cross Forms log form to Standard form, w
 	Then I verify Query is not displayed
 		| Field    | Query Message                                | Answered | Closed |
 		| End Date | Start Date can not be greater than End Date. | false    | false  |
-	Then I verify Query is not displayed
+	And I verify Query is not displayed
 		| Field               | Query Message                                                                   |Answered | Closed |
 		| Current Axis Number | Original Axis Number' is Less Than 'Current Axis Number' on first Number field. |false    | false  |
 	And I verify closed Query with message "Start Date can not be greater than End Date." is displayed on Field "End Date"
@@ -345,8 +340,7 @@ Scenario: PB_1.3.2 As an EDC user, on a Cross Forms log form to Standard form, w
 	And I verify Query is not displayed
 		| Field               | Query Message                                                                   | Answered | Closed |
 		| Current Axis Number | Original Axis Number' is Less Than 'Current Axis Number' on first Number field. | false    | false  |
-	And I take a screenshot
-	
+	And I take a screenshot	
 	When I enter data in CRF and save
 		| Field               | Data        |
 		| End Date            | 14 Feb 2000 |
@@ -391,8 +385,7 @@ Scenario: PB_1.3.3 As an EDC user, on a Cross Forms log form to Standard form, w
 	And I verify Query is not displayed
 		| Field                       | Query Message                                                                         | Answered | Closed |
 		| Current Distribution Number | Original Distribution Number' and 'Current Distribution Number' fields are not equal. | false    | false  |
-	And I take a screenshot
-   
+	And I take a screenshot  
     When I enter data in CRF
 	    | Field                       | Data        |
 	    | End Date                    | 11 Jan 2000 |
@@ -401,7 +394,7 @@ Scenario: PB_1.3.3 As an EDC user, on a Cross Forms log form to Standard form, w
 	Then I verify Query is displayed
 		| Field    | Query Message                                                | Answered | Closed |
 		| End Date | 'Date Informed Consent Signed' is not equal to Current Date. | false    | false  |
-	Then I verify Query is displayed
+	And I verify Query is displayed
 		| Field                       | Query Message                                                                         | Answered | Closed |
 		| Current Distribution Number | Original Distribution Number' and 'Current Distribution Number' fields are not equal. | false    | false  |
 	Then I verify Requires Response Query with message "'Date Informed Consent Signed' is not equal to Current Date." is displayed on Field "End Date"
@@ -468,8 +461,7 @@ Scenario: PB_1.4.1 As an EDC user, On a Cross Forms log form to log form, when a
 		| End Date             | Date is Less Than Date on the first log form.                          | true   |
 		| Original Axis Number | 'AE Number' is greater than or Equal to 'Original Axis Number' on Log. | true   |
 		| Current Axis Number  | 'Duration' and 'Current Axis Number' cannot equal.                     | true   |
-	And I take a screenshot
-	
+	And I take a screenshot	
 	When I enter data in CRF and save
 		| Field                | Data        |
 		| Start Date           | 10 Jan 2000 |
@@ -540,8 +532,7 @@ Scenario: PB_1.4.2 As an EDC user, On a Cross Forms log form to log form, when a
 		| End Date             | Date is Less Than Date on the first log form.                          | true   |
 		| Original Axis Number | 'AE Number' is greater than or Equal to 'Original Axis Number' on Log. | true   |
 		| Current Axis Number  | 'Duration' and 'Current Axis Number' cannot equal.                     | true   |
-	And I take a screenshot
-	
+	And I take a screenshot	
 	When I enter data in CRF
 		| Field                | Data        |
 		| Start Date           | 10 Feb 2000 |
@@ -550,7 +541,7 @@ Scenario: PB_1.4.2 As an EDC user, On a Cross Forms log form to log form, when a
 		| Current Axis Number  | 77          |
 	And I save the CRF page	
 	And I open log line 2
-	And I verify Query is displayed
+	Then I verify Query is displayed
 		| Field                | Query Message                                                          | Answered | Closed |
 		| Start Date           | Date can not be less than.                                             | false    | false  |
 	And I verify Query is displayed
@@ -608,10 +599,8 @@ Scenario: PB_1.5.1 As an EDC user, Cross Forms - Standard form to log form, when
 		| Field                        | Data        |
 		| Date Informed Consent Signed | 20 Jan 2000 |
 		| Current Distribution Number  | 21          |
-
     When I select Form "Concomitant Medications"	
 	And I open log line 1
-#Investigate for Double Query Message
 	Then I verify Requires Response Query with message "'Date Informed Consent Signed' is greater. Please revise." is displayed on Field "Start Date"
     And I verify Requires Response Query with message "Informed Consent 'Current Distribution Number' is not equal to Concomitant Medications 'Current Axis Number'" is displayed on Field "Current Axis Number"
 	And I take a screenshot
@@ -655,8 +644,7 @@ Scenario: PB_1.6.1 As an EDC user, On a Cross Forms - Standard form to log form.
 	And I enter data in CRF and save
 		| Field                        | Data        |
 		| Date Informed Consent Signed | 20 Jan 2000 |
-		| Current Distribution Number  | 21          |
-    
+		| Current Distribution Number  | 21          |   
 	When I select Form "Concomitant Medications"	
 	And I open log line 1
 	Then I verify Requires Response Query with message "'Date Informed Consent Signed' is greater. Please revise." is displayed on Field "Start Date"
@@ -668,7 +656,7 @@ Scenario: PB_1.6.1 As an EDC user, On a Cross Forms - Standard form to log form.
 @PB_1.7.1
 @Draft
 Scenario: PB_1.7.1 As an EDC user, Cross Forms - log form to log form, when a query has been answered and closed with the different data and I enter the same data that originally opened the query, then queries are displayed.  
-Folder "Screening" enter and save data on forms "Concomitant Medications" and "Adverse Events". Queries fired, Answer and  Manually close queries in log fields (second log form), Modify log form (first log form) to different bad data, do not touch second log form - query and no logs in the Database.
+#Folder "Screening" enter and save data on forms "Concomitant Medications" and "Adverse Events". Queries fired, Answer and  Manually close queries in log fields (second log form), Modify log form (first log form) to different bad data, do not touch second log form - query and no logs in the Database.
 
 	Given I select Study "Edit Check Study 3" and Site "Edit Check Site 1"			  
     And I create a Subject
@@ -712,11 +700,9 @@ Folder "Screening" enter and save data on forms "Concomitant Medications" and "A
 		| Start Date | 12 Jan 2000 |
 		| End Date   | 08 Feb 2000 |
 		| AE Number  | 100         |
-
 	When I select Form "Concomitant Medications"
 	And I open log line 1
-#Investigate for Double Query Message
-	And I verify Query is displayed
+	Then I verify Query is displayed
 		| Field      | Query Message              | Answered | Closed |
 		| Start Date | Date can not be less than. | false    | false  |
 	And I verify Query is displayed
@@ -725,10 +711,9 @@ Folder "Screening" enter and save data on forms "Concomitant Medications" and "A
 	And I verify Query is displayed
 		| Field                | Query Message                                                          | Answered | Closed |
 		| Original Axis Number | 'AE Number' is greater than or Equal to 'Original Axis Number' on Log. | false    | false  |
-
-	#Then I verify Requires Response Query with message "Date can not be less than." is displayed on Field "Start Date"
-	#And I verify Requires Response Query with message "Date is Less Than Date on the first log form." is displayed on Field "End Date"
-	#And I verify Requires Response Query with message "'AE Number' is greater than or Equal to 'Original Axis Number' on Log." is displayed on Field "Original Axis Number"
+	And I verify Requires Response Query with message "Date can not be less than." is displayed on Field "Start Date"
+	And I verify Requires Response Query with message "Date is Less Than Date on the first log form." is displayed on Field "End Date"
+	And I verify Requires Response Query with message "'AE Number' is greater than or Equal to 'Original Axis Number' on Log." is displayed on Field "Original Axis Number"
 	And I take a screenshot
 	
 #----------------------------------------------------------------------------------------------------------------------------------------	
@@ -774,8 +759,7 @@ Scenario: PB_1.8.1 As an EDC user, On a Cross Forms - log form to log form, when
 		| Field      | Data        |
 		| Start Date | 12 Jan 2000 |
 		| End Date   | 08 Feb 2000 |
-		| AE Number  | 100         |
-	
+		| AE Number  | 100         |	
 	When I select Form "Concomitant Medications"
 	And I open log line 1	
 	Then I verify Query with message "Date can not be less than." is displayed on Field "Start Date"
@@ -792,7 +776,7 @@ Scenario: PB_1.9.1 As an EDC user, On a Cross Forms - Standard form to log form,
 
 	Given I select Study "Edit Check Study 3" and Site "Edit Check Site 1"	
     And I create a Subject
-		| Field            | Data             |
+		| Field            | Data              |
 		| Subject Number   | {RndNum<num1>(5)} |
 		| Subject Initials | SUB               |
 	And I select Form "Informed Consent" in Folder "Screening"
@@ -822,7 +806,6 @@ Scenario: PB_1.9.1 As an EDC user, On a Cross Forms - Standard form to log form,
 	And I close the Query "Informed Consent 'Current Distribution Number' is not equal to Concomitant Medications 'Current Axis Number'." on Field "Current Axis Number"
 	And I save the CRF page
 	And I take a screenshot
-
 	And I open log line 1
 	When I enter data in CRF and save
 		| Field               | Data        |
@@ -830,13 +813,11 @@ Scenario: PB_1.9.1 As an EDC user, On a Cross Forms - Standard form to log form,
 		| Current Axis Number | 19          |
 	And I open log line 1
 	Then I verify Query is not displayed
-	   | Field      | Query Message                                             | Closed |
-	   | Start Date | 'Date Informed Consent Signed' is greater. Please revise. | false  |
+	   | Field      | Query Message                                             | Answered | Closed |
+	   | Start Date | 'Date Informed Consent Signed' is greater. Please revise. | false    | false  |
 	And I verify Query is not displayed
-	   | Field               | Query Message                                                                                             | Closed |
-	   | Current Axis Number | Informed Consent 'Current Distribution Number' is equal to Concomitant Medications 'Current Axis Number'. | false  |
-	#Then I verify Query with message "'Date Informed Consent Signed' is greater. Please revise." is not displayed on Field "Start Date"
-	#And I verify Query with message "Informed Consent 'Current Distribution Number' is equal to Concomitant Medications 'Current Axis Number'." is not displayed on Field "Current Axis Number"
+	   | Field               | Query Message                                                                                             | Answered | Closed |
+	   | Current Axis Number | Informed Consent 'Current Distribution Number' is equal to Concomitant Medications 'Current Axis Number'. | false    | false  |
 	And I take a screenshot
 	
 #----------------------------------------------------------------------------------------------------------------------------------------	
@@ -878,7 +859,6 @@ Scenario: PB_1.10.1 As an EDC user, Cross Forms: Standard form to log form, when
 	And I close the Query "Informed Consent 'Current Distribution Number' is not equal to Concomitant Medications 'Current Axis Number'." on Field "Current Axis Number"
 	And I save the CRF page
 	And I take a screenshot
-
 	And I open log line 1
 	When I enter data in CRF and save
 		| Field               | Data        |
@@ -924,8 +904,7 @@ Scenario: PB_1.11.1 As an EDC user, On a Cross Forms Standard form to log form, 
 	And I enter data in CRF and save
 		| Field                        | Data        |
 		| Date Informed Consent Signed | 08 Jan 2000 |
-		| Current Distribution Number  | 20          |	
-	
+		| Current Distribution Number  | 20          |		
 	When I select Form "Concomitant Medications"
 	And I open log line 1	
 	Then I verify Query with message "'Date Informed Consent Signed' is greater. Please revise." is not displayed on Field "Start Date"
@@ -962,8 +941,7 @@ Scenario: PB_1.12.1 As an EDC user, On a Cross Forms - Standard form to log form
 	And I open log line 1
 	And I verify Requires Response Query with message "'Date Informed Consent Signed' is greater. Please revise." is displayed on Field "Start Date"
     And I verify Requires Response Query with message "Informed Consent 'Current Distribution Number' is not equal to Concomitant Medications 'Current Axis Number'." is displayed on Field "Current Axis Number"
-	And I take a screenshot
-	
+	And I take a screenshot	
 	When I enter data in CRF and save
 		| Field               | Data        |
 		| Start Date          | 09 Jan 2000 |
@@ -1018,8 +996,7 @@ Scenario: PB_1.13.1 As an EDC user, On a Cross Forms - Standard form to log form
 	And I enter data in CRF and save
 		| Field                        | Data        |
 		| Date Informed Consent Signed | 09 Jan 2000 |
-		| Current Distribution Number  | 19          |
-	
+		| Current Distribution Number  | 19          |	
 	When I select Form "Concomitant Medications"
 	And I open log line 1
 	Then I verify Query with message "'Date Informed Consent Signed' is greater. Please revise." is displayed on Field "Start Date"
@@ -1065,7 +1042,6 @@ Scenario: PB_1.14.1 As an EDC user, Cross Forms - Standard form to log form, whe
  	And I verify Query with message "'Date Informed Consent Signed' is greater. Please revise." is not displayed on Field "Start Date"
 	And I verify Query with message "Informed Consent 'Current Distribution Number' is not equal to Concomitant Medications 'Current Axis Number'." is not displayed on Field "Current Axis Number"
 	And I take a screenshot
-
 	And I select Form "Informed Consent"
 	When I enter data in CRF and save
 		| Field                        | Data        |
@@ -1114,7 +1090,6 @@ Scenario: PB_1.15.1 As an EDC user, On a Cross Forms - log form to log form, whe
 	And I close the Query "Date is Less Than Date on the first log form." on Field "End Date"
 	And I save the CRF page
 	And I take a screenshot
-
 	And I select Form "Adverse Events"
 	And I open log line 1
 	When I enter data in CRF and save
@@ -1124,13 +1099,11 @@ Scenario: PB_1.15.1 As an EDC user, On a Cross Forms - log form to log form, whe
 	And I select Form "Concomitant Medications"
 	And I open log line 1
 	Then I verify Query is not displayed
-		| Field                | Query Message                                                          | Answered | Closed |
-		| Start Date           | Date can not be less than.                                             | false    | false  |
+		| Field      | Query Message              | Answered | Closed |
+		| Start Date | Date can not be less than. | false    | false  |
 	And I verify Query is not displayed
 		| Field      | Query Message                                 | Answered | Closed |
 		| Start Date | Date is Less Than Date on the first log form. | false    | false  |
-	#Then I verify Query with message "Date can not be less than." is not displayed on Field "Start Date"
-	#And I verify Query with message "Date is Less Than Date on the first log form." is not displayed on Field "End Date"
 	And I take a screenshot
 	
 #----------------------------------------------------------------------------------------------------------------------------------------	
@@ -1176,7 +1149,7 @@ Scenario: PB_1.16.1 As an EDC user, On a Cross Forms - log form to log form, whe
 	And I save the CRF page
 	And I take a screenshot
 	And I open log line 1
-	And I enter data in CRF and save
+	When I enter data in CRF and save
 	    | Field                | Data        |
 	    | Start Date           | 09 Jan 2000 |
 	    | End Date             | 11 Feb 2000 |
@@ -1218,14 +1191,13 @@ Scenario: PB_1.17.1 As an EDC user, On a Cross Forms - log form to log form, whe
 	And I take a screenshot
 	And I select Form "Adverse Events"
 	And I open log line 1
-	And I enter data in CRF and save
+	When I enter data in CRF and save
 		| Field      | Data        |
 		| Start Date | 10 Jan 2000 |
 		| End Date   | 10 Feb 2000 |	
 	And I select Form "Concomitant Medications"	
 	And I open log line 1
-#Investigate
-	And I verify Query with message "Date can not be less than." is not displayed on Field "Start Date"
+	Then I verify Query with message "Date can not be less than." is not displayed on Field "Start Date"
 	And I verify Query with message "Date is Less Than Date on the first log form." is not displayed on Field "End Date"
 	And I take a screenshot
 	
@@ -1306,8 +1278,7 @@ Scenario: PB_1.19.1 As an EDC user, On a Cross Forms - log form to log form, whe
 	And I open log line 1
 	And I verify Query with message "Date can not be less than." is not displayed on Field "Start Date"
 	And I verify Query with message "Date is Less Than Date on the first log form." is not displayed on Field "End Date" 
-	And I take a screenshot
-	
+	And I take a screenshot	
 	And I select Form "Adverse Events"
 	And I open log line 1
 	When I enter data in CRF and save
@@ -1358,7 +1329,6 @@ Scenario: PB_1.20.1 As an EDC user, On a Cross Forms log form to log form, when 
 	And I verify Query with message "Date can not be less than." is not displayed on Field "Start Date"
 	And I verify Query with message "Date is Less Than Date on the first log form." is not displayed on Field "End Date" 
 	And I take a screenshot
-
 	And I select Form "Adverse Events"
 	And I open log line 1	
 	When I enter data in CRF and save
@@ -1399,7 +1369,6 @@ Scenario: PB_1.21.1 As an EDC user, when a query has been answered and closed wi
 	And I close the Query "Query Opened on Log Field 1" on Field "Log Field 1"
 	And I save the CRF page
 	And I take a screenshot
-
 	When I enter data in CRF and save
 		|Field       |Data |
         |Standard 1  |6    |
@@ -1462,8 +1431,7 @@ Scenario: PB_1.22.2 As an EDC user, when a query has been canceled with the diff
 	And I cancel the Query "Query Opened on Log Field 1" on Field "Log Field 1"
 	And I save the CRF page
 	And I take a screenshot
-	And I open log line 1	
-	
+	And I open log line 1		
 	When I enter data in CRF and save
 		|Field       |Data |
         |Log Field 1 |4    |
@@ -1494,8 +1462,7 @@ Scenario: PB_1.22.3 As an EDC user, when a query has been cancel with the differ
 	And I cancel the Query "Query Opened on Log Field 1" on Field "Log Field 1"
 	And I save the CRF page
 	And I take a screenshot
-	And I open log line 3	
-	
+	And I open log line 3		
 	When I enter data in CRF and save
 		|Field       |Data |
         |Standard 1	 |10   |
