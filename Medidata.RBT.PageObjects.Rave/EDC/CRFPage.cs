@@ -142,6 +142,13 @@ namespace Medidata.RBT.PageObjects.Rave
 
 		#endregion
 
+		protected override IWebElement GetElementByName(string name)
+		{
+			if (name == "Inactivate")
+				return Browser.Dropdown("R_log_log_RP");
+			return base.GetElementByName(name);
+		}
+
 		public override string URL { get { return "Modules/EDC/CRFPage.aspx"; } }
 		
 	}

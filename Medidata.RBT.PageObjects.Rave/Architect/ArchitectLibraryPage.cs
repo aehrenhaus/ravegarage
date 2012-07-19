@@ -10,6 +10,31 @@ namespace Medidata.RBT.PageObjects.Rave
 {
 	public class ArchitectLibraryPage : ArchitectBasePage
 	{
+		public IPage PushVersion(string version, string env, string sites)
+		{
+			string studyName = StudyName;
+
+			var link = GetElementByName("CRF Versions").Link(version);
+			var push = link.Parent().Parent().Link("Push");
+			push.Click();
+
+			var  pushPage = new ArchitectPushPage();
+		
+			pushPage.PushToSites(env,sites);
+			//
+			//go back to study
+			ClickLinkInArea(null, studyName, "Header");
+		
+			return this;
+		}
+
+		public string StudyName
+		{
+			get
+			{
+				return Browser.LinkByPartialID("TabTextHyperlink2").Text;
+			}
+		}
 
 		public ArchitectCRFDraftPage CreateDraftFromProject(string draftName, string project, string version)
 		{
@@ -41,6 +66,9 @@ namespace Medidata.RBT.PageObjects.Rave
 		{
 			if (name == "CRF Drafts")
 				return Browser.Table("DraftsGrid");
+
+			if (name == "CRF Versions")
+				return Browser.Table("VersionsGrid");
 
 			return base.GetElementByName(name);
 		}

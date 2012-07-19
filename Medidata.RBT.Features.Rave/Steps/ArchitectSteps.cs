@@ -33,8 +33,18 @@ namespace Medidata.RBT.Features.Rave
 		[StepDefinition(@"I publish CRF Version ""([^""]*)""")]
 		public void GivenIPublishCRFVersion____(string crfVersion)
 		{
-			CurrentPage.As<ArchitectCRFDraftPage>().PublishCRF(SpecialStringHelper.Replace(crfVersion));
+			crfVersion = SpecialStringHelper.Replace(crfVersion);
+			CurrentPage.As<ArchitectCRFDraftPage>().PublishCRF(crfVersion);
 			
+		}
+
+		[StepDefinition(@"I push CRF Version ""([^""]*)"" to ""([^""]*)""")]
+		public void GivenIPublishCRFVersion____(string crfVersion, string sites)
+		{
+			crfVersion = SpecialStringHelper.Replace(crfVersion);
+			sites = SpecialStringHelper.Replace(sites);
+			CurrentPage.As<ArchitectLibraryPage>().PushVersion(crfVersion,"Prod", sites);
+
 		}
 
 		[StepDefinition(@"I select ""Target\{RndNum\(3\)}"" from ""Target CRF""")]

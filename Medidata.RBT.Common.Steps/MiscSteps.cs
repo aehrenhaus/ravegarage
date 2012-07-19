@@ -38,6 +38,9 @@ namespace Medidata.RBT.Common.Steps
         public void WhenIAcceptAlertWindow()
         {
             CurrentPage.As<PageBase>().GetAlertWindow().Accept();
+			
+			var uri = new Uri(Browser.Url);
+			CurrentPage = TestContext.POFactory.GetPageByUrl(uri);
         }
 
 
@@ -45,6 +48,8 @@ namespace Medidata.RBT.Common.Steps
         public void WhenIDismissAlertWindow()
         {
             CurrentPage.As<PageBase>().GetAlertWindow().Dismiss();
+			var uri = new Uri(Browser.Url);
+			CurrentPage = TestContext.POFactory.GetPageByUrl(uri);
         }
 
     

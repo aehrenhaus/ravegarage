@@ -43,9 +43,14 @@ Background:
 #----------------------------------------------------------------------------------------------------------------------------------------	
 Scenario:  test
 
- And I navigate to "CRF" page with parameters
-	| Name | Value |
-	| DP   | 521646 |
+ And I navigate to "PublishChecksHome" page with parameters
+	| Name   | Value       |
+	| step   | 17          |
+	| action | selectcrfs  |
+	| val    | 1514%3a1532 |
+
+
+
 
 @release_564_Patch11
 @PB_8.1.1
@@ -748,7 +753,7 @@ Scenario: PB_8.8.1 When I run the Report, then query related data are displayed 
 	And I navigate to "Home"
 	And I navigate to "Architect"
 	And I select "AM Edit Check Study" in "Active Projects"
-	And I create Draft "Draft {RndNum<d#>(5)}" from Project "AM Edit Check Study" and Version "V1 ({Var(ver#)})"
+	And I create Draft "Draft {RndNum<d#>(5)}" from Project "AM Edit Check Study" and Version "V9  ({Var(ver#)})"
 
 	And I navigate to "Edit Checks"
 	And I inactivate edit check "Mixed Form Query"
@@ -758,7 +763,7 @@ Scenario: PB_8.8.1 When I run the Report, then query related data are displayed 
 	And I note down "crfversion" to "newversion#"
 	And I select Study "AM Edit Check Study" in "Header"
 	And I navigate to "Amendment Manager"
-	And I choose "V1 ({Var(ver#)})" from "Source CRF"
+	And I choose "V9  ({Var(ver#)})" from "Source CRF"
 	And I choose "{Var(newversion#)}" from "Target CRF"
 	And I click button "Create Plan"
 	And I take a screenshot
@@ -855,11 +860,16 @@ Scenario: PB_8.9.1 Publish Checks
 	And I navigate to "Architect"
 	And I select "AM Edit Check Study" in "Active Projects"
 	And I select "Draft 1" in "CRF Drafts"
-	And I publish CRF Version "Pub1{RndNum<TV#>(3)}"
+	And I publish CRF Version "Pub1{RndNum<TV#>(5)}"
 	And I note down "crfversion" to "newversion1#"
-	And I publish CRF Version "Pub2{RndNum<TV#>(3)}"
+	And I select "AM Edit Check Study" in "Header"
+	And I push CRF Version "{Var(newversion1#)}" to "All Sites"
+	And I select "Draft 1" in "CRF Drafts"
+
+
+	And I publish CRF Version "Pub2{RndNum<TV#>(5)}"
 	And I note down "crfversion" to "newversion2#"
-	And I publish CRF Version "Pub1{RndNum<TV#>(3)}"
+	And I publish CRF Version "Pub1{RndNum<TV#>(5)}"
 	And I note down "crfversion" to "newversion3#"
 	
 	And I navigate to "Home"
@@ -868,7 +878,7 @@ Scenario: PB_8.9.1 Publish Checks
 		| Field            | Data              |
 		| Subject Number   | {RndNum<num4>(5)} |
 		| Subject Initials | sub               |
-	And I note down "crfversion" to "ver#"
+	#And I note down "crfversion" to "ver#"
 	And I select Form "Mixed Form"
 	And I enter data in CRF and save
 	    |Field       |Data |
@@ -890,8 +900,8 @@ Scenario: PB_8.9.1 Publish Checks
 	And I navigate to "Architect"
 	And I select "AM Edit Check Study" in "Active Projects"
 	And I select "Publish Checks"
-	And I choose "V3 ({Var(ver#)})" from "Current CRF Version"
-	And I choose "{Var(newversion1#)}" from "Reference CRF Version"
+	And I choose "{Var(newversion1#)}" from "Current CRF Version"
+	And I choose "{Var(newversion2#)}" from "Reference CRF Version"
 	And I click button "Create Plan"
 	And I check "Inactivate" in "Mixed Form Query"
 	And I select "Save"
@@ -910,15 +920,17 @@ Scenario: PB_8.9.1 Publish Checks
 		|Field       |Data |
         |Standard 1  |7    |
 	And I open the last log line
-	And I verify Query with message "Query Opened on Log Field 1" is not displayed on Field "Log Field 1"
+	And I verify Query is displayed
+         | Field       | Query Message               | Closed |
+         | Log Field 1 | Query Opened on Log Field 1 | true   |
 	And I take a screenshot
 	
 	And I navigate to "Home"
 	And I navigate to "Architect"
 	And I select "AM Edit Check Study" in "Active Projects"
-	And I select "Pulish Checks"
-	And I select "V3 ({Var(ver#)})" from "Current CRF Version"
-	And I select "{Var(newversion2#)}" from "Reference CRF Version"
+	And I select "Publish Checks"
+	And I choose "{Var(newversion1#)}" from "Current CRF Version"
+	And I choose "{Var(newversion3#)}" from "Reference CRF Version"
 	And I click button "Create Plan"
 	And I check "Publish" in "Mixed Form Query"
 	And I select "Save"
@@ -930,24 +942,25 @@ Scenario: PB_8.9.1 Publish Checks
 	And I take a screenshot
 
 	And I navigate to "Home"
-	And I select "AM Edit Check Study"
 	And I select Study "AM Edit Check Study" and Site "AM Edit Site"
     And I select a Subject "sub{Var(num4)}"
 	And I select Form "Mixed Form"
 	And I open the last log line
 	And I verify Query with message "Query Opened on Log Field 1" is displayed on Field "Log Field 1"
-	And I answer the Query "Query Opened on Log Field 1" on Field "Log Field 1" with "answer query"
-	And I save the CRF page
-	And I take a screenshot
-	And I close the query on "Log Field 1" field
-	And I save the CRF page
+	
+
+
 	And I take a screenshot
 	And I enter data in CRF and save
 		|Field       |Data |
         |Standard 1  |8    |
+	And I open the last log line
+	And I verify Query with message "Query Opened on Log Field 1" is displayed on Field "Log Field 1"
+	And I answer the Query "Query Opened on Log Field 1" on Field "Log Field 1" with "answer query"
 	And I save the CRF page
-	And I verify new query did fire on "Log Field 1" field.
+
 	And I take a screenshot
+	
 
 #----------------------------------------------------------------------------------------------------------------------------------------	
 @release_564_Patch11
@@ -955,8 +968,7 @@ Scenario: PB_8.9.1 Publish Checks
 @Draft
 Scenario: PB_8.10.1 When I run the Report, then query related data are displayed in the report. Queries verification on data points with Freeze, Hard lock and Inactive records
 
-	And I select "Edit Check Study 3"
-	And I select site "Edit Check Site 8"
+	And I select Study "Edit Check Study 3" and Site "Edit Check Site 8"
     And I create a Subject
 	| Field            | Data              |
 	| Subject Number   | {RndNum<num1>(5)} |
@@ -967,70 +979,91 @@ Scenario: PB_8.10.1 When I run the Report, then query related data are displayed
         |Standard 1  |6    |
 	    |Log Field 1 |5    |
 	    |Log Field 2 |2    |
-	And I verify "Log Field 1" field displays query opened with require response on first record position
+	And I open the last log line
+	And I verify Requires Response Query with message "Query Opened on Log Field 1" is displayed on Field "Log Field 1"
+	And I answer the Query "Query Opened on Log Field 1" on Field "Log Field 1" with "answered"
+	And I save the CRF page
+	And I open the last log line
+	And I close the Query "Query Opened on Log Field 1" on Field "Log Field 1"
+	And I enter data in CRF
+	    |Field       |Data |
+	    |Log Field 1 |6    |
+	And I save the CRF page
+	And I open the last log line
 	And I take a screenshot
-	And I add new log line 2
+	And I check "Freeze" on "Log Field 1"
+	And I save the CRF page
+	And I open the last log line
+	And I take a screenshot
+
+	And I click button "Cancel"
+	And I add a new log line
 	And I enter data in CRF and save
 	    |Field       |Data |
 	    |Log Field 1 |5    |
 	    |Log Field 2 |2    |
-	And I verify "Log Field 1" field displays query opened with require response on second record position
+	And I open the last log line
+	And I verify Requires Response Query with message "Query Opened on Log Field 1" is displayed on Field "Log Field 1"
+	And I answer the Query "Query Opened on Log Field 1" on Field "Log Field 1" with "answered"
+	And I save the CRF page
+	And I open the last log line
+	And I close the Query "Query Opened on Log Field 1" on Field "Log Field 1"
+	And I enter data in CRF
+	    |Field       |Data |
+	    |Log Field 1 |6    |
+	And I save the CRF page
+	And I open the last log line
 	And I take a screenshot
-	And I add new log line 3
+	And I check "Hard Lock" on "Log Field 1"
+	And I save the CRF page
+	And I open the last log line
+	And I take a screenshot
+
+	And I click button "Cancel"
+	And I add a new log line
 	And I enter data in CRF and save
 	    |Field       |Data |
 	    |Log Field 1 |5    |
 	    |Log Field 2 |2    |
-	And I verify "Log Field 1" field displays query opened with require response on third record position
-	And I take a screenshot
-	
-	And I answer the query on "Log Field 1" field on first record position
+	And I open the last log line
+	And I verify Requires Response Query with message "Query Opened on Log Field 1" is displayed on Field "Log Field 1"
+	And I answer the Query "Query Opened on Log Field 1" on Field "Log Field 1" with "answered"
 	And I save the CRF page
-	And I answer the query on "Log Field 1" field on seond record position
-	And I save the CRF page
-	And I answer the query on "Log Field 1" field on third record position
-	And I save the CRF page
-	
-	And I enter data in CRF and save
+	And I open the last log line
+	And I close the Query "Query Opened on Log Field 1" on Field "Log Field 1"
+	And I enter data in CRF
 	    |Field       |Data |
 	    |Log Field 1 |6    |
-	And I close the query on "Log Field 1" field
 	And I save the CRF page
+	And I open the last log line
 	And I take a screenshot
-	And I enter data in CRF and save
-	    |Field       |Data |
-	    |Log Field 1 |6    |
-	And I close the query on "Log Field 1" field
-	And I save the CRF page
+	And I click button "Cancel"
+	And I select "Inactivate"
+	And I choose "3" from "Inactivate"
+	And I click button "Inactivate"
 	And I take a screenshot
-	And I enter data in CRF and save
-	    |Field       |Data |
-	    |Log Field 1 |6    |
-	And I close the query on "Log Field 1" field
-	And I save the CRF page
-	And I take a screenshot
-	
-	And I select edit icon on first record position
-	And I select checkbox "Freeze" on "Log Field 1" field on first record position
-	And I save the CRF page
-	And I select edit icon on second record position
-	And I select checkbox "Hadrd Lock" on "Log Field 1" field on second record position
-	And I save the CRF page
-	And I navigate to "Inactivate"
-	And I select "3" in dropdown
-	And I select "Inactivate" button
-	And I take a screenshot
-	
+
 	And I enter data in CRF and save
 		|Field       |Data |
         |Standard 1  |7    |
-	And I save the CRF page		
-	And I verify new query did fire on "Log Field 1" field on first record position
+	And I open log line 1
+	And I verify Query is displayed
+		| Field      | Query Message               | Answered | Closed |
+		| Start Date | Query Opened on Log Field 1 | false    | false  |
 	And I take a screenshot
-	And I verify new query did not fire on "Log Field 1" field on second record position
+	And I click button "Cancel"
+	And I open log line 2
+	And I verify Query is not displayed
+		| Field      | Query Message               | Answered | Closed |
+		| Start Date | Query Opened on Log Field 1 | false    | false  |
 	And I take a screenshot
-	And I verify new query did not fire on "Log Field 1" field on third record position
+	And I click button "Cancel"
+	And I select "Reactivate"
+	And I choose "3" from "Reactivate"
+	And I click button "Reactivate"
 	And I take a screenshot
-	
-#------------------------------------------------------------------------------------------------------------
-	
+	And I open log line 3
+	And I verify Query is displayed
+		| Field      | Query Message               | Answered | Closed |
+		| Start Date | Query Opened on Log Field 1 | false    | false  |
+	And I take a screenshot

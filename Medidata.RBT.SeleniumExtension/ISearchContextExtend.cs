@@ -119,6 +119,12 @@ namespace Medidata.RBT.SeleniumExtension
 
 		#region Hyperlink
 
+		public static Hyperlink LinkByPartialID(this ISearchContext context, string partialID, bool nullable = false)
+		{
+			return SelectExtendElement<Hyperlink>(context, "a", partialID, nullable);
+		}
+
+
 		public static Hyperlink Link(this ISearchContext context, string linktext)
 		{
 			var ele = context.TryFindElementBy(By.LinkText(linktext));
