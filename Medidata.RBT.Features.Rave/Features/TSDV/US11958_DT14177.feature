@@ -91,8 +91,7 @@ Background:
 @PB-US11958-01
 Scenario: Enroll 10 subjects in a study to verify that TSDV has randomized the subjects in non sequential order when the subjects are included in TSDV using the Targeted SDV Subject Include report.
 	
-	#When I create 10 random Subjects with name "TSDV" in Study "Edit Check Study 3" in Site "Edit Check Site 1"
-	When  I navigate to "Reporter"
+	Given I navigate to "Reporter"
 	And I select Report "Targeted SDV Configuration"
 	And I set report parameter "Study" with table
 		| Name               | Environment |
@@ -101,9 +100,16 @@ Scenario: Enroll 10 subjects in a study to verify that TSDV has randomized the s
 	And I switch to "Targeted SDV Study Plan" window
 	And I select "Asia"
 	And I select "Edit Check Site 1"
-	And I select "Activate"
-	And I accept alert window
-#	And I activate TSDV Site Plan has been activated for Site "Edit Check Site 1"
+	And I inactivate the plan
+
+	And I switch to "Reports" window
+	And I select "Home"
+	And I create 10 random Subjects with name "TSDV" in Study "Edit Check Study 3" in Site "Edit Check Site 1"
+
+	When I switch to "Targeted SDV Study Plan" window
+	And I select "Asia"
+	And I select "Edit Check Site 1"
+	And  I activate the plan
 	And I switch to "Reports" window
 	And I select "My Reports"
 	And I select Report "Targeted SDV Subject Management"
@@ -112,12 +118,10 @@ Scenario: Enroll 10 subjects in a study to verify that TSDV has randomized the s
 		| Edit Check Study 3			 | Prod        |
 	And I click button "Submit Report"
 	And I switch to "Targeted SDV Subject Include" window
-	And I choose "Edit Check Site 1: 10001" from "Select Site"
-	And I select "Search"
+	And I filter by site "Edit Check Site 1: 10001"
 	And I include all subjects in TSDV
 	And I select "Subject Override"
-	And I choose "Edit Check Site 1: 10001" from "Select Site"
-	And I select "Search"
+	And I filter by site "Edit Check Site 1: 10001"
 	Then I verify that Tiers in subject override table are not in the following order
 		| Tier Name         | Row |
 		| All Forms         | 1   |

@@ -56,7 +56,7 @@ namespace Medidata.RBT.PageObjects.Rave
 		}
 
 
-		public IPage GetPageByUrl(Uri uri)
+		public virtual IPage GetPageByUrl(Uri uri)
 		{
 			if (dicNameType == null || pos == null)
 			{
@@ -73,13 +73,13 @@ namespace Medidata.RBT.PageObjects.Rave
 				}
 				catch{
 				}
-				if (isThePage)
-				{
-					//instead of return po, create a new instance. 
-					return Activator.CreateInstance(po.GetType()) as IPage;
-				}
+                if (isThePage)
+                {
+                    //instead of return po, create a new instance. 
+                    return Activator.CreateInstance(po.GetType()) as IPage;
+                }
 			}
-			throw new Exception("No page object matches the url:" + uri.ToString());
-		}
+            return new PageBase();
+        }
 	}
 }

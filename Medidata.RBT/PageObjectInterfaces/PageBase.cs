@@ -49,7 +49,15 @@ namespace Medidata.RBT
         {
             var page = this as TPage;
             if (page == null)
-                throw new Exception("Expect current page to be " + typeof(TPage).Name + ", but it's not.");
+            {
+                TestContext.CurrentPage = TestContext.POFactory.GetPageByUrl(new Uri(Browser.Url));
+                var currentpage = TestContext.CurrentPage as TPage;
+                if (currentpage == null)
+                {
+                    throw new Exception("Expect current page to be " + typeof(TPage).Name + ", but it's not.");
+                }
+                return currentpage;
+            }
             return page;
         }
 

@@ -23,5 +23,30 @@ namespace Medidata.RBT.Features.Rave
             bool isSubjectRandomized = CurrentPage.As<SubjectOverridePage>().IsSubjectsRandomized(table);
             Assert.IsTrue(isSubjectRandomized, "Subjects enrolled sequentially");
         }
-	}
+
+        [StepDefinition(@"I filter by site ""([^""]*)""")]
+        public void AndIfilterBySite(string siteName)
+        {
+            CurrentPage.As<SubjectOverridePage>().FilterBySite(siteName);
+        }
+
+        [When(@"I include all subjects in TSDV")]
+        public void WhenIIncludeAllSubjectsInTSDV()
+        {
+           ScenarioContext.Current.Pending();
+        }
+
+        [StepDefinition(@"I inactivate the plan")]
+        public void AndIInactivatePlan()
+        {
+            CurrentPage.As<SiteBlockPlansPage>().InactivatePlan();
+        }
+
+        [StepDefinition(@"I activate the plan")]
+        public void AndIActivatePlan()
+        {
+            CurrentPage.As<SiteBlockPlansPage>().ActivatePlan();
+        }
+    
+    }
 }
