@@ -1048,14 +1048,14 @@ Scenario: PB_8.10.1 When I run the Report, then query related data are displayed
         |Standard 1  |7    |
 	And I open log line 1
 	And I verify Query is displayed
-		| Field      | Query Message               | Answered | Closed |
-		| Start Date | Query Opened on Log Field 1 | false    | false  |
+		| Field       | Query Message               | Answered | Closed |
+		| Log Field 1 | Query Opened on Log Field 1 | false    | false  |
 	And I take a screenshot
 	And I click button "Cancel"
 	And I open log line 2
 	And I verify Query is not displayed
-		| Field      | Query Message               | Answered | Closed |
-		| Start Date | Query Opened on Log Field 1 | false    | false  |
+		| Field       | Query Message               | Answered | Closed |
+		| Log Field 1 | Query Opened on Log Field 1 | false    | false  |
 	And I take a screenshot
 	And I click button "Cancel"
 	And I select "Reactivate"
@@ -1064,6 +1064,6 @@ Scenario: PB_8.10.1 When I run the Report, then query related data are displayed
 	And I take a screenshot
 	And I open log line 3
 	And I verify Query is displayed
-		| Field      | Query Message               | Answered | Closed |
-		| Start Date | Query Opened on Log Field 1 | false    | false  |
+		| Field       | Query Message               | Answered | Closed |
+		| Log Field 1 | Query Opened on Log Field 1 | false    | false  |
 	And I take a screenshot

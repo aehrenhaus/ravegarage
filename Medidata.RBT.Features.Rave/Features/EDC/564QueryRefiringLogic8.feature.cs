@@ -2336,7 +2336,7 @@ this.FeatureBackground();
 #line 1040
  testRunner.And("I click button \"Cancel\"");
 #line 1041
- testRunner.And("I click button \"Inactivate\"");
+ testRunner.And("I select \"Inactivate\"");
 #line 1042
  testRunner.And("I choose \"3\" from \"Inactivate\"");
 #line 1043
@@ -2361,7 +2361,7 @@ this.FeatureBackground();
                         "Answered",
                         "Closed"});
             table84.AddRow(new string[] {
-                        "Start Date",
+                        "Log Field 1",
                         "Query Opened on Log Field 1",
                         "false",
                         "false"});
@@ -2380,7 +2380,7 @@ this.FeatureBackground();
                         "Answered",
                         "Closed"});
             table85.AddRow(new string[] {
-                        "Start Date",
+                        "Log Field 1",
                         "Query Opened on Log Field 1",
                         "false",
                         "false"});
@@ -2407,7 +2407,7 @@ this.FeatureBackground();
                         "Answered",
                         "Closed"});
             table86.AddRow(new string[] {
-                        "Start Date",
+                        "Log Field 1",
                         "Query Opened on Log Field 1",
                         "false",
                         "false"});

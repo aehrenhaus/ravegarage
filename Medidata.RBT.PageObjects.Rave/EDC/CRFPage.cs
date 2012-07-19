@@ -146,6 +146,9 @@ namespace Medidata.RBT.PageObjects.Rave
 		{
 			if (name == "Inactivate")
 				return Browser.Dropdown("R_log_log_RP");
+
+			if (name == "Reactivate")
+				return Browser.Dropdown("R_log_log_IRP");
 			return base.GetElementByName(name);
 		}
 
