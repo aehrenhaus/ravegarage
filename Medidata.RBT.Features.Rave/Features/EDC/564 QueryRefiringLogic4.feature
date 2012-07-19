@@ -23,8 +23,7 @@ Background:
 @release_564_Patch11
 @PB_4.1.1
 @Passed
-@Web
-Scenario: PB_4.1.1 As an EDC user, On a Cross Forms Standard form to log form, when a query has been answered and closed with the same data and I enter the same data that originally opened the query, then queries are not displayed.
+Scenario: PB_4.1.1 As an EDC user, On a Cross Forms Standard form to log form, when a query has been auto answered and closed with the same data and I enter the same data that originally opened the query, then queries are displayed.
 
     Given I create a Subject
 		| Field            | Data              |
@@ -60,6 +59,12 @@ Scenario: PB_4.1.1 As an EDC user, On a Cross Forms Standard form to log form, w
 	And I open log line 1
 	And I verify closed Query with message "'Date Informed Consent Signed' is greater. Please revise." is displayed on Field "Start Date"
 	And I verify closed Query with message "Informed Consent 'Current Distribution Number' is not equal to Concomitant Medications 'Current Axis Number'." is displayed on Field "Current Axis Number"
+	And I verify Query is displayed
+      | Field      | Query Message                                             | Answered | Closed |
+      | Start Date | 'Date Informed Consent Signed' is greater. Please revise. | true     | true   |
+	Then I verify Query is displayed
+      | Field               | Query Message                                                                                                 | Answered | Closed |
+      | Current Axis Number | Informed Consent 'Current Distribution Number' is not equal to Concomitant Medications 'Current Axis Number'. | true     | true   |
 	And I take a screenshot
 	When I enter data in CRF and save
 		| Field               | Data        |
@@ -80,10 +85,8 @@ Scenario: PB_4.1.1 As an EDC user, On a Cross Forms Standard form to log form, w
 @release_564_Patch11
 @PB_4.1.2
 @Passed
-@Web
-Scenario: PB_4.1.2
+Scenario: PB_4.1.2 As an EDC user, On a Cross Forms Standard form to log form, when a query has been canceled with the same data and I enter the same data that originally opened the query, then queries are displayed.
 
-    Given I select Study "Edit Check Study 3" and Site "Edit Check Site 4"
     And I select a Subject "SUB{Var(num1)}"
 	And I select Form "Concomitant Medications" in Folder "Screening"
     And I enter data in CRF on a new log line and save and reopen
@@ -124,10 +127,10 @@ Scenario: PB_4.1.2
 @release_564_Patch11
 @PB_4.2.1
 @Passed
-@Web
-Scenario: PB_4.2.1 On a Cross Folders Standard form to log form, Folder "Screening" enter and save data on form "Informed Consent" , Folder "Week 1" enter and save data on form "Concomitant Medications"
+Scenario: PB_4.2.1 As an EDC user, On a Cross Folders - Standard form to log form, when a query has been auto answered and closed with the same data and I enter the same data that originally opened the query, then queries are displayed.
+#Folder  enter and save data on form "Concomitant Medications"
+#"Screening" enter and save data on form "Informed Consent" , Folder "Week 1
 
-    Given I select Study "Edit Check Study 3" and Site "Edit Check Site 4"			  
     And I create a Subject
 		| Field            | Data              |
 		| Subject Number   | {RndNum<num1>(5)} |
@@ -167,7 +170,6 @@ Scenario: PB_4.2.1 On a Cross Folders Standard form to log form, Folder "Screeni
       | Field               | Query Message                                                     | Answered | Closed |
       | Current Axis Number | 'Current Distribution Number' is not equal 'Current Axis Number'. | true     | true   |
 	And I take a screenshot
-
 	And I open log line 1
 	When I enter data in CRF and save
 		| Field                | Data        |
@@ -189,10 +191,8 @@ Scenario: PB_4.2.1 On a Cross Folders Standard form to log form, Folder "Screeni
 @release_564_Patch11
 @PB_4.2.2
 @Passed
-@Web
-Scenario: PB_4.2.2
+Scenario: PB_4.2.2 As an EDC user, On a Cross Folders - Standard form to log form, when a query has been canceled with the same data and I enter the same data that originally opened the query, then queries are displayed.
 	
-	Given I select Study "Edit Check Study 3" and Site "Edit Check Site 4"
     And I select a Subject "SUB{Var(num1)}"
 	And I select Form "Concomitant Medications" in Folder "Week 1"
     And I enter data in CRF on a new log line and save and reopen
@@ -211,10 +211,15 @@ Scenario: PB_4.2.2
 		| Current Axis Number  | 200         |
 	And I cancel the Query "'Date Informed Consent Signed' can not be greater than." on Field "Start Date"
 	And I cancel the Query "'Current Distribution Number' is not equal 'Current Axis Number'." on Field "Current Axis Number"
-	And I save the CRF page	
-	And I take a screenshot
-	
+	And I save the CRF page
 	And I open log line 2
+	And I verify Query is not displayed
+      | Field      | Query Message                                           | Answered | Closed |
+      | Start Date | 'Date Informed Consent Signed' can not be greater than. | true     | true   |
+	Then I verify Query is not displayed
+      | Field               | Query Message                                                     | Answered | Closed |
+      | Current Axis Number | 'Current Distribution Number' is not equal 'Current Axis Number'. | true     | true   |		
+	And I take a screenshot	
 	When I enter data in CRF and save
 		| Field                | Data        |
 		| Start Date           | 08 Jan 2000 |
@@ -223,18 +228,21 @@ Scenario: PB_4.2.2
 	And I open log line 2
 	Then I verify Query with message "'Date Informed Consent Signed' can not be greater than." is displayed on Field "Start Date"
 	And I verify Query with message "'Current Distribution Number' is not equal 'Current Axis Number'." is displayed on Field "Current Axis Number"
+	And I verify Query is displayed
+      | Field      | Query Message                                           | Answered | Closed |
+      | Start Date | 'Date Informed Consent Signed' can not be greater than. | false    | false  |
+	Then I verify Query is displayed
+      | Field               | Query Message                                                     | Answered | Closed |
+      | Current Axis Number | 'Current Distribution Number' is not equal 'Current Axis Number'. | false    | false  |
 	And I take a screenshot
 	
 #----------------------------------------------------------------------------------------------------------------------------------------	
 @release_564_Patch11
 @PB_4.3.1
 @Passed
-@Web
-Scenario: PB_4.3.1 Verifies query firing between cross forms in opposite direction with no require response and require manual close.
-Cross Forms: log form to Standard form 
-Folder "Week 1" enter and save data on forms "Concomitant Medications" and "Informed Consent"
-
-    Given I select Study "Edit Check Study 3" and Site "Edit Check Site 4"			  
+Scenario: PB_4.3.1 As an EDC user, On a Cross Forms - log form to Standard form, when a query has been auto answered and closed with the same data and I enter the same data that originally opened the query, then queries are displayed.
+#Folder "Week 1" enter and save data on forms "Concomitant Medications" and "Informed Consent"
+  
     And I create a Subject
 		| Field            | Data              |
 		| Subject Number   | {RndNum<num1>(5)} |
@@ -258,9 +266,14 @@ Folder "Week 1" enter and save data on forms "Concomitant Medications" and "Info
 	And I close the Query "Start Date can not be greater than End Date." on Field "End Date"
 	And I close the Query "'Original Axis Number' is Less Than 'Current Axis Number' on first Number field." on Field "Current Axis Number"
 	And I save the CRF page
-	And I take a screenshot
-
 	And I open log line 1	
+	And I verify Query is displayed
+      | Field    | Query Message                                | Answered | Closed |
+      | End Date | Start Date can not be greater than End Date. | true     | true   |
+	Then I verify Query is displayed
+      | Field               | Query Message                                                                    | Answered | Closed |
+      | Current Axis Number | 'Original Axis Number' is Less Than 'Current Axis Number' on first Number field. | true     | true   |	
+	And I take a screenshot
 	When I enter data in CRF and save
 		| Field               | Data        |
 		| End Date            | 11 Jan 2000 |
@@ -268,16 +281,20 @@ Folder "Week 1" enter and save data on forms "Concomitant Medications" and "Info
 	And I open log line 1
 	Then I verify Query with message "Start Date can not be greater than End Date." is displayed on Field "End Date"
 	And I verify Query with message "'Original Axis Number' is Less Than 'Current Axis Number' on first Number field." is displayed on Field "Current Axis Number"
+	And I verify Query is displayed
+      | Field      | Query Message                                | Answered | Closed |
+      | End Date | Start Date can not be greater than End Date. | false    | false  |
+	Then I verify Query is displayed
+      | Field               | Query Message                                                                    | Answered | Closed |
+      | Current Axis Number | 'Original Axis Number' is Less Than 'Current Axis Number' on first Number field. | false    | false  |
 	And I take a screenshot
 	
 #----------------------------------------------------------------------------------------------------------------------------------------	
 @release_564_Patch11
 @PB_4.3.2
 @Passed
-@Web
-Scenario: PB_4.3.2
+Scenario: PB_4.3.2 As an EDC user, On a Cross Forms - log form to Standard form, when a query has been canceled with the same data and I enter the same data that originally opened the query, then queries are displayed.
 	
-	Given I select Study "Edit Check Study 3" and Site "Edit Check Site 4"
     And I select a Subject "SUB{Var(num1)}"
 	And I select Form "Concomitant Medications" in Folder "Week 1"
     And I enter data in CRF on a new log line and save and reopen
@@ -297,7 +314,6 @@ Scenario: PB_4.3.2
 	And I cancel the Query "'Original Axis Number' is Less Than 'Current Axis Number' on first Number field." on Field "Current Axis Number"
 	And I save the CRF page
 	And I take a screenshot
-
 	And I open log line 2	
 	When I enter data in CRF and save
 		| Field               | Data        |
@@ -312,10 +328,8 @@ Scenario: PB_4.3.2
 @release_564_Patch11
 @PB_4.3.3
 @Passed
-@Web
-Scenario: PB_4.3.3
+Scenario: PB_4.3.3 As an EDC user, On a Cross Forms - log form to Standard form, when a query has been canceled with the same data and I enter the same data that originally opened the query, then queries are displayed.
 
-    Given I select Study "Edit Check Study 3" and Site "Edit Check Site 4"
     And I select a Subject "SUB{Var(num1)}" 
 	And I select Form "Informed Consent" in Folder "Week 1"
 	And I enter data in CRF and save
@@ -334,8 +348,7 @@ Scenario: PB_4.3.3
 	And I cancel the Query "'Date Informed Consent Signed' is not equal to Current Date" on Field "End Date"
 	And I cancel the Query "'Original Distribution Number' and 'Current Distribution Number' fields are not equal." on Field "Current Distribution Number"
 	And I save the CRF page
-	And I take a screenshot
-	
+	And I take a screenshot	
 	When I enter data in CRF and save
 	    | Field                       | Data        |
 	    | End Date                    | 11 Jan 2000 |
@@ -348,12 +361,9 @@ Scenario: PB_4.3.3
 @release_564_Patch11
 @PB_4.4.1
 @Passed
-@Web
-Scenario: PB_4.4.1 Verifies query firing between cross forms in opposite direction in different folder with no require response and require manual close.
-Cross Forms: log form to log form 
-Folder "Screening" enter and save data on forms "Concomitant Medications" and "Adverse Events"
-
-    Given I select Study "Edit Check Study 3" and Site "Edit Check Site 4"			  
+Scenario: PB_4.4.1 As an EDC user, Cross Forms - log form to log form , when a query has been auto answered and closed with the same data and I enter the same data that originally opened the query, then queries are displayed.
+#Folder "Screening" enter and save data on forms "Concomitant Medications" and "Adverse Events"
+	  
     And I create a Subject
 		| Field            | Data              |
 		| Subject Number   | {RndNum<num1>(5)} |
@@ -393,9 +403,20 @@ Folder "Screening" enter and save data on forms "Concomitant Medications" and "A
 	And I close the Query "'AE Number' is greater than or Equal to 'Original Axis Number' on Log." on Field "Original Axis Number"
 	And I close the Query "'Duration' and 'Current Axis Number' cannot equal." on Field "Current Axis Number"
 	And I save the CRF page	
+	And I open log line 1
+	And I verify Query is displayed
+      | Field      | Query Message              | Answered | Closed |
+      | Start Date | Date can not be less than. | true     | true   |
+	And I verify Query is displayed
+      | Field    | Query Message                                                                    | Answered | Closed |
+      | End Date | 'Original Axis Number' is Less Than 'Current Axis Number' on first Number field. | true     | true   |
+	And I verify Query is displayed
+      | Field                | Query Message                                                          | Answered | Closed |
+      | Original Axis Number | 'AE Number' is greater than or Equal to 'Original Axis Number' on Log. | true     | true   |
+	And I verify Query is displayed
+      | Field               | Query Message                                      | Answered | Closed |
+      | Current Axis Number | 'Duration' and 'Current Axis Number' cannot equal. | true     | true   |
 	And I take a screenshot
-
-	And I open log line 1	
 	When I enter data in CRF and save
 		| Field                | Data        |
 		| Start Date           | 10 Jan 2000 |
@@ -407,16 +428,26 @@ Folder "Screening" enter and save data on forms "Concomitant Medications" and "A
 	And I verify Query with message "'Original Axis Number' is Less Than 'Current Axis Number' on first Number field." is displayed on Field "End Date"
 	And I verify Query with message "'AE Number' is greater than or Equal to 'Original Axis Number' on Log." is displayed on Field "Original Axis Number"
 	And I verify Query with message "'Duration' and 'Current Axis Number' cannot equal." is displayed on Field "Current Axis Number"
+	And I verify Query is displayed
+      | Field      | Query Message              | Answered | Closed |
+      | Start Date | Date can not be less than. | false    | false  |
+	And I verify Query is displayed
+      | Field    | Query Message                                                                    | Answered | Closed |
+      | End Date | 'Original Axis Number' is Less Than 'Current Axis Number' on first Number field. | false    | false  |
+	And I verify Query is displayed
+      | Field                | Query Message                                                          | Answered | Closed |
+      | Original Axis Number | 'AE Number' is greater than or Equal to 'Original Axis Number' on Log. | false    | false  |
+	And I verify Query is displayed
+      | Field               | Query Message                                      | Answered | Closed |
+      | Current Axis Number | 'Duration' and 'Current Axis Number' cannot equal. | false    | false  |
 	And I take a screenshot
 	   
 #----------------------------------------------------------------------------------------------------------------------------------------	
 @release_564_Patch11
 @PB_4.4.2
 @Passed
-@Web
-Scenario: PB_4.4.2
+Scenario: PB_4.4.2 As an EDC user, Cross Forms - log form to log form , when a query has been canceled with the same data and I enter the same data that originally opened the query, then queries are displayed.
 
-    Given I select Study "Edit Check Study 3" and Site "Edit Check Site 4"
     And I select a Subject "SUB{Var(num1)}"
 	And I select Form "Concomitant Medications" in Folder "Screening"
     And I enter data in CRF on a new log line and save and reopen
@@ -453,7 +484,6 @@ Scenario: PB_4.4.2
 	And I cancel the Query "'Duration' and 'Current Axis Number' cannot equal." on Field "Current Axis Number"
 	And I save the CRF page
 	And I take a screenshot
-
 	And I open log line 2	
 	When I enter data in CRF and save
 		| Field                | Data        |
@@ -475,12 +505,9 @@ Scenario: PB_4.4.2
 @release_564_Patch11
 @PB_4.5.1
 @Draft
-@Web
-Scenario: PB_4.5.1
-Cross Forms: Standard form to log form
-Folder "Screening" enter and save data on forms "Informed Consent" and "Concomitant Medications"
+Scenario: PB_4.5.1 As an EDC user, Cross Forms - Standard form to log form, when a query has been canceled with the same data and I enter the same data that originally opened the query, then queries are not displayed.
+#Folder "Screening" enter and save data on forms "Informed Consent" and "Concomitant Medications"
 
-    Given I select Study "Edit Check Study 3" and Site "Edit Check Site 4"	
     And I create a Subject
 		| Field            | Data              |
 		| Subject Number   | {RndNum<num1>(5)} |
@@ -517,7 +544,6 @@ Folder "Screening" enter and save data on forms "Informed Consent" and "Concomit
 	And I verify Field "Start Date" has no Query
 	And I verify Field "Current Axis Number" has no Query
 	And I take a screenshot
-
 	When I enter data in CRF and save
 		| Field               | Data        |
 		| Start Date          | 08 Jan 2000 |
@@ -531,10 +557,8 @@ Folder "Screening" enter and save data on forms "Informed Consent" and "Concomit
 @release_564_Patch11
 @PB_4.5.2
 @Draft
-@Web
-Scenario: PB_4.5.2
+Scenario: PB_4.5.2 As an EDC user, Cross Forms - Standard form to log form, when a query has been canceled with the different data and I enter the same data that originally opened the query, then queries are displayed.
 
-    Given I select Study "Edit Check Study 3" and Site "Edit Check Site 4"
     And I select a Subject "SUB{Var(num1)}"	
 	And I select Form "Concomitant Medications" in Folder "Screening"
     And I enter data in CRF on a new log line and save and reopen
@@ -557,8 +581,7 @@ Scenario: PB_4.5.2
 	And I open log line 2
 	And I verify Field "Start Date" has no Query
 	And I verify Field "Current Axis Number" has no Query
-	And I take a screenshot
-	
+	And I take a screenshot	
 	When I enter data in CRF and save
 		| Field               | Data        |
 		| Start Date          | 07 Jan 2000 |
@@ -572,13 +595,10 @@ Scenario: PB_4.5.2
 @release_564_Patch11
 @PB_4.6.1
 @Draft
-@Web
-Scenario: PB_4.6.1
-Cross Folders: Standard form to log form
-Folder "Screening" enter and save data on form "Informed Consent"
-Folder "Week 1" enter and save data on form "Concomitant Medications"
-
-    Given I select Study "Edit Check Study 3" and Site "Edit Check Site 4"			  
+Scenario: PB_4.6.1 As an EDC user, Cross Folders - Standard form to log form, when a query has been canceled with the same data and I enter the same data that originally opened the query, then queries are not displayed.
+#Folder "Screening" enter and save data on form "Informed Consent"
+#Folder "Week 1" enter and save data on form "Concomitant Medications"
+		  
     And I create a Subject
 		| Field            | Data              |
 		| Subject Number   | {RndNum<num1>(5)} |
@@ -615,8 +635,7 @@ Folder "Week 1" enter and save data on form "Concomitant Medications"
 	And I open log line 1
 	And I verify Field "Start Date" has no Query
 	And I verify Field "Current Axis Number" has no Query
-	And I take a screenshot
-	
+	And I take a screenshot	
 	When I enter data in CRF and save
 		| Field                | Data        |
 		| Start Date           | 09 Jan 2000 |
@@ -631,10 +650,8 @@ Folder "Week 1" enter and save data on form "Concomitant Medications"
 @release_564_Patch11
 @PB_4.6.2
 @Draft
-@Web
-Scenario: PB_4.6.2
+Scenario: PB_4.6.2 As an EDC user, Cross Folders - Standard form to log form, when a query has been canceled with the different data and I enter the same data that originally opened the query, then queries are displayed.
 
-    Given I select Study "Edit Check Study 3" and Site "Edit Check Site 4"
     And I select a Subject "SUB{Var(num1)}"	
 	And I select Form "Concomitant Medications" in Folder "Week 1"
     And I enter data in CRF on a new log line and save and reopen
@@ -659,7 +676,6 @@ Scenario: PB_4.6.2
 	And I verify Field "Start Date" has no Query
 	And I verify Field "Current Axis Number" has no Query
 	And I take a screenshot
-
 	When I enter data in CRF and save
 		| Field                | Data        |
 		| Start Date           | 08 Jan 2000 |
@@ -674,12 +690,9 @@ Scenario: PB_4.6.2
 @release_564_Patch11
 @PB_4.7.1
 @Draft
-@Web
-Scenario: PB_4.7.1 Verifies query firing between cross forms in opposite direction with no require response and require manual close.
-Cross Forms: log form to Standard form 
-Folder "Week 1" enter and save data on forms "Concomitant Medications" and "Informed Consent"
-
-    Given I select Study "Edit Check Study 3" and Site "Edit Check Site 4"			  
+Scenario: PB_4.7.1 As an EDC user, Cross Forms - log form to Standard form, when a query has been canceled with the same data and I enter the same data that originally opened the query, then queries are not displayed.
+#Folder "Week 1" enter and save data on forms "Concomitant Medications" and "Informed Consent"
+	  
     And I create a Subject
 		| Field            | Data              |
 		| Subject Number   | {RndNum<num1>(5)} |
@@ -707,8 +720,7 @@ Folder "Week 1" enter and save data on forms "Concomitant Medications" and "Info
 	And I open log line 1
 	And I verify Field "End Date" has no Query
 	And I verify Field "Current Axis Number" has no Query
-	And I take a screenshot
-	
+	And I take a screenshot	
 	When I enter data in CRF and save
 		| Field               | Data        |
 		| End Date            | 11 Jan 2000 |
@@ -722,10 +734,8 @@ Folder "Week 1" enter and save data on forms "Concomitant Medications" and "Info
 @release_564_Patch11
 @PB_4.7.2
 @Draft
-@Web
-Scenario: PB_4.7.2
+Scenario: PB_4.7.2 As an EDC user, Cross Forms - log form to Standard form, when a query has been canceled with the different data and I enter the same data that originally opened the query, then queries are displayed.
 
-    Given I select Study "Edit Check Study 3" and Site "Edit Check Site 4"
     And I select a Subject "SUB{Var(num1)}"	
 	And I select Form "Concomitant Medications" in Folder "Week 1"
 	And I add a new log line
@@ -750,8 +760,7 @@ Scenario: PB_4.7.2
 	And I open log line 2
 	And I verify Field "End Date" has no Query
 	And I verify Field "Current Axis Number" has no Query
-	And I take a screenshot
-	
+	And I take a screenshot	
 	When I enter data in CRF and save
 		| Field               | Data        |
 		| End Date            | 14 Feb 2000 |
@@ -765,10 +774,8 @@ Scenario: PB_4.7.2
 @release_564_Patch11
 @PB_4.7.3
 @Draft
-@Web
-Scenario: PB_4.7.3
- 
-    Given I select Study "Edit Check Study 3" and Site "Edit Check Site 4"
+Scenario: PB_4.7.3 As an EDC user, Cross Forms - log form to Standard form, when a query has been canceled with the same data and I enter the same data that originally opened the query, then queries are displayed.
+
     And I select a Subject "SUB{Var(num1)}"   
 	And I select Form "Informed Consent" in Folder "Week 1"
     And I enter data in CRF and save
@@ -791,7 +798,6 @@ Scenario: PB_4.7.3
 	And I verify Field "End Date" has no Query
 	And I verify Field "Current Distribution Number" has no Query
 	And I take a screenshot
-
     When I enter data in CRF and save
 	    | Field                       | Data        |
 	    | End Date                    | 11 Jan 2000 |
@@ -804,12 +810,9 @@ Scenario: PB_4.7.3
 @release_564_Patch11
 @PB_4.8.1
 @Draft
-@Web
-Scenario: PB_4.8.1 Verifies query firing between cross forms in opposite direction in different folder with no require response and require manual close.
-Cross Forms: log form to log form 
-Folder "Screening" enter and save data on forms "Concomitant Medications" and "Adverse Events"
-
-    Given I select Study "Edit Check Study 3" and Site "Edit Check Site 4"			  
+Scenario: PB_4.8.1 As an EDC user, Cross Forms - log form to log form, when a query has been canceled with the same data and I enter the same data that originally opened the query, then queries are not displayed.
+#Folder "Screening" enter and save data on forms "Concomitant Medications" and "Adverse Events"
+	  
     And I create a Subject
 		| Field            | Data              |
 		| Subject Number   | {RndNum<num1>(5)} |
@@ -855,8 +858,7 @@ Folder "Screening" enter and save data on forms "Concomitant Medications" and "A
 	And I verify Field "End Date" has no Query
 	And I verify Field "Original Axis Number" has no Query
 	And I verify Field "Current Axis Number" has no Query
-	And I take a screenshot
-	
+	And I take a screenshot	
 	When I enter data in CRF and save
 		| Field                | Data        |
 		| Start Date           | 10 Jan 2000 |
@@ -874,10 +876,8 @@ Folder "Screening" enter and save data on forms "Concomitant Medications" and "A
 @release_564_Patch11
 @PB_4.8.2
 @Draft
-@Web
-Scenario: PB_4.8.2
+Scenario: PB_4.8.2 As an EDC user, Cross Forms - log form to log form, when a query has been canceled with the different data and I enter the same data that originally opened the query, then queries are displayed.
 
-    Given I select Study "Edit Check Study 3" and Site "Edit Check Site 4"
     And I select a Subject "SUB{Var(num1)}"   
     And I select Form "Concomitant Medications" in Folder "Screening"
 	And I add a new log line
@@ -922,7 +922,6 @@ Scenario: PB_4.8.2
 	And I verify Field "Original Axis Number" has no Query
 	And I verify Field "Current Axis Number" has no Query
 	And I take a screenshot
-
 	When I enter data in CRF and save
 		| Field                | Data        |
 		| Start Date           | 10 Feb 2000 |

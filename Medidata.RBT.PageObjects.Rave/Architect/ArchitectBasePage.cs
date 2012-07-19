@@ -11,14 +11,5 @@ namespace Medidata.RBT.PageObjects.Rave
 {
 	public class ArchitectBasePage : RavePageBase
 	{
-		//protected override IPage GetTargetPageObjectByLinkAreaName(string type, string areaName)
-		//{
-		//    if (type == "Draft" && areaName == "Header")
-		//        return new ArchitectCRFDraftPage();
-		//    if (type == "Study" && areaName == "Header")
-		//        return new ArchitectLibraryPage();
-
-		//    return base.GetTargetPageObjectByLinkAreaName(type, areaName);
-		//}
 	}
 }

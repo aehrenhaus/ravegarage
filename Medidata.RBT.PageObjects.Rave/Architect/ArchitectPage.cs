@@ -20,16 +20,6 @@ namespace Medidata.RBT.PageObjects.Rave
 			return base.GetElementByName(name);
 		}
 
-		//protected override IPage GetTargetPageObjectByLinkAreaName(string type, string areaName)
-		//{
-		//    if (areaName == "Active Projects" || areaName == "Inactive Projects")
-		//    {
-		//        return new ArchitectLibraryPage();
-		//    }
-
-		//    return base.GetTargetPageObjectByLinkAreaName(type, areaName);
-		//}
-
 		public override IPage ClickLink(string linkText)
 		{
 			base.ClickLink(linkText);
@@ -38,6 +28,14 @@ namespace Medidata.RBT.PageObjects.Rave
 				return new ArchitectNewDraftPage();
 
 			return this;
+		}
+
+		public override string URL
+		{
+			get
+			{
+				return "Modules/Architect/Architect.aspx";
+			}
 		}
 	}
 }

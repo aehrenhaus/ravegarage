@@ -54,10 +54,13 @@ Scenario: PB_2.1.1 As an EDC user, On a Cross Forms - Standard form to log form,
 		| Start Date          | 09 Jan 2000 |
 		| Current Axis Number | 19          |	
 	And I open log line 1
-	And I verify Field "Start Date" has no Query
-	And I verify Field "Current Axis Number" has no Query
+	And I verify Query is not displayed
+      | Field      | Query Message                                             | Answered | Closed |
+      | Start Date | 'Date Informed Consent Signed' is greater. Please revise. | true     | true   |
+	And I verify Query is not displayed
+      | Field               | Query Message                                                                                                 | Answered | Closed |
+      | Current Axis Number | Informed Consent 'Current Distribution Number' is not equal to Concomitant Medications 'Current Axis Number'. | true     | true   |
 	And I take a screenshot
-
 	When I enter data in CRF
 		| Field               | Data        |
 		| Start Date          | 08 Jan 2000 |
@@ -66,6 +69,13 @@ Scenario: PB_2.1.1 As an EDC user, On a Cross Forms - Standard form to log form,
 	And I open log line 1
 	Then I verify Query with message "'Date Informed Consent Signed' is greater. Please revise." is displayed on Field "Start Date"
     And I verify Query with message "Informed Consent 'Current Distribution Number' is not equal to Concomitant Medications 'Current Axis Number'." is displayed on Field "Current Axis Number"	
+	And I open log line 1
+	And I verify Query is displayed
+      | Field      | Query Message                                             | Answered | Closed |
+      | Start Date | 'Date Informed Consent Signed' is greater. Please revise. | false    | false  |
+	And I verify Query is displayed
+      | Field               | Query Message                                                                                                 | Answered | Closed |
+      | Current Axis Number | Informed Consent 'Current Distribution Number' is not equal to Concomitant Medications 'Current Axis Number'. | false    | false  |
 	And I take a screenshot
 	  
 #----------------------------------------------------------------------------------------------------------------------------------------	
@@ -92,10 +102,13 @@ Scenario: PB_2.1.2 when a query has been auto answered and auto closed with the 
 		| Start Date          | 09 Jan 2000 |
 		| Current Axis Number | 19          |
 	And I open log line 2
-	And I verify Field "Start Date" has no Query
-	And I verify Field "Current Axis Number" has no Query
+	And I verify Query is not displayed
+      | Field      | Query Message                                             | Answered | Closed |
+      | Start Date | 'Date Informed Consent Signed' is greater. Please revise. | true     | true   |
+	And I verify Query is not displayed
+      | Field               | Query Message                                                                                                 | Answered | Closed |
+      | Current Axis Number | Informed Consent 'Current Distribution Number' is not equal to Concomitant Medications 'Current Axis Number'. | true     | true   |
 	And I take a screenshot
-
 	When I enter data in CRF and save
 		| Field               | Data        |
 		| Start Date          | 07 Jan 2000 |
@@ -103,6 +116,12 @@ Scenario: PB_2.1.2 when a query has been auto answered and auto closed with the 
 	And I open log line 2
 	Then I verify Query with message "'Date Informed Consent Signed' is greater. Please revise." is displayed on Field "Start Date"
     And I verify Query with message "Informed Consent 'Current Distribution Number' is not equal to Concomitant Medications 'Current Axis Number'." is displayed on Field "Current Axis Number"
+	And I verify Query is displayed
+      | Field      | Query Message                                             | Answered | Closed |
+      | Start Date | 'Date Informed Consent Signed' is greater. Please revise. | false    | false  |
+	And I verify Query is displayed
+      | Field               | Query Message                                                                                                 | Answered | Closed |
+      | Current Axis Number | Informed Consent 'Current Distribution Number' is not equal to Concomitant Medications 'Current Axis Number'. | false    | false  |
 	And I take a screenshot
 	
 #----------------------------------------------------------------------------------------------------------------------------------------	
@@ -142,10 +161,13 @@ Scenario: PB_2.2.1 As an EDC user, On a Cross Folders - Standard form to log for
 		| Original Axis Number | 201         |
 		| Current Axis Number  | 200         |
 	And I open log line 1	
-	And I verify Field "Start Date" has no Query
-	And I verify Field "Current Axis Number" has no Query
+	And I verify Query is not displayed
+      | Field      | Query Message                                                      | Answered | Closed |
+      | Start Date | 'Date Informed Consent Signed' can not be greater than Start Date. | true     | true   |
+	And I verify Query is not displayed
+      | Field               | Query Message                                                     | Answered | Closed |
+      | Current Axis Number | 'Current Distribution Number' is not equal 'Current Axis Number'. | true     | true   |
 	And I take a screenshot
-
 	When I enter data in CRF and save
 		| Field                | Data        |
 		| Start Date           | 09 Jan 2000 |
@@ -154,13 +176,19 @@ Scenario: PB_2.2.1 As an EDC user, On a Cross Folders - Standard form to log for
 	And I open log line 1	
 	Then I verify Query with message "'Date Informed Consent Signed' can not be greater than Start Date." is displayed on Field "Start Date"
 	And I verify Query with message "'Current Distribution Number' is not equal 'Current Axis Number'." is displayed on Field "Current Axis Number"
+	And I verify Query is displayed
+      | Field      | Query Message                                                      | Answered | Closed |
+      | Start Date | 'Date Informed Consent Signed' can not be greater than Start Date. | false    | false  |
+	And I verify Query is displayed
+      | Field               | Query Message                                                     | Answered | Closed |
+      | Current Axis Number | 'Current Distribution Number' is not equal 'Current Axis Number'. | false    | false  |
 	And I take a screenshot
 
 #----------------------------------------------------------------------------------------------------------------------------------------	
 @release_564_Patch11
 @PB_2.2.2
 @Draft
-Scenario: PB_2.2.2 when a query has been auto answered and auto closed with the differnt data and I enter the same data that originally opened the query, then queries are displayed. 
+Scenario: PB_2.2.2 As an EDC user, On a Cross Folders - Standard form to log form, when a query has been auto answered and auto closed with the differnt data and I enter the same data that originally opened the query, then queries are displayed. 
  
     Given I select Study "Edit Check Study 3" and Site "Edit Check Site 2"
     And I select a Subject "SUB{Var(num1)}"
@@ -180,10 +208,13 @@ Scenario: PB_2.2.2 when a query has been auto answered and auto closed with the 
 		| Original Axis Number | 201         |
 		| Current Axis Number  | 200         |
 	And I open log line 2		
-	And I verify Field "Start Date" has no Query
-	And I verify Field "Current Axis Number" has no Query
+	And I verify Query is not displayed
+      | Field      | Query Message                                                      | Answered | Closed |
+      | Start Date | 'Date Informed Consent Signed' can not be greater than Start Date. | true     | true   |
+	And I verify Query is not displayed
+      | Field               | Query Message                                                     | Answered | Closed |
+      | Current Axis Number | 'Current Distribution Number' is not equal 'Current Axis Number'. | true     | true   |
 	And I take a screenshot
-
 	When I enter data in CRF and save
 		| Field                | Data        |
 		| Start Date           | 08 Jan 2000 |
@@ -192,13 +223,19 @@ Scenario: PB_2.2.2 when a query has been auto answered and auto closed with the 
 	And I open log line 2
 	Then I verify Query with message "'Date Informed Consent Signed' can not be greater than Start Date." is displayed on Field "Start Date"
 	And I verify Query with message "'Current Distribution Number' is not equal 'Current Axis Number'." is displayed on Field "Current Axis Number"
+	And I verify Query is displayed
+      | Field      | Query Message                                                      | Answered | Closed |
+      | Start Date | 'Date Informed Consent Signed' can not be greater than Start Date. | false    | false  |
+	And I verify Query is displayed
+      | Field               | Query Message                                                     | Answered | Closed |
+      | Current Axis Number | 'Current Distribution Number' is not equal 'Current Axis Number'. | false    | false  |
 	And I take a screenshot
 
 #----------------------------------------------------------------------------------------------------------------------------------------	
 @release_564_Patch11
 @PB_2.3.1
 @Draft
-Scenario: PB_2.3.1 On a Cross Forms - log form to Standard form, when a query has been auto answered and auto closed with the same data and I enter the same data that originally opened the query, then queries are displayed. 
+Scenario: PB_2.3.1 As an EDC user, On a Cross Forms - log form to Standard form, when a query has been auto answered and auto closed with the same data and I enter the same data that originally opened the query, then queries are displayed. 
 #Folder "Week 1" enter and save data on forms "Concomitant Medications" and "Informed Consent"
     
 	Given I select Study "Edit Check Study 3" and Site "Edit Check Site 2"
@@ -222,10 +259,13 @@ Scenario: PB_2.3.1 On a Cross Forms - log form to Standard form, when a query ha
 		| End Date            | 12 Jan 2000 |
 		| Current Axis Number | 100         |
 	And I open log line 1
-	And I verify Field "End Date" has no Query
-	And I verify Field "Current Axis Number" has no Query
+	And I verify Query is not displayed
+      | Field    | Query Message                                | Answered | Closed |
+      | End Date | Start Date can not be greater than End Date. | true     | true   |
+	And I verify Query is not displayed
+      | Field               | Query Message                                                                    | Answered | Closed |
+      | Current Axis Number | 'Original Axis Number' is Less Than 'Current Axis Number' on first Number field. | true     | true   |
 	And I take a screenshot
-
 	When I enter data in CRF and save
 		| Field               | Data        |
 		| End Date            | 11 Jan 2000 |
@@ -233,13 +273,19 @@ Scenario: PB_2.3.1 On a Cross Forms - log form to Standard form, when a query ha
 	And I open log line 1	
 	Then I verify Query with message "Start Date can not be greater than End Date." is displayed on Field "End Date"
     And I verify Query with message "'Original Axis Number' is Less Than 'Current Axis Number' on first Number field." is displayed on Field "Current Axis Number"
+	And I verify Query is displayed
+      | Field    | Query Message                                | Answered | Closed |
+      | End Date | Start Date can not be greater than End Date. | false    | false  |
+	And I verify Query is displayed
+      | Field               | Query Message                                                                    | Answered | Closed |
+      | Current Axis Number | 'Original Axis Number' is Less Than 'Current Axis Number' on first Number field. | false    | false  |
 	And I take a screenshot
 	
 #----------------------------------------------------------------------------------------------------------------------------------------	
 @release_564_Patch11
 @PB_2.3.2
 @Draft
-Scenario: PB_2.3.2 when a query has been auto answered and auto closed with the same data and I enter the same data that originally opened the query, then queries are displayed. 
+Scenario: PB_2.3.2 As an EDC user, On a Cross Forms - log form to Standard form, when a query has been auto answered and auto closed with the same data and I enter the same data that originally opened the query, then queries are displayed. 
 	
     Given I select Study "Edit Check Study 3" and Site "Edit Check Site 2"
     And I select a Subject "SUB{Var(num1)}"
@@ -258,10 +304,13 @@ Scenario: PB_2.3.2 when a query has been auto answered and auto closed with the 
 		| End Date            | 15 Feb 2000 |
 		| Current Axis Number | 1999        |
 	And I open log line 2
-	And I verify Field "End Date" has no Query
-	And I verify Field "Current Axis Number" has no Query
+	And I verify Query is not displayed
+      | Field    | Query Message                                | Answered | Closed |
+      | End Date | Start Date can not be greater than End Date. | true     | true   |
+	And I verify Query is not displayed
+      | Field               | Query Message                                                                    | Answered | Closed |
+      | Current Axis Number | 'Original Axis Number' is Less Than 'Current Axis Number' on first Number field. | true     | true   |
 	And I take a screenshot
-
 	When I enter data in CRF and save
 		| Field               | Data        |
 		| End Date            | 14 Feb 2000 |
@@ -269,13 +318,19 @@ Scenario: PB_2.3.2 when a query has been auto answered and auto closed with the 
 	And I open log line 2
 	Then I verify Query with message "Start Date can not be greater than End Date." is displayed on Field "End Date"
     And I verify Query with message "'Original Axis Number' is Less Than 'Current Axis Number' on first Number field." is displayed on Field "Current Axis Number"
+	And I verify Query is displayed
+      | Field    | Query Message                                | Answered | Closed |
+      | End Date | Start Date can not be greater than End Date. | false    | false  |
+	And I verify Query is displayed
+      | Field               | Query Message                                                                    | Answered | Closed |
+      | Current Axis Number | 'Original Axis Number' is Less Than 'Current Axis Number' on first Number field. | false    | false  |
 	And I take a screenshot
 
 #----------------------------------------------------------------------------------------------------------------------------------------	
 @release_564_Patch11
 @PB_2.3.3
 @Draft
-Scenario: PB_2.3.3 when a query has been auto answered and auto closed with the differnt data and I enter the same data that originally opened the query, then queries are displayed. 
+Scenario: PB_2.3.3 As an EDC user, On a Cross Forms - log form to Standard form, when a query has been auto answered and auto closed with the differnt data and I enter the same data that originally opened the query, then queries are displayed. 
 
     Given I select Study "Edit Check Study 3" and Site "Edit Check Site 2"
     And I select a Subject "SUB{Var(num1)}"
@@ -293,10 +348,13 @@ Scenario: PB_2.3.3 when a query has been auto answered and auto closed with the 
 	    | Field                       | Data        |
 	    | End Date                    | 13 Jan 2000 |
 	    | Current Distribution Number | 100         |	
-	And I verify Field "End Date" has no Query
-	And I verify Field "Current Distribution Number" has no Query		
+	And I verify Query is not displayed
+      | Field    | Query Message                                                | Answered | Closed |
+      | End Date | 'Date Informed Consent Signed' is not equal to Current Date. | true     | true   |
+	And I verify Query is not displayed
+      | Field               | Query Message                                                                          | Answered | Closed |
+      | Current Axis Number | 'Original Distribution Number' and 'Current Distribution Number' fields are not equal. | true     | true   |
 	And I take a screenshot
-
     When I enter data in CRF and save
 	    | Field                       | Data        |
 	    | End Date                    | 11 Jan 2000 |
@@ -304,13 +362,19 @@ Scenario: PB_2.3.3 when a query has been auto answered and auto closed with the 
 	And I save the CRF page
 	Then I verify Query with message "'Date Informed Consent Signed' is not equal to Current Date." is displayed on Field "End Date"
     And I verify Query with message "'Original Distribution Number' and 'Current Distribution Number' fields are not equal." is displayed on Field "Current Distribution Number"
+	And I verify Query is displayed
+      | Field    | Query Message                                                | Answered | Closed |
+      | End Date | 'Date Informed Consent Signed' is not equal to Current Date. | false    | false  |
+	And I verify Query is displayed
+      | Field                       | Query Message                                                                          | Answered | Closed |
+      | Current Distribution Number | 'Original Distribution Number' and 'Current Distribution Number' fields are not equal. | false    | false  |
 	And I take a screenshot
 	
 #----------------------------------------------------------------------------------------------------------------------------------------	
 @release_564_Patch11
 @PB_2.4.1
 @Draft
-Scenario: PB_2.4.1 As and EDC user, On a Cross Forms: log form to log form, when a query has been auto answered and auto closed with the same data and I enter the same data that originally opened the query, then queries are displayed. 
+Scenario: PB_2.4.1 As and EDC user, On a Cross Forms - log form to log form, when a query has been auto answered and auto closed with the same data and I enter the same data that originally opened the query, then queries are displayed. 
 #Folder "Screening" enter and save data on forms "Concomitant Medications" and "Adverse Events"
 			  
     Given I select Study "Edit Check Study 3" and Site "Edit Check Site 2"
@@ -348,12 +412,19 @@ Scenario: PB_2.4.1 As and EDC user, On a Cross Forms: log form to log form, when
 	    | Original Axis Number | 102         |
 	    | Current Axis Number  | 65          |	
 	And I open log line 1
-	And I verify Field "Start Date" has no Query
-	And I verify Field "End Date" has no Query
-	And I verify Field "Original Axis Number" has no Query
-	And I verify Field "Current Axis Number" has no Query
+	And I verify Query is not displayed
+      | Field      | Query Message              | Answered | Closed |
+      | Start Date | Date can not be less than. | true     | true   |
+	And I verify Query is not displayed
+      | Field    | Query Message                                 | Answered | Closed |
+      | End Date | Date is Less Than Date on the first log form. | true     | true   |
+	And I verify Query is not displayed
+      | Field                | Query Message                                                          | Answered | Closed |
+      | Original Axis Number | 'AE Number' is greater than or Equal to 'Original Axis Number' on Log. | true     | true   |
+	And I verify Query is not displayed
+      | Field               | Query Message                                      | Answered | Closed |
+      | Current Axis Number | 'Duration' and 'Current Axis Number' cannot equal. | true     | true   |
 	And I take a screenshot
-
 	When I enter data in CRF and save
 		| Field                | Data        |
 		| Start Date           | 10 Jan 2000 |
@@ -364,14 +435,26 @@ Scenario: PB_2.4.1 As and EDC user, On a Cross Forms: log form to log form, when
 	Then I verify Query with message "Date can not be less than." is displayed on Field "Start Date"
     And I verify Query with message "Date is Less Than Date on the first log form." is displayed on Field "End Date"
 	And I verify Query with message "'AE Number' is greater than or Equal to 'Original Axis Number' on Log." is displayed on Field "Original Axis Number"
-    And I verify Query with message "'Duration' and 'Current Axis Number' cannot equal." is displayed on Field "Current Axis Number"	
+    And I verify Query with message "'Duration' and 'Current Axis Number' cannot equal." is displayed on Field "Current Axis Number"
+	And I verify Query is displayed
+      | Field      | Query Message              | Answered | Closed |
+      | Start Date | Date can not be less than. | false    | false  |
+	And I verify Query is displayed
+      | Field    | Query Message                                 | Answered | Closed |
+      | End Date | Date is Less Than Date on the first log form. | false    | false  |
+	And I verify Query is displayed
+      | Field                | Query Message                                                          | Answered | Closed |
+      | Original Axis Number | 'AE Number' is greater than or Equal to 'Original Axis Number' on Log. | false    | false  |
+	And I verify Query is displayed
+      | Field               | Query Message                                      | Answered | Closed |
+      | Current Axis Number | 'Duration' and 'Current Axis Number' cannot equal. | false    | false  |		
 	And I take a screenshot
 	 
 #----------------------------------------------------------------------------------------------------------------------------------------	
 @release_564_Patch11
 @PB_2.4.2
 @Draft
-Scenario: PB_2.4.2 when a query has been auto answered and auto closed with the differnt data and I enter the same data that originally opened the query, then queries are displayed. 
+Scenario: PB_2.4.2 As and EDC user, On a Cross Forms - log form to log form, when a query has been auto answered and auto closed with the differnt data and I enter the same data that originally opened the query, then queries are displayed. 
    
     Given I select Study "Edit Check Study 3" and Site "Edit Check Site 2"
     And I select a Subject "SUB{Var(num1)}"
@@ -405,12 +488,19 @@ Scenario: PB_2.4.2 when a query has been auto answered and auto closed with the 
 	    | Original Axis Number | 202         |
 	    | Current Axis Number  | 76          |
 	And I open log line 2
-	And I verify Field "Start Date" has no Query
-	And I verify Field "End Date" has no Query
-	And I verify Field "Original Axis Number" has no Query
-	And I verify Field "Current Axis Number" has no Query
+	And I verify Query is not displayed
+      | Field      | Query Message              | Answered | Closed |
+      | Start Date | Date can not be less than. | true     | true   |
+	And I verify Query is not displayed
+      | Field    | Query Message                                 | Answered | Closed |
+      | End Date | Date is Less Than Date on the first log form. | true     | true   |
+	And I verify Query is not displayed
+      | Field                | Query Message                                                          | Answered | Closed |
+      | Original Axis Number | 'AE Number' is greater than or Equal to 'Original Axis Number' on Log. | true     | true   |
+	And I verify Query is not displayed
+      | Field               | Query Message                                      | Answered | Closed |
+      | Current Axis Number | 'Duration' and 'Current Axis Number' cannot equal. | true     | true   |
 	And I take a screenshot
-
 	When I enter data in CRF and save
 		| Field                | Data        |
 		| Start Date           | 10 Feb 2000 |
@@ -422,6 +512,18 @@ Scenario: PB_2.4.2 when a query has been auto answered and auto closed with the 
     And I verify Query with message "Date is Less Than Date on the first log form." is displayed on Field "End Date"
 	And I verify Query with message "'AE Number' is greater than or Equal to 'Original Axis Number' on Log." is displayed on Field "Original Axis Number"
     And I verify Query with message "'Duration' and 'Current Axis Number' cannot equal." is displayed on Field "Current Axis Number"	
+	And I verify Query is displayed
+      | Field      | Query Message              | Answered | Closed |
+      | Start Date | Date can not be less than. | false    | false  |
+	And I verify Query is displayed
+      | Field    | Query Message                                 | Answered | Closed |
+      | End Date | Date is Less Than Date on the first log form. | false    | false  |
+	And I verify Query is displayed
+      | Field                | Query Message                                                          | Answered | Closed |
+      | Original Axis Number | 'AE Number' is greater than or Equal to 'Original Axis Number' on Log. | false    | false  |
+	And I verify Query is displayed
+      | Field               | Query Message                                      | Answered | Closed |
+      | Current Axis Number | 'Duration' and 'Current Axis Number' cannot equal. | false    | false  |	
 	And I take a screenshot
 	
 #----------------------------------------------------------------------------------------------------------------------------------------	
@@ -467,10 +569,13 @@ Scenario: PB_2.5.1  As an EDC user, on a Cross Forms - Standard form to log form
 		| Start Date          | 09 Jan 2000 |
 		| Current Axis Number | 19          |	
 	And I open log line 1
-	And I verify Field "Start Date" has no Query
-	And I verify Field "Current Axis Number" has no Query
+	And I verify Query is not displayed
+      | Field      | Query Message                                             | Answered | Closed |
+      | Start Date | 'Date Informed Consent Signed' is greater. Please revise. | true     | true   |
+	And I verify Query is not displayed
+      | Field               | Query Message                                                                                                 | Answered | Closed |
+      | Current Axis Number | Informed Consent 'Current Distribution Number' is not equal to Concomitant Medications 'Current Axis Number'. | true     | true   |
 	And I take a screenshot
-
 	When I enter data in CRF and save
 		| Field               | Data        |
 		| Start Date          | 08 Jan 2000 |
@@ -478,13 +583,19 @@ Scenario: PB_2.5.1  As an EDC user, on a Cross Forms - Standard form to log form
 	And I open log line 1
 	Then I verify Query with message "'Date Informed Consent Signed' is greater. Please revise." is not displayed on Field "Start Date"
     And I verify Query with message "Informed Consent 'Current Distribution Number' is not equal to Concomitant Medications 'Current Axis Number'." is not displayed on Field "Current Axis Number"
+	And I verify Query is not displayed
+      | Field      | Query Message                                             | Answered | Closed |
+      | Start Date | 'Date Informed Consent Signed' is greater. Please revise. | true     | true   |
+	And I verify Query is not displayed
+      | Field               | Query Message                                                                                                 | Answered | Closed |
+      | Current Axis Number | Informed Consent 'Current Distribution Number' is not equal to Concomitant Medications 'Current Axis Number'. | true     | true   |
 	And I take a screenshot
 
 #----------------------------------------------------------------------------------------------------------------------------------------	
 @release_564_Patch11
 @PB_2.5.2
 @Draft
-Scenario: PB_2.5.2 when a query has been auto answered and auto closed with the differnt data and I enter the same data that originally opened the query, then queries are displayed. 
+Scenario: PB_2.5.2 As an EDC user, on a Cross Forms - Standard form to log form, when a query has been auto answered and auto closed with the differnt data and I enter the same data that originally opened the query, then queries are displayed. 
    
     Given I select Study "Edit Check Study 3" and Site "Edit Check Site 2"
     And I select a Subject "SUB{Var(num1)}"
@@ -507,10 +618,13 @@ Scenario: PB_2.5.2 when a query has been auto answered and auto closed with the 
 	And I save the CRF page
 	And I take a screenshot
 	And I open log line 2
-	And I verify Field "Start Date" has no Query
-	And I verify Field "Current Axis Number" has no Query
+	And I verify Query is not displayed
+      | Field      | Query Message                                             | Answered | Closed |
+      | Start Date | 'Date Informed Consent Signed' is greater. Please revise. | true     | true   | 
+	And I verify Query is not displayed
+      | Field               | Query Message                                                                                                 | Answered | Closed |
+      | Current Axis Number | Informed Consent 'Current Distribution Number' is not equal to Concomitant Medications 'Current Axis Number'. | true     | true   |
 	And I take a screenshot
-
 	When I enter data in CRF and save
 		| Field               | Data        |
 		| Start Date          | 07 Jan 2000 |
@@ -518,13 +632,19 @@ Scenario: PB_2.5.2 when a query has been auto answered and auto closed with the 
 	And I open log line 2
 	Then I verify Query with message "'Date Informed Consent Signed' is greater. Please revise." is displayed on Field "Start Date"
     And I verify Query with message "Informed Consent 'Current Distribution Number' is not equal to Concomitant Medications 'Current Axis Number'." is displayed on Field "Current Axis Number"
+	And I verify Query is displayed
+      | Field      | Query Message                                             | Answered | Closed |
+      | Start Date | 'Date Informed Consent Signed' is greater. Please revise. | false    | false  | 
+	And I verify Query is displayed
+      | Field               | Query Message                                                                                                 | Answered | Closed |
+      | Current Axis Number | Informed Consent 'Current Distribution Number' is not equal to Concomitant Medications 'Current Axis Number'. | false    | false  |
 	And I take a screenshot
 	
 #----------------------------------------------------------------------------------------------------------------------------------------	
 @release_564_Patch11
 @PB_2.6.1
 @Draft
-Scenario: PB_2.6.1 As an EDC user, On a Cross Folders - Standard form Sto log form, when a query has been auto answered and auto closed with the same data and I enter the same data that originally opened the query, then queries are not displayed. 
+Scenario: PB_2.6.1 As an EDC user, On a Cross Folders - Standard form to log form, when a query has been auto answered and auto closed with the same data and I enter the same data that originally opened the query, then queries are not displayed. 
 #Folder "Screening" enter and save data on form "Informed Consent", Folder "Week 1" enter and save data on form "Concomitant Medications"
 			  
     Given I select Study "Edit Check Study 3" and Site "Edit Check Site 2"
@@ -562,10 +682,13 @@ Scenario: PB_2.6.1 As an EDC user, On a Cross Folders - Standard form Sto log fo
 		| Original Axis Number | 201         |
 		| Current Axis Number  | 200         |	
 	And I open log line 1
-	And I verify Field "Start Date" has no Query
-	And I verify Field "Current Axis Number" has no Query
-	And I take a screenshot
-	
+	And I verify Query is not displayed
+      | Field      | Query Message                                                      | Answered | Closed |
+      | Start Date | 'Date Informed Consent Signed' can not be greater than Start Date. | true     | true   | 
+	And I verify Query is not displayed
+      | Field               | Query Message                                                     | Answered | Closed |
+      | Current Axis Number | 'Current Distribution Number' is not equal 'Current Axis Number'. | true     | true   |
+	And I take a screenshot	
 	When I enter data in CRF
 		| Field                | Data        |
 		| Start Date           | 09 Jan 2000 |
@@ -575,13 +698,19 @@ Scenario: PB_2.6.1 As an EDC user, On a Cross Folders - Standard form Sto log fo
 	And I open log line 1	
 	Then I verify Query with message "'Date Informed Consent Signed' can not be greater than Start Date." is not displayed on Field "Start Date"
     And I verify Query with message "'Current Distribution Number' is not equal 'Current Axis Number'." is not displayed on Field "Current Axis Number"
+	And I verify Query is not displayed
+      | Field      | Query Message                                                      | Answered | Closed |
+      | Start Date | 'Date Informed Consent Signed' can not be greater than Start Date. | true     | true   | 
+	And I verify Query is not displayed
+      | Field               | Query Message                                                     | Answered | Closed |
+      | Current Axis Number | 'Current Distribution Number' is not equal 'Current Axis Number'. | true     | true   |
 	And I take a screenshot
 	 
 #----------------------------------------------------------------------------------------------------------------------------------------	
 @release_564_Patch11
 @PB_2.6.2
 @Draft
-Scenario: PB_2.6.2 when a query has been auto answered and auto closed with the differnt data and I enter the same data that originally opened the query, then queries are displayed. 
+Scenario: PB_2.6.2 As an EDC user, On a Cross Folders - Standard form to log form, when a query has been auto answered and auto closed with the differnt data and I enter the same data that originally opened the query, then queries are displayed. 
  
     Given I select Study "Edit Check Study 3" and Site "Edit Check Site 2"
     And I select a Subject "SUB{Var(num1)}"
@@ -605,8 +734,12 @@ Scenario: PB_2.6.2 when a query has been auto answered and auto closed with the 
 	And I save the CRF page
 	And I take a screenshot
 	And I open log line 2
-	And I verify Field "Start Date" has no Query
-	And I verify Field "Current Axis Number" has no Query
+	And I verify Query is not displayed
+      | Field      | Query Message                                                      | Answered | Closed |
+      | Start Date | 'Date Informed Consent Signed' can not be greater than Start Date. | true     | true   | 
+	And I verify Query is not displayed
+      | Field               | Query Message                                                     | Answered | Closed |
+      | Current Axis Number | 'Current Distribution Number' is not equal 'Current Axis Number'. | true     | true   |
 	And I take a screenshot
 	And I enter data in CRF and save
 		| Field                | Data        |
@@ -616,6 +749,12 @@ Scenario: PB_2.6.2 when a query has been auto answered and auto closed with the 
 	And I open log line 2
 	And I verify Query with message "'Date Informed Consent Signed' can not be greater than Start Date." is displayed on Field "Start Date"
     And I verify Query with message "'Current Distribution Number' is not equal 'Current Axis Number'." is displayed on Field "Current Axis Number"
+	And I verify Query is displayed
+      | Field      | Query Message                                                      | Answered | Closed |
+      | Start Date | 'Date Informed Consent Signed' can not be greater than Start Date. | false    | false  |
+	And I verify Query is displayed
+      | Field               | Query Message                                                     | Answered | Closed |
+      | Current Axis Number | 'Current Distribution Number' is not equal 'Current Axis Number'. | false    | false  |
 	And I take a screenshot
 	
 #----------------------------------------------------------------------------------------------------------------------------------------	
@@ -652,10 +791,13 @@ Scenario: PB_2.7.1 As an EDC user, On a Cross Forms log - form to Standard form,
 		| End Date            | 12 Jan 2000 |
 		| Current Axis Number | 100         |
 	And I open log line 1
-	And I verify Field "End Date" has no Query
-	And I verify Field "Current Axis Number" has no Query
+	And I verify Query is not displayed
+      | Field      | Query Message                                | Answered | Closed |
+      | Start Date | Start Date can not be greater than End Date. | true     | true   | 
+	And I verify Query is not displayed
+      | Field               | Query Message                                                                    | Answered | Closed |
+      | Current Axis Number | 'Original Axis Number' is Less Than 'Current Axis Number' on first Number field. | true     | true   |
 	And I take a screenshot
-
 	When I enter data in CRF and save
 		| Field               | Data        |
 		| End Date            | 11 Jan 2000 |
@@ -663,13 +805,19 @@ Scenario: PB_2.7.1 As an EDC user, On a Cross Forms log - form to Standard form,
 	And I open log line 1
 	Then I verify Query with message "Start Date can not be greater than End Date." is not displayed on Field "End Date"
     And I verify Query with message "'Original Axis Number' is Less Than 'Current Axis Number' on first Number field." is not displayed on Field "Current Axis Number"
+	And I verify Query is not displayed
+      | Field    | Query Message                                | Answered | Closed |
+      | End Date | Start Date can not be greater than End Date. | true     | true   |
+	And I verify Query is not displayed
+      | Field               | Query Message                                                                    | Answered | Closed |
+      | Current Axis Number | 'Original Axis Number' is Less Than 'Current Axis Number' on first Number field. | true     | true   |
 	And I take a screenshot
 	
 #----------------------------------------------------------------------------------------------------------------------------------------	
 @release_564_Patch11
 @PB_2.7.2
 @Draft
-Scenario: PB_2.7.2 when a query has been auto answered and auto closed with the differnt data and I enter the same data that originally opened the query, then queries are displayed. 
+Scenario: PB_2.7.2 As an EDC user, On a Cross Forms log - form to Standard form, when a query has been auto answered and auto closed with the differnt data and I enter the same data that originally opened the query, then queries are displayed. 
 	
     Given I select Study "Edit Check Study 3" and Site "Edit Check Site 2"
     And I select a Subject "SUB{Var(num1)}"
@@ -692,8 +840,12 @@ Scenario: PB_2.7.2 when a query has been auto answered and auto closed with the 
 	And I save the CRF page
 	And I take a screenshot
 	And I open log line 2
-	And I verify Field "End Date" has no Query
-	And I verify Field "Current Axis Number" has no Query
+	And I verify Query is not displayed
+      | Field    | Query Message                                | Answered | Closed |
+      | End Date | Start Date can not be greater than End Date. | true     | true   |
+	And I verify Query is not displayed
+      | Field               | Query Message                                                                    | Answered | Closed |
+      | Current Axis Number | 'Original Axis Number' is Less Than 'Current Axis Number' on first Number field. | true     | true   |
 	And I take a screenshot	
 	When I enter data in CRF and save
 		| Field               | Data        |
@@ -702,13 +854,19 @@ Scenario: PB_2.7.2 when a query has been auto answered and auto closed with the 
 	And I open log line 2
 	Then I verify Query with message "Start Date can not be greater than End Date." is displayed on Field "End Date"
     And I verify Query with message "'Original Axis Number' is Less Than 'Current Axis Number' on first Number field." is displayed on Field "Current Axis Number"
+	And I verify Query is displayed
+      | Field    | Query Message                                | Answered | Closed |
+      | End Date | Start Date can not be greater than End Date. | false    | false  |
+	And I verify Query is displayed
+      | Field               | Query Message                                                                    | Answered | Closed |
+      | Current Axis Number | 'Original Axis Number' is Less Than 'Current Axis Number' on first Number field. | false    | false  |
 	And I take a screenshot
   
 #----------------------------------------------------------------------------------------------------------------------------------------	
 @release_564_Patch11
 @PB_2.7.3
 @Draft
-Scenario: PB_2.7.3 As an EDC user, when a query has been auto answered and auto closed with the differnt data and I enter the same data that originally opened the query, then queries are displayed. 
+Scenario: PB_2.7.3 As an EDC user, On a Cross Forms log - form to Standard form, when a query has been auto answered and auto closed with the differnt data and I enter the same data that originally opened the query, then queries are displayed. 
   
     Given I select Study "Edit Check Study 3" and Site "Edit Check Site 2"
     And I select a Subject "SUB{Var(num1)}"
@@ -730,17 +888,26 @@ Scenario: PB_2.7.3 As an EDC user, when a query has been auto answered and auto 
 	And I cancel the Query "'Original Distribution Number' and 'Current Distribution Number' fields are not equal." on Field "Current Distribution Number"
 	And I save the CRF page
 	And I take a screenshot
-	And I verify Field "End Date" has no Query
-	And I verify Field "Current Distribution Number" has no Query
+	And I verify Query is not displayed
+      | Field    | Query Message                                                | Answered | Closed |
+      | End Date | 'Date Informed Consent Signed' is not equal to Current Date. | true     | true   |
+	And I verify Query is not displayed
+      | Field                       | Query Message                                                                          | Answered | Closed |
+      | Current Distribution Number | 'Original Distribution Number' and 'Current Distribution Number' fields are not equal. | true     | true   |
 	And I take a screenshot
-
-    When I enter data in CRF
+	When I enter data in CRF
 	    | Field                       | Data        |
 	    | End Date                    | 11 Jan 2000 |
 	    | Current Distribution Number | 101         |
 	And I save the CRF page
 	Then I verify Query with message "'Date Informed Consent Signed' is not equal to Current Date." is displayed on Field "End Date"
     And I verify Query with message "'Original Distribution Number' and 'Current Distribution Number' fields are not equal." is displayed on Field "Current Distribution Number"
+	And I verify Query is displayed
+      | Field    | Query Message                                                | Answered | Closed |
+      | End Date | 'Date Informed Consent Signed' is not equal to Current Date. | false    | false  |
+	And I verify Query is displayed
+      | Field                       | Query Message                                                                          | Answered | Closed |
+      | Current Distribution Number | 'Original Distribution Number' and 'Current Distribution Number' fields are not equal. | false    | false  |
 	And I take a screenshot
 
 #----------------------------------------------------------------------------------------------------------------------------------------	
@@ -792,30 +959,50 @@ Scenario: PB_2.8.1	As and EDC user, on a Cross Forms - log form to log form, whe
 	    | Original Axis Number | 102         |
 	    | Current Axis Number  | 65          |
 	And I open log line 1
-	And I verify Field "Start Date" has no Query
-	And I verify Field "Original Axis Number" has no Query
-	And I verify Field "End Date" has no Query
-	And I verify Field "Current Axis Number" has no Query
+	And I verify Query is not displayed
+      | Field      | Query Message              | Answered | Closed |
+      | Start Date | Date can not be less than. | true     | true   |
+	And I verify Query is not displayed
+      | Field    | Query Message                                 | Answered | Closed |
+      | End Date | Date is Less Than Date on the first log form. | true     | true   |
+	And I verify Query is not displayed
+      | Field                | Query Message                                                          | Answered | Closed |
+      | Original Axis Number | 'AE Number' is greater than or Equal to 'Original Axis Number' on Log. | true     | true   |
+	And I verify Query is not displayed
+      | Field               | Query Message                                      | Answered | Closed |
+      | Current Axis Number | 'Duration' and 'Current Axis Number' cannot equal. | true     | true   |
 	And I take a screenshot
 	And I open log line 1
-	And I enter data in CRF and save
+	When I enter data in CRF and save
 		| Field                | Data        |
 		| Start Date           | 10 Jan 2000 |
 		| End Date             | 10 Feb 2000 |
 		| Original Axis Number | 100         |
 		| Current Axis Number  | 66          |
 	And I open log line 1
-	And I verify Query with message "Date can not be less than." is not displayed on Field "Start Date"
+	Then I verify Query with message "Date can not be less than." is not displayed on Field "Start Date"
     And I verify Query with message "Date is Less Than Date on the first log form." is not displayed on Field "End Date"
 	And I verify Query with message "'AE Number' is greater than or Equal to 'Original Axis Number' on Log." is not displayed on Field "Original Axis Number"
-    And I verify Query with message "'Duration' and 'Current Axis Number' cannot equal." is not displayed on Field "Current Axis Number"	
+    And I verify Query with message "'Duration' and 'Current Axis Number' cannot equal." is not displayed on Field "Current Axis Number"
+	And I verify Query is not displayed
+      | Field      | Query Message              | Answered | Closed |
+      | Start Date | Date can not be less than. | false    | false  |
+	And I verify Query is not displayed
+      | Field    | Query Message                                 | Answered | Closed |
+      | End Date | Date is Less Than Date on the first log form. | false    | false  |
+	And I verify Query is not displayed
+      | Field                | Query Message                                                          | Answered | Closed |
+      | Original Axis Number | 'AE Number' is greater than or Equal to 'Original Axis Number' on Log. | false    | false  |
+	And I verify Query is not displayed
+      | Field               | Query Message                                      | Answered | Closed |
+      | Current Axis Number | 'Duration' and 'Current Axis Number' cannot equal. | false    | false  |	
 	And I take a screenshot
    
 #----------------------------------------------------------------------------------------------------------------------------------------	
 @release_564_Patch11
 @PB_2.8.2
 @Draft
-Scenario: PB_2.8.2 when a query has been auto answered and auto closed with the differnt data and I enter the same data that originally opened the query, then queries are displayed. 
+Scenario: PB_2.8.2 As and EDC user, on a Cross Forms - log form to log form, when a query has been auto answered and auto closed with the differnt data and I enter the same data that originally opened the query, then queries are displayed.
   
     Given I select Study "Edit Check Study 3" and Site "Edit Check Site 2"
     And I select a Subject "SUB{Var(num1)}"
@@ -856,22 +1043,42 @@ Scenario: PB_2.8.2 when a query has been auto answered and auto closed with the 
 	And I cancel the Query "'Duration' and 'Current Axis Number' cannot equal." on Field "Current Axis Number"
 	And I save the CRF page
 	And I open log line 2
-	And I verify Field "Start Date" has no Query
-	And I verify Field "End Date" has no Query
-	And I verify Field "Original Axis Number" has no Query
-	And I verify Field "Current Axis Number" has no Query
+	And I verify Query is not displayed
+      | Field      | Query Message              | Answered | Closed |
+      | Start Date | Date can not be less than. | true     | true   |
+	And I verify Query is not displayed
+      | Field    | Query Message                                 | Answered | Closed |
+      | End Date | Date is Less Than Date on the first log form. | true     | true   |
+	And I verify Query is not displayed
+      | Field                | Query Message                                                          | Answered | Closed |
+      | Original Axis Number | 'AE Number' is greater than or Equal to 'Original Axis Number' on Log. | true     | true   |
+	And I verify Query is not displayed
+      | Field               | Query Message                                      | Answered | Closed |
+      | Current Axis Number | 'Duration' and 'Current Axis Number' cannot equal. | true     | true   |
 	And I take a screenshot
-	And I enter data in CRF and save
+	When I enter data in CRF and save
 		| Field                | Data        |
 		| Start Date           | 10 Feb 2000 |
 		| End Date             | 10 Mar 2000 |
 		| Original Axis Number | 200         |
 		| Current Axis Number  | 77          |
 	And I open log line 2
-	And I verify Query with message "Date can not be less than." is displayed on Field "Start Date"
+	Then I verify Query with message "Date can not be less than." is displayed on Field "Start Date"
     And I verify Query with message "Date is Less Than Date on the first log form." is displayed on Field "End Date"
 	And I verify Query with message "'AE Number' is greater than or Equal to 'Original Axis Number' on Log." is displayed on Field "Original Axis Number"
     And I verify Query with message "'Duration' and 'Current Axis Number' cannot equal." is displayed on Field "Current Axis Number"	
+	And I verify Query is displayed
+      | Field      | Query Message              | Answered | Closed |
+      | Start Date | Date can not be less than. | false    | false  |
+	And I verify Query is displayed
+      | Field    | Query Message                                 | Answered | Closed |
+      | End Date | Date is Less Than Date on the first log form. | false    | false  |
+	And I verify Query is displayed
+      | Field                | Query Message                                                          | Answered | Closed |
+      | Original Axis Number | 'AE Number' is greater than or Equal to 'Original Axis Number' on Log. | false    | false  |
+	And I verify Query is displayed
+      | Field               | Query Message                                      | Answered | Closed |
+      | Current Axis Number | 'Duration' and 'Current Axis Number' cannot equal. | false    | false  |	
 	And I take a screenshot
 	
 #----------------------------------------------------------------------------------------------------------------------------------------	

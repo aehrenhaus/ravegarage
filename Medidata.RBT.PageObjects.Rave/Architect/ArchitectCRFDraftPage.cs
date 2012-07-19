@@ -55,6 +55,13 @@ namespace Medidata.RBT.PageObjects.Rave
 			return text;
 		}
 
+		public override string URL
+		{
+			get
+			{
+				return "Modules/Architect/CrfDraftPage.aspx";
+			}
+		}
 	
 	}
 }

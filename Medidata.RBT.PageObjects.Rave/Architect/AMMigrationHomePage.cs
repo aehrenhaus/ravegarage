@@ -30,5 +30,13 @@ namespace Medidata.RBT.PageObjects.Rave
 			}
 			return base.NavigateTo(name);
 		}
+
+		public override string URL
+		{
+			get
+			{
+				return "Modules/AmendmentManager/MigrationHome.aspx";
+			}
+		}
 	}
 }

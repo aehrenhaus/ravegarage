@@ -60,6 +60,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Architect\AMMigrationExecutePage.cs" />
+    <Compile Include="Architect\AMMigrationResultPage.cs" />
+    <Compile Include="Architect\PublishChecksHomePage.cs" />
     <Compile Include="EDC\BaseEDCTreePage.cs" />
     <Compile Include="Architect\ArchitectPage.cs" />
     <Compile Include="Architect\ArchitectLibraryPage.cs" />

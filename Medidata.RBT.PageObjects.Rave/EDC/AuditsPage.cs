@@ -11,6 +11,7 @@ namespace Medidata.RBT.PageObjects.Rave
 {
 	public class AuditsPage : RavePageBase
 	{
+		//TODO: support wild char or regex
 		public bool AuditExist(AuditModel audit, bool isLatest = false)
 		{
 			if (audit.AuditType == "Query Canceled")
@@ -26,7 +27,7 @@ namespace Medidata.RBT.PageObjects.Rave
 			IWebElement table = Browser.TryFindElementByPartialID("AuditsGrid");
 			var auditTDs = table.FindElements(By.XPath("./tbody/tr[position()>1]/td[1]"));
 
-			var td = auditTDs.FirstOrDefault(x => x.Text == message);
+			var td = auditTDs.FirstOrDefault(x => x.Text.Contains( message));
 
 
 			return td!=null;
@@ -34,12 +35,12 @@ namespace Medidata.RBT.PageObjects.Rave
 
 		public bool AuditExist_OpenQuery(string query, bool isLatest = false)
 		{
-			return AuditExist(string.Format ("User opened query '{0}' (Site).",query), isLatest);
+			return AuditExist(string.Format ("User opened query '{0}'",query), isLatest);
 		}
 
 		public bool AuditExist_CancelQuery(string query, bool isLatest = false)
 		{
-			return AuditExist(string.Format("Query '{0}' canceled (Site).",query), isLatest);
+			return AuditExist(string.Format("Query '{0}' canceled",query), isLatest);
 		}
 	}
 }
