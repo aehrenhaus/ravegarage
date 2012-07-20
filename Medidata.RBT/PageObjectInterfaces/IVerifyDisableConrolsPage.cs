@@ -6,7 +6,7 @@ using TechTalk.SpecFlow;
 
 namespace Medidata.RBT
 {
-	public interface IVerifyDisableControlsPage : IPage
+	public interface IVerifyDisableControlsPage: IPage
 	{
 		bool ControlsAreDisabled(Table table);
 	}

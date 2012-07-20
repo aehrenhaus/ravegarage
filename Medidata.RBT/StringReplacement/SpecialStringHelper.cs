@@ -8,6 +8,11 @@ using TechTalk.SpecFlow;
 
 namespace Medidata.RBT
 {
+	/// <summary>
+	/// All the string replacement shall be done throught calling SpecialStringHelper.Replace()
+	/// 
+	/// 
+	/// </summary>
     public class SpecialStringHelper
     {
 		static Dictionary<string, IStringReplace> allReplaces = new Dictionary<string, IStringReplace>();
@@ -22,6 +27,20 @@ namespace Medidata.RBT
             }
         }
 
+		/// <summary>
+		/// This method will scan the input to see if the special pattern exists.
+		/// See readme.txt or medinet document of this project
+		/// 
+		/// If the pattern exists in the input, it will extract the 3 components:
+		///		replacement method name
+		///		arguments
+		///		variable name
+		///	And it will find a matching IStringReplace object and do the actual replacement
+		///	
+		/// 
+		/// </summary>
+		/// <param name="input"></param>
+		/// <returns></returns>
         public static string Replace(string input)
         {
 			Regex reg = new Regex(@"{(?<name>.+?)(\<(?<var>.+?)\>)?\((?<args>.*)?\)}");

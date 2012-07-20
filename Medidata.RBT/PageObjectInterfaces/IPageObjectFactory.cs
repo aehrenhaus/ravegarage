@@ -16,7 +16,7 @@ namespace Medidata.RBT
 		IPage GetPage(string className);
 
 		/// <summary>
-		/// Get page object instance by url
+		/// Get page object instance by the actual url in browser
 		/// This will use the URL property of IPage to do the matching.
 		/// </summary>
 		/// <param name="uri"></param>
