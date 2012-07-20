@@ -17,13 +17,9 @@ Background:
 		|Defuser |Standard Study	|cdm1 |Site 1 |S100			|
 	And I select Study "Standard Study" and Site "Site 1"
 
-	#And Role "cdm1" has Action "Query"
-	#And study "Standard Study" had draft "<Draft1>"
-	#And I publish and push "CRF Version<RANDOMNUMBER>" to site "Site 1"
-
 @release_564_Patch11
 @PB_US12940_01A
-@Draft		
+@Validation		
 Scenario: PB_US12940_01A As an EDC user, when I entered bad data in field A that resulted in the system opening a query on field A, and I answered the query without changing the data, and the query is then closed, and I entered good data in field A, if I then entered the same bad data in field A as when the query was closed, then the system should not refire a query on field A. Query with requires response = true and requires manual close = true.
 	And I create a Subject
 	| Field            | Data              |
@@ -59,7 +55,7 @@ Scenario: PB_US12940_01A As an EDC user, when I entered bad data in field A that
 
 @release_564_Patch11
 @PB_US12940_01B
-@Draft		
+@Validation		
 Scenario: PB_US12940_01B As an EDC user, when I entered bad data in field A that resulted in the system opening a query on field A, and I entered good data in field A, if I then entered the same bad data in field A, then the system should refire a query on field A. Query with requires response = false and requires manual close = false.
     And I create a Subject
 	| Field            | Data              |
@@ -91,7 +87,7 @@ Scenario: PB_US12940_01B As an EDC user, when I entered bad data in field A that
 
 @release_564_Patch11
 @PB_US12940_01C
-@Draft		
+@Validation		
 Scenario: PB_US12940_01C As an EDC user, when I entered bad data in field A that resulted in the system opening a query on field A, and I answered the query without changing the data, and I entered good data in field A, if I then entered the same bad data in field A, then the system should not refire a query on field A. Query with requires response = true and requires manual close = false.
     And I create a Subject
 	| Field            | Data              |
@@ -126,7 +122,7 @@ Scenario: PB_US12940_01C As an EDC user, when I entered bad data in field A that
 
 @release_564_Patch11
 @PB_US12940_01D	
-@Draft	
+@Validation	
 Scenario: PB_US12940_01D As an EDC user, when I entered bad data in field A that resulted in the system opening a query on field A, and the query is then closed, and I entered good data in field A, if I then entered the same bad data in field A as when the query was closed, then the system should refire a query on field A. Query with requires response = false and requires manual close = true.
 	And I create a Subject
 	| Field            | Data              |
@@ -158,7 +154,7 @@ Scenario: PB_US12940_01D As an EDC user, when I entered bad data in field A that
 
 @release_564_Patch11
 @PB_US12940_02A
-@Draft		
+@Validation		
 Scenario: PB_US12940_02A As an EDC user, when I entered bad data in field A that resulted in the system opening a query on field A, and I answered the query without changing the data, and the query is then closed, if I then entered new bad data in field A, then the system should refire a query on field A. Query with requires response = true and requires manual close = true.
 	And I create a Subject
 	| Field            | Data              |
@@ -193,7 +189,7 @@ Scenario: PB_US12940_02A As an EDC user, when I entered bad data in field A that
 
 @release_564_Patch11
 @PB_US12940_02B
-@Draft		
+@Validation		
 Scenario: PB_US12940_02B As an EDC user, when I entered bad data in field A that resulted in the system opening a query on field A, if I then entered new bad data in field A, then the system should refire a query on field A. Query with requires response = false and requires manual close = false.
     And I create a Subject
 	| Field            | Data              |
@@ -225,7 +221,7 @@ Scenario: PB_US12940_02B As an EDC user, when I entered bad data in field A that
 
 @release_564_Patch11
 @PB_US12940_02C	
-@Draft	
+@Validation	
 Scenario: PB_US12940_02C As an EDC user, when I entered bad data in field A that resulted in the system opening a query on field A, and I answered the query without changing the data, if I then entered new bad data in field A, then the system should refire a query on field A. Query with requires response = true and requires manual close = false.
     And I create a Subject
 	| Field            | Data              |
@@ -260,7 +256,7 @@ Scenario: PB_US12940_02C As an EDC user, when I entered bad data in field A that
 
 @release_564_Patch11
 @PB_US12940_02D	
-@Draft	
+@Validation	
 Scenario: PB_US12940_02D As an EDC user, when I entered bad data in field A that resulted in the system opening a query on field A, and the query is then closed, if I then entered new bad data in field A, then the system should refire a query on field A. Query with requires response = false and requires manual close = true.
 	And I create a Subject
 	| Field            | Data              |
@@ -292,7 +288,7 @@ Scenario: PB_US12940_02D As an EDC user, when I entered bad data in field A that
 
 @release_564_Patch11
 @PB_US12940_03A	
-@Draft	
+@Validation	
 Scenario: PB_US12940_03A As an EDC user, when I entered bad data in field A that resulted in the system opening a query on field A, and I answered the query and I changed the data in field A to good data, and the query is then closed, if I then entered the original bad data in field A, then the system should refire a query on field A. Query with requires response = true and requires manual close = true.
 	And I create a Subject
 	| Field            | Data              |
@@ -325,7 +321,7 @@ Scenario: PB_US12940_03A As an EDC user, when I entered bad data in field A that
 
 @release_564_Patch11
 @PB_US12940_03B	
-@Draft	
+@Validation	
 Scenario: PB_US12940_03B As an EDC user, when I entered bad data in field A that resulted in the system opening a query on field A, and I changed the data in field A to good data, if I then entered the original bad data in field A, then the system should refire a query on field A. Query with requires response = false and requires manual close = false.
     And I create a Subject
 	| Field            | Data              |
@@ -358,7 +354,7 @@ Scenario: PB_US12940_03B As an EDC user, when I entered bad data in field A that
 
 @release_564_Patch11
 @PB_US12940_03C	
-@Draft	
+@Validation	
 Scenario: PB_US12940_03C As an EDC user, when I entered bad data in field A that resulted in the system opening a query on field A, and I answered the query and I changed the data in field A to good data, if I then entered the original bad data in field A, then the system should refire a query on field A. Query with requires response = true and requires manual close = false.
     And I create a Subject
 	| Field            | Data              |
@@ -391,7 +387,7 @@ Scenario: PB_US12940_03C As an EDC user, when I entered bad data in field A that
 
 @release_564_Patch11
 @PB_US12940_03D	
-@Draft	
+@Validation	
 Scenario: PB_US12940_03D As an EDC user, when I entered bad data in field A that resulted in the system opening a query on field A, and I changed the data in field A to good data, and the query is then closed, if I then entered the original bad data in field A, then the system should refire a query on field A. Query with requires response = false and requires manual close = true.
 	And I create a Subject
 	| Field            | Data              |
@@ -423,7 +419,7 @@ Scenario: PB_US12940_03D As an EDC user, when I entered bad data in field A that
 
 @release_564_Patch11
 @PB_US12940_04A	
-@Draft	
+@Validation	
 Scenario: PB_US12940_04A As an EDC user, when I entered bad data in field A that resulted in the system opening a query on field A, and I answered the query and I changed the data in field A to another bad data, and the query is then closed, if I entered good data in field A and then again entered the same bad data in field A as when the query was closed, then the system should not refire a query on field A. Query with requires response = true and requires manual close = true
 	And I create a Subject
 	| Field            | Data              |
@@ -467,7 +463,7 @@ Scenario: PB_US12940_04A As an EDC user, when I entered bad data in field A that
 
 @release_564_Patch11
 @PB_US12940_04B	
-@Draft	
+@Validation	
 Scenario: PB_US12940_04B As an EDC user, when I entered bad data in field A that resulted in the system opening a query on field A, and I changed the data in field A to another bad data, if I entered good data in field A and then again entered the same bad data in field A, then the system should refire a query on field A. Query with requires response = false and requires manual close = false.
     And I create a Subject
 	| Field            | Data              |
@@ -506,7 +502,7 @@ Scenario: PB_US12940_04B As an EDC user, when I entered bad data in field A that
 
 @release_564_Patch11
 @PB_US12940_04C
-@Draft		
+@Validation		
 Scenario: PB_US12940_04C As an EDC user, when I entered bad data in field A that resulted in the system opening a query on field A, and I answered the query and I changed the data in field A to another bad data, if I entered good data in field A and then again entered the same bad data in field A, then the system should not refire a query on field A. Query with requires response = true and requires manual close = false.
     And I create a Subject
 	| Field            | Data              |
@@ -553,7 +549,7 @@ Scenario: PB_US12940_04C As an EDC user, when I entered bad data in field A that
 
 @release_564_Patch11
 @PB_US12940_04D	
-@Draft	
+@Validation	
 Scenario: PB_US12940_04D As an EDC user, when I entered bad data in field A that resulted in the system opening a query on field A, and I changed the data in field A to another bad data, and the query is then closed, if I entered good data in field A and then again entered the same bad data in field A as when the query was closed, then the system should not refire a query on field A. Query with requires response = false and requires manual close = true
     And I create a Subject
 	| Field            | Data              |
@@ -596,7 +592,7 @@ Scenario: PB_US12940_04D As an EDC user, when I entered bad data in field A that
 
 @release_564_Patch11
 @PB_US12940_05A	
-@Draft	
+@Validation	
 Scenario: PB_US12940_05A As an EDC user, when I entered bad data in field A that resulted in the system opening a query on field A, and I answered the query and I changed the data in field A to another bad data, and the query is then closed, if I then entered the original bad data in field A, then the system should refire a query on field A. Query with requires response = true and requires manual close = true.
 	And I create a Subject
 	| Field            | Data              |
@@ -635,7 +631,7 @@ Scenario: PB_US12940_05A As an EDC user, when I entered bad data in field A that
 
 @release_564_Patch11
 @PB_US12940_05B
-@Draft		
+@Validation		
 Scenario: PB_US12940_05B As an EDC user, when I entered bad data in field A that resulted in the system opening a query on field A, and I changed the data in field A to another bad data, if I then entered the original bad data in field A, then the system should refire a query on field A. Query with requires response = false and requires manual close = false.
     And I create a Subject
 	| Field            | Data              |
@@ -667,7 +663,7 @@ Scenario: PB_US12940_05B As an EDC user, when I entered bad data in field A that
 
 @release_564_Patch11
 @PB_US12940_05C	
-@Draft	
+@Validation	
 Scenario: PB_US12940_05C As an EDC user, when I entered bad data in field A that resulted in the system opening a query on field A, and I answered the query and I changed the data in field A to another bad data, if I then entered the original bad data in field A, then the system should refire a query on field A. Query with requires response = true and requires manual close = false.
     And I create a Subject
 	| Field            | Data              |
@@ -706,7 +702,7 @@ Scenario: PB_US12940_05C As an EDC user, when I entered bad data in field A that
 
 @release_564_Patch11
 @PB_US12940_05D	
-@Draft	
+@Validation	
 Scenario: PB_US12940_05D As an EDC user, when I entered bad data in field A that resulted in the system opening a query on field A, and I changed the data in field A to another bad data, if I then entered the original bad data in field A, then the system should refire a query on field A. Query with requires response = false and requires manual close = true.
 	And I create a Subject
 	| Field            | Data              |
@@ -745,7 +741,7 @@ Scenario: PB_US12940_05D As an EDC user, when I entered bad data in field A that
 
 @release_564_Patch11
 @PB_US12940_06A	
-@Draft	
+@Validation	
 Scenario: PB_US12940_06A As an EDC user, when I entered bad data in field A that resulted in the system opening a query on field A, and I answered the query and I changed the data in field A to another bad data, and the query is then closed, if I then entered new bad data in field A, then the system should refire a query on field A. Query with requires response = true and requires manual close = true
 	And I create a Subject
 	| Field            | Data              |
@@ -783,7 +779,7 @@ Scenario: PB_US12940_06A As an EDC user, when I entered bad data in field A that
 
 @release_564_Patch11
 @PB_US12940_06B	
-@Draft	
+@Validation	
 Scenario: PB_US12940_06B As an EDC user, when I entered bad data in field A that resulted in the system opening a query on field A, and I changed the data in field A to another bad data, if I then entered new bad data in field A, then the system should refire a query on field A. Query with requires response = false and requires manual close = false
     And I create a Subject
 	| Field            | Data              |
@@ -815,7 +811,7 @@ Scenario: PB_US12940_06B As an EDC user, when I entered bad data in field A that
 
 @release_564_Patch11
 @PB_US12940_06C	
-@Draft	
+@Validation	
 Scenario: PB_US12940_06C As an EDC user, when I entered bad data in field A that resulted in the system opening a query on field A, and I answered the query and I changed the data in field A to another bad data, if I then entered new bad data in field A, then the system should refire a query on field A. Query with requires response = true and requires manual close = false
     And I create a Subject
 	| Field            | Data              |
@@ -854,7 +850,7 @@ Scenario: PB_US12940_06C As an EDC user, when I entered bad data in field A that
 
 @release_564_Patch11
 @PB_US12940_06D	
-@Draft	
+@Validation	
 Scenario: PB_US12940_06D As an EDC user, when I entered bad data in field A that resulted in the system opening a query on field A, and I changed the data in field A to another bad data, and the query is then closed, if I then entered new bad data in field A, then the system should refire a query on field A. Query with requires response = false and requires manual close = true
 	And I create a Subject
 	| Field            | Data              |
@@ -888,7 +884,7 @@ Scenario: PB_US12940_06D As an EDC user, when I entered bad data in field A that
 
 @release_564_Patch11
 @PB_US12940_07A	
-@Draft	
+@Validation	
 Scenario: PB_US12940_07A As an EDC user, when I entered bad data in field A that resulted in the system opening a query on field A, and I canceled the query, and I entered good data in field A, if I then entered the same bad data in field A as when the query was canceled, then the system should not refire a query on field A. Query with requires response = true and requires manual close = true
 	And I create a Subject
 	| Field            | Data              |
@@ -929,7 +925,7 @@ Scenario: PB_US12940_07A As an EDC user, when I entered bad data in field A that
 
 @release_564_Patch11
 @PB_US12940_07B	
-@Draft	
+@Validation	
 Scenario: PB_US12940_07B As an EDC user, when I entered bad data in field A that resulted in the system opening a query on field A, and I canceled the query, and I entered good data in field A, if I then entered the same bad data in field A as when the query was canceled, then the system should not refire a query on field A. Query with requires response = false and requires manual close = false
 	And I create a Subject
 	| Field            | Data              |
@@ -969,7 +965,7 @@ Scenario: PB_US12940_07B As an EDC user, when I entered bad data in field A that
 
 @release_564_Patch11
 @PB_US12940_07C	
-@Draft	
+@Validation	
 Scenario: PB_US12940_07C As an EDC user, when I entered bad data in field A that resulted in the system opening a query on field A, and I canceled the query, and I entered good data in field A, if I then entered the same bad data in field A as when the query was canceled, then the system should not refire a query on field A. Query with requires response = true and requires manual close = false
 	And I create a Subject
 	| Field            | Data              |

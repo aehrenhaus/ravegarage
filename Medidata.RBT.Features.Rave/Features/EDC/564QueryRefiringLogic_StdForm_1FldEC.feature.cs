@@ -103,8 +103,8 @@ namespace Medidata.RBT.Features.Rave.Features.EDC
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo(@"PB_US12940_01A As an EDC user, when I entered bad data in field A that resulted in the system opening a query on field A, and I answered the query without changing the data, and the query is then closed, and I entered good data in field A, if I then entered the same bad data in field A as when the query was closed, then the system should not refire a query on field A. Query with requires response = true and requires manual close = true.", new string[] {
                         "release_564_Patch11",
                         "PB_US12940_01A",
-                        "Draft"});
-#line 27
+                        "Validation"});
+#line 23
 this.ScenarioSetup(scenarioInfo);
 #line 13
 this.FeatureBackground();
@@ -121,9 +121,9 @@ this.FeatureBackground();
             table2.AddRow(new string[] {
                         "Subject ID",
                         "SUB {Var(num1)}"});
-#line 28
+#line 24
  testRunner.And("I create a Subject", ((string)(null)), table2);
-#line 33
+#line 29
  testRunner.And("I select Form \"Form 1\"");
 #line hidden
             TechTalk.SpecFlow.Table table3 = new TechTalk.SpecFlow.Table(new string[] {
@@ -132,7 +132,7 @@ this.FeatureBackground();
             table3.AddRow(new string[] {
                         "Age 1",
                         "17"});
-#line 34
+#line 30
  testRunner.And("I enter data in CRF and save", ((string)(null)), table3);
 #line hidden
             TechTalk.SpecFlow.Table table4 = new TechTalk.SpecFlow.Table(new string[] {
@@ -144,24 +144,24 @@ this.FeatureBackground();
                         "Age must be greater than or equal to 18 and less than or equal to 65. Please veri" +
                             "fy.",
                         "false"});
-#line 37
+#line 33
     testRunner.And("I verify Query is displayed", ((string)(null)), table4);
-#line 40
+#line 36
  testRunner.And("I take a screenshot");
-#line 41
+#line 37
  testRunner.When("I answer the Query \"Age must be greater than or equal to 18 and less than or equa" +
                     "l to 65. Please verify.\" on Field \"Age 1\" with \"Data will be changed.\"");
-#line 42
+#line 38
  testRunner.And("I save the CRF page");
-#line 43
+#line 39
  testRunner.And("I close the Query \"Age must be greater than or equal to 18 and less than or equal" +
                     " to 65. Please verify.\" on Field \"Age 1\"");
-#line 44
+#line 40
  testRunner.And("I save the CRF page");
-#line 45
+#line 41
  testRunner.Then("I verify closed Query with message \"Data will be changed.\" is displayed on Field " +
                     "\"Age 1\"");
-#line 46
+#line 42
  testRunner.And("I take a screenshot");
 #line hidden
             TechTalk.SpecFlow.Table table5 = new TechTalk.SpecFlow.Table(new string[] {
@@ -170,9 +170,9 @@ this.FeatureBackground();
             table5.AddRow(new string[] {
                         "Age 1",
                         "20"});
-#line 47
+#line 43
  testRunner.And("I enter data in CRF and save", ((string)(null)), table5);
-#line 50
+#line 46
  testRunner.And("I take a screenshot");
 #line hidden
             TechTalk.SpecFlow.Table table6 = new TechTalk.SpecFlow.Table(new string[] {
@@ -181,9 +181,9 @@ this.FeatureBackground();
             table6.AddRow(new string[] {
                         "Age 1",
                         "17"});
-#line 51
+#line 47
  testRunner.And("I enter data in CRF and save", ((string)(null)), table6);
-#line 54
+#line 50
  testRunner.And("I take a screenshot");
 #line hidden
             TechTalk.SpecFlow.Table table7 = new TechTalk.SpecFlow.Table(new string[] {
@@ -195,9 +195,9 @@ this.FeatureBackground();
                         "Age must be greater than or equal to 18 and less than or equal to 65. Please veri" +
                             "fy.",
                         "false"});
-#line 55
+#line 51
  testRunner.And("I verify Query is not displayed", ((string)(null)), table7);
-#line 58
+#line 54
  testRunner.And("I take a screenshot");
 #line hidden
             this.ScenarioCleanup();
@@ -211,8 +211,8 @@ this.FeatureBackground();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo(@"PB_US12940_01B As an EDC user, when I entered bad data in field A that resulted in the system opening a query on field A, and I entered good data in field A, if I then entered the same bad data in field A, then the system should refire a query on field A. Query with requires response = false and requires manual close = false.", new string[] {
                         "release_564_Patch11",
                         "PB_US12940_01B",
-                        "Draft"});
-#line 63
+                        "Validation"});
+#line 59
 this.ScenarioSetup(scenarioInfo);
 #line 13
 this.FeatureBackground();
@@ -229,9 +229,9 @@ this.FeatureBackground();
             table8.AddRow(new string[] {
                         "Subject ID",
                         "SUB {Var(num1)}"});
-#line 64
+#line 60
     testRunner.And("I create a Subject", ((string)(null)), table8);
-#line 69
+#line 65
  testRunner.And("I select Form \"Form 1\"");
 #line hidden
             TechTalk.SpecFlow.Table table9 = new TechTalk.SpecFlow.Table(new string[] {
@@ -240,7 +240,7 @@ this.FeatureBackground();
             table9.AddRow(new string[] {
                         "Age 2",
                         "17"});
-#line 70
+#line 66
  testRunner.And("I enter data in CRF and save", ((string)(null)), table9);
 #line hidden
             TechTalk.SpecFlow.Table table10 = new TechTalk.SpecFlow.Table(new string[] {
@@ -252,9 +252,9 @@ this.FeatureBackground();
                         "Age must be greater than or equal to 18 and less than or equal to 65. Please veri" +
                             "fy.",
                         "false"});
-#line 73
+#line 69
     testRunner.And("I verify Query is displayed", ((string)(null)), table10);
-#line 76
+#line 72
  testRunner.And("I take a screenshot");
 #line hidden
             TechTalk.SpecFlow.Table table11 = new TechTalk.SpecFlow.Table(new string[] {
@@ -263,16 +263,16 @@ this.FeatureBackground();
             table11.AddRow(new string[] {
                         "Age 2",
                         "20"});
-#line 77
+#line 73
  testRunner.And("I enter data in CRF and save", ((string)(null)), table11);
 #line hidden
             TechTalk.SpecFlow.Table table12 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field"});
             table12.AddRow(new string[] {
                         "Age 2"});
-#line 80
+#line 76
  testRunner.And("I verify Query is not displayed", ((string)(null)), table12);
-#line 83
+#line 79
  testRunner.And("I take a screenshot");
 #line hidden
             TechTalk.SpecFlow.Table table13 = new TechTalk.SpecFlow.Table(new string[] {
@@ -281,7 +281,7 @@ this.FeatureBackground();
             table13.AddRow(new string[] {
                         "Age 2",
                         "17"});
-#line 84
+#line 80
  testRunner.And("I enter data in CRF and save", ((string)(null)), table13);
 #line hidden
             TechTalk.SpecFlow.Table table14 = new TechTalk.SpecFlow.Table(new string[] {
@@ -293,9 +293,9 @@ this.FeatureBackground();
                         "Age must be greater than or equal to 18 and less than or equal to 65. Please veri" +
                             "fy.",
                         "false"});
-#line 87
+#line 83
     testRunner.And("I verify Query is displayed", ((string)(null)), table14);
-#line 90
+#line 86
  testRunner.And("I take a screenshot");
 #line hidden
             this.ScenarioCleanup();
@@ -309,8 +309,8 @@ this.FeatureBackground();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo(@"PB_US12940_01C As an EDC user, when I entered bad data in field A that resulted in the system opening a query on field A, and I answered the query without changing the data, and I entered good data in field A, if I then entered the same bad data in field A, then the system should not refire a query on field A. Query with requires response = true and requires manual close = false.", new string[] {
                         "release_564_Patch11",
                         "PB_US12940_01C",
-                        "Draft"});
-#line 95
+                        "Validation"});
+#line 91
 this.ScenarioSetup(scenarioInfo);
 #line 13
 this.FeatureBackground();
@@ -327,9 +327,9 @@ this.FeatureBackground();
             table15.AddRow(new string[] {
                         "Subject ID",
                         "SUB {Var(num1)}"});
-#line 96
+#line 92
     testRunner.And("I create a Subject", ((string)(null)), table15);
-#line 101
+#line 97
  testRunner.And("I select Form \"Form 1\"");
 #line hidden
             TechTalk.SpecFlow.Table table16 = new TechTalk.SpecFlow.Table(new string[] {
@@ -338,7 +338,7 @@ this.FeatureBackground();
             table16.AddRow(new string[] {
                         "Age 3",
                         "17"});
-#line 102
+#line 98
  testRunner.And("I enter data in CRF and save", ((string)(null)), table16);
 #line hidden
             TechTalk.SpecFlow.Table table17 = new TechTalk.SpecFlow.Table(new string[] {
@@ -350,23 +350,23 @@ this.FeatureBackground();
                         "Age must be greater than or equal to 18 and less than or equal to 65. Please veri" +
                             "fy.",
                         "false"});
-#line 105
+#line 101
     testRunner.And("I verify Query is displayed", ((string)(null)), table17);
-#line 108
+#line 104
  testRunner.And("I take a screenshot");
-#line 109
+#line 105
  testRunner.When("I answer the Query \"Age must be greater than or equal to 18 and less than or equa" +
                     "l to 65. Please verify.\" on Field \"Age 3\" with \"Data will be changed.\"");
-#line 110
+#line 106
  testRunner.And("I save the CRF page");
 #line hidden
             TechTalk.SpecFlow.Table table18 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field"});
             table18.AddRow(new string[] {
                         "Age 3"});
-#line 111
+#line 107
  testRunner.And("I verify Query is not displayed", ((string)(null)), table18);
-#line 114
+#line 110
  testRunner.And("I take a screenshot");
 #line hidden
             TechTalk.SpecFlow.Table table19 = new TechTalk.SpecFlow.Table(new string[] {
@@ -375,9 +375,9 @@ this.FeatureBackground();
             table19.AddRow(new string[] {
                         "Age 3",
                         "20"});
-#line 115
+#line 111
  testRunner.And("I enter data in CRF and save", ((string)(null)), table19);
-#line 118
+#line 114
  testRunner.And("I take a screenshot");
 #line hidden
             TechTalk.SpecFlow.Table table20 = new TechTalk.SpecFlow.Table(new string[] {
@@ -386,7 +386,7 @@ this.FeatureBackground();
             table20.AddRow(new string[] {
                         "Age 3",
                         "17"});
-#line 119
+#line 115
  testRunner.And("I enter data in CRF and save", ((string)(null)), table20);
 #line hidden
             TechTalk.SpecFlow.Table table21 = new TechTalk.SpecFlow.Table(new string[] {
@@ -398,9 +398,9 @@ this.FeatureBackground();
                         "Age must be greater than or equal to 18 and less than or equal to 65. Please veri" +
                             "fy.",
                         "false"});
-#line 122
+#line 118
  testRunner.And("I verify Query is not displayed", ((string)(null)), table21);
-#line 125
+#line 121
  testRunner.And("I take a screenshot");
 #line hidden
             this.ScenarioCleanup();
@@ -414,8 +414,8 @@ this.FeatureBackground();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo(@"PB_US12940_01D As an EDC user, when I entered bad data in field A that resulted in the system opening a query on field A, and the query is then closed, and I entered good data in field A, if I then entered the same bad data in field A as when the query was closed, then the system should refire a query on field A. Query with requires response = false and requires manual close = true.", new string[] {
                         "release_564_Patch11",
                         "PB_US12940_01D",
-                        "Draft"});
-#line 130
+                        "Validation"});
+#line 126
 this.ScenarioSetup(scenarioInfo);
 #line 13
 this.FeatureBackground();
@@ -432,9 +432,9 @@ this.FeatureBackground();
             table22.AddRow(new string[] {
                         "Subject ID",
                         "SUB {Var(num1)}"});
-#line 131
+#line 127
  testRunner.And("I create a Subject", ((string)(null)), table22);
-#line 136
+#line 132
  testRunner.And("I select Form \"Form 1\"");
 #line hidden
             TechTalk.SpecFlow.Table table23 = new TechTalk.SpecFlow.Table(new string[] {
@@ -443,7 +443,7 @@ this.FeatureBackground();
             table23.AddRow(new string[] {
                         "Age 4",
                         "17"});
-#line 137
+#line 133
  testRunner.And("I enter data in CRF and save", ((string)(null)), table23);
 #line hidden
             TechTalk.SpecFlow.Table table24 = new TechTalk.SpecFlow.Table(new string[] {
@@ -455,9 +455,9 @@ this.FeatureBackground();
                         "Age must be greater than or equal to 18 and less than or equal to 65. Please veri" +
                             "fy.",
                         "false"});
-#line 140
+#line 136
     testRunner.And("I verify Query is displayed", ((string)(null)), table24);
-#line 143
+#line 139
  testRunner.And("I take a screenshot");
 #line hidden
             TechTalk.SpecFlow.Table table25 = new TechTalk.SpecFlow.Table(new string[] {
@@ -466,17 +466,17 @@ this.FeatureBackground();
             table25.AddRow(new string[] {
                         "Age 4",
                         "20"});
-#line 144
+#line 140
  testRunner.And("I enter data in CRF and save", ((string)(null)), table25);
-#line 147
+#line 143
  testRunner.And("I close the Query \"Age must be greater than or equal to 18 and less than or equal" +
                     " to 65. Please verify.\" on Field \"Age 4\"");
-#line 148
+#line 144
  testRunner.And("I save the CRF page");
-#line 149
+#line 145
  testRunner.And("I verify closed Query with message \"Age must be greater than or equal to 18 and l" +
                     "ess than or equal to 65. Please verify.\" is displayed on Field \"Age 4\"");
-#line 150
+#line 146
  testRunner.And("I take a screenshot");
 #line hidden
             TechTalk.SpecFlow.Table table26 = new TechTalk.SpecFlow.Table(new string[] {
@@ -485,7 +485,7 @@ this.FeatureBackground();
             table26.AddRow(new string[] {
                         "Age 4",
                         "17"});
-#line 151
+#line 147
  testRunner.And("I enter data in CRF and save", ((string)(null)), table26);
 #line hidden
             TechTalk.SpecFlow.Table table27 = new TechTalk.SpecFlow.Table(new string[] {
@@ -497,9 +497,9 @@ this.FeatureBackground();
                         "Age must be greater than or equal to 18 and less than or equal to 65. Please veri" +
                             "fy.",
                         "false"});
-#line 154
+#line 150
    testRunner.And("I verify Query is displayed", ((string)(null)), table27);
-#line 157
+#line 153
  testRunner.And("I take a screenshot");
 #line hidden
             this.ScenarioCleanup();
@@ -513,8 +513,8 @@ this.FeatureBackground();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo(@"PB_US12940_02A As an EDC user, when I entered bad data in field A that resulted in the system opening a query on field A, and I answered the query without changing the data, and the query is then closed, if I then entered new bad data in field A, then the system should refire a query on field A. Query with requires response = true and requires manual close = true.", new string[] {
                         "release_564_Patch11",
                         "PB_US12940_02A",
-                        "Draft"});
-#line 162
+                        "Validation"});
+#line 158
 this.ScenarioSetup(scenarioInfo);
 #line 13
 this.FeatureBackground();
@@ -531,9 +531,9 @@ this.FeatureBackground();
             table28.AddRow(new string[] {
                         "Subject ID",
                         "SUB {Var(num1)}"});
-#line 163
+#line 159
  testRunner.And("I create a Subject", ((string)(null)), table28);
-#line 168
+#line 164
  testRunner.And("I select Form \"Form 1\"");
 #line hidden
             TechTalk.SpecFlow.Table table29 = new TechTalk.SpecFlow.Table(new string[] {
@@ -542,7 +542,7 @@ this.FeatureBackground();
             table29.AddRow(new string[] {
                         "Age 1",
                         "17"});
-#line 169
+#line 165
  testRunner.And("I enter data in CRF and save", ((string)(null)), table29);
 #line hidden
             TechTalk.SpecFlow.Table table30 = new TechTalk.SpecFlow.Table(new string[] {
@@ -554,24 +554,24 @@ this.FeatureBackground();
                         "Age must be greater than or equal to 18 and less than or equal to 65. Please veri" +
                             "fy.",
                         "false"});
-#line 172
+#line 168
     testRunner.And("I verify Query is displayed", ((string)(null)), table30);
-#line 175
+#line 171
  testRunner.And("I take a screenshot");
-#line 176
+#line 172
     testRunner.When("I answer the Query \"Age must be greater than or equal to 18 and less than or equa" +
                     "l to 65. Please verify.\" on Field \"Age 1\" with \"Data will be changed.\"");
-#line 177
+#line 173
  testRunner.And("I save the CRF page");
-#line 178
+#line 174
  testRunner.And("I close the Query \"Age must be greater than or equal to 18 and less than or equal" +
                     " to 65. Please verify.\" on Field \"Age 1\"");
-#line 179
+#line 175
  testRunner.And("I save the CRF page");
-#line 180
+#line 176
  testRunner.Then("I verify closed Query with message \"Data will be changed.\" is displayed on Field " +
                     "\"Age 1\"");
-#line 181
+#line 177
  testRunner.And("I take a screenshot");
 #line hidden
             TechTalk.SpecFlow.Table table31 = new TechTalk.SpecFlow.Table(new string[] {
@@ -580,9 +580,9 @@ this.FeatureBackground();
             table31.AddRow(new string[] {
                         "Age 1",
                         "20"});
-#line 182
+#line 178
  testRunner.And("I enter data in CRF and save", ((string)(null)), table31);
-#line 185
+#line 181
  testRunner.And("I take a screenshot");
 #line hidden
             TechTalk.SpecFlow.Table table32 = new TechTalk.SpecFlow.Table(new string[] {
@@ -591,7 +591,7 @@ this.FeatureBackground();
             table32.AddRow(new string[] {
                         "Age 1",
                         "16"});
-#line 186
+#line 182
  testRunner.And("I enter data in CRF and save", ((string)(null)), table32);
 #line hidden
             TechTalk.SpecFlow.Table table33 = new TechTalk.SpecFlow.Table(new string[] {
@@ -603,9 +603,9 @@ this.FeatureBackground();
                         "Age must be greater than or equal to 18 and less than or equal to 65. Please veri" +
                             "fy.",
                         "false"});
-#line 189
+#line 185
  testRunner.And("I verify Query is displayed", ((string)(null)), table33);
-#line 192
+#line 188
  testRunner.And("I take a screenshot");
 #line hidden
             this.ScenarioCleanup();
@@ -619,8 +619,8 @@ this.FeatureBackground();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo(@"PB_US12940_02B As an EDC user, when I entered bad data in field A that resulted in the system opening a query on field A, if I then entered new bad data in field A, then the system should refire a query on field A. Query with requires response = false and requires manual close = false.", new string[] {
                         "release_564_Patch11",
                         "PB_US12940_02B",
-                        "Draft"});
-#line 197
+                        "Validation"});
+#line 193
 this.ScenarioSetup(scenarioInfo);
 #line 13
 this.FeatureBackground();
@@ -637,9 +637,9 @@ this.FeatureBackground();
             table34.AddRow(new string[] {
                         "Subject ID",
                         "SUB {Var(num1)}"});
-#line 198
+#line 194
     testRunner.And("I create a Subject", ((string)(null)), table34);
-#line 203
+#line 199
  testRunner.And("I select Form \"Form 1\"");
 #line hidden
             TechTalk.SpecFlow.Table table35 = new TechTalk.SpecFlow.Table(new string[] {
@@ -648,7 +648,7 @@ this.FeatureBackground();
             table35.AddRow(new string[] {
                         "Age 2",
                         "17"});
-#line 204
+#line 200
  testRunner.And("I enter data in CRF and save", ((string)(null)), table35);
 #line hidden
             TechTalk.SpecFlow.Table table36 = new TechTalk.SpecFlow.Table(new string[] {
@@ -660,9 +660,9 @@ this.FeatureBackground();
                         "Age must be greater than or equal to 18 and less than or equal to 65. Please veri" +
                             "fy.",
                         "false"});
-#line 207
+#line 203
     testRunner.And("I verify Query is displayed", ((string)(null)), table36);
-#line 210
+#line 206
  testRunner.And("I take a screenshot");
 #line hidden
             TechTalk.SpecFlow.Table table37 = new TechTalk.SpecFlow.Table(new string[] {
@@ -671,16 +671,16 @@ this.FeatureBackground();
             table37.AddRow(new string[] {
                         "Age 2",
                         "20"});
-#line 211
+#line 207
  testRunner.And("I enter data in CRF and save", ((string)(null)), table37);
 #line hidden
             TechTalk.SpecFlow.Table table38 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field"});
             table38.AddRow(new string[] {
                         "Age 2"});
-#line 214
+#line 210
  testRunner.And("I verify Query is not displayed", ((string)(null)), table38);
-#line 217
+#line 213
  testRunner.And("I take a screenshot");
 #line hidden
             TechTalk.SpecFlow.Table table39 = new TechTalk.SpecFlow.Table(new string[] {
@@ -689,7 +689,7 @@ this.FeatureBackground();
             table39.AddRow(new string[] {
                         "Age 2",
                         "16"});
-#line 218
+#line 214
  testRunner.And("I enter data in CRF and save", ((string)(null)), table39);
 #line hidden
             TechTalk.SpecFlow.Table table40 = new TechTalk.SpecFlow.Table(new string[] {
@@ -701,9 +701,9 @@ this.FeatureBackground();
                         "Age must be greater than or equal to 18 and less than or equal to 65. Please veri" +
                             "fy.",
                         "false"});
-#line 221
+#line 217
     testRunner.And("I verify Query is displayed", ((string)(null)), table40);
-#line 224
+#line 220
  testRunner.And("I take a screenshot");
 #line hidden
             this.ScenarioCleanup();
@@ -717,8 +717,8 @@ this.FeatureBackground();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo(@"PB_US12940_02C As an EDC user, when I entered bad data in field A that resulted in the system opening a query on field A, and I answered the query without changing the data, if I then entered new bad data in field A, then the system should refire a query on field A. Query with requires response = true and requires manual close = false.", new string[] {
                         "release_564_Patch11",
                         "PB_US12940_02C",
-                        "Draft"});
-#line 229
+                        "Validation"});
+#line 225
 this.ScenarioSetup(scenarioInfo);
 #line 13
 this.FeatureBackground();
@@ -735,9 +735,9 @@ this.FeatureBackground();
             table41.AddRow(new string[] {
                         "Subject ID",
                         "SUB {Var(num1)}"});
-#line 230
+#line 226
     testRunner.And("I create a Subject", ((string)(null)), table41);
-#line 235
+#line 231
  testRunner.And("I select Form \"Form 1\"");
 #line hidden
             TechTalk.SpecFlow.Table table42 = new TechTalk.SpecFlow.Table(new string[] {
@@ -746,7 +746,7 @@ this.FeatureBackground();
             table42.AddRow(new string[] {
                         "Age 3",
                         "17"});
-#line 236
+#line 232
  testRunner.And("I enter data in CRF and save", ((string)(null)), table42);
 #line hidden
             TechTalk.SpecFlow.Table table43 = new TechTalk.SpecFlow.Table(new string[] {
@@ -758,23 +758,23 @@ this.FeatureBackground();
                         "Age must be greater than or equal to 18 and less than or equal to 65. Please veri" +
                             "fy.",
                         "false"});
-#line 239
+#line 235
     testRunner.And("I verify Query is displayed", ((string)(null)), table43);
-#line 242
+#line 238
  testRunner.And("I take a screenshot");
-#line 243
+#line 239
  testRunner.When("I answer the Query \"Age must be greater than or equal to 18 and less than or equa" +
                     "l to 65. Please verify.\" on Field \"Age 3\" with \"Data will be changed.\"");
-#line 244
+#line 240
  testRunner.And("I save the CRF page");
 #line hidden
             TechTalk.SpecFlow.Table table44 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field"});
             table44.AddRow(new string[] {
                         "Age 3"});
-#line 245
+#line 241
  testRunner.And("I verify Query is not displayed", ((string)(null)), table44);
-#line 248
+#line 244
  testRunner.And("I take a screenshot");
 #line hidden
             TechTalk.SpecFlow.Table table45 = new TechTalk.SpecFlow.Table(new string[] {
@@ -783,9 +783,9 @@ this.FeatureBackground();
             table45.AddRow(new string[] {
                         "Age 3",
                         "20"});
-#line 249
+#line 245
  testRunner.And("I enter data in CRF and save", ((string)(null)), table45);
-#line 252
+#line 248
  testRunner.And("I take a screenshot");
 #line hidden
             TechTalk.SpecFlow.Table table46 = new TechTalk.SpecFlow.Table(new string[] {
@@ -794,7 +794,7 @@ this.FeatureBackground();
             table46.AddRow(new string[] {
                         "Age 3",
                         "16"});
-#line 253
+#line 249
  testRunner.And("I enter data in CRF and save", ((string)(null)), table46);
 #line hidden
             TechTalk.SpecFlow.Table table47 = new TechTalk.SpecFlow.Table(new string[] {
@@ -806,9 +806,9 @@ this.FeatureBackground();
                         "Age must be greater than or equal to 18 and less than or equal to 65. Please veri" +
                             "fy.",
                         "false"});
-#line 256
+#line 252
     testRunner.And("I verify Query is displayed", ((string)(null)), table47);
-#line 259
+#line 255
  testRunner.And("I take a screenshot");
 #line hidden
             this.ScenarioCleanup();
@@ -822,8 +822,8 @@ this.FeatureBackground();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo(@"PB_US12940_02D As an EDC user, when I entered bad data in field A that resulted in the system opening a query on field A, and the query is then closed, if I then entered new bad data in field A, then the system should refire a query on field A. Query with requires response = false and requires manual close = true.", new string[] {
                         "release_564_Patch11",
                         "PB_US12940_02D",
-                        "Draft"});
-#line 264
+                        "Validation"});
+#line 260
 this.ScenarioSetup(scenarioInfo);
 #line 13
 this.FeatureBackground();
@@ -840,9 +840,9 @@ this.FeatureBackground();
             table48.AddRow(new string[] {
                         "Subject ID",
                         "SUB {Var(num1)}"});
-#line 265
+#line 261
  testRunner.And("I create a Subject", ((string)(null)), table48);
-#line 270
+#line 266
  testRunner.And("I select Form \"Form 1\"");
 #line hidden
             TechTalk.SpecFlow.Table table49 = new TechTalk.SpecFlow.Table(new string[] {
@@ -851,7 +851,7 @@ this.FeatureBackground();
             table49.AddRow(new string[] {
                         "Age 4",
                         "17"});
-#line 271
+#line 267
  testRunner.And("I enter data in CRF and save", ((string)(null)), table49);
 #line hidden
             TechTalk.SpecFlow.Table table50 = new TechTalk.SpecFlow.Table(new string[] {
@@ -863,9 +863,9 @@ this.FeatureBackground();
                         "Age must be greater than or equal to 18 and less than or equal to 65. Please veri" +
                             "fy.",
                         "false"});
-#line 274
+#line 270
     testRunner.And("I verify Query is displayed", ((string)(null)), table50);
-#line 277
+#line 273
  testRunner.And("I take a screenshot");
 #line hidden
             TechTalk.SpecFlow.Table table51 = new TechTalk.SpecFlow.Table(new string[] {
@@ -874,17 +874,17 @@ this.FeatureBackground();
             table51.AddRow(new string[] {
                         "Age 4",
                         "20"});
-#line 278
+#line 274
  testRunner.And("I enter data in CRF and save", ((string)(null)), table51);
-#line 281
+#line 277
  testRunner.And("I close the Query \"Age must be greater than or equal to 18 and less than or equal" +
                     " to 65. Please verify.\" on Field \"Age 4\"");
-#line 282
+#line 278
  testRunner.And("I save the CRF page");
-#line 283
+#line 279
  testRunner.And("I verify closed Query with message \"Age must be greater than or equal to 18 and l" +
                     "ess than or equal to 65. Please verify.\" is displayed on Field \"Age 4\"");
-#line 284
+#line 280
  testRunner.And("I take a screenshot");
 #line hidden
             TechTalk.SpecFlow.Table table52 = new TechTalk.SpecFlow.Table(new string[] {
@@ -893,7 +893,7 @@ this.FeatureBackground();
             table52.AddRow(new string[] {
                         "Age 4",
                         "16"});
-#line 285
+#line 281
  testRunner.And("I enter data in CRF and save", ((string)(null)), table52);
 #line hidden
             TechTalk.SpecFlow.Table table53 = new TechTalk.SpecFlow.Table(new string[] {
@@ -905,9 +905,9 @@ this.FeatureBackground();
                         "Age must be greater than or equal to 18 and less than or equal to 65. Please veri" +
                             "fy.",
                         "false"});
-#line 288
+#line 284
    testRunner.And("I verify Query is displayed", ((string)(null)), table53);
-#line 291
+#line 287
  testRunner.And("I take a screenshot");
 #line hidden
             this.ScenarioCleanup();
@@ -921,8 +921,8 @@ this.FeatureBackground();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo(@"PB_US12940_03A As an EDC user, when I entered bad data in field A that resulted in the system opening a query on field A, and I answered the query and I changed the data in field A to good data, and the query is then closed, if I then entered the original bad data in field A, then the system should refire a query on field A. Query with requires response = true and requires manual close = true.", new string[] {
                         "release_564_Patch11",
                         "PB_US12940_03A",
-                        "Draft"});
-#line 296
+                        "Validation"});
+#line 292
 this.ScenarioSetup(scenarioInfo);
 #line 13
 this.FeatureBackground();
@@ -939,9 +939,9 @@ this.FeatureBackground();
             table54.AddRow(new string[] {
                         "Subject ID",
                         "SUB {Var(num1)}"});
-#line 297
+#line 293
  testRunner.And("I create a Subject", ((string)(null)), table54);
-#line 302
+#line 298
  testRunner.And("I select Form \"Form 1\"");
 #line hidden
             TechTalk.SpecFlow.Table table55 = new TechTalk.SpecFlow.Table(new string[] {
@@ -950,7 +950,7 @@ this.FeatureBackground();
             table55.AddRow(new string[] {
                         "Age 1",
                         "17"});
-#line 303
+#line 299
  testRunner.And("I enter data in CRF and save", ((string)(null)), table55);
 #line hidden
             TechTalk.SpecFlow.Table table56 = new TechTalk.SpecFlow.Table(new string[] {
@@ -962,11 +962,11 @@ this.FeatureBackground();
                         "Age must be greater than or equal to 18 and less than or equal to 65. Please veri" +
                             "fy.",
                         "false"});
-#line 306
+#line 302
     testRunner.And("I verify Query is displayed", ((string)(null)), table56);
-#line 309
+#line 305
  testRunner.And("I take a screenshot");
-#line 310
+#line 306
     testRunner.When("I answer the Query \"Age must be greater than or equal to 18 and less than or equa" +
                     "l to 65. Please verify.\" on Field \"Age 1\" with \"Data will be changed.\"");
 #line hidden
@@ -976,17 +976,17 @@ this.FeatureBackground();
             table57.AddRow(new string[] {
                         "Age 1",
                         "20"});
-#line 311
+#line 307
  testRunner.And("I enter data in CRF and save", ((string)(null)), table57);
-#line 314
+#line 310
  testRunner.And("I close the Query \"Age must be greater than or equal to 18 and less than or equal" +
                     " to 65. Please verify.\" on Field \"Age 1\"");
-#line 315
+#line 311
  testRunner.And("I save the CRF page");
-#line 316
+#line 312
  testRunner.Then("I verify closed Query with message \"Data will be changed.\" is displayed on Field " +
                     "\"Age 1\"");
-#line 317
+#line 313
  testRunner.And("I take a screenshot");
 #line hidden
             TechTalk.SpecFlow.Table table58 = new TechTalk.SpecFlow.Table(new string[] {
@@ -995,7 +995,7 @@ this.FeatureBackground();
             table58.AddRow(new string[] {
                         "Age 1",
                         "17"});
-#line 318
+#line 314
  testRunner.And("I enter data in CRF and save", ((string)(null)), table58);
 #line hidden
             TechTalk.SpecFlow.Table table59 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1007,9 +1007,9 @@ this.FeatureBackground();
                         "Age must be greater than or equal to 18 and less than or equal to 65. Please veri" +
                             "fy.",
                         "false"});
-#line 321
+#line 317
  testRunner.And("I verify Query is displayed", ((string)(null)), table59);
-#line 324
+#line 320
  testRunner.And("I take a screenshot");
 #line hidden
             this.ScenarioCleanup();
@@ -1023,8 +1023,8 @@ this.FeatureBackground();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo(@"PB_US12940_03B As an EDC user, when I entered bad data in field A that resulted in the system opening a query on field A, and I changed the data in field A to good data, if I then entered the original bad data in field A, then the system should refire a query on field A. Query with requires response = false and requires manual close = false.", new string[] {
                         "release_564_Patch11",
                         "PB_US12940_03B",
-                        "Draft"});
-#line 329
+                        "Validation"});
+#line 325
 this.ScenarioSetup(scenarioInfo);
 #line 13
 this.FeatureBackground();
@@ -1041,9 +1041,9 @@ this.FeatureBackground();
             table60.AddRow(new string[] {
                         "Subject ID",
                         "SUB {Var(num1)}"});
-#line 330
+#line 326
     testRunner.And("I create a Subject", ((string)(null)), table60);
-#line 335
+#line 331
  testRunner.And("I select Form \"Form 1\"");
 #line hidden
             TechTalk.SpecFlow.Table table61 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1052,7 +1052,7 @@ this.FeatureBackground();
             table61.AddRow(new string[] {
                         "Age 2",
                         "17"});
-#line 336
+#line 332
  testRunner.And("I enter data in CRF and save", ((string)(null)), table61);
 #line hidden
             TechTalk.SpecFlow.Table table62 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1064,9 +1064,9 @@ this.FeatureBackground();
                         "Age must be greater than or equal to 18 and less than or equal to 65. Please veri" +
                             "fy.",
                         "false"});
-#line 339
+#line 335
     testRunner.And("I verify Query is displayed", ((string)(null)), table62);
-#line 342
+#line 338
  testRunner.And("I take a screenshot");
 #line hidden
             TechTalk.SpecFlow.Table table63 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1075,18 +1075,18 @@ this.FeatureBackground();
             table63.AddRow(new string[] {
                         "Age 2",
                         "20"});
-#line 343
+#line 339
  testRunner.And("I enter data in CRF and save", ((string)(null)), table63);
-#line 346
+#line 342
  testRunner.And("I save the CRF page");
 #line hidden
             TechTalk.SpecFlow.Table table64 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field"});
             table64.AddRow(new string[] {
                         "Age 2"});
-#line 347
+#line 343
  testRunner.And("I verify Query is not displayed", ((string)(null)), table64);
-#line 350
+#line 346
  testRunner.And("I take a screenshot");
 #line hidden
             TechTalk.SpecFlow.Table table65 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1095,7 +1095,7 @@ this.FeatureBackground();
             table65.AddRow(new string[] {
                         "Age 2",
                         "17"});
-#line 351
+#line 347
  testRunner.And("I enter data in CRF and save", ((string)(null)), table65);
 #line hidden
             TechTalk.SpecFlow.Table table66 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1107,9 +1107,9 @@ this.FeatureBackground();
                         "Age must be greater than or equal to 18 and less than or equal to 65. Please veri" +
                             "fy.",
                         "false"});
-#line 354
+#line 350
     testRunner.And("I verify Query is displayed", ((string)(null)), table66);
-#line 357
+#line 353
  testRunner.And("I take a screenshot");
 #line hidden
             this.ScenarioCleanup();
@@ -1123,8 +1123,8 @@ this.FeatureBackground();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo(@"PB_US12940_03C As an EDC user, when I entered bad data in field A that resulted in the system opening a query on field A, and I answered the query and I changed the data in field A to good data, if I then entered the original bad data in field A, then the system should refire a query on field A. Query with requires response = true and requires manual close = false.", new string[] {
                         "release_564_Patch11",
                         "PB_US12940_03C",
-                        "Draft"});
-#line 362
+                        "Validation"});
+#line 358
 this.ScenarioSetup(scenarioInfo);
 #line 13
 this.FeatureBackground();
@@ -1141,9 +1141,9 @@ this.FeatureBackground();
             table67.AddRow(new string[] {
                         "Subject ID",
                         "SUB {Var(num1)}"});
-#line 363
+#line 359
     testRunner.And("I create a Subject", ((string)(null)), table67);
-#line 368
+#line 364
  testRunner.And("I select Form \"Form 1\"");
 #line hidden
             TechTalk.SpecFlow.Table table68 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1152,7 +1152,7 @@ this.FeatureBackground();
             table68.AddRow(new string[] {
                         "Age 3",
                         "17"});
-#line 369
+#line 365
  testRunner.And("I enter data in CRF and save", ((string)(null)), table68);
 #line hidden
             TechTalk.SpecFlow.Table table69 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1164,11 +1164,11 @@ this.FeatureBackground();
                         "Age must be greater than or equal to 18 and less than or equal to 65. Please veri" +
                             "fy.",
                         "false"});
-#line 372
+#line 368
     testRunner.And("I verify Query is displayed", ((string)(null)), table69);
-#line 375
+#line 371
  testRunner.And("I take a screenshot");
-#line 376
+#line 372
     testRunner.When("I answer the Query \"Age must be greater than or equal to 18 and less than or equa" +
                     "l to 65. Please verify.\" on Field \"Age 3\" with \"Data will be changed.\"");
 #line hidden
@@ -1178,16 +1178,16 @@ this.FeatureBackground();
             table70.AddRow(new string[] {
                         "Age 3",
                         "20"});
-#line 377
+#line 373
  testRunner.And("I enter data in CRF and save", ((string)(null)), table70);
 #line hidden
             TechTalk.SpecFlow.Table table71 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field"});
             table71.AddRow(new string[] {
                         "Age 3"});
-#line 380
+#line 376
  testRunner.And("I verify Query is not displayed", ((string)(null)), table71);
-#line 383
+#line 379
  testRunner.And("I take a screenshot");
 #line hidden
             TechTalk.SpecFlow.Table table72 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1196,7 +1196,7 @@ this.FeatureBackground();
             table72.AddRow(new string[] {
                         "Age 3",
                         "17"});
-#line 384
+#line 380
  testRunner.And("I enter data in CRF and save", ((string)(null)), table72);
 #line hidden
             TechTalk.SpecFlow.Table table73 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1208,9 +1208,9 @@ this.FeatureBackground();
                         "Age must be greater than or equal to 18 and less than or equal to 65. Please veri" +
                             "fy.",
                         "false"});
-#line 387
+#line 383
     testRunner.And("I verify Query is displayed", ((string)(null)), table73);
-#line 390
+#line 386
  testRunner.And("I take a screenshot");
 #line hidden
             this.ScenarioCleanup();
@@ -1224,8 +1224,8 @@ this.FeatureBackground();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo(@"PB_US12940_03D As an EDC user, when I entered bad data in field A that resulted in the system opening a query on field A, and I changed the data in field A to good data, and the query is then closed, if I then entered the original bad data in field A, then the system should refire a query on field A. Query with requires response = false and requires manual close = true.", new string[] {
                         "release_564_Patch11",
                         "PB_US12940_03D",
-                        "Draft"});
-#line 395
+                        "Validation"});
+#line 391
 this.ScenarioSetup(scenarioInfo);
 #line 13
 this.FeatureBackground();
@@ -1242,9 +1242,9 @@ this.FeatureBackground();
             table74.AddRow(new string[] {
                         "Subject ID",
                         "SUB {Var(num1)}"});
-#line 396
+#line 392
  testRunner.And("I create a Subject", ((string)(null)), table74);
-#line 401
+#line 397
  testRunner.And("I select Form \"Form 1\"");
 #line hidden
             TechTalk.SpecFlow.Table table75 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1253,7 +1253,7 @@ this.FeatureBackground();
             table75.AddRow(new string[] {
                         "Age 4",
                         "17"});
-#line 402
+#line 398
  testRunner.And("I enter data in CRF and save", ((string)(null)), table75);
 #line hidden
             TechTalk.SpecFlow.Table table76 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1265,9 +1265,9 @@ this.FeatureBackground();
                         "Age must be greater than or equal to 18 and less than or equal to 65. Please veri" +
                             "fy.",
                         "false"});
-#line 405
+#line 401
     testRunner.And("I verify Query is displayed", ((string)(null)), table76);
-#line 408
+#line 404
  testRunner.And("I take a screenshot");
 #line hidden
             TechTalk.SpecFlow.Table table77 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1276,17 +1276,17 @@ this.FeatureBackground();
             table77.AddRow(new string[] {
                         "Age 4",
                         "20"});
-#line 409
+#line 405
  testRunner.And("I enter data in CRF and save", ((string)(null)), table77);
-#line 412
+#line 408
  testRunner.And("I close the Query \"Age must be greater than or equal to 18 and less than or equal" +
                     " to 65. Please verify.\" on Field \"Age 4\"");
-#line 413
+#line 409
  testRunner.And("I save the CRF page");
-#line 414
+#line 410
  testRunner.And("I verify closed Query with message \"Age must be greater than or equal to 18 and l" +
                     "ess than or equal to 65. Please verify.\" is displayed on Field \"Age 4\"");
-#line 415
+#line 411
  testRunner.And("I take a screenshot");
 #line hidden
             TechTalk.SpecFlow.Table table78 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1295,7 +1295,7 @@ this.FeatureBackground();
             table78.AddRow(new string[] {
                         "Age 4",
                         "17"});
-#line 416
+#line 412
  testRunner.And("I enter data in CRF and save", ((string)(null)), table78);
 #line hidden
             TechTalk.SpecFlow.Table table79 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1307,9 +1307,9 @@ this.FeatureBackground();
                         "Age must be greater than or equal to 18 and less than or equal to 65. Please veri" +
                             "fy.",
                         "false"});
-#line 419
+#line 415
    testRunner.And("I verify Query is displayed", ((string)(null)), table79);
-#line 422
+#line 418
  testRunner.And("I take a screenshot");
 #line hidden
             this.ScenarioCleanup();
@@ -1323,8 +1323,8 @@ this.FeatureBackground();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo(@"PB_US12940_04A As an EDC user, when I entered bad data in field A that resulted in the system opening a query on field A, and I answered the query and I changed the data in field A to another bad data, and the query is then closed, if I entered good data in field A and then again entered the same bad data in field A as when the query was closed, then the system should not refire a query on field A. Query with requires response = true and requires manual close = true", new string[] {
                         "release_564_Patch11",
                         "PB_US12940_04A",
-                        "Draft"});
-#line 427
+                        "Validation"});
+#line 423
 this.ScenarioSetup(scenarioInfo);
 #line 13
 this.FeatureBackground();
@@ -1341,9 +1341,9 @@ this.FeatureBackground();
             table80.AddRow(new string[] {
                         "Subject ID",
                         "SUB {Var(num1)}"});
-#line 428
+#line 424
  testRunner.And("I create a Subject", ((string)(null)), table80);
-#line 433
+#line 429
  testRunner.And("I select Form \"Form 1\"");
 #line hidden
             TechTalk.SpecFlow.Table table81 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1352,7 +1352,7 @@ this.FeatureBackground();
             table81.AddRow(new string[] {
                         "Age 1",
                         "17"});
-#line 434
+#line 430
  testRunner.And("I enter data in CRF and save", ((string)(null)), table81);
 #line hidden
             TechTalk.SpecFlow.Table table82 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1364,11 +1364,11 @@ this.FeatureBackground();
                         "Age must be greater than or equal to 18 and less than or equal to 65. Please veri" +
                             "fy.",
                         "false"});
-#line 437
+#line 433
     testRunner.And("I verify Query is displayed", ((string)(null)), table82);
-#line 440
+#line 436
  testRunner.And("I take a screenshot");
-#line 441
+#line 437
     testRunner.When("I answer the Query \"Age must be greater than or equal to 18 and less than or equa" +
                     "l to 65. Please verify.\" on Field \"Age 1\" with \"Data will be changed.\"");
 #line hidden
@@ -1378,7 +1378,7 @@ this.FeatureBackground();
             table83.AddRow(new string[] {
                         "Age 1",
                         "71"});
-#line 442
+#line 438
  testRunner.And("I enter data in CRF and save", ((string)(null)), table83);
 #line hidden
             TechTalk.SpecFlow.Table table84 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1392,19 +1392,19 @@ this.FeatureBackground();
                             "fy.",
                         "false",
                         "true"});
-#line 445
+#line 441
  testRunner.And("I verify Query is displayed", ((string)(null)), table84);
-#line 448
+#line 444
  testRunner.And("I take a screenshot");
-#line 449
+#line 445
  testRunner.And("I close the Query \"Age must be greater than or equal to 18 and less than or equal" +
                     " to 65. Please verify.\" on Field \"Age 1\"");
-#line 450
+#line 446
  testRunner.And("I save the CRF page");
-#line 451
+#line 447
  testRunner.Then("I verify closed Query with message \"Data will be changed.\" is displayed on Field " +
                     "\"Age 1\"");
-#line 452
+#line 448
  testRunner.And("I take a screenshot");
 #line hidden
             TechTalk.SpecFlow.Table table85 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1413,7 +1413,7 @@ this.FeatureBackground();
             table85.AddRow(new string[] {
                         "Age 1",
                         "20"});
-#line 453
+#line 449
  testRunner.And("I enter data in CRF and save", ((string)(null)), table85);
 #line hidden
             TechTalk.SpecFlow.Table table86 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1422,9 +1422,9 @@ this.FeatureBackground();
             table86.AddRow(new string[] {
                         "Age 1",
                         "false"});
-#line 456
+#line 452
  testRunner.And("I verify Query is not displayed", ((string)(null)), table86);
-#line 459
+#line 455
  testRunner.And("I take a screenshot");
 #line hidden
             TechTalk.SpecFlow.Table table87 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1433,7 +1433,7 @@ this.FeatureBackground();
             table87.AddRow(new string[] {
                         "Age 1",
                         "71"});
-#line 460
+#line 456
  testRunner.And("I enter data in CRF and save", ((string)(null)), table87);
 #line hidden
             TechTalk.SpecFlow.Table table88 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1447,9 +1447,9 @@ this.FeatureBackground();
                             "fy.",
                         "true",
                         "false"});
-#line 463
+#line 459
  testRunner.And("I verify Query is not displayed", ((string)(null)), table88);
-#line 466
+#line 462
  testRunner.And("I take a screenshot");
 #line hidden
             this.ScenarioCleanup();
@@ -1463,8 +1463,8 @@ this.FeatureBackground();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo(@"PB_US12940_04B As an EDC user, when I entered bad data in field A that resulted in the system opening a query on field A, and I changed the data in field A to another bad data, if I entered good data in field A and then again entered the same bad data in field A, then the system should refire a query on field A. Query with requires response = false and requires manual close = false.", new string[] {
                         "release_564_Patch11",
                         "PB_US12940_04B",
-                        "Draft"});
-#line 471
+                        "Validation"});
+#line 467
 this.ScenarioSetup(scenarioInfo);
 #line 13
 this.FeatureBackground();
@@ -1481,9 +1481,9 @@ this.FeatureBackground();
             table89.AddRow(new string[] {
                         "Subject ID",
                         "SUB {Var(num1)}"});
-#line 472
+#line 468
     testRunner.And("I create a Subject", ((string)(null)), table89);
-#line 477
+#line 473
  testRunner.And("I select Form \"Form 1\"");
 #line hidden
             TechTalk.SpecFlow.Table table90 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1492,7 +1492,7 @@ this.FeatureBackground();
             table90.AddRow(new string[] {
                         "Age 2",
                         "17"});
-#line 478
+#line 474
  testRunner.And("I enter data in CRF and save", ((string)(null)), table90);
 #line hidden
             TechTalk.SpecFlow.Table table91 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1504,9 +1504,9 @@ this.FeatureBackground();
                         "Age must be greater than or equal to 18 and less than or equal to 65. Please veri" +
                             "fy.",
                         "false"});
-#line 481
+#line 477
     testRunner.And("I verify Query is displayed", ((string)(null)), table91);
-#line 484
+#line 480
  testRunner.And("I take a screenshot");
 #line hidden
             TechTalk.SpecFlow.Table table92 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1515,16 +1515,16 @@ this.FeatureBackground();
             table92.AddRow(new string[] {
                         "Age 2",
                         "71"});
-#line 485
+#line 481
  testRunner.And("I enter data in CRF and save", ((string)(null)), table92);
 #line hidden
             TechTalk.SpecFlow.Table table93 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field"});
             table93.AddRow(new string[] {
                         "Age 2"});
-#line 488
+#line 484
  testRunner.And("I verify Query is displayed", ((string)(null)), table93);
-#line 491
+#line 487
  testRunner.And("I take a screenshot");
 #line hidden
             TechTalk.SpecFlow.Table table94 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1533,16 +1533,16 @@ this.FeatureBackground();
             table94.AddRow(new string[] {
                         "Age 2",
                         "20"});
-#line 492
+#line 488
  testRunner.And("I enter data in CRF and save", ((string)(null)), table94);
 #line hidden
             TechTalk.SpecFlow.Table table95 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field"});
             table95.AddRow(new string[] {
                         "Age 2"});
-#line 495
+#line 491
  testRunner.And("I verify Query is not displayed", ((string)(null)), table95);
-#line 498
+#line 494
  testRunner.And("I take a screenshot");
 #line hidden
             TechTalk.SpecFlow.Table table96 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1551,7 +1551,7 @@ this.FeatureBackground();
             table96.AddRow(new string[] {
                         "Age 2",
                         "71"});
-#line 499
+#line 495
  testRunner.And("I enter data in CRF and save", ((string)(null)), table96);
 #line hidden
             TechTalk.SpecFlow.Table table97 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1563,9 +1563,9 @@ this.FeatureBackground();
                         "Age must be greater than or equal to 18 and less than or equal to 65. Please veri" +
                             "fy.",
                         "false"});
-#line 502
+#line 498
  testRunner.And("I verify Query is displayed", ((string)(null)), table97);
-#line 505
+#line 501
  testRunner.And("I take a screenshot");
 #line hidden
             this.ScenarioCleanup();
@@ -1579,8 +1579,8 @@ this.FeatureBackground();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo(@"PB_US12940_04C As an EDC user, when I entered bad data in field A that resulted in the system opening a query on field A, and I answered the query and I changed the data in field A to another bad data, if I entered good data in field A and then again entered the same bad data in field A, then the system should not refire a query on field A. Query with requires response = true and requires manual close = false.", new string[] {
                         "release_564_Patch11",
                         "PB_US12940_04C",
-                        "Draft"});
-#line 510
+                        "Validation"});
+#line 506
 this.ScenarioSetup(scenarioInfo);
 #line 13
 this.FeatureBackground();
@@ -1597,9 +1597,9 @@ this.FeatureBackground();
             table98.AddRow(new string[] {
                         "Subject ID",
                         "SUB {Var(num1)}"});
-#line 511
+#line 507
     testRunner.And("I create a Subject", ((string)(null)), table98);
-#line 516
+#line 512
  testRunner.And("I select Form \"Form 1\"");
 #line hidden
             TechTalk.SpecFlow.Table table99 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1608,7 +1608,7 @@ this.FeatureBackground();
             table99.AddRow(new string[] {
                         "Age 3",
                         "17"});
-#line 517
+#line 513
  testRunner.And("I enter data in CRF and save", ((string)(null)), table99);
 #line hidden
             TechTalk.SpecFlow.Table table100 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1620,11 +1620,11 @@ this.FeatureBackground();
                         "Age must be greater than or equal to 18 and less than or equal to 65. Please veri" +
                             "fy.",
                         "false"});
-#line 520
+#line 516
     testRunner.And("I verify Query is displayed", ((string)(null)), table100);
-#line 523
+#line 519
  testRunner.And("I take a screenshot");
-#line 524
+#line 520
  testRunner.When("I answer the Query \"Age must be greater than or equal to 18 and less than or equa" +
                     "l to 65. Please verify.\" on Field \"Age 3\" with \"Data will be changed.\"");
 #line hidden
@@ -1634,32 +1634,32 @@ this.FeatureBackground();
             table101.AddRow(new string[] {
                         "Age 3",
                         "71"});
-#line 525
+#line 521
  testRunner.And("I enter data in CRF and save", ((string)(null)), table101);
-#line 528
+#line 524
  testRunner.And("I save the CRF page");
 #line hidden
             TechTalk.SpecFlow.Table table102 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field"});
             table102.AddRow(new string[] {
                         "Age 3"});
-#line 529
+#line 525
  testRunner.And("I verify Query is displayed", ((string)(null)), table102);
-#line 532
+#line 528
  testRunner.And("I take a screenshot");
-#line 533
+#line 529
  testRunner.When("I answer the Query \"Age must be greater than or equal to 18 and less than or equa" +
                     "l to 65. Please verify.\" on Field \"Age 3\" with \"Data will be changed.\"");
-#line 534
+#line 530
  testRunner.And("I save the CRF page");
 #line hidden
             TechTalk.SpecFlow.Table table103 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field"});
             table103.AddRow(new string[] {
                         "Age 3"});
-#line 535
+#line 531
  testRunner.And("I verify Query is not displayed", ((string)(null)), table103);
-#line 538
+#line 534
  testRunner.And("I take a screenshot");
 #line hidden
             TechTalk.SpecFlow.Table table104 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1668,16 +1668,16 @@ this.FeatureBackground();
             table104.AddRow(new string[] {
                         "Age 3",
                         "20"});
-#line 539
+#line 535
  testRunner.And("I enter data in CRF and save", ((string)(null)), table104);
 #line hidden
             TechTalk.SpecFlow.Table table105 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field"});
             table105.AddRow(new string[] {
                         "Age 3"});
-#line 542
+#line 538
  testRunner.And("I verify Query is not displayed", ((string)(null)), table105);
-#line 545
+#line 541
  testRunner.And("I take a screenshot");
 #line hidden
             TechTalk.SpecFlow.Table table106 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1686,7 +1686,7 @@ this.FeatureBackground();
             table106.AddRow(new string[] {
                         "Age 3",
                         "71"});
-#line 546
+#line 542
  testRunner.And("I enter data in CRF and save", ((string)(null)), table106);
 #line hidden
             TechTalk.SpecFlow.Table table107 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1698,9 +1698,9 @@ this.FeatureBackground();
                         "Age must be greater than or equal to 18 and less than or equal to 65. Please veri" +
                             "fy.",
                         "false"});
-#line 549
+#line 545
  testRunner.And("I verify Query is not displayed", ((string)(null)), table107);
-#line 552
+#line 548
  testRunner.And("I take a screenshot");
 #line hidden
             this.ScenarioCleanup();
@@ -1714,8 +1714,8 @@ this.FeatureBackground();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo(@"PB_US12940_04D As an EDC user, when I entered bad data in field A that resulted in the system opening a query on field A, and I changed the data in field A to another bad data, and the query is then closed, if I entered good data in field A and then again entered the same bad data in field A as when the query was closed, then the system should not refire a query on field A. Query with requires response = false and requires manual close = true", new string[] {
                         "release_564_Patch11",
                         "PB_US12940_04D",
-                        "Draft"});
-#line 557
+                        "Validation"});
+#line 553
 this.ScenarioSetup(scenarioInfo);
 #line 13
 this.FeatureBackground();
@@ -1732,9 +1732,9 @@ this.FeatureBackground();
             table108.AddRow(new string[] {
                         "Subject ID",
                         "SUB {Var(num1)}"});
-#line 558
+#line 554
     testRunner.And("I create a Subject", ((string)(null)), table108);
-#line 563
+#line 559
  testRunner.And("I select Form \"Form 1\"");
 #line hidden
             TechTalk.SpecFlow.Table table109 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1743,7 +1743,7 @@ this.FeatureBackground();
             table109.AddRow(new string[] {
                         "Age 4",
                         "17"});
-#line 564
+#line 560
  testRunner.And("I enter data in CRF and save", ((string)(null)), table109);
 #line hidden
             TechTalk.SpecFlow.Table table110 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1755,9 +1755,9 @@ this.FeatureBackground();
                         "Age must be greater than or equal to 18 and less than or equal to 65. Please veri" +
                             "fy.",
                         "false"});
-#line 567
+#line 563
     testRunner.And("I verify Query is displayed", ((string)(null)), table110);
-#line 570
+#line 566
  testRunner.And("I take a screenshot");
 #line hidden
             TechTalk.SpecFlow.Table table111 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1766,26 +1766,26 @@ this.FeatureBackground();
             table111.AddRow(new string[] {
                         "Age 4",
                         "71"});
-#line 571
+#line 567
  testRunner.And("I enter data in CRF and save", ((string)(null)), table111);
 #line hidden
             TechTalk.SpecFlow.Table table112 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field"});
             table112.AddRow(new string[] {
                         "Age 4"});
-#line 574
+#line 570
  testRunner.And("I verify Query is displayed", ((string)(null)), table112);
-#line 577
+#line 573
  testRunner.And("I take a screenshot");
-#line 578
+#line 574
  testRunner.And("I close the Query \"Age must be greater than or equal to 18 and less than or equal" +
                     " to 65. Please verify.\" on Field \"Age 4\"");
-#line 579
+#line 575
  testRunner.And("I save the CRF page");
-#line 580
+#line 576
  testRunner.And("I verify closed Query with message \"Age must be greater than or equal to 18 and l" +
                     "ess than or equal to 65. Please verify.\" is displayed on Field \"Age 4\"");
-#line 581
+#line 577
  testRunner.And("I take a screenshot");
 #line hidden
             TechTalk.SpecFlow.Table table113 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1794,7 +1794,7 @@ this.FeatureBackground();
             table113.AddRow(new string[] {
                         "Age 4",
                         "20"});
-#line 582
+#line 578
  testRunner.And("I enter data in CRF and save", ((string)(null)), table113);
 #line hidden
             TechTalk.SpecFlow.Table table114 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1803,9 +1803,9 @@ this.FeatureBackground();
             table114.AddRow(new string[] {
                         "Age 4",
                         "false"});
-#line 585
+#line 581
  testRunner.And("I verify Query is not displayed", ((string)(null)), table114);
-#line 588
+#line 584
  testRunner.And("I take a screenshot");
 #line hidden
             TechTalk.SpecFlow.Table table115 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1814,7 +1814,7 @@ this.FeatureBackground();
             table115.AddRow(new string[] {
                         "Age 4",
                         "71"});
-#line 589
+#line 585
  testRunner.And("I enter data in CRF and save", ((string)(null)), table115);
 #line hidden
             TechTalk.SpecFlow.Table table116 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1828,9 +1828,9 @@ this.FeatureBackground();
                             "fy.",
                         "true",
                         "false"});
-#line 592
+#line 588
  testRunner.And("I verify Query is not displayed", ((string)(null)), table116);
-#line 595
+#line 591
  testRunner.And("I take a screenshot");
 #line hidden
             this.ScenarioCleanup();
@@ -1844,8 +1844,8 @@ this.FeatureBackground();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo(@"PB_US12940_05A As an EDC user, when I entered bad data in field A that resulted in the system opening a query on field A, and I answered the query and I changed the data in field A to another bad data, and the query is then closed, if I then entered the original bad data in field A, then the system should refire a query on field A. Query with requires response = true and requires manual close = true.", new string[] {
                         "release_564_Patch11",
                         "PB_US12940_05A",
-                        "Draft"});
-#line 600
+                        "Validation"});
+#line 596
 this.ScenarioSetup(scenarioInfo);
 #line 13
 this.FeatureBackground();
@@ -1862,9 +1862,9 @@ this.FeatureBackground();
             table117.AddRow(new string[] {
                         "Subject ID",
                         "SUB {Var(num1)}"});
-#line 601
+#line 597
  testRunner.And("I create a Subject", ((string)(null)), table117);
-#line 606
+#line 602
  testRunner.And("I select Form \"Form 1\"");
 #line hidden
             TechTalk.SpecFlow.Table table118 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1873,7 +1873,7 @@ this.FeatureBackground();
             table118.AddRow(new string[] {
                         "Age 1",
                         "17"});
-#line 607
+#line 603
  testRunner.And("I enter data in CRF and save", ((string)(null)), table118);
 #line hidden
             TechTalk.SpecFlow.Table table119 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1885,11 +1885,11 @@ this.FeatureBackground();
                         "Age must be greater than or equal to 18 and less than or equal to 65. Please veri" +
                             "fy.",
                         "false"});
-#line 610
+#line 606
     testRunner.And("I verify Query is displayed", ((string)(null)), table119);
-#line 613
+#line 609
  testRunner.And("I take a screenshot");
-#line 614
+#line 610
  testRunner.When("I answer the Query \"Age must be greater than or equal to 18 and less than or equa" +
                     "l to 65. Please verify.\" on Field \"Age 1\" with \"Data will be changed.\"");
 #line hidden
@@ -1899,7 +1899,7 @@ this.FeatureBackground();
             table120.AddRow(new string[] {
                         "Age 1",
                         "71"});
-#line 615
+#line 611
  testRunner.And("I enter data in CRF and save", ((string)(null)), table120);
 #line hidden
             TechTalk.SpecFlow.Table table121 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1913,14 +1913,14 @@ this.FeatureBackground();
                             "fy.",
                         "false",
                         "true"});
-#line 618
+#line 614
  testRunner.And("I verify Query is displayed", ((string)(null)), table121);
-#line 621
+#line 617
  testRunner.And("I take a screenshot");
-#line 622
+#line 618
  testRunner.And("I close the Query \"Age must be greater than or equal to 18 and less than or equal" +
                     " to 65. Please verify.\" on Field \"Age 1\"");
-#line 623
+#line 619
  testRunner.And("I save the CRF page");
 #line hidden
             TechTalk.SpecFlow.Table table122 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1932,9 +1932,9 @@ this.FeatureBackground();
                         "Age must be greater than or equal to 18 and less than or equal to 65. Please veri" +
                             "fy.",
                         "true"});
-#line 624
+#line 620
  testRunner.And("I verify Query is displayed", ((string)(null)), table122);
-#line 627
+#line 623
  testRunner.And("I take a screenshot");
 #line hidden
             TechTalk.SpecFlow.Table table123 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1943,7 +1943,7 @@ this.FeatureBackground();
             table123.AddRow(new string[] {
                         "Age 1",
                         "17"});
-#line 628
+#line 624
  testRunner.And("I enter data in CRF and save", ((string)(null)), table123);
 #line hidden
             TechTalk.SpecFlow.Table table124 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1955,9 +1955,9 @@ this.FeatureBackground();
                         "Age must be greater than or equal to 18 and less than or equal to 65. Please veri" +
                             "fy.",
                         "false"});
-#line 631
+#line 627
  testRunner.And("I verify Query is displayed", ((string)(null)), table124);
-#line 634
+#line 630
  testRunner.And("I take a screenshot");
 #line hidden
             this.ScenarioCleanup();
@@ -1971,8 +1971,8 @@ this.FeatureBackground();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo(@"PB_US12940_05B As an EDC user, when I entered bad data in field A that resulted in the system opening a query on field A, and I changed the data in field A to another bad data, if I then entered the original bad data in field A, then the system should refire a query on field A. Query with requires response = false and requires manual close = false.", new string[] {
                         "release_564_Patch11",
                         "PB_US12940_05B",
-                        "Draft"});
-#line 639
+                        "Validation"});
+#line 635
 this.ScenarioSetup(scenarioInfo);
 #line 13
 this.FeatureBackground();
@@ -1989,9 +1989,9 @@ this.FeatureBackground();
             table125.AddRow(new string[] {
                         "Subject ID",
                         "SUB {Var(num1)}"});
-#line 640
+#line 636
     testRunner.And("I create a Subject", ((string)(null)), table125);
-#line 645
+#line 641
  testRunner.And("I select Form \"Form 1\"");
 #line hidden
             TechTalk.SpecFlow.Table table126 = new TechTalk.SpecFlow.Table(new string[] {
@@ -2000,7 +2000,7 @@ this.FeatureBackground();
             table126.AddRow(new string[] {
                         "Age 2",
                         "17"});
-#line 646
+#line 642
  testRunner.And("I enter data in CRF and save", ((string)(null)), table126);
 #line hidden
             TechTalk.SpecFlow.Table table127 = new TechTalk.SpecFlow.Table(new string[] {
@@ -2012,9 +2012,9 @@ this.FeatureBackground();
                         "Age must be greater than or equal to 18 and less than or equal to 65. Please veri" +
                             "fy.",
                         "false"});
-#line 649
+#line 645
     testRunner.And("I verify Query is displayed", ((string)(null)), table127);
-#line 652
+#line 648
  testRunner.And("I take a screenshot");
 #line hidden
             TechTalk.SpecFlow.Table table128 = new TechTalk.SpecFlow.Table(new string[] {
@@ -2023,16 +2023,16 @@ this.FeatureBackground();
             table128.AddRow(new string[] {
                         "Age 2",
                         "71"});
-#line 653
+#line 649
  testRunner.And("I enter data in CRF and save", ((string)(null)), table128);
 #line hidden
             TechTalk.SpecFlow.Table table129 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field"});
             table129.AddRow(new string[] {
                         "Age 2"});
-#line 656
+#line 652
  testRunner.And("I verify Query is displayed", ((string)(null)), table129);
-#line 659
+#line 655
  testRunner.And("I take a screenshot");
 #line hidden
             TechTalk.SpecFlow.Table table130 = new TechTalk.SpecFlow.Table(new string[] {
@@ -2041,7 +2041,7 @@ this.FeatureBackground();
             table130.AddRow(new string[] {
                         "Age 2",
                         "17"});
-#line 660
+#line 656
  testRunner.And("I enter data in CRF and save", ((string)(null)), table130);
 #line hidden
             TechTalk.SpecFlow.Table table131 = new TechTalk.SpecFlow.Table(new string[] {
@@ -2053,9 +2053,9 @@ this.FeatureBackground();
                         "Age must be greater than or equal to 18 and less than or equal to 65. Please veri" +
                             "fy.",
                         "false"});
-#line 663
+#line 659
     testRunner.And("I verify Query is displayed", ((string)(null)), table131);
-#line 666
+#line 662
  testRunner.And("I take a screenshot");
 #line hidden
             this.ScenarioCleanup();
@@ -2069,8 +2069,8 @@ this.FeatureBackground();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo(@"PB_US12940_05C As an EDC user, when I entered bad data in field A that resulted in the system opening a query on field A, and I answered the query and I changed the data in field A to another bad data, if I then entered the original bad data in field A, then the system should refire a query on field A. Query with requires response = true and requires manual close = false.", new string[] {
                         "release_564_Patch11",
                         "PB_US12940_05C",
-                        "Draft"});
-#line 671
+                        "Validation"});
+#line 667
 this.ScenarioSetup(scenarioInfo);
 #line 13
 this.FeatureBackground();
@@ -2087,9 +2087,9 @@ this.FeatureBackground();
             table132.AddRow(new string[] {
                         "Subject ID",
                         "SUB {Var(num1)}"});
-#line 672
+#line 668
     testRunner.And("I create a Subject", ((string)(null)), table132);
-#line 677
+#line 673
  testRunner.And("I select Form \"Form 1\"");
 #line hidden
             TechTalk.SpecFlow.Table table133 = new TechTalk.SpecFlow.Table(new string[] {
@@ -2098,7 +2098,7 @@ this.FeatureBackground();
             table133.AddRow(new string[] {
                         "Age 3",
                         "17"});
-#line 678
+#line 674
  testRunner.And("I enter data in CRF and save", ((string)(null)), table133);
 #line hidden
             TechTalk.SpecFlow.Table table134 = new TechTalk.SpecFlow.Table(new string[] {
@@ -2110,11 +2110,11 @@ this.FeatureBackground();
                         "Age must be greater than or equal to 18 and less than or equal to 65. Please veri" +
                             "fy.",
                         "false"});
-#line 681
+#line 677
     testRunner.And("I verify Query is displayed", ((string)(null)), table134);
-#line 684
+#line 680
  testRunner.And("I take a screenshot");
-#line 685
+#line 681
  testRunner.When("I answer the Query \"Age must be greater than or equal to 18 and less than or equa" +
                     "l to 65. Please verify.\" on Field \"Age 3\" with \"Data will be changed.\"");
 #line hidden
@@ -2124,30 +2124,30 @@ this.FeatureBackground();
             table135.AddRow(new string[] {
                         "Age 3",
                         "71"});
-#line 686
+#line 682
  testRunner.And("I enter data in CRF and save", ((string)(null)), table135);
 #line hidden
             TechTalk.SpecFlow.Table table136 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field"});
             table136.AddRow(new string[] {
                         "Age 3"});
-#line 689
+#line 685
  testRunner.And("I verify Query is displayed", ((string)(null)), table136);
-#line 692
+#line 688
  testRunner.And("I take a screenshot");
-#line 693
+#line 689
  testRunner.When("I answer the Query \"Age must be greater than or equal to 18 and less than or equa" +
                     "l to 65. Please verify.\" on Field \"Age 3\" with \"Data will be changed.\"");
-#line 694
+#line 690
  testRunner.And("I save the CRF page");
 #line hidden
             TechTalk.SpecFlow.Table table137 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field"});
             table137.AddRow(new string[] {
                         "Age 3"});
-#line 695
+#line 691
  testRunner.Then("I verify Query is not displayed", ((string)(null)), table137);
-#line 698
+#line 694
  testRunner.And("I take a screenshot");
 #line hidden
             TechTalk.SpecFlow.Table table138 = new TechTalk.SpecFlow.Table(new string[] {
@@ -2156,7 +2156,7 @@ this.FeatureBackground();
             table138.AddRow(new string[] {
                         "Age 3",
                         "17"});
-#line 699
+#line 695
  testRunner.And("I enter data in CRF and save", ((string)(null)), table138);
 #line hidden
             TechTalk.SpecFlow.Table table139 = new TechTalk.SpecFlow.Table(new string[] {
@@ -2168,9 +2168,9 @@ this.FeatureBackground();
                         "Age must be greater than or equal to 18 and less than or equal to 65. Please veri" +
                             "fy.",
                         "false"});
-#line 702
+#line 698
     testRunner.And("I verify Query is displayed", ((string)(null)), table139);
-#line 705
+#line 701
  testRunner.And("I take a screenshot");
 #line hidden
             this.ScenarioCleanup();
@@ -2184,8 +2184,8 @@ this.FeatureBackground();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo(@"PB_US12940_05D As an EDC user, when I entered bad data in field A that resulted in the system opening a query on field A, and I changed the data in field A to another bad data, if I then entered the original bad data in field A, then the system should refire a query on field A. Query with requires response = false and requires manual close = true.", new string[] {
                         "release_564_Patch11",
                         "PB_US12940_05D",
-                        "Draft"});
-#line 710
+                        "Validation"});
+#line 706
 this.ScenarioSetup(scenarioInfo);
 #line 13
 this.FeatureBackground();
@@ -2202,9 +2202,9 @@ this.FeatureBackground();
             table140.AddRow(new string[] {
                         "Subject ID",
                         "SUB {Var(num1)}"});
-#line 711
+#line 707
  testRunner.And("I create a Subject", ((string)(null)), table140);
-#line 716
+#line 712
  testRunner.And("I select Form \"Form 1\"");
 #line hidden
             TechTalk.SpecFlow.Table table141 = new TechTalk.SpecFlow.Table(new string[] {
@@ -2213,7 +2213,7 @@ this.FeatureBackground();
             table141.AddRow(new string[] {
                         "Age 4",
                         "17"});
-#line 717
+#line 713
  testRunner.And("I enter data in CRF and save", ((string)(null)), table141);
 #line hidden
             TechTalk.SpecFlow.Table table142 = new TechTalk.SpecFlow.Table(new string[] {
@@ -2225,9 +2225,9 @@ this.FeatureBackground();
                         "Age must be greater than or equal to 18 and less than or equal to 65. Please veri" +
                             "fy.",
                         "false"});
-#line 720
+#line 716
     testRunner.And("I verify Query is displayed", ((string)(null)), table142);
-#line 723
+#line 719
  testRunner.And("I take a screenshot");
 #line hidden
             TechTalk.SpecFlow.Table table143 = new TechTalk.SpecFlow.Table(new string[] {
@@ -2236,23 +2236,23 @@ this.FeatureBackground();
             table143.AddRow(new string[] {
                         "Age 4",
                         "71"});
-#line 724
+#line 720
  testRunner.And("I enter data in CRF and save", ((string)(null)), table143);
-#line 727
+#line 723
  testRunner.And("I save the CRF page");
 #line hidden
             TechTalk.SpecFlow.Table table144 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field"});
             table144.AddRow(new string[] {
                         "Age 4"});
-#line 728
+#line 724
  testRunner.And("I verify Query is displayed", ((string)(null)), table144);
-#line 731
+#line 727
  testRunner.And("I take a screenshot");
-#line 732
+#line 728
  testRunner.And("I close the Query \"Age must be greater than or equal to 18 and less than or equal" +
                     " to 65. Please verify.\" on Field \"Age 4\"");
-#line 733
+#line 729
  testRunner.And("I save the CRF page");
 #line hidden
             TechTalk.SpecFlow.Table table145 = new TechTalk.SpecFlow.Table(new string[] {
@@ -2264,9 +2264,9 @@ this.FeatureBackground();
                         "Age must be greater than or equal to 18 and less than or equal to 65. Please veri" +
                             "fy.",
                         "true"});
-#line 734
+#line 730
  testRunner.And("I verify Query is displayed", ((string)(null)), table145);
-#line 737
+#line 733
  testRunner.And("I take a screenshot");
 #line hidden
             TechTalk.SpecFlow.Table table146 = new TechTalk.SpecFlow.Table(new string[] {
@@ -2275,7 +2275,7 @@ this.FeatureBackground();
             table146.AddRow(new string[] {
                         "Age 4",
                         "17"});
-#line 738
+#line 734
  testRunner.And("I enter data in CRF and save", ((string)(null)), table146);
 #line hidden
             TechTalk.SpecFlow.Table table147 = new TechTalk.SpecFlow.Table(new string[] {
@@ -2287,9 +2287,9 @@ this.FeatureBackground();
                         "Age must be greater than or equal to 18 and less than or equal to 65. Please veri" +
                             "fy.",
                         "false"});
-#line 741
+#line 737
  testRunner.And("I verify Query is displayed", ((string)(null)), table147);
-#line 744
+#line 740
  testRunner.And("I take a screenshot");
 #line hidden
             this.ScenarioCleanup();
@@ -2303,8 +2303,8 @@ this.FeatureBackground();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo(@"PB_US12940_06A As an EDC user, when I entered bad data in field A that resulted in the system opening a query on field A, and I answered the query and I changed the data in field A to another bad data, and the query is then closed, if I then entered new bad data in field A, then the system should refire a query on field A. Query with requires response = true and requires manual close = true", new string[] {
                         "release_564_Patch11",
                         "PB_US12940_06A",
-                        "Draft"});
-#line 749
+                        "Validation"});
+#line 745
 this.ScenarioSetup(scenarioInfo);
 #line 13
 this.FeatureBackground();
@@ -2321,9 +2321,9 @@ this.FeatureBackground();
             table148.AddRow(new string[] {
                         "Subject ID",
                         "SUB {Var(num1)}"});
-#line 750
+#line 746
  testRunner.And("I create a Subject", ((string)(null)), table148);
-#line 755
+#line 751
  testRunner.And("I select Form \"Form 1\"");
 #line hidden
             TechTalk.SpecFlow.Table table149 = new TechTalk.SpecFlow.Table(new string[] {
@@ -2332,7 +2332,7 @@ this.FeatureBackground();
             table149.AddRow(new string[] {
                         "Age 1",
                         "17"});
-#line 756
+#line 752
  testRunner.And("I enter data in CRF and save", ((string)(null)), table149);
 #line hidden
             TechTalk.SpecFlow.Table table150 = new TechTalk.SpecFlow.Table(new string[] {
@@ -2344,11 +2344,11 @@ this.FeatureBackground();
                         "Age must be greater than or equal to 18 and less than or equal to 65. Please veri" +
                             "fy.",
                         "false"});
-#line 759
+#line 755
     testRunner.And("I verify Query is displayed", ((string)(null)), table150);
-#line 762
+#line 758
  testRunner.And("I take a screenshot");
-#line 763
+#line 759
     testRunner.When("I answer the Query \"Age must be greater than or equal to 18 and less than or equa" +
                     "l to 65. Please verify.\" on Field \"Age 1\" with \"Data will be changed.\"");
 #line hidden
@@ -2358,9 +2358,9 @@ this.FeatureBackground();
             table151.AddRow(new string[] {
                         "Age 1",
                         "71"});
-#line 764
+#line 760
  testRunner.And("I enter data in CRF and save", ((string)(null)), table151);
-#line 767
+#line 763
  testRunner.And("I save the CRF page");
 #line hidden
             TechTalk.SpecFlow.Table table152 = new TechTalk.SpecFlow.Table(new string[] {
@@ -2372,19 +2372,19 @@ this.FeatureBackground();
                         "Age must be greater than or equal to 18 and less than or equal to 65. Please veri" +
                             "fy.",
                         "false"});
-#line 768
+#line 764
  testRunner.And("I verify Query is displayed", ((string)(null)), table152);
-#line 771
+#line 767
  testRunner.And("I take a screenshot");
-#line 772
+#line 768
  testRunner.And("I close the Query \"Age must be greater than or equal to 18 and less than or equal" +
                     " to 65. Please verify.\" on Field \"Age 1\"");
-#line 773
+#line 769
  testRunner.And("I save the CRF page");
-#line 774
+#line 770
  testRunner.Then("I verify closed Query with message \"Data will be changed.\" is displayed on Field " +
                     "\"Age 1\"");
-#line 775
+#line 771
  testRunner.And("I take a screenshot");
 #line hidden
             TechTalk.SpecFlow.Table table153 = new TechTalk.SpecFlow.Table(new string[] {
@@ -2393,7 +2393,7 @@ this.FeatureBackground();
             table153.AddRow(new string[] {
                         "Age 1",
                         "70"});
-#line 776
+#line 772
  testRunner.And("I enter data in CRF and save", ((string)(null)), table153);
 #line hidden
             TechTalk.SpecFlow.Table table154 = new TechTalk.SpecFlow.Table(new string[] {
@@ -2405,9 +2405,9 @@ this.FeatureBackground();
                         "Age must be greater than or equal to 18 and less than or equal to 65. Please veri" +
                             "fy.",
                         "false"});
-#line 779
+#line 775
  testRunner.And("I verify Query is displayed", ((string)(null)), table154);
-#line 782
+#line 778
  testRunner.And("I take a screenshot");
 #line hidden
             this.ScenarioCleanup();
@@ -2421,8 +2421,8 @@ this.FeatureBackground();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo(@"PB_US12940_06B As an EDC user, when I entered bad data in field A that resulted in the system opening a query on field A, and I changed the data in field A to another bad data, if I then entered new bad data in field A, then the system should refire a query on field A. Query with requires response = false and requires manual close = false", new string[] {
                         "release_564_Patch11",
                         "PB_US12940_06B",
-                        "Draft"});
-#line 787
+                        "Validation"});
+#line 783
 this.ScenarioSetup(scenarioInfo);
 #line 13
 this.FeatureBackground();
@@ -2439,9 +2439,9 @@ this.FeatureBackground();
             table155.AddRow(new string[] {
                         "Subject ID",
                         "SUB {Var(num1)}"});
-#line 788
+#line 784
     testRunner.And("I create a Subject", ((string)(null)), table155);
-#line 793
+#line 789
  testRunner.And("I select Form \"Form 1\"");
 #line hidden
             TechTalk.SpecFlow.Table table156 = new TechTalk.SpecFlow.Table(new string[] {
@@ -2450,7 +2450,7 @@ this.FeatureBackground();
             table156.AddRow(new string[] {
                         "Age 2",
                         "17"});
-#line 794
+#line 790
  testRunner.And("I enter data in CRF and save", ((string)(null)), table156);
 #line hidden
             TechTalk.SpecFlow.Table table157 = new TechTalk.SpecFlow.Table(new string[] {
@@ -2462,9 +2462,9 @@ this.FeatureBackground();
                         "Age must be greater than or equal to 18 and less than or equal to 65. Please veri" +
                             "fy.",
                         "false"});
-#line 797
+#line 793
     testRunner.And("I verify Query is displayed", ((string)(null)), table157);
-#line 800
+#line 796
  testRunner.And("I take a screenshot");
 #line hidden
             TechTalk.SpecFlow.Table table158 = new TechTalk.SpecFlow.Table(new string[] {
@@ -2473,7 +2473,7 @@ this.FeatureBackground();
             table158.AddRow(new string[] {
                         "Age 2",
                         "71"});
-#line 801
+#line 797
  testRunner.And("I enter data in CRF and save", ((string)(null)), table158);
 #line hidden
             TechTalk.SpecFlow.Table table159 = new TechTalk.SpecFlow.Table(new string[] {
@@ -2485,9 +2485,9 @@ this.FeatureBackground();
                         "Age must be greater than or equal to 18 and less than or equal to 65. Please veri" +
                             "fy.",
                         "false"});
-#line 804
+#line 800
     testRunner.And("I verify Query is displayed", ((string)(null)), table159);
-#line 807
+#line 803
  testRunner.And("I take a screenshot");
 #line hidden
             TechTalk.SpecFlow.Table table160 = new TechTalk.SpecFlow.Table(new string[] {
@@ -2496,7 +2496,7 @@ this.FeatureBackground();
             table160.AddRow(new string[] {
                         "Age 2",
                         "70"});
-#line 808
+#line 804
  testRunner.And("I enter data in CRF and save", ((string)(null)), table160);
 #line hidden
             TechTalk.SpecFlow.Table table161 = new TechTalk.SpecFlow.Table(new string[] {
@@ -2508,9 +2508,9 @@ this.FeatureBackground();
                         "Age must be greater than or equal to 18 and less than or equal to 65. Please veri" +
                             "fy.",
                         "false"});
-#line 811
+#line 807
     testRunner.And("I verify Query is displayed", ((string)(null)), table161);
-#line 814
+#line 810
  testRunner.And("I take a screenshot");
 #line hidden
             this.ScenarioCleanup();
@@ -2524,8 +2524,8 @@ this.FeatureBackground();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo(@"PB_US12940_06C As an EDC user, when I entered bad data in field A that resulted in the system opening a query on field A, and I answered the query and I changed the data in field A to another bad data, if I then entered new bad data in field A, then the system should refire a query on field A. Query with requires response = true and requires manual close = false", new string[] {
                         "release_564_Patch11",
                         "PB_US12940_06C",
-                        "Draft"});
-#line 819
+                        "Validation"});
+#line 815
 this.ScenarioSetup(scenarioInfo);
 #line 13
 this.FeatureBackground();
@@ -2542,9 +2542,9 @@ this.FeatureBackground();
             table162.AddRow(new string[] {
                         "Subject ID",
                         "SUB {Var(num1)}"});
-#line 820
+#line 816
     testRunner.And("I create a Subject", ((string)(null)), table162);
-#line 825
+#line 821
  testRunner.And("I select Form \"Form 1\"");
 #line hidden
             TechTalk.SpecFlow.Table table163 = new TechTalk.SpecFlow.Table(new string[] {
@@ -2553,7 +2553,7 @@ this.FeatureBackground();
             table163.AddRow(new string[] {
                         "Age 3",
                         "17"});
-#line 826
+#line 822
  testRunner.And("I enter data in CRF and save", ((string)(null)), table163);
 #line hidden
             TechTalk.SpecFlow.Table table164 = new TechTalk.SpecFlow.Table(new string[] {
@@ -2565,11 +2565,11 @@ this.FeatureBackground();
                         "Age must be greater than or equal to 18 and less than or equal to 65. Please veri" +
                             "fy.",
                         "false"});
-#line 829
+#line 825
     testRunner.And("I verify Query is displayed", ((string)(null)), table164);
-#line 832
+#line 828
  testRunner.And("I take a screenshot");
-#line 833
+#line 829
  testRunner.When("I answer the Query \"Age must be greater than or equal to 18 and less than or equa" +
                     "l to 65. Please verify.\" on Field \"Age 3\" with \"Data will be changed.\"");
 #line hidden
@@ -2579,7 +2579,7 @@ this.FeatureBackground();
             table165.AddRow(new string[] {
                         "Age 3",
                         "71"});
-#line 834
+#line 830
  testRunner.And("I enter data in CRF and save", ((string)(null)), table165);
 #line hidden
             TechTalk.SpecFlow.Table table166 = new TechTalk.SpecFlow.Table(new string[] {
@@ -2591,23 +2591,23 @@ this.FeatureBackground();
                         "Age must be greater than or equal to 18 and less than or equal to 65. Please veri" +
                             "fy.",
                         "false"});
-#line 837
+#line 833
     testRunner.And("I verify Query is displayed", ((string)(null)), table166);
-#line 840
+#line 836
  testRunner.And("I take a screenshot");
-#line 841
+#line 837
  testRunner.When("I answer the Query \"Age must be greater than or equal to 18 and less than or equa" +
                     "l to 65. Please verify.\" on Field \"Age 3\" with \"Data will be changed.\"");
-#line 842
+#line 838
  testRunner.And("I save the CRF page");
 #line hidden
             TechTalk.SpecFlow.Table table167 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field"});
             table167.AddRow(new string[] {
                         "Age 3"});
-#line 843
+#line 839
  testRunner.And("I verify Query is not displayed", ((string)(null)), table167);
-#line 846
+#line 842
  testRunner.And("I take a screenshot");
 #line hidden
             TechTalk.SpecFlow.Table table168 = new TechTalk.SpecFlow.Table(new string[] {
@@ -2616,7 +2616,7 @@ this.FeatureBackground();
             table168.AddRow(new string[] {
                         "Age 3",
                         "70"});
-#line 847
+#line 843
  testRunner.And("I enter data in CRF and save", ((string)(null)), table168);
 #line hidden
             TechTalk.SpecFlow.Table table169 = new TechTalk.SpecFlow.Table(new string[] {
@@ -2628,9 +2628,9 @@ this.FeatureBackground();
                         "Age must be greater than or equal to 18 and less than or equal to 65. Please veri" +
                             "fy.",
                         "false"});
-#line 850
+#line 846
     testRunner.And("I verify Query is displayed", ((string)(null)), table169);
-#line 853
+#line 849
  testRunner.And("I take a screenshot");
 #line hidden
             this.ScenarioCleanup();
@@ -2644,8 +2644,8 @@ this.FeatureBackground();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo(@"PB_US12940_06D As an EDC user, when I entered bad data in field A that resulted in the system opening a query on field A, and I changed the data in field A to another bad data, and the query is then closed, if I then entered new bad data in field A, then the system should refire a query on field A. Query with requires response = false and requires manual close = true", new string[] {
                         "release_564_Patch11",
                         "PB_US12940_06D",
-                        "Draft"});
-#line 858
+                        "Validation"});
+#line 854
 this.ScenarioSetup(scenarioInfo);
 #line 13
 this.FeatureBackground();
@@ -2662,9 +2662,9 @@ this.FeatureBackground();
             table170.AddRow(new string[] {
                         "Subject ID",
                         "SUB {Var(num1)}"});
-#line 859
+#line 855
  testRunner.And("I create a Subject", ((string)(null)), table170);
-#line 864
+#line 860
  testRunner.And("I select Form \"Form 1\"");
 #line hidden
             TechTalk.SpecFlow.Table table171 = new TechTalk.SpecFlow.Table(new string[] {
@@ -2673,7 +2673,7 @@ this.FeatureBackground();
             table171.AddRow(new string[] {
                         "Age 4",
                         "17"});
-#line 865
+#line 861
  testRunner.And("I enter data in CRF and save", ((string)(null)), table171);
 #line hidden
             TechTalk.SpecFlow.Table table172 = new TechTalk.SpecFlow.Table(new string[] {
@@ -2685,9 +2685,9 @@ this.FeatureBackground();
                         "Age must be greater than or equal to 18 and less than or equal to 65. Please veri" +
                             "fy.",
                         "false"});
-#line 868
+#line 864
     testRunner.And("I verify Query is displayed", ((string)(null)), table172);
-#line 871
+#line 867
  testRunner.And("I take a screenshot");
 #line hidden
             TechTalk.SpecFlow.Table table173 = new TechTalk.SpecFlow.Table(new string[] {
@@ -2696,7 +2696,7 @@ this.FeatureBackground();
             table173.AddRow(new string[] {
                         "Age 4",
                         "71"});
-#line 872
+#line 868
  testRunner.And("I enter data in CRF and save", ((string)(null)), table173);
 #line hidden
             TechTalk.SpecFlow.Table table174 = new TechTalk.SpecFlow.Table(new string[] {
@@ -2708,14 +2708,14 @@ this.FeatureBackground();
                         "Age must be greater than or equal to 18 and less than or equal to 65. Please veri" +
                             "fy.",
                         "false"});
-#line 875
+#line 871
     testRunner.And("I verify Query is displayed", ((string)(null)), table174);
-#line 878
+#line 874
  testRunner.And("I take a screenshot");
-#line 879
+#line 875
  testRunner.And("I close the Query \"Age must be greater than or equal to 18 and less than or equal" +
                     " to 65. Please verify.\" on Field \"Age 4\"");
-#line 880
+#line 876
  testRunner.And("I take a screenshot");
 #line hidden
             TechTalk.SpecFlow.Table table175 = new TechTalk.SpecFlow.Table(new string[] {
@@ -2724,7 +2724,7 @@ this.FeatureBackground();
             table175.AddRow(new string[] {
                         "Age 4",
                         "70"});
-#line 881
+#line 877
  testRunner.And("I enter data in CRF and save", ((string)(null)), table175);
 #line hidden
             TechTalk.SpecFlow.Table table176 = new TechTalk.SpecFlow.Table(new string[] {
@@ -2736,9 +2736,9 @@ this.FeatureBackground();
                         "Age must be greater than or equal to 18 and less than or equal to 65. Please veri" +
                             "fy.",
                         "false"});
-#line 884
+#line 880
     testRunner.And("I verify Query is displayed", ((string)(null)), table176);
-#line 887
+#line 883
  testRunner.And("I take a screenshot");
 #line hidden
             this.ScenarioCleanup();
@@ -2752,8 +2752,8 @@ this.FeatureBackground();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo(@"PB_US12940_07A As an EDC user, when I entered bad data in field A that resulted in the system opening a query on field A, and I canceled the query, and I entered good data in field A, if I then entered the same bad data in field A as when the query was canceled, then the system should not refire a query on field A. Query with requires response = true and requires manual close = true", new string[] {
                         "release_564_Patch11",
                         "PB_US12940_07A",
-                        "Draft"});
-#line 892
+                        "Validation"});
+#line 888
 this.ScenarioSetup(scenarioInfo);
 #line 13
 this.FeatureBackground();
@@ -2770,9 +2770,9 @@ this.FeatureBackground();
             table177.AddRow(new string[] {
                         "Subject ID",
                         "SUB {Var(num1)}"});
-#line 893
+#line 889
  testRunner.And("I create a Subject", ((string)(null)), table177);
-#line 898
+#line 894
  testRunner.And("I select Form \"Form 1\"");
 #line hidden
             TechTalk.SpecFlow.Table table178 = new TechTalk.SpecFlow.Table(new string[] {
@@ -2781,7 +2781,7 @@ this.FeatureBackground();
             table178.AddRow(new string[] {
                         "Age 1",
                         "17"});
-#line 899
+#line 895
  testRunner.And("I enter data in CRF and save", ((string)(null)), table178);
 #line hidden
             TechTalk.SpecFlow.Table table179 = new TechTalk.SpecFlow.Table(new string[] {
@@ -2793,18 +2793,18 @@ this.FeatureBackground();
                         "Age must be greater than or equal to 18 and less than or equal to 65. Please veri" +
                             "fy.",
                         "false"});
-#line 902
+#line 898
     testRunner.And("I verify Query is displayed", ((string)(null)), table179);
-#line 905
+#line 901
  testRunner.And("I take a screenshot");
-#line 906
+#line 902
  testRunner.When("I cancel the Query \"Age must be greater than or equal to 18 and less than or equa" +
                     "l to 65. Please verify.\" on Field \"Age 1\"");
-#line 907
+#line 903
  testRunner.And("I save the CRF page");
-#line 908
+#line 904
  testRunner.And("I click audit on Field \"Age 1\"");
-#line 909
+#line 905
  testRunner.And("I take a screenshot");
 #line hidden
             TechTalk.SpecFlow.Table table180 = new TechTalk.SpecFlow.Table(new string[] {
@@ -2814,9 +2814,9 @@ this.FeatureBackground();
                         "Query Canceled",
                         "Age must be greater than or equal to 18 and less than or equal to 65. Please veri" +
                             "fy."});
-#line 910
+#line 906
  testRunner.And("I verify Audits exist", ((string)(null)), table180);
-#line 913
+#line 909
  testRunner.And("I select Form \"Form 1\" in \"Header\"");
 #line hidden
             TechTalk.SpecFlow.Table table181 = new TechTalk.SpecFlow.Table(new string[] {
@@ -2825,7 +2825,7 @@ this.FeatureBackground();
             table181.AddRow(new string[] {
                         "Age 1",
                         "20"});
-#line 914
+#line 910
  testRunner.And("I enter data in CRF and save", ((string)(null)), table181);
 #line hidden
             TechTalk.SpecFlow.Table table182 = new TechTalk.SpecFlow.Table(new string[] {
@@ -2837,9 +2837,9 @@ this.FeatureBackground();
                         "Age must be greater than or equal to 18 and less than or equal to 65. Please veri" +
                             "fy.",
                         "true"});
-#line 917
+#line 913
  testRunner.And("I verify Query is not displayed", ((string)(null)), table182);
-#line 921
+#line 917
  testRunner.And("I take a screenshot");
 #line hidden
             TechTalk.SpecFlow.Table table183 = new TechTalk.SpecFlow.Table(new string[] {
@@ -2848,7 +2848,7 @@ this.FeatureBackground();
             table183.AddRow(new string[] {
                         "Age 1",
                         "17"});
-#line 922
+#line 918
  testRunner.And("I enter data in CRF and save", ((string)(null)), table183);
 #line hidden
             TechTalk.SpecFlow.Table table184 = new TechTalk.SpecFlow.Table(new string[] {
@@ -2860,9 +2860,9 @@ this.FeatureBackground();
                         "Age must be greater than or equal to 18 and less than or equal to 65. Please veri" +
                             "fy.",
                         "true"});
-#line 925
+#line 921
  testRunner.And("I verify Query is not displayed", ((string)(null)), table184);
-#line 928
+#line 924
  testRunner.And("I take a screenshot");
 #line hidden
             this.ScenarioCleanup();
@@ -2876,8 +2876,8 @@ this.FeatureBackground();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo(@"PB_US12940_07B As an EDC user, when I entered bad data in field A that resulted in the system opening a query on field A, and I canceled the query, and I entered good data in field A, if I then entered the same bad data in field A as when the query was canceled, then the system should not refire a query on field A. Query with requires response = false and requires manual close = false", new string[] {
                         "release_564_Patch11",
                         "PB_US12940_07B",
-                        "Draft"});
-#line 933
+                        "Validation"});
+#line 929
 this.ScenarioSetup(scenarioInfo);
 #line 13
 this.FeatureBackground();
@@ -2894,9 +2894,9 @@ this.FeatureBackground();
             table185.AddRow(new string[] {
                         "Subject ID",
                         "SUB {Var(num1)}"});
-#line 934
+#line 930
  testRunner.And("I create a Subject", ((string)(null)), table185);
-#line 939
+#line 935
  testRunner.And("I select Form \"Form 1\"");
 #line hidden
             TechTalk.SpecFlow.Table table186 = new TechTalk.SpecFlow.Table(new string[] {
@@ -2905,7 +2905,7 @@ this.FeatureBackground();
             table186.AddRow(new string[] {
                         "Age 2",
                         "17"});
-#line 940
+#line 936
  testRunner.And("I enter data in CRF and save", ((string)(null)), table186);
 #line hidden
             TechTalk.SpecFlow.Table table187 = new TechTalk.SpecFlow.Table(new string[] {
@@ -2917,18 +2917,18 @@ this.FeatureBackground();
                         "Age must be greater than or equal to 18 and less than or equal to 65. Please veri" +
                             "fy.",
                         "false"});
-#line 943
+#line 939
     testRunner.And("I verify Query is displayed", ((string)(null)), table187);
-#line 946
+#line 942
  testRunner.And("I take a screenshot");
-#line 947
+#line 943
  testRunner.When("I cancel the Query \"Age must be greater than or equal to 18 and less than or equa" +
                     "l to 65. Please verify.\" on Field \"Age 2\"");
-#line 948
+#line 944
  testRunner.And("I save the CRF page");
-#line 949
+#line 945
  testRunner.And("I click audit on Field \"Age 2\"");
-#line 950
+#line 946
  testRunner.And("I take a screenshot");
 #line hidden
             TechTalk.SpecFlow.Table table188 = new TechTalk.SpecFlow.Table(new string[] {
@@ -2938,9 +2938,9 @@ this.FeatureBackground();
                         "Query Canceled",
                         "Age must be greater than or equal to 18 and less than or equal to 65. Please veri" +
                             "fy."});
-#line 951
+#line 947
  testRunner.And("I verify Audits exist", ((string)(null)), table188);
-#line 954
+#line 950
  testRunner.And("I select Form \"Form 1\" in \"Header\"");
 #line hidden
             TechTalk.SpecFlow.Table table189 = new TechTalk.SpecFlow.Table(new string[] {
@@ -2949,16 +2949,16 @@ this.FeatureBackground();
             table189.AddRow(new string[] {
                         "Age 2",
                         "20"});
-#line 955
+#line 951
  testRunner.And("I enter data in CRF and save", ((string)(null)), table189);
 #line hidden
             TechTalk.SpecFlow.Table table190 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field"});
             table190.AddRow(new string[] {
                         "Age 2"});
-#line 958
+#line 954
  testRunner.And("I verify Query is not displayed", ((string)(null)), table190);
-#line 961
+#line 957
  testRunner.And("I take a screenshot");
 #line hidden
             TechTalk.SpecFlow.Table table191 = new TechTalk.SpecFlow.Table(new string[] {
@@ -2967,7 +2967,7 @@ this.FeatureBackground();
             table191.AddRow(new string[] {
                         "Age 2",
                         "17"});
-#line 962
+#line 958
  testRunner.And("I enter data in CRF and save", ((string)(null)), table191);
 #line hidden
             TechTalk.SpecFlow.Table table192 = new TechTalk.SpecFlow.Table(new string[] {
@@ -2979,9 +2979,9 @@ this.FeatureBackground();
                         "Age must be greater than or equal to 18 and less than or equal to 65. Please veri" +
                             "fy.",
                         "true"});
-#line 965
+#line 961
  testRunner.And("I verify Query is not displayed", ((string)(null)), table192);
-#line 968
+#line 964
  testRunner.And("I take a screenshot");
 #line hidden
             this.ScenarioCleanup();
@@ -2995,8 +2995,8 @@ this.FeatureBackground();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo(@"PB_US12940_07C As an EDC user, when I entered bad data in field A that resulted in the system opening a query on field A, and I canceled the query, and I entered good data in field A, if I then entered the same bad data in field A as when the query was canceled, then the system should not refire a query on field A. Query with requires response = true and requires manual close = false", new string[] {
                         "release_564_Patch11",
                         "PB_US12940_07C",
-                        "Draft"});
-#line 973
+                        "Validation"});
+#line 969
 this.ScenarioSetup(scenarioInfo);
 #line 13
 this.FeatureBackground();
@@ -3013,9 +3013,9 @@ this.FeatureBackground();
             table193.AddRow(new string[] {
                         "Subject ID",
                         "SUB {Var(num1)}"});
-#line 974
+#line 970
  testRunner.And("I create a Subject", ((string)(null)), table193);
-#line 979
+#line 975
  testRunner.And("I select Form \"Form 1\"");
 #line hidden
             TechTalk.SpecFlow.Table table194 = new TechTalk.SpecFlow.Table(new string[] {
@@ -3024,7 +3024,7 @@ this.FeatureBackground();
             table194.AddRow(new string[] {
                         "Age 3",
                         "17"});
-#line 980
+#line 976
  testRunner.And("I enter data in CRF and save", ((string)(null)), table194);
 #line hidden
             TechTalk.SpecFlow.Table table195 = new TechTalk.SpecFlow.Table(new string[] {
@@ -3036,18 +3036,18 @@ this.FeatureBackground();
                         "Age must be greater than or equal to 18 and less than or equal to 65. Please veri" +
                             "fy.",
                         "false"});
-#line 983
+#line 979
     testRunner.And("I verify Query is displayed", ((string)(null)), table195);
-#line 986
+#line 982
  testRunner.And("I take a screenshot");
-#line 987
+#line 983
  testRunner.When("I cancel the Query \"Age must be greater than or equal to 18 and less than or equa" +
                     "l to 65. Please verify.\" on Field \"Age 3\"");
-#line 988
+#line 984
  testRunner.And("I save the CRF page");
-#line 989
+#line 985
  testRunner.And("I click audit on Field \"Age 3\"");
-#line 990
+#line 986
  testRunner.And("I take a screenshot");
 #line hidden
             TechTalk.SpecFlow.Table table196 = new TechTalk.SpecFlow.Table(new string[] {
@@ -3057,9 +3057,9 @@ this.FeatureBackground();
                         "Query Canceled",
                         "Age must be greater than or equal to 18 and less than or equal to 65. Please veri" +
                             "fy."});
-#line 991
+#line 987
  testRunner.And("I verify Audits exist", ((string)(null)), table196);
-#line 994
+#line 990
  testRunner.And("I select Form \"Form 1\" in \"Header\"");
 #line hidden
             TechTalk.SpecFlow.Table table197 = new TechTalk.SpecFlow.Table(new string[] {
@@ -3068,16 +3068,16 @@ this.FeatureBackground();
             table197.AddRow(new string[] {
                         "Age 3",
                         "20"});
-#line 995
+#line 991
  testRunner.And("I enter data in CRF and save", ((string)(null)), table197);
 #line hidden
             TechTalk.SpecFlow.Table table198 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field"});
             table198.AddRow(new string[] {
                         "Age 3"});
-#line 998
+#line 994
  testRunner.And("I verify Query is not displayed", ((string)(null)), table198);
-#line 1001
+#line 997
  testRunner.And("I take a screenshot");
 #line hidden
             TechTalk.SpecFlow.Table table199 = new TechTalk.SpecFlow.Table(new string[] {
@@ -3086,16 +3086,16 @@ this.FeatureBackground();
             table199.AddRow(new string[] {
                         "Age 3",
                         "17"});
-#line 1002
+#line 998
  testRunner.And("I enter data in CRF and save", ((string)(null)), table199);
 #line hidden
             TechTalk.SpecFlow.Table table200 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field"});
             table200.AddRow(new string[] {
                         "Age 3"});
-#line 1005
+#line 1001
     testRunner.And("I verify Query is not displayed", ((string)(null)), table200);
-#line 1008
+#line 1004
  testRunner.And("I take a screenshot");
 #line hidden
             this.ScenarioCleanup();
@@ -3109,7 +3109,7 @@ this.FeatureBackground();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo(@"PB_US12940_07D As an EDC user, when I entered bad data in field A that resulted in the system opening a query on field A, and I canceled the query, and I entered good data in field A, if I then entered the same bad data in field A as when the query was canceled, then the system should not refire a query on field A. Query with requires response = false and requires manual close = true", new string[] {
                         "release_564_Patch11",
                         "PB_US12940_07D"});
-#line 1012
+#line 1008
 this.ScenarioSetup(scenarioInfo);
 #line 13
 this.FeatureBackground();
@@ -3126,9 +3126,9 @@ this.FeatureBackground();
             table201.AddRow(new string[] {
                         "Subject ID",
                         "SUB {Var(num1)}"});
-#line 1013
+#line 1009
  testRunner.And("I create a Subject", ((string)(null)), table201);
-#line 1018
+#line 1014
  testRunner.And("I select Form \"Form 1\"");
 #line hidden
             TechTalk.SpecFlow.Table table202 = new TechTalk.SpecFlow.Table(new string[] {
@@ -3137,7 +3137,7 @@ this.FeatureBackground();
             table202.AddRow(new string[] {
                         "Age 4",
                         "17"});
-#line 1019
+#line 1015
  testRunner.And("I enter data in CRF and save", ((string)(null)), table202);
 #line hidden
             TechTalk.SpecFlow.Table table203 = new TechTalk.SpecFlow.Table(new string[] {
@@ -3149,18 +3149,18 @@ this.FeatureBackground();
                         "Age must be greater than or equal to 18 and less than or equal to 65. Please veri" +
                             "fy.",
                         "false"});
-#line 1022
+#line 1018
     testRunner.And("I verify Query is displayed", ((string)(null)), table203);
-#line 1025
+#line 1021
  testRunner.And("I take a screenshot");
-#line 1026
+#line 1022
  testRunner.When("I cancel the Query \"Age must be greater than or equal to 18 and less than or equa" +
                     "l to 65. Please verify.\" on Field \"Age 4\"");
-#line 1027
+#line 1023
  testRunner.And("I save the CRF page");
-#line 1028
+#line 1024
  testRunner.And("I click audit on Field \"Age 4\"");
-#line 1029
+#line 1025
  testRunner.And("I take a screenshot");
 #line hidden
             TechTalk.SpecFlow.Table table204 = new TechTalk.SpecFlow.Table(new string[] {
@@ -3170,9 +3170,9 @@ this.FeatureBackground();
                         "Query Canceled",
                         "Age must be greater than or equal to 18 and less than or equal to 65. Please veri" +
                             "fy."});
-#line 1030
+#line 1026
  testRunner.And("I verify Audits exist", ((string)(null)), table204);
-#line 1033
+#line 1029
  testRunner.And("I select Form \"Form 1\" in \"Header\"");
 #line hidden
             TechTalk.SpecFlow.Table table205 = new TechTalk.SpecFlow.Table(new string[] {
@@ -3181,16 +3181,16 @@ this.FeatureBackground();
             table205.AddRow(new string[] {
                         "Age 4",
                         "20"});
-#line 1034
+#line 1030
  testRunner.And("I enter data in CRF and save", ((string)(null)), table205);
 #line hidden
             TechTalk.SpecFlow.Table table206 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field"});
             table206.AddRow(new string[] {
                         "Age 4"});
-#line 1037
+#line 1033
  testRunner.And("I verify Query is not displayed", ((string)(null)), table206);
-#line 1040
+#line 1036
  testRunner.And("I take a screenshot");
 #line hidden
             TechTalk.SpecFlow.Table table207 = new TechTalk.SpecFlow.Table(new string[] {
@@ -3199,16 +3199,16 @@ this.FeatureBackground();
             table207.AddRow(new string[] {
                         "Age 4",
                         "17"});
-#line 1041
+#line 1037
  testRunner.And("I enter data in CRF and save", ((string)(null)), table207);
 #line hidden
             TechTalk.SpecFlow.Table table208 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field"});
             table208.AddRow(new string[] {
                         "Age 4"});
-#line 1044
+#line 1040
     testRunner.And("I verify Query is not displayed", ((string)(null)), table208);
-#line 1047
+#line 1043
  testRunner.And("I take a screenshot");
 #line hidden
             this.ScenarioCleanup();
