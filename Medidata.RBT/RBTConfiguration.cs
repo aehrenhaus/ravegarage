@@ -13,7 +13,7 @@ namespace Medidata.RBT
 		static RBTConfiguration()
 		{
 			Default = (RBTConfiguration)System.Configuration.ConfigurationManager.GetSection(
-			"RBTConfiguration");
+			"RBTConfiguration"); 
 		}
 
 		[ConfigurationProperty("DatabaseConnection", DefaultValue = "", IsRequired = true)]

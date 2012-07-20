@@ -16,6 +16,9 @@ using System.Collections.Specialized;
 
 namespace Medidata.RBT
 {
+	/// <summary>
+	/// Provides basic implemenations of IPage methods.
+	/// </summary>
     public class PageBase : IPage
     {
         #region .ctor and initialization
@@ -27,35 +30,47 @@ namespace Medidata.RBT
 			PageFactory.InitElements(Browser, this);
         }
 
-        /// <summary>
-        /// Represents the actual browser
-        /// </summary>
-        protected RemoteWebDriver Browser { get; set; }
-
-
-  
+   
         #endregion
 
-        /// <summary>
-        /// For summary of these methods, please see IPage interface
-        /// </summary>
+ 
         #region IPage
 
+		/// <summary>
+		/// See IPage interface
+		/// </summary>
+		public RemoteWebDriver Browser { get; set; }
+
+
+		/// <summary>
+		/// See IPage interface
+		/// </summary>
 		public virtual string URL { get { throw new Exception("Must override URL property"); } }
 
+		/// <summary>
+		/// See IPage interface
+		/// </summary>
         public virtual string BaseURL { get; protected set; }
 
+		/// <summary>
+		/// See IPage interface
+		/// </summary>
         public TPage As<TPage>() where TPage : class, IPage
         {
             var page = this as TPage;
             if (page == null)
-                throw new Exception("Expect current page to be " + typeof(TPage).Name + ", but it's not.");
+                throw new Exception("Expect current page to be " + typeof(TPage).Name + ", but it's "+this.GetType().Name);
             return page;
         }
 
+		/// <summary>
+		/// See IPage interface
+		/// </summary>
         public virtual IPage ClickButton(string identifer)
         {
-            var element = Browser.TryFindElementBy(By.XPath("//input[@value='" + identifer + "']"));
+            var element = Browser.TryFindElementBy(By.XPath("//button[text()='" + identifer + "']"));
+			if(element ==null)
+				Browser.TryFindElementBy(By.XPath("//input[@value='" + identifer + "']"));
             if (element == null)
                 element = Browser.TryFindElementById(identifer);
             if (element == null)
@@ -69,6 +84,9 @@ namespace Medidata.RBT
 			return TestContext.POFactory.GetPageByUrl(uri); ;
         }
 
+		/// <summary>
+		/// See IPage interface
+		/// </summary>
         public virtual IPage ClickLinkInArea(string type, string linkText, string areaIdentifer)
         {
 			
@@ -82,6 +100,9 @@ namespace Medidata.RBT
 			return GetPageByCurrentUrlIfNoAlert();
         }
 
+		/// <summary>
+		/// See IPage interface
+		/// </summary>
         public virtual IPage ClickLink(string linkText)
         {
             var link = Browser.Link(linkText);
@@ -91,6 +112,9 @@ namespace Medidata.RBT
 			return GetPageByCurrentUrlIfNoAlert();
         }
 
+		/// <summary>
+		/// See IPage interface
+		/// </summary>
 		protected IPage GetPageByCurrentUrlIfNoAlert()
 		{
 			//if a model dialog presents, then Browser.Url will throw error
@@ -110,30 +134,17 @@ namespace Medidata.RBT
 	
 		}
 
-
-        /// <summary>
-        /// Clicks the link that is created as a span with an onclick event.  
-        /// </summary>
-        /// <param name="linkText">The link text.</param>
-        /// <returns></returns>
-        public virtual IPage ClickSpanLink(string linkText)
-        {
-		
-            var item = Browser.Spans().FirstOrDefault(x=> x.Text == linkText);
-            if (item != null) 
-				item.Click();
-            else 
-				throw new Exception("Can't find link by text:" + linkText);
-
-			return GetPageByCurrentUrlIfNoAlert();
-        }
-
+		/// <summary>
+		/// See IPage interface
+		/// </summary>
         public virtual IPage NavigateTo(string identifer)
         {
             throw new Exception("Don't know how to navigate to "+identifer);
         }
 
-
+		/// <summary>
+		/// See IPage interface
+		/// </summary>
         public virtual IPage Type(string identifer, string text)
         {
             var element = Browser.Textbox(identifer);
@@ -143,6 +154,9 @@ namespace Medidata.RBT
             return this;
         }
 
+		/// <summary>
+		/// See IPage interface
+		/// </summary>
         public virtual IPage ChooseFromDropdown(string identifer, string text)
         {
             var element = Browser.Dropdown(identifer, true);
@@ -154,6 +168,9 @@ namespace Medidata.RBT
 			return GetPageByCurrentUrlIfNoAlert();
         }
 
+		/// <summary>
+		/// See IPage interface
+		/// </summary>
         public virtual IPage ChooseFromCheckboxes(string areaIdentifer, string identifer, bool isChecked)
         {
 
@@ -169,6 +186,9 @@ namespace Medidata.RBT
 			return GetPageByCurrentUrlIfNoAlert();
         }
 
+		/// <summary>
+		/// See IPage interface
+		/// </summary>
         public virtual IPage ChooseFromRadiobuttons(string areaIdentifer, string identifer)
         {
             var element = Browser.RadioButton(identifer, true);
@@ -180,6 +200,9 @@ namespace Medidata.RBT
             return this;
         }
 
+		/// <summary>
+		/// See IPage interface
+		/// </summary>
         public virtual bool IsThePage()
         {
 			//TODO: this does not take the {} template into account, provide fix later
@@ -189,27 +212,30 @@ namespace Medidata.RBT
 			return Browser.Url.ToLower().Contains(this.URL.ToLower());
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        public IPage NavigateToSelf()
+		/// <summary>
+		/// See IPage interface
+		/// </summary>
+		public virtual IPage NavigateToSelf(NameValueCollection parameters = null)
         {
             string contextSessionIdstring = TestContext.GetContextValue<string>("UrlSessionID");
             string url = string.Format("{0}{1}{2}", BaseURL, string.IsNullOrEmpty(contextSessionIdstring) ? string.Empty : contextSessionIdstring + "/", URL);
             string querystring = string.Empty;
 
-            foreach (string key in Parameters.Keys)
-            {
-                //allows params within url for MVC routes
-                string keyReplacement = string.Format("{{{0}}}", key);
-                if (url.Contains(keyReplacement))
-                    url = url.Replace(keyReplacement, Parameters[key]);
-                else
-                {
-                    //any querystring params
-                    querystring = string.Format("{0}{1}{2}={3}", querystring, string.IsNullOrEmpty(querystring) ? string.Empty : "&", key, Parameters[key]);
-                }
-            }
+			if(parameters != null)
+			{
+				foreach (string key in parameters.Keys)
+				{
+					//allows params within url for MVC routes
+					string keyReplacement = string.Format("{{{0}}}", key);
+					if (url.Contains(keyReplacement))
+						url = url.Replace(keyReplacement, parameters[key]);
+					else
+					{
+						//any querystring params
+						querystring = string.Format("{0}{1}{2}={3}", querystring, string.IsNullOrEmpty(querystring) ? string.Empty : "&", key, parameters[key]);
+					}
+				}
+			}
 
             if (!string.IsNullOrEmpty(querystring))
                 url = url + "?" + querystring;
@@ -230,9 +256,16 @@ namespace Medidata.RBT
         }
 
 		/// <summary>
-		/// Get some critical text from the page
+		/// See IPage interface
 		/// </summary>
-		/// <param name="identifer"></param>
+		public virtual bool CanSeeTextInArea(string text, string areaIdentifer)
+		{
+			throw new Exception("This page does not implement this method");
+		}
+
+		/// <summary>
+		/// See IPage interface
+		/// </summary>
 		public virtual string GetInfomation(string identifer)
 		{
 			throw new Exception("Don't know how to get text from "+identifer);
@@ -241,10 +274,22 @@ namespace Medidata.RBT
         #endregion
 
 
-		private NameValueCollection param = new NameValueCollection();
-		public virtual NameValueCollection Parameters
+
+		/// <summary>
+		/// Clicks the link that is created as a span with an onclick event.  
+		/// </summary>
+		/// <param name="linkText">The link text.</param>
+		/// <returns></returns>
+		public virtual IPage ClickSpanLink(string linkText)
 		{
-			get { return param; }
+
+			var item = Browser.Spans().FirstOrDefault(x => x.Text == linkText);
+			if (item != null)
+				item.Click();
+			else
+				throw new Exception("Can't find link by text:" + linkText);
+
+			return GetPageByCurrentUrlIfNoAlert();
 		}
 
 
@@ -272,16 +317,7 @@ namespace Medidata.RBT
             throw new Exception("This page does not provide information about named page elements");
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="text"></param>
-        /// <param name="areaIdentifer"></param>
-        /// <returns></returns>
-        public virtual bool CanSeeTextInArea(string text, string areaIdentifer)
-        {
-            throw new Exception("This page does not implement this method");
-        }
+		
 
         /// <summary>
         /// Get the alert reference inorder to click yes, no etc.

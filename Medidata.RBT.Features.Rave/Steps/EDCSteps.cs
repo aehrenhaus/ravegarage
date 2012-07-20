@@ -171,5 +171,13 @@ namespace Medidata.RBT.Features.Rave
 			}
 		}
 
+
+		[StepDefinition(@"I sign CRF with ""([^""]*)"" and ""([^""]*)""")]
+		public void ISignCRFWith____And____(string username , string password)
+		{
+			CurrentPage.As<BaseEDCTreePage>().SignForm(username, password);
+		}
+
+
 	}
 }

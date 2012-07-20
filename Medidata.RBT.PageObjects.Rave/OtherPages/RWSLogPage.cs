@@ -18,12 +18,7 @@ namespace Medidata.RBT.PageObjects.Rave
 
         public RWSLogPage(string logger)
         {
-            string time = "2012-06-06T00:01:10";
-            //TODO - remove following line
-            logger = "Medidata.Core.Objects.DeferredRollupQueue";
 
-            Parameters.Add("logger", logger);
-            Parameters.Add("Start", time);
 
             string dialogTitle = "Authentication Required";
             string username = "defuser";
@@ -41,10 +36,10 @@ namespace Medidata.RBT.PageObjects.Rave
             proc.StartInfo = procStartInfo;
             proc.Start();
 
-            Browser.Url = GetUrl(URL, Parameters);
+            //Browser.Url = GetUrl(URL, Parameters);
 
-            //InitializeWithNewUrl(string.Format("{0}datasets/Logmessagedata?Start={1}&rows=1000&Logger={2}", rwsAppName, time, logger));
-            Browser.Url = string.Format("{0}datasets/Logmessagedata?Start={1}&Logger={2}&rows=1000", RaveConfiguration.Default.RWSURL, time, logger);
+			NavigateToSelf();
+			//Browser.Url = string.Format("{0}datasets/Logmessagedata?Start={1}&Logger={2}&rows=1000", RaveConfiguration.Default.RWSURL, time, logger);
             string text = Browser.PageSource;
         }
 
@@ -53,16 +48,17 @@ namespace Medidata.RBT.PageObjects.Rave
             throw new NotImplementedException();
         }
 
+		public override IPage NavigateToSelf(NameValueCollection parameters = null)
+		{
+			if (parameters == null)
+				parameters = new NameValueCollection();
 
-        public override NameValueCollection Parameters
-        {
-            get
-            {
-                NameValueCollection param = new NameValueCollection();
-                param.Add("rows", "1000");
-                return param;
-            }
-        }
+			parameters["rows"] = parameters["rows"] ?? "1000";
+			parameters["logger"] = parameters["logger"] ?? "Medidata.Core.Objects.DeferredRollupQueue";
+			parameters["Start"] = parameters["Start"] ?? "2012-06-06T00:01:10";
+		
+			return base.NavigateToSelf(parameters);
+		}
 
         public string URL { get { return "datasets/Logmessagedata"; } }
     }

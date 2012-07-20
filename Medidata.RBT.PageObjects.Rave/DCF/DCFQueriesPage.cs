@@ -58,12 +58,12 @@ namespace Medidata.RBT.PageObjects.Rave
 		}
 
 
-		//protected override IPage GetTargetPageObjectByLinkAreaName(string type, string areaName)
-		//{
-		//    if (type == "Form" && areaName == "Search Result")
-		//        return new CRFPage();
-				
-		//    return base.GetTargetPageObjectByLinkAreaName(type, areaName);
-		//}
+		public override string URL
+		{
+			get
+			{
+				return "Modules/DCF/DCFQueries.aspx";
+			}
+		}
 	}
 }

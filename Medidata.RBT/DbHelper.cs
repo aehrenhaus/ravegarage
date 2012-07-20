@@ -9,6 +9,10 @@ using System.Data.SqlClient;
 
 namespace Medidata.RBT
 {
+	/// <summary>
+	/// Since it is decided to use Microsoft enterprise libary to operate the database,
+	/// this class only does something that can not be done easily through enterprise library
+	/// </summary>
 	public class DbHelper
 	{
 		public static void CreateSnapshot(string snapshotName=null)

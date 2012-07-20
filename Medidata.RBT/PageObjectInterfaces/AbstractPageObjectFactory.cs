@@ -6,6 +6,9 @@ using System.Reflection;
 
 namespace Medidata.RBT.PageObjects.Rave
 {
+	/// <summary>
+	/// See IPageObjectFactory interface
+	/// </summary>
 	public abstract class AbstractPageObjectFactory : IPageObjectFactory
 	{
 		public AbstractPageObjectFactory()
@@ -37,6 +40,11 @@ namespace Medidata.RBT.PageObjects.Rave
 
 		}
 
+		#region IPageObjectFactory
+
+		/// <summary>
+		/// See IPageObjectFactory interface
+		/// </summary>
 		public IPage GetPage(string className) 
 		{
 			if (dicNameType == null || pos == null)
@@ -55,7 +63,9 @@ namespace Medidata.RBT.PageObjects.Rave
 			return po;
 		}
 
-
+		/// <summary>
+		/// See IPageObjectFactory interface
+		/// </summary>
 		public IPage GetPageByUrl(Uri uri)
 		{
 			if (dicNameType == null || pos == null)
@@ -81,5 +91,7 @@ namespace Medidata.RBT.PageObjects.Rave
 			}
 			throw new Exception("No page object matches the url:" + uri.ToString());
 		}
+
+		#endregion
 	}
 }

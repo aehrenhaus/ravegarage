@@ -12,6 +12,7 @@ using System.Data;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Remote;
 using System.Threading;
+using System.Collections.Specialized;
 
 namespace Medidata.RBT.Features.Rave
 {
@@ -29,11 +30,12 @@ namespace Medidata.RBT.Features.Rave
 		{
 			//TODO:Set parameters from table
 			PageBase page = TestContext.POFactory.GetPage(pageName.Replace(" ", "") + "Page") as PageBase;
+			NameValueCollection parameters = new NameValueCollection();
 			foreach (var row in table.Rows)
 			{
-				page.Parameters[row["Name"]]=row["Value"];
+				parameters[row["Name"]] = row["Value"];
 			}
-			CurrentPage = page.NavigateToSelf();
+			CurrentPage = page.NavigateToSelf(parameters);
 		}
 
 		[StepDefinition(@"I navigate to ""([^""]*)"" page")]

@@ -11,7 +11,7 @@ using TechTalk.SpecFlow.Assist;
 
 namespace Medidata.RBT.PageObjects.Rave
 {
-	public class PrimaryRecordPage : RavePageBase
+	public class PrimaryRecordPage : BaseEDCTreePage
 	{
 		public PrimaryRecordPage FillDataPoints(IEnumerable<FieldModel> fields)
 		{
@@ -37,6 +37,14 @@ namespace Medidata.RBT.PageObjects.Rave
 			saveButton.Click();
 				
 			return new SubjectPage();
+		}
+
+		public override string URL
+		{
+			get
+			{
+				return "Modules/EDC/PrimaryRecordPage.aspx";
+			}
 		}
 
 	}
