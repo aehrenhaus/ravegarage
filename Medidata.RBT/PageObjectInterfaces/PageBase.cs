@@ -70,7 +70,7 @@ namespace Medidata.RBT
         {
             var element = Browser.TryFindElementBy(By.XPath("//button[text()='" + identifer + "']"));
 			if(element ==null)
-				Browser.TryFindElementBy(By.XPath("//input[@value='" + identifer + "']"));
+				element = Browser.TryFindElementBy(By.XPath("//input[@value='" + identifer + "']"));
             if (element == null)
                 element = Browser.TryFindElementById(identifer);
             if (element == null)
@@ -352,6 +352,7 @@ namespace Medidata.RBT
 	
 			return Browser.WaitForElement(partialID,predicate, errorMessage, timeOutSecond);
 		}
-   
+
+
 	}
 }
