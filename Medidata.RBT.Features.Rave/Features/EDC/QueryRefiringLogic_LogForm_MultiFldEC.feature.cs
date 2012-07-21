@@ -103,7 +103,7 @@ namespace Medidata.RBT.Features.Rave.Features.EDC
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo(@"PB_US12940_01A As an EDC user, when I entered bad data in log field A and log field B that resulted in the system opening a query on log field B, and I answered the query without changing the data, and the query is then closed, and I entered good data in log field A, if I then entered the same bad data in log field A as when the query was closed, then the system should not refire a query on log field B. Query with requires response = true and requires manual close = true.", new string[] {
                         "release_564_Patch11",
                         "PB_US12940_01A",
-                        "Draft"});
+                        "Validation"});
 #line 22
 this.ScenarioSetup(scenarioInfo);
 #line 12
@@ -244,7 +244,7 @@ this.FeatureBackground();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo(@"PB_US12940_01B As an EDC user, when I entered bad data in log field A and log field B that resulted in the system opening a query on log field B, and I answered the query without changing the data, and the query is then closed, and I entered good data in log field A, if I then entered the same bad data in log field A as when the query was closed, then the system should not refire a query on log field B. Query with requires response = false and requires manual close = false.", new string[] {
                         "release_564_Patch11",
                         "PB_US12940_01B",
-                        "Draft"});
+                        "Validation"});
 #line 71
 this.ScenarioSetup(scenarioInfo);
 #line 12
@@ -356,7 +356,7 @@ this.FeatureBackground();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo(@"PB_US12940_01C As an EDC user, when I entered bad data in log field A and log field B that resulted in the system opening a query on log field B, and I answered the query without changing the data, and the query is then closed, and I entered good data in log field A, if I then entered the same bad data in log field A as when the query was closed, then the system should not refire a query on log field B. Query with requires response = true and requires manual close = false.", new string[] {
                         "release_564_Patch11",
                         "PB_US12940_01C",
-                        "Draft"});
+                        "Validation"});
 #line 109
 this.ScenarioSetup(scenarioInfo);
 #line 12
@@ -487,7 +487,7 @@ this.FeatureBackground();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo(@"PB_US12940_01D As an EDC user, when I entered bad data in log field A and log field B that resulted in the system opening a query on log field B, and I answered the query without changing the data, and the query is then closed, and I entered good data in log field A, if I then entered the same bad data in log field A as when the query was closed, then the system should not refire a query on log field B. Query with requires response = false and requires manual close = true.", new string[] {
                         "release_564_Patch11",
                         "PB_US12940_01D",
-                        "Draft",
+                        "Validation",
                         "ignore"});
 #line 155
 this.ScenarioSetup(scenarioInfo);
@@ -620,7 +620,7 @@ this.FeatureBackground();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo(@"PB_US12940_02A As an EDC user, when I entered bad data in log field A and log field B that resulted in the system opening a query on log field B, and I answered the query without changing the data, and the query is then closed, and I entered good data in log field B, if I then entered the same bad data in log field B as when the query was closed, then the system should not refire a query on log field B. Query with requires response = true and requires manual close = true.", new string[] {
                         "release_564_Patch11",
                         "PB_US12940_02A",
-                        "Draft"});
+                        "Validation"});
 #line 199
 this.ScenarioSetup(scenarioInfo);
 #line 12
@@ -761,7 +761,7 @@ this.FeatureBackground();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo(@"PB_US12940_02B As an EDC user, when I entered bad data in log field A and log field B that resulted in the system opening a query on log field B, and I answered the query without changing the data, and the query is then closed, and I entered good data in log field B, if I then entered the same bad data in log field B as when the query was closed, then the system should not refire a query on log field B. Query with requires response = false and requires manual close = false.", new string[] {
                         "release_564_Patch11",
                         "PB_US12940_02B",
-                        "Draft"});
+                        "Validation"});
 #line 248
 this.ScenarioSetup(scenarioInfo);
 #line 12
@@ -873,7 +873,7 @@ this.FeatureBackground();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo(@"PB_US12940_02C As an EDC user, when I entered bad data in log field A and log field B that resulted in the system opening a query on log field B, and I answered the query without changing the data, and the query is then closed, and I entered good data in log field B, if I then entered the same bad data in log field B as when the query was closed, then the system should not refire a query on log field B. Query with requires response = true and requires manual close = false.", new string[] {
                         "release_564_Patch11",
                         "PB_US12940_02C",
-                        "Draft"});
+                        "Validation"});
 #line 286
 this.ScenarioSetup(scenarioInfo);
 #line 12
@@ -1005,7 +1005,7 @@ this.FeatureBackground();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo(@"PB_US12940_02D As an EDC user, when I entered bad data in log field A and log field B that resulted in the system opening a query on log field B, and I answered the query without changing the data, and the query is then closed, and I entered good data in log field B, if I then entered the same bad data in log field B as when the query was closed, then the system should not refire a query on log field B. Query with requires response = false and requires manual close = true.", new string[] {
                         "release_564_Patch11",
                         "PB_US12940_02D",
-                        "Draft"});
+                        "Validation"});
 #line 331
 this.ScenarioSetup(scenarioInfo);
 #line 12
@@ -1137,7 +1137,7 @@ this.FeatureBackground();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo(@"PB_US12940_03A As an EDC user, when I entered bad data in log field A and log field B that resulted in the system opening a query on log field B, and I answered the query and I changed the data in log field A to another bad data, and the query is then closed, if I entered good data in log field A and then again entered the same bad data in log field A as when the query was closed, then the system should not refire a query on log field B. Query with requires response = true and requires manual close = true.", new string[] {
                         "release_564_Patch11",
                         "PB_US12940_03A",
-                        "Draft"});
+                        "Validation"});
 #line 376
 this.ScenarioSetup(scenarioInfo);
 #line 12
@@ -1301,7 +1301,7 @@ this.FeatureBackground();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo(@"PB_US12940_03B As an EDC user, when I entered bad data in log field A and log field B that resulted in the system opening a query on log field B, and I answered the query and I changed the data in log field A to another bad data, and the query is then closed, if I entered good data in log field A and then again entered the same bad data in log field A as when the query was closed, then the system should not refire a query on log field B. Query with requires response = false and requires manual close = false.", new string[] {
                         "release_564_Patch11",
                         "PB_US12940_03B",
-                        "Draft"});
+                        "Validation"});
 #line 431
 this.ScenarioSetup(scenarioInfo);
 #line 12
@@ -1441,7 +1441,7 @@ this.FeatureBackground();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo(@"PB_US12940_03C As an EDC user, when I entered bad data in log field A and log field B that resulted in the system opening a query on log field B, and I answered the query and I changed the data in log field A to another bad data, and the query is then closed, if I entered good data in log field A and then again entered the same bad data in log field A as when the query was closed, then the system should not refire a query on log field B. Query with requires response = true and requires manual close = false.", new string[] {
                         "release_564_Patch11",
                         "PB_US12940_03C",
-                        "Draft",
+                        "Validation",
                         "ignore"});
 #line 480
 this.ScenarioSetup(scenarioInfo);
@@ -1583,7 +1583,7 @@ this.FeatureBackground();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo(@"PB_US12940_03D As an EDC user, when I entered bad data in log field A and log field B that resulted in the system opening a query on log field B, and I answered the query and I changed the data in log field A to another bad data, and the query is then closed, if I entered good data in log field A and then again entered the same bad data in log field A as when the query was closed, then the system should not refire a query on log field B. Query with requires response = false and requires manual close = true.", new string[] {
                         "release_564_Patch11",
                         "PB_US12940_03D",
-                        "Draft",
+                        "Validation",
                         "ignore"});
 #line 530
 this.ScenarioSetup(scenarioInfo);
@@ -1745,7 +1745,7 @@ this.FeatureBackground();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo(@"PB_US12940_04A As an EDC user, when I entered bad data in log field A and log field B that resulted in the system opening a query on log field B, and I answered the query and I changed the data in log field A to another bad data, and the query is then closed, if I then entered the original bad data in log field A, then the system should refire a query on log field B. Query with requires response = true and requires manual close = true.", new string[] {
                         "release_564_Patch11",
                         "PB_US12940_04A",
-                        "Draft"});
+                        "Validation"});
 #line 584
 this.ScenarioSetup(scenarioInfo);
 #line 12
@@ -1884,7 +1884,7 @@ this.FeatureBackground();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo(@"PB_US12940_04B As an EDC user, when I entered bad data in log field A and log field B that resulted in the system opening a query on log field B, and I answered the query and I changed the data in log field A to another bad data, and the query is then closed, if I then entered the original bad data in log field A, then the system should refire a query on log field B. Query with requires response = false and requires manual close = false.", new string[] {
                         "release_564_Patch11",
                         "PB_US12940_04B",
-                        "Draft",
+                        "Validation",
                         "ignore"});
 #line 632
 this.ScenarioSetup(scenarioInfo);
@@ -2009,7 +2009,7 @@ this.FeatureBackground();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo(@"PB_US12940_04C As an EDC user, when I entered bad data in log field A and log field B that resulted in the system opening a query on log field B, and I answered the query and I changed the data in log field A to another bad data, and the query is then closed, if I then entered the original bad data in log field A, then the system should refire a query on log field B. Query with requires response = true and requires manual close = false.", new string[] {
                         "release_564_Patch11",
                         "PB_US12940_04C",
-                        "Draft"});
+                        "Validation"});
 #line 672
 this.ScenarioSetup(scenarioInfo);
 #line 12
@@ -2137,7 +2137,7 @@ this.FeatureBackground();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo(@"PB_US12940_04D As an EDC user, when I entered bad data in log field A and log field B that resulted in the system opening a query on log field B, and I answered the query and I changed the data in log field A to another bad data, and the query is then closed, if I then entered the original bad data in log field A, then the system should refire a query on log field B. Query with requires response = false and requires manual close = true.", new string[] {
                         "release_564_Patch11",
                         "PB_US12940_04D",
-                        "Draft",
+                        "Validation",
                         "ignore"});
 #line 715
 this.ScenarioSetup(scenarioInfo);
@@ -2276,7 +2276,7 @@ this.FeatureBackground();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo(@"PB_US12940_05A As an EDC user, when I entered bad data in log field A and log field B that resulted in the system opening a query on log field B, and I answered the query without changing the data, and the query is then closed, if I then entered new bad data in log field A, then the system should refire a query on log field B. Query with requires response = true and requires manual close = true.", new string[] {
                         "release_564_Patch11",
                         "PB_US12940_05A",
-                        "Draft"});
+                        "Validation"});
 #line 761
 this.ScenarioSetup(scenarioInfo);
 #line 12
@@ -2391,7 +2391,7 @@ this.FeatureBackground();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo(@"PB_US12940_05B As an EDC user, when I entered bad data in log field A and log field B that resulted in the system opening a query on log field B, and I answered the query without changing the data, and the query is then closed, if I then entered new bad data in log field A, then the system should refire a query on log field B. Query with requires response = false and requires manual close = false.", new string[] {
                         "release_564_Patch11",
                         "PB_US12940_05B",
-                        "Draft"});
+                        "Validation"});
 #line 801
 this.ScenarioSetup(scenarioInfo);
 #line 12
@@ -2486,7 +2486,7 @@ this.FeatureBackground();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo(@"PB_US12940_05C As an EDC user, when I entered bad data in log field A and log field B that resulted in the system opening a query on log field B, and I answered the query without changing the data, and the query is then closed, if I then entered new bad data in log field A, then the system should refire a query on log field B. Query with requires response = true and requires manual close = false.", new string[] {
                         "release_564_Patch11",
                         "PB_US12940_05C",
-                        "Draft"});
+                        "Validation"});
 #line 832
 this.ScenarioSetup(scenarioInfo);
 #line 12
@@ -2603,7 +2603,7 @@ this.FeatureBackground();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo(@"PB_US12940_05D As an EDC user, when I entered bad data in log field A and log field B that resulted in the system opening a query on log field B, and I answered the query without changing the data, and the query is then closed, if I then entered new bad data in log field A, then the system should refire a query on log field B. Query with requires response = false and requires manual close = true.", new string[] {
                         "release_564_Patch11",
                         "PB_US12940_05D",
-                        "Draft"});
+                        "Validation"});
 #line 870
 this.ScenarioSetup(scenarioInfo);
 #line 12
@@ -2698,7 +2698,7 @@ this.FeatureBackground();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo(@"PB_US12940_06A As an EDC user, when I entered bad data in log field A and log field B that resulted in the system opening a query on log field B, and I canceled the query, and I entered good data in log field A, if I then entered the same bad data in log field A as when the query was canceled, then the system should not refire a query on log field B. Query with requires response = true and requires manual close = true.", new string[] {
                         "release_564_Patch11",
                         "PB_US12940_06A",
-                        "Draft"});
+                        "Validation"});
 #line 901
 this.ScenarioSetup(scenarioInfo);
 #line 12
@@ -2840,7 +2840,7 @@ this.FeatureBackground();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo(@"PB_US12940_06B As an EDC user, when I entered bad data in log field A and log field B that resulted in the system opening a query on log field B, and I canceled the query, and I entered good data in log field A, if I then entered the same bad data in log field A as when the query was canceled, then the system should not refire a query on log field B. Query with requires response = false and requires manual close = false.", new string[] {
                         "release_564_Patch11",
                         "PB_US12940_06B",
-                        "Draft"});
+                        "Validation"});
 #line 949
 this.ScenarioSetup(scenarioInfo);
 #line 12
@@ -2982,7 +2982,7 @@ this.FeatureBackground();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo(@"PB_US12940_06C As an EDC user, when I entered bad data in log field A and log field B that resulted in the system opening a query on log field B, and I canceled the query, and I entered good data in log field A, if I then entered the same bad data in log field A as when the query was canceled, then the system should not refire a query on log field B. Query with requires response = true and requires manual close = false.", new string[] {
                         "release_564_Patch11",
                         "PB_US12940_06C",
-                        "Draft"});
+                        "Validation"});
 #line 997
 this.ScenarioSetup(scenarioInfo);
 #line 12
@@ -3124,7 +3124,7 @@ this.FeatureBackground();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo(@"PB_US12940_06D As an EDC user, when I entered bad data in log field A and log field B that resulted in the system opening a query on log field B, and I canceled the query, and I entered good data in log field A, if I then entered the same bad data in log field A as when the query was canceled, then the system should not refire a query on log field B. Query with requires response = false and requires manual close = true.", new string[] {
                         "release_564_Patch11",
                         "PB_US12940_06D",
-                        "Draft"});
+                        "Validation"});
 #line 1045
 this.ScenarioSetup(scenarioInfo);
 #line 12
@@ -3266,7 +3266,7 @@ this.FeatureBackground();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo(@"PB_US12940_07A As an EDC user, when I entered bad data in field A and log field B that resulted in the system opening a query on log field B, and I canceled the query, and I entered good data in log field B, if I then entered the same bad data in log field B as when the query was canceled, then the system should not refire a query on log field B. Query with requires response = true and requires manual close = true.", new string[] {
                         "release_564_Patch11",
                         "PB_US12940_07A",
-                        "Draft"});
+                        "Validation"});
 #line 1093
 this.ScenarioSetup(scenarioInfo);
 #line 12
@@ -3408,7 +3408,7 @@ this.FeatureBackground();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo(@"PB_US12940_07B As an EDC user, when I entered bad data in field A and log field B that resulted in the system opening a query on log field B, and I canceled the query, and I entered good data in log field B, if I then entered the same bad data in log field B as when the query was canceled, then the system should not refire a query on log field B. Query with requires response = false and requires manual close = false.", new string[] {
                         "release_564_Patch11",
                         "PB_US12940_07B",
-                        "Draft"});
+                        "Validation"});
 #line 1141
 this.ScenarioSetup(scenarioInfo);
 #line 12
@@ -3550,7 +3550,7 @@ this.FeatureBackground();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo(@"PB_US12940_07C As an EDC user, when I entered bad data in field A and log field B that resulted in the system opening a query on log field B, and I canceled the query, and I entered good data in log field B, if I then entered the same bad data in log field B as when the query was canceled, then the system should not refire a query on log field B. Query with requires response = true and requires manual close = false.", new string[] {
                         "release_564_Patch11",
                         "PB_US12940_07C",
-                        "Draft"});
+                        "Validation"});
 #line 1189
 this.ScenarioSetup(scenarioInfo);
 #line 12
@@ -3692,7 +3692,7 @@ this.FeatureBackground();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo(@"PB_US12940_07D As an EDC user, when I entered bad data in field A and log field B that resulted in the system opening a query on log field B, and I canceled the query, and I entered good data in log field B, if I then entered the same bad data in log field B as when the query was canceled, then the system should not refire a query on log field B. Query with requires response = false and requires manual close = true.", new string[] {
                         "release_564_Patch11",
                         "PB_US12940_07D",
-                        "Draft"});
+                        "Validation"});
 #line 1237
 this.ScenarioSetup(scenarioInfo);
 #line 12
