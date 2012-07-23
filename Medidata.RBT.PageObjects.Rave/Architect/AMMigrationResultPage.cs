@@ -6,6 +6,7 @@ using OpenQA.Selenium.Support.PageObjects;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Remote;
 using Medidata.RBT.SeleniumExtension;
+using System.Threading;
 namespace Medidata.RBT.PageObjects.Rave
 {
 	public class AMMigrationResultPage : RavePageBase
@@ -19,9 +20,15 @@ namespace Medidata.RBT.PageObjects.Rave
 					var firstJob = Browser.TryFindElementByPartialID("_lblStatusValue");
 					if(firstJob.Text=="Complete")
 						return firstJob;
+					
+
+					Thread.Sleep(5000);
+					this.Browser.Navigate().Refresh();
 					return null;
+
 				},"Take forever to complete", timeout);
 
+		
 		}
 
 		public override string URL
