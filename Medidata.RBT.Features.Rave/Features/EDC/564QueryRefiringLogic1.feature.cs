@@ -19,7 +19,7 @@ namespace Medidata.RBT.Features.Rave.Features.EDC
     [System.CodeDom.Compiler.GeneratedCodeAttribute("TechTalk.SpecFlow", "1.8.1.0")]
     [System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     [Microsoft.VisualStudio.TestTools.UnitTesting.TestClassAttribute()]
-    public partial class _1Feature
+    public partial class _564QueryRefiringLogic1Feature
     {
         
         private static TechTalk.SpecFlow.ITestRunner testRunner;
@@ -31,7 +31,7 @@ namespace Medidata.RBT.Features.Rave.Features.EDC
         public static void FeatureSetup(Microsoft.VisualStudio.TestTools.UnitTesting.TestContext testContext)
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
-            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "1", "As a Rave user\r\nI want to change data\r\nSo I can see refired queries", ProgrammingLanguage.CSharp, ((string[])(null)));
+            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "564QueryRefiringLogic1", "As a Rave user\r\nI want to change data\r\nSo I can see refired queries", ProgrammingLanguage.CSharp, ((string[])(null)));
             testRunner.OnFeatureStart(featureInfo);
         }
         
@@ -46,9 +46,9 @@ namespace Medidata.RBT.Features.Rave.Features.EDC
         public virtual void TestInitialize()
         {
             if (((TechTalk.SpecFlow.FeatureContext.Current != null) 
-                        && (TechTalk.SpecFlow.FeatureContext.Current.FeatureInfo.Title != "1")))
+                        && (TechTalk.SpecFlow.FeatureContext.Current.FeatureInfo.Title != "564QueryRefiringLogic1")))
             {
-                Medidata.RBT.Features.Rave.Features.EDC._1Feature.FeatureSetup(null);
+                Medidata.RBT.Features.Rave.Features.EDC._564QueryRefiringLogic1Feature.FeatureSetup(null);
             }
         }
         
@@ -82,7 +82,7 @@ namespace Medidata.RBT.Features.Rave.Features.EDC
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("PB_1.1.1 As an EDC user, On a Cross Forms - Standard form to log form, when a que" +
             "ry has been answered and closed with the same data and I enter the same data tha" +
             "t originally opened the query, then queries are not displayed.")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "1")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "564QueryRefiringLogic1")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("release_564_Patch11")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("PB_1.1.1")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Validation")]
@@ -283,7 +283,7 @@ this.FeatureBackground();
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("PB_1.1.2 As an EDC user, On a Cross Forms - Standard form to log form, when a que" +
             "ry has been answered and closed with the same data and I enter the different dat" +
             "a that originally opened the query, then queries are displayed.")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "1")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "564QueryRefiringLogic1")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("release_564_Patch11")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("PB_1.1.2")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Validation")]
@@ -425,7 +425,7 @@ this.FeatureBackground();
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("PB_1.2.1 As an EDC user, On a Cross Folders, Standard form to log form. when a qu" +
             "ery has been answered and closed with the same data and I enter the same data th" +
             "at originally opened the query, then queries are not displayed.")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "1")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "564QueryRefiringLogic1")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("release_564_Patch11")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("PB_1.2.1")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Validation")]
@@ -629,7 +629,7 @@ this.FeatureBackground();
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("PB_1.2.2 As an EDC user, On a Cross Folders, Standard form to log form. when a qu" +
             "ery has been answered and closed with the same data and I enter the same data th" +
             "at originally opened the query, then queries are displayed.")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "1")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "564QueryRefiringLogic1")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("release_564_Patch11")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("PB_1.2.2")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Validation")]
@@ -776,7 +776,7 @@ this.FeatureBackground();
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("PB_1.3.1 As an EDC user, on a Cross Forms log form to Standard form, when a query" +
             " has been answered and closed with the same data and I enter the same data that " +
             "originally opened the query, then queries are not displayed.")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "1")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "564QueryRefiringLogic1")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("release_564_Patch11")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("PB_1.3.1")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Validation")]
@@ -957,7 +957,7 @@ this.FeatureBackground();
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("PB_1.3.2 As an EDC user, on a Cross Forms log form to Standard form, when a query" +
             " has been answered and closed with the different data and I enter the same data " +
             "that originally opened the query, then queries are displayed.")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "1")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "564QueryRefiringLogic1")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("release_564_Patch11")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("PB_1.3.2")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Validation")]
@@ -1099,7 +1099,7 @@ this.FeatureBackground();
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("PB_1.3.3 As an EDC user, on a Cross Forms log form to Standard form, when a query" +
             " has been answered and closed with the different data and I enter the same data " +
             "that originally opened the query, then queries are displayed.")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "1")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "564QueryRefiringLogic1")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("release_564_Patch11")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("PB_1.3.3")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Validation")]
@@ -1266,7 +1266,7 @@ this.FeatureBackground();
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("PB_1.4.1 As an EDC user, On a Cross Forms log form to log form, when a query has " +
             "been answered and closed with the same data and I enter the same data that origi" +
             "nally opened the query, then queries are not displayed.")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "1")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "564QueryRefiringLogic1")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("release_564_Patch11")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("PB_1.4.1")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Validation")]
@@ -1477,7 +1477,7 @@ this.FeatureBackground();
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("PB_1.4.2 As an EDC user, On a Cross Forms log form to log form, when a query has " +
             "been answered and closed with the different data and I enter the same data that " +
             "originally opened the query, then queries are displayed.")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "1")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "564QueryRefiringLogic1")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("release_564_Patch11")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("PB_1.4.2")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Validation")]
@@ -1722,7 +1722,7 @@ this.FeatureBackground();
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("PB_1.5.1 As an EDC user, Cross Forms - Standard form to log form, when a query ha" +
             "s been answered and closed with the same data and I enter the same data that ori" +
             "ginally opened the query, then queries are displayed.")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "1")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "564QueryRefiringLogic1")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("release_564_Patch11")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("PB_1.5.1")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Validation")]
@@ -1861,7 +1861,7 @@ this.FeatureBackground();
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("PB_1.6.1 As an EDC user, On a Cross Forms - Standard form to log form. when a que" +
             "ry has been answered and closed with the same data and I enter the same data tha" +
             "t originally opened the query, then queries are displayed.")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "1")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "564QueryRefiringLogic1")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("release_564_Patch11")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("PB_1.6.1")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Validation")]
@@ -1990,7 +1990,7 @@ this.FeatureBackground();
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("PB_1.7.1 As an EDC user, Cross Forms - log form to log form, when a query has bee" +
             "n answered and closed with the different data and I enter the same data that ori" +
             "ginally opened the query, then queries are displayed.")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "1")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "564QueryRefiringLogic1")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("release_564_Patch11")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("PB_1.7.1")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Validation")]
@@ -2181,7 +2181,7 @@ this.FeatureBackground();
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("PB_1.8.1 As an EDC user, On a Cross Forms - log form to log form, when a query ha" +
             "s been answered and closed with the different data and I enter the same data tha" +
             "t originally opened the query, then queries are displayed.")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "1")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "564QueryRefiringLogic1")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("release_564_Patch11")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("PB_1.8.1")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Validation")]
@@ -2319,7 +2319,7 @@ this.FeatureBackground();
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("PB_1.9.1 As an EDC user, On a Cross Forms - Standard form to log form, when a que" +
             "ry has been answered and closed with the different data and I enter the same dat" +
             "a that originally opened the query, then queries are not displayed.")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "1")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "564QueryRefiringLogic1")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("release_564_Patch11")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("PB_1.9.1")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Validation")]
@@ -2476,7 +2476,7 @@ this.FeatureBackground();
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("PB_1.10.1 As an EDC user, Cross Forms: Standard form to log form, when a query ha" +
             "s been answered and closed with the different data and I enter the same data tha" +
             "t originally opened the query, then queries are displayed.")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "1")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "564QueryRefiringLogic1")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("release_564_Patch11")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("PB_1.10.1")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Validation")]
@@ -2613,7 +2613,7 @@ this.FeatureBackground();
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("PB_1.11.1 As an EDC user, On a Cross Forms Standard form to log form, when a quer" +
             "y has been answered and closed with the different data and I enter the same data" +
             " that originally opened the query, then queries are not displayed.")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "1")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "564QueryRefiringLogic1")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("release_564_Patch11")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("PB_1.11.1")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Validation")]
@@ -2731,7 +2731,7 @@ this.FeatureBackground();
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("PB_1.12.1 As an EDC user, On a Cross Forms - Standard form to log form, when a qu" +
             "ery has been answered and closed with the different data and I enter the same da" +
             "ta that originally opened the query, then queries are not displayed.")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "1")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "564QueryRefiringLogic1")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("release_564_Patch11")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("PB_1.12.1")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Validation")]
@@ -2845,7 +2845,7 @@ this.FeatureBackground();
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("PB_1.13.1 As an EDC user, On a Cross Forms - Standard form to log form, when a qu" +
             "ery has been answered and closed with the different data and I enter the same da" +
             "ta that originally opened the query, then queries are displayed.")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "1")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "564QueryRefiringLogic1")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("release_564_Patch11")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("PB_1.13.1")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Validation")]
@@ -2990,7 +2990,7 @@ this.FeatureBackground();
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("PB_1.14.1 As an EDC user, Cross Forms - Standard form to log form, when a query h" +
             "as been answered and closed with the different data and I enter the same data th" +
             "at originally opened the query, then queries are displayed.")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "1")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "564QueryRefiringLogic1")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("release_564_Patch11")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("PB_1.14.1")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Validation")]
@@ -3131,7 +3131,7 @@ this.FeatureBackground();
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("PB_1.15.1 As an EDC user, On a Cross Forms - log form to log form, when a query h" +
             "as been answered and closed with the different data and I enter the same data th" +
             "at originally opened the query, then queries are displayed.")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "1")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "564QueryRefiringLogic1")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("release_564_Patch11")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("PB_1.15.1")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Validation")]
@@ -3280,7 +3280,7 @@ this.FeatureBackground();
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("PB_1.16.1 As an EDC user, On a Cross Forms - log form to log form, when a query h" +
             "as been answered and closed with the different data and I enter the same data th" +
             "at originally opened the query, then queries are displayed.")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "1")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "564QueryRefiringLogic1")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("release_564_Patch11")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("PB_1.16.1")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Validation")]
@@ -3427,7 +3427,7 @@ this.FeatureBackground();
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("PB_1.17.1 As an EDC user, On a Cross Forms - log form to log form, when a query h" +
             "as not been answered and closed with the different data and I enter the same dat" +
             "a that originally opened the query, then queries are not displayed.")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "1")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "564QueryRefiringLogic1")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("release_564_Patch11")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("PB_1.17.1")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Validation")]
@@ -3537,7 +3537,7 @@ this.FeatureBackground();
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("PB_1.18.1 As an EDC user, On a Cross Forms - log form to log form, when a query h" +
             "as not been answered and closed with the different data and I enter the same dat" +
             "a that originally opened the query, then queries are not displayed.")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "1")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "564QueryRefiringLogic1")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("release_564_Patch11")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("PB_1.18.1")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Validation")]
@@ -3641,7 +3641,7 @@ this.FeatureBackground();
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("PB_1.19.1 As an EDC user, On a Cross Forms - log form to log form, when a query h" +
             "as been answered and closed with the different data and I enter the same data th" +
             "at originally opened the query, then queries are displayed.")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "1")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "564QueryRefiringLogic1")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("release_564_Patch11")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("PB_1.19.1")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Validation")]
@@ -3779,7 +3779,7 @@ this.FeatureBackground();
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("PB_1.20.1 As an EDC user, On a Cross Forms log form to log form, when a query has" +
             " not been answered and closed with the different data and I enter the same data " +
             "that originally opened the query, then queries are displayed.")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "1")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "564QueryRefiringLogic1")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("release_564_Patch11")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("PB_1.20.1")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Validation")]
@@ -3913,7 +3913,7 @@ this.FeatureBackground();
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("PB_1.21.1 As an EDC user, when a query has been answered and closed with the diff" +
             "erent data and I enter the same data that originally opened the query, then quer" +
             "ies are displayed.")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "1")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "564QueryRefiringLogic1")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("release_564_Patch11")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("PB_1.21.1")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Validation")]
@@ -4006,7 +4006,7 @@ this.FeatureBackground();
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("PB_1.22.1 As an EDC user, when a query has been canceled with the same data and I" +
             " enter the same data that originally opened the query, then queries are displaye" +
             "d.")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "1")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "564QueryRefiringLogic1")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("release_564_Patch11")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("PB_1.22.1")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Validation")]
@@ -4092,7 +4092,7 @@ this.FeatureBackground();
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("PB_1.22.2 As an EDC user, when a query has been canceled with the different data " +
             "and I enter the same data that originally opened the query, then queries are dis" +
             "played.")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "1")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "564QueryRefiringLogic1")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("release_564_Patch11")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("PB_1.22.2")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Validation")]
@@ -4176,7 +4176,7 @@ this.FeatureBackground();
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("PB_1.22.3 As an EDC user, when a query has been cancel with the different data an" +
             "d I enter the same data that originally opened the query, then queries are displ" +
             "ayed.")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "1")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "564QueryRefiringLogic1")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("release_564_Patch11")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("PB_1.22.3")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Validation")]

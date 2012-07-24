@@ -1,4 +1,4 @@
-Feature: 4
+Feature: 564QueryRefiringLogic4
 	As a Rave user
 	I want to change data
 	So I can see refired queries
