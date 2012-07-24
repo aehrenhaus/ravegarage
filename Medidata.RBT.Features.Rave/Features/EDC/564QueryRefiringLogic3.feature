@@ -81,13 +81,13 @@ Scenario: PB_3.1.1 As an EDC user, On a Cross Form Standard form to log form, Wh
 		| Field               | Data        |
 		| Start Date          | 09 Jan 2000 |
 		| Current Axis Number | 19          |
+	And I open log line 1
 	And I verify Query is not displayed
       | Field      | Query Message                                             | Answered | Closed |
       | Start Date | 'Date Informed Consent Signed' is greater. Please revise. | true     | true   |
 	And I verify Query is not displayed
       | Field               | Query Message                                                                                                 | Answered | Closed |
       | Current Axis Number | Informed Consent 'Current Distribution Number' is not equal to Concomitant Medications 'Current Axis Number'. | true     | true   |
-
 	When I enter data in CRF
 		| Field               | Data        |
 		| Start Date          | 08 Jan 2000 |

@@ -330,6 +330,8 @@ this.FeatureBackground();
                         "19"});
 #line 80
  testRunner.And("I enter data in CRF and save", ((string)(null)), table8);
+#line 84
+ testRunner.And("I open log line 1");
 #line hidden
             TechTalk.SpecFlow.Table table9 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field",
@@ -341,7 +343,7 @@ this.FeatureBackground();
                         "\'Date Informed Consent Signed\' is greater. Please revise.",
                         "true",
                         "true"});
-#line 84
+#line 85
  testRunner.And("I verify Query is not displayed", ((string)(null)), table9);
 #line hidden
             TechTalk.SpecFlow.Table table10 = new TechTalk.SpecFlow.Table(new string[] {
@@ -355,7 +357,7 @@ this.FeatureBackground();
                             "tions \'Current Axis Number\'.",
                         "true",
                         "true"});
-#line 87
+#line 88
  testRunner.And("I verify Query is not displayed", ((string)(null)), table10);
 #line hidden
             TechTalk.SpecFlow.Table table11 = new TechTalk.SpecFlow.Table(new string[] {
