@@ -107,13 +107,13 @@ namespace Medidata.RBT.Features.Rave.Features.EDC
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "564QueryRefiringLogic_LogForm_2FldEC")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("release_564_Patch11")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("PB-US12940-01A")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Draft")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("validation")]
         public virtual void PB_US12940_01AAsAnEDCUserWhenIEnteredBadDataInLogFieldAAndLogFieldBThatResultedInTheSystemOpeningAQueryOnLogFieldBAndIAnsweredTheQueryAndIChangedTheDataInLogFieldBToAnotherBadDataAndTheQueryIsThenClosedIfIEnteredGoodDataInLogFieldBAndThenAgainEnteredTheSameBadDataInLogFieldBAsWhenTheQueryWasClosedThenTheSystemShouldNotRefireAQueryOnLogFieldB_()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo(@"@PB-US12940-01A As an EDC user, when I entered bad data in log field A and log field B that resulted in the system opening a query on log field B, and I answered the query and I changed the data in log field B to another bad data, and the query is then closed, if I entered good data in log field B and then again entered the same bad data in log field B as when the query was closed, then the system should not refire a query on log field B.", new string[] {
                         "release_564_Patch11",
                         "PB-US12940-01A",
-                        "Draft"});
+                        "validation"});
 #line 27
 this.ScenarioSetup(scenarioInfo);
 #line 14
@@ -282,13 +282,13 @@ this.FeatureBackground();
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "564QueryRefiringLogic_LogForm_2FldEC")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("release_564_Patch11")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("PB-US12940-01B")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Draft")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("validation")]
         public virtual void PB_US12940_01BAsAnEDCUserWhenIEnteredBadDataInLogFieldAAndLogFieldBThatResultedInTheSystemOpeningAQueryOnLogFieldBAndIChangedTheDataInLogFieldBToAnotherBadDataAndTheNewQueryWillOpenIfIEnteredGoodDataInLogFieldBAndThenAgainEnteredTheSameBadDataInLogFieldBAsWhenTheQueryWasClosedThenTheSystemShouldRefireAQueryOnLogFieldB_()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo(@"@PB-US12940-01B As an EDC user, when I entered bad data in log field A and log field B that resulted in the system opening a query on log field B, and I changed the data in log field B to another bad data, and the new query will open, if I entered good data in log field B and then again entered the same bad data in log field B as when the query was closed, then the system should refire a query on log field B.", new string[] {
                         "release_564_Patch11",
                         "PB-US12940-01B",
-                        "Draft"});
+                        "validation"});
 #line 84
 this.ScenarioSetup(scenarioInfo);
 #line 14
@@ -585,13 +585,13 @@ this.FeatureBackground();
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "564QueryRefiringLogic_LogForm_2FldEC")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("release_564_Patch11")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("PB-US12940-01D")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Draft")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("validation")]
         public virtual void PB_US12940_01DAsAnEDCUserWhenIEnteredBadDataInLogFieldAAndLogFieldBThatResultedInTheSystemOpeningAQueryOnLogFieldBAndIAnsweredTheQueryAndIChangedTheDataInLogFieldBToAnotherBadDataAndTheQueryIsThenClosedIfIEnteredGoodDataInLogFieldBAndThenAgainEnteredTheSameBadDataInLogFieldBAsWhenTheQueryWasClosedThenTheSystemShouldNotRefireAQueryOnLogFieldB_()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo(@"@PB-US12940-01D As an EDC user, when I entered bad data in log field A and log field B that resulted in the system opening a query on log field B, and I answered the query and I changed the data in log field B to another bad data, and the query is then closed, if I entered good data in log field B and then again entered the same bad data in log field B as when the query was closed, then the system should not refire a query on log field B.", new string[] {
                         "release_564_Patch11",
                         "PB-US12940-01D",
-                        "Draft"});
+                        "validation"});
 #line 187
 this.ScenarioSetup(scenarioInfo);
 #line 14
@@ -785,13 +785,13 @@ this.FeatureBackground();
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "564QueryRefiringLogic_LogForm_2FldEC")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("release_564_Patch11")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("PB-US12940-02A")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Draft")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("validation")]
         public virtual void PB_US12940_02AAsAnEDCUserWhenIEnteredBadDataInLogFieldAAndLogFieldBThatResultedInTheSystemOpeningAQueryOnLogFieldBAndIAnsweredTheQueryAndIChangedTheDataInLogFieldBToAnotherBadDataAndTheQueryIsThenClosedIfIThenEnteredTheOriginalBadDataInLogFieldBThenTheSystemShouldRefireAQueryOnLogFieldB_()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo(@"@PB-US12940-02A As an EDC user, when I entered bad data in log field A and log field B that resulted in the system opening a query on log field B, and I answered the query and I changed the data in log field B to another bad data, and the query is then closed, if I then entered the original bad data in log field B, then the system should refire a query on log field B.", new string[] {
                         "release_564_Patch11",
                         "PB-US12940-02A",
-                        "Draft"});
+                        "validation"});
 #line 250
 this.ScenarioSetup(scenarioInfo);
 #line 14
@@ -962,13 +962,13 @@ this.FeatureBackground();
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "564QueryRefiringLogic_LogForm_2FldEC")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("release_564_Patch11")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("PB-US12940-02B")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Draft")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("validation")]
         public virtual void PB_US12940_02BAsAnEDCUserWhenIEnteredBadDataInLogFieldAAndLogFieldBThatResultedInTheSystemOpeningAQueryOnLogFieldBAndIAnsweredTheQueryAndIChangedTheDataInLogFieldBToAnotherBadDataAndTheQueryIsThenClosedIfIThenEnteredTheOriginalBadDataInLogFieldBThenTheSystemShouldRefireAQueryOnLogFieldB_()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo(@"@PB-US12940-02B	As an EDC user, when I entered bad data in log field A and log field B that resulted in the system opening a query on log field B, and I answered the query and I changed the data in log field B to another bad data, and the query is then closed, if I then entered the original bad data in log field B, then the system should refire a query on log field B.", new string[] {
                         "release_564_Patch11",
                         "PB-US12940-02B",
-                        "Draft"});
+                        "validation"});
 #line 308
 this.ScenarioSetup(scenarioInfo);
 #line 14
@@ -1267,13 +1267,13 @@ this.FeatureBackground();
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "564QueryRefiringLogic_LogForm_2FldEC")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("release_564_Patch11")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("PB-US12940-02D")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Draft")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("validation")]
         public virtual void PB_US12940_02DAsAnEDCUserWhenIEnteredBadDataInLogFieldAAndLogFieldBThatResultedInTheSystemOpeningAQueryOnLogFieldBAndIAnsweredTheQueryAndIChangedTheDataInLogFieldBToAnotherBadDataAndTheQueryIsThenClosedIfIThenEnteredTheOriginalBadDataInLogFieldBThenTheSystemShouldRefireAQueryOnLogFieldB_()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo(@"@PB-US12940-02D As an EDC user, when I entered bad data in log field A and log field B that resulted in the system opening a query on log field B, and I answered the query and I changed the data in log field B to another bad data, and the query is then closed, if I then entered the original bad data in log field B, then the system should refire a query on log field B.", new string[] {
                         "release_564_Patch11",
                         "PB-US12940-02D",
-                        "Draft"});
+                        "validation"});
 #line 410
 this.ScenarioSetup(scenarioInfo);
 #line 14
@@ -1439,13 +1439,13 @@ this.FeatureBackground();
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "564QueryRefiringLogic_LogForm_2FldEC")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("release_564_Patch11")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("PB-US12940-03A")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Draft")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("validation")]
         public virtual void PB_US12940_03AAsAnEDCUserWhenIEnteredBadDataInLogFieldAAndLogFieldBThatResultedInTheSystemOpeningAQueryOnLogFieldBAndIAnsweredTheQueryWithoutChangingTheDataAndTheQueryIsThenClosedIfIThenEnteredNewBadDataInLogFieldBThenTheSystemShouldRefireAQueryOnLogFieldB_()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo(@"@PB-US12940-03A As an EDC user, when I entered bad data in log field A and log field B that resulted in the system opening a query on log field B, and I answered the query without changing the data, and the query is then closed, if I then entered new bad data in log field B, then the system should refire a query on log field B.", new string[] {
                         "release_564_Patch11",
                         "PB-US12940-03A",
-                        "Draft"});
+                        "validation"});
 #line 466
 this.ScenarioSetup(scenarioInfo);
 #line 14
@@ -1616,13 +1616,13 @@ this.FeatureBackground();
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "564QueryRefiringLogic_LogForm_2FldEC")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("release_564_Patch11")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("PB-US12940-03B")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Draft")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("validation")]
         public virtual void PB_US12940_03BAsAnEDCUserWhenIEnteredBadDataInLogFieldAAndLogFieldBThatResultedInTheSystemOpeningAQueryOnLogFieldBAndIAnsweredTheQueryWithoutChangingTheDataAndTheQueryIsThenClosedIfIThenEnteredNewBadDataInLogFieldBThenTheSystemShouldRefireAQueryOnLogFieldB_()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo(@"@PB-US12940-03B	 As an EDC user, when I entered bad data in log field A and log field B that resulted in the system opening a query on log field B, and I answered the query without changing the data, and the query is then closed, if I then entered new bad data in log field B, then the system should refire a query on log field B.", new string[] {
                         "release_564_Patch11",
                         "PB-US12940-03B",
-                        "Draft"});
+                        "validation"});
 #line 524
 this.ScenarioSetup(scenarioInfo);
 #line 14
@@ -1712,13 +1712,13 @@ this.FeatureBackground();
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "564QueryRefiringLogic_LogForm_2FldEC")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("release_564_Patch11")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("PB-US12940-03C")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Draft")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("validation")]
         public virtual void PB_US12940_03CAsAnEDCUserWhenIEnteredBadDataInLogFieldAAndLogFieldBThatResultedInTheSystemOpeningAQueryOnLogFieldBAndIAnsweredTheQueryWithoutChangingTheDataAndTheQueryIsThenClosedIfIThenEnteredNewBadDataInLogFieldBThenTheSystemShouldRefireAQueryOnLogFieldB_()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo(@"@PB-US12940-03C As an EDC user, when I entered bad data in log field A and log field B that resulted in the system opening a query on log field B, and I answered the query without changing the data, and the query is then closed, if I then entered new bad data in log field B, then the system should refire a query on log field B.", new string[] {
                         "release_564_Patch11",
                         "PB-US12940-03C",
-                        "Draft"});
+                        "validation"});
 #line 556
 this.ScenarioSetup(scenarioInfo);
 #line 14
@@ -1830,13 +1830,13 @@ this.FeatureBackground();
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "564QueryRefiringLogic_LogForm_2FldEC")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("release_564_Patch11")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("PB-US12940-03D")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Draft")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("validation")]
         public virtual void PB_US12940_03DAsAnEDCUserWhenIEnteredBadDataInLogFieldAAndLogFieldBThatResultedInTheSystemOpeningAQueryOnLogFieldBAndIAnsweredTheQueryWithoutChangingTheDataAndTheQueryIsThenClosedIfIThenEnteredNewBadDataInLogFieldBThenTheSystemShouldRefireAQueryOnLogFieldB_()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo(@"@PB-US12940-03D As an EDC user, when I entered bad data in log field A and log field B that resulted in the system opening a query on log field B, and I answered the query without changing the data, and the query is then closed, if I then entered new bad data in log field B, then the system should refire a query on log field B.", new string[] {
                         "release_564_Patch11",
                         "PB-US12940-03D",
-                        "Draft"});
+                        "validation"});
 #line 595
 this.ScenarioSetup(scenarioInfo);
 #line 14
@@ -1926,13 +1926,13 @@ this.FeatureBackground();
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "564QueryRefiringLogic_LogForm_2FldEC")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("release_564_Patch11")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("PB-US12940-04A")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Draft")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("validation")]
         public virtual void PB_US12940_04AAsAnEDCUserWhenIEnteredBadDataInLogFieldAAndLogFieldBThatResultedInTheSystemOpeningAQueryOnLogFieldBAndIAnsweredTheQueryAndIChangedTheDataInLogFieldAToAnotherBadDataAndTheQueryIsThenClosedIfIThenEnteredTheNewBadDataInLogFieldAThenTheSystemShouldRefireAQueryOnLogFieldB_()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo(@"@PB-US12940-04A As an EDC user, when I entered bad data in log field A and log field B that resulted in the system opening a query on log field B, and I answered the query and I changed the data in log field A to another bad data, and the query is then closed, if I then entered the new bad data in log field A, then the system should refire a query on log field B.", new string[] {
                         "release_564_Patch11",
                         "PB-US12940-04A",
-                        "Draft"});
+                        "validation"});
 #line 627
 this.ScenarioSetup(scenarioInfo);
 #line 14
@@ -2470,13 +2470,13 @@ this.FeatureBackground();
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "564QueryRefiringLogic_LogForm_2FldEC")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("release_564_Patch11")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("PB-US12940-05A")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Draft")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("validation")]
         public virtual void PB_US12940_05AAsAnEDCUserWhenIEnteredBadDataInLogFieldAAndLogFieldBThatResultedInTheSystemOpeningAQueryOnLogFieldBAndIAnsweredTheQueryAndIChangedTheDataInLogFieldBToAnotherBadDataAndTheQueryIsThenClosedIfIThenEnteredTheNewBadDataInLogFieldBThenTheSystemShouldRefireAQueryOnLogFieldB_()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo(@"@PB-US12940-05A As an EDC user, when I entered bad data in log field A and log field B that resulted in the system opening a query on log field B, and I answered the query and I changed the data in log field B to another bad data, and the query is then closed, if I then entered the new bad data in log field B, then the system should refire a query on log field B.", new string[] {
                         "release_564_Patch11",
                         "PB-US12940-05A",
-                        "Draft"});
+                        "validation"});
 #line 812
 this.ScenarioSetup(scenarioInfo);
 #line 14
@@ -2619,13 +2619,13 @@ this.FeatureBackground();
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "564QueryRefiringLogic_LogForm_2FldEC")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("release_564_Patch11")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("PB-US12940-05B")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Draft")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("validation")]
         public virtual void PB_US12940_05BAsAnEDCUserWhenIEnteredBadDataInLogFieldAAndLogFieldBThatResultedInTheSystemOpeningAQueryOnLogFieldBAndIAnsweredTheQueryAndIChangedTheDataInLogFieldBToAnotherBadDataAndTheQueryIsThenClosedIfIThenEnteredTheNewBadDataInLogFieldBThenTheSystemShouldRefireAQueryOnLogFieldB_()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo(@"@PB-US12940-05B As an EDC user, when I entered bad data in log field A and log field B that resulted in the system opening a query on log field B, and I answered the query and I changed the data in log field B to another bad data, and the query is then closed, if I then entered the new bad data in log field B, then the system should refire a query on log field B.", new string[] {
                         "release_564_Patch11",
                         "PB-US12940-05B",
-                        "Draft"});
+                        "validation"});
 #line 861
 this.ScenarioSetup(scenarioInfo);
 #line 14
@@ -2870,13 +2870,13 @@ this.FeatureBackground();
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "564QueryRefiringLogic_LogForm_2FldEC")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("release_564_Patch11")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("PB-US12940-05D")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Draft")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("validation")]
         public virtual void PB_US12940_05DAsAnEDCUserWhenIEnteredBadDataInLogFieldAAndLogFieldBThatResultedInTheSystemOpeningAQueryOnLogFieldBAndIAnsweredTheQueryAndIChangedTheDataInLogFieldBToAnotherBadDataAndTheQueryIsThenClosedIfIThenEnteredTheNewBadDataInLogFieldBThenTheSystemShouldRefireAQueryOnLogFieldB_()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo(@"@PB-US12940-05D As an EDC user, when I entered bad data in log field A and log field B that resulted in the system opening a query on log field B, and I answered the query and I changed the data in log field B to another bad data, and the query is then closed, if I then entered the new bad data in log field B, then the system should refire a query on log field B.", new string[] {
                         "release_564_Patch11",
                         "PB-US12940-05D",
-                        "Draft"});
+                        "validation"});
 #line 946
 this.ScenarioSetup(scenarioInfo);
 #line 14

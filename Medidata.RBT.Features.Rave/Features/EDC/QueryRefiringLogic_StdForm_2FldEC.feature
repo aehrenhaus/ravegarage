@@ -21,7 +21,7 @@ Background:
 #----------------------------------------------------------------------------------------------------------------------------------------
 @release_564_Patch11
 @PB-US12940-01A	
-@Draft	
+@validation	
 Scenario: @PB-US12940-01A As an EDC user, when I entered bad data in field A and field B that resulted in the system opening a query on field B, and I answered the query without changing the data, and the query is then closed, and I entered good data in field A, if I then entered the same bad data in field A as when the query was closed, then the system should not refire a query on field B. 
 Query with requires response = true and requires manual close = true.
 	
@@ -73,7 +73,7 @@ Query with requires response = true and requires manual close = true.
 #----------------------------------------------------------------------------------------------------------------------------------------
 @release_564_Patch11	
 @PB-US12940-01B	
-@Draft	
+@validation	
 Scenario: @PB-US12940-01B As an EDC user, when I entered bad data in field A and field B that resulted in the system opening a query on field B, and I entered good data in field A, if I then entered the same bad data in field A as when the query was opened, then the system should refire a query on field B. 
 Query with requires response = false and requires manual close = false
 	
@@ -113,7 +113,7 @@ Query with requires response = false and requires manual close = false
 #----------------------------------------------------------------------------------------------------------------------------------------
 @release_564_Patch11	
 @PB-US12940-01C	
-@Draft	
+@validation	
 Scenario: @PB-US12940-01C As an EDC user, when I entered bad data in field A and field B that resulted in the system opening a query on field B, and I answered the query without changing the data, and the query is then closed, and I entered good data in field A, if I then entered the same bad data in field A as when the query was closed, then the system should not refire a query on field B. 
 Query with requires response = true and requires manual close = false.
 	
@@ -159,7 +159,7 @@ Query with requires response = true and requires manual close = false.
 #----------------------------------------------------------------------------------------------------------------------------------------
 @release_564_Patch11	
 @PB-US12940-01D
-@draft		
+@validation		
 Scenario: @PB-US12940-01D As an EDC user, when I entered bad data in field A and field B that resulted in the system opening a query on field B, and I entered good data in field A, if I then entered the same bad data in field A as when the query was opened, then the system should refire a query on field B. 
 Query with requires response = false and requires manual close = true
 
@@ -202,7 +202,7 @@ Query with requires response = false and requires manual close = true
 #----------------------------------------------------------------------------------------------------------------------------------------
 @release_564_Patch11	
 @PB-US12940-02A	
-@Draft	
+@validation	
 Scenario: @PB-US12940-02A As an EDC user, when I entered bad data in field A and field B that resulted in the system opening a query on field B, and I answered the query without changing the data, and the query is then closed, and I entered good data in field B, if I then entered the same bad data in field B as when the query was closed, then the system should not refire a query on field B. 
 Query with requires response = true and requires manual close = true.
 	
@@ -254,7 +254,7 @@ Query with requires response = true and requires manual close = true.
 #----------------------------------------------------------------------------------------------------------------------------------------
 @release_564_Patch11	
 @PB-US12940-02B	
-@Draft	
+@validation	
 Scenario: @PB-US12940-02B As an EDC user, when I entered bad data in field A and field B that resulted in the system opening a query on field B, and I entered good data in field B, if I then entered the same bad data in field B as when the query was opened, then the system should refire a query on field B. 
  Query with requires response = false and requires manual close = false
 	
@@ -294,7 +294,7 @@ Scenario: @PB-US12940-02B As an EDC user, when I entered bad data in field A and
 #----------------------------------------------------------------------------------------------------------------------------------------
 @release_564_Patch11	
 @PB-US12940-02C	
-@Draft	
+@validation	
 Scenario: @PB-US12940-02C As an EDC user, when I entered bad data in field A and field B that resulted in the system opening a query on field B, and I answered the query without changing the data, and the query is then closed, and I entered good data in field B, if I then entered the same bad data in field B as when the query was closed, then the system should not refire a query on field B. 
  Query with requires response = true and requires manual close = false
 	
@@ -340,7 +340,7 @@ Scenario: @PB-US12940-02C As an EDC user, when I entered bad data in field A and
 #----------------------------------------------------------------------------------------------------------------------------------------
 @release_564_Patch11	
 @PB-US12940-02D	
-@Draft	
+@validation	
 Scenario: @PB-US12940-02D As an EDC user, when I entered bad data in field A and field B that resulted in the system opening a query on field B, and I entered good data in field B, if I then entered the same bad data in field B as when the query was opened, then the system should refire a query on field B. 
 Query with requires response = false and requires manual close = true
 	
@@ -387,7 +387,7 @@ Query with requires response = false and requires manual close = true
 #----------------------------------------------------------------------------------------------------------------------------------------
 @release_564_Patch11	
 @PB-US12940-03A	
-@Draft	
+@validation	
 Scenario: @PB-US12940-03A As an EDC user, when I entered bad data in field A and field B that resulted in the system opening a query on field B, and I answered the query and I changed the data in field A to another bad data, and the query is then closed, if I entered good data in field A and then again entered the same bad data in field A as when the query was closed, then the system should not refire a query on field B. 
 Query with requires response = true and requires manual close = true.
 	
@@ -443,7 +443,7 @@ Query with requires response = true and requires manual close = true.
 #----------------------------------------------------------------------------------------------------------------------------------------
 @release_564_Patch11
 @PB-US12940-03B	
-@Draft	
+@validation	
 Scenario: @PB-US12940-03B As an EDC user, when I entered bad data in field A and field B that resulted in the system opening a query on field B, if I entered good data in field A and then again entered the same bad data in field A as when the query was opened, then the system should refire a query on field B. 
 Query with requires response = false and requires manual close = false.
 	
@@ -591,7 +591,7 @@ Query with requires response = false and requires manual close = true.
 #----------------------------------------------------------------------------------------------------------------------------------------
 @release_564_Patch11
 @PB-US12940-04A	
-@Draft	
+@validation	
 Scenario: @PB-US12940-04A As an EDC user, when I entered bad data in field A and field B that resulted in the system opening a query on field B, and I answered the query and I changed the data in field B to another bad data, and the query is then closed, if I entered good data in field B and then again entered the same bad data in field B as when the query was closed, then the system should not refire a query on field B. 
 Query with requires response = true and requires manual close = true.
 	
@@ -646,7 +646,7 @@ Query with requires response = true and requires manual close = true.
 #----------------------------------------------------------------------------------------------------------------------------------------
 @release_564_Patch11	
 @PB-US12940-04B	
-@Draft	
+@validation	
 Scenario: @PB-US12940-04B As an EDC user, when I entered bad data in field A and field B that resulted in the system opening a query on field B, if I entered good data in field B and then again entered the same bad data in field B as when the query was opened, then the system should refire a query on field B. 
 Query with requires response = false and requires manual close = false.
 	
@@ -737,7 +737,7 @@ Query with requires response = true and requires manual close = false.
 #----------------------------------------------------------------------------------------------------------------------------------------
 @release_564_Patch11
 @PB-US12940-04D	
-@Draft	
+@validation	
 Scenario: @PB-US12940-04D As an EDC user, when I entered bad data in field A and field B that resulted in the system opening a query on field B, and I changed the data in field B to another bad data, and system answered the query, and the query is then closed, if I entered good data in field B and then again entered the same bad data in field B as when the query was closed, then the system should not refire a query on field B. 
 Query with requires response = false and requires manual close = true.
 	
@@ -795,7 +795,7 @@ Query with requires response = false and requires manual close = true.
 #----------------------------------------------------------------------------------------------------------------------------------------
 @release_564_Patch11	  
 @PB-US12940-05A	
-@Draft	
+@validation	
 Scenario: @PB-US12940-05A As an EDC user, when I entered bad data in field A and field B that resulted in the system opening a query on field B, and I answered the query and I changed the data in field A to another bad data, and the query is then closed, if I then entered the original bad data in field A, then the system should refire a query on field B. 
 Query with requires response = true and requires manual close = true.
 	
@@ -850,7 +850,7 @@ Query with requires response = true and requires manual close = true.
 #----------------------------------------------------------------------------------------------------------------------------------------
 @release_564_Patch11
 @PB-US12940-05B	
-@Draft	
+@validation	
 Scenario: @PB-US12940-05B As an EDC user, when I entered bad data in field A and field B that resulted in the system opening a query on field B, and I enter good data into field A, if I then entered the original bad data in field A, then the system should refire a query on field B. 
 Query with requires response = false and requires manual close = false.
 	
@@ -1000,7 +1000,7 @@ Query with requires response = false and requires manual close = true.
 #----------------------------------------------------------------------------------------------------------------------------------------
 @release_564_Patch11	  
 @PB-US12940-06A	
-@Draft	
+@validation	
 Scenario: @PB-US12940-06A	As an EDC user, when I entered bad data in field A and field B that resulted in the system opening a query on field B, and I answered the query and I changed the data in field B to another bad data, and the query is then closed, if I then entered the original bad data in field B, then the system should refire a query on field B. 
 Query with requires response = true and requires manual close = true.
 	
@@ -1056,7 +1056,7 @@ Query with requires response = true and requires manual close = true.
 #----------------------------------------------------------------------------------------------------------------------------------------
 @release_564_Patch11	  
 @PB-US12940-06B	
-@Draft	
+@validation	
 Scenario: @PB-US12940-06B	As an EDC user, when I entered bad data in field A and field B that resulted in the system opening a query on field B, I enter good data in Field B, if I then entered the original bad data in field B, then the system should refire a query on field B. 
 Query with requires response = false and requires manual close = false.
 	
@@ -1149,7 +1149,7 @@ Query with requires response = true and requires manual close = false.
 #----------------------------------------------------------------------------------------------------------------------------------------
 @release_564_Patch11
 @PB-US12940-06D	
-@Draft	
+@validation	
 Scenario: @PB-US12940-06D	As an EDC user, when I entered bad data in field A and field B that resulted in the system opening a query on field B, and I changed the data in field B to another bad data and the system answered the query, and the query is then closed, if I then entered the original bad data in field B, then the system should refire a query on field B. 
 Query with requires response = false and requires manual close = true.
 	
@@ -1204,7 +1204,7 @@ Query with requires response = false and requires manual close = true.
 #----------------------------------------------------------------------------------------------------------------------------------------
 @release_564_Patch11	
 @PB-US12940-07A	
-@Draft	
+@validation	
 Scenario: @PB-US12940-07A As an EDC user, when I entered bad data in field A and field B that resulted in the system opening a query on field B, and I answered the query without changing the data, and the query is then closed, if I then entered new bad data in field A, then the system should refire a query on field B. 
 Query with requires response = true and requires manual close = true.
 	
@@ -1249,7 +1249,7 @@ Query with requires response = true and requires manual close = true.
 #----------------------------------------------------------------------------------------------------------------------------------------
 @release_564_Patch11
 @PB-US12940-07B	
-@Draft	
+@validation	
 Scenario: @PB-US12940-07B As an EDC user, when I entered bad data in field A and field B that resulted in the system opening a query on field B, if I then entered new bad data in field A, then the system should keep a query open on field B. 
 Query with requires response = false and requires manual close = false.
 	
@@ -1282,7 +1282,7 @@ Query with requires response = false and requires manual close = false.
 #----------------------------------------------------------------------------------------------------------------------------------------
 @release_564_Patch11
 @PB-US12940-07C	
-@Draft	
+@validation	
 Scenario: @PB-US12940-07C	As an EDC user, when I entered bad data in field A and field B that resulted in the system opening a query on field B, and I answered the query without changing the data, and the query is then closed, if I then entered new bad data in field A, then the system should refire a query on field B. 
 Query with requires response = true and requires manual close = false.
 	
@@ -1368,7 +1368,7 @@ Query with requires response = false and requires manual close = true.
 #----------------------------------------------------------------------------------------------------------------------------------------
 @release_564_Patch11	  
 @PB-US12940-08A		
-@Draft
+@validation
 Scenario: @PB-US12940-08A	As an EDC user, when I entered bad data in field A and field B that resulted in the system opening a query on field B, and I answered the query without changing the data, and the query is then closed, if I then entered new bad data in field B, then the system should refire a query on field B. 
 Query with requires response = true and requires manual close = true
 	
@@ -1412,7 +1412,7 @@ Query with requires response = true and requires manual close = true
 #----------------------------------------------------------------------------------------------------------------------------------------
 @release_564_Patch11		
 @PB-US12940-08B	
-@Draft	
+@validation	
 Scenario: @PB-US12940-08B As an EDC user, when I entered bad data in field A and field B that resulted in the system opening a query on field B, if I then entered new bad data in field B, then the system should keep a query open on field B. 
 Query with requires response = false and requires manual close = false.
 	
@@ -1445,7 +1445,7 @@ Query with requires response = false and requires manual close = false.
 #----------------------------------------------------------------------------------------------------------------------------------------
 @release_564_Patch11	
 @PB-US12940-08C		
-@Draft
+@validation
 Scenario: @PB-US12940-08C As an EDC user, when I entered bad data in field A and field B that resulted in the system opening a query on field B, and I answered the query without changing the data, and the query is then closed, if I then entered new bad data in field B, then the system should refire a query on field B. 
 Query with requires response = true and requires manual close = false.
 	
@@ -1484,7 +1484,7 @@ Query with requires response = true and requires manual close = false.
 #----------------------------------------------------------------------------------------------------------------------------------------
 @release_564_Patch11	
 @PB-US12940-08D	
-@Draft	
+@validation	
 Scenario: @PB-US12940-08D	 As an EDC user, when I entered bad data in field A and field B that resulted in the system opening a query on field B, if I then entered new bad data in field B, then the system should answer a query on field B, and then I close query, and I enter new bad data on Field B, then system should refire query on Field B.
 Query with requires response = false and requires manual close = true.
 
@@ -1532,7 +1532,7 @@ Query with requires response = false and requires manual close = true.
 #----------------------------------------------------------------------------------------------------------------------------------------
 @release_564_Patch11 
 @PB-US12940-09A	
-@Draft	
+@validation	
 Scenario: @PB-US12940-09A	As an EDC user, when I entered bad data in field A and field B that resulted in the system opening a query on field B, and I answered the query and I changed the data in field A to another bad data, and the query is then closed, if I then entered the new bad data in field A, then the system should refire a query on field B. 
 Query with requires response = true and requires manual close = true.
 	
@@ -1579,7 +1579,7 @@ Query with requires response = true and requires manual close = true.
 #----------------------------------------------------------------------------------------------------------------------------------------
 @release_564_Patch11
 @PB-US12940-09B	
-@Draft	
+@validation	
 Scenario: @PB-US12940-09B	As an EDC user, when I entered bad data in field A and field B that resulted in the system opening a query on field B, if I then entered the new bad data in field A, then the system should keep a query open on field B. 
 Query with requires response = false and requires manual close = false.
 	
@@ -1708,7 +1708,7 @@ Query with requires response = false and requires manual close = true.
 #----------------------------------------------------------------------------------------------------------------------------------------
 @release_564_Patch11
 @PB-US12940-10A	
-@Draft	
+@validation	
 Scenario: @PB-US12940-10A As an EDC user, when I entered bad data in field A and field B that resulted in the system opening a query on field B, and I answered the query and I changed the data in field B to another bad data, and the query is then closed, if I then entered the new bad data in field B, then the system should refire a query on field B. 
 Query with requires response = true and requires manual close = true.
 	
@@ -1755,7 +1755,7 @@ Query with requires response = true and requires manual close = true.
 #----------------------------------------------------------------------------------------------------------------------------------------
 @release_564_Patch11
 @PB-US12940-10B	
-@Draft	
+@validation	
 Scenario: @PB-US12940-10B	As an EDC user, when I entered bad data in field A and field B that resulted in the system opening a query on field B, if I then entered the new bad data in field B, then the system should keep a query open on field B. 
 Query with requires response = false and requires manual close = false.
 	
@@ -1834,7 +1834,7 @@ Query with requires response = true and requires manual close = false.
 #----------------------------------------------------------------------------------------------------------------------------------------
 @release_564_Patch11
 @PB-US12940-10D	
-@Draft	
+@validation	
 Scenario: @PB-US12940-10D	As an EDC user, when I entered bad data in field A and field B that resulted in the system opening a query on field B, and I changed the data in field B to another bad data, and the system answers query and the query is closed, if I then entered the new bad data in field B, then the system should refire a query on field B. 
 Query with requires response = false and requires manual close = true.
 	
@@ -1883,7 +1883,7 @@ Query with requires response = false and requires manual close = true.
 #----------------------------------------------------------------------------------------------------------------------------------------
 @release_564_Patch11 
 @PB-US12940-11A		
-@Draft
+@validation
 Scenario: @PB-US12940-11A	As an EDC user, when I entered bad data in field A and field B that resulted in the system opening a query on field B, and I canceled the query, and I entered good data in field A, if I then entered the same bad data in field A as when the query was canceled, then the system should not refire a query on field B. 
 Query with requires response = true and requires manual close = true.
 	
@@ -1935,7 +1935,7 @@ Query with requires response = true and requires manual close = true.
 #----------------------------------------------------------------------------------------------------------------------------------------
 @release_564_Patch11
 @PB-US12940-11B		
-@Draft
+@validation
 Scenario: @PB-US12940-11B	As an EDC user, when I entered bad data in field A and field B that resulted in the system opening a query on field B, and I canceled the query, and I entered good data in field A, if I then entered the same bad data in field A as when the query was canceled, then the system should not refire a query on field B. 
 Query with requires response = false and requires manual close = false.
 	
@@ -1987,7 +1987,7 @@ Query with requires response = false and requires manual close = false.
 #----------------------------------------------------------------------------------------------------------------------------------------
 @release_564_Patch11	
 @PB-US12940-11C	
-@Draft	
+@validation	
 Scenario: @PB-US12940-11C	As an EDC user, when I entered bad data in field A and field B that resulted in the system opening a query on field B, and I canceled the query, and I entered good data in field A, if I then entered the same bad data in field A as when the query was canceled, then the system should not refire a query on field B. 
 Query with requires response = true and requires manual close = false.
 	
@@ -2039,7 +2039,7 @@ Query with requires response = true and requires manual close = false.
 #----------------------------------------------------------------------------------------------------------------------------------------
 @release_564_Patch11
 @PB-US12940-11D	
-@Draft	
+@validation	
 Scenario: @PB-US12940-11D	As an EDC user, when I entered bad data in field A and field B that resulted in the system opening a query on field B, and I canceled the query, and I entered good data in field A, if I then entered the same bad data in field A as when the query was canceled, then the system should not refire a query on field B. 
 Query with requires response = false and requires manual close = true.
 	
@@ -2091,7 +2091,7 @@ Query with requires response = false and requires manual close = true.
 #----------------------------------------------------------------------------------------------------------------------------------------
 @release_564_Patch11	  
 @PB-US12940-12A	
-@Draft	
+@validation	
 Scenario: @PB-US12940-12A	 As an EDC user, when I entered bad data in field A and field B that resulted in the system opening a query on field B, and I canceled the query, and I entered good data in field B, if I then entered the same bad data in field B as when the query was canceled, then the system should not refire a query on field B. 
 Query with requires response = false and requires manual close = true.
 	
@@ -2143,7 +2143,7 @@ Query with requires response = false and requires manual close = true.
 #----------------------------------------------------------------------------------------------------------------------------------------
 @release_564_Patch11
 @PB-US12940-12B	
-@Draft	
+@validation	
 Scenario: @PB-US12940-12B	As an EDC user, when I entered bad data in field A and field B that resulted in the system opening a query on field B, and I canceled the query, and I entered good data in field B, if I then entered the same bad data in field B as when the query was canceled, then the system should not refire a query on field B. 
 Query with requires response = false and requires manual close = false.
 	
@@ -2195,7 +2195,7 @@ Query with requires response = false and requires manual close = false.
 #----------------------------------------------------------------------------------------------------------------------------------------
 @release_564_Patch11
 @PB-US12940-12C
-@Draft		
+@validation		
 Scenario: @PB-US12940-12C	As an EDC user, when I entered bad data in field A and field B that resulted in the system opening a query on field B, and I canceled the query, and I entered good data in field B, if I then entered the same bad data in field B as when the query was canceled, then the system should not refire a query on field B. 
 Query with requires response = true and requires manual close = false
 	
@@ -2247,7 +2247,7 @@ Query with requires response = true and requires manual close = false
 #----------------------------------------------------------------------------------------------------------------------------------------
 @release_564_Patch11
 @PB-US12940-12D	
-@Draft	
+@validation	
 Scenario: @PB-US12940-12D	As an EDC user, when I entered bad data in field A and field B that resulted in the system opening a query on field B, and I canceled the query, and I entered good data in field B, if I then entered the same bad data in field B as when the query was canceled, then the system should not refire a query on field B. 
 Query with requires response = false and requires manual close = true.
 	
