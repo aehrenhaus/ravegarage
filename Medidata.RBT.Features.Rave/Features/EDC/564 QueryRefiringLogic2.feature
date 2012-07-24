@@ -22,7 +22,7 @@ Background:
 #----------------------------------------------------------------------------------------------------------------------------------------	
 @release_564_Patch11
 @PB_2.1.1 
-@Draft
+@Validation
 Scenario: PB_2.1.1 As an EDC user, On a Cross Forms - Standard form to log form, when a query has been auto answered and auto closed with the same data and I enter the same data that originally opened the query, then queries are displayed. 
 #Folder "Screening" enter and save data on forms "Informed Consent" and "Concomitant Medications"
 	
@@ -82,7 +82,7 @@ Scenario: PB_2.1.1 As an EDC user, On a Cross Forms - Standard form to log form,
 #----------------------------------------------------------------------------------------------------------------------------------------	
 @release_564_Patch11
 @PB_2.1.2
-@Draft
+@Validation
 Scenario: PB_2.1.2 when a query has been auto answered and auto closed with the different data and I enter the same data that originally opened the query, then queries are displayed. 
    
     Given I select Study "Edit Check Study 3" and Site "Edit Check Site 2"
@@ -128,7 +128,7 @@ Scenario: PB_2.1.2 when a query has been auto answered and auto closed with the 
 #----------------------------------------------------------------------------------------------------------------------------------------	
 @release_564_Patch11
 @PB_2.2.1
-@Draft
+@Validation
 Scenario: PB_2.2.1 As an EDC user, On a Cross Folders - Standard form to log form, when a query has been auto answered and auto closed with the same data and I enter the same data that originally opened the query, then queries are displayed. 
 #Folder "Screening" enter and save data on form "Informed Consent", Folder "Week 1" enter and save data on form "Concomitant Medications". 			  
 
@@ -188,7 +188,7 @@ Scenario: PB_2.2.1 As an EDC user, On a Cross Folders - Standard form to log for
 #----------------------------------------------------------------------------------------------------------------------------------------	
 @release_564_Patch11
 @PB_2.2.2
-@Draft
+@Validation
 Scenario: PB_2.2.2 As an EDC user, On a Cross Folders - Standard form to log form, when a query has been auto answered and auto closed with the differnt data and I enter the same data that originally opened the query, then queries are displayed. 
  
     Given I select Study "Edit Check Study 3" and Site "Edit Check Site 2"
@@ -235,7 +235,7 @@ Scenario: PB_2.2.2 As an EDC user, On a Cross Folders - Standard form to log for
 #----------------------------------------------------------------------------------------------------------------------------------------	
 @release_564_Patch11
 @PB_2.3.1
-@Draft
+@Validation
 Scenario: PB_2.3.1 As an EDC user, On a Cross Forms - log form to Standard form, when a query has been auto answered and auto closed with the same data and I enter the same data that originally opened the query, then queries are displayed. 
 #Folder "Week 1" enter and save data on forms "Concomitant Medications" and "Informed Consent"
     
@@ -285,7 +285,7 @@ Scenario: PB_2.3.1 As an EDC user, On a Cross Forms - log form to Standard form,
 #----------------------------------------------------------------------------------------------------------------------------------------	
 @release_564_Patch11
 @PB_2.3.2
-@Draft
+@Validation
 Scenario: PB_2.3.2 As an EDC user, On a Cross Forms - log form to Standard form, when a query has been auto answered and auto closed with the same data and I enter the same data that originally opened the query, then queries are displayed. 
 	
     Given I select Study "Edit Check Study 3" and Site "Edit Check Site 2"
@@ -330,7 +330,7 @@ Scenario: PB_2.3.2 As an EDC user, On a Cross Forms - log form to Standard form,
 #----------------------------------------------------------------------------------------------------------------------------------------	
 @release_564_Patch11
 @PB_2.3.3
-@Draft
+@Validation
 Scenario: PB_2.3.3 As an EDC user, On a Cross Forms - log form to Standard form, when a query has been auto answered and auto closed with the differnt data and I enter the same data that originally opened the query, then queries are displayed. 
 
     Given I select Study "Edit Check Study 3" and Site "Edit Check Site 2"
@@ -374,7 +374,7 @@ Scenario: PB_2.3.3 As an EDC user, On a Cross Forms - log form to Standard form,
 #----------------------------------------------------------------------------------------------------------------------------------------	
 @release_564_Patch11
 @PB_2.4.1
-@Draft
+@Validation
 Scenario: PB_2.4.1 As and EDC user, On a Cross Forms - log form to log form, when a query has been auto answered and auto closed with the same data and I enter the same data that originally opened the query, then queries are displayed. 
 #Folder "Screening" enter and save data on forms "Concomitant Medications" and "Adverse Events"
 			  
@@ -454,7 +454,7 @@ Scenario: PB_2.4.1 As and EDC user, On a Cross Forms - log form to log form, whe
 #----------------------------------------------------------------------------------------------------------------------------------------	
 @release_564_Patch11
 @PB_2.4.2
-@Draft
+@Validation
 Scenario: PB_2.4.2 As and EDC user, On a Cross Forms - log form to log form, when a query has been auto answered and auto closed with the differnt data and I enter the same data that originally opened the query, then queries are displayed. 
    
     Given I select Study "Edit Check Study 3" and Site "Edit Check Site 2"
@@ -532,7 +532,7 @@ Scenario: PB_2.4.2 As and EDC user, On a Cross Forms - log form to log form, whe
 	
 @release_564_Patch11
 @PB_2.5.1
-@Draft
+@Validation
 Scenario: PB_2.5.1  As an EDC user, on a Cross Forms - Standard form to log form, when a query has been auto answered and auto closed with the same data and I enter the same data that originally opened the query, then queries are not displayed. 
 #Folder "Screening" enter and save data on forms "Informed Consent" and "Concomitant Medications"
 	
@@ -595,7 +595,7 @@ Scenario: PB_2.5.1  As an EDC user, on a Cross Forms - Standard form to log form
 #----------------------------------------------------------------------------------------------------------------------------------------	
 @release_564_Patch11
 @PB_2.5.2
-@Draft
+@Validation
 Scenario: PB_2.5.2 As an EDC user, on a Cross Forms - Standard form to log form, when a query has been auto answered and auto closed with the differnt data and I enter the same data that originally opened the query, then queries are displayed. 
    
     Given I select Study "Edit Check Study 3" and Site "Edit Check Site 2"
@@ -644,7 +644,7 @@ Scenario: PB_2.5.2 As an EDC user, on a Cross Forms - Standard form to log form,
 #----------------------------------------------------------------------------------------------------------------------------------------	
 @release_564_Patch11
 @PB_2.6.1
-@Draft
+@Validation
 Scenario: PB_2.6.1 As an EDC user, On a Cross Folders - Standard form to log form, when a query has been auto answered and auto closed with the same data and I enter the same data that originally opened the query, then queries are not displayed. 
 #Folder "Screening" enter and save data on form "Informed Consent", Folder "Week 1" enter and save data on form "Concomitant Medications"
 			  
@@ -710,7 +710,7 @@ Scenario: PB_2.6.1 As an EDC user, On a Cross Folders - Standard form to log for
 #----------------------------------------------------------------------------------------------------------------------------------------	
 @release_564_Patch11
 @PB_2.6.2
-@Draft
+@Validation
 Scenario: PB_2.6.2 As an EDC user, On a Cross Folders - Standard form to log form, when a query has been auto answered and auto closed with the differnt data and I enter the same data that originally opened the query, then queries are displayed. 
  
     Given I select Study "Edit Check Study 3" and Site "Edit Check Site 2"
@@ -761,7 +761,7 @@ Scenario: PB_2.6.2 As an EDC user, On a Cross Folders - Standard form to log for
 #----------------------------------------------------------------------------------------------------------------------------------------	
 @release_564_Patch11
 @PB_2.7.1
-@Draft
+@Validation
 Scenario: PB_2.7.1 As an EDC user, On a Cross Forms log - form to Standard form, when a query has been auto answered and auto closed with the same data and I enter the same data that originally opened the query, then queries are  not displayed. 
 #Folder "Week 1" enter and save data on forms "Concomitant Medications" and "Informed Consent"
 			  
@@ -817,7 +817,7 @@ Scenario: PB_2.7.1 As an EDC user, On a Cross Forms log - form to Standard form,
 #----------------------------------------------------------------------------------------------------------------------------------------	
 @release_564_Patch11
 @PB_2.7.2
-@Draft
+@Validation
 Scenario: PB_2.7.2 As an EDC user, On a Cross Forms log - form to Standard form, when a query has been auto answered and auto closed with the differnt data and I enter the same data that originally opened the query, then queries are displayed. 
 	
     Given I select Study "Edit Check Study 3" and Site "Edit Check Site 2"
@@ -866,7 +866,7 @@ Scenario: PB_2.7.2 As an EDC user, On a Cross Forms log - form to Standard form,
 #----------------------------------------------------------------------------------------------------------------------------------------	
 @release_564_Patch11
 @PB_2.7.3
-@Draft
+@Validation
 Scenario: PB_2.7.3 As an EDC user, On a Cross Forms log - form to Standard form, when a query has been auto answered and auto closed with the differnt data and I enter the same data that originally opened the query, then queries are displayed. 
   
     Given I select Study "Edit Check Study 3" and Site "Edit Check Site 2"
@@ -914,7 +914,7 @@ Scenario: PB_2.7.3 As an EDC user, On a Cross Forms log - form to Standard form,
 #----------------------------------------------------------------------------------------------------------------------------------------	
 @release_564_Patch11
 @PB_2.8.1
-@Draft
+@Validation
 Scenario: PB_2.8.1	As and EDC user, on a Cross Forms - log form to log form, when a query has been auto answered and auto closed with the same data and I enter the same data that originally opened the query, then queries are not displayed. 
 #Folder "Screening" enter and save data on forms "Concomitant Medications" and "Adverse Events"
 			  
@@ -1002,7 +1002,7 @@ Scenario: PB_2.8.1	As and EDC user, on a Cross Forms - log form to log form, whe
 #----------------------------------------------------------------------------------------------------------------------------------------	
 @release_564_Patch11
 @PB_2.8.2
-@Draft
+@Validation
 Scenario: PB_2.8.2 As and EDC user, on a Cross Forms - log form to log form, when a query has been auto answered and auto closed with the differnt data and I enter the same data that originally opened the query, then queries are displayed.
   
     Given I select Study "Edit Check Study 3" and Site "Edit Check Site 2"

@@ -4,18 +4,9 @@ Feature: 8
 	So I can see refired queries
 	
 # Query Issue: Edit Checks with require response and require manual close
-
-#Data PDF
+#DDE
 #Task Summary
-#Reports - Audit Trail
-#Edit Check Log Report
-#Query Detail
-#Stream-Audit Trail
-#Stream-Edit Check Log Report
-#Stream-Query Detail
 #Query Management
-#J-Review
-#BOXI
 #Amendment Manager
 #Publish Checks
 #Queries on Locked datapoints, Freezed datapoints, Inactive records
@@ -24,10 +15,11 @@ Background:
 
     Given I am logged in to Rave with username "defuser" and password "password"
 	#And following Study assignments exist
-	# | User       | Study               | Role | Site              | Site Number |
-	# | editcheck  | Edit Check Study 8  | cdm1 | Edit Check Site 8 | 80001       |
-	# | editcheck1 | Edit Check Study 8  | cdm2 | Edit Check Site 8 | 80001       |
-	# | editcheck  | AM Edit Check Study | cdm1 | AM Edit Site      | 80002       |
+	# | User      | Study               | Role | Site              | Site Number |
+	# | Defuser   | Edit Check Study 3  | cdm1 | Edit Check Site 8 | 80001       |
+	# | Defuser01 | Edit Check Study 3  | cdm1 | Edit Check Site 8 | 80001       |
+	# | Defuser   | Edit Check Study 3  | cdm1 | Edit Check Site 1 | 10001       |
+	# | Defuser   | AM Edit Check Study | cdm1 | AM Edit Site      | 80002       |
 	# And role "cdm1" has Query actions
 	# And role "cdm2" has Query actions
 	# And Draft "Draft 1" in Study "Edit Check Study 8" has been published to CRF Version "<RANDOMNUMBER>" 
@@ -38,23 +30,12 @@ Background:
 			# |Check Execution Threshold	|0		|
 			# |Custom Function Threshold	|0		|
 	# And I do cacheflush
-	# And I select Study "Edit Check Study 8" and Site "Edit Check Site 8"
+	# And I select Study "Edit Check Study 3" and Site "Edit Check Site 8"
 	
 #----------------------------------------------------------------------------------------------------------------------------------------	
-Scenario:  test
-
- And I navigate to "PublishChecksHome" page with parameters
-	| Name   | Value       |
-	| step   | 17          |
-	| action | selectcrfs  |
-	| val    | 1514%3a1532 |
-
-
-
-
 @release_564_Patch11
 @PB_8.1.1
-@Draft
+@Validation
 Scenario: PB_8.1.1 As an EDC user, Data setup and verification for query re-firing. Folder "Screening" enter and save data on forms "Informed Consent" and "Concomitant Medications"
 	
 	And I navigate to "DDE"
@@ -122,9 +103,9 @@ Scenario: PB_8.1.1 As an EDC user, Data setup and verification for query re-firi
 	And I navigate to "Home"
 	And I select Study "Edit Check Study 3" and Site "Edit Check Site 8"
 	And I select a Subject "sub{Var(num1)}"
-	And I select Form "Concomitant Medications" in Folder "Screening"
+	When I select Form "Concomitant Medications" in Folder "Screening"
 	And I open log line 1
-	And I verify Requires Response Query with message "'Date Informed Consent Signed' is greater. Please revise." is displayed on Field "Start Date"
+	Then I verify Requires Response Query with message "'Date Informed Consent Signed' is greater. Please revise." is displayed on Field "Start Date"
 	And I verify Requires Response Query with message "Informed Consent 'Current Distribution Number' is not equal to Concomitant Medications 'Current Axis Number'." is displayed on Field "Current Axis Number"
 	And I take a screenshot
 	And I answer the Query "'Date Informed Consent Signed' is greater. Please revise." on Field "Start Date" with "{answer}"
@@ -159,7 +140,7 @@ Scenario: PB_8.1.1 As an EDC user, Data setup and verification for query re-firi
 #----------------------------------------------------------------------------------------------------------------------------------------	
 @release_564_Patch11
 @PB_8.1.2
-@Draft
+@Validation
 Scenario: PB_8.1.2
  
     Given I select Study "Edit Check Study 3" and Site "Edit Check Site 8"
@@ -196,19 +177,19 @@ Scenario: PB_8.1.2
          | Current Axis Number | true  |
 
 	And I take a screenshot
-	And I enter data in CRF and save
+	When I enter data in CRF and save
 		| Field               | Data        |
 		| Start Date          | 07 Jan 2000 |
 		| Current Axis Number | 18          |
 	And I open log line 2
-	And I verify Query with message "'Date Informed Consent Signed' is greater. Please revise." is displayed on Field "Start Date"
+	Then I verify Query with message "'Date Informed Consent Signed' is greater. Please revise." is displayed on Field "Start Date"
 	And I verify Query with message "Informed Consent 'Current Distribution Number' is not equal to Concomitant Medications 'Current Axis Number'." is displayed on Field "Current Axis Number"
 	And I take a screenshot
 	
 #----------------------------------------------------------------------------------------------------------------------------------------	
 @release_564_Patch11
 @PB_8.1.3
-@Draft
+@Validation
 Scenario: PB_8.1.3
 	
     Given I select Study "Edit Check Study 3" and Site "Edit Check Site 8"
@@ -236,19 +217,19 @@ Scenario: PB_8.1.3
 	And I verify Field "Start Date" has no Query
 	And I verify Field "Current Axis Number" has no Query
 	And I take a screenshot
-	And I enter data in CRF and save
+	When I enter data in CRF and save
 		| Field               | Data        |
 		| Start Date          | 07 Jan 2000 |
 		| Current Axis Number | 18          |
 	And I open log line 3
-	And I verify Requires Response Query with message "'Date Informed Consent Signed' is greater. Please revise." is displayed on Field "Start Date"
+	Then I verify Requires Response Query with message "'Date Informed Consent Signed' is greater. Please revise." is displayed on Field "Start Date"
 	And I verify Requires Response Query with message "Informed Consent 'Current Distribution Number' is not equal to Concomitant Medications 'Current Axis Number'." is displayed on Field "Current Axis Number"	
 	And I take a screenshot
 	
 #----------------------------------------------------------------------------------------------------------------------------------------	
 @release_564_Patch11
 @PB_8.2.1
-@Draft
+@Validation
 Scenario: PB_8.2.1 Task Summary
 
 	And I select Study "Edit Check Study 3" and Site "Edit Check Site 8"
@@ -259,8 +240,7 @@ Scenario: PB_8.2.1 Task Summary
 	And I open log line 3
 	And I verify Requires Response Query with message "'Date Informed Consent Signed' is greater. Please revise." is displayed on Field "Start Date"
 	And I verify Requires Response Query with message "Informed Consent 'Current Distribution Number' is not equal to Concomitant Medications 'Current Axis Number'." is displayed on Field "Current Axis Number"
-	And I take a screenshot
-	
+	And I take a screenshot	
 	And I select Study "Edit Check Site 8" in "Header"
     And I select a Subject "sub{Var(num1)}"
 	When I expand "Cancel Queries" in Task Summary
@@ -274,16 +254,15 @@ Scenario: PB_8.2.1 Task Summary
 #----------------------------------------------------------------------------------------------------------------------------------------	
 @release_564_Patch11
 @PB_8.3.1
-@Draft
+@Validation
 Scenario: PB_8.3.1 Query Management
 
 	And I navigate to "Query Management"
 	And I choose "Edit Check Study 3 (Prod)" from "Study"
 	And I choose "World" from "Site Group"
 	And I choose "Edit Check Site 8" from "Site"
-	And I choose "sub70841" from "Subject"
+	And I choose "sub{Var(num1)}" from "Subject"
 	And I click button "Advanced Search"
-
 	And I select Form "Concomitant Medications" in "Search Result"
 	And I open log line 2
 	And I verify Requires Response Query with message "'Date Informed Consent Signed' is greater. Please revise." is displayed on Field "Start Date"
@@ -315,28 +294,27 @@ Scenario: PB_8.3.1 Query Management
 	And I verify Field "Start Date" has no Query
 	And I verify Field "Current Axis Number" has no Query
 	And I take a screenshot
-	And I enter data in CRF and save
+	When I enter data in CRF and save
 		| Field               | Data        |
 		| Start Date          | 07 Jan 2000 |
 		| Current Axis Number | 18          |
 	And I open the last log line
-	And I verify Requires Response Query with message "'Date Informed Consent Signed' is greater. Please revise." is displayed on Field "Start Date"
+	Then I verify Requires Response Query with message "'Date Informed Consent Signed' is greater. Please revise." is displayed on Field "Start Date"
 	And I verify Requires Response Query with message "Informed Consent 'Current Distribution Number' is not equal to Concomitant Medications 'Current Axis Number'." is displayed on Field "Current Axis Number"
 	And I take a screenshot
 	
 #----------------------------------------------------------------------------------------------------------------------------------------	
 @release_564_Patch11
 @PB_8.3.2
-@Draft
+@Validation
 Scenario: PB_8.3.2
 	
 	And I navigate to "Query Management"
 	And I choose "Edit Check Study 3 (Prod)" from "Study"
 	And I choose "World" from "Site Group"
 	And I choose "Edit Check Site 8" from "Site"
-	And I choose "sub70841" from "Subject"
+	And I choose "sub{Var(num1)}" from "Subject"
 	And I click button "Advanced Search"
-
 	And I select Form "Concomitant Medications" in "search result"
 	And I enter data in CRF on a new log line and save and reopen
 	    | Field                | Data        |
@@ -344,7 +322,6 @@ Scenario: PB_8.3.2
 	    | End Date             | 12 Jan 2000 |
 	    | Original Axis Number | 10          |
 	    | Current Axis Number  | 18          |
-
 	And I verify Requires Response Query with message "'Date Informed Consent Signed' is greater. Please revise." is displayed on Field "Start Date"
 	And I verify Requires Response Query with message "Informed Consent 'Current Distribution Number' is not equal to Concomitant Medications 'Current Axis Number'." is displayed on Field "Current Axis Number"		
 	And I take a screenshot
@@ -352,356 +329,42 @@ Scenario: PB_8.3.2
 	And I answer the Query "Informed Consent 'Current Distribution Number' is not equal to Concomitant Medications 'Current Axis Number'." on Field "Current Axis Number" with "{answer}"
 	And I save the CRF page
 	And I open the last log line
-	And I enter data in CRF and save
+	And I close the Query "'Date Informed Consent Signed' is greater. Please revise." on Field "Start Date"
+	And I close the Query "Informed Consent 'Current Distribution Number' is not equal to Concomitant Medications 'Current Axis Number'." on Field "Current Axis Number"	
+	And I enter data in CRF
 		| Field               | Data        |
 		| Start Date          | 09 Jan 2000 |
 		| Current Axis Number | 19          |
-	And I open the last log line
-	And I close the Query "'Date Informed Consent Signed' is greater. Please revise." on Field "Start Date"
-	And I close the Query "Informed Consent 'Current Distribution Number' is not equal to Concomitant Medications 'Current Axis Number'." on Field "Current Axis Number"	
 	And I save the CRF page
 	And I take a screenshot
 	And I open the last log line
-	And I verify Field "Start Date" has no Query
-	And I verify Field "Current Axis Number" has no Query
+	And I verify Query is not displayed
+		| Field      | Query Message                                           | Answered | Closed |
+		| Start Date | 'Date Informed Consent Signed' can not be greater than. | true     | true   |
+	And I verify Query is not displayed
+		| Field               | Query Message                                                     | Answered | Closed |
+		| Current Axis Number | 'Current Distribution Number' is not equal 'Current Axis Number'. | true     | true   |
 	And I take a screenshot
-	And I enter data in CRF and save
+	When I enter data in CRF and save
 		| Field               | Data        |
 		| Start Date          | 07 Jan 2000 |
 		| Current Axis Number | 18          |
 	And I open the last log line
-	#And I verify Requires Response Query with message "'Date Informed Consent Signed' is greater. Please revise." is displayed on Field "Start Date"
-	#And I verify Requires Response Query with message "Informed Consent 'Current Distribution Number' is not equal to Concomitant Medications 'Current Axis Number'." is displayed on Field "Current Axis Number"
+	Then I verify Query is not displayed
+		| Field      | Query Message                                           | Answered | Closed |
+		| Start Date | 'Date Informed Consent Signed' can not be greater than. | true     | true   |
+	And I verify Query is not displayed
+		| Field               | Query Message                                                     | Answered | Closed |
+		| Current Axis Number | 'Current Distribution Number' is not equal 'Current Axis Number'. | true     | true   |
+	And I verify Requires Response Query with message "'Date Informed Consent Signed' is greater. Please revise." is displayed on Field "Start Date"
+	And I verify Requires Response Query with message "Informed Consent 'Current Distribution Number' is not equal to Concomitant Medications 'Current Axis Number'." is displayed on Field "Current Axis Number"
 	And I take a screenshot
 	
 #----------------------------------------------------------------------------------------------------------------------------------------	
 @release_564_Patch11
 @PB_8.4.1
-@Draft
-Scenario: PB_8.4.1 Generate the Data PDFs.
-	And I navigate to "PDF Generator"
-
-	And I create Data PDF
-	| Name                | Profile | Study                     | Role | SiteGroup | Site              | Subject  |
-	| pdf{RndNum<num>(3)} | GLOBAL1 | Edit Check Study 3 (Prod) | CDM1 | World     | Edit Check Site 8 | sub70841 |
-	
-	And I generate Data PDF "pdf{Var(num)}"
-	And I wait for PDF "pdf{Var(num)}" to complete
-#Can not handle save dialog, must verify manually
-	When I View Data PDF "pdf{Var(num)}"  
-	#Then I should see "Query Data" in Audits
-	And I take a screenshot
-
-#----------------------------------------------------------------------------------------------------------------------------------------	
-@release_564_Patch11
-@PB_8.5.1
-@Draft
-Scenario: PB_8.5.1 When I run the Report, then query related data are displayed in the report.
-
-	And I navigate to "Reporter"
-	And I select Report "Audit Trail"
-	And I search report parameter "Study" with "Edit Check Study 3"
-	And I set report parameter "Study" with table
-		| Name               | Environment |
-		| Edit Check Study 3 | Prod        |
-	And I set report parameter "Sites" with table
-		| Name              |
-		| Edit Check Site 8 |
-	And I set report parameter "Subjects" with table
-		| Name           |
-		| sub{Var(num1)} |
-	And I set report parameter "Folders" with table
-		| Name      |
-		| Screening |
-	And I set report parameter "Forms" with table
-		| Name                    |
-		| Informed Consent        |
-		| Concomitant Medications |
-	And I set report parameter "Fields" with table
-		| Name          |
-		| CM_STRT_DT    |
-		| CURR_AXIS_NUM |
-	And I set report parameter "Start Date" with "{Date(0)}"
-	And I set report parameter "End Date" with "{Date(0)}"
-	And I search report parameter "Audit Type" with "Query"
-	And I set report parameter "Audit Type" with table
-		| SubCategory |
-		| QueryOpen   |
-	And I search report parameter "User" with "Default User"
-	And I set report parameter "User" with table
-		| Full Name    |
-		| Default User |
-	And I click button "Submit Report"
-	And I switch to "ReportViewer" window
-	And I take a screenshot
-	And I switch to main window
-	
-	#Then I should see queries on "Start Date" and "Current Axis Number" fields
-	#And I take a screenshot
-	#And I close report
-	
-#----------------------------------------------------------------------------------------------------------------------------------------	
-@release_564_Patch11
-@PB_8.5.2
-@Draft
-Scenario: PB_8.5.2 When I run the Report, then query related data are displayed in the report.
-
-# Query Detail	
-	And I navigate to "Reporter"
-	And I select Report "Query Detail"
-	And I set report parameter "Study" with table
-		| Name               | Environment |
-		| Edit Check Study 3 | Prod        |
-	And I set report parameter "Sites" with table
-		| Name              |
-		| Edit Check Site 8 |
-	And I set report parameter "Subjects" with table
-		| Name           |
-		| sub{Var(num1)} |
-	And I set report parameter "Folders" with table
-		| Name      |
-		| Screening |
-	And I set report parameter "Forms" with table
-		| Name                    |
-		| Informed Consent        |
-		| Concomitant Medications |
-	And I set report parameter "Fields" with table
-		| Name          |
-		| CM_STRT_DT    |
-		| CURR_AXIS_NUM |
-	And I set report parameter "Marking Groups" with table
-		| Group Name      |
-		| Site            |
-		| Marking Group 1 |
-	And I set report parameter "Query Status" with table
-		| Name |
-		| Open |
-	And I set report parameter "Start Date" with "{Date(0)}"
-	And I set report parameter "End Date" with "{Date(0)}"
-
-	When I click button "Submit Report"
-
-	#Then I should see queries on "Start Date" and "Current Axis Number" fields
-	And I switch to "ReportViewer" window
-	And I take a screenshot
-	And I switch to main window
-
-#----------------------------------------------------------------------------------------------------------------------------------------	
-@release_564_Patch11
-@PB_8.5.3
-@Draft
-Scenario: PB_8.5.3 When I run the Report, then query related data are displayed in the report.
-
-#Edit Check Log Report	
-	And I navigate to "Reporter"
-	And I select Report "Edit Check Log Report"
-	And I set report parameter "Study" with table
-		| Name               | Environment |
-		| Edit Check Study 3 | Prod        |
-	And I set report parameter "Forms" with table
-		| Form Name               |
-		| Concomitant Medications |
-		| Informed Consent        |
-
-	And I set report parameter "Check Type" with table
-		| Check Type |
-		| Edit Check |
-	
-	And I set report parameter "Check Log Type" with table
-		| Check Log Type |
-		| CheckExecution |
-	When I click button "Submit Report"
-
-	#Then I should see fired editchecks
-	And I switch to "ReportViewer" window
-	And I take a screenshot
-	And I switch to main window
-
-#----------------------------------------------------------------------------------------------------------------------------------------	
-@release_564_Patch11
-@PB_8.5.4
-@Draft
-Scenario: PB_8.5.4 When I run the Report, then query related data are displayed in the report.
-
-#Stream-Audit Trail	
-	And I navigate to "Reporter"
-	And I select Report "Stream-Audit Trail"
-	And I set report parameter "Study" with table
-		| Name               | Environment |
-		| Edit Check Study 3 | Prod        |
-	And I set report parameter "Sites" with table
-		| Name              |
-		| Edit Check Site 8 |
-	And I set report parameter "Subjects" with table
-		| Name           |
-		| sub{Var(num1)} |
-	And I set report parameter "Folders" with table
-		| Name      |
-		| Screening |
-	And I set report parameter "Forms" with table
-		| Name                    |
-		| Concomitant Medications |
-
-	And I click button "Submit Report"
-	And I switch to "Stream Report" window of type "StreamReport"
-	#And Im on windows
-	And I type "." in "Separator"
-	And I choose ".csv (text/plain)" from "File type"
-	And I choose "attachment" from "Export type"
-	And I check "Save as Unicode"
-	And I click button "Download File"
-	And I take a screenshot
-	And I switch to main window
-
-	#And I open excel file
-	#Then I should see queries on "Start Date" and "Current Axis Number" fields
-	#And I take a screenshot
-	#And I close report
-	
-#----------------------------------------------------------------------------------------------------------------------------------------	
-@release_564_Patch11
-@PB_8.5.5
-@Draft
-Scenario: PB_8.5.5 When I run the Report, then query related data are displayed in the report.
-
-#Stream-Query Detail	
-	And I navigate to "Reporter"
-	And I select Report "Stream-Query Detail"
-	And I set report parameter "Study" with table
-		| Name               | Environment |
-		| Edit Check Study 3 | Prod        |
-	And I set report parameter "Sites" with table
-		| Name              |
-		| Edit Check Site 8 |
-	And I set report parameter "Subjects" with table
-		| Name           |
-		| sub{Var(num1)} |
-	And I set report parameter "Folders" with table
-		| Name      |
-		| Screening |
-	And I set report parameter "Forms" with table
-		| Name                    |
-		| Concomitant Medications       |
-
-	And I click button "Submit Report"
-
-	And I switch to "Stream Report" window of type "StreamReport"
-	#And Im on windows
-	And I type "." in "Separator"
-	And I choose ".csv (text/plain)" from "File type"
-	And I choose "attachment" from "Export type"
-	And I uncheck "Save as Unicode"
-	And I click button "Download File"
-	And I take a screenshot
-	And I switch to main window
-
-
-	#And I open excel file
-	#Then I should see queries on "Start Date" and "Current Axis Number" fields
-	#And I take a screenshot
-	#And I close report
-
-#----------------------------------------------------------------------------------------------------------------------------------------	
-@release_564_Patch11
-@PB_8.5.6
-@Draft
-Scenario: PB_8.5.6 When I run the Report, then query related data are displayed in the report.
-
-#Stream-Edit Check Log Report	
-	And I navigate to "Reporter"
-	And I select Report "Stream-Edit Check Log Report"
-	And I set report parameter "Study" with table
-		| Name               | Environment |
-		| Edit Check Study 3 | Prod        |
-	
-	And I set report parameter "Forms" with table
-		| Form Name                    |
-		| Concomitant Medications       |
-	And I set report parameter "Check Type" with table
-		| Check Type |
-		| Edit Check |
-	
-	And I set report parameter "Check Log Type" with table
-		| Check Log Type |
-		| CheckExecution |
-	
-	And I click button "Submit Report"
-	
-	And I switch to "Stream Report" window of type "StreamReport"
-	#And Im on windows
-	And I type "." in "Separator"
-	And I choose ".csv (text/plain)" from "File type"
-	And I choose "attachment" from "Export type"
-	And I uncheck "Save as Unicode"
-	And I click button "Download File"
-	And I take a screenshot
-	And I switch to main window
-
-	#And I open excel file
-	#Then I should see queries on "Start Date" and "Current Axis Number" fields
-	#And I take a screenshot
-	#And I close report
-	
-#----------------------------------------------------------------------------------------------------------------------------------------	
-@release_564_Patch11
-@PB_8.6.1
-@Draft
-Scenario: PB_8.6.1 When I run the Report, then query related data are displayed in the report.J-Review verification.
-#MANUAL
-	And I navigate to "Reporter"
-	And I select Report "J-Review"
-	And I set report parameter "Study" with table
-		| Name               | Environment |
-		| Edit Check Study 3 | Prod        |
-	And I click button "Submit Report"
-	And I select "Edit Check Study 8" "Prod" from "Studies"
-	And I click button "Reports"
-	And I select "Detail Data Listing" report from "Type" in "Report Browser"
-	And I select "MetricViews" from "Panels"
-	And I select "Queries" from "MetricViews"
-	And I select "Project, Site, Subject, Datapage, Field, Record Position QueryText, QueryStatus, Answered Data, Answer Text"
-	When I click button "Create Report"
-	Then I should see "sub801"
-	And I should see "Added Query" in "QueryText"
-	And I take a screenshot
-	And I Close "Detail Data Listing" 
-	
-#----------------------------------------------------------------------------------------------------------------------------------------	
-@release_564_Patch11
-@PB_8.7.1
-@Draft
-Scenario: PB_8.7.1 When I run the Report, then query related data are displayed in the report. BOXI report verification.
-#MANUAL
-	And I navigate to "Reporter"
-	And I select report "Business Objects XI"
-	And I set report parameter "Study" with table
-		| Name               | Environment |
-		| Edit Check Study 8 | Prod        |
-	And I click button "Submit Report"
-	And I select dropdown "New"
-	And I select "Web Intelligence Document"
-	And I select "Rave 5.6 Universe"
-	And I select "Project Name, Site Name, Subject Name, Folder Name, Form Name, Query Text" in "Results Objects"
-	And I select "Site Name, Subject Name, Folder Name, FormName" in "Query Filters"
-	And I select "Equal To" from "In List" in "Query Filters" for "Site Name"
-	And Enter "Value(s) from list" "Edit Check Site 8" in "Query Filters" for "Site Name"
-	And I select "Equal To" from "In List" in "Query Filters" for "Subject Name"		
-	And Enter "Value(s) from list" "sub801" in "Query Filters" for "Subject Name"
-	And I select "Equal To" from "In List" in "Query Filters" for "Folder Name"		
-	And Enter "Value(s) from list" "Screening" in "Query Filters" for "Folder Name"
-	And I select "Equal To" from "In List" in "Query Filters" for "Form Name"		
-	And Enter "Value(s) from list" "Concomitant Medications" in "Query Filters" for "Form Name"
-	When I click button "Run Query"
-	Then I should see "sub801"
-	And I should see "Added Query" in "QueryText"
-	And I take a screenshot
-	And I Close "BOXI Report"
-	
-#----------------------------------------------------------------------------------------------------------------------------------------	
-@release_564_Patch11
-@PB_8.8.1
-@Draft
-Scenario: PB_8.8.1 When I run the Report, then query related data are displayed in the report. Migrate Subject
+@Validation
+Scenario: PB_8.4.1 Migrate Subject
 	
 	And I select Study "AM Edit Check Study" and Site "AM Edit Site"
 	And I create a Subject
@@ -722,9 +385,7 @@ Scenario: PB_8.8.1 When I run the Report, then query related data are displayed 
 	And I open log line 1
 	And I close the Query "Query Opened on Log Field 1" on Field "Log Field 1"
 	And I save the CRF page
-	#And I note CRF Version "<Source CRF Version1>"
-	And I take a screenshot
-	
+	And I take a screenshot	
 	And I select Site "AM Edit Site" in "Header"
     And I create a Subject
 		| Field            | Data              |
@@ -747,14 +408,11 @@ Scenario: PB_8.8.1 When I run the Report, then query related data are displayed 
 	And I open log line 1
 	And I close the Query "Query Opened on Log Field 1" on Field "Log Field 1"
 	And I save the CRF page
-	#And I note CRF Version "<Source CRF Version1>"
-	And I take a screenshot
-	
+	And I take a screenshot	
 	And I navigate to "Home"
 	And I navigate to "Architect"
 	And I select "AM Edit Check Study" in "Active Projects"
-	And I create Draft "Draft {RndNum<d#>(5)}" from Project "AM Edit Check Study" and Version "V9  ({Var(ver#)})"
-
+	And I create Draft "Draft {RndNum<d#>(5)}" from Project "AM Edit Check Study" and Version "V1 ({Var(ver#)})"
 	And I navigate to "Edit Checks"
 	And I inactivate edit check "Mixed Form Query"
 	And I take a screenshot
@@ -763,7 +421,7 @@ Scenario: PB_8.8.1 When I run the Report, then query related data are displayed 
 	And I note down "crfversion" to "newversion#"
 	And I select Study "AM Edit Check Study" in "Header"
 	And I navigate to "Amendment Manager"
-	And I choose "V9  ({Var(ver#)})" from "Source CRF"
+	And I choose "V1 ({Var(ver#)})" from "Source CRF"
 	And I choose "{Var(newversion#)}" from "Target CRF"
 	And I click button "Create Plan"
 	And I take a screenshot
@@ -771,51 +429,54 @@ Scenario: PB_8.8.1 When I run the Report, then query related data are displayed 
 	And I migrate all Subjects
 	And I select "Migration Results"
 	And I verify Job Status is set to Complete
-	And I take a screenshot
-	
+	And I take a screenshot	
 	And I navigate to "Home"
 	And I select Study "AM Edit Check Study" and Site "AM Edit Site"
     And I select a Subject "sub{Var(num2)}"
 	And I select Form "Mixed Form"
 	And I open the last log line
-	And I enter data in CRF and save
+	When I enter data in CRF and save
 	    |Field       |Data |
 	    |Log Field 1 |4    |
-	And I verify Query with message "Query Opened on Log Field 1" is not displayed on Field "Log Field 1"
-	#And I verify new query did not fire on "Log Field 1" field
-	And I enter data in CRF on a new log line and save
+	And I open the last log line	
+	Then I verify Query with message "Query Opened on Log Field 1" is not displayed on Field "Log Field 1"
+	And I take a screenshot
+	And I click button "Cancel"
+	And I add a new log line
+	And I enter data in CRF and save
 		|Field       |Data |
 	    |Log Field 1 |3    |
 	    |Log Field 2 |2    |
 	And I open the last log line
 	And I verify Query with message "Query Opened on Log Field 1" is not displayed on Field "Log Field 1"
-	And I take a screenshot
-	
+	And I take a screenshot	
 	And I select Site "AM Edit Site" in "Header"
     And I select a Subject "sub{Var(num3)}"
 	And I select Form "Mixed Form"
 	And I open the last log line
-	And I enter data in CRF and save
+	When I enter data in CRF and save
 		|Field       |Data |
         |Standard 1  |8	   |
-	And I save the CRF page	
-	And I verify Query with message "Query Opened on Log Field 1" is not displayed on Field "Log Field 1"
-	And I enter data in CRF on a new log line and save 
+	And I open the last log line
+	Then I verify Query is displayed
+		| Field       | Query Message               | Answered | Closed |
+		| Log Field 1 | Query Opened on Log Field 1 | true     | true   |
+	And I take a screenshot	
+	And I click button "Cancel"
+	And I add a new log line
+	When I enter data in CRF and save
 		|Field       |Data |
 	    |Log Field 1 |6    |
 	    |Log Field 2 |2    |
 	And I open the last log line
-	And I verify Query with message "Query Opened on Log Field 1" is not displayed on Field "Log Field 1"
-	And I take a screenshot
-	
+	Then I verify Query with message "Query Opened on Log Field 1" is not displayed on Field "Log Field 1"
+	And I take a screenshot	
 	And I navigate to "Home"
 	And I navigate to "Architect"
 	And I select "AM Edit Check Study" in "Active Projects"
 	And I select "Draft {Var(d#)}" in "CRF Drafts"
-
 	And I navigate to "Edit Checks"
 	And I activate edit check "Mixed Form Query"
-
 	And I select Draft "Draft {Var(d#)}" in "Header"
 	And I publish CRF Version "Target{RndNum<TV#>(3)}"
 	And I note down "crfversion" to "newversion1#"
@@ -827,35 +488,35 @@ Scenario: PB_8.8.1 When I run the Report, then query related data are displayed 
 	And I navigate to "Execute Plan"
 	And I migrate all Subjects
 	And I select "Migration Results"
-	And I verify Job Status is set to Complete
-	And I take a screenshot
-	
+	And I verify Job Status is set to Complete 
+	And I take a screenshot	
 	And I navigate to "Home"
 	And I select Study "AM Edit Check Study" and Site "AM Edit Site"
     And I select a Subject "sub{Var(num2)}"
 	And I select Form "Mixed Form"
-	And I open log line 1
-	And I verify Query with message "Query Opened on Log Field 1" is displayed on Field "Log Field 1"
+	When I open log line 1
+	Then I verify Query with message "Query Opened on Log Field 1" is displayed on Field "Log Field 1"
+	And I take a screenshot	
 	And I click button "Cancel"
-	And I open log line 2
-	And I verify Query with message "Query Opened on Log Field 1" is displayed on Field "Log Field 1"
-	And I take a screenshot
-	
+	When I open log line 2
+	Then I verify Query with message "Query Opened on Log Field 1" is displayed on Field "Log Field 1"
+	And I take a screenshot	
 	And I select Site "AM Edit Site" in "Header"
     And I select a Subject "sub{Var(num3)}"
 	And I select Form "Mixed Form"
-	And I open log line 1
-	And I verify Query with message "Query Opened on Log Field 1" is displayed on Field "Log Field 1"
+	When I open log line 1
+	Then I verify Query with message "Query Opened on Log Field 1" is displayed on Field "Log Field 1"
+	And I take a screenshot	
 	And I click button "Cancel"
-	And I open log line 2
-	And I verify Query with message "Query Opened on Log Field 1" is displayed on Field "Log Field 1"
+	When I open log line 2
+	Then I verify Query with message "Query Opened on Log Field 1" is displayed on Field "Log Field 1"
 	And I take a screenshot
 	
 #----------------------------------------------------------------------------------------------------------------------------------------	
 @release_564_Patch11
-@PB_8.9.1
-@Draft
-Scenario: PB_8.9.1 Publish Checks
+@PB_8.5.1
+@Validation
+Scenario: PB_8.5.1 Publish Checks
 
 	And I navigate to "Architect"
 	And I select "AM Edit Check Study" in "Active Projects"
@@ -865,13 +526,10 @@ Scenario: PB_8.9.1 Publish Checks
 	And I select "AM Edit Check Study" in "Header"
 	And I push CRF Version "{Var(newversion1#)}" to "All Sites"
 	And I select "Draft 1" in "CRF Drafts"
-
-
 	And I publish CRF Version "Pub2{RndNum<TV#>(5)}"
 	And I note down "crfversion" to "newversion2#"
 	And I publish CRF Version "Pub1{RndNum<TV#>(5)}"
 	And I note down "crfversion" to "newversion3#"
-	
 	And I navigate to "Home"
 	And I select Study "AM Edit Check Study" and Site "AM Edit Site"
     And I create a Subject
@@ -894,8 +552,7 @@ Scenario: PB_8.9.1 Publish Checks
 	And I close the Query "Query Opened on Log Field 1" on Field "Log Field 1"
 	And I save the CRF page
 	And I open the last log line
-	And I take a screenshot
-	
+	And I take a screenshot	
 	And I navigate to "Home"
 	And I navigate to "Architect"
 	And I select "AM Edit Check Study" in "Active Projects"
@@ -910,8 +567,7 @@ Scenario: PB_8.9.1 Publish Checks
 	And I accept alert window
 	And I select "Migration Results"
 	And I verify Job Status is set to Complete
-	And I take a screenshot
-	
+	And I take a screenshot	
 	And I navigate to "Home"
 	And I select Study "AM Edit Check Study" and Site "AM Edit Site"
     And I select a Subject "sub{Var(num4)}"
@@ -923,8 +579,7 @@ Scenario: PB_8.9.1 Publish Checks
 	And I verify Query is displayed
          | Field       | Query Message               | Closed |
          | Log Field 1 | Query Opened on Log Field 1 | true   |
-	And I take a screenshot
-	
+	And I take a screenshot	
 	And I navigate to "Home"
 	And I navigate to "Architect"
 	And I select "AM Edit Check Study" in "Active Projects"
@@ -940,39 +595,34 @@ Scenario: PB_8.9.1 Publish Checks
 	And I select "Migration Results"
 	And I verify Job Status is set to Complete
 	And I take a screenshot
-
 	And I navigate to "Home"
 	And I select Study "AM Edit Check Study" and Site "AM Edit Site"
     And I select a Subject "sub{Var(num4)}"
 	And I select Form "Mixed Form"
-	And I open the last log line
-	And I verify Query with message "Query Opened on Log Field 1" is displayed on Field "Log Field 1"
-	
-
-
+	When I open the last log line
+	Then I verify Query with message "Query Opened on Log Field 1" is displayed on Field "Log Field 1"
 	And I take a screenshot
 	And I enter data in CRF and save
 		|Field       |Data |
         |Standard 1  |8    |
-	And I open the last log line
-	And I verify Query with message "Query Opened on Log Field 1" is displayed on Field "Log Field 1"
+	When I open the last log line
+	Then I verify Query with message "Query Opened on Log Field 1" is displayed on Field "Log Field 1"
 	And I answer the Query "Query Opened on Log Field 1" on Field "Log Field 1" with "answer query"
 	And I save the CRF page
-
-	And I take a screenshot
-	
+	And I open the last log line	
+	And I take a screenshot	
 
 #----------------------------------------------------------------------------------------------------------------------------------------	
 @release_564_Patch11
-@PB_8.10.1
-@Draft
-Scenario: PB_8.10.1 When I run the Report, then query related data are displayed in the report. Queries verification on data points with Freeze, Hard lock and Inactive records
+@PB_8.6.1
+@Validation
+Scenario: PB_8.6.1 Queries verification on data points with Freeze, Hard lock and Inactive records
 
-	And I select Study "Edit Check Study 3" and Site "Edit Check Site 8"
+	And I select Study "Edit Check Study 3" and Site "Edit Check Site 1"
     And I create a Subject
-	| Field            | Data              |
-	| Subject Number   | {RndNum<num1>(5)} |
-	| Subject Initials | sub               |
+		| Field            | Data              |
+		| Subject Number   | {RndNum<num1>(5)} |
+		| Subject Initials | sub               |
 	And I select Form "Mixed Form"
 	And I enter data in CRF and save
 	    |Field       |Data |
@@ -1043,11 +693,11 @@ Scenario: PB_8.10.1 When I run the Report, then query related data are displayed
 	And I click button "Inactivate"
 	And I take a screenshot
 
-	And I enter data in CRF and save
+	When I enter data in CRF and save
 		|Field       |Data |
         |Standard 1  |7    |
 	And I open log line 1
-	And I verify Query is displayed
+	Then I verify Query is displayed
 		| Field       | Query Message               | Answered | Closed |
 		| Log Field 1 | Query Opened on Log Field 1 | false    | false  |
 	And I take a screenshot
@@ -1067,3 +717,5 @@ Scenario: PB_8.10.1 When I run the Report, then query related data are displayed
 		| Field       | Query Message               | Answered | Closed |
 		| Log Field 1 | Query Opened on Log Field 1 | false    | false  |
 	And I take a screenshot
+	
+#----------------------------------------------------------------------------------------------------------------------------------------	
