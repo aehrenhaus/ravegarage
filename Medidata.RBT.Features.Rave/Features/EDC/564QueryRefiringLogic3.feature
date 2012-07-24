@@ -36,7 +36,7 @@ Background:
 #----------------------------------------------------------------------------------------------------------------------------------------
 @release_564_Patch11
 @PB_3.1.1
-@Draft
+@Validation
 Scenario: PB_3.1.1 As an EDC user, On a Cross Form Standard form to log form, When a query has been answered and auto closed with the same data and I enter the same data that originally opened the query, then queries are not displayed. 
    
 	 And I create a Subject
@@ -95,7 +95,7 @@ Scenario: PB_3.1.1 As an EDC user, On a Cross Form Standard form to log form, Wh
 #----------------------------------------------------------------------------------------------------------------------------------------
 @release_564_Patch11
 @PB_3.1.2
-@Draft
+@Validation
 Scenario: PB_3.1.2 As an EDC user, On a Cross Form Standard form to log form, When a query has been answered and auto closed with the different data and I enter the same data that originally opened the query, then queries are displayed. 
 
 	And I select a Subject "sub{Var(num1)}"
@@ -147,7 +147,7 @@ Scenario: PB_3.1.2 As an EDC user, On a Cross Form Standard form to log form, Wh
 #----------------------------------------------------------------------------------------------------------------------------------------
 @release_564_Patch11
 @PB_3.1.3
-@Draft
+@Validation
 Scenario: PB_3.1.3 As an EDC user, On a Cross Form Standard form to log form, When a query has been canceled with the different data and I enter the same data that originally opened the query, then queries are displayed. 
 
 	And I select a Subject "sub{Var(num1)}"
@@ -206,7 +206,7 @@ Scenario: PB_3.1.3 As an EDC user, On a Cross Form Standard form to log form, Wh
 #----------------------------------------------------------------------------------------------------------------------------------------
 @release_564_Patch11
 @PB_3.1.4
-@Draft
+@Validation
 Scenario: PB_3.1.4 As an EDC user, On a Cross Form Standard form to log form, When a query has been canceled with the same data and I enter the same data that originally opened the query, then queries are displayed. 
 
 	And I select a Subject "sub{Var(num1)}"
@@ -269,7 +269,7 @@ Scenario: PB_3.1.4 As an EDC user, On a Cross Form Standard form to log form, Wh
 #----------------------------------------------------------------------------------------------------------------------------------------	
 @release_564_Patch11
 @PB_3.2.1
-@Draft
+@Validation
 Scenario: PB_3.2.1 As an EDC user, On a Cross Folder Standard form to log form, When a query has been answered and auto closed with the same data and I enter the same data that originally opened the query, then queries are not displayed.
 		
 	 And I create a Subject
@@ -323,7 +323,7 @@ Scenario: PB_3.2.1 As an EDC user, On a Cross Folder Standard form to log form, 
 #----------------------------------------------------------------------------------------------------------------------------------------	
 @release_564_Patch11
 @PB_3.2.2
-@Draft
+@Validation
 Scenario: PB_3.2.2 As an EDC user, On a Cross Folder Standard form to log form, When a query has been answered and auto closed with the different data and I enter the same data that originally opened the query, then queries are displayed.
 	
 	And I select a Subject "sub{Var(num1)}"
@@ -370,7 +370,7 @@ Scenario: PB_3.2.2 As an EDC user, On a Cross Folder Standard form to log form, 
 #----------------------------------------------------------------------------------------------------------------------------------------	
 @release_564_Patch11
 @PB_3.2.3
-@Draft
+@Validation
 Scenario: PB_3.2.3 As an EDC user, On a Cross Folder Standard form to log form, When a query has been canceled with the different data and I enter the same data that originally opened the query, then queries are displayed.
 	
 	And I select a Subject "sub{Var(num1)}"
@@ -429,7 +429,7 @@ Scenario: PB_3.2.3 As an EDC user, On a Cross Folder Standard form to log form, 
 #----------------------------------------------------------------------------------------------------------------------------------------
 @release_564_Patch11
 @PB_3.3.1
-@Draft
+@Validation
 Scenario: PB_3.3.1 As an EDC user, On a Cross Forms log form to Standard form, When a query has been answered and auto closed with the different data and I enter the same data that originally opened the query, then queries are displayed. 
 
 	And I create a Subject
@@ -483,7 +483,7 @@ Scenario: PB_3.3.1 As an EDC user, On a Cross Forms log form to Standard form, W
 #----------------------------------------------------------------------------------------------------------------------------------------
 @release_564_Patch11
 @PB_3.3.2
-@Draft
+@Validation
 Scenario: PB_3.3.2 As an EDC user, On a Cross Forms log form to Standard form, When a query has been canceled with the different data and I enter the same data that originally opened the query, then queries are displayed. 
 
 	And I create a Subject
@@ -548,7 +548,7 @@ Scenario: PB_3.3.2 As an EDC user, On a Cross Forms log form to Standard form, W
 #----------------------------------------------------------------------------------------------------------------------------------------	
 @release_564_Patch11
 @PB_3.4.1
-@Draft
+@Validation
 Scenario: PB_3.4.1 As an EDC user, On a Cross Forms log form to log form, When a query has been answered and auto closed with the same data and I enter the same data that originally opened the query, then queries are not displayed.
 
 	And I create a Subject
@@ -626,7 +626,7 @@ Scenario: PB_3.4.1 As an EDC user, On a Cross Forms log form to log form, When a
 #----------------------------------------------------------------------------------------------------------------------------------------	
 @release_564_Patch11
 @PB_3.4.2
-@Draft
+@Validation
 Scenario: PB_3.4.2 As an EDC user, On a Cross Forms log form to log form, When a query has been answered and auto closed with the different data and I enter the same data that originally opened the query, then queries are not displayed.
 
 	And I select a Subject "sub{Var(num1)}"
@@ -699,7 +699,7 @@ Scenario: PB_3.4.2 As an EDC user, On a Cross Forms log form to log form, When a
 #----------------------------------------------------------------------------------------------------------------------------------------	
 @release_564_Patch11
 @PB_3.4.3
-@Draft
+@Validation
 Scenario: PB_3.4.3 As an EDC user, On a Cross Forms log form to log form, When a query has been canceled with the different data and I enter the same data that originally opened the query, then queries are not displayed.
 
 	And I select a Subject "sub{Var(num1)}"
@@ -800,7 +800,7 @@ Scenario: PB_3.4.3 As an EDC user, On a Cross Forms log form to log form, When a
 #---------------------------------------------------------------------------------------------------------------------------------------- 
 @release_564_Patch11
 @PB_3.1.5
-@Draft
+@Validation
 Scenario: PB_3.1.5 As an EDC user, On a Cross Form Standard form to log form, When a query has been canceled with the different data and I enter the same data that originally opened the query, then queries are displayed. 
    
 	 And I create a Subject

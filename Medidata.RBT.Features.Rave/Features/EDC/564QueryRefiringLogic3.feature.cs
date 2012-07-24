@@ -192,7 +192,7 @@ namespace Medidata.RBT.Features.Rave.Features.EDC
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "3")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("release_564_Patch11")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("PB_3.1.1")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Draft")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Validation")]
         public virtual void PB_3_1_1AsAnEDCUserOnACrossFormStandardFormToLogFormWhenAQueryHasBeenAnsweredAndAutoClosedWithTheSameDataAndIEnterTheSameDataThatOriginallyOpenedTheQueryThenQueriesAreNotDisplayed_()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("PB_3.1.1 As an EDC user, On a Cross Form Standard form to log form, When a query " +
@@ -200,7 +200,7 @@ namespace Medidata.RBT.Features.Rave.Features.EDC
                     "hat originally opened the query, then queries are not displayed.", new string[] {
                         "release_564_Patch11",
                         "PB_3.1.1",
-                        "Draft"});
+                        "Validation"});
 #line 40
 this.ScenarioSetup(scenarioInfo);
 #line 12
@@ -371,7 +371,7 @@ this.FeatureBackground();
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "3")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("release_564_Patch11")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("PB_3.1.2")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Draft")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Validation")]
         public virtual void PB_3_1_2AsAnEDCUserOnACrossFormStandardFormToLogFormWhenAQueryHasBeenAnsweredAndAutoClosedWithTheDifferentDataAndIEnterTheSameDataThatOriginallyOpenedTheQueryThenQueriesAreDisplayed_()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("PB_3.1.2 As an EDC user, On a Cross Form Standard form to log form, When a query " +
@@ -379,7 +379,7 @@ this.FeatureBackground();
                     "ata that originally opened the query, then queries are displayed.", new string[] {
                         "release_564_Patch11",
                         "PB_3.1.2",
-                        "Draft"});
+                        "Validation"});
 #line 99
 this.ScenarioSetup(scenarioInfo);
 #line 12
@@ -538,7 +538,7 @@ this.FeatureBackground();
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "3")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("release_564_Patch11")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("PB_3.1.3")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Draft")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Validation")]
         public virtual void PB_3_1_3AsAnEDCUserOnACrossFormStandardFormToLogFormWhenAQueryHasBeenCanceledWithTheDifferentDataAndIEnterTheSameDataThatOriginallyOpenedTheQueryThenQueriesAreDisplayed_()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("PB_3.1.3 As an EDC user, On a Cross Form Standard form to log form, When a query " +
@@ -546,7 +546,7 @@ this.FeatureBackground();
                     "lly opened the query, then queries are displayed.", new string[] {
                         "release_564_Patch11",
                         "PB_3.1.3",
-                        "Draft"});
+                        "Validation"});
 #line 151
 this.ScenarioSetup(scenarioInfo);
 #line 12
@@ -711,7 +711,7 @@ this.FeatureBackground();
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "3")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("release_564_Patch11")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("PB_3.1.4")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Draft")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Validation")]
         public virtual void PB_3_1_4AsAnEDCUserOnACrossFormStandardFormToLogFormWhenAQueryHasBeenCanceledWithTheSameDataAndIEnterTheSameDataThatOriginallyOpenedTheQueryThenQueriesAreDisplayed_()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("PB_3.1.4 As an EDC user, On a Cross Form Standard form to log form, When a query " +
@@ -719,7 +719,7 @@ this.FeatureBackground();
                     "pened the query, then queries are displayed.", new string[] {
                         "release_564_Patch11",
                         "PB_3.1.4",
-                        "Draft"});
+                        "Validation"});
 #line 210
 this.ScenarioSetup(scenarioInfo);
 #line 12
@@ -892,7 +892,7 @@ this.FeatureBackground();
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "3")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("release_564_Patch11")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("PB_3.2.1")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Draft")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Validation")]
         public virtual void PB_3_2_1AsAnEDCUserOnACrossFolderStandardFormToLogFormWhenAQueryHasBeenAnsweredAndAutoClosedWithTheSameDataAndIEnterTheSameDataThatOriginallyOpenedTheQueryThenQueriesAreNotDisplayed_()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("PB_3.2.1 As an EDC user, On a Cross Folder Standard form to log form, When a quer" +
@@ -900,7 +900,7 @@ this.FeatureBackground();
                     " that originally opened the query, then queries are not displayed.", new string[] {
                         "release_564_Patch11",
                         "PB_3.2.1",
-                        "Draft"});
+                        "Validation"});
 #line 273
 this.ScenarioSetup(scenarioInfo);
 #line 12
@@ -1050,7 +1050,7 @@ this.FeatureBackground();
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "3")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("release_564_Patch11")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("PB_3.2.2")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Draft")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Validation")]
         public virtual void PB_3_2_2AsAnEDCUserOnACrossFolderStandardFormToLogFormWhenAQueryHasBeenAnsweredAndAutoClosedWithTheDifferentDataAndIEnterTheSameDataThatOriginallyOpenedTheQueryThenQueriesAreDisplayed_()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("PB_3.2.2 As an EDC user, On a Cross Folder Standard form to log form, When a quer" +
@@ -1058,7 +1058,7 @@ this.FeatureBackground();
                     " data that originally opened the query, then queries are displayed.", new string[] {
                         "release_564_Patch11",
                         "PB_3.2.2",
-                        "Draft"});
+                        "Validation"});
 #line 327
 this.ScenarioSetup(scenarioInfo);
 #line 12
@@ -1189,7 +1189,7 @@ this.FeatureBackground();
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "3")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("release_564_Patch11")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("PB_3.2.3")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Draft")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Validation")]
         public virtual void PB_3_2_3AsAnEDCUserOnACrossFolderStandardFormToLogFormWhenAQueryHasBeenCanceledWithTheDifferentDataAndIEnterTheSameDataThatOriginallyOpenedTheQueryThenQueriesAreDisplayed_()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("PB_3.2.3 As an EDC user, On a Cross Folder Standard form to log form, When a quer" +
@@ -1197,7 +1197,7 @@ this.FeatureBackground();
                     "nally opened the query, then queries are displayed.", new string[] {
                         "release_564_Patch11",
                         "PB_3.2.3",
-                        "Draft"});
+                        "Validation"});
 #line 374
 this.ScenarioSetup(scenarioInfo);
 #line 12
@@ -1360,7 +1360,7 @@ this.FeatureBackground();
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "3")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("release_564_Patch11")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("PB_3.3.1")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Draft")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Validation")]
         public virtual void PB_3_3_1AsAnEDCUserOnACrossFormsLogFormToStandardFormWhenAQueryHasBeenAnsweredAndAutoClosedWithTheDifferentDataAndIEnterTheSameDataThatOriginallyOpenedTheQueryThenQueriesAreDisplayed_()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("PB_3.3.1 As an EDC user, On a Cross Forms log form to Standard form, When a query" +
@@ -1368,7 +1368,7 @@ this.FeatureBackground();
                     "data that originally opened the query, then queries are displayed.", new string[] {
                         "release_564_Patch11",
                         "PB_3.3.1",
-                        "Draft"});
+                        "Validation"});
 #line 433
 this.ScenarioSetup(scenarioInfo);
 #line 12
@@ -1526,7 +1526,7 @@ this.FeatureBackground();
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "3")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("release_564_Patch11")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("PB_3.3.2")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Draft")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Validation")]
         public virtual void PB_3_3_2AsAnEDCUserOnACrossFormsLogFormToStandardFormWhenAQueryHasBeenCanceledWithTheDifferentDataAndIEnterTheSameDataThatOriginallyOpenedTheQueryThenQueriesAreDisplayed_()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("PB_3.3.2 As an EDC user, On a Cross Forms log form to Standard form, When a query" +
@@ -1534,7 +1534,7 @@ this.FeatureBackground();
                     "ally opened the query, then queries are displayed.", new string[] {
                         "release_564_Patch11",
                         "PB_3.3.2",
-                        "Draft"});
+                        "Validation"});
 #line 487
 this.ScenarioSetup(scenarioInfo);
 #line 12
@@ -1720,7 +1720,7 @@ this.FeatureBackground();
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "3")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("release_564_Patch11")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("PB_3.4.1")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Draft")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Validation")]
         public virtual void PB_3_4_1AsAnEDCUserOnACrossFormsLogFormToLogFormWhenAQueryHasBeenAnsweredAndAutoClosedWithTheSameDataAndIEnterTheSameDataThatOriginallyOpenedTheQueryThenQueriesAreNotDisplayed_()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("PB_3.4.1 As an EDC user, On a Cross Forms log form to log form, When a query has " +
@@ -1728,7 +1728,7 @@ this.FeatureBackground();
                     "originally opened the query, then queries are not displayed.", new string[] {
                         "release_564_Patch11",
                         "PB_3.4.1",
-                        "Draft"});
+                        "Validation"});
 #line 552
 this.ScenarioSetup(scenarioInfo);
 #line 12
@@ -1955,7 +1955,7 @@ this.FeatureBackground();
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "3")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("release_564_Patch11")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("PB_3.4.2")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Draft")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Validation")]
         public virtual void PB_3_4_2AsAnEDCUserOnACrossFormsLogFormToLogFormWhenAQueryHasBeenAnsweredAndAutoClosedWithTheDifferentDataAndIEnterTheSameDataThatOriginallyOpenedTheQueryThenQueriesAreNotDisplayed_()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("PB_3.4.2 As an EDC user, On a Cross Forms log form to log form, When a query has " +
@@ -1963,7 +1963,7 @@ this.FeatureBackground();
                     "that originally opened the query, then queries are not displayed.", new string[] {
                         "release_564_Patch11",
                         "PB_3.4.2",
-                        "Draft"});
+                        "Validation"});
 #line 630
 this.ScenarioSetup(scenarioInfo);
 #line 12
@@ -2176,7 +2176,7 @@ this.FeatureBackground();
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "3")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("release_564_Patch11")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("PB_3.4.3")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Draft")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Validation")]
         public virtual void PB_3_4_3AsAnEDCUserOnACrossFormsLogFormToLogFormWhenAQueryHasBeenCanceledWithTheDifferentDataAndIEnterTheSameDataThatOriginallyOpenedTheQueryThenQueriesAreNotDisplayed_()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("PB_3.4.3 As an EDC user, On a Cross Forms log form to log form, When a query has " +
@@ -2184,7 +2184,7 @@ this.FeatureBackground();
                     "opened the query, then queries are not displayed.", new string[] {
                         "release_564_Patch11",
                         "PB_3.4.3",
-                        "Draft"});
+                        "Validation"});
 #line 703
 this.ScenarioSetup(scenarioInfo);
 #line 12
@@ -2464,7 +2464,7 @@ this.FeatureBackground();
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "3")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("release_564_Patch11")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("PB_3.1.5")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Draft")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Validation")]
         public virtual void PB_3_1_5AsAnEDCUserOnACrossFormStandardFormToLogFormWhenAQueryHasBeenCanceledWithTheDifferentDataAndIEnterTheSameDataThatOriginallyOpenedTheQueryThenQueriesAreDisplayed_()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("PB_3.1.5 As an EDC user, On a Cross Form Standard form to log form, When a query " +
@@ -2472,7 +2472,7 @@ this.FeatureBackground();
                     "lly opened the query, then queries are displayed.", new string[] {
                         "release_564_Patch11",
                         "PB_3.1.5",
-                        "Draft"});
+                        "Validation"});
 #line 804
 this.ScenarioSetup(scenarioInfo);
 #line 12

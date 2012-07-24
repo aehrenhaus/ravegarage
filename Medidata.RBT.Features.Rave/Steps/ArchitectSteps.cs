@@ -65,7 +65,7 @@ namespace Medidata.RBT.Features.Rave
 			CurrentPage = CurrentPage.As<AMMigrationExecutePage>().Migrate();
 		}
 
-		[Given(@"I verify Job Status is set to Complete")]
+        [StepDefinition(@"I verify Job Status is set to Complete")]
 		public void GivenISelectMigrationResultsAndVerifyJobStatusIsSetToComplete()
 		{
 			CurrentPage.As<AMMigrationResultPage>().WaitForComplete();

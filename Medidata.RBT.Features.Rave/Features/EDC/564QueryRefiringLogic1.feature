@@ -21,7 +21,7 @@ Background:
 #----------------------------------------------------------------------------------------------------------------------------------------	
 @release_564_Patch11
 @PB_1.1.1
-@Draft
+@Validation
 Scenario: PB_1.1.1 As an EDC user, On a Cross Forms - Standard form to log form, when a query has been answered and closed with the same data and I enter the same data that originally opened the query, then queries are not displayed. 
 	
 	Given I create a Subject
@@ -84,7 +84,7 @@ Scenario: PB_1.1.1 As an EDC user, On a Cross Forms - Standard form to log form,
 #----------------------------------------------------------------------------------------------------------------------------------------	
 @release_564_Patch11
 @PB_1.1.2
-@Draft
+@Validation
 Scenario: PB_1.1.2 As an EDC user, On a Cross Forms - Standard form to log form, when a query has been answered and closed with the same data and I enter the different data that originally opened the query, then queries are displayed. 
 
 	Given I select Study "Edit Check Study 3" and Site "Edit Check Site 1"
@@ -131,7 +131,7 @@ Scenario: PB_1.1.2 As an EDC user, On a Cross Forms - Standard form to log form,
 #----------------------------------------------------------------------------------------------------------------------------------------	
 @release_564_Patch11
 @PB_1.2.1
-@Draft
+@Validation
 Scenario: PB_1.2.1 As an EDC user, On a Cross Folders, Standard form to log form. when a query has been answered and closed with the same data and I enter the same data that originally opened the query, then queries are not displayed.
 #Folder "Screening" enter and save data on form "Informed Consent" Folder "Week 1" enter and save data on form "Concomitant Medications"
 	
@@ -198,7 +198,7 @@ Scenario: PB_1.2.1 As an EDC user, On a Cross Folders, Standard form to log form
 #----------------------------------------------------------------------------------------------------------------------------------------	
 @release_564_Patch11
 @PB_1.2.2
-@Draft
+@Validation
 Scenario: PB_1.2.2 As an EDC user, On a Cross Folders, Standard form to log form. when a query has been answered and closed with the same data and I enter the same data that originally opened the query, then queries are displayed.
 
 	Given I select Study "Edit Check Study 3" and Site "Edit Check Site 1"
@@ -247,7 +247,7 @@ Scenario: PB_1.2.2 As an EDC user, On a Cross Folders, Standard form to log form
 #----------------------------------------------------------------------------------------------------------------------------------------	
 @release_564_Patch11
 @PB_1.3.1
-@Draft
+@Validation
 Scenario: PB_1.3.1 As an EDC user, on a Cross Forms log form to Standard form, when a query has been answered and closed with the same data and I enter the same data that originally opened the query, then queries are not displayed.
 #Folder "Week 1" enter and save data on forms "Concomitant Medications" and "Informed Consent"
 
@@ -306,7 +306,7 @@ Scenario: PB_1.3.1 As an EDC user, on a Cross Forms log form to Standard form, w
 #----------------------------------------------------------------------------------------------------------------------------------------	
 @release_564_Patch11
 @PB_1.3.2
-@Draft
+@Validation
 Scenario: PB_1.3.2 As an EDC user, on a Cross Forms log form to Standard form, when a query has been answered and closed with the different data and I enter the same data that originally opened the query, then queries are displayed.
 
 	Given I select Study "Edit Check Study 3" and Site "Edit Check Site 1"
@@ -353,7 +353,7 @@ Scenario: PB_1.3.2 As an EDC user, on a Cross Forms log form to Standard form, w
 #----------------------------------------------------------------------------------------------------------------------------------------	
 @release_564_Patch11
 @PB_1.3.3
-@Draft
+@Validation
 Scenario: PB_1.3.3 As an EDC user, on a Cross Forms log form to Standard form, when a query has been answered and closed with the different data and I enter the same data that originally opened the query, then queries are displayed.
 
 	Given I select Study "Edit Check Study 3" and Site "Edit Check Site 1"
@@ -404,7 +404,7 @@ Scenario: PB_1.3.3 As an EDC user, on a Cross Forms log form to Standard form, w
 #----------------------------------------------------------------------------------------------------------------------------------------	
 @release_564_Patch11
 @PB_1.4.1
-@Draft
+@Validation
 Scenario: PB_1.4.1 As an EDC user, On a Cross Forms log form to log form, when a query has been answered and closed with the same data and I enter the same data that originally opened the query, then queries are not displayed.
 #Folder "Screening" enter and save data on forms "Concomitant Medications" and "Adverse Events"
 
@@ -478,7 +478,7 @@ Scenario: PB_1.4.1 As an EDC user, On a Cross Forms log form to log form, when a
 #----------------------------------------------------------------------------------------------------------------------------------------	
 @release_564_Patch11
 @PB_1.4.2
-@Draft
+@Validation
 Scenario: PB_1.4.2 As an EDC user, On a Cross Forms log form to log form, when a query has been answered and closed with the different data and I enter the same data that originally opened the query, then queries are displayed.  
 
 	Given I select Study "Edit Check Study 3" and Site "Edit Check Site 1"
@@ -558,7 +558,7 @@ Scenario: PB_1.4.2 As an EDC user, On a Cross Forms log form to log form, when a
 #----------------------------------------------------------------------------------------------------------------------------------------	
 @release_564_Patch11
 @PB_1.5.1
-@Draft
+@Validation
 Scenario: PB_1.5.1 As an EDC user, Cross Forms - Standard form to log form, when a query has been answered and closed with the same data and I enter the same data that originally opened the query, then queries are displayed.  
 #Folder "Screening" enter and save data on forms "Informed Consent" and "Concomitant Medications". Queries fired, Answer and  Manually close queries in log fields, Modify Standard form to different bad data, do not touch log form - query and no logs in the Database.
 
@@ -608,7 +608,7 @@ Scenario: PB_1.5.1 As an EDC user, Cross Forms - Standard form to log form, when
 #----------------------------------------------------------------------------------------------------------------------------------------	
 @release_564_Patch11
 @PB_1.6.1
-@Draft
+@Validation
 Scenario: PB_1.6.1 As an EDC user, On a Cross Forms - Standard form to log form. when a query has been answered and closed with the same data and I enter the same data that originally opened the query, then queries are displayed. 
 #Folder "Screening" enter and save data on forms "Informed Consent" and "Concomitant Medications". Queries fired, Cancel queries in log fields, Modify Standard form to different bad data, do not touch log form - query and no logs in the Database.
 
@@ -654,7 +654,7 @@ Scenario: PB_1.6.1 As an EDC user, On a Cross Forms - Standard form to log form.
 #----------------------------------------------------------------------------------------------------------------------------------------	
 @release_564_Patch11
 @PB_1.7.1
-@Draft
+@Validation
 Scenario: PB_1.7.1 As an EDC user, Cross Forms - log form to log form, when a query has been answered and closed with the different data and I enter the same data that originally opened the query, then queries are displayed.  
 #Folder "Screening" enter and save data on forms "Concomitant Medications" and "Adverse Events". Queries fired, Answer and  Manually close queries in log fields (second log form), Modify log form (first log form) to different bad data, do not touch second log form - query and no logs in the Database.
 
@@ -719,7 +719,7 @@ Scenario: PB_1.7.1 As an EDC user, Cross Forms - log form to log form, when a qu
 #----------------------------------------------------------------------------------------------------------------------------------------	
 @release_564_Patch11
 @PB_1.8.1
-@Draft
+@Validation
 Scenario: PB_1.8.1 As an EDC user, On a Cross Forms - log form to log form, when a query has been answered and closed with the different data and I enter the same data that originally opened the query, then queries are displayed.  
 #Folder "Screening" enter and save data on forms "Concomitant Medications" and "Adverse Events". Queries fired, cancel queries in log fields (second log form), Modify log form (first log form) to different bad data, do not touch second log form - query and no logs in the Database.
 	
@@ -770,7 +770,7 @@ Scenario: PB_1.8.1 As an EDC user, On a Cross Forms - log form to log form, when
 #----------------------------------------------------------------------------------------------------------------------------------------	
 @release_564_Patch11
 @PB_1.9.1
-@Draft
+@Validation
 Scenario: PB_1.9.1 As an EDC user, On a Cross Forms - Standard form to log form, when a query has been answered and closed with the different data and I enter the same data that originally opened the query, then queries are not displayed.  
 #Folder "Screening" enter and save data on forms "Informed Consent" and "Concomitant Medications". Queries fired, Answer and  Manually close queries in log fields, Modify log fields to different good data, do not touch standard form - no query and no log in the Database.
 
@@ -823,7 +823,7 @@ Scenario: PB_1.9.1 As an EDC user, On a Cross Forms - Standard form to log form,
 #----------------------------------------------------------------------------------------------------------------------------------------	
 @release_564_Patch11
 @PB_1.10.1
-@Draft
+@Validation
 Scenario: PB_1.10.1 As an EDC user, Cross Forms: Standard form to log form, when a query has been answered and closed with the different data and I enter the same data that originally opened the query, then queries are displayed. 
 #Folder "Screening" enter and save data on forms "Informed Consent" and "Concomitant Medications" Queries fired, Answer and  Manually close queries in log fields, Modify log fields to different bad data, do not touch standard form - query fires and no log in the Database.
 
@@ -872,7 +872,7 @@ Scenario: PB_1.10.1 As an EDC user, Cross Forms: Standard form to log form, when
 #----------------------------------------------------------------------------------------------------------------------------------------	
 @release_564_Patch11
 @PB_1.11.1
-@Draft
+@Validation
 Scenario: PB_1.11.1 As an EDC user, On a Cross Forms Standard form to log form, when a query has been answered and closed with the different data and I enter the same data that originally opened the query, then queries are not displayed.  
 #Folder "Screening" enter and save data on forms "Informed Consent" and "Concomitant Medications" Queries fired on log form, Modify standard fields to different good data, new Data results in system close of edit check on log form - queries closed by system and no log in the Database.
 
@@ -914,7 +914,7 @@ Scenario: PB_1.11.1 As an EDC user, On a Cross Forms Standard form to log form, 
 #----------------------------------------------------------------------------------------------------------------------------------------	
 @release_564_Patch11
 @PB_1.12.1
-@Draft
+@Validation
 Scenario: PB_1.12.1 As an EDC user, On a Cross Forms - Standard form to log form, when a query has been answered and closed with the different data and I enter the same data that originally opened the query, then queries are not displayed.  
 #Folder "Screening" enter and save data on forms "Informed Consent" and "Concomitant Medications". Queries fired on log form, Modify log fields to different good data, new value results in system close of edit check on log form - queries closed by system and no log in the Database.
 
@@ -954,7 +954,7 @@ Scenario: PB_1.12.1 As an EDC user, On a Cross Forms - Standard form to log form
 #----------------------------------------------------------------------------------------------------------------------------------------	
 @release_564_Patch11
 @PB_1.13.1
-@Draft
+@Validation
 Scenario: PB_1.13.1 As an EDC user, On a Cross Forms - Standard form to log form, when a query has been answered and closed with the different data and I enter the same data that originally opened the query, then queries are displayed. 
 #Folder "Screening" enter and save data on forms "Informed Consent" and "Concomitant Medications". Queries fired on log form, Modify standard fields to different good data, new value results in system close of edit check on log form and update \new value on standard fields in violation of edit check on log form- queries refires on log form and no log in the Database.
 	
@@ -1006,7 +1006,7 @@ Scenario: PB_1.13.1 As an EDC user, On a Cross Forms - Standard form to log form
 #----------------------------------------------------------------------------------------------------------------------------------------	
 @release_564_Patch11
 @PB_1.14.1
-@Draft
+@Validation
 Scenario: PB_1.14.1 As an EDC user, Cross Forms - Standard form to log form, when a query has been answered and closed with the different data and I enter the same data that originally opened the query, then queries are displayed.  
 #Folder "Screening" enter and save data on forms "Informed Consent" and "Concomitant Medications". Queries fired on log form, Modify log fields to different good data, new value results in system close of edit check on log form and update new value on standard fields in violation of edit check on log form- queries refires on log form and no log in the Database.
 	
@@ -1056,7 +1056,7 @@ Scenario: PB_1.14.1 As an EDC user, Cross Forms - Standard form to log form, whe
 #----------------------------------------------------------------------------------------------------------------------------------------	
 @release_564_Patch11
 @PB_1.15.1
-@Draft
+@Validation
 Scenario: PB_1.15.1 As an EDC user, On a Cross Forms - log form to log form, when a query has been answered and closed with the different data and I enter the same data that originally opened the query, then queries are displayed.  
 #Folder "Screening" enter and save data on forms "Concomitant Medications" and "Adverse Events". Queries fired, Answer and  Manually close queries on "Concomitant Medications" form, Modify log fields to different good data on "Adverse Events" form, do not touch "Concomitant Medications" form - no queries on "Concomitant Medications" and no log in the Database.
 
@@ -1109,7 +1109,7 @@ Scenario: PB_1.15.1 As an EDC user, On a Cross Forms - log form to log form, whe
 #----------------------------------------------------------------------------------------------------------------------------------------	
 @release_564_Patch11
 @PB_1.16.1
-@Draft
+@Validation
 Scenario: PB_1.16.1 As an EDC user, On a Cross Forms - log form to log form, when a query has been answered and closed with the different data and I enter the same data that originally opened the query, then queries are displayed.   
 #Folder "Screening" enter and save data on forms "Concomitant Medications" and "Adverse Events". Queries fired, Answer and  Manually close queries on "Concomitant Medications" form, Modify log fields to different bad data on "Adverse Events" form, do not touch "Concomitant Medications" form - queries fire on "Concomitant Medications" and no log in the Database.
 
@@ -1163,7 +1163,7 @@ Scenario: PB_1.16.1 As an EDC user, On a Cross Forms - log form to log form, whe
 #----------------------------------------------------------------------------------------------------------------------------------------	
 @release_564_Patch11
 @PB_1.17.1
-@Draft
+@Validation
 Scenario: PB_1.17.1 As an EDC user, On a Cross Forms - log form to log form, when a query has not been answered and closed with the different data and I enter the same data that originally opened the query, then queries are not displayed.  
 #Folder "Screening" enter and save data on forms "Concomitant Medications" and "Adverse Events". Queries fired on second log form, Modify log fields on first log form to different good data, new value results in system close of edit check on second log form - queries closed by system on second log form and no log in the Database.
 
@@ -1204,7 +1204,7 @@ Scenario: PB_1.17.1 As an EDC user, On a Cross Forms - log form to log form, whe
 #----------------------------------------------------------------------------------------------------------------------------------------	
 @release_564_Patch11
 @PB_1.18.1
-@Draft
+@Validation
 Scenario: PB_1.18.1 As an EDC user, On a Cross Forms - log form to log form, when a query has not been answered and closed with the different data and I enter the same data that originally opened the query, then queries are not displayed.  
 #Folder "Screening" enter and save data on forms "Concomitant Medications" and "Adverse Events". Queries fired on second log form, Modify log fields on same second log form to different good data, new value results in system close of edit check on second log form - queries closed by system on second log form and no log in the Database.
 
@@ -1242,7 +1242,7 @@ Scenario: PB_1.18.1 As an EDC user, On a Cross Forms - log form to log form, whe
 #----------------------------------------------------------------------------------------------------------------------------------------	
 @release_564_Patch11
 @PB_1.19.1
-@Draft
+@Validation
 Scenario: PB_1.19.1 As an EDC user, On a Cross Forms - log form to log form, when a query has been answered and closed with the different data and I enter the same data that originally opened the query, then queries are displayed. 
 #Folder "Screening" enter and save data on forms "Concomitant Medications" and "Adverse Events". Queries fired on second log form, Modify log fields on first log form to different good data, new value results in system close of edit check on second log form. Navigate to first log form and enter new value in violation of edit check - queries refired on second log form and no log in the Database
 
@@ -1294,7 +1294,7 @@ Scenario: PB_1.19.1 As an EDC user, On a Cross Forms - log form to log form, whe
 #----------------------------------------------------------------------------------------------------------------------------------------	
 @release_564_Patch11
 @PB_1.20.1
-@Draft
+@Validation
 Scenario: PB_1.20.1 As an EDC user, On a Cross Forms log form to log form, when a query has not been answered and closed with the different data and I enter the same data that originally opened the query, then queries are displayed.  
 #Folder "Screening" enter and save data on forms "Concomitant Medications" and "Adverse Events" Queries fired on second log form, Modify log fields on second log form to different good data, new value results in system close of edit check on second log form. Navigate to first log form and enter new value in violation of edit check - queries refired on second log form and no log in the Database
 
@@ -1344,7 +1344,7 @@ Scenario: PB_1.20.1 As an EDC user, On a Cross Forms log form to log form, when 
 #----------------------------------------------------------------------------------------------------------------------------------------	
 @release_564_Patch11
 @PB_1.21.1
-@Draft
+@Validation
 Scenario: PB_1.21.1 As an EDC user, when a query has been answered and closed with the different data and I enter the same data that originally opened the query, then queries are displayed.
 #Queries fired, Answer and  Manually close query on log field, Modify Standard field to different bad data, do not touch log field - query and no logs in the Database
 
@@ -1379,7 +1379,7 @@ Scenario: PB_1.21.1 As an EDC user, when a query has been answered and closed wi
 #----------------------------------------------------------------------------------------------------------------------------------------	
 @release_564_Patch11
 @PB_1.22.1
-@Draft
+@Validation
 Scenario: PB_1.22.1 As an EDC user, when a query has been canceled with the same data and I enter the same data that originally opened the query, then queries are displayed.  
 #Queries fired, cancel query on log field, Modify Standard field to different bad data, do not touch log field - query re-fires and no logs in the Database. Modify log field to different bad data, do not touch standard field - query re-fires and no logs in the Database.
 
@@ -1411,7 +1411,7 @@ Scenario: PB_1.22.1 As an EDC user, when a query has been canceled with the same
 #----------------------------------------------------------------------------------------------------------------------------------------	
 @release_564_Patch11
 @PB_1.22.2
-@Draft
+@Validation
 Scenario: PB_1.22.2 As an EDC user, when a query has been canceled with the different data and I enter the same data that originally opened the query, then queries are displayed.  
 	
 	Given I select Study "Edit Check Study 3" and Site "Edit Check Site 1"
@@ -1442,7 +1442,7 @@ Scenario: PB_1.22.2 As an EDC user, when a query has been canceled with the diff
 #----------------------------------------------------------------------------------------------------------------------------------------	
 @release_564_Patch11
 @PB_1.22.3
-@Draft
+@Validation
 Scenario: PB_1.22.3 As an EDC user, when a query has been cancel with the different data and I enter the same data that originally opened the query, then queries are displayed.  
 
 	Given I select Study "Edit Check Study 3" and Site "Edit Check Site 1"
