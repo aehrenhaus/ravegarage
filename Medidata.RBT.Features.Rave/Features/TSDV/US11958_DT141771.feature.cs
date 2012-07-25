@@ -82,6 +82,7 @@ namespace Medidata.RBT.Features.Rave.Features.TSDV
             "non sequential order when the subjects are included in TSDV using the Targeted S" +
             "DV Subject Include report.")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "US11958_DT14177")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("PB-US11958-01")]
         public virtual void Enroll10SubjectsInAStudyToVerifyThatTSDVHasRandomizedTheSubjectsInNonSequentialOrderWhenTheSubjectsAreIncludedInTSDVUsingTheTargetedSDVSubjectIncludeReport_()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Enroll 10 subjects in a study to verify that TSDV has randomized the subjects in " +
@@ -92,9 +93,9 @@ namespace Medidata.RBT.Features.Rave.Features.TSDV
 this.ScenarioSetup(scenarioInfo);
 #line 3
 this.FeatureBackground();
+#line 94
+ testRunner.Given("I navigate to \"Reporter\"");
 #line 95
- testRunner.When("I navigate to \"Reporter\"");
-#line 96
  testRunner.And("I select Report \"Targeted SDV Configuration\"");
 #line hidden
             TechTalk.SpecFlow.Table table1 = new TechTalk.SpecFlow.Table(new string[] {
@@ -103,25 +104,38 @@ this.FeatureBackground();
             table1.AddRow(new string[] {
                         "Edit Check Study 3",
                         "Prod"});
-#line 97
+#line 96
  testRunner.And("I set report parameter \"Study\" with table", ((string)(null)), table1);
-#line 100
+#line 99
  testRunner.And("I click button \"Submit Report\"");
-#line 101
+#line 100
  testRunner.And("I switch to \"Targeted SDV Study Plan\" window");
-#line 102
+#line 101
  testRunner.And("I select \"Asia\"");
-#line 103
+#line 102
  testRunner.And("I select \"Edit Check Site 1\"");
-#line 104
- testRunner.And("I select \"Activate\"");
+#line 103
+ testRunner.And("I inactivate the plan");
 #line 105
- testRunner.And("I accept alert window");
-#line 107
  testRunner.And("I switch to \"Reports\" window");
-#line 108
- testRunner.And("I select \"My Reports\"");
+#line 106
+ testRunner.And("I select \"Home\"");
+#line 107
+ testRunner.And("I create 10 random Subjects with name \"TSDV\" in Study \"Edit Check Study 3\" in Sit" +
+                    "e \"Edit Check Site 1\"");
 #line 109
+ testRunner.When("I switch to \"Targeted SDV Site Plan\" window");
+#line 110
+ testRunner.And("I select \"Asia\"");
+#line 111
+ testRunner.And("I select \"Edit Check Site 1\"");
+#line 112
+ testRunner.And("I activate the plan");
+#line 114
+ testRunner.And("I switch to \"Home - Medidata Rave\" window");
+#line 115
+ testRunner.And("I navigate to \"Reporter\"");
+#line 116
  testRunner.And("I select Report \"Targeted SDV Subject Management\"");
 #line hidden
             TechTalk.SpecFlow.Table table2 = new TechTalk.SpecFlow.Table(new string[] {
@@ -130,24 +144,22 @@ this.FeatureBackground();
             table2.AddRow(new string[] {
                         "Edit Check Study 3",
                         "Prod"});
-#line 110
- testRunner.And("I set report parameter \"Study\" with table", ((string)(null)), table2);
-#line 113
- testRunner.And("I click button \"Submit Report\"");
-#line 114
- testRunner.And("I switch to \"Targeted SDV Subject Include\" window");
-#line 115
- testRunner.And("I choose \"Edit Check Site 1: 10001\" from \"Select Site\"");
-#line 116
- testRunner.And("I select \"Search\"");
 #line 117
- testRunner.And("I include all subjects in TSDV");
-#line 118
- testRunner.And("I select \"Subject Override\"");
-#line 119
- testRunner.And("I choose \"Edit Check Site 1: 10001\" from \"Select Site\"");
+ testRunner.And("I set report parameter \"Study\" with table", ((string)(null)), table2);
 #line 120
- testRunner.And("I select \"Search\"");
+ testRunner.And("I click button \"Submit Report\"");
+#line 121
+ testRunner.And("I switch to \"Targeted SDV Subject Override\" window");
+#line 122
+ testRunner.And("I select \"Subject Include\"");
+#line 123
+ testRunner.And("I filter by site \"Edit Check Site 1: 10001\"");
+#line 124
+ testRunner.And("I include 10 subjects in TSDV");
+#line 126
+ testRunner.And("I select \"Subject Override\"");
+#line 127
+ testRunner.And("I filter by site \"Edit Check Site 1: 10001\"");
 #line hidden
             TechTalk.SpecFlow.Table table3 = new TechTalk.SpecFlow.Table(new string[] {
                         "Tier Name",
@@ -182,7 +194,7 @@ this.FeatureBackground();
             table3.AddRow(new string[] {
                         "Custom Tier 7",
                         "10"});
-#line 121
+#line 128
  testRunner.Then("I verify that Tiers in subject override table are not in the following order", ((string)(null)), table3);
 #line hidden
             this.ScenarioCleanup();
@@ -192,18 +204,19 @@ this.FeatureBackground();
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Enroll 10 subjects in a study to verify that TSDV has randomized the subjects in " +
             "non sequential order for the Study Plan.")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "US11958_DT14177")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("PB-US11958-02")]
         public virtual void Enroll10SubjectsInAStudyToVerifyThatTSDVHasRandomizedTheSubjectsInNonSequentialOrderForTheStudyPlan_()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Enroll 10 subjects in a study to verify that TSDV has randomized the subjects in " +
                     "non sequential order for the Study Plan.", new string[] {
                         "PB-US11958-02"});
-#line 137
+#line 144
 this.ScenarioSetup(scenarioInfo);
 #line 3
 this.FeatureBackground();
-#line 139
+#line 145
  testRunner.When("I navigate to \"Reporter\"");
-#line 140
+#line 146
  testRunner.And("I select Report \"Targeted SDV Configuration\"");
 #line hidden
             TechTalk.SpecFlow.Table table4 = new TechTalk.SpecFlow.Table(new string[] {
@@ -212,18 +225,26 @@ this.FeatureBackground();
             table4.AddRow(new string[] {
                         "Edit Check Study 3",
                         "Prod"});
-#line 141
+#line 147
  testRunner.And("I set report parameter \"Study\" with table", ((string)(null)), table4);
-#line 144
+#line 150
  testRunner.And("I click button \"Submit Report\"");
-#line 145
+#line 151
  testRunner.And("I switch to \"Targeted SDV Study Plan\" window");
-#line 146
+#line 152
+ testRunner.And("I activate the plan");
+#line 154
+ testRunner.And("I switch to \"Reports\" window");
+#line 155
+ testRunner.And("I select \"Home\"");
+#line 156
  testRunner.And("I create 10 random Subjects with name \"TSDV\" in Study \"Edit Check Study 3\" in Sit" +
                     "e \"Edit Check Site 2\"");
-#line 147
+#line 158
+ testRunner.And("I switch to \"Home - Medidata Rave\" window");
+#line 159
  testRunner.And("I navigate to \"Reporter\"");
-#line 148
+#line 160
  testRunner.And("I select Report \"Targeted SDV Subject Management\"");
 #line hidden
             TechTalk.SpecFlow.Table table5 = new TechTalk.SpecFlow.Table(new string[] {
@@ -232,16 +253,14 @@ this.FeatureBackground();
             table5.AddRow(new string[] {
                         "Edit Check Study 3",
                         "Prod"});
-#line 149
+#line 161
  testRunner.And("I set report parameter \"Study\" with table", ((string)(null)), table5);
-#line 152
+#line 164
  testRunner.And("I click button \"Submit Report\"");
-#line 153
+#line 165
  testRunner.And("I switch to \"Targeted SDV Subject Override\" window");
-#line 154
- testRunner.And("I choose \"Edit Check Site 2: 20001\" from \"Select Site\"");
-#line 155
- testRunner.And("I click button \"Search\"");
+#line 166
+ testRunner.And("I filter by site \"Edit Check Site 2: 20001\"");
 #line hidden
             TechTalk.SpecFlow.Table table6 = new TechTalk.SpecFlow.Table(new string[] {
                         "Tier Name",
@@ -276,7 +295,7 @@ this.FeatureBackground();
             table6.AddRow(new string[] {
                         "Custom Tier 7",
                         "10"});
-#line 156
+#line 167
  testRunner.Then("I verify that Tiers in subject override table are not in the following order", ((string)(null)), table6);
 #line hidden
             this.ScenarioCleanup();
@@ -286,22 +305,20 @@ this.FeatureBackground();
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Enroll 10 subjects in a study to verify that TSDV has randomized the subjects in " +
             "non sequential order for the Site Group Plan.")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "US11958_DT14177")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("PB-US11958-03")]
         public virtual void Enroll10SubjectsInAStudyToVerifyThatTSDVHasRandomizedTheSubjectsInNonSequentialOrderForTheSiteGroupPlan_()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Enroll 10 subjects in a study to verify that TSDV has randomized the subjects in " +
                     "non sequential order for the Site Group Plan.", new string[] {
                         "PB-US11958-03"});
-#line 172
+#line 183
 this.ScenarioSetup(scenarioInfo);
 #line 3
 this.FeatureBackground();
-#line 174
- testRunner.And("I create 10 random Subjects with name \"TSDV\" in Study \"Edit Check Study 3\" in Sit" +
-                    "e \"Edit Check Site 3\"");
-#line 175
- testRunner.And("I navigate to \"Reporter\"");
-#line 176
- testRunner.And("I select Report \"Targeted SDV Subject Management\"");
+#line 185
+ testRunner.When("I navigate to \"Reporter\"");
+#line 186
+ testRunner.And("I select Report \"Targeted SDV Configuration\"");
 #line hidden
             TechTalk.SpecFlow.Table table7 = new TechTalk.SpecFlow.Table(new string[] {
                         "Name",
@@ -309,52 +326,80 @@ this.FeatureBackground();
             table7.AddRow(new string[] {
                         "Edit Check Study 3",
                         "Prod"});
-#line 177
+#line 187
  testRunner.And("I set report parameter \"Study\" with table", ((string)(null)), table7);
-#line 180
+#line 190
  testRunner.And("I click button \"Submit Report\"");
-#line 181
- testRunner.And("I switch to \"Targeted SDV Subject Override\" window");
-#line 182
- testRunner.And("I choose \"Edit Check Site 3: 30001\" from \"Select Site\"");
-#line 183
- testRunner.And("I click button \"Search\"");
+#line 191
+ testRunner.And("I switch to \"Targeted SDV Study Plan\" window");
+#line 192
+ testRunner.And("I select \"World\"");
+#line 193
+ testRunner.And("I activate the plan");
+#line 195
+ testRunner.And("I switch to \"Reports\" window");
+#line 196
+ testRunner.And("I select \"Home\"");
+#line 197
+ testRunner.And("I create 10 random Subjects with name \"TSDV\" in Study \"Edit Check Study 3\" in Sit" +
+                    "e \"Edit Check Site 3\"");
+#line 199
+ testRunner.And("I switch to \"Home - Medidata Rave\" window");
+#line 200
+ testRunner.And("I navigate to \"Reporter\"");
+#line 201
+ testRunner.And("I select Report \"Targeted SDV Subject Management\"");
 #line hidden
             TechTalk.SpecFlow.Table table8 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Name",
+                        "Environment"});
+            table8.AddRow(new string[] {
+                        "Edit Check Study 3",
+                        "Prod"});
+#line 202
+ testRunner.And("I set report parameter \"Study\" with table", ((string)(null)), table8);
+#line 205
+ testRunner.And("I click button \"Submit Report\"");
+#line 206
+ testRunner.And("I switch to \"Targeted SDV Subject Override\" window");
+#line 207
+ testRunner.And("I filter by site \"Edit Check Site 3: 30001\"");
+#line hidden
+            TechTalk.SpecFlow.Table table9 = new TechTalk.SpecFlow.Table(new string[] {
                         "Tier Name",
                         "Row"});
-            table8.AddRow(new string[] {
+            table9.AddRow(new string[] {
                         "All Forms",
                         "1"});
-            table8.AddRow(new string[] {
+            table9.AddRow(new string[] {
                         "No Forms",
                         "2"});
-            table8.AddRow(new string[] {
+            table9.AddRow(new string[] {
                         "Architect Defined",
                         "3"});
-            table8.AddRow(new string[] {
+            table9.AddRow(new string[] {
                         "Custom Tier 1",
                         "4"});
-            table8.AddRow(new string[] {
+            table9.AddRow(new string[] {
                         "Custom Tier 2",
                         "5"});
-            table8.AddRow(new string[] {
+            table9.AddRow(new string[] {
                         "Custom Tier 3",
                         "6"});
-            table8.AddRow(new string[] {
+            table9.AddRow(new string[] {
                         "Custom Tier 4",
                         "7"});
-            table8.AddRow(new string[] {
+            table9.AddRow(new string[] {
                         "Custom Tier 5",
                         "8"});
-            table8.AddRow(new string[] {
+            table9.AddRow(new string[] {
                         "Custom Tier 6",
                         "9"});
-            table8.AddRow(new string[] {
+            table9.AddRow(new string[] {
                         "Custom Tier 7",
                         "10"});
-#line 184
- testRunner.Then("I verify that Tiers in subject override table are not in the following order", ((string)(null)), table8);
+#line 208
+ testRunner.Then("I verify that Tiers in subject override table are not in the following order", ((string)(null)), table9);
 #line hidden
             this.ScenarioCleanup();
         }
@@ -363,72 +408,103 @@ this.FeatureBackground();
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Enroll 10 subjects in a study to verify that TSDV has randomized the subjects in " +
             "non sequential order for the Site Plan.")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "US11958_DT14177")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("PB-US11958-04")]
         public virtual void Enroll10SubjectsInAStudyToVerifyThatTSDVHasRandomizedTheSubjectsInNonSequentialOrderForTheSitePlan_()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Enroll 10 subjects in a study to verify that TSDV has randomized the subjects in " +
                     "non sequential order for the Site Plan.", new string[] {
                         "PB-US11958-04"});
-#line 200
+#line 224
 this.ScenarioSetup(scenarioInfo);
 #line 3
 this.FeatureBackground();
-#line 203
- testRunner.And("I navigate to \"Reporter\"");
-#line 204
- testRunner.And("I select Report \"Targeted SDV Subject Management\"");
-#line hidden
-            TechTalk.SpecFlow.Table table9 = new TechTalk.SpecFlow.Table(new string[] {
-                        "Name",
-                        "Environment"});
-            table9.AddRow(new string[] {
-                        "Edit Check Study 3",
-                        "Prod"});
-#line 205
- testRunner.And("I set report parameter \"Study\" with table", ((string)(null)), table9);
-#line 208
- testRunner.And("I click button \"Submit Report\"");
-#line 209
- testRunner.And("I switch to \"Targeted SDV Subject Override\" window");
-#line 210
- testRunner.And("I choose \"Edit Check Site 4: 40001\" from \"Select Site\"");
-#line 211
- testRunner.And("I click button \"Search\"");
+#line 226
+ testRunner.When("I navigate to \"Reporter\"");
+#line 227
+ testRunner.And("I select Report \"Targeted SDV Configuration\"");
 #line hidden
             TechTalk.SpecFlow.Table table10 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Name",
+                        "Environment"});
+            table10.AddRow(new string[] {
+                        "Edit Check Study 3",
+                        "Prod"});
+#line 228
+ testRunner.And("I set report parameter \"Study\" with table", ((string)(null)), table10);
+#line 231
+ testRunner.And("I click button \"Submit Report\"");
+#line 232
+ testRunner.And("I switch to \"Targeted SDV Study Plan\" window");
+#line 233
+ testRunner.And("I select \"North America\"");
+#line 234
+ testRunner.And("I select \"Edit Check Site 4\"");
+#line 235
+ testRunner.And("I activate the plan");
+#line 237
+ testRunner.And("I switch to \"Reports\" window");
+#line 238
+ testRunner.And("I select \"Home\"");
+#line 239
+ testRunner.And("I create 10 random Subjects with name \"TSDV\" in Study \"Edit Check Study 3\" in Sit" +
+                    "e \"Edit Check Site 4\"");
+#line 241
+ testRunner.And("I switch to \"Home - Medidata Rave\" window");
+#line 242
+ testRunner.And("I navigate to \"Reporter\"");
+#line 243
+ testRunner.And("I select Report \"Targeted SDV Subject Management\"");
+#line hidden
+            TechTalk.SpecFlow.Table table11 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Name",
+                        "Environment"});
+            table11.AddRow(new string[] {
+                        "Edit Check Study 3",
+                        "Prod"});
+#line 244
+ testRunner.And("I set report parameter \"Study\" with table", ((string)(null)), table11);
+#line 247
+ testRunner.And("I click button \"Submit Report\"");
+#line 248
+ testRunner.And("I switch to \"Targeted SDV Subject Override\" window");
+#line 249
+ testRunner.And("I filter by site \"Edit Check Site 4: 40001\"");
+#line hidden
+            TechTalk.SpecFlow.Table table12 = new TechTalk.SpecFlow.Table(new string[] {
                         "Tier Name",
                         "Row"});
-            table10.AddRow(new string[] {
+            table12.AddRow(new string[] {
                         "All Forms",
                         "1"});
-            table10.AddRow(new string[] {
+            table12.AddRow(new string[] {
                         "No Forms",
                         "2"});
-            table10.AddRow(new string[] {
+            table12.AddRow(new string[] {
                         "Architect Defined",
                         "3"});
-            table10.AddRow(new string[] {
+            table12.AddRow(new string[] {
                         "Custom Tier 1",
                         "4"});
-            table10.AddRow(new string[] {
+            table12.AddRow(new string[] {
                         "Custom Tier 2",
                         "5"});
-            table10.AddRow(new string[] {
+            table12.AddRow(new string[] {
                         "Custom Tier 3",
                         "6"});
-            table10.AddRow(new string[] {
+            table12.AddRow(new string[] {
                         "Custom Tier 4",
                         "7"});
-            table10.AddRow(new string[] {
+            table12.AddRow(new string[] {
                         "Custom Tier 5",
                         "8"});
-            table10.AddRow(new string[] {
+            table12.AddRow(new string[] {
                         "Custom Tier 6",
                         "9"});
-            table10.AddRow(new string[] {
+            table12.AddRow(new string[] {
                         "Custom Tier 7",
                         "10"});
-#line 212
- testRunner.Then("I verify that Tiers in subject override table are not in the following order", ((string)(null)), table10);
+#line 250
+ testRunner.Then("I verify that Tiers in subject override table are not in the following order", ((string)(null)), table12);
 #line hidden
             this.ScenarioCleanup();
         }

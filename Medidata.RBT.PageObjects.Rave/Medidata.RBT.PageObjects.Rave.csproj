@@ -90,6 +90,12 @@
     <Compile Include="TableModels\QueryCancelModel.cs" />
     <Compile Include="TableModels\FieldModel.cs" />
     <Compile Include="TableModels\QuerySearchModel.cs" />
+    <Compile Include="TSDV\BlockPlansPageBase.cs" />
+    <Compile Include="TSDV\SiteGroupBlockPlansPage.cs" />
+    <Compile Include="TSDV\StudyBlockPlansPage.cs" />
+    <Compile Include="TSDV\SubjectManagementPageBase.cs" />
+    <Compile Include="TSDV\SubjectIncludePage.cs" />
+    <Compile Include="TSDV\SiteBlockPlansPage.cs" />
     <Compile Include="TSDV\SubjectOverridePage.cs" />
     <Compile Include="Reports\PromptsPage.cs" />
     <Compile Include="Reports\ReportsPage.cs" />
