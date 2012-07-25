@@ -15,7 +15,7 @@ namespace Medidata.RBT.SeleniumExtension
 		private static T SelectExtendElement<T>(ISearchContext context,string tag, string partialID, bool nullable)
 			where T : EnhancedElement, new()
 		{
-			var ele = context.TryFindElementBy(By.XPath(".//"+tag+"[contains(@id,'" + partialID + "')]"));
+            var ele = context.TryFindElementBy(By.XPath(".//"+tag+"[contains(@id,'" + partialID + "')]"));
 			if (ele == null)
 			{
 				if (nullable)
@@ -315,14 +315,29 @@ namespace Medidata.RBT.SeleniumExtension
 			IWebElement ele = null;
 			try
 			{
-	
 				ele = context.FindElementByLinkText(LinkText);
 			}
 			catch
+
 			{
+                ele = context.TryFindElementBySpanLinktext(LinkText);
 			}
 			return ele;
 		}
+
+        public static IWebElement TryFindElementBySpanLinktext(this RemoteWebDriver context, string linkText)
+        {
+            IWebElement ele = null;
+            try
+            {
+                ele = context.Spans().FirstOrDefault(x => x.Text.Trim() == linkText);
+            }
+            catch
+            {
+
+            }
+            return ele;
+        }
 
 		#endregion
 

@@ -59,7 +59,15 @@ namespace Medidata.RBT
         {
             var page = this as TPage;
             if (page == null)
-                throw new Exception("Expect current page to be " + typeof(TPage).Name + ", but it's "+this.GetType().Name);
+            {
+                TestContext.CurrentPage = TestContext.POFactory.GetPageByUrl(new Uri(Browser.Url));
+                var currentpage = TestContext.CurrentPage as TPage;
+                if (currentpage == null)
+                {
+                    throw new Exception("Expect current page to be " + typeof(TPage).Name + ", but it's not.");
+                }
+                return currentpage;
+            }
             return page;
         }
 
@@ -134,9 +142,24 @@ namespace Medidata.RBT
 	
 		}
 
-		/// <summary>
-		/// See IPage interface
-		/// </summary>
+
+        /// <summary>
+        /// Clicks the link that is created as a span with an onclick event.  
+        /// </summary>
+        /// <param name="linkText">The link text.</param>
+        /// <returns></returns>
+        public virtual IPage ClickSpanLink(string linkText)
+        {
+
+            var item = Browser.TryFindElementByLinkText(linkText);
+            if (item != null) 
+				item.Click();
+            else 
+				throw new Exception("Can't find link by text:" + linkText);
+
+			return GetPageByCurrentUrlIfNoAlert();
+        }
+
         public virtual IPage NavigateTo(string identifer)
         {
             throw new Exception("Don't know how to navigate to "+identifer);

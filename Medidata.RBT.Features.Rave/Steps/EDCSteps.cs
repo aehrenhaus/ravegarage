@@ -23,7 +23,7 @@ namespace Medidata.RBT.Features.Rave
 				.SelectSite(siteName);
 		}
 
-        [When(@"I create ([^""]*) random Subjects with name ""([^""]*)"" in Study ""([^""]*)"" in Site ""([^""]*)""")]
+        [StepDefinition(@"I create ([^""]*) random Subjects with name ""([^""]*)"" in Study ""([^""]*)"" in Site ""([^""]*)""")]
         public void WhenICreate____RandomSubjectsWithName____inStudy____inSite____(int subjectCount, string subjectName, string studyName, string siteName)
         {
            
@@ -32,7 +32,7 @@ namespace Medidata.RBT.Features.Rave
             {
                 var page = CurrentPage.As<HomePage>().SelectStudy(studyName).SelectSite(siteName);
                 var randomSubjectNumber = SpecialStringHelper.Replace("{RndNum<num1>(5)}");
-                Table table = new Table("Value", "Field");                
+                Table table = new Table("Data", "Field");                
                 table.AddRow(randomSubjectNumber, "Subject Number");
                 table.AddRow(subjectName, "Subject Initials");
                 page.CreateSubject(table);
