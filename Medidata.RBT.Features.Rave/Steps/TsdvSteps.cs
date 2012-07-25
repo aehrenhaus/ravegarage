@@ -27,26 +27,30 @@ namespace Medidata.RBT.Features.Rave
         [StepDefinition(@"I filter by site ""([^""]*)""")]
         public void AndIfilterBySite(string siteName)
         {
-            CurrentPage.As<SubjectOverridePage>().FilterBySite(siteName);
+            CurrentPage.As<SubjectManagementPageBase>().FilterBySite(siteName);
         }
 
-        [When(@"I include all subjects in TSDV")]
-        public void WhenIIncludeAllSubjectsInTSDV()
+        [StepDefinition(@"I include ([^""]*) subjects in TSDV")]
+        public void WhenIIncludeAllSubjectsInTSDV(string numSubjects)
         {
-           ScenarioContext.Current.Pending();
+            int num;
+            if (int.TryParse(numSubjects, out num))
+                CurrentPage.As<SubjectIncludePage>().IncludeSubjects(num);
         }
 
         [StepDefinition(@"I inactivate the plan")]
         public void AndIInactivatePlan()
         {
-            CurrentPage.As<SiteBlockPlansPage>().InactivatePlan();
+            CurrentPage.As<BlockPlansPageBase>().InactivatePlan();
         }
 
         [StepDefinition(@"I activate the plan")]
         public void AndIActivatePlan()
         {
-            CurrentPage.As<SiteBlockPlansPage>().ActivatePlan();
+            CurrentPage.As<BlockPlansPageBase>().ActivatePlan();
         }
     
+
+
     }
 }

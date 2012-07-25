@@ -10,14 +10,13 @@ using TechTalk.SpecFlow;
 
 namespace Medidata.RBT.PageObjects.Rave
 {
-    public class SiteBlockPlansPage : BlockPlansPageBase
+    public class StudyBlockPlansPage : BlockPlansPageBase
     {
-
         public override string URL
         {
             get
             {
-                return "Modules/Reporting/TSDV/SiteBlockPlans.aspx";
+                return "Modules/Reporting/TSDV/EnvironmenttBlockPlans.aspx";
             }
         }
     }

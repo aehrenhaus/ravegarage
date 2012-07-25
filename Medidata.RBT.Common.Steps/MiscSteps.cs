@@ -22,13 +22,18 @@ namespace Medidata.RBT.Common.Steps
         [StepDefinition(@"I switch to ""([^""]*)"" window")]
 		public void ISwitchTo____Window(string windowName)
 		{
+            bool found = false;
 			IWebDriver window = null;
 			foreach (var handle in Browser.WindowHandles)
 			{
 				window = Browser.SwitchTo().Window(handle);
-				if (window.Title == windowName)
-					break;
+                if (window.Title == windowName)
+                {
+                    found = true;
+                    break;
+                }
 			}
+            if (!found) throw new Exception(string.Format("window {0} not found", windowName));
 			Browser = (window as RemoteWebDriver);
 			Thread.Sleep(1000);
 			CurrentPage = TestContext.POFactory.GetPageByUrl(new Uri(Browser.Url));

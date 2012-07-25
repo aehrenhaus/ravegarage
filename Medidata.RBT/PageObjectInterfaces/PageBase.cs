@@ -126,8 +126,8 @@ namespace Medidata.RBT
         /// <returns></returns>
         public virtual IPage ClickSpanLink(string linkText)
         {
-		
-            var item = Browser.Spans().FirstOrDefault(x=> x.Text == linkText);
+
+            var item = Browser.TryFindElementByLinkText(linkText);
             if (item != null) 
 				item.Click();
             else 

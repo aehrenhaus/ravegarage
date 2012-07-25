@@ -32,7 +32,7 @@ namespace Medidata.RBT.Features.Rave
             {
                 var page = CurrentPage.As<HomePage>().SelectStudy(studyName).SelectSite(siteName);
                 var randomSubjectNumber = SpecialStringHelper.Replace("{RndNum<num1>(5)}");
-                Table table = new Table("Value", "Field");                
+                Table table = new Table("Data", "Field");                
                 table.AddRow(randomSubjectNumber, "Subject Number");
                 table.AddRow(subjectName, "Subject Initials");
                 page.CreateSubject(table);
