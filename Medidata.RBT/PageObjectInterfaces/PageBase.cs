@@ -320,7 +320,16 @@ namespace Medidata.RBT
             throw new Exception("This page does not provide information about named page elements");
         }
 
-		
+        public virtual IWebElement CanSeeControl(string identifier)
+        {
+            IWebElement element = Browser.TryFindElementBy(By.XPath("//input[@value='" + identifier + "']"));
+            if (element == null)
+                element = Browser.TryFindElementById(identifier);
+            if (element == null)
+                element = GetElementByName(identifier);
+
+            return element;
+        }
 
         /// <summary>
         /// Get the alert reference inorder to click yes, no etc.
