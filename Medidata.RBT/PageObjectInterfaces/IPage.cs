@@ -156,5 +156,11 @@ namespace Medidata.RBT
 		/// </summary>
 		/// <param name="identifer"></param>
 		string GetInfomation(string identifer);
+
+        /// <summary>
+        /// Clicks a link anywhere in the page.
+        /// </summary>
+        /// <returns></returns>
+        void SelectLink(string linkText);
 	}
 }

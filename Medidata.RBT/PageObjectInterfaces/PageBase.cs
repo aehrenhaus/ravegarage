@@ -341,6 +341,12 @@ namespace Medidata.RBT
             return alert;
         }
 
+        public void SelectLink(string linkText)
+        {
+            var link = Browser.Link(linkText);
+            link.Click();
+        }
+
 
 		public IWebElement WaitForElement(Func<IWebDriver, IWebElement> getElement, string errorMessage = null, double timeOutSecond = 0)
 		{
