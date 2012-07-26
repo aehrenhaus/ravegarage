@@ -15,9 +15,6 @@ namespace Medidata.RBT.Features.Rave
 	[Binding]
 	public class LoginSteps : BrowserStepsBase
 	{
-
-
-
         [StepDefinition(@"I am logged in to Rave with username ""([^""]*)"" and password ""([^""]*)""")]
 		public void ILoginToRaveWithUsername____AndPassword____(string username, string password)
 		{
@@ -39,8 +36,10 @@ namespace Medidata.RBT.Features.Rave
 			CurrentPage = page.Login(username, password);
 		}
 
-
-
-
+        [StepDefinition(@"I log out of Rave")]
+        public void ILogOutOfRave()
+        {
+            CurrentPage.SelectLink("Logout");
+        }
 	}
 }

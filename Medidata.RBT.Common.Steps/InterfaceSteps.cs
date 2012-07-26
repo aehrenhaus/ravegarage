@@ -10,6 +10,11 @@ namespace Medidata.RBT.Common.Steps
 	[Binding]
 	public class InterfaceSteps : BrowserStepsBase
 	{
+        [StepDefinition(@"I click link ""([^""]*)""")]
+        public virtual void IClickLink(string linkText)
+        {
+            CurrentPage.SelectLink(linkText);
+        }
 
 		[StepDefinition(@"I choose ""([^""]*)"" from ""([^""]*)""")]
 		public void IChoose____From____(string text, string identifer)
