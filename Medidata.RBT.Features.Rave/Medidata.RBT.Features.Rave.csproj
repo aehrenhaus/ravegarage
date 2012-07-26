@@ -127,6 +127,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>564QueryRefiringLogic_StdForm_1FldEC.feature</DependentUpon>
     </Compile>
+    <Compile Include="Features\EDC\DisableAddEvents.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DisableAddEvents.feature</DependentUpon>
+    </Compile>
     <Compile Include="Features\EDC\QueryRefiringLogic_LogForm_MultiFldEC.feature.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -152,6 +157,7 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
+    <Compile Include="Steps\SubjectPageSteps.cs" />
     <Compile Include="Steps\TsdvSteps.cs" />
     <Compile Include="Steps\PDFSteps.cs" />
     <Compile Include="Steps\DDESteps.cs" />
@@ -222,6 +228,10 @@
     <None Include="Features\EDC\564QueryRefiringLogic_StdForm_1FldEC.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>564QueryRefiringLogic_StdForm_1FldEC.feature.cs</LastGenOutput>
+    </None>
+    <None Include="Features\EDC\DisableAddEvents.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>DisableAddEvents.feature.cs</LastGenOutput>
     </None>
     <None Include="Features\EDC\QueryRefiringLogic_LogForm_MultiFldEC.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
