@@ -296,6 +296,8 @@ namespace Medidata.RBT
 
         #endregion
         
+
+
         /// <summary>
         /// This method is used by many default implmentation of IPage methods, where a friendly name is used to find a IWebElement
         /// In many case you will only need to orverride this method to provide mappings on your specific page obejct in order for a step to work.
