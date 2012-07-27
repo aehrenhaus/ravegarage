@@ -14,11 +14,12 @@ using OpenQA.Selenium.Remote;
 using System.Threading;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Medidata.RBT.Common.Steps;
+using Medidata.RBT;
 
 namespace Medidata.RBT.Features.Rave
 {
     [Binding]
-    public class 
+    public class
         SubjectPageSteps : BrowserStepsBase
     {
         [StepDefinition(@"I check Lock checkbox")]
@@ -26,13 +27,13 @@ namespace Medidata.RBT.Features.Rave
         {
             CurrentPage.ChooseFromCheckboxes(null, "_ctl0_Content__ctl0_CB_Lock_0", true);
         }
-        
+
 
         [Then(@"I can see Add Event lock icon")]
         public void ICanSeeAddEventLockIcon()
         {
             bool result = false;
-            IWebElement element = CurrentPage.As<IPage>().CanSeeControl("_ctl0_Content_SubjectAddEvent_DisableMatrixIcon");
+            IWebElement element = CurrentPage.As<SubjectPage>().CanSeeControl("_ctl0_Content_SubjectAddEvent_DisableMatrixIcon");
             if (element != null)
                 result = true;
             Assert.IsTrue(result);
@@ -41,17 +42,8 @@ namespace Medidata.RBT.Features.Rave
         [StepDefinition(@"I can see ""([^""]*)"" button")]
         public void ICanSee____Button(string btnValue)
         {
-            string id = "";
-
-            if (btnValue == "Add")
-                id = "_ctl0_Content_SubjectAddEvent_SaveBtn";
-            else if (btnValue == "Enable" || btnValue == "Disable")
-                id = "_ctl0_Content_SubjectAddEvent_LockAddEventSaveBtn";
-            else
-                id = btnValue;
-
             bool canSee = false;
-            IWebElement element = CurrentPage.As<IPage>().CanSeeControl(id);
+            IWebElement element = CurrentPage.As<SubjectPage>().CanSeeControl(btnValue);
 
             if (element != null)
                 canSee = true;
@@ -62,19 +54,12 @@ namespace Medidata.RBT.Features.Rave
         [StepDefinition(@"I can see ""([^""]*)"" dropdown labeled ""([^""]*)""")]
         public void ICanSee____DropdownLabeled____(string enabled, string label)
         {
-            string id = "";
-
-            if (label == "Add Event")
-                id = "_ctl0_Content_SubjectAddEvent_MatrixList";
-            else
-                id = label;
-
             bool isDisabled = false;
             if (enabled.ToLower() == "disabled")
                 isDisabled = true;
 
             bool result = false;
-            IWebElement element = CurrentPage.As<IPage>().CanSeeControl(id);
+            IWebElement element = CurrentPage.As<SubjectPage>().CanSeeControl(label);
 
             if (element != null && element.GetAttribute("disabled").ToLower() == isDisabled.ToString().ToLower())
                 result = true;
@@ -86,17 +71,8 @@ namespace Medidata.RBT.Features.Rave
         [StepDefinition(@"I can see tooltip ""([^""]*)"" on button labeled ""([^""]*)""")]
         public void ICanSeeToolTip____On____WithID____(string toolTip, string label)
         {
-            string id = "";
-
-            if (label == "Add")
-                id = "_ctl0_Content_SubjectAddEvent_SaveBtn";
-            else if (label == "Enable" || label == "Disable")
-                id = "_ctl0_Content_SubjectAddEvent_LockAddEventSaveBtn";
-            else
-                id = label;
-
             bool result = false;
-            IWebElement element = CurrentPage.As<IPage>().CanSeeControl(id);
+            IWebElement element = CurrentPage.As<SubjectPage>().CanSeeControl(label);
 
             if (element != null && element.GetAttribute("title").Equals(toolTip))
                 result = true;
@@ -104,18 +80,11 @@ namespace Medidata.RBT.Features.Rave
             Assert.IsTrue(result);
         }
 
-        [StepDefinition(@"I have seeded ""([^""]*)"" button")]
-        public void IHaveSeeded____Button(string value)
+        [StepDefinition(@"The ""([^""]*)"" button is available")]
+        public void The____ButtonIsAvailable(string value)
         {
             bool result = false;
-            string id = "";
-
-            if (value == "Add")
-                id = "_ctl0_Content_SubjectAddEvent_SaveBtn";
-            else if (value == "Enable" || value == "Disable")
-                id = "_ctl0_Content_SubjectAddEvent_LockAddEventSaveBtn";
-
-            IWebElement element = CurrentPage.As<IPage>().CanSeeControl(id);
+            IWebElement element = CurrentPage.As<SubjectPage>().CanSeeControl(value);
 
             if (element != null)
             {
@@ -125,21 +94,13 @@ namespace Medidata.RBT.Features.Rave
             }
 
             Assert.IsTrue(result);
-
         }
 
         [StepDefinition(@"I can not see ""([^""]*)"" button")]
         public void ICanNotSee____Button(string value)
         {
             bool result = false;
-            string id = "";
-
-            if (value == "Add")
-                id = "_ctl0_Content_SubjectAddEvent_SaveBtn";
-            else if (value == "Enable" || value == "Disable")
-                id = "_ctl0_Content_SubjectAddEvent_LockAddEventSaveBtn";
-
-            IWebElement element = CurrentPage.As<IPage>().CanSeeControl(id);
+            IWebElement element = CurrentPage.As<SubjectPage>().CanSeeControl(value);
 
             if (element != null)
             {
@@ -153,17 +114,8 @@ namespace Medidata.RBT.Features.Rave
         [StepDefinition(@"I click radiobutton with label ""([^""]*)""")]
         public void IClickRadiobuttonWithLabel____(string label)
         {
-            string id = "";
-
-            if (label == "Set")
-                id = "_ctl0_Content__ctl0_RadioButtons_0";
-            else if (label == "Clear")
-                id = "_ctl0_Content__ctl0_RadioButtons_1";
-            else
-                id = label;
-
             bool result = false;
-            IWebElement element = CurrentPage.As<IPage>().CanSeeControl(id);
+            IWebElement element = CurrentPage.As<SubjectPage>().CanSeeControl(label);
 
             if (element != null)
             {

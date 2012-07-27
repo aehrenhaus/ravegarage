@@ -84,8 +84,8 @@ namespace Medidata.RBT.Features.Rave.Features.EDC
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("By default, the Add Event feature should be available for a subject when one or m" +
                     "ore matrices/folders can be added for a study.", new string[] {
                         "release_2012.1.0",
-                        "USXXXXX-01",
-                        "Draft"});
+                        "US11547-01",
+                        "WIP"});
 #line 66
 this.ScenarioSetup(scenarioInfo);
 #line 13
@@ -97,13 +97,13 @@ this.FeatureBackground();
 #line 69
  testRunner.And("I select a Subject \"SUB004\"");
 #line 70
- testRunner.When("I have seeded \"Disable\" button");
+ testRunner.When("The \"Disable\" button is available");
 #line 71
  testRunner.Then("I can see \"enabled\" dropdown labeled \"Add Event\"");
 #line 72
  testRunner.And("I can see \"Add\" button");
 #line 73
- testRunner.When("I click link \"Grid View\"");
+ testRunner.When("I select \"Grid View\"");
 #line 74
  testRunner.Then("I can see \"enabled\" dropdown labeled \"Add Event\"");
 #line 75
@@ -123,8 +123,8 @@ this.FeatureBackground();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("A user with lock permission can see the disable add event button on the subject h" +
                     "ome page.", new string[] {
                         "release_2012.1.0",
-                        "USXXXXX-20",
-                        "Draft"});
+                        "US11547-02",
+                        "WIP"});
 #line 81
 this.ScenarioSetup(scenarioInfo);
 #line 13
@@ -136,7 +136,7 @@ this.FeatureBackground();
 #line 84
  testRunner.And("I select a Subject \"SUB004\"");
 #line 85
- testRunner.When("I have seeded \"Disable\" button");
+ testRunner.When("The \"Disable\" button is available");
 #line 86
  testRunner.Then("I can see \"Disable\" button");
 #line 87
@@ -159,8 +159,8 @@ this.FeatureBackground();
         {
             string[] @__tags = new string[] {
                     "release_2012.1.0",
-                    "USXXXXX-03",
-                    "Draft"};
+                    "US11547-03",
+                    "WIP"};
             if ((exampleTags != null))
             {
                 @__tags = System.Linq.Enumerable.ToArray(System.Linq.Enumerable.Concat(@__tags, exampleTags));
@@ -218,8 +218,8 @@ this.FeatureBackground();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("The \"Disable Add Events\" tooltip displays when a user hovers over the disable add" +
                     " event button on the subject home page.", new string[] {
                         "release_2012.1.0",
-                        "USXXXXX-04",
-                        "Draft"});
+                        "US11547-04",
+                        "WIP"});
 #line 112
 this.ScenarioSetup(scenarioInfo);
 #line 13
@@ -231,7 +231,7 @@ this.FeatureBackground();
 #line 115
  testRunner.And("I select a Subject \"SUB004\"");
 #line 116
- testRunner.When("I have seeded \"Disable\" button");
+ testRunner.When("The \"Disable\" button is available");
 #line 117
  testRunner.Then("I can see tooltip \"Disable Add Events\" on button labeled \"Disable\"");
 #line 118
@@ -249,8 +249,8 @@ this.FeatureBackground();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Clicking on the disable add event button disables the Add Event feature on the su" +
                     "bject home page.", new string[] {
                         "release_2012.1.0",
-                        "USXXXXX-05",
-                        "Draft"});
+                        "US11547-05",
+                        "WIP"});
 #line 123
 this.ScenarioSetup(scenarioInfo);
 #line 13
@@ -262,7 +262,7 @@ this.FeatureBackground();
 #line 126
  testRunner.And("I select a Subject \"SUB004\"");
 #line 127
- testRunner.When("I have seeded \"Disable\" button");
+ testRunner.When("The \"Disable\" button is available");
 #line 128
  testRunner.When("I click button \"Disable\"");
 #line 129
@@ -290,8 +290,8 @@ this.FeatureBackground();
                     "led, should display next to the Add Event dropdown if the user has Entry rights." +
                     "", new string[] {
                         "release_2012.1.0",
-                        "USXXXXX-06",
-                        "Draft"});
+                        "US11547-06",
+                        "WIP"});
 #line 138
 this.ScenarioSetup(scenarioInfo);
 #line 13
@@ -303,7 +303,7 @@ this.FeatureBackground();
 #line 141
  testRunner.And("I select a Subject \"SUB004\"");
 #line 142
- testRunner.When("I have seeded \"Disable\" button");
+ testRunner.When("The \"Disable\" button is available");
 #line 143
  testRunner.When("I click button \"Disable\"");
 #line 144
@@ -335,8 +335,8 @@ this.FeatureBackground();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("A user with unlock permission can see the enable add event button on the subject " +
                     "home page only when the Add Event feature is disabled.", new string[] {
                         "release_2012.1.0",
-                        "USXXXXX-07",
-                        "Draft"});
+                        "US11547-07",
+                        "WIP"});
 #line 156
 this.ScenarioSetup(scenarioInfo);
 #line 13
@@ -348,7 +348,7 @@ this.FeatureBackground();
 #line 159
  testRunner.And("I select a Subject \"SUB004\"");
 #line 160
- testRunner.And("I have seeded \"Disable\" button");
+ testRunner.And("The \"Disable\" button is available");
 #line 161
  testRunner.When("I click button \"Disable\"");
 #line 162
@@ -370,7 +370,7 @@ this.FeatureBackground();
 #line 170
  testRunner.And("I select a Subject \"SUB005\"");
 #line 171
- testRunner.And("I have seeded \"Enable\" button");
+ testRunner.And("The \"Enable\" button is available");
 #line 172
  testRunner.When("I click button \"Enable\"");
 #line 173
@@ -393,8 +393,8 @@ this.FeatureBackground();
         {
             string[] @__tags = new string[] {
                     "release_2012.1.0",
-                    "USXXXXX-08",
-                    "Draft"};
+                    "US11547-08",
+                    "WIP"};
             if ((exampleTags != null))
             {
                 @__tags = System.Linq.Enumerable.ToArray(System.Linq.Enumerable.Concat(@__tags, exampleTags));
@@ -412,7 +412,7 @@ this.FeatureBackground();
 #line 187
  testRunner.And("I select a Subject \"SUB004\"");
 #line 188
- testRunner.And("I have seeded \"Enable\" button");
+ testRunner.And("The \"Enable\" button is available");
 #line 189
  testRunner.And("I log out of Rave");
 #line 190
@@ -470,8 +470,8 @@ this.FeatureBackground();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("The \"Enable Add Events\" tool tip displays when a user hovers over the enable add " +
                     "event button on the subject home page.", new string[] {
                         "release_2012.1.0",
-                        "USXXXXX-09",
-                        "Draft"});
+                        "US11547-09",
+                        "WIP"});
 #line 208
 this.ScenarioSetup(scenarioInfo);
 #line 13
@@ -483,7 +483,7 @@ this.FeatureBackground();
 #line 211
  testRunner.And("I select a Subject \"SUB004\"");
 #line 212
- testRunner.When("I have seeded \"Enable\" button");
+ testRunner.When("The \"Enable\" button is available");
 #line 213
  testRunner.Then("I can see tooltip \"Enable Add Events\" on button labeled \"Enable\"");
 #line 214
@@ -501,8 +501,8 @@ this.FeatureBackground();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Clicking on the enable add event button on the subject home page allows users to " +
                     "add event.", new string[] {
                         "release_2012.1.0",
-                        "USXXXXX-10",
-                        "Draft"});
+                        "US11547-10",
+                        "WIP"});
 #line 219
 this.ScenarioSetup(scenarioInfo);
 #line 13
@@ -514,7 +514,7 @@ this.FeatureBackground();
 #line 222
  testRunner.And("I select a Subject \"SUB004\"");
 #line 223
- testRunner.And("I have seeded \"Enable\" button");
+ testRunner.And("The \"Enable\" button is available");
 #line 224
  testRunner.When("I click button \"Enable\"");
 #line 225
@@ -538,8 +538,8 @@ this.FeatureBackground();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("A user with lock permission can see the disable add event button on the subject g" +
                     "rid view page.", new string[] {
                         "release_2012.1.0",
-                        "USXXXXX-11",
-                        "Draft"});
+                        "US11547-11",
+                        "WIP"});
 #line 234
 this.ScenarioSetup(scenarioInfo);
 #line 13
@@ -551,9 +551,9 @@ this.FeatureBackground();
 #line 237
  testRunner.And("I select a Subject \"SUB004\"");
 #line 238
- testRunner.And("I have seeded \"Disable\" button");
+ testRunner.And("The \"Disable\" button is available");
 #line 239
- testRunner.And("I click link \"Grid View\"");
+ testRunner.And("I select \"Grid View\"");
 #line 240
  testRunner.Then("I can see \"Disable\" button");
 #line 241
@@ -566,8 +566,8 @@ this.FeatureBackground();
         {
             string[] @__tags = new string[] {
                     "release_2012.1.0",
-                    "USXXXXX-12",
-                    "Draft"};
+                    "US11547-12",
+                    "WIP"};
             if ((exampleTags != null))
             {
                 @__tags = System.Linq.Enumerable.ToArray(System.Linq.Enumerable.Concat(@__tags, exampleTags));
@@ -585,7 +585,7 @@ this.FeatureBackground();
 #line 249
  testRunner.And("I select a Subject \"SUB004\"");
 #line 250
- testRunner.And("I have seeded \"Disable\" button");
+ testRunner.And("The \"Disable\" button is available");
 #line 251
  testRunner.And("I log out of Rave");
 #line 252
@@ -595,7 +595,7 @@ this.FeatureBackground();
 #line 254
  testRunner.And("I select a Subject \"SUB004\"");
 #line 255
- testRunner.And("I click link \"Grid View\"");
+ testRunner.And("I select \"Grid View\"");
 #line 256
  testRunner.Then("I can not see \"Disable\" button");
 #line 257
@@ -637,8 +637,8 @@ this.FeatureBackground();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("The \"Disable Add Events\" tool tip displays when a user hovers over the disable ad" +
                     "d event button on the subject grid view page.", new string[] {
                         "release_2012.1.0",
-                        "USXXXXX-13",
-                        "Draft"});
+                        "US11547-13",
+                        "WIP"});
 #line 267
 this.ScenarioSetup(scenarioInfo);
 #line 13
@@ -650,11 +650,11 @@ this.FeatureBackground();
 #line 270
  testRunner.And("I select a Subject \"SUB004\"");
 #line 271
- testRunner.And("I have seeded \"Disable\" button");
+ testRunner.And("The \"Disable\" button is available");
 #line 272
- testRunner.And("I click link \"Grid View\"");
+ testRunner.And("I select \"Grid View\"");
 #line 273
- testRunner.When("I have seeded \"Disable\" button");
+ testRunner.When("The \"Disable\" button is available");
 #line 274
  testRunner.Then("I can see tooltip \"Disable Add Events\" on button labeled \"Disable\"");
 #line 275
@@ -672,8 +672,8 @@ this.FeatureBackground();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Clicking on the disable add event button disables the Add Event feature on the su" +
                     "bject grid view page.", new string[] {
                         "release_2012.1.0",
-                        "USXXXXX-14",
-                        "Draft"});
+                        "US11547-14",
+                        "WIP"});
 #line 280
 this.ScenarioSetup(scenarioInfo);
 #line 13
@@ -685,9 +685,9 @@ this.FeatureBackground();
 #line 283
  testRunner.And("I select a Subject \"SUB004\"");
 #line 284
- testRunner.And("I have seeded \"Disable\" button");
+ testRunner.And("The \"Disable\" button is available");
 #line 285
- testRunner.And("I click link \"Grid View\"");
+ testRunner.And("I select \"Grid View\"");
 #line 286
  testRunner.When("I click button \"Disable\"");
 #line 287
@@ -713,8 +713,8 @@ this.FeatureBackground();
                     "e subject grid view page. A lock icon, indicating that the Add Event feature is " +
                     "disabled, should display next to the Add Event dropdown.", new string[] {
                         "release_2012.1.0",
-                        "USXXXXX-15",
-                        "Draft"});
+                        "US11547-15",
+                        "WIP"});
 #line 295
 this.ScenarioSetup(scenarioInfo);
 #line 13
@@ -726,7 +726,7 @@ this.FeatureBackground();
 #line 298
  testRunner.And("I select a Subject \"SUB004\"");
 #line 299
- testRunner.And("I have seeded \"Disable\" button");
+ testRunner.And("The \"Disable\" button is available");
 #line 300
  testRunner.And("I click button \"Disable\"");
 #line 301
@@ -738,7 +738,7 @@ this.FeatureBackground();
 #line 304
  testRunner.And("I select a Subject \"SUB004\"");
 #line 305
- testRunner.And("I click link \"Grid View\"");
+ testRunner.And("I select \"Grid View\"");
 #line 306
  testRunner.Then("I can not see \"Add\" button");
 #line 307
@@ -753,8 +753,8 @@ this.FeatureBackground();
         {
             string[] @__tags = new string[] {
                     "release_2012.1.0",
-                    "USXXXXX-16",
-                    "Draft"};
+                    "US11547-16",
+                    "WIP"};
             if ((exampleTags != null))
             {
                 @__tags = System.Linq.Enumerable.ToArray(System.Linq.Enumerable.Concat(@__tags, exampleTags));
@@ -772,7 +772,7 @@ this.FeatureBackground();
 #line 316
  testRunner.And("I select a Subject \"SUB004\"");
 #line 317
- testRunner.And("I have seeded \"Disable\" button");
+ testRunner.And("The \"Disable\" button is available");
 #line 318
  testRunner.And("I click button \"Disable\"");
 #line 319
@@ -784,7 +784,7 @@ this.FeatureBackground();
 #line 322
  testRunner.And("I select a Subject \"SUB004\"");
 #line 323
- testRunner.And("I click link \"Grid View\"");
+ testRunner.And("I select \"Grid View\"");
 #line 324
  testRunner.Then("I can see \"Enable\" button");
 #line 325
@@ -794,7 +794,7 @@ this.FeatureBackground();
 #line 327
  testRunner.And("I select a Subject \"SUB005\"");
 #line 328
- testRunner.And("I click link \"Grid View\"");
+ testRunner.And("I select \"Grid View\"");
 #line 329
  testRunner.Then("I can not see \"Enable\" button");
 #line hidden
@@ -829,8 +829,8 @@ this.FeatureBackground();
         {
             string[] @__tags = new string[] {
                     "release_2012.1.0",
-                    "USXXXXX-17",
-                    "Draft"};
+                    "US11547-17",
+                    "WIP"};
             if ((exampleTags != null))
             {
                 @__tags = System.Linq.Enumerable.ToArray(System.Linq.Enumerable.Concat(@__tags, exampleTags));
@@ -848,7 +848,7 @@ this.FeatureBackground();
 #line 342
  testRunner.And("I select a Subject \"SUB004\"");
 #line 343
- testRunner.And("I have seeded \"Disable\" button");
+ testRunner.And("The \"Disable\" button is available");
 #line 344
  testRunner.And("I click button \"Disable\"");
 #line 345
@@ -860,7 +860,7 @@ this.FeatureBackground();
 #line 348
  testRunner.And("I select a Subject \"SUB004\"");
 #line 349
- testRunner.And("I click link \"Grid View\"");
+ testRunner.And("I select \"Grid View\"");
 #line 350
  testRunner.Then("I can not see \"Enable\" button");
 #line 351
@@ -870,7 +870,7 @@ this.FeatureBackground();
 #line 353
  testRunner.And("I select a Subject \"SUB005\"");
 #line 354
- testRunner.And("I click link \"Grid View\"");
+ testRunner.And("I select \"Grid View\"");
 #line 355
  testRunner.Then("I can not see \"Enable\" button");
 #line 356
@@ -912,8 +912,8 @@ this.FeatureBackground();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("The \"Enable Add Events\" tool tip displays when a user hovers over the enable add " +
                     "event button on the subject grid view page.", new string[] {
                         "release_2012.1.0",
-                        "USXXXXX-18",
-                        "Draft"});
+                        "US11547-18",
+                        "WIP"});
 #line 366
 this.ScenarioSetup(scenarioInfo);
 #line 13
@@ -925,11 +925,11 @@ this.FeatureBackground();
 #line 369
  testRunner.And("I select a Subject \"SUB004\"");
 #line 370
- testRunner.And("I have seeded \"Enable\" button");
+ testRunner.And("The \"Enable\" button is available");
 #line 371
- testRunner.And("I click link \"Grid View\"");
+ testRunner.And("I select \"Grid View\"");
 #line 372
- testRunner.When("I have seeded \"Enable\" button");
+ testRunner.When("The \"Enable\" button is available");
 #line 373
  testRunner.Then("I can see tooltip \"Enable Add Events\" on button labeled \"Enable\"");
 #line 374
@@ -947,8 +947,8 @@ this.FeatureBackground();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Clicking on the enable add event button allows users to add event on the subject " +
                     "grid view page.", new string[] {
                         "release_2012.1.0",
-                        "USXXXXX-19",
-                        "Draft"});
+                        "US11547-19",
+                        "WIP"});
 #line 379
 this.ScenarioSetup(scenarioInfo);
 #line 13
@@ -960,7 +960,7 @@ this.FeatureBackground();
 #line 382
  testRunner.And("I select a Subject \"SUB004\"");
 #line 383
- testRunner.And("I have seeded \"Disable\" button");
+ testRunner.And("The \"Disable\" button is available");
 #line 384
  testRunner.And("I click button \"Disable\"");
 #line 385
@@ -986,8 +986,8 @@ this.FeatureBackground();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Disabling the Add Event feature on the subject home page also disables the Add Ev" +
                     "ent feature on the subject grid view page.", new string[] {
                         "release_2012.1.0",
-                        "USXXXXX-20",
-                        "Draft"});
+                        "US11547-20",
+                        "WIP"});
 #line 394
 this.ScenarioSetup(scenarioInfo);
 #line 13
@@ -999,11 +999,11 @@ this.FeatureBackground();
 #line 397
  testRunner.And("I select a Subject \"SUB004\"");
 #line 398
- testRunner.And("I have seeded \"Disable\" button");
+ testRunner.And("The \"Disable\" button is available");
 #line 399
  testRunner.And("I click button \"Disable\"");
 #line 400
- testRunner.And("I click link \"Grid View\"");
+ testRunner.And("I select \"Grid View\"");
 #line 401
  testRunner.Then("I can see \"disabled\" dropdown labeled \"Add Event\"");
 #line 402
@@ -1025,8 +1025,8 @@ this.FeatureBackground();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Disabling the Add Event feature on the subject grid view page also disables the A" +
                     "dd Event feature on the subject home page.", new string[] {
                         "release_2012.1.0",
-                        "USXXXXX-21",
-                        "Draft"});
+                        "US11547-21",
+                        "WIP"});
 #line 409
 this.ScenarioSetup(scenarioInfo);
 #line 13
@@ -1038,13 +1038,13 @@ this.FeatureBackground();
 #line 412
  testRunner.And("I select a Subject \"SUB004\"");
 #line 413
- testRunner.And("I have seeded \"Disable\" button");
+ testRunner.And("The \"Disable\" button is available");
 #line 414
- testRunner.And("I click link \"Grid View\"");
+ testRunner.And("I select \"Grid View\"");
 #line 415
  testRunner.And("I click button \"Disable\"");
 #line 416
- testRunner.And("I click link \"Calendar View\"");
+ testRunner.And("I select \"Calendar View\"");
 #line 417
  testRunner.Then("I can see \"disabled\" dropdown labeled \"Add Event\"");
 #line 418
@@ -1066,8 +1066,8 @@ this.FeatureBackground();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Enabling the Add Event feature on the subject home page also enables the Add Even" +
                     "t feature on the subject grid view page.", new string[] {
                         "release_2012.1.0",
-                        "USXXXXX-22",
-                        "Draft"});
+                        "US11547-22",
+                        "WIP"});
 #line 425
 this.ScenarioSetup(scenarioInfo);
 #line 13
@@ -1079,11 +1079,11 @@ this.FeatureBackground();
 #line 428
  testRunner.And("I select a Subject \"SUB004\"");
 #line 429
- testRunner.And("I have seeded \"Enable\" button");
+ testRunner.And("The \"Enable\" button is available");
 #line 430
  testRunner.And("I click button \"Enable\"");
 #line 431
- testRunner.And("I click link \"Grid View\"");
+ testRunner.And("I select \"Grid View\"");
 #line 432
  testRunner.Then("I can see \"enabled\" dropdown labeled \"Add Event\"");
 #line 433
@@ -1105,8 +1105,8 @@ this.FeatureBackground();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Enabling the Add Event feature on the subject grid view page also enables the Add" +
                     " Event feature on the subject home page.", new string[] {
                         "release_2012.1.0",
-                        "USXXXXX-23",
-                        "Draft"});
+                        "US11547-23",
+                        "WIP"});
 #line 440
 this.ScenarioSetup(scenarioInfo);
 #line 13
@@ -1118,15 +1118,15 @@ this.FeatureBackground();
 #line 443
  testRunner.And("I select a Subject \"SUB004\"");
 #line 444
- testRunner.And("I click link \"Grid View\"");
+ testRunner.And("I select \"Grid View\"");
 #line 445
- testRunner.And("I have seeded \"Disable\" button");
+ testRunner.And("The \"Disable\" button is available");
 #line 446
  testRunner.And("I click button \"Disable\"");
 #line 447
  testRunner.And("I click button \"Enable\"");
 #line 448
- testRunner.And("I click link \"Calendar View\"");
+ testRunner.And("I select \"Calendar View\"");
 #line 449
  testRunner.Then("I can see \"enabled\" dropdown labeled \"Add Event\"");
 #line 450
@@ -1146,8 +1146,8 @@ this.FeatureBackground();
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Locking \"All\" in the subject grid view page disables the Add Event feature.", new string[] {
                         "release_2012.1.0",
-                        "USXXXXX-24",
-                        "Draft"});
+                        "US11547-24",
+                        "WIP"});
 #line 457
 this.ScenarioSetup(scenarioInfo);
 #line 13
@@ -1159,11 +1159,11 @@ this.FeatureBackground();
 #line 460
  testRunner.And("I select a Subject \"SUB004\"");
 #line 461
- testRunner.And("I click link \"Grid View\"");
+ testRunner.And("I select \"Grid View\"");
 #line 462
- testRunner.And("I have seeded \"Disable\" button");
+ testRunner.And("The \"Disable\" button is available");
 #line 463
- testRunner.When("I click link \"All\"");
+ testRunner.When("I select \"All\"");
 #line 464
  testRunner.And("I check Lock checkbox");
 #line 465
@@ -1189,8 +1189,8 @@ this.FeatureBackground();
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Unlocking \"All\" in the subject grid view page enables the Add Event feature.", new string[] {
                         "release_2012.1.0",
-                        "USXXXXX-25",
-                        "Draft"});
+                        "US11547-25",
+                        "WIP"});
 #line 475
 this.ScenarioSetup(scenarioInfo);
 #line 13
@@ -1202,9 +1202,9 @@ this.FeatureBackground();
 #line 478
  testRunner.And("I select a Subject \"SUB004\"");
 #line 479
- testRunner.And("I click link \"Grid View\"");
+ testRunner.And("I select \"Grid View\"");
 #line 480
- testRunner.When("I click link \"All\"");
+ testRunner.When("I select \"All\"");
 #line 481
  testRunner.And("I check Lock checkbox");
 #line 482
@@ -1212,7 +1212,7 @@ this.FeatureBackground();
 #line 483
  testRunner.And("I click button \"Save\"");
 #line 484
- testRunner.And("I have seeded \"Enable\" button");
+ testRunner.And("The \"Enable\" button is available");
 #line 485
  testRunner.And("I check Lock checkbox");
 #line 486

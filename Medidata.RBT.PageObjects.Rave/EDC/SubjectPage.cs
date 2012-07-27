@@ -12,7 +12,7 @@ namespace Medidata.RBT.PageObjects.Rave
 {
 	public class SubjectPage : BaseEDCTreePage
 	{
-		public IWebElement GetTaskSummaryArea(string header)
+        public IWebElement GetTaskSummaryArea(string header)
 		{
 			var TRs = Browser.FindElementsByXPath("//span[@id='_ctl0_Content_TsBox_CBoxC']/table/tbody/tr[position()>1]");
 
@@ -46,8 +46,32 @@ namespace Medidata.RBT.PageObjects.Rave
 
 		protected override IWebElement GetElementByName(string name)
 		{
-			var tr = GetTaskSummaryArea(name);
-			return tr;
+            IWebElement element;
+            string id = "";
+
+            if (name == "Add Event")
+                id = "_ctl0_Content_SubjectAddEvent_MatrixList";
+            else if (name == "Add")
+                id = "_ctl0_Content_SubjectAddEvent_SaveBtn";
+            else if (name == "Enable" || name == "Disable")
+                id = "_ctl0_Content_SubjectAddEvent_LockAddEventSaveBtn";
+            else if (name == "Set")
+                id = "_ctl0_Content__ctl0_RadioButtons_0";
+            else if (name == "Clear")
+                id = "_ctl0_Content__ctl0_RadioButtons_1";
+            else
+			    return GetTaskSummaryArea(name);
+
+            try
+            {
+                element = base.Browser.FindElementById(id);
+            }
+            catch
+            {
+                element = null;
+            }
+
+            return element;
 		}
 
 		//protected override IPage GetTargetPageObjectByLinkAreaName(string type, string areaName)

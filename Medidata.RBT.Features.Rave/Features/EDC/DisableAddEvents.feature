@@ -1,6 +1,6 @@
 # The data manager requires the ability to lock the Add Events functionality, so that the site user can no longer add any new folders to the subject eCRF.
 # When a user with permission to lock is on the subject homepage, the user should see a "Disable" button that will allow the user to "Lock Add Events". When the user clicks on the button, an EDC user should no longer have the ability to Add Events.
-# When a user with permission to unlock is on the subject homepage, and the "Add Events" feature is disabled, then the user should have the ability to click on an "Enable" button to allow for "Add Events". When the "Enable" button is selected, an EDC user should be able to Add Events.
+# When a user with permission to unlock is on the subject homepage, and the "Add Events" feature is disabled, then the user should have the ability to click on an "Enable" button to allow for "Add Events". When The "Enable" button is available is selected, an EDC user should be able to Add Events.
 # The default for a subject should be unlocked.
 # The same feature will be provided for the subject in grid view. In addition, when a user with the ability to lock or unlock selects "ALL" in the grid view, the disable or enable add events feature will be included, respectively.
 # NOTE: The ability to disable and enable the Add Event functionality only depends on the user role permission to lock or unlock and DO NOT take into consideration any pre-conditions that may be associated with the lock or unlock actions.
@@ -19,7 +19,7 @@ Background:
 #        |cdm2		|
 #        |siteuser	|
 ########### VIA ARCHITECT LOADER
-#	And Study "Study A" has draft "Draft 1"
+#	And Study "Study A" has WIP "WIP 1"
 #	And Study "Study A" and site "Site A1" has folder "<Folder Name>" and form "<Form Name>", from the table below
 #        |Folder Name    |Form Name |
 #        |Folder A1      |Form A1   |
@@ -32,7 +32,7 @@ Background:
 #		|Field		|Control Type	|VarOID			|Format		|Field Name			|Field OID		|Field Num		|Indent Level		|Active	|Is visible field	|Field Label	|Fixed Unit		|Default Value	|Field Help Text	|
 #		|Field 1	|Text			|FA21		|$6     	|Field Name 1		|FieldOID3	|				|0					|True	|True				|Field Label 1	|				|				|					|
 #		|Field 2	|Text			|FA22		|$6     	|Field Name 2		|FieldOID4	|				|0					|True	|True				|Field Label 2	|				|				|					|	
-#	And draft "Draft 1" has matrix "<Matrix Name>", from the table below
+#	And WIP "WIP 1" has matrix "<Matrix Name>", from the table below
 #		|Matrix Name	|
 #		|Primary		|
 #		|Unscheduled	|
@@ -61,28 +61,28 @@ Background:
 
  
 @release_2012.1.0
-@USXXXXX-01
-@Draft   
+@US11547-01
+@WIP   
 Scenario: By default, the Add Event feature should be available for a subject when one or more matrices/folders can be added for a study.
 	When I am logged in to Rave with username "defuser" and password "password"
     And I select Study "Study A" and Site "Site A1" 
 	And I select a Subject "SUB004"
-	When I have seeded "Disable" button
+	When The "Disable" button is available
 	Then I can see "enabled" dropdown labeled "Add Event"
 	And I can see "Add" button
-	When I click link "Grid View"
+	When I select "Grid View"
 	Then I can see "enabled" dropdown labeled "Add Event"
 	And I can see "Add" button
 	And I log out of Rave
 
 @release_2012.1.0
-@USXXXXX-20
-@Draft   	
+@US11547-02
+@WIP   	
 Scenario: A user with lock permission can see the disable add event button on the subject home page.
 	When I am logged in to Rave with username "defuser" and password "password"
 	And I select Study "Study A" and Site "Site A1" 
 	And I select a Subject "SUB004"
-	When I have seeded "Disable" button
+	When The "Disable" button is available
 	Then I can see "Disable" button
 	And I log out of Rave
 	When I am logged in to Rave with username "CDM1B144V1" and password "password"
@@ -92,8 +92,8 @@ Scenario: A user with lock permission can see the disable add event button on th
 	And I log out of Rave
 
 @release_2012.1.0
-@USXXXXX-03
-@Draft   	
+@US11547-03
+@WIP   	
 Scenario Outline: A user without lock permission cannot see the disable add event button on the subject home page.
 	When I am logged in to Rave with username "<User Name>" and password "<Password>"
     When I select Study "Study A" and Site "Site A1" 
@@ -107,24 +107,24 @@ Examples:
 	|CDM1P11V2	| password |
 
 @release_2012.1.0
-@USXXXXX-04	  
-@Draft   	
+@US11547-04	  
+@WIP   	
 Scenario: The "Disable Add Events" tooltip displays when a user hovers over the disable add event button on the subject home page.
 	When I am logged in to Rave with username "defuser" and password "password"
     When I select Study "Study A" and Site "Site A1" 
 	And I select a Subject "SUB004"
-	When I have seeded "Disable" button
+	When The "Disable" button is available
 	Then I can see tooltip "Disable Add Events" on button labeled "Disable"
 	And I log out of Rave
 
 @release_2012.1.0
-@USXXXXX-05
-@Draft   	
+@US11547-05
+@WIP   	
 Scenario: Clicking on the disable add event button disables the Add Event feature on the subject home page. 
 	When I am logged in to Rave with username "defuser" and password "password"
 	When I select Study "Study A" and Site "Site A1" 
 	And I select a Subject "SUB004"
-	When I have seeded "Disable" button
+	When The "Disable" button is available
 	When I click button "Disable"
 	Then I can see "disabled" dropdown labeled "Add Event"
 	And I can not see "Add" button
@@ -133,13 +133,13 @@ Scenario: Clicking on the disable add event button disables the Add Event featur
 
 
 @release_2012.1.0
-@USXXXXX-06
-@Draft   	
+@US11547-06
+@WIP   	
 Scenario: A user should not be able to add event if the Add Event feature is disabled on the subject home page. A lock icon, indicating that the Add Event feature is disabled, should display next to the Add Event dropdown if the user has Entry rights.
 	When I am logged in to Rave with username "defuser" and password "password"
 	When I select Study "Study A" and Site "Site A1" 
 	And I select a Subject "SUB004"
-	When I have seeded "Disable" button
+	When The "Disable" button is available
 	When I click button "Disable"
 	And I log out of Rave
 	When I am logged in to Rave with username "CDM1P11V2" and password "password"
@@ -151,13 +151,13 @@ Scenario: A user should not be able to add event if the Add Event feature is dis
 	Then I log out of Rave
 
 @release_2012.1.0
-@USXXXXX-07
-@Draft   	
+@US11547-07
+@WIP   	
 Scenario: A user with unlock permission can see the enable add event button on the subject home page only when the Add Event feature is disabled.
 	When I am logged in to Rave with username "defuser" and password "password"
 	And I select Study "Study A" and Site "Site A1" 
 	And I select a Subject "SUB004"
-	And I have seeded "Disable" button
+	And The "Disable" button is available
 	When I click button "Disable"
 	And I log out of Rave
 	When I am logged in to Rave with username "cdm1E" and password "password"
@@ -168,7 +168,7 @@ Scenario: A user with unlock permission can see the enable add event button on t
 	When I am logged in to Rave with username "defuser" and password "password"
 	And I select Study "Study A" and Site "Site A1" 
 	And I select a Subject "SUB005"
-	And I have seeded "Enable" button
+	And The "Enable" button is available
 	When I click button "Enable"
 	And I log out of Rave
 	When I am logged in to Rave with username "cdm1E" and password "password"
@@ -179,13 +179,13 @@ Scenario: A user with unlock permission can see the enable add event button on t
 
 
 @release_2012.1.0
-@USXXXXX-08
-@Draft   	
+@US11547-08
+@WIP   	
 Scenario Outline: A user without unlock permission cannot see the enable add event button on the subject home page.
 	When I am logged in to Rave with username "defuser" and password "password"
 	And I select Study "Study A" and Site "Site A1" 
 	And I select a Subject "SUB004"
-	And I have seeded "Enable" button
+	And The "Enable" button is available
 	And I log out of Rave
 	When I am logged in to Rave with username "<User Name>" and password "<Password>"
 	And I select Study "Study A" and Site "Site A1" 
@@ -203,24 +203,24 @@ Examples:
   	| CDM1P11V2  | password |
 
 @release_2012.1.0
-@USXXXXX-09
-@Draft   	
+@US11547-09
+@WIP   	
 Scenario: The "Enable Add Events" tool tip displays when a user hovers over the enable add event button on the subject home page.
 	When I am logged in to Rave with username "defuser" and password "password"
     When I select Study "Study A" and Site "Site A1" 
 	And I select a Subject "SUB004"
-	When I have seeded "Enable" button
+	When The "Enable" button is available
 	Then I can see tooltip "Enable Add Events" on button labeled "Enable"
 	And I log out of Rave
 
 @release_2012.1.0
-@USXXXXX-10
-@Draft   	
+@US11547-10
+@WIP   	
 Scenario: Clicking on the enable add event button on the subject home page allows users to add event.
 	When I am logged in to Rave with username "defuser" and password "password"
 	And I select Study "Study A" and Site "Site A1" 
 	And I select a Subject "SUB004"
-	And I have seeded "Enable" button
+	And The "Enable" button is available
 	When I click button "Enable"
 	Then I can see "enabled" dropdown labeled "Add Event"
 	And I can see "Add" button
@@ -229,30 +229,30 @@ Scenario: Clicking on the enable add event button on the subject home page allow
 	
 
 @release_2012.1.0
-@USXXXXX-11
-@Draft   	
+@US11547-11
+@WIP   	
 Scenario: A user with lock permission can see the disable add event button on the subject grid view page.
 	When I am logged in to Rave with username "defuser" and password "password"
 	And I select Study "Study A" and Site "Site A1" 
 	And I select a Subject "SUB004"
-	And I have seeded "Disable" button
-	And I click link "Grid View"
+	And The "Disable" button is available
+	And I select "Grid View"
 	Then I can see "Disable" button
 	And I log out of Rave
 
 @release_2012.1.0
-@USXXXXX-12
-@Draft   	
+@US11547-12
+@WIP   	
 Scenario Outline: A user without lock permission cannot see the disable add event button on the subject grid view page.
 	When I am logged in to Rave with username "defuser" and password "password"
 	And I select Study "Study A" and Site "Site A1" 
 	And I select a Subject "SUB004"
-	And I have seeded "Disable" button
+	And The "Disable" button is available
 	And I log out of Rave
 	When I am logged in to Rave with username "<User Name>" and password "<Password>"
 	And I select Study "Study A" and Site "Site A1" 
 	And I select a Subject "SUB004"
-	And I click link "Grid View"
+	And I select "Grid View"
 	Then I can not see "Disable" button
 	And I log out of Rave
 	
@@ -262,27 +262,27 @@ Examples:
   	| CDM1P11V2 | password |
 
 @release_2012.1.0
-@USXXXXX-13
-@Draft   	
+@US11547-13
+@WIP   	
 Scenario: The "Disable Add Events" tool tip displays when a user hovers over the disable add event button on the subject grid view page.
 	When I am logged in to Rave with username "defuser" and password "password"
 	And I select Study "Study A" and Site "Site A1" 
 	And I select a Subject "SUB004"
-	And I have seeded "Disable" button
-	And I click link "Grid View"
-	When I have seeded "Disable" button
+	And The "Disable" button is available
+	And I select "Grid View"
+	When The "Disable" button is available
 	Then I can see tooltip "Disable Add Events" on button labeled "Disable"
 	And I log out of Rave
 
 @release_2012.1.0
-@USXXXXX-14
-@Draft   	
+@US11547-14
+@WIP   	
 Scenario: Clicking on the disable add event button disables the Add Event feature on the subject grid view page.
 	When I am logged in to Rave with username "defuser" and password "password"
 	And I select Study "Study A" and Site "Site A1" 
 	And I select a Subject "SUB004"
-	And I have seeded "Disable" button
-	And I click link "Grid View"
+	And The "Disable" button is available
+	And I select "Grid View"
 	When I click button "Disable"
 	Then I can see "disabled" dropdown labeled "Add Event"
 	And I can not see "Add" button
@@ -290,42 +290,42 @@ Scenario: Clicking on the disable add event button disables the Add Event featur
 	And I log out of Rave
 
 @release_2012.1.0
-@USXXXXX-15
-@Draft   	
+@US11547-15
+@WIP   	
 Scenario: A user should not be able to add event if the Add Event feature is disabled on the subject grid view page. A lock icon, indicating that the Add Event feature is disabled, should display next to the Add Event dropdown.
 	When I am logged in to Rave with username "defuser" and password "password"
 	And I select Study "Study A" and Site "Site A1" 
 	And I select a Subject "SUB004"
-	And I have seeded "Disable" button
+	And The "Disable" button is available
 	And I click button "Disable"
 	And I log out of Rave
 	When I am logged in to Rave with username "CDM1P11V2" and password "password"
 	And I select Study "Study A" and Site "Site A1" 
 	And I select a Subject "SUB004"
-	And I click link "Grid View"
+	And I select "Grid View"
 	Then I can not see "Add" button
 	And I can see Add Event lock icon
 	Then I log out of Rave
 
 @release_2012.1.0
-@USXXXXX-16
-@Draft   	
+@US11547-16
+@WIP   	
 Scenario Outline: A user with unlock permission can see the enable add event button on the subject grid view page only when the Add Event feature is disabled.
 	When I am logged in to Rave with username "defuser" and password "password"
 	And I select Study "Study A" and Site "Site A1" 
 	And I select a Subject "SUB004"
-	And I have seeded "Disable" button
+	And The "Disable" button is available
 	And I click button "Disable"
 	And I log out of Rave
 	When I am logged in to Rave with username "<User Name>" and password "<Password>"
 	And I select Study "Study A" and Site "Site A1" 
 	And I select a Subject "SUB004"
-	And I click link "Grid View"
+	And I select "Grid View"
 	Then I can see "Enable" button
 	When I am logged in to Rave with username "<User Name>" and password "<Password>"
 	And I select Study "Study A" and Site "Site A1" 
 	And I select a Subject "SUB005"
-	And I click link "Grid View"
+	And I select "Grid View"
 	Then I can not see "Enable" button
 	
 Examples:
@@ -334,24 +334,24 @@ Examples:
   	| cdm1E      | password |
 
 @release_2012.1.0
-@USXXXXX-17
-@Draft   	
+@US11547-17
+@WIP   	
 Scenario Outline: A user without unlock permission cannot see the enable add event button on the subject grid view page.
 	When I am logged in to Rave with username "defuser" and password "password"
 	And I select Study "Study A" and Site "Site A1" 
 	And I select a Subject "SUB004"
-	And I have seeded "Disable" button
+	And The "Disable" button is available
 	And I click button "Disable"
 	And I log out of Rave
 	When I am logged in to Rave with username "<User Name>" and password "<Password>"
 	And I select Study "Study A" and Site "Site A1" 
 	And I select a Subject "SUB004"
-	And I click link "Grid View"
+	And I select "Grid View"
 	Then I can not see "Enable" button
 	When I am logged in to Rave with username "<User Name>" and password "<Password>"
 	And I select Study "Study A" and Site "Site A1" 
 	And I select a Subject "SUB005"
-	And I click link "Grid View"
+	And I select "Grid View"
 	Then I can not see "Enable" button
 	And I log out of Rave
 	
@@ -361,26 +361,26 @@ Examples:
   	| CDM1B144V1| password |
 
 @release_2012.1.0 
-@USXXXXX-18
-@Draft   	
+@US11547-18
+@WIP   	
 Scenario: The "Enable Add Events" tool tip displays when a user hovers over the enable add event button on the subject grid view page.
 	When I am logged in to Rave with username "defuser" and password "password"
 	And I select Study "Study A" and Site "Site A1" 
 	And I select a Subject "SUB004"
-	And I have seeded "Enable" button
-	And I click link "Grid View"
-	When I have seeded "Enable" button
+	And The "Enable" button is available
+	And I select "Grid View"
+	When The "Enable" button is available
 	Then I can see tooltip "Enable Add Events" on button labeled "Enable"
 	And I log out of Rave
 
 @release_2012.1.0
-@USXXXXX-19
-@Draft   	
+@US11547-19
+@WIP   	
 Scenario: Clicking on the enable add event button allows users to add event on the subject grid view page.
 	When I am logged in to Rave with username "defuser" and password "password"
 	And I select Study "Study A" and Site "Site A1" 
 	And I select a Subject "SUB004"
-	And I have seeded "Disable" button
+	And The "Disable" button is available
 	And I click button "Disable"
 	When I click button "Enable"
 	Then I can see "enabled" dropdown labeled "Add Event"
@@ -389,78 +389,78 @@ Scenario: Clicking on the enable add event button allows users to add event on t
 	And I log out of Rave
 	
 @release_2012.1.0
-@USXXXXX-20
-@Draft   	
+@US11547-20
+@WIP   	
 Scenario: Disabling the Add Event feature on the subject home page also disables the Add Event feature on the subject grid view page.	
 	When I am logged in to Rave with username "defuser" and password "password"
 	And I select Study "Study A" and Site "Site A1" 
 	And I select a Subject "SUB004"
-	And I have seeded "Disable" button
+	And The "Disable" button is available
 	And I click button "Disable"
-	And I click link "Grid View"
+	And I select "Grid View"
 	Then I can see "disabled" dropdown labeled "Add Event"
 	Then I can not see "Add" button
 	Then I can not see "Disable" button
 	And I log out of Rave
 
 @release_2012.1.0
-@USXXXXX-21
-@Draft   	
+@US11547-21
+@WIP   	
 Scenario: Disabling the Add Event feature on the subject grid view page also disables the Add Event feature on the subject home page.	
 	When I am logged in to Rave with username "defuser" and password "password"
 	And I select Study "Study A" and Site "Site A1" 
 	And I select a Subject "SUB004"
-	And I have seeded "Disable" button
-	And I click link "Grid View"
+	And The "Disable" button is available
+	And I select "Grid View"
 	And I click button "Disable"
-	And I click link "Calendar View"
+	And I select "Calendar View"
 	Then I can see "disabled" dropdown labeled "Add Event"
 	Then I can not see "Add" button
 	Then I can not see "Disable" button
 	And I log out of Rave
 	
 @release_2012.1.0
-@USXXXXX-22
-@Draft   	
+@US11547-22
+@WIP   	
 Scenario: Enabling the Add Event feature on the subject home page also enables the Add Event feature on the subject grid view page.
 	When I am logged in to Rave with username "defuser" and password "password"
 	And I select Study "Study A" and Site "Site A1" 
 	And I select a Subject "SUB004"
-	And I have seeded "Enable" button
+	And The "Enable" button is available
 	And I click button "Enable"
-	And I click link "Grid View"
+	And I select "Grid View"
 	Then I can see "enabled" dropdown labeled "Add Event"
 	Then I can see "Add" button
 	Then I can not see "Enable" button
 	And I log out of Rave	
 		
 @release_2012.1.0
-@USXXXXX-23
-@Draft   	
+@US11547-23
+@WIP   	
 Scenario: Enabling the Add Event feature on the subject grid view page also enables the Add Event feature on the subject home page.	
 	When I am logged in to Rave with username "defuser" and password "password"
 	And I select Study "Study A" and Site "Site A1" 
 	And I select a Subject "SUB004"
-	And I click link "Grid View"
-	And I have seeded "Disable" button
+	And I select "Grid View"
+	And The "Disable" button is available
 	And I click button "Disable"
 	And I click button "Enable"
-	And I click link "Calendar View"
+	And I select "Calendar View"
 	Then I can see "enabled" dropdown labeled "Add Event"
 	Then I can see "Add" button
 	Then I can not see "Enable" button
 	And I log out of Rave			
 
 @release_2012.1.0
-@USXXXXX-24
-@Draft   	
+@US11547-24
+@WIP   	
 Scenario: Locking "All" in the subject grid view page disables the Add Event feature.
 	When I am logged in to Rave with username "defuser" and password "password"
 	And I select Study "Study A" and Site "Site A1" 
 	And I select a Subject "SUB004"
-	And I click link "Grid View"
-	And I have seeded "Disable" button
-	When I click link "All"
+	And I select "Grid View"
+	And The "Disable" button is available
+	When I select "All"
 	And I check Lock checkbox
 	And I click radiobutton with label "Set"
 	And I click button "Save"
@@ -470,18 +470,18 @@ Scenario: Locking "All" in the subject grid view page disables the Add Event fea
 	And I log out of Rave	
 
 @release_2012.1.0
-@USXXXXX-25
-@Draft   	
+@US11547-25
+@WIP   	
 Scenario: Unlocking "All" in the subject grid view page enables the Add Event feature.
 	When I am logged in to Rave with username "defuser" and password "password"
 	And I select Study "Study A" and Site "Site A1" 
 	And I select a Subject "SUB004"
-	And I click link "Grid View"
-	When I click link "All"
+	And I select "Grid View"
+	When I select "All"
 	And I check Lock checkbox
 	And I click radiobutton with label "Set"
 	And I click button "Save"
-	And I have seeded "Enable" button
+	And The "Enable" button is available
 	And I check Lock checkbox
 	And I click radiobutton with label "Clear"
 	And I click button "Save"
