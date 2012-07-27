@@ -297,25 +297,6 @@ namespace Medidata.RBT
         #endregion
 
 
-
-		/// <summary>
-		/// Clicks the link that is created as a span with an onclick event.  
-		/// </summary>
-		/// <param name="linkText">The link text.</param>
-		/// <returns></returns>
-		public virtual IPage ClickSpanLink(string linkText)
-		{
-
-			var item = Browser.Spans().FirstOrDefault(x => x.Text == linkText);
-			if (item != null)
-				item.Click();
-			else
-				throw new Exception("Can't find link by text:" + linkText);
-
-			return GetPageByCurrentUrlIfNoAlert();
-		}
-
-
         /// <summary>
         /// This method is used by many default implmentation of IPage methods, where a friendly name is used to find a IWebElement
         /// In many case you will only need to orverride this method to provide mappings on your specific page obejct in order for a step to work.
