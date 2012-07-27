@@ -63,6 +63,12 @@ namespace Medidata.RBT
 		/// </summary>
         string BaseURL { get; }
 
+        /// <summary>
+        /// Returns a control in a given page if it is found.
+        /// </summary>
+        /// <param name="identifier">ID of web element</param>
+        IWebElement CanSeeControl(string identifier);
+
 		/// <summary>
 		/// Click a link in all page area.
 		/// </summary>
@@ -150,5 +156,11 @@ namespace Medidata.RBT
 		/// </summary>
 		/// <param name="identifer"></param>
 		string GetInfomation(string identifer);
+
+        /// <summary>
+        /// Clicks a link anywhere in the page.
+        /// </summary>
+        /// <returns></returns>
+        void SelectLink(string linkText);
 	}
 }

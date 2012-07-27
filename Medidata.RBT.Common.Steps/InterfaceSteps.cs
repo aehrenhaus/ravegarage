@@ -10,8 +10,7 @@ namespace Medidata.RBT.Common.Steps
 	[Binding]
 	public class InterfaceSteps : BrowserStepsBase
 	{
-
-		[StepDefinition(@"I choose ""([^""]*)"" from ""([^""]*)""")]
+        [StepDefinition(@"I choose ""([^""]*)"" from ""([^""]*)""")]
 		public void IChoose____From____(string text, string identifer)
 		{
 			text = SpecialStringHelper.Replace(text);

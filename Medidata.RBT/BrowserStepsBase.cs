@@ -13,7 +13,7 @@ using System.Drawing.Imaging;
 namespace Medidata.RBT
 {
 
-	public class BrowserStepsBase 
+	public class BrowserStepsBase
 	{
 	
 		public RemoteWebDriver Browser

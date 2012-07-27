@@ -87,18 +87,13 @@ namespace Medidata.RBT.PageObjects.Rave
 
         public SubjectPage SelectSubject(string subjectName)
         {
-			int foundOnPage; 
-
-			IWebElement subjectLink  = this.FindInPaginatedList("",()=>{
-				return TestContext.Browser.TryFindElementByLinkText(subjectName);
-			},out foundOnPage);
-
-			if(subjectLink==null)
-				throw new Exception(string.Format("Failed to find subject [{0}]", subjectName ));
-			subjectLink.Click();
-		
-
-            return new SubjectPage();
+            if (subjectName != null)
+            {
+                SearchBox.EnhanceAs<Textbox>().SetText(subjectName);
+                SearchButton.Click();
+                return new SubjectPage();
+            }
+            throw new Exception("Subject name cannot be null");
         }
 
 		#region IPaginatedPage
