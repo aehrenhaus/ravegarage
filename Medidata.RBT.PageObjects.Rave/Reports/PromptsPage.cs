@@ -13,7 +13,7 @@ using Medidata.RBT.SeleniumExtension;
 
 namespace Medidata.RBT.PageObjects.Rave
 {
-    public class PromptsPage : RavePageBase
+    public class PromptsPage : RavePageBase, IPaginatedPage
 	{
 		public PromptsPage()
 		{
@@ -41,24 +41,32 @@ namespace Medidata.RBT.PageObjects.Rave
 
 		public PromptsPage SetParameter(string name, Table table)
 		{
-			var paraTR = FindParameterTr(name);
-			//wait till the div div becomes visible, that means the table is loaded complete
-			var div = this.WaitForElement(x => paraTR.TryFindElementBy(By.XPath("./td[position()=2]/table/tbody/tr[position()=2]/td/div[@style='display: block;']")),
-				"timeout before div becomes visible");
+             int foundOnPage;
 
-			var tbl = paraTR.FindElements(By.XPath(".//td[@style='border-width:0px;border-collapse:collapse;']/table"))[1].EnhanceAs<HtmlTable>();
+            IWebElement subjectLink = this.FindInPaginatedList(name, () =>
+            {
+			    var paraTR = FindParameterTr(name);
+			    //wait till the div div becomes visible, that means the table is loaded complete
+			    var div = this.WaitForElement(x => paraTR.TryFindElementBy(By.XPath("./td[position()=2]/table/tbody/tr[position()=2]/td/div[@style='display: block;']")),
+				    "timeout before div becomes visible");
 
-		//	Thread.Sleep(1000);
-			var matchRows = tbl.FindMatchRows(table);
-			if (matchRows.Count == 0)
-				throw new Exception("Can't find matched options");
-			foreach (var row in matchRows)
-			{
-				row.Checkboxes()[0].Click();
-			}
+			    var tbl = paraTR.FindElements(By.XPath(".//td[@style='border-width:0px;border-collapse:collapse;']/table"))[1].EnhanceAs<HtmlTable>();
 
-			return this;
-		}
+		    //	Thread.Sleep(1000);
+			    var matchRows = tbl.FindMatchRows(table);
+                //if (matchRows.Count == 0)
+                //    throw new Exception("Can't find matched options");
+			    foreach (var row in matchRows)
+			    {
+				    row.Checkboxes()[0].Click();
+			    }
+                return null;
+
+            }, out foundOnPage);
+
+            return this;
+
+        }
 
 		private IWebElement FindParameterTr(string name)
 		{
@@ -139,12 +147,45 @@ namespace Medidata.RBT.PageObjects.Rave
 				checkButton.Click();
 			}
 
-	
 
 
 
-			return this;
-		}
+            return this;
+        }
 
-	}
+
+        public bool GoNextPage(string areaIdentifer)
+        {
+            IWebElement nextLink = null;
+
+            if (areaIdentifer=="Subjects")
+                nextLink = TestContext.Browser.TryFindElementById("PromptsBox_su_PageLink:Next");
+            else
+                nextLink = TestContext.Browser.TryFindElementById("PromptsBox_st_PageLink:Next");
+
+            if (nextLink != null)
+                nextLink.Click();
+            else
+                return false;
+
+            return true;
+        }
+
+        public bool GoPreviousPage(string areaIdentifer)
+        {
+            var previousLink = TestContext.Browser.TryFindElementById("PromptsBox_st_PageLink:Prev");
+            if (previousLink != null)
+                previousLink.Click();
+            else
+                return false;
+
+            return true;
+        }
+
+        public bool GoToPage(string areaIdentifer, int page)
+        {
+            throw new NotImplementedException();
+        }
+    }
 }
+
