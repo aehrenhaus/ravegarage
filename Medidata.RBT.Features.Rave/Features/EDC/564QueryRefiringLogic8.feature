@@ -306,7 +306,8 @@ Scenario: PB_8.3.1 Query Management
 #----------------------------------------------------------------------------------------------------------------------------------------	
 @release_564_Patch11
 @PB_8.3.2
-@Validation
+@ignore
+# Failing due to DT 14230
 Scenario: PB_8.3.2
 	
 	And I navigate to "Query Management"
@@ -351,6 +352,8 @@ Scenario: PB_8.3.2
 		| Current Axis Number | 18          |
 	And I open the last log line
 	Then I verify Query is not displayed
+	# DT 14230
+	# The step definition is not working properly. Automation passed but it should not pass
 		| Field      | Query Message                                           | Answered | Closed |
 		| Start Date | 'Date Informed Consent Signed' can not be greater than. | true     | true   |
 	And I verify Query is not displayed
