@@ -7,6 +7,7 @@ using Medidata.RBT.PageObjects;
 using Medidata.RBT.PageObjects.Rave;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Medidata.RBT;
+using TechTalk.SpecFlow.Assist;
 
 namespace Medidata.RBT.Features.Rave
 {
@@ -14,6 +15,13 @@ namespace Medidata.RBT.Features.Rave
 	public class ReportSteps : BrowserStepsBase
 	{
 
+
+        [Then(@"I verify text")]
+        public void ThenIVerifyText(Table table)
+        {
+            var args = table.CreateSet<QueryAuditReportSearchModel>();
+            //TODO finish logic to parse text.  
+        }
 
         [StepDefinition(@"I select Report ""([^""]*)""")]
 		public void GivenISelectReport____(string reportName)
@@ -24,6 +32,7 @@ namespace Medidata.RBT.Features.Rave
         [StepDefinition(@"I set report parameter ""([^""]*)"" with table")]
 		public void GivenISetReportParameter____WithTable(string name, Table table)
 		{
+            SpecialStringHelper.ReplaceTableColumn(table, "Name");
 			CurrentPage.As<PromptsPage>().SetParameter(name, table);
 		}
 
