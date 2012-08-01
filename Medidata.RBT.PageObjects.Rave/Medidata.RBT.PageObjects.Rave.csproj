@@ -87,6 +87,7 @@
     <Compile Include="Reports\CrystalReportPage.cs" />
     <Compile Include="SharedControls\CompositeDropdown.cs" />
     <Compile Include="TableModels\AuditModel.cs" />
+    <Compile Include="TableModels\QueryAuditReportSearchModel.cs" />
     <Compile Include="TableModels\QueryCancelModel.cs" />
     <Compile Include="TableModels\FieldModel.cs" />
     <Compile Include="TableModels\QuerySearchModel.cs" />
