@@ -353,8 +353,8 @@ Scenario: PB_2.3.3 As an EDC user, On a Cross Forms - log form to Standard form,
       | Field    | Query Message                                                | Answered | Closed |
       | End Date | 'Date Informed Consent Signed' is not equal to Current Date. | true     | true   |
 	And I verify Query is not displayed
-      | Field               | Query Message                                                                          | Answered | Closed |
-      | Current Axis Number | 'Original Distribution Number' and 'Current Distribution Number' fields are not equal. | true     | true   |
+      | Field                       | Query Message                                                                          | Answered | Closed |
+      | Current Distribution Number | 'Original Distribution Number' and 'Current Distribution Number' fields are not equal. | true     | true   |
 	And I take a screenshot
     When I enter data in CRF and save
 	    | Field                       | Data        |

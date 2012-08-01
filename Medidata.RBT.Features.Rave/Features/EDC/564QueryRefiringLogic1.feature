@@ -346,8 +346,8 @@ Scenario: PB_1.3.2 As an EDC user, on a Cross Forms log form to Standard form, w
 		| End Date            | 14 Feb 2000 |
 		| Current Axis Number | 2000        |
 	And I open log line 2
-	Then I verify Not Requires Response Query with message "Start Date can not be greater than End Date." is displayed on Field "End Date"
-	And I verify Not Requires Response Query with message "Original Axis Number' is Less Than 'Current Axis Number' on first Number field." is displayed on Field "Current Axis Number"
+	Then I verify Requires Response Query with message "Start Date can not be greater than End Date." is displayed on Field "End Date"
+	And I verify Requires Response Query with message "Original Axis Number' is Less Than 'Current Axis Number' on first Number field." is displayed on Field "Current Axis Number"
 	And I take a screenshot
 	 
 #----------------------------------------------------------------------------------------------------------------------------------------	
