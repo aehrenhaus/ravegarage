@@ -19,7 +19,7 @@ namespace Medidata.RBT.Features.Rave.Features.EDC
     [System.CodeDom.Compiler.GeneratedCodeAttribute("TechTalk.SpecFlow", "1.8.1.0")]
     [System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     [Microsoft.VisualStudio.TestTools.UnitTesting.TestClassAttribute()]
-    public partial class DT10514DatapointsInSameLabDatapageMayAssociateAnalyteRangesOfDifferentLabs_Feature
+    public partial class US11305_DT10514DatapointsInSameLabDatapageMayAssociateAnalyteRangesOfDifferentLabs_Feature
     {
         
         private static TechTalk.SpecFlow.ITestRunner testRunner;
@@ -31,8 +31,8 @@ namespace Medidata.RBT.Features.Rave.Features.EDC
         public static void FeatureSetup(Microsoft.VisualStudio.TestTools.UnitTesting.TestContext testContext)
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
-            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "DT 10514 Datapoints in same lab datapage may associate analyte ranges of differen" +
-                    "t labs.", "As a Rave user\r\nWhen a lab form is partially locked\r\nAnd I change the selected la" +
+            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "US11305_DT10514 Datapoints in same lab datapage may associate analyte ranges of d" +
+                    "ifferent labs.", "As a Rave user\r\nWhen a lab form is partially locked\r\nAnd I change the selected la" +
                     "b\r\nThen I expect to see lab ranges from the new lab for the lab data\r\nSo that I " +
                     "can reference the applicable lab ranges", ProgrammingLanguage.CSharp, ((string[])(null)));
             testRunner.OnFeatureStart(featureInfo);
@@ -49,10 +49,10 @@ namespace Medidata.RBT.Features.Rave.Features.EDC
         public virtual void TestInitialize()
         {
             if (((TechTalk.SpecFlow.FeatureContext.Current != null) 
-                        && (TechTalk.SpecFlow.FeatureContext.Current.FeatureInfo.Title != "DT 10514 Datapoints in same lab datapage may associate analyte ranges of differen" +
-                            "t labs.")))
+                        && (TechTalk.SpecFlow.FeatureContext.Current.FeatureInfo.Title != "US11305_DT10514 Datapoints in same lab datapage may associate analyte ranges of d" +
+                            "ifferent labs.")))
             {
-                Medidata.RBT.Features.Rave.Features.EDC.DT10514DatapointsInSameLabDatapageMayAssociateAnalyteRangesOfDifferentLabs_Feature.FeatureSetup(null);
+                Medidata.RBT.Features.Rave.Features.EDC.US11305_DT10514DatapointsInSameLabDatapageMayAssociateAnalyteRangesOfDifferentLabs_Feature.FeatureSetup(null);
             }
         }
         
@@ -85,16 +85,16 @@ namespace Medidata.RBT.Features.Rave.Features.EDC
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("As an EDC user, I have a partially locked lab form, and I change the selected lab" +
             ", then I should see the ranges update for all lab datapoints.")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "DT 10514 Datapoints in same lab datapage may associate analyte ranges of differen" +
-            "t labs.")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("release_564_Patch11")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "US11305_DT10514 Datapoints in same lab datapage may associate analyte ranges of d" +
+            "ifferent labs.")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("release_564_2012.1.0")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("PB-DT10514-01")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Draft")]
         public virtual void AsAnEDCUserIHaveAPartiallyLockedLabFormAndIChangeTheSelectedLabThenIShouldSeeTheRangesUpdateForAllLabDatapoints_()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("As an EDC user, I have a partially locked lab form, and I change the selected lab" +
                     ", then I should see the ranges update for all lab datapoints.", new string[] {
-                        "release_564_Patch11",
+                        "release_564_2012.1.0",
                         "PB-DT10514-01",
                         "Draft"});
 #line 28
@@ -110,7 +110,7 @@ this.FeatureBackground();
                         "{RndNum<num1>(5)}"});
             table1.AddRow(new string[] {
                         "Subject Initials",
-                        "SUBJ"});
+                        "SUB"});
 #line 30
  testRunner.When("I create a Subject", ((string)(null)), table1);
 #line 35
