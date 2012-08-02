@@ -1,4 +1,4 @@
-﻿Feature: DT 10514 Datapoints in same lab datapage may associate analyte ranges of different labs.
+﻿Feature: US11305_DT10514 Datapoints in same lab datapage may associate analyte ranges of different labs.
 	As a Rave user
 	When a lab form is partially locked
 	And I change the selected lab
@@ -22,7 +22,7 @@ Background:
 	And I select Study "Mediflex" and Site "LabSite01"
 	
 #----------------------------------------------------------------------------------------------------------------------------------------	
-@release_564_Patch11
+@release_564_2012.1.0
 @PB-DT10514-01
 @Draft		
 Scenario: As an EDC user, I have a partially locked lab form, and I change the selected lab, then I should see the ranges update for all lab datapoints.
@@ -30,7 +30,7 @@ Scenario: As an EDC user, I have a partially locked lab form, and I change the s
 	When I create a Subject
 	    | Field				| Data				|
 	    | Subject Number	| {RndNum<num1>(5)}	|
-	    | Subject Initials	| SUBJ				|
+	    | Subject Initials	| SUB				|
 	#	| Pregancy Status	| NoREGAQT			|
 	And I select Form "Visit Date" in Folder "Visit 1"
 	And I enter data in CRF and save
