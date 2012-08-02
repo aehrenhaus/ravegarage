@@ -138,5 +138,11 @@ namespace Medidata.RBT.Common.Steps
 			string text = CurrentPage.GetInfomation(identifer);
 			SpecialStringHelper.SetVar(varName, text);
 		}
+
+        [StepDefinition(@"I hit ""([^""]*)"" key")]
+        public void IHit____Key(string key)
+        {
+            CurrentPage.As<IPage>().PressKey(key);
+        }
 	}
 }
