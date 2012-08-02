@@ -401,8 +401,7 @@ namespace Medidata.RBT
             return (long)js.ExecuteScript("return window.pageYOffset");
         }
 
-
-        public IWebElement GetCurrentActiveElement()
+        public IWebElement GetCurrentFocusedElement()
         {
             return Browser.SwitchTo().ActiveElement();
         }

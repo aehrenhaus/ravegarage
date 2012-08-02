@@ -28,7 +28,7 @@ namespace Medidata.RBT
             else
                 throw new Exception("No matching number word!");
         }
-        public static int GetZeroBasedIndex(string numberWord) 
+        public static int GetZeroBasedIndexByWord(string numberWord) 
         {
             return GetNumberByWord(numberWord) - 1; //Offset by one ('first' is actually the 0th element)
         }

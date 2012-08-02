@@ -8,7 +8,6 @@ using Medidata.RBT.PageObjects.Rave;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Medidata.RBT;
 using TechTalk.SpecFlow.Assist;
-using OpenQA.Selenium;
 
 namespace Medidata.RBT.Features.Rave
 {
@@ -162,7 +161,7 @@ namespace Medidata.RBT.Features.Rave
         {
             var type = ControlTypeInformation.GetEnum<ControlTypeInformation.ControlType>(controlType);
             var row = Constants.GetNumberByWord(rowText);
-            var position = Constants.GetZeroBasedIndex(positionText);
+            var position = Constants.GetZeroBasedIndexByWord(positionText);
 
             if (not.Trim().ToLower() != "not")
                 Assert.IsTrue(CurrentPage.As<CRFPage>()
@@ -178,7 +177,7 @@ namespace Medidata.RBT.Features.Rave
         public void TheCursorFocusIs____LocatedOn____InTheRowLabeled____InThe____PositionInThatRow(string not, string controlType, string fieldName, string positionText)
         {
             var type = ControlTypeInformation.GetEnum<ControlTypeInformation.ControlType>(controlType);
-            var position = Constants.GetZeroBasedIndex(positionText);
+            var position = Constants.GetZeroBasedIndexByWord(positionText);
 
             if (not.Trim().ToLower() != "not")
                 Assert.IsTrue(CurrentPage.As<CRFPage>()
@@ -208,7 +207,7 @@ namespace Medidata.RBT.Features.Rave
         {
             var type = ControlTypeInformation.GetEnum<ControlTypeInformation.ControlType>(controlType);
             var row = Constants.GetNumberByWord(rowText);
-            var position = Constants.GetZeroBasedIndex(positionText);
+            var position = Constants.GetZeroBasedIndexByWord(positionText);
 
             CurrentPage.As<CRFPage>()
                 .FindLandscapeLogField(fieldName, row)
@@ -219,7 +218,7 @@ namespace Medidata.RBT.Features.Rave
         public void MoveCursorFocusTo____InTheRowLabeled____InThe____PositionInThatRow(string controlType, string fieldName, string positionText)
         {
             var type = ControlTypeInformation.GetEnum<ControlTypeInformation.ControlType>(controlType);
-            var position = Constants.GetZeroBasedIndex(positionText);
+            var position = Constants.GetZeroBasedIndexByWord(positionText);
 
             CurrentPage.As<CRFPage>()
                 .FindPortraitLogField(fieldName)
@@ -229,12 +228,10 @@ namespace Medidata.RBT.Features.Rave
         [Then(@"the cursor focus is on ""([^""]*)"" labeled ""([^""]*)""")]
         public void IShouldSeeTheCursorFocusOn____Labeled____(string controlTypeString, string value)
         {
-            ControlTypeInformation.ControlType controlType = ControlTypeInformation
+            var type = ControlTypeInformation
                 .GetEnum<ControlTypeInformation.ControlType>(controlTypeString.ToLower());
 
-            IWebElement elementForCheck = CurrentPage.As<CRFPage>().GetElementByControlTypeAndValue(controlType, value);
-
-            Assert.AreEqual(CurrentPage.As<CRFPage>().GetCurrentActiveElement().GetAttribute("ID"), elementForCheck.GetAttribute("ID"));
+            Assert.IsTrue(CurrentPage.As<CRFPage>().IsElementFocused(type, value));
         }
 	}
 }

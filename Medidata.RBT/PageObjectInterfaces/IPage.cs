@@ -171,7 +171,7 @@ namespace Medidata.RBT
         void SelectLink(string linkText);
 
         void FocusOnElementById(string id);
-        IWebElement GetCurrentActiveElement();
+        IWebElement GetCurrentFocusedElement();
         long GetPageOffsetX();
         long GetPageOffsetY();
 	}

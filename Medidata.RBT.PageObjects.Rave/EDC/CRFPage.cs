@@ -111,6 +111,12 @@ namespace Medidata.RBT.PageObjects.Rave
                 fieldName);
         }
 
+        public bool IsElementFocused(ControlTypeInformation.ControlType type, string value)
+        {
+            var element = this.GetElementByControlTypeAndValue(type, value);
+            return this.GetCurrentFocusedElement().GetAttribute("ID") == element.GetAttribute("ID");
+        }
+
 
         public bool CanFindQuery(QuerySearchModel filter)
         {
