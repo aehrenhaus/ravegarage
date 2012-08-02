@@ -132,6 +132,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DisableAddEvents.feature</DependentUpon>
     </Compile>
+    <Compile Include="Features\EDC\DT_13622.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DT_13622.feature</DependentUpon>
+    </Compile>
     <Compile Include="Features\EDC\DT_13977.feature.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -275,6 +280,10 @@
     <None Include="Features\EDC\DisableAddEvents.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>DisableAddEvents.feature.cs</LastGenOutput>
+    </None>
+    <None Include="Features\EDC\DT_13622.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>DT_13622.feature.cs</LastGenOutput>
     </None>
     <None Include="Features\EDC\DT_13977.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
