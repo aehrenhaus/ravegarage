@@ -121,9 +121,11 @@ namespace Medidata.RBT.PageObjects.Rave
         public bool CanFindQuery(QuerySearchModel filter)
         {
             IWebElement queryContainer = null;
+			//finding the field should not be put in try catch
+			var field = FindField(filter.Field);
             try
             {
-                queryContainer = FindField(filter.Field).FindQuery(filter);
+				queryContainer = field.FindQuery(filter);
             }
             catch
             {
