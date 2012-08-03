@@ -31,7 +31,7 @@ Scenario: As an EDC user, when I create a unit conversion formula to convert lab
 	| Subject Initials | SUB                |
 	| Subject number   | {RndNum<num1>(3)}  |
 	| Age              | 20                 |
-	#| Sex              | MaleREGAQT         |
+	| Sex              | MaleREGAQT         |
 	#| Pregancy Status  | NoREGAQT           |
 	#| Subject Date     | 01 FEB 2011        |	
 	#And I am on CRF page "Visit Date" in Folder "Visit 1" in Subject "SUB{Var(num1)}" in Site "Site 1" in Study "Mediflex_SJ"
@@ -52,13 +52,12 @@ Scenario: As an EDC user, when I create a unit conversion formula to convert lab
 #Need Step Def for "Mediflex_SJ Central Lab"
 	And I select "Home"
 	And I navigate to "Lab Administration"
-	And I select "Unit Conversions"
+	And I navigate to "Unit Conversions"
 	
 	#And I go to Unit Conversions page in the Lab Admin module
-	#And I enter unit conversion data
-#Need Step Def for "unit conversion"
-	| From Unit | To Unit | Analyte | A | B | C | D |
-	| 10^9/L    | %       |	        | 2 | 1 | 0 | 0 |
+	And I add new unit conversion data
+	| From   | To | Analyte | A | B | C | D |
+	| 10^9/L | %  |         | 2 | 1 | 0 | 0 |
 	And I go to the Reporter module
 #Need Step Def for "Reporter"
 	And I run the Data Listings Report for Study "Mediflex_SJ"

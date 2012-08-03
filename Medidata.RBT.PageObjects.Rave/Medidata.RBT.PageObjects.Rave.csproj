@@ -81,6 +81,9 @@
     <Compile Include="EDC\LabFieldControl.cs" />
     <Compile Include="EDC\IEDCFieldControl.cs" />
     <Compile Include="EDC\PortraitLogField.cs" />
+    <Compile Include="Lab\AnalytesPage.cs" />
+    <Compile Include="Lab\LabPageBase.cs" />
+    <Compile Include="Lab\UnitConversionsPage.cs" />
     <Compile Include="PDF\FileRequestViewPage.cs" />
     <Compile Include="PDF\FileRequestCreateDataRequestPage.cs" />
     <Compile Include="PDF\FileRequestPage.cs" />
