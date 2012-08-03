@@ -141,10 +141,14 @@ namespace Medidata.RBT.PageObjects.Rave
 			{
 				textboxes[0].SetText(text);
 			}
-			else
-			{
-				throw new Exception("Not sure what kind of datapoint is this.");
-			}
+            else if (textboxes.Count == 0 && dropdowns.Count == 1)
+            {
+                new SelectElement(dropdowns[0]).SelectByText(text);
+            }
+            else
+            {
+                throw new Exception("Not sure what kind of datapoint is this.");
+            }
 		}
 
 		public void AnswerQuery(QuerySearchModel filter)

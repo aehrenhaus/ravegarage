@@ -144,7 +144,6 @@ namespace Medidata.RBT.PageObjects.Rave
 		#endregion
 		public override IPage NavigateTo(string name)
 		{
-
 			NameValueCollection poClassMapping = new NameValueCollection();
 			poClassMapping["Architect"] = "ArchitectPage";
 			poClassMapping["User Administration"] = "UserAdministrationPage";
@@ -152,6 +151,8 @@ namespace Medidata.RBT.PageObjects.Rave
             poClassMapping["Reporter"] = "ReportsPage";
 			poClassMapping["Query Management"] = "DCFQueriesPage";
 			poClassMapping["PDF Generator"] = "FileRequestPage";
+            poClassMapping["Lab Administration"] = "AnalytesPage";
+            poClassMapping["Unit Conversions"] = "UnitConversionsPage";
 			
 
 			//TODO: other mappings
