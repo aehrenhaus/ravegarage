@@ -11,7 +11,7 @@ using OpenQA.Selenium.Support.UI;
 
 namespace Medidata.RBT.PageObjects.Rave
 {
-	public class NonLabFieldControl:ControlBase, IEDCFieldControl
+	public class NonLabFieldControl : BaseEDCFieldControl
 	{
 		public NonLabFieldControl(IPage page, IWebElement LeftSideTD, IWebElement RightSideTD)
 			: base(page)
@@ -28,14 +28,14 @@ namespace Medidata.RBT.PageObjects.Rave
 	
 		#region IEDCFieldControl
 
-		public AuditsPage ClickAudit()
+		public override AuditsPage ClickAudit()
 		{
 			var auditButton = RightSideTD.TryFindElementByPartialID("DataStatusHyperlink");
 			auditButton.Click();
 			return new AuditsPage();
 		}
 
-		public IWebElement FindQuery(QuerySearchModel filter)
+		public override IWebElement FindQuery(QuerySearchModel filter)
 		{
 
 			var queryTables = LeftSideTD.FindElements(
@@ -107,51 +107,13 @@ namespace Medidata.RBT.PageObjects.Rave
 	
 		}
 
-		public void EnterData(string text)
+		protected override IWebElement GetFieldControlContainer()
 		{
-			IWebElement datapointTable = LeftSideTD.TryFindElementBy(By.XPath("./../td[@class='crf_rowRightSide']//table[@class='crf_dataPointInternal']"));
+			return LeftSideTD.TryFindElementBy(By.XPath("./../td[@class='crf_rowRightSide']//table[@class='crf_dataPointInternal']"));
 
-			var textboxes = datapointTable.Textboxes();
-			var dropdowns = datapointTable.FindElements(By.TagName("select")).ToList();
-
-			//this dropdown does count
-			var dataEntyErrorDropdown = dropdowns.FirstOrDefault(x =>
-			{
-				var options = new SelectElement(x).Options;
-				return options.Count == 1 && (options[0].Text == "Data Entry Error" || options[0].Text == "Entry Error");
-			});
-			//	int dataEntyErrorDropdownCount = dataEntyErrorDropdown == null ? 0 : 1;
-			//int datapointDropdownCount =  dropdowns.Count - dataEntyErrorDropdownCount ;
-			if (dataEntyErrorDropdown != null)
-				dropdowns.Remove(dataEntyErrorDropdown);
-
-			if (textboxes.Count == 2 && dropdowns.Count == 1)//date field  .format: dd MM yyyy
-			{
-				string[] dateParts = text.Split(' ');
-				if (dateParts.Length != 3)
-				{
-					throw new Exception("Expection date format for field " + FieldName + " , got: " + text);
-				}
-				//assign 3 parts of the date format
-				textboxes[0].SetText(dateParts[0]);
-				new SelectElement(dropdowns[0]).SelectByValue(dateParts[1]);
-				textboxes[1].SetText(dateParts[2]);
-			}
-			else if (textboxes.Count == 1 && dropdowns.Count == 0) //normal text filed
-			{
-				textboxes[0].SetText(text);
-			}
-            else if (textboxes.Count == 0 && dropdowns.Count == 1)
-            {
-                new SelectElement(dropdowns[0]).SelectByText(text);
-            }
-            else
-            {
-                throw new Exception("Not sure what kind of datapoint is this.");
-            }
 		}
 
-		public void AnswerQuery(QuerySearchModel filter)
+		public override void AnswerQuery(QuerySearchModel filter)
 		{
 			string answer = filter.Answer;
 			filter.Answer = null;
@@ -159,18 +121,18 @@ namespace Medidata.RBT.PageObjects.Rave
 		}
 
 
-		public void CloseQuery(QuerySearchModel filter)
+		public override void CloseQuery(QuerySearchModel filter)
 		{
 			FindQuery(filter).Dropdowns()[0].SelectByText("Close Query");
 		}
 
 
-		public void CancelQuery(QuerySearchModel filter)
+		public override void CancelQuery(QuerySearchModel filter)
 		{
 			FindQuery(filter).Checkboxes()[0].Check();
 		}
 
-		public void Check(string checkName)
+		public override void Check(string checkName)
 		{
 			if (checkName == "Freeze")
 			{
@@ -183,7 +145,7 @@ namespace Medidata.RBT.PageObjects.Rave
 			}
 		}
 
-		public void Uncheck(string checkName)
+		public override void Uncheck(string checkName)
 		{
 			throw new NotImplementedException();
 		}

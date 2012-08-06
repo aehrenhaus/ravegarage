@@ -6,6 +6,7 @@ using TechTalk.SpecFlow;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Remote;
 using System.Threading;
+using System.Collections.Specialized;
 
 namespace Medidata.RBT.Common.Steps
 {
@@ -40,7 +41,7 @@ namespace Medidata.RBT.Common.Steps
 		}
 
         [StepDefinition(@"I accept alert window")]
-        public void WhenIAcceptAlertWindow()
+        public void IAcceptAlertWindow()
         {
             CurrentPage.As<PageBase>().GetAlertWindow().Accept();
 			
@@ -50,7 +51,7 @@ namespace Medidata.RBT.Common.Steps
 
 
         [StepDefinition(@"I dismiss alert window")]
-        public void WhenIDismissAlertWindow()
+        public void IDismissAlertWindow()
         {
             CurrentPage.As<PageBase>().GetAlertWindow().Dismiss();
 			var uri = new Uri(Browser.Url);
@@ -74,5 +75,25 @@ namespace Medidata.RBT.Common.Steps
 			CurrentPage = TestContext.POFactory.GetPageByUrl(new Uri(Browser.Url));
 		}
 
+
+		[StepDefinition(@"I navigate to ""([^""]*)"" page with parameters")]
+		public void INavigateTo____PageWithParameters(string pageName, Table table)
+		{
+			//TODO:Set parameters from table
+			PageBase page = TestContext.POFactory.GetPage(pageName.Replace(" ", "") + "Page") as PageBase;
+			NameValueCollection parameters = new NameValueCollection();
+			foreach (var row in table.Rows)
+			{
+				parameters[row["Name"]] = row["Value"];
+			}
+			CurrentPage = page.NavigateToSelf(parameters);
+		}
+
+		[StepDefinition(@"I navigate to ""([^""]*)"" page")]
+		public void INavigateTo____Page(string pageName)
+		{
+
+			CurrentPage = TestContext.POFactory.GetPage(pageName.Replace(" ", "") + "Page").NavigateToSelf();
+		}
 	}
 }

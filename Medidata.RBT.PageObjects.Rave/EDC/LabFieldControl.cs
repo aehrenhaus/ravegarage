@@ -33,7 +33,7 @@ namespace Medidata.RBT.PageObjects.Rave
 			return new AuditsPage();
 		}
 
-		public void EnterData(string text)
+		public void EnterData(string text, ControlType controlType)
 		{
 			var textbox = MainTR.Textboxes()[0];
 			textbox.SetText(text);

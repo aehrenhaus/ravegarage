@@ -19,7 +19,7 @@ namespace Medidata.RBT.PageObjects.Rave
         public CRFPage FillDataPoints(IEnumerable<FieldModel> fields)
         {
             foreach (var field in fields)
-                FindField(field.Field).EnterData(field.Data);
+				FindField(field.Field).EnterData(field.Data, EnumHelper.GetEnumByDescription < ControlType>(field.ControlType));
 
             return this;
         }
@@ -111,7 +111,7 @@ namespace Medidata.RBT.PageObjects.Rave
                 fieldName);
         }
 
-        public bool IsElementFocused(ControlTypeInformation.ControlType type, string value)
+        public bool IsElementFocused(ControlType type, string value)
         {
             var element = this.GetElementByControlTypeAndValue(type, value);
             return this.GetCurrentFocusedElement().GetAttribute("ID") == element.GetAttribute("ID");

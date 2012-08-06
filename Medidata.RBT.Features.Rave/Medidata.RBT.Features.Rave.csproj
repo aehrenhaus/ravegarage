@@ -197,6 +197,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>US11958_DT14177.feature</DependentUpon>
     </Compile>
+    <Compile Include="Features\US11306_DT13637_Updated08062012.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>US11306_DT13637_Updated08062012.feature</DependentUpon>
+    </Compile>
     <Compile Include="Features\UserAdministration\DT14168.feature.cs">
       <DependentUpon>DT14168.feature</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -330,6 +335,10 @@
     <None Include="Features\TSDV\US11958_DT14177.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>US11958_DT141771.feature.cs</LastGenOutput>
+    </None>
+    <None Include="Features\US11306_DT13637_Updated08062012.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>US11306_DT13637_Updated08062012.feature.cs</LastGenOutput>
     </None>
     <None Include="Features\UserAdministration\DT14168.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
