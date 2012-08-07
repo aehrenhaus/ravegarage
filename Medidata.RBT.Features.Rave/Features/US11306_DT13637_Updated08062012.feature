@@ -56,14 +56,27 @@ Background:
 	# Action: Set DynamicSearchList:Lookup Device CF
 
 Scenario: TESt
-
-	And I navigate to "CRF" page with parameters
-	| Name | Value  |
-	| DP   | 556996 |
-		And I enter data in CRF and save
+	When I select Study "Geneloid_SJ" and Site "Site 1"
+	When I create a Subject
+	| Field            | Data              |
+	| Subject Initials | SUB               |
+	| Subject Number   | {RndNum<num1>(3)} |
+		
+	And I select Form "Device Form" 
+	And I enter data in CRF and save
 	| Field       | Data          | Control Type        |
 	| Device Type | Device Type 1 | radiobutton         |
-	| Device      | Device 1A     | dynamic search list |
+	| Device      | Device 1B     | dynamic search list |
+	| Devimpdate  | 01 Jan 2012   |                     |
+	| Devcomments | N/A          |                     |
+	
+
+	And I add a new log line
+	And I enter data in CRF and save
+	| Field       | Data        | Control Type |
+	| Devimpdate  | 01 MAR 2012 |              |
+	| Devcomments | N/A         |              |
+
 @release_2012.1.0		
 @PB-DT13637-01
 @Draft
@@ -77,27 +90,36 @@ Scenario: PB-DT13637-01 As a Data Manager, when an EDC user enters data for a st
 		
 	And I select Form "Device Form" 
 	And I enter data in CRF and save
-	| Field       | Data          | 
-	| Device Type | Device Type 1 | 
-	| Device      | Device 1A     | 
-	| Devimpdate  | 01 Jan 2012   | 
-	| Comments    | N/A           | 
+	| Field       | Data          | Control Type        |
+	| Device Type | Device Type 1 | radiobutton         |
+	| Device      | Device 1B     | dynamic search list |
+	| Devimpdate  | 01 Jan 2012   |                     |
+	| Devcomments | N/A           |                     |
 	
+
 	And I add a new log line
 	And I enter data in CRF and save
-	| Field                       | Data          | Record Position |
-	| Devimpdated                 | 01 MAR 2012   | 2               |
-	| Comments                    | N/A           | 2               |
+	| Field       | Data        | Control Type |
+	| Devimpdate  | 01 Mar 2012 |              |
+	| Devcomments | N/A         |              |
+
+
 	And I take a screenshot
-	And I select "Home"
+	And I navigate to "Home"
 	And I navigate to "Reporter"
-	And I select "Data Listing"
-	And I Choose "Study"
-	And I select "Geneloid_SJ"
-	And I click button "Submit Report"
-	And I select Data Source "Clinical Views"
-	And I select Form "Device Form"
+	And I select Report "Data Listing"
+	And I set report parameter "Study" with table
+		| Name        | Environment |
+		| Geneloid_SJ | Prod        |
+
+	When I click button "Submit Report"
+	And I switch to "DataListingsReport" window
+
+	And I choose "Clinical Views" from "Data Source"
+	And I choose "Device Form (DEF)" from "Form"
+	
 	And I click button "Run"
+
 	And I verify data
 	| Subject Name | Record Position | DEVICETYPE_RAW | DEVICETYPE_STD | DEVICE_RAW | DEVICE_STD  | DEVICE_ALTCODEDVALUE | DEVIMPDATE  | DEVCOMMENTS |
 	| SUBJ101      | 1               | Device Type 1  | DVT1           | Device 1A  | DVT1 - DV1A | DV1A                 | 01 MAR 2012 | N/A         |

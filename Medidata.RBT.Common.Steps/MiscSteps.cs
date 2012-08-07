@@ -23,6 +23,10 @@ namespace Medidata.RBT.Common.Steps
         [StepDefinition(@"I switch to ""([^""]*)"" window")]
 		public void ISwitchTo____Window(string windowName)
 		{
+			//TODO: got to be a better way
+			//wait for the window to appear
+			Thread.Sleep(3000);
+
             bool found = false;
 			IWebDriver window = null;
 			foreach (var handle in Browser.WindowHandles)
@@ -36,7 +40,7 @@ namespace Medidata.RBT.Common.Steps
 			}
             if (!found) throw new Exception(string.Format("window {0} not found", windowName));
 			Browser = (window as RemoteWebDriver);
-			Thread.Sleep(1000);
+			
 			CurrentPage = TestContext.POFactory.GetPageByUrl(new Uri(Browser.Url));
 		}
 

@@ -19,7 +19,7 @@ namespace Medidata.RBT.PageObjects.Rave
 		//returns the dom container that contains the field controls
 		protected abstract IWebElement GetFieldControlContainer();
 
-		public virtual void EnterData(string text, ControlType controlType)
+		public virtual void EnterData(string text, ControlType controlType = ControlType.Default)
 		{
 			switch (controlType)
 			{
@@ -31,6 +31,8 @@ namespace Medidata.RBT.PageObjects.Rave
 				case ControlType.LongText:
 					EnterTextBoxValue(text);
 					break;
+
+
 
 				case ControlType.Datetime:
 					EnterDatetimeValue(text);
@@ -105,6 +107,8 @@ namespace Medidata.RBT.PageObjects.Rave
 			var textboxes = datapointTable.Textboxes();
 			textboxes[0].SetText(val);
 		}
+
+		
 
 		protected virtual void EnterDatetimeValue(string val)
 		{

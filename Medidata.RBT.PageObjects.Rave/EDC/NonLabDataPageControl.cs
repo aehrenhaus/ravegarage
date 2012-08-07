@@ -39,7 +39,11 @@ namespace Medidata.RBT.PageObjects.Rave
 		public IEDCFieldControl FindField(string fieldName)
 		{
 			var leftSideTds = TestContext.Browser.FindElements(By.XPath("//td[@class='crf_rowLeftSide']"));
-			var area = leftSideTds.FirstOrDefault(x => x.Text.Split(new string[] { "\r\n" }, StringSplitOptions.None)[0] == fieldName);
+			var area = leftSideTds.FirstOrDefault(x => 
+				{
+					return x.FindElement(By.XPath(".//td[@class='crf_preText']")).GetInnerHtml()
+						.Split(new string[] { "\r\n", "<i>" }, StringSplitOptions.None)[0].Trim() == fieldName;
+				});
 
 			if (area == null)
 				throw new Exception("Can't find field area:" + fieldName);
