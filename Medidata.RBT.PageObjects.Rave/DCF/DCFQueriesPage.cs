@@ -30,7 +30,7 @@ namespace Medidata.RBT.PageObjects.Rave
 		}
 
 
-		protected override IWebElement GetElementByName(string name)
+		public override IWebElement GetElementByName(string name)
 		{
 
 			if ("Study,Folder,Site Group,Form,Site,Subject".Split(',').Contains(name))

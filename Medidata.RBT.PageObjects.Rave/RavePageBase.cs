@@ -28,7 +28,7 @@ namespace Medidata.RBT.PageObjects.Rave
 		}
 
 
-		protected override IWebElement GetElementByName(string name)
+		public override IWebElement GetElementByName(string name)
 		{
 			if (name == "Header")
 				return Browser.Table("_ctl0_PgHeader_TabTable");

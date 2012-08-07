@@ -133,6 +133,13 @@ namespace Medidata.RBT.SeleniumExtension
 			return ele.EnhanceAs<Hyperlink>();
 		}
 
+        public static Hyperlink LinkByPartialText(this ISearchContext context, string linktext)
+        {
+            var ele = context.TryFindElementBy(By.PartialLinkText(linktext));
+            if (ele == null)
+                throw new Exception("Can't find hyperlink by text:" + linktext);
+            return ele.EnhanceAs<Hyperlink>();
+        }
 
 		public static ReadOnlyCollection<Hyperlink> Links(this ISearchContext context, bool allLevel= true)
 		{

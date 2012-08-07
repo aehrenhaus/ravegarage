@@ -19,7 +19,7 @@ namespace Medidata.RBT.PageObjects.Rave
 			return this;
 		}
 
-		protected override IWebElement GetElementByName(string name)
+		public override IWebElement GetElementByName(string name)
 		{
 			
 			return base.GetElementByName(name);

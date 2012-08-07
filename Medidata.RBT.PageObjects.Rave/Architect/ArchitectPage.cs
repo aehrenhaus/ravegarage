@@ -10,7 +10,7 @@ namespace Medidata.RBT.PageObjects.Rave
 {
 	public class ArchitectPage : ArchitectBasePage
 	{
-		protected override IWebElement GetElementByName(string name)
+		public override IWebElement GetElementByName(string name)
 		{
 			if (name == "Active Projects")
 				return Browser.Table("_ctl0_Content_ProjectGrid");

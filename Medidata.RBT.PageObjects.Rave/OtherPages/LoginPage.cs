@@ -16,7 +16,7 @@ namespace Medidata.RBT.PageObjects.Rave
 			PageFactory.InitElements(Browser, this);
 		}
 
-		protected override IWebElement GetElementByName(string name)
+		public override IWebElement GetElementByName(string name)
 		{
 			return Browser.FindElementById("_ctl0_Content_chkReqResponse");
 		}

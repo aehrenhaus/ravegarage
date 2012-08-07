@@ -11,7 +11,7 @@ namespace Medidata.RBT.PageObjects.Rave
 {
 	public class PublishChecksHomePage : ArchitectBasePage
 	{
-		protected override IWebElement GetElementByName(string name)
+		public override IWebElement GetElementByName(string name)
 		{
 			if (name == "Current CRF Version")
 				return Browser.Dropdown("ddlCurrentVersionId");
