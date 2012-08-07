@@ -100,6 +100,7 @@
     <Compile Include="TableModels\QueryCancelModel.cs" />
     <Compile Include="TableModels\FieldModel.cs" />
     <Compile Include="TableModels\QuerySearchModel.cs" />
+    <Compile Include="TableModels\UnitConversionModel.cs" />
     <Compile Include="TSDV\BlockPlansPageBase.cs" />
     <Compile Include="TSDV\SiteGroupBlockPlansPage.cs" />
     <Compile Include="TSDV\StudyBlockPlansPage.cs" />

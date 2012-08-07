@@ -14,10 +14,10 @@ namespace Medidata.RBT.Features.Rave
 	[Binding]
 	public partial class LabUnitConversionSteps : BrowserStepsBase
 	{
-        [When(@"I add new unit conversion data")]
-        public void WhenIAddNewUnitConversionData(Table table)
+        [StepDefinition(@"I add new unit conversion data")]
+        public void IAddNewUnitConversionData(Table table)
         {
-            SpecialStringHelper.ReplaceTableColumn(table, "Data");
+            CurrentPage.As<UnitConversionsPage>().AddNewConversion(table.CreateInstance<UnitConversionModel>());
         }
 
 	}

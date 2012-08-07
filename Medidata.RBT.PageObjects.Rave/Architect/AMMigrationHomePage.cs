@@ -10,7 +10,7 @@ namespace Medidata.RBT.PageObjects.Rave
 {
 	public class AMMigrationHomePage : RavePageBase
 	{
-		protected override IWebElement GetElementByName(string name)
+		public override IWebElement GetElementByName(string name)
 		{
 			if (name == "Source CRF")
 				return Browser.Dropdown("_ddlSimpleSourceVersionId");

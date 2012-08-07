@@ -314,7 +314,7 @@ namespace Medidata.RBT
         /// In many case you will only need to orverride this method to provide mappings on your specific page object in order for a step to work.
         /// <example>
         /// 
-        ///protected override IWebElement GetElementByName(string name)
+        ///public override IWebElement GetElementByName(string name)
         ///{
         ///    if (name == "Active Projects")
         ///        return Browser.Table("_ctl0_Content_ProjectGrid");
@@ -328,7 +328,7 @@ namespace Medidata.RBT
         /// </summary>
         /// <param name="name"></param>
         /// <returns></returns>
-        protected virtual IWebElement GetElementByName(string name)
+        public virtual IWebElement GetElementByName(string name)
         {
             throw new Exception("This page does not provide information about named page elements");
         }

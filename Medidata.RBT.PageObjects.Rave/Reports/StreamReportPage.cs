@@ -16,7 +16,7 @@ namespace Medidata.RBT.PageObjects.Rave
 			
 		}
 
-		protected override IWebElement GetElementByName(string name)
+		public override IWebElement GetElementByName(string name)
 		{
 			if (name == "Separator")
 				return this.WaitForElement("txtSeparator");

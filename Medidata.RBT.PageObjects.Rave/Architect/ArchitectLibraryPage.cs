@@ -62,7 +62,7 @@ namespace Medidata.RBT.PageObjects.Rave
 			return base.NavigateTo(name);
 		}
 
-		protected override IWebElement GetElementByName(string name)
+		public override IWebElement GetElementByName(string name)
 		{
 			if (name == "CRF Drafts")
 				return Browser.Table("DraftsGrid");

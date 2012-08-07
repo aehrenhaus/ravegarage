@@ -12,7 +12,7 @@ namespace Medidata.RBT.PageObjects.Rave
 {
     public class SubjectManagementPageBase : RavePageBase
 	{
-		protected override IWebElement GetElementByName(string name)
+		public override IWebElement GetElementByName(string name)
 		{
 			if (name == "Search")
 				return Browser.FindElementById("_ctl0_Content_HeaderControl_SearchLabel");

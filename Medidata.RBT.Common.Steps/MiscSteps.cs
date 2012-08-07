@@ -7,6 +7,8 @@ using OpenQA.Selenium;
 using OpenQA.Selenium.Remote;
 using System.Threading;
 using System.Collections.Specialized;
+using Medidata.RBT.SeleniumExtension;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Medidata.RBT.Common.Steps
 {
@@ -99,5 +101,14 @@ namespace Medidata.RBT.Common.Steps
 
 			CurrentPage = TestContext.POFactory.GetPage(pageName.Replace(" ", "") + "Page").NavigateToSelf();
 		}
+
+        [StepDefinition(@"I should verify row\(s\) exist in ""([^""]*)"" table")]
+        public void IShouldVerifyRowSExistIn____table(string tableIdentifier, Table table)
+        {
+            HtmlTable htmlTable = CurrentPage.As<PageBase>().GetElementByName(tableIdentifier).EnhanceAs<HtmlTable>();
+            var rows = htmlTable.FindMatchRows(table);
+            Assert.AreEqual(table.Rows.Count, rows.Count, String.Format("Not all rows have been found in the table {0}", tableIdentifier));
+        }
+
 	}
 }

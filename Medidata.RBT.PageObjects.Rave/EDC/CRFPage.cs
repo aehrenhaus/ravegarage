@@ -155,13 +155,17 @@ namespace Medidata.RBT.PageObjects.Rave
 
         #endregion
 
-        protected override IWebElement GetElementByName(string name)
+        public override IWebElement GetElementByName(string name)
         {
             if (name == "Inactivate")
                 return Browser.Dropdown("R_log_log_RP");
 
             if (name == "Reactivate")
                 return Browser.Dropdown("R_log_log_IRP");
+
+
+            if (name == "Lab")
+                return Browser.Dropdown("LOC_DropDown");
 
             return base.GetElementByName(name);
         }
