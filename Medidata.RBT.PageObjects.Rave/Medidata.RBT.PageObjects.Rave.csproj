@@ -63,6 +63,8 @@
     <Compile Include="Architect\AMMigrationResultPage.cs" />
     <Compile Include="Architect\ArchitectPushPage.cs" />
     <Compile Include="Architect\PublishChecksHomePage.cs" />
+    <Compile Include="ControlTypeInformation.cs" />
+    <Compile Include="EDC\BaseEDCFieldControl.cs" />
     <Compile Include="EDC\BaseEDCTreePage.cs" />
     <Compile Include="Architect\ArchitectPage.cs" />
     <Compile Include="Architect\ArchitectLibraryPage.cs" />
@@ -89,6 +91,7 @@
     <Compile Include="PDF\FileRequestPage.cs" />
     <Compile Include="DCF\DCFQueriesPage.cs" />
     <Compile Include="RaveConfiguration.cs" />
+    <Compile Include="Reports\DataListingReportPage.cs" />
     <Compile Include="Reports\StreamReportPage.cs" />
     <Compile Include="Reports\CrystalReportPage.cs" />
     <Compile Include="SharedControls\CompositeDropdown.cs" />

@@ -64,13 +64,6 @@ namespace Medidata.RBT.Common.Steps
 		}
 
 
-		/// <summary>
-		/// Warning: the page object is not changed.
-		/// If selecting a link causing the page changed, then use:
-		///		I select "" in "" 
-		///	
-		/// </summary>
-		/// <param name="linkText"></param>
 		[StepDefinition(@"I select ""([^""]*)""")]
 		public void ISelect____(string linkText)
 		{
@@ -96,7 +89,7 @@ namespace Medidata.RBT.Common.Steps
 		}
 
 		/// <summary>
-		/// Use mapping to figure out which link to click
+		/// identifer is a friendly name 
 		/// </summary>
 		/// <param name="name"></param>
 		[StepDefinition(@"I navigate to ""([^""]*)""")]
@@ -113,7 +106,7 @@ namespace Medidata.RBT.Common.Steps
 		}
 
 		[Then(@"I should see ""([^""]*)"" in ""([^""]*)""")]
-		public void ThenIShouldSee____In____(string text, string areaName)
+		public void IShouldSee____In____(string text, string areaName)
 		{
 			text = SpecialStringHelper.Replace(text);
 			var cansee = CurrentPage.As<IPage>().CanSeeTextInArea(text,areaName);
