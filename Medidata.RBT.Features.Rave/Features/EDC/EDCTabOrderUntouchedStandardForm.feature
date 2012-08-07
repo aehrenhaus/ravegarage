@@ -15,7 +15,7 @@ Feature: Updated tab order to enable mouseless data entry - Untouched standard f
 Background:
 	Given I am logged in to Rave with username "defuser" and password "password"
 	And I select Study "Standard Study" and Site "Site 1"
-	And I select a Subject "777777790{Var(num1)}"
+	And I select a Subject "777777779{Var(num1)}"
 	And I select link "Standard Form" located in "Left Nav"
 
 	#Given user "User 1"  has study "Standard Study" has site "Site A1" has subject "Subj A1001" in database "<EDC> Database"
