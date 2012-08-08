@@ -19,7 +19,7 @@ namespace Medidata.RBT.PageObjects.Rave
         public CRFPage FillDataPoints(IEnumerable<FieldModel> fields)
         {
             foreach (var field in fields)
-                FindField(field.Field).EnterData(field.Data);
+				FindField(field.Field).EnterData(field.Data, EnumHelper.GetEnumByDescription < ControlType>(field.ControlType));
 
             return this;
         }
@@ -111,7 +111,7 @@ namespace Medidata.RBT.PageObjects.Rave
                 fieldName);
         }
 
-        public bool IsElementFocused(ControlTypeInformation.ControlType type, string value)
+        public bool IsElementFocused(ControlType type, string value)
         {
             var element = this.GetElementByControlTypeAndValue(type, value);
             return this.GetCurrentFocusedElement().GetAttribute("ID") == element.GetAttribute("ID");
@@ -155,13 +155,17 @@ namespace Medidata.RBT.PageObjects.Rave
 
         #endregion
 
-        protected override IWebElement GetElementByName(string name)
+        public override IWebElement GetElementByName(string name)
         {
             if (name == "Inactivate")
                 return Browser.Dropdown("R_log_log_RP");
 
             if (name == "Reactivate")
                 return Browser.Dropdown("R_log_log_IRP");
+
+
+            if (name == "Lab")
+                return Browser.Dropdown("LOC_DropDown");
 
             return base.GetElementByName(name);
         }

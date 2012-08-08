@@ -14,7 +14,7 @@ namespace Medidata.RBT.PageObjects.Rave
 	{
 		AuditsPage ClickAudit();
 
-		void EnterData(string text);
+		void EnterData(string text, ControlType controlType);
 
 		IWebElement FindQuery(QuerySearchModel filter);
 

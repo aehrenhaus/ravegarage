@@ -65,8 +65,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BrowserStepsBase.cs" />
-    <Compile Include="ControlTypeInformation.cs" />
     <Compile Include="Constants.cs" />
+    <Compile Include="EnumHelper.cs" />
     <Compile Include="PageObjectInterfaces\ControlBase.cs" />
     <Compile Include="DbHelper.cs" />
     <Compile Include="PageObjectInterfaces\IPageObjectFactory.cs" />

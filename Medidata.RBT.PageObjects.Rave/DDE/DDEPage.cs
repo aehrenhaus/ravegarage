@@ -18,7 +18,7 @@ namespace Medidata.RBT.PageObjects.Rave
 		}
 
 
-        protected override IWebElement GetElementByName(string name)
+        public override IWebElement GetElementByName(string name)
         {
       
             NameValueCollection mapping = new NameValueCollection();
@@ -62,7 +62,7 @@ namespace Medidata.RBT.PageObjects.Rave
 		public DDEPage FillDataPoints(IEnumerable<FieldModel> fields)
 		{
 			foreach (var field in fields)
-				FindField(field.Field).EnterData(field.Data);
+				FindField(field.Field).EnterData(field.Data, EnumHelper.GetEnumByDescription<ControlType>(field.ControlType));
 
 			return this;
 		}

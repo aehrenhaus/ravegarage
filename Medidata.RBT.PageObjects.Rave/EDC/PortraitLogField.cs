@@ -25,13 +25,13 @@ namespace Medidata.RBT.PageObjects.Rave
 
         #region FUNCTIONS
         #region INTERFACE IEDCLogFieldControl
-        public bool IsElementFocused(ControlTypeInformation.ControlType type, int position) 
+        public bool IsElementFocused(ControlType type, int position) 
         {
             var element = GetElementInRowByLabel(type, position);
             return this.Page.GetCurrentFocusedElement()
                 .GetAttribute("ID") == element.GetAttribute("ID");
         }
-        public void FocusElement(ControlTypeInformation.ControlType type, int position) 
+        public void FocusElement(ControlType type, int position) 
         {
             var element = GetElementInRowByLabel(type, position);
             this.Page.FocusOnElementById(element.GetAttribute("ID"));
@@ -40,14 +40,14 @@ namespace Medidata.RBT.PageObjects.Rave
 
 
 
-        private IWebElement GetElementInRowByLabel(ControlTypeInformation.ControlType type, int position)
+        private IWebElement GetElementInRowByLabel(ControlType type, int position)
         {
             string suffix;
-            if (type == ControlTypeInformation.ControlType.RadioButton
-                || type == ControlTypeInformation.ControlType.RadioButtonVertical
-                || type == ControlTypeInformation.ControlType.ESigPage
-                || type == ControlTypeInformation.ControlType.Datetime
-                || type == ControlTypeInformation.ControlType.UnitDictionary)
+            if (type == ControlType.RadioButton
+                || type == ControlType.RadioButtonVertical
+                || type == ControlType.ESigPage
+                || type == ControlType.Datetime
+                || type == ControlType.UnitDictionary)
                 suffix = ControlTypeInformation.GetSuffixByControlType(type, position);
             else
                 suffix = ControlTypeInformation.GetSuffixByControlType(type);
@@ -72,7 +72,7 @@ namespace Medidata.RBT.PageObjects.Rave
 
         #region INTERFACE IEDCFieldControl
         public AuditsPage ClickAudit() { throw new NotImplementedException(); }
-        public void EnterData(string text) { throw new NotImplementedException(); }
+		public void EnterData(string text, ControlType controlType) { throw new NotImplementedException(); }
         public OpenQA.Selenium.IWebElement FindQuery(QuerySearchModel filter) { throw new NotImplementedException(); }
         public void AnswerQuery(QuerySearchModel filter) { throw new NotImplementedException(); }
         public void CloseQuery(QuerySearchModel filter) { throw new NotImplementedException(); }

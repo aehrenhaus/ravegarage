@@ -28,7 +28,7 @@ namespace Medidata.RBT.PageObjects.Rave
 		}
 
 
-		protected override IWebElement GetElementByName(string name)
+		public override IWebElement GetElementByName(string name)
 		{
 			if (name == "Header")
 				return Browser.Table("_ctl0_PgHeader_TabTable");
@@ -59,13 +59,13 @@ namespace Medidata.RBT.PageObjects.Rave
             }
         }
 
-        public IWebElement GetElementByControlTypeAndValue(ControlTypeInformation.ControlType controlType, string value)
+        public IWebElement GetElementByControlTypeAndValue(ControlType controlType, string value)
         {
-            if (controlType == ControlTypeInformation.ControlType.Button)
+            if (controlType == ControlType.Button)
             {
                 return TestContext.Browser.TryFindElementBy(By.XPath("//input[contains(@value, '" + value + "')]"));
             }
-            else if (controlType == ControlTypeInformation.ControlType.Link)
+            else if (controlType == ControlType.Link)
             {
                 return TestContext.Browser.TryFindElementBy(By.XPath("//a[text() = '" + value + "']"));
             }

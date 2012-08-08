@@ -159,7 +159,7 @@ namespace Medidata.RBT.Features.Rave
         [Then(@"the cursor focus is ([^""]*)located on ""([^""]*)"" in the column labeled ""([^""]*)"" in the ""([^""]*)"" position in the ""([^""]*)"" row")]
         public void TheCursorFocusIs____LocatedOn____InTheColumnLabeled____InThe____RowAndThe____PositionInThatRow(string not, string controlType, string fieldName, string positionText, string rowText)
         {
-            var type = ControlTypeInformation.GetEnum<ControlTypeInformation.ControlType>(controlType);
+            var type = EnumHelper.GetEnumByDescription<ControlType>(controlType);
             var row = Constants.GetNumberByWord(rowText);
             var position = Constants.GetZeroBasedIndexByWord(positionText);
 
@@ -176,7 +176,7 @@ namespace Medidata.RBT.Features.Rave
         [Then(@"the cursor focus is ([^""]*)located on ""([^""]*)"" in the row labeled ""([^""]*)"" in the ""([^""]*)"" position in the row")]
         public void TheCursorFocusIs____LocatedOn____InTheRowLabeled____InThe____PositionInThatRow(string not, string controlType, string fieldName, string positionText)
         {
-            var type = ControlTypeInformation.GetEnum<ControlTypeInformation.ControlType>(controlType);
+            var type = EnumHelper.GetEnumByDescription<ControlType>(controlType);
             var position = Constants.GetZeroBasedIndexByWord(positionText);
 
             if (not.Trim().ToLower() != "not")
@@ -205,7 +205,7 @@ namespace Medidata.RBT.Features.Rave
         public void MoveCursorFocusTo____InTheColumnLabeled____InThe____RowAndThe____PositionInThatRow
             (string controlType, string fieldName, string positionText, string rowText)
         {
-            var type = ControlTypeInformation.GetEnum<ControlTypeInformation.ControlType>(controlType);
+            var type = EnumHelper.GetEnumByDescription<ControlType>(controlType);
             var row = Constants.GetNumberByWord(rowText);
             var position = Constants.GetZeroBasedIndexByWord(positionText);
 
@@ -217,7 +217,7 @@ namespace Medidata.RBT.Features.Rave
         [Given(@"move cursor focus to ""([^""]*)"" in the row labeled ""([^""]*)"" in the ""([^""]*)"" position in the row")]
         public void MoveCursorFocusTo____InTheRowLabeled____InThe____PositionInThatRow(string controlType, string fieldName, string positionText)
         {
-            var type = ControlTypeInformation.GetEnum<ControlTypeInformation.ControlType>(controlType);
+            var type = EnumHelper.GetEnumByDescription<ControlType>(controlType);
             var position = Constants.GetZeroBasedIndexByWord(positionText);
 
             CurrentPage.As<CRFPage>()
@@ -228,8 +228,7 @@ namespace Medidata.RBT.Features.Rave
         [Then(@"the cursor focus is on ""([^""]*)"" labeled ""([^""]*)""")]
         public void IShouldSeeTheCursorFocusOn____Labeled____(string controlTypeString, string value)
         {
-            var type = ControlTypeInformation
-                .GetEnum<ControlTypeInformation.ControlType>(controlTypeString.ToLower());
+            var type = EnumHelper.GetEnumByDescription<ControlType>(controlTypeString.ToLower());
 
             Assert.IsTrue(CurrentPage.As<CRFPage>().IsElementFocused(type, value));
         }

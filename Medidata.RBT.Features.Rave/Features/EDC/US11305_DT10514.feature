@@ -1,9 +1,11 @@
-﻿Feature: US11305_DT10514 Datapoints in same lab datapage may associate analyte ranges of different labs.
+﻿Feature: US11305_DT10514 
 	As a Rave user
 	When a lab form is partially locked
 	And I change the selected lab
 	Then I expect to see lab ranges from the new lab for the lab data
 	So that I can reference the applicable lab ranges
+
+# Datapoints in same lab datapage may associate analyte ranges of different labs.
 
 Background:
     Given I am logged in to Rave with username "defuser" and password "password" 
@@ -28,29 +30,27 @@ Background:
 Scenario: As an EDC user, I have a partially locked lab form, and I change the selected lab, then I should see the ranges update for all lab datapoints.
 
 	When I create a Subject
-	    | Field				| Data				|
-	    | Subject Number	| {RndNum<num1>(5)}	|
-	    | Subject Initials	| SUB				|
-	#	| Pregancy Status	| NoREGAQT			|
+	    | Field            | Data              | Control Type |
+	    | Subject Number   | {RndNum<num1>(5)} | text         |
+	    | Subject Initials | SUB               | text         |
+	    | Pregancy Status  | NoREGAQT          | dropdownlist |
 	And I select Form "Visit Date" in Folder "Visit 1"
 	And I enter data in CRF and save
-		| Field      | Data        |
-		| Age        | 22           |
-	#	| Sex        | FemaleREGAQT |
+		| Field | Data         | Control Type |
+		| Age   | 22           | text         |
+		| Sex   | FemaleREGAQT | dropdownlist |
 	And I select Form "Visit Date" in Folder "Visit 2"
 	And I enter data in CRF and save
-		| Field      | Data        |
-		| Age        | 22           |
-	#	| Sex        | FemaleREGAQT |
+		| Field | Data         | Control Type |
+		| Age   | 22           | text         |
+		| Sex   | FemaleREGAQT | dropdownlist |
 	And I select Form "Hematology" in Folder "Visit 2"
-#Need Step Def
-	#And I select Lab "Mediflex Local Lab 1"
-	#And I enter data in CRF and save
-	#	| Field       | Data       |
-	#	| Lab Date    | 15 Aug 2012 |
-	#	| WBC         | 3           |
-	#	| NEUTROPHILS | 5           |
-#Need Step Def
+	And I choose "Mediflex Local Lab 1" from "Lab"
+	And I enter data in CRF and save
+		| Field       | Data        | Control Type |
+		| Lab Date    | 15 Aug 2012 | datetime     |
+		| WBC         | 3           | text         |
+		| NEUTROPHILS | 5           | text         |
 	#And I verify lab ranges
 	#	| Field       | Data  | Range | Unit           |
 	#	| WBC         | 3     | 1 - 5 | *10E6/ulREGAQT |

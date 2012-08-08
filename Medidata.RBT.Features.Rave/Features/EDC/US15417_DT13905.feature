@@ -11,190 +11,277 @@ Feature: DT 13905 NeedsCVRefresh is not set to On for all datapoints related whe
 
 Background:
     Given I am logged in to Rave with username "defuser" and password "password"
-	#And following Project assignments exist
-	#|User	 |Project	    |Environment	|Role |Site	  |Site Number	|
-	#|defuser |Mediflex_SJ	|Prod			|cdm1 |Site 1 |S100			|
-    #And Role "cdm1" has Action "Entry"
-	#And Project "Mediflex_SJ" has Draft "<Draft1>"
-	#And I publish and push CRF Version "CRF Version<RANDOMNUMBER>" of Draft "<Draft1>" to site "Site 1" in Project "Mediflex_SJ" for Enviroment "Prod"
-	#And the Local Lab "Local Lab DT13905" exists
-	#And the following Lab assignment exists
-	#|Project		|Environment	|Site	|Lab				|
-	#|Mediflex_SJ	|Prod			|Site 1	|Local Lab DT13905	|
-	And I select Study "Mediflex_SJ" and Site "Site 1"
+		
+	# #And following Project assignments exist
+	# #|User	 |Project	    |Environment	|Role |Site	  |Site Number	|
+	# #|defuser |Mediflex_SJ	|Prod			|cdm1 |Site 1 |S100			|
+    # #And Role "cdm1" has Action "Entry"
+	# And the following Lab Units exixt
+	# | Lab Unit |
+	# | %        |
+	# | 10^9/L   |
+
+	# And the following Lab Unit Dictionary exists
+	# | Name        | Units  |
+	# | WBC         | %      |
+	# | WBC         | 10^9/L |
+	# | Neutrophils | %      |
+	# | Neutrophils | 10^9/L |
+
+
+	# And the following Analytes exists
+	# | Analytes    | Lab Unit Dictionary |
+	# | WBC         | WBC                 |
+	# | NEUTROPHILS | NEUTROPHILS         |
+
+	# And the following Standard Group Exists with Entries and their related Analytes and Units
+	# | Standard Group | Analyte     | Units  |
+	# | Lab DT 13905 B | WBC         | 10^9/L |
+	# | Lab DT 13905 B | NEUTROPHILS | 10^9/L |
+	
+	# And I Checked box for "Normalized Lab View Name" in Configuration
+	# And I Type
+	# | Normalized Lab View Name |
+	# | AnalytesView             |
+
+	# #And Project "Mediflex_SJ" has Draft "<Draft1>"
+	# #And I publish and push CRF Version "CRF Version<RANDOMNUMBER>" of Draft "<Draft1>" to site "Site 1" in Project "Mediflex_SJ" for Enviroment "Prod"
+	# #And the Local Lab "Local Lab DT13905" exists
+	# #And the following Lab assignment exists
+	# #|Project		|Environment	|Site	|Lab				|
+	# #|Mediflex_SJ	|Prod			|Site 1	|Local Lab DT13905	|
+	# And lab has ranges set for the Analytes
+	# | Lab  | Analyte     |
+	# | Local Lab DT13905 | WBC         |
+	# | Local Lab DT13905 | NEUTROPHILS |
+	 And I select Study "Mediflex_SJ" and Site "Site 1"
+
 @release_2012.1.0 
 @PB_DT13905_01
 @Draft
-Scenario: As an EDC user, when I create a unit conversion formula to convert lab data in a non-standard unit to standard values in a standard unit, then I should see the standard value and standard units in Clinical Views.
+Scenario: PB_DT13905_01 As an EDC user, when I create a unit conversion formula to convert lab data in a non-standard unit to standard values in a standard unit, then I should see the standard value and standard units in Clinical Views.
 	When I create a Subject
 	| Field            | Data               |
 	| Subject Initials | SUB                |
 	| Subject number   | {RndNum<num1>(3)}  |
 	| Age              | 20                 |
 	| Sex              | MaleREGAQT         |
-	#| Pregancy Status  | NoREGAQT           |
-	#| Subject Date     | 01 FEB 2011        |	
-	#And I am on CRF page "Visit Date" in Folder "Visit 1" in Subject "SUB{Var(num1)}" in Site "Site 1" in Study "Mediflex_SJ"
-	#And I enter data in CRF
-	#|Field		|Value		|
-	#|Visit Date	|01 FEB 2011|
-	#|Age		|20			|
-	#And I save the CRF page
+	| Pregancy Status  | NoREGAQT           |
+	| Subject Date     | 01 Feb 2011        |	
+	And I take a screenshot
 	And I select Form "Hematology"
-	#And I am on CRF page "Visit Date" in Folder "Visit 1" in Subject "101SUBJ" in Site "Site 1" in Study "Mediflex"
-	#And I am on CRF page "{formName}" in Folder "{folderName}" in Subject "{subjectName}" in Site "{siteName}" in Study "{studyName}"
-	#And I select Lab "Local Lab DT13905"
+	And I take a screenshot
+	And I choose "Local Lab DT13905" from "Lab"
 	And I enter data in CRF and save
-	| Field       | Data       | Unit   |
-	#| Sample Date | 02 FEB 2011 |        |
-	| WBC         | 1           | 10^9/L |
-	#And I save the CRF page
-#Need Step Def for "Mediflex_SJ Central Lab"
+
+	| Field | Data | Unit   |
+	| WBC   | 1    | 10^9/L |
 	And I select "Home"
 	And I navigate to "Lab Administration"
 	And I navigate to "Unit Conversions"
-	
-	#And I go to Unit Conversions page in the Lab Admin module
 	And I add new unit conversion data
 	| From   | To | Analyte | A | B | C | D |
-	| 10^9/L | %  |         | 2 | 1 | 0 | 0 |
-	And I go to the Reporter module
-#Need Step Def for "Reporter"
-	And I run the Data Listings Report for Study "Mediflex_SJ"
-#Need Step Def for "Data Listings Report"
-	And I select the Lab view
-#Need Step Def for "Lab view"
-	Then I should see lab data
-	| Form       | Analyte | Value | Units  | Standard Value | Standard Units |
-	| Hematology | WBC     | 10    | 10^9/L | 20             | %              |
+	| 10^9/L | %  | ...     | 2 | 1 | 0 | 0 |
+	And I take a screenshot
+
+
+	And I navigate to "Home"
+	And I navigate to "Reporter"
+	And I select Report "Data Listing" 
+	And I set report parameter "Study" with table
+		| Name        | Environment |
+		| Mediflex_SJ | Prod        |
+	And I click button "Submit Report"
+	And I switch to "DataListingsReport" window
+	And I choose "Clinical Views" from "Data Source"
+	And I choose "AnalytesView" from "Form"	
+	And I click button "Run"
+	Then I should verify row(s) exist in "Result" table
+	| Subject        | FormName   | AnalyteName | AnalyteValue | LabUnits | StdValue | StdUnits |
+	| SUB{Var(num1)} | Hematology | WBC         | 10           | 10^9/L   | 20       | %        |
 
 @release_2012.1.0 
 @PB_DT13905_02
 @Draft
-Scenario: As an EDC user, when I create a unit conversion formula to convert lab data in a non-standard unit to standard values in a standard unit for a specific analyte, then I should see the standard value and standard units in Clinical Views.
+Scenario: PB_DT13905_02 As an EDC user, when I create a unit conversion formula to convert lab data in a non-standard unit to standard values in a standard unit for a specific analyte, then I should see the standard value and standard units in Clinical Views.
 	When I create a Subject
-	| Field				|Value	|
-	| Subject Initials | SUB               |
-	| Subject Number   | {RndNum<num1>(3)} |
-	| Age              | 20                |
-	| Sex              | MaleREGAQT        |
-	| Pregancy Status  | NoREGAQT          |
-	| Subject Date     | 01 FEB 2011       |
-	And I save the CRF page	
-	#And I am on CRF page "Visit Date" in Folder "Visit 1" in Subject "SUB{Var(num1)}" in Site "Site 1" in Study "Mediflex_SJ"
-	#And I enter data in CRF
-	#|Field		|Value		|
-	#|Visit Date	|01 FEB 2011|
-	#|Age		|20			|
-	#And I save the CRF
-	And I am on CRF page "Hematology" on subject level in Subject "SUB{Var(num1)}" in Site "Site 1" in Study "Mediflex_SJ"
-	And I select Lab "Local Lab DT13905"
-	And I enter data in CRF page
-	| Field       | Value       | Unit   |
-	#| Sample Date | 02 FEB 2011 |        |
-	| WBC         | 1           | 10^9/L |
-	And I save the CRF page 
-	And I go to Unit Conversions page in the Lab Admin module
-	And I enter unit conversion data
-	| From Unit | To Unit | Analyte | A | B | C | D |
-	| 10^9/L    | %       | WBC     | 4 | 1 | 0 | 0 |
-	And I go to the Reporter module
-	And I run the Data Listings Report for Study "Mediflex_SJ"
-	And I select the Lab view
-	Then I should see lab data
-	| Form       | Analyte | Value | Units  | Standard Value | Standard Units |
-	| Hematology | WBC     | 10    | 10^9/L | 40             | %              |
+	| Field            | Data               |
+	| Subject Initials | SUB                |
+	| Subject number   | {RndNum<num1>(3)}  |
+	| Age              | 20                 |
+	| Sex              | MaleREGAQT         |
+	| Pregancy Status  | NoREGAQT           |
+	| Subject Date     | 01 Feb 2011        |
+
+	And I select Form "Hematology"
+	And I choose "Local Lab DT13905" from "Lab"
+	And I enter data in CRF and save
+
+	| Field       | Data       | Unit   |
+	| WBC         | 1          | 10^9/L |
+
+	 
+	And I select "Home"
+	And I navigate to "Lab Administration"
+	And I navigate to "Unit Conversions"
+	And I add new unit conversion data
+
+	| From   | To | Analyte | A | B | C | D |
+	| 10^9/L | %  | WBC     | 4 | 1 | 0 | 0 |
+
+	And I navigate to "Home"
+	And I navigate to "Reporter"
+	And I select Report "Data Listing" 
+	And I set report parameter "Study" with table
+		| Name        | Environment |
+		| Mediflex_SJ | Prod        |
+	And I click button "Submit Report"
+	And I switch to "DataListingsReport" window
+	And I choose "Clinical Views" from "Data Source"
+	And I choose "AnalytesView" from "Form"	
+	And I click button "Run"
+
+	Then I should verify row(s) exist in "Result" table
+
+	| Subject        | FormName   | AnalyteName | AnalyteValue | LabUnits | StdValue | StdUnits |
+	| SUB{Var(num1)} | Hematology | WBC         | 10           | 10^9/L   | 40       | %        |
 
 @release_2012.1.0 
 @PB_DT13905_03
 @Draft
-Scenario: As an EDC user, when I update a unit conversion formula to convert lab data in a non-standard unit to standard values in a standard unit, then I should see the standard value and standard units in Clinical Views.
+Scenario: PB_DT13905_03 As an EDC user, when I update a unit conversion formula to convert lab data in a non-standard unit to standard values in a standard unit, then I should see the standard value and standard units in Clinical Views.
 
-	When I go to Unit Conversions page in the Lab Admin module
+	When I navigate to "Lab Administration"
+	And I navigate to "Unit Conversions"
 	And I enter unit conversion data
-	| From Unit | To Unit | Analyte | A | B | C | D |
-	| 10^9/L    | %       |         | 2 | 1 | 0 | 0 |
+	| From   | To | Analyte | A | B | C | D |
+	| 10^9/L | %  |         | 2 | 1 | 0 | 0 |
 	And I create a Subject
-	| Field				|Value	|
+
+	| Field			   | Data	           |
 	| Subject Initials | SUB               |
 	| Subject Number   | {RndNum<num1>(3)} |
 	| Age              | 20                |
 	| Sex              | MaleREGAQT        |
 	| Pregancy Status  | NoREGAQT          |
-	| Subject Date     | 01 FEB 2011       |
-	And I save the CRF page
-	#And I am on CRF page "Visit Date" in Folder "Visit 1" in Subject "SUB{Var(num1)}" in Site "Site 1" in Study "Mediflex_SJ"
-	#And I enter data in CRF
-	#|Field		|Value		|
-	#|Visit Date	|01 FEB 2011|
-	#|Age		|20			|
-	#And I save the CRF page
-	And I am on CRF page "Hematology" on subject level in Subject "SUB{Var(num1)}" in Site "Site 1" in Study "Mediflex_SJ"
-	And I select Lab "Local Lab DT13905"
-	And I enter data in CRF
-	| Field       | Value       | Unit   |
-	#| Sample Date | 02 FEB 2011 |        |
-	| WBC         | 1           | 10^9/L |
-	And I save the CRF
-	And I go to the Reporter module
-	And I run the Data Listings Report for Study "Mediflex_SJ"
-	And I select the Lab view
-	Then I should see lab data
-	| Form       | Analyte | Value | Units  | Standard Value | Standard Units |
-	| Hematology | WBC     | 10    | 10^9/L | 20             | %              |
-	And I go to Unit Conversions page in the Lab Admin module
-	And I enter unit conversion data
-	| From Unit | To Unit | Analyte | A | B | C | D |
-	| 10^9/L    | %       |         | 3 | 1 | 0 | 0 |
-	And I go to the Reporter module
-	And I run the Data Listings Report for Study "Mediflex_SJ"
-	And I select the Lab view
-	Then I should see lab data
-	| Form       | Analyte | Value | Units  | Standard Value | Standard Units |
-	| Hematology | WBC     | 10    | 10^9/L | 30             | %              |
+	| Subject Date     | 01 Feb 2011       |
+
+	And I select Form "Hematology"
+	And I choose "Local Lab DT13905" from "Lab"
+	And I enter data in CRF and save
+
+	| Field | Data | Unit   |
+	| WBC   | 1    | 10^9/L |
+	
+	And I navigate to "Home"
+	And I navigate to "Reporter"
+	And I select Report "Data Listing" 
+	And I set report parameter "Study" with table
+		| Name        | Environment |
+		| Mediflex_SJ | Prod        |
+	And I click button "Submit Report"
+	And I switch to "DataListingsReport" window
+	And I choose "Clinical Views" from "Data Source"
+	And I choose "AnalytesView" from "Form"	
+	And I click button "Run"
+
+	Then I should verify row(s) exist in "Result" table
+
+	| Subject        | FormName   | AnalyteName | AnalyteValue | LabUnits | StdValue | StdUnits |
+	| SUB{Var(num1)} | Hematology | WBC         | 10           | 10^9/L   | 20       | %        |
+
+	And I select "Home"
+	And I navigate to "Lab Administration"
+	And I navigate to "Unit Conversions"
+	#And I add new unit conversion data
+
+	| From   | To | Analyte | A | B | C | D |
+	| 10^9/L | %  |         | 3 | 1 | 0 | 0 |
+
+	And I navigate to "Home"
+	And I navigate to "Reporter"
+	And I select Report "Data Listing" 
+	And I set report parameter "Study" with table
+		| Name        | Environment |
+		| Mediflex_SJ | Prod        |
+	And I click button "Submit Report"
+	And I switch to "DataListingsReport" window
+	And I choose "Clinical Views" from "Data Source"
+	And I choose "AnalytesView" from "Form"	
+	And I click button "Run"
+
+	Then I should verify row(s) exist in "Result" table
+
+	| Subject        | FormName   | AnalyteName | AnalyteValue | LabUnits | StdValue | StdUnits |
+	| SUB{Var(num1)} | Hematology | WBC         | 10           | 10^9/L   | 30       | %        |
 
 @release_2012.1.0 
 @PB_DT13905_04
 @Draft
-Scenario: As an EDC user, when I update a unit conversion formula to convert lab data in a non-standard unit to standard values in a standard unit for a specific analyte, then I should see the standard value and standard units in Clinical Views.
-	When I go to Unit Conversions page in the Lab Admin module
+Scenario: PB_DT13905_04 As an EDC user, when I update a unit conversion formula to convert lab data in a non-standard unit to standard values in a standard unit for a specific analyte, then I should see the standard value and standard units in Clinical Views.
+	When I navigate to "Lab Administration"
+	And I navigate to "Unit Conversions"
 	And I enter unit conversion data
-	| From Unit | To Unit | Analyte | A | B | C | D |
-	| 10^9/L    | %       | WBC     | 3 | 1 | 0 | 0 |
+	And I enter unit conversion data
+
+	| From   | To | Analyte | A | B | C | D |
+	| 10^9/L | %  | WBC     | 3 | 1 | 0 | 0 |
+
 	And I create a Subject
-	| Field            | Value             |
+
+	| Field			   | Data	           |
 	| Subject Initials | SUB               |
-	| Subject Number   | {RndNum<num1>(5)} |
+	| Subject Number   | {RndNum<num1>(3)} |
 	| Age              | 20                |
 	| Sex              | MaleREGAQT        |
 	| Pregancy Status  | NoREGAQT          |
-	| Subject Date     | 01 FEB 2011       |
-	#And I am on CRF page "Visit Date" in Folder "Visit 1" in Subject "101SUBJ" in Site "Site 1" in Study "Mediflex_SJ"
-	#And I enter data in CRF
-	#|Field		|Value		|
-	#|Visit Date	|01 FEB 2011|
-	#|Age		|20			|
-	And I save the CRF page
-	And I am on CRF page "Hematology" on subject level in Subject "SUB{Var(num1)}" in Site "Site 1" in Study "Mediflex_SJ"
-	And I select Lab "Local Lab DT13905 "
-	And I enter data in CRF page
-	| Field       | Value       | Unit   |
-	#| Sample Date | 02 FEB 2011 |        |
+	| Subject Date     | 01 Feb 2011       |
+
+	And I select Form "Hematology"
+	And I choose "Local Lab DT13905" from "Lab"
+	And I enter data in CRF and save
+
+	| Field       | Data        | Unit   |
 	| WBC         | 1           | 10^9/L |
-	And I save the CRF page
-	And I go to the Reporter module
-	And I run the Data Listings Report for Study "Mediflex_SJ"
-	And I select the Lab view
-	Then I should see lab data
-	| Form       | Analyte | Value | Units  | Standard Value | Standard Units |
-	| Hematology | WBC     | 10    | 10^9/L | 30             | %              |
-	And I go to Unit Conversions page in the Lab Admin module
-	And I enter unit conversion data
-	| From Unit | To Unit | Analyte | A | B | C | D |
-	| 10^9/L    | %       |         | 5 | 1 | 0 | 0 |
-	And I go to the Reporter module
-	And I run the Data Listings Report for Study "Mediflex_SJ"
-	And I select the Lab view
-	Then I should see lab data
-	| Form       | Analyte | Value | Units  | Standard Value | Standard Units |
-	| Hematology | WBC     | 10    | 10^9/L | 50             | %              |
+
+	And I navigate to "Home"
+	And I navigate to "Reporter"
+	And I select Report "Data Listing" 
+	And I set report parameter "Study" with table
+		| Name        | Environment |
+		| Mediflex_SJ | Prod        |
+	And I click button "Submit Report"
+	And I switch to "DataListingsReport" window
+	And I choose "Clinical Views" from "Data Source"
+	And I choose "AnalytesView" from "Form"	
+	And I click button "Run"
+
+	Then I should verify row(s) exist in "Result" table
+
+	| Subject        | FormName   | AnalyteName | AnalyteValue | LabUnits | StdValue | StdUnits |
+	| SUB{Var(num1)} | Hematology | WBC         | 10           | 10^9/L   | 30       | %        |
+
+	And I select "Home"
+	And I navigate to "Lab Administration"
+	And I navigate to "Unit Conversions"
+	And I add new unit conversion data
+
+	| From   | To | Analyte | A | B | C | D |
+	| 10^9/L | %  |         | 5 | 1 | 0 | 0 |
+
+	And I navigate to "Home"
+	And I navigate to "Reporter"
+	And I select Report "Data Listing" 
+	And I set report parameter "Study" with table
+		| Name        | Environment |
+		| Mediflex_SJ | Prod        |
+	And I click button "Submit Report"
+	And I switch to "DataListingsReport" window
+	And I choose "Clinical Views" from "Data Source"
+	And I choose "AnalytesView" from "Form"	
+	And I click button "Run"
+
+	Then I should verify row(s) exist in "Result" table
+
+	| Subject        | FormName   | AnalyteName | AnalyteValue | LabUnits | StdValue | StdUnits |
+	| SUB{Var(num1)} | Hematology | WBC         | 10           | 10^9/L   | 50       | %        |

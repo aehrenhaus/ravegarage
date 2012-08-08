@@ -9,6 +9,6 @@ namespace Medidata.RBT.PageObjects.Rave
 	{
 		public string Field { set; get; }
 		public string Data { set; get; }
-		
+		public string ControlType { get; set; }
 	}
 }
