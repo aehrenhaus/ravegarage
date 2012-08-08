@@ -105,8 +105,10 @@ Scenario: PB_8.1.1 As an EDC user, Data setup and verification for query re-firi
 	And I select a Subject "sub{Var(num1)}"
 	When I select Form "Concomitant Medications" in Folder "Screening"
 	And I open log line 1
-	Then I verify Requires Response Query with message "'Date Informed Consent Signed' is greater. Please revise." is displayed on Field "Start Date"
-	And I verify Requires Response Query with message "Informed Consent 'Current Distribution Number' is not equal to Concomitant Medications 'Current Axis Number'." is displayed on Field "Current Axis Number"
+	Then I verify Query is displayed
+		| Field                | Query Message                                                                                                  | Answered | Closed |
+		| Start Date           | 'Date Informed Consent Signed' is greater. Please revise.                                                      | false    | false  |
+		| Cuurrent Axis Number | 'Informed Consent 'Current Distribution Number' is not equal to Concomitant Medications 'Current Axis Number'. | false    | false  |
 	And I take a screenshot
 	And I answer the Query "'Date Informed Consent Signed' is greater. Please revise." on Field "Start Date" with "{answer}"
 	And I answer the Query "Informed Consent 'Current Distribution Number' is not equal to Concomitant Medications 'Current Axis Number'." on Field "Current Axis Number" with "{answer}"
@@ -123,18 +125,19 @@ Scenario: PB_8.1.1 As an EDC user, Data setup and verification for query re-firi
 		| Current Axis Number | 19          |
 	And I open log line 1
 	And I verify Query is not displayed
-		| Field               | Message                                                                                                       | Closed |
-		| Start Date          | 'Date Informed Consent Signed' is greater. Please revise.                                                     | true   |
-		| Current Axis Number | Informed Consent 'Current Distribution Number' is not equal to Concomitant Medications 'Current Axis Number'. | true   |
+		| Field               | Message                                                                                                       | Answered | Closed |
+		| Start Date          | 'Date Informed Consent Signed' is greater. Please revise.                                                     | true     | true   |
+		| Current Axis Number | Informed Consent 'Current Distribution Number' is not equal to Concomitant Medications 'Current Axis Number'. | true     | true   |
 	And I take a screenshot
 	When I enter data in CRF and save
 		| Field               | Data        |
 		| Start Date          | 08 Jan 2000 |
 		| Current Axis Number | 20          |
 	And I open log line 1
-	Then I verify closed Query with message "'Date Informed Consent Signed' is greater. Please revise." is displayed on Field "Start Date"
-	And I verify closed Query with message "Informed Consent 'Current Distribution Number' is not equal to Concomitant Medications 'Current Axis Number'." is displayed on Field "Current Axis Number"
-
+	Then I verify Query is displayed
+		| Field                | Query Message                                                                                                  | Answered | Closed |
+		| Start Date           | 'Date Informed Consent Signed' is greater. Please revise.                                                      | true     | true   |
+		| Cuurrent Axis Number | 'Informed Consent 'Current Distribution Number' is not equal to Concomitant Medications 'Current Axis Number'. | true     | true   |
 	And I take a screenshot
 	
 #----------------------------------------------------------------------------------------------------------------------------------------	
@@ -152,9 +155,11 @@ Scenario: PB_8.1.2
 	    | End Date             | 12 Jan 2000 |
 	    | Original Axis Number | 10          |
 	    | Current Axis Number  | 18          |
-	And I open log line 2
-	And I verify Requires Response Query with message "'Date Informed Consent Signed' is greater. Please revise." is displayed on Field "Start Date"
-	And I verify Requires Response Query with message "Informed Consent 'Current Distribution Number' is not equal to Concomitant Medications 'Current Axis Number'." is displayed on Field "Current Axis Number"
+	When I open log line 2
+	Then I verify Query is displayed
+		| Field                | Query Message                                                                                                  | Answered | Closed |
+		| Start Date           | 'Date Informed Consent Signed' is greater. Please revise.                                                      | false    | false  |
+		| Cuurrent Axis Number | 'Informed Consent 'Current Distribution Number' is not equal to Concomitant Medications 'Current Axis Number'. | false    | false  |
 	And I take a screenshot
 	And I answer the Query "'Date Informed Consent Signed' is greater. Please revise." on Field "Start Date" with "{answer}"
 	And I answer the Query "Informed Consent 'Current Distribution Number' is not equal to Concomitant Medications 'Current Axis Number'." on Field "Current Axis Number" with "{answer}"
@@ -168,23 +173,23 @@ Scenario: PB_8.1.2
 		| Current Axis Number | 19          |
 	And I save the CRF page
 	And I take a screenshot
-	And I open log line 2
-	And I verify Query is not displayed
-         | Field      | Closed |
-         | Start Date | false  |
-	And I verify Query is displayed
-         | Field               | Closed |
-         | Current Axis Number | true  |
-
+	When I open log line 2
+	Then I verify Query is displayed
+		| Field                | Query Message                                                                                                  | Answered | Closed |
+		| Start Date           | 'Date Informed Consent Signed' is greater. Please revise.                                                      | true     | true   |
+		| Cuurrent Axis Number | 'Informed Consent 'Current Distribution Number' is not equal to Concomitant Medications 'Current Axis Number'. | true     | true   |
 	And I take a screenshot
 	When I enter data in CRF and save
 		| Field               | Data        |
 		| Start Date          | 07 Jan 2000 |
 		| Current Axis Number | 18          |
 	And I open log line 2
-	Then I verify Query with message "'Date Informed Consent Signed' is greater. Please revise." is displayed on Field "Start Date"
-	And I verify Query with message "Informed Consent 'Current Distribution Number' is not equal to Concomitant Medications 'Current Axis Number'." is displayed on Field "Current Axis Number"
+	Then I verify Query is displayed
+		| Field                | Query Message                                                                                                  | Answered | Closed |
+		| Start Date           | 'Date Informed Consent Signed' is greater. Please revise.                                                      | false    | false  |
+		| Cuurrent Axis Number | 'Informed Consent 'Current Distribution Number' is not equal to Concomitant Medications 'Current Axis Number'. | false    | false  |
 	And I take a screenshot
+# ???  Should closed query be displayed
 	
 #----------------------------------------------------------------------------------------------------------------------------------------	
 @release_564_Patch11
@@ -201,9 +206,11 @@ Scenario: PB_8.1.3
 	    | End Date             | 12 Jan 2000 |
 	    | Original Axis Number | 10          |
 	    | Current Axis Number  | 18          |
-	And I open log line 3
-	And I verify Requires Response Query with message "'Date Informed Consent Signed' is greater. Please revise." is displayed on Field "Start Date"
-	And I verify Requires Response Query with message "Informed Consent 'Current Distribution Number' is not equal to Concomitant Medications 'Current Axis Number'." is displayed on Field "Current Axis Number"
+	When I open log line 3
+	Then I verify Query is displayed
+		| Field                | Query Message                                                                                                  | Answered | Closed |
+		| Start Date           | 'Date Informed Consent Signed' is greater. Please revise.                                                      | false    | false  |
+		| Cuurrent Axis Number | 'Informed Consent 'Current Distribution Number' is not equal to Concomitant Medications 'Current Axis Number'. | false    | false  |
 	And I take a screenshot
 	And I cancel the Query "'Date Informed Consent Signed' is greater. Please revise." on Field "Start Date"
 	And I cancel the Query "Informed Consent 'Current Distribution Number' is not equal to Concomitant Medications 'Current Axis Number'." on Field "Current Axis Number"
@@ -213,19 +220,27 @@ Scenario: PB_8.1.3
 		| Current Axis Number | 19          |
 	And I save the CRF page
 	And I take a screenshot
-	And I open log line 3
-	And I verify Field "Start Date" has no Query
-	And I verify Field "Current Axis Number" has no Query
+	When I open log line 3
+	Then I verify Query is not displayed
+		| Field                | Query Message                                                                                                  | Answered | Closed |
+		| Start Date           | 'Date Informed Consent Signed' is greater. Please revise.                                                      | false    | false  |
+		| Cuurrent Axis Number | 'Informed Consent 'Current Distribution Number' is not equal to Concomitant Medications 'Current Axis Number'. | false    | false  |
+	And I verify Query is not displayed
+		| Field                | Query Message                                                                                                  | Answered | Closed |
+		| Start Date           | 'Date Informed Consent Signed' is greater. Please revise.                                                      | true     | true   |
+		| Cuurrent Axis Number | 'Informed Consent 'Current Distribution Number' is not equal to Concomitant Medications 'Current Axis Number'. | true     | true   |
 	And I take a screenshot
 	When I enter data in CRF and save
 		| Field               | Data        |
 		| Start Date          | 07 Jan 2000 |
 		| Current Axis Number | 18          |
 	And I open log line 3
-	Then I verify Requires Response Query with message "'Date Informed Consent Signed' is greater. Please revise." is displayed on Field "Start Date"
-	And I verify Requires Response Query with message "Informed Consent 'Current Distribution Number' is not equal to Concomitant Medications 'Current Axis Number'." is displayed on Field "Current Axis Number"	
+	Then I verify Query is displayed
+		| Field                | Query Message                                                                                                  | Answered | Closed |
+		| Start Date           | 'Date Informed Consent Signed' is greater. Please revise.                                                      | false    | false  |
+		| Cuurrent Axis Number | 'Informed Consent 'Current Distribution Number' is not equal to Concomitant Medications 'Current Axis Number'. | false    | false  |
 	And I take a screenshot
-	
+
 #----------------------------------------------------------------------------------------------------------------------------------------	
 @release_564_Patch11
 @PB_8.2.1
@@ -237,20 +252,24 @@ Scenario: PB_8.2.1 Task Summary
 	When I expand "Open Queries" in Task Summary
 	Then I should see "Screening-Concomitant Medications" in "Open Queries"
 	And I select "Screening-Concomitant Medications" in "Open Queries"
-	And I open log line 3
-	And I verify Requires Response Query with message "'Date Informed Consent Signed' is greater. Please revise." is displayed on Field "Start Date"
-	And I verify Requires Response Query with message "Informed Consent 'Current Distribution Number' is not equal to Concomitant Medications 'Current Axis Number'." is displayed on Field "Current Axis Number"
-	And I take a screenshot	
-	And I select Study "Edit Check Site 8" in "Header"
+	When I open log line 3
+	Then I verify Query is displayed
+		| Field                | Query Message                                                                                                  | Answered | Closed |
+		| Start Date           | 'Date Informed Consent Signed' is greater. Please revise.                                                      | false    | false  |
+		| Cuurrent Axis Number | 'Informed Consent 'Current Distribution Number' is not equal to Concomitant Medications 'Current Axis Number'. | false    | false  |
+	And I take a screenshot
+	And I select Site "Edit Check Site 8" in "Header"
     And I select a Subject "sub{Var(num1)}"
 	When I expand "Cancel Queries" in Task Summary
 	Then I should see "Screening-Concomitant Medications" in "Cancel Queries"
 	And I select "Screening-Concomitant Medications" in "Cancel Queries"
-	And I open log line 3
-	And I verify Requires Response Query with message "'Date Informed Consent Signed' is greater. Please revise." is displayed on Field "Start Date"
-	And I verify Requires Response Query with message "Informed Consent 'Current Distribution Number' is not equal to Concomitant Medications 'Current Axis Number'." is displayed on Field "Current Axis Number"
+	When I open log line 3
+	Then I verify Query is displayed
+		| Field                | Query Message                                                                                                  | Answered | Closed |
+		| Start Date           | 'Date Informed Consent Signed' is greater. Please revise.                                                      | false    | false  |
+		| Cuurrent Axis Number | 'Informed Consent 'Current Distribution Number' is not equal to Concomitant Medications 'Current Axis Number'. | false    | false  |
 	And I take a screenshot
-	
+
 #----------------------------------------------------------------------------------------------------------------------------------------	
 @release_564_Patch11
 @PB_8.3.1
@@ -264,23 +283,30 @@ Scenario: PB_8.3.1 Query Management
 	And I choose "sub{Var(num1)}" from "Subject"
 	And I click button "Advanced Search"
 	And I select Form "Concomitant Medications" in "Search Result"
-	And I open log line 2
-	And I verify Requires Response Query with message "'Date Informed Consent Signed' is greater. Please revise." is displayed on Field "Start Date"
-	And I verify Requires Response Query with message "Informed Consent 'Current Distribution Number' is not equal to Concomitant Medications 'Current Axis Number'." is displayed on Field "Current Axis Number"	
-	And I take a screenshot
-	And I open log line 3
-	And I verify Requires Response Query with message "'Date Informed Consent Signed' is greater. Please revise." is displayed on Field "Start Date"
-	And I verify Requires Response Query with message "Informed Consent 'Current Distribution Number' is not equal to Concomitant Medications 'Current Axis Number'." is displayed on Field "Current Axis Number"	
+	When I open log line 2
+	Then I verify Query is displayed
+		| Field                | Query Message                                                                                                  | Answered | Closed |
+		| Start Date           | 'Date Informed Consent Signed' is greater. Please revise.                                                      | false    | false  |
+		| Cuurrent Axis Number | 'Informed Consent 'Current Distribution Number' is not equal to Concomitant Medications 'Current Axis Number'. | false    | false  |
 	And I take a screenshot
 	And I click button "Cancel"
-	And I enter data in CRF on a new log line and save and reopen
+	When I open log line 3
+	Then I verify Query is displayed
+		| Field                | Query Message                                                                                                  | Answered | Closed |
+		| Start Date           | 'Date Informed Consent Signed' is greater. Please revise.                                                      | false    | false  |
+		| Cuurrent Axis Number | 'Informed Consent 'Current Distribution Number' is not equal to Concomitant Medications 'Current Axis Number'. | false    | false  |
+	And I take a screenshot
+	And I click button "Cancel"
+	When  I enter data in CRF on a new log line and save and reopen
 	    | Field                | Data        |
 	    | Start Date           | 07 Jan 2000 |
 	    | End Date             | 12 Jan 2000 |
 	    | Original Axis Number | 10          |
 	    | Current Axis Number  | 20          |
-	And I verify Requires Response Query with message "'Date Informed Consent Signed' is greater. Please revise." is displayed on Field "Start Date"
-	And I verify Requires Response Query with message "Informed Consent 'Current Distribution Number' is not equal to Concomitant Medications 'Current Axis Number'." is displayed on Field "Current Axis Number"	
+	Then I verify Query is displayed
+		| Field                | Query Message                                                                                                  | Answered | Closed |
+		| Start Date           | 'Date Informed Consent Signed' is greater. Please revise.                                                      | false    | false  |
+		| Cuurrent Axis Number | 'Informed Consent 'Current Distribution Number' is not equal to Concomitant Medications 'Current Axis Number'. | false    | false  |
 	And I take a screenshot
 	And I enter data in CRF
 		| Field               | Data        |
@@ -290,17 +316,21 @@ Scenario: PB_8.3.1 Query Management
 	And I cancel the Query "Informed Consent 'Current Distribution Number' is not equal to Concomitant Medications 'Current Axis Number'." on Field "Current Axis Number"
 	And I save the CRF page
 	And I take a screenshot
-	And I open the last log line
-	And I verify Field "Start Date" has no Query
-	And I verify Field "Current Axis Number" has no Query
+	When I open the last log line
+	Then I verify Query is not displayed
+		| Field                | Query Message                                                                                                  | Answered | Closed |
+		| Start Date           | 'Date Informed Consent Signed' is greater. Please revise.                                                      | true     | true   |
+		| Cuurrent Axis Number | 'Informed Consent 'Current Distribution Number' is not equal to Concomitant Medications 'Current Axis Number'. | true     | true   |
 	And I take a screenshot
 	When I enter data in CRF and save
 		| Field               | Data        |
 		| Start Date          | 07 Jan 2000 |
 		| Current Axis Number | 18          |
 	And I open the last log line
-	Then I verify Requires Response Query with message "'Date Informed Consent Signed' is greater. Please revise." is displayed on Field "Start Date"
-	And I verify Requires Response Query with message "Informed Consent 'Current Distribution Number' is not equal to Concomitant Medications 'Current Axis Number'." is displayed on Field "Current Axis Number"
+	Then I verify Query is displayed
+		| Field                | Query Message                                                                                                  | Answered | Closed |
+		| Start Date           | 'Date Informed Consent Signed' is greater. Please revise.                                                      | false    | false  |
+		| Cuurrent Axis Number | 'Informed Consent 'Current Distribution Number' is not equal to Concomitant Medications 'Current Axis Number'. | false    | false  |
 	And I take a screenshot
 	
 #----------------------------------------------------------------------------------------------------------------------------------------	
@@ -323,8 +353,10 @@ Scenario: PB_8.3.2
 	    | End Date             | 12 Jan 2000 |
 	    | Original Axis Number | 10          |
 	    | Current Axis Number  | 18          |
-	And I verify Requires Response Query with message "'Date Informed Consent Signed' is greater. Please revise." is displayed on Field "Start Date"
-	And I verify Requires Response Query with message "Informed Consent 'Current Distribution Number' is not equal to Concomitant Medications 'Current Axis Number'." is displayed on Field "Current Axis Number"		
+    And I verify Query is displayed
+		| Field                | Query Message                                                                                                 | Answered | Closed |
+		| Start Date           | 'Date Informed Consent Signed' is greater. Please revise.                                                     | false    | false  |
+		| Cuurrent Axis Number | Informed Consent 'Current Distribution Number' is not equal to Concomitant Medications 'Current Axis Number'. | false    | false  |
 	And I take a screenshot
 	And I answer the Query "'Date Informed Consent Signed' is greater. Please revise." on Field "Start Date" with "{answer}"
 	And I answer the Query "Informed Consent 'Current Distribution Number' is not equal to Concomitant Medications 'Current Axis Number'." on Field "Current Axis Number" with "{answer}"
@@ -339,12 +371,10 @@ Scenario: PB_8.3.2
 	And I save the CRF page
 	And I take a screenshot
 	And I open the last log line
-	And I verify Query is not displayed
-		| Field      | Query Message                                           | Answered | Closed |
-		| Start Date | 'Date Informed Consent Signed' can not be greater than. | true     | true   |
-	And I verify Query is not displayed
-		| Field               | Query Message                                                     | Answered | Closed |
-		| Current Axis Number | 'Current Distribution Number' is not equal 'Current Axis Number'. | true     | true   |
+	And I verify Query is displayed
+		| Field               | Query Message                                                                                                 | Answered | Closed |
+		| Start Date          | 'Date Informed Consent Signed' is greater. Please revise.                                                     | true     | true   |
+		| Current Axis Number | Informed Consent 'Current Distribution Number' is not equal to Concomitant Medications 'Current Axis Number'. | true     | true   |
 	And I take a screenshot
 	When I enter data in CRF and save
 		| Field               | Data        |
@@ -352,17 +382,17 @@ Scenario: PB_8.3.2
 		| Current Axis Number | 18          |
 	And I open the last log line
 	Then I verify Query is not displayed
-	# DT 14230
-	# The step definition is not working properly. Automation passed but it should not pass
-		| Field      | Query Message                                           | Answered | Closed |
-		| Start Date | 'Date Informed Consent Signed' can not be greater than. | true     | true   |
-	And I verify Query is not displayed
-		| Field               | Query Message                                                     | Answered | Closed |
-		| Current Axis Number | 'Current Distribution Number' is not equal 'Current Axis Number'. | true     | true   |
-	And I verify Requires Response Query with message "'Date Informed Consent Signed' is greater. Please revise." is displayed on Field "Start Date"
-	And I verify Requires Response Query with message "Informed Consent 'Current Distribution Number' is not equal to Concomitant Medications 'Current Axis Number'." is displayed on Field "Current Axis Number"
+		| Field               | Query Message                                                                                                 | Answered | Closed |
+		| Start Date          | 'Date Informed Consent Signed' is greater. Please revise.                                                     | true     | true   |
+		| Current Axis Number | Informed Consent 'Current Distribution Number' is not equal to Concomitant Medications 'Current Axis Number'. | true     | true   |
+	And I take a screenshot	
+	And I verify Query is displayed
+		| Field                | Query Message                                                                                                  | Answered | Closed |
+		| Start Date           | 'Date Informed Consent Signed' is greater. Please revise.                                                      | false    | false  |
+		| Cuurrent Axis Number | Informed Consent 'Current Distribution Number' is not equal to Concomitant Medications 'Current Axis Number'. | false    | false  |
 	And I take a screenshot
-	
+	# ???? Is that correct?
+
 #----------------------------------------------------------------------------------------------------------------------------------------	
 @release_564_Patch11
 @PB_8.4.1
@@ -381,8 +411,11 @@ Scenario: PB_8.4.1 Migrate Subject
         |Standard 1  |6    |
 	    |Log Field 1 |5    |
 	    |Log Field 2 |2    |
-	And I open log line 1
-	And I verify Requires Response Query with message "Query Opened on Log Field 1" is displayed on Field "Log Field 1"
+	When I open log line 1
+	Then I verify Query is displayed
+		| Field       | Query Message               | Answered | Closed |
+		| Log Field 1 | Query Opened on Log Field 1 | false    | false  |
+	And I take a screenshot
 	And I answer the Query "Query Opened on Log Field 1" on Field "Log Field 1" with "answer query"
 	And I save the CRF page
 	And I open log line 1
@@ -400,8 +433,11 @@ Scenario: PB_8.4.1 Migrate Subject
         |Standard 1  |6    |
 	    |Log Field 1 |5    |
 	    |Log Field 2 |2    |
-	And I open log line 1
-	And I verify Requires Response Query with message "Query Opened on Log Field 1" is displayed on Field "Log Field 1"	
+	When I open log line 1
+	Then I verify Query is displayed
+		| Field       | Query Message               | Answered | Closed |
+		| Log Field 1 | Query Opened on Log Field 1 | false    | false  |
+	And I take a screenshot
 	And I answer the Query "Query Opened on Log Field 1" on Field "Log Field 1" with "answer query"
 	And I save the CRF page
 	And I open log line 1
@@ -412,6 +448,7 @@ Scenario: PB_8.4.1 Migrate Subject
 	And I close the Query "Query Opened on Log Field 1" on Field "Log Field 1"
 	And I save the CRF page
 	And I take a screenshot	
+
 	And I navigate to "Home"
 	And I navigate to "Architect"
 	And I select "AM Edit Check Study" in "Active Projects"
@@ -442,16 +479,20 @@ Scenario: PB_8.4.1 Migrate Subject
 	    |Field       |Data |
 	    |Log Field 1 |4    |
 	And I open the last log line	
-	Then I verify Query with message "Query Opened on Log Field 1" is not displayed on Field "Log Field 1"
+	Then I verify Query is not displayed
+		| Field       | Query Message               | Answered | Closed |
+		| Log Field 1 | Query Opened on Log Field 1 | false    | false  |
 	And I take a screenshot
 	And I click button "Cancel"
 	And I add a new log line
-	And I enter data in CRF and save
+	When I enter data in CRF and save
 		|Field       |Data |
 	    |Log Field 1 |3    |
 	    |Log Field 2 |2    |
 	And I open the last log line
-	And I verify Query with message "Query Opened on Log Field 1" is not displayed on Field "Log Field 1"
+	Then I verify Query is not displayed
+		| Field       | Query Message               | Answered | Closed |
+		| Log Field 1 | Query Opened on Log Field 1 | false    | false  |
 	And I take a screenshot	
 	And I select Site "AM Edit Site" in "Header"
     And I select a Subject "sub{Var(num3)}"
@@ -461,7 +502,7 @@ Scenario: PB_8.4.1 Migrate Subject
 		|Field       |Data |
         |Standard 1  |8	   |
 	And I open the last log line
-	Then I verify Query is displayed
+	Then I verify Query is not displayed
 		| Field       | Query Message               | Answered | Closed |
 		| Log Field 1 | Query Opened on Log Field 1 | true     | true   |
 	And I take a screenshot	
@@ -472,7 +513,9 @@ Scenario: PB_8.4.1 Migrate Subject
 	    |Log Field 1 |6    |
 	    |Log Field 2 |2    |
 	And I open the last log line
-	Then I verify Query with message "Query Opened on Log Field 1" is not displayed on Field "Log Field 1"
+	Then I verify Query is not displayed
+		| Field       | Query Message               | Answered | Closed |
+		| Log Field 1 | Query Opened on Log Field 1 | true     | true   |
 	And I take a screenshot	
 	And I navigate to "Home"
 	And I navigate to "Architect"
@@ -498,27 +541,36 @@ Scenario: PB_8.4.1 Migrate Subject
     And I select a Subject "sub{Var(num2)}"
 	And I select Form "Mixed Form"
 	When I open log line 1
-	Then I verify Query with message "Query Opened on Log Field 1" is displayed on Field "Log Field 1"
+	Then I verify Query is displayed
+		| Field       | Query Message               | Answered | Closed |
+		| Log Field 1 | Query Opened on Log Field 1 | false    | false  |
 	And I take a screenshot	
 	And I click button "Cancel"
 	When I open log line 2
-	Then I verify Query with message "Query Opened on Log Field 1" is displayed on Field "Log Field 1"
+	Then I verify Query is displayed
+		| Field       | Query Message               | Answered | Closed |
+		| Log Field 1 | Query Opened on Log Field 1 | false    | false  |
 	And I take a screenshot	
 	And I select Site "AM Edit Site" in "Header"
     And I select a Subject "sub{Var(num3)}"
 	And I select Form "Mixed Form"
 	When I open log line 1
-	Then I verify Query with message "Query Opened on Log Field 1" is displayed on Field "Log Field 1"
-	And I take a screenshot	
+	Then I verify Query is displayed
+		| Field       | Query Message               | Answered | Closed |
+		| Log Field 1 | Query Opened on Log Field 1 | false    | false  |
+	And I take a screenshot
 	And I click button "Cancel"
 	When I open log line 2
-	Then I verify Query with message "Query Opened on Log Field 1" is displayed on Field "Log Field 1"
+	Then I verify Query is displayed
+		| Field       | Query Message               | Answered | Closed |
+		| Log Field 1 | Query Opened on Log Field 1 | false    | false  |
 	And I take a screenshot
 	
 #----------------------------------------------------------------------------------------------------------------------------------------	
 @release_564_Patch11
 @PB_8.5.1
-@Validation
+@ignore
+# The feature is not implemented in 5.6.3
 Scenario: PB_8.5.1 Publish Checks
 
 	And I navigate to "Architect"
@@ -539,7 +591,7 @@ Scenario: PB_8.5.1 Publish Checks
 		| Field            | Data              |
 		| Subject Number   | {RndNum<num4>(5)} |
 		| Subject Initials | sub               |
-	#And I note down "crfversion" to "ver#"
+	And I note down "crfversion" to "ver#"
 	And I select Form "Mixed Form"
 	And I enter data in CRF and save
 	    |Field       |Data |
@@ -547,7 +599,9 @@ Scenario: PB_8.5.1 Publish Checks
 	    |Log Field 1 |5    |
 	    |Log Field 2 |2    |
 	And I open the last log line
-	And I verify Query with message "Query Opened on Log Field 1" is displayed on Field "Log Field 1"
+	Then I verify Query is displayed
+		| Field       | Query Message               | Answered | Closed |
+		| Log Field 1 | Query Opened on Log Field 1 | false    | false  |
 	And I take a screenshot
 	And I answer the Query "Query Opened on Log Field 1" on Field "Log Field 1" with "answer query"
 	And I save the CRF page
@@ -632,8 +686,11 @@ Scenario: PB_8.6.1 Queries verification on data points with Freeze, Hard lock an
         |Standard 1  |6    |
 	    |Log Field 1 |5    |
 	    |Log Field 2 |2    |
-	And I open the last log line
-	And I verify Requires Response Query with message "Query Opened on Log Field 1" is displayed on Field "Log Field 1"
+	When I open the last log line
+	Then I verify Query is displayed
+         | Field       | Query Message               | Answered | Closed |
+         | Log Field 1 | Query Opened on Log Field 1 | false    | false  |
+	And I take a screenshot
 	And I answer the Query "Query Opened on Log Field 1" on Field "Log Field 1" with "answered"
 	And I save the CRF page
 	And I open the last log line
@@ -648,15 +705,17 @@ Scenario: PB_8.6.1 Queries verification on data points with Freeze, Hard lock an
 	And I save the CRF page
 	And I open the last log line
 	And I take a screenshot
-
 	And I click button "Cancel"
 	And I add a new log line
 	And I enter data in CRF and save
 	    |Field       |Data |
 	    |Log Field 1 |5    |
 	    |Log Field 2 |2    |
-	And I open the last log line
-	And I verify Requires Response Query with message "Query Opened on Log Field 1" is displayed on Field "Log Field 1"
+	When I open the last log line
+	Then I verify Query is displayed
+         | Field       | Query Message               | Answered | Closed |
+         | Log Field 1 | Query Opened on Log Field 1 | false    | false  |
+	And I take a screenshot
 	And I answer the Query "Query Opened on Log Field 1" on Field "Log Field 1" with "answered"
 	And I save the CRF page
 	And I open the last log line
@@ -671,15 +730,17 @@ Scenario: PB_8.6.1 Queries verification on data points with Freeze, Hard lock an
 	And I save the CRF page
 	And I open the last log line
 	And I take a screenshot
-
 	And I click button "Cancel"
 	And I add a new log line
 	And I enter data in CRF and save
 	    |Field       |Data |
 	    |Log Field 1 |5    |
 	    |Log Field 2 |2    |
-	And I open the last log line
-	And I verify Requires Response Query with message "Query Opened on Log Field 1" is displayed on Field "Log Field 1"
+	When I open the last log line
+	Then I verify Query is displayed
+         | Field       | Query Message               | Answered | Closed |
+         | Log Field 1 | Query Opened on Log Field 1 | false    | false  |
+	And I take a screenshot
 	And I answer the Query "Query Opened on Log Field 1" on Field "Log Field 1" with "answered"
 	And I save the CRF page
 	And I open the last log line
@@ -695,7 +756,6 @@ Scenario: PB_8.6.1 Queries verification on data points with Freeze, Hard lock an
 	And I choose "3" from "Inactivate"
 	And I click button "Inactivate"
 	And I take a screenshot
-
 	When I enter data in CRF and save
 		|Field       |Data |
         |Standard 1  |7    |
