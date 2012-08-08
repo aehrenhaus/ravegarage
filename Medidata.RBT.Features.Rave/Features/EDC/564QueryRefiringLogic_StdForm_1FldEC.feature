@@ -31,8 +31,8 @@ Scenario: PB_US12940_01A As an EDC user, when I entered bad data in field A that
       |Field		|Data	 |
       |Age 1		|17		 |
    	And I verify Query is displayed
-	  | Field | Query Message                                                                        | Closed |
-	  | Age 1 | Age must be greater than or equal to 18 and less than or equal to 65. Please verify. | false  |
+	  | Field | Query Message                                                                        | Closed | Answered |
+	  | Age 1 | Age must be greater than or equal to 18 and less than or equal to 65. Please verify. | false  | false    |
 	And I take a screenshot
 	When I answer the Query "Age must be greater than or equal to 18 and less than or equal to 65. Please verify." on Field "Age 1" with "Data will be changed."
 	And I save the CRF page	  
@@ -48,15 +48,15 @@ Scenario: PB_US12940_01A As an EDC user, when I entered bad data in field A that
       |Field		|Data   |
       |Age 1		|17		|
 	And I take a screenshot
-	And I verify Query is not displayed
-	| Field   | Query Message                                                                        | Closed |
-	| Age 1   | Age must be greater than or equal to 18 and less than or equal to 65. Please verify. | false  |
+	And I verify Query is displayed
+	| Field | Query Message                                                                        | Closed | Answered |
+	| Age 1 | Age must be greater than or equal to 18 and less than or equal to 65. Please verify. | true   | true     |
 	And I take a screenshot
 
 @release_564_Patch11
 @PB_US12940_01B
 @Validation		
-Scenario: PB_US12940_01B As an EDC user, when I entered bad data in field A that resulted in the system opening a query on field A, and I entered good data in field A, if I then entered the same bad data in field A, then the system should refire a query on field A. Query with requires response = false and requires manual close = false.
+Scenario: PB_US12940_01B As an EDC user, when I entered bad data in field A that resulted in the system opening a query on field A, and I entered good data in field A, if I then entered the same bad data in field A as when the query opened, then the system should refire a query on field A. Query with requires response = false and requires manual close = false.
     And I create a Subject
 	| Field            | Data              |
 	| Subject Initials | SUB               |
@@ -67,22 +67,22 @@ Scenario: PB_US12940_01B As an EDC user, when I entered bad data in field A that
       |Field		|Data	 |
       |Age 2		|17		 |
    	And I verify Query is displayed
-	  | Field | Query Message                                                                        | Closed |
-	  | Age 2 | Age must be greater than or equal to 18 and less than or equal to 65. Please verify. | false  |
+	  | Field | Query Message                                                                        | Closed | Answered |
+	  | Age 2 | Age must be greater than or equal to 18 and less than or equal to 65. Please verify. | false  |false     |
 	And I take a screenshot	  		  
 	And I enter data in CRF and save
       |Field		|Data  	|
       |Age 2		|20		|
 	And I verify Query is not displayed
-	  | Field |
-	  | Age 2 |
+	  | Field |Query Message                                                                        | Closed | Answered |
+	  | Age 2 |Age must be greater than or equal to 18 and less than or equal to 65. Please verify. | true   | true     |
 	And I take a screenshot		  		  
 	And I enter data in CRF and save
       |Field		|Data  |
       |Age 2		|17	   |
    	And I verify Query is displayed
-	  | Field | Query Message                                                                        | Closed |
-	  | Age 2 | Age must be greater than or equal to 18 and less than or equal to 65. Please verify. | false  |
+	  | Field | Query Message                                                                        | Closed | Answered |
+	  | Age 2 | Age must be greater than or equal to 18 and less than or equal to 65. Please verify. | false  | false    |
 	And I take a screenshot	
 
 @release_564_Patch11
@@ -99,14 +99,14 @@ Scenario: PB_US12940_01C As an EDC user, when I entered bad data in field A that
       |Field		|Data	 |
       |Age 3		|17		 |
    	And I verify Query is displayed
-	  | Field | Query Message                                                                        | Closed |
-	  | Age 3 | Age must be greater than or equal to 18 and less than or equal to 65. Please verify. | false  |
+	  | Field | Query Message                                                                        | Closed | Answered |
+	  | Age 3 | Age must be greater than or equal to 18 and less than or equal to 65. Please verify. | false  | false    |
 	And I take a screenshot		  
 	When I answer the Query "Age must be greater than or equal to 18 and less than or equal to 65. Please verify." on Field "Age 3" with "Data will be changed."
 	And I save the CRF page	  
 	And I verify Query is not displayed
-	  | Field |
-	  | Age 3 |
+	  | Field | Query Message                                                                        | Closed | Answered |
+	  | Age 3 | Age must be greater than or equal to 18 and less than or equal to 65. Please verify. | true   | false    |
 	And I take a screenshot	  
 	And I enter data in CRF and save
       |Field		|Data    	|
@@ -116,14 +116,14 @@ Scenario: PB_US12940_01C As an EDC user, when I entered bad data in field A that
       |Field		|Data   |
       |Age 3		|17		|
 	And I verify Query is not displayed
-	| Field   | Query Message                                                                        | Closed |
-	| Age 3   | Age must be greater than or equal to 18 and less than or equal to 65. Please verify. | false  |
+	  | Field | Query Message                                                                        | Closed | Answered |
+	  | Age 3 | Age must be greater than or equal to 18 and less than or equal to 65. Please verify. | true   | false    |
 	And I take a screenshot	
 
 @release_564_Patch11
 @PB_US12940_01D	
 @Validation	
-Scenario: PB_US12940_01D As an EDC user, when I entered bad data in field A that resulted in the system opening a query on field A, and the query is then closed, and I entered good data in field A, if I then entered the same bad data in field A as when the query was closed, then the system should refire a query on field A. Query with requires response = false and requires manual close = true.
+Scenario: PB_US12940_01D As an EDC user, when I entered bad data in field A that resulted in the system opening a query on field A, and I entered new bad data in field A and close the query, and I entered good data in field A, if I then entered the same bad data in field A as when the query is closed,
 	And I create a Subject
 	| Field            | Data              |
 	| Subject Initials | SUB               |
@@ -134,8 +134,8 @@ Scenario: PB_US12940_01D As an EDC user, when I entered bad data in field A that
       |Field		|Data	 |
       |Age 4		|17		 |
    	And I verify Query is displayed
-	  | Field | Query Message                                                                        | Closed |
-	  | Age 4 | Age must be greater than or equal to 18 and less than or equal to 65. Please verify. | false  |
+	  | Field | Query Message                                                                        | Closed | Answered |
+	  | Age 4 | Age must be greater than or equal to 18 and less than or equal to 65. Please verify. | false  | false    |
 	And I take a screenshot	  	  
 	And I enter data in CRF and save
       |Field		|Data  	|
@@ -148,8 +148,8 @@ Scenario: PB_US12940_01D As an EDC user, when I entered bad data in field A that
       |Field		|Data  |
       |Age 4		|17	   |
   	And I verify Query is displayed
-	  | Field | Query Message                                                                        | Closed |
-	  | Age 4 | Age must be greater than or equal to 18 and less than or equal to 65. Please verify. | false  |
+	  | Field | Query Message                                                                        | Closed | Answered |
+	  | Age 4 | Age must be greater than or equal to 18 and less than or equal to 65. Please verify. | false  | false    |
 	And I take a screenshot	
 
 @release_564_Patch11
@@ -166,8 +166,8 @@ Scenario: PB_US12940_02A As an EDC user, when I entered bad data in field A that
       |Field		|Data	 |
       |Age 1		|17		 |
    	And I verify Query is displayed
-	  | Field | Query Message                                                                        | Closed |
-	  | Age 1 | Age must be greater than or equal to 18 and less than or equal to 65. Please verify. | false  |
+	  | Field | Query Message                                                                        | Closed | Answered |
+	  | Age 1 | Age must be greater than or equal to 18 and less than or equal to 65. Please verify. | false  | false    |
 	And I take a screenshot	  
     When I answer the Query "Age must be greater than or equal to 18 and less than or equal to 65. Please verify." on Field "Age 1" with "Data will be changed."
 	And I save the CRF page	  
@@ -183,8 +183,8 @@ Scenario: PB_US12940_02A As an EDC user, when I entered bad data in field A that
       |Field		|Data  |
       |Age 1		|16	   |
 	And I verify Query is displayed
-	  | Field | Query Message                                                                        | Closed |
-	  | Age 1 | Age must be greater than or equal to 18 and less than or equal to 65. Please verify. | false  |
+	  | Field | Query Message                                                                        | Closed | Answered |
+	  | Age 1 | Age must be greater than or equal to 18 and less than or equal to 65. Please verify. | false  | false    |
 	And I take a screenshot	
 
 @release_564_Patch11
@@ -201,22 +201,22 @@ Scenario: PB_US12940_02B As an EDC user, when I entered bad data in field A that
       |Field		|Data	 |
       |Age 2		|17		 |
    	And I verify Query is displayed
-	  | Field | Query Message                                                                        | Closed |
-	  | Age 2 | Age must be greater than or equal to 18 and less than or equal to 65. Please verify. | false  |
+	  | Field | Query Message                                                                        | Closed | Answered |
+	  | Age 2 | Age must be greater than or equal to 18 and less than or equal to 65. Please verify. | false  | false    |
 	And I take a screenshot	  
 	And I enter data in CRF and save
       |Field		|Data  	|
       |Age 2		|20		|
 	And I verify Query is not displayed
-      |Field		|
-      |Age 2		|
+	  | Field | Query Message                                                                        | Closed | Answered |
+	  | Age 2 | Age must be greater than or equal to 18 and less than or equal to 65. Please verify. | true   | false    |
 	And I take a screenshot		  
 	And I enter data in CRF and save
       |Field		|Data   |
       |Age 2		|16		|
    	And I verify Query is displayed
-	  | Field | Query Message                                                                        | Closed |
-	  | Age 2 | Age must be greater than or equal to 18 and less than or equal to 65. Please verify. | false  |
+	  | Field | Query Message                                                                        | Closed | Answered |
+	  | Age 2 | Age must be greater than or equal to 18 and less than or equal to 65. Please verify. | false  | false    |
 	And I take a screenshot	
 
 @release_564_Patch11
@@ -233,14 +233,14 @@ Scenario: PB_US12940_02C As an EDC user, when I entered bad data in field A that
       |Field		|Data	 |
       |Age 3		|17		 |
    	And I verify Query is displayed
-	  | Field | Query Message                                                                        | Closed |
-	  | Age 3 | Age must be greater than or equal to 18 and less than or equal to 65. Please verify. | false  |
+	  | Field | Query Message                                                                        | Closed | Answered |
+	  | Age 3 | Age must be greater than or equal to 18 and less than or equal to 65. Please verify. | false  | false    |
 	And I take a screenshot	  
 	When I answer the Query "Age must be greater than or equal to 18 and less than or equal to 65. Please verify." on Field "Age 3" with "Data will be changed."
 	And I save the CRF page	  
 	And I verify Query is not displayed
-	  | Field |
-	  | Age 3 |
+	  | Field | Query Message                                                                        | Closed | Answered |
+	  | Age 3 | Age must be greater than or equal to 18 and less than or equal to 65. Please verify. | true   | false    |
 	And I take a screenshot		  
 	And I enter data in CRF and save
       |Field		|Data  	|
@@ -250,14 +250,14 @@ Scenario: PB_US12940_02C As an EDC user, when I entered bad data in field A that
       |Field		|Data  |
       |Age 3		|16	   |
    	And I verify Query is displayed
-	  | Field | Query Message                                                                        | Closed |
-	  | Age 3 | Age must be greater than or equal to 18 and less than or equal to 65. Please verify. | false  |
+	  | Field | Query Message                                                                        | Closed | Answered |
+	  | Age 3 | Age must be greater than or equal to 18 and less than or equal to 65. Please verify. | false  | false    |
 	And I take a screenshot	
 
 @release_564_Patch11
 @PB_US12940_02D	
 @Validation	
-Scenario: PB_US12940_02D As an EDC user, when I entered bad data in field A that resulted in the system opening a query on field A, and the query is then closed, if I then entered new bad data in field A, then the system should refire a query on field A. Query with requires response = false and requires manual close = true.
+Scenario: PB_US12940_02D As an EDC user, when I entered bad data in field A that resulted in the system opening a query on field A, and I entered new bad data in field A and close the query, if I then entered new bad data in field A, then the system should refire a query on field A. Query with requires response = false and requires manual close = true.
 	And I create a Subject
 	| Field            | Data              |
 	| Subject Initials | SUB               |
@@ -268,8 +268,8 @@ Scenario: PB_US12940_02D As an EDC user, when I entered bad data in field A that
       |Field		|Data	 |
       |Age 4		|17		 |
    	And I verify Query is displayed
-	  | Field | Query Message                                                                        | Closed |
-	  | Age 4 | Age must be greater than or equal to 18 and less than or equal to 65. Please verify. | false  |
+	  | Field | Query Message                                                                        | Closed | Answered |
+	  | Age 4 | Age must be greater than or equal to 18 and less than or equal to 65. Please verify. | false  | false    |
 	And I take a screenshot	  
 	And I enter data in CRF and save
       |Field		|Data  	|
@@ -282,8 +282,8 @@ Scenario: PB_US12940_02D As an EDC user, when I entered bad data in field A that
       | Field | Data |
       | Age 4 | 16   |
   	And I verify Query is displayed
-	  | Field | Query Message                                                                        | Closed |
-	  | Age 4 | Age must be greater than or equal to 18 and less than or equal to 65. Please verify. | false  |
+	  | Field | Query Message                                                                        | Closed | Answered |
+	  | Age 3 | Age must be greater than or equal to 18 and less than or equal to 65. Please verify. | false  | false    |
 	And I take a screenshot	
 
 @release_564_Patch11
@@ -300,8 +300,8 @@ Scenario: PB_US12940_03A As an EDC user, when I entered bad data in field A that
       |Field		|Data	 |
       |Age 1		|17		 |
    	And I verify Query is displayed
-	  | Field | Query Message                                                                        | Closed |
-	  | Age 1 | Age must be greater than or equal to 18 and less than or equal to 65. Please verify. | false  |
+	  | Field | Query Message                                                                        | Closed | Answered |
+	  | Age 1 | Age must be greater than or equal to 18 and less than or equal to 65. Please verify. | false  | false    |
 	And I take a screenshot	  
     When I answer the Query "Age must be greater than or equal to 18 and less than or equal to 65. Please verify." on Field "Age 1" with "Data will be changed."
 	And I enter data in CRF and save
@@ -309,14 +309,16 @@ Scenario: PB_US12940_03A As an EDC user, when I entered bad data in field A that
       |Age 1		|20		|
 	And I close the Query "Age must be greater than or equal to 18 and less than or equal to 65. Please verify." on Field "Age 1"
 	And I save the CRF page	
-	Then I verify closed Query with message "Data will be changed." is displayed on Field "Age 1"
+	And I verify Query is displayed
+	  | Field | Query Message                                                                        | Closed | Answered |
+	  | Age 1 | Age must be greater than or equal to 18 and less than or equal to 65. Please verify. | true   | true     |
 	And I take a screenshot	  
 	And I enter data in CRF and save
       |Field		|Data  |
       |Age 1		|17	   |
 	And I verify Query is displayed
-	  | Field | Query Message                                                                        | Closed |
-	  | Age 1 | Age must be greater than or equal to 18 and less than or equal to 65. Please verify. | false  |
+	  | Field | Query Message                                                                        | Closed | Answered |
+	  | Age 1 | Age must be greater than or equal to 18 and less than or equal to 65. Please verify. | false  | false    |
 	And I take a screenshot	
 
 @release_564_Patch11
@@ -333,23 +335,23 @@ Scenario: PB_US12940_03B As an EDC user, when I entered bad data in field A that
       |Field		|Data	 |
       |Age 2		|17		 |
    	And I verify Query is displayed
-	  | Field | Query Message                                                                        | Closed |
-	  | Age 2 | Age must be greater than or equal to 18 and less than or equal to 65. Please verify. | false  |
+	  | Field | Query Message                                                                        | Closed | Answered |
+	  | Age 2 | Age must be greater than or equal to 18 and less than or equal to 65. Please verify. | false  | false    |
 	And I take a screenshot	  
 	And I enter data in CRF and save
       |Field		|Data  	|
       |Age 2		|20		|
 	And I save the CRF page
 	And I verify Query is not displayed
-      |Field		|
-      |Age 2		|	  
+	  | Field | Query Message                                                                        | Closed | Answered |
+	  | Age 2 | Age must be greater than or equal to 18 and less than or equal to 65. Please verify. | true   | false    |	  
 	And I take a screenshot		  
 	And I enter data in CRF and save
       |Field		|Data  |
       |Age 2		|17	   |
    	And I verify Query is displayed
-	  | Field | Query Message                                                                        | Closed |
-	  | Age 2 | Age must be greater than or equal to 18 and less than or equal to 65. Please verify. | false  |
+	  | Field | Query Message                                                                        | Closed | Answered |
+	  | Age 2 | Age must be greater than or equal to 18 and less than or equal to 65. Please verify. | false  | false    |
 	And I take a screenshot
 
 @release_564_Patch11
@@ -366,23 +368,23 @@ Scenario: PB_US12940_03C As an EDC user, when I entered bad data in field A that
       |Field		|Data	 |
       |Age 3		|17		 |
    	And I verify Query is displayed
-	  | Field | Query Message                                                                        | Closed |
-	  | Age 3 | Age must be greater than or equal to 18 and less than or equal to 65. Please verify. | false  |
+	  | Field | Query Message                                                                        | Closed | Answered |
+	  | Age 3 | Age must be greater than or equal to 18 and less than or equal to 65. Please verify. | false  | false    |
 	And I take a screenshot	  
     When I answer the Query "Age must be greater than or equal to 18 and less than or equal to 65. Please verify." on Field "Age 3" with "Data will be changed."
 	And I enter data in CRF and save
       |Field		|Data  	|
       |Age 3		|20		|
 	And I verify Query is not displayed
-      | Field |
-      | Age 3 |
+	  | Field | Query Message                                                                        | Closed | Answered |
+	  | Age 3 | Age must be greater than or equal to 18 and less than or equal to 65. Please verify. | true   | false    |
 	And I take a screenshot		  
 	And I enter data in CRF and save
       | Field | Data |
       | Age 3 | 17   |
    	And I verify Query is displayed
-	  | Field | Query Message                                                                        | Closed |
-	  | Age 3 | Age must be greater than or equal to 18 and less than or equal to 65. Please verify. | false  |
+	  | Field | Query Message                                                                        | Closed | Answered |
+	  | Age 3 | Age must be greater than or equal to 18 and less than or equal to 65. Please verify. | false  | false    |
 	And I take a screenshot
 
 @release_564_Patch11
@@ -399,22 +401,24 @@ Scenario: PB_US12940_03D As an EDC user, when I entered bad data in field A that
       |Field		|Data	 |
       |Age 4		|17		 |
    	And I verify Query is displayed
-	  | Field | Query Message                                                                        | Closed |
-	  | Age 4 | Age must be greater than or equal to 18 and less than or equal to 65. Please verify. | false  |
+	  | Field | Query Message                                                                        | Closed | Answered |
+	  | Age 4 | Age must be greater than or equal to 18 and less than or equal to 65. Please verify. | false  | false    |
 	And I take a screenshot	  
 	And I enter data in CRF and save
       | Field | Data |
       | Age 4 | 20   |
 	And I close the Query "Age must be greater than or equal to 18 and less than or equal to 65. Please verify." on Field "Age 4"
 	And I save the CRF page
-	And I verify closed Query with message "Age must be greater than or equal to 18 and less than or equal to 65. Please verify." is displayed on Field "Age 4"
+	And I verify Query is displayed
+	  | Field | Query Message                                                                        | Closed | Answered |
+	  | Age 4 | Age must be greater than or equal to 18 and less than or equal to 65. Please verify. | true   | true     |
 	And I take a screenshot		  
 	And I enter data in CRF and save
       | Field | Data |
       | Age 4 | 17   |
   	And I verify Query is displayed
-	  | Field | Query Message                                                                        | Closed |
-	  | Age 4 | Age must be greater than or equal to 18 and less than or equal to 65. Please verify. | false  |
+	  | Field | Query Message                                                                        | Closed | Answered |
+	  | Age 4 | Age must be greater than or equal to 18 and less than or equal to 65. Please verify. | false  | false    |
 	And I take a screenshot
 
 @release_564_Patch11
@@ -431,8 +435,8 @@ Scenario: PB_US12940_04A As an EDC user, when I entered bad data in field A that
       |Field		|Data	 |
       |Age 1		|17		 |
    	And I verify Query is displayed
-	  | Field | Query Message                                                                        | Closed |
-	  | Age 1 | Age must be greater than or equal to 18 and less than or equal to 65. Please verify. | false  |
+	  | Field | Query Message                                                                        | Closed | Answered |
+	  | Age 1 | Age must be greater than or equal to 18 and less than or equal to 65. Please verify. | false  | false    |
 	And I take a screenshot	  
     When I answer the Query "Age must be greater than or equal to 18 and less than or equal to 65. Please verify." on Field "Age 1" with "Data will be changed."
 	And I enter data in CRF and save
@@ -444,27 +448,29 @@ Scenario: PB_US12940_04A As an EDC user, when I entered bad data in field A that
 	And I take a screenshot
 	And I close the Query "Age must be greater than or equal to 18 and less than or equal to 65. Please verify." on Field "Age 1"
 	And I save the CRF page
-	Then I verify closed Query with message "Data will be changed." is displayed on Field "Age 1"
+	And I verify Query is displayed
+     | Field | Query Message                                                                        | Closed | Answered |
+     | Age 1 | Age must be greater than or equal to 18 and less than or equal to 65. Please verify. | true   | true     |
 	And I take a screenshot
 	And I enter data in CRF and save
       | Field | Data |
       | Age 1 | 20   |
-	And I verify Query is not displayed
-      | Field | Closed |
-      | Age 1 | false  |
+	And I verify Query is displayed
+     | Field | Query Message                                                                        | Closed | Answered |
+     | Age 1 | Age must be greater than or equal to 18 and less than or equal to 65. Please verify. | true   | true     |
 	And I take a screenshot
 	And I enter data in CRF and save
       | Field | Data |
       | Age 1 | 71   |
-	And I verify Query is not displayed
+	And I verify Query is displayed
 	  | Field | Query Message                                                                        | Closed | Answered |
-	  | Age 1 | Age must be greater than or equal to 18 and less than or equal to 65. Please verify. | true   | false    |
+	  | Age 1 | Age must be greater than or equal to 18 and less than or equal to 65. Please verify. | true   | true     |
 	And I take a screenshot	
 
 @release_564_Patch11
 @PB_US12940_04B	
 @Validation	
-Scenario: PB_US12940_04B As an EDC user, when I entered bad data in field A that resulted in the system opening a query on field A, and I changed the data in field A to another bad data, if I entered good data in field A and then again entered the same bad data in field A, then the system should refire a query on field A. Query with requires response = false and requires manual close = false.
+Scenario: PB_US12940_04B As an EDC user, when I entered bad data in field A that resulted in the system opening a query on field A, if I entered good data in field A and then again entered the same bad data in field A as when the query opened, then the system should refire a query on field A. Query with requires response = false and requires manual close = false.
     And I create a Subject
 	| Field            | Data              |
 	| Subject Initials | SUB               |
@@ -475,34 +481,36 @@ Scenario: PB_US12940_04B As an EDC user, when I entered bad data in field A that
       |Field		|Data	 |
       |Age 2		|17		 |
    	And I verify Query is displayed
-	  | Field | Query Message                                                                        | Closed |
-	  | Age 2 | Age must be greater than or equal to 18 and less than or equal to 65. Please verify. | false  |
+	  | Field | Query Message                                                                        | Closed | Answered |
+	  | Age 2 | Age must be greater than or equal to 18 and less than or equal to 65. Please verify. | false  | false    |
 	And I take a screenshot	  
 	And I enter data in CRF and save
       | Field | Data |
       | Age 2 | 71   |
 	And I verify Query is displayed
-      |Field		|
-      |Age 2		|
+	  | Field | Query Message                                                                        | Closed | Answered |
+	  | Age 2 | Age must be greater than or equal to 18 and less than or equal to 65. Please verify. | false  | false    |
 	And I take a screenshot		  
 	And I enter data in CRF and save
       | Field | Data |
       | Age 2 | 20   |
 	And I verify Query is not displayed
-      |Field		|
-      |Age 2		|
+	  | Field | Query Message                                                                        | Closed | Answered |
+	  | Age 2 | Age must be greater than or equal to 18 and less than or equal to 65. Please verify. | true   | false    |
 	And I take a screenshot
 	And I enter data in CRF and save
       | Field | Data |
       | Age 2 | 71   |
 	And I verify Query is displayed
-	  | Field | Query Message                                                                        | Closed |
-	  | Age 2 | Age must be greater than or equal to 18 and less than or equal to 65. Please verify. | false  |
+	  | Field | Query Message                                                                        | Closed | Answered |
+	  | Age 2 | Age must be greater than or equal to 18 and less than or equal to 65. Please verify. | false  | false    |
 	And I take a screenshot	
 
 @release_564_Patch11
 @PB_US12940_04C
-@Validation		
+@Validation
+@ignore
+# DT #14208		
 Scenario: PB_US12940_04C As an EDC user, when I entered bad data in field A that resulted in the system opening a query on field A, and I answered the query and I changed the data in field A to another bad data, if I entered good data in field A and then again entered the same bad data in field A, then the system should not refire a query on field A. Query with requires response = true and requires manual close = false.
     And I create a Subject
 	| Field            | Data              |
@@ -514,23 +522,17 @@ Scenario: PB_US12940_04C As an EDC user, when I entered bad data in field A that
       |Field		|Data	 |
       |Age 3		|17		 |
    	And I verify Query is displayed
-	  | Field | Query Message                                                                        | Closed |
-	  | Age 3 | Age must be greater than or equal to 18 and less than or equal to 65. Please verify. | false  |
+	  | Field | Query Message                                                                        | Closed | Answered |
+	  | Age 3 | Age must be greater than or equal to 18 and less than or equal to 65. Please verify. | false  | false    |
 	And I take a screenshot	  
 	When I answer the Query "Age must be greater than or equal to 18 and less than or equal to 65. Please verify." on Field "Age 3" with "Data will be changed."
 	And I enter data in CRF and save
       | Field | Data |
       | Age 3 | 71   |
-	And I save the CRF page
-	And I verify Query is displayed
-      |Field		|
-      |Age 3		|
-	And I take a screenshot
-	When I answer the Query "Age must be greater than or equal to 18 and less than or equal to 65. Please verify." on Field "Age 3" with "Data will be changed."
-	And I save the CRF page
-	And I verify Query is not displayed
-      |Field		|
-      |Age 3		|	  
+   	And I verify Query is not displayed
+	  | Field | Query Message                                                                        | Closed | Answered |
+	  | Age 3 | Age must be greater than or equal to 18 and less than or equal to 65. Please verify. | false  | false    |
+# DT #14208	
 	And I take a screenshot
 	And I enter data in CRF and save
       | Field | Data |
@@ -543,8 +545,8 @@ Scenario: PB_US12940_04C As an EDC user, when I entered bad data in field A that
       | Field | Data |
       | Age 3 | 71   |
 	And I verify Query is not displayed
-	| Field   | Query Message                                                                        | Closed |
-	| Age 3   | Age must be greater than or equal to 18 and less than or equal to 65. Please verify. | false  |
+	| Field | Query Message                                                                        | Closed | Answered |
+	| Age 3 | Age must be greater than or equal to 18 and less than or equal to 65. Please verify. | false  | false    |
 	And I take a screenshot
 
 @release_564_Patch11
@@ -561,33 +563,35 @@ Scenario: PB_US12940_04D As an EDC user, when I entered bad data in field A that
       |Field		|Data	 |
       |Age 4		|17		 |
    	And I verify Query is displayed
-	  | Field | Query Message                                                                        | Closed |
-	  | Age 4 | Age must be greater than or equal to 18 and less than or equal to 65. Please verify. | false  |
+	  | Field | Query Message                                                                        | Closed | Answered |
+	  | Age 4 | Age must be greater than or equal to 18 and less than or equal to 65. Please verify. | false  | false    |
 	And I take a screenshot	  
 	And I enter data in CRF and save
       | Field | Data |
       | Age 4 | 71   |	  
 	And I verify Query is displayed
-      |Field		|	  
-      |Age 4		|	
+	  | Field | Query Message                                                                        | Closed | Answered |
+	  | Age 4 | Age must be greater than or equal to 18 and less than or equal to 65. Please verify. | false  | true     |	
 	And I take a screenshot
 	And I close the Query "Age must be greater than or equal to 18 and less than or equal to 65. Please verify." on Field "Age 4"
 	And I save the CRF page	
-	And I verify closed Query with message "Age must be greater than or equal to 18 and less than or equal to 65. Please verify." is displayed on Field "Age 4"
+	And I verify Query is displayed
+	  | Field | Query Message                                                                        | Closed | Answered |
+	  | Age 4 | Age must be greater than or equal to 18 and less than or equal to 65. Please verify. | true   | true     |
 	And I take a screenshot
 	And I enter data in CRF and save
       | Field | Data |
       | Age 4 | 20   |
-	And I verify Query is not displayed
-      | Field | Closed |
-      | Age 4 | false  |	
+	And I verify Query is displayed
+	  | Field | Query Message                                                                        | Closed | Answered |
+	  | Age 4 | Age must be greater than or equal to 18 and less than or equal to 65. Please verify. | true   | true     |	
 	And I take a screenshot 
 	And I enter data in CRF and save
       | Field | Data |
       | Age 4 | 71   |
-	And I verify Query is not displayed
-	| Field | Query Message                                                                        | Closed | Answered |
-	| Age 4 | Age must be greater than or equal to 18 and less than or equal to 65. Please verify. | true   | false    |
+	And I verify Query is displayed
+	  | Field | Query Message                                                                        | Closed | Answered |
+	  | Age 4 | Age must be greater than or equal to 18 and less than or equal to 65. Please verify. | true   | true     |
 	And I take a screenshot
 
 @release_564_Patch11
@@ -604,35 +608,35 @@ Scenario: PB_US12940_05A As an EDC user, when I entered bad data in field A that
       |Field		|Data	 |
       |Age 1		|17		 |
    	And I verify Query is displayed
-	  | Field | Query Message                                                                        | Closed |
-	  | Age 1 | Age must be greater than or equal to 18 and less than or equal to 65. Please verify. | false  |
+	  | Field | Query Message                                                                        | Closed | Answered |
+	  | Age 1 | Age must be greater than or equal to 18 and less than or equal to 65. Please verify. | false  | false    |
 	And I take a screenshot	  
 	When I answer the Query "Age must be greater than or equal to 18 and less than or equal to 65. Please verify." on Field "Age 1" with "Data will be changed."
 	And I enter data in CRF and save
       | Field | Data |
       | Age 1 | 71   |
 	And I verify Query is displayed
-         | Field | Query Message                                                                        | Closed | Answered |
-         | Age 1 | Age must be greater than or equal to 18 and less than or equal to 65. Please verify. | false  | true     |
+      | Field | Query Message                                                                        | Closed | Answered |
+      | Age 1 | Age must be greater than or equal to 18 and less than or equal to 65. Please verify. | false  | true     |
 	And I take a screenshot		  
 	And I close the Query "Age must be greater than or equal to 18 and less than or equal to 65. Please verify." on Field "Age 1"
 	And I save the CRF page	
 	And I verify Query is displayed
-         | Field | Query Message                                                                        | Closed |
-         | Age 1 | Age must be greater than or equal to 18 and less than or equal to 65. Please verify. | true   |
+      | Field | Query Message                                                                        | Closed | Answered |
+      | Age 1 | Age must be greater than or equal to 18 and less than or equal to 65. Please verify. | true   | true     |
 	And I take a screenshot
 	And I enter data in CRF and save
       | Field | Data |
       | Age 1 | 17   |
 	And I verify Query is displayed
-	| Field   | Query Message                                                                        | Closed |
-	| Age 1   | Age must be greater than or equal to 18 and less than or equal to 65. Please verify. | false  |
+      | Field | Query Message                                                                        | Closed | Answered |
+      | Age 1 | Age must be greater than or equal to 18 and less than or equal to 65. Please verify. | false  | false    |
 	And I take a screenshot
 
 @release_564_Patch11
 @PB_US12940_05B
 @Validation		
-Scenario: PB_US12940_05B As an EDC user, when I entered bad data in field A that resulted in the system opening a query on field A, and I changed the data in field A to another bad data, if I then entered the original bad data in field A, then the system should refire a query on field A. Query with requires response = false and requires manual close = false.
+Scenario: PB_US12940_05B As an EDC user, when I entered bad data in field A that resulted in the system opening a query on field A, and I changed the data in field A to another bad data, and the query is then closed, if I then entered the original bad data in field A, then the system should refire a query on field A. Query with requires response = false and requires manual close = false.
     And I create a Subject
 	| Field            | Data              |
 	| Subject Initials | SUB               |
@@ -643,27 +647,29 @@ Scenario: PB_US12940_05B As an EDC user, when I entered bad data in field A that
       |Field		|Data	 |
       |Age 2		|17		 |
    	And I verify Query is displayed
-	  | Field | Query Message                                                                        | Closed |
-	  | Age 2 | Age must be greater than or equal to 18 and less than or equal to 65. Please verify. | false  |
+	  | Field | Query Message                                                                        | Closed | Answered |
+	  | Age 2 | Age must be greater than or equal to 18 and less than or equal to 65. Please verify. | false  | false    |
 	And I take a screenshot	  
 	And I enter data in CRF and save
       | Field | Data |
       | Age 2 | 71   |
 	And I verify Query is displayed
-      |Field		|
-      |Age 2		|
+	  | Field | Query Message                                                                        | Closed | Answered |
+	  | Age 2 | Age must be greater than or equal to 18 and less than or equal to 65. Please verify. | false  | false    |
 	And I take a screenshot		  
 	And I enter data in CRF and save
       | Field | Data |
       | Age 2 | 17   |
    	And I verify Query is displayed
-	  | Field | Query Message                                                                        | Closed |
-	  | Age 2 | Age must be greater than or equal to 18 and less than or equal to 65. Please verify. | false  |
+	  | Field | Query Message                                                                        | Closed | Answered |
+	  | Age 2 | Age must be greater than or equal to 18 and less than or equal to 65. Please verify. | false  | false    |
 	And I take a screenshot
 
 @release_564_Patch11
 @PB_US12940_05C	
-@Validation	
+@Validation
+@ignore
+#DT #14208	
 Scenario: PB_US12940_05C As an EDC user, when I entered bad data in field A that resulted in the system opening a query on field A, and I answered the query and I changed the data in field A to another bad data, if I then entered the original bad data in field A, then the system should refire a query on field A. Query with requires response = true and requires manual close = false.
     And I create a Subject
 	| Field            | Data              |
@@ -675,16 +681,17 @@ Scenario: PB_US12940_05C As an EDC user, when I entered bad data in field A that
       |Field		|Data	 |
       |Age 3		|17		 |
    	And I verify Query is displayed
-	  | Field | Query Message                                                                        | Closed |
-	  | Age 3 | Age must be greater than or equal to 18 and less than or equal to 65. Please verify. | false  |
+	  | Field | Query Message                                                                        | Closed | Answered |
+	  | Age 3 | Age must be greater than or equal to 18 and less than or equal to 65. Please verify. | false  | false    |
 	And I take a screenshot	  
 	When I answer the Query "Age must be greater than or equal to 18 and less than or equal to 65. Please verify." on Field "Age 3" with "Data will be changed."
 	And I enter data in CRF and save
       | Field | Data |
       | Age 3 | 71   |
-	And I verify Query is displayed
-      |Field		|
-      |Age 3		|
+   	And I verify Query is not displayed
+	  | Field | Query Message                                                                        | Closed | Answered |
+	  | Age 3 | Age must be greater than or equal to 18 and less than or equal to 65. Please verify. | false  | false    |
+#DT #14208
 	And I take a screenshot
 	When I answer the Query "Age must be greater than or equal to 18 and less than or equal to 65. Please verify." on Field "Age 3" with "Data will be changed."
 	And I save the CRF page
@@ -696,14 +703,14 @@ Scenario: PB_US12940_05C As an EDC user, when I entered bad data in field A that
       | Field | Data |
       | Age 3 | 17   |
    	And I verify Query is displayed
-	  | Field | Query Message                                                                        | Closed |
-	  | Age 3 | Age must be greater than or equal to 18 and less than or equal to 65. Please verify. | false  |
+	  | Field | Query Message                                                                        | Closed | Answered |
+	  | Age 3 | Age must be greater than or equal to 18 and less than or equal to 65. Please verify. | false  | false    |
 	And I take a screenshot
 
 @release_564_Patch11
 @PB_US12940_05D	
 @Validation	
-Scenario: PB_US12940_05D As an EDC user, when I entered bad data in field A that resulted in the system opening a query on field A, and I changed the data in field A to another bad data, if I then entered the original bad data in field A, then the system should refire a query on field A. Query with requires response = false and requires manual close = true.
+Scenario: PB_US12940_05D As an EDC user, when I entered bad data in field A that resulted in the system opening a query on field A, and I changed the data in field A to another bad data, and the query is then closed, if I then entered the original bad data in field A, then the system should refire a query on field A. Query with requires response = false and requires manual close = true.
 	And I create a Subject
 	| Field            | Data              |
 	| Subject Initials | SUB               |
@@ -714,29 +721,29 @@ Scenario: PB_US12940_05D As an EDC user, when I entered bad data in field A that
       |Field		|Data	 |
       |Age 4		|17		 |
    	And I verify Query is displayed
-	  | Field | Query Message                                                                        | Closed |
-	  | Age 4 | Age must be greater than or equal to 18 and less than or equal to 65. Please verify. | false  |
+	  | Field | Query Message                                                                        | Closed | Answered |
+	  | Age 4 | Age must be greater than or equal to 18 and less than or equal to 65. Please verify. | false  | false    |
 	And I take a screenshot	  
 	And I enter data in CRF and save
       | Field | Data |
       | Age 4 | 71   |
 	And I save the CRF page
 	And I verify Query is displayed
-      |Field		|	  
-      |Age 4		|	
+	  | Field | Query Message                                                                        | Closed | Answered |
+	  | Age 4 | Age must be greater than or equal to 18 and less than or equal to 65. Please verify. | false  | true     |	
 	And I take a screenshot  
 	And I close the Query "Age must be greater than or equal to 18 and less than or equal to 65. Please verify." on Field "Age 4"
 	And I save the CRF page	
 	And I verify Query is displayed
-         | Field | Query Message                                                                        | Closed |
-         | Age 4 | Age must be greater than or equal to 18 and less than or equal to 65. Please verify. | true   |
+	  | Field | Query Message                                                                        | Closed | Answered |
+	  | Age 4 | Age must be greater than or equal to 18 and less than or equal to 65. Please verify. | true   | true     |
 	And I take a screenshot
 	And I enter data in CRF and save
       | Field | Data |
       | Age 4 | 17   |
 	And I verify Query is displayed
-	  | Field | Query Message                                                                        | Closed |
-	  | Age 1 | Age must be greater than or equal to 18 and less than or equal to 65. Please verify. | false  |
+	  | Field | Query Message                                                                        | Closed | Answered |
+	  | Age 4 | Age must be greater than or equal to 18 and less than or equal to 65. Please verify. | false  | false    |
 	And I take a screenshot	
 
 @release_564_Patch11
@@ -753,8 +760,8 @@ Scenario: PB_US12940_06A As an EDC user, when I entered bad data in field A that
       |Field		|Data	 |
       |Age 1		|17		 |
    	And I verify Query is displayed
-	  | Field | Query Message                                                                        | Closed |
-	  | Age 1 | Age must be greater than or equal to 18 and less than or equal to 65. Please verify. | false  |
+	  | Field | Query Message                                                                        | Closed | Answered |
+	  | Age 1 | Age must be greater than or equal to 18 and less than or equal to 65. Please verify. | false  | false    |
 	And I take a screenshot	  
     When I answer the Query "Age must be greater than or equal to 18 and less than or equal to 65. Please verify." on Field "Age 1" with "Data will be changed."
 	And I enter data in CRF and save
@@ -762,25 +769,27 @@ Scenario: PB_US12940_06A As an EDC user, when I entered bad data in field A that
       | Age 1 | 71   |
 	And I save the CRF page
 	And I verify Query is displayed
-         | Field | Query Message                                                                        | Closed |
-         | Age 4 | Age must be greater than or equal to 18 and less than or equal to 65. Please verify. |false   |  
+	  | Field | Query Message                                                                        | Closed | Answered |
+	  | Age 1 | Age must be greater than or equal to 18 and less than or equal to 65. Please verify. | false  | true     |  
 	And I take a screenshot 
 	And I close the Query "Age must be greater than or equal to 18 and less than or equal to 65. Please verify." on Field "Age 1"
 	And I save the CRF page	
-	Then I verify closed Query with message "Data will be changed." is displayed on Field "Age 1"
+	And I verify Query is displayed
+	  | Field | Query Message                                                                        | Closed | Answered |
+	  | Age 1 | Age must be greater than or equal to 18 and less than or equal to 65. Please verify. | true   | true     |
 	And I take a screenshot
 	And I enter data in CRF and save
       | Field | Data |
       | Age 1 | 70   |
 	And I verify Query is displayed
-	  | Field | Query Message                                                                        | Closed |
-	  | Age 1 | Age must be greater than or equal to 18 and less than or equal to 65. Please verify. | false  |
+	  | Field | Query Message                                                                        | Closed | Answered |
+	  | Age 1 | Age must be greater than or equal to 18 and less than or equal to 65. Please verify. | false  | false    |
 	And I take a screenshot
 
 @release_564_Patch11
 @PB_US12940_06B	
 @Validation	
-Scenario: PB_US12940_06B As an EDC user, when I entered bad data in field A that resulted in the system opening a query on field A, and I changed the data in field A to another bad data, if I then entered new bad data in field A, then the system should refire a query on field A. Query with requires response = false and requires manual close = false
+Scenario: PB_US12940_06B As an EDC user, when I entered bad data in field A that resulted in the system opening a query on field A, and I changed the data in field A to another bad data, and the query is then closed, if I then entered new bad data in field A, then the system should refire a query on field A. Query with requires response = false and requires manual close = false
     And I create a Subject
 	| Field            | Data              |
 	| Subject Initials | SUB               |
@@ -791,27 +800,29 @@ Scenario: PB_US12940_06B As an EDC user, when I entered bad data in field A that
       |Field		|Data	 |
       |Age 2		|17		 |
    	And I verify Query is displayed
-	  | Field | Query Message                                                                        | Closed |
-	  | Age 2 | Age must be greater than or equal to 18 and less than or equal to 65. Please verify. | false  |
+	  | Field | Query Message                                                                        | Closed | Answered |
+	  | Age 2 | Age must be greater than or equal to 18 and less than or equal to 65. Please verify. | false  | false    |
 	And I take a screenshot	  
 	And I enter data in CRF and save
       | Field | Data |
       | Age 2 | 71   |
    	And I verify Query is displayed
-	  | Field | Query Message                                                                        | Closed |
-	  | Age 2 | Age must be greater than or equal to 18 and less than or equal to 65. Please verify. | false  |
+	  | Field | Query Message                                                                        | Closed | Answered |
+	  | Age 2 | Age must be greater than or equal to 18 and less than or equal to 65. Please verify. | false  | false    |
 	And I take a screenshot
 	And I enter data in CRF and save
       | Field | Data |
       | Age 2 | 70   |
    	And I verify Query is displayed
-	  | Field | Query Message                                                                        | Closed |
-	  | Age 2 | Age must be greater than or equal to 18 and less than or equal to 65. Please verify. | false  |
+	  | Field | Query Message                                                                        | Closed | Answered |
+	  | Age 2 | Age must be greater than or equal to 18 and less than or equal to 65. Please verify. | false  | false    |
 	And I take a screenshot
 
 @release_564_Patch11
 @PB_US12940_06C	
-@Validation	
+@Validation
+@ignore
+#DT #14208	
 Scenario: PB_US12940_06C As an EDC user, when I entered bad data in field A that resulted in the system opening a query on field A, and I answered the query and I changed the data in field A to another bad data, if I then entered new bad data in field A, then the system should refire a query on field A. Query with requires response = true and requires manual close = false
     And I create a Subject
 	| Field            | Data              |
@@ -823,16 +834,17 @@ Scenario: PB_US12940_06C As an EDC user, when I entered bad data in field A that
       |Field		|Data	 |
       |Age 3		|17		 |
    	And I verify Query is displayed
-	  | Field | Query Message                                                                        | Closed |
-	  | Age 3 | Age must be greater than or equal to 18 and less than or equal to 65. Please verify. | false  |
+	  | Field | Query Message                                                                        | Closed | Answered |
+	  | Age 3 | Age must be greater than or equal to 18 and less than or equal to 65. Please verify. | false  | false    |
 	And I take a screenshot	  
 	When I answer the Query "Age must be greater than or equal to 18 and less than or equal to 65. Please verify." on Field "Age 3" with "Data will be changed."
 	And I enter data in CRF and save
       | Field | Data |
       | Age 3 | 71   |
-   	And I verify Query is displayed
-	  | Field | Query Message                                                                        | Closed |
-	  | Age 3 | Age must be greater than or equal to 18 and less than or equal to 65. Please verify. | false  |
+   	And I verify Query is not displayed
+	  | Field | Query Message                                                                        | Closed | Answered |
+	  | Age 3 | Age must be greater than or equal to 18 and less than or equal to 65. Please verify. | false  | false    |
+#DT #14208
 	And I take a screenshot
 	When I answer the Query "Age must be greater than or equal to 18 and less than or equal to 65. Please verify." on Field "Age 3" with "Data will be changed."
 	And I save the CRF page
@@ -844,8 +856,8 @@ Scenario: PB_US12940_06C As an EDC user, when I entered bad data in field A that
       | Field | Data |
       | Age 3 | 70   |
    	And I verify Query is displayed
-	  | Field | Query Message                                                                        | Closed |
-	  | Age 3 | Age must be greater than or equal to 18 and less than or equal to 65. Please verify. | false  |
+	  | Field | Query Message                                                                        | Closed | Answered |
+	  | Age 3 | Age must be greater than or equal to 18 and less than or equal to 65. Please verify. | false  | false    |
 	And I take a screenshot
 
 @release_564_Patch11
@@ -862,24 +874,23 @@ Scenario: PB_US12940_06D As an EDC user, when I entered bad data in field A that
       |Field		|Data	 |
       |Age 4		|17		 |
    	And I verify Query is displayed
-	  | Field | Query Message                                                                        | Closed |
-	  | Age 4 | Age must be greater than or equal to 18 and less than or equal to 65. Please verify. | false  |
+	  | Field | Query Message                                                                        | Closed | Answered |
+	  | Age 4 | Age must be greater than or equal to 18 and less than or equal to 65. Please verify. | false  | false    |
 	And I take a screenshot	  
 	And I enter data in CRF and save
       | Field | Data |
       | Age 4 | 71   |	  
    	And I verify Query is displayed
-	  | Field | Query Message                                                                        | Closed |
-	  | Age 4 | Age must be greater than or equal to 18 and less than or equal to 65. Please verify. | false  |	
+	  | Field | Query Message                                                                        | Closed | Answered |
+	  | Age 4 | Age must be greater than or equal to 18 and less than or equal to 65. Please verify. | false  | true     |
 	And I take a screenshot 
 	And I close the Query "Age must be greater than or equal to 18 and less than or equal to 65. Please verify." on Field "Age 4"
-	And I take a screenshot
 	And I enter data in CRF and save
       | Field | Data |
       | Age 4 | 70   |
    	And I verify Query is displayed
-	  | Field | Query Message                                                                        | Closed |
-	  | Age 4 | Age must be greater than or equal to 18 and less than or equal to 65. Please verify. | false  |
+	  | Field | Query Message                                                                        | Closed | Answered |
+	  | Age 4 | Age must be greater than or equal to 18 and less than or equal to 65. Please verify. | false  | false    |
 	And I take a screenshot
 
 @release_564_Patch11
@@ -896,8 +907,8 @@ Scenario: PB_US12940_07A As an EDC user, when I entered bad data in field A that
       |Field		|Data	 |
       |Age 1		|17		 |
    	And I verify Query is displayed
-	  | Field | Query Message                                                                        | Closed |
-	  | Age 1 | Age must be greater than or equal to 18 and less than or equal to 65. Please verify. | false  |
+	  | Field | Query Message                                                                        | Closed | Answered |
+	  | Age 1 | Age must be greater than or equal to 18 and less than or equal to 65. Please verify. | false  | false    |
 	And I take a screenshot	  
 	When I cancel the Query "Age must be greater than or equal to 18 and less than or equal to 65. Please verify." on Field "Age 1"
 	And I save the CRF page		  
@@ -911,16 +922,15 @@ Scenario: PB_US12940_07A As an EDC user, when I entered bad data in field A that
       | Field | Data |
       | Age 1 | 20   |
 	And I verify Query is not displayed
-      | Field | Query Message                                                                        | Closed |
-      | Age 1 | Age must be greater than or equal to 18 and less than or equal to 65. Please verify. | true   |
-
+      | Field | Query Message                                                                        | Closed | Answered |
+      | Age 1 | Age must be greater than or equal to 18 and less than or equal to 65. Please verify. | true   | true     |
 	And I take a screenshot	  
 	And I enter data in CRF and save
       | Field | Data |
       | Age 1 | 17   |
 	And I verify Query is not displayed
-      | Field | Query Message                                                                        | Closed |
-      | Age 1 | Age must be greater than or equal to 18 and less than or equal to 65. Please verify. | true   |
+      | Field | Query Message                                                                        | Closed | Answered |
+      | Age 1 | Age must be greater than or equal to 18 and less than or equal to 65. Please verify. | true   | true     |
 	And I take a screenshot
 
 @release_564_Patch11
@@ -937,8 +947,8 @@ Scenario: PB_US12940_07B As an EDC user, when I entered bad data in field A that
       |Field		|Data	 |
       |Age 2		|17		 |
    	And I verify Query is displayed
-	  | Field | Query Message                                                                        | Closed |
-	  | Age 2 | Age must be greater than or equal to 18 and less than or equal to 65. Please verify. | false  |
+	  | Field | Query Message                                                                        | Closed | Answered |
+	  | Age 2 | Age must be greater than or equal to 18 and less than or equal to 65. Please verify. | false  | false    |
 	And I take a screenshot	  
 	When I cancel the Query "Age must be greater than or equal to 18 and less than or equal to 65. Please verify." on Field "Age 2"
 	And I save the CRF page		  
@@ -952,15 +962,15 @@ Scenario: PB_US12940_07B As an EDC user, when I entered bad data in field A that
       | Field | Data |
       | Age 2 | 20   |
 	And I verify Query is not displayed
-      |Field		|
-      |Age 2		|	 	  
+      | Field | Query Message                                                                        | Closed | Answered |
+      | Age 2 | Age must be greater than or equal to 18 and less than or equal to 65. Please verify. | true   | true     |	 	  
 	And I take a screenshot	  
 	And I enter data in CRF and save
       | Field | Data |
       | Age 2 | 17   |
 	And I verify Query is not displayed
-      | Field | Query Message                                                                        | Closed |
-      | Age 2 | Age must be greater than or equal to 18 and less than or equal to 65. Please verify. | true   |
+      | Field | Query Message                                                                        | Closed | Answered |
+      | Age 2 | Age must be greater than or equal to 18 and less than or equal to 65. Please verify. | true   | true     |
 	And I take a screenshot
 
 @release_564_Patch11
@@ -977,8 +987,8 @@ Scenario: PB_US12940_07C As an EDC user, when I entered bad data in field A that
       |Field		|Data	 |
       |Age 3		|17		 |
    	And I verify Query is displayed
-	  | Field | Query Message                                                                        | Closed |
-	  | Age 3 | Age must be greater than or equal to 18 and less than or equal to 65. Please verify. | false  |
+	  | Field | Query Message                                                                        | Closed | Answered |
+	  | Age 3 | Age must be greater than or equal to 18 and less than or equal to 65. Please verify. | false  | false    |
 	And I take a screenshot	  
 	When I cancel the Query "Age must be greater than or equal to 18 and less than or equal to 65. Please verify." on Field "Age 3"
 	And I save the CRF page		  
@@ -992,19 +1002,20 @@ Scenario: PB_US12940_07C As an EDC user, when I entered bad data in field A that
       | Field | Data |
       | Age 3 | 20   |
 	And I verify Query is not displayed
-      |Field		|
-      |Age 3		|	  
+	  | Field | Query Message                                                                        | Closed | Answered |
+	  | Age 3 | Age must be greater than or equal to 18 and less than or equal to 65. Please verify. | true   | true     |	  
 	And I take a screenshot
 	And I enter data in CRF and save
       | Field | Data |
       | Age 3 | 17   |
    	And I verify Query is not displayed
-	  | Field |
-	  | Age 3 |
+	  | Field | Query Message                                                                        | Closed | Answered |
+	  | Age 3 | Age must be greater than or equal to 18 and less than or equal to 65. Please verify. | true   | true     |
 	And I take a screenshot
 
 @release_564_Patch11
-@PB_US12940_07D		
+@PB_US12940_07D
+@Validation		
 Scenario: PB_US12940_07D As an EDC user, when I entered bad data in field A that resulted in the system opening a query on field A, and I canceled the query, and I entered good data in field A, if I then entered the same bad data in field A as when the query was canceled, then the system should not refire a query on field A. Query with requires response = false and requires manual close = true
 	And I create a Subject
 	| Field            | Data              |
@@ -1016,8 +1027,8 @@ Scenario: PB_US12940_07D As an EDC user, when I entered bad data in field A that
       |Field		|Data	 |
       |Age 4		|17		 |
    	And I verify Query is displayed
-	  | Field | Query Message                                                                        | Closed |
-	  | Age 4 | Age must be greater than or equal to 18 and less than or equal to 65. Please verify. | false  |
+	  | Field | Query Message                                                                        | Closed | Answered |
+	  | Age 4 | Age must be greater than or equal to 18 and less than or equal to 65. Please verify. | false  | false    |
 	And I take a screenshot	  
 	When I cancel the Query "Age must be greater than or equal to 18 and less than or equal to 65. Please verify." on Field "Age 4"
 	And I save the CRF page		  
@@ -1031,13 +1042,13 @@ Scenario: PB_US12940_07D As an EDC user, when I entered bad data in field A that
       | Field | Data |
       | Age 4 | 20   |
 	And I verify Query is not displayed
-      |Field		|
-      |Age 4		|		  
+	  | Field | Query Message                                                                        | Closed | Answered |
+	  | Age 4 | Age must be greater than or equal to 18 and less than or equal to 65. Please verify. | true   | true     |		  
 	And I take a screenshot
 	And I enter data in CRF and save
       | Field | Data |
       | Age 4 | 17   |	  
    	And I verify Query is not displayed
-	  | Field |
-	  | Age 4 |
+	  | Field | Query Message                                                                        | Closed | Answered |
+	  | Age 4 | Age must be greater than or equal to 18 and less than or equal to 65. Please verify. | true   | true     |
 	And I take a screenshot			
