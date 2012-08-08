@@ -1,0 +1,50 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@model System.Xml.Linq.XElement
+
+@section Head
+{
+	<style>
+		ul
+		{
+		}
+		
+		li
+		{
+			margin:5px;
+			padding:5px;
+			border-bottom:1px solid #ddd;
+			list-style:none;
+		}
+	</style>
+}		   
+
+<form action="/Default/Index">
+<input name="path" value="@ViewBag.Path" style="width:80%" />
+<br />
+<input type="submit" value="Select dll folder" />
+
+</form>
+<h2>List</h2>
+
+@if (Model != null)
+{
+	foreach (var type in Model.Elements("Type"))
+ {
+		<h3>@type.Attribute("Name").Value</h3>
+	
+		<ul>
+		@foreach (var method in type.Descendants("StepDef"))
+  {
+			<li>@method.Attribute("RegexWithArgName").Value</li>
+  }
+		</ul>
+ }
+}
+else
+{
+	<h2>Please select a folder</h2>
+}
+
