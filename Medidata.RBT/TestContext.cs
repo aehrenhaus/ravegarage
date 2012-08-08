@@ -224,8 +224,8 @@ namespace Medidata.RBT
 					fileName = fileName ?? ScreenshotIndex.ToString();
 					fileName = ScenarioUniqueName+"_"+fileName+ ".jpg";
 
-					Console.WriteLine("{img "+fileName+"}");
-					Console.WriteLine( Browser.Url);
+					Console.WriteLine("img->"+fileName);
+					Console.WriteLine( "->"+Browser.Url);
 					//file path
 					string screenshotPath = Path.Combine(resultPath,fileName);
 
