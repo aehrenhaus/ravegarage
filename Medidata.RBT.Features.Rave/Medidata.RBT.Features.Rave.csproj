@@ -132,6 +132,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DisableAddEvents.feature</DependentUpon>
     </Compile>
+    <Compile Include="Features\EDC\US13002_DT13919.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>US13002_DT13919.feature</DependentUpon>
+    </Compile>
     <Compile Include="Features\EDC\US15417_DT139051.feature.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -274,6 +279,10 @@
     <None Include="Features\EDC\564QueryRefiringLogic_StdForm_1FldEC.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>564QueryRefiringLogic_StdForm_1FldEC.feature.cs</LastGenOutput>
+    </None>
+    <None Include="Features\EDC\US13002_DT13919.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>US13002_DT13919.feature.cs</LastGenOutput>
     </None>
     <None Include="Features\EDC\US15417_DT13905.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
