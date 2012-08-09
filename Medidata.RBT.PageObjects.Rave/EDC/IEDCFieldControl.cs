@@ -27,5 +27,6 @@ namespace Medidata.RBT.PageObjects.Rave
 		void Check(string checkName);
 
 		void Uncheck(string checkName);
-	}
+
+    }
 }

@@ -171,5 +171,34 @@ namespace Medidata.RBT.PageObjects.Rave
         }
 
         public override string URL { get { return "Modules/EDC/CRFPage.aspx"; } }
+        public void SelectLabValue(string labName)
+        {
+            Dropdown dropDown = Browser.Dropdown("LOC_DropDown");
+            dropDown.SelectByText(labName);
+        }
+
+
+        public bool VerifyLabDataPoints(IEnumerable<LabRangeModel> fields)
+        {
+            foreach (var field in fields)
+            {
+                LabFieldControl fieldObj = FindField(field.Field) as LabFieldControl;
+                if (fieldObj==null || !fieldObj.VerifyData(field)) return false;
+            }
+            return true;
+        }
+
+
+        public void Check(string fieldName, string checkName)
+        {
+            LabFieldControl fieldObj = FindField(fieldName) as LabFieldControl;
+            fieldObj.Check(checkName);
+        }
+
+        public bool VerifyCheck(string checkName, string fieldName, string checkStatus)
+        {
+            LabFieldControl fieldObj = FindField(fieldName) as LabFieldControl;
+            return fieldObj.VerifyCheck(checkName, checkStatus);
+        }
     }
 }

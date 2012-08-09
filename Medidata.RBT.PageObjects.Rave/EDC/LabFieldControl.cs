@@ -7,10 +7,11 @@ using OpenQA.Selenium;
 using OpenQA.Selenium.Remote;
 using Medidata.RBT.SeleniumExtension;
 using System.Collections.Specialized;
+using OpenQA.Selenium.Support.UI;
 
 namespace Medidata.RBT.PageObjects.Rave
 {
-	public class LabFieldControl:ControlBase, IEDCFieldControl
+    public class LabFieldControl : BaseEDCFieldControl
 	{
 		public LabFieldControl(IPage page, IWebElement MainTR, IWebElement QueriesTR)
 			: base(page)
@@ -23,21 +24,29 @@ namespace Medidata.RBT.PageObjects.Rave
 		private EnhancedElement MainTR;
 		private EnhancedElement QueriesTR;
 
+        private Checkbox HardLockCheckBox
+        {
+            get
+            {
+                var checkBox = MainTR.Parent().Checkboxes(".//td/table/tbody/tr/td/input", "HardLockBox");
+                return (checkBox != null) ? checkBox.FirstOrDefault() : null;
+            }
+        }
 
-		#region IEDCFieldControl
+        public override AuditsPage ClickAudit()
+        {
+            var auditButton = MainTR.TryFindElementByPartialID("DataStatusHyperlink");
+            auditButton.Click();
+            return new AuditsPage();
+        }
 
-		public AuditsPage ClickAudit()
-		{
-			var auditButton = MainTR.TryFindElementByPartialID("DataStatusHyperlink");
-			auditButton.Click();
-			return new AuditsPage();
-		}
+ 
 
-		public void EnterData(string text, ControlType controlType)
-		{
-			var textbox = MainTR.Textboxes()[0];
-			textbox.SetText(text);
-		}
+        protected override IWebElement GetFieldControlContainer()
+        {
+            return MainTR.Parent();
+        }
+
 
 		public IWebElement FindQuery(QuerySearchModel filter)
 		{
@@ -124,11 +133,7 @@ namespace Medidata.RBT.PageObjects.Rave
 		public void CancelQuery(QuerySearchModel filter)
 		{
 			FindQuery(filter).Checkboxes()[0].Check();
-		}
-
-
-		#endregion
-
+		}      
 
 		public void Check(string checkName)
 		{
@@ -139,13 +144,50 @@ namespace Medidata.RBT.PageObjects.Rave
 
 			if (checkName == "Hard Lock")
 			{
-				MainTR.Checkbox("HardLockBox").Check();
+                if (HardLockCheckBox != null) HardLockCheckBox.Click();
 			}
 		}
 
-		public void Uncheck(string checkName)
-		{
-			throw new NotImplementedException();
-		}
-	}
+        public bool VerifyCheck(string checkName, string status)
+        {
+            if (checkName == "Hard Lock")
+            {
+                if (HardLockCheckBox != null) return ((HardLockCheckBox.Selected && status == "On") ||
+                                                    (!HardLockCheckBox.Selected && status == "Off"));
+            }           
+            return false;
+        }
+
+        internal bool VerifyData(LabRangeModel field)
+        {
+            return VerifyData(MainTR, field.Data, "Data") &&
+                VerifyData(MainTR, field.Unit, "Unit") &&
+                VerifyData(MainTR, field.Range, "Range");
+        }
+
+        private bool VerifyData(EnhancedElement MainTR, string text, string verificationType)
+        {
+            int elementIndex;
+            switch (verificationType)
+            {
+                case "Data":
+                    elementIndex = 3;
+                    break;
+                case "Unit":
+                    elementIndex = 5;
+                    break;
+                case "Range":
+                    elementIndex = 6;
+                    break;
+                default:
+                    elementIndex = 0;
+                    break;
+            }
+
+            var el = MainTR.Parent().FindElements(By.XPath("./td"))[elementIndex];
+            bool result = el.Text.Equals(text);
+            return (el.Text.Equals(text));
+        }
+
+    }
 }

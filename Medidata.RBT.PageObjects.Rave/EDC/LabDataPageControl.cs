@@ -46,21 +46,16 @@ namespace Medidata.RBT.PageObjects.Rave
 		//				tr2
 		//					td2 answer <br> dropdown answer textbox
 		//			table(other query)
-		public IEDCFieldControl FindField(string fieldName)
+		public IEDCFieldControl FindField(string fieldText)
 		{
-			var contentR = TestContext.Browser.FindElementsByPartialId("Content_R")[0];
-			var fieldTRs = contentR.FindElements(By.XPath("table[2]/tbody/tr"));
-			int i = 0;
+            IWebElement el = TestContext.Browser.FindElements(By.XPath("//span[contains(@id,'Content_R')]")).FirstOrDefault();
+            var area = el.FindElementsByText<IWebElement>(fieldText).FirstOrDefault();
 
-			for (; i < fieldTRs.Count; i++)
-			{
-				if (fieldTRs[i].Children()[1].Text == fieldName)
-					break;
-			}
-			IWebElement fieldTR = fieldTRs[i];
-			IWebElement fieldTRQueries = fieldTRs[i + 1];
+            if (area == null)
+                throw new Exception("Can't find field area:" + fieldText);
+            var tds = area.Parent().Children();
+            return new LabFieldControl(Page, area, tds[tds.Count - 1]);
 
-			return new LabFieldControl(Page, fieldTR,fieldTRQueries);
 		}
 	}
 }

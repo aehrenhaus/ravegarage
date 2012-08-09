@@ -187,7 +187,7 @@ namespace Medidata.RBT.Features.Rave
 		/// </summary>
 		/// <param name="header"></param>
 		[StepDefinition(@"I expand ""([^""]*)"" in Task Summary")]
-		public void GivenIExpand____InTaskSummary(string header)
+		public void IExpand____InTaskSummary(string header)
 		{
 			CurrentPage.As<SubjectPage>().ExpandTask(header);
 		}
@@ -294,8 +294,59 @@ namespace Medidata.RBT.Features.Rave
         public void IShouldSeeTheCursorFocusOn____Labeled____(string controlTypeString, string value)
         {
             var type = EnumHelper.GetEnumByDescription<ControlType>(controlTypeString.ToLower());
-
             Assert.IsTrue(CurrentPage.As<CRFPage>().IsElementFocused(type, value));
         }
-	}
+
+        [StepDefinition(@"I verify lab ranges")]
+        public void IVerifyLabRanges(Table table)
+        {
+            CRFPage page = CurrentPage.As<CRFPage>();
+            Assert.IsTrue(page.VerifyLabDataPoints(table.CreateSet<LabRangeModel>()), "Lab Data points don't match");
+        }
+
+        [StepDefinition(@"I check ""([^""]*)"" on ""([^""]*)""")]
+        public void ICheck____On____(string checkBoxName, string fieldName)
+        {
+            CRFPage page = CurrentPage.As<CRFPage>();
+            if (checkBoxName == "Hard Lock")
+            {
+                page.Check(fieldName, checkBoxName);
+            }
+            else
+                ScenarioContext.Current.Pending();
+        }
+
+        [StepDefinition(@"I uncheck ""([^""]*)"" on ""([^""]*)""")]
+        public void IUnCheck____On____(string checkBoxName, string fieldName)
+        {
+            IVerify____Is____(checkBoxName, "On", fieldName);
+            ICheck____On____(checkBoxName, fieldName);
+        }
+
+
+        [StepDefinition(@"I verify ""([^""]*)"" is ""([^""]*)"" on ""([^""]*)""")]
+        public void IVerify____Is____(string checkBoxName, string checkStatus, string fieldName)
+        {
+            bool result = false;
+            CRFPage page = CurrentPage.As<CRFPage>();
+            if (checkBoxName == "Hard Lock")
+            {
+                 result = page.VerifyCheck("Hard Lock", fieldName, checkStatus);
+            }
+            else
+                ScenarioContext.Current.Pending();
+            Assert.IsTrue(result, String.Format("The check {0} is not {1}", checkBoxName, checkStatus));
+        }
+
+        [StepDefinition(@"I select Lab ""([^""]*)""")]
+        public void ISelectLab_____(string labName)
+        {
+            CRFPage page = CurrentPage.As<CRFPage>();
+            page.SelectLabValue(labName);
+        }
+
+
+
+
+    }
 }

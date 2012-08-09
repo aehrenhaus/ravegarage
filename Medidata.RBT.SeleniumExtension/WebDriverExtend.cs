@@ -11,7 +11,7 @@ using OpenQA.Selenium.Support.UI;
 
 namespace Medidata.RBT.SeleniumExtension
 {
-	public static class WebDriverExtend
+	public static class WebDriver
 	{
 
 		public static void TryExecuteJavascript(this RemoteWebDriver driver, string script)

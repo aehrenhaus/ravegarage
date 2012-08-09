@@ -10,7 +10,7 @@ using OpenQA.Selenium.Internal;
 
 namespace Medidata.RBT.SeleniumExtension
 {
-	public static class IWebElementExtend
+	public static class WebElement
 	{
 
 		public static T EnhanceAs<T>(this IWebElement ele) where T : EnhancedElement, new() 
