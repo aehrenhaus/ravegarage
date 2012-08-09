@@ -304,4 +304,4 @@ Scenario: PB_DT13905_04 As an EDC user, when I update a unit conversion formula 
 
 	| Subject        | FormName   | AnalyteName | AnalyteValue | LabUnits | StdValue | StdUnits |
 	| SUB{Var(num1)} | Hematology | WBC         | 10           | 10^9/L   | 50       | %        |
-	And I take a screenshot
+	#And I take a screenshot

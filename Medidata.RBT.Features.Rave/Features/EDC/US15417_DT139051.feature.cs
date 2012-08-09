@@ -740,8 +740,6 @@ this.FeatureBackground();
                         "%"});
 #line 303
  testRunner.Then("I should verify row(s) exist in \"Result\" table", ((string)(null)), table24);
-#line 307
- testRunner.And("I take a screenshot");
 #line hidden
             this.ScenarioCleanup();
         }
