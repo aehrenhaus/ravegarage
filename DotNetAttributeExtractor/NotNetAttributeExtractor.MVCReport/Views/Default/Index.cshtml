@@ -1,9 +1,8 @@
 ﻿@{
-    ViewBag.Title = "Index";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+	ViewBag.Title = "Index";
+	Layout = "~/Views/Shared/_Layout.cshtml";
 }
 @model System.Xml.Linq.XElement
-
 @section Head
 {
 	<style>
@@ -13,38 +12,62 @@
 		
 		li
 		{
-			margin:5px;
-			padding:5px;
-			border-bottom:1px solid #ddd;
-			list-style:none;
+			margin: 5px;
+			padding: 5px;
+			border-bottom: 1px solid #ddd;
+			list-style: none;
+		}
+		
+		.comment
+		{
+			color:#008000;
+			font-size:12px;
+		}
+		
+		.nocomment
+		{
+			color:orange;
 		}
 	</style>
-}		   
-
+}
 <form action="/Default/Index">
-<input name="path" value="@ViewBag.Path" style="width:80%" />
+<label>Path to dlls</label><input name="path" value="@ViewBag.Path" style="width:80%" />
 <br />
 <input type="submit" value="Select dll folder" />
-
 </form>
-<h2>List</h2>
-
+<h2>
+	List</h2>
 @if (Model != null)
 {
 	foreach (var type in Model.Elements("Type"))
- {
-		<h3>@type.Attribute("Name").Value</h3>
+	{
+	<h3>@type.Attribute("Name").Value</h3>
 	
-		<ul>
-		@foreach (var method in type.Descendants("StepDef"))
+	<ul>
+		@foreach (var method in type.Descendants("Method"))
   {
-			<li>@method.Attribute("RegexWithArgName").Value</li>
+	  foreach (var stepDef in method.Descendants("StepDef"))
+	  {
+			<li>@stepDef.Attribute("RegexWithArgName").Value
+				@{
+		  var summary = method.Descendants("summary").FirstOrDefault();
+				}
+				@if (summary != null)
+	{
+					<p class="comment">@summary.Value</p>
+	}
+	else
+	{
+					<p class="comment nocomment">[No comments]</p>
+	}
+			</li>
+	  }
   }
-		</ul>
- }
+	</ul>
+	}
 }
 else
 {
-	<h2>Please select a folder</h2>
+	<h2>
+		Please select a folder</h2>
 }
-

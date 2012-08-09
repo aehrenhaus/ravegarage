@@ -16,17 +16,25 @@ namespace NotNetAttributeExtractor.MVCReport.Controllers
 
         public ActionResult Index(string path)
         {
-		
+	
 			ViewBag.Path = path;
 			if (!System.IO.Directory.Exists(path))
 				return View();
-			string[] dlls = System.IO.Directory.GetFiles(path,"*.dll");
-			IEnumerable<Assembly> assems = dlls.Where (p=>!p.StartsWith("-")).Select(p => Assembly.LoadFrom(p));
-			
-			var ext = new AttributeExtractor();
-			XElement xml = ext.ExtractToXML(assems);
+			string[] dlls = System.IO.Directory.GetFiles(path, "*.dll");
+			IEnumerable<AssemAndXmlDoc> assems = dlls.Select(x =>
+			{
+				var assem = new AssemAndXmlDoc();
+				assem.Assembly = Assembly.LoadFrom(x);
+				string xmlDocPath = x.Replace(".dll", ".xml");
+				if (System.IO.File.Exists(xmlDocPath))
+					assem.Doc = XElement.Load(xmlDocPath);
+				return assem;
+			});
 
-			return View(xml);
+
+			var ext = new AttributeExtractor();
+			var doc = ext.ExtractMethod(assems);
+			return View(doc);
         }
 
     }
