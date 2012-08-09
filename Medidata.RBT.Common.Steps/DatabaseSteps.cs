@@ -27,7 +27,10 @@ namespace Medidata.RBT.Common.Steps
 		//    DbHelper.RestoreSnapshot();
 		//}
 
-
+		/// <summary>
+		/// test
+		/// </summary>
+		/// <param name="scriptName"></param>
 		[StepDefinition(@"I run SQL Script ""([^""]*)""")]
 		public void IRunSQLScript____(string scriptName)
 		{

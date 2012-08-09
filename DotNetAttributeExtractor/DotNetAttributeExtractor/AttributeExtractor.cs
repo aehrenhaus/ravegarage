@@ -11,11 +11,46 @@ namespace DotNetAttributeExtractor
 {
 	public class AttributeExtractor
 	{
-		public XElement ExtractToXML(IEnumerable<Assembly> assemblies)
+		public XElement ExtractMethod(IEnumerable<AssemAndXmlDoc> assemblies)
 		{
-			var doc = new XElement("root",
-					assemblies
-					.SelectMany(assm=>assm.GetTypes())
+			var doc = new XElement("root", assemblies.Select(x => ExtractMethodWithComment(x.Assembly, x.Doc)));
+			return doc;
+		}
+
+		public IEnumerable<XElement> ExtractMethodWithComment(Assembly assembly, XElement docxml)
+		{
+
+			var typeEles = ExtractMethod(assembly).ToList();
+			if (docxml == null)
+				return typeEles;
+
+			var membersDoc = docxml.Descendants("member").ToList();
+
+			
+			foreach (var typeEle in typeEles)
+			{
+				foreach (var ele in typeEle.Descendants("Method"))
+				{
+					string methodSig = typeEle.Attribute("FullName").Value + "."+ ele.Attribute("Name").Value + "(" + string.Join(",", ele.Descendants("Arg").Select(x => x.Attribute("TypeFullName").Value)) + ")";
+					//M:Medidata.RBT.Common.Steps.InterfaceSteps.INavigateTo____(System.String,System.String)
+
+					XElement docEle = membersDoc.FirstOrDefault(x => x.Attribute("name").Value == "M:"+methodSig);
+					if (docEle != null)
+					{
+						ele.Add(new XElement("Comment",docEle.Elements()));
+					}
+					
+				}
+			}
+
+			return typeEles;
+		}
+
+		public IEnumerable<XElement> ExtractMethod(Assembly assembly)
+		{
+			var typeEles = 
+					assembly
+					.GetTypes()
 					.Where(type => type.GetCustomAttributes(false).Any(attr => attr.GetType().Name == "BindingAttribute"))
 					.Select(type=>
 						new XElement("Type",
@@ -29,7 +64,8 @@ namespace DotNetAttributeExtractor
 											new XElement("Args",
 												m.GetParameters().Select(a=>new XElement("Arg",
 													new XAttribute("Name",a.Name),
-													new XAttribute("Type", a.ParameterType.Name)
+													new XAttribute("Type", a.ParameterType.Name),
+													new XAttribute("TypeFullName", a.ParameterType.FullName)
 													))
 												),
 											new XElement("StepDefs",
@@ -46,10 +82,9 @@ namespace DotNetAttributeExtractor
 									)
 								)
 							)
-						)
-				);
+						);
 
-			return doc;
+			return typeEles;
 
 		}
 
