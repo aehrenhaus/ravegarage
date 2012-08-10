@@ -31,7 +31,13 @@ namespace DotNetAttributeExtractor
 			{
 				foreach (var ele in typeEle.Descendants("Method"))
 				{
-					string methodSig = typeEle.Attribute("FullName").Value + "."+ ele.Attribute("Name").Value + "(" + string.Join(",", ele.Descendants("Arg").Select(x => x.Attribute("TypeFullName").Value)) + ")";
+					var args = ele.Descendants("Arg").Select(x => x.Attribute("TypeFullName").Value).ToList();
+
+					string methodSig = typeEle.Attribute("FullName").Value + "."+ ele.Attribute("Name").Value ;
+					if(args.Count>0)
+					{
+						methodSig += "(" + string.Join(",", args) + ")";
+					}
 					//M:Medidata.RBT.Common.Steps.InterfaceSteps.INavigateTo____(System.String,System.String)
 
 					XElement docEle = membersDoc.FirstOrDefault(x => x.Attribute("name").Value == "M:"+methodSig);
@@ -68,6 +74,7 @@ namespace DotNetAttributeExtractor
 													new XAttribute("TypeFullName", a.ParameterType.FullName)
 													))
 												),
+								
 											new XElement("StepDefs",
 												 m.GetCustomAttributes(false)
 													.Where(attr => attr.GetType().Name == "StepDefinitionAttribute" || attr.GetType().Name == "GivenAttribute" || attr.GetType().Name == "WhenAttribute" || attr.GetType().Name == "ThenAttribute")
@@ -88,23 +95,21 @@ namespace DotNetAttributeExtractor
 
 		}
 
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="regex"></param>
+		/// <param name="parameters"></param>
+		/// <returns></returns>
 		private string GetRegexWithArgName(string regex, ParameterInfo[] parameters)
 		{
-			//foreach (var p in parameters)
-			//{
-			//    //Table should be the last parameter
-			//    if (p.ParameterType.FullName == "TechTalk.SpecFlow.Table")
-			//        break;
-				
-
-			//}
 			int index = 0;
 			bool error = false;
 			regex = Regex.Replace(regex, @"\([^\)]+\)", (Match m) =>
 			{
 				if (index < parameters.Length)
 				{
-					var pName = parameters[index].Name;
+					var pName = "("+ parameters[index].Name+")";
 					index++;
 					return pName;
 				}

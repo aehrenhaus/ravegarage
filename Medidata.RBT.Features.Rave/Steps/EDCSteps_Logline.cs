@@ -13,6 +13,11 @@ namespace Medidata.RBT.Features.Rave
 	public partial class EDCSteps 
 	{
 	
+		/// <summary>
+		/// Add a new log line
+		/// </summary>
+		/// <FromPage>from</FromPage>
+		/// <ToPage>to page</ToPage>
 		[StepDefinition(@"I add a new log line")]
 		public void IAddANewLogLine()
 		{
