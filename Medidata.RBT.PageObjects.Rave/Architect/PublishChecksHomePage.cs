@@ -22,14 +22,14 @@ namespace Medidata.RBT.PageObjects.Rave
 		}
 
 
-		public override IPage ChooseFromCheckboxes(string areaIdentifer, string identifer, bool isChecked)
+		public override IPage ChooseFromCheckboxes(string areaIdentifier, string identifier, bool isChecked)
 		{
 			var table = Browser.Table("dgObjects");
 			Table filter = new Table("Name");
-			filter.AddRow (areaIdentifer);
+			filter.AddRow (areaIdentifier);
 			var foundRow = table.FindMatchRows(filter);
 
-			string id = (identifer == "Inactivate") ? "chkSelectInactivate" : "chkSelectCopy";
+			string id = (identifier == "Inactivate") ? "chkSelectInactivate" : "chkSelectCopy";
 
 			var chk = foundRow[0].Checkbox(id);
 

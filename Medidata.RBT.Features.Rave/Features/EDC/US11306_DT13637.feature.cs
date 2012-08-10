@@ -217,7 +217,7 @@ this.FeatureBackground();
                         "01 MAR 2012",
                         "N/A"});
 #line 103
- testRunner.Then("I should verify row(s) exist in \"Result\" table", ((string)(null)), table5);
+ testRunner.Then("I verify row(s) exist in \"Result\" table", ((string)(null)), table5);
 #line hidden
             this.ScenarioCleanup();
         }
@@ -346,7 +346,7 @@ this.FeatureBackground();
                         "01 MAR 2012",
                         "N/A"});
 #line 151
- testRunner.Then("I should verify row(s) exist in \"Result\" table", ((string)(null)), table10);
+ testRunner.Then("I verify row(s) exist in \"Result\" table", ((string)(null)), table10);
 #line hidden
             this.ScenarioCleanup();
         }

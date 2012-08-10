@@ -23,7 +23,7 @@ namespace Medidata.RBT.Features.Rave
 		[StepDefinition(@"I shoud see following controls are disabled")]
 		public void IShoudSeeFollowingControlsAreDisabled(Table table)
 		{
-			Assert.IsTrue(CurrentPage.As<ICanVerify>().ControlsAreDisabled(table));
+			Assert.IsTrue(CurrentPage.As<UserEditPage>().ControlsAreDisabled(table));
 		}
 
 		[StepDefinition(@"I click edit User ""([^""]*)""")]

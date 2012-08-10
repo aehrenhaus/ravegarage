@@ -13,31 +13,31 @@ namespace Medidata.RBT.PageObjects.Rave
 	{
 		#region IActivatePage
 
-		public IPage Activate(string type, string identiferToActivate)
+		public IPage Activate(string type, string identifierToActivate)
 		{
-			Activate(identiferToActivate, true);
+			Activate(identifierToActivate, true);
 
 
 			return this;
 		}
 
-		public IPage Inactivate(string type, string identiferToInactivate)
+		public IPage Inactivate(string type, string identifierToInactivate)
 		{
-			Activate(identiferToInactivate, false);
+			Activate(identifierToInactivate, false);
 
 
 			return this;
 		}
 
-		private void Activate(string identifer, bool activate)
+		private void Activate(string identifier, bool activate)
 		{
 			var table = Browser.Table("_ctl0_Content_DisplayGrid");
 			Table matchTable = new Table("Name");
-			matchTable.AddRow(identifer);
+			matchTable.AddRow(identifier);
 			var rows = table.FindMatchRows(matchTable);
 
 			if (rows.Count == 0)
-				throw new Exception("Can't find target to inactivate:"+identifer);
+				throw new Exception("Can't find target to inactivate:"+identifier);
 
 			rows[0].Images().First(x => x.GetAttribute("src").EndsWith("i_cedit.gif")).Click();
 

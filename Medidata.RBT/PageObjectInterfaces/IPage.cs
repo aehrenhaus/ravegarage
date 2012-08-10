@@ -78,22 +78,22 @@ namespace Medidata.RBT
 
 		/// <summary>
 		/// Click a hyperlink in a certen area.
-		/// areaIdentifer not only points out the area, but also implies what is the target page type.
+		/// areaIdentifier not only points out the area, but also implies what is the target page type.
 		/// 
 		/// Example : when you want to click a 'Study' 'Study 123' in 'Header area'
 		///
 		/// </summary>
 		/// <param name="linkText"></param>
-		/// <param name="areaIdentifer"></param>
+		/// <param name="areaIdentifier"></param>
 		/// <returns></returns>
-		IPage ClickLinkInArea(string type, string linkText, string areaIdentifer);
+		IPage ClickLinkInArea(string type, string linkText, string areaIdentifier);
 
 		/// <summary>
 		/// Click on a clickable UI control
 		/// </summary>
 		/// <param name="name"></param>
 		/// <returns></returns>
-		IPage ClickButton(string identifer);
+		IPage ClickButton(string identifier);
 
         /// <summary>
         /// Press a key on the keyboard
@@ -108,41 +108,41 @@ namespace Medidata.RBT
 		/// <param name="name"></param>
 		/// <param name="text"></param>
 		/// <returns></returns>
-		IPage Type(string identifer, string text);
+		IPage Type(string identifier, string text);
 
 		/// <summary>
 		/// Choose by text from a dropdown like UI control
 		/// </summary>
-		IPage ChooseFromDropdown(string identifer, string text);
+		IPage ChooseFromDropdown(string identifier, string text);
 
 		/// <summary>
 		/// Choose by text from checkbox
 		/// Example scenario: Check 'male' in 'Gender group of checkboxes' 
 		/// </summary>
-		IPage ChooseFromCheckboxes(string areaIdentifer, string identifer, bool isChecked);
+		IPage ChooseFromCheckboxes(string areaIdentifier, string identifier, bool isChecked);
 
 
 		/// <summary>
 		/// Choose by text from textboxes
 		/// Example scenario: Check 'male' in 'Gender group of radiobuttons' 
 		/// </summary>
-		IPage ChooseFromRadiobuttons(string areaIdentifer, string identifer);
+		IPage ChooseFromRadiobuttons(string areaIdentifier, string identifier);
 
 
 		/// <summary>
 		/// Example scenario: Can I see 'Medidata' in the 'Header area'?
 		/// </summary>
 		/// <param name="text"></param>
-		/// <param name="areaIdentifer"></param>
+		/// <param name="areaIdentifier"></param>
 		/// <returns></returns>
-		bool CanSeeTextInArea(string text, string areaIdentifer);
+		bool CanSeeTextInArea(string text, string areaIdentifier);
 
 		/// <summary>
 		/// NavigateTo() is abstract compares to ClickLink(), which clicks on a concrete link text
 		/// </summary>
 		/// <param name="name"></param>
 		/// <returns></returns>
-		IPage NavigateTo(string identifer);
+		IPage NavigateTo(string identifier);
 
         /// <summary>
         /// uses the pages url and params to go to itself
@@ -161,8 +161,8 @@ namespace Medidata.RBT
 		/// 
 		/// Example secnario: Get the artile's title from current page
 		/// </summary>
-		/// <param name="identifer"></param>
-		string GetInfomation(string identifer);
+		/// <param name="identifier"></param>
+		string GetInfomation(string identifier);
 
         /// <summary>
         /// Clicks a link anywhere in the page.
@@ -174,5 +174,12 @@ namespace Medidata.RBT
         IWebElement GetCurrentFocusedElement();
         long GetPageOffsetX();
         long GetPageOffsetY();
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="identifier"></param>
+		/// <returns></returns>
+		IWebElement GetElementByName(string identifier);
 	}
 }

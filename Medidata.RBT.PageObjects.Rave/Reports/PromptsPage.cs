@@ -154,11 +154,11 @@ namespace Medidata.RBT.PageObjects.Rave
         }
 
 
-        public bool GoNextPage(string areaIdentifer)
+        public bool GoNextPage(string areaIdentifier)
         {
             IWebElement nextLink = null;
 
-            if (areaIdentifer=="Subjects")
+            if (areaIdentifier=="Subjects")
                 nextLink = TestContext.Browser.TryFindElementById("PromptsBox_su_PageLink:Next");
             else
                 nextLink = TestContext.Browser.TryFindElementById("PromptsBox_st_PageLink:Next");
@@ -171,7 +171,7 @@ namespace Medidata.RBT.PageObjects.Rave
             return true;
         }
 
-        public bool GoPreviousPage(string areaIdentifer)
+        public bool GoPreviousPage(string areaIdentifier)
         {
             var previousLink = TestContext.Browser.TryFindElementById("PromptsBox_st_PageLink:Prev");
             if (previousLink != null)
@@ -182,12 +182,12 @@ namespace Medidata.RBT.PageObjects.Rave
             return true;
         }
 
-        public bool GoToPage(string areaIdentifer, int page)
+        public bool GoToPage(string areaIdentifier, int page)
         {
             throw new NotImplementedException();
         }
 
-		public bool CanPaginate(string areaIdentifer)
+		public bool CanPaginate(string areaIdentifier)
 		{
 			return true;
 		}

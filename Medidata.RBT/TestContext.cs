@@ -72,7 +72,7 @@ namespace Medidata.RBT
 
 		/// <summary>
 		/// This is read from a @PB.... tag on a scenario when it starts to run.
-		/// This is a convention, we use the tag name as a identifer of  a scenario
+		/// This is a convention, we use the tag name as a identifier of  a scenario
 		/// 
 		/// </summary>
 		public static string ScenarioUniqueName

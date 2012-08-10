@@ -8,91 +8,91 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace Medidata.RBT.Common.Steps
 {
 	[Binding]
-	public class InterfaceSteps : BrowserStepsBase
+	public class IPageSteps : BrowserStepsBase
 	{
 		/// <summary>
 		/// Select text from a dropdown. 
 		/// </summary>
 		/// <param name="text"></param>
-		/// <param name="identifer"></param>
+		/// <param name="identifier"></param>
         [StepDefinition(@"I choose ""([^""]*)"" from ""([^""]*)""")]
-		public void IChoose____From____(string text, string identifer)
+		public void IChoose____From____(string text, string identifier)
 		{
 			text = SpecialStringHelper.Replace(text);
-			CurrentPage = CurrentPage.ChooseFromDropdown(identifer, text);
+			CurrentPage = CurrentPage.ChooseFromDropdown(identifier, text);
 		}
 
 		/// <summary>
 		/// Select a radio button
 		/// </summary>
-		/// <param name="identifer"></param>
+		/// <param name="identifier"></param>
 		[StepDefinition(@"I pick ""([^""]*)""")]
-		public void IPick____(string identifer)
+		public void IPick____(string identifier)
 		{
-			CurrentPage = CurrentPage.ChooseFromRadiobuttons(null, identifer);
+			CurrentPage = CurrentPage.ChooseFromRadiobuttons(null, identifier);
 		}
 
 		/// <summary>
 		/// Select a radio button in a radio button group
 		/// </summary>
-		/// <param name="identifer"></param>
+		/// <param name="identifier"></param>
 		/// <param name="areaName"></param>
 		[StepDefinition(@"I pick ""([^""]*)"" in ""([^""]*)""")]
-		public void IPick____In____(string identifer, string areaName)
+		public void IPick____In____(string identifier, string areaName)
 		{
-			CurrentPage.ChooseFromRadiobuttons(areaName, identifer);
+			CurrentPage.ChooseFromRadiobuttons(areaName, identifier);
 		}
 
 		/// <summary>
 		/// Check a check box from a group
 		/// </summary>
-		/// <param name="identifer"></param>
+		/// <param name="identifier"></param>
 		/// <param name="areaName"></param>
 		[StepDefinition(@"I check ""([^""]*)"" in ""([^""]*)""")]
-		public void ICheck____In____(string identifer, string areaName)
+		public void ICheck____In____(string identifier, string areaName)
 		{
-			CurrentPage.ChooseFromCheckboxes(areaName, identifer, true);
+			CurrentPage.ChooseFromCheckboxes(areaName, identifier, true);
 		}
 
 		/// <summary>
 		/// Check a check box
 		/// </summary>
-		/// <param name="identifer"></param>
+		/// <param name="identifier"></param>
 		[StepDefinition(@"I check ""([^""]*)""")]
-		public void ICheck____(string identifer)
+		public void ICheck____(string identifier)
 		{
-			CurrentPage = CurrentPage.ChooseFromCheckboxes(null, identifer,true);
+			CurrentPage = CurrentPage.ChooseFromCheckboxes(null, identifier,true);
 		}
 
 		/// <summary>
 		/// Uncheck a checkbox
 		/// </summary>
-		/// <param name="identifer"></param>
+		/// <param name="identifier"></param>
 		/// <param name="areaName"></param>
 		[StepDefinition(@"I uncheck ""([^""]*)"" in ""([^""]*)""")]
-		public void IUncheck____In____(string identifer, string areaName)
+		public void IUncheck____In____(string identifier, string areaName)
 		{
-			CurrentPage.ChooseFromCheckboxes(areaName, identifer, false);
+			CurrentPage.ChooseFromCheckboxes(areaName, identifier, false);
 		}
 
 		/// <summary>
 		/// Uncheck a checkbox from a group
 		/// </summary>
-		/// <param name="identifer"></param>
+		/// <param name="identifier"></param>
 		[StepDefinition(@"I uncheck ""([^""]*)""")]
-		public void IUncheck____(string identifer)
+		public void IUncheck____(string identifier)
 		{
-			CurrentPage = CurrentPage.ChooseFromCheckboxes(null, identifer, false);
+			CurrentPage = CurrentPage.ChooseFromCheckboxes(null, identifier, false);
 		}
 
 		/// <summary>
 		/// Click a button
 		/// </summary>
-		/// <param name="textOrIdentifer"></param>
+		/// <param name="textOrIdentifier"></param>
 		[StepDefinition(@"I click button ""([^""]*)""")]
-		public void IClickButton____(string textOrIdentifer)
+		public void IClickButton____(string textOrIdentifier)
 		{
-			CurrentPage = CurrentPage.ClickButton(textOrIdentifer);
+			CurrentPage = CurrentPage.ClickButton(textOrIdentifier);
 
 		}
 
@@ -126,21 +126,21 @@ namespace Medidata.RBT.Common.Steps
 		/// </summary>
 		/// <param name="name"></param>
 		[StepDefinition(@"I navigate to ""([^""]*)""")]
-		public void INavigateTo____(string identifer)
+		public void INavigateTo____(string identifier)
 		{
-			CurrentPage = CurrentPage.As<IPage>().NavigateTo(identifer);
+			CurrentPage = CurrentPage.NavigateTo(identifier);
 		}
 
 		/// <summary>
 		/// Type text in a input control(textbox)
 		/// </summary>
 		/// <param name="text"></param>
-		/// <param name="identifer"></param>
+		/// <param name="identifier"></param>
 		[StepDefinition(@"I type ""([^""]*)"" in ""([^""]*)""")]
-		public void IType____In____(string text, string identifer)
+		public void IType____In____(string text, string identifier)
 		{
 			text = SpecialStringHelper.Replace(text);
-			CurrentPage.Type(identifer, text);
+			CurrentPage.Type(identifier, text);
 		}
 
 		/// <summary>
@@ -152,44 +152,11 @@ namespace Medidata.RBT.Common.Steps
 		public void IShouldSee____In____(string text, string areaName)
 		{
 			text = SpecialStringHelper.Replace(text);
-			var cansee = CurrentPage.As<IPage>().CanSeeTextInArea(text,areaName);
+			var cansee = CurrentPage.CanSeeTextInArea(text,areaName);
 			Assert.IsTrue(cansee, "Can't see {0} in {1}",text,areaName);
 		}
 
-		/// <summary>
-		/// Activate something on page
-		/// </summary>
-		/// <param name="type"></param>
-		/// <param name="identifer"></param>
-		[StepDefinition(@"I activate (.+) ""([^""]*)""")]
-		public void IActivate________(string type, string identifer)
-		{
-			CurrentPage.As<IActivatePage>().Activate(type, identifer);
-		}
 
-		/// <summary>
-		/// Inactivate something on page
-		/// </summary>
-		/// <param name="type"></param>
-		/// <param name="identifer"></param>
-		[StepDefinition(@"I inactivate (.+) ""([^""]*)""")]
-		public void IInactivate________(string type, string identifer)
-		{
-			CurrentPage.As<IActivatePage>().Inactivate(type, identifer);
-		}
-
-		/// <summary>
-		/// Save something (text) from current page to a variable.
-		/// This variable can be later used by using Var string replacement method
-		/// </summary>
-		/// <param name="identifer"></param>
-		/// <param name="varName"></param>
-		[StepDefinition(@"I note down ""([^""]*)"" to ""([^""]*)""")]
-		public void INoteDownCrfversionTo____(string identifer, string varName)
-		{
-			string text = CurrentPage.GetInfomation(identifer);
-			SpecialStringHelper.SetVar(varName, text);
-		}
 
 		/// <summary>
 		/// Simulates the key stroke to the browser
@@ -198,7 +165,7 @@ namespace Medidata.RBT.Common.Steps
         [StepDefinition(@"I hit ""([^""]*)"" key")]
         public void IHit____Key(string key)
         {
-            CurrentPage.As<IPage>().PressKey(key);
+            CurrentPage.PressKey(key);
         }
 	}
 }

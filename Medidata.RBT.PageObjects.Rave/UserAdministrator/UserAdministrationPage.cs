@@ -102,7 +102,7 @@ namespace Medidata.RBT.PageObjects.Rave
 		int count = 0;
 		int lastValue = -1;
 
-		public bool GoNextPage(string areaIdentifer)
+		public bool GoNextPage(string areaIdentifier)
 		{
 			var pageTable = TestContext.Browser.TryFindElementById("_ctl0_Content_UserGrid").TryFindElementBy(By.XPath("./tbody/tr[last()]"));
 
@@ -131,17 +131,17 @@ namespace Medidata.RBT.PageObjects.Rave
 			return true;
 		}
 
-		public bool GoPreviousPage(string areaIdentifer)
+		public bool GoPreviousPage(string areaIdentifier)
 		{
 			throw new NotImplementedException();
 		}
 
-		public bool GoToPage(string areaIdentifer, int page)
+		public bool GoToPage(string areaIdentifier, int page)
 		{
 			throw new NotImplementedException();
 		}
 
-		public bool CanPaginate(string areaIdentifer)
+		public bool CanPaginate(string areaIdentifier)
 		{
 			return true;
 		}

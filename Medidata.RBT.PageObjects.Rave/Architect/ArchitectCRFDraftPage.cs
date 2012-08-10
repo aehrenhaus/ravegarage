@@ -38,11 +38,11 @@ namespace Medidata.RBT.PageObjects.Rave
 			return base.NavigateTo(name);
 		}
 
-		public override string GetInfomation(string identifer)
+		public override string GetInfomation(string identifier)
 		{
-			if (identifer == "crfversion")
+			if (identifier == "crfversion")
 				return GetLatestCRFVersion();
-			return base.GetInfomation(identifer);
+			return base.GetInfomation(identifier);
 		}
 
 
