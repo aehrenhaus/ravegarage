@@ -13,7 +13,7 @@ using Medidata.RBT.SeleniumExtension;
 
 namespace Medidata.RBT.PageObjects.Rave
 {
-    public class PromptsPage : RavePageBase, IPaginatedPage
+    public class PromptsPage : RavePageBase, ICanPaginate
 	{
 		public PromptsPage()
 		{
@@ -186,6 +186,11 @@ namespace Medidata.RBT.PageObjects.Rave
         {
             throw new NotImplementedException();
         }
+
+		public bool CanPaginate(string areaIdentifer)
+		{
+			return true;
+		}
     }
 }
 

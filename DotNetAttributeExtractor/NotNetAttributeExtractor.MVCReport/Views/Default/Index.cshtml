@@ -28,6 +28,10 @@
 		{
 			color:orange;
 		}
+		.page
+		{
+			font-weight:bold;
+		}
 	</style>
 }
 <form action="/Default/Index">
@@ -49,9 +53,24 @@
 	  foreach (var stepDef in method.Descendants("StepDef"))
 	  {
 			<li>@stepDef.Attribute("RegexWithArgName").Value
+			
 				@{
+		  var from = method.Descendants("FromPage").FirstOrDefault();
+		  var to = method.Descendants("ToPage").FirstOrDefault();
 		  var summary = method.Descendants("summary").FirstOrDefault();
 				}
+<p>
+@if(from!=null )
+  {
+	<span class="page">@from.Value</span>
+  }
+  <span>---&gt;</span>
+  @if(to!=null)
+  {
+	 <span class="page">@to.Value</span>
+  }
+ </p>
+  
 				@if (summary != null)
 	{
 					<p class="comment">@summary.Value</p>

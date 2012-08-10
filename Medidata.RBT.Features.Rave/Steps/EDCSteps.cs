@@ -14,6 +14,11 @@ namespace Medidata.RBT.Features.Rave
 	[Binding]
 	public partial class EDCSteps : BrowserStepsBase
 	{
+		/// <summary>
+		/// Select study and site on Home page
+		/// </summary>
+		/// <param name="studyName"></param>
+		/// <param name="siteName"></param>
 		[StepDefinition(@"I select Study ""([^""]*)"" and Site ""([^""]*)""")]
 		public void ISelectStudy____AndSite____(string studyName, string siteName)
 		{
@@ -22,6 +27,13 @@ namespace Medidata.RBT.Features.Rave
 				.SelectSite(siteName);
 		}
 
+		/// <summary>
+		/// As it's name
+		/// </summary>
+		/// <param name="subjectCount"></param>
+		/// <param name="subjectName"></param>
+		/// <param name="studyName"></param>
+		/// <param name="siteName"></param>
         [StepDefinition(@"I create ([^""]*) random Subjects with name ""([^""]*)"" in Study ""([^""]*)"" in Site ""([^""]*)""")]
         public void WhenICreate____RandomSubjectsWithName____inStudy____inSite____(int subjectCount, string subjectName, string studyName, string siteName)
         {
@@ -41,7 +53,7 @@ namespace Medidata.RBT.Features.Rave
 
 
         /// <summary>
-        /// subjectName accepts replacements
+        /// Select a subject from list on Home page
         /// </summary>
         [StepDefinition(@"I select a Subject ""([^""]*)""")]
 		public void ISelectASubject____(string subjectName)
@@ -50,7 +62,7 @@ namespace Medidata.RBT.Features.Rave
 		}
 
 		/// <summary>
-		/// value column accepts replacements
+		/// Create a subject and fill the primary form.
 		/// </summary>
 		/// <param name="table"></param>
 		[StepDefinition(@"I create a Subject")]
@@ -61,7 +73,7 @@ namespace Medidata.RBT.Features.Rave
 		}
 
 		/// <summary>
-		/// 
+		/// Select forlder on DEC page
 		/// </summary>
 		/// <param name="folderName"></param>
 		[StepDefinition(@"I select Folder ""([^""]*)""")]
@@ -71,13 +83,21 @@ namespace Medidata.RBT.Features.Rave
 
 		}
 
+		/// <summary>
+		/// Select a form on EDC page
+		/// </summary>
+		/// <param name="formName"></param>
 		[StepDefinition(@"I select Form ""([^""]*)""")]
 		public void ISelectForm____(string formName)
 		{
 			CurrentPage = CurrentPage.As<BaseEDCTreePage>().SelectForm(formName);
 		}
 
-
+		/// <summary>
+		/// Fill the CRF
+		/// This step will click modify button if it's not in edit view.
+		/// </summary>
+		/// <param name="table"></param>
 		[StepDefinition(@"I enter data in CRF")]
 		public void IEnterDataInCRF(Table table)
 		{
@@ -87,6 +107,10 @@ namespace Medidata.RBT.Features.Rave
 			page.FillDataPoints(table.CreateSet<FieldModel>());
 		}
 
+		/// <summary>
+		/// Fill CRF and save
+		/// </summary>
+		/// <param name="table"></param>
 		[StepDefinition(@"I enter data in CRF and save")]
 		public void IEnterDataInCRFAndSave(Table table)
 		{
@@ -94,6 +118,11 @@ namespace Medidata.RBT.Features.Rave
 			ISaveCRF();
 		}
 
+		/// <summary>
+		/// Select Folder and Form
+		/// </summary>
+		/// <param name="formName"></param>
+		/// <param name="folderName"></param>
 		[StepDefinition(@"I select Form ""([^""]*)"" in Folder ""([^""]*)""")]
 		public void ISelectForm____InFolder____(string formName, string folderName)
 		{
@@ -102,13 +131,18 @@ namespace Medidata.RBT.Features.Rave
 		}
 
 
-		//[StepDefinition(@"I save the ""[^""]*"" page")]
+		/// <summary>
+		/// Click save on CRF page
+		/// </summary>
 		[StepDefinition(@"I save the CRF page")]
 		public void ISaveCRF()
 		{
 			CurrentPage = CurrentPage.As<CRFPage>().SaveForm();
 		}
 
+		/// <summary>
+		/// Click cancel on CRF page
+		/// </summary>
 		[StepDefinition(@"I cancel the ""[^""]*"" page")]
 		[StepDefinition(@"I cancel the CRF page")]
 		public void ICancelCRF()
@@ -116,7 +150,14 @@ namespace Medidata.RBT.Features.Rave
 			CurrentPage = CurrentPage.As<CRFPage>().CancelForm();
 		}
 		
-
+		/// <summary>
+		/// From Home page ,this step will navigate through the path and land on a CRF page
+		/// </summary>
+		/// <param name="formName"></param>
+		/// <param name="folderName"></param>
+		/// <param name="subjectName"></param>
+		/// <param name="siteName"></param>
+		/// <param name="studyName"></param>
 		[StepDefinition(@"I am on CRF page ""([^""]*)"" in Folder ""([^""]*)"" in Subject ""([^""]*)"" in Site ""([^""]*)"" in Study ""([^""]*)""")]
 		public void IAmOnCRFPage____InFolder___InSubject____InSite____InStudy____(string formName, string folderName, string subjectName, string siteName, string studyName)
 		{
@@ -128,19 +169,30 @@ namespace Medidata.RBT.Features.Rave
 				.SelectForm(formName);
 		}
 
+		/// <summary>
+		/// Expand a header in Task Summary area on Subject page.
+		/// </summary>
+		/// <param name="header"></param>
 		[StepDefinition(@"I expand ""([^""]*)"" in Task Summary")]
 		public void GivenIExpand____InTaskSummary(string header)
 		{
 			CurrentPage.As<SubjectPage>().ExpandTask(header);
 		}
 
-		
+		/// <summary>
+		/// Click audit icon on a field on CRF page
+		/// </summary>
+		/// <param name="fieldName"></param>
 		[StepDefinition(@"I click audit on Field ""([^""]*)""")]
 		public void IClickAuditOnField____(string fieldName)
 		{
 			CurrentPage = CurrentPage.As<CRFPage>().FindField(fieldName).ClickAudit();
 		}
 
+		/// <summary>
+		/// Verify audit exists
+		/// </summary>
+		/// <param name="table"></param>
 		[StepDefinition(@"I verify Audits exist")]
 		public void IVerifyAuditsExist(Table table)
 		{

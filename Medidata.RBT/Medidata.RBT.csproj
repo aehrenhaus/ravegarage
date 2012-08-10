@@ -69,13 +69,14 @@
     <Compile Include="EnumHelper.cs" />
     <Compile Include="PageObjectInterfaces\ControlBase.cs" />
     <Compile Include="DbHelper.cs" />
+    <Compile Include="PageObjectInterfaces\ICanHighlight.cs" />
     <Compile Include="PageObjectInterfaces\IPageObjectFactory.cs" />
     <Compile Include="PageObjectInterfaces\PageBase.cs" />
     <Compile Include="PageObjectInterfaces\IControl.cs" />
     <Compile Include="PageObjectInterfaces\IActivatePage.cs" />
-    <Compile Include="PageObjectInterfaces\IVerifyDisableConrolsPage.cs" />
+    <Compile Include="PageObjectInterfaces\ICanVerify.cs" />
     <Compile Include="PageObjectInterfaces\IPage.cs" />
-    <Compile Include="PageObjectInterfaces\IPaginatedPage.cs" />
+    <Compile Include="PageObjectInterfaces\ICanPaginate.cs" />
     <Compile Include="PageObjectInterfaces\AbstractPageObjectFactory.cs" />
     <Compile Include="RBTConfiguration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -14,7 +14,7 @@ namespace Medidata.RBT.PageObjects.Rave
 	/// </summary>
 	static class RavePagesHelper
 	{
-		public static IWebElement FindInPaginatedList(this IPaginatedPage page, string areaIdentifer, Func<IWebElement> searchFunc, out int foundOnPage)
+		public static IWebElement FindInPaginatedList(this ICanPaginate page, string areaIdentifer, Func<IWebElement> searchFunc, out int foundOnPage)
 		{
 			IWebElement found = null;
 			foundOnPage = 0;
