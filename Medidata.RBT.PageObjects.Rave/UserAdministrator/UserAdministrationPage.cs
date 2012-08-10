@@ -10,7 +10,7 @@ using OpenQA.Selenium.Support.UI;
 using Medidata.RBT.SeleniumExtension;
 namespace Medidata.RBT.PageObjects.Rave
 {
-	public  class UserAdministrationPage : PageBase, IPaginatedPage
+	public  class UserAdministrationPage : PageBase, ICanPaginate
 	{
 		[FindsBy(How = How.Id, Using = "_ctl0_Content_AuthenticatorDDL")]
 		IWebElement Authenticator;
@@ -139,6 +139,11 @@ namespace Medidata.RBT.PageObjects.Rave
 		public bool GoToPage(string areaIdentifer, int page)
 		{
 			throw new NotImplementedException();
+		}
+
+		public bool CanPaginate(string areaIdentifer)
+		{
+			return true;
 		}
 	}
 }

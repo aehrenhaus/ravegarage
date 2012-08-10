@@ -6,7 +6,7 @@ using OpenQA.Selenium;
 
 namespace Medidata.RBT
 {
-	public interface IPaginatedPage : IPage
+	public interface ICanPaginate : IPage
 	{
 		/// <summary>
 		/// Returns true if find and goes to next page
@@ -23,6 +23,12 @@ namespace Medidata.RBT
 		/// </summary>
 		bool GoToPage(string areaIdentifer, int page);
 
-
+		/// <summary>
+		/// Because a page may have many area, a PO class implements ICanPaginate doesn't mean everything on page can be paginated.
+		/// This method checks if a particular area on page can be paginated.
+		/// </summary>
+		/// <param name="areaIdentifer"></param>
+		/// <returns></returns>
+		bool CanPaginate(string areaIdentifer);
 	}
 }

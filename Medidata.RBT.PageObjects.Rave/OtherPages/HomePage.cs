@@ -12,7 +12,7 @@ using Medidata.RBT.SeleniumExtension;
 
 namespace Medidata.RBT.PageObjects.Rave
 {
-	public  class HomePage : RavePageBase, IPaginatedPage
+	public  class HomePage : RavePageBase, ICanPaginate
 	{
 		[FindsBy(How = How.Id, Using = "_ctl0_Content_ListDisplayNavigation_txtSearch")]
 		IWebElement SearchBox;
@@ -141,7 +141,13 @@ namespace Medidata.RBT.PageObjects.Rave
 			throw new NotImplementedException();
 		}
 
+		public bool CanPaginate(string areaIdentifer)
+		{
+			return true;
+		}
+
 		#endregion
+
 		public override IPage NavigateTo(string name)
 		{
 			NameValueCollection poClassMapping = new NameValueCollection();
