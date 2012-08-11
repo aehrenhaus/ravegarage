@@ -73,15 +73,15 @@ namespace Medidata.RBT.PageObjects.Rave
 			return base.GetElementByName(name);
 		}
 
-		//public override IPage ClickLinkInArea(string type, string linkText, string areaIdentifer)
+		//public override IPage ClickLinkInArea(string type, string linkText, string areaIdentifier)
 		//{
-		//    if (areaIdentifer == "CRFDrafts")
+		//    if (areaIdentifier == "CRFDrafts")
 		//    {
 		//        Browser.Link(linkText).Click();
 		//        return new ArchitectCRFDraftPage();
 		//    }
 
-		//    return base.ClickLinkInArea(type, linkText, areaIdentifer);
+		//    return base.ClickLinkInArea(type, linkText, areaIdentifier);
 		//}
 
 		public override string URL

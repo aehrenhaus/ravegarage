@@ -9,7 +9,7 @@ using System.Collections.Specialized;
 using Medidata.RBT.SeleniumExtension;
 namespace Medidata.RBT.PageObjects.Rave
 {
-	public class UserEditPage : RavePageBase, ICanVerify
+	public class UserEditPage : RavePageBase
 	{
 		[FindsBy(How = How.Id, Using = "_ctl0_Content_TopSaveLnkBtn")]
 		public IWebElement TopUpdate;

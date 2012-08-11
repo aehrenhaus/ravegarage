@@ -57,6 +57,18 @@ namespace Medidata.RBT.SeleniumExtension
 			IJavaScriptExecutor	jsExe = GetJsExecutor(element);
 			jsExe.ExecuteScript("arguments[0].removeAttribute(arguments[1])", element, attributeName);
 		}
+				
+		public static void SetStyle(this IWebElement element, string style, string value)
+		{
+			IJavaScriptExecutor jsExe = GetJsExecutor(element);
+			jsExe.ExecuteScript("arguments[0].style[arguments[1]] = arguments[2]", element, style, value);
+		}
+
+		public static string GetStyle(this IWebElement element, string style)
+		{
+			IJavaScriptExecutor	jsExe = GetJsExecutor(element);
+			return jsExe.ExecuteScript("return arguments[0].style[arguments[1]]", element, style) as string;
+		}
 
 
 		public static IWebElement Parent(this IWebElement element)

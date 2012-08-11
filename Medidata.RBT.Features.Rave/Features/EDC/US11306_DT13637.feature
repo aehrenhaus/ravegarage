@@ -100,7 +100,7 @@ Scenario: PB-DT13637-01 As a Data Manager, when an EDC user enters data for a st
 	
 	And I click button "Run"
 
-	Then I should verify row(s) exist in "Result" table
+	Then I verify rows exist in "Result" table
 	| Subject Name | Record Position | DEVICETYPE_RAW | DEVICETYPE_STD | DEVICE_RAW | DEVICE_STD  | DEVICE_ALTCODEDVALUE | DEVIMPDATE  | DEVCOMMENTS |
 	| SUBJ101      | 1               | Device Type 1  | DVT1           | Device 1A  | DVT1 - DV1A | DV1A                 | 01 MAR 2012 | N/A         |
 	| SUBJ101      | 2               | Device Type 1  | DVT1           | Device 1A  | DVT1 - DV1A | DV1A                 | 01 MAR 2012 | N/A         |
@@ -148,6 +148,6 @@ Scenario: PB-DT13637-02 As a Data Manager, when an EDC user enters data for a st
 	
 	And I click button "Run"
 
-	Then I should verify row(s) exist in "Result" table
+	Then I verify rows exist in "Result" table
 		| Subject Name | Record Position | DEVICETYPE_RAW | DEVICETYPE_STD | DEVICE_RAW | DEVICE_STD  | DEVICE_ALTCODEDVALUE | DEVIMPDATE  | DEVCOMMENTS |
 		| SUBJ101      | 1               | Device Type 1  | DVT1           | Device 1B  | DVT1 - DV1B | DV1B                 | 01 MAR 2012 | N/A         |

@@ -128,19 +128,42 @@ namespace Medidata.RBT.Common.Steps
 			CurrentPage = TestContext.POFactory.GetPage(pageName.Replace(" ", "") + "Page").NavigateToSelf();
 		}
 
+
 		/// <summary>
-		/// Verify all rows given in the feature exist in a table on page.
-		/// Columns can be less then the actual columns in html table.
+		/// Save something (text) from current page to a variable.
+		/// This variable can be later used by using Var string replacement method
 		/// </summary>
-		/// <param name="tableIdentifier"></param>
-		/// <param name="table"></param>
-        [StepDefinition(@"I should verify row\(s\) exist in ""([^""]*)"" table")]
-        public void IShouldVerifyRowSExistIn____table(string tableIdentifier, Table table)
-        {
-            HtmlTable htmlTable = CurrentPage.As<PageBase>().GetElementByName(tableIdentifier).EnhanceAs<HtmlTable>();
-            var rows = htmlTable.FindMatchRows(table);
-            Assert.AreEqual(table.Rows.Count, rows.Count, String.Format("Not all rows have been found in the table {0}", tableIdentifier));
-        }
+		/// <param name="identifier"></param>
+		/// <param name="varName"></param>
+		[StepDefinition(@"I note down ""([^""]*)"" to ""([^""]*)""")]
+		public void INoteDownCrfversionTo____(string identifier, string varName)
+		{
+			string text = CurrentPage.GetInfomation(identifier);
+			SpecialStringHelper.SetVar(varName, text);
+		}
+
+		/// <summary>
+		/// Inactivate something on page
+		/// </summary>
+		/// <param name="type"></param>
+		/// <param name="identifier"></param>
+		[StepDefinition(@"I inactivate (.+) ""([^""]*)""")]
+		public void IInactivate________(string type, string identifier)
+		{
+			CurrentPage.As<IActivatePage>().Inactivate(type, identifier);
+		}
+
+
+		/// <summary>
+		/// Activate something on page
+		/// </summary>
+		/// <param name="type"></param>
+		/// <param name="identifier"></param>
+		[StepDefinition(@"I activate (.+) ""([^""]*)""")]
+		public void IActivate________(string type, string identifier)
+		{
+			CurrentPage.As<IActivatePage>().Activate(type, identifier);
+		}
 
 	}
 }

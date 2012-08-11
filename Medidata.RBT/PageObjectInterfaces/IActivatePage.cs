@@ -7,7 +7,7 @@ namespace Medidata.RBT
 {
 	public interface IActivatePage : IPage
 	{
-		IPage Activate(string type, string identiferToActivate);
-		IPage Inactivate(string type, string identiferToInactivate);
+		IPage Activate(string type, string identifierToActivate);
+		IPage Inactivate(string type, string identifierToInactivate);
 	}
 }

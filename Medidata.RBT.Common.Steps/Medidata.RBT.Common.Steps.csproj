@@ -73,10 +73,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="InterfaceSteps.cs" />
+    <Compile Include="IVerifyExistSteps.cs" />
+    <Compile Include="IPageSteps.cs" />
     <Compile Include="DatabaseSteps.cs" />
     <Compile Include="MiscSteps.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="DefaultPOInterfaceImplementation.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Medidata.RBT.SeleniumExtension\Medidata.RBT.SeleniumExtension.csproj">

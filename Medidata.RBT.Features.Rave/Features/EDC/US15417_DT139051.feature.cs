@@ -79,6 +79,8 @@ Then I should see the lab data converted to standard values in the standard unit
 #line 12
 #line 13
     testRunner.Given("I am logged in to Rave with username \"defuser\" and password \"password\"");
+#line 57
+  testRunner.And("I select Study \"Mediflex_SJ\" and Site \"Site 1\"");
 #line hidden
         }
         
@@ -88,6 +90,9 @@ Then I should see the lab data converted to standard values in the standard unit
             "ould see the standard value and standard units in Clinical Views.")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "DT 13905 NeedsCVRefresh is not set to On for all datapoints related when Lab Unit" +
             " Conversion is created or updated")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("release_2012.1.0")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("PB_DT13905_01")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Draft")]
         public virtual void PB_DT13905_01AsAnEDCUserWhenICreateAUnitConversionFormulaToConvertLabDataInANon_StandardUnitToStandardValuesInAStandardUnitThenIShouldSeeTheStandardValueAndStandardUnitsInClinicalViews_()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("PB_DT13905_01 As an EDC user, when I create a unit conversion formula to convert " +
@@ -96,12 +101,10 @@ Then I should see the lab data converted to standard values in the standard unit
                         "release_2012.1.0",
                         "PB_DT13905_01",
                         "Draft"});
-#line 87
+#line 62
 this.ScenarioSetup(scenarioInfo);
 #line 12
 this.FeatureBackground();
-#line 88
- testRunner.And("I select Study \"US15417_DT13905_SJ\" and Site \"Site 1\"");
 #line hidden
             TechTalk.SpecFlow.Table table1 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field",
@@ -124,14 +127,16 @@ this.FeatureBackground();
             table1.AddRow(new string[] {
                         "Subject Date",
                         "01 Feb 2011"});
-#line 89
+#line 63
  testRunner.When("I create a Subject", ((string)(null)), table1);
-#line 97
+#line 71
  testRunner.And("I take a screenshot");
-#line 98
+#line 72
  testRunner.And("I select Form \"Hematology\"");
-#line 99
- testRunner.And("I choose \"US15417_DT13905_SJ\" from \"Lab\"");
+#line 73
+ testRunner.And("I take a screenshot");
+#line 74
+ testRunner.And("I choose \"Local Lab DT13905\" from \"Lab\"");
 #line hidden
             TechTalk.SpecFlow.Table table2 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field",
@@ -139,17 +144,15 @@ this.FeatureBackground();
                         "Unit"});
             table2.AddRow(new string[] {
                         "WBC",
-                        "10",
+                        "1",
                         "10^9/L"});
-#line 100
+#line 75
  testRunner.And("I enter data in CRF and save", ((string)(null)), table2);
-#line 104
- testRunner.And("I take a screenshot");
-#line 105
+#line 79
  testRunner.And("I select \"Home\"");
-#line 106
+#line 80
  testRunner.And("I navigate to \"Lab Administration\"");
-#line 107
+#line 81
  testRunner.And("I navigate to \"Unit Conversions\"");
 #line hidden
             TechTalk.SpecFlow.Table table3 = new TechTalk.SpecFlow.Table(new string[] {
@@ -168,34 +171,34 @@ this.FeatureBackground();
                         "1",
                         "0",
                         "0"});
-#line 108
+#line 82
  testRunner.And("I add new unit conversion data", ((string)(null)), table3);
-#line 111
+#line 85
  testRunner.And("I take a screenshot");
-#line 114
+#line 88
  testRunner.And("I navigate to \"Home\"");
-#line 115
+#line 89
  testRunner.And("I navigate to \"Reporter\"");
-#line 116
+#line 90
  testRunner.And("I select Report \"Data Listing\"");
 #line hidden
             TechTalk.SpecFlow.Table table4 = new TechTalk.SpecFlow.Table(new string[] {
                         "Name",
                         "Environment"});
             table4.AddRow(new string[] {
-                        "US15417_DT13905_SJ",
+                        "Mediflex_SJ",
                         "Prod"});
-#line 117
+#line 91
  testRunner.And("I set report parameter \"Study\" with table", ((string)(null)), table4);
-#line 120
+#line 94
  testRunner.And("I click button \"Submit Report\"");
-#line 121
+#line 95
  testRunner.And("I switch to \"DataListingsReport\" window");
-#line 122
+#line 96
  testRunner.And("I choose \"Clinical Views\" from \"Data Source\"");
-#line 123
+#line 97
  testRunner.And("I choose \"AnalytesView\" from \"Form\"");
-#line 124
+#line 98
  testRunner.And("I click button \"Run\"");
 #line hidden
             TechTalk.SpecFlow.Table table5 = new TechTalk.SpecFlow.Table(new string[] {
@@ -214,10 +217,8 @@ this.FeatureBackground();
                         "10^9/L",
                         "20",
                         "%"});
-#line 125
- testRunner.Then("I should verify row(s) exist in \"Result\" table", ((string)(null)), table5);
-#line 128
- testRunner.And("I take a screenshot");
+#line 99
+ testRunner.Then("I verify rows exist in \"Result\" table", ((string)(null)), table5);
 #line hidden
             this.ScenarioCleanup();
         }
@@ -229,6 +230,9 @@ this.FeatureBackground();
             "l Views.")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "DT 13905 NeedsCVRefresh is not set to On for all datapoints related when Lab Unit" +
             " Conversion is created or updated")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("release_2012.1.0")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("PB_DT13905_02")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Draft")]
         public virtual void PB_DT13905_02AsAnEDCUserWhenICreateAUnitConversionFormulaToConvertLabDataInANon_StandardUnitToStandardValuesInAStandardUnitForASpecificAnalyteThenIShouldSeeTheStandardValueAndStandardUnitsInClinicalViews_()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("PB_DT13905_02 As an EDC user, when I create a unit conversion formula to convert " +
@@ -238,12 +242,10 @@ this.FeatureBackground();
                         "release_2012.1.0",
                         "PB_DT13905_02",
                         "Draft"});
-#line 133
+#line 106
 this.ScenarioSetup(scenarioInfo);
 #line 12
 this.FeatureBackground();
-#line 134
- testRunner.And("I select Study \"US15417_DT13905_SJ\" and Site \"Site 1\"");
 #line hidden
             TechTalk.SpecFlow.Table table6 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field",
@@ -266,14 +268,12 @@ this.FeatureBackground();
             table6.AddRow(new string[] {
                         "Subject Date",
                         "01 Feb 2011"});
-#line 135
+#line 107
  testRunner.When("I create a Subject", ((string)(null)), table6);
-#line 143
- testRunner.And("I take a screenshot");
-#line 144
+#line 116
  testRunner.And("I select Form \"Hematology\"");
-#line 145
- testRunner.And("I choose \"US15417_DT13905_SJ\" from \"Lab\"");
+#line 117
+ testRunner.And("I choose \"Local Lab DT13905\" from \"Lab\"");
 #line hidden
             TechTalk.SpecFlow.Table table7 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field",
@@ -281,21 +281,15 @@ this.FeatureBackground();
                         "Unit"});
             table7.AddRow(new string[] {
                         "WBC",
-                        "10",
+                        "1",
                         "10^9/L"});
-            table7.AddRow(new string[] {
-                        "NEUTROPHILS",
-                        "10",
-                        "10^9/L"});
-#line 146
+#line 118
  testRunner.And("I enter data in CRF and save", ((string)(null)), table7);
-#line 151
- testRunner.And("I take a screenshot");
-#line 152
+#line 124
  testRunner.And("I select \"Home\"");
-#line 153
+#line 125
  testRunner.And("I navigate to \"Lab Administration\"");
-#line 154
+#line 126
  testRunner.And("I navigate to \"Unit Conversions\"");
 #line hidden
             TechTalk.SpecFlow.Table table8 = new TechTalk.SpecFlow.Table(new string[] {
@@ -314,34 +308,32 @@ this.FeatureBackground();
                         "1",
                         "0",
                         "0"});
-#line 155
+#line 127
  testRunner.And("I add new unit conversion data", ((string)(null)), table8);
-#line 159
- testRunner.And("I take a screenshot");
-#line 160
+#line 132
  testRunner.And("I navigate to \"Home\"");
-#line 161
+#line 133
  testRunner.And("I navigate to \"Reporter\"");
-#line 162
+#line 134
  testRunner.And("I select Report \"Data Listing\"");
 #line hidden
             TechTalk.SpecFlow.Table table9 = new TechTalk.SpecFlow.Table(new string[] {
                         "Name",
                         "Environment"});
             table9.AddRow(new string[] {
-                        "US15417_DT13905_SJ",
+                        "Mediflex_SJ",
                         "Prod"});
-#line 163
+#line 135
  testRunner.And("I set report parameter \"Study\" with table", ((string)(null)), table9);
-#line 166
+#line 138
  testRunner.And("I click button \"Submit Report\"");
-#line 167
+#line 139
  testRunner.And("I switch to \"DataListingsReport\" window");
-#line 168
+#line 140
  testRunner.And("I choose \"Clinical Views\" from \"Data Source\"");
-#line 169
+#line 141
  testRunner.And("I choose \"AnalytesView\" from \"Form\"");
-#line 170
+#line 142
  testRunner.And("I click button \"Run\"");
 #line hidden
             TechTalk.SpecFlow.Table table10 = new TechTalk.SpecFlow.Table(new string[] {
@@ -360,10 +352,8 @@ this.FeatureBackground();
                         "10^9/L",
                         "40",
                         "%"});
-#line 172
- testRunner.Then("I should verify row(s) exist in \"Result\" table", ((string)(null)), table10);
-#line 176
- testRunner.And("I take a screenshot");
+#line 144
+ testRunner.Then("I verify rows exist in \"Result\" table", ((string)(null)), table10);
 #line hidden
             this.ScenarioCleanup();
         }
@@ -374,6 +364,9 @@ this.FeatureBackground();
             "ould see the standard value and standard units in Clinical Views.")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "DT 13905 NeedsCVRefresh is not set to On for all datapoints related when Lab Unit" +
             " Conversion is created or updated")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("release_2012.1.0")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("PB_DT13905_03")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Draft")]
         public virtual void PB_DT13905_03AsAnEDCUserWhenIUpdateAUnitConversionFormulaToConvertLabDataInANon_StandardUnitToStandardValuesInAStandardUnitThenIShouldSeeTheStandardValueAndStandardUnitsInClinicalViews_()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("PB_DT13905_03 As an EDC user, when I update a unit conversion formula to convert " +
@@ -382,109 +375,16 @@ this.FeatureBackground();
                         "release_2012.1.0",
                         "PB_DT13905_03",
                         "Draft"});
-#line 180
+#line 152
 this.ScenarioSetup(scenarioInfo);
 #line 12
 this.FeatureBackground();
-#line 182
- testRunner.And("I select Study \"US15417_DT13905_SJ\" and Site \"Site 1\"");
-#line hidden
-            TechTalk.SpecFlow.Table table11 = new TechTalk.SpecFlow.Table(new string[] {
-                        "Field",
-                        "Data"});
-            table11.AddRow(new string[] {
-                        "Subject Initials",
-                        "SUB"});
-            table11.AddRow(new string[] {
-                        "Subject number",
-                        "{RndNum<num1>(3)}"});
-            table11.AddRow(new string[] {
-                        "Age",
-                        "20"});
-            table11.AddRow(new string[] {
-                        "Sex",
-                        "MaleREGAQT"});
-            table11.AddRow(new string[] {
-                        "Pregancy Status",
-                        "NoREGAQT"});
-            table11.AddRow(new string[] {
-                        "Subject Date",
-                        "01 Feb 2011"});
-#line 183
- testRunner.And("I create a Subject", ((string)(null)), table11);
-#line 192
- testRunner.And("I take a screenshot");
-#line 193
- testRunner.And("I select Form \"Hematology\"");
-#line 194
- testRunner.And("I choose \"US15417_DT13905_SJ\" from \"Lab\"");
-#line hidden
-            TechTalk.SpecFlow.Table table12 = new TechTalk.SpecFlow.Table(new string[] {
-                        "Field",
-                        "Data",
-                        "Unit"});
-            table12.AddRow(new string[] {
-                        "WBC",
-                        "10",
-                        "10^9/L"});
-#line 195
- testRunner.And("I enter data in CRF and save", ((string)(null)), table12);
-#line 199
- testRunner.And("I take a screenshot");
-#line 200
- testRunner.And("I navigate to \"Home\"");
-#line 201
- testRunner.And("I navigate to \"Reporter\"");
-#line 202
- testRunner.And("I select Report \"Data Listing\"");
-#line hidden
-            TechTalk.SpecFlow.Table table13 = new TechTalk.SpecFlow.Table(new string[] {
-                        "Name",
-                        "Environment"});
-            table13.AddRow(new string[] {
-                        "US15417_DT13905_SJ",
-                        "Prod"});
-#line 203
- testRunner.And("I set report parameter \"Study\" with table", ((string)(null)), table13);
-#line 206
- testRunner.And("I click button \"Submit Report\"");
-#line 207
- testRunner.And("I switch to \"DataListingsReport\" window");
-#line 208
- testRunner.And("I choose \"Clinical Views\" from \"Data Source\"");
-#line 209
- testRunner.And("I choose \"AnalytesView\" from \"Form\"");
-#line 210
- testRunner.And("I click button \"Run\"");
-#line hidden
-            TechTalk.SpecFlow.Table table14 = new TechTalk.SpecFlow.Table(new string[] {
-                        "Subject",
-                        "FormName",
-                        "AnalyteName",
-                        "AnalyteValue",
-                        "LabUnits",
-                        "StdValue",
-                        "StdUnits"});
-            table14.AddRow(new string[] {
-                        "SUB{Var(num1)}",
-                        "Hematology",
-                        "WBC",
-                        "10",
-                        "10^9/L",
-                        "20",
-                        "%"});
-#line 212
- testRunner.Then("I should verify row(s) exist in \"Result\" table", ((string)(null)), table14);
-#line 216
- testRunner.And("I take a screenshot");
-#line 217
- testRunner.And("I select \"Home\"");
-#line 218
- testRunner.And("I navigate to \"Lab Administration\"");
-#line 219
+#line 154
+ testRunner.When("I navigate to \"Lab Administration\"");
+#line 155
  testRunner.And("I navigate to \"Unit Conversions\"");
 #line hidden
-            TechTalk.SpecFlow.Table table15 = new TechTalk.SpecFlow.Table(new string[] {
+            TechTalk.SpecFlow.Table table11 = new TechTalk.SpecFlow.Table(new string[] {
                         "From",
                         "To",
                         "Analyte",
@@ -492,45 +392,82 @@ this.FeatureBackground();
                         "B",
                         "C",
                         "D"});
-            table15.AddRow(new string[] {
+            table11.AddRow(new string[] {
                         "10^9/L",
                         "%",
                         "",
-                        "3",
+                        "2",
                         "1",
                         "0",
                         "0"});
-#line 220
- testRunner.And("I add new unit conversion data", ((string)(null)), table15);
-#line 224
- testRunner.And("I take a screenshot");
-#line 225
+#line 156
+ testRunner.And("I enter unit conversion data", ((string)(null)), table11);
+#line hidden
+            TechTalk.SpecFlow.Table table12 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Data"});
+            table12.AddRow(new string[] {
+                        "Subject Initials",
+                        "SUB"});
+            table12.AddRow(new string[] {
+                        "Subject Number",
+                        "{RndNum<num1>(3)}"});
+            table12.AddRow(new string[] {
+                        "Age",
+                        "20"});
+            table12.AddRow(new string[] {
+                        "Sex",
+                        "MaleREGAQT"});
+            table12.AddRow(new string[] {
+                        "Pregancy Status",
+                        "NoREGAQT"});
+            table12.AddRow(new string[] {
+                        "Subject Date",
+                        "01 Feb 2011"});
+#line 159
+ testRunner.And("I create a Subject", ((string)(null)), table12);
+#line 169
+ testRunner.And("I select Form \"Hematology\"");
+#line 170
+ testRunner.And("I choose \"Local Lab DT13905\" from \"Lab\"");
+#line hidden
+            TechTalk.SpecFlow.Table table13 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Data",
+                        "Unit"});
+            table13.AddRow(new string[] {
+                        "WBC",
+                        "1",
+                        "10^9/L"});
+#line 171
+ testRunner.And("I enter data in CRF and save", ((string)(null)), table13);
+#line 176
  testRunner.And("I navigate to \"Home\"");
-#line 226
+#line 177
  testRunner.And("I navigate to \"Reporter\"");
-#line 227
+#line 178
  testRunner.And("I select Report \"Data Listing\"");
 #line hidden
-            TechTalk.SpecFlow.Table table16 = new TechTalk.SpecFlow.Table(new string[] {
+            TechTalk.SpecFlow.Table table14 = new TechTalk.SpecFlow.Table(new string[] {
                         "Name",
                         "Environment"});
-            table16.AddRow(new string[] {
+            table14.AddRow(new string[] {
                         "Mediflex_SJ",
                         "Prod"});
-#line 228
- testRunner.And("I set report parameter \"Study\" with table", ((string)(null)), table16);
-#line 231
+#line 179
+ testRunner.And("I set report parameter \"Study\" with table", ((string)(null)), table14);
+#line 182
  testRunner.And("I click button \"Submit Report\"");
-#line 232
+#line 183
  testRunner.And("I switch to \"DataListingsReport\" window");
-#line 233
+#line 184
  testRunner.And("I choose \"Clinical Views\" from \"Data Source\"");
-#line 234
+#line 185
  testRunner.And("I choose \"AnalytesView\" from \"Form\"");
-#line 235
+#line 186
  testRunner.And("I click button \"Run\"");
 #line hidden
-            TechTalk.SpecFlow.Table table17 = new TechTalk.SpecFlow.Table(new string[] {
+            TechTalk.SpecFlow.Table table15 = new TechTalk.SpecFlow.Table(new string[] {
                         "Subject",
                         "FormName",
                         "AnalyteName",
@@ -538,7 +475,74 @@ this.FeatureBackground();
                         "LabUnits",
                         "StdValue",
                         "StdUnits"});
+            table15.AddRow(new string[] {
+                        "SUB{Var(num1)}",
+                        "Hematology",
+                        "WBC",
+                        "10",
+                        "10^9/L",
+                        "20",
+                        "%"});
+#line 188
+ testRunner.Then("I verify rows exist in \"Result\" table", ((string)(null)), table15);
+#line 193
+ testRunner.And("I select \"Home\"");
+#line 194
+ testRunner.And("I navigate to \"Lab Administration\"");
+#line hidden
+            TechTalk.SpecFlow.Table table16 = new TechTalk.SpecFlow.Table(new string[] {
+                        "From",
+                        "To",
+                        "Analyte",
+                        "A",
+                        "B",
+                        "C",
+                        "D"});
+            table16.AddRow(new string[] {
+                        "10^9/L",
+                        "%",
+                        "",
+                        "3",
+                        "1",
+                        "0",
+                        "0"});
+#line 195
+ testRunner.And("I navigate to \"Unit Conversions\"", ((string)(null)), table16);
+#line 201
+ testRunner.And("I navigate to \"Home\"");
+#line 202
+ testRunner.And("I navigate to \"Reporter\"");
+#line 203
+ testRunner.And("I select Report \"Data Listing\"");
+#line hidden
+            TechTalk.SpecFlow.Table table17 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Name",
+                        "Environment"});
             table17.AddRow(new string[] {
+                        "Mediflex_SJ",
+                        "Prod"});
+#line 204
+ testRunner.And("I set report parameter \"Study\" with table", ((string)(null)), table17);
+#line 207
+ testRunner.And("I click button \"Submit Report\"");
+#line 208
+ testRunner.And("I switch to \"DataListingsReport\" window");
+#line 209
+ testRunner.And("I choose \"Clinical Views\" from \"Data Source\"");
+#line 210
+ testRunner.And("I choose \"AnalytesView\" from \"Form\"");
+#line 211
+ testRunner.And("I click button \"Run\"");
+#line hidden
+            TechTalk.SpecFlow.Table table18 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Subject",
+                        "FormName",
+                        "AnalyteName",
+                        "AnalyteValue",
+                        "LabUnits",
+                        "StdValue",
+                        "StdUnits"});
+            table18.AddRow(new string[] {
                         "SUB{Var(num1)}",
                         "Hematology",
                         "WBC",
@@ -546,10 +550,8 @@ this.FeatureBackground();
                         "10^9/L",
                         "30",
                         "%"});
-#line 237
- testRunner.Then("I should verify row(s) exist in \"Result\" table", ((string)(null)), table17);
-#line 241
- testRunner.And("I take a screenshot");
+#line 213
+ testRunner.Then("I verify rows exist in \"Result\" table", ((string)(null)), table18);
 #line hidden
             this.ScenarioCleanup();
         }
@@ -561,6 +563,9 @@ this.FeatureBackground();
             "l Views.")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "DT 13905 NeedsCVRefresh is not set to On for all datapoints related when Lab Unit" +
             " Conversion is created or updated")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("release_2012.1.0")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("PB_DT13905_04")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Draft")]
         public virtual void PB_DT13905_04AsAnEDCUserWhenIUpdateAUnitConversionFormulaToConvertLabDataInANon_StandardUnitToStandardValuesInAStandardUnitForASpecificAnalyteThenIShouldSeeTheStandardValueAndStandardUnitsInClinicalViews_()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("PB_DT13905_04 As an EDC user, when I update a unit conversion formula to convert " +
@@ -570,113 +575,18 @@ this.FeatureBackground();
                         "release_2012.1.0",
                         "PB_DT13905_04",
                         "Draft"});
-#line 245
+#line 221
 this.ScenarioSetup(scenarioInfo);
 #line 12
 this.FeatureBackground();
-#line 247
- testRunner.And("I select Study \"US15417_DT13905_SJ\" and Site \"Site 1\"");
-#line hidden
-            TechTalk.SpecFlow.Table table18 = new TechTalk.SpecFlow.Table(new string[] {
-                        "Field",
-                        "Data"});
-            table18.AddRow(new string[] {
-                        "Subject Initials",
-                        "SUB"});
-            table18.AddRow(new string[] {
-                        "Subject number",
-                        "{RndNum<num1>(3)}"});
-            table18.AddRow(new string[] {
-                        "Age",
-                        "20"});
-            table18.AddRow(new string[] {
-                        "Sex",
-                        "MaleREGAQT"});
-            table18.AddRow(new string[] {
-                        "Pregancy Status",
-                        "NoREGAQT"});
-            table18.AddRow(new string[] {
-                        "Subject Date",
-                        "01 Feb 2011"});
-#line 248
- testRunner.And("I create a Subject", ((string)(null)), table18);
-#line 257
- testRunner.And("I take a screenshot");
-#line 258
- testRunner.And("I select Form \"Hematology\"");
-#line 259
- testRunner.And("I choose \"US15417_DT13905_SJ\" from \"Lab\"");
+#line 222
+ testRunner.When("I navigate to \"Lab Administration\"");
+#line 223
+ testRunner.And("I navigate to \"Unit Conversions\"");
+#line 224
+ testRunner.And("I enter unit conversion data");
 #line hidden
             TechTalk.SpecFlow.Table table19 = new TechTalk.SpecFlow.Table(new string[] {
-                        "Field",
-                        "Data",
-                        "Unit"});
-            table19.AddRow(new string[] {
-                        "WBC",
-                        "10",
-                        "10^9/L"});
-            table19.AddRow(new string[] {
-                        "NEUTROPHILS",
-                        "10",
-                        "10^9/L"});
-#line 260
- testRunner.And("I enter data in CRF and save", ((string)(null)), table19);
-#line 265
- testRunner.And("I take a screenshot");
-#line 266
- testRunner.And("I navigate to \"Home\"");
-#line 267
- testRunner.And("I navigate to \"Reporter\"");
-#line 268
- testRunner.And("I select Report \"Data Listing\"");
-#line hidden
-            TechTalk.SpecFlow.Table table20 = new TechTalk.SpecFlow.Table(new string[] {
-                        "Name",
-                        "Environment"});
-            table20.AddRow(new string[] {
-                        "Mediflex_SJ",
-                        "Prod"});
-#line 269
- testRunner.And("I set report parameter \"Study\" with table", ((string)(null)), table20);
-#line 272
- testRunner.And("I click button \"Submit Report\"");
-#line 273
- testRunner.And("I switch to \"DataListingsReport\" window");
-#line 274
- testRunner.And("I choose \"Clinical Views\" from \"Data Source\"");
-#line 275
- testRunner.And("I choose \"AnalytesView\" from \"Form\"");
-#line 276
- testRunner.And("I click button \"Run\"");
-#line hidden
-            TechTalk.SpecFlow.Table table21 = new TechTalk.SpecFlow.Table(new string[] {
-                        "Subject",
-                        "FormName",
-                        "AnalyteName",
-                        "AnalyteValue",
-                        "LabUnits",
-                        "StdValue",
-                        "StdUnits"});
-            table21.AddRow(new string[] {
-                        "SUB{Var(num1)}",
-                        "Hematology",
-                        "WBC",
-                        "10",
-                        "10^9/L",
-                        "30",
-                        "%"});
-#line 278
- testRunner.Then("I should verify row(s) exist in \"Result\" table", ((string)(null)), table21);
-#line 282
- testRunner.And("I take a screenshot");
-#line 283
- testRunner.And("I select \"Home\"");
-#line 284
- testRunner.And("I navigate to \"Lab Administration\"");
-#line 285
- testRunner.And("I navigate to \"Unit Conversions\"");
-#line hidden
-            TechTalk.SpecFlow.Table table22 = new TechTalk.SpecFlow.Table(new string[] {
                         "From",
                         "To",
                         "Analyte",
@@ -684,45 +594,82 @@ this.FeatureBackground();
                         "B",
                         "C",
                         "D"});
-            table22.AddRow(new string[] {
+            table19.AddRow(new string[] {
                         "10^9/L",
                         "%",
-                        "",
-                        "5",
+                        "WBC",
+                        "3",
                         "1",
                         "0",
                         "0"});
-#line 286
- testRunner.And("I add new unit conversion data", ((string)(null)), table22);
-#line 290
- testRunner.And("I take a screenshot");
-#line 291
+#line 225
+ testRunner.And("I enter unit conversion data", ((string)(null)), table19);
+#line hidden
+            TechTalk.SpecFlow.Table table20 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Data"});
+            table20.AddRow(new string[] {
+                        "Subject Initials",
+                        "SUB"});
+            table20.AddRow(new string[] {
+                        "Subject Number",
+                        "{RndNum<num1>(3)}"});
+            table20.AddRow(new string[] {
+                        "Age",
+                        "20"});
+            table20.AddRow(new string[] {
+                        "Sex",
+                        "MaleREGAQT"});
+            table20.AddRow(new string[] {
+                        "Pregancy Status",
+                        "NoREGAQT"});
+            table20.AddRow(new string[] {
+                        "Subject Date",
+                        "01 Feb 2011"});
+#line 230
+ testRunner.And("I create a Subject", ((string)(null)), table20);
+#line 240
+ testRunner.And("I select Form \"Hematology\"");
+#line 241
+ testRunner.And("I choose \"Local Lab DT13905\" from \"Lab\"");
+#line hidden
+            TechTalk.SpecFlow.Table table21 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Data",
+                        "Unit"});
+            table21.AddRow(new string[] {
+                        "WBC",
+                        "1",
+                        "10^9/L"});
+#line 242
+ testRunner.And("I enter data in CRF and save", ((string)(null)), table21);
+#line 247
  testRunner.And("I navigate to \"Home\"");
-#line 292
+#line 248
  testRunner.And("I navigate to \"Reporter\"");
-#line 293
+#line 249
  testRunner.And("I select Report \"Data Listing\"");
 #line hidden
-            TechTalk.SpecFlow.Table table23 = new TechTalk.SpecFlow.Table(new string[] {
+            TechTalk.SpecFlow.Table table22 = new TechTalk.SpecFlow.Table(new string[] {
                         "Name",
                         "Environment"});
-            table23.AddRow(new string[] {
+            table22.AddRow(new string[] {
                         "Mediflex_SJ",
                         "Prod"});
-#line 294
- testRunner.And("I set report parameter \"Study\" with table", ((string)(null)), table23);
-#line 297
+#line 250
+ testRunner.And("I set report parameter \"Study\" with table", ((string)(null)), table22);
+#line 253
  testRunner.And("I click button \"Submit Report\"");
-#line 298
+#line 254
  testRunner.And("I switch to \"DataListingsReport\" window");
-#line 299
+#line 255
  testRunner.And("I choose \"Clinical Views\" from \"Data Source\"");
-#line 300
+#line 256
  testRunner.And("I choose \"AnalytesView\" from \"Form\"");
-#line 301
+#line 257
  testRunner.And("I click button \"Run\"");
 #line hidden
-            TechTalk.SpecFlow.Table table24 = new TechTalk.SpecFlow.Table(new string[] {
+            TechTalk.SpecFlow.Table table23 = new TechTalk.SpecFlow.Table(new string[] {
                         "Subject",
                         "FormName",
                         "AnalyteName",
@@ -730,7 +677,76 @@ this.FeatureBackground();
                         "LabUnits",
                         "StdValue",
                         "StdUnits"});
+            table23.AddRow(new string[] {
+                        "SUB{Var(num1)}",
+                        "Hematology",
+                        "WBC",
+                        "10",
+                        "10^9/L",
+                        "30",
+                        "%"});
+#line 259
+ testRunner.Then("I verify rows exist in \"Result\" table", ((string)(null)), table23);
+#line 264
+ testRunner.And("I select \"Home\"");
+#line 265
+ testRunner.And("I navigate to \"Lab Administration\"");
+#line 266
+ testRunner.And("I navigate to \"Unit Conversions\"");
+#line hidden
+            TechTalk.SpecFlow.Table table24 = new TechTalk.SpecFlow.Table(new string[] {
+                        "From",
+                        "To",
+                        "Analyte",
+                        "A",
+                        "B",
+                        "C",
+                        "D"});
             table24.AddRow(new string[] {
+                        "10^9/L",
+                        "%",
+                        "",
+                        "5",
+                        "1",
+                        "0",
+                        "0"});
+#line 267
+ testRunner.And("I add new unit conversion data", ((string)(null)), table24);
+#line 272
+ testRunner.And("I navigate to \"Home\"");
+#line 273
+ testRunner.And("I navigate to \"Reporter\"");
+#line 274
+ testRunner.And("I select Report \"Data Listing\"");
+#line hidden
+            TechTalk.SpecFlow.Table table25 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Name",
+                        "Environment"});
+            table25.AddRow(new string[] {
+                        "Mediflex_SJ",
+                        "Prod"});
+#line 275
+ testRunner.And("I set report parameter \"Study\" with table", ((string)(null)), table25);
+#line 278
+ testRunner.And("I click button \"Submit Report\"");
+#line 279
+ testRunner.And("I switch to \"DataListingsReport\" window");
+#line 280
+ testRunner.And("I choose \"Clinical Views\" from \"Data Source\"");
+#line 281
+ testRunner.And("I choose \"AnalytesView\" from \"Form\"");
+#line 282
+ testRunner.And("I click button \"Run\"");
+#line hidden
+            TechTalk.SpecFlow.Table table26 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Subject",
+                        "FormName",
+                        "AnalyteName",
+                        "AnalyteValue",
+                        "LabUnits",
+                        "StdValue",
+                        "StdUnits"});
+            table26.AddRow(new string[] {
                         "SUB{Var(num1)}",
                         "Hematology",
                         "WBC",
@@ -738,8 +754,8 @@ this.FeatureBackground();
                         "10^9/L",
                         "50",
                         "%"});
-#line 303
- testRunner.Then("I should verify row(s) exist in \"Result\" table", ((string)(null)), table24);
+#line 284
+ testRunner.Then("I verify rows exist in \"Result\" table", ((string)(null)), table26);
 #line hidden
             this.ScenarioCleanup();
         }

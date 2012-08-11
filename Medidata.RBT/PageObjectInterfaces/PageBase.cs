@@ -55,7 +55,7 @@ namespace Medidata.RBT
 		/// <summary>
 		/// See IPage interface
 		/// </summary>
-        public TPage As<TPage>() where TPage : class, IPage
+        public TPage As<TPage>() where TPage : class
         {
             var page = this as TPage;
             if (page == null)
@@ -74,18 +74,18 @@ namespace Medidata.RBT
 		/// <summary>
 		/// See IPage interface
 		/// </summary>
-        public virtual IPage ClickButton(string identifer)
+        public virtual IPage ClickButton(string identifier)
         {
-            var element = Browser.TryFindElementBy(By.XPath("//button[text()='" + identifer + "']"));
+            var element = Browser.TryFindElementBy(By.XPath("//button[text()='" + identifier + "']"));
             if (element == null)
-				element = Browser.TryFindElementBy(By.XPath("//input[@value='" + identifer + "']"));
+				element = Browser.TryFindElementBy(By.XPath("//input[@value='" + identifier + "']"));
             if (element == null)
-                element = Browser.TryFindElementById(identifer);
+                element = Browser.TryFindElementById(identifier);
             if (element == null)
-                element = GetElementByName(identifer);
+                element = GetElementByName(identifier);
 
             if (element == null)
-                throw new Exception("Can't find button:" + identifer);
+                throw new Exception("Can't find button:" + identifier);
             element.Click();
 
 			var uri = new Uri(Browser.Url);
@@ -103,12 +103,12 @@ namespace Medidata.RBT
 		/// <summary>
 		/// See IPage interface
 		/// </summary>
-        public virtual IPage ClickLinkInArea(string type, string linkText, string areaIdentifer)
+        public virtual IPage ClickLinkInArea(string type, string linkText, string areaIdentifier)
         {
 			
-            IWebElement area = Browser.TryFindElementById(areaIdentifer);
+            IWebElement area = Browser.TryFindElementById(areaIdentifier);
             if (area == null)
-                area = GetElementByName(areaIdentifer);
+                area = GetElementByName(areaIdentifier);
 
             var link = area.Link(linkText);
             link.Click();
@@ -171,19 +171,19 @@ namespace Medidata.RBT
         /// <summary>
 		/// See IPage interface
         /// </summary>
-        public virtual IPage NavigateTo(string identifer)
+        public virtual IPage NavigateTo(string identifier)
         {
-            throw new Exception("Don't know how to navigate to "+identifer);
+            throw new Exception("Don't know how to navigate to "+identifier);
         }
 
 		/// <summary>
 		/// See IPage interface
 		/// </summary>
-        public virtual IPage Type(string identifer, string text)
+        public virtual IPage Type(string identifier, string text)
         {
-            var element = Browser.Textbox(identifer);
+            var element = Browser.Textbox(identifier);
             if (element == null)
-                element = GetElementByName(identifer).EnhanceAs<Textbox>();
+                element = GetElementByName(identifier).EnhanceAs<Textbox>();
             element.SetText(text);
             return this;
         }
@@ -191,11 +191,11 @@ namespace Medidata.RBT
 		/// <summary>
 		/// See IPage interface
 		/// </summary>
-        public virtual IPage ChooseFromDropdown(string identifer, string text)
+        public virtual IPage ChooseFromDropdown(string identifier, string text)
         {
-            var element = Browser.Dropdown(identifer, true);
+            var element = Browser.Dropdown(identifier, true);
             if (element == null)
-                element = GetElementByName(identifer).EnhanceAs<Dropdown>();
+                element = GetElementByName(identifier).EnhanceAs<Dropdown>();
 
             element.SelectByText(text);
 
@@ -205,12 +205,12 @@ namespace Medidata.RBT
 		/// <summary>
 		/// See IPage interface
 		/// </summary>
-        public virtual IPage ChooseFromCheckboxes(string areaIdentifer, string identifer, bool isChecked)
+        public virtual IPage ChooseFromCheckboxes(string areaIdentifier, string identifier, bool isChecked)
         {
 
-            var element = Browser.Checkbox(identifer, true);
+            var element = Browser.Checkbox(identifier, true);
             if (element == null)
-                element = GetElementByName(identifer).EnhanceAs<Checkbox>();
+                element = GetElementByName(identifier).EnhanceAs<Checkbox>();
 
             if (isChecked)
                 element.Check();
@@ -223,11 +223,11 @@ namespace Medidata.RBT
 		/// <summary>
 		/// See IPage interface
 		/// </summary>
-        public virtual IPage ChooseFromRadiobuttons(string areaIdentifer, string identifer)
+        public virtual IPage ChooseFromRadiobuttons(string areaIdentifier, string identifier)
         {
-            var element = Browser.RadioButton(identifer, true);
+            var element = Browser.RadioButton(identifier, true);
             if (element == null)
-                element = GetElementByName(identifer) as RadioButton;
+                element = GetElementByName(identifier) as RadioButton;
 
             element.Set();
 
@@ -292,7 +292,7 @@ namespace Medidata.RBT
 		/// <summary>
 		/// See IPage interface
 		/// </summary>
-		public virtual bool CanSeeTextInArea(string text, string areaIdentifer)
+		public virtual bool CanSeeTextInArea(string text, string areaIdentifier)
 		{
 			throw new Exception("This page does not implement this method");
 		}
@@ -300,9 +300,9 @@ namespace Medidata.RBT
 		/// <summary>
 		/// See IPage interface
 		/// </summary>
-		public virtual string GetInfomation(string identifer)
+		public virtual string GetInfomation(string identifier)
 		{
-			throw new Exception("Don't know how to get text from "+identifer);
+			throw new Exception("Don't know how to get text from "+identifier);
 		}
 
         #endregion

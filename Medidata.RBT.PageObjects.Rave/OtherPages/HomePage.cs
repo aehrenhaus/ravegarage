@@ -12,7 +12,7 @@ using Medidata.RBT.SeleniumExtension;
 
 namespace Medidata.RBT.PageObjects.Rave
 {
-	public  class HomePage : RavePageBase, ICanPaginate
+	public  class HomePage : RavePageBase, ICanPaginate, ICanHighlight, ICanVerifyExist
 	{
 		[FindsBy(How = How.Id, Using = "_ctl0_Content_ListDisplayNavigation_txtSearch")]
 		IWebElement SearchBox;
@@ -103,7 +103,7 @@ namespace Medidata.RBT.PageObjects.Rave
 		int count = 0;
 		int lastValue = -1;
 
-		public bool GoNextPage(string areaIdentifer)
+		public bool GoNextPage(string areaIdentifier)
 		{
 			var pageTable = TestContext.Browser.FindElementById("_ctl0_Content_ListDisplayNavigation_DlPagination");
 			var pageLinks = pageTable.FindElements(By.XPath(".//a"));
@@ -131,17 +131,17 @@ namespace Medidata.RBT.PageObjects.Rave
 			return true;
 		}
 
-		public bool GoPreviousPage(string areaIdentifer)
+		public bool GoPreviousPage(string areaIdentifier)
 		{
 			throw new NotImplementedException();
 		}
 
-		public bool GoToPage(string areaIdentifer, int page)
+		public bool GoToPage(string areaIdentifier, int page)
 		{
 			throw new NotImplementedException();
 		}
 
-		public bool CanPaginate(string areaIdentifer)
+		public bool CanPaginate(string areaIdentifier)
 		{
 			return true;
 		}
@@ -176,7 +176,42 @@ namespace Medidata.RBT.PageObjects.Rave
 
         public override string URL { get { return "homepage.aspx"; } }
 
+		public override IWebElement GetElementByName(string name)
+		{
+			if (name == "study")
+				return Browser.TryFindElementByPartialID("_dgObjects") ;
+
+			return base.GetElementByName(name);
+		}
 
 
+
+		public void Hightlight(string type, IWebElement eleToHighlight)
+		{
+			if (type == "match tr")
+			{
+				eleToHighlight.SetStyle("border", " 2px solid red");
+			}
+		}
+
+
+		#region ICanVerifyExist
+
+		public bool VerifyTableRowsExist(string tableIdentifier, Table matchTable)
+		{
+			return this.VerifyTableRowsExist_Default(tableIdentifier, matchTable);
+		}
+
+		public bool VerifyControlExist(string identifier)
+		{
+			throw new NotImplementedException();
+		}
+
+		public bool VerifyTextExist(string identifier, string text)
+		{
+			throw new NotImplementedException();
+		}
+
+		#endregion
 	}
 }

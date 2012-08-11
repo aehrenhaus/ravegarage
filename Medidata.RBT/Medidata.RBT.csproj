@@ -74,7 +74,7 @@
     <Compile Include="PageObjectInterfaces\PageBase.cs" />
     <Compile Include="PageObjectInterfaces\IControl.cs" />
     <Compile Include="PageObjectInterfaces\IActivatePage.cs" />
-    <Compile Include="PageObjectInterfaces\ICanVerify.cs" />
+    <Compile Include="PageObjectInterfaces\ICanVerifyExist.cs" />
     <Compile Include="PageObjectInterfaces\IPage.cs" />
     <Compile Include="PageObjectInterfaces\ICanPaginate.cs" />
     <Compile Include="PageObjectInterfaces\AbstractPageObjectFactory.cs" />

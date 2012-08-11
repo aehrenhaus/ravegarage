@@ -122,7 +122,7 @@ Scenario: PB_DT13905_01 As an EDC user, when I create a unit conversion formula 
 	And I choose "Clinical Views" from "Data Source"
 	And I choose "AnalytesView" from "Form"	
 	And I click button "Run"
-	Then I should verify row(s) exist in "Result" table
+	Then I verify rows exist in "Result" table
 	| Subject        | FormName   | AnalyteName | AnalyteValue | LabUnits | StdValue | StdUnits |
 	| SUB{Var(num1)} | Hematology | WBC         | 10           | 10^9/L   | 20       | %        |
 	And I take a screenshot
@@ -169,7 +169,7 @@ Scenario: PB_DT13905_02 As an EDC user, when I create a unit conversion formula 
 	And I choose "AnalytesView" from "Form"	
 	And I click button "Run"
 
-	Then I should verify row(s) exist in "Result" table
+	Then I verify rows exist in "Result" table
 
 	| Subject        | FormName   | AnalyteName | AnalyteValue | LabUnits | StdValue | StdUnits |
 	| SUB{Var(num1)} | Hematology | WBC         | 10           | 10^9/L   | 40       | %        |
@@ -209,7 +209,7 @@ Scenario: PB_DT13905_03 As an EDC user, when I update a unit conversion formula 
 	And I choose "AnalytesView" from "Form"	
 	And I click button "Run"
 
-	Then I should verify row(s) exist in "Result" table
+	Then I verify rows exist in "Result" table
 
 	| Subject        | FormName   | AnalyteName | AnalyteValue | LabUnits | StdValue | StdUnits |
 	| SUB{Var(num1)} | Hematology | WBC         | 10           | 10^9/L   | 20       | %        |
@@ -234,7 +234,7 @@ Scenario: PB_DT13905_03 As an EDC user, when I update a unit conversion formula 
 	And I choose "AnalytesView" from "Form"	
 	And I click button "Run"
 
-	Then I should verify row(s) exist in "Result" table
+	Then I verify rows exist in "Result" table
 
 	| Subject        | FormName   | AnalyteName | AnalyteValue | LabUnits | StdValue | StdUnits |
 	| SUB{Var(num1)} | Hematology | WBC         | 10           | 10^9/L   | 30       | %        |
@@ -275,7 +275,7 @@ Scenario: PB_DT13905_04 As an EDC user, when I update a unit conversion formula 
 	And I choose "AnalytesView" from "Form"	
 	And I click button "Run"
 
-	Then I should verify row(s) exist in "Result" table
+	Then I verify rows exist in "Result" table
 
 	| Subject        | FormName   | AnalyteName | AnalyteValue | LabUnits | StdValue | StdUnits |
 	| SUB{Var(num1)} | Hematology | WBC         | 10           | 10^9/L   | 30       | %        |
@@ -300,7 +300,7 @@ Scenario: PB_DT13905_04 As an EDC user, when I update a unit conversion formula 
 	And I choose "AnalytesView" from "Form"	
 	And I click button "Run"
 
-	Then I should verify row(s) exist in "Result" table
+	Then I verify rows exist in "Result" table
 
 	| Subject        | FormName   | AnalyteName | AnalyteValue | LabUnits | StdValue | StdUnits |
 	| SUB{Var(num1)} | Hematology | WBC         | 10           | 10^9/L   | 50       | %        |
