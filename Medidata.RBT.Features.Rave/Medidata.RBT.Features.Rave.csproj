@@ -93,6 +93,11 @@
     </CodeAnalysisDependentAssemblyPaths>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Features\test.feature.cs">
+      <DependentUpon>test.feature</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Include="Features\EDC\564 QueryRefiringLogic2.feature.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -132,11 +137,6 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>DisableAddEvents.feature</DependentUpon>
-    </Compile>
-    <Compile Include="Features\EDC\US12999_DT13977.feature.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>US12999_DT13977.feature</DependentUpon>
     </Compile>
     <Compile Include="Features\EDC\US13002_DT13919.feature.cs">
       <AutoGen>True</AutoGen>
@@ -249,6 +249,10 @@
     <None Include="App.config">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Features\test.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>test.feature.cs</LastGenOutput>
+    </None>
     <None Include="Features\EDC\564 QueryRefiringLogic2.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>564 QueryRefiringLogic2.feature.cs</LastGenOutput>
@@ -280,10 +284,6 @@
     <None Include="Features\EDC\564QueryRefiringLogic_StdForm_1FldEC.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>564QueryRefiringLogic_StdForm_1FldEC.feature.cs</LastGenOutput>
-    </None>
-    <None Include="Features\EDC\US12999_DT13977.feature">
-      <Generator>SpecFlowSingleFileGenerator</Generator>
-      <LastGenOutput>US12999_DT13977.feature.cs</LastGenOutput>
     </None>
     <None Include="Features\EDC\US13002_DT13919.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>

@@ -218,7 +218,7 @@ this.FeatureBackground();
                         "20",
                         "%"});
 #line 99
- testRunner.Then("I verify row(s) exist in \"Result\" table", ((string)(null)), table5);
+ testRunner.Then("I verify rows exist in \"Result\" table", ((string)(null)), table5);
 #line hidden
             this.ScenarioCleanup();
         }
@@ -353,7 +353,7 @@ this.FeatureBackground();
                         "40",
                         "%"});
 #line 144
- testRunner.Then("I verify row(s) exist in \"Result\" table", ((string)(null)), table10);
+ testRunner.Then("I verify rows exist in \"Result\" table", ((string)(null)), table10);
 #line hidden
             this.ScenarioCleanup();
         }
@@ -484,7 +484,7 @@ this.FeatureBackground();
                         "20",
                         "%"});
 #line 188
- testRunner.Then("I verify row(s) exist in \"Result\" table", ((string)(null)), table15);
+ testRunner.Then("I verify rows exist in \"Result\" table", ((string)(null)), table15);
 #line 193
  testRunner.And("I select \"Home\"");
 #line 194
@@ -551,7 +551,7 @@ this.FeatureBackground();
                         "30",
                         "%"});
 #line 213
- testRunner.Then("I verify row(s) exist in \"Result\" table", ((string)(null)), table18);
+ testRunner.Then("I verify rows exist in \"Result\" table", ((string)(null)), table18);
 #line hidden
             this.ScenarioCleanup();
         }
@@ -686,7 +686,7 @@ this.FeatureBackground();
                         "30",
                         "%"});
 #line 259
- testRunner.Then("I verify row(s) exist in \"Result\" table", ((string)(null)), table23);
+ testRunner.Then("I verify rows exist in \"Result\" table", ((string)(null)), table23);
 #line 264
  testRunner.And("I select \"Home\"");
 #line 265
@@ -755,7 +755,7 @@ this.FeatureBackground();
                         "50",
                         "%"});
 #line 284
- testRunner.Then("I verify row(s) exist in \"Result\" table", ((string)(null)), table26);
+ testRunner.Then("I verify rows exist in \"Result\" table", ((string)(null)), table26);
 #line hidden
             this.ScenarioCleanup();
         }

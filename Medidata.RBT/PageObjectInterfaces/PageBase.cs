@@ -55,7 +55,7 @@ namespace Medidata.RBT
 		/// <summary>
 		/// See IPage interface
 		/// </summary>
-        public TPage As<TPage>() where TPage : class, IPage
+        public TPage As<TPage>() where TPage : class
         {
             var page = this as TPage;
             if (page == null)

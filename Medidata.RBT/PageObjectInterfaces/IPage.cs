@@ -41,7 +41,7 @@ namespace Medidata.RBT
 		///		.ChooseUserFromResult("user1")
 		/// </code>
 		/// </summary>
-		TPage As<TPage>() where TPage : class, IPage;
+		TPage As<TPage>() where TPage : class;
 
 		/// <summary>
 		/// The absolute path (after the BaseURL part) that represents the page.
