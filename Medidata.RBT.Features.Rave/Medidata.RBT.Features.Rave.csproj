@@ -93,6 +93,16 @@
     </CodeAnalysisDependentAssemblyPaths>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Features\PDF\US12175_DT8545_lessthangreaterthaninPDF.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>US12175_DT8545_lessthangreaterthaninPDF.feature</DependentUpon>
+    </Compile>
+    <Compile Include="Features\PDF\US12175_DT8545_lessthangreaterthaninPDF_RaveMonitor.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>US12175_DT8545_lessthangreaterthaninPDF_RaveMonitor.feature</DependentUpon>
+    </Compile>
     <Compile Include="Features\test.feature.cs">
       <DependentUpon>test.feature</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -198,16 +208,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>EDCTabOrderUntouchedPortraitLogForm.feature</DependentUpon>
     </Compile>
-    <Compile Include="Features\PDF\US12175_DT8545_lessthangreaterthaninPDF.feature.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>US12175_DT8545_lessthangreaterthaninPDF.feature</DependentUpon>
-    </Compile>
-    <Compile Include="Features\PDF\US12175_DT8545_lessthangreaterthaninPDF_RaveMonitor.feature.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>US12175_DT8545_lessthangreaterthaninPDF_RaveMonitor.feature</DependentUpon>
-    </Compile>
     <Compile Include="Features\TSDV\US11958_DT141771.feature.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -258,6 +258,14 @@
   <ItemGroup>
     <None Include="App.config">
       <SubType>Designer</SubType>
+    </None>
+    <None Include="Features\PDF\US12175_DT8545_lessthangreaterthaninPDF.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>US12175_DT8545_lessthangreaterthaninPDF.feature.cs</LastGenOutput>
+    </None>
+    <None Include="Features\PDF\US12175_DT8545_lessthangreaterthaninPDF_RaveMonitor.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>US12175_DT8545_lessthangreaterthaninPDF_RaveMonitor.feature.cs</LastGenOutput>
     </None>
     <None Include="Features\test.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
@@ -346,14 +354,6 @@
     <None Include="Features\EDC\US11306_DT13637.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>US11306_DT13637.feature.cs</LastGenOutput>
-    </None>
-    <None Include="Features\PDF\US12175_DT8545_lessthangreaterthaninPDF.feature">
-      <Generator>SpecFlowSingleFileGenerator</Generator>
-      <LastGenOutput>US12175_DT8545_lessthangreaterthaninPDF.feature.cs</LastGenOutput>
-    </None>
-    <None Include="Features\PDF\US12175_DT8545_lessthangreaterthaninPDF_RaveMonitor.feature">
-      <Generator>SpecFlowSingleFileGenerator</Generator>
-      <LastGenOutput>US12175_DT8545_lessthangreaterthaninPDF_RaveMonitor.feature.cs</LastGenOutput>
     </None>
     <None Include="Features\TSDV\US11958_DT14177.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
