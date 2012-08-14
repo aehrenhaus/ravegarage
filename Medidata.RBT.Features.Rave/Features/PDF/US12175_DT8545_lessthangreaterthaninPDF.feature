@@ -1,4 +1,4 @@
-********Role and CRF Version in the table need to be confirmed************
+ï»¿# ********Role and CRF Version in the table need to be confirmed************
 # When a PDF form is generated special character such as "<" ">" "<=" ">=" should be displayed properly 
 
 Feature: When an EDC form contains special characters such as "<" ">" "<=" ">=" the PDF file should display the special characters appropriately. 
@@ -10,7 +10,7 @@ Feature: When an EDC form contains special characters such as "<" ">" "<=" ">=" 
 	|&ge;					|<u>&gt;</u>        |>(underlined)                 |
 	|&le					|<u>&lt;</u>        |<(underlined)                 |
 	|&le;					|<u>&lt;</u>        |<(underlined)                 |
-	|bullet points <li>		|<br/> •            |(Line Break/carriage return) •|
+	|bullet points <li>		|<br/> â€¢            |(Line Break/carriage return) â€¢|
 	|(user hitting "enter")	|<br/>              |(Line Break/carriage return)  |
 	
 	NOTE: An underlined ">" will display instead of ">=" which is represented by ">(underlined)" in this feature file as text editors do not allow underlines.
@@ -136,7 +136,7 @@ Background:
 	#	|CHECKBOXFIELD3	          |1              |               |              	|CHECKBOXFIELD3	          |CHECKBOXFIELD3	        |true		|true				|true   	    |&leCheckBoxField1                                  |CheckBox	           |      			|                   |
 	#	|SIGNATUREFIELD3	      |eSigPage	      |               |					|SIGNATUREFIELD3	      |SIGNATUREFIELD3	        |true		|true				|       	    |&ge;Signature Field                                |Signature             |		    	|					|
 
-Lab form
+# Lab form
 And form "PDF Lab Form" has varOID "<VarOID>" has format "<Format>" has field name "<Field Name>" has field OID "<Field OID>" has status "<Active>" has visible status "<Is Visible Field>" has field label "<Field Label>" has control type "<Control Type>" has lab analyte "<Lab Analyte>" has prompt for clinical significance "<Prompt for Clinical Significance>"
 		|VarOID		          |Format |Field Name	|Field OID	  |Active	|Is Visible Field 	|Field Label                                                            |Control Type |Lab Analyte 	|Prompt for Clinical Significance	|
 		|WBC	              |4.2	  |WBC  	    |WBC	      |true		|true				|WBC&lt&gt&ge&ge;&le&le;bullet points&lt;li&gt;&lt;br/&gt;break         |Text    	  |WBC  		|true				                |

@@ -19,7 +19,7 @@ namespace Medidata.RBT.Features.Rave.Features.PDF
     [System.CodeDom.Compiler.GeneratedCodeAttribute("TechTalk.SpecFlow", "1.8.1.0")]
     [System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     [Microsoft.VisualStudio.TestTools.UnitTesting.TestClassAttribute()]
-    public partial class WhenAnEDCFormContainsSpecialCharactersSuchAsThePDFFileShouldDisplayTheSpecialCharactersAppropriately_Feature
+    public partial class WhenAnEDCFormContainsSpecialCharactersSuchAsThePDFFileShouldDisplayTheSpecialCharactersAppropriately_Feature1
     {
         
         private static TechTalk.SpecFlow.ITestRunner testRunner;
@@ -162,6 +162,9 @@ namespace Medidata.RBT.Features.Rave.Features.PDF
             " characters")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "When an EDC form contains special characters such as \"<\" \">\" \"<=\" \">=\" the PDF fi" +
             "le should display the special characters appropriately.")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("release_2012.1.0")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("US11043K")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Draft")]
         public virtual void US11043KABlank_PopulatedPDFThatIsGeneratedShouldProperlyDisplaySpecialCharacters()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("@US11043K A blank-populated PDF that is generated should properly display special" +
@@ -209,6 +212,9 @@ this.FeatureBackground();
             "characters")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "When an EDC form contains special characters such as \"<\" \">\" \"<=\" \">=\" the PDF fi" +
             "le should display the special characters appropriately.")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("release_2012.1.0")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("US11043L")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Draft")]
         public virtual void US11043LAData_PopulatedPDFThatIsGeneratedShouldProperlyDisplaySpecialCharacters()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("@US11043L A data-populated PDF that is generated should properly display special " +

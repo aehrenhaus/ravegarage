@@ -1,4 +1,4 @@
-# When a PDF form is generated special character such as "<" ">" "<=" ">=" should be displayed properly 
+ï»¿# When a PDF form is generated special character such as "<" ">" "<=" ">=" should be displayed properly 
 
 Feature: When an EDC form contains special characters such as "<" ">" "<=" ">=" the PDF file should display the special characters appropriately. 
 	Rave architect allows for characters that the PDF generator does support. The PDF generator should convert the special characters so that they are displayed appropriately as follows:
@@ -9,7 +9,7 @@ Feature: When an EDC form contains special characters such as "<" ">" "<=" ">=" 
 	|&ge;					|<u>&gt;</u>        |>(underlined)                 |
 	|&le					|<u>&lt;</u>        |<(underlined)                 |
 	|&le;					|<u>&lt;</u>        |<(underlined)                 |
-	|bullet points <li>		|<br/> •            |(Line Break/carriage return) •|
+	|bullet points <li>		|<br/> â€¢            |(Line Break/carriage return) â€¢|
 	|(user hitting "enter")	|<br/>              |(Line Break/carriage return)  |
 	
 	NOTE: An underlined ">" will display instead of ">=" which is represented by ">(underlined)" in this feature file as text editors do not allow underlines.
