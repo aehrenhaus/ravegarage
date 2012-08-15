@@ -24,7 +24,7 @@
 		/>
 
 	<RaveConfiguration
-		RaveURL ="https://rave564package.mdsol.com/MedidataRave/"
+		RaveURL ="rave564nycdev02a.mdsol.com/MedidataRAVE/"
 		RWSURL=""
 		DefaultUser="defuser"
 		DefaultUserPassword="password"
