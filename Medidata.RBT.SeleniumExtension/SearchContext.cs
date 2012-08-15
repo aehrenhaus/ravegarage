@@ -10,7 +10,7 @@ using OpenQA.Selenium.Internal;
 
 namespace Medidata.RBT.SeleniumExtension
 {
-	public static class SearchContext
+	public static class ISearchContextExtend
 	{
 		private static T SelectExtendElement<T>(ISearchContext context,string tag, string partialID, bool nullable)
 			where T : EnhancedElement, new()
@@ -62,7 +62,7 @@ namespace Medidata.RBT.SeleniumExtension
 
 		public static ReadOnlyCollection<Textbox> Textboxes(this ISearchContext context, bool allLevel = true)
 		{
-			string xpath = allLevel ? ".//input[@type='text']" : "./input[@type='text']";
+			string xpath = allLevel ? ".//input[@type='text'] | .//textarea" : "./input[@type='text'] | ./textarea";
 			return context.FindElements(By.XPath(xpath)).CastReadOnlyCollection<Textbox>();
 		}
 
@@ -88,12 +88,11 @@ namespace Medidata.RBT.SeleniumExtension
 			return context.FindElements(By.XPath(xpath)).CastReadOnlyCollection<Checkbox>();
         }
 
-		public static ReadOnlyCollection<Checkbox> Checkboxes(this ISearchContext context, string xpath, string partialID = null)
-		{
-			return (partialID==null) ? context.FindElements(By.XPath(xpath)).CastReadOnlyCollection<Checkbox>():
+        public static ReadOnlyCollection<Checkbox> Checkboxes(this ISearchContext context, string xpath, string partialID = null)
+        {
+            return (partialID == null) ? context.FindElements(By.XPath(xpath)).CastReadOnlyCollection<Checkbox>() :
                                         context.FindElements(By.XPath(xpath + "[contains(@id,'" + partialID + "')]")).CastReadOnlyCollection<Checkbox>();
-		}
-
+        }
 
 		#endregion
 
@@ -135,6 +134,13 @@ namespace Medidata.RBT.SeleniumExtension
 			return ele.EnhanceAs<Hyperlink>();
 		}
 
+        public static Hyperlink LinkByPartialText(this ISearchContext context, string linktext)
+        {
+            var ele = context.TryFindElementBy(By.PartialLinkText(linktext));
+            if (ele == null)
+                throw new Exception("Can't find hyperlink by text:" + linktext);
+            return ele.EnhanceAs<Hyperlink>();
+        }
 
 		public static ReadOnlyCollection<Hyperlink> Links(this ISearchContext context, bool allLevel= true)
 		{
@@ -158,21 +164,23 @@ namespace Medidata.RBT.SeleniumExtension
 		#region Img
 
 
-		public static Checkbox Image(this ISearchContext context, string partialID, bool nullable = false)
+
+
+		public static EnhancedElement ImageBySrc(this ISearchContext context, string src)
 		{
-			return SelectExtendElement<Checkbox>(context, "img", partialID, nullable);
+			return context.TryFindElementBy(By.XPath(".//img[@src='" + src + "']")).EnhanceAs < EnhancedElement>();
 		}
 
 
-		public static ReadOnlyCollection<Checkbox> Images(this ISearchContext context, bool allLevel =true)
+		public static ReadOnlyCollection<EnhancedElement> Images(this ISearchContext context, bool allLevel = true)
 		{
 			string xpath = allLevel ? ".//img" : "./img";
-			return context.FindElements(By.XPath(xpath)).CastReadOnlyCollection<Checkbox>();
+			return context.FindElements(By.XPath(xpath)).CastReadOnlyCollection<EnhancedElement>();
 		}
 
-		public static ReadOnlyCollection<Checkbox> Images(this ISearchContext context, string xpath)
+		public static ReadOnlyCollection<EnhancedElement> Images(this ISearchContext context, string xpath)
 		{
-			return context.FindElements(By.XPath(xpath)).CastReadOnlyCollection<Checkbox>();
+			return context.FindElements(By.XPath(xpath)).CastReadOnlyCollection<EnhancedElement>();
 		}
 
 		#endregion
@@ -226,31 +234,6 @@ namespace Medidata.RBT.SeleniumExtension
 			return context.FindElements(By.XPath("./*"));
 		}
 
-        /// <surmmary>
-        /// This method will return a collection of elements
-        /// of type T, that have matching text
-        /// </summary>
-        /// <typeparam name="T">type of element</typeparam>
-        /// <param name="context">context to be searched</param>
-        /// <param name="text">text of the elements to be returned</param>
-        /// <returns></returns>
-        public static IEnumerable<IWebElement> FindElementsByText<T>(this ISearchContext context, string text)
-            where T : IWebElement
-        {            
-            //check text
-            if ((context as IWebElement).Text.Equals(text))
-                yield return (T)context;
-          
-            //then make a recursive call
-            if ((context as IWebElement).Text.Contains(text))
-            {
-                foreach (var el in context.Children().OfType<T>())
-                {
-                    foreach (var el2 in el.FindElementsByText<T>(text))
-                        yield return el2;
-                }
-            }
-        }
 
 		#region RadioButton
 
@@ -367,6 +350,32 @@ namespace Medidata.RBT.SeleniumExtension
         }
 
 		#endregion
+
+        /// <summary>
+        /// This method will return a collection of elements
+        /// of type T, that have matching text
+        /// </summary>
+        /// <typeparam name="T">type of element</typeparam>
+        /// <param name="context">context to be searched</param>
+        /// <param name="text">text of the elements to be returned</param>
+        /// <returns></returns>
+        public static IEnumerable<IWebElement> FindElementsByText<T>(this ISearchContext context, string text)
+            where T : IWebElement
+        {
+            //check text
+            if ((context as IWebElement).Text.Equals(text))
+                yield return (T)context;
+
+            //then make a recursive call
+            if ((context as IWebElement).Text.Contains(text))
+            {
+                foreach (var el in context.Children().OfType<T>())
+                {
+                    foreach (var el2 in el.FindElementsByText<T>(text))
+                        yield return el2;
+                }
+            }
+        }
 
 	}
 }

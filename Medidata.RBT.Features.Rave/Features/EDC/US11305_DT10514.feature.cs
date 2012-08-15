@@ -127,7 +127,7 @@ this.FeatureBackground();
             table2.AddRow(new string[] {
                         "Age",
                         "22",
-                        "text"});
+                        "textbox"});
             table2.AddRow(new string[] {
                         "Sex",
                         "FemaleREGAQT",
@@ -144,7 +144,7 @@ this.FeatureBackground();
             table3.AddRow(new string[] {
                         "Age",
                         "22",
-                        "text"});
+                        "textbox"});
             table3.AddRow(new string[] {
                         "Sex",
                         "FemaleREGAQT",
@@ -167,11 +167,11 @@ this.FeatureBackground();
             table4.AddRow(new string[] {
                         "WBC",
                         "3",
-                        "text"});
+                        "textbox"});
             table4.AddRow(new string[] {
                         "NEUTROPHILS",
                         "5",
-                        "text"});
+                        "textbox"});
 #line 49
  testRunner.And("I enter data in CRF and save", ((string)(null)), table4);
 #line hidden

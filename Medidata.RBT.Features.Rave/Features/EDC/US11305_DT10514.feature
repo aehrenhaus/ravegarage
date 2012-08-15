@@ -37,20 +37,20 @@ Scenario: As an EDC user, I have a partially locked lab form, and I change the s
 	And I select Form "Visit Date" in Folder "Visit 1"
 	And I enter data in CRF and save
 		| Field | Data         | Control Type |
-		| Age   | 22           | text         |
+		| Age   | 22           | textbox         |
 		| Sex   | FemaleREGAQT | dropdownlist |
 	And I select Form "Visit Date" in Folder "Visit 2"
 	And I enter data in CRF and save
 		| Field | Data         | Control Type |
-		| Age   | 22           | text         |
+		| Age   | 22           | textbox         |
 		| Sex   | FemaleREGAQT | dropdownlist |
 	And I select Form "Hematology" in Folder "Visit 2"
 	And I choose "Mediflex Local Lab 1" from "Lab"
 	And I enter data in CRF and save
 		| Field       | Data        | Control Type |
 		| Lab Date    | 15 Aug 2012 | datetime     |
-		| WBC         | 3           | text         |
-		| NEUTROPHILS | 5           | text         |
+		| WBC         | 3           | textbox         |
+		| NEUTROPHILS | 5           | textbox         |
 	And I verify lab ranges
 		| Field       | Data  | Range | Unit           |
 		| WBC         | 3     | 1 - 5 | *10E6/ulREGAQT |
