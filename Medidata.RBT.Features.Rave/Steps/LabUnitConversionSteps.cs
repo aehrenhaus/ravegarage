@@ -20,5 +20,11 @@ namespace Medidata.RBT.Features.Rave
             CurrentPage.As<UnitConversionsPage>().AddNewConversion(table.CreateInstance<UnitConversionModel>());
         }
 
+		[StepDefinition(@"I edit unit conversion data")]
+		public void IEditUnitConversionData(Table table)
+		{
+			CurrentPage.As<UnitConversionsPage>().EditConversion(table.CreateInstance<UnitConversionModel>());
+		}
+
 	}
 }
