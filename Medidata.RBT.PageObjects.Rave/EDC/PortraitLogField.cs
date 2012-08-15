@@ -76,6 +76,7 @@ namespace Medidata.RBT.PageObjects.Rave
         public OpenQA.Selenium.IWebElement FindQuery(QuerySearchModel filter) { throw new NotImplementedException(); }
         public void AnswerQuery(QuerySearchModel filter) { throw new NotImplementedException(); }
         public void CloseQuery(QuerySearchModel filter) { throw new NotImplementedException(); }
+        public bool HasDataEntered(string text) { throw new NotImplementedException(); }
         public void CancelQuery(QuerySearchModel filter) { throw new NotImplementedException(); }
         public void Check(string checkName) { throw new NotImplementedException(); }
         public void Uncheck(string checkName) { throw new NotImplementedException(); }

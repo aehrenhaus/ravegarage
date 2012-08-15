@@ -120,6 +120,23 @@ namespace Medidata.RBT.Features.Rave
 			page.FillDataPoints(table.CreateSet<FieldModel>());
 		}
 
+        /// <summary>
+        /// Verifies data exists in the datapa/record we are already in
+        /// </summary>
+        /// <param name="table"></param>
+        [Then(@"I should see data for fields in CRF")] 
+        public void ThenIShouldSeeInCRF(Table table)
+        {
+            CRFPage page = CurrentPage.As<CRFPage>();
+            var fields = table.CreateSet<FieldModel>();
+            foreach (var field in fields)            
+            {
+                bool dataExists = page.FindField(field.Field).HasDataEntered(field.Data);
+                Assert.IsTrue(dataExists, "Data doesn't exist for field(s)");
+            }
+        }
+
+
 		/// <summary>
 		/// Fill CRF and save
 		/// </summary>

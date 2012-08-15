@@ -78,6 +78,7 @@ namespace Medidata.RBT.PageObjects.Rave
         #region INTERFACE IEDCFieldControl
         public AuditsPage ClickAudit() { throw new NotImplementedException(); }
 		public void EnterData(string text, ControlType controlType) { throw new NotImplementedException(); }
+        public bool HasDataEntered(string text) { throw new NotImplementedException(); }
         public OpenQA.Selenium.IWebElement FindQuery(QuerySearchModel filter) { throw new NotImplementedException(); }
         public void AnswerQuery(QuerySearchModel filter) { throw new NotImplementedException(); }
         public void CloseQuery(QuerySearchModel filter) { throw new NotImplementedException(); }

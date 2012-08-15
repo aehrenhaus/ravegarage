@@ -19,7 +19,12 @@ namespace Medidata.RBT.PageObjects.Rave
 		//returns the dom container that contains the field controls
 		protected abstract IWebElement GetFieldControlContainer();
 
-		public virtual void EnterData(string text, ControlType controlType = ControlType.Default)
+        public virtual bool HasDataEntered(string text)
+        {
+            return text.Equals(GetFieldControlContainer().Text);
+        }
+
+		public virtual void EnterData(string text, ControlType controlType = ControlType.Default) 
 		{
 			switch (controlType)
 			{
@@ -119,19 +124,36 @@ namespace Medidata.RBT.PageObjects.Rave
 			var textboxes = datapointTable.Textboxes();
 			var dropdowns = datapointTable.FindElements(By.TagName("select")).ToList();
 
-			if (textboxes.Count == 2 && dropdowns.Count == 1)//date field  .format: dd MM yyyy
-			{
-				string[] dateParts = val.Split(' ');
-				if (dateParts.Length != 3)
-				{
-					throw new Exception("not valid date time");
-					//throw new Exception("Expection date format for field " + FieldName + " , got: " + text);
-				}
-				//assign 3 parts of the date format
-				textboxes[0].SetText(dateParts[0]);
-				new SelectElement(dropdowns[0]).SelectByValue(dateParts[1]);
-				textboxes[1].SetText(dateParts[2]);
-			}
+            if (textboxes.Count == 2 && dropdowns.Count == 1)//date field  .format: dd MM yyyy
+            {
+                string[] dateParts = val.Split(' ');
+                if (dateParts.Length != 3)
+                {
+                    throw new Exception("not valid date time");
+                    //throw new Exception("Expection date format for field " + FieldName + " , got: " + text);
+                }
+                //assign 3 parts of the date format
+                textboxes[0].SetText(dateParts[0]);
+                new SelectElement(dropdowns[0]).SelectByValue(dateParts[1]);
+                textboxes[1].SetText(dateParts[2]);
+            }
+            else if (textboxes.Count == 1 && dropdowns.Count == 0) // date where only "year" is needed, for example
+                EnterTextBoxValue(val);
+            else if (textboxes.Count == 0 && dropdowns.Count == 1) // date where only "month" is needed, for example
+                EnterDropdownValue(val);
+            else if (textboxes.Count >= 2 && dropdowns.Count == 0) // atypical date format without dropdown without using month in dropdown, could be 2, 3, 4, etc textboxes
+            {
+                string[] dateParts = val.Replace(":", " ").Split(' ');
+                if (!(dateParts.Length >= 2))
+                {
+                    throw new Exception("wrong datetime format");
+                }
+                //parse out values for each textbox 
+                for (int i = 0; i < textboxes.Count; i++)
+                {
+                    textboxes[i].SetText(dateParts[i]);
+                }
+            }
 		}
 
 		protected virtual void EnterRadiobuttonValue(string val)
