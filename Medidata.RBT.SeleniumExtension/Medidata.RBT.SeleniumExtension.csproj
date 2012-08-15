@@ -57,14 +57,14 @@
     <Compile Include="EnhancedControls\Checkbox.cs" />
     <Compile Include="EnhancedControls\RadioButton.cs" />
     <Compile Include="EnhancedControls\Hyperlink.cs" />
+    <Compile Include="SearchContext.cs" />
     <Compile Include="WebDriverExtend.cs" />
-    <Compile Include="IWebElementExtend.cs" />
+    <Compile Include="WebElement.cs" />
     <Compile Include="EnhancedControls\HtmlTable.cs" />
     <Compile Include="EnhancedControls\Textbox.cs" />
     <Compile Include="EnhancedControls\Dropdown.cs" />
     <Compile Include="EnhancedControls\EnhancedElement.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ISearchContextExtend.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

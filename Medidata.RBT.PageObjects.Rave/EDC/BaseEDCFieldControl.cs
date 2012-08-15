@@ -107,8 +107,7 @@ namespace Medidata.RBT.PageObjects.Rave
 			var textboxes = datapointTable.Textboxes();
 			textboxes[0].SetText(val);
 		}
-
-		
+	
 
 		protected virtual void EnterDatetimeValue(string val)
 		{

@@ -13,12 +13,14 @@ using TechTalk.SpecFlow.Assist;
 namespace Medidata.RBT.Features.Rave
 {
 	public partial class EDCSteps
-	{
-		#region Verify with table
+    {
+
+
+        #region Verify with table
 
 
 
-		//table, logline, not exist
+        //table, logline, not exist
 		[StepDefinition(@"I verify Query is not displayed on log line (\d+)")]
 		public void IVerifyQueryIsNotDisplayedOnLogline____(int logLine, Table table)
 		{

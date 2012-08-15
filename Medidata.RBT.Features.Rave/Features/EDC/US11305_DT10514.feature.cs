@@ -106,11 +106,11 @@ this.FeatureBackground();
             table1.AddRow(new string[] {
                         "Subject Number",
                         "{RndNum<num1>(5)}",
-                        "text"});
+                        "textbox"});
             table1.AddRow(new string[] {
                         "Subject Initials",
                         "SUB",
-                        "text"});
+                        "textbox"});
             table1.AddRow(new string[] {
                         "Pregancy Status",
                         "NoREGAQT",
@@ -127,7 +127,7 @@ this.FeatureBackground();
             table2.AddRow(new string[] {
                         "Age",
                         "22",
-                        "text"});
+                        "textbox"});
             table2.AddRow(new string[] {
                         "Sex",
                         "FemaleREGAQT",
@@ -144,7 +144,7 @@ this.FeatureBackground();
             table3.AddRow(new string[] {
                         "Age",
                         "22",
-                        "text"});
+                        "textbox"});
             table3.AddRow(new string[] {
                         "Sex",
                         "FemaleREGAQT",
@@ -167,13 +167,31 @@ this.FeatureBackground();
             table4.AddRow(new string[] {
                         "WBC",
                         "3",
-                        "text"});
+                        "textbox"});
             table4.AddRow(new string[] {
                         "NEUTROPHILS",
                         "5",
-                        "text"});
+                        "textbox"});
 #line 49
  testRunner.And("I enter data in CRF and save", ((string)(null)), table4);
+#line hidden
+            TechTalk.SpecFlow.Table table5 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Data",
+                        "Range",
+                        "Unit"});
+            table5.AddRow(new string[] {
+                        "WBC",
+                        "3",
+                        "1 - 5",
+                        "*10E6/ulREGAQT"});
+            table5.AddRow(new string[] {
+                        "NEUTROPHILS",
+                        "5",
+                        "3 - 7",
+                        "FractionREGAQT"});
+#line 54
+ testRunner.And("I verify lab ranges", ((string)(null)), table5);
 #line 58
  testRunner.And("I take a screenshot");
 #line 59
@@ -192,9 +210,148 @@ this.FeatureBackground();
  testRunner.And("I save the CRF page");
 #line 66
  testRunner.And("I take a screenshot");
+#line 67
+ testRunner.And("I select Lab \"Mediflex Local Lab 2\"");
+#line hidden
+            TechTalk.SpecFlow.Table table6 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Data",
+                        "Range",
+                        "Unit"});
+            table6.AddRow(new string[] {
+                        "WBC",
+                        "3",
+                        "1 - 6",
+                        "*10E6/ulREGAQT"});
+            table6.AddRow(new string[] {
+                        "NEUTROPHILS",
+                        "5",
+                        "3 - 8",
+                        "FractionREGAQT"});
+#line 68
+ testRunner.And("I verify lab ranges", ((string)(null)), table6);
 #line 72
  testRunner.And("I take a screenshot");
+#line 73
+ testRunner.And("I select Lab \"Central - Mediflex Central Lab\"");
+#line hidden
+            TechTalk.SpecFlow.Table table7 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Data",
+                        "Range",
+                        "Unit"});
+            table7.AddRow(new string[] {
+                        "WBC",
+                        "3",
+                        "2 - 8",
+                        "*10E6/ulREGAQT"});
+            table7.AddRow(new string[] {
+                        "NEUTROPHILS",
+                        "5",
+                        "4 - 9",
+                        "FractionREGAQT"});
+#line 74
+ testRunner.And("I verify lab ranges", ((string)(null)), table7);
 #line 78
+ testRunner.And("I take a screenshot");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Test")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "US11305_DT10514")]
+        public virtual void Test()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Test", ((string[])(null)));
+#line 82
+this.ScenarioSetup(scenarioInfo);
+#line 10
+this.FeatureBackground();
+#line 84
+ testRunner.When("I select a Subject \"SUB21807\"");
+#line 85
+ testRunner.And("I select Form \"Hematology\" in Folder \"Visit 2\"");
+#line 86
+ testRunner.And("I choose \"Mediflex Local Lab 1\" from \"Lab\"");
+#line hidden
+            TechTalk.SpecFlow.Table table8 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Data",
+                        "Control Type"});
+            table8.AddRow(new string[] {
+                        "Lab Date",
+                        "15 Aug 2012",
+                        "datetime"});
+            table8.AddRow(new string[] {
+                        "WBC",
+                        "3",
+                        "textbox"});
+            table8.AddRow(new string[] {
+                        "NEUTROPHILS",
+                        "5",
+                        "textbox"});
+#line 87
+ testRunner.And("I enter data in CRF and save", ((string)(null)), table8);
+#line 92
+ testRunner.And("I check \"Hard Lock\" on \"Lab Date\"");
+#line 93
+ testRunner.And("I check \"Hard Lock\" on \"WBC\"");
+#line 94
+ testRunner.And("I check \"Hard Lock\" on \"NEUTROPHILS\"");
+#line 95
+ testRunner.And("I save the CRF page");
+#line 96
+ testRunner.And("I take a screenshot");
+#line 97
+ testRunner.And("I uncheck \"Hard Lock\" on \"WBC\"");
+#line 98
+ testRunner.And("I save the CRF page");
+#line 99
+ testRunner.And("I take a screenshot");
+#line 100
+ testRunner.And("I select Lab \"Mediflex Local Lab 2\"");
+#line hidden
+            TechTalk.SpecFlow.Table table9 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Data",
+                        "Range",
+                        "Unit"});
+            table9.AddRow(new string[] {
+                        "WBC",
+                        "3",
+                        "1 - 6",
+                        "*10E6/ulREGAQT"});
+            table9.AddRow(new string[] {
+                        "NEUTROPHILS",
+                        "5",
+                        "3 - 8",
+                        "FractionREGAQT"});
+#line 101
+ testRunner.And("I verify lab ranges", ((string)(null)), table9);
+#line 105
+ testRunner.And("I take a screenshot");
+#line 106
+ testRunner.And("I select Lab \"Central - Mediflex Central Lab\"");
+#line hidden
+            TechTalk.SpecFlow.Table table10 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Data",
+                        "Range",
+                        "Unit"});
+            table10.AddRow(new string[] {
+                        "WBC",
+                        "3",
+                        "2 - 8",
+                        "*10E6/ulREGAQT"});
+            table10.AddRow(new string[] {
+                        "NEUTROPHILS",
+                        "5",
+                        "4 - 9",
+                        "FractionREGAQT"});
+#line 107
+ testRunner.And("I verify lab ranges", ((string)(null)), table10);
+#line 111
  testRunner.And("I take a screenshot");
 #line hidden
             this.ScenarioCleanup();

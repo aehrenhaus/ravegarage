@@ -111,6 +111,7 @@ namespace Medidata.RBT.PageObjects.Rave
 		{
 			return LeftSideTD.TryFindElementBy(By.XPath("./../td[@class='crf_rowRightSide']//table[@class='crf_dataPointInternal']"));
 
+				//	throw new Exception("Exception date format for field " + FieldName + " , got: " + text);
 		}
 
 		public override void AnswerQuery(QuerySearchModel filter)
@@ -152,5 +153,10 @@ namespace Medidata.RBT.PageObjects.Rave
 
 		#endregion
 
-	}
+
+        public bool VerifyData(LabRangeModel field)
+        {
+            throw new NotImplementedException();
+        }
+    }
 }
