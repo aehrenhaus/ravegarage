@@ -73,6 +73,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="IVerifyInOrderSteps.cs" />
     <Compile Include="IVerifyExistSteps.cs" />
     <Compile Include="IPageSteps.cs" />
     <Compile Include="DatabaseSteps.cs" />

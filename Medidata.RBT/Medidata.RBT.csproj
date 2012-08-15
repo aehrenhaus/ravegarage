@@ -69,6 +69,7 @@
     <Compile Include="EnumHelper.cs" />
     <Compile Include="PageObjectInterfaces\ControlBase.cs" />
     <Compile Include="DbHelper.cs" />
+    <Compile Include="PageObjectInterfaces\ICanVerifyInOrder.cs" />
     <Compile Include="PageObjectInterfaces\ICanHighlight.cs" />
     <Compile Include="PageObjectInterfaces\IPageObjectFactory.cs" />
     <Compile Include="PageObjectInterfaces\PageBase.cs" />

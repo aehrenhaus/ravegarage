@@ -86,5 +86,44 @@ namespace Medidata.RBT
 
 			return totalMatchCount == matchTable.RowCount;
 		}
+
+		public static bool VerifyTableColumnInAphabeticalOrder_Default(ICanVerifyInOrder page, string tableIdentifier, string column)
+		{
+			throw new NotImplementedException();
+		}
+
+		public static bool VerifyTableInAphabeticalOrder_Default(ICanVerifyInOrder page, string tableIdentifier, bool hasHeader, bool asc)
+		{
+			HtmlTable htmlTable = page.GetElementByName(tableIdentifier).EnhanceAs<HtmlTable>();
+			var trs = htmlTable.Rows();
+			List<string> list = new List<string>();
+
+			for (int i = hasHeader ? 1 : 0; i < trs.Count; i++)
+			{
+				list.Add(trs[i].Text.Trim());
+			}
+
+			IEnumerable<string> orderedList = list.OrderBy(x => x);
+			if (!asc)
+			{
+				orderedList = orderedList.OrderByDescending(x => x);
+			}
+			orderedList = orderedList.ToList();
+		
+			bool inSameOrder = true;
+
+			orderedList.Zip(list, (a, b) =>
+				{
+					if (a != b)
+						inSameOrder = false;
+
+					return default(string);
+
+				}).ToArray();
+
+
+			return inSameOrder;
+		}
+		
 	}
 }

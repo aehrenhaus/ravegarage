@@ -330,7 +330,7 @@ namespace Medidata.RBT
         /// <returns></returns>
         public virtual IWebElement GetElementByName(string name)
         {
-            throw new Exception("This page does not provide information about named page elements");
+			throw new Exception("This page does not provide information about named element:" + name);
         }
 
         public virtual IWebElement CanSeeControl(string identifier)
