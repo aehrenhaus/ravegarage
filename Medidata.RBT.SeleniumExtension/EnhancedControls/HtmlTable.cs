@@ -63,5 +63,10 @@ namespace Medidata.RBT.SeleniumExtension
 
 
 
+		public ReadOnlyCollection<IWebElement> Rows()
+		{
+			return this.FindElements(By.XPath("./tbody/tr"));
+		}
+
 	}
 }

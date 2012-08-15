@@ -12,7 +12,7 @@ using Medidata.RBT.SeleniumExtension;
 
 namespace Medidata.RBT.PageObjects.Rave
 {
-	public  class HomePage : RavePageBase, ICanPaginate, ICanHighlight, ICanVerifyExist
+	public  class HomePage : RavePageBase, ICanPaginate, ICanHighlight, ICanVerifyExist, ICanVerifyInOrder
 	{
 		[FindsBy(How = How.Id, Using = "_ctl0_Content_ListDisplayNavigation_txtSearch")]
 		IWebElement SearchBox;
@@ -148,6 +148,8 @@ namespace Medidata.RBT.PageObjects.Rave
 
 		#endregion
 
+		#region IPage
+
 		public override IPage NavigateTo(string name)
 		{
 			NameValueCollection poClassMapping = new NameValueCollection();
@@ -181,10 +183,20 @@ namespace Medidata.RBT.PageObjects.Rave
 			if (name == "study")
 				return Browser.TryFindElementByPartialID("_dgObjects") ;
 
+			if (name == "Reports")
+			{
+				var table =  Browser.FindElementByXPath("//td[text()='Reports']/../../../tbody/tr[2]//table");
+				return table;
+			}
+
 			return base.GetElementByName(name);
 		}
 
 
+		#endregion
+
+
+		#region ICanHighlight
 
 		public void Hightlight(string type, IWebElement eleToHighlight)
 		{
@@ -193,6 +205,8 @@ namespace Medidata.RBT.PageObjects.Rave
 				eleToHighlight.SetStyle("border", " 2px solid red");
 			}
 		}
+
+		#endregion
 
 
 		#region ICanVerifyExist
@@ -213,5 +227,31 @@ namespace Medidata.RBT.PageObjects.Rave
 		}
 
 		#endregion
+
+		#region ICanVerifyInOrder
+
+		public bool VerifyTableRowsInOrder(string tableIdentifier, Table matchTable)
+		{
+			throw new NotImplementedException();
+		}
+
+		public bool VerifyTableColumnInAphabeticalOrder(string tableIdentifier, string columnName, bool asc)
+		{
+			throw new NotImplementedException();
+		}
+
+		public bool VerifyTableInAphabeticalOrder(string tableIdentifier, bool hasHeader, bool asc)
+		{
+			return DefaultPOInterfaceImplementation.VerifyTableInAphabeticalOrder_Default(this, tableIdentifier, hasHeader, asc);
+		}
+
+		public bool VerifyThingsInOrder(string identifier)
+		{
+			throw new NotImplementedException();
+		}
+
+		#endregion
+
+	
 	}
 }

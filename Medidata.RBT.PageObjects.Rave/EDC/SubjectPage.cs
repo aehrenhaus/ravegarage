@@ -6,11 +6,12 @@ using OpenQA.Selenium.Support.PageObjects;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Remote;
 using Medidata.RBT.SeleniumExtension;
+using TechTalk.SpecFlow;
 
 
 namespace Medidata.RBT.PageObjects.Rave
 {
-	public class SubjectPage : BaseEDCTreePage
+	public class SubjectPage : BaseEDCTreePage,ICanVerifyInOrder
 	{
         public IWebElement GetTaskSummaryArea(string header)
 		{
@@ -49,6 +50,12 @@ namespace Medidata.RBT.PageObjects.Rave
             IWebElement element;
             string id = "";
 
+			if (name == "Reports")
+			{
+				var table = Browser.FindElementByXPath("//td[text()='Reports']/../../../tbody/tr[2]//table");
+				return table;
+			}
+
             if (name == "Add Event")
                 id = "_ctl0_Content_SubjectAddEvent_MatrixList";
             else if (name == "Add")
@@ -73,12 +80,6 @@ namespace Medidata.RBT.PageObjects.Rave
 
             return element;
 		}
-
-		//protected override IPage GetTargetPageObjectByLinkAreaName(string type, string areaName)
-		//{
-		//    //if (areaName == "")
-		//    return TestContext.POFactory.GetPage("CRFPage");
-		//}
 
 
 		public override string GetInfomation(string identifier)
@@ -105,5 +106,30 @@ namespace Medidata.RBT.PageObjects.Rave
 				return "Modules/EDC/SubjectPage.aspx";
 			}
 		}
+
+		#region ICanVerifyInOrder
+
+		public bool VerifyTableRowsInOrder(string tableIdentifier, Table matchTable)
+		{
+			throw new NotImplementedException();
+		}
+
+		public bool VerifyTableColumnInAphabeticalOrder(string tableIdentifier, string columnName, bool asc)
+		{
+			throw new NotImplementedException();
+		}
+
+		public bool VerifyTableInAphabeticalOrder(string tableIdentifier, bool hasHeader, bool asc)
+		{
+			return DefaultPOInterfaceImplementation.VerifyTableInAphabeticalOrder_Default(this, tableIdentifier, hasHeader, asc);
+		}
+
+		public bool VerifyThingsInOrder(string identifier)
+		{
+			throw new NotImplementedException();
+		}
+
+		#endregion
+
 	}
 }

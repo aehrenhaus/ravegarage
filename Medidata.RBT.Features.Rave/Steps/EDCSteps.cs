@@ -19,6 +19,18 @@ namespace Medidata.RBT.Features.Rave
 		/// </summary>
 		/// <param name="studyName"></param>
 		/// <param name="siteName"></param>
+		[StepDefinition(@"I select Study ""([^""]*)""")]
+		public void ISelectStudy____AndSite____(string studyName)
+		{
+			CurrentPage = CurrentPage.As<HomePage>()
+				.SelectStudy(studyName);
+		}
+
+		/// <summary>
+		/// Select study and site on Home page
+		/// </summary>
+		/// <param name="studyName"></param>
+		/// <param name="siteName"></param>
 		[StepDefinition(@"I select Study ""([^""]*)"" and Site ""([^""]*)""")]
 		public void ISelectStudy____AndSite____(string studyName, string siteName)
 		{
@@ -26,6 +38,7 @@ namespace Medidata.RBT.Features.Rave
 				.SelectStudy(studyName)
 				.SelectSite(siteName);
 		}
+
 
 		/// <summary>
 		/// As it's name

@@ -163,21 +163,23 @@ namespace Medidata.RBT.SeleniumExtension
 		#region Img
 
 
-		public static Checkbox Image(this ISearchContext context, string partialID, bool nullable = false)
+
+
+		public static EnhancedElement ImageBySrc(this ISearchContext context, string src)
 		{
-			return SelectExtendElement<Checkbox>(context, "img", partialID, nullable);
+			return context.TryFindElementBy(By.XPath(".//img[@src='" + src + "']")).EnhanceAs < EnhancedElement>();
 		}
 
 
-		public static ReadOnlyCollection<Checkbox> Images(this ISearchContext context, bool allLevel =true)
+		public static ReadOnlyCollection<EnhancedElement> Images(this ISearchContext context, bool allLevel = true)
 		{
 			string xpath = allLevel ? ".//img" : "./img";
-			return context.FindElements(By.XPath(xpath)).CastReadOnlyCollection<Checkbox>();
+			return context.FindElements(By.XPath(xpath)).CastReadOnlyCollection<EnhancedElement>();
 		}
 
-		public static ReadOnlyCollection<Checkbox> Images(this ISearchContext context, string xpath)
+		public static ReadOnlyCollection<EnhancedElement> Images(this ISearchContext context, string xpath)
 		{
-			return context.FindElements(By.XPath(xpath)).CastReadOnlyCollection<Checkbox>();
+			return context.FindElements(By.XPath(xpath)).CastReadOnlyCollection<EnhancedElement>();
 		}
 
 		#endregion
