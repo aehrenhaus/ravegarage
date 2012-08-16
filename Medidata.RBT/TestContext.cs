@@ -338,7 +338,8 @@ namespace Medidata.RBT
         {
             List<String> createdFiles = Directory.GetFiles(TestContext.DownloadPath).ToList();
             foreach (String filePath in createdFiles)
-                File.Delete(filePath);
+                if(!filePath.EndsWith(".gitignore"))
+                    File.Delete(filePath);
         }
 
         /// <summary>
@@ -363,9 +364,8 @@ namespace Medidata.RBT
             {
                 DateTime lastWriteTime = File.GetLastWriteTime(filePath);
                 if (lastWriteTime >= CurrentFeatureStartTime)
-                {
-                    File.Delete(filePath);
-                }
+                    if (!filePath.EndsWith(".gitignore"))
+                        File.Delete(filePath);
             }
         }
 
