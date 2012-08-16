@@ -69,7 +69,10 @@ namespace Medidata.RBT
 				{
 					TestContext.TrySaveScreenShot();
 				}
-
+                if (matchTRs.Count > 0)
+                {
+                    return matchTRs[0];
+                }
 				return null;
 			};
 
