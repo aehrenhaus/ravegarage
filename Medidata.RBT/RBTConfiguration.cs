@@ -99,7 +99,7 @@ namespace Medidata.RBT
         }
 
         //This should match your browser's download path.
-        [ConfigurationProperty("DownloadPath", DefaultValue = "", IsRequired = false)]
+        [ConfigurationProperty("DownloadPath", DefaultValue = @"FAKEDIRECTORY:\yourpath\Downloads", IsRequired = true)]
         public String DownloadPath
         {
             get { return (String)this["DownloadPath"]; }
