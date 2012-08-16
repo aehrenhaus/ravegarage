@@ -74,27 +74,29 @@ namespace Medidata.RBT.Features.Rave.Features.EDC
         {
 #line 10
 #line 11
-    testRunner.Given("I am logged in to Rave with username \"defuser\" and password \"password\"");
-#line 24
+ testRunner.Given("I am logged in to Rave with username \"defuser\" and password \"password\"");
+#line 78
  testRunner.And("I select Study \"Mediflex\" and Site \"LabSite01\"");
 #line hidden
         }
         
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("As an EDC user, I have a partially locked lab form, and I change the selected lab" +
-            ", then I should see the ranges update for all lab datapoints.")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("@PB-DT10514-01 As an EDC user, I have a partially locked lab form, and I change t" +
+            "he selected lab to another local lab, then I should see the ranges update for al" +
+            "l lab datapoints.")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "US11305_DT10514")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("release_564_2012.1.0")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("PB-DT10514-01")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Draft")]
-        public virtual void AsAnEDCUserIHaveAPartiallyLockedLabFormAndIChangeTheSelectedLabThenIShouldSeeTheRangesUpdateForAllLabDatapoints_()
+        public virtual void PB_DT10514_01AsAnEDCUserIHaveAPartiallyLockedLabFormAndIChangeTheSelectedLabToAnotherLocalLabThenIShouldSeeTheRangesUpdateForAllLabDatapoints_()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("As an EDC user, I have a partially locked lab form, and I change the selected lab" +
-                    ", then I should see the ranges update for all lab datapoints.", new string[] {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("@PB-DT10514-01 As an EDC user, I have a partially locked lab form, and I change t" +
+                    "he selected lab to another local lab, then I should see the ranges update for al" +
+                    "l lab datapoints.", new string[] {
                         "release_564_2012.1.0",
                         "PB-DT10514-01",
                         "Draft"});
-#line 30
+#line 86
 this.ScenarioSetup(scenarioInfo);
 #line 10
 this.FeatureBackground();
@@ -115,9 +117,9 @@ this.FeatureBackground();
                         "Pregancy Status",
                         "NoREGAQT",
                         "dropdownlist"});
-#line 32
+#line 88
  testRunner.When("I create a Subject", ((string)(null)), table1);
-#line 37
+#line 93
  testRunner.And("I select Form \"Visit Date\" in Folder \"Visit 1\"");
 #line hidden
             TechTalk.SpecFlow.Table table2 = new TechTalk.SpecFlow.Table(new string[] {
@@ -127,152 +129,169 @@ this.FeatureBackground();
             table2.AddRow(new string[] {
                         "Age",
                         "22",
-                        "textbox"});
+                        "text"});
             table2.AddRow(new string[] {
                         "Sex",
                         "FemaleREGAQT",
                         "dropdownlist"});
-#line 38
+#line 94
  testRunner.And("I enter data in CRF and save", ((string)(null)), table2);
-#line 42
- testRunner.And("I select Form \"Visit Date\" in Folder \"Visit 2\"");
+#line 98
+ testRunner.And("I select Form \"Hematology\" in Folder \"Visit 2\"");
+#line 99
+ testRunner.And("I choose \"Mediflex Local Lab 1\" from \"Lab\"");
 #line hidden
             TechTalk.SpecFlow.Table table3 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field",
                         "Data",
                         "Control Type"});
             table3.AddRow(new string[] {
-                        "Age",
-                        "22",
-                        "textbox"});
+                        "Lab Date",
+                        "15 Aug 2012",
+                        "datetime"});
             table3.AddRow(new string[] {
-                        "Sex",
-                        "FemaleREGAQT",
-                        "dropdownlist"});
-#line 43
+                        "WBC",
+                        "7",
+                        "text"});
+            table3.AddRow(new string[] {
+                        "NEUTROPHILS",
+                        "7",
+                        "text"});
+#line 100
  testRunner.And("I enter data in CRF and save", ((string)(null)), table3);
-#line 47
- testRunner.And("I select Form \"Hematology\" in Folder \"Visit 2\"");
-#line 48
- testRunner.And("I choose \"Mediflex Local Lab 1\" from \"Lab\"");
 #line hidden
             TechTalk.SpecFlow.Table table4 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field",
                         "Data",
-                        "Control Type"});
-            table4.AddRow(new string[] {
-                        "Lab Date",
-                        "15 Aug 2012",
-                        "datetime"});
+                        "Range Status",
+                        "Range",
+                        "Unit",
+                        "Status Icon"});
             table4.AddRow(new string[] {
                         "WBC",
-                        "3",
-                        "textbox"});
+                        "7",
+                        "",
+                        "2 - 5",
+                        "*10E6/ulREGAQT",
+                        "Complete"});
             table4.AddRow(new string[] {
                         "NEUTROPHILS",
-                        "5",
-                        "textbox"});
-#line 49
- testRunner.And("I enter data in CRF and save", ((string)(null)), table4);
+                        "7",
+                        "",
+                        "3 - 6",
+                        "FractionREGAQT",
+                        "Lock"});
+#line 105
+ testRunner.And("I verify lab ranges", ((string)(null)), table4);
+#line 109
+ testRunner.And("I take a screenshot");
+#line 110
+ testRunner.And("I check \"Hard Lock\" on \"Lab Date\"");
+#line 111
+ testRunner.And("I check \"Hard Lock\" on \"WBC\"");
+#line 112
+ testRunner.And("I check \"Hard Lock\" on \"NEUTROPHILS\"");
+#line 113
+ testRunner.And("I save the CRF page");
+#line 114
+ testRunner.And("I take a screenshot");
+#line 115
+ testRunner.And("I uncheck \"Hard Lock\" on \"WBC\"");
+#line 116
+ testRunner.And("I save the CRF page");
+#line 117
+ testRunner.And("I take a screenshot");
+#line 118
+ testRunner.And("I select Lab \"Mediflex Local Lab 2\"");
 #line hidden
             TechTalk.SpecFlow.Table table5 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field",
                         "Data",
+                        "Range Status",
                         "Range",
-                        "Unit"});
+                        "Unit",
+                        "Status Icon"});
             table5.AddRow(new string[] {
                         "WBC",
-                        "3",
-                        "1 - 5",
-                        "*10E6/ulREGAQT"});
+                        "7",
+                        "",
+                        "2 - 4",
+                        "*10E6/ulREGAQT",
+                        "Complete"});
             table5.AddRow(new string[] {
                         "NEUTROPHILS",
-                        "5",
-                        "3 - 7",
-                        "FractionREGAQT"});
-#line 54
+                        "7",
+                        "",
+                        "4 - 7",
+                        "FractionREGAQT",
+                        "Lock"});
+#line 119
  testRunner.And("I verify lab ranges", ((string)(null)), table5);
-#line 58
- testRunner.And("I take a screenshot");
-#line 59
- testRunner.And("I check \"Hard Lock\" on \"Lab Date\"");
-#line 60
- testRunner.And("I check \"Hard Lock\" on \"WBC\"");
-#line 61
- testRunner.And("I check \"Hard Lock\" on \"NEUTROPHILS\"");
-#line 62
- testRunner.And("I save the CRF page");
-#line 63
- testRunner.And("I take a screenshot");
-#line 64
- testRunner.And("I uncheck \"Hard Lock\" on \"WBC\"");
-#line 65
- testRunner.And("I save the CRF page");
-#line 66
- testRunner.And("I take a screenshot");
-#line 67
- testRunner.And("I select Lab \"Mediflex Local Lab 2\"");
-#line hidden
-            TechTalk.SpecFlow.Table table6 = new TechTalk.SpecFlow.Table(new string[] {
-                        "Field",
-                        "Data",
-                        "Range",
-                        "Unit"});
-            table6.AddRow(new string[] {
-                        "WBC",
-                        "3",
-                        "1 - 6",
-                        "*10E6/ulREGAQT"});
-            table6.AddRow(new string[] {
-                        "NEUTROPHILS",
-                        "5",
-                        "3 - 8",
-                        "FractionREGAQT"});
-#line 68
- testRunner.And("I verify lab ranges", ((string)(null)), table6);
-#line 72
- testRunner.And("I take a screenshot");
-#line 73
- testRunner.And("I select Lab \"Central - Mediflex Central Lab\"");
-#line hidden
-            TechTalk.SpecFlow.Table table7 = new TechTalk.SpecFlow.Table(new string[] {
-                        "Field",
-                        "Data",
-                        "Range",
-                        "Unit"});
-            table7.AddRow(new string[] {
-                        "WBC",
-                        "3",
-                        "2 - 8",
-                        "*10E6/ulREGAQT"});
-            table7.AddRow(new string[] {
-                        "NEUTROPHILS",
-                        "5",
-                        "4 - 9",
-                        "FractionREGAQT"});
-#line 74
- testRunner.And("I verify lab ranges", ((string)(null)), table7);
-#line 78
+#line 123
  testRunner.And("I take a screenshot");
 #line hidden
             this.ScenarioCleanup();
         }
         
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Test")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("@PB-DT10514-02 As an EDC user, I have a partially locked lab form, and I change t" +
+            "he selected lab to another local lab, then I should see the ranges update for al" +
+            "l lab datapoints.")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "US11305_DT10514")]
-        public virtual void Test()
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("release_564_2012.1.0")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("PB-DT10514-02")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Draft")]
+        public virtual void PB_DT10514_02AsAnEDCUserIHaveAPartiallyLockedLabFormAndIChangeTheSelectedLabToAnotherLocalLabThenIShouldSeeTheRangesUpdateForAllLabDatapoints_()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Test", ((string[])(null)));
-#line 82
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("@PB-DT10514-02 As an EDC user, I have a partially locked lab form, and I change t" +
+                    "he selected lab to another local lab, then I should see the ranges update for al" +
+                    "l lab datapoints.", new string[] {
+                        "release_564_2012.1.0",
+                        "PB-DT10514-02",
+                        "Draft"});
+#line 129
 this.ScenarioSetup(scenarioInfo);
 #line 10
 this.FeatureBackground();
-#line 84
- testRunner.When("I select a Subject \"SUB21807\"");
-#line 85
+#line hidden
+            TechTalk.SpecFlow.Table table6 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Data",
+                        "Control Type"});
+            table6.AddRow(new string[] {
+                        "Subject Number",
+                        "{RndNum<num1>(5)}",
+                        "textbox"});
+            table6.AddRow(new string[] {
+                        "Subject Initials",
+                        "SUB",
+                        "textbox"});
+            table6.AddRow(new string[] {
+                        "Pregancy Status",
+                        "NoREGAQT",
+                        "dropdownlist"});
+#line 131
+ testRunner.When("I create a Subject", ((string)(null)), table6);
+#line 136
+ testRunner.And("I select Form \"Visit Date\" in Folder \"Visit 1\"");
+#line hidden
+            TechTalk.SpecFlow.Table table7 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Data",
+                        "Control Type"});
+            table7.AddRow(new string[] {
+                        "Age",
+                        "22",
+                        "text"});
+            table7.AddRow(new string[] {
+                        "Sex",
+                        "FemaleREGAQT",
+                        "dropdownlist"});
+#line 137
+ testRunner.And("I enter data in CRF and save", ((string)(null)), table7);
+#line 141
  testRunner.And("I select Form \"Hematology\" in Folder \"Visit 2\"");
-#line 86
+#line 142
  testRunner.And("I choose \"Mediflex Local Lab 1\" from \"Lab\"");
 #line hidden
             TechTalk.SpecFlow.Table table8 = new TechTalk.SpecFlow.Table(new string[] {
@@ -285,73 +304,374 @@ this.FeatureBackground();
                         "datetime"});
             table8.AddRow(new string[] {
                         "WBC",
-                        "3",
-                        "textbox"});
+                        "7",
+                        "text"});
             table8.AddRow(new string[] {
                         "NEUTROPHILS",
-                        "5",
-                        "textbox"});
-#line 87
+                        "7",
+                        "text"});
+#line 143
  testRunner.And("I enter data in CRF and save", ((string)(null)), table8);
-#line 92
- testRunner.And("I check \"Hard Lock\" on \"Lab Date\"");
-#line 93
- testRunner.And("I check \"Hard Lock\" on \"WBC\"");
-#line 94
- testRunner.And("I check \"Hard Lock\" on \"NEUTROPHILS\"");
-#line 95
- testRunner.And("I save the CRF page");
-#line 96
- testRunner.And("I take a screenshot");
-#line 97
- testRunner.And("I uncheck \"Hard Lock\" on \"WBC\"");
-#line 98
- testRunner.And("I save the CRF page");
-#line 99
- testRunner.And("I take a screenshot");
-#line 100
- testRunner.And("I select Lab \"Mediflex Local Lab 2\"");
 #line hidden
             TechTalk.SpecFlow.Table table9 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field",
                         "Data",
+                        "Range Status",
                         "Range",
-                        "Unit"});
+                        "Unit",
+                        "Status Icon"});
             table9.AddRow(new string[] {
                         "WBC",
-                        "3",
-                        "1 - 6",
-                        "*10E6/ulREGAQT"});
+                        "7",
+                        "",
+                        "2 - 5",
+                        "*10E6/ulREGAQT",
+                        ""});
             table9.AddRow(new string[] {
                         "NEUTROPHILS",
-                        "5",
-                        "3 - 8",
-                        "FractionREGAQT"});
-#line 101
+                        "7",
+                        "",
+                        "3 - 6",
+                        "FractionREGAQT",
+                        ""});
+#line 148
  testRunner.And("I verify lab ranges", ((string)(null)), table9);
-#line 105
+#line 152
  testRunner.And("I take a screenshot");
-#line 106
- testRunner.And("I select Lab \"Central - Mediflex Central Lab\"");
+#line 153
+ testRunner.And("I check \"Hard Lock\" on \"Lab Date\"");
+#line 154
+ testRunner.And("I check \"Hard Lock\" on \"WBC\"");
+#line 155
+ testRunner.And("I check \"Hard Lock\" on \"NEUTROPHILS\"");
+#line 156
+ testRunner.And("I save the CRF page");
+#line 157
+ testRunner.And("I take a screenshot");
+#line 158
+ testRunner.And("I uncheck \"Hard Lock\" on \"WBC\"");
+#line 159
+ testRunner.And("I save the CRF page");
+#line 160
+ testRunner.And("I take a screenshot");
+#line 161
+ testRunner.And("I select Lab \"Mediflex Local Lab 3\"");
 #line hidden
             TechTalk.SpecFlow.Table table10 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field",
                         "Data",
+                        "Range Status",
                         "Range",
-                        "Unit"});
+                        "Unit",
+                        "Status Icon"});
             table10.AddRow(new string[] {
                         "WBC",
-                        "3",
-                        "2 - 8",
-                        "*10E6/ulREGAQT"});
+                        "7",
+                        "",
+                        "4 - 7",
+                        "*10E6/ulREGAQT",
+                        ""});
             table10.AddRow(new string[] {
                         "NEUTROPHILS",
-                        "5",
-                        "4 - 9",
-                        "FractionREGAQT"});
-#line 107
+                        "7",
+                        "",
+                        "2 - 5",
+                        "FractionREGAQT",
+                        ""});
+#line 162
  testRunner.And("I verify lab ranges", ((string)(null)), table10);
-#line 111
+#line 166
+ testRunner.And("I take a screenshot");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("@PB-DT10514-03 As an EDC user, I have a partially locked lab form, and I change t" +
+            "he selected lab to central lab, then I should see the ranges update for all lab " +
+            "datapoints.")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "US11305_DT10514")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("release_564_2012.1.0")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("PB-DT10514-03")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Draft")]
+        public virtual void PB_DT10514_03AsAnEDCUserIHaveAPartiallyLockedLabFormAndIChangeTheSelectedLabToCentralLabThenIShouldSeeTheRangesUpdateForAllLabDatapoints_()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("@PB-DT10514-03 As an EDC user, I have a partially locked lab form, and I change t" +
+                    "he selected lab to central lab, then I should see the ranges update for all lab " +
+                    "datapoints.", new string[] {
+                        "release_564_2012.1.0",
+                        "PB-DT10514-03",
+                        "Draft"});
+#line 172
+this.ScenarioSetup(scenarioInfo);
+#line 10
+this.FeatureBackground();
+#line hidden
+            TechTalk.SpecFlow.Table table11 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Data",
+                        "Control Type"});
+            table11.AddRow(new string[] {
+                        "Subject Number",
+                        "{RndNum<num1>(5)}",
+                        "textbox"});
+            table11.AddRow(new string[] {
+                        "Subject Initials",
+                        "SUB",
+                        "textbox"});
+            table11.AddRow(new string[] {
+                        "Pregancy Status",
+                        "NoREGAQT",
+                        "dropdownlist"});
+#line 174
+ testRunner.When("I create a Subject", ((string)(null)), table11);
+#line 179
+ testRunner.And("I select Form \"Visit Date\" in Folder \"Visit 1\"");
+#line hidden
+            TechTalk.SpecFlow.Table table12 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Data",
+                        "Control Type"});
+            table12.AddRow(new string[] {
+                        "Age",
+                        "22",
+                        "text"});
+            table12.AddRow(new string[] {
+                        "Sex",
+                        "FemaleREGAQT",
+                        "dropdownlist"});
+#line 180
+ testRunner.And("I enter data in CRF and save", ((string)(null)), table12);
+#line 184
+ testRunner.And("I select Form \"Hematology\" in Folder \"Visit 2\"");
+#line 185
+ testRunner.And("I choose \"Mediflex Local Lab 1\" from \"Lab\"");
+#line hidden
+            TechTalk.SpecFlow.Table table13 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Data",
+                        "Control Type"});
+            table13.AddRow(new string[] {
+                        "Lab Date",
+                        "15 Aug 2012",
+                        "datetime"});
+            table13.AddRow(new string[] {
+                        "WBC",
+                        "7",
+                        "text"});
+            table13.AddRow(new string[] {
+                        "NEUTROPHILS",
+                        "7",
+                        "text"});
+#line 186
+ testRunner.And("I enter data in CRF and save", ((string)(null)), table13);
+#line hidden
+            TechTalk.SpecFlow.Table table14 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Data",
+                        "Range Status",
+                        "Range",
+                        "Unit",
+                        "Status Icon"});
+            table14.AddRow(new string[] {
+                        "WBC",
+                        "7",
+                        "",
+                        "2 - 5",
+                        "*10E6/ulREGAQT",
+                        ""});
+            table14.AddRow(new string[] {
+                        "NEUTROPHILS",
+                        "7",
+                        "",
+                        "3 - 6",
+                        "FractionREGAQT",
+                        ""});
+#line 191
+ testRunner.And("I verify lab ranges", ((string)(null)), table14);
+#line 195
+ testRunner.And("I take a screenshot");
+#line 196
+ testRunner.And("I check \"Hard Lock\" on \"Lab Date\"");
+#line 197
+ testRunner.And("I check \"Hard Lock\" on \"WBC\"");
+#line 198
+ testRunner.And("I check \"Hard Lock\" on \"NEUTROPHILS\"");
+#line 199
+ testRunner.And("I save the CRF page");
+#line 200
+ testRunner.And("I take a screenshot");
+#line 201
+ testRunner.And("I uncheck \"Hard Lock\" on \"WBC\"");
+#line 202
+ testRunner.And("I save the CRF page");
+#line 203
+ testRunner.And("I take a screenshot");
+#line 204
+ testRunner.And("I select Lab \"Central - Mediflex Central Lab\"");
+#line hidden
+            TechTalk.SpecFlow.Table table15 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Data",
+                        "Range Status",
+                        "Range",
+                        "Unit",
+                        "Status Icon"});
+            table15.AddRow(new string[] {
+                        "WBC",
+                        "7",
+                        "",
+                        "2 - 8",
+                        "*10E6/ulREGAQT",
+                        ""});
+            table15.AddRow(new string[] {
+                        "NEUTROPHILS",
+                        "7",
+                        "",
+                        "4 - 9",
+                        "FractionREGAQT",
+                        ""});
+#line 205
+ testRunner.And("I verify lab ranges", ((string)(null)), table15);
+#line 209
+ testRunner.And("I take a screenshot");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("@PB-DT10514-04 As an EDC user, I have a partially locked lab form, and I change t" +
+            "he selected lab to another local lab, then I should see the ranges update for al" +
+            "l lab datapoints.")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "US11305_DT10514")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("release_564_2012.1.0")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("PB-DT10514-04")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Draft")]
+        public virtual void PB_DT10514_04AsAnEDCUserIHaveAPartiallyLockedLabFormAndIChangeTheSelectedLabToAnotherLocalLabThenIShouldSeeTheRangesUpdateForAllLabDatapoints_()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("@PB-DT10514-04 As an EDC user, I have a partially locked lab form, and I change t" +
+                    "he selected lab to another local lab, then I should see the ranges update for al" +
+                    "l lab datapoints.", new string[] {
+                        "release_564_2012.1.0",
+                        "PB-DT10514-04",
+                        "Draft"});
+#line 215
+this.ScenarioSetup(scenarioInfo);
+#line 10
+this.FeatureBackground();
+#line hidden
+            TechTalk.SpecFlow.Table table16 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Data",
+                        "Control Type"});
+            table16.AddRow(new string[] {
+                        "Subject Number",
+                        "{RndNum<num1>(5)}",
+                        "textbox"});
+            table16.AddRow(new string[] {
+                        "Subject Initials",
+                        "SUB",
+                        "textbox"});
+#line 217
+ testRunner.When("I create a Subject", ((string)(null)), table16);
+#line 221
+ testRunner.And("I select Form \"Visit Date\" in Folder \"Visit 1\"");
+#line hidden
+            TechTalk.SpecFlow.Table table17 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Data",
+                        "Control Type"});
+            table17.AddRow(new string[] {
+                        "Age",
+                        "22",
+                        "text"});
+            table17.AddRow(new string[] {
+                        "Sex",
+                        "FemaleREGAQT",
+                        "dropdownlist"});
+#line 222
+ testRunner.And("I enter data in CRF and save", ((string)(null)), table17);
+#line 226
+ testRunner.And("I select Form \"Hematology\" in Folder \"Visit 2\"");
+#line 227
+ testRunner.And("I choose \"Mediflex Local Lab 1\" from \"Lab\"");
+#line hidden
+            TechTalk.SpecFlow.Table table18 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Data",
+                        "Control Type"});
+            table18.AddRow(new string[] {
+                        "Lab Date",
+                        "15 Aug 2012",
+                        "datetime"});
+            table18.AddRow(new string[] {
+                        "WBC",
+                        "7",
+                        "text"});
+            table18.AddRow(new string[] {
+                        "NEUTROPHILS",
+                        "7",
+                        "text"});
+#line 228
+ testRunner.And("I enter data in CRF and save", ((string)(null)), table18);
+#line 233
+ testRunner.And("I take a screenshot");
+#line 234
+ testRunner.And("I check \"Hard Lock\" on \"Lab Date\"");
+#line 235
+ testRunner.And("I check \"Hard Lock\" on \"WBC\"");
+#line 236
+ testRunner.And("I check \"Hard Lock\" on \"NEUTROPHILS\"");
+#line 237
+ testRunner.And("I save the CRF page");
+#line 243
+ testRunner.And("I take a screenshot");
+#line 244
+ testRunner.And("I navigate to \"Home\"");
+#line 245
+ testRunner.And("I select Study \"Mediflex\" and Site \"LabSite01\"");
+#line 246
+ testRunner.And("I select a Subject \"SUB{Var(num1)}\"");
+#line 247
+ testRunner.And("I select \"SubjectEnrollment\"");
+#line hidden
+            TechTalk.SpecFlow.Table table19 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Data",
+                        "Control Type"});
+            table19.AddRow(new string[] {
+                        "Pregancy Status",
+                        "NoREGAQT",
+                        "dropdownlist"});
+#line 250
+ testRunner.And("I enter data in CRF and save", ((string)(null)), table19);
+#line 253
+ testRunner.And("I select Form \"Hematology\" in Folder \"Visit 2\"");
+#line hidden
+            TechTalk.SpecFlow.Table table20 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Data",
+                        "Range Status",
+                        "Range",
+                        "Unit",
+                        "Status Icon"});
+            table20.AddRow(new string[] {
+                        "WBC",
+                        "7",
+                        "",
+                        "2 - 5",
+                        "*10E6/ulREGAQT",
+                        ""});
+            table20.AddRow(new string[] {
+                        "NEUTROPHILS",
+                        "7",
+                        "",
+                        "3 - 6",
+                        "FractionREGAQT",
+                        ""});
+#line 254
+ testRunner.And("I verify lab ranges", ((string)(null)), table20);
+#line 258
  testRunner.And("I take a screenshot");
 #line hidden
             this.ScenarioCleanup();
