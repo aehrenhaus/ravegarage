@@ -44,6 +44,22 @@ namespace Medidata.RBT.PageObjects.Rave
 		
 		}
 
+        public void DeleteConversion(UnitConversionModel unitModel)
+        {
+
+            var table = Browser.TryFindElementByPartialID("UnitConversionGrid").EnhanceAs<HtmlTable>();
+            var matchTable = new Table("From", "To");
+
+            matchTable.AddRow(unitModel.From, unitModel.To);
+
+            var row = table.FindMatchRows(matchTable)[0];
+            var editImage = row.ImageBySrc("../../Img/i_cedit.gif");
+            editImage.Click();
+
+            row.Checkbox("chkDelete").Check();
+            Browser.LinkByPartialText("Update").Click();
+        }
+
 		private void ModifyConversionAndUpdate(UnitConversionModel unitModel)
 		{
 			this.ChooseFromDropdown("DropDownListUnitFrom", unitModel.From);

@@ -26,5 +26,12 @@ namespace Medidata.RBT.Features.Rave
 			CurrentPage.As<UnitConversionsPage>().EditConversion(table.CreateInstance<UnitConversionModel>());
 		}
 
+        [StepDefinition(@"I delete unit conversion data")]
+		public void IEditDeleteConversionData(Table table)
+		{
+            CurrentPage.As<UnitConversionsPage>().DeleteConversion(table.CreateInstance<UnitConversionModel>());
+		}
+
+        
 	}
 }
