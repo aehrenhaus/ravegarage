@@ -7,6 +7,7 @@ using Microsoft.Practices.EnterpriseLibrary.Data;
 using System.Data;
 using System.IO;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Medidata.RBT.DBScripts;
 
 namespace Medidata.RBT.Common.Steps
 {
@@ -35,13 +36,27 @@ namespace Medidata.RBT.Common.Steps
 		public void IRunSQLScript____(string scriptName)
 		{
 			Database database = DatabaseFactory.CreateDatabase(RBTConfiguration.Default.DatabaseConnection);
-
 			var sql = File.ReadAllText(Path.Combine(RBTConfiguration.Default.SqlScriptsPath, scriptName));
 			var dataTable = database.ExecuteDataSet(sql).Tables[0];
 
 			SaveDataTable(dataTable);
 			TestContext.SetContextValue(LastSqlResultTable, dataTable);
 		}
+
+        /// <summary>
+        /// Based on the column name, we call an appropriate method and return true/false whether or not colun propagates
+        /// </summary>
+        /// <param name="scriptName"></param>
+        [StepDefinition(@"""([^""]*)"" propagates correctly")]
+        public void IRunSQLPropagationScript____(string scriptName) 
+        {
+            Database database = DatabaseFactory.CreateDatabase(RBTConfiguration.Default.DatabaseConnection);
+            Uri tempUri = new Uri(Browser.Url);
+            var sql = PropagationVerificationSQLScripts.GenerateSQLQueryForColumnName(scriptName, int.Parse(tempUri.Query.Replace("?DP=", "")));
+             
+            var dataTable = database.ExecuteDataSet(CommandType.Text, sql).Tables[0];
+            Assert.IsTrue((int)dataTable.Rows[0][0] == 0, "Data doesn't propagate correctly");
+        }
 
 		[StepDefinition(@"I should see SQL result")]
 		public void IShouldSeeResult(Table table)
