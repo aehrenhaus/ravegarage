@@ -44,16 +44,16 @@ namespace Medidata.RBT.Common.Steps
 		}
 
         /// <summary>
-        /// Based on the column name, we call an appropriate method and return true/false whether or not colun propagates
+        /// Based on the column name, we call an appropriate method and assert true/false whether or not column in table datapoints propagates
         /// </summary>
-        /// <param name="scriptName"></param>
+        /// <param name="columnName"></param>
         [StepDefinition(@"""([^""]*)"" propagates correctly")]
-        public void IRunSQLPropagationScript____(string scriptName) 
+        public void IVerifyDatapointColumnPropagates____(string columnName)
         {
             Database database = DatabaseFactory.CreateDatabase(RBTConfiguration.Default.DatabaseConnection);
             Uri tempUri = new Uri(Browser.Url);
-            var sql = PropagationVerificationSQLScripts.GenerateSQLQueryForColumnName(scriptName, int.Parse(tempUri.Query.Replace("?DP=", "")));
-             
+            var sql = PropagationVerificationSQLScripts.GenerateSQLQueryForColumnName(columnName, int.Parse(tempUri.Query.Replace("?DP=", "")));
+
             var dataTable = database.ExecuteDataSet(CommandType.Text, sql).Tables[0];
             Assert.IsTrue((int)dataTable.Rows[0][0] == 0, "Data doesn't propagate correctly");
         }
