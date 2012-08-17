@@ -8,6 +8,7 @@ using Medidata.RBT.PageObjects.Rave;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Medidata.RBT;
 using TechTalk.SpecFlow.Assist;
+using Medidata.RBT.DBScripts;
 
 namespace Medidata.RBT.Features.Rave
 {
@@ -364,6 +365,19 @@ namespace Medidata.RBT.Features.Rave
 
 
 
+		/// <summary>
+		/// Based on the column name, we call an appropriate method and return true/false whether or not colun propagates
+		/// </summary>
+		/// <param name="scriptName"></param>
+		[StepDefinition(@"""([^""]*)"" propagates correctly")]
+		public void ____PropagatesCorrectly(string scriptName)
+		{
+			;
+			Uri tempUri = new Uri(Browser.Url);
+			var sql = PropagationVerificationSQLScripts.GenerateSQLQueryForColumnName(scriptName, int.Parse(tempUri.Query.Replace("?DP=", "")));
 
+			var dataTable = DbHelper.ExecuteDataSet(sql).Tables[0];
+			Assert.IsTrue((int)dataTable.Rows[0][0] == 0, "Data doesn't propagate correctly");
+		}
     }
 }
