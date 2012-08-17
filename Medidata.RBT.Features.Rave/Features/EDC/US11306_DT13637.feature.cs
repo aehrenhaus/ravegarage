@@ -103,7 +103,7 @@ this.ScenarioSetup(scenarioInfo);
 #line 12
 this.FeatureBackground();
 #line 65
- testRunner.When("I select Study \"Geneloid_SJ\" and Site \"Site 1\"");
+ testRunner.When("I select Study \"US11306_DT13637_SJ\" and Site \"Site 1\"");
 #line hidden
             TechTalk.SpecFlow.Table table1 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field",
@@ -129,7 +129,7 @@ this.FeatureBackground();
                         "radiobutton"});
             table2.AddRow(new string[] {
                         "Device",
-                        "Device 1B",
+                        "Device 1A",
                         "dynamic search list"});
             table2.AddRow(new string[] {
                         "Devimpdate",
@@ -160,64 +160,51 @@ this.FeatureBackground();
  testRunner.And("I enter data in CRF and save", ((string)(null)), table3);
 #line 87
  testRunner.And("I take a screenshot");
-#line 88
- testRunner.And("I navigate to \"Home\"");
 #line 89
- testRunner.And("I navigate to \"Reporter\"");
-#line 90
- testRunner.And("I select Report \"Data Listing\"");
+ testRunner.And("I run SQL Script \"{scriptName}\"");
 #line hidden
             TechTalk.SpecFlow.Table table4 = new TechTalk.SpecFlow.Table(new string[] {
-                        "Name",
-                        "Environment"});
+                        "recordPosition",
+                        "oid",
+                        "isHidden",
+                        "isTouched",
+                        "changecount",
+                        "data",
+                        "AltCodedValue",
+                        "datapointID",
+                        "fieldid"});
             table4.AddRow(new string[] {
-                        "Geneloid_SJ",
-                        "Prod"});
-#line 91
- testRunner.And("I set report parameter \"Study\" with table", ((string)(null)), table4);
-#line 95
- testRunner.When("I click button \"Submit Report\"");
-#line 96
- testRunner.And("I switch to \"DataListingsReport\" window");
-#line 98
- testRunner.And("I choose \"Clinical Views\" from \"Data Source\"");
-#line 99
- testRunner.And("I choose \"Device Form (DEF)\" from \"Form\"");
-#line 101
- testRunner.And("I click button \"Run\"");
-#line hidden
-            TechTalk.SpecFlow.Table table5 = new TechTalk.SpecFlow.Table(new string[] {
-                        "Subject Name",
-                        "Record Position",
-                        "DEVICETYPE_RAW",
-                        "DEVICETYPE_STD",
-                        "DEVICE_RAW",
-                        "DEVICE_STD",
-                        "DEVICE_ALTCODEDVALUE",
-                        "DEVIMPDATE",
-                        "DEVCOMMENTS"});
-            table5.AddRow(new string[] {
-                        "SUBJ101",
+                        "0",
+                        "DEVICE",
+                        "0",
                         "1",
-                        "Device Type 1",
-                        "DVT1",
+                        "1",
                         "Device 1A",
-                        "DVT1 - DV1A",
-                        "DV1A",
-                        "01 MAR 2012",
-                        "N/A"});
-            table5.AddRow(new string[] {
-                        "SUBJ101",
+                        "1 -DV1A",
+                        "",
+                        ""});
+            table4.AddRow(new string[] {
+                        "1",
+                        "DEVICE",
+                        "1",
+                        "1",
+                        "1",
+                        "Device 1A",
+                        "1 -DV1A",
+                        "",
+                        ""});
+            table4.AddRow(new string[] {
                         "2",
-                        "Device Type 1",
-                        "DVT1",
+                        "DEVICE",
+                        "1",
+                        "1",
+                        "1",
                         "Device 1A",
-                        "DVT1 - DV1A",
-                        "DV1A",
-                        "01 MAR 2012",
-                        "N/A"});
-#line 103
- testRunner.Then("I verify rows exist in \"Result\" table", ((string)(null)), table5);
+                        "1 -DV1A",
+                        "",
+                        ""});
+#line 91
+ testRunner.Then("I should see SQL result", ((string)(null)), table4);
 #line hidden
             this.ScenarioCleanup();
         }
@@ -235,118 +222,105 @@ this.FeatureBackground();
                     "mic searchlist field, then I expect to see the AltCodedValue for that field prop" +
                     "agated to the hidden datapoints on the log lines.", new string[] {
                         "PB-DT13637-02"});
-#line 110
+#line 101
 this.ScenarioSetup(scenarioInfo);
 #line 12
 this.FeatureBackground();
-#line 111
- testRunner.When("I select Study \"Geneloid_SJ\" and Site \"Site 1\"");
+#line 102
+ testRunner.When("I select Study \"US11306_DT13637_SJ\" and Site \"Site 1\"");
+#line hidden
+            TechTalk.SpecFlow.Table table5 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Data"});
+            table5.AddRow(new string[] {
+                        "Subject Initials",
+                        "SUB"});
+            table5.AddRow(new string[] {
+                        "Subject Number",
+                        "{RndNum<num1>(3)}"});
+#line 103
+ testRunner.When("I create a Subject", ((string)(null)), table5);
+#line 108
+ testRunner.And("I select \"Device Form\"");
 #line hidden
             TechTalk.SpecFlow.Table table6 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field",
-                        "Data"});
-            table6.AddRow(new string[] {
-                        "Subject Initials",
-                        "SUB"});
-            table6.AddRow(new string[] {
-                        "Subject Identifier",
-                        "{RndNum<num1>(3)}"});
-#line 112
- testRunner.When("I create a Subject", ((string)(null)), table6);
-#line 117
- testRunner.And("I select \"Device Form\"");
-#line hidden
-            TechTalk.SpecFlow.Table table7 = new TechTalk.SpecFlow.Table(new string[] {
-                        "Field",
                         "Data",
                         "Control Type"});
-            table7.AddRow(new string[] {
+            table6.AddRow(new string[] {
                         "Device Type",
                         "Device Type 1",
                         "radiobutton"});
-            table7.AddRow(new string[] {
+            table6.AddRow(new string[] {
                         "Device",
                         "Device 1A",
                         "dynamic search list"});
-            table7.AddRow(new string[] {
+            table6.AddRow(new string[] {
                         "Date Implanted/Re-implanted",
                         "01 Jan 2012",
                         ""});
-            table7.AddRow(new string[] {
+            table6.AddRow(new string[] {
                         "Comments",
                         "N/A",
                         ""});
-#line 118
- testRunner.And("I enter data in CRF and save", ((string)(null)), table7);
-#line 125
+#line 109
+ testRunner.And("I enter data in CRF and save", ((string)(null)), table6);
+#line 116
  testRunner.And("I inactivate log line 1");
-#line 126
+#line 117
  testRunner.And("I take a screenshot");
 #line hidden
-            TechTalk.SpecFlow.Table table8 = new TechTalk.SpecFlow.Table(new string[] {
+            TechTalk.SpecFlow.Table table7 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field",
                         "Value",
                         "Control Type"});
-            table8.AddRow(new string[] {
+            table7.AddRow(new string[] {
                         "Device",
                         "Device 1A",
                         "dynamic search list"});
-#line 127
- testRunner.And("I enter data in CRF and save", ((string)(null)), table8);
-#line 131
+#line 118
+ testRunner.And("I enter data in CRF and save", ((string)(null)), table7);
+#line 122
  testRunner.And("I take a screenshot");
-#line 132
+#line 123
  testRunner.And("I reactivate log line 1");
-#line 133
+#line 124
  testRunner.And("I take a screenshot");
-#line 134
- testRunner.And("I navigate to \"Home\"");
-#line 135
- testRunner.And("I navigate to \"Reporter\"");
-#line 138
- testRunner.And("I select Report \"Data Listing\"");
+#line 126
+ testRunner.And("I run SQL Script \"{scriptName}\"");
 #line hidden
-            TechTalk.SpecFlow.Table table9 = new TechTalk.SpecFlow.Table(new string[] {
-                        "Name",
-                        "Environment"});
-            table9.AddRow(new string[] {
-                        "Geneloid_SJ",
-                        "Prod"});
-#line 139
- testRunner.And("I set report parameter \"Study\" with table", ((string)(null)), table9);
-#line 143
- testRunner.When("I click button \"Submit Report\"");
-#line 144
- testRunner.And("I switch to \"DataListingsReport\" window");
-#line 146
- testRunner.And("I choose \"Clinical Views\" from \"Data Source\"");
-#line 147
- testRunner.And("I choose \"Device Form (DEF)\" from \"Form\"");
-#line 149
- testRunner.And("I click button \"Run\"");
-#line hidden
-            TechTalk.SpecFlow.Table table10 = new TechTalk.SpecFlow.Table(new string[] {
-                        "Subject Name",
-                        "Record Position",
-                        "DEVICETYPE_RAW",
-                        "DEVICETYPE_STD",
-                        "DEVICE_RAW",
-                        "DEVICE_STD",
-                        "DEVICE_ALTCODEDVALUE",
-                        "DEVIMPDATE",
-                        "DEVCOMMENTS"});
-            table10.AddRow(new string[] {
-                        "SUBJ101",
+            TechTalk.SpecFlow.Table table8 = new TechTalk.SpecFlow.Table(new string[] {
+                        "recordPosition",
+                        "oid",
+                        "isHidden",
+                        "isTouched",
+                        "changecount",
+                        "data",
+                        "AltCodedValue",
+                        "datapointID",
+                        "fieldid"});
+            table8.AddRow(new string[] {
+                        "0",
+                        "DEVICE",
+                        "0",
                         "1",
-                        "Device Type 1",
-                        "DVT1",
-                        "Device 1B",
-                        "DVT1 - DV1B",
-                        "DV1B",
-                        "01 MAR 2012",
-                        "N/A"});
-#line 151
- testRunner.Then("I verify rows exist in \"Result\" table", ((string)(null)), table10);
+                        "1",
+                        "Device 1A",
+                        "1 -DV1A",
+                        "",
+                        ""});
+            table8.AddRow(new string[] {
+                        "1",
+                        "DEVICE",
+                        "1",
+                        "1",
+                        "1",
+                        "Device 1A",
+                        "1 -DV1A",
+                        "",
+                        ""});
+#line 128
+ testRunner.Then("I should see SQL result", ((string)(null)), table8);
 #line hidden
             this.ScenarioCleanup();
         }

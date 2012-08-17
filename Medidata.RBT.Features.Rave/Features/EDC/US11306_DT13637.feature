@@ -12,10 +12,10 @@ Feature: DT 13637 In Rave 5.6.4, in a mixed form, AltCodedValue from a standard 
 Background:
     Given I am logged in to Rave with username "defuser" and password "password"
 	#And following Project assignments exist
-	#|User	 |Project	|Environment	|Role |Site   |Site Number|
-	#|User 1 |Geneloid_SJ	|Prod		|cdm1 |Site 1 |S100	  |
-    	#And Role "cdm1" has Action "Entry"
-	#And Project "Geneloid_SJ" has Draft "<Draft1>"
+	#|User	 |Project	        |Environment|Role |Site   |Site Number|
+	#|User 1 |US11306_DT13637_SJ|Prod		|cdm1 |Site 1 |S100		  |
+    #And Role "cdm1" has Action "Entry"
+	#And Project "US11306_DT13637_SJ" has Draft "<Draft1>"
 	#And Draft "<Draft1>" has Form "Device Form" with fields
 	#| FieldOID    | Data Dictionary | Control Type       | IsLog |
 	#| DEVICETYPE  | DeviceTypeDD    | RadioButton        | False |
@@ -62,7 +62,7 @@ Background:
 @Draft
 Scenario: PB-DT13637-01 As a Data Manager, when an EDC user enters data for a standard dynamic searchlist field, then I expect to see the AltCodedValue for that field propagated to the hidden datapoints on the log lines.
 	
-	When I select Study "Geneloid_SJ" and Site "Site 1"
+	When I select Study "US11306_DT13637_SJ" and Site "Site 1"
 	When I create a Subject
 	| Field            | Data              |
 	| Subject Initials | SUB               |
@@ -72,7 +72,7 @@ Scenario: PB-DT13637-01 As a Data Manager, when an EDC user enters data for a st
 	And I enter data in CRF and save
 	| Field       | Data          | Control Type        |
 	| Device Type | Device Type 1 | radiobutton         |
-	| Device      | Device 1B     | dynamic search list |
+	| Device      | Device 1A     | dynamic search list |
 	| Devimpdate  | 01 Jan 2012   |                     |
 	| Devcomments | N/A           |                     |
 	
@@ -85,34 +85,25 @@ Scenario: PB-DT13637-01 As a Data Manager, when an EDC user enters data for a st
 
 
 	And I take a screenshot
-	And I navigate to "Home"
-	And I navigate to "Reporter"
-	And I select Report "Data Listing"
-	And I set report parameter "Study" with table
-		| Name        | Environment |
-		| Geneloid_SJ | Prod        |
-
-	When I click button "Submit Report"
-	And I switch to "DataListingsReport" window
-
-	And I choose "Clinical Views" from "Data Source"
-	And I choose "Device Form (DEF)" from "Form"
 	
-	And I click button "Run"
+	And I run SQL Script "{scriptName}"
+	
+	Then I should see SQL result
 
-	Then I verify rows exist in "Result" table
-	| Subject Name | Record Position | DEVICETYPE_RAW | DEVICETYPE_STD | DEVICE_RAW | DEVICE_STD  | DEVICE_ALTCODEDVALUE | DEVIMPDATE  | DEVCOMMENTS |
-	| SUBJ101      | 1               | Device Type 1  | DVT1           | Device 1A  | DVT1 - DV1A | DV1A                 | 01 MAR 2012 | N/A         |
-	| SUBJ101      | 2               | Device Type 1  | DVT1           | Device 1A  | DVT1 - DV1A | DV1A                 | 01 MAR 2012 | N/A         |
+	| recordPosition | oid    | isHidden | isTouched | changecount | data      | AltCodedValue | datapointID | fieldid |
+	| 0              | DEVICE | 0        | 1         | 1           | Device 1A | 1 -DV1A       |             |         |
+	| 1              | DEVICE | 1        | 1         | 1           | Device 1A | 1 -DV1A       |             |         |
+	| 2              | DEVICE | 1        | 1         | 1           | Device 1A | 1 -DV1A       |             |         |
 
 
+	
 @PB-DT13637-02
 Scenario: PB-DT13637-02 As a Data Manager, when an EDC user enters data for a standard dynamic searchlist field, then I expect to see the AltCodedValue for that field propagated to the hidden datapoints on the log lines.
-	When I select Study "Geneloid_SJ" and Site "Site 1"
+	When I select Study "US11306_DT13637_SJ" and Site "Site 1"
 	When I create a Subject
-		| Field              | Data              |
-		| Subject Initials   | SUB               |
-		| Subject Identifier | {RndNum<num1>(3)} |
+		| Field            | Data              |
+		| Subject Initials | SUB               |
+		| Subject Number   | {RndNum<num1>(3)} |
 	
 	And I select "Device Form" 
 	And I enter data in CRF and save
@@ -131,23 +122,10 @@ Scenario: PB-DT13637-02 As a Data Manager, when an EDC user enters data for a st
 	And I take a screenshot
 	And I reactivate log line 1
 	And I take a screenshot
-	And I navigate to "Home"
-	And I navigate to "Reporter"
-
-
-	And I select Report "Data Listing"
-	And I set report parameter "Study" with table
-		| Name        | Environment |
-		| Geneloid_SJ | Prod        |
-
-	When I click button "Submit Report"
-	And I switch to "DataListingsReport" window
-
-	And I choose "Clinical Views" from "Data Source"
-	And I choose "Device Form (DEF)" from "Form"
 	
-	And I click button "Run"
-
-	Then I verify rows exist in "Result" table
-		| Subject Name | Record Position | DEVICETYPE_RAW | DEVICETYPE_STD | DEVICE_RAW | DEVICE_STD  | DEVICE_ALTCODEDVALUE | DEVIMPDATE  | DEVCOMMENTS |
-		| SUBJ101      | 1               | Device Type 1  | DVT1           | Device 1B  | DVT1 - DV1B | DV1B                 | 01 MAR 2012 | N/A         |
+	And I run SQL Script "{scriptName}"
+	
+	Then I should see SQL result
+		| recordPosition | oid    | isHidden | isTouched | changecount | data      | AltCodedValue | datapointID | fieldid |
+		| 0              | DEVICE | 0        | 1         | 1           | Device 1A | 1 -DV1A       |             |         |
+		| 1              | DEVICE | 1        | 1         | 1           | Device 1A | 1 -DV1A       |             |         |	
