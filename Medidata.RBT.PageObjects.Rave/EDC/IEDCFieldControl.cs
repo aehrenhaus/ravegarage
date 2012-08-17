@@ -16,6 +16,8 @@ namespace Medidata.RBT.PageObjects.Rave
 
 		void EnterData(string text, ControlType controlType);
 
+        bool HasDataEntered(string text);  
+
 		IWebElement FindQuery(QuerySearchModel filter);
 
 		void AnswerQuery(QuerySearchModel filter);

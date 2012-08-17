@@ -24,6 +24,16 @@ namespace Medidata.RBT.PageObjects.Rave
             return this;
         }
 
+        public bool FindFieldData(IEnumerable<FieldModel> fields)
+        {
+            foreach (var field in fields)
+            {
+                if (!FindField(field.Field).HasDataEntered(field.Data))
+                    return false;
+            }
+            return true;    
+        }
+
         public CRFPage AddLogLine()
         {
             IWebElement saveButton = Browser.TryFindElementById("_ctl0_Content_R_log_log_AddLine");

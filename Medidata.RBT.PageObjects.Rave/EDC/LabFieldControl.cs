@@ -148,6 +148,12 @@ namespace Medidata.RBT.PageObjects.Rave
 			}
 		}
 
+
+        public bool HasData(string text)
+        {
+            throw new NotImplementedException();
+        }
+
         public bool VerifyCheck(string checkName, string status)
         {
             if (checkName == "Hard Lock")
