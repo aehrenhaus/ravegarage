@@ -19,7 +19,7 @@ namespace Medidata.RBT.Features.Rave.Features.EDC
     [System.CodeDom.Compiler.GeneratedCodeAttribute("TechTalk.SpecFlow", "1.8.1.0")]
     [System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     [Microsoft.VisualStudio.TestTools.UnitTesting.TestClassAttribute()]
-    public partial class DT13637InRave5_6_4InAMixedFormAltCodedValueFromAStandardDSLFieldDoesnTGetPropagatedIntoHiddenDatapointsOnNewly_CreatedRecords_Feature
+    public partial class US11306_DT13637Feature
     {
         
         private static TechTalk.SpecFlow.ITestRunner testRunner;
@@ -31,11 +31,11 @@ namespace Medidata.RBT.Features.Rave.Features.EDC
         public static void FeatureSetup(Microsoft.VisualStudio.TestTools.UnitTesting.TestContext testContext)
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
-            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "DT 13637 In Rave 5.6.4, in a mixed form, AltCodedValue from a standard DSL field " +
-                    "doesn\'t get propagated into hidden datapoints on newly-created records.", "As a Rave user\r\nGiven I enter a value for a dynamic searchlist field on a mixed f" +
-                    "orm\r\nWhen I view the AltCodedValue for the hidden datapoints\r\nThen I should see " +
-                    "the same AltCodedValue for the standard datapoint of the dynamic searchlist fiel" +
-                    "d", ProgrammingLanguage.CSharp, ((string[])(null)));
+            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "US11306_DT13637", @"In Rave 5.6.4, in a mixed form, AltCodedValue from a standard DSL field doesn't get propagated into hidden datapoints on newly-created records.
+As a Rave user
+Given I enter a value for a dynamic searchlist field on a mixed form
+When I view the AltCodedValue for the hidden datapoints
+Then I should see the same AltCodedValue for the standard datapoint of the dynamic searchlist field", ProgrammingLanguage.CSharp, ((string[])(null)));
             testRunner.OnFeatureStart(featureInfo);
         }
         
@@ -50,10 +50,9 @@ namespace Medidata.RBT.Features.Rave.Features.EDC
         public virtual void TestInitialize()
         {
             if (((TechTalk.SpecFlow.FeatureContext.Current != null) 
-                        && (TechTalk.SpecFlow.FeatureContext.Current.FeatureInfo.Title != "DT 13637 In Rave 5.6.4, in a mixed form, AltCodedValue from a standard DSL field " +
-                            "doesn\'t get propagated into hidden datapoints on newly-created records.")))
+                        && (TechTalk.SpecFlow.FeatureContext.Current.FeatureInfo.Title != "US11306_DT13637")))
             {
-                Medidata.RBT.Features.Rave.Features.EDC.DT13637InRave5_6_4InAMixedFormAltCodedValueFromAStandardDSLFieldDoesnTGetPropagatedIntoHiddenDatapointsOnNewly_CreatedRecords_Feature.FeatureSetup(null);
+                Medidata.RBT.Features.Rave.Features.EDC.US11306_DT13637Feature.FeatureSetup(null);
             }
         }
         
@@ -75,8 +74,8 @@ namespace Medidata.RBT.Features.Rave.Features.EDC
         
         public virtual void FeatureBackground()
         {
-#line 12
 #line 13
+#line 14
     testRunner.Given("I am logged in to Rave with username \"defuser\" and password \"password\"");
 #line hidden
         }
@@ -85,11 +84,10 @@ namespace Medidata.RBT.Features.Rave.Features.EDC
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("PB-DT13637-01 As a Data Manager, when an EDC user enters data for a standard dyna" +
             "mic searchlist field, then I expect to see the AltCodedValue for that field prop" +
             "agated to the hidden datapoints on the log lines.")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "DT 13637 In Rave 5.6.4, in a mixed form, AltCodedValue from a standard DSL field " +
-            "doesn\'t get propagated into hidden datapoints on newly-created records.")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "US11306_DT13637")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("release_2012.1.0")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("PB-DT13637-01")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Draft")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Validation")]
         public virtual void PB_DT13637_01AsADataManagerWhenAnEDCUserEntersDataForAStandardDynamicSearchlistFieldThenIExpectToSeeTheAltCodedValueForThatFieldPropagatedToTheHiddenDatapointsOnTheLogLines_()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("PB-DT13637-01 As a Data Manager, when an EDC user enters data for a standard dyna" +
@@ -97,12 +95,12 @@ namespace Medidata.RBT.Features.Rave.Features.EDC
                     "agated to the hidden datapoints on the log lines.", new string[] {
                         "release_2012.1.0",
                         "PB-DT13637-01",
-                        "Draft"});
-#line 63
+                        "Validation"});
+#line 64
 this.ScenarioSetup(scenarioInfo);
-#line 12
+#line 13
 this.FeatureBackground();
-#line 65
+#line 66
  testRunner.When("I select Study \"US11306_DT13637_SJ\" and Site \"Site 1\"");
 #line hidden
             TechTalk.SpecFlow.Table table1 = new TechTalk.SpecFlow.Table(new string[] {
@@ -114,7 +112,7 @@ this.FeatureBackground();
             table1.AddRow(new string[] {
                         "Subject Number",
                         "{RndNum<num1>(3)}"});
-#line 66
+#line 67
  testRunner.When("I create a Subject", ((string)(null)), table1);
 #line 71
  testRunner.And("I select Form \"Device Form\"");
@@ -141,7 +139,7 @@ this.FeatureBackground();
                         ""});
 #line 72
  testRunner.And("I enter data in CRF and save", ((string)(null)), table2);
-#line 80
+#line 78
  testRunner.And("I add a new log line");
 #line hidden
             TechTalk.SpecFlow.Table table3 = new TechTalk.SpecFlow.Table(new string[] {
@@ -156,55 +154,12 @@ this.FeatureBackground();
                         "Devcomments",
                         "N/A",
                         ""});
-#line 81
+#line 79
  testRunner.And("I enter data in CRF and save", ((string)(null)), table3);
-#line 87
+#line 83
  testRunner.And("I take a screenshot");
-#line 89
- testRunner.And("I run SQL Script \"{scriptName}\"");
-#line hidden
-            TechTalk.SpecFlow.Table table4 = new TechTalk.SpecFlow.Table(new string[] {
-                        "recordPosition",
-                        "oid",
-                        "isHidden",
-                        "isTouched",
-                        "changecount",
-                        "data",
-                        "AltCodedValue",
-                        "datapointID",
-                        "fieldid"});
-            table4.AddRow(new string[] {
-                        "0",
-                        "DEVICE",
-                        "0",
-                        "1",
-                        "1",
-                        "Device 1A",
-                        "1 -DV1A",
-                        "",
-                        ""});
-            table4.AddRow(new string[] {
-                        "1",
-                        "DEVICE",
-                        "1",
-                        "1",
-                        "1",
-                        "Device 1A",
-                        "1 -DV1A",
-                        "",
-                        ""});
-            table4.AddRow(new string[] {
-                        "2",
-                        "DEVICE",
-                        "1",
-                        "1",
-                        "1",
-                        "Device 1A",
-                        "1 -DV1A",
-                        "",
-                        ""});
-#line 91
- testRunner.Then("I should see SQL result", ((string)(null)), table4);
+#line 84
+ testRunner.And("\"AltCodedValue\" propagates correctly");
 #line hidden
             this.ScenarioCleanup();
         }
@@ -213,114 +168,92 @@ this.FeatureBackground();
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("PB-DT13637-02 As a Data Manager, when an EDC user enters data for a standard dyna" +
             "mic searchlist field, then I expect to see the AltCodedValue for that field prop" +
             "agated to the hidden datapoints on the log lines.")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "DT 13637 In Rave 5.6.4, in a mixed form, AltCodedValue from a standard DSL field " +
-            "doesn\'t get propagated into hidden datapoints on newly-created records.")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "US11306_DT13637")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("release_2012.1.0")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("PB-DT13637-02")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Validation")]
         public virtual void PB_DT13637_02AsADataManagerWhenAnEDCUserEntersDataForAStandardDynamicSearchlistFieldThenIExpectToSeeTheAltCodedValueForThatFieldPropagatedToTheHiddenDatapointsOnTheLogLines_()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("PB-DT13637-02 As a Data Manager, when an EDC user enters data for a standard dyna" +
                     "mic searchlist field, then I expect to see the AltCodedValue for that field prop" +
                     "agated to the hidden datapoints on the log lines.", new string[] {
-                        "PB-DT13637-02"});
-#line 101
+                        "release_2012.1.0",
+                        "PB-DT13637-02",
+                        "Validation"});
+#line 91
 this.ScenarioSetup(scenarioInfo);
-#line 12
+#line 13
 this.FeatureBackground();
-#line 102
+#line 92
  testRunner.When("I select Study \"US11306_DT13637_SJ\" and Site \"Site 1\"");
+#line hidden
+            TechTalk.SpecFlow.Table table4 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Data"});
+            table4.AddRow(new string[] {
+                        "Subject Initials",
+                        "SUB"});
+            table4.AddRow(new string[] {
+                        "Subject Number",
+                        "{RndNum<num1>(3)}"});
+#line 93
+ testRunner.When("I create a Subject", ((string)(null)), table4);
+#line 97
+ testRunner.And("I select \"Device Form\"");
 #line hidden
             TechTalk.SpecFlow.Table table5 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field",
-                        "Data"});
+                        "Data",
+                        "Control Type"});
             table5.AddRow(new string[] {
-                        "Subject Initials",
-                        "SUB"});
+                        "Device Type",
+                        "Device Type 1",
+                        "radiobutton"});
             table5.AddRow(new string[] {
-                        "Subject Number",
-                        "{RndNum<num1>(3)}"});
-#line 103
- testRunner.When("I create a Subject", ((string)(null)), table5);
-#line 108
- testRunner.And("I select \"Device Form\"");
+                        "Device",
+                        "Device 1A",
+                        "dynamic search list"});
+            table5.AddRow(new string[] {
+                        "Devimpdate",
+                        "01 Jan 2012",
+                        ""});
+            table5.AddRow(new string[] {
+                        "Devcomments",
+                        "N/A",
+                        ""});
+#line 98
+ testRunner.And("I enter data in CRF and save", ((string)(null)), table5);
+#line 104
+ testRunner.And("I select \"Inactivate\"");
+#line 105
+ testRunner.And("I choose \"1\" from \"Inactivate\"");
+#line 106
+ testRunner.And("I click button \"Inactivate\"");
+#line 107
+ testRunner.And("I take a screenshot");
 #line hidden
             TechTalk.SpecFlow.Table table6 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field",
                         "Data",
                         "Control Type"});
             table6.AddRow(new string[] {
-                        "Device Type",
-                        "Device Type 1",
-                        "radiobutton"});
-            table6.AddRow(new string[] {
                         "Device",
                         "Device 1A",
                         "dynamic search list"});
-            table6.AddRow(new string[] {
-                        "Date Implanted/Re-implanted",
-                        "01 Jan 2012",
-                        ""});
-            table6.AddRow(new string[] {
-                        "Comments",
-                        "N/A",
-                        ""});
-#line 109
+#line 108
  testRunner.And("I enter data in CRF and save", ((string)(null)), table6);
+#line 111
+ testRunner.And("I take a screenshot");
+#line 112
+ testRunner.And("I select \"Reactivate\"");
+#line 113
+ testRunner.And("I choose \"1\" from \"Reactivate\"");
+#line 114
+ testRunner.And("I click button \"Reactivate\"");
+#line 115
+ testRunner.And("I take a screenshot");
 #line 116
- testRunner.And("I inactivate log line 1");
-#line 117
- testRunner.And("I take a screenshot");
-#line hidden
-            TechTalk.SpecFlow.Table table7 = new TechTalk.SpecFlow.Table(new string[] {
-                        "Field",
-                        "Value",
-                        "Control Type"});
-            table7.AddRow(new string[] {
-                        "Device",
-                        "Device 1A",
-                        "dynamic search list"});
-#line 118
- testRunner.And("I enter data in CRF and save", ((string)(null)), table7);
-#line 122
- testRunner.And("I take a screenshot");
-#line 123
- testRunner.And("I reactivate log line 1");
-#line 124
- testRunner.And("I take a screenshot");
-#line 126
- testRunner.And("I run SQL Script \"{scriptName}\"");
-#line hidden
-            TechTalk.SpecFlow.Table table8 = new TechTalk.SpecFlow.Table(new string[] {
-                        "recordPosition",
-                        "oid",
-                        "isHidden",
-                        "isTouched",
-                        "changecount",
-                        "data",
-                        "AltCodedValue",
-                        "datapointID",
-                        "fieldid"});
-            table8.AddRow(new string[] {
-                        "0",
-                        "DEVICE",
-                        "0",
-                        "1",
-                        "1",
-                        "Device 1A",
-                        "1 -DV1A",
-                        "",
-                        ""});
-            table8.AddRow(new string[] {
-                        "1",
-                        "DEVICE",
-                        "1",
-                        "1",
-                        "1",
-                        "Device 1A",
-                        "1 -DV1A",
-                        "",
-                        ""});
-#line 128
- testRunner.Then("I should see SQL result", ((string)(null)), table8);
+ testRunner.And("\"AltCodedValue\" propagates correctly");
 #line hidden
             this.ScenarioCleanup();
         }
