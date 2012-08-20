@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using TechTalk.SpecFlow;
-using Microsoft.Practices.EnterpriseLibrary.Data;
 using System.Data;
 using System.IO;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -35,9 +34,8 @@ namespace Medidata.RBT.Common.Steps
 		[StepDefinition(@"I run SQL Script ""([^""]*)""")]
 		public void IRunSQLScript____(string scriptName)
 		{
-			Database database = DatabaseFactory.CreateDatabase(RBTConfiguration.Default.DatabaseConnection);
 			var sql = File.ReadAllText(Path.Combine(RBTConfiguration.Default.SqlScriptsPath, scriptName));
-			var dataTable = database.ExecuteDataSet(sql).Tables[0];
+			var dataTable = DbHelper.ExecuteDataSet(sql).Tables[0];
 
 			SaveDataTable(dataTable);
 			TestContext.SetContextValue(LastSqlResultTable, dataTable);
@@ -50,11 +48,10 @@ namespace Medidata.RBT.Common.Steps
         [StepDefinition(@"""([^""]*)"" propagates correctly")]
         public void IVerifyDatapointColumnPropagates____(string columnName)
         {
-            Database database = DatabaseFactory.CreateDatabase(RBTConfiguration.Default.DatabaseConnection);
             Uri tempUri = new Uri(Browser.Url);
             var sql = PropagationVerificationSQLScripts.GenerateSQLQueryForColumnName(columnName, int.Parse(tempUri.Query.Replace("?DP=", "")));
 
-            var dataTable = database.ExecuteDataSet(CommandType.Text, sql).Tables[0];
+			var dataTable = DbHelper.ExecuteDataSet(sql).Tables[0];
             Assert.IsTrue((int)dataTable.Rows[0][0] == 0, "Data doesn't propagate correctly");
         }
 
@@ -76,10 +73,8 @@ namespace Medidata.RBT.Common.Steps
         [When(@"I verify the log message for query not opening event for Project ""([^""]*)"" and Site ""([^""]*)""")]
         public void WhenIVerifyTheLogMessagesForQueryNotOpeningEventsForProjectEditCheckStudy3AndSiteEditCheckSite3(string projectName, string siteName)
         {
-            Database database = DatabaseFactory.CreateDatabase(RBTConfiguration.Default.DatabaseConnection);
-
             var sql = "spVerifyQueryLog";
-            var dataTable = database.ExecuteDataSet(sql, new object[]{projectName, siteName}).Tables[0];
+			var dataTable = DbHelper.ExecuteDataSet(sql, new object[] { projectName, siteName }).Tables[0];
 
             SaveDataTable(dataTable);
             TestContext.SetContextValue(LastSqlResultTable, dataTable);
