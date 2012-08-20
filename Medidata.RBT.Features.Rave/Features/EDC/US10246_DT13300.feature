@@ -1,7 +1,8 @@
 ﻿# When All Upper Case is selected in the Configuration Other Settings and my Locale is Japanese, the month component of the date, and the meridian component of the time, should be displayed in uppercase.
 
-Feature: The month component of the date in a date field, and the meridian component of the time in a time field, should be displayed in uppercase when All Upper Case is selected in Configuration and Locale is set to Japanese
-  As a Rave Administrator
+Feature: US10246_DT13300
+	The month component of the date in a date field, and the meridian component of the time in a time field, should be displayed in uppercase when All Upper Case is selected in Configuration and Locale is set to Japanese
+	As a Rave Administrator
 	When I have selected All Upper Case in Configuration > Other Settings
 	And my Locale is set to Japanese in My Profile
 	And I enter data for datetime fields
@@ -27,14 +28,14 @@ Feature: The month component of the date in a date field, and the meridian compo
 	#| DEVIMPDT8	| N/A			| DateTim       | dd- mm yyyy  	| False		|
 	#| DEVIMPDT9	| N/A			| DateTime      | dd- mm- yyyy	| False		|
 	#| DEVIMPTM	| N/A			| DateTime      | hh:nn rr		| False		|
-	#And my Locale is set to Japanese in My Profile
-	#And All Upper Case in Configuration > Other Settings has been selected
-	#And I select Study "US10246_DT13300_SJ" and Site "Site 1"
-@PB_US10246_DT13300_01
-Scenario: @PB_US10246_DT13300_01 As a Study Coordinator, when I save the month into a date field, and the time into a time field, then I see the month and meridian displayed in uppercase.
 	
-	#And my Locale is set to Japanese in My Profile
-	#And All Upper Case in Configuration > Other Settings has been selected
+
+@release_2012.1.0 
+@PB_US10246_DT13300_01
+@Validation 
+
+
+Scenario: @PB_US10246_DT13300_01 As a Study Coordinator, when I save the month into a date field, and the time into a time field, then I see the month and meridian displayed in uppercase.
 	
 	When I am logged in to Rave with username "defjapan" and password "password"
 	And I select Study "US10246_DT13300_SJ" and Site "Site 1"
@@ -55,7 +56,6 @@ Scenario: @PB_US10246_DT13300_01 As a Study Coordinator, when I save the month i
 	| Device Implant Date 8 | UN 07 1972  | datetime     |
 	| Device Implant Date 9 | UN UN 1972  | datetime     |
 	| Device Implant Time   | 11:59 am    | datetime     |
-	And I take a screenshot
 	Then I should see data for fields in CRF
 	| Field                 | Data        |
 	| Device Implant Date 1 | UN          |
@@ -70,20 +70,18 @@ Scenario: @PB_US10246_DT13300_01 As a Study Coordinator, when I save the month i
 	| Device Implant Time   | 11:59 AM    |
 	And I take a screenshot
 
+@release_2012.1.0 
 @PB_US10246_DT13300_02
+@Validation 
 Scenario: @PB_US10246_DT13300_02 As a Study Coordinator, I save an unknown month. When I edit the form and save a month, then I see the month displayed in uppercase.
-	#And my Locale is set to Japanese in My Profile
-	#And All Upper Case in Configuration > Other Settings has been selected
-	
+		
 	When I am logged in to Rave with username "defjapan" and password "password"
 	And I select Study "US10246_DT13300_SJ" and Site "Site 1"
 	And I create a Subject
 	| Field				| Data				   |
 	| Subject Identifier| SUB {RndNum<num1>(3)}|
-
 	And I select Form "Device Form"
 	And I enter data in CRF and save
-	
 	| Field                 | Data        | Control Type |
 	| Device Implant Date 1 | UN          | datetime     |
 	| Device Implant Date 2 | Jul         | datetime     |
@@ -95,7 +93,6 @@ Scenario: @PB_US10246_DT13300_02 As a Study Coordinator, I save an unknown month
 	| Device Implant Date 8 | UN 07 1972  | datetime     |
 	| Device Implant Date 9 | UN UN 1972  | datetime     |
 	| Device Implant Time   | 11:59 am    | datetime     |
-	And I take a screenshot	
 	Then I should see data for fields in CRF
 	| Field                 | Data        |
 	| Device Implant Date 1 | UN          | 
@@ -113,24 +110,22 @@ Scenario: @PB_US10246_DT13300_02 As a Study Coordinator, I save an unknown month
 	| Field                 | Data        |
 	| Device Implant Date 6 | 12 Jul 1972 |
 	| Device Implant Date 7 | UN Jul 1972 |
-	And I take a screenshot
 	Then I should see data for fields in CRF
 	| Field                 | Data        |
 	| Device Implant Date 6 | 12 JUL 1972 |
 	| Device Implant Date 7 | UN JUL 1972 |
 	And I take a screenshot
 
+@release_2012.1.0 
 @PB_US10246_DT13300_03
+@Validation 
 Scenario: @PB_US10246_DT13300_03  As a Study Coordinator, My Profile > Locale is set to English. when I save the month into a date field, and the time into a time field, then I see the month and meridian displayed in uppercase. When I set My Profile > Locale to Japanese, and I edit the form and save a new month and new meridian, then I see the month and meridian displayed in uppercase.
-	#And my Locale is set to English in My Profile
-	#And All Upper Case in Configuration > Other Settings has been selected
-
+	
 	When I am logged in to Rave with username "defuser" and password "password"
 	And I select Study "US10246_DT13300_SJ" and Site "Site 1"
 	And I create a Subject
 	| Field				| Data				   |
 	| Subject Identifier| SUB {RndNum<num1>(3)}|
-
 	And I select Form "Device Form"
 	And I enter data in CRF and save
 	| Field                 | Data        | Control Type |
@@ -157,8 +152,6 @@ Scenario: @PB_US10246_DT13300_03  As a Study Coordinator, My Profile > Locale is
 	| Device Implant Date 9 | UN UN 1972  |
 	| Device Implant Time   | 11:59 AM    | 	
 	And I take a screenshot
-	#And I change My Profile > Locale to Japanese
-
 	And I am logged in to Rave with username "defjapan" and password "password"
 	And I select Study "US10246_DT13300_SJ" and Site "Site 1"
 	And I select a Subject "SUB {Var(num1)}"
@@ -171,7 +164,6 @@ Scenario: @PB_US10246_DT13300_03  As a Study Coordinator, My Profile > Locale is
 	| Device Implant Date 6 | 12 Aug 1972 | datetime     |
 	| Device Implant Date 7 | UN Aug 1972 | datetime     |
 	| Device Implant Time   | 11:59 pm    | datetime     |
-	And I take a screenshot
 	Then I should see data for fields in CRF
 	| Field                 | Data        |
 	| Device Implant Date 2 | AUG         |
@@ -181,3 +173,4 @@ Scenario: @PB_US10246_DT13300_03  As a Study Coordinator, My Profile > Locale is
 	| Device Implant Date 7 | UN AUG 1972 |
 	| Device Implant Time   | 11:59 PM    | 	
 	And I take a screenshot
+	

@@ -2,7 +2,8 @@
 # It is partially correct because if this Lab Unit Conversion is not used by Alert Lab (which means only Standard Units Group or Standard Units Group/Reference Lab is being defined in Lab Setting of study), the range status should not be changed. But the problem is that, even the range status is same as before, the standard value should be updated accordingly. So in above stored procedure, for the datapoints using lab unit in the Lab Unit Conversion and the study using the Standard Units Group of the Lab Unit Conversion, we need to set NeedsCVRefresh on. 
 # This DT covered the DT 10086 that the description is not clear enough.
 
-Feature: DT 13905 NeedsCVRefresh is not set to On for all datapoints related when Lab Unit Conversion is created or updated
+Feature: US15417_DT13905
+	NeedsCVRefresh is not set to On for all datapoints related when Lab Unit Conversion is created or updated
 	As a Rave user
 	Given I enter lab data in non-standard units
 	And I do not use Alert or Reference Labs for the lab data
@@ -129,54 +130,7 @@ Scenario: PB_DT13905_01 As an EDC user, when I create a unit conversion formula 
 @release_2012.1.0 
 @PB_DT13905_02
 @Draft
-Scenario: PB_DT13905_02 As an EDC user, when I create a unit conversion formula to convert lab data in a non-standard unit to standard values in a standard unit for a specific analyte, then I should see the standard value and standard units in Clinical Views.
-	And I select Study "US15417_DT13905_SJ" and Site "Site 1"
-	When I create a Subject
-	| Field            | Data               |
-	| Subject Initials | SUB                |
-	| Subject number   | {RndNum<num1>(3)}  |
-	| Age              | 20                 |
-	| Sex              | MaleREGAQT         |
-	| Pregancy Status  | NoREGAQT           |
-	| Subject Date     | 01 Feb 2011        |
-	And I take a screenshot
-	And I select Form "Hematology"
-	And I choose "US15417_DT13905_SJ" from "Lab"
-	And I enter data in CRF and save
-
-	| Field       | Data | Unit   |
-	| WBC         | 10   | 10^9/L |
-	| NEUTROPHILS | 10   | 10^9/L |
-	And I take a screenshot 
-	And I select "Home"
-	And I navigate to "Lab Administration"
-	And I navigate to "Unit Conversions"
-	And I add new unit conversion data
-
-	| From   | To | Analyte | A | B | C | D |
-	| 10^9/L | %  | WBC     | 4 | 1 | 0 | 0 |
-	And I take a screenshot
-	And I navigate to "Home"
-	And I navigate to "Reporter"
-	And I select Report "Data Listing" 
-	And I set report parameter "Study" with table
-		| Name               | Environment |
-		| US15417_DT13905_SJ | Prod        |
-	And I click button "Submit Report"
-	And I switch to "DataListingsReport" window
-	And I choose "Clinical Views" from "Data Source"
-	And I choose "AnalytesView" from "Form"	
-	And I click button "Run"
-
-	Then I verify rows exist in "Result" table
-
-	| Subject        | FormName   | AnalyteName | AnalyteValue | LabUnits | StdValue | StdUnits |
-	| SUB{Var(num1)} | Hematology | WBC         | 10           | 10^9/L   | 40       | %        |
-	And I take a screenshot
-@release_2012.1.0 
-@PB_DT13905_03
-@Draft
-Scenario: PB_DT13905_03 As an EDC user, when I update a unit conversion formula to convert lab data in a non-standard unit to standard values in a standard unit, then I should see the standard value and standard units in Clinical Views.
+Scenario: PB_DT13905_02 As an EDC user, when I update a unit conversion formula to convert lab data in a non-standard unit to standard values in a standard unit, then I should see the standard value and standard units in Clinical Views.
 
 	And I select Study "US15417_DT13905_SJ" and Site "Site 1"
 	And I create a Subject
@@ -239,6 +193,73 @@ Scenario: PB_DT13905_03 As an EDC user, when I update a unit conversion formula 
 	| Subject        | FormName   | AnalyteName | AnalyteValue | LabUnits | StdValue | StdUnits |
 	| SUB{Var(num1)} | Hematology | WBC         | 10           | 10^9/L   | 30       | %        |
 	And I take a screenshot
+	And I switch to "Reports" window
+	And I select "Home"
+	And I navigate to "Lab Administration"
+	And I navigate to "Unit Conversions"
+
+	#And I edit unit conversion data
+	#| From   | To | Analyte | A | B | C | D |
+	#| 10^9/L | %  | ...     | 3 | 1 | 0 | 0 |
+
+	And I delete unit conversion data
+	| From   | To |
+	| 10^9/L | %  |
+
+	#| From   | To | Analyte | A | B | C | D |
+	#| 10^9/L | %  | ...     | 3 | 1 | 0 | 0 |
+
+	And I click button "Update"
+	
+
+@release_2012.1.0 
+@PB_DT13905_03
+@Draft
+Scenario: PB_DT13905_03 As an EDC user, when I create a unit conversion formula to convert lab data in a non-standard unit to standard values in a standard unit for a specific analyte, then I should see the standard value and standard units in Clinical Views.
+	And I select Study "US15417_DT13905_SJ" and Site "Site 1"
+	When I create a Subject
+	| Field            | Data               |
+	| Subject Initials | SUB                |
+	| Subject number   | {RndNum<num1>(3)}  |
+	| Age              | 20                 |
+	| Sex              | MaleREGAQT         |
+	| Pregancy Status  | NoREGAQT           |
+	| Subject Date     | 01 Feb 2011        |
+	And I take a screenshot
+	And I select Form "Hematology"
+	And I choose "US15417_DT13905_SJ" from "Lab"
+	And I enter data in CRF and save
+
+	| Field       | Data | Unit   |
+	| WBC         | 10   | 10^9/L |
+	| NEUTROPHILS | 10   | 10^9/L |
+	And I take a screenshot 
+	And I select "Home"
+	And I navigate to "Lab Administration"
+	And I navigate to "Unit Conversions"
+	And I add new unit conversion data
+
+	| From   | To | Analyte | A | B | C | D |
+	| 10^9/L | %  | WBC     | 4 | 1 | 0 | 0 |
+	And I take a screenshot
+	And I navigate to "Home"
+	And I navigate to "Reporter"
+	And I select Report "Data Listing" 
+	And I set report parameter "Study" with table
+		| Name               | Environment |
+		| US15417_DT13905_SJ | Prod        |
+	And I click button "Submit Report"
+	And I switch to "DataListingsReport" window
+	And I choose "Clinical Views" from "Data Source"
+	And I choose "AnalytesView" from "Form"	
+	And I click button "Run"
+	
+	Then I verify rows exist in "Result" table
+
+	| Subject        | FormName   | AnalyteName | AnalyteValue | LabUnits | StdValue | StdUnits |
+	| SUB{Var(num1)} | Hematology | WBC         | 10           | 10^9/L   | 40       | %        |
+	And I take a screenshot
+	
 @release_2012.1.0 
 @PB_DT13905_04
 @Draft
@@ -284,10 +305,10 @@ Scenario: PB_DT13905_04 As an EDC user, when I update a unit conversion formula 
 	And I select "Home"
 	And I navigate to "Lab Administration"
 	And I navigate to "Unit Conversions"
-	And I add new unit conversion data
+	And I edit unit conversion data
 
 	| From   | To | Analyte | A | B | C | D |
-	| 10^9/L | %  | ...     | 5 | 1 | 0 | 0 |
+	| 10^9/L | %  | WBC     | 5 | 1 | 0 | 0 |
 	And I take a screenshot
 	And I navigate to "Home"
 	And I navigate to "Reporter"
@@ -305,4 +326,5 @@ Scenario: PB_DT13905_04 As an EDC user, when I update a unit conversion formula 
 
 	| Subject        | FormName   | AnalyteName | AnalyteValue | LabUnits | StdValue | StdUnits |
 	| SUB{Var(num1)} | Hematology | WBC         | 10           | 10^9/L   | 50       | %        |
-	#And I take a screenshot
+	And I take a screenshot
+	
