@@ -75,9 +75,8 @@ Background:
 	# And I Type
 		# | Normalized Lab View Name |
 		# | AnalytesView             |
-	And I select Study "Mediflex" and Site "LabSite01"
 
-#Note: Ned to verify Range Status Icon (++/+/--/-)and also the Data point status icons (Complete or Locked)
+#Note: Need to verify Range Status Icon (++/+/--/-)and also the Data point status icons (Complete or Locked)
 
 #----------------------------------------------------------------------------------------------------------------------------------------
 @release_564_2012.1.0
@@ -85,6 +84,7 @@ Background:
 @Draft	
 Scenario: @PB-DT10514-01 As an EDC user, I have a partially locked lab form, and I change the selected lab to another local lab, then I should see the ranges update for all lab datapoints.
 
+	And I select Study "Mediflex" and Site "LabSite01"
 	When I create a Subject
 		| Field            | Data              | Control Type |
 		| Subject Number   | {RndNum<num1>(5)} | textbox      |
@@ -104,8 +104,8 @@ Scenario: @PB-DT10514-01 As an EDC user, I have a partially locked lab form, and
 		| NEUTROPHILS | 7           | text         |
 	And I verify lab ranges
 		| Field       | Data | Range Status | Range | Unit           | Status Icon |
-		| WBC         | 7    |              | 2 - 5 | *10E6/ulREGAQT | Complete    |
-		| NEUTROPHILS | 7    |              | 3 - 6 | FractionREGAQT | Lock        |
+		| WBC         | 7    | ++           | 2 - 5 | *10E6/ulREGAQT | InComplete  |
+		| NEUTROPHILS | 7    | +            | 3 - 6 | FractionREGAQT | Complete    |
 	And I take a screenshot
 	And I check "Hard Lock" on "Lab Date"
 	And I check "Hard Lock" on "WBC"
@@ -114,12 +114,16 @@ Scenario: @PB-DT10514-01 As an EDC user, I have a partially locked lab form, and
 	And I take a screenshot
 	And I uncheck "Hard Lock" on "WBC"
 	And I save the CRF page
+	And I verify lab ranges
+		| Field       | Data | Range Status | Range | Unit           | Status Icon |
+		| WBC         | 7    | ++           | 2 - 5 | *10E6/ulREGAQT | InComplete  |
+		| NEUTROPHILS | 7    | +            | 3 - 6 | FractionREGAQT | Lock        |
 	And I take a screenshot
 	And I select Lab "Mediflex Local Lab 2"
 	And I verify lab ranges
-		| Field       | Data | Range Status |Range | Unit           |  Status Icon |
-		| WBC         | 7    |              |2 - 4 | *10E6/ulREGAQT |  Complete    |
-		| NEUTROPHILS | 7    |              |4 - 7 | FractionREGAQT |  Lock        |
+		| Field       | Data | Range Status | Range | Unit           | Status Icon |
+		| WBC         | 7    | ++           | 2 - 4 | *10E6/ulREGAQT | InComplete  |
+		| NEUTROPHILS | 7    |              | 4 - 7 | FractionREGAQT | Complete    |
 	And I take a screenshot
 
 #----------------------------------------------------------------------------------------------------------------------------------------
@@ -128,6 +132,7 @@ Scenario: @PB-DT10514-01 As an EDC user, I have a partially locked lab form, and
 @Draft	
 Scenario: @PB-DT10514-02 As an EDC user, I have a partially locked lab form, and I change the selected lab to another local lab, then I should see the ranges update for all lab datapoints.
 
+	And I select Study "Mediflex" and Site "LabSite01"
 	When I create a Subject
 		| Field            | Data              | Control Type |
 		| Subject Number   | {RndNum<num1>(5)} | textbox      |
@@ -146,9 +151,9 @@ Scenario: @PB-DT10514-02 As an EDC user, I have a partially locked lab form, and
 		| WBC         | 7           | text         |
 		| NEUTROPHILS | 7           | text         |
 	And I verify lab ranges
-		| Field       | Data | Range Status |Range | Unit           | Status Icon |
-		| WBC         | 7    |              |2 - 5 | *10E6/ulREGAQT |             |
-		| NEUTROPHILS | 7    |              |3 - 6 | FractionREGAQT |             |
+		| Field       | Data | Range Status | Range | Unit           | Status Icon |
+		| WBC         | 7    | ++           | 2 - 5 | *10E6/ulREGAQT | InComplete  |
+		| NEUTROPHILS | 7    | +            | 3 - 6 | FractionREGAQT | Complete    |
 	And I take a screenshot
 	And I check "Hard Lock" on "Lab Date"
 	And I check "Hard Lock" on "WBC"
@@ -157,12 +162,16 @@ Scenario: @PB-DT10514-02 As an EDC user, I have a partially locked lab form, and
 	And I take a screenshot
 	And I uncheck "Hard Lock" on "WBC"
 	And I save the CRF page
+	And I verify lab ranges
+		| Field       | Data | Range Status | Range | Unit           | Status Icon |
+		| WBC         | 7    | ++           | 2 - 5 | *10E6/ulREGAQT | InComplete  |
+		| NEUTROPHILS | 7    | +            | 3 - 6 | FractionREGAQT | Lock        |
 	And I take a screenshot
 	And I select Lab "Mediflex Local Lab 3"
 	And I verify lab ranges
-		| Field       | Data | Range Status |Range | Unit           | Status Icon |
-		| WBC         | 7    |              |4 - 7 | *10E6/ulREGAQT |             |
-		| NEUTROPHILS | 7    |              |2 - 5 | FractionREGAQT |             |
+		| Field       | Data | Range Status |Range | Unit           |  Status Icon |
+		| WBC         | 7    | ++           |4 - 7 | *10E6/ulREGAQT |  InComplete  |
+		| NEUTROPHILS | 7    | +            |2 - 5 | FractionREGAQT |  Lock        |
 	And I take a screenshot
 
 #----------------------------------------------------------------------------------------------------------------------------------------
@@ -171,6 +180,7 @@ Scenario: @PB-DT10514-02 As an EDC user, I have a partially locked lab form, and
 @Draft	
 Scenario: @PB-DT10514-03 As an EDC user, I have a partially locked lab form, and I change the selected lab to central lab, then I should see the ranges update for all lab datapoints.
 
+	And I select Study "Mediflex" and Site "LabSite01"
 	When I create a Subject
 		| Field            | Data              | Control Type |
 		| Subject Number   | {RndNum<num1>(5)} | textbox      |
@@ -189,9 +199,9 @@ Scenario: @PB-DT10514-03 As an EDC user, I have a partially locked lab form, and
 		| WBC         | 7           | text         |
 		| NEUTROPHILS | 7           | text         |
 	And I verify lab ranges
-		| Field       | Data | Range Status |Range | Unit           | Status Icon |
-		| WBC         | 7    |              |2 - 5 | *10E6/ulREGAQT |             |
-		| NEUTROPHILS | 7    |              |3 - 6 | FractionREGAQT |             |
+		| Field       | Data | Range Status | Range | Unit           | Status Icon |
+		| WBC         | 7    | ++           | 2 - 5 | *10E6/ulREGAQT | InComplete  |
+		| NEUTROPHILS | 7    | +            | 3 - 6 | FractionREGAQT | Complete    |
 	And I take a screenshot
 	And I check "Hard Lock" on "Lab Date"
 	And I check "Hard Lock" on "WBC"
@@ -200,20 +210,84 @@ Scenario: @PB-DT10514-03 As an EDC user, I have a partially locked lab form, and
 	And I take a screenshot
 	And I uncheck "Hard Lock" on "WBC"
 	And I save the CRF page
+	And I verify lab ranges
+		| Field       | Data | Range Status | Range | Unit           | Status Icon |
+		| WBC         | 7    | ++           | 2 - 5 | *10E6/ulREGAQT | InComplete  |
+		| NEUTROPHILS | 7    | +            | 3 - 6 | FractionREGAQT | Lock        |
 	And I take a screenshot
 	And I select Lab "Central - Mediflex Central Lab"
 	And I verify lab ranges
 		| Field       | Data | Range Status |Range | Unit           | Status Icon |
-		| WBC         | 7    |              |2 - 8 | *10E6/ulREGAQT |             |
-		| NEUTROPHILS | 7    |              |4 - 9 | FractionREGAQT |             |
+		| WBC         | 7    | ++           |2 - 8 | *10E6/ulREGAQT | InComplete  |
+		| NEUTROPHILS | 7    |              |4 - 9 | FractionREGAQT | Complete    |
 	And I take a screenshot
 
 #----------------------------------------------------------------------------------------------------------------------------------------
 @release_564_2012.1.0
 @PB-DT10514-04
 @Draft	
-Scenario: @PB-DT10514-04 As an EDC user, I have a partially locked lab form, and I change the selected lab to another local lab, then I should see the ranges update for all lab datapoints.
+Scenario: @PB-DT10514-04 As an EDC user, I have a partially locked lab form, and I change the selected lab to Units Only lab, then I should see the ranges update for all lab datapoints.
 
+	And I select Study "Mediflex" and Site "LabSite02"
+	When I create a Subject
+		| Field            | Data              | Control Type |
+		| Subject Number   | {RndNum<num1>(5)} | textbox      |
+		| Subject Initials | SUB               | textbox      |
+		| Pregancy Status  | NoREGAQT          | dropdownlist |
+	And I select Form "Visit Date" in Folder "Visit 1"
+	And I enter data in CRF and save
+		| Field | Data         | Control Type |
+		| Age   | 22           | text         |
+		| Sex   | FemaleREGAQT | dropdownlist |
+	And I select Form "Hematology" in Folder "Visit 2"
+	And I choose "Mediflex Local Lab 3" from "Lab"
+	And I enter data in CRF and save
+		| Field       | Data        | Control Type |
+		| Lab Date    | 15 Aug 2012 | datetime     |
+		| WBC         | 7           | text         |
+		| NEUTROPHILS | 7           | text         |
+	And I verify lab ranges
+		| Field       | Data | Range Status | Range | Unit           | Status Icon |
+		| WBC         | 7    | ++           | 1 - 5 | *10E6/ulREGAQT | InComplete  |
+		| NEUTROPHILS | 7    |	            | 3 - 7 | FractionREGAQT | Complete    |
+	And I take a screenshot
+	And I check "Hard Lock" on "Lab Date"
+	And I check "Hard Lock" on "WBC"
+	And I check "Hard Lock" on "NEUTROPHILS"
+	And I save the CRF page
+	And I take a screenshot
+	And I uncheck "Hard Lock" on "WBC"
+	And I save the CRF page
+	And I verify lab ranges
+		| Field       | Data | Range Status | Range | Unit           | Status Icon |
+		| WBC         | 7    | ++           | 1 - 5 | *10E6/ulREGAQT | InComplete  |
+		| NEUTROPHILS | 7    |              | 3 - 7 | FractionREGAQT | Lock        |
+	And I take a screenshot
+	And I select Lab "Units Only"
+	And I verify lab ranges
+		| Field       | Data | Range Status | Range | Unit | Status Icon |
+		| WBC         | 7    |              |       |      | InComplete  |
+		| NEUTROPHILS | 7    |              |       |      | Lock        |
+	And I take a screenshot
+#New Step Def
+	And I select Unit
+		| Field       |Unit           |
+		| WBC         |*10E6/ulREGAQT |
+		| NEUTROPHILS |FractionREGAQT |
+	And I save the CRF page
+	And I verify lab ranges
+		| Field       | Data | Range Status | Range | Unit           | Status Icon |
+		| WBC         | 7    | ++           | 2 - 4 | *10E6/ulREGAQT | InComplete  |
+		| NEUTROPHILS | 7    |              | 4 - 7 | FractionREGAQT | Lock        |
+	And I take a screenshot
+
+#----------------------------------------------------------------------------------------------------------------------------------------
+@release_564_2012.1.0
+@PB-DT10514-05
+@Draft	
+Scenario: @PB-DT10514-05 As an EDC user, I have a partially locked lab form, and I set lab variable, then I should see the ranges update for all lab datapoints.
+
+	And I select Study "Mediflex" and Site "LabSite01"
 	When I create a Subject
 		| Field            | Data              | Control Type |
 		| Subject Number   | {RndNum<num1>(5)} | textbox      |
@@ -230,16 +304,20 @@ Scenario: @PB-DT10514-04 As an EDC user, I have a partially locked lab form, and
 		| Lab Date    | 15 Aug 2012 | datetime     |
 		| WBC         | 7           | text         |
 		| NEUTROPHILS | 7           | text         |
+	And I verify lab ranges
+		| Field       | Data | Range Status | Range | Unit | Status Icon |
+		| WBC         | 7    |              |       |      | InComplete  |
+		| NEUTROPHILS | 7    |              |       |      | InComplete  |
 	And I take a screenshot
 	And I check "Hard Lock" on "Lab Date"
 	And I check "Hard Lock" on "WBC"
 	And I check "Hard Lock" on "NEUTROPHILS"
 	And I save the CRF page
 #Step failing for blank value verification
-#	And I verify lab ranges
-#		| Field       | Data | Range Status |Range | Unit | Status Icon |
-#		| WBC         | 7    |              |      |      |             |
-#		| NEUTROPHILS | 7    |              |      |      |             |
+	And I verify lab ranges
+		| Field       | Data | Range Status | Range | Unit | Status Icon |
+		| WBC         | 7    |              |       |      | Lock        |
+		| NEUTROPHILS | 7    |              |       |      | Lock        |
 	And I take a screenshot
 	And I navigate to "Home"
 	And I select Study "Mediflex" and Site "LabSite01"
@@ -251,10 +329,11 @@ Scenario: @PB-DT10514-04 As an EDC user, I have a partially locked lab form, and
 		| Field            | Data              | Control Type |
 		| Pregancy Status  | NoREGAQT          | dropdownlist |
 	And I select Form "Hematology" in Folder "Visit 2"
+#Verify Step
 	And I verify lab ranges
-		| Field       | Data | Range Status |Range | Unit           | Status Icon |
-		| WBC         | 7    |              |2 - 5 | *10E6/ulREGAQT |             |
-		| NEUTROPHILS | 7    |              |3 - 6 | FractionREGAQT |             |
+		| Field       | Data | Range Status | Range | Unit           | Status Icon |
+		| WBC         | 7    | ++           | 2 - 5 | *10E6/ulREGAQT | InComplete  |
+		| NEUTROPHILS | 7    | +            | 3 - 6 | FractionREGAQT | Complete    |
 	And I take a screenshot
 
 #----------------------------------------------------------------------------------------------------------------------------------------
