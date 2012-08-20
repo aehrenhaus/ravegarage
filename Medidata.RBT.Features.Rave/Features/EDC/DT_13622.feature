@@ -41,7 +41,7 @@ Scenario: As an EDC user, when I have an edit check that sets a field to require
 	And I verify data in CRF
 	| Field      | Value       | Requires Verification |
 	| Visit Date | 01 FEB 2011 | True                  |
-	| Age        | 20          | False                 |
+	| Age        | 17          | False                 |
 	And I check Verify box for data in CRF
 	|Field		|Value		|
 	|Visit Date	|01 FEB 2011|
@@ -52,11 +52,11 @@ Scenario: As an EDC user, when I have an edit check that sets a field to require
 	And I take screenshot
 	And I go to Audits for Field "Visit Date"
 	And I verify audits
-	| Audit Message                                              |
-	| User unverified data.                                      |
-	| User changed data "02 FEB 2011" with reason "Data change". |
-	| User verified data.                                        |
-	| User entered data "01 FEB 2011".                           |
+	| Audit Message              |
+	| DataPoint Un-verified.     |
+	| User entered '02 FEB 2011'.|
+	| DataPoint Verified.        |
+	| User entered '01 FEB 2011'.|
 	And I take screenshot
 
 
