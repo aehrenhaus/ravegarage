@@ -356,21 +356,23 @@ This should be tested for each possible font combination (english & Japanese fon
 This should be tested with all 4 forms
 
 	When I create Blank PDF
-		| Name						  | Profile				| Study					| Role         | Locale  | CRFVersion    |
-		| Blank PDF A{RndNum<num>(3)} | PDF 1               | PDF Font Study (Prod) | CDM1B144V1   | English | 6 (284)	     |
+		| Name                        | Profile | Study                 | Role       | Locale  | CRFVersion |
+		| Blank PDF A{RndNum<num>(3)} | PDF 1   | PDF Font Study (Prod) | CDM1B144V1 | English | 11 (289)   |
 	And I generate Blank PDF "Blank PDF A{Var(num)}"
 	And I wait for PDF "Blank PDF A{Var(num)}" to complete
 	When I View Blank PDF "Blank PDF A{Var(num)}"
 	Then the text should not contain "<Symbol>"
-        |Symbol         |
-        |&gt            |
-        |&ge            |
-        |&ge;           |
-        |&lt            |
-        |&le            |
-		|&le;           |
-        |&lt;li&gt;     |
-        |&lt;br&gt;     |
+        | Symbol      |
+        | &gt         |
+        | &ge         |
+        | &ge;        |
+        | &lt         |
+        | &le         |
+        | &le;        |
+        | &lt;li&gt;  |
+        | &lt;br/&gt; |
+        | <li>        |
+        | <br/>       |
 
 @release_2012.1.0
 @US11043B
@@ -381,21 +383,23 @@ This should be tested for each possible font combination (english & Japanese fon
 This should be tested with all 4 forms
 
 	When I create Blank PDF
-		| Name						  | Profile				| Study					| Role         | Locale  | CRFVersion    |
-		| Blank PDF B{RndNum<num>(3)} | PDF 2               | PDF Font Study (Prod) | CDM1B144V1   | English | 6 (284)	     |
+		| Name                        | Profile | Study                 | Role       | Locale  | CRFVersion |
+		| Blank PDF B{RndNum<num>(3)} | PDF 2   | PDF Font Study (Prod) | CDM1B144V1 | English | 11 (289)   |
 	And I generate Blank PDF "Blank PDF B{Var(num)}"
 	And I wait for PDF "Blank PDF B{Var(num)}" to complete
 	When I View Blank PDF "Blank PDF B{Var(num)}"
 	Then the text should not contain "<Symbol>"
-        |Symbol         |
-        |&gt            |
-        |&ge            |
-        |&ge;           |
-        |&lt            |
-        |&le            |
-		|&le;           |
-        |&lt;li&gt;     |
-        |&lt;br&gt;     |
+        | Symbol      |
+        | &gt         |
+        | &ge         |
+        | &ge;        |
+        | &lt         |
+        | &le         |
+        | &le;        |
+        | &lt;li&gt;  |
+        | &lt;br/&gt; |
+        | <li>        |
+        | <br/>       |
 	
 @release_2012.1.0
 @US11043C
@@ -406,21 +410,23 @@ This should be tested for each possible font combination (english & Japanese fon
 This should be tested with all 4 forms
 
 	When I create Blank PDF
-		| Name						  | Profile				| Study					| Role         | Locale  | CRFVersion    |
-		| Blank PDF C{RndNum<num>(3)} | PDF 3               | PDF Font Study (Prod) | CDM1B144V1   | English | 6 (284)	     |
+		| Name                        | Profile | Study                 | Role       | Locale  | CRFVersion |
+		| Blank PDF C{RndNum<num>(3)} | PDF 3   | PDF Font Study (Prod) | CDM1B144V1 | English | 11 (289)   |
 	And I generate Blank PDF "Blank PDF C{Var(num)}"
 	And I wait for PDF "Blank PDF C{Var(num)}" to complete
 	When I View Blank PDF "Blank PDF C{Var(num)}"
 	Then the text should not contain "<Symbol>"
-        |Symbol         |
-        |&gt            |
-        |&ge            |
-        |&ge;           |
-        |&lt            |
-        |&le            |
-		|&le;           |
-        |&lt;li&gt;     |
-        |&lt;br&gt;     |
+        | Symbol      |
+        | &gt         |
+        | &ge         |
+        | &ge;        |
+        | &lt         |
+        | &le         |
+        | &le;        |
+        | &lt;li&gt;  |
+        | &lt;br/&gt; |
+        | <li>        |
+        | <br/>       |
 
 @release_2012.1.0
 @US11043D
@@ -431,21 +437,23 @@ This should be tested for each possible font combination (english & Japanese fon
 This should be tested with all 4 forms
 
 	When I create Blank PDF
-		| Name						  | Profile				| Study					| Role         | Locale   | CRFVersion    |
-		| Blank PDF D{RndNum<num>(3)} | PDF 4               | PDF Font Study (Prod) | CDM1B144V1   | Japanese | 6 (284)	      |
+		| Name                        | Profile | Study                 | Role       | Locale   | CRFVersion |
+		| Blank PDF D{RndNum<num>(3)} | PDF 4   | PDF Font Study (Prod) | CDM1B144V1 | Japanese | 11 (289)   |
 	And I generate Blank PDF "Blank PDF D{Var(num)}"
 	And I wait for PDF "Blank PDF D{Var(num)}" to complete
 	When I View Blank PDF "Blank PDF D{Var(num)}"
 	Then the text should not contain "<Symbol>"
-        |Symbol         |
-        |&gt            |
-        |&ge            |
-        |&ge;           |
-        |&lt            |
-        |&le            |
-		|&le;           |
-        |&lt;li&gt;     |
-        |&lt;br&gt;     |
+        | Symbol      |
+        | &gt         |
+        | &ge         |
+        | &ge;        |
+        | &lt         |
+        | &le         |
+        | &le;        |
+        | &lt;li&gt;  |
+        | &lt;br/&gt; |
+        | <li>        |
+        | <br/>       |
 
 @release_2012.1.0
 @US11043E
@@ -456,21 +464,23 @@ This should be tested for each possible font combination (english & Japanese fon
 This should be tested with all 4 forms
 
 	When I create Blank PDF
-		| Name						  | Profile				| Study					| Role         | Locale   | CRFVersion    |
-		| Blank PDF E{RndNum<num>(3)} | PDF 5               | PDF Font Study (Prod) | CDM1B144V1   | Japanese | 6 (284)	      |
+		| Name                        | Profile | Study                 | Role       | Locale   | CRFVersion |
+		| Blank PDF E{RndNum<num>(3)} | PDF 5   | PDF Font Study (Prod) | CDM1B144V1 | Japanese | 11 (289)   |
 	And I generate Blank PDF "Blank PDF E{Var(num)}"
 	And I wait for PDF "Blank PDF E{Var(num)}" to complete
 	When I View Blank PDF "Blank PDF E{Var(num)}"
 	Then the text should not contain "<Symbol>"
-        |Symbol         |
-        |&gt            |
-        |&ge            |
-        |&ge;           |
-        |&lt            |
-        |&le            |
-		|&le;           |
-        |&lt;li&gt;     |
-        |&lt;br&gt;     |	
+        | Symbol      |
+        | &gt         |
+        | &ge         |
+        | &ge;        |
+        | &lt         |
+        | &le         |
+        | &le;        |
+        | &lt;li&gt;  |
+        | &lt;br/&gt; |
+        | <li>        |
+        | <br/>       |
 	
 @release_2012.1.0
 @US11043F
@@ -487,15 +497,17 @@ This should be tested with all 4 forms
 	And I wait for PDF "Data PDF A{Var(num)}" to complete
 	When I View Data PDF "Data PDF A{Var(num)}"
 	Then the text should not contain "<Symbol>"
-        |Symbol         |
-        |&gt            |
-        |&ge            |
-        |&ge;           |
-        |&lt            |
-        |&le            |
-		|&le;           |
-        |&lt;li&gt;     |
-        |&lt;br&gt;     |	
+        | Symbol      |
+        | &gt         |
+        | &ge         |
+        | &ge;        |
+        | &lt         |
+        | &le         |
+        | &le;        |
+        | &lt;li&gt;  |
+        | &lt;br/&gt; |
+        | <li>        |
+        | <br/>       |
 	
 @release_2012.1.0
 @US11043G
@@ -512,15 +524,17 @@ This should be tested with all 4 forms
 	And I wait for PDF "Data PDF B{Var(num)}" to complete
 	When I View Data PDF "Data PDF B{Var(num)}"
 	Then the text should not contain "<Symbol>"
-        |Symbol         |
-        |&gt            |
-        |&ge            |
-        |&ge;           |
-        |&lt            |
-        |&le            |
-		|&le;           |
-        |&lt;li&gt;     |
-        |&lt;br&gt;     |	
+        | Symbol      |
+        | &gt         |
+        | &ge         |
+        | &ge;        |
+        | &lt         |
+        | &le         |
+        | &le;        |
+        | &lt;li&gt;  |
+        | &lt;br/&gt; |
+        | <li>        |
+        | <br/>       |
 
 @release_2012.1.0
 @US11043H
@@ -537,15 +551,17 @@ This should be tested with all 4 forms
 	And I wait for PDF "Data PDF C{Var(num)}" to complete
 	When I View Data PDF "Data PDF C{Var(num)}"
 	Then the text should not contain "<Symbol>"
-        |Symbol         |
-        |&gt            |
-        |&ge            |
-        |&ge;           |
-        |&lt            |
-        |&le            |
-		|&le;           |
-        |&lt;li&gt;     |
-        |&lt;br&gt;     |
+        | Symbol      |
+        | &gt         |
+        | &ge         |
+        | &ge;        |
+        | &lt         |
+        | &le         |
+        | &le;        |
+        | &lt;li&gt;  |
+        | &lt;br/&gt; |
+        | <li>        |
+        | <br/>       |
 
 @release_2012.1.0
 @US11043I
@@ -562,15 +578,17 @@ This should be tested with all 4 forms
 	And I wait for PDF "Data PDF D{Var(num)}" to complete
 	When I View Data PDF "Data PDF D{Var(num)}"
 	Then the text should not contain "<Symbol>"
-        |Symbol         |
-        |&gt            |
-        |&ge            |
-        |&ge;           |
-        |&lt            |
-        |&le            |
-		|&le;           |
-        |&lt;li&gt;     |
-        |&lt;br&gt;     |
+        | Symbol      |
+        | &gt         |
+        | &ge         |
+        | &ge;        |
+        | &lt         |
+        | &le         |
+        | &le;        |
+        | &lt;li&gt;  |
+        | &lt;br/&gt; |
+        | <li>        |
+        | <br/>       |
 
 @release_2012.1.0
 @US11043J
@@ -587,12 +605,14 @@ This should be tested with all 4 forms
 	And I wait for PDF "Data PDF E{Var(num)}" to complete
 	When I View Data PDF "Data PDF E{Var(num)}"
 	Then the text should not contain "<Symbol>"
-        |Symbol         |
-        |&gt            |
-        |&ge            |
-        |&ge;           |
-        |&lt            |
-        |&le            |
-		|&le;           |
-        |&lt;li&gt;     |
-        |&lt;br&gt;     |	
+        | Symbol      |
+        | &gt         |
+        | &ge         |
+        | &ge;        |
+        | &lt         |
+        | &le         |
+        | &le;        |
+        | &lt;li&gt;  |
+        | &lt;br/&gt; |
+        | <li>        |
+        | <br/>       |
