@@ -103,6 +103,25 @@ namespace Medidata.RBT.PageObjects.Rave
             }
         }
 
+        public bool FieldWithClinSignificanceExists(string clinSignificance, string fieldText)
+        {
+            IWebElement el = TestContext.Browser.FindElements(By.XPath("//span[contains(@id,'Content_R')]")).FirstOrDefault();
+            if (el.Tables().Count <= 5)
+                return false;
+
+            for (int i = 1; i< el.Tables()[5].Rows().Count; i++)
+            {
+                var row = el.Tables()[5].Rows()[i];
+                if (row.Text.IndexOf(fieldText + "\r\n") == 0 && (i+1) < el.Tables()[5].Rows().Count)
+                {
+                    var nextRow = el.Tables()[5].Rows()[i + 1];
+                    if (nextRow.Text.IndexOf("Clinical Significance: " + clinSignificance) == 0)
+                        return true;
+                }
+            }
+            return false;
+        }
+
         public IEDCFieldControl FindField(string fieldName)
         {
             if (IsLabForm)
@@ -173,6 +192,8 @@ namespace Medidata.RBT.PageObjects.Rave
             if (name == "Reactivate")
                 return Browser.Dropdown("R_log_log_IRP");
 
+            if (name == "Clinical Significance")
+                return Browser.Dropdown("dropdown");
 
             if (name == "Lab")
                 return Browser.Dropdown("LOC_DropDown");
