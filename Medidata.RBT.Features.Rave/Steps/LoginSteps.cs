@@ -7,7 +7,7 @@ using TechTalk.SpecFlow;
 using Medidata.RBT.PageObjects;
 using Medidata.RBT.PageObjects.Rave;
 using System.IO;
-using Microsoft.Practices.EnterpriseLibrary.Data;
+
 using System.Data;
 
 namespace Medidata.RBT.Features.Rave
