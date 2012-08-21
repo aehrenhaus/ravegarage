@@ -124,7 +124,7 @@ namespace Medidata.RBT.Common.Steps
 		/// <summary>
 		/// Navigate to an other page.
 		/// </summary>
-		/// <param name="name"></param>
+        /// <param name="identifier"></param>
 		[StepDefinition(@"I navigate to ""([^""]*)""")]
 		public void INavigateTo____(string identifier)
 		{

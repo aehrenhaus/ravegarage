@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using Microsoft.Practices.EnterpriseLibrary.Data;
+
 using System.Data;
 using System.Data.SqlClient;
 
@@ -78,6 +78,15 @@ alter database {0} set multi_user with rollback immediate",
 
 		}
 
-
+		public static DataSet ExecuteDataSet(string sql, object[] args = null)
+		{
+			SqlCommand cmd = new SqlCommand(sql, new SqlConnection(RBTConfiguration.Default.DatabaseConnection));
+			if(args!=null)
+				cmd.Parameters.AddRange(args);
+			IDataAdapter adp = new SqlDataAdapter(cmd );
+			DataSet ds = new DataSet();
+			adp.Fill(ds);
+			return ds;
+		}
 	}
 }

@@ -8,6 +8,7 @@ using Medidata.RBT.PageObjects.Rave;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Medidata.RBT;
 using TechTalk.SpecFlow.Assist;
+using Medidata.RBT.DBScripts;
 
 namespace Medidata.RBT.Features.Rave
 {
@@ -136,6 +137,18 @@ namespace Medidata.RBT.Features.Rave
             }
         }
 
+        /// <summary>
+        /// No Clinical Significance for field displayed
+        /// </summary>
+        /// <param name="clinSignificance"></param> 
+        /// <param name="field"></param> 
+        [StepDefinition(@"I should not see Clinical Significance ""([^""]*)"" for field ""([^""]*)""")]
+        public void IDontSeeClinSignificance____(string clinSignificance, string field)
+        {
+            CRFPage page = CurrentPage.As<CRFPage>();
+            bool notFound = page.FieldWithClinSignificanceExists(clinSignificance, field);
+            Assert.IsFalse(notFound, "Clinical Significance is visible.");
+        }
 
 		/// <summary>
 		/// Fill CRF and save
@@ -364,6 +377,19 @@ namespace Medidata.RBT.Features.Rave
 
 
 
+		/// <summary>
+		/// Based on the column name, we call an appropriate method and return true/false whether or not colun propagates
+		/// </summary>
+		/// <param name="scriptName"></param>
+		[StepDefinition(@"""([^""]*)"" propagates correctly")]
+		public void ____PropagatesCorrectly(string scriptName)
+		{
+			;
+			Uri tempUri = new Uri(Browser.Url);
+			var sql = PropagationVerificationSQLScripts.GenerateSQLQueryForColumnName(scriptName, int.Parse(tempUri.Query.Replace("?DP=", "")));
 
+			var dataTable = DbHelper.ExecuteDataSet(sql).Tables[0];
+			Assert.IsTrue((int)dataTable.Rows[0][0] == 0, "Data doesn't propagate correctly");
+		}
     }
 }
