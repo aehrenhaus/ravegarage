@@ -189,7 +189,6 @@ Scenario: PB_DT13905_02 As an EDC user, when I update a unit conversion formula 
 	And I click button "Run"
 
 	Then I verify rows exist in "Result" table
-
 	| Subject        | FormName   | AnalyteName | AnalyteValue | LabUnits | StdValue | StdUnits |
 	| SUB{Var(num1)} | Hematology | WBC         | 10           | 10^9/L   | 30       | %        |
 	And I take a screenshot

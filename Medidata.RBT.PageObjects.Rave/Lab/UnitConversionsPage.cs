@@ -56,7 +56,8 @@ namespace Medidata.RBT.PageObjects.Rave
             var editImage = row.ImageBySrc("../../Img/i_cedit.gif");
             editImage.Click();
 
-            row.Checkbox("chkDelete").Check();
+            table = Browser.TryFindElementByPartialID("UnitConversionGrid").EnhanceAs<HtmlTable>();
+            table.Checkboxes()[0].Click();  //only checkbox, so clicking.
             Browser.LinkByPartialText("Update").Click();
         }
 
