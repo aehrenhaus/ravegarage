@@ -24,7 +24,9 @@ Background:
 	# Edit check exists to set field Field 2 on form Form 2 to require verification if field Field 1 has a value other than 20.
 	# An active Block plan exists in TSDV for study Mediflex with only 1 Custom Tier that has Form 2 excluded from verification.
 
+@release_2012.1.0 
 @PB-DT13622-01
+@WIP
 Scenario: As an EDC user, when I have an edit check fired on one field that sets another field to require verification, and I verify the data for the field, and I change the data, and the verification is broken, then I should see an audit recorded for the unverification.
 	When I create a Subject
 	|Field			 |Value|
@@ -70,7 +72,9 @@ Scenario: As an EDC user, when I have an edit check fired on one field that sets
 	|User entered '01 FEB 2011'.|
 	And I take screenshot
 
+@release_2012.1.0
 @PB-DT13622-02
+@WIP
 Scenario: As an EDC user, when I have an edit check fired on one field that sets another field to require verification, and I verify the data for the form, and I change the data, and the verification is broken, then I should see an audit recorded for the unverification.
 	When I create a Subject
 	|Field			 |Value|
@@ -116,7 +120,9 @@ Scenario: As an EDC user, when I have an edit check fired on one field that sets
 	|User entered '01 FEB 2011'.|
 	And I take screenshot
 
+@release_2012.1.0
 @PB-DT13622-03
+@WIP
 Scenario: As an EDC user, when I have an edit check that sets a field to require verification, and I verify the data for the field, and I change the data, and the verification is broken, then I should see an audit recorded for the unverification.
 	When I create a Subject
 	|Field			 |Value|
@@ -152,7 +158,9 @@ Scenario: As an EDC user, when I have an edit check that sets a field to require
 	|User entered '19'.    |
 	And I take screenshot
 
+@release_2012.1.0
 @PB-DT13622-04
+@WIP
 Scenario: As an EDC user, when I have an edit check that sets a field to require verification, and I verify the data for the form, and I change the data, and the verification is broken, then I should see an audit recorded for the unverification.
 	When I create a Subject
 	|Field			 |Value|
@@ -188,7 +196,9 @@ Scenario: As an EDC user, when I have an edit check that sets a field to require
 	|User entered '19'.    |
 	And I take screenshot
 
+@release_2012.1.0
 @PB-DT13622-05
+@WIP
 Scenario: As an EDC user, when I have an edit check fired on a field that is derived to sets another field to require verification, and I verify the data for the field, and I change the data, and the verification is broken, then I should see an audit recorded for the unverification.
 	When I create a Subject
 	|Field			 |Value|
@@ -229,7 +239,9 @@ Scenario: As an EDC user, when I have an edit check fired on a field that is der
 	|User entered '05 Mar 1995'.|
 	And I take screenshot
 
+@release_2012.1.0
 @PB-DT13622-06
+@WIP
 Scenario: As an EDC user, when I have an edit check fired on a field that is derived to sets another field to require verification, and I verify the data for the form, and I change the data, and the verification is broken, then I should see an audit recorded for the unverification.
 	When I create a Subject
 	|Field			 |Value|
@@ -270,7 +282,9 @@ Scenario: As an EDC user, when I have an edit check fired on a field that is der
 	|User entered '05 Mar 1995'.|
 	And I take screenshot
 
+@release_2012.1.0
 @PB-DT13622-07
+@WIP
 Scenario: As an EDC user, when I have TSDV turned off for a form, when I have an edit check that sets a field to require verification, and I verify the data for the field, and I change the data, and the verification is broken, then I should see an audit recorded for the unverification.
 	When I create a Subject
 	|Field			 |Value|
@@ -306,7 +320,9 @@ Scenario: As an EDC user, when I have TSDV turned off for a form, when I have an
 	|User entered '19'.    |
 	And I take screenshot
 
+@release_2012.1.0
 @PB-DT13622-08
+@WIP
 Scenario: As an EDC user, when I have TSDV turned off for a form, and I have an edit check that sets a field to require verification, and I verify the data for the form, and I change the data, and the verification is broken, then I should see an audit recorded for the unverification.
 	When I create a Subject
 	|Field			 |Value|
