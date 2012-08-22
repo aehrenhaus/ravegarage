@@ -106,18 +106,14 @@ namespace Medidata.RBT.Features.Rave.Features.EDC
         }
         
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("As an EDC user, when I have an edit check that sets a field to require verificati" +
-            "on, and I verify the data, and I change the data, and the verification is broken" +
-            ", then I should see an audit recorded for the unverification.")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute(@"As an EDC user, when I have an edit check fired on one field that sets another field to require verification, and I verify the data for the field, and I change the data, and the verification is broken, then I should see an audit recorded for the unverification.")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "DT 13622 When an Edit Check sets Datapoint XYZ to require verification, if the ve" +
             "rification is broken on XYZ by a data change, this is not audited.")]
-        public virtual void AsAnEDCUserWhenIHaveAnEditCheckThatSetsAFieldToRequireVerificationAndIVerifyTheDataAndIChangeTheDataAndTheVerificationIsBrokenThenIShouldSeeAnAuditRecordedForTheUnverification_()
+        public virtual void AsAnEDCUserWhenIHaveAnEditCheckFiredOnOneFieldThatSetsAnotherFieldToRequireVerificationAndIVerifyTheDataForTheFieldAndIChangeTheDataAndTheVerificationIsBrokenThenIShouldSeeAnAuditRecordedForTheUnverification_()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("As an EDC user, when I have an edit check that sets a field to require verificati" +
-                    "on, and I verify the data, and I change the data, and the verification is broken" +
-                    ", then I should see an audit recorded for the unverification.", new string[] {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo(@"As an EDC user, when I have an edit check fired on one field that sets another field to require verification, and I verify the data for the field, and I change the data, and the verification is broken, then I should see an audit recorded for the unverification.", new string[] {
                         "PB-DT13622-01"});
-#line 23
+#line 28
 this.ScenarioSetup(scenarioInfo);
 #line 10
 this.FeatureBackground();
@@ -131,11 +127,11 @@ this.FeatureBackground();
             table2.AddRow(new string[] {
                         "Subject Initials",
                         "SUBJ"});
-#line 24
+#line 29
  testRunner.When("I create a Subject", ((string)(null)), table2);
-#line 28
- testRunner.And("I am on CRF page \"Visit Date\" in Folder \"Visit 1\" in Subject \"101SUBJ\" in Site \"S" +
-                    "ite 1\" in Study \"Mediflex\"");
+#line 33
+ testRunner.And("I am on CRF page \"Visit Date\" in Subject \"101SUBJ\" in Site \"Site 1\" in Study \"Med" +
+                    "iflex\"");
 #line hidden
             TechTalk.SpecFlow.Table table3 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field",
@@ -146,9 +142,9 @@ this.FeatureBackground();
             table3.AddRow(new string[] {
                         "Age",
                         "20"});
-#line 29
+#line 34
  testRunner.And("I enter data in CRF", ((string)(null)), table3);
-#line 33
+#line 38
  testRunner.And("I save the CRF");
 #line hidden
             TechTalk.SpecFlow.Table table4 = new TechTalk.SpecFlow.Table(new string[] {
@@ -163,7 +159,7 @@ this.FeatureBackground();
                         "Age",
                         "20",
                         "False"});
-#line 34
+#line 39
  testRunner.And("I verify data in CRF", ((string)(null)), table4);
 #line hidden
             TechTalk.SpecFlow.Table table5 = new TechTalk.SpecFlow.Table(new string[] {
@@ -172,7 +168,7 @@ this.FeatureBackground();
             table5.AddRow(new string[] {
                         "Age",
                         "17"});
-#line 38
+#line 43
  testRunner.And("I enter data in CRF", ((string)(null)), table5);
 #line hidden
             TechTalk.SpecFlow.Table table6 = new TechTalk.SpecFlow.Table(new string[] {
@@ -187,7 +183,7 @@ this.FeatureBackground();
                         "Age",
                         "17",
                         "False"});
-#line 41
+#line 46
  testRunner.And("I verify data in CRF", ((string)(null)), table6);
 #line hidden
             TechTalk.SpecFlow.Table table7 = new TechTalk.SpecFlow.Table(new string[] {
@@ -196,9 +192,11 @@ this.FeatureBackground();
             table7.AddRow(new string[] {
                         "Visit Date",
                         "01 FEB 2011"});
-#line 45
+#line 50
  testRunner.And("I check Verify box for data in CRF", ((string)(null)), table7);
-#line 48
+#line 53
+ testRunner.And("I save the CRF");
+#line 54
  testRunner.And("I take screenshot");
 #line hidden
             TechTalk.SpecFlow.Table table8 = new TechTalk.SpecFlow.Table(new string[] {
@@ -207,26 +205,859 @@ this.FeatureBackground();
             table8.AddRow(new string[] {
                         "Visit Date",
                         "02 FEB 2011"});
-#line 49
+#line 55
  testRunner.And("I enter data in CRF", ((string)(null)), table8);
-#line 52
- testRunner.And("I take screenshot");
-#line 53
- testRunner.And("I go to Audits for Field \"Visit Date\"");
+#line 58
+ testRunner.And("I save the CRF");
 #line hidden
             TechTalk.SpecFlow.Table table9 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Value",
+                        "Requires Verification"});
+            table9.AddRow(new string[] {
+                        "Visit Date",
+                        "02 FEB 2011",
+                        "True"});
+            table9.AddRow(new string[] {
+                        "Age",
+                        "17",
+                        "False"});
+#line 59
+ testRunner.And("I verify data in CRF", ((string)(null)), table9);
+#line 63
+ testRunner.And("I take screenshot");
+#line 64
+ testRunner.And("I go to Audits for Field \"Visit Date\"");
+#line hidden
+            TechTalk.SpecFlow.Table table10 = new TechTalk.SpecFlow.Table(new string[] {
                         "Audit Message"});
-            table9.AddRow(new string[] {
+            table10.AddRow(new string[] {
                         "DataPoint Un-verified."});
-            table9.AddRow(new string[] {
+            table10.AddRow(new string[] {
                         "User entered \'02 FEB 2011\'."});
-            table9.AddRow(new string[] {
+            table10.AddRow(new string[] {
                         "DataPoint Verified."});
-            table9.AddRow(new string[] {
+            table10.AddRow(new string[] {
                         "User entered \'01 FEB 2011\'."});
-#line 54
- testRunner.And("I verify audits", ((string)(null)), table9);
-#line 60
+#line 65
+ testRunner.Then("I verify Audits exist", ((string)(null)), table10);
+#line 71
+ testRunner.And("I take screenshot");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute(@"As an EDC user, when I have an edit check fired on one field that sets another field to require verification, and I verify the data for the form, and I change the data, and the verification is broken, then I should see an audit recorded for the unverification.")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "DT 13622 When an Edit Check sets Datapoint XYZ to require verification, if the ve" +
+            "rification is broken on XYZ by a data change, this is not audited.")]
+        public virtual void AsAnEDCUserWhenIHaveAnEditCheckFiredOnOneFieldThatSetsAnotherFieldToRequireVerificationAndIVerifyTheDataForTheFormAndIChangeTheDataAndTheVerificationIsBrokenThenIShouldSeeAnAuditRecordedForTheUnverification_()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo(@"As an EDC user, when I have an edit check fired on one field that sets another field to require verification, and I verify the data for the form, and I change the data, and the verification is broken, then I should see an audit recorded for the unverification.", new string[] {
+                        "PB-DT13622-02"});
+#line 74
+this.ScenarioSetup(scenarioInfo);
+#line 10
+this.FeatureBackground();
+#line hidden
+            TechTalk.SpecFlow.Table table11 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Value"});
+            table11.AddRow(new string[] {
+                        "Subject Number",
+                        "102"});
+            table11.AddRow(new string[] {
+                        "Subject Initials",
+                        "SUBJ"});
+#line 75
+ testRunner.When("I create a Subject", ((string)(null)), table11);
+#line 79
+ testRunner.And("I am on CRF page \"Visit Date\" in Subject \"102SUBJ\" in Site \"Site 1\" in Study \"Med" +
+                    "iflex\"");
+#line hidden
+            TechTalk.SpecFlow.Table table12 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Value"});
+            table12.AddRow(new string[] {
+                        "Visit Date",
+                        "01 FEB 2011"});
+            table12.AddRow(new string[] {
+                        "Age",
+                        "20"});
+#line 80
+ testRunner.And("I enter data in CRF", ((string)(null)), table12);
+#line 84
+ testRunner.And("I save the CRF");
+#line hidden
+            TechTalk.SpecFlow.Table table13 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Value",
+                        "Requires Verification"});
+            table13.AddRow(new string[] {
+                        "Visit Date",
+                        "01 FEB 2011",
+                        "False"});
+            table13.AddRow(new string[] {
+                        "Age",
+                        "20",
+                        "False"});
+#line 85
+ testRunner.And("I verify data in CRF", ((string)(null)), table13);
+#line hidden
+            TechTalk.SpecFlow.Table table14 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Value"});
+            table14.AddRow(new string[] {
+                        "Age",
+                        "17"});
+#line 89
+ testRunner.And("I enter data in CRF", ((string)(null)), table14);
+#line hidden
+            TechTalk.SpecFlow.Table table15 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Value",
+                        "Requires Verification"});
+            table15.AddRow(new string[] {
+                        "Visit Date",
+                        "01 FEB 2011",
+                        "True"});
+            table15.AddRow(new string[] {
+                        "Age",
+                        "17",
+                        "False"});
+#line 92
+ testRunner.And("I verify data in CRF", ((string)(null)), table15);
+#line hidden
+            TechTalk.SpecFlow.Table table16 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Form"});
+            table16.AddRow(new string[] {
+                        "Visit Date"});
+#line 96
+ testRunner.And("I check Verify box for data in CRF", ((string)(null)), table16);
+#line 99
+ testRunner.And("I save the CRF");
+#line 100
+ testRunner.And("I take screenshot");
+#line hidden
+            TechTalk.SpecFlow.Table table17 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Value"});
+            table17.AddRow(new string[] {
+                        "Visit Date",
+                        "02 FEB 2011"});
+#line 101
+ testRunner.And("I enter data in CRF", ((string)(null)), table17);
+#line 104
+ testRunner.And("I save the CRF");
+#line hidden
+            TechTalk.SpecFlow.Table table18 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Value",
+                        "Requires Verification"});
+            table18.AddRow(new string[] {
+                        "Visit Date",
+                        "02 FEB 2011",
+                        "True"});
+            table18.AddRow(new string[] {
+                        "Age",
+                        "17",
+                        "False"});
+#line 105
+ testRunner.And("I verify data in CRF", ((string)(null)), table18);
+#line 109
+ testRunner.And("I take screenshot");
+#line 110
+ testRunner.And("I go to Audits for Field \"Visit Date\"");
+#line hidden
+            TechTalk.SpecFlow.Table table19 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Audit Message"});
+            table19.AddRow(new string[] {
+                        "DataPoint Un-verified."});
+            table19.AddRow(new string[] {
+                        "User entered \'02 FEB 2011\'."});
+            table19.AddRow(new string[] {
+                        "DataPoint Verified."});
+            table19.AddRow(new string[] {
+                        "User entered \'01 FEB 2011\'."});
+#line 111
+ testRunner.Then("I verify Audits exist", ((string)(null)), table19);
+#line 117
+ testRunner.And("I take screenshot");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("As an EDC user, when I have an edit check that sets a field to require verificati" +
+            "on, and I verify the data for the field, and I change the data, and the verifica" +
+            "tion is broken, then I should see an audit recorded for the unverification.")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "DT 13622 When an Edit Check sets Datapoint XYZ to require verification, if the ve" +
+            "rification is broken on XYZ by a data change, this is not audited.")]
+        public virtual void AsAnEDCUserWhenIHaveAnEditCheckThatSetsAFieldToRequireVerificationAndIVerifyTheDataForTheFieldAndIChangeTheDataAndTheVerificationIsBrokenThenIShouldSeeAnAuditRecordedForTheUnverification_()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("As an EDC user, when I have an edit check that sets a field to require verificati" +
+                    "on, and I verify the data for the field, and I change the data, and the verifica" +
+                    "tion is broken, then I should see an audit recorded for the unverification.", new string[] {
+                        "PB-DT13622-03"});
+#line 120
+this.ScenarioSetup(scenarioInfo);
+#line 10
+this.FeatureBackground();
+#line hidden
+            TechTalk.SpecFlow.Table table20 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Value"});
+            table20.AddRow(new string[] {
+                        "Subject Number",
+                        "103"});
+            table20.AddRow(new string[] {
+                        "Subject Initials",
+                        "SUBJ"});
+#line 121
+ testRunner.When("I create a Subject", ((string)(null)), table20);
+#line 125
+ testRunner.And("I am on CRF page \"Form 1\" in Subject \"103SUBJ\" in Site \"Site 1\" in Study \"Medifle" +
+                    "x\"");
+#line hidden
+            TechTalk.SpecFlow.Table table21 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Value"});
+            table21.AddRow(new string[] {
+                        "Field 1",
+                        "19"});
+#line 126
+ testRunner.And("I enter data in CRF", ((string)(null)), table21);
+#line 129
+ testRunner.And("I save the CRF");
+#line hidden
+            TechTalk.SpecFlow.Table table22 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Value",
+                        "Requires Verification"});
+            table22.AddRow(new string[] {
+                        "Field 1",
+                        "19",
+                        "True"});
+#line 130
+ testRunner.And("I verify data in CRF", ((string)(null)), table22);
+#line hidden
+            TechTalk.SpecFlow.Table table23 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field"});
+            table23.AddRow(new string[] {
+                        "Field 1"});
+#line 133
+ testRunner.And("I check Verify box for data in CRF", ((string)(null)), table23);
+#line 136
+ testRunner.And("I save the CRF");
+#line 137
+ testRunner.And("I take screenshot");
+#line hidden
+            TechTalk.SpecFlow.Table table24 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Value"});
+            table24.AddRow(new string[] {
+                        "Field 1",
+                        "18"});
+#line 138
+ testRunner.And("I enter data in CRF", ((string)(null)), table24);
+#line 141
+ testRunner.And("I save the CRF");
+#line hidden
+            TechTalk.SpecFlow.Table table25 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Value",
+                        "Requires Verification"});
+            table25.AddRow(new string[] {
+                        "Field 1",
+                        "18",
+                        "True"});
+#line 142
+ testRunner.And("I verify data in CRF", ((string)(null)), table25);
+#line 145
+ testRunner.And("I take screenshot");
+#line 146
+ testRunner.And("I go to Audits for Field \"Field 1\"");
+#line hidden
+            TechTalk.SpecFlow.Table table26 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Audit Message"});
+            table26.AddRow(new string[] {
+                        "DataPoint Un-verified."});
+            table26.AddRow(new string[] {
+                        "User entered \'18\'."});
+            table26.AddRow(new string[] {
+                        "DataPoint Verified."});
+            table26.AddRow(new string[] {
+                        "User entered \'19\'."});
+#line 147
+ testRunner.Then("I verify Audits exist", ((string)(null)), table26);
+#line 153
+ testRunner.And("I take screenshot");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("As an EDC user, when I have an edit check that sets a field to require verificati" +
+            "on, and I verify the data for the form, and I change the data, and the verificat" +
+            "ion is broken, then I should see an audit recorded for the unverification.")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "DT 13622 When an Edit Check sets Datapoint XYZ to require verification, if the ve" +
+            "rification is broken on XYZ by a data change, this is not audited.")]
+        public virtual void AsAnEDCUserWhenIHaveAnEditCheckThatSetsAFieldToRequireVerificationAndIVerifyTheDataForTheFormAndIChangeTheDataAndTheVerificationIsBrokenThenIShouldSeeAnAuditRecordedForTheUnverification_()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("As an EDC user, when I have an edit check that sets a field to require verificati" +
+                    "on, and I verify the data for the form, and I change the data, and the verificat" +
+                    "ion is broken, then I should see an audit recorded for the unverification.", new string[] {
+                        "PB-DT13622-04"});
+#line 156
+this.ScenarioSetup(scenarioInfo);
+#line 10
+this.FeatureBackground();
+#line hidden
+            TechTalk.SpecFlow.Table table27 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Value"});
+            table27.AddRow(new string[] {
+                        "Subject Number",
+                        "104"});
+            table27.AddRow(new string[] {
+                        "Subject Initials",
+                        "SUBJ"});
+#line 157
+ testRunner.When("I create a Subject", ((string)(null)), table27);
+#line 161
+ testRunner.And("I am on CRF page \"Form 1\" in Subject \"104SUBJ\" in Site \"Site 1\" in Study \"Medifle" +
+                    "x\"");
+#line hidden
+            TechTalk.SpecFlow.Table table28 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Value"});
+            table28.AddRow(new string[] {
+                        "Field 1",
+                        "19"});
+#line 162
+ testRunner.And("I enter data in CRF", ((string)(null)), table28);
+#line 165
+ testRunner.And("I save the CRF");
+#line hidden
+            TechTalk.SpecFlow.Table table29 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Value",
+                        "Requires Verification"});
+            table29.AddRow(new string[] {
+                        "Field 1",
+                        "19",
+                        "True"});
+#line 166
+ testRunner.And("I verify data in CRF", ((string)(null)), table29);
+#line hidden
+            TechTalk.SpecFlow.Table table30 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Form"});
+            table30.AddRow(new string[] {
+                        "Form 1"});
+#line 169
+ testRunner.And("I check Verify box for data in CRF", ((string)(null)), table30);
+#line 172
+ testRunner.And("I save the CRF");
+#line 173
+ testRunner.And("I take screenshot");
+#line hidden
+            TechTalk.SpecFlow.Table table31 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Value"});
+            table31.AddRow(new string[] {
+                        "Field 1",
+                        "18"});
+#line 174
+ testRunner.And("I enter data in CRF", ((string)(null)), table31);
+#line 177
+ testRunner.And("I save the CRF");
+#line hidden
+            TechTalk.SpecFlow.Table table32 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Value",
+                        "Requires Verification"});
+            table32.AddRow(new string[] {
+                        "Field 1",
+                        "18",
+                        "True"});
+#line 178
+ testRunner.And("I verify data in CRF", ((string)(null)), table32);
+#line 181
+ testRunner.And("I take screenshot");
+#line 182
+ testRunner.And("I go to Audits for Field \"Field 1\"");
+#line hidden
+            TechTalk.SpecFlow.Table table33 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Audit Message"});
+            table33.AddRow(new string[] {
+                        "DataPoint Un-verified."});
+            table33.AddRow(new string[] {
+                        "User entered \'18\'."});
+            table33.AddRow(new string[] {
+                        "DataPoint Verified."});
+            table33.AddRow(new string[] {
+                        "User entered \'19\'."});
+#line 183
+ testRunner.Then("I verify Audits exist", ((string)(null)), table33);
+#line 189
+ testRunner.And("I take screenshot");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute(@"As an EDC user, when I have an edit check fired on a field that is derived to sets another field to require verification, and I verify the data for the field, and I change the data, and the verification is broken, then I should see an audit recorded for the unverification.")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "DT 13622 When an Edit Check sets Datapoint XYZ to require verification, if the ve" +
+            "rification is broken on XYZ by a data change, this is not audited.")]
+        public virtual void AsAnEDCUserWhenIHaveAnEditCheckFiredOnAFieldThatIsDerivedToSetsAnotherFieldToRequireVerificationAndIVerifyTheDataForTheFieldAndIChangeTheDataAndTheVerificationIsBrokenThenIShouldSeeAnAuditRecordedForTheUnverification_()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo(@"As an EDC user, when I have an edit check fired on a field that is derived to sets another field to require verification, and I verify the data for the field, and I change the data, and the verification is broken, then I should see an audit recorded for the unverification.", new string[] {
+                        "PB-DT13622-05"});
+#line 192
+this.ScenarioSetup(scenarioInfo);
+#line 10
+this.FeatureBackground();
+#line hidden
+            TechTalk.SpecFlow.Table table34 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Value"});
+            table34.AddRow(new string[] {
+                        "Subject Number",
+                        "105"});
+            table34.AddRow(new string[] {
+                        "Subject Initials",
+                        "SUBJ"});
+#line 193
+ testRunner.When("I create a Subject", ((string)(null)), table34);
+#line 197
+ testRunner.And("I am on CRF page \"Form 2\" in Subject \"105SUBJ\" in Site \"Site 1\" in Study \"Medifle" +
+                    "x\"");
+#line hidden
+            TechTalk.SpecFlow.Table table35 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Value"});
+            table35.AddRow(new string[] {
+                        "DOB",
+                        "05 Mar 1995"});
+            table35.AddRow(new string[] {
+                        "Visit Date",
+                        "10 Dec 2011"});
+#line 198
+ testRunner.And("I enter data in CRF", ((string)(null)), table35);
+#line 202
+ testRunner.And("I save the CRF");
+#line hidden
+            TechTalk.SpecFlow.Table table36 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Value",
+                        "Requires Verification"});
+            table36.AddRow(new string[] {
+                        "DOB",
+                        "05 Mar 1995",
+                        "True"});
+            table36.AddRow(new string[] {
+                        "Visit Date",
+                        "10 Dec 2011",
+                        "False"});
+            table36.AddRow(new string[] {
+                        "Age",
+                        "16",
+                        "False"});
+#line 203
+ testRunner.And("I verify data in CRF", ((string)(null)), table36);
+#line hidden
+            TechTalk.SpecFlow.Table table37 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field"});
+            table37.AddRow(new string[] {
+                        "DOB"});
+#line 208
+ testRunner.And("I check Verify box for data in CRF", ((string)(null)), table37);
+#line 211
+ testRunner.And("I save the CRF");
+#line 212
+ testRunner.And("I take screenshot");
+#line hidden
+            TechTalk.SpecFlow.Table table38 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Value"});
+            table38.AddRow(new string[] {
+                        "DOB",
+                        "12 Jun 1993"});
+#line 213
+ testRunner.And("I enter data in CRF", ((string)(null)), table38);
+#line 216
+ testRunner.And("I save the CRF");
+#line hidden
+            TechTalk.SpecFlow.Table table39 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Value",
+                        "Requires Verification"});
+            table39.AddRow(new string[] {
+                        "DOB",
+                        "12 Jun 1993",
+                        "False"});
+            table39.AddRow(new string[] {
+                        "Visit Date",
+                        "10 Dec 2011",
+                        "False"});
+            table39.AddRow(new string[] {
+                        "Age",
+                        "18",
+                        "False"});
+#line 217
+ testRunner.And("I verify data in CRF", ((string)(null)), table39);
+#line 222
+ testRunner.And("I take screenshot");
+#line 223
+ testRunner.And("I go to Audits for Field \"DOB\"");
+#line hidden
+            TechTalk.SpecFlow.Table table40 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Audit Message"});
+            table40.AddRow(new string[] {
+                        "DataPoint Un-verified."});
+            table40.AddRow(new string[] {
+                        "User entered \'12 Jun 1993\'."});
+            table40.AddRow(new string[] {
+                        "DataPoint Verified."});
+            table40.AddRow(new string[] {
+                        "User entered \'05 Mar 1995\'."});
+#line 224
+ testRunner.Then("I verify Audits exist", ((string)(null)), table40);
+#line 230
+ testRunner.And("I take screenshot");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute(@"As an EDC user, when I have an edit check fired on a field that is derived to sets another field to require verification, and I verify the data for the form, and I change the data, and the verification is broken, then I should see an audit recorded for the unverification.")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "DT 13622 When an Edit Check sets Datapoint XYZ to require verification, if the ve" +
+            "rification is broken on XYZ by a data change, this is not audited.")]
+        public virtual void AsAnEDCUserWhenIHaveAnEditCheckFiredOnAFieldThatIsDerivedToSetsAnotherFieldToRequireVerificationAndIVerifyTheDataForTheFormAndIChangeTheDataAndTheVerificationIsBrokenThenIShouldSeeAnAuditRecordedForTheUnverification_()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo(@"As an EDC user, when I have an edit check fired on a field that is derived to sets another field to require verification, and I verify the data for the form, and I change the data, and the verification is broken, then I should see an audit recorded for the unverification.", new string[] {
+                        "PB-DT13622-06"});
+#line 233
+this.ScenarioSetup(scenarioInfo);
+#line 10
+this.FeatureBackground();
+#line hidden
+            TechTalk.SpecFlow.Table table41 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Value"});
+            table41.AddRow(new string[] {
+                        "Subject Number",
+                        "105"});
+            table41.AddRow(new string[] {
+                        "Subject Initials",
+                        "SUBJ"});
+#line 234
+ testRunner.When("I create a Subject", ((string)(null)), table41);
+#line 238
+ testRunner.And("I am on CRF page \"Form 2\" in Subject \"105SUBJ\" in Site \"Site 1\" in Study \"Medifle" +
+                    "x\"");
+#line hidden
+            TechTalk.SpecFlow.Table table42 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Value"});
+            table42.AddRow(new string[] {
+                        "DOB",
+                        "05 Mar 1995"});
+            table42.AddRow(new string[] {
+                        "Visit Date",
+                        "10 Dec 2011"});
+#line 239
+ testRunner.And("I enter data in CRF", ((string)(null)), table42);
+#line 243
+ testRunner.And("I save the CRF");
+#line hidden
+            TechTalk.SpecFlow.Table table43 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Value",
+                        "Requires Verification"});
+            table43.AddRow(new string[] {
+                        "DOB",
+                        "05 Mar 1995",
+                        "True"});
+            table43.AddRow(new string[] {
+                        "Visit Date",
+                        "10 Dec 2011",
+                        "False"});
+            table43.AddRow(new string[] {
+                        "Age",
+                        "16",
+                        "False"});
+#line 244
+ testRunner.And("I verify data in CRF", ((string)(null)), table43);
+#line hidden
+            TechTalk.SpecFlow.Table table44 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Form"});
+            table44.AddRow(new string[] {
+                        "Form 2"});
+#line 249
+ testRunner.And("I check Verify box for data in CRF", ((string)(null)), table44);
+#line 252
+ testRunner.And("I save the CRF");
+#line 253
+ testRunner.And("I take screenshot");
+#line hidden
+            TechTalk.SpecFlow.Table table45 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Value"});
+            table45.AddRow(new string[] {
+                        "DOB",
+                        "12 Jun 1993"});
+#line 254
+ testRunner.And("I enter data in CRF", ((string)(null)), table45);
+#line 257
+ testRunner.And("I save the CRF");
+#line hidden
+            TechTalk.SpecFlow.Table table46 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Value",
+                        "Requires Verification"});
+            table46.AddRow(new string[] {
+                        "DOB",
+                        "12 Jun 1993",
+                        "False"});
+            table46.AddRow(new string[] {
+                        "Visit Date",
+                        "10 Dec 2011",
+                        "False"});
+            table46.AddRow(new string[] {
+                        "Age",
+                        "18",
+                        "False"});
+#line 258
+ testRunner.And("I verify data in CRF", ((string)(null)), table46);
+#line 263
+ testRunner.And("I take screenshot");
+#line 264
+ testRunner.And("I go to Audits for Field \"DOB\"");
+#line hidden
+            TechTalk.SpecFlow.Table table47 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Audit Message"});
+            table47.AddRow(new string[] {
+                        "DataPoint Un-verified."});
+            table47.AddRow(new string[] {
+                        "User entered \'12 Jun 1993\'."});
+            table47.AddRow(new string[] {
+                        "DataPoint Verified."});
+            table47.AddRow(new string[] {
+                        "User entered \'05 Mar 1995\'."});
+#line 265
+ testRunner.Then("I verify Audits exist", ((string)(null)), table47);
+#line 271
+ testRunner.And("I take screenshot");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute(@"As an EDC user, when I have TSDV turned off for a form, when I have an edit check that sets a field to require verification, and I verify the data for the field, and I change the data, and the verification is broken, then I should see an audit recorded for the unverification.")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "DT 13622 When an Edit Check sets Datapoint XYZ to require verification, if the ve" +
+            "rification is broken on XYZ by a data change, this is not audited.")]
+        public virtual void AsAnEDCUserWhenIHaveTSDVTurnedOffForAFormWhenIHaveAnEditCheckThatSetsAFieldToRequireVerificationAndIVerifyTheDataForTheFieldAndIChangeTheDataAndTheVerificationIsBrokenThenIShouldSeeAnAuditRecordedForTheUnverification_()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo(@"As an EDC user, when I have TSDV turned off for a form, when I have an edit check that sets a field to require verification, and I verify the data for the field, and I change the data, and the verification is broken, then I should see an audit recorded for the unverification.", new string[] {
+                        "PB-DT13622-07"});
+#line 274
+this.ScenarioSetup(scenarioInfo);
+#line 10
+this.FeatureBackground();
+#line hidden
+            TechTalk.SpecFlow.Table table48 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Value"});
+            table48.AddRow(new string[] {
+                        "Subject Number",
+                        "107"});
+            table48.AddRow(new string[] {
+                        "Subject Initials",
+                        "SUBJ"});
+#line 275
+ testRunner.When("I create a Subject", ((string)(null)), table48);
+#line 279
+ testRunner.And("I am on CRF page \"Form 2\" in Subject \"107SUBJ\" in Site \"Site 1\" in Study \"Medifle" +
+                    "x\"");
+#line hidden
+            TechTalk.SpecFlow.Table table49 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Value"});
+            table49.AddRow(new string[] {
+                        "Field 2",
+                        "19"});
+#line 280
+ testRunner.And("I enter data in CRF", ((string)(null)), table49);
+#line 283
+ testRunner.And("I save the CRF");
+#line hidden
+            TechTalk.SpecFlow.Table table50 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Value",
+                        "Requires Verification"});
+            table50.AddRow(new string[] {
+                        "Field 2",
+                        "19",
+                        "True"});
+#line 284
+ testRunner.And("I verify data in CRF", ((string)(null)), table50);
+#line hidden
+            TechTalk.SpecFlow.Table table51 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field"});
+            table51.AddRow(new string[] {
+                        "Field 2"});
+#line 287
+ testRunner.And("I check Verify box for data in CRF", ((string)(null)), table51);
+#line 290
+ testRunner.And("I save the CRF");
+#line 291
+ testRunner.And("I take screenshot");
+#line hidden
+            TechTalk.SpecFlow.Table table52 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Value"});
+            table52.AddRow(new string[] {
+                        "Field 2",
+                        "18"});
+#line 292
+ testRunner.And("I enter data in CRF", ((string)(null)), table52);
+#line 295
+ testRunner.And("I save the CRF");
+#line hidden
+            TechTalk.SpecFlow.Table table53 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Value",
+                        "Requires Verification"});
+            table53.AddRow(new string[] {
+                        "Field 2",
+                        "18",
+                        "True"});
+#line 296
+ testRunner.And("I verify data in CRF", ((string)(null)), table53);
+#line 299
+ testRunner.And("I take screenshot");
+#line 300
+ testRunner.And("I go to Audits for Field \"Field 1\"");
+#line hidden
+            TechTalk.SpecFlow.Table table54 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Audit Message"});
+            table54.AddRow(new string[] {
+                        "DataPoint Un-verified."});
+            table54.AddRow(new string[] {
+                        "User entered \'18\'."});
+            table54.AddRow(new string[] {
+                        "DataPoint Verified."});
+            table54.AddRow(new string[] {
+                        "User entered \'19\'."});
+#line 301
+ testRunner.Then("I verify Audits exist", ((string)(null)), table54);
+#line 307
+ testRunner.And("I take screenshot");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute(@"As an EDC user, when I have TSDV turned off for a form, and I have an edit check that sets a field to require verification, and I verify the data for the form, and I change the data, and the verification is broken, then I should see an audit recorded for the unverification.")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "DT 13622 When an Edit Check sets Datapoint XYZ to require verification, if the ve" +
+            "rification is broken on XYZ by a data change, this is not audited.")]
+        public virtual void AsAnEDCUserWhenIHaveTSDVTurnedOffForAFormAndIHaveAnEditCheckThatSetsAFieldToRequireVerificationAndIVerifyTheDataForTheFormAndIChangeTheDataAndTheVerificationIsBrokenThenIShouldSeeAnAuditRecordedForTheUnverification_()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo(@"As an EDC user, when I have TSDV turned off for a form, and I have an edit check that sets a field to require verification, and I verify the data for the form, and I change the data, and the verification is broken, then I should see an audit recorded for the unverification.", new string[] {
+                        "PB-DT13622-08"});
+#line 310
+this.ScenarioSetup(scenarioInfo);
+#line 10
+this.FeatureBackground();
+#line hidden
+            TechTalk.SpecFlow.Table table55 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Value"});
+            table55.AddRow(new string[] {
+                        "Subject Number",
+                        "108"});
+            table55.AddRow(new string[] {
+                        "Subject Initials",
+                        "SUBJ"});
+#line 311
+ testRunner.When("I create a Subject", ((string)(null)), table55);
+#line 315
+ testRunner.And("I am on CRF page \"Form 2\" in Subject \"108SUBJ\" in Site \"Site 1\" in Study \"Medifle" +
+                    "x\"");
+#line hidden
+            TechTalk.SpecFlow.Table table56 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Value"});
+            table56.AddRow(new string[] {
+                        "Field 2",
+                        "19"});
+#line 316
+ testRunner.And("I enter data in CRF", ((string)(null)), table56);
+#line 319
+ testRunner.And("I save the CRF");
+#line hidden
+            TechTalk.SpecFlow.Table table57 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Value",
+                        "Requires Verification"});
+            table57.AddRow(new string[] {
+                        "Field 2",
+                        "19",
+                        "True"});
+#line 320
+ testRunner.And("I verify data in CRF", ((string)(null)), table57);
+#line hidden
+            TechTalk.SpecFlow.Table table58 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Form"});
+            table58.AddRow(new string[] {
+                        "Form 2"});
+#line 323
+ testRunner.And("I check Verify box for data in CRF", ((string)(null)), table58);
+#line 326
+ testRunner.And("I save the CRF");
+#line 327
+ testRunner.And("I take screenshot");
+#line hidden
+            TechTalk.SpecFlow.Table table59 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Value"});
+            table59.AddRow(new string[] {
+                        "Field 2",
+                        "18"});
+#line 328
+ testRunner.And("I enter data in CRF", ((string)(null)), table59);
+#line 331
+ testRunner.And("I save the CRF");
+#line hidden
+            TechTalk.SpecFlow.Table table60 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Value",
+                        "Requires Verification"});
+            table60.AddRow(new string[] {
+                        "Field 2",
+                        "18",
+                        "True"});
+#line 332
+ testRunner.And("I verify data in CRF", ((string)(null)), table60);
+#line 335
+ testRunner.And("I take screenshot");
+#line 336
+ testRunner.And("I go to Audits for Field \"Field 1\"");
+#line hidden
+            TechTalk.SpecFlow.Table table61 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Audit Message"});
+            table61.AddRow(new string[] {
+                        "DataPoint Un-verified."});
+            table61.AddRow(new string[] {
+                        "User entered \'18\'."});
+            table61.AddRow(new string[] {
+                        "DataPoint Verified."});
+            table61.AddRow(new string[] {
+                        "User entered \'19\'."});
+#line 337
+ testRunner.Then("I verify Audits exist", ((string)(null)), table61);
+#line 343
  testRunner.And("I take screenshot");
 #line hidden
             this.ScenarioCleanup();
