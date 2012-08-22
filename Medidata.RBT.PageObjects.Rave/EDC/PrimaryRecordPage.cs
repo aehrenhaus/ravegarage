@@ -11,9 +11,9 @@ using TechTalk.SpecFlow.Assist;
 
 namespace Medidata.RBT.PageObjects.Rave
 {
-	public class PrimaryRecordPage : BaseEDCTreePage
+	public class PrimaryRecordPage : CRFPage
 	{
-		public PrimaryRecordPage FillDataPoints(IEnumerable<FieldModel> fields)
+		public new PrimaryRecordPage FillDataPoints(IEnumerable<FieldModel> fields)
 		{
 			foreach (var field in fields)
 				FindField(field.Field).EnterData(field.Data, EnumHelper.GetEnumByDescription<ControlType>(field.ControlType));
@@ -26,15 +26,21 @@ namespace Medidata.RBT.PageObjects.Rave
 		{
 			return new NonLabDataPageControl(this).FindField(fieldName);
 		}
-	
 
+        public new CRFPage SaveForm()
+        {
+            IWebElement btn = Browser.WaitForElement("_ctl0_Content_CRFRenderer_footer_SB");
+            if (btn == null)
+                throw new Exception("Can not find the Save button");
+            btn.Click();
+            return this;
+        }
+        //TODO: treat primary record page as an extension of regular page, it is very similar, and makes no sense to reinvent methods for it.  
 		public SubjectPage FillNameAndSave(Table table)
 		{
 			var dps = table.CreateSet<FieldModel>();
 			FillDataPoints(dps);
-			IWebElement saveButton = Browser.TryFindElementById("_ctl0_Content_CRFRenderer_footer_SB");
-
-			saveButton.Click();
+            SaveForm();
 				
 			return new SubjectPage();
 		}

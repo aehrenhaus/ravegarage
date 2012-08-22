@@ -24,6 +24,14 @@ namespace Medidata.RBT.PageObjects.Rave
             return this;
         }
 
+        public CRFPage SelectUnitsForFields(IEnumerable<LabRangeModel> units)
+        {
+            foreach (var unit in units)
+                FindField(unit.Field, "Unit").EnterData(unit.Unit, EnumHelper.GetEnumByDescription<ControlType>("dropdownlist"));
+
+            return this;
+        }
+
         public bool FindFieldData(IEnumerable<FieldModel> fields)
         {
             foreach (var field in fields)
@@ -96,6 +104,8 @@ namespace Medidata.RBT.PageObjects.Rave
         {
             get
             {
+                if (URL.Equals("Modules/EDC/PrimaryRecordPage.aspx"))
+                    return false;
                 var contentR = TestContext.Browser.FindElementsByPartialId("Content_R")[0];
                 var labDropdown = contentR.Dropdown("LOC_DropDown", true);
                 bool isLabform = labDropdown != null;
@@ -122,12 +132,24 @@ namespace Medidata.RBT.PageObjects.Rave
             return false;
         }
 
-        public IEDCFieldControl FindField(string fieldName)
+        public IEDCFieldControl FindField(string fieldName, string attribute = "Field")
         {
-            if (IsLabForm)
-                return new LabDataPageControl(this).FindField(fieldName);
+            if (attribute.Equals("Field"))
+            {
+                if (IsLabForm)
+                    return new LabDataPageControl(this).FindField(fieldName);
+                else
+                    return new NonLabDataPageControl(this).FindField(fieldName);
+            }
+            else if (attribute.Equals("Unit"))
+            {
+                if (IsLabForm)
+                    return new LabDataPageControl(this).FindUnitDropdown(fieldName);
+            }
             else
-                return new NonLabDataPageControl(this).FindField(fieldName);
+                throw new NotImplementedException("FindField method in CRFPage.cs doesn't support attribute: " + attribute);
+
+            return null;
         }
         public IEDCLogFieldControl FindLandscapeLogField(string fieldName, int rowIndex) 
         {

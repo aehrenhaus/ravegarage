@@ -24,6 +24,42 @@ namespace Medidata.RBT.PageObjects.Rave
             return text.Equals(GetFieldControlContainer().Text);
         }
 
+
+        public virtual string StatusIconPathLookup(string lookupIcon)
+        {
+            string result = "/Img/";
+            switch (lookupIcon)
+            {
+                case "+":
+                    result += "high.gif";
+                    break;
+                case "++":
+                    result += "alerthigh.gif";
+                    break;
+                case "-":
+                    result += "low.gif";
+                    break;
+                case "--":
+                    result += "alertlow.gif";
+                    break;
+                case "Incomplete":
+                    result += "dp_pc.gif";
+                    break;
+                case "Complete":
+                    result += "dp_ok.gif";
+                    break;
+                case "Frozen":
+                    result += "dp_fr.gif";
+                    break;
+                case "Locked":
+                    result += "dp_lo.gif";
+                    break;
+                default:
+                    throw new InvalidOperationException("Status: " + lookupIcon + " not yet implemented in StatusIconPathLookup(string lookupIcon)");
+            }
+            return result;
+        }
+
 		public virtual void EnterData(string text, ControlType controlType = ControlType.Default) 
 		{
 			switch (controlType)
@@ -57,6 +93,8 @@ namespace Medidata.RBT.PageObjects.Rave
 					throw new Exception("Not supported control type:"+controlType);
 			}
 		}
+
+
 
 		/// <summary>
 		/// This method is just for backward compatibility.
