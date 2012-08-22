@@ -58,7 +58,6 @@ Background:
 	#| ESIGN | Visit Information and Comments |
 	#And I select link "Forms"
 	#And I select icon "Fields" for standard form "InvisibleToVisible"
-	#NOTE: Date of visit did not exist, changed this to trigger field&ge&
 	#And I select pencil icon "Edit" for field named "TriggerField"
 	#And I enter and save the field label "Trigger Field&lt&gt&ge&ge;&le&le;bullet points&lt;li&gt;&lt;br/&gt;break"
 	#And I select link "Forms"
