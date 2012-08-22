@@ -9,6 +9,7 @@ using OpenQA.Selenium;
 using System.Collections.Specialized;
 using TechTalk.SpecFlow;
 using Medidata.RBT.SeleniumExtension;
+using Medidata.RBT.PageObjects.Rave.EDC;
 
 namespace Medidata.RBT.PageObjects.Rave
 {
@@ -252,6 +253,11 @@ namespace Medidata.RBT.PageObjects.Rave
 
 		#endregion
 
-	
-	}
+        public MonitorSiteSubjectPage SelectForm(string formName)
+        {
+            IWebElement formFolderTable = Browser.FindElementById("TblOuter");
+            formFolderTable.FindElement(By.LinkText(formName)).Click();
+            return new MonitorSiteSubjectPage();
+        }
+    }
 }

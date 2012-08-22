@@ -343,8 +343,6 @@ Background:
 	#|Field                                                                                                     |Data  |                                                                   
 	#|WBC<>>(underlined)>(underlined)<(underlined)<(underlined)bullet points <li>(user hitting "enter")	        |20    |
 	#|<>>(underlined)>(underlined)<(underlined)<(underlined)bullet points <li>(user hitting "enter")NEUTROPHILS	|45    | 	
-
-	And I navigate to "Home"
 	When I navigate to "PDF Generator" module
 #*******************************************************************************************************	
 @release_2012.1.0

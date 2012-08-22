@@ -1,6 +1,6 @@
 ﻿# When a PDF form is generated special character such as "<" ">" "<=" ">=" should be displayed properly 
 
-Feature: When an EDC form contains special characters such as "<" ">" "<=" ">=" the PDF file should display the special characters appropriately. 
+Feature: Rave Monitor. When an EDC form contains special characters such as "<" ">" "<=" ">=" the PDF file should display the special characters appropriately. 
 	Rave architect allows for characters that the PDF generator does support. The PDF generator should convert the special characters so that they are displayed appropriately as follows:
 	|Rave Architect	 		|PDF Interpretation |Symbol in PDF                 |
 	|&lt 					|&lt;               |<                             |
@@ -105,7 +105,7 @@ This should be tested with all 3 forms (Standard, log and mixed forms)
 Scenario: @US11043L A data-populated PDF that is generated should properly display special characters
 This should be tested with all 3 forms (Standard, log and mixed forms)
 	
-	When I select Study "test14" in "EDC
+	When I select Study "test14" in "EDC"
 	And I select link "Monitor Visits" located in "Left Nav"
 	#And I select Folder "Site Initiation Visit"
 	#And I select Form "InvisibleToVisible"

@@ -21,6 +21,7 @@ namespace Medidata.RBT.Features.Rave
 		/// <param name="studyName"></param>
 		/// <param name="siteName"></param>
 		[StepDefinition(@"I select Study ""([^""]*)""")]
+        [StepDefinition(@"I select Study ""([^""]*)"" in ""EDC""")]
 		public void ISelectStudy____AndSite____(string studyName)
 		{
 			CurrentPage = CurrentPage.As<HomePage>()
@@ -186,7 +187,7 @@ namespace Medidata.RBT.Features.Rave
             if (CurrentPage.GetType().Name.Equals("PrimaryRecordPage"))
                 CurrentPage = CurrentPage.As<PrimaryRecordPage>().SaveForm();  
             else
-                CurrentPage = CurrentPage.As<CRFPage>().SaveForm();
+			CurrentPage = CurrentPage.As<CRFPage>().SaveForm();
 		}
 
 		/// <summary>
@@ -255,6 +256,13 @@ namespace Medidata.RBT.Features.Rave
 			}
 		}
 
+		[StepDefinition(@"I select link ""([^""]*)"" located in ""([^""]*)""")]        
+        public void WhenISelectLink____LocatedIn____(string logForm, string leftNav)        {
+            if(logForm == "Monitor Visits")
+                CurrentPage = CurrentPage.As<HomePage>().SelectForm(logForm);
+            else
+                CurrentPage = CurrentPage.As<SubjectPage>().SelectForm(logForm);
+        }
 
         [Then(@"the cursor focus is ([^""]*)located on ""([^""]*)"" in the column labeled ""([^""]*)"" in the ""([^""]*)"" position in the ""([^""]*)"" row")]
         public void TheCursorFocusIs____LocatedOn____InTheColumnLabeled____InThe____RowAndThe____PositionInThatRow(string not, string controlType, string fieldName, string positionText, string rowText)

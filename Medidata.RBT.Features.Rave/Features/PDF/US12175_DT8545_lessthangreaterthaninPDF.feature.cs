@@ -102,9 +102,7 @@ namespace Medidata.RBT.Features.Rave.Features.PDF
 #line 45
 #line 244
  testRunner.Given("I am logged in to Rave with username \"defuser\" and password \"password\"");
-#line 347
- testRunner.And("I navigate to \"Home\"");
-#line 348
+#line 346
  testRunner.When("I navigate to \"PDF Generator\" module");
 #line hidden
         }
@@ -124,7 +122,7 @@ namespace Medidata.RBT.Features.Rave.Features.PDF
                         "release_2012.1.0",
                         "US11043A",
                         "Draft"});
-#line 353
+#line 351
 this.ScenarioSetup(scenarioInfo);
 #line 45
 this.FeatureBackground();
@@ -143,13 +141,13 @@ this.FeatureBackground();
                         "CDM1B144V1",
                         "English",
                         "11 (289)"});
-#line 358
+#line 356
  testRunner.When("I create Blank PDF", ((string)(null)), table1);
-#line 361
+#line 359
  testRunner.And("I generate Blank PDF \"Blank PDF A{Var(num)}\"");
-#line 362
+#line 360
  testRunner.And("I wait for PDF \"Blank PDF A{Var(num)}\" to complete");
-#line 363
+#line 361
  testRunner.When("I View Blank PDF \"Blank PDF A{Var(num)}\"");
 #line hidden
             TechTalk.SpecFlow.Table table2 = new TechTalk.SpecFlow.Table(new string[] {
@@ -174,7 +172,7 @@ this.FeatureBackground();
                         "<li>"});
             table2.AddRow(new string[] {
                         "<br/>"});
-#line 364
+#line 362
  testRunner.Then("the text should not contain \"<Symbol>\"", ((string)(null)), table2);
 #line hidden
             this.ScenarioCleanup();
@@ -195,7 +193,7 @@ this.FeatureBackground();
                         "release_2012.1.0",
                         "US11043B",
                         "Draft"});
-#line 380
+#line 378
 this.ScenarioSetup(scenarioInfo);
 #line 45
 this.FeatureBackground();
@@ -214,13 +212,13 @@ this.FeatureBackground();
                         "CDM1B144V1",
                         "English",
                         "11 (289)"});
-#line 385
+#line 383
  testRunner.When("I create Blank PDF", ((string)(null)), table3);
-#line 388
+#line 386
  testRunner.And("I generate Blank PDF \"Blank PDF B{Var(num)}\"");
-#line 389
+#line 387
  testRunner.And("I wait for PDF \"Blank PDF B{Var(num)}\" to complete");
-#line 390
+#line 388
  testRunner.When("I View Blank PDF \"Blank PDF B{Var(num)}\"");
 #line hidden
             TechTalk.SpecFlow.Table table4 = new TechTalk.SpecFlow.Table(new string[] {
@@ -245,7 +243,7 @@ this.FeatureBackground();
                         "<li>"});
             table4.AddRow(new string[] {
                         "<br/>"});
-#line 391
+#line 389
  testRunner.Then("the text should not contain \"<Symbol>\"", ((string)(null)), table4);
 #line hidden
             this.ScenarioCleanup();
@@ -266,7 +264,7 @@ this.FeatureBackground();
                         "release_2012.1.0",
                         "US11043C",
                         "Draft"});
-#line 407
+#line 405
 this.ScenarioSetup(scenarioInfo);
 #line 45
 this.FeatureBackground();
@@ -285,13 +283,13 @@ this.FeatureBackground();
                         "CDM1B144V1",
                         "English",
                         "11 (289)"});
-#line 412
+#line 410
  testRunner.When("I create Blank PDF", ((string)(null)), table5);
-#line 415
+#line 413
  testRunner.And("I generate Blank PDF \"Blank PDF C{Var(num)}\"");
-#line 416
+#line 414
  testRunner.And("I wait for PDF \"Blank PDF C{Var(num)}\" to complete");
-#line 417
+#line 415
  testRunner.When("I View Blank PDF \"Blank PDF C{Var(num)}\"");
 #line hidden
             TechTalk.SpecFlow.Table table6 = new TechTalk.SpecFlow.Table(new string[] {
@@ -316,7 +314,7 @@ this.FeatureBackground();
                         "<li>"});
             table6.AddRow(new string[] {
                         "<br/>"});
-#line 418
+#line 416
  testRunner.Then("the text should not contain \"<Symbol>\"", ((string)(null)), table6);
 #line hidden
             this.ScenarioCleanup();
@@ -337,7 +335,7 @@ this.FeatureBackground();
                         "release_2012.1.0",
                         "US11043D",
                         "Draft"});
-#line 434
+#line 432
 this.ScenarioSetup(scenarioInfo);
 #line 45
 this.FeatureBackground();
@@ -356,13 +354,13 @@ this.FeatureBackground();
                         "CDM1B144V1",
                         "Japanese",
                         "11 (289)"});
-#line 439
+#line 437
  testRunner.When("I create Blank PDF", ((string)(null)), table7);
-#line 442
+#line 440
  testRunner.And("I generate Blank PDF \"Blank PDF D{Var(num)}\"");
-#line 443
+#line 441
  testRunner.And("I wait for PDF \"Blank PDF D{Var(num)}\" to complete");
-#line 444
+#line 442
  testRunner.When("I View Blank PDF \"Blank PDF D{Var(num)}\"");
 #line hidden
             TechTalk.SpecFlow.Table table8 = new TechTalk.SpecFlow.Table(new string[] {
@@ -387,7 +385,7 @@ this.FeatureBackground();
                         "<li>"});
             table8.AddRow(new string[] {
                         "<br/>"});
-#line 445
+#line 443
  testRunner.Then("the text should not contain \"<Symbol>\"", ((string)(null)), table8);
 #line hidden
             this.ScenarioCleanup();
@@ -408,7 +406,7 @@ this.FeatureBackground();
                         "release_2012.1.0",
                         "US11043E",
                         "Draft"});
-#line 461
+#line 459
 this.ScenarioSetup(scenarioInfo);
 #line 45
 this.FeatureBackground();
@@ -427,13 +425,13 @@ this.FeatureBackground();
                         "CDM1B144V1",
                         "Japanese",
                         "11 (289)"});
-#line 466
+#line 464
  testRunner.When("I create Blank PDF", ((string)(null)), table9);
-#line 469
+#line 467
  testRunner.And("I generate Blank PDF \"Blank PDF E{Var(num)}\"");
-#line 470
+#line 468
  testRunner.And("I wait for PDF \"Blank PDF E{Var(num)}\" to complete");
-#line 471
+#line 469
  testRunner.When("I View Blank PDF \"Blank PDF E{Var(num)}\"");
 #line hidden
             TechTalk.SpecFlow.Table table10 = new TechTalk.SpecFlow.Table(new string[] {
@@ -458,7 +456,7 @@ this.FeatureBackground();
                         "<li>"});
             table10.AddRow(new string[] {
                         "<br/>"});
-#line 472
+#line 470
  testRunner.Then("the text should not contain \"<Symbol>\"", ((string)(null)), table10);
 #line hidden
             this.ScenarioCleanup();
@@ -479,7 +477,7 @@ this.FeatureBackground();
                         "release_2012.1.0",
                         "US11043F",
                         "Draft"});
-#line 488
+#line 486
 this.ScenarioSetup(scenarioInfo);
 #line 45
 this.FeatureBackground();
@@ -502,13 +500,13 @@ this.FeatureBackground();
                         "World",
                         "PDF Font Site 1",
                         "Sub{Var(num1)}"});
-#line 493
+#line 491
  testRunner.When("I create Data PDF", ((string)(null)), table11);
-#line 496
+#line 494
  testRunner.And("I generate Data PDF \"Data PDF A{Var(num)}\"");
-#line 497
+#line 495
  testRunner.And("I wait for PDF \"Data PDF A{Var(num)}\" to complete");
-#line 498
+#line 496
  testRunner.When("I View Data PDF \"Data PDF A{Var(num)}\"");
 #line hidden
             TechTalk.SpecFlow.Table table12 = new TechTalk.SpecFlow.Table(new string[] {
@@ -533,7 +531,7 @@ this.FeatureBackground();
                         "<li>"});
             table12.AddRow(new string[] {
                         "<br/>"});
-#line 499
+#line 497
  testRunner.Then("the text should not contain \"<Symbol>\"", ((string)(null)), table12);
 #line hidden
             this.ScenarioCleanup();
@@ -554,7 +552,7 @@ this.FeatureBackground();
                         "release_2012.1.0",
                         "US11043G",
                         "Draft"});
-#line 515
+#line 513
 this.ScenarioSetup(scenarioInfo);
 #line 45
 this.FeatureBackground();
@@ -577,13 +575,13 @@ this.FeatureBackground();
                         "World",
                         "PDF Font Site 1",
                         "Sub{Var(num1)}"});
-#line 520
+#line 518
  testRunner.When("I create Data PDF", ((string)(null)), table13);
-#line 523
+#line 521
  testRunner.And("I generate Data PDF \"Data PDF B{Var(num)}\"");
-#line 524
+#line 522
  testRunner.And("I wait for PDF \"Data PDF B{Var(num)}\" to complete");
-#line 525
+#line 523
  testRunner.When("I View Data PDF \"Data PDF B{Var(num)}\"");
 #line hidden
             TechTalk.SpecFlow.Table table14 = new TechTalk.SpecFlow.Table(new string[] {
@@ -608,7 +606,7 @@ this.FeatureBackground();
                         "<li>"});
             table14.AddRow(new string[] {
                         "<br/>"});
-#line 526
+#line 524
  testRunner.Then("the text should not contain \"<Symbol>\"", ((string)(null)), table14);
 #line hidden
             this.ScenarioCleanup();
@@ -629,7 +627,7 @@ this.FeatureBackground();
                         "release_2012.1.0",
                         "US11043H",
                         "Draft"});
-#line 542
+#line 540
 this.ScenarioSetup(scenarioInfo);
 #line 45
 this.FeatureBackground();
@@ -652,13 +650,13 @@ this.FeatureBackground();
                         "World",
                         "PDF Font Site 1",
                         "Sub{Var(num1)}"});
-#line 547
+#line 545
  testRunner.When("I create Data PDF", ((string)(null)), table15);
-#line 550
+#line 548
  testRunner.And("I generate Data PDF \"Data PDF C{Var(num)}\"");
-#line 551
+#line 549
  testRunner.And("I wait for PDF \"Data PDF C{Var(num)}\" to complete");
-#line 552
+#line 550
  testRunner.When("I View Data PDF \"Data PDF C{Var(num)}\"");
 #line hidden
             TechTalk.SpecFlow.Table table16 = new TechTalk.SpecFlow.Table(new string[] {
@@ -683,7 +681,7 @@ this.FeatureBackground();
                         "<li>"});
             table16.AddRow(new string[] {
                         "<br/>"});
-#line 553
+#line 551
  testRunner.Then("the text should not contain \"<Symbol>\"", ((string)(null)), table16);
 #line hidden
             this.ScenarioCleanup();
@@ -704,7 +702,7 @@ this.FeatureBackground();
                         "release_2012.1.0",
                         "US11043I",
                         "Draft"});
-#line 569
+#line 567
 this.ScenarioSetup(scenarioInfo);
 #line 45
 this.FeatureBackground();
@@ -727,13 +725,13 @@ this.FeatureBackground();
                         "World",
                         "PDF Font Site 1",
                         "Sub{Var(num1)}"});
-#line 574
+#line 572
  testRunner.When("I create Data PDF", ((string)(null)), table17);
-#line 577
+#line 575
  testRunner.And("I generate Data PDF \"Data PDF D{Var(num)}\"");
-#line 578
+#line 576
  testRunner.And("I wait for PDF \"Data PDF D{Var(num)}\" to complete");
-#line 579
+#line 577
  testRunner.When("I View Data PDF \"Data PDF D{Var(num)}\"");
 #line hidden
             TechTalk.SpecFlow.Table table18 = new TechTalk.SpecFlow.Table(new string[] {
@@ -758,7 +756,7 @@ this.FeatureBackground();
                         "<li>"});
             table18.AddRow(new string[] {
                         "<br/>"});
-#line 580
+#line 578
  testRunner.Then("the text should not contain \"<Symbol>\"", ((string)(null)), table18);
 #line hidden
             this.ScenarioCleanup();
@@ -779,7 +777,7 @@ this.FeatureBackground();
                         "release_2012.1.0",
                         "US11043J",
                         "Draft"});
-#line 596
+#line 594
 this.ScenarioSetup(scenarioInfo);
 #line 45
 this.FeatureBackground();
@@ -802,13 +800,13 @@ this.FeatureBackground();
                         "World",
                         "PDF Font Site 1",
                         "Sub{Var(num1)}"});
-#line 601
+#line 599
  testRunner.When("I create Data PDF", ((string)(null)), table19);
-#line 604
+#line 602
  testRunner.And("I generate Data PDF \"Data PDF E{Var(num)}\"");
-#line 605
+#line 603
  testRunner.And("I wait for PDF \"Data PDF E{Var(num)}\" to complete");
-#line 606
+#line 604
  testRunner.When("I View Data PDF \"Data PDF E{Var(num)}\"");
 #line hidden
             TechTalk.SpecFlow.Table table20 = new TechTalk.SpecFlow.Table(new string[] {
@@ -833,7 +831,7 @@ this.FeatureBackground();
                         "<li>"});
             table20.AddRow(new string[] {
                         "<br/>"});
-#line 607
+#line 605
  testRunner.Then("the text should not contain \"<Symbol>\"", ((string)(null)), table20);
 #line hidden
             this.ScenarioCleanup();
