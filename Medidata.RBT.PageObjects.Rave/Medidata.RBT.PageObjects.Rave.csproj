@@ -34,8 +34,8 @@
     <Reference Include="Castle.Core">
       <HintPath>..\ExternalDlls\Castle.Core.dll</HintPath>
     </Reference>
-    <Reference Include="Ionic.Zip">
-      <HintPath>..\ExternalDlls\Ionic.Zip.dll</HintPath>
+    <Reference Include="ICSharpCode.SharpZipLib">
+      <HintPath>..\ExternalDlls\ICSharpCode.SharpZipLib.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json">
       <HintPath>..\ExternalDlls\Newtonsoft.Json.dll</HintPath>
@@ -86,6 +86,7 @@
     <Compile Include="Lab\AnalytesPage.cs" />
     <Compile Include="Lab\LabPageBase.cs" />
     <Compile Include="Lab\UnitConversionsPage.cs" />
+    <Compile Include="PDF\FileRequestCreateBlankRequestPage.cs" />
     <Compile Include="PDF\FileRequestViewPage.cs" />
     <Compile Include="PDF\FileRequestCreateDataRequestPage.cs" />
     <Compile Include="PDF\FileRequestPage.cs" />

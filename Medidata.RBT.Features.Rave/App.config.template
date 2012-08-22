@@ -7,6 +7,8 @@
 		<section name="dataConfiguration" type="Microsoft.Practices.EnterpriseLibrary.Data.Configuration.DatabaseSettings, Microsoft.Practices.EnterpriseLibrary.Data, Version=5.0.414.0, Culture=neutral, PublicKeyToken=null" requirePermission="true" />
 	</configSections>
 
+	<!--DownloadPath SHOULD NOT be used for anything else and SHOULD NOT contain other files. 
+		It should be an empty folder, and be the same as your browser's download folder. -->
 	<RBTConfiguration
 		TestResultPath="Output"
 		AutoCloseBrowser ="False"
@@ -14,7 +16,8 @@
 		SqlScriptsPath="C:\"
 		BrowserName="firefox"
 		BrowserPath="D:\MDSOL\Firefox12\firefox.exe"
-		FirefoxProfilePath=""
+		DownloadPath="FAKEDIRECTORY:\yourpath\Downloads"
+		FirefoxProfilePath="FAKEDIRECTORY:\yourpath\Profile"
 		WebDriverPath="..\..\..\ExternalDlls\WebDrivers\"
 		SnapshotName="UAT_Snap"
 		DatabaseConnection="RaveConnection"

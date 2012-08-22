@@ -98,6 +98,14 @@ namespace Medidata.RBT
             set { this["FirefoxProfilePath"] = value; }
         }
 
+        //This should match your browser's download path.
+        [ConfigurationProperty("DownloadPath", DefaultValue = "", IsRequired = false)]
+        public String DownloadPath
+        {
+            get { return (String)this["DownloadPath"]; }
+            set { this["DownloadPath"] = value; }
+        }
+
 
         [ConfigurationProperty("SqlScriptsPath", DefaultValue = "", IsRequired = false)]
         public String SqlScriptsPath

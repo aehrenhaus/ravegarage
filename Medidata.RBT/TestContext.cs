@@ -18,7 +18,7 @@ namespace Medidata.RBT
 	[Binding]
 	public class TestContext
 	{
-
+        public static string DownloadPath { get; set; }
 		public static RemoteWebDriver Browser
 		{
 			get;
@@ -33,6 +33,21 @@ namespace Medidata.RBT
 			//    ScenarioContext.Current["RemoteWebDriver"] = value;
 			//}
 		}
+
+        public static List<RemoveableObject> ObjectsForDeletion
+        {
+            get
+            {
+                if (GetContextValue<List<RemoveableObject>>("ObjectsForDeletion") == null)
+                    ScenarioContext.Current["ObjectsForDeletion"] = new List<RemoveableObject>();
+
+                return GetContextValue<List<RemoveableObject>>("ObjectsForDeletion");
+            }
+            set
+            {
+                ScenarioContext.Current["ObjectsForDeletion"] = value;
+            }
+        }
 
 		public static IPage CurrentPage
 		{
@@ -57,6 +72,18 @@ namespace Medidata.RBT
 				ScenarioContext.Current["CurrentScenarioStartTime"] = value;
 			}
 		}
+
+        public static string ScenarioText
+        {
+            get
+            {
+                return GetContextValue<string>("ScenarioText");
+            }
+            set
+            {
+                ScenarioContext.Current["ScenarioText"] = value;
+            }
+        }
 
 		public static DateTime? CurrentFeatureStartTime
 		{
@@ -129,6 +156,8 @@ namespace Medidata.RBT
 				p.Start();
 			}
 
+            
+
 			//close browser
 			if (RBTConfiguration.Default.AutoCloseBrowser)
 				CloseBrower();
@@ -141,6 +170,8 @@ namespace Medidata.RBT
 		public static void BeforeTestRun()
 		{
 			OpenBrower();
+            DeleteAllDownloadFiles();
+            DeleteAllDownloadDirectories();
 		}
 
 		/// <summary>
@@ -150,8 +181,6 @@ namespace Medidata.RBT
 		public static void BeforeFeature()
 		{
 			CurrentFeatureStartTime = DateTime.Now;
-
-				
 		}
 
 		/// <summary>
@@ -160,7 +189,8 @@ namespace Medidata.RBT
 		[AfterFeature()]
 		public static void AfterFeature()
 		{
-
+            DeleteCreatedFiles();
+            DeleteCreatedDirectories();
 		}
 
 		/// <summary>
@@ -194,6 +224,10 @@ namespace Medidata.RBT
 		{
 			//take a snapshot after every scenario
 			TrySaveScreenShot();
+
+            DeleteObjectsMarkedForDeletion();
+            DeleteCreatedFiles();
+            DeleteCreatedDirectories();
 		}
 
 		/// <summary>
@@ -272,7 +306,7 @@ namespace Medidata.RBT
 			var driverPath = RBTConfiguration.Default.WebDriverPath;
 			if (!Path.IsPathRooted(driverPath))
 				driverPath = new DirectoryInfo(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, driverPath)).FullName;
-
+            DownloadPath = RBTConfiguration.Default.DownloadPath;
 			switch (RBTConfiguration.Default.BrowserName.ToLower())
 			{
 				case "firefox":
@@ -283,8 +317,7 @@ namespace Medidata.RBT
 
 
 				case "chrome":
-
-					_webdriver = new ChromeDriver(driverPath);
+                    _webdriver = new ChromeDriver(driverPath);
 					break;
 
 
@@ -297,6 +330,71 @@ namespace Medidata.RBT
 			return _webdriver;
 		}
 
+        /// <summary>
+        /// Delete all files in the download path
+        /// </summary>
+        /// <returns></returns>
+        private static void DeleteAllDownloadFiles()
+        {
+            List<String> createdFiles = Directory.GetFiles(TestContext.DownloadPath).ToList();
+            foreach (String filePath in createdFiles)
+                File.Delete(filePath);
+        }
+
+        /// <summary>
+        /// Delete all directories in the download path
+        /// </summary>
+        /// <returns></returns>
+        private static void DeleteAllDownloadDirectories()
+        {
+            List<String> createdDirectories = Directory.GetDirectories(TestContext.DownloadPath).ToList();
+            foreach (String directoryPath in createdDirectories)
+                Directory.Delete(directoryPath, true);
+        }
+
+        /// <summary>
+        /// Delete all files created since the feature file began running
+        /// </summary>
+        /// <returns></returns>
+        private static void DeleteCreatedFiles()
+        {
+            List<String> createdFiles = Directory.GetFiles(TestContext.DownloadPath).ToList();
+            foreach(String filePath in createdFiles)
+            {
+                DateTime lastWriteTime = File.GetLastWriteTime(filePath);
+                if (lastWriteTime >= CurrentFeatureStartTime)
+                {
+                    File.Delete(filePath);
+                }
+            }
+        }
+
+        /// <summary>
+        /// Delete all directories created since the feature file began running
+        /// </summary>
+        /// <returns></returns>
+        private static void DeleteCreatedDirectories()
+        {
+            List<String> createdDirectories = Directory.GetDirectories(TestContext.DownloadPath).ToList();
+            foreach (String directoryPath in createdDirectories)
+            {
+                DateTime lastWriteTime = File.GetLastWriteTime(directoryPath);
+                if (lastWriteTime >= CurrentFeatureStartTime)
+                {
+                    Directory.Delete(directoryPath, true);
+                }
+            }
+        }
+
+        /// <summary>
+        /// Delete objects that were marked for deletion over the course of the scenario
+        /// </summary>
+        /// <returns></returns>
+        private static void DeleteObjectsMarkedForDeletion()
+        {
+            foreach (RemoveableObject obj in ObjectsForDeletion)
+                obj.DeleteSelf();
+        }
 
 		private static void CloseBrower()
 		{

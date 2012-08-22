@@ -20,15 +20,14 @@ namespace Medidata.RBT.PageObjects.Rave
 		public string SiteGroup { get; set; }
 		public string Site { get; set; }
 		public string Subject { get; set; }
+        public string Locale { get; set; }
+        public string CRFVersion { get; set; }
 	}
 
 	public class FileRequestCreateDataRequestPage : RavePageBase
 	{
-
 		public FileRequestPage CreateDataPDF(PDFCreationModel args)
 		{
-
-
 			if (!string.IsNullOrEmpty(args.Name))
 				Type("Name", args.Name);
 			if (!string.IsNullOrEmpty(args.Profile))
@@ -41,26 +40,29 @@ namespace Medidata.RBT.PageObjects.Rave
 				Thread.Sleep(1000);
 				ChooseFromDropdown("Role", args.Role);
 			}
-			if (!string.IsNullOrEmpty(args.SiteGroup))
-				//TODO:
-				;
+            if (!string.IsNullOrEmpty(args.SiteGroup))
+            {
+                IWebElement div = Browser.TryFindElementById("SitesSitegroups");
+                IWebElement span = this.WaitForElement(b => div.Spans().FirstOrDefault(x => x.Text == args.SiteGroup));
+
+                span.Checkboxes()[0].EnhanceAs<Checkbox>().Check();
+            }
 			if (!string.IsNullOrEmpty(args.Site))
 			{
-				var expandSite = Browser.FindElementById("ISitesSitegroups_SG_1");
-				expandSite.Click();
+				IWebElement expandSite = Browser.FindElementById("ISitesSitegroups_SG_1");
+                if (expandSite.GetAttribute("src").Contains("plus"))
+                    expandSite.Click();
 
-
-				var div = Browser.TryFindElementById("DSitesSitegroups_SG_1");
-				var span = this.WaitForElement(b => div.Spans().FirstOrDefault(x => x.Text == args.Site));
-				span.Checkboxes()[0].Click();
+                IWebElement div = Browser.TryFindElementById("DSitesSitegroups_SG_1");
+                IWebElement span = this.WaitForElement(b => div.Spans().FirstOrDefault(x => x.Text == args.Site));
+                span.Checkboxes()[0].EnhanceAs<Checkbox>().Check();
 			}
 			if (!string.IsNullOrEmpty(args.Subject))
 			{
-
-				var expandBtn = Browser.FindElementById("Subjects_ShowHideBtn");
+				IWebElement expandBtn = Browser.FindElementById("Subjects_ShowHideBtn");
 				expandBtn.Click();
 
-				var tr = this.WaitForElement(b => b.FindElements(By.XPath("//table[@id='Subjects_FrontEndCBList']/tbody/tr")).FirstOrDefault(x => x.Text == args.Subject));
+                IWebElement tr = this.WaitForElement(b => b.FindElements(By.XPath("//table[@id='Subjects_FrontEndCBList']/tbody/tr")).FirstOrDefault(x => x.Text == args.Subject));
 
 				tr.Checkboxes()[0].Click();
 			}
