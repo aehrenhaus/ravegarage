@@ -11,8 +11,13 @@ using System.Threading;
 using System.Collections.ObjectModel;
 namespace Medidata.RBT.PageObjects.Rave
 {
-    public class FileRequestPage : RavePageBase, IPaginatedPage
+    public class FileRequestPage : RavePageBase, ICanPaginate
 	{
+        public bool CanPaginate(string areaIdentifier)
+        {
+            return true;
+        }
+
 		public FileRequestPage CreateDataPDF(PDFCreationModel args)
 		{
 			ClickLink("Create Data Request");

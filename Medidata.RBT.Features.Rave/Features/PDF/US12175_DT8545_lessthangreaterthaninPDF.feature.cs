@@ -100,108 +100,10 @@ namespace Medidata.RBT.Features.Rave.Features.PDF
         public virtual void FeatureBackground()
         {
 #line 45
-#line hidden
-            TechTalk.SpecFlow.Table table1 = new TechTalk.SpecFlow.Table(new string[] {
-                        "VarOID",
-                        "Format",
-                        "Field Name",
-                        "Field OID",
-                        "Active",
-                        "Is Visible Field",
-                        "Field Label",
-                        "Control Type",
-                        "Lab Analyte",
-                        "Prompt for Clinical Significance"});
-            table1.AddRow(new string[] {
-                        "WBC",
-                        "4.2",
-                        "WBC",
-                        "WBC",
-                        "true",
-                        "true",
-                        "WBC&lt&gt&ge&ge;&le&le;bullet points&lt;li&gt;&lt;br/&gt;break",
-                        "Text",
-                        "WBC",
-                        "true"});
-            table1.AddRow(new string[] {
-                        "NEUTROPHILS",
-                        "4.2",
-                        "NEUTROPHILS",
-                        "NEUTROPHILS",
-                        "true",
-                        "true",
-                        "&lt&gt&ge&ge;&le&le;bullet points&lt;li&gt;&lt;br/&gt;breakNEUTROPHILS",
-                        "Text",
-                        "NEUTROPHILS",
-                        "false"});
-#line 140
-testRunner.And(@"form ""PDF Lab Form"" has varOID ""<VarOID>"" has format ""<Format>"" has field name ""<Field Name>"" has field OID ""<Field OID>"" has status ""<Active>"" has visible status ""<Is Visible Field>"" has field label ""<Field Label>"" has control type ""<Control Type>"" has lab analyte ""<Lab Analyte>"" has prompt for clinical significance ""<Prompt for Clinical Significance>""", ((string)(null)), table1);
-#line hidden
-            TechTalk.SpecFlow.Table table2 = new TechTalk.SpecFlow.Table(new string[] {
-                        "Lab Unit"});
-            table2.AddRow(new string[] {
-                        "%"});
-#line 145
-   testRunner.And("the following Lab Units exists", ((string)(null)), table2);
-#line hidden
-            TechTalk.SpecFlow.Table table3 = new TechTalk.SpecFlow.Table(new string[] {
-                        "Name",
-                        "Units"});
-            table3.AddRow(new string[] {
-                        "WBC",
-                        "%"});
-            table3.AddRow(new string[] {
-                        "Neutrophils",
-                        "%"});
-#line 149
-   testRunner.And("the following Lab Unit Dictionary exists", ((string)(null)), table3);
-#line hidden
-            TechTalk.SpecFlow.Table table4 = new TechTalk.SpecFlow.Table(new string[] {
-                        "Analytes",
-                        "Lab Unit Dictionary"});
-            table4.AddRow(new string[] {
-                        "WBC",
-                        "WBC"});
-            table4.AddRow(new string[] {
-                        "NEUTROPHILS",
-                        "NEUTROPHILS"});
-#line 154
- testRunner.And("the following Analytes exists", ((string)(null)), table4);
-#line hidden
-            TechTalk.SpecFlow.Table table5 = new TechTalk.SpecFlow.Table(new string[] {
-                        "Range Type"});
-            table5.AddRow(new string[] {
-                        "US12175 Range"});
-#line 159
- testRunner.And("the following Range Types exists", ((string)(null)), table5);
-#line hidden
-            TechTalk.SpecFlow.Table table6 = new TechTalk.SpecFlow.Table(new string[] {
-                        "Analyte",
-                        "From Date",
-                        "To Date",
-                        "Low Value",
-                        "High Value",
-                        "Units"});
-            table6.AddRow(new string[] {
-                        "WBC",
-                        "01 Jan 2005",
-                        "01 Jan 2015",
-                        "15",
-                        "25",
-                        "%"});
-            table6.AddRow(new string[] {
-                        "NEUTROPHILS",
-                        "01 Jan 2005",
-                        "01 Jan 2015",
-                        "40",
-                        "50",
-                        "%"});
-#line 163
- testRunner.And("lab \"US12175 Lab\" with Range Type \"US12175 Range\" has analyte \"Analyte\" has from " +
-                    "date \"From Date\" has to date \"To Date\" has low value \"Low Value\" has high value " +
-                    "\"High Value\" has units \"Units\"", ((string)(null)), table6);
 #line 244
  testRunner.Given("I am logged in to Rave with username \"defuser\" and password \"password\"");
+#line 347
+ testRunner.And("I navigate to \"Home\"");
 #line 348
  testRunner.When("I navigate to \"PDF Generator\" module");
 #line hidden
@@ -227,14 +129,14 @@ this.ScenarioSetup(scenarioInfo);
 #line 45
 this.FeatureBackground();
 #line hidden
-            TechTalk.SpecFlow.Table table7 = new TechTalk.SpecFlow.Table(new string[] {
+            TechTalk.SpecFlow.Table table1 = new TechTalk.SpecFlow.Table(new string[] {
                         "Name",
                         "Profile",
                         "Study",
                         "Role",
                         "Locale",
                         "CRFVersion"});
-            table7.AddRow(new string[] {
+            table1.AddRow(new string[] {
                         "Blank PDF A{RndNum<num>(3)}",
                         "PDF 1",
                         "PDF Font Study (Prod)",
@@ -242,7 +144,7 @@ this.FeatureBackground();
                         "English",
                         "11 (289)"});
 #line 358
- testRunner.When("I create Blank PDF", ((string)(null)), table7);
+ testRunner.When("I create Blank PDF", ((string)(null)), table1);
 #line 361
  testRunner.And("I generate Blank PDF \"Blank PDF A{Var(num)}\"");
 #line 362
@@ -250,30 +152,30 @@ this.FeatureBackground();
 #line 363
  testRunner.When("I View Blank PDF \"Blank PDF A{Var(num)}\"");
 #line hidden
-            TechTalk.SpecFlow.Table table8 = new TechTalk.SpecFlow.Table(new string[] {
+            TechTalk.SpecFlow.Table table2 = new TechTalk.SpecFlow.Table(new string[] {
                         "Symbol"});
-            table8.AddRow(new string[] {
+            table2.AddRow(new string[] {
                         "&gt"});
-            table8.AddRow(new string[] {
+            table2.AddRow(new string[] {
                         "&ge"});
-            table8.AddRow(new string[] {
+            table2.AddRow(new string[] {
                         "&ge;"});
-            table8.AddRow(new string[] {
+            table2.AddRow(new string[] {
                         "&lt"});
-            table8.AddRow(new string[] {
+            table2.AddRow(new string[] {
                         "&le"});
-            table8.AddRow(new string[] {
+            table2.AddRow(new string[] {
                         "&le;"});
-            table8.AddRow(new string[] {
+            table2.AddRow(new string[] {
                         "&lt;li&gt;"});
-            table8.AddRow(new string[] {
+            table2.AddRow(new string[] {
                         "&lt;br/&gt;"});
-            table8.AddRow(new string[] {
+            table2.AddRow(new string[] {
                         "<li>"});
-            table8.AddRow(new string[] {
+            table2.AddRow(new string[] {
                         "<br/>"});
 #line 364
- testRunner.Then("the text should not contain \"<Symbol>\"", ((string)(null)), table8);
+ testRunner.Then("the text should not contain \"<Symbol>\"", ((string)(null)), table2);
 #line hidden
             this.ScenarioCleanup();
         }
@@ -298,14 +200,14 @@ this.ScenarioSetup(scenarioInfo);
 #line 45
 this.FeatureBackground();
 #line hidden
-            TechTalk.SpecFlow.Table table9 = new TechTalk.SpecFlow.Table(new string[] {
+            TechTalk.SpecFlow.Table table3 = new TechTalk.SpecFlow.Table(new string[] {
                         "Name",
                         "Profile",
                         "Study",
                         "Role",
                         "Locale",
                         "CRFVersion"});
-            table9.AddRow(new string[] {
+            table3.AddRow(new string[] {
                         "Blank PDF B{RndNum<num>(3)}",
                         "PDF 2",
                         "PDF Font Study (Prod)",
@@ -313,7 +215,7 @@ this.FeatureBackground();
                         "English",
                         "11 (289)"});
 #line 385
- testRunner.When("I create Blank PDF", ((string)(null)), table9);
+ testRunner.When("I create Blank PDF", ((string)(null)), table3);
 #line 388
  testRunner.And("I generate Blank PDF \"Blank PDF B{Var(num)}\"");
 #line 389
@@ -321,30 +223,30 @@ this.FeatureBackground();
 #line 390
  testRunner.When("I View Blank PDF \"Blank PDF B{Var(num)}\"");
 #line hidden
-            TechTalk.SpecFlow.Table table10 = new TechTalk.SpecFlow.Table(new string[] {
+            TechTalk.SpecFlow.Table table4 = new TechTalk.SpecFlow.Table(new string[] {
                         "Symbol"});
-            table10.AddRow(new string[] {
+            table4.AddRow(new string[] {
                         "&gt"});
-            table10.AddRow(new string[] {
+            table4.AddRow(new string[] {
                         "&ge"});
-            table10.AddRow(new string[] {
+            table4.AddRow(new string[] {
                         "&ge;"});
-            table10.AddRow(new string[] {
+            table4.AddRow(new string[] {
                         "&lt"});
-            table10.AddRow(new string[] {
+            table4.AddRow(new string[] {
                         "&le"});
-            table10.AddRow(new string[] {
+            table4.AddRow(new string[] {
                         "&le;"});
-            table10.AddRow(new string[] {
+            table4.AddRow(new string[] {
                         "&lt;li&gt;"});
-            table10.AddRow(new string[] {
+            table4.AddRow(new string[] {
                         "&lt;br/&gt;"});
-            table10.AddRow(new string[] {
+            table4.AddRow(new string[] {
                         "<li>"});
-            table10.AddRow(new string[] {
+            table4.AddRow(new string[] {
                         "<br/>"});
 #line 391
- testRunner.Then("the text should not contain \"<Symbol>\"", ((string)(null)), table10);
+ testRunner.Then("the text should not contain \"<Symbol>\"", ((string)(null)), table4);
 #line hidden
             this.ScenarioCleanup();
         }
@@ -369,14 +271,14 @@ this.ScenarioSetup(scenarioInfo);
 #line 45
 this.FeatureBackground();
 #line hidden
-            TechTalk.SpecFlow.Table table11 = new TechTalk.SpecFlow.Table(new string[] {
+            TechTalk.SpecFlow.Table table5 = new TechTalk.SpecFlow.Table(new string[] {
                         "Name",
                         "Profile",
                         "Study",
                         "Role",
                         "Locale",
                         "CRFVersion"});
-            table11.AddRow(new string[] {
+            table5.AddRow(new string[] {
                         "Blank PDF C{RndNum<num>(3)}",
                         "PDF 3",
                         "PDF Font Study (Prod)",
@@ -384,7 +286,7 @@ this.FeatureBackground();
                         "English",
                         "11 (289)"});
 #line 412
- testRunner.When("I create Blank PDF", ((string)(null)), table11);
+ testRunner.When("I create Blank PDF", ((string)(null)), table5);
 #line 415
  testRunner.And("I generate Blank PDF \"Blank PDF C{Var(num)}\"");
 #line 416
@@ -392,30 +294,30 @@ this.FeatureBackground();
 #line 417
  testRunner.When("I View Blank PDF \"Blank PDF C{Var(num)}\"");
 #line hidden
-            TechTalk.SpecFlow.Table table12 = new TechTalk.SpecFlow.Table(new string[] {
+            TechTalk.SpecFlow.Table table6 = new TechTalk.SpecFlow.Table(new string[] {
                         "Symbol"});
-            table12.AddRow(new string[] {
+            table6.AddRow(new string[] {
                         "&gt"});
-            table12.AddRow(new string[] {
+            table6.AddRow(new string[] {
                         "&ge"});
-            table12.AddRow(new string[] {
+            table6.AddRow(new string[] {
                         "&ge;"});
-            table12.AddRow(new string[] {
+            table6.AddRow(new string[] {
                         "&lt"});
-            table12.AddRow(new string[] {
+            table6.AddRow(new string[] {
                         "&le"});
-            table12.AddRow(new string[] {
+            table6.AddRow(new string[] {
                         "&le;"});
-            table12.AddRow(new string[] {
+            table6.AddRow(new string[] {
                         "&lt;li&gt;"});
-            table12.AddRow(new string[] {
+            table6.AddRow(new string[] {
                         "&lt;br/&gt;"});
-            table12.AddRow(new string[] {
+            table6.AddRow(new string[] {
                         "<li>"});
-            table12.AddRow(new string[] {
+            table6.AddRow(new string[] {
                         "<br/>"});
 #line 418
- testRunner.Then("the text should not contain \"<Symbol>\"", ((string)(null)), table12);
+ testRunner.Then("the text should not contain \"<Symbol>\"", ((string)(null)), table6);
 #line hidden
             this.ScenarioCleanup();
         }
@@ -440,14 +342,14 @@ this.ScenarioSetup(scenarioInfo);
 #line 45
 this.FeatureBackground();
 #line hidden
-            TechTalk.SpecFlow.Table table13 = new TechTalk.SpecFlow.Table(new string[] {
+            TechTalk.SpecFlow.Table table7 = new TechTalk.SpecFlow.Table(new string[] {
                         "Name",
                         "Profile",
                         "Study",
                         "Role",
                         "Locale",
                         "CRFVersion"});
-            table13.AddRow(new string[] {
+            table7.AddRow(new string[] {
                         "Blank PDF D{RndNum<num>(3)}",
                         "PDF 4",
                         "PDF Font Study (Prod)",
@@ -455,7 +357,7 @@ this.FeatureBackground();
                         "Japanese",
                         "11 (289)"});
 #line 439
- testRunner.When("I create Blank PDF", ((string)(null)), table13);
+ testRunner.When("I create Blank PDF", ((string)(null)), table7);
 #line 442
  testRunner.And("I generate Blank PDF \"Blank PDF D{Var(num)}\"");
 #line 443
@@ -463,30 +365,30 @@ this.FeatureBackground();
 #line 444
  testRunner.When("I View Blank PDF \"Blank PDF D{Var(num)}\"");
 #line hidden
-            TechTalk.SpecFlow.Table table14 = new TechTalk.SpecFlow.Table(new string[] {
+            TechTalk.SpecFlow.Table table8 = new TechTalk.SpecFlow.Table(new string[] {
                         "Symbol"});
-            table14.AddRow(new string[] {
+            table8.AddRow(new string[] {
                         "&gt"});
-            table14.AddRow(new string[] {
+            table8.AddRow(new string[] {
                         "&ge"});
-            table14.AddRow(new string[] {
+            table8.AddRow(new string[] {
                         "&ge;"});
-            table14.AddRow(new string[] {
+            table8.AddRow(new string[] {
                         "&lt"});
-            table14.AddRow(new string[] {
+            table8.AddRow(new string[] {
                         "&le"});
-            table14.AddRow(new string[] {
+            table8.AddRow(new string[] {
                         "&le;"});
-            table14.AddRow(new string[] {
+            table8.AddRow(new string[] {
                         "&lt;li&gt;"});
-            table14.AddRow(new string[] {
+            table8.AddRow(new string[] {
                         "&lt;br/&gt;"});
-            table14.AddRow(new string[] {
+            table8.AddRow(new string[] {
                         "<li>"});
-            table14.AddRow(new string[] {
+            table8.AddRow(new string[] {
                         "<br/>"});
 #line 445
- testRunner.Then("the text should not contain \"<Symbol>\"", ((string)(null)), table14);
+ testRunner.Then("the text should not contain \"<Symbol>\"", ((string)(null)), table8);
 #line hidden
             this.ScenarioCleanup();
         }
@@ -511,14 +413,14 @@ this.ScenarioSetup(scenarioInfo);
 #line 45
 this.FeatureBackground();
 #line hidden
-            TechTalk.SpecFlow.Table table15 = new TechTalk.SpecFlow.Table(new string[] {
+            TechTalk.SpecFlow.Table table9 = new TechTalk.SpecFlow.Table(new string[] {
                         "Name",
                         "Profile",
                         "Study",
                         "Role",
                         "Locale",
                         "CRFVersion"});
-            table15.AddRow(new string[] {
+            table9.AddRow(new string[] {
                         "Blank PDF E{RndNum<num>(3)}",
                         "PDF 5",
                         "PDF Font Study (Prod)",
@@ -526,7 +428,7 @@ this.FeatureBackground();
                         "Japanese",
                         "11 (289)"});
 #line 466
- testRunner.When("I create Blank PDF", ((string)(null)), table15);
+ testRunner.When("I create Blank PDF", ((string)(null)), table9);
 #line 469
  testRunner.And("I generate Blank PDF \"Blank PDF E{Var(num)}\"");
 #line 470
@@ -534,30 +436,30 @@ this.FeatureBackground();
 #line 471
  testRunner.When("I View Blank PDF \"Blank PDF E{Var(num)}\"");
 #line hidden
-            TechTalk.SpecFlow.Table table16 = new TechTalk.SpecFlow.Table(new string[] {
+            TechTalk.SpecFlow.Table table10 = new TechTalk.SpecFlow.Table(new string[] {
                         "Symbol"});
-            table16.AddRow(new string[] {
+            table10.AddRow(new string[] {
                         "&gt"});
-            table16.AddRow(new string[] {
+            table10.AddRow(new string[] {
                         "&ge"});
-            table16.AddRow(new string[] {
+            table10.AddRow(new string[] {
                         "&ge;"});
-            table16.AddRow(new string[] {
+            table10.AddRow(new string[] {
                         "&lt"});
-            table16.AddRow(new string[] {
+            table10.AddRow(new string[] {
                         "&le"});
-            table16.AddRow(new string[] {
+            table10.AddRow(new string[] {
                         "&le;"});
-            table16.AddRow(new string[] {
+            table10.AddRow(new string[] {
                         "&lt;li&gt;"});
-            table16.AddRow(new string[] {
+            table10.AddRow(new string[] {
                         "&lt;br/&gt;"});
-            table16.AddRow(new string[] {
+            table10.AddRow(new string[] {
                         "<li>"});
-            table16.AddRow(new string[] {
+            table10.AddRow(new string[] {
                         "<br/>"});
 #line 472
- testRunner.Then("the text should not contain \"<Symbol>\"", ((string)(null)), table16);
+ testRunner.Then("the text should not contain \"<Symbol>\"", ((string)(null)), table10);
 #line hidden
             this.ScenarioCleanup();
         }
@@ -582,7 +484,7 @@ this.ScenarioSetup(scenarioInfo);
 #line 45
 this.FeatureBackground();
 #line hidden
-            TechTalk.SpecFlow.Table table17 = new TechTalk.SpecFlow.Table(new string[] {
+            TechTalk.SpecFlow.Table table11 = new TechTalk.SpecFlow.Table(new string[] {
                         "Name",
                         "Profile",
                         "Study",
@@ -591,7 +493,7 @@ this.FeatureBackground();
                         "Site Groups",
                         "Sites",
                         "Subjects"});
-            table17.AddRow(new string[] {
+            table11.AddRow(new string[] {
                         "Data PDF A{RndNum<num>(3)}",
                         "PDF 1",
                         "PDF Font Study (Prod)",
@@ -601,7 +503,7 @@ this.FeatureBackground();
                         "PDF Font Site 1",
                         "Sub{Var(num1)}"});
 #line 493
- testRunner.When("I create Data PDF", ((string)(null)), table17);
+ testRunner.When("I create Data PDF", ((string)(null)), table11);
 #line 496
  testRunner.And("I generate Data PDF \"Data PDF A{Var(num)}\"");
 #line 497
@@ -609,30 +511,30 @@ this.FeatureBackground();
 #line 498
  testRunner.When("I View Data PDF \"Data PDF A{Var(num)}\"");
 #line hidden
-            TechTalk.SpecFlow.Table table18 = new TechTalk.SpecFlow.Table(new string[] {
+            TechTalk.SpecFlow.Table table12 = new TechTalk.SpecFlow.Table(new string[] {
                         "Symbol"});
-            table18.AddRow(new string[] {
+            table12.AddRow(new string[] {
                         "&gt"});
-            table18.AddRow(new string[] {
+            table12.AddRow(new string[] {
                         "&ge"});
-            table18.AddRow(new string[] {
+            table12.AddRow(new string[] {
                         "&ge;"});
-            table18.AddRow(new string[] {
+            table12.AddRow(new string[] {
                         "&lt"});
-            table18.AddRow(new string[] {
+            table12.AddRow(new string[] {
                         "&le"});
-            table18.AddRow(new string[] {
+            table12.AddRow(new string[] {
                         "&le;"});
-            table18.AddRow(new string[] {
+            table12.AddRow(new string[] {
                         "&lt;li&gt;"});
-            table18.AddRow(new string[] {
+            table12.AddRow(new string[] {
                         "&lt;br/&gt;"});
-            table18.AddRow(new string[] {
+            table12.AddRow(new string[] {
                         "<li>"});
-            table18.AddRow(new string[] {
+            table12.AddRow(new string[] {
                         "<br/>"});
 #line 499
- testRunner.Then("the text should not contain \"<Symbol>\"", ((string)(null)), table18);
+ testRunner.Then("the text should not contain \"<Symbol>\"", ((string)(null)), table12);
 #line hidden
             this.ScenarioCleanup();
         }
@@ -657,7 +559,7 @@ this.ScenarioSetup(scenarioInfo);
 #line 45
 this.FeatureBackground();
 #line hidden
-            TechTalk.SpecFlow.Table table19 = new TechTalk.SpecFlow.Table(new string[] {
+            TechTalk.SpecFlow.Table table13 = new TechTalk.SpecFlow.Table(new string[] {
                         "Name",
                         "Profile",
                         "Study",
@@ -666,7 +568,7 @@ this.FeatureBackground();
                         "Site Groups",
                         "Sites",
                         "Subjects"});
-            table19.AddRow(new string[] {
+            table13.AddRow(new string[] {
                         "Data PDF B{RndNum<num>(3)}",
                         "PDF 2",
                         "PDF Font Study (Prod)",
@@ -676,7 +578,7 @@ this.FeatureBackground();
                         "PDF Font Site 1",
                         "Sub{Var(num1)}"});
 #line 520
- testRunner.When("I create Data PDF", ((string)(null)), table19);
+ testRunner.When("I create Data PDF", ((string)(null)), table13);
 #line 523
  testRunner.And("I generate Data PDF \"Data PDF B{Var(num)}\"");
 #line 524
@@ -684,30 +586,30 @@ this.FeatureBackground();
 #line 525
  testRunner.When("I View Data PDF \"Data PDF B{Var(num)}\"");
 #line hidden
-            TechTalk.SpecFlow.Table table20 = new TechTalk.SpecFlow.Table(new string[] {
+            TechTalk.SpecFlow.Table table14 = new TechTalk.SpecFlow.Table(new string[] {
                         "Symbol"});
-            table20.AddRow(new string[] {
+            table14.AddRow(new string[] {
                         "&gt"});
-            table20.AddRow(new string[] {
+            table14.AddRow(new string[] {
                         "&ge"});
-            table20.AddRow(new string[] {
+            table14.AddRow(new string[] {
                         "&ge;"});
-            table20.AddRow(new string[] {
+            table14.AddRow(new string[] {
                         "&lt"});
-            table20.AddRow(new string[] {
+            table14.AddRow(new string[] {
                         "&le"});
-            table20.AddRow(new string[] {
+            table14.AddRow(new string[] {
                         "&le;"});
-            table20.AddRow(new string[] {
+            table14.AddRow(new string[] {
                         "&lt;li&gt;"});
-            table20.AddRow(new string[] {
+            table14.AddRow(new string[] {
                         "&lt;br/&gt;"});
-            table20.AddRow(new string[] {
+            table14.AddRow(new string[] {
                         "<li>"});
-            table20.AddRow(new string[] {
+            table14.AddRow(new string[] {
                         "<br/>"});
 #line 526
- testRunner.Then("the text should not contain \"<Symbol>\"", ((string)(null)), table20);
+ testRunner.Then("the text should not contain \"<Symbol>\"", ((string)(null)), table14);
 #line hidden
             this.ScenarioCleanup();
         }
@@ -732,7 +634,7 @@ this.ScenarioSetup(scenarioInfo);
 #line 45
 this.FeatureBackground();
 #line hidden
-            TechTalk.SpecFlow.Table table21 = new TechTalk.SpecFlow.Table(new string[] {
+            TechTalk.SpecFlow.Table table15 = new TechTalk.SpecFlow.Table(new string[] {
                         "Name",
                         "Profile",
                         "Study",
@@ -741,7 +643,7 @@ this.FeatureBackground();
                         "Site Groups",
                         "Sites",
                         "Subjects"});
-            table21.AddRow(new string[] {
+            table15.AddRow(new string[] {
                         "Data PDF C{RndNum<num>(3)}",
                         "PDF 3",
                         "PDF Font Study (Prod)",
@@ -751,7 +653,7 @@ this.FeatureBackground();
                         "PDF Font Site 1",
                         "Sub{Var(num1)}"});
 #line 547
- testRunner.When("I create Data PDF", ((string)(null)), table21);
+ testRunner.When("I create Data PDF", ((string)(null)), table15);
 #line 550
  testRunner.And("I generate Data PDF \"Data PDF C{Var(num)}\"");
 #line 551
@@ -759,30 +661,30 @@ this.FeatureBackground();
 #line 552
  testRunner.When("I View Data PDF \"Data PDF C{Var(num)}\"");
 #line hidden
-            TechTalk.SpecFlow.Table table22 = new TechTalk.SpecFlow.Table(new string[] {
+            TechTalk.SpecFlow.Table table16 = new TechTalk.SpecFlow.Table(new string[] {
                         "Symbol"});
-            table22.AddRow(new string[] {
+            table16.AddRow(new string[] {
                         "&gt"});
-            table22.AddRow(new string[] {
+            table16.AddRow(new string[] {
                         "&ge"});
-            table22.AddRow(new string[] {
+            table16.AddRow(new string[] {
                         "&ge;"});
-            table22.AddRow(new string[] {
+            table16.AddRow(new string[] {
                         "&lt"});
-            table22.AddRow(new string[] {
+            table16.AddRow(new string[] {
                         "&le"});
-            table22.AddRow(new string[] {
+            table16.AddRow(new string[] {
                         "&le;"});
-            table22.AddRow(new string[] {
+            table16.AddRow(new string[] {
                         "&lt;li&gt;"});
-            table22.AddRow(new string[] {
+            table16.AddRow(new string[] {
                         "&lt;br/&gt;"});
-            table22.AddRow(new string[] {
+            table16.AddRow(new string[] {
                         "<li>"});
-            table22.AddRow(new string[] {
+            table16.AddRow(new string[] {
                         "<br/>"});
 #line 553
- testRunner.Then("the text should not contain \"<Symbol>\"", ((string)(null)), table22);
+ testRunner.Then("the text should not contain \"<Symbol>\"", ((string)(null)), table16);
 #line hidden
             this.ScenarioCleanup();
         }
@@ -807,7 +709,7 @@ this.ScenarioSetup(scenarioInfo);
 #line 45
 this.FeatureBackground();
 #line hidden
-            TechTalk.SpecFlow.Table table23 = new TechTalk.SpecFlow.Table(new string[] {
+            TechTalk.SpecFlow.Table table17 = new TechTalk.SpecFlow.Table(new string[] {
                         "Name",
                         "Profile",
                         "Study",
@@ -816,7 +718,7 @@ this.FeatureBackground();
                         "Site Groups",
                         "Sites",
                         "Subjects"});
-            table23.AddRow(new string[] {
+            table17.AddRow(new string[] {
                         "Data PDF D{RndNum<num>(3)}",
                         "PDF 4",
                         "PDF Font Study (Prod)",
@@ -826,7 +728,7 @@ this.FeatureBackground();
                         "PDF Font Site 1",
                         "Sub{Var(num1)}"});
 #line 574
- testRunner.When("I create Data PDF", ((string)(null)), table23);
+ testRunner.When("I create Data PDF", ((string)(null)), table17);
 #line 577
  testRunner.And("I generate Data PDF \"Data PDF D{Var(num)}\"");
 #line 578
@@ -834,30 +736,30 @@ this.FeatureBackground();
 #line 579
  testRunner.When("I View Data PDF \"Data PDF D{Var(num)}\"");
 #line hidden
-            TechTalk.SpecFlow.Table table24 = new TechTalk.SpecFlow.Table(new string[] {
+            TechTalk.SpecFlow.Table table18 = new TechTalk.SpecFlow.Table(new string[] {
                         "Symbol"});
-            table24.AddRow(new string[] {
+            table18.AddRow(new string[] {
                         "&gt"});
-            table24.AddRow(new string[] {
+            table18.AddRow(new string[] {
                         "&ge"});
-            table24.AddRow(new string[] {
+            table18.AddRow(new string[] {
                         "&ge;"});
-            table24.AddRow(new string[] {
+            table18.AddRow(new string[] {
                         "&lt"});
-            table24.AddRow(new string[] {
+            table18.AddRow(new string[] {
                         "&le"});
-            table24.AddRow(new string[] {
+            table18.AddRow(new string[] {
                         "&le;"});
-            table24.AddRow(new string[] {
+            table18.AddRow(new string[] {
                         "&lt;li&gt;"});
-            table24.AddRow(new string[] {
+            table18.AddRow(new string[] {
                         "&lt;br/&gt;"});
-            table24.AddRow(new string[] {
+            table18.AddRow(new string[] {
                         "<li>"});
-            table24.AddRow(new string[] {
+            table18.AddRow(new string[] {
                         "<br/>"});
 #line 580
- testRunner.Then("the text should not contain \"<Symbol>\"", ((string)(null)), table24);
+ testRunner.Then("the text should not contain \"<Symbol>\"", ((string)(null)), table18);
 #line hidden
             this.ScenarioCleanup();
         }
@@ -882,7 +784,7 @@ this.ScenarioSetup(scenarioInfo);
 #line 45
 this.FeatureBackground();
 #line hidden
-            TechTalk.SpecFlow.Table table25 = new TechTalk.SpecFlow.Table(new string[] {
+            TechTalk.SpecFlow.Table table19 = new TechTalk.SpecFlow.Table(new string[] {
                         "Name",
                         "Profile",
                         "Study",
@@ -891,7 +793,7 @@ this.FeatureBackground();
                         "Site Groups",
                         "Sites",
                         "Subjects"});
-            table25.AddRow(new string[] {
+            table19.AddRow(new string[] {
                         "Data PDF E{RndNum<num>(3)}",
                         "PDF 5",
                         "PDF Font Study (Prod)",
@@ -901,7 +803,7 @@ this.FeatureBackground();
                         "PDF Font Site 1",
                         "Sub{Var(num1)}"});
 #line 601
- testRunner.When("I create Data PDF", ((string)(null)), table25);
+ testRunner.When("I create Data PDF", ((string)(null)), table19);
 #line 604
  testRunner.And("I generate Data PDF \"Data PDF E{Var(num)}\"");
 #line 605
@@ -909,30 +811,30 @@ this.FeatureBackground();
 #line 606
  testRunner.When("I View Data PDF \"Data PDF E{Var(num)}\"");
 #line hidden
-            TechTalk.SpecFlow.Table table26 = new TechTalk.SpecFlow.Table(new string[] {
+            TechTalk.SpecFlow.Table table20 = new TechTalk.SpecFlow.Table(new string[] {
                         "Symbol"});
-            table26.AddRow(new string[] {
+            table20.AddRow(new string[] {
                         "&gt"});
-            table26.AddRow(new string[] {
+            table20.AddRow(new string[] {
                         "&ge"});
-            table26.AddRow(new string[] {
+            table20.AddRow(new string[] {
                         "&ge;"});
-            table26.AddRow(new string[] {
+            table20.AddRow(new string[] {
                         "&lt"});
-            table26.AddRow(new string[] {
+            table20.AddRow(new string[] {
                         "&le"});
-            table26.AddRow(new string[] {
+            table20.AddRow(new string[] {
                         "&le;"});
-            table26.AddRow(new string[] {
+            table20.AddRow(new string[] {
                         "&lt;li&gt;"});
-            table26.AddRow(new string[] {
+            table20.AddRow(new string[] {
                         "&lt;br/&gt;"});
-            table26.AddRow(new string[] {
+            table20.AddRow(new string[] {
                         "<li>"});
-            table26.AddRow(new string[] {
+            table20.AddRow(new string[] {
                         "<br/>"});
 #line 607
- testRunner.Then("the text should not contain \"<Symbol>\"", ((string)(null)), table26);
+ testRunner.Then("the text should not contain \"<Symbol>\"", ((string)(null)), table20);
 #line hidden
             this.ScenarioCleanup();
         }
