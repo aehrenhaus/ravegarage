@@ -438,8 +438,11 @@ namespace Medidata.RBT
                 using (ZipInputStream zipInputStream = new ZipInputStream(fileStreamIn))
                 {
                     ZipEntry currentEntry = zipInputStream.GetNextEntry();
-
-                    String fullZipToPath = TestContext.DownloadPath + currentEntry.Name.Replace("/", "\\");
+                    String fullZipToPath = "";
+                    if(TestContext.DownloadPath.EndsWith("\\"))
+                        fullZipToPath = TestContext.DownloadPath + currentEntry.Name.Replace("/", "\\");
+                    else
+                        fullZipToPath = TestContext.DownloadPath + "\\" + currentEntry.Name.Replace("/", "\\");
                     
                     string directoryName = Path.GetDirectoryName(fullZipToPath);
                     if (directoryName.Length > 0)

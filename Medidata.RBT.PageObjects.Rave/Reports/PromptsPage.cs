@@ -150,7 +150,7 @@ namespace Medidata.RBT.PageObjects.Rave
                 ChooseFromCheckboxes("PromptsBox_iid_div", "PromptsBox_iid_SelectAll", true);
                 ClickButton("Submit Report");
 
-                Thread.Sleep(1000);
+                Thread.Sleep(2000);
                 List<String> extractedFilePaths = UnzipAllDownloads();
 
                 StringBuilder sb = new StringBuilder();
