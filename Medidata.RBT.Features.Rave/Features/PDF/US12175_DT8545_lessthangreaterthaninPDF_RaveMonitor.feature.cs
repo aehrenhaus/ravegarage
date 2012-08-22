@@ -32,30 +32,24 @@ namespace Medidata.RBT.Features.Rave.Features.PDF
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
             TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Rave Monitor. When an EDC form contains special characters such as \"<\" \">\" \"<=\" \"" +
-                    ">=\" the PDF file should display the special characters appropriately.", "Rave architect allows for characters that the PDF generator does support. The PDF" +
-                    " generator should convert the special characters so that they are displayed appr" +
-                    "opriately as follows:\r\n|Rave Architect\t \t\t|PDF Interpretation |Symbol in PDF    " +
-                    "             |\r\n|&lt \t\t\t\t\t|&lt;               |<                             |\r\n" +
-                    "|&gt\t\t\t\t\t|&gt;               |>                             |\r\n|&ge\t\t\t\t\t|<u>&gt;" +
-                    "</u>        |>(underlined)                 |\r\n|&ge;\t\t\t\t\t|<u>&gt;</u>        |>(u" +
-                    "nderlined)                 |\r\n|&le\t\t\t\t\t|<u>&lt;</u>        |<(underlined)       " +
-                    "          |\r\n|&le;\t\t\t\t\t|<u>&lt;</u>        |<(underlined)                 |\r\n|bu" +
-                    "llet points <li>\t\t|<br/> •            |(Line Break/carriage return) •|\r\n|(user h" +
-                    "itting \"enter\")\t|<br/>              |(Line Break/carriage return)  |\r\n\r\nNOTE: An" +
-                    " underlined \">\" will display instead of \">=\" which is represented by \">(underlin" +
-                    "ed)\" in this feature file as text editors do not allow underlines.\r\n     An unde" +
-                    "rlined \"<\" will display instead of \"<=\" which is represented by \"<(underlined)\" " +
-                    "in this feature file as text editors do not allow underlines.\r\nNOTE: user hittin" +
-                    "g \"enter\" was previously interpreted as \" \" but should be interpreted as a new l" +
-                    "ine. In certain Japanese fonts it had been\r\ninterpreted as \"=\"\r\n\r\n  This renderi" +
-                    "ng should be implemented for blank PDFs, annotated PDFs, data populated PDFs, Ra" +
-                    "ve Monitor Trip Report PDFs. \r\nThis rendering should be implemented for:\r\ntransl" +
-                    "ations\r\nfield pretext\r\ndata dictionaries on the CRF but NOT in the audit trail\r\n" +
-                    "unit dictionaries on the CRF but NOT in the audit trail\r\ncoding dictionaries on " +
-                    "the CRF but NOT in the audit trail\r\nlab units on the CRF but NOT in the audit tr" +
-                    "ail (does not apply to Rave Monitor Trip Report PDFs)\r\nlab ranges on the CRF but" +
-                    " NOT in the audit trail (does not apply to Rave Monitor Trip Report PDFs)\r\nThis " +
-                    "rendering will NOT be implented for:\r\nbookmarks\r\nlab names\r\nForm names", ProgrammingLanguage.CSharp, ((string[])(null)));
+                    ">=\" the PDF file should display the special characters appropriately.", @"Rave architect allows for characters that the PDF generator does support. The PDF generator should convert the special characters so that they are displayed appropriately as follows:
+|Rave Architect	 		|PDF Interpretation |Symbol in PDF                 |
+|&lt 					|&lt;               |<                             |
+|&gt					|&gt;               |>                             |
+|&ge					|<u>&gt;</u>        |>(underlined)                 |
+|&ge;					|<u>&gt;</u>        |>(underlined)                 |
+|&le					|<u>&lt;</u>        |<(underlined)                 |
+|&le;					|<u>&lt;</u>        |<(underlined)                 |
+|bullet points <li>		|<br/> •            |(Line Break/carriage return) •|
+|(user hitting ""enter"")	|<br/>              |(Line Break/carriage return)  |
+
+NOTE: An underlined "">"" will display instead of "">="" which is represented by "">(underlined)"" in this feature file as text editors do not allow underlines.
+     An underlined ""<"" will display instead of ""<="" which is represented by ""<(underlined)"" in this feature file as text editors do not allow underlines.
+NOTE: user hitting ""enter"" was previously interpreted as "" "" but should be interpreted as a new line. In certain Japanese fonts it had been
+interpreted as ""=""
+
+  This rendering should be implemented for blank PDFs, annotated PDFs, data populated PDFs, Rave Monitor Trip Report PDFs. 
+This rendering should be implemented for all parts of the PDFs.", ProgrammingLanguage.CSharp, ((string[])(null)));
             testRunner.OnFeatureStart(featureInfo);
         }
         
@@ -95,8 +89,8 @@ namespace Medidata.RBT.Features.Rave.Features.PDF
         
         public virtual void FeatureBackground()
         {
-#line 34
-#line 35
+#line 23
+#line 24
     testRunner.Given("I am logged in to Rave with username \"defuser\" and password \"password\"");
 #line hidden
         }
@@ -116,15 +110,15 @@ namespace Medidata.RBT.Features.Rave.Features.PDF
                         "release_2012.1.0",
                         "US11043K",
                         "Draft"});
-#line 83
+#line 72
 this.ScenarioSetup(scenarioInfo);
-#line 34
+#line 23
 this.FeatureBackground();
-#line 86
+#line 75
  testRunner.When("I select Study \"test15\" in \"EDC\"");
-#line 87
+#line 76
  testRunner.And("I select link \"Monitor Visits\" located in \"Left Nav\"");
-#line 88
+#line 77
  testRunner.When("I generate PDF for all visits");
 #line hidden
             TechTalk.SpecFlow.Table table1 = new TechTalk.SpecFlow.Table(new string[] {
@@ -149,7 +143,7 @@ this.FeatureBackground();
                         "<li>"});
             table1.AddRow(new string[] {
                         "<br/>"});
-#line 89
+#line 78
  testRunner.Then("the text should not contain \"<Symbol>\"", ((string)(null)), table1);
 #line hidden
             this.ScenarioCleanup();
@@ -170,15 +164,15 @@ this.FeatureBackground();
                         "release_2012.1.0",
                         "US11043L",
                         "Draft"});
-#line 105
+#line 94
 this.ScenarioSetup(scenarioInfo);
-#line 34
+#line 23
 this.FeatureBackground();
-#line 108
+#line 97
  testRunner.When("I select Study \"test14\" in \"EDC\"");
-#line 109
+#line 98
  testRunner.And("I select link \"Monitor Visits\" located in \"Left Nav\"");
-#line 137
+#line 126
  testRunner.When("I generate PDF for all visits");
 #line hidden
             TechTalk.SpecFlow.Table table2 = new TechTalk.SpecFlow.Table(new string[] {
@@ -203,7 +197,7 @@ this.FeatureBackground();
                         "<li>"});
             table2.AddRow(new string[] {
                         "<br/>"});
-#line 138
+#line 127
  testRunner.Then("the text should not contain \"<Symbol>\"", ((string)(null)), table2);
 #line hidden
             this.ScenarioCleanup();

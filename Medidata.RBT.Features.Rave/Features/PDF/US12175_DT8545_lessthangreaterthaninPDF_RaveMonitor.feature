@@ -18,18 +18,7 @@ Feature: Rave Monitor. When an EDC form contains special characters such as "<" 
 		interpreted as "="
 		
     This rendering should be implemented for blank PDFs, annotated PDFs, data populated PDFs, Rave Monitor Trip Report PDFs. 
-	This rendering should be implemented for:
-		translations
-		field pretext
-		data dictionaries on the CRF but NOT in the audit trail
-		unit dictionaries on the CRF but NOT in the audit trail
-		coding dictionaries on the CRF but NOT in the audit trail
-		lab units on the CRF but NOT in the audit trail (does not apply to Rave Monitor Trip Report PDFs)
-		lab ranges on the CRF but NOT in the audit trail (does not apply to Rave Monitor Trip Report PDFs)
-	This rendering will NOT be implented for:
-		bookmarks
-		lab names
-		Form names
+	This rendering should be implemented for all parts of the PDFs.
 		
 Background:
     Given I am logged in to Rave with username "defuser" and password "password"

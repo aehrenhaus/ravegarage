@@ -28,19 +28,7 @@ Feature: When an EDC form contains special characters such as "<" ">" "<=" ">=" 
 	|Meiryo                   |
 	
 	This rendering should be implemented for blank PDFs, annotated PDFs, data populated PDFs, Rave Monitor Trip Report PDFs. 
-	This rendering should be implemented for:
-		translations
-		field pretext
-		data dictionaries on the CRF but NOT in the audit trail
-		unit dictionaries on the CRF but NOT in the audit trail
-		coding dictionaries on the CRF but NOT in the audit trail
-		lab units on the CRF but NOT in the audit trail (does not apply to Rave Monitor Trip Report PDFs)
-		lab ranges on the CRF but NOT in the audit trail (does not apply to Rave Monitor Trip Report PDFs)
-	This rendering will NOT be implented for:
-		bookmarks
-		lab names
-		Form names
-		
+	This rendering should be implemented for all parts of the PDFs.
 		
 Background:
 #Create 4 forms: lab form, log form, standard form, mixed form. Each form should contain every possible control type. Each form should contain all of 
