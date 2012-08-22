@@ -375,21 +375,5 @@ namespace Medidata.RBT.Features.Rave
             page.SelectLabValue(labName);
         }
 
-
-
-		/// <summary>
-		/// Based on the column name, we call an appropriate method and return true/false whether or not colun propagates
-		/// </summary>
-		/// <param name="scriptName"></param>
-		[StepDefinition(@"""([^""]*)"" propagates correctly")]
-		public void ____PropagatesCorrectly(string scriptName)
-		{
-			;
-			Uri tempUri = new Uri(Browser.Url);
-			var sql = PropagationVerificationSQLScripts.GenerateSQLQueryForColumnName(scriptName, int.Parse(tempUri.Query.Replace("?DP=", "")));
-
-			var dataTable = DbHelper.ExecuteDataSet(sql).Tables[0];
-			Assert.IsTrue((int)dataTable.Rows[0][0] == 0, "Data doesn't propagate correctly");
-		}
     }
 }
