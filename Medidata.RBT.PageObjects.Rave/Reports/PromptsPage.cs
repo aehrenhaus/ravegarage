@@ -150,14 +150,22 @@ namespace Medidata.RBT.PageObjects.Rave
                 ChooseFromCheckboxes("PromptsBox_iid_div", "PromptsBox_iid_SelectAll", true);
                 ClickButton("Submit Report");
 
-                Thread.Sleep(2000);
-                List<String> extractedFilePaths = UnzipAllDownloads();
+                List<String> extractedFilePaths;
+                //This is for selenium to wait for the file download to finish. There is currently no better way to do this in selenium.
+                //If you get a unexpected end of file issue, this is an intermittent issue.
+                do
+                {
+                    Thread.Sleep(5000);
+                    extractedFilePaths = UnzipAllDownloads();
+                }
+                while (extractedFilePaths.Count == 0);
+                
 
                 StringBuilder sb = new StringBuilder();
 
                 foreach (string filePath in extractedFilePaths)
                     if (filePath.ToLower().EndsWith(".pdf"))
-                        sb.Append(new PDF("TripReports", filePath).Text);
+                        sb.Append(new Medidata.RBT.PDF("TripReports", filePath).Text);
 
                 TestContext.ScenarioText = sb.ToString();
             }
