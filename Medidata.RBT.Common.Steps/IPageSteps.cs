@@ -100,7 +100,7 @@ namespace Medidata.RBT.Common.Steps
 		/// Click a hyperlink
 		/// </summary>
 		/// <param name="linkText"></param>
-		[StepDefinition(@"I select ""([^""]*)""")]
+		[StepDefinition(@"I select link ""([^""]*)""")]
 		public void ISelect____(string linkText)
 		{
 			linkText = SpecialStringHelper.Replace(linkText);
@@ -113,7 +113,7 @@ namespace Medidata.RBT.Common.Steps
 		/// </summary>
 		/// <param name="linkText"></param>
 		/// <param name="areaName"></param>
-		[StepDefinition(@"I select ""([^""]*)"" in ""([^""]*)""")]
+		[StepDefinition(@"I select link ""([^""]*)"" in ""([^""]*)""")]
 		public void ISelect____In____(string linkText, string areaName)
 		{
 			linkText = SpecialStringHelper.Replace(linkText);

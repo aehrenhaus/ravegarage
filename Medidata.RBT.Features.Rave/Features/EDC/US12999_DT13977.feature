@@ -48,5 +48,5 @@ Scenario: @PB-DT13977-01 As an EDC user, when I change an out of range value to 
 	And I enter data in CRF and save
 	| Field | Data | Unit   |
 	| WBC   | ND   | 10^9/L |
-	Then I should not see Clinical Significance "Code 1REG_ECPV11" for field "WBC"
+	Then I should not see Clinical Significance "Code 1REG_ECPV11" on Field "WBC"
 	And I take a screenshot

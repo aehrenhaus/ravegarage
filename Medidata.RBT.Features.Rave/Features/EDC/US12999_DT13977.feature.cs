@@ -160,7 +160,7 @@ this.FeatureBackground();
 #line 48
  testRunner.And("I enter data in CRF and save", ((string)(null)), table3);
 #line 51
- testRunner.Then("I should not see Clinical Significance \"Code 1REG_ECPV11\" for field \"WBC\"");
+ testRunner.Then("I should not see Clinical Significance \"Code 1REG_ECPV11\" on Field \"WBC\"");
 #line 52
  testRunner.And("I take a screenshot");
 #line hidden

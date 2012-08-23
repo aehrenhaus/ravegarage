@@ -94,14 +94,14 @@ Scenario: PB-DT13637-02 As a Data Manager, when an EDC user enters data for a st
 		| Field            | Data              |
 		| Subject Initials | SUB               |
 		| Subject Number   | {RndNum<num1>(3)} |
-	And I select "Device Form" 
+	And I select link "Device Form" 
 	And I enter data in CRF and save
 		| Field       | Data          | Control Type        |
 		| Device Type | Device Type 1 | radiobutton         |
 		| Device      | Device 1A     | dynamic search list |
 		| Devimpdate  | 01 Jan 2012   |                     |
 		| Devcomments | N/A           |                     |
-	And I select "Inactivate"
+	And I select link "Inactivate"
 	And I choose "1" from "Inactivate"
 	And I click button "Inactivate"
 	And I take a screenshot
@@ -109,7 +109,7 @@ Scenario: PB-DT13637-02 As a Data Manager, when an EDC user enters data for a st
 		| Field  | Data      | Control Type        |
 		| Device | Device 1A | dynamic search list |
 	And I take a screenshot
-	And I select "Reactivate"
+	And I select link "Reactivate"
 	And I choose "1" from "Reactivate"
 	And I click button "Reactivate"
 	And I take a screenshot

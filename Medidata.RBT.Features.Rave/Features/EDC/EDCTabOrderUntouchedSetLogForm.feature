@@ -16,7 +16,7 @@ Background:
 	Given I am logged in to Rave with username "defuser" and password "password"
 	And I select Study "Standard Study" and Site "Site 1"
 	And I select a Subject "777777779{Var(num1)}"
-	Given I select link "Log Form Landscape (Set)" located in "Left Nav"
+	Given I select Folder "Log Form Landscape (Set)"
 	
 	#Given user "User 1"  has study "Standard Study" has site "Site A1" has subject "Subj A1001" in database "<EDC> Database"
 	#And study "Standard Study" had draft "Draft 1" has form "Log Form"

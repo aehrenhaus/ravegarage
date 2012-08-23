@@ -56,7 +56,7 @@ Scenario: @PB_US10246_DT13300_01 As a Study Coordinator, when I save the month i
 	| Device Implant Date 8 | UN 07 1972  | datetime     |
 	| Device Implant Date 9 | UN UN 1972  | datetime     |
 	| Device Implant Time   | 11:59 am    | datetime     |
-	Then I should see data for fields in CRF
+	Then I should see data on Fields in CRF
 	| Field                 | Data        |
 	| Device Implant Date 1 | UN          |
 	| Device Implant Date 2 | JUL         |
@@ -93,7 +93,7 @@ Scenario: @PB_US10246_DT13300_02 As a Study Coordinator, I save an unknown month
 	| Device Implant Date 8 | UN 07 1972  | datetime     |
 	| Device Implant Date 9 | UN UN 1972  | datetime     |
 	| Device Implant Time   | 11:59 am    | datetime     |
-	Then I should see data for fields in CRF
+	Then I should see data on Fields in CRF
 	| Field                 | Data        |
 	| Device Implant Date 1 | UN          | 
 	| Device Implant Date 2 | JUL         |
@@ -110,7 +110,7 @@ Scenario: @PB_US10246_DT13300_02 As a Study Coordinator, I save an unknown month
 	| Field                 | Data        |
 	| Device Implant Date 6 | 12 Jul 1972 |
 	| Device Implant Date 7 | UN Jul 1972 |
-	Then I should see data for fields in CRF
+	Then I should see data on Fields in CRF
 	| Field                 | Data        |
 	| Device Implant Date 6 | 12 JUL 1972 |
 	| Device Implant Date 7 | UN JUL 1972 |
@@ -139,7 +139,7 @@ Scenario: @PB_US10246_DT13300_03  As a Study Coordinator, My Profile > Locale is
 	| Device Implant Date 8 | UN 07 1972  | datetime     |
 	| Device Implant Date 9 | UN UN 1972  | datetime     |
 	| Device Implant Time   | 11:59 am    | datetime     |
-	Then I should see data for fields in CRF
+	Then I should see data on Fields in CRF
 	| Field                 | Data        |
 	| Device Implant Date 1 | UN          |
 	| Device Implant Date 2 | JUL         |
@@ -164,7 +164,7 @@ Scenario: @PB_US10246_DT13300_03  As a Study Coordinator, My Profile > Locale is
 	| Device Implant Date 6 | 12 Aug 1972 | datetime     |
 	| Device Implant Date 7 | UN Aug 1972 | datetime     |
 	| Device Implant Time   | 11:59 pm    | datetime     |
-	Then I should see data for fields in CRF
+	Then I should see data on Fields in CRF
 	| Field                 | Data        |
 	| Device Implant Date 2 | AUG         |
 	| Device Implant Date 4 | 12 AUG 1972 |

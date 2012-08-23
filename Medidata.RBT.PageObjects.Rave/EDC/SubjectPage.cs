@@ -11,7 +11,7 @@ using TechTalk.SpecFlow;
 
 namespace Medidata.RBT.PageObjects.Rave
 {
-	public class SubjectPage : BaseEDCTreePage,ICanVerifyInOrder
+	public class SubjectPage : BaseEDCPage,ICanVerifyInOrder
 	{
         public IWebElement GetTaskSummaryArea(string header)
 		{

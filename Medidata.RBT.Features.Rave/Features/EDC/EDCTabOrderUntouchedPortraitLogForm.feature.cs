@@ -79,7 +79,7 @@ namespace Medidata.RBT.Features.Rave.Features.EDC
 #line 61
  testRunner.And("I select a Subject \"777777779{Var(num1)}\"");
 #line 62
- testRunner.Given("I select link \"Log Form Portrait\" located in \"Left Nav\"");
+ testRunner.Given("I select Folder \"Log Form Portrait\"");
 #line hidden
         }
         

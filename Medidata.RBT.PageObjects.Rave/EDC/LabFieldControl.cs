@@ -41,7 +41,10 @@ namespace Medidata.RBT.PageObjects.Rave
         }
 
  
-
+		/// <summary>
+		///  see base method
+		/// </summary>
+		/// <returns></returns>
         protected override IWebElement GetFieldControlContainer()
         {
             return MainTR.Parent();

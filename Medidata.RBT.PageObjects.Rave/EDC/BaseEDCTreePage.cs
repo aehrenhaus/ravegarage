@@ -7,9 +7,41 @@ using Medidata.RBT.SeleniumExtension;
 
 namespace Medidata.RBT.PageObjects.Rave
 {
-	public class BaseEDCTreePage : RavePageBase
+	public  class BaseEDCPage : RavePageBase
 	{
-		public BaseEDCTreePage SelectFolder(string folderName)
+		public virtual IEDCFieldControl FindField(string fieldName)
+		{
+			throw new NotImplementedException();
+		}
+
+
+		public BaseEDCPage FillDataPoints(IEnumerable<FieldModel> fields)
+		{
+			foreach (var field in fields)
+				FindField(field.Field).EnterData(field.Data, EnumHelper.GetEnumByDescription<ControlType>(field.ControlType));
+
+			return this;
+		}
+
+		public BaseEDCPage CancelForm()
+		{
+			IWebElement btn = Browser.WaitForElement("footer_CB");
+			if (btn == null)
+				throw new Exception("Can not find the Cancel button");
+			btn.Click();
+			return this;
+		}
+
+		public BaseEDCPage SaveForm()
+		{
+			IWebElement btn = Browser.WaitForElement("footer_SB");
+			if (btn == null)
+				throw new Exception("Can not find the Save button");
+			btn.Click();
+			return this;
+		}
+
+		public BaseEDCPage SelectFolder(string folderName)
 		{
 			//navigate to subject first, incase it is alreay in a folder.
 			IWebElement subLink = Browser.FindElementById("_ctl0_PgHeader_TabTextHyperlink3");

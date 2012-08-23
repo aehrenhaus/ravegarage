@@ -56,7 +56,7 @@ Background:
 	#And I note "CRF Version"
 	And I select Study "Standard Study" and Site "Site 1"
 	And I select a Subject "777777779{Var(num1)}"
-	Given I select link "Log Form Landscape" located in "Left Nav"
+	Given I select Folder "Log Form Landscape"
 	
   
 @release_2012.1.0

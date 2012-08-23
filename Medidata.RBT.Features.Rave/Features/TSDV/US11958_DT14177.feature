@@ -98,17 +98,17 @@ Scenario: Enroll 10 subjects in a study to verify that TSDV has randomized the s
 		| Edit Check Study 3 | Prod        |
 	And I click button "Submit Report"
 	And I switch to "Targeted SDV Study Plan" window
-	And I select "Asia"
-	And I select "Edit Check Site 1"
+	And I select link "Asia"
+	And I select link "Edit Check Site 1"
 	And I inactivate the plan
 
 	And I switch to "Reports" window
-	And I select "Home"
+	And I select link "Home"
 	And I create 10 random Subjects with name "TSDV" in Study "Edit Check Study 3" in Site "Edit Check Site 1"
 	
 	When I switch to "Targeted SDV Site Plan" window
-	And I select "Asia"
-	And I select "Edit Check Site 1"
+	And I select link "Asia"
+	And I select link "Edit Check Site 1"
 	And  I activate the plan
 	
 	And I switch to "Home - Medidata Rave" window
@@ -119,11 +119,11 @@ Scenario: Enroll 10 subjects in a study to verify that TSDV has randomized the s
 		| Edit Check Study 3			 | Prod        |
 	And I click button "Submit Report"
 	And I switch to "Targeted SDV Subject Override" window
-	And I select "Subject Include"
+	And I select link "Subject Include"
 	And I filter by site "Edit Check Site 1: 10001"
 	And I include 10 subjects in TSDV
 
-	And I select "Subject Override"
+	And I select link "Subject Override"
 	And I filter by site "Edit Check Site 1: 10001"
 	Then I verify that Tiers in subject override table are not in the following order
 		| Tier Name         | Row |
@@ -152,7 +152,7 @@ Scenario: Enroll 10 subjects in a study to verify that TSDV has randomized the s
 	And  I activate the plan
 
 	And I switch to "Reports" window
-	And I select "Home"
+	And I select link "Home"
 	And I create 10 random Subjects with name "TSDV" in Study "Edit Check Study 3" in Site "Edit Check Site 2"
 
 	And I switch to "Home - Medidata Rave" window
@@ -189,11 +189,11 @@ Scenario: Enroll 10 subjects in a study to verify that TSDV has randomized the s
 		| Edit Check Study 3			 | Prod        |
 	And I click button "Submit Report"
 	And I switch to "Targeted SDV Study Plan" window
-	And I select "World"
+	And I select link "World"
 	And I activate the plan
 
 	And I switch to "Reports" window
-	And I select "Home"
+	And I select link "Home"
 	And I create 10 random Subjects with name "TSDV" in Study "Edit Check Study 3" in Site "Edit Check Site 3"
 
 	And I switch to "Home - Medidata Rave" window
@@ -230,12 +230,12 @@ Scenario: Enroll 10 subjects in a study to verify that TSDV has randomized the s
 		| Edit Check Study 3			 | Prod        |
 	And I click button "Submit Report"
 	And I switch to "Targeted SDV Study Plan" window
-	And I select "North America"
-	And I select "Edit Check Site 4"
+	And I select link "North America"
+	And I select link "Edit Check Site 4"
 	And I activate the plan
 
 	And I switch to "Reports" window
-	And I select "Home"
+	And I select link "Home"
 	And I create 10 random Subjects with name "TSDV" in Study "Edit Check Study 3" in Site "Edit Check Site 4"
 
 	And I switch to "Home - Medidata Rave" window

@@ -81,7 +81,7 @@ namespace Medidata.RBT.Features.Rave.Features.EDC
 #line 18
  testRunner.And("I select a Subject \"777777779{Var(num1)}\"");
 #line 19
- testRunner.Given("I select link \"Log Form Landscape (Set)\" located in \"Left Nav\"");
+ testRunner.Given("I select Folder \"Log Form Landscape (Set)\"");
 #line hidden
         }
         
