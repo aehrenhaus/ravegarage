@@ -147,6 +147,7 @@ namespace Medidata.RBT.PageObjects.Rave
             if (visits == null)
             {
                 ClickButton("PromptsBox_iid_ShowHideBtn");
+                Thread.Sleep(2000);
                 ChooseFromCheckboxes("PromptsBox_iid_div", "PromptsBox_iid_SelectAll", true);
                 ClickButton("Submit Report");
 
