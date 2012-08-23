@@ -41,12 +41,12 @@ namespace Medidata.RBT.PageObjects.Rave
 		}
 
 		//
-		public SubjectPage CreateSubject(Table table)
+		public SubjectPage CreateSubject(IEnumerable<FieldModel> dps)
 		{
 			IWebElement addSubjectLink = Browser.WaitForElement("lbAddSubject");
 			addSubjectLink.Click();
 			var prp =new PrimaryRecordPage();
-            SubjectPage subPage = prp.FillNameAndSave(table);
+            SubjectPage subPage = prp.FillNameAndSave(dps);
 			
 			return subPage;
 		}

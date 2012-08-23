@@ -70,7 +70,7 @@ Scenario:@US11547-01 By default, the Add Event feature should be available for a
 	Then I can see "enabled" dropdown labeled "Add Event"
 	And I can see "Add" button
 	And I take a screenshot
-	When I select "Grid View"
+	When I select link "Grid View"
 	Then I can see "enabled" dropdown labeled "Add Event"
 	And I can see "Add" button
 	And I take a screenshot
@@ -256,7 +256,7 @@ Scenario:@US11547-11 A user with lock permission can see the disable add event b
 	And I select a Subject "SUB004"
 	And The "Disable" button is available
 	And I take a screenshot
-	And I select "Grid View"
+	And I select link "Grid View"
 	Then I can see "Disable" button
 	And I take a screenshot
 	And I log out of Rave
@@ -274,7 +274,7 @@ Scenario Outline:@US11547-12 A user without lock permission cannot see the disab
 	When I am logged in to Rave with username "<User Name>" and password "<Password>"
 	And I select Study "Study A" and Site "Site A1" 
 	And I select a Subject "SUB004"
-	And I select "Grid View"
+	And I select link "Grid View"
 	Then I can not see "Disable" button
 	And I take a screenshot
 	And I log out of Rave
@@ -293,7 +293,7 @@ Scenario:@US11547-13 The "Disable Add Events" tool tip displays when a user hove
 	And I select a Subject "SUB004"
 	And The "Disable" button is available
 	And I take a screenshot
-	And I select "Grid View"
+	And I select link "Grid View"
 	When The "Disable" button is available
 	Then I can see tooltip "Disable Add Events" on button labeled "Disable"
 	And I take a screenshot
@@ -308,7 +308,7 @@ Scenario:@US11547-14 Clicking on the disable add event button disables the Add E
 	And I select a Subject "SUB004"
 	And The "Disable" button is available
 	And I take a screenshot
-	And I select "Grid View"
+	And I select link "Grid View"
 	When I click button "Disable"
 	Then I can see "disabled" dropdown labeled "Add Event"
 	And I can not see "Add" button
@@ -330,7 +330,7 @@ Scenario:@US11547-15 A user should not be able to add event if the Add Event fea
 	When I am logged in to Rave with username "cdm1" and password "password"
 	And I select Study "Study A" and Site "Site A1" 
 	And I select a Subject "SUB004"
-	And I select "Grid View"
+	And I select link "Grid View"
 	Then I can not see "Add" button
 	And I can see Add Event lock icon
 	And I take a screenshot
@@ -350,13 +350,13 @@ Scenario Outline:@US11547-16 A user with unlock permission can see the enable ad
 	When I am logged in to Rave with username "<User Name>" and password "<Password>"
 	And I select Study "Study A" and Site "Site A1" 
 	And I select a Subject "SUB004"
-	And I select "Grid View"
+	And I select link "Grid View"
 	Then I can see "Enable" button
 	And I take a screenshot
 	When I am logged in to Rave with username "<User Name>" and password "<Password>"
 	And I select Study "Study A" and Site "Site A1" 
 	And I select a Subject "SUB005"
-	And I select "Grid View"
+	And I select link "Grid View"
 	Then I can not see "Enable" button
 	And I take a screenshot
 	
@@ -379,13 +379,13 @@ Scenario Outline:@US11547-17 A user without unlock permission cannot see the ena
 	When I am logged in to Rave with username "<User Name>" and password "<Password>"
 	And I select Study "Study A" and Site "Site A1" 
 	And I select a Subject "SUB004"
-	And I select "Grid View"
+	And I select link "Grid View"
 	Then I can not see "Enable" button
 	And I take a screenshot
 	When I am logged in to Rave with username "<User Name>" and password "<Password>"
 	And I select Study "Study A" and Site "Site A1" 
 	And I select a Subject "SUB005"
-	And I select "Grid View"
+	And I select link "Grid View"
 	Then I can not see "Enable" button
 	And I take a screenshot
 	And I log out of Rave
@@ -404,7 +404,7 @@ Scenario:@US11547-18 The "Enable Add Events" tool tip displays when a user hover
 	And I select a Subject "SUB004"
 	And The "Enable" button is available
 	And I take a screenshot
-	And I select "Grid View"
+	And I select link "Grid View"
 	When The "Enable" button is available
 	Then I can see tooltip "Enable Add Events" on button labeled "Enable"
 	And I take a screenshot
@@ -437,7 +437,7 @@ Scenario:@US11547-20 Disabling the Add Event feature on the subject home page al
 	And The "Disable" button is available
 	And I click button "Disable"
 	And I take a screenshot
-	And I select "Grid View"
+	And I select link "Grid View"
 	Then I can see "disabled" dropdown labeled "Add Event"
 	Then I can not see "Add" button
 	Then I can not see "Disable" button
@@ -453,10 +453,10 @@ Scenario:@US11547-21 Disabling the Add Event feature on the subject grid view pa
 	And I select a Subject "SUB004"
 	And The "Disable" button is available
 	And I take a screenshot
-	And I select "Grid View"
+	And I select link "Grid View"
 	And I click button "Disable"
 	And I take a screenshot
-	And I select "Calendar View"
+	And I select link "Calendar View"
 	Then I can see "disabled" dropdown labeled "Add Event"
 	Then I can not see "Add" button
 	Then I can not see "Disable" button
@@ -473,7 +473,7 @@ Scenario:@US11547-22 Enabling the Add Event feature on the subject home page als
 	And The "Enable" button is available
 	And I take a screenshot
 	And I click button "Enable"
-	And I select "Grid View"
+	And I select link "Grid View"
 	Then I can see "enabled" dropdown labeled "Add Event"
 	Then I can see "Add" button
 	Then I can not see "Enable" button
@@ -487,13 +487,13 @@ Scenario:@US11547-23 Enabling the Add Event feature on the subject grid view pag
 	When I am logged in to Rave with username "defuser" and password "password"
 	And I select Study "Study A" and Site "Site A1" 
 	And I select a Subject "SUB004"
-	And I select "Grid View"
+	And I select link "Grid View"
 	And The "Disable" button is available
 	And I take a screenshot
 	And I click button "Disable"
 	And I click button "Enable"
 	And I take a screenshot
-	And I select "Calendar View"
+	And I select link "Calendar View"
 	Then I can see "enabled" dropdown labeled "Add Event"
 	Then I can see "Add" button
 	Then I can not see "Enable" button
@@ -507,10 +507,10 @@ Scenario:@US11547-24 Locking "All" in the subject grid view page disables the Ad
 	When I am logged in to Rave with username "defuser" and password "password"
 	And I select Study "Study A" and Site "Site A1" 
 	And I select a Subject "SUB004"
-	And I select "Grid View"
+	And I select link "Grid View"
 	And The "Disable" button is available
 	And I take a screenshot
-	When I select "All"
+	When I select link "All"
 	And I check Lock checkbox
 	And I click radiobutton with label "Set"
 	And I take a screenshot
@@ -529,8 +529,8 @@ Scenario:@US11547-25 Unlocking "All" in the subject grid view page enables the A
 	When I am logged in to Rave with username "defuser" and password "password"
 	And I select Study "Study A" and Site "Site A1" 
 	And I select a Subject "SUB004"
-	And I select "Grid View"
-	When I select "All"
+	And I select link "Grid View"
+	When I select link "All"
 	And I check Lock checkbox
 	And I click radiobutton with label "Set"
 	And I take a screenshot

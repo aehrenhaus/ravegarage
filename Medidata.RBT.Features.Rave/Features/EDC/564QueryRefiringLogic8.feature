@@ -39,8 +39,8 @@ Background:
 Scenario: PB_8.1.1 As an EDC user, Data setup and verification for query re-firing. Folder "Screening" enter and save data on forms "Informed Consent" and "Concomitant Medications"
 	
 	And I navigate to "DDE"
-	And I select "First Pass"
-	And I select "New Batch"
+	And I select link "First Pass"
+	And I select link "New Batch"
 	And I choose "Edit Check Study 3" from "Study"
 	And I choose "Prod" from "Environment"
 	And I choose "Edit Check Site 8" from "Site"
@@ -71,7 +71,7 @@ Scenario: PB_8.1.1 As an EDC user, Data setup and verification for query re-firi
 	
 	And I am logged in to Rave with username "Defuser01" and password "password"
 	And I navigate to "DDE"
-	And I select "Second Pass"
+	And I select link "Second Pass"
 	And I choose "Edit Check Study 3" from "Study"
 	And I choose "Prod" from "Environment"
 	And I choose "Edit Check Site 8" from "Site"
@@ -251,7 +251,7 @@ Scenario: PB_8.2.1 Task Summary
     And I select a Subject "sub{Var(num1)}"
 	When I expand "Open Queries" in Task Summary
 	Then I should see "Screening-Concomitant Medications" in "Open Queries"
-	And I select "Screening-Concomitant Medications" in "Open Queries"
+	And I select link "Screening-Concomitant Medications" in "Open Queries"
 	When I open log line 3
 	Then I verify Query is displayed
 		| Field                | Query Message                                                                                                  | Answered | Closed |
@@ -262,7 +262,7 @@ Scenario: PB_8.2.1 Task Summary
     And I select a Subject "sub{Var(num1)}"
 	When I expand "Cancel Queries" in Task Summary
 	Then I should see "Screening-Concomitant Medications" in "Cancel Queries"
-	And I select "Screening-Concomitant Medications" in "Cancel Queries"
+	And I select link "Screening-Concomitant Medications" in "Cancel Queries"
 	When I open log line 3
 	Then I verify Query is displayed
 		| Field                | Query Message                                                                                                  | Answered | Closed |
@@ -451,7 +451,7 @@ Scenario: PB_8.4.1 Migrate Subject
 
 	And I navigate to "Home"
 	And I navigate to "Architect"
-	And I select "AM Edit Check Study" in "Active Projects"
+	And I select link "AM Edit Check Study" in "Active Projects"
 	And I create Draft "Draft {RndNum<d#>(5)}" from Project "AM Edit Check Study" and Version "V1 ({Var(ver#)})"
 	And I navigate to "Edit Checks"
 	And I inactivate edit check "Mixed Form Query"
@@ -467,7 +467,7 @@ Scenario: PB_8.4.1 Migrate Subject
 	And I take a screenshot
 	And I navigate to "Execute Plan"
 	And I migrate all Subjects
-	And I select "Migration Results"
+	And I select link "Migration Results"
 	And I verify Job Status is set to Complete
 	And I take a screenshot	
 	And I navigate to "Home"
@@ -519,8 +519,8 @@ Scenario: PB_8.4.1 Migrate Subject
 	And I take a screenshot	
 	And I navigate to "Home"
 	And I navigate to "Architect"
-	And I select "AM Edit Check Study" in "Active Projects"
-	And I select "Draft {Var(d#)}" in "CRF Drafts"
+	And I select link "AM Edit Check Study" in "Active Projects"
+	And I select link "Draft {Var(d#)}" in "CRF Drafts"
 	And I navigate to "Edit Checks"
 	And I activate edit check "Mixed Form Query"
 	And I select Draft "Draft {Var(d#)}" in "Header"
@@ -533,7 +533,7 @@ Scenario: PB_8.4.1 Migrate Subject
 	And I click button "Create Plan"
 	And I navigate to "Execute Plan"
 	And I migrate all Subjects
-	And I select "Migration Results"
+	And I select link "Migration Results"
 	And I verify Job Status is set to Complete 
 	And I take a screenshot	
 	And I navigate to "Home"
@@ -574,13 +574,13 @@ Scenario: PB_8.4.1 Migrate Subject
 Scenario: PB_8.5.1 Publish Checks
 
 	And I navigate to "Architect"
-	And I select "AM Edit Check Study" in "Active Projects"
-	And I select "Draft 1" in "CRF Drafts"
+	And I select link "AM Edit Check Study" in "Active Projects"
+	And I select link "Draft 1" in "CRF Drafts"
 	And I publish CRF Version "Pub1{RndNum<TV#>(5)}"
 	And I note down "crfversion" to "newversion1#"
-	And I select "AM Edit Check Study" in "Header"
+	And I select link "AM Edit Check Study" in "Header"
 	And I push CRF Version "{Var(newversion1#)}" to "All Sites"
-	And I select "Draft 1" in "CRF Drafts"
+	And I select link "Draft 1" in "CRF Drafts"
 	And I publish CRF Version "Pub2{RndNum<TV#>(5)}"
 	And I note down "crfversion" to "newversion2#"
 	And I publish CRF Version "Pub1{RndNum<TV#>(5)}"
@@ -612,17 +612,17 @@ Scenario: PB_8.5.1 Publish Checks
 	And I take a screenshot	
 	And I navigate to "Home"
 	And I navigate to "Architect"
-	And I select "AM Edit Check Study" in "Active Projects"
-	And I select "Publish Checks"
+	And I select link "AM Edit Check Study" in "Active Projects"
+	And I select link "Publish Checks"
 	And I choose "{Var(newversion1#)}" from "Current CRF Version"
 	And I choose "{Var(newversion2#)}" from "Reference CRF Version"
 	And I click button "Create Plan"
 	And I check "Inactivate" in "Mixed Form Query"
-	And I select "Save"
+	And I select link "Save"
 	And I take a screenshot
-	And I select "Publish"
+	And I select link "Publish"
 	And I accept alert window
-	And I select "Migration Results"
+	And I select link "Migration Results"
 	And I verify Job Status is set to Complete
 	And I take a screenshot	
 	And I navigate to "Home"
@@ -639,17 +639,17 @@ Scenario: PB_8.5.1 Publish Checks
 	And I take a screenshot	
 	And I navigate to "Home"
 	And I navigate to "Architect"
-	And I select "AM Edit Check Study" in "Active Projects"
-	And I select "Publish Checks"
+	And I select link "AM Edit Check Study" in "Active Projects"
+	And I select link "Publish Checks"
 	And I choose "{Var(newversion1#)}" from "Current CRF Version"
 	And I choose "{Var(newversion3#)}" from "Reference CRF Version"
 	And I click button "Create Plan"
 	And I check "Publish" in "Mixed Form Query"
-	And I select "Save"
+	And I select link "Save"
 	And I take a screenshot
-	And I select "Publish"
+	And I select link "Publish"
 	And I accept alert window
-	And I select "Migration Results"
+	And I select link "Migration Results"
 	And I verify Job Status is set to Complete
 	And I take a screenshot
 	And I navigate to "Home"
@@ -752,7 +752,7 @@ Scenario: PB_8.6.1 Queries verification on data points with Freeze, Hard lock an
 	And I open the last log line
 	And I take a screenshot
 	And I click button "Cancel"
-	And I select "Inactivate"
+	And I select link "Inactivate"
 	And I choose "3" from "Inactivate"
 	And I click button "Inactivate"
 	And I take a screenshot
@@ -771,7 +771,7 @@ Scenario: PB_8.6.1 Queries verification on data points with Freeze, Hard lock an
 		| Log Field 1 | Query Opened on Log Field 1 | false    | false  |
 	And I take a screenshot
 	And I click button "Cancel"
-	And I select "Reactivate"
+	And I select link "Reactivate"
 	And I choose "3" from "Reactivate"
 	And I click button "Reactivate"
 	And I take a screenshot

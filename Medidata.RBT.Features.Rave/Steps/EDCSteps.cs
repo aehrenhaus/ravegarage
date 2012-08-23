@@ -57,10 +57,13 @@ namespace Medidata.RBT.Features.Rave
             {
                 var page = CurrentPage.As<HomePage>().SelectStudy(studyName).SelectSite(siteName);
                 var randomSubjectNumber = SpecialStringHelper.Replace("{RndNum<num1>(5)}");
-                Table table = new Table("Data", "Field");                
-                table.AddRow(randomSubjectNumber, "Subject Number");
-                table.AddRow(subjectName, "Subject Initials");
-                page.CreateSubject(table);
+   
+				IEnumerable<FieldModel> dps = new List<FieldModel>
+				{
+					new FieldModel{ Field= "Subject Number", Data=randomSubjectNumber },
+					new FieldModel{ Field= "Subject Initials", Data=subjectName }
+				};
+				page.CreateSubject(dps);
                 page.NavigateTo("Home");
             }
         }
@@ -83,7 +86,7 @@ namespace Medidata.RBT.Features.Rave
 		public void ICreateASubject____(Table table)
 		{
 			SpecialStringHelper.ReplaceTableColumn(table, "Data");
-			CurrentPage = CurrentPage.As<HomePage>().CreateSubject(table);
+			CurrentPage = CurrentPage.As<HomePage>().CreateSubject(table.CreateSet<FieldModel>());
 		}
 
 		/// <summary>
@@ -93,7 +96,7 @@ namespace Medidata.RBT.Features.Rave
 		[StepDefinition(@"I select Folder ""([^""]*)""")]
 		public void ISelectFolder____(string folderName)
 		{
-			CurrentPage = CurrentPage.As<BaseEDCTreePage>().SelectFolder(folderName);
+			CurrentPage = CurrentPage.As<BaseEDCPage>().SelectFolder(folderName);
 
 		}
 
@@ -104,7 +107,7 @@ namespace Medidata.RBT.Features.Rave
 		[StepDefinition(@"I select Form ""([^""]*)""")]
 		public void ISelectForm____(string formName)
 		{
-			CurrentPage = CurrentPage.As<BaseEDCTreePage>().SelectForm(formName);
+			CurrentPage = CurrentPage.As<BaseEDCPage>().SelectForm(formName);
 		}
 
 		/// <summary>
@@ -125,7 +128,7 @@ namespace Medidata.RBT.Features.Rave
         /// Verifies data exists in the datapa/record we are already in
         /// </summary>
         /// <param name="table"></param>
-        [Then(@"I should see data for fields in CRF")] 
+        [Then(@"I should see data on Fields in CRF")] 
         public void ThenIShouldSeeInCRF(Table table)
         {
             CRFPage page = CurrentPage.As<CRFPage>();
@@ -142,8 +145,8 @@ namespace Medidata.RBT.Features.Rave
         /// </summary>
         /// <param name="clinSignificance"></param> 
         /// <param name="field"></param> 
-        [StepDefinition(@"I should not see Clinical Significance ""([^""]*)"" for field ""([^""]*)""")]
-        public void IDontSeeClinSignificance____(string clinSignificance, string field)
+        [StepDefinition(@"I should not see Clinical Significance ""([^""]*)"" on Field ""([^""]*)""")]
+        public void IShouldNotSeeClinicalSignificance____OnField____(string clinSignificance, string field)
         {
             CRFPage page = CurrentPage.As<CRFPage>();
             bool notFound = page.FieldWithClinSignificanceExists(clinSignificance, field);
@@ -169,8 +172,8 @@ namespace Medidata.RBT.Features.Rave
 		[StepDefinition(@"I select Form ""([^""]*)"" in Folder ""([^""]*)""")]
 		public void ISelectForm____InFolder____(string formName, string folderName)
 		{
-			CurrentPage = CurrentPage.As<BaseEDCTreePage>().SelectFolder(folderName);
-			CurrentPage = CurrentPage.As<BaseEDCTreePage>().SelectForm(formName);
+			CurrentPage = CurrentPage.As<BaseEDCPage>().SelectFolder(folderName);
+			CurrentPage = CurrentPage.As<BaseEDCPage>().SelectForm(formName);
 		}
 
 
@@ -232,7 +235,9 @@ namespace Medidata.RBT.Features.Rave
 		[StepDefinition(@"I click audit on Field ""([^""]*)""")]
 		public void IClickAuditOnField____(string fieldName)
 		{
-			CurrentPage = CurrentPage.As<CRFPage>().FindField(fieldName).ClickAudit();
+			CurrentPage = CurrentPage.As<CRFPage>()
+				.FindField(fieldName)
+				.ClickAudit();
 		}
 
 		/// <summary>
@@ -246,13 +251,10 @@ namespace Medidata.RBT.Features.Rave
 			foreach (var a in audits)
 			{
 				bool exist = CurrentPage.As<AuditsPage>().AuditExist(a);
-				Assert.IsTrue(exist, "Audit does not exist");
+				Assert.IsTrue(exist, string.Format ("Audit {0} does not exist",a.AuditType));
 			}
 		}
 
-		[StepDefinition(@"I select link ""([^""]*)"" located in ""([^""]*)""")]        public void WhenISelectLink____LocatedIn____(string logForm, string leftNav)        {
-            CurrentPage = CurrentPage.As<SubjectPage>().SelectForm(logForm);
-        }
 
         [Then(@"the cursor focus is ([^""]*)located on ""([^""]*)"" in the column labeled ""([^""]*)"" in the ""([^""]*)"" position in the ""([^""]*)"" row")]
         public void TheCursorFocusIs____LocatedOn____InTheColumnLabeled____InThe____RowAndThe____PositionInThatRow(string not, string controlType, string fieldName, string positionText, string rowText)

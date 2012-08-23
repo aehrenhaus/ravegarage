@@ -322,7 +322,7 @@ Scenario: @PB-DT10514-05 As an EDC user, I have a partially locked lab form, and
 	And I navigate to "Home"
 	And I select Study "Mediflex" and Site "LabSite01"
 	And I select a Subject "SUB{Var(num1)}"
-	And I select "SubjectEnrollment"
+	And I select link "SubjectEnrollment"
 #Need new step def
 #	And I edit CRF page
 	And I enter data in CRF and save

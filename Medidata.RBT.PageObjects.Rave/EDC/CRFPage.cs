@@ -14,15 +14,9 @@ using System.Collections.ObjectModel;
 
 namespace Medidata.RBT.PageObjects.Rave
 {
-    public class CRFPage : BaseEDCTreePage
+    public class CRFPage : BaseEDCPage
     {
-        public CRFPage FillDataPoints(IEnumerable<FieldModel> fields)
-        {
-            foreach (var field in fields)
-				FindField(field.Field).EnterData(field.Data, EnumHelper.GetEnumByDescription < ControlType>(field.ControlType));
-
-            return this;
-        }
+   
 
         public CRFPage SelectUnitsForFields(IEnumerable<LabRangeModel> units)
         {
@@ -76,23 +70,7 @@ namespace Medidata.RBT.PageObjects.Rave
             return this;
         }
 
-        public CRFPage CancelForm()
-        {
-            IWebElement btn = Browser.WaitForElement("Content_R_footer_CB");
-            if (btn == null)
-                throw new Exception("Can not find the Cancel button");
-            btn.Click();
-            return this;
-        }
 
-        public CRFPage SaveForm()
-        {
-            IWebElement btn = Browser.WaitForElement("Content_R_footer_SB");
-            if (btn == null)
-                throw new Exception("Can not find the Save button");
-            btn.Click();
-            return this;
-        }
 
         #region Query related
         public AuditsPage ClickAuditOnField(string fieldName)
@@ -113,6 +91,12 @@ namespace Medidata.RBT.PageObjects.Rave
             }
         }
 
+		/// <summary>
+		/// TODO: please refactor this method. Make it a method on IEDCField, not on CRFPage
+		/// </summary>
+		/// <param name="clinSignificance"></param>
+		/// <param name="fieldText"></param>
+		/// <returns></returns>
         public bool FieldWithClinSignificanceExists(string clinSignificance, string fieldText)
         {
             IWebElement el = TestContext.Browser.FindElements(By.XPath("//span[contains(@id,'Content_R')]")).FirstOrDefault();
@@ -132,6 +116,17 @@ namespace Medidata.RBT.PageObjects.Rave
             return false;
         }
 
+		public override IEDCFieldControl FindField(string fieldName)
+		{
+			return FindField(fieldName, "Field");
+		}
+
+		/// <summary>
+		/// TODO: what is Unit?
+		/// </summary>
+		/// <param name="fieldName"></param>
+		/// <param name="attribute"></param>
+		/// <returns></returns>
         public IEDCFieldControl FindField(string fieldName, string attribute = "Field")
         {
             if (attribute.Equals("Field"))

@@ -103,7 +103,7 @@ Scenario: PB_DT13905_01 As an EDC user, when I create a unit conversion formula 
 	| Field | Data  | Unit   |
 	| WBC   | 10    | 10^9/L |
 	And I take a screenshot
-	And I select "Home"
+	And I select link "Home"
 	And I navigate to "Lab Administration"
 	And I navigate to "Unit Conversions"
 	And I add new unit conversion data
@@ -168,7 +168,7 @@ Scenario: PB_DT13905_02 As an EDC user, when I update a unit conversion formula 
 	| SUB{Var(num1)} | Hematology | WBC         | 10           | 10^9/L   | 20       | %        |
 	And I take a screenshot
 	And I switch to "Reports" window
-	And I select "Home"
+	And I select link "Home"
 	And I navigate to "Lab Administration"
 	And I navigate to "Unit Conversions"
 	And I edit unit conversion data
@@ -193,7 +193,7 @@ Scenario: PB_DT13905_02 As an EDC user, when I update a unit conversion formula 
 	| SUB{Var(num1)} | Hematology | WBC         | 10           | 10^9/L   | 30       | %        |
 	And I take a screenshot
 	And I switch to "Reports" window
-	And I select "Home"
+	And I select link "Home"
 	And I navigate to "Lab Administration"
 	And I navigate to "Unit Conversions"
 
@@ -233,7 +233,7 @@ Scenario: PB_DT13905_03 As an EDC user, when I create a unit conversion formula 
 	| WBC         | 10   | 10^9/L |
 	| NEUTROPHILS | 10   | 10^9/L |
 	And I take a screenshot 
-	And I select "Home"
+	And I select link "Home"
 	And I navigate to "Lab Administration"
 	And I navigate to "Unit Conversions"
 	And I add new unit conversion data
@@ -301,7 +301,7 @@ Scenario: PB_DT13905_04 As an EDC user, when I update a unit conversion formula 
 	| SUB{Var(num1)} | Hematology | WBC         | 10           | 10^9/L   | 40       | %        |
 	And I take a screenshot
 	And I switch to "Reports" window
-	And I select "Home"
+	And I select link "Home"
 	And I navigate to "Lab Administration"
 	And I navigate to "Unit Conversions"
 	And I edit unit conversion data
