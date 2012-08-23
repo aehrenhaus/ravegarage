@@ -29,15 +29,8 @@ namespace Medidata.RBT.PageObjects.Rave
 
 		public override IPage ClickButton(string textOrName)
 		{
-			if (textOrName == "Submit Report")
-			{
-				base.ClickButton(textOrName);
-				return TestContext.POFactory.GetPage(reportPOName);
-			}
 			return base.ClickButton(textOrName);
 		}
-
-
 
 		public PromptsPage SetParameter(string name, Table table)
 		{
@@ -65,7 +58,6 @@ namespace Medidata.RBT.PageObjects.Rave
             }, out foundOnPage);
 
             return this;
-
         }
 
 		private IWebElement FindParameterTr(string name)
@@ -147,12 +139,29 @@ namespace Medidata.RBT.PageObjects.Rave
 				checkButton.Click();
 			}
 
-
-
-
             return this;
         }
 
+        public void GenerateReport(List<string> visits = null)
+        {
+            if (visits == null)
+            {
+                ClickButton("PromptsBox_iid_ShowHideBtn");
+                ChooseFromCheckboxes("PromptsBox_iid_div", "PromptsBox_iid_SelectAll", true);
+                ClickButton("Submit Report");
+
+                Thread.Sleep(2000);
+                List<String> extractedFilePaths = UnzipAllDownloads();
+
+                StringBuilder sb = new StringBuilder();
+
+                foreach (string filePath in extractedFilePaths)
+                    if (filePath.ToLower().EndsWith(".pdf"))
+                        sb.Append(new PDF("TripReports", filePath).Text);
+
+                TestContext.ScenarioText = sb.ToString();
+            }
+        }
 
         public bool GoNextPage(string areaIdentifier)
         {

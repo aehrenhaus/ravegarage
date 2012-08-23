@@ -170,10 +170,24 @@ namespace Medidata.RBT
         /// <returns></returns>
         void SelectLink(string linkText);
 
+        /// <returns></returns>
+        /// <summary>
+        /// Delete a removeableObject on the page.
+        /// </summary>
+        /// /// <param name="removeableObject">Element to be deleted</param>
+        /// <returns></returns>
+        void DeleteObjectOnPage(RemoveableObject removeableObject);
+
         void FocusOnElementById(string id);
         IWebElement GetCurrentFocusedElement();
         long GetPageOffsetX();
         long GetPageOffsetY();
+
+        /// <summary>
+        /// Unzip all zip files in the download path provided in the app.config returns a list of the extracted files' paths.
+        /// </summary>
+        /// <returns></returns>
+        List<String> UnzipAllDownloads();
 
 		/// <summary>
 		/// 

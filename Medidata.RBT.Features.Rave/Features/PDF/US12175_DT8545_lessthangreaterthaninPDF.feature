@@ -28,19 +28,7 @@ Feature: When an EDC form contains special characters such as "<" ">" "<=" ">=" 
 	|Meiryo                   |
 	
 	This rendering should be implemented for blank PDFs, annotated PDFs, data populated PDFs, Rave Monitor Trip Report PDFs. 
-	This rendering should be implemented for:
-		translations
-		field pretext
-		data dictionaries on the CRF but NOT in the audit trail
-		unit dictionaries on the CRF but NOT in the audit trail
-		coding dictionaries on the CRF but NOT in the audit trail
-		lab units on the CRF but NOT in the audit trail (does not apply to Rave Monitor Trip Report PDFs)
-		lab ranges on the CRF but NOT in the audit trail (does not apply to Rave Monitor Trip Report PDFs)
-	This rendering will NOT be implented for:
-		bookmarks
-		lab names
-		Form names
-		
+	This rendering should be implemented for all parts of the PDFs.
 		
 Background:
 #Create 4 forms: lab form, log form, standard form, mixed form. Each form should contain every possible control type. Each form should contain all of 
@@ -137,33 +125,33 @@ Background:
 	#	|SIGNATUREFIELD3	      |eSigPage	      |               |					|SIGNATUREFIELD3	      |SIGNATUREFIELD3	        |true		|true				|       	    |&ge;Signature Field                                |Signature             |		    	|					|
 
 # Lab form
-And form "PDF Lab Form" has varOID "<VarOID>" has format "<Format>" has field name "<Field Name>" has field OID "<Field OID>" has status "<Active>" has visible status "<Is Visible Field>" has field label "<Field Label>" has control type "<Control Type>" has lab analyte "<Lab Analyte>" has prompt for clinical significance "<Prompt for Clinical Significance>"
-		|VarOID		          |Format |Field Name	|Field OID	  |Active	|Is Visible Field 	|Field Label                                                            |Control Type |Lab Analyte 	|Prompt for Clinical Significance	|
-		|WBC	              |4.2	  |WBC  	    |WBC	      |true		|true				|WBC&lt&gt&ge&ge;&le&le;bullet points&lt;li&gt;&lt;br/&gt;break         |Text    	  |WBC  		|true				                |
-		|NEUTROPHILS	      |4.2	  |NEUTROPHILS  |NEUTROPHILS  |true		|true				|&lt&gt&ge&ge;&le&le;bullet points&lt;li&gt;&lt;br/&gt;breakNEUTROPHILS |Text    	  |NEUTROPHILS  |false				                |
-	
-   And the following Lab Units exists
-	| Lab Unit |
-	| %        |
-	
-   And the following Lab Unit Dictionary exists
-	| Name        | Units  |
-	| WBC         | %      |
-	| Neutrophils | %      |
-	
-	And the following Analytes exists
-	| Analytes    | Lab Unit Dictionary |
-	| WBC         | WBC                 |
-	| NEUTROPHILS | NEUTROPHILS         |
-	
-	And the following Range Types exists
-	| Range Type    | 
-	| US12175 Range |
-		
-	And lab "US12175 Lab" with Range Type "US12175 Range" has analyte "Analyte" has from date "From Date" has to date "To Date" has low value "Low Value" has high value "High Value" has units "Units" 
-	|Analyte     |From Date   |To Date     |Low Value  |High Value  |Units |
-	|WBC         |01 Jan 2005 |01 Jan 2015 |15         |25          |%     |
-	|NEUTROPHILS |01 Jan 2005 |01 Jan 2015 |40         |50          |%     |
+#And form "PDF Lab Form" has varOID "<VarOID>" has format "<Format>" has field name "<Field Name>" has field OID "<Field OID>" has status "<Active>" has visible status "<Is Visible Field>" has field label "<Field Label>" has control type "<Control Type>" has lab analyte "<Lab Analyte>" has prompt for clinical significance "<Prompt for Clinical Significance>"
+#		|VarOID		          |Format |Field Name	|Field OID	  |Active	|Is Visible Field 	|Field Label                                                            |Control Type |Lab Analyte 	|Prompt for Clinical Significance	|
+#		|WBC	              |4.2	  |WBC  	    |WBC	      |true		|true				|WBC&lt&gt&ge&ge;&le&le;bullet points&lt;li&gt;&lt;br/&gt;break         |Text    	  |WBC  		|true				                |
+#		|NEUTROPHILS	      |4.2	  |NEUTROPHILS  |NEUTROPHILS  |true		|true				|&lt&gt&ge&ge;&le&le;bullet points&lt;li&gt;&lt;br/&gt;breakNEUTROPHILS |Text    	  |NEUTROPHILS  |false				                |
+#	
+#   And the following Lab Units exists
+#	| Lab Unit |
+#	| %        |
+#	
+#   And the following Lab Unit Dictionary exists
+#	| Name        | Units  |
+#	| WBC         | %      |
+#	| Neutrophils | %      |
+#	
+#	And the following Analytes exists
+#	| Analytes    | Lab Unit Dictionary |
+#	| WBC         | WBC                 |
+#	| NEUTROPHILS | NEUTROPHILS         |
+#	
+#	And the following Range Types exists
+#	| Range Type    | 
+#	| US12175 Range |
+#		
+#	And lab "US12175 Lab" with Range Type "US12175 Range" has analyte "Analyte" has from date "From Date" has to date "To Date" has low value "Low Value" has high value "High Value" has units "Units" 
+#	|Analyte     |From Date   |To Date     |Low Value  |High Value  |Units |
+#	|WBC         |01 Jan 2005 |01 Jan 2015 |15         |25          |%     |
+#	|NEUTROPHILS |01 Jan 2005 |01 Jan 2015 |40         |50          |%     |
 
                                                                                                                           
 	#And data dictionary "DDictionary1"	has entries
@@ -343,8 +331,6 @@ And form "PDF Lab Form" has varOID "<VarOID>" has format "<Format>" has field na
 	#|Field                                                                                                     |Data  |                                                                   
 	#|WBC<>>(underlined)>(underlined)<(underlined)<(underlined)bullet points <li>(user hitting "enter")	        |20    |
 	#|<>>(underlined)>(underlined)<(underlined)<(underlined)bullet points <li>(user hitting "enter")NEUTROPHILS	|45    | 	
-
-	#And I navigate to "Home"
 	When I navigate to "PDF Generator" module
 #*******************************************************************************************************	
 @release_2012.1.0

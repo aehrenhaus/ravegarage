@@ -23,6 +23,12 @@ namespace Medidata.RBT.PageObjects.Rave
 				return new HomePage();
 			}
 
+            if (name == "PDF Generator")
+            {
+                if(TestContext.CurrentPage.URL != "Modules/PDF/FileRequest.aspx")
+                    Browser.FindElementByXPath("//a[@href='LaunchModule.aspx?M=~/Modules/PDF/FileRequests.aspx&I=12']").Click();
+                return new FileRequestPage();
+            }
 
 			throw new Exception("Don't know how to navigate to "+name);
 		}

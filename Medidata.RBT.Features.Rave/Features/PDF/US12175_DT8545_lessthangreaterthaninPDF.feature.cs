@@ -53,13 +53,7 @@ namespace Medidata.RBT.Features.Rave.Features.PDF
                     "Asian Font               |\r\n|Heisei Kaku Gothic W5    |\r\n|Meiryo                " +
                     "   |\r\n\r\nThis rendering should be implemented for blank PDFs, annotated PDFs, dat" +
                     "a populated PDFs, Rave Monitor Trip Report PDFs. \r\nThis rendering should be impl" +
-                    "emented for:\r\ntranslations\r\nfield pretext\r\ndata dictionaries on the CRF but NOT " +
-                    "in the audit trail\r\nunit dictionaries on the CRF but NOT in the audit trail\r\ncod" +
-                    "ing dictionaries on the CRF but NOT in the audit trail\r\nlab units on the CRF but" +
-                    " NOT in the audit trail (does not apply to Rave Monitor Trip Report PDFs)\r\nlab r" +
-                    "anges on the CRF but NOT in the audit trail (does not apply to Rave Monitor Trip" +
-                    " Report PDFs)\r\nThis rendering will NOT be implented for:\r\nbookmarks\r\nlab names\r\n" +
-                    "Form names", ProgrammingLanguage.CSharp, ((string[])(null)));
+                    "emented for all parts of the PDFs.", ProgrammingLanguage.CSharp, ((string[])(null)));
             testRunner.OnFeatureStart(featureInfo);
         }
         
@@ -99,110 +93,10 @@ namespace Medidata.RBT.Features.Rave.Features.PDF
         
         public virtual void FeatureBackground()
         {
-#line 45
-#line hidden
-            TechTalk.SpecFlow.Table table1 = new TechTalk.SpecFlow.Table(new string[] {
-                        "VarOID",
-                        "Format",
-                        "Field Name",
-                        "Field OID",
-                        "Active",
-                        "Is Visible Field",
-                        "Field Label",
-                        "Control Type",
-                        "Lab Analyte",
-                        "Prompt for Clinical Significance"});
-            table1.AddRow(new string[] {
-                        "WBC",
-                        "4.2",
-                        "WBC",
-                        "WBC",
-                        "true",
-                        "true",
-                        "WBC&lt&gt&ge&ge;&le&le;bullet points&lt;li&gt;&lt;br/&gt;break",
-                        "Text",
-                        "WBC",
-                        "true"});
-            table1.AddRow(new string[] {
-                        "NEUTROPHILS",
-                        "4.2",
-                        "NEUTROPHILS",
-                        "NEUTROPHILS",
-                        "true",
-                        "true",
-                        "&lt&gt&ge&ge;&le&le;bullet points&lt;li&gt;&lt;br/&gt;breakNEUTROPHILS",
-                        "Text",
-                        "NEUTROPHILS",
-                        "false"});
-#line 140
-testRunner.And(@"form ""PDF Lab Form"" has varOID ""<VarOID>"" has format ""<Format>"" has field name ""<Field Name>"" has field OID ""<Field OID>"" has status ""<Active>"" has visible status ""<Is Visible Field>"" has field label ""<Field Label>"" has control type ""<Control Type>"" has lab analyte ""<Lab Analyte>"" has prompt for clinical significance ""<Prompt for Clinical Significance>""", ((string)(null)), table1);
-#line hidden
-            TechTalk.SpecFlow.Table table2 = new TechTalk.SpecFlow.Table(new string[] {
-                        "Lab Unit"});
-            table2.AddRow(new string[] {
-                        "%"});
-#line 145
-   testRunner.And("the following Lab Units exists", ((string)(null)), table2);
-#line hidden
-            TechTalk.SpecFlow.Table table3 = new TechTalk.SpecFlow.Table(new string[] {
-                        "Name",
-                        "Units"});
-            table3.AddRow(new string[] {
-                        "WBC",
-                        "%"});
-            table3.AddRow(new string[] {
-                        "Neutrophils",
-                        "%"});
-#line 149
-   testRunner.And("the following Lab Unit Dictionary exists", ((string)(null)), table3);
-#line hidden
-            TechTalk.SpecFlow.Table table4 = new TechTalk.SpecFlow.Table(new string[] {
-                        "Analytes",
-                        "Lab Unit Dictionary"});
-            table4.AddRow(new string[] {
-                        "WBC",
-                        "WBC"});
-            table4.AddRow(new string[] {
-                        "NEUTROPHILS",
-                        "NEUTROPHILS"});
-#line 154
- testRunner.And("the following Analytes exists", ((string)(null)), table4);
-#line hidden
-            TechTalk.SpecFlow.Table table5 = new TechTalk.SpecFlow.Table(new string[] {
-                        "Range Type"});
-            table5.AddRow(new string[] {
-                        "US12175 Range"});
-#line 159
- testRunner.And("the following Range Types exists", ((string)(null)), table5);
-#line hidden
-            TechTalk.SpecFlow.Table table6 = new TechTalk.SpecFlow.Table(new string[] {
-                        "Analyte",
-                        "From Date",
-                        "To Date",
-                        "Low Value",
-                        "High Value",
-                        "Units"});
-            table6.AddRow(new string[] {
-                        "WBC",
-                        "01 Jan 2005",
-                        "01 Jan 2015",
-                        "15",
-                        "25",
-                        "%"});
-            table6.AddRow(new string[] {
-                        "NEUTROPHILS",
-                        "01 Jan 2005",
-                        "01 Jan 2015",
-                        "40",
-                        "50",
-                        "%"});
-#line 163
- testRunner.And("lab \"US12175 Lab\" with Range Type \"US12175 Range\" has analyte \"Analyte\" has from " +
-                    "date \"From Date\" has to date \"To Date\" has low value \"Low Value\" has high value " +
-                    "\"High Value\" has units \"Units\"", ((string)(null)), table6);
-#line 244
+#line 33
+#line 232
  testRunner.Given("I am logged in to Rave with username \"defuser\" and password \"password\"");
-#line 348
+#line 334
  testRunner.When("I navigate to \"PDF Generator\" module");
 #line hidden
         }
@@ -222,9 +116,222 @@ testRunner.And(@"form ""PDF Lab Form"" has varOID ""<VarOID>"" has format ""<For
                         "release_2012.1.0",
                         "US11043A",
                         "Draft"});
-#line 353
+#line 339
 this.ScenarioSetup(scenarioInfo);
-#line 45
+#line 33
+this.FeatureBackground();
+#line hidden
+            TechTalk.SpecFlow.Table table1 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Name",
+                        "Profile",
+                        "Study",
+                        "Role",
+                        "Locale",
+                        "CRFVersion"});
+            table1.AddRow(new string[] {
+                        "Blank PDF A{RndNum<num>(3)}",
+                        "PDF 1",
+                        "PDF Font Study (Prod)",
+                        "CDM1B144V1",
+                        "English",
+                        "11 (289)"});
+#line 344
+ testRunner.When("I create Blank PDF", ((string)(null)), table1);
+#line 347
+ testRunner.And("I generate Blank PDF \"Blank PDF A{Var(num)}\"");
+#line 348
+ testRunner.And("I wait for PDF \"Blank PDF A{Var(num)}\" to complete");
+#line 349
+ testRunner.When("I View Blank PDF \"Blank PDF A{Var(num)}\"");
+#line hidden
+            TechTalk.SpecFlow.Table table2 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Symbol"});
+            table2.AddRow(new string[] {
+                        "&gt"});
+            table2.AddRow(new string[] {
+                        "&ge"});
+            table2.AddRow(new string[] {
+                        "&ge;"});
+            table2.AddRow(new string[] {
+                        "&lt"});
+            table2.AddRow(new string[] {
+                        "&le"});
+            table2.AddRow(new string[] {
+                        "&le;"});
+            table2.AddRow(new string[] {
+                        "&lt;li&gt;"});
+            table2.AddRow(new string[] {
+                        "&lt;br/&gt;"});
+            table2.AddRow(new string[] {
+                        "<li>"});
+            table2.AddRow(new string[] {
+                        "<br/>"});
+#line 350
+ testRunner.Then("the text should not contain \"<Symbol>\"", ((string)(null)), table2);
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("@US11043B A blank PDF that is generated should properly display special character" +
+            "s.")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "When an EDC form contains special characters such as \"<\" \">\" \"<=\" \">=\" the PDF fi" +
+            "le should display the special characters appropriately.")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("release_2012.1.0")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("US11043B")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Draft")]
+        public virtual void US11043BABlankPDFThatIsGeneratedShouldProperlyDisplaySpecialCharacters_()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("@US11043B A blank PDF that is generated should properly display special character" +
+                    "s.", new string[] {
+                        "release_2012.1.0",
+                        "US11043B",
+                        "Draft"});
+#line 366
+this.ScenarioSetup(scenarioInfo);
+#line 33
+this.FeatureBackground();
+#line hidden
+            TechTalk.SpecFlow.Table table3 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Name",
+                        "Profile",
+                        "Study",
+                        "Role",
+                        "Locale",
+                        "CRFVersion"});
+            table3.AddRow(new string[] {
+                        "Blank PDF B{RndNum<num>(3)}",
+                        "PDF 2",
+                        "PDF Font Study (Prod)",
+                        "CDM1B144V1",
+                        "English",
+                        "11 (289)"});
+#line 371
+ testRunner.When("I create Blank PDF", ((string)(null)), table3);
+#line 374
+ testRunner.And("I generate Blank PDF \"Blank PDF B{Var(num)}\"");
+#line 375
+ testRunner.And("I wait for PDF \"Blank PDF B{Var(num)}\" to complete");
+#line 376
+ testRunner.When("I View Blank PDF \"Blank PDF B{Var(num)}\"");
+#line hidden
+            TechTalk.SpecFlow.Table table4 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Symbol"});
+            table4.AddRow(new string[] {
+                        "&gt"});
+            table4.AddRow(new string[] {
+                        "&ge"});
+            table4.AddRow(new string[] {
+                        "&ge;"});
+            table4.AddRow(new string[] {
+                        "&lt"});
+            table4.AddRow(new string[] {
+                        "&le"});
+            table4.AddRow(new string[] {
+                        "&le;"});
+            table4.AddRow(new string[] {
+                        "&lt;li&gt;"});
+            table4.AddRow(new string[] {
+                        "&lt;br/&gt;"});
+            table4.AddRow(new string[] {
+                        "<li>"});
+            table4.AddRow(new string[] {
+                        "<br/>"});
+#line 377
+ testRunner.Then("the text should not contain \"<Symbol>\"", ((string)(null)), table4);
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("@US11043C A blank PDF that is generated should properly display special character" +
+            "s.")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "When an EDC form contains special characters such as \"<\" \">\" \"<=\" \">=\" the PDF fi" +
+            "le should display the special characters appropriately.")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("release_2012.1.0")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("US11043C")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Draft")]
+        public virtual void US11043CABlankPDFThatIsGeneratedShouldProperlyDisplaySpecialCharacters_()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("@US11043C A blank PDF that is generated should properly display special character" +
+                    "s.", new string[] {
+                        "release_2012.1.0",
+                        "US11043C",
+                        "Draft"});
+#line 393
+this.ScenarioSetup(scenarioInfo);
+#line 33
+this.FeatureBackground();
+#line hidden
+            TechTalk.SpecFlow.Table table5 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Name",
+                        "Profile",
+                        "Study",
+                        "Role",
+                        "Locale",
+                        "CRFVersion"});
+            table5.AddRow(new string[] {
+                        "Blank PDF C{RndNum<num>(3)}",
+                        "PDF 3",
+                        "PDF Font Study (Prod)",
+                        "CDM1B144V1",
+                        "English",
+                        "11 (289)"});
+#line 398
+ testRunner.When("I create Blank PDF", ((string)(null)), table5);
+#line 401
+ testRunner.And("I generate Blank PDF \"Blank PDF C{Var(num)}\"");
+#line 402
+ testRunner.And("I wait for PDF \"Blank PDF C{Var(num)}\" to complete");
+#line 403
+ testRunner.When("I View Blank PDF \"Blank PDF C{Var(num)}\"");
+#line hidden
+            TechTalk.SpecFlow.Table table6 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Symbol"});
+            table6.AddRow(new string[] {
+                        "&gt"});
+            table6.AddRow(new string[] {
+                        "&ge"});
+            table6.AddRow(new string[] {
+                        "&ge;"});
+            table6.AddRow(new string[] {
+                        "&lt"});
+            table6.AddRow(new string[] {
+                        "&le"});
+            table6.AddRow(new string[] {
+                        "&le;"});
+            table6.AddRow(new string[] {
+                        "&lt;li&gt;"});
+            table6.AddRow(new string[] {
+                        "&lt;br/&gt;"});
+            table6.AddRow(new string[] {
+                        "<li>"});
+            table6.AddRow(new string[] {
+                        "<br/>"});
+#line 404
+ testRunner.Then("the text should not contain \"<Symbol>\"", ((string)(null)), table6);
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("@US11043D A blank PDF that is generated should properly display special character" +
+            "s.")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "When an EDC form contains special characters such as \"<\" \">\" \"<=\" \">=\" the PDF fi" +
+            "le should display the special characters appropriately.")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("release_2012.1.0")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("US11043D")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Draft")]
+        public virtual void US11043DABlankPDFThatIsGeneratedShouldProperlyDisplaySpecialCharacters_()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("@US11043D A blank PDF that is generated should properly display special character" +
+                    "s.", new string[] {
+                        "release_2012.1.0",
+                        "US11043D",
+                        "Draft"});
+#line 420
+this.ScenarioSetup(scenarioInfo);
+#line 33
 this.FeatureBackground();
 #line hidden
             TechTalk.SpecFlow.Table table7 = new TechTalk.SpecFlow.Table(new string[] {
@@ -235,20 +342,20 @@ this.FeatureBackground();
                         "Locale",
                         "CRFVersion"});
             table7.AddRow(new string[] {
-                        "Blank PDF A{RndNum<num>(3)}",
-                        "PDF 1",
+                        "Blank PDF D{RndNum<num>(3)}",
+                        "PDF 4",
                         "PDF Font Study (Prod)",
                         "CDM1B144V1",
-                        "English",
+                        "Japanese",
                         "11 (289)"});
-#line 358
+#line 425
  testRunner.When("I create Blank PDF", ((string)(null)), table7);
-#line 361
- testRunner.And("I generate Blank PDF \"Blank PDF A{Var(num)}\"");
-#line 362
- testRunner.And("I wait for PDF \"Blank PDF A{Var(num)}\" to complete");
-#line 363
- testRunner.When("I View Blank PDF \"Blank PDF A{Var(num)}\"");
+#line 428
+ testRunner.And("I generate Blank PDF \"Blank PDF D{Var(num)}\"");
+#line 429
+ testRunner.And("I wait for PDF \"Blank PDF D{Var(num)}\" to complete");
+#line 430
+ testRunner.When("I View Blank PDF \"Blank PDF D{Var(num)}\"");
 #line hidden
             TechTalk.SpecFlow.Table table8 = new TechTalk.SpecFlow.Table(new string[] {
                         "Symbol"});
@@ -272,30 +379,30 @@ this.FeatureBackground();
                         "<li>"});
             table8.AddRow(new string[] {
                         "<br/>"});
-#line 364
+#line 431
  testRunner.Then("the text should not contain \"<Symbol>\"", ((string)(null)), table8);
 #line hidden
             this.ScenarioCleanup();
         }
         
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("@US11043B A blank PDF that is generated should properly display special character" +
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("@US11043E A blank PDF that is generated should properly display special character" +
             "s.")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "When an EDC form contains special characters such as \"<\" \">\" \"<=\" \">=\" the PDF fi" +
             "le should display the special characters appropriately.")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("release_2012.1.0")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("US11043B")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("US11043E")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Draft")]
-        public virtual void US11043BABlankPDFThatIsGeneratedShouldProperlyDisplaySpecialCharacters_()
+        public virtual void US11043EABlankPDFThatIsGeneratedShouldProperlyDisplaySpecialCharacters_()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("@US11043B A blank PDF that is generated should properly display special character" +
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("@US11043E A blank PDF that is generated should properly display special character" +
                     "s.", new string[] {
                         "release_2012.1.0",
-                        "US11043B",
+                        "US11043E",
                         "Draft"});
-#line 380
+#line 447
 this.ScenarioSetup(scenarioInfo);
-#line 45
+#line 33
 this.FeatureBackground();
 #line hidden
             TechTalk.SpecFlow.Table table9 = new TechTalk.SpecFlow.Table(new string[] {
@@ -306,20 +413,20 @@ this.FeatureBackground();
                         "Locale",
                         "CRFVersion"});
             table9.AddRow(new string[] {
-                        "Blank PDF B{RndNum<num>(3)}",
-                        "PDF 2",
+                        "Blank PDF E{RndNum<num>(3)}",
+                        "PDF 5",
                         "PDF Font Study (Prod)",
                         "CDM1B144V1",
-                        "English",
+                        "Japanese",
                         "11 (289)"});
-#line 385
+#line 452
  testRunner.When("I create Blank PDF", ((string)(null)), table9);
-#line 388
- testRunner.And("I generate Blank PDF \"Blank PDF B{Var(num)}\"");
-#line 389
- testRunner.And("I wait for PDF \"Blank PDF B{Var(num)}\" to complete");
-#line 390
- testRunner.When("I View Blank PDF \"Blank PDF B{Var(num)}\"");
+#line 455
+ testRunner.And("I generate Blank PDF \"Blank PDF E{Var(num)}\"");
+#line 456
+ testRunner.And("I wait for PDF \"Blank PDF E{Var(num)}\" to complete");
+#line 457
+ testRunner.When("I View Blank PDF \"Blank PDF E{Var(num)}\"");
 #line hidden
             TechTalk.SpecFlow.Table table10 = new TechTalk.SpecFlow.Table(new string[] {
                         "Symbol"});
@@ -343,30 +450,30 @@ this.FeatureBackground();
                         "<li>"});
             table10.AddRow(new string[] {
                         "<br/>"});
-#line 391
+#line 458
  testRunner.Then("the text should not contain \"<Symbol>\"", ((string)(null)), table10);
 #line hidden
             this.ScenarioCleanup();
         }
         
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("@US11043C A blank PDF that is generated should properly display special character" +
-            "s.")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("@US11043F A data-populated PDF that is generated should properly display special " +
+            "characters")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "When an EDC form contains special characters such as \"<\" \">\" \"<=\" \">=\" the PDF fi" +
             "le should display the special characters appropriately.")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("release_2012.1.0")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("US11043C")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("US11043F")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Draft")]
-        public virtual void US11043CABlankPDFThatIsGeneratedShouldProperlyDisplaySpecialCharacters_()
+        public virtual void US11043FAData_PopulatedPDFThatIsGeneratedShouldProperlyDisplaySpecialCharacters()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("@US11043C A blank PDF that is generated should properly display special character" +
-                    "s.", new string[] {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("@US11043F A data-populated PDF that is generated should properly display special " +
+                    "characters", new string[] {
                         "release_2012.1.0",
-                        "US11043C",
+                        "US11043F",
                         "Draft"});
-#line 407
+#line 474
 this.ScenarioSetup(scenarioInfo);
-#line 45
+#line 33
 this.FeatureBackground();
 #line hidden
             TechTalk.SpecFlow.Table table11 = new TechTalk.SpecFlow.Table(new string[] {
@@ -375,22 +482,26 @@ this.FeatureBackground();
                         "Study",
                         "Role",
                         "Locale",
-                        "CRFVersion"});
+                        "Site Groups",
+                        "Sites",
+                        "Subjects"});
             table11.AddRow(new string[] {
-                        "Blank PDF C{RndNum<num>(3)}",
-                        "PDF 3",
+                        "Data PDF A{RndNum<num>(3)}",
+                        "PDF 1",
                         "PDF Font Study (Prod)",
                         "CDM1B144V1",
                         "English",
-                        "11 (289)"});
-#line 412
- testRunner.When("I create Blank PDF", ((string)(null)), table11);
-#line 415
- testRunner.And("I generate Blank PDF \"Blank PDF C{Var(num)}\"");
-#line 416
- testRunner.And("I wait for PDF \"Blank PDF C{Var(num)}\" to complete");
-#line 417
- testRunner.When("I View Blank PDF \"Blank PDF C{Var(num)}\"");
+                        "World",
+                        "PDF Font Site 1",
+                        "Sub{Var(num1)}"});
+#line 479
+ testRunner.When("I create Data PDF", ((string)(null)), table11);
+#line 482
+ testRunner.And("I generate Data PDF \"Data PDF A{Var(num)}\"");
+#line 483
+ testRunner.And("I wait for PDF \"Data PDF A{Var(num)}\" to complete");
+#line 484
+ testRunner.When("I View Data PDF \"Data PDF A{Var(num)}\"");
 #line hidden
             TechTalk.SpecFlow.Table table12 = new TechTalk.SpecFlow.Table(new string[] {
                         "Symbol"});
@@ -414,30 +525,30 @@ this.FeatureBackground();
                         "<li>"});
             table12.AddRow(new string[] {
                         "<br/>"});
-#line 418
+#line 485
  testRunner.Then("the text should not contain \"<Symbol>\"", ((string)(null)), table12);
 #line hidden
             this.ScenarioCleanup();
         }
         
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("@US11043D A blank PDF that is generated should properly display special character" +
-            "s.")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("@US11043G A data-populated PDF that is generated should properly display special " +
+            "characters")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "When an EDC form contains special characters such as \"<\" \">\" \"<=\" \">=\" the PDF fi" +
             "le should display the special characters appropriately.")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("release_2012.1.0")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("US11043D")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("US11043G")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Draft")]
-        public virtual void US11043DABlankPDFThatIsGeneratedShouldProperlyDisplaySpecialCharacters_()
+        public virtual void US11043GAData_PopulatedPDFThatIsGeneratedShouldProperlyDisplaySpecialCharacters()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("@US11043D A blank PDF that is generated should properly display special character" +
-                    "s.", new string[] {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("@US11043G A data-populated PDF that is generated should properly display special " +
+                    "characters", new string[] {
                         "release_2012.1.0",
-                        "US11043D",
+                        "US11043G",
                         "Draft"});
-#line 434
+#line 501
 this.ScenarioSetup(scenarioInfo);
-#line 45
+#line 33
 this.FeatureBackground();
 #line hidden
             TechTalk.SpecFlow.Table table13 = new TechTalk.SpecFlow.Table(new string[] {
@@ -446,22 +557,26 @@ this.FeatureBackground();
                         "Study",
                         "Role",
                         "Locale",
-                        "CRFVersion"});
+                        "Site Groups",
+                        "Sites",
+                        "Subjects"});
             table13.AddRow(new string[] {
-                        "Blank PDF D{RndNum<num>(3)}",
-                        "PDF 4",
+                        "Data PDF B{RndNum<num>(3)}",
+                        "PDF 2",
                         "PDF Font Study (Prod)",
                         "CDM1B144V1",
-                        "Japanese",
-                        "11 (289)"});
-#line 439
- testRunner.When("I create Blank PDF", ((string)(null)), table13);
-#line 442
- testRunner.And("I generate Blank PDF \"Blank PDF D{Var(num)}\"");
-#line 443
- testRunner.And("I wait for PDF \"Blank PDF D{Var(num)}\" to complete");
-#line 444
- testRunner.When("I View Blank PDF \"Blank PDF D{Var(num)}\"");
+                        "English",
+                        "World",
+                        "PDF Font Site 1",
+                        "Sub{Var(num1)}"});
+#line 506
+ testRunner.When("I create Data PDF", ((string)(null)), table13);
+#line 509
+ testRunner.And("I generate Data PDF \"Data PDF B{Var(num)}\"");
+#line 510
+ testRunner.And("I wait for PDF \"Data PDF B{Var(num)}\" to complete");
+#line 511
+ testRunner.When("I View Data PDF \"Data PDF B{Var(num)}\"");
 #line hidden
             TechTalk.SpecFlow.Table table14 = new TechTalk.SpecFlow.Table(new string[] {
                         "Symbol"});
@@ -485,30 +600,30 @@ this.FeatureBackground();
                         "<li>"});
             table14.AddRow(new string[] {
                         "<br/>"});
-#line 445
+#line 512
  testRunner.Then("the text should not contain \"<Symbol>\"", ((string)(null)), table14);
 #line hidden
             this.ScenarioCleanup();
         }
         
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("@US11043E A blank PDF that is generated should properly display special character" +
-            "s.")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("@US11043H A data-populated PDF that is generated should properly display special " +
+            "characters")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "When an EDC form contains special characters such as \"<\" \">\" \"<=\" \">=\" the PDF fi" +
             "le should display the special characters appropriately.")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("release_2012.1.0")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("US11043E")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("US11043H")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Draft")]
-        public virtual void US11043EABlankPDFThatIsGeneratedShouldProperlyDisplaySpecialCharacters_()
+        public virtual void US11043HAData_PopulatedPDFThatIsGeneratedShouldProperlyDisplaySpecialCharacters()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("@US11043E A blank PDF that is generated should properly display special character" +
-                    "s.", new string[] {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("@US11043H A data-populated PDF that is generated should properly display special " +
+                    "characters", new string[] {
                         "release_2012.1.0",
-                        "US11043E",
+                        "US11043H",
                         "Draft"});
-#line 461
+#line 528
 this.ScenarioSetup(scenarioInfo);
-#line 45
+#line 33
 this.FeatureBackground();
 #line hidden
             TechTalk.SpecFlow.Table table15 = new TechTalk.SpecFlow.Table(new string[] {
@@ -517,22 +632,26 @@ this.FeatureBackground();
                         "Study",
                         "Role",
                         "Locale",
-                        "CRFVersion"});
+                        "Site Groups",
+                        "Sites",
+                        "Subjects"});
             table15.AddRow(new string[] {
-                        "Blank PDF E{RndNum<num>(3)}",
-                        "PDF 5",
+                        "Data PDF C{RndNum<num>(3)}",
+                        "PDF 3",
                         "PDF Font Study (Prod)",
                         "CDM1B144V1",
-                        "Japanese",
-                        "11 (289)"});
-#line 466
- testRunner.When("I create Blank PDF", ((string)(null)), table15);
-#line 469
- testRunner.And("I generate Blank PDF \"Blank PDF E{Var(num)}\"");
-#line 470
- testRunner.And("I wait for PDF \"Blank PDF E{Var(num)}\" to complete");
-#line 471
- testRunner.When("I View Blank PDF \"Blank PDF E{Var(num)}\"");
+                        "English",
+                        "World",
+                        "PDF Font Site 1",
+                        "Sub{Var(num1)}"});
+#line 533
+ testRunner.When("I create Data PDF", ((string)(null)), table15);
+#line 536
+ testRunner.And("I generate Data PDF \"Data PDF C{Var(num)}\"");
+#line 537
+ testRunner.And("I wait for PDF \"Data PDF C{Var(num)}\" to complete");
+#line 538
+ testRunner.When("I View Data PDF \"Data PDF C{Var(num)}\"");
 #line hidden
             TechTalk.SpecFlow.Table table16 = new TechTalk.SpecFlow.Table(new string[] {
                         "Symbol"});
@@ -556,30 +675,30 @@ this.FeatureBackground();
                         "<li>"});
             table16.AddRow(new string[] {
                         "<br/>"});
-#line 472
+#line 539
  testRunner.Then("the text should not contain \"<Symbol>\"", ((string)(null)), table16);
 #line hidden
             this.ScenarioCleanup();
         }
         
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("@US11043F A data-populated PDF that is generated should properly display special " +
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("@US11043I A data-populated PDF that is generated should properly display special " +
             "characters")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "When an EDC form contains special characters such as \"<\" \">\" \"<=\" \">=\" the PDF fi" +
             "le should display the special characters appropriately.")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("release_2012.1.0")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("US11043F")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("US11043I")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Draft")]
-        public virtual void US11043FAData_PopulatedPDFThatIsGeneratedShouldProperlyDisplaySpecialCharacters()
+        public virtual void US11043IAData_PopulatedPDFThatIsGeneratedShouldProperlyDisplaySpecialCharacters()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("@US11043F A data-populated PDF that is generated should properly display special " +
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("@US11043I A data-populated PDF that is generated should properly display special " +
                     "characters", new string[] {
                         "release_2012.1.0",
-                        "US11043F",
+                        "US11043I",
                         "Draft"});
-#line 488
+#line 555
 this.ScenarioSetup(scenarioInfo);
-#line 45
+#line 33
 this.FeatureBackground();
 #line hidden
             TechTalk.SpecFlow.Table table17 = new TechTalk.SpecFlow.Table(new string[] {
@@ -592,22 +711,22 @@ this.FeatureBackground();
                         "Sites",
                         "Subjects"});
             table17.AddRow(new string[] {
-                        "Data PDF A{RndNum<num>(3)}",
-                        "PDF 1",
+                        "Data PDF D{RndNum<num>(3)}",
+                        "PDF 4",
                         "PDF Font Study (Prod)",
                         "CDM1B144V1",
                         "English",
                         "World",
                         "PDF Font Site 1",
                         "Sub{Var(num1)}"});
-#line 493
+#line 560
  testRunner.When("I create Data PDF", ((string)(null)), table17);
-#line 496
- testRunner.And("I generate Data PDF \"Data PDF A{Var(num)}\"");
-#line 497
- testRunner.And("I wait for PDF \"Data PDF A{Var(num)}\" to complete");
-#line 498
- testRunner.When("I View Data PDF \"Data PDF A{Var(num)}\"");
+#line 563
+ testRunner.And("I generate Data PDF \"Data PDF D{Var(num)}\"");
+#line 564
+ testRunner.And("I wait for PDF \"Data PDF D{Var(num)}\" to complete");
+#line 565
+ testRunner.When("I View Data PDF \"Data PDF D{Var(num)}\"");
 #line hidden
             TechTalk.SpecFlow.Table table18 = new TechTalk.SpecFlow.Table(new string[] {
                         "Symbol"});
@@ -631,30 +750,30 @@ this.FeatureBackground();
                         "<li>"});
             table18.AddRow(new string[] {
                         "<br/>"});
-#line 499
+#line 566
  testRunner.Then("the text should not contain \"<Symbol>\"", ((string)(null)), table18);
 #line hidden
             this.ScenarioCleanup();
         }
         
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("@US11043G A data-populated PDF that is generated should properly display special " +
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("@US11043J A data-populated PDF that is generated should properly display special " +
             "characters")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "When an EDC form contains special characters such as \"<\" \">\" \"<=\" \">=\" the PDF fi" +
             "le should display the special characters appropriately.")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("release_2012.1.0")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("US11043G")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("US11043J")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Draft")]
-        public virtual void US11043GAData_PopulatedPDFThatIsGeneratedShouldProperlyDisplaySpecialCharacters()
+        public virtual void US11043JAData_PopulatedPDFThatIsGeneratedShouldProperlyDisplaySpecialCharacters()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("@US11043G A data-populated PDF that is generated should properly display special " +
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("@US11043J A data-populated PDF that is generated should properly display special " +
                     "characters", new string[] {
                         "release_2012.1.0",
-                        "US11043G",
+                        "US11043J",
                         "Draft"});
-#line 515
+#line 582
 this.ScenarioSetup(scenarioInfo);
-#line 45
+#line 33
 this.FeatureBackground();
 #line hidden
             TechTalk.SpecFlow.Table table19 = new TechTalk.SpecFlow.Table(new string[] {
@@ -667,22 +786,22 @@ this.FeatureBackground();
                         "Sites",
                         "Subjects"});
             table19.AddRow(new string[] {
-                        "Data PDF B{RndNum<num>(3)}",
-                        "PDF 2",
+                        "Data PDF E{RndNum<num>(3)}",
+                        "PDF 5",
                         "PDF Font Study (Prod)",
                         "CDM1B144V1",
                         "English",
                         "World",
                         "PDF Font Site 1",
                         "Sub{Var(num1)}"});
-#line 520
+#line 587
  testRunner.When("I create Data PDF", ((string)(null)), table19);
-#line 523
- testRunner.And("I generate Data PDF \"Data PDF B{Var(num)}\"");
-#line 524
- testRunner.And("I wait for PDF \"Data PDF B{Var(num)}\" to complete");
-#line 525
- testRunner.When("I View Data PDF \"Data PDF B{Var(num)}\"");
+#line 590
+ testRunner.And("I generate Data PDF \"Data PDF E{Var(num)}\"");
+#line 591
+ testRunner.And("I wait for PDF \"Data PDF E{Var(num)}\" to complete");
+#line 592
+ testRunner.When("I View Data PDF \"Data PDF E{Var(num)}\"");
 #line hidden
             TechTalk.SpecFlow.Table table20 = new TechTalk.SpecFlow.Table(new string[] {
                         "Symbol"});
@@ -706,233 +825,8 @@ this.FeatureBackground();
                         "<li>"});
             table20.AddRow(new string[] {
                         "<br/>"});
-#line 526
+#line 593
  testRunner.Then("the text should not contain \"<Symbol>\"", ((string)(null)), table20);
-#line hidden
-            this.ScenarioCleanup();
-        }
-        
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("@US11043H A data-populated PDF that is generated should properly display special " +
-            "characters")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "When an EDC form contains special characters such as \"<\" \">\" \"<=\" \">=\" the PDF fi" +
-            "le should display the special characters appropriately.")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("release_2012.1.0")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("US11043H")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Draft")]
-        public virtual void US11043HAData_PopulatedPDFThatIsGeneratedShouldProperlyDisplaySpecialCharacters()
-        {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("@US11043H A data-populated PDF that is generated should properly display special " +
-                    "characters", new string[] {
-                        "release_2012.1.0",
-                        "US11043H",
-                        "Draft"});
-#line 542
-this.ScenarioSetup(scenarioInfo);
-#line 45
-this.FeatureBackground();
-#line hidden
-            TechTalk.SpecFlow.Table table21 = new TechTalk.SpecFlow.Table(new string[] {
-                        "Name",
-                        "Profile",
-                        "Study",
-                        "Role",
-                        "Locale",
-                        "Site Groups",
-                        "Sites",
-                        "Subjects"});
-            table21.AddRow(new string[] {
-                        "Data PDF C{RndNum<num>(3)}",
-                        "PDF 3",
-                        "PDF Font Study (Prod)",
-                        "CDM1B144V1",
-                        "English",
-                        "World",
-                        "PDF Font Site 1",
-                        "Sub{Var(num1)}"});
-#line 547
- testRunner.When("I create Data PDF", ((string)(null)), table21);
-#line 550
- testRunner.And("I generate Data PDF \"Data PDF C{Var(num)}\"");
-#line 551
- testRunner.And("I wait for PDF \"Data PDF C{Var(num)}\" to complete");
-#line 552
- testRunner.When("I View Data PDF \"Data PDF C{Var(num)}\"");
-#line hidden
-            TechTalk.SpecFlow.Table table22 = new TechTalk.SpecFlow.Table(new string[] {
-                        "Symbol"});
-            table22.AddRow(new string[] {
-                        "&gt"});
-            table22.AddRow(new string[] {
-                        "&ge"});
-            table22.AddRow(new string[] {
-                        "&ge;"});
-            table22.AddRow(new string[] {
-                        "&lt"});
-            table22.AddRow(new string[] {
-                        "&le"});
-            table22.AddRow(new string[] {
-                        "&le;"});
-            table22.AddRow(new string[] {
-                        "&lt;li&gt;"});
-            table22.AddRow(new string[] {
-                        "&lt;br/&gt;"});
-            table22.AddRow(new string[] {
-                        "<li>"});
-            table22.AddRow(new string[] {
-                        "<br/>"});
-#line 553
- testRunner.Then("the text should not contain \"<Symbol>\"", ((string)(null)), table22);
-#line hidden
-            this.ScenarioCleanup();
-        }
-        
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("@US11043I A data-populated PDF that is generated should properly display special " +
-            "characters")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "When an EDC form contains special characters such as \"<\" \">\" \"<=\" \">=\" the PDF fi" +
-            "le should display the special characters appropriately.")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("release_2012.1.0")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("US11043I")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Draft")]
-        public virtual void US11043IAData_PopulatedPDFThatIsGeneratedShouldProperlyDisplaySpecialCharacters()
-        {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("@US11043I A data-populated PDF that is generated should properly display special " +
-                    "characters", new string[] {
-                        "release_2012.1.0",
-                        "US11043I",
-                        "Draft"});
-#line 569
-this.ScenarioSetup(scenarioInfo);
-#line 45
-this.FeatureBackground();
-#line hidden
-            TechTalk.SpecFlow.Table table23 = new TechTalk.SpecFlow.Table(new string[] {
-                        "Name",
-                        "Profile",
-                        "Study",
-                        "Role",
-                        "Locale",
-                        "Site Groups",
-                        "Sites",
-                        "Subjects"});
-            table23.AddRow(new string[] {
-                        "Data PDF D{RndNum<num>(3)}",
-                        "PDF 4",
-                        "PDF Font Study (Prod)",
-                        "CDM1B144V1",
-                        "English",
-                        "World",
-                        "PDF Font Site 1",
-                        "Sub{Var(num1)}"});
-#line 574
- testRunner.When("I create Data PDF", ((string)(null)), table23);
-#line 577
- testRunner.And("I generate Data PDF \"Data PDF D{Var(num)}\"");
-#line 578
- testRunner.And("I wait for PDF \"Data PDF D{Var(num)}\" to complete");
-#line 579
- testRunner.When("I View Data PDF \"Data PDF D{Var(num)}\"");
-#line hidden
-            TechTalk.SpecFlow.Table table24 = new TechTalk.SpecFlow.Table(new string[] {
-                        "Symbol"});
-            table24.AddRow(new string[] {
-                        "&gt"});
-            table24.AddRow(new string[] {
-                        "&ge"});
-            table24.AddRow(new string[] {
-                        "&ge;"});
-            table24.AddRow(new string[] {
-                        "&lt"});
-            table24.AddRow(new string[] {
-                        "&le"});
-            table24.AddRow(new string[] {
-                        "&le;"});
-            table24.AddRow(new string[] {
-                        "&lt;li&gt;"});
-            table24.AddRow(new string[] {
-                        "&lt;br/&gt;"});
-            table24.AddRow(new string[] {
-                        "<li>"});
-            table24.AddRow(new string[] {
-                        "<br/>"});
-#line 580
- testRunner.Then("the text should not contain \"<Symbol>\"", ((string)(null)), table24);
-#line hidden
-            this.ScenarioCleanup();
-        }
-        
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("@US11043J A data-populated PDF that is generated should properly display special " +
-            "characters")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "When an EDC form contains special characters such as \"<\" \">\" \"<=\" \">=\" the PDF fi" +
-            "le should display the special characters appropriately.")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("release_2012.1.0")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("US11043J")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Draft")]
-        public virtual void US11043JAData_PopulatedPDFThatIsGeneratedShouldProperlyDisplaySpecialCharacters()
-        {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("@US11043J A data-populated PDF that is generated should properly display special " +
-                    "characters", new string[] {
-                        "release_2012.1.0",
-                        "US11043J",
-                        "Draft"});
-#line 596
-this.ScenarioSetup(scenarioInfo);
-#line 45
-this.FeatureBackground();
-#line hidden
-            TechTalk.SpecFlow.Table table25 = new TechTalk.SpecFlow.Table(new string[] {
-                        "Name",
-                        "Profile",
-                        "Study",
-                        "Role",
-                        "Locale",
-                        "Site Groups",
-                        "Sites",
-                        "Subjects"});
-            table25.AddRow(new string[] {
-                        "Data PDF E{RndNum<num>(3)}",
-                        "PDF 5",
-                        "PDF Font Study (Prod)",
-                        "CDM1B144V1",
-                        "English",
-                        "World",
-                        "PDF Font Site 1",
-                        "Sub{Var(num1)}"});
-#line 601
- testRunner.When("I create Data PDF", ((string)(null)), table25);
-#line 604
- testRunner.And("I generate Data PDF \"Data PDF E{Var(num)}\"");
-#line 605
- testRunner.And("I wait for PDF \"Data PDF E{Var(num)}\" to complete");
-#line 606
- testRunner.When("I View Data PDF \"Data PDF E{Var(num)}\"");
-#line hidden
-            TechTalk.SpecFlow.Table table26 = new TechTalk.SpecFlow.Table(new string[] {
-                        "Symbol"});
-            table26.AddRow(new string[] {
-                        "&gt"});
-            table26.AddRow(new string[] {
-                        "&ge"});
-            table26.AddRow(new string[] {
-                        "&ge;"});
-            table26.AddRow(new string[] {
-                        "&lt"});
-            table26.AddRow(new string[] {
-                        "&le"});
-            table26.AddRow(new string[] {
-                        "&le;"});
-            table26.AddRow(new string[] {
-                        "&lt;li&gt;"});
-            table26.AddRow(new string[] {
-                        "&lt;br/&gt;"});
-            table26.AddRow(new string[] {
-                        "<li>"});
-            table26.AddRow(new string[] {
-                        "<br/>"});
-#line 607
- testRunner.Then("the text should not contain \"<Symbol>\"", ((string)(null)), table26);
 #line hidden
             this.ScenarioCleanup();
         }

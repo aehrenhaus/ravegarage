@@ -12,6 +12,7 @@ using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
 using Medidata.RBT.SeleniumExtension;
 using System.Collections.Specialized;
+using ICSharpCode.SharpZipLib.Zip;
 
 
 namespace Medidata.RBT
@@ -234,6 +235,14 @@ namespace Medidata.RBT
             return this;
         }
 
+        /// <summary>
+        /// See IPage interface
+        /// </summary>
+        public virtual void DeleteObjectOnPage(RemoveableObject removeableObject)
+        {
+            throw new NotImplementedException();
+        }
+
 		/// <summary>
 		/// See IPage interface
 		/// </summary>
@@ -404,6 +413,56 @@ namespace Medidata.RBT
         public IWebElement GetCurrentFocusedElement()
         {
             return Browser.SwitchTo().ActiveElement();
+        }
+
+        /// <summary>
+        /// See IPage interface
+        /// </summary>
+        public List<String> UnzipAllDownloads()
+        {
+            List<String> extractedFilePaths = new List<string>();
+            List<String> zipFilePaths = Directory.GetFiles(TestContext.DownloadPath, "*.zip").ToList();
+            foreach (String zipFilePath in zipFilePaths)
+                extractedFilePaths.AddRange(UnZipAndExtract(zipFilePath));
+
+            return extractedFilePaths;
+        }
+
+        //Unzips a zip file in the download path returns a list of the extracted files' paths.
+        private List<String> UnZipAndExtract(string zipFilePath)
+        {
+            List<String> extractedFilePaths = new List<string>();
+
+            using (FileStream fileStreamIn = new FileStream(zipFilePath, FileMode.Open))
+            {
+                using (ZipInputStream zipInputStream = new ZipInputStream(fileStreamIn))
+                {
+                    ZipEntry currentEntry = zipInputStream.GetNextEntry();
+                    String fullZipToPath = "";
+                    if(TestContext.DownloadPath.EndsWith("\\"))
+                        fullZipToPath = TestContext.DownloadPath + currentEntry.Name.Replace("/", "\\");
+                    else
+                        fullZipToPath = TestContext.DownloadPath + "\\" + currentEntry.Name.Replace("/", "\\");
+                    
+                    string directoryName = Path.GetDirectoryName(fullZipToPath);
+                    if (directoryName.Length > 0)
+                        Directory.CreateDirectory(directoryName);
+
+                    using (FileStream fileStreamOut = new FileStream(fullZipToPath, FileMode.Create, FileAccess.Write))
+                    {
+                        int size;
+                        byte[] buffer = new byte[4096];
+                        do
+                        {
+                            size = zipInputStream.Read(buffer, 0, buffer.Length);
+                            fileStreamOut.Write(buffer, 0, size);
+                        } while (size > 0);
+                    }
+                    extractedFilePaths.Add(fullZipToPath);
+                }
+            }
+            
+            return extractedFilePaths;
         }
     }
 }

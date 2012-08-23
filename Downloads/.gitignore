@@ -1,0 +1,12 @@
+
+/*/bin/
+
+/*/obj/
+*.user
+*.pdb
+*.suo
+*.cache
+
+
+/TestResults/
+/Medidata.RBT.Features.Rave/App.config
