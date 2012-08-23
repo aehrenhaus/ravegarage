@@ -112,10 +112,10 @@ this.FeatureBackground();
             table1.AddRow(new string[] {
                         "Subject Number",
                         "{RndNum<num1>(3)}"});
-#line 67
+#line 68
  testRunner.When("I create a Subject", ((string)(null)), table1);
-#line 71
- testRunner.And("I select Form \"Device Form\"");
+#line 73
+ testRunner.And("I select link \"Device Form\"");
 #line hidden
             TechTalk.SpecFlow.Table table2 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field",
@@ -137,9 +137,9 @@ this.FeatureBackground();
                         "Devcomments",
                         "N/A",
                         ""});
-#line 72
+#line 74
  testRunner.And("I enter data in CRF and save", ((string)(null)), table2);
-#line 78
+#line 80
  testRunner.And("I add a new log line");
 #line hidden
             TechTalk.SpecFlow.Table table3 = new TechTalk.SpecFlow.Table(new string[] {
@@ -154,11 +154,11 @@ this.FeatureBackground();
                         "Devcomments",
                         "N/A",
                         ""});
-#line 79
+#line 81
  testRunner.And("I enter data in CRF and save", ((string)(null)), table3);
-#line 83
+#line 85
  testRunner.And("I take a screenshot");
-#line 84
+#line 86
  testRunner.And("\"AltCodedValue\" propagates correctly");
 #line hidden
             this.ScenarioCleanup();
@@ -180,11 +180,11 @@ this.FeatureBackground();
                         "release_2012.1.0",
                         "PB-DT13637-02",
                         "Validation"});
-#line 91
+#line 93
 this.ScenarioSetup(scenarioInfo);
 #line 13
 this.FeatureBackground();
-#line 92
+#line 94
  testRunner.When("I select Study \"US11306_DT13637_SJ\" and Site \"Site 1\"");
 #line hidden
             TechTalk.SpecFlow.Table table4 = new TechTalk.SpecFlow.Table(new string[] {
@@ -196,10 +196,10 @@ this.FeatureBackground();
             table4.AddRow(new string[] {
                         "Subject Number",
                         "{RndNum<num1>(3)}"});
-#line 93
+#line 95
  testRunner.When("I create a Subject", ((string)(null)), table4);
-#line 97
- testRunner.And("I select \"Device Form\"");
+#line 99
+ testRunner.And("I select link \"Device Form\"");
 #line hidden
             TechTalk.SpecFlow.Table table5 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field",
@@ -221,15 +221,15 @@ this.FeatureBackground();
                         "Devcomments",
                         "N/A",
                         ""});
-#line 98
+#line 100
  testRunner.And("I enter data in CRF and save", ((string)(null)), table5);
-#line 104
- testRunner.And("I select \"Inactivate\"");
-#line 105
- testRunner.And("I choose \"1\" from \"Inactivate\"");
 #line 106
- testRunner.And("I click button \"Inactivate\"");
+ testRunner.And("I select link \"Inactivate\"");
 #line 107
+ testRunner.And("I choose \"1\" from \"Inactivate\"");
+#line 108
+ testRunner.And("I click button \"Inactivate\"");
+#line 109
  testRunner.And("I take a screenshot");
 #line hidden
             TechTalk.SpecFlow.Table table6 = new TechTalk.SpecFlow.Table(new string[] {
@@ -238,21 +238,21 @@ this.FeatureBackground();
                         "Control Type"});
             table6.AddRow(new string[] {
                         "Device",
-                        "Device 1A",
+                        "Device 1B",
                         "dynamic search list"});
-#line 108
+#line 110
  testRunner.And("I enter data in CRF and save", ((string)(null)), table6);
-#line 111
- testRunner.And("I take a screenshot");
-#line 112
- testRunner.And("I select \"Reactivate\"");
 #line 113
- testRunner.And("I choose \"1\" from \"Reactivate\"");
-#line 114
- testRunner.And("I click button \"Reactivate\"");
-#line 115
  testRunner.And("I take a screenshot");
+#line 114
+ testRunner.And("I select link \"Reactivate\"");
+#line 115
+ testRunner.And("I choose \"1\" from \"Reactivate\"");
 #line 116
+ testRunner.And("I click button \"Reactivate\"");
+#line 117
+ testRunner.And("I take a screenshot");
+#line 118
  testRunner.And("\"AltCodedValue\" propagates correctly");
 #line hidden
             this.ScenarioCleanup();

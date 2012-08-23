@@ -86,8 +86,8 @@ Background:
 @PB_DT13905_01
 @Draft
 Scenario: PB_DT13905_01 As an EDC user, when I create a unit conversion formula to convert lab data in a non-standard unit to standard values in a standard unit, then I should see the standard value and standard units in Clinical Views.
-	And I select Study "US15417_DT13905_SJ" and Site "Site 1"
-	When I create a Subject
+	When I select Study "US15417_DT13905_SJ" and Site "Site 1"
+	And I create a Subject
 	| Field            | Data               |
 	| Subject Initials | SUB                |
 	| Subject number   | {RndNum<num1>(3)}  |
@@ -96,7 +96,7 @@ Scenario: PB_DT13905_01 As an EDC user, when I create a unit conversion formula 
 	| Pregancy Status  | NoREGAQT           |
 	| Subject Date     | 01 Feb 2011        |	
 	And I take a screenshot
-	And I select Form "Hematology"
+	And I select link "Hematology"
 	And I choose "US15417_DT13905_SJ" from "Lab"
 	And I enter data in CRF and save
 
@@ -132,7 +132,7 @@ Scenario: PB_DT13905_01 As an EDC user, when I create a unit conversion formula 
 @Draft
 Scenario: PB_DT13905_02 As an EDC user, when I update a unit conversion formula to convert lab data in a non-standard unit to standard values in a standard unit, then I should see the standard value and standard units in Clinical Views.
 
-	And I select Study "US15417_DT13905_SJ" and Site "Site 1"
+	When I select Study "US15417_DT13905_SJ" and Site "Site 1"
 	And I create a Subject
 
 	| Field			   | Data	           |
@@ -143,7 +143,7 @@ Scenario: PB_DT13905_02 As an EDC user, when I update a unit conversion formula 
 	| Pregancy Status  | NoREGAQT          |
 	| Subject Date     | 01 Feb 2011       |
 	And I take a screenshot
-	And I select Form "Hematology"
+	And I select link "Hematology"
 	And I choose "US15417_DT13905_SJ" from "Lab"
 	And I enter data in CRF and save
 
@@ -196,27 +196,17 @@ Scenario: PB_DT13905_02 As an EDC user, when I update a unit conversion formula 
 	And I select link "Home"
 	And I navigate to "Lab Administration"
 	And I navigate to "Unit Conversions"
-
-	#And I edit unit conversion data
-	#| From   | To | Analyte | A | B | C | D |
-	#| 10^9/L | %  | ...     | 3 | 1 | 0 | 0 |
-
 	And I delete unit conversion data
 	| From   | To |
 	| 10^9/L | %  |
 
-	#| From   | To | Analyte | A | B | C | D |
-	#| 10^9/L | %  | ...     | 3 | 1 | 0 | 0 |
-
-	And I click button "Update"
-	
 
 @release_2012.1.0 
 @PB_DT13905_03
 @Draft
 Scenario: PB_DT13905_03 As an EDC user, when I create a unit conversion formula to convert lab data in a non-standard unit to standard values in a standard unit for a specific analyte, then I should see the standard value and standard units in Clinical Views.
-	And I select Study "US15417_DT13905_SJ" and Site "Site 1"
-	When I create a Subject
+	When I select Study "US15417_DT13905_SJ" and Site "Site 1"
+	And I create a Subject
 	| Field            | Data               |
 	| Subject Initials | SUB                |
 	| Subject number   | {RndNum<num1>(3)}  |
@@ -225,7 +215,7 @@ Scenario: PB_DT13905_03 As an EDC user, when I create a unit conversion formula 
 	| Pregancy Status  | NoREGAQT           |
 	| Subject Date     | 01 Feb 2011        |
 	And I take a screenshot
-	And I select Form "Hematology"
+	And I select link "Hematology"
 	And I choose "US15417_DT13905_SJ" from "Lab"
 	And I enter data in CRF and save
 
@@ -264,7 +254,7 @@ Scenario: PB_DT13905_03 As an EDC user, when I create a unit conversion formula 
 @Draft
 Scenario: PB_DT13905_04 As an EDC user, when I update a unit conversion formula to convert lab data in a non-standard unit to standard values in a standard unit for a specific analyte, then I should see the standard value and standard units in Clinical Views.
 	
-	And I select Study "US15417_DT13905_SJ" and Site "Site 1"
+	When I select Study "US15417_DT13905_SJ" and Site "Site 1"
 	And I create a Subject
 
 	| Field			   | Data	           |
@@ -275,7 +265,7 @@ Scenario: PB_DT13905_04 As an EDC user, when I update a unit conversion formula 
 	| Pregancy Status  | NoREGAQT          |
 	| Subject Date     | 01 Feb 2011       |
 	And I take a screenshot
-	And I select Form "Hematology"
+	And I select link "Hematology"
 	And I choose "US15417_DT13905_SJ" from "Lab"
 	And I enter data in CRF and save
 
@@ -326,4 +316,10 @@ Scenario: PB_DT13905_04 As an EDC user, when I update a unit conversion formula 
 	| Subject        | FormName   | AnalyteName | AnalyteValue | LabUnits | StdValue | StdUnits |
 	| SUB{Var(num1)} | Hematology | WBC         | 10           | 10^9/L   | 50       | %        |
 	And I take a screenshot
-	
+	And I switch to "Reports" window
+	And I select link "Home"
+	And I navigate to "Lab Administration"
+	And I navigate to "Unit Conversions"
+	And I delete unit conversion data
+	| From   | Analyte | To |
+	| 10^9/L | WBC     | %  |
