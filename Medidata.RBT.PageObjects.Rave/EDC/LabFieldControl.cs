@@ -168,6 +168,8 @@ namespace Medidata.RBT.PageObjects.Rave
         {
             return VerifyData(MainTR, field.Data, "Data") &&
                 VerifyData(MainTR, field.Unit, "Unit") &&
+                VerifyData(MainTR, field.RangeStatus, "RangeStatus") &&
+                VerifyData(MainTR, field.StatusIcon, "StatusIcon") &&
                 VerifyData(MainTR, field.Range, "Range");
         }
 
@@ -185,14 +187,33 @@ namespace Medidata.RBT.PageObjects.Rave
                 case "Range":
                     elementIndex = 6;
                     break;
+                case "RangeStatus":
+                    return VerifyRangeStatus(MainTR, text);
+                case "StatusIcon":
+                    return VerifyStatus(MainTR, text);
                 default:
                     elementIndex = 0;
                     break;
             }
 
+            // unique condition when Unit select dropdown is visible and throws off the data verification.
+            if (verificationType.Equals("Unit") && GetFieldControlContainer().FindElements(By.TagName("select")).Count > 0 && text.Trim().Equals(""))
+                return true; 
+
             var el = MainTR.Parent().FindElements(By.XPath("./td"))[elementIndex];
-            bool result = el.Text.Equals(text);
-            return (el.Text.Equals(text));
+            return (el.Text.Trim().Equals(text.Trim()));
+        }
+
+        private bool VerifyRangeStatus(EnhancedElement MainTR, string statusText)
+        {
+            if (statusText.Equals(""))
+                return !(MainTR.Parent().FindElements(By.XPath("./td"))[4].GetInnerHtml().Contains("/Img/") &&(MainTR.Parent().FindElements(By.XPath("./td"))[4].GetInnerHtml().Contains(".gif"))) ;
+            return MainTR.Parent().FindElements(By.XPath("./td"))[4].GetInnerHtml().Contains(StatusIconPathLookup(statusText));
+        }
+
+        private bool VerifyStatus(EnhancedElement MainTR, string statusText)
+        {  
+            return MainTR.Parent().FindElements(By.XPath("./td"))[7].GetInnerHtml().Contains(StatusIconPathLookup(statusText));
         }
 
     }

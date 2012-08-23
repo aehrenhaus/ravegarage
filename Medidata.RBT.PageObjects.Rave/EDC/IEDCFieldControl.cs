@@ -30,5 +30,7 @@ namespace Medidata.RBT.PageObjects.Rave
 
 		void Uncheck(string checkName);
 
+        string StatusIconPathLookup(string lookupIcon);
+
     }
 }

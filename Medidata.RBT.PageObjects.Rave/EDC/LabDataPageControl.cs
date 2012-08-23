@@ -57,5 +57,17 @@ namespace Medidata.RBT.PageObjects.Rave
             return new LabFieldControl(Page, area, tds[tds.Count - 1]);
 
 		}
+
+        public IEDCFieldControl FindUnitDropdown(string fieldText)
+        {
+            IWebElement el = TestContext.Browser.FindElements(By.XPath("//span[contains(@id,'Content_R')]")).FirstOrDefault();
+            var area = el.FindElementsByText<IWebElement>(fieldText).FirstOrDefault();
+
+            if (area == null)
+                throw new Exception("Can't find field area:" + fieldText);
+            var tds = area.Parent().Children();
+            return new LabFieldControl(Page, area, tds[tds.Count - 3]);
+
+        }
 	}
 }

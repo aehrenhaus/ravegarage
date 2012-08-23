@@ -11,6 +11,7 @@ namespace Medidata.RBT.PageObjects.Rave
         public string Data  { get; set; }
         public string Range { get; set; }
         public string Unit  { get; set; }
-		
+        public string StatusIcon { get; set; }
+        public string RangeStatus { get; set; }
 	}
 }

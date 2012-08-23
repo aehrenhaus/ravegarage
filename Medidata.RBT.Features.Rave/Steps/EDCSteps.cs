@@ -180,7 +180,10 @@ namespace Medidata.RBT.Features.Rave
 		[StepDefinition(@"I save the CRF page")]
 		public void ISaveCRF()
 		{
-			CurrentPage = CurrentPage.As<CRFPage>().SaveForm();
+            if (CurrentPage.GetType().Name.Equals("PrimaryRecordPage"))
+                CurrentPage = CurrentPage.As<PrimaryRecordPage>().SaveForm();  
+            else
+                CurrentPage = CurrentPage.As<CRFPage>().SaveForm();
 		}
 
 		/// <summary>
@@ -332,6 +335,13 @@ namespace Medidata.RBT.Features.Rave
         {
             CRFPage page = CurrentPage.As<CRFPage>();
             Assert.IsTrue(page.VerifyLabDataPoints(table.CreateSet<LabRangeModel>()), "Lab Data points don't match");
+        }
+
+        [StepDefinition(@"I select Unit")] 
+        public void ISelectUnit(Table table)
+        {
+            CRFPage page = CurrentPage.As<CRFPage>();
+            page.SelectUnitsForFields(table.CreateSet<LabRangeModel>());
         }
 
         [StepDefinition(@"I check ""([^""]*)"" on ""([^""]*)""")]

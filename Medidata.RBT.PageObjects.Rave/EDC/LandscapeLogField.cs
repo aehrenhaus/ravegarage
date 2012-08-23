@@ -85,6 +85,7 @@ namespace Medidata.RBT.PageObjects.Rave
         public void CancelQuery(QuerySearchModel filter) { throw new NotImplementedException(); }
         public void Check(string checkName) { throw new NotImplementedException(); }
         public void Uncheck(string checkName) { throw new NotImplementedException(); }
+        public string StatusIconPathLookup(string lookupIcon) { throw new NotImplementedException(); }
         #endregion
         #endregion
     }

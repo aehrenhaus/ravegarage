@@ -104,7 +104,7 @@ Scenario: @PB-DT10514-01 As an EDC user, I have a partially locked lab form, and
 		| NEUTROPHILS | 7           | text         |
 	And I verify lab ranges
 		| Field       | Data | Range Status | Range | Unit           | Status Icon |
-		| WBC         | 7    | ++           | 2 - 5 | *10E6/ulREGAQT | InComplete  |
+		| WBC         | 7    | ++           | 2 - 5 | *10E6/ulREGAQT | Incomplete  |
 		| NEUTROPHILS | 7    | +            | 3 - 6 | FractionREGAQT | Complete    |
 	And I take a screenshot
 	And I check "Hard Lock" on "Lab Date"
@@ -116,13 +116,13 @@ Scenario: @PB-DT10514-01 As an EDC user, I have a partially locked lab form, and
 	And I save the CRF page
 	And I verify lab ranges
 		| Field       | Data | Range Status | Range | Unit           | Status Icon |
-		| WBC         | 7    | ++           | 2 - 5 | *10E6/ulREGAQT | InComplete  |
-		| NEUTROPHILS | 7    | +            | 3 - 6 | FractionREGAQT | Lock        |
+		| WBC         | 7    | ++           | 2 - 5 | *10E6/ulREGAQT | Incomplete  |
+		| NEUTROPHILS | 7    | +            | 3 - 6 | FractionREGAQT | Locked        |
 	And I take a screenshot
 	And I select Lab "Mediflex Local Lab 2"
 	And I verify lab ranges
 		| Field       | Data | Range Status | Range | Unit           | Status Icon |
-		| WBC         | 7    | ++           | 2 - 4 | *10E6/ulREGAQT | InComplete  |
+		| WBC         | 7    | ++           | 2 - 4 | *10E6/ulREGAQT | Incomplete  |
 		| NEUTROPHILS | 7    |              | 4 - 7 | FractionREGAQT | Complete    |
 	And I take a screenshot
 
@@ -152,7 +152,7 @@ Scenario: @PB-DT10514-02 As an EDC user, I have a partially locked lab form, and
 		| NEUTROPHILS | 7           | text         |
 	And I verify lab ranges
 		| Field       | Data | Range Status | Range | Unit           | Status Icon |
-		| WBC         | 7    | ++           | 2 - 5 | *10E6/ulREGAQT | InComplete  |
+		| WBC         | 7    | ++           | 2 - 5 | *10E6/ulREGAQT | Incomplete  |
 		| NEUTROPHILS | 7    | +            | 3 - 6 | FractionREGAQT | Complete    |
 	And I take a screenshot
 	And I check "Hard Lock" on "Lab Date"
@@ -164,14 +164,14 @@ Scenario: @PB-DT10514-02 As an EDC user, I have a partially locked lab form, and
 	And I save the CRF page
 	And I verify lab ranges
 		| Field       | Data | Range Status | Range | Unit           | Status Icon |
-		| WBC         | 7    | ++           | 2 - 5 | *10E6/ulREGAQT | InComplete  |
-		| NEUTROPHILS | 7    | +            | 3 - 6 | FractionREGAQT | Lock        |
+		| WBC         | 7    | ++           | 2 - 5 | *10E6/ulREGAQT | Incomplete  |
+		| NEUTROPHILS | 7    | +            | 3 - 6 | FractionREGAQT | Locked      |
 	And I take a screenshot
 	And I select Lab "Mediflex Local Lab 3"
 	And I verify lab ranges
-		| Field       | Data | Range Status |Range | Unit           |  Status Icon |
-		| WBC         | 7    | ++           |4 - 7 | *10E6/ulREGAQT |  InComplete  |
-		| NEUTROPHILS | 7    | +            |2 - 5 | FractionREGAQT |  Lock        |
+		| Field       | Data | Range Status | Range | Unit           | Status Icon |
+		| WBC         | 7    | ++           | 4 - 7 | *10E6/ulREGAQT | Incomplete  |
+		| NEUTROPHILS | 7    | +            | 2 - 5 | FractionREGAQT | Locked      |
 	And I take a screenshot
 
 #----------------------------------------------------------------------------------------------------------------------------------------
@@ -200,7 +200,7 @@ Scenario: @PB-DT10514-03 As an EDC user, I have a partially locked lab form, and
 		| NEUTROPHILS | 7           | text         |
 	And I verify lab ranges
 		| Field       | Data | Range Status | Range | Unit           | Status Icon |
-		| WBC         | 7    | ++           | 2 - 5 | *10E6/ulREGAQT | InComplete  |
+		| WBC         | 7    | ++           | 2 - 5 | *10E6/ulREGAQT | Incomplete  |
 		| NEUTROPHILS | 7    | +            | 3 - 6 | FractionREGAQT | Complete    |
 	And I take a screenshot
 	And I check "Hard Lock" on "Lab Date"
@@ -212,13 +212,13 @@ Scenario: @PB-DT10514-03 As an EDC user, I have a partially locked lab form, and
 	And I save the CRF page
 	And I verify lab ranges
 		| Field       | Data | Range Status | Range | Unit           | Status Icon |
-		| WBC         | 7    | ++           | 2 - 5 | *10E6/ulREGAQT | InComplete  |
-		| NEUTROPHILS | 7    | +            | 3 - 6 | FractionREGAQT | Lock        |
+		| WBC         | 7    | ++           | 2 - 5 | *10E6/ulREGAQT | Incomplete  |
+		| NEUTROPHILS | 7    | +            | 3 - 6 | FractionREGAQT | Locked      |
 	And I take a screenshot
 	And I select Lab "Central - Mediflex Central Lab"
 	And I verify lab ranges
 		| Field       | Data | Range Status |Range | Unit           | Status Icon |
-		| WBC         | 7    | ++           |2 - 8 | *10E6/ulREGAQT | InComplete  |
+		| WBC         | 7    | ++           |2 - 8 | *10E6/ulREGAQT | Incomplete  |
 		| NEUTROPHILS | 7    |              |4 - 9 | FractionREGAQT | Complete    |
 	And I take a screenshot
 
@@ -248,7 +248,7 @@ Scenario: @PB-DT10514-04 As an EDC user, I have a partially locked lab form, and
 		| NEUTROPHILS | 7           | text         |
 	And I verify lab ranges
 		| Field       | Data | Range Status | Range | Unit           | Status Icon |
-		| WBC         | 7    | ++           | 1 - 5 | *10E6/ulREGAQT | InComplete  |
+		| WBC         | 7    | ++           | 1 - 5 | *10E6/ulREGAQT | Incomplete  |
 		| NEUTROPHILS | 7    |	            | 3 - 7 | FractionREGAQT | Complete    |
 	And I take a screenshot
 	And I check "Hard Lock" on "Lab Date"
@@ -260,14 +260,14 @@ Scenario: @PB-DT10514-04 As an EDC user, I have a partially locked lab form, and
 	And I save the CRF page
 	And I verify lab ranges
 		| Field       | Data | Range Status | Range | Unit           | Status Icon |
-		| WBC         | 7    | ++           | 1 - 5 | *10E6/ulREGAQT | InComplete  |
-		| NEUTROPHILS | 7    |              | 3 - 7 | FractionREGAQT | Lock        |
+		| WBC         | 7    | ++           | 1 - 5 | *10E6/ulREGAQT | Incomplete  |
+		| NEUTROPHILS | 7    |              | 3 - 7 | FractionREGAQT | Locked      |
 	And I take a screenshot
 	And I select Lab "Units Only"
 	And I verify lab ranges
 		| Field       | Data | Range Status | Range | Unit | Status Icon |
-		| WBC         | 7    |              |       |      | InComplete  |
-		| NEUTROPHILS | 7    |              |       |      | Lock        |
+		| WBC         | 7    |              |       |      | Incomplete  |
+		| NEUTROPHILS | 7    |              |       |      | Locked      |
 	And I take a screenshot
 #New Step Def
 	And I select Unit
@@ -277,8 +277,8 @@ Scenario: @PB-DT10514-04 As an EDC user, I have a partially locked lab form, and
 	And I save the CRF page
 	And I verify lab ranges
 		| Field       | Data | Range Status | Range | Unit           | Status Icon |
-		| WBC         | 7    | ++           | 2 - 4 | *10E6/ulREGAQT | InComplete  |
-		| NEUTROPHILS | 7    |              | 4 - 7 | FractionREGAQT | Lock        |
+		| WBC         | 7    | ++           | 2 - 4 | *10E6/ulREGAQT | Incomplete  |
+		| NEUTROPHILS | 7    |              | 4 - 7 | FractionREGAQT | Locked        |
 	And I take a screenshot
 
 #----------------------------------------------------------------------------------------------------------------------------------------
@@ -306,8 +306,8 @@ Scenario: @PB-DT10514-05 As an EDC user, I have a partially locked lab form, and
 		| NEUTROPHILS | 7           | text         |
 	And I verify lab ranges
 		| Field       | Data | Range Status | Range | Unit | Status Icon |
-		| WBC         | 7    |              |       |      | InComplete  |
-		| NEUTROPHILS | 7    |              |       |      | InComplete  |
+		| WBC         | 7    |              |       |      | Incomplete  |
+		| NEUTROPHILS | 7    |              |       |      | Incomplete  |
 	And I take a screenshot
 	And I check "Hard Lock" on "Lab Date"
 	And I check "Hard Lock" on "WBC"
@@ -316,8 +316,8 @@ Scenario: @PB-DT10514-05 As an EDC user, I have a partially locked lab form, and
 #Step failing for blank value verification
 	And I verify lab ranges
 		| Field       | Data | Range Status | Range | Unit | Status Icon |
-		| WBC         | 7    |              |       |      | Lock        |
-		| NEUTROPHILS | 7    |              |       |      | Lock        |
+		| WBC         | 7    |              |       |      | Locked      |
+		| NEUTROPHILS | 7    |              |       |      | Locked      |
 	And I take a screenshot
 	And I navigate to "Home"
 	And I select Study "Mediflex" and Site "LabSite01"
@@ -326,13 +326,13 @@ Scenario: @PB-DT10514-05 As an EDC user, I have a partially locked lab form, and
 #Need new step def
 #	And I edit CRF page
 	And I enter data in CRF and save
-		| Field            | Data              | Control Type |
-		| Pregancy Status  | NoREGAQT          | dropdownlist |
+		| Field            | Data        | Control Type |
+		| Pregancy Status  | NoREGAQT    | dropdownlist |
 	And I select Form "Hematology" in Folder "Visit 2"
 #Verify Step
 	And I verify lab ranges
 		| Field       | Data | Range Status | Range | Unit           | Status Icon |
-		| WBC         | 7    | ++           | 2 - 5 | *10E6/ulREGAQT | InComplete  |
+		| WBC         | 7    | ++           | 2 - 5 | *10E6/ulREGAQT | Incomplete  |
 		| NEUTROPHILS | 7    | +            | 3 - 6 | FractionREGAQT | Complete    |
 	And I take a screenshot
 
