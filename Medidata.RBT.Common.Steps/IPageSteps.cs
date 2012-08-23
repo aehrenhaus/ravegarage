@@ -96,6 +96,26 @@ namespace Medidata.RBT.Common.Steps
 
 		}
 
+
+        /// <summary>
+        /// Wait for x minutes
+        /// </summary>
+        /// <param name="minutes"></param>
+        [StepDefinition(@"I wait for ([^""]*) minutes")]
+        public void IWaitFor____Minutes(string minutes)
+        {
+            System.Threading.Thread.Sleep(60000 * int.Parse(minutes));
+        }
+
+
+        /// <summary>
+        /// Wait for 1 minute
+        /// </summary>
+        [StepDefinition(@"I wait for 1 minute")]
+        public void IWaitFor____Minutes()
+        {
+            IWaitFor____Minutes("1");
+        }
 		/// <summary>
 		/// Click a hyperlink
 		/// </summary>
