@@ -37,7 +37,7 @@ Scenario: @PB-DT13977-01 As an EDC user, when I change an out of range value to 
 	| Pregancy Status  | NoREGAQT           |
 	| Subject Date     | 01 Feb 2011        |	
 	And I take a screenshot
-	And I select Form "Hematology"
+	And I select link "Hematology"
 	And I choose "US15417_DT13905_LocalLab" from "Lab"
 	And I enter data in CRF and save
 	| Field | Data | Unit   |

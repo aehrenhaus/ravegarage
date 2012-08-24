@@ -112,9 +112,9 @@ this.FeatureBackground();
             table1.AddRow(new string[] {
                         "Subject Number",
                         "{RndNum<num1>(3)}"});
-#line 68
- testRunner.When("I create a Subject", ((string)(null)), table1);
-#line 73
+#line 67
+ testRunner.And("I create a Subject", ((string)(null)), table1);
+#line 71
  testRunner.And("I select link \"Device Form\"");
 #line hidden
             TechTalk.SpecFlow.Table table2 = new TechTalk.SpecFlow.Table(new string[] {
@@ -137,9 +137,9 @@ this.FeatureBackground();
                         "Devcomments",
                         "N/A",
                         ""});
-#line 74
+#line 72
  testRunner.And("I enter data in CRF and save", ((string)(null)), table2);
-#line 80
+#line 78
  testRunner.And("I add a new log line");
 #line hidden
             TechTalk.SpecFlow.Table table3 = new TechTalk.SpecFlow.Table(new string[] {
@@ -154,11 +154,11 @@ this.FeatureBackground();
                         "Devcomments",
                         "N/A",
                         ""});
-#line 81
+#line 79
  testRunner.And("I enter data in CRF and save", ((string)(null)), table3);
-#line 85
+#line 83
  testRunner.And("I take a screenshot");
-#line 86
+#line 84
  testRunner.And("\"AltCodedValue\" propagates correctly");
 #line hidden
             this.ScenarioCleanup();
@@ -180,11 +180,11 @@ this.FeatureBackground();
                         "release_2012.1.0",
                         "PB-DT13637-02",
                         "Validation"});
-#line 93
+#line 91
 this.ScenarioSetup(scenarioInfo);
 #line 13
 this.FeatureBackground();
-#line 94
+#line 92
  testRunner.When("I select Study \"US11306_DT13637_SJ\" and Site \"Site 1\"");
 #line hidden
             TechTalk.SpecFlow.Table table4 = new TechTalk.SpecFlow.Table(new string[] {
@@ -196,9 +196,9 @@ this.FeatureBackground();
             table4.AddRow(new string[] {
                         "Subject Number",
                         "{RndNum<num1>(3)}"});
-#line 95
- testRunner.When("I create a Subject", ((string)(null)), table4);
-#line 99
+#line 93
+ testRunner.And("I create a Subject", ((string)(null)), table4);
+#line 97
  testRunner.And("I select link \"Device Form\"");
 #line hidden
             TechTalk.SpecFlow.Table table5 = new TechTalk.SpecFlow.Table(new string[] {
@@ -221,15 +221,15 @@ this.FeatureBackground();
                         "Devcomments",
                         "N/A",
                         ""});
-#line 100
+#line 98
  testRunner.And("I enter data in CRF and save", ((string)(null)), table5);
-#line 106
+#line 104
  testRunner.And("I select link \"Inactivate\"");
-#line 107
+#line 105
  testRunner.And("I choose \"1\" from \"Inactivate\"");
-#line 108
+#line 106
  testRunner.And("I click button \"Inactivate\"");
-#line 109
+#line 107
  testRunner.And("I take a screenshot");
 #line hidden
             TechTalk.SpecFlow.Table table6 = new TechTalk.SpecFlow.Table(new string[] {
@@ -240,19 +240,19 @@ this.FeatureBackground();
                         "Device",
                         "Device 1B",
                         "dynamic search list"});
-#line 110
+#line 108
  testRunner.And("I enter data in CRF and save", ((string)(null)), table6);
-#line 113
+#line 111
  testRunner.And("I take a screenshot");
-#line 114
+#line 112
  testRunner.And("I select link \"Reactivate\"");
-#line 115
+#line 113
  testRunner.And("I choose \"1\" from \"Reactivate\"");
-#line 116
+#line 114
  testRunner.And("I click button \"Reactivate\"");
-#line 117
+#line 115
  testRunner.And("I take a screenshot");
-#line 118
+#line 116
  testRunner.And("\"AltCodedValue\" propagates correctly");
 #line hidden
             this.ScenarioCleanup();
