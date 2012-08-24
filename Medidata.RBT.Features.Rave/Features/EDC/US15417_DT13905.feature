@@ -84,7 +84,7 @@ Background:
 
 @release_2012.1.0 
 @PB_DT13905_01
-@Draft
+@Validation
 Scenario: PB_DT13905_01 As an EDC user, when I create a unit conversion formula to convert lab data in a non-standard unit to standard values in a standard unit, then I should see the standard value and standard units in Clinical Views.
 	When I select Study "US15417_DT13905_SJ" and Site "Site 1"
 	And I create a Subject
@@ -128,7 +128,7 @@ Scenario: PB_DT13905_01 As an EDC user, when I create a unit conversion formula 
 	
 @release_2012.1.0 
 @PB_DT13905_02
-@Draft
+@Validation
 Scenario: PB_DT13905_02 As an EDC user, when I update a unit conversion formula to convert lab data in a non-standard unit to standard values in a standard unit, then I should see the standard value and standard units in Clinical Views.
 
 	When I select Study "US15417_DT13905_SJ" and Site "Site 1"
@@ -198,7 +198,7 @@ Scenario: PB_DT13905_02 As an EDC user, when I update a unit conversion formula 
 
 @release_2012.1.0 
 @PB_DT13905_03
-@Draft
+@Validation
 Scenario: PB_DT13905_03 As an EDC user, when I create a unit conversion formula to convert lab data in a non-standard unit to standard values in a standard unit for a specific analyte, then I should see the standard value and standard units in Clinical Views.
 	When I select Study "US15417_DT13905_SJ" and Site "Site 1"
 	And I create a Subject
@@ -244,7 +244,7 @@ Scenario: PB_DT13905_03 As an EDC user, when I create a unit conversion formula 
 	
 @release_2012.1.0 
 @PB_DT13905_04
-@Draft
+@Validation
 Scenario: PB_DT13905_04 As an EDC user, when I update a unit conversion formula to convert lab data in a non-standard unit to standard values in a standard unit for a specific analyte, then I should see the standard value and standard units in Clinical Views.
 	
 	When I select Study "US15417_DT13905_SJ" and Site "Site 1"
