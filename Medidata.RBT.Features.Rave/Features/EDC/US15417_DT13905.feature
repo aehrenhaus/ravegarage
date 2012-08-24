@@ -99,7 +99,6 @@ Scenario: PB_DT13905_01 As an EDC user, when I create a unit conversion formula 
 	And I select link "Hematology"
 	And I choose "US15417_DT13905_SJ" from "Lab"
 	And I enter data in CRF and save
-
 	| Field | Data  | Unit   |
 	| WBC   | 10    | 10^9/L |
 	And I take a screenshot
@@ -110,9 +109,9 @@ Scenario: PB_DT13905_01 As an EDC user, when I create a unit conversion formula 
 	| From   | To | Analyte | A | B | C | D |
 	| 10^9/L | %  | ...     | 2 | 1 | 0 | 0 |
 	And I take a screenshot
-
 	And I navigate to "Home"
 	And I navigate to "Reporter"
+	And I wait for Clinical View refresh to complete for project "US15417_DT13905_SJ"
 	And I select Report "Data Listing" 
 	And I set report parameter "Study" with table
 		| Name               | Environment |
@@ -126,7 +125,7 @@ Scenario: PB_DT13905_01 As an EDC user, when I create a unit conversion formula 
 	| Subject        | FormName   | AnalyteName | AnalyteValue | LabUnits | StdValue | StdUnits |
 	| SUB{Var(num1)} | Hematology | WBC         | 10           | 10^9/L   | 20       | %        |
 	And I take a screenshot
-
+	
 @release_2012.1.0 
 @PB_DT13905_02
 @Draft
@@ -134,7 +133,6 @@ Scenario: PB_DT13905_02 As an EDC user, when I update a unit conversion formula 
 
 	When I select Study "US15417_DT13905_SJ" and Site "Site 1"
 	And I create a Subject
-
 	| Field			   | Data	           |
 	| Subject Initials | SUB               |
 	| Subject number   | {RndNum<num1>(3)} |
@@ -146,10 +144,10 @@ Scenario: PB_DT13905_02 As an EDC user, when I update a unit conversion formula 
 	And I select link "Hematology"
 	And I choose "US15417_DT13905_SJ" from "Lab"
 	And I enter data in CRF and save
-
 	| Field | Data | Unit   |
 	| WBC   | 10   | 10^9/L |
 	And I take a screenshot
+	And I wait for Clinical View refresh to complete for project "US15417_DT13905_SJ"
 	And I navigate to "Home"
 	And I navigate to "Reporter"
 	And I select Report "Data Listing" 
@@ -161,9 +159,7 @@ Scenario: PB_DT13905_02 As an EDC user, when I update a unit conversion formula 
 	And I choose "Clinical Views" from "Data Source"
 	And I choose "AnalytesView" from "Form"	
 	And I click button "Run"
-
 	Then I verify rows exist in "Result" table
-
 	| Subject        | FormName   | AnalyteName | AnalyteValue | LabUnits | StdValue | StdUnits |
 	| SUB{Var(num1)} | Hematology | WBC         | 10           | 10^9/L   | 20       | %        |
 	And I take a screenshot
@@ -172,10 +168,10 @@ Scenario: PB_DT13905_02 As an EDC user, when I update a unit conversion formula 
 	And I navigate to "Lab Administration"
 	And I navigate to "Unit Conversions"
 	And I edit unit conversion data
-
 	| From   | To | Analyte | A | B | C | D |
 	| 10^9/L | %  | ...     | 3 | 1 | 0 | 0 |
 	And I take a screenshot
+	And I wait for Clinical View refresh to complete for project "US15417_DT13905_SJ"
 	And I navigate to "Home"
 	And I navigate to "Reporter"
 	And I select Report "Data Listing" 
@@ -187,7 +183,6 @@ Scenario: PB_DT13905_02 As an EDC user, when I update a unit conversion formula 
 	And I choose "Clinical Views" from "Data Source"
 	And I choose "AnalytesView" from "Form"	
 	And I click button "Run"
-
 	Then I verify rows exist in "Result" table
 	| Subject        | FormName   | AnalyteName | AnalyteValue | LabUnits | StdValue | StdUnits |
 	| SUB{Var(num1)} | Hematology | WBC         | 10           | 10^9/L   | 30       | %        |
@@ -218,20 +213,20 @@ Scenario: PB_DT13905_03 As an EDC user, when I create a unit conversion formula 
 	And I select link "Hematology"
 	And I choose "US15417_DT13905_SJ" from "Lab"
 	And I enter data in CRF and save
-
 	| Field       | Data | Unit   |
 	| WBC         | 10   | 10^9/L |
 	| NEUTROPHILS | 10   | 10^9/L |
 	And I take a screenshot 
+	And I wait for Clinical View refresh to complete for project "US15417_DT13905_SJ"
 	And I select link "Home"
 	And I navigate to "Lab Administration"
 	And I navigate to "Unit Conversions"
 	And I add new unit conversion data
-
 	| From   | To | Analyte | A | B | C | D |
 	| 10^9/L | %  | WBC     | 4 | 1 | 0 | 0 |
 	And I take a screenshot
 	And I navigate to "Home"
+	And I wait for Clinical View refresh to complete for project "US15417_DT13905_SJ"
 	And I navigate to "Reporter"
 	And I select Report "Data Listing" 
 	And I set report parameter "Study" with table
@@ -242,9 +237,7 @@ Scenario: PB_DT13905_03 As an EDC user, when I create a unit conversion formula 
 	And I choose "Clinical Views" from "Data Source"
 	And I choose "AnalytesView" from "Form"	
 	And I click button "Run"
-	
 	Then I verify rows exist in "Result" table
-
 	| Subject        | FormName   | AnalyteName | AnalyteValue | LabUnits | StdValue | StdUnits |
 	| SUB{Var(num1)} | Hematology | WBC         | 10           | 10^9/L   | 40       | %        |
 	And I take a screenshot
@@ -256,7 +249,6 @@ Scenario: PB_DT13905_04 As an EDC user, when I update a unit conversion formula 
 	
 	When I select Study "US15417_DT13905_SJ" and Site "Site 1"
 	And I create a Subject
-
 	| Field			   | Data	           |
 	| Subject Initials | SUB               |
 	| Subject number   | {RndNum<num1>(3)} |
@@ -268,12 +260,12 @@ Scenario: PB_DT13905_04 As an EDC user, when I update a unit conversion formula 
 	And I select link "Hematology"
 	And I choose "US15417_DT13905_SJ" from "Lab"
 	And I enter data in CRF and save
-
 	| Field       | Data | Unit   |
 	| WBC         | 10   | 10^9/L |
 	| NEUTROPHILS | 10   | 10^9/L |
 	And I take a screenshot
 	And I navigate to "Home"
+	And I wait for Clinical View refresh to complete for project "US15417_DT13905_SJ"
 	And I navigate to "Reporter"
 	And I select Report "Data Listing" 
 	And I set report parameter "Study" with table
@@ -284,18 +276,16 @@ Scenario: PB_DT13905_04 As an EDC user, when I update a unit conversion formula 
 	And I choose "Clinical Views" from "Data Source"
 	And I choose "AnalytesView" from "Form"	
 	And I click button "Run"
-
 	Then I verify rows exist in "Result" table
-
 	| Subject        | FormName   | AnalyteName | AnalyteValue | LabUnits | StdValue | StdUnits |
 	| SUB{Var(num1)} | Hematology | WBC         | 10           | 10^9/L   | 40       | %        |
 	And I take a screenshot
+	And I wait for Clinical View refresh to complete for project "US15417_DT13905_SJ"
 	And I switch to "Reports" window
 	And I select link "Home"
 	And I navigate to "Lab Administration"
 	And I navigate to "Unit Conversions"
 	And I edit unit conversion data
-
 	| From   | To | Analyte | A | B | C | D |
 	| 10^9/L | %  | WBC     | 5 | 1 | 0 | 0 |
 	And I take a screenshot
@@ -310,9 +300,7 @@ Scenario: PB_DT13905_04 As an EDC user, when I update a unit conversion formula 
 	And I choose "Clinical Views" from "Data Source"
 	And I choose "AnalytesView" from "Form"	
 	And I click button "Run"
-
 	Then I verify rows exist in "Result" table
-
 	| Subject        | FormName   | AnalyteName | AnalyteValue | LabUnits | StdValue | StdUnits |
 	| SUB{Var(num1)} | Hematology | WBC         | 10           | 10^9/L   | 50       | %        |
 	And I take a screenshot
