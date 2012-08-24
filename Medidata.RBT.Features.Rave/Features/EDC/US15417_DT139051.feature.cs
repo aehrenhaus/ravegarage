@@ -88,7 +88,7 @@ Then I should see the lab data converted to standard values in the standard unit
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "US15417_DT13905")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("release_2012.1.0")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("PB_DT13905_01")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Draft")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Validation")]
         public virtual void PB_DT13905_01AsAnEDCUserWhenICreateAUnitConversionFormulaToConvertLabDataInANon_StandardUnitToStandardValuesInAStandardUnitThenIShouldSeeTheStandardValueAndStandardUnitsInClinicalViews_()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("PB_DT13905_01 As an EDC user, when I create a unit conversion formula to convert " +
@@ -96,7 +96,7 @@ Then I should see the lab data converted to standard values in the standard unit
                     "ould see the standard value and standard units in Clinical Views.", new string[] {
                         "release_2012.1.0",
                         "PB_DT13905_01",
-                        "Draft"});
+                        "Validation"});
 #line 88
 this.ScenarioSetup(scenarioInfo);
 #line 13
@@ -232,7 +232,7 @@ this.FeatureBackground();
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "US15417_DT13905")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("release_2012.1.0")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("PB_DT13905_02")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Draft")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Validation")]
         public virtual void PB_DT13905_02AsAnEDCUserWhenIUpdateAUnitConversionFormulaToConvertLabDataInANon_StandardUnitToStandardValuesInAStandardUnitThenIShouldSeeTheStandardValueAndStandardUnitsInClinicalViews_()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("PB_DT13905_02 As an EDC user, when I update a unit conversion formula to convert " +
@@ -240,7 +240,7 @@ this.FeatureBackground();
                     "ould see the standard value and standard units in Clinical Views.", new string[] {
                         "release_2012.1.0",
                         "PB_DT13905_02",
-                        "Draft"});
+                        "Validation"});
 #line 132
 this.ScenarioSetup(scenarioInfo);
 #line 13
@@ -444,7 +444,7 @@ this.FeatureBackground();
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "US15417_DT13905")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("release_2012.1.0")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("PB_DT13905_03")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Draft")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Validation")]
         public virtual void PB_DT13905_03AsAnEDCUserWhenICreateAUnitConversionFormulaToConvertLabDataInANon_StandardUnitToStandardValuesInAStandardUnitForASpecificAnalyteThenIShouldSeeTheStandardValueAndStandardUnitsInClinicalViews_()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("PB_DT13905_03 As an EDC user, when I create a unit conversion formula to convert " +
@@ -453,7 +453,7 @@ this.FeatureBackground();
                     "l Views.", new string[] {
                         "release_2012.1.0",
                         "PB_DT13905_03",
-                        "Draft"});
+                        "Validation"});
 #line 202
 this.ScenarioSetup(scenarioInfo);
 #line 13
@@ -596,7 +596,7 @@ this.FeatureBackground();
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "US15417_DT13905")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("release_2012.1.0")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("PB_DT13905_04")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Draft")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Validation")]
         public virtual void PB_DT13905_04AsAnEDCUserWhenIUpdateAUnitConversionFormulaToConvertLabDataInANon_StandardUnitToStandardValuesInAStandardUnitForASpecificAnalyteThenIShouldSeeTheStandardValueAndStandardUnitsInClinicalViews_()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("PB_DT13905_04 As an EDC user, when I update a unit conversion formula to convert " +
@@ -605,7 +605,7 @@ this.FeatureBackground();
                     "l Views.", new string[] {
                         "release_2012.1.0",
                         "PB_DT13905_04",
-                        "Draft"});
+                        "Validation"});
 #line 248
 this.ScenarioSetup(scenarioInfo);
 #line 13
