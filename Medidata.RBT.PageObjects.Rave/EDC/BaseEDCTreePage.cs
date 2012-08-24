@@ -15,6 +15,17 @@ namespace Medidata.RBT.PageObjects.Rave
 		}
 
 
+		public BaseEDCPage ClickModify()
+		{
+			IWebElement editButton = Browser.WaitForElement("header_SG_PencilButton");
+			if (editButton == null)
+				throw new Exception("Can not find the modify button");
+			editButton.Click();
+			return this;
+		}
+
+
+
 		public BaseEDCPage FillDataPoints(IEnumerable<FieldModel> fields)
 		{
 			foreach (var field in fields)

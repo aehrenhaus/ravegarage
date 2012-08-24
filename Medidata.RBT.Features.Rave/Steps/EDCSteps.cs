@@ -8,7 +8,6 @@ using Medidata.RBT.PageObjects.Rave;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Medidata.RBT;
 using TechTalk.SpecFlow.Assist;
-using Medidata.RBT.DBScripts;
 
 namespace Medidata.RBT.Features.Rave
 {
@@ -21,7 +20,6 @@ namespace Medidata.RBT.Features.Rave
 		/// <param name="studyName"></param>
 		/// <param name="siteName"></param>
 		[StepDefinition(@"I select Study ""([^""]*)""")]
-        [StepDefinition(@"I select Study ""([^""]*)"" in ""EDC""")]
 		public void ISelectStudy____AndSite____(string studyName)
 		{
 			CurrentPage = CurrentPage.As<HomePage>()
@@ -119,7 +117,7 @@ namespace Medidata.RBT.Features.Rave
 		[StepDefinition(@"I enter data in CRF")]
 		public void IEnterDataInCRF(Table table)
 		{
-			CRFPage page = CurrentPage.As<CRFPage>();
+			var page = CurrentPage.As<BaseEDCPage>();
 			page.ClickModify();
 			
 			page.FillDataPoints(table.CreateSet<FieldModel>());

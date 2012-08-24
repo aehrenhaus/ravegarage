@@ -61,15 +61,6 @@ namespace Medidata.RBT.PageObjects.Rave
             return this;
         }
 
-        public CRFPage ClickModify()
-        {
-            IWebElement editButton = Browser.WaitForElement("header_SG_PencilButton");
-            if (editButton == null)
-                throw new Exception("Can not find the modify button");
-            editButton.Click();
-            return this;
-        }
-
 
 
         #region Query related

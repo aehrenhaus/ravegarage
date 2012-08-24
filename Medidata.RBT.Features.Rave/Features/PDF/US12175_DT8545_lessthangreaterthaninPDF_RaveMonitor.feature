@@ -63,7 +63,7 @@ Background:
 	#And I assign all forms at the "Site Initiation Visit" level of the "DEFAULT" matrix
     #And I select draft "Draft 2.0 - FINAL"
 	#And I publish and push CRF Version "Draft2V2" of Draft "Draft 2.0 - FINAL" to site "Site Monitor" in Study "Prod"
-	#And I create study "Test6" in "EDC"
+	#And I create study "Test6"
 	#And I assign user "defuser" to have "CDM1B144V1" role for "Test6: Prod"
 	
 @release_2012.1.0
@@ -72,7 +72,7 @@ Background:
 Scenario: @US11043K A blank-populated PDF that is generated should properly display special characters
 This should be tested with all 3 forms (Standard, log and mixed forms)
  	
-	When I select Study "test15" in "EDC"
+	When I select Study "test15"
 	And I select link "Monitor Visits" located in "Left Nav"
 	When I generate PDF for all visits
 	Then the text should not contain "<Symbol>"
@@ -94,7 +94,7 @@ This should be tested with all 3 forms (Standard, log and mixed forms)
 Scenario: @US11043L A data-populated PDF that is generated should properly display special characters
 This should be tested with all 3 forms (Standard, log and mixed forms)
 	
-	When I select Study "test14" in "EDC"
+	When I select Study "test14"
 	And I select link "Monitor Visits" located in "Left Nav"
 	#And I select Folder "Site Initiation Visit"
 	#And I select Form "InvisibleToVisible"
