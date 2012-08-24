@@ -41,6 +41,26 @@ namespace Medidata.RBT.Common.Steps
 			TestContext.SetContextValue(LastSqlResultTable, dataTable);
 		}
 
+
+
+        /// <summary>
+        /// Wait for CV refresh to finish
+        /// </summary>
+        /// <param name="project"></param>
+        [StepDefinition(@"I wait for Clinical View refresh to complete for project ""([^""]*)""")]
+        public void IWaitForClinicalViewRefreshToCompleteForProject____(string project)
+        {            
+            var sql = ClinicalViewsScripts.GenerateSQLForNumberOfRecordsThatNeedCVRefresh(project);
+            System.Data.DataTable dataTable;
+            do
+            {
+                System.Threading.Thread.Sleep(1000); //wait a second
+                dataTable = DbHelper.ExecuteDataSet(sql).Tables[0]; //run backend query to count records needing cv refresh.
+            }
+            while (((int)dataTable.Rows[0][0] != 0));
+
+        }
+
         /// <summary>
         /// Based on the column name, we call an appropriate method and assert true/false whether or not column in table datapoints propagates
         /// </summary>
