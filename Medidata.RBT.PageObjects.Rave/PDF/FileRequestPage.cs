@@ -13,11 +13,6 @@ namespace Medidata.RBT.PageObjects.Rave
 {
     public class FileRequestPage : RavePageBase, ICanPaginate
 	{
-        public bool CanPaginate(string areaIdentifier)
-        {
-            return true;
-        }
-
 		public FileRequestPage CreateDataPDF(PDFCreationModel args)
 		{
 			ClickLink("Create Data Request");
@@ -32,7 +27,7 @@ namespace Medidata.RBT.PageObjects.Rave
             return page.CreateBlankPDF(args);
         }
 
-		public FileRequestPage Generate(PDF pdf)
+		public FileRequestPage Generate(Medidata.RBT.PDF pdf)
 		{
             int foundOnPage;
             Table dt = new Table("Name");
@@ -99,41 +94,10 @@ namespace Medidata.RBT.PageObjects.Rave
             throw new NotImplementedException();
         }
 
-        public override void DeleteObjectOnPage(RemoveableObject removeableObject)
+        public bool CanPaginate(string areaIdentifier)
         {
-            if(removeableObject.GetType() == typeof(PDF))
-            {
-                //Delete the file from the DB
-                int foundOnPage;
-                Table dt = new Table("Name");
-                dt.AddRow(((PDF)removeableObject).Name);
-
-                IWebElement pdfTr = this.FindInPaginatedList("", () =>
-                {
-                    HtmlTable table = Browser.WaitForElement("_ctl0_Content_Results").EnhanceAs<HtmlTable>();
-                    return table.FindMatchRows(dt).FirstOrDefault();
-                }, out foundOnPage);
-
-                EnhancedElement deleteButton = pdfTr.FindImagebuttons().FirstOrDefault(x => x.GetAttribute("id").EndsWith("Delete"));
-
-                deleteButton.Click();
-                GetAlertWindow().Accept();
-
-                //Delete the File Request
-                ClickLink("File Requests");
-                pdfTr = this.FindInPaginatedList("", () =>
-                {
-                    HtmlTable table = Browser.WaitForElement("_ctl0_Content_Results").EnhanceAs<HtmlTable>();
-                    return table.FindMatchRows(dt).FirstOrDefault();
-                }, out foundOnPage);
-
-                deleteButton = pdfTr.FindImagebuttons().FirstOrDefault(x => x.GetAttribute("id").EndsWith("Delete"));
-
-                deleteButton.Click();
-                GetAlertWindow().Accept();
-            }
+            return true;
         }
-
         #endregion
 
 		public FileRequestPage WaitForPDFComplete(string pdf)

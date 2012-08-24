@@ -170,13 +170,13 @@ namespace Medidata.RBT
         /// <returns></returns>
         void SelectLink(string linkText);
 
-        /// <returns></returns>
-        /// <summary>
-        /// Delete a removeableObject on the page.
-        /// </summary>
-        /// /// <param name="removeableObject">Element to be deleted</param>
-        /// <returns></returns>
-        void DeleteObjectOnPage(RemoveableObject removeableObject);
+        ///// <returns></returns>
+        ///// <summary>
+        ///// Delete a removeableObject on the page.
+        ///// </summary>
+        ///// /// <param name="removeableObject">Element to be deleted</param>
+        ///// <returns></returns>
+        //void DeleteObjectOnPage(RemoveableObject removeableObject);
 
         void FocusOnElementById(string id);
         IWebElement GetCurrentFocusedElement();

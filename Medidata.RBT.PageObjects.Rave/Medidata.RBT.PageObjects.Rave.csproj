@@ -87,11 +87,14 @@
     <Compile Include="Lab\AnalytesPage.cs" />
     <Compile Include="Lab\LabPageBase.cs" />
     <Compile Include="Lab\UnitConversionsPage.cs" />
+    <Compile Include="PDF\PDFFileRequestsControl.cs" />
     <Compile Include="PDF\FileRequestCreateBlankRequestPage.cs" />
     <Compile Include="PDF\FileRequestViewPage.cs" />
     <Compile Include="PDF\FileRequestCreateDataRequestPage.cs" />
     <Compile Include="PDF\FileRequestPage.cs" />
     <Compile Include="DCF\DCFQueriesPage.cs" />
+    <Compile Include="PDF\PDFFilesControl.cs" />
+    <Compile Include="PDF\PDFSpecific.cs" />
     <Compile Include="RaveConfiguration.cs" />
     <Compile Include="Reports\DataListingReportPage.cs" />
     <Compile Include="Reports\StreamReportPage.cs" />
