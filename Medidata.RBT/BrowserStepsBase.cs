@@ -12,10 +12,8 @@ using System.Drawing.Imaging;
 
 namespace Medidata.RBT
 {
-
 	public class BrowserStepsBase
 	{
-	
 		public RemoteWebDriver Browser
 		{
 			get
@@ -24,28 +22,20 @@ namespace Medidata.RBT
 			}
 			set
 			{
-
 				TestContext.Browser = value;
 			}
 		}
-
 
 		public IPage CurrentPage
 		{
 			get
 			{
 				return TestContext.CurrentPage;
-
 			}
 			set
 			{
 				TestContext.CurrentPage= value;
 			}
 		}
-
-	
 	}
-
-
-
 }

@@ -60,24 +60,6 @@ namespace Medidata.RBT.Features.Rave
 			CurrentPage.As<FileRequestPage>().ViewPDF(SpecialStringHelper.Replace(pdfName));
 		}
 
-        [Then(@"the text should not contain ""<Symbol>""")]
-        public void ThenTheTextShouldNotContainSymbol(Table table)
-        {
-            List<String> symbols = new List<string>();
-
-            foreach (TableRow tableRow in table.Rows)
-            {
-                string value = tableRow["Symbol"];
-                symbols.Add(value);
-            }
-
-            Assert.IsNotNull(TestContext.ScenarioText);
-            Assert.AreNotEqual("", TestContext.ScenarioText);
-
-            if (symbols.Any(s => TestContext.ScenarioText.Contains(s)))
-                Assert.Fail();
-        }
-
 		[StepDefinition(@"I should see ""Query Data"" in Audits")]
 		public void ThenIShouldSeeQueryDataInAudits()
 		{
