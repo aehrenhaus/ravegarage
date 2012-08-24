@@ -64,11 +64,11 @@ Background:
 Scenario: PB-DT13637-01 As a Data Manager, when an EDC user enters data for a standard dynamic searchlist field, then I expect to see the AltCodedValue for that field propagated to the hidden datapoints on the log lines.
 	
 	When I select Study "US11306_DT13637_SJ" and Site "Site 1"
-	When I create a Subject
+	And I create a Subject
 	| Field            | Data              |
 	| Subject Initials | SUB               |
 	| Subject Number   | {RndNum<num1>(3)} |
-	And I select Form "Device Form" 
+	And I select link "Device Form"
 	And I enter data in CRF and save
 	| Field       | Data          | Control Type        |
 	| Device Type | Device Type 1 | radiobutton         |
@@ -90,7 +90,7 @@ Scenario: PB-DT13637-01 As a Data Manager, when an EDC user enters data for a st
 @Validation
 Scenario: PB-DT13637-02 As a Data Manager, when an EDC user enters data for a standard dynamic searchlist field, then I expect to see the AltCodedValue for that field propagated to the hidden datapoints on the log lines.
 	When I select Study "US11306_DT13637_SJ" and Site "Site 1"
-	When I create a Subject
+	And I create a Subject
 		| Field            | Data              |
 		| Subject Initials | SUB               |
 		| Subject Number   | {RndNum<num1>(3)} |
@@ -107,7 +107,7 @@ Scenario: PB-DT13637-02 As a Data Manager, when an EDC user enters data for a st
 	And I take a screenshot
 	And I enter data in CRF and save
 		| Field  | Data      | Control Type        |
-		| Device | Device 1A | dynamic search list |
+		| Device | Device 1B | dynamic search list |
 	And I take a screenshot
 	And I select link "Reactivate"
 	And I choose "1" from "Reactivate"

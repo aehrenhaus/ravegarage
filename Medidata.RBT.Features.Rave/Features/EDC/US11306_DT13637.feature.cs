@@ -113,9 +113,9 @@ this.FeatureBackground();
                         "Subject Number",
                         "{RndNum<num1>(3)}"});
 #line 67
- testRunner.When("I create a Subject", ((string)(null)), table1);
+ testRunner.And("I create a Subject", ((string)(null)), table1);
 #line 71
- testRunner.And("I select Form \"Device Form\"");
+ testRunner.And("I select link \"Device Form\"");
 #line hidden
             TechTalk.SpecFlow.Table table2 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field",
@@ -197,9 +197,9 @@ this.FeatureBackground();
                         "Subject Number",
                         "{RndNum<num1>(3)}"});
 #line 93
- testRunner.When("I create a Subject", ((string)(null)), table4);
+ testRunner.And("I create a Subject", ((string)(null)), table4);
 #line 97
- testRunner.And("I select \"Device Form\"");
+ testRunner.And("I select link \"Device Form\"");
 #line hidden
             TechTalk.SpecFlow.Table table5 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field",
@@ -224,7 +224,7 @@ this.FeatureBackground();
 #line 98
  testRunner.And("I enter data in CRF and save", ((string)(null)), table5);
 #line 104
- testRunner.And("I select \"Inactivate\"");
+ testRunner.And("I select link \"Inactivate\"");
 #line 105
  testRunner.And("I choose \"1\" from \"Inactivate\"");
 #line 106
@@ -238,14 +238,14 @@ this.FeatureBackground();
                         "Control Type"});
             table6.AddRow(new string[] {
                         "Device",
-                        "Device 1A",
+                        "Device 1B",
                         "dynamic search list"});
 #line 108
  testRunner.And("I enter data in CRF and save", ((string)(null)), table6);
 #line 111
  testRunner.And("I take a screenshot");
 #line 112
- testRunner.And("I select \"Reactivate\"");
+ testRunner.And("I select link \"Reactivate\"");
 #line 113
  testRunner.And("I choose \"1\" from \"Reactivate\"");
 #line 114

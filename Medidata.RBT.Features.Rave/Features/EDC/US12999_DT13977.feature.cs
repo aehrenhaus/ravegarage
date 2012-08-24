@@ -128,7 +128,7 @@ this.FeatureBackground();
 #line 39
  testRunner.And("I take a screenshot");
 #line 40
- testRunner.And("I select Form \"Hematology\"");
+ testRunner.And("I select link \"Hematology\"");
 #line 41
  testRunner.And("I choose \"US15417_DT13905_LocalLab\" from \"Lab\"");
 #line hidden

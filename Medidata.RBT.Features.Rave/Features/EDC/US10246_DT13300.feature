@@ -43,7 +43,7 @@ Scenario: @PB_US10246_DT13300_01 As a Study Coordinator, when I save the month i
 	| Field              | Data                  | Control Type |
 	| Subject Identifier | SUB {RndNum<num1>(3)} | text         |
 	
-	And I select Form "Device Form"
+	And I select link "Device Form"
 	And I enter data in CRF and save
 	| Field                 | Data        | Control Type |
 	| Device Implant Date 1 | UN          | datetime     |
@@ -80,7 +80,7 @@ Scenario: @PB_US10246_DT13300_02 As a Study Coordinator, I save an unknown month
 	And I create a Subject
 	| Field				| Data				   |
 	| Subject Identifier| SUB {RndNum<num1>(3)}|
-	And I select Form "Device Form"
+	And I select link "Device Form"
 	And I enter data in CRF and save
 	| Field                 | Data        | Control Type |
 	| Device Implant Date 1 | UN          | datetime     |
@@ -126,7 +126,7 @@ Scenario: @PB_US10246_DT13300_03  As a Study Coordinator, My Profile > Locale is
 	And I create a Subject
 	| Field				| Data				   |
 	| Subject Identifier| SUB {RndNum<num1>(3)}|
-	And I select Form "Device Form"
+	And I select link "Device Form"
 	And I enter data in CRF and save
 	| Field                 | Data        | Control Type |
 	| Device Implant Date 1 | UN          | datetime     |
@@ -155,7 +155,7 @@ Scenario: @PB_US10246_DT13300_03  As a Study Coordinator, My Profile > Locale is
 	And I am logged in to Rave with username "defjapan" and password "password"
 	And I select Study "US10246_DT13300_SJ" and Site "Site 1"
 	And I select a Subject "SUB {Var(num1)}"
-	And I select Form "Device Form"
+	And I select link "Device Form"
 	And I enter data in CRF and save
 	| Field                 | Data        | Control Type |
 	| Device Implant Date 2 | Aug         | datetime     |

@@ -116,7 +116,7 @@ this.ScenarioSetup(scenarioInfo);
 #line 42
  testRunner.And("I create a Subject", ((string)(null)), table1);
 #line 46
- testRunner.And("I select Form \"Device Form\"");
+ testRunner.And("I select link \"Device Form\"");
 #line hidden
             TechTalk.SpecFlow.Table table2 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field",
@@ -238,7 +238,7 @@ this.ScenarioSetup(scenarioInfo);
 #line 80
  testRunner.And("I create a Subject", ((string)(null)), table4);
 #line 83
- testRunner.And("I select Form \"Device Form\"");
+ testRunner.And("I select link \"Device Form\"");
 #line hidden
             TechTalk.SpecFlow.Table table5 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field",
@@ -384,7 +384,7 @@ this.ScenarioSetup(scenarioInfo);
 #line 126
  testRunner.And("I create a Subject", ((string)(null)), table9);
 #line 129
- testRunner.And("I select Form \"Device Form\"");
+ testRunner.And("I select link \"Device Form\"");
 #line hidden
             TechTalk.SpecFlow.Table table10 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field",
@@ -477,7 +477,7 @@ this.ScenarioSetup(scenarioInfo);
 #line 157
  testRunner.And("I select a Subject \"SUB {Var(num1)}\"");
 #line 158
- testRunner.And("I select Form \"Device Form\"");
+ testRunner.And("I select link \"Device Form\"");
 #line hidden
             TechTalk.SpecFlow.Table table12 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field",
