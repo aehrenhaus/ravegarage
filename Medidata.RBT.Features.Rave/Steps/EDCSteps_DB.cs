@@ -39,6 +39,26 @@ namespace Medidata.RBT.Features.Rave
 			throw new NotImplementedException();
 		}
 
+
+		/// <summary>
+		/// Wait for CV refresh to finish
+		/// </summary>
+		/// <param name="project"></param>
+		[StepDefinition(@"I wait for Clinical View refresh to complete for project ""([^""]*)""")]
+		public void IWaitForClinicalViewRefreshToCompleteForProject____(string project)
+		{
+			var sql = ClinicalViewsScripts.GenerateSQLForNumberOfRecordsThatNeedCVRefresh(project);
+			System.Data.DataTable dataTable;
+			do
+			{
+				System.Threading.Thread.Sleep(1000); //wait a second
+				dataTable = DbHelper.ExecuteDataSet(sql).Tables[0]; //run backend query to count records needing cv refresh.
+			}
+			while (((int)dataTable.Rows[0][0] != 0));
+
+		}
+
+
 		private string GenerateSQLQueryForColumnName(string column, int datapageID)
 		{
 			if (column.Equals("AltCodedValue"))
@@ -74,5 +94,35 @@ namespace Medidata.RBT.Features.Rave
 
 		}
 
+
+		public class ClinicalViewsScripts
+		{
+			public static string GenerateSQLForNumberOfRecordsThatNeedCVRefresh(string projectName)
+			{
+				return CountOfRecordsRequiringCVRefreshForProject(projectName);
+			}
+			private static string CountOfRecordsRequiringCVRefreshForProject(string project)
+			{
+				return String.Format(@"     select count(r.recordID)
+                                        from projects p
+	                                        join studies st
+		                                        on st.projectID = p.projectID
+	                                        join studySites ss
+		                                        on ss.studyID = st.studyID
+	                                        join subjects s
+		                                        on s.studySiteID = ss.studySiteID
+	                                        join records r 
+		                                        on r.subjectID = s.subjectID
+			                                        and r.needsCVRefresh <> 0
+                                        where 1 = 1
+		                                        and p.projectActive = 1
+		                                        and st.studyActive = 1
+		                                        and r.deleted <> 1
+		                                        and dbo.fnlocaldefault(projectName) = '{0}'
+                                    ", project);
+
+
+			}
+		}
 	}
 }

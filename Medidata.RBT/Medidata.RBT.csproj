@@ -66,8 +66,6 @@
   <ItemGroup>
     <Compile Include="BrowserStepsBase.cs" />
     <Compile Include="Constants.cs" />
-    <Compile Include="DBScripts\ClinicalViewsScripts.cs" />
-    <Compile Include="DBScripts\PropagationVerificationSQLScripts.cs" />
     <Compile Include="EnumHelper.cs" />
     <Compile Include="PageObjectInterfaces\ControlBase.cs" />
     <Compile Include="DbHelper.cs" />
