@@ -6,6 +6,7 @@ using Medidata.RBT.Features;
 using TechTalk.SpecFlow;
 using Medidata.RBT.PageObjects;
 using Medidata.RBT.PageObjects.Rave;
+using Medidata.RBT.PageObjects.Rave.PDF;
 using System.IO;
 
 using System.Data;
@@ -40,7 +41,7 @@ namespace Medidata.RBT.Features.Rave
 		[StepDefinition(@"I generate Data PDF ""([^""]*)""")]
 		public void IGeneratePDF(string pdfName)
 		{
-            PDF pdf = new PDF(SpecialStringHelper.Replace(pdfName));
+            PDFSpecific pdf = new PDFSpecific(SpecialStringHelper.Replace(pdfName));
             CurrentPage = CurrentPage.As<FileRequestPage>().Generate(pdf);
             pdf.MarkForDeletion();
 		}
@@ -58,24 +59,6 @@ namespace Medidata.RBT.Features.Rave
 		{
 			CurrentPage.As<FileRequestPage>().ViewPDF(SpecialStringHelper.Replace(pdfName));
 		}
-
-        [Then(@"the text should not contain ""<Symbol>""")]
-        public void ThenTheTextShouldNotContainSymbol(Table table)
-        {
-            List<String> symbols = new List<string>();
-
-            foreach (TableRow tableRow in table.Rows)
-            {
-                string value = tableRow["Symbol"];
-                symbols.Add(value);
-            }
-
-            Assert.IsNotNull(TestContext.ScenarioText);
-            Assert.AreNotEqual("", TestContext.ScenarioText);
-
-            if (symbols.Any(s => TestContext.ScenarioText.Contains(s)))
-                Assert.Fail();
-        }
 
 		[StepDefinition(@"I should see ""Query Data"" in Audits")]
 		public void ThenIShouldSeeQueryDataInAudits()

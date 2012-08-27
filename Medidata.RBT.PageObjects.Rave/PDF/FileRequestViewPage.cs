@@ -26,7 +26,7 @@ namespace Medidata.RBT.PageObjects.Rave
 
             foreach (string filePath in extractedFilePaths)
                 if(filePath.ToLower().EndsWith(".pdf"))
-                    sb.Append(new PDF(pdfName, filePath).Text);
+                    sb.Append(new Medidata.RBT.PDF(pdfName, filePath).Text);
 
             TestContext.ScenarioText = sb.ToString();
 		}

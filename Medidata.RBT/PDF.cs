@@ -43,6 +43,10 @@ namespace Medidata.RBT
             }
         }
 
+        public PDF()
+        {
+        }
+
         public PDF(string name)
         {
             Name = name;
@@ -52,11 +56,6 @@ namespace Medidata.RBT
         {
             Name = name;
             FileLocation = fileLocation;
-        }
-
-        public override void DeleteSelf()
-        {
-            TestContext.CurrentPage.NavigateTo("PDF Generator").DeleteObjectOnPage(this);
         }
     }
 }
