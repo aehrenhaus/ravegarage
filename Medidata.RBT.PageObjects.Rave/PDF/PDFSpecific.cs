@@ -10,6 +10,9 @@ using System.Collections.ObjectModel;
 
 namespace Medidata.RBT.PageObjects.Rave.PDF
 {
+    /// <summary>
+    ///This is a rave specific PDF object, it represents the rave level functionality of the pdf, such as the ability to be deleted.
+    ///</summary>
     public class PDFSpecific : Medidata.RBT.PDF
     {
         public PDFSpecific(string name)
@@ -17,6 +20,10 @@ namespace Medidata.RBT.PageObjects.Rave.PDF
             Name = name;
         }
 
+        /// <summary>
+        /// Delete this pdfSpecific object. Clearing the file request, and deleting the actual file.
+        /// </summary>
+        /// <returns></returns>
         public override void DeleteSelf()
         {
             //Call PDF Delete the file from the DB

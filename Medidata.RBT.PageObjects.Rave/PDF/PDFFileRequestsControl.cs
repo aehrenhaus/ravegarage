@@ -20,6 +20,11 @@ namespace Medidata.RBT.PageObjects.Rave
         {
         }
 
+        /// <summary>
+        /// Delete a pdf file requst
+        /// </summary>
+        /// <param name="name">The name of the pdf file request to delete</param>
+        /// <returns></returns>
         public void DeletePDF(string name)
         {
             int foundOnPage;

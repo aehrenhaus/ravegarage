@@ -19,21 +19,11 @@ namespace Medidata.RBT
 	public class TestContext
 	{
         public static string DownloadPath { get; set; }
-		public static RemoteWebDriver Browser
-		{
-			get;
-			set;
-			//get
-			//{
-			//    return GetContextValue<RemoteWebDriver>("RemoteWebDriver");
-			//}
-			//set
-			//{
+		public static RemoteWebDriver Browser { get; set; }
 
-			//    ScenarioContext.Current["RemoteWebDriver"] = value;
-			//}
-		}
-
+        /// <summary>
+        /// The list of removable objects that will be deleted upon scenario end.
+        /// </summary>
         public static List<RemoveableObject> ObjectsForDeletion
         {
             get
@@ -85,28 +75,16 @@ namespace Medidata.RBT
             }
         }
 
-		public static DateTime? CurrentFeatureStartTime
-		{
-			get;
-			set;
-		}
+		public static DateTime? CurrentFeatureStartTime { get; set; }
 
-		public static int ScreenshotIndex
-		{
-			get;
-			private set;
-		}
+		public static int ScreenshotIndex { get; private set; }
 
 		/// <summary>
 		/// This is read from a @PB.... tag on a scenario when it starts to run.
 		/// This is a convention, we use the tag name as a identifier of  a scenario
 		/// 
 		/// </summary>
-		public static string ScenarioUniqueName
-		{
-			get;
-			private set;
-		}
+		public static string ScenarioUniqueName { get; private set; }
 
 		public static NameValueCollection Vars
 		{

@@ -428,7 +428,11 @@ namespace Medidata.RBT
             return extractedFilePaths;
         }
 
-        //Unzips a zip file in the download path returns a list of the extracted files' paths.
+        /// <summary>
+        ///Unzips a zip file.
+        ///<param name="zipFilePath">File path of the object to be unzipped. (e.g. c:/folder1/folder2/mysuperawesomefile.zip)</param>
+        ///<returns>A list of the extracted files' file paths.</returns>
+        ///</summary>
         private List<String> UnZipAndExtract(string zipFilePath)
         {
             List<String> extractedFilePaths = new List<string>();

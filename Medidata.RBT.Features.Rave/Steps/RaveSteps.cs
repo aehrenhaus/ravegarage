@@ -32,6 +32,11 @@ namespace Medidata.RBT.Features.Rave
             return new RWSLogPage(logger);
         }
 
+        /// <summary>
+        /// Step definition to check if a the text stored in the scenario text contains the listed symbols. Fails if it does.
+        /// </summary>
+        /// <param name="table">The list of characters to look for</param>
+        /// <returns></returns>
         [Then(@"the text should not contain ""<Symbol>""")]
         public void ThenTheTextShouldNotContainSymbol(Table table)
         {

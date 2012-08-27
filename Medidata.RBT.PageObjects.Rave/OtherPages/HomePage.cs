@@ -253,6 +253,11 @@ namespace Medidata.RBT.PageObjects.Rave
 
 		#endregion
 
+        /// <summary>
+        /// Select a form created by Rave Monitor on this page.
+        /// </summary>
+        /// <param name="formName">The name of the form to select</param>
+        /// <returns>A new MonitorSiteSubjectPage</returns>
         public MonitorSiteSubjectPage SelectForm(string formName)
         {
             IWebElement formFolderTable = Browser.FindElementById("TblOuter");
