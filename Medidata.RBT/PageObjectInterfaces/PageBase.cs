@@ -65,7 +65,7 @@ namespace Medidata.RBT
                 var currentpage = TestContext.CurrentPage as TPage;
                 if (currentpage == null)
                 {
-                    throw new Exception("Expect current page to be " + typeof(TPage).Name + ", but it's not.");
+					throw new Exception("Expect current page to be " + typeof(TPage).Name + ", but it's " + (TestContext.CurrentPage==null?"null":TestContext.CurrentPage.GetType().Name));
                 }
                 return currentpage;
             }

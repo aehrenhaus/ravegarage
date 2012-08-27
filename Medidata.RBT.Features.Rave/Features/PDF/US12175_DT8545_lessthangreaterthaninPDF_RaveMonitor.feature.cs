@@ -115,7 +115,7 @@ this.ScenarioSetup(scenarioInfo);
 #line 23
 this.FeatureBackground();
 #line 75
- testRunner.When("I select Study \"test15\" in \"EDC\"");
+ testRunner.When("I select Study \"test15\"");
 #line 76
  testRunner.And("I select link \"Monitor Visits\" located in \"Left Nav\"");
 #line 77
@@ -169,7 +169,7 @@ this.ScenarioSetup(scenarioInfo);
 #line 23
 this.FeatureBackground();
 #line 97
- testRunner.When("I select Study \"test14\" in \"EDC\"");
+ testRunner.When("I select Study \"test14\"");
 #line 98
  testRunner.And("I select link \"Monitor Visits\" located in \"Left Nav\"");
 #line 126

@@ -7,7 +7,9 @@
 *.pdb
 *.suo
 *.cache
-
+*.typemock
+Metrics.*
+*.db
 
 /TestResults/
 /Medidata.RBT.Features.Rave/App.config

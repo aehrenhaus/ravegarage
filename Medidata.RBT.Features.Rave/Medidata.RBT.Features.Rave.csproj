@@ -215,6 +215,7 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
+    <Compile Include="Steps\EDCSteps_DB.cs" />
     <Compile Include="Steps\MonitorSiteSubjectPageSteps.cs" />
     <Compile Include="Steps\LabUnitConversionSteps.cs" />
     <Compile Include="Steps\SubjectPageSteps.cs" />

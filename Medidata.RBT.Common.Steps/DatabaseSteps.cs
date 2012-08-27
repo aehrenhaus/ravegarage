@@ -6,7 +6,6 @@ using TechTalk.SpecFlow;
 using System.Data;
 using System.IO;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Medidata.RBT.DBScripts;
 
 namespace Medidata.RBT.Common.Steps
 {
@@ -42,38 +41,6 @@ namespace Medidata.RBT.Common.Steps
 		}
 
 
-
-        /// <summary>
-        /// Wait for CV refresh to finish
-        /// </summary>
-        /// <param name="project"></param>
-        [StepDefinition(@"I wait for Clinical View refresh to complete for project ""([^""]*)""")]
-        public void IWaitForClinicalViewRefreshToCompleteForProject____(string project)
-        {            
-            var sql = ClinicalViewsScripts.GenerateSQLForNumberOfRecordsThatNeedCVRefresh(project);
-            System.Data.DataTable dataTable;
-            do
-            {
-                System.Threading.Thread.Sleep(1000); //wait a second
-                dataTable = DbHelper.ExecuteDataSet(sql).Tables[0]; //run backend query to count records needing cv refresh.
-            }
-            while (((int)dataTable.Rows[0][0] != 0));
-
-        }
-
-        /// <summary>
-        /// Based on the column name, we call an appropriate method and assert true/false whether or not column in table datapoints propagates
-        /// </summary>
-        /// <param name="columnName"></param>
-        [StepDefinition(@"""([^""]*)"" propagates correctly")]
-        public void IVerifyDatapointColumnPropagates____(string columnName)
-        {
-            Uri tempUri = new Uri(Browser.Url);
-            var sql = PropagationVerificationSQLScripts.GenerateSQLQueryForColumnName(columnName, int.Parse(tempUri.Query.Replace("?DP=", "")));
-
-			var dataTable = DbHelper.ExecuteDataSet(sql).Tables[0];
-            Assert.IsTrue((int)dataTable.Rows[0][0] == 0, "Data doesn't propagate correctly");
-        }
 
 		[StepDefinition(@"I should see SQL result")]
 		public void IShouldSeeResult(Table table)
