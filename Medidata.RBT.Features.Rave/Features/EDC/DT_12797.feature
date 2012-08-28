@@ -22,7 +22,7 @@ Background:
 	# There must be an edit check to set a field to require review.  Example if Age < 18 then set Visit Date to require review.
 				
 @PB-DT12797-01
-Scenario: As an EDC user, when I have an edit check that sets a field to review review and I see the requires review icon, then I should see the review box enabled.
+Scenario: As an EDC user, when I have an edit check that sets a field to require review and I see the requires review icon, then I should see the review box enabled.
 	When I create a Subject
 	| Field				|Value	|
 	| Subject Number	|101	|

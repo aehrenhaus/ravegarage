@@ -107,14 +107,14 @@ namespace Medidata.RBT.Features.Rave.Features.EDC
         }
         
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("As an EDC user, when I have an edit check that sets a field to review review and " +
-            "I see the requires review icon, then I should see the review box enabled.")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("As an EDC user, when I have an edit check that sets a field to require review and" +
+            " I see the requires review icon, then I should see the review box enabled.")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "DT 12797 For a field that has a derivation, edit check does not set it to require" +
             " review correctly in certain cases.")]
-        public virtual void AsAnEDCUserWhenIHaveAnEditCheckThatSetsAFieldToReviewReviewAndISeeTheRequiresReviewIconThenIShouldSeeTheReviewBoxEnabled_()
+        public virtual void AsAnEDCUserWhenIHaveAnEditCheckThatSetsAFieldToRequireReviewAndISeeTheRequiresReviewIconThenIShouldSeeTheReviewBoxEnabled_()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("As an EDC user, when I have an edit check that sets a field to review review and " +
-                    "I see the requires review icon, then I should see the review box enabled.", new string[] {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("As an EDC user, when I have an edit check that sets a field to require review and" +
+                    " I see the requires review icon, then I should see the review box enabled.", new string[] {
                         "PB-DT12797-01"});
 #line 25
 this.ScenarioSetup(scenarioInfo);
