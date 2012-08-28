@@ -19,7 +19,7 @@ namespace Medidata.RBT.Features.Rave.Features.EDC
     [System.CodeDom.Compiler.GeneratedCodeAttribute("TechTalk.SpecFlow", "1.8.1.0")]
     [System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     [Microsoft.VisualStudio.TestTools.UnitTesting.TestClassAttribute()]
-    public partial class WhenReportsAreListedOnEitherTheStudySiteOrSubjectPagesTheyShouldBeSortedInAlphabeticalOrder_Feature
+    public partial class US11913Feature
     {
         
         private static TechTalk.SpecFlow.ITestRunner testRunner;
@@ -31,10 +31,10 @@ namespace Medidata.RBT.Features.Rave.Features.EDC
         public static void FeatureSetup(Microsoft.VisualStudio.TestTools.UnitTesting.TestContext testContext)
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
-            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "When reports are listed on either the Study, Site or Subject pages, they should b" +
-                    "e sorted in alphabetical order.", "As a Rave Adminstrator\r\nWhen I have configured reports to display on either the S" +
-                    "tudy, Site or Subject pages\r\nThen the report names are sorted in alphabetical or" +
-                    "der", ProgrammingLanguage.CSharp, ((string[])(null)));
+            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "US11913", @"When reports are listed on either the Study, Site or Subject pages, they should be sorted in alphabetical order.
+As a Rave Adminstrator
+When I have configured reports to display on either the Study, Site or Subject pages
+Then the report names are sorted in alphabetical order", ProgrammingLanguage.CSharp, ((string[])(null)));
             testRunner.OnFeatureStart(featureInfo);
         }
         
@@ -49,10 +49,9 @@ namespace Medidata.RBT.Features.Rave.Features.EDC
         public virtual void TestInitialize()
         {
             if (((TechTalk.SpecFlow.FeatureContext.Current != null) 
-                        && (TechTalk.SpecFlow.FeatureContext.Current.FeatureInfo.Title != "When reports are listed on either the Study, Site or Subject pages, they should b" +
-                            "e sorted in alphabetical order.")))
+                        && (TechTalk.SpecFlow.FeatureContext.Current.FeatureInfo.Title != "US11913")))
             {
-                Medidata.RBT.Features.Rave.Features.EDC.WhenReportsAreListedOnEitherTheStudySiteOrSubjectPagesTheyShouldBeSortedInAlphabeticalOrder_Feature.FeatureSetup(null);
+                Medidata.RBT.Features.Rave.Features.EDC.US11913Feature.FeatureSetup(null);
             }
         }
         
@@ -74,151 +73,30 @@ namespace Medidata.RBT.Features.Rave.Features.EDC
         
         public virtual void FeatureBackground()
         {
-#line 8
- #line 9
+#line 9
+ #line 10
  testRunner.Given("I am logged in to Rave with username \"defuser\" and password \"password\"");
-#line hidden
-            TechTalk.SpecFlow.Table table1 = new TechTalk.SpecFlow.Table(new string[] {
-                        "User",
-                        "Project",
-                        "Environment",
-                        "Role",
-                        "Site",
-                        "Site Number",
-                        "User Group"});
-            table1.AddRow(new string[] {
-                        "defuser",
-                        "Mediflex",
-                        "Prod",
-                        "cdm1",
-                        "LabSite01",
-                        "2426",
-                        "Reports"});
-#line 11
- testRunner.And("the following Project assignments exist", ((string)(null)), table1);
-#line 15
- testRunner.And("User Group has \"Reports\"");
-#line 16
- testRunner.And("Role \"cdm1\" has Action \"Entry\"");
-#line hidden
-            TechTalk.SpecFlow.Table table2 = new TechTalk.SpecFlow.Table(new string[] {
-                        "Report Name"});
-            table2.AddRow(new string[] {
-                        "Data Listing"});
-            table2.AddRow(new string[] {
-                        "eLearning Status"});
-            table2.AddRow(new string[] {
-                        "Enrollment"});
-            table2.AddRow(new string[] {
-                        "SAS On Demand"});
-            table2.AddRow(new string[] {
-                        "Subject CRF Versions"});
-#line 18
- testRunner.And("Role \"Data Manager\" has the following Report assignments", ((string)(null)), table2);
-#line hidden
-            TechTalk.SpecFlow.Table table3 = new TechTalk.SpecFlow.Table(new string[] {
-                        "Projects",
-                        "Report Name",
-                        "Study",
-                        "Site",
-                        "Subject"});
-            table3.AddRow(new string[] {
-                        "Mediflex",
-                        "Coding Assignments",
-                        "X",
-                        "",
-                        ""});
-            table3.AddRow(new string[] {
-                        "Mediflex",
-                        "Data Listing",
-                        "X",
-                        "",
-                        ""});
-            table3.AddRow(new string[] {
-                        "Mediflex",
-                        "eLearning Status",
-                        "",
-                        "X",
-                        ""});
-            table3.AddRow(new string[] {
-                        "Mediflex",
-                        "Enrollment",
-                        "X",
-                        "X",
-                        ""});
-            table3.AddRow(new string[] {
-                        "Mediflex",
-                        "Page Status v2.0",
-                        "X",
-                        "X",
-                        "X"});
-            table3.AddRow(new string[] {
-                        "Mediflex",
-                        "Query Aging",
-                        "X",
-                        "X",
-                        "X"});
-            table3.AddRow(new string[] {
-                        "Mediflex",
-                        "Stream-Audit Trail",
-                        "X",
-                        "X",
-                        "X"});
-            table3.AddRow(new string[] {
-                        "Mediflex",
-                        "Subject CRF Versions",
-                        "X",
-                        "",
-                        "X"});
-            table3.AddRow(new string[] {
-                        "Mediflex",
-                        "Subject PDF Report",
-                        "",
-                        "X",
-                        "X"});
-            table3.AddRow(new string[] {
-                        "Mediflex",
-                        "User Listing",
-                        "X",
-                        "X",
-                        ""});
-#line 25
- testRunner.And("the following Reports Matrix assignments exist", ((string)(null)), table3);
 #line hidden
         }
         
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("@PB_US11101_01 As a Data Manager, when I select Study \"Mediflex\" then I see repor" +
             "ts listed in alphabetical order.")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "When reports are listed on either the Study, Site or Subject pages, they should b" +
-            "e sorted in alphabetical order.")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "US11913")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("PB_US11101_01")]
         public virtual void PB_US11101_01AsADataManagerWhenISelectStudyMediflexThenISeeReportsListedInAlphabeticalOrder_()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("@PB_US11101_01 As a Data Manager, when I select Study \"Mediflex\" then I see repor" +
                     "ts listed in alphabetical order.", new string[] {
                         "PB_US11101_01"});
-#line 40
+#line 47
 this.ScenarioSetup(scenarioInfo);
-#line 8
+#line 9
  this.FeatureBackground();
-#line 41
+#line 48
  testRunner.When("I select Study \"Mediflex\"");
-#line hidden
-            TechTalk.SpecFlow.Table table4 = new TechTalk.SpecFlow.Table(new string[] {
-                        "Report Name"});
-            table4.AddRow(new string[] {
-                        "Coding Assignments - Coding Assignments"});
-            table4.AddRow(new string[] {
-                        "Data Listing - Data Listing Report"});
-            table4.AddRow(new string[] {
-                        "Enrollment - Enrollment Report"});
-            table4.AddRow(new string[] {
-                        "Subject CRF Versions - Subject CRF Versions"});
-            table4.AddRow(new string[] {
-                        "User Listing - User Listing Report"});
-#line 42
- testRunner.Then("I should verify reports listed in alphabetical order", ((string)(null)), table4);
+#line 49
+ testRunner.Then("I verify table \"Reports\" is in alphabetical order");
 #line 51
  testRunner.And("I take a screenshot");
 #line hidden
@@ -228,8 +106,7 @@ this.ScenarioSetup(scenarioInfo);
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("@PB_US11101_02 As a Data Manager, when I select Study \"Mediflex\" and Site \"LabSit" +
             "e01\" then I see reports listed in alphabetical order.")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "When reports are listed on either the Study, Site or Subject pages, they should b" +
-            "e sorted in alphabetical order.")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "US11913")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("PB_US11101_02")]
         public virtual void PB_US11101_02AsADataManagerWhenISelectStudyMediflexAndSiteLabSite01ThenISeeReportsListedInAlphabeticalOrder_()
         {
@@ -238,22 +115,13 @@ this.ScenarioSetup(scenarioInfo);
                         "PB_US11101_02"});
 #line 54
 this.ScenarioSetup(scenarioInfo);
-#line 8
+#line 9
  this.FeatureBackground();
 #line 56
  testRunner.When("I select Study \"Mediflex\" and Site \"LabSite01\"");
-#line hidden
-            TechTalk.SpecFlow.Table table5 = new TechTalk.SpecFlow.Table(new string[] {
-                        "Report Name"});
-            table5.AddRow(new string[] {
-                        "eLearning Status - eLearning Status"});
-            table5.AddRow(new string[] {
-                        "Enrollment - Enrollment Report"});
-            table5.AddRow(new string[] {
-                        "User Listing - User Listing Report"});
 #line 57
- testRunner.Then("I should verify reports listed in alphabetical order", ((string)(null)), table5);
-#line 64
+ testRunner.Then("I verify table \"Reports\" is in alphabetical order");
+#line 59
  testRunner.And("I take a screenshot");
 #line hidden
             this.ScenarioCleanup();
@@ -262,51 +130,24 @@ this.ScenarioSetup(scenarioInfo);
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("As a Data Manager, when I select Study \"Mediflex\" and Site \"LabSite01\" and Subjec" +
             "t created then I see reports listed in alphabetical order.")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "When reports are listed on either the Study, Site or Subject pages, they should b" +
-            "e sorted in alphabetical order.")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "US11913")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("PB_US11101_03")]
         public virtual void AsADataManagerWhenISelectStudyMediflexAndSiteLabSite01AndSubjectCreatedThenISeeReportsListedInAlphabeticalOrder_()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("As a Data Manager, when I select Study \"Mediflex\" and Site \"LabSite01\" and Subjec" +
                     "t created then I see reports listed in alphabetical order.", new string[] {
                         "PB_US11101_03"});
-#line 67
+#line 62
 this.ScenarioSetup(scenarioInfo);
-#line 8
+#line 9
  this.FeatureBackground();
-#line 68
+#line 63
  testRunner.And("I select Study \"Mediflex\" and Site \"LabSite01\"");
-#line hidden
-            TechTalk.SpecFlow.Table table6 = new TechTalk.SpecFlow.Table(new string[] {
-                        "Field",
-                        "Data"});
-            table6.AddRow(new string[] {
-                        "Subject Initials",
-                        "SUB"});
-            table6.AddRow(new string[] {
-                        "Subject Number",
-                        "{RndNum<num1>(3)}"});
-            table6.AddRow(new string[] {
-                        "Pregancy Status",
-                        "NoREGAQT"});
 #line 69
- testRunner.When("I create a Subject", ((string)(null)), table6);
-#line hidden
-            TechTalk.SpecFlow.Table table7 = new TechTalk.SpecFlow.Table(new string[] {
-                        "Report Name"});
-            table7.AddRow(new string[] {
-                        "Page Status v2.0"});
-            table7.AddRow(new string[] {
-                        "Query Aging"});
-            table7.AddRow(new string[] {
-                        "Stream-Audit Trail"});
-            table7.AddRow(new string[] {
-                        "Subject CRF Versions"});
-            table7.AddRow(new string[] {
-                        "Subject PDF Report"});
-#line 75
- testRunner.Then("I should verify reports listed in alphabetical order", ((string)(null)), table7);
-#line 83
+ testRunner.When("I select a Subject \"SUB53227\"");
+#line 71
+ testRunner.Then("I verify table \"Reports\" is in alphabetical order");
+#line 73
  testRunner.And("I take a screenshot");
 #line hidden
             this.ScenarioCleanup();
