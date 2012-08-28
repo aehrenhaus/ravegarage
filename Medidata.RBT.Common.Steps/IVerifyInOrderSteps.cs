@@ -32,19 +32,20 @@ namespace Medidata.RBT.Common.Steps
 		/// </summary>
 		/// <param name="columnHeader"></param>
 		/// <param name="tableIdentifier"></param>
-		/// <param name="descendent"></param>
-		[StepDefinition(@"I verify column ""([^""]*)"" in table ""([^""]*)"" is in (descendent) alphabetical order")]
-		[StepDefinition(@"I verify column ""([^""]*)"" in table ""([^""]*)"" is in ()alphabetical order")]
-		public void IVerifyColumn____InTable____IsInDescendentAlphabeticalOrder(string columnHeader, string tableIdentifier, string descendent)
+		[StepDefinition(@"I verify column ""([^""]*)"" in table ""([^""]*)"" is in alphabetical order")]
+		public void IVerifyColumn____InTable____IsInAlphabeticalOrder(string columnHeader, string tableIdentifier)
 		{
-			bool asc =  descendent=="";
+			bool inorder = CurrentPage.As<ICanVerifyInOrder>().VerifyTableColumnInAphabeticalOrder(tableIdentifier, columnHeader, true);
+			Assert.IsTrue(inorder, String.Format("Column {0} in table {1} is not in alphabetical order", columnHeader, tableIdentifier));
 
-			bool inorder = CurrentPage.As<ICanVerifyInOrder>().VerifyTableColumnInAphabeticalOrder(tableIdentifier, columnHeader, asc);
+		}
 
-			if (asc)
-				Assert.IsTrue(inorder, String.Format("Column {0} in table {1} is not in alphabetical order", columnHeader, tableIdentifier));
-			else
-				Assert.IsTrue(inorder, String.Format("Column {0} in table {1} is not in descendent alphabetical order", columnHeader, tableIdentifier));
+		[StepDefinition(@"I verify column ""([^""]*)"" in table ""([^""]*)"" is in descendent alphabetical order")]
+		public void IVerifyColumn____InTable____IsInDescendentAlphabeticalOrder(string columnHeader, string tableIdentifier)
+		{
+			bool inorder = CurrentPage.As<ICanVerifyInOrder>().VerifyTableColumnInAphabeticalOrder(tableIdentifier, columnHeader, false);
+			Assert.IsTrue(inorder, String.Format("Column {0} in table {1} is not in descendent alphabetical order", columnHeader, tableIdentifier));
+
 		}
 
 
@@ -53,18 +54,21 @@ namespace Medidata.RBT.Common.Steps
 		/// </summary>
 		/// <param name="tableIdentifier"></param>
 		/// <param name="descendent"></param>
-		[StepDefinition(@"I verify table ""([^""]*)"" is in (descendent) alphabetical order")]
-		[StepDefinition(@"I verify table ""([^""]*)"" is in ()alphabetical order")]
-		public void IVerifyTable____IsInAlphabeticalOrder(string tableIdentifier, string descendent)
+		[StepDefinition(@"I verify table ""([^""]*)"" is in alphabetical order")]
+		public void IVerifyTable____IsInAlphabeticalOrder(string tableIdentifier)
 		{
-			bool asc = descendent == "";
 
-			bool inorder = CurrentPage.As<ICanVerifyInOrder>().VerifyTableInAphabeticalOrder(tableIdentifier, false, asc);
-			if(asc)
-				Assert.IsTrue(inorder, String.Format("Table {0} is not in alphabetical order",  tableIdentifier));
-			else
-				Assert.IsTrue(inorder, String.Format("Table {0} is not in descendent alphabetical order", tableIdentifier));
+			bool inorder = CurrentPage.As<ICanVerifyInOrder>().VerifyTableInAphabeticalOrder(tableIdentifier, false, true);
+			Assert.IsTrue(inorder, String.Format("Table {0} is not in alphabetical order",  tableIdentifier));
+		
+		}
 
+		[StepDefinition(@"I verify table ""([^""]*)"" is in descendent alphabetical order")]
+		public void IVerifyTable____IsInDescendentAlphabeticalOrder(string tableIdentifier)
+		{
+			bool inorder = CurrentPage.As<ICanVerifyInOrder>().VerifyTableInAphabeticalOrder(tableIdentifier, false, false);
+			Assert.IsTrue(inorder, String.Format("Table {0} is not in descendent alphabetical order", tableIdentifier));
+		
 		}
 
 
