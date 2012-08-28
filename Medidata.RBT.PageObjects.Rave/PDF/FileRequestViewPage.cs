@@ -13,6 +13,11 @@ namespace Medidata.RBT.PageObjects.Rave
 {
 	public class FileRequestViewPage : RavePageBase
 	{
+        /// <summary>
+        /// Open the generated pdf and load its text into ScenarioText.
+        /// </summary>
+        /// <param name="pdf">The name of the pdf of be viewed</param>
+        /// <returns></returns>
 		public void ViewPDF(string pdfName)
 		{
 			var table = Browser.Table("_ctl0_Content_Results");

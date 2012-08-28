@@ -13,6 +13,11 @@ namespace Medidata.RBT.PageObjects.Rave
 {
 	public class FileRequestCreateBlankRequestPage : RavePageBase
 	{
+        /// <summary>
+        /// Create a new blank PDF file request
+        /// </summary>
+        /// <param name="args">The pdfCreationModel dictates what on the page gets set. For instace, Name dictates the data PDF's name</param>
+        /// <returns>A new FileRequestPage</returns>
         public FileRequestPage CreateBlankPDF(PDFCreationModel args)
         {
             if (!string.IsNullOrEmpty(args.Name))

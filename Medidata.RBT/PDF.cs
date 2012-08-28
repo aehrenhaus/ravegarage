@@ -10,6 +10,9 @@ using Medidata.RBT.SeleniumExtension;
 
 namespace Medidata.RBT
 {
+    /// <summary>
+    ///This is a shared PDF object, it represents the system level functionality of the pdf.
+    ///</summary>
     public class PDF : RemoveableObject
     {
         public string FileLocation { get; set; }

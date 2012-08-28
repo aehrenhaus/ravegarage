@@ -13,6 +13,11 @@ namespace Medidata.RBT.PageObjects.Rave
 {
     public class FileRequestPage : RavePageBase, ICanPaginate
 	{
+        /// <summary>
+        /// Create a new data pdf file request
+        /// </summary>
+        /// <param name="args">The pdfCreationModel dictates what on the page gets set. For instace, Name dictates the data PDF's name</param>
+        /// <returns>Returns a new FileRequestPage</returns>
 		public FileRequestPage CreateDataPDF(PDFCreationModel args)
 		{
 			ClickLink("Create Data Request");
@@ -20,6 +25,11 @@ namespace Medidata.RBT.PageObjects.Rave
 			return page.CreateDataPDF(args);
 		}
 
+        /// <summary>
+        /// Create a new blank pdf file request
+        /// </summary>
+        /// <param name="args">The pdfCreationModel dictates what on the page gets set. For instace, Name dictates the data PDF's name</param>
+        /// <returns>Returns a new FileRequestPage</returns>
         public FileRequestPage CreateBlankPDF(PDFCreationModel args)
         {
             ClickLink("Create Blank Request");
@@ -27,6 +37,11 @@ namespace Medidata.RBT.PageObjects.Rave
             return page.CreateBlankPDF(args);
         }
 
+        /// <summary>
+        /// Generate a pdf that has a file request
+        /// </summary>
+        /// <param name="pdf">The pdf that you want to generate, should already have a file request created</param>
+        /// <returns>Returns this FileRequestPage</returns>
 		public FileRequestPage Generate(Medidata.RBT.PDF pdf)
 		{
             int foundOnPage;
@@ -117,6 +132,11 @@ namespace Medidata.RBT.PageObjects.Rave
 			return this;
 		}
 
+        /// <summary>
+        /// Open the generated pdf and load its text into ScenarioText.
+        /// </summary>
+        /// <param name="pdf">The name of the pdf of be viewed</param>
+        /// <returns></returns>
 		public void ViewPDF(string pdf)
 		{
             ClickLink("My PDF Files");
