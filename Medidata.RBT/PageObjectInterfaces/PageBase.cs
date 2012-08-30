@@ -206,7 +206,7 @@ namespace Medidata.RBT
 		/// <summary>
 		/// See IPage interface
 		/// </summary>
-        public virtual IPage ChooseFromCheckboxes(string areaIdentifier, string identifier, bool isChecked)
+		public virtual IPage ChooseFromCheckboxes(string identifier, bool isChecked, string areaIdentifier = null, string listItem = null)
         {
 
             var element = Browser.Checkbox(identifier, true);
@@ -220,6 +220,14 @@ namespace Medidata.RBT
 
 			return GetPageByCurrentUrlIfNoAlert();
         }
+
+		/// <summary>
+		/// See IPage interface
+		/// </summary>
+		public IPage ChooseFromCheckboxes(string listIdentifier, string listItem, string identifier, bool isChecked)
+		{
+			throw new NotImplementedException();
+		}
 
 		/// <summary>
 		/// See IPage interface
@@ -301,46 +309,37 @@ namespace Medidata.RBT
 		/// <summary>
 		/// See IPage interface
 		/// </summary>
-		public virtual bool CanSeeTextInArea(string text, string areaIdentifier)
-		{
-			throw new Exception("This page does not implement this method");
-		}
-
-		/// <summary>
-		/// See IPage interface
-		/// </summary>
 		public virtual string GetInfomation(string identifier)
 		{
 			throw new Exception("Don't know how to get text from "+identifier);
 		}
 
         #endregion
-        
 
 
-        /// <summary>
-        /// This method is used by many default implmentation of IPage methods, where a friendly name is used to find a IWebElement
-        /// In many case you will only need to orverride this method to provide mappings on your specific page object in order for a step to work.
-        /// <example>
-        /// 
-        ///public override IWebElement GetElementByName(string name)
-        ///{
-        ///    if (name == "Active Projects")
-        ///        return Browser.Table("_ctl0_Content_ProjectGrid");
-        ///    if (name == "Inactive Projects")
-        ///        return Browser.Table("_ctl0_Content_InactiveProjectGrid");
-        ///
-        ///    return base.GetElementByName(name);
-        ///}
-        /// 
-        /// </example>
-        /// </summary>
-        /// <param name="name"></param>
-        /// <returns></returns>
-        public virtual IWebElement GetElementByName(string name)
-        {
-			throw new Exception("This page does not provide information about named element:" + name);
-        }
+
+
+		/// <summary>
+		/// This method is used by many default implmentation of IPage methods, where a friendly name is used to find a IWebElement
+		/// In many case you will only need to orverride this method to provide mappings on your specific page object in order for a step to work.
+		/// <example>
+		/// 
+		///public override IWebElement GetElementByName(string name)
+		///{
+		///    if (name == "Active Projects")
+		///        return Browser.Table("_ctl0_Content_ProjectGrid");
+		///    if (name == "Inactive Projects")
+		///        return Browser.Table("_ctl0_Content_InactiveProjectGrid");
+		///
+		///    return base.GetElementByName(name);
+		///}
+		/// 
+		/// </example>
+		/// </summary>
+		public virtual IWebElement GetElementByName(string identifier, string areaIdentifier = null, string listItem = null)
+		{
+			throw new Exception("This page does not provide information about element:" + identifier);
+		}
 
         public virtual IWebElement CanSeeControl(string identifier)
         {
@@ -362,13 +361,6 @@ namespace Medidata.RBT
             IAlert alert = Browser.SwitchTo().Alert();
             return alert;
         }
-
-        public void SelectLink(string linkText)
-        {
-            var link = Browser.Link(linkText);
-            link.Click();
-        }
-
 
 		public IWebElement WaitForElement(Func<IWebDriver, IWebElement> getElement, string errorMessage = null, double timeOutSecond = 0)
 		{
@@ -415,58 +407,5 @@ namespace Medidata.RBT
             return Browser.SwitchTo().ActiveElement();
         }
 
-        /// <summary>
-        /// See IPage interface
-        /// </summary>
-        public List<String> UnzipAllDownloads()
-        {
-            List<String> extractedFilePaths = new List<string>();
-            List<String> zipFilePaths = Directory.GetFiles(TestContext.DownloadPath, "*.zip").ToList();
-            foreach (String zipFilePath in zipFilePaths)
-                extractedFilePaths.AddRange(UnZipAndExtract(zipFilePath));
-
-            return extractedFilePaths;
-        }
-
-        /// <summary>
-        ///Unzips a zip file.
-        ///<param name="zipFilePath">File path of the object to be unzipped. (e.g. c:/folder1/folder2/mysuperawesomefile.zip)</param>
-        ///<returns>A list of the extracted files' file paths.</returns>
-        ///</summary>
-        private List<String> UnZipAndExtract(string zipFilePath)
-        {
-            List<String> extractedFilePaths = new List<string>();
-
-            using (FileStream fileStreamIn = new FileStream(zipFilePath, FileMode.Open))
-            {
-                using (ZipInputStream zipInputStream = new ZipInputStream(fileStreamIn))
-                {
-                    ZipEntry currentEntry = zipInputStream.GetNextEntry();
-                    String fullZipToPath = "";
-                    if(TestContext.DownloadPath.EndsWith("\\"))
-                        fullZipToPath = TestContext.DownloadPath + currentEntry.Name.Replace("/", "\\");
-                    else
-                        fullZipToPath = TestContext.DownloadPath + "\\" + currentEntry.Name.Replace("/", "\\");
-                    
-                    string directoryName = Path.GetDirectoryName(fullZipToPath);
-                    if (directoryName.Length > 0)
-                        Directory.CreateDirectory(directoryName);
-
-                    using (FileStream fileStreamOut = new FileStream(fullZipToPath, FileMode.Create, FileAccess.Write))
-                    {
-                        int size;
-                        byte[] buffer = new byte[4096];
-                        do
-                        {
-                            size = zipInputStream.Read(buffer, 0, buffer.Length);
-                            fileStreamOut.Write(buffer, 0, size);
-                        } while (size > 0);
-                    }
-                    extractedFilePaths.Add(fullZipToPath);
-                }
-            }
-            
-            return extractedFilePaths;
-        }
-    }
+	}
 }

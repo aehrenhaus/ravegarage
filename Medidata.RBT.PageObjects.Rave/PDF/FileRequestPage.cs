@@ -54,7 +54,7 @@ namespace Medidata.RBT.PageObjects.Rave
                 return table.FindMatchRows(dt).FirstOrDefault();
             }, out foundOnPage);
 
-            ChooseFromCheckboxes(null, "Live Status Update", true);
+            ChooseFromCheckboxes("Live Status Update", true);
 
             EnhancedElement genButton = pdfTr.FindImagebuttons().FirstOrDefault(x => x.GetAttribute("id").EndsWith("imgGenerateNow"));
 
@@ -144,11 +144,11 @@ namespace Medidata.RBT.PageObjects.Rave
             page.ViewPDF(pdf);
 		}
 
-		public override IWebElement GetElementByName(string name)
+		public override IWebElement GetElementByName(string identifier, string areaIdentifier = null, string listItem = null)
 		{
-			if (name == "Live Status Update")
+			if (identifier == "Live Status Update")
 				return Browser.FindElementById("LiveStatusUpdate");
-			return base.GetElementByName(name);
+			return base.GetElementByName(identifier,areaIdentifier,listItem);
 		}
 
         public override string URL

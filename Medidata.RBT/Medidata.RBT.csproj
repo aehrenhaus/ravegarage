@@ -67,6 +67,7 @@
     <Compile Include="BrowserStepsBase.cs" />
     <Compile Include="Constants.cs" />
     <Compile Include="EnumHelper.cs" />
+    <Compile Include="Misc.cs" />
     <Compile Include="PageObjectInterfaces\ControlBase.cs" />
     <Compile Include="DbHelper.cs" />
     <Compile Include="PageObjectInterfaces\ICanVerifyInOrder.cs" />

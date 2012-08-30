@@ -179,18 +179,18 @@ namespace Medidata.RBT.PageObjects.Rave
 
         public override string URL { get { return "homepage.aspx"; } }
 
-		public override IWebElement GetElementByName(string name)
+		public override IWebElement GetElementByName(string identifier, string areaIdentifier = null, string listItem = null)
 		{
-			if (name == "study")
+			if (identifier == "study")
 				return Browser.TryFindElementByPartialID("_dgObjects") ;
 
-			if (name == "Reports")
+			if (identifier == "Reports")
 			{
 				var table =  Browser.FindElementByXPath("//td[text()='Reports']/../../../tbody/tr[2]//table");
 				return table;
 			}
 
-			return base.GetElementByName(name);
+			return base.GetElementByName(identifier,areaIdentifier,listItem);
 		}
 
 

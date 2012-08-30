@@ -11,18 +11,18 @@ namespace Medidata.RBT.PageObjects.Rave
 {
 	public class PublishChecksHomePage : ArchitectBasePage
 	{
-		public override IWebElement GetElementByName(string name)
+		public override IWebElement GetElementByName(string identifier, string areaIdentifier = null, string listItem = null)
 		{
-			if (name == "Current CRF Version")
+			if (identifier == "Current CRF Version")
 				return Browser.Dropdown("ddlCurrentVersionId");
-			if (name == "Reference CRF Version")
+			if (identifier == "Reference CRF Version")
 				return Browser.Dropdown("ddlReferenceVersionId");
 
-			return base.GetElementByName(name);
+			return base.GetElementByName(identifier, areaIdentifier,listItem);
 		}
 
 
-		public override IPage ChooseFromCheckboxes(string areaIdentifier, string identifier, bool isChecked)
+		public override IPage ChooseFromCheckboxes(string identifier, bool isChecked, string areaIdentifier = null, string listItem = null)
 		{
 			var table = Browser.Table("dgObjects");
 			Table filter = new Table("Name");

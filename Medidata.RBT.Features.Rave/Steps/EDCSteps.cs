@@ -352,39 +352,17 @@ namespace Medidata.RBT.Features.Rave
             page.SelectUnitsForFields(table.CreateSet<LabRangeModel>());
         }
 
-        [StepDefinition(@"I check ""([^""]*)"" on ""([^""]*)""")]
-        public void ICheck____On____(string checkBoxName, string fieldName)
-        {
-            CRFPage page = CurrentPage.As<CRFPage>();
-            if (checkBoxName == "Hard Lock")
-            {
-                page.Check(fieldName, checkBoxName);
-            }
-            else
-                ScenarioContext.Current.Pending();
-        }
 
-        [StepDefinition(@"I uncheck ""([^""]*)"" on ""([^""]*)""")]
-        public void IUnCheck____On____(string checkBoxName, string fieldName)
-        {
-            IVerify____Is____(checkBoxName, "On", fieldName);
-            ICheck____On____(checkBoxName, fieldName);
-        }
+		//[StepDefinition(@"I verify ""([^""]*)"" is ""([^""]*)"" on ""([^""]*)""")]
+		//public void IVerify____Is____(string checkBoxName, string checkStatus, string fieldName)
+		//{
+		//    bool result = false;
+		//    CRFPage page = CurrentPage.As<CRFPage>();
+    
+		//    result = (page.FindField(fieldName) as LabFieldControl).VerifyCheck(checkBoxName, checkStatus);
 
-
-        [StepDefinition(@"I verify ""([^""]*)"" is ""([^""]*)"" on ""([^""]*)""")]
-        public void IVerify____Is____(string checkBoxName, string checkStatus, string fieldName)
-        {
-            bool result = false;
-            CRFPage page = CurrentPage.As<CRFPage>();
-            if (checkBoxName == "Hard Lock")
-            {
-                 result = page.VerifyCheck("Hard Lock", fieldName, checkStatus);
-            }
-            else
-                ScenarioContext.Current.Pending();
-            Assert.IsTrue(result, String.Format("The check {0} is not {1}", checkBoxName, checkStatus));
-        }
+		//    Assert.IsTrue(result, String.Format("The check {0} is not {1}", checkBoxName, checkStatus));
+		//}
 
         [StepDefinition(@"I select Lab ""([^""]*)""")]
         public void ISelectLab_____(string labName)

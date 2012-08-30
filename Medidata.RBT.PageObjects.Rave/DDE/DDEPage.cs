@@ -18,7 +18,7 @@ namespace Medidata.RBT.PageObjects.Rave
 		}
 
 
-        public override IWebElement GetElementByName(string name)
+		public override IWebElement GetElementByName(string identifier, string areaIdentifier = null, string listItem = null)
         {
       
             NameValueCollection mapping = new NameValueCollection();
@@ -33,10 +33,10 @@ namespace Medidata.RBT.PageObjects.Rave
             mapping["Form Repeat"] = "_ctl0_Content_DPL1_SLHolderFrmRpt";
 			mapping["Locate"] = "_ctl0_Content_DPL1_BtnLocateLbl";
 
-            IWebElement ele = Browser.TryFindElementById(mapping[name]);
+            IWebElement ele = Browser.TryFindElementById(mapping[identifier]);
             if (ele==null)
             {
-                throw new Exception("Can't find element: "+name);
+				return base.GetElementByName(identifier,areaIdentifier,listItem);
             }
 
             return ele;

@@ -107,9 +107,9 @@ Scenario: @PB-DT10514-01 As an EDC user, I have a partially locked lab form, and
 		| WBC         | 7    | ++           | 2 - 5 | *10E6/ulREGAQT | Incomplete  |
 		| NEUTROPHILS | 7    | +            | 3 - 6 | FractionREGAQT | Complete    |
 	And I take a screenshot
-	And I check "Hard Lock" on "Lab Date"
-	And I check "Hard Lock" on "WBC"
-	And I check "Hard Lock" on "NEUTROPHILS"
+	And I check "Hard Lock" in "Lab Date"
+	And I check "Hard Lock" in "WBC"
+	And I check "Hard Lock" in "NEUTROPHILS"
 	And I save the CRF page
 	And I take a screenshot
 	And I uncheck "Hard Lock" on "WBC"
@@ -155,9 +155,9 @@ Scenario: @PB-DT10514-02 As an EDC user, I have a partially locked lab form, and
 		| WBC         | 7    | ++           | 2 - 5 | *10E6/ulREGAQT | Incomplete  |
 		| NEUTROPHILS | 7    | +            | 3 - 6 | FractionREGAQT | Complete    |
 	And I take a screenshot
-	And I check "Hard Lock" on "Lab Date"
-	And I check "Hard Lock" on "WBC"
-	And I check "Hard Lock" on "NEUTROPHILS"
+	And I check "Hard Lock" in "Lab Date"
+	And I check "Hard Lock" in "WBC"
+	And I check "Hard Lock" in "NEUTROPHILS"
 	And I save the CRF page
 	And I take a screenshot
 	And I uncheck "Hard Lock" on "WBC"
@@ -203,9 +203,9 @@ Scenario: @PB-DT10514-03 As an EDC user, I have a partially locked lab form, and
 		| WBC         | 7    | ++           | 2 - 5 | *10E6/ulREGAQT | Incomplete  |
 		| NEUTROPHILS | 7    | +            | 3 - 6 | FractionREGAQT | Complete    |
 	And I take a screenshot
-	And I check "Hard Lock" on "Lab Date"
-	And I check "Hard Lock" on "WBC"
-	And I check "Hard Lock" on "NEUTROPHILS"
+	And I check "Hard Lock" in "Lab Date"
+	And I check "Hard Lock" in "WBC"
+	And I check "Hard Lock" in "NEUTROPHILS"
 	And I save the CRF page
 	And I take a screenshot
 	And I uncheck "Hard Lock" on "WBC"
@@ -251,9 +251,9 @@ Scenario: @PB-DT10514-04 As an EDC user, I have a partially locked lab form, and
 		| WBC         | 7    | ++           | 1 - 5 | *10E6/ulREGAQT | Incomplete  |
 		| NEUTROPHILS | 7    |	            | 3 - 7 | FractionREGAQT | Complete    |
 	And I take a screenshot
-	And I check "Hard Lock" on "Lab Date"
-	And I check "Hard Lock" on "WBC"
-	And I check "Hard Lock" on "NEUTROPHILS"
+	And I check "Hard Lock" in "Lab Date"
+	And I check "Hard Lock" in "WBC"
+	And I check "Hard Lock" in "NEUTROPHILS"
 	And I save the CRF page
 	And I take a screenshot
 	And I uncheck "Hard Lock" on "WBC"
@@ -309,9 +309,9 @@ Scenario: @PB-DT10514-05 As an EDC user, I have a partially locked lab form, and
 		| WBC         | 7    |              |       |      | Incomplete  |
 		| NEUTROPHILS | 7    |              |       |      | Incomplete  |
 	And I take a screenshot
-	And I check "Hard Lock" on "Lab Date"
-	And I check "Hard Lock" on "WBC"
-	And I check "Hard Lock" on "NEUTROPHILS"
+	And I check "Hard Lock" in "Lab Date"
+	And I check "Hard Lock" in "WBC"
+	And I check "Hard Lock" in "NEUTROPHILS"
 	And I save the CRF page
 #Step failing for blank value verification
 	And I verify lab ranges

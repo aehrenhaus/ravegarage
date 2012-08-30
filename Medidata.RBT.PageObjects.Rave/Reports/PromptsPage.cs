@@ -151,7 +151,7 @@ namespace Medidata.RBT.PageObjects.Rave
         {
             ClickButton("PromptsBox_iid_ShowHideBtn");
             Thread.Sleep(2000);
-            ChooseFromCheckboxes("PromptsBox_iid_div", "PromptsBox_iid_SelectAll", true);
+            ChooseFromCheckboxes("PromptsBox_iid_SelectAll", true, "PromptsBox_iid_div");
             ClickButton("Submit Report");
 
             List<String> extractedFilePaths;
@@ -160,7 +160,7 @@ namespace Medidata.RBT.PageObjects.Rave
             do
             {
                 Thread.Sleep(5000);
-                extractedFilePaths = UnzipAllDownloads();
+				extractedFilePaths = Misc.UnzipAllDownloads();
             }
             while (extractedFilePaths.Count == 0);
                 

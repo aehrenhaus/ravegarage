@@ -16,17 +16,17 @@ namespace Medidata.RBT.PageObjects.Rave
 			
 		}
 
-		public override IWebElement GetElementByName(string name)
+		public override IWebElement GetElementByName(string identifier, string areaIdentifier = null, string listItem = null)
 		{
-			if (name == "Separator")
+			if (identifier == "Separator")
 				return this.WaitForElement("txtSeparator");
-			if (name == "File type")
+			if (identifier == "File type")
 				return WaitForElement("ddlFileType");
-			if (name == "Export type")
+			if (identifier == "Export type")
 				return WaitForElement("ddlExportType");
-			if (name == "Save as Unicode")
+			if (identifier == "Save as Unicode")
 				return WaitForElement("chkEncoding");
-			return base.GetElementByName(name);
+			return base.GetElementByName(identifier,areaIdentifier,listItem);
 		}
 	}
 }
