@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using DotNetAttributeExtractor;
 using System.Reflection;
 using System.Xml.Linq;
+using System.IO;
 
 namespace NotNetAttributeExtractor.MVCReport.Controllers
 {
@@ -16,7 +17,7 @@ namespace NotNetAttributeExtractor.MVCReport.Controllers
 
         public ActionResult Index(string path)
         {
-	
+			path = new DirectoryInfo(Server.MapPath("~")+"\\..\\..\\Medidata.RBT.Features.Rave\\bin\\debug\\").FullName;
 			ViewBag.Path = path;
 			if (!System.IO.Directory.Exists(path))
 				return View();
