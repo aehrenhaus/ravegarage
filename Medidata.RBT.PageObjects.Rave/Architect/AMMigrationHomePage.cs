@@ -10,14 +10,14 @@ namespace Medidata.RBT.PageObjects.Rave
 {
 	public class AMMigrationHomePage : RavePageBase
 	{
-		public override IWebElement GetElementByName(string name)
+		public override IWebElement GetElementByName(string identifier, string areaIdentifier = null, string listItem = null)
 		{
-			if (name == "Source CRF")
+			if (identifier == "Source CRF")
 				return Browser.Dropdown("_ddlSimpleSourceVersionId");
-			if (name == "Target CRF")
+			if (identifier == "Target CRF")
 				return Browser.Dropdown("ddlSimpleTargetVersionId");
 		
-			return base.GetElementByName(name);
+			return base.GetElementByName(identifier, areaIdentifier, listItem);
 		}
 
 

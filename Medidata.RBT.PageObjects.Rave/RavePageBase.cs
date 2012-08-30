@@ -34,11 +34,11 @@ namespace Medidata.RBT.PageObjects.Rave
 		}
 
 
-		public override IWebElement GetElementByName(string name)
+		public override IWebElement GetElementByName(string identifier, string areaIdentifier = null, string listItem = null)
 		{
-			if (name == "Header")
+			if (identifier == "Header")
 				return Browser.Table("_ctl0_PgHeader_TabTable");
-			return base.GetElementByName(name);
+			return base.GetElementByName(identifier,areaIdentifier,listItem);
 		}
 
         public override IPage ClickLink(string linkText)

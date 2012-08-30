@@ -30,14 +30,14 @@ namespace Medidata.RBT.PageObjects.Rave
 		}
 
 
-		public override IWebElement GetElementByName(string name)
+		public override IWebElement GetElementByName(string identifier, string areaIdentifier = null, string listItem = null)
 		{
 
-			if ("Study,Folder,Site Group,Form,Site,Subject".Split(',').Contains(name))
+			if ("Study,Folder,Site Group,Form,Site,Subject".Split(',').Contains(identifier))
 			{
 				var table = Browser.FindElementById("Table2");
 
-				var span = table.FindElement(By.Id("_ctl0_Content_sl"+name.Replace(" ","")));
+				var span = table.FindElement(By.Id("_ctl0_Content_sl"+identifier.Replace(" ","")));
 				return span.Parent();
 			}
 
@@ -48,10 +48,10 @@ namespace Medidata.RBT.PageObjects.Rave
 			mapping["Search Result"] = "_ctl0_Content_grdSearchResult";
 			
 
-			IWebElement ele = Browser.TryFindElementById(mapping[name]);
+			IWebElement ele = Browser.TryFindElementById(mapping[identifier]);
 			if (ele == null)
 			{
-				throw new Exception("Can't find element: " + name);
+				throw new Exception("Can't find element: " + identifier);
 			}
 
 			return ele;

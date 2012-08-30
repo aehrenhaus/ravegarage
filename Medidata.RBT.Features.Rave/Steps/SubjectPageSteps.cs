@@ -22,12 +22,6 @@ namespace Medidata.RBT.Features.Rave
     public class
         SubjectPageSteps : BrowserStepsBase
     {
-        [StepDefinition(@"I check Lock checkbox")]
-        public void ICheckLockCheckbox()
-        {
-            CurrentPage.ChooseFromCheckboxes(null, "_ctl0_Content__ctl0_CB_Lock_0", true);
-        }
-
 
         [Then(@"I can see Add Event lock icon")]
         public void ICanSeeAddEventLockIcon()

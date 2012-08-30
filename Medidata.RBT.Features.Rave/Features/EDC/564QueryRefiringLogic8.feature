@@ -701,7 +701,7 @@ Scenario: PB_8.6.1 Queries verification on data points with Freeze, Hard lock an
 	And I save the CRF page
 	And I open the last log line
 	And I take a screenshot
-	And I check "Freeze" on "Log Field 1"
+	And I check "Freeze" in "Log Field 1"
 	And I save the CRF page
 	And I open the last log line
 	And I take a screenshot
@@ -726,7 +726,7 @@ Scenario: PB_8.6.1 Queries verification on data points with Freeze, Hard lock an
 	And I save the CRF page
 	And I open the last log line
 	And I take a screenshot
-	And I check "Hard Lock" on "Log Field 1"
+	And I check "Hard Lock" in "Log Field 1"
 	And I save the CRF page
 	And I open the last log line
 	And I take a screenshot

@@ -119,23 +119,13 @@ namespace Medidata.RBT
 		/// Choose by text from checkbox
 		/// Example scenario: Check 'male' in 'Gender group of checkboxes' 
 		/// </summary>
-		IPage ChooseFromCheckboxes(string areaIdentifier, string identifier, bool isChecked);
-
+		IPage ChooseFromCheckboxes(string identifier, bool isChecked, string areaIdentifier = null, string listItem = null);
 
 		/// <summary>
 		/// Choose by text from textboxes
 		/// Example scenario: Check 'male' in 'Gender group of radiobuttons' 
 		/// </summary>
 		IPage ChooseFromRadiobuttons(string areaIdentifier, string identifier);
-
-
-		/// <summary>
-		/// Example scenario: Can I see 'Medidata' in the 'Header area'?
-		/// </summary>
-		/// <param name="text"></param>
-		/// <param name="areaIdentifier"></param>
-		/// <returns></returns>
-		bool CanSeeTextInArea(string text, string areaIdentifier);
 
 		/// <summary>
 		/// NavigateTo() is abstract compares to ClickLink(), which clicks on a concrete link text
@@ -157,18 +147,20 @@ namespace Medidata.RBT
 		bool IsThePage();
 
 		/// <summary>
-		/// Get some critical text from the page
+		/// Get useful infomation from page.
 		/// 
-		/// Example secnario: Get the artile's title from current page
+		/// Example:
+		/// Get page's title
+		/// Get the CRF version displayed on the bottom of the page
+		/// Get how many items are in the list
+		/// 
+		/// The 'infomation' is abstract and depend on the page implementation, 
+		/// it does not necessarily be some text on that user can see on page.
+		/// 
 		/// </summary>
 		/// <param name="identifier"></param>
 		string GetInfomation(string identifier);
 
-        /// <summary>
-        /// Clicks a link anywhere in the page.
-        /// </summary>
-        /// <returns></returns>
-        void SelectLink(string linkText);
 
         ///// <returns></returns>
         ///// <summary>
@@ -183,17 +175,12 @@ namespace Medidata.RBT
         long GetPageOffsetX();
         long GetPageOffsetY();
 
-        /// <summary>
-        /// Unzip all zip files in the download path provided in the app.config returns a list of the extracted files' paths.
-        /// </summary>
-        /// <returns></returns>
-        List<String> UnzipAllDownloads();
 
 		/// <summary>
 		/// 
 		/// </summary>
 		/// <param name="identifier"></param>
 		/// <returns></returns>
-		IWebElement GetElementByName(string identifier);
+		IWebElement GetElementByName(string identifier, string areaIdentifier= null, string listItem = null);
 	}
 }

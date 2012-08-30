@@ -511,7 +511,7 @@ Scenario:@US11547-24 Locking "All" in the subject grid view page disables the Ad
 	And The "Disable" button is available
 	And I take a screenshot
 	When I select link "All"
-	And I check Lock checkbox
+	And I check "Lock"
 	And I click radiobutton with label "Set"
 	And I take a screenshot
 	And I click button "Save"

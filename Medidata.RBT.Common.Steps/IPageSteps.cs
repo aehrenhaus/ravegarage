@@ -44,15 +44,28 @@ namespace Medidata.RBT.Common.Steps
 		}
 
 		/// <summary>
-		/// Check a check box from a group
+		/// I uncheck "locked" in "Study1"
 		/// </summary>
 		/// <param name="identifier"></param>
 		/// <param name="areaName"></param>
 		[StepDefinition(@"I check ""([^""]*)"" in ""([^""]*)""")]
 		public void ICheck____In____(string identifier, string areaName)
 		{
-			CurrentPage.ChooseFromCheckboxes(areaName, identifier, true);
+			CurrentPage.ChooseFromCheckboxes(identifier, true, areaName);
 		}
+
+		/// <summary>
+		/// I check "locked" on "Study1" in "Studies"
+		/// </summary>
+		/// <param name="identifier"></param>
+		/// <param name="listItem"></param>
+		/// <param name="listIdentifier"></param>
+		[StepDefinition(@"I check ""([^""]*)"" on ""([^""]*)"" in ""([^""]*)""")]
+		public void ICheck____On___In____(string identifier, string listItem, string listIdentifier)
+		{
+			CurrentPage.ChooseFromCheckboxes( identifier, true, listIdentifier, listItem);
+		}
+
 
 		/// <summary>
 		/// Check a check box
@@ -61,18 +74,30 @@ namespace Medidata.RBT.Common.Steps
 		[StepDefinition(@"I check ""([^""]*)""")]
 		public void ICheck____(string identifier)
 		{
-			CurrentPage = CurrentPage.ChooseFromCheckboxes(null, identifier,true);
+			CurrentPage = CurrentPage.ChooseFromCheckboxes(identifier,true);
 		}
 
 		/// <summary>
-		/// Uncheck a checkbox
+		/// I uncheck "locked" in "Study1"
 		/// </summary>
 		/// <param name="identifier"></param>
-		/// <param name="areaName"></param>
+		/// <param name="areaIdentifier"></param>
 		[StepDefinition(@"I uncheck ""([^""]*)"" in ""([^""]*)""")]
-		public void IUncheck____In____(string identifier, string areaName)
+		public void IUncheck____In____(string identifier, string areaIdentifier)
 		{
-			CurrentPage.ChooseFromCheckboxes(areaName, identifier, false);
+			CurrentPage.ChooseFromCheckboxes(identifier, false, areaIdentifier);
+		}
+
+		/// <summary>
+		/// I uncheck "locked" on "Study1" in "Studies"
+		/// </summary>
+		/// <param name="identifier"></param>
+		/// <param name="listItem"></param>
+		/// <param name="areaIdentifier"></param>
+		[StepDefinition(@"I uncheck ""([^""]*)"" on ""([^""]*)"" in ""([^""]*)""")]
+		public void IUncheck____On____In____(string identifier, string listItem, string areaIdentifier)
+		{
+			CurrentPage.ChooseFromCheckboxes(identifier, false, areaIdentifier, listItem);
 		}
 
 		/// <summary>
@@ -82,7 +107,7 @@ namespace Medidata.RBT.Common.Steps
 		[StepDefinition(@"I uncheck ""([^""]*)""")]
 		public void IUncheck____(string identifier)
 		{
-			CurrentPage = CurrentPage.ChooseFromCheckboxes(null, identifier, false);
+			CurrentPage = CurrentPage.ChooseFromCheckboxes(identifier, false);
 		}
 
 		/// <summary>
@@ -165,20 +190,6 @@ namespace Medidata.RBT.Common.Steps
 			text = SpecialStringHelper.Replace(text);
 			CurrentPage.Type(identifier, text);
 		}
-
-		/// <summary>
-		/// Assert something (eg. text) exist in an area
-		/// </summary>
-		/// <param name="text"></param>
-		/// <param name="areaName"></param>
-		[Then(@"I should see ""([^""]*)"" in ""([^""]*)""")]
-		public void IShouldSee____In____(string text, string areaName)
-		{
-			text = SpecialStringHelper.Replace(text);
-			var cansee = CurrentPage.CanSeeTextInArea(text,areaName);
-			Assert.IsTrue(cansee, "Can't see {0} in {1}",text,areaName);
-		}
-
 
 
 		/// <summary>

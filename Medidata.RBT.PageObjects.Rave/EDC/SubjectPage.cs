@@ -11,7 +11,7 @@ using TechTalk.SpecFlow;
 
 namespace Medidata.RBT.PageObjects.Rave
 {
-	public class SubjectPage : BaseEDCPage,ICanVerifyInOrder
+	public class SubjectPage : BaseEDCPage,ICanVerifyInOrder,ICanVerifyExist
 	{
         public IWebElement GetTaskSummaryArea(string header)
 		{
@@ -36,38 +36,30 @@ namespace Medidata.RBT.PageObjects.Rave
 			return this;
 		}
 
-		public override bool CanSeeTextInArea(string text, string areaName)
-		{
-			//TODO: this is just a simple version of finding text. Implement more useful version later
-			var TR = GetTaskSummaryArea(areaName);
 
-			return TR.Text.Contains(text);
-		}
-
-
-		public override IWebElement GetElementByName(string name)
+		public override IWebElement GetElementByName(string identifier, string areaIdentifier = null, string listItem = null)
 		{
             IWebElement element;
             string id = "";
 
-			if (name == "Reports")
+			if (identifier == "Reports")
 			{
 				var table = Browser.FindElementByXPath("//td[text()='Reports']/../../../tbody/tr[2]//table");
 				return table;
 			}
 
-            if (name == "Add Event")
+            if (identifier == "Add Event")
                 id = "_ctl0_Content_SubjectAddEvent_MatrixList";
-            else if (name == "Add")
+            else if (identifier == "Add")
                 id = "_ctl0_Content_SubjectAddEvent_SaveBtn";
-            else if (name == "Enable" || name == "Disable")
+            else if (identifier == "Enable" || identifier == "Disable")
                 id = "_ctl0_Content_SubjectAddEvent_LockAddEventSaveBtn";
-            else if (name == "Set")
+            else if (identifier == "Set")
                 id = "_ctl0_Content__ctl0_RadioButtons_0";
-            else if (name == "Clear")
+            else if (identifier == "Clear")
                 id = "_ctl0_Content__ctl0_RadioButtons_1";
             else
-			    return GetTaskSummaryArea(name);
+			    return GetTaskSummaryArea(identifier);
 
             try
             {
@@ -81,6 +73,16 @@ namespace Medidata.RBT.PageObjects.Rave
             return element;
 		}
 
+		public override IPage ChooseFromCheckboxes(string identifier, bool isChecked, string areaIdentifier = null, string listItem = null)
+		{
+			if (identifier == "Lock")
+				this.ChooseFromCheckboxes("_ctl0_Content__ctl0_CB_Lock_0", true);
+			else
+			{
+				throw new Exception("Unknow checkbox");
+			}
+			return this;
+		}
 
 		public override string GetInfomation(string identifier)
 		{
@@ -127,6 +129,28 @@ namespace Medidata.RBT.PageObjects.Rave
 		public bool VerifyThingsInOrder(string identifier)
 		{
 			throw new NotImplementedException();
+		}
+
+		#endregion
+
+		#region ICanVerifyExist
+		
+		public bool VerifyTableRowsExist(string tableIdentifier, Table matchTable)
+		{
+			throw new NotImplementedException();
+		}
+
+		public bool VerifyControlExist(string identifier)
+		{
+			throw new NotImplementedException();
+		}
+
+		bool ICanVerifyExist.VerifyTextExist(string identifier, string text)
+		{
+			//TODO: this is just a simple version of finding text. Implement more useful version later
+			var TR = GetTaskSummaryArea(identifier);
+
+			return TR.Text.Contains(text);
 		}
 
 		#endregion

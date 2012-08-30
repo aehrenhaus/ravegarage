@@ -62,15 +62,15 @@ namespace Medidata.RBT.PageObjects.Rave
 			return base.NavigateTo(name);
 		}
 
-		public override IWebElement GetElementByName(string name)
+		public override IWebElement GetElementByName(string identifier, string areaIdentifier = null, string listItem = null)
 		{
-			if (name == "CRF Drafts")
+			if (identifier == "CRF Drafts")
 				return Browser.Table("DraftsGrid");
 
-			if (name == "CRF Versions")
+			if (identifier == "CRF Versions")
 				return Browser.Table("VersionsGrid");
 
-			return base.GetElementByName(name);
+			return base.GetElementByName(identifier,areaIdentifier,listItem);
 		}
 
 		//public override IPage ClickLinkInArea(string type, string linkText, string areaIdentifier)

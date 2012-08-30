@@ -51,7 +51,7 @@ namespace Medidata.RBT.Features.Rave
         [StepDefinition(@"I log out of Rave")]
         public void ILogOutOfRave()
         {
-            CurrentPage.SelectLink("Logout");
+            CurrentPage.ClickLink("Logout");
         }
 	}
 }

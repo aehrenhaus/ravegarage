@@ -10,14 +10,14 @@ namespace Medidata.RBT.PageObjects.Rave
 {
 	public class ArchitectPage : ArchitectBasePage
 	{
-		public override IWebElement GetElementByName(string name)
+		public override IWebElement GetElementByName(string identifier, string areaIdentifier = null, string listItem = null)
 		{
-			if (name == "Active Projects")
+			if (identifier == "Active Projects")
 				return Browser.Table("_ctl0_Content_ProjectGrid");
-			if (name == "Inactive Projects")
+			if (identifier == "Inactive Projects")
 				return Browser.Table("_ctl0_Content_InactiveProjectGrid");
 
-			return base.GetElementByName(name);
+			return base.GetElementByName(identifier,areaIdentifier,listItem);
 		}
 
 		public override IPage ClickLink(string linkText)

@@ -61,6 +61,19 @@ namespace Medidata.RBT.PageObjects.Rave
             return this;
         }
 
+		public override IPage ChooseFromCheckboxes(string identifier, bool isChecked, string areaIdentifier = null, string listItem = null)
+		{
+			var field = this.FindField(areaIdentifier);
+			if (isChecked)
+			{
+				field.Check(identifier);
+			}
+			else
+				field.Uncheck(identifier);
+
+			return this;
+		}
+
 
 
         #region Query related
@@ -192,21 +205,21 @@ namespace Medidata.RBT.PageObjects.Rave
 
         #endregion
 
-        public override IWebElement GetElementByName(string name)
+		public override IWebElement GetElementByName(string identifier, string areaIdentifier = null, string listItem = null)
         {
-            if (name == "Inactivate")
+            if (identifier == "Inactivate")
                 return Browser.Dropdown("R_log_log_RP");
 
-            if (name == "Reactivate")
+            if (identifier == "Reactivate")
                 return Browser.Dropdown("R_log_log_IRP");
 
-            if (name == "Clinical Significance")
+            if (identifier == "Clinical Significance")
                 return Browser.Dropdown("dropdown");
 
-            if (name == "Lab")
+            if (identifier == "Lab")
                 return Browser.Dropdown("LOC_DropDown");
 
-            return base.GetElementByName(name);
+            return base.GetElementByName(identifier,areaIdentifier,listItem);
         }
 
         public override string URL { get { return "Modules/EDC/CRFPage.aspx"; } }
@@ -228,12 +241,7 @@ namespace Medidata.RBT.PageObjects.Rave
         }
 
 
-        public void Check(string fieldName, string checkName)
-        {
-            LabFieldControl fieldObj = FindField(fieldName) as LabFieldControl;
-            fieldObj.Check(checkName);
-        }
-
+ 
         public bool VerifyCheck(string checkName, string fieldName, string checkStatus)
         {
             LabFieldControl fieldObj = FindField(fieldName) as LabFieldControl;

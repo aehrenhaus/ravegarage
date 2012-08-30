@@ -19,11 +19,6 @@ namespace Medidata.RBT.PageObjects.Rave
 			return this;
 		}
 
-		public override IWebElement GetElementByName(string name)
-		{
-			
-			return base.GetElementByName(name);
-		}
 
 		public override IPage NavigateTo(string name)
 		{

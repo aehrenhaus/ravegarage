@@ -12,11 +12,11 @@ namespace Medidata.RBT.PageObjects.Rave
 {
     public class SubjectOverridePage : SubjectManagementPageBase
     {
-        public override IWebElement GetElementByName(string name)
+		public override IWebElement GetElementByName(string identifier, string areaIdentifier = null, string listItem = null)
         {
-            if (name == "Search")
+            if (identifier == "Search")
                 return Browser.FindElementById("_ctl0_Content_HeaderControl_SearchLabel");
-            return base.GetElementByName(name);
+            return base.GetElementByName(identifier, areaIdentifier,listItem);
         }
 
         public override IPage ChooseFromDropdown(string name, string text)

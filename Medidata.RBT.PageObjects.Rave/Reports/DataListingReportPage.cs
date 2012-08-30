@@ -15,17 +15,17 @@ namespace Medidata.RBT.PageObjects.Rave
 {
     public class DataListingReportPage : RavePageBase, ICanVerifyExist, ICanPaginate, ICanHighlight
 	{
-		public override IWebElement GetElementByName(string name)
+		public override IWebElement GetElementByName(string identifier, string areaIdentifier = null, string listItem = null)
 		{
-			if (name == "Data Source")
+			if (identifier == "Data Source")
 				return Browser.WaitForElement("ddlSource");
-			if (name == "Form")
+			if (identifier == "Form")
 				return Browser.WaitForElement("ddlDomain");
-            if (name == "Result")
+            if (identifier == "Result")
                 return Browser.WaitForElement("dgResult");
 
 
-			return base.GetElementByName(name);
+			return base.GetElementByName(identifier,areaIdentifier,listItem);
 		}
 
 
