@@ -70,6 +70,11 @@
     </CodeAnalysisDependentAssemblyPaths>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Features\Architect\US17446.feature.cs">
+      <DependentUpon>US17446.feature</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Include="Features\EDC\US10246_DT13300.feature.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -259,6 +264,10 @@
     <None Include="App.config">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Features\Architect\US17446.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>US17446.feature.cs</LastGenOutput>
+    </None>
     <None Include="Features\EDC\US10246_DT13300.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>US10246_DT13300.feature.cs</LastGenOutput>
@@ -381,7 +390,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Features\Architect\" />
     <Folder Include="TableModels\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />

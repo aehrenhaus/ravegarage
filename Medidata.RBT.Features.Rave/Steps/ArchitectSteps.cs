@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using TechTalk.SpecFlow;
-using Medidata.RBT.PageObjects;
+﻿using TechTalk.SpecFlow;
 using Medidata.RBT.PageObjects.Rave;
+using TechTalk.SpecFlow.Assist;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Medidata.RBT;
 
 namespace Medidata.RBT.Features.Rave
 {
@@ -28,6 +23,13 @@ namespace Medidata.RBT.Features.Rave
 			CurrentPage = CurrentPage.As<ArchitectLibraryPage>().CreateDraftFromProject(draftName,project,version);
 		}
 
+
+        [StepDefinition(@"I select Draft ""([^""]*)""")]
+        public void GivenICreateDraft____FromProject____AndVersion____(string draftName)
+        {
+            draftName = SpecialStringHelper.Replace(draftName);
+            CurrentPage = CurrentPage.As<ArchitectLibraryPage>().SelectDraft(draftName);
+        }
 
 
 		[StepDefinition(@"I publish CRF Version ""([^""]*)""")]
@@ -71,7 +73,77 @@ namespace Medidata.RBT.Features.Rave
 			CurrentPage.As<AMMigrationResultPage>().WaitForComplete();
 		}
 
-	}
+        [StepDefinition(@"I search for form ""([^""]*)""")]
+        public void ISearchForForm____(string form)
+        {
+            CurrentPage = CurrentPage.As<ArchitectFormsPage>().SearchForForm(form);
+        }
 
+        [StepDefinition(@"I select Fields for Form ""([^""]*)""")]
+        public void ISelectFieldsForForm____(string form)
+        {
+            ISearchForForm____(form);
+            CurrentPage = CurrentPage.As<ArchitectFormsPage>().SelectFieldsForForm(form);
+        }
+
+        [StepDefinition(@"I edit Field ""([^""]*)""")]
+        public void IEditField____(string field)
+        {
+            CurrentPage = CurrentPage.As<ArchitectFormDesignerPage>().EditField(field);
+        }
+        
+        [StepDefinition(@"I expand ""Field Edit Checks""")]
+        public void IExpandFieldEditChecks()
+        {
+            CurrentPage = CurrentPage.As<ArchitectFormDesignerPage>().ExpandEditChecks();
+        }
+
+
+        [StepDefinition(@"I enter ranges for Field Edit Checks and save")]
+        public void IEnterRangesForFieldEditChecksAndSave(Table table)
+        {
+            IEnterRangesForFieldEditChecks(table);
+
+            CurrentPage.As<ArchitectFormDesignerPage>().Save();
+        }
+
+
+        [StepDefinition(@"I enter ranges for Field Edit Checks")]
+        public void IEnterRangesForFieldEditChecks(Table table)
+        {
+             CurrentPage.As<ArchitectFormDesignerPage>().FillRangesForFieldEditChecks(table.CreateSet<FieldModel>());
+        }
+
+
+        [StepDefinition(@"I should see ranges for Field Edit Checks")]
+        public void ISeeRangesForFieldEditChecks(Table table)
+        {
+            bool found = CurrentPage.As<ArchitectFormDesignerPage>().FerifyRangesForFieldEditChecks(table.CreateSet<FieldModel>());
+            Assert.IsTrue(found, "Ranges for field do not match.");
+        }
+
+        [StepDefinition(@"I should not see ranges for Field Edit Checks")]
+        public void IDontSeeRangesForFieldEditChecks(Table table)
+        {
+            bool found = CurrentPage.As<ArchitectFormDesignerPage>().FerifyRangesForFieldEditChecks(table.CreateSet<FieldModel>());
+            Assert.IsFalse(found, "Ranges for field do match.");
+        }
+
+        //TODO: abstract this, since not only architect pages display messages
+        [StepDefinition(@"I should not see ""([^""]*)"" message")]
+        public void IDontSeeMessage____(string message)
+        {
+             bool found = CurrentPage.As<ArchitectFormDesignerPage>().PageContainsMessage(message);
+             Assert.IsFalse(found, "Message " + message + " is found.");
+        }
+
+        [StepDefinition(@"I should see ""([^""]*)"" message")]
+        public void ISeeMessage____(string message)
+        {
+            bool found = CurrentPage.As<ArchitectFormDesignerPage>().PageContainsMessage(message);
+            Assert.IsTrue(found, "Message " + message + " is not found.");
+        }
+
+	}
 
 }
