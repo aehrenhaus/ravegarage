@@ -1,16 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using OpenQA.Selenium.Support.PageObjects;
 using OpenQA.Selenium;
-using OpenQA.Selenium.Remote;
-using OpenQA.Selenium.Support.UI;
 using Medidata.RBT.SeleniumExtension;
-using TechTalk.SpecFlow;
-using TechTalk.SpecFlow.Assist;
-using System.Text.RegularExpressions;
-using System.Collections.ObjectModel;
 
 namespace Medidata.RBT.PageObjects.Rave
 {

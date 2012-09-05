@@ -89,6 +89,7 @@
     <Compile Include="Lab\AnalytesPage.cs" />
     <Compile Include="Lab\LabPageBase.cs" />
     <Compile Include="Lab\UnitConversionsPage.cs" />
+    <Compile Include="EDC\SignatureBox.cs" />
     <Compile Include="PDF\PDFFileRequestsControl.cs" />
     <Compile Include="PDF\FileRequestCreateBlankRequestPage.cs" />
     <Compile Include="PDF\FileRequestViewPage.cs" />

@@ -367,5 +367,11 @@ namespace Medidata.RBT.Features.Rave
             page.SelectLabValue(labName);
         }
 
+        [StepDefinition(@"I sign the form with username ""([^""]*)"" and password ""([^""]*)""")]
+        public void ISignTheFormWithUsername____AndPassword____(string username, string password)
+        {
+            new SignatureBox().Sign(username, password);
+        }
+
     }
 }
