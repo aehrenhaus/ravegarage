@@ -1,14 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using TechTalk.SpecFlow;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Remote;
 using System.Threading;
 using System.Collections.Specialized;
-using Medidata.RBT.SeleniumExtension;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Medidata.RBT.Common.Steps
 {

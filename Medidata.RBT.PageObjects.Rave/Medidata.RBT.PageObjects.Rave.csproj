@@ -62,6 +62,8 @@
     <Compile Include="Architect\AMMigrationExecutePage.cs" />
     <Compile Include="Architect\AMMigrationResultPage.cs" />
     <Compile Include="Architect\ArchitectPushPage.cs" />
+    <Compile Include="Architect\ArchitectFormsPage.cs" />
+    <Compile Include="Architect\ArchitectFormDesigner.cs" />
     <Compile Include="Architect\PublishChecksHomePage.cs" />
     <Compile Include="ControlTypeInformation.cs" />
     <Compile Include="EDC\BaseEDCFieldControl.cs" />

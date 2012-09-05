@@ -1,19 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Medidata.RBT.Features;
-using TechTalk.SpecFlow;
-using Medidata.RBT.PageObjects;
+﻿using TechTalk.SpecFlow;
 using Medidata.RBT.PageObjects.Rave;
 using Medidata.RBT.PageObjects.Rave.PDF;
-using System.IO;
 
-using System.Data;
-using System.Collections.Specialized;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 using TechTalk.SpecFlow.Assist;
-using System.Threading;
 
 namespace Medidata.RBT.Features.Rave
 {

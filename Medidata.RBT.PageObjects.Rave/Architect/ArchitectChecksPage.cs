@@ -1,10 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using OpenQA.Selenium.Support.PageObjects;
-using OpenQA.Selenium;
-using OpenQA.Selenium.Remote;
 using Medidata.RBT.SeleniumExtension;
 using TechTalk.SpecFlow;
 namespace Medidata.RBT.PageObjects.Rave
@@ -29,6 +24,7 @@ namespace Medidata.RBT.PageObjects.Rave
 			return this;
 		}
 
+        // TODO limit search (see ArchitectFormsPage)
 		private void Activate(string identifier, bool activate)
 		{
 			var table = Browser.Table("_ctl0_Content_DisplayGrid");

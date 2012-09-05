@@ -48,6 +48,12 @@ namespace Medidata.RBT.PageObjects.Rave
 			return new ArchitectCRFDraftPage();
 		}
 
+        public ArchitectCRFDraftPage SelectDraft(string draftName)
+		{
+			ClickLink(draftName);
+			return new ArchitectCRFDraftPage();
+		}
+        
 		public override IPage NavigateTo(string name)
 		{
 			var leftNavContainer = Browser.FindElementById("TblOuter");

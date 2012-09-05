@@ -30,6 +30,15 @@ namespace Medidata.RBT.PageObjects.Rave
 				return new ArchitectChecksPage();
 			}
 
+
+            if (name == "Forms")
+            {
+                Browser.TryFindElementById("TblOuter").Link(name).Click();
+
+                return new ArchitectFormsPage();
+            }
+
+
 			return base.NavigateTo(name);
 		}
 
