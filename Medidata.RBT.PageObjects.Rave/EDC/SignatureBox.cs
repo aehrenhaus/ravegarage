@@ -1,4 +1,4 @@
-﻿using OpenQA.Selenium.Support.PageObjects;
+using OpenQA.Selenium.Support.PageObjects;
 using OpenQA.Selenium;
 using Medidata.RBT.SeleniumExtension;
 namespace Medidata.RBT.PageObjects.Rave
@@ -32,7 +32,7 @@ namespace Medidata.RBT.PageObjects.Rave
 			ValidateSignAndSave.Click();
 		}
 
-        public override string URL { get { return "CRFPage.aspx"; } }
+        public override string URL { get { return "NOT USED"; } }
        
 
    
