@@ -111,6 +111,7 @@ Scenario: PB_DT13905_01 As an EDC user, when I create a unit conversion formula 
 	And I take a screenshot
 	And I navigate to "Home"
 	And I navigate to "Reporter"
+	And I wait for lab update queue to be processed
 	And I wait for Clinical View refresh to complete for project "US15417_DT13905_SJ"
 	And I select Report "Data Listing" 
 	And I set report parameter "Study" with table
@@ -147,6 +148,7 @@ Scenario: PB_DT13905_02 As an EDC user, when I update a unit conversion formula 
 	| Field | Data | Unit   |
 	| WBC   | 10   | 10^9/L |
 	And I take a screenshot
+	And I wait for lab update queue to be processed
 	And I wait for Clinical View refresh to complete for project "US15417_DT13905_SJ"
 	And I navigate to "Home"
 	And I navigate to "Reporter"
@@ -171,6 +173,7 @@ Scenario: PB_DT13905_02 As an EDC user, when I update a unit conversion formula 
 	| From   | To | Analyte | A | B | C | D |
 	| 10^9/L | %  | ...     | 3 | 1 | 0 | 0 |
 	And I take a screenshot
+	And I wait for lab update queue to be processed
 	And I wait for Clinical View refresh to complete for project "US15417_DT13905_SJ"
 	And I navigate to "Home"
 	And I navigate to "Reporter"
@@ -217,6 +220,7 @@ Scenario: PB_DT13905_03 As an EDC user, when I create a unit conversion formula 
 	| WBC         | 10   | 10^9/L |
 	| NEUTROPHILS | 10   | 10^9/L |
 	And I take a screenshot 
+	And I wait for lab update queue to be processed
 	And I wait for Clinical View refresh to complete for project "US15417_DT13905_SJ"
 	And I select link "Home"
 	And I navigate to "Lab Administration"
@@ -226,6 +230,7 @@ Scenario: PB_DT13905_03 As an EDC user, when I create a unit conversion formula 
 	| 10^9/L | %  | WBC     | 4 | 1 | 0 | 0 |
 	And I take a screenshot
 	And I navigate to "Home"
+	And I wait for lab update queue to be processed
 	And I wait for Clinical View refresh to complete for project "US15417_DT13905_SJ"
 	And I navigate to "Reporter"
 	And I select Report "Data Listing" 
@@ -265,6 +270,7 @@ Scenario: PB_DT13905_04 As an EDC user, when I update a unit conversion formula 
 	| NEUTROPHILS | 10   | 10^9/L |
 	And I take a screenshot
 	And I navigate to "Home"
+	And I wait for lab update queue to be processed
 	And I wait for Clinical View refresh to complete for project "US15417_DT13905_SJ"
 	And I navigate to "Reporter"
 	And I select Report "Data Listing" 
@@ -280,6 +286,7 @@ Scenario: PB_DT13905_04 As an EDC user, when I update a unit conversion formula 
 	| Subject        | FormName   | AnalyteName | AnalyteValue | LabUnits | StdValue | StdUnits |
 	| SUB{Var(num1)} | Hematology | WBC         | 10           | 10^9/L   | 40       | %        |
 	And I take a screenshot
+	And I wait for lab update queue to be processed
 	And I wait for Clinical View refresh to complete for project "US15417_DT13905_SJ"
 	And I switch to "Reports" window
 	And I select link "Home"
