@@ -88,6 +88,9 @@ namespace Medidata.RBT.PageObjects.Rave
 					EnterDynamicSearchListValue(text);
 					break;
 
+                case ControlType.CheckBox:
+                    EnterCheckBox(bool.Parse(text));
+                    break;
 
 				default:
 					throw new Exception("Not supported control type:"+controlType);
@@ -151,6 +154,14 @@ namespace Medidata.RBT.PageObjects.Rave
 			textboxes[0].SetText(val);
 		}
 	
+        //new method
+        protected virtual void EnterCheckBox(bool selected)		
+        {
+			IWebElement datapointTable = GetFieldControlContainer();
+			var checkboxes = datapointTable.Checkboxes();
+            if (checkboxes[0].Selected != selected)
+                checkboxes[0].Click();
+		}
 
 		protected virtual void EnterDatetimeValue(string val)
 		{
