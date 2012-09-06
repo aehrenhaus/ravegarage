@@ -58,6 +58,23 @@ namespace Medidata.RBT.Features.Rave
 
 		}
 
+        /// <summary>
+        /// Wait for lab update queue to be processed
+        /// </summary>
+        [StepDefinition(@"I wait for lab update queue to be processed")]
+        public void IWaitForLabUpdateQueueToBeProcessed()
+        {
+            var sql = ClinicalViewsScripts.GenerateSQLForNumberOfRecordsInLabUpdateQueue();
+            System.Data.DataTable dataTable;
+            do
+            {
+                System.Threading.Thread.Sleep(1000); //wait a second
+                dataTable = DbHelper.ExecuteDataSet(sql).Tables[0]; //run backend query to count records in lab update queue
+            }
+            while (((int)dataTable.Rows[0][0] != 0));
+
+        }
+
 
 		private string GenerateSQLQueryForColumnName(string column, int datapageID)
 		{
@@ -97,6 +114,17 @@ namespace Medidata.RBT.Features.Rave
 
 		public class ClinicalViewsScripts
 		{
+
+            public static string GenerateSQLForNumberOfRecordsInLabUpdateQueue()
+            {
+                return CountOfRecordsInLabUpdateQueue();
+            }
+
+            private static string CountOfRecordsInLabUpdateQueue()
+			{
+				return "select count(labUpdateQueueID) from labUpdateQueue";
+            }
+
 			public static string GenerateSQLForNumberOfRecordsThatNeedCVRefresh(string projectName)
 			{
 				return CountOfRecordsRequiringCVRefreshForProject(projectName);
