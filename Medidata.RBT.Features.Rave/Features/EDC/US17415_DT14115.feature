@@ -86,33 +86,83 @@ Scenario: @PB_US17415_01 As an Investigator, when I sign the "Adverse Events" fo
 		| Description of Adverse Events | Cramps    | textbox      |
 		| Ready for Extra Review        | False     | checkbox     |
 	And I click button "Sign and Save"
-#New Step def
 	And I sign the form with username "defuser" and password "password"
 	And I take a screenshot
 	And I open log line 1 for edit
 	When I enter data in CRF and save
-		| Field Label            | Data | Control Type |
+		| Field                  | Data | Control Type |
 		| Ready for Extra Review | True | checkbox     |
-	#Then I should see CRF signed
-	And I open log line 1 for edit
-#New Step def
-	And I should see
-		| Field Label              | Control Type |
-		| Added 1 For Extra Review | textbox      |
-		| Added 2 For Extra Review | textbox      |
+	# --------------------------------------------------------------------------------------------
+	#Vikas: use the following:  And I verify text "Please Sign - Default User  (defuser)" exists
+	# --------------------------------------------------------------------------------------------
+	And I open log line 1 for edit 
+	#	| Field                    | Control Type |
+	#	| Added 1 For Extra Review | textbox      |
+	#	| Added 2 For Extra Review | textbox      |
 	And I take a screenshot
-	And I click audit on Field "Ready for Extra Review"
-#New Step def
-	#And I verify Audits exist
-	#	| Audit Type | Message |
-	#	| Signature  |         |
-	And I take a screenshot	
+	And I click audit on Field "AE Number"
+
+	# --------------------------------------------------------------------------------------------
+	#Vikas: use "Signature Succeeded" or "Signature Broken" for Audit Type
+	# --------------------------------------------------------------------------------------------
+
+	And I verify Audits exist
+		| Audit Type          |  
+		| Signature Succeeded |  
+	And I select link "Record - Adverse Events (1)"
+	And I select link "DataPage - Adverse Events"
+	And I verify Audits exist
+		| Audit Type          |
+		| Signature Succeeded |
+	And I take a screenshot
 
 #----------------------------------------------------------------------------------------------------------------------------------------
 @release_564_2012.1.0
 @PB_US17415_02
 @Draft	
-Scenario: @PB_US17415_02 As an Investigator, when I sign the "Demographics" form, the form level signature does not break when the ICDTAGE field is made visible.
+Scenario: @PB_US17415_02 As an Investigator, when I sign the "Serious Adverse Events" form, the form level signature does not break when the "Added 1 For Extra Review" field is made visible.
+
+	And I select Study "**US17415_DT14115" and Site "Site 01"
+	And I create a Subject
+		| Field          | Data              | Control Type |
+		| Subject Name   | SUB               | textbox      |
+		| Subject Number | {RndNum<num1>(5)} | textbox      |
+	And I select link "Adverse Events"
+	And I enter data in CRF and save
+		| Field                         | Data      | Control Type |
+		| AE Number                     | 01JAN2012 | textbox      |
+		| Description of Adverse Events | Cramps    | textbox      |
+		| Ready for Extra Review        | False     | checkbox     |
+	And I click button "Sign and Save"
+	And I sign the form with username "defuser" and password "password"
+	And I take a screenshot
+	And I open log line 1 for edit
+	When I enter data in CRF and save
+		| Field                  | Data | Control Type |
+		| Ready for Extra Review | True | checkbox     |
+	#Then I should see CRF signed with username "defuser"
+	And I open log line 1 for edit
+#New Step def
+	#And I should see
+	#	| Field                    | Control Type |
+	#	| Added 1 For Extra Review | textbox      |
+	#	| Added 2 For Extra Review | textbox      |
+	And I take a screenshot
+#New Step def
+	#Then I verify buton ""Sign and Save" exist
+
+	And I click audit on Field "AE Number"
+#New Step def
+	#And I verify Audits exist
+	#	| Audit Type | Message                    |
+	#	| Signature  | Signature has been broken. |
+	And I take a screenshot
+
+#----------------------------------------------------------------------------------------------------------------------------------------
+@release_564_2012.1.0
+@PB_US17415_03
+@Draft	
+Scenario: @PB_US17415_03 As an Investigator, when I sign the "Demographics" form, the form level signature does not break when the ICDTAGE field is made visible.
 	
 	And I select Study "**US17415_DT14115" and Site "Site 01"
 	And I create a Subject
@@ -122,16 +172,16 @@ Scenario: @PB_US17415_02 As an Investigator, when I sign the "Demographics" form
 	And I note down "crfversion" to "ver#"
 	And I select link "Demographics"
 	And I enter data in CRF and save
-		| Field Label           | Data        |Control Type |
-		| Gender                | Male        |dropdownlist	|
-		| Ethnicity             | Asian       |dropdownlist	|
-		| Country               | Canada      |dropdownlist	|
-		| Informed Consent Date | 12 JUL 2012 |dateTime		|
+		| Field                 | Data        | Control Type |
+		| Gender                | Male        | dropdownlist |
+		| Ethnicity             | Asian       | dropdownlist |
+		| Country               | Canada      | dropdownlist |
+		| Informed Consent Date | 12 Jul 2012 | dateTime     |
 	And I take a screenshot
 	And I click button "Sign and Save"
-#New Step def
-	#And I sign the form with username "defuser" and password "password" and save
+	And I sign the form with username "defuser" and password "password"
 	And I take a screenshot
+	And I should 
 
 	And I navigate to "Home"
 	And I navigate to "Architect"
@@ -139,6 +189,7 @@ Scenario: @PB_US17415_02 As an Investigator, when I sign the "Demographics" form
 	And I select link "Target Draft" in "CRF Drafts"
 	And I publish CRF Version "Target{RndNum<TV#>(3)}"
 	And I note down "crfversion" to "newversion#"
+#Broken step def. was working before
 	And I select Study "**US17415_DT14115" in "Header"
 	And I navigate to "Amendment Manager"
 	And I choose "V1 ({Var(ver#)})" from "Source CRF"
@@ -155,7 +206,7 @@ Scenario: @PB_US17415_02 As an Investigator, when I sign the "Demographics" form
 	And I select link "Demographics"
 #New Step def
 	And I should see
-		| Field Label | Control Type |
+		| Field       | Control Type |
 		| Derived Age | Text         |
 	And I take a screenshot	
 	And I click audit on Field "Gender"
@@ -191,9 +242,9 @@ Scenario: @PB_US17415_02 As an Investigator, when I sign the "Demographics" form
 					
 #----------------------------------------------------------------------------------------------------------------------------------------
 @release_564_2012.1.0
-@PB_US17415_03
+@PB_US17415_04
 @Draft	
-Scenario: @PB_US17415_03 As an Investigator, when I sign the "Test Demographics" form, the form level signature does not break when the ICDTAGE field is made visible.
+Scenario: @PB_US17415_04 As an Investigator, when I sign the "Test Demographics" form, the form level signature does not break when the ICDTAGE field is made visible.
 	
 	And I select Study "**US17415_DT14115" and Site "Site 01"
 	And I create a Subject
@@ -203,11 +254,11 @@ Scenario: @PB_US17415_03 As an Investigator, when I sign the "Test Demographics"
 	And I note down "crfversion" to "ver1#"
 	And I select link "Test Demographics"
 	And I enter data in CRF and save
-		| Field Label           | Data        |Control Type |
-		| Gender                | Male        |dropdownlist	|
-		| Ethnicity             | Asian       |dropdownlist	|
-		| Country               | Canada      |dropdownlist	|
-		| Informed Consent Date | 12 JUL 2012 |dateTime		|
+		| Field                 | Data        | Control Type |
+		| Gender                | Male        | dropdownlist |
+		| Ethnicity             | Asian       | dropdownlist |
+		| Country               | Canada      | dropdownlist |
+		| Informed Consent Date | 12 Jul 2012 | dateTime     |
 	And I take a screenshot
 	And I click button "Sign and Save"
 #New Step def
@@ -236,7 +287,7 @@ Scenario: @PB_US17415_03 As an Investigator, when I sign the "Test Demographics"
 	And I select link "Test Demographics"
 #New Step def
 	And I should see
-		| Field Label | Control Type |
+		| Field       | Control Type |
 		| Derived Age | Text         |
 	And I take a screenshot	
 	And I click audit on Field "Gender"

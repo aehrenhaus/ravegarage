@@ -123,7 +123,7 @@ namespace Medidata.RBT.Features.Rave
         /// Verifies data exists in the datapa/record we are already in
         /// </summary>
         /// <param name="table"></param>
-        [Then(@"I should see data on Fields in CRF")] 
+        [StepDefinition(@"I should see data on Fields in CRF")] 
         public void ThenIShouldSeeInCRF(Table table)
         {
             CRFPage page = CurrentPage.As<CRFPage>();
