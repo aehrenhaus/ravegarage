@@ -157,8 +157,10 @@ namespace Medidata.RBT.PageObjects.Rave
 		{
 			if (identifier == null)
 			{
-				if (Browser.FindElementByTagName("body").Text.Contains(text))
-					return true;
+                if (Browser.FindElementByTagName("body").Text.Contains(text))
+                    return true;
+                else
+                    return false;
 			}
 			throw new NotImplementedException();
 		}
