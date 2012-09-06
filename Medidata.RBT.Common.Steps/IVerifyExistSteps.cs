@@ -60,5 +60,16 @@ namespace Medidata.RBT.Common.Steps
 			bool exist = CurrentPage.As<ICanVerifyExist>().VerifyTextExist(null, text);
 			Assert.IsTrue(exist, String.Format("Text does not exist :{0}", text));
 		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="text"></param>
+		[StepDefinition(@"I verify text ""([^""]*)"" does not exist")]
+		public void IVerifyText____DoesNotExist(string text)
+		{
+			bool exist = CurrentPage.As<ICanVerifyExist>().VerifyTextExist(null, text);
+			Assert.IsFalse(exist, String.Format("Text does exist :{0}", text));
+		}
 	}
 }

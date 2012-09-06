@@ -128,22 +128,6 @@ namespace Medidata.RBT.Features.Rave
             bool found = CurrentPage.As<ArchitectFormDesignerPage>().FerifyRangesForFieldEditChecks(table.CreateSet<FieldModel>());
             Assert.IsFalse(found, "Ranges for field do match.");
         }
-
-        //TODO: abstract this, since not only architect pages display messages
-        [StepDefinition(@"I should not see ""([^""]*)"" message")]
-        public void IDontSeeMessage____(string message)
-        {
-             bool found = CurrentPage.As<ArchitectFormDesignerPage>().PageContainsMessage(message);
-             Assert.IsFalse(found, "Message " + message + " is found.");
-        }
-
-        [StepDefinition(@"I should see ""([^""]*)"" message")]
-        public void ISeeMessage____(string message)
-        {
-            bool found = CurrentPage.As<ArchitectFormDesignerPage>().PageContainsMessage(message);
-            Assert.IsTrue(found, "Message " + message + " is not found.");
-        }
-
 	}
 
 }
