@@ -29,7 +29,7 @@ Feature: US17446
 
 @release_2012.1.0
 @PB_US17446_01
-@Draft
+@Validation
 
 Scenario: @PB_US17446_01 As Study Developer, when I save Low and High ranges for Field Edit Check, I do not see an Invalid* error message displayed.
 	When I navigate to "Architect"
@@ -53,7 +53,7 @@ Scenario: @PB_US17446_01 As Study Developer, when I save Low and High ranges for
 
 @release_2012.1.0
 @PB_US17446_02
-@Draft
+@Validation
 
 
 Scenario: @PB_US17446_02 As Study Developer, when I save Low and High ranges for Field Edit Check, I do not see an Invalid* error message displayed.
@@ -69,8 +69,8 @@ Scenario: @PB_US17446_02 As Study Developer, when I save Low and High ranges for
 		| Auto-Query for data out of range      | 8   | 5    |
 		| Mark non-conformant data out of range | 9   | 7    |
 	Then I verify text "Invalid*" does not exist
-	And I should see "Auto query edit check ranges are not valid" message
-	And I should see "Non-conformant edit check ranges are not valid" message
+	And I verify text "Auto query edit check ranges are not valid" exists
+	And I verify text "Non-conformant edit check ranges are not valid" exists
 	And I edit Field "TEXT2"
 	And I should not see ranges for Field Edit Checks
 	| Field Edit Check                      | Low | High |
@@ -80,7 +80,7 @@ Scenario: @PB_US17446_02 As Study Developer, when I save Low and High ranges for
 
 @release_2012.1.0
 @PB_US17446_03
-@Draft
+@Validation
 
 Scenario: @PB_US17446_03 As Study Developer, when I save Low and High ranges for Field Edit Check, I do not see an Invalid* error message displayed.
 	When I navigate to "Architect"
@@ -104,7 +104,7 @@ Scenario: @PB_US17446_03 As Study Developer, when I save Low and High ranges for
 
 @release_2012.1.0
 @PB_US17446_04
-@Draft
+@Validation
 
 Scenario: @PB_US17446_04 As Study Developer, when I save Low and High ranges for Field Edit Check, I do not see an Invalid* error message displayed.
 	When I navigate to "Architect"
@@ -119,6 +119,8 @@ Scenario: @PB_US17446_04 As Study Developer, when I save Low and High ranges for
 	| Auto-Query for data out of range      | 2222222222 | 1111111111 |
 	| Mark non-conformant data out of range | 4444444444 | 3333333333 |
 	Then I verify text "Invalid*" does not exist
+	And I verify text "Auto query edit check ranges are not valid" exists
+	And I verify text "Non-conformant edit check ranges are not valid" exists
 	And I edit Field "TEXT4"
 	And I should not see ranges for Field Edit Checks
 	| Field Edit Check                      | Low        | High       |
@@ -129,7 +131,7 @@ Scenario: @PB_US17446_04 As Study Developer, when I save Low and High ranges for
 
 @release_2012.1.0
 @PB_US17446_05
-@Draft
+@Validation
 
 Scenario: @PB_US17446_05 As Study Developer, when I save Low and High ranges for Field Edit Check, I do not see an Invalid* error message displayed.
 	When I navigate to "Architect"
@@ -155,7 +157,7 @@ Scenario: @PB_US17446_05 As Study Developer, when I save Low and High ranges for
 
 @release_2012.1.0
 @PB_US17446_06
-@Draft
+@Validation
 
 Scenario: @PB_US17446_06 As Study Developer, when I save Low and High ranges for Field Edit Check, I do not see an Invalid* error message displayed.
 	When I navigate to "Architect"
@@ -181,7 +183,7 @@ Scenario: @PB_US17446_06 As Study Developer, when I save Low and High ranges for
 
 @release_2012.1.0
 @PB_US17446_07
-@Draft
+@Validation
 
 Scenario: @PB_US17446_07 As Study Developer, when I save Low and High ranges for Field Edit Check, I do not see an Invalid* error message displayed.
 	When I navigate to "Architect"
@@ -204,7 +206,7 @@ Scenario: @PB_US17446_07 As Study Developer, when I save Low and High ranges for
 
 @release_2012.1.0
 @PB_US17446_08
-@Draft
+@Validation
 
 Scenario: @PB_US17446_08 As Study Developer, when I save Low and High ranges for Field Edit Check, I do not see an Invalid* error message displayed.
 	When I navigate to "Architect"
