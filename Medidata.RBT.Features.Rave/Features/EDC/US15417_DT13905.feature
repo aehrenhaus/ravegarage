@@ -286,8 +286,6 @@ Scenario: PB_DT13905_04 As an EDC user, when I update a unit conversion formula 
 	| Subject        | FormName   | AnalyteName | AnalyteValue | LabUnits | StdValue | StdUnits |
 	| SUB{Var(num1)} | Hematology | WBC         | 10           | 10^9/L   | 40       | %        |
 	And I take a screenshot
-	And I wait for lab update queue to be processed
-	And I wait for Clinical View refresh to complete for project "US15417_DT13905_SJ"
 	And I switch to "Reports" window
 	And I select link "Home"
 	And I navigate to "Lab Administration"
@@ -297,6 +295,8 @@ Scenario: PB_DT13905_04 As an EDC user, when I update a unit conversion formula 
 	| 10^9/L | %  | WBC     | 5 | 1 | 0 | 0 |
 	And I take a screenshot
 	And I navigate to "Home"
+	And I wait for lab update queue to be processed
+	And I wait for Clinical View refresh to complete for project "US15417_DT13905_SJ"
 	And I navigate to "Reporter"
 	And I select Report "Data Listing" 
 	And I set report parameter "Study" with table
@@ -311,6 +311,8 @@ Scenario: PB_DT13905_04 As an EDC user, when I update a unit conversion formula 
 	| Subject        | FormName   | AnalyteName | AnalyteValue | LabUnits | StdValue | StdUnits |
 	| SUB{Var(num1)} | Hematology | WBC         | 10           | 10^9/L   | 50       | %        |
 	And I take a screenshot
+	And I wait for lab update queue to be processed
+	And I wait for Clinical View refresh to complete for project "US15417_DT13905_SJ"
 	And I switch to "Reports" window
 	And I select link "Home"
 	And I navigate to "Lab Administration"
