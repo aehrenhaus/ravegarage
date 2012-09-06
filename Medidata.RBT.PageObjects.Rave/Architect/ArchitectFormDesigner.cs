@@ -4,7 +4,7 @@ using Medidata.RBT.SeleniumExtension;
 using TechTalk.SpecFlow;
 namespace Medidata.RBT.PageObjects.Rave
 {
-	public class ArchitectFormDesignerPage : ArchitectBasePage, IActivatePage
+	public class ArchitectFormDesignerPage : ArchitectBasePage, IActivatePage, ICanVerifyExist
 	{
 		#region IActivatePage
 
@@ -33,12 +33,7 @@ namespace Medidata.RBT.PageObjects.Rave
 			return this;
 		}
 
-        public bool PageContainsMessage(string message)
-        {
-            if (Browser.FindElementByTagName("body").Text.Contains(message))
-                return true;
-            return false;
-        }
+      
 
         public bool FerifyRangesForFieldEditChecks(IEnumerable<FieldModel> fields)
         {
@@ -145,5 +140,29 @@ namespace Medidata.RBT.PageObjects.Rave
                 return "Modules/Architect/FormDesigner.aspx";
 			}
 		}
+
+		#region ICanVerifyExist
+
+		public bool VerifyTableRowsExist(string tableIdentifier, Table matchTable)
+		{
+			throw new NotImplementedException();
+		}
+
+		public bool VerifyControlExist(string identifier)
+		{
+			throw new NotImplementedException();
+		}
+
+		public bool VerifyTextExist(string identifier, string text)
+		{
+			if (identifier == null)
+			{
+				if (Browser.FindElementByTagName("body").Text.Contains(text))
+					return true;
+			}
+			throw new NotImplementedException();
+		}
+
+		#endregion
 	}
 }
