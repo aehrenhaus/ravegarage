@@ -384,5 +384,36 @@ namespace Medidata.RBT.Features.Rave
 			Assert.IsTrue(result, "Not all reports link to report module");
 		}
 
+        /// <summary>
+        /// Click drop button on a field on CRF page
+        /// </summary>
+        /// <param name="fieldName"></param>
+        /// <param name="lineNum"></param>
+        [StepDefinition(@"I click drop button on dynamic search list ""([^""]*)"" in log line ([^""]*)")]
+        public void IClickDropButtonOnDynamicSearchList____InLogLine____(string fieldName, int lineNum)
+        {
+            var controlType = EnumHelper.GetEnumByDescription<ControlType>("dynamic search list");
+            IEDCLogFieldControl fieldControl = CurrentPage.As<CRFPage>().FindLandscapeLogField(fieldName, lineNum, controlType);
+            fieldControl.Click(controlType);
+        }
+
+        /// <summary>
+        /// Verifies that dynamic search list open within a timeframe
+        /// </summary>
+        /// <param name="fieldName"></param>
+        /// <param name="lineNum"></param>
+        /// <param name="seconds"></param>
+        [Then(@"I should see dynamic search list ""([^""]*)"" in log line ([^""]*) open within ([^""]*) seconds")]
+        public void ThenIShouldSeeDynamicSearchList____InLogLine____OpenWithin____Seconds(string fieldName, int lineNum, int seconds)
+        {
+            bool result = false;
+            var controlType = EnumHelper.GetEnumByDescription<ControlType>("dynamic search list");
+            IEDCLogFieldControl fieldControl = CurrentPage.As<CRFPage>().FindLandscapeLogField(fieldName, lineNum, controlType);
+
+            System.Threading.Thread.Sleep(seconds * 1000);
+            result = fieldControl.IsDroppedDown(controlType);
+            Assert.IsTrue(result, String.Format("The dynamic search list {0} in log line {1} has not been opened within {2} seconds", fieldName, lineNum, seconds));
+        }
+
     }
 }

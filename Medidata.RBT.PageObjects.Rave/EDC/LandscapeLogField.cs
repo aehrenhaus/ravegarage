@@ -31,6 +31,37 @@ namespace Medidata.RBT.PageObjects.Rave
             Match m = new Regex(@"^lVal_\d+_\d+_(?<ROW_ID>\d+)").Match(elementCellID);
             m_rowId = m.Success ? Convert.ToInt32(m.Groups["ROW_ID"].Value) : 0;
         }
+
+        public LandscapeLogField(IPage page, string fieldName, int index, ControlType controlType)
+            : base(page)
+        {
+            //Get ColumnID
+            switch (controlType)
+            {
+                //case ControlType.Default:
+                //case ControlType.Text:
+                //case ControlType.LongText:
+                //case ControlType.Datetime:
+                //case ControlType.RadioButton:
+                //case ControlType.RadioButtonVertical:
+                //case ControlType.DropDownList:
+                case ControlType.DynamicSearchList:
+                    IWebElement topRowCell = this.Page.Browser.FindElement(By.XPath("//tr[@class='breaker']//td//*[contains(text(),'" + fieldName + "')]")).FindElement(By.XPath("../.."));
+                    string topRowCellID = topRowCell.GetAttribute("id");
+                    m_columnId = Convert.ToInt32(topRowCellID.Substring(topRowCellID.LastIndexOf('_') + 2, topRowCellID.Length - (topRowCellID.LastIndexOf('_') + 2)));
+                    break;
+                default:
+                    throw new Exception("Not supported control type:" + controlType);
+            }
+
+            //Get RowID
+            IWebElement tableCell = this.Page.Browser.FindElement(By.XPath("//td[contains(@id, 'Val_" + index + "_" + m_columnId + "')]"));
+            string elementCellID = tableCell.GetAttribute("id");
+
+            Match m = new Regex(@"^lVal_\d+_\d+_(?<ROW_ID>\d+)").Match(elementCellID);
+            m_rowId = m.Success ? Convert.ToInt32(m.Groups["ROW_ID"].Value) : 0;
+        }
+
         #endregion
 
         #region FUNCTIONS
@@ -73,6 +104,43 @@ namespace Medidata.RBT.PageObjects.Rave
                 "' = substring(@" + attr + ", string-length(@" + attr + ") - string-length('"
                 + suffix +
                 "') + 1)]"));
+        }
+        public void Click(ControlType controlType)
+        {
+            switch (controlType)
+            {
+                //case ControlType.Default:
+                //case ControlType.Text:
+                //case ControlType.LongText:
+                //case ControlType.Datetime:
+                //case ControlType.RadioButton:
+                //case ControlType.RadioButtonVertical:
+                //case ControlType.DropDownList:
+                case ControlType.DynamicSearchList:
+                    IWebElement tableCell = this.Page.Browser.FindElementById("_ctl0_Content_R_log_log_CF" + m_columnId.ToString() + "_" + m_rowId.ToString() + "_C_CRFSL");
+                    tableCell.FindElement(By.ClassName("SearchList_DropButton")).Click();
+                    break;
+                default:
+                    throw new Exception("Not supported control type:" + controlType);
+            }
+        }
+        public bool IsDroppedDown(ControlType controlType)
+        {
+            switch (controlType)
+            {
+                //case ControlType.Default:
+                //case ControlType.Text:
+                //case ControlType.LongText:
+                //case ControlType.Datetime:
+                //case ControlType.RadioButton:
+                //case ControlType.RadioButtonVertical:
+                //case ControlType.DropDownList:
+                case ControlType.DynamicSearchList:
+                    IWebElement tableCell = this.Page.Browser.FindElementById("_ctl0_Content_R_log_log_CF" + m_columnId.ToString() + "_" + m_rowId.ToString() + "_C_CRFSL_PickListBox");
+                    return tableCell.Displayed;
+                default:
+                    throw new Exception("Not supported control type:" + controlType);
+            }
         }
 
         #region INTERFACE IEDCFieldControl

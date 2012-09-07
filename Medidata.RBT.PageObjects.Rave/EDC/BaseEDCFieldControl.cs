@@ -267,5 +267,9 @@ namespace Medidata.RBT.PageObjects.Rave
 		{
 			throw new NotImplementedException();
 		}
+
+        public virtual void Click(ControlType controlType) { throw new NotImplementedException(); }
+
+        public virtual bool IsDroppedDown(ControlType controlType) { throw new NotImplementedException(); }
 	}
 }

@@ -22,7 +22,7 @@ namespace Medidata.RBT.PageObjects.Rave
 		[Description("dropdown"), Suffix("DD")]
 		DropDownList,
 
-		[Description("dynamic search list"), Suffix("")]    //TODO : Check Suffix on this type if used in future implementation
+        [Description("dynamic search list"), Suffix("C_CRFSL")]
 		DynamicSearchList,
 
 		[Description("browser file upload button"), Suffix("CRFFileUpload")]
