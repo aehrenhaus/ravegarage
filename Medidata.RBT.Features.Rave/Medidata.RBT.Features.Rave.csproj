@@ -85,11 +85,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>US10246_DT13300.feature</DependentUpon>
     </Compile>
-    <Compile Include="Features\EDC\US119131.feature.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>US11913.feature</DependentUpon>
-    </Compile>
     <Compile Include="Features\EDC\US12999_DT13977.feature.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -160,11 +155,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>US13002_DT13919.feature</DependentUpon>
     </Compile>
-    <Compile Include="Features\EDC\US15417_DT139051.feature.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>US15417_DT13905.feature</DependentUpon>
-    </Compile>
     <Compile Include="Features\EDC\DT_13622.feature.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -214,11 +204,6 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>EDCTabOrderUntouchedPortraitLogForm.feature</DependentUpon>
-    </Compile>
-    <Compile Include="Features\TSDV\US11958_DT141771.feature.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>US11958_DT14177.feature</DependentUpon>
     </Compile>
     <Compile Include="Features\UserAdministration\DT14168.feature.cs">
       <DependentUpon>DT14168.feature</DependentUpon>
@@ -402,6 +387,11 @@
     <Folder Include="TableModels\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PreBuildEvent>echo Starting to generate SpecFlow unit tests
+SpecFlow generateAll $(ProjectDir)$(ProjectName).csproj  /force /verbose
+echo Finished generating SpecFlow unit tests</PreBuildEvent>
+  </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
