@@ -19,6 +19,16 @@ namespace Medidata.RBT.PageObjects.Rave
 				return AuditExist_CancelQuery(audit.QueryMessage, isLatest);
 			}
 
+            else if (audit.AuditType == "Signature Succeeded")
+            {
+                return AuditExist_SignatureSucceeded(isLatest);
+            }
+
+            else if (audit.AuditType == "Signature Broken")
+            {
+                return AuditExist_SignatureBroken(isLatest);
+            }
+
 			throw new Exception("Invalid audit type " + audit.AuditType);
 		}
 
@@ -42,5 +52,17 @@ namespace Medidata.RBT.PageObjects.Rave
 		{
 			return AuditExist(string.Format("Query '{0}' canceled",query), isLatest);
 		}
+
+        public bool AuditExist_SignatureSucceeded(bool isLatest = false)
+        {
+            return AuditExist("User signature succeeded", isLatest);
+        }
+
+        public bool AuditExist_SignatureBroken(bool isLatest = false)
+        {
+            return AuditExist("Signature has been broken", isLatest);
+        }
+
+        public override string URL { get { return "AuditsPage.aspx"; } }
 	}
 }

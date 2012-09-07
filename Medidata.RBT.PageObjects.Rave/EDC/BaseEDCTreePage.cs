@@ -1,13 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using OpenQA.Selenium;
+using TechTalk.SpecFlow;
 using Medidata.RBT.SeleniumExtension;
+
 
 namespace Medidata.RBT.PageObjects.Rave
 {
-	public  class BaseEDCPage : RavePageBase
+	public  class BaseEDCPage : RavePageBase, ICanVerifyExist
 	{
 		public virtual IEDCFieldControl FindField(string fieldName)
 		{
@@ -81,5 +81,31 @@ namespace Medidata.RBT.PageObjects.Rave
 			Browser.Textbox("SignatureBox").SetText(password);
 			this.ClickButton("Sign and Save");//ValidateSignAndSave
 		}
+
+        #region ICanVerifyExist
+
+        public bool VerifyTableRowsExist(string tableIdentifier, Table matchTable)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool VerifyControlExist(string identifier)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool VerifyTextExist(string identifier, string text)
+        {
+            if (identifier == null)
+            {
+                if (Browser.FindElementByTagName("body").Text.Contains(text))
+                    return true;
+                else
+                    return false;
+            }
+            throw new NotImplementedException();
+        }
+
+        #endregion
 	}
 }
