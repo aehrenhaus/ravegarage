@@ -22,7 +22,6 @@ namespace Medidata.RBT.PageObjects.Rave
 
 		public void TypeAndSelect(string text)
 		{
-			text = SpecialStringHelper.Replace(text);
 			//first type ,then choose will limite the count of options.
 			Type(text);
 			//IF type first, then do not need to click the dropdown button.
@@ -38,11 +37,16 @@ namespace Medidata.RBT.PageObjects.Rave
 			option.Click();
 		}
 
+		public void OpenWithinTime(int seconds)
+		{
+			var option = (this.Page as PageBase).WaitForElement(
+				driver => wrapper.FindElements(By.XPath("./div[position()=2]/div")).FirstOrDefault(x => true),"Not in time", seconds);
+
+		}
+
 
 		public void Type(string text)
 		{
-			text = SpecialStringHelper.Replace(text);
-
 			var input = wrapper.TryFindElementBy(By.XPath("./span/input[position()=1]")).EnhanceAs<Textbox>();
 			input.SetText(text);
 		}

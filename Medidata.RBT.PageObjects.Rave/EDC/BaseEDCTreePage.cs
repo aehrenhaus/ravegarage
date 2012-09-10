@@ -107,5 +107,42 @@ namespace Medidata.RBT.PageObjects.Rave
         }
 
         #endregion
+
+
+		public bool VerifyReportLinksLinkToReportModule()
+		{
+			string url = Browser.Url;
+
+			var reportTable = GetElementByName("Reports");
+			var reportLinks = reportTable.Links();
+
+			bool allDo = true;
+
+			for(int i  = 0;i<reportLinks.Count;i++)
+			{
+				var link = reportLinks[i];
+				link.Click();
+				if (Browser.WindowHandles.Count > 1)
+					TestContext.SwitchToSecondBrowserWindow();
+
+				TestContext.TrySaveScreenShot();
+
+				if (!Browser.Url.Contains("/ReportAdmin/") && !Browser.Url.Contains("/Reporting/"))
+				{
+					allDo = false;
+					break;
+				}
+
+				if (Browser.WindowHandles.Count > 1)
+					TestContext.SwitchToMainBrowserWindow(true);
+				else
+					Browser.Navigate().GoToUrl(url);
+
+				reportTable = GetElementByName("Reports");
+				reportLinks = reportTable.Links();
+			}
+
+			return allDo;
+		}
 	}
 }
