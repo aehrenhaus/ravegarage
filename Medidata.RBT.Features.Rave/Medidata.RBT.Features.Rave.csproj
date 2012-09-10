@@ -110,16 +110,6 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="Features\EDC\564 QueryRefiringLogic2.feature.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>564 QueryRefiringLogic2.feature</DependentUpon>
-    </Compile>
-    <Compile Include="Features\EDC\564 QueryRefiringLogic4.feature.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>564 QueryRefiringLogic4.feature</DependentUpon>
-    </Compile>
     <Compile Include="Features\EDC\564QueryRefiringLogic5_LabForm_2FldEC.feature.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -129,21 +119,6 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>564QueryRefiringLogic8.feature</DependentUpon>
-    </Compile>
-    <Compile Include="Features\EDC\564QueryRefiringLogic1.feature.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>564QueryRefiringLogic1.feature</DependentUpon>
-    </Compile>
-    <Compile Include="Features\EDC\564QueryRefiringLogic_LogForm_2FldEC.feature.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>564QueryRefiringLogic_LogForm_2FldEC.feature</DependentUpon>
-    </Compile>
-    <Compile Include="Features\EDC\564QueryRefiringLogic_StdForm_1FldEC.feature.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>564QueryRefiringLogic_StdForm_1FldEC.feature</DependentUpon>
     </Compile>
     <Compile Include="Features\EDC\US11547_DT11148_DisableAddEvents.feature.cs">
       <AutoGen>True</AutoGen>
@@ -389,7 +364,7 @@
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PreBuildEvent>echo Starting to generate SpecFlow unit tests
-SpecFlow generateAll $(ProjectDir)$(ProjectName).csproj  /force /verbose
+SpecFlow generateAll $(ProjectPath)  /force /verbose
 echo Finished generating SpecFlow unit tests</PreBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
