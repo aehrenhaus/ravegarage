@@ -373,5 +373,16 @@ namespace Medidata.RBT.Features.Rave
             new SignatureBox().Sign(username, password);
         }
 
+		/// <summary>
+		/// The link are using javascript, when clicked, js will redirect to different pages(depends on the report) in the report module
+		/// This step verifies this behavior
+		/// </summary>
+		[StepDefinition(@"I verify that the all the reports are linked into report module")]
+		public void IVerifyThatTheAllTheReportsAreLinkedIntoReportModule()
+		{
+			bool result = CurrentPage.As<BaseEDCPage>().VerifyReportLinksLinkToReportModule();
+			Assert.IsTrue(result, "Not all reports link to report module");
+		}
+
     }
 }

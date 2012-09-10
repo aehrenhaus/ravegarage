@@ -21,7 +21,63 @@ namespace Medidata.RBT
         public static string DownloadPath { get; set; }
 		public static RemoteWebDriver Browser { get; set; }
 
-        /// <summary>
+
+		#region switch browser window
+
+		public static void SwitchBrowserWindow(string windowName)
+		{
+			//TODO: got to be a better way
+			//wait for the window to appear
+			Thread.Sleep(3000);
+
+			bool found = false;
+			IWebDriver window = null;
+			foreach (var handle in Browser.WindowHandles)
+			{
+				window = Browser.SwitchTo().Window(handle);
+				if (window.Title == windowName)
+				{
+					found = true;
+					break;
+				}
+			}
+			if (!found) throw new Exception(string.Format("window {0} not found", windowName));
+			Browser = (window as RemoteWebDriver);
+
+			CurrentPage = TestContext.POFactory.GetPageByUrl(new Uri(Browser.Url));
+		}
+
+		public static void SwitchToSecondBrowserWindow()
+		{
+			//TODO: got to be a better way
+			//wait for the window to appear
+			//Thread.Sleep(3000);
+			if (Browser.WindowHandles.Count < 2)
+				throw new Exception("There isn't a second window");
+			var secondWindowHandle = Browser.WindowHandles[1];
+
+			IWebDriver window = Browser.SwitchTo().Window(secondWindowHandle); ;
+
+			CurrentPage = TestContext.POFactory.GetPageByUrl(new Uri(Browser.Url));
+		}
+
+
+		public static void SwitchToMainBrowserWindow(bool close = false)
+		{
+			if (close)
+				Browser.Close();
+
+			var secondWindowHandle = Browser.WindowHandles[0];
+
+			IWebDriver window = Browser.SwitchTo().Window(secondWindowHandle); ;
+
+			CurrentPage = TestContext.POFactory.GetPageByUrl(new Uri(Browser.Url));
+		}
+
+		#endregion
+
+
+		/// <summary>
         /// The list of removable objects that will be deleted upon scenario end.
         /// </summary>
         public static List<RemoveableObject> ObjectsForDeletion
@@ -290,10 +346,10 @@ namespace Medidata.RBT
 				case "firefox":
 					FirefoxProfile p = new FirefoxProfile(RBTConfiguration.Default.FirefoxProfilePath, true);
 					FirefoxBinary bin = new FirefoxBinary(RBTConfiguration.Default.BrowserPath);
-                    p.SetPreference("browser.download.folderList",2);
-                    p.SetPreference("browser.download.manager.showWhenStarting", false);
-                    p.SetPreference("browser.download.dir", RBTConfiguration.Default.DownloadPath);
-                    p.SetPreference("browser.helperApps.neverAsk.saveToDisk", "application/zip");
+					//p.SetPreference("browser.download.folderList",2);
+					//p.SetPreference("browser.download.manager.showWhenStarting", false);
+					//p.SetPreference("browser.download.dir", RBTConfiguration.Default.DownloadPath);
+					//p.SetPreference("browser.helperApps.neverAsk.saveToDisk", "application/zip");
 					_webdriver = new FirefoxDriver(bin, p);
 					break;
 

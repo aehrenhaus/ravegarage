@@ -65,9 +65,9 @@ Scenario: @PB_US11101_03 As a Data Manager, when I select Study "Mediflex" and S
 
 And I select Study "Mediflex" and Site "LabSite01"
 When I create a Subject
-| Field            | Data               |
-| Subject Initials | SUB                |
-| Subject Number   | {RndNum<num1>(3)}  |
+	| Field            | Data               |
+	| Subject Initials | SUB                |
+	| Subject Number   | {RndNum<num1>(3)}  |
 Then I verify table "Reports" is in alphabetical order
 And I take a screenshot
 
@@ -78,9 +78,9 @@ Scenario: PB_US11913_04 As a Data Manager, when I select Study "Jennicilin" and 
 
 And I select Study "Mediflex" and Site "LabSite01"
 When I create a Subject
-| Field            | Data               |
-| Subject Initials | SUB                |
-| Subject Number   | {RndNum<num1>(3)}  |
+	| Field            | Data               |
+	| Subject Initials | SUB                |
+	| Subject Number   | {RndNum<num1>(3)}  |
 And I select link "Grid View"
 Then I verify table "Reports" is in alphabetical order
 And I take a screenshot
@@ -91,24 +91,11 @@ And I take a screenshot
 Scenario: PB_US11913_05 As a Data Manager, when I select report on Study, Site Subject, Grid View then I see report.
 
 When I select Study "Mediflex" and Site "LabSite01"
-And I select Report "Enrollment - Enrollment Report"
-Then I should see report
-And I take a screenshot
-And I close report	
-And I select Report "User Listing - User Listing Report"
-Then I should see report
-And I take a screenshot	
-And I close report
+And I verify that the all the reports are linked into report module
+
 When I create a Subject
-| Field            | Data               |
-| Subject Initials | SUB                |
-| Subject Number   | {RndNum<num1>(3)}  |
-And I select Report "Subject CRF Versions - Subject CRF Versions"
-Then I should see report
-And I take a screenshot
-And I close report	
-When I select "Grid View"
-And I select Report "Subject CRF Versions - Subject CRF Versions"
-Then I should see report
-And I take a screenshot
-And I close report	
+	| Field            | Data               |
+	| Subject Initials | SUB                |
+	| Subject Number   | {RndNum<num1>(3)}  |
+
+And I verify that the all the reports are linked into report module

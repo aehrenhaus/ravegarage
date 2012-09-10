@@ -13,7 +13,10 @@ using Medidata.RBT.PageObjects.Rave.EDC;
 
 namespace Medidata.RBT.PageObjects.Rave
 {
-	public  class HomePage : RavePageBase, ICanPaginate, ICanHighlight, ICanVerifyExist, ICanVerifyInOrder
+	/// <summary>
+	/// Because HomePage is a all in one page. It also inherits from BaseEDCPage
+	/// </summary>
+	public  class HomePage : BaseEDCPage, ICanPaginate, ICanHighlight, ICanVerifyExist, ICanVerifyInOrder
 	{
 		[FindsBy(How = How.Id, Using = "_ctl0_Content_ListDisplayNavigation_txtSearch")]
 		IWebElement SearchBox;
