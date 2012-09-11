@@ -870,7 +870,8 @@ Scenario: @PB_US13002_DT13919_01 As a Study Coordinator, when I enter data into 
 	And I select Form "Adverse Event Form"
 	And I take a screenshot
 	And I click drop button on dynamic search list "Adverse Event Grade" in log line 1
-	Then I should see dynamic search list "Adverse Event Grade" in log line 1 open within 3 seconds
+	And I wait for 3 seconds
+	Then I should see dynamic search list "Adverse Event Grade" in log line 1 open
 	And I take a screenshot
 
 #----------------------------------------------------------------------------------------------------------------------------------------

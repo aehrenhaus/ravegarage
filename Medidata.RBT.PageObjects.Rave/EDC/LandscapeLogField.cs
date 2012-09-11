@@ -13,12 +13,15 @@ namespace Medidata.RBT.PageObjects.Rave
         #region CLASS DATA
         private readonly int m_columnId;
         private readonly int m_rowId;
+        private readonly ControlType m_controlType;
         #endregion
 
         #region CONSTRUCTORS
         public LandscapeLogField(IPage page, string fieldName, int index)
             : base(page)
         {
+            m_controlType = ControlType.Default;
+
             //Get ColumnID
             IWebElement topRowCell = this.Page.Browser.FindElement(By.XPath("//tr[@class='breaker']//td//*[contains(text(),'" + fieldName + "')]"));
             string topRowCellID = topRowCell.GetAttribute("id");
@@ -35,23 +38,26 @@ namespace Medidata.RBT.PageObjects.Rave
         public LandscapeLogField(IPage page, string fieldName, int index, ControlType controlType)
             : base(page)
         {
+            m_controlType = controlType;
+
             //Get ColumnID
             switch (controlType)
             {
-                //case ControlType.Default:
-                //case ControlType.Text:
-                //case ControlType.LongText:
-                //case ControlType.Datetime:
-                //case ControlType.RadioButton:
-                //case ControlType.RadioButtonVertical:
-                //case ControlType.DropDownList:
+                case ControlType.Default:
+                case ControlType.Text:
+                case ControlType.LongText:
+                case ControlType.Datetime:
+                case ControlType.RadioButton:
+                case ControlType.RadioButtonVertical:
+                case ControlType.DropDownList:
+                    throw new NotImplementedException("Not implemented yet for :" + m_controlType);
                 case ControlType.DynamicSearchList:
                     IWebElement topRowCell = this.Page.Browser.FindElement(By.XPath("//tr[@class='breaker']//td//*[contains(text(),'" + fieldName + "')]")).FindElement(By.XPath("../.."));
                     string topRowCellID = topRowCell.GetAttribute("id");
                     m_columnId = Convert.ToInt32(topRowCellID.Substring(topRowCellID.LastIndexOf('_') + 2, topRowCellID.Length - (topRowCellID.LastIndexOf('_') + 2)));
                     break;
                 default:
-                    throw new Exception("Not supported control type:" + controlType);
+                    throw new NotImplementedException("Unknown control type:" + m_controlType);
             }
 
             //Get RowID
@@ -105,41 +111,44 @@ namespace Medidata.RBT.PageObjects.Rave
                 + suffix +
                 "') + 1)]"));
         }
-        public void Click(ControlType controlType)
+        public void Click()
         {
-            switch (controlType)
+            switch (m_controlType)
             {
-                //case ControlType.Default:
-                //case ControlType.Text:
-                //case ControlType.LongText:
-                //case ControlType.Datetime:
-                //case ControlType.RadioButton:
-                //case ControlType.RadioButtonVertical:
-                //case ControlType.DropDownList:
+                case ControlType.Default:
+                case ControlType.Text:
+                case ControlType.LongText:
+                case ControlType.Datetime:
+                case ControlType.RadioButton:
+                case ControlType.RadioButtonVertical:
+                case ControlType.DropDownList:
+                    throw new NotImplementedException("Not implemented yet for :" + m_controlType);
                 case ControlType.DynamicSearchList:
                     IWebElement tableCell = this.Page.Browser.FindElementById("_ctl0_Content_R_log_log_CF" + m_columnId.ToString() + "_" + m_rowId.ToString() + "_C_CRFSL");
                     tableCell.FindElement(By.ClassName("SearchList_DropButton")).Click();
                     break;
                 default:
-                    throw new Exception("Not supported control type:" + controlType);
+                    throw new NotImplementedException("Unknown control type:" + m_controlType);
             }
         }
-        public bool IsDroppedDown(ControlType controlType)
+        public bool IsDroppedDown()
         {
-            switch (controlType)
+            switch (m_controlType)
             {
-                //case ControlType.Default:
-                //case ControlType.Text:
-                //case ControlType.LongText:
-                //case ControlType.Datetime:
-                //case ControlType.RadioButton:
-                //case ControlType.RadioButtonVertical:
-                //case ControlType.DropDownList:
+                case ControlType.Default:
+                case ControlType.Text:
+                case ControlType.LongText:
+                case ControlType.Datetime:
+                case ControlType.RadioButton:
+                case ControlType.RadioButtonVertical:
+                    throw new NotSupportedException("Not supported control type:" + m_controlType);
+                case ControlType.DropDownList:
+                    throw new NotImplementedException("Not implemented yet for :" + m_controlType);
                 case ControlType.DynamicSearchList:
                     IWebElement tableCell = this.Page.Browser.FindElementById("_ctl0_Content_R_log_log_CF" + m_columnId.ToString() + "_" + m_rowId.ToString() + "_C_CRFSL_PickListBox");
                     return tableCell.Displayed;
                 default:
-                    throw new Exception("Not supported control type:" + controlType);
+                    throw new NotImplementedException("Unknown control type:" + m_controlType);
             }
         }
 
