@@ -14,8 +14,12 @@ namespace Medidata.RBT.PageObjects.Rave
 		{
 			if (identifier == "Active Projects")
 				return Browser.Table("_ctl0_Content_ProjectGrid");
-			if (identifier == "Inactive Projects")
+			else if (identifier == "Inactive Projects")
 				return Browser.Table("_ctl0_Content_InactiveProjectGrid");
+            else if (identifier == "Active Global Library Volumes")
+                return Browser.Table("_ctl0_Content_LibraryGrid");
+            else if (identifier == "Proposed Global Library Volumes")
+                return Browser.Table("_ctl0_Content_ProposedLibraryGrid");
 
 			return base.GetElementByName(identifier,areaIdentifier,listItem);
 		}
