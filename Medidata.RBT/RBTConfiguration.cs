@@ -127,5 +127,12 @@ namespace Medidata.RBT
             get { return (int)this["ElementWaitTimeout"]; }
             set { this["ElementWaitTimeout"] = value; }
         }
+
+		[ConfigurationProperty("SwitchWindowWaitTime", DefaultValue = 3, IsRequired = false)]
+		public int SwitchWindowWaitTime
+		{
+			get { return (int)this["SwitchWindowWaitTime"]; }
+			set { this["SwitchWindowWaitTime"] = value; }
+		}
     }
 }

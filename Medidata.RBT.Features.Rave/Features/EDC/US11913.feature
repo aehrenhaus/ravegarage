@@ -91,11 +91,12 @@ And I take a screenshot
 Scenario: PB_US11913_05 As a Data Manager, when I select report on Study, Site Subject, Grid View then I see report.
 
 When I select Study "Mediflex" and Site "LabSite01"
+And I take a screenshot
 And I verify that the all the reports are linked into report module
 
 When I create a Subject
 	| Field            | Data               |
 	| Subject Initials | SUB                |
 	| Subject Number   | {RndNum<num1>(3)}  |
-
+And I take a screenshot
 And I verify that the all the reports are linked into report module

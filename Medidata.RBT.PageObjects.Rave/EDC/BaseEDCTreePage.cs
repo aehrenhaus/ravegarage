@@ -109,15 +109,14 @@ namespace Medidata.RBT.PageObjects.Rave
         #endregion
 
 
-		public bool VerifyReportLinksLinkToReportModule()
+		public void AssertReportLinksLinkToReportModule()
 		{
 			string url = Browser.Url;
 
 			var reportTable = GetElementByName("Reports");
 			var reportLinks = reportTable.Links();
 
-			bool allDo = true;
-
+	
 			for(int i  = 0;i<reportLinks.Count;i++)
 			{
 				var link = reportLinks[i];
@@ -126,10 +125,13 @@ namespace Medidata.RBT.PageObjects.Rave
 					TestContext.SwitchToSecondBrowserWindow();
 
 				TestContext.TrySaveScreenShot();
-
-				if (!Browser.Url.Contains("/ReportAdmin/") && !Browser.Url.Contains("/Reporting/"))
+				
+				if (!Browser.Url.Contains("/ReportAdmin/") && 
+					!Browser.Url.Contains("/Reporting/") &&
+					!Browser.Url.Contains("/StreamReport.aspx") &&
+					!Browser.Url.Contains("/CrystalReportViewer.aspx"))
 				{
-					allDo = false;
+					throw new Exception(string.Format ("Not all reports link to report module, {0} does not go to report page",link.Text));
 					break;
 				}
 
@@ -142,7 +144,6 @@ namespace Medidata.RBT.PageObjects.Rave
 				reportLinks = reportTable.Links();
 			}
 
-			return allDo;
 		}
 	}
 }
