@@ -12,6 +12,8 @@ using System.Threading;
 using OpenQA.Selenium.Firefox;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.IE;
+using Medidata.RBT.SeleniumExtension;
+
 
 namespace Medidata.RBT
 {
@@ -26,9 +28,8 @@ namespace Medidata.RBT
 
 		public static void SwitchBrowserWindow(string windowName)
 		{
-			//TODO: got to be a better way
-			//wait for the window to appear
-			Thread.Sleep(3000);
+			Browser.WaitForElement(By.TagName("body"));
+			Thread.Sleep(RBTConfiguration.Default.SwitchWindowWaitTime);
 
 			bool found = false;
 			IWebDriver window = null;
@@ -43,15 +44,15 @@ namespace Medidata.RBT
 			}
 			if (!found) throw new Exception(string.Format("window {0} not found", windowName));
 			Browser = (window as RemoteWebDriver);
-
+			
 			CurrentPage = TestContext.POFactory.GetPageByUrl(new Uri(Browser.Url));
 		}
 
 		public static void SwitchToSecondBrowserWindow()
 		{
-			//TODO: got to be a better way
-			//wait for the window to appear
-			//Thread.Sleep(3000);
+			Browser.WaitForElement(By.TagName("body"));
+			Thread.Sleep(RBTConfiguration.Default.SwitchWindowWaitTime);
+
 			if (Browser.WindowHandles.Count < 2)
 				throw new Exception("There isn't a second window");
 			var secondWindowHandle = Browser.WindowHandles[1];

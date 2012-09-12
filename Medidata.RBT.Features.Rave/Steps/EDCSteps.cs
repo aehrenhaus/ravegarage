@@ -380,8 +380,7 @@ namespace Medidata.RBT.Features.Rave
 		[StepDefinition(@"I verify that the all the reports are linked into report module")]
 		public void IVerifyThatTheAllTheReportsAreLinkedIntoReportModule()
 		{
-			bool result = CurrentPage.As<BaseEDCPage>().VerifyReportLinksLinkToReportModule();
-			Assert.IsTrue(result, "Not all reports link to report module");
+			CurrentPage.As<BaseEDCPage>().AssertReportLinksLinkToReportModule();
 		}
 
     }
