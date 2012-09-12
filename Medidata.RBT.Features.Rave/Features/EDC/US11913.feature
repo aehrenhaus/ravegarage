@@ -23,7 +23,6 @@ Given I am logged in to Rave with username "defuser" and password "password"
 # | Query Aging          |
 # | Stream-Audit Trail   |
 # | Subject CRF Versions |
-# | Subject PDF Report   |
 # | User Listing         |
 # And the following Reports Matrix assignments exist
 # | Projects   | Report Name          | Study | Site | Subject |
@@ -35,7 +34,6 @@ Given I am logged in to Rave with username "defuser" and password "password"
 # | Mediflex   | Query Aging          | X     | X    | X       |
 # | Mediflex   | Stream-Audit Trail   | X     | X    | X       |
 # | Mediflex   | Subject CRF Versions | X     |      | X       |
-# | Mediflex   | Subject PDF Report   |       | X    | X       |
 # | Mediflex   | User Listing         | X     | X    |         |
 
 #And I select Study "Mediflex" and Site "LabSite01"
@@ -74,7 +72,7 @@ And I take a screenshot
 @release_564_2012.1.0	
 @PB_US11913_04
 @Draft
-Scenario: PB_US11913_04 As a Data Manager, when I select Study "Jennicilin" and Site "ABC HOSPITAL and Subject "New Subject" and Grid View then I see reports listed in alphabetical order.
+Scenario: PB_US11913_04 As a Data Manager, when I select Study "Mediflex" and Site "LabSite01" and Subject "New Subject" and Grid View then I see reports listed in alphabetical order.
 
 And I select Study "Mediflex" and Site "LabSite01"
 When I create a Subject
