@@ -147,6 +147,24 @@ namespace Medidata.RBT.PageObjects.Rave
             return new LandscapeLogField(this, 
                 fieldName, rowIndex);
         }
+        public IEDCLogFieldControl FindLandscapeLogField(string fieldName, int rowIndex, ControlType controlType = ControlType.Default)
+        {
+            switch (controlType)
+            {
+                case ControlType.Default:
+                    return new LandscapeLogField(this, fieldName, rowIndex);
+                //case ControlType.Text:
+                //case ControlType.LongText:
+                //case ControlType.Datetime:
+                //case ControlType.RadioButton:
+                //case ControlType.RadioButtonVertical:
+                //case ControlType.DropDownList:
+                case ControlType.DynamicSearchList:
+                    return new LandscapeLogField(this, fieldName, rowIndex, controlType);
+                default:
+                    throw new Exception("Not supported control type:" + controlType);
+            }
+        }
         public IEDCLogFieldControl FindPortraitLogField(string fieldName)
         {
             return new PortraitLogField(this, 

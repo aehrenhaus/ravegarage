@@ -383,5 +383,61 @@ namespace Medidata.RBT.Features.Rave
 			CurrentPage.As<BaseEDCPage>().AssertReportLinksLinkToReportModule();
 		}
 
+        /// <summary>
+        /// Wait for [timeValue] [timeUnit]
+        /// </summary>
+        /// <param name="timeValue"></param>
+        /// <param name="timeUnit"></param>
+        [StepDefinition(@"I wait for ([^""]*) ([^""]*)")]
+        public void IWaitFor____Of____(int timeValue, string timeUnit)
+        {
+            switch (timeUnit)
+            {
+                case "second":
+                case "seconds":
+                    System.Threading.Thread.Sleep(timeValue * 1000);
+                    break;
+                case "minute":
+                case "minutes":
+                    System.Threading.Thread.Sleep(timeValue * 60000);
+                    break;
+                case "hour":
+                case "hours":
+                    System.Threading.Thread.Sleep(timeValue * 3600000);
+                    break;
+                default:
+                    throw new Exception("Not supported time unit: " + timeUnit);
+            }
+        }
+
+        /// <summary>
+        /// Click drop button on a field on CRF page
+        /// </summary>
+        /// <param name="fieldName"></param>
+        /// <param name="lineNum"></param>
+        [StepDefinition(@"I click drop button on dynamic search list ""([^""]*)"" in log line ([^""]*)")]
+        public void IClickDropButtonOnDynamicSearchList____InLogLine____(string fieldName, int lineNum)
+        {
+            var controlType = ControlType.DynamicSearchList;
+            IEDCLogFieldControl fieldControl = CurrentPage.As<CRFPage>().FindLandscapeLogField(fieldName, lineNum, controlType);
+            fieldControl.Click();
+        }
+
+        /// <summary>
+        /// Verifies that dynamic search list is open
+        /// </summary>
+        /// <param name="fieldName"></param>
+        /// <param name="lineNum"></param>
+        [Then(@"I should see dynamic search list ""([^""]*)"" in log line ([^""]*) open")]
+        public void ThenIShouldSeeDynamicSearchList____InLogLine____Open(string fieldName, int lineNum)
+        {
+            bool result = false;
+            var controlType = ControlType.DynamicSearchList;
+            IEDCLogFieldControl fieldControl = CurrentPage.As<CRFPage>().FindLandscapeLogField(fieldName, lineNum, controlType);
+
+            result = fieldControl.IsDroppedDown();
+            Assert.IsTrue(result, String.Format("The dynamic search list {0} in log line {1} has not been opened", fieldName, lineNum));
+        }
+
     }
 }

@@ -81,6 +81,8 @@ namespace Medidata.RBT.PageObjects.Rave
         public void Check(string checkName) { throw new NotImplementedException(); }
         public void Uncheck(string checkName) { throw new NotImplementedException(); }
         public string StatusIconPathLookup(string lookupIcon) { throw new NotImplementedException(); }
+        public void Click() { throw new NotImplementedException(); }
+        public bool IsDroppedDown() { throw new NotImplementedException(); }
         #endregion
         #endregion
     }

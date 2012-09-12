@@ -32,5 +32,9 @@ namespace Medidata.RBT.PageObjects.Rave
 
         string StatusIconPathLookup(string lookupIcon);
 
+        void Click();
+
+        bool IsDroppedDown();
+
     }
 }
