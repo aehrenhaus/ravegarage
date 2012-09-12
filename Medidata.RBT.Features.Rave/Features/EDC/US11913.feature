@@ -71,7 +71,7 @@ And I take a screenshot
 
 @release_564_2012.1.0	
 @PB_US11913_04
-@Draft
+@Validation
 Scenario: PB_US11913_04 As a Data Manager, when I select Study "Mediflex" and Site "LabSite01" and Subject "New Subject" and Grid View then I see reports listed in alphabetical order.
 
 And I select Study "Mediflex" and Site "LabSite01"
@@ -85,16 +85,30 @@ And I take a screenshot
 
 @release_564_2012.1.0
 @PB_US11913_05
-@Draft
+@Validation
 Scenario: PB_US11913_05 As a Data Manager, when I select report on Study, Site Subject, Grid View then I see report.
 
-When I select Study "Mediflex" and Site "LabSite01"
-And I take a screenshot
-And I verify that the all the reports are linked into report module
 
-When I create a Subject
-	| Field            | Data               |
-	| Subject Initials | SUB                |
-	| Subject Number   | {RndNum<num1>(3)}  |
+When I select Study "Mediflex"
+And I select link "Enrollment - Enrollment Report"
+And I switch to "ReportViewer" window
 And I take a screenshot
-And I verify that the all the reports are linked into report module
+And I switch to "Home - Medidata Rave" window
+And I select link "LabSite01"
+And I select link "User Listing - User Listing Report"
+And I switch to "ReportViewer" window
+And I take a screenshot
+And I switch to "Home - Medidata Rave" window
+And I create a Subject
+   | Field            | Data              |
+   | Subject Initials | SUB               |
+   | Subject Number   | {RndNum<num1>(3)} |
+And I select link "Subject CRF Versions - Subject CRF Versions"
+And I switch to "ReportViewer" window
+And I take a screenshot
+And I switch to "Subject" window
+And I select link "Grid View"
+And I take a screenshot
+And I select link "Page Status v2.0 - Page Status v2.0"
+And I switch to "ReportViewer" window
+And I take a screenshot
