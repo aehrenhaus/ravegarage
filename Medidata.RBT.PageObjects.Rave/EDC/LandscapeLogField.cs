@@ -8,7 +8,7 @@ using System.Text.RegularExpressions;
 namespace Medidata.RBT.PageObjects.Rave
 {
     public class LandscapeLogField
-        : ControlBase, IEDCLogFieldControl
+        : BaseEDCFieldControl
     {
         #region CLASS DATA
         private readonly int m_columnId;
@@ -72,13 +72,13 @@ namespace Medidata.RBT.PageObjects.Rave
 
         #region FUNCTIONS
         #region INTERFACE IEDCLogFieldControl
-        public bool IsElementFocused(ControlType type, int position) 
+		public override bool IsElementFocused(ControlType type, int position) 
         {
             var element = GetElementInColumnByRowIDColumnID(type, position);
             return this.Page.GetCurrentFocusedElement()
                 .GetAttribute("ID") == element.GetAttribute("ID");
         }
-        public void FocusElement(ControlType type, int position) 
+		public override void FocusElement(ControlType type, int position) 
         {
             var element = GetElementInColumnByRowIDColumnID(type, position);
             this.Page.FocusOnElementById(element.GetAttribute("ID"));
@@ -111,7 +111,7 @@ namespace Medidata.RBT.PageObjects.Rave
                 + suffix +
                 "') + 1)]"));
         }
-        public void Click()
+        public override void Click()
         {
             switch (m_controlType)
             {
@@ -131,7 +131,7 @@ namespace Medidata.RBT.PageObjects.Rave
                     throw new NotImplementedException("Unknown control type:" + m_controlType);
             }
         }
-        public bool IsDroppedDown()
+		public override bool IsDroppedDown()
         {
             switch (m_controlType)
             {
@@ -152,18 +152,9 @@ namespace Medidata.RBT.PageObjects.Rave
             }
         }
 
-        #region INTERFACE IEDCFieldControl
-        public AuditsPage ClickAudit() { throw new NotImplementedException(); }
-		public void EnterData(string text, ControlType controlType) { throw new NotImplementedException(); }
-        public bool HasDataEntered(string text) { throw new NotImplementedException(); }
-        public OpenQA.Selenium.IWebElement FindQuery(QuerySearchModel filter) { throw new NotImplementedException(); }
-        public void AnswerQuery(QuerySearchModel filter) { throw new NotImplementedException(); }
-        public void CloseQuery(QuerySearchModel filter) { throw new NotImplementedException(); }
-        public void CancelQuery(QuerySearchModel filter) { throw new NotImplementedException(); }
-        public void Check(string checkName) { throw new NotImplementedException(); }
-        public void Uncheck(string checkName) { throw new NotImplementedException(); }
-        public string StatusIconPathLookup(string lookupIcon) { throw new NotImplementedException(); }
+
         #endregion
-        #endregion
-    }
+
+
+	}
 }

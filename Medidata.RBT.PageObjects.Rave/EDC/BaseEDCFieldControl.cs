@@ -16,12 +16,9 @@ namespace Medidata.RBT.PageObjects.Rave
 		{
 		}
 
-		//returns the dom container that contains the field controls
-		protected abstract IWebElement GetFieldControlContainer();
-
         public virtual bool HasDataEntered(string text)
         {
-            return text.Equals(GetFieldControlContainer().Text);
+            return text.Equals(FieldControlContainer.Text);
         }
 
 
@@ -97,7 +94,7 @@ namespace Medidata.RBT.PageObjects.Rave
 			}
 		}
 
-
+		public IWebElement FieldControlContainer { get; set; }
 
 		/// <summary>
 		/// This method is just for backward compatibility.
@@ -106,9 +103,8 @@ namespace Medidata.RBT.PageObjects.Rave
 		/// <param name="val"></param>
 		protected virtual void EnterValueGuessControlType(string text)
 		{
-			IWebElement datapointTable = GetFieldControlContainer();
-			var textboxes = datapointTable.Textboxes();
-			var dropdowns = datapointTable.FindElements(By.TagName("select")).ToList();
+			var textboxes = FieldControlContainer.Textboxes();
+			var dropdowns = FieldControlContainer.FindElements(By.TagName("select")).ToList();
 
 			//this dropdown does count
 			var dataEntyErrorDropdown = dropdowns.FirstOrDefault(x =>
@@ -149,29 +145,22 @@ namespace Medidata.RBT.PageObjects.Rave
 
 		protected virtual void EnterTextBoxValue(string val)
 		{
-			IWebElement datapointTable = GetFieldControlContainer();
-			var textboxes = datapointTable.Textboxes();
+			var textboxes = FieldControlContainer.Textboxes();
 			textboxes[0].SetText(val);
 		}
 	
         //new method
         protected virtual void EnterCheckBox(bool selected)		
         {
-			IWebElement datapointTable = GetFieldControlContainer();
-			var checkboxes = datapointTable.Checkboxes();
+			var checkboxes = FieldControlContainer.Checkboxes();
             if (checkboxes[0].Selected != selected)
                 checkboxes[0].Click();
 		}
 
 		protected virtual void EnterDatetimeValue(string val)
 		{
-
-			IWebElement datapointTable = GetFieldControlContainer();
-
-			//if(controlType== ControlType
-
-			var textboxes = datapointTable.Textboxes();
-			var dropdowns = datapointTable.FindElements(By.TagName("select")).ToList();
+			var textboxes = FieldControlContainer.Textboxes();
+			var dropdowns = FieldControlContainer.FindElements(By.TagName("select")).ToList();
 
             if (textboxes.Count == 2 && dropdowns.Count == 1)//date field  .format: dd MM yyyy
             {
@@ -207,8 +196,7 @@ namespace Medidata.RBT.PageObjects.Rave
 
 		protected virtual void EnterRadiobuttonValue(string val)
 		{
-			IWebElement datapointTable = GetFieldControlContainer();
-			HtmlTable table = datapointTable.Table("_RadioBtnList");
+			HtmlTable table = FieldControlContainer.Table("_RadioBtnList");
 			var optionTDs = table.FindElements(By.XPath("./tbody/tr/td"));
 			var td = optionTDs.FirstOrDefault(x=>x.Text.Trim()==val);
 			td.RadioButtons()[0].Set();
@@ -219,9 +207,7 @@ namespace Medidata.RBT.PageObjects.Rave
 		protected virtual void EnterDropdownValue(string val)
 		{
 
-			IWebElement datapointTable = GetFieldControlContainer();
-
-			var dropdowns = datapointTable.FindElements(By.TagName("select")).ToList();
+			var dropdowns = FieldControlContainer.FindElements(By.TagName("select")).ToList();
 
 			new SelectElement(dropdowns[0]).SelectByText(val);
 		}
@@ -229,14 +215,19 @@ namespace Medidata.RBT.PageObjects.Rave
 		protected virtual void EnterDynamicSearchListValue(string val)
 		{
 
-			IWebElement datapointTable = GetFieldControlContainer();
-			var dslContainer = datapointTable.TryFindElementBy(By.XPath(".//td[@style='padding-left:4px;']"));
+			var dslContainer = FieldControlContainer.TryFindElementBy(By.XPath(".//td[@style='padding-left:4px;']"));
 			var dsl = new CompositeDropdown(this.Page, "DSL", dslContainer);
 
 			dsl.TypeAndSelect(val);
 		}
 
-		public abstract AuditsPage ClickAudit();
+		public virtual AuditsPage ClickAudit()
+		{
+			var auditButton = FieldControlContainer.TryFindElementByPartialID("DataStatusHyperlink");
+			auditButton.Click();
+			return new AuditsPage();
+		}
+
 
 		public virtual IWebElement FindQuery(QuerySearchModel filter)
 		{
@@ -245,31 +236,63 @@ namespace Medidata.RBT.PageObjects.Rave
 
 		public virtual void AnswerQuery(QuerySearchModel filter)
 		{
-			throw new NotImplementedException();
+			string answer = filter.Answer;
+			filter.Answer = null;
+			FindQuery(filter).Textboxes()[0].SetText(answer);
 		}
 
 		public virtual void CloseQuery(QuerySearchModel filter)
 		{
-			throw new NotImplementedException();
+			FindQuery(filter).Dropdowns()[0].SelectByText("Close Query");
 		}
 
 		public virtual void CancelQuery(QuerySearchModel filter)
 		{
-			throw new NotImplementedException();
+			FindQuery(filter).Checkboxes()[0].Check();
 		}
 
 		public virtual void Check(string checkName)
 		{
-			throw new NotImplementedException();
+			IWebElement actionArea = FieldControlContainer;
+			if (checkName == "Freeze")
+			{
+				actionArea.Checkbox("EntryLockBox").Check();
+			}
+
+			if (checkName == "Hard Lock")
+			{
+				actionArea.Checkbox("HardLockBox").Check();
+			}
 		}
 
 		public virtual void Uncheck(string checkName)
 		{
-			throw new NotImplementedException();
+			IWebElement actionArea = FieldControlContainer;
+			if (checkName == "Freeze")
+			{
+				actionArea.Checkbox("EntryLockBox").Uncheck();
+			}
+
+			if (checkName == "Hard Lock")
+			{
+				actionArea.Checkbox("HardLockBox").Uncheck();
+			}
 		}
 
         public virtual void Click() { throw new NotImplementedException(); }
 
         public virtual bool IsDroppedDown() { throw new NotImplementedException(); }
+
+
+
+		public virtual bool IsElementFocused(ControlType type, int position)
+		{
+			throw new NotImplementedException();
+		}
+
+		public virtual void FocusElement(ControlType type, int position)
+		{
+			throw new NotImplementedException();
+		}
 	}
 }

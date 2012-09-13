@@ -112,7 +112,7 @@ Scenario: @PB-DT10514-01 As an EDC user, I have a partially locked lab form, and
 	And I check "Hard Lock" in "NEUTROPHILS"
 	And I save the CRF page
 	And I take a screenshot
-	And I uncheck "Hard Lock" on "WBC"
+	And I uncheck "Hard Lock" in "WBC"
 	And I save the CRF page
 	And I verify lab ranges
 		| Field       | Data | Range Status | Range | Unit           | Status Icon |

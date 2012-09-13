@@ -142,12 +142,12 @@ namespace Medidata.RBT.PageObjects.Rave
 
             return null;
         }
-        public IEDCLogFieldControl FindLandscapeLogField(string fieldName, int rowIndex) 
+        public IEDCFieldControl FindLandscapeLogField(string fieldName, int rowIndex) 
         {
             return new LandscapeLogField(this, 
                 fieldName, rowIndex);
         }
-        public IEDCLogFieldControl FindLandscapeLogField(string fieldName, int rowIndex, ControlType controlType = ControlType.Default)
+        public IEDCFieldControl FindLandscapeLogField(string fieldName, int rowIndex, ControlType controlType = ControlType.Default)
         {
             switch (controlType)
             {
@@ -165,7 +165,7 @@ namespace Medidata.RBT.PageObjects.Rave
                     throw new Exception("Not supported control type:" + controlType);
             }
         }
-        public IEDCLogFieldControl FindPortraitLogField(string fieldName)
+        public IEDCFieldControl FindPortraitLogField(string fieldName)
         {
             return new PortraitLogField(this, 
                 fieldName);
@@ -248,14 +248,6 @@ namespace Medidata.RBT.PageObjects.Rave
                 if (fieldObj==null || !fieldObj.VerifyData(field)) return false;
             }
             return true;
-        }
-
-
- 
-        public bool VerifyCheck(string checkName, string fieldName, string checkStatus)
-        {
-            LabFieldControl fieldObj = FindField(fieldName) as LabFieldControl;
-            return fieldObj.VerifyCheck(checkName, checkStatus);
         }
     }
 }

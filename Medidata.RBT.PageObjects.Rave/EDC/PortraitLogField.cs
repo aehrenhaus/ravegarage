@@ -8,7 +8,7 @@ using System.Collections.ObjectModel;
 namespace Medidata.RBT.PageObjects.Rave
 {
     public class PortraitLogField
-        : ControlBase, IEDCLogFieldControl
+		: BaseEDCFieldControl
     {
         #region CLASS DATA
         private readonly string m_fieldName;
@@ -25,13 +25,13 @@ namespace Medidata.RBT.PageObjects.Rave
 
         #region FUNCTIONS
         #region INTERFACE IEDCLogFieldControl
-        public bool IsElementFocused(ControlType type, int position) 
+        public override bool IsElementFocused(ControlType type, int position) 
         {
             var element = GetElementInRowByLabel(type, position);
             return this.Page.GetCurrentFocusedElement()
                 .GetAttribute("ID") == element.GetAttribute("ID");
         }
-        public void FocusElement(ControlType type, int position) 
+		public override void FocusElement(ControlType type, int position) 
         {
             var element = GetElementInRowByLabel(type, position);
             this.Page.FocusOnElementById(element.GetAttribute("ID"));
@@ -70,20 +70,9 @@ namespace Medidata.RBT.PageObjects.Rave
         }
 
 
-        #region INTERFACE IEDCFieldControl
-        public AuditsPage ClickAudit() { throw new NotImplementedException(); }
-		public void EnterData(string text, ControlType controlType) { throw new NotImplementedException(); }
-        public OpenQA.Selenium.IWebElement FindQuery(QuerySearchModel filter) { throw new NotImplementedException(); }
-        public void AnswerQuery(QuerySearchModel filter) { throw new NotImplementedException(); }
-        public void CloseQuery(QuerySearchModel filter) { throw new NotImplementedException(); }
-        public bool HasDataEntered(string text) { throw new NotImplementedException(); }
-        public void CancelQuery(QuerySearchModel filter) { throw new NotImplementedException(); }
-        public void Check(string checkName) { throw new NotImplementedException(); }
-        public void Uncheck(string checkName) { throw new NotImplementedException(); }
-        public string StatusIconPathLookup(string lookupIcon) { throw new NotImplementedException(); }
-        public void Click() { throw new NotImplementedException(); }
-        public bool IsDroppedDown() { throw new NotImplementedException(); }
+      
         #endregion
-        #endregion
-    }
+
+
+	}
 }

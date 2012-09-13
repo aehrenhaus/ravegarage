@@ -117,28 +117,6 @@ namespace Medidata.RBT.Common.Steps
 
 		}
 
-        // Replaced with more generic [StepDefinition(@"I wait for ([^""]*) ([^""]*)")] in EDCSteps.cs
-        ///// <summary>
-        ///// Wait for x minutes
-        ///// </summary>
-        ///// <param name="minutes"></param>
-        //[StepDefinition(@"I wait for ([^""]*) minutes")]
-        //public void IWaitFor____Minutes(string minutes)
-        //{
-        //    System.Threading.Thread.Sleep(60000 * int.Parse(minutes));
-        //}
-
-
-        ///// <summary>
-        ///// Wait for 1 minute
-        ///// </summary>
-        //[StepDefinition(@"I wait for 1 minute")]
-        //public void IWaitFor____Minutes()
-        //{
-        //    IWaitFor____Minutes("1");
-        //}
-
-
 		/// <summary>
 		/// Click a hyperlink
 		/// </summary>
@@ -166,6 +144,11 @@ namespace Medidata.RBT.Common.Steps
 
 		/// <summary>
 		/// Navigate to an other page.
+		/// 
+		/// Unlike "I select link", the argument here may not be a concrete link text. nIt can be some ame at business level.
+		/// And only the know how to implement it.
+		/// For example "I navigate to Home" does not require there is a "Home" link. but the page knows that Home means the hyperlink image on the left top corner.
+		/// 
 		/// </summary>
         /// <param name="identifier"></param>
         [StepDefinition(@"I navigate to ""([^""]*)"" module")]

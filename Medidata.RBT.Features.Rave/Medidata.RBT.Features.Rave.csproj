@@ -75,10 +75,40 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
+    <Compile Include="Features\EDC\564 QueryRefiringLogic2.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>564 QueryRefiringLogic2.feature</DependentUpon>
+    </Compile>
+    <Compile Include="Features\EDC\564 QueryRefiringLogic4.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>564 QueryRefiringLogic4.feature</DependentUpon>
+    </Compile>
+    <Compile Include="Features\EDC\564QueryRefiringLogic1.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>564QueryRefiringLogic1.feature</DependentUpon>
+    </Compile>
+    <Compile Include="Features\EDC\564QueryRefiringLogic_LogForm_2FldEC.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>564QueryRefiringLogic_LogForm_2FldEC.feature</DependentUpon>
+    </Compile>
+    <Compile Include="Features\EDC\564QueryRefiringLogic_StdForm_1FldEC.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>564QueryRefiringLogic_StdForm_1FldEC.feature</DependentUpon>
+    </Compile>
     <Compile Include="Features\EDC\US119131.feature.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>US11913.feature</DependentUpon>
+    </Compile>
+    <Compile Include="Features\EDC\US15417_DT139051.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>US15417_DT13905.feature</DependentUpon>
     </Compile>
     <Compile Include="Features\EDC\US17415_DT14115.feature.cs">
       <DependentUpon>US17415_DT14115.feature</DependentUpon>
@@ -99,6 +129,11 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>US11101_SortReportListingInStudySiteSubjectPages.feature</DependentUpon>
+    </Compile>
+    <Compile Include="Features\EDC\US17943.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>US17943.feature</DependentUpon>
     </Compile>
     <Compile Include="Features\PDF\US12175_DT8545_lessthangreaterthaninPDF.feature.cs">
       <AutoGen>True</AutoGen>
@@ -185,6 +220,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>EDCTabOrderUntouchedPortraitLogForm.feature</DependentUpon>
     </Compile>
+    <Compile Include="Features\TSDV\US11958_DT141771.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>US11958_DT14177.feature</DependentUpon>
+    </Compile>
     <Compile Include="Features\UserAdministration\DT14168.feature.cs">
       <DependentUpon>DT14168.feature</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -257,6 +297,10 @@
     <None Include="Features\EDC\US11101_SortReportListingInStudySiteSubjectPages.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>US11101_SortReportListingInStudySiteSubjectPages.feature.cs</LastGenOutput>
+    </None>
+    <None Include="Features\EDC\US17943.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>US17943.feature.cs</LastGenOutput>
     </None>
     <None Include="Features\PDF\US12175_DT8545_lessthangreaterthaninPDF.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
