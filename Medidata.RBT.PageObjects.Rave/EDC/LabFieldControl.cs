@@ -18,38 +18,14 @@ namespace Medidata.RBT.PageObjects.Rave
 		{
 			this.MainTR = MainTR.EnhanceAs < EnhancedElement>();
 			this.QueriesTR = QueriesTR.EnhanceAs<EnhancedElement>();
+			this.FieldControlContainer = MainTR.Parent();
 		}
 
-
+		/// <summary>
+		/// This is the TD that has class 'crf_rowLeftSide'
+		/// </summary>
 		private EnhancedElement MainTR;
 		private EnhancedElement QueriesTR;
-
-        private Checkbox HardLockCheckBox
-        {
-            get
-            {
-                var checkBox = MainTR.Parent().Checkboxes(".//td/table/tbody/tr/td/input", "HardLockBox");
-                return (checkBox != null) ? checkBox.FirstOrDefault() : null;
-            }
-        }
-
-        public override AuditsPage ClickAudit()
-        {
-            var auditButton = MainTR.TryFindElementByPartialID("DataStatusHyperlink");
-            auditButton.Click();
-            return new AuditsPage();
-        }
-
- 
-		/// <summary>
-		///  see base method
-		/// </summary>
-		/// <returns></returns>
-        protected override IWebElement GetFieldControlContainer()
-        {
-            return MainTR.Parent();
-        }
-
 
 		public IWebElement FindQuery(QuerySearchModel filter)
 		{
@@ -121,51 +97,6 @@ namespace Medidata.RBT.PageObjects.Rave
 			return queryTable;
 		}
 
-		public void AnswerQuery(QuerySearchModel filter)
-		{
-			string answer = filter.Answer;
-			filter.Answer = null;
-			FindQuery(filter).Textboxes()[0].SetText(answer);
-		}
-
-		public void CloseQuery(QuerySearchModel filter)
-		{
-			FindQuery(filter).Dropdowns()[0].SelectByText("Close Query");
-		}
-
-		public void CancelQuery(QuerySearchModel filter)
-		{
-			FindQuery(filter).Checkboxes()[0].Check();
-		}      
-
-		public void Check(string checkName)
-		{
-			if (checkName == "Freeze")
-			{
-				MainTR.Checkbox("EntryLockBox").Check();
-			}
-
-			if (checkName == "Hard Lock")
-			{
-                if (HardLockCheckBox != null) HardLockCheckBox.Click();
-			}
-		}
-
-
-        public bool HasData(string text)
-        {
-            throw new NotImplementedException();
-        }
-
-        public bool VerifyCheck(string checkName, string status)
-        {
-            if (checkName == "Hard Lock")
-            {
-                if (HardLockCheckBox != null) return ((HardLockCheckBox.Selected && status == "On") ||
-                                                    (!HardLockCheckBox.Selected && status == "Off"));
-            }           
-            return false;
-        }
 
         internal bool VerifyData(LabRangeModel field)
         {
@@ -198,12 +129,12 @@ namespace Medidata.RBT.PageObjects.Rave
                     elementIndex = 0;
                     break;
             }
-
+			
             // unique condition when Unit select dropdown is visible and throws off the data verification.
-            if (verificationType.Equals("Unit") && GetFieldControlContainer().FindElements(By.TagName("select")).Count > 0 && text.Trim().Equals(""))
-                return true; 
+			if (verificationType.Equals("Unit") && FieldControlContainer.FindElements(By.TagName("select")).Count > 0 && text.Trim().Equals(""))
+                return true;
 
-            var el = MainTR.Parent().FindElements(By.XPath("./td"))[elementIndex];
+			var el = FieldControlContainer.FindElements(By.XPath("./td"))[elementIndex];
             return (el.Text.Trim().Equals(text.Trim()));
         }
 

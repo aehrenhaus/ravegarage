@@ -18,6 +18,8 @@ namespace Medidata.RBT.PageObjects.Rave
 		{
 			this.LeftSideTD = LeftSideTD.EnhanceAs < EnhancedElement>();
 			this.RightSideTD = RightSideTD.EnhanceAs<EnhancedElement>();
+			this.FieldControlContainer = LeftSideTD.TryFindElementBy(By.XPath("./../td[@class='crf_rowRightSide']//table[@class='crf_dataPointInternal']"));
+
 			FieldName = "";
 		}
 
@@ -107,13 +109,6 @@ namespace Medidata.RBT.PageObjects.Rave
 	
 		}
 
-		protected override IWebElement GetFieldControlContainer()
-		{
-			return LeftSideTD.TryFindElementBy(By.XPath("./../td[@class='crf_rowRightSide']//table[@class='crf_dataPointInternal']"));
-
-				//	throw new Exception("Exception date format for field " + FieldName + " , got: " + text);
-		}
-
 		public override void AnswerQuery(QuerySearchModel filter)
 		{
 			string answer = filter.Answer;
@@ -131,24 +126,6 @@ namespace Medidata.RBT.PageObjects.Rave
 		public override void CancelQuery(QuerySearchModel filter)
 		{
 			FindQuery(filter).Checkboxes()[0].Check();
-		}
-
-		public override void Check(string checkName)
-		{
-			if (checkName == "Freeze")
-			{
-				RightSideTD.Checkbox("EntryLockBox").Check();
-			}
-
-			if (checkName == "Hard Lock")
-			{
-				RightSideTD.Checkbox("HardLockBox").Check();
-			}
-		}
-
-		public override void Uncheck(string checkName)
-		{
-			throw new NotImplementedException();
 		}
 
 		#endregion

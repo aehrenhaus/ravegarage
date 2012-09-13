@@ -121,5 +121,31 @@ namespace Medidata.RBT.Common.Steps
 		}
 
 
+		/// <summary>
+		/// Wait for [timeValue] [timeUnit]
+		/// </summary>
+		/// <param name="timeValue"></param>
+		/// <param name="timeUnit"></param>
+		[StepDefinition(@"I wait for ([^""]*) ([^""]*)")]
+		public void IWaitFor____Of____(int timeValue, string timeUnit)
+		{
+			switch (timeUnit)
+			{
+				case "second":
+				case "seconds":
+					System.Threading.Thread.Sleep(timeValue * 1000);
+					break;
+				case "minute":
+				case "minutes":
+					System.Threading.Thread.Sleep(timeValue * 60000);
+					break;
+				case "hour":
+				case "hours":
+					System.Threading.Thread.Sleep(timeValue * 3600000);
+					break;
+				default:
+					throw new Exception("Not supported time unit: " + timeUnit);
+			}
+		}
 	}
 }

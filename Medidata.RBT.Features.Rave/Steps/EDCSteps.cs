@@ -373,43 +373,6 @@ namespace Medidata.RBT.Features.Rave
             new SignatureBox().Sign(username, password);
         }
 
-		/// <summary>
-		/// The link are using javascript, when clicked, js will redirect to different pages(depends on the report) in the report module
-		/// This step verifies this behavior
-		/// </summary>
-		[StepDefinition(@"I verify that the all the reports are linked into report module")]
-		public void IVerifyThatTheAllTheReportsAreLinkedIntoReportModule()
-		{
-			CurrentPage.As<BaseEDCPage>().AssertReportLinksLinkToReportModule();
-		}
-
-        /// <summary>
-        /// Wait for [timeValue] [timeUnit]
-        /// </summary>
-        /// <param name="timeValue"></param>
-        /// <param name="timeUnit"></param>
-        [StepDefinition(@"I wait for ([^""]*) ([^""]*)")]
-        public void IWaitFor____Of____(int timeValue, string timeUnit)
-        {
-            switch (timeUnit)
-            {
-                case "second":
-                case "seconds":
-                    System.Threading.Thread.Sleep(timeValue * 1000);
-                    break;
-                case "minute":
-                case "minutes":
-                    System.Threading.Thread.Sleep(timeValue * 60000);
-                    break;
-                case "hour":
-                case "hours":
-                    System.Threading.Thread.Sleep(timeValue * 3600000);
-                    break;
-                default:
-                    throw new Exception("Not supported time unit: " + timeUnit);
-            }
-        }
-
         /// <summary>
         /// Click drop button on a field on CRF page
         /// </summary>
@@ -419,7 +382,7 @@ namespace Medidata.RBT.Features.Rave
         public void IClickDropButtonOnDynamicSearchList____InLogLine____(string fieldName, int lineNum)
         {
             var controlType = ControlType.DynamicSearchList;
-            IEDCLogFieldControl fieldControl = CurrentPage.As<CRFPage>().FindLandscapeLogField(fieldName, lineNum, controlType);
+            IEDCFieldControl fieldControl = CurrentPage.As<CRFPage>().FindLandscapeLogField(fieldName, lineNum, controlType);
             fieldControl.Click();
         }
 
@@ -433,7 +396,7 @@ namespace Medidata.RBT.Features.Rave
         {
             bool result = false;
             var controlType = ControlType.DynamicSearchList;
-            IEDCLogFieldControl fieldControl = CurrentPage.As<CRFPage>().FindLandscapeLogField(fieldName, lineNum, controlType);
+            IEDCFieldControl fieldControl = CurrentPage.As<CRFPage>().FindLandscapeLogField(fieldName, lineNum, controlType);
 
             result = fieldControl.IsDroppedDown();
             Assert.IsTrue(result, String.Format("The dynamic search list {0} in log line {1} has not been opened", fieldName, lineNum));
