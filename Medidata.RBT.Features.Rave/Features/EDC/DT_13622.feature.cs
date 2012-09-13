@@ -234,13 +234,13 @@ this.FeatureBackground();
             TechTalk.SpecFlow.Table table10 = new TechTalk.SpecFlow.Table(new string[] {
                         "Audit Message"});
             table10.AddRow(new string[] {
-                        "DataPoint Un-verified."});
+                        "User entered \'02 FEB 2011\'"});
             table10.AddRow(new string[] {
-                        "User entered \'02 FEB 2011\'."});
+                        "DataPoint Un-verified."});
             table10.AddRow(new string[] {
                         "DataPoint Verified."});
             table10.AddRow(new string[] {
-                        "User entered \'01 FEB 2011\'."});
+                        "User entered \'01 FEB 2011\'"});
 #line 67
  testRunner.Then("I verify Audits exist", ((string)(null)), table10);
 #line 73
@@ -376,13 +376,13 @@ this.FeatureBackground();
             TechTalk.SpecFlow.Table table19 = new TechTalk.SpecFlow.Table(new string[] {
                         "Audit Message"});
             table19.AddRow(new string[] {
-                        "DataPoint Un-verified."});
+                        "User entered \'02 FEB 2011\'"});
             table19.AddRow(new string[] {
-                        "User entered \'02 FEB 2011\'."});
+                        "DataPoint Un-verified."});
             table19.AddRow(new string[] {
                         "DataPoint Verified."});
             table19.AddRow(new string[] {
-                        "User entered \'01 FEB 2011\'."});
+                        "User entered \'01 FEB 2011\'"});
 #line 115
  testRunner.Then("I verify Audits exist", ((string)(null)), table19);
 #line 121
@@ -487,13 +487,13 @@ this.FeatureBackground();
             TechTalk.SpecFlow.Table table26 = new TechTalk.SpecFlow.Table(new string[] {
                         "Audit Message"});
             table26.AddRow(new string[] {
-                        "DataPoint Un-verified."});
+                        "User entered \'18\'"});
             table26.AddRow(new string[] {
-                        "User entered \'18\'."});
+                        "DataPoint Un-verified."});
             table26.AddRow(new string[] {
                         "DataPoint Verified."});
             table26.AddRow(new string[] {
-                        "User entered \'19\'."});
+                        "User entered \'19\'"});
 #line 153
  testRunner.Then("I verify Audits exist", ((string)(null)), table26);
 #line 159
@@ -598,13 +598,13 @@ this.FeatureBackground();
             TechTalk.SpecFlow.Table table33 = new TechTalk.SpecFlow.Table(new string[] {
                         "Audit Message"});
             table33.AddRow(new string[] {
-                        "DataPoint Un-verified."});
+                        "User entered \'18\'"});
             table33.AddRow(new string[] {
-                        "User entered \'18\'."});
+                        "DataPoint Un-verified."});
             table33.AddRow(new string[] {
                         "DataPoint Verified."});
             table33.AddRow(new string[] {
-                        "User entered \'19\'."});
+                        "User entered \'19\'"});
 #line 191
  testRunner.Then("I verify Audits exist", ((string)(null)), table33);
 #line 197
@@ -724,13 +724,13 @@ this.FeatureBackground();
             TechTalk.SpecFlow.Table table40 = new TechTalk.SpecFlow.Table(new string[] {
                         "Audit Message"});
             table40.AddRow(new string[] {
-                        "DataPoint Un-verified."});
+                        "User entered \'12 Jun 1993\'"});
             table40.AddRow(new string[] {
-                        "User entered \'12 Jun 1993\'."});
+                        "DataPoint Un-verified."});
             table40.AddRow(new string[] {
                         "DataPoint Verified."});
             table40.AddRow(new string[] {
-                        "User entered \'05 Mar 1995\'."});
+                        "User entered \'05 Mar 1995\'"});
 #line 234
  testRunner.Then("I verify Audits exist", ((string)(null)), table40);
 #line 240
@@ -850,13 +850,13 @@ this.FeatureBackground();
             TechTalk.SpecFlow.Table table47 = new TechTalk.SpecFlow.Table(new string[] {
                         "Audit Message"});
             table47.AddRow(new string[] {
-                        "DataPoint Un-verified."});
+                        "User entered \'12 Jun 1993\'"});
             table47.AddRow(new string[] {
-                        "User entered \'12 Jun 1993\'."});
+                        "DataPoint Un-verified."});
             table47.AddRow(new string[] {
                         "DataPoint Verified."});
             table47.AddRow(new string[] {
-                        "User entered \'05 Mar 1995\'."});
+                        "User entered \'05 Mar 1995\'"});
 #line 277
  testRunner.Then("I verify Audits exist", ((string)(null)), table47);
 #line 283
@@ -957,13 +957,13 @@ this.FeatureBackground();
             TechTalk.SpecFlow.Table table54 = new TechTalk.SpecFlow.Table(new string[] {
                         "Audit Message"});
             table54.AddRow(new string[] {
-                        "DataPoint Un-verified."});
+                        "User entered \'18\'"});
             table54.AddRow(new string[] {
-                        "User entered \'18\'."});
+                        "DataPoint Un-verified."});
             table54.AddRow(new string[] {
                         "DataPoint Verified."});
             table54.AddRow(new string[] {
-                        "User entered \'19\'."});
+                        "User entered \'19\'"});
 #line 315
  testRunner.Then("I verify Audits exist", ((string)(null)), table54);
 #line 321
@@ -1064,13 +1064,13 @@ this.FeatureBackground();
             TechTalk.SpecFlow.Table table61 = new TechTalk.SpecFlow.Table(new string[] {
                         "Audit Message"});
             table61.AddRow(new string[] {
-                        "DataPoint Un-verified."});
+                        "User entered \'18\'"});
             table61.AddRow(new string[] {
-                        "User entered \'18\'."});
+                        "DataPoint Un-verified."});
             table61.AddRow(new string[] {
                         "DataPoint Verified."});
             table61.AddRow(new string[] {
-                        "User entered \'19\'."});
+                        "User entered \'19\'"});
 #line 353
  testRunner.Then("I verify Audits exist", ((string)(null)), table61);
 #line 359

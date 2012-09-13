@@ -66,10 +66,10 @@ Scenario: As an EDC user, when I have an edit check fired on one field that sets
 	And I go to Audits for Field "Visit Date"
 	Then I verify Audits exist
 	|Audit Message              |
+	|User entered '02 FEB 2011' |
 	|DataPoint Un-verified.     |
-	|User entered '02 FEB 2011'.|
 	|DataPoint Verified.        |
-	|User entered '01 FEB 2011'.|
+	|User entered '01 FEB 2011' |
 	And I take screenshot
 
 @release_2012.1.0
@@ -113,11 +113,11 @@ Scenario: As an EDC user, when I have an edit check fired on one field that sets
 	And I take screenshot
 	And I go to Audits for Field "Visit Date"
 	Then I verify Audits exist
-	|Audit Message              |
-	|DataPoint Un-verified.     |
-	|User entered '02 FEB 2011'.|
-	|DataPoint Verified.        |
-	|User entered '01 FEB 2011'.|
+	|Audit Message             |
+	|User entered '02 FEB 2011'|
+	|DataPoint Un-verified.    |
+	|DataPoint Verified.       |
+	|User entered '01 FEB 2011'|
 	And I take screenshot
 
 @release_2012.1.0
@@ -152,10 +152,10 @@ Scenario: As an EDC user, when I have an edit check that sets a field to require
 	And I go to Audits for Field "Field 1"
 	Then I verify Audits exist
 	|Audit Message         |
+	|User entered '18'     |
 	|DataPoint Un-verified.|
-	|User entered '18'.    |
 	|DataPoint Verified.   |
-	|User entered '19'.    |
+	|User entered '19'     |
 	And I take screenshot
 
 @release_2012.1.0
@@ -190,10 +190,10 @@ Scenario: As an EDC user, when I have an edit check that sets a field to require
 	And I go to Audits for Field "Field 1"
 	Then I verify Audits exist
     |Audit Message         |
+	|User entered '18'     |
 	|DataPoint Un-verified.|
-	|User entered '18'.    |
 	|DataPoint Verified.   |
-	|User entered '19'.    |
+	|User entered '19'     |
 	And I take screenshot
 
 @release_2012.1.0
@@ -232,11 +232,11 @@ Scenario: As an EDC user, when I have an edit check fired on a field that is der
 	And I take screenshot
 	And I go to Audits for Field "DOB"
 	Then I verify Audits exist
-	|Audit Message              |
-	|DataPoint Un-verified.     |
-	|User entered '12 Jun 1993'.|
-	|DataPoint Verified.        |
-	|User entered '05 Mar 1995'.|
+	|Audit Message             |
+	|User entered '12 Jun 1993'|
+	|DataPoint Un-verified.    |
+	|DataPoint Verified.       |
+	|User entered '05 Mar 1995'|
 	And I take screenshot
 
 @release_2012.1.0
@@ -275,11 +275,11 @@ Scenario: As an EDC user, when I have an edit check fired on a field that is der
 	And I take screenshot
 	And I go to Audits for Field "DOB"
 	Then I verify Audits exist
-	|Audit Message              |
-	|DataPoint Un-verified.     |
-	|User entered '12 Jun 1993'.|
-	|DataPoint Verified.        |
-	|User entered '05 Mar 1995'.|
+	|Audit Message             |
+	|User entered '12 Jun 1993'|
+	|DataPoint Un-verified.    |
+	|DataPoint Verified.       |
+	|User entered '05 Mar 1995'|
 	And I take screenshot
 
 @release_2012.1.0
@@ -314,10 +314,10 @@ Scenario: As an EDC user, when I have TSDV turned off for a form, when I have an
 	And I go to Audits for Field "Field 1"
 	Then I verify Audits exist
 	|Audit Message         |
+	|User entered '18'     |
 	|DataPoint Un-verified.|
-	|User entered '18'.    |
 	|DataPoint Verified.   |
-	|User entered '19'.    |
+	|User entered '19'     |
 	And I take screenshot
 
 @release_2012.1.0
@@ -352,10 +352,10 @@ Scenario: As an EDC user, when I have TSDV turned off for a form, and I have an 
 	And I go to Audits for Field "Field 1"
 	Then I verify Audits exist
     |Audit Message         |
+	|User entered '18'     |
 	|DataPoint Un-verified.|
-	|User entered '18'.    |
 	|DataPoint Verified.   |
-	|User entered '19'.    |
+	|User entered '19'     |
 	And I take screenshot
 
 
