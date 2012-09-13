@@ -130,6 +130,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>US11101_SortReportListingInStudySiteSubjectPages.feature</DependentUpon>
     </Compile>
+    <Compile Include="Features\EDC\US17943.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>US17943.feature</DependentUpon>
+    </Compile>
     <Compile Include="Features\PDF\US12175_DT8545_lessthangreaterthaninPDF.feature.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -292,6 +297,10 @@
     <None Include="Features\EDC\US11101_SortReportListingInStudySiteSubjectPages.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>US11101_SortReportListingInStudySiteSubjectPages.feature.cs</LastGenOutput>
+    </None>
+    <None Include="Features\EDC\US17943.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>US17943.feature.cs</LastGenOutput>
     </None>
     <None Include="Features\PDF\US12175_DT8545_lessthangreaterthaninPDF.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>

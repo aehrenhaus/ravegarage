@@ -43,7 +43,7 @@ namespace Medidata.RBT.PageObjects.Rave
 			var area = leftSideTds.FirstOrDefault(x => 
 				{
 					return x.FindElement(By.XPath(".//td[@class='crf_preText']")).GetInnerHtml()
-						.Split(new string[] { "\r\n", "<i>" }, StringSplitOptions.None)[0].Trim() == fieldName;
+						.Split(new string[] { "\r\n", "<" }, StringSplitOptions.None)[0].Trim() == fieldName;
 				});
 
             if (area == null)
