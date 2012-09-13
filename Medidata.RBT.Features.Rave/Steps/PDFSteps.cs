@@ -1,8 +1,7 @@
 ﻿using TechTalk.SpecFlow;
 using Medidata.RBT.PageObjects.Rave;
-using Medidata.RBT.PageObjects.Rave.PDF;
-
 using TechTalk.SpecFlow.Assist;
+using Medidata.RBT.PageObjects.Rave.SharedRaveObjects;
 
 namespace Medidata.RBT.Features.Rave
 {
@@ -30,13 +29,11 @@ namespace Medidata.RBT.Features.Rave
 		[StepDefinition(@"I generate Data PDF ""([^""]*)""")]
 		public void IGeneratePDF(string pdfName)
 		{
-            PDFSpecific pdf = new PDFSpecific(SpecialStringHelper.Replace(pdfName));
-            CurrentPage = CurrentPage.As<FileRequestPage>().Generate(pdf);
-            pdf.MarkForDeletion();
+            CurrentPage = CurrentPage.As<FileRequestPage>().Generate(pdfName);
 		}
 
 		[StepDefinition(@"I wait for PDF ""([^""]*)"" to complete")]
-		public void GivenIWaitForPDF____ToComplete(string pdfName)
+		public void IWaitForPDF____ToComplete(string pdfName)
 		{
 			CurrentPage.As<FileRequestPage>().WaitForPDFComplete(SpecialStringHelper.Replace(pdfName));
 		}
@@ -44,13 +41,13 @@ namespace Medidata.RBT.Features.Rave
 		[StepDefinition(@"I View Data PDF ""([^""]*)""")]
         [StepDefinition(@"I View Blank PDF ""([^""]*)""")]
         [StepDefinition(@"I View PDF ""([^""]*)""")]
-		public void WhenIViewDataPDF____(string pdfName)
+		public void IViewDataPDF____(string pdfName)
 		{
 			CurrentPage.As<FileRequestPage>().ViewPDF(SpecialStringHelper.Replace(pdfName));
 		}
 
 		[StepDefinition(@"I should see ""Query Data"" in Audits")]
-		public void ThenIShouldSeeQueryDataInAudits()
+		public void IShouldSeeQueryDataInAudits()
 		{
 			ScenarioContext.Current.Pending();
 		}

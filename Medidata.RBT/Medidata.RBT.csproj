@@ -68,6 +68,8 @@
     <Compile Include="Constants.cs" />
     <Compile Include="EnumHelper.cs" />
     <Compile Include="Misc.cs" />
+    <Compile Include="Factory.cs" />
+    <Compile Include="IRemoveableObject.cs" />
     <Compile Include="PageObjectInterfaces\ControlBase.cs" />
     <Compile Include="DbHelper.cs" />
     <Compile Include="PageObjectInterfaces\ICanVerifyInOrder.cs" />
@@ -83,7 +85,6 @@
     <Compile Include="PDF.cs" />
     <Compile Include="RBTConfiguration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="RemoveableObject.cs" />
     <Compile Include="StringReplacement\DateFReplace.cs" />
     <Compile Include="StringReplacement\DateReplace.cs" />
     <Compile Include="StringReplacement\RndNumReplace.cs" />
@@ -92,6 +93,7 @@
     <Compile Include="StringReplacement\SpecialStringHelper.cs" />
     <Compile Include="StringReplacement\IStringReplace.cs" />
     <Compile Include="StringReplacement\NextSubjectNumReplace.cs" />
+    <Compile Include="TemporalID.cs" />
     <Compile Include="TestContext.cs" />
   </ItemGroup>
   <ItemGroup>

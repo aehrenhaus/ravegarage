@@ -64,8 +64,6 @@ namespace Medidata.RBT.PageObjects.Rave
 
         public override IPage NavigateTo(string name)
         {
-            
-            
             return base.NavigateTo(name);
         }
 	}

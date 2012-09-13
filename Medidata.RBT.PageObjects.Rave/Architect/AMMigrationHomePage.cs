@@ -6,6 +6,7 @@ using OpenQA.Selenium.Support.PageObjects;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Remote;
 using Medidata.RBT.SeleniumExtension;
+using Medidata.RBT.PageObjects.Rave.SharedRaveObjects;
 namespace Medidata.RBT.PageObjects.Rave
 {
 	public class AMMigrationHomePage : RavePageBase
@@ -21,15 +22,46 @@ namespace Medidata.RBT.PageObjects.Rave
 		}
 
 
-		public override IPage NavigateTo(string name)
-		{
-			if (name == "Execute Plan")
-			{
-				ClickLink("Execute Plan");
-				return new AMMigrationExecutePage();
-			}
-			return base.NavigateTo(name);
-		}
+        public override IPage NavigateTo(string name)
+        {
+            if (name == "Execute Plan")
+                return ClickLink("Execute Plan");
+
+            return base.NavigateTo(name);
+        }
+
+        public override IPage ClickLink(string linkName)
+        {
+            base.ClickLink(linkName);
+            if (linkName == "Create Plan")
+                TestContext.CurrentPage = new AMMigrationHomePage();
+            if (linkName == "Execute Plan")
+                TestContext.CurrentPage = new AMMigrationExecutePage();
+
+            return TestContext.CurrentPage;
+        }
+
+        /// <summary>
+        /// Select the source crf
+        /// </summary>
+        /// <param name="sourceCRFName">The feature defined source crf name</param>
+        public void SelectSourceCRF(string sourceCRFName)
+        {
+            string uniqueSourceCRFName = FeatureObjects.CrfVersions[sourceCRFName].UniqueName;
+            Dropdown sourceDropdown = Browser.FindElementById("_ctl0_Content_MigrationStepStart1_ddlSimpleSourceVersionId").EnhanceAs<Dropdown>();
+            sourceDropdown.SelectByPartialText(uniqueSourceCRFName);
+        }
+
+        /// <summary>
+        /// Select the target crf
+        /// </summary>
+        /// <param name="sourceCRFName">The feature defined target crf name</param>
+        public void SelectTargetCRF(string targetCRFName)
+        {
+            string uniqueTargetCRFName = FeatureObjects.CrfVersions[targetCRFName].UniqueName;
+            Dropdown sourceDropdown = Browser.FindElementById("_ctl0_Content_MigrationStepStart1_ddlSimpleTargetVersionId").EnhanceAs<Dropdown>();
+            sourceDropdown.SelectByPartialText(uniqueTargetCRFName);
+        }
 
 		public override string URL
 		{

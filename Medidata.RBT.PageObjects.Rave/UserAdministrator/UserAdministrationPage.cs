@@ -8,9 +8,11 @@ using OpenQA.Selenium.Remote;
 using System.Collections.Specialized;
 using OpenQA.Selenium.Support.UI;
 using Medidata.RBT.SeleniumExtension;
+using Medidata.RBT.PageObjects.Rave.SharedRaveObjects;
+using Medidata.RBT.PageObjects.Rave.UserAdministrator;
 namespace Medidata.RBT.PageObjects.Rave
 {
-	public  class UserAdministrationPage : PageBase, ICanPaginate
+	public  class UserAdministrationPage : RavePageBase, ICanPaginate
 	{
 		[FindsBy(How = How.Id, Using = "_ctl0_Content_AuthenticatorDDL")]
 		IWebElement Authenticator;
@@ -30,7 +32,6 @@ namespace Medidata.RBT.PageObjects.Rave
 		[FindsBy(How = How.Id, Using = "_ctl0_Content_LoginBox")]
 		IWebElement Login;
 
-
 		[FindsBy(How = How.Id, Using = "_ctl0_Content_SearchButtonLnk")]
 		IWebElement Search;
 		
@@ -44,9 +45,16 @@ namespace Medidata.RBT.PageObjects.Rave
 			public string Role { get; set; }
 
 			public string Study { get; set; }
+
+            public bool Architect { get; set; }
+            public bool AmendmentManager { get; set; }
 		}
 
-
+        /// <summary>
+        /// Search for a user
+        /// </summary>
+        /// <param name="by">What to search to find the user</param>
+        /// <returns>The current UserAdministrationPage</returns>
 		public UserAdministrationPage SearchUser(SearchByModel by)
 		{
 			if (by.Authenticator != null)
@@ -72,24 +80,60 @@ namespace Medidata.RBT.PageObjects.Rave
 			return this;
 		}
 
+        /// <summary>
+        /// Click a user on the UserAdministrationPage.
+        /// </summary>
+        /// <param name="userName">The unique user name to click</param>
+        /// <returns>The UserEditPage for the user</returns>
 		public UserEditPage ClickUser(string userName)
 		{
-
 			int foundOnPage;
 			IWebElement userLink = this.FindInPaginatedList("", () =>
 			{
 				var resultTable = Browser.TryFindElementBy(By.Id("_ctl0_Content_UserGrid"));
-				var link = resultTable.TryFindElementBy(By.XPath("tbody/tr[position()>1]/td[position()=1 and text()='" + userName + "']/../td[position()=8]/a"));
+				var link = resultTable.TryFindElementBy(By.XPath("tbody/tr[position()>1]/td[position()=1 and text()='" + userName + "']/../td[position()=7]/a"));
 				return link;
 
 			}, out foundOnPage);
 
-
-
 			if(userLink == null)
 				throw new Exception("User not found in result table: "+userName);
-			
+
+            userLink.Click();
 			return new UserEditPage();
+		}
+
+        /// <summary>
+        /// Click the a user on the page
+        /// </summary>
+        /// <param name="userName">The unique name of the user to click</param>
+        /// <returns>The UserActivationPage of the user</returns>
+        public UserActivationPage ClickActivated(string userName)
+        {
+            int foundOnPage;
+            IWebElement userLink = this.FindInPaginatedList("", () =>
+            {
+                var resultTable = Browser.TryFindElementBy(By.Id("_ctl0_Content_UserGrid"));
+                var link = resultTable.TryFindElementBy(By.XPath("tbody/tr[position()>1]/td[position()=1 and text()='" + userName + "']/../td[position()=6]/a"));
+                return link;
+
+            }, out foundOnPage);
+
+            if (userLink == null)
+                throw new Exception("User not found in result table: " + userName);
+
+            userLink.Click();
+            return new UserActivationPage();
+        }
+
+        public override IPage ClickLink(string linkText)
+		{
+			base.ClickLink(linkText);
+
+            if (linkText == "Upload Users")
+                TestContext.CurrentPage = new UploadUserPage();
+
+            return TestContext.CurrentPage;
 		}
 
 		public override string URL
@@ -98,7 +142,9 @@ namespace Medidata.RBT.PageObjects.Rave
 			{
 				return "Modules/UserAdmin/UsersPage.aspx";
 			}
-		}	int pageIndex = 1;
+		}	
+        
+        int pageIndex = 1;
 		int count = 0;
 		int lastValue = -1;
 

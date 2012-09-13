@@ -15,7 +15,7 @@ namespace Medidata.RBT.Features.Rave
 		}
 
 		[StepDefinition(@"I create Draft ""([^""]*)"" from Project ""([^""]*)"" and Version ""([^""]*)""")]
-		public void GivenICreateDraft____FromProject____AndVersion____(string draftName, string project, string version)
+		public void ICreateDraft____FromProject____AndVersion____(string draftName, string project, string version)
 		{
 			draftName = SpecialStringHelper.Replace( draftName);
 			project =SpecialStringHelper.Replace(project);
@@ -23,6 +23,11 @@ namespace Medidata.RBT.Features.Rave
 			CurrentPage = CurrentPage.As<ArchitectLibraryPage>().CreateDraftFromProject(draftName,project,version);
 		}
 
+        [StepDefinition(@"I publish and push eCRF ""([^""]*)""")]
+        public void IPublishAndPushECRF____(string version)
+        {
+            CurrentPage = CurrentPage.NavigateTo("Architect Library Page");
+        }
 
         [StepDefinition(@"I select Draft ""([^""]*)""")]
         public void GivenICreateDraft____FromProject____AndVersion____(string draftName)
@@ -33,7 +38,7 @@ namespace Medidata.RBT.Features.Rave
 
 
 		[StepDefinition(@"I publish CRF Version ""([^""]*)""")]
-		public void GivenIPublishCRFVersion____(string crfVersion)
+		public void IPublishCRFVersion____(string crfVersion)
 		{
 			crfVersion = SpecialStringHelper.Replace(crfVersion);
 			CurrentPage.As<ArchitectCRFDraftPage>().PublishCRF(crfVersion);
@@ -41,7 +46,7 @@ namespace Medidata.RBT.Features.Rave
 		}
 
 		[StepDefinition(@"I push CRF Version ""([^""]*)"" to ""([^""]*)""")]
-		public void GivenIPublishCRFVersion____(string crfVersion, string sites)
+		public void IPublishCRFVersion____(string crfVersion, string sites)
 		{
 			crfVersion = SpecialStringHelper.Replace(crfVersion);
 			sites = SpecialStringHelper.Replace(sites);
@@ -50,13 +55,13 @@ namespace Medidata.RBT.Features.Rave
 		}
 
 		[StepDefinition(@"I select ""Target\{RndNum\(3\)}"" from ""Target CRF""")]
-		public void GivenISelectTargetRndNum3FromTargetCRF()
+		public void ISelectTargetRndNum3FromTargetCRF()
 		{
 			ScenarioContext.Current.Pending();
 		}
 
 		[StepDefinition(@"I select ""V1"" from ""Source CRF""")]
-		public void GivenISelectV1FromSourceCRF()
+		public void ISelectV1FromSourceCRF()
 		{
 			ScenarioContext.Current.Pending();
 		}
@@ -67,12 +72,14 @@ namespace Medidata.RBT.Features.Rave
 			CurrentPage = CurrentPage.As<AMMigrationExecutePage>().Migrate();
 		}
 
+        /// <summary>
+        /// Verify the last migration has completed
+        /// </summary>
         [StepDefinition(@"I verify Job Status is set to Complete")]
-		public void GivenISelectMigrationResultsAndVerifyJobStatusIsSetToComplete()
+        public void ISelectMigrationResultsAndVerifyJobStatusIsSetToComplete()
 		{
 			CurrentPage.As<AMMigrationResultPage>().WaitForComplete();
 		}
-
         [StepDefinition(@"I search for form ""([^""]*)""")]
         public void ISearchForForm____(string form)
         {

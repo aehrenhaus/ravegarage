@@ -142,6 +142,25 @@ namespace Medidata.RBT.PageObjects.Rave
 
             return null;
         }
+
+        /// <summary>
+        /// Check that the field has the values in the order listed
+        /// </summary>
+        /// <param name="fieldName">The field to check for values order</param>
+        /// <param name="values">The field values in the order they should be listed in</param>
+        /// <returns>Returns true if the values are in the order passed in</returns>
+        public bool FindFieldValuesInOrder(string fieldName, List<string> values)
+        {
+            IWebElement field = TestContext.Browser.FindElement(By.XPath("//a[text()='" + fieldName + "']"));
+            IWebElement tbody = field.Parent().Parent().Parent();
+            List<IWebElement> rows = tbody.FindElements(By.XPath("tr[@class='evenRow' or @class='oddRow']")).ToList();
+            for (int i = 0; i < values.Count; i++)
+            {
+                if (rows[i].FindElement(By.XPath("td[position()=2]")).Text != values[i])
+                    return false;
+            }
+            return true;
+        }
         public IEDCFieldControl FindLandscapeLogField(string fieldName, int rowIndex) 
         {
             return new LandscapeLogField(this, 

@@ -56,7 +56,6 @@ namespace Medidata.RBT.PageObjects.Rave
             return page;
         }
 
-
         public override string BaseURL
         {
             get 

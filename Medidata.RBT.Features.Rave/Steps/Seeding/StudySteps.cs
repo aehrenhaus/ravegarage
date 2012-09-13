@@ -1,4 +1,6 @@
 ﻿using TechTalk.SpecFlow;
+using Medidata.RBT.PageObjects.Rave.SharedRaveObjects;
+using Medidata.RBT.PageObjects.Rave;
 
 namespace Medidata.RBT.Features.Rave
 {
@@ -37,5 +39,30 @@ namespace Medidata.RBT.Features.Rave
 		{
 
 		}
+        /// <summary>
+        /// XML draft is uploaded for seeding purposes.
+        /// </summary>
+        /// <param name="draft">The name of the draft to be seeded</param>
+        [StepDefinition(@"xml draft ""([^""]*)"" is Uploaded")]
+        public void XmlDraft____IsUploaded(string draftName)
+        {
+            new UploadedDraft(draftName, true);
+        }
+
+        /// <summary>
+        /// Publish and push a UploadDraft to a crf version. This will create a CRFVersion with that name if none already exists.
+        /// Since UploadDraft contains both project and draft, you do not need to specify these.
+        /// </summary>
+        /// <param name="uploadName">UploadDraft name, should have been created prior in the feature file</param>
+        /// <param name="crfVersionName">The name that the crfVersion is referred to as in the feature file</param>
+        [StepDefinition(@"I publish and push eCRF ""([^""]*)"" to ""([^""]*)""")]
+        public void IPublishAndPushECRF____To____(string uploadName, string crfVersionName)
+        {
+            UploadedDraft uploadedDraft = new UploadedDraft(uploadName, true);
+            CrfVersion crfVersion = new CrfVersion(uploadedDraft.Name, crfVersionName, true);
+            TestContext.CurrentPage = new ArchitectPage().NavigateToSelf();
+            TestContext.CurrentPage.As<ArchitectPage>().ClickProject(crfVersion.UploadedDraft.Project.UniqueName);
+            TestContext.CurrentPage.As<ArchitectLibraryPage>().PushVersion(crfVersion.UniqueName, "Prod", "All Sites");
+        }
 	}
 }

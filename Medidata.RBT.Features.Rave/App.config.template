@@ -16,7 +16,6 @@
 		SqlScriptsPath="C:\"
 		BrowserName="firefox"
 		BrowserPath="D:\MDSOL\Firefox12\firefox.exe"
-		DownloadPath="FAKEDIRECTORY:\yourpath\Downloads"
 		FirefoxProfilePath="FAKEDIRECTORY:\yourpath\Profile"
 		WebDriverPath="..\..\..\ExternalDlls\WebDrivers\"
 		SnapshotName="UAT_Snap"

@@ -243,14 +243,6 @@ namespace Medidata.RBT
             return this;
         }
 
-        /// <summary>
-        /// See IPage interface
-        /// </summary>
-        public virtual void DeleteObjectOnPage(RemoveableObject removeableObject)
-        {
-            throw new NotImplementedException();
-        }
-
 		/// <summary>
 		/// See IPage interface
 		/// </summary>
@@ -350,6 +342,14 @@ namespace Medidata.RBT
                 element = GetElementByName(identifier);
 
             return element;
+        }
+
+        /// <summary>
+        /// See IPage interface
+        /// </summary>
+        public virtual bool CanSeeTextInArea(string text, string areaIdentifier)
+        {
+            throw new Exception("This page does not implement this method");
         }
 
         /// <summary>

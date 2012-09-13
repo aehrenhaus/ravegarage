@@ -12,6 +12,11 @@ namespace Medidata.RBT.PageObjects.Rave
 {
 	public class ArchitectCRFDraftPage : ArchitectBasePage
 	{
+        /// <summary>
+        /// Publish a crf
+        /// </summary>
+        /// <param name="crfVersion">The unique name of the crf to publish</param>
+        /// <returns>This page</returns>
 		public ArchitectCRFDraftPage PublishCRF(string crfVersion)
 		{
 			Type("_ctl0_Content_TxtCRFVersion", crfVersion);
@@ -22,7 +27,6 @@ namespace Medidata.RBT.PageObjects.Rave
 
 		public override IPage NavigateTo(string name)
 		{
-
 			if (name == "Edit Checks")
 			{
 				Browser.TryFindElementById("TblOuter").Link(name).Click();
@@ -42,6 +46,16 @@ namespace Medidata.RBT.PageObjects.Rave
 			return base.NavigateTo(name);
 		}
 
+        public override IPage ClickLink(string linkText)
+        {
+            base.ClickLink(linkText);
+
+            if (linkText == "Restrictions")
+                TestContext.CurrentPage = new ArchitectNewDraftPage();
+
+            return TestContext.CurrentPage;
+        }
+
 		public override string GetInfomation(string identifier)
 		{
 			if (identifier == "crfversion")
@@ -50,14 +64,14 @@ namespace Medidata.RBT.PageObjects.Rave
 		}
 
 
-		public string GetLatestCRFVersion()
-		{
-			var trs = Browser.Table("VersionGrid").Children()[0].Children();
-			var tr = trs[1];
-			var td = tr.Children()[0];
-			var text = td.Text.Trim();
-			return text;
-		}
+        public string GetLatestCRFVersion()
+        {
+            var trs = Browser.Table("VersionGrid").Children()[0].Children();
+            var tr = trs[1];
+            var td = tr.Children()[0];
+            var text = td.Text.Trim();
+            return text;
+        }
 
 		public override string URL
 		{

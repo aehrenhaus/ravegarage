@@ -52,8 +52,8 @@ namespace Medidata.RBT.Common.Steps
 			AssertAreNOTSameTable(dataTable, table);
 		}
 
-        [When(@"I verify the log message for query not opening event for Project ""([^""]*)"" and Site ""([^""]*)""")]
-        public void WhenIVerifyTheLogMessagesForQueryNotOpeningEventsForProjectEditCheckStudy3AndSiteEditCheckSite3(string projectName, string siteName)
+        [StepDefinition(@"I verify the log message for query not opening event for Project ""([^""]*)"" and Site ""([^""]*)""")]
+        public void IVerifyTheLogMessagesForQueryNotOpeningEventsForProjectEditCheckStudy3AndSiteEditCheckSite3(string projectName, string siteName)
         {
             var sql = "spVerifyQueryLog";
 			var dataTable = DbHelper.ExecuteDataSet(sql, new object[] { projectName, siteName }).Tables[0];

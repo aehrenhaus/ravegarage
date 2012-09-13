@@ -1,6 +1,5 @@
 ﻿using TechTalk.SpecFlow;
 using Medidata.RBT.PageObjects.Rave;
-
 using OpenQA.Selenium;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
@@ -11,7 +10,7 @@ namespace Medidata.RBT.Features.Rave
         SubjectPageSteps : BrowserStepsBase
     {
 
-        [Then(@"I can see Add Event lock icon")]
+        [StepDefinition(@"I can see Add Event lock icon")]
         public void ICanSeeAddEventLockIcon()
         {
             bool result = false;
@@ -76,6 +75,17 @@ namespace Medidata.RBT.Features.Rave
             }
 
             Assert.IsTrue(result);
+        }
+
+        /// <summary>
+        /// Submit a form
+        /// </summary>
+        /// <param name="formName">The form to submit</param>
+        [StepDefinition(@"I submit the form ""([^""]*)""")]
+        public void ISubmitTheForm____(string formName)
+        {
+            CurrentPage.As<SubjectPage>().SelectForm(formName);
+            CurrentPage.As<CRFPage>().SaveForm();
         }
 
         [StepDefinition(@"I can not see ""([^""]*)"" button")]

@@ -9,21 +9,21 @@ namespace Medidata.RBT.Features.Rave
 	public class TsdvSteps : BrowserStepsBase
 	{
 
-        [Then(@"I verify that Tiers in subject override table are not in the following order")]
-        public void ThenIVerifyThatTiersInSubjectOverrideTableAreNotInTheFollowingOrder(Table table)
+        [StepDefinition(@"I verify that Tiers in subject override table are not in the following order")]
+        public void IVerifyThatTiersInSubjectOverrideTableAreNotInTheFollowingOrder(Table table)
         {
             bool isSubjectRandomized = CurrentPage.As<SubjectOverridePage>().IsSubjectsRandomized(table);
             Assert.IsTrue(isSubjectRandomized, "Subjects enrolled sequentially");
         }
 
         [StepDefinition(@"I filter by site ""([^""]*)""")]
-        public void AndIfilterBySite(string siteName)
+        public void IfilterBySite(string siteName)
         {
             CurrentPage.As<SubjectManagementPageBase>().FilterBySite(siteName);
         }
 
         [StepDefinition(@"I include ([^""]*) subjects in TSDV")]
-        public void WhenIIncludeAllSubjectsInTSDV(string numSubjects)
+        public void IIncludeAllSubjectsInTSDV(string numSubjects)
         {
             int num;
             if (int.TryParse(numSubjects, out num))
@@ -31,18 +31,15 @@ namespace Medidata.RBT.Features.Rave
         }
 
         [StepDefinition(@"I inactivate the plan")]
-        public void AndIInactivatePlan()
+        public void IInactivatePlan()
         {
             CurrentPage.As<BlockPlansPageBase>().InactivatePlan();
         }
 
         [StepDefinition(@"I activate the plan")]
-        public void AndIActivatePlan()
+        public void IActivatePlan()
         {
             CurrentPage.As<BlockPlansPageBase>().ActivatePlan();
         }
-    
-
-
     }
 }

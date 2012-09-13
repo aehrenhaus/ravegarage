@@ -3,6 +3,7 @@ using Medidata.RBT.PageObjects.Rave;
 
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using TechTalk.SpecFlow.Assist;
+using Medidata.RBT.PageObjects.Rave.SharedRaveObjects;
 
 namespace Medidata.RBT.Features.Rave
 {

@@ -37,5 +37,17 @@ namespace Medidata.RBT
 				TestContext.CurrentPage= value;
 			}
 		}
+
+        public string CurrentUser
+        {
+            get
+            {
+                return TestContext.CurrentUser;
+            }
+            set
+            {
+                TestContext.CurrentUser = value;
+            }
+        }
 	}
 }

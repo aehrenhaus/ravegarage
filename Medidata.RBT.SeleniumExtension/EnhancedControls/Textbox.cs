@@ -11,12 +11,14 @@ namespace Medidata.RBT.SeleniumExtension
 		{
 		}
 
+        /// <summary>
+        /// Set the text in a textbox
+        /// </summary>
+        /// <param name="text">The text to put in the textbox</param>
 		public void SetText(string text)
 		{
 			this.Clear();
 			this.SendKeys(text);
 		}
-
-
 	}
 }

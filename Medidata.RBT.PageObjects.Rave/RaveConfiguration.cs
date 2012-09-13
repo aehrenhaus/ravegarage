@@ -23,7 +23,6 @@ namespace Medidata.RBT.PageObjects.Rave
 			set { this["DefaultUser"] = value; }
 		}
 
-
 		[ConfigurationProperty("DefaultUserPassword", DefaultValue = "", IsRequired = true)]
 		public String DefaultUserPassword
 		{

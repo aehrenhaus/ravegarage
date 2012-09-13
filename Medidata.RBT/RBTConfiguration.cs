@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Configuration;
+using System.IO;
 
 namespace Medidata.RBT
 {
@@ -98,14 +99,21 @@ namespace Medidata.RBT
             set { this["FirefoxProfilePath"] = value; }
         }
 
-        //This should match your browser's download path.
-        [ConfigurationProperty("DownloadPath", DefaultValue = @"FAKEDIRECTORY:\yourpath\Downloads", IsRequired = true)]
         public String DownloadPath
         {
-            get { return (String)this["DownloadPath"]; }
-            set { this["DownloadPath"] = value; }
+            get
+            {
+                return (new DirectoryInfo(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"..\..\..\Downloads"))).FullName;
+            }
         }
 
+        public String UploadPath
+        {
+            get 
+            {
+                return (new DirectoryInfo(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"..\..\..\Uploads"))).FullName;
+            }
+        }
 
         [ConfigurationProperty("SqlScriptsPath", DefaultValue = "", IsRequired = false)]
         public String SqlScriptsPath
