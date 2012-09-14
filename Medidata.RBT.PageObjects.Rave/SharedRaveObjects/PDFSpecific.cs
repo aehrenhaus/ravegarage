@@ -7,7 +7,7 @@ using TechTalk.SpecFlow;
 using Medidata.RBT.SeleniumExtension;
 using OpenQA.Selenium;
 using System.Collections.ObjectModel;
-using Medidata.RBT.Seeding;
+using Medidata.RBT.SharedObjects;
 
 namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
 {

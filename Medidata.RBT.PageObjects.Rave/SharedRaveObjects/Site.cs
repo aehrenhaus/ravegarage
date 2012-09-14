@@ -7,10 +7,10 @@ using TechTalk.SpecFlow;
 using Medidata.RBT.SeleniumExtension;
 using OpenQA.Selenium;
 using System.Collections.ObjectModel;
-using Medidata.RBT.Seeding;
 using System.IO;
 using System.Xml;
 using Medidata.RBT.PageObjects.Rave.SiteAdministration;
+using Medidata.RBT.SharedRaveObjects;
 
 namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
 {
@@ -29,21 +29,17 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
         /// <param name="siteName">The feature defined name of the Site</param>
         /// <param name="seed">Bool determining whether you want to seed the object if it is not in the FeatureObjects dictionary</param>
         public Site(string siteName, bool seed = false)
+            :base(siteName)
         {
-            UID = Guid.NewGuid();
-            Name = siteName;
-            Number = Guid.NewGuid().ToString();
-
-            if (FeatureObjects.Sites != null && FeatureObjects.Sites.ContainsKey(Name))
+            if (UID == null)
             {
-                Site existingSite = FeatureObjects.Sites[Name];
-                UID = existingSite.UID;
-                Name = existingSite.Name;
-                Draft = existingSite.Draft;
-                UniqueName = existingSite.UniqueName;
-                Number = existingSite.Number;
-            } else if (seed)
-                Seed();
+                UID = Guid.NewGuid();
+                Name = siteName;
+                Number = Guid.NewGuid().ToString();
+
+                if (seed)
+                    Seed();
+            }
         }
 
         /// <summary>
@@ -70,7 +66,7 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
         public override void CreateObject()
         {
             TestContext.CurrentPage.As<SiteAdministrationNewSitePage>().CreateSite(UniqueName, Number);
-            FeatureObjects.Sites.Add(Name, this);
+            TestContext.FeatureObjects.Add(Name, this);
         }
     }
 }

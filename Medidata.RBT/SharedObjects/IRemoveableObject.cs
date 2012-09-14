@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Medidata.RBT
+namespace Medidata.RBT.SharedObjects
 {
     /// <summary>
     ///All objects which require cleanup at the end of a scenario should implement this class. 

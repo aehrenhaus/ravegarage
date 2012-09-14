@@ -7,20 +7,20 @@ using TechTalk.SpecFlow;
 using Medidata.RBT.SeleniumExtension;
 using OpenQA.Selenium;
 using System.Collections.ObjectModel;
-using Medidata.RBT.Seeding;
 using System.IO;
 using System.Xml;
 using Medidata.RBT.PageObjects.Rave.UserAdministrator;
 using Medidata.RBT.PageObjects.Rave.Configuration;
+using Medidata.RBT.SharedObjects;
 
 namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
 {
     /// <summary>
     /// This is a rave specific SecurityRole.
     /// </summary>
-    public class SecurityRole
+    public class SecurityRole : FeatureObject
     {
-        public Guid UID { get; set; }
+        public Guid? UID { get; set; }
         public string Name { get; set; }
         public string UniqueName { get; set; }
 
@@ -29,20 +29,14 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
         /// </summary>
         /// <param name="securityRoleName">Feature defined name of the SecurityRole</param>
         public SecurityRole(string securityRoleName)
+            :base(securityRoleName, null)
         {
-            if (FeatureObjects.SecurityRoles != null && FeatureObjects.SecurityRoles.ContainsKey(securityRoleName))
-            {
-                SecurityRole securityRole = FeatureObjects.SecurityRoles[securityRoleName];
-                UID = securityRole.UID;
-                Name = securityRole.Name;
-                UniqueName = securityRole.UniqueName;
-            }
-            else
+            if(UID == null)
             {
                 UID = Guid.NewGuid();
                 Name = securityRoleName;
                 UniqueName = securityRoleName;
-                FeatureObjects.SecurityRoles.Add(securityRoleName, this);
+                TestContext.FeatureObjects.Add(securityRoleName, this);
             }
         }
     }

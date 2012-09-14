@@ -7,9 +7,10 @@ using TechTalk.SpecFlow;
 using Medidata.RBT.SeleniumExtension;
 using OpenQA.Selenium;
 using System.Collections.ObjectModel;
-using Medidata.RBT.Seeding;
 using System.IO;
 using System.Xml;
+using Medidata.RBT.SharedRaveObjects;
+using Medidata.RBT.SharedObjects;
 
 namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
 {
@@ -28,22 +29,19 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
         /// <param name="crfVersionName">The feature defined name of this Crf Version</param>
         /// <param name="seed">Bool determining whether you want to seed the object if it is not in the FeatureObjects dictionary</param>
         public CrfVersion(string draftName, string crfVersionName, bool seed = false)
+            : base(crfVersionName)
         {
-            UID = Guid.NewGuid();
-            Name = crfVersionName;
-            UploadedDraft draftObject;
-            FeatureObjects.UploadDrafts.TryGetValue(draftName, out draftObject);
-            UploadedDraft = draftObject;
-            if (FeatureObjects.CrfVersions != null && FeatureObjects.CrfVersions.ContainsKey(Name))
+            if (UID == null)
             {
-                CrfVersion crfVersion = FeatureObjects.CrfVersions[Name];
-                UID = crfVersion.UID;
-                Name = crfVersion.Name;
-                UniqueName = crfVersion.UniqueName;
-                UploadedDraft = crfVersion.UploadedDraft;
+                UID = Guid.NewGuid();
+                Name = crfVersionName;
+                FeatureObject draftObject;
+                TestContext.FeatureObjects.TryGetValue(draftName, out draftObject);
+                UploadedDraft = (UploadedDraft)draftObject;
+
+                if (seed)
+                    Seed();
             }
-            else if (seed)
-                Seed();
         }
 
         /// <summary>
@@ -63,8 +61,7 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
         public override void CreateObject()
         {
             TestContext.CurrentPage.As<ArchitectCRFDraftPage>().PublishCRF(UniqueName);
-            FeatureObjects.CrfVersions.Add(Name, this);
-
+            TestContext.FeatureObjects.Add(Name, this);
             new ArchitectPage().ClickProject(UploadedDraft.Project.UniqueName);
         }
 

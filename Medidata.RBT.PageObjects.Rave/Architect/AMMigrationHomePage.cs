@@ -47,7 +47,7 @@ namespace Medidata.RBT.PageObjects.Rave
         /// <param name="sourceCRFName">The feature defined source crf name</param>
         public void SelectSourceCRF(string sourceCRFName)
         {
-            string uniqueSourceCRFName = FeatureObjects.CrfVersions[sourceCRFName].UniqueName;
+            string uniqueSourceCRFName = ((CrfVersion)TestContext.FeatureObjects[sourceCRFName]).UniqueName;
             Dropdown sourceDropdown = Browser.FindElementById("_ctl0_Content_MigrationStepStart1_ddlSimpleSourceVersionId").EnhanceAs<Dropdown>();
             sourceDropdown.SelectByPartialText(uniqueSourceCRFName);
         }
@@ -58,7 +58,7 @@ namespace Medidata.RBT.PageObjects.Rave
         /// <param name="sourceCRFName">The feature defined target crf name</param>
         public void SelectTargetCRF(string targetCRFName)
         {
-            string uniqueTargetCRFName = FeatureObjects.CrfVersions[targetCRFName].UniqueName;
+            string uniqueTargetCRFName = ((CrfVersion)TestContext.FeatureObjects[targetCRFName]).UniqueName;
             Dropdown sourceDropdown = Browser.FindElementById("_ctl0_Content_MigrationStepStart1_ddlSimpleTargetVersionId").EnhanceAs<Dropdown>();
             sourceDropdown.SelectByPartialText(uniqueTargetCRFName);
         }

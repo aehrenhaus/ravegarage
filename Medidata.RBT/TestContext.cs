@@ -13,6 +13,7 @@ using OpenQA.Selenium.Firefox;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.IE;
 using Medidata.RBT.SeleniumExtension;
+using Medidata.RBT.SharedObjects;
 
 
 namespace Medidata.RBT
@@ -100,6 +101,21 @@ namespace Medidata.RBT
                 ScenarioContext.Current["CurrentUser"] = value;
 			}
 		}
+
+        /// <summary>
+        /// Mapping of the name provided in the feature file to the FeatureObject object created by the FeatureObject constructor.
+        /// </summary>
+        public static Dictionary<string, FeatureObject> FeatureObjects
+        {
+            get
+            {
+                return Medidata.RBT.TestContext.GetFeatureContextValue<Dictionary<string, FeatureObject>>("FeatureObjects");
+            }
+            set
+            {
+                Medidata.RBT.TestContext.SetFeatureContextValue("FeatureObjects", value);
+            }
+        }
 
 		public static DateTime? CurrentScenarioStartTime
 		{
@@ -222,6 +238,7 @@ namespace Medidata.RBT
 		[BeforeFeature()]
 		public static void BeforeFeature()
 		{
+            Medidata.RBT.TestContext.SetFeatureContextValue<Dictionary<string, FeatureObject>>("FeatureObjects", new Dictionary<string, FeatureObject>());
 			CurrentFeatureStartTime = DateTime.Now;
             DraftCounter.ResetCounter();
 		}
@@ -387,7 +404,7 @@ namespace Medidata.RBT
         {
             List<String> createdFiles = Directory.GetFiles(TestContext.DownloadPath).ToList();
             foreach (String filePath in createdFiles)
-                if(!filePath.EndsWith(".gitignore"))
+                if (!filePath.EndsWith("placeholder.txt"))
                     File.Delete(filePath);
         }
 
@@ -413,7 +430,7 @@ namespace Medidata.RBT
             {
                 DateTime lastWriteTime = File.GetLastWriteTime(filePath);
                 if (lastWriteTime >= CurrentFeatureStartTime)
-                    if (!filePath.Equals("placeholder.txt"))
+                    if (!filePath.EndsWith("placeholder.txt"))
                         File.Delete(filePath);
             }
         }

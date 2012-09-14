@@ -7,11 +7,12 @@ using TechTalk.SpecFlow;
 using Medidata.RBT.SeleniumExtension;
 using OpenQA.Selenium;
 using System.Collections.ObjectModel;
-using Medidata.RBT.Seeding;
 using System.IO;
 using System.Xml;
 using Medidata.RBT.PageObjects.Rave.UserAdministrator;
 using Medidata.RBT.PageObjects.Rave.Configuration;
+using Medidata.RBT.SharedObjects;
+using Medidata.RBT.SharedRaveObjects;
 
 namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
 {
@@ -30,35 +31,30 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
         /// <param name="roleUploadName">The feature defined name of the role</param>
         /// <param name="seed">Bool determining whether you want to seed the object if it is not in the FeatureObjects dictionary</param>
         public Role(string roleUploadName, bool seed = false)
+            :base(roleUploadName)
         {
-            UID = Guid.NewGuid();
-            Name = roleUploadName;
-
-            if (FeatureObjects.Roles != null && FeatureObjects.Roles.ContainsKey(Name))
+            if (UID == null)
             {
-                Role existingRole = FeatureObjects.Roles[Name];
-                UID = existingRole.UID;
-                Name = existingRole.Name;
-                UniqueName = existingRole.UniqueName;
-                FileLocation = existingRole.FileLocation;
-                UniqueFileLocation = existingRole.UniqueFileLocation;
-            }
-            else if (seed)
-            {
-                //Get the instance of the role, so you can have multiple uploads of the same role
-                string instanceString = roleUploadName.Substring(roleUploadName.LastIndexOf(" "), roleUploadName.Length - roleUploadName.LastIndexOf(" "));
-                int instance;
-                bool isInt = int.TryParse(instanceString, out instance);
-                instance = isInt ? Convert.ToInt32(instanceString) : 0;
+                UID = Guid.NewGuid();
+                Name = roleUploadName;
 
-                string fileName;
-                if (roleUploadName.StartsWith("SUPER ROLE"))
-                    fileName = "SUPERROLE.xml";
-                else
-                    fileName = roleUploadName;
+                if (seed)
+                {
+                    //Get the instance of the role, so you can have multiple uploads of the same role
+                    string instanceString = roleUploadName.Substring(roleUploadName.LastIndexOf(" "), roleUploadName.Length - roleUploadName.LastIndexOf(" "));
+                    int instance;
+                    bool isInt = int.TryParse(instanceString, out instance);
+                    instance = isInt ? Convert.ToInt32(instanceString) : 0;
 
-                FileLocation = TestContext.UploadPath + @"\Roles\" + fileName;
-                Seed();
+                    string fileName;
+                    if (roleUploadName.StartsWith("SUPER ROLE"))
+                        fileName = "SUPERROLE.xml";
+                    else
+                        fileName = roleUploadName;
+
+                    FileLocation = TestContext.UploadPath + @"\Roles\" + fileName;
+                    Seed();
+                }
             }
         }
 
@@ -117,7 +113,7 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
         public override void CreateObject()
         {
             TestContext.CurrentPage.As<ConfigurationLoaderPage>().UploadFile(UniqueFileLocation);
-            FeatureObjects.Roles.Add(Name, this);
+            TestContext.FeatureObjects.Add(Name, this);
             Factory.FeatureObjectsForDeletion.Add(this);
         }
 

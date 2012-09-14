@@ -67,9 +67,10 @@
     <Compile Include="BrowserStepsBase.cs" />
     <Compile Include="Constants.cs" />
     <Compile Include="EnumHelper.cs" />
+    <Compile Include="SharedObjects\FeatureObject.cs" />
     <Compile Include="Misc.cs" />
     <Compile Include="Factory.cs" />
-    <Compile Include="IRemoveableObject.cs" />
+    <Compile Include="SharedObjects\IRemoveableObject.cs" />
     <Compile Include="PageObjectInterfaces\ControlBase.cs" />
     <Compile Include="DbHelper.cs" />
     <Compile Include="PageObjectInterfaces\ICanVerifyInOrder.cs" />

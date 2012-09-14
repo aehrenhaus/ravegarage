@@ -105,15 +105,14 @@
     <Compile Include="DCF\DCFQueriesPage.cs" />
     <Compile Include="PDF\PDFFilesControl.cs" />
     <Compile Include="SharedRaveObjects\SecurityRole.cs" />
-    <Compile Include="SharedRaveObjects\SeedableObject.cs" />
     <Compile Include="SharedRaveObjects\Draft.cs" />
     <Compile Include="SharedRaveObjects\Project.cs" />
+    <Compile Include="SharedRaveObjects\SeedableObject.cs" />
     <Compile Include="SharedRaveObjects\Site.cs" />
     <Compile Include="SharedRaveObjects\CrfVersion.cs" />
     <Compile Include="SharedRaveObjects\Role.cs" />
     <Compile Include="SharedRaveObjects\User.cs" />
     <Compile Include="SharedRaveObjects\UploadedDraft.cs" />
-    <Compile Include="SharedRaveObjects\FeatureObjects.cs" />
     <Compile Include="SharedRaveObjects\PDFSpecific.cs" />
     <Compile Include="RaveConfiguration.cs" />
     <Compile Include="Reports\DataListingReportPage.cs" />

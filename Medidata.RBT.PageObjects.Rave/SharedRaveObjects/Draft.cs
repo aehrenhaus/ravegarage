@@ -7,19 +7,19 @@ using TechTalk.SpecFlow;
 using Medidata.RBT.SeleniumExtension;
 using OpenQA.Selenium;
 using System.Collections.ObjectModel;
-using Medidata.RBT.Seeding;
 using System.IO;
 using System.Xml;
 using Medidata.RBT.PageObjects.Rave.SiteAdministration;
+using Medidata.RBT.SharedObjects;
 
 namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
 {
     /// <summary>
     ///This is a rave specific Draft.
     ///</summary>
-    public class Draft
+    public class Draft : FeatureObject
     {
-        public Guid UID { get; set; }
+        public Guid? UID { get; set; }
         public string Name { get; set; }
 
         /// <summary>
@@ -27,18 +27,13 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
         /// </summary>
         /// <param name="draftName">Feature defined name of the draft</param>
         public Draft(string draftName)
+            :base(draftName, null)
         {
-            if (FeatureObjects.Drafts != null && FeatureObjects.Drafts.ContainsKey(draftName))
-            {
-                Draft draft = FeatureObjects.Drafts[draftName];
-                UID = draft.UID;
-                Name = draft.Name;
-            }
-            else
+            if(UID == null)
             {
                 UID = Guid.NewGuid();
                 Name = draftName;
-                FeatureObjects.Drafts.Add(draftName, this);
+                TestContext.FeatureObjects.Add(draftName, this);
             }
         }
     }

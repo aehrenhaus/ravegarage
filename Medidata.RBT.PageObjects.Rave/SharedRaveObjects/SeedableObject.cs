@@ -3,21 +3,33 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Medidata.RBT.PageObjects.Rave;
+using Medidata.RBT.SharedObjects;
+using System.Reflection;
 
-namespace Medidata.RBT.Seeding
+namespace Medidata.RBT.SharedRaveObjects
 {
     ///<summary>
     ///All objects which can seed should implement this class. 
     ///The seedable objects should be marked for seeding when created.
     ///</summary>
-    public abstract class SeedableObject
+    public abstract class SeedableObject : FeatureObject
     {
-        public Guid? UID { get; set; }
-        public string Name { get; set; }
-        public string UniqueName { get; set; }
-        public string FileLocation { get; set; }
-        public string UniqueFileLocation { get; set; }
+        public Guid? UID { get; set; } //A unique identifier for the object
+        public string Name { get; set; } //The feature file defined name of the SeedableObject
+        public string UniqueName { get; set; } //A unique name of the SeedableObject, usually formed using the name + TID
+        public string FileLocation { get; set; } //The location of the original file upload
+        public string UniqueFileLocation { get; set; } //A unique location of the duplicate of the seedable object, that has been made unique
         public string TID = TemporalID.GetTID(); //This is a unique temporal ID for uniqueness purposes and ease of debugging
+
+        public SeedableObject()
+            :base()
+        {
+        }
+
+        public SeedableObject(string featureName)
+            : base(featureName, typeof(SeedableObject).GetFields(BindingFlags.NonPublic | BindingFlags.Public | BindingFlags.Instance).ToList())
+        {
+        }
 
         /// <summary>
         /// Seed the seedable object.

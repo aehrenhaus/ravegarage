@@ -31,9 +31,9 @@ namespace Medidata.RBT.Features.Rave
 		public void ILoginToRaveWithUser(string user)
 		{
             string username, password = null;
-            if (FeatureObjects.Users.ContainsKey(user))
+            if (TestContext.FeatureObjects.ContainsKey(user))
             {
-                User featureUser = FeatureObjects.Users[user];
+                User featureUser = (User)TestContext.FeatureObjects[user];
                 username = featureUser.UniqueName;
             }
             else

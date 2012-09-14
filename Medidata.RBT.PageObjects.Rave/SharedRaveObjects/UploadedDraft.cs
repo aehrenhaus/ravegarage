@@ -7,9 +7,11 @@ using TechTalk.SpecFlow;
 using Medidata.RBT.SeleniumExtension;
 using OpenQA.Selenium;
 using System.Collections.ObjectModel;
-using Medidata.RBT.Seeding;
 using System.IO;
 using System.Xml;
+using System.Reflection;
+using Medidata.RBT.SharedObjects;
+using Medidata.RBT.SharedRaveObjects;
 
 namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
 {
@@ -29,19 +31,9 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
         ///<param name="name">The feature defined name of the UploadedDraft</param>
         ///<param name="seed">Bool determining whether you want to seed the object if it is not in the FeatureObjects dictionary</param>
         public UploadedDraft(string name, bool seed = false)
+            : base(name)
         {
-            if (FeatureObjects.UploadDrafts != null && FeatureObjects.UploadDrafts.ContainsKey(name))
-            {
-                UploadedDraft existingUploadedDraft = FeatureObjects.UploadDrafts[name];
-                UID = existingUploadedDraft.UID;
-                Name = existingUploadedDraft.Name;
-                FileLocation = existingUploadedDraft.FileLocation;
-                UniqueFileLocation = existingUploadedDraft.UniqueFileLocation;
-                UniqueName = existingUploadedDraft.UniqueName;
-                Project = existingUploadedDraft.Project;
-                Draft = existingUploadedDraft.Draft;
-            }
-            else
+            if(this.UID == null)
             {
                 UID = Guid.NewGuid();
                 Name = name;
@@ -69,7 +61,7 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
         public override void CreateObject()
         {
             TestContext.CurrentPage.As<UploadDraftPage>().UploadFile(UniqueFileLocation);
-            FeatureObjects.UploadDrafts.Add(Name, this);
+            TestContext.FeatureObjects.Add(Name, this);
             Factory.FeatureObjectsForDeletion.Add(this);
         }
 

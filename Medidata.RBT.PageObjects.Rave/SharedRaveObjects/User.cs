@@ -7,10 +7,11 @@ using TechTalk.SpecFlow;
 using Medidata.RBT.SeleniumExtension;
 using OpenQA.Selenium;
 using System.Collections.ObjectModel;
-using Medidata.RBT.Seeding;
 using System.IO;
 using System.Xml;
 using Medidata.RBT.PageObjects.Rave.UserAdministrator;
+using Medidata.RBT.SharedObjects;
+using Medidata.RBT.SharedRaveObjects;
 
 namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
 {
@@ -33,40 +34,32 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
         /// <param name="userUploadName">The feature defined name of the user</param>
         /// <param name="seed">Bool determining whether you want to seed the object if it is not in the FeatureObjects dictionary</param>
         public User(string userUploadName, bool seed = false)
+            :base(userUploadName)
         {
-            UID = Guid.NewGuid();
-            Name = userUploadName;
-            if (FeatureObjects.Users != null && FeatureObjects.Users.ContainsKey(Name))
+            if (UID == null)
             {
-                User existingUser = FeatureObjects.Users[Name];
-                UID = existingUser.UID;
-                Name = existingUser.Name;
-                UniqueName = existingUser.UniqueName;
-                FileLocation = existingUser.FileLocation;
-                UniqueFileLocation = existingUser.UniqueFileLocation;
-                FileName = existingUser.FileName;
-                ActivationCode = existingUser.ActivationCode;
-                UniquePin = existingUser.UniquePin;
-            }
-            else if (seed)
-            {
-                //Get the instance of the user, so you can have multiple uploads of the same user
-                string instanceString = userUploadName.Substring(userUploadName.LastIndexOf(" "), userUploadName.Length - userUploadName.LastIndexOf(" "));
-                int instance;
-                bool isInt = int.TryParse(instanceString, out instance);
-                instance = isInt ? Convert.ToInt32(instanceString) : 0;
+                UID = Guid.NewGuid();
+                Name = userUploadName;
+                if (seed)
+                {
+                    //Get the instance of the user, so you can have multiple uploads of the same user
+                    string instanceString = userUploadName.Substring(userUploadName.LastIndexOf(" "), userUploadName.Length - userUploadName.LastIndexOf(" "));
+                    int instance;
+                    bool isInt = int.TryParse(instanceString, out instance);
+                    instance = isInt ? Convert.ToInt32(instanceString) : 0;
 
-                if (userUploadName.StartsWith("SUPER USER"))
-                    FileName = "SUPERUSER.xml";
-                else
-                    FileName = userUploadName;
+                    if (userUploadName.StartsWith("SUPER USER"))
+                        FileName = "SUPERUSER.xml";
+                    else
+                        FileName = userUploadName;
 
-                FileLocation = TestContext.UploadPath + @"\Users\" + FileName;
-                Seed();
+                    FileLocation = TestContext.UploadPath + @"\Users\" + FileName;
+                    Seed();
 
-                IPage pageBeforeActivation = TestContext.CurrentPage;
-                ActivateUser();
-                TestContext.CurrentPage = pageBeforeActivation.NavigateToSelf();
+                    IPage pageBeforeActivation = TestContext.CurrentPage;
+                    ActivateUser();
+                    TestContext.CurrentPage = pageBeforeActivation.NavigateToSelf();
+                }
             }
         }
         
@@ -117,7 +110,7 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
         public override void CreateObject()
         {
             TestContext.CurrentPage.As<UploadUserPage>().UploadFile(UniqueFileLocation);
-            FeatureObjects.Users.Add(Name, this);
+            TestContext.FeatureObjects.Add(Name, this);
             Factory.FeatureObjectsForDeletion.Add(this);
         }
 
