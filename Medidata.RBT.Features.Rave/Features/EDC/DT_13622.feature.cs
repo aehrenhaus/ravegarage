@@ -150,7 +150,7 @@ this.FeatureBackground();
 #line hidden
             TechTalk.SpecFlow.Table table4 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field",
-                        "Value"});
+                        "Data"});
             table4.AddRow(new string[] {
                         "Visit Date",
                         "01 Feb 2011"});
@@ -185,7 +185,7 @@ this.FeatureBackground();
 #line hidden
             TechTalk.SpecFlow.Table table7 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field",
-                        "Value"});
+                        "Data"});
             table7.AddRow(new string[] {
                         "Visit Date",
                         "01 Feb 2011"});
@@ -207,7 +207,7 @@ this.FeatureBackground();
 #line 57
  testRunner.And("I should see verification required on Fields in CRF", ((string)(null)), table8);
 #line 61
- testRunner.And("I check \"Verify\" on Field \"Visit Date\"");
+ testRunner.And("I check \"Verify\" checkbox on Field \"Visit Date\"");
 #line 62
  testRunner.And("I save the CRF page");
 #line 63
@@ -226,7 +226,7 @@ this.FeatureBackground();
 #line hidden
             TechTalk.SpecFlow.Table table10 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field",
-                        "Value"});
+                        "Data"});
             table10.AddRow(new string[] {
                         "Visit Date",
                         "02 Feb 2011"});
@@ -320,7 +320,7 @@ this.FeatureBackground();
 #line hidden
             TechTalk.SpecFlow.Table table15 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field",
-                        "Value"});
+                        "Data"});
             table15.AddRow(new string[] {
                         "Visit Date",
                         "01 Feb 2011"});
@@ -355,7 +355,7 @@ this.FeatureBackground();
 #line hidden
             TechTalk.SpecFlow.Table table18 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field",
-                        "Value"});
+                        "Data"});
             table18.AddRow(new string[] {
                         "Visit Date",
                         "01 Feb 2011"});
@@ -377,7 +377,7 @@ this.FeatureBackground();
 #line 116
  testRunner.And("I should see verification required on Fields in CRF", ((string)(null)), table19);
 #line 120
- testRunner.And("I check \"Verify\" on CRF page");
+ testRunner.And("I check \"Verify\" checkbox on CRF page");
 #line 121
  testRunner.And("I save the CRF page");
 #line 122
@@ -396,7 +396,7 @@ this.FeatureBackground();
 #line hidden
             TechTalk.SpecFlow.Table table21 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field",
-                        "Value"});
+                        "Data"});
             table21.AddRow(new string[] {
                         "Visit Date",
                         "02 Feb 2011"});
@@ -491,7 +491,7 @@ this.FeatureBackground();
 #line hidden
             TechTalk.SpecFlow.Table table26 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field",
-                        "Value"});
+                        "Data"});
             table26.AddRow(new string[] {
                         "Field 1",
                         "19"});
@@ -507,7 +507,7 @@ this.FeatureBackground();
 #line 161
  testRunner.And("I should see verification required on Fields in CRF", ((string)(null)), table27);
 #line 164
- testRunner.And("I check \"Verify\" on Field \"Field 1\"");
+ testRunner.And("I check \"Verify\" checkbox on Field \"Field 1\"");
 #line 165
  testRunner.And("I save the CRF page");
 #line 166
@@ -526,7 +526,7 @@ this.FeatureBackground();
 #line hidden
             TechTalk.SpecFlow.Table table29 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field",
-                        "Value"});
+                        "Data"});
             table29.AddRow(new string[] {
                         "Field 1",
                         "18"});
@@ -615,7 +615,7 @@ this.FeatureBackground();
 #line hidden
             TechTalk.SpecFlow.Table table34 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field",
-                        "Value"});
+                        "Data"});
             table34.AddRow(new string[] {
                         "Field 1",
                         "19"});
@@ -631,7 +631,7 @@ this.FeatureBackground();
 #line 203
  testRunner.And("I should see verification required on Fields in CRF", ((string)(null)), table35);
 #line 206
- testRunner.And("I check \"Verify\" on CRF page");
+ testRunner.And("I check \"Verify\" checkbox on CRF page");
 #line 207
  testRunner.And("I save the CRF page");
 #line 208
@@ -650,7 +650,7 @@ this.FeatureBackground();
 #line hidden
             TechTalk.SpecFlow.Table table37 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field",
-                        "Value"});
+                        "Data"});
             table37.AddRow(new string[] {
                         "Field 1",
                         "18"});
@@ -738,7 +738,7 @@ this.FeatureBackground();
 #line hidden
             TechTalk.SpecFlow.Table table42 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field",
-                        "Value"});
+                        "Data"});
             table42.AddRow(new string[] {
                         "DOB",
                         "05 Mar 1995"});
@@ -766,7 +766,7 @@ this.FeatureBackground();
 #line 248
  testRunner.And("I should see verification required on Fields in CRF", ((string)(null)), table43);
 #line 253
- testRunner.And("I check \"Verify\" on Field \"DOB\"");
+ testRunner.And("I check \"Verify\" checkbox on Field \"DOB\"");
 #line 254
  testRunner.And("I save the CRF page");
 #line 255
@@ -785,7 +785,7 @@ this.FeatureBackground();
 #line hidden
             TechTalk.SpecFlow.Table table45 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field",
-                        "Value"});
+                        "Data"});
             table45.AddRow(new string[] {
                         "DOB",
                         "12 Jun 1993"});
@@ -885,7 +885,7 @@ this.FeatureBackground();
 #line hidden
             TechTalk.SpecFlow.Table table50 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field",
-                        "Value"});
+                        "Data"});
             table50.AddRow(new string[] {
                         "DOB",
                         "05 Mar 1995"});
@@ -913,7 +913,7 @@ this.FeatureBackground();
 #line 299
  testRunner.And("I should see verification required on Fields in CRF", ((string)(null)), table51);
 #line 304
- testRunner.And("I check \"Verify\" on CRF page");
+ testRunner.And("I check \"Verify\" checkbox on CRF page");
 #line 305
  testRunner.And("I save the CRF page");
 #line 306
@@ -932,7 +932,7 @@ this.FeatureBackground();
 #line hidden
             TechTalk.SpecFlow.Table table53 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field",
-                        "Value"});
+                        "Data"});
             table53.AddRow(new string[] {
                         "DOB",
                         "12 Jun 1993"});
@@ -1029,7 +1029,7 @@ this.FeatureBackground();
 #line hidden
             TechTalk.SpecFlow.Table table58 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field",
-                        "Value"});
+                        "Data"});
             table58.AddRow(new string[] {
                         "Field 2",
                         "19"});
@@ -1045,7 +1045,7 @@ this.FeatureBackground();
 #line 347
  testRunner.And("I should see verification required on Fields in CRF", ((string)(null)), table59);
 #line 350
- testRunner.And("I check \"Verify\" on Field \"Field 2\"");
+ testRunner.And("I check \"Verify\" checkbox on Field \"Field 2\"");
 #line 351
  testRunner.And("I save the CRF page");
 #line 352
@@ -1064,7 +1064,7 @@ this.FeatureBackground();
 #line hidden
             TechTalk.SpecFlow.Table table61 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field",
-                        "Value"});
+                        "Data"});
             table61.AddRow(new string[] {
                         "Field 2",
                         "18"});
@@ -1149,7 +1149,7 @@ this.FeatureBackground();
 #line hidden
             TechTalk.SpecFlow.Table table66 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field",
-                        "Value"});
+                        "Data"});
             table66.AddRow(new string[] {
                         "Field 2",
                         "19"});
@@ -1165,7 +1165,7 @@ this.FeatureBackground();
 #line 389
  testRunner.And("I should see verification required on Fields in CRF", ((string)(null)), table67);
 #line 392
- testRunner.And("I check \"Verify\" on CRF page");
+ testRunner.And("I check \"Verify\" checkbox on CRF page");
 #line 393
  testRunner.And("I save the CRF page");
 #line 394
@@ -1184,7 +1184,7 @@ this.FeatureBackground();
 #line hidden
             TechTalk.SpecFlow.Table table69 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field",
-                        "Value"});
+                        "Data"});
             table69.AddRow(new string[] {
                         "Field 2",
                         "18"});

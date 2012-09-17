@@ -39,7 +39,7 @@ Scenario: As an EDC user, when I have an edit check fired on one field that sets
 	|Age		|20			|
 	And I save the CRF page
 	And I should see data on Fields in CRF
-	|Field     |Value      |
+	|Field     |Data       |
 	|Visit Date|01 Feb 2011|
 	|Age       |20         |
 	And I should see verification required on Fields in CRF
@@ -51,14 +51,14 @@ Scenario: As an EDC user, when I have an edit check fired on one field that sets
 	|Age  |17  |
 	And I save the CRF page
 	And I should see data on Fields in CRF
-	|Field     |Value      |
+	|Field     |Data       |
 	|Visit Date|01 Feb 2011|
 	|Age       |17         |
 	And I should see verification required on Fields in CRF
 	|Field     |Requires Verification|
 	|Visit Date|True                 |
 	|Age       |False                |
-	And I check "Verify" on Field "Visit Date"
+	And I check "Verify" checkbox on Field "Visit Date"
 	And I save the CRF page
 	And I take a screenshot
 	And I enter data in CRF
@@ -66,7 +66,7 @@ Scenario: As an EDC user, when I have an edit check fired on one field that sets
 	|Visit Date	|02 Feb 2011|
 	And I save the CRF page
 	And I should see data on Fields in CRF
-	|Field     |Value      |
+	|Field     |Data       |
 	|Visit Date|02 Feb 2011|
 	|Age       |17         |
 	And I should see verification required on Fields in CRF
@@ -98,7 +98,7 @@ Scenario: As an EDC user, when I have an edit check fired on one field that sets
 	|Age		|20			|
 	And I save the CRF page
 	And I should see data on Fields in CRF
-	|Field     |Value      |
+	|Field     |Data       |
 	|Visit Date|01 Feb 2011|
 	|Age       |20         |
 	And I should see verification required on Fields in CRF
@@ -110,14 +110,14 @@ Scenario: As an EDC user, when I have an edit check fired on one field that sets
 	|Age  |17   |
 	And I save the CRF page
 	And I should see data on Fields in CRF
-	|Field     |Value      |
+	|Field     |Data       |
 	|Visit Date|01 Feb 2011|
 	|Age       |17         |
 	And I should see verification required on Fields in CRF
 	|Field     |Requires Verification|
 	|Visit Date|True                 |
 	|Age       |False                |
-	And I check "Verify" on CRF page
+	And I check "Verify" checkbox on CRF page
 	And I save the CRF page
 	And I take a screenshot
 	And I enter data in CRF
@@ -125,7 +125,7 @@ Scenario: As an EDC user, when I have an edit check fired on one field that sets
 	|Visit Date	|02 Feb 2011|
 	And I save the CRF page
 	And I should see data on Fields in CRF
-	|Field     |Value      |
+	|Field     |Data       |
 	|Visit Date|02 Feb 2011|
 	|Age       |17         |
 	And I should see verification required on Fields in CRF
@@ -156,12 +156,12 @@ Scenario: As an EDC user, when I have an edit check that sets a field to require
 	|Field 1|19	  |
 	And I save the CRF page
 	And I should see data on Fields in CRF
-	|Field  |Value|
-	|Field 1|19   |
+	|Field  |Data|
+	|Field 1|19  |
 	And I should see verification required on Fields in CRF
 	|Field  |Requires Verification|
 	|Field 1|True                 |
-	And I check "Verify" on Field "Field 1"
+	And I check "Verify" checkbox on Field "Field 1"
 	And I save the CRF page
 	And I take a screenshot
 	And I enter data in CRF
@@ -169,8 +169,8 @@ Scenario: As an EDC user, when I have an edit check that sets a field to require
 	|Field 1|18   |
 	And I save the CRF page
 	And I should see data on Fields in CRF
-	|Field  |Value|
-	|Field 1|18   |
+	|Field  |Data|
+	|Field 1|18  |
 	And I should see verification required on Fields in CRF
 	|Field  |Requires Verification|
 	|Field 1|True                 |
@@ -198,12 +198,12 @@ Scenario: As an EDC user, when I have an edit check that sets a field to require
 	|Field 1|19	  |
 	And I save the CRF page
 	And I should see data on Fields in CRF
-	|Field  |Value|
-	|Field 1|19   |
+	|Field  |Data|
+	|Field 1|19  |
 	And I should see verification required on Fields in CRF
 	|Field  |Requires Verification|
 	|Field 1|True                 |	
-	And I check "Verify" on CRF page
+	And I check "Verify" checkbox on CRF page
 	And I save the CRF page
 	And I take a screenshot
 	And I enter data in CRF
@@ -211,7 +211,7 @@ Scenario: As an EDC user, when I have an edit check that sets a field to require
 	|Field 1|18   |
 	And I save the CRF page
 	And I should see data on Fields in CRF
-	|Field  |Value|
+	|Field  |Data |
 	|Field 1|18   |
 	And I should see verification required on Fields in CRF
 	|Field  |Requires Verification|
@@ -241,7 +241,7 @@ Scenario: As an EDC user, when I have an edit check fired on a field that is der
 	|Visit Date|10 Dec 2011|
 	And I save the CRF page
 	And I should see data on Fields in CRF
-	| Field      | Value       |
+	| Field      | Data        |
 	| DOB        | 05 Mar 1995 |
 	| Visit Date | 10 Dec 2011 |
 	| Age        | 16          |
@@ -250,7 +250,7 @@ Scenario: As an EDC user, when I have an edit check fired on a field that is der
 	| DOB        | True                |
 	| Visit Date | False               |
 	| Age        | False               |
-	And I check "Verify" on Field "DOB"
+	And I check "Verify" checkbox on Field "DOB"
 	And I save the CRF page
 	And I take a screenshot
 	And I enter data in CRF
@@ -258,7 +258,7 @@ Scenario: As an EDC user, when I have an edit check fired on a field that is der
 	|DOB  |12 Jun 1993|
 	And I save the CRF page
 	And I should see data on Fields in CRF
-	| Field      | Value       |
+	| Field      | Data        |
 	| DOB        | 12 Jun 1993 |
 	| Visit Date | 10 Dec 2011 |
 	| Age        | 18          |
@@ -292,7 +292,7 @@ Scenario: As an EDC user, when I have an edit check fired on a field that is der
 	|Visit Date|10 Dec 2011|
 	And I save the CRF page
 	And I should see data on Fields in CRF
-	| Field      | Value       |
+	| Field      | Data        |
 	| DOB        | 05 Mar 1995 |
 	| Visit Date | 10 Dec 2011 |
 	| Age        | 16          |
@@ -301,7 +301,7 @@ Scenario: As an EDC user, when I have an edit check fired on a field that is der
 	| DOB        | True                |
 	| Visit Date | False               |
 	| Age        | False               |
-	And I check "Verify" on CRF page
+	And I check "Verify" checkbox on CRF page
 	And I save the CRF page
 	And I take a screenshot
 	And I enter data in CRF
@@ -309,7 +309,7 @@ Scenario: As an EDC user, when I have an edit check fired on a field that is der
 	|DOB  |12 Jun 1993|
 	And I save the CRF page
 	And I should see data on Fields in CRF
-	| Field      | Value       |
+	| Field      | Data        |
 	| DOB        | 12 Jun 1993 |
 	| Visit Date | 10 Dec 2011 |
 	| Age        | 18          |
@@ -342,12 +342,12 @@ Scenario: As an EDC user, when I have TSDV turned off for a form, when I have an
 	|Field 2|19	  |
 	And I save the CRF page
 	And I should see data on Fields in CRF
-	|Field  |Value|
+	|Field  |Data |
 	|Field 2|19   |
 	And I should see verification required on Fields in CRF
 	|Field  |Requires Verification|
 	|Field 2|True                 |
-	And I check "Verify" on Field "Field 2"
+	And I check "Verify" checkbox on Field "Field 2"
 	And I save the CRF page
 	And I take a screenshot
 	And I enter data in CRF
@@ -355,7 +355,7 @@ Scenario: As an EDC user, when I have TSDV turned off for a form, when I have an
 	|Field 2|18   |
 	And I save the CRF page
 	And I should see data on Fields in CRF
-	|Field  |Value|
+	|Field  |Data |
 	|Field 2|18   |
 	And I should see verification required on Fields in CRF
 	|Field  |Requires Verification|
@@ -384,12 +384,12 @@ Scenario: As an EDC user, when I have TSDV turned off for a form, and I have an 
 	|Field 2|19	  |
 	And I save the CRF page
 	And I should see data on Fields in CRF
-	|Field  |Value|
+	|Field  |Data |
 	|Field 2|19   |
 	And I should see verification required on Fields in CRF
 	|Field  |Requires Verification|
 	|Field 2|True                 |
-	And I check "Verify" on CRF page
+	And I check "Verify" checkbox on CRF page
 	And I save the CRF page
 	And I take a screenshot
 	And I enter data in CRF
@@ -397,7 +397,7 @@ Scenario: As an EDC user, when I have TSDV turned off for a form, and I have an 
 	|Field 2|18   |
 	And I save the CRF page
 	And I should see data on Fields in CRF
-	|Field  |Value|
+	|Field  |Data |
 	|Field 2|18   |
 	And I should see verification required on Fields in CRF
 	|Field  |Requires Verification|
