@@ -122,7 +122,7 @@ this.FeatureBackground();
 #line hidden
             TechTalk.SpecFlow.Table table2 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field",
-                        "Value"});
+                        "Data"});
             table2.AddRow(new string[] {
                         "Subject Number",
                         "101"});
@@ -132,119 +132,145 @@ this.FeatureBackground();
 #line 31
  testRunner.When("I create a Subject", ((string)(null)), table2);
 #line 35
- testRunner.And("I am on CRF page \"Visit Date\" in Subject \"101SUBJ\" in Site \"Site 1\" in Study \"Med" +
-                    "iflex\"");
+ testRunner.And("I select Form \"Visit Date\" in Folder \"VISIT\"");
 #line hidden
             TechTalk.SpecFlow.Table table3 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field",
-                        "Value"});
+                        "Data"});
             table3.AddRow(new string[] {
                         "Visit Date",
-                        "01 FEB 2011"});
+                        "01 Feb 2011"});
             table3.AddRow(new string[] {
                         "Age",
                         "20"});
 #line 36
  testRunner.And("I enter data in CRF", ((string)(null)), table3);
 #line 40
- testRunner.And("I save the CRF");
+ testRunner.And("I save the CRF page");
 #line hidden
             TechTalk.SpecFlow.Table table4 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field",
-                        "Value",
-                        "Requires Verification"});
+                        "Value"});
             table4.AddRow(new string[] {
                         "Visit Date",
-                        "01 FEB 2011",
-                        "False"});
+                        "01 Feb 2011"});
             table4.AddRow(new string[] {
                         "Age",
-                        "20",
-                        "False"});
+                        "20"});
 #line 41
- testRunner.And("I verify data in CRF", ((string)(null)), table4);
+ testRunner.And("I should see data on Fields in CRF", ((string)(null)), table4);
 #line hidden
             TechTalk.SpecFlow.Table table5 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field",
-                        "Value"});
+                        "Requires Verification"});
+            table5.AddRow(new string[] {
+                        "Visit Date",
+                        "False"});
             table5.AddRow(new string[] {
                         "Age",
-                        "17"});
+                        "False"});
 #line 45
- testRunner.And("I enter data in CRF", ((string)(null)), table5);
+ testRunner.And("I should see verification required on Fields in CRF", ((string)(null)), table5);
 #line hidden
             TechTalk.SpecFlow.Table table6 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field",
-                        "Value",
-                        "Requires Verification"});
-            table6.AddRow(new string[] {
-                        "Visit Date",
-                        "01 FEB 2011",
-                        "True"});
+                        "Data"});
             table6.AddRow(new string[] {
                         "Age",
-                        "17",
-                        "False"});
-#line 48
- testRunner.And("I verify data in CRF", ((string)(null)), table6);
+                        "17"});
+#line 49
+ testRunner.And("I enter data in CRF", ((string)(null)), table6);
+#line 52
+ testRunner.And("I save the CRF page");
 #line hidden
             TechTalk.SpecFlow.Table table7 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field",
                         "Value"});
             table7.AddRow(new string[] {
                         "Visit Date",
-                        "01 FEB 2011"});
-#line 52
- testRunner.And("I check Verify box for data in CRF", ((string)(null)), table7);
-#line 55
- testRunner.And("I save the CRF");
-#line 56
- testRunner.And("I take screenshot");
+                        "01 Feb 2011"});
+            table7.AddRow(new string[] {
+                        "Age",
+                        "17"});
+#line 53
+ testRunner.And("I should see data on Fields in CRF", ((string)(null)), table7);
 #line hidden
             TechTalk.SpecFlow.Table table8 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field",
-                        "Value"});
+                        "Requires Verification"});
             table8.AddRow(new string[] {
                         "Visit Date",
-                        "02 FEB 2011"});
+                        "True"});
+            table8.AddRow(new string[] {
+                        "Age",
+                        "False"});
 #line 57
- testRunner.And("I enter data in CRF", ((string)(null)), table8);
-#line 60
- testRunner.And("I save the CRF");
+ testRunner.And("I should see verification required on Fields in CRF", ((string)(null)), table8);
+#line 61
+ testRunner.And("I check \"Verify\" on Field \"Visit Date\"");
+#line 62
+ testRunner.And("I save the CRF page");
+#line 63
+ testRunner.And("I take a screenshot");
 #line hidden
             TechTalk.SpecFlow.Table table9 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field",
-                        "Value",
-                        "Requires Verification"});
+                        "Data"});
             table9.AddRow(new string[] {
                         "Visit Date",
-                        "02 FEB 2011",
-                        "True"});
-            table9.AddRow(new string[] {
-                        "Age",
-                        "17",
-                        "False"});
-#line 61
- testRunner.And("I verify data in CRF", ((string)(null)), table9);
-#line 65
- testRunner.And("I take screenshot");
-#line 66
- testRunner.And("I go to Audits for Field \"Visit Date\"");
+                        "02 Feb 2011"});
+#line 64
+ testRunner.And("I enter data in CRF", ((string)(null)), table9);
+#line 67
+ testRunner.And("I save the CRF page");
 #line hidden
             TechTalk.SpecFlow.Table table10 = new TechTalk.SpecFlow.Table(new string[] {
-                        "Audit Message"});
+                        "Field",
+                        "Value"});
             table10.AddRow(new string[] {
-                        "User entered \'02 FEB 2011\'"});
+                        "Visit Date",
+                        "02 Feb 2011"});
             table10.AddRow(new string[] {
-                        "DataPoint Un-verified."});
-            table10.AddRow(new string[] {
-                        "DataPoint Verified."});
-            table10.AddRow(new string[] {
-                        "User entered \'01 FEB 2011\'"});
-#line 67
- testRunner.Then("I verify Audits exist", ((string)(null)), table10);
-#line 73
- testRunner.And("I take screenshot");
+                        "Age",
+                        "17"});
+#line 68
+ testRunner.And("I should see data on Fields in CRF", ((string)(null)), table10);
+#line hidden
+            TechTalk.SpecFlow.Table table11 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Requires Verification"});
+            table11.AddRow(new string[] {
+                        "Visit Date",
+                        "True"});
+            table11.AddRow(new string[] {
+                        "Age",
+                        "False"});
+#line 72
+ testRunner.And("I should see verification required on Fields in CRF", ((string)(null)), table11);
+#line 76
+ testRunner.And("I take a screenshot");
+#line 77
+ testRunner.And("I click audit on Field \"Visit Date\"");
+#line hidden
+            TechTalk.SpecFlow.Table table12 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Audit Type",
+                        "Query Message"});
+            table12.AddRow(new string[] {
+                        "User entered",
+                        "\'02 Feb 2011\'"});
+            table12.AddRow(new string[] {
+                        "DataPoint",
+                        "Un-verified."});
+            table12.AddRow(new string[] {
+                        "DataPoint",
+                        "Verified."});
+            table12.AddRow(new string[] {
+                        "User entered",
+                        "\'01 Feb 2011\'"});
+#line 78
+ testRunner.Then("I verify Audits exist", ((string)(null)), table12);
+#line 84
+ testRunner.And("I take a screenshot");
 #line hidden
             this.ScenarioCleanup();
         }
@@ -259,134 +285,162 @@ this.FeatureBackground();
                         "release_2012.1.0",
                         "PB-DT13622-02",
                         "WIP"});
-#line 78
+#line 89
 this.ScenarioSetup(scenarioInfo);
 #line 10
 this.FeatureBackground();
 #line hidden
-            TechTalk.SpecFlow.Table table11 = new TechTalk.SpecFlow.Table(new string[] {
-                        "Field",
-                        "Value"});
-            table11.AddRow(new string[] {
-                        "Subject Number",
-                        "102"});
-            table11.AddRow(new string[] {
-                        "Subject Initials",
-                        "SUBJ"});
-#line 79
- testRunner.When("I create a Subject", ((string)(null)), table11);
-#line 83
- testRunner.And("I am on CRF page \"Visit Date\" in Subject \"102SUBJ\" in Site \"Site 1\" in Study \"Med" +
-                    "iflex\"");
-#line hidden
-            TechTalk.SpecFlow.Table table12 = new TechTalk.SpecFlow.Table(new string[] {
-                        "Field",
-                        "Value"});
-            table12.AddRow(new string[] {
-                        "Visit Date",
-                        "01 FEB 2011"});
-            table12.AddRow(new string[] {
-                        "Age",
-                        "20"});
-#line 84
- testRunner.And("I enter data in CRF", ((string)(null)), table12);
-#line 88
- testRunner.And("I save the CRF");
-#line hidden
             TechTalk.SpecFlow.Table table13 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field",
-                        "Value",
-                        "Requires Verification"});
+                        "Data"});
             table13.AddRow(new string[] {
-                        "Visit Date",
-                        "01 FEB 2011",
-                        "False"});
+                        "Subject Number",
+                        "102"});
             table13.AddRow(new string[] {
-                        "Age",
-                        "20",
-                        "False"});
-#line 89
- testRunner.And("I verify data in CRF", ((string)(null)), table13);
+                        "Subject Initials",
+                        "SUBJ"});
+#line 90
+ testRunner.When("I create a Subject", ((string)(null)), table13);
+#line 94
+ testRunner.And("I select Form \"Visit Date\" in Folder \"VISIT\"");
 #line hidden
             TechTalk.SpecFlow.Table table14 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field",
-                        "Value"});
+                        "Data"});
+            table14.AddRow(new string[] {
+                        "Visit Date",
+                        "01 FEB 2011"});
             table14.AddRow(new string[] {
                         "Age",
-                        "17"});
-#line 93
+                        "20"});
+#line 95
  testRunner.And("I enter data in CRF", ((string)(null)), table14);
+#line 99
+ testRunner.And("I save the CRF page");
 #line hidden
             TechTalk.SpecFlow.Table table15 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field",
-                        "Value",
-                        "Requires Verification"});
+                        "Value"});
             table15.AddRow(new string[] {
                         "Visit Date",
-                        "01 FEB 2011",
-                        "True"});
+                        "01 Feb 2011"});
             table15.AddRow(new string[] {
                         "Age",
-                        "17",
-                        "False"});
-#line 96
- testRunner.And("I verify data in CRF", ((string)(null)), table15);
+                        "20"});
+#line 100
+ testRunner.And("I should see data on Fields in CRF", ((string)(null)), table15);
 #line hidden
             TechTalk.SpecFlow.Table table16 = new TechTalk.SpecFlow.Table(new string[] {
-                        "Form"});
+                        "Field",
+                        "Requires Verification"});
             table16.AddRow(new string[] {
-                        "Visit Date"});
-#line 100
- testRunner.And("I check Verify box for data in CRF", ((string)(null)), table16);
-#line 103
- testRunner.And("I save the CRF");
+                        "Visit Date",
+                        "False"});
+            table16.AddRow(new string[] {
+                        "Age",
+                        "False"});
 #line 104
- testRunner.And("I take screenshot");
+ testRunner.And("I should see verification required on Fields in CRF", ((string)(null)), table16);
 #line hidden
             TechTalk.SpecFlow.Table table17 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field",
-                        "Value"});
+                        "Data"});
             table17.AddRow(new string[] {
-                        "Visit Date",
-                        "02 FEB 2011"});
-#line 105
- testRunner.And("I enter data in CRF", ((string)(null)), table17);
+                        "Age",
+                        "17"});
 #line 108
- testRunner.And("I save the CRF");
+ testRunner.And("I enter data in CRF", ((string)(null)), table17);
+#line 111
+ testRunner.And("I save the CRF page");
 #line hidden
             TechTalk.SpecFlow.Table table18 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field",
-                        "Value",
-                        "Requires Verification"});
+                        "Value"});
             table18.AddRow(new string[] {
                         "Visit Date",
-                        "02 FEB 2011",
-                        "True"});
+                        "01 Feb 2011"});
             table18.AddRow(new string[] {
                         "Age",
-                        "17",
-                        "False"});
-#line 109
- testRunner.And("I verify data in CRF", ((string)(null)), table18);
-#line 113
- testRunner.And("I take screenshot");
-#line 114
- testRunner.And("I go to Audits for Field \"Visit Date\"");
+                        "17"});
+#line 112
+ testRunner.And("I should see data on Fields in CRF", ((string)(null)), table18);
 #line hidden
             TechTalk.SpecFlow.Table table19 = new TechTalk.SpecFlow.Table(new string[] {
-                        "Audit Message"});
+                        "Field",
+                        "Requires Verification"});
             table19.AddRow(new string[] {
-                        "User entered \'02 FEB 2011\'"});
+                        "Visit Date",
+                        "True"});
             table19.AddRow(new string[] {
-                        "DataPoint Un-verified."});
-            table19.AddRow(new string[] {
-                        "DataPoint Verified."});
-            table19.AddRow(new string[] {
-                        "User entered \'01 FEB 2011\'"});
-#line 115
- testRunner.Then("I verify Audits exist", ((string)(null)), table19);
+                        "Age",
+                        "False"});
+#line 116
+ testRunner.And("I should see verification required on Fields in CRF", ((string)(null)), table19);
+#line 120
+ testRunner.And("I check \"Verify\" on CRF page");
 #line 121
- testRunner.And("I take screenshot");
+ testRunner.And("I save the CRF page");
+#line 122
+ testRunner.And("I take a screenshot");
+#line hidden
+            TechTalk.SpecFlow.Table table20 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Data"});
+            table20.AddRow(new string[] {
+                        "Visit Date",
+                        "02 Feb 2011"});
+#line 123
+ testRunner.And("I enter data in CRF", ((string)(null)), table20);
+#line 126
+ testRunner.And("I save the CRF page");
+#line hidden
+            TechTalk.SpecFlow.Table table21 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Value"});
+            table21.AddRow(new string[] {
+                        "Visit Date",
+                        "02 Feb 2011"});
+            table21.AddRow(new string[] {
+                        "Age",
+                        "17"});
+#line 127
+ testRunner.And("I should see data on Fields in CRF", ((string)(null)), table21);
+#line hidden
+            TechTalk.SpecFlow.Table table22 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Requires Verification"});
+            table22.AddRow(new string[] {
+                        "Visit Date",
+                        "True"});
+            table22.AddRow(new string[] {
+                        "Age",
+                        "False"});
+#line 131
+ testRunner.And("I should see verification required on Fields in CRF", ((string)(null)), table22);
+#line 135
+ testRunner.And("I take a screenshot");
+#line 136
+ testRunner.And("I click audit on Field \"Visit Date\"");
+#line hidden
+            TechTalk.SpecFlow.Table table23 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Audit Type",
+                        "Query Message"});
+            table23.AddRow(new string[] {
+                        "User entered",
+                        "\'02 Feb 2011\'"});
+            table23.AddRow(new string[] {
+                        "DataPoint",
+                        "Un-verified."});
+            table23.AddRow(new string[] {
+                        "DataPoint",
+                        "Verified."});
+            table23.AddRow(new string[] {
+                        "User entered",
+                        "\'01 Feb 2011\'"});
+#line 137
+ testRunner.Then("I verify Audits exist", ((string)(null)), table23);
+#line 143
+ testRunner.And("I take a screenshot");
 #line hidden
             this.ScenarioCleanup();
         }
@@ -405,99 +459,112 @@ this.FeatureBackground();
                         "release_2012.1.0",
                         "PB-DT13622-03",
                         "WIP"});
-#line 126
+#line 148
 this.ScenarioSetup(scenarioInfo);
 #line 10
 this.FeatureBackground();
 #line hidden
-            TechTalk.SpecFlow.Table table20 = new TechTalk.SpecFlow.Table(new string[] {
-                        "Field",
-                        "Value"});
-            table20.AddRow(new string[] {
-                        "Subject Number",
-                        "103"});
-            table20.AddRow(new string[] {
-                        "Subject Initials",
-                        "SUBJ"});
-#line 127
- testRunner.When("I create a Subject", ((string)(null)), table20);
-#line 131
- testRunner.And("I am on CRF page \"Form 1\" in Subject \"103SUBJ\" in Site \"Site 1\" in Study \"Medifle" +
-                    "x\"");
-#line hidden
-            TechTalk.SpecFlow.Table table21 = new TechTalk.SpecFlow.Table(new string[] {
-                        "Field",
-                        "Value"});
-            table21.AddRow(new string[] {
-                        "Field 1",
-                        "19"});
-#line 132
- testRunner.And("I enter data in CRF", ((string)(null)), table21);
-#line 135
- testRunner.And("I save the CRF");
-#line hidden
-            TechTalk.SpecFlow.Table table22 = new TechTalk.SpecFlow.Table(new string[] {
-                        "Field",
-                        "Value",
-                        "Requires Verification"});
-            table22.AddRow(new string[] {
-                        "Field 1",
-                        "19",
-                        "True"});
-#line 136
- testRunner.And("I verify data in CRF", ((string)(null)), table22);
-#line hidden
-            TechTalk.SpecFlow.Table table23 = new TechTalk.SpecFlow.Table(new string[] {
-                        "Field"});
-            table23.AddRow(new string[] {
-                        "Field 1"});
-#line 139
- testRunner.And("I check Verify box for data in CRF", ((string)(null)), table23);
-#line 142
- testRunner.And("I save the CRF");
-#line 143
- testRunner.And("I take screenshot");
-#line hidden
             TechTalk.SpecFlow.Table table24 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field",
-                        "Value"});
+                        "Data"});
             table24.AddRow(new string[] {
-                        "Field 1",
-                        "18"});
-#line 144
- testRunner.And("I enter data in CRF", ((string)(null)), table24);
-#line 147
- testRunner.And("I save the CRF");
+                        "Subject Number",
+                        "103"});
+            table24.AddRow(new string[] {
+                        "Subject Initials",
+                        "SUBJ"});
+#line 149
+ testRunner.When("I create a Subject", ((string)(null)), table24);
+#line 153
+ testRunner.And("I select Form \"Form 1\"");
 #line hidden
             TechTalk.SpecFlow.Table table25 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field",
-                        "Value",
-                        "Requires Verification"});
+                        "Data"});
             table25.AddRow(new string[] {
                         "Field 1",
-                        "18",
-                        "True"});
-#line 148
- testRunner.And("I verify data in CRF", ((string)(null)), table25);
-#line 151
- testRunner.And("I take screenshot");
-#line 152
- testRunner.And("I go to Audits for Field \"Field 1\"");
+                        "19"});
+#line 154
+ testRunner.And("I enter data in CRF", ((string)(null)), table25);
+#line 157
+ testRunner.And("I save the CRF page");
 #line hidden
             TechTalk.SpecFlow.Table table26 = new TechTalk.SpecFlow.Table(new string[] {
-                        "Audit Message"});
+                        "Field",
+                        "Value"});
             table26.AddRow(new string[] {
-                        "User entered \'18\'"});
-            table26.AddRow(new string[] {
-                        "DataPoint Un-verified."});
-            table26.AddRow(new string[] {
-                        "DataPoint Verified."});
-            table26.AddRow(new string[] {
-                        "User entered \'19\'"});
-#line 153
- testRunner.Then("I verify Audits exist", ((string)(null)), table26);
-#line 159
- testRunner.And("I take screenshot");
+                        "Field 1",
+                        "19"});
+#line 158
+ testRunner.And("I should see data on Fields in CRF", ((string)(null)), table26);
+#line hidden
+            TechTalk.SpecFlow.Table table27 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Requires Verification"});
+            table27.AddRow(new string[] {
+                        "Field 1",
+                        "True"});
+#line 161
+ testRunner.And("I should see verification required on Fields in CRF", ((string)(null)), table27);
+#line 164
+ testRunner.And("I check \"Verify\" on Field \"Field 1\"");
+#line 165
+ testRunner.And("I save the CRF page");
+#line 166
+ testRunner.And("I take a screenshot");
+#line hidden
+            TechTalk.SpecFlow.Table table28 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Data"});
+            table28.AddRow(new string[] {
+                        "Field 1",
+                        "18"});
+#line 167
+ testRunner.And("I enter data in CRF", ((string)(null)), table28);
+#line 170
+ testRunner.And("I save the CRF page");
+#line hidden
+            TechTalk.SpecFlow.Table table29 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Value"});
+            table29.AddRow(new string[] {
+                        "Field 1",
+                        "18"});
+#line 171
+ testRunner.And("I should see data on Fields in CRF", ((string)(null)), table29);
+#line hidden
+            TechTalk.SpecFlow.Table table30 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Requires Verification"});
+            table30.AddRow(new string[] {
+                        "Field 1",
+                        "True"});
+#line 174
+ testRunner.And("I should see verification required on Fields in CRF", ((string)(null)), table30);
+#line 177
+ testRunner.And("I take a screenshot");
+#line 178
+ testRunner.And("I click audit on Field \"Field 1\"");
+#line hidden
+            TechTalk.SpecFlow.Table table31 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Audit Type",
+                        "Query Message"});
+            table31.AddRow(new string[] {
+                        "User entered",
+                        "\'18\'"});
+            table31.AddRow(new string[] {
+                        "DataPoint",
+                        "Un-verified."});
+            table31.AddRow(new string[] {
+                        "DataPoint",
+                        "Verified."});
+            table31.AddRow(new string[] {
+                        "User entered",
+                        "\'19\'"});
+#line 179
+ testRunner.Then("I verify Audits exist", ((string)(null)), table31);
+#line 185
+ testRunner.And("I take a screenshot");
 #line hidden
             this.ScenarioCleanup();
         }
@@ -516,99 +583,112 @@ this.FeatureBackground();
                         "release_2012.1.0",
                         "PB-DT13622-04",
                         "WIP"});
-#line 164
+#line 190
 this.ScenarioSetup(scenarioInfo);
 #line 10
 this.FeatureBackground();
 #line hidden
-            TechTalk.SpecFlow.Table table27 = new TechTalk.SpecFlow.Table(new string[] {
-                        "Field",
-                        "Value"});
-            table27.AddRow(new string[] {
-                        "Subject Number",
-                        "104"});
-            table27.AddRow(new string[] {
-                        "Subject Initials",
-                        "SUBJ"});
-#line 165
- testRunner.When("I create a Subject", ((string)(null)), table27);
-#line 169
- testRunner.And("I am on CRF page \"Form 1\" in Subject \"104SUBJ\" in Site \"Site 1\" in Study \"Medifle" +
-                    "x\"");
-#line hidden
-            TechTalk.SpecFlow.Table table28 = new TechTalk.SpecFlow.Table(new string[] {
-                        "Field",
-                        "Value"});
-            table28.AddRow(new string[] {
-                        "Field 1",
-                        "19"});
-#line 170
- testRunner.And("I enter data in CRF", ((string)(null)), table28);
-#line 173
- testRunner.And("I save the CRF");
-#line hidden
-            TechTalk.SpecFlow.Table table29 = new TechTalk.SpecFlow.Table(new string[] {
-                        "Field",
-                        "Value",
-                        "Requires Verification"});
-            table29.AddRow(new string[] {
-                        "Field 1",
-                        "19",
-                        "True"});
-#line 174
- testRunner.And("I verify data in CRF", ((string)(null)), table29);
-#line hidden
-            TechTalk.SpecFlow.Table table30 = new TechTalk.SpecFlow.Table(new string[] {
-                        "Form"});
-            table30.AddRow(new string[] {
-                        "Form 1"});
-#line 177
- testRunner.And("I check Verify box for data in CRF", ((string)(null)), table30);
-#line 180
- testRunner.And("I save the CRF");
-#line 181
- testRunner.And("I take screenshot");
-#line hidden
-            TechTalk.SpecFlow.Table table31 = new TechTalk.SpecFlow.Table(new string[] {
-                        "Field",
-                        "Value"});
-            table31.AddRow(new string[] {
-                        "Field 1",
-                        "18"});
-#line 182
- testRunner.And("I enter data in CRF", ((string)(null)), table31);
-#line 185
- testRunner.And("I save the CRF");
-#line hidden
             TechTalk.SpecFlow.Table table32 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field",
-                        "Value",
-                        "Requires Verification"});
+                        "Data"});
             table32.AddRow(new string[] {
-                        "Field 1",
-                        "18",
-                        "True"});
-#line 186
- testRunner.And("I verify data in CRF", ((string)(null)), table32);
-#line 189
- testRunner.And("I take screenshot");
-#line 190
- testRunner.And("I go to Audits for Field \"Field 1\"");
+                        "Subject Number",
+                        "104"});
+            table32.AddRow(new string[] {
+                        "Subject Initials",
+                        "SUBJ"});
+#line 191
+ testRunner.When("I create a Subject", ((string)(null)), table32);
+#line 195
+ testRunner.And("I select Form \"Form 1\"");
 #line hidden
             TechTalk.SpecFlow.Table table33 = new TechTalk.SpecFlow.Table(new string[] {
-                        "Audit Message"});
+                        "Field",
+                        "Data"});
             table33.AddRow(new string[] {
-                        "User entered \'18\'"});
-            table33.AddRow(new string[] {
-                        "DataPoint Un-verified."});
-            table33.AddRow(new string[] {
-                        "DataPoint Verified."});
-            table33.AddRow(new string[] {
-                        "User entered \'19\'"});
-#line 191
- testRunner.Then("I verify Audits exist", ((string)(null)), table33);
-#line 197
- testRunner.And("I take screenshot");
+                        "Field 1",
+                        "19"});
+#line 196
+ testRunner.And("I enter data in CRF", ((string)(null)), table33);
+#line 199
+ testRunner.And("I save the CRF page");
+#line hidden
+            TechTalk.SpecFlow.Table table34 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Value"});
+            table34.AddRow(new string[] {
+                        "Field 1",
+                        "19"});
+#line 200
+ testRunner.And("I should see data on Fields in CRF", ((string)(null)), table34);
+#line hidden
+            TechTalk.SpecFlow.Table table35 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Requires Verification"});
+            table35.AddRow(new string[] {
+                        "Field 1",
+                        "True"});
+#line 203
+ testRunner.And("I should see verification required on Fields in CRF", ((string)(null)), table35);
+#line 206
+ testRunner.And("I check \"Verify\" on CRF page");
+#line 207
+ testRunner.And("I save the CRF page");
+#line 208
+ testRunner.And("I take a screenshot");
+#line hidden
+            TechTalk.SpecFlow.Table table36 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Data"});
+            table36.AddRow(new string[] {
+                        "Field 1",
+                        "18"});
+#line 209
+ testRunner.And("I enter data in CRF", ((string)(null)), table36);
+#line 212
+ testRunner.And("I save the CRF page");
+#line hidden
+            TechTalk.SpecFlow.Table table37 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Value"});
+            table37.AddRow(new string[] {
+                        "Field 1",
+                        "18"});
+#line 213
+ testRunner.And("I should see data on Fields in CRF", ((string)(null)), table37);
+#line hidden
+            TechTalk.SpecFlow.Table table38 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Requires Verification"});
+            table38.AddRow(new string[] {
+                        "Field 1",
+                        "True"});
+#line 216
+ testRunner.And("I should see verification required on Fields in CRF", ((string)(null)), table38);
+#line 219
+ testRunner.And("I take a screenshot");
+#line 220
+ testRunner.And("I click audit on Field \"Field 1\"");
+#line hidden
+            TechTalk.SpecFlow.Table table39 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Audit Type",
+                        "Query Message"});
+            table39.AddRow(new string[] {
+                        "User entered",
+                        "\'18\'"});
+            table39.AddRow(new string[] {
+                        "DataPoint",
+                        "Un-verified."});
+            table39.AddRow(new string[] {
+                        "DataPoint",
+                        "Verified."});
+            table39.AddRow(new string[] {
+                        "User entered",
+                        "\'19\'"});
+#line 221
+ testRunner.Then("I verify Audits exist", ((string)(null)), table39);
+#line 227
+ testRunner.And("I take a screenshot");
 #line hidden
             this.ScenarioCleanup();
         }
@@ -623,118 +703,139 @@ this.FeatureBackground();
                         "release_2012.1.0",
                         "PB-DT13622-05",
                         "WIP"});
-#line 202
+#line 232
 this.ScenarioSetup(scenarioInfo);
 #line 10
 this.FeatureBackground();
 #line hidden
-            TechTalk.SpecFlow.Table table34 = new TechTalk.SpecFlow.Table(new string[] {
+            TechTalk.SpecFlow.Table table40 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field",
-                        "Value"});
-            table34.AddRow(new string[] {
+                        "Data"});
+            table40.AddRow(new string[] {
                         "Subject Number",
                         "105"});
-            table34.AddRow(new string[] {
+            table40.AddRow(new string[] {
                         "Subject Initials",
                         "SUBJ"});
-#line 203
- testRunner.When("I create a Subject", ((string)(null)), table34);
-#line 207
- testRunner.And("I am on CRF page \"Form 2\" in Subject \"105SUBJ\" in Site \"Site 1\" in Study \"Medifle" +
-                    "x\"");
+#line 233
+ testRunner.When("I create a Subject", ((string)(null)), table40);
+#line 237
+ testRunner.And("I select Form \"Form 2\"");
 #line hidden
-            TechTalk.SpecFlow.Table table35 = new TechTalk.SpecFlow.Table(new string[] {
+            TechTalk.SpecFlow.Table table41 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field",
-                        "Value"});
-            table35.AddRow(new string[] {
+                        "Data"});
+            table41.AddRow(new string[] {
                         "DOB",
                         "05 Mar 1995"});
-            table35.AddRow(new string[] {
+            table41.AddRow(new string[] {
                         "Visit Date",
                         "10 Dec 2011"});
-#line 208
- testRunner.And("I enter data in CRF", ((string)(null)), table35);
-#line 212
- testRunner.And("I save the CRF");
+#line 238
+ testRunner.And("I enter data in CRF", ((string)(null)), table41);
+#line 242
+ testRunner.And("I save the CRF page");
 #line hidden
-            TechTalk.SpecFlow.Table table36 = new TechTalk.SpecFlow.Table(new string[] {
-                        "Field",
-                        "Value",
-                        "Requires Verification"});
-            table36.AddRow(new string[] {
-                        "DOB",
-                        "05 Mar 1995",
-                        "True"});
-            table36.AddRow(new string[] {
-                        "Visit Date",
-                        "10 Dec 2011",
-                        "False"});
-            table36.AddRow(new string[] {
-                        "Age",
-                        "16",
-                        "False"});
-#line 213
- testRunner.And("I verify data in CRF", ((string)(null)), table36);
-#line hidden
-            TechTalk.SpecFlow.Table table37 = new TechTalk.SpecFlow.Table(new string[] {
-                        "Field"});
-            table37.AddRow(new string[] {
-                        "DOB"});
-#line 218
- testRunner.And("I check Verify box for data in CRF", ((string)(null)), table37);
-#line 221
- testRunner.And("I save the CRF");
-#line 222
- testRunner.And("I take screenshot");
-#line hidden
-            TechTalk.SpecFlow.Table table38 = new TechTalk.SpecFlow.Table(new string[] {
+            TechTalk.SpecFlow.Table table42 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field",
                         "Value"});
-            table38.AddRow(new string[] {
+            table42.AddRow(new string[] {
+                        "DOB",
+                        "05 Mar 1995"});
+            table42.AddRow(new string[] {
+                        "Visit Date",
+                        "10 Dec 2011"});
+            table42.AddRow(new string[] {
+                        "Age",
+                        "16"});
+#line 243
+ testRunner.And("I should see data on Fields in CRF", ((string)(null)), table42);
+#line hidden
+            TechTalk.SpecFlow.Table table43 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Requires Verification"});
+            table43.AddRow(new string[] {
+                        "DOB",
+                        "True"});
+            table43.AddRow(new string[] {
+                        "Visit Date",
+                        "False"});
+            table43.AddRow(new string[] {
+                        "Age",
+                        "False"});
+#line 248
+ testRunner.And("I should see verification required on Fields in CRF", ((string)(null)), table43);
+#line 253
+ testRunner.And("I check \"Verify\" on Field \"DOB\"");
+#line 254
+ testRunner.And("I save the CRF page");
+#line 255
+ testRunner.And("I take a screenshot");
+#line hidden
+            TechTalk.SpecFlow.Table table44 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Data"});
+            table44.AddRow(new string[] {
                         "DOB",
                         "12 Jun 1993"});
-#line 223
- testRunner.And("I enter data in CRF", ((string)(null)), table38);
-#line 226
- testRunner.And("I save the CRF");
+#line 256
+ testRunner.And("I enter data in CRF", ((string)(null)), table44);
+#line 259
+ testRunner.And("I save the CRF page");
 #line hidden
-            TechTalk.SpecFlow.Table table39 = new TechTalk.SpecFlow.Table(new string[] {
+            TechTalk.SpecFlow.Table table45 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field",
-                        "Value",
-                        "Requires Verification"});
-            table39.AddRow(new string[] {
+                        "Value"});
+            table45.AddRow(new string[] {
                         "DOB",
-                        "12 Jun 1993",
-                        "False"});
-            table39.AddRow(new string[] {
+                        "12 Jun 1993"});
+            table45.AddRow(new string[] {
                         "Visit Date",
-                        "10 Dec 2011",
-                        "False"});
-            table39.AddRow(new string[] {
+                        "10 Dec 2011"});
+            table45.AddRow(new string[] {
                         "Age",
-                        "18",
-                        "False"});
-#line 227
- testRunner.And("I verify data in CRF", ((string)(null)), table39);
-#line 232
- testRunner.And("I take screenshot");
-#line 233
- testRunner.And("I go to Audits for Field \"DOB\"");
+                        "18"});
+#line 260
+ testRunner.And("I should see data on Fields in CRF", ((string)(null)), table45);
 #line hidden
-            TechTalk.SpecFlow.Table table40 = new TechTalk.SpecFlow.Table(new string[] {
-                        "Audit Message"});
-            table40.AddRow(new string[] {
-                        "User entered \'12 Jun 1993\'"});
-            table40.AddRow(new string[] {
-                        "DataPoint Un-verified."});
-            table40.AddRow(new string[] {
-                        "DataPoint Verified."});
-            table40.AddRow(new string[] {
-                        "User entered \'05 Mar 1995\'"});
-#line 234
- testRunner.Then("I verify Audits exist", ((string)(null)), table40);
-#line 240
- testRunner.And("I take screenshot");
+            TechTalk.SpecFlow.Table table46 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Requires Verification"});
+            table46.AddRow(new string[] {
+                        "DOB",
+                        "False"});
+            table46.AddRow(new string[] {
+                        "Visit Date",
+                        "False"});
+            table46.AddRow(new string[] {
+                        "Age",
+                        "False"});
+#line 265
+ testRunner.And("I should see verification required on Fields in CRF", ((string)(null)), table46);
+#line 270
+ testRunner.And("I take a screenshot");
+#line 271
+ testRunner.And("I click audit on Field \"DOB\"");
+#line hidden
+            TechTalk.SpecFlow.Table table47 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Audit Type",
+                        "Query Message"});
+            table47.AddRow(new string[] {
+                        "User entered",
+                        "\'12 Jun 1993\'"});
+            table47.AddRow(new string[] {
+                        "DataPoint",
+                        "Un-verified."});
+            table47.AddRow(new string[] {
+                        "DataPoint",
+                        "Verified."});
+            table47.AddRow(new string[] {
+                        "User entered",
+                        "\'05 Mar 1995\'"});
+#line 272
+ testRunner.Then("I verify Audits exist", ((string)(null)), table47);
+#line 278
+ testRunner.And("I take a screenshot");
 #line hidden
             this.ScenarioCleanup();
         }
@@ -749,118 +850,139 @@ this.FeatureBackground();
                         "release_2012.1.0",
                         "PB-DT13622-06",
                         "WIP"});
-#line 245
+#line 283
 this.ScenarioSetup(scenarioInfo);
 #line 10
 this.FeatureBackground();
 #line hidden
-            TechTalk.SpecFlow.Table table41 = new TechTalk.SpecFlow.Table(new string[] {
+            TechTalk.SpecFlow.Table table48 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field",
-                        "Value"});
-            table41.AddRow(new string[] {
+                        "Data"});
+            table48.AddRow(new string[] {
                         "Subject Number",
                         "105"});
-            table41.AddRow(new string[] {
+            table48.AddRow(new string[] {
                         "Subject Initials",
                         "SUBJ"});
-#line 246
- testRunner.When("I create a Subject", ((string)(null)), table41);
-#line 250
- testRunner.And("I am on CRF page \"Form 2\" in Subject \"105SUBJ\" in Site \"Site 1\" in Study \"Medifle" +
-                    "x\"");
+#line 284
+ testRunner.When("I create a Subject", ((string)(null)), table48);
+#line 288
+ testRunner.And("I select Form \"Form 2\"");
 #line hidden
-            TechTalk.SpecFlow.Table table42 = new TechTalk.SpecFlow.Table(new string[] {
+            TechTalk.SpecFlow.Table table49 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field",
-                        "Value"});
-            table42.AddRow(new string[] {
+                        "Data"});
+            table49.AddRow(new string[] {
                         "DOB",
                         "05 Mar 1995"});
-            table42.AddRow(new string[] {
+            table49.AddRow(new string[] {
                         "Visit Date",
                         "10 Dec 2011"});
-#line 251
- testRunner.And("I enter data in CRF", ((string)(null)), table42);
-#line 255
- testRunner.And("I save the CRF");
+#line 289
+ testRunner.And("I enter data in CRF", ((string)(null)), table49);
+#line 293
+ testRunner.And("I save the CRF page");
 #line hidden
-            TechTalk.SpecFlow.Table table43 = new TechTalk.SpecFlow.Table(new string[] {
-                        "Field",
-                        "Value",
-                        "Requires Verification"});
-            table43.AddRow(new string[] {
-                        "DOB",
-                        "05 Mar 1995",
-                        "True"});
-            table43.AddRow(new string[] {
-                        "Visit Date",
-                        "10 Dec 2011",
-                        "False"});
-            table43.AddRow(new string[] {
-                        "Age",
-                        "16",
-                        "False"});
-#line 256
- testRunner.And("I verify data in CRF", ((string)(null)), table43);
-#line hidden
-            TechTalk.SpecFlow.Table table44 = new TechTalk.SpecFlow.Table(new string[] {
-                        "Form"});
-            table44.AddRow(new string[] {
-                        "Form 2"});
-#line 261
- testRunner.And("I check Verify box for data in CRF", ((string)(null)), table44);
-#line 264
- testRunner.And("I save the CRF");
-#line 265
- testRunner.And("I take screenshot");
-#line hidden
-            TechTalk.SpecFlow.Table table45 = new TechTalk.SpecFlow.Table(new string[] {
+            TechTalk.SpecFlow.Table table50 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field",
                         "Value"});
-            table45.AddRow(new string[] {
+            table50.AddRow(new string[] {
+                        "DOB",
+                        "05 Mar 1995"});
+            table50.AddRow(new string[] {
+                        "Visit Date",
+                        "10 Dec 2011"});
+            table50.AddRow(new string[] {
+                        "Age",
+                        "16"});
+#line 294
+ testRunner.And("I should see data on Fields in CRF", ((string)(null)), table50);
+#line hidden
+            TechTalk.SpecFlow.Table table51 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Requires Verification"});
+            table51.AddRow(new string[] {
+                        "DOB",
+                        "True"});
+            table51.AddRow(new string[] {
+                        "Visit Date",
+                        "False"});
+            table51.AddRow(new string[] {
+                        "Age",
+                        "False"});
+#line 299
+ testRunner.And("I should see verification required on Fields in CRF", ((string)(null)), table51);
+#line 304
+ testRunner.And("I check \"Verify\" on CRF page");
+#line 305
+ testRunner.And("I save the CRF page");
+#line 306
+ testRunner.And("I take a screenshot");
+#line hidden
+            TechTalk.SpecFlow.Table table52 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Data"});
+            table52.AddRow(new string[] {
                         "DOB",
                         "12 Jun 1993"});
-#line 266
- testRunner.And("I enter data in CRF", ((string)(null)), table45);
-#line 269
- testRunner.And("I save the CRF");
+#line 307
+ testRunner.And("I enter data in CRF", ((string)(null)), table52);
+#line 310
+ testRunner.And("I save the CRF page");
 #line hidden
-            TechTalk.SpecFlow.Table table46 = new TechTalk.SpecFlow.Table(new string[] {
+            TechTalk.SpecFlow.Table table53 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field",
-                        "Value",
-                        "Requires Verification"});
-            table46.AddRow(new string[] {
+                        "Value"});
+            table53.AddRow(new string[] {
                         "DOB",
-                        "12 Jun 1993",
-                        "False"});
-            table46.AddRow(new string[] {
+                        "12 Jun 1993"});
+            table53.AddRow(new string[] {
                         "Visit Date",
-                        "10 Dec 2011",
-                        "False"});
-            table46.AddRow(new string[] {
+                        "10 Dec 2011"});
+            table53.AddRow(new string[] {
                         "Age",
-                        "18",
-                        "False"});
-#line 270
- testRunner.And("I verify data in CRF", ((string)(null)), table46);
-#line 275
- testRunner.And("I take screenshot");
-#line 276
- testRunner.And("I go to Audits for Field \"DOB\"");
+                        "18"});
+#line 311
+ testRunner.And("I should see data on Fields in CRF", ((string)(null)), table53);
 #line hidden
-            TechTalk.SpecFlow.Table table47 = new TechTalk.SpecFlow.Table(new string[] {
-                        "Audit Message"});
-            table47.AddRow(new string[] {
-                        "User entered \'12 Jun 1993\'"});
-            table47.AddRow(new string[] {
-                        "DataPoint Un-verified."});
-            table47.AddRow(new string[] {
-                        "DataPoint Verified."});
-            table47.AddRow(new string[] {
-                        "User entered \'05 Mar 1995\'"});
-#line 277
- testRunner.Then("I verify Audits exist", ((string)(null)), table47);
-#line 283
- testRunner.And("I take screenshot");
+            TechTalk.SpecFlow.Table table54 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Requires Verification"});
+            table54.AddRow(new string[] {
+                        "DOB",
+                        "False"});
+            table54.AddRow(new string[] {
+                        "Visit Date",
+                        "False"});
+            table54.AddRow(new string[] {
+                        "Age",
+                        "False"});
+#line 316
+ testRunner.And("I should see verification required on Fields in CRF", ((string)(null)), table54);
+#line 321
+ testRunner.And("I take a screenshot");
+#line 322
+ testRunner.And("I click audit on Field \"DOB\"");
+#line hidden
+            TechTalk.SpecFlow.Table table55 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Audit Type",
+                        "Query Message"});
+            table55.AddRow(new string[] {
+                        "User entered",
+                        "\'12 Jun 1993\'"});
+            table55.AddRow(new string[] {
+                        "DataPoint",
+                        "Un-verified."});
+            table55.AddRow(new string[] {
+                        "DataPoint",
+                        "Verified."});
+            table55.AddRow(new string[] {
+                        "User entered",
+                        "\'05 Mar 1995\'"});
+#line 323
+ testRunner.Then("I verify Audits exist", ((string)(null)), table55);
+#line 329
+ testRunner.And("I take a screenshot");
 #line hidden
             this.ScenarioCleanup();
         }
@@ -875,99 +997,112 @@ this.FeatureBackground();
                         "release_2012.1.0",
                         "PB-DT13622-07",
                         "WIP"});
-#line 288
+#line 334
 this.ScenarioSetup(scenarioInfo);
 #line 10
 this.FeatureBackground();
 #line hidden
-            TechTalk.SpecFlow.Table table48 = new TechTalk.SpecFlow.Table(new string[] {
+            TechTalk.SpecFlow.Table table56 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field",
-                        "Value"});
-            table48.AddRow(new string[] {
+                        "Data"});
+            table56.AddRow(new string[] {
                         "Subject Number",
                         "107"});
-            table48.AddRow(new string[] {
+            table56.AddRow(new string[] {
                         "Subject Initials",
                         "SUBJ"});
-#line 289
- testRunner.When("I create a Subject", ((string)(null)), table48);
-#line 293
- testRunner.And("I am on CRF page \"Form 2\" in Subject \"107SUBJ\" in Site \"Site 1\" in Study \"Medifle" +
-                    "x\"");
+#line 335
+ testRunner.When("I create a Subject", ((string)(null)), table56);
+#line 339
+ testRunner.And("I select Form \"Form 2\"");
 #line hidden
-            TechTalk.SpecFlow.Table table49 = new TechTalk.SpecFlow.Table(new string[] {
+            TechTalk.SpecFlow.Table table57 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field",
-                        "Value"});
-            table49.AddRow(new string[] {
+                        "Data"});
+            table57.AddRow(new string[] {
                         "Field 2",
                         "19"});
-#line 294
- testRunner.And("I enter data in CRF", ((string)(null)), table49);
-#line 297
- testRunner.And("I save the CRF");
+#line 340
+ testRunner.And("I enter data in CRF", ((string)(null)), table57);
+#line 343
+ testRunner.And("I save the CRF page");
 #line hidden
-            TechTalk.SpecFlow.Table table50 = new TechTalk.SpecFlow.Table(new string[] {
-                        "Field",
-                        "Value",
-                        "Requires Verification"});
-            table50.AddRow(new string[] {
-                        "Field 2",
-                        "19",
-                        "True"});
-#line 298
- testRunner.And("I verify data in CRF", ((string)(null)), table50);
-#line hidden
-            TechTalk.SpecFlow.Table table51 = new TechTalk.SpecFlow.Table(new string[] {
-                        "Field"});
-            table51.AddRow(new string[] {
-                        "Field 2"});
-#line 301
- testRunner.And("I check Verify box for data in CRF", ((string)(null)), table51);
-#line 304
- testRunner.And("I save the CRF");
-#line 305
- testRunner.And("I take screenshot");
-#line hidden
-            TechTalk.SpecFlow.Table table52 = new TechTalk.SpecFlow.Table(new string[] {
+            TechTalk.SpecFlow.Table table58 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field",
                         "Value"});
-            table52.AddRow(new string[] {
+            table58.AddRow(new string[] {
+                        "Field 2",
+                        "19"});
+#line 344
+ testRunner.And("I should see data on Fields in CRF", ((string)(null)), table58);
+#line hidden
+            TechTalk.SpecFlow.Table table59 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Requires Verification"});
+            table59.AddRow(new string[] {
+                        "Field 2",
+                        "True"});
+#line 347
+ testRunner.And("I should see verification required on Fields in CRF", ((string)(null)), table59);
+#line 350
+ testRunner.And("I check \"Verify\" on Field \"Field 2\"");
+#line 351
+ testRunner.And("I save the CRF page");
+#line 352
+ testRunner.And("I take a screenshot");
+#line hidden
+            TechTalk.SpecFlow.Table table60 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Data"});
+            table60.AddRow(new string[] {
                         "Field 2",
                         "18"});
-#line 306
- testRunner.And("I enter data in CRF", ((string)(null)), table52);
-#line 309
- testRunner.And("I save the CRF");
+#line 353
+ testRunner.And("I enter data in CRF", ((string)(null)), table60);
+#line 356
+ testRunner.And("I save the CRF page");
 #line hidden
-            TechTalk.SpecFlow.Table table53 = new TechTalk.SpecFlow.Table(new string[] {
+            TechTalk.SpecFlow.Table table61 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field",
-                        "Value",
-                        "Requires Verification"});
-            table53.AddRow(new string[] {
+                        "Value"});
+            table61.AddRow(new string[] {
                         "Field 2",
-                        "18",
-                        "True"});
-#line 310
- testRunner.And("I verify data in CRF", ((string)(null)), table53);
-#line 313
- testRunner.And("I take screenshot");
-#line 314
- testRunner.And("I go to Audits for Field \"Field 1\"");
+                        "18"});
+#line 357
+ testRunner.And("I should see data on Fields in CRF", ((string)(null)), table61);
 #line hidden
-            TechTalk.SpecFlow.Table table54 = new TechTalk.SpecFlow.Table(new string[] {
-                        "Audit Message"});
-            table54.AddRow(new string[] {
-                        "User entered \'18\'"});
-            table54.AddRow(new string[] {
-                        "DataPoint Un-verified."});
-            table54.AddRow(new string[] {
-                        "DataPoint Verified."});
-            table54.AddRow(new string[] {
-                        "User entered \'19\'"});
-#line 315
- testRunner.Then("I verify Audits exist", ((string)(null)), table54);
-#line 321
- testRunner.And("I take screenshot");
+            TechTalk.SpecFlow.Table table62 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Requires Verification"});
+            table62.AddRow(new string[] {
+                        "Field 2",
+                        "True"});
+#line 360
+ testRunner.And("I should see verification required on Fields in CRF", ((string)(null)), table62);
+#line 363
+ testRunner.And("I take a screenshot");
+#line 364
+ testRunner.And("I click audit on Field \"Field 1\"");
+#line hidden
+            TechTalk.SpecFlow.Table table63 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Audit Type",
+                        "Query Message"});
+            table63.AddRow(new string[] {
+                        "User entered",
+                        "\'18\'"});
+            table63.AddRow(new string[] {
+                        "DataPoint",
+                        "Un-verified."});
+            table63.AddRow(new string[] {
+                        "DataPoint",
+                        "Verified."});
+            table63.AddRow(new string[] {
+                        "User entered",
+                        "\'19\'"});
+#line 365
+ testRunner.Then("I verify Audits exist", ((string)(null)), table63);
+#line 371
+ testRunner.And("I take a screenshot");
 #line hidden
             this.ScenarioCleanup();
         }
@@ -982,99 +1117,112 @@ this.FeatureBackground();
                         "release_2012.1.0",
                         "PB-DT13622-08",
                         "WIP"});
-#line 326
+#line 376
 this.ScenarioSetup(scenarioInfo);
 #line 10
 this.FeatureBackground();
 #line hidden
-            TechTalk.SpecFlow.Table table55 = new TechTalk.SpecFlow.Table(new string[] {
+            TechTalk.SpecFlow.Table table64 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field",
-                        "Value"});
-            table55.AddRow(new string[] {
+                        "Data"});
+            table64.AddRow(new string[] {
                         "Subject Number",
                         "108"});
-            table55.AddRow(new string[] {
+            table64.AddRow(new string[] {
                         "Subject Initials",
                         "SUBJ"});
-#line 327
- testRunner.When("I create a Subject", ((string)(null)), table55);
-#line 331
- testRunner.And("I am on CRF page \"Form 2\" in Subject \"108SUBJ\" in Site \"Site 1\" in Study \"Medifle" +
-                    "x\"");
+#line 377
+ testRunner.When("I create a Subject", ((string)(null)), table64);
+#line 381
+ testRunner.And("I select Form \"Form 2\"");
 #line hidden
-            TechTalk.SpecFlow.Table table56 = new TechTalk.SpecFlow.Table(new string[] {
+            TechTalk.SpecFlow.Table table65 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field",
-                        "Value"});
-            table56.AddRow(new string[] {
+                        "Data"});
+            table65.AddRow(new string[] {
                         "Field 2",
                         "19"});
-#line 332
- testRunner.And("I enter data in CRF", ((string)(null)), table56);
-#line 335
- testRunner.And("I save the CRF");
+#line 382
+ testRunner.And("I enter data in CRF", ((string)(null)), table65);
+#line 385
+ testRunner.And("I save the CRF page");
 #line hidden
-            TechTalk.SpecFlow.Table table57 = new TechTalk.SpecFlow.Table(new string[] {
-                        "Field",
-                        "Value",
-                        "Requires Verification"});
-            table57.AddRow(new string[] {
-                        "Field 2",
-                        "19",
-                        "True"});
-#line 336
- testRunner.And("I verify data in CRF", ((string)(null)), table57);
-#line hidden
-            TechTalk.SpecFlow.Table table58 = new TechTalk.SpecFlow.Table(new string[] {
-                        "Form"});
-            table58.AddRow(new string[] {
-                        "Form 2"});
-#line 339
- testRunner.And("I check Verify box for data in CRF", ((string)(null)), table58);
-#line 342
- testRunner.And("I save the CRF");
-#line 343
- testRunner.And("I take screenshot");
-#line hidden
-            TechTalk.SpecFlow.Table table59 = new TechTalk.SpecFlow.Table(new string[] {
+            TechTalk.SpecFlow.Table table66 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field",
                         "Value"});
-            table59.AddRow(new string[] {
+            table66.AddRow(new string[] {
+                        "Field 2",
+                        "19"});
+#line 386
+ testRunner.And("I should see data on Fields in CRF", ((string)(null)), table66);
+#line hidden
+            TechTalk.SpecFlow.Table table67 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Requires Verification"});
+            table67.AddRow(new string[] {
+                        "Field 2",
+                        "True"});
+#line 389
+ testRunner.And("I should see verification required on Fields in CRF", ((string)(null)), table67);
+#line 392
+ testRunner.And("I check \"Verify\" on CRF page");
+#line 393
+ testRunner.And("I save the CRF page");
+#line 394
+ testRunner.And("I take a screenshot");
+#line hidden
+            TechTalk.SpecFlow.Table table68 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Data"});
+            table68.AddRow(new string[] {
                         "Field 2",
                         "18"});
-#line 344
- testRunner.And("I enter data in CRF", ((string)(null)), table59);
-#line 347
- testRunner.And("I save the CRF");
+#line 395
+ testRunner.And("I enter data in CRF", ((string)(null)), table68);
+#line 398
+ testRunner.And("I save the CRF page");
 #line hidden
-            TechTalk.SpecFlow.Table table60 = new TechTalk.SpecFlow.Table(new string[] {
+            TechTalk.SpecFlow.Table table69 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field",
-                        "Value",
-                        "Requires Verification"});
-            table60.AddRow(new string[] {
+                        "Value"});
+            table69.AddRow(new string[] {
                         "Field 2",
-                        "18",
-                        "True"});
-#line 348
- testRunner.And("I verify data in CRF", ((string)(null)), table60);
-#line 351
- testRunner.And("I take screenshot");
-#line 352
- testRunner.And("I go to Audits for Field \"Field 1\"");
+                        "18"});
+#line 399
+ testRunner.And("I should see data on Fields in CRF", ((string)(null)), table69);
 #line hidden
-            TechTalk.SpecFlow.Table table61 = new TechTalk.SpecFlow.Table(new string[] {
-                        "Audit Message"});
-            table61.AddRow(new string[] {
-                        "User entered \'18\'"});
-            table61.AddRow(new string[] {
-                        "DataPoint Un-verified."});
-            table61.AddRow(new string[] {
-                        "DataPoint Verified."});
-            table61.AddRow(new string[] {
-                        "User entered \'19\'"});
-#line 353
- testRunner.Then("I verify Audits exist", ((string)(null)), table61);
-#line 359
- testRunner.And("I take screenshot");
+            TechTalk.SpecFlow.Table table70 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Requires Verification"});
+            table70.AddRow(new string[] {
+                        "Field 2",
+                        "True"});
+#line 402
+ testRunner.And("I should see verification required on Fields in CRF", ((string)(null)), table70);
+#line 405
+ testRunner.And("I take a screenshot");
+#line 406
+ testRunner.And("I click audit on Field \"Field 1\"");
+#line hidden
+            TechTalk.SpecFlow.Table table71 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Audit Type",
+                        "Query Message"});
+            table71.AddRow(new string[] {
+                        "User entered",
+                        "\'18\'"});
+            table71.AddRow(new string[] {
+                        "DataPoint",
+                        "Un-verified."});
+            table71.AddRow(new string[] {
+                        "DataPoint",
+                        "Verified."});
+            table71.AddRow(new string[] {
+                        "User entered",
+                        "\'19\'"});
+#line 407
+ testRunner.Then("I verify Audits exist", ((string)(null)), table71);
+#line 413
+ testRunner.And("I take a screenshot");
 #line hidden
             this.ScenarioCleanup();
         }
