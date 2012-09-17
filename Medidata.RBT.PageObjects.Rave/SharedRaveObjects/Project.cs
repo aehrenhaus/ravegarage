@@ -23,7 +23,7 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
         public string Name { get; set; }
         public string UniqueName { get; set; }
         public string Number { get; set; }
-        public string TID = TemporalID.GetTID();
+        public string TID = TemporalID.GetNewTID();
 
         /// <summary>
         /// Create a Project if it is not already in the dictionary of projects in FeatureObject
@@ -32,13 +32,15 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
         public Project(string projectName)
             :base (projectName, null)
         {
-            if(UID == null)
+            if(!UID.HasValue)
             {
                 UID = Guid.NewGuid();
                 Name = projectName;
                 UniqueName = projectName + TID;
                 TestContext.FeatureObjects.Add(projectName, this);
             }
+            else
+                DraftCounter.DecrementCounter();
         }
     }
 }

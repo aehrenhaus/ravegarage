@@ -7,9 +7,9 @@ using OpenQA.Selenium;
 using OpenQA.Selenium.Remote;
 using Medidata.RBT.SeleniumExtension;
 using Medidata.RBT.PageObjects.Rave.SharedRaveObjects;
-namespace Medidata.RBT.PageObjects.Rave
+namespace Medidata.RBT.PageObjects.Rave.AmendmentManager
 {
-	public class AMMigrationHomePage : RavePageBase
+    public class AMMigrationHomePage : AMMigrationBasePage
 	{
 		public override IWebElement GetElementByName(string identifier, string areaIdentifier = null, string listItem = null)
 		{
@@ -61,6 +61,17 @@ namespace Medidata.RBT.PageObjects.Rave
             string uniqueTargetCRFName = ((CrfVersion)TestContext.FeatureObjects[targetCRFName]).UniqueName;
             Dropdown sourceDropdown = Browser.FindElementById("_ctl0_Content_MigrationStepStart1_ddlSimpleTargetVersionId").EnhanceAs<Dropdown>();
             sourceDropdown.SelectByPartialText(uniqueTargetCRFName);
+        }
+
+        /// <summary>
+        /// Navigate to a study
+        /// </summary>
+        /// <param name="studyName">Feature defined study name</param>
+        public void NavigateToStudy(string studyName)
+        {
+            TestContext.CurrentPage = new ArchitectPage().NavigateToSelf();
+            TestContext.CurrentPage.As<ArchitectPage>().ClickProject(new Project(studyName).UniqueName);
+            TestContext.CurrentPage.As<ArchitectLibraryPage>().NavigateTo("Amendment Manager");
         }
 
 		public override string URL

@@ -31,7 +31,7 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
         public SecurityRole(string securityRoleName)
             :base(securityRoleName, null)
         {
-            if(UID == null)
+            if (!UID.HasValue)
             {
                 UID = Guid.NewGuid();
                 Name = securityRoleName;

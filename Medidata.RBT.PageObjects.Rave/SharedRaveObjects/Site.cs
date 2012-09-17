@@ -31,7 +31,7 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
         public Site(string siteName, bool seed = false)
             :base(siteName)
         {
-            if (UID == null)
+            if (!UID.HasValue)
             {
                 UID = Guid.NewGuid();
                 Name = siteName;

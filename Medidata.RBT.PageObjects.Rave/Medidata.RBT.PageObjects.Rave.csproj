@@ -59,9 +59,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AmendmentManager\AmendmentManagerPage.cs" />
-    <Compile Include="Architect\AMMigrationExecutePage.cs" />
-    <Compile Include="Architect\AMMigrationResultPage.cs" />
+    <Compile Include="AmendmentManager\AMMigrationExecutePage.cs" />
+    <Compile Include="AmendmentManager\AMMigrationResultPage.cs" />
+    <Compile Include="AmendmentManager\AMMigrationObjectMappingPage.cs" />
+    <Compile Include="AmendmentManager\AMMigrationBasePage.cs" />
+    <Compile Include="AmendmentManager\MigrationModel.cs" />
     <Compile Include="Architect\ArchitectPushPage.cs" />
     <Compile Include="Architect\ArchitectFormsPage.cs" />
     <Compile Include="Architect\ArchitectFormDesigner.cs" />
@@ -79,7 +81,7 @@
     <Compile Include="Architect\ArchitectCRFDraftPage.cs" />
     <Compile Include="Architect\ArchitectChecksPage.cs" />
     <Compile Include="Architect\ArchitectBasePage.cs" />
-    <Compile Include="Architect\AMMigrationHomePage.cs" />
+    <Compile Include="AmendmentManager\AMMigrationHomePage.cs" />
     <Compile Include="EDC\AuditsPage.cs" />
     <Compile Include="EDC\LandscapeLogField.cs" />
     <Compile Include="EDC\MonitorSiteSubjectPage.cs" />

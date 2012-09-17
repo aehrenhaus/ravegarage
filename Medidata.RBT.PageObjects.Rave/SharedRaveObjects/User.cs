@@ -36,7 +36,7 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
         public User(string userUploadName, bool seed = false)
             :base(userUploadName)
         {
-            if (UID == null)
+            if (!UID.HasValue)
             {
                 UID = Guid.NewGuid();
                 Name = userUploadName;

@@ -29,7 +29,7 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
         public Draft(string draftName)
             :base(draftName, null)
         {
-            if(UID == null)
+            if (!UID.HasValue)
             {
                 UID = Guid.NewGuid();
                 Name = draftName;

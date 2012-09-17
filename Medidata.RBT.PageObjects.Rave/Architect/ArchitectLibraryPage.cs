@@ -6,6 +6,7 @@ using OpenQA.Selenium.Support.PageObjects;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Remote;
 using Medidata.RBT.SeleniumExtension;
+using Medidata.RBT.PageObjects.Rave.AmendmentManager;
 namespace Medidata.RBT.PageObjects.Rave
 {
 	public class ArchitectLibraryPage : ArchitectBasePage

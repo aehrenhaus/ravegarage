@@ -33,7 +33,7 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
         public UploadedDraft(string name, bool seed = false)
             : base(name)
         {
-            if(this.UID == null)
+            if (!UID.HasValue)
             {
                 UID = Guid.NewGuid();
                 Name = name;

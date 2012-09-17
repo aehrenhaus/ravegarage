@@ -7,7 +7,7 @@ using OpenQA.Selenium;
 using OpenQA.Selenium.Remote;
 using Medidata.RBT.SeleniumExtension;
 using Medidata.RBT.PageObjects.Rave.SharedRaveObjects;
-namespace Medidata.RBT.PageObjects.Rave
+namespace Medidata.RBT.PageObjects.Rave.AmendmentManager
 {
 	public class AMMigrationExecutePage : RavePageBase
 	{

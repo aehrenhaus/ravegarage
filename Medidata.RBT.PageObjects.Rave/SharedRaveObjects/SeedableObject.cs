@@ -19,7 +19,7 @@ namespace Medidata.RBT.SharedRaveObjects
         public string UniqueName { get; set; } //A unique name of the SeedableObject, usually formed using the name + TID
         public string FileLocation { get; set; } //The location of the original file upload
         public string UniqueFileLocation { get; set; } //A unique location of the duplicate of the seedable object, that has been made unique
-        public string TID = TemporalID.GetTID(); //This is a unique temporal ID for uniqueness purposes and ease of debugging
+        public string TID = TemporalID.GetNewTID(); //This is a unique temporal ID for uniqueness purposes and ease of debugging
 
         public SeedableObject()
             :base()
@@ -29,6 +29,8 @@ namespace Medidata.RBT.SharedRaveObjects
         public SeedableObject(string featureName)
             : base(featureName, typeof(SeedableObject).GetFields(BindingFlags.NonPublic | BindingFlags.Public | BindingFlags.Instance).ToList())
         {
+            if (UID.HasValue)
+                DraftCounter.DecrementCounter();
         }
 
         /// <summary>

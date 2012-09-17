@@ -33,7 +33,7 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
         public Role(string roleUploadName, bool seed = false)
             :base(roleUploadName)
         {
-            if (UID == null)
+            if (!UID.HasValue)
             {
                 UID = Guid.NewGuid();
                 Name = roleUploadName;

@@ -31,7 +31,7 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
         public CrfVersion(string draftName, string crfVersionName, bool seed = false)
             : base(crfVersionName)
         {
-            if (UID == null)
+            if (!UID.HasValue)
             {
                 UID = Guid.NewGuid();
                 Name = crfVersionName;

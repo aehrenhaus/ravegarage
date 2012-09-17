@@ -7,21 +7,25 @@ namespace Medidata.RBT
 {
     public static class TemporalID
     {
-        public static string GetTID()
+        /// <summary>
+        /// Used when getting a TID for the first time, it increments the counter
+        /// </summary>
+        /// <returns>Returns a TID string</returns>
+        public static string GetNewTID()
         {
-            return "|" + DateTime.UtcNow.ToString() + "||" + DraftCounter.Counter.ToString();
+            string tid = "|" + DateTime.UtcNow.ToString() + "||" + DraftCounter.Counter.ToString();
+            DraftCounter.IncrementCounter();
+            return tid;
         }
     }
 
     public static class DraftCounter
     {
-        [ThreadStatic]
-        private static int m_Counter = -1; //Made this -1 so indexing starts from 0
+        private static int m_Counter;
         public static int Counter
         {
             get
             {
-                m_Counter++;
                 return m_Counter;
             }
         }
@@ -29,6 +33,16 @@ namespace Medidata.RBT
         public static void ResetCounter()
         {
             m_Counter = 0;
+        }
+
+        public static void IncrementCounter()
+        {
+            m_Counter++;
+        }
+
+        public static void DecrementCounter()
+        {
+            m_Counter--;
         }
     }
 }

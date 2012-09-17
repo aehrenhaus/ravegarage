@@ -51,6 +51,27 @@ And I go to Amendment Manager for study "AM SJ"
 And I select Source CRF version "Version 1"
 And I select Target CRF version "Version 2"
 And I create migration plan
+And I set up a "Data Dictionary" object mapping
+| Source          | Target          |
+| Medical History | Medical History |
+And I set up a mapping for source "Data Dictionary" "Medical History"
+| Source                    | Target                    |
+| Abdomen and Viscera       | Abdomen and Viscera       |
+| Affect                    | Affect                    |
+| Arteriogram               | Arteriogram               |
+| Cardiovascular            | Cardiovascular            |
+| Dermatologic              | Dermatologic              |
+| Endocrine/Metabolic       | Endocrine/Metabolic       |
+| Gastrointestinal          | Gastrointestinal          |
+| Genitouriary/Reproductive | Genitouriary/Reproductive |
+| Hematologic/Lymphatic     | Hematologic/Lymphatic     |
+| Hepatic/Bilary            | Hepatic/Bilary            |
+| Immunologic               | Immunologic               |
+| Musculoskeletal           | Musculoskeletal           |
+| Neurologic/Psychiatric    | Neurologic/Psychiatric    |
+| Renal                     | Renal                     |
+| Respiratory               | Respiratory               |
+| Special Senses            | Special Senses            |
 And I take a screenshot
 And I execute plan for subject "{Var(num1)}"
 And I select link "Migration Results"
@@ -132,6 +153,27 @@ And I go to Amendment Manager for study "AM SJ"
 And I select Source CRF version "Version 1"
 And I select Target CRF version "Version 2"
 And I create migration plan
+And I set up a "Data Dictionary" object mapping
+| Source          | Target          |
+| Medical History | Medical History |
+And I set up a mapping for source "Data Dictionary" "Medical History"
+| Source                    | Target                    |
+| Abdomen and Viscera       | Abdomen and Viscera       |
+| Affect                    | Affect                    |
+| Arteriogram               | Arteriogram               |
+| Cardiovascular            | Cardiovascular            |
+| Dermatologic              | Dermatologic              |
+| Endocrine/Metabolic       | Endocrine/Metabolic       |
+| Gastrointestinal          | Gastrointestinal          |
+| Genitouriary/Reproductive | Genitouriary/Reproductive |
+| Hematologic/Lymphatic     | Hematologic/Lymphatic     |
+| Hepatic/Bilary            | Hepatic/Bilary            |
+| Immunologic               | Immunologic               |
+| Musculoskeletal           | Musculoskeletal           |
+| Neurologic/Psychiatric    | Neurologic/Psychiatric    |
+| Renal                     | Renal                     |
+| Respiratory               | Respiratory               |
+| Special Senses            | Special Senses            |
 And I take a screenshot
 And I execute plan for subject "{Var(num1)}"
 And I select link "Migration Results"

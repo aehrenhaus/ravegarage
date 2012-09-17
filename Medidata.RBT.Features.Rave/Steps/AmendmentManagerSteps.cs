@@ -11,6 +11,7 @@ using System.IO;
 using System.Data;
 using Medidata.RBT.PageObjects.Rave.SharedRaveObjects;
 using Medidata.RBT.PageObjects.Rave.AmendmentManager;
+using TechTalk.SpecFlow.Assist;
 
 namespace Medidata.RBT.Features.Rave
 {
@@ -24,8 +25,8 @@ namespace Medidata.RBT.Features.Rave
         [StepDefinition(@"I go to Amendment Manager for study ""([^""]*)""")]
         public void IGoToAmendmentManagerForStudy____(string studyName)
         {
-            TestContext.CurrentPage = new AmendmentManagerHomePage();
-            TestContext.CurrentPage.As<AmendmentManagerHomePage>().NavigateToStudy(studyName);
+            TestContext.CurrentPage = new AMMigrationHomePage();
+            TestContext.CurrentPage.As<AMMigrationHomePage>().NavigateToStudy(studyName);
         }
 
         /// <summary>
@@ -65,8 +66,51 @@ namespace Medidata.RBT.Features.Rave
         [StepDefinition(@"I execute plan for subject ""([^""]*)""")]
         public void IExecutePlanForSubject____(string subjectSearchString)
         {
-            TestContext.CurrentPage.As<AMMigrationHomePage>().ClickLink("Execute Plan");
+            TestContext.CurrentPage.As<AMMigrationBasePage>().ClickLink("Execute Plan");
             TestContext.CurrentPage.As<AMMigrationExecutePage>().Migrate(SpecialStringHelper.Replace(subjectSearchString));
+        }
+
+        /// <summary>
+        /// Set object mappings in amendment manager
+        /// </summary>
+        /// <param name="typeToMap">Type of object to map</param>
+        /// <param name="table">Objects to map</param>
+        [StepDefinition(@"I set up a ""([^""]*)"" object mapping")]
+        public void ISetUpA____ObjectMapping(string typeToMap, Table table)
+        {
+            TestContext.CurrentPage.As<AMMigrationHomePage>().ClickLink("Object Mapping");
+            string linkToClick;
+            if (typeToMap.ToLower().Equals("data dictionary"))
+                linkToClick = "Data Dictionary";
+            else
+                linkToClick = typeToMap;
+
+            TestContext.CurrentPage.As<AMMigrationObjectMappingPage>().ClickLink(linkToClick);
+            List<MigrationModel> migration = table.CreateSet<MigrationModel>().ToList();
+            TestContext.CurrentPage.As<AMMigrationObjectMappingPage>().SetMapping(migration);
+            Browser.FindElementById("_ctl0_Content_MigrationStepManagePlan1_buttonBar_buttonSave_lb_buttonSave").Click(); //Click save at the bottom of the page
+        }
+
+        /// <summary>
+        /// Set up a child mapping
+        /// </summary>
+        /// <param name="typeToMap">Type of object to map</param>
+        /// <param name="source">The parent of the child to map</param>
+        /// <param name="table">Objects to map</param>
+        [StepDefinition(@"I set up a mapping for source ""([^""]*)"" ""([^""]*)""")]
+        public void ISetUpAMappingForSource________(string typeToMap, string source, Table table)
+        {
+            string linkToClick;
+            if (typeToMap.ToLower().Equals("data dictionary"))
+                linkToClick = "Data Dictionary";
+            else
+                linkToClick = typeToMap;
+
+            TestContext.CurrentPage.As<AMMigrationObjectMappingPage>().ClickLink(linkToClick);
+            List<MigrationModel> migration = table.CreateSet<MigrationModel>().ToList();
+            TestContext.CurrentPage.As<AMMigrationObjectMappingPage>().EditMapping(source);
+            TestContext.CurrentPage.As<AMMigrationObjectMappingPage>().SetChildMapping(migration);
+            Browser.FindElementById("_ctl0_Content_MigrationStepManagePlan1_buttonBar_buttonSave_lb_buttonSave").Click(); //Click save at the bottom of the page
         }
 	}
 }
