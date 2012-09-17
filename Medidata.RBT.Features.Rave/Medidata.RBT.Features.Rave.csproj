@@ -75,6 +75,11 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
+    <Compile Include="Features\Architect\US17943.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>US17943.feature</DependentUpon>
+    </Compile>
     <Compile Include="Features\EDC\US17415_DT14115.feature.cs">
       <DependentUpon>US17415_DT14115.feature</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -237,6 +242,10 @@
     <None Include="Features\Architect\US17446.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>US17446.feature.cs</LastGenOutput>
+    </None>
+    <None Include="Features\Architect\US17943.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>US17943.feature.cs</LastGenOutput>
     </None>
     <None Include="Features\EDC\US17415_DT14115.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
