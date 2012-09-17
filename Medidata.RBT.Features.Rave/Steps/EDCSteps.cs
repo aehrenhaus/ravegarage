@@ -382,7 +382,23 @@ namespace Medidata.RBT.Features.Rave
         public void IClickDropButtonOnDynamicSearchList____InLogLine____(string fieldName, int lineNum)
         {
             var controlType = ControlType.DynamicSearchList;
-            IEDCFieldControl fieldControl = CurrentPage.As<CRFPage>().FindLandscapeLogField(fieldName, lineNum, controlType);
+
+            var page = new RavePageBase();
+
+            if (CurrentPage is DDEPage)
+            {
+                page = CurrentPage.As<DDEPage>();
+            }
+            else if (CurrentPage is CRFPage)
+            {
+                page = CurrentPage.As<CRFPage>();
+            }
+            else
+            {
+                throw new Exception("Not supported other pages");
+            }
+
+            IEDCFieldControl fieldControl = page.FindLandscapeLogField(fieldName, lineNum, controlType);
             fieldControl.Click();
         }
 
@@ -396,11 +412,43 @@ namespace Medidata.RBT.Features.Rave
         {
             bool result = false;
             var controlType = ControlType.DynamicSearchList;
-            IEDCFieldControl fieldControl = CurrentPage.As<CRFPage>().FindLandscapeLogField(fieldName, lineNum, controlType);
+
+            var page = new RavePageBase();
+
+            if (CurrentPage is DDEPage)
+            {
+                page = CurrentPage.As<DDEPage>();
+            }
+            else if (CurrentPage is CRFPage)
+            {
+                page = CurrentPage.As<CRFPage>();
+            }
+            else
+            {
+                throw new Exception("Not supported other pages");
+            }
+
+            IEDCFieldControl fieldControl = page.FindLandscapeLogField(fieldName, lineNum, controlType);
 
             result = fieldControl.IsDroppedDown();
             Assert.IsTrue(result, String.Format("The dynamic search list {0} in log line {1} has not been opened", fieldName, lineNum));
         }
+
+
+        /// <summary>
+        /// Enter data on dynamic search list adverse event grade in log line.
+        /// </summary>
+        /// <param name="data">The data.</param>
+        /// <param name="fieldName">Name of the field.</param>
+        /// <param name="lineNum">The line num.</param>
+        [StepDefinition(@"I enter ""([^""]*)"" on dynamic search list ""([^""]*)"" in log line ([^""]*)")]
+        public void WhenIEnter__OnDynamicSearchList__InLogLine__(string data, string fieldName, int lineNum)
+        {
+            var controlType = ControlType.DynamicSearchList;
+            IEDCFieldControl fieldControl = CurrentPage.As<CRFPage>().FindLandscapeLogField(fieldName, lineNum, controlType);
+            fieldControl.EnterData(data, controlType);
+        }
+
 
     }
 }
