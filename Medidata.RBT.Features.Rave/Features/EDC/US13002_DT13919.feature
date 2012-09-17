@@ -8,9 +8,11 @@
 
 Background:
 	Given I am logged in to Rave with username "defuser" and password "password"
-	# And the following Project assignments exist
-		# | User    | Project | Environment | Role | Site   | Site Number |
-		# | defuser | L1WP-GT | Prod        | cdm1 | Site 1 | S100        |
+	#And the following Project assignments exist
+	#	 | User    | Project | Environment | Role | Site       | Site Number |
+	#	 | defuser | L1WP-GT | Prod        | cdm1 | Site 1     | S100        |
+	#	 | defuser | L1WP-GT | Prod        | cdm1 | Site 13919 | 13919       |
+	# And Site "Site 13919" is set to "Allow DDE"
 	# And Repeating Default Delimiter is ","
 	# And Role "cdm1" has Action "Entry"
 	# And Project "L1WP-GT" has Draft "<Draft1>"
@@ -839,7 +841,6 @@ Background:
 	# And Field "VALXX" on Form "Adverse Event Form" has Edit Check "DSL_TOXICITY_REQDACTMON_GradeLookup" using Custom Function "DSL_TOXICITY_SOLICIT_GradeLookup"
 	# And I publish and push CRF Version "CRF Version<RANDOMNUMBER>" of Draft "<Draft1>" to site "Site 1" in Project "L1WP-GT" for Enviroment "Prod"
 	# And there is a custom table "c_CTCAE_Lookup_GRADES_WR103437" on the database
-	And I select Study "L1WP-GT" and Site "Site 1"
 		
 	# DSL_TOXICITY_REQDACTMON_GradeLookup Custom Function:
 	# SELECT Grade_Code, Grade_Code
@@ -860,26 +861,97 @@ Background:
 #----------------------------------------------------------------------------------------------------------------------------------------
 @release_564_2012.1.0	
 @PB_US13002_DT13919_01
-@Draft
-Scenario: @PB_US13002_DT13919_01 As a Study Coordinator, when I enter data into a Dynamic Search List field on a log form, and I click the drop-down list to see matching results, matching results are displayed within 3 seconds.
+@PM_Review
+Scenario: @PB_US13002_DT13919_01 As a Study Coordinator, when I click the drop-down list to see matching results, then matching results are displayed within 3 seconds.
 	
+	And I select Study "L1WP-GT" and Site "Site 1"
+	And I create a Subject
+		| Field						| Data              |
+		| Datacenter ID				| {RndNum<num1>(5)} |
+		| Subject Initials (F M L)	| SUB               |
+	And I select Form "Adverse Event Form"
+	And I take a screenshot
+	When I click drop button on dynamic search list "Adverse Event Grade" in log line 1
+	And I wait for 3 seconds
+	Then I should see dynamic search list "Adverse Event Grade" in log line 1 open
+	And I take a screenshot
+
+#----------------------------------------------------------------------------------------------------------------------------------------
+@release_564_2012.1.0	
+@PB_US13002_DT13919_02
+@PM_Review
+Scenario: @PB_US13002_DT13919_02 As a Study Coordinator, when I enter data into a Dynamic Search List field on a log form, and I see matching results are displayed within 3 seconds.
+	
+	Given I select Study "L1WP-GT" and Site "Site 1"
 	When I create a Subject
 		| Field						| Data              |
 		| Datacenter ID				| {RndNum<num1>(5)} |
 		| Subject Initials (F M L)	| SUB               |
 	And I select Form "Adverse Event Form"
 	And I take a screenshot
-	And I click drop button on dynamic search list "Adverse Event Grade" in log line 1
+	And I enter "3" on dynamic search list "Adverse Event Grade" in log line 1
+	And I wait for 3 seconds
+	Then I should see dynamic search list "Adverse Event Grade" in log line 1 open
+	And I take a screenshot
+	And I navigate to "Home"
+	And I accept alert window
+#----------------------------------------------------------------------------------------------------------------------------------------
+@release_564_2012.1.0	
+@PB_US13002_DT13919_03
+@PM_Review
+Scenario: @PB_US13002_DT13919_03 As a Study Coordinator, when I enter data into a Dynamic Search List field on a log form, and I see matching results are displayed within 3 seconds.
+And I select Study "L1WP-GT" and Site "Site 1"
+And I create a Subject
+| Field	| Data              |
+| Datacenter ID	| {RndNum<num1>(5)} |
+| Subject Initials (F M L)	| SUB               |
+And I select Form "Adverse Event Form"
+
+#Note: Instead of Enter, can we have select data from DSL list or we should have both step defs?
+#And I enter "3" on dynamic search list "Adverse Event Grade" in log line 1
+#And I select "3" on dynamic search list "Adverse Event Grade" in log line 1
+
+And I enter "3" on dynamic search list "Adverse Event Grade" in log line 1
+And I enter "" on dynamic search list "Adverse Event Grade" in log line 2
+And I enter "" on dynamic search list "Adverse Event Grade" in log line 3
+And I enter "5" on dynamic search list "Adverse Event Grade" in log line 4
+And I enter "0" on dynamic search list "Adverse Event Grade" in log line 5	
+And I save the CRF page
+And I take a screenshot
+And I open log line 3
+When I click drop button on dynamic search list "Adverse Event Grade" in log line 3
+And I wait for 3 seconds
+Then I should see dynamic search list "Adverse Event Grade" in log line 3 open
+And I take a screenshot
+
+#----------------------------------------------------------------------------------------------------------------------------------------
+@release_564_2012.1.0	
+@PB_US13002_DT13919_04
+@PM_Review
+Scenario: @PB_US13002_DT13919_04 As a Study Coordinator, when I click the drop-down list to see matching results in DDE, then matching results are displayed within 3 seconds.
+	
+	And I navigate to "DDE"
+	And I select link "First Pass"
+	And I select link "New Batch"
+	And I choose "L1WP-GT" from "Study"
+	#And I choose "Prod" from "Environment"
+	And I choose "Site 13919" from "Site"
+	And I type "SUB {RndNum<num1>(5)}" in "Subject"
+	And I choose "Subject Enrollment Form" from "Form"
+	And I click button "Locate"
+	And I enter data in DDE and save
+		| Field						| Data              |
+		| Datacenter ID				| {RndNum<num1>(5)} |
+		| Subject Initials (F M L)	| SUB               |
+	And I choose "Adverse Event Form" from "Form"
+	And I click button "Locate"
+	And I take a screenshot
+	When I click drop button on dynamic search list "Adverse Event Grade" in log line 1
 	And I wait for 3 seconds
 	Then I should see dynamic search list "Adverse Event Grade" in log line 1 open
 	And I take a screenshot
 
-#----------------------------------------------------------------------------------------------------------------------------------------
-#@release_564_2012.1.0	
-#@PB_US13002_DT13919_02
-#@Draft
-#Scenario: @PB_US13002_DT13919_02 As a Study Coordinator, when I enter data into a Dynamic Search List field on a log form, and I click the drop-down list to see matching results, matching results are displayed within 3 seconds.
-	
+
 #	When I create a Subject
 #		| Field						| Data              |
 #		| Datacenter ID				| {RndNum<num1>(5)} |

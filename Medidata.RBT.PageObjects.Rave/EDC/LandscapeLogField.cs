@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using OpenQA.Selenium;
 using System.Text.RegularExpressions;
+using Medidata.RBT.SeleniumExtension;
 
 namespace Medidata.RBT.PageObjects.Rave
 {
@@ -14,6 +15,7 @@ namespace Medidata.RBT.PageObjects.Rave
         private readonly int m_columnId;
         private readonly int m_rowId;
         private readonly ControlType m_controlType;
+        private IPage m_page;
         #endregion
 
         #region CONSTRUCTORS
@@ -38,6 +40,7 @@ namespace Medidata.RBT.PageObjects.Rave
         public LandscapeLogField(IPage page, string fieldName, int index, ControlType controlType)
             : base(page)
         {
+            m_page = page;
             m_controlType = controlType;
 
             //Get ColumnID
@@ -60,11 +63,24 @@ namespace Medidata.RBT.PageObjects.Rave
                     throw new NotImplementedException("Unknown control type:" + m_controlType);
             }
 
+            string xPath = String.Empty;
+            string regPattern = String.Empty;
+            if (m_page is DDEPage)
+            {
+                regPattern = @"^lVal_\d+_(?<ROW_ID>\d+)_F-_S-";
+                xPath = "//td[contains(@id, 'lVal" + "_" + m_columnId + "')]";
+            }
+            else if (m_page is CRFPage)
+            {
+                regPattern = @"^lVal_\d+_\d+_(?<ROW_ID>\d+)";
+                xPath =  "//td[contains(@id, 'Val_" + index + "_" + m_columnId + "')]";
+            }
+
             //Get RowID
-            IWebElement tableCell = this.Page.Browser.FindElement(By.XPath("//td[contains(@id, 'Val_" + index + "_" + m_columnId + "')]"));
+            IWebElement tableCell = this.Page.Browser.FindElement(By.XPath(xPath));
             string elementCellID = tableCell.GetAttribute("id");
 
-            Match m = new Regex(@"^lVal_\d+_\d+_(?<ROW_ID>\d+)").Match(elementCellID);
+            Match m = new Regex(regPattern).Match(elementCellID);
             m_rowId = m.Success ? Convert.ToInt32(m.Groups["ROW_ID"].Value) : 0;
         }
 
@@ -113,6 +129,16 @@ namespace Medidata.RBT.PageObjects.Rave
         }
         public void Click()
         {
+            string prefix = String.Empty;
+            if (m_page is DDEPage)
+            {
+                prefix = "dde1";
+            }
+            else if (m_page is CRFPage)
+            {
+                prefix = "R";
+            }
+
             switch (m_controlType)
             {
                 case ControlType.Default:
@@ -124,7 +150,8 @@ namespace Medidata.RBT.PageObjects.Rave
                 case ControlType.DropDownList:
                     throw new NotImplementedException("Not implemented yet for :" + m_controlType);
                 case ControlType.DynamicSearchList:
-                    IWebElement tableCell = this.Page.Browser.FindElementById("_ctl0_Content_R_log_log_CF" + m_columnId.ToString() + "_" + m_rowId.ToString() + "_C_CRFSL");
+                    string contolId = String.Format("_ctl0_Content_{0}_log_log_CF{1}_{2}_C_CRFSL", prefix, m_columnId.ToString(), m_rowId.ToString()); 
+                    IWebElement tableCell = this.Page.Browser.FindElementById(contolId);
                     tableCell.FindElement(By.ClassName("SearchList_DropButton")).Click();
                     break;
                 default:
@@ -133,6 +160,16 @@ namespace Medidata.RBT.PageObjects.Rave
         }
         public bool IsDroppedDown()
         {
+            string prefix = String.Empty;
+            if (m_page is DDEPage)
+            {
+                prefix = "dde1";
+            }
+            else if (m_page is CRFPage)
+            {
+                prefix = "R";
+            }
+
             switch (m_controlType)
             {
                 case ControlType.Default:
@@ -145,7 +182,9 @@ namespace Medidata.RBT.PageObjects.Rave
                 case ControlType.DropDownList:
                     throw new NotImplementedException("Not implemented yet for :" + m_controlType);
                 case ControlType.DynamicSearchList:
-                    IWebElement tableCell = this.Page.Browser.FindElementById("_ctl0_Content_R_log_log_CF" + m_columnId.ToString() + "_" + m_rowId.ToString() + "_C_CRFSL_PickListBox");
+                    //_ctl0_Content_dde1_log_log_CF67041_27853_C_CRFSL_PickListBox
+                    string contolId = String.Format("_ctl0_Content_{0}_log_log_CF{1}_{2}_C_CRFSL", prefix, m_columnId.ToString(), m_rowId.ToString()); 
+                    IWebElement tableCell = this.Page.Browser.FindElementById(contolId);
                     return tableCell.Displayed;
                 default:
                     throw new NotImplementedException("Unknown control type:" + m_controlType);
@@ -154,7 +193,28 @@ namespace Medidata.RBT.PageObjects.Rave
 
         #region INTERFACE IEDCFieldControl
         public AuditsPage ClickAudit() { throw new NotImplementedException(); }
-		public void EnterData(string text, ControlType controlType) { throw new NotImplementedException(); }
+	
+        public void EnterData(string text, ControlType controlType) {
+            switch (controlType)
+            {
+                case ControlType.Default:
+                case ControlType.Text:
+                case ControlType.LongText:
+                case ControlType.Datetime:
+                case ControlType.RadioButton:
+                case ControlType.RadioButtonVertical:
+                case ControlType.DropDownList:
+                    throw new NotImplementedException("Not implemented yet for :" + m_controlType);
+                case ControlType.DynamicSearchList:
+                    IWebElement tableCell = this.Page.Browser.FindElementById("_ctl0_Content_R_log_log_CF" + m_columnId.ToString() + "_" + m_rowId.ToString() + "_C_CRFSL");                 
+                    tableCell.Textboxes()[0].SetText(text);
+			     //   tableCell.FindElement(By.ClassName("SearchList_DropButton")).Click();
+                    break;
+                default:
+                    throw new NotImplementedException("Unknown control type:" + m_controlType);
+            }
+        
+        }
         public bool HasDataEntered(string text) { throw new NotImplementedException(); }
         public OpenQA.Selenium.IWebElement FindQuery(QuerySearchModel filter) { throw new NotImplementedException(); }
         public void AnswerQuery(QuerySearchModel filter) { throw new NotImplementedException(); }
