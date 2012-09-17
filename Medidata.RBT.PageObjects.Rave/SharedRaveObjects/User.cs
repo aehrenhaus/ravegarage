@@ -42,12 +42,6 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
                 Name = userUploadName;
                 if (seed)
                 {
-                    //Get the instance of the user, so you can have multiple uploads of the same user
-                    string instanceString = userUploadName.Substring(userUploadName.LastIndexOf(" "), userUploadName.Length - userUploadName.LastIndexOf(" "));
-                    int instance;
-                    bool isInt = int.TryParse(instanceString, out instance);
-                    instance = isInt ? Convert.ToInt32(instanceString) : 0;
-
                     if (userUploadName.StartsWith("SUPER USER"))
                         FileName = "SUPERUSER.xml";
                     else

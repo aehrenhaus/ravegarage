@@ -99,7 +99,6 @@ And I take a screenshot
 And I navigate to "Home"
 And I select a Subject "{Var(num1)}"
 When I select form "Form A"
-#Vlad thinks this should be in different order
 Then "Field A" has "<Values>" in order
 | Values                    |
 | Special Senses            |
@@ -182,7 +181,6 @@ And I take a screenshot
 And I navigate to "Home"
 And I select a Subject "{Var(num1)}"
 When I select form "Form A"
-#Vlad thinks this should be in different order
 Then "Field A" has "<Values>" in order
 | Values                    |
 | Special Senses            |

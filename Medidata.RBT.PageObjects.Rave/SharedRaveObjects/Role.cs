@@ -40,12 +40,6 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
 
                 if (seed)
                 {
-                    //Get the instance of the role, so you can have multiple uploads of the same role
-                    string instanceString = roleUploadName.Substring(roleUploadName.LastIndexOf(" "), roleUploadName.Length - roleUploadName.LastIndexOf(" "));
-                    int instance;
-                    bool isInt = int.TryParse(instanceString, out instance);
-                    instance = isInt ? Convert.ToInt32(instanceString) : 0;
-
                     string fileName;
                     if (roleUploadName.StartsWith("SUPER ROLE"))
                         fileName = "SUPERROLE.xml";
