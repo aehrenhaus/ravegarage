@@ -36,6 +36,13 @@ namespace Medidata.RBT.PageObjects.Rave
 			return this;
 		}
 
+        public override bool CanSeeTextInArea(string text, string areaName)
+        {
+            //TODO: this is just a simple version of finding text. Implement more useful version later
+            var TR = GetTaskSummaryArea(areaName);
+
+            return TR.Text.Contains(text);
+        }
 
 		public override IWebElement GetElementByName(string identifier, string areaIdentifier = null, string listItem = null)
 		{

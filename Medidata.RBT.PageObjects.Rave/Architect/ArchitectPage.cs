@@ -28,11 +28,26 @@ namespace Medidata.RBT.PageObjects.Rave
 		{
 			base.ClickLink(linkText);
 
-			if (linkText == "Add New Draft")
-				return new ArchitectNewDraftPage();
+            if (linkText == "Add New Draft")
+                TestContext.CurrentPage = new ArchitectNewDraftPage();
 
-			return this;
+            if (linkText == "Upload Draft")
+                TestContext.CurrentPage = new UploadDraftPage();
+
+			return TestContext.CurrentPage;
 		}
+
+        /// <summary>
+        /// Click a project on the architect page
+        /// </summary>
+        /// <param name="projectName">Unique name of the project to click</param>
+        /// <returns>The current page, which will be an ArchitectLibraryPage</returns>
+        public IPage ClickProject(string projectName)
+        {
+            base.ClickLink(projectName);
+            TestContext.CurrentPage = new ArchitectLibraryPage();
+            return TestContext.CurrentPage;
+        }
 
 		public override string URL
 		{

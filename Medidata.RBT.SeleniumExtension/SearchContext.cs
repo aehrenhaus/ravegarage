@@ -221,6 +221,16 @@ namespace Medidata.RBT.SeleniumExtension
 			return context.FindElements(By.XPath(".//span"));
 		}
 
+        public static ReadOnlyCollection<IWebElement> Selects(this ISearchContext context)
+        {
+            return context.FindElements(By.XPath(".//select"));
+        }
+
+        public static ReadOnlyCollection<IWebElement> Options(this ISearchContext context)
+        {
+            return context.FindElements(By.XPath(".//option"));
+        }
+
         public static ReadOnlyCollection<IWebElement> Spans(this ISearchContext context, string xpath)
 		{
 			return context.FindElements(By.XPath(xpath));
@@ -341,6 +351,34 @@ namespace Medidata.RBT.SeleniumExtension
             try
             {
                 ele = context.Spans().FirstOrDefault(x => x.Text.Trim() == linkText);
+            }
+            catch
+            {
+
+            }
+            return ele;
+        }
+
+        public static IWebElement TryFindElementBySelectPartialLinktext(this RemoteWebDriver context, string linkText)
+        {
+            IWebElement ele = null;
+            try
+            {
+                ele = context.Options().FirstOrDefault(x => x.Text.Trim().Contains(linkText));
+            }
+            catch
+            {
+
+            }
+            return ele;
+        }
+
+        public static IWebElement TryFindElementBySelectLinktext(this RemoteWebDriver context, string linkText)
+        {
+            IWebElement ele = null;
+            try
+            {
+                ele = context.Options().FirstOrDefault(x => x.Text.Trim() == linkText);
             }
             catch
             {

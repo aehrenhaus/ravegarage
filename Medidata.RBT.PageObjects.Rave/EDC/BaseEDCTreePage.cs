@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using OpenQA.Selenium;
 using TechTalk.SpecFlow;
 using Medidata.RBT.SeleniumExtension;
+using Medidata.RBT.PageObjects.Rave.SharedRaveObjects;
 
 
 namespace Medidata.RBT.PageObjects.Rave
@@ -43,6 +44,10 @@ namespace Medidata.RBT.PageObjects.Rave
 			return this;
 		}
 
+        /// <summary>
+        /// Save a form selected form
+        /// </summary>
+        /// <returns>This page</returns>
 		public BaseEDCPage SaveForm()
 		{
 			IWebElement btn = Browser.WaitForElement("footer_SB");
@@ -67,11 +72,17 @@ namespace Medidata.RBT.PageObjects.Rave
 			return this;
 		}
 
+        /// <summary>
+        /// Select a form
+        /// </summary>
+        /// <param name="formName">The form to select</param>
+        /// <returns>The current CRFPage</returns>
 		public CRFPage SelectForm(string formName)
 		{
 			IWebElement formFolderTable = Browser.FindElementById("_ctl0_LeftNav_EDCTaskList_TblTaskItems");
 			formFolderTable.FindElement(By.LinkText(formName)).Click();
-			return new CRFPage();
+            TestContext.CurrentPage = new CRFPage();
+            return TestContext.CurrentPage.As<CRFPage>();
 		}
 
 

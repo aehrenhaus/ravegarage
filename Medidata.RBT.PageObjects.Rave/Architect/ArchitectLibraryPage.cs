@@ -6,6 +6,7 @@ using OpenQA.Selenium.Support.PageObjects;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Remote;
 using Medidata.RBT.SeleniumExtension;
+using Medidata.RBT.PageObjects.Rave.AmendmentManager;
 namespace Medidata.RBT.PageObjects.Rave
 {
 	public class ArchitectLibraryPage : ArchitectBasePage
@@ -14,16 +15,16 @@ namespace Medidata.RBT.PageObjects.Rave
 		{
 			string studyName = StudyName;
 
-			var link = GetElementByName("CRF Versions").Link(version);
-			var push = link.Parent().Parent().Link("Push");
+            IWebElement versionsTable = Browser.TryFindElementBy(By.Id("_ctl0_Content_VersionsGrid"));
+            IWebElement row = versionsTable.FindElement(By.XPath("tbody/tr/td/a[contains(text(),'" + version + "')]/../.."));
+            IWebElement push = row.FindElement(By.XPath("td/a[text() = 'Push']"));
 			push.Click();
 
-			var  pushPage = new ArchitectPushPage();
-		
-			pushPage.PushToSites(env,sites);
+            TestContext.CurrentPage = new ArchitectPushPage();
+            TestContext.CurrentPage.As<ArchitectPushPage>().PushToSites(env, sites);
 			//
 			//go back to study
-			ClickLinkInArea(null, studyName, "Header");
+            ClickLinkInArea(null, studyName, "Header");
 		
 			return this;
 		}
@@ -35,6 +36,18 @@ namespace Medidata.RBT.PageObjects.Rave
 				return Browser.LinkByPartialID("TabTextHyperlink2").Text;
 			}
 		}
+
+        /// <summary>
+        /// Click a draft
+        /// </summary>
+        /// <param name="draftName">Unique name of the draft to click</param>
+        /// <returns>The ArchitectCRFDraftPage for that draft</returns>
+        public IPage ClickDraft(string draftName)
+        {
+            base.ClickLink(draftName);
+            TestContext.CurrentPage = new ArchitectCRFDraftPage();
+            return TestContext.CurrentPage;
+        }
 
 		public ArchitectCRFDraftPage CreateDraftFromProject(string draftName, string project, string version)
 		{
@@ -58,7 +71,6 @@ namespace Medidata.RBT.PageObjects.Rave
 		{
 			var leftNavContainer = Browser.FindElementById("TblOuter");
 		
-
 			if (name == "Amendment Manager")
 			{
 				var link = leftNavContainer.Link("Amendment Manager");

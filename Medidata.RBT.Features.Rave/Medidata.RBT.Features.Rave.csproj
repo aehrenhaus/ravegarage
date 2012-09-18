@@ -70,6 +70,11 @@
     </CodeAnalysisDependentAssemblyPaths>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Features\AM2\US12996_AM2_DT13997.feature.cs">
+      <DependentUpon>US12996_AM2_DT13997.feature</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Include="Features\Architect\US17446.feature.cs">
       <DependentUpon>US17446.feature</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -212,8 +217,11 @@
     </Compile>
     <Compile Include="ReferenceFix.cs" />
     <Compile Include="Steps\EDCSteps_DB.cs" />
+    <Compile Include="Steps\AmendmentManagerSteps.cs" />
     <Compile Include="Steps\MonitorSiteSubjectPageSteps.cs" />
     <Compile Include="Steps\LabUnitConversionSteps.cs" />
+    <Compile Include="Steps\Seeding\ConfigurationSteps.cs" />
+    <Compile Include="Steps\Seeding\SiteSteps.cs" />
     <Compile Include="Steps\SubjectPageSteps.cs" />
     <Compile Include="Steps\TsdvSteps.cs" />
     <Compile Include="Steps\PDFSteps.cs" />
@@ -254,6 +262,10 @@
     <None Include="App.config">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Features\AM2\US12996_AM2_DT13997.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>US12996_AM2_DT13997.feature.cs</LastGenOutput>
+    </None>
     <None Include="Features\Architect\US17446.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>US17446.feature.cs</LastGenOutput>
@@ -288,7 +300,7 @@
     </None>
     <None Include="Features\EDC\US11913.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
-      <LastGenOutput>US119131.feature.cs</LastGenOutput>
+      <LastGenOutput>US11913.feature.cs</LastGenOutput>
     </None>
     <None Include="Features\EDC\US12999_DT13977.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
@@ -352,7 +364,7 @@
     </None>
     <None Include="Features\EDC\US15417_DT13905.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
-      <LastGenOutput>US15417_DT139051.feature.cs</LastGenOutput>
+      <LastGenOutput>US15417_DT13905.feature.cs</LastGenOutput>
     </None>
     <None Include="Features\EDC\EDCTabOrderUntouchedLandscapeLogForm.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
@@ -400,7 +412,7 @@
     </None>
     <None Include="Features\TSDV\US11958_DT14177.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
-      <LastGenOutput>US11958_DT141771.feature.cs</LastGenOutput>
+      <LastGenOutput>US11958_DT14177.feature.cs</LastGenOutput>
     </None>
     <None Include="Features\UserAdministration\DT14168.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>

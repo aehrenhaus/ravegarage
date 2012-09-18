@@ -13,6 +13,7 @@ using OpenQA.Selenium.Firefox;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.IE;
 using Medidata.RBT.SeleniumExtension;
+using Medidata.RBT.SharedObjects;
 
 
 namespace Medidata.RBT
@@ -21,8 +22,8 @@ namespace Medidata.RBT
 	public class TestContext
 	{
         public static string DownloadPath { get; set; }
+        public static string UploadPath { get; set; }
 		public static RemoteWebDriver Browser { get; set; }
-
 
 		#region switch browser window
 
@@ -77,36 +78,44 @@ namespace Medidata.RBT
 
 		#endregion
 
-
-		/// <summary>
-        /// The list of removable objects that will be deleted upon scenario end.
-        /// </summary>
-        public static List<RemoveableObject> ObjectsForDeletion
+		public static IPage CurrentPage
         {
             get
             {
-                if (GetContextValue<List<RemoveableObject>>("ObjectsForDeletion") == null)
-                    ScenarioContext.Current["ObjectsForDeletion"] = new List<RemoveableObject>();
-
-                return GetContextValue<List<RemoveableObject>>("ObjectsForDeletion");
+				return GetContextValue<IPage>("PageBase");
             }
             set
             {
-                ScenarioContext.Current["ObjectsForDeletion"] = value;
+				ScenarioContext.Current["PageBase"] = value;
             }
         }
 
-		public static IPage CurrentPage
+        public static string CurrentUser
 		{
 			get
 			{
-				return GetContextValue<IPage>("PageBase");
+                return GetContextValue<string>("CurrentUser");
 			}
 			set
 			{
-				ScenarioContext.Current["PageBase"] = value;
+                ScenarioContext.Current["CurrentUser"] = value;
 			}
 		}
+
+        /// <summary>
+        /// Mapping of the name provided in the feature file to the FeatureObject object created by the FeatureObject constructor.
+        /// </summary>
+        public static Dictionary<string, FeatureObject> FeatureObjects
+        {
+            get
+            {
+                return Medidata.RBT.TestContext.GetFeatureContextValue<Dictionary<string, FeatureObject>>("FeatureObjects");
+            }
+            set
+            {
+                Medidata.RBT.TestContext.SetFeatureContextValue("FeatureObjects", value);
+            }
+        }
 
 		public static DateTime? CurrentScenarioStartTime
 		{
@@ -159,6 +168,20 @@ namespace Medidata.RBT
 				return vars;
 			}
 		}
+
+        public static T GetFeatureContextValue<T>(string key)
+        {
+            if (!FeatureContext.Current.ContainsKey(key))
+            {
+                return default(T);
+            }
+            return (T)FeatureContext.Current[key];
+        }
+
+        public static void SetFeatureContextValue<T>(string key, T val)
+        {
+            FeatureContext.Current[key] = val;
+        }
 
 		public static T GetContextValue<T>(string key)
 		{
@@ -215,7 +238,9 @@ namespace Medidata.RBT
 		[BeforeFeature()]
 		public static void BeforeFeature()
 		{
+            Medidata.RBT.TestContext.SetFeatureContextValue<Dictionary<string, FeatureObject>>("FeatureObjects", new Dictionary<string, FeatureObject>());
 			CurrentFeatureStartTime = DateTime.Now;
+            DraftCounter.ResetCounter();
 		}
 
 		/// <summary>
@@ -224,6 +249,7 @@ namespace Medidata.RBT
 		[AfterFeature()]
 		public static void AfterFeature()
 		{
+            Factory.DeleteObjectsMarkedForFeatureDeletion();
             DeleteCreatedFiles();
             DeleteCreatedDirectories();
 		}
@@ -260,7 +286,7 @@ namespace Medidata.RBT
 			//take a snapshot after every scenario
 			TrySaveScreenShot();
 
-            DeleteObjectsMarkedForDeletion();
+            Factory.DeleteObjectsMarkedForScenarioDeletion();
             DeleteCreatedFiles();
             DeleteCreatedDirectories();
 		}
@@ -342,6 +368,7 @@ namespace Medidata.RBT
 			if (!Path.IsPathRooted(driverPath))
 				driverPath = new DirectoryInfo(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, driverPath)).FullName;
             DownloadPath = RBTConfiguration.Default.DownloadPath;
+            UploadPath = RBTConfiguration.Default.UploadPath;
 			switch (RBTConfiguration.Default.BrowserName.ToLower())
 			{
 				case "firefox":
@@ -377,7 +404,7 @@ namespace Medidata.RBT
         {
             List<String> createdFiles = Directory.GetFiles(TestContext.DownloadPath).ToList();
             foreach (String filePath in createdFiles)
-                if(!filePath.EndsWith(".gitignore"))
+                if (!filePath.EndsWith("placeholder.txt"))
                     File.Delete(filePath);
         }
 
@@ -403,7 +430,7 @@ namespace Medidata.RBT
             {
                 DateTime lastWriteTime = File.GetLastWriteTime(filePath);
                 if (lastWriteTime >= CurrentFeatureStartTime)
-                    if (!filePath.EndsWith(".gitignore"))
+                    if (!filePath.EndsWith("placeholder.txt"))
                         File.Delete(filePath);
             }
         }
@@ -423,16 +450,6 @@ namespace Medidata.RBT
                     Directory.Delete(directoryPath, true);
                 }
             }
-        }
-
-        /// <summary>
-        /// Delete objects that were marked for deletion over the course of the scenario
-        /// </summary>
-        /// <returns></returns>
-        private static void DeleteObjectsMarkedForDeletion()
-        {
-            foreach (RemoveableObject obj in ObjectsForDeletion)
-                obj.DeleteSelf();
         }
 
 		private static void CloseBrower()

@@ -10,6 +10,8 @@ using System.Collections.Specialized;
 using TechTalk.SpecFlow;
 using Medidata.RBT.SeleniumExtension;
 using Medidata.RBT.PageObjects.Rave.EDC;
+using Medidata.RBT.PageObjects.Rave.SiteAdministration;
+using Medidata.RBT.PageObjects.Rave.SharedRaveObjects;
 
 namespace Medidata.RBT.PageObjects.Rave
 {
@@ -100,6 +102,20 @@ namespace Medidata.RBT.PageObjects.Rave
             throw new Exception("Subject name cannot be null");
         }
 
+        public override IPage ClickLink(string linkText)
+        {
+            base.ClickLink(linkText);
+
+            if (linkText == "Architect")
+                TestContext.CurrentPage = new ArchitectPage();
+            if (linkText == "Site Administration")
+                TestContext.CurrentPage = new SiteAdministrationHomePage();
+            if (linkText == "User Administration")
+                TestContext.CurrentPage = new UserAdministrationPage();
+
+            return TestContext.CurrentPage;
+        }
+
 		#region IPaginatedPage
 
 		//TODO: clean these vars, they are uesd in GoNextPage()
@@ -165,6 +181,7 @@ namespace Medidata.RBT.PageObjects.Rave
 			poClassMapping["PDF Generator"] = "FileRequestPage";
             poClassMapping["Lab Administration"] = "AnalytesPage";
             poClassMapping["Unit Conversions"] = "UnitConversionsPage";
+            poClassMapping["Architect Library Page"] = "ArchitectLibraryPage";
 			
 
 			//TODO: other mappings

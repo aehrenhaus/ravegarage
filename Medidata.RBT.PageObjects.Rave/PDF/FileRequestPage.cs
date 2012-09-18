@@ -9,6 +9,8 @@ using TechTalk.SpecFlow;
 using Medidata.RBT.SeleniumExtension;
 using System.Threading;
 using System.Collections.ObjectModel;
+using Medidata.RBT.PageObjects.Rave.SharedRaveObjects;
+
 namespace Medidata.RBT.PageObjects.Rave
 {
     public class FileRequestPage : RavePageBase, ICanPaginate
@@ -42,11 +44,12 @@ namespace Medidata.RBT.PageObjects.Rave
         /// </summary>
         /// <param name="pdf">The pdf that you want to generate, should already have a file request created</param>
         /// <returns>Returns this FileRequestPage</returns>
-		public FileRequestPage Generate(Medidata.RBT.PDF pdf)
+		public FileRequestPage Generate(string pdfName)
 		{
+            new PDFSpecific(pdfName);
             int foundOnPage;
             Table dt = new Table("Name");
-            dt.AddRow(pdf.Name);
+            dt.AddRow(pdfName);
 
             IWebElement pdfTr = this.FindInPaginatedList("", () =>
             {

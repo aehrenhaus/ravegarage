@@ -12,13 +12,13 @@ namespace Medidata.RBT.Features.Rave
 	public class RaveSteps : BrowserStepsBase
 	{
         [StepDefinition(@"I should see the logging data for queries")]
-        public void ThenIShouldSeeTheLoggingDataForQueries(Table table)
+        public void IShouldSeeTheLoggingDataForQueries(Table table)
         {
             
         }
 
         [StepDefinition(@"I go to the log page for logger ""([^""]*)""")]
-        public PageBase WhenIGoToTheLogPageForLoggerQueryNotOpeningEvent(string logger)
+        public PageBase IGoToTheLogPageForLoggerQueryNotOpeningEvent(string logger)
         {
             return new RWSLogPage(logger);
         }
@@ -28,8 +28,8 @@ namespace Medidata.RBT.Features.Rave
         /// </summary>
         /// <param name="table">The list of characters to look for</param>
         /// <returns></returns>
-        [Then(@"the text should not contain ""<Symbol>""")]
-        public void ThenTheTextShouldNotContainSymbol(Table table)
+        [StepDefinition(@"the text should not contain ""<Symbol>""")]
+        public void TheTextShouldNotContainSymbol(Table table)
         {
             List<String> symbols = new List<string>();
 

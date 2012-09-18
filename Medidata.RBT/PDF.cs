@@ -13,7 +13,7 @@ namespace Medidata.RBT
     /// <summary>
     ///This is a shared PDF object, it represents the system level functionality of the pdf.
     ///</summary>
-    public class PDF : RemoveableObject
+    public class PDF
     {
         public string FileLocation { get; set; }
         public string Name { get; set; }
