@@ -95,11 +95,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>US17701_DT13437.feature</DependentUpon>
     </Compile>
-    <Compile Include="Features\EDC\US12994_DT109911.feature.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>US12994_DT10991.feature</DependentUpon>
-    </Compile>
     <Compile Include="Features\EDC\US17415_DT14115.feature.cs">
       <DependentUpon>US17415_DT14115.feature</DependentUpon>
       <AutoGen>True</AutoGen>

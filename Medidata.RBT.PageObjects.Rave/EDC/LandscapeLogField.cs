@@ -15,7 +15,6 @@ namespace Medidata.RBT.PageObjects.Rave
         private readonly int m_columnId;
         private readonly int m_rowId;
         private readonly ControlType m_controlType;
-        private IPage m_page;
         #endregion
 
         #region CONSTRUCTORS
@@ -40,8 +39,7 @@ namespace Medidata.RBT.PageObjects.Rave
         public LandscapeLogField(IPage page, string fieldName, int index, ControlType controlType)
             : base(page)
         {
-            m_page = page;
-            m_controlType = controlType;
+             m_controlType = controlType;
 
             //Get ColumnID
             switch (controlType)
@@ -65,12 +63,12 @@ namespace Medidata.RBT.PageObjects.Rave
 
             string xPath = String.Empty;
             string regPattern = String.Empty;
-            if (m_page is DDEPage)
+            if (this.Page is DDEPage)
             {
                 regPattern = @"^lVal_\d+_(?<ROW_ID>\d+)_F-_S-";
                 xPath = "//td[contains(@id, 'lVal" + "_" + m_columnId + "')]";
             }
-            else if (m_page is CRFPage)
+            else if (this.Page is CRFPage)
             {
                 regPattern = @"^lVal_\d+_\d+_(?<ROW_ID>\d+)";
                 xPath =  "//td[contains(@id, 'Val_" + index + "_" + m_columnId + "')]";
@@ -130,11 +128,11 @@ namespace Medidata.RBT.PageObjects.Rave
         public override void Click()
         {
             string prefix = String.Empty;
-            if (m_page is DDEPage)
+            if (this.Page is DDEPage)
             {
                 prefix = "dde1";
             }
-            else if (m_page is CRFPage)
+            else if (this.Page is CRFPage)
             {
                 prefix = "R";
             }
@@ -161,11 +159,11 @@ namespace Medidata.RBT.PageObjects.Rave
 		public override bool IsDroppedDown()
         {
             string prefix = String.Empty;
-            if (m_page is DDEPage)
+            if (this.Page is DDEPage)
             {
                 prefix = "dde1";
             }
-            else if (m_page is CRFPage)
+            else if (this.Page is CRFPage)
             {
                 prefix = "R";
             }
