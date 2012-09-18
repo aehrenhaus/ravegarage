@@ -139,6 +139,24 @@ namespace Medidata.RBT.Features.Rave
         }
 
         /// <summary>
+        /// Verifies is requires verification checkbox is enabled/disabled
+        /// </summary>
+        /// <param name="table"></param>
+        [StepDefinition(@"I should see verification required on Fields in CRF")]
+        public void IShouldSeeVerificationRequiredOnFieldsInCRF(Table table)
+        {
+            CRFPage page = CurrentPage.As<CRFPage>();
+
+            var fields = table.CreateSet<FieldModel>();
+            foreach (var field in fields)
+            {
+                bool verificationRequired = page.FindField(field.Field).IsVerificationRequired();
+
+                Assert.AreEqual(field.RequiresVerification, verificationRequired.ToString(), true, "Verification Required doesn't match on Fields in CRF");
+            }
+        }
+
+        /// <summary>
         /// No Clinical Significance for field displayed
         /// </summary>
         /// <param name="clinSignificance"></param> 
@@ -217,26 +235,71 @@ namespace Medidata.RBT.Features.Rave
         }
 
         /// <summary>
-        /// Expand a header in Task Summary area on Subject page.
+        /// Check the Checkbox on a field on CRF page
         /// </summary>
-        /// <param name="header"></param>
-        [StepDefinition(@"I expand ""([^""]*)"" in Task Summary")]
-        public void IExpand____InTaskSummary(string header)
+        /// <param name="checkboxName"></param>
+        /// <param name="fieldName"></param>
+        [StepDefinition(@"I check ""([^""]*)"" checkbox on Field ""([^""]*)""")]
+        public void ICheck____CheckboxOnField____(string checkboxName, string fieldName)
         {
-            CurrentPage.As<SubjectPage>().ExpandTask(header);
+            CurrentPage.As<CRFPage>()
+                .FindField(fieldName)
+                .Check(checkboxName);
         }
 
         /// <summary>
-        /// Click audit icon on a field on CRF page
+        /// Uncheck the Checkbox on a field on CRF page
         /// </summary>
+        /// <param name="checkboxName"></param>
         /// <param name="fieldName"></param>
-        [StepDefinition(@"I click audit on Field ""([^""]*)""")]
-        public void IClickAuditOnField____(string fieldName)
+        [StepDefinition(@"I uncheck ""([^""]*)"" checkbox on Field ""([^""]*)""")]
+        public void IUncheck____CheckboxOnField____(string checkboxName, string fieldName)
         {
-            CurrentPage = CurrentPage.As<CRFPage>()
+            CurrentPage.As<CRFPage>()
                 .FindField(fieldName)
-                .ClickAudit();
+                .Uncheck(checkboxName);
         }
+
+        /// <summary>
+        /// Check the verify or freeze or hard lock checkbox 
+        /// at the form level on CRF page
+        /// </summary>
+        [StepDefinition(@"I check ""([^""]*)"" checkbox on CRF page")]
+        [StepDefinition(@"I Uncheck ""([^""]*)"" checkbox on CRF page")]
+        public void ICheck____CheckboxForDataInCRF(string checkboxName)
+        {
+            CurrentPage.As<CRFPage>().ClickCheckBoxOnForm(checkboxName);
+        }
+ 
+		/// <summary>
+		/// Click audit icon on a field on CRF page
+		/// </summary>
+		/// <param name="fieldName"></param>
+		[StepDefinition(@"I click audit on Field ""([^""]*)""")]
+        [StepDefinition(@"I go to Audits for Field ""([^""]*)""")]
+		public void IClickAuditOnField____(string fieldName)
+		{
+			CurrentPage = CurrentPage.As<CRFPage>()
+				.FindField(fieldName)
+				.ClickAudit();
+		}
+
+		/// <summary>
+		/// Verify audit exists
+		/// </summary>
+		/// <param name="table"></param>
+		[StepDefinition(@"I verify Audits exist")]
+		public void IVerifyAuditsExist(Table table)
+		{
+			var audits = table.CreateSet<AuditModel>();
+            int position = 1;
+			foreach (var a in audits)
+			{
+                bool exist = CurrentPage.As<AuditsPage>().AuditExist(a, position);
+				Assert.IsTrue(exist, string.Format ("Audit {0} does not exist",a.AuditType));
+                position++;
+			}
+		}
 
         /// <summary>
         /// Verify audit exists

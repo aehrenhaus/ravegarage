@@ -93,6 +93,18 @@ namespace Medidata.RBT.PageObjects.Rave
 			this.ClickButton("Sign and Save");//ValidateSignAndSave
 		}
 
+        public BaseEDCPage ClickCheckBoxOnForm(string checkboxName)
+        {
+            string partialID = GetCheckboxPartialIdFromCheckName(checkboxName);
+            IWebElement chkBox = Browser.FindElementById("_ctl0_Content_R_header_SG_" + partialID);
+
+            if (chkBox == null)
+                throw new Exception("Cannot find the checkbox named: " + checkboxName);
+
+            chkBox.Click();
+            return this;
+        }
+
         #region ICanVerifyExist
 
         public bool VerifyTableRowsExist(string tableIdentifier, Table matchTable)
@@ -117,6 +129,33 @@ namespace Medidata.RBT.PageObjects.Rave
             throw new NotImplementedException();
         }
 
+        #endregion
+
+        #region helper memebers
+        /// <summary>
+        /// returns the partial id for checkbox based on checkbox name
+        /// </summary>
+        /// <param name="checkName"></param>
+        /// <returns></returns>
+        private string GetCheckboxPartialIdFromCheckName(string checkName)
+        {
+            string partialID = "";
+
+            if (checkName == "Freeze")
+            {
+                partialID = "EntryLockBox";
+            }
+            else if (checkName == "Hard Lock")
+            {
+                partialID = "HardLockBox";
+            }
+            else if (checkName == "Verify")
+            {
+                partialID = "VerifyBox";
+            }
+
+            return partialID;
+        }
         #endregion
 
 	}

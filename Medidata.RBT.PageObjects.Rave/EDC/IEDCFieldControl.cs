@@ -59,5 +59,6 @@ namespace Medidata.RBT.PageObjects.Rave
 		/// <param name="position">The ordinal of the element in the composite field</param>
 		void FocusElement(ControlType type, int position);
 
+        bool IsVerificationRequired();
     }
 }

@@ -263,6 +263,11 @@ namespace Medidata.RBT.PageObjects.Rave
 			{
 				actionArea.Checkbox("HardLockBox").Check();
 			}
+
+            if (checkName == "Verify")
+            {
+                actionArea.Checkbox("VerifyBox").Check();
+            }
 		}
 
 		public virtual void Uncheck(string checkName)
@@ -277,6 +282,11 @@ namespace Medidata.RBT.PageObjects.Rave
 			{
 				actionArea.Checkbox("HardLockBox").Uncheck();
 			}
+
+            if (checkName == "Verify")
+            {
+                actionArea.Checkbox("VerifyBox").Uncheck();
+            }
 		}
 
         public virtual void Click() { throw new NotImplementedException(); }
@@ -294,5 +304,10 @@ namespace Medidata.RBT.PageObjects.Rave
 		{
 			throw new NotImplementedException();
 		}
+
+        public virtual bool IsVerificationRequired()
+        {
+            throw new NotImplementedException();
+        }
 	}
 }

@@ -9,14 +9,14 @@ Feature: DT 13622 When an Edit Check sets Datapoint XYZ to require verification,
 
 Background:
     Given I am logged in to Rave with username "defuser" and password "password"
-	And following Project assignments exist
-	|User	|Project	|Environment	|Role |Site	  |Site Number	|
-	|User 1 |Mediflex	|Prod			|cdm1 |Site 1 |S100			|
-    And Role "cdm1" has Action "Entry"
-	And Role "cdm1" has Action "Verify"
-	And Project "Mediflex" has Draft "<Draft1>"
-	And I publish and push CRF Version "CRF Version<RANDOMNUMBER>" of Draft "<Draft1>" to site "Site 1" in Project "Mediflex" for Enviroment "Prod"
-
+	#And following Project assignments exist
+	#|User	|Project	|Environment	|Role |Site	  |Site Number	|
+	#|User 1 |Mediflex	|Prod			|cdm1 |Site 1 |S100			|
+    #And Role "cdm1" has Action "Entry"
+	#And Role "cdm1" has Action "Verify"
+	#And Project "Mediflex" has Draft "<Draft1>"
+	#And I publish and push CRF Version "CRF Version<RANDOMNUMBER>" of Draft "<Draft1>" to site "Site 1" in Project "Mediflex" for Enviroment "Prod"
+	And I select Study "Mediflex20120710040626" and Site "MediflexDTSite"
 	# Edit check exists to set field Visit Date on form Visit Date to require verification if field Age has a value less than 18.
 	# Edit check exists to set field Field 1 on form Form 1 to require verification if field Field 1 has a value other than 20.
 	# Edit check exists to set field DOB on form Form 2 to require verification if field Age has a value less than 18.
@@ -94,7 +94,7 @@ Scenario: As an EDC user, when I have an edit check fired on one field that sets
 	And I select Form "Visit Date" in Folder "VISIT"
 	And I enter data in CRF
 	|Field		|Data		|
-	|Visit Date	|01 FEB 2011|
+	|Visit Date	|01 Feb 2011|
 	|Age		|20			|
 	And I save the CRF page
 	And I should see data on Fields in CRF
@@ -336,7 +336,7 @@ Scenario: As an EDC user, when I have TSDV turned off for a form, when I have an
 	|Field			 |Data |
 	|Subject Number	 |107  |
 	|Subject Initials|SUBJ |	
-	And I select Form "Form 2"
+	And I select Form "Form 3"
 	And I enter data in CRF
 	|Field	|Data |
 	|Field 2|19	  |
@@ -361,7 +361,7 @@ Scenario: As an EDC user, when I have TSDV turned off for a form, when I have an
 	|Field  |Requires Verification|
 	|Field 2|True                 |
 	And I take a screenshot
-	And I click audit on Field "Field 1"
+	And I click audit on Field "Field 2"
 	Then I verify Audits exist
 	| Audit Type   | Query Message |
 	| User entered | '18'          |
@@ -378,7 +378,7 @@ Scenario: As an EDC user, when I have TSDV turned off for a form, and I have an 
 	|Field			 |Data |
 	|Subject Number	 |108  |
 	|Subject Initials|SUBJ |	
-	And I select Form "Form 2"
+	And I select Form "Form 3"
 	And I enter data in CRF
 	|Field	|Data |
 	|Field 2|19	  |
@@ -403,7 +403,7 @@ Scenario: As an EDC user, when I have TSDV turned off for a form, and I have an 
 	|Field  |Requires Verification|
 	|Field 2|True                 |
 	And I take a screenshot
-	And I click audit on Field "Field 1"
+	And I click audit on Field "Field 2"
 	Then I verify Audits exist
     | Audit Type   | Query Message |
 	| User entered | '18'          |
@@ -411,6 +411,4 @@ Scenario: As an EDC user, when I have TSDV turned off for a form, and I have an 
 	| DataPoint    | Verified.     |
 	| User entered | '19'          |
 	And I take a screenshot
-
-
 

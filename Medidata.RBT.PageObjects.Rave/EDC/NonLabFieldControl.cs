@@ -36,6 +36,45 @@ namespace Medidata.RBT.PageObjects.Rave
 			auditButton.Click();
 			return new AuditsPage();
 		}
+        
+        /// <summary>
+        /// Checks the checkbox specified by the checkbox name
+        /// </summary>
+        /// <param name="checkName"></param>
+        public override void Check(string checkName)
+        {
+            string partialID = GetCheckboxPartialIdFromCheckName(checkName);
+
+            if (partialID.Length > 0)
+            {     
+                Checkbox checkbox = RightSideTD.Checkbox(partialID);
+                checkbox.Check();
+            }
+        }
+
+        /// <summary>
+        /// Unchecks the checkbox specified by the checkbox name
+        /// </summary>
+        /// <param name="checkName"></param>
+        public override void Uncheck(string checkName)
+        {
+            string partialID = GetCheckboxPartialIdFromCheckName(checkName);
+
+            if (partialID.Length > 0)
+            {
+                Checkbox checkbox = RightSideTD.Checkbox(partialID);
+                checkbox.Uncheck();
+            }
+        }
+
+        /// <summary>
+        /// Returns in verification checkbox is enabled or disabled
+        /// </summary>
+        /// <returns></returns>
+        public override bool IsVerificationRequired()
+        {
+            return (RightSideTD.Checkbox("VerifyBox") as Checkbox).Enabled;
+        }
 
 		public override IWebElement FindQuery(QuerySearchModel filter)
 		{
@@ -135,5 +174,32 @@ namespace Medidata.RBT.PageObjects.Rave
         {
             throw new NotImplementedException();
         }
+
+        #region helper memebers
+        /// <summary>
+        /// returns the partial id for checkbox based on checkbox name
+        /// </summary>
+        /// <param name="checkName"></param>
+        /// <returns></returns>
+        private string GetCheckboxPartialIdFromCheckName(string checkName)
+        {
+            string partialID = "";
+
+            if (checkName == "Freeze")
+            {
+                partialID = "EntryLockBox";
+            }
+            else if (checkName == "Hard Lock")
+            {
+                partialID = "HardLockBox";
+            }
+            else if (checkName == "Verify")
+            {
+                partialID = "VerifyBox";
+            }
+
+            return partialID;
+        }
+        #endregion
     }
 }
