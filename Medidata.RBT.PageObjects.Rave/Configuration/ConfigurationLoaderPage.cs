@@ -14,7 +14,7 @@ using Medidata.RBT.PageObjects.Rave.SiteAdministration;
 
 namespace Medidata.RBT.PageObjects.Rave.Configuration
 {
-    public class ConfigurationLoaderPage : RavePageBase
+    public class ConfigurationLoaderPage : ConfigurationBasePage
 	{
         public ConfigurationLoaderPage()
 		{
