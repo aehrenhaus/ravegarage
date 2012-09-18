@@ -301,21 +301,6 @@ namespace Medidata.RBT.Features.Rave
 			}
 		}
 
-        /// <summary>
-        /// Verify audit exists
-        /// </summary>
-        /// <param name="table"></param>
-        [StepDefinition(@"I verify Audits exist")]
-        public void IVerifyAuditsExist(Table table)
-        {
-            var audits = table.CreateSet<AuditModel>();
-            foreach (var a in audits)
-            {
-                bool exist = CurrentPage.As<AuditsPage>().AuditExist(a);
-                Assert.IsTrue(exist, string.Format("Audit {0} does not exist", a.AuditType));
-            }
-        }
-
         [StepDefinition(@"I select link ""([^""]*)"" located in ""([^""]*)""")]
         public void ISelectLink____LocatedIn____(string logForm, string leftNav)
         {
