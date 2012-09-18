@@ -860,15 +860,14 @@ Background:
 
 #----------------------------------------------------------------------------------------------------------------------------------------
 @release_564_2012.1.0	
-@PB_US13002_DT13919_01
-@PM_Review
-Scenario: @PB_US13002_DT13919_01 As a Study Coordinator, when I click the drop-down list to see matching results, then matching results are displayed within 3 seconds.
+@PB_US13002_01
+@Validation
+Scenario: PB_US13002_01 As a Study Coordinator, when I click the drop-down list to see matching results, then matching results are displayed within 3 seconds.
 	
 	And I select Study "L1WP-GT" and Site "Site 1"
 	And I create a Subject
-		| Field						| Data              |
-		| Datacenter ID				| {RndNum<num1>(5)} |
-		| Subject Initials (F M L)	| SUB               |
+		| Field         | Data                  |
+		| Datacenter ID | SUB {RndNum<num1>(5)} |
 	And I select Form "Adverse Event Form"
 	And I take a screenshot
 	When I click drop button on dynamic search list "Adverse Event Grade" in log line 1
@@ -878,71 +877,64 @@ Scenario: @PB_US13002_DT13919_01 As a Study Coordinator, when I click the drop-d
 
 #----------------------------------------------------------------------------------------------------------------------------------------
 @release_564_2012.1.0	
-@PB_US13002_DT13919_02
-@PM_Review
-Scenario: @PB_US13002_DT13919_02 As a Study Coordinator, when I enter data into a Dynamic Search List field on a log form, and I see matching results are displayed within 3 seconds.
+@PB_US13002_02
+@Validation
+Scenario: PB_US13002_02 As a Study Coordinator, when I enter data into a Dynamic Search List field on a log form, and I see matching results are displayed within 3 seconds.
 	
-	Given I select Study "L1WP-GT" and Site "Site 1"
-	When I create a Subject
-		| Field						| Data              |
-		| Datacenter ID				| {RndNum<num1>(5)} |
-		| Subject Initials (F M L)	| SUB               |
+	And I select Study "L1WP-GT" and Site "Site 1"
+	And I create a Subject
+		| Field         | Data                  | 
+		| Datacenter ID | SUB {RndNum<num1>(5)} | 
 	And I select Form "Adverse Event Form"
 	And I take a screenshot
-	And I enter "3" on dynamic search list "Adverse Event Grade" in log line 1
+	When I enter "3" on dynamic search list "Adverse Event Grade" in log line 1
 	And I wait for 3 seconds
 	Then I should see dynamic search list "Adverse Event Grade" in log line 1 open
 	And I take a screenshot
 	And I navigate to "Home"
 	And I accept alert window
-#----------------------------------------------------------------------------------------------------------------------------------------
-@release_564_2012.1.0	
-@PB_US13002_DT13919_03
-@PM_Review
-Scenario: @PB_US13002_DT13919_03 As a Study Coordinator, when I enter data into a Dynamic Search List field on a log form, and I see matching results are displayed within 3 seconds.
-And I select Study "L1WP-GT" and Site "Site 1"
-And I create a Subject
-| Field	| Data              |
-| Datacenter ID	| {RndNum<num1>(5)} |
-| Subject Initials (F M L)	| SUB               |
-And I select Form "Adverse Event Form"
-
-#Note: Instead of Enter, can we have select data from DSL list or we should have both step defs?
-#And I enter "3" on dynamic search list "Adverse Event Grade" in log line 1
-#And I select "3" on dynamic search list "Adverse Event Grade" in log line 1
-
-And I enter "3" on dynamic search list "Adverse Event Grade" in log line 1
-And I enter "" on dynamic search list "Adverse Event Grade" in log line 2
-And I enter "" on dynamic search list "Adverse Event Grade" in log line 3
-And I enter "5" on dynamic search list "Adverse Event Grade" in log line 4
-And I enter "0" on dynamic search list "Adverse Event Grade" in log line 5	
-And I save the CRF page
-And I take a screenshot
-And I open log line 3
-When I click drop button on dynamic search list "Adverse Event Grade" in log line 3
-And I wait for 3 seconds
-Then I should see dynamic search list "Adverse Event Grade" in log line 3 open
-And I take a screenshot
 
 #----------------------------------------------------------------------------------------------------------------------------------------
 @release_564_2012.1.0	
-@PB_US13002_DT13919_04
-@PM_Review
-Scenario: @PB_US13002_DT13919_04 As a Study Coordinator, when I click the drop-down list to see matching results in DDE, then matching results are displayed within 3 seconds.
+@PB_US13002_03
+@Validation
+Scenario: PB_US13002_03 As a Study Coordinator, when I enter data into a Dynamic Search List field on a log form, and I see matching results are displayed within 3 seconds.
+	
+	And I select Study "L1WP-GT" and Site "Site 1"
+	And I create a Subject
+		| Field         | Data                  |
+		| Datacenter ID | SUB {RndNum<num1>(5)} |
+	And I select Form "Adverse Event Form"
+	And I enter "3" on dynamic search list "Adverse Event Grade" in log line 1
+	And I enter "" on dynamic search list "Adverse Event Grade" in log line 2
+	And I enter "" on dynamic search list "Adverse Event Grade" in log line 3
+	And I enter "5" on dynamic search list "Adverse Event Grade" in log line 4
+	And I enter "0" on dynamic search list "Adverse Event Grade" in log line 5	
+	And I save the CRF page
+	And I take a screenshot
+	And I open log line 3
+	When I click drop button on dynamic search list "Adverse Event Grade" in log line 3
+	And I wait for 3 seconds
+	Then I should see dynamic search list "Adverse Event Grade" in log line 3 open
+	And I take a screenshot
+
+#----------------------------------------------------------------------------------------------------------------------------------------
+@release_564_2012.1.0	
+@PB_US13002_04
+@Validation
+Scenario: PB_US13002_04 As a Study Coordinator, when I click the drop-down list to see matching results in DDE, then matching results are displayed within 3 seconds.
 	
 	And I navigate to "DDE"
 	And I select link "First Pass"
 	And I select link "New Batch"
 	And I choose "L1WP-GT" from "Study"
-	#And I choose "Prod" from "Environment"
 	And I choose "Site 13919" from "Site"
-	And I type "SUB {RndNum<num1>(5)}" in "Subject"
+	And I type "SUB {RndNum<num4>(5)}" in "Subject"
 	And I choose "Subject Enrollment Form" from "Form"
 	And I click button "Locate"
 	And I enter data in DDE and save
-		| Field						| Data              |
-		| Datacenter ID				| {RndNum<num1>(5)} |
-		| Subject Initials (F M L)	| SUB               |
+		| Field         | Data            |
+		| Datacenter ID | SUB {Var(num4)} |
 	And I choose "Adverse Event Form" from "Form"
 	And I click button "Locate"
 	And I take a screenshot
@@ -950,28 +942,31 @@ Scenario: @PB_US13002_DT13919_04 As a Study Coordinator, when I click the drop-d
 	And I wait for 3 seconds
 	Then I should see dynamic search list "Adverse Event Grade" in log line 1 open
 	And I take a screenshot
+	And I enter data in DDE and save
+		| Field | Data |
+		| Visit | 3    |
 
+	And I am logged in to Rave with username "Defuser01" and password "password"
+	And I navigate to "DDE"
+	And I select link "Second Pass"
+	And I enter data in DDE and save
+		| Field         | Data            |
+		| Datacenter ID | SUB {Var(num4)} |
+	And I choose "Adverse Event Form" from "Form"
+	And I click button "Locate"
+	And I take a screenshot
+	And I enter data in DDE and save
+		| Field | Data |
+		| Visit | 3    |
 
-#	When I create a Subject
-#		| Field						| Data              |
-#		| Datacenter ID				| {RndNum<num1>(5)} |
-#		| Subject Initials (F M L)	| SUB               |
-#	And I select Form "Adverse Event Form"
-#	And I take a screenshot
-#	And I click drop button on dynamic search list "Adverse Event Grade" in log line 1
-#	Then I should see dynamic search list "Adverse Event Grade" in log line 1 open within 3 seconds
-#	And I take a screenshot
-#	And I add a new log line
-#		| Field                                | Data                           | Control Type	|
-#		| Adverse Event Text Name (CTCAE v4.0) | Wolff-Parkinson-White syndrome | dropdown		|
-#	And I take a screenshot
-#	And I click drop button on dynamic search list "Adverse Event Grade" in log line 1
-#	Then I should see dynamic search list "Adverse Event Grade" in log line 1 open within 3 seconds
-#	And I take a screenshot
-#	And I open log line 1
-#	And I take a screenshot
-#	And I click drop button on dynamic search list "Adverse Event Grade" in log line 1
-#	Then I should see dynamic search list "Adverse Event Grade" in log line 1 open within 3 seconds
-#	And I take a screenshot
+	And I navigate to "Home"
+	And I select Study "L1WP-GT" and Site "Site 13919"
+	And I select a Subject "SUB {Var(num4)}"
+	And I select Form "Adverse Event Form"
+	And I open log line 1
+	When I click drop button on dynamic search list "Adverse Event Grade" in log line 1
+	And I wait for 3 seconds
+	Then I should see dynamic search list "Adverse Event Grade" in log line 1 open
+	And I take a screenshot
 
 #----------------------------------------------------------------------------------------------------------------------------------------
