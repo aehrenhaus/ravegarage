@@ -22,7 +22,7 @@ Background:
 	# Edit check exists to set field DOB on form Form 2 to require verification if field Age has a value less than 18.
 	# Derivation exists to derive field Age on Form 2 from field Visit Date and DOB on Form 2.			
 	# Edit check exists to set field Field 2 on form Form 2 to require verification if field Field 1 has a value other than 20.
-	# An active Block plan exists in TSDV for study Mediflex with only 1 Custom Tier that has Form 2 excluded from verification.
+	# An active Block plan exists in TSDV for study Mediflex with No Forms tier and 1 Custom Tier that has Form 2 excluded from verification.
 
 @release_2012.1.0 
 @PB-DT13622-01
@@ -412,3 +412,44 @@ Scenario: As an EDC user, when I have TSDV turned off for a form, and I have an 
 	| User entered | '19'          |
 	And I take a screenshot
 
+@release_2012.1.0 
+@PB-DT13622-09 
+@WIP 
+Scenario: As an EDC user, when I have a No Forms TSDV tier and I have an edit check that sets a field to require verification, and I verify the data for the field, and I change the data, and the verification is broken, then I should see an audit recorded for the unverification. 
+	When I create a Subject 
+	|Field |Data | 
+	|Subject Number |109 | 
+	|Subject Initials|SUBJ | 
+	And I select Form "Form 3" 
+	And I enter data in CRF 
+	|Field |Data | 
+	|Field 2|19 | 
+	And I save the CRF page 
+	And I should see data on Fields in CRF 
+	|Field |Data | 
+	|Field 2|19 | 
+	And I should see verification required on Fields in CRF 
+	|Field |Requires Verification| 
+	|Field 2|True | 
+	And I check "Verify" checkbox on Field "Field 2" 
+	And I save the CRF page 
+	And I take a screenshot 
+	And I enter data in CRF 
+	|Field |Data | 
+	|Field 2|18 | 
+	And I save the CRF page 
+	And I should see data on Fields in CRF 
+	|Field |Data | 
+	|Field 2|18 | 
+	And I should see verification required on Fields in CRF 
+	|Field |Requires Verification| 
+	|Field 2|True | 
+	And I take a screenshot 
+	And I click audit on Field "Field 2" 
+	Then I verify Audits exist 
+	| Audit Type | Query Message | 
+	| User entered | '18' | 
+	| DataPoint | Un-verified. | 
+	| DataPoint | Verified.  |
+	| User entered | '19' | 
+	And I take a screenshot
