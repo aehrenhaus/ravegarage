@@ -230,6 +230,7 @@ namespace Medidata.RBT
 			OpenBrower();
             DeleteAllDownloadFiles();
             DeleteAllDownloadDirectories();
+            DeleteFilesInTemporaryUploadDirectories();
 		}
 
 		/// <summary>
@@ -399,7 +400,6 @@ namespace Medidata.RBT
         /// <summary>
         /// Delete all files in the download path
         /// </summary>
-        /// <returns></returns>
         private static void DeleteAllDownloadFiles()
         {
             List<String> createdFiles = Directory.GetFiles(TestContext.DownloadPath).ToList();
@@ -411,12 +411,27 @@ namespace Medidata.RBT
         /// <summary>
         /// Delete all directories in the download path
         /// </summary>
-        /// <returns></returns>
         private static void DeleteAllDownloadDirectories()
         {
             List<String> createdDirectories = Directory.GetDirectories(TestContext.DownloadPath).ToList();
             foreach (String directoryPath in createdDirectories)
                 Directory.Delete(directoryPath, true);
+        }
+
+        /// <summary>
+        /// Delete all temporary upload files
+        /// </summary>
+        private static void DeleteFilesInTemporaryUploadDirectories()
+        {
+            List<String> temporaryFolders = Directory.GetDirectories(TestContext.UploadPath, "*", SearchOption.AllDirectories).ToList()
+                .Where(x => x.EndsWith("Temporary")).ToList();
+            List<String> temporaryUploadFiles = new List<string>();
+            foreach(String temporaryFolder in temporaryFolders)
+                temporaryUploadFiles.AddRange(Directory.GetFiles(temporaryFolder).ToList());
+
+            foreach (String filePath in temporaryUploadFiles)
+                if (!filePath.EndsWith("placeholder.txt"))
+                    File.Delete(filePath);
         }
 
         /// <summary>
