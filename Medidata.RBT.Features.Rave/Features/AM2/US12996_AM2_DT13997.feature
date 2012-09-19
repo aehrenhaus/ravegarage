@@ -18,6 +18,7 @@ Given role "SUPER ROLE 2" exists
 Given Entry Restricted is set for role "SUPER ROLE 2" in
 | Project | Draft | Form   | Field   |
 | AM SJ   | 1.6.3 | Form A | Field A |
+| AM SJ   | 1.6.5 | Form A | Field A |
 | AM SJ   | 1.6.7 | Form A | Field A |
 Given I publish and push eCRF "DT13997 Upload First AM SJ_1.6.3.xml" to "Version 1"
 Given following Project assignments exist
@@ -25,11 +26,11 @@ Given following Project assignments exist
 | SUPER USER 1 | AM SJ   | Live: Prod  | SUPER ROLE 1 | Site_001 | Project Admin Default |
 | SUPER USER 2 | AM SJ   | Live: Prod  | SUPER ROLE 2 | Site_001 | Project Admin Default |
 
-#And "User 1" has access to "Architect"
-#And "User 1" has access to Amendment Manager
-#And "User 2" has access to "Architect"
-#And "User 2" has access to Amendment Manager
-#And Entry Restricted is set for user "User2" on field "Field A" on form "Form A" 
+#And "SUPER USER 1" has access to "Architect"
+#And "SUPER USER 1" has access to Amendment Manager
+#And "SUPER USER 2" has access to "Architect"
+#And "SUPER USER 2" has access to Amendment Manager
+#And Entry Restricted is set for user "SUPER USER 2" on field "Field A" on form "Form A" 
 #And Coded Data exists in Dictionary "Medical History"
 #And Coded Data is assigned to Default value for log field "Field A" 
 	
