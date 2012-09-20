@@ -1,6 +1,6 @@
-# When an Edit Check sets Datapoint XYZ to require verification, if the verification is broken on XYZ by a data change, this is not audited.
+﻿# When an Edit Check sets Datapoint XYZ to require verification, if the verification is broken on XYZ by a data change, this is not audited.
 
-Feature: DT 13622 When an Edit Check sets Datapoint XYZ to require verification, if the verification is broken on XYZ by a data change, this is not audited.
+Feature: DT 13622 TSDV Off When an Edit Check sets Datapoint XYZ to require verification, if the verification is broken on XYZ by a data change, this is not audited.
 	As a Rave user
 	Given I verify data
 	When I change the data
@@ -16,30 +16,18 @@ Background:
 	#And Role "cdm1" has Action "Verify"
 	#And Project "Mediflex" has Draft "<Draft1>"
 	#And I publish and push CRF Version "CRF Version<RANDOMNUMBER>" of Draft "<Draft1>" to site "Site 1" in Project "Mediflex" for Enviroment "Prod"
-	#And I select Study "Mediflex20120710040626 (Dev)" and Site "MediflexDTSite"
+	And I select Study "Mediflex20120710040626" and Site "MediflexDTSite"
 	# Edit check exists to set field Visit Date on form Visit Date to require verification if field Age has a value less than 18.
 	# Edit check exists to set field Field 1 on form Form 1 to require verification if field Field 1 has a value other than 20.
 	# Edit check exists to set field DOB on form Form 2 to require verification if field Age has a value less than 18.
 	# Derivation exists to derive field Age on Form 2 from field Visit Date and DOB on Form 2.			
 	# Edit check exists to set field Field 2 on form Form 2 to require verification if field Field 1 has a value other than 20.
-	# TSDV is turned ON on Database.
-	# An active Block plan exists in TSDV for study Mediflex with No Forms tier and 1 Custom Tier that has Form 2 excluded from verification.
+	# TSDV is turned off in the database.
 
 @release_2012.1.0 
-@PB-DT13622-01
+@PB-DT13622_1-01
 @WIP
-Scenario: As an EDC user, when I have an edit check fired on one field that sets another field to require verification, and I verify the data for the field, and I change the data, and the verification is broken, then I should see an audit recorded for the unverification.
-	Given I navigate to "Reporter"
-	And I select Report "Targeted SDV Configuration"
-	And I set report parameter "Study" with table
-		| Name                   | Environment |
-		| Mediflex20120710040626 | Dev         |
-	And I click button "Submit Report"
-	And I switch to "Targeted SDV Study Plan" window
-	And I inactivate the plan
-	And I switch to "Reports" window
-	And I navigate to "Home" page
-	And I select Study "Mediflex20120710040626 (Dev)" and Site "MediflexDTSite"
+Scenario: As an EDC user, when I have an edit check fired on one field that sets another field to require verification, and TSDV is off, and I verify the data for the field, and I change the data, and the verification is broken, then I should see an audit recorded for the unverification.
 	When I create a Subject
 	|Field			 |Data|
 	|Subject Number	 |101 |
@@ -96,10 +84,9 @@ Scenario: As an EDC user, when I have an edit check fired on one field that sets
 	And I take a screenshot
 
 @release_2012.1.0
-@PB-DT13622-02
+@PB-DT13622_1-02
 @WIP
-Scenario: As an EDC user, when I have an edit check fired on one field that sets another field to require verification, and I verify the data for the form, and I change the data, and the verification is broken, then I should see an audit recorded for the unverification.
-	Given I select Study "Mediflex20120710040626 (Dev)" and Site "MediflexDTSite"
+Scenario: As an EDC user, when I have an edit check fired on one field that sets another field to require verification, and TSDV is off, and I verify the data for the form, and I change the data, and the verification is broken, then I should see an audit recorded for the unverification.
 	When I create a Subject
 	|Field			 |Data |
 	|Subject Number	 |102  |
@@ -156,10 +143,9 @@ Scenario: As an EDC user, when I have an edit check fired on one field that sets
 	And I take a screenshot
 
 @release_2012.1.0
-@PB-DT13622-03
+@PB-DT13622_1-03
 @WIP
-Scenario: As an EDC user, when I have an edit check that sets a field to require verification, and I verify the data for the field, and I change the data, and the verification is broken, then I should see an audit recorded for the unverification.
-	Given I select Study "Mediflex20120710040626 (Dev)" and Site "MediflexDTSite"
+Scenario: As an EDC user, when I have an edit check that sets a field to require verification, and TSDV is off, and I verify the data for the field, and I change the data, and the verification is broken, then I should see an audit recorded for the unverification.
 	When I create a Subject
 	|Field			 |Data |
 	|Subject Number	 |103  |
@@ -199,10 +185,9 @@ Scenario: As an EDC user, when I have an edit check that sets a field to require
 	And I take a screenshot
 
 @release_2012.1.0
-@PB-DT13622-04
+@PB-DT13622_1-04
 @WIP
-Scenario: As an EDC user, when I have an edit check that sets a field to require verification, and I verify the data for the form, and I change the data, and the verification is broken, then I should see an audit recorded for the unverification.
-	Given I select Study "Mediflex20120710040626 (Dev)" and Site "MediflexDTSite"
+Scenario: As an EDC user, when I have an edit check that sets a field to require verification, and TSDV is off, and I verify the data for the form, and I change the data, and the verification is broken, then I should see an audit recorded for the unverification.
 	When I create a Subject
 	|Field			 |Data |
 	|Subject Number	 |104  |
@@ -242,10 +227,9 @@ Scenario: As an EDC user, when I have an edit check that sets a field to require
 	And I take a screenshot
 
 @release_2012.1.0
-@PB-DT13622-05
+@PB-DT13622_1-05
 @WIP
-Scenario: As an EDC user, when I have an edit check fired on a field that is derived to sets another field to require verification, and I verify the data for the field, and I change the data, and the verification is broken, then I should see an audit recorded for the unverification.
-	Given I select Study "Mediflex20120710040626 (Dev)" and Site "MediflexDTSite"
+Scenario: As an EDC user, when I have an edit check fired on a field that is derived to sets another field to require verification, and TSDV is off, and I verify the data for the field, and I change the data, and the verification is broken, then I should see an audit recorded for the unverification.
 	When I create a Subject
 	|Field			 |Data |
 	|Subject Number	 |105  |
@@ -294,10 +278,9 @@ Scenario: As an EDC user, when I have an edit check fired on a field that is der
 	And I take a screenshot
 
 @release_2012.1.0
-@PB-DT13622-06
+@PB-DT13622_1-06
 @WIP
-Scenario: As an EDC user, when I have an edit check fired on a field that is derived to sets another field to require verification, and I verify the data for the form, and I change the data, and the verification is broken, then I should see an audit recorded for the unverification.
-	Given I select Study "Mediflex20120710040626 (Dev)" and Site "MediflexDTSite"
+Scenario: As an EDC user, when I have an edit check fired on a field that is derived to sets another field to require verification, and TSDV is off, and I verify the data for the form, and I change the data, and the verification is broken, then I should see an audit recorded for the unverification.
 	When I create a Subject
 	|Field			 |Data |
 	|Subject Number	 |105  |
@@ -343,153 +326,4 @@ Scenario: As an EDC user, when I have an edit check fired on a field that is der
 	| DataPoint    | Un-verified.  |
 	| DataPoint    | Verified.     |
 	| User entered | '05 Mar 1995' |
-	And I take a screenshot
-
-@release_2012.1.0
-@PB-DT13622-07
-@WIP
-Scenario: As an EDC user, when I have TSDV turned off for a form, when I have an edit check that sets a field to require verification, and I verify the data for the field, and I change the data, and the verification is broken, then I should see an audit recorded for the unverification.
-	Given I navigate to "Reporter"
-	And I select Report "Targeted SDV Configuration"
-	And I set report parameter "Study" with table
-		| Name                   | Environment |
-		| Mediflex20120710040626 | Dev         |
-	And I click button "Submit Report"
-	And I switch to "Targeted SDV Study Plan" window
-	And I activate the plan
-	And I switch to "Reports" window
-	And I select link "Home"
-	And I select Study "Mediflex20120710040626 (Dev)" and Site "MediflexDTSite"
-	When I create a Subject
-	|Field			 |Data |
-	|Subject Number	 |107  |
-	|Subject Initials|SUBJ |	
-	And I select Form "Form 3"
-	And I enter data in CRF
-	|Field	|Data |
-	|Field 2|19	  |
-	And I save the CRF page
-	And I should see data on Fields in CRF
-	|Field  |Data |
-	|Field 2|19   |
-	And I should see verification required on Fields in CRF
-	|Field  |Requires Verification|
-	|Field 2|True                 |
-	And I check "Verify" checkbox on Field "Field 2"
-	And I save the CRF page
-	And I take a screenshot
-	And I enter data in CRF
-	|Field	|Data |
-	|Field 2|18   |
-	And I save the CRF page
-	And I should see data on Fields in CRF
-	|Field  |Data |
-	|Field 2|18   |
-	And I should see verification required on Fields in CRF
-	|Field  |Requires Verification|
-	|Field 2|True                 |
-	And I take a screenshot
-	And I click audit on Field "Field 2"
-	Then I verify Audits exist
-	| Audit Type   | Query Message |
-	| User entered | '18'          |
-	| DataPoint    | Un-verified.  |
-	| DataPoint    | Verified.     |
-	| User entered | '19'          |
-	And I take a screenshot
-
-@release_2012.1.0
-@PB-DT13622-08
-@WIP
-Scenario: As an EDC user, when I have TSDV turned off for a form, and I have an edit check that sets a field to require verification, and I verify the data for the form, and I change the data, and the verification is broken, then I should see an audit recorded for the unverification.
-	Given I select Study "Mediflex20120710040626 (Dev)" and Site "MediflexDTSite"
-	When I create a Subject
-	|Field			 |Data |
-	|Subject Number	 |108  |
-	|Subject Initials|SUBJ |	
-	And I select Form "Form 3"
-	And I enter data in CRF
-	|Field	|Data |
-	|Field 2|19	  |
-	And I save the CRF page
-	And I should see data on Fields in CRF
-	|Field  |Data |
-	|Field 2|19   |
-	And I should see verification required on Fields in CRF
-	|Field  |Requires Verification|
-	|Field 2|True                 |
-	And I check "Verify" checkbox on CRF page
-	And I save the CRF page
-	And I take a screenshot
-	And I enter data in CRF
-	|Field	|Data |
-	|Field 2|18   |
-	And I save the CRF page
-	And I should see data on Fields in CRF
-	|Field  |Data |
-	|Field 2|18   |
-	And I should see verification required on Fields in CRF
-	|Field  |Requires Verification|
-	|Field 2|True                 |
-	And I take a screenshot
-	And I click audit on Field "Field 2"
-	Then I verify Audits exist
-    | Audit Type   | Query Message |
-	| User entered | '18'          |
-	| DataPoint    | Un-verified.  |
-	| DataPoint    | Verified.     |
-	| User entered | '19'          |
-	And I take a screenshot
-
-@release_2012.1.0 
-@PB-DT13622-09 
-@WIP 
-Scenario: As an EDC user, when I have a No Forms TSDV tier and I have an edit check that sets a field to require verification, and I verify the data for the field, and I change the data, and the verification is broken, then I should see an audit recorded for the unverification. 
-	Given I navigate to "Reporter"
-	And I select Report "Targeted SDV Configuration"
-	And I set report parameter "Study" with table
-		| Name                   | Environment |
-		| Mediflex20120710040626 | Dev1         |
-	And I click button "Submit Report"
-	And I switch to "Targeted SDV Study Plan" window
-	And I activate the plan
-	And I switch to "Reports" window
-	And I select link "Home"
-	And I select Study "Mediflex20120710040626 (Dev1)" and Site "MediflexDTSite"
-	When I create a Subject 
-	|Field |Data | 
-	|Subject Number |109 | 
-	|Subject Initials|SUBJ | 
-	And I select Form "Form 3" 
-	And I enter data in CRF 
-	|Field |Data | 
-	|Field 2|19 | 
-	And I save the CRF page 
-	And I should see data on Fields in CRF 
-	|Field |Data | 
-	|Field 2|19 | 
-	And I should see verification required on Fields in CRF 
-	|Field |Requires Verification| 
-	|Field 2|True | 
-	And I check "Verify" checkbox on Field "Field 2" 
-	And I save the CRF page 
-	And I take a screenshot 
-	And I enter data in CRF 
-	|Field |Data | 
-	|Field 2|18 | 
-	And I save the CRF page 
-	And I should see data on Fields in CRF 
-	|Field |Data | 
-	|Field 2|18 | 
-	And I should see verification required on Fields in CRF 
-	|Field |Requires Verification| 
-	|Field 2|True | 
-	And I take a screenshot 
-	And I click audit on Field "Field 2" 
-	Then I verify Audits exist 
-	| Audit Type | Query Message | 
-	| User entered | '18' | 
-	| DataPoint | Un-verified. | 
-	| DataPoint | Verified.  |
-	| User entered | '19' | 
 	And I take a screenshot

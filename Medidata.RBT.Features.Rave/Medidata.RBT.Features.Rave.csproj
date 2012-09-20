@@ -100,6 +100,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>US13011_DT13976_AddCoderToConfigurationLoaderSpec.feature</DependentUpon>
     </Compile>
+    <Compile Include="Features\EDC\DT_13622_TSDV_Off.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DT_13622_TSDV_Off.feature</DependentUpon>
+    </Compile>
     <Compile Include="Features\EDC\US17743_DT12513.feature.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -303,6 +308,10 @@
     <None Include="Features\Configuration\US13011_DT13976_AddCoderToConfigurationLoaderSpec.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>US13011_DT13976_AddCoderToConfigurationLoaderSpec.feature.cs</LastGenOutput>
+    </None>
+    <None Include="Features\EDC\DT_13622_TSDV_Off.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>DT_13622_TSDV_Off.feature.cs</LastGenOutput>
     </None>
     <None Include="Features\EDC\US17743_DT12513.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
