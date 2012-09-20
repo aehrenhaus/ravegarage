@@ -22,6 +22,8 @@
   <WindowWidth>10005</WindowWidth>
   <WindowTopX>120</WindowTopX>
   <WindowTopY>135</WindowTopY>
+  <ActiveSheet>2</ActiveSheet>
+  <FirstVisibleSheet>2</FirstVisibleSheet>
   <RefModeR1C1/>
   <ProtectStructure>False</ProtectStructure>
   <ProtectWindows>False</ProtectWindows>
@@ -304,7 +306,6 @@
    </Row>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
-   <Selected/>
    <FreezePanes/>
    <FrozenNoSplit/>
    <SplitHorizontal>1</SplitHorizontal>
@@ -324,7 +325,8 @@
     </Pane>
     <Pane>
      <Number>0</Number>
-     <ActiveCol>0</ActiveCol>
+     <ActiveRow>14</ActiveRow>
+     <ActiveCol>2</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>True</ProtectObjects>
@@ -2207,7 +2209,7 @@
     <Cell><Data ss:Type="String">FALSE</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">FALSE</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">FALSE</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:Index="42"><Data ss:Type="String">RM Monitor,RM Lead Monitor</Data><NamedCell
+    <Cell ss:Index="42"><Data ss:Type="String">SUPER ROLE 2</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:Index="44"><Data ss:Type="String">FALSE</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -7994,10 +7996,11 @@
    </Row>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
+   <Selected/>
    <FreezePanes/>
    <FrozenNoSplit/>
    <SplitHorizontal>1</SplitHorizontal>
-   <TopRowBottomPane>68</TopRowBottomPane>
+   <TopRowBottomPane>14</TopRowBottomPane>
    <SplitVertical>2</SplitVertical>
    <LeftColumnRightPane>40</LeftColumnRightPane>
    <ActivePane>0</ActivePane>
@@ -8015,8 +8018,8 @@
     </Pane>
     <Pane>
      <Number>0</Number>
-     <ActiveRow>101</ActiveRow>
-     <ActiveCol>45</ActiveCol>
+     <ActiveRow>20</ActiveRow>
+     <ActiveCol>41</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>True</ProtectObjects>
@@ -20299,10 +20302,10 @@
     <Cell ss:StyleID="s63"><Data ss:Type="String">SourceUrlId</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
    </Row>
-   <Row ss:StyleID="s67">
+   <Row ss:AutoFitHeight="0" ss:Height="25.5" ss:StyleID="s67">
     <Cell ss:StyleID="s68"><Data ss:Type="String">Unique Subject ID</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell><Data ss:Type="String">//This custom function should be configured as a check step.&#13;&#10;&#13;&#10;//It accepts a DataPoint and determines if the data entered&#13;&#10;&#13;&#10;//is identical to the value of that field for any other subject&#13;&#10;&#13;&#10;//on the current StudySite.&#13;&#10;&#13;&#10;//It assumes the DataPoint passed in is on a subject-level page,&#13;&#10;&#13;&#10;//like the primary form.&#13;&#10;&#13;&#10;DataPoint currentSubject_DP=(DataPoint)ThisObject;&#13;&#10;&#13;&#10;bool isDuplicate=false;&#13;&#10;&#13;&#10;&#13;&#10;if(currentSubject_DP.Data!=string.Empty)&#13;&#10;&#13;&#10;{&#13;&#10;&#13;&#10;string[] allSubjectValues=currentSubject_DP.Record.Subject.StudySite.GetAllValuesForOIDPath(&#13;&#10;&#13;&#10;null, currentSubject_DP.Field.Form.OID, &#13;&#10;&#13;&#10;currentSubject_DP.Field.OID, new int[]{currentSubject_DP.Record.Subject.ID});&#13;&#10;&#13;&#10;for(int i=0; i&lt;allSubjectValues.Length &amp;&amp; !isDuplicate; i++)&#13;&#10;&#13;&#10;{&#13;&#10;&#13;&#10;if(allSubjectValues[i]==currentSubject_DP.Data) isDuplicate=true;&#13;&#10;&#13;&#10;}&#13;&#10;&#13;&#10;}&#13;&#10;&#13;&#10;return isDuplicate;&#10;</Data><NamedCell
+    <Cell><Data ss:Type="String">return true;&#10;</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">C#</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">1561</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -20339,7 +20342,7 @@
     </Pane>
     <Pane>
      <Number>0</Number>
-     <ActiveRow>37</ActiveRow>
+     <ActiveRow>22</ActiveRow>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>

@@ -31,6 +31,7 @@ namespace Medidata.RBT.Features.Rave.Steps.Seeding
         {
             TestContext.CurrentPage = new SiteAdministrationHomePage().NavigateToSelf();
             Site site = new Site(siteName, true);
+            TestContext.CurrentPage = new SiteAdministrationHomePage().NavigateToSelf();
             CurrentPage.As<SiteAdministrationHomePage>().SearchForSite(site.UniqueName);
             CurrentPage.As<SiteAdministrationHomePage>().ClickSite(site.UniqueName);
             Project project = new Project(studyName);
