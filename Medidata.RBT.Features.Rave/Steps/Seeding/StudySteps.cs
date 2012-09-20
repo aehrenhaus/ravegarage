@@ -42,11 +42,11 @@ namespace Medidata.RBT.Features.Rave
         /// <summary>
         /// XML draft is uploaded for seeding purposes.
         /// </summary>
-        /// <param name="draft">The name of the draft to be seeded</param>
+        /// <param name="draftName">The name of the draft to be seeded</param>
         [StepDefinition(@"xml draft ""([^""]*)"" is Uploaded")]
         public void XmlDraft____IsUploaded(string draftName)
         {
-            new UploadedDraft(draftName, true);
+            TestContext.GetExistingFeatureObjectOrMakeNew(draftName, () => new UploadedDraft(draftName, true));
         }
 
         /// <summary>
@@ -58,8 +58,10 @@ namespace Medidata.RBT.Features.Rave
         [StepDefinition(@"I publish and push eCRF ""([^""]*)"" to ""([^""]*)""")]
         public void IPublishAndPushECRF____To____(string uploadName, string crfVersionName)
         {
-            UploadedDraft uploadedDraft = new UploadedDraft(uploadName, true);
-            CrfVersion crfVersion = new CrfVersion(uploadedDraft.Name, crfVersionName, true);
+            UploadedDraft uploadedDraft = TestContext.GetExistingFeatureObjectOrMakeNew
+                    (uploadName, () => new UploadedDraft(uploadName, true));
+            CrfVersion crfVersion = TestContext.GetExistingFeatureObjectOrMakeNew
+                    (crfVersionName, () => new CrfVersion(uploadedDraft.Name, crfVersionName, true));
             TestContext.CurrentPage = new ArchitectPage().NavigateToSelf();
             TestContext.CurrentPage.As<ArchitectPage>().ClickProject(crfVersion.UploadedDraft.Project.UniqueName);
             TestContext.CurrentPage.As<ArchitectLibraryPage>().PushVersion(crfVersion.UniqueName, "Prod", "All Sites");

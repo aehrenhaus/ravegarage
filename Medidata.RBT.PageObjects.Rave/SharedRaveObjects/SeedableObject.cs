@@ -13,7 +13,7 @@ namespace Medidata.RBT.SharedRaveObjects
     ///All objects which can seed should implement this class. 
     ///The seedable objects should be marked for seeding when created.
     ///</summary>
-    public abstract class SeedableObject : FeatureObject
+    public abstract class SeedableObject : IFeatureObject
     {
         public Guid? UID { get; set; } //A unique identifier for the object
         public string Name { get; set; } //The feature file defined name of the SeedableObject
@@ -28,7 +28,6 @@ namespace Medidata.RBT.SharedRaveObjects
         }
 
         public SeedableObject(string featureName)
-            : base(featureName, typeof(SeedableObject).GetFields(BindingFlags.NonPublic | BindingFlags.Public | BindingFlags.Instance).ToList())
         {
             if (UID.HasValue)
                 DraftCounter.DecrementCounter();

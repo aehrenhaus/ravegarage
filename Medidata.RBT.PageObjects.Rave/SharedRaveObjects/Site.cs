@@ -22,6 +22,7 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
     {
         public UploadedDraft Draft { get; set; }
         public string Number { get; set; }
+        public List<Guid> StudyUIDs { get; set; }
 
         /// <summary>
         /// The Site constructor
@@ -66,7 +67,6 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
         public override void CreateObject()
         {
             TestContext.CurrentPage.As<SiteAdministrationNewSitePage>().CreateSite(UniqueName, Number);
-            TestContext.FeatureObjects.Add(Name, this);
         }
     }
 }

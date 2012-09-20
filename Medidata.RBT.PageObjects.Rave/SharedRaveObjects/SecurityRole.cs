@@ -18,7 +18,7 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
     /// <summary>
     /// This is a rave specific SecurityRole.
     /// </summary>
-    public class SecurityRole : FeatureObject
+    public class SecurityRole : IFeatureObject
     {
         public Guid? UID { get; set; }
         public string Name { get; set; }
@@ -29,14 +29,12 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
         /// </summary>
         /// <param name="securityRoleName">Feature defined name of the SecurityRole</param>
         public SecurityRole(string securityRoleName)
-            :base(securityRoleName, null)
         {
             if (!UID.HasValue)
             {
                 UID = Guid.NewGuid();
                 Name = securityRoleName;
                 UniqueName = securityRoleName;
-                TestContext.FeatureObjects.Add(securityRoleName, this);
             }
         }
     }

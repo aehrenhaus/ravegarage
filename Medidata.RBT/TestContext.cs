@@ -105,15 +105,37 @@ namespace Medidata.RBT
         /// <summary>
         /// Mapping of the name provided in the feature file to the FeatureObject object created by the FeatureObject constructor.
         /// </summary>
-        public static Dictionary<string, FeatureObject> FeatureObjects
+        public static Dictionary<string, IFeatureObject> FeatureObjects
         {
             get
             {
-                return Medidata.RBT.TestContext.GetFeatureContextValue<Dictionary<string, FeatureObject>>("FeatureObjects");
+                return Medidata.RBT.TestContext.GetFeatureContextValue<Dictionary<string, IFeatureObject>>("FeatureObjects");
             }
             set
             {
                 Medidata.RBT.TestContext.SetFeatureContextValue("FeatureObjects", value);
+            }
+        }
+
+        /// <summary>
+        /// Method to either get a FeatureObject that already exists in the FeatureObjects dictionary.
+        /// Or, call that object's constructor to make a new one and add that to the FeatureObjects dictionary.
+        /// </summary>
+        /// <typeparam name="T">A feature object type</typeparam>
+        /// <param name="featureName">The feature name of the object, the name the object is referred to as in the feature file.</param>
+        /// <param name="constructor">The delegate of the call to the constructor</param>
+        /// <returns></returns>
+        public static T GetExistingFeatureObjectOrMakeNew<T>(string featureName, Func<T> constructor) where T : IFeatureObject
+        {
+            IFeatureObject fo;
+            TestContext.FeatureObjects.TryGetValue(featureName, out fo);
+            if (fo != null)
+                return (T)fo;
+            else
+            {
+                T featureObject = constructor();
+                TestContext.FeatureObjects.Add(featureName, featureObject);
+                return featureObject;
             }
         }
 
@@ -239,7 +261,7 @@ namespace Medidata.RBT
 		[BeforeFeature()]
 		public static void BeforeFeature()
 		{
-            Medidata.RBT.TestContext.SetFeatureContextValue<Dictionary<string, FeatureObject>>("FeatureObjects", new Dictionary<string, FeatureObject>());
+            Medidata.RBT.TestContext.SetFeatureContextValue<Dictionary<string, IFeatureObject>>("FeatureObjects", new Dictionary<string, IFeatureObject>());
 			CurrentFeatureStartTime = DateTime.Now;
             DraftCounter.ResetCounter();
 		}

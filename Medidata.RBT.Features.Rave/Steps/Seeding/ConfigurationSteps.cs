@@ -10,6 +10,9 @@ using Medidata.RBT.PageObjects.Rave;
 
 namespace Medidata.RBT.Features.Rave
 {
+    /// <summary>
+    /// Steps that configure assignments between uploaded elements
+    /// </summary>
 	[Binding]
 	public class ConfigurationSteps : BrowserStepsBase
 	{
@@ -23,20 +26,29 @@ namespace Medidata.RBT.Features.Rave
             List<ConfigurationCreationModel> configurations = table.CreateSet<ConfigurationCreationModel>().ToList();
             foreach (ConfigurationCreationModel configuration in configurations)
             {
-                User user = new User(configuration.User, true);
-                Role role = new Role(configuration.Role, true);
-                SecurityRole securityRole = new SecurityRole(configuration.SecurityRole);
+                User user = TestContext.GetExistingFeatureObjectOrMakeNew(configuration.User, () => new User(configuration.User, true));
+                Role role = TestContext.GetExistingFeatureObjectOrMakeNew(configuration.Role, () => new Role(configuration.Role, true));
+                SecurityRole securityRole = TestContext.GetExistingFeatureObjectOrMakeNew
+                    (configuration.SecurityRole, () => new SecurityRole(configuration.SecurityRole));
 
-                Site site = new Site(configuration.Site, true);
-                Project project = new Project(configuration.Project);
+                Site site = TestContext.GetExistingFeatureObjectOrMakeNew(configuration.Site, () => new Site(configuration.Site, true));
+                Project project = TestContext.GetExistingFeatureObjectOrMakeNew(configuration.Project, () => new Project(configuration.Project));
 
-                CurrentPage = new UserAdministrationPage().NavigateToSelf();
-                CurrentPage = CurrentPage.As<UserAdministrationPage>().SearchUser(new UserAdministrationPage.SearchByModel()
+                bool studyAssignmentExists = user.StudyAssignmentExists(role.UID.Value, project.UID.Value, site.UID.Value);
+                bool moduleAssignmentExists = user.ModuleAssignmentExists("All Projects", securityRole.UniqueName);
+                if (!studyAssignmentExists && !moduleAssignmentExists)
                 {
-                    Login = user.UniqueName
-                });
-                CurrentPage = CurrentPage.As<UserAdministrationPage>().ClickUser(user.UniqueName);
-                CurrentPage.As<UserEditPage>().AssignUserToPermissions(project, role, configuration.Environment, site, securityRole);
+                    CurrentPage = new UserAdministrationPage().NavigateToSelf();
+                    CurrentPage = CurrentPage.As<UserAdministrationPage>().SearchUser(new UserAdministrationPage.SearchByModel()
+                    {
+                        Login = user.UniqueName
+                    });
+                    CurrentPage = CurrentPage.As<UserAdministrationPage>().ClickUser(user.UniqueName);
+                    if (!moduleAssignmentExists)
+                        CurrentPage.As<UserEditPage>().AssignUserToSecurityRole(user, securityRole);
+                    if (!studyAssignmentExists)
+                        CurrentPage.As<UserEditPage>().AssignUserToPermissions(user, project, role, configuration.Environment, site);
+                }
             }
         }
 	}

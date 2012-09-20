@@ -8,6 +8,9 @@ using Medidata.RBT.PageObjects.Rave.SiteAdministration;
 
 namespace Medidata.RBT.Features.Rave.Steps.Seeding
 {
+    /// <summary>
+    /// Steps which create or manipulate sites.
+    /// </summary>
     [Binding]
     public class SiteSteps : BrowserStepsBase
     {
@@ -18,7 +21,7 @@ namespace Medidata.RBT.Features.Rave.Steps.Seeding
         [StepDefinition(@"Site ""([^""]*)"" exists")]
         public void Site____Exists(string siteName)
         {
-            new Site(siteName, true);
+            TestContext.GetExistingFeatureObjectOrMakeNew(siteName, () => new Site(siteName, true));
         }
 
         /// <summary>
@@ -30,12 +33,15 @@ namespace Medidata.RBT.Features.Rave.Steps.Seeding
         public void Study____IsAssignedToSite____(string studyName, string siteName)
         {
             TestContext.CurrentPage = new SiteAdministrationHomePage().NavigateToSelf();
-            Site site = new Site(siteName, true);
-            TestContext.CurrentPage = new SiteAdministrationHomePage().NavigateToSelf();
-            CurrentPage.As<SiteAdministrationHomePage>().SearchForSite(site.UniqueName);
-            CurrentPage.As<SiteAdministrationHomePage>().ClickSite(site.UniqueName);
-            Project project = new Project(studyName);
-            CurrentPage.As<SiteAdministrationSiteDetailsPage>().LinkStudyWithSite(project.UniqueName);
+            Site site = TestContext.GetExistingFeatureObjectOrMakeNew(siteName, () => new Site(siteName, true));
+            if (site.StudyUIDs == null || !site.StudyUIDs.Contains(site.UID.Value))
+            {
+                TestContext.CurrentPage = new SiteAdministrationHomePage().NavigateToSelf();
+                CurrentPage.As<SiteAdministrationHomePage>().SearchForSite(site.UniqueName);
+                CurrentPage.As<SiteAdministrationHomePage>().ClickSite(site.UniqueName);
+                Project project = TestContext.GetExistingFeatureObjectOrMakeNew(studyName, () => new Project(studyName));
+                CurrentPage.As<SiteAdministrationSiteDetailsPage>().LinkStudyWithSite(site, project.UniqueName);
+            }
         }
     }
 }

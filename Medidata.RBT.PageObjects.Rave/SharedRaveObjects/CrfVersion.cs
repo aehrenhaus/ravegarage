@@ -35,7 +35,7 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
             {
                 UID = Guid.NewGuid();
                 Name = crfVersionName;
-                FeatureObject draftObject;
+                IFeatureObject draftObject;
                 TestContext.FeatureObjects.TryGetValue(draftName, out draftObject);
                 UploadedDraft = (UploadedDraft)draftObject;
 
@@ -61,7 +61,6 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
         public override void CreateObject()
         {
             TestContext.CurrentPage.As<ArchitectCRFDraftPage>().PublishCRF(UniqueName);
-            TestContext.FeatureObjects.Add(Name, this);
             new ArchitectPage().ClickProject(UploadedDraft.Project.UniqueName);
         }
 

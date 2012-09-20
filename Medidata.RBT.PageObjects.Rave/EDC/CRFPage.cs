@@ -151,7 +151,7 @@ namespace Medidata.RBT.PageObjects.Rave
         /// <returns>Returns true if the values are in the order passed in</returns>
         public bool FindFieldValuesInOrder(string fieldName, List<string> values)
         {
-            IWebElement field = TestContext.Browser.FindElement(By.XPath("//a[text()='" + fieldName + "']"));
+            IWebElement field = TestContext.Browser.WaitForElement(By.XPath("//a[text()='" + fieldName + "']"));
             IWebElement tbody = field.Parent().Parent().Parent();
             List<IWebElement> rows = tbody.FindElements(By.XPath("tr[@class='evenRow' or @class='oddRow']")).ToList();
             for (int i = 0; i < values.Count; i++)

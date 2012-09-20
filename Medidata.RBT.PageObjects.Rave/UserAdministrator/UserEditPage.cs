@@ -56,12 +56,12 @@ namespace Medidata.RBT.PageObjects.Rave
         /// <summary>
         /// Assign the user to the permissions in the parameters
         /// </summary>
+        /// <param name="user">The user to assign everything else to. Needed to keep track of its study assignments</param>
         /// <param name="project">The project to assign the user to</param>
         /// <param name="role">The role to assign the user to</param>
         /// <param name="environment">The environment to assign the user to</param>
         /// <param name="site">The site to assign the user to</param>
-        /// <param name="securityRole">The securityRole to assign the user to</param>
-        public void AssignUserToPermissions(Project project, Role role, string environment, Site site, SecurityRole securityRole)
+        public void AssignUserToPermissions(User user, Project project, Role role, string environment, Site site)
         {
             ClickLink("Assign to Study");
             ChooseFromDropdown("_ctl0_Content_UserSiteWizard1_SelectRoleDDL", role.UniqueName);
@@ -69,11 +69,27 @@ namespace Medidata.RBT.PageObjects.Rave
             ChooseFromDropdown("_ctl0_Content_UserSiteWizard1_AuxStudiesDDL", environment);
             ClickLink("Assign User");
 
+            AssignUserToSite(project.UniqueName, role.UniqueName, site.UniqueName, site.Number);
+
+            if (user.StudyAssignments == null)
+                user.StudyAssignments = new List<StudyAssignment>();
+            user.StudyAssignments.Add(new StudyAssignment(project.UID.Value, role.UID.Value, site.UID.Value));
+        }
+
+        /// <summary>
+        /// Assign the user to a security role
+        /// </summary>
+        /// <param name="user">The user to assign everything else to. Needed to keep track of its module assignments</param>
+        /// <param name="securityRole">The securityRole to assign the user to</param>
+        public void AssignUserToSecurityRole(User user, SecurityRole securityRole)
+        {
             ClickLink("Assign To Project");
             ChooseFromDropdown("_ctl0_Content_UserSecurityWizard1_DdlSelectRole", securityRole.UniqueName);
             ClickLink("Assign");
 
-            AssignUserToSite(project.UniqueName, role.UniqueName, site.UniqueName, site.Number);
+            if (user.ModuleAssignments == null)
+                user.ModuleAssignments = new List<ModuleAssignment>();
+            user.ModuleAssignments.Add(new ModuleAssignment("All Projects", securityRole.UniqueName));
         }
 
         /// <summary>

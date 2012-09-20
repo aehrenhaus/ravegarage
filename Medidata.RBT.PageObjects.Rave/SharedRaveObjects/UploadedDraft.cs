@@ -61,7 +61,6 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
         public override void CreateObject()
         {
             TestContext.CurrentPage.As<UploadDraftPage>().UploadFile(UniqueFileLocation);
-            TestContext.FeatureObjects.Add(Name, this);
             Factory.FeatureObjectsForDeletion.Add(this);
         }
 
@@ -85,14 +84,14 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
             string oldProjectName = secondRowCells[projectCell].ChildNodes[0].InnerText;
 
             if (Project == null)
-                Project = new Project(oldProjectName);
+                Project = TestContext.GetExistingFeatureObjectOrMakeNew(oldProjectName, () => new Project(oldProjectName));
 
             secondRowCells[projectCell].ChildNodes[0].InnerText = Project.UniqueName;
 
             //Set Draft Name
             int draftCell = firstRowCells.FindIndex(x => x.InnerText.ToLower() == "draftname");
             string oldDraftName = secondRowCells[draftCell].ChildNodes[0].InnerText;
-            Draft = new Draft(oldDraftName);
+            Draft = TestContext.GetExistingFeatureObjectOrMakeNew(oldDraftName, () => new Draft(oldDraftName));
 
             CheckEntryRestrictionFields(worksheets.Where(x => x.Attributes["ss:Name"].Value.ToLower() == "fields").FirstOrDefault());
 
@@ -132,7 +131,10 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
                         List<string> entryRestrictions = entryRestrictionsCommaSeparated.Split(',').ToList();
                         StringBuilder uniqueEntryRestrictions = new StringBuilder();
                         foreach (string entryRestriction in entryRestrictions)
-                            uniqueEntryRestrictions.Append(new Role(entryRestriction.Trim(), true).UniqueName + ",");
+                        {
+                            Role role = TestContext.GetExistingFeatureObjectOrMakeNew(entryRestriction.Trim(), () => new Role(entryRestriction.Trim(), true));
+                            uniqueEntryRestrictions.Append(role.UniqueName + ",");
+                        }
 
                         entryRestrictionCell.ChildNodes[0].InnerText = uniqueEntryRestrictions.ToString().Substring(0, uniqueEntryRestrictions.Length - 1);
                     }

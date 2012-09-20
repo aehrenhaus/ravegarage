@@ -45,7 +45,7 @@ namespace Medidata.RBT.PageObjects.Rave.AmendmentManager
         {
             foreach (MigrationModel migrationModel in migrationModels)
             {
-                IWebElement childrenTable = Browser.FindElementById("_ctl0_Content_MigrationStepManagePlan1_MigrationPlanMaps_ChildrenMapping_dgObjects");
+                IWebElement childrenTable = Browser.WaitForElement(By.Id("_ctl0_Content_MigrationStepManagePlan1_MigrationPlanMaps_ChildrenMapping_dgObjects"));
                 IWebElement source = childrenTable.FindElement(By.XPath("tbody/tr/td/span[text() = '" + migrationModel.Source + "']"));
                 IWebElement sourceTargetRow = source.Parent().Parent();
                 Dropdown targetDropdown = sourceTargetRow.FindElement(By.XPath("td/select")).EnhanceAs<Dropdown>();
