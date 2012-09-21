@@ -12,71 +12,36 @@ Feature: DT 13576 Edit Check 'sets subject to require signature' unexpectedly se
 	And I should see the requires signature for the data
 
 Background:
-Create 2 forms: Demograhics form set up with edit check less than 18.
-Medical History form set up with (Yes/No) data dictionary associated to an edit check for "Y" value. 
 
-    #Given user "defuser"  has study "13576 Study" has site "Site 1"
-	#And study "13576 Study" has draft "Draft 1"
-	#And form "Enrollment" has varOID "<VarOID>" has format "<Format>" has data dictionary "<Dictionary>" has Unit dictionary "<Unit Dictionary>" has field name "<Field Name>" has field OID "<Field OID>" has status "<Active>" has visible status "<Is Visible Field>" has log data entry "<Log Data Entry>" has field label "<Field Label>" has control type "<Control Type>" has value "<Edit Checks>"
-	#	|VarOID		              |Format		  |Dictionary	  |Unit Dictionary	|Field Name		          |Field OID		        |Active		|Is Visible Field 	|Log Data Entry	|Field Label                                        |Control Type          |Edit Checks 	|
-	#	|SUBJ_INIT	              |$3	          |               |					|SUBJ_INIT		          |SUBJ_INIT		        |true		|true				|			    |Subject Initials 	                                |Text 	               |		    	|
-	#	|SUBJ_NUM	              |$5	          |               |					|SUBJ_NUM		          |SUBJ_NUM		            |true		|true				|			    |Subject Number 	                                |Text 	               |		    	|
-	#	|SUBJ_ID	              |$8	          |               |					|SUBJ_ID		          |SUBJ_ID		            |true		|true				|			    |Subject ID 	                                    |Text 	               |		    	|
+Given I login to Rave with user "defuser"
+Given xml draft "13576 Study A" is Uploaded
+Given xml draft "13576 Study B" is Uploaded
+Given Site "Site_A" exists
+Given Site "Site_B" exists
+Given study "13576 Study A" is assigned to Site "Site_A"
+Given study "13576 Study B" is assigned to Site "Site_B"
+Given role "SUPER ROLE 1" exists
+Given I publish and push eCRF "13576 Study A" to "Version 1"
+Given I publish and push eCRF "13576 Study B" to "Version 2"
+Given following Project assignments exist
+|User    |Project        | Environment | Role         | Site   |SecurityRole          |
+|defuser |13576 Study A  | Live: Prod  | SUPER ROLE 1 | Site_A |Project Admin Default |
+|defuser |13576 Study B  | Live: Prod  | SUPER ROLE 1 | Site_B |Project Admin Default |
 
-	#And form "Demographics" has varOID "<VarOID>" has format "<Format>" has data dictionary "<Dictionary>" has Unit dictionary "<Unit Dictionary>" has field name "<Field Name>" has field OID "<Field OID>" has status "<Active>" has visible status "<Is Visible Field>" has log data entry "<Log Data Entry>" has field label "<Field Label>" has control type "<Control Type>" has value "<Edit Checks>"
-	#	|VarOID		              |Format		  |Dictionary	  |Unit Dictionary	|Field Name		          |Field OID		        |Active		|Is Visible Field 	|Log Data Entry	|Field Label                                        |Control Type          |Edit Checks 	|
-	#	|AGE1	                  |2	          |               |					|AGE1		              |AGE1    		            |true		|true				|			    |Age	                                            |Text     	           |EC1		    	|
-	#	|VISITDATE	              |dd MMM yyyy    |               | 				|VISITDATE	              |VISITDATE	            |true		|true				|			    |Visit Date                                         |DateTime    	       |EC1      		|
+#Note: Study "13576 Study A" is set up with an edit check "If Age field in Demographics form IsLessThan 18 then set Subject to Requires Signature on Age and Visit Date fields on the Demographics form"
+#Note: Study "13576 Study A" is set up with an edit check "If Does the subject have a known history of an abnormality, disease or surgery? field in Medical History with record position 0 IsEqualTo Yes then set Subject to Requires Signature" 
+#Note: Study "13576 Study B" is set up with an edit check "If Enrollment Date field in Enrollment form IsNotEmpty Or Stop Date field in AE form IsNotEmpty then set Subject to Requires Signature"
 
-	#And form "Medical History" has varOID "<VarOID>" has format "<Format>" has data dictionary "<Dictionary>" has Unit dictionary "<Unit Dictionary>" has field name "<Field Name>" has field OID "<Field OID>" has status "<Active>" has visible status "<Is Visible Field>" has log data entry "<Log Data Entry>" has field label "<Field Label>" has control type "<Control Type>" has value "<Edit Checks>"
-	#	|VarOID		              |Format		  |Dictionary	  |Unit Dictionary	|Field Name		          |Field OID		        |Active		|Is Visible Field 	|Log Data Entry	|Field Label                                                                   |Control Type           |Edit Checks 	|
-	#	|FIELD1	                  |$3	          |Yes/No         |					|FIELD1		              |FIELD1		            |true		|true				|			    |Does the subject have a known history of an abnormality, disease or surgery?  |DropDownList 	       |EC2		    	|
-		
-	#And data dictionary "Yes/No" has entries
-	#	|User Data String       |Coded Data         |
-	#	|Yes		            |Y		            |
-	#	|No 		            |N		            |
-	
-	#And Matrices "Baseline" has Folder Forms
-	#	|Forms            |Subject   |
-	#	|Enrollment	      |True		 |
-	#	|Demographics     |True      |
-	#	|Medical History  |True      |
-	
-	#And has "EC1" and "EC2" Edit Checks
-
-    #|EC1|True|False
-    #
-    #||StandardValue|AGE1||FRM1|AGE1|||||
-    #|18|2|||||||||
-    #IsLessThan|||||||||||
-    #
-    #|FRM1|AGE1|AGE1||||SetSubjectRequiresSignature|Age must be greater than or equal to 18 and less than or equal to 65. Please verify.||
-    #|FRM1|VISITDATE|VISITDATE||||SetSubjectRequiresSignature|||
-
-    #|EC2|True|False
-    #
-    #||StandardValue|FIELD1||FRM2|FIELD1|0||||
-    #|Y|$3|||||||||
-    #IsEqualTo|||||||||||
-    #
-    #|FRM2|FIELD1|FIELD1|0|||SetSubjectRequiresSignature|||
-	
-	Given I am logged in to Rave with username "defuser" and password "password"
-	#And study "13576 Study" has role "Role1"
-    #And Role "Role1" has Actions "Entry" and "Sign"
-	#And I publish and push "CRF Version<RANDOMNUMBER>" to site "13576 Study"
-	#And I note "CRF Version"
-					
+@Release_2012.1.0
+@WIP
 @PB-DT13576-01
-Scenario: @PB-DT13576-01 As an EDC user, when I have an edit check that sets a subject to require signature, and I sign, and I change data such that the subject no longer requires signature, then I should not see a task that requires signature for the subject in the task summary.
-Demograhics form set up with edit check less than 18.
-  
-  And I navigate to study "13576 Study", site "Site 1"
+Scenario: As an EDC user, when I have an edit check that sets a subject to require signature, and I sign, and I change data such that the subject no longer requires signature, then I should not see a task that requires signature for the subject in the task summary.
+
+  And I navigate to study "13576 Study A", site "Site_A"
   And I create a Subject
     |Field               |Data              |Control Type |
     |Subject Initials    |SUB               |textbox      |
-    |Subject Number      |{RndNum<num1>(5)} |textbox      |
+    |Subject Number      |{RndNum<num1>(3)} |textbox      |
     |Subject ID 	     |SUB {Var(num1)}   |textbox      |
   And I select link "Demograhics"
   And I enter data in CRF and save
@@ -137,21 +102,22 @@ Demograhics form set up with edit check less than 18.
 	|Task Summary: Subject  |Pages |
 	|Requiring Signature    |0     |
   And I take a screenshot	
-  And I select link "Site 1"
+  And I select link "Site_A"
   And I expand "Requiring Signature" in Task Summary
   And I verify the task summary
 	|Task Summary: Site     |Pages |
 	|Requiring Signature    |0     |
   And I take a screenshot	
 
+@Release_2012.1.0
+@WIP
 @PB-DT13576-02
-Scenario: @PB-DT13576-02 As an EDC user, when I have an edit check associated to data dictionary that sets a subject to require signature, and I sign, and I change data such that the subject no longer requires signature, then I should not see a task that requires signature for the subject in the task summary.
-Medical History form set up with (Yes/No) data dictionary associated to an edit check for "Y" value.  
-  
+Scenario: As an EDC user, when I have an edit check associated to data dictionary that sets a subject to require signature, and I sign, and I change data such that the subject no longer requires signature, then I should not see a task that requires signature for the subject in the task summary. 
+
   And I create a Subject
     |Field               |Data              |Control Type |
     |Subject Initials    |SUB               |textbox      |
-    |Subject Number      |{RndNum<num1>(5)} |textbox      |
+    |Subject Number      |{RndNum<num1>(3)} |textbox      |
     |Subject ID 	     |SUB {Var(num1)}   |textbox      |
   And I select link "Medical History"
   And I enter data in CRF and save
@@ -208,9 +174,109 @@ Medical History form set up with (Yes/No) data dictionary associated to an edit 
 	|Task Summary: Subject  |Pages |
 	|Requiring Signature    |0     |
   And I take a screenshot	
-  And I select link "Site 1"
+  And I select link "Site_B"
   And I expand "Requiring Signature" in Task Summary
   And I verify the task summary
 	|Task Summary: Site     |Pages |
 	|Requiring Signature    |0     |
   And I take a screenshot 
+  
+@Release_2012.1.0
+@WIP
+@PB-DT13576-03
+Scenario: As an EDC user, when I have an edit check that sets a subject to require signature on two forms and I change data such that the subject no longer requires signature on first form, then I should see a task that requires signature on both forms for the subject in the task summary.
+
+And I navigate to study "13576 Study B", site "Site_B"
+  And I create a Subject
+    |Field               |Data              |Control Type |
+    |Subject Initials    |SUB               |textbox      |
+    |Subject Number      |{RndNum<num1>(3)} |textbox      |
+    |Subject ID 	     |SUB {Var(num1)}   |textbox      |
+  And I select link "Enrollment"
+  And I enter data in CRF and save
+    |Field                  |Data           |Control Type |
+    |Enrollment Date        |01 Jan 2012    |datetime     |
+  And I verify data in CRF
+	|Field                  |Value          |Requires Signature |
+	|Enrollment Date        |01 Jan 2012    |False              |
+  And I can not see "Sign and Save" button
+  And I take a screenshot
+  And I select link "SUB {Var(num1)}"
+  And I select link "AE"
+  And I enter data in CRF and save
+    |Field                  |Data             |Control Type    |
+    |Was there any AE's?    |Yes              |dropdownlist    |
+    |Start Date             |05 Jan 2012      |datetime        |
+	|Stop Date              |25 Jan 2012      |datetime        |
+  And I verify data in CRF
+	|Field                  |Value         |Requires Signature |
+    |Was there any AE's?    |Yes           |True               |
+	|Start Date             |05 Jan 2012   |True               |
+	|Stop Date              |25 Jan 2012   |True               |
+  And I can see "Sign and Save" button
+  And I take a screenshot
+  And I select link "SUB {Var(num1)}"
+  And I can see "Sign and Save" button
+  And I expand "Requiring Signature" in Task Summary
+  And I verify the task summary
+	|Task Summary: Subject  |Pages |
+	|Requiring Signature    |3     |
+  And I take a screenshot
+  And I select link "Enrollment"
+  And I enter data in CRF and save
+    |Field                  |Data           |Control Type    |
+    |Enrollment Date        |               |datetime        |
+  And I verify data in CRF
+	|Field                  |Value          |Requires Signature |
+	|Enrollment Date        |               |True               |
+  And I can see "Sign and Save" button
+  And I take a screenshot
+  And I select link "SUB {Var(num1)}"
+  And I can see "Sign and Save" button
+  And I expand "Requiring Signature" in Task Summary
+  And I verify the task summary
+	|Task Summary: Subject  |Pages |
+	|Requiring Signature    |3     |
+  And I take a screenshot
+  And I select link "AE"
+  And I enter data in CRF and save
+    |Field                  |Data             |Control Type    |
+	|Stop Date              |                 |datetime        |
+  And I verify data in CRF
+	|Field                  |Value         |Requires Signature |
+    |Was there any AE's?    |Yes           |False              |
+	|Start Date             |05 Jan 2012   |False              |
+    |Stop Date              |              |False              |
+  And I can not see "Sign and Save" button
+  And I take a screenshot
+  And I select link "SUB {Var(num1)}"
+  And I can not see "Sign and Save" button
+  And I expand "Requiring Signature" in Task Summary
+  And I verify the task summary
+	|Task Summary: Subject  |Pages |
+	|Requiring Signature    |0     |
+  And I take a screenshot 
+  And I select link "Enrollment"
+  And I enter data in CRF and save
+    |Field                  |Data           |Control Type |
+    |Enrollment Date        |02 Jan 2012    |datetime     |
+  And I verify data in CRF
+	|Field                  |Value          |Requires Signature |
+	|Enrollment Date        |02 Jan 2012    |True               |
+  And I can see "Sign and Save" button
+  And I take a screenshot
+  And I select link "AE"
+  And I verify data in CRF
+	|Field                  |Value         |Requires Signature |
+    |Was there any AE's?    |Yes           |True               |
+	|Start Date             |05 Jan 2012   |True               |
+    |Stop Date              |              |True               |
+  And I can see "Sign and Save" button
+  And I take a screenshot
+  And I select link "SUB {Var(num1)}"
+  And I can see "Sign and Save" button
+  And I expand "Requiring Signature" in Task Summary
+  And I verify the task summary
+	|Task Summary: Subject  |Pages |
+	|Requiring Signature    |3     |
+ And I take a screenshot
