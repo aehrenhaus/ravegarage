@@ -5,6 +5,9 @@ using Medidata.RBT.PageObjects.Rave.SharedRaveObjects;
 
 namespace Medidata.RBT.Features.Rave
 {
+    /// <summary>
+    /// Steps to login to Rave
+    /// </summary>
 	[Binding]
 	public class LoginSteps : BrowserStepsBase
 	{
