@@ -14,15 +14,15 @@ Feature: DT 13576 Edit Check 'sets subject to require signature' unexpectedly se
 Background:
 
 Given I login to Rave with user "defuser"
-Given xml draft "13576 Study A" is Uploaded
-Given xml draft "13576 Study B" is Uploaded
+Given xml draft "13576_Study_A.xml" is Uploaded
+Given xml draft "13576 Study B.xml" is Uploaded
 Given Site "Site_A" exists
 Given Site "Site_B" exists
 Given study "13576 Study A" is assigned to Site "Site_A"
 Given study "13576 Study B" is assigned to Site "Site_B"
 Given role "SUPER ROLE 1" exists
-Given I publish and push eCRF "13576 Study A" to "Version 1"
-Given I publish and push eCRF "13576 Study B" to "Version 2"
+Given I publish and push eCRF "13576 Study A.xml" to "Version 1"
+Given I publish and push eCRF "13576 Study B.xml" to "Version 2"
 Given following Project assignments exist
 |User         |Project        | Environment | Role         | Site   |SecurityRole          |
 |SUPER USER 1 |13576 Study A  | Live: Prod  | SUPER ROLE 1 | Site_A |Project Admin Default |
