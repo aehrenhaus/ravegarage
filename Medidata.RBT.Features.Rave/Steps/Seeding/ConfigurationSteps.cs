@@ -38,6 +38,9 @@ namespace Medidata.RBT.Features.Rave
                 bool moduleAssignmentExists = user.ModuleAssignmentExists("All Projects", securityRole.UniqueName);
                 if (!studyAssignmentExists && !moduleAssignmentExists)
                 {
+                    string loggedInUserBeforeAssignments = TestContext.CurrentUser;
+                    LoginPage.LoginUsingDefaultUserFromAnyPage();
+
                     CurrentPage = new UserAdministrationPage().NavigateToSelf();
                     CurrentPage = CurrentPage.As<UserAdministrationPage>().SearchUser(new UserAdministrationPage.SearchByModel()
                     {
@@ -48,8 +51,15 @@ namespace Medidata.RBT.Features.Rave
                         CurrentPage.As<UserEditPage>().AssignUserToSecurityRole(user, securityRole);
                     if (!studyAssignmentExists)
                         CurrentPage.As<UserEditPage>().AssignUserToPermissions(user, project, role, configuration.Environment, site);
+
+                    LoginPage page = new LoginPage();
+                    page.NavigateToSelf();
+                    CurrentPage = page.Login(loggedInUserBeforeAssignments, RaveConfiguration.Default.DefaultUserPassword);
+
+                    CurrentPage = new UserAdministrationPage().NavigateToSelf();
                 }
             }
+            
         }
 	}
 }

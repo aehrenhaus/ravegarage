@@ -7,17 +7,16 @@ Feature: Submitted default values will remain present on the eCRF when the coded
 
 Background:
 
-Given I login to Rave with user "defuser"
 Given xml draft "DT13997 Upload First AM SJ_1.6.3.xml" is Uploaded
 Given xml draft "DT13997 Upload Second AM SJ_1.6.5.xml" is Uploaded
 Given xml draft "DT13997 Upload Third AM SJ_1.6.7.xml" is Uploaded
 Given xml draft "DT13997 Upload Fourth AM SJ_1.6.9.xml" is Uploaded
 Given study "AM SJ" is assigned to Site "Site_001"
-Given I publish and push eCRF "DT13997 Upload First AM SJ_1.6.3.xml" to "Version 1"
 Given following Project assignments exist
 | User         | Project | Environment | Role         | Site     | SecurityRole          |
 | SUPER USER 1 | AM SJ   | Live: Prod  | SUPER ROLE 1 | Site_001 | Project Admin Default |
 | SUPER USER 2 | AM SJ   | Live: Prod  | SUPER ROLE 2 | Site_001 | Project Admin Default |
+Given I publish and push eCRF "DT13997 Upload First AM SJ_1.6.3.xml" to "Version 1"
 
 #Given Entry Restricted is set for role "SUPER ROLE 2" in
 #| Project | Draft | Form   | Field   |

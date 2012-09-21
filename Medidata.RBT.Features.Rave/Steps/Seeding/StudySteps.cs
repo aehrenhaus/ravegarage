@@ -62,9 +62,14 @@ namespace Medidata.RBT.Features.Rave
                     (uploadName, () => new UploadedDraft(uploadName, true));
             CrfVersion crfVersion = TestContext.GetExistingFeatureObjectOrMakeNew
                     (crfVersionName, () => new CrfVersion(uploadedDraft.Name, crfVersionName, true));
+            if(TestContext.CurrentUser == null)
+                LoginPage.LoginUsingDefaultUserFromAnyPage();
             TestContext.CurrentPage = new ArchitectPage().NavigateToSelf();
+            if (!(TestContext.CurrentPage is ArchitectPage))
+                LoginPage.LoginUsingDefaultUserFromAnyPage();
             TestContext.CurrentPage.As<ArchitectPage>().ClickProject(crfVersion.UploadedDraft.Project.UniqueName);
             TestContext.CurrentPage.As<ArchitectLibraryPage>().PushVersion(crfVersion.UniqueName, "Prod", "All Sites");
+            TestContext.CurrentPage = new HomePage().NavigateToSelf();
         }
 	}
 }

@@ -28,25 +28,26 @@ namespace Medidata.RBT.Features.Rave
 		/// <summary>
 		/// Login to rave with the username and password in configuration
 		/// </summary>
-		/// <param name="user"></param>
+		/// <param name="userName">Feature name of the user</param>
         [StepDefinition(@"I log in to Rave with user ""([^""]*)""")]
         [StepDefinition(@"I login to Rave with user ""([^""]*)""")]
-		public void ILoginToRaveWithUser(string user)
+		public void ILoginToRaveWithUser(string userName)
 		{
-            string username, password = null;
-            if (TestContext.FeatureObjects.ContainsKey(user))
+            string password = RaveConfiguration.Default.DefaultUserPassword;
+            if (userName.Equals("defuser"))
             {
-                User featureUser = (User)TestContext.FeatureObjects[user];
-                username = featureUser.UniqueName;
+                LoginPage page = new LoginPage();
+                page.NavigateToSelf();
+                CurrentPage = page.Login(userName, password);
             }
             else
-                username = RaveConfiguration.Default.DefaultUser;
+            {
+                User user = TestContext.GetExistingFeatureObjectOrMakeNew(userName, () => new User(userName, true));
 
-            password = RaveConfiguration.Default.DefaultUserPassword;
-
-			LoginPage page = new LoginPage();
-			page.NavigateToSelf();
-			CurrentPage = page.Login(username, password);
+                LoginPage page = new LoginPage();
+                page.NavigateToSelf();
+                CurrentPage = page.Login(user.UniqueName, password);
+            }
 		}
 
 		/// <summary>

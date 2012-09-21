@@ -40,6 +40,8 @@ namespace Medidata.RBT.SharedRaveObjects
         /// </summary>
         public virtual void Seed()
         {
+            if (TestContext.CurrentUser == null)
+                LoginPage.LoginUsingDefaultUserFromAnyPage();
             string loggedInUserBeforeSeed = TestContext.CurrentUser;
             NavigateToSeedPage();
             MakeUnique();
