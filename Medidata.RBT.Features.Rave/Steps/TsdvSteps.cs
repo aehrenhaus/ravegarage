@@ -41,5 +41,16 @@ namespace Medidata.RBT.Features.Rave
         {
             CurrentPage.As<BlockPlansPageBase>().ActivatePlan();
         }
+
+        /// <summary>
+        /// TSDV step to delete tier from block plan
+        /// Tier can only be deleted from study not in prod environment
+        /// </summary>
+        /// <param name="tierName"></param>
+        [StepDefinition(@"I delete the tier ""([^""]*)"" from plan")]
+        public void IDeleteTier____FromPlan(string tierName)
+        {
+            CurrentPage.As<BlockPlansPageBase>().DeleteTier(tierName);
+        }
     }
 }
