@@ -24,9 +24,10 @@ Given role "SUPER ROLE 1" exists
 Given I publish and push eCRF "13576 Study A" to "Version 1"
 Given I publish and push eCRF "13576 Study B" to "Version 2"
 Given following Project assignments exist
-|User    |Project        | Environment | Role         | Site   |SecurityRole          |
-|defuser |13576 Study A  | Live: Prod  | SUPER ROLE 1 | Site_A |Project Admin Default |
-|defuser |13576 Study B  | Live: Prod  | SUPER ROLE 1 | Site_B |Project Admin Default |
+|User         |Project        | Environment | Role         | Site   |SecurityRole          |
+|SUPER USER 1 |13576 Study A  | Live: Prod  | SUPER ROLE 1 | Site_A |Project Admin Default |
+|SUPER USER 1 |13576 Study B  | Live: Prod  | SUPER ROLE 1 | Site_B |Project Admin Default |
+Given I login to Rave with user "SUPER USER 1"
 
 #Note: Study "13576 Study A" is set up with an edit check "If Age field in Demographics form IsLessThan 18 then set Subject to Requires Signature on Age and Visit Date fields on the Demographics form"
 #Note: Study "13576 Study A" is set up with an edit check "If Does the subject have a known history of an abnormality, disease or surgery? field in Medical History with record position 0 IsEqualTo Yes then set Subject to Requires Signature" 
