@@ -374,10 +374,10 @@ namespace Medidata.RBT
 				case "firefox":
 					FirefoxProfile p = new FirefoxProfile(RBTConfiguration.Default.FirefoxProfilePath, true);
 					FirefoxBinary bin = new FirefoxBinary(RBTConfiguration.Default.BrowserPath);
-					//p.SetPreference("browser.download.folderList",2);
-					//p.SetPreference("browser.download.manager.showWhenStarting", false);
-					//p.SetPreference("browser.download.dir", RBTConfiguration.Default.DownloadPath);
-					//p.SetPreference("browser.helperApps.neverAsk.saveToDisk", "application/zip");
+					p.SetPreference("browser.download.folderList",2);
+					p.SetPreference("browser.download.manager.showWhenStarting", false);
+					p.SetPreference("browser.download.dir", RBTConfiguration.Default.DownloadPath.ToUpper());
+					p.SetPreference("browser.helperApps.neverAsk.saveToDisk", "application/zip");
 					_webdriver = new FirefoxDriver(bin, p);
 					break;
 
