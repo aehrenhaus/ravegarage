@@ -84,7 +84,7 @@ namespace Medidata.RBT.PageObjects.Rave
         {
             switch (tierName)
             {
-                case "No Form":
+                case "No Forms":
                     return "No Forms (Default Tier)";
                 case "All Forms":
                     return "All Forms (Default Tier)";

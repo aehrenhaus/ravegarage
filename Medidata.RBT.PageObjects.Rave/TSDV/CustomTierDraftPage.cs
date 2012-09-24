@@ -44,7 +44,14 @@ namespace Medidata.RBT.PageObjects.Rave
             //Select the forms specified for TSDV custom tier
             foreach (var cstTierModel in cstTierModels)
             {
-                var elem = elems.FirstOrDefault(p => p.Text.Substring(0, cstTierModel.Form.Length).Equals(cstTierModel.Form));
+                var elem = elems.FirstOrDefault(p =>
+                    {
+                        bool foundForm = false;
+                        if (p.Text.Length >= cstTierModel.Form.Length)
+                            foundForm = p.Text.Substring(0, cstTierModel.Form.Length).Equals(cstTierModel.Form);
+
+                        return foundForm;
+                    });
                 if (elem != null)
                 {
                     var parentElem = elem.Parent().Parent().Parent();
@@ -61,19 +68,10 @@ namespace Medidata.RBT.PageObjects.Rave
                 }
             }
 
-            //after selecting the forms click add selected form btn
-            var addSelFormBtn = Browser.WaitForElement(By.Id("SaveForms"));
-            if (addSelFormBtn != null)
-                addSelFormBtn.Click();
-            //publish the draft
-            var pubDraftBtn = Browser.WaitForElement(By.Id("PublishButton"));
-            if (pubDraftBtn != null)
-                pubDraftBtn.Click();
-            //click pop up to finish draft publish
-            var pubDraftAlertBtn = Browser.WaitForElement(By.Id("_ctl0_Content__ctl10_PublishDraft"));
-            if (pubDraftAlertBtn != null)
-                pubDraftAlertBtn.Click();
-
+            this.ClickButton("SaveForms");
+            this.ClickButton("PublishButton");
+            this.ClickButton("_ctl0_Content__ctl10_PublishDraft");
+          
             return this;
         }
 
