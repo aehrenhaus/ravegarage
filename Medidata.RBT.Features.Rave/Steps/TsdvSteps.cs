@@ -52,5 +52,17 @@ namespace Medidata.RBT.Features.Rave
         {
             CurrentPage.As<BlockPlansPageBase>().DeleteTier(tierName);
         }
+
+        /// <summary>
+        /// Selects the specified tier type with subject count from the "Link Tier" option
+        /// Ex: I select the tier "All Forms" and Subject Count "1"
+        /// </summary>
+        /// <param name="tierName"></param>
+        /// <param name="subjectCount"></param>
+        [StepDefinition(@"I select the tier ""([^""]*)"" and Subject Count ""([^""]*)""")]
+        public void ISelectTier____AndSubjectCount____(string tierName, string subjectCount)
+        {
+            CurrentPage.As<BlockPlansPageBase>().ApplyTierWithSubjectCount(tierName, subjectCount);
+        }
     }
 }
