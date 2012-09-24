@@ -1,0 +1,81 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using OpenQA.Selenium.Support.PageObjects;
+using OpenQA.Selenium;
+using OpenQA.Selenium.Remote;
+using Medidata.RBT.SeleniumExtension;
+using TechTalk.SpecFlow;
+using OpenQA.Selenium.Support.UI;
+
+namespace Medidata.RBT.PageObjects.Rave
+{
+    public class CustomTierDraftPage : BlockPlansPageBase
+    {
+
+        public override string URL
+        {
+            get
+            {
+                return "Modules/Reporting/TSDV/DraftCustomTier.aspx";
+            }
+        }
+
+        /// <summary>
+        /// Creat a new draft with specified tier name and decription
+        /// </summary>
+        /// <param name="tierName"></param>
+        /// <param name="description"></param>
+        /// <param name="cstTierModel"></param>
+        /// <returns></returns>
+        public IPage CreateCustomTierDraft(string tierName, string description, IEnumerable<CustomTierModel> cstTierModels)
+        {
+            Textbox tierNamebox = Browser.TryFindElementById("TierName").EnhanceAs<Textbox>();
+            tierNamebox.SetText(tierName);
+
+            Textbox tierDescBox = Browser.TryFindElementById("TierDescription").EnhanceAs<Textbox>();
+            tierDescBox.SetText(description);
+
+            var saveBtn = Browser.TryFindElementByPartialID("CustomTierSaveLabel");
+            saveBtn.Click();
+
+            var elems = Browser.FindElementsByPartialId("FormNameLabel");
+            //Select the forms specified for TSDV custom tier
+            foreach (var cstTierModel in cstTierModels)
+            {
+                var elem = elems.FirstOrDefault(p => p.Text.Substring(0, cstTierModel.Form.Length).Equals(cstTierModel.Form));
+                if (elem != null)
+                {
+                    var parentElem = elem.Parent().Parent().Parent();
+                    var selectionCheckbox = parentElem.FindElementsByPartialId("FormSelectedCheckbox").FirstOrDefault<EnhancedElement>()
+                        .EnhanceAs<Checkbox>();
+
+                    if (selectionCheckbox != null)
+                    {
+                        if (cstTierModel.Selected.ToLower().Equals("true"))
+                            selectionCheckbox.Check();
+                        else if (cstTierModel.Selected.ToLower().Equals("false"))
+                            selectionCheckbox.Uncheck();
+                    }
+                }
+            }
+
+            //after selecting the forms click add selected form btn
+            var addSelFormBtn = Browser.WaitForElement(By.Id("SaveForms"));
+            if (addSelFormBtn != null)
+                addSelFormBtn.Click();
+            //publish the draft
+            var pubDraftBtn = Browser.WaitForElement(By.Id("PublishButton"));
+            if (pubDraftBtn != null)
+                pubDraftBtn.Click();
+            //click pop up to finish draft publish
+            var pubDraftAlertBtn = Browser.WaitForElement(By.Id("_ctl0_Content__ctl10_PublishDraft"));
+            if (pubDraftAlertBtn != null)
+                pubDraftAlertBtn.Click();
+
+            return this;
+        }
+
+    }
+}

@@ -1,6 +1,6 @@
 ﻿using TechTalk.SpecFlow;
 using Medidata.RBT.PageObjects.Rave;
-
+using TechTalk.SpecFlow.Assist;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Medidata.RBT.Features.Rave
@@ -50,7 +50,7 @@ namespace Medidata.RBT.Features.Rave
         [StepDefinition(@"I delete the tier ""([^""]*)"" from plan")]
         public void IDeleteTier____FromPlan(string tierName)
         {
-            CurrentPage.As<BlockPlansPageBase>().DeleteTier(tierName);
+            CurrentPage.As<StudyBlockPlansPage>().DeleteTier(tierName);
         }
 
         /// <summary>
@@ -62,7 +62,22 @@ namespace Medidata.RBT.Features.Rave
         [StepDefinition(@"I select the tier ""([^""]*)"" and Subject Count ""([^""]*)""")]
         public void ISelectTier____AndSubjectCount____(string tierName, string subjectCount)
         {
-            CurrentPage.As<BlockPlansPageBase>().ApplyTierWithSubjectCount(tierName, subjectCount);
+            CurrentPage.As<StudyBlockPlansPage>().ApplyTierWithSubjectCount(tierName, subjectCount);
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="tierName"></param>
+        /// <param name="description"></param>
+        /// <param name="table"></param>
+        [StepDefinition(@"I create a custom tier named ""([^""]*)"" and description ""([^""]*)"" with table")]
+        public void ICreateACustomTierNamed____AndDescription____WithTable(string tierName, string description, Table table)
+        {
+            CurrentPage.As<BlockPlansPageBase>().ClickLink("Create Custom Tier");
+
+            CurrentPage.As<CustomTierDraftPage>().CreateCustomTierDraft(tierName, description, table.CreateSet<CustomTierModel>());
+        }
+
     }
 }
