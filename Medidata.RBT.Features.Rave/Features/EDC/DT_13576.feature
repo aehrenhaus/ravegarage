@@ -13,7 +13,7 @@ Feature: DT 13576 Edit Check 'sets subject to require signature' unexpectedly se
 
 Background:
 
-Given I login to Rave with user "defuser"
+Given I login to Rave with user "SUPER USER 1"
 Given xml draft "13576_Study_A.xml" is Uploaded
 Given xml draft "13576 Study B.xml" is Uploaded
 Given Site "Site_A" exists
@@ -27,7 +27,6 @@ Given following Project assignments exist
 |User         |Project        | Environment | Role         | Site   |SecurityRole          |
 |SUPER USER 1 |13576 Study A  | Live: Prod  | SUPER ROLE 1 | Site_A |Project Admin Default |
 |SUPER USER 1 |13576 Study B  | Live: Prod  | SUPER ROLE 1 | Site_B |Project Admin Default |
-Given I login to Rave with user "SUPER USER 1"
 
 #Note: Study "13576 Study A" is set up with an edit check "If Age field in Demographics form IsLessThan 18 then set Subject to Requires Signature on Age and Visit Date fields on the Demographics form"
 #Note: Study "13576 Study A" is set up with an edit check "If Does the subject have a known history of an abnormality, disease or surgery? field in Medical History with record position 0 IsEqualTo Yes then set Subject to Requires Signature" 
