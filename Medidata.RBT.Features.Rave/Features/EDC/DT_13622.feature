@@ -29,16 +29,6 @@ Background:
 @PB-DT13622-01
 @WIP
 Scenario: As an EDC user, when I have an edit check fired on one field that sets another field to require verification, and I verify the data for the field, and I change the data, and the verification is broken, then I should see an audit recorded for the unverification.
-	Given I navigate to "Reporter"
-	And I select Report "Targeted SDV Configuration"
-	And I set report parameter "Study" with table
-		| Name                   | Environment |
-		| Mediflex20120710040626 | Dev         |
-	And I click button "Submit Report"
-	And I switch to "Targeted SDV Study Plan" window
-	And I inactivate the plan
-	And I switch to "Reports" window
-	And I navigate to "Home" page
 	And I select Study "Mediflex20120710040626 (Dev)" and Site "MediflexDTSite"
 	When I create a Subject
 	|Field			 |Data|
@@ -356,6 +346,14 @@ Scenario: As an EDC user, when I have TSDV turned off for a form, when I have an
 		| Mediflex20120710040626 | Dev         |
 	And I click button "Submit Report"
 	And I switch to "Targeted SDV Study Plan" window
+	And I create a custom tier named "Custom Tier 101" and description "Exclude Form 3" with table
+	| Form       | Selected |
+	| Visit Date | True     |
+	| Form 1     | True     |
+	| Form 2     | True     |
+	| Form 3     | False    |
+	And I select link "Study Block Plan"
+	And I select the tier "Custom Tier 101" and Subject Count "1"
 	And I activate the plan
 	And I switch to "Reports" window
 	And I select link "Home"
@@ -397,12 +395,33 @@ Scenario: As an EDC user, when I have TSDV turned off for a form, when I have an
 	| DataPoint    | Verified.     |
 	| User entered | '19'          |
 	And I take a screenshot
+	And I switch to "Targeted SDV Study Plan" window
+	And I delete the tier "Custom Tier 101" from plan
+	And I inactivate the plan
 
 @release_2012.1.0
 @PB-DT13622-08
 @WIP
 Scenario: As an EDC user, when I have TSDV turned off for a form, and I have an edit check that sets a field to require verification, and I verify the data for the form, and I change the data, and the verification is broken, then I should see an audit recorded for the unverification.
-	Given I select Study "Mediflex20120710040626 (Dev)" and Site "MediflexDTSite"
+	Given I navigate to "Reporter"
+	And I select Report "Targeted SDV Configuration"
+	And I set report parameter "Study" with table
+		| Name                   | Environment |
+		| Mediflex20120710040626 | Dev         |
+	And I click button "Submit Report"
+	And I switch to "Targeted SDV Study Plan" window
+	And I create a custom tier named "Custom Tier 102" and description "Exclude Form 3" with table
+	| Form       | Selected |
+	| Visit Date | True     |
+	| Form 1     | True     |
+	| Form 2     | True     |
+	| Form 3     | False    |
+	And I select link "Study Block Plan"
+	And I select the tier "Custom Tier 102" and Subject Count "1"
+	And I activate the plan
+	And I switch to "Reports" window
+	And I select link "Home"
+	And I select Study "Mediflex20120710040626 (Dev)" and Site "MediflexDTSite"
 	When I create a Subject
 	|Field			 |Data |
 	|Subject Number	 |108  |
@@ -440,6 +459,9 @@ Scenario: As an EDC user, when I have TSDV turned off for a form, and I have an 
 	| DataPoint    | Verified.     |
 	| User entered | '19'          |
 	And I take a screenshot
+	And I switch to "Targeted SDV Study Plan" window
+	And I delete the tier "Custom Tier 102" from plan
+	And I inactivate the plan
 
 @release_2012.1.0 
 @PB-DT13622-09 
@@ -449,9 +471,10 @@ Scenario: As an EDC user, when I have a No Forms TSDV tier and I have an edit ch
 	And I select Report "Targeted SDV Configuration"
 	And I set report parameter "Study" with table
 		| Name                   | Environment |
-		| Mediflex20120710040626 | Dev1         |
+		| Mediflex20120710040626 | Dev         |
 	And I click button "Submit Report"
 	And I switch to "Targeted SDV Study Plan" window
+	And I select the tier "No Forms" and Subject Count "1"
 	And I activate the plan
 	And I switch to "Reports" window
 	And I select link "Home"
@@ -493,3 +516,6 @@ Scenario: As an EDC user, when I have a No Forms TSDV tier and I have an edit ch
 	| DataPoint | Verified.  |
 	| User entered | '19' | 
 	And I take a screenshot
+	And I switch to "Targeted SDV Study Plan" window
+	And I delete the tier "No Forms" from plan
+	And I inactivate the plan
