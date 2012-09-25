@@ -99,7 +99,7 @@ Background:
 #----------------------------------------------------------------------------------------------------------------------------------------
 @release_564_2012.1.0
 @PB_US17415_01
-@Draft	
+@Validation	
 Scenario: @PB_US17415_01 As an Investigator, when I sign the "Adverse Events" form, the form level signature does not break when the "Added 1 For Extra Review" field is made visible.
 
 	And I select Study "**US17415_DT14115" and Site "Site 01"
@@ -115,7 +115,7 @@ Scenario: @PB_US17415_01 As an Investigator, when I sign the "Adverse Events" fo
 		| Ready for Extra Review        | False     | checkbox     |
 	And I click button "Sign and Save"
 	And I sign the form with username "defuser" and password "password"
-	And I wait for 1 minutes
+	And I wait for 5 seconds
 	And I verify text "Please Sign - Default User  (defuser)" exists
 	And I take a screenshot
 	And I open log line 1 for edit
@@ -154,7 +154,7 @@ Scenario: @PB_US17415_01 As an Investigator, when I sign the "Adverse Events" fo
 #----------------------------------------------------------------------------------------------------------------------------------------
 @release_564_2012.1.0
 @PB_US17415_02
-@Draft	
+@Validation	
 Scenario: @PB_US17415_02 As an Investigator, when I sign the "Serious Adverse Events" form, the form level signature does not break when the "Added 1 For Extra Review" field is made visible.
 
 	And I select Study "**US17415_DT14115" and Site "Site 01"
@@ -170,7 +170,7 @@ Scenario: @PB_US17415_02 As an Investigator, when I sign the "Serious Adverse Ev
 		| Ready for Extra Review        | False     | checkbox     |
 	And I click button "Sign and Save"
 	And I sign the form with username "defuser" and password "password"
-	And I wait for 1 minutes
+	And I wait for 5 seconds
 	And I verify text "Please Sign - Default User  (defuser)" exists
 	And I take a screenshot
 	And I open log line 1 for edit
@@ -194,7 +194,7 @@ Scenario: @PB_US17415_02 As an Investigator, when I sign the "Serious Adverse Ev
 #----------------------------------------------------------------------------------------------------------------------------------------
 @release_564_2012.1.0
 @PB_US17415_03
-@Draft	
+@Validation	
 Scenario: @PB_US17415_03 As an Investigator, when I sign the "Demographics" form, the form level signature does not break when the ICDTAGE field is made visible.
 	
 	And I select Study "**US17415_DT14115" and Site "Site 01"
@@ -213,7 +213,7 @@ Scenario: @PB_US17415_03 As an Investigator, when I sign the "Demographics" form
 	And I take a screenshot
 	And I click button "Sign and Save"
 	And I sign the form with username "defuser" and password "password"
-	And I wait for 1 minutes
+	And I wait for 5 seconds
 	And I verify text "Please Sign - Default User  (defuser)" exists
 	And I take a screenshot
 
@@ -280,7 +280,7 @@ Scenario: @PB_US17415_03 As an Investigator, when I sign the "Demographics" form
 #----------------------------------------------------------------------------------------------------------------------------------------
 @release_564_2012.1.0
 @PB_US17415_04
-@Draft	
+@Validation	
 Scenario: @PB_US17415_04 As an Investigator, when I sign the "Test Demographics" form, the form level signature does not break when the ICDTAGE field is made visible.
 	
 	And I select Study "**US17415_DT14115" and Site "Site 01"
@@ -300,7 +300,7 @@ Scenario: @PB_US17415_04 As an Investigator, when I sign the "Test Demographics"
 	And I take a screenshot
 	And I click button "Sign and Save"
 	And I sign the form with username "defuser" and password "password"
-	And I wait for 1 minutes
+	And I wait for 5 seconds
 	And I verify text "Please Sign - Default User  (defuser)" exists
 	And I take a screenshot
 
