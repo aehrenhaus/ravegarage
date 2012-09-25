@@ -64,6 +64,7 @@
     <Compile Include="AmendmentManager\AMMigrationObjectMappingPage.cs" />
     <Compile Include="AmendmentManager\AMMigrationBasePage.cs" />
     <Compile Include="AmendmentManager\MigrationModel.cs" />
+    <Compile Include="Architect\ArchitectEnvironmentSetupPage.cs" />
     <Compile Include="Architect\ArchitectPushPage.cs" />
     <Compile Include="Architect\ArchitectFormsPage.cs" />
     <Compile Include="Architect\ArchitectFormDesigner.cs" />

@@ -43,5 +43,21 @@ namespace Medidata.RBT.Features.Rave.Steps.Seeding
                 CurrentPage.As<SiteAdministrationSiteDetailsPage>().LinkStudyWithSite(site, project.UniqueName);
             }
         }
+
+        /// <summary>
+        /// Asign a study to a site
+        /// </summary>
+        /// <param name="studyName">Study name which should match the name of the study in an uploaded draft</param>
+        /// <param name="siteName">Site to assign the study to</param>
+        [StepDefinition(@"study ""([^""]*)"" is assigned to Site ""([^""]*)"" with study environment ""([^""]*)""")]
+        public void Study____IsAssignedToSite____WithStudyEnvironment____(string studyName, string siteName, string studyEnvName)
+        {
+            TestContext.CurrentPage = new SiteAdministrationHomePage().NavigateToSelf();
+            Site site = new Site(siteName, true);
+            CurrentPage.As<SiteAdministrationHomePage>().SearchForSite(site.UniqueName);
+            CurrentPage.As<SiteAdministrationHomePage>().ClickSite(site.UniqueName);
+            Project project = new Project(studyName);
+            CurrentPage.As<SiteAdministrationSiteDetailsPage>().LinkStudyWithSite(project.UniqueName, studyEnvName);
+        }
     }
 }

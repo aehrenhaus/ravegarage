@@ -50,6 +50,23 @@ namespace Medidata.RBT.Features.Rave
         }
 
         /// <summary>
+        /// XML draft is uploaded for seeding purposes.
+        /// </summary>
+        /// <param name="draft">The name of the draft to be seeded</param>
+        [StepDefinition(@"xml draft ""([^""]*)"" is Uploaded with Environment name ""([^""]*)""")]
+        public void XmlDraft____IsUploadedWithEnvironmentName____(string draftName,string envName)
+        {
+            UploadedDraft uploadedDraft = new UploadedDraft(draftName, true);
+
+            TestContext.CurrentPage.As<HomePage>().ClickLink("Architect");
+            TestContext.CurrentPage.As<ArchitectPage>().ClickProject(uploadedDraft.Project.UniqueName);
+            TestContext.CurrentPage.As<ArchitectLibraryPage>().ClickLink("Studies Environment Setup");
+            TestContext.CurrentPage.As<ArchitectEnvironmentSetupPage>().AddNewEnvironment(envName);
+            TestContext.CurrentPage = new HomePage().NavigateToSelf();
+            
+        }
+
+        /// <summary>
         /// Publish and push a UploadDraft to a crf version. This will create a CRFVersion with that name if none already exists.
         /// Since UploadDraft contains both project and draft, you do not need to specify these.
         /// </summary>
@@ -70,6 +87,23 @@ namespace Medidata.RBT.Features.Rave
             TestContext.CurrentPage.As<ArchitectPage>().ClickProject(crfVersion.UploadedDraft.Project.UniqueName);
             TestContext.CurrentPage.As<ArchitectLibraryPage>().PushVersion(crfVersion.UniqueName, "Prod", "All Sites");
             TestContext.CurrentPage = new HomePage().NavigateToSelf();
+        }
+
+        /// <summary>
+        /// Publish and push a UploadDraft to a crf version. This will create a CRFVersion with that name if none already exists.
+        /// Since UploadDraft contains both project and draft, you do not need to specify these.
+        /// </summary>
+        /// <param name="uploadName">UploadDraft name, should have been created prior in the feature file</param>
+        /// <param name="crfVersionName">The name that the crfVersion is referred to as in the feature file</param>
+        /// <param name="studyEnvName">Environment name</param>
+        [StepDefinition(@"I publish and push eCRF ""([^""]*)"" to ""([^""]*)"" with study environment ""([^""]*)""")]
+        public void IPublishAndPushECRF____To____WithStudyEnvironment____(string uploadName, string crfVersionName, string studyEnvName)
+        {
+            UploadedDraft uploadedDraft = new UploadedDraft(uploadName, true);
+            CrfVersion crfVersion = new CrfVersion(uploadedDraft.Name, crfVersionName, true);
+            TestContext.CurrentPage = new ArchitectPage().NavigateToSelf();
+            TestContext.CurrentPage.As<ArchitectPage>().ClickProject(crfVersion.UploadedDraft.Project.UniqueName);
+            TestContext.CurrentPage.As<ArchitectLibraryPage>().PushVersion(crfVersion.UniqueName, studyEnvName, "All Sites");
         }
 	}
 }
