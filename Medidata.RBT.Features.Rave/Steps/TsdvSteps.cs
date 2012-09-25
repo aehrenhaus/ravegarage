@@ -79,5 +79,17 @@ namespace Medidata.RBT.Features.Rave
             CurrentPage.As<CustomTierDraftPage>().CreateCustomTierDraft(tierName, description, table.CreateSet<CustomTierModel>());
         }
 
+        /// <summary>
+        /// Step definition to create a new plan using plan name and data entry role specified
+        /// </summary>
+        /// <param name="planName"></param>
+        /// <param name="dataEntryRole"></param>
+        [StepDefinition(@"I create a new block plan named ""([^""]*)"" with Data entry Role ""([^""]*)""")]
+        public void ICreateANewBlockPlanNamed____WithDataEntryRole____(string planName, string dataEntryRole)
+        {
+            CurrentPage.As<BlockPlansPageBase>().CreateNewBlockPlan(planName, dataEntryRole);
+        }
+
+
     }
 }

@@ -41,36 +41,41 @@ namespace Medidata.RBT.PageObjects.Rave
             saveBtn.Click();
 
             var elems = Browser.FindElementsByPartialId("FormNameLabel");
-            //Select the forms specified for TSDV custom tier
-            foreach (var cstTierModel in cstTierModels)
+
+            if (elems.Count > 0)
             {
-                var elem = elems.FirstOrDefault(p =>
-                    {
-                        bool foundForm = false;
-                        if (p.Text.Length >= cstTierModel.Form.Length)
-                            foundForm = p.Text.Substring(0, cstTierModel.Form.Length).Equals(cstTierModel.Form);
-
-                        return foundForm;
-                    });
-                if (elem != null)
+                //Select the forms specified for TSDV custom tier
+                foreach (var cstTierModel in cstTierModels)
                 {
-                    var parentElem = elem.Parent().Parent().Parent();
-                    var selectionCheckbox = parentElem.FindElementsByPartialId("FormSelectedCheckbox").FirstOrDefault<EnhancedElement>()
-                        .EnhanceAs<Checkbox>();
+                    var elem = elems.FirstOrDefault(p =>
+                        {
+                            bool foundForm = false;
+                            if (p.Text.Length >= cstTierModel.Form.Length)
+                                foundForm = p.Text.Substring(0, cstTierModel.Form.Length).Equals(cstTierModel.Form);
 
-                    if (selectionCheckbox != null)
+                            return foundForm;
+                        });
+                    if (elem != null)
                     {
-                        if (cstTierModel.Selected.ToLower().Equals("true"))
-                            selectionCheckbox.Check();
-                        else if (cstTierModel.Selected.ToLower().Equals("false"))
-                            selectionCheckbox.Uncheck();
+                        var parentElem = elem.Parent().Parent().Parent();
+                        var selectionCheckbox = parentElem.FindElementsByPartialId("FormSelectedCheckbox").FirstOrDefault<EnhancedElement>()
+                            .EnhanceAs<Checkbox>();
+
+                        if (selectionCheckbox != null)
+                        {
+                            if (cstTierModel.Selected.ToLower().Equals("true"))
+                                selectionCheckbox.Check();
+                            else if (cstTierModel.Selected.ToLower().Equals("false"))
+                                selectionCheckbox.Uncheck();
+                        }
                     }
                 }
+                
+                this.ClickButton("SaveForms");
+                this.ClickButton("PublishButton");
+                //confirmation to publish the draft
+                this.ClickButton("_ctl0_Content__ctl10_PublishDraft");
             }
-
-            this.ClickButton("SaveForms");
-            this.ClickButton("PublishButton");
-            this.ClickButton("_ctl0_Content__ctl10_PublishDraft");
           
             return this;
         }
