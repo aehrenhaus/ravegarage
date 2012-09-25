@@ -10,53 +10,61 @@ Feature: DT 12797 For a field that has a derivation, edit check does not set it 
 	And I should see the review box enabled for the data
 
 Background:
-    Given I am logged in to Rave with username "defuser" and password "password"
-	And following Project assignments exist
-	|User	|Project	|Environment	|Role |Site	  |Site Number	|
-	|User 1 |Mediflex	|Prod			|cdm1 |Site 1 |S100			|
-    And Role "cdm1" has Action "Entry"
-	And Role "cdm1" has Action "Review"
-	And Project "Mediflex" has Draft "<Draft1>"
-	And I publish and push CRF Version "CRF Version<RANDOMNUMBER>" of Draft "<Draft1>" to site "Site 1" in Project "Mediflex" for Enviroment "Prod"
+	Given I login to Rave with user "defuser"
+	Given xml draft "DT12797_Draft_1.xml" is Uploaded
+	Given Site "Site_001" exists
+	Given study "DT12797" is assigned to Site "Site_001"
+	Given I publish and push eCRF "DT12797_Draft_1.xml" to "Version 1"
+	Given following Project assignments exist
+	| User         | Project    | Environment | Role         | Site     | SecurityRole          |
+	| SUPER USER 1 | DT12797    | Live: Prod  | SUPER ROLE 1 | Site_001 | Project Admin Default |
+	And I select Study "DT12797" and Site "Site_001"
 
 	# Edit check exists to set field Visit Date on form Visit Date to require review if field Age has a value less than 18.
 	# Edit check exists to set field Field 1 on form Form 1 to require review if field Field 1 has a value other than 20.
 	# Edit check exists to set field DOB on form Form 2 to require review if field Age has a value less than 18.
 	# Derivation exists to derive field Age on Form 2 from field Visit Date and DOB on Form 2.			
-	# Edit check exists to set field Field 2 on form Form 2 to require review if field Field 1 has a value other than 20.
-	
+		
 @release_2012.1.0 
 @PB-DT12797-01
 @WIP
 Scenario: As an EDC user, when I have an edit check fired on one field that sets another field to require review and I see the requires review icon, then I should see the review box enabled.
 	
 	When I create a Subject
-	|Field			 |Value|
+	|Field			 |Data |
 	|Subject Number	 |101  |
 	|Subject Initials|SUBJ |	
-	And I am on CRF page "Visit Date" in Subject "101SUBJ" in Site "Site 1" in Study "Mediflex"
+	And I select Form "Visit Date" in Folder "VISIT"
 	And I enter data in CRF
-	|Field		|Value		|
+	|Field		|Data		|
 	|Visit Date	|01 FEB 2011|
 	|Age		|20			|
-	And I save the CRF
-	And I verify data in CRF
-	|Field     |Value      |Requires Review|
-	|Visit Date|01 FEB 2011|False          |
-	|Age       |20         |False          |
+	And I save the CRF page
+	And I should see data on Fields in CRF
+	|Field     |Data       |
+	|Visit Date|01 Feb 2011|
+	|Age       |20         |
+	And I should see review required on Fields in CRF
+	|Field     |Requires Review |
+	|Visit Date|False           |
+	|Age       |False           |
 	And I enter data in CRF
-	|Field|Value|
-	|Age  |17   |
-	And I save the CRF
-	Then I verify Requires Review icon is displayed for Visit Date field 
-	And I verify data in CRF
-	|Field     |Value      |Requires Review|
-	|Visit Date|01 FEB 2011|True           |
-	|Age       |17         |False          |
-	And I verify data in CRF
+	|Field|Data|
+	|Age  |17  |
+	And I save the CRF page
+	Then I verify Requires Review icon is displayed for Visit Date field
+	And I should see data on Fields in CRF
+	|Field     |Data       |
+	|Visit Date|01 FEB 2011|
+	|Age       |17         |
+	And I should see review required on Fields in CRF
+	|Field     |Requires Review |
+	|Visit Date|True            |
+	|Age       |False           |
+	And I should see review required on CRF
 	| Form       | Requires Review |
 	| Visit Date | True            |
-	And I take screenshot
+	And I take a screenshot
 
 @release_2012.1.0
 @PB-DT12797-02
@@ -64,39 +72,50 @@ Scenario: As an EDC user, when I have an edit check fired on one field that sets
 Scenario: As an EDC user, when I have an edit check that sets a field to require review and I see the requires review icon, I review the data for the field, and I change the data, then I should see the review box enabled.
 	
 	When I create a Subject
-	|Field			 |Value|
+	|Field			 |Data |
 	|Subject Number	 |102  |
 	|Subject Initials|SUBJ |	
-	And I am on CRF page "Form 1" in Subject "102SUBJ" in Site "Site 1" in Study "Mediflex"
+	And I select Form "Form 1"
 	And I enter data in CRF
-	|Field	|Value|
+	|Field	|Data |
 	|Field 1|19	  |
-	And I save the CRF
+	And I save the CRF page
 	And I verify Requires Review icon is displayed for Field 1 field
-	And I verify data in CRF
-	|Field  |Value|Requires Review|
-	|Field 1|19   |True           |
-	And I verify data in CRF
+	And I should see data on Fields in CRF
+	|Field  |Data|
+	|Field 1|19  |
+	And I should see review required on Fields in CRF
+	|Field  |Requires Review |
+	|Field 1|True            |
+	And I should see review required on CRF
 	| Form   | Requires Review |
 	| Form 1 | True            |
 	And I take screenshot
-	And I check Review box for data in CRF
-	|Field	|
-	|Field 1|
-	And I save the CRF
-	And I take screenshot
+	And I check "Review" checkbox on Field "Field 1"
+	And I save the CRF page
+	And I take a screenshot
 	And I enter data in CRF
-	|Field	|Value|
+	|Field	|Data |
 	|Field 1|18   |
-	And I save the CRF
+	And I save the CRF page
 	Then I verify Requires Review icon is displayed for Field 1 field
-	And I verify data in CRF
-	|Field  |Value|Requires Review|
-	|Field 1|18   |True           |
-	And I verify data in CRF
+	And I should see data on Fields in CRF
+	|Field  |Data|
+	|Field 1|18  |
+	And I should see review required on Fields in CRF
+	|Field  |Requires Review |
+	|Field 1|True            |
+	And I should see review required on CRF
 	| Form   | Requires Review |
 	| Form 1 | True            |
-	And I take screenshot
+	And I take a screenshot
+	And I click audit on Field "Field 1"
+	Then I verify Audits exist
+	| Audit Type   | Query Message |
+	| User entered | '18'          |
+	| DataPoint    | Un-reviewed.  |
+	| DataPoint    | Reviewed.     |
+	| User entered | '19'          |
 	
 @release_2012.1.0
 @PB-DT12797-03
@@ -104,24 +123,29 @@ Scenario: As an EDC user, when I have an edit check that sets a field to require
 Scenario: As an EDC user, when I have an edit check fired on a field that is derived to sets another field to require review and I see the requires review icon, then I should see the review box enabled.
 	
 	When I create a Subject
-	|Field			 |Value|
+	|Field			 |Data |
 	|Subject Number	 |103  |
 	|Subject Initials|SUBJ |	
-	And I am on CRF page "Form 2" in Subject "103SUBJ" in Site "Site 1" in Study "Mediflex"
+	And I select Form "Form 2"
 	And I enter data in CRF
-	|Field     |Value      |
+	|Field     |Data       |
 	|DOB       |05 Mar 1995|
 	|Visit Date|10 Dec 2011|
-	And I save the CRF
+	And I save the CRF page
 	And I verify Requires Review icon is displayed for DOB field
-	And I verify data in CRF
-	|Field     |Value      |Requires Review|
-	|DOB       |05 Mar 1995|True           | 
-	|Visit Date|10 Dec 2011|False          | 
-	|Age       |16         |False          |
-	And I verify data in CRF
+	And I should see data on Fields in CRF
+	|Field     |Data       |
+	|DOB       |05 Mar 1995| 
+	|Visit Date|10 Dec 2011| 
+	|Age       |16         |
+	And I should see review required on Fields in CRF
+	|Field     |Requires Review|
+	|DOB       |True           | 
+	|Visit Date|False          | 
+	|Age       |False          |
+	And I should see review required on CRF
 	| Form   | Requires Review |
 	| Form 2 | True            |
-	And I take screenshot
+	And I take a screenshot
 	
 
