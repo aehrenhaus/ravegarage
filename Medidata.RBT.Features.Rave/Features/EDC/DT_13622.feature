@@ -346,6 +346,8 @@ Scenario: As an EDC user, when I have TSDV turned off for a form, when I have an
 		| Mediflex20120710040626 | Dev         |
 	And I click button "Submit Report"
 	And I switch to "Targeted SDV Study Plan" window
+	And I create a new block plan named "Block Plan 1" with Data entry Role "CDM1B144V1"
+	And I delete the tier "Architect Defined" from plan
 	And I create a custom tier named "Custom Tier 101" and description "Exclude Form 3" with table
 	| Form       | Selected |
 	| Visit Date | True     |
@@ -410,6 +412,8 @@ Scenario: As an EDC user, when I have TSDV turned off for a form, and I have an 
 		| Mediflex20120710040626 | Dev         |
 	And I click button "Submit Report"
 	And I switch to "Targeted SDV Study Plan" window
+	And I create a new block plan named "Block Plan 1" with Data entry Role "CDM1B144V1"
+	And I delete the tier "Architect Defined" from plan
 	And I create a custom tier named "Custom Tier 102" and description "Exclude Form 3" with table
 	| Form       | Selected |
 	| Visit Date | True     |
@@ -474,6 +478,8 @@ Scenario: As an EDC user, when I have a No Forms TSDV tier and I have an edit ch
 		| Mediflex20120710040626 | Dev         |
 	And I click button "Submit Report"
 	And I switch to "Targeted SDV Study Plan" window
+	And I create a new block plan named "Block Plan 1" with Data entry Role "CDM1B144V1"
+	And I delete the tier "Architect Defined" from plan
 	And I select the tier "No Forms" and Subject Count "1"
 	And I activate the plan
 	And I switch to "Reports" window
