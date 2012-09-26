@@ -5,6 +5,7 @@ using System.Text;
 using Medidata.RBT.PageObjects.Rave;
 using Medidata.RBT.SharedObjects;
 using System.Reflection;
+using System.IO;
 
 namespace Medidata.RBT.SharedRaveObjects
 {
@@ -50,6 +51,18 @@ namespace Medidata.RBT.SharedRaveObjects
                 TestContext.CurrentPage.As<LoginPage>().Login(loggedInUserBeforeSeed, RaveConfiguration.Default.DefaultUserPassword);
             }
             TestContext.CurrentPage = new HomePage().NavigateToSelf();
+        }
+
+        /// <summary>
+        /// Make a unique file location that sits in the "Temporary" folder for the seedable object
+        /// </summary>
+        /// <param name="fileLocation">Original file location</param>
+        /// <returns>Unique file location that sits in the temporary folder for the object</returns>
+        protected string MakeFileLocationUnique(string fileLocation)
+        {
+            return Path.GetDirectoryName(FileLocation)
+                + @"\Temporary\"
+                + Path.GetFileName(FileLocation).Substring(0, Path.GetFileName(FileLocation).LastIndexOf(".xml")) + UID + ".xml";
         }
 
         /// <summary>

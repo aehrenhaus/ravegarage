@@ -96,7 +96,7 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
 
             //Create a unique version of the file to upload
             UniqueName = FileLocation.Substring(0, Name.LastIndexOf(".xml")) + UID + ".xml";
-            UniqueFileLocation = FileLocation.Substring(0, FileLocation.LastIndexOf(".xml")) + UID + ".xml";
+            UniqueFileLocation = MakeFileLocationUnique(FileLocation);
 
             xmlDoc.Save(UniqueFileLocation);
         }

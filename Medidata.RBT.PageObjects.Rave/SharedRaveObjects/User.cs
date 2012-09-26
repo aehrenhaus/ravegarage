@@ -138,7 +138,7 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
             secondRowCells[secondRowPinIndex].ChildNodes[0].InnerText = UniquePin;
 
             //Create a unique version of the file to upload
-            UniqueFileLocation = FileLocation.Substring(0, FileLocation.LastIndexOf(".xml")) + UID + ".xml";
+            UniqueFileLocation = MakeFileLocationUnique(FileLocation);
 
             xmlDoc.Save(UniqueFileLocation);
         }

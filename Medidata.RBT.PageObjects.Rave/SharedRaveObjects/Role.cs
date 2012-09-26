@@ -88,7 +88,8 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
             roleActionsSecondRowCells[roleActionSecondRowRoleIndex].ChildNodes[0].InnerText = UniqueName;
 
             //Create a unique version of the file to upload
-            UniqueFileLocation = FileLocation.Substring(0, FileLocation.LastIndexOf(".xml")) + UID + ".xml";
+            UniqueFileLocation = MakeFileLocationUnique(FileLocation);
+
             xmlDoc.Save(UniqueFileLocation);
         }
 
