@@ -24,6 +24,8 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
         public string FileName { get; set; }
         public string ActivationCode { get; set; }
         public string UniquePin { get; set; }
+        public List<StudyAssignment> StudyAssignments { get; set; }
+        public List<ModuleAssignment> ModuleAssignments { get; set; }
 
         /// <summary>
         /// The uploaded user constructor. This uploads users using the user uploader.
@@ -104,7 +106,6 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
         public override void CreateObject()
         {
             TestContext.CurrentPage.As<UploadUserPage>().UploadFile(UniqueFileLocation);
-            TestContext.FeatureObjects.Add(Name, this);
             Factory.FeatureObjectsForDeletion.Add(this);
         }
 
@@ -149,6 +150,41 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
         public void DeleteSelf()
         {
             File.Delete(UniqueFileLocation);
+        }
+
+        /// <summary>
+        /// Check if there is a study assignment for this user
+        /// </summary>
+        /// <param name="roleUID">The UID of the role assigned</param>
+        /// <param name="projectUID">The UID of the project assigned</param>
+        /// <param name="siteUID">The UID of the site assigned</param>
+        /// <returns></returns>
+        public bool StudyAssignmentExists(Guid roleUID, Guid projectUID, Guid siteUID)
+        {
+            if (StudyAssignments != null)
+            {
+                foreach (StudyAssignment sa in StudyAssignments)
+                    if (sa.ProjectUID == projectUID && sa.RoleUID == roleUID && sa.SiteUID == siteUID)
+                        return true;
+            }
+            return false;
+        }
+
+        /// <summary>
+        /// Check if there is a module assignment for this user
+        /// </summary>
+        /// <param name="projectName">Name of the project</param>
+        /// <param name="securityRoleName">Name of the security role</param>
+        /// <returns></returns>
+        public bool ModuleAssignmentExists(string projectName, string securityRoleName)
+        {
+            if(ModuleAssignments != null)
+            {
+            foreach (ModuleAssignment ma in ModuleAssignments)
+                if (ma.ProjectName.Equals(projectName) && ma.SecurityRole.Equals(securityRoleName))
+                    return true;
+                }
+            return false;
         }
     }
 }

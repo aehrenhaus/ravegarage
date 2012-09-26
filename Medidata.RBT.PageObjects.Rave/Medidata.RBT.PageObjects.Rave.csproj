@@ -106,6 +106,8 @@
     <Compile Include="PDF\FileRequestPage.cs" />
     <Compile Include="DCF\DCFQueriesPage.cs" />
     <Compile Include="PDF\PDFFilesControl.cs" />
+    <Compile Include="SharedRaveObjects\ModuleAssignment.cs" />
+    <Compile Include="SharedRaveObjects\StudyAssignment.cs" />
     <Compile Include="SharedRaveObjects\SecurityRole.cs" />
     <Compile Include="SharedRaveObjects\Draft.cs" />
     <Compile Include="SharedRaveObjects\Project.cs" />

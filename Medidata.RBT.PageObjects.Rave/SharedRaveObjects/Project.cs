@@ -17,7 +17,7 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
     /// <summary>
     ///This is a rave specific Project.
     ///</summary>
-    public class Project : FeatureObject
+    public class Project : IFeatureObject
     {
         public Guid? UID { get; set; }
         public string Name { get; set; }
@@ -30,14 +30,12 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
         /// </summary>
         /// <param name="projectName">Feature defined name of the project</param>
         public Project(string projectName)
-            :base (projectName, null)
         {
             if(!UID.HasValue)
             {
                 UID = Guid.NewGuid();
                 Name = projectName;
                 UniqueName = projectName + TID;
-                TestContext.FeatureObjects.Add(projectName, this);
             }
             else
                 DraftCounter.DecrementCounter();

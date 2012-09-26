@@ -70,7 +70,8 @@ namespace Medidata.RBT.PageObjects.Rave.AmendmentManager
         public void NavigateToStudy(string studyName)
         {
             TestContext.CurrentPage = new ArchitectPage().NavigateToSelf();
-            TestContext.CurrentPage.As<ArchitectPage>().ClickProject(new Project(studyName).UniqueName);
+            Project project = TestContext.GetExistingFeatureObjectOrMakeNew(studyName, () => new Project(studyName));
+            TestContext.CurrentPage.As<ArchitectPage>().ClickProject(project.UniqueName);
             TestContext.CurrentPage.As<ArchitectLibraryPage>().NavigateTo("Amendment Manager");
         }
 

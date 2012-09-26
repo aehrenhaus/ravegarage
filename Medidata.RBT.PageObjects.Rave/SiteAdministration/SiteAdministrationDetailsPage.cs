@@ -28,11 +28,14 @@ namespace Medidata.RBT.PageObjects.Rave.SiteAdministration
         /// Link the study provided with the site you are on.
         /// </summary>
         /// <param name="studyName">Name of the study to link the site with, this should be the UniqueName, not the feature provided one</param>
-        public void LinkStudyWithSite(string studyName)
+        public void LinkStudyWithSite(Site site, string studyName)
         {
             TestContext.CurrentPage.ClickLink("Add Study");
             ChooseFromDropdown("ProjectDDL", studyName);
             TestContext.CurrentPage.ClickLink("Add");
+            if (site.StudyUIDs == null)
+                site.StudyUIDs = new List<Guid>();
+            site.StudyUIDs.Add(site.UID.Value);
         }
     }
 }

@@ -15,6 +15,9 @@ using TechTalk.SpecFlow.Assist;
 
 namespace Medidata.RBT.Features.Rave
 {
+    /// <summary>
+    /// Step defs for amendment manager
+    /// </summary>
 	[Binding]
     public class AmendmentManagerSteps : BrowserStepsBase
 	{
@@ -42,7 +45,7 @@ namespace Medidata.RBT.Features.Rave
         /// <summary>
         /// Select the target crf version
         /// </summary>
-        /// <param name="sourceCRFName">Feature defined target crfVersion name</param>
+        /// <param name="targetCRFName">Feature defined target crfVersion name</param>
         [StepDefinition(@"I select Target CRF version ""([^""]*)""")]
         public void ISelectTargetCRFVersion____(string targetCRFName)
         {

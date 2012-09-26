@@ -61,7 +61,6 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
         public override void CreateObject()
         {
             TestContext.CurrentPage.As<UploadDraftPage>().UploadFile(UniqueFileLocation);
-            TestContext.FeatureObjects.Add(Name, this);
             Factory.FeatureObjectsForDeletion.Add(this);
         }
 
@@ -85,20 +84,64 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
             string oldProjectName = secondRowCells[projectCell].ChildNodes[0].InnerText;
 
             if (Project == null)
-                Project = new Project(oldProjectName);
+                Project = TestContext.GetExistingFeatureObjectOrMakeNew(oldProjectName, () => new Project(oldProjectName));
 
             secondRowCells[projectCell].ChildNodes[0].InnerText = Project.UniqueName;
 
             //Set Draft Name
             int draftCell = firstRowCells.FindIndex(x => x.InnerText.ToLower() == "draftname");
             string oldDraftName = secondRowCells[draftCell].ChildNodes[0].InnerText;
-            Draft = new Draft(oldDraftName);
+            Draft = TestContext.GetExistingFeatureObjectOrMakeNew(oldDraftName, () => new Draft(oldDraftName));
+
+            CheckEntryRestrictionFields(worksheets.Where(x => x.Attributes["ss:Name"].Value.ToLower() == "fields").FirstOrDefault());
 
             //Create a unique version of the file to upload
             UniqueName = FileLocation.Substring(0, Name.LastIndexOf(".xml")) + UID + ".xml";
             UniqueFileLocation = MakeFileLocationUnique(FileLocation);
 
             xmlDoc.Save(UniqueFileLocation);
+        }
+
+
+        /// <summary>
+        /// If there are entry restrictions for specifc roles, then create the roles for them and make the role names unique.
+        /// </summary>
+        /// <param name="worksheets">The worksheet that contains the fields</param>
+        private void CheckEntryRestrictionFields(XmlNode fieldsWorksheet)
+        {
+            //Set field entry restrictions
+            XmlNode table = (fieldsWorksheet.ChildNodes.Cast<XmlNode>()).Where(x => x.Name.ToLower() == "table").FirstOrDefault();
+            List<XmlNode> rows = (table.ChildNodes.Cast<XmlNode>()).Where(x => x.Name.ToLower() == "row").ToList();
+            List<XmlNode> firstRowCells = new List<XmlNode>(rows[0].ChildNodes.Cast<XmlNode>());
+
+            //Find the index of the EntryRestriction cell. Add 1, because the index in the XML is 1 indexed, not 0 indexed
+            int entryRestrictionCellIndex = firstRowCells.FindIndex(x => x.InnerText.ToLower() == "entryrestrictions") + 1; 
+
+            foreach (XmlNode row in rows)
+            {
+                List<XmlNode> rowCellsWithIndexAttr = (row.ChildNodes.Cast<XmlNode>()).Where(x => x.Attributes["ss:Index"] != null).ToList();
+                if (rowCellsWithIndexAttr.Count > 0)
+                {
+                    XmlNode entryRestrictionCell = rowCellsWithIndexAttr
+                        .FirstOrDefault(x => x.Attributes["ss:Index"].Value == entryRestrictionCellIndex.ToString());
+                    
+                    if(entryRestrictionCell != null)
+                    {
+                        string entryRestrictionsCommaSeparated = entryRestrictionCell.ChildNodes[0].InnerText;
+                        List<string> entryRestrictions = entryRestrictionsCommaSeparated.Split(',').ToList();
+                        StringBuilder uniqueEntryRestrictions = new StringBuilder();
+                        foreach (string entryRestriction in entryRestrictions)
+                        {
+                            Role role = TestContext.GetExistingFeatureObjectOrMakeNew(entryRestriction.Trim(), () => new Role(entryRestriction.Trim(), true));
+                            uniqueEntryRestrictions.Append(role.UniqueName + ",");
+                        }
+
+                        entryRestrictionCell.ChildNodes[0].InnerText = uniqueEntryRestrictions.ToString().Substring(0, uniqueEntryRestrictions.Length - 1);
+                    }
+                }
+            }
+
+            NavigateToSeedPage();
         }
 
         /// <summary>

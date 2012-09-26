@@ -26,7 +26,7 @@ namespace Medidata.RBT.Features.Rave
         [StepDefinition(@"role ""([^""]*)"" exists")]
         public void Role____Exists(string roleName)
         {
-            new Role(roleName, true);
+            TestContext.GetExistingFeatureObjectOrMakeNew(roleName, () => new Role(roleName, true));
         }
 
         /// <summary>
@@ -41,11 +41,13 @@ namespace Medidata.RBT.Features.Rave
             foreach(ConfigurationCreationModel config in configurations)
             {
                 TestContext.CurrentPage = new ArchitectPage().NavigateToSelf();
-
-                TestContext.CurrentPage.As<ArchitectPage>().ClickProject(new Project(config.Project).UniqueName);
-                TestContext.CurrentPage.As<ArchitectLibraryPage>().ClickDraft(new Draft(config.Draft).Name);
+                Project project = TestContext.GetExistingFeatureObjectOrMakeNew<Project>(config.Project, () => new Project(config.Project));
+                TestContext.CurrentPage.As<ArchitectPage>().ClickProject(project.UniqueName);
+                Draft draft = TestContext.GetExistingFeatureObjectOrMakeNew<Draft>(config.Draft, () => new Draft(config.Draft));
+                TestContext.CurrentPage.As<ArchitectLibraryPage>().ClickDraft(draft.Name);
                 TestContext.CurrentPage.As<ArchitectCRFDraftPage>().ClickLink("Restrictions");
-                TestContext.CurrentPage.As<ArchitectRestrictionsPage>().SetEntryRestriction(config.Form, config.Field, new Role(roleName).UniqueName);
+                Role role = TestContext.GetExistingFeatureObjectOrMakeNew(roleName, () => new Role(roleName, true));
+                TestContext.CurrentPage.As<ArchitectRestrictionsPage>().SetEntryRestriction(config.Form, config.Field, role.UniqueName);
             }
         }
 	}
