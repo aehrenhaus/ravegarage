@@ -52,11 +52,12 @@ namespace Medidata.RBT.Features.Rave
         /// <summary>
         /// XML draft is uploaded for seeding purposes.
         /// </summary>
-        /// <param name="draft">The name of the draft to be seeded</param>
+        /// <param name="draftName"></param>
+        /// <param name="envName"></param>
         [StepDefinition(@"xml draft ""([^""]*)"" is Uploaded with Environment name ""([^""]*)""")]
         public void XmlDraft____IsUploadedWithEnvironmentName____(string draftName,string envName)
         {
-            UploadedDraft uploadedDraft = new UploadedDraft(draftName, true);
+            UploadedDraft uploadedDraft = TestContext.GetExistingFeatureObjectOrMakeNew(draftName, () => new UploadedDraft(draftName, true));
 
             TestContext.CurrentPage.As<HomePage>().ClickLink("Architect");
             TestContext.CurrentPage.As<ArchitectPage>().ClickProject(uploadedDraft.Project.UniqueName);
@@ -75,18 +76,7 @@ namespace Medidata.RBT.Features.Rave
         [StepDefinition(@"I publish and push eCRF ""([^""]*)"" to ""([^""]*)""")]
         public void IPublishAndPushECRF____To____(string uploadName, string crfVersionName)
         {
-            UploadedDraft uploadedDraft = TestContext.GetExistingFeatureObjectOrMakeNew
-                    (uploadName, () => new UploadedDraft(uploadName, true));
-            CrfVersion crfVersion = TestContext.GetExistingFeatureObjectOrMakeNew
-                    (crfVersionName, () => new CrfVersion(uploadedDraft.Name, crfVersionName, true));
-            if(TestContext.CurrentUser == null)
-                LoginPage.LoginUsingDefaultUserFromAnyPage();
-            TestContext.CurrentPage = new ArchitectPage().NavigateToSelf();
-            if (!(TestContext.CurrentPage is ArchitectPage))
-                LoginPage.LoginUsingDefaultUserFromAnyPage();
-            TestContext.CurrentPage.As<ArchitectPage>().ClickProject(crfVersion.UploadedDraft.Project.UniqueName);
-            TestContext.CurrentPage.As<ArchitectLibraryPage>().PushVersion(crfVersion.UniqueName, "Prod", "All Sites");
-            TestContext.CurrentPage = new HomePage().NavigateToSelf();
+            IPublishAndPushECRF____To____WithStudyEnvironment____(uploadName, crfVersionName, "Prod");
         }
 
         /// <summary>
@@ -99,11 +89,18 @@ namespace Medidata.RBT.Features.Rave
         [StepDefinition(@"I publish and push eCRF ""([^""]*)"" to ""([^""]*)"" with study environment ""([^""]*)""")]
         public void IPublishAndPushECRF____To____WithStudyEnvironment____(string uploadName, string crfVersionName, string studyEnvName)
         {
-            UploadedDraft uploadedDraft = new UploadedDraft(uploadName, true);
-            CrfVersion crfVersion = new CrfVersion(uploadedDraft.Name, crfVersionName, true);
+            UploadedDraft uploadedDraft = TestContext.GetExistingFeatureObjectOrMakeNew
+                     (uploadName, () => new UploadedDraft(uploadName, true));
+            CrfVersion crfVersion = TestContext.GetExistingFeatureObjectOrMakeNew
+                    (crfVersionName, () => new CrfVersion(uploadedDraft.Name, crfVersionName, true));
+            if (TestContext.CurrentUser == null)
+                LoginPage.LoginUsingDefaultUserFromAnyPage();
             TestContext.CurrentPage = new ArchitectPage().NavigateToSelf();
+            if (!(TestContext.CurrentPage is ArchitectPage))
+                LoginPage.LoginUsingDefaultUserFromAnyPage();
             TestContext.CurrentPage.As<ArchitectPage>().ClickProject(crfVersion.UploadedDraft.Project.UniqueName);
             TestContext.CurrentPage.As<ArchitectLibraryPage>().PushVersion(crfVersion.UniqueName, studyEnvName, "All Sites");
+            TestContext.CurrentPage = new HomePage().NavigateToSelf();
         }
 	}
 }
