@@ -8,7 +8,16 @@ Feature: DT 13622 When an Edit Check sets Datapoint XYZ to require verification,
 	Then I should see an audit for the unverification
 
 Background:
-    Given I am logged in to Rave with username "defuser" and password "password"
+    #Given I am logged in to Rave with username "defuser" and password "password"
+	Given I login to Rave with user "defuser"
+	Given xml draft "DT13622 Mediflex.xml" is Uploaded with Environment name "Dev"
+	Given Site "MediflexDTSite" exists
+	Given study "Mediflex" is assigned to Site "MediflexDTSite" with study environment "Aux: Dev"
+	Given I publish and push eCRF "DT13622 Mediflex.xml" to "Version 1" with study environment "Dev"
+	Given following Project assignments exist
+	| User | Project | Environment | Role | Site | SecurityRole |
+	| SUPER USER 1 | Mediflex | Aux: Dev | SUPER ROLE 1 | MediflexDTSite | Project Admin Default |
+	#And I select Study "Mediflex" and Site "MediflexDTSite"
 	#And following Project assignments exist
 	#|User	|Project	|Environment	|Role |Site	  |Site Number	|
 	#|User 1 |Mediflex	|Prod			|cdm1 |Site 1 |S100			|
@@ -29,7 +38,7 @@ Background:
 @PB-DT13622-01
 @WIP
 Scenario: As an EDC user, when I have an edit check fired on one field that sets another field to require verification, and I verify the data for the field, and I change the data, and the verification is broken, then I should see an audit recorded for the unverification.
-	And I select Study "Mediflex20120710040626 (Dev)" and Site "MediflexDTSite"
+	Given I login to Rave with user "SUPER USER 1"
 	When I create a Subject
 	|Field			 |Data|
 	|Subject Number	 |101 |
@@ -89,7 +98,7 @@ Scenario: As an EDC user, when I have an edit check fired on one field that sets
 @PB-DT13622-02
 @WIP
 Scenario: As an EDC user, when I have an edit check fired on one field that sets another field to require verification, and I verify the data for the form, and I change the data, and the verification is broken, then I should see an audit recorded for the unverification.
-	Given I select Study "Mediflex20120710040626 (Dev)" and Site "MediflexDTSite"
+	Given I login to Rave with user "SUPER USER 1"
 	When I create a Subject
 	|Field			 |Data |
 	|Subject Number	 |102  |
@@ -149,7 +158,7 @@ Scenario: As an EDC user, when I have an edit check fired on one field that sets
 @PB-DT13622-03
 @WIP
 Scenario: As an EDC user, when I have an edit check that sets a field to require verification, and I verify the data for the field, and I change the data, and the verification is broken, then I should see an audit recorded for the unverification.
-	Given I select Study "Mediflex20120710040626 (Dev)" and Site "MediflexDTSite"
+	Given I login to Rave with user "SUPER USER 1"
 	When I create a Subject
 	|Field			 |Data |
 	|Subject Number	 |103  |
@@ -192,7 +201,7 @@ Scenario: As an EDC user, when I have an edit check that sets a field to require
 @PB-DT13622-04
 @WIP
 Scenario: As an EDC user, when I have an edit check that sets a field to require verification, and I verify the data for the form, and I change the data, and the verification is broken, then I should see an audit recorded for the unverification.
-	Given I select Study "Mediflex20120710040626 (Dev)" and Site "MediflexDTSite"
+	Given I login to Rave with user "SUPER USER 1"
 	When I create a Subject
 	|Field			 |Data |
 	|Subject Number	 |104  |
@@ -235,7 +244,7 @@ Scenario: As an EDC user, when I have an edit check that sets a field to require
 @PB-DT13622-05
 @WIP
 Scenario: As an EDC user, when I have an edit check fired on a field that is derived to sets another field to require verification, and I verify the data for the field, and I change the data, and the verification is broken, then I should see an audit recorded for the unverification.
-	Given I select Study "Mediflex20120710040626 (Dev)" and Site "MediflexDTSite"
+	Given I login to Rave with user "SUPER USER 1"
 	When I create a Subject
 	|Field			 |Data |
 	|Subject Number	 |105  |
@@ -287,7 +296,7 @@ Scenario: As an EDC user, when I have an edit check fired on a field that is der
 @PB-DT13622-06
 @WIP
 Scenario: As an EDC user, when I have an edit check fired on a field that is derived to sets another field to require verification, and I verify the data for the form, and I change the data, and the verification is broken, then I should see an audit recorded for the unverification.
-	Given I select Study "Mediflex20120710040626 (Dev)" and Site "MediflexDTSite"
+	Given I login to Rave with user "SUPER USER 1"
 	When I create a Subject
 	|Field			 |Data |
 	|Subject Number	 |105  |
@@ -339,6 +348,7 @@ Scenario: As an EDC user, when I have an edit check fired on a field that is der
 @PB-DT13622-07
 @WIP
 Scenario: As an EDC user, when I have TSDV turned off for a form, when I have an edit check that sets a field to require verification, and I verify the data for the field, and I change the data, and the verification is broken, then I should see an audit recorded for the unverification.
+	Given I login to Rave with user "SUPER USER 1"
 	Given I navigate to "Reporter"
 	And I select Report "Targeted SDV Configuration"
 	And I set report parameter "Study" with table
@@ -405,6 +415,7 @@ Scenario: As an EDC user, when I have TSDV turned off for a form, when I have an
 @PB-DT13622-08
 @WIP
 Scenario: As an EDC user, when I have TSDV turned off for a form, and I have an edit check that sets a field to require verification, and I verify the data for the form, and I change the data, and the verification is broken, then I should see an audit recorded for the unverification.
+	Given I login to Rave with user "SUPER USER 1"
 	Given I navigate to "Reporter"
 	And I select Report "Targeted SDV Configuration"
 	And I set report parameter "Study" with table
@@ -471,6 +482,7 @@ Scenario: As an EDC user, when I have TSDV turned off for a form, and I have an 
 @PB-DT13622-09 
 @WIP 
 Scenario: As an EDC user, when I have a No Forms TSDV tier and I have an edit check that sets a field to require verification, and I verify the data for the field, and I change the data, and the verification is broken, then I should see an audit recorded for the unverification. 
+	Given I login to Rave with user "SUPER USER 1"
 	Given I navigate to "Reporter"
 	And I select Report "Targeted SDV Configuration"
 	And I set report parameter "Study" with table

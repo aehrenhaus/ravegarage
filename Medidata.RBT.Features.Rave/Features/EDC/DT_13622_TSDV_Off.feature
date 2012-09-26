@@ -8,7 +8,16 @@ Feature: DT 13622 TSDV Off When an Edit Check sets Datapoint XYZ to require veri
 	Then I should see an audit for the unverification
 
 Background:
-    Given I am logged in to Rave with username "defuser" and password "password"
+    #Given I am logged in to Rave with username "defuser" and password "password"
+	Given I login to Rave with user "defuser"
+	Given xml draft "DT13622 Mediflex.xml" is Uploaded with Environment name "Dev"
+	Given Site "MediflexDTSite" exists
+	Given study "Mediflex" is assigned to Site "MediflexDTSite" with study environment "Live: Prod"
+	Given I publish and push eCRF "DT13622 Mediflex.xml" to "Version 1" with study environment "Prod"
+	Given following Project assignments exist
+	| User | Project | Environment | Role | Site | SecurityRole |
+	| SUPER USER 1 | Mediflex | Live: Prod | SUPER ROLE 1 | MediflexDTSite | Project Admin Default |
+	#And I select Study "Mediflex" and Site "MediflexDTSite"
 	#And following Project assignments exist
 	#|User	|Project	|Environment	|Role |Site	  |Site Number	|
 	#|User 1 |Mediflex	|Prod			|cdm1 |Site 1 |S100			|
@@ -16,7 +25,7 @@ Background:
 	#And Role "cdm1" has Action "Verify"
 	#And Project "Mediflex" has Draft "<Draft1>"
 	#And I publish and push CRF Version "CRF Version<RANDOMNUMBER>" of Draft "<Draft1>" to site "Site 1" in Project "Mediflex" for Enviroment "Prod"
-	And I select Study "Mediflex20120710040626" and Site "MediflexDTSite"
+	#And I select Study "Mediflex20120710040626" and Site "MediflexDTSite"
 	# Edit check exists to set field Visit Date on form Visit Date to require verification if field Age has a value less than 18.
 	# Edit check exists to set field Field 1 on form Form 1 to require verification if field Field 1 has a value other than 20.
 	# Edit check exists to set field DOB on form Form 2 to require verification if field Age has a value less than 18.
@@ -28,6 +37,7 @@ Background:
 @PB-DT13622_1-01
 @WIP
 Scenario: As an EDC user, when I have an edit check fired on one field that sets another field to require verification, and TSDV is off, and I verify the data for the field, and I change the data, and the verification is broken, then I should see an audit recorded for the unverification.
+	Given I login to Rave with user "SUPER USER 1"
 	When I create a Subject
 	|Field			 |Data|
 	|Subject Number	 |101 |
@@ -87,6 +97,7 @@ Scenario: As an EDC user, when I have an edit check fired on one field that sets
 @PB-DT13622_1-02
 @WIP
 Scenario: As an EDC user, when I have an edit check fired on one field that sets another field to require verification, and TSDV is off, and I verify the data for the form, and I change the data, and the verification is broken, then I should see an audit recorded for the unverification.
+	Given I login to Rave with user "SUPER USER 1"
 	When I create a Subject
 	|Field			 |Data |
 	|Subject Number	 |102  |
@@ -146,6 +157,7 @@ Scenario: As an EDC user, when I have an edit check fired on one field that sets
 @PB-DT13622_1-03
 @WIP
 Scenario: As an EDC user, when I have an edit check that sets a field to require verification, and TSDV is off, and I verify the data for the field, and I change the data, and the verification is broken, then I should see an audit recorded for the unverification.
+	Given I login to Rave with user "SUPER USER 1"
 	When I create a Subject
 	|Field			 |Data |
 	|Subject Number	 |103  |
@@ -188,6 +200,7 @@ Scenario: As an EDC user, when I have an edit check that sets a field to require
 @PB-DT13622_1-04
 @WIP
 Scenario: As an EDC user, when I have an edit check that sets a field to require verification, and TSDV is off, and I verify the data for the form, and I change the data, and the verification is broken, then I should see an audit recorded for the unverification.
+	Given I login to Rave with user "SUPER USER 1"
 	When I create a Subject
 	|Field			 |Data |
 	|Subject Number	 |104  |
@@ -230,6 +243,7 @@ Scenario: As an EDC user, when I have an edit check that sets a field to require
 @PB-DT13622_1-05
 @WIP
 Scenario: As an EDC user, when I have an edit check fired on a field that is derived to sets another field to require verification, and TSDV is off, and I verify the data for the field, and I change the data, and the verification is broken, then I should see an audit recorded for the unverification.
+	Given I login to Rave with user "SUPER USER 1"
 	When I create a Subject
 	|Field			 |Data |
 	|Subject Number	 |105  |
@@ -281,6 +295,7 @@ Scenario: As an EDC user, when I have an edit check fired on a field that is der
 @PB-DT13622_1-06
 @WIP
 Scenario: As an EDC user, when I have an edit check fired on a field that is derived to sets another field to require verification, and TSDV is off, and I verify the data for the form, and I change the data, and the verification is broken, then I should see an audit recorded for the unverification.
+	Given I login to Rave with user "SUPER USER 1"
 	When I create a Subject
 	|Field			 |Data |
 	|Subject Number	 |105  |
