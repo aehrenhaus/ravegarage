@@ -92,24 +92,30 @@ this.ScenarioSetup(scenarioInfo);
 #line 10
  this.FeatureBackground();
 #line 27
- testRunner.Given("I am logged in to Rave with username \"defuser\" and password \"password\"");
-#line 28
- testRunner.When("I navigate to \"Configuration\" module");
-#line 29
- testRunner.And("I navigate to \"Other Settings\"");
-#line 30
- testRunner.And("I navigate to \"Coder Configuration\"");
+ testRunner.Given("the \"Core Configuration Specification Template\" is downloaded");
 #line hidden
             TechTalk.SpecFlow.Table table1 = new TechTalk.SpecFlow.Table(new string[] {
-                        "Review Marking Group",
-                        "Requires Response",
-                        "Requires Manual Close"});
+                        "Version",
+                        "Coder Manual Queries",
+                        "Setting",
+                        "Instructions/Comments"});
             table1.AddRow(new string[] {
+                        "",
+                        "Review Marking Group",
                         "site from system",
+                        ""});
+            table1.AddRow(new string[] {
+                        "",
+                        "Requires Response",
                         "True",
-                        "True"});
-#line 31
- testRunner.And("I enter data in \"Coder Configuration\" and save", ((string)(null)), table1);
+                        ""});
+            table1.AddRow(new string[] {
+                        "",
+                        "Requires Manual Close",
+                        "True",
+                        ""});
+#line 28
+ testRunner.Then("I verify spreadsheet data", ((string)(null)), table1);
 #line hidden
             this.ScenarioCleanup();
         }
@@ -127,17 +133,17 @@ this.ScenarioSetup(scenarioInfo);
                     " Get File, and the Core Configuration specification is downloaded, and I open it" +
                     ", then I see Coder Configuration details.", new string[] {
                         "PB_US11101_01"});
-#line 36
+#line 35
 this.ScenarioSetup(scenarioInfo);
 #line 10
  this.FeatureBackground();
-#line 37
+#line 36
  testRunner.Given("I am logged in to Rave with username \"defuser\" and password \"password\"");
-#line 38
+#line 37
  testRunner.When("I navigate to \"Configuration\" module");
-#line 39
+#line 38
  testRunner.And("I navigate to \"Other Settings\"");
-#line 40
+#line 39
  testRunner.And("I navigate to \"Coder Configuration\"");
 #line hidden
             TechTalk.SpecFlow.Table table2 = new TechTalk.SpecFlow.Table(new string[] {
@@ -148,19 +154,17 @@ this.ScenarioSetup(scenarioInfo);
                         "site from system",
                         "True",
                         "True"});
-#line 41
+#line 40
  testRunner.And("I enter data in \"Coder Configuration\" and save", ((string)(null)), table2);
-#line 44
+#line 43
  testRunner.And("I navigate to \"Configuration\" module");
-#line 45
+#line 44
  testRunner.And("I navigate to \"Configuration Loader\"");
-#line 46
- testRunner.And("I check \"Template Only\"");
-#line 47
+#line 45
  testRunner.And("I click \"Get File\"");
-#line 48
+#line 46
  testRunner.And("the \"Core Configuration Specification Template\" is downloaded");
-#line 50
+#line 48
  testRunner.Then("I verify \"Coder Configuration\" spreadsheet exists");
 #line hidden
             TechTalk.SpecFlow.Table table3 = new TechTalk.SpecFlow.Table(new string[] {
@@ -183,9 +187,9 @@ this.ScenarioSetup(scenarioInfo);
                         "Requires Manual Close",
                         "True",
                         ""});
-#line 51
+#line 49
  testRunner.Then("I verify spreadsheet data", ((string)(null)), table3);
-#line 57
+#line 55
  testRunner.And("I click the drop-down arrow for field \"Site from Sytem\"");
 #line hidden
             TechTalk.SpecFlow.Table table4 = new TechTalk.SpecFlow.Table(new string[] {
@@ -202,13 +206,13 @@ this.ScenarioSetup(scenarioInfo);
                         "Monitor from Sponsor"});
             table4.AddRow(new string[] {
                         "CRA from DM"});
-#line 58
+#line 56
  testRunner.Then("I see data", ((string)(null)), table4);
-#line 66
+#line 64
  testRunner.And("the cursor focus is located on \"Site from System\"");
-#line 67
+#line 65
  testRunner.And("I take a screenshot");
-#line 68
+#line 66
  testRunner.And("I click the drop-down arrow for field \"TRUE\" for \"Requires Response\"");
 #line hidden
             TechTalk.SpecFlow.Table table5 = new TechTalk.SpecFlow.Table(new string[] {
@@ -217,13 +221,13 @@ this.ScenarioSetup(scenarioInfo);
                         "TRUE"});
             table5.AddRow(new string[] {
                         "FALSE"});
-#line 69
+#line 67
  testRunner.Then("I see data", ((string)(null)), table5);
-#line 73
+#line 71
  testRunner.And("the cursor focus is located on \"TRUE\"");
-#line 74
+#line 72
  testRunner.And("I take a screenshot");
-#line 75
+#line 73
  testRunner.And("I click the drop-down arrow for field \"TRUE\" for \"Requires Manual Close\"");
 #line hidden
             TechTalk.SpecFlow.Table table6 = new TechTalk.SpecFlow.Table(new string[] {
@@ -232,17 +236,17 @@ this.ScenarioSetup(scenarioInfo);
                         "TRUE"});
             table6.AddRow(new string[] {
                         "FALSE"});
-#line 76
+#line 74
  testRunner.Then("I see data", ((string)(null)), table6);
-#line 80
+#line 78
  testRunner.And("the cursor focus is located on \"TRUE\"");
-#line 81
+#line 79
  testRunner.And("I take a screenshot");
-#line 82
+#line 80
  testRunner.And("I select module \"Configuration\"");
-#line 83
+#line 81
  testRunner.And("I select Other Settings");
-#line 84
+#line 82
  testRunner.And("I select Coder Configuration");
 #line hidden
             TechTalk.SpecFlow.Table table7 = new TechTalk.SpecFlow.Table(new string[] {
@@ -253,19 +257,19 @@ this.ScenarioSetup(scenarioInfo);
                         "Monitor from Sponsor",
                         "",
                         ""});
-#line 85
+#line 83
  testRunner.And("I enter data", ((string)(null)), table7);
-#line 88
+#line 86
  testRunner.And("I select module \"Configuration\"");
-#line 89
+#line 87
  testRunner.And("I select Configuration Loader");
-#line 90
+#line 88
  testRunner.And("I select \"Get File\"");
-#line 91
+#line 89
  testRunner.And("the Core Configuration specification is downloaded");
-#line 92
+#line 90
  testRunner.And("I open the Core Configuration specification");
-#line 93
+#line 91
  testRunner.Then("I see Coder Configuration tab");
 #line hidden
             TechTalk.SpecFlow.Table table8 = new TechTalk.SpecFlow.Table(new string[] {
@@ -288,11 +292,11 @@ this.ScenarioSetup(scenarioInfo);
                         "Requires Manual Close",
                         "FALSE",
                         ""});
-#line 94
+#line 92
  testRunner.Then("I see data", ((string)(null)), table8);
-#line 99
+#line 97
  testRunner.And("I take a screenshot");
-#line 100
+#line 98
  testRunner.And("I click the drop-down arrow for field \"Site from Sytem\"");
 #line hidden
             TechTalk.SpecFlow.Table table9 = new TechTalk.SpecFlow.Table(new string[] {
@@ -309,11 +313,11 @@ this.ScenarioSetup(scenarioInfo);
                         "Monitor from Sponsor"});
             table9.AddRow(new string[] {
                         "CRA from DM"});
-#line 101
+#line 99
  testRunner.Then("I see data", ((string)(null)), table9);
-#line 109
+#line 107
  testRunner.And("the cursor focus is located on \"Monitor from Sponsor\"");
-#line 110
+#line 108
  testRunner.And("I click the drop-down arrow for field \"FALSE\" for \"Requires Response\"");
 #line hidden
             TechTalk.SpecFlow.Table table10 = new TechTalk.SpecFlow.Table(new string[] {
@@ -322,13 +326,13 @@ this.ScenarioSetup(scenarioInfo);
                         "TRUE"});
             table10.AddRow(new string[] {
                         "FALSE"});
-#line 111
+#line 109
  testRunner.Then("I see data", ((string)(null)), table10);
-#line 115
+#line 113
  testRunner.And("the cursor focus is located on \"FALSE\"");
-#line 116
+#line 114
  testRunner.And("I take a screenshot");
-#line 117
+#line 115
  testRunner.And("I click the drop-down arrow for field \"FALSE\" for \"Requires Manual Close\"");
 #line hidden
             TechTalk.SpecFlow.Table table11 = new TechTalk.SpecFlow.Table(new string[] {
@@ -337,11 +341,11 @@ this.ScenarioSetup(scenarioInfo);
                         "TRUE"});
             table11.AddRow(new string[] {
                         "FALSE"});
-#line 118
+#line 116
  testRunner.Then("I see data", ((string)(null)), table11);
-#line 122
+#line 120
  testRunner.And("the cursor focus is located on \"FALSE\"");
-#line 123
+#line 121
  testRunner.And("I take a screenshot");
 #line hidden
             this.ScenarioCleanup();
@@ -360,27 +364,27 @@ this.ScenarioSetup(scenarioInfo);
                     "ate Only, and I select Get File, and the Core Configuration specification is dow" +
                     "nloaded, and I open it, then I see Coder Configuration details.", new string[] {
                         "PB_US11101_02"});
-#line 126
+#line 124
 this.ScenarioSetup(scenarioInfo);
 #line 10
  this.FeatureBackground();
-#line 127
+#line 125
  testRunner.Given("I am logged in to Rave with username \"defuser\" and password \"password\"");
-#line 128
+#line 126
  testRunner.And("I select module \"Configuration\"");
-#line 129
+#line 127
  testRunner.And("I select Configuration Loader");
-#line 130
+#line 128
  testRunner.And("I select \"Template Only\"");
-#line 131
+#line 129
  testRunner.And("I take a screenshot");
-#line 132
+#line 130
  testRunner.And("I select \"Get File\"");
-#line 133
+#line 131
  testRunner.And("the Core Configuration specification is downloaded");
-#line 134
+#line 132
  testRunner.And("I open the Core Configuration specification");
-#line 135
+#line 133
  testRunner.Then("I see Coder Configuration tab");
 #line hidden
             TechTalk.SpecFlow.Table table12 = new TechTalk.SpecFlow.Table(new string[] {
@@ -403,11 +407,11 @@ this.ScenarioSetup(scenarioInfo);
                         "Requires Manual Close",
                         "FALSE",
                         ""});
-#line 136
+#line 134
  testRunner.Then("I see data", ((string)(null)), table12);
-#line 141
+#line 139
  testRunner.And("I take a screenshot");
-#line 142
+#line 140
  testRunner.And("I click the drop-down arrow for field \"[None]\" in the Setting column for Coder Ma" +
                     "nual Queries \"Review Marking Group\"");
 #line hidden
@@ -435,13 +439,13 @@ this.ScenarioSetup(scenarioInfo);
                         "Marking Group 9"});
             table13.AddRow(new string[] {
                         "Marking Group 10"});
-#line 143
+#line 141
  testRunner.Then("I see data", ((string)(null)), table13);
-#line 156
+#line 154
  testRunner.And("the cursor focus is located on \"[None]\" for \"Review Marking Group\"");
-#line 157
+#line 155
  testRunner.And("I take a screenshot");
-#line 158
+#line 156
  testRunner.And("I click the drop-down arrow for field \"FALSE\" for \"Requires Response\"");
 #line hidden
             TechTalk.SpecFlow.Table table14 = new TechTalk.SpecFlow.Table(new string[] {
@@ -450,13 +454,13 @@ this.ScenarioSetup(scenarioInfo);
                         "TRUE"});
             table14.AddRow(new string[] {
                         "FALSE"});
-#line 159
+#line 157
  testRunner.Then("I see data", ((string)(null)), table14);
-#line 163
+#line 161
  testRunner.And("the cursor focus is located on \"FALSE\" for \"Requires Response\"");
-#line 164
+#line 162
  testRunner.And("I take a screenshot");
-#line 165
+#line 163
  testRunner.And("I click the drop-down arrow for field \"FALSE\" for \"Requires Manual Close\"");
 #line hidden
             TechTalk.SpecFlow.Table table15 = new TechTalk.SpecFlow.Table(new string[] {
@@ -465,11 +469,11 @@ this.ScenarioSetup(scenarioInfo);
                         "TRUE"});
             table15.AddRow(new string[] {
                         "FALSE"});
-#line 166
+#line 164
  testRunner.Then("I see data", ((string)(null)), table15);
-#line 170
+#line 168
  testRunner.And("the cursor focus is located on \"FALSE\" for \"Requires Manual Close\"");
-#line 171
+#line 169
  testRunner.And("I take a screenshot");
 #line hidden
             this.ScenarioCleanup();
@@ -488,25 +492,25 @@ this.ScenarioSetup(scenarioInfo);
                     "nabled, and I select Get File, and the Core Configuration specification is downl" +
                     "oaded, and I open it, then I do not see Coder Configuration details.", new string[] {
                         "PB_US11101_03"});
-#line 174
+#line 172
 this.ScenarioSetup(scenarioInfo);
 #line 10
  this.FeatureBackground();
-#line 175
+#line 173
  testRunner.Given("I am logged in to Rave with username \"defuser\" and password \"password\"");
-#line 176
+#line 174
  testRunner.And("I select module \"Configuration\"");
-#line 177
+#line 175
  testRunner.And("I select Configuration Loader");
-#line 178
+#line 176
  testRunner.And("I select \"Get File\"");
-#line 179
+#line 177
  testRunner.And("the Core Configuration specification is downloaded");
-#line 180
+#line 178
  testRunner.And("I open the Core Configuration specification");
-#line 181
+#line 179
  testRunner.Then("I do not see Coder Configuration tab");
-#line 182
+#line 180
  testRunner.And("I take a screenshot");
 #line hidden
             this.ScenarioCleanup();

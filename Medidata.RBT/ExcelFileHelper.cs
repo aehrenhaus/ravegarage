@@ -60,22 +60,6 @@ namespace Medidata.RBT
             if (XmlDoc.DocumentElement != null)
                 nsManager.AddNamespace(nameSpace, XmlDoc.DocumentElement.NamespaceURI);
 
-            //var nodeList = spreadSheetNode.SelectNodes(nameSpace + ":Table", nsManager);
-            //if (nodeList != null)
-            //{
-            //    XmlNodeList items = nodeList.Item(0).SelectNodes(nameSpace + ":Row", nsManager).Item(0).SelectNodes(nameSpace + ":Cell", nsManager);
-            //}
-            //bool isFound = false;
-            //foreach (XmlNode item in items)
-            //{
-            //    if (item.InnerText == columnName)
-            //    {
-            //        isFound = true;
-            //        break;
-            //    }
-            //}
-            //if (isFound)
-            //{
             var xmlNodeList = spreadSheetNode.SelectNodes(nameSpace + ":Table", nsManager);
             if (xmlNodeList != null)
             {

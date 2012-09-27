@@ -172,17 +172,8 @@ namespace Medidata.RBT.PageObjects.Rave
 
 		public override IPage NavigateTo(string name)
 		{
-			NameValueCollection poClassMapping = new NameValueCollection();
-			poClassMapping["Architect"] = "ArchitectPage";
-			poClassMapping["User Administration"] = "UserAdministrationPage";
-            poClassMapping["DDE"] = "DDEPage";
-            poClassMapping["Reporter"] = "ReportsPage";
-			poClassMapping["Query Management"] = "DCFQueriesPage";
-			poClassMapping["PDF Generator"] = "FileRequestPage";
-            poClassMapping["Lab Administration"] = "AnalytesPage";
-            poClassMapping["Unit Conversions"] = "UnitConversionsPage";
-            poClassMapping["Architect Library Page"] = "ArchitectLibraryPage";
-			
+		
+
 
 			//TODO: other mappings
 
@@ -193,9 +184,25 @@ namespace Medidata.RBT.PageObjects.Rave
 				return base.NavigateTo(name);
 
 			link.Click();
-			string className = poClassMapping[name];
+			string className = GetClassMapping(name);
 			return TestContext.POFactory.GetPage(className);
 		}
+
+        //private string GetClassMapping(string name)
+        //{
+        //    NameValueCollection poClassMapping = new NameValueCollection();
+        //    poClassMapping["Architect"] = "ArchitectPage";
+        //    poClassMapping["User Administration"] = "UserAdministrationPage";
+        //    poClassMapping["DDE"] = "DDEPage";
+        //    poClassMapping["Reporter"] = "ReportsPage";
+        //    poClassMapping["Query Management"] = "DCFQueriesPage";
+        //    poClassMapping["PDF Generator"] = "FileRequestPage";
+        //    poClassMapping["Lab Administration"] = "AnalytesPage";
+        //    poClassMapping["Unit Conversions"] = "UnitConversionsPage";
+        //    poClassMapping["Architect Library Page"] = "ArchitectLibraryPage";
+
+        //    return poClassMapping[name];
+        //}
 
         public override string URL { get { return "homepage.aspx"; } }
 

@@ -18,7 +18,7 @@ namespace Medidata.RBT
         /// Unzips the file
         /// </summary>
         /// <param name="fileLoc">full path to the file to be unzipped</param>
-        /// <returns>full path to the unzipped file</returns>
+        ///   <returns>full path to the unzipped file</returns>
         public static string UnZipFile(string fileLoc)
         {
             if (!File.Exists(fileLoc)) throw new Exception(String.Format("File: {0} doesn't exist", fileLoc));

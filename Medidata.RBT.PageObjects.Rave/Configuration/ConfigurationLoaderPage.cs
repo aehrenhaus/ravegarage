@@ -32,6 +32,16 @@ namespace Medidata.RBT.PageObjects.Rave.Configuration
             WaitForUploadToComplete();
         }
 
+
+        public override IPage ChooseFromCheckboxes(string identifier, bool isChecked, string areaIdentifier = null, string listItem = null)
+        {
+            if (identifier == "Template Only")
+                return base.ChooseFromCheckboxes("_ctl0_Content_GetTemplate", true, areaIdentifier, listItem);
+            return base.ChooseFromCheckboxes(identifier, isChecked, areaIdentifier, listItem); ;
+        }
+
+        public override string URL { get { return "Modules/Configuration/ConfigurationLoader.aspx"; } }
+
         /// <summary>
         /// Wait for the configuration to finish uploading
         /// </summary>
@@ -39,18 +49,16 @@ namespace Medidata.RBT.PageObjects.Rave.Configuration
         {
             int waitTime = 120;
             this.WaitForElement(b =>
-                {
-                    IWebElement currentStatus = Browser.FindElementByXPath("//span[@id = '_ctl0_Content_CurrentStatus']");
-                    if (currentStatus.Text.Contains("Save successful"))
-                        return currentStatus;
-                    else
-                        return null;
-                }
+            {
+                IWebElement currentStatus = Browser.FindElementByXPath("//span[@id = '_ctl0_Content_CurrentStatus']");
+                if (currentStatus.Text.Contains("Save successful"))
+                    return currentStatus;
+                else
+                    return null;
+            }
                 ,
                 "Did not complete in time(" + waitTime + "s)", waitTime
                 );
         }
-
-        public override string URL { get { return "Modules/Configuration/ConfigurationLoader.aspx"; } }
     }
 }

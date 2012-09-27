@@ -100,5 +100,41 @@ namespace Medidata.RBT.PageObjects.Rave
                     throw new Exception("Not supported control type:" + controlType);
             }
         }
+
+        public virtual string GetClassMapping(string name)
+        {
+            //NameValueCollection poClassMapping = new NameValueCollection();
+            //poClassMapping["Architect"] = "ArchitectPage";
+            //poClassMapping["User Administration"] = "UserAdministrationPage";
+            //poClassMapping["DDE"] = "DDEPage";
+            //poClassMapping["Reporter"] = "ReportsPage";
+            //poClassMapping["Query Management"] = "DCFQueriesPage";
+            //poClassMapping["PDF Generator"] = "FileRequestPage";
+            //poClassMapping["Lab Administration"] = "AnalytesPage";
+            //poClassMapping["Unit Conversions"] = "UnitConversionsPage";
+            //poClassMapping["Architect Library Page"] = "ArchitectLibraryPage";
+
+            string className;
+            switch (name)
+            {
+                case "Query Management":
+                    className = "DCFQueriesPage";
+                    break;
+                case "PDF Generator":
+                    className = "FileRequestPage";
+                    break;
+                case "Lab Administration":
+                    className = "AnalytesPage";
+                    break;
+                case "Reporter":
+                    className = "ReportsPage";
+                    break;
+                default:
+                    className = name.Replace(" ", "") + "Page";
+                    break;
+            }
+            return className;
+
+        }
 	}
 }

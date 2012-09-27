@@ -13,8 +13,22 @@ namespace Medidata.RBT
 	/// Since it is decided to use Microsoft enterprise libary to operate the database,
 	/// this class only does something that can not be done easily through enterprise library
 	/// </summary>
-	public class DbHelper
-	{
+    public static class DbHelper
+    {
+        private static SqlConnection _sqlConnection;
+        private static string _sqlConnString = System.Configuration.ConfigurationManager.ConnectionStrings[RBTConfiguration.Default.DatabaseConnection].ConnectionString;
+
+
+        public static SqlConnection SqlConn
+        {
+            get
+            {
+                if (_sqlConnection == null)
+                    _sqlConnection = new SqlConnection(_sqlConnString);
+                return _sqlConnection;
+            }
+        }
+
 		public static void CreateSnapshot(string snapshotName=null)
 		{
 			if (snapshotName == null)
@@ -78,15 +92,63 @@ alter database {0} set multi_user with rollback immediate",
 
 		}
 
-		public static DataSet ExecuteDataSet(string sql, object[] args = null)
-		{
-			SqlCommand cmd = new SqlCommand(sql, new SqlConnection(RBTConfiguration.Default.DatabaseConnection));
-			if(args!=null)
-				cmd.Parameters.AddRange(args);
-			IDataAdapter adp = new SqlDataAdapter(cmd );
-			DataSet ds = new DataSet();
-			adp.Fill(ds);
-			return ds;
-		}
+        public static DataSet ExecuteDataSet(string sql, object[] args = null)
+        {
+            SqlCommand cmd = new SqlCommand(sql, SqlConn);
+            if (args != null)
+                cmd.Parameters.AddRange(args);
+            IDataAdapter adp = new SqlDataAdapter(cmd);
+            DataSet ds = new DataSet();
+            adp.Fill(ds);
+            return ds;
+        }
+
+        public static bool ExecuteStoredProcedureRetBool(string spName, object[] args = null)
+        {
+            object obj = ExecuteScalarStoredProcedure(spName, args);
+            string objString;
+            switch (obj.ToString())
+            {
+                case "1": objString = "True";
+                    break;
+                case "0": objString = "False";
+                    break;
+                default: objString = obj.ToString();
+                    break;
+            }
+
+            bool returnResult;
+            bool result = bool.TryParse(objString, out returnResult);
+            return returnResult;
+        }
+
+        public static object ExecuteScalarStoredProcedure(string spName, object[] args = null)
+        {
+            //using (SqlConn)
+            //{
+            //    SqlConn.Open();
+            //    SqlCommand comm = new SqlCommand(spName, SqlConn);
+            //    comm.CommandType = CommandType.StoredProcedure;
+            //    object returnObject = comm.ExecuteScalar();
+            //    SqlConn.Close();
+            //    return returnObject;
+
+            //}
+            return ExecuteScalar(spName, CommandType.StoredProcedure, args);
+        }
+
+        private static object ExecuteScalar(string sqlString, CommandType commandType, object[] args = null)
+        {
+            using (SqlConn)
+            {
+                SqlConn.Open();
+                SqlCommand comm = new SqlCommand(sqlString, SqlConn);
+                comm.CommandType = commandType;
+                object returnObject = comm.ExecuteScalar();
+                SqlConn.Close();
+                return returnObject;
+            }
+        }
+
 	}
 }

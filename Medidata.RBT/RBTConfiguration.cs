@@ -13,8 +13,7 @@ namespace Medidata.RBT
 
         static RBTConfiguration()
         {
-            Default = (RBTConfiguration)System.Configuration.ConfigurationManager.GetSection(
-            "RBTConfiguration");
+            Default = (RBTConfiguration)System.Configuration.ConfigurationManager.GetSection("RBTConfiguration");
         }
 
         [ConfigurationProperty("DatabaseConnection", DefaultValue = "", IsRequired = true)]
@@ -99,6 +98,7 @@ namespace Medidata.RBT
             set { this["FirefoxProfilePath"] = value; }
         }
 
+ 
         public String DownloadPath
         {
             get
@@ -106,6 +106,7 @@ namespace Medidata.RBT
                 return (new DirectoryInfo(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"..\..\..\Downloads"))).FullName;
             }
         }
+
 
         public String UploadPath
         {
