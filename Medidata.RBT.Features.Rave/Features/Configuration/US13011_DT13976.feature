@@ -29,7 +29,7 @@ Feature: US13011_DT13976
 @release_564_2012.1.0
 @PB_US11101_01
 @Draft
-Scenario: @FIRST TEST PB_US11101_01 As a Data Manager, when I am on the Configuration Loader page, and I select Get File, and the Core Configuration specification is downloaded, and I open it, then I see Coder Configuration details.
+Scenario: @PB_US11101_01 As a Data Manager, when I am on the Configuration Loader page, and I select Get File, and the Core Configuration specification is downloaded, and I open it, then I see Coder Configuration details.
 	
 	Given I navigate to "Configuration"
 	And I navigate to "Other Settings"
@@ -112,7 +112,7 @@ Scenario: @FIRST TEST PB_US11101_01 As a Data Manager, when I am on the Configur
 @release_564_2012.1.0
 @PB_US11101_02
 @Draft
-Scenario:SECOND @PB_US11101_02  As a Data Manager, when I am on the Configuration Loader page, and I select Template Only, and I select Get File, and the Core Configuration specification is downloaded, and I open it, then I see Coder Configuration details.
+Scenario:@PB_US11101_02  As a Data Manager, when I am on the Configuration Loader page, and I select Template Only, and I select Get File, and the Core Configuration specification is downloaded, and I open it, then I see Coder Configuration details.
 	
 	And I navigate to "Configuration"
 	And I navigate to "Other Settings"
