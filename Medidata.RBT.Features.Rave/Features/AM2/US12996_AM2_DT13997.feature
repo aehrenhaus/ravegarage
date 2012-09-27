@@ -11,6 +11,7 @@ Given xml draft "DT13997 Upload First AM SJ_1.6.3.xml" is Uploaded
 Given xml draft "DT13997 Upload Second AM SJ_1.6.5.xml" is Uploaded
 Given xml draft "DT13997 Upload Third AM SJ_1.6.7.xml" is Uploaded
 Given xml draft "DT13997 Upload Fourth AM SJ_1.6.9.xml" is Uploaded
+Given xml draft "DT13997 Upload Fifth AM SJ_1.6.11.xml" is Uploaded
 Given study "AM SJ" is assigned to Site "Site_001"
 Given following Project assignments exist
 | User         | Project | Environment | Role         | Site     | SecurityRole          |
@@ -271,4 +272,44 @@ Then "Field A" has "<Values>" in order
 	| Genitouriary/Reproductive |
 	| Renal                     |
 	| Endocrine/Metabolic       |
+And I take a screenshot
+
+@release_2012.1.0
+@DT13997_60
+@WIP
+Scenario:  When a user navigates to Architect, removes one default value of the coded values of a data dictionary, creates a new CRF version, creates a migration plan with the new CRF version as the Target CRF version, in object mapping maps the data dictionary, and migrates the subject, then user navigate to EDC and sees that the defaulted values for the subject are present and the removed one is disabled.
+
+Given I login to Rave with user "SUPER USER 2"
+Given I create a Subject
+	| Field                        | Data              |
+	| Subject Number (3 digits)    | {RndNum<num1>(3)} |
+	| Subject Initials             | SUB               |
+	| Derivation Migration Testing | {RndNum<num1>(3)} |
+And I submit the form "Form A"
+And I take a screenshot
+And I publish and push eCRF "DT13997 Upload Fifth AM SJ_1.6.11.xml" to "Version 5"
+And I go to Amendment Manager for study "AM SJ"
+And I select Source CRF version "Version 1"
+And I select Target CRF version "Version 5"
+And I create migration plan
+And I take a screenshot
+And I execute plan for subject "{Var(num1)}"
+And I select link "Migration Results"
+And I take a screenshot
+And I verify Job Status is set to Complete
+And I navigate to "Home"
+And I select a Subject "{Var(num1)}"
+When I select form "Form A"
+Then "Field A" has "<Values>" in order
+	| Values                    |
+	| Special Senses            |
+	| Cardiovascular            |
+	| Respiratory               |
+	| Gastrointestinal          |
+	| Hepatic/Bilary            |
+	| Abdomen and Viscera       |
+	| Genitouriary/Reproductive |
+	| Renal                     |
+	| Endocrine/Metabolic       |
+And Log Line that contains "Gastrointestinal" is disabled
 And I take a screenshot
