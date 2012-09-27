@@ -244,6 +244,7 @@
     <Compile Include="Steps\MonitorSiteSubjectPageSteps.cs" />
     <Compile Include="Steps\LabAdministrationSteps.cs" />
     <Compile Include="Steps\Seeding\ConfigurationSteps.cs" />
+    <Compile Include="Steps\Seeding\ReportAssignmentSteps.cs" />
     <Compile Include="Steps\Seeding\SiteSteps.cs" />
     <Compile Include="Steps\SubjectPageSteps.cs" />
     <Compile Include="Steps\TsdvSteps.cs" />

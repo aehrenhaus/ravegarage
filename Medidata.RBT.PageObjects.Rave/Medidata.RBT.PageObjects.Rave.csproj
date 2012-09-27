@@ -114,7 +114,10 @@
     <Compile Include="PDF\FileRequestPage.cs" />
     <Compile Include="DCF\DCFQueriesPage.cs" />
     <Compile Include="PDF\PDFFilesControl.cs" />
+    <Compile Include="Reports\ReportAdministrationPage.cs" />
+    <Compile Include="Reports\ReportAssignmentPage.cs" />
     <Compile Include="SharedRaveObjects\ModuleAssignment.cs" />
+    <Compile Include="SharedRaveObjects\ReportAssignment.cs" />
     <Compile Include="SharedRaveObjects\StudyAssignment.cs" />
     <Compile Include="SharedRaveObjects\SecurityRole.cs" />
     <Compile Include="SharedRaveObjects\Draft.cs" />
@@ -144,6 +147,7 @@
     <Compile Include="TableModels\QueryCancelModel.cs" />
     <Compile Include="TableModels\FieldModel.cs" />
     <Compile Include="TableModels\QuerySearchModel.cs" />
+    <Compile Include="TableModels\ReportAssignmentModel.cs" />
     <Compile Include="TableModels\UnitConversionModel.cs" />
     <Compile Include="TSDV\BlockPlansPageBase.cs" />
     <Compile Include="TSDV\CustomTierDraftPage.cs" />

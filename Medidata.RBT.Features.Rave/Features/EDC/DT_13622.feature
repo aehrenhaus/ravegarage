@@ -8,7 +8,7 @@ Feature: DT 13622 When an Edit Check sets Datapoint XYZ to require verification,
 	Then I should see an audit for the unverification
 
 Background:
-    #Given I am logged in to Rave with username "defuser" and password "password"
+    Given I am logged in to Rave with username "defuser" and password "password"
 	Given xml draft "DT13622 Mediflex.xml" is Uploaded with Environment name "Dev"
 	Given Site "MediflexDTSite" exists
 	Given study "Mediflex" is assigned to Site "MediflexDTSite" with study environment "Aux: Dev"
@@ -16,6 +16,9 @@ Background:
 	Given following Project assignments exist
 	| User | Project | Environment | Role | Site | SecurityRole |
 	| SUPER USER 1 | Mediflex | Aux: Dev | SUPER ROLE 1 | MediflexDTSite | Project Admin Default |
+	Given following Report assignments exist
+	| User | Report |
+	| SUPER USER 1 | Targeted SDV Configuration - Targeted SDV Configuration | 
 	#And I select Study "Mediflex" and Site "MediflexDTSite"
 	#And following Project assignments exist
 	#|User	|Project	|Environment	|Role |Site	  |Site Number	|
@@ -352,7 +355,7 @@ Scenario: As an EDC user, when I have TSDV turned off for a form, when I have an
 	And I select Report "Targeted SDV Configuration"
 	And I set report parameter "Study" with table
 		| Name                   | Environment |
-		| Mediflex20120710040626 | Dev         |
+		| Mediflex                | Dev         |
 	And I click button "Submit Report"
 	And I switch to "Targeted SDV Study Plan" window
 	And I create a new block plan named "Block Plan 1" with Data entry Role "CDM1B144V1"
@@ -368,7 +371,6 @@ Scenario: As an EDC user, when I have TSDV turned off for a form, when I have an
 	And I activate the plan
 	And I switch to "Reports" window
 	And I select link "Home"
-	And I select Study "Mediflex20120710040626 (Dev)" and Site "MediflexDTSite"
 	When I create a Subject
 	|Field			 |Data |
 	|Subject Number	 |107  |
@@ -409,6 +411,7 @@ Scenario: As an EDC user, when I have TSDV turned off for a form, when I have an
 	And I switch to "Targeted SDV Study Plan" window
 	And I delete the tier "Custom Tier 101" from plan
 	And I inactivate the plan
+	And I switch to "Audits" window
 
 @release_2012.1.0
 @PB-DT13622-08
@@ -419,7 +422,7 @@ Scenario: As an EDC user, when I have TSDV turned off for a form, and I have an 
 	And I select Report "Targeted SDV Configuration"
 	And I set report parameter "Study" with table
 		| Name                   | Environment |
-		| Mediflex20120710040626 | Dev         |
+		| Mediflex               | Dev         |
 	And I click button "Submit Report"
 	And I switch to "Targeted SDV Study Plan" window
 	And I create a new block plan named "Block Plan 1" with Data entry Role "CDM1B144V1"
@@ -435,7 +438,6 @@ Scenario: As an EDC user, when I have TSDV turned off for a form, and I have an 
 	And I activate the plan
 	And I switch to "Reports" window
 	And I select link "Home"
-	And I select Study "Mediflex20120710040626 (Dev)" and Site "MediflexDTSite"
 	When I create a Subject
 	|Field			 |Data |
 	|Subject Number	 |108  |
@@ -476,6 +478,7 @@ Scenario: As an EDC user, when I have TSDV turned off for a form, and I have an 
 	And I switch to "Targeted SDV Study Plan" window
 	And I delete the tier "Custom Tier 102" from plan
 	And I inactivate the plan
+	And I switch to "Audits" window
 
 @release_2012.1.0 
 @PB-DT13622-09 
@@ -486,7 +489,7 @@ Scenario: As an EDC user, when I have a No Forms TSDV tier and I have an edit ch
 	And I select Report "Targeted SDV Configuration"
 	And I set report parameter "Study" with table
 		| Name                   | Environment |
-		| Mediflex20120710040626 | Dev         |
+		| Mediflex               | Dev         |
 	And I click button "Submit Report"
 	And I switch to "Targeted SDV Study Plan" window
 	And I create a new block plan named "Block Plan 1" with Data entry Role "CDM1B144V1"
@@ -495,7 +498,6 @@ Scenario: As an EDC user, when I have a No Forms TSDV tier and I have an edit ch
 	And I activate the plan
 	And I switch to "Reports" window
 	And I select link "Home"
-	And I select Study "Mediflex20120710040626 (Dev1)" and Site "MediflexDTSite"
 	When I create a Subject 
 	|Field |Data | 
 	|Subject Number |109 | 
@@ -536,3 +538,4 @@ Scenario: As an EDC user, when I have a No Forms TSDV tier and I have an edit ch
 	And I switch to "Targeted SDV Study Plan" window
 	And I delete the tier "No Forms" from plan
 	And I inactivate the plan
+	And I switch to "Audits" window

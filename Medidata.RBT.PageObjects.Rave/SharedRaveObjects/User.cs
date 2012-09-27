@@ -26,6 +26,7 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
         public string UniquePin { get; set; }
         public List<StudyAssignment> StudyAssignments { get; set; }
         public List<ModuleAssignment> ModuleAssignments { get; set; }
+        public List<ReportAssignment> ReportAssignments { get; set; }
 
         /// <summary>
         /// The uploaded user constructor. This uploads users using the user uploader.
@@ -185,6 +186,19 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
                     return true;
                 }
             return false;
+        }
+
+        /// <summary>
+        /// Check if thre is a report assignment for this user
+        /// </summary>
+        /// <param name="reportName">name of the report</param>
+        /// <returns></returns>
+        public bool ReportAssignmentsExists(string reportName)
+        {
+            if (ReportAssignments != null && ReportAssignments.Exists(p => p.ReportName.Equals(reportName)))
+                return true;
+            else
+                return false;
         }
     }
 }
