@@ -37,9 +37,8 @@ namespace Medidata.RBT.PageObjects.Rave
             Textbox tierDescBox = Browser.TryFindElementById("TierDescription").EnhanceAs<Textbox>();
             tierDescBox.SetText(description);
 
-            var saveBtn = Browser.TryFindElementByPartialID("CustomTierSaveLabel");
-            saveBtn.Click();
-
+            this.ClickButton("_ctl0_Content_CustomTierSaveLabel");
+        
             var elems = Browser.FindElementsByPartialId("FormNameLabel");
 
             if (elems.Count > 0)
@@ -72,9 +71,19 @@ namespace Medidata.RBT.PageObjects.Rave
                 }
                 
                 this.ClickButton("SaveForms");
+                this.WaitForElement(b =>
+                {
+                    var pubBtn = Browser.TryFindElementById("PublishButton");
+                    if (pubBtn == null || !pubBtn.Enabled)
+                        return null;
+                    return pubBtn;
+                });
                 this.ClickButton("PublishButton");
                 //confirmation to publish the draft
+                this.WaitForElement(b => Browser.TryFindElementById("_ctl0_Content__ctl10_PublishDraft"));
+
                 this.ClickButton("_ctl0_Content__ctl10_PublishDraft");
+                this.WaitForElement(b => Browser.TryFindElementById("TiersDiv"));
             }
           
             return this;

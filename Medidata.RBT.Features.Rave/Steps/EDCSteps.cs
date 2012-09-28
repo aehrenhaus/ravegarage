@@ -157,6 +157,38 @@ namespace Medidata.RBT.Features.Rave
         }
 
         /// <summary>
+        /// A more generic implementation for EDC field verification
+        /// This step definition will let user verify all the field
+        /// steps from single method
+        /// </summary>
+        /// <param name="table"></param>
+        [StepDefinition(@"I verify data on Fields in CRF")]
+        public void IVerifyDataOnFieldsInCRF(Table table)
+        {
+            CRFPage page = CurrentPage.As<CRFPage>();
+
+            var fields = table.CreateSet<FieldModel>();
+
+            foreach (var field in fields)
+            {
+                IEDCFieldControl fieldControl = page.FindField(field.Field);
+                if (field.Data != null && field.Data.Length > 0)
+                {
+                    bool dataExists = fieldControl.HasDataEntered(field.Data);
+                    Assert.IsTrue(dataExists, "Data doesn't exist for field(s)");
+                }
+
+                if (field.RequiresVerification != null && field.RequiresVerification.Length > 0)
+                {
+                    bool verificationRequired = fieldControl.IsVerificationRequired();
+
+                    Assert.AreEqual(field.RequiresVerification, verificationRequired.ToString(), true, "Verification Required doesn't match on Fields in CRF");
+                }
+            }
+        }
+
+
+        /// <summary>
         /// No Clinical Significance for field displayed
         /// </summary>
         /// <param name="clinSignificance"></param> 
