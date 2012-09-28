@@ -9,7 +9,6 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
     {
 
         public string ReportName { get; set; }
-        public Guid UserID { get; set; }
 
 
         public ReportAssignment(string reportName)
