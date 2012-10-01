@@ -12,22 +12,21 @@ namespace Medidata.RBT.PageObjects.Rave
 	public class AuditsPage : RavePageBase
 	{
 		//TODO: support wild char or regex
-        //TODO: isLatest flag is not used anywhere, should be removed
-		public bool AuditExist(AuditModel audit, int? position = null, bool isLatest = false)
+		public bool AuditExist(AuditModel audit, int? position = null)
 		{
 			if (audit.AuditType == "Query Canceled")
 			{
-				return AuditExist_CancelQuery(audit.QueryMessage, position, isLatest);
+				return AuditExist_CancelQuery(audit.QueryMessage, position);
 			}
 
             else if (audit.AuditType == "Signature Succeeded")
             {
-                return AuditExist_SignatureSucceeded(position, isLatest);
+                return AuditExist_SignatureSucceeded(position);
             }
 
             else if (audit.AuditType == "Signature Broken")
             {
-                return AuditExist_SignatureBroken(position, isLatest);
+                return AuditExist_SignatureBroken(position);
             }
 
             else if (audit.AuditType == "User entered")
@@ -52,7 +51,7 @@ namespace Medidata.RBT.PageObjects.Rave
         /// <param name="position"></param>
         /// <param name="isLatest"></param>
         /// <returns></returns>
-		public bool AuditExist(string message, int? position = null, bool isLatest = false)
+		public bool AuditExist(string message, int? position = null)
 		{
 			IWebElement table = Browser.TryFindElementByPartialID("AuditsGrid");
 
@@ -75,24 +74,24 @@ namespace Medidata.RBT.PageObjects.Rave
 			
 		}
 
-		public bool AuditExist_OpenQuery(string query, int? position = null, bool isLatest = false)
+		public bool AuditExist_OpenQuery(string query, int? position = null)
 		{
-            return AuditExist(string.Format("User opened query '{0}'", query), position, isLatest);
+            return AuditExist(string.Format("User opened query '{0}'", query), position);
 		}
 
-		public bool AuditExist_CancelQuery(string query, int? position = null, bool isLatest = false)
+		public bool AuditExist_CancelQuery(string query, int? position = null)
 		{
-            return AuditExist(string.Format("Query '{0}' canceled", query), position, isLatest);
+            return AuditExist(string.Format("Query '{0}' canceled", query), position);
 		}
 
-        public bool AuditExist_SignatureSucceeded(int? position = null, bool isLatest = false)
+        public bool AuditExist_SignatureSucceeded(int? position = null)
         {
-            return AuditExist("User signature succeeded", position, isLatest);
+            return AuditExist("User signature succeeded", position);
         }
 
-        public bool AuditExist_SignatureBroken(int? position = null, bool isLatest = false)
+        public bool AuditExist_SignatureBroken(int? position = null)
         {
-            return AuditExist("Signature has been broken", position, isLatest);
+            return AuditExist("Signature has been broken", position);
         }
 
         public bool AuditExist_UserEntered(string userInput, int? position = null)
