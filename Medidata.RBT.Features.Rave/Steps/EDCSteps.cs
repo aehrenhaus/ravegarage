@@ -265,43 +265,6 @@ namespace Medidata.RBT.Features.Rave
                 .SelectFolder(folderName)
                 .SelectForm(formName);
         }
-
-        /// <summary>
-        /// Check the Checkbox on a field on CRF page
-        /// </summary>
-        /// <param name="checkboxName"></param>
-        /// <param name="fieldName"></param>
-        [StepDefinition(@"I check ""([^""]*)"" checkbox on Field ""([^""]*)""")]
-        public void ICheck____CheckboxOnField____(string checkboxName, string fieldName)
-        {
-            CurrentPage.As<CRFPage>()
-                .FindField(fieldName)
-                .Check(checkboxName);
-        }
-
-        /// <summary>
-        /// Uncheck the Checkbox on a field on CRF page
-        /// </summary>
-        /// <param name="checkboxName"></param>
-        /// <param name="fieldName"></param>
-        [StepDefinition(@"I uncheck ""([^""]*)"" checkbox on Field ""([^""]*)""")]
-        public void IUncheck____CheckboxOnField____(string checkboxName, string fieldName)
-        {
-            CurrentPage.As<CRFPage>()
-                .FindField(fieldName)
-                .Uncheck(checkboxName);
-        }
-
-        /// <summary>
-        /// Check the verify or freeze or hard lock checkbox 
-        /// at the form level on CRF page
-        /// </summary>
-        [StepDefinition(@"I check ""([^""]*)"" checkbox on CRF page")]
-        [StepDefinition(@"I Uncheck ""([^""]*)"" checkbox on CRF page")]
-        public void ICheck____CheckboxForDataInCRF(string checkboxName)
-        {
-            CurrentPage.As<CRFPage>().ClickCheckBoxOnForm(checkboxName);
-        }
  
 		/// <summary>
 		/// Click audit icon on a field on CRF page

@@ -63,7 +63,7 @@ Scenario: As an EDC user, when I have an edit check fired on one field that sets
 	| Field      | Data        | Requires Verification |
 	| Visit Date | 01 Feb 2011 | True                  |
 	| Age        | 17          | False                 |
-	And I check "Verify" checkbox on Field "Visit Date"
+	And I check "Verify" in "Visit Date"
 	And I save the CRF page
 	And I take a screenshot
 	And I enter data in CRF
@@ -111,7 +111,7 @@ Scenario: As an EDC user, when I have an edit check fired on one field that sets
 	| Field      | Data        | Requires Verification |
 	| Visit Date | 01 Feb 2011 | True                  |
 	| Age        | 17          | False                 |
-	And I check "Verify" checkbox on CRF page
+	And I check "Verify" in "Form level"
 	And I save the CRF page
 	And I take a screenshot
 	And I enter data in CRF
@@ -149,7 +149,7 @@ Scenario: As an EDC user, when I have an edit check that sets a field to require
 	And I verify data on Fields in CRF
 	| Field   | Data | Requires Verification |
 	| Field 1 | 19   | True                  |
-	And I check "Verify" checkbox on Field "Field 1"
+	And I check "Verify" in "Field 1"
 	And I save the CRF page
 	And I take a screenshot
 	And I enter data in CRF
@@ -186,7 +186,7 @@ Scenario: As an EDC user, when I have an edit check that sets a field to require
 	And I verify data on Fields in CRF
 	| Field   | Data | Requires Verification |
 	| Field 1 | 19   | True                  |         	
-	And I check "Verify" checkbox on CRF page
+	And I check "Verify" in "Form level"
 	And I save the CRF page
 	And I take a screenshot
 	And I enter data in CRF
@@ -226,7 +226,7 @@ Scenario: As an EDC user, when I have an edit check fired on a field that is der
 	| DOB        | 05 Mar 1995 | True                  |
 	| Visit Date | 10 Dec 2011 | False                 |
 	| Age        | 16          | False                 |
-	And I check "Verify" checkbox on Field "DOB"
+	And I check "Verify" in "DOB"
 	And I save the CRF page
 	And I take a screenshot
 	And I enter data in CRF
@@ -268,7 +268,7 @@ Scenario: As an EDC user, when I have an edit check fired on a field that is der
 	| DOB        | 05 Mar 1995 | True                  |
 	| Visit Date | 10 Dec 2011 | False                 |
 	| Age        | 16          | False                 |
-	And I check "Verify" checkbox on CRF page
+	And I check "Verify" in "Form level"
 	And I save the CRF page
 	And I take a screenshot
 	And I enter data in CRF
@@ -327,7 +327,7 @@ Scenario: As an EDC user, when I have TSDV turned off for a form, when I have an
 	And I verify data on Fields in CRF
 	| Field   | Data | Requires Verification |
 	| Field 2 | 19   | True                  |
-	And I check "Verify" checkbox on Field "Field 2"
+	And I check "Verify" in "Field 2"
 	And I save the CRF page
 	And I take a screenshot
 	And I enter data in CRF
@@ -388,7 +388,7 @@ Scenario: As an EDC user, when I have TSDV turned off for a form, and I have an 
 	And I verify data on Fields in CRF
 	| Field   | Data | Requires Verification |
 	| Field 2 | 19   | True                  |
-	And I check "Verify" checkbox on CRF page
+	And I check "Verify" in "Form level"
 	And I save the CRF page
 	And I take a screenshot
 	And I enter data in CRF
@@ -442,7 +442,7 @@ Scenario: As an EDC user, when I have a No Forms TSDV tier and I have an edit ch
 	And I verify data on Fields in CRF 
 	| Field   | Data | Requires Verification |
 	| Field 2 | 19   | True                  |
-	And I check "Verify" checkbox on Field "Field 2" 
+	And I check "Verify" in "Field 2" 
 	And I save the CRF page 
 	And I take a screenshot 
 	And I enter data in CRF 
