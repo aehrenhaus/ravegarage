@@ -10,18 +10,18 @@ Feature: US13011_DT13976
 
  Background:
 	Given I am logged in to Rave with username "defuser" and password "password"
-	And the URL has Coder installed
-	And the following Project assignments exist
-		| User    | Project    | Environment | Role         | Site         | Site Number | User Group    |
-		| defuser | Jennicilin | Prod        | Data Manager | ABC Hospital | 12333       | Administrator |
-	And the following Marking Groups exist
-		| Review Marking Groups     |
-		| Site from System          |
-		| Site from CRA             |
-		| Site from DM              |
-		| Monitor from Lead Monitor |
-		| Monitor from Sponsor      |
-		| CRA from DM               |
+	#And the URL has Coder installed
+	#And the following Project assignments exist
+	#	| User    | Project    | Environment | Role         | Site         | Site Number | User Group    |
+	#	| defuser | Jennicilin | Prod        | Data Manager | ABC Hospital | 12333       | Administrator |
+	#And the following Marking Groups exist
+	#	| Review Marking Groups     |
+	#	| Site from System          |
+	#	| Site from CRA             |
+	#	| Site from DM              |
+	#	| Monitor from Lead Monitor |
+	#	| Monitor from Sponsor      |
+	#	| CRA from DM               |
 
 #Note: This feature file assumes that they are only 10 Marking Groups set in Rave.
 
@@ -31,68 +31,66 @@ Feature: US13011_DT13976
 @Draft
 Scenario: @PB_US11101_01 As a Data Manager, when I am on the Configuration Loader page, and I select Get File, and the Core Configuration specification is downloaded, and I open it, then I see Coder Configuration details.
 	
-	And I navigate to "Configuration"
+	Given I navigate to "Configuration"
 	And I navigate to "Other Settings"
-	And I select link "Coder Configuration"
-	And I enter data
+	And I navigate to "Coder Configuration"
+	And I enter data in "Coder Configuration" and save
 		| Review Marking Group | Requires Response | Requires Manual Close |
-		| Site from System     | TRUE              | TRUE                  |
+		| site from system     | True              | True                  |
 	And I select link "Configuration Loader"
 	And I click button "Get File"
-#New Step Def for the steps commented out
-	#And the Core Configuration specification is downloaded
+	And the "Core Configuration Specification" spreadsheet is downloaded
 	#And I open the Core Configuration specification
-	#Then I see Coder Configuration tab
-	#Then I see data
-	#	| Version | Coder Manual Queries  | Setting          | Instructions/Comments |
-	#	|         | Review Marking Group  | Site from System |                       |
-	#	|         | Requires Response     | TRUE             |                       |
-	#	|         | Requires Manual Close | TRUE             |                       |
-	And I take a screenshot
-	#And I click the drop-down arrow for field "Site from Sytem"
-	#Then I see data
+	Then I verify "Coder Configuration" tab exists in the spreadsheet
+	And I verify "Coder Configuration" spreadsheet data
+		| Version | Coder Manual Queries | Setting          | Instructions Comments                                                                                                                                                                 |
+		|         | Review Marking Group | site from system | Marking Groups enable queries to be opened by Coder and directed to specific roles.  These roles will be able to take action against the query as long as the role action permits it. |
+		|         | Requires Response     | True             | A response by the user role the query has been opened against is needed.  True = a response is required.  False = No response is required and query text will just be displayed.     |
+		|         | Requires Manual Close | True             |  The user role the query has been opened against will be able to close the query.  True = Query can be closed manually.  False = Query cannot be closed manually.               |
+	#And I take a screenshot
+	#And I verify options for cell "site from sytem"
 	#	| Setting                   |
-	#	| Site from System          |
-	#	| Site from CRA             |
-	#	| Site from DM              |
+	#	| site from system          |
 	#	| Monitor from Lead Monitor |
-	#	| Monitor from Sponsor      |
-	#	| CRA from DM               |
-	#And the cursor focus is located on "Site from System"
-	And I take a screenshot
+	#	| Monitoring Group      |
+		#| CRA from DM               |
+		#| Site from CRA             |
+		#| Site from DM              |
+	#And the cursor focus is located on "Site from System" -- this is a redundant step, we already verified the values
+	#And I take a screenshot
 	#And I click the drop-down arrow for field "TRUE" for "Requires Response"
 	#Then I see data
 	#	| Setting |
 	#	| TRUE    |
 	#	| FALSE   |
 	#And the cursor focus is located on "TRUE"
-	And I take a screenshot
+	#And I take a screenshot
 	#And I click the drop-down arrow for field "TRUE" for "Requires Manual Close"
 	#Then I see data
 	#	| Setting |
 	#	| TRUE    |
 	#	| FALSE   |
 	#And the cursor focus is located on "TRUE"
-	And I take a screenshot
+	#And I take a screenshot
 	#And I close workhseet
 	And I navigate to "Configuration"
-	And I select link "Other Settings"
-	And I select link "Coder Configuration"
-	#And I enter data
-	#	| Review Marking Group | Requires Response | Requires Manual Close |
-	#	| Monitor from Sponsor | False             | False                 |
-	And I select link "Other Settings"
-	And I select link "Configuration Loader"
+	And I navigate to "Other Settings"
+	And I navigate to "Coder Configuration"
+	And I enter data in "Coder Configuration" and save
+		| Review Marking Group | Requires Response | Requires Manual Close |
+		| Monitor from Lead Monitor | False             | False                 |
+	And I navigate to "Other Settings"
+	And I navigate to "Configuration Loader"
 	And I click button "Get File"
-	#When the Core Configuration specification is downloaded
+	And the "Core Configuration Specification" spreadsheet is downloaded
 	#And I open the Core Configuration specification
-	#Then I see Coder Configuration tab
-	#And I see data
-	#	| Version | Coder Manual Queries  | Setting              | Instructions/Comments |
-	#	|         | Review Marking Group  | Monitor from Sponsor |                       |
-	#	|         | Requires Response     | FALSE                |                       |
-	#	|         | Requires Manual Close | FALSE                |                       |
-	And I take a screenshot
+	Then I verify "Coder Configuration" tab exists in the spreadsheet
+	And I verify "Coder Configuration" spreadsheet data
+		| Version | Coder Manual Queries | Setting          | Instructions Comments                                                                                                                                                                 |
+		|         | Review Marking Group | Monitor from Lead Monitor | Marking Groups enable queries to be opened by Coder and directed to specific roles.  These roles will be able to take action against the query as long as the role action permits it. |
+		|         | Requires Response     | False             | A response by the user role the query has been opened against is needed.  True = a response is required.  False = No response is required and query text will just be displayed.     |
+		|         | Requires Manual Close | False             |  The user role the query has been opened against will be able to close the query.  True = Query can be closed manually.  False = Query cannot be closed manually.               |
+	#And I take a screenshot
 	#And I click the drop-down arrow for field "Site from Sytem"
 	#And the cursor focus is located on "Monitor from Sponsor"
 	#And I click the drop-down arrow for field "FALSE" for "Requires Response"
@@ -101,67 +99,67 @@ Scenario: @PB_US11101_01 As a Data Manager, when I am on the Configuration Loade
 	#	| TRUE    |
 	#	| FALSE   |
 	#And the cursor focus is located on "FALSE"
-	And I take a screenshot
+	#And I take a screenshot
 	#And I click the drop-down arrow for field "FALSE" for "Requires Manual Close"
 	#Then I see data
 	#	| Setting |
 	#	| TRUE    |
 	#	| FALSE   |
 	#And the cursor focus is located on "FALSE"
-	And I take a screenshot
+	#And I take a screenshot
 
 #----------------------------------------------------------------------------------------------------------------------------------------
 @release_564_2012.1.0
 @PB_US11101_02
 @Draft
-Scenario: @PB_US11101_02 As a Data Manager, when I am on the Configuration Loader page, and I select Template Only, and I select Get File, and the Core Configuration specification is downloaded, and I open it, then I see Coder Configuration details.
+Scenario:@PB_US11101_02  As a Data Manager, when I am on the Configuration Loader page, and I select Template Only, and I select Get File, and the Core Configuration specification is downloaded, and I open it, then I see Coder Configuration details.
 	
 	And I navigate to "Configuration"
 	And I navigate to "Other Settings"
-	And I select link "Configuration Loader"
-	And I select "Template Only"
+	And I navigate to "Configuration Loader"
+	#And I select "Template Only"
 	And I check "Template Only"
 	And I take a screenshot
 	And I click button "Get File"
-	#And the Core Configuration specification is downloaded
+	And the "Core Configuration Specification Template" spreadsheet is downloaded
 	#And I open the Core Configuration specification
-	#And I see Coder Configuration tab
+	And I verify "Coder Configuration" tab exists in the spreadsheet
+		And I verify "Coder Configuration" spreadsheet data
+		| Version | Coder Manual Queries | Setting          | Instructions Comments                                                                                                                                                                 |
+		|         | Review Marking Group | [None] | Marking Groups enable queries to be opened by Coder and directed to specific roles.  These roles will be able to take action against the query as long as the role action permits it. |
+		|         | Requires Response     |              | A response by the user role the query has been opened against is needed.  True = a response is required.  False = No response is required and query text will just be displayed.     |
+		|         | Requires Manual Close |              |  The user role the query has been opened against will be able to close the query.  True = Query can be closed manually.  False = Query cannot be closed manually.               |
+	#And I take a screenshot
+	#And I click the drop-down arrow for field "[None]" in the Setting column for Coder Manual Queries "Review Marking Group"
 	#Then I see data
-	#	| Version | Coder Manual Queries  | Setting | Instructions/Comments |
-	#	|         | Review Marking Group  | [None]  |                       |
-	#	|         | Requires Response     | FALSE   |                       |
-	#	|         | Requires Manual Close | FALSE   |                       |
-	And I take a screenshot
-	And I click the drop-down arrow for field "[None]" in the Setting column for Coder Manual Queries "Review Marking Group"
-	Then I see data
-		| Setting          |
-		| [None]           |
-		| Marking Group 1  |
-		| Marking Group 2  |
-		| Marking Group 3  |
-		| Marking Group 4  |
-		| Marking Group 5  |
-		| Marking Group 6  |
-		| Marking Group 7  |
-		| Marking Group 8  |
-		| Marking Group 9  |
-		| Marking Group 10 |
-	And the cursor focus is located on "[None]" for "Review Marking Group"
-	And I take a screenshot
-	And I click the drop-down arrow for field "FALSE" for "Requires Response"
-	Then I see data
-		| Setting |
-		| TRUE    |
-		| FALSE   |
-	And the cursor focus is located on "FALSE" for "Requires Response"
-	And I take a screenshot
-	And I click the drop-down arrow for field "FALSE" for "Requires Manual Close"
-	Then I see data
-		| Setting |
-		| TRUE    |
-		| FALSE   |
-	And the cursor focus is located on "FALSE" for "Requires Manual Close"
-	And I take a screenshot
+	#	| Setting          |
+	#	| [None]           |
+	#	| Marking Group 1  |
+	#	| Marking Group 2  |
+	#	| Marking Group 3  |
+	#	| Marking Group 4  |
+	#	| Marking Group 5  |
+	#	| Marking Group 6  |
+	#	| Marking Group 7  |
+	#	| Marking Group 8  |
+	#	| Marking Group 9  |
+	#	| Marking Group 10 |
+	#And the cursor focus is located on "[None]" for "Review Marking Group"
+	#And I take a screenshot
+	#And I click the drop-down arrow for field "FALSE" for "Requires Response"
+	#Then I see data
+#		| Setting |
+#		| TRUE    |
+#		| FALSE   |
+#	And the cursor focus is located on "FALSE" for "Requires Response"
+#	And I take a screenshot
+#	And I click the drop-down arrow for field "FALSE" for "Requires Manual Close"
+#	Then I see data
+#		| Setting |
+#		| TRUE    |
+#		| FALSE   |
+#	And the cursor focus is located on "FALSE" for "Requires Manual Close"
+#	And I take a screenshot
 
 #----------------------------------------------------------------------------------------------------------------------------------------
 @release_564_2012.1.0

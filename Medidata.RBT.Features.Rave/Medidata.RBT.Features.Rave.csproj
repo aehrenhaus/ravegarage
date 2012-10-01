@@ -90,6 +90,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>US13011_DT13976.feature</DependentUpon>
     </Compile>
+    <Compile Include="Features\Configuration\US13011_DT13976_AddCoderToConfigurationLoaderSpec.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>US13011_DT13976_AddCoderToConfigurationLoaderSpec.feature</DependentUpon>
+    </Compile>
     <Compile Include="Features\EDC\US17743_DT12513.feature.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -221,8 +226,10 @@
       <DesignTime>True</DesignTime>
     </Compile>
     <Compile Include="ReferenceFix.cs" />
+    <Compile Include="Steps\ConfigurationSteps.cs" />
     <Compile Include="Steps\EDCSteps_DB.cs" />
     <Compile Include="Steps\AmendmentManagerSteps.cs" />
+    <Compile Include="Steps\IExcelFileHandler.cs" />
     <Compile Include="Steps\MonitorSiteSubjectPageSteps.cs" />
     <Compile Include="Steps\LabUnitConversionSteps.cs" />
     <Compile Include="Steps\Seeding\ConfigurationSteps.cs" />
@@ -282,6 +289,10 @@
     <None Include="Features\Configuration\US13011_DT13976.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>US13011_DT13976.feature.cs</LastGenOutput>
+    </None>
+    <None Include="Features\Configuration\US13011_DT13976_AddCoderToConfigurationLoaderSpec.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>US13011_DT13976_AddCoderToConfigurationLoaderSpec.feature.cs</LastGenOutput>
     </None>
     <None Include="Features\EDC\US17743_DT12513.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>

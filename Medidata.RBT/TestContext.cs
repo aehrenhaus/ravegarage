@@ -25,6 +25,9 @@ namespace Medidata.RBT
         public static string UploadPath { get; set; }
 		public static RemoteWebDriver Browser { get; set; }
 
+        public static string SpreadsheetName { get; set; }
+        public static ExcelFileHelper ExcelFile { get; set; }
+
 		#region switch browser window
 
 		public static void SwitchBrowserWindow(string windowName)
@@ -249,7 +252,7 @@ namespace Medidata.RBT
 		[BeforeTestRun]
 		public static void BeforeTestRun()
 		{
-			OpenBrower();
+            OpenBrower();
             DeleteAllDownloadFiles();
             DeleteAllDownloadDirectories();
             DeleteFilesInTemporaryUploadDirectories();

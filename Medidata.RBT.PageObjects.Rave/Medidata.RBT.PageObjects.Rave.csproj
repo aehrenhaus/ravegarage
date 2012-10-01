@@ -70,8 +70,14 @@
     <Compile Include="Architect\ArchitectRestrictionsPage.cs" />
     <Compile Include="Architect\UploadDraftPage.cs" />
     <Compile Include="Architect\PublishChecksHomePage.cs" />
+    <Compile Include="Configuration\CoderConfigurationPage.cs" />
+    <Compile Include="Configuration\ConfigurationBasePage.cs" />
     <Compile Include="Configuration\ConfigurationCreationModel.cs" />
     <Compile Include="Configuration\ConfigurationLoaderPage.cs" />
+    <Compile Include="Configuration\ConfigurationPage.cs" />
+    <Compile Include="Configuration\ConfigurationSettingsPage.cs" />
+    <Compile Include="Configuration\Models\CoderConfigurationModel.cs" />
+    <Compile Include="Configuration\Models\ExcelConfigurationModel.cs" />
     <Compile Include="ControlTypeInformation.cs" />
     <Compile Include="EDC\BaseEDCFieldControl.cs" />
     <Compile Include="EDC\BaseEDCTreePage.cs" />
