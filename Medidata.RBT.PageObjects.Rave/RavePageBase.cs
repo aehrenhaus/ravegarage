@@ -129,6 +129,9 @@ namespace Medidata.RBT.PageObjects.Rave
                 case "Reporter":
                     className = "ReportsPage";
                     break;
+                case "Report Administration":
+                    className = "ReportAdministrationPage";
+                    break;
                 default:
                     className = name.Replace(" ", "") + "Page";
                     break;
