@@ -55,13 +55,18 @@ namespace Medidata.RBT.PageObjects.Rave
 
 		public override IPage ChooseFromCheckboxes(string identifier, bool isChecked, string areaIdentifier = null, string listItem = null)
 		{
-			var field = this.FindField(areaIdentifier);
-			if (isChecked)
-			{
-				field.Check(identifier);
-			}
-			else
-				field.Uncheck(identifier);
+            if (areaIdentifier.ToLower().Equals("form level"))
+                ClickCheckBoxOnForm(identifier);
+            else
+            {
+                var field = this.FindField(areaIdentifier);
+                if (isChecked)
+                {
+                    field.Check(identifier);
+                }
+                else
+                    field.Uncheck(identifier);
+            }
 
 			return this;
 		}

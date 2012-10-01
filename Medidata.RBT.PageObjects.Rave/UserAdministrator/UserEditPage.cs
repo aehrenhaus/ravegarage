@@ -69,7 +69,7 @@ namespace Medidata.RBT.PageObjects.Rave
             ChooseFromDropdown("_ctl0_Content_UserSiteWizard1_AuxStudiesDDL", environment);
             ClickLink("Assign User");
 
-            AssignUserToSite(project.UniqueName, role.UniqueName, site.UniqueName, site.Number);
+            AssignUserToSite(project.UniqueName, role.UniqueName, site.UniqueName, site.Number, environment.Replace("Live: ", "").Replace("Aux: ", ""));
 
             if (user.StudyAssignments == null)
                 user.StudyAssignments = new List<StudyAssignment>();
@@ -99,14 +99,14 @@ namespace Medidata.RBT.PageObjects.Rave
         /// <param name="roleName">The role to assign the user to</param>
         /// <param name="siteName">The site name to assign the user to</param>
         /// <param name="siteNumber">The site number to assign the user to</param>
-        public void AssignUserToSite(string studyName, string roleName, string siteName, string siteNumber)
+        public void AssignUserToSite(string studyName, string roleName, string siteName, string siteNumber, string envName)
         {
             int foundOnPage;
             IWebElement studyRoleRow = this.FindInPaginatedList("", () =>
             {
                 IWebElement resultTable = Browser.TryFindElementBy(By.Id("_ctl0_Content_UserSiteWizard1_UserGrid"));
                 IWebElement row = resultTable.TryFindElementBy(By.XPath("tbody/tr[position()>1]/td[position() = 1 and text() = '"
-                    + studyName + ": Prod']/../td[position()=2 and text()='" + roleName + "']/.."));
+                    + studyName + ": " + envName + "']/../td[position()=2 and text()='" + roleName + "']/.."));
                 return row;
             }, out foundOnPage);
 

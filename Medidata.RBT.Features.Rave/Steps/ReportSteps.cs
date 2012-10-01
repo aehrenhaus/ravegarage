@@ -1,6 +1,8 @@
 ﻿using TechTalk.SpecFlow;
 using Medidata.RBT.PageObjects.Rave;
 using TechTalk.SpecFlow.Assist;
+using System.Collections.Generic;
+using Medidata.RBT.PageObjects.Rave.SharedRaveObjects;
 
 namespace Medidata.RBT.Features.Rave
 {
@@ -35,8 +37,22 @@ namespace Medidata.RBT.Features.Rave
         [StepDefinition(@"I set report parameter ""([^""]*)"" with table")]
 		public void ISetReportParameter____WithTable(string name, Table table)
 		{
-            SpecialStringHelper.ReplaceTableColumn(table, "Name");
-			CurrentPage.As<PromptsPage>().SetParameter(name, table);
+            string[] headers = new string[table.Header.Count];
+            table.Header.CopyTo(headers, 0);
+            Table newTable = new Table(headers);
+           
+            foreach (TableRow tabRow in table.Rows)
+            {
+                string studyName = "";
+                tabRow.TryGetValue(headers[0], out studyName);
+                Project project = TestContext.GetExistingFeatureObjectOrMakeNew(studyName, () => new Project(studyName));
+                string envName = "";
+                tabRow.TryGetValue(headers[1], out envName);
+                newTable.AddRow(project.UniqueName, envName);
+            }
+
+            SpecialStringHelper.ReplaceTableColumn(newTable, "Name");
+            CurrentPage.As<PromptsPage>().SetParameter(name, newTable);
 		}
 
 		/// <summary>

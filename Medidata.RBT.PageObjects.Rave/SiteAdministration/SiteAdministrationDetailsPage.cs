@@ -25,13 +25,15 @@ namespace Medidata.RBT.PageObjects.Rave.SiteAdministration
         }
 
         /// <summary>
-        /// Link the study provided with the site you are on.
+        /// Link the study provided with the site you are on and environment desired
         /// </summary>
-        /// <param name="studyName">Name of the study to link the site with, this should be the UniqueName, not the feature provided one</param>
-        public void LinkStudyWithSite(Site site, string studyName)
+        /// <param name="studyName">name of the study to link the site with, this should be the UniqueName, not the feature provided one</param>
+        /// <param name="envName">name of the environment type</param>
+        public void LinkStudyWithSite(Site site, string studyName, string envName)
         {
             TestContext.CurrentPage.ClickLink("Add Study");
             ChooseFromDropdown("ProjectDDL", studyName);
+            ChooseFromDropdown("StudyDDL", envName);
             TestContext.CurrentPage.ClickLink("Add");
             if (site.StudyUIDs == null)
                 site.StudyUIDs = new List<Guid>();

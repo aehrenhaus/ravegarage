@@ -139,6 +139,59 @@ namespace Medidata.RBT.Features.Rave
         }
 
         /// <summary>
+        /// Verifies is requires verification checkbox is enabled/disabled
+        /// </summary>
+        /// <param name="table"></param>
+        [StepDefinition(@"I should see verification required on Fields in CRF")]
+        public void IShouldSeeVerificationRequiredOnFieldsInCRF(Table table)
+        {
+            CRFPage page = CurrentPage.As<CRFPage>();
+
+            var fields = table.CreateSet<FieldModel>();
+            foreach (var field in fields)
+            {
+                if (field.RequiresVerification.HasValue)
+                {
+                    bool verificationRequired = page.FindField(field.Field).IsVerificationRequired();
+
+                    Assert.AreEqual(field.RequiresVerification.Value, verificationRequired, "Verification Required doesn't match on Fields in CRF");
+                }
+            }
+        }
+
+        /// <summary>
+        /// A more generic implementation for EDC field verification
+        /// This step definition will let user verify all the field
+        /// steps from single method
+        /// </summary>
+        /// <param name="table"></param>
+        [StepDefinition(@"I verify data on Fields in CRF")]
+        public void IVerifyDataOnFieldsInCRF(Table table)
+        {
+            CRFPage page = CurrentPage.As<CRFPage>();
+
+            var fields = table.CreateSet<FieldModel>();
+
+            foreach (var field in fields)
+            {
+                IEDCFieldControl fieldControl = page.FindField(field.Field);
+                if (field.Data != null && field.Data.Length > 0)
+                {
+                    bool dataExists = fieldControl.HasDataEntered(field.Data);
+                    Assert.IsTrue(dataExists, "Data doesn't exist for field(s)");
+                }
+
+                if (field.RequiresVerification.HasValue)
+                {
+                    bool verificationRequired = fieldControl.IsVerificationRequired();
+
+                    Assert.AreEqual(field.RequiresVerification.Value, verificationRequired, "Verification Required doesn't match on Fields in CRF");
+                }
+            }
+        }
+
+
+        /// <summary>
         /// No Clinical Significance for field displayed
         /// </summary>
         /// <param name="clinSignificance"></param> 
@@ -215,43 +268,36 @@ namespace Medidata.RBT.Features.Rave
                 .SelectFolder(folderName)
                 .SelectForm(formName);
         }
+ 
+		/// <summary>
+		/// Click audit icon on a field on CRF page
+		/// </summary>
+		/// <param name="fieldName"></param>
+		[StepDefinition(@"I click audit on Field ""([^""]*)""")]
+        [StepDefinition(@"I go to Audits for Field ""([^""]*)""")]
+		public void IClickAuditOnField____(string fieldName)
+		{
+			CurrentPage = CurrentPage.As<CRFPage>()
+				.FindField(fieldName)
+				.ClickAudit();
+		}
 
-        /// <summary>
-        /// Expand a header in Task Summary area on Subject page.
-        /// </summary>
-        /// <param name="header"></param>
-        [StepDefinition(@"I expand ""([^""]*)"" in Task Summary")]
-        public void IExpand____InTaskSummary(string header)
-        {
-            CurrentPage.As<SubjectPage>().ExpandTask(header);
-        }
-
-        /// <summary>
-        /// Click audit icon on a field on CRF page
-        /// </summary>
-        /// <param name="fieldName"></param>
-        [StepDefinition(@"I click audit on Field ""([^""]*)""")]
-        public void IClickAuditOnField____(string fieldName)
-        {
-            CurrentPage = CurrentPage.As<CRFPage>()
-                .FindField(fieldName)
-                .ClickAudit();
-        }
-
-        /// <summary>
-        /// Verify audit exists
-        /// </summary>
-        /// <param name="table"></param>
-        [StepDefinition(@"I verify Audits exist")]
-        public void IVerifyAuditsExist(Table table)
-        {
-            var audits = table.CreateSet<AuditModel>();
-            foreach (var a in audits)
-            {
-                bool exist = CurrentPage.As<AuditsPage>().AuditExist(a);
-                Assert.IsTrue(exist, string.Format("Audit {0} does not exist", a.AuditType));
-            }
-        }
+		/// <summary>
+		/// Verify audit exists
+		/// </summary>
+		/// <param name="table"></param>
+		[StepDefinition(@"I verify Audits exist")]
+		public void IVerifyAuditsExist(Table table)
+		{
+			var audits = table.CreateSet<AuditModel>();
+            int position = 1;
+			foreach (var a in audits)
+			{
+                bool exist = CurrentPage.As<AuditsPage>().AuditExist(a, position);
+				Assert.IsTrue(exist, string.Format ("Audit {0} does not exist",a.AuditType));
+                position++;
+			}
+		}
 
         [StepDefinition(@"I select link ""([^""]*)"" located in ""([^""]*)""")]
         public void ISelectLink____LocatedIn____(string logForm, string leftNav)

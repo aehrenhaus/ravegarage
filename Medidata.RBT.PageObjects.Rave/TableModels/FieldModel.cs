@@ -13,5 +13,6 @@ namespace Medidata.RBT.PageObjects.Rave
         public string FieldEditCheck { get; set; }
         public string High { set; get; }
         public string Low { set; get; }
+        public bool? RequiresVerification { set; get; }
 	}
 }
