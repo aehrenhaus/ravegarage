@@ -7,7 +7,7 @@ using TechTalk.SpecFlow;
 namespace Medidata.RBT.PageObjects.Rave.Configuration
 {
     
-    public class ConfigurationBasePage :PageBase
+    public class ConfigurationBasePage : RavePageBase
     {
 
         public override IPage NavigateTo(string name)
