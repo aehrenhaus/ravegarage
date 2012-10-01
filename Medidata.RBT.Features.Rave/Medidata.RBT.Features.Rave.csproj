@@ -135,6 +135,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>US12175_DT8545_lessthangreaterthaninPDF_RaveMonitor.feature</DependentUpon>
     </Compile>
+    <Compile Include="Features\PDF\US17414_DT5899.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>US17414_DT5899.feature</DependentUpon>
+    </Compile>
     <Compile Include="Features\test.feature.cs">
       <DependentUpon>test.feature</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -321,6 +326,10 @@
     <None Include="Features\PDF\US12175_DT8545_lessthangreaterthaninPDF_RaveMonitor.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>US12175_DT8545_lessthangreaterthaninPDF_RaveMonitor.feature.cs</LastGenOutput>
+    </None>
+    <None Include="Features\PDF\US17414_DT5899.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>US17414_DT5899.feature.cs</LastGenOutput>
     </None>
     <None Include="Features\test.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
