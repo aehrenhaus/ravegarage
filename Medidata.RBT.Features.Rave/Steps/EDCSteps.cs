@@ -154,7 +154,7 @@ namespace Medidata.RBT.Features.Rave
                 {
                     bool verificationRequired = page.FindField(field.Field).IsVerificationRequired();
 
-                    Assert.AreEqual(field.RequiresVerification, verificationRequired, "Verification Required doesn't match on Fields in CRF");
+                    Assert.AreEqual(field.RequiresVerification.Value, verificationRequired, "Verification Required doesn't match on Fields in CRF");
                 }
             }
         }
@@ -185,7 +185,7 @@ namespace Medidata.RBT.Features.Rave
                 {
                     bool verificationRequired = fieldControl.IsVerificationRequired();
 
-                    Assert.AreEqual(field.RequiresVerification, verificationRequired, "Verification Required doesn't match on Fields in CRF");
+                    Assert.AreEqual(field.RequiresVerification.Value, verificationRequired, "Verification Required doesn't match on Fields in CRF");
                 }
             }
         }
