@@ -150,9 +150,12 @@ namespace Medidata.RBT.Features.Rave
             var fields = table.CreateSet<FieldModel>();
             foreach (var field in fields)
             {
-                bool verificationRequired = page.FindField(field.Field).IsVerificationRequired();
+                if (field.RequiresVerification.HasValue)
+                {
+                    bool verificationRequired = page.FindField(field.Field).IsVerificationRequired();
 
-                Assert.AreEqual(field.RequiresVerification, verificationRequired.ToString(), true, "Verification Required doesn't match on Fields in CRF");
+                    Assert.AreEqual(field.RequiresVerification, verificationRequired, "Verification Required doesn't match on Fields in CRF");
+                }
             }
         }
 
@@ -178,11 +181,11 @@ namespace Medidata.RBT.Features.Rave
                     Assert.IsTrue(dataExists, "Data doesn't exist for field(s)");
                 }
 
-                if (field.RequiresVerification != null && field.RequiresVerification.Length > 0)
+                if (field.RequiresVerification.HasValue)
                 {
                     bool verificationRequired = fieldControl.IsVerificationRequired();
 
-                    Assert.AreEqual(field.RequiresVerification, verificationRequired.ToString(), true, "Verification Required doesn't match on Fields in CRF");
+                    Assert.AreEqual(field.RequiresVerification, verificationRequired, "Verification Required doesn't match on Fields in CRF");
                 }
             }
         }
