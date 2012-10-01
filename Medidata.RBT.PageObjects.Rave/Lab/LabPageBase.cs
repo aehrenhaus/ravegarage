@@ -20,6 +20,7 @@ namespace Medidata.RBT.PageObjects.Rave
 
             poClassMapping["Unit Conversions"] = "UnitConversionsPage";
             poClassMapping["Global Data Dictionaries"] = "GlobalDataDictionariesPage";
+            poClassMapping["Global Unit Dictionaries"] = "GlobalUnitDictionariesPage";
             //global data dictionaries, unit dictionaries, etc
 
 
