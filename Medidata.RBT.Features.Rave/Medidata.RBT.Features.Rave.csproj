@@ -71,9 +71,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Features\AM2\US12996_AM2_DT13997.feature.cs">
-      <DependentUpon>US12996_AM2_DT13997.feature</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
+      <DependentUpon>US12996_AM2_DT13997.feature</DependentUpon>
     </Compile>
     <Compile Include="Features\Architect\US17446.feature.cs">
       <DependentUpon>US17446.feature</DependentUpon>
@@ -85,11 +85,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>US17943.feature</DependentUpon>
     </Compile>
-    <Compile Include="Features\Architect\US18087_DT14073.feature.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>US18087_DT14073.feature</DependentUpon>
-    </Compile>
     <Compile Include="Features\Configuration\US13011_DT13976.feature.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -100,10 +95,50 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>US13011_DT13976_AddCoderToConfigurationLoaderSpec.feature</DependentUpon>
     </Compile>
-    <Compile Include="Features\EDC\DT_13622_TSDV_Off.feature.cs">
+    <Compile Include="Features\EDC\564 QueryRefiringLogic2.feature.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>DT_13622_TSDV_Off.feature</DependentUpon>
+      <DependentUpon>564 QueryRefiringLogic2.feature</DependentUpon>
+    </Compile>
+    <Compile Include="Features\EDC\564 QueryRefiringLogic4.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>564 QueryRefiringLogic4.feature</DependentUpon>
+    </Compile>
+    <Compile Include="Features\EDC\564QueryRefiringLogic1.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>564QueryRefiringLogic1.feature</DependentUpon>
+    </Compile>
+    <Compile Include="Features\EDC\564QueryRefiringLogic_LogForm_2FldEC.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>564QueryRefiringLogic_LogForm_2FldEC.feature</DependentUpon>
+    </Compile>
+    <Compile Include="Features\EDC\564QueryRefiringLogic_StdForm_1FldEC.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>564QueryRefiringLogic_StdForm_1FldEC.feature</DependentUpon>
+    </Compile>
+    <Compile Include="Features\EDC\US11913.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>US11913.feature</DependentUpon>
+    </Compile>
+    <Compile Include="Features\EDC\US12994_DT109911.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>US12994_DT10991.feature</DependentUpon>
+    </Compile>
+    <Compile Include="Features\EDC\US13021_DT12734.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>US13021_DT12734.feature</DependentUpon>
+    </Compile>
+    <Compile Include="Features\EDC\US15417_DT13905.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>US15417_DT13905.feature</DependentUpon>
     </Compile>
     <Compile Include="Features\EDC\US17743_DT12513.feature.cs">
       <AutoGen>True</AutoGen>
@@ -230,6 +265,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>EDCTabOrderUntouchedPortraitLogForm.feature</DependentUpon>
     </Compile>
+    <Compile Include="Features\TSDV\US11958_DT14177.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>US11958_DT14177.feature</DependentUpon>
+    </Compile>
     <Compile Include="Features\UserAdministration\DT14168.feature.cs">
       <DependentUpon>DT14168.feature</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -237,15 +277,13 @@
     </Compile>
     <Compile Include="ReferenceFix.cs" />
     <Compile Include="Steps\ConfigurationSteps.cs" />
-    <Compile Include="Steps\ArchitectSteps_DB.cs" />
-    <Compile Include="Steps\LabSteps.cs" />
     <Compile Include="Steps\EDCSteps_DB.cs" />
     <Compile Include="Steps\AmendmentManagerSteps.cs" />
-    <Compile Include="Steps\LabSteps_DB.cs" />
+    <Compile Include="Steps\IExcelFileHandler.cs" />
     <Compile Include="Steps\MonitorSiteSubjectPageSteps.cs" />
-    <Compile Include="Steps\LabAdministrationSteps.cs" />
+    <Compile Include="Steps\LabUnitConversionSteps.cs" />
     <Compile Include="Steps\Seeding\ConfigurationSteps.cs" />
-    <Compile Include="Steps\SiteSteps.cs" />
+    <Compile Include="Steps\Seeding\SiteSteps.cs" />
     <Compile Include="Steps\SubjectPageSteps.cs" />
     <Compile Include="Steps\TsdvSteps.cs" />
     <Compile Include="Steps\PDFSteps.cs" />
@@ -298,10 +336,6 @@
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>US17943.feature.cs</LastGenOutput>
     </None>
-    <None Include="Features\Architect\US18087_DT14073.feature">
-      <Generator>SpecFlowSingleFileGenerator</Generator>
-      <LastGenOutput>US18087_DT14073.feature.cs</LastGenOutput>
-    </None>
     <None Include="Features\Configuration\US13011_DT13976.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>US13011_DT13976.feature.cs</LastGenOutput>
@@ -310,9 +344,9 @@
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>US13011_DT13976_AddCoderToConfigurationLoaderSpec.feature.cs</LastGenOutput>
     </None>
-    <None Include="Features\EDC\DT_13622_TSDV_Off.feature">
+    <None Include="Features\EDC\US13021_DT12734.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
-      <LastGenOutput>DT_13622_TSDV_Off.feature.cs</LastGenOutput>
+      <LastGenOutput>US13021_DT12734.feature.cs</LastGenOutput>
     </None>
     <None Include="Features\EDC\US17743_DT12513.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
