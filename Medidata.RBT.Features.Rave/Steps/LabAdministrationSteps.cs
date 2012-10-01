@@ -1,0 +1,37 @@
+﻿using TechTalk.SpecFlow;
+using Medidata.RBT.PageObjects.Rave;
+using TechTalk.SpecFlow.Assist;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+
+namespace Medidata.RBT.Features.Rave
+{
+	[Binding]
+	public partial class LabAdministrationSteps : BrowserStepsBase
+	{
+        [StepDefinition(@"I add new Global Data Dictionaries")]
+		public void IAddNewGlobalDataDictionaries(Table table)
+		{
+            CurrentPage.As<GlobalDataDictionariesPage>().IAddNewGlobalDataDictionaries(table.CreateSet<ArchitectObjectModel>());
+		}
+
+        [StepDefinition(@"I verify Global Data Dictionary names exist")]
+        public void IVerifyGlobalDataDictionaryNamesExist(Table table)
+        {
+            bool exists = CurrentPage.As<GlobalDataDictionariesPage>().GlobalDictionariesExistWithNames(table.CreateSet<ArchitectObjectModel>());
+            Assert.IsTrue(exists, "Global Data Dictionaries not found.");
+        }
+
+        [StepDefinition(@"I edit Global Data Dictionaries")]
+        public void IEditGlobalDataDictionaries(Table table)
+        {
+            CurrentPage.As<GlobalDataDictionariesPage>().GlobalDictionariesEdit(table.CreateSet<ArchitectObjectModel>());
+        }
+
+        [StepDefinition(@"I delete Global Data Dictionaries")]
+        public void IDeleteGlobalDataDictionaries(Table table)
+        {
+            CurrentPage.As<GlobalDataDictionariesPage>().GlobalDictionariesDelete(table.CreateSet<ArchitectObjectModel>());
+        }
+     
+	}
+}

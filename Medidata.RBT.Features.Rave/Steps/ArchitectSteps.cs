@@ -126,14 +126,14 @@ namespace Medidata.RBT.Features.Rave
         [StepDefinition(@"I should see ranges for Field Edit Checks")]
         public void ISeeRangesForFieldEditChecks(Table table)
         {
-            bool found = CurrentPage.As<ArchitectFormDesignerPage>().FerifyRangesForFieldEditChecks(table.CreateSet<FieldModel>());
+            bool found = CurrentPage.As<ArchitectFormDesignerPage>().VerifyRangesForFieldEditChecks(table.CreateSet<FieldModel>());
             Assert.IsTrue(found, "Ranges for field do not match.");
         }
 
         [StepDefinition(@"I should not see ranges for Field Edit Checks")]
         public void IDontSeeRangesForFieldEditChecks(Table table)
         {
-            bool found = CurrentPage.As<ArchitectFormDesignerPage>().FerifyRangesForFieldEditChecks(table.CreateSet<FieldModel>());
+            bool found = CurrentPage.As<ArchitectFormDesignerPage>().VerifyRangesForFieldEditChecks(table.CreateSet<FieldModel>());
             Assert.IsFalse(found, "Ranges for field do match.");
         }
 	}

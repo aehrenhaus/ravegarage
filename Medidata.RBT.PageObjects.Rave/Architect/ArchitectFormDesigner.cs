@@ -35,7 +35,7 @@ namespace Medidata.RBT.PageObjects.Rave
 
       
 
-        public bool FerifyRangesForFieldEditChecks(IEnumerable<FieldModel> fields)
+        public bool VerifyRangesForFieldEditChecks(IEnumerable<FieldModel> fields)
         {
             foreach (var field in fields)
             {
