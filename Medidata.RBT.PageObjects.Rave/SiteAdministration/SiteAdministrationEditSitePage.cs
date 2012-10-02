@@ -9,7 +9,7 @@ using Medidata.RBT.SeleniumExtension;
 
 namespace Medidata.RBT.PageObjects.Rave.SiteAdministration
 {
-    public class SiteAdministrationEditSitePage : SiteAdministrationSiteDetailsPage
+    public class SiteAdministrationEditSitePage : SiteAdministrationDetailsPage
     {
         public override string URL
         {

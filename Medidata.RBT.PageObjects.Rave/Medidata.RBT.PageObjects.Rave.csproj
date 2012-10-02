@@ -102,7 +102,11 @@
     <Compile Include="Lab\AnalytesPage.cs" />
     <Compile Include="Lab\GlobalUnitDictionariesPage.cs" />
     <Compile Include="Lab\GlobalDataDictionariesPage.cs" />
+    <Compile Include="Lab\CentralLabsPage.cs" />
+    <Compile Include="Lab\CopyLabRanges.cs" />
+    <Compile Include="Lab\LabRangesPage.cs" />
     <Compile Include="Lab\LabPageBase.cs" />
+    <Compile Include="Lab\LabsPage.cs" />
     <Compile Include="Lab\UnitConversionsPage.cs" />
     <Compile Include="EDC\SignatureBox.cs" />
     <Compile Include="OtherPages\ActivatePage.cs" />
@@ -143,6 +147,9 @@
     <Compile Include="TableModels\AuditModel.cs" />
     <Compile Include="TableModels\ArchitectObjectModel.cs" />
     <Compile Include="TableModels\CustomTierModel.cs" />
+    <Compile Include="TableModels\AnalyteRangeModel.cs" />
+    <Compile Include="TableModels\AnalyteRangeAuditModel.cs" />
+    <Compile Include="TableModels\LabModel.cs" />
     <Compile Include="TableModels\QueryAuditReportSearchModel.cs" />
     <Compile Include="TableModels\LabRangeModel.cs" />
     <Compile Include="TableModels\QueryCancelModel.cs" />

@@ -238,14 +238,14 @@
     <Compile Include="ReferenceFix.cs" />
     <Compile Include="Steps\ConfigurationSteps.cs" />
     <Compile Include="Steps\ArchitectSteps_DB.cs" />
+    <Compile Include="Steps\LabSteps.cs" />
     <Compile Include="Steps\EDCSteps_DB.cs" />
     <Compile Include="Steps\AmendmentManagerSteps.cs" />
-    <Compile Include="Steps\IExcelFileHandler.cs" />
+    <Compile Include="Steps\LabSteps_DB.cs" />
     <Compile Include="Steps\MonitorSiteSubjectPageSteps.cs" />
     <Compile Include="Steps\LabAdministrationSteps.cs" />
     <Compile Include="Steps\Seeding\ConfigurationSteps.cs" />
-    <Compile Include="Steps\Seeding\ReportAssignmentSteps.cs" />
-    <Compile Include="Steps\Seeding\SiteSteps.cs" />
+    <Compile Include="Steps\SiteSteps.cs" />
     <Compile Include="Steps\SubjectPageSteps.cs" />
     <Compile Include="Steps\TsdvSteps.cs" />
     <Compile Include="Steps\PDFSteps.cs" />

@@ -5,10 +5,13 @@ using System.Text;
 using OpenQA.Selenium.Support.PageObjects;
 using OpenQA.Selenium;
 using Medidata.RBT.PageObjects.Rave.SharedRaveObjects;
+using Medidata.RBT.SeleniumExtension;
+using TechTalk.SpecFlow;
+
 
 namespace Medidata.RBT.PageObjects.Rave.SiteAdministration
 {
-    public class SiteAdministrationSiteDetailsPage : SiteAdministrationBasePage
+    public class SiteAdministrationDetailsPage : SiteAdministrationBasePage
     {
         [FindsBy(How = How.Id, Using = "_ctl0_Content_SiteNameBox")]
         public IWebElement SiteNameBox;
@@ -38,6 +41,40 @@ namespace Medidata.RBT.PageObjects.Rave.SiteAdministration
             if (site.StudyUIDs == null)
                 site.StudyUIDs = new List<Guid>();
             site.StudyUIDs.Add(site.UID.Value);
+        }
+
+        /// <summary>
+        /// Selects the element in study site.
+        /// </summary>
+        /// <param name="elementName">Name of the element.</param>
+        /// <param name="studyName">Name of the study.</param>
+        /// <param name="environment">The environment.</param>
+        public void SelectElementInStudySite(string elementName, string studyName, string environment)
+        {
+            string mapGifId = String.Empty;
+            switch (elementName)
+            {
+                case "Lab Maintenance":
+                    mapGifId = "i_lab.gif";
+                    break;                     
+                default:
+                    throw new NotImplementedException("Not implemented yet for :");
+            }
+
+            TestContext.CurrentPage.ClickLink("Add Study");
+            ChooseFromDropdown("ProjectDDL", studyName);
+            ChooseFromDropdown("StudyDDL", environment.ToLower() == "prod" ? "Live: Prod" : String.Concat("Aux: ", environment));
+            TestContext.CurrentPage.ClickLink("Add");
+            var table = TestContext.CurrentPage.GetElementByName("_WizardTitleBox_AddStudySiteWzrd_StudyGrid").EnhanceAs<HtmlTable>();
+            Table matchTable = new Table("Name");
+            matchTable.AddRow(String.Format("{0}-{1}", studyName, environment));            
+            var rows = table.FindMatchRows(matchTable);
+            rows[0].Images().First(x => x.GetAttribute("src").EndsWith(mapGifId)).Click();
+        }
+
+        public override IWebElement GetElementByName(string identifier, string areaIdentifier = null, string listItem = null)
+        {
+            return Browser.Table("_WizardTitleBox_AddStudySiteWzrd_StudyGrid");
         }
     }
 }

@@ -60,20 +60,19 @@ Background:
 Scenario: PB_US17701_01 As a Lab Administrator, when manually create an analyte range for an Local Lab, then the audit information for the analyte I created is captured in the database.
 
 	And I navigate to "Site Administration" module
-	And I search for site "ABC Hospital"
-	And I select Site Details for Site "ABC Hospital"
-	And I select image "Lab Maintenance" for Study "Jennicilin"
-	And I select Ranges for "ABC Local Lab"
+	And I search for site "Site 10991"
+	And I select Site Details for Site "Site 10991"
+	And I select "Lab Maintenance" for Study "Mediflex" in Environment "Prod"
+	And I select Ranges for "ABC Local Lab" for "Local Lab" lab
 	And I select "Add New Range"
 	And I create range
-		| Analyte | From Date   | To Date     | Low Age  | High Age | Sex  | Low Value | High Value | Units | Dictionary | Comments | Edit | New Version |
-		| WBC     | 01 Jan 2000 | 01 Jan 2020 | 15 years | 99 years | Male | 2         | 4          | %     |            |          |      |             |
+		| Analyte       | From Date   | To Date     | From Age          | To Age            | Sex            | Low Value | High Value | Units              | Dictionary | Comments | Edit | New Version |
+		| WBCREG_ECPV11 | 01 Jan 2000 | 01 Jan 2020 | 15 YearREG_ECPV11 | 99 YearREG_ECPV11 | maleREG_ECPV11 | 2         | 4          | *10E6/ulREG_ECPV11 |            |          |      |             |
 	And I take a screenshot
-	And I run SQL Script "SQL US17701_DT13437"
-	Then I should see SQL result
-		| Property     | Value   | Readble               |
-		| AnalyteRange | Created | Analyte Range Created |
-
+	And I verify analyterange audits exist
+		| Lab           | Analyte       | AuditName | ObjectName   |
+		| ABC Local Lab | WBCREG_ECPV11 | Created   | AnalyteRange |
+	
 #----------------------------------------------------------------------------------------------------------------------------------------
 @release_564_2012.1.0
 @PB_US17701_02
@@ -82,16 +81,16 @@ Scenario: PB_US17701_02 As a Lab Administrator, when manually create an analyte 
 
 	And I navigate to "Lab Administration" module
 	And I navigate to "Central Labs" module
-	And I select Ranges for "ABC Central Lab"
+	And I select Ranges for "ABC Central Lab" for "Central Lab" lab
 	And I select "Add New Range"
 	And I create range
-		| Analyte | From Date   | To Date     | Low Age  | High Age | Sex  | Low Value | High Value | Units | Dictionary | Comments | Edit | New Version |
-		| WBC     | 01 Jan 2000 | 01 Jan 2020 | 15 years | 99 years | Male | 2         | 4          | %     |            |          |      |             |
+		| Analyte       | From Date   | To Date     | From Age          | To Age            | Sex            | Low Value | High Value | Units              | Dictionary | Comments | Edit | New Version |
+		| WBCREG_ECPV11 | 01 Jan 2000 | 01 Jan 2020 | 15 YearREG_ECPV11 | 99 YearREG_ECPV11 | maleREG_ECPV11 | 2         | 4          | *10E6/ulREG_ECPV11 |            |          |      |             |
 	And I take a screenshot
-	And I run SQL Script "SQL US17701_DT13437"
-	Then I should see SQL result
-		| Property     | Value   | Readble               |
-		| AnalyteRange | Created | Analyte Range Created |
+	And I take a screenshot
+	And I verify analyterange audits exist
+		| Lab             | Analyte       | AuditName | ObjectName   |
+		| ABC Central Lab | WBCREG_ECPV11 | Created   | AnalyteRange |
 
 #----------------------------------------------------------------------------------------------------------------------------------------
 @release_564_2012.1.0
@@ -101,16 +100,15 @@ Scenario: PB_US17701_03 As a Lab Administrator, when manually create an analyte 
 
 	And I navigate to "Lab Administration" module
 	And I navigate to "Global Labs" module
-	And I select Ranges for "ABC Alert Lab"
+	And I select Ranges for "ABC Alert Lab" for "Alert Lab" lab
 	And I select "Add New Range"
 	And I create range
-		| Analyte | From Date   | To Date     | Low Age  | High Age | Sex  | Low Value | High Value | Units | Dictionary | Comments | Edit | New Version |
-		| WBC     | 01 Jan 2000 | 01 Jan 2020 | 15 years | 99 years | Male | 2         | 4          | %     |            |          |      |             |
+		| Analyte       | From Date   | To Date     | From Age          | To Age            | Sex            | Low Value | High Value | Units              | Dictionary | Comments | Edit | New Version |
+		| WBCREG_ECPV11 | 01 Jan 2000 | 01 Jan 2020 | 15 YearREG_ECPV11 | 99 YearREG_ECPV11 | maleREG_ECPV11 | 2         | 4          | *10E6/ulREG_ECPV11 |            |          |      |             |
 	And I take a screenshot
-	And I run SQL Script "SQL US17701_DT13437"
-	Then I should see SQL result
-		| Property     | Value   | Readble               |
-		| AnalyteRange | Created | Analyte Range Created |
+	And I verify analyterange audits exist
+		| Lab           | Analyte       | AuditName | ObjectName   |
+		| ABC Alert Lab | WBCREG_ECPV11 | Created   | AnalyteRange |
 
 #----------------------------------------------------------------------------------------------------------------------------------------
 @release_564_2012.1.0
@@ -120,35 +118,34 @@ Scenario: PB_US17701_04 As a Lab Administrator, when manually create an analyte 
 
 	And I navigate to "Lab Administration" module
 	And I navigate to "Global Labs" module
-	And I select Ranges for "ABC Reference Lab"
+	And I select Ranges for "ABC Reference Lab" for "Reference Lab" lab
 	And I select "Add New Range"
 	And I create range
-		| Analyte | From Date   | To Date     | Low Age  | High Age | Sex  | Low Value | High Value | Units | Dictionary | Comments | Edit | New Version |
-		| WBC     | 01 Jan 2000 | 01 Jan 2020 | 15 years | 99 years | Male | 2         | 4          | %     |            |          |      |             |
+		| Analyte       | From Date   | To Date     | From Age          | To Age            | Sex            | Low Value | High Value | Units              | Dictionary | Comments | Edit | New Version |
+		| WBCREG_ECPV11 | 01 Jan 2000 | 01 Jan 2020 | 15 YearREG_ECPV11 | 99 YearREG_ECPV11 | maleREG_ECPV11 | 2         | 4          | *10E6/ulREG_ECPV11 |            |          |      |             |
 	And I take a screenshot
-	And I run SQL Script "SQL US17701_DT13437"
-	Then I should see SQL result
-		| Property     | Value   | Readble               |
-		| AnalyteRange | Created | Analyte Range Created |
+	And I verify analyterange audits exist
+		| Lab               | Analyte       | AuditName | ObjectName   |
+		| ABC Reference Lab | WBCREG_ECPV11 | Created   | AnalyteRange |
+
 
 #----------------------------------------------------------------------------------------------------------------------------------------
 @release_564_2012.1.0
 @PB_US17701_05
 @Draft
 Scenario: PB_US17701_05 As a Lab Administrator, when manually create an analyte range for a Local Lab in EDC, then the audit information for the analyte I created is captured in the database.
-
-	And I select Study "Jennicilin" and Site "ABC Hospital"
-	And I select link "Lab"
-	And I select Ranges for "ABC Local Lab"
+		
+	And I select Study "Mediflex" and Site "ABC Hospital"
+	And I select link "Labs"
+	And I select Ranges for "ABC Local Lab" for "Local Lab" lab
 	And I select "Add New Range"
 	And I create range
-		| Analyte     | From Date   | To Date     | Low Age  | High Age | Sex  | Low Value | High Value | Units | Dictionary | Comments | Edit | New Version |
-		| Neutrophils | 01 Jan 2000 | 01 Jan 2020 | 15 years | 99 years | Male | 8         | 12         | %     |            |          |      |             |
+		| Analyte       | From Date   | To Date     | From Age          | To Age            | Sex            | Low Value | High Value | Units              | Dictionary | Comments | Edit | New Version |
+		| WBCREG_ECPV11 | 01 Jan 2000 | 01 Jan 2020 | 15 YearREG_ECPV11 | 99 YearREG_ECPV11 | maleREG_ECPV11 | 2         | 4          | *10E6/ulREG_ECPV11 |            |          |      |             |
 	And I take a screenshot
-	And I run SQL Script "SQL US17701_DT13437"
-	Then I should see SQL result
-		| Property     | Value   | Readble               |
-		| AnalyteRange | Created | Analyte Range Created |
+	And I verify analyterange audits exist
+		| Lab           | Analyte       | AuditName | ObjectName   |
+		| ABC Local Lab | WBCREG_ECPV11 | Created   | AnalyteRange |
 
 #----------------------------------------------------------------------------------------------------------------------------------------
 @release_564_2012.1.0
@@ -158,13 +155,41 @@ Scenario: PB_US17701_06 As a Lab Administrator, when manually copy analyte range
 
 	And I navigate to "Lab Administration" module
 	And I navigate to "Global Labs" module
-	And I create "Alert Lab"
-		| Type      | Name                            | Range Type |
-		| Alert Lab | ABC Alert Lab {RndNum<num1>(3)} | Standard   |
-	And I select Ranges for "ABC Alert Lab {Var(num1)}"
+	And I create lab
+		| Type      | Name                            | Range Type     |
+		| Alert Lab | ABC Alert Lab {RndNum<num1>(3)} | StandardREGAQT |
+	And I select Ranges for "ABC Alert Lab {Var(num1)}" for "Alert Lab" lab
 	And I select "Copy Ranges" form "Alert Lab"
 	And I take a screenshot
-	And I run SQL Script "SQL US17701_DT13437"
-	Then I should see SQL result
-		| Property     | Value  | Readble              |
-		| AnalyteRange | Copied | Analyte Range Copied |
+	And I verify analyterange audits exist
+		| Lab                       | Analyte   | AuditName | ObjectName   |
+		| ABC Alert Lab {Var(num1)} | WBCREGAQT | Review    | AnalyteRange |
+
+#----------------------------------------------------------------------------------------------------------------------------------------
+@release_564_2012.1.0
+@PB_US17701_07
+@Draft
+Scenario: PB_US17701_07 As a Lab Administrator, when manually create an analyte range from New Version for an Alert Lab, then the audit information for the analyte I created is captured in the database.
+
+	And I navigate to "Lab Administration" module
+	And I navigate to "Global Labs" module
+	And I create lab
+		| Type      | Name                            | Range Type     |
+		| Alert Lab | ABC Alert Lab {RndNum<num1>(3)} | StandardREGAQT |
+	And I select Ranges for "ABC Alert Lab {Var(num1)}" for "Alert Lab" lab
+	And I select "Add New Range"
+	And I create range
+		| Analyte       | From Date   | To Date     | From Age      | To Age        | Sex        | Low Value | High Value | Units              | Dictionary | Comments | Edit | New Version |
+		| WBCREG_ECPV11 | 01 Jan 2000 | 01 Jan 2020 | 15 YearREGAQT | 50 YearREGAQT | maleREGAQT | 2         | 4          | *10E6/ulREG_ECPV11 |            |          |      |             |
+	And I take a screenshot
+	And I verify analyterange audits exist
+		| Lab               | Analyte       | AuditName | ObjectName   |
+		| ABC Reference Lab | WBCREG_ECPV11 | Created   | AnalyteRange |
+	And I select "New Version" for "WBCREG_ECPV11" lab
+	And I create range
+		| Analyte       | From Date   | To Date     | From Age      | To Age        | Sex        | Low Value | High Value | Units              | Dictionary | Comments | Edit | New Version |
+		| WBCREG_ECPV11 | 01 Jan 2040 | 01 Jan 2060 | 25 YearREGAQT | 75 YearREGAQT | maleREGAQT | 3         | 8          | *10E6/ulREG_ECPV11 |            |          |      |             |
+	And I take a screenshot
+	And I verify analyterange audits exist
+		| Lab               | Analyte       | AuditName | ObjectName   |
+		| ABC Reference Lab | WBCREG_ECPV11 | Created   | AnalyteRange |
