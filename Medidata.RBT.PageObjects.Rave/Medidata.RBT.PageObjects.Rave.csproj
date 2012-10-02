@@ -100,6 +100,7 @@
     <Compile Include="EDC\IEDCFieldControl.cs" />
     <Compile Include="EDC\PortraitLogField.cs" />
     <Compile Include="Lab\AnalytesPage.cs" />
+    <Compile Include="Lab\GlobalUnitDictionariesPage.cs" />
     <Compile Include="Lab\GlobalDataDictionariesPage.cs" />
     <Compile Include="Lab\LabPageBase.cs" />
     <Compile Include="Lab\UnitConversionsPage.cs" />

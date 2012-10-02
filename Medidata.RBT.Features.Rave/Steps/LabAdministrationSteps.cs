@@ -7,7 +7,9 @@ namespace Medidata.RBT.Features.Rave
 {
 	[Binding]
 	public partial class LabAdministrationSteps : BrowserStepsBase
-	{
+    {
+        #region Global Data Dictionaries
+
         [StepDefinition(@"I add new Global Data Dictionaries")]
 		public void IAddNewGlobalDataDictionaries(Table table)
 		{
@@ -32,6 +34,38 @@ namespace Medidata.RBT.Features.Rave
         {
             CurrentPage.As<GlobalDataDictionariesPage>().GlobalDictionariesDelete(table.CreateSet<ArchitectObjectModel>());
         }
-     
-	}
+
+        #endregion
+
+        #region Global Unit Dictionaries
+
+        [StepDefinition(@"I add new Global Unit Dictionaries")]
+        public void IAddNewGlobalUnitDictionaries(Table table)
+        {
+            CurrentPage.As<GlobalUnitDictionariesPage>().IAddNewGlobalUnitDictionaries(table.CreateSet<ArchitectObjectModel>());
+        }
+
+        [StepDefinition(@"I verify Global Unit Dictionary names exist")]
+        public void IVerifyGlobalUnitDictionaryNamesExist(Table table)
+        {
+            bool exists = CurrentPage.As<GlobalUnitDictionariesPage>().GlobalDictionariesExistWithNames(table.CreateSet<ArchitectObjectModel>());
+            Assert.IsTrue(exists, "Global Data Dictionaries not found.");
+        }
+
+        [StepDefinition(@"I edit Global Unit Dictionaries")]
+        public void IEditGlobalUnitDictionaries(Table table)
+        {
+            CurrentPage.As<GlobalUnitDictionariesPage>().GlobalDictionariesEdit(table.CreateSet<ArchitectObjectModel>());
+        }
+
+        [StepDefinition(@"I delete Global Unit Dictionaries")]
+        public void IDeleteGlobalUnitDictionaries(Table table)
+        {
+            CurrentPage.As<GlobalUnitDictionariesPage>().GlobalDictionariesDelete(table.CreateSet<ArchitectObjectModel>());
+        }
+
+        #endregion
+
+
+    }
 }
