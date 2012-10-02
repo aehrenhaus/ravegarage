@@ -103,17 +103,6 @@ namespace Medidata.RBT.PageObjects.Rave
 
         public virtual string GetClassMapping(string name)
         {
-            //NameValueCollection poClassMapping = new NameValueCollection();
-            //poClassMapping["Architect"] = "ArchitectPage";
-            //poClassMapping["User Administration"] = "UserAdministrationPage";
-            //poClassMapping["DDE"] = "DDEPage";
-            //poClassMapping["Reporter"] = "ReportsPage";
-            //poClassMapping["Query Management"] = "DCFQueriesPage";
-            //poClassMapping["PDF Generator"] = "FileRequestPage";
-            //poClassMapping["Lab Administration"] = "AnalytesPage";
-            //poClassMapping["Unit Conversions"] = "UnitConversionsPage";
-            //poClassMapping["Architect Library Page"] = "ArchitectLibraryPage";
-
             string className;
             switch (name)
             {
@@ -128,6 +117,9 @@ namespace Medidata.RBT.PageObjects.Rave
                     break;
                 case "Reporter":
                     className = "ReportsPage";
+                    break;
+                case "Site Administration":
+                    className = "SiteAdministrationHomePage";
                     break;
                 default:
                     className = name.Replace(" ", "") + "Page";
