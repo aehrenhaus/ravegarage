@@ -91,6 +91,14 @@ namespace Medidata.RBT.Features.Rave
 
         private static string GenerateSQLQueryForOIDSForCRFVersionAndTable(int crfVersion, string tableName, string OID = "", bool retrieveDuplicates = false)
         {
+            Dictionary<string, int> allowedTables = new Dictionary<string, int>();
+            allowedTables.Add("globaldatadictionaries", 1);
+            allowedTables.Add("globalunitdictionaries", 2);
+            allowedTables.Add("globalvariables", 3);
+            if (!allowedTables.ContainsKey(tableName.ToLower()))
+                throw new NotImplementedException("Method GenerateSQLQueryForOIDSForCRFVersionAndTable doesn't support table " + tableName + ".");
+
+
             string singularName;
 
             if (tableName.EndsWith("ies"))

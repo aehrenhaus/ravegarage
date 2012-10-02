@@ -219,183 +219,178 @@ Scenario: @PB_US18087_DT14073_03 As a Lab Administrator, when I create a name th
 	When I navigate to "Lab Administration"
 	And I navigate to "Global Variables"
 	And I add new Global Variables
-	#It has 255 characters
-	| Name |
-	| 1 Name Name Name Name Name Name Name Name Name Name Name Name Name Name Name Name Name Name Name Name 1 Name Name Name Name Name Name Name Name Name Name Name Name Name Name Name Name Name Name Name Name 1 Name Name Name Name Name Name Name Name Name Name|
+	#It has 50 characters
+	| Variable OID                                       | Format | Global Unit Dictionary | Global Data Dictionary |
+	| 1NAMENAMENAMENAMENAMENAMENAMENAMENAMENAMENAMENAMEN | $5     |                        |                        |
 	Then I verify Global Variable names exist
-	| Name |                                                                                                                                                                                                                                                     
-	| 1 Name Name Name Name Name Name Name Name Name Name Name Name Name Name Name Name Name Name Name Name 1 Name Name Name Name Name Name Name Name Name Name Name Name Name Name Name Name Name Name Name Name 1 Name Name Name Name Name Name Name Name Name Name |  
+	| Variable OID                                       | Format | Global Unit Dictionary | Global Data Dictionary |
+	| 1NAMENAMENAMENAMENAMENAMENAMENAMENAMENAMENAMENAMEN | $5     |                        |                        |
 	And I take a screenshot 
 	And I verify Global Variables with OID exist
 	| OID |                                                
 	| 1NAMENAMENAMENAMENAMENAMENAMENAMENAMENAMENAMENAMEN | 	
 	And I edit Global Variables
-	| From                                                                                                                                                                                                                                                            | To                                                                                                                                                                                                                                                              |
-	| 1 Name Name Name Name Name Name Name Name Name Name Name Name Name Name Name Name Name Name Name Name 1 Name Name Name Name Name Name Name Name Name Name Name Name Name Name Name Name Name Name Name Name 1 Name Name Name Name Name Name Name Name Name Name | 1 Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test 1 Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test 1 Test Test Test Test Test Test Test Test Test Test |
+	| Variable OID                                       | Format | Global Unit Dictionary | Global Data Dictionary |
+	| 1TESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTT | $5     |                        | sexREGAQT              |
 	Then I verify Global Variable names exist
-	|Name |
-	| 1 Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test 1 Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test 1 Test Test Test Test Test Test Test Test Test Test|
+	| Variable OID                                       |
+	| 1TESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTT |
 	And I take a screenshot
 	Then I verify Global Variables with OID exist 
-	| OID | 
-	| 1NAMENAMENAMENAMENAMENAMENAMENAMENAMENAMENAMENAMEN |
+	| OID                                                |
+	| 1TESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTT |
 	And I delete Global Variables
-	| Name |
-	| 1 Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test 1 Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test 1 Test Test Test Test Test Test Test Test Test Test|
+	| Variable OID                                       |
+	| 1TESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTT |
 	And I add new Global Variables
 	#It has 41 characters
-	| Name |
+	| Variable OID                              | Format | Global Unit Dictionary | Global Data Dictionary |
+	| abc123 abc123 abc123 abc123 abc123 abc123 | $5     |                        |               		   |
+	Then I verify Global Variable names exist
+	| Variable OID 							    |
 	| abc123 abc123 abc123 abc123 abc123 abc123 |
-	Then I verify Global Variable names exist
-	| Name |
-	| abc123 abc123 abc123 abc123 abc123 abc123 |
-	And I take a screenshot
-	Then I verify Global UVariables with OID exist
-	| OID |
-	| ABC123ABC123ABC123ABC123ABC123ABC123 | 
-	And I delete Global Variables
-	| Name |
-	| abc123 abc123 abc123 abc123 abc123 abc123|
-	And I add new Global Variables
-	#It has 33 characters
-	| Name | 									
-	| !@#$%^&*()abc123 !@#$%^&*()abc123 |
-	Then I verify Global Variable names exist
-	| Name |																								
-	| !@#$%^&*()abc123 !@#$%^&*()abc123 |
-	And I take a screenshot	
-	Then I verify Global Variables with OID exist 
-	| OID |
-	| ABC123ABC123 						|
-	And I delete Global Variables
-	| Name |
-	| !@#$%^&*()abc123 !@#$%^&*()abc123 |
-	And I add new Global Variables
-	#It has 86 characters
-	| Name |
-	| aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa |
-	Then I verify Global Variable names exist
-	| Name |
-	| aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa |
 	And I take a screenshot
 	Then I verify Global Variables with OID exist
-	| OID |
-	| AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA |
-	And I edit Global Variables
-	| From |To|
-	|aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa| aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaz |
-	Then I verify Global Variable names exist 
-	| Name |
-	| aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaz |
+	| OID                                       |
+	| abc123 abc123 abc123 abc123 abc123 abc123 |
+	And I delete Global Variables
+	| Variable OID                              |
+	| abc123 abc123 abc123 abc123 abc123 abc123 |
+	And I add new Global Variables
+	#It has 33 characters
+	| Variable OID                      | Format | Global Unit Dictionary | Global Data Dictionary |
+	| !@#$%^&*()abc123 !@#$%^&*()abc123 |        |                        | 		               |
+	Then I verify text "Format must be specified" exists
+	And I verify text "Enter valid data format" exists
+	And I navigate to "Global Variables"
+	And I add new Global Variables
+	#It has 33 characters
+	| Variable OID                      | Format | Global Unit Dictionary | Global Data Dictionary |
+	| !@#$%^&*()abc123 !@#$%^&*()abc123 | $5       |                        | 		               |
+	Then I verify Global Variable names exist
+	| Variable OID 							    |
+	| !@#$%^&*()abc123 !@#$%^&*()abc123			|
 	And I take a screenshot
+	Then I verify Global Variables with OID exist
+	| OID                                       |
+	| !@#$%^&*()abc123 !@#$%^&*()abc123			|
+	And I delete Global Variables
+	| Variable OID                              |
+	| !@#$%^&*()abc123 !@#$%^&*()abc123			|
+	And I add new Global Variables
+	#It has 33 characters
+	| Variable OID  | Format | Global Unit Dictionary | Global Data Dictionary |
+	| abc123 abc123 |        | $5                     | 		               |
+	And I take a screenshot	
+	Then I verify Global Variables with OID exist 
+	| OID           |
+	| abc123 abc123 |
+	And I delete Global Variables
+	| Variable OID  |
+	| abc123 abc123 |
+	And I add new Global Variables
+	#It has 50 characters
+	| Variable OID                                       | Format | Global Unit Dictionary | Global Data Dictionary |
+	| aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa | $5     |                        |               			|
+	Then I verify Global Variable names exist
+	| Variable OID                                       |
+	| aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa |
+	And I take a screenshot
+	Then I verify Global Variables with OID exist
+	| OID                                                |
+	| aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa |
+	And I edit Global Variables
+	| Variable OID                                       | Format | Global Unit Dictionary | Global Data Dictionary |
+	| aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaz | $5     |                        | 		                |
+	Then I verify Global Variable names exist 
+	| Variable OID                                       |
+	| aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaz |
+	And I take a screenshot
+	Then I verify Global Variables with OID exist
+	| OID                                                |
+	| aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaz |
 	And I add new Global Variables
 	#It has 86 characters
-	| Name |
-	| aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa |
-	Then I verify Global Variable names exist
-	| Name |
-	| aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa |
+	| Variable OID                                       | Format | Global Unit Dictionary | Global Data Dictionary |
+	| aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaz | $5     |                        |                        |
+	Then I verify text "Variable OID must be unique" exists
 	And I take a screenshot
-	Then I verify Global Variables do not have duplicate OIDs
 	And I delete Global Variables
-	| Name |
-	| aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaz |
-	And I delete Global Variables
-	| Name |
-	| aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa |
+	| Variable OID                                       |
+	| aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaz |
 	And I take a screenshot
 
 
 @release_2012.1.0
 @PB_US18087_DT14073_04
 @Draft
-Scenario: @PB_US18087_DT14073_04 As a Lab Administrator, when I create a name that is greater than 80 characters in Lab Admin, I do not see exception error message displayed.
+Scenario: @xxxxxxxPB_US18087_DT14073_04 As a Lab Administrator, when I create a name that is greater than 80 characters in Lab Admin, I do not see exception error message displayed.
 
 	When I navigate to "Lab Administration"
 	And I navigate to "Lab Unit Dictionaries"
 	And I add new Lab Unit Dictionaries
 	#It has 255 characters
-	| Name |
-	| 1 Name Name Name Name Name Name Name Name Name Name Name Name Name Name Name Name Name Name Name Name 1 Name Name Name Name Name Name Name Name Name Name Name Name Name Name Name Name Name Name Name Name 1 Name Name Name Name Name Name Name Name Name Name|
+	| Name                                                                                                                                                                                                                                                            |
+	| 1 Name Name Name Name Name Name Name Name Name Name Name Name Name Name Name Name Name Name Name Name 1 Name Name Name Name Name Name Name Name Name Name Name Name Name Name Name Name Name Name Name Name 1 Name Name Name Name Name Name Name Name Name Name |
 	Then I verify Lab Unit Dictionary names exist
-	| Name |                                                                                                                                                                                                                                                     
-	| 1 Name Name Name Name Name Name Name Name Name Name Name Name Name Name Name Name Name Name Name Name 1 Name Name Name Name Name Name Name Name Name Name Name Name Name Name Name Name Name Name Name Name 1 Name Name Name Name Name Name Name Name Name Name |  
+	| Name                                                                                                                                                                                                                                                            |
+	| 1 Name Name Name Name Name Name Name Name Name Name Name Name Name Name Name Name Name Name Name Name 1 Name Name Name Name Name Name Name Name Name Name Name Name Name Name Name Name Name Name Name Name 1 Name Name Name Name Name Name Name Name Name Name |
 	And I take a screenshot 
-	And I verify Lab Unit Dictionaries with OID exist
-	| OID |                                                
-	| 1NAMENAMENAMENAMENAMENAMENAMENAMENAMENAMENAMENAMEN | 	
 	And I edit Lab Unit Dictionaries
 	| From                                                                                                                                                                                                                                                            | To                                                                                                                                                                                                                                                              |
 	| 1 Name Name Name Name Name Name Name Name Name Name Name Name Name Name Name Name Name Name Name Name 1 Name Name Name Name Name Name Name Name Name Name Name Name Name Name Name Name Name Name Name Name 1 Name Name Name Name Name Name Name Name Name Name | 1 Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test 1 Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test 1 Test Test Test Test Test Test Test Test Test Test |
 	Then I verify Lab Unit Dictionary names exist
-	|Name |
-	| 1 Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test 1 Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test 1 Test Test Test Test Test Test Test Test Test Test|
+	| Name                                                                                                                                                                                                                                                            |
+	| 1 Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test 1 Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test 1 Test Test Test Test Test Test Test Test Test Test |
 	And I take a screenshot
-	Then I verify Lab Unit Dictionaries with OID exist 
-	| OID | 
-	| 1NAMENAMENAMENAMENAMENAMENAMENAMENAMENAMENAMENAMEN |
 	And I delete Lab Unit Dictionaries
-	| Name |
-	| 1 Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test 1 Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test 1 Test Test Test Test Test Test Test Test Test Test|
+	| Name                                                                                                                                                                                                                                                            |
+	| 1 Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test 1 Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test 1 Test Test Test Test Test Test Test Test Test Test |
 	And I add new Lab Unit Dictionaries
 	#It has 41 characters
-	| Name |
+	| Name                                      |
 	| abc123 abc123 abc123 abc123 abc123 abc123 |
 	Then I verify Lab Unit Dictionary names exist
-	| Name |
+	| Name                                      |
 	| abc123 abc123 abc123 abc123 abc123 abc123 |
 	And I take a screenshot
-	Then I verify Lab Unit Dictionaries with OID exist
-	| OID |
-	| ABC123ABC123ABC123ABC123ABC123ABC123 | 
 	And I delete Lab Unit Dictionaries
-	| Name |
-	| abc123 abc123 abc123 abc123 abc123 abc123|
+	| Name                                      |
+	| abc123 abc123 abc123 abc123 abc123 abc123 |
 	And I add new Lab Unit Dictionaries
 	#It has 33 characters
-	| Name | 									
+	| Name                              |
 	| !@#$%^&*()abc123 !@#$%^&*()abc123 |
 	Then I verify Lab Unit Dictionary names exist
-	| Name |																								
+	| Name                              |
 	| !@#$%^&*()abc123 !@#$%^&*()abc123 |
 	And I take a screenshot	
-	Then I verify Lab Unit Dictionaries with OID exist 
-	| OID |
-	| ABC123ABC123 						|
 	And I delete Lab Unit Dictionaries
-	| Name |
+	| Name                              |
 	| !@#$%^&*()abc123 !@#$%^&*()abc123 |
 	And I add new Lab Unit Dictionaries
 	#It has 86 characters
-	| Name |
+	| Name                                                                                   |
 	| aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa |
 	Then I verify Lab Unit Dictionary names exist
-	| Name |
+	| Name                                                                                   |
 	| aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa |
 	And I take a screenshot
-	Then I verify Lab Unit Dictionaries with OID exist
-	| OID |
-	| AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA |
 	And I edit Lab Unit Dictionaries
-	| From |To|
-	|aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa| aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaz |
+	| From                                                                                   | To                                                                                     |
+	| aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa | aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaz |
 	Then I verify Lab Unit Dictionary names exist 
-	| Name |
+	| Name                                                                                   |
 	| aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaz |
 	And I take a screenshot
 	And I add new Lab Unit Dictionaries
 	#It has 86 characters
-	| Name |
-	| aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa |
-	Then I verify Lab Unit Dictionary names exist
-	| Name |
-	| aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa |
-	And I take a screenshot
-	Then I verify Lab Unit Dictionaries do not have duplicate OIDs
-	And I delete Lab Unit Dictionaries
-	| Name |
+	| Name                                                                                   |
 	| aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaz |
+	And I verify text "Lab Unit Dictionary Name is not unique" exists
+	And I take a screenshot
+	And I navigate to "Lab Unit Dictionaries"
 	And I delete Lab Unit Dictionaries
-	| Name |
-	| aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa |
+	| Name                                                                                   |
+	| aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaz |
 	And I take a screenshot
