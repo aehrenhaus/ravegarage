@@ -52,8 +52,41 @@ namespace Medidata.RBT.Features.Rave.Steps.Seeding
                 CurrentPage.As<SiteAdministrationHomePage>().SearchForSite(site.UniqueName);
                 CurrentPage.As<SiteAdministrationHomePage>().ClickSite(site.UniqueName);
                 Project project = TestContext.GetExistingFeatureObjectOrMakeNew(studyName, () => new Project(studyName));
-                CurrentPage.As<SiteAdministrationSiteDetailsPage>().LinkStudyWithSite(site, project.UniqueName, studyEnvName);
+                CurrentPage.As<SiteAdministrationDetailsPage>().LinkStudyWithSite(site, project.UniqueName, studyEnvName);
             }
         }
+
+        /// <summary>
+        /// Search for site.
+        /// </summary>
+        [StepDefinition(@"I search for site ""([^""]*)""")]
+        public void ISearchForSite__(string siteName)
+        {
+            var currentPage  = CurrentPage.As<SiteAdministrationHomePage>();
+            currentPage.SearchForSite(siteName);            
+        }
+
+        /// <summary>
+        /// Open site details.
+        /// </summary>
+        [StepDefinition(@"I select Site Details for Site ""([^""]*)""")]
+        public void ISelectSiteDetailsForSite__(string siteName)
+        {
+            var currentPage = CurrentPage.As<SiteAdministrationHomePage>();
+            currentPage.ClickSite(siteName);
+        }
+
+
+        /// <summary>
+        /// Select additional details for study.
+        /// </summary>
+        [StepDefinition(@"I select ""([^""]*)"" for Study ""([^""]*)"" in Environment ""([^""]*)""")]
+        public void ISelect__ForStudy__inEnvironment__(string elementName, string studyName, string environment)
+        {
+            var currentPage = CurrentPage.As<SiteAdministrationDetailsPage>();
+            currentPage.SelectElementInStudySite(elementName, studyName, environment);
+
+        }
+
     }
 }

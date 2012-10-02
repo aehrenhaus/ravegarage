@@ -50,7 +50,7 @@ namespace Medidata.RBT.PageObjects.Rave.SiteAdministration
         /// </summary>
         /// <param name="siteName">Name of the site to click</param>
         /// <returns>Returns the SiteAdministrationSiteDetailsPage for the clicked site</returns>
-        public SiteAdministrationSiteDetailsPage ClickSite(string siteName)
+        public SiteAdministrationDetailsPage ClickSite(string siteName)
         {
             int foundOnPage;
             IWebElement siteLink = this.FindInPaginatedList("", () =>
@@ -66,8 +66,8 @@ namespace Medidata.RBT.PageObjects.Rave.SiteAdministration
                 throw new Exception("User not found in result table: " + siteName);
 
             siteLink.Click();
-            TestContext.CurrentPage = new SiteAdministrationSiteDetailsPage();
-            return new SiteAdministrationSiteDetailsPage();
+            TestContext.CurrentPage = new SiteAdministrationDetailsPage();
+            return new SiteAdministrationDetailsPage();
         }
 
         #region ICanPaginate
