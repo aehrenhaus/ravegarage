@@ -93,7 +93,7 @@ Background:
 	#	|Check Function	|IsEqualTo		|		|
 	#And Edit Check "ADD_AE" exists with "Check Actions"	
 	#	|Adverse Events	|AEMOR1	|Set Datapoint Visible: TRUE |
-	#	|Adverse Events	|AEMOR2	|Set Datapoint Visible: TRUE |	
+	#	|Adverse Events	|AEMOR2	|Set Datapoint Visible: TRUE |
 	#And I publish and push CRF Version "CRF Version<RANDOMNUMBER>" of Draft "<Source Draft>" to site "Site 01" in Project "**US17415_DT14115" for Enviroment "Prod"
 
 #----------------------------------------------------------------------------------------------------------------------------------------
@@ -281,7 +281,7 @@ Scenario: @PB_US17415_03 As an Investigator, when I sign the "Demographics" form
 @release_564_2012.1.0
 @PB_US17415_04
 @Validation	
-Scenario: @PB_US17415_04 As an Investigator, when I sign the "Test Demographics" form, the form level signature does not break when the ICDTAGE field is made visible.
+Scenario: @PB_US17415_04 As an Investigator, when I sign the "Test Demographics" form, the form level signature does not break when the ICDTAGE field is made invisible.
 	
 	And I select Study "**US17415_DT14115" and Site "Site 01"
 	And I create a Subject
@@ -315,6 +315,182 @@ Scenario: @PB_US17415_04 As an Investigator, when I sign the "Test Demographics"
 	And I choose "VS3 ({Var(ver2#)})" from "Source CRF"
 	And I choose "{Var(newversion2#)}" from "Target CRF"
 	And I click button "Create Plan"
+	And I take a screenshot
+	And I navigate to "Execute Plan"
+	And I migrate all Subjects
+	And I select link "Migration Results"
+	And I verify Job Status is set to Complete
+	And I take a screenshot	
+	And I navigate to "Home"
+	And I select Study "**US17415_DT14115" and Site "Site 01"
+    And I select a Subject "SUB{Var(num2)}"
+	And I select link "Test Demographics"
+	And I verify text "Please Sign - Default User  (defuser)" exists
+	And I take a screenshot
+	And I verify text "Derived Age" does not exist
+	And I take a screenshot	
+	And I click audit on Field "Gender"
+	And I verify Audits exist
+		| Audit Type          |  
+		| Signature Succeeded |
+	And I take a screenshot
+	And I select link "Test Demographics" in "Header"
+	And I click audit on Field "Ethnicity"
+	And I verify Audits exist
+		| Audit Type          |  
+		| Signature Succeeded |
+	And I take a screenshot	
+	And I select link "Test Demographics" in "Header"
+	And I click audit on Field "Country"
+	And I verify Audits exist
+		| Audit Type          |  
+		| Signature Succeeded |
+	And I take a screenshot	
+	And I select link "Test Demographics" in "Header"
+	And I click audit on Field "Informed Consent Date"
+	And I verify Audits exist
+		| Audit Type          |  
+		| Signature Succeeded |
+	And I take a screenshot	
+	And I select link "Record - Test Demographics"
+	And I select link "DataPage - Test Demographics"
+	And I verify Audits exist
+		| Audit Type          |
+		| Signature Succeeded |
+	And I take a screenshot
+
+#----------------------------------------------------------------------------------------------------------------------------------------
+@release_564_2012.1.0
+@PB_US17415_05
+@Validation	
+Scenario: @PB_US17415_05 As an Investigator, when I sign the "Demographics" form and "Field Visibility Changed" is checked in Amendment Manager>Configure Plan, the form level signature does not break when the ICDTAGE field is made visible.
+	
+	And I select Study "**US17415_DT14115" and Site "Site 01"
+	And I create a Subject
+		| Field          | Data              | Control Type |
+		| Subject Name   | SUB               | textbox      |
+		| Subject Number | {RndNum<num1>(5)} | textbox      |
+	And I note down "crfversion" to "ver#"
+	And I select link "Demographics"
+	And I enter data in CRF and save
+		| Field                 | Data        | Control Type |
+		| Gender                | Male        | dropdownlist |
+		| Ethnicity             | Asian       | dropdownlist |
+		| Country               | Canada      | dropdownlist |
+		| Informed Consent Date | 12 Jul 2012 | dateTime     |
+	And I take a screenshot
+	And I click button "Sign and Save"
+	And I sign the form with username "defuser" and password "password"
+	And I wait for 5 seconds
+	And I verify text "Please Sign - Default User  (defuser)" exists
+	And I take a screenshot
+
+	And I navigate to "Home"
+	And I navigate to "Architect"
+	And I select link "**US17415_DT14115" in "Active Projects"
+	And I select link "Target Draft" in "CRF Drafts"
+	And I publish CRF Version "Target{RndNum<TV#>(5)}"
+	And I note down "crfversion" to "newversion#"
+	And I select link "**US17415_DT14115" in "Header"
+	And I navigate to "Amendment Manager"
+	And I choose "VS3 ({Var(ver#)})" from "Source CRF"
+	And I choose "{Var(newversion#)}" from "Target CRF"
+	And I click button "Create Plan"
+	And I take a screenshot
+	And I navigate to "Configure Plan"
+	And I check "Field visibility changed"
+	And I select link "Update"
+	And I take a screenshot
+	And I navigate to "Execute Plan"
+	And I migrate all Subjects
+	And I select link "Migration Results"
+	And I verify Job Status is set to Complete
+	And I take a screenshot	
+	And I navigate to "Home"
+	And I select Study "**US17415_DT14115" and Site "Site 01"
+	And I select a Subject "SUB{Var(num1)}"
+	And I select link "Demographics"
+	And I verify text "Derived Age" exists
+	And I take a screenshot	
+	And I click audit on Field "Gender"
+	And I verify Audits exist
+		| Audit Type          |
+		| Signature Succeeded |
+	And I take a screenshot	  
+	And I select link "Demographics" in "Header"
+	And I click audit on Field "Ethnicity"
+	And I verify Audits exist
+		| Audit Type          |  
+		| Signature Succeeded |
+	And I take a screenshot	
+	And I select link "Demographics" in "Header"
+	And I click audit on Field "Country"
+	And I verify Audits exist
+		| Audit Type          |  
+		| Signature Succeeded |
+	And I take a screenshot	
+	And I select link "Demographics" in "Header"
+	And I click audit on Field "Informed Consent Date"
+	And I verify Audits exist
+		| Audit Type          |  
+		| Signature Succeeded |
+	And I take a screenshot	
+	And I select link "Record - Demographics"
+	And I select link "DataPage - Demographics"
+	And I verify Audits exist
+		| Audit Type          |
+		| Signature Succeeded |
+	And I take a screenshot
+	And I select link "SUB{Var(num1)}" in "Header"
+	And I select link "Demographics"
+	And I enter data in CRF and save
+		| Field       | Data | Control Type |
+		| Derived Age | 30   | textbox      |
+	And I verify text "Please Sign - Default User  (defuser)" exists
+	And I take a screenshot
+					
+#----------------------------------------------------------------------------------------------------------------------------------------
+@release_564_2012.1.0
+@PB_US17415_06
+@Validation	
+Scenario: @PB_US17415_06 As an Investigator, when I sign the "Test Demographics" form and "Field Visibility Changed" is checked in Amendment Manager>Configure Plan, the form level signature does not break when the ICDTAGE field is made invisible.
+	
+	And I select Study "**US17415_DT14115" and Site "Site 01"
+	And I create a Subject
+		| Field          | Data              | Control Type |
+		| Subject Name   | SUB               | textbox      |
+		| Subject Number | {RndNum<num2>(5)} | textbox      |
+	And I note down "crfversion" to "ver2#"
+	And I select link "Test Demographics"
+	And I enter data in CRF and save
+		| Field                 | Data        | Control Type |
+		| Gender                | Male        | dropdownlist |
+		| Ethnicity             | Asian       | dropdownlist |
+		| Country               | Canada      | dropdownlist |
+		| Informed Consent Date | 12 Jul 2012 | dateTime     |
+		| Derived Age           | 30          | textbox      |
+	And I take a screenshot
+	And I click button "Sign and Save"
+	And I sign the form with username "defuser" and password "password"
+	And I wait for 5 seconds
+	And I verify text "Please Sign - Default User  (defuser)" exists
+	And I take a screenshot
+
+	And I navigate to "Home"
+	And I navigate to "Architect"
+	And I select link "**US17415_DT14115" in "Active Projects"
+	And I select link "Target Draft" in "CRF Drafts"
+	And I publish CRF Version "Target2{RndNum<TV#>(5)}"
+	And I note down "crfversion" to "newversion2#"
+	And I select link "**US17415_DT14115" in "Header"
+	And I navigate to "Amendment Manager"
+	And I choose "VS3 ({Var(ver2#)})" from "Source CRF"
+	And I choose "{Var(newversion2#)}" from "Target CRF"
+	And I click button "Create Plan"
+	And I take a screenshot
+	And I navigate to "Configure Plan"
+	And I check "Field visibility changed"
+	And I select link "Update"
 	And I take a screenshot
 	And I navigate to "Execute Plan"
 	And I migrate all Subjects
