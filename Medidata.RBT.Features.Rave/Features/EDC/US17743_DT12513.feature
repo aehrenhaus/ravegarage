@@ -25,10 +25,11 @@ Background:
 @PB_US17743_DT12513_01
 @Draft
 Scenario: @PB_US17743_DT12513_01 As a Study Coordinator, when I enter a time of 12:00 PM, I am able to correctly view the data through the Clinical Views.
-	When I select Study "US17743_DT12513_SJ" and Site "Site 1"
-	And I create a subject
-	| Field      | Data                 |
-	| Subject ID | SUB{RndNum<num1>(3)} |
+	When I select Study "US17743_DT12513_SJ" and Site "Site 01"
+	And I create a Subject
+	| Field            | Data              |
+	| Subject Initials | SUB               |
+	| Subject number   | {RndNum<num1>(3)} |
 	And I take a screenshot
 	And I select link "Visit Date"
 	And I enter data in CRF and save
@@ -61,14 +62,15 @@ Scenario: @PB_US17743_DT12513_01 As a Study Coordinator, when I enter a time of 
 Scenario: @PB_US17743_DT12513_02 As a Study Coordinator, when I change a time to 12:00 PM, I am able to correctly view the data through the Clinical Views.
 	
 	When I select Study "US17743_DT12513_SJ" and Site "Site 1"
-	And I create a subject
-	| Field      | Data                 |
-	| Subject ID | SUB{RndNum<num1>(3)} |
+	And I create a Subject
+	| Field            | Data              |
+	| Subject Initials | SUB               |
+	| Subject number   | {RndNum<num1>(3)} |
 	And I take a screenshot
 	And I select link "Visit Date"
 	And I enter data in CRF and save
 	| Field      | Data                 |
-	| Visit Date | 20 Jan 2012 11 59 AM |
+	| Visit Date | 20 Jan 2012 12 00 AM |
 	And I take a screenshot
 	And I navigate to "Home"
 	And I navigate to "Configuration"
@@ -90,7 +92,7 @@ Scenario: @PB_US17743_DT12513_02 As a Study Coordinator, when I change a time to
 	And I click button "Run"
 	Then I verify rows exist in "Result" table
 	| Subject              | Site    | DataPageName | VISDT                  |
-	| SUB{RndNum<num1>(3)} | Site 01 | Visit Date   | 20/01/2012 11:59:00 AM |
+	| SUB{RndNum<num1>(3)} | Site 01 | Visit Date   | 20/01/2012 12:00:00 AM |
 	And I navigate to "Home"
 	And I select Study "US17743_DT12513_SJ"
 	And I select subject "SUB{Var(num1)}"
