@@ -4,6 +4,7 @@ using OpenQA.Selenium;
 using OpenQA.Selenium.Remote;
 using System.Threading;
 using System.Collections.Specialized;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Medidata.RBT.Common.Steps
 {
@@ -72,7 +73,12 @@ namespace Medidata.RBT.Common.Steps
 			CurrentPage = TestContext.POFactory.GetPageByUrl(uri);
         }
 
-   
+		[StepDefinition(@"I verify current URL is ""([^""]*)""")]
+		public void IVerifyCurrentURLIs____(string expectURL)
+		{
+			Assert.AreEqual(expectURL, Browser.Url);
+		}
+
 
 		/// <summary>
 		/// pageName is the PO class name without the 'Page' part. 

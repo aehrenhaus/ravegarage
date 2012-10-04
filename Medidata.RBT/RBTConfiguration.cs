@@ -30,14 +30,14 @@ namespace Medidata.RBT
             set { this["SnapshotName"] = value; }
         }
 
-        [ConfigurationProperty("TestResultPath", DefaultValue = "", IsRequired = false)]
+		[ConfigurationProperty("TestResultPath", DefaultValue = "", IsRequired = true)]
         public String TestResultPath
         {
             get { return (String)this["TestResultPath"]; }
             set { this["TestResultPath"] = value; }
         }
 
-        [ConfigurationProperty("AutoCloseBrowser", DefaultValue = true, IsRequired = false)]
+		[ConfigurationProperty("AutoCloseBrowser", DefaultValue = true, IsRequired = true)]
         public bool AutoCloseBrowser
         {
 
@@ -48,7 +48,7 @@ namespace Medidata.RBT
             set { this["AutoCloseBrowser"] = value; }
         }
 
-        [ConfigurationProperty("TakeScreenShots", DefaultValue = true, IsRequired = false)]
+		[ConfigurationProperty("TakeScreenShots", DefaultValue = true, IsRequired = true)]
         public bool TakeScreenShots
         {
 
@@ -61,7 +61,7 @@ namespace Medidata.RBT
 
 
 
-        [ConfigurationProperty("BrowserName", DefaultValue = "Firefox", IsRequired = false)]
+		[ConfigurationProperty("BrowserName", DefaultValue = "Firefox", IsRequired = true)]
         public String BrowserName
         {
             get { return (String)this["BrowserName"]; }
@@ -70,28 +70,28 @@ namespace Medidata.RBT
 
 
 
-        [ConfigurationProperty("WebDriverPath", DefaultValue = "", IsRequired = false)]
+		[ConfigurationProperty("WebDriverPath", DefaultValue = "", IsRequired = true)]
         public String WebDriverPath
         {
             get { return (String)this["WebDriverPath"]; }
             set { this["WebDriverPath"] = value; }
         }
 
-        [ConfigurationProperty("GenerateReportAfterTest", DefaultValue = false, IsRequired = false)]
+		[ConfigurationProperty("GenerateReportAfterTest", DefaultValue = false, IsRequired = true)]
         public bool GenerateReportAfterTest
         {
             get { return (bool)this["GenerateReportAfterTest"]; }
             set { this["GenerateReportAfterTest"] = value; }
         }
 
-        [ConfigurationProperty("BrowserPath", DefaultValue = "", IsRequired = false)]
+		[ConfigurationProperty("BrowserPath", DefaultValue = "", IsRequired = true)]
         public String BrowserPath
         {
             get { return (String)this["BrowserPath"]; }
             set { this["BrowserPath"] = value; }
         }
 
-        [ConfigurationProperty("FirefoxProfilePath", DefaultValue = "", IsRequired = false)]
+		[ConfigurationProperty("FirefoxProfilePath", DefaultValue = "", IsRequired = true)]
         public String FirefoxProfilePath
         {
             get { return (String)this["FirefoxProfilePath"]; }
@@ -116,13 +116,16 @@ namespace Medidata.RBT
             }
         }
 
-        [ConfigurationProperty("SqlScriptsPath", DefaultValue = "", IsRequired = false)]
+		[ConfigurationProperty("SqlScriptsPath", DefaultValue = "", IsRequired = true)]
         public String SqlScriptsPath
         {
             get { return (String)this["SqlScriptsPath"]; }
             set { this["SqlScriptsPath"] = value; }
         }
 
+		/// <summary>
+		/// 
+		/// </summary>
         [ConfigurationProperty("ScenarioNamePrefix", DefaultValue = "", IsRequired = true)]
         public String ScenarioNamePrefix
         {
@@ -130,18 +133,5 @@ namespace Medidata.RBT
             set { this["ScenarioNamePrefix"] = value; }
         }
 
-        [ConfigurationProperty("ElementWaitTimeout", DefaultValue = 5, IsRequired = false)]
-        public int ElementWaitTimeout
-        {
-            get { return (int)this["ElementWaitTimeout"]; }
-            set { this["ElementWaitTimeout"] = value; }
-        }
-
-		[ConfigurationProperty("SwitchWindowWaitTime", DefaultValue = 10, IsRequired = false)]
-		public int SwitchWindowWaitTime
-		{
-			get { return (int)this["SwitchWindowWaitTime"]; }
-			set { this["SwitchWindowWaitTime"] = value; }
-		}
     }
 }

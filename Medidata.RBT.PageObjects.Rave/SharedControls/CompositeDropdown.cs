@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using OpenQA.Selenium;
 using Medidata.RBT.SeleniumExtension;
+using Medidata.RBT.SeleniumExtension;
 
 
 namespace Medidata.RBT.PageObjects.Rave
@@ -29,7 +30,7 @@ namespace Medidata.RBT.PageObjects.Rave
 			//IWebElement dropdownButton = field.TryFindElementBy(By.XPath("./span/input[position()=2]"));
 			//dropdownButton.Click();
 
-			var option = (this.Page as PageBase).WaitForElement(
+			var option = TestContext.Browser.WaitForElement(
 				driver => wrapper.FindElements(By.XPath("./div[position()=2]/div")).FirstOrDefault(x => x.Text == text),
 				Name + " not found: " + text
 				);
@@ -39,7 +40,7 @@ namespace Medidata.RBT.PageObjects.Rave
 
 		public void OpenWithinTime(int seconds)
 		{
-			var option = (this.Page as PageBase).WaitForElement(
+			var option = TestContext.Browser.WaitForElement(
 				driver => wrapper.FindElements(By.XPath("./div[position()=2]/div")).FirstOrDefault(x => true),"Not in time", seconds);
 
 		}

@@ -6,6 +6,7 @@ using OpenQA.Selenium.Support.PageObjects;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Remote;
 using System.Collections.Specialized;
+using Medidata.RBT.SeleniumExtension;
 
 namespace Medidata.RBT.PageObjects.Rave
 {
@@ -19,13 +20,13 @@ namespace Medidata.RBT.PageObjects.Rave
 		public override IWebElement GetElementByName(string identifier, string areaIdentifier = null, string listItem = null)
 		{
 			if (identifier == "Separator")
-				return this.WaitForElement("txtSeparator");
+				return Browser.WaitForElement("txtSeparator");
 			if (identifier == "File type")
-				return WaitForElement("ddlFileType");
+				return Browser.WaitForElement("ddlFileType");
 			if (identifier == "Export type")
-				return WaitForElement("ddlExportType");
+				return Browser.WaitForElement("ddlExportType");
 			if (identifier == "Save as Unicode")
-				return WaitForElement("chkEncoding");
+				return Browser.WaitForElement("chkEncoding");
 			return base.GetElementByName(identifier,areaIdentifier,listItem);
 		}
 	}

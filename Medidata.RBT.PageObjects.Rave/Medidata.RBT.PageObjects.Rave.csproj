@@ -37,6 +37,7 @@
     <Reference Include="ICSharpCode.SharpZipLib">
       <HintPath>..\ExternalDlls\ICSharpCode.SharpZipLib.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
     <Reference Include="Newtonsoft.Json">
       <HintPath>..\ExternalDlls\Newtonsoft.Json.dll</HintPath>
     </Reference>
@@ -100,15 +101,15 @@
     <Compile Include="EDC\IEDCFieldControl.cs" />
     <Compile Include="EDC\PortraitLogField.cs" />
     <Compile Include="Lab\AnalytesPage.cs" />
-    <Compile Include="Lab\LabUnitDictionariesPage.cs" />
-    <Compile Include="Lab\GlobalVariablesPage.cs" />
-    <Compile Include="Lab\GlobalUnitDictionariesPage.cs" />
-    <Compile Include="Lab\GlobalDataDictionariesPage.cs" />
     <Compile Include="Lab\CentralLabsPage.cs" />
     <Compile Include="Lab\CopyLabRanges.cs" />
-    <Compile Include="Lab\LabRangesPage.cs" />
+    <Compile Include="Lab\GlobalDataDictionariesPage.cs" />
+    <Compile Include="Lab\GlobalUnitDictionariesPage.cs" />
+    <Compile Include="Lab\GlobalVariablesPage.cs" />
     <Compile Include="Lab\LabPageBase.cs" />
+    <Compile Include="Lab\LabRangesPage.cs" />
     <Compile Include="Lab\LabsPage.cs" />
+    <Compile Include="Lab\LabUnitDictionariesPage.cs" />
     <Compile Include="Lab\UnitConversionsPage.cs" />
     <Compile Include="EDC\SignatureBox.cs" />
     <Compile Include="OtherPages\ActivatePage.cs" />
@@ -146,11 +147,12 @@
     <Compile Include="SiteAdministration\SiteAdministrationDetailsPage.cs" />
     <Compile Include="SiteAdministration\SiteAdministrationHomePage.cs" />
     <Compile Include="SiteAdministration\SiteAdministrationPage.cs" />
-    <Compile Include="TableModels\AuditModel.cs" />
-    <Compile Include="TableModels\ArchitectObjectModel.cs" />
-    <Compile Include="TableModels\CustomTierModel.cs" />
-    <Compile Include="TableModels\AnalyteRangeModel.cs" />
     <Compile Include="TableModels\AnalyteRangeAuditModel.cs" />
+    <Compile Include="TableModels\AnalyteRangeModel.cs" />
+    <Compile Include="TableModels\ArchitectObjectModel.cs" />
+    <Compile Include="TableModels\AuditModel.cs" />
+    <Compile Include="TableModels\CustomTierModel.cs" />
+    <Compile Include="TableModels\IFieldModel.cs" />
     <Compile Include="TableModels\LabModel.cs" />
     <Compile Include="TableModels\QueryAuditReportSearchModel.cs" />
     <Compile Include="TableModels\LabRangeModel.cs" />
@@ -158,6 +160,7 @@
     <Compile Include="TableModels\FieldModel.cs" />
     <Compile Include="TableModels\QuerySearchModel.cs" />
     <Compile Include="TableModels\ReportAssignmentModel.cs" />
+    <Compile Include="TableModels\ReportListModel.cs" />
     <Compile Include="TableModels\UnitConversionModel.cs" />
     <Compile Include="TSDV\BlockPlansPageBase.cs" />
     <Compile Include="TSDV\CustomTierDraftPage.cs" />

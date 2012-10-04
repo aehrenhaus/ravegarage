@@ -48,7 +48,7 @@ namespace Medidata.RBT.PageObjects.Rave.Configuration
         private void WaitForUploadToComplete()
         {
             int waitTime = 120;
-            this.WaitForElement(b =>
+			Browser.WaitForElement(b =>
             {
                 IWebElement currentStatus = Browser.FindElementByXPath("//span[@id = '_ctl0_Content_CurrentStatus']");
                 if (currentStatus.Text.Contains("Save successful"))

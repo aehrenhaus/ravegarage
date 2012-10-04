@@ -30,7 +30,7 @@ namespace Medidata.RBT.PageObjects.Rave.UserAdministrator
         private void WaitForUploadToComplete()
         {
             int waitTime = 120;
-            this.WaitForElement(b =>
+            Browser.WaitForElement(b =>
                 {
                     IWebElement currentStatus = Browser.FindElementByXPath("//span[@id = 'CurrentStatus']");
                     if (currentStatus.Text.Contains("Upload successful"))

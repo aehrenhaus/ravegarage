@@ -79,5 +79,28 @@ namespace Medidata.RBT.Features.Rave
 			CurrentPage.As<PromptsPage>().SearchInParameter(name, value);
 		}
 
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="table"></param>
+		[StepDefinition(@"I verify the following URL addresses in the address bar when I click ""Help"" link")]
+		public void IVerifyTheFollowingURLAddressesInTheAddressBarWhenIClickHelpLink(Table table)
+		{
+			var reports = table.CreateSet<ReportListModel>();
+			CurrentPage.As<ReportsPage>().VerifyHelpLinks(reports);
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="table"></param>
+		[StepDefinition(@"I verify the following URL addresses in the address bar when I click ""View Report Help"" link in Prompts page")]
+		public void IVerifyTheFollowingURLAddressesInTheAddressBarWhenIClickViewReportHelpLinkInPromptsPage(Table table)
+		{
+			var reports = table.CreateSet<ReportListModel>();
+			CurrentPage.As<ReportsPage>().VerifyHelpLinksInPromptsPage(reports);
+		}
+
+
 	}
 }

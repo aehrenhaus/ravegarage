@@ -6,6 +6,10 @@ using OpenQA.Selenium.Support.PageObjects;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Remote;
 using System.Collections.Specialized;
+using Medidata.RBT.SeleniumExtension;
+using TechTalk.SpecFlow;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+
 
 namespace Medidata.RBT.PageObjects.Rave
 {
@@ -33,6 +37,79 @@ namespace Medidata.RBT.PageObjects.Rave
 				poName = "CrystalReportPage";
 			return new PromptsPage(poName);         
         }
+
+		public override IWebElement GetElementByName(string identifier, string areaIdentifier = null, string listItem = null)
+		{
+			if (identifier == "Report Type")
+				return Browser.TryFindElementByPartialID( "ddlReportTypes");
+			return base.GetElementByName(identifier, areaIdentifier, listItem);
+		}
+
+		
+
+			
+		public void VerifyHelpLinks(IEnumerable<ReportListModel> reports)
+		{
+			HtmlTable t = Browser.Table("MyReportGrid");
+			//first make sure all reports in the list exist;
+			foreach (var report in reports)
+			{
+				Table query = new Table("Name");
+				query.AddRow(new string[] { report.Name });
+				var rows = t.FindMatchRows(query);
+				if (rows.Count == 0)
+				{
+					throw new Exception("Can't find report "+report.Name);
+				}
+			}
+			
+			foreach (var report in reports)
+			{
+				Table query = new Table("Name");
+				query.AddRow(new string[]{report.Name});
+				var rows = t.FindMatchRows(query);
+				var link = rows[0].FindElement(By.LinkText("Help"));
+				link.Click();
+
+				TestContext.SwitchToSecondBrowserWindow();
+				Assert.AreEqual(Browser.Url, report.URLAddress,"Url is different than expected");
+				TestContext.SwitchToMainBrowserWindow(true);
+			}
+		}
+
+		public void VerifyHelpLinksInPromptsPage(IEnumerable<ReportListModel> reports)
+		{
+			HtmlTable t = Browser.Table("MyReportGrid");
+			//first make sure all reports in the list exist;
+			foreach (var report in reports)
+			{
+				Table query = new Table("Name");
+				query.AddRow(new string[] { report.Name });
+				var rows = t.FindMatchRows(query);
+				if (rows.Count == 0)
+				{
+					throw new Exception("Can't find report "+report.Name);
+				}
+			}
+			
+			foreach (var report in reports)
+			{
+				Table query = new Table("Name");
+				query.AddRow(new string[]{report.Name});
+				var rows = t.FindMatchRows(query);
+				var link = rows[0].FindElement(By.LinkText(report.Name));
+				link.Click();
+				this.ClickLink("View Report Help");
+
+				TestContext.SwitchToSecondBrowserWindow();
+				Assert.AreEqual(Browser.Url, report.URLAddress,"Url is different than expected");
+				TestContext.SwitchToMainBrowserWindow(true);
+				this.GoBack();
+
+				//refresh the Selenium object , because page changed
+				t = Browser.Table("MyReportGrid");
+			}
+		}
 
 		public override string URL
 		{
