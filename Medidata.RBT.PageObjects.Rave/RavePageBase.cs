@@ -80,8 +80,11 @@ namespace Medidata.RBT.PageObjects.Rave
 
 		public IPage GoBack()
 		{
-			throw new NotImplementedException();
+			Browser.Navigate().Back();
+			return  TestContext.POFactory.GetPageByUrl(new Uri(Browser.Url));
 		}
+
+
         public virtual IEDCFieldControl FindLandscapeLogField(string fieldName, int rowIndex, ControlType controlType = ControlType.Default)
         {
             switch (controlType)
