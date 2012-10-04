@@ -9,7 +9,7 @@ using TechTalk.SpecFlow;
 using Medidata.RBT.SeleniumExtension;
 namespace Medidata.RBT.PageObjects.Rave
 {
-    public class GlobalVariablesPage : LabPageBase
+    public class GlobalVariablesPage : LabPageBase, ICanVerifyExist
     {
         
 
@@ -21,42 +21,41 @@ namespace Medidata.RBT.PageObjects.Rave
             }
         }
 
-        public void IAddNewGlobalVariables(IEnumerable<ArchitectObjectModel> dictionaries)
+        public void IAddNewGlobalVariables(IEnumerable<ArchitectObjectModel> variables)
 		{
             HtmlTable mainTable;
             //Browser.TryFindElementById("_ctl0_Content_MainDataGrid").EnhanceAs<HtmlTable>().Rows()[5].Textboxes()[0]
 
 
-            foreach (var dictionary in dictionaries)
+            foreach (var variable in variables)
             {             
                 Browser.TryFindElementByPartialID("_ctl0_Content_LinkButtonMainAddNew").Click();
                 mainTable = Browser.TryFindElementById("_ctl0_Content_MainDataGrid").EnhanceAs<HtmlTable>();
-                mainTable.Rows()[mainTable.Rows().Count - 2].Textboxes()[0].EnhanceAs<Textbox>().SetText(dictionary.Name);
+                mainTable.Rows()[mainTable.Rows().Count - 2].Textboxes()[0].EnhanceAs<Textbox>().SetText(variable.OID);
+                mainTable.Rows()[mainTable.Rows().Count - 2].Textboxes()[1].EnhanceAs<Textbox>().SetText(variable.Format);
                 Browser.ImageBySrc("../../Img/i_ccheck.gif").Click();
             }          
 		}
-
-
-        public bool GlobalDictionariesExistWithNames(IEnumerable<ArchitectObjectModel> dictionaries)
+        public bool GlobalVariablesExistWithOIDs(IEnumerable<ArchitectObjectModel> variables)
         {
             bool found = false;
-            foreach (var dictionary in dictionaries)
+            foreach (var variable in variables)
             {
                 found = false;
                 foreach (var row in Browser.TryFindElementById("_ctl0_Content_MainDataGrid").EnhanceAs<HtmlTable>().Rows().Skip(1))
-                    if (row.Children()[0].Text.Equals(dictionary.Name))
+                    if (row.Children()[0].Text.Equals(variable.OID))
                         found = true;
                 if (!found)
                     return false;
             }
             return found;
-        }        
-        public void GlobalDictionariesDelete(IEnumerable<ArchitectObjectModel> dictionaries)
+        }
+        public void GlobalVariablesDelete(IEnumerable<ArchitectObjectModel> variables)
         {
-            foreach (var dictionary in dictionaries)
+            foreach (var variable in variables)
             {
                 foreach (var row in Browser.TryFindElementById("_ctl0_Content_MainDataGrid").EnhanceAs<HtmlTable>().Rows().Skip(1))
-                    if (row.Children()[0].Text.Equals(dictionary.Name))
+                    if (row.Children()[0].Text.Equals(variable.OID))
                     {
                         row.Images().First(x => x.GetAttribute("src").EndsWith("i_cedit.gif")).Click();
                         Browser.Checkboxes()[0].Click();  // only one checkbox, so selecting
@@ -65,19 +64,45 @@ namespace Medidata.RBT.PageObjects.Rave
                     }
             }
         }
-        public void GlobalDictionariesEdit(IEnumerable<ArchitectObjectModel> dictionaries)
+        public void GlobalVariablesEdit(IEnumerable<ArchitectObjectModel> variables)
         {
-            foreach (var dictionary in dictionaries)
+            foreach (var variable in variables)
             {
                 foreach (var row in Browser.TryFindElementById("_ctl0_Content_MainDataGrid").EnhanceAs<HtmlTable>().Rows().Skip(1))
-                    if (row.Children()[0].Text.Equals(dictionary.From))
+                    if (row.Children()[0].Text.Equals(variable.From))
                     {
                         row.Images().First(x => x.GetAttribute("src").EndsWith("i_cedit.gif")).Click();
-                        Browser.TryFindElementByPartialID("_ctl0_Content_MainDataGrid__ct").EnhanceAs<Textbox>().SetText(dictionary.To);
+                        Browser.TryFindElementByPartialID("_ctl0_Content_MainDataGrid__ct").EnhanceAs<Textbox>().SetText(variable.To);
                         Browser.ImageBySrc("../../Img/i_ccheck.gif").Click();
                         return;
                     }
             }
         }
+
+        #region ICanVerifyExist
+
+        public bool VerifyTableRowsExist(string tableIdentifier, Table matchTable)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool VerifyControlExist(string identifier)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool VerifyTextExist(string identifier, string text)
+        {
+            if (identifier == null)
+            {
+                if (Browser.FindElementByTagName("body").Text.Contains(text))
+                    return true;
+                else
+                    return false;
+            }
+            throw new NotImplementedException();
+        }
+
+        #endregion
     }
 }

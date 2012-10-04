@@ -95,33 +95,33 @@ namespace Medidata.RBT.Features.Rave
 
         #endregion
 
-        //#region Global Variables
+        #region Global Variables
 
-        //[StepDefinition(@"I add new Global Variables")]
-        //public void IAddNewGlobalVariables(Table table)
-        //{
-        //    CurrentPage.As<GlobalVariablesPage>().IAddNewGlobalVariables(table.CreateSet<ArchitectObjectModel>());
-        //}
+        [StepDefinition(@"I add new Global Variables")] 
+        public void IAddNewGlobalVariables(Table table)
+        {
+            CurrentPage.As<GlobalVariablesPage>().IAddNewGlobalVariables(table.CreateSet<ArchitectObjectModel>());
+        }
 
-        //[StepDefinition(@"I verify Global Variable names exist")]
-        //public void IVerifyGlobalVariableNamesExist(Table table)
-        //{
-        //    bool exists = CurrentPage.As<GlobalVariablesPage>().GlobalDictionariesExistWithNames(table.CreateSet<ArchitectObjectModel>());
-        //    Assert.IsTrue(exists, "Global Data Dictionaries not found.");
-        //}
+        [StepDefinition(@"I verify Global Variable OIDs exist")]
+        public void IVerifyGlobalVariableNamesExist(Table table)
+        {
+            bool exists = CurrentPage.As<GlobalVariablesPage>().GlobalVariablesExistWithOIDs(table.CreateSet<ArchitectObjectModel>());
+            Assert.IsTrue(exists, "Global Variables not found.");
+        }
 
-        //[StepDefinition(@"I edit Global Variables")]
-        //public void IEditGlobalVariables(Table table)
-        //{
-        //    CurrentPage.As<GlobalVariablesPage>().GlobalDictionariesEdit(table.CreateSet<ArchitectObjectModel>());
-        //}
+        [StepDefinition(@"I edit Global Variables")]
+        public void IEditGlobalVariables(Table table)
+        {
+            CurrentPage.As<GlobalVariablesPage>().GlobalVariablesEdit(table.CreateSet<ArchitectObjectModel>());
+        }
 
-        //[StepDefinition(@"I delete Global Variables")]
-        //public void IDeleteGlobalVariables(Table table)
-        //{
-        //    CurrentPage.As<GlobalVariablesPage>().GlobalDictionariesDelete(table.CreateSet<ArchitectObjectModel>());
-        //}
+        [StepDefinition(@"I delete Global Variables")]
+        public void IDeleteGlobalVariables(Table table)
+        {
+            CurrentPage.As<GlobalVariablesPage>().GlobalVariablesDelete(table.CreateSet<ArchitectObjectModel>());
+        }
 
-        //#endregion
+        #endregion
     }
 }

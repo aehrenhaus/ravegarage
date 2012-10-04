@@ -220,103 +220,58 @@ Scenario: @PB_US18087_DT14073_03 As a Lab Administrator, when I create a name th
 	And I navigate to "Global Variables"
 	And I add new Global Variables
 	#It has 50 characters
-	| Variable OID                                       | Format | Global Unit Dictionary | Global Data Dictionary |
-	| 1NAMENAMENAMENAMENAMENAMENAMENAMENAMENAMENAMENAMEN | $5     |                        |                        |
-	Then I verify Global Variable names exist
-	| Variable OID                                       | Format | Global Unit Dictionary | Global Data Dictionary |
-	| 1NAMENAMENAMENAMENAMENAMENAMENAMENAMENAMENAMENAMEN | $5     |                        |                        |
+	| OID                                                | Format |
+	| 1NAMENAMENAMENAMENAMENAMENAMENAMENAMENAMENAMENAMEN | $5     |
+	Then I verify Global Variable OIDs exist
+	| OID                                                | 
+	| 1NAMENAMENAMENAMENAMENAMENAMENAMENAMENAMENAMENAMEN |    
 	And I take a screenshot 
-	And I verify Global Variables with OID exist
-	| OID |                                                
-	| 1NAMENAMENAMENAMENAMENAMENAMENAMENAMENAMENAMENAMEN | 	
-	And I edit Global Variables
-	| Variable OID                                       | Format | Global Unit Dictionary | Global Data Dictionary |
-	| 1TESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTT | $5     |                        | sexREGAQT              |
-	Then I verify Global Variable names exist
-	| Variable OID                                       |
+	And I edit Global Variables 
+	| From                                               | To                                                 |
+	| 1NAMENAMENAMENAMENAMENAMENAMENAMENAMENAMENAMENAMEN | 1TESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTT |
+	                   
+	Then I verify Global Variable OIDs exist  
+	| OID                                                | 
 	| 1TESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTT |
 	And I take a screenshot
-	Then I verify Global Variables with OID exist 
+	And I delete Global Variables 
 	| OID                                                |
 	| 1TESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTT |
-	And I delete Global Variables
-	| Variable OID                                       |
-	| 1TESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTT |
-	And I add new Global Variables
-	#It has 41 characters
-	| Variable OID                              | Format | Global Unit Dictionary | Global Data Dictionary |
-	| abc123 abc123 abc123 abc123 abc123 abc123 | $5     |                        |               		   |
-	Then I verify Global Variable names exist
-	| Variable OID 							    |
-	| abc123 abc123 abc123 abc123 abc123 abc123 |
-	And I take a screenshot
-	Then I verify Global Variables with OID exist
-	| OID                                       |
-	| abc123 abc123 abc123 abc123 abc123 abc123 |
-	And I delete Global Variables
-	| Variable OID                              |
-	| abc123 abc123 abc123 abc123 abc123 abc123 |
 	And I add new Global Variables
 	#It has 33 characters
-	| Variable OID                      | Format | Global Unit Dictionary | Global Data Dictionary |
-	| !@#$%^&*()abc123 !@#$%^&*()abc123 |        |                        | 		               |
+	| OID                               | Format |
+	| !@#$%^&*()abc123 !@#$%^&*()abc123 |        |    
 	Then I verify text "Format must be specified" exists
 	And I verify text "Enter valid data format" exists
 	And I navigate to "Global Variables"
 	And I add new Global Variables
 	#It has 33 characters
-	| Variable OID                      | Format | Global Unit Dictionary | Global Data Dictionary |
-	| !@#$%^&*()abc123 !@#$%^&*()abc123 | $5       |                        | 		               |
-	Then I verify Global Variable names exist
-	| Variable OID 							    |
-	| !@#$%^&*()abc123 !@#$%^&*()abc123			|
+	| OID                               | Format |
+	| !@#$%^&*()abc123 !@#$%^&*()abc123 | $5     |     
+	Then I verify Global Variable OIDs exist
+	| OID                               |
+	| !@#$%^&*()abc123 !@#$%^&*()abc123 |
 	And I take a screenshot
-	Then I verify Global Variables with OID exist
-	| OID                                       |
-	| !@#$%^&*()abc123 !@#$%^&*()abc123			|
 	And I delete Global Variables
-	| Variable OID                              |
-	| !@#$%^&*()abc123 !@#$%^&*()abc123			|
-	And I add new Global Variables
-	#It has 33 characters
-	| Variable OID  | Format | Global Unit Dictionary | Global Data Dictionary |
-	| abc123 abc123 |        | $5                     | 		               |
-	And I take a screenshot	
-	Then I verify Global Variables with OID exist 
-	| OID           |
-	| abc123 abc123 |
-	And I delete Global Variables
-	| Variable OID  |
-	| abc123 abc123 |
-	And I add new Global Variables
+	| OID                               |
+	| !@#$%^&*()abc123 !@#$%^&*()abc123 |
+	And I navigate to "Global Variables"
 	#It has 50 characters
-	| Variable OID                                       | Format | Global Unit Dictionary | Global Data Dictionary |
-	| aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa | $5     |                        |               			|
-	Then I verify Global Variable names exist
-	| Variable OID                                       |
-	| aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa |
-	And I take a screenshot
-	Then I verify Global Variables with OID exist
-	| OID                                                |
-	| aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa |
-	And I edit Global Variables
-	| Variable OID                                       | Format | Global Unit Dictionary | Global Data Dictionary |
-	| aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaz | $5     |                        | 		                |
-	Then I verify Global Variable names exist 
-	| Variable OID                                       |
-	| aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaz |
-	And I take a screenshot
-	Then I verify Global Variables with OID exist
+	And I add new Global Variables
+	| OID                                                | Format |
+	| aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaz | $5     |              
+	Then I verify Global Variable OIDs exist 
 	| OID                                                |
 	| aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaz |
+	And I take a screenshot
 	And I add new Global Variables
 	#It has 86 characters
-	| Variable OID                                       | Format | Global Unit Dictionary | Global Data Dictionary |
-	| aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaz | $5     |                        |                        |
+	| OID                                                | Format |
+	| aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaz | $5     |
 	Then I verify text "Variable OID must be unique" exists
 	And I take a screenshot
 	And I delete Global Variables
-	| Variable OID                                       |
+	| OID                                                |
 	| aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaz |
 	And I take a screenshot
 
@@ -324,7 +279,7 @@ Scenario: @PB_US18087_DT14073_03 As a Lab Administrator, when I create a name th
 @release_2012.1.0
 @PB_US18087_DT14073_04
 @Draft
-Scenario: @xxxxxxxPB_US18087_DT14073_04 As a Lab Administrator, when I create a name that is greater than 80 characters in Lab Admin, I do not see exception error message displayed.
+Scenario: @PB_US18087_DT14073_04 As a Lab Administrator, when I create a name that is greater than 80 characters in Lab Admin, I do not see exception error message displayed.
 
 	When I navigate to "Lab Administration"
 	And I navigate to "Lab Unit Dictionaries"

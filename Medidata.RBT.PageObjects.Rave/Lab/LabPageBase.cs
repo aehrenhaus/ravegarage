@@ -15,20 +15,18 @@ namespace Medidata.RBT.PageObjects.Rave
 
         public override IPage NavigateTo(string name)
         {
-            //d.v. add reference.  
             NameValueCollection poClassMapping = new NameValueCollection();
 
             poClassMapping["Unit Conversions"] = "UnitConversionsPage";
             poClassMapping["Global Data Dictionaries"] = "GlobalDataDictionariesPage";
             poClassMapping["Global Unit Dictionaries"] = "GlobalUnitDictionariesPage";
-            poClassMapping["Global Variables"] = "GlobalUnitDictionariesPage";
+            poClassMapping["Global Variables"] = "GlobalVariablesPage";
             poClassMapping["Lab Unit Dictionaries"] = "LabUnitDictionariesPage";
-            //global data dictionaries, unit dictionaries, etc
 
 
             poClassMapping["Central Labs"] = "CentralLabsPage";
             poClassMapping["Global Labs"] = "LabsPage";
-            //TODO: other mappings
+
 
             var leftNavContainer = Browser.FindElementById("TblOuter");
             var link = leftNavContainer.TryFindElementBy(By.LinkText(" " + name));

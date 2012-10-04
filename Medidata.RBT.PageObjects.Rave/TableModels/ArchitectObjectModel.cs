@@ -12,5 +12,6 @@ namespace Medidata.RBT.PageObjects.Rave
         public string To { get; set; }
         public string OID { get; set; }
         public bool Active { get; set; }
+        public string Format { get; set; }
     }
 }
