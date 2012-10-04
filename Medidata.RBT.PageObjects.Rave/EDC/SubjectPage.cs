@@ -30,7 +30,7 @@ namespace Medidata.RBT.PageObjects.Rave
 			expandButton.Click();
 			
 			//wait for contents to load
-			this.WaitForElement(driver => Browser.FindElementByXPath("//body[@style='cursor: default;']"));
+			Browser.WaitForElement(driver => Browser.FindElementByXPath("//body[@style='cursor: default;']"));
 
 
 			return this;

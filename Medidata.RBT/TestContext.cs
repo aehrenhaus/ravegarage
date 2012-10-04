@@ -32,9 +32,7 @@ namespace Medidata.RBT
 
 		public static void SwitchBrowserWindow(string windowName)
 		{
-			Browser.WaitForElement(By.TagName("body"));
-			Thread.Sleep(RBTConfiguration.Default.SwitchWindowWaitTime);
-
+			
 			bool found = false;
 			IWebDriver window = null;
 			foreach (var handle in Browser.WindowHandles)
@@ -47,22 +45,22 @@ namespace Medidata.RBT
 				}
 			}
 			if (!found) throw new Exception(string.Format("window {0} not found", windowName));
-			Browser = (window as RemoteWebDriver);
+			while (Browser.Url == "about:blank")
+				Thread.Sleep(500);
 			
 			CurrentPage = TestContext.POFactory.GetPageByUrl(new Uri(Browser.Url));
 		}
 
 		public static void SwitchToSecondBrowserWindow()
 		{
-			Browser.WaitForElement(By.TagName("body"));
-			Thread.Sleep(RBTConfiguration.Default.SwitchWindowWaitTime);
-
 			if (Browser.WindowHandles.Count < 2)
 				throw new Exception("There isn't a second window");
 			var secondWindowHandle = Browser.WindowHandles[1];
 
-			IWebDriver window = Browser.SwitchTo().Window(secondWindowHandle); ;
+			IWebDriver window = Browser.SwitchTo().Window(secondWindowHandle);
 
+			while (Browser.Url == "about:blank")
+				Thread.Sleep(500);
 			CurrentPage = TestContext.POFactory.GetPageByUrl(new Uri(Browser.Url));
 		}
 
@@ -403,7 +401,8 @@ namespace Medidata.RBT
 					p.SetPreference("browser.download.folderList",2);
 					p.SetPreference("browser.download.manager.showWhenStarting", false);
 					p.SetPreference("browser.download.dir", RBTConfiguration.Default.DownloadPath.ToUpper());
-					p.SetPreference("browser.helperApps.neverAsk.saveToDisk", "application/zip");
+					p.SetPreference("browser.helperApps.neverAsk.saveToDisk", "application/zip;application/pdf");
+			
 					_webdriver = new FirefoxDriver(bin, p);
 					break;
 

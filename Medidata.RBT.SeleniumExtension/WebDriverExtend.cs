@@ -26,10 +26,10 @@ namespace Medidata.RBT.SeleniumExtension
 		}
 
 
-		private static IWebElement waitForElement( IWebDriver driver, Func<IWebDriver, IWebElement> getElement, string errorMessage = null, double timeOutSecond = 5)
+		private static IWebElement waitForElement( IWebDriver driver, Func<IWebDriver, IWebElement> getElement, string errorMessage = null, int? timeOutSecond =null)
 		{
-
-			var wait = new WebDriverWait(driver, TimeSpan.FromSeconds(timeOutSecond));
+			timeOutSecond = timeOutSecond ?? 10;
+			var wait = new WebDriverWait(driver, TimeSpan.FromSeconds(timeOutSecond.Value));
 			IWebElement ele = null;
 			try
 			{
@@ -44,19 +44,19 @@ namespace Medidata.RBT.SeleniumExtension
 			}
 			return ele;
 		}
-		
-		public static IWebElement WaitForElement(this IWebDriver driver, Func<IWebDriver, IWebElement> getElement, string errorMessage = null, double timeOutSecond =5)
+
+		public static IWebElement WaitForElement(this IWebDriver driver, Func<IWebDriver, IWebElement> getElement, string errorMessage = null, int? timeOutSecond = null)
 		{
 			return waitForElement(driver, getElement, errorMessage, timeOutSecond);
 		}
 
-		public static IWebElement WaitForElement(this IWebDriver driver, By by, string errorMessage = null, double timeOutSecond = 5)
+		public static IWebElement WaitForElement(this IWebDriver driver, By by, string errorMessage = null, int? timeOutSecond = null)
 		{
 			return waitForElement(driver, browser => browser.FindElement(by), errorMessage, timeOutSecond);
 		}
 
 
-		public static IWebElement WaitForElement(this IWebDriver driver, string partialID, Func<IWebElement, bool> predicate=null, string errorMessage = null, double timeOutSecond = 5)
+		public static IWebElement WaitForElement(this IWebDriver driver, string partialID, Func<IWebElement, bool> predicate = null, string errorMessage = null, int? timeOutSecond = null)
 		{
 			
 			Func<IWebDriver, IWebElement> func =browser => browser.FindElements(By.XPath(".//*[contains(@id,'" + partialID + "')]")).FirstOrDefault((predicate==null)?(c=>true):predicate);

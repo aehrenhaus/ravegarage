@@ -40,7 +40,7 @@ namespace Medidata.RBT.PageObjects.Rave
             {
 			    var paraTR = FindParameterTr(name);
 			    //wait till the div div becomes visible, that means the table is loaded complete
-			    var div = this.WaitForElement(x => paraTR.TryFindElementBy(By.XPath("./td[position()=2]/table/tbody/tr[position()=2]/td/div[@style='display: block;']")),
+				var div = Browser.WaitForElement(x => paraTR.TryFindElementBy(By.XPath("./td[position()=2]/table/tbody/tr[position()=2]/td/div[@style='display: block;']")),
 				    "timeout before div becomes visible");
 
 			    var tbl = paraTR.FindElements(By.XPath(".//td[@style='border-width:0px;border-collapse:collapse;']/table"))[1].EnhanceAs<HtmlTable>();
@@ -88,15 +88,15 @@ namespace Medidata.RBT.PageObjects.Rave
 		{			
 			var paraTR = FindParameterTr(name);
 			//wait till the div div becomes visible, that means the table is loaded complete
-			var div = this.WaitForElement(x => paraTR.TryFindElementBy(By.XPath("./td[position()=2]/table/tbody/tr[position()=2]/td/div[@style='display: block;']")),
+			var div = Browser.WaitForElement(x => paraTR.TryFindElementBy(By.XPath("./td[position()=2]/table/tbody/tr[position()=2]/td/div[@style='display: block;']")),
 				"timeout before div becomes visible");
 
 			var textbox = paraTR.Textbox("SearchTxt");
 			textbox.SetText(value);
 			var btnSearch = paraTR.TryFindElementByPartialID("SearchBtn");
 			btnSearch.Click();
-		
-			this.WaitForElement(b =>
+
+			Browser.WaitForElement(b =>
 			{
 
 				var working = paraTR.TryFindElementByPartialID("Working2");

@@ -4,9 +4,15 @@
 		<section name="specFlow" type="TechTalk.SpecFlow.Configuration.ConfigurationSectionHandler,TechTalk.SpecFlow" />
 		<section name="RBTConfiguration" type="Medidata.RBT.RBTConfiguration, Medidata.RBT" />
 		<section name="RaveConfiguration" type="Medidata.RBT.PageObjects.Rave.RaveConfiguration, Medidata.RBT.PageObjects.Rave" />
+		<section name="SeleniumConfiguration" type="Medidata.RBT.SeleniumExtension.SeleniumConfiguration, Medidata.RBT.SeleniumExtension" />
 		<section name="dataConfiguration" type="Microsoft.Practices.EnterpriseLibrary.Data.Configuration.DatabaseSettings, Microsoft.Practices.EnterpriseLibrary.Data, Version=5.0.414.0, Culture=neutral, PublicKeyToken=null" requirePermission="true" />
 	</configSections>
 
+
+	<SeleniumConfiguration
+		WaitElementTimeout="10"
+		/>
+	
 	<!--DownloadPath SHOULD NOT be used for anything else and SHOULD NOT contain other files. 
 		It should be an empty folder, and be the same as your browser's download folder. -->
 	<RBTConfiguration
@@ -22,11 +28,10 @@
 		DatabaseConnection="RaveConnection"
 		GenerateReportAfterTest="true"
 		ScenarioNamePrefix="PB_"
-		ElementWaitTimeout="5"
 		/>
 
 	<RaveConfiguration
-		RaveURL ="rave564nycdev02a.mdsol.com/MedidataRAVE/"
+		RaveURL ="http://rave564nycdev02a.mdsol.com/MedidataRAVE/"
 		RWSURL=""
 		DefaultUser="defuser"
 		DefaultUserPassword="password"

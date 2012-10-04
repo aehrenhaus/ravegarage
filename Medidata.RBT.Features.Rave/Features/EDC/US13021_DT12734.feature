@@ -66,60 +66,14 @@ Feature: US13021_DT12734
 Scenario: @US13021_DT12734_01 As a Data Manager, when I select the Help link, in the Help column, in Reporter > My Reports, then I see the cloud-based report help page.
 
 	Given I am logged in to Rave with username "defuser" and password "password"
-	When I click link "Reporter"
-	And I select "Standard Reports" for Report Type
-	And I click link "Help" for each report
-	Then I Verify the following URL addresses in the address bar for the reports listed below
+	When I select link "Reporter"
+	#And I choose "Standard Reports" from "Report Type"
+	#And I click button "Search"
+	Then I verify the following URL addresses in the address bar when I click "Help" link
 	| Name                        		| URL Address                                                                                         |
-	| 360 Data Cleaning Progress Report | http://rave-webhelp.s3.amazonaws.com/360Reports/360_DATACLEANINGPROGRESS/WebHelp_ENG/main.htm 	  |
-	| Report Name                       | URL Address                                                                                         |
-	| 360 Data Cleaning Progress Report | http://rave-webhelp.s3.amazonaws.com/360Reports/360_DATACLEANINGPROGRESS/WebHelp_ENG/main.htm       |
-	| 360 Enrollment Report             | http://rave-webhelp.s3.amazonaws.com/360Reports/360_ENROLLMENT/WebHelp_ENG/main.htm                 |
-	| 360 Query Management Report       | http://rave-webhelp.s3.amazonaws.com/360Reports/360_QUERYMANAGEMENT/WebHelp_ENG/main.htm            |
-	| Architect Difference Report       | http://rave-webhelp.s3.amazonaws.com/Reports_Manuals/Manuals_ENG/ArchitectDifferenceReport.pdf      |
-	| Audit Trail Report                | http://rave-webhelp.s3.amazonaws.com/Reports_Manuals/Manuals_ENG/AuditTrailReport.pdf               |
-	| Audit Trail Report 2.0            | http://rave-webhelp.s3.amazonaws.com/Reports_Manuals/Manuals_ENG/AuditTrailReportv2.pdf             |
-	| Changes After Report              | http://rave-webhelp.s3.amazonaws.com/Reports_Manuals/Manuals_ENG/ChangesAfterReport.pdf             |
-	| Check Error Report                | http://rave-webhelp.s3.amazonaws.com/Reports_Manuals/Manuals_ENG/CheckErrorReport.pdf               |
-	#| Clinical Significance Report      | http://rave-webhelp.s3.amazonaws.com/Reports_Manuals/Manuals_ENG/ClinicalSignificanceReport.pdf     |
-	| Coding Assignments Report         | http://rave-webhelp.s3.amazonaws.com/Reports_Manuals/Manuals_ENG/CodingAssignmentsReport.pdf        |
-	| Coding Hierarchy Report           | http://rave-webhelp.s3.amazonaws.com/Reports_Manuals/Manuals_ENG/CodingHierarchyReport.pdf          |
-	#| Comprehensive Page Status Report  | http://rave-webhelp.s3.amazonaws.com/Reports_Manuals/Manuals_ENG/ComprehensivePageStatusReport.pdf  |
-	| Concurrent Users Report           | http://rave-webhelp.s3.amazonaws.com/Reports_Manuals/Manuals_ENG/ConcurrentUsersReport.pdf          |
-	| Data Listing Report               | http://rave-webhelp.s3.amazonaws.com/Reports_Manuals/Manuals_ENG/DataListingReport.pdf              |
-	| Edit Check Log Report             | http://rave-webhelp.s3.amazonaws.com/Reports_Manuals/Manuals_ENG/EditCheckLogReport.pdf             |
-	| Edit Check Summary Report         | http://rave-webhelp.s3.amazonaws.com/Reports_Manuals/Manuals_ENG/EditCheckSummaryReport.pdf         |
-	| Edit Check Usage Summary Report   | http://rave-webhelp.s3.amazonaws.com/Reports_Manuals/Manuals_ENG/EditCheckUsageSummaryReport.pdf    |
-	| eLearning Status Report           | http://rave-webhelp.s3.amazonaws.com/Reports_Manuals/Manuals_ENG/eLearningStatusReport.pdf          |
-	| Enrollment Report                 | http://rave-webhelp.s3.amazonaws.com/Reports_Manuals/Manuals_ENG/EnrollmentReport.pdf               |
-	| Lab Standard Groups Report        | http://rave-webhelp.s3.amazonaws.com/Reports_Manuals/Manuals_ENG/Lab%20StandardGroupsReport.pdf     |
-	| Lab Analytes Report               | http://rave-webhelp.s3.amazonaws.com/Reports_Manuals/Manuals_ENG/LabAnalytesReport.pdf              |
-	| Lab Units Report                  | http://rave-webhelp.s3.amazonaws.com/Reports_Manuals/Manuals_ENG/LabUnitsReport.pdf                 |
-	| Migration Audit Trail Report      | http://rave-webhelp.s3.amazonaws.com/Reports_Manuals/Manuals_ENG/MigrationAuditTrailReport.pdf      |
-	| Monitoring Visit Summary Report   | http://rave-webhelp.s3.amazonaws.com/Reports_Manuals/Manuals_ENG/MonitoringVisitSummaryReport.pdf   |
-	| Object Reuse Report               | http://rave-webhelp.s3.amazonaws.com/Reports_Manuals/Manuals_ENG/ObjectReuseReport.pdf              |
-	| Page Status Report                | http://rave-webhelp.s3.amazonaws.com/Reports_Manuals/Manuals_ENG/PageStatusReport.pdf               |
-	| Page Status Report 2.0            | http://rave-webhelp.s3.amazonaws.com/Reports_Manuals/Manuals_ENG/PageStatusReportv2.pdf             |
-	| Productivity Report               | http://rave-webhelp.s3.amazonaws.com/Reports_Manuals/Manuals_ENG/ProductivityReport.pdf             |
-	| Project Lab Settings Report       | http://rave-webhelp.s3.amazonaws.com/Reports_Manuals/Manuals_ENG/ProjectLabSettingsReport.pdf       |
-	| Protocol Deviations Report        | http://rave-webhelp.s3.amazonaws.com/Reports_Manuals/Manuals_ENG/ProtocolDeviationsReport.pdf       |
-	| Query Aging Report                | http://rave-webhelp.s3.amazonaws.com/Reports_Manuals/Manuals_ENG/QueryAgingReport.pdf               |
-	| Query Details Report              | http://rave-webhelp.s3.amazonaws.com/Reports_Manuals/Manuals_ENG/QueryDetailsReport.pdf             |
-	| Query Resolution Worksheet Report | http://rave-webhelp.s3.amazonaws.com/Reports_Manuals/Manuals_ENG/QueryResolutionWorksheetReport.pdf |
-	| Query Summary Report              | http://rave-webhelp.s3.amazonaws.com/Reports_Manuals/Manuals_ENG/QuerySummaryReport.pdf             |
-	| Report Listing Report             | http://rave-webhelp.s3.amazonaws.com/Reports_Manuals/Manuals_ENG/ReportListingReport.pdf            |
-	| SAS On Demand Report              | http://rave-webhelp.s3.amazonaws.com/Reports_Manuals/Manuals_ENG/SASOnDemandReport.pdf              |
-	| Site Administration Report        | http://rave-webhelp.s3.amazonaws.com/Reports_Manuals/Manuals_ENG/SiteAdministrationReport.pdf       |
-	| Sticky Note Report                | http://rave-webhelp.s3.amazonaws.com/Reports_Manuals/Manuals_ENG/StickyNoteReport.pdf               |
-	| Study Configuration Report        | http://rave-webhelp.s3.amazonaws.com/Reports_Manuals/Manuals_ENG/StudyConfigurationReport.pdf       |
-	| Study Media Report                | http://rave-webhelp.s3.amazonaws.com/Reports_Manuals/Manuals_ENG/StudyMediaReport.pdf               |
-	| Subject Compare Report            | http://rave-webhelp.s3.amazonaws.com/Reports_Manuals/Manuals_ENG/SubjectCompareReport.pdf           |
-	| Subject CRF Versions Report       | http://rave-webhelp.s3.amazonaws.com/Reports_Manuals/Manuals_ENG/SubjectCRFVersionsReport.pdf       |
-	| Subject PDF Report                | http://rave-webhelp.s3.amazonaws.com/Reports_Manuals/Manuals_ENG/SubjectPDFReport.pdf               |
-	#| Unit Conversions Report           | http://rave-webhelp.s3.amazonaws.com/Reports_Manuals/Manuals_ENG/UnitConversionsReport.pdf          |
-	#| Unit Dictionaries Report          | http://rave-webhelp.s3.amazonaws.com/Reports_Manuals/Manuals_ENG/UnitDictionariesReport.pdf         |
-	| User Listing Report               | http://rave-webhelp.s3.amazonaws.com/Reports_Manuals/Manuals_ENG/UserListingReport.pdf              |
-	| User Permissions History Report   | http://rave-webhelp.s3.amazonaws.com/Reports_Manuals/Manuals_ENG/UserPermissionsHistoryReport.pdf   |
+	| 360 Data Cleaning Progress Report | https://rave-webhelp.s3.amazonaws.com/360Reports/360_DATACLEANINGPROGRESS/WebHelp_ENG/main.htm       |
+	| 360 Data Cleaning Progress Report | https://rave-webhelp.s3.amazonaws.com/360Reports/360_DATACLEANINGPROGRESS/WebHelp_ENG/main.htm       |
+	
 	And I take a screenshot
 
 

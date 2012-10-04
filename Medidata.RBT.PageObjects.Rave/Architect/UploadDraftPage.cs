@@ -19,7 +19,7 @@ namespace Medidata.RBT.PageObjects.Rave
         /// <param name="filepath">Path to the UploadDraft to upload</param>
         public void UploadFile(string filepath)
         {
-            TestContext.Browser.FindElementById("CtrlDraftFile").SendKeys(filepath);
+            Browser.FindElementById("CtrlDraftFile").SendKeys(filepath);
             ClickButton("Upload");
             WaitForUploadToComplete();
         }
@@ -30,7 +30,7 @@ namespace Medidata.RBT.PageObjects.Rave
         private void WaitForUploadToComplete()
         {
             int waitTime = 480;
-            this.WaitForElement(b =>
+			Browser.WaitForElement(b =>
                 {
                     IWebElement currentStatus = Browser.FindElementByXPath("//span[@id = 'CurrentStatus']");
                     if (currentStatus.Text.Contains("Save successful"))

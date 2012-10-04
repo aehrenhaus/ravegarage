@@ -27,7 +27,7 @@ namespace Medidata.RBT.PageObjects.Rave
 			Browser.Dropdown("StudyDDL").SelectByText(env);
 			Thread.Sleep(1000);
 			this.ClickButton("Push");
-			this.WaitForElement(b =>
+			Browser.WaitForElement(b =>
 			{
 				var span = Browser.Span("SuccessMessageLBL");
 				if (span.Text == "")

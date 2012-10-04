@@ -58,6 +58,7 @@
     <Compile Include="EnhancedControls\Option.cs" />
     <Compile Include="EnhancedControls\RadioButton.cs" />
     <Compile Include="EnhancedControls\Hyperlink.cs" />
+    <Compile Include="SeleniumConfiguration.cs" />
     <Compile Include="SearchContext.cs" />
     <Compile Include="WebDriverExtend.cs" />
     <Compile Include="WebElement.cs" />
