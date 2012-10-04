@@ -26,7 +26,7 @@ Scenario: @PB_US18358_DT14073_01 As a Lab Administrator, when I upload Lab Loade
 	When I navigate to "Lab Administration"
 	And I select link "Lab Loader"
 	And I click button "Browse..."
-	And the "All_255" spreadsheet is downloaded
+	And the "All_255" spreadsheet is uploaded
 	And I take a screenshot
 	And I navigate to "Global Data Dictionaries"
 	Then I verify Global Data Dictionary names exist
