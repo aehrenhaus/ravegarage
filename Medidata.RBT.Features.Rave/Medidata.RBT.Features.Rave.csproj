@@ -85,7 +85,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>US17943.feature</DependentUpon>
     </Compile>
-    <Compile Include="Features\Architect\US18087_DT14073.feature.cs">
+    <Compile Include="Features\Labs\US18087_DT14073.feature.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>US18087_DT14073.feature</DependentUpon>
@@ -124,11 +124,6 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>564QueryRefiringLogic_StdForm_1FldEC.feature</DependentUpon>
-    </Compile>
-    <Compile Include="Features\EDC\US18358_DT140733.feature.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>US18358_DT14073.feature</DependentUpon>
     </Compile>
     <Compile Include="Features\EDC\US11913.feature.cs">
       <AutoGen>True</AutoGen>
@@ -184,6 +179,11 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>US17943.feature</DependentUpon>
+    </Compile>
+    <Compile Include="Features\Labs\US18358_DT140733.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>US18358_DT14073.feature</DependentUpon>
     </Compile>
     <Compile Include="Features\PDF\US12175_DT8545_lessthangreaterthaninPDF.feature.cs">
       <AutoGen>True</AutoGen>
@@ -351,7 +351,7 @@
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>US17943.feature.cs</LastGenOutput>
     </None>
-    <None Include="Features\Architect\US18087_DT14073.feature">
+    <None Include="Features\Labs\US18087_DT14073.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>US18087_DT14073.feature.cs</LastGenOutput>
     </None>
@@ -363,7 +363,7 @@
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>US13011_DT13976_AddCoderToConfigurationLoaderSpec.feature.cs</LastGenOutput>
     </None>
-    <None Include="Features\EDC\US18358_DT14073.feature">
+    <None Include="Features\Labs\US18358_DT14073.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>US18358_DT140733.feature.cs</LastGenOutput>
     </None>
