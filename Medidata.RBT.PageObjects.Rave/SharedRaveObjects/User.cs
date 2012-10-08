@@ -48,9 +48,9 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
                     if (userUploadName.StartsWith("SUPER USER"))
                         FileName = "SUPERUSER.xml";
                     else
-                        FileName = userUploadName;
+                        FileName = userUploadName + ".xml";
 
-                    FileLocation = TestContext.UploadPath + @"\Users\" + FileName + ".xml";
+                    FileLocation = TestContext.UploadPath + @"\Users\" + FileName;
                     Seed();
 
                     IPage pageBeforeActivation = TestContext.CurrentPage;

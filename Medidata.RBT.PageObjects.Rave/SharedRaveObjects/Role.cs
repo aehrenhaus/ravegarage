@@ -44,9 +44,9 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
                     if (roleUploadName.StartsWith("SUPER ROLE"))
                         fileName = "SUPERROLE.xml";
                     else
-                        fileName = roleUploadName;
+                        fileName = roleUploadName + ".xml";
 
-                    FileLocation = TestContext.UploadPath + @"\Roles\" + fileName + ".xml";
+                    FileLocation = TestContext.UploadPath + @"\Roles\" + fileName;
                     Seed();
                 }
             }
