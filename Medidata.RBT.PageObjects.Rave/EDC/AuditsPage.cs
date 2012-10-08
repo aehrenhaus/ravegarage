@@ -7,6 +7,8 @@ using OpenQA.Selenium;
 using OpenQA.Selenium.Remote;
 using Medidata.RBT.SeleniumExtension;
 using System.Collections.Specialized;
+using System.Reflection;
+using Medidata.RBT.PageObjects.Rave.SharedRaveObjects;
 namespace Medidata.RBT.PageObjects.Rave
 {
 	public class AuditsPage : RavePageBase
@@ -16,7 +18,7 @@ namespace Medidata.RBT.PageObjects.Rave
 		{
 			if (audit.AuditType == "Query Canceled")
 			{
-				return AuditExist_CancelQuery(audit.QueryMessage, position);
+				return AuditExist_CancelQuery(audit.QueryMessage, audit.User, audit.Time, position);
 			}
 
             else if (audit.AuditType == "Signature Succeeded")
@@ -31,12 +33,17 @@ namespace Medidata.RBT.PageObjects.Rave
 
             else if (audit.AuditType == "User entered")
             {
-                return AuditExist_UserEntered(audit.QueryMessage, position);
+                return AuditExist_UserEntered(audit.QueryMessage, audit.User, audit.Time, position);
             }
 
             else if (audit.AuditType == "DataPoint")
             {
-                return AuditExist_DataPoint(audit.QueryMessage, position);
+                return AuditExist_DataPoint(audit.QueryMessage, audit.User, audit.Time, position);
+            }
+
+            else if (audit.AuditType == "Add Events")
+            {
+                return AuditExist_AddEvents(audit.QueryMessage, audit.User, audit.Time, position);
             }
 
 			throw new Exception("Invalid audit type " + audit.AuditType);
@@ -51,59 +58,121 @@ namespace Medidata.RBT.PageObjects.Rave
         /// <param name="position"></param>
         /// <param name="isLatest"></param>
         /// <returns></returns>
-		public bool AuditExist(string message, int? position = null)
+		public bool AuditExist(string message,string user, string timeFormat, int? position = null)
 		{
 			IWebElement table = Browser.TryFindElementByPartialID("AuditsGrid");
+
+            bool? isSpecifiedData = null;
+            int auditPosition = 0;
 
             if (position.HasValue)
             {
                 //Since first row in every column will be column header text
-                int auditPosition = (int)position + 1;
-                var auditTD = table.FindElement(By.XPath("./tbody/tr[" + auditPosition +
-                    "]/td[1]"));
-
-                return auditTD.Text.Equals(message);
+                auditPosition = position.Value + 1;
+                if (!string.IsNullOrEmpty(message))
+                {
+                    var auditTD = table.FindElement(By.XPath("./tbody/tr[" + auditPosition +
+                        "]/td[1]"));
+                    isSpecifiedData = auditTD.Text.Equals(message);
+                    if (!isSpecifiedData.Value)
+                        return isSpecifiedData.Value;
+                }
             }
             else
             {
-                var auditTDs = table.FindElements(By.XPath("./tbody/tr[position()>1]/td[1]"));
-                var td = auditTDs.FirstOrDefault(x => x.Text.Contains(message));
+                if (!string.IsNullOrEmpty(message))
+                {
+                    var auditTDs = table.FindElements(By.XPath("./tbody/tr[position()>1]/td[1]"));
+                    var td = auditTDs.FirstOrDefault(x => x.Text.Contains(message));
+                    
+                    if (td != null)
+                    {
+                        auditPosition = auditTDs.IndexOf(td) + 1;
+                    }
 
-                return td != null;
+                    isSpecifiedData = (td != null);
+                    if (!isSpecifiedData.Value)
+                        return isSpecifiedData.Value;
+                }
             }
-			
+
+            if (!string.IsNullOrEmpty(user) && auditPosition > 0)
+            {
+                var auditUser = table.FindElement(By.XPath("./tbody/tr[" + auditPosition +
+                "]/td[2]"));
+
+                string[] specifiedUserDetail = user.Split('(', ')');
+                string[] actualUserDetail = auditUser.Text.Split('(', ')');
+
+                string specifiedFirstName = specifiedUserDetail[0].TrimEnd(' ');
+                string actualFirstName = actualUserDetail[0].TrimEnd(' ');
+                isSpecifiedData = actualFirstName.Equals(specifiedFirstName);
+
+                string specifiedLogin = specifiedUserDetail[1].Split('-')[1].TrimStart(' ');
+                //Get the unique user object created during seeding
+                User spUser = TestContext.GetExistingFeatureObjectOrMakeNew(specifiedLogin, () => new User(specifiedLogin, false));
+
+                string actualLogin = actualUserDetail[1].Split('-')[1].TrimStart(' ');
+                isSpecifiedData = actualLogin.Equals(spUser.UniqueName);
+
+                if (!isSpecifiedData.Value)
+                    return isSpecifiedData.Value;
+            }
+
+            if (!string.IsNullOrEmpty(timeFormat) && auditPosition > 0)
+            {
+                var auditTimeFormat = table.FindElement(By.XPath("./tbody/tr[" + auditPosition +
+                "]/td[3]"));
+
+                //Check if data in specified date time format exist
+                DateTime dt;
+                isSpecifiedData = DateTime.TryParse(auditTimeFormat.Text, out dt);
+                if (!isSpecifiedData.Value)
+                    return isSpecifiedData.Value;
+            }
+
+            if (isSpecifiedData.HasValue)
+                return isSpecifiedData.Value;
+            else 
+                return false;	
+		}
+        
+		public bool AuditExist_OpenQuery(string query, string user, string timeFormat, int? position = null)
+		{
+            return AuditExist(string.Format("User opened query '{0}'", query), user, timeFormat, position);
 		}
 
-		public bool AuditExist_OpenQuery(string query, int? position = null)
+		public bool AuditExist_CancelQuery(string query, string user, string timeFormat, int? position = null)
 		{
-            return AuditExist(string.Format("User opened query '{0}'", query), position);
-		}
-
-		public bool AuditExist_CancelQuery(string query, int? position = null)
-		{
-            return AuditExist(string.Format("Query '{0}' canceled", query), position);
+            return AuditExist(string.Format("Query '{0}' canceled", query), user, timeFormat, position);
 		}
 
         public bool AuditExist_SignatureSucceeded(int? position = null)
         {
-            return AuditExist("User signature succeeded", position);
+            return AuditExist("User signature succeeded", null, null, position);
         }
 
         public bool AuditExist_SignatureBroken(int? position = null)
         {
-            return AuditExist("Signature has been broken", position);
+            return AuditExist("Signature has been broken", null, null, position);
         }
 
-        public bool AuditExist_UserEntered(string userInput, int? position = null)
+        public bool AuditExist_UserEntered(string userInput,string user, string timeFormat, int? position = null)
         {
-            return AuditExist(string.Format("User entered {0}", userInput), position); 
+            return AuditExist(string.Format("User entered {0}", userInput), user, timeFormat, position); 
         }
 
-        public bool AuditExist_DataPoint(string query, int? position = null)
+        public bool AuditExist_DataPoint(string query, string user, string timeFormat, int? position = null)
         {
-            return AuditExist(string.Format("DataPoint {0}", query), position);
+            return AuditExist(string.Format("DataPoint {0}", query), user, timeFormat, position);
+        }
+
+        private bool AuditExist_AddEvents(string query, string user, string timeFormat, int? position)
+        {
+            return AuditExist(string.Format("Add events {0}", query), user, timeFormat, position);
         }
 
         public override string URL { get { return "AuditsPage.aspx"; } }
+
 	}
 }

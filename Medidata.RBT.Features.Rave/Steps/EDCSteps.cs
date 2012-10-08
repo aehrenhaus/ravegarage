@@ -268,7 +268,19 @@ namespace Medidata.RBT.Features.Rave
                 .SelectFolder(folderName)
                 .SelectForm(formName);
         }
- 
+
+        [StepDefinition(@"I select primary record form")]
+        public void ISelectPrimaryRecordForm()
+        {
+            CurrentPage = CurrentPage.As<SubjectPage>().ClickPrimaryRecordLink();
+        }
+
+        [StepDefinition(@"I click audit on form level")]
+        public void IClickAuditOnFormLevel()
+        {
+            CurrentPage = CurrentPage.As<BaseEDCPage>().ClickAuditOnFormLevel();
+        }
+
 		/// <summary>
 		/// Click audit icon on a field on CRF page
 		/// </summary>

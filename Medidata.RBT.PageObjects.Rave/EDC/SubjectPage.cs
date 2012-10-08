@@ -116,6 +116,15 @@ namespace Medidata.RBT.PageObjects.Rave
 			}
 		}
 
+        public IPage ClickPrimaryRecordLink()
+        {
+            IWebElement element = CanSeeControl("_ctl0_Content_PrimaryRecordLink");
+            if (element != null)
+                element.Click();
+
+            return GetPageByCurrentUrlIfNoAlert();
+        }
+
 		#region ICanVerifyInOrder
 
 		public bool VerifyTableRowsInOrder(string tableIdentifier, Table matchTable)
