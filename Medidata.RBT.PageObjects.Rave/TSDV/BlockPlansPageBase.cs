@@ -8,6 +8,7 @@ using OpenQA.Selenium.Remote;
 using Medidata.RBT.SeleniumExtension;
 using TechTalk.SpecFlow;
 using OpenQA.Selenium.Support.UI;
+using Medidata.RBT.PageObjects.Rave.SharedRaveObjects;
 
 namespace Medidata.RBT.PageObjects.Rave
 {
@@ -53,8 +54,12 @@ namespace Medidata.RBT.PageObjects.Rave
                 planNameTextbox.Clear();
                 planNameTextbox.SetText(planName);
 
-                var entryRoleDropdown = Browser.TryFindElementBy(By.TagName("Select"));
-                new SelectElement(entryRoleDropdown).SelectByText(dataEntryRole);
+                Role role = TestContext.GetExistingFeatureObjectOrMakeNew(dataEntryRole, () => new Role(dataEntryRole, false));
+                if (role != null)
+                {
+                    var entryRoleDropdown = Browser.TryFindElementBy(By.TagName("Select"));
+                    new SelectElement(entryRoleDropdown).SelectByText(role.UniqueName);
+                }
 
                 this.ClickLink("Save");
             }

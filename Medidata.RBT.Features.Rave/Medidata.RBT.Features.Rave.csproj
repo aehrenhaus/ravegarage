@@ -85,6 +85,41 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>US17943.feature</DependentUpon>
     </Compile>
+    <Compile Include="Features\EDC\564QueryRefiringLogging8_M.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>564QueryRefiringLogging8_M.feature</DependentUpon>
+    </Compile>
+    <Compile Include="Features\EDC\DT 12651 Scenario.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DT 12651 Scenario.feature</DependentUpon>
+    </Compile>
+    <Compile Include="Features\EDC\DT_10991.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DT_10991.feature</DependentUpon>
+    </Compile>
+    <Compile Include="Features\EDC\DT_12797.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DT_12797.feature</DependentUpon>
+    </Compile>
+    <Compile Include="Features\EDC\DT_13576.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DT_13576.feature</DependentUpon>
+    </Compile>
+    <Compile Include="Features\EDC\DT_13622_TSDV_Off.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DT_13622_TSDV_Off.feature</DependentUpon>
+    </Compile>
+    <Compile Include="Features\EDC\EDCTabOrderTouchedStandardForm.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EDCTabOrderTouchedStandardForm.feature</DependentUpon>
+    </Compile>
     <Compile Include="Features\Labs\US18087_DT14073.feature.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -350,6 +385,34 @@
     <None Include="Features\Architect\US17943.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>US17943.feature.cs</LastGenOutput>
+    </None>
+    <None Include="Features\EDC\564QueryRefiringLogging8_M.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>564QueryRefiringLogging8_M.feature.cs</LastGenOutput>
+    </None>
+    <None Include="Features\EDC\DT 12651 Scenario.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>DT 12651 Scenario.feature.cs</LastGenOutput>
+    </None>
+    <None Include="Features\EDC\DT_10991.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>DT_10991.feature.cs</LastGenOutput>
+    </None>
+    <None Include="Features\EDC\DT_12797.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>DT_12797.feature.cs</LastGenOutput>
+    </None>
+    <None Include="Features\EDC\DT_13576.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>DT_13576.feature.cs</LastGenOutput>
+    </None>
+    <None Include="Features\EDC\DT_13622_TSDV_Off.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>DT_13622_TSDV_Off.feature.cs</LastGenOutput>
+    </None>
+    <None Include="Features\EDC\EDCTabOrderTouchedStandardForm.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>EDCTabOrderTouchedStandardForm.feature.cs</LastGenOutput>
     </None>
     <None Include="Features\Labs\US18087_DT14073.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
