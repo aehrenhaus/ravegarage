@@ -129,6 +129,15 @@ namespace Medidata.RBT.PageObjects.Rave
             throw new NotImplementedException();
         }
 
+        public IPage ClickAuditOnFormLevel()
+        {
+            IWebElement element = CanSeeControl("_ctl0_Content_CRFRenderer_header_SG_DataStatusHyperlink");
+            if (element != null)
+                element.Click();
+
+            return GetPageByCurrentUrlIfNoAlert();
+
+        }
         #endregion
 
         #region helper memebers

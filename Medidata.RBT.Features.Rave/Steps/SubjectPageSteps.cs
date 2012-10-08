@@ -10,6 +10,23 @@ namespace Medidata.RBT.Features.Rave
         SubjectPageSteps : BrowserStepsBase
     {
 
+        /// <summary>
+        /// Step def to click on add icon which will bring user to subject level audit page
+        /// </summary>
+        [StepDefinition(@"I click Add Event lock icon")]
+        public void IClickAddEventLockIcon()
+        {
+            bool result = false;
+
+            IWebElement element = CurrentPage.As<SubjectPage>().CanSeeControl("_ctl0_Content_SubjectAddEvent_DisableMatrixIcon");
+            if (element != null)
+            {
+                result = true;
+                element.Click();
+            }
+            Assert.IsTrue(result);
+        }
+
         [StepDefinition(@"I can see Add Event lock icon")]
         public void ICanSeeAddEventLockIcon()
         {

@@ -36,7 +36,8 @@ namespace Medidata.RBT.PageObjects.Rave.SiteAdministration
         {
             TestContext.CurrentPage.ClickLink("Add Study");
             ChooseFromDropdown("ProjectDDL", studyName);
-            ChooseFromDropdown("StudyDDL", envName);
+            if (!string.IsNullOrEmpty(envName))
+                ChooseFromDropdown("StudyDDL", envName);
             TestContext.CurrentPage.ClickLink("Add");
             if (site.StudyUIDs == null)
                 site.StudyUIDs = new List<Guid>();
