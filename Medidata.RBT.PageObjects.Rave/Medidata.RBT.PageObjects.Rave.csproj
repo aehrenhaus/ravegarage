@@ -102,6 +102,7 @@
     <Compile Include="EDC\PortraitLogField.cs" />
     <Compile Include="Lab\AnalytesPage.cs" />
     <Compile Include="Lab\CentralLabsPage.cs" />
+    <Compile Include="Lab\LabLoaderPage.cs" />
     <Compile Include="Lab\CopyLabRanges.cs" />
     <Compile Include="Lab\GlobalDataDictionariesPage.cs" />
     <Compile Include="Lab\GlobalUnitDictionariesPage.cs" />
@@ -124,6 +125,7 @@
     <Compile Include="PDF\PDFFilesControl.cs" />
     <Compile Include="Reports\ReportAdministrationPage.cs" />
     <Compile Include="Reports\ReportAssignmentPage.cs" />
+    <Compile Include="SharedRaveObjects\LabConfiguration.cs" />
     <Compile Include="SharedRaveObjects\ModuleAssignment.cs" />
     <Compile Include="SharedRaveObjects\ReportAssignment.cs" />
     <Compile Include="SharedRaveObjects\StudyAssignment.cs" />

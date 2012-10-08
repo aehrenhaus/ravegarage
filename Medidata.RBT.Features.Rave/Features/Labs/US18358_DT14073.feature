@@ -21,39 +21,11 @@ Background:
 @PB_US18358_DT14073_01
 @Draft
 
-Scenario: @PB_US18358_DT14073_01 As a Lab Administrator, when I upload Lab Loader draft with Global Data Dictionaries name that is greater than 80 characters, I do not see exception error message displayed
+Scenario: @sample_in_progress_PB_US18358_DT14073_01 As a Lab Administrator, when I upload Lab Loader draft with Global Data Dictionaries name that is greater than 80 characters, I do not see exception error message displayed
 	
 	When I navigate to "Lab Administration"
-	And I select link "Lab Loader"
-	And I click button "Browse..."
-	And the "All_255" spreadsheet is uploaded
+	And xml Lab Configuration "test test test.xml" is uploaded
 	And I take a screenshot
+	And I verify text "Upload successful." does not exist
+	And I verify text "Row 27 - Name cannot exceed 255 characters." exists
 	And I navigate to "Global Data Dictionaries"
-	Then I verify Global Data Dictionary names exist
-	| Name                                                                                                                                                                                                                                                            |
-	| 255 Test Characters Test Characters Test Characters Test Characters Test Characters Characters Test Characters Test Characters Test Characters Test Characters Test Characters Characters Test Characters Test Characters Test Characters Test Characters Tests |
-	And I take a screenshot
-	And I navigate to "Global Unit Dictionaries"
-	Then I verify Global Unit Dictionary names exist
-	| Name                                                                                                                                                                                                                                                            |
-	| 255 Test Characters Test Characters Test Characters Test Characters Test Characters Characters Test Characters Test Characters Test Characters Test Characters Test Characters Characters Test Characters Test Characters Test Characters Test Characters Tests |
-	And I take a screenshot
-	And I navigate to "Global Variables" 
-	Then I verify Global Variable names exist
-	| Name                                               |
-	| 1NAMENAMENAMENAMENAMENAMENAMENAMENAMENAMENAMENAMEN |
-	And I take a screenshot
-	And I navigate to "Lab Unit Dictionaries"
-	Then I verify Lab Unit Dictionary names exist
-	| Name                                                                                                                                                                                                                                                            |
-	| 255 Test Characters Test Characters Test Characters Test Characters Test Characters Characters Test Characters Test Characters Test Characters Test Characters Test Characters Characters Test Characters Test Characters Test Characters Test Characters Tests |
-	And I take a screenshot
-	And I select link "Lab Loader"
-	And I select Sheet "All"
-	And click button "Download"
-	And I select button "OK"
-	And I click button "Browse..."
-	And the "All_255" spreadsheet is downloaded
-	And I verify text "Cannot upload the same item twice" exist
-	And I take a screenshot
-	And I click button "Back"
