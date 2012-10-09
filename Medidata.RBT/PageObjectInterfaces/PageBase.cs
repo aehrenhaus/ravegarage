@@ -266,18 +266,18 @@ namespace Medidata.RBT
 
 			if(parameters != null)
             {
-				foreach (string key in parameters.Keys)
-				{
-                //allows params within url for MVC routes
-                string keyReplacement = string.Format("{{{0}}}", key);
-                if (url.Contains(keyReplacement))
-						url = url.Replace(keyReplacement, parameters[key]);
-                else
+                foreach (string key in parameters.Keys)
                 {
-                    //any querystring params
-						querystring = string.Format("{0}{1}{2}={3}", querystring, string.IsNullOrEmpty(querystring) ? string.Empty : "&", key, parameters[key]);
+                    //allows params within url for MVC routes
+                    string keyReplacement = string.Format("{{{0}}}", key);
+                    if (url.Contains(keyReplacement))
+                        url = url.Replace(keyReplacement, parameters[key]);
+                    else
+                    {
+                        //any querystring params
+                        querystring = string.Format("{0}{1}{2}={3}", querystring, string.IsNullOrEmpty(querystring) ? string.Empty : "&", key, parameters[key]);
+                    }
                 }
-            }
 			}
 
             if (!string.IsNullOrEmpty(querystring))

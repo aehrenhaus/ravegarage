@@ -12,6 +12,15 @@ namespace Medidata.RBT.Features.Rave
     [Binding]
     public partial class LabSteps : BrowserStepsBase
     {
+        /// <summary>
+        /// XML config file is uploaded for seeding purposes.
+        /// </summary>
+        /// <param name="configName">The name of lab configuration to be loaded (seeded)</param>
+        [StepDefinition(@"xml Lab Configuration ""([^""]*)"" is uploaded")]
+        public void XmlDraft____IsUploaded(string configName)
+        {
+            TestContext.GetExistingFeatureObjectOrMakeNew(configName, () => new LabConfiguration(configName, true));
+        }
 
         /// <summary>
         /// Select ranges for lab
