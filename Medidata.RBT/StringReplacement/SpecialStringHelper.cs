@@ -5,6 +5,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 
 using TechTalk.SpecFlow;
+using System.Reflection;
 
 namespace Medidata.RBT
 {
@@ -15,17 +16,44 @@ namespace Medidata.RBT
 	/// </summary>
     public class SpecialStringHelper
     {
+		public static event Action<string, string> Replaced;
+
 		static Dictionary<string, IStringReplace> allReplaces = new Dictionary<string, IStringReplace>();
 
         static SpecialStringHelper()
         {
-            var iStringReplaceTypes = typeof(SpecialStringHelper).Assembly.GetTypes().Where(t => t.GetInterface("IStringReplace") != null);
-            foreach (Type type in iStringReplaceTypes)
-            {
-				string replaceName = type.Name.Replace("Replace","");
-				allReplaces.Add(replaceName, Activator.CreateInstance(type) as IStringReplace);
-            }
+			var assembly = typeof(SpecialStringHelper).Assembly;
+			RegisterStringReplaceAssembly(assembly);
         }
+
+		private static void RegisterStringReplaceType(Type type)
+		{
+			string replaceName = type.Name.Replace("Replace", "");
+			allReplaces.Add(replaceName, Activator.CreateInstance(type) as IStringReplace);
+		}
+
+		/// <summary>
+		/// Register string replacement class outside of this assembly
+		/// </summary>
+		/// <typeparam name="TReplace"></typeparam>
+		public static void RegisterStringReplaceType<TReplace>() where TReplace : IStringReplace
+		{
+			RegisterStringReplaceType(typeof(TReplace));
+		}
+
+		/// <summary>
+		/// Register string replacement class outside of this assembly
+		/// </summary>
+		/// <param name="assembly"></param>
+		public static void RegisterStringReplaceAssembly(Assembly assembly) 
+		{
+			var iStringReplaceTypes = assembly.GetTypes().Where(t => t.GetInterface("IStringReplace") != null); ;
+			foreach (Type type in iStringReplaceTypes)
+			{
+				string replaceName = type.Name.Replace("Replace", "");
+				allReplaces.Add(replaceName, Activator.CreateInstance(type) as IStringReplace);
+			}
+		}
 
 		/// <summary>
 		/// This method will scan the input to see if the special pattern exists.
@@ -43,7 +71,7 @@ namespace Medidata.RBT
 		/// <returns></returns>
         public static string Replace(string input)
         {
-			Regex reg = new Regex(@"{(?<name>.+?)(\<(?<var>.+?)\>)?\((?<args>.*)?\)}");
+			Regex reg = new Regex(@"{(?<name>.+?)(\<(?<var>.+?)\>)?\((?<args>.*?)?\)}");
 			var output = reg.Replace(input, m =>
 				{
 					string name = m.Groups["name"].Value;
@@ -74,7 +102,8 @@ namespace Medidata.RBT
 
 			if (input != output)
 			{
-				Console.WriteLine("replace --> " + input+ " --> " + output);
+				if (Replaced != null)
+					Replaced(input, output);
 			}
 
 			return output;

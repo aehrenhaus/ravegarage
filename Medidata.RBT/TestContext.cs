@@ -254,6 +254,11 @@ namespace Medidata.RBT
             DeleteAllDownloadFiles();
             DeleteAllDownloadDirectories();
             DeleteFilesInTemporaryUploadDirectories();
+
+			SpecialStringHelper.Replaced += new Action<string, string>((input, output) =>
+			{
+				Console.WriteLine("replace --> " + input + " --> " + output);
+			});
 		}
 
 		/// <summary>
