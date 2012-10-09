@@ -17,7 +17,7 @@ namespace Medidata.RBT
 		{
 			int dayDiff = int.Parse(args[0]);
 
-			return DateTime.Today.AddDays(dayDiff).ToString("dd MMM yyyy");
+			return DateTime.Now.AddDays(dayDiff).ToString("dd MMM yyyy");
 		}
 
 
@@ -32,6 +32,6 @@ namespace Medidata.RBT
 			};
 			}
 		}
-       
+
     }
 }
