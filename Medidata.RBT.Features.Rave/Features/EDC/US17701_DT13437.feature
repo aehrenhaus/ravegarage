@@ -9,12 +9,12 @@ Feature: US17701_DT13437
 Background:
 	Given I am logged in to Rave with username "defuser" and password "password"
 	#And the following Project assignments exist
-	#	| User    | Project    | Environment | Role | Site         | Site Number | Lab Type  | Lab Name      | Description   | Range Type |
-	#	| defuser | Jennicilin | Prod        | cdm1 | ABC Hospital | 12333       | Local Lab | ABC Local Lab | ABC Local Lab | Standard   |
+	#	| User    | Project  | Environment | Role | Site			| Site Number | Lab Type  | Lab Name		| Description   | Range Type |
+	#	| defuser | Mediflex | Prod        | cdm1 |  Site 10991		| 10991       | Local Lab |  Local Lab		|  Local Lab	| Standard   |
 	#And Role "cdm1" has Action "Entry"
 	#And User "defuser" has Module "Site Administration, Lab Administrator"
-	#And Project "Jennicilin" has Draft "Draft 1"
-	#And I publish and push CRF Version "CRF Version<RANDOMNUMBER>" of Draft "Draft 1" to site "ABC Hospital" in Project "Jennicilin" for Enviroment "Prod"
+	#And Project "Mediflex" has Draft "Draft 1"
+	#And I publish and push CRF Version "CRF Version<RANDOMNUMBER>" of Draft "Draft 1" to site " Hospital" in Project "Mediflex" for Enviroment "Prod"
 
 	# And the following Lab Unit Dictionary exists
 	#	 | Name        | Units    |
@@ -39,10 +39,10 @@ Background:
 
 	#And the following labs exists
 	#	| Lab Type      | Lab Name          | Description       | Range Type |
-	#	| Local Lab     | ABC Local Lab     | ABC Local Lab     | Standard   |
-	#	| Central Lab   | ABC Central Lab   | ABC Central Lab   | Standard   |
-	#	| Alert Lab     | ABC Alert Lab     | ABC Alert Lab     | Standard   |
-	#	| Reference Lab | ABC Reference Lab | ABC Reference Lab | Standard   |
+	#	| Local Lab     |  Local Lab		|  Local Lab		| Standard   |
+	#	| Central Lab   |  Central Lab		|  Central Lab		| Standard   |
+	#	| Alert Lab     |  Alert Lab		|  Alert Lab		| Standard   |
+	#	| Reference Lab |  Reference Lab	|  Reference Lab	| Standard   |
 
 	#And the following Lab Settings Exists 
 		#| Standard Units	| Reference Labs	| Alert Labs    |
@@ -56,140 +56,180 @@ Background:
 #----------------------------------------------------------------------------------------------------------------------------------------
 @release_564_2012.1.0
 @PB_US17701_01
-@Draft
+@Validation
 Scenario: PB_US17701_01 As a Lab Administrator, when manually create an analyte range for an Local Lab, then the audit information for the analyte I created is captured in the database.
 
 	And I navigate to "Site Administration" module
 	And I search for site "Site 10991"
 	And I select Site Details for Site "Site 10991"
 	And I select "Lab Maintenance" for Study "Mediflex" in Environment "Prod"
-	And I select Ranges for "ABC Local Lab" for "Local Lab" lab
+	And I create lab
+		| Type      | Name                        | Range Type          |
+		| Local Lab | Local Lab {RndNum<num1>(5)} | StandardREG_US17701 |
+	And I select Ranges for "Local Lab {Var(num1)}" for "Local Lab" lab
 	And I select "Add New Range"
 	And I create range
-		| Analyte       | From Date   | To Date     | From Age          | To Age            | Sex            | Low Value | High Value | Units              | Dictionary | Comments | Edit | New Version |
-		| WBCREG_ECPV11 | 01 Jan 2000 | 01 Jan 2020 | 15 YearREG_ECPV11 | 99 YearREG_ECPV11 | maleREG_ECPV11 | 2         | 4          | *10E6/ulREG_ECPV11 |            |          |      |             |
+		| Analyte        | From Date   | To Date     | From Age           | To Age             | Sex             | Low Value | High Value | Units               | Dictionary | Comments | Edit | New Version |
+		| WBCREG_US17701 | 01 Jan 2000 | 01 Jan 2020 | 15 YearREG_US17701 | 99 YearREG_US17701 | maleREG_US17701 | 2         | 4          | *10E6/ulREG_US17701 |            |          |      |             |
 	And I take a screenshot
 	And I verify analyterange audits exist
-		| Lab           | Analyte       | AuditName | ObjectName   |
-		| ABC Local Lab | WBCREG_ECPV11 | Created   | AnalyteRange |
+		| Lab                   | Analyte        | AuditName | ObjectName   |
+		| Local Lab {Var(num1)} | WBCREG_US17701 | Created   | AnalyteRange |
 	
 #----------------------------------------------------------------------------------------------------------------------------------------
 @release_564_2012.1.0
 @PB_US17701_02
-@Draft
+@Validation
 Scenario: PB_US17701_02 As a Lab Administrator, when manually create an analyte range for an Central Lab, then the audit information for the analyte I created is captured in the database.
 
 	And I navigate to "Lab Administration" module
 	And I navigate to "Central Labs" module
-	And I select Ranges for "ABC Central Lab" for "Central Lab" lab
+	And I select Ranges for "Central Lab" for "Central Lab" lab
 	And I select "Add New Range"
 	And I create range
-		| Analyte       | From Date   | To Date     | From Age          | To Age            | Sex            | Low Value | High Value | Units              | Dictionary | Comments | Edit | New Version |
-		| WBCREG_ECPV11 | 01 Jan 2000 | 01 Jan 2020 | 15 YearREG_ECPV11 | 99 YearREG_ECPV11 | maleREG_ECPV11 | 2         | 4          | *10E6/ulREG_ECPV11 |            |          |      |             |
-	And I take a screenshot
+		| Analyte        | From Date   | To Date     | From Age           | To Age             | Sex             | Low Value | High Value | Units               | Dictionary | Comments | Edit | New Version |
+		| WBCREG_US17701 | 01 Jan 2000 | 01 Jan 2020 | 15 YearREG_US17701 | 99 YearREG_US17701 | maleREG_US17701 | 2         | 9          | *10E6/ulREG_US17701 |            |          |      |             |
 	And I take a screenshot
 	And I verify analyterange audits exist
-		| Lab             | Analyte       | AuditName | ObjectName   |
-		| ABC Central Lab | WBCREG_ECPV11 | Created   | AnalyteRange |
+		| Lab         | Analyte        | AuditName | ObjectName   |
+		| Central Lab | WBCREG_US17701 | Created   | AnalyteRange |
 
 #----------------------------------------------------------------------------------------------------------------------------------------
 @release_564_2012.1.0
 @PB_US17701_03
-@Draft
+@Validation
 Scenario: PB_US17701_03 As a Lab Administrator, when manually create an analyte range for an Alert Lab, then the audit information for the analyte I created is captured in the database.
 
 	And I navigate to "Lab Administration" module
 	And I navigate to "Global Labs" module
-	And I select Ranges for "ABC Alert Lab" for "Alert Lab" lab
+	And I create lab
+		| Type      | Name                        | Range Type          |
+		| Alert Lab | Alert Lab {RndNum<num1>(5)} | StandardREG_US17701 |
+	And I select Ranges for "Alert Lab {Var(num1)}" for "Alert Lab" lab
 	And I select "Add New Range"
 	And I create range
-		| Analyte       | From Date   | To Date     | From Age          | To Age            | Sex            | Low Value | High Value | Units              | Dictionary | Comments | Edit | New Version |
-		| WBCREG_ECPV11 | 01 Jan 2000 | 01 Jan 2020 | 15 YearREG_ECPV11 | 99 YearREG_ECPV11 | maleREG_ECPV11 | 2         | 4          | *10E6/ulREG_ECPV11 |            |          |      |             |
+		| Analyte        | From Date   | To Date     | From Age           | To Age             | Sex             | Low Value | High Value | Units               | Dictionary | Comments | Edit | New Version |
+		| WBCREG_US17701 | 01 Jan 2000 | 01 Jan 2020 | 15 YearREG_US17701 | 99 YearREG_US17701 | maleREG_US17701 | 2         | 4          | *10E6/ulREG_US17701 |            |          |      |             |
 	And I take a screenshot
 	And I verify analyterange audits exist
-		| Lab           | Analyte       | AuditName | ObjectName   |
-		| ABC Alert Lab | WBCREG_ECPV11 | Created   | AnalyteRange |
+		| Lab                   | Analyte        | AuditName | ObjectName   |
+		| Alert Lab {Var(num1)} | WBCREG_US17701 | Created   | AnalyteRange |
 
 #----------------------------------------------------------------------------------------------------------------------------------------
 @release_564_2012.1.0
 @PB_US17701_04
-@Draft
+@Validation
 Scenario: PB_US17701_04 As a Lab Administrator, when manually create an analyte range for an Reference Lab, then the audit information for the analyte I created is captured in the database.
 
 	And I navigate to "Lab Administration" module
 	And I navigate to "Global Labs" module
-	And I select Ranges for "ABC Reference Lab" for "Reference Lab" lab
+	And I create lab
+		| Type          | Name                            | Range Type          |
+		| Reference Lab | Reference Lab {RndNum<num1>(5)} | StandardREG_US17701 |
+	And I select Ranges for "Reference Lab {Var(num1)}" for "Reference Lab" lab
 	And I select "Add New Range"
 	And I create range
-		| Analyte       | From Date   | To Date     | From Age          | To Age            | Sex            | Low Value | High Value | Units              | Dictionary | Comments | Edit | New Version |
-		| WBCREG_ECPV11 | 01 Jan 2000 | 01 Jan 2020 | 15 YearREG_ECPV11 | 99 YearREG_ECPV11 | maleREG_ECPV11 | 2         | 4          | *10E6/ulREG_ECPV11 |            |          |      |             |
+		| Analyte        | From Date   | To Date     | From Age           | To Age             | Sex             | Low Value | High Value | Units               | Dictionary | Comments | Edit | New Version |
+		| WBCREG_US17701 | 01 Jan 2000 | 01 Jan 2020 | 15 YearREG_US17701 | 99 YearREG_US17701 | maleREG_US17701 | 2         | 4          | *10E6/ulREG_US17701 |            |          |      |             |
 	And I take a screenshot
 	And I verify analyterange audits exist
-		| Lab               | Analyte       | AuditName | ObjectName   |
-		| ABC Reference Lab | WBCREG_ECPV11 | Created   | AnalyteRange |
+		| Lab                       | Analyte        | AuditName | ObjectName   |
+		| Reference Lab {Var(num1)} | WBCREG_US17701 | Created   | AnalyteRange |
 
 
 #----------------------------------------------------------------------------------------------------------------------------------------
 @release_564_2012.1.0
 @PB_US17701_05
-@Draft
+@Validation
 Scenario: PB_US17701_05 As a Lab Administrator, when manually create an analyte range for a Local Lab in EDC, then the audit information for the analyte I created is captured in the database.
 		
-	And I select Study "Mediflex" and Site "ABC Hospital"
+	And I select Study "Mediflex" and Site "Site 10991"
 	And I select link "Labs"
-	And I select Ranges for "ABC Local Lab" for "Local Lab" lab
+	And I create lab
+		| Type      | Name                        | Range Type          |
+		| Local Lab | Local Lab {RndNum<num1>(5)} | StandardREG_US17701 |
+	And I select Ranges for "Local Lab {Var(num1)}" for "Local Lab" lab
 	And I select "Add New Range"
 	And I create range
-		| Analyte       | From Date   | To Date     | From Age          | To Age            | Sex            | Low Value | High Value | Units              | Dictionary | Comments | Edit | New Version |
-		| WBCREG_ECPV11 | 01 Jan 2000 | 01 Jan 2020 | 15 YearREG_ECPV11 | 99 YearREG_ECPV11 | maleREG_ECPV11 | 2         | 4          | *10E6/ulREG_ECPV11 |            |          |      |             |
+		| Analyte        | From Date   | To Date     | From Age           | To Age             | Sex             | Low Value | High Value | Units               | Dictionary | Comments | Edit | New Version |
+		| WBCREG_US17701 | 01 Jan 2000 | 01 Jan 2020 | 15 YearREG_US17701 | 99 YearREG_US17701 | maleREG_US17701 | 2         | 4          | *10E6/ulREG_US17701 |            |          |      |             |
 	And I take a screenshot
 	And I verify analyterange audits exist
-		| Lab           | Analyte       | AuditName | ObjectName   |
-		| ABC Local Lab | WBCREG_ECPV11 | Created   | AnalyteRange |
+		| Lab                   | Analyte        | AuditName | ObjectName   |
+		| Local Lab {Var(num1)} | WBCREG_US17701 | Created   | AnalyteRange |
 
 #----------------------------------------------------------------------------------------------------------------------------------------
 @release_564_2012.1.0
 @PB_US17701_06
-@Draft
+@Validation
 Scenario: PB_US17701_06 As a Lab Administrator, when manually copy analyte range for an Alert Lab, then the audit information for the analyte I copied is captured in the database.
 
 	And I navigate to "Lab Administration" module
 	And I navigate to "Global Labs" module
 	And I create lab
-		| Type      | Name                            | Range Type     |
-		| Alert Lab | ABC Alert Lab {RndNum<num1>(3)} | StandardREGAQT |
-	And I select Ranges for "ABC Alert Lab {Var(num1)}" for "Alert Lab" lab
+		| Type      | Name                        | Range Type          |
+		| Alert Lab | Alert Lab {RndNum<num1>(5)} | StandardREG_US17701 |
+	And I select Ranges for "Alert Lab {Var(num1)}" for "Alert Lab" lab
 	And I select "Copy Ranges" form "Alert Lab"
 	And I take a screenshot
 	And I verify analyterange audits exist
-		| Lab                       | Analyte   | AuditName | ObjectName   |
-		| ABC Alert Lab {Var(num1)} | WBCREGAQT | Review    | AnalyteRange |
+		| Lab                   | Analyte        | AuditName | ObjectName   |
+		| Alert Lab {Var(num1)} | WBCREG_US17701 | Review    | AnalyteRange |
 
 #----------------------------------------------------------------------------------------------------------------------------------------
 @release_564_2012.1.0
 @PB_US17701_07
-@Draft
+@Validation
 Scenario: PB_US17701_07 As a Lab Administrator, when manually create an analyte range from New Version for an Alert Lab, then the audit information for the analyte I created is captured in the database.
 
 	And I navigate to "Lab Administration" module
 	And I navigate to "Global Labs" module
 	And I create lab
-		| Type      | Name                            | Range Type     |
-		| Alert Lab | ABC Alert Lab {RndNum<num1>(3)} | StandardREGAQT |
-	And I select Ranges for "ABC Alert Lab {Var(num1)}" for "Alert Lab" lab
+		| Type      | Name                        | Range Type          |
+		| Alert Lab | Alert Lab {RndNum<num1>(5)} | StandardREG_US17701 |
+	And I select Ranges for "Alert Lab {Var(num1)}" for "Alert Lab" lab
 	And I select "Add New Range"
 	And I create range
-		| Analyte       | From Date   | To Date     | From Age      | To Age        | Sex        | Low Value | High Value | Units              | Dictionary | Comments | Edit | New Version |
-		| WBCREG_ECPV11 | 01 Jan 2000 | 01 Jan 2020 | 15 YearREGAQT | 50 YearREGAQT | maleREGAQT | 2         | 4          | *10E6/ulREG_ECPV11 |            |          |      |             |
+		| Analyte        | From Date   | To Date     | From Age           | To Age             | Sex             | Low Value | High Value | Units               | Dictionary | Comments | Edit | New Version |
+		| WBCREG_US17701 | 01 Jan 2000 | 01 Jan 2020 | 15 YearREG_US17701 | 50 YearREG_US17701 | maleREG_US17701 | 2         | 4          | *10E6/ulREG_US17701 |            |          |      |             |
 	And I take a screenshot
 	And I verify analyterange audits exist
-		| Lab               | Analyte       | AuditName | ObjectName   |
-		| ABC Reference Lab | WBCREG_ECPV11 | Created   | AnalyteRange |
-	And I select "New Version" for "WBCREG_ECPV11" lab
+		| Lab                   | Analyte        | AuditName | ObjectName   |
+		| Alert Lab {Var(num1)} | WBCREG_US17701 | Created   | AnalyteRange |
+	And I select "New Version" for "WBCREG_US17701" lab
 	And I create range
-		| Analyte       | From Date   | To Date     | From Age      | To Age        | Sex        | Low Value | High Value | Units              | Dictionary | Comments | Edit | New Version |
-		| WBCREG_ECPV11 | 01 Jan 2040 | 01 Jan 2060 | 25 YearREGAQT | 75 YearREGAQT | maleREGAQT | 3         | 8          | *10E6/ulREG_ECPV11 |            |          |      |             |
+		| Analyte        | From Date   | To Date     | From Age           | To Age             | Sex             | Low Value | High Value | Units               | Dictionary | Comments | Edit | New Version |
+		| WBCREG_US17701 | 01 Jan 2040 | 01 Jan 2060 | 25 YearREG_US17701 | 75 YearREG_US17701 | maleREG_US17701 | 3         | 8          | *10E6/ulREG_US17701 |            |          |      |             |
 	And I take a screenshot
 	And I verify analyterange audits exist
-		| Lab               | Analyte       | AuditName | ObjectName   |
-		| ABC Reference Lab | WBCREG_ECPV11 | Created   | AnalyteRange |
+		| Lab                   | Analyte        | AuditName | ObjectName   |
+		| Alert Lab {Var(num1)} | WBCREG_US17701 | Created   | AnalyteRange |
+
+#----------------------------------------------------------------------------------------------------------------------------------------
+@release_564_2012.1.0
+@PB_US17701_08
+@Validation
+Scenario: PB_US17701_08 As a Lab Administrator, when manually create an analyte range from New Version for an Reference Lab, then the audit information for the analyte I created is captured in the database.
+
+	And I navigate to "Lab Administration" module
+	And I navigate to "Global Labs" module
+	And I create lab
+		| Type          | Name                            | Range Type          |
+		| Reference Lab | Reference Lab {RndNum<num1>(5)} | StandardREG_US17701 |
+	And I select Ranges for "Reference Lab {Var(num1)}" for "Reference Lab" lab
+	And I select "Add New Range"
+	And I create range
+		| Analyte        | From Date   | To Date     | From Age           | To Age             | Sex             | Low Value | High Value | Units               | Dictionary | Comments | Edit | New Version |
+		| WBCREG_US17701 | 01 Jan 2000 | 01 Jan 2020 | 15 YearREG_US17701 | 50 YearREG_US17701 | maleREG_US17701 | 2         | 4          | *10E6/ulREG_US17701 |            |          |      |             |
+	And I take a screenshot
+	And I verify analyterange audits exist
+		| Lab                       | Analyte        | AuditName | ObjectName   |
+		| Reference Lab {Var(num1)} | WBCREG_US17701 | Created   | AnalyteRange |
+	And I select "New Version" for "WBCREG_US17701" lab
+	And I create range
+		| Analyte        | From Date   | To Date     | From Age           | To Age             | Sex             | Low Value | High Value | Units               | Dictionary | Comments | Edit | New Version |
+		| WBCREG_US17701 | 01 Jan 2040 | 01 Jan 2060 | 25 YearREG_US17701 | 75 YearREG_US17701 | maleREG_US17701 | 3         | 8          | *10E6/ulREG_US17701 |            |          |      |             |
+	And I take a screenshot
+	And I verify analyterange audits exist
+		| Lab                       | Analyte        | AuditName | ObjectName   |
+		| Reference Lab {Var(num1)} | WBCREG_US17701 | Created   | AnalyteRange |
