@@ -1,0 +1,1965 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<?mso-application progid="Excel.Sheet"?>
+<Workbook xmlns="urn:schemas-microsoft-com:office:spreadsheet"
+xmlns:o="urn:schemas-microsoft-com:office:office"
+xmlns:x="urn:schemas-microsoft-com:office:excel"
+xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet"
+xmlns:html="http://www.w3.org/TR/REC-html40">
+<DocumentProperties/>
+<CustomDocumentProperties xmlns="urn:schemas-microsoft-com:office:office">
+<Locale dt="string">eng</Locale>
+<OmniLoaderWorkbook dt="string">yes</OmniLoaderWorkbook>
+<RaveDbVersion dt="string">5.6</RaveDbVersion>
+</CustomDocumentProperties>
+<ExcelWorkbook xmlns="urn:schemas-microsoft-com:office:excel">
+<ActiveSheet>0</ActiveSheet>
+</ExcelWorkbook>
+<Styles>
+<Style ss:ID="ColumnCaption">
+<Alignment ss:Horizontal="Automatic" ss:Vertical="Automatic" ss:WrapText="1"/>
+<Font x:Family="Automatic" ss:Bold="1" ss:Italic="0"/>
+<NumberFormat ss:Format="@"/>
+<Protection ss:Protected="1"/>
+</Style>
+<Style ss:ID="ColumnCaption_alt">
+<Alignment ss:Horizontal="Automatic" ss:Vertical="Automatic" ss:WrapText="1"/>
+<Font x:Family="Automatic" ss:Bold="1" ss:Italic="0"/>
+<Interior ss:Color="#ECE9D8" ss:Pattern="Solid"/>
+<NumberFormat ss:Format="@"/>
+<Protection ss:Protected="1"/>
+</Style>
+<Style ss:ID="Default">
+<Alignment ss:Horizontal="Automatic" ss:Vertical="Automatic" ss:WrapText="1"/>
+<Font x:Family="Automatic" ss:Bold="0" ss:Italic="0"/>
+<NumberFormat ss:Format="@"/>
+<Protection ss:Protected="0"/>
+</Style>
+<Style ss:ID="Default_alt">
+<Alignment ss:Horizontal="Automatic" ss:Vertical="Automatic" ss:WrapText="1"/>
+<Font x:Family="Automatic" ss:Bold="0" ss:Italic="0"/>
+<Interior ss:Color="#ECE9D8" ss:Pattern="Solid"/>
+<NumberFormat ss:Format="@"/>
+<Protection ss:Protected="0"/>
+</Style>
+<Style ss:ID="Protected">
+<Alignment ss:Horizontal="Automatic" ss:Vertical="Automatic" ss:WrapText="1"/>
+<Font x:Family="Automatic" ss:Bold="0" ss:Italic="0"/>
+<NumberFormat ss:Format="@"/>
+<Protection ss:Protected="1"/>
+</Style>
+<Style ss:ID="Protected_alt">
+<Alignment ss:Horizontal="Automatic" ss:Vertical="Automatic" ss:WrapText="1"/>
+<Font x:Family="Automatic" ss:Bold="0" ss:Italic="0"/>
+<Interior ss:Color="#ECE9D8" ss:Pattern="Solid"/>
+<NumberFormat ss:Format="@"/>
+<Protection ss:Protected="1"/>
+</Style>
+  <Style ss:ID="s21" ss:Name="Normal_Sheet1">   <Font/>  </Style>  <Style ss:ID="m151720058" ss:Parent="s21">   <Alignment ss:Horizontal="Center" ss:Vertical="Top" ss:WrapText="1"/>   <Borders>    <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"/>    <Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="1"/>    <Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="2"/>    <Border ss:Position="Top" ss:LineStyle="Continuous" ss:Weight="2"/>   </Borders>   <Font ss:FontName="Verdana" x:Family="Swiss"/>   <Interior ss:Color="#FFFF99" ss:Pattern="Solid"/>   <NumberFormat ss:Format="@"/>   <Protection ss:Protected="0"/>  </Style>  <Style ss:ID="m151720068" ss:Parent="s21">   <Alignment ss:Horizontal="Center" ss:Vertical="Top" ss:WrapText="1"/>   <Borders>    <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"/>    <Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="1"/>    <Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="2"/>    <Border ss:Position="Top" ss:LineStyle="Continuous" ss:Weight="1"/>   </Borders>   <Font ss:FontName="Verdana" x:Family="Swiss"/>   <Interior ss:Color="#FFFF99" ss:Pattern="Solid"/>   <Protection ss:Protected="0"/>  </Style>  <Style ss:ID="m151720078" ss:Parent="s21">   <Alignment ss:Horizontal="Center" ss:Vertical="Top" ss:WrapText="1"/>   <Borders>    <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"/>    <Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="1"/>    <Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="2"/>    <Border ss:Position="Top" ss:LineStyle="Continuous" ss:Weight="1"/>   </Borders>   <Font ss:FontName="Verdana" x:Family="Swiss"/>   <Interior ss:Color="#FFFF99" ss:Pattern="Solid"/>   <Protection ss:Protected="0"/>  </Style>  <Style ss:ID="m151720088" ss:Parent="s21">   <Alignment ss:Horizontal="Center" ss:Vertical="Top" ss:WrapText="1"/>   <Borders>    <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"/>    <Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="1"/>    <Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="2"/>    <Border ss:Position="Top" ss:LineStyle="Continuous" ss:Weight="1"/>   </Borders>   <Font ss:FontName="Verdana" x:Family="Swiss"/>   <Interior ss:Color="#FFFF99" ss:Pattern="Solid"/>   <Protection ss:Protected="0"/>  </Style>  <Style ss:ID="m151720098" ss:Parent="s21">   <Alignment ss:Horizontal="Center" ss:Vertical="Top" ss:WrapText="1"/>   <Borders>    <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"/>    <Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="1"/>    <Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="2"/>    <Border ss:Position="Top" ss:LineStyle="Continuous" ss:Weight="1"/>   </Borders>   <Font ss:FontName="Verdana" x:Family="Swiss"/>   <Interior ss:Color="#FFFF99" ss:Pattern="Solid"/>   <Protection ss:Protected="0"/>  </Style>  <Style ss:ID="m151720108" ss:Parent="s21">   <Alignment ss:Horizontal="Center" ss:Vertical="Top" ss:WrapText="1"/>   <Borders>    <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="2"/>    <Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="1"/>    <Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="2"/>    <Border ss:Position="Top" ss:LineStyle="Continuous" ss:Weight="1"/>   </Borders>   <Font ss:FontName="Verdana" x:Family="Swiss"/>   <Interior ss:Color="#FFFF99" ss:Pattern="Solid"/>   <Protection ss:Protected="0"/>  </Style>  <Style ss:ID="m151720118" ss:Parent="s21">   <Alignment ss:Vertical="Bottom" ss:WrapText="1"/>   <Borders>    <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"/>    <Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="2"/>    <Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="1"/>    <Border ss:Position="Top" ss:LineStyle="Continuous" ss:Weight="1"/>   </Borders>   <Font ss:FontName="Verdana" x:Family="Swiss" ss:Bold="1"/>   <Interior ss:Color="#C0C0C0" ss:Pattern="Solid"/>  </Style>  <Style ss:ID="m151733032" ss:Parent="s21">   <Alignment ss:Vertical="Bottom" ss:WrapText="1"/>   <Borders>    <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="2"/>    <Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="2"/>    <Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="1"/>    <Border ss:Position="Top" ss:LineStyle="Continuous" ss:Weight="1"/>   </Borders>   <Font ss:FontName="Verdana" x:Family="Swiss" ss:Bold="1"/>   <Interior ss:Color="#C0C0C0" ss:Pattern="Solid"/>  </Style>  <Style ss:ID="m151733042" ss:Parent="s21">   <Alignment ss:Vertical="Bottom" ss:WrapText="1"/>   <Borders>    <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"/>    <Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="2"/>    <Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="1"/>    <Border ss:Position="Top" ss:LineStyle="Continuous" ss:Weight="2"/>   </Borders>   <Font ss:FontName="Verdana" x:Family="Swiss" ss:Bold="1"/>   <Interior ss:Color="#C0C0C0" ss:Pattern="Solid"/>  </Style>  <Style ss:ID="m151733052" ss:Parent="s21">   <Alignment ss:Vertical="Bottom" ss:WrapText="1"/>   <Borders>    <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"/>    <Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="2"/>    <Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="1"/>    <Border ss:Position="Top" ss:LineStyle="Continuous" ss:Weight="1"/>   </Borders>   <Font ss:FontName="Verdana" x:Family="Swiss" ss:Bold="1"/>   <Interior ss:Color="#C0C0C0" ss:Pattern="Solid"/>  </Style>  <Style ss:ID="m151733062" ss:Parent="s21">   <Alignment ss:Vertical="Bottom" ss:WrapText="1"/>   <Borders>    <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"/>    <Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="2"/>    <Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="1"/>    <Border ss:Position="Top" ss:LineStyle="Continuous" ss:Weight="1"/>   </Borders>   <Font ss:FontName="Verdana" x:Family="Swiss" ss:Bold="1"/>   <Interior ss:Color="#C0C0C0" ss:Pattern="Solid"/>  </Style>  <Style ss:ID="m151733072" ss:Parent="s21">   <Alignment ss:Vertical="Bottom" ss:WrapText="1"/>   <Borders>    <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"/>    <Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="2"/>    <Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="1"/>    <Border ss:Position="Top" ss:LineStyle="Continuous" ss:Weight="1"/>   </Borders>   <Font ss:FontName="Verdana" x:Family="Swiss" ss:Bold="1"/>   <Interior ss:Color="#C0C0C0" ss:Pattern="Solid"/>  </Style>  <Style ss:ID="s23" ss:Parent="s21">   <Alignment ss:Horizontal="Center" ss:Vertical="Center" ss:WrapText="1"/>   <Borders/>   <Font ss:FontName="Verdana" x:Family="Swiss" ss:Size="24" ss:Bold="1"/>   <Interior ss:Color="#FFFFFF" ss:Pattern="Solid"/>  </Style>  <Style ss:ID="s24" ss:Parent="s21">   <Borders/>   <Font ss:FontName="Verdana" x:Family="Swiss"/>   <Interior ss:Color="#FFFFFF" ss:Pattern="Solid"/>  </Style>  <Style ss:ID="s25" ss:Parent="s21">   <Font ss:FontName="Verdana" x:Family="Swiss"/>   <Interior ss:Color="#FFFFFF" ss:Pattern="Solid"/>  </Style>  <Style ss:ID="s26" ss:Parent="s21">   <Alignment ss:Horizontal="Left" ss:Vertical="Center"/>   <Borders/>   <Font ss:FontName="Verdana" x:Family="Swiss" ss:Size="24" ss:Bold="1"/>   <Interior ss:Color="#FFFFFF" ss:Pattern="Solid"/>  </Style>  <Style ss:ID="s27" ss:Parent="s21">   <Alignment ss:Horizontal="Left" ss:Vertical="Center"/>   <Borders/>   <Font ss:FontName="Verdana" x:Family="Swiss" ss:Size="20" ss:Bold="1"/>   <Interior ss:Color="#FFFFFF" ss:Pattern="Solid"/>  </Style>  <Style ss:ID="s28" ss:Parent="s21">   <Alignment ss:Horizontal="Center" ss:Vertical="Center" ss:WrapText="1"/>   <Borders/>   <Font ss:FontName="Verdana" x:Family="Swiss" ss:Size="26" ss:Color="#000080"    ss:Bold="1"/>   <Interior ss:Color="#FFFFFF" ss:Pattern="Solid"/>  </Style>  <Style ss:ID="s29" ss:Parent="s21">   <Alignment ss:Horizontal="Left" ss:Vertical="Bottom"/>   <Borders/>   <Font ss:FontName="Verdana" x:Family="Swiss"/>   <Interior ss:Color="#FFFFFF" ss:Pattern="Solid"/>  </Style>  <Style ss:ID="s30" ss:Parent="s21">   <Alignment ss:Vertical="Bottom"/>   <Borders/>   <Font ss:FontName="Verdana" x:Family="Swiss"/>   <Interior ss:Color="#FFFFFF" ss:Pattern="Solid"/>  </Style>  <Style ss:ID="s31" ss:Parent="s21">   <Alignment ss:Vertical="Bottom"/>   <Borders/>   <Font ss:FontName="Verdana" x:Family="Swiss"/>   <Interior/>  </Style>  <Style ss:ID="s32" ss:Parent="s21">   <Alignment ss:Horizontal="Left" ss:Vertical="Center"/>   <Borders/>   <Font ss:FontName="Verdana" x:Family="Swiss" ss:Size="14" ss:Bold="1"/>   <Interior ss:Color="#FFFFFF" ss:Pattern="Solid"/>  </Style>  <Style ss:ID="s33" ss:Parent="s21">   <Alignment ss:Horizontal="Center" ss:Vertical="Center"/>   <Borders/>   <Font ss:FontName="Verdana" x:Family="Swiss" ss:Bold="1"/>   <Interior ss:Color="#FFFFFF" ss:Pattern="Solid"/>  </Style>  <Style ss:ID="s34" ss:Parent="s21">   <Alignment ss:Horizontal="Center" ss:Vertical="Bottom"/>   <Borders>    <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"/>    <Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="1"/>    <Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="1"/>    <Border ss:Position="Top" ss:LineStyle="Continuous" ss:Weight="1"/>   </Borders>   <Font ss:FontName="Verdana" x:Family="Swiss" ss:Size="11" ss:Bold="1"/>   <Interior ss:Color="#C0C0C0" ss:Pattern="Solid"/>  </Style>  <Style ss:ID="s35" ss:Parent="s21">   <Alignment ss:Horizontal="Center" ss:Vertical="Bottom"/>   <Borders>    <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"/>    <Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="1"/>    <Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="1"/>    <Border ss:Position="Top" ss:LineStyle="Continuous" ss:Weight="1"/>   </Borders>   <Font ss:FontName="Verdana" x:Family="Swiss"/>   <Interior ss:Color="#FFFF99" ss:Pattern="Solid"/>   <NumberFormat ss:Format="@"/>   <Protection ss:Protected="0"/>  </Style>  <Style ss:ID="s36" ss:Parent="s21">   <Alignment ss:Horizontal="Center" ss:Vertical="Bottom"/>   <Borders>    <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"/>    <Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="1"/>    <Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="1"/>    <Border ss:Position="Top" ss:LineStyle="Continuous" ss:Weight="1"/>   </Borders>   <Font ss:FontName="Verdana" x:Family="Swiss"/>   <Interior ss:Color="#FFFF99" ss:Pattern="Solid"/>   <NumberFormat ss:Format="dd\-mmm\-yyyy"/>   <Protection ss:Protected="0"/>  </Style>  <Style ss:ID="s37" ss:Parent="s21">   <Alignment ss:Vertical="Bottom"/>   <Borders>    <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"/>    <Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="1"/>    <Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="1"/>    <Border ss:Position="Top" ss:LineStyle="Continuous" ss:Weight="1"/>   </Borders>   <Font ss:FontName="Verdana" x:Family="Swiss"/>   <Interior ss:Color="#FFFF99" ss:Pattern="Solid"/>   <Protection ss:Protected="0"/>  </Style>  <Style ss:ID="s38" ss:Parent="s21">   <Alignment ss:Vertical="Bottom" ss:WrapText="1"/>   <Font ss:FontName="Verdana" x:Family="Swiss"/>   <Interior ss:Color="#FFFFFF" ss:Pattern="Solid"/>  </Style>  <Style ss:ID="s39" ss:Parent="s21">   <Alignment ss:Vertical="Bottom"/>   <Font ss:FontName="Verdana" x:Family="Swiss"/>   <Interior ss:Color="#FFFFFF" ss:Pattern="Solid"/>  </Style>  <Style ss:ID="s40" ss:Parent="s21">   <Alignment ss:Horizontal="Center" ss:Vertical="Center"/>   <Borders/>   <Font ss:FontName="Verdana" x:Family="Swiss" ss:Size="22" ss:Bold="1"/>   <Interior ss:Color="#FFFFFF" ss:Pattern="Solid"/>  </Style>  <Style ss:ID="s66" ss:Parent="s21">   <Alignment ss:Vertical="Bottom" ss:WrapText="1"/>   <Font ss:FontName="Verdana" x:Family="Swiss" ss:Size="8"/>   <Interior ss:Color="#FFFFFF" ss:Pattern="Solid"/>  </Style>  <Style ss:ID="s67" ss:Parent="s21">   <Alignment ss:Vertical="Bottom" ss:WrapText="1"/>   <Borders/>   <Font ss:FontName="Verdana" x:Family="Swiss" ss:Size="8"/>   <Interior ss:Color="#FFFFFF" ss:Pattern="Solid"/>  </Style></Styles>
+<Worksheet ss:Name="Cover">  <Table ss:ExpandedColumnCount="5" ss:ExpandedRowCount="26" x:FullColumns="1"   x:FullRows="1">   <Column ss:AutoFitWidth="0" ss:Width="16.5"/>   <Column ss:AutoFitWidth="0" ss:Width="92.25"/>   <Column ss:AutoFitWidth="0" ss:Width="121.5"/>   <Column ss:AutoFitWidth="0" ss:Width="140.25"/>   <Column ss:AutoFitWidth="0" ss:Width="182.25"/>   <Row ss:Height="29.25">    <Cell ss:StyleID="s23"/>    <Cell ss:StyleID="s24"/>    <Cell ss:StyleID="s24"/>    <Cell ss:StyleID="s25"/>    <Cell ss:StyleID="s26"><Data ss:Type="String"> </Data></Cell>   </Row>   <Row ss:AutoFitHeight="0" ss:Height="27">    <Cell ss:StyleID="s24"/>    <Cell ss:StyleID="s27"/><Cell ss:Index="4" ss:StyleID="s40"><Data ss:Type="String">Lab Loader Specification</Data></Cell>   </Row>   <Row ss:AutoFitHeight="0" ss:Height="19.5">    <Cell ss:StyleID="s25"/>    <Cell ss:StyleID="s26"/>    <Cell ss:StyleID="s26"/>    <Cell ss:StyleID="s28"/>    <Cell ss:StyleID="s25"/>   </Row>   <Row ss:AutoFitHeight="0" ss:Height="15.75">    <Cell ss:StyleID="s29"/>    <Cell ss:MergeAcross="1" ss:StyleID="m151733042"><Data ss:Type="String">Client</Data></Cell>    <Cell ss:MergeAcross="1" ss:StyleID="m151720058"/>   </Row>   <Row ss:AutoFitHeight="0" ss:Height="20.25">    <Cell ss:StyleID="s29"/>    <Cell ss:MergeAcross="1" ss:StyleID="m151733052"><Data ss:Type="String">Client Project Name</Data></Cell>    <Cell ss:MergeAcross="1" ss:StyleID="m151720068"/>   </Row>   <Row ss:AutoFitHeight="0" ss:Height="17.25">    <Cell ss:StyleID="s29"/>    <Cell ss:MergeAcross="1" ss:StyleID="m151733072"><Data ss:Type="String">Medidata Project Number</Data></Cell>    <Cell ss:MergeAcross="1" ss:StyleID="m151720088"/>   </Row>   <Row ss:AutoFitHeight="0" ss:Height="18.75">    <Cell ss:StyleID="s29"/>    <Cell ss:MergeAcross="1" ss:StyleID="m151733062"><Data ss:Type="String">Client Implementation Manager</Data></Cell>    <Cell ss:MergeAcross="1" ss:StyleID="m151720078"/>   </Row>   <Row ss:AutoFitHeight="0" ss:Height="19.5">    <Cell ss:StyleID="s29"/>    <Cell ss:MergeAcross="1" ss:StyleID="m151720118"><Data ss:Type="String">Medidata Implementation Manager</Data></Cell>    <Cell ss:MergeAcross="1" ss:StyleID="m151720098"/>   </Row>   <Row ss:AutoFitHeight="0" ss:Height="18.75">    <Cell ss:StyleID="s29"/>    <Cell ss:MergeAcross="1" ss:StyleID="m151733032"><Data ss:Type="String">Medidata Study Designer</Data></Cell>    <Cell ss:MergeAcross="1" ss:StyleID="m151720108"/>   </Row>   <Row>    <Cell ss:StyleID="s30"/>    <Cell ss:StyleID="s30"/>    <Cell ss:StyleID="s30"/>    <Cell ss:StyleID="s30"/>    <Cell ss:StyleID="s31"/>   </Row>   <Row>    <Cell ss:StyleID="s30"/>    <Cell ss:StyleID="s25"/>    <Cell ss:StyleID="s25"/>    <Cell ss:StyleID="s25"/>    <Cell ss:StyleID="s24"/>   </Row>   <Row ss:Height="18">    <Cell ss:StyleID="s30"/>    <Cell ss:StyleID="s32"><Data ss:Type="String">Document Revision History</Data></Cell>    <Cell ss:StyleID="s32"/>    <Cell ss:StyleID="s33"/>    <Cell ss:StyleID="s25"/>   </Row>   <Row>    <Cell ss:StyleID="s30"/>    <Cell ss:StyleID="s25"/>    <Cell ss:StyleID="s25"/>    <Cell ss:StyleID="s33"/>    <Cell ss:StyleID="s33"/>   </Row>   <Row ss:Height="14.25">    <Cell ss:StyleID="s30"/>    <Cell ss:StyleID="s34"><Data ss:Type="String">Version</Data></Cell>    <Cell ss:StyleID="s34"><Data ss:Type="String">Date</Data></Cell>    <Cell ss:StyleID="s34"><Data ss:Type="String">Changed By</Data></Cell>    <Cell ss:StyleID="s34"><Data ss:Type="String">Changes</Data></Cell>   </Row>   <Row>    <Cell ss:StyleID="s30"/>    <Cell ss:StyleID="s35"><Data ss:Type="String">1.0</Data></Cell>    <Cell ss:StyleID="s36"/>    <Cell ss:StyleID="s37"/>    <Cell ss:StyleID="s37"><Data ss:Type="String">Original</Data></Cell>   </Row>   <Row>    <Cell ss:StyleID="s30"/>    <Cell ss:StyleID="s35"/>    <Cell ss:StyleID="s35"/>    <Cell ss:StyleID="s36"/>    <Cell ss:StyleID="s37"/>   </Row>   <Row>    <Cell ss:StyleID="s30"/>    <Cell ss:StyleID="s35"/>    <Cell ss:StyleID="s35"/>    <Cell ss:StyleID="s36"/>    <Cell ss:StyleID="s37"/>   </Row>   <Row>    <Cell ss:StyleID="s30"/>    <Cell ss:StyleID="s35"/>    <Cell ss:StyleID="s35"/>    <Cell ss:StyleID="s36"/>    <Cell ss:StyleID="s37"/>   </Row>   <Row>    <Cell ss:StyleID="s30"/>    <Cell ss:StyleID="s35"/>    <Cell ss:StyleID="s35"/>    <Cell ss:StyleID="s36"/>    <Cell ss:StyleID="s37"/>   </Row>   <Row>    <Cell ss:StyleID="s30"/>    <Cell ss:StyleID="s24"/>    <Cell ss:StyleID="s24"/>    <Cell ss:StyleID="s24"/>    <Cell ss:StyleID="s24"/>   </Row>   <Row ss:AutoFitHeight="0" ss:Height="33">    <Cell ss:StyleID="s38"/>    <Cell ss:MergeAcross="3" ss:StyleID="s67"><Data ss:Type="String">No part of this document may be reproduced or transmitted in any form or by any means, electronic or mechanical, including, but not limited to, photocopying and recording, for any purpose without the express permission of Medidata Solutions, Inc.</Data></Cell>   </Row>   <Row>    <Cell ss:StyleID="s39"/>    <Cell ss:MergeAcross="3" ss:StyleID="s66"><Data ss:Type="String">© Copyright 2012 Medidata Solutions, Inc. All rights reserved.</Data></Cell>   </Row>   <Row ss:AutoFitHeight="0" ss:Height="38.25">    <Cell ss:StyleID="s38"/>    <Cell ss:MergeAcross="3" ss:StyleID="s66"><Data ss:Type="String">Medidata Solutions Worldwide, Medidata Rave, Medidata Edge, Medidata Services, Medidata University and their respective logos are trademarks or registered trademarks of Medidata Solutions, Inc. All other brands or product names used in this document are trademarks or registered trademarks of their respective owners.</Data></Cell>   </Row>   <Row>    <Cell ss:StyleID="s39"/>    <Cell ss:StyleID="s39"/>    <Cell ss:StyleID="s39"/>    <Cell ss:StyleID="s39"/>    <Cell ss:StyleID="s39"/>   </Row>   <Row>    <Cell ss:StyleID="s39"/>    <Cell ss:StyleID="s39"/>    <Cell ss:StyleID="s39"/>    <Cell ss:StyleID="s39"/>    <Cell ss:StyleID="s39"/>   </Row>   <Row>    <Cell ss:StyleID="s39"/>    <Cell ss:StyleID="s39"/>    <Cell ss:StyleID="s39"/>    <Cell ss:StyleID="s39"/>    <Cell ss:StyleID="s39"/>   </Row>  </Table>  <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">   <PageSetup>    <Layout x:Orientation="Landscape"/>   </PageSetup>   <Print>    <ValidPrinterInfo/>    <HorizontalResolution>600</HorizontalResolution>    <VerticalResolution>600</VerticalResolution>   </Print>   <Selected/>   <DoNotDisplayGridlines/>   <Panes>    <Pane>     <Number>3</Number>     <ActiveCol>2</ActiveCol>    </Pane>   </Panes>   <ProtectObjects>False</ProtectObjects>   <ProtectScenarios>False</ProtectScenarios>  </WorksheetOptions> </Worksheet><Worksheet ss:Name="Analytes" ss:Protected="1">
+<Table>
+<Column ss:Width="150" ss:AutoFitWidth="1"/>
+<Column ss:Width="150" ss:AutoFitWidth="1"/>
+<Column ss:Width="150" ss:AutoFitWidth="1"/>
+<Column ss:Width="150" ss:AutoFitWidth="1"/>
+<Row ss:AutoFitHeight="1">
+<Cell ss:StyleID="ColumnCaption"><Data ss:Type="String">Name</Data></Cell>
+<Cell ss:StyleID="ColumnCaption"><Data ss:Type="String">LabUnitDictionary</Data></Cell>
+<Cell ss:StyleID="ColumnCaption"><Data ss:Type="String">AllowLeadingSigns</Data></Cell>
+<Cell ss:StyleID="ColumnCaption"><Data ss:Type="String">Active</Data></Cell>
+</Row>
+</Table>
+<WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
+<FreezePanes/>
+<FrozenNoSplit/>
+<SplitHorizontal>1</SplitHorizontal>
+<TopRowBottomPane>1</TopRowBottomPane><SplitVertical>1</SplitVertical>
+<LeftColumnRightPane>1</LeftColumnRightPane>
+<ProtectObjects>True</ProtectObjects>
+<ProtectScenarios>True</ProtectScenarios>
+<AllowFormatCells/>
+<AllowSizeCols/>
+<AllowSizeRows/>
+<AllowInsertRows/>
+<AllowDeleteRows/>
+<AllowSort/>
+<AllowFilter/>
+</WorksheetOptions>
+<AutoFilter  x:Range="C1:C4"
+xmlns="urn:schemas-microsoft-com:office:excel">
+</AutoFilter>
+</Worksheet>
+<Worksheet ss:Name="CentralLabAssignments" ss:Protected="1">
+<Table>
+<Column ss:Width="150" ss:AutoFitWidth="1"/>
+<Column ss:Width="150" ss:AutoFitWidth="1"/>
+<Column ss:Width="150" ss:AutoFitWidth="1"/>
+<Column ss:Width="150" ss:AutoFitWidth="1"/>
+<Column ss:Width="150" ss:AutoFitWidth="1"/>
+<Row ss:AutoFitHeight="1">
+<Cell ss:StyleID="ColumnCaption"><Data ss:Type="String">Lab</Data></Cell>
+<Cell ss:StyleID="ColumnCaption"><Data ss:Type="String">Study</Data></Cell>
+<Cell ss:StyleID="ColumnCaption"><Data ss:Type="String">Environment</Data></Cell>
+<Cell ss:StyleID="ColumnCaption"><Data ss:Type="String">SiteNumber</Data></Cell>
+<Cell ss:StyleID="ColumnCaption"><Data ss:Type="String">Active</Data></Cell>
+</Row>
+</Table>
+<WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
+<FreezePanes/>
+<FrozenNoSplit/>
+<SplitHorizontal>1</SplitHorizontal>
+<TopRowBottomPane>1</TopRowBottomPane><SplitVertical>1</SplitVertical>
+<LeftColumnRightPane>1</LeftColumnRightPane>
+<ProtectObjects>True</ProtectObjects>
+<ProtectScenarios>True</ProtectScenarios>
+<AllowFormatCells/>
+<AllowSizeCols/>
+<AllowSizeRows/>
+<AllowInsertRows/>
+<AllowDeleteRows/>
+<AllowSort/>
+<AllowFilter/>
+</WorksheetOptions>
+<AutoFilter  x:Range="C1:C5"
+xmlns="urn:schemas-microsoft-com:office:excel">
+</AutoFilter>
+</Worksheet>
+<Worksheet ss:Name="ClinicalSignificanceCodes" ss:Protected="1">
+<Table>
+<Column ss:Width="150" ss:AutoFitWidth="1"/>
+<Column ss:Width="150" ss:AutoFitWidth="1"/>
+<Column ss:Width="150" ss:AutoFitWidth="1"/>
+<Column ss:Width="150" ss:AutoFitWidth="1"/>
+<Row ss:AutoFitHeight="1">
+<Cell ss:StyleID="ColumnCaption"><Data ss:Type="String">SourceCode</Data></Cell>
+<Cell ss:StyleID="ColumnCaption"><Data ss:Type="String">Description</Data></Cell>
+<Cell ss:StyleID="ColumnCaption"><Data ss:Type="String">CommentsRequired</Data></Cell>
+<Cell ss:StyleID="ColumnCaption"><Data ss:Type="String">Active</Data></Cell>
+</Row>
+</Table>
+<WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
+<FreezePanes/>
+<FrozenNoSplit/>
+<SplitHorizontal>1</SplitHorizontal>
+<TopRowBottomPane>1</TopRowBottomPane><SplitVertical>1</SplitVertical>
+<LeftColumnRightPane>1</LeftColumnRightPane>
+<ProtectObjects>True</ProtectObjects>
+<ProtectScenarios>True</ProtectScenarios>
+<AllowFormatCells/>
+<AllowSizeCols/>
+<AllowSizeRows/>
+<AllowInsertRows/>
+<AllowDeleteRows/>
+<AllowSort/>
+<AllowFilter/>
+</WorksheetOptions>
+<AutoFilter  x:Range="C1:C4"
+xmlns="urn:schemas-microsoft-com:office:excel">
+</AutoFilter>
+</Worksheet>
+<Worksheet ss:Name="GlobalDataDictionaries" ss:Protected="1">
+<Table>
+<Column ss:Width="150" ss:AutoFitWidth="1"/>
+<Column ss:Width="150" ss:AutoFitWidth="1"/>
+<Row ss:AutoFitHeight="1">
+<Cell ss:StyleID="ColumnCaption"><Data ss:Type="String">Name</Data></Cell>
+<Cell ss:StyleID="ColumnCaption"><Data ss:Type="String">Active</Data></Cell>
+</Row>
+<Row ss:AutoFitHeight="1">
+<Cell ss:StyleID="Protected"><Data ss:Type="String">1</Data></Cell>
+<Cell ss:StyleID="Default"><Data ss:Type="String">TRUE</Data></Cell>
+</Row>
+<Row ss:AutoFitHeight="1">
+<Cell ss:StyleID="Protected"><Data ss:Type="String">1 Name</Data></Cell>
+<Cell ss:StyleID="Default"><Data ss:Type="String">TRUE</Data></Cell>
+</Row>
+<Row ss:AutoFitHeight="1">
+<Cell ss:StyleID="Protected"><Data ss:Type="String">255 Test Characters Test Characters Test Characters Test Characters Test Characters Characters Test Characters Test Characters Test Characters Test Characters Test Characters Characters Test Characters Test Characters Test Characters Test Characters Tests</Data></Cell>
+<Cell ss:StyleID="Default"><Data ss:Type="String">TRUE</Data></Cell>
+</Row>
+<Row ss:AutoFitHeight="1">
+<Cell ss:StyleID="Protected"><Data ss:Type="String">abcd</Data></Cell>
+<Cell ss:StyleID="Default"><Data ss:Type="String">TRUE</Data></Cell>
+</Row>
+<Row ss:AutoFitHeight="1">
+<Cell ss:StyleID="Protected"><Data ss:Type="String">as</Data></Cell>
+<Cell ss:StyleID="Default"><Data ss:Type="String">TRUE</Data></Cell>
+</Row>
+<Row ss:AutoFitHeight="1">
+<Cell ss:StyleID="Protected"><Data ss:Type="String">b</Data></Cell>
+<Cell ss:StyleID="Default"><Data ss:Type="String">TRUE</Data></Cell>
+</Row>
+<Row ss:AutoFitHeight="1">
+<Cell ss:StyleID="Protected"><Data ss:Type="String">d</Data></Cell>
+<Cell ss:StyleID="Default"><Data ss:Type="String">TRUE</Data></Cell>
+</Row>
+<Row ss:AutoFitHeight="1">
+<Cell ss:StyleID="Protected"><Data ss:Type="String">df</Data></Cell>
+<Cell ss:StyleID="Default"><Data ss:Type="String">TRUE</Data></Cell>
+</Row>
+<Row ss:AutoFitHeight="1">
+<Cell ss:StyleID="Protected"><Data ss:Type="String">f</Data></Cell>
+<Cell ss:StyleID="Default"><Data ss:Type="String">TRUE</Data></Cell>
+</Row>
+<Row ss:AutoFitHeight="1">
+<Cell ss:StyleID="Protected"><Data ss:Type="String">ffsadf</Data></Cell>
+<Cell ss:StyleID="Default"><Data ss:Type="String">TRUE</Data></Cell>
+</Row>
+<Row ss:AutoFitHeight="1">
+<Cell ss:StyleID="Protected"><Data ss:Type="String">jhkg</Data></Cell>
+<Cell ss:StyleID="Default"><Data ss:Type="String">TRUE</Data></Cell>
+</Row>
+<Row ss:AutoFitHeight="1">
+<Cell ss:StyleID="Protected"><Data ss:Type="String">sdfdddddddddd</Data></Cell>
+<Cell ss:StyleID="Default"><Data ss:Type="String">TRUE</Data></Cell>
+</Row>
+<Row ss:AutoFitHeight="1">
+<Cell ss:StyleID="Protected"><Data ss:Type="String">sexREG_ECPV11</Data></Cell>
+<Cell ss:StyleID="Default"><Data ss:Type="String">TRUE</Data></Cell>
+</Row>
+<Row ss:AutoFitHeight="1">
+<Cell ss:StyleID="Protected"><Data ss:Type="String">sexREG_ECPV12</Data></Cell>
+<Cell ss:StyleID="Default"><Data ss:Type="String">TRUE</Data></Cell>
+</Row>
+<Row ss:AutoFitHeight="1">
+<Cell ss:StyleID="Protected"><Data ss:Type="String">sexREG_P2012V21</Data></Cell>
+<Cell ss:StyleID="Default"><Data ss:Type="String">TRUE</Data></Cell>
+</Row>
+<Row ss:AutoFitHeight="1">
+<Cell ss:StyleID="Protected"><Data ss:Type="String">sexREG_US17701</Data></Cell>
+<Cell ss:StyleID="Default"><Data ss:Type="String">TRUE</Data></Cell>
+</Row>
+<Row ss:AutoFitHeight="1">
+<Cell ss:StyleID="Protected"><Data ss:Type="String">sexREGAQT</Data></Cell>
+<Cell ss:StyleID="Default"><Data ss:Type="String">TRUE</Data></Cell>
+</Row>
+<Row ss:AutoFitHeight="1">
+<Cell ss:StyleID="Protected"><Data ss:Type="String">ss</Data></Cell>
+<Cell ss:StyleID="Default"><Data ss:Type="String">TRUE</Data></Cell>
+</Row>
+<Row ss:AutoFitHeight="1">
+<Cell ss:StyleID="Protected"><Data ss:Type="String">wdf</Data></Cell>
+<Cell ss:StyleID="Default"><Data ss:Type="String">TRUE</Data></Cell>
+</Row>
+<Row ss:AutoFitHeight="1">
+<Cell ss:StyleID="Protected"><Data ss:Type="String">ww</Data></Cell>
+<Cell ss:StyleID="Default"><Data ss:Type="String">TRUE</Data></Cell>
+</Row>
+<Row ss:AutoFitHeight="1">
+<Cell ss:StyleID="Protected"><Data ss:Type="String">yesnoREG_ECPV11</Data></Cell>
+<Cell ss:StyleID="Default"><Data ss:Type="String">TRUE</Data></Cell>
+</Row>
+<Row ss:AutoFitHeight="1">
+<Cell ss:StyleID="Protected"><Data ss:Type="String">yesnoREG_ECPV12</Data></Cell>
+<Cell ss:StyleID="Default"><Data ss:Type="String">TRUE</Data></Cell>
+</Row>
+<Row ss:AutoFitHeight="1">
+<Cell ss:StyleID="Protected"><Data ss:Type="String">yesnoREG_P2012V21</Data></Cell>
+<Cell ss:StyleID="Default"><Data ss:Type="String">TRUE</Data></Cell>
+</Row>
+<Row ss:AutoFitHeight="1">
+<Cell ss:StyleID="Protected"><Data ss:Type="String">yesnoREG_US17701</Data></Cell>
+<Cell ss:StyleID="Default"><Data ss:Type="String">TRUE</Data></Cell>
+</Row>
+<Row ss:AutoFitHeight="1">
+<Cell ss:StyleID="Protected"><Data ss:Type="String">yesnoREGAQT</Data></Cell>
+<Cell ss:StyleID="Default"><Data ss:Type="String">TRUE</Data></Cell>
+</Row>
+<Row ss:AutoFitHeight="1">
+</Row>
+<Row ss:AutoFitHeight="1">
+</Row>
+<Row ss:AutoFitHeight="1">
+</Row>
+<Row ss:AutoFitHeight="1">
+</Row>
+<Row ss:AutoFitHeight="1">
+</Row>
+<Row ss:AutoFitHeight="1">
+</Row>
+<Row ss:AutoFitHeight="1">
+</Row>
+<Row ss:AutoFitHeight="1">
+</Row>
+<Row ss:AutoFitHeight="1">
+</Row>
+<Row ss:AutoFitHeight="1">
+</Row>
+<Row ss:AutoFitHeight="1">
+</Row>
+<Row ss:AutoFitHeight="1">
+</Row>
+<Row ss:AutoFitHeight="1">
+</Row>
+<Row ss:AutoFitHeight="1">
+</Row>
+<Row ss:AutoFitHeight="1">
+</Row>
+<Row ss:AutoFitHeight="1">
+</Row>
+<Row ss:AutoFitHeight="1">
+</Row>
+<Row ss:AutoFitHeight="1">
+</Row>
+<Row ss:AutoFitHeight="1">
+</Row>
+<Row ss:AutoFitHeight="1">
+</Row>
+</Table>
+<WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
+<FreezePanes/>
+<FrozenNoSplit/>
+<SplitHorizontal>1</SplitHorizontal>
+<TopRowBottomPane>1</TopRowBottomPane><SplitVertical>1</SplitVertical>
+<LeftColumnRightPane>1</LeftColumnRightPane>
+<ProtectObjects>True</ProtectObjects>
+<ProtectScenarios>True</ProtectScenarios>
+<AllowFormatCells/>
+<AllowSizeCols/>
+<AllowSizeRows/>
+<AllowInsertRows/>
+<AllowDeleteRows/>
+<AllowSort/>
+<AllowFilter/>
+</WorksheetOptions>
+<DataValidation xmlns="urn:schemas-microsoft-com:office:excel">
+<Range>R2C2</Range>
+<Type>List</Type>
+<Value>&quot;TRUE,FALSE&quot;</Value></DataValidation>
+<DataValidation xmlns="urn:schemas-microsoft-com:office:excel">
+<Range>R3C2</Range>
+<Type>List</Type>
+<Value>&quot;TRUE,FALSE&quot;</Value></DataValidation>
+<DataValidation xmlns="urn:schemas-microsoft-com:office:excel">
+<Range>R4C2</Range>
+<Type>List</Type>
+<Value>&quot;TRUE,FALSE&quot;</Value></DataValidation>
+<DataValidation xmlns="urn:schemas-microsoft-com:office:excel">
+<Range>R5C2</Range>
+<Type>List</Type>
+<Value>&quot;TRUE,FALSE&quot;</Value></DataValidation>
+<DataValidation xmlns="urn:schemas-microsoft-com:office:excel">
+<Range>R6C2</Range>
+<Type>List</Type>
+<Value>&quot;TRUE,FALSE&quot;</Value></DataValidation>
+<DataValidation xmlns="urn:schemas-microsoft-com:office:excel">
+<Range>R7C2</Range>
+<Type>List</Type>
+<Value>&quot;TRUE,FALSE&quot;</Value></DataValidation>
+<DataValidation xmlns="urn:schemas-microsoft-com:office:excel">
+<Range>R8C2</Range>
+<Type>List</Type>
+<Value>&quot;TRUE,FALSE&quot;</Value></DataValidation>
+<DataValidation xmlns="urn:schemas-microsoft-com:office:excel">
+<Range>R9C2</Range>
+<Type>List</Type>
+<Value>&quot;TRUE,FALSE&quot;</Value></DataValidation>
+<DataValidation xmlns="urn:schemas-microsoft-com:office:excel">
+<Range>R10C2</Range>
+<Type>List</Type>
+<Value>&quot;TRUE,FALSE&quot;</Value></DataValidation>
+<DataValidation xmlns="urn:schemas-microsoft-com:office:excel">
+<Range>R11C2</Range>
+<Type>List</Type>
+<Value>&quot;TRUE,FALSE&quot;</Value></DataValidation>
+<DataValidation xmlns="urn:schemas-microsoft-com:office:excel">
+<Range>R12C2</Range>
+<Type>List</Type>
+<Value>&quot;TRUE,FALSE&quot;</Value></DataValidation>
+<DataValidation xmlns="urn:schemas-microsoft-com:office:excel">
+<Range>R13C2</Range>
+<Type>List</Type>
+<Value>&quot;TRUE,FALSE&quot;</Value></DataValidation>
+<DataValidation xmlns="urn:schemas-microsoft-com:office:excel">
+<Range>R14C2</Range>
+<Type>List</Type>
+<Value>&quot;TRUE,FALSE&quot;</Value></DataValidation>
+<DataValidation xmlns="urn:schemas-microsoft-com:office:excel">
+<Range>R15C2</Range>
+<Type>List</Type>
+<Value>&quot;TRUE,FALSE&quot;</Value></DataValidation>
+<DataValidation xmlns="urn:schemas-microsoft-com:office:excel">
+<Range>R16C2</Range>
+<Type>List</Type>
+<Value>&quot;TRUE,FALSE&quot;</Value></DataValidation>
+<DataValidation xmlns="urn:schemas-microsoft-com:office:excel">
+<Range>R17C2</Range>
+<Type>List</Type>
+<Value>&quot;TRUE,FALSE&quot;</Value></DataValidation>
+<DataValidation xmlns="urn:schemas-microsoft-com:office:excel">
+<Range>R18C2</Range>
+<Type>List</Type>
+<Value>&quot;TRUE,FALSE&quot;</Value></DataValidation>
+<DataValidation xmlns="urn:schemas-microsoft-com:office:excel">
+<Range>R19C2</Range>
+<Type>List</Type>
+<Value>&quot;TRUE,FALSE&quot;</Value></DataValidation>
+<DataValidation xmlns="urn:schemas-microsoft-com:office:excel">
+<Range>R20C2</Range>
+<Type>List</Type>
+<Value>&quot;TRUE,FALSE&quot;</Value></DataValidation>
+<DataValidation xmlns="urn:schemas-microsoft-com:office:excel">
+<Range>R21C2</Range>
+<Type>List</Type>
+<Value>&quot;TRUE,FALSE&quot;</Value></DataValidation>
+<DataValidation xmlns="urn:schemas-microsoft-com:office:excel">
+<Range>R22C2</Range>
+<Type>List</Type>
+<Value>&quot;TRUE,FALSE&quot;</Value></DataValidation>
+<DataValidation xmlns="urn:schemas-microsoft-com:office:excel">
+<Range>R23C2</Range>
+<Type>List</Type>
+<Value>&quot;TRUE,FALSE&quot;</Value></DataValidation>
+<DataValidation xmlns="urn:schemas-microsoft-com:office:excel">
+<Range>R24C2</Range>
+<Type>List</Type>
+<Value>&quot;TRUE,FALSE&quot;</Value></DataValidation>
+<DataValidation xmlns="urn:schemas-microsoft-com:office:excel">
+<Range>R25C2</Range>
+<Type>List</Type>
+<Value>&quot;TRUE,FALSE&quot;</Value></DataValidation>
+<DataValidation xmlns="urn:schemas-microsoft-com:office:excel">
+<Range>R26C2</Range>
+<Type>List</Type>
+<Value>&quot;TRUE,FALSE&quot;</Value></DataValidation>
+<DataValidation xmlns="urn:schemas-microsoft-com:office:excel">
+<Range>R27C2</Range>
+<Type>List</Type>
+<Value>&quot;TRUE,FALSE&quot;</Value></DataValidation>
+<DataValidation xmlns="urn:schemas-microsoft-com:office:excel">
+<Range>R28C2</Range>
+<Type>List</Type>
+<Value>&quot;TRUE,FALSE&quot;</Value></DataValidation>
+<DataValidation xmlns="urn:schemas-microsoft-com:office:excel">
+<Range>R29C2</Range>
+<Type>List</Type>
+<Value>&quot;TRUE,FALSE&quot;</Value></DataValidation>
+<DataValidation xmlns="urn:schemas-microsoft-com:office:excel">
+<Range>R30C2</Range>
+<Type>List</Type>
+<Value>&quot;TRUE,FALSE&quot;</Value></DataValidation>
+<DataValidation xmlns="urn:schemas-microsoft-com:office:excel">
+<Range>R31C2</Range>
+<Type>List</Type>
+<Value>&quot;TRUE,FALSE&quot;</Value></DataValidation>
+<DataValidation xmlns="urn:schemas-microsoft-com:office:excel">
+<Range>R32C2</Range>
+<Type>List</Type>
+<Value>&quot;TRUE,FALSE&quot;</Value></DataValidation>
+<DataValidation xmlns="urn:schemas-microsoft-com:office:excel">
+<Range>R33C2</Range>
+<Type>List</Type>
+<Value>&quot;TRUE,FALSE&quot;</Value></DataValidation>
+<DataValidation xmlns="urn:schemas-microsoft-com:office:excel">
+<Range>R34C2</Range>
+<Type>List</Type>
+<Value>&quot;TRUE,FALSE&quot;</Value></DataValidation>
+<DataValidation xmlns="urn:schemas-microsoft-com:office:excel">
+<Range>R35C2</Range>
+<Type>List</Type>
+<Value>&quot;TRUE,FALSE&quot;</Value></DataValidation>
+<DataValidation xmlns="urn:schemas-microsoft-com:office:excel">
+<Range>R36C2</Range>
+<Type>List</Type>
+<Value>&quot;TRUE,FALSE&quot;</Value></DataValidation>
+<DataValidation xmlns="urn:schemas-microsoft-com:office:excel">
+<Range>R37C2</Range>
+<Type>List</Type>
+<Value>&quot;TRUE,FALSE&quot;</Value></DataValidation>
+<DataValidation xmlns="urn:schemas-microsoft-com:office:excel">
+<Range>R38C2</Range>
+<Type>List</Type>
+<Value>&quot;TRUE,FALSE&quot;</Value></DataValidation>
+<DataValidation xmlns="urn:schemas-microsoft-com:office:excel">
+<Range>R39C2</Range>
+<Type>List</Type>
+<Value>&quot;TRUE,FALSE&quot;</Value></DataValidation>
+<DataValidation xmlns="urn:schemas-microsoft-com:office:excel">
+<Range>R40C2</Range>
+<Type>List</Type>
+<Value>&quot;TRUE,FALSE&quot;</Value></DataValidation>
+<DataValidation xmlns="urn:schemas-microsoft-com:office:excel">
+<Range>R41C2</Range>
+<Type>List</Type>
+<Value>&quot;TRUE,FALSE&quot;</Value></DataValidation>
+<DataValidation xmlns="urn:schemas-microsoft-com:office:excel">
+<Range>R42C2</Range>
+<Type>List</Type>
+<Value>&quot;TRUE,FALSE&quot;</Value></DataValidation>
+<DataValidation xmlns="urn:schemas-microsoft-com:office:excel">
+<Range>R43C2</Range>
+<Type>List</Type>
+<Value>&quot;TRUE,FALSE&quot;</Value></DataValidation>
+<DataValidation xmlns="urn:schemas-microsoft-com:office:excel">
+<Range>R44C2</Range>
+<Type>List</Type>
+<Value>&quot;TRUE,FALSE&quot;</Value></DataValidation>
+<DataValidation xmlns="urn:schemas-microsoft-com:office:excel">
+<Range>R45C2</Range>
+<Type>List</Type>
+<Value>&quot;TRUE,FALSE&quot;</Value></DataValidation>
+<DataValidation xmlns="urn:schemas-microsoft-com:office:excel">
+<Range>R46C2</Range>
+<Type>List</Type>
+<Value>&quot;TRUE,FALSE&quot;</Value></DataValidation>
+<AutoFilter  x:Range="C1:C2"
+xmlns="urn:schemas-microsoft-com:office:excel">
+</AutoFilter>
+</Worksheet>
+<Worksheet ss:Name="GlobalDataDictionaryEntries" ss:Protected="1">
+<Table>
+<Column ss:Width="150" ss:AutoFitWidth="1"/>
+<Column ss:Width="150" ss:AutoFitWidth="1"/>
+<Column ss:Width="150" ss:AutoFitWidth="1"/>
+<Column ss:Width="150" ss:AutoFitWidth="1"/>
+<Column ss:Width="150" ss:AutoFitWidth="1"/>
+<Column ss:Index="200" ss:Hidden="1"/>
+<Row ss:AutoFitHeight="1">
+<Cell ss:StyleID="ColumnCaption"><Data ss:Type="String">GlobalDataDictionary</Data></Cell>
+<Cell ss:StyleID="ColumnCaption"><Data ss:Type="String">Ordinal</Data></Cell>
+<Cell ss:StyleID="ColumnCaption"><Data ss:Type="String">CodedData</Data></Cell>
+<Cell ss:StyleID="ColumnCaption"><Data ss:Type="String">UserDataString</Data></Cell>
+<Cell ss:StyleID="ColumnCaption"><Data ss:Type="String">Active</Data></Cell>
+</Row>
+<Row ss:AutoFitHeight="1">
+<Cell ss:StyleID="Default"><Data ss:Type="String">sexREG_ECPV11</Data></Cell>
+<Cell ss:StyleID="Default"><Data ss:Type="String">1</Data></Cell>
+<Cell ss:StyleID="Default"><Data ss:Type="String">fREG_ECPV11</Data></Cell>
+<Cell ss:StyleID="Default"><Data ss:Type="String">femaleREG_ECPV11</Data></Cell>
+<Cell ss:StyleID="Default"><Data ss:Type="String">TRUE</Data></Cell>
+<Cell ss:StyleID="Default" ss:Index="200" ss:Formula="=IF(LEN(GlobalDataDictionaries!RC1)&gt;0,GlobalDataDictionaries!RC1,&quot;&quot;)"/>
+</Row>
+<Row ss:AutoFitHeight="1">
+<Cell ss:StyleID="Default"><Data ss:Type="String">sexREG_ECPV11</Data></Cell>
+<Cell ss:StyleID="Default"><Data ss:Type="String">2</Data></Cell>
+<Cell ss:StyleID="Default"><Data ss:Type="String">mREG_ECPV11</Data></Cell>
+<Cell ss:StyleID="Default"><Data ss:Type="String">maleREG_ECPV11</Data></Cell>
+<Cell ss:StyleID="Default"><Data ss:Type="String">TRUE</Data></Cell>
+<Cell ss:StyleID="Default" ss:Index="200" ss:Formula="=IF(LEN(GlobalDataDictionaries!RC1)&gt;0,GlobalDataDictionaries!RC1,&quot;&quot;)"/>
+</Row>
+<Row ss:AutoFitHeight="1">
+<Cell ss:StyleID="Default_alt"><Data ss:Type="String">sexREG_ECPV12</Data></Cell>
+<Cell ss:StyleID="Default_alt"><Data ss:Type="String">1</Data></Cell>
+<Cell ss:StyleID="Default_alt"><Data ss:Type="String">fREG_ECPV12</Data></Cell>
+<Cell ss:StyleID="Default_alt"><Data ss:Type="String">femaleREG_ECPV12</Data></Cell>
+<Cell ss:StyleID="Default_alt"><Data ss:Type="String">TRUE</Data></Cell>
+<Cell ss:StyleID="Default" ss:Index="200" ss:Formula="=IF(LEN(GlobalDataDictionaries!RC1)&gt;0,GlobalDataDictionaries!RC1,&quot;&quot;)"/>
+</Row>
+<Row ss:AutoFitHeight="1">
+<Cell ss:StyleID="Default_alt"><Data ss:Type="String">sexREG_ECPV12</Data></Cell>
+<Cell ss:StyleID="Default_alt"><Data ss:Type="String">2</Data></Cell>
+<Cell ss:StyleID="Default_alt"><Data ss:Type="String">mREG_ECPV12</Data></Cell>
+<Cell ss:StyleID="Default_alt"><Data ss:Type="String">maleREG_ECPV12</Data></Cell>
+<Cell ss:StyleID="Default_alt"><Data ss:Type="String">TRUE</Data></Cell>
+<Cell ss:StyleID="Default" ss:Index="200" ss:Formula="=IF(LEN(GlobalDataDictionaries!RC1)&gt;0,GlobalDataDictionaries!RC1,&quot;&quot;)"/>
+</Row>
+<Row ss:AutoFitHeight="1">
+<Cell ss:StyleID="Default"><Data ss:Type="String">sexREG_P2012V21</Data></Cell>
+<Cell ss:StyleID="Default"><Data ss:Type="String">1</Data></Cell>
+<Cell ss:StyleID="Default"><Data ss:Type="String">fREG_P2012V21</Data></Cell>
+<Cell ss:StyleID="Default"><Data ss:Type="String">femaleREG_P2012V21</Data></Cell>
+<Cell ss:StyleID="Default"><Data ss:Type="String">TRUE</Data></Cell>
+<Cell ss:StyleID="Default" ss:Index="200" ss:Formula="=IF(LEN(GlobalDataDictionaries!RC1)&gt;0,GlobalDataDictionaries!RC1,&quot;&quot;)"/>
+</Row>
+<Row ss:AutoFitHeight="1">
+<Cell ss:StyleID="Default"><Data ss:Type="String">sexREG_P2012V21</Data></Cell>
+<Cell ss:StyleID="Default"><Data ss:Type="String">2</Data></Cell>
+<Cell ss:StyleID="Default"><Data ss:Type="String">mREG_P2012V21</Data></Cell>
+<Cell ss:StyleID="Default"><Data ss:Type="String">maleREG_P2012V21</Data></Cell>
+<Cell ss:StyleID="Default"><Data ss:Type="String">TRUE</Data></Cell>
+<Cell ss:StyleID="Default" ss:Index="200" ss:Formula="=IF(LEN(GlobalDataDictionaries!RC1)&gt;0,GlobalDataDictionaries!RC1,&quot;&quot;)"/>
+</Row>
+<Row ss:AutoFitHeight="1">
+<Cell ss:StyleID="Default_alt"><Data ss:Type="String">sexREG_US17701</Data></Cell>
+<Cell ss:StyleID="Default_alt"><Data ss:Type="String">1</Data></Cell>
+<Cell ss:StyleID="Default_alt"><Data ss:Type="String">fREG_US17701</Data></Cell>
+<Cell ss:StyleID="Default_alt"><Data ss:Type="String">femaleREG_US17701</Data></Cell>
+<Cell ss:StyleID="Default_alt"><Data ss:Type="String">TRUE</Data></Cell>
+<Cell ss:StyleID="Default" ss:Index="200" ss:Formula="=IF(LEN(GlobalDataDictionaries!RC1)&gt;0,GlobalDataDictionaries!RC1,&quot;&quot;)"/>
+</Row>
+<Row ss:AutoFitHeight="1">
+<Cell ss:StyleID="Default_alt"><Data ss:Type="String">sexREG_US17701</Data></Cell>
+<Cell ss:StyleID="Default_alt"><Data ss:Type="String">2</Data></Cell>
+<Cell ss:StyleID="Default_alt"><Data ss:Type="String">mREG_US17701</Data></Cell>
+<Cell ss:StyleID="Default_alt"><Data ss:Type="String">maleREG_US17701</Data></Cell>
+<Cell ss:StyleID="Default_alt"><Data ss:Type="String">TRUE</Data></Cell>
+<Cell ss:StyleID="Default" ss:Index="200" ss:Formula="=IF(LEN(GlobalDataDictionaries!RC1)&gt;0,GlobalDataDictionaries!RC1,&quot;&quot;)"/>
+</Row>
+<Row ss:AutoFitHeight="1">
+<Cell ss:StyleID="Default"><Data ss:Type="String">sexREGAQT</Data></Cell>
+<Cell ss:StyleID="Default"><Data ss:Type="String">1</Data></Cell>
+<Cell ss:StyleID="Default"><Data ss:Type="String">fREGAQT</Data></Cell>
+<Cell ss:StyleID="Default"><Data ss:Type="String">femaleREGAQT</Data></Cell>
+<Cell ss:StyleID="Default"><Data ss:Type="String">TRUE</Data></Cell>
+<Cell ss:StyleID="Default" ss:Index="200" ss:Formula="=IF(LEN(GlobalDataDictionaries!RC1)&gt;0,GlobalDataDictionaries!RC1,&quot;&quot;)"/>
+</Row>
+<Row ss:AutoFitHeight="1">
+<Cell ss:StyleID="Default"><Data ss:Type="String">sexREGAQT</Data></Cell>
+<Cell ss:StyleID="Default"><Data ss:Type="String">2</Data></Cell>
+<Cell ss:StyleID="Default"><Data ss:Type="String">mREGAQT</Data></Cell>
+<Cell ss:StyleID="Default"><Data ss:Type="String">maleREGAQT</Data></Cell>
+<Cell ss:StyleID="Default"><Data ss:Type="String">TRUE</Data></Cell>
+<Cell ss:StyleID="Default" ss:Index="200" ss:Formula="=IF(LEN(GlobalDataDictionaries!RC1)&gt;0,GlobalDataDictionaries!RC1,&quot;&quot;)"/>
+</Row>
+<Row ss:AutoFitHeight="1">
+<Cell ss:StyleID="Default_alt"><Data ss:Type="String">yesnoREG_ECPV11</Data></Cell>
+<Cell ss:StyleID="Default_alt"><Data ss:Type="String">1</Data></Cell>
+<Cell ss:StyleID="Default_alt"><Data ss:Type="String">YREG_ECPV11</Data></Cell>
+<Cell ss:StyleID="Default_alt"><Data ss:Type="String">YesREG_ECPV11</Data></Cell>
+<Cell ss:StyleID="Default_alt"><Data ss:Type="String">TRUE</Data></Cell>
+<Cell ss:StyleID="Default" ss:Index="200" ss:Formula="=IF(LEN(GlobalDataDictionaries!RC1)&gt;0,GlobalDataDictionaries!RC1,&quot;&quot;)"/>
+</Row>
+<Row ss:AutoFitHeight="1">
+<Cell ss:StyleID="Default_alt"><Data ss:Type="String">yesnoREG_ECPV11</Data></Cell>
+<Cell ss:StyleID="Default_alt"><Data ss:Type="String">2</Data></Cell>
+<Cell ss:StyleID="Default_alt"><Data ss:Type="String">NREG_ECPV11</Data></Cell>
+<Cell ss:StyleID="Default_alt"><Data ss:Type="String">NoREG_ECPV11</Data></Cell>
+<Cell ss:StyleID="Default_alt"><Data ss:Type="String">TRUE</Data></Cell>
+<Cell ss:StyleID="Default" ss:Index="200" ss:Formula="=IF(LEN(GlobalDataDictionaries!RC1)&gt;0,GlobalDataDictionaries!RC1,&quot;&quot;)"/>
+</Row>
+<Row ss:AutoFitHeight="1">
+<Cell ss:StyleID="Default"><Data ss:Type="String">yesnoREG_ECPV12</Data></Cell>
+<Cell ss:StyleID="Default"><Data ss:Type="String">1</Data></Cell>
+<Cell ss:StyleID="Default"><Data ss:Type="String">YREG_ECPV12</Data></Cell>
+<Cell ss:StyleID="Default"><Data ss:Type="String">YesREG_ECPV12</Data></Cell>
+<Cell ss:StyleID="Default"><Data ss:Type="String">TRUE</Data></Cell>
+<Cell ss:StyleID="Default" ss:Index="200" ss:Formula="=IF(LEN(GlobalDataDictionaries!RC1)&gt;0,GlobalDataDictionaries!RC1,&quot;&quot;)"/>
+</Row>
+<Row ss:AutoFitHeight="1">
+<Cell ss:StyleID="Default"><Data ss:Type="String">yesnoREG_ECPV12</Data></Cell>
+<Cell ss:StyleID="Default"><Data ss:Type="String">2</Data></Cell>
+<Cell ss:StyleID="Default"><Data ss:Type="String">NREG_ECPV12</Data></Cell>
+<Cell ss:StyleID="Default"><Data ss:Type="String">NoREG_ECPV12</Data></Cell>
+<Cell ss:StyleID="Default"><Data ss:Type="String">TRUE</Data></Cell>
+<Cell ss:StyleID="Default" ss:Index="200" ss:Formula="=IF(LEN(GlobalDataDictionaries!RC1)&gt;0,GlobalDataDictionaries!RC1,&quot;&quot;)"/>
+</Row>
+<Row ss:AutoFitHeight="1">
+<Cell ss:StyleID="Default_alt"><Data ss:Type="String">yesnoREG_P2012V21</Data></Cell>
+<Cell ss:StyleID="Default_alt"><Data ss:Type="String">1</Data></Cell>
+<Cell ss:StyleID="Default_alt"><Data ss:Type="String">YREG_P2012V21</Data></Cell>
+<Cell ss:StyleID="Default_alt"><Data ss:Type="String">YesREG_P2012V21</Data></Cell>
+<Cell ss:StyleID="Default_alt"><Data ss:Type="String">TRUE</Data></Cell>
+<Cell ss:StyleID="Default" ss:Index="200" ss:Formula="=IF(LEN(GlobalDataDictionaries!RC1)&gt;0,GlobalDataDictionaries!RC1,&quot;&quot;)"/>
+</Row>
+<Row ss:AutoFitHeight="1">
+<Cell ss:StyleID="Default_alt"><Data ss:Type="String">yesnoREG_P2012V21</Data></Cell>
+<Cell ss:StyleID="Default_alt"><Data ss:Type="String">2</Data></Cell>
+<Cell ss:StyleID="Default_alt"><Data ss:Type="String">NREG_P2012V21</Data></Cell>
+<Cell ss:StyleID="Default_alt"><Data ss:Type="String">NoREG_P2012V21</Data></Cell>
+<Cell ss:StyleID="Default_alt"><Data ss:Type="String">TRUE</Data></Cell>
+<Cell ss:StyleID="Default" ss:Index="200" ss:Formula="=IF(LEN(GlobalDataDictionaries!RC1)&gt;0,GlobalDataDictionaries!RC1,&quot;&quot;)"/>
+</Row>
+<Row ss:AutoFitHeight="1">
+<Cell ss:StyleID="Default"><Data ss:Type="String">yesnoREG_US17701</Data></Cell>
+<Cell ss:StyleID="Default"><Data ss:Type="String">1</Data></Cell>
+<Cell ss:StyleID="Default"><Data ss:Type="String">YREG_US17701</Data></Cell>
+<Cell ss:StyleID="Default"><Data ss:Type="String">YesREG_US17701</Data></Cell>
+<Cell ss:StyleID="Default"><Data ss:Type="String">TRUE</Data></Cell>
+<Cell ss:StyleID="Default" ss:Index="200" ss:Formula="=IF(LEN(GlobalDataDictionaries!RC1)&gt;0,GlobalDataDictionaries!RC1,&quot;&quot;)"/>
+</Row>
+<Row ss:AutoFitHeight="1">
+<Cell ss:StyleID="Default"><Data ss:Type="String">yesnoREG_US17701</Data></Cell>
+<Cell ss:StyleID="Default"><Data ss:Type="String">2</Data></Cell>
+<Cell ss:StyleID="Default"><Data ss:Type="String">NREG_US17701</Data></Cell>
+<Cell ss:StyleID="Default"><Data ss:Type="String">NoREG_US17701</Data></Cell>
+<Cell ss:StyleID="Default"><Data ss:Type="String">TRUE</Data></Cell>
+<Cell ss:StyleID="Default" ss:Index="200" ss:Formula="=IF(LEN(GlobalDataDictionaries!RC1)&gt;0,GlobalDataDictionaries!RC1,&quot;&quot;)"/>
+</Row>
+<Row ss:AutoFitHeight="1">
+<Cell ss:StyleID="Default_alt"><Data ss:Type="String">yesnoREGAQT</Data></Cell>
+<Cell ss:StyleID="Default_alt"><Data ss:Type="String">1</Data></Cell>
+<Cell ss:StyleID="Default_alt"><Data ss:Type="String">YREGAQT</Data></Cell>
+<Cell ss:StyleID="Default_alt"><Data ss:Type="String">YesREGAQT</Data></Cell>
+<Cell ss:StyleID="Default_alt"><Data ss:Type="String">TRUE</Data></Cell>
+<Cell ss:StyleID="Default" ss:Index="200" ss:Formula="=IF(LEN(GlobalDataDictionaries!RC1)&gt;0,GlobalDataDictionaries!RC1,&quot;&quot;)"/>
+</Row>
+<Row ss:AutoFitHeight="1">
+<Cell ss:StyleID="Default_alt"><Data ss:Type="String">yesnoREGAQT</Data></Cell>
+<Cell ss:StyleID="Default_alt"><Data ss:Type="String">2</Data></Cell>
+<Cell ss:StyleID="Default_alt"><Data ss:Type="String">NREGAQT</Data></Cell>
+<Cell ss:StyleID="Default_alt"><Data ss:Type="String">NoREGAQT</Data></Cell>
+<Cell ss:StyleID="Default_alt"><Data ss:Type="String">TRUE</Data></Cell>
+<Cell ss:StyleID="Default" ss:Index="200" ss:Formula="=IF(LEN(GlobalDataDictionaries!RC1)&gt;0,GlobalDataDictionaries!RC1,&quot;&quot;)"/>
+</Row>
+<Row ss:AutoFitHeight="1">
+<Cell ss:StyleID="Default" ss:Index="200" ss:Formula="=IF(LEN(GlobalDataDictionaries!RC1)&gt;0,GlobalDataDictionaries!RC1,&quot;&quot;)"/>
+</Row>
+<Row ss:AutoFitHeight="1">
+<Cell ss:StyleID="Default" ss:Index="200" ss:Formula="=IF(LEN(GlobalDataDictionaries!RC1)&gt;0,GlobalDataDictionaries!RC1,&quot;&quot;)"/>
+</Row>
+<Row ss:AutoFitHeight="1">
+<Cell ss:StyleID="Default" ss:Index="200" ss:Formula="=IF(LEN(GlobalDataDictionaries!RC1)&gt;0,GlobalDataDictionaries!RC1,&quot;&quot;)"/>
+</Row>
+<Row ss:AutoFitHeight="1">
+<Cell ss:StyleID="Default" ss:Index="200" ss:Formula="=IF(LEN(GlobalDataDictionaries!RC1)&gt;0,GlobalDataDictionaries!RC1,&quot;&quot;)"/>
+</Row>
+<Row ss:AutoFitHeight="1">
+<Cell ss:StyleID="Default" ss:Index="200" ss:Formula="=IF(LEN(GlobalDataDictionaries!RC1)&gt;0,GlobalDataDictionaries!RC1,&quot;&quot;)"/>
+</Row>
+<Row ss:AutoFitHeight="1">
+<Cell ss:StyleID="Default" ss:Index="200" ss:Formula="=IF(LEN(GlobalDataDictionaries!RC1)&gt;0,GlobalDataDictionaries!RC1,&quot;&quot;)"/>
+</Row>
+<Row ss:AutoFitHeight="1">
+<Cell ss:StyleID="Default" ss:Index="200" ss:Formula="=IF(LEN(GlobalDataDictionaries!RC1)&gt;0,GlobalDataDictionaries!RC1,&quot;&quot;)"/>
+</Row>
+<Row ss:AutoFitHeight="1">
+<Cell ss:StyleID="Default" ss:Index="200" ss:Formula="=IF(LEN(GlobalDataDictionaries!RC1)&gt;0,GlobalDataDictionaries!RC1,&quot;&quot;)"/>
+</Row>
+<Row ss:AutoFitHeight="1">
+<Cell ss:StyleID="Default" ss:Index="200" ss:Formula="=IF(LEN(GlobalDataDictionaries!RC1)&gt;0,GlobalDataDictionaries!RC1,&quot;&quot;)"/>
+</Row>
+<Row ss:AutoFitHeight="1">
+<Cell ss:StyleID="Default" ss:Index="200" ss:Formula="=IF(LEN(GlobalDataDictionaries!RC1)&gt;0,GlobalDataDictionaries!RC1,&quot;&quot;)"/>
+</Row>
+<Row ss:AutoFitHeight="1">
+<Cell ss:StyleID="Default" ss:Index="200" ss:Formula="=IF(LEN(GlobalDataDictionaries!RC1)&gt;0,GlobalDataDictionaries!RC1,&quot;&quot;)"/>
+</Row>
+<Row ss:AutoFitHeight="1">
+<Cell ss:StyleID="Default" ss:Index="200" ss:Formula="=IF(LEN(GlobalDataDictionaries!RC1)&gt;0,GlobalDataDictionaries!RC1,&quot;&quot;)"/>
+</Row>
+<Row ss:AutoFitHeight="1">
+<Cell ss:StyleID="Default" ss:Index="200" ss:Formula="=IF(LEN(GlobalDataDictionaries!RC1)&gt;0,GlobalDataDictionaries!RC1,&quot;&quot;)"/>
+</Row>
+<Row ss:AutoFitHeight="1">
+<Cell ss:StyleID="Default" ss:Index="200" ss:Formula="=IF(LEN(GlobalDataDictionaries!RC1)&gt;0,GlobalDataDictionaries!RC1,&quot;&quot;)"/>
+</Row>
+<Row ss:AutoFitHeight="1">
+<Cell ss:StyleID="Default" ss:Index="200" ss:Formula="=IF(LEN(GlobalDataDictionaries!RC1)&gt;0,GlobalDataDictionaries!RC1,&quot;&quot;)"/>
+</Row>
+<Row ss:AutoFitHeight="1">
+<Cell ss:StyleID="Default" ss:Index="200" ss:Formula="=IF(LEN(GlobalDataDictionaries!RC1)&gt;0,GlobalDataDictionaries!RC1,&quot;&quot;)"/>
+</Row>
+<Row ss:AutoFitHeight="1">
+<Cell ss:StyleID="Default" ss:Index="200" ss:Formula="=IF(LEN(GlobalDataDictionaries!RC1)&gt;0,GlobalDataDictionaries!RC1,&quot;&quot;)"/>
+</Row>
+<Row ss:AutoFitHeight="1">
+<Cell ss:StyleID="Default" ss:Index="200" ss:Formula="=IF(LEN(GlobalDataDictionaries!RC1)&gt;0,GlobalDataDictionaries!RC1,&quot;&quot;)"/>
+</Row>
+<Row ss:AutoFitHeight="1">
+<Cell ss:StyleID="Default" ss:Index="200" ss:Formula="=IF(LEN(GlobalDataDictionaries!RC1)&gt;0,GlobalDataDictionaries!RC1,&quot;&quot;)"/>
+</Row>
+<Row ss:AutoFitHeight="1">
+<Cell ss:StyleID="Default" ss:Index="200" ss:Formula="=IF(LEN(GlobalDataDictionaries!RC1)&gt;0,GlobalDataDictionaries!RC1,&quot;&quot;)"/>
+</Row>
+<Row ss:AutoFitHeight="1">
+<Cell ss:StyleID="Default" ss:Index="200" ss:Formula="=IF(LEN(GlobalDataDictionaries!RC1)&gt;0,GlobalDataDictionaries!RC1,&quot;&quot;)"/>
+</Row>
+<Row ss:AutoFitHeight="1">
+<Cell ss:StyleID="Default" ss:Index="200" ss:Formula="=IF(LEN(GlobalDataDictionaries!RC1)&gt;0,GlobalDataDictionaries!RC1,&quot;&quot;)"/>
+</Row>
+<Row ss:AutoFitHeight="1">
+<Cell ss:StyleID="Default" ss:Index="200" ss:Formula="=IF(LEN(GlobalDataDictionaries!RC1)&gt;0,GlobalDataDictionaries!RC1,&quot;&quot;)"/>
+</Row>
+<Row ss:AutoFitHeight="1">
+<Cell ss:StyleID="Default" ss:Index="200" ss:Formula="=IF(LEN(GlobalDataDictionaries!RC1)&gt;0,GlobalDataDictionaries!RC1,&quot;&quot;)"/>
+</Row>
+<Row ss:AutoFitHeight="1">
+<Cell ss:StyleID="Default" ss:Index="200" ss:Formula="=IF(LEN(GlobalDataDictionaries!RC1)&gt;0,GlobalDataDictionaries!RC1,&quot;&quot;)"/>
+</Row>
+<Row ss:AutoFitHeight="1">
+<Cell ss:StyleID="Default" ss:Index="200" ss:Formula="=IF(LEN(GlobalDataDictionaries!RC1)&gt;0,GlobalDataDictionaries!RC1,&quot;&quot;)"/>
+</Row>
+<Row ss:AutoFitHeight="1">
+<Cell ss:StyleID="Default" ss:Index="200" ss:Formula="=IF(LEN(GlobalDataDictionaries!RC1)&gt;0,GlobalDataDictionaries!RC1,&quot;&quot;)"/>
+</Row>
+<Row ss:AutoFitHeight="1">
+<Cell ss:StyleID="Default" ss:Index="200" ss:Formula="=IF(LEN(GlobalDataDictionaries!RC1)&gt;0,GlobalDataDictionaries!RC1,&quot;&quot;)"/>
+</Row>
+<Row ss:AutoFitHeight="1">
+<Cell ss:StyleID="Default" ss:Index="200" ss:Formula="=IF(LEN(GlobalDataDictionaries!RC1)&gt;0,GlobalDataDictionaries!RC1,&quot;&quot;)"/>
+</Row>
+<Row ss:AutoFitHeight="1">
+<Cell ss:StyleID="Default" ss:Index="200" ss:Formula="=IF(LEN(GlobalDataDictionaries!RC1)&gt;0,GlobalDataDictionaries!RC1,&quot;&quot;)"/>
+</Row>
+<Row ss:AutoFitHeight="1">
+<Cell ss:StyleID="Default" ss:Index="200" ss:Formula="=IF(LEN(GlobalDataDictionaries!RC1)&gt;0,GlobalDataDictionaries!RC1,&quot;&quot;)"/>
+</Row>
+<Row ss:AutoFitHeight="1">
+<Cell ss:StyleID="Default" ss:Index="200" ss:Formula="=IF(LEN(GlobalDataDictionaries!RC1)&gt;0,GlobalDataDictionaries!RC1,&quot;&quot;)"/>
+</Row>
+<Row ss:AutoFitHeight="1">
+<Cell ss:StyleID="Default" ss:Index="200" ss:Formula="=IF(LEN(GlobalDataDictionaries!RC1)&gt;0,GlobalDataDictionaries!RC1,&quot;&quot;)"/>
+</Row>
+<Row ss:AutoFitHeight="1">
+<Cell ss:StyleID="Default" ss:Index="200" ss:Formula="=IF(LEN(GlobalDataDictionaries!RC1)&gt;0,GlobalDataDictionaries!RC1,&quot;&quot;)"/>
+</Row>
+<Row ss:AutoFitHeight="1">
+<Cell ss:StyleID="Default" ss:Index="200" ss:Formula="=IF(LEN(GlobalDataDictionaries!RC1)&gt;0,GlobalDataDictionaries!RC1,&quot;&quot;)"/>
+</Row>
+<Row ss:AutoFitHeight="1">
+<Cell ss:StyleID="Default" ss:Index="200" ss:Formula="=IF(LEN(GlobalDataDictionaries!RC1)&gt;0,GlobalDataDictionaries!RC1,&quot;&quot;)"/>
+</Row>
+<Row ss:AutoFitHeight="1">
+<Cell ss:StyleID="Default" ss:Index="200" ss:Formula="=IF(LEN(GlobalDataDictionaries!RC1)&gt;0,GlobalDataDictionaries!RC1,&quot;&quot;)"/>
+</Row>
+<Row ss:AutoFitHeight="1">
+<Cell ss:StyleID="Default" ss:Index="200" ss:Formula="=IF(LEN(GlobalDataDictionaries!RC1)&gt;0,GlobalDataDictionaries!RC1,&quot;&quot;)"/>
+</Row>
+<Row ss:AutoFitHeight="1">
+<Cell ss:StyleID="Default" ss:Index="200" ss:Formula="=IF(LEN(GlobalDataDictionaries!RC1)&gt;0,GlobalDataDictionaries!RC1,&quot;&quot;)"/>
+</Row>
+<Row ss:AutoFitHeight="1">
+<Cell ss:StyleID="Default" ss:Index="200" ss:Formula="=IF(LEN(GlobalDataDictionaries!RC1)&gt;0,GlobalDataDictionaries!RC1,&quot;&quot;)"/>
+</Row>
+<Row ss:AutoFitHeight="1">
+<Cell ss:StyleID="Default" ss:Index="200" ss:Formula="=IF(LEN(GlobalDataDictionaries!RC1)&gt;0,GlobalDataDictionaries!RC1,&quot;&quot;)"/>
+</Row>
+<Row ss:AutoFitHeight="1">
+<Cell ss:StyleID="Default" ss:Index="200" ss:Formula="=IF(LEN(GlobalDataDictionaries!RC1)&gt;0,GlobalDataDictionaries!RC1,&quot;&quot;)"/>
+</Row>
+<Row ss:AutoFitHeight="1">
+<Cell ss:StyleID="Default" ss:Index="200" ss:Formula="=IF(LEN(GlobalDataDictionaries!RC1)&gt;0,GlobalDataDictionaries!RC1,&quot;&quot;)"/>
+</Row>
+<Row ss:AutoFitHeight="1">
+<Cell ss:StyleID="Default" ss:Index="200" ss:Formula="=IF(LEN(GlobalDataDictionaries!RC1)&gt;0,GlobalDataDictionaries!RC1,&quot;&quot;)"/>
+</Row>
+<Row ss:AutoFitHeight="1">
+<Cell ss:StyleID="Default" ss:Index="200" ss:Formula="=IF(LEN(GlobalDataDictionaries!RC1)&gt;0,GlobalDataDictionaries!RC1,&quot;&quot;)"/>
+</Row>
+</Table>
+<WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
+<FreezePanes/>
+<FrozenNoSplit/>
+<SplitHorizontal>1</SplitHorizontal>
+<TopRowBottomPane>1</TopRowBottomPane><SplitVertical>1</SplitVertical>
+<LeftColumnRightPane>1</LeftColumnRightPane>
+<ProtectObjects>True</ProtectObjects>
+<ProtectScenarios>True</ProtectScenarios>
+<AllowFormatCells/>
+<AllowSizeCols/>
+<AllowSizeRows/>
+<AllowInsertRows/>
+<AllowDeleteRows/>
+<AllowSort/>
+<AllowFilter/>
+</WorksheetOptions>
+<DataValidation xmlns="urn:schemas-microsoft-com:office:excel">
+<Range>R2C1</Range>
+<Type>List</Type>
+<Value>C200</Value>
+</DataValidation>
+<DataValidation xmlns="urn:schemas-microsoft-com:office:excel">
+<Range>R2C5</Range>
+<Type>List</Type>
+<Value>&quot;TRUE,FALSE&quot;</Value></DataValidation>
+<DataValidation xmlns="urn:schemas-microsoft-com:office:excel">
+<Range>R3C1</Range>
+<Type>List</Type>
+<Value>C200</Value>
+</DataValidation>
+<DataValidation xmlns="urn:schemas-microsoft-com:office:excel">
+<Range>R3C5</Range>
+<Type>List</Type>
+<Value>&quot;TRUE,FALSE&quot;</Value></DataValidation>
+<DataValidation xmlns="urn:schemas-microsoft-com:office:excel">
+<Range>R4C1</Range>
+<Type>List</Type>
+<Value>C200</Value>
+</DataValidation>
+<DataValidation xmlns="urn:schemas-microsoft-com:office:excel">
+<Range>R4C5</Range>
+<Type>List</Type>
+<Value>&quot;TRUE,FALSE&quot;</Value></DataValidation>
+<DataValidation xmlns="urn:schemas-microsoft-com:office:excel">
+<Range>R5C1</Range>
+<Type>List</Type>
+<Value>C200</Value>
+</DataValidation>
+<DataValidation xmlns="urn:schemas-microsoft-com:office:excel">
+<Range>R5C5</Range>
+<Type>List</Type>
+<Value>&quot;TRUE,FALSE&quot;</Value></DataValidation>
+<DataValidation xmlns="urn:schemas-microsoft-com:office:excel">
+<Range>R6C1</Range>
+<Type>List</Type>
+<Value>C200</Value>
+</DataValidation>
+<DataValidation xmlns="urn:schemas-microsoft-com:office:excel">
+<Range>R6C5</Range>
+<Type>List</Type>
+<Value>&quot;TRUE,FALSE&quot;</Value></DataValidation>
+<DataValidation xmlns="urn:schemas-microsoft-com:office:excel">
+<Range>R7C1</Range>
+<Type>List</Type>
+<Value>C200</Value>
+</DataValidation>
+<DataValidation xmlns="urn:schemas-microsoft-com:office:excel">
+<Range>R7C5</Range>
+<Type>List</Type>
+<Value>&quot;TRUE,FALSE&quot;</Value></DataValidation>
+<DataValidation xmlns="urn:schemas-microsoft-com:office:excel">
+<Range>R8C1</Range>
+<Type>List</Type>
+<Value>C200</Value>
+</DataValidation>
+<DataValidation xmlns="urn:schemas-microsoft-com:office:excel">
+<Range>R8C5</Range>
+<Type>List</Type>
+<Value>&quot;TRUE,FALSE&quot;</Value></DataValidation>
+<DataValidation xmlns="urn:schemas-microsoft-com:office:excel">
+<Range>R9C1</Range>
+<Type>List</Type>
+<Value>C200</Value>
+</DataValidation>
+<DataValidation xmlns="urn:schemas-microsoft-com:office:excel">
+<Range>R9C5</Range>
+<Type>List</Type>
+<Value>&quot;TRUE,FALSE&quot;</Value></DataValidation>
+<DataValidation xmlns="urn:schemas-microsoft-com:office:excel">
+<Range>R10C1</Range>
+<Type>List</Type>
+<Value>C200</Value>
+</DataValidation>
+<DataValidation xmlns="urn:schemas-microsoft-com:office:excel">
+<Range>R10C5</Range>
+<Type>List</Type>
+<Value>&quot;TRUE,FALSE&quot;</Value></DataValidation>
+<DataValidation xmlns="urn:schemas-microsoft-com:office:excel">
+<Range>R11C1</Range>
+<Type>List</Type>
+<Value>C200</Value>
+</DataValidation>
+<DataValidation xmlns="urn:schemas-microsoft-com:office:excel">
+<Range>R11C5</Range>
+<Type>List</Type>
+<Value>&quot;TRUE,FALSE&quot;</Value></DataValidation>
+<DataValidation xmlns="urn:schemas-microsoft-com:office:excel">
+<Range>R12C1</Range>
+<Type>List</Type>
+<Value>C200</Value>
+</DataValidation>
+<DataValidation xmlns="urn:schemas-microsoft-com:office:excel">
+<Range>R12C5</Range>
+<Type>List</Type>
+<Value>&quot;TRUE,FALSE&quot;</Value></DataValidation>
+<DataValidation xmlns="urn:schemas-microsoft-com:office:excel">
+<Range>R13C1</Range>
+<Type>List</Type>
+<Value>C200</Value>
+</DataValidation>
+<DataValidation xmlns="urn:schemas-microsoft-com:office:excel">
+<Range>R13C5</Range>
+<Type>List</Type>
+<Value>&quot;TRUE,FALSE&quot;</Value></DataValidation>
+<DataValidation xmlns="urn:schemas-microsoft-com:office:excel">
+<Range>R14C1</Range>
+<Type>List</Type>
+<Value>C200</Value>
+</DataValidation>
+<DataValidation xmlns="urn:schemas-microsoft-com:office:excel">
+<Range>R14C5</Range>
+<Type>List</Type>
+<Value>&quot;TRUE,FALSE&quot;</Value></DataValidation>
+<DataValidation xmlns="urn:schemas-microsoft-com:office:excel">
+<Range>R15C1</Range>
+<Type>List</Type>
+<Value>C200</Value>
+</DataValidation>
+<DataValidation xmlns="urn:schemas-microsoft-com:office:excel">
+<Range>R15C5</Range>
+<Type>List</Type>
+<Value>&quot;TRUE,FALSE&quot;</Value></DataValidation>
+<DataValidation xmlns="urn:schemas-microsoft-com:office:excel">
+<Range>R16C1</Range>
+<Type>List</Type>
+<Value>C200</Value>
+</DataValidation>
+<DataValidation xmlns="urn:schemas-microsoft-com:office:excel">
+<Range>R16C5</Range>
+<Type>List</Type>
+<Value>&quot;TRUE,FALSE&quot;</Value></DataValidation>
+<DataValidation xmlns="urn:schemas-microsoft-com:office:excel">
+<Range>R17C1</Range>
+<Type>List</Type>
+<Value>C200</Value>
+</DataValidation>
+<DataValidation xmlns="urn:schemas-microsoft-com:office:excel">
+<Range>R17C5</Range>
+<Type>List</Type>
+<Value>&quot;TRUE,FALSE&quot;</Value></DataValidation>
+<DataValidation xmlns="urn:schemas-microsoft-com:office:excel">
+<Range>R18C1</Range>
+<Type>List</Type>
+<Value>C200</Value>
+</DataValidation>
+<DataValidation xmlns="urn:schemas-microsoft-com:office:excel">
+<Range>R18C5</Range>
+<Type>List</Type>
+<Value>&quot;TRUE,FALSE&quot;</Value></DataValidation>
+<DataValidation xmlns="urn:schemas-microsoft-com:office:excel">
+<Range>R19C1</Range>
+<Type>List</Type>
+<Value>C200</Value>
+</DataValidation>
+<DataValidation xmlns="urn:schemas-microsoft-com:office:excel">
+<Range>R19C5</Range>
+<Type>List</Type>
+<Value>&quot;TRUE,FALSE&quot;</Value></DataValidation>
+<DataValidation xmlns="urn:schemas-microsoft-com:office:excel">
+<Range>R20C1</Range>
+<Type>List</Type>
+<Value>C200</Value>
+</DataValidation>
+<DataValidation xmlns="urn:schemas-microsoft-com:office:excel">
+<Range>R20C5</Range>
+<Type>List</Type>
+<Value>&quot;TRUE,FALSE&quot;</Value></DataValidation>
+<DataValidation xmlns="urn:schemas-microsoft-com:office:excel">
+<Range>R21C1</Range>
+<Type>List</Type>
+<Value>C200</Value>
+</DataValidation>
+<DataValidation xmlns="urn:schemas-microsoft-com:office:excel">
+<Range>R21C5</Range>
+<Type>List</Type>
+<Value>&quot;TRUE,FALSE&quot;</Value></DataValidation>
+<DataValidation xmlns="urn:schemas-microsoft-com:office:excel">
+<Range>R22C1</Range>
+<Type>List</Type>
+<Value>C200</Value>
+</DataValidation>
+<DataValidation xmlns="urn:schemas-microsoft-com:office:excel">
+<Range>R22C5</Range>
+<Type>List</Type>
+<Value>&quot;TRUE,FALSE&quot;</Value></DataValidation>
+<DataValidation xmlns="urn:schemas-microsoft-com:office:excel">
+<Range>R23C1</Range>
+<Type>List</Type>
+<Value>C200</Value>
+</DataValidation>
+<DataValidation xmlns="urn:schemas-microsoft-com:office:excel">
+<Range>R23C5</Range>
+<Type>List</Type>
+<Value>&quot;TRUE,FALSE&quot;</Value></DataValidation>
+<DataValidation xmlns="urn:schemas-microsoft-com:office:excel">
+<Range>R24C1</Range>
+<Type>List</Type>
+<Value>C200</Value>
+</DataValidation>
+<DataValidation xmlns="urn:schemas-microsoft-com:office:excel">
+<Range>R24C5</Range>
+<Type>List</Type>
+<Value>&quot;TRUE,FALSE&quot;</Value></DataValidation>
+<DataValidation xmlns="urn:schemas-microsoft-com:office:excel">
+<Range>R25C1</Range>
+<Type>List</Type>
+<Value>C200</Value>
+</DataValidation>
+<DataValidation xmlns="urn:schemas-microsoft-com:office:excel">
+<Range>R25C5</Range>
+<Type>List</Type>
+<Value>&quot;TRUE,FALSE&quot;</Value></DataValidation>
+<DataValidation xmlns="urn:schemas-microsoft-com:office:excel">
+<Range>R26C1</Range>
+<Type>List</Type>
+<Value>C200</Value>
+</DataValidation>
+<DataValidation xmlns="urn:schemas-microsoft-com:office:excel">
+<Range>R26C5</Range>
+<Type>List</Type>
+<Value>&quot;TRUE,FALSE&quot;</Value></DataValidation>
+<DataValidation xmlns="urn:schemas-microsoft-com:office:excel">
+<Range>R27C1</Range>
+<Type>List</Type>
+<Value>C200</Value>
+</DataValidation>
+<DataValidation xmlns="urn:schemas-microsoft-com:office:excel">
+<Range>R27C5</Range>
+<Type>List</Type>
+<Value>&quot;TRUE,FALSE&quot;</Value></DataValidation>
+<DataValidation xmlns="urn:schemas-microsoft-com:office:excel">
+<Range>R28C1</Range>
+<Type>List</Type>
+<Value>C200</Value>
+</DataValidation>
+<DataValidation xmlns="urn:schemas-microsoft-com:office:excel">
+<Range>R28C5</Range>
+<Type>List</Type>
+<Value>&quot;TRUE,FALSE&quot;</Value></DataValidation>
+<DataValidation xmlns="urn:schemas-microsoft-com:office:excel">
+<Range>R29C1</Range>
+<Type>List</Type>
+<Value>C200</Value>
+</DataValidation>
+<DataValidation xmlns="urn:schemas-microsoft-com:office:excel">
+<Range>R29C5</Range>
+<Type>List</Type>
+<Value>&quot;TRUE,FALSE&quot;</Value></DataValidation>
+<DataValidation xmlns="urn:schemas-microsoft-com:office:excel">
+<Range>R30C1</Range>
+<Type>List</Type>
+<Value>C200</Value>
+</DataValidation>
+<DataValidation xmlns="urn:schemas-microsoft-com:office:excel">
+<Range>R30C5</Range>
+<Type>List</Type>
+<Value>&quot;TRUE,FALSE&quot;</Value></DataValidation>
+<DataValidation xmlns="urn:schemas-microsoft-com:office:excel">
+<Range>R31C1</Range>
+<Type>List</Type>
+<Value>C200</Value>
+</DataValidation>
+<DataValidation xmlns="urn:schemas-microsoft-com:office:excel">
+<Range>R31C5</Range>
+<Type>List</Type>
+<Value>&quot;TRUE,FALSE&quot;</Value></DataValidation>
+<DataValidation xmlns="urn:schemas-microsoft-com:office:excel">
+<Range>R32C1</Range>
+<Type>List</Type>
+<Value>C200</Value>
+</DataValidation>
+<DataValidation xmlns="urn:schemas-microsoft-com:office:excel">
+<Range>R32C5</Range>
+<Type>List</Type>
+<Value>&quot;TRUE,FALSE&quot;</Value></DataValidation>
+<DataValidation xmlns="urn:schemas-microsoft-com:office:excel">
+<Range>R33C1</Range>
+<Type>List</Type>
+<Value>C200</Value>
+</DataValidation>
+<DataValidation xmlns="urn:schemas-microsoft-com:office:excel">
+<Range>R33C5</Range>
+<Type>List</Type>
+<Value>&quot;TRUE,FALSE&quot;</Value></DataValidation>
+<DataValidation xmlns="urn:schemas-microsoft-com:office:excel">
+<Range>R34C1</Range>
+<Type>List</Type>
+<Value>C200</Value>
+</DataValidation>
+<DataValidation xmlns="urn:schemas-microsoft-com:office:excel">
+<Range>R34C5</Range>
+<Type>List</Type>
+<Value>&quot;TRUE,FALSE&quot;</Value></DataValidation>
+<DataValidation xmlns="urn:schemas-microsoft-com:office:excel">
+<Range>R35C1</Range>
+<Type>List</Type>
+<Value>C200</Value>
+</DataValidation>
+<DataValidation xmlns="urn:schemas-microsoft-com:office:excel">
+<Range>R35C5</Range>
+<Type>List</Type>
+<Value>&quot;TRUE,FALSE&quot;</Value></DataValidation>
+<DataValidation xmlns="urn:schemas-microsoft-com:office:excel">
+<Range>R36C1</Range>
+<Type>List</Type>
+<Value>C200</Value>
+</DataValidation>
+<DataValidation xmlns="urn:schemas-microsoft-com:office:excel">
+<Range>R36C5</Range>
+<Type>List</Type>
+<Value>&quot;TRUE,FALSE&quot;</Value></DataValidation>
+<DataValidation xmlns="urn:schemas-microsoft-com:office:excel">
+<Range>R37C1</Range>
+<Type>List</Type>
+<Value>C200</Value>
+</DataValidation>
+<DataValidation xmlns="urn:schemas-microsoft-com:office:excel">
+<Range>R37C5</Range>
+<Type>List</Type>
+<Value>&quot;TRUE,FALSE&quot;</Value></DataValidation>
+<DataValidation xmlns="urn:schemas-microsoft-com:office:excel">
+<Range>R38C1</Range>
+<Type>List</Type>
+<Value>C200</Value>
+</DataValidation>
+<DataValidation xmlns="urn:schemas-microsoft-com:office:excel">
+<Range>R38C5</Range>
+<Type>List</Type>
+<Value>&quot;TRUE,FALSE&quot;</Value></DataValidation>
+<DataValidation xmlns="urn:schemas-microsoft-com:office:excel">
+<Range>R39C1</Range>
+<Type>List</Type>
+<Value>C200</Value>
+</DataValidation>
+<DataValidation xmlns="urn:schemas-microsoft-com:office:excel">
+<Range>R39C5</Range>
+<Type>List</Type>
+<Value>&quot;TRUE,FALSE&quot;</Value></DataValidation>
+<DataValidation xmlns="urn:schemas-microsoft-com:office:excel">
+<Range>R40C1</Range>
+<Type>List</Type>
+<Value>C200</Value>
+</DataValidation>
+<DataValidation xmlns="urn:schemas-microsoft-com:office:excel">
+<Range>R40C5</Range>
+<Type>List</Type>
+<Value>&quot;TRUE,FALSE&quot;</Value></DataValidation>
+<DataValidation xmlns="urn:schemas-microsoft-com:office:excel">
+<Range>R41C1</Range>
+<Type>List</Type>
+<Value>C200</Value>
+</DataValidation>
+<DataValidation xmlns="urn:schemas-microsoft-com:office:excel">
+<Range>R41C5</Range>
+<Type>List</Type>
+<Value>&quot;TRUE,FALSE&quot;</Value></DataValidation>
+<DataValidation xmlns="urn:schemas-microsoft-com:office:excel">
+<Range>R42C1</Range>
+<Type>List</Type>
+<Value>C200</Value>
+</DataValidation>
+<DataValidation xmlns="urn:schemas-microsoft-com:office:excel">
+<Range>R42C5</Range>
+<Type>List</Type>
+<Value>&quot;TRUE,FALSE&quot;</Value></DataValidation>
+<DataValidation xmlns="urn:schemas-microsoft-com:office:excel">
+<Range>R43C1</Range>
+<Type>List</Type>
+<Value>C200</Value>
+</DataValidation>
+<DataValidation xmlns="urn:schemas-microsoft-com:office:excel">
+<Range>R43C5</Range>
+<Type>List</Type>
+<Value>&quot;TRUE,FALSE&quot;</Value></DataValidation>
+<DataValidation xmlns="urn:schemas-microsoft-com:office:excel">
+<Range>R44C1</Range>
+<Type>List</Type>
+<Value>C200</Value>
+</DataValidation>
+<DataValidation xmlns="urn:schemas-microsoft-com:office:excel">
+<Range>R44C5</Range>
+<Type>List</Type>
+<Value>&quot;TRUE,FALSE&quot;</Value></DataValidation>
+<DataValidation xmlns="urn:schemas-microsoft-com:office:excel">
+<Range>R45C1</Range>
+<Type>List</Type>
+<Value>C200</Value>
+</DataValidation>
+<DataValidation xmlns="urn:schemas-microsoft-com:office:excel">
+<Range>R45C5</Range>
+<Type>List</Type>
+<Value>&quot;TRUE,FALSE&quot;</Value></DataValidation>
+<DataValidation xmlns="urn:schemas-microsoft-com:office:excel">
+<Range>R46C1</Range>
+<Type>List</Type>
+<Value>C200</Value>
+</DataValidation>
+<DataValidation xmlns="urn:schemas-microsoft-com:office:excel">
+<Range>R46C5</Range>
+<Type>List</Type>
+<Value>&quot;TRUE,FALSE&quot;</Value></DataValidation>
+<DataValidation xmlns="urn:schemas-microsoft-com:office:excel">
+<Range>R47C1</Range>
+<Type>List</Type>
+<Value>C200</Value>
+</DataValidation>
+<DataValidation xmlns="urn:schemas-microsoft-com:office:excel">
+<Range>R47C5</Range>
+<Type>List</Type>
+<Value>&quot;TRUE,FALSE&quot;</Value></DataValidation>
+<DataValidation xmlns="urn:schemas-microsoft-com:office:excel">
+<Range>R48C1</Range>
+<Type>List</Type>
+<Value>C200</Value>
+</DataValidation>
+<DataValidation xmlns="urn:schemas-microsoft-com:office:excel">
+<Range>R48C5</Range>
+<Type>List</Type>
+<Value>&quot;TRUE,FALSE&quot;</Value></DataValidation>
+<DataValidation xmlns="urn:schemas-microsoft-com:office:excel">
+<Range>R49C1</Range>
+<Type>List</Type>
+<Value>C200</Value>
+</DataValidation>
+<DataValidation xmlns="urn:schemas-microsoft-com:office:excel">
+<Range>R49C5</Range>
+<Type>List</Type>
+<Value>&quot;TRUE,FALSE&quot;</Value></DataValidation>
+<DataValidation xmlns="urn:schemas-microsoft-com:office:excel">
+<Range>R50C1</Range>
+<Type>List</Type>
+<Value>C200</Value>
+</DataValidation>
+<DataValidation xmlns="urn:schemas-microsoft-com:office:excel">
+<Range>R50C5</Range>
+<Type>List</Type>
+<Value>&quot;TRUE,FALSE&quot;</Value></DataValidation>
+<DataValidation xmlns="urn:schemas-microsoft-com:office:excel">
+<Range>R51C1</Range>
+<Type>List</Type>
+<Value>C200</Value>
+</DataValidation>
+<DataValidation xmlns="urn:schemas-microsoft-com:office:excel">
+<Range>R51C5</Range>
+<Type>List</Type>
+<Value>&quot;TRUE,FALSE&quot;</Value></DataValidation>
+<DataValidation xmlns="urn:schemas-microsoft-com:office:excel">
+<Range>R52C1</Range>
+<Type>List</Type>
+<Value>C200</Value>
+</DataValidation>
+<DataValidation xmlns="urn:schemas-microsoft-com:office:excel">
+<Range>R52C5</Range>
+<Type>List</Type>
+<Value>&quot;TRUE,FALSE&quot;</Value></DataValidation>
+<DataValidation xmlns="urn:schemas-microsoft-com:office:excel">
+<Range>R53C1</Range>
+<Type>List</Type>
+<Value>C200</Value>
+</DataValidation>
+<DataValidation xmlns="urn:schemas-microsoft-com:office:excel">
+<Range>R53C5</Range>
+<Type>List</Type>
+<Value>&quot;TRUE,FALSE&quot;</Value></DataValidation>
+<DataValidation xmlns="urn:schemas-microsoft-com:office:excel">
+<Range>R54C1</Range>
+<Type>List</Type>
+<Value>C200</Value>
+</DataValidation>
+<DataValidation xmlns="urn:schemas-microsoft-com:office:excel">
+<Range>R54C5</Range>
+<Type>List</Type>
+<Value>&quot;TRUE,FALSE&quot;</Value></DataValidation>
+<DataValidation xmlns="urn:schemas-microsoft-com:office:excel">
+<Range>R55C1</Range>
+<Type>List</Type>
+<Value>C200</Value>
+</DataValidation>
+<DataValidation xmlns="urn:schemas-microsoft-com:office:excel">
+<Range>R55C5</Range>
+<Type>List</Type>
+<Value>&quot;TRUE,FALSE&quot;</Value></DataValidation>
+<DataValidation xmlns="urn:schemas-microsoft-com:office:excel">
+<Range>R56C1</Range>
+<Type>List</Type>
+<Value>C200</Value>
+</DataValidation>
+<DataValidation xmlns="urn:schemas-microsoft-com:office:excel">
+<Range>R56C5</Range>
+<Type>List</Type>
+<Value>&quot;TRUE,FALSE&quot;</Value></DataValidation>
+<DataValidation xmlns="urn:schemas-microsoft-com:office:excel">
+<Range>R57C1</Range>
+<Type>List</Type>
+<Value>C200</Value>
+</DataValidation>
+<DataValidation xmlns="urn:schemas-microsoft-com:office:excel">
+<Range>R57C5</Range>
+<Type>List</Type>
+<Value>&quot;TRUE,FALSE&quot;</Value></DataValidation>
+<DataValidation xmlns="urn:schemas-microsoft-com:office:excel">
+<Range>R58C1</Range>
+<Type>List</Type>
+<Value>C200</Value>
+</DataValidation>
+<DataValidation xmlns="urn:schemas-microsoft-com:office:excel">
+<Range>R58C5</Range>
+<Type>List</Type>
+<Value>&quot;TRUE,FALSE&quot;</Value></DataValidation>
+<DataValidation xmlns="urn:schemas-microsoft-com:office:excel">
+<Range>R59C1</Range>
+<Type>List</Type>
+<Value>C200</Value>
+</DataValidation>
+<DataValidation xmlns="urn:schemas-microsoft-com:office:excel">
+<Range>R59C5</Range>
+<Type>List</Type>
+<Value>&quot;TRUE,FALSE&quot;</Value></DataValidation>
+<DataValidation xmlns="urn:schemas-microsoft-com:office:excel">
+<Range>R60C1</Range>
+<Type>List</Type>
+<Value>C200</Value>
+</DataValidation>
+<DataValidation xmlns="urn:schemas-microsoft-com:office:excel">
+<Range>R60C5</Range>
+<Type>List</Type>
+<Value>&quot;TRUE,FALSE&quot;</Value></DataValidation>
+<DataValidation xmlns="urn:schemas-microsoft-com:office:excel">
+<Range>R61C1</Range>
+<Type>List</Type>
+<Value>C200</Value>
+</DataValidation>
+<DataValidation xmlns="urn:schemas-microsoft-com:office:excel">
+<Range>R61C5</Range>
+<Type>List</Type>
+<Value>&quot;TRUE,FALSE&quot;</Value></DataValidation>
+<DataValidation xmlns="urn:schemas-microsoft-com:office:excel">
+<Range>R62C1</Range>
+<Type>List</Type>
+<Value>C200</Value>
+</DataValidation>
+<DataValidation xmlns="urn:schemas-microsoft-com:office:excel">
+<Range>R62C5</Range>
+<Type>List</Type>
+<Value>&quot;TRUE,FALSE&quot;</Value></DataValidation>
+<DataValidation xmlns="urn:schemas-microsoft-com:office:excel">
+<Range>R63C1</Range>
+<Type>List</Type>
+<Value>C200</Value>
+</DataValidation>
+<DataValidation xmlns="urn:schemas-microsoft-com:office:excel">
+<Range>R63C5</Range>
+<Type>List</Type>
+<Value>&quot;TRUE,FALSE&quot;</Value></DataValidation>
+<DataValidation xmlns="urn:schemas-microsoft-com:office:excel">
+<Range>R64C1</Range>
+<Type>List</Type>
+<Value>C200</Value>
+</DataValidation>
+<DataValidation xmlns="urn:schemas-microsoft-com:office:excel">
+<Range>R64C5</Range>
+<Type>List</Type>
+<Value>&quot;TRUE,FALSE&quot;</Value></DataValidation>
+<DataValidation xmlns="urn:schemas-microsoft-com:office:excel">
+<Range>R65C1</Range>
+<Type>List</Type>
+<Value>C200</Value>
+</DataValidation>
+<DataValidation xmlns="urn:schemas-microsoft-com:office:excel">
+<Range>R65C5</Range>
+<Type>List</Type>
+<Value>&quot;TRUE,FALSE&quot;</Value></DataValidation>
+<DataValidation xmlns="urn:schemas-microsoft-com:office:excel">
+<Range>R66C1</Range>
+<Type>List</Type>
+<Value>C200</Value>
+</DataValidation>
+<DataValidation xmlns="urn:schemas-microsoft-com:office:excel">
+<Range>R66C5</Range>
+<Type>List</Type>
+<Value>&quot;TRUE,FALSE&quot;</Value></DataValidation>
+<AutoFilter  x:Range="C1:C5"
+xmlns="urn:schemas-microsoft-com:office:excel">
+</AutoFilter>
+</Worksheet>
+<Worksheet ss:Name="Labs" ss:Protected="1">
+<Table>
+<Column ss:Width="150" ss:AutoFitWidth="1"/>
+<Column ss:Width="150" ss:AutoFitWidth="1"/>
+<Column ss:Width="150" ss:AutoFitWidth="1"/>
+<Column ss:Width="150" ss:AutoFitWidth="1"/>
+<Column ss:Width="150" ss:AutoFitWidth="1"/>
+<Column ss:Width="150" ss:AutoFitWidth="1"/>
+<Column ss:Width="150" ss:AutoFitWidth="1"/>
+<Column ss:Width="150" ss:AutoFitWidth="1"/>
+<Column ss:Width="150" ss:AutoFitWidth="1"/>
+<Row ss:AutoFitHeight="1">
+<Cell ss:StyleID="ColumnCaption"><Data ss:Type="String">Name</Data></Cell>
+<Cell ss:StyleID="ColumnCaption"><Data ss:Type="String">Type</Data></Cell>
+<Cell ss:StyleID="ColumnCaption"><Data ss:Type="String">Study</Data></Cell>
+<Cell ss:StyleID="ColumnCaption"><Data ss:Type="String">Environment</Data></Cell>
+<Cell ss:StyleID="ColumnCaption"><Data ss:Type="String">SiteNumber</Data></Cell>
+<Cell ss:StyleID="ColumnCaption"><Data ss:Type="String">RangeType</Data></Cell>
+<Cell ss:StyleID="ColumnCaption"><Data ss:Type="String">Description</Data></Cell>
+<Cell ss:StyleID="ColumnCaption"><Data ss:Type="String">RangesApproved</Data></Cell>
+<Cell ss:StyleID="ColumnCaption"><Data ss:Type="String">Active</Data></Cell>
+</Row>
+</Table>
+<WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
+<FreezePanes/>
+<FrozenNoSplit/>
+<SplitHorizontal>1</SplitHorizontal>
+<TopRowBottomPane>1</TopRowBottomPane><SplitVertical>1</SplitVertical>
+<LeftColumnRightPane>1</LeftColumnRightPane>
+<ProtectObjects>True</ProtectObjects>
+<ProtectScenarios>True</ProtectScenarios>
+<AllowFormatCells/>
+<AllowSizeCols/>
+<AllowSizeRows/>
+<AllowInsertRows/>
+<AllowDeleteRows/>
+<AllowSort/>
+<AllowFilter/>
+</WorksheetOptions>
+<AutoFilter  x:Range="C1:C9"
+xmlns="urn:schemas-microsoft-com:office:excel">
+</AutoFilter>
+</Worksheet>
+<Worksheet ss:Name="AnalyteRanges" ss:Protected="1">
+<Table>
+<Column ss:Width="150" ss:AutoFitWidth="1"/>
+<Column ss:Width="150" ss:AutoFitWidth="1"/>
+<Column ss:Width="150" ss:AutoFitWidth="1"/>
+<Column ss:Width="150" ss:AutoFitWidth="1"/>
+<Column ss:Width="150" ss:AutoFitWidth="1"/>
+<Column ss:Width="150" ss:AutoFitWidth="1"/>
+<Column ss:Width="150" ss:AutoFitWidth="1"/>
+<Column ss:Width="150" ss:AutoFitWidth="1"/>
+<Column ss:Width="150" ss:AutoFitWidth="1"/>
+<Column ss:Width="150" ss:AutoFitWidth="1"/>
+<Column ss:Width="150" ss:AutoFitWidth="1"/>
+<Column ss:Width="150" ss:AutoFitWidth="1"/>
+<Column ss:Width="150" ss:AutoFitWidth="1"/>
+<Column ss:Width="150" ss:AutoFitWidth="1"/>
+<Column ss:Width="150" ss:AutoFitWidth="1"/>
+<Column ss:Width="150" ss:AutoFitWidth="1"/>
+<Column ss:Width="150" ss:AutoFitWidth="1"/>
+<Column ss:Width="150" ss:AutoFitWidth="1"/>
+<Column ss:Width="150" ss:AutoFitWidth="1"/>
+<Column ss:Width="150" ss:AutoFitWidth="1"/>
+<Column ss:Width="150" ss:AutoFitWidth="1"/>
+<Column ss:Width="150" ss:AutoFitWidth="1"/>
+<Column ss:Width="150" ss:AutoFitWidth="1"/>
+<Column ss:Width="150" ss:AutoFitWidth="1"/>
+<Column ss:Width="150" ss:AutoFitWidth="1"/>
+<Column ss:Width="150" ss:AutoFitWidth="1"/>
+<Column ss:Width="150" ss:AutoFitWidth="1"/>
+<Column ss:Width="150" ss:AutoFitWidth="1"/>
+<Column ss:Width="150" ss:AutoFitWidth="1"/>
+<Column ss:Width="150" ss:AutoFitWidth="1"/>
+<Column ss:Width="150" ss:AutoFitWidth="1"/>
+<Column ss:Width="150" ss:AutoFitWidth="1"/>
+<Column ss:Width="150" ss:AutoFitWidth="1"/>
+<Column ss:Width="150" ss:AutoFitWidth="1"/>
+<Column ss:Width="150" ss:AutoFitWidth="1"/>
+<Column ss:Width="150" ss:AutoFitWidth="1"/>
+<Column ss:Width="150" ss:AutoFitWidth="1"/>
+<Column ss:Width="150" ss:AutoFitWidth="1"/>
+<Column ss:Width="150" ss:AutoFitWidth="1"/>
+<Column ss:Width="150" ss:AutoFitWidth="1"/>
+<Column ss:Width="150" ss:AutoFitWidth="1"/>
+<Column ss:Width="150" ss:AutoFitWidth="1"/>
+<Column ss:Width="150" ss:AutoFitWidth="1"/>
+<Column ss:Width="150" ss:AutoFitWidth="1"/>
+<Row ss:AutoFitHeight="1">
+<Cell ss:StyleID="ColumnCaption"><Data ss:Type="String">Lab</Data></Cell>
+<Cell ss:StyleID="ColumnCaption"><Data ss:Type="String">LabType</Data></Cell>
+<Cell ss:StyleID="ColumnCaption"><Data ss:Type="String">Study</Data></Cell>
+<Cell ss:StyleID="ColumnCaption"><Data ss:Type="String">Environment</Data></Cell>
+<Cell ss:StyleID="ColumnCaption"><Data ss:Type="String">SiteNumber</Data></Cell>
+<Cell ss:StyleID="ColumnCaption"><Data ss:Type="String">Analyte</Data></Cell>
+<Cell ss:StyleID="ColumnCaption"><Data ss:Type="String">FromDate</Data></Cell>
+<Cell ss:StyleID="ColumnCaption"><Data ss:Type="String">ToDate</Data></Cell>
+<Cell ss:StyleID="ColumnCaption"><Data ss:Type="String">LowValue</Data></Cell>
+<Cell ss:StyleID="ColumnCaption"><Data ss:Type="String">HighValue</Data></Cell>
+<Cell ss:StyleID="ColumnCaption"><Data ss:Type="String">LabUnit</Data></Cell>
+<Cell ss:StyleID="ColumnCaption"><Data ss:Type="String">GlobalDataDictionary</Data></Cell>
+<Cell ss:StyleID="ColumnCaption"><Data ss:Type="String">Comments</Data></Cell>
+<Cell ss:StyleID="ColumnCaption"><Data ss:Type="String">Active</Data></Cell>
+<Cell ss:StyleID="ColumnCaption"><Data ss:Type="String">StandardREG_ECPV11_AgeREG_ECPV11_From Age</Data></Cell>
+<Cell ss:StyleID="ColumnCaption"><Data ss:Type="String">StandardREG_ECPV11_AgeREG_ECPV11_From Age_YearREG_ECPV11</Data></Cell>
+<Cell ss:StyleID="ColumnCaption"><Data ss:Type="String">StandardREG_ECPV11_AgeREG_ECPV11_To Age</Data></Cell>
+<Cell ss:StyleID="ColumnCaption"><Data ss:Type="String">StandardREG_ECPV11_AgeREG_ECPV11_To Age_YearREG_ECPV11</Data></Cell>
+<Cell ss:StyleID="ColumnCaption"><Data ss:Type="String">StandardREG_ECPV11_Pregnancy StatusREG_ECPV11_Pregnancy Status</Data></Cell>
+<Cell ss:StyleID="ColumnCaption"><Data ss:Type="String">StandardREG_ECPV11_sexREG_ECPV11_Sex</Data></Cell>
+<Cell ss:StyleID="ColumnCaption"><Data ss:Type="String">StandardREG_ECPV12_AgeREG_ECPV12_From Age</Data></Cell>
+<Cell ss:StyleID="ColumnCaption"><Data ss:Type="String">StandardREG_ECPV12_AgeREG_ECPV12_From Age_YearREG_ECPV12</Data></Cell>
+<Cell ss:StyleID="ColumnCaption"><Data ss:Type="String">StandardREG_ECPV12_AgeREG_ECPV12_To Age</Data></Cell>
+<Cell ss:StyleID="ColumnCaption"><Data ss:Type="String">StandardREG_ECPV12_AgeREG_ECPV12_To Age_YearREG_ECPV12</Data></Cell>
+<Cell ss:StyleID="ColumnCaption"><Data ss:Type="String">StandardREG_ECPV12_Pregnancy StatusREG_ECPV12_Pregnancy Status</Data></Cell>
+<Cell ss:StyleID="ColumnCaption"><Data ss:Type="String">StandardREG_ECPV12_sexREG_ECPV12_Sex</Data></Cell>
+<Cell ss:StyleID="ColumnCaption"><Data ss:Type="String">StandardREG_P2012V21_AgeREG_P2012V21_From Age</Data></Cell>
+<Cell ss:StyleID="ColumnCaption"><Data ss:Type="String">StandardREG_P2012V21_AgeREG_P2012V21_From Age_YearREG_P2012V21</Data></Cell>
+<Cell ss:StyleID="ColumnCaption"><Data ss:Type="String">StandardREG_P2012V21_AgeREG_P2012V21_To Age</Data></Cell>
+<Cell ss:StyleID="ColumnCaption"><Data ss:Type="String">StandardREG_P2012V21_AgeREG_P2012V21_To Age_YearREG_P2012V21</Data></Cell>
+<Cell ss:StyleID="ColumnCaption"><Data ss:Type="String">StandardREG_P2012V21_Pregnancy StatusREG_P2012V21_Pregnancy Status</Data></Cell>
+<Cell ss:StyleID="ColumnCaption"><Data ss:Type="String">StandardREG_P2012V21_sexREG_P2012V21_Sex</Data></Cell>
+<Cell ss:StyleID="ColumnCaption"><Data ss:Type="String">StandardREG_US17701_AgeREG_US17701_From Age</Data></Cell>
+<Cell ss:StyleID="ColumnCaption"><Data ss:Type="String">StandardREG_US17701_AgeREG_US17701_From Age_YearREG_US17701</Data></Cell>
+<Cell ss:StyleID="ColumnCaption"><Data ss:Type="String">StandardREG_US17701_AgeREG_US17701_To Age</Data></Cell>
+<Cell ss:StyleID="ColumnCaption"><Data ss:Type="String">StandardREG_US17701_AgeREG_US17701_To Age_YearREG_US17701</Data></Cell>
+<Cell ss:StyleID="ColumnCaption"><Data ss:Type="String">StandardREG_US17701_Pregnancy StatusREG_US17701_Pregnancy Status</Data></Cell>
+<Cell ss:StyleID="ColumnCaption"><Data ss:Type="String">StandardREG_US17701_sexREG_US17701_Sex</Data></Cell>
+<Cell ss:StyleID="ColumnCaption"><Data ss:Type="String">StandardREGAQT_AgeREGAQT_From Age</Data></Cell>
+<Cell ss:StyleID="ColumnCaption"><Data ss:Type="String">StandardREGAQT_AgeREGAQT_From Age_YearREGAQT</Data></Cell>
+<Cell ss:StyleID="ColumnCaption"><Data ss:Type="String">StandardREGAQT_AgeREGAQT_To Age</Data></Cell>
+<Cell ss:StyleID="ColumnCaption"><Data ss:Type="String">StandardREGAQT_AgeREGAQT_To Age_YearREGAQT</Data></Cell>
+<Cell ss:StyleID="ColumnCaption"><Data ss:Type="String">StandardREGAQT_Pregnancy StatusREGAQT_Pregnancy Status</Data></Cell>
+<Cell ss:StyleID="ColumnCaption"><Data ss:Type="String">StandardREGAQT_sexREGAQT_Sex</Data></Cell>
+</Row>
+</Table>
+<WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
+<FreezePanes/>
+<FrozenNoSplit/>
+<SplitHorizontal>1</SplitHorizontal>
+<TopRowBottomPane>1</TopRowBottomPane><SplitVertical>1</SplitVertical>
+<LeftColumnRightPane>1</LeftColumnRightPane>
+<ProtectObjects>True</ProtectObjects>
+<ProtectScenarios>True</ProtectScenarios>
+<AllowFormatCells/>
+<AllowSizeCols/>
+<AllowSizeRows/>
+<AllowInsertRows/>
+<AllowDeleteRows/>
+<AllowSort/>
+<AllowFilter/>
+</WorksheetOptions>
+<AutoFilter  x:Range="C1:C44"
+xmlns="urn:schemas-microsoft-com:office:excel">
+</AutoFilter>
+</Worksheet>
+<Worksheet ss:Name="GlobalUnitDictionaries" ss:Protected="1">
+<Table>
+<Column ss:Width="150" ss:AutoFitWidth="1"/>
+<Column ss:Width="150" ss:AutoFitWidth="1"/>
+<Row ss:AutoFitHeight="1">
+<Cell ss:StyleID="ColumnCaption"><Data ss:Type="String">Name</Data></Cell>
+<Cell ss:StyleID="ColumnCaption"><Data ss:Type="String">Active</Data></Cell>
+</Row>
+</Table>
+<WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
+<FreezePanes/>
+<FrozenNoSplit/>
+<SplitHorizontal>1</SplitHorizontal>
+<TopRowBottomPane>1</TopRowBottomPane><SplitVertical>1</SplitVertical>
+<LeftColumnRightPane>1</LeftColumnRightPane>
+<ProtectObjects>True</ProtectObjects>
+<ProtectScenarios>True</ProtectScenarios>
+<AllowFormatCells/>
+<AllowSizeCols/>
+<AllowSizeRows/>
+<AllowInsertRows/>
+<AllowDeleteRows/>
+<AllowSort/>
+<AllowFilter/>
+</WorksheetOptions>
+<AutoFilter  x:Range="C1:C2"
+xmlns="urn:schemas-microsoft-com:office:excel">
+</AutoFilter>
+</Worksheet>
+<Worksheet ss:Name="GlobalUnitDictionaryEntries" ss:Protected="1">
+<Table>
+<Column ss:Width="150" ss:AutoFitWidth="1"/>
+<Column ss:Width="150" ss:AutoFitWidth="1"/>
+<Column ss:Width="150" ss:AutoFitWidth="1"/>
+<Column ss:Width="150" ss:AutoFitWidth="1"/>
+<Column ss:Width="150" ss:AutoFitWidth="1"/>
+<Column ss:Width="150" ss:AutoFitWidth="1"/>
+<Column ss:Width="150" ss:AutoFitWidth="1"/>
+<Column ss:Width="150" ss:AutoFitWidth="1"/>
+<Column ss:Width="150" ss:AutoFitWidth="1"/>
+<Column ss:Width="150" ss:AutoFitWidth="1"/>
+<Row ss:AutoFitHeight="1">
+<Cell ss:StyleID="ColumnCaption"><Data ss:Type="String">GlobalUnitDictionary</Data></Cell>
+<Cell ss:StyleID="ColumnCaption"><Data ss:Type="String">Ordinal</Data></Cell>
+<Cell ss:StyleID="ColumnCaption"><Data ss:Type="String">UserDataString</Data></Cell>
+<Cell ss:StyleID="ColumnCaption"><Data ss:Type="String">Standard</Data></Cell>
+<Cell ss:StyleID="ColumnCaption"><Data ss:Type="String">CodedUnit</Data></Cell>
+<Cell ss:StyleID="ColumnCaption"><Data ss:Type="String">ConstantA</Data></Cell>
+<Cell ss:StyleID="ColumnCaption"><Data ss:Type="String">ConstantB</Data></Cell>
+<Cell ss:StyleID="ColumnCaption"><Data ss:Type="String">ConstantC</Data></Cell>
+<Cell ss:StyleID="ColumnCaption"><Data ss:Type="String">ConstantK</Data></Cell>
+<Cell ss:StyleID="ColumnCaption"><Data ss:Type="String">Active</Data></Cell>
+</Row>
+</Table>
+<WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
+<FreezePanes/>
+<FrozenNoSplit/>
+<SplitHorizontal>1</SplitHorizontal>
+<TopRowBottomPane>1</TopRowBottomPane><SplitVertical>1</SplitVertical>
+<LeftColumnRightPane>1</LeftColumnRightPane>
+<ProtectObjects>True</ProtectObjects>
+<ProtectScenarios>True</ProtectScenarios>
+<AllowFormatCells/>
+<AllowSizeCols/>
+<AllowSizeRows/>
+<AllowInsertRows/>
+<AllowDeleteRows/>
+<AllowSort/>
+<AllowFilter/>
+</WorksheetOptions>
+<AutoFilter  x:Range="C1:C10"
+xmlns="urn:schemas-microsoft-com:office:excel">
+</AutoFilter>
+</Worksheet>
+<Worksheet ss:Name="GlobalVariables" ss:Protected="1">
+<Table>
+<Column ss:Width="150" ss:AutoFitWidth="1"/>
+<Column ss:Width="150" ss:AutoFitWidth="1"/>
+<Column ss:Width="150" ss:AutoFitWidth="1"/>
+<Column ss:Width="150" ss:AutoFitWidth="1"/>
+<Column ss:Width="150" ss:AutoFitWidth="1"/>
+<Row ss:AutoFitHeight="1">
+<Cell ss:StyleID="ColumnCaption"><Data ss:Type="String">OID</Data></Cell>
+<Cell ss:StyleID="ColumnCaption"><Data ss:Type="String">DataFormat</Data></Cell>
+<Cell ss:StyleID="ColumnCaption"><Data ss:Type="String">GlobalDataDictionary</Data></Cell>
+<Cell ss:StyleID="ColumnCaption"><Data ss:Type="String">GlobalUnitDictionary</Data></Cell>
+<Cell ss:StyleID="ColumnCaption"><Data ss:Type="String">Active</Data></Cell>
+</Row>
+</Table>
+<WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
+<FreezePanes/>
+<FrozenNoSplit/>
+<SplitHorizontal>1</SplitHorizontal>
+<TopRowBottomPane>1</TopRowBottomPane><SplitVertical>1</SplitVertical>
+<LeftColumnRightPane>1</LeftColumnRightPane>
+<ProtectObjects>True</ProtectObjects>
+<ProtectScenarios>True</ProtectScenarios>
+<AllowFormatCells/>
+<AllowSizeCols/>
+<AllowSizeRows/>
+<AllowInsertRows/>
+<AllowDeleteRows/>
+<AllowSort/>
+<AllowFilter/>
+</WorksheetOptions>
+<AutoFilter  x:Range="C1:C5"
+xmlns="urn:schemas-microsoft-com:office:excel">
+</AutoFilter>
+</Worksheet>
+<Worksheet ss:Name="LabUnits" ss:Protected="1">
+<Table>
+<Column ss:Width="150" ss:AutoFitWidth="1"/>
+<Column ss:Width="150" ss:AutoFitWidth="1"/>
+<Column ss:Width="150" ss:AutoFitWidth="1"/>
+<Row ss:AutoFitHeight="1">
+<Cell ss:StyleID="ColumnCaption"><Data ss:Type="String">Name</Data></Cell>
+<Cell ss:StyleID="ColumnCaption"><Data ss:Type="String">ParentLabUnit</Data></Cell>
+<Cell ss:StyleID="ColumnCaption"><Data ss:Type="String">Active</Data></Cell>
+</Row>
+</Table>
+<WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
+<FreezePanes/>
+<FrozenNoSplit/>
+<SplitHorizontal>1</SplitHorizontal>
+<TopRowBottomPane>1</TopRowBottomPane><SplitVertical>1</SplitVertical>
+<LeftColumnRightPane>1</LeftColumnRightPane>
+<ProtectObjects>True</ProtectObjects>
+<ProtectScenarios>True</ProtectScenarios>
+<AllowFormatCells/>
+<AllowSizeCols/>
+<AllowSizeRows/>
+<AllowInsertRows/>
+<AllowDeleteRows/>
+<AllowSort/>
+<AllowFilter/>
+</WorksheetOptions>
+<AutoFilter  x:Range="C1:C3"
+xmlns="urn:schemas-microsoft-com:office:excel">
+</AutoFilter>
+</Worksheet>
+<Worksheet ss:Name="LabUnitDictionaries" ss:Protected="1">
+<Table>
+<Column ss:Width="150" ss:AutoFitWidth="1"/>
+<Column ss:Width="150" ss:AutoFitWidth="1"/>
+<Row ss:AutoFitHeight="1">
+<Cell ss:StyleID="ColumnCaption"><Data ss:Type="String">Name</Data></Cell>
+<Cell ss:StyleID="ColumnCaption"><Data ss:Type="String">Active</Data></Cell>
+</Row>
+</Table>
+<WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
+<FreezePanes/>
+<FrozenNoSplit/>
+<SplitHorizontal>1</SplitHorizontal>
+<TopRowBottomPane>1</TopRowBottomPane><SplitVertical>1</SplitVertical>
+<LeftColumnRightPane>1</LeftColumnRightPane>
+<ProtectObjects>True</ProtectObjects>
+<ProtectScenarios>True</ProtectScenarios>
+<AllowFormatCells/>
+<AllowSizeCols/>
+<AllowSizeRows/>
+<AllowInsertRows/>
+<AllowDeleteRows/>
+<AllowSort/>
+<AllowFilter/>
+</WorksheetOptions>
+<AutoFilter  x:Range="C1:C2"
+xmlns="urn:schemas-microsoft-com:office:excel">
+</AutoFilter>
+</Worksheet>
+<Worksheet ss:Name="LabUnitDictionaryEntries" ss:Protected="1">
+<Table>
+<Column ss:Width="150" ss:AutoFitWidth="1"/>
+<Column ss:Width="150" ss:AutoFitWidth="1"/>
+<Column ss:Width="150" ss:AutoFitWidth="1"/>
+<Row ss:AutoFitHeight="1">
+<Cell ss:StyleID="ColumnCaption"><Data ss:Type="String">LabUnitDictionary</Data></Cell>
+<Cell ss:StyleID="ColumnCaption"><Data ss:Type="String">Unit</Data></Cell>
+<Cell ss:StyleID="ColumnCaption"><Data ss:Type="String">Active</Data></Cell>
+</Row>
+</Table>
+<WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
+<FreezePanes/>
+<FrozenNoSplit/>
+<SplitHorizontal>1</SplitHorizontal>
+<TopRowBottomPane>1</TopRowBottomPane><SplitVertical>1</SplitVertical>
+<LeftColumnRightPane>1</LeftColumnRightPane>
+<ProtectObjects>True</ProtectObjects>
+<ProtectScenarios>True</ProtectScenarios>
+<AllowFormatCells/>
+<AllowSizeCols/>
+<AllowSizeRows/>
+<AllowInsertRows/>
+<AllowDeleteRows/>
+<AllowSort/>
+<AllowFilter/>
+</WorksheetOptions>
+<AutoFilter  x:Range="C1:C3"
+xmlns="urn:schemas-microsoft-com:office:excel">
+</AutoFilter>
+</Worksheet>
+<Worksheet ss:Name="RangeTypes" ss:Protected="1">
+<Table>
+<Column ss:Width="150" ss:AutoFitWidth="1"/>
+<Column ss:Width="150" ss:AutoFitWidth="1"/>
+<Row ss:AutoFitHeight="1">
+<Cell ss:StyleID="ColumnCaption"><Data ss:Type="String">Name</Data></Cell>
+<Cell ss:StyleID="ColumnCaption"><Data ss:Type="String">Active</Data></Cell>
+</Row>
+</Table>
+<WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
+<FreezePanes/>
+<FrozenNoSplit/>
+<SplitHorizontal>1</SplitHorizontal>
+<TopRowBottomPane>1</TopRowBottomPane><SplitVertical>1</SplitVertical>
+<LeftColumnRightPane>1</LeftColumnRightPane>
+<ProtectObjects>True</ProtectObjects>
+<ProtectScenarios>True</ProtectScenarios>
+<AllowFormatCells/>
+<AllowSizeCols/>
+<AllowSizeRows/>
+<AllowInsertRows/>
+<AllowDeleteRows/>
+<AllowSort/>
+<AllowFilter/>
+</WorksheetOptions>
+<AutoFilter  x:Range="C1:C2"
+xmlns="urn:schemas-microsoft-com:office:excel">
+</AutoFilter>
+</Worksheet>
+<Worksheet ss:Name="RangeTypeVariables" ss:Protected="1">
+<Table>
+<Column ss:Width="150" ss:AutoFitWidth="1"/>
+<Column ss:Width="150" ss:AutoFitWidth="1"/>
+<Column ss:Width="150" ss:AutoFitWidth="1"/>
+<Column ss:Width="150" ss:AutoFitWidth="1"/>
+<Column ss:Width="150" ss:AutoFitWidth="1"/>
+<Column ss:Width="150" ss:AutoFitWidth="1"/>
+<Column ss:Width="150" ss:AutoFitWidth="1"/>
+<Column ss:Width="150" ss:AutoFitWidth="1"/>
+<Column ss:Width="150" ss:AutoFitWidth="1"/>
+<Column ss:Width="150" ss:AutoFitWidth="1"/>
+<Column ss:Width="150" ss:AutoFitWidth="1"/>
+<Row ss:AutoFitHeight="1">
+<Cell ss:StyleID="ColumnCaption"><Data ss:Type="String">RangeType</Data></Cell>
+<Cell ss:StyleID="ColumnCaption"><Data ss:Type="String">GlobalVariable</Data></Cell>
+<Cell ss:StyleID="ColumnCaption"><Data ss:Type="String">LowValueLabel</Data></Cell>
+<Cell ss:StyleID="ColumnCaption"><Data ss:Type="String">LowValueMatchOperator</Data></Cell>
+<Cell ss:StyleID="ColumnCaption"><Data ss:Type="String">HighValueLabel</Data></Cell>
+<Cell ss:StyleID="ColumnCaption"><Data ss:Type="String">HighValueMatchOperator</Data></Cell>
+<Cell ss:StyleID="ColumnCaption"><Data ss:Type="String">LowValueDefault</Data></Cell>
+<Cell ss:StyleID="ColumnCaption"><Data ss:Type="String">LowValueDefaultUnit</Data></Cell>
+<Cell ss:StyleID="ColumnCaption"><Data ss:Type="String">HighValueDefault</Data></Cell>
+<Cell ss:StyleID="ColumnCaption"><Data ss:Type="String">HighValueDefaultUnit</Data></Cell>
+<Cell ss:StyleID="ColumnCaption"><Data ss:Type="String">Active</Data></Cell>
+</Row>
+</Table>
+<WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
+<FreezePanes/>
+<FrozenNoSplit/>
+<SplitHorizontal>1</SplitHorizontal>
+<TopRowBottomPane>1</TopRowBottomPane><SplitVertical>1</SplitVertical>
+<LeftColumnRightPane>1</LeftColumnRightPane>
+<ProtectObjects>True</ProtectObjects>
+<ProtectScenarios>True</ProtectScenarios>
+<AllowFormatCells/>
+<AllowSizeCols/>
+<AllowSizeRows/>
+<AllowInsertRows/>
+<AllowDeleteRows/>
+<AllowSort/>
+<AllowFilter/>
+</WorksheetOptions>
+<AutoFilter  x:Range="C1:C11"
+xmlns="urn:schemas-microsoft-com:office:excel">
+</AutoFilter>
+</Worksheet>
+<Worksheet ss:Name="StandardGroups" ss:Protected="1">
+<Table>
+<Column ss:Width="150" ss:AutoFitWidth="1"/>
+<Column ss:Width="150" ss:AutoFitWidth="1"/>
+<Column ss:Width="150" ss:AutoFitWidth="1"/>
+<Row ss:AutoFitHeight="1">
+<Cell ss:StyleID="ColumnCaption"><Data ss:Type="String">Name</Data></Cell>
+<Cell ss:StyleID="ColumnCaption"><Data ss:Type="String">Description</Data></Cell>
+<Cell ss:StyleID="ColumnCaption"><Data ss:Type="String">Active</Data></Cell>
+</Row>
+</Table>
+<WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
+<FreezePanes/>
+<FrozenNoSplit/>
+<SplitHorizontal>1</SplitHorizontal>
+<TopRowBottomPane>1</TopRowBottomPane><SplitVertical>1</SplitVertical>
+<LeftColumnRightPane>1</LeftColumnRightPane>
+<ProtectObjects>True</ProtectObjects>
+<ProtectScenarios>True</ProtectScenarios>
+<AllowFormatCells/>
+<AllowSizeCols/>
+<AllowSizeRows/>
+<AllowInsertRows/>
+<AllowDeleteRows/>
+<AllowSort/>
+<AllowFilter/>
+</WorksheetOptions>
+<AutoFilter  x:Range="C1:C3"
+xmlns="urn:schemas-microsoft-com:office:excel">
+</AutoFilter>
+</Worksheet>
+<Worksheet ss:Name="StandardGroupEntries" ss:Protected="1">
+<Table>
+<Column ss:Width="150" ss:AutoFitWidth="1"/>
+<Column ss:Width="150" ss:AutoFitWidth="1"/>
+<Column ss:Width="150" ss:AutoFitWidth="1"/>
+<Column ss:Width="150" ss:AutoFitWidth="1"/>
+<Row ss:AutoFitHeight="1">
+<Cell ss:StyleID="ColumnCaption"><Data ss:Type="String">StandardGroup</Data></Cell>
+<Cell ss:StyleID="ColumnCaption"><Data ss:Type="String">Unit</Data></Cell>
+<Cell ss:StyleID="ColumnCaption"><Data ss:Type="String">Analyte</Data></Cell>
+<Cell ss:StyleID="ColumnCaption"><Data ss:Type="String">Active</Data></Cell>
+</Row>
+</Table>
+<WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
+<FreezePanes/>
+<FrozenNoSplit/>
+<SplitHorizontal>1</SplitHorizontal>
+<TopRowBottomPane>1</TopRowBottomPane><SplitVertical>1</SplitVertical>
+<LeftColumnRightPane>1</LeftColumnRightPane>
+<ProtectObjects>True</ProtectObjects>
+<ProtectScenarios>True</ProtectScenarios>
+<AllowFormatCells/>
+<AllowSizeCols/>
+<AllowSizeRows/>
+<AllowInsertRows/>
+<AllowDeleteRows/>
+<AllowSort/>
+<AllowFilter/>
+</WorksheetOptions>
+<AutoFilter  x:Range="C1:C4"
+xmlns="urn:schemas-microsoft-com:office:excel">
+</AutoFilter>
+</Worksheet>
+<Worksheet ss:Name="UnitConversions" ss:Protected="1">
+<Table>
+<Column ss:Width="150" ss:AutoFitWidth="1"/>
+<Column ss:Width="150" ss:AutoFitWidth="1"/>
+<Column ss:Width="150" ss:AutoFitWidth="1"/>
+<Column ss:Width="150" ss:AutoFitWidth="1"/>
+<Column ss:Width="150" ss:AutoFitWidth="1"/>
+<Column ss:Width="150" ss:AutoFitWidth="1"/>
+<Column ss:Width="150" ss:AutoFitWidth="1"/>
+<Column ss:Width="150" ss:AutoFitWidth="1"/>
+<Column ss:Width="150" ss:AutoFitWidth="1"/>
+<Column ss:Width="150" ss:AutoFitWidth="1"/>
+<Row ss:AutoFitHeight="1">
+<Cell ss:StyleID="ColumnCaption"><Data ss:Type="String">FromLabUnit</Data></Cell>
+<Cell ss:StyleID="ColumnCaption"><Data ss:Type="String">ToLabUnit</Data></Cell>
+<Cell ss:StyleID="ColumnCaption"><Data ss:Type="String">ApplicableAnalyte</Data></Cell>
+<Cell ss:StyleID="ColumnCaption"><Data ss:Type="String">ConstantA</Data></Cell>
+<Cell ss:StyleID="ColumnCaption"><Data ss:Type="String">ConstantB</Data></Cell>
+<Cell ss:StyleID="ColumnCaption"><Data ss:Type="String">ConstantC</Data></Cell>
+<Cell ss:StyleID="ColumnCaption"><Data ss:Type="String">ConstantK</Data></Cell>
+<Cell ss:StyleID="ColumnCaption"><Data ss:Type="String">TopAnalyteInFormula</Data></Cell>
+<Cell ss:StyleID="ColumnCaption"><Data ss:Type="String">BottomAnalyteInFormula</Data></Cell>
+<Cell ss:StyleID="ColumnCaption"><Data ss:Type="String">Active</Data></Cell>
+</Row>
+</Table>
+<WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
+<FreezePanes/>
+<FrozenNoSplit/>
+<SplitHorizontal>1</SplitHorizontal>
+<TopRowBottomPane>1</TopRowBottomPane><SplitVertical>1</SplitVertical>
+<LeftColumnRightPane>1</LeftColumnRightPane>
+<ProtectObjects>True</ProtectObjects>
+<ProtectScenarios>True</ProtectScenarios>
+<AllowFormatCells/>
+<AllowSizeCols/>
+<AllowSizeRows/>
+<AllowInsertRows/>
+<AllowDeleteRows/>
+<AllowSort/>
+<AllowFilter/>
+</WorksheetOptions>
+<AutoFilter  x:Range="C1:C10"
+xmlns="urn:schemas-microsoft-com:office:excel">
+</AutoFilter>
+</Worksheet>
+</Workbook>
