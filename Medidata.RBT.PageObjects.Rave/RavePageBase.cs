@@ -30,7 +30,8 @@ namespace Medidata.RBT.PageObjects.Rave
                 return new FileRequestPage();
             }
 
-			throw new Exception("Don't know how to navigate to "+name);
+			return base.NavigateTo(name);
+			
 		}
 
 

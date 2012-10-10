@@ -52,7 +52,8 @@ namespace Medidata.RBT.SeleniumExtension
 
 				return dataTable.Rows.Any(dr =>
 				{
-					return dr.All(x => x.Value == tds[indexMapping[x.Key]].Text);
+					//use trim because there could be spaces 
+					return dr.All(x => x.Value.Trim() == tds[indexMapping[x.Key]].Text.Trim());
 				});
 
 			});

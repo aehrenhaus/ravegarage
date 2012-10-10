@@ -240,6 +240,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>US17414_DT5899.feature</DependentUpon>
     </Compile>
+    <Compile Include="Features\ReportAdmin\Temp.feature.cs">
+      <DependentUpon>Temp.feature</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Include="Features\test.feature.cs">
       <DependentUpon>test.feature</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -328,6 +333,7 @@
     <Compile Include="ReferenceFix.cs" />
     <Compile Include="Steps\ArchitectSteps_DB.cs" />
     <Compile Include="Steps\ConfigurationSteps.cs" />
+    <Compile Include="Steps\ReportAdminSteps.cs" />
     <Compile Include="Steps\LabUnitConversionSteps.cs" />
     <Compile Include="Steps\EDCSteps_DB.cs" />
     <Compile Include="Steps\AmendmentManagerSteps.cs" />
@@ -369,6 +375,10 @@
     <ProjectReference Include="..\Medidata.RBT.PageObjects.Rave\Medidata.RBT.PageObjects.Rave.csproj">
       <Project>{14989202-B55D-4273-85E2-1BFD95A4BB80}</Project>
       <Name>Medidata.RBT.PageObjects.Rave</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Medidata.RBT.SeleniumExtension\Medidata.RBT.SeleniumExtension.csproj">
+      <Project>{22945718-331A-4CC1-A98A-A7E7500FAF76}</Project>
+      <Name>Medidata.RBT.SeleniumExtension</Name>
     </ProjectReference>
     <ProjectReference Include="..\Medidata.RBT\Medidata.RBT.csproj">
       <Project>{89C8F41A-E7F8-4D94-BE93-C2C5B8097A32}</Project>
@@ -490,6 +500,10 @@
     <None Include="Features\PDF\US17414_DT5899.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>US17414_DT5899.feature.cs</LastGenOutput>
+    </None>
+    <None Include="Features\ReportAdmin\Temp.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>Temp.feature.cs</LastGenOutput>
     </None>
     <None Include="Features\test.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>

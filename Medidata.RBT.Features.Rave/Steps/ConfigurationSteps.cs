@@ -127,6 +127,8 @@ namespace Medidata.RBT.Features.Rave.Steps
             page.Save();
         }
 
+
+		//TODO: this method should be deleted, use the common step for clicking a button
         [StepDefinition(@"I click ""([^""]*)""")]
         public void IClick____(string name)
         {

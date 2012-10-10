@@ -123,8 +123,10 @@
     <Compile Include="PDF\FileRequestPage.cs" />
     <Compile Include="DCF\DCFQueriesPage.cs" />
     <Compile Include="PDF\PDFFilesControl.cs" />
-    <Compile Include="Reports\ReportAdministrationPage.cs" />
-    <Compile Include="Reports\ReportAssignmentPage.cs" />
+    <Compile Include="ReportAdmin\PackageUpload.cs" />
+    <Compile Include="ReportAdmin\PackageDownload.cs" />
+    <Compile Include="ReportAdmin\ReportManagerPage.cs" />
+    <Compile Include="ReportAdmin\ReportAssignmentPage.cs" />
     <Compile Include="SharedRaveObjects\LabConfiguration.cs" />
     <Compile Include="SharedRaveObjects\ModuleAssignment.cs" />
     <Compile Include="SharedRaveObjects\ReportAssignment.cs" />

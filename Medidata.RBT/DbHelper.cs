@@ -15,19 +15,8 @@ namespace Medidata.RBT
 	/// </summary>
     public static class DbHelper
     {
-        private static SqlConnection _sqlConnection;
+
         private static string _sqlConnString = System.Configuration.ConfigurationManager.ConnectionStrings[RBTConfiguration.Default.DatabaseConnection].ConnectionString;
-
-
-        public static SqlConnection SqlConn
-        {
-            get
-            {
-                if (_sqlConnection == null)
-                    _sqlConnection = new SqlConnection(_sqlConnString);
-                return _sqlConnection;
-            }
-        }
 
 		public static void CreateSnapshot(string snapshotName=null)
 		{
@@ -35,8 +24,7 @@ namespace Medidata.RBT
 				snapshotName = RBTConfiguration.Default.SnapshotName;
 
 			var builder = new System.Data.SqlClient.SqlConnectionStringBuilder();
-			builder.ConnectionString = System.Configuration.ConfigurationManager.ConnectionStrings[RBTConfiguration.Default.DatabaseConnection].ConnectionString;
-
+			builder.ConnectionString = _sqlConnString;
 
 			string fileName = null;
 			using (SqlCommand cmdGetFileName = new SqlCommand(string.Format("select name from {0}..sysfiles", builder.InitialCatalog), new SqlConnection(builder.ToString())))
@@ -94,7 +82,8 @@ alter database {0} set multi_user with rollback immediate",
 
         public static DataSet ExecuteDataSet(string sql, object[] args = null)
         {
-            SqlCommand cmd = new SqlCommand(sql, SqlConn);
+		
+            SqlCommand cmd = new SqlCommand(sql);
             if (args != null)
                 cmd.Parameters.AddRange(args);
             IDataAdapter adp = new SqlDataAdapter(cmd);
@@ -137,15 +126,15 @@ alter database {0} set multi_user with rollback immediate",
             return ExecuteScalar(spName, CommandType.StoredProcedure, args);
         }
 
-        private static object ExecuteScalar(string sqlString, CommandType commandType, object[] args = null)
+		public static object ExecuteScalar(string sqlString, CommandType commandType, object[] args = null)
         {
-            using (SqlConn)
-            {
-                SqlConn.Open();
-                SqlCommand comm = new SqlCommand(sqlString, SqlConn);
+			using (var conn = new SqlConnection(_sqlConnString))
+			{
+				conn.Open();
+				SqlCommand comm = new SqlCommand(sqlString, conn);
                 comm.CommandType = commandType;
                 object returnObject = comm.ExecuteScalar();
-                SqlConn.Close();
+            
                 return returnObject;
             }
         }

@@ -56,10 +56,7 @@ namespace Medidata.RBT.Common.Steps
         [StepDefinition(@"I accept alert window")]
         public void IAcceptAlertWindow()
         {
-            CurrentPage.As<PageBase>().GetAlertWindow().Accept();
-			
-			var uri = new Uri(Browser.Url);
-			CurrentPage = TestContext.POFactory.GetPageByUrl(uri);
+			TestContext.AcceptAlert();
         }
 
 		/// <summary>
@@ -68,9 +65,7 @@ namespace Medidata.RBT.Common.Steps
         [StepDefinition(@"I dismiss alert window")]
         public void IDismissAlertWindow()
         {
-            CurrentPage.As<PageBase>().GetAlertWindow().Dismiss();
-			var uri = new Uri(Browser.Url);
-			CurrentPage = TestContext.POFactory.GetPageByUrl(uri);
+			TestContext.CancelAlert();
         }
 
 		[StepDefinition(@"I verify current URL is ""([^""]*)""")]

@@ -157,50 +157,7 @@ namespace Medidata.RBT.PageObjects.Rave
 
 		#region IPage
 
-		public override IPage NavigateTo(string name)
-		{
-			NameValueCollection poClassMapping = new NameValueCollection();
-			poClassMapping["Architect"] = "ArchitectPage";
-			poClassMapping["User Administration"] = "UserAdministrationPage";
-            poClassMapping["DDE"] = "DDEPage";
-            poClassMapping["Reporter"] = "ReportsPage";
-			poClassMapping["Query Management"] = "DCFQueriesPage";
-			poClassMapping["PDF Generator"] = "FileRequestPage";
-            poClassMapping["Lab Administration"] = "AnalytesPage";
-            poClassMapping["Unit Conversions"] = "UnitConversionsPage";
-            poClassMapping["Architect Library Page"] = "ArchitectLibraryPage";
-            poClassMapping["Site Administration"] = "SiteAdministrationHomePage";
-
-
-			//TODO: other mappings
-
-			var leftNavContainer = Browser.FindElementById("TblOuter");
-			var link = leftNavContainer.TryFindElementBy(By.LinkText(name));
-
-			if (link == null)
-				return base.NavigateTo(name);
-
-			link.Click();
-			string className = GetClassMapping(name);
-			return TestContext.POFactory.GetPage(className);
-		}
-
-        //private string GetClassMapping(string name)
-        //{
-        //    NameValueCollection poClassMapping = new NameValueCollection();
-        //    poClassMapping["Architect"] = "ArchitectPage";
-        //    poClassMapping["User Administration"] = "UserAdministrationPage";
-        //    poClassMapping["DDE"] = "DDEPage";
-        //    poClassMapping["Reporter"] = "ReportsPage";
-        //    poClassMapping["Query Management"] = "DCFQueriesPage";
-        //    poClassMapping["PDF Generator"] = "FileRequestPage";
-        //    poClassMapping["Lab Administration"] = "AnalytesPage";
-        //    poClassMapping["Unit Conversions"] = "UnitConversionsPage";
-        //    poClassMapping["Architect Library Page"] = "ArchitectLibraryPage";
-
-        //    return poClassMapping[name];
-        //}
-
+	
         public override string URL { get { return "homepage.aspx"; } }
 
 		public override IWebElement GetElementByName(string identifier, string areaIdentifier = null, string listItem = null)

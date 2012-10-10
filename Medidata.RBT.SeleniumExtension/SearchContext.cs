@@ -98,7 +98,6 @@ namespace Medidata.RBT.SeleniumExtension
 
 		#region Dropdown
 
-
 		public static Dropdown Dropdown(this ISearchContext context, string partialID, bool nullable=false)
 		{
 			return SelectExtendElement<Dropdown>(context,"select", partialID, nullable);
@@ -115,6 +114,30 @@ namespace Medidata.RBT.SeleniumExtension
 		{
 			return context.FindElements(By.XPath(xpath)).CastReadOnlyCollection<Dropdown>();
 		}
+
+		#endregion
+
+		#region Button
+
+		public static IWebElement Button(this ISearchContext context, string text, bool nullable = false)
+		{
+			var element = context.TryFindElementBy(By.XPath("//button[normalize-space(text())='" + text + "']"));
+			if (element == null)
+				element = context.TryFindElementBy(By.XPath("//input[normalize-space(@value)='" + text + "']"));
+			return element;
+		}
+
+
+		public static ReadOnlyCollection<IWebElement> Buttons(this ISearchContext context)
+		{
+		
+			var elements1 = context.FindElements(By.XPath("//button"));
+			
+			var	elements2 = context.FindElements(By.XPath("//input[@type='button']"));
+
+			return new ReadOnlyCollection<IWebElement>(elements1.Union(elements2).ToList());
+		}
+
 
 		#endregion
 

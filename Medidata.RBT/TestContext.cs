@@ -77,6 +77,21 @@ namespace Medidata.RBT
 			CurrentPage = TestContext.POFactory.GetPageByUrl(new Uri(Browser.Url));
 		}
 
+		public static void AcceptAlert()
+		{
+			CurrentPage.As<PageBase>().GetAlertWindow().Accept();
+
+			var uri = new Uri(Browser.Url);
+			CurrentPage = TestContext.POFactory.GetPageByUrl(uri);
+		}
+
+		public static void CancelAlert()
+		{
+			CurrentPage.As<PageBase>().GetAlertWindow().Dismiss();
+			var uri = new Uri(Browser.Url);
+			CurrentPage = TestContext.POFactory.GetPageByUrl(uri);
+		}
+
 		#endregion
 
 		public static IPage CurrentPage
