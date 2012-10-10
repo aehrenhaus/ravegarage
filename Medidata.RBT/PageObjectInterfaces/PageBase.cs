@@ -12,7 +12,7 @@ using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
 using Medidata.RBT.SeleniumExtension;
 using System.Collections.Specialized;
-using ICSharpCode.SharpZipLib.Zip;
+
 
 
 namespace Medidata.RBT
@@ -77,20 +77,20 @@ namespace Medidata.RBT
 		/// </summary>
         public virtual IPage ClickButton(string identifier)
         {
-            var element = Browser.TryFindElementBy(By.XPath("//button[text()='" + identifier + "']"));
-            if (element == null)
-				element = Browser.TryFindElementBy(By.XPath("//input[@value='" + identifier + "']"));
-            if (element == null)
-                element = Browser.TryFindElementById(identifier);
-            if (element == null)
-                element = GetElementByName(identifier);
+			var element = Browser.Button(identifier);
+			
+			//Button searching should only consider the visible text , not id.
+
+			//if (element == null)
+			//    element = Browser.TryFindElementById(identifier);
+			//if (element == null)
+			//    element = GetElementByName(identifier);
 
             if (element == null)
                 throw new Exception("Can't find button:" + identifier);
             element.Click();
 
-			var uri = new Uri(Browser.Url);
-			return TestContext.POFactory.GetPageByUrl(uri); ;
+			return GetPageByCurrentUrlIfNoAlert();
         }
 		
 		public virtual void PressKey(string key)
@@ -174,6 +174,13 @@ namespace Medidata.RBT
         /// </summary>
         public virtual IPage NavigateTo(string identifier)
         {
+			var link = Browser.Link(identifier);
+			if (link != null)
+			{
+				link.Click();
+				return GetPageByCurrentUrlIfNoAlert();
+			}
+
             throw new Exception("Don't know how to navigate to "+identifier);
         }
 
@@ -330,7 +337,7 @@ namespace Medidata.RBT
 		/// </summary>
 		public virtual IWebElement GetElementByName(string identifier, string areaIdentifier = null, string listItem = null)
 		{
-			throw new Exception("This page does not provide information about element:" + identifier);
+			throw new Exception(string.Format("This page ({0}) does not provide information about element: {1}",this.GetType().Name, identifier ));
 		}
 
         public virtual IWebElement CanSeeControl(string identifier)
