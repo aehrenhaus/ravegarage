@@ -142,6 +142,7 @@ Scenario: PB_US12940_01C As an EDC user, when I entered bad data in log field A 
 	And I enter data in CRF and save
       | Field       | Data |
       | Log Field 7 |      |
+	And I open log line 1
 	And I verify Query is not displayed
       |Field		| Query Message                           | Closed |
       |Log Field 9	| Answer must be provided. Please review. | false  |	  	
@@ -218,15 +219,16 @@ Scenario: PB_US12940_02A As an EDC user, when I entered bad data in log field A 
 	And I save the CRF page
 	And I open log line 1
 	And I close the Query "Answer must be provided. Please review." on Field "Log Field 3"
-	And I save the CRF page  	  
+	And I save the CRF page  
+	And I open log line 1		  
 	And I verify Query is not displayed
       | Field       | Message                                 | Closed |
       | Log Field 3 | Answer must be provided. Please review. | false  |
 	And I take a screenshot 
 	And I open log line 1		
 	And I enter data in CRF and save
-      |Field		|Data  |
-      |Log Field 3	|data3	|
+      | Field       | Data  |
+      | Log Field 3 | data3 |
 	And I open log line 1
 	And I verify Query is not displayed
       | Field       | Message                                 | Closed |
@@ -921,10 +923,10 @@ Scenario: PB_US12940_06A As an EDC user, when I entered bad data in log field A 
 	And I open log line 1
 	And I click audit on Field "Log Field 3"
 	And I take a screenshot	  
-	And I verify Audits exist
+	And I verify last audit exist
 	| Audit Type     | Query Message                           |
 	| Query Canceled | Answer must be provided. Please review. |
-	And I select Form "Form 6" in "Header"
+	And I select link "Form 6" in "Header"
 	And I open log line 1	  
 	And I enter data in CRF and save	  
       |Field		|Data   |
@@ -969,10 +971,10 @@ Scenario: PB_US12940_06B As an EDC user, when I entered bad data in log field A 
 	And I open log line 1
 	And I click audit on Field "Log Field 6"
 	And I take a screenshot	  
-	And I verify Audits exist
+	And I verify last audit exist
 	| Audit Type     | Query Message                           |
 	| Query Canceled | Answer must be provided. Please review. |
-	And I select Form "Form 6" in "Header"
+	And I select link "Form 6" in "Header"
 	And I open log line 1	  
 	And I enter data in CRF and save	  
       |Field		|Data   |
@@ -1017,10 +1019,10 @@ Scenario: PB_US12940_06C As an EDC user, when I entered bad data in log field A 
 	And I open log line 1
 	And I click audit on Field "Log Field 9"
 	And I take a screenshot	  
-	And I verify Audits exist
+	And I verify last audit exist
 	| Audit Type     | Query Message                           |
 	| Query Canceled | Answer must be provided. Please review. |
-	And I select Form "Form 6" in "Header"
+	And I select link "Form 6" in "Header"
 	And I open log line 1  
 	And I enter data in CRF and save	  
       | Field       | Data  |
@@ -1065,10 +1067,10 @@ Scenario: PB_US12940_06D As an EDC user, when I entered bad data in log field A 
 	And I open log line 1
 	And I click audit on Field "Log Field 12"
 	And I take a screenshot	  
-	And I verify Audits exist
+	And I verify last audit exist
 	| Audit Type     | Query Message                           |
 	| Query Canceled | Answer must be provided. Please review. |
-	And I select Form "Form 6" in "Header"
+	And I select link "Form 6" in "Header"
 	And I open log line 1
 	And I enter data in CRF and save  
       |Field		|Data   |
@@ -1113,10 +1115,10 @@ Scenario: PB_US12940_07A As an EDC user, when I entered bad data in field A and 
 	And I open log line 1
 	And I click audit on Field "Log Field 3"
 	And I take a screenshot	  
-	And I verify Audits exist
+	And I verify last audit exist
 	| Audit Type     | Query Message                           |
 	| Query Canceled | Answer must be provided. Please review. |
-	And I select Form "Form 6" in "Header"
+	And I select link "Form 6" in "Header"
 	And I open log line 1
 	And I enter data in CRF and save	  
       |Field		|Data   |
@@ -1161,10 +1163,10 @@ Scenario: PB_US12940_07B As an EDC user, when I entered bad data in field A and 
 	And I open log line 1
 	And I click audit on Field "Log Field 6"
 	And I take a screenshot	  
-	And I verify Audits exist
+	And I verify last audit exist
 	| Audit Type     | Query Message                           |
 	| Query Canceled | Answer must be provided. Please review. |
-	And I select Form "Form 6" in "Header"
+	And I select link "Form 6" in "Header"
 	And I open log line 1
 	And I enter data in CRF and save	  
       |Field		|Data   |
@@ -1209,10 +1211,10 @@ Scenario: PB_US12940_07C As an EDC user, when I entered bad data in field A and 
 	And I open log line 1
 	And I click audit on Field "Log Field 9"
 	And I take a screenshot	  
-	And I verify Audits exist
+	And I verify last audit exist
 	| Audit Type     | Query Message                           |
 	| Query Canceled | Answer must be provided. Please review. |
-	And I select Form "Form 6" in "Header"
+	And I select link "Form 6" in "Header"
 	And I open log line 1
 	And I enter data in CRF and save	  
       |Field		|Data   |
@@ -1257,10 +1259,10 @@ Scenario: PB_US12940_07D As an EDC user, when I entered bad data in field A and 
 	And I open log line 1
 	And I click audit on Field "Log Field 12"
 	And I take a screenshot	  
-	And I verify Audits exist
+	And I verify last audit exist
 	| Audit Type     | Query Message                           |
 	| Query Canceled | Answer must be provided. Please review. |
-	And I select Form "Form 6" in "Header"
+	And I select link "Form 6" in "Header"
 	And I open log line 1
 	And I enter data in CRF and save	  
       |Field		|Data   |
