@@ -914,10 +914,10 @@ Scenario: PB_US12940_07A As an EDC user, when I entered bad data in field A that
 	And I save the CRF page		  
 	And I click audit on Field "Age 1"
 	And I take a screenshot	  
-	And I verify Audits exist
+	And I verify last audit exist
 	| Audit Type     | Query Message                                                                        |
 	| Query Canceled | Age must be greater than or equal to 18 and less than or equal to 65. Please verify. |
-	And I select Form "Form 1" in "Header"
+	And I select link "Form 1" in "Header"
 	And I enter data in CRF and save
       | Field | Data |
       | Age 1 | 20   |
@@ -954,10 +954,10 @@ Scenario: PB_US12940_07B As an EDC user, when I entered bad data in field A that
 	And I save the CRF page		  
 	And I click audit on Field "Age 2"
 	And I take a screenshot	  
-	And I verify Audits exist
+	And I verify last audit exist
 	| Audit Type     | Query Message                                                                        |
 	| Query Canceled | Age must be greater than or equal to 18 and less than or equal to 65. Please verify. |
-	And I select Form "Form 1" in "Header"	  
+	And I select link "Form 1" in "Header"	  
 	And I enter data in CRF and save
       | Field | Data |
       | Age 2 | 20   |
@@ -994,10 +994,10 @@ Scenario: PB_US12940_07C As an EDC user, when I entered bad data in field A that
 	And I save the CRF page		  
 	And I click audit on Field "Age 3"
 	And I take a screenshot	  
-	And I verify Audits exist
+	And I verify last audit exist
 	| Audit Type     | Query Message                                                                        |
 	| Query Canceled | Age must be greater than or equal to 18 and less than or equal to 65. Please verify. |
-	And I select Form "Form 1" in "Header"  
+	And I select link "Form 1" in "Header"  
 	And I enter data in CRF and save
       | Field | Data |
       | Age 3 | 20   |
@@ -1034,10 +1034,10 @@ Scenario: PB_US12940_07D As an EDC user, when I entered bad data in field A that
 	And I save the CRF page		  
 	And I click audit on Field "Age 4"
 	And I take a screenshot	  
-	And I verify Audits exist
+	And I verify last audit exist
 	| Audit Type     | Query Message                                                                        |
 	| Query Canceled | Age must be greater than or equal to 18 and less than or equal to 65. Please verify. |
-	And I select Form "Form 1" in "Header"  
+	And I select link "Form 1" in "Header"  
 	And I enter data in CRF and save
       | Field | Data |
       | Age 4 | 20   |

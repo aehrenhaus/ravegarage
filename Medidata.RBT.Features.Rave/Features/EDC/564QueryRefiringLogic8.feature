@@ -258,7 +258,7 @@ Scenario: PB_8.2.1 Task Summary
 		| Start Date           | 'Date Informed Consent Signed' is greater. Please revise.                                                      | false    | false  |
 		| Cuurrent Axis Number | 'Informed Consent 'Current Distribution Number' is not equal to Concomitant Medications 'Current Axis Number'. | false    | false  |
 	And I take a screenshot
-	And I select Site "Edit Check Site 8" in "Header"
+	And I select link "Edit Check Site 8" in "Header"
     And I select a Subject "sub{Var(num1)}"
 	When I expand "Cancel Queries" in Task Summary
 	Then I should see "Screening-Concomitant Medications" in "Cancel Queries"
@@ -282,7 +282,7 @@ Scenario: PB_8.3.1 Query Management
 	And I choose "Edit Check Site 8" from "Site"
 	And I choose "sub{Var(num1)}" from "Subject"
 	And I click button "Advanced Search"
-	And I select Form "Concomitant Medications" in "Search Result"
+	And I select link "Concomitant Medications" in "Search Result"
 	When I open log line 2
 	Then I verify Query is displayed
 		| Field                | Query Message                                                                                                  | Answered | Closed |
@@ -346,7 +346,7 @@ Scenario: PB_8.3.2
 	And I choose "Edit Check Site 8" from "Site"
 	And I choose "sub{Var(num1)}" from "Subject"
 	And I click button "Advanced Search"
-	And I select Form "Concomitant Medications" in "search result"
+	And I select link "Concomitant Medications" in "search result"
 	And I enter data in CRF on a new log line and save and reopen
 	    | Field                | Data        |
 	    | Start Date           | 07 Jan 2000 |
@@ -422,7 +422,7 @@ Scenario: PB_8.4.1 Migrate Subject
 	And I close the Query "Query Opened on Log Field 1" on Field "Log Field 1"
 	And I save the CRF page
 	And I take a screenshot	
-	And I select Site "AM Edit Site" in "Header"
+	And I select link "AM Edit Site" in "Header"
     And I create a Subject
 		| Field            | Data              |
 		| Subject Number   | {RndNum<num3>(5)} |
@@ -456,10 +456,10 @@ Scenario: PB_8.4.1 Migrate Subject
 	And I navigate to "Edit Checks"
 	And I inactivate edit check "Mixed Form Query"
 	And I take a screenshot
-	And I select Draft "Draft {Var(d#)}" in "Header"
+	And I select link "Draft {Var(d#)}" in "Header"
 	And I publish CRF Version "Target{RndNum<TV#>(3)}"
 	And I note down "crfversion" to "newversion#"
-	And I select Study "AM Edit Check Study" in "Header"
+	And I select link "AM Edit Check Study" in "Header"
 	And I navigate to "Amendment Manager"
 	And I choose "V1 ({Var(ver#)})" from "Source CRF"
 	And I choose "{Var(newversion#)}" from "Target CRF"
@@ -494,7 +494,7 @@ Scenario: PB_8.4.1 Migrate Subject
 		| Field       | Query Message               | Answered | Closed |
 		| Log Field 1 | Query Opened on Log Field 1 | false    | false  |
 	And I take a screenshot	
-	And I select Site "AM Edit Site" in "Header"
+	And I select link "AM Edit Site" in "Header"
     And I select a Subject "sub{Var(num3)}"
 	And I select Form "Mixed Form"
 	And I open the last log line
@@ -523,10 +523,10 @@ Scenario: PB_8.4.1 Migrate Subject
 	And I select link "Draft {Var(d#)}" in "CRF Drafts"
 	And I navigate to "Edit Checks"
 	And I activate edit check "Mixed Form Query"
-	And I select Draft "Draft {Var(d#)}" in "Header"
+	And I select link "Draft {Var(d#)}" in "Header"
 	And I publish CRF Version "Target{RndNum<TV#>(3)}"
 	And I note down "crfversion" to "newversion1#"
-	And I select Study "AM Edit Check Study" in "Header"
+	And I select link "AM Edit Check Study" in "Header"
 	And I navigate to "Amendment Manager"
 	And I choose "{Var(newversion#)}" from "Source CRF"
 	And I choose "{Var(newversion1#)}" from "Target CRF"
@@ -551,7 +551,7 @@ Scenario: PB_8.4.1 Migrate Subject
 		| Field       | Query Message               | Answered | Closed |
 		| Log Field 1 | Query Opened on Log Field 1 | false    | false  |
 	And I take a screenshot	
-	And I select Site "AM Edit Site" in "Header"
+	And I select link "AM Edit Site" in "Header"
     And I select a Subject "sub{Var(num3)}"
 	And I select Form "Mixed Form"
 	When I open log line 1
@@ -569,7 +569,7 @@ Scenario: PB_8.4.1 Migrate Subject
 #----------------------------------------------------------------------------------------------------------------------------------------	
 @release_564_Patch11
 @PB_8.5.1
-@ignore
+@Validation
 # The feature is not implemented in 5.6.3
 Scenario: PB_8.5.1 Publish Checks
 

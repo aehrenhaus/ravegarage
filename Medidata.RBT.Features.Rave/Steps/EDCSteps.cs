@@ -311,6 +311,23 @@ namespace Medidata.RBT.Features.Rave
 			}
 		}
 
+        /// <summary>
+        /// Verify audit exists
+        /// </summary>
+        /// <param name="table"></param>
+        [StepDefinition(@"I verify last audit exist")]
+        public void IVerifyLastAuditExist(Table table)
+        {
+            var audits = table.CreateSet<AuditModel>();
+            int position = 1;
+            foreach (var a in audits)
+            {
+                bool exist = CurrentPage.As<AuditsPage>().AuditExist(a, null);
+                Assert.IsTrue(exist, string.Format("Audit {0} does not exist", a.AuditType));
+                position++;
+            }
+        }
+
         [StepDefinition(@"I select link ""([^""]*)"" located in ""([^""]*)""")]
         public void ISelectLink____LocatedIn____(string logForm, string leftNav)
         {

@@ -456,7 +456,7 @@ Scenario: PB_1.4.1 As an EDC user, On a Cross Forms log form to log form, when a
 	    | Current Axis Number  | 65          |	
 	And I open log line 1
 	And I verify Query is not displayed
-		| Field                | Message                                                                | Closed |
+		| Field                | Query Message                                                          | Closed |
 		| Start Date           | Date can not be less than.                                             | true   |
 		| End Date             | Date is Less Than Date on the first log form.                          | true   |
 		| Original Axis Number | 'AE Number' is greater than or Equal to 'Original Axis Number' on Log. | true   |

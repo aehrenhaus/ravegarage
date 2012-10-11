@@ -26,10 +26,10 @@ Scenario: @PB_US12940_01A
 As an EDC user, when I entered bad data in lab field A and lab field B that resulted in the system opening a query on lab field B, and I answered the query without changing the data, and the query is then closed, and I entered good data in lab field A, if I then entered the same bad data in lab field A as when the query was closed, then the system should not refire a query on lab field B. Query with requires response = true and requires manual close = true.
 
 	And I create a Subject
-	| Field            | Data                                                            |
-	| Subject Number   | {RndNum<num1>(5)}      |
-	| Subject Initials | SUB                                                             |
-    | Subject ID       | SUB {Var(num1)}                                                 |	
+	| Field            | Data              |
+	| Subject Number   | {RndNum<num1>(5)} |
+	| Subject Initials | SUB               |
+	| Subject ID       | SUB {Var(num1)}   |	
 	And I select Form "Lab Form 8"
 	And I enter data in CRF and save
       |Field		                                |Data   |
@@ -66,10 +66,10 @@ Scenario: @PB_US12940_01B
 As an EDC user, when I entered bad data in lab field A and lab field B that resulted in the system opening a query on lab field B, and I entered good data in lab field A, if I then entered the same bad data in lab field A as when the query was closed, then the system should refire a query on lab field B. Query with requires response = false and requires manual close = false.
 
 	And I create a Subject
-	| Field            | Data                                                          |
-	| Subject Number   | {RndNum<num1>(5)}    |
-	| Subject Initials |SUB                                                            |
-    | Subject ID       | SUB {Var(num1)}                                               |	
+	| Field            | Data              |
+	| Subject Number   | {RndNum<num1>(5)} |
+	| Subject Initials | SUB               |
+	| Subject ID       | SUB {Var(num1)}   |	
 	And I select Form "Lab Form 8"
 	And I enter data in CRF and save
       |Field		                                |Data   |
@@ -101,10 +101,10 @@ Scenario: @PB_US12940_01C
 As an EDC user, when I entered bad data in lab field A and lab field B that resulted in the system opening a query on lab field B, and I answered the query without changing the data, and I entered good data in lab field A, if I then entered the same bad data in lab field A, then the system should not refire a query on lab field B. Query with requires response = true and requires manual close = false.
 
 	And I create a Subject
-	| Field            | Data                                                          |
-	| Subject Number   | {RndNum<num1>(5)}    |
-	| Subject Initials |SUB                                                            |
-    | Subject ID       | SUB {Var(num1)}                                               |	
+	| Field            | Data              |
+	| Subject Number   | {RndNum<num1>(5)} |
+	| Subject Initials | SUB               |
+	| Subject ID       | SUB {Var(num1)}   |	
 	And I select Form "Lab Form 8"
 	And I enter data in CRF and save
       |Field		                               |Data    |
@@ -144,10 +144,10 @@ Scenario: @PB_US12940_01D
 As an EDC user, when I entered bad data in lab field A and lab field B that resulted in the system opening a query on lab field B, and I entered good data in lab field A, if I then entered the same bad data in lab field A, then the system should refire a query on lab field B. Query with requires response = false and requires manual close = true.
 	
 	And I create a Subject
-	| Field            | Data                                                           |
-	| Subject Number   | {RndNum<num1>(5)}     |
-	| Subject Initials |SUB                                                             |
-    | Subject ID       | SUB {Var(num1)}                                                |	
+	| Field            | Data              |
+	| Subject Number   | {RndNum<num1>(5)} |
+	| Subject Initials | SUB               |
+	| Subject ID       | SUB {Var(num1)}   |
 	And I select Form "Lab Form 8"
 	And I enter data in CRF and save
       |Field		                               |Data    |
@@ -182,10 +182,10 @@ Scenario: @PB_US12940_02A
 As an EDC user, when I entered bad data in lab field A and lab field B that resulted in the system opening a query on lab field B, and I answered the query without changing the data, and the query is then closed, and I entered good data in lab field B, if I then entered the same bad data in lab field B as when the query was closed, then the system should not refire a query on lab field B. Query with requires response = true and requires manual close = true.
 	
 	And I create a Subject
-	| Field            | Data                                                       |
+	| Field            | Data              |
 	| Subject Number   | {RndNum<num1>(5)} |
-	| Subject Initials |SUB                                                         |
-    | Subject ID       | SUB {Var(num1)}                                            |	
+	| Subject Initials | SUB               |
+	| Subject ID       | SUB {Var(num1)}   |	
 	And I select Form "Lab Form 8"
 	And I enter data in CRF and save
       |Field		                                |Data   |
@@ -224,10 +224,10 @@ Scenario: @PB_US12940_02B
 As an EDC user, when I entered bad data in lab field A and lab field B that resulted in the system opening a query on lab field B, and I entered good data in lab field B, if I then entered the same bad data in lab field B, then the system should refire a query on lab field B. Query with requires response = false and requires manual close = false. 
 	
 	And I create a Subject
-	| Field            | Data                                                       |
+	| Field            | Data              |
 	| Subject Number   | {RndNum<num1>(5)} |
-	| Subject Initials |SUB                                                         |
-    | Subject ID       | SUB {Var(num1)}                                            |	
+	| Subject Initials | SUB               |
+	| Subject ID       | SUB {Var(num1)}   |
 	And I select Form "Lab Form 8"
 	And I enter data in CRF and save
       |Field		                                |Data   |
@@ -259,10 +259,10 @@ Scenario: @PB_US12940_02C
 As an EDC user, when I entered bad data in lab field A and lab field B that resulted in the system opening a query on lab field B, and I answered the query without changing the data, and I entered good data in lab field B, if I then entered the same bad data in lab field B, then the system should not refire a query on lab field B. Query with requires response = true and requires manual close = false. 
 	
 	And I create a Subject
-	| Field            | Data                                                       |
+	| Field            | Data              |
 	| Subject Number   | {RndNum<num1>(5)} |
-	| Subject Initials |SUB                                                         |
-    | Subject ID       | SUB {Var(num1)}                                            |	
+	| Subject Initials | SUB               |
+	| Subject ID       | SUB {Var(num1)}   |	
 	And I select Form "Lab Form 8"
 	And I enter data in CRF and save
       |Field		                               |Data    |
@@ -300,10 +300,10 @@ Scenario: @PB_US12940_02D
 As an EDC user, when I entered bad data in lab field A and lab field B that resulted in the system opening a query on lab field B, and the query is then closed, and I entered good data in lab field B, if I then entered the same bad data in lab field B as when the query was closed, then the system should refire a query on lab field B. Query with requires response = false and requires manual close = true.
 	
 	And I create a Subject
-	| Field            | Data                                                       |
+	| Field            | Data              |
 	| Subject Number   | {RndNum<num1>(5)} |
-	| Subject Initials |SUB                                                         |
-    | Subject ID       | SUB {Var(num1)}                                            |	
+	| Subject Initials | SUB               |
+	| Subject ID       | SUB {Var(num1)}   |
 	And I select Form "Lab Form 8"
 	And I enter data in CRF and save
       |Field		                               |Data    |
@@ -339,10 +339,10 @@ Scenario: @PB_US12940_03A
 As an EDC user, when I entered bad data in lab field A and lab field B that resulted in the system opening a query on lab field B, and I answered the query and I changed the data in lab field A to another bad data, and the query is then closed, if I entered good data in lab field A and then again entered the same bad data in lab field A as when the query was closed, then the system should not refire a query on lab field B. Query with requires response = true and requires manual close = true.
 
 	And I create a Subject
-	| Field            | Data                                                       |
+	| Field            | Data              |
 	| Subject Number   | {RndNum<num1>(5)} |
-	| Subject Initials |SUB                                                         |
-    | Subject ID       | SUB {Var(num1)}                                            |	
+	| Subject Initials | SUB               |
+	| Subject ID       | SUB {Var(num1)}   |	
 	And I select Form "Lab Form 8"
 	And I enter data in CRF and save
       |Field		                                |Data   |
@@ -388,10 +388,10 @@ Scenario: @PB_US12940_03B
 As an EDC user, when I entered bad data in lab field A and lab field B that resulted in the system opening a query on lab field B, and I changed the data in lab field A to another bad data, if I entered good data in lab field A and then again entered the same bad data in lab field A as when the query was closed, then the system should refire a query on lab field B. Query with requires response = false and requires manual close = false.
 	
 	And I create a Subject
-	| Field            | Data                                                       |
+	| Field            | Data              |
 	| Subject Number   | {RndNum<num1>(5)} |
-	| Subject Initials |SUB                                                         |
-    | Subject ID       | SUB {Var(num1)}                                            |	
+	| Subject Initials | SUB               |
+	| Subject ID       | SUB {Var(num1)}   |	
 	And I select Form "Lab Form 8"
 	And I enter data in CRF and save
       |Field		                                |Data   |
@@ -432,10 +432,10 @@ Scenario: @PB_US12940_03C
 As an EDC user, when I entered bad data in lab field A and lab field B that resulted in the system opening a query on lab field B, and I answered the query and I changed the data in lab field A to another bad data, if I entered good data in lab field A and then again entered the same bad data in lab field A, then the system should not refire a query on lab field B. Query with requires response = true and requires manual close = false. 
 	
 	And I create a Subject
-	| Field            | Data                                                       |
+	| Field            | Data              |
 	| Subject Number   | {RndNum<num1>(5)} |
-	| Subject Initials |SUB                                                         |
-    | Subject ID       | SUB {Var(num1)}                                            |	
+	| Subject Initials | SUB               |
+	| Subject ID       | SUB {Var(num1)}   |	
 	And I select Form "Lab Form 8"
 	And I enter data in CRF and save
       |Field		                               |Data    |
@@ -477,10 +477,10 @@ Scenario: @PB_US12940_03D
 As an EDC user, when I entered bad data in lab field A and lab field B that resulted in the system opening a query on lab field B, and the query is then closed, if I entered good data in lab field A and then again entered the same bad data in lab field A as when the query was closed, then the system should not refire a query on lab field B. Query with requires response = false and requires manual close = true.
 	
 	And I create a Subject
-	| Field            | Data                                                          |
-	| Subject Number   | {RndNum<num1>(5)}    |
-	| Subject Initials |SUB                                                            |
-    | Subject ID       | SUB {Var(num1)}                                               |	
+	| Field            | Data              |
+	| Subject Number   | {RndNum<num1>(5)} |
+	| Subject Initials | SUB               |
+	| Subject ID       | SUB {Var(num1)}   |	
 	And I select Form "Lab Form 8"
 	And I enter data in CRF and save
       |Field		                               |Data    |
@@ -527,10 +527,10 @@ Scenario: @PB_US12940_04A
 As an EDC user, when I entered bad data in lab field A and lab field B that resulted in the system opening a query on lab field B, and I answered the query and I changed the data in lab field B to another bad data, and the query is then closed, if I entered good data in lab field B and then again entered the same bad data in lab field B as when the query was closed, then the system should not refire a query on lab field B. Query with requires response = true and requires manual close = true.
 
     And I create a Subject
-	| Field            | Data                                                       |
+	| Field            | Data              |
 	| Subject Number   | {RndNum<num1>(5)} |
-	| Subject Initials |SUB                                                         |
-    | Subject ID       | SUB {Var(num1)}                                            |	
+	| Subject Initials | SUB               |
+	| Subject ID       | SUB {Var(num1)}   |	
 	And I select Form "Lab Form 8"
 	And I enter data in CRF and save
       |Field		                                |Data   |
@@ -574,10 +574,10 @@ Scenario: @PB_US12940_04B
 As an EDC user, when I entered bad data in lab field A and lab field B that resulted in the system opening a query on lab field B, if I entered good data in lab field B and then again entered the same bad data in lab field B, then the system should refire a query on lab field B. Query with requires response = false and requires manual close = false.
 
     And I create a Subject
-	| Field            | Data                                                       |
+	| Field            | Data              |
 	| Subject Number   | {RndNum<num1>(5)} |
-	| Subject Initials |SUB                                                         |
-    | Subject ID       | SUB {Var(num1)}                                            |	
+	| Subject Initials | SUB               |
+	| Subject ID       | SUB {Var(num1)}   |	
 	And I select Form "Lab Form 8"
 	And I enter data in CRF and save
       |Field		                                |Data   |
@@ -619,10 +619,10 @@ Scenario: @PB_US12940_04C
 As an EDC user, when I entered bad data in lab field A and lab field B that resulted in the system opening a query on lab field B, and I answered the query and I changed the data in lab field B to another bad data, if I entered good data in lab field B and then again entered the same bad data in lab field B, then the system should not refire a query on lab field B. Query with requires response = true and requires manual close = false.
 
     And I create a Subject
-	| Field            | Data                                                       |
+	| Field            | Data              |
 	| Subject Number   | {RndNum<num1>(5)} |
-	| Subject Initials |SUB                                                         |
-    | Subject ID       | SUB {Var(num1)}                                            |	
+	| Subject Initials | SUB               |
+	| Subject ID       | SUB {Var(num1)}   |	
 	And I select Form "Lab Form 8"
 	And I enter data in CRF and save
       |Field		                               |Data    |
@@ -666,10 +666,10 @@ Scenario: @PB_US12940_04D
 As an EDC user, when I entered bad data in lab field A and lab field B that resulted in the system opening a query on lab field B, and the query is then closed, if I entered good data in lab field B and then again entered the same bad data in lab field B as when the query was closed, then the system should not refire a query on lab field B. Query with requires response = false and requires manual close = true.
 	
 	And I create a Subject
-	| Field            | Data                                                       |
+	| Field            | Data              |
 	| Subject Number   | {RndNum<num1>(5)} |
-	| Subject Initials |SUB                                                         |
-    | Subject ID       | SUB {Var(num1)}                                            |	
+	| Subject Initials | SUB               |
+	| Subject ID       | SUB {Var(num1)}   |
 	And I select Form "Lab Form 8"
 	And I enter data in CRF and save
       |Field		                               |Data    |
@@ -712,10 +712,10 @@ Scenario: @PB_US12940_05A
 As an EDC user, when I entered bad data in lab field A and lab field B that resulted in the system opening a query on lab field B, and I answered the query and I changed the data in lab field A to another bad data, and the query is then closed, if I then entered the original bad data in lab field A, then the system should refire a query on lab field B. Query with requires response = true and requires manual close = true.
 
     And I create a Subject
-	| Field            | Data                                                       |
+	| Field            | Data              |
 	| Subject Number   | {RndNum<num1>(5)} |
-	| Subject Initials |SUB                                                         |
-    | Subject ID       | SUB {Var(num1)}                                            |	
+	| Subject Initials | SUB               |
+	| Subject ID       | SUB {Var(num1)}   |	
 	And I select Form "Lab Form 8"
 	And I enter data in CRF and save
       |Field		                                |Data   |
@@ -754,10 +754,10 @@ Scenario: @PB_US12940_05B
 As an EDC user, when I entered bad data in lab field A and lab field B that resulted in the system opening a query on lab field B,and I changed the data in lab field A to another bad data, if I then entered the original bad data in lab field A, then the system should refire a query on lab field B. Query with requires response = false and requires manual close = false.
 
     And I create a Subject
-	| Field            | Data                                                       |
+	| Field            | Data              |
 	| Subject Number   | {RndNum<num1>(5)} |
-	| Subject Initials |SUB                                                         |
-	| Subject ID       | SUB {Var(num1)}                                            |
+	| Subject Initials | SUB               |
+	| Subject ID       | SUB {Var(num1)}   |
 	And I select Form "Lab Form 8"
 	And I enter data in CRF and save
       |Field		                                |Data   |
@@ -791,10 +791,10 @@ Scenario: @PB_US12940_05C
 As an EDC user, when I entered bad data in lab field A and lab field B that resulted in the system opening a query on lab field B, and I answered the query and I changed the data in lab field A to another bad data, if I then entered the original bad data in lab field A, then the system should refire a query on lab field B. Query with requires response = true and requires manual close = false.
 
     And I create a Subject
-	| Field            | Data                                                       |
+	| Field            | Data              |
 	| Subject Number   | {RndNum<num1>(5)} |
-	| Subject Initials |SUB                                                         |
-    | Subject ID       | SUB {Var(num1)}                                            |	
+	| Subject Initials | SUB               |
+	| Subject ID       | SUB {Var(num1)}   |	
 	And I select Form "Lab Form 8"
 	And I enter data in CRF and save
       |Field		                               |Data    |
@@ -831,10 +831,10 @@ Scenario: @PB_US12940_05D
 As an EDC user, when I entered bad data in lab field A and lab field B that resulted in the system opening a query on lab field B,and I changed the data in lab field A to another bad data, and the query is then closed, if I then entered the original bad data in lab field A, then the system should refire a query on lab field B. Query with requires response = false and requires manual close = true.
 	
 	And I create a Subject
-	| Field            | Data                                                       |
+	| Field            | Data              |
 	| Subject Number   | {RndNum<num1>(5)} |
-	| Subject Initials |SUB                                                         |
-    | Subject ID       | SUB {Var(num1)}                                            |	
+	| Subject Initials | SUB               |
+	| Subject ID       | SUB {Var(num1)}   |	
 	And I select Form "Lab Form 8"
 	And I enter data in CRF and save
       |Field		                               |Data    |
@@ -871,10 +871,10 @@ Scenario: @PB_US12940_06A
 As an EDC user, when I entered bad data in lab field A and lab field B that resulted in the system opening a query on lab field B, and I answered the query and I changed the data in lab field B to another bad data, and the query is then closed, if I then entered the original bad data in lab field B, then the system should refire a query on lab field B. Query with requires response = true and requires manual close = true.
 
     And I create a Subject
-	| Field            | Data                                                       |
+	| Field            | Data              |
 	| Subject Number   | {RndNum<num1>(5)} |
-	| Subject Initials |SUB                                                         |
-    | Subject ID       | SUB {Var(num1)}                                            |	
+	| Subject Initials | SUB               |
+	| Subject ID       | SUB {Var(num1)}   |	
 	And I select Form "Lab Form 8"
 	And I enter data in CRF and save
       |Field		                                |Data   |
@@ -911,10 +911,10 @@ Scenario: @PB_US12940_06B
 As an EDC user, when I entered bad data in lab field A and lab field B that resulted in the system opening a query on lab field B, and I changed the data in lab field B to another good data, if I then entered the original bad data in lab field B, then the system should refire a query on lab field B. Query with requires response = false and requires manual close = false.
 
     And I create a Subject
-	| Field            | Data                                                       |
+	| Field            | Data              |
 	| Subject Number   | {RndNum<num1>(5)} |
-	| Subject Initials |SUB                                                         |
-    | Subject ID       | SUB {Var(num1)}                                            |	
+	| Subject Initials | SUB               |
+	| Subject ID       | SUB {Var(num1)}   |	
 	And I select Form "Lab Form 8"
 	And I enter data in CRF and save
       |Field		                                |Data   |
@@ -948,10 +948,10 @@ Scenario: @PB_US12940_06C
 As an EDC user, when I entered bad data in lab field A and lab field B that resulted in the system opening a query on lab field B, and I answered the query and I changed the data in lab field B to another bad data, if I then entered the original bad data in lab field B, then the system should refire a query on lab field B. Query with requires response = true and requires manual close = false.
 
     And I create a Subject
-	| Field            | Data                                                       |
+	| Field            | Data              |
 	| Subject Number   | {RndNum<num1>(5)} |
-	| Subject Initials |SUB                                                         |
-    | Subject ID       | SUB {Var(num1)}                                            |	
+	| Subject Initials | SUB               |
+	| Subject ID       | SUB {Var(num1)}   |	
 	And I select Form "Lab Form 8"
 	And I enter data in CRF and save
       |Field		                               |Data    |
@@ -985,10 +985,10 @@ Scenario: @PB_US12940_06D
 As an EDC user, when I entered bad data in lab field A and lab field B that resulted in the system opening a query on lab field B, and I changed the data in lab field B to another bad data, and the query is then closed, if I then entered the original bad data in lab field B, then the system should refire a query on lab field B. Query with requires response = false and requires manual close = true.
 	
 	And I create a Subject
-	| Field            | Data                                                       |
+	| Field            | Data              |
 	| Subject Number   | {RndNum<num1>(5)} |
-	| Subject Initials |SUB                                                         |
-    | Subject ID       | SUB {Var(num1)}                                            |	
+	| Subject Initials | SUB               |
+	| Subject ID       | SUB {Var(num1)}   |	
 	And I select Form "Lab Form 8"
 	And I enter data in CRF and save
       |Field		                                |Data   |
@@ -1024,10 +1024,10 @@ Scenario: @PB_US12940_07A
 As an EDC user, when I entered bad data in lab field A and lab field B that resulted in the system opening a query on lab field B, and I answered the query without changing the data, and the query is then closed, if I then entered new bad data in lab field A, then the system should refire a query on lab field B. Query with requires response = true and requires manual close = true.
 	
 	And I create a Subject
-	| Field            | Data                                                       |
+	| Field            | Data              |
 	| Subject Number   | {RndNum<num1>(5)} |
-	| Subject Initials |SUB                                                         |
-    | Subject ID       | SUB {Var(num1)}                                            |	
+	| Subject Initials | SUB               |
+	| Subject ID       | SUB {Var(num1)}   |
 	And I select Form "Lab Form 8"
 	And I enter data in CRF and save
       |Field		                                |Data   |
@@ -1061,10 +1061,10 @@ Scenario: @PB_US12940_07B
 As an EDC user, when I entered bad data in lab field A and lab field B that resulted in the system opening a query on lab field B, if I then entered new bad data in lab field A, then the system should refire a query on lab field B. Query with requires response = false and requires manual close = false.
 	
 	And I create a Subject
-	| Field            | Data                                                       |
+	| Field            | Data              |
 	| Subject Number   | {RndNum<num1>(5)} |
-	| Subject Initials |SUB                                                         |
-    | Subject ID       | SUB {Var(num1)}                                            |	
+	| Subject Initials | SUB               |
+	| Subject ID       | SUB {Var(num1)}   |	
 	And I select Form "Lab Form 8"
 	And I enter data in CRF and save
       |Field		                                |Data   |
@@ -1090,10 +1090,10 @@ Scenario: @PB_US12940_07C
 As an EDC user, when I entered bad data in lab field A and lab field B that resulted in the system opening a query on lab field B, and I answered the query without changing the data, if I then entered new bad data in lab field A, then the system should refire a query on lab field B. Query with requires response = true and requires manual close = false.
 	
 	And I create a Subject
-	| Field            | Data                                                       |
+	| Field            | Data              |
 	| Subject Number   | {RndNum<num1>(5)} |
-	| Subject Initials |SUB                                                         |
-    | Subject ID       | SUB {Var(num1)}                                            |	
+	| Subject Initials | SUB               |
+	| Subject ID       | SUB {Var(num1)}   |	
 	And I select Form "Lab Form 8"
 	And I enter data in CRF and save
       |Field		                               |Data    |
@@ -1126,10 +1126,10 @@ Scenario: @PB_US12940_07D
 As an EDC user, when I entered bad data in lab field A and lab field B that resulted in the system opening a query on lab field B, if I then entered new bad data in lab field A, then the system should not refire a query on lab field B. Query with requires response = false and requires manual close = true.
 	
 	And I create a Subject
-	| Field            | Data                                                       |
+	| Field            | Data              |
 	| Subject Number   | {RndNum<num1>(5)} |
-	| Subject Initials |SUB                                                         |
-    | Subject ID       | SUB {Var(num1)}                                            |	
+	| Subject Initials | SUB               |
+	| Subject ID       | SUB {Var(num1)}   |	
 	And I select Form "Lab Form 8"
 	And I enter data in CRF and save
       |Field		                                |Data   |
@@ -1155,10 +1155,10 @@ Scenario: @PB_US12940_08A
 As an EDC user, when I entered bad data in lab field A and lab field B that resulted in the system opening a query on lab field B, and I answered the query without changing the data, and the query is then closed, if I then entered new bad data in lab field B, then the system should refire a query on lab field B. Query with requires response = true and requires manual close = true.
 
     And I create a Subject
-	| Field            | Data                                                       |
+	| Field            | Data              |
 	| Subject Number   | {RndNum<num1>(5)} |
-	| Subject Initials |SUB                                                         |
-    | Subject ID       | SUB {Var(num1)}                                            |	
+	| Subject Initials | SUB               |
+	| Subject ID       | SUB {Var(num1)}   |	
 	And I select Form "Lab Form 8"
 	And I enter data in CRF and save
       |Field		                                |Data   |
@@ -1190,10 +1190,10 @@ Scenario: @PB_US12940_08B
 As an EDC user, when I entered bad data in lab field A and lab field B that resulted in the system opening a query on lab field B,if I then entered new bad data in lab field B, then the system should refire a query on lab field B. Query with requires response = false and requires manual close = false.
 
     And I create a Subject
-	| Field            | Data                                                       |
+	| Field            | Data              |
 	| Subject Number   | {RndNum<num1>(5)} |
-	| Subject Initials |SUB                                                         |
-    | Subject ID       | SUB {Var(num1)}                                            |	
+	| Subject Initials | SUB               |
+	| Subject ID       | SUB {Var(num1)}   |	
 	And I select Form "Lab Form 8"
 	And I enter data in CRF and save
       |Field		                                |Data   |
@@ -1218,10 +1218,10 @@ Scenario: @PB_US12940_08C
 As an EDC user, when I entered bad data in lab field A and lab field B that resulted in the system opening a query on lab field B, and I answered the query without changing the data, if I then entered new bad data in lab field B, then the system should refire a query on lab field B. Query with requires response = true and requires manual close = false.
 
     And I create a Subject
-	| Field            | Data                                                       |
+	| Field            | Data              |
 	| Subject Number   | {RndNum<num1>(5)} |
-	| Subject Initials |SUB                                                         |
-    | Subject ID       | SUB {Var(num1)}                                            |	
+	| Subject Initials | SUB               |
+	| Subject ID       | SUB {Var(num1)}   |	
 	And I select Form "Lab Form 8"
 	And I enter data in CRF and save
       |Field		                               |Data    |
@@ -1252,10 +1252,10 @@ Scenario: @PB_US12940_08D
 As an EDC user, when I entered bad data in lab field A and lab field B that resulted in the system opening a query on lab field B, if I then entered new bad data in lab field B, then the system should answers the old query on lab field B. Query with requires response = false and requires manual close = true.
 	
 	And I create a Subject
-	| Field            | Data                                                       |
+	| Field            | Data              |
 	| Subject Number   | {RndNum<num1>(5)} |
-	| Subject Initials |SUB                                                         |
-    | Subject ID       | SUB {Var(num1)}                                            |	
+	| Subject Initials | SUB               |
+	| Subject ID       | SUB {Var(num1)}   |	
 	And I select Form "Lab Form 8"
 	And I enter data in CRF and save
       |Field		                               |Data    |
@@ -1280,10 +1280,10 @@ Scenario: @PB_US12940_09A
 As an EDC user, when I entered bad data in lab field A and lab field B that resulted in the system opening a query on lab field B, and I answered the query and I changed the data in lab field A to another bad data, and the query is then closed, if I then entered the new bad data in lab field A, then the system should refire a query on lab field B. Query with requires response = true and requires manual close = true.
 
     And I create a Subject
-	| Field            | Data                                                       |
+	| Field            | Data              |
 	| Subject Number   | {RndNum<num1>(5)} |
-	| Subject Initials |SUB                                                         |
-    | Subject ID       | SUB {Var(num1)}                                            |	
+	| Subject Initials | SUB               |
+	| Subject ID       | SUB {Var(num1)}   |	
 	And I select Form "Lab Form 8"
 	And I enter data in CRF and save
       |Field		                                |Data   |
@@ -1322,10 +1322,10 @@ Scenario: @PB_US12940_09B
 As an EDC user, when I entered bad data in lab field A and lab field B that resulted in the system opening a query on lab field B, if I then entered the new bad data in lab field A, then the system should refire a query on lab field B. Query with requires response = false and requires manual close = false.
 
     And I create a Subject
-	| Field            | Data                                                       |
+	| Field            | Data              |
 	| Subject Number   | {RndNum<num1>(5)} |
-	| Subject Initials |SUB                                                         |
-    | Subject ID       | SUB {Var(num1)}                                            |	
+	| Subject Initials | SUB               |
+	| Subject ID       | SUB {Var(num1)}   |	
 	And I select Form "Lab Form 8"
 	And I enter data in CRF and save
       |Field		                                |Data   |
@@ -1361,10 +1361,10 @@ Scenario: @PB_US12940_09C
 As an EDC user, when I entered bad data in lab field A and lab field B that resulted in the system opening a query on lab field B, and I answered the query and I changed the data in lab field A to another bad data, if I then entered the new bad data in lab field A, then the system should refire a query on lab field B. Query with requires response = true and requires manual close = false.
 
     And I create a Subject
-	| Field            | Data                                                       |
+	| Field            | Data              |
 	| Subject Number   | {RndNum<num1>(5)} |
-	| Subject Initials |SUB                                                         |
-    | Subject ID       | SUB {Var(num1)}                                            |	
+	| Subject Initials | SUB               |
+	| Subject ID       | SUB {Var(num1)}   |	
 	And I select Form "Lab Form 8"
 	And I enter data in CRF and save
       |Field		                               |Data    |
@@ -1400,10 +1400,10 @@ Scenario: @PB_US12940_09D
 As an EDC user, when I entered bad data in lab field A and lab field B that resulted in the system opening a query on lab field B, and I changed the data in lab field A to another bad data, and the query is then closed, if I then entered the new bad data in lab field A, then the system should refire a query on lab field B. Query with requires response = false and requires manual close = true.
 	
 	And I create a Subject
-	| Field            | Data                                                          |
-	| Subject Number   | {RndNum<num1>(5)}    |
-	| Subject Initials |SUB                                                            |
-    | Subject ID       | SUB {Var(num1)}                                               |	
+	| Field            | Data              |
+	| Subject Number   | {RndNum<num1>(5)} |
+	| Subject Initials | SUB               |
+	| Subject ID       | SUB {Var(num1)}   |	
 	And I select Form "Lab Form 8"
 	And I enter data in CRF and save
       |Field		                               |Data    |
@@ -1443,10 +1443,10 @@ Scenario: @PB_US12940_10A
 As an EDC user, when I entered bad data in lab field A and lab field B that resulted in the system opening a query on lab field B, and I answered the query and I changed the data in lab field B to another bad data, and the query is then closed, if I then entered the new bad data in lab field B, then the system should refire a query on lab field B. Query with requires response = true and requires manual close = true.
 
     And I create a Subject
-	| Field            | Data                                                       |
+	| Field            | Data              |
 	| Subject Number   | {RndNum<num1>(5)} |
-	| Subject Initials |SUB                                                         |
-    | Subject ID       | SUB {Var(num1)}                                            |	
+	| Subject Initials | SUB               |
+	| Subject ID       | SUB {Var(num1)}   |	
 	And I select Form "Lab Form 8"
 	And I enter data in CRF and save
       |Field		                                |Data   |
@@ -1484,10 +1484,10 @@ Scenario: @PB_US12940_10B
 As an EDC user, when I entered bad data in lab field A and lab field B that resulted in the system opening a query on lab field B, if I then entered the new bad data in lab field B, then the system should refire a query on lab field B. Query with requires response = false and requires manual close = false.
 
     And I create a Subject
-	| Field            | Data                                                       |
+	| Field            | Data              |
 	| Subject Number   | {RndNum<num1>(5)} |
-	| Subject Initials |SUB                                                         |
-    | Subject ID       | SUB {Var(num1)}                                            |	
+	| Subject Initials | SUB               |
+	| Subject ID       | SUB {Var(num1)}   |	
 	And I select Form "Lab Form 8"
 	And I enter data in CRF and save
       |Field		                                |Data   |
@@ -1522,10 +1522,10 @@ Scenario: @PB_US12940_10C
 As an EDC user, when I entered bad data in lab field A and lab field B that resulted in the system opening a query on lab field B, and I answered the query and I changed the data in lab field B to another bad data, if I then entered the new bad data in lab field B, then the system should refire a query on lab field B. Query with requires response = true and requires manual close = false.
 
     And I create a Subject
-	| Field            | Data                                                       |
+	| Field            | Data              |
 	| Subject Number   | {RndNum<num1>(5)} |
-	| Subject Initials |SUB                                                         |
-    | Subject ID       | SUB {Var(num1)}                                            |	
+	| Subject Initials | SUB               |
+	| Subject ID       | SUB {Var(num1)}   |	
 	And I select Form "Lab Form 8"
 	And I enter data in CRF and save
       |Field		                               |Data    |
@@ -1601,10 +1601,10 @@ Scenario: @PB_US12940_11A
 As an EDC user, when I entered bad data in lab field A and lab field B that resulted in the system opening a query on lab field B, and I canceled the query, and I entered good data in lab field A, if I then entered the same bad data in lab field A as when the query was canceled, then the system should not refire a query on lab field B. Query with requires response = true and requires manual close = true.
 
     And I create a Subject
-	| Field            | Data                                                       |
+	| Field            | Data              |
 	| Subject Number   | {RndNum<num1>(5)} |
-	| Subject Initials |SUB                                                         |
-    | Subject ID       | SUB {Var(num1)}                                            |	
+	| Subject Initials | SUB               |
+	| Subject ID       | SUB {Var(num1)}   |	
 	And I select Form "Lab Form 8"
 	And I enter data in CRF and save
       |Field		                                |Data   |
@@ -1617,11 +1617,11 @@ As an EDC user, when I entered bad data in lab field A and lab field B that resu
 	And I cancel the Query "Lab Field 2 must be greater than Lab Field 1. Please verify." on Field "Lab Field 2 - WBC - rr = T ; rmc = T"
 	And I save the CRF page
 	And I click audit on Field "Lab Field 2 - WBC - rr = T ; rmc = T"
-	And I verify Audits exist
+	And I verify last audit exist
 	| Audit Type     | Query Message                                                      |
 	| Query Canceled | Lab Field 2 must be greater than Lab Field 1. Please verify.       |
 	And I take a screenshot
-	And I select Form "Lab Form 8" in "Header"
+	And I select link "Lab Form 8" in "Header"
 	And I enter data in CRF and save	  
       |Field		                                |Data   |
       |Lab Field 1 - NEUTROPHILS - rr = T ; rmc = T	|2		| 	
@@ -1644,10 +1644,10 @@ Scenario: @PB_US12940_11B
 As an EDC user, when I entered bad data in lab field A and lab field B that resulted in the system opening a query on lab field B, and I canceled the query, and I entered good data in lab field A, if I then entered the same bad data in lab field A as when the query was canceled, then the system should not refire a query on lab field B. Query with requires response = false and requires manual close = false.
 
     And I create a Subject
-	| Field            | Data                                                       |
+	| Field            | Data              |
 	| Subject Number   | {RndNum<num1>(5)} |
-	| Subject Initials |SUB                                                         |
-    | Subject ID       | SUB {Var(num1)}                                            |	
+	| Subject Initials | SUB               |
+	| Subject ID       | SUB {Var(num1)}   |	
 	And I select Form "Lab Form 8"
 	And I enter data in CRF and save
       |Field		                                |Data   |
@@ -1660,11 +1660,11 @@ As an EDC user, when I entered bad data in lab field A and lab field B that resu
 	And I cancel the Query "Lab Field 4 must be greater than Lab Field 3. Please verify." on Field "Lab Field 4 - WBC - rr = F ; rmc = F"  	  
 	And I save the CRF page
 	And I click audit on Field "Lab Field 4 - WBC - rr = F ; rmc = F"
-	And I verify Audits exist
+	And I verify last audit exist
 	| Audit Type     | Query Message                                                      |
 	| Query Canceled | Lab Field 4 must be greater than Lab Field 3. Please verify.       |
 	And I take a screenshot
-	And I select Form "Lab Form 8" in "Header"
+	And I select link "Lab Form 8" in "Header"
 	And I enter data in CRF and save	  
       |Field		                                |Data   |
       |Lab Field 3 - NEUTROPHILS - rr = F ; rmc = F	|2		|
@@ -1687,10 +1687,10 @@ Scenario: @PB_US12940_11C
 As an EDC user, when I entered bad data in lab field A and lab field B that resulted in the system opening a query on lab field B, and I canceled the query, and I entered good data in lab field A, if I then entered the same bad data in lab field A as when the query was canceled, then the system should not refire a query on lab field B. Query with requires response = true and requires manual close = false.
 
     And I create a Subject
-	| Field            | Data                                                       |
+	| Field            | Data              |
 	| Subject Number   | {RndNum<num1>(5)} |
-	| Subject Initials |SUB                                                         |
-    | Subject ID       | SUB {Var(num1)}                                            |	
+	| Subject Initials | SUB               |
+	| Subject ID       | SUB {Var(num1)}   |	
 	And I select Form "Lab Form 8"
 	And I enter data in CRF and save
       |Field		                               |Data    |
@@ -1703,11 +1703,11 @@ As an EDC user, when I entered bad data in lab field A and lab field B that resu
 	And I cancel the Query "Lab Field 6 must be greater than Lab Field 5. Please verify." on Field "Lab Field 6 - WBC - rr = T ; rmc = F"  
 	And I save the CRF page
 	And I click audit on Field "Lab Field 6 - WBC - rr = T ; rmc = F"
-	And I verify Audits exist
+	And I verify last audit exist
 	| Audit Type     | Query Message                                                      |
 	| Query Canceled | Lab Field 6 must be greater than Lab Field 5. Please verify.       |
 	And I take a screenshot
-	And I select Form "Lab Form 8" in "Header"
+	And I select link "Lab Form 8" in "Header"
 	And I enter data in CRF and save	  
       |Field		                               |Data    |
       |Lab Field 5 - NEUTROPHILS - rr = T ; rmc = F|2		|
@@ -1730,10 +1730,10 @@ Scenario: @PB_US12940_11D
 As an EDC user, when I entered bad data in lab field A and lab field B that resulted in the system opening a query on lab field B, and I canceled the query, and I entered good data in lab field A, if I then entered the same bad data in lab field A as when the query was canceled, then the system should not refire a query on lab field B. Query with requires response = false and requires manual close = true.
 
 	And I create a Subject
-	| Field            | Data                                                       |
+	| Field            | Data              |
 	| Subject Number   | {RndNum<num1>(5)} |
-	| Subject Initials |SUB                                                         |
-	| Subject ID       | SUB {Var(num1)}                                            |
+	| Subject Initials | SUB               |
+	| Subject ID       | SUB {Var(num1)}   |
 	And I select Form "Lab Form 8"
 	And I enter data in CRF and save
       |Field		                               |Data    |
@@ -1746,11 +1746,11 @@ As an EDC user, when I entered bad data in lab field A and lab field B that resu
 	And I cancel the Query "Lab Field 8 must be greater than Lab Field 7. Please verify." on Field "Lab Field 8 - WBC - rr = F ; rmc = T"   	  
 	And I save the CRF page
 	And I click audit on Field "Lab Field 8 - WBC - rr = F ; rmc = T"
-	And I verify Audits exist
+	And I verify last audit exist
 	| Audit Type     | Query Message                                                      |
 	| Query Canceled | Lab Field 8 must be greater than Lab Field 7. Please verify.       |
 	And I take a screenshot
-	And I select Form "Lab Form 8" in "Header"
+	And I select link "Lab Form 8" in "Header"
 	And I enter data in CRF and save	  
       |Field		                               |Data    |
       |Lab Field 7 - NEUTROPHILS - rr = F ; rmc = T|2		|  	
@@ -1773,10 +1773,10 @@ Scenario: @PB_US12940_12A
 As an EDC user, when I entered bad data in field A and lab field B that resulted in the system opening a query on lab field B, and I canceled the query, and I entered good data in lab field B, if I then entered the same bad data in lab field B as when the query was canceled, then the system should not refire a query on lab field B. Query with requires response = true and requires manual close = true.
 
     And I create a Subject
-	| Field            | Data                                                       |
+	| Field            | Data              |
 	| Subject Number   | {RndNum<num1>(5)} |
-	| Subject Initials |SUB                                                         |
-    | Subject ID       | SUB {Var(num1)}                                            |	
+	| Subject Initials | SUB               |
+	| Subject ID       | SUB {Var(num1)}   |	
 	And I select Form "Lab Form 8"
 	And I enter data in CRF and save
       |Field		                                |Data   |
@@ -1789,11 +1789,11 @@ As an EDC user, when I entered bad data in field A and lab field B that resulted
 	And I cancel the Query "Lab Field 2 must be greater than Lab Field 1. Please verify." on Field "Lab Field 2 - WBC - rr = T ; rmc = T"   	  
 	And I save the CRF page
 	And I click audit on Field "Lab Field 2 - WBC - rr = T ; rmc = T"
-	And I verify Audits exist
+	And I verify last audit exist
 	| Audit Type     | Query Message                                                      |
 	| Query Canceled | Lab Field 2 must be greater than Lab Field 1. Please verify.       |
 	And I take a screenshot
-	And I select Form "Lab Form 8" in "Header"
+	And I select link "Lab Form 8" in "Header"
 	And I enter data in CRF and save	  
       |Field		                                |Data   |
       |Lab Field 2 - WBC - rr = T ; rmc = T      	|6		|
@@ -1816,10 +1816,10 @@ Scenario: @PB_US12940_12B
 As an EDC user, when I entered bad data in field A and lab field B that resulted in the system opening a query on lab field B, and I canceled the query, and I entered good data in lab field B, if I then entered the same bad data in lab field B as when the query was canceled, then the system should not refire a query on lab field B. Query with requires response = false and requires manual close = false.
 
     And I create a Subject
-	| Field            | Data                                                       |
+	| Field            | Data              |
 	| Subject Number   | {RndNum<num1>(5)} |
-	| Subject Initials |SUB                                                         |
-    | Subject ID       | SUB {Var(num1)}                                            |	
+	| Subject Initials | SUB               |
+	| Subject ID       | SUB {Var(num1)}   |	
 	And I select Form "Lab Form 8"
 	And I enter data in CRF and save
       |Field		                                |Data   |
@@ -1832,11 +1832,11 @@ As an EDC user, when I entered bad data in field A and lab field B that resulted
 	And I cancel the Query "Lab Field 4 must be greater than Lab Field 3. Please verify." on Field "Lab Field 4 - WBC - rr = F ; rmc = F"   	  
 	And I save the CRF page
 	And I click audit on Field "Lab Field 4 - WBC - rr = F ; rmc = F"
-	And I verify Audits exist
+	And I verify last audit exist
 	| Audit Type     | Query Message                                                      |
 	| Query Canceled | Lab Field 4 must be greater than Lab Field 3. Please verify.       |
 	And I take a screenshot
-	And I select Form "Lab Form 8" in "Header"
+	And I select link "Lab Form 8" in "Header"
 	And I enter data in CRF and save	  
       |Field		                                |Data   |
       |Lab Field 4 - WBC - rr = F ; rmc = F    	    |6		|
@@ -1859,10 +1859,10 @@ Scenario: @PB_US12940_12C
 As an EDC user, when I entered bad data in field A and lab field B that resulted in the system opening a query on lab field B, and I canceled the query, and I entered good data in lab field B, if I then entered the same bad data in lab field B as when the query was canceled, then the system should not refire a query on lab field B. Query with requires response = true and requires manual close = false.
 
     And I create a Subject
-	| Field            | Data                                                       |
+	| Field            | Data              |
 	| Subject Number   | {RndNum<num1>(5)} |
-	| Subject Initials |SUB                                                         |
-    | Subject ID       | SUB {Var(num1)}                                            |	
+	| Subject Initials | SUB               |
+	| Subject ID       | SUB {Var(num1)}   |	
 	And I select Form "Lab Form 8"
 	And I enter data in CRF and save
       |Field		                               |Data    |
@@ -1875,11 +1875,11 @@ As an EDC user, when I entered bad data in field A and lab field B that resulted
 	And I cancel the Query "Lab Field 6 must be greater than Lab Field 5. Please verify." on Field "Lab Field 6 - WBC - rr = T ; rmc = F"   	  
 	And I save the CRF page
 	And I click audit on Field "Lab Field 6 - WBC - rr = T ; rmc = F"
-	And I verify Audits exist
+	And I verify last audit exist
 	| Audit Type     | Query Message                                                      |
 	| Query Canceled | Lab Field 6 must be greater than Lab Field 5. Please verify.       |
 	And I take a screenshot
-	And I select Form "Lab Form 8" in "Header"
+	And I select link "Lab Form 8" in "Header"
 	And I enter data in CRF and save	  
       |Field		                        |Data   |
       |Lab Field 6 - WBC - rr = T ; rmc = F |6		|
@@ -1902,10 +1902,10 @@ Scenario: @PB_US12940_12D
 As an EDC user, when I entered bad data in field A and lab field B that resulted in the system opening a query on lab field B, and I canceled the query, and I entered good data in lab field B, if I then entered the same bad data in lab field B as when the query was canceled, then the system should not refire a query on lab field B. Query with requires response = false and requires manual close = true.
 	
 	And I create a Subject
-	| Field            | Data                                                       |
+	| Field            | Data              |
 	| Subject Number   | {RndNum<num1>(5)} |
-	| Subject Initials |SUB                                                         |
-    | Subject ID       | SUB {Var(num1)}                                            |	
+	| Subject Initials | SUB               |
+	| Subject ID       | SUB {Var(num1)}   |	
 	And I select Form "Lab Form 8"
 	And I enter data in CRF and save
       |Field		                               |Data    |
@@ -1918,11 +1918,11 @@ As an EDC user, when I entered bad data in field A and lab field B that resulted
 	And I cancel the Query "Lab Field 8 must be greater than Lab Field 7. Please verify." on Field "Lab Field 8 - WBC - rr = F ; rmc = T"   	    
 	And I save the CRF page
 	And I click audit on Field "Lab Field 8 - WBC - rr = F ; rmc = T"
-	And I verify Audits exist
+	And I verify last audit exist
 	| Audit Type     | Query Message                                                      |
 	| Query Canceled | Lab Field 8 must be greater than Lab Field 7. Please verify.       |
 	And I take a screenshot
-	And I select Form "Lab Form 8" in "Header"
+	And I select link "Lab Form 8" in "Header"
 	And I enter data in CRF and save	  
       |Field		                       |Data    |
       |Lab Field 8 - WBC - rr = F ; rmc = T|6		|  
@@ -1945,10 +1945,10 @@ Scenario: @PB_US12940_13A
 As an EDC user, when I entered bad data in lab field A and lab field B that resulted in the system opening a query on lab field B, and I canceled the query, if I then entered bad data in lab field A, then the system should refire a query on lab field B. Query with requires response = true and requires manual close = true.
 
 	And I create a Subject
-	| Field            | Data                                                       |
+	| Field            | Data              |
 	| Subject Number   | {RndNum<num1>(5)} |
-	| Subject Initials |SUB                                                         |
-    | Subject ID       | SUB {Var(num1)}                                            |	
+	| Subject Initials | SUB               |
+	| Subject ID       | SUB {Var(num1)}   |	
 	And I select Form "Lab Form 8"
 	And I enter data in CRF and save
       |Field		                                |Data   |
@@ -1961,11 +1961,11 @@ As an EDC user, when I entered bad data in lab field A and lab field B that resu
 	And I cancel the Query "Lab Field 2 must be greater than Lab Field 1. Please verify." on Field "Lab Field 2 - WBC - rr = T ; rmc = T"   	      
 	And I save the CRF page
 	And I click audit on Field "Lab Field 2 - WBC - rr = T ; rmc = T"
-	And I verify Audits exist
+	And I verify last audit exist
 	| Audit Type     | Query Message                                                      |
 	| Query Canceled | Lab Field 2 must be greater than Lab Field 1. Please verify.       |
 	And I take a screenshot
-	And I select Form "Lab Form 8" in "Header"
+	And I select link "Lab Form 8" in "Header"
 	And I enter data in CRF and save
       |Field		                                |Data   |
       |Lab Field 1 - NEUTROPHILS - rr = T ; rmc = T	|7		|
@@ -1981,10 +1981,10 @@ Scenario: @PB_US12940_13B
 As an EDC user, when I entered bad data in lab field A and lab field B that resulted in the system opening a query on lab field B, and I canceled the query, if I then entered bad data in lab field A, then the system should refire a query on lab field B. Query with requires response = false and requires manual close = false.
 
 	And I create a Subject
-	| Field            | Data                                                       |
+	| Field            | Data              |
 	| Subject Number   | {RndNum<num1>(5)} |
-	| Subject Initials |SUB                                                         |
-    | Subject ID       | SUB {Var(num1)}                                            |	
+	| Subject Initials | SUB               |
+	| Subject ID       | SUB {Var(num1)}   |	
 	And I select Form "Lab Form 8"
 	And I enter data in CRF and save
       |Field		                                |Data   |
@@ -1997,11 +1997,11 @@ As an EDC user, when I entered bad data in lab field A and lab field B that resu
 	And I cancel the Query "Lab Field 4 must be greater than Lab Field 3. Please verify." on Field "Lab Field 4 - WBC - rr = F ; rmc = F"   	        
 	And I save the CRF page 
 	And I click audit on Field "Lab Field 4 - WBC - rr = F ; rmc = F"
-	And I verify Audits exist
+	And I verify last audit exist
 	| Audit Type     | Query Message                                                      |
 	| Query Canceled | Lab Field 4 must be greater than Lab Field 3. Please verify.       |
 	And I take a screenshot
-	And I select Form "Lab Form 8" in "Header"
+	And I select link "Lab Form 8" in "Header"
 	When I enter data in CRF and save
       |Field		                                |Data   |
       |Lab Field 3 - NEUTROPHILS - rr = F ; rmc = F	|7		|
@@ -2017,10 +2017,10 @@ Scenario: @PB_US12940_13C
 As an EDC user, when I entered bad data in lab field A and lab field B that resulted in the system opening a query on lab field B, and I canceled the query, if I then entered bad data in lab field A, then the system should refire a query on lab field B. Query with requires response = true and requires manual close = false.
 
 	And I create a Subject
-	| Field            | Data                                                       |
+	| Field            | Data              |
 	| Subject Number   | {RndNum<num1>(5)} |
-	| Subject Initials |SUB                                                         |
-    | Subject ID       | SUB {Var(num1)}                                            |	
+	| Subject Initials | SUB               |
+	| Subject ID       | SUB {Var(num1)}   |	
 	And I select Form "Lab Form 8"
 	And I enter data in CRF and save
       |Field		                               |Data    |
@@ -2033,11 +2033,11 @@ As an EDC user, when I entered bad data in lab field A and lab field B that resu
 	And I cancel the Query "Lab Field 6 must be greater than Lab Field 5. Please verify." on Field "Lab Field 6 - WBC - rr = T ; rmc = F"   	        	  
 	And I save the CRF page
 	And I click audit on Field "Lab Field 6 - WBC - rr = T ; rmc = F"
-	And I verify Audits exist
+	And I verify last audit exist
 	| Audit Type     | Query Message                                                      |
 	| Query Canceled | Lab Field 6 must be greater than Lab Field 5. Please verify.       |
 	And I take a screenshot
-	And I select Form "Lab Form 8" in "Header"
+	And I select link "Lab Form 8" in "Header"
 	When I enter data in CRF and save
       |Field		                               |Data    |
       |Lab Field 5 - NEUTROPHILS - rr = T ; rmc = F|7		|
@@ -2053,10 +2053,10 @@ Scenario: @PB_US12940_13D
 As an EDC user, when I entered bad data in lab field A and lab field B that resulted in the system opening a query on lab field B, and I canceled the query, if I then entered bad data in lab field A, then the system should refire a query on lab field B. Query with requires response = false and requires manual close = true.
 	
 	And I create a Subject
-	| Field            | Data                                                       |
+	| Field            | Data              |
 	| Subject Number   | {RndNum<num1>(5)} |
-	| Subject Initials |SUB                                                         |
-    | Subject ID       | SUB {Var(num1)}                                            |	
+	| Subject Initials | SUB               |
+	| Subject ID       | SUB {Var(num1)}   |	
 	And I select Form "Lab Form 8"
 	And I enter data in CRF and save
       |Field		                               |Data    |
@@ -2069,11 +2069,11 @@ As an EDC user, when I entered bad data in lab field A and lab field B that resu
 	And I cancel the Query "Lab Field 8 must be greater than Lab Field 7. Please verify." on Field "Lab Field 8 - WBC - rr = F ; rmc = T"   	        	  		  
 	And I save the CRF page
 	And I click audit on Field "Lab Field 8 - WBC - rr = F ; rmc = T"
-	And I verify Audits exist
+	And I verify last audit exist
 	| Audit Type     | Query Message                                                      |
 	| Query Canceled | Lab Field 8 must be greater than Lab Field 7. Please verify.       |
 	And I take a screenshot
-	And I select Form "Lab Form 8" in "Header"
+	And I select link "Lab Form 8" in "Header"
 	When I enter data in CRF and save
       |Field		                               |Data    |
       |Lab Field 7 - NEUTROPHILS - rr = F ; rmc = T|7		|

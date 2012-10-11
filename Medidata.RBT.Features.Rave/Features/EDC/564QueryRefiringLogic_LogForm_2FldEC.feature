@@ -72,7 +72,8 @@ Query with requires response = true and requires manual close = true.
 	When I enter data in CRF
       | Field       | Data |
       | Log Field 2 | 3    |
-	And I save the CRF page	  
+	And I save the CRF page	
+	And I open log line 1	 
 	Then I verify Query is not displayed
 	  | Field       | Message                                                  | Answered | Closed  |
 	  | Log Field 2 | Log field 2 must be equal to Log field 1. Please verify. | False     | False  |	

@@ -1910,11 +1910,11 @@ Query with requires response = true and requires manual close = true.
       | Diastolic Blood Pressure 1 | Systolic Blood Pressure must be greater than Diastolic Blood Pressure. Please verify. | False    | False  |
 	And I take a screenshot	
 	And I click audit on Field "Diastolic Blood Pressure 1"
-	And I verify Audits exist
+	And I verify last audit exist
 	| Audit Type     | Query Message                                                                         |
 	| Query Canceled | Systolic Blood Pressure must be greater than Diastolic Blood Pressure. Please verify. |
 	And I take a screenshot
-	And I select Form "Form 2" in "Header"
+	And I select link "Form 2" in "Header"
 	When I enter data in CRF 	  
       | Field                     | Data |
       | Systolic Blood Pressure 1 | 100  |
@@ -1962,11 +1962,11 @@ Query with requires response = false and requires manual close = false.
       | Diastolic Blood Pressure 2 | Systolic Blood Pressure must be greater than Diastolic Blood Pressure. Please verify. | False    | False  |
 	And I take a screenshot
 	And I click audit on Field "Diastolic Blood Pressure 2"
-	And I verify Audits exist
+	And I verify last audit exist
 	| Audit Type     | Query Message                                                                         |
 	| Query Canceled | Systolic Blood Pressure must be greater than Diastolic Blood Pressure. Please verify. |
 	And I take a screenshot
-	And I select Form "Form 2" in "Header"	
+	And I select link "Form 2" in "Header"	
 	When  I enter data in CRF 	  
       | Field                     | Data |
       | Systolic Blood Pressure 2 | 100  |
@@ -2014,11 +2014,11 @@ Query with requires response = true and requires manual close = false.
       | Diastolic Blood Pressure 3 | Systolic Blood Pressure must be greater than Diastolic Blood Pressure. Please verify. | False    | False  |
 	And I take a screenshot	
 	And I click audit on Field "Diastolic Blood Pressure 3"
-	And I verify Audits exist
+	And I verify last audit exist
 	| Audit Type     | Query Message                                                                         |
 	| Query Canceled | Systolic Blood Pressure must be greater than Diastolic Blood Pressure. Please verify. |
 	And I take a screenshot
-	And I select Form "Form 2" in "Header"	
+	And I select link "Form 2" in "Header"	
 	When I enter data in CRF 	  
       | Field                     | Data |
       | Systolic Blood Pressure 3 | 100  |
@@ -2066,11 +2066,11 @@ Query with requires response = false and requires manual close = true.
       | Diastolic Blood Pressure 4 | Systolic Blood Pressure must be greater than Diastolic Blood Pressure. Please verify. | False    | False  |
 	And I take a screenshot	
 	And I click audit on Field "Diastolic Blood Pressure 4"
-	And I verify Audits exist
+	And I verify last audit exist
 	| Audit Type     | Query Message                                                                         |
 	| Query Canceled | Systolic Blood Pressure must be greater than Diastolic Blood Pressure. Please verify. |
 	And I take a screenshot
-	And I select Form "Form 2" in "Header"	
+	And I select link "Form 2" in "Header"	
 	When I enter data in CRF 	  
       | Field                     | Data |
       | Systolic Blood Pressure 4 | 100  |
@@ -2118,11 +2118,11 @@ Query with requires response = false and requires manual close = true.
       | Diastolic Blood Pressure 1 | Systolic Blood Pressure must be greater than Diastolic Blood Pressure. Please verify. | False    | False  |
 	And I take a screenshot
 	And I click audit on Field "Diastolic Blood Pressure 1"
-	And I verify Audits exist
+	And I verify last audit exist
 	| Audit Type     | Query Message                                                                         |
 	| Query Canceled | Systolic Blood Pressure must be greater than Diastolic Blood Pressure. Please verify. |
 	And I take a screenshot
-	And I select Form "Form 2" in "Header"	
+	And I select link "Form 2" in "Header"	
 	And I enter data in CRF 	  
       | Field                      | Data |
       | Diastolic Blood Pressure 1 | 75   |	
@@ -2170,11 +2170,11 @@ Query with requires response = false and requires manual close = false.
       | Diastolic Blood Pressure 2 | Systolic Blood Pressure must be greater than Diastolic Blood Pressure. Please verify. | False    | False  |
 	And I take a screenshot	
 	And I click audit on Field "Diastolic Blood Pressure 2"
-	And I verify Audits exist
+	And I verify last audit exist
 	| Audit Type     | Query Message                                                                         |
 	| Query Canceled | Systolic Blood Pressure must be greater than Diastolic Blood Pressure. Please verify. |
 	And I take a screenshot
-	And I select Form "Form 2" in "Header"
+	And I select link "Form 2" in "Header"
 	When I enter data in CRF 	  
       | Field                      | Data |
       | Diastolic Blood Pressure 2 | 75   |	
@@ -2222,11 +2222,11 @@ Query with requires response = true and requires manual close = false
         | Diastolic Blood Pressure 3 | Systolic Blood Pressure must be greater than Diastolic Blood Pressure. Please verify. | False    | False  |
 	And I take a screenshot	
 	And I click audit on Field "Diastolic Blood Pressure 3"
-	And I verify Audits exist
+	And I verify last audit exist
 	| Audit Type     | Query Message                                                                         |
 	| Query Canceled | Systolic Blood Pressure must be greater than Diastolic Blood Pressure. Please verify. |
 	And I take a screenshot
-	And I select Form "Form 2" in "Header"
+	And I select link "Form 2" in "Header"
 	When I enter data in CRF 	  
         | Field                      | Data |
         | Diastolic Blood Pressure 3 | 75   |	
@@ -2274,11 +2274,11 @@ Query with requires response = false and requires manual close = true.
         | Diastolic Blood Pressure 4 | Systolic Blood Pressure must be greater than Diastolic Blood Pressure. Please verify. | False    | False  |
 	And I take a screenshot	
 	And I click audit on Field "Diastolic Blood Pressure 4"
-	And I verify Audits exist
+	And I verify last audit exist
 	| Audit Type     | Query Message                                                                         |
 	| Query Canceled | Systolic Blood Pressure must be greater than Diastolic Blood Pressure. Please verify. |
 	And I take a screenshot
-	And I select Form "Form 2" in "Header"
+	And I select link "Form 2" in "Header"
 	When I enter data in CRF 	  
         | Field                      | Data |
         | Diastolic Blood Pressure 4 | 75   |	
