@@ -315,3 +315,8 @@ And I verify data on Fields in CRF
 | Field   | Data             | Inactive |
 | Field A | Gastrointestinal | True     |
 And I take a screenshot
+And I click audit on Field "Field A"
+And I verify Audits exist
+	| Audit Type | Query Message | User   | Time                 |
+	| Record     | Inactivated.  | System | dd MMM yyyy hh:mm:ss |
+And I take a screenshot
