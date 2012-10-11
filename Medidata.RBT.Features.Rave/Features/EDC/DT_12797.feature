@@ -40,28 +40,20 @@ Scenario: As an EDC user, when I have an edit check fired on one field that sets
 	|Visit Date	|01 FEB 2011|
 	|Age		|20			|
 	And I save the CRF page
-	And I should see data on Fields in CRF
-	|Field     |Data       |
-	|Visit Date|01 Feb 2011|
-	|Age       |20         |
-	And I should see review required on Fields in CRF
-	|Field     |Requires Review |
-	|Visit Date|False           |
-	|Age       |False           |
+	And I verify data on Fields in CRF
+	| Field      | Data        | Requires Review |
+	| Visit Date | 01 Feb 2011 | False           |
+	| Age        | 20          | False           |
 	And I enter data in CRF
 	|Field|Data|
 	|Age  |17  |
 	And I save the CRF page
 	Then I verify Requires Review icon is displayed for Visit Date field
-	And I should see data on Fields in CRF
-	|Field     |Data       |
-	|Visit Date|01 FEB 2011|
-	|Age       |17         |
-	And I should see review required on Fields in CRF
-	|Field     |Requires Review |
-	|Visit Date|True            |
-	|Age       |False           |
-	And I should see review required on CRF
+	And I verify data on Fields in CRF
+	| Field      | Data        | Requires Review |
+	| Visit Date | 01 FEB 2011 | True            |
+	| Age        | 17          | False           |
+	And I verify data on CRF
 	| Form       | Requires Review |
 	| Visit Date | True            |
 	And I take a screenshot
@@ -81,13 +73,10 @@ Scenario: As an EDC user, when I have an edit check that sets a field to require
 	|Field 1|19	  |
 	And I save the CRF page
 	And I verify Requires Review icon is displayed for Field 1 field
-	And I should see data on Fields in CRF
-	|Field  |Data|
-	|Field 1|19  |
-	And I should see review required on Fields in CRF
-	|Field  |Requires Review |
-	|Field 1|True            |
-	And I should see review required on CRF
+	And I verify data on Fields in CRF
+	| Field   | Data | Requires Review |
+	| Field 1 | 19   | True            |
+	And I verify data on CRF
 	| Form   | Requires Review |
 	| Form 1 | True            |
 	And I take screenshot
@@ -99,13 +88,10 @@ Scenario: As an EDC user, when I have an edit check that sets a field to require
 	|Field 1|18   |
 	And I save the CRF page
 	Then I verify Requires Review icon is displayed for Field 1 field
-	And I should see data on Fields in CRF
-	|Field  |Data|
-	|Field 1|18  |
-	And I should see review required on Fields in CRF
-	|Field  |Requires Review |
-	|Field 1|True            |
-	And I should see review required on CRF
+	And I verify data on Fields in CRF
+	| Field   | Data | Requires Review |
+	| Field 1 | 18   | True            |
+	And I verify data on CRF
 	| Form   | Requires Review |
 	| Form 1 | True            |
 	And I take a screenshot
@@ -133,17 +119,12 @@ Scenario: As an EDC user, when I have an edit check fired on a field that is der
 	|Visit Date|10 Dec 2011|
 	And I save the CRF page
 	And I verify Requires Review icon is displayed for DOB field
-	And I should see data on Fields in CRF
-	|Field     |Data       |
-	|DOB       |05 Mar 1995| 
-	|Visit Date|10 Dec 2011| 
-	|Age       |16         |
-	And I should see review required on Fields in CRF
-	|Field     |Requires Review|
-	|DOB       |True           | 
-	|Visit Date|False          | 
-	|Age       |False          |
-	And I should see review required on CRF
+	And I verify data on Fields in CRF
+	| Field      | Data        | Requires Review |
+	| DOB        | 05 Mar 1995 | True            |
+	| Visit Date | 10 Dec 2011 | False           |
+	| Age        | 16          | False           |
+	And I verify data on CRF
 	| Form   | Requires Review |
 	| Form 2 | True            |
 	And I take a screenshot
