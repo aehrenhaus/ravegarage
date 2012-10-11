@@ -311,5 +311,7 @@ Then "Field A" has "<Values>" in order
 	| Genitouriary/Reproductive |
 	| Renal                     |
 	| Endocrine/Metabolic       |
-And Log Line that contains "Gastrointestinal" is disabled
+And I verify data on Fields in CRF
+| Field   | Data             | Inactive |
+| Field A | Gastrointestinal | True     |
 And I take a screenshot
