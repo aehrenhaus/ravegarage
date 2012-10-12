@@ -51,10 +51,6 @@ namespace Medidata.RBT.PageObjects.Rave
             IWebElement el = TestContext.Browser.FindElements(By.XPath("//span[contains(@id,'Content_R')]")).FirstOrDefault();
             var area = el.FindElementsByText<IWebElement>(fieldText).FirstOrDefault();
 
-            //if (area == null)
-            //    throw new Exception("Can't find field area:" + fieldText);
-            //var tds = area.Parent().Parent().Children();
-            //return new LabFieldControl(Page, area, tds[tds.Count - 1]);
             var fieldTRs = el.FindElements(By.XPath("table[2]/tbody/tr"));
             int i = 0;
 
