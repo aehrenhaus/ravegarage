@@ -22,7 +22,7 @@ namespace Medidata.RBT.Features.Rave
 			CurrentPage = CurrentPage.ClickButton("Continue");
 			CurrentPage = CurrentPage.ClickButton("Create Package");
 			TestContext.AcceptAlert();
-			Browser.WaitForElement(b => b.Button("Download Package"),null,20);
+			Browser.WaitForElement(b => b.ButtonByText("Download Package"),null,20);
 
 			TestContext.WatchForDownload();
 			CurrentPage.ClickButton("Download Package");

@@ -69,7 +69,7 @@ namespace Medidata.RBT.PageObjects.Rave
                     var dropdowns = tierElement.FindElements(By.TagName("Select")).ToList();
                     new SelectElement(dropdowns[0]).SelectByText(tierName);
                     //enter the subject count in the textbox
-                    var countTxtBox = tierElement.Textbox("LinkNewTierBlockSizeTextBox");
+                    var countTxtBox = tierElement.TextboxById("LinkNewTierBlockSizeTextBox");
                     countTxtBox.SetText(subjectCount);
                     //save the user desired settings
                     var saveBtn = tierElement.TryFindElementByPartialID("LinkNewTierSaveLabel");

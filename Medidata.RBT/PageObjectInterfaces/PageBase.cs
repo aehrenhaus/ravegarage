@@ -77,17 +77,14 @@ namespace Medidata.RBT
 		/// </summary>
         public virtual IPage ClickButton(string identifier)
         {
-			var element = Browser.Button(identifier);
-			
-			//Button searching should only consider the visible text , not id.
-
-			//if (element == null)
-			//    element = Browser.TryFindElementById(identifier);
-			//if (element == null)
-			//    element = GetElementByName(identifier);
+			var element = Browser.ButtonByText(identifier, true);
+			if(element ==null)
+				element = Browser.ButtonByText(identifier, true);
+	
 
             if (element == null)
                 throw new Exception("Can't find button:" + identifier);
+
             element.Click();
 
 			return GetPageByCurrentUrlIfNoAlert();
@@ -189,7 +186,7 @@ namespace Medidata.RBT
 		/// </summary>
         public virtual IPage Type(string identifier, string text)
         {
-            var element = Browser.Textbox(identifier);
+            var element = Browser.TextboxById(identifier);
             if (element == null)
                 element = GetElementByName(identifier).EnhanceAs<Textbox>();
             element.SetText(text);
@@ -201,7 +198,7 @@ namespace Medidata.RBT
 		/// </summary>
         public virtual IPage ChooseFromDropdown(string identifier, string text)
         {
-            var element = Browser.Dropdown(identifier, true);
+            var element = Browser.DropdownById(identifier, true);
             if (element == null)
                 element = GetElementByName(identifier).EnhanceAs<Dropdown>();
 
@@ -216,7 +213,7 @@ namespace Medidata.RBT
 		public virtual IPage ChooseFromCheckboxes(string identifier, bool isChecked, string areaIdentifier = null, string listItem = null)
         {
 
-            var element = Browser.Checkbox(identifier, true);
+            var element = Browser.CheckboxByID(identifier, true);
             if (element == null)
                 element = GetElementByName(identifier).EnhanceAs<Checkbox>();
 

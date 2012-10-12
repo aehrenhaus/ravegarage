@@ -47,7 +47,7 @@ namespace Medidata.RBT.PageObjects.Rave
 
             if (partialID.Length > 0)
             {     
-                Checkbox checkbox = RightSideTD.Checkbox(partialID);
+                Checkbox checkbox = RightSideTD.CheckboxByID(partialID);
                 checkbox.Check();
             }
         }
@@ -62,7 +62,7 @@ namespace Medidata.RBT.PageObjects.Rave
 
             if (partialID.Length > 0)
             {
-                Checkbox checkbox = RightSideTD.Checkbox(partialID);
+                Checkbox checkbox = RightSideTD.CheckboxByID(partialID);
                 checkbox.Uncheck();
             }
         }
@@ -73,7 +73,7 @@ namespace Medidata.RBT.PageObjects.Rave
         /// <returns></returns>
         public override bool IsVerificationRequired()
         {
-            return (RightSideTD.Checkbox("VerifyBox") as Checkbox).Enabled;
+            return (RightSideTD.CheckboxByID("VerifyBox") as Checkbox).Enabled;
         }
 
 		public override IWebElement FindQuery(QuerySearchModel filter)

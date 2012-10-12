@@ -76,9 +76,9 @@ namespace Medidata.RBT.PageObjects.Rave
 			rows = table.FindMatchRows(matchTable);
 
 			if(activate)
-				rows[0].Checkbox("Active").Check();
+				rows[0].CheckboxByID("Active").Check();
 			else
-				rows[0].Checkbox("Active").Uncheck();
+				rows[0].CheckboxByID("Active").Uncheck();
 			rows[0].Link("  Update").Click();
 		}
 

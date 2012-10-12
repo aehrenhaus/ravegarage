@@ -88,8 +88,8 @@ namespace Medidata.RBT.PageObjects.Rave
 
 		public void SignForm(string username, string password)
 		{
-			Browser.Textbox("TwoPart").SetText(username);
-			Browser.Textbox("SignatureBox").SetText(password);
+			Browser.TextboxById("TwoPart").SetText(username);
+			Browser.TextboxById("SignatureBox").SetText(password);
 			this.ClickButton("Sign and Save");//ValidateSignAndSave
 		}
 

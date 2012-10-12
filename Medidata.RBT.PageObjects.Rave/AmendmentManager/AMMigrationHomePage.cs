@@ -14,9 +14,9 @@ namespace Medidata.RBT.PageObjects.Rave.AmendmentManager
 		public override IWebElement GetElementByName(string identifier, string areaIdentifier = null, string listItem = null)
 		{
 			if (identifier == "Source CRF")
-				return Browser.Dropdown("_ddlSimpleSourceVersionId");
+				return Browser.DropdownById("_ddlSimpleSourceVersionId");
 			if (identifier == "Target CRF")
-				return Browser.Dropdown("ddlSimpleTargetVersionId");
+				return Browser.DropdownById("ddlSimpleTargetVersionId");
 		
 			return base.GetElementByName(identifier, areaIdentifier, listItem);
 		}
