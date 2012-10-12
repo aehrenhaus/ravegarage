@@ -8,8 +8,6 @@ namespace Medidata.RBT.PageObjects.Rave
 {
     public class CRFPage : BaseEDCPage
     {
-   
-
         public CRFPage SelectUnitsForFields(IEnumerable<LabRangeModel> units)
         {
             foreach (var unit in units)
@@ -92,6 +90,23 @@ namespace Medidata.RBT.PageObjects.Rave
             }
         }
 
+        /// <summary>
+        /// If this form a mixed form, returns true, otherwise returns false.
+        /// </summary>
+        public bool IsMixedForm
+        {
+            get
+            {
+                if (URL.Equals("Modules/EDC/PrimaryRecordPage.aspx"))
+                    return false;
+                IWebElement logTable = TestContext.Browser.FindElement(By.XPath("*//table[@id='log']"));
+                IWebElement rowLeftSide = TestContext.Browser.FindElement(By.XPath("*//td[@class='crf_rowLeftSide']"));
+                if (logTable != null && rowLeftSide != null)
+                    return true;
+                return false;
+            }
+        }
+
 		/// <summary>
 		/// TODO: please refactor this method. Make it a method on IEDCField, not on CRFPage
 		/// </summary>
@@ -134,6 +149,8 @@ namespace Medidata.RBT.PageObjects.Rave
             {
                 if (IsLabForm)
                     return new LabDataPageControl(this).FindField(fieldName);
+                else if (IsMixedForm)
+                    return new MixedDataPageControl(this).FindField(fieldName);
                 else
                     return new NonLabDataPageControl(this).FindField(fieldName);
             }

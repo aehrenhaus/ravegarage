@@ -14,5 +14,6 @@ namespace Medidata.RBT.PageObjects.Rave
         public string High { set; get; }
         public string Low { set; get; }
         public bool? RequiresVerification { set; get; }
+        public bool? Inactive { set; get; }
 	}
 }
