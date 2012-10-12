@@ -1,11 +1,9 @@
-﻿@{
-	ViewBag.Title = "Index";
-	Layout = "~/Views/Shared/_Layout.cshtml";
-}
-@model System.Xml.Linq.XElement
-@section Head
-{
-	<style>
+﻿@using System.Linq;
+
+<!DOCTYPE html>
+<html>
+<head>
+<style>
 		ul
 		{
 		}
@@ -33,15 +31,11 @@
 			font-weight:bold;
 		}
 	</style>
-}
-@*<form action="/Default/Index">
-<label>Path to dlls</label><input name="path" value="@ViewBag.Path" style="width:80%" />
-<br />
-<input type="submit" value="Select dll folder" />
-</form>*@
-<h2>
-	List</h2>
-@if (Model != null)
+</head>
+
+<body>
+
+  @if (Model != null)
 {
 	foreach (var type in Model.Elements("Type"))
 	{
@@ -55,21 +49,9 @@
 			<li>@stepDef.Attribute("RegexWithArgName").Value
 			
 				@{
-		  var from = method.Descendants("FromPage").FirstOrDefault();
-		  var to = method.Descendants("ToPage").FirstOrDefault();
+		
 		  var summary = method.Descendants("summary").FirstOrDefault();
 				}
-<p>
-@if(from!=null )
-  {
-	<span class="page">@from.Value</span>
-  }
-  <span>---&gt;</span>
-  @if(to!=null)
-  {
-	 <span class="page">@to.Value</span>
-  }
- </p>
   
 				@if (summary != null)
 	{
@@ -90,3 +72,6 @@ else
 	<h2>
 		Please select a folder</h2>
 }
+
+</body>
+</html>

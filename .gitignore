@@ -12,4 +12,5 @@ Metrics.*
 *.db
 *.feature.cs
 /TestResults/
+/Mediata.RBT.Documents/Templates/*.htm
 /Medidata.RBT.Features.Rave/App.config

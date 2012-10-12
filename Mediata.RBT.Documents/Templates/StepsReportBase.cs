@@ -1,26 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
-using System.Web.Mvc;
-using DotNetAttributeExtractor;
+using System.Text;
+using Microsoft.VisualStudio.TextTemplating;
 using System.Reflection;
 using System.Xml.Linq;
-using System.IO;
 
-namespace NotNetAttributeExtractor.MVCReport.Controllers
+namespace Mediata.RBT.Documents.Templates
 {
-    public class DefaultController : Controller
-    {
-        //
-        // GET: /Default/
-
-        public ActionResult Index(string path)
-        {
-			path = new DirectoryInfo(Server.MapPath("~")+"\\..\\..\\Medidata.RBT.Features.Rave\\bin\\debug\\").FullName;
-			ViewBag.Path = path;
-			if (!System.IO.Directory.Exists(path))
-				return View();
+	public abstract class StepsReportBase: TextTransformation
+	{
+		public XElement GetModel()
+		{
+			string path = @"c:\";
 			string[] dlls = System.IO.Directory.GetFiles(path, "*.dll");
 			IEnumerable<AssemAndXmlDoc> assems = dlls.Select(x =>
 			{
@@ -35,8 +27,10 @@ namespace NotNetAttributeExtractor.MVCReport.Controllers
 
 			var ext = new AttributeExtractor();
 			var doc = ext.ExtractMethod(assems);
-			return View(doc);
-        }
 
-    }
+			return doc;
+		}
+
+		
+	}
 }

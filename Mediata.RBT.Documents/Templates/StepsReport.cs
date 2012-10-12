@@ -5,10 +5,55 @@ using System.Text;
 using System.Xml.Linq;
 using System.Reflection;
 using System.Text.RegularExpressions;
+using System.IO;
+using RazorEngine;
+using System.Xml;
 
-
-namespace DotNetAttributeExtractor
+namespace Mediata.RBT.Documents.Templates
 {
+	class StepsReport:ITemplate
+	{
+		//if class in this dll is not used, then it will not be referenced in Razor engine, this will cause error
+		private XmlDocument SystemXmlReferenceFix;
+
+		string ITemplate.GetText()
+		{
+			
+			string template = File.ReadAllText("Templates\\StepsReport.cshtml");
+
+			var solutionDir = new DirectoryInfo(Assembly.GetEntryAssembly().Location).Parent.Parent.Parent.Parent;
+
+
+			string path = Path.Combine( solutionDir.FullName, @"Medidata.RBT.Features.Rave\bin\Debug");
+
+
+
+			string[] dlls = System.IO.Directory.GetFiles(path, "*.dll");
+			IEnumerable<AssemAndXmlDoc> assems = dlls.Select(x =>
+			{
+				var assem = new AssemAndXmlDoc();
+				assem.Assembly = Assembly.LoadFrom(x);
+				string xmlDocPath = x.Replace(".dll", ".xml");
+				if (System.IO.File.Exists(xmlDocPath))
+					assem.Doc = XElement.Load(xmlDocPath);
+				return assem;
+			});
+
+
+			var ext = new AttributeExtractor();
+			var doc = ext.ExtractMethod(assems);
+		//	Razor.SetTemplateBase(typeof(HtmlTemplateBase<object>));
+			string result = Razor.Parse(template, doc, null);
+			return result;
+		}
+	}
+
+	public class AssemAndXmlDoc
+	{
+		public XElement Doc;
+		public Assembly Assembly;
+	}
+
 	public class AttributeExtractor
 	{
 		public XElement ExtractMethod(IEnumerable<AssemAndXmlDoc> assemblies)
@@ -26,26 +71,26 @@ namespace DotNetAttributeExtractor
 
 			var membersDoc = docxml.Descendants("member").ToList();
 
-			
+
 			foreach (var typeEle in typeEles)
 			{
 				foreach (var ele in typeEle.Descendants("Method"))
 				{
 					var args = ele.Descendants("Arg").Select(x => x.Attribute("TypeFullName").Value).ToList();
 
-					string methodSig = typeEle.Attribute("FullName").Value + "."+ ele.Attribute("Name").Value ;
-					if(args.Count>0)
+					string methodSig = typeEle.Attribute("FullName").Value + "." + ele.Attribute("Name").Value;
+					if (args.Count > 0)
 					{
 						methodSig += "(" + string.Join(",", args) + ")";
 					}
 					//M:Medidata.RBT.Common.Steps.InterfaceSteps.INavigateTo____(System.String,System.String)
 
-					XElement docEle = membersDoc.FirstOrDefault(x => x.Attribute("name").Value == "M:"+methodSig);
+					XElement docEle = membersDoc.FirstOrDefault(x => x.Attribute("name").Value == "M:" + methodSig);
 					if (docEle != null)
 					{
-						ele.Add(new XElement("Comment",docEle.Elements()));
+						ele.Add(new XElement("Comment", docEle.Elements()));
 					}
-					
+
 				}
 			}
 
@@ -54,35 +99,35 @@ namespace DotNetAttributeExtractor
 
 		public IEnumerable<XElement> ExtractMethod(Assembly assembly)
 		{
-			var typeEles = 
+			var typeEles =
 					assembly
 					.GetTypes()
 					.Where(type => type.GetCustomAttributes(false).Any(attr => attr.GetType().Name == "BindingAttribute"))
-					.Select(type=>
+					.Select(type =>
 						new XElement("Type",
-							new XAttribute("Name",type.Name),
-							new XAttribute("FullName",type.FullName),
+							new XAttribute("Name", type.Name),
+							new XAttribute("FullName", type.FullName),
 							new XElement("Methods",
 									type.GetMethods().Where(m => m.GetCustomAttributes(false).Any(attr => attr.GetType().Name == "StepDefinitionAttribute" || attr.GetType().Name == "GivenAttribute" || attr.GetType().Name == "WhenAttribute" || attr.GetType().Name == "ThenAttribute"))
-									.Select(m=> 
+									.Select(m =>
 										new XElement("Method",
-											new XAttribute("Name",m.Name),
+											new XAttribute("Name", m.Name),
 											new XElement("Args",
-												m.GetParameters().Select(a=>new XElement("Arg",
-													new XAttribute("Name",a.Name),
+												m.GetParameters().Select(a => new XElement("Arg",
+													new XAttribute("Name", a.Name),
 													new XAttribute("Type", a.ParameterType.Name),
 													new XAttribute("TypeFullName", a.ParameterType.FullName)
 													))
 												),
-								
+
 											new XElement("StepDefs",
 												 m.GetCustomAttributes(false)
 													.Where(attr => attr.GetType().Name == "StepDefinitionAttribute" || attr.GetType().Name == "GivenAttribute" || attr.GetType().Name == "WhenAttribute" || attr.GetType().Name == "ThenAttribute")
-													.Select(attr=>
+													.Select(attr =>
 														new XElement("StepDef",
 															new XAttribute("Regex", (attr as dynamic).Regex),
-															new XAttribute("RegexWithArgName", GetRegexWithArgName((attr as dynamic).Regex,m.GetParameters()))
-															)	
+															new XAttribute("RegexWithArgName", GetRegexWithArgName((attr as dynamic).Regex, m.GetParameters()))
+															)
 													)
 												)
 										)
@@ -109,7 +154,7 @@ namespace DotNetAttributeExtractor
 			{
 				if (index < parameters.Length)
 				{
-					var pName = "("+ parameters[index].Name+")";
+					var pName = "(" + parameters[index].Name + ")";
 					index++;
 					return pName;
 				}
@@ -130,4 +175,5 @@ namespace DotNetAttributeExtractor
 			return regex;
 		}
 	}
+
 }
