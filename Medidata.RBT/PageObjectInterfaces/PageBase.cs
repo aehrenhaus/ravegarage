@@ -79,7 +79,7 @@ namespace Medidata.RBT
         {
 			var element = Browser.ButtonByText(identifier, true);
 			if(element ==null)
-				element = Browser.ButtonByText(identifier, true);
+				element = Browser.ButtonByID(identifier, true);
 	
 
             if (element == null)

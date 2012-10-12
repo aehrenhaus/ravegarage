@@ -125,7 +125,7 @@ namespace Medidata.RBT.SeleniumExtension
 			if (element == null)
 				element = context.TryFindElementBy(By.XPath("//input[normalize-space(@value)='" + text + "']"));
 
-			if (nullable && element == null)
+			if (!nullable && element == null)
 				throw new Exception("Can't find button by text "+text);
 
 			return element;
@@ -137,7 +137,7 @@ namespace Medidata.RBT.SeleniumExtension
 			if (element == null)
 				element = SelectExtendElementByPartialID<EnhancedElement>(context, "select", partialID, true);
 
-			if (nullable && element == null)
+			if (!nullable && element == null)
 				throw new Exception("Can't find button by id " + partialID);
 
 			return element;

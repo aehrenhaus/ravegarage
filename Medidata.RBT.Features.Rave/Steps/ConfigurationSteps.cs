@@ -26,28 +26,12 @@ namespace Medidata.RBT.Features.Rave.Steps
         [StepDefinition(@"the ""([^""]*)"" spreadsheet is downloaded")]
         public void The____IsDownloaded(string fileName)
         {
-            string path = RBTConfiguration.Default.DownloadPath + @"\";
-            bool zipped = false;
-            string fullPath = null;
-            TestContext.SpreadsheetName = fileName;
-            switch (fileName)
-            {
-                case "Core Configuration Specification Template":                
-                    fullPath = path + "RaveCoreConfig_eng_Template.zip";
-                    zipped = true;
-                    break;
-                case "Core Configuration Specification":
-                    var files = Directory.GetFiles(path, "*.zip").Select(t=>new FileInfo(t)).OrderByDescending(t=>t.LastWriteTime);
-                    Assert.IsTrue(files.Any());
+			bool zipped = true;
 
-                    //take latest downloaded file
-                    fullPath = files.First().FullName;
-                    zipped = true;
-                    break;
-                default:
-                    throw new NotImplementedException("Steps for this spreadsheet arent implemented yet");
-            }
-            TestContext.ExcelFile = new ExcelFileHelper(fullPath,zipped);
+			//finish watching for new file
+			var file = TestContext.WaitForDownloadFinish();
+
+			TestContext.ExcelFile = new ExcelFileHelper(file.FullName, zipped);
 
             Assert.IsNotNull(TestContext.ExcelFile);
         }
