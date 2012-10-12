@@ -165,11 +165,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>US11913.feature</DependentUpon>
     </Compile>
-    <Compile Include="Features\EDC\US12994_DT109911.feature.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>US12994_DT10991.feature</DependentUpon>
-    </Compile>
     <Compile Include="Features\EDC\US13021_DT12734.feature.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -219,11 +214,6 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>US17943.feature</DependentUpon>
-    </Compile>
-    <Compile Include="Features\Labs\US18358_DT140733.feature.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>US18358_DT14073.feature</DependentUpon>
     </Compile>
     <Compile Include="Features\PDF\US12175_DT8545_lessthangreaterthaninPDF.feature.cs">
       <AutoGen>True</AutoGen>

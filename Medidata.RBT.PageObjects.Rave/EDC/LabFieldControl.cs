@@ -27,7 +27,7 @@ namespace Medidata.RBT.PageObjects.Rave
 		private EnhancedElement MainTR;
 		private EnhancedElement QueriesTR;
 
-		public IWebElement FindQuery(QuerySearchModel filter)
+		public override IWebElement FindQuery(QuerySearchModel filter)
 		{
 		
 			//each table is a query
