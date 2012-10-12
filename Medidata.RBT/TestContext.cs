@@ -21,11 +21,21 @@ namespace Medidata.RBT
 	[Binding]
 	public class TestContext
 	{
-        public static string DownloadPath { get; set; }
-        public static string UploadPath { get; set; }
+		private static bool _watchingForDownload;
+		private static FileInfo _downloadedFile;
+
+		public static FileInfo LastDownloadFile
+		{
+			get
+			{
+				return _downloadedFile;
+			}
+		}
+
 		public static RemoteWebDriver Browser { get; set; }
 
         public static string SpreadsheetName { get; set; }
+
         public static ExcelFileHelper ExcelFile { get; set; }
 
 		#region switch browser window
@@ -411,8 +421,7 @@ namespace Medidata.RBT
 			var driverPath = RBTConfiguration.Default.WebDriverPath;
 			if (!Path.IsPathRooted(driverPath))
 				driverPath = new DirectoryInfo(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, driverPath)).FullName;
-            DownloadPath = RBTConfiguration.Default.DownloadPath;
-            UploadPath = RBTConfiguration.Default.UploadPath;
+
 			switch (RBTConfiguration.Default.BrowserName.ToLower())
 			{
 				case "firefox":
@@ -421,7 +430,7 @@ namespace Medidata.RBT
 					p.SetPreference("browser.download.folderList",2);
 					p.SetPreference("browser.download.manager.showWhenStarting", false);
 					p.SetPreference("browser.download.dir", RBTConfiguration.Default.DownloadPath.ToUpper());
-					p.SetPreference("browser.helperApps.neverAsk.saveToDisk", "application/zip;application/pdf");
+					p.SetPreference("browser.helperApps.neverAsk.saveToDisk", RBTConfiguration.Default.AutoSaveMimeTypes);
 			
 					_webdriver = new FirefoxDriver(bin, p);
 					break;
@@ -441,12 +450,73 @@ namespace Medidata.RBT
 			return _webdriver;
 		}
 
+
+
+		/// <summary>
+		/// returns the last download file's full name
+		/// </summary>
+		/// <returns></returns>
+		public static void WatchForDownload()
+		{
+			if (_watchingForDownload)
+			{
+				throw new Exception("Only 1 download task can be watched at a time.");
+			}
+			_watchingForDownload = true;
+			_downloadedFile = null;
+
+			// Create a new FileSystemWatcher and set its properties.
+			FileSystemWatcher watcher = new FileSystemWatcher();
+			watcher.Path = RBTConfiguration.Default.DownloadPath;
+
+			/* Watch for changes in LastAccess and LastWrite times, and 
+			   the renaming of files or directories. */
+			watcher.NotifyFilter = NotifyFilters.LastAccess | NotifyFilters.LastWrite
+			   | NotifyFilters.FileName | NotifyFilters.DirectoryName;
+
+			watcher.IncludeSubdirectories = false;
+
+			// Only watch text files.
+			watcher.Filter = "*.*";
+
+			// Add event handlers.
+
+			watcher.Created += new FileSystemEventHandler(watcher_Created);
+
+			
+			// Begin watching.
+			watcher.EnableRaisingEvents = true; 
+		}
+
+		static void watcher_Created(object sender, FileSystemEventArgs e)
+		{
+			//ignore this temp file created by firefox
+			if (Path.GetExtension(e.FullPath)==".part")
+			{
+				return;
+			}
+			_downloadedFile = new FileInfo(e.FullPath);
+		}
+
+		public static FileInfo WaitForDownloadFinish()
+		{
+			while (_downloadedFile == null)
+			{
+				Thread.Sleep(500);
+			}
+
+			_watchingForDownload = false;
+
+			return _downloadedFile;
+		}
+
+
         /// <summary>
         /// Delete all files in the download path
         /// </summary>
         private static void DeleteAllDownloadFiles()
         {
-            List<String> createdFiles = Directory.GetFiles(TestContext.DownloadPath).ToList();
+            List<String> createdFiles = Directory.GetFiles(RBTConfiguration.Default.DownloadPath).ToList();
             foreach (String filePath in createdFiles)
                 if (!filePath.EndsWith("placeholder.txt"))
                     File.Delete(filePath);
@@ -457,7 +527,7 @@ namespace Medidata.RBT
         /// </summary>
         private static void DeleteAllDownloadDirectories()
         {
-            List<String> createdDirectories = Directory.GetDirectories(TestContext.DownloadPath).ToList();
+            List<String> createdDirectories = Directory.GetDirectories(RBTConfiguration.Default.DownloadPath).ToList();
             foreach (String directoryPath in createdDirectories)
                 Directory.Delete(directoryPath, true);
         }
@@ -467,7 +537,7 @@ namespace Medidata.RBT
         /// </summary>
         private static void DeleteFilesInTemporaryUploadDirectories()
         {
-            List<String> temporaryFolders = Directory.GetDirectories(TestContext.UploadPath, "*", SearchOption.AllDirectories).ToList()
+            List<String> temporaryFolders = Directory.GetDirectories(RBTConfiguration.Default.UploadPath, "*", SearchOption.AllDirectories).ToList()
                 .Where(x => x.EndsWith("Temporary")).ToList();
             List<String> temporaryUploadFiles = new List<string>();
             foreach(String temporaryFolder in temporaryFolders)
@@ -484,7 +554,7 @@ namespace Medidata.RBT
         /// <returns></returns>
         private static void DeleteCreatedFiles()
         {
-            List<String> createdFiles = Directory.GetFiles(TestContext.DownloadPath).ToList();
+            List<String> createdFiles = Directory.GetFiles(RBTConfiguration.Default.DownloadPath).ToList();
             foreach(String filePath in createdFiles)
             {
                 DateTime lastWriteTime = File.GetLastWriteTime(filePath);
@@ -500,7 +570,7 @@ namespace Medidata.RBT
         /// <returns></returns>
         private static void DeleteCreatedDirectories()
         {
-            List<String> createdDirectories = Directory.GetDirectories(TestContext.DownloadPath).ToList();
+            List<String> createdDirectories = Directory.GetDirectories(RBTConfiguration.Default.DownloadPath).ToList();
             foreach (String directoryPath in createdDirectories)
             {
                 DateTime lastWriteTime = File.GetLastWriteTime(directoryPath);

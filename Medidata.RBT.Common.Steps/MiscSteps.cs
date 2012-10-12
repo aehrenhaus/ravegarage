@@ -5,6 +5,7 @@ using OpenQA.Selenium.Remote;
 using System.Threading;
 using System.Collections.Specialized;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Medidata.RBT.SeleniumExtension;
 
 namespace Medidata.RBT.Common.Steps
 {
@@ -107,6 +108,17 @@ namespace Medidata.RBT.Common.Steps
 			CurrentPage = TestContext.POFactory.GetPage(pageName.Replace(" ", "") + "Page").NavigateToSelf();
 		}
 
+		/// <summary>
+		/// Navigate to a URL
+		/// </summary>
+		/// <param name="url"></param>
+		[StepDefinition(@"I navigate to url ""(.*?)""")]
+		public void INavigateToURL____(string url)
+		{
+			Browser.Url = url;
+			var uri = new Uri(Browser.Url);
+			CurrentPage = TestContext.POFactory.GetPageByUrl(uri);
+		}
 
 		/// <summary>
 		/// Save something (text) from current page to a variable.
@@ -119,6 +131,19 @@ namespace Medidata.RBT.Common.Steps
 		{
 			string text = CurrentPage.GetInfomation(identifier);
 			SpecialStringHelper.SetVar(varName, text);
+		}
+
+		[StepDefinition(@"I prepare to download")]
+		public void IPrepareToDownload()
+		{
+			TestContext.WatchForDownload();
+		}
+
+
+		[StepDefinition(@"I wait for download to finish")]
+		public void IWaitForDownloadToFinish()
+		{
+			TestContext.WaitForDownloadFinish();
 		}
 
 

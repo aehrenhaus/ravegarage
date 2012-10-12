@@ -23,10 +23,12 @@ namespace Medidata.RBT.Features.Rave
 			CurrentPage = CurrentPage.ClickButton("Create Package");
 			TestContext.AcceptAlert();
 			Browser.WaitForElement(b => b.Button("Download Package"),null,20);
+
+			TestContext.WatchForDownload();
 			CurrentPage.ClickButton("Download Package");
+			FileInfo lastFile =  TestContext.WaitForDownloadFinish();
 
-			var lastFile = new DirectoryInfo(TestContext.DownloadPath).GetFiles().OrderByDescending(x => x.LastWriteTime).FirstOrDefault();
-
+		
 			string tempFolderSharedByOtherScenarios = "c:\\";
 			TestContext.Vars["tempFile"] = lastFile.Name;
 			lastFile.MoveTo(Path.Combine(tempFolderSharedByOtherScenarios,lastFile.Name));
