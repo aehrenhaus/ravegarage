@@ -1,7 +1,9 @@
 ﻿using TechTalk.SpecFlow;
+using TechTalk.SpecFlow.Assist;
 using Medidata.RBT.PageObjects.Rave;
 using OpenQA.Selenium;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Medidata.RBT.PageObjects.Rave.TableModels;
 
 namespace Medidata.RBT.Features.Rave
 {
@@ -41,7 +43,7 @@ namespace Medidata.RBT.Features.Rave
         public void ICanSee____Button(string btnValue)
         {
             bool canSee = false;
-            IWebElement element = CurrentPage.As<SubjectPage>().CanSeeControl(btnValue);
+            IWebElement element = CurrentPage.As<PageBase>().CanSeeControl(btnValue);
 
             if (element != null)
                 canSee = true;
@@ -109,7 +111,7 @@ namespace Medidata.RBT.Features.Rave
         public void ICanNotSee____Button(string value)
         {
             bool result = false;
-            IWebElement element = CurrentPage.As<SubjectPage>().CanSeeControl(value);
+            IWebElement element = CurrentPage.As<PageBase>().CanSeeControl(value);
 
             if (element != null)
             {
@@ -134,5 +136,28 @@ namespace Medidata.RBT.Features.Rave
 
             Assert.IsTrue(result);
         }
+
+        [StepDefinition(@"I verify the task summary on .*")]
+        public void IVerifyTheTaskSummary(Table table)
+        {
+            var models = table.CreateSet<TaskSummaryItemModel>();
+            foreach (var model in models)
+            {
+                TaskSummaryItem item = CurrentPage.As<ITaskSummaryContainer>().GetTaskSummary()
+                    .GetTaskSummaryItem(model.Task);
+
+                Assert.AreEqual(model.Pages, item.Pages);
+            }
+        }
+
+        [Given(@"I expand Task Summary")]
+        public void GivenIExpandTaskSummary()
+        {
+            CurrentPage.As<ITaskSummaryContainer>()
+                .GetTaskSummary()
+                .Expand();
+        }
+
+
     }
 }

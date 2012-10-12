@@ -14,6 +14,7 @@ namespace Medidata.RBT
         public static string GetNewTID()
         {
             string tid = "|" + DateTime.UtcNow.ToString() + "||" + DraftCounter.Counter.ToString();
+            tid = tid.Replace('|', '#').Replace(':', '@');
             DraftCounter.IncrementCounter();
             return tid;
         }

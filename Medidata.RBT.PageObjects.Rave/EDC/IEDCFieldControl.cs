@@ -60,12 +60,12 @@ namespace Medidata.RBT.PageObjects.Rave
 		void FocusElement(ControlType type, int position);
 
         bool IsVerificationRequired();
-
         /// <summary>
         /// Check if the field is inactive
         /// </summary>
         /// <param name="text">The text of the field to check</param>
         /// <returns>True if inactive, false if active</returns>
         bool IsInactive(string text);
+        bool IsSignatureRequired();
     }
 }

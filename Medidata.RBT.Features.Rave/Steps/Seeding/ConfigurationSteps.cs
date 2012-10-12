@@ -36,7 +36,8 @@ namespace Medidata.RBT.Features.Rave
 
                 bool studyAssignmentExists = user.StudyAssignmentExists(role.UID.Value, project.UID.Value, site.UID.Value);
                 bool moduleAssignmentExists = user.ModuleAssignmentExists("All Projects", securityRole.UniqueName);
-                if (!studyAssignmentExists && !moduleAssignmentExists)
+                
+                if (!studyAssignmentExists || !moduleAssignmentExists)
                 {
                     string loggedInUserBeforeAssignments = TestContext.CurrentUser;
                     LoginPage.LoginUsingDefaultUserFromAnyPage();

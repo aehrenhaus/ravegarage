@@ -184,13 +184,20 @@ namespace Medidata.RBT.Features.Rave
                 if (field.RequiresVerification.HasValue)
                 {
                     bool verificationRequired = fieldControl.IsVerificationRequired();
-
+                    
                     Assert.AreEqual(field.RequiresVerification.Value, verificationRequired, "Verification Required doesn't match on Fields in CRF");
                 }
                 if (field.Inactive.HasValue)
                 {
                     bool isInactive = fieldControl.IsInactive(field.Data);
                     Assert.AreEqual(field.Inactive.Value, isInactive, "Inactive doesn't match on Fields in CRF");
+                }
+
+                if (field.RequiresSignature.HasValue)
+                {
+                    bool signatureRequired = fieldControl.IsSignatureRequired();
+
+                    Assert.AreEqual(field.RequiresSignature.Value, signatureRequired, "Signature Required doesn't match on Fields in CRF");
                 }
             }
         }
@@ -466,6 +473,15 @@ namespace Medidata.RBT.Features.Rave
         public void ISignTheFormWithUsername____AndPassword____(string username, string password)
         {
             new SignatureBox().Sign(username, password);
+        }
+
+        [StepDefinition(@"I sign the form with username ""([^""]*)""")]
+        public void ISignTheFormWithUsername____(string userName)
+        {
+            string password = RaveConfiguration.Default.DefaultUserPassword;
+            User user = TestContext.GetExistingFeatureObjectOrMakeNew(
+                userName, () => new User(userName, false));
+            new SignatureBox().Sign(user.UniqueName, password);
         }
 
         /// <summary>

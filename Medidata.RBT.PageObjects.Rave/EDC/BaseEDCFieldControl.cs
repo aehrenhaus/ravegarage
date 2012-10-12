@@ -159,12 +159,25 @@ namespace Medidata.RBT.PageObjects.Rave
 
 		protected virtual void EnterDatetimeValue(string val)
 		{
+            //Create an array with dimension i where each cell is an empty string
+            //Used to clear out each text box / dropdown
+            var defaultDateParts = new Func<int, string[]>((i) =>
+            {
+                var s = new string[i];
+                for (var j = 0; j < i; j++)
+                    s[j] = string.Empty;    //We cannot pass null to these text boxes
+
+                return s;
+            });
+
 			var textboxes = FieldControlContainer.Textboxes();
 			var dropdowns = FieldControlContainer.FindElements(By.TagName("select")).ToList();
 
             if (textboxes.Count == 2 && dropdowns.Count == 1)//date field  .format: dd MM yyyy
             {
-                string[] dateParts = val.Split(' ');
+                string[] dateParts = string.IsNullOrWhiteSpace(val)
+                    ? defaultDateParts(3)
+                    : val.Split(' ');
                 if (dateParts.Length != 3)
                 {
                     throw new Exception("not valid date time");
@@ -181,7 +194,9 @@ namespace Medidata.RBT.PageObjects.Rave
                 EnterDropdownValue(val);
             else if (textboxes.Count >= 2 && dropdowns.Count == 0) // atypical date format without dropdown without using month in dropdown, could be 2, 3, 4, etc textboxes
             {
-                string[] dateParts = val.Replace(":", " ").Split(' ');
+                string[] dateParts = string.IsNullOrWhiteSpace(val)
+                    ? defaultDateParts(textboxes.Count)
+                    : val.Replace(":", " ").Split(' ');
                 if (!(dateParts.Length >= 2))
                 {
                     throw new Exception("wrong datetime format");
@@ -319,5 +334,14 @@ namespace Medidata.RBT.PageObjects.Rave
         {
             throw new NotImplementedException();
         }
-	}
+
+        public bool IsSignatureRequired()
+        {
+            var fieldStatusElement = FieldControlContainer.FindElement(
+                By.XPath("../..//td[@class='crf_dataPointCell'][2]/table/tbody/tr/td[1]/a/img"));
+
+            var src = fieldStatusElement.GetAttribute("src");
+            return src.Contains("dp_sg.gif");
+        }
+    }
 }
