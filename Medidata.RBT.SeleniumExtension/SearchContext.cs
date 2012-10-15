@@ -121,9 +121,11 @@ namespace Medidata.RBT.SeleniumExtension
 
 		public static IWebElement Button(this ISearchContext context, string text, bool nullable = false)
 		{
-			var element = context.TryFindElementBy(By.XPath("//button[normalize-space(text())='" + text + "']"));
+			IWebElement element = context.TryFindElementBy(By.XPath("//button[normalize-space(text())='" + text + "']"));
 			if (element == null)
 				element = context.TryFindElementBy(By.XPath("//input[normalize-space(@value)='" + text + "']"));
+            if (element == null)
+                element = context.TryFindElementBy(By.XPath("//input[@id='" + text + "']"));
 			return element;
 		}
 

@@ -46,6 +46,11 @@ namespace Medidata.RBT.PageObjects.Rave
                 return AuditExist_AddEvents(audit.QueryMessage, audit.User, audit.Time, position);
             }
 
+            else if (audit.AuditType == "Record")
+            {
+                return AuditExist_Record(audit.QueryMessage, audit.User, audit.Time, position);
+            }
+
 			throw new Exception("Invalid audit type " + audit.AuditType);
 		}
         
@@ -108,6 +113,9 @@ namespace Medidata.RBT.PageObjects.Rave
                 string actualFirstName = actualUserDetail[0].TrimEnd(' ');
                 isSpecifiedData = actualFirstName.Equals(specifiedFirstName);
 
+                if (specifiedUserDetail.FirstOrDefault().Equals("System"))
+                    return actualUserDetail.FirstOrDefault().Equals("System");
+
                 string specifiedLogin = specifiedUserDetail[1].Split('-')[1].TrimStart(' ');
                 //Get the unique user object created during seeding
                 User spUser = TestContext.GetExistingFeatureObjectOrMakeNew(specifiedLogin, () => new User(specifiedLogin, false));
@@ -165,6 +173,19 @@ namespace Medidata.RBT.PageObjects.Rave
         public bool AuditExist_DataPoint(string query, string user, string timeFormat, int? position = null)
         {
             return AuditExist(string.Format("DataPoint {0}", query), user, timeFormat, position);
+        }
+
+        /// <summary>
+        /// Check if the specified audit exists against a record
+        /// </summary>
+        /// <param name="query">The words that come after record</param>
+        /// <param name="user">The user who made the audit</param>
+        /// <param name="timeFormat">The format that the time is in</param>
+        /// <param name="position"></param>
+        /// <returns></returns>
+        public bool AuditExist_Record(string query, string user, string timeFormat, int? position = null)
+        {
+            return AuditExist(string.Format("Record {0}", query), user, timeFormat, position);
         }
 
         private bool AuditExist_AddEvents(string query, string user, string timeFormat, int? position)

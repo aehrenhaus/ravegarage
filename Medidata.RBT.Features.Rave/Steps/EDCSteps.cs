@@ -170,9 +170,9 @@ namespace Medidata.RBT.Features.Rave
         {
             CRFPage page = CurrentPage.As<CRFPage>();
 
-            var fields = table.CreateSet<FieldModel>();
+            IEnumerable<FieldModel> fields = table.CreateSet<FieldModel>();
 
-            foreach (var field in fields)
+            foreach (FieldModel field in fields)
             {
                 IEDCFieldControl fieldControl = page.FindField(field.Field);
                 if (field.Data != null && field.Data.Length > 0)
@@ -186,6 +186,11 @@ namespace Medidata.RBT.Features.Rave
                     bool verificationRequired = fieldControl.IsVerificationRequired();
 
                     Assert.AreEqual(field.RequiresVerification.Value, verificationRequired, "Verification Required doesn't match on Fields in CRF");
+                }
+                if (field.Inactive.HasValue)
+                {
+                    bool isInactive = fieldControl.IsInactive(field.Data);
+                    Assert.AreEqual(field.Inactive.Value, isInactive, "Inactive doesn't match on Fields in CRF");
                 }
             }
         }
@@ -284,7 +289,7 @@ namespace Medidata.RBT.Features.Rave
 		/// <summary>
 		/// Click audit icon on a field on CRF page
 		/// </summary>
-		/// <param name="fieldName"></param>
+        /// <param name="fieldName">The name of the field to audit against</param>
 		[StepDefinition(@"I click audit on Field ""([^""]*)""")]
         [StepDefinition(@"I go to Audits for Field ""([^""]*)""")]
 		public void IClickAuditOnField____(string fieldName)
@@ -293,6 +298,17 @@ namespace Medidata.RBT.Features.Rave
 				.FindField(fieldName)
 				.ClickAudit();
 		}
+
+        /// <summary>
+        /// Click audit icon on a lab field on CRF page
+        /// </summary>
+        /// <param name="fieldName">The name of the field to audit against</param>
+        /// <param name="logLine">The log line of the field to audit against</param>
+        [StepDefinition(@"I click audit on Field ""([^""]*)"" log line ""([^""]*)""")]
+        public void ThenIClickAuditOnField____LogLine____(string fieldName, int logLine)
+        {
+            CurrentPage = ((LabFieldControl)CurrentPage.As<CRFPage>().FindField(fieldName)).ClickAudit(logLine);
+        }
 
 		/// <summary>
 		/// Verify audit exists
