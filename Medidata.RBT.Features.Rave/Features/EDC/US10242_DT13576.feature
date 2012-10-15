@@ -1,4 +1,4 @@
-﻿# Edit check 'sets subject to require signature' behaves inconsistently if the value for the field it is assigned to got changed to the value it should not fire. 
+# Edit check 'sets subject to require signature' behaves inconsistently if the value for the field it is assigned to got changed to the value it should not fire. 
 # 1. The edit check fired and set the subject to requires signature based on entered value for the field it is assigned to. 
 # 2. Subject was signed
 # 3. The value for the field got changed to the value the edit check should not set the subject to requires signature.
@@ -32,8 +32,8 @@ Given following Project assignments exist
 #Note: Study "13576 Study B" is set up with an edit check "If Enrollment Date field in Enrollment form IsNotEmpty Or Stop Date field in AE form IsNotEmpty then set Subject to Requires Signature"
 
 @Release_2012.1.0
-@Validation
-@PB-US10242-01
+@WIP
+@PB-DT13576-01
 Scenario: As an EDC user, when I have an edit check that sets a subject to require signature, and I sign, and I change data such that the subject no longer requires signature, then I should not see a task that requires signature for the subject in the task summary.
 
   Given I login to Rave with user "SUPER USER 1"
@@ -58,7 +58,7 @@ Scenario: As an EDC user, when I have an edit check that sets a subject to requi
   And I can not see "Sign and Save" button
 
   And I expand Task Summary
-  And I verify the task summary on "Subject"
+  And I verify the task summary
 	|Task                   |Pages |
 	|Requiring Signature    |0     |
   And I take a screenshot	
@@ -77,7 +77,7 @@ Scenario: As an EDC user, when I have an edit check that sets a subject to requi
   And I can see "Sign and Save" button		
 
   And I expand Task Summary
-  And I verify the task summary on "Subject"
+  And I verify the task summary
 	|Task   				|Pages |
 	|Requiring Signature    |2     |
   And I take a screenshot
@@ -87,7 +87,7 @@ Scenario: As an EDC user, when I have an edit check that sets a subject to requi
   And I verify text "Signature attempt was successful" exists
 
   And I expand Task Summary
-  And I verify the task summary on "Subject"
+  And I verify the task summary
 	|Task   				|Pages |
 	|Requiring Signature    |0     |
   And I take a screenshot 
@@ -106,7 +106,7 @@ Scenario: As an EDC user, when I have an edit check that sets a subject to requi
   And I can not see "Sign and Save" button
 
   And I expand Task Summary
-  And I verify the task summary on "Subject"
+  And I verify the task summary
 	|Task    				|Pages |
 	|Requiring Signature    |0     |
   And I take a screenshot	
@@ -115,14 +115,14 @@ Scenario: As an EDC user, when I have an edit check that sets a subject to requi
   And I select Study "13576 Study A" and Site "Site_A"
 
   And I expand Task Summary
-  And I verify the task summary on "Site"
+  And I verify the task summary
 	|Task                   |Pages |
 	|Requiring Signature    |0     |
   And I take a screenshot	
 
 @Release_2012.1.0
-@Validation
-@PB-US10242-02
+@WIP
+@PB-DT13576-02
 Scenario: As an EDC user, when I have an edit check associated to data dictionary that sets a subject to require signature, and I sign, and I change data such that the subject no longer requires signature, then I should not see a task that requires signature for the subject in the task summary. 
 
   Given I login to Rave with user "SUPER USER 1"
@@ -146,7 +146,7 @@ Scenario: As an EDC user, when I have an edit check associated to data dictionar
   And I can not see "Sign and Save" button
 
   And I expand Task Summary
-  And I verify the task summary on "Subject"
+  And I verify the task summary
 	|Task                   |Pages |
 	|Requiring Signature    |0     |
   And I take a screenshot	
@@ -164,7 +164,7 @@ Scenario: As an EDC user, when I have an edit check associated to data dictionar
   And I can see "Sign and Save" button		
 
   And I expand Task Summary
-  And I verify the task summary on "Subject"
+  And I verify the task summary
 	|Task                   |Pages |
 	|Requiring Signature    |2     |
   And I take a screenshot
@@ -174,7 +174,7 @@ Scenario: As an EDC user, when I have an edit check associated to data dictionar
   And I verify text "Signature attempt was successful" exists
 
   And I expand Task Summary	
-  And I verify the task summary on "Subject"
+  And I verify the task summary
 	|Task                   |Pages |
 	|Requiring Signature    |0     |
   And I take a screenshot 
@@ -192,7 +192,7 @@ Scenario: As an EDC user, when I have an edit check associated to data dictionar
   And I can not see "Sign and Save" button
 
   And I expand Task Summary
-  And I verify the task summary on "Subject"
+  And I verify the task summary
 	|Task                   |Pages |
 	|Requiring Signature    |0     |
   And I take a screenshot	
@@ -201,14 +201,14 @@ Scenario: As an EDC user, when I have an edit check associated to data dictionar
   And I select Study "13576 Study A" and Site "Site_A"
 
   And I expand Task Summary
-  And I verify the task summary on "Site"
+  And I verify the task summary
 	|Task                   |Pages |
 	|Requiring Signature    |0     |
   And I take a screenshot 
   
 @Release_2012.1.0
-@Validation
-@PB-US10242-03
+@WIP
+@PB-DT13576-03
 Scenario: As an EDC user, when I have an edit check that sets a subject to require signature on two forms and I change data such that the subject no longer requires signature on first form, then I should see a task that requires signature on both forms for the subject in the task summary.
 
   Given I login to Rave with user "SUPER USER 1"
@@ -248,7 +248,7 @@ Scenario: As an EDC user, when I have an edit check that sets a subject to requi
   And I can see "Sign and Save" button
 
   And I expand Task Summary
-  And I verify the task summary on "Subject"
+  And I verify the task summary
 	|Task                   |Pages |
 	|Requiring Signature    |3     |
   And I take a screenshot
@@ -266,7 +266,7 @@ Scenario: As an EDC user, when I have an edit check that sets a subject to requi
   And I can see "Sign and Save" button
 
   And I expand Task Summary
-  And I verify the task summary on "Subject"
+  And I verify the task summary
 	|Task                   |Pages |
 	|Requiring Signature    |3     |
   And I take a screenshot
@@ -287,7 +287,7 @@ Scenario: As an EDC user, when I have an edit check that sets a subject to requi
   And I can not see "Sign and Save" button
  
   And I expand Task Summary
-  And I verify the task summary on "Subject"
+  And I verify the task summary
 	|Task                   |Pages |
 	|Requiring Signature    |0     |
   And I take a screenshot 
@@ -314,7 +314,7 @@ Scenario: As an EDC user, when I have an edit check that sets a subject to requi
   And I can see "Sign and Save" button
 
   And I expand Task Summary
-  And I verify the task summary on "Subject"
+  And I verify the task summary
 	|Task                   |Pages |
 	|Requiring Signature    |3     |
  And I take a screenshot
