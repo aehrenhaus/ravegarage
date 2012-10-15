@@ -125,24 +125,6 @@ namespace Medidata.RBT.PageObjects.Rave
             return GetPageByCurrentUrlIfNoAlert();
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="identifier"></param>
-        /// <returns></returns>
-        public override IWebElement CanSeeControl(string identifier)
-        {
-            if ("Sign and Save".Equals(identifier))
-            {
-                IWebElement result = Browser.TryFindElementBy(
-                    By.XPath("//button[text()='" + identifier + "']"));
-                
-                return result;
-            }
-
-            return base.CanSeeControl(identifier);
-        }
-
 		#region ICanVerifyInOrder
 
 		public bool VerifyTableRowsInOrder(string tableIdentifier, Table matchTable)
@@ -174,10 +156,7 @@ namespace Medidata.RBT.PageObjects.Rave
 			throw new NotImplementedException();
 		}
 
-		public bool VerifyControlExist(string identifier)
-		{
-			throw new NotImplementedException();
-		}
+        public bool VerifyControlExist(string identifier) { return base.VerifyControlExist(identifier); }
 
 		bool ICanVerifyExist.VerifyTextExist(string identifier, string text)
 		{
@@ -206,13 +185,8 @@ namespace Medidata.RBT.PageObjects.Rave
 
 
         #region ITaskSummaryContainer
-        
-        public TaskSummary GetTaskSummary()
-        { 
-            //var element = Browser.TryFindElementBy(
-            //    By.XPath("//span[@id='_ctl0_Content_TsBox_CBoxC']/../../../../.."));
-            return new TaskSummary(Browser);
-        }
+
+        public TaskSummary GetTaskSummary() { return new TaskSummary(this); }
         
         #endregion
     }

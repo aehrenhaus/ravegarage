@@ -114,7 +114,20 @@ namespace Medidata.RBT.PageObjects.Rave
 
         public bool VerifyControlExist(string identifier)
         {
-            throw new NotImplementedException();
+            IWebElement result = null;
+            switch (identifier)
+            {
+                case "Sign and Save":
+                    result = Browser.TryFindElementBy(
+                        By.XPath("//button[text()='" + identifier + "']"));
+                    break;
+                //Add additional cases here
+                default:
+                    result = base.CanSeeControl(identifier);
+                    break;
+            }
+
+            return result != null;
         }
 
         public bool VerifyTextExist(string identifier, string text)

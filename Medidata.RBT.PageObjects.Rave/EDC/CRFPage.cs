@@ -290,18 +290,5 @@ namespace Medidata.RBT.PageObjects.Rave
             }
             return true;
         }
-
-        public override IWebElement CanSeeControl(string identifier)
-        {
-            if ("Sign and Save".Equals(identifier))
-            {
-                IWebElement result = Browser.TryFindElementBy(
-                    By.XPath("//button[text()='" + identifier + "']"));
-
-                return result;
-            }
-
-            return base.CanSeeControl(identifier);
-        }
     }
 }

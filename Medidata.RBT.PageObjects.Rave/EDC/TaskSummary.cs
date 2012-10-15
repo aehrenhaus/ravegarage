@@ -8,15 +8,14 @@ using Medidata.RBT.SeleniumExtension;
 
 namespace Medidata.RBT.PageObjects.Rave
 {
-    public class TaskSummary
+    public class TaskSummary : ControlBase
     {
-        private readonly IWebDriver _driver;
         private readonly IWebElement _rootElement;
 
-        public TaskSummary(IWebDriver driver) 
+        public TaskSummary(IPage page) 
+            : base(page)
         {
-            _driver = driver;
-            _rootElement = _driver.WaitForElement(
+            _rootElement = base.Page.Browser.WaitForElement(
                 By.XPath("//span[@id='_ctl0_Content_TsBox_CBoxC']/../../../../.."),
                 timeOutSecond: 10);
         }
@@ -41,7 +40,7 @@ namespace Medidata.RBT.PageObjects.Rave
                 element.Click();
 
                 //Make sure this table is loaded in before anything else is accessed within it
-                _driver.WaitForElement(
+                base.Page.Browser.WaitForElement(
                     By.XPath("//span[@id='_ctl0_Content_TsBox_CBoxC']/table"));
             }
         }

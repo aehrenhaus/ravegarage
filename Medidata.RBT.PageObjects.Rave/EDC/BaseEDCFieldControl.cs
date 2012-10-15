@@ -159,7 +159,7 @@ namespace Medidata.RBT.PageObjects.Rave
 
 		protected virtual void EnterDatetimeValue(string val)
 		{
-            //Create an array with dimension i where each cell is an empty string
+            //Create an array with length i where each cell is an empty string
             //Used to clear out each text box / dropdown
             var defaultDateParts = new Func<int, string[]>((i) =>
             {

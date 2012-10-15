@@ -27,6 +27,7 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
         public List<StudyAssignment> StudyAssignments { get; set; }
         public List<ModuleAssignment> ModuleAssignments { get; set; }
         public List<ReportAssignment> ReportAssignments { get; set; }
+        public string Password { get; private set; }
 
         /// <summary>
         /// The uploaded user constructor. This uploads users using the user uploader.
@@ -82,9 +83,9 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
             TestContext.CurrentPage.As<ActivatePage>().ClickButton("ActivateButton");
 
             //Set New Password
-            string newPassword = RaveConfiguration.Default.DefaultUserPassword;
-            TestContext.CurrentPage.As<PasswordPage>().NewPasswordBox.EnhanceAs<Textbox>().SetText(newPassword);
-            TestContext.CurrentPage.As<PasswordPage>().ConfirmPasswordBox.EnhanceAs<Textbox>().SetText(newPassword);
+            this.Password = RaveConfiguration.Default.DefaultUserPassword;
+            TestContext.CurrentPage.As<PasswordPage>().NewPasswordBox.EnhanceAs<Textbox>().SetText(this.Password);
+            TestContext.CurrentPage.As<PasswordPage>().ConfirmPasswordBox.EnhanceAs<Textbox>().SetText(this.Password);
             TestContext.CurrentPage.As<PasswordPage>().ClickButton("_ctl0_Content_SavePasswordButton");
             TestContext.CurrentPage.As<PasswordChangedPage>().ClickLink("Click here to continue...");
 

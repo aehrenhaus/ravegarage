@@ -255,7 +255,7 @@ namespace Medidata.RBT.PageObjects.Rave
 
         #region ITaskSummaryContainer
 
-        public TaskSummary GetTaskSummary() { return new TaskSummary(Browser); }
+        public TaskSummary GetTaskSummary() { return new TaskSummary(this); }
 
         #endregion
     }

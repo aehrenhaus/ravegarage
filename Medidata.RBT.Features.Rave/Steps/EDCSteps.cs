@@ -478,10 +478,9 @@ namespace Medidata.RBT.Features.Rave
         [StepDefinition(@"I sign the form with username ""([^""]*)""")]
         public void ISignTheFormWithUsername____(string userName)
         {
-            string password = RaveConfiguration.Default.DefaultUserPassword;
             User user = TestContext.GetExistingFeatureObjectOrMakeNew(
                 userName, () => new User(userName, false));
-            new SignatureBox().Sign(user.UniqueName, password);
+            new SignatureBox().Sign(user.UniqueName, user.Password);
         }
 
         /// <summary>
