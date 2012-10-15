@@ -98,7 +98,7 @@ Scenario: PB_8.1.1 As an EDC user, Data setup and verification for query re-firi
 	    | Start Date           | 08 Jan 2000 |
 	    | End Date             | 11 Jan 2000 |
 	    | Original Axis Number | 10          |
-	    | Current Axis Number  | 20          |
+	    | Current Axis Number  | 20          |	
 	
 	And I navigate to "Home"
 	And I select Study "Edit Check Study 3" and Site "Edit Check Site 8"
@@ -106,9 +106,9 @@ Scenario: PB_8.1.1 As an EDC user, Data setup and verification for query re-firi
 	When I select Form "Concomitant Medications" in Folder "Screening"
 	And I open log line 1
 	Then I verify Query is displayed
-		| Field                | Query Message                                                                                                  | Answered | Closed |
-		| Start Date           | 'Date Informed Consent Signed' is greater. Please revise.                                                      | false    | false  |
-		| Cuurrent Axis Number | 'Informed Consent 'Current Distribution Number' is not equal to Concomitant Medications 'Current Axis Number'. | false    | false  |
+		| Field               | Query Message                                                                                                 | Answered | Closed |
+		| Start Date          | 'Date Informed Consent Signed' is greater. Please revise.                                                     | false    | false  |
+		| Current Axis Number | Informed Consent 'Current Distribution Number' is not equal to Concomitant Medications 'Current Axis Number'. | False    | False  |
 	And I take a screenshot
 	And I answer the Query "'Date Informed Consent Signed' is greater. Please revise." on Field "Start Date" with "{answer}"
 	And I answer the Query "Informed Consent 'Current Distribution Number' is not equal to Concomitant Medications 'Current Axis Number'." on Field "Current Axis Number" with "{answer}"
@@ -125,7 +125,7 @@ Scenario: PB_8.1.1 As an EDC user, Data setup and verification for query re-firi
 		| Current Axis Number | 19          |
 	And I open log line 1
 	And I verify Query is not displayed
-		| Field               | Message                                                                                                       | Answered | Closed |
+		| Field               | Query Message                                                                                                 | Answered | Closed |
 		| Start Date          | 'Date Informed Consent Signed' is greater. Please revise.                                                     | true     | true   |
 		| Current Axis Number | Informed Consent 'Current Distribution Number' is not equal to Concomitant Medications 'Current Axis Number'. | true     | true   |
 	And I take a screenshot
@@ -135,9 +135,9 @@ Scenario: PB_8.1.1 As an EDC user, Data setup and verification for query re-firi
 		| Current Axis Number | 20          |
 	And I open log line 1
 	Then I verify Query is displayed
-		| Field                | Query Message                                                                                                  | Answered | Closed |
-		| Start Date           | 'Date Informed Consent Signed' is greater. Please revise.                                                      | true     | true   |
-		| Cuurrent Axis Number | 'Informed Consent 'Current Distribution Number' is not equal to Concomitant Medications 'Current Axis Number'. | true     | true   |
+		| Field               | Query Message                                                                                                 | Answered | Closed |
+		| Start Date          | 'Date Informed Consent Signed' is greater. Please revise.                                                     | true     | true   |
+		| Current Axis Number | Informed Consent 'Current Distribution Number' is not equal to Concomitant Medications 'Current Axis Number'. | true     | true   |
 	And I take a screenshot
 	
 #----------------------------------------------------------------------------------------------------------------------------------------	
