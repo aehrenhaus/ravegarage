@@ -52,7 +52,7 @@ namespace Medidata.RBT.Features.Rave
             {
                 canFind = CurrentPage.As<CRFPage>().CanFindQuery(filter);
             }
-            Assert.IsTrue(canFind, "One or More Queries exist");
+            Assert.IsFalse(canFind, "One or More Queries exist");
 
 		}
 
