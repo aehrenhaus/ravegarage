@@ -69,9 +69,18 @@
     <None Include="Templates\StepsReport.cshtml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Templates\Site.css" />
+    <Content Include="Toturial\00 Index.htm" />
+    <Content Include="Toturial\01 Initial setups.htm" />
+    <Content Include="Toturial\02 Create and run a feature.htm" />
+    <Content Include="Toturial\03 Write a new step definition.htm" />
+    <Content Include="Toturial\Site.css" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Toturial\03\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
