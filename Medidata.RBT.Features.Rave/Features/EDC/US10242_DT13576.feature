@@ -118,7 +118,7 @@ Scenario: As an EDC user, when I have an edit check that sets a subject to requi
   And I verify the task summary
 	|Task                   |Page Count |
 	|Requiring Signature    |0			|
-  And I take a screenshot	
+  And I take a screenshot
 
 @Release_2012.1.0
 @WIP
@@ -209,6 +209,88 @@ Scenario: As an EDC user, when I have an edit check associated to data dictionar
 @Release_2012.1.0
 @WIP
 @PB-DT13576-03
+Scenario: As an EDC user, when I have an edit check that sets a subject to require signature, and I sign, and I change data such that the subject no longer requires signature, and change back to data where the subject requires signature then I should see a task that requires signature for the subject in the task summary.
+
+  Given I login to Rave with user "SUPER USER 1"
+  And I select Study "13576 Study A" and Site "Site_A"
+  And I create a Subject
+    |Field               |Data              |Control Type |
+    |Subject Initials    |SUB               |textbox      |
+    |Subject Number      |{RndNum<num1>(3)} |textbox      |
+    |Subject ID 	     |SUB {Var(num1)}   |textbox      |
+  And I select Form "Demographics"
+  And I enter data in CRF and save
+    |Field      |Data           |Control Type |
+    |Age        |17             |textbox      |
+    |Visit Date |01 Jan 2012    |datetime     |
+  And I verify data on Fields in CRF
+	|Field      |Data         |Requires Signature |
+	|Age        |17           |True               |
+	|Visit Date |01 Jan 2012  |True               |
+  And I can see "Sign and Save" button
+  And I take a screenshot
+  And I select link "SUB {Var(num1)}"
+  And I can see "Sign and Save" button
+
+  And I expand Task Summary
+  And I verify the task summary
+	|Task                   |Page Count |
+	|Requiring Signature    |2			|
+  And I take a screenshot
+  
+  And I click "Sign and Save"
+  And I sign the form with username "SUPER USER 1"
+  And I verify text "Signature attempt was successful" exists
+  
+  And I expand Task Summary
+  And I verify the task summary
+	|Task   				|Page Count |
+	|Requiring Signature    |0			|
+  And I take a screenshot 
+  
+  And I select Form "Demographics" 
+  And I enter data in CRF and save
+    |Field      |Data           |Control Type |
+    |Age        |21             |textbox      |
+  And I verify data on Fields in CRF
+	|Field      |Data         |Requires Signature  |
+	|Age        |21           |False               |
+	|Visit Date |01 Jan 2012  |False               |
+  And I can not see "Sign and Save" button	
+  And I take a screenshot	
+
+  And I select link "SUB {Var(num1)}"
+  And I can not see "Sign and Save" button		
+
+  And I expand Task Summary
+  And I verify the task summary
+	|Task   				|Page Count |
+	|Requiring Signature    |0			|
+  And I take a screenshot
+
+  And I select Form "Demographics" 
+  And I enter data in CRF and save
+    |Field      |Data           |Control Type |
+    |Age        |15             |textbox      |	
+  And I verify data on Fields in CRF
+	|Field      |Data		  |Requires Signature |
+	|Age        |15           |True               |
+	|Visit Date |01 Jan 2012  |True               |
+  And I can see "Sign and Save" button	
+  And I take a screenshot
+  
+  And I select link "SUB {Var(num1)}"
+  And I can see "Sign and Save" button
+
+  And I expand Task Summary
+  And I verify the task summary
+	|Task    				|Page Count |
+	|Requiring Signature    |2			|
+  And I take a screenshot
+
+@Release_2012.1.0
+@WIP
+@PB-DT13576-04
 Scenario: As an EDC user, when I have an edit check that sets a subject to require signature on two forms and I change data such that the subject no longer requires signature on first form, then I should see a task that requires signature on both forms for the subject in the task summary.
 
   Given I login to Rave with user "SUPER USER 1"
