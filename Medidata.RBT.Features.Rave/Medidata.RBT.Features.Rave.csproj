@@ -85,7 +85,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>US17943.feature</DependentUpon>
     </Compile>
-    <Compile Include="Features\EDC\564QueryRefiringLogging8_M.feature.cs">
+    <Compile Include="Features\EDC\US12994_DT109911.feature.cs">      <AutoGen>True</AutoGen>      <DesignTime>True</DesignTime>      <DependentUpon>US12994_DT10991.feature</DependentUpon>    </Compile>    <Compile Include="Features\EDC\564QueryRefiringLogging8_M.feature.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>564QueryRefiringLogging8_M.feature</DependentUpon>
@@ -324,6 +324,11 @@
       <DependentUpon>DT14168.feature</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="mytestfeature.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>mytestfeature.feature</DependentUpon>
     </Compile>
     <Compile Include="ReferenceFix.cs" />
     <Compile Include="Steps\ArchitectSteps_DB.cs" />
@@ -599,6 +604,10 @@
     <None Include="Features\UserAdministration\DT14168.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>DT14168.feature.cs</LastGenOutput>
+    </None>
+    <None Include="mytestfeature.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>mytestfeature.feature.cs</LastGenOutput>
     </None>
   </ItemGroup>
   <ItemGroup>

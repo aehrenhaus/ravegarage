@@ -256,17 +256,17 @@ namespace Medidata.RBT.PageObjects.Rave
 			IWebElement actionArea = FieldControlContainer;
 			if (checkName == "Freeze")
 			{
-				actionArea.Checkbox("EntryLockBox").Check();
+				actionArea.CheckboxByID("EntryLockBox").Check();
 			}
 
 			if (checkName == "Hard Lock")
 			{
-				actionArea.Checkbox("HardLockBox").Check();
+				actionArea.CheckboxByID("HardLockBox").Check();
 			}
 
             if (checkName == "Verify")
             {
-                actionArea.Checkbox("VerifyBox").Check();
+                actionArea.CheckboxByID("VerifyBox").Check();
             }
 		}
 
@@ -275,17 +275,17 @@ namespace Medidata.RBT.PageObjects.Rave
 			IWebElement actionArea = FieldControlContainer;
 			if (checkName == "Freeze")
 			{
-				actionArea.Checkbox("EntryLockBox").Uncheck();
+				actionArea.CheckboxByID("EntryLockBox").Uncheck();
 			}
 
 			if (checkName == "Hard Lock")
 			{
-				actionArea.Checkbox("HardLockBox").Uncheck();
+				actionArea.CheckboxByID("HardLockBox").Uncheck();
 			}
 
             if (checkName == "Verify")
             {
-                actionArea.Checkbox("VerifyBox").Uncheck();
+                actionArea.CheckboxByID("VerifyBox").Uncheck();
             }
 		}
 
@@ -306,6 +306,16 @@ namespace Medidata.RBT.PageObjects.Rave
 		}
 
         public virtual bool IsVerificationRequired()
+        {
+            throw new NotImplementedException();
+        }
+
+        /// <summary>
+        /// Check if the field is inactive
+        /// </summary>
+        /// <param name="text">The text of the field to check</param>
+        /// <returns>True if inactive, false if active</returns>
+        public virtual bool IsInactive(string text)
         {
             throw new NotImplementedException();
         }

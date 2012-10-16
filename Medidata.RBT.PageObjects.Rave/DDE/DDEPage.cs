@@ -42,6 +42,15 @@ namespace Medidata.RBT.PageObjects.Rave
             return ele;
         }
 
+        public override IPage ClickButton(string identifier)
+        {
+            var element = GetElementByName(identifier);
+            if (element == null)
+                throw new Exception("Can't find button:" + identifier);
+            element.Click();
+            return GetPageByCurrentUrlIfNoAlert();
+        }
+
         public override IPage Type(string name, string text)
         {
 			IWebElement dropdownTD = GetElementByName(name);

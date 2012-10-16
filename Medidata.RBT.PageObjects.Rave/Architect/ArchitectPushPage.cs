@@ -24,7 +24,7 @@ namespace Medidata.RBT.PageObjects.Rave
 
 		public IPage PushToAllSites(string env)
 		{
-			Browser.Dropdown("StudyDDL").SelectByText(env);
+			Browser.DropdownById("StudyDDL").SelectByText(env);
 			Thread.Sleep(1000);
 			this.ClickButton("Push");
 			Browser.WaitForElement(b =>

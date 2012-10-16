@@ -16,7 +16,7 @@ namespace Medidata.RBT
 		public static List<String> UnzipAllDownloads()
 		{
 			List<String> extractedFilePaths = new List<string>();
-			List<String> zipFilePaths = Directory.GetFiles(TestContext.DownloadPath, "*.zip").ToList();
+			List<String> zipFilePaths = Directory.GetFiles(RBTConfiguration.Default.DownloadPath, "*.zip").ToList();
 			foreach (String zipFilePath in zipFilePaths)
 				extractedFilePaths.AddRange(UnZipAndExtract(zipFilePath));
 
@@ -38,10 +38,10 @@ namespace Medidata.RBT
 				{
 					ZipEntry currentEntry = zipInputStream.GetNextEntry();
 					String fullZipToPath = "";
-					if (TestContext.DownloadPath.EndsWith("\\"))
-						fullZipToPath = TestContext.DownloadPath + currentEntry.Name.Replace("/", "\\");
+					if (RBTConfiguration.Default.DownloadPath.EndsWith("\\"))
+						fullZipToPath = RBTConfiguration.Default.DownloadPath + currentEntry.Name.Replace("/", "\\");
 					else
-						fullZipToPath = TestContext.DownloadPath + "\\" + currentEntry.Name.Replace("/", "\\");
+						fullZipToPath = RBTConfiguration.Default.DownloadPath + "\\" + currentEntry.Name.Replace("/", "\\");
 
 					string directoryName = Path.GetDirectoryName(fullZipToPath);
 					if (directoryName.Length > 0)

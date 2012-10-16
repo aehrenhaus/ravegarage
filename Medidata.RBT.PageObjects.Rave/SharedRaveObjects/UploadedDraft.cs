@@ -39,7 +39,7 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
                 Name = name;
                 if (seed)
                 {
-                    FileLocation = TestContext.UploadPath + @"\Drafts\" + name;
+                    FileLocation = RBTConfiguration.Default.UploadPath + @"\Drafts\" + name;
                     Seed();
                 }
             }

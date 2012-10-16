@@ -91,6 +91,7 @@
     <Compile Include="Architect\ArchitectBasePage.cs" />
     <Compile Include="AmendmentManager\AMMigrationHomePage.cs" />
     <Compile Include="EDC\AuditsPage.cs" />
+    <Compile Include="EDC\MixedDataPageControl.cs" />
     <Compile Include="EDC\LandscapeLogField.cs" />
     <Compile Include="EDC\MonitorSiteSubjectPage.cs" />
     <Compile Include="EDC\NonLabDataPageControl.cs" />

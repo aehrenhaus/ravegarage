@@ -50,7 +50,7 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
                     else
                         FileName = userUploadName + ".xml";
 
-                    FileLocation = TestContext.UploadPath + @"\Users\" + FileName;
+                    FileLocation = RBTConfiguration.Default.UploadPath + @"\Users\" + FileName;
                     Seed();
 
                     IPage pageBeforeActivation = TestContext.CurrentPage;

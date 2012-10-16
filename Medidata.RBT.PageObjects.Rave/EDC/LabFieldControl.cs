@@ -97,6 +97,59 @@ namespace Medidata.RBT.PageObjects.Rave
 			return queryTable;
 		}
 
+        /// <summary>
+        /// Find if the element has data entered
+        /// </summary>
+        /// <param name="text">Text of the element to find</param>
+        /// <returns>True if the td element has data entered</returns>
+        public override bool HasDataEntered(string text)
+        {
+            IWebElement ele = GetTDElement(text);
+            if (ele == null)
+                return false;
+            else
+                return true;
+        }
+
+        /// <summary>
+        /// Get the td element associated with the text passed in
+        /// </summary>
+        /// <param name="text">Text of the element to find</param>
+        /// <returns>The td element associated with the text passed in</returns>
+        private IWebElement GetTDElement(string text)
+        {
+            IWebElement logTable = FieldControlContainer.Parent().Parent().Parent().Parent().FindElement(By.Id("log"));
+            List<IWebElement> trs = logTable.FindElements(By.XPath("tbody/tr")).ToList();
+            List<IWebElement> topRowTds = trs.FirstOrDefault().FindElements(By.XPath("td")).ToList();
+            int tableCellColumn;
+            for (tableCellColumn = 0; tableCellColumn < topRowTds.Count(); tableCellColumn++)
+                if (topRowTds[tableCellColumn].Text == FieldControlContainer.Text)
+                    break;
+
+            foreach (IWebElement tr in trs)
+            {
+                List<IWebElement> currentRowTds = tr.FindElements(By.XPath("td")).ToList();
+                if (currentRowTds[tableCellColumn].Text == text)
+                    return currentRowTds[tableCellColumn];
+            }
+
+            return null;
+        }
+
+        /// <summary>
+        /// Check if the field is inactive for lab field control
+        /// </summary>
+        /// <param name="text">The text of the field to check</param>
+        /// <returns>True if inactive, false if active</returns>
+        public override bool IsInactive(string text)
+        {
+            IWebElement ele = GetTDElement(text);
+            IWebElement strikeoutElement = ele.FindElement(By.XPath("//s"));
+            if (strikeoutElement == null)
+                return false;
+            else
+                return true;
+        }
 
         internal bool VerifyData(LabRangeModel field)
         {
@@ -105,6 +158,17 @@ namespace Medidata.RBT.PageObjects.Rave
                 VerifyData(MainTR, field.RangeStatus, "RangeStatus") &&
                 VerifyData(MainTR, field.StatusIcon, "StatusIcon") &&
                 VerifyData(MainTR, field.Range, "Range");
+        }
+
+        public AuditsPage ClickAudit(int logLine)
+        {
+            IWebElement logTable = FieldControlContainer.Parent().Parent().Parent();
+            IWebElement logLineTd = logTable.FindElement(By.XPath("//td[text() = '" + logLine + "'] | //td/s[text() = '" + logLine + "']"));
+            if (logLineTd.TagName.Equals("s"))
+                logLineTd = logLineTd.Parent();
+            IWebElement auditButton = logLineTd.Parent().TryFindElementByPartialID("DataStatusHyperlink");
+            auditButton.Click();
+            return new AuditsPage();
         }
 
         private bool VerifyData(EnhancedElement MainTR, string text, string verificationType)

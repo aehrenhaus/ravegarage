@@ -46,7 +46,7 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
                     else
                         fileName = roleUploadName + ".xml";
 
-                    FileLocation = TestContext.UploadPath + @"\Roles\" + fileName;
+                    FileLocation = RBTConfiguration.Default.UploadPath + @"\Roles\" + fileName;
                     Seed();
                 }
             }
