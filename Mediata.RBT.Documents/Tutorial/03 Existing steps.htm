@@ -1,0 +1,96 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+	<head>
+		<title>03 Existing steps</title>
+	</head>
+	<link rel="stylesheet" href="site.css" type="text/css" />
+	<body>
+	
+		<h1>
+			03 Existing steps</h1>
+		<p>
+			Step definitions are .net methods with an attribute on it. The attribute gives 
+			the match information.<br />
+			<strong>I the later text, &#39;step&#39; can mean either the &#39;step in feature file&#39; or 
+			the &#39;step definition method&#39; depending on the context.</strong></p>
+		<p>
+			There are common steps a well as steps only for domain(Rave).<br />
+			You can find them in
+		</p>
+		<ul>
+			<li>Medidata.RBT.Common.Steps</li>
+			<li>Medidata.RBT.Features.Rave</li>
+		</ul>
+		<p>
+			Common steps can be used for any sites</p>
+		<ul>
+			<li>I click &quot;Commit&quot; button</li>
+			<li>I navigate to url &quot;http://www.bing.com&quot;</li>
+			<li>I switch to &quot;Targeted SDV Study Plan&quot; window<br />
+				<br />
+				Although the value inside quotes is a rave thing, the step it self is 
+				indeed a common 
+				step.</li>
+		</ul>
+		<p>
+			Steps for Rave is Rave specific:</p>
+		<ul>
+			<li>Then I verify that Tiers in subject override table are not in the following 
+				order
+				<br />
+&nbsp;&nbsp;&nbsp; | Tier Name | Row |<br />
+&nbsp;&nbsp;&nbsp; |&nbsp; All Forms | 1 |<br />
+&nbsp;&nbsp;&nbsp; | No Forms | 2 |</li>
+			<li>And I select Report &quot;Targeted SDV Configuration&quot;</li>
+		</ul>
+		<h2>
+			3 ways to learn about existing steps:</h2>
+		<ul>
+			<li>Read existing feature files. </li>
+			<li>Read step definition methods. </li>
+			<li>Read the step definition report in Medidata.RBT.Documents<br />
+				Run this project to update report , 
+				then open the report in Templates folder.<br />
+				<img src="03/steps report.jpg" /></li>
+		</ul>
+	
+		<h2>
+			Guidelines for choosing a step</h2>
+		<ul>
+			<li>Prefer using existing steps than writing a new step.<br />
+				<br />
+				For example if you want to verify the study dropdown exists, use the common 
+				step:<br />
+				<strong>I verify control &quot;Study&quot; exists</strong><br />
+				Don&#39;t write your step:<strong>
+				<br />
+				I verify the study dropdown exists.</strong><br />
+				<br />
+				To programmers:<br />
+				Step defs can be very adaptive because in most cases they are calling virtual 
+				methods on page object or interface methods under the hood.<br />
+				In the case that a step does a very similar thing but not excatly the what you 
+				want on a page, you can provide a override of such method on page object rather 
+				than writting a new step.<br />
+				<img src="03/IChooseFrom.jpg" /><br />
+				<br />
+				For example:<br />
+				There is a common step: <strong>I choose &quot;value&quot; from &quot;dropdown identifier&quot;</strong><br />
+				This step can choose text from a standard dropdown, but on your page the 
+				dropdown is a composite control.<br />
+				In this case , instead of write a new step <strong>I choose &quot;value&quot; from composite 
+				dropdown &quot;identifier&quot;</strong>, you provide an override of ChooseFromDropdown(identifier, text) method on your 
+				page object.<br />
+				If the composite control appears on many pages of your site, you can override 
+				this method in a base class.</li>
+			<li>Prefer writing a common step def than writing a domain specific step, if you 
+				have to write a new step<br />
+				Just keep in mind that the step is common, others can share you method in 
+				similar situations. So often you will call a virtual or interface method rather 
+				than non-virtual one.</li>
+			<li>Finally, if you have to write a new domain specific step, the literal should be very specifc to 
+				describe your domain-specific problem. Don&#39;t let it looks like a common method.</li>
+		</ul>
+	
+	</body>
+</html>

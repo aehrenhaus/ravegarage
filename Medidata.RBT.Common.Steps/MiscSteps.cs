@@ -12,6 +12,7 @@ namespace Medidata.RBT.Common.Steps
     [Binding]
     public class MiscSteps : BrowserStepsBase
     {
+
 		/// <summary>
 		/// Captures the screen of browser(if the browser supports) and save it to a local file in the configuared location
 		/// The captured files will be under the step itself in report.
@@ -173,5 +174,8 @@ namespace Medidata.RBT.Common.Steps
 					throw new Exception("Not supported time unit: " + timeUnit);
 			}
 		}
+
+
 	}
+
 }

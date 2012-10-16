@@ -598,14 +598,14 @@ namespace Medidata.RBT
 		{
 			get
 			{
-				//TODO: this will initiallize _POFactory by the CurrentPage.
-				//This is not very nice because if CurrentPage is null, the this process will fail
+				if (CurrentPage == null)
+					return new EmptyPOFactory();
 				if (_POFactory == null)
 				{
 					Type factoryType = CurrentPage.GetType()
 						.Assembly
 						.GetTypes()
-						.FirstOrDefault(x => x.GetInterface("IPageObjectFactory") != null) ;
+						.FirstOrDefault(x => x.GetInterface("IPageObjectFactory") != null && !x.IsAbstract) ;
 					_POFactory = Activator.CreateInstance(factoryType) as IPageObjectFactory;
 				}
 				return _POFactory;
