@@ -575,6 +575,7 @@ Scenario: PB_8.5.1 Publish Checks
 	And I note down "crfversion" to "newversion1#"
 	And I select link "AM Edit Check Study" in "Header"
 	And I push CRF Version "{Var(newversion1#)}" to "All Sites"
+	And I select link "AM Edit Check Study" in "Header"
 	And I select link "Draft 1" in "CRF Drafts"
 	And I publish CRF Version "Pub2{RndNum<TV#>(5)}"
 	And I note down "crfversion" to "newversion2#"
