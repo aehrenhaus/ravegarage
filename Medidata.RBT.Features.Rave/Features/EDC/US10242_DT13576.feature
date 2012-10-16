@@ -59,8 +59,8 @@ Scenario: As an EDC user, when I have an edit check that sets a subject to requi
 
   And I expand Task Summary
   And I verify the task summary
-	|Task                   |Pages |
-	|Requiring Signature    |0     |
+	|Task                   |Page Count |
+	|Requiring Signature    |0			|
   And I take a screenshot	
   And I select Form "Demographics" 
   And I enter data in CRF and save
@@ -78,8 +78,8 @@ Scenario: As an EDC user, when I have an edit check that sets a subject to requi
 
   And I expand Task Summary
   And I verify the task summary
-	|Task   				|Pages |
-	|Requiring Signature    |2     |
+	|Task   				|Page Count |
+	|Requiring Signature    |2			|
   And I take a screenshot
 
   And I click "Sign and Save"
@@ -88,8 +88,8 @@ Scenario: As an EDC user, when I have an edit check that sets a subject to requi
 
   And I expand Task Summary
   And I verify the task summary
-	|Task   				|Pages |
-	|Requiring Signature    |0     |
+	|Task   				|Page Count |
+	|Requiring Signature    |0			|
   And I take a screenshot 
   And I select Form "Demographics" 
   And I enter data in CRF and save
@@ -107,8 +107,8 @@ Scenario: As an EDC user, when I have an edit check that sets a subject to requi
 
   And I expand Task Summary
   And I verify the task summary
-	|Task    				|Pages |
-	|Requiring Signature    |0     |
+	|Task    				|Page Count |
+	|Requiring Signature    |0			|
   And I take a screenshot	
   
   And I navigate to "Home"
@@ -116,8 +116,8 @@ Scenario: As an EDC user, when I have an edit check that sets a subject to requi
 
   And I expand Task Summary
   And I verify the task summary
-	|Task                   |Pages |
-	|Requiring Signature    |0     |
+	|Task                   |Page Count |
+	|Requiring Signature    |0			|
   And I take a screenshot	
 
 @Release_2012.1.0
@@ -147,8 +147,8 @@ Scenario: As an EDC user, when I have an edit check associated to data dictionar
 
   And I expand Task Summary
   And I verify the task summary
-	|Task                   |Pages |
-	|Requiring Signature    |0     |
+	|Task                   |Page Count |
+	|Requiring Signature    |0			|
   And I take a screenshot	
   And I select Form "Medical History" 
   And I enter data in CRF and save
@@ -165,8 +165,8 @@ Scenario: As an EDC user, when I have an edit check associated to data dictionar
 
   And I expand Task Summary
   And I verify the task summary
-	|Task                   |Pages |
-	|Requiring Signature    |2     |
+	|Task                   |Page Count |
+	|Requiring Signature    |2			|
   And I take a screenshot
 
   And I click "Sign and Save"
@@ -175,8 +175,8 @@ Scenario: As an EDC user, when I have an edit check associated to data dictionar
 
   And I expand Task Summary	
   And I verify the task summary
-	|Task                   |Pages |
-	|Requiring Signature    |0     |
+	|Task                   |Page Count |
+	|Requiring Signature    |0			|
   And I take a screenshot 
   And I select Form "Medical History" 
   And I enter data in CRF and save
@@ -193,8 +193,8 @@ Scenario: As an EDC user, when I have an edit check associated to data dictionar
 
   And I expand Task Summary
   And I verify the task summary
-	|Task                   |Pages |
-	|Requiring Signature    |0     |
+	|Task                   |Page Count |
+	|Requiring Signature    |0			|
   And I take a screenshot	
   
   And I navigate to "Home"
@@ -202,8 +202,8 @@ Scenario: As an EDC user, when I have an edit check associated to data dictionar
 
   And I expand Task Summary
   And I verify the task summary
-	|Task                   |Pages |
-	|Requiring Signature    |0     |
+	|Task                   |Page Count	|
+	|Requiring Signature    |0			|
   And I take a screenshot 
   
 @Release_2012.1.0
@@ -249,8 +249,8 @@ Scenario: As an EDC user, when I have an edit check that sets a subject to requi
 
   And I expand Task Summary
   And I verify the task summary
-	|Task                   |Pages |
-	|Requiring Signature    |3     |
+	|Task                   |Page Count |
+	|Requiring Signature    |3			|
   And I take a screenshot
   And I select Form "Enrollment"
   And I enter data in CRF and save
@@ -267,8 +267,8 @@ Scenario: As an EDC user, when I have an edit check that sets a subject to requi
 
   And I expand Task Summary
   And I verify the task summary
-	|Task                   |Pages |
-	|Requiring Signature    |3     |
+	|Task                   |Page Count |
+	|Requiring Signature    |3			|
   And I take a screenshot
   
   And I select Form "AE"
@@ -288,8 +288,8 @@ Scenario: As an EDC user, when I have an edit check that sets a subject to requi
  
   And I expand Task Summary
   And I verify the task summary
-	|Task                   |Pages |
-	|Requiring Signature    |0     |
+	|Task                   |Page Count |
+	|Requiring Signature    |0			|
   And I take a screenshot 
   
   And I select Form "Enrollment"
@@ -315,6 +315,6 @@ Scenario: As an EDC user, when I have an edit check that sets a subject to requi
 
   And I expand Task Summary
   And I verify the task summary
-	|Task                   |Pages |
-	|Requiring Signature    |3     |
+	|Task                   |Page Count |
+	|Requiring Signature    |3			|
  And I take a screenshot
