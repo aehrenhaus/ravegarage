@@ -21,7 +21,7 @@ namespace Medidata.RBT.PageObjects.Rave.Configuration
 
         public IPage Save()
         {
-            return base.ClickButton("_ctl0_Content_LnkBtnBottomSave");
+            return this.ClickLink("Update");
         }
     }
 }

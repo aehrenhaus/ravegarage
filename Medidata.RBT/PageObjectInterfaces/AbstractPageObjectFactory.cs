@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Reflection;
 
-namespace Medidata.RBT.PageObjects.Rave
+namespace Medidata.RBT
 {
 	/// <summary>
 	/// See IPageObjectFactory interface

@@ -84,7 +84,7 @@ namespace Medidata.RBT.PageObjects.Rave
                 if (URL.Equals("Modules/EDC/PrimaryRecordPage.aspx"))
                     return false;
                 var contentR = TestContext.Browser.FindElementsByPartialId("Content_R")[0];
-                var labDropdown = contentR.Dropdown("LOC_DropDown", true);
+                var labDropdown = contentR.DropdownById("LOC_DropDown", true);
                 bool isLabform = labDropdown != null;
                 return isLabform;
             }
@@ -259,16 +259,16 @@ namespace Medidata.RBT.PageObjects.Rave
 		public override IWebElement GetElementByName(string identifier, string areaIdentifier = null, string listItem = null)
         {
             if (identifier == "Inactivate")
-                return Browser.Dropdown("R_log_log_RP");
+                return Browser.DropdownById("R_log_log_RP");
 
             if (identifier == "Reactivate")
-                return Browser.Dropdown("R_log_log_IRP");
+                return Browser.DropdownById("R_log_log_IRP");
 
             if (identifier == "Clinical Significance")
-                return Browser.Dropdown("dropdown");
+                return Browser.DropdownById("dropdown");
 
             if (identifier == "Lab")
-                return Browser.Dropdown("LOC_DropDown");
+                return Browser.DropdownById("LOC_DropDown");
 
             return base.GetElementByName(identifier,areaIdentifier,listItem);
         }
@@ -276,7 +276,7 @@ namespace Medidata.RBT.PageObjects.Rave
         public override string URL { get { return "Modules/EDC/CRFPage.aspx"; } }
         public void SelectLabValue(string labName)
         {
-            Dropdown dropDown = Browser.Dropdown("LOC_DropDown");
+            Dropdown dropDown = Browser.DropdownById("LOC_DropDown");
             dropDown.SelectByText(labName);
         }
 

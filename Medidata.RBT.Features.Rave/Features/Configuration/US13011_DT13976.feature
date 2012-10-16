@@ -38,6 +38,7 @@ Scenario: @PB_US11101_01 As a Data Manager, when I am on the Configuration Loade
 		| Review Marking Group | Requires Response | Requires Manual Close |
 		| site from system     | True              | True                  |
 	And I select link "Configuration Loader"
+	And I prepare to download
 	And I click button "Get File"
 	When the "Core Configuration Specification" spreadsheet is downloaded
 	Then I verify "Coder Configuration" tab exists in the spreadsheet
@@ -55,6 +56,7 @@ Scenario: @PB_US11101_01 As a Data Manager, when I am on the Configuration Loade
 		| Monitor from Lead Monitor | False             | False                 |
 	And I navigate to "Other Settings"
 	And I navigate to "Configuration Loader"
+	And I prepare to download
 	And I click button "Get File"
 	When the "Core Configuration Specification" spreadsheet is downloaded
 	Then I verify "Coder Configuration" tab exists in the spreadsheet
@@ -75,6 +77,7 @@ Scenario:@PB_US11101_02  As a Data Manager, when I am on the Configuration Loade
 	And I navigate to "Configuration Loader"
 	And I check "Template Only"
 	And I take a screenshot
+	And I prepare to download
 	And I click button "Get File"
 	And the "Core Configuration Specification Template" spreadsheet is downloaded
 	When I verify "Coder Configuration" tab exists in the spreadsheet

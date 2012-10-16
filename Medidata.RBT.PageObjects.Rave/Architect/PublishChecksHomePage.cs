@@ -14,9 +14,9 @@ namespace Medidata.RBT.PageObjects.Rave
 		public override IWebElement GetElementByName(string identifier, string areaIdentifier = null, string listItem = null)
 		{
 			if (identifier == "Current CRF Version")
-				return Browser.Dropdown("ddlCurrentVersionId");
+				return Browser.DropdownById("ddlCurrentVersionId");
 			if (identifier == "Reference CRF Version")
-				return Browser.Dropdown("ddlReferenceVersionId");
+				return Browser.DropdownById("ddlReferenceVersionId");
 
 			return base.GetElementByName(identifier, areaIdentifier,listItem);
 		}
@@ -31,7 +31,7 @@ namespace Medidata.RBT.PageObjects.Rave
 
 			string id = (identifier == "Inactivate") ? "chkSelectInactivate" : "chkSelectCopy";
 
-			var chk = foundRow[0].Checkbox(id);
+			var chk = foundRow[0].CheckboxByID(id);
 
 			chk.Check();
 

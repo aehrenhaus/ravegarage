@@ -47,7 +47,7 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
                     else
                         fileName = LabConfigurationUploadName;
 
-                    FileLocation = TestContext.UploadPath + @"\LabConfigurations\" + fileName;
+                    FileLocation = RBTConfiguration.Default.UploadPath + @"\LabConfigurations\" + fileName;
                     Upload();
                 }
             }

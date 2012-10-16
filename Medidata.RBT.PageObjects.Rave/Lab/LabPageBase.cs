@@ -89,9 +89,9 @@ namespace Medidata.RBT.PageObjects.Rave
             if (!String.IsNullOrEmpty(rangeType)) ChooseFromDropdown("_ddlRangeType", rangeType);
              
             HtmlTable table = Browser.TryFindElementByPartialID("LabsGrid").EnhanceAs<HtmlTable>();
-            var currentRow =  table.Textbox("_txtName").Parent().Parent();
-            table.Textbox("_txtName").SetText(labName);
-            table.Textbox("_txtDescription").SetText(labName);
+            var currentRow =  table.TextboxById("_txtName").Parent().Parent();
+            table.TextboxById("_txtName").SetText(labName);
+            table.TextboxById("_txtDescription").SetText(labName);
             
          
             var checkButton = currentRow.ImageBySrc("../../Img/i_ccheck.gif");

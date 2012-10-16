@@ -91,7 +91,7 @@ namespace Medidata.RBT.PageObjects.Rave
 			var div = Browser.WaitForElement(x => paraTR.TryFindElementBy(By.XPath("./td[position()=2]/table/tbody/tr[position()=2]/td/div[@style='display: block;']")),
 				"timeout before div becomes visible");
 
-			var textbox = paraTR.Textbox("SearchTxt");
+			var textbox = paraTR.TextboxById("SearchTxt");
 			textbox.SetText(value);
 			var btnSearch = paraTR.TryFindElementByPartialID("SearchBtn");
 			btnSearch.Click();

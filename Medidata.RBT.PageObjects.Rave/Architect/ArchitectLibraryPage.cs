@@ -33,7 +33,7 @@ namespace Medidata.RBT.PageObjects.Rave
 		{
 			get
 			{
-				return Browser.LinkByPartialID("TabTextHyperlink2").Text;
+				return Browser.LinkByID("TabTextHyperlink2").Text;
 			}
 		}
 

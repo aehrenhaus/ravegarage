@@ -320,6 +320,11 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
+    <Compile Include="mytestfeature.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>mytestfeature.feature</DependentUpon>
+    </Compile>
     <Compile Include="ReferenceFix.cs" />
     <Compile Include="Steps\ArchitectSteps_DB.cs" />
     <Compile Include="Steps\ConfigurationSteps.cs" />
@@ -590,6 +595,10 @@
     <None Include="Features\UserAdministration\DT14168.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>DT14168.feature.cs</LastGenOutput>
+    </None>
+    <None Include="mytestfeature.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>mytestfeature.feature.cs</LastGenOutput>
     </None>
   </ItemGroup>
   <ItemGroup>

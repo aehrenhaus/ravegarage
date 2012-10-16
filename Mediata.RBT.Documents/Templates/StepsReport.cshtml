@@ -1,0 +1,78 @@
+﻿@using System.Linq;
+@inherits RazorEngine.Templating.TemplateBase<System.Xml.Linq.XElement>
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" href="site.css" type="text/css" />
+<style>
+		ul
+		{
+		}
+		
+		li
+		{
+			margin: 5px;
+			padding: 5px;
+			border-bottom: 1px solid #ddd;
+			list-style: none;
+		}
+		
+		.comment
+		{
+			color:#008000;
+			font-size:12px;
+		}
+		
+		.nocomment
+		{
+			color:orange;
+		}
+		.page
+		{
+			font-weight:bold;
+		}
+	</style>
+</head>
+
+<body>
+
+  @if (Model != null)
+{
+	foreach (var type in Model.Elements("Type"))
+	{
+	<h3>@type.Attribute("Name").Value</h3>
+	
+	<ul>
+		@foreach (var method in type.Descendants("Method"))
+  {
+	  foreach (var stepDef in method.Descendants("StepDef"))
+	  {
+			<li>@stepDef.Attribute("RegexWithArgName").Value
+			
+				@{
+		
+		  var summary = method.Descendants("summary").FirstOrDefault();
+				}
+  
+				@if (summary != null)
+	{
+					<p class="comment">@summary.Value</p>
+	}
+	else
+	{
+					<p class="comment nocomment">[No comments]</p>
+	}
+			</li>
+	  }
+  }
+	</ul>
+	}
+}
+else
+{
+	<h2>
+		Please select a folder</h2>
+}
+
+</body>
+</html>
