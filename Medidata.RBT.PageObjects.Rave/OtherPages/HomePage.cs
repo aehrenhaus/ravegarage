@@ -18,7 +18,7 @@ namespace Medidata.RBT.PageObjects.Rave
 	/// <summary>
 	/// Because HomePage is a all in one page. It also inherits from BaseEDCPage
 	/// </summary>
-	public  class HomePage : BaseEDCPage, ICanPaginate, ICanHighlight, ICanVerifyExist, ICanVerifyInOrder
+	public  class HomePage : BaseEDCPage, ICanPaginate, ICanHighlight, ICanVerifyExist, ICanVerifyInOrder, ITaskSummaryContainer
 	{
 		[FindsBy(How = How.Id, Using = "_ctl0_Content_ListDisplayNavigation_txtSearch")]
 		IWebElement SearchBox;
@@ -35,10 +35,16 @@ namespace Medidata.RBT.PageObjects.Rave
 		/// <returns></returns>
 		public HomePage SelectStudy(string studyName)
 		{
-			int foundOnPage;
+            Project study = TestContext.GetExistingFeatureObjectOrMakeNew(
+                studyName, () => new Project(studyName));
+			
+            int foundOnPage;
 			IWebElement studyLink = this.FindInPaginatedList("", () =>
 			{
-				return TestContext.Browser.TryFindElementByLinkText(studyName);
+                //TODO :    Remove the coalescing op when seeding considderation is up to date for all feature files. 
+                //          Use study.UniqueName as the text to search for.
+                return TestContext.Browser.TryFindElementByLinkText(study.Name)
+                    ?? TestContext.Browser.TryFindElementByLinkText(study.UniqueName);
 			}, out foundOnPage);
 
 			studyLink.Click();
@@ -64,15 +70,16 @@ namespace Medidata.RBT.PageObjects.Rave
 		/// <returns></returns>
 		public HomePage SelectSite(string siteName)
 		{
-			//TODO: the pagination does not work on Inna's site where there is no page buttons for sites list
-			//fix this later, but comment for now
+            Site site = TestContext.GetExistingFeatureObjectOrMakeNew(
+                siteName, () => new Site(siteName, false));
 
-			var siteLink = TestContext.Browser.TryFindElementByLinkText(siteName);
-			//int foundOnPage;
-			//IWebElement siteLink = this.FindInPaginatedList("", () =>
-			//{
-			//    return TestContext.Browser.TryFindElementByLinkText(siteName);
-			//}, out foundOnPage);
+            //TODO: the pagination does not work on Inna's site where there is no page buttons for sites list
+            //fix this later, but comment for now
+
+            //TODO :    Remove the coalescing op when seeding considderation is up to date for all feature files. 
+            //          Use site.UniqueName as the text to search for.
+            var siteLink = TestContext.Browser.TryFindElementByLinkText(site.Name)
+                ?? TestContext.Browser.TryFindElementByLinkText(site.UniqueName);
 
 			siteLink.Click();
 
@@ -245,5 +252,11 @@ namespace Medidata.RBT.PageObjects.Rave
             formFolderTable.FindElement(By.LinkText(formName)).Click();
             return new MonitorSiteSubjectPage();
         }
+
+        #region ITaskSummaryContainer
+
+        public TaskSummary GetTaskSummary() { return new TaskSummary(this); }
+
+        #endregion
     }
 }

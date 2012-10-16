@@ -11,7 +11,7 @@ using TechTalk.SpecFlow;
 
 namespace Medidata.RBT.PageObjects.Rave
 {
-	public class SubjectPage : BaseEDCPage,ICanVerifyInOrder,ICanVerifyExist
+    public class SubjectPage : BaseEDCPage, ICanVerifyInOrder, ICanVerifyExist, ITaskSummaryContainer
 	{
         public IWebElement GetTaskSummaryArea(string header)
 		{
@@ -156,20 +156,38 @@ namespace Medidata.RBT.PageObjects.Rave
 			throw new NotImplementedException();
 		}
 
-		public bool VerifyControlExist(string identifier)
-		{
-			throw new NotImplementedException();
-		}
+        public bool VerifyControlExist(string identifier) { return base.VerifyControlExist(identifier); }
 
 		bool ICanVerifyExist.VerifyTextExist(string identifier, string text)
 		{
-			//TODO: this is just a simple version of finding text. Implement more useful version later
-			var TR = GetTaskSummaryArea(identifier);
+            bool result = false;
+            if (string.IsNullOrEmpty(identifier))
+            {
+                //We have to wait for this element in the situation where the text appears after 
+                //eSign window phases out.
+                Browser.WaitForElement(b => Browser.FindElementByXPath(string.Format(
+                    "//*[text()='{0}']",
+                    text)));
+                result = base.VerifyTextExist(null, text);
+            }
+            else
+            {
+                //TODO: this is just a simple version of finding text. Implement more useful version later
+                var TR = GetTaskSummaryArea(identifier);
 
-			return TR.Text.Contains(text);
+                result = TR.Text.Contains(text);
+            }
+
+            return result;
 		}
 
 		#endregion
 
-	}
+
+        #region ITaskSummaryContainer
+
+        public TaskSummary GetTaskSummary() { return new TaskSummary(this); }
+        
+        #endregion
+    }
 }

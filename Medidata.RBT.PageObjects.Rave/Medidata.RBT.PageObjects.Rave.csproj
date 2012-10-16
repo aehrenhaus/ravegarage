@@ -92,6 +92,7 @@
     <Compile Include="AmendmentManager\AMMigrationHomePage.cs" />
     <Compile Include="EDC\AuditsPage.cs" />
     <Compile Include="EDC\MixedDataPageControl.cs" />
+    <Compile Include="EDC\ITaskSummaryContainer.cs" />
     <Compile Include="EDC\LandscapeLogField.cs" />
     <Compile Include="EDC\MonitorSiteSubjectPage.cs" />
     <Compile Include="EDC\NonLabDataPageControl.cs" />
@@ -101,6 +102,8 @@
     <Compile Include="EDC\LabFieldControl.cs" />
     <Compile Include="EDC\IEDCFieldControl.cs" />
     <Compile Include="EDC\PortraitLogField.cs" />
+    <Compile Include="EDC\TaskSummary.cs" />
+    <Compile Include="EDC\TaskSummaryItem.cs" />
     <Compile Include="Lab\AnalytesPage.cs" />
     <Compile Include="Lab\CentralLabsPage.cs" />
     <Compile Include="Lab\LabLoaderPage.cs" />
@@ -166,6 +169,7 @@
     <Compile Include="TableModels\QuerySearchModel.cs" />
     <Compile Include="TableModels\ReportAssignmentModel.cs" />
     <Compile Include="TableModels\ReportListModel.cs" />
+    <Compile Include="TableModels\TaskSummaryItemModel.cs" />
     <Compile Include="TableModels\UnitConversionModel.cs" />
     <Compile Include="TSDV\BlockPlansPageBase.cs" />
     <Compile Include="TSDV\CustomTierDraftPage.cs" />

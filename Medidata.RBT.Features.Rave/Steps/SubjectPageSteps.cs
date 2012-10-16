@@ -1,7 +1,9 @@
 ﻿using TechTalk.SpecFlow;
+using TechTalk.SpecFlow.Assist;
 using Medidata.RBT.PageObjects.Rave;
 using OpenQA.Selenium;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Medidata.RBT.PageObjects.Rave.TableModels;
 
 namespace Medidata.RBT.Features.Rave
 {
@@ -40,13 +42,19 @@ namespace Medidata.RBT.Features.Rave
         [StepDefinition(@"I can see ""([^""]*)"" button")]
         public void ICanSee____Button(string btnValue)
         {
-            bool canSee = false;
-            IWebElement element = CurrentPage.As<SubjectPage>().CanSeeControl(btnValue);
-
-            if (element != null)
-                canSee = true;
+            bool canSee = CurrentPage.As<ICanVerifyExist>()
+                .VerifyControlExist(btnValue);
 
             Assert.IsTrue(canSee);
+        }
+
+        [StepDefinition(@"I can not see ""([^""]*)"" button")]
+        public void ICanNotSee____Button(string btnValue)
+        {
+            bool canSee = CurrentPage.As<ICanVerifyExist>()
+                .VerifyControlExist(btnValue);
+
+            Assert.IsFalse(canSee);
         }
 
         [StepDefinition(@"I can see ""([^""]*)"" dropdown labeled ""([^""]*)""")]
@@ -105,21 +113,6 @@ namespace Medidata.RBT.Features.Rave
             CurrentPage.As<CRFPage>().SaveForm();
         }
 
-        [StepDefinition(@"I can not see ""([^""]*)"" button")]
-        public void ICanNotSee____Button(string value)
-        {
-            bool result = false;
-            IWebElement element = CurrentPage.As<SubjectPage>().CanSeeControl(value);
-
-            if (element != null)
-            {
-                if (value == "" || value.ToLower() == element.GetAttribute("value").ToLower())
-                    result = true;
-            }
-
-            Assert.IsFalse(result);
-        }
-
         [StepDefinition(@"I click radiobutton with label ""([^""]*)""")]
         public void IClickRadiobuttonWithLabel____(string label)
         {
@@ -134,5 +127,32 @@ namespace Medidata.RBT.Features.Rave
 
             Assert.IsTrue(result);
         }
+
+        [StepDefinition(@"I verify the task summary")]
+        public void IVerifyTheTaskSummary(Table table)
+        {
+            var models = table.CreateSet<TaskSummaryItemModel>();
+            var taskSummary = CurrentPage.As<ITaskSummaryContainer>()
+                .GetTaskSummary();
+            
+            foreach (var model in models)
+            {
+                TaskSummaryItem item = taskSummary.GetTaskSummaryItem(model.Task);
+
+                Assert.IsNotNull(item,
+                    string.Format("Task Summary does not contain Task Item \"{0}\"", model.Task));
+                Assert.AreEqual(model.PageCount, item.PageCount);
+            }
+        }
+
+        [Given(@"I expand Task Summary")]
+        public void GivenIExpandTaskSummary()
+        {
+            CurrentPage.As<ITaskSummaryContainer>()
+                .GetTaskSummary()
+                .Expand();
+        }
+
+
     }
 }
