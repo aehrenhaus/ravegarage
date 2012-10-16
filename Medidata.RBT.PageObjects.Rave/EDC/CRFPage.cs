@@ -99,8 +99,9 @@ namespace Medidata.RBT.PageObjects.Rave
             {
                 if (URL.Equals("Modules/EDC/PrimaryRecordPage.aspx"))
                     return false;
-                IWebElement logTable = TestContext.Browser.FindElement(By.XPath("*//table[@id='log']"));
-                IWebElement rowLeftSide = TestContext.Browser.FindElement(By.XPath("*//td[@class='crf_rowLeftSide']"));
+
+                IWebElement logTable = TestContext.Browser.TryFindElementById("log");
+                IWebElement rowLeftSide = TestContext.Browser.TryFindElementBy(By.XPath("*//td[@class='crf_rowLeftSide']"));
                 if (logTable != null && rowLeftSide != null)
                     return true;
                 return false;

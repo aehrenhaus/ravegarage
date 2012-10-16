@@ -131,17 +131,20 @@ namespace Medidata.RBT.SeleniumExtension
 			return element;
 		}
 
-		public static IWebElement ButtonByID(this ISearchContext context, string partialID, bool nullable = false)
-		{
-			var element = SelectExtendElementByPartialID<EnhancedElement>(context, "button", partialID, true);
-			if (element == null)
-				element = SelectExtendElementByPartialID<EnhancedElement>(context, "select", partialID, true);
+        public static IWebElement ButtonByID(this ISearchContext context, string partialID, bool nullable = false)
+        {
+            var element = SelectExtendElementByPartialID<EnhancedElement>(context, "button", partialID, true);
+            //<input type="submit"/>
+            if (element == null)
+                element = SelectExtendElementByPartialID<EnhancedElement>(context, "input", partialID, true);
+            if (element == null)
+                element = SelectExtendElementByPartialID<EnhancedElement>(context, "select", partialID, true);
 
-			if (!nullable && element == null)
-				throw new Exception("Can't find button by id " + partialID);
+            if (!nullable && element == null)
+                throw new Exception("Can't find button by id " + partialID);
 
-			return element;
-		}
+            return element;
+        }
 
 		public static ReadOnlyCollection<IWebElement> Buttons(this ISearchContext context)
 		{
