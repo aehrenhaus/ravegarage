@@ -29,6 +29,24 @@ namespace Medidata.RBT.PageObjects.Rave
 			return this;
 		}
 
+        /// <summary>
+        /// See IPage interface
+        /// </summary>
+        public override IPage ClickButton(string identifier)
+        {
+            var element = Browser.Button(identifier);
+
+            //Button searching should only consider the visible text , not id.
+
+            if (element == null)
+                element = GetElementByName(identifier);
+
+            if (element == null)
+                throw new Exception("Can't find button:" + identifier);
+            element.Click();
+
+            return GetPageByCurrentUrlIfNoAlert();
+        }
 
 		public override IWebElement GetElementByName(string identifier, string areaIdentifier = null, string listItem = null)
 		{
