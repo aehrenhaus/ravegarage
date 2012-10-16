@@ -67,8 +67,8 @@ namespace Medidata.RBT.PageObjects.Rave
                 By.XPath("span[1]/span"));
                 
             result = new TaskSummaryItem();
-            result.Pages = int.Parse(pageCountElement.Text);
-            result.Category = category;
+            result.PageCount = int.Parse(pageCountElement.Text);
+            result.Task = category;
 
             return result;
         }

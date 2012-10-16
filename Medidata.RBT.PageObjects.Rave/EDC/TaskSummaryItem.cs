@@ -9,8 +9,8 @@ namespace Medidata.RBT.PageObjects.Rave
     {
         public TaskSummaryItem() { }
 
-        public int Pages { get; set; }
+        public int PageCount { get; set; }
 
-        public string Category { get; set; }
+        public string Task { get; set; }
     }
 }

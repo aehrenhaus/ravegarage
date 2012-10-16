@@ -139,7 +139,9 @@ namespace Medidata.RBT.Features.Rave
             {
                 TaskSummaryItem item = taskSummary.GetTaskSummaryItem(model.Task);
 
-                Assert.AreEqual(model.Pages, item.Pages);
+                Assert.IsNotNull(item,
+                    string.Format("Task Summary does not contain Task Item \"{0}\"", model.Task));
+                Assert.AreEqual(model.PageCount, item.PageCount);
             }
         }
 
