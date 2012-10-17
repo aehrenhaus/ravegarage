@@ -34,7 +34,9 @@ namespace Medidata.RBT.PageObjects.Rave
         /// </summary>
         public override IPage ClickButton(string identifier)
         {
-            var element = Browser.Button(identifier);
+            var element = Browser.ButtonByText(identifier, true);
+            if (element == null)
+                element = Browser.ButtonByID(identifier, true);
 
             //Button searching should only consider the visible text , not id.
 
