@@ -51,6 +51,16 @@ namespace Medidata.RBT.PageObjects.Rave
                 return AuditExist_Record(audit.QueryMessage, audit.User, audit.Time, position);
             }
 
+            else if (audit.AuditType.ToLower().Equals("reviewed"))
+            {
+                return AuditExist_Reviewed(audit.QueryMessage, audit.User, audit.Time, position);
+            }
+
+            else if (audit.AuditType.ToLower().Equals("un-reviewed"))
+            {
+                return AuditExist_UnReviewed(audit.QueryMessage, audit.User, audit.Time, position);
+            }
+
 			throw new Exception("Invalid audit type " + audit.AuditType);
 		}
         
@@ -191,6 +201,32 @@ namespace Medidata.RBT.PageObjects.Rave
         private bool AuditExist_AddEvents(string query, string user, string timeFormat, int? position)
         {
             return AuditExist(string.Format("Add events {0}", query), user, timeFormat, position);
+        }
+
+        /// <summary>
+        /// Check if the specified audit exists against a point which has been reviewed
+        /// </summary>
+        /// <param name="query">The review group which has been reviewed</param>
+        /// <param name="user">The user who made the audit</param>
+        /// <param name="timeFormat">The format that the time is i</param>
+        /// <param name="position">The position of the audit in the audit logs</param>
+        /// <returns>true if the audit exists, false if it doesn't</returns>
+        private bool AuditExist_Reviewed(string query, string user, string timeFormat, int? position)
+        {
+            return AuditExist(string.Format("Reviewed for {0}.", query), user, timeFormat, position);
+        }
+
+        /// <summary>
+        /// Check if the specified audit exists against a point which has been un-reviewed
+        /// </summary>
+        /// <param name="query">The review group which has been un-reviewed</param>
+        /// <param name="user">The user who made the audit</param>
+        /// <param name="timeFormat">The format that the time is i</param>
+        /// <param name="position">The position of the audit in the audit logs</param>
+        /// <returns>true if the audit exists, false if it doesn't</returns>
+        private bool AuditExist_UnReviewed(string query, string user, string timeFormat, int? position)
+        {
+            return AuditExist(string.Format("Un-reviewed for {0}.", query), user, timeFormat, position);
         }
 
         public override string URL { get { return "AuditsPage.aspx"; } }

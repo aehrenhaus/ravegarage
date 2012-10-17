@@ -76,6 +76,23 @@ namespace Medidata.RBT.PageObjects.Rave
             return (RightSideTD.CheckboxByID("VerifyBox") as Checkbox).Enabled;
         }
 
+        /// <summary>
+        /// Returns if review checkbox is enabled or disabled
+        /// </summary>
+        /// <returns>True if review checkbox is there, False if it is not there.</returns>
+        public override bool IsReviewRequired()
+        {
+            return RightSideTD.CheckboxByID("ReviewGroupBox").EnhanceAs<Checkbox>().Enabled;
+        }
+
+        /// <summary>
+        /// Check the review checkbox next to the field
+        /// </summary>
+        public override void CheckReview()
+        {
+            RightSideTD.CheckboxByID("ReviewGroupBox").EnhanceAs<Checkbox>().Check();
+        }
+
 		public override IWebElement FindQuery(QuerySearchModel filter)
 		{
 
