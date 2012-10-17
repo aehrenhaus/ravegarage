@@ -275,7 +275,7 @@ Scenario: As an EDC user, when I have an edit check that sets a subject to requi
   And I verify data on Fields in CRF
 	|Field      |Data		  |Requires Signature |
 	|Age        |15           |True               |
-	|Visit Date |01 Jan 2012  |True               |
+	|Visit Date |02 Jan 2012  |True               |
   And I can see "Sign and Save" button	
   And I take a screenshot
   
@@ -285,7 +285,7 @@ Scenario: As an EDC user, when I have an edit check that sets a subject to requi
   And I expand Task Summary
   And I verify the task summary
 	|Task    				|Page Count |
-	|Requiring Signature    |2			|
+	|Requiring Signature    |1			|
   And I take a screenshot
 
 @Release_2012.1.0
