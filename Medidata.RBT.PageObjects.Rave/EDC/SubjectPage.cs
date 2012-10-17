@@ -55,19 +55,26 @@ namespace Medidata.RBT.PageObjects.Rave
 				return table;
 			}
 
-            if (identifier == "Add Event")
+            if (identifier == "Add Event" || identifier == "LAdd Event")
                 id = "_ctl0_Content_SubjectAddEvent_MatrixList";
-            else if (identifier == "Add")
+            else if (identifier == "Add" || identifier == "LAdd")
                 id = "_ctl0_Content_SubjectAddEvent_SaveBtn";
-            else if (identifier == "Enable" || identifier == "Disable")
+            else if (identifier == "Enable" || identifier == "Disable" ||
+                identifier == "LEnable" || identifier == "LDisable")
                 id = "_ctl0_Content_SubjectAddEvent_LockAddEventSaveBtn";
             else if (identifier == "Set")
                 id = "_ctl0_Content__ctl0_RadioButtons_0";
             else if (identifier == "Clear")
                 id = "_ctl0_Content__ctl0_RadioButtons_1";
+            else if (identifier == "Add Event is currently disabled for this subject." ||
+                identifier == "LAdd Event is currently disabled for this subject.")
+                id = "_ctl0_Content_SubjectAddEvent_DisableMatrixLabel";
+            else if ((identifier == "Select 'Disabled' to not allow others to add events.")
+                || (identifier == "Select 'Enabled' to allow others to add events."))
+                id = "_ctl0_Content_SubjectAddEvent_NoEntryPermitHelpLabel";
             else
-			    return GetTaskSummaryArea(identifier);
-
+                return GetTaskSummaryArea(identifier);
+            
             try
             {
                 element = base.Browser.FindElementById(id);
@@ -82,13 +89,16 @@ namespace Medidata.RBT.PageObjects.Rave
 
 		public override IPage ChooseFromCheckboxes(string identifier, bool isChecked, string areaIdentifier = null, string listItem = null)
 		{
-			if (identifier == "Lock")
-				this.ChooseFromCheckboxes("_ctl0_Content__ctl0_CB_Lock_0", true);
-			else
-			{
-				throw new Exception("Unknow checkbox");
-			}
-			return this;
+            if (identifier == "Lock")
+            {
+                var chkBox = Browser.TryFindElementById("_ctl0_Content__ctl0_CB_Lock_0").EnhanceAs<Checkbox>();
+                if (chkBox != null)
+                    chkBox.Check();
+                else
+                    throw new NotFoundException(string.Format("Checkbox name {0} was not found", identifier));
+            }
+
+            return this;
 		}
 
 		public override string GetInfomation(string identifier)
