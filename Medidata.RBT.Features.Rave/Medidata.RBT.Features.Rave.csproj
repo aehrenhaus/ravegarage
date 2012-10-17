@@ -245,11 +245,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>564QueryRefiringLogic5_LabForm_2FldEC.feature</DependentUpon>
     </Compile>
-    <Compile Include="Features\EDC\564QueryRefiringLogic8.feature.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>564QueryRefiringLogic8.feature</DependentUpon>
-    </Compile>
     <Compile Include="Features\EDC\US11547_DT11148_DisableAddEvents.feature.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
