@@ -571,5 +571,14 @@ namespace Medidata.RBT.Features.Rave
             Assert.IsTrue(CurrentPage.As<CRFPage>().FindFieldValuesInOrder(fieldName, values));
         }
 
+        /// <summary>
+        /// Expand a header in Task Summary area on Subject page.
+        /// </summary>
+        /// <param name="header"></param>
+        [StepDefinition(@"I expand ""([^""]*)"" in Task Summary")]
+        public void IExpand____InTaskSummary(string header)
+        {
+            CurrentPage.As<SubjectPage>().ExpandTask(header);
+        }
     }
 }

@@ -108,7 +108,7 @@ Scenario: PB_8.1.1 As an EDC user, Data setup and verification for query re-firi
 	Then I verify Query is displayed
 		| Field               | Query Message                                                                                                 | Answered | Closed |
 		| Start Date          | 'Date Informed Consent Signed' is greater. Please revise.                                                     | false    | false  |
-		| Current Axis Number | Informed Consent 'Current Distribution Number' is not equal to Concomitant Medications 'Current Axis Number'. | False    | False  |
+		| Current Axis Number | Informed Consent 'Current Distribution Number' is not equal to Concomitant Medications 'Current Axis Number'. | false    | false  |
 	And I take a screenshot
 	And I answer the Query "'Date Informed Consent Signed' is greater. Please revise." on Field "Start Date" with "{answer}"
 	And I answer the Query "Informed Consent 'Current Distribution Number' is not equal to Concomitant Medications 'Current Axis Number'." on Field "Current Axis Number" with "{answer}"
@@ -124,10 +124,10 @@ Scenario: PB_8.1.1 As an EDC user, Data setup and verification for query re-firi
 		| Start Date          | 09 Jan 2000 |
 		| Current Axis Number | 19          |
 	And I open log line 1
-	And I verify Query is not displayed
-		| Field               | Query Message                                                                                                 | Answered | Closed |
-		| Start Date          | 'Date Informed Consent Signed' is greater. Please revise.                                                     | true     | true   |
-		| Current Axis Number | Informed Consent 'Current Distribution Number' is not equal to Concomitant Medications 'Current Axis Number'. | true     | true   |
+	And I verify Query is displayed
+		| Field               | Query Message                                                                                                 |Answered | Closed |
+		| Start Date          | 'Date Informed Consent Signed' is greater. Please revise.                                                     |true     | true   | 
+		| Current Axis Number | Informed Consent 'Current Distribution Number' is not equal to Concomitant Medications 'Current Axis Number'. |true     | true   |
 	And I take a screenshot
 	When I enter data in CRF and save
 		| Field               | Data        |
@@ -157,9 +157,9 @@ Scenario: PB_8.1.2
 	    | Current Axis Number  | 18          |
 	When I open log line 2
 	Then I verify Query is displayed
-		| Field                | Query Message                                                                                                  | Answered | Closed |
-		| Start Date           | 'Date Informed Consent Signed' is greater. Please revise.                                                      | false    | false  |
-		| Cuurrent Axis Number | 'Informed Consent 'Current Distribution Number' is not equal to Concomitant Medications 'Current Axis Number'. | false    | false  |
+		| Field               | Query Message                                                                                                 | Answered | Closed |
+		| Start Date          | 'Date Informed Consent Signed' is greater. Please revise.                                                     | false    | false  |
+		| Current Axis Number | Informed Consent 'Current Distribution Number' is not equal to Concomitant Medications 'Current Axis Number'. | false    | false  |
 	And I take a screenshot
 	And I answer the Query "'Date Informed Consent Signed' is greater. Please revise." on Field "Start Date" with "{answer}"
 	And I answer the Query "Informed Consent 'Current Distribution Number' is not equal to Concomitant Medications 'Current Axis Number'." on Field "Current Axis Number" with "{answer}"
@@ -175,9 +175,9 @@ Scenario: PB_8.1.2
 	And I take a screenshot
 	When I open log line 2
 	Then I verify Query is displayed
-		| Field                | Query Message                                                                                                  | Answered | Closed |
-		| Start Date           | 'Date Informed Consent Signed' is greater. Please revise.                                                      | true     | true   |
-		| Cuurrent Axis Number | 'Informed Consent 'Current Distribution Number' is not equal to Concomitant Medications 'Current Axis Number'. | true     | true   |
+		| Field               | Query Message                                                                                                 | Answered | Closed |
+		| Start Date          | 'Date Informed Consent Signed' is greater. Please revise.                                                     | true     | true   |
+		| Current Axis Number | Informed Consent 'Current Distribution Number' is not equal to Concomitant Medications 'Current Axis Number'. | true     | true   |
 	And I take a screenshot
 	When I enter data in CRF and save
 		| Field               | Data        |
@@ -185,11 +185,10 @@ Scenario: PB_8.1.2
 		| Current Axis Number | 18          |
 	And I open log line 2
 	Then I verify Query is displayed
-		| Field                | Query Message                                                                                                  | Answered | Closed |
-		| Start Date           | 'Date Informed Consent Signed' is greater. Please revise.                                                      | false    | false  |
-		| Cuurrent Axis Number | 'Informed Consent 'Current Distribution Number' is not equal to Concomitant Medications 'Current Axis Number'. | false    | false  |
+		| Field               | Query Message                                                                                                 | Answered | Closed |
+		| Start Date          | 'Date Informed Consent Signed' is greater. Please revise.                                                     | true     | true   |
+		| Current Axis Number | Informed Consent 'Current Distribution Number' is not equal to Concomitant Medications 'Current Axis Number'. | true     | true   |
 	And I take a screenshot
-# ???  Should closed query be displayed
 	
 #----------------------------------------------------------------------------------------------------------------------------------------	
 @release_564_Patch11
@@ -208,9 +207,9 @@ Scenario: PB_8.1.3
 	    | Current Axis Number  | 18          |
 	When I open log line 3
 	Then I verify Query is displayed
-		| Field                | Query Message                                                                                                  | Answered | Closed |
-		| Start Date           | 'Date Informed Consent Signed' is greater. Please revise.                                                      | false    | false  |
-		| Cuurrent Axis Number | 'Informed Consent 'Current Distribution Number' is not equal to Concomitant Medications 'Current Axis Number'. | false    | false  |
+		| Field               | Query Message                                                                                                 | Answered | Closed |
+		| Start Date          | 'Date Informed Consent Signed' is greater. Please revise.                                                     | false    | false  |
+		| Current Axis Number | Informed Consent 'Current Distribution Number' is not equal to Concomitant Medications 'Current Axis Number'. | false    | false  |
 	And I take a screenshot
 	And I cancel the Query "'Date Informed Consent Signed' is greater. Please revise." on Field "Start Date"
 	And I cancel the Query "Informed Consent 'Current Distribution Number' is not equal to Concomitant Medications 'Current Axis Number'." on Field "Current Axis Number"
@@ -222,13 +221,9 @@ Scenario: PB_8.1.3
 	And I take a screenshot
 	When I open log line 3
 	Then I verify Query is not displayed
-		| Field                | Query Message                                                                                                  | Answered | Closed |
-		| Start Date           | 'Date Informed Consent Signed' is greater. Please revise.                                                      | false    | false  |
-		| Cuurrent Axis Number | 'Informed Consent 'Current Distribution Number' is not equal to Concomitant Medications 'Current Axis Number'. | false    | false  |
-	And I verify Query is not displayed
-		| Field                | Query Message                                                                                                  | Answered | Closed |
-		| Start Date           | 'Date Informed Consent Signed' is greater. Please revise.                                                      | true     | true   |
-		| Cuurrent Axis Number | 'Informed Consent 'Current Distribution Number' is not equal to Concomitant Medications 'Current Axis Number'. | true     | true   |
+		| Field               | Query Message                                                                                                 | Answered | Closed |
+		| Start Date          | 'Date Informed Consent Signed' is greater. Please revise.                                                     | false    | false  |
+		| Current Axis Number | Informed Consent 'Current Distribution Number' is not equal to Concomitant Medications 'Current Axis Number'. | false    | false  |
 	And I take a screenshot
 	When I enter data in CRF and save
 		| Field               | Data        |
@@ -236,9 +231,9 @@ Scenario: PB_8.1.3
 		| Current Axis Number | 18          |
 	And I open log line 3
 	Then I verify Query is displayed
-		| Field                | Query Message                                                                                                  | Answered | Closed |
-		| Start Date           | 'Date Informed Consent Signed' is greater. Please revise.                                                      | false    | false  |
-		| Cuurrent Axis Number | 'Informed Consent 'Current Distribution Number' is not equal to Concomitant Medications 'Current Axis Number'. | false    | false  |
+		| Field               | Query Message                                                                                                 |
+		| Start Date          | 'Date Informed Consent Signed' is greater. Please revise.                                                     |
+		| Current Axis Number | Informed Consent 'Current Distribution Number' is not equal to Concomitant Medications 'Current Axis Number'. |
 	And I take a screenshot
 
 #----------------------------------------------------------------------------------------------------------------------------------------	
@@ -254,9 +249,9 @@ Scenario: PB_8.2.1 Task Summary
 	And I select link "Screening-Concomitant Medications" in "Open Queries"
 	When I open log line 3
 	Then I verify Query is displayed
-		| Field                | Query Message                                                                                                  | Answered | Closed |
-		| Start Date           | 'Date Informed Consent Signed' is greater. Please revise.                                                      | false    | false  |
-		| Cuurrent Axis Number | 'Informed Consent 'Current Distribution Number' is not equal to Concomitant Medications 'Current Axis Number'. | false    | false  |
+		| Field               | Query Message                                                                                                 | Answered | Closed |
+		| Start Date          | 'Date Informed Consent Signed' is greater. Please revise.                                                     | false    | false  |
+		| Current Axis Number | Informed Consent 'Current Distribution Number' is not equal to Concomitant Medications 'Current Axis Number'. | false    | false  |
 	And I take a screenshot
 	And I select link "Edit Check Site 8" in "Header"
     And I select a Subject "sub{Var(num1)}"
@@ -265,9 +260,9 @@ Scenario: PB_8.2.1 Task Summary
 	And I select link "Screening-Concomitant Medications" in "Cancel Queries"
 	When I open log line 3
 	Then I verify Query is displayed
-		| Field                | Query Message                                                                                                  | Answered | Closed |
-		| Start Date           | 'Date Informed Consent Signed' is greater. Please revise.                                                      | false    | false  |
-		| Cuurrent Axis Number | 'Informed Consent 'Current Distribution Number' is not equal to Concomitant Medications 'Current Axis Number'. | false    | false  |
+		| Field               | Query Message                                                                                                 | Answered | Closed |
+		| Start Date          | 'Date Informed Consent Signed' is greater. Please revise.                                                     | false    | false  |
+		| Current Axis Number | Informed Consent 'Current Distribution Number' is not equal to Concomitant Medications 'Current Axis Number'. | false    | false  |
 	And I take a screenshot
 
 #----------------------------------------------------------------------------------------------------------------------------------------	
@@ -285,16 +280,16 @@ Scenario: PB_8.3.1 Query Management
 	And I select link "Concomitant Medications" in "Search Result"
 	When I open log line 2
 	Then I verify Query is displayed
-		| Field                | Query Message                                                                                                  | Answered | Closed |
-		| Start Date           | 'Date Informed Consent Signed' is greater. Please revise.                                                      | false    | false  |
-		| Cuurrent Axis Number | 'Informed Consent 'Current Distribution Number' is not equal to Concomitant Medications 'Current Axis Number'. | false    | false  |
+		| Field               | Query Message                                                                                                 | Answered | Closed |
+		| Start Date          | 'Date Informed Consent Signed' is greater. Please revise.                                                     | false    | false  |
+		| Current Axis Number | Informed Consent 'Current Distribution Number' is not equal to Concomitant Medications 'Current Axis Number'. | false    | false  |  
 	And I take a screenshot
 	And I click button "Cancel"
 	When I open log line 3
 	Then I verify Query is displayed
-		| Field                | Query Message                                                                                                  | Answered | Closed |
-		| Start Date           | 'Date Informed Consent Signed' is greater. Please revise.                                                      | false    | false  |
-		| Cuurrent Axis Number | 'Informed Consent 'Current Distribution Number' is not equal to Concomitant Medications 'Current Axis Number'. | false    | false  |
+		| Field               | Query Message                                                                                                 | Answered | Closed |
+		| Start Date          | 'Date Informed Consent Signed' is greater. Please revise.                                                     | false    | false  |
+		| Current Axis Number | Informed Consent 'Current Distribution Number' is not equal to Concomitant Medications 'Current Axis Number'. | false    | false  |
 	And I take a screenshot
 	And I click button "Cancel"
 	When  I enter data in CRF on a new log line and save and reopen
@@ -304,9 +299,9 @@ Scenario: PB_8.3.1 Query Management
 	    | Original Axis Number | 10          |
 	    | Current Axis Number  | 20          |
 	Then I verify Query is displayed
-		| Field                | Query Message                                                                                                  | Answered | Closed |
-		| Start Date           | 'Date Informed Consent Signed' is greater. Please revise.                                                      | false    | false  |
-		| Cuurrent Axis Number | 'Informed Consent 'Current Distribution Number' is not equal to Concomitant Medications 'Current Axis Number'. | false    | false  |
+		| Field               | Query Message                                                                                                 | Answered | Closed |
+		| Start Date          | 'Date Informed Consent Signed' is greater. Please revise.                                                     | false    | false  |
+		| Current Axis Number | Informed Consent 'Current Distribution Number' is not equal to Concomitant Medications 'Current Axis Number'. | false    | false  |
 	And I take a screenshot
 	And I enter data in CRF
 		| Field               | Data        |
@@ -318,9 +313,9 @@ Scenario: PB_8.3.1 Query Management
 	And I take a screenshot
 	When I open the last log line
 	Then I verify Query is not displayed
-		| Field                | Query Message                                                                                                  | Answered | Closed |
-		| Start Date           | 'Date Informed Consent Signed' is greater. Please revise.                                                      | true     | true   |
-		| Cuurrent Axis Number | 'Informed Consent 'Current Distribution Number' is not equal to Concomitant Medications 'Current Axis Number'. | true     | true   |
+		| Field               | Query Message                                                                                                 | Answered | Closed |
+		| Start Date          | 'Date Informed Consent Signed' is greater. Please revise.                                                     | true     | true   |
+		| Current Axis Number | Informed Consent 'Current Distribution Number' is not equal to Concomitant Medications 'Current Axis Number'. | true     | true   |
 	And I take a screenshot
 	When I enter data in CRF and save
 		| Field               | Data        |
@@ -328,9 +323,9 @@ Scenario: PB_8.3.1 Query Management
 		| Current Axis Number | 18          |
 	And I open the last log line
 	Then I verify Query is displayed
-		| Field                | Query Message                                                                                                  | Answered | Closed |
-		| Start Date           | 'Date Informed Consent Signed' is greater. Please revise.                                                      | false    | false  |
-		| Cuurrent Axis Number | 'Informed Consent 'Current Distribution Number' is not equal to Concomitant Medications 'Current Axis Number'. | false    | false  |
+		| Field               | Query Message                                                                                                 | Answered | Closed |
+		| Start Date          | 'Date Informed Consent Signed' is greater. Please revise.                                                     | false    | false  |
+		| Current Axis Number | Informed Consent 'Current Distribution Number' is not equal to Concomitant Medications 'Current Axis Number'. | false    | false  |
 	And I take a screenshot
 	
 #----------------------------------------------------------------------------------------------------------------------------------------	
@@ -354,9 +349,9 @@ Scenario: PB_8.3.2
 	    | Original Axis Number | 10          |
 	    | Current Axis Number  | 18          |
     And I verify Query is displayed
-		| Field                | Query Message                                                                                                 | Answered | Closed |
-		| Start Date           | 'Date Informed Consent Signed' is greater. Please revise.                                                     | false    | false  |
-		| Cuurrent Axis Number | Informed Consent 'Current Distribution Number' is not equal to Concomitant Medications 'Current Axis Number'. | false    | false  |
+		| Field               | Query Message                                                                                                 | Answered | Closed |
+		| Start Date          | 'Date Informed Consent Signed' is greater. Please revise.                                                     | false    | false  |
+		| Current Axis Number | Informed Consent 'Current Distribution Number' is not equal to Concomitant Medications 'Current Axis Number'. | false    | false  |
 	And I take a screenshot
 	And I answer the Query "'Date Informed Consent Signed' is greater. Please revise." on Field "Start Date" with "{answer}"
 	And I answer the Query "Informed Consent 'Current Distribution Number' is not equal to Concomitant Medications 'Current Axis Number'." on Field "Current Axis Number" with "{answer}"
@@ -389,7 +384,7 @@ Scenario: PB_8.3.2
 	And I verify Query is displayed
 		| Field                | Query Message                                                                                                  | Answered | Closed |
 		| Start Date           | 'Date Informed Consent Signed' is greater. Please revise.                                                      | false    | false  |
-		| Cuurrent Axis Number | Informed Consent 'Current Distribution Number' is not equal to Concomitant Medications 'Current Axis Number'. | false    | false  |
+		| Current Axis Number | Informed Consent 'Current Distribution Number' is not equal to Concomitant Medications 'Current Axis Number'. | false    | false  |
 	And I take a screenshot
 	# ???? Is that correct?
 
@@ -580,6 +575,7 @@ Scenario: PB_8.5.1 Publish Checks
 	And I note down "crfversion" to "newversion1#"
 	And I select link "AM Edit Check Study" in "Header"
 	And I push CRF Version "{Var(newversion1#)}" to "All Sites"
+	And I select link "AM Edit Check Study" in "Header"
 	And I select link "Draft 1" in "CRF Drafts"
 	And I publish CRF Version "Pub2{RndNum<TV#>(5)}"
 	And I note down "crfversion" to "newversion2#"
@@ -781,4 +777,4 @@ Scenario: PB_8.6.1 Queries verification on data points with Freeze, Hard lock an
 		| Log Field 1 | Query Opened on Log Field 1 | false    | false  |
 	And I take a screenshot
 	
-#----------------------------------------------------------------------------------------------------------------------------------------	
+#----------------------------------------------------------------------------------------------------------------------------------------
