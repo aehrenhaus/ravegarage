@@ -380,7 +380,7 @@ Scenario:@US18745-11 When the Add Events disabled on subject grid view page, the
 	Then I can see "disabled" dropdown labeled "Add Event"
 	And I can not see "Add" button
  	And I take a screenshot
-	When I select "Calendar View"
+	When I select link "Calendar View"
 	Then I can see "disabled" dropdown labeled "Add Event"
 	And I can not see "Add" button
 	And I take a screenshot
@@ -417,7 +417,7 @@ Scenario:@US18745-12 When the Add Events enabled on subject grid view page, the 
 	And I can not see Add Event lock icon
 	And I can not see link "Add Event is currently disabled for this subject."
  	And I take a screenshot
-	When I select "Calendar View"
+	When I select link "Calendar View"
     Then I can see "Enabled" radio button
 	And I can see "Disabled" radio button
 	And I can see "enabled" dropdown labeled "Add Event"
@@ -449,7 +449,7 @@ Scenario:@US18745-13 The user with lock, unlock and entry permission disable, en
 	And I click radiobutton with label "Enabled"
 	And I click radiobutton with label "Disabled"
  	And I take a screenshot	
-	When I select "Calendar View"
+	When I select link "Calendar View"
     Then I can see "disabled" dropdown labeled "Add Event"
 	And I can not see "Add" button
  	And I take a screenshot	
@@ -582,7 +582,7 @@ Scenario:@US18745-16 All the Add Events controls will disappear by adding all ma
 	And I can not see dropdown labeled "Add Event"
 	And I can not see "Add" button
 	And I take a screenshot
-	When I select "Calendar View"
+	When I select link "Calendar View"
 	Then I can not see "Enabled" radio button
 	And I can not see "Disabled" radio button
 	And I can not see dropdown labeled "Add Event"
