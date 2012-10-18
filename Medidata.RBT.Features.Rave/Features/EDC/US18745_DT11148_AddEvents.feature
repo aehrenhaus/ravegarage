@@ -145,13 +145,13 @@ Scenario:@US18745-04 By Default the read only user with seeentry permission can 
     When I select a Subject "{Var(num4)}"
 	Then I can not see "Enabled" radio button
 	And I can not see "Disabled" radio button
-	And I can not see "enabled" dropdown labeled "Add Event"
+	And I can not see dropdown labeled "Add Event"
 	And I can not see "Add" button
 	And I take a screenshot
 	When I select link "Grid View"
 	Then I can not see "Enabled" radio button
 	And I can not see "Disabled" radio button
-	And I can not see "enabled" dropdown labeled "Add Event"
+	And I can not see dropdown labeled "Add Event"
 	And I can not see "Add" button
 	And I take a screenshot
 	And I log out of Rave
@@ -174,7 +174,7 @@ Scenario:@US18745-05 When the Add Events disabled, the read only user with seeen
 	And I can not see link "Add Event is currently disabled for this subject."
 	And I can not see "Enabled" radio button
 	And I can not see "Disabled" radio button
-	And I can not see "enabled" dropdown labeled "Add Event"
+	And I can not see dropdown labeled "Add Event"
 	And I can not see "Add" button
 	And I take a screenshot
 	When I select link "Grid View"
@@ -182,7 +182,7 @@ Scenario:@US18745-05 When the Add Events disabled, the read only user with seeen
 	And I can not see link "Add Event is currently disabled for this subject."
 	And I can not see "Enabled" radio button
 	And I can not see "Disabled" radio button
-	And I can not see "enabled" dropdown labeled "Add Event"
+	And I can not see dropdown labeled "Add Event"
 	And I can not see "Add" button
 	And I take a screenshot
 	And I log out of Rave
@@ -203,7 +203,7 @@ Scenario:@US18745-06 When the Add Events enabled, the read only user with seeent
 	And I can not see link "Add Event is currently disabled for this subject."
 	And I can not see "Enabled" radio button
 	And I can not see "Disabled" radio button
-	And I can not see "enabled" dropdown labeled "Add Event"
+	And I can not see dropdown labeled "Add Event"
 	And I can not see "Add" button
 	And I take a screenshot
 	When I select link "Grid View"
@@ -211,7 +211,7 @@ Scenario:@US18745-06 When the Add Events enabled, the read only user with seeent
 	And I can not see link "Add Event is currently disabled for this subject."
 	And I can not see "Enabled" radio button
 	And I can not see "Disabled" radio button
-	And I can not see "enabled" dropdown labeled "Add Event"
+	And I can not see dropdown labeled "Add Event"
 	And I can not see "Add" button
 	And I take a screenshot
 	And I log out of Rave
@@ -532,23 +532,23 @@ Scenario:@US18745-15 All the Add Events controls will disappear by adding all ma
 	And I can see "enabled" dropdown labeled "Add Event"
 	And I can see "Add" button
 	And I take a screenshot
-	And I select "Unscheduled" from "Add Event" dropdown
+	And I choose "Unscheduled" from "Add Event"
     And I click button "Add"
 	And I take a screenshot
-	And I select "Unscheduled" from "Add Event" dropdown
+	And I choose "Unscheduled" from "Add Event"
     And I click button "Add"
 	And I take a screenshot
-	And I select "Unscheduled" from "Add Event" dropdown
+	And I choose "Unscheduled" from "Add Event"
     When I click button "Add"
 	Then I can not see "Enabled" radio button
 	And I can not see "Disabled" radio button
-	And I can not see "enabled" dropdown labeled "Add Event"
+	And I can not see dropdown labeled "Add Event"
 	And I can not see "Add" button
 	And I take a screenshot
 	When I select link "Grid View"
 	Then I can not see "Enabled" radio button
 	And I can not see "Disabled" radio button
-	And I can not see "enabled" dropdown labeled "Add Event"
+	And I can not see dropdown labeled "Add Event"
 	And I can not see "Add" button
 	And I take a screenshot
 	And I log out of Rave
@@ -569,23 +569,23 @@ Scenario:@US18745-16 All the Add Events controls will disappear by adding all ma
 	And I can see "enabled" dropdown labeled "Add Event"
 	And I can see "Add" button
 	And I take a screenshot
-	And I select "Unscheduled" from "Add Event" dropdown
+	And I choose "Unscheduled" from "Add Event"
     And I click button "Add"
 	And I take a screenshot
-	And I select "Unscheduled" from "Add Event" dropdown
+	And I choose "Unscheduled" from "Add Event"
     And I click button "Add"
 	And I take a screenshot
-	And I select "Unscheduled" from "Add Event" dropdown
+	And I choose "Unscheduled" from "Add Event"
     When I click button "Add"
 	Then I can not see "Enabled" radio button
 	And I can not see "Disabled" radio button
-	And I can not see "enabled" dropdown labeled "Add Event"
+	And I can not see dropdown labeled "Add Event"
 	And I can not see "Add" button
 	And I take a screenshot
 	When I select "Calendar View"
 	Then I can not see "Enabled" radio button
 	And I can not see "Disabled" radio button
-	And I can not see "enabled" dropdown labeled "Add Event"
+	And I can not see dropdown labeled "Add Event"
 	And I can not see "Add" button
 	And I take a screenshot
 	And I log out of Rave
@@ -615,7 +615,7 @@ Scenario:@US18745-17 By Default the user with entry and lock permission, can see
 @release_2012.1.0
 @US18745-18
 @WIP 
-Scenario:@US18745-08 When the Add Events disabled on subject page, the user with lock and entry permission can see the greyed out Add Events dropdown with lock icon and Audit link on subject page and grid view page.
+Scenario:@US18745-18 When the Add Events disabled on subject page, the user with lock and entry permission can see the greyed out Add Events dropdown with lock icon and Audit link on subject page and grid view page.
 
 	Given I log in to Rave with user "US18745_entrylockuser"
     When I create a Subject
@@ -844,14 +844,14 @@ Scenario:@US18745-23 By Default the user with seeentry, lock and unlock permissi
 	Then I can see "Disabled" radio button
 	And I can see "Enabled" radio button
 	And I can see the label "Select 'Disabled' to not allow others to add events."
-	And I can not see "enabled" dropdown labeled "Add Event"
+	And I can not see dropdown labeled "Add Event"
 	And I can not see "Add" button
 	And I take a screenshot
 	When I select link "Grid View"
 	Then I can see "Disabled" radio button
 	And I can see "Enabled" radio button
 	And I can see the label "Select 'Disabled' to not allow others to add events."
-	And I can not see "enabled" dropdown labeled "Add Event"
+	And I can not see dropdown labeled "Add Event"
 	And I can not see "Add" button
 	And I take a screenshot
 	And I log out of Rave	
@@ -871,14 +871,14 @@ Scenario:@US18745-24 When the Add Events disabled, the user with lock, unlock an
 	Then I can see "Disabled" radio button
 	And I can see "Enabled" radio button
 	And I can see the label "Select 'Disabled' to not allow others to add events."
-	And I can not see "enabled" dropdown labeled "Add Event"
+	And I can not see dropdown labeled "Add Event"
 	And I can not see "Add" button
 	And I take a screenshot
 	When I click radiobutton with label "Disabled"
 	Then I can see "Disabled" radio button
 	And I can see "Enabled" radio button
 	And I can see the label "Select 'Enabled' to allow others to add events."
-	And I can not see "enabled" dropdown labeled "Add Event"
+	And I can not see dropdown labeled "Add Event"
 	And I can not see "Add" button
 	And I take a screenshot
 	And I click radiobutton with label "Enabled"
@@ -896,7 +896,7 @@ Scenario:@US18745-24 When the Add Events disabled, the user with lock, unlock an
 	Then I can see "Disabled" radio button
 	And I can see "Enabled" radio button
 	And I can see the label "Select 'Enabled' to allow others to add events."
-	And I can not see "enabled" dropdown labeled "Add Event"
+	And I can not see dropdown labeled "Add Event"
 	And I can not see "Add" button
 	And I take a screenshot
 	When I select link "Add Event is currently disabled for this subject."
@@ -936,14 +936,14 @@ The user with lock, unlock and seeentry permission enable and disable the radio 
 	Then I can see "Disabled" radio button
 	And I can see "Enabled" radio button
 	And I can see the label "Select 'Enabled' to allow others to add events."
-	And I can not see "enabled" dropdown labeled "Add Event"
+	And I can not see dropdown labeled "Add Event"
 	And I can not see "Add" button
 	And I take a screenshot
 	When I click radiobutton with label "Enabled"
 	Then I can see "Disabled" radio button
 	And I can see "Enabled" radio button
 	And I can see the label "Select 'Disabled' to not allow others to add events."
-	And I can not see "enabled" dropdown labeled "Add Event"
+	And I can not see dropdown labeled "Add Event"
 	And I can not see "Add" button
 	And I can not see Add Event lock icon
 	And I can not see link "Add Event is currently disabled for this subject."
