@@ -1075,13 +1075,13 @@ Unlocking "All" in the subject grid view page enables the Add Event feature.
     |Field      |Data                  |Control Type |
     |Label 1    |SUB{RndNum<num28>(3)} |textbox      |
 	And I select link "Grid View"
-	When I select "All"
+	When I select link "All"
 	Then I can see "Disabled" radio button
 	And I can see "Enabled" radio button
 	And I can see "enabled" dropdown labeled "Add Event"
 	And I can see "Add" button
 	And I take a screenshot
-	And I check Lock checkbox
+	And I check "Lock" in "Subject level"
 	When I click radiobutton with label "Set"
 	And I take a screenshot
 	And I click button "Save"
@@ -1091,7 +1091,7 @@ Unlocking "All" in the subject grid view page enables the Add Event feature.
 	And I can see Add Event lock icon
 	And I can see link "Add Event is currently disabled for this subject."
 	And I take a screenshot
-	And I check Lock checkbox
+	And I check "Lock" in "Subject level"
 	When I click radiobutton with label "Clear"
 	And I take a screenshot
 	And I click button "Save"
