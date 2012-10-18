@@ -23,11 +23,11 @@ Given study "US18745StudyA" is assigned to Site "Site_A1"
 Given I publish and push eCRF "US18745StudyA.xml" to "Version 1"
 Given following Project assignments exist
 |User                           |Project        |Environment |Role                           | Site    |SecurityRole          |
-|US18745_entrylockunlockuser    |US18745StudyA  |Live: Prod  |US18745_entrylockunlockrole    | Site_A1 |Project Admin Default |
 |US18745_entryuser              |US18745StudyA  |Live: Prod  |US18745_entryrole              | Site_A1 |Project Admin Default |
+|US18745_readonlyuser           |US18745StudyA  |Live: Prod  |US18745_readonlyrole           | Site_A1 |Project Admin Default |
+|US18745_entrylockunlockuser    |US18745StudyA  |Live: Prod  |US18745_entrylockunlockrole    | Site_A1 |Project Admin Default |
 |US18745_entrylockuser          |US18745StudyA  |Live: Prod  |US18745_entrylockrole          | Site_A1 |Project Admin Default |
 |US18745_entryunlockuser        |US18745StudyA  |Live: Prod  |US18745_entryunlockrole        | Site_A1 |Project Admin Default |
-|US18745_readonlyuser           |US18745StudyA  |Live: Prod  |US18745_readonlyrole           | Site_A1 |Project Admin Default |
 |US18745_seeentrylockunlockuser |US18745StudyA  |Live: Prod  |US18745_seeentrylockunlockrole | Site_A1 |Project Admin Default |
 |US18745_locuser                |US18745StudyA  |Live: Prod  |US18745_entrylockunlockrole    | Site_A1 |Project Admin Default |
 
@@ -67,8 +67,6 @@ Scenario:@US18745-02 When the Add Events disabled, the user with entry permissio
 	And I log out of Rave
 	And I log in to Rave with user "US18745_entryuser"
     When I select a Subject "{Var(num2)}"
-	And I can see Add Event lock icon
-	And I can see link "Add Event is currently disabled for this subject."
 	And I can not see "Enabled" radio button
 	And I can not see "Disabled" radio button
 	And I can see "disabled" dropdown labeled "Add Event"
@@ -79,10 +77,9 @@ Scenario:@US18745-02 When the Add Events disabled, the user with entry permissio
        |Audit Type   | Query Message |User                                                        |Time                   |  
        |Add Events   | disabled.     |entrylockunlock user ([id] - US18745_entrylockunlockuser)   |dd MMM yyyy HH:mm:ss   |
  	And I take a screenshot
+	And I navigate to "Home"
 	And I select a Subject "{Var(num2)}"
 	When I select link "Grid View"
-	And I can see Add Event lock icon
-	And I can see link "Add Event is currently disabled for this subject."
 	And I can not see "Enabled" radio button
 	And I can not see "Disabled" radio button
 	And I can see "disabled" dropdown labeled "Add Event"
@@ -113,8 +110,6 @@ Scenario:@US18745-03 When the Add Events enabled, the user with entry permission
     And I create a Subject
     |Field      |Data                 |Control Type |
     |Label 1    |SUB{RndNum<num3>(3)} |textbox      |
-	And I click radiobutton with label "Enabled"
-	And I take a screenshot
 	And I log out of Rave
 	And I log in to Rave with user "US18745_entryuser"
     When I select a Subject "{Var(num3)}"
@@ -201,8 +196,6 @@ Scenario:@US18745-06 When the Add Events enabled, the read only user with seeent
     And I create a Subject
     |Field      |Data                 |Control Type |
     |Label 1    |SUB{RndNum<num6>(3)} |textbox      |
-	And I click radiobutton with label "Enabled"
-	And I take a screenshot
 	And I log out of Rave
 	And I log in to Rave with user "US18745_readonlyuser"
     When I select a Subject "{Var(num6)}"
@@ -262,21 +255,18 @@ Scenario:@US18745-08 When the Add Events disabled on subject page, the user with
 	When I click radiobutton with label "Disabled"
     Then I can see "disabled" dropdown labeled "Add Event"
 	And I can not see "Add" button
-	And I can see Add Event lock icon
-	And I can see link "Add Event is currently disabled for this subject."
  	And I take a screenshot
 	When I select link "Add Event is currently disabled for this subject."
 	Then I verify Audits exist
        |Audit Type   | Query Message |User                                                        |Time                   |  
        |Add Events   | disabled.     |entrylockunlock user ([id] - US18745_entrylockunlockuser)   |dd MMM yyyy HH:mm:ss   |
  	And I take a screenshot
+	And I navigate to "Home"
 	And I select a Subject "{Var(num8)}"
 	When I select link "Grid View"
 	Then I can see "disabled" dropdown labeled "Add Event"
 	And I can not see "Add" button
-	And I can see Add Event lock icon
-	And I can see link "Add Event is currently disabled for this subject."
- 	And I take a screenshot
+	And I take a screenshot
 	When I select link "Add Event is currently disabled for this subject."
 	Then I verify Audits exist
        |Audit Type   | Query Message |User                                                        |Time                   |  
@@ -304,22 +294,19 @@ Scenario:@US18745-09 When the Add Events enabled on subject page, the user with 
     |Label 1    |SUB{RndNum<num9>(3)} |textbox      |
 	Then I can see "Enabled" radio button
 	And I can see "Disabled" radio button
-	And I can see dropdown labeled "Add Event"
-	And I can see "Add" button
-	And I take a screenshot
-	When I click radiobutton with label "Enabled"
-    Then I can see "enabled" dropdown labeled "Add Event"
+	And I can see "enabled" dropdown labeled "Add Event"
 	And I can see "Add" button
 	And I can not see Add Event lock icon
 	And I can not see link "Add Event is currently disabled for this subject."
  	And I take a screenshot
 	When I select link "Grid View"
-    Then I can see "enabled" dropdown labeled "Add Event"
+    Then I can see "Enabled" radio button
+	And I can see "Disabled" radio button
+	And I can see "enabled" dropdown labeled "Add Event"
 	And I can see "Add" button
 	And I can not see Add Event lock icon
 	And I can not see link "Add Event is currently disabled for this subject."
- 	And I take a screenshot
-	And I log out of Rave
+ 	And I log out of Rave
 	
 @release_2012.1.0
 @US18745-10
@@ -338,8 +325,6 @@ Scenario:@US18745-10 The user with lock, unlock and entry permission disable, en
 	When I click radiobutton with label "Disabled"
     Then I can see "disabled" dropdown labeled "Add Event"
 	And I can not see "Add" button
-	And I can see Add Event lock icon
-	And I can see link "Add Event is currently disabled for this subject."
  	And I take a screenshot
 	And I click radiobutton with label "Enabled"
 	And I click radiobutton with label "Disabled"	
@@ -350,12 +335,11 @@ Scenario:@US18745-10 The user with lock, unlock and entry permission disable, en
 	   |Add Events   | enabled.       |entrylockunlock user ([id] - US18745_entrylockunlockuser)   |dd MMM yyyy HH:mm:ss   |
 	   |Add Events   | disabled.      |entrylockunlock user ([id] - US18745_entrylockunlockuser)   |dd MMM yyyy HH:mm:ss   |
  	And I take a screenshot
+	And I navigate to "Home"
 	And I select a Subject "{Var(num10)}"
 	When I select link "Grid View"
 	Then I can see "disabled" dropdown labeled "Add Event"
 	And I can not see "Add" button
-	And I can see Add Event lock icon
-	And I can see link "Add Event is currently disabled for this subject."
  	And I take a screenshot
 	When I select link "Add Event is currently disabled for this subject."
 	Then I verify Audits exist
@@ -395,15 +379,11 @@ Scenario:@US18745-11 When the Add Events disabled on subject grid view page, the
 	When I click radiobutton with label "Disabled"
 	Then I can see "disabled" dropdown labeled "Add Event"
 	And I can not see "Add" button
-	And I can see Add Event lock icon
-	And I can see link "Add Event is currently disabled for this subject."
  	And I take a screenshot
 	When I select "Calendar View"
 	Then I can see "disabled" dropdown labeled "Add Event"
 	And I can not see "Add" button
-	And I can see Add Event lock icon
-	And I can see link "Add Event is currently disabled for this subject."
- 	And I take a screenshot
+	And I take a screenshot
 	When I select link "Add Event is currently disabled for this subject."
 	Then I verify Audits exist
        |Audit Type   | Query Message  |User                                                        |Time                   |  
@@ -432,17 +412,15 @@ Scenario:@US18745-12 When the Add Events enabled on subject grid view page, the 
 	When I select link "Grid View"
 	Then I can see "Enabled" radio button
 	And I can see "Disabled" radio button
-	And I can see dropdown labeled "Add Event"
-	And I can see "Add" button
-	And I take a screenshot
-	When I click radiobutton with label "Enabled"
-    Then I can see "enabled" dropdown labeled "Add Event"
+	And I can see "enabled" dropdown labeled "Add Event"
 	And I can see "Add" button
 	And I can not see Add Event lock icon
 	And I can not see link "Add Event is currently disabled for this subject."
  	And I take a screenshot
 	When I select "Calendar View"
-    Then I can see "enabled" dropdown labeled "Add Event"
+    Then I can see "Enabled" radio button
+	And I can see "Disabled" radio button
+	And I can see "enabled" dropdown labeled "Add Event"
 	And I can see "Add" button
 	And I can not see Add Event lock icon
 	And I can not see link "Add Event is currently disabled for this subject."
@@ -467,8 +445,6 @@ Scenario:@US18745-13 The user with lock, unlock and entry permission disable, en
 	When I click radiobutton with label "Disabled"
     Then I can see "disabled" dropdown labeled "Add Event"
 	And I can not see "Add" button
-	And I can see Add Event lock icon
-	And I can see link "Add Event is currently disabled for this subject."
  	And I take a screenshot
 	And I click radiobutton with label "Enabled"
 	And I click radiobutton with label "Disabled"
@@ -476,8 +452,6 @@ Scenario:@US18745-13 The user with lock, unlock and entry permission disable, en
 	When I select "Calendar View"
     Then I can see "disabled" dropdown labeled "Add Event"
 	And I can not see "Add" button
-	And I can see Add Event lock icon
-	And I can see link "Add Event is currently disabled for this subject."
  	And I take a screenshot	
 	When I select link "Add Event is currently disabled for this subject."
 	Then I verify Audits exist
@@ -515,20 +489,17 @@ Scenario:@US18745-14 When the Add Events disabled by other user with entry and l
     When I select a Subject "{Var(num14)}"
     Then I can see "disabled" dropdown labeled "Add Event"
 	And I can not see "Add" button
-	And I can see Add Event lock icon
-	And I can see link "Add Event is currently disabled for this subject."
  	And I take a screenshot
 	When I select link "Add Event is currently disabled for this subject."
 	Then I verify Audits exist
        |Audit Type   | Query Message  |User                                            |Time                   |  
        |Add Events   | disabled.      |entrylock user ([id] - US18745_entrylockuser)   |dd MMM yyyy HH:mm:ss   |
  	And I take a screenshot
+	And I navigate to "Home"
 	And I select a Subject "{Var(num14)}"
 	When I select link "Grid View"
 	Then I can see "disabled" dropdown labeled "Add Event"
 	And I can not see "Add" button
-	And I can see Add Event lock icon
-	And I can see link "Add Event is currently disabled for this subject."
  	And I take a screenshot
 	When I select link "Add Event is currently disabled for this subject."
 	Then I verify Audits exist
@@ -658,20 +629,17 @@ Scenario:@US18745-08 When the Add Events disabled on subject page, the user with
 	When I click radiobutton with label "Disabled"
     Then I can see "disabled" dropdown labeled "Add Event"
 	And I can not see "Add" button
-	And I can see Add Event lock icon
-	And I can see link "Add Event is currently disabled for this subject."
- 	And I take a screenshot
+	And I take a screenshot
 	When I select link "Add Event is currently disabled for this subject."
 	Then I verify Audits exist
        |Audit Type   | Query Message  |User                                            |Time                   |  
        |Add Events   | disabled.      |entrylock user ([id] - US18745_entrylockuser)   |dd MMM yyyy HH:mm:ss   |
  	And I take a screenshot
+	And I navigate to "Home"
 	And I select a Subject "{Var(num18)}"
 	When I select link "Grid View"
 	Then I can see "disabled" dropdown labeled "Add Event"
 	And I can not see "Add" button
-	And I can see Add Event lock icon
-	And I can see link "Add Event is currently disabled for this subject."
  	And I take a screenshot
 	When I select link "Add Event is currently disabled for this subject."
 	Then I verify Audits exist
@@ -705,21 +673,18 @@ Scenario:@US18745-19 When the Add Events disabled by other user with entry, lock
     When I select a Subject "{Var(num19)}"
     Then I can see "disabled" dropdown labeled "Add Event"
 	And I can not see "Add" button
-	And I can see Add Event lock icon
-	And I can see link "Add Event is currently disabled for this subject."
  	And I take a screenshot
 	When I select link "Add Event is currently disabled for this subject."
 	Then I verify Audits exist
        |Audit Type   | Query Message  |User                                                        |Time                   |  
        |Add Events   | disabled.      |entrylockunlock user ([id] - US18745_entrylockunlockuser)   |dd MMM yyyy HH:mm:ss   |
  	And I take a screenshot
+	And I navigate to "Home"
 	And I select a Subject "{Var(num19)}"
 	When I select link "Grid View"
 	Then I can see "disabled" dropdown labeled "Add Event"
 	And I can not see "Add" button
-	And I can see Add Event lock icon
-	And I can see link "Add Event is currently disabled for this subject."
- 	And I take a screenshot
+	And I take a screenshot
 	When I select link "Add Event is currently disabled for this subject."
 	Then I verify Audits exist
        |Audit Type   | Query Message  |User                                                        |Time                   |  
@@ -776,22 +741,19 @@ Scenario:@US18745-21 When the Add Events disabled by other user with entry, lock
 	And I can not see "Disabled" radio button
     And I can see "disabled" dropdown labeled "Add Event"
 	And I can not see "Add" button
-	And I can see Add Event lock icon
-	And I can see link "Add Event is currently disabled for this subject."
  	And I take a screenshot
 	When I select link "Add Event is currently disabled for this subject."
 	Then I verify Audits exist
        |Audit Type   | Query Message  |User                                                        |Time                   |  
        |Add Events   | disabled.      |entrylockunlock user ([id] - US18745_entrylockunlockuser)   |dd MMM yyyy HH:mm:ss   |
  	And I take a screenshot
+	And I navigate to "Home"
 	And I select a Subject "{Var(num21)}"
 	When I select link "Grid View"
 	Then I can see "Enabled" radio button
 	And I can not see "Disabled" radio button
     And I can see "disabled" dropdown labeled "Add Event"
 	And I can not see "Add" button
-	And I can see Add Event lock icon
-	And I can see link "Add Event is currently disabled for this subject."
  	And I take a screenshot
 	When I select link "Add Event is currently disabled for this subject."
 	Then I verify Audits exist
@@ -827,8 +789,6 @@ Scenario:@US18745-22 When the Add Events disabled by other user with entry, lock
 	And I can not see "Disabled" radio button
     And I can see "disabled" dropdown labeled "Add Event"
 	And I can not see "Add" button
-	And I can see Add Event lock icon
-	And I can see link "Add Event is currently disabled for this subject."
  	And I take a screenshot
 	When I click radiobutton with label "Enabled"
     Then I can see "enabled" dropdown labeled "Add Event"
@@ -846,6 +806,7 @@ Scenario:@US18745-22 When the Add Events disabled by other user with entry, lock
 	   |Add Events   | enabled.       |entryunlock user ([id] - US18745_entryunlockuser)           |dd MMM yyyy HH:mm:ss   |
 	   |Add Events   | disabled.      |entrylockunlock user ([id] - US18745_entrylockunlockuser)   |dd MMM yyyy HH:mm:ss   |
  	And I take a screenshot
+	And I navigate to "Home"
 	And I select a Subject "{Var(num22)}"
 	And I select link "Grid View"
 	When I select link "Add Event is currently disabled for this subject."
@@ -882,14 +843,14 @@ Scenario:@US18745-23 By Default the user with seeentry, lock and unlock permissi
 	When I select a Subject "{Var(num23)}"
 	Then I can see "Disabled" radio button
 	And I can see "Enabled" radio button
-	And I see message "Select 'Disabled' to not allow others to add events."
+	And I can see the label "Select 'Disabled' to not allow others to add events."
 	And I can not see dropdown labeled "Add Event"
 	And I can not see "Add" button
 	And I take a screenshot
 	When I select link "Grid View"
 	Then I can see "Disabled" radio button
 	And I can see "Enabled" radio button
-	And I see message "Select 'Disabled' to not allow others to add events."
+	And I can see the label "Select 'Disabled' to not allow others to add events."
 	And I can not see dropdown labeled "Add Event"
 	And I can not see "Add" button
 	And I take a screenshot
@@ -909,18 +870,16 @@ Scenario:@US18745-24 When the Add Events disabled, the user with lock, unlock an
 	When I select a Subject "{Var(num24)}"
 	Then I can see "Disabled" radio button
 	And I can see "Enabled" radio button
-	And I see message "Select 'Disabled' to not allow others to add events."
+	And I can see the label "Select 'Disabled' to not allow others to add events."
 	And I can not see dropdown labeled "Add Event"
 	And I can not see "Add" button
 	And I take a screenshot
 	When I click radiobutton with label "Disabled"
 	Then I can see "Disabled" radio button
 	And I can see "Enabled" radio button
-	And I see message "Select 'Enabled' to allow others to add events."
+	And I can see the label "Select 'Enabled' to allow others to add events."
 	And I can not see dropdown labeled "Add Event"
 	And I can not see "Add" button
-	And I can see Add Event lock icon
-	And I can see link "Add Event is currently disabled for this subject."
 	And I take a screenshot
 	And I click radiobutton with label "Enabled"
 	And I click radiobutton with label "Disabled"
@@ -931,15 +890,14 @@ Scenario:@US18745-24 When the Add Events disabled, the user with lock, unlock an
 	   |Add Events   | enabled.       |seeentrylockunlock user ([id] - US18745_seeentrylockunlockuser)   |dd MMM yyyy HH:mm:ss   |
 	   |Add Events   | disabled.      |seeentrylockunlock user ([id] - US18745_seeentrylockunlockuser)   |dd MMM yyyy HH:mm:ss   |
  	And I take a screenshot
+	And I navigate to "Home"
 	And I select a Subject "{Var(num24)}"
 	When I select link "Grid View"
 	Then I can see "Disabled" radio button
 	And I can see "Enabled" radio button
-	And I see message "Select 'Enabled' to allow others to add events."
+	And I can see the label "Select 'Enabled' to allow others to add events."
 	And I can not see dropdown labeled "Add Event"
 	And I can not see "Add" button
-	And I can see Add Event lock icon
-	And I can see link "Add Event is currently disabled for this subject."
 	And I take a screenshot
 	When I select link "Add Event is currently disabled for this subject."
 	Then I verify Audits exist
@@ -977,16 +935,14 @@ The user with lock, unlock and seeentry permission enable and disable the radio 
 	When I select a Subject "{Var(num25)}"
 	Then I can see "Disabled" radio button
 	And I can see "Enabled" radio button
-	And I see message "Select 'Enabled' to allow others to add events."
+	And I can see the label "Select 'Enabled' to allow others to add events."
 	And I can not see dropdown labeled "Add Event"
 	And I can not see "Add" button
-	And I can see Add Event lock icon
-	And I can see link "Add Event is currently disabled for this subject."
 	And I take a screenshot
 	When I click radiobutton with label "Enabled"
 	Then I can see "Disabled" radio button
 	And I can see "Enabled" radio button
-	And I see message "Select 'Disabled' to not allow others to add events."
+	And I can see the label "Select 'Disabled' to not allow others to add events."
 	And I can not see dropdown labeled "Add Event"
 	And I can not see "Add" button
 	And I can not see Add Event lock icon
@@ -1000,6 +956,7 @@ The user with lock, unlock and seeentry permission enable and disable the radio 
 	   |Add Events   | enabled.       |seeentrylockunlock user ([id] - US18745_seeentrylockunlockuser)   |dd MMM yyyy HH:mm:ss   |
 	   |Add Events   | disabled.      |entrylockunlock user ([id] - US18745_entrylockunlockuser)         |dd MMM yyyy HH:mm:ss   |
  	And I take a screenshot
+	And I navigate to "Home"
 	And I select a Subject "{Var(num25)}"
 	And I select link "Grid View"
 	When I select link "Add Event is currently disabled for this subject."
@@ -1036,16 +993,14 @@ Scenario:@US18745-26  The Add Events controls can be localized on the subject pa
 	And I can see "enabled" dropdown labeled "LAdd Event"
 	And I can see "LAdd" button
 	And I take a screenshot
-	When I click radio button "LDisabled"	
+	When I click radiobutton with label "LDisabled"	
 	Then I can see "disabled" dropdown labeled "LAdd Event"
 	And I can not see "LAdd" button
-	And I can see Add Event lock icon
-	And I can see link "LAdd Event is currently disabled for this subject."
 	And I can see "LDisabled" radio button
 	And I can see "LEnabled" radio button	
  	And I take a screenshot
-	And I click radio button "LEnabled"
-    And I click radio button "LDisabled"
+	And I click radiobutton with label "LEnabled"
+    And I I click radiobutton with label "LDisabled"
  	When I select link "LAdd Event is currently disabled for this subject."
 	Then I verify Audits exist
        |Audit Type    |Query Message  |User                              |Time                 |
@@ -1081,16 +1036,14 @@ Scenario:@US18745-27 The Add Events controls can be localized on the grid view p
 	And I can see "enabled" dropdown labeled "LAdd Event"
 	And I can see "LAdd" button
 	And I take a screenshot
-	When I click radio button "LDisabled"	
+	When I click radiobutton with label "LDisabled"	
 	Then I can see "disabled" dropdown labeled "LAdd Event"
 	And I can not see "LAdd" button
-	And I can see Add Event lock icon
-	And I can see link "LAdd Event is currently disabled for this subject."
 	And I can see "LDisabled" radio button
 	And I can see "LEnabled" radio button	
  	And I take a screenshot
-	And I click radio button "LEnabled"
-    And I click radio button "LDisabled"
+	And I click radiobutton with label "LEnabled"
+    And I I click radiobutton with label "LDisabled"
  	When I select link "LAdd Event is currently disabled for this subject."
 	Then I verify Audits exist
        |Audit Type    |Query Message  |User                              |Time                 |
