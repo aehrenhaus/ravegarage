@@ -61,6 +61,17 @@ namespace Medidata.RBT.PageObjects.Rave
 
         bool IsVerificationRequired();
         /// <summary>
+        /// Returns if review checkbox is enabled or disabled
+        /// </summary>
+        /// <returns>True if review checkbox is there, False if it is not there.</returns>
+        bool IsReviewRequired();
+
+        /// <summary>
+        /// Check the review checkbox next to the field
+        /// </summary>
+        void CheckReview();
+
+        /// <summary>
         /// Check if the field is inactive
         /// </summary>
         /// <param name="text">The text of the field to check</param>

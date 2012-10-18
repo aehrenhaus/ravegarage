@@ -8,14 +8,14 @@ using Medidata.RBT.PageObjects.Rave.Configuration.Models;
 using TechTalk.SpecFlow;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using TechTalk.SpecFlow.Assist;
+using Medidata.RBT.PageObjects.Rave;
+using Medidata.RBT.PageObjects.Rave.SharedRaveObjects;
 
 namespace Medidata.RBT.Features.Rave.Steps
 {
     [Binding]
     public class ConfigurationSteps : BrowserStepsBase
     {
-       
-
         [StepDefinition(@"the URL has ""([^""]*)"" installed")]
         public void TheURLHas____Installed()
         {
@@ -26,12 +26,28 @@ namespace Medidata.RBT.Features.Rave.Steps
         [StepDefinition(@"the ""([^""]*)"" spreadsheet is downloaded")]
         public void The____IsDownloaded(string fileName)
         {
-			bool zipped = true;
+            string path = RBTConfiguration.Default.DownloadPath + @"\";
+            bool zipped = false;
+            string fullPath = null;
+            TestContext.SpreadsheetName = fileName;
+            switch (fileName)
+            {
+                case "Core Configuration Specification Template":
+                    fullPath = path + "RaveCoreConfig_eng_Template.zip";
+                    zipped = true;
+                    break;
+                case "Core Configuration Specification":
+                    var files = Directory.GetFiles(path, "*.zip").Select(t => new FileInfo(t)).OrderByDescending(t => t.LastWriteTime);
+                    Assert.IsTrue(files.Any());
 
-			//finish watching for new file
-			var file = TestContext.WaitForDownloadFinish();
-
-			TestContext.ExcelFile = new ExcelFileHelper(file.FullName, zipped);
+                    //take latest downloaded file
+                    fullPath = files.First().FullName;
+                    zipped = true;
+                    break;
+                default:
+                    throw new NotImplementedException("Steps for this spreadsheet arent implemented yet");
+            }
+            TestContext.ExcelFile = new ExcelFileHelper(fullPath, zipped);
 
             Assert.IsNotNull(TestContext.ExcelFile);
         }
@@ -70,11 +86,10 @@ namespace Medidata.RBT.Features.Rave.Steps
             }
         }
 
-
         [StepDefinition(@"I verify options for cell ""([^""]*)""")]
-        public void IVerifyOptionsForCell____( string cellName, Table table)
+        public void IVerifyOptionsForCell____(string cellName, Table table)
         {
-          
+
             string nameSpace = "ss";
             string spreadSheetName = "Coder Configuration";
 
@@ -88,31 +103,27 @@ namespace Medidata.RBT.Features.Rave.Steps
                 {
                     int colNum = j <= 4 ? 5 : 2;
 
-                    string actual = TestContext.ExcelFile.GetExcelValue(nameSpace, spreadSheetName, colNum,j);
+                    string actual = TestContext.ExcelFile.GetExcelValue(nameSpace, spreadSheetName, colNum, j);
 
                     if (expected.Equals(actual))
                         found = true;
                 }
-               
-               Assert.IsTrue(found);
+
+                Assert.IsTrue(found);
             }
-            
         }
-
-
-
 
         [StepDefinition(@"I enter data in ""Coder Configuration"" and save")]
         public void IEnterDataInCoderConfiguration(Table table)
         {
-            var page = CurrentPage.As<CoderConfigurationPage>();     
+            var page = CurrentPage.As<CoderConfigurationPage>();
 
             page.FillData(table.CreateSet<CoderConfigurationModel>());
             page.Save();
         }
 
 
-		//TODO: this method should be deleted, use the common step for clicking a button
+        //TODO: this method should be deleted, use the common step for clicking a button
         [StepDefinition(@"I click ""([^""]*)""")]
         public void IClick____(string name)
         {
@@ -121,5 +132,78 @@ namespace Medidata.RBT.Features.Rave.Steps
 
         }
 
-}
+        /// <summary>
+        /// Assign the user to various project assignments
+        /// </summary>
+        /// <param name="table">Privileges to assign a user to and the user to assign those privileges to</param>
+        [StepDefinition(@"following Project assignments exist")]
+        public void FollowingProjectAssignmentsExist(Table table)
+        {
+            List<ConfigurationCreationModel> configurations = table.CreateSet<ConfigurationCreationModel>().ToList();
+            foreach (ConfigurationCreationModel configuration in configurations)
+            {
+                User user = TestContext.GetExistingFeatureObjectOrMakeNew(configuration.User, () => new User(configuration.User, true));
+                Role role = TestContext.GetExistingFeatureObjectOrMakeNew(configuration.Role, () => new Role(configuration.Role, true));
+                SecurityRole securityRole = TestContext.GetExistingFeatureObjectOrMakeNew
+                    (configuration.SecurityRole, () => new SecurityRole(configuration.SecurityRole));
+
+                Site site = TestContext.GetExistingFeatureObjectOrMakeNew(configuration.Site, () => new Site(configuration.Site, true));
+                Project project = TestContext.GetExistingFeatureObjectOrMakeNew(configuration.Project, () => new Project(configuration.Project));
+
+                bool studyAssignmentExists = user.StudyAssignmentExists(role.UID.Value, project.UID.Value, site.UID.Value);
+                bool moduleAssignmentExists = user.ModuleAssignmentExists("All Projects", securityRole.UniqueName);
+                if (!studyAssignmentExists || !moduleAssignmentExists)
+                {
+                    string loggedInUserBeforeAssignments = TestContext.CurrentUser;
+                    LoginPage.LoginUsingDefaultUserFromAnyPage();
+
+                    CurrentPage = new UserAdministrationPage().NavigateToSelf();
+                    CurrentPage = CurrentPage.As<UserAdministrationPage>().SearchUser(new UserAdministrationPage.SearchByModel()
+                    {
+                        Login = user.UniqueName
+                    });
+                    CurrentPage = CurrentPage.As<UserAdministrationPage>().ClickUser(user.UniqueName);
+                    if (!moduleAssignmentExists)
+                        CurrentPage.As<UserEditPage>().AssignUserToSecurityRole(user, securityRole);
+                    if (!studyAssignmentExists)
+                        CurrentPage.As<UserEditPage>().AssignUserToPermissions(user, project, role, configuration.Environment, site);
+
+                    LoginPage page = new LoginPage();
+                    page.NavigateToSelf();
+                    CurrentPage = page.Login(loggedInUserBeforeAssignments, RaveConfiguration.Default.DefaultUserPassword);
+
+                    CurrentPage = new UserAdministrationPage().NavigateToSelf();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Make review groups active
+        /// </summary>
+        /// <param name="numbers">The numbers of the review groups to make active</param>
+        [StepDefinition(@"review group number ""<Numbers>"" is active")]
+        public void ReviewGroupNumber____IsActive(Table numbers)
+        {
+            string loggedInUserBeforeAssignments = TestContext.CurrentUser;
+            LoginPage.LoginUsingDefaultUserFromAnyPage();
+
+            CurrentPage = new ConfigurationPage().NavigateToSelf();
+
+            List<int> reviewGroupsToDeactivate = new List<int>();
+
+            foreach (TableRow tableRow in numbers.Rows)
+            {
+                string stringNumber = tableRow["Numbers"];
+                int parsedNumber;
+                Int32.TryParse(stringNumber, out parsedNumber);
+                reviewGroupsToDeactivate.Add(parsedNumber);
+                CurrentPage.As<ConfigurationPage>().SetReviewGroup(parsedNumber, true);
+            }
+
+            LoginPage page = new LoginPage();
+            page.NavigateToSelf();
+            CurrentPage = page.Login(loggedInUserBeforeAssignments, RaveConfiguration.Default.DefaultUserPassword);
+            CurrentPage = new ConfigurationPage().NavigateToSelf();
+        }
+    }
 }

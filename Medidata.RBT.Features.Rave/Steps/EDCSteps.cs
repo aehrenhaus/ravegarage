@@ -6,6 +6,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using TechTalk.SpecFlow.Assist;
 using Medidata.RBT.PageObjects.Rave.SharedRaveObjects;
 using System.Linq;
+using OpenQA.Selenium;
 
 namespace Medidata.RBT.Features.Rave
 {
@@ -180,11 +181,16 @@ namespace Medidata.RBT.Features.Rave
                     bool dataExists = fieldControl.HasDataEntered(field.Data);
                     Assert.IsTrue(dataExists, "Data doesn't exist for field(s)");
                 }
+                if (field.RequiresReview.HasValue)
+                {
+                    bool reviewRequired = fieldControl.IsReviewRequired();
 
+                    Assert.AreEqual(field.RequiresReview.Value, reviewRequired, "Review Required doesn't match on Fields in CRF");
+                }
                 if (field.RequiresVerification.HasValue)
                 {
                     bool verificationRequired = fieldControl.IsVerificationRequired();
-                    
+
                     Assert.AreEqual(field.RequiresVerification.Value, verificationRequired, "Verification Required doesn't match on Fields in CRF");
                 }
                 if (field.Inactive.HasValue)
@@ -192,16 +198,57 @@ namespace Medidata.RBT.Features.Rave
                     bool isInactive = fieldControl.IsInactive(field.Data);
                     Assert.AreEqual(field.Inactive.Value, isInactive, "Inactive doesn't match on Fields in CRF");
                 }
-
-                if (field.RequiresSignature.HasValue)
+                if (field.StatusIcon != null && field.StatusIcon.Length > 0)                    Assert.AreNotEqual(0, fieldControl.StatusIconPathLookup(field.StatusIcon).Length, "Status Icon not found");                if (field.RequiresSignature.HasValue)
                 {
                     bool signatureRequired = fieldControl.IsSignatureRequired();
 
                     Assert.AreEqual(field.RequiresSignature.Value, signatureRequired, "Signature Required doesn't match on Fields in CRF");
-                }
+            }
+        }
+        }
+
+        /// <summary>
+        /// Check or uncheck the checkboxes in the righthand side next to fields
+        /// This is different than enter data in crf, since edit should not be clicked
+        /// </summary>
+        /// <param name="table">The checkboxes to check or not check</param>
+        [StepDefinition(@"I edit checkboxes for fields")]
+        public void WhenICheckCheckboxesForFields(Table table)
+        {
+            CRFPage page = CurrentPage.As<CRFPage>();
+
+            IEnumerable<FieldModel> fields = table.CreateSet<FieldModel>();
+            foreach (FieldModel field in fields)
+            {
+                IEDCFieldControl fieldControl = page.FindField(field.Field);
+                if (field.Review.HasValue)
+                    if(field.Review.Value)
+                        fieldControl.CheckReview();
             }
         }
 
+        /// <summary>
+        /// A more generic implementation for verifying aspects of the current form
+        /// </summary>
+        /// <param name="table">The form model, which details information about the form to verify</param>
+        [StepDefinition(@"I verify data on current CRF")]
+        public void ThenIVerifyDataOnCurrentForm(Table table)
+        {
+            CRFPage page = CurrentPage.As<CRFPage>();
+            List<FormModel> forms = table.CreateSet<FormModel>().ToList();
+
+            if (forms.Count != 1)
+                throw new Exception("Too many or too few forms to be just the current form");
+
+            FormModel formInfo = forms.FirstOrDefault();
+            FormHeaderControl headerControl = page.FindHeader();
+            if (formInfo.RequiresReview.HasValue)
+            {
+                bool reviewRequired = headerControl.IsReviewRequired();
+
+                Assert.AreEqual(formInfo.RequiresReview.Value, reviewRequired, "Review Required doesn't match on Form in CRF");
+            }
+        }
 
         /// <summary>
         /// No Clinical Significance for field displayed

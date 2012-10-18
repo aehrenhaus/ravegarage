@@ -51,6 +51,9 @@ namespace Medidata.RBT.PageObjects.Rave
                 case "Locked":
                     result += "dp_lo.gif";
                     break;
+                case "Requires Review":
+                    result += "dp_rr.gif";
+                    break;
                 default:
                     throw new InvalidOperationException("Status: " + lookupIcon + " not yet implemented in StatusIconPathLookup(string lookupIcon)");
             }
@@ -321,6 +324,16 @@ namespace Medidata.RBT.PageObjects.Rave
 		}
 
         public virtual bool IsVerificationRequired()
+        {
+            throw new NotImplementedException();
+        }
+
+        public virtual bool IsReviewRequired()
+        {
+            throw new NotImplementedException();
+        }
+
+        public virtual void CheckReview()
         {
             throw new NotImplementedException();
         }

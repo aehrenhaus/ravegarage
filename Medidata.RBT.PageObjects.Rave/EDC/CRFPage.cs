@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using OpenQA.Selenium;
 using Medidata.RBT.SeleniumExtension;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Medidata.RBT.PageObjects.Rave
 {
@@ -164,6 +165,15 @@ namespace Medidata.RBT.PageObjects.Rave
                 throw new NotImplementedException("FindField method in CRFPage.cs doesn't support attribute: " + attribute);
 
             return null;
+        }
+
+        /// <summary>
+        /// Return a form header control which has controls for the header part of the form
+        /// </summary>
+        /// <returns>A form header control which has controls for the header part of the form</returns>
+        public FormHeaderControl FindHeader()
+        {
+            return new FormHeaderControl(new CRFPage());
         }
 
         /// <summary>
