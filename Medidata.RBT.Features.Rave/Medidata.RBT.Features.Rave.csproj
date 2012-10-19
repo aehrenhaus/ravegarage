@@ -70,6 +70,11 @@
     </CodeAnalysisDependentAssemblyPaths>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Features\AM2\US12996_AM2_DT13997StandardField.feature.cs">
+      <DependentUpon>US12996_AM2_DT13997StandardField.feature</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Include="Features\AM2\US12996_AM2_DT13997.feature.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -387,6 +392,10 @@
   <ItemGroup>
     <None Include="App.config">
       <SubType>Designer</SubType>
+    </None>
+    <None Include="Features\AM2\US12996_AM2_DT13997StandardField.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>US12996_AM2_DT13997StandardField.feature.cs</LastGenOutput>
     </None>
     <None Include="Features\AM2\US12996_AM2_DT13997.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>

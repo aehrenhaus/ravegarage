@@ -343,7 +343,7 @@ namespace Medidata.RBT.PageObjects.Rave
         /// </summary>
         /// <param name="text">The text of the field to check</param>
         /// <returns>True if inactive, false if active</returns>
-        public virtual bool IsInactive(string text)
+        public virtual bool IsInactive(string text = "")
         {
             throw new NotImplementedException();
         }

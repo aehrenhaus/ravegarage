@@ -143,12 +143,8 @@ namespace Medidata.RBT.PageObjects.Rave
         /// <returns>True if inactive, false if active</returns>
         public override bool IsInactive(string text)
         {
-            IWebElement ele = GetTDElement(text);
-            IWebElement strikeoutElement = ele.FindElement(By.XPath("//s"));
-            if (strikeoutElement == null)
-                return false;
-            else
-                return true;
+            IWebElement strikeoutElement = GetTDElement(text).TryFindElementBy(By.XPath("//s"));
+            return !(strikeoutElement == null);
         }
 
         internal bool VerifyData(LabRangeModel field)
