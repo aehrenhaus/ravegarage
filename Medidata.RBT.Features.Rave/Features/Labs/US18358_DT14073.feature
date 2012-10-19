@@ -7,6 +7,13 @@ Feature: US18358_DT14073
 	Then an exception error message is displayed
 
 Background:
+Given xml draft "US18358_DT14073.xml" is Uploaded
+Given study "US18358_DT14073" is assigned to Site "Site 1"
+Given following Project assignments exist
+| User         | Project         | Environment | Role         | Site   | SecurityRole          |
+| SUPER USER 1 | US18358_DT14073 | Live: Prod  | SUPER ROLE 1 | Site 1 | Project Admin Default |
+
+Given I publish and push eCRF "US18358_DT14073.xml" to "Version 1"
 	#Given I am logged in to Rave with username "defuser" and password "password"
 	#And the following Project assignments exist
 	#| User		| Project		      | Environment	| Role			| Site		| Site Number |
@@ -14,7 +21,7 @@ Background:
     #And Role "cdm1" has Action "Entry"
 	#And Project "US18358_DT14073_SJ" has Draft "Original Draft"	
 	#And All Upper Case box is checked
-	And I am logged in to Rave with username "defuser" and password "password"
+	#And I am logged in to Rave with username "defuser" and password "password"
 
 
 
@@ -23,8 +30,8 @@ Background:
 @Validation
 
 Scenario: @PB_US18358_DT14073_01 As a Lab Administrator, when I upload Lab Loader draft with Global Data Dictionaries name that is greater than 80 characters, I do not see exception error message displayed
-	
-	When I navigate to "Lab Administration"
+	Given I login to Rave with user "SUPER USER 1"
+	And I navigate to "Lab Administration"
 	And xml Lab Configuration "All_Exact255Char.xml" is uploaded
 	And I take a screenshot
 	And I navigate to "Global Data Dictionaries"
