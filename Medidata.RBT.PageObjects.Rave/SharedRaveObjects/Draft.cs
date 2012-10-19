@@ -34,10 +34,5 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
                 Name = draftName;
             }
         }
-        private static bool m_EnableSeeding = RBTConfiguration.Default.EnableSeeding;
-        public bool EnableSeeding()
-        {
-            return m_EnableSeeding;
-        }
     }
 }

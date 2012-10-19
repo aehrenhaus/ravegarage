@@ -22,16 +22,11 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
         public Guid? UID { get; set; }
         public string Name { get; set; }
         private string m_UniqueName;
-        private static bool m_EnableSeeding = RBTConfiguration.Default.EnableSeeding;
-        public bool EnableSeeding()
-        {
-            return m_EnableSeeding;
-        }
         public string UniqueName
         {
             get
             {
-                if (m_EnableSeeding)
+                if (RBTConfiguration.Default.EnableSeeding)
                     return m_UniqueName;
                 else
                     return Name;

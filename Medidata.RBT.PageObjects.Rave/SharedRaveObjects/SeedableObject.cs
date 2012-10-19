@@ -18,16 +18,11 @@ namespace Medidata.RBT.SharedRaveObjects
         public Guid? UID { get; set; } //A unique identifier for the object
         public string Name { get; set; } //The feature file defined name of the SeedableObject
         private string m_UniqueName;
-        private static bool m_EnableSeeding = RBTConfiguration.Default.EnableSeeding;
-        public bool EnableSeeding()
-        {
-            return m_EnableSeeding;
-        }
         public string UniqueName //A unique name of the SeedableObject, usually formed using the name + TID
         {
             get
             {
-                if (m_EnableSeeding)
+                if (RBTConfiguration.Default.EnableSeeding)
                     return m_UniqueName;
                 else
                     return Name;
@@ -54,21 +49,27 @@ namespace Medidata.RBT.SharedRaveObjects
         /// All uploads are done logging in with the default user.
         /// Note the user logged in before that seed. At the end of the seed, this user is logged in again and we return to the HomePage.
         /// </summary>
-        public virtual void Seed()
+        public void Seed()
         {
-            if (TestContext.CurrentUser == null)
-                LoginPage.LoginUsingDefaultUserFromAnyPage();
-            string loggedInUserBeforeSeed = TestContext.CurrentUser;
-            NavigateToSeedPage();
-            MakeUnique();
-            CreateObject();
-            if (loggedInUserBeforeSeed != TestContext.CurrentUser)
+            if (RBTConfiguration.Default.EnableSeeding)
             {
-                TestContext.CurrentPage = new LoginPage().NavigateToSelf();
-                TestContext.CurrentPage.As<LoginPage>().Login(loggedInUserBeforeSeed, RaveConfiguration.Default.DefaultUserPassword);
+                if (TestContext.CurrentUser == null)
+                    LoginPage.LoginUsingDefaultUserFromAnyPage();
+                string loggedInUserBeforeSeed = TestContext.CurrentUser;
+                NavigateToSeedPage();
+                MakeUnique();
+                CreateObject();
+                if (loggedInUserBeforeSeed != TestContext.CurrentUser)
+                {
+                    TestContext.CurrentPage = new LoginPage().NavigateToSelf();
+
+                    TestContext.CurrentPage.As<LoginPage>().Login(loggedInUserBeforeSeed,
+                    RaveConfiguration.Default.DefaultUserPassword);
+                }
+                TestContext.CurrentPage = new HomePage().NavigateToSelf();
             }
-            TestContext.CurrentPage = new HomePage().NavigateToSelf();
         }
+
 
         /// <summary>
         /// Make a unique file location that sits in the "Temporary" folder for the seedable object

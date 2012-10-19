@@ -12,6 +12,5 @@ namespace Medidata.RBT.SharedObjects
     /// </summary>
     public interface IFeatureObject
     {
-        bool EnableSeeding();
     }
 }
