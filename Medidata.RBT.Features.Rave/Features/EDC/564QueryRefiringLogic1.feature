@@ -455,12 +455,12 @@ Scenario: PB_1.4.1 As an EDC user, On a Cross Forms log form to log form, when a
 	    | Original Axis Number | 102         |
 	    | Current Axis Number  | 65          |	
 	And I open log line 1
-	And I verify Query is not displayed
-		| Field                | Query Message                                                          | Closed |
-		| Start Date           | Date can not be less than.                                             | true   |
-		| End Date             | Date is Less Than Date on the first log form.                          | true   |
-		| Original Axis Number | 'AE Number' is greater than or Equal to 'Original Axis Number' on Log. | true   |
-		| Current Axis Number  | 'Duration' and 'Current Axis Number' cannot equal.                     | true   |
+	And I verify Query is displayed
+		| Field                | Query Message                                                          | Answered | Closed |
+		| Start Date           | Date can not be less than.                                             | true     | true   |
+		| End Date             | Date is Less Than Date on the first log form.                          | true     | true   |
+		| Original Axis Number | 'AE Number' is greater than or Equal to 'Original Axis Number' on Log. | true     | true   |
+		| Current Axis Number  | 'Duration' and 'Current Axis Number' cannot equal.                     | true     | true   |
 	And I take a screenshot	
 	When I enter data in CRF and save
 		| Field                | Data        |
@@ -526,12 +526,12 @@ Scenario: PB_1.4.2 As an EDC user, On a Cross Forms log form to log form, when a
 	And I save the CRF page
 	And I open log line 2
 	And I take a screenshot
-	And I verify Query is not displayed
-		| Field                | Query Message                                                          | Closed |
-		| Start Date           | Date can not be less than.                                             | true   |
-		| End Date             | Date is Less Than Date on the first log form.                          | true   |
-		| Original Axis Number | 'AE Number' is greater than or Equal to 'Original Axis Number' on Log. | true   |
-		| Current Axis Number  | 'Duration' and 'Current Axis Number' cannot equal.                     | true   |
+	And I verify Query is displayed
+		| Field                | Query Message                                                          | Answered | Closed |
+		| Start Date           | Date can not be less than.                                             | true     | true   |
+		| End Date             | Date is Less Than Date on the first log form.                          | true     | true   |
+		| Original Axis Number | 'AE Number' is greater than or Equal to 'Original Axis Number' on Log. | true     | true   |
+		| Current Axis Number  | 'Duration' and 'Current Axis Number' cannot equal.                     | true     | true   |
 	And I take a screenshot	
 	When I enter data in CRF
 		| Field                | Data        |
