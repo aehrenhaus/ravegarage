@@ -86,6 +86,17 @@ namespace Medidata.RBT.PageObjects.Rave
         }
 
         /// <summary>
+        /// Check if the field is inactive for non lab field control
+        /// </summary>
+        /// <param name="text">Not necessary for NonLabFieldControl, but must be there for LabFieldControl</param>
+        /// <returns>True if inactive, false if active</returns>
+        public override bool IsInactive(string text = "")
+        {
+            IWebElement strikeoutElement = RightSideTD.TryFindElementBy(By.XPath("//s"));
+            return !(strikeoutElement == null);
+        }
+
+        /// <summary>
         /// Check the review checkbox next to the field
         /// </summary>
         public override void CheckReview()
