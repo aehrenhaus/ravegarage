@@ -29,24 +29,26 @@ namespace Medidata.RBT.Features.Rave
             Assert.IsTrue(result);
         }
 
+        /// <summary>
+        /// Method to check if ADD event lock icon is displayed on subject page
+        /// </summary>
         [StepDefinition(@"I can see Add Event lock icon")]
         public void ICanSeeAddEventLockIcon()
         {
-            bool result = false;
-            IWebElement element = CurrentPage.As<SubjectPage>().CanSeeControl("_ctl0_Content_SubjectAddEvent_DisableMatrixImage");
-            if (element != null)
-                result = true;
+            bool result = CurrentPage.As<SubjectPage>().VerifyControlExist("_ctl0_Content_SubjectAddEvent_DisableMatrixImage");
+
             Assert.IsTrue(result);
         }
 
+        /// <summary>
+        /// Method to check if ADD event lock icon is not displayed on subject page
+        /// </summary>
         [StepDefinition(@"I can not see Add Event lock icon")]
         public void ICanNotSeeAddEventLockIcon()
         {
-            bool result = false;
-            IWebElement element = CurrentPage.As<SubjectPage>().CanSeeControl("_ctl0_Content_SubjectAddEvent_DisableMatrixImage");
-            if (element == null)
-                result = true;
-            Assert.IsTrue(result);
+            bool result = CurrentPage.As<SubjectPage>().VerifyControlExist("_ctl0_Content_SubjectAddEvent_DisableMatrixImage");
+
+            Assert.IsFalse(result);
         }
 
         [StepDefinition(@"I can see ""([^""]*)"" button")]
@@ -141,11 +143,7 @@ namespace Medidata.RBT.Features.Rave
         [StepDefinition(@"I can see the label ""([^""]*)""")]
         public void ICanSeeLink(string label)
         {
-            bool result = false;
-            IWebElement element = CurrentPage.As<SubjectPage>().CanSeeControl(label);
-
-            if (element != null)
-                result = true;
+            bool result = CurrentPage.As<SubjectPage>().VerifyControlExist(label);
 
             Assert.IsTrue(result);
         }
@@ -153,13 +151,9 @@ namespace Medidata.RBT.Features.Rave
         [StepDefinition(@"I can not see link ""([^""]*)""")]
         public void ICanNotSeeLink(string label)
         {
-            bool result = false;
-            IWebElement element = CurrentPage.As<SubjectPage>().CanSeeControl(label);
+            bool result = CurrentPage.As<SubjectPage>().VerifyControlExist(label);
 
-            if (element == null)
-                result = true;
-
-            Assert.IsTrue(result);
+            Assert.IsFalse(result);
         }
 
         [StepDefinition(@"I click radiobutton with label ""([^""]*)""")]
