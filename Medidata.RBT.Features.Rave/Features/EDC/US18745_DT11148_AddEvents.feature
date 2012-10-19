@@ -33,7 +33,7 @@ Given following Project assignments exist
 
 @release_2012.1.0
 @US18745-01
-@WIP
+@Validation
 Scenario:@US18745-01 By Default the user with entry permission can not see Enable and Disable radio buttons on subject page and grid view page.
 
 	Given I log in to Rave with user "US18745_entryuser"
@@ -55,7 +55,7 @@ Scenario:@US18745-01 By Default the user with entry permission can not see Enabl
 	
 @release_2012.1.0
 @US18745-02
-@WIP  
+@Validation  
 Scenario:@US18745-02 When the Add Events disabled, the user with entry permission can see Lock icon with Audit link on subject page and grid view page.
 
 	Given I log in to Rave with user "US18745_entrylockunlockuser"
@@ -103,7 +103,7 @@ Scenario:@US18745-02 When the Add Events disabled, the user with entry permissio
 	
 @release_2012.1.0
 @US18745-03
-@WIP 
+@Validation 
 Scenario:@US18745-03 When the Add Events enabled, the user with entry permission can see the Add Events dropdown and Add button on subject page and grid view page.
 
 	Given I log in to Rave with user "US18745_entrylockunlockuser"
@@ -132,7 +132,7 @@ Scenario:@US18745-03 When the Add Events enabled, the user with entry permission
 	
 @release_2012.1.0
 @US18745-04
-@WIP   
+@Validation   
 Scenario:@US18745-04 By Default the read only user with seeentry permission can not see Enable and Disable radio buttons on subject page and grid view page.
 
 	Given I log in to Rave with user "US18745_entrylockunlockuser"
@@ -158,7 +158,7 @@ Scenario:@US18745-04 By Default the read only user with seeentry permission can 
 	
 @release_2012.1.0
 @US18745-05
-@WIP    
+@Validation    
 Scenario:@US18745-05 When the Add Events disabled, the read only user with seeentry permission can not see Enable and Disable radio buttons on subject page and grid view page.
 
 	Given I log in to Rave with user "US18745_entrylockunlockuser"
@@ -189,7 +189,7 @@ Scenario:@US18745-05 When the Add Events disabled, the read only user with seeen
 	
 @release_2012.1.0
 @US18745-06
-@WIP   
+@Validation   
 Scenario:@US18745-06 When the Add Events enabled, the read only user with seeentry permission can not see Enable and Disable radio buttons on subject page and grid view page.
 
 	Given I log in to Rave with user "US18745_entrylockunlockuser"
@@ -218,7 +218,7 @@ Scenario:@US18745-06 When the Add Events enabled, the read only user with seeent
 	
 @release_2012.1.0
 @US18745-07
-@WIP 
+@Validation 
 Scenario:@US18745-07 By Default the user with lock, unlock and entry permission can see Enable, Disable radio buttons and add event drop down on subject page and grid view page.
 
 	Given I log in to Rave with user "US18745_entrylockunlockuser"
@@ -240,7 +240,7 @@ Scenario:@US18745-07 By Default the user with lock, unlock and entry permission 
 	
 @release_2012.1.0
 @US18745-08
-@WIP 
+@Validation 
 Scenario:@US18745-08 When the Add Events disabled on subject page, the user with lock, unlock and entry permission can see the greyed out Add Events dropdown with lock icon and Audit link on subject page and grid view page.
 
 	Given I log in to Rave with user "US18745_entrylockunlockuser"
@@ -285,7 +285,7 @@ Scenario:@US18745-08 When the Add Events disabled on subject page, the user with
 	
 @release_2012.1.0
 @US18745-09
-@WIP 
+@Validation 
 Scenario:@US18745-09 When the Add Events enabled on subject page, the user with lock, unlock and entry permission can see the enable Add Events dropdown and add button on subject page and grid view page.
 
 	Given I log in to Rave with user "US18745_entrylockunlockuser"
@@ -310,7 +310,7 @@ Scenario:@US18745-09 When the Add Events enabled on subject page, the user with 
 	
 @release_2012.1.0
 @US18745-10
-@WIP 
+@Validation 
 Scenario:@US18745-10 The user with lock, unlock and entry permission disable, enable and disable the radio button on subject page, then the user can see the three actions of the Audit trail on the subject page, grid view page and Parent: Subject page.
  
 	Given I log in to Rave with user "US18745_entrylockunlockuser"
@@ -363,7 +363,7 @@ Scenario:@US18745-10 The user with lock, unlock and entry permission disable, en
 	
 @release_2012.1.0
 @US18745-11
-@WIP 
+@Validation 
 Scenario:@US18745-11 When the Add Events disabled on subject grid view page, the user with lock, unlock and entry permission can see the greyed out Add Events dropdown with lock icon and Audit link on grid view page and subject calendar page.
 
 	Given I log in to Rave with user "US18745_entrylockunlockuser"
@@ -402,7 +402,7 @@ Scenario:@US18745-11 When the Add Events disabled on subject grid view page, the
 	
 @release_2012.1.0
 @US18745-12
-@WIP 
+@Validation 
 Scenario:@US18745-12 When the Add Events enabled on subject grid view page, the user with lock, unlock and entry permission can see the enable Add Events dropdown and add button on grid view page and subject calendar page.
 
 	Given I log in to Rave with user "US18745_entrylockunlockuser"
@@ -429,7 +429,7 @@ Scenario:@US18745-12 When the Add Events enabled on subject grid view page, the 
 	
 @release_2012.1.0
 @US18745-13
-@WIP 
+@Validation 
 Scenario:@US18745-13 The user with lock, unlock and entry permission disable, enable and disable the radio button on grid view page, then the user can see the three actions of the Audit trail on the grid view page, subject calendar page and Parent: Subject page.
 
 	Given I log in to Rave with user "US18745_entrylockunlockuser"
@@ -475,7 +475,7 @@ Scenario:@US18745-13 The user with lock, unlock and entry permission disable, en
 	
 @release_2012.1.0
 @US18745-14
-@WIP 
+@Validation 
 Scenario:@US18745-14 When the Add Events disabled by other user with entry and lock permission on subject page, the user with lock, unlock and entry permission can see the greyed out Add Events dropdown with lock icon and Audit link on subject page and grid view page.
 
 	Given I log in to Rave with user "US18745_entrylockuser"
@@ -519,7 +519,7 @@ Scenario:@US18745-14 When the Add Events disabled by other user with entry and l
 	
 @release_2012.1.0
 @US18745-15
-@WIP 
+@Validation 
 Scenario:@US18745-15 All the Add Events controls will disappear by adding all max add events on the subject page.
 #Note: Allow Add Max are "3" for "Unscheduled" matrices
 
@@ -555,7 +555,7 @@ Scenario:@US18745-15 All the Add Events controls will disappear by adding all ma
 
 @release_2012.1.0
 @US18745-16
-@WIP 
+@Validation 
 Scenario:@US18745-16 All the Add Events controls will disappear by adding all max add events on the subject grid view page.
 #Note: Allow Add Max are "3" for "Unscheduled" matrices
 
@@ -592,7 +592,7 @@ Scenario:@US18745-16 All the Add Events controls will disappear by adding all ma
 
 @release_2012.1.0
 @US18745-17
-@WIP  
+@Validation  
 Scenario:@US18745-17 By Default the user with entry and lock permission, can see the disable radio button, Add Event dropdown and Add Button on subject page and grid view page.
 
 	Given I log in to Rave with user "US18745_entrylockuser"
@@ -614,7 +614,7 @@ Scenario:@US18745-17 By Default the user with entry and lock permission, can see
 
 @release_2012.1.0
 @US18745-18
-@WIP 
+@Validation 
 Scenario:@US18745-18 When the Add Events disabled on subject page, the user with lock and entry permission can see the greyed out Add Events dropdown with lock icon and Audit link on subject page and grid view page.
 
 	Given I log in to Rave with user "US18745_entrylockuser"
@@ -659,7 +659,7 @@ Scenario:@US18745-18 When the Add Events disabled on subject page, the user with
 
 @release_2012.1.0
 @US18745-19
-@WIP 
+@Validation 
 Scenario:@US18745-19 When the Add Events disabled by other user with entry, lock and unlock permission on subject page, the user with lock and entry permission can see the greyed out Add Events dropdown with lock icon and Audit link on subject page and grid view page.
 
 	Given I log in to Rave with user "US18745_entrylockunlockuser"
@@ -703,7 +703,7 @@ Scenario:@US18745-19 When the Add Events disabled by other user with entry, lock
 
 @release_2012.1.0
 @US18745-20
-@WIP 
+@Validation 
 Scenario:@US18745-20 By Default the user with entry and unlock permission, can see the enabled Add Event dropdown and Add Button on subject page and grid view page.
 
 	Given I log in to Rave with user "US18745_entryunlockuser"
@@ -725,7 +725,7 @@ Scenario:@US18745-20 By Default the user with entry and unlock permission, can s
 
 @release_2012.1.0
 @US18745-21
-@WIP 
+@Validation 
 Scenario:@US18745-21 When the Add Events disabled by other user with entry, lock and unlock permission on subject page, the user with unlock and entry permission can see the enabled radio button greyed out Add Events dropdown with lock icon and Audit link on subject page and grid view page.
 
 	Given I log in to Rave with user "US18745_entrylockunlockuser"
@@ -773,7 +773,7 @@ Scenario:@US18745-21 When the Add Events disabled by other user with entry, lock
 
 @release_2012.1.0
 @US18745-22
-@WIP 
+@Validation 
 Scenario:@US18745-22 When the Add Events disabled by other user with entry, lock and unlock permission on subject page, the user with unlock and entry permission selects enabled radio button will enable Add Events dropdown and Add button is displayed on subject page and grid view page.
 
 	Given I log in to Rave with user "US18745_entrylockunlockuser"
@@ -831,7 +831,7 @@ Scenario:@US18745-22 When the Add Events disabled by other user with entry, lock
 
 @release_2012.1.0
 @US18745-23
-@WIP 
+@Validation 
 Scenario:@US18745-23 By Default the user with seeentry, lock and unlock permission, can see disable and enable radio buttons with message on subject page and grid view page.
 
 	Given I log in to Rave with user "US18745_entrylockunlockuser"
@@ -858,7 +858,7 @@ Scenario:@US18745-23 By Default the user with seeentry, lock and unlock permissi
 	
 @release_2012.1.0
 @US18745-24
-@WIP 
+@Validation 
 Scenario:@US18745-24 When the Add Events disabled, the user with lock, unlock and seeentry permission can see the message with lock icon and Audit link on subject page and grid view page.
 
 	Given I log in to Rave with user "US18745_entrylockunlockuser"
@@ -921,7 +921,7 @@ Scenario:@US18745-24 When the Add Events disabled, the user with lock, unlock an
 	
 @release_2012.1.0
 @US18745-25
-@WIP 
+@Validation 
 Scenario:@US18745-25 When the Add Events disabled by other user with entry, lock and unlock permission, the user with lock, unlock and seeentry permission can see the message with lock icon and Audit link on subject page and grid view page.
 The user with lock, unlock and seeentry permission enable and disable the radio button, then the user can see the three actions of the Audit trail done by two users.
 
@@ -981,7 +981,7 @@ The user with lock, unlock and seeentry permission enable and disable the radio 
 	
 @release_2012.1.0
 @US18745-26
-@WIP 	
+@Validation 	
 Scenario:@US18745-26  The Add Events controls can be localized on the subject page.
 
 	Given I log in to Rave with user "US18745_locuser"
@@ -1022,7 +1022,7 @@ Scenario:@US18745-26  The Add Events controls can be localized on the subject pa
 	
 @release_2012.1.0
 @US18745-27
-@WIP 	
+@Validation 	
 Scenario:@US18745-27 The Add Events controls can be localized on the grid view page.
 
 	Given I log in to Rave with user "US18745_locuser"
@@ -1064,7 +1064,7 @@ Scenario:@US18745-27 The Add Events controls can be localized on the grid view p
 	
 @release_2012.1.0
 @US18745-28
-@WIP   	
+@Validation   	
 Scenario:@US18745-28 Locking "All" in the subject grid view page disables the Add Event feature. 
 Unlocking "All" in the subject grid view page enables the Add Event feature.
 
