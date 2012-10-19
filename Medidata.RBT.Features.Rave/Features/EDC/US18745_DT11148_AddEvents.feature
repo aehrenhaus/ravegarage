@@ -1029,7 +1029,7 @@ Scenario:@US18745-27 The Add Events controls can be localized on the grid view p
 	And I create a Subject
     |Field       |Data                  |Control Type |
     |LLabel 1    |SUB{RndNum<num27>(3)} |textbox      |
-	When I select "LGrid View"
+	When I select link "LGrid View"
     Then I can see "LDisabled" radio button
 	And I can see "LEnabled" radio button
 	And I can see "enabled" dropdown labeled "LAdd Event"
