@@ -177,9 +177,7 @@ Scenario: PB_4.2.1 As an EDC user, On a Cross Folders - Standard form to log for
 	And I close the Query "'Current Distribution Number' is not equal 'Current Axis Number'." on Field "Current Axis Number"
 	And I save the CRF page	
 	And I open log line 1
-	And I verify Query with message "'Date Informed Consent Signed' can not be greater than." is not displayed on Field "Start Date"
-	And I verify Query with message "'Current Distribution Number' is not equal 'Current Axis Number'." is not displayed on Field "Current Axis Number"
-	And I verify Query is not displayed
+	And I verify Query is displayed
       | Field      | Query Message                                           | Answered | Closed |
       | Start Date | 'Date Informed Consent Signed' can not be greater than. | true     | true   |
 	And I verify Query is displayed

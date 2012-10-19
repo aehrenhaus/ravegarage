@@ -497,7 +497,7 @@ Scenario: PB_8.4.1 Migrate Subject
 		|Field       |Data |
         |Standard 1  |8	   |
 	And I open the last log line
-	Then I verify Query is not displayed
+	Then I verify Query is displayed
 		| Field       | Query Message               | Answered | Closed |
 		| Log Field 1 | Query Opened on Log Field 1 | true     | true   |
 	And I take a screenshot	

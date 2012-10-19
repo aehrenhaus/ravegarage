@@ -95,6 +95,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>564QueryRefiringLogging8_M.feature</DependentUpon>
     </Compile>
+    <Compile Include="Features\EDC\564QueryRefiringLogic8.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>564QueryRefiringLogic8.feature</DependentUpon>
+    </Compile>
     <Compile Include="Features\EDC\DT 12651 Scenario.feature.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -124,6 +129,11 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>US10242_DT13576.feature</DependentUpon>
+    </Compile>
+    <Compile Include="Features\EDC\US12994_DT109911.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>US12994_DT10991.feature</DependentUpon>
     </Compile>
     <Compile Include="Features\Labs\US18087_DT14073.feature.cs">
       <AutoGen>True</AutoGen>
@@ -219,6 +229,11 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>US17943.feature</DependentUpon>
+    </Compile>
+    <Compile Include="Features\Labs\US18358_DT140733.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>US18358_DT14073.feature</DependentUpon>
     </Compile>
     <Compile Include="Features\PDF\US12175_DT8545_lessthangreaterthaninPDF.feature.cs">
       <AutoGen>True</AutoGen>
