@@ -18,8 +18,15 @@ namespace Medidata.RBT.PageObjects.Rave
 
         public override IPage ClickLink(string linkName)
         {
-            base.ClickLink(linkName);
-            if (linkName == "Click here to continue...")
+            try
+            {
+                base.ClickLink(linkName);
+            }
+            catch (Exception ex)
+            {
+                base.ClickLink("L" + linkName); //Adding localization support
+            }
+            if (linkName == "Click here to continue..." || linkName == "LClick here to continue...") //Adding localization test support
                 TestContext.CurrentPage = new HomePage();
             return TestContext.CurrentPage;
         }

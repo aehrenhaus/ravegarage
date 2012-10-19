@@ -41,9 +41,9 @@ namespace Medidata.RBT.PageObjects.Rave
                 return AuditExist_DataPoint(audit.QueryMessage, audit.User, audit.Time, position);
             }
 
-            else if (audit.AuditType == "Add Events")
+            else if (audit.AuditType == "Add Events" || audit.AuditType == "LAdd Events")
             {
-                return AuditExist_AddEvents(audit.QueryMessage, audit.User, audit.Time, position);
+                return AuditExist_AddEvents(audit, audit.User, audit.Time, position);
             }
 
             else if (audit.AuditType == "Record")
@@ -144,7 +144,36 @@ namespace Medidata.RBT.PageObjects.Rave
 
                 //Check if data in specified date time format exist
                 DateTime dt;
-                isSpecifiedData = DateTime.TryParse(auditTimeFormat.Text, out dt);
+                string dateTimeValStr = auditTimeFormat.Text;
+
+                //Check for Localized Test 'loc' date time format if applied
+                if (dateTimeValStr.Contains('L'))
+                {
+                    string[] auditTextArr = dateTimeValStr.Split(' ');
+                    if (auditTextArr != null && auditTextArr.Length > 1 && 
+                        auditTextArr[1].StartsWith("L"))
+                    {
+                        auditTextArr[1] = auditTextArr[1].TrimStart('L');
+                        dateTimeValStr = string.Join(" ", auditTextArr);
+                    }
+                }
+
+                DateTime.TryParse(dateTimeValStr, out dt);
+                try
+                {
+                    //Add check for localization
+                    string dateTimeTxtFromFormat = dt.ToString(timeFormat);
+                    if (!string.IsNullOrEmpty(dateTimeTxtFromFormat) && dateTimeTxtFromFormat.Equals(auditTimeFormat.Text))
+                        isSpecifiedData = true;
+                    else
+                        isSpecifiedData = false;
+                }
+                catch (System.FormatException)
+                {
+                    isSpecifiedData = false;
+                    return isSpecifiedData.Value;
+                }
+
                 if (!isSpecifiedData.Value)
                     return isSpecifiedData.Value;
             }
@@ -198,9 +227,14 @@ namespace Medidata.RBT.PageObjects.Rave
             return AuditExist(string.Format("Record {0}", query), user, timeFormat, position);
         }
 
-        private bool AuditExist_AddEvents(string query, string user, string timeFormat, int? position)
+        private bool AuditExist_AddEvents(AuditModel audit, string user, string timeFormat, int? position)
         {
-            return AuditExist(string.Format("Add events {0}", query), user, timeFormat, position);
+            if (audit.AuditType.Equals("Add Events"))
+                return AuditExist(string.Format("Add events {0}", audit.QueryMessage), user, timeFormat, position);
+            else if (audit.AuditType.Equals("LAdd Events"))
+                return AuditExist(string.Format("LAdd events {0}", audit.QueryMessage), user, timeFormat, position);
+            else
+                return false;
         }
 
         /// <summary>
@@ -231,5 +265,5 @@ namespace Medidata.RBT.PageObjects.Rave
 
         public override string URL { get { return "AuditsPage.aspx"; } }
 
-	}
+    }
 }
