@@ -29,6 +29,7 @@
 		GenerateReportAfterTest="true"
 		ScenarioNamePrefix="PB_"
 		AutoSaveMimeTypes="application/zip;application/pdf;application/octet-stream"
+		EnableSeeding ="False"
 		/>
 
 	<RaveConfiguration

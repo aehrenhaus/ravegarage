@@ -21,7 +21,23 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
     {
         public Guid? UID { get; set; }
         public string Name { get; set; }
-        public string UniqueName { get; set; }
+        private string m_UniqueName;
+        private static bool m_EnableSeeding = RBTConfiguration.Default.EnableSeeding;
+        public bool EnableSeeding()
+        {
+            return m_EnableSeeding;
+        }
+        public string UniqueName
+        {
+            get
+            {
+                if (m_EnableSeeding)
+                    return m_UniqueName;
+                else
+                    return Name;
+            }
+            set { m_UniqueName= value; }
+        }
         public string Number { get; set; }
         public string TID = TemporalID.GetNewTID();
 
