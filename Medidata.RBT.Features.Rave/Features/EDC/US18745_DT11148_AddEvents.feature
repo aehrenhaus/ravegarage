@@ -1000,26 +1000,25 @@ Scenario:@US18745-26  The Add Events controls can be localized on the subject pa
 	And I can see "LEnabled" radio button	
  	And I take a screenshot
 	And I click radiobutton with label "LEnabled"
-    And I I click radiobutton with label "LDisabled"
+    And I click radiobutton with label "LDisabled"
  	When I select link "LAdd Event is currently disabled for this subject."
 	Then I verify Audits exist
        |Audit Type    |Query Message  |User                              |Time                 |
        |LAdd Events   |disabled.      |loc user ([id] - US18745_locuser) |dd LMMM yyyy HH:mm:ss|	   
        |LAdd Events   |enabled.       |loc user ([id] - US18745_locuser) |dd LMMM yyyy HH:mm:ss|
-	   |LAdd Events   |disabled       |loc user ([id] - US18745_locuser) |dd LMMM yyyy HH:mm:ss|
+	   |LAdd Events   |disabled.      |loc user ([id] - US18745_locuser) |dd LMMM yyyy HH:mm:ss|
 	And I take a screenshot
 	And I navigate to "Home"
 	And I select a Subject "{Var(num26)}"
 	And I select primary record form
 	And I click audit on form level
-	When I click on "LSubject - SUB{Var(num26)}"
+	When I select link "LSubject - SUB{Var(num26)}"
 	Then I verify Audits exist
        |Audit Type    |Query Message  |User                              |Time                 |
        |LAdd Events   |disabled.      |loc user ([id] - US18745_locuser) |dd LMMM yyyy HH:mm:ss|	   
        |LAdd Events   |enabled.       |loc user ([id] - US18745_locuser) |dd LMMM yyyy HH:mm:ss|
 	   |LAdd Events   |disabled.      |loc user ([id] - US18745_locuser) |dd LMMM yyyy HH:mm:ss|
  	And I take a screenshot
-	And I log out of Rave
 	
 @release_2012.1.0
 @US18745-27
@@ -1043,7 +1042,7 @@ Scenario:@US18745-27 The Add Events controls can be localized on the grid view p
 	And I can see "LEnabled" radio button	
  	And I take a screenshot
 	And I click radiobutton with label "LEnabled"
-    And I I click radiobutton with label "LDisabled"
+    And I click radiobutton with label "LDisabled"
  	When I select link "LAdd Event is currently disabled for this subject."
 	Then I verify Audits exist
        |Audit Type    |Query Message  |User                              |Time                 |
@@ -1055,14 +1054,13 @@ Scenario:@US18745-27 The Add Events controls can be localized on the grid view p
 	And I select a Subject "{Var(num27)}"
 	And I select primary record form
 	And I click audit on form level
-	When I click on "LSubject - SUB{Var(num27)}"
+	When I select link "LSubject - SUB{Var(num27)}"
 	Then I verify Audits exist
        |Audit Type    |Query Message  |User                              |Time                 |
        |LAdd Events   |disabled.      |loc user ([id] - US18745_locuser) |dd LMMM yyyy HH:mm:ss|	   
        |LAdd Events   |enabled.       |loc user ([id] - US18745_locuser) |dd LMMM yyyy HH:mm:ss|
 	   |LAdd Events   |disabled.      |loc user ([id] - US18745_locuser) |dd LMMM yyyy HH:mm:ss|
  	And I take a screenshot
-	And I log out of Rave
 	
 @release_2012.1.0
 @US18745-28
