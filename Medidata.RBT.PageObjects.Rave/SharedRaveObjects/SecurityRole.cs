@@ -22,7 +22,18 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
     {
         public Guid? UID { get; set; }
         public string Name { get; set; }
-        public string UniqueName { get; set; }
+        private string m_UniqueName;
+        public string UniqueName
+        {
+            get
+            {
+                if (RBTConfiguration.Default.EnableSeeding)
+                    return m_UniqueName;
+                else
+                    return Name;
+            }
+            set { m_UniqueName = value; }
+        }
 
         /// <summary>
         /// Create a SecurityRole if it is not already in the dictionary of projects in FeatureObject

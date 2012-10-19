@@ -5,32 +5,35 @@ Feature: US18812
 	Then subject assignment satisfies a specified allocation ratio
 	And subject assignment is random for all blocks
 
-Background:
-	#Given I am logged in to Rave with username "defuser" and password "password"
-	Given xml draft "US18812_SJ.xml" is Uploaded with Environment name "Dev"
-	Given Site "Site 1" exists
-	Given Site "Site 2" exists
-	Given Site "Site 3" exists
-	Given Site "Site 4" exists
-	Given study "US18812_SJ" is assigned to Site "Site 1" with study environment "Aux: Dev"
-	Given study "US18812_SJ" is assigned to Site "Site 2" with study environment "Aux: Dev"
-	Given study "US18812_SJ" is assigned to Site "Site 3" with study environment "Aux: Dev"
-	Given study "US18812_SJ" is assigned to Site "Site 4" with study environment "Aux: Dev"
-	Given I publish and push eCRF "US18812_SJ.xml" to "Version 1" with study environment "Dev"
-#TODO: Able to pick other site users such as Asia or North America from site Group while creating sites
-	Given following Project assignments exist
-	| User | Project | Environment | Role | Site | SecurityRole |
-	| SUPER USER 1 | US18812_SJ | Aux: Dev    | SUPER ROLE 1 | Site 1 | Project Admin Default |
-	| SUPER USER 1 | US18812_SJ | Aux: Dev    | SUPER ROLE 1 | Site 2 | Project Admin Default |
-	| SUPER USER 1 | US18812_SJ | Aux: Dev    | SUPER ROLE 1 | Site 3 | Project Admin Default |
-	| SUPER USER 1 | US18812_SJ | Aux: Dev    | SUPER ROLE 1 | Site 4 | Project Admin Default |
+ Background:
+	Given I am logged in to Rave with username "defuser" and password "password"
+	# Given xml draft "US18812_SJ.xml" is Uploaded with Environment name "Dev"
+	# Given Site "Site 1" exists
+	# Given Site "Site 2" exists
+	# Given Site "Site 3" exists
+	# Given Site "Site 4" exists
+	# Given study "US18812_SJ" is assigned to Site "Site 1" with study environment "Aux: Dev"
+	# Given study "US18812_SJ" is assigned to Site "Site 2" with study environment "Aux: Dev"
+	# Given study "US18812_SJ" is assigned to Site "Site 3" with study environment "Aux: Dev"
+	# Given study "US18812_SJ" is assigned to Site "Site 4" with study environment "Aux: Dev"
+	# Given I publish and push eCRF "US18812_SJ.xml" to "Version 1" with study environment "Dev"
+# #TODO: Able to pick other site users such as Asia or North America from site Group while creating sites
+	# Given following Project assignments exist
+	# | User | Project | Environment | Role | Site | SecurityRole |
+	# | SUPER USER 1 | US18812_SJ | Aux: Dev    | SUPER ROLE 1 | Site 1 | Project Admin Default |
+	# | SUPER USER 1 | US18812_SJ | Aux: Dev    | SUPER ROLE 1 | Site 2 | Project Admin Default |
+	# | SUPER USER 1 | US18812_SJ | Aux: Dev    | SUPER ROLE 1 | Site 3 | Project Admin Default |
+	# | SUPER USER 1 | US18812_SJ | Aux: Dev    | SUPER ROLE 1 | Site 4 | Project Admin Default |
 
 
 
-	#Given following Report assignments exist
-	#| User         | Report                                                           |
-	#| SUPER USER 1 | Targeted SDV Configuration - Targeted SDV Configuration          |
-	#| SUPER USER 1 | Targeted SDV Subject Management - Targeted SDV Subject Managemen |
+	# Given following Report assignments exist
+	 # | User         | Report                                                           |
+	 # | SUPER USER 1 | Targeted SDV Configuration - Targeted SDV Configuration          |
+	 # | SUPER USER 1 | Targeted SDV Subject Management - Targeted SDV Subject Managemen |
+
+
+
 	#Given there is a project US18812_SJ
 	#Given there is an environment Prod for project US18812_SJ
 	#And there are four sites assigned to study US18812_SJ(Dev):
@@ -121,30 +124,30 @@ Background:
 @PB_US18812_01
 @Draft
 
-Scenario: Enroll 50 subjects in a study to verify that TSDV has randomized the subjects in non sequential order when the subjects are included in TSDV using the Targeted SDV Subject Include report in Study level.
-	Given I login to Rave with user "SUPER USER 1"
+Scenario: xxxxxEnroll 50 subjects in a study to verify that TSDV has randomized the subjects in non sequential order when the subjects are included in TSDV using the Targeted SDV Subject Include report in Study level.
+	# Given I login to Rave with user "SUPER USER 1"
 	And I select link "Home"
 	And I navigate to "Reporter"
 	And I select Report "Targeted SDV Configuration"
 #TODO: Need to investigate this function below
-#	And I set report parameter "Study" with table
-#		| Name       | Environment |
-#		| US18812_SJ | Dev         |
+	And I set report parameter "Study" with table
+		| Name       | Environment |
+		| US18812_SJ | Dev         |
 	And I click button "Submit Report"
 	And I switch to "Targeted SDV Study Plan" window
 #TODO: Need to investigate this function below	
-#	And I create a new block plan named "US18812_SJ (Dev) Block Plan" with Data entry Role "SUPER ROLE 1"
+	And I create a new block plan named "US18812_SJ (Dev) Block Plan" with Data entry Role "cdm1"
+	#And I create a new block plan named "US18812_SJ (Dev) Block Plan" with Data entry Role "SUPER ROLE 1"
 	And I delete the tier "Architect Defined" from plan
-
-#TODO:	Need new function below
-
-#	And I edit the Block "Architect Defined" and Subject Count "10"
+	And I edit Blocks
+	| Name              | Subject Count |
+	| Architect Defined | 10            |
 
 #TODO: Need to investigate this function below
 
-	#And I create a custom tier named "Custom Tier 1" and description "Adverse Events" with table
-	#| Form           | Selected |
-	#| Adverse Events | True     |
+	And I create a custom tier named "Custom Tier 1" and description "Adverse Events" with table
+	| Form           | Selected |
+	| Adverse Events | True     |
 	#And I create a custom tier named "Custom Tier 2" and description "BloodWork" with table
 	#| Form      | Selected |
 	#| BloodWork | True     |

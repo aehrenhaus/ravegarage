@@ -66,5 +66,22 @@ namespace Medidata.RBT.PageObjects.Rave
 
             return this;
         }
+
+        public IPage BlocksEdit(IEnumerable<TSDVObjectModel> blocks)
+        {
+            foreach (var block in blocks)
+            {
+                ModifyBlock(block.Name, block.SubjectCount);
+            }
+            return this;
+        }
+
+        public void ModifyBlock(string tierName, int subjectCount = -1)
+        {
+            Browser.TryFindElementByLinkText("Architect Defined").Parent().Parent().Images()[0].Click();
+            Browser.FindElementsByPartialId("EditBlockNameTextBox")[0].EnhanceAs<Textbox>().SetText(tierName);
+            Browser.FindElementsByPartialId("EditBlockSizeTextBox")[0].EnhanceAs<Textbox>().SetText(subjectCount.ToString());
+            Browser.FindElementsByPartialId("EditBlockSizeTextBox")[0].Parent().Parent().Parent().Images()[2].Click();
+        }
     }
 }

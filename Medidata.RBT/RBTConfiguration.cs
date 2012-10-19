@@ -60,6 +60,16 @@ namespace Medidata.RBT
         }
 
 
+        [ConfigurationProperty("EnableSeeding", DefaultValue = true, IsRequired = true)]
+        public bool EnableSeeding
+        {
+
+            get
+            {
+                return (bool)this["EnableSeeding"];
+            }
+            set { this["EnableSeeding"] = value; }
+        }
 
 		[ConfigurationProperty("BrowserName", DefaultValue = "Firefox", IsRequired = true)]
         public String BrowserName
@@ -90,6 +100,7 @@ namespace Medidata.RBT
             get { return (String)this["BrowserPath"]; }
             set { this["BrowserPath"] = value; }
         }
+
 
 		[ConfigurationProperty("FirefoxProfilePath", DefaultValue = "", IsRequired = true)]
         public String FirefoxProfilePath

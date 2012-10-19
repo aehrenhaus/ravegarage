@@ -66,6 +66,17 @@ namespace Medidata.RBT.Features.Rave
         }
 
         /// <summary>
+        /// Method used to edit blocks, with the supplied information
+        /// </summary>
+        /// <param name="table">all attributes for each TSDV Block</param>
+        [Given(@"I edit Blocks")]
+        public void GivenIEditBlocks(Table table)
+        {
+            CurrentPage.As<BlockPlansPageBase>().BlocksEdit(table.CreateSet<TSDVObjectModel>());
+        }
+
+
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="tierName"></param>
