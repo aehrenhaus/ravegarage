@@ -79,6 +79,8 @@
     <Content Include="Tutorial\04 Write a new step definition.htm" />
     <Content Include="Tutorial\03 Existing steps.htm" />
     <Content Include="Tutorial\05 Page object pattern.htm" />
+    <Content Include="Tutorial\05\layers.jpg" />
+    <Content Include="Tutorial\06 Seeding.htm" />
     <Content Include="Tutorial\Site.css" />
   </ItemGroup>
   <ItemGroup>
