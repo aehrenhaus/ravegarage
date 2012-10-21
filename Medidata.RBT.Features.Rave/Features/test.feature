@@ -4,4 +4,6 @@ Feature: test
 @PB_DT14168
 @Draft
 Scenario: TestScenario
-	Given I am logged in to Rave with username "defuser" and password "password"
+	Given I login to Rave with user "SUPER USER 1"
+	Given xml draft "US18812_SJ.xml" is Uploaded
+	

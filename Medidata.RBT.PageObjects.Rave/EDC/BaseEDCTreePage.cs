@@ -8,7 +8,7 @@ using Medidata.RBT.PageObjects.Rave.SharedRaveObjects;
 
 namespace Medidata.RBT.PageObjects.Rave
 {
-	public  class BaseEDCPage : RavePageBase, ICanVerifyExist
+	public abstract class BaseEDCPage : RavePageBase, ICanVerifyExist
 	{
 		public virtual IEDCFieldControl FindField(string fieldName)
 		{

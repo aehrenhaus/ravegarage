@@ -50,7 +50,7 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
         /// </summary>
         public override void NavigateToSeedPage()
         {
-            LoginPage.LoginUsingDefaultUserFromAnyPage();
+            LoginPage.LoginToHomePageIfNotAlready();
             TestContext.CurrentPage.As<HomePage>().ClickLink("Architect");
             TestContext.CurrentPage.As<ArchitectPage>().ClickLink("Upload Draft");
         }

@@ -17,7 +17,7 @@ namespace Medidata.RBT.PageObjects.Rave
         {
             IPage page = base.GetPageByUrl(uri);
             if (page.GetType() == typeof(PageBase))
-                return new RavePageBase();
+                return new EmptyPage();
             else
                 return page;
         }

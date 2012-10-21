@@ -23,5 +23,10 @@ namespace Medidata.RBT.PageObjects.Rave.Configuration
         {
             return this.ClickLink("Update");
         }
+
+        public override string URL
+        {
+            get { return "Modules/Configuration/CoderConfiguration.aspx"; }
+        }
     }
 }

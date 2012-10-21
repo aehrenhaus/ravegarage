@@ -27,11 +27,26 @@ namespace Medidata.RBT.PageObjects.Rave
         /// <summary>
         /// Login the default user from any page.
         /// </summary>
-        public static void LoginUsingDefaultUserFromAnyPage()
+        public static void LoginToHomePageIfNotAlready(string userName = null, string password = null)
         {
-            TestContext.CurrentPage = new LoginPage();
-            TestContext.CurrentPage.NavigateToSelf();
-            TestContext.CurrentPage.As<LoginPage>().Login(RaveConfiguration.Default.DefaultUser, RaveConfiguration.Default.DefaultUserPassword);
+            //user default if not assigned
+            userName = userName ?? RaveConfiguration.Default.DefaultUser;
+            password = password ?? RaveConfiguration.Default.DefaultUserPassword;
+
+            //if not the user
+            if ( TestContext.CurrentUser != userName)
+            {
+                var loginPage = new LoginPage();
+                loginPage.NavigateToSelf();
+                var homePage = loginPage.Login(userName, password);
+                TestContext.CurrentPage = homePage;
+            }
+
+            if(!(TestContext.CurrentPage is HomePage))
+            {
+                TestContext.CurrentPage = new HomePage().NavigateToSelf();
+            }
+
         }
 
         /// <summary>

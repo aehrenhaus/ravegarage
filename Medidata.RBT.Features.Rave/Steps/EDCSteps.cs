@@ -185,26 +185,32 @@ namespace Medidata.RBT.Features.Rave
                 {
                     bool reviewRequired = fieldControl.IsReviewRequired();
 
-                    Assert.AreEqual(field.RequiresReview.Value, reviewRequired, "Review Required doesn't match on Fields in CRF");
+                    Assert.AreEqual(field.RequiresReview.Value, reviewRequired,
+                                    "Review Required doesn't match on Fields in CRF");
                 }
                 if (field.RequiresVerification.HasValue)
                 {
                     bool verificationRequired = fieldControl.IsVerificationRequired();
 
-                    Assert.AreEqual(field.RequiresVerification.Value, verificationRequired, "Verification Required doesn't match on Fields in CRF");
+                    Assert.AreEqual(field.RequiresVerification.Value, verificationRequired,
+                                    "Verification Required doesn't match on Fields in CRF");
                 }
                 if (field.Inactive.HasValue)
                 {
                     bool isInactive = fieldControl.IsInactive(field.Data);
                     Assert.AreEqual(field.Inactive.Value, isInactive, "Inactive doesn't match on Fields in CRF");
                 }
-                if (field.StatusIcon != null && field.StatusIcon.Length > 0)                    Assert.AreNotEqual(0, fieldControl.StatusIconPathLookup(field.StatusIcon).Length, "Status Icon not found");                if (field.RequiresSignature.HasValue)
+                if (field.StatusIcon != null && field.StatusIcon.Length > 0)
+                    Assert.AreNotEqual(0, fieldControl.StatusIconPathLookup(field.StatusIcon).Length,
+                                       "Status Icon not found");
+                if (field.RequiresSignature.HasValue)
                 {
                     bool signatureRequired = fieldControl.IsSignatureRequired();
 
-                    Assert.AreEqual(field.RequiresSignature.Value, signatureRequired, "Signature Required doesn't match on Fields in CRF");
+                    Assert.AreEqual(field.RequiresSignature.Value, signatureRequired,
+                                    "Signature Required doesn't match on Fields in CRF");
+                }
             }
-        }
         }
 
         /// <summary>
@@ -540,7 +546,7 @@ namespace Medidata.RBT.Features.Rave
         {
             var controlType = ControlType.DynamicSearchList;
 
-            var page = new RavePageBase();
+            RavePageBase page = null;
 
             if (CurrentPage is DDEPage)
             {
@@ -570,7 +576,7 @@ namespace Medidata.RBT.Features.Rave
             bool result = false;
             var controlType = ControlType.DynamicSearchList;
 
-            var page = new RavePageBase();
+            RavePageBase page = null;
 
             if (CurrentPage is DDEPage)
             {

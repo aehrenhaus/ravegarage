@@ -10,7 +10,7 @@ using Medidata.RBT.SeleniumExtension;
 using System.Collections.Specialized;
 namespace Medidata.RBT.PageObjects.Rave
 {
-    public class LabPageBase : RavePageBase, ICanPaginate
+    public abstract class LabPageBase : RavePageBase, ICanPaginate
     {
 
         public override IPage NavigateTo(string name)

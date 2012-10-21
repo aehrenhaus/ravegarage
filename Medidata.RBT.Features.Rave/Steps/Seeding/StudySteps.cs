@@ -94,10 +94,10 @@ namespace Medidata.RBT.Features.Rave
             CrfVersion crfVersion = TestContext.GetExistingFeatureObjectOrMakeNew
                     (crfVersionName, () => new CrfVersion(uploadedDraft.Name, crfVersionName, true));
             if (TestContext.CurrentUser == null)
-                LoginPage.LoginUsingDefaultUserFromAnyPage();
+                LoginPage.LoginToHomePageIfNotAlready();
             TestContext.CurrentPage = new ArchitectPage().NavigateToSelf();
             if (!(TestContext.CurrentPage is ArchitectPage))
-                LoginPage.LoginUsingDefaultUserFromAnyPage();
+                LoginPage.LoginToHomePageIfNotAlready();
             TestContext.CurrentPage.As<ArchitectPage>().ClickProject(crfVersion.UploadedDraft.Project.UniqueName);
             TestContext.CurrentPage.As<ArchitectLibraryPage>().PushVersion(crfVersion.UniqueName, studyEnvName, "All Sites");
             TestContext.CurrentPage = new HomePage().NavigateToSelf();

@@ -20,7 +20,7 @@ namespace Medidata.RBT
 	/// <summary>
 	/// Provides basic implemenations of IPage methods.
 	/// </summary>
-    public class PageBase : IPage
+    public abstract class PageBase : IPage
     {
         #region .ctor and initialization
 
@@ -46,7 +46,7 @@ namespace Medidata.RBT
 		/// <summary>
 		/// See IPage interface
 		/// </summary>
-		public virtual string URL { get { throw new Exception("Must override URL property"); } }
+        public abstract string URL { get; }
 
 		/// <summary>
 		/// See IPage interface

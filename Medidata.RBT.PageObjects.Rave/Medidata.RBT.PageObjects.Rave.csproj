@@ -119,6 +119,7 @@
     <Compile Include="Lab\UnitConversionsPage.cs" />
     <Compile Include="EDC\SignatureBox.cs" />
     <Compile Include="OtherPages\ActivatePage.cs" />
+    <Compile Include="OtherPages\LogoutPage.cs" />
     <Compile Include="OtherPages\PasswordChangedPage.cs" />
     <Compile Include="OtherPages\PasswordPage.cs" />
     <Compile Include="PDF\PDFFileRequestsControl.cs" />
@@ -160,7 +161,9 @@
     <Compile Include="TableModels\AnalyteRangeModel.cs" />
     <Compile Include="TableModels\ArchitectObjectModel.cs" />
     <Compile Include="TableModels\AuditModel.cs" />
-    <Compile Include="TableModels\FormModel.cs" />    <Compile Include="TableModels\TSDVObjectModel.cs" />    <Compile Include="TableModels\CustomTierModel.cs" />
+    <Compile Include="TableModels\FormModel.cs" />
+    <Compile Include="TableModels\TSDVObjectModel.cs" />
+    <Compile Include="TableModels\CustomTierModel.cs" />
     <Compile Include="TableModels\IFieldModel.cs" />
     <Compile Include="TableModels\LabModel.cs" />
     <Compile Include="TableModels\QueryAuditReportSearchModel.cs" />

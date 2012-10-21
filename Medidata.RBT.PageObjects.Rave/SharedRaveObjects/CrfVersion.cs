@@ -49,7 +49,7 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
         /// </summary>
         public override void NavigateToSeedPage()
         {
-            LoginPage.LoginUsingDefaultUserFromAnyPage();
+            LoginPage.LoginToHomePageIfNotAlready();
             TestContext.CurrentPage.As<HomePage>().ClickLink("Architect");
             TestContext.CurrentPage.As<ArchitectPage>().ClickProject(UploadedDraft.Project.UniqueName);
             TestContext.CurrentPage.As<ArchitectLibraryPage>().ClickDraft(UploadedDraft.Draft.Name);

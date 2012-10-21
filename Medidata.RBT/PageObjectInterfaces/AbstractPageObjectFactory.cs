@@ -30,12 +30,19 @@ namespace Medidata.RBT
 
 			IEnumerable<Type> types = GetContainingAssemblies().SelectMany(x => x.GetTypes());
 
-			foreach (var poType in types.Where(x => x.GetInterface("IPage") != null))
+			foreach (var poType in types.Where(x => x.GetInterface("IPage") != null && !x.IsAbstract))
 			{
 				dicNameType[poType.Name] = poType;
-				IPage po2 = Activator.CreateInstance(poType) as IPage;
-				pos.Add(po2);
-				
+			    try
+			    {
+                    IPage po2 = Activator.CreateInstance(poType) as IPage;
+                    pos.Add(po2);
+			    }
+			    catch (Exception)
+			    {
+			        
+			        throw;
+			    }
 			}
 
 		}
@@ -89,7 +96,7 @@ namespace Medidata.RBT
                     return Activator.CreateInstance(po.GetType()) as IPage;
                 }
 			}
-            return new PageBase();
+            throw new Exception("Can't create a PO instance for url:"+uri.ToString());
         }
 
 		#endregion

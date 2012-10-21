@@ -12,7 +12,7 @@ using Medidata.RBT.PageObjects.Rave.SharedRaveObjects;
 
 namespace Medidata.RBT.PageObjects.Rave
 {
-    public class BlockPlansPageBase : RavePageBase
+    public abstract class BlockPlansPageBase : RavePageBase
     {
 
         public IPage InactivatePlan()

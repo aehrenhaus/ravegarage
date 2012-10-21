@@ -12,7 +12,7 @@ namespace Medidata.RBT.PageObjects.Rave.AmendmentManager
     /// <summary>
     /// Base class for AMMigration
     /// </summary>
-	public class AMMigrationBasePage : RavePageBase
+	public abstract class AMMigrationBasePage : RavePageBase
 	{
 	}
 }
