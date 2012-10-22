@@ -22,17 +22,6 @@ namespace Medidata.RBT.PageObjects.Rave
 			PageFactory.InitElements(Browser, this);
 		}
 
-        public override IPage ClickButton(string buttonID)
-        {
-            base.ClickButton(buttonID);
-            if (buttonID == "ActivateButton")
-            {
-                TestContext.CurrentPage = new PasswordPage();
-                return TestContext.CurrentPage;
-            }
-            return this;
-        }
-
         public override string URL{ get { return "Activate.aspx"; }}
 	}
 }

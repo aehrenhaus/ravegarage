@@ -49,24 +49,22 @@ namespace Medidata.RBT.SharedRaveObjects
         /// All uploads are done logging in with the default user.
         /// Note the user logged in before that seed. At the end of the seed, this user is logged in again and we return to the HomePage.
         /// </summary>
-        public void Seed()
+        public virtual void Seed()
         {
             if (RBTConfiguration.Default.EnableSeeding)
             {
-                if (TestContext.CurrentUser == null)
-                    LoginPage.LoginUsingDefaultUserFromAnyPage();
                 string loggedInUserBeforeSeed = TestContext.CurrentUser;
+               
+                //login as default user to homepage if not already
+                LoginPage.LoginToHomePageIfNotAlready();
+               
                 NavigateToSeedPage();
                 MakeUnique();
                 CreateObject();
-                if (loggedInUserBeforeSeed != TestContext.CurrentUser)
-                {
-                    TestContext.CurrentPage = new LoginPage().NavigateToSelf();
 
-                    TestContext.CurrentPage.As<LoginPage>().Login(loggedInUserBeforeSeed,
-                    RaveConfiguration.Default.DefaultUserPassword);
-                }
-                TestContext.CurrentPage = new HomePage().NavigateToSelf();
+                //login as previous user, to home page
+                LoginPage.LoginToHomePageIfNotAlready(loggedInUserBeforeSeed);
+             
             }
         }
 

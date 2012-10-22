@@ -69,6 +69,7 @@
     <Compile Include="EnumHelper.cs" />
     <Compile Include="ExcelFileHelper.cs" />
     <Compile Include="FileHelper.cs" />
+    <Compile Include="PageObjectInterfaces\EmptyPage.cs" />
     <Compile Include="PageObjectInterfaces\EmptyPOFactory.cs" />
     <Compile Include="SharedObjects\IFeatureObject.cs" />
     <Compile Include="Misc.cs" />

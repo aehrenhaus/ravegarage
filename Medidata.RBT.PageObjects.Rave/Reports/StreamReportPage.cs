@@ -10,7 +10,7 @@ using Medidata.RBT.SeleniumExtension;
 
 namespace Medidata.RBT.PageObjects.Rave
 {
-    public class StreamReportPage : RavePageBase
+    public class StreamReportPage : PageBase
 	{
 		public StreamReportPage()
 		{
@@ -29,5 +29,10 @@ namespace Medidata.RBT.PageObjects.Rave
 				return Browser.WaitForElement("chkEncoding");
 			return base.GetElementByName(identifier,areaIdentifier,listItem);
 		}
+
+        public override string URL
+        {
+            get { return "StreamReport.aspx"; }
+        }
 	}
 }

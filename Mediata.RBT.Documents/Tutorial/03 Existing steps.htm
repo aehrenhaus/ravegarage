@@ -11,18 +11,19 @@
 		<p>
 			Step definitions are .net methods with an attribute on it. The attribute gives 
 			the match information.<br />
-			<strong>I the later text, &#39;step&#39; can mean either the &#39;step in feature file&#39; or 
+			<strong>In the later text, &#39;step&#39; can mean either the &#39;step in feature file&#39; or 
 			the &#39;step definition method&#39; depending on the context.</strong></p>
 		<p>
-			There are common steps a well as steps only for domain(Rave).<br />
+			There are common steps a well as steps 
+            domain specific ones (only for Rave).<br />
 			You can find them in
-		</p>
+		    the 2 projects:</p>
 		<ul>
 			<li>Medidata.RBT.Common.Steps</li>
 			<li>Medidata.RBT.Features.Rave</li>
 		</ul>
 		<p>
-			Common steps can be used for any sites</p>
+			Exampes of common steps:</p>
 		<ul>
 			<li>I click &quot;Commit&quot; button</li>
 			<li>I navigate to url &quot;http://www.bing.com&quot;</li>
@@ -33,7 +34,7 @@
 				step.</li>
 		</ul>
 		<p>
-			Steps for Rave is Rave specific:</p>
+			Examples of Rave speficif steps:</p>
 		<ul>
 			<li>Then I verify that Tiers in subject override table are not in the following 
 				order
@@ -55,9 +56,9 @@
 		</ul>
 	
 		<h2>
-			Guidelines for choosing a step</h2>
+			Guidelines for choosing which step to use</h2>
 		<ul>
-			<li>Prefer using existing steps than writing a new step.<br />
+			<li>Prefer using existing steps than creating a new step.<br />
 				<br />
 				For example if you want to verify the study dropdown exists, use the common 
 				step:<br />
@@ -66,28 +67,12 @@
 				<br />
 				I verify the study dropdown exists.</strong><br />
 				<br />
-				To programmers:<br />
-				Step defs can be very adaptive because in most cases they are calling virtual 
-				methods on page object or interface methods under the hood.<br />
-				In the case that a step does a very similar thing but not excatly the what you 
-				want on a page, you can provide a override of such method on page object rather 
-				than writting a new step.<br />
-				<img src="03/IChooseFrom.jpg" /><br />
-				<br />
-				For example:<br />
-				There is a common step: <strong>I choose &quot;value&quot; from &quot;dropdown identifier&quot;</strong><br />
-				This step can choose text from a standard dropdown, but on your page the 
-				dropdown is a composite control.<br />
-				In this case , instead of write a new step <strong>I choose &quot;value&quot; from composite 
-				dropdown &quot;identifier&quot;</strong>, you provide an override of ChooseFromDropdown(identifier, text) method on your 
-				page object.<br />
-				If the composite control appears on many pages of your site, you can override 
-				this method in a base class.</li>
-			<li>Prefer writing a common step def than writing a domain specific step, if you 
-				have to write a new step<br />
-				Just keep in mind that the step is common, others can share you method in 
-				similar situations. So often you will call a virtual or interface method rather 
-				than non-virtual one.</li>
+				To programmerStep definition method can be very adaptive because in most cases it is calling 
+                methods defined on interfaces. The methods have default implementation, but you 
+			    can override them if you want to change the behavior a little bit.&nbsp; See <a href="05 Page object pattern.htm"> 05 
+                Page object pattern</a> for more details</li>
+			<li>If you have to create a new step, prefer writing a common step def than writing 
+                a domain specific step</li>
 			<li>Finally, if you have to write a new domain specific step, the literal should be very specifc to 
 				describe your domain-specific problem. Don&#39;t let it looks like a common method.</li>
 		</ul>

@@ -53,21 +53,18 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
 
                     FileLocation = RBTConfiguration.Default.UploadPath + @"\Users\" + FileName;
                     Seed();
-
-                    IPage pageBeforeActivation = TestContext.CurrentPage;
-                    ActivateUser();
-                    TestContext.CurrentPage = pageBeforeActivation.NavigateToSelf();
+                    
                 }
             }
         }
+
         
         /// <summary>
         /// Activate the user created by this object
         /// </summary>
         private void ActivateUser()
         {
-            IPage pageBeforeActivation = TestContext.CurrentPage;
-
+    
             //Activate the User
             TestContext.CurrentPage = new UserAdministrationPage().NavigateToSelf();
             TestContext.CurrentPage.As<UserAdministrationPage>().SearchUser(
@@ -86,10 +83,11 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
             this.Password = RaveConfiguration.Default.DefaultUserPassword;
             TestContext.CurrentPage.As<PasswordPage>().NewPasswordBox.EnhanceAs<Textbox>().SetText(this.Password);
             TestContext.CurrentPage.As<PasswordPage>().ConfirmPasswordBox.EnhanceAs<Textbox>().SetText(this.Password);
-            TestContext.CurrentPage.As<PasswordPage>().ClickButton("_ctl0_Content_SavePasswordButton");
+            TestContext.CurrentPage.As<PasswordPage>().ClickButton("Save Password and Continue");
             TestContext.CurrentPage.As<PasswordChangedPage>().ClickLink("Click here to continue...");
 
-            TestContext.CurrentPage = pageBeforeActivation.NavigateToSelf();
+            //this is important because after continue, will login as the new user.
+            TestContext.CurrentUser = this.UniqueName;
         }
 
         /// <summary>
@@ -97,7 +95,7 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
         /// </summary>
         public override void NavigateToSeedPage()
         {
-            LoginPage.LoginUsingDefaultUserFromAnyPage();
+            LoginPage.LoginToHomePageIfNotAlready();
             TestContext.CurrentPage.As<HomePage>().ClickLink("User Administration");
             TestContext.CurrentPage.As<UserAdministrationPage>().ClickLink("Upload Users");
         }
@@ -109,6 +107,8 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
         {
             TestContext.CurrentPage.As<UploadUserPage>().UploadFile(UniqueFileLocation);
             Factory.FeatureObjectsForDeletion.Add(this);
+
+            ActivateUser();
         }
 
         /// <summary>

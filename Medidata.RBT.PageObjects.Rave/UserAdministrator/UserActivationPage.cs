@@ -22,5 +22,10 @@ namespace Medidata.RBT.PageObjects.Rave
         {
             return Browser.WaitForElement(By.Id("_ctl0_Content_ActCodeValueLabel"), "ActivationCode timeout", 10);
         }
+
+        public override string URL
+        {
+            get { return "Modules/UserAdmin/UserActivation.aspx"; }
+        }
     }
 }

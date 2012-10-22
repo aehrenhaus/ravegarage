@@ -78,5 +78,10 @@ namespace Medidata.RBT.PageObjects.Rave
             ClickLink("Save");
             return new FileRequestPage();
         }
+
+        public override string URL
+        {
+            get { return "Modules/PDF/FileRequest.aspx?Type=WithData"; }
+        }
     }
 }

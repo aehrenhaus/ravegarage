@@ -7,5 +7,9 @@ namespace Medidata.RBT.PageObjects.Rave.SiteAdministration
 {
     public class SiteAdministrationBasePage : RavePageBase
     {
+        public override string URL
+        {
+            get { return "Modules/SiteAdmin/Sites.aspx"; }
+        }
     }
 }

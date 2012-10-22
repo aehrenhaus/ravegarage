@@ -98,7 +98,7 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
         /// </summary>
         public override void NavigateToSeedPage()
         {
-            LoginPage.LoginUsingDefaultUserFromAnyPage();
+            LoginPage.LoginToHomePageIfNotAlready();
             TestContext.CurrentPage = new ConfigurationLoaderPage().NavigateToSelf();
         }
 

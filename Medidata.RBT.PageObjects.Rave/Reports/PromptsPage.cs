@@ -26,12 +26,6 @@ namespace Medidata.RBT.PageObjects.Rave
 
 		private string reportPOName;
 
-
-		public override IPage ClickButton(string textOrName)
-		{
-			return base.ClickButton(textOrName);
-		}
-
 		public PromptsPage SetParameter(string name, Table table)
 		{
              int foundOnPage;
@@ -211,6 +205,11 @@ namespace Medidata.RBT.PageObjects.Rave
 		{
 			return true;
 		}
+
+        public override string URL
+        {
+            get { return "Modules/Reporting/ReportsPage.aspx"; }
+        }
     }
 }
 

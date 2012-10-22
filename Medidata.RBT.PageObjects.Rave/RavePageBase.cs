@@ -13,7 +13,7 @@ using Medidata.RBT.SeleniumExtension;
 
 namespace Medidata.RBT.PageObjects.Rave
 {
-	public  class RavePageBase : PageBase
+	public abstract class RavePageBase : PageBase
 	{
 		public override IPage NavigateTo(string name)
 		{

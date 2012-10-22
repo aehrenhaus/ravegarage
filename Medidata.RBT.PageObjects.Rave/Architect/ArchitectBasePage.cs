@@ -9,7 +9,7 @@ using Medidata.RBT.SeleniumExtension;
 using TechTalk.SpecFlow;
 namespace Medidata.RBT.PageObjects.Rave
 {
-	public class ArchitectBasePage : RavePageBase
+	public abstract class ArchitectBasePage : RavePageBase
 	{
 	}
 }

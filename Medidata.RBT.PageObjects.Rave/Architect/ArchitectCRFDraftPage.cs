@@ -72,7 +72,7 @@ namespace Medidata.RBT.PageObjects.Rave
             var text = td.Text.Trim();
             return text;
         }
-
+        
 		public override string URL
 		{
 			get

@@ -155,7 +155,7 @@ namespace Medidata.RBT.Features.Rave.Steps
                 if (!studyAssignmentExists || !moduleAssignmentExists)
                 {
                     string loggedInUserBeforeAssignments = TestContext.CurrentUser;
-                    LoginPage.LoginUsingDefaultUserFromAnyPage();
+                    LoginPage.LoginToHomePageIfNotAlready();
 
                     CurrentPage = new UserAdministrationPage().NavigateToSelf();
                     CurrentPage = CurrentPage.As<UserAdministrationPage>().SearchUser(new UserAdministrationPage.SearchByModel()
@@ -185,7 +185,7 @@ namespace Medidata.RBT.Features.Rave.Steps
         public void ReviewGroupNumber____IsActive(Table numbers)
         {
             string loggedInUserBeforeAssignments = TestContext.CurrentUser;
-            LoginPage.LoginUsingDefaultUserFromAnyPage();
+            LoginPage.LoginToHomePageIfNotAlready();
 
             CurrentPage = new ConfigurationPage().NavigateToSelf();
 

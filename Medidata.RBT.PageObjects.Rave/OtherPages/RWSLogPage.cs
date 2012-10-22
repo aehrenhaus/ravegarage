@@ -60,7 +60,7 @@ namespace Medidata.RBT.PageObjects.Rave
 			return base.NavigateToSelf(parameters);
 		}
 
-        public string URL { get { return "datasets/Logmessagedata"; } }
+        public override string URL { get { return "datasets/Logmessagedata"; } }
     }
 }
 

@@ -43,10 +43,7 @@ namespace Medidata.RBT.Features.Rave
             else
             {
                 User user = TestContext.GetExistingFeatureObjectOrMakeNew(userName, () => new User(userName, true));
-
-                LoginPage page = new LoginPage();
-                page.NavigateToSelf();
-                CurrentPage = page.Login(user.UniqueName, password);
+                LoginPage.LoginToHomePageIfNotAlready(user.UniqueName, user.Password);
             }
 		}
 

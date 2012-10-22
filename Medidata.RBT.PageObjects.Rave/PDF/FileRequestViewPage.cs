@@ -35,5 +35,10 @@ namespace Medidata.RBT.PageObjects.Rave
 
             TestContext.ScenarioText = sb.ToString();
 		}
+
+        public override string URL
+        {
+            get { return "Modules/PDF/FileRequests.aspx"; }
+        }
 	}
 }
