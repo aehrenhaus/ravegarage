@@ -28,6 +28,20 @@ namespace Medidata.RBT.Features.Rave
 			Assert.IsTrue((int)dataTable.Rows[0][0] == 0, "Data doesn't propagate correctly");
 		}
 
+        /// <summary>
+        /// Compares the passed EDC value with the value of the corresponding column in the table ReportingRecords
+        /// </summary>
+        /// <param name="columnName"></param>
+        /// <param name="value"></param>
+        [StepDefinition(@"column ""([^""]*)"" in Reporting Records propagates to ""([^""]*)""")]
+        public void IVerifyReportingRecordsColumnPropagates____To____(string columnName, string value)
+        {
+            Uri tempUri = new Uri(Browser.Url);
+            var sql = String.Format(@"select {0} from ReportingRecords where DataPageID = {1}", columnName, int.Parse(tempUri.Query.Replace("?DP=", "")));
+            var dataTable = DbHelper.ExecuteDataSet(sql).Tables[0];
+            Assert.IsTrue(dataTable.Rows[0][0].ToString() == value.ToString(), "Data doesn't propagate into Reporting Records correctly");
+        }
+
 		[When(@"I verify the log message for query not opening event for Project ""([^""]*)"" and Site ""([^""]*)""")]
 		public void WhenIVerifyTheLogMessagesForQueryNotOpeningEventsForProjectEditCheckStudy3AndSiteEditCheckSite3(string projectName, string siteName)
 		{

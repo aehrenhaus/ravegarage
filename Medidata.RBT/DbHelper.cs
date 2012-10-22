@@ -83,7 +83,7 @@ alter database {0} set multi_user with rollback immediate",
         public static DataSet ExecuteDataSet(string sql, object[] args = null)
         {
 		
-            SqlCommand cmd = new SqlCommand(sql);
+            SqlCommand cmd = new SqlCommand(sql, new SqlConnection(_sqlConnString));
             if (args != null)
                 cmd.Parameters.AddRange(args);
             IDataAdapter adp = new SqlDataAdapter(cmd);

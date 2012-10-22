@@ -1,4 +1,4 @@
-﻿# When a time of 12:00 PM is saved into a date time field with a format of dd MMM yyyy hh:nn rr, that data can be correctly viewed through the Clinical Views.
+﻿	# When a time of 12:00 PM is saved into a date time field with a format of dd MMM yyyy hh:nn rr, that data can be correctly viewed through the Clinical Views.
 
 Feature: US17743_DT12513
 	A time of 12:00 PM can be saved into a date time field with a format of dd MMM yyyy hh:nn rr, and that data can be correctly viewed through the Clinical Views
@@ -7,25 +7,25 @@ Feature: US17743_DT12513
 	Then I am able to correctly view the data in the Clinical Views
 
 Background:
-	Given I am logged in to Rave with username "defuser" and password "password"
-	#And the following Project assignments exist
-	#	| User    | Project			   | Environment | Role |Site  |Site Number|
-	#	| defuser | US17743_DT12513_SJ | Prod        | cdm1 |Site 1|S100	   |
-	#And Role "cdm1" has Action "Entry"
-	#And Project "US17743_DT12513_SJ" has Draft1
-	#And Draft "Draft 1" has Form "Visit Date" with fields
-	#	| Field OID | Data Format		   | Control Type | Field Label       | Log data entry |
-	#	| MISSING   | 1					   | CheckBox     | Visit is missing? | False          |
-	#	| VISDT		| dd MMM yyyy hh:nn rr | DateTime     | Visit Date        | False          |
-	#	| AGE       | 3                    | Text         | Age               | False          |
-
+	Given xml draft "US17743_DT12513.xml" is Uploaded
+	Given Site "Site 1" exists
+	Given study "US17743_DT12513" is assigned to Site "Site 1" with study environment "Live: Prod"
+	Given I publish and push eCRF "US17743_DT12513.xml" to "Version 1" with study environment "Prod"
+	Given Clinical Views exist for project "US17743_DT12513"
+	Given following Project assignments exist
+	| User 		   | Project 		 | Environment| Role         | Site  | SecurityRole 		 |
+	| SUPER USER 1 | US17743_DT12513 | Live: Prod | SUPER ROLE 1 | Site 1| Project Admin Default |
+	Given following Report assignments exist
+	| User			| Report								|
+	| SUPER USER 1	| Data Listing - Data Listing Report	|
 
 
 @release_564_2012.1.0				
 @PB_US17743_DT12513_01
 @Draft
 Scenario: @PB_US17743_DT12513_01 As a Study Coordinator, when I enter a time of 12:00 PM, I am able to correctly view the data through the Clinical Views.
-	When I select Study "US17743_DT12513_SJ" and Site "Site 01"
+	When I login to Rave with user "SUPER USER 1"
+	And I select Study "US17743_DT12513" and Site "Site 1"
 	And I create a Subject
 	| Field            | Data              |
 	| Subject Initials | SUB               |
@@ -38,30 +38,34 @@ Scenario: @PB_US17743_DT12513_01 As a Study Coordinator, when I enter a time of 
 	And I take a screenshot
 	And I navigate to "Home"
 	And I navigate to "Reporter"
-	And I wait for Clinical View refresh to complete for project "US17743_DT12513_SJ"
+	And I wait for Clinical View refresh to complete for project "US17743_DT12513"
 	And I wait for 1 minute
 	And I select Report "Data Listing" 
 	And I set report parameter "Study" with table
-		| Name               | Environment |
-		| US17743_DT12513_SJ | Prod        |
+		| Name            | Environment |
+		| US17743_DT12513 | Prod        |
 	And I click button "Submit Report"
 	And I switch to "DataListingsReport" window
 	And I choose "Clinical Views" from "Data Source"
 	And I choose "Visit Date (VIS)" from "Form"	
 	And I click button "Run"
 	Then I verify rows exist in "Result" table
-	| Subject              | Site    | DataPageName | VISDT                  |
-	| SUB{RndNum<num1>(3)} | Site 01 | Visit Date   | 10/01/2012 12:00:00 PM |
+	| Subject			| DataPageName | VISDT					|
+	| SUB{Var(num1)}	| Visit Date   | 1/10/2012 12:00:00 PM	|
 	And I switch to "Reports" window
-	And "c1_std" propagates correctly
+	And I navigate to "Home"
+	And I select Study "US17743_DT12513" and Site "Site 1"
+	And I select a Subject "SUB{Var(num1)}"
+	And I select link "Visit Date"
+	And column "c2_std" in Reporting Records propagates to "2012-01-10 12:00:00"
 
 
 @release_564_2012.1.0				
 @PB_US17743_DT12513_02
 @Draft
 Scenario: @PB_US17743_DT12513_02 As a Study Coordinator, when I change a time to 12:00 PM, I am able to correctly view the data through the Clinical Views.
-	
-	When I select Study "US17743_DT12513_SJ" and Site "Site 1"
+	When I login to Rave with user "SUPER USER 1"
+	And I select Study "US17743_DT12513" and Site "Site 1"
 	And I create a Subject
 	| Field            | Data              |
 	| Subject Initials | SUB               |
@@ -70,52 +74,52 @@ Scenario: @PB_US17743_DT12513_02 As a Study Coordinator, when I change a time to
 	And I select link "Visit Date"
 	And I enter data in CRF and save
 	| Field      | Data                 |
-	| Visit Date | 20 Jan 2012 12 00 AM |
-	And I take a screenshot
-	And I navigate to "Home"
-	And I navigate to "Configuration"
-	And I navigate to "Clinical Views"
-	And I select Rebuild Views for Project "US17743_DT12513_SJ"
-	And I wait for Clinical View refresh to complete for project "US17743_DT12513_SJ"
-	And I navigate to "Home"
-	And I navigate to "Reporter"
-	And I wait for Clinical View refresh to complete for project "US17743_DT12513_SJ"
-	And I wait for 1 minute
-	And I select Report "Data Listing" 
-	And I set report parameter "Study" with table
-		| Name               | Environment |
-		| US17743_DT12513_SJ | Prod        |
-	And I click button "Submit Report"
-	And I switch to "DataListingsReport" window
-	And I choose "Clinical Views" from "Data Source"
-	And I choose "Visit Date (VIS)" from "Form"	
-	And I click button "Run"
-	Then I verify rows exist in "Result" table
-	| Subject              | Site    | DataPageName | VISDT                  |
-	| SUB{RndNum<num1>(3)} | Site 01 | Visit Date   | 20/01/2012 12:00:00 AM |
-	And I navigate to "Home"
-	And I select Study "US17743_DT12513_SJ"
-	And I select subject "SUB{Var(num1)}"
-	And I select link "Visit Date"
-	And I enter data in CRF and save
-	| Field      | Data                 |
 	| Visit Date | 20 Jan 2012 12 00 PM |
 	And I take a screenshot
 	And I navigate to "Home"
 	And I navigate to "Reporter"
-	And I wait for Clinical View refresh to complete for project "US17743_DT12513_SJ"
+	And I wait for Clinical View refresh to complete for project "US17743_DT12513"
 	And I wait for 1 minute
 	And I select Report "Data Listing" 
 	And I set report parameter "Study" with table
-		| Name               | Environment |
-		| US17743_DT12513_SJ | Prod        |
+		| Name            | Environment |
+		| US17743_DT12513 | Prod        |
 	And I click button "Submit Report"
 	And I switch to "DataListingsReport" window
 	And I choose "Clinical Views" from "Data Source"
 	And I choose "Visit Date (VIS)" from "Form"	
 	And I click button "Run"
 	Then I verify rows exist in "Result" table
-	| Subject              | Site    | DataPageName | VISDT                  |
-	| SUB{RndNum<num1>(3)} | Site 01 | Visit Date   | 10/01/2012 12:00:00 PM |
+	| Subject			| DataPageName | VISDT					|
+	| SUB{Var(num1)}	| Visit Date   | 1/20/2012 12:00:00 PM	|
 	And I switch to "Reports" window
-	And "c1_std" propagates correctly
+	And I navigate to "Home"
+	And I select Study "US17743_DT12513" and Site "Site 1"
+	And I select a Subject "SUB{Var(num1)}"
+	And I select link "Visit Date"
+	And I enter data in CRF and save
+	| Field      | Data                 |
+	| Visit Date | 20 Jan 2012 12 00 AM |
+	And I take a screenshot
+	And I navigate to "Home"
+	And I navigate to "Reporter"
+	And I wait for Clinical View refresh to complete for project "US17743_DT12513"
+	And I wait for 1 minute
+	And I select Report "Data Listing" 
+	And I set report parameter "Study" with table
+		| Name            | Environment |
+		| US17743_DT12513 | Prod        |
+	And I click button "Submit Report"
+	And I switch to "DataListingsReport" window
+	And I choose "Clinical Views" from "Data Source"
+	And I choose "Visit Date (VIS)" from "Form"	
+	And I click button "Run"
+	Then I verify rows exist in "Result" table
+	| Subject			| DataPageName | VISDT					|
+	| SUB{Var(num1)}	| Visit Date   | 1/20/2012 12:00:00 AM	|
+	And I switch to "Reports" window
+	And I navigate to "Home"
+	And I select Study "US17743_DT12513" and Site "Site 1"
+	And I select a Subject "SUB{Var(num1)}"
+	And I select link "Visit Date"
+	And column "c2_std" in Reporting Records propagates to "2012-01-20 00:00:00"

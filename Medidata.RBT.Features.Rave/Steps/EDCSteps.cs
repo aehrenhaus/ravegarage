@@ -22,7 +22,7 @@ namespace Medidata.RBT.Features.Rave
         public void ISelectStudy____AndSite____(string studyName)
         {
             CurrentPage = CurrentPage.As<HomePage>()
-                .SelectStudy(studyName);
+                .SelectStudy(TestContext.GetExistingFeatureObjectOrMakeNew(studyName, () => new Project(studyName)).UniqueName);
         }
 
         /// <summary>
@@ -34,8 +34,8 @@ namespace Medidata.RBT.Features.Rave
         public void ISelectStudy____AndSite____(string studyName, string siteName)
         {
             CurrentPage = CurrentPage.As<HomePage>()
-                .SelectStudy(studyName)
-                .SelectSite(siteName);
+                .SelectStudy(TestContext.GetExistingFeatureObjectOrMakeNew(studyName, () => new Project(studyName)).UniqueName)
+                .SelectSite(TestContext.GetExistingFeatureObjectOrMakeNew(siteName, () => new Site(siteName)).UniqueName);
         }
 
 
