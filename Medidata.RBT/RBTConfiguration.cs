@@ -48,15 +48,15 @@ namespace Medidata.RBT
             set { this["AutoCloseBrowser"] = value; }
         }
 
-		[ConfigurationProperty("TakeScreenShots", DefaultValue = true, IsRequired = true)]
-        public bool TakeScreenShots
+        [ConfigurationProperty("TakeScreenShotsEveryStep", DefaultValue = true, IsRequired = true)]
+        public bool TakeScreenShotsEveryStep
         {
 
             get
             {
-                return (bool)this["TakeScreenShots"];
+                return (bool)this["TakeScreenShotsEveryStep"];
             }
-            set { this["TakeScreenShots"] = value; }
+            set { this["TakeScreenShotsEveryStep"] = value; }
         }
 
 
