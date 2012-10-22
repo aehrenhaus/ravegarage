@@ -156,7 +156,7 @@
     <Compile Include="SiteAdministration\SiteAdministrationNewSitePage.cs" />
     <Compile Include="SiteAdministration\SiteAdministrationDetailsPage.cs" />
     <Compile Include="SiteAdministration\SiteAdministrationHomePage.cs" />
-    <Compile Include="SiteAdministration\SiteAdministrationPage.cs" />
+    <Compile Include="SiteAdministration\SiteAdministrationBasePage.cs" />
     <Compile Include="TableModels\AnalyteRangeAuditModel.cs" />
     <Compile Include="TableModels\AnalyteRangeModel.cs" />
     <Compile Include="TableModels\ArchitectObjectModel.cs" />
