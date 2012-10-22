@@ -9,6 +9,7 @@ Background:
 
 Given xml draft "DT13997 Upload Sixth AM SJ_1.6.13.xml" is Uploaded
 Given xml draft "DT13997 Upload Seventh AM SJ_1.6.15.xml" is Uploaded
+Given xml draft "DT13997 Upload Ninth AM SJ_1.6.19.xml" is Uploaded
 Given study "AM SJ" is assigned to Site "Site_001"
 Given following Project assignments exist
 | User         | Project | Environment | Role         | Site     | SecurityRole          |
@@ -49,4 +50,40 @@ When I select form "Form A"
 And I verify data on Fields in CRF
 | Field   | Data             | Inactive |
 | Field A | Gastrointestinal | False    |
+And I take a screenshot
+
+@release_2012.1.0
+@DT13997_60
+@WIP
+Scenario:  Moving from a standard to a log field, the user removes a default value. Leaves original stard value and adds new default log values after.
+
+Given I login to Rave with user "SUPER USER 1"
+Given I create a Subject
+	| Field                        | Data              |
+	| Subject Number (3 digits)    | {RndNum<num1>(3)} |
+	| Subject Initials             | SUB               |
+	| Derivation Migration Testing | {RndNum<num1>(3)} |
+And I submit the form "Form A"
+And I take a screenshot
+And I publish and push eCRF "DT13997 Upload Ninth AM SJ_1.6.19.xml" to "Version 9"
+And I go to Amendment Manager for study "AM SJ"
+And I select Source CRF version "Version 6"
+And I select Target CRF version "Version 9"
+And I create migration plan
+And I take a screenshot
+And I execute plan for subject "{Var(num1)}"
+And I select link "Migration Results"
+And I take a screenshot
+And I verify Job Status is set to Complete
+And I navigate to "Home"
+And I select a Subject "{Var(num1)}"
+And I submit the form "Form A"
+Then "Field A" has "<Values>" in order
+	| Values              |
+	| Gastrointestinal    |
+	| Abdomen and Viscera |
+And I verify data on Fields in CRF
+| Field   | Data                | Inactive |
+| Field A | Gastrointestinal    | False    |
+| Field A | Abdomen and Viscera | False    |
 And I take a screenshot
