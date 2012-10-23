@@ -1,3 +1,4 @@
+@ignore
 Feature: 8.1
 	As a Rave user
 	I want to change data
@@ -16,7 +17,6 @@ Feature: 8.1
 #BOXI
 
 Background:
-
     Given I am logged in to Rave with username "defuser" and password "password"
 	#And following Study assignments exist
 	# | User      | Study               | Role | Site              | Site Number |

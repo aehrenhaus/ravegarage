@@ -1,3 +1,4 @@
+@ignore
 Feature: 564QueryRefiringLogic1
 	As a Rave user
 	I want to change data

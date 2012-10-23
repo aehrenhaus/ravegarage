@@ -1,5 +1,5 @@
 ﻿# When saving Low and High ranges for Field Edit Check, an incorrect Invalid* error message is displayed even though the data is correctly saved to the database.
-
+@ignore
 Feature: US17943 
 	When Low and High ranges for Field Edit Check are saved, an incorrect Invalid* error message is displayed even though the data is correctly saved to the database.
  	As a Study Developer

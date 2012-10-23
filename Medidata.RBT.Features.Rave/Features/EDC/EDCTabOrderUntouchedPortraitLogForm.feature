@@ -7,6 +7,7 @@
 # (5) the user is able to tab from the last enterable field to the save button and hit enter to save
 # This is related to DT 13558.
 
+@ignore
 Feature: Updated tab order to enable mouseless data entry - Untouched portrait log form
   As A Rave EDC User
   I want to tab from field to field 

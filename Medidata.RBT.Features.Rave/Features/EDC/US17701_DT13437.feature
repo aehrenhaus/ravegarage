@@ -1,5 +1,5 @@
 ﻿# When an analyte range is manually created, the audit information should be captured in the database.
-
+@ignore
 Feature: US17701_DT13437
 	Audit information for manually create analyte ranges is captured in the database.
 	As a Rave user

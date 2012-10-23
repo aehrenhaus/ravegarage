@@ -1,4 +1,5 @@
-﻿Feature: US13002_DT13919
+﻿@ignore
+Feature: US13002_DT13919
 	As a Rave user
 	When I navigate to a log form that has a Dynamic Search List
 	And I click the Dynamic Search List dropdown button to display matching results

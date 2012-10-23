@@ -1,4 +1,5 @@
-﻿Feature: Query Refiring Logic
+﻿@ignore
+Feature: Query Refiring Logic
 	As a Rave user
 	When I manually close a query or cancel, the query should not re-fire if the exact same data is entered into the system
 	So that I don't have to re-enter the exact same response

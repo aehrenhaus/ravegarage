@@ -4,7 +4,7 @@
 # 2. One Source CRF version published to an environment
 # 3. One subject has been created in the environment, with a numerically renamed folder and a folder added with an instance number that matches the number #in the renamed folder 
 # 4. One Target CRF version published to an environment
-
+@ignore
 Feature: US13780_DT13557 Amendment Manger should not apply the same Object Heirarchy rules on renamed folders and folders that have an instance number which matches the number in the renamed folder.
 
 

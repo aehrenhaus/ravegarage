@@ -1,3 +1,4 @@
+@ignore
 Feature: 564QueryRefiringLogic8
 	As a Rave user
 	I want to change data
@@ -11,8 +12,8 @@ Feature: 564QueryRefiringLogic8
 #Publish Checks
 #Queries on Locked datapoints, Freezed datapoints, Inactive records
 
-Background:
 
+Background:
     Given I am logged in to Rave with username "defuser" and password "password"
 	#And following Study assignments exist
 	# | User      | Study               | Role | Site              | Site Number |

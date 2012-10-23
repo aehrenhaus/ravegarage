@@ -1,5 +1,5 @@
+@ignore
 Feature: test
-
 
 @PB_DT14168
 @Draft

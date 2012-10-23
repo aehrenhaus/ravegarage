@@ -1,4 +1,5 @@
-﻿Feature: US11305_DT10514
+﻿@ignore
+Feature: US11305_DT10514
 	As a Rave user
 	When a lab form is partially locked
 	And I change the selected lab

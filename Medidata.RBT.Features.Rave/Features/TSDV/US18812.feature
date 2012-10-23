@@ -1,11 +1,11 @@
 ﻿# When a user selects  Dynamic Allocation Randomization Block algorithm , subject assignment satisfies a specified allocation and ratio is random for all blocks.
-
+@ignore
 Feature: US18812
 	When user selects Dynamic Allocation Randomization Block algorithm
 	Then subject assignment satisfies a specified allocation ratio
 	And subject assignment is random for all blocks
 
- Background:
+Background:
 	Given I am logged in to Rave with username "defuser" and password "password"
 	# Given xml draft "US18812_SJ.xml" is Uploaded with Environment name "Dev"
 	# Given Site "Site 1" exists

@@ -1,6 +1,6 @@
 ﻿# ********Role and CRF Version in the table need to be confirmed************
 # When a PDF form is generated special character such as "<" ">" "<=" ">=" should be displayed properly 
-
+@ignore
 Feature: When an EDC form contains special characters such as "<" ">" "<=" ">=" the PDF file should display the special characters appropriately. 
 	Rave architect allows for characters that the PDF generator does support. The PDF generator should convert the special characters so that they are displayed appropriately as follows:
 	|Rave Architect	 		|PDF Interpretation |Symbol in PDF                 |
@@ -29,7 +29,7 @@ Feature: When an EDC form contains special characters such as "<" ">" "<=" ">=" 
 	
 	This rendering should be implemented for blank PDFs, annotated PDFs, data populated PDFs, Rave Monitor Trip Report PDFs. 
 	This rendering should be implemented for all parts of the PDFs.
-		
+
 Background:
 #Create 4 forms: lab form, log form, standard form, mixed form. Each form should contain every possible control type. Each form should contain all of 
 #the special characters as outlined above in at least one field pre-text, the data dictionaries, unit dictionaries, lab units, lab ranges

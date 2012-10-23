@@ -634,7 +634,7 @@
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PreBuildEvent>echo Starting to generate SpecFlow unit tests
-SpecFlow generateAll $(ProjectPath)  /force /verbose
+SpecFlow generateAll "$(ProjectPath)"  /force /verbose
 echo Finished generating SpecFlow unit tests</PreBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -1,4 +1,5 @@
-﻿Feature: DT14341
+﻿@ignore
+Feature: DT14341
 	As a Rave user
 	I want to change data
 	So I can see refired queries
