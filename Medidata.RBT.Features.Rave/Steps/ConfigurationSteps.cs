@@ -205,5 +205,17 @@ namespace Medidata.RBT.Features.Rave.Steps
             CurrentPage = page.Login(loggedInUserBeforeAssignments, RaveConfiguration.Default.DefaultUserPassword);
             CurrentPage = new WorkflowConfigPage().NavigateToSelf();
         }
-    }
+ 
+        [StepDefinition(@"Clinical Views exist for project ""([^""]*)""")]
+        public void ClinicalViewsExistForProject____(string projectName)
+        {
+            Project project = TestContext.GetExistingFeatureObjectOrMakeNew(projectName, () => new Project(projectName));
+            TestContext.CurrentPage = new ConfigurationClinicalViewsPage().NavigateToSelf();
+            bool hasClinicalViews = CurrentPage.Browser.FindElementByTagName("body").Text.Contains(project.UniqueName);
+            if (!hasClinicalViews)
+            {
+                TestContext.CurrentPage.As<ConfigurationClinicalViewsPage>().BuildClinicalViews(project.UniqueName);
+            }
+        }
+   }
 }

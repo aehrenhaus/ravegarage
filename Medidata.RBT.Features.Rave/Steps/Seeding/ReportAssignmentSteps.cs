@@ -9,6 +9,9 @@ using Medidata.RBT.PageObjects.Rave;
 
 namespace Medidata.RBT.Features.Rave
 {
+    /// <summary>
+    /// Steps that set reporting assignments
+    /// </summary>
     [Binding]
     public class ReportAssignmentSteps : BrowserStepsBase
     {

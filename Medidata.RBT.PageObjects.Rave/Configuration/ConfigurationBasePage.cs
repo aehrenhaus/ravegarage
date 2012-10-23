@@ -22,6 +22,8 @@ namespace Medidata.RBT.PageObjects.Rave.Configuration
                     return new CoderConfigurationPage();
                 case "Configuration":
                     return new WorkflowConfigPage();
+                case "Clinical Views":
+                    return new ConfigurationClinicalViewsPage();
             }
             throw new Exception("Dont know how to navigate to " + name);
         }
