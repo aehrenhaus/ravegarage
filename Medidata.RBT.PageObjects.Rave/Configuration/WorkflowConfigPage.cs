@@ -7,7 +7,7 @@ using Medidata.RBT.SeleniumExtension;
 
 namespace Medidata.RBT.PageObjects.Rave.Configuration
 {
-    public class ConfigurationPage : ConfigurationBasePage
+    public class WorkflowConfigPage : ConfigurationBasePage
     {
         public override IPage ClickLink(string linkText)
         {

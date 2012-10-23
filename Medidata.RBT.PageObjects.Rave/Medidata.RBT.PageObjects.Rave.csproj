@@ -64,6 +64,8 @@
     <Compile Include="AmendmentManager\AMMigrationResultPage.cs" />
     <Compile Include="AmendmentManager\AMMigrationObjectMappingPage.cs" />
     <Compile Include="AmendmentManager\AMMigrationBasePage.cs" />
+    <Compile Include="AmendmentManager\MigrationObjectHierarchyEditPage.cs" />
+    <Compile Include="AmendmentManager\MigrationObjectHierarchy.cs" />
     <Compile Include="AmendmentManager\MigrationModel.cs" />
     <Compile Include="Architect\ArchitectEnvironmentSetupPage.cs" />
     <Compile Include="Architect\ArchitectPushPage.cs" />
@@ -76,8 +78,7 @@
     <Compile Include="Configuration\ConfigurationBasePage.cs" />
     <Compile Include="Configuration\ConfigurationCreationModel.cs" />
     <Compile Include="Configuration\ConfigurationLoaderPage.cs" />
-    <Compile Include="Configuration\ConfigurationPage.cs" />
-    <Compile Include="Configuration\ConfigurationSettingsPage.cs" />
+    <Compile Include="Configuration\WorkflowConfigPage.cs" />
     <Compile Include="Configuration\Models\CoderConfigurationModel.cs" />
     <Compile Include="Configuration\Models\ExcelConfigurationModel.cs" />
     <Compile Include="ControlTypeInformation.cs" />
@@ -95,7 +96,6 @@
     <Compile Include="EDC\MixedDataPageControl.cs" />
     <Compile Include="EDC\ITaskSummaryContainer.cs" />
     <Compile Include="EDC\LandscapeLogField.cs" />
-    <Compile Include="EDC\MonitorSiteSubjectPage.cs" />
     <Compile Include="EDC\NonLabDataPageControl.cs" />
     <Compile Include="EDC\LabDataPageControl.cs" />
     <Compile Include="EDC\IEDCDataPageControl.cs" />
@@ -152,8 +152,6 @@
     <Compile Include="Reports\StreamReportPage.cs" />
     <Compile Include="Reports\CrystalReportPage.cs" />
     <Compile Include="SharedControls\CompositeDropdown.cs" />
-    <Compile Include="SiteAdministration\SiteAdministrationEditSitePage.cs" />
-    <Compile Include="SiteAdministration\SiteAdministrationNewSitePage.cs" />
     <Compile Include="SiteAdministration\SiteAdministrationDetailsPage.cs" />
     <Compile Include="SiteAdministration\SiteAdministrationHomePage.cs" />
     <Compile Include="SiteAdministration\SiteAdministrationBasePage.cs" />

@@ -187,7 +187,7 @@ namespace Medidata.RBT.Features.Rave.Steps
             string loggedInUserBeforeAssignments = TestContext.CurrentUser;
             LoginPage.LoginToHomePageIfNotAlready();
 
-            CurrentPage = new ConfigurationPage().NavigateToSelf();
+            CurrentPage = new WorkflowConfigPage().NavigateToSelf();
 
             List<int> reviewGroupsToDeactivate = new List<int>();
 
@@ -197,13 +197,13 @@ namespace Medidata.RBT.Features.Rave.Steps
                 int parsedNumber;
                 Int32.TryParse(stringNumber, out parsedNumber);
                 reviewGroupsToDeactivate.Add(parsedNumber);
-                CurrentPage.As<ConfigurationPage>().SetReviewGroup(parsedNumber, true);
+                CurrentPage.As<WorkflowConfigPage>().SetReviewGroup(parsedNumber, true);
             }
 
             LoginPage page = new LoginPage();
             page.NavigateToSelf();
             CurrentPage = page.Login(loggedInUserBeforeAssignments, RaveConfiguration.Default.DefaultUserPassword);
-            CurrentPage = new ConfigurationPage().NavigateToSelf();
+            CurrentPage = new WorkflowConfigPage().NavigateToSelf();
         }
     }
 }

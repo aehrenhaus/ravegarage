@@ -9,7 +9,7 @@ using OpenQA.Selenium;
 using System.Collections.Specialized;
 using TechTalk.SpecFlow;
 using Medidata.RBT.SeleniumExtension;
-using Medidata.RBT.PageObjects.Rave.EDC;
+
 using Medidata.RBT.PageObjects.Rave.SiteAdministration;
 using Medidata.RBT.PageObjects.Rave.SharedRaveObjects;
 
@@ -246,11 +246,11 @@ namespace Medidata.RBT.PageObjects.Rave
         /// </summary>
         /// <param name="formName">The name of the form to select</param>
         /// <returns>A new MonitorSiteSubjectPage</returns>
-        public MonitorSiteSubjectPage SelectForm(string formName)
+        public SubjectPage SelectForm(string formName)
         {
             IWebElement formFolderTable = Browser.FindElementById("TblOuter");
             formFolderTable.FindElement(By.LinkText(formName)).Click();
-            return new MonitorSiteSubjectPage();
+            return new SubjectPage();
         }
 
         #region ITaskSummaryContainer

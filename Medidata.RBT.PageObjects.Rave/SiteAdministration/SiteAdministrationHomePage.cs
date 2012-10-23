@@ -29,7 +29,7 @@ namespace Medidata.RBT.PageObjects.Rave.SiteAdministration
         {
             base.ClickLink(linkText);
             if (linkText == "New Site")
-                TestContext.CurrentPage = new SiteAdministrationNewSitePage();
+                TestContext.CurrentPage = new SiteAdministrationDetailsPage();
 
             return TestContext.CurrentPage;
         }

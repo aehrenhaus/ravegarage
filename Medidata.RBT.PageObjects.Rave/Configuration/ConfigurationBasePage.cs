@@ -17,11 +17,11 @@ namespace Medidata.RBT.PageObjects.Rave.Configuration
             {
                 case "Configuration Loader": return new ConfigurationLoaderPage();
                 case "Other Settings":
-                    return new ConfigurationSettingsPage(); 
+                    return new WorkflowConfigPage(); 
                 case "Coder Configuration":
                     return new CoderConfigurationPage();
                 case "Configuration":
-                    return new ConfigurationPage();
+                    return new WorkflowConfigPage();
             }
             throw new Exception("Dont know how to navigate to " + name);
         }

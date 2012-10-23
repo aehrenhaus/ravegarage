@@ -29,20 +29,24 @@ namespace Medidata.RBT
 
 
 			IEnumerable<Type> types = GetContainingAssemblies().SelectMany(x => x.GetTypes());
+		    Dictionary<string, Type> urls = new Dictionary<string, Type>();
 
 			foreach (var poType in types.Where(x => x.GetInterface("IPage") != null && !x.IsAbstract))
 			{
-				dicNameType[poType.Name] = poType;
-			    try
-			    {
-                    IPage po2 = Activator.CreateInstance(poType) as IPage;
-                    pos.Add(po2);
-			    }
-			    catch (Exception)
-			    {
-			        
-			        throw;
-			    }
+                if(dicNameType.ContainsKey(poType.Name))
+                {
+                    throw new Exception("Already add a PO class that has Name "+poType.Name);
+                }
+
+                
+			    dicNameType[poType.Name] = poType;
+			
+                IPage po2 = Activator.CreateInstance(poType) as IPage;
+                if (urls.ContainsKey(po2.URL))
+                    throw new Exception(string.Format("Already add a PO {0} that has url {1}", urls[po2.URL].Name, po2.URL));
+			    urls.Add(po2.URL,poType);
+                pos.Add(po2);
+			 
 			}
 
 		}

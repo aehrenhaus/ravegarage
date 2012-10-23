@@ -208,7 +208,7 @@ namespace Medidata.RBT.PageObjects.Rave
 
         public override string URL
         {
-            get { return "Modules/Reporting/ReportsPage.aspx"; }
+            get { return "Modules/Reporting/PromptsPage.aspx"; }
         }
     }
 }

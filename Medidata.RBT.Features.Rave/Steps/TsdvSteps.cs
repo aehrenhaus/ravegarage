@@ -17,13 +17,13 @@ namespace Medidata.RBT.Features.Rave
         }
 
         [StepDefinition(@"I filter by site ""([^""]*)""")]
-        public void IfilterBySite(string siteName)
+        public void IFilterBySite____(string siteName)
         {
             CurrentPage.As<SubjectManagementPageBase>().FilterBySite(siteName);
         }
 
         [StepDefinition(@"I include ([^""]*) subjects in TSDV")]
-        public void IIncludeAllSubjectsInTSDV(string numSubjects)
+        public void IInclude____SubjectsInTSDV(string numSubjects)
         {
             int num;
             if (int.TryParse(numSubjects, out num))
