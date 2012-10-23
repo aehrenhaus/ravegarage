@@ -66,7 +66,7 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
         /// </summary>
         public override void CreateObject()
         {
-            TestContext.CurrentPage.As<SiteAdministrationNewSitePage>().CreateSite(UniqueName, Number);
+            TestContext.CurrentPage.As<SiteAdministrationDetailsPage>().CreateSite(UniqueName, Number);
         }
     }
 }

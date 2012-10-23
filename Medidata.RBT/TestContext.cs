@@ -345,7 +345,17 @@ namespace Medidata.RBT
             DeleteCreatedDirectories();
 		}
 
-		/// <summary>
+        [AfterStep()]
+        public void AfterStep()
+        {
+            if (RBTConfiguration.Default.TakeScreenShotsEveryStep)
+            {
+                TrySaveScreenShot(true);
+            }
+            
+        }
+
+	    /// <summary>
 		/// Points to the folder that contains result files(Screenshots etc.)
 		/// </summary>
 		/// <returns></returns>
@@ -360,17 +370,19 @@ namespace Medidata.RBT
 			return path;
 		}
 
-		public static void TrySaveScreenShot(string fileName=null)
+		public static void TrySaveScreenShot(bool explicitTake = false)
 		{
-			if (!RBTConfiguration.Default.TakeScreenShots)
+            //If configured to take sceenshot after every step, don't take those from step command to avoid duplicate
+            if (RBTConfiguration.Default.TakeScreenShotsEveryStep && !explicitTake)
 				return;
+
 			try
 			{
 				if (Browser is ITakesScreenshot)
 				{
 					string resultPath = GetTestResultPath();
 
-					fileName = fileName ?? ScreenshotIndex.ToString();
+					var fileName = ScreenshotIndex.ToString();
 					fileName = ScenarioUniqueName+"_"+fileName+ ".jpg";
 
 					Console.WriteLine("img->"+fileName);

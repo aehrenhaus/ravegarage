@@ -1,5 +1,6 @@
-﻿using TechTalk.SpecFlow;
-using Medidata.RBT.PageObjects.Rave.EDC;
+﻿using Medidata.RBT.PageObjects.Rave;
+using TechTalk.SpecFlow;
+
 
 namespace Medidata.RBT.Features.Rave
 {
@@ -9,7 +10,7 @@ namespace Medidata.RBT.Features.Rave
         [StepDefinition(@"I generate PDF for all visits")]
         public void IGeneratePDFForAllVisits()
         {
-            CurrentPage.As<MonitorSiteSubjectPage>().GeneratePDFReport();
+            CurrentPage.As<SubjectPage>().GeneratePDFReport();
         }
     }
 }

@@ -9,7 +9,7 @@ using OpenQA.Selenium;
 using System.Collections.Specialized;
 using TechTalk.SpecFlow;
 using Medidata.RBT.SeleniumExtension;
-using Medidata.RBT.PageObjects.Rave.EDC;
+
 using Medidata.RBT.PageObjects.Rave.SiteAdministration;
 using Medidata.RBT.PageObjects.Rave.Configuration;
 

@@ -25,20 +25,24 @@ namespace Medidata.RBT.Features.Rave
 			
 		}
 
+        [StepDefinition(@"I am logged in to Rave with default account")]
+        public void ILoginToRaveWithDefaultAccount()
+        {
+            ILoginToRaveWithUsername____AndPassword____(RaveConfiguration.Default.DefaultUser,
+                                            RaveConfiguration.Default.DefaultUserPassword);
+
+        }
 		/// <summary>
 		/// Login to rave with the username and password in configuration
 		/// </summary>
 		/// <param name="userName">Feature name of the user</param>
         [StepDefinition(@"I log in to Rave with user ""([^""]*)""")]
         [StepDefinition(@"I login to Rave with user ""([^""]*)""")]
-		public void ILoginToRaveWithUser(string userName)
+		public void ILoginToRaveWithUser____(string userName)
 		{
-            string password = RaveConfiguration.Default.DefaultUserPassword;
             if (userName.Equals("defuser"))
             {
-                LoginPage page = new LoginPage();
-                page.NavigateToSelf();
-                CurrentPage = page.Login(userName, password);
+                ILoginToRaveWithDefaultAccount();
             }
             else
             {

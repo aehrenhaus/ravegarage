@@ -13,6 +13,7 @@ namespace Medidata.RBT.PageObjects.Rave
 {
     public class SubjectPage : BaseEDCPage, ICanVerifyInOrder, ICanVerifyExist, ITaskSummaryContainer
 	{
+
         public IWebElement GetTaskSummaryArea(string header)
 		{
 			var TRs = Browser.FindElementsByXPath("//span[@id='_ctl0_Content_TsBox_CBoxC']/table/tbody/tr[position()>1]");
@@ -125,7 +126,15 @@ namespace Medidata.RBT.PageObjects.Rave
 				return "Modules/EDC/SubjectPage.aspx";
 			}
 		}
-
+        /// <summary>
+        /// Generate a pdf report. Extract the downloaded pdf, and save its contents in ScenarioText to be used later.
+        /// </summary>
+        /// <returns></returns>
+        public void GeneratePDFReport()
+        {
+            ClickLink("PDF Report");
+            new PromptsPage().GenerateReport();
+        }
         public IPage ClickPrimaryRecordLink()
         {
             IWebElement element = Browser.FindElementById("_ctl0_Content_PrimaryRecordLink");

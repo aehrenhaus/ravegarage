@@ -33,13 +33,6 @@ namespace Medidata.RBT.PageObjects.Rave
             return this;
         }
 
-        public IPage FilterBySite(string sitename)
-        {
-            ChooseFromDropdown("Select Site", sitename);
-            var search = GetElementByName("Search");
-            search.Click();
-            return this;
-        }
 
         /// <summary>
         /// Determines whether enrolled subjects have been randomized on initla enrollment top the site.

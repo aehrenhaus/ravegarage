@@ -27,6 +27,20 @@ namespace Medidata.RBT.PageObjects.Rave.SiteAdministration
             }
         }
 
+    
+        /// <summary>
+        /// Create a site with the provided site name and number
+        /// </summary>
+        /// <param name="siteName">The name of the site to be created</param>
+        /// <param name="siteNumber">The number of the site to be created</param>
+        public void CreateSite(string siteName, string siteNumber)
+        {
+            SiteNameBox.EnhanceAs<Textbox>().SetText(siteName);
+            SiteNumberBox.EnhanceAs<Textbox>().SetText(siteNumber);
+
+            ClickLink("Update");
+        }
+
         /// <summary>
         /// Link the study provided with the site you are on and environment desired
         /// </summary>

@@ -18,7 +18,7 @@
 	<RBTConfiguration
 		TestResultPath="Output"
 		AutoCloseBrowser ="False"
-		TakeScreenShots ="True"
+		TakeScreenShotsEveryStep ="False"
 		SqlScriptsPath="C:\"
 		BrowserName="firefox"
 		BrowserPath="D:\MDSOL\Firefox12\firefox.exe"
