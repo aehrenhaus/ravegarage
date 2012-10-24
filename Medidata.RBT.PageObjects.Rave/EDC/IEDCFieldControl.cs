@@ -14,7 +14,7 @@ namespace Medidata.RBT.PageObjects.Rave
 	{
 		AuditsPage ClickAudit();
 
-		void EnterData(string text, ControlType controlType);
+		void EnterData(string text, ControlType controlType, string additionalData = "");
 
         bool HasDataEntered(string text);  
 

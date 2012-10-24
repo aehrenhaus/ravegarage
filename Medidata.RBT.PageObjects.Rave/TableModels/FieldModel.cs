@@ -9,6 +9,7 @@ namespace Medidata.RBT.PageObjects.Rave
 	{
 		public string Field { set; get; }
 		public string Data { set; get; }
+        public string AdditionalData { set; get; }
 		public string ControlType { get; set; }
         public string FieldEditCheck { get; set; }
         public string High { set; get; }
@@ -16,7 +17,8 @@ namespace Medidata.RBT.PageObjects.Rave
         public bool? RequiresVerification { set; get; }
         public bool? RequiresReview { set; get; }
         public bool? Inactive { set; get; }
-        public bool? RequiresSignature { get; set; }        public string StatusIcon { set; get; }
+        public bool? RequiresSignature { get; set; }
+        public string StatusIcon { set; get; }
         public bool? Review { set; get; }
 	}
 }

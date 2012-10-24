@@ -97,28 +97,27 @@ namespace Medidata.RBT
                 Browser.Keyboard.PressKey(key);
         }
 
-
-		/// <summary>
-		/// See IPage interface
-		/// </summary>
+        /// <summary>
+        /// See IPage interface
+        /// </summary>
         public virtual IPage ClickLink(string linkText, string objectType = null, string areaIdentifier = null)
         {
-			ISearchContext area = null;
-			if (!string.IsNullOrEmpty(areaIdentifier))
-			{
-				area = Browser.TryFindElementById(areaIdentifier);
-				if (area == null)
-					area = GetElementByName(areaIdentifier);
-			}
-			else
-			{
-				area = Browser;
-			}
+            ISearchContext area = null;
+            if (!string.IsNullOrEmpty(areaIdentifier))
+            {
+                area = Browser.TryFindElementById(areaIdentifier);
+                if (area == null)
+                    area = GetElementByName(areaIdentifier);
+            }
+            else
+            {
+                area = Browser;
+            }
 
-			var link = area.Link(linkText);
-			link.Click();
+            var link = area.Link(linkText);
+            link.Click();
 
-			return GetPageByCurrentUrlIfNoAlert();
+            return GetPageByCurrentUrlIfNoAlert();
         }
 
 		/// <summary>
@@ -151,12 +150,11 @@ namespace Medidata.RBT
         /// <returns></returns>
         public virtual IPage ClickSpanLink(string linkText)
         {
-
-            var item = Browser.TryFindElementByLinkText(linkText);
+            IWebElement item = Browser.TryFindElementByLinkText(linkText);
             if (item != null) 
-				item.Click();
+			    item.Click();
             else 
-				throw new Exception("Can't find link by text:" + linkText);
+			    throw new Exception("Can't find link by text:" + linkText);
 
 			return GetPageByCurrentUrlIfNoAlert();
         }
@@ -193,7 +191,7 @@ namespace Medidata.RBT
 		/// </summary>
         public virtual IPage ChooseFromDropdown(string identifier, string text)
         {
-            var element = Browser.DropdownById(identifier, true);
+            Dropdown element = Browser.DropdownById(identifier, true);
             if (element == null)
                 element = GetElementByName(identifier).EnhanceAs<Dropdown>();
 

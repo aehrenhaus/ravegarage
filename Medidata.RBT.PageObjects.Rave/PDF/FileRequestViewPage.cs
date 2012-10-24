@@ -38,7 +38,7 @@ namespace Medidata.RBT.PageObjects.Rave
 
         public override string URL
         {
-            get { return "Modules/PDF/FileRequests.aspx"; }
+            get { return "Modules/PDF/FileRequests.aspx?MyPDF=True"; }
         }
 	}
 }

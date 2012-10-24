@@ -27,21 +27,23 @@ namespace Medidata.RBT.PageObjects.Rave
         /// <returns></returns>
         public void DeletePDF(string name)
         {
-            int foundOnPage;
+            int foundOnPage = 0;
             Table dt = new Table("Name");
             dt.AddRow(name);
 
-            ((FileRequestPage)Page).ClickLink("File Requests");
             IWebElement pdfTr = this.FindInPaginatedList("", () =>
             {
                 HtmlTable table = TestContext.Browser.WaitForElement("_ctl0_Content_Results").EnhanceAs<HtmlTable>();
                 return table.FindMatchRows(dt).FirstOrDefault();
             }, out foundOnPage);
 
-            EnhancedElement deleteButton = pdfTr.FindImagebuttons().FirstOrDefault(x => x.GetAttribute("id").EndsWith("Delete"));
+            if (pdfTr != null)
+            {
+                EnhancedElement deleteButton = pdfTr.FindImagebuttons().FirstOrDefault(x => x.GetAttribute("id").EndsWith("Delete"));
 
-            deleteButton.Click();
-            ((FileRequestPage)Page).GetAlertWindow().Accept();
+                deleteButton.Click();
+                ((FileRequestViewPage)Page).GetAlertWindow().Accept();
+            }
         }
 
         #region IPaginatedPage

@@ -196,7 +196,7 @@ namespace Medidata.RBT.PageObjects.Rave
 
         public bool AuditExist_SignatureSucceeded(int? position = null)
         {
-            return AuditExist("User signature succeeded", null, null, position);
+            return AuditExist("User signature succeeded.", null, null, position);
         }
 
         public bool AuditExist_SignatureBroken(int? position = null)

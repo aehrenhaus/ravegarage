@@ -31,6 +31,33 @@ namespace Medidata.RBT.Features.Rave
         [StepDefinition(@"the text should not contain ""<Symbol>""")]
         public void TheTextShouldNotContainSymbol(Table table)
         {
+            Assert.IsFalse(String.IsNullOrEmpty(TestContext.ScenarioText));
+
+            if (CreateSymbolsTable(table).Any(s => TestContext.ScenarioText.Contains(s)))
+                Assert.Fail();
+        }
+
+        /// <summary>
+        /// Step definition to check if a the text stored in the scenario text contains all the listed symbols. Succeeds if it does.
+        /// </summary>
+        /// <param name="table">The list of characters to look for</param>
+        /// <returns></returns>
+        [StepDefinition(@"the text should contain ""<Symbol>""")]
+        public void TheTextShouldContainSymbol(Table table)
+        {
+            Assert.IsFalse(String.IsNullOrEmpty(TestContext.ScenarioText));
+
+            if (CreateSymbolsTable(table).Any(s => !TestContext.ScenarioText.Contains(s)))
+                Assert.Fail();
+        }
+
+        /// <summary>
+        /// Create the symbols table using the passed in table from the feature file
+        /// </summary>
+        /// <param name="table">Table from the feature file</param>
+        /// <returns>All the strings in the symbol table</returns>
+        private List<String> CreateSymbolsTable(Table table)
+        {
             List<String> symbols = new List<string>();
 
             foreach (TableRow tableRow in table.Rows)
@@ -39,11 +66,7 @@ namespace Medidata.RBT.Features.Rave
                 symbols.Add(value);
             }
 
-            Assert.IsNotNull(TestContext.ScenarioText);
-            Assert.AreNotEqual("", TestContext.ScenarioText);
-
-            if (symbols.Any(s => TestContext.ScenarioText.Contains(s)))
-                Assert.Fail();
+            return symbols;
         }
 	}
 }

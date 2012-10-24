@@ -56,10 +56,10 @@ namespace Medidata.RBT.PageObjects.Rave
         /// <returns>Returns this FileRequestPage</returns>
         public FileRequestPage Generate(string pdfName)
         {
-            new PDFSpecific(pdfName);
+            new PDFSpecific(SpecialStringHelper.Replace(pdfName));
             int foundOnPage;
             Table dt = new Table("Name");
-            dt.AddRow(pdfName);
+            dt.AddRow(SpecialStringHelper.Replace(pdfName));
 
             IWebElement pdfTr = this.FindInPaginatedList("", () =>
             {
@@ -68,10 +68,11 @@ namespace Medidata.RBT.PageObjects.Rave
             }, out foundOnPage);
 
             ChooseFromCheckboxes("Live Status Update", true);
-
+            
             EnhancedElement genButton = pdfTr.FindImagebuttons().FirstOrDefault(x => x.GetAttribute("id").EndsWith("imgGenerateNow"));
 
             genButton.Click();
+            Thread.Sleep(1000);
             GetAlertWindow().Accept();
             return this;
         }
@@ -217,7 +218,7 @@ namespace Medidata.RBT.PageObjects.Rave
         {
             get
             {
-                return "Modules/PDF/FileRequest.aspx";
+                return "Modules/PDF/FileRequests.aspx";
             }
         }
 

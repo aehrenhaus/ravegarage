@@ -70,7 +70,7 @@ namespace Medidata.RBT
 		/// <param name="input"></param>
 		/// <returns></returns>
         public static string Replace(string input)
-        {
+        {   
 			Regex reg = new Regex(@"{(?<name>.+?)(\<(?<var>.+?)\>)?\((?<args>.*?)?\)}");
 			var output = reg.Replace(input, m =>
 				{

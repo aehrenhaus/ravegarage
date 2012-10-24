@@ -30,7 +30,7 @@ namespace Medidata.RBT.PageObjects.Rave
 		public BaseEDCPage FillDataPoints(IEnumerable<FieldModel> fields)
 		{
 			foreach (var field in fields)
-				FindField(field.Field).EnterData(field.Data, EnumHelper.GetEnumByDescription<ControlType>(field.ControlType));
+				FindField(field.Field).EnterData(field.Data, EnumHelper.GetEnumByDescription<ControlType>(field.ControlType), field.AdditionalData);
 
 			return this;
 		}
