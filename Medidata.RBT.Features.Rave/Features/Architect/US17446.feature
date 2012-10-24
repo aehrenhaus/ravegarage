@@ -7,6 +7,14 @@ Feature: US17446
 	Then an Invalid* error message is displayed
 
 Background:
+
+Given xml draft "US17446_SJ.xml" is Uploaded
+Given study "US17446_SJ" is assigned to Site "Site 1"
+Given following Project assignments exist
+| User         | Project    | Environment | Role         | Site   | SecurityRole          |
+| SUPER USER 1 | US17446_SJ | Live: Prod  | SUPER ROLE 1 | Site 1 | Project Admin Default |
+Given I publish and push eCRF "US17446_SJ.xml" to "Version 1"
+ 
 	#Given I am logged in to Rave with username "defuser" and password "password"
 	#And the following User permissions exist
 		#| Module       | Project         | Role | Security Group | Deny Access |
@@ -31,14 +39,15 @@ Background:
 		#| TEXT4	| Text 4     | 10    | Text         |
 		#| TEXT5    | Text 5     | 10    | Text         |
 		#| TEXT6    | Text 6     | 5     | Text         |
-	And I am logged in to Rave with username "defuser" and password "password"
+	#And I am logged in to Rave with username "defuser" and password "password"
 
 @release_2012.1.0
 @PB_US17446_01
 @Validation
 
 Scenario: @PB_US17446_01 As Study Developer, when I save Low and High ranges for Field Edit Check, I do not see an Invalid* error message displayed.
-	When I navigate to "Architect"
+	Given I login to Rave with user "SUPER USER 1"
+	And I navigate to "Architect"
 	And I select link "US17446_SJ" in "Active Projects" 
 	And I select Draft "Orginal Draft"
 	And I navigate to "Forms"
