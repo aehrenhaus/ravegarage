@@ -22,7 +22,7 @@ namespace Medidata.RBT.Features.Rave
 			CurrentPage = CurrentPage.ClickButton("Continue");
 			CurrentPage = CurrentPage.ClickButton("Create Package");
 			TestContext.AcceptAlert();
-			Browser.WaitForElement(b => b.ButtonByText("Download Package"),null,20);
+			Browser.ButtonByText("Download Package");
 
 			TestContext.WatchForDownload();
 			CurrentPage.ClickButton("Download Package");
@@ -71,7 +71,7 @@ namespace Medidata.RBT.Features.Rave
 			unzipedExcelFile.Delete();
 			lastFile.Delete();
 
-			Browser.WaitForElement(b=>b.TryFindElementBy(By.XPath("//span[text()='"+"The Report Package has been installed successfully."+"']")));
+			Browser.TryFindElementBy(By.XPath("//span[text()='"+"The Report Package has been installed successfully."+"']"));
 		}
 
 	}

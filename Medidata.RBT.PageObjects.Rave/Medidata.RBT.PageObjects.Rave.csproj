@@ -41,6 +41,9 @@
     <Reference Include="Newtonsoft.Json">
       <HintPath>..\ExternalDlls\Newtonsoft.Json.dll</HintPath>
     </Reference>
+    <Reference Include="Selenium.WebDriverBackedSelenium">
+      <HintPath>..\ExternalDlls\Selenium.WebDriverBackedSelenium.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
@@ -51,6 +54,9 @@
     <Reference Include="System.Xml" />
     <Reference Include="TechTalk.SpecFlow">
       <HintPath>..\ExternalDlls\TechTalk.SpecFlow.dll</HintPath>
+    </Reference>
+    <Reference Include="ThoughtWorks.Selenium.Core">
+      <HintPath>..\ExternalDlls\ThoughtWorks.Selenium.Core.dll</HintPath>
     </Reference>
     <Reference Include="WebDriver">
       <HintPath>..\ExternalDlls\WebDriver.dll</HintPath>

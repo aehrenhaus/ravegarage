@@ -69,13 +69,14 @@ namespace Medidata.RBT.PageObjects.Rave
         
 		public override IPage NavigateTo(string name)
 		{
-			var leftNavContainer = Browser.FindElementById("TblOuter");
+            IWebElement leftNavContainer = Browser.TryFindElementBy(By.Id("TblOuter"));
 		
 			if (name == "Amendment Manager")
 			{
-				var link = leftNavContainer.Link("Amendment Manager");
-				link.Click();
-				return new AMMigrationHomePage();
+                return ClickLink("Amendment Manager");
+                //var link = leftNavContainer.Link("Amendment Manager");
+                //link.Click();
+                //return new AMMigrationHomePage();
 			}
 			return base.NavigateTo(name);
 		}

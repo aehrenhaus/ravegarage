@@ -77,10 +77,9 @@ namespace Medidata.RBT
 		/// </summary>
         public virtual IPage ClickButton(string identifier)
         {
-			var element = Browser.ButtonByText(identifier, true);
-			if(element ==null)
-				element = Browser.ButtonByID(identifier, true);
-	
+            var element = Browser.ButtonByText(identifier, true, false);
+            if (element == null)
+                element = Browser.ButtonByID(identifier, true, false);
 
             if (element == null)
                 throw new Exception("Can't find button:" + identifier);
