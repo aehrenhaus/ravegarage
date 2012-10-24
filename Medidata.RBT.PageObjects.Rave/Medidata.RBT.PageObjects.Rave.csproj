@@ -137,6 +137,7 @@
     <Compile Include="SharedRaveObjects\LabConfiguration.cs" />
     <Compile Include="SharedRaveObjects\ModuleAssignment.cs" />
     <Compile Include="SharedRaveObjects\ReportAssignment.cs" />
+    <Compile Include="SharedRaveObjects\SiteGroup.cs" />
     <Compile Include="SharedRaveObjects\StudyAssignment.cs" />
     <Compile Include="SharedRaveObjects\SecurityRole.cs" />
     <Compile Include="SharedRaveObjects\Draft.cs" />
@@ -156,6 +157,7 @@
     <Compile Include="SiteAdministration\SiteAdministrationDetailsPage.cs" />
     <Compile Include="SiteAdministration\SiteAdministrationHomePage.cs" />
     <Compile Include="SiteAdministration\SiteAdministrationBasePage.cs" />
+    <Compile Include="SiteAdministration\SiteAdministrationNewSiteGroupPage.cs" />
     <Compile Include="TableModels\AnalyteRangeAuditModel.cs" />
     <Compile Include="TableModels\AnalyteRangeModel.cs" />
     <Compile Include="TableModels\ArchitectObjectModel.cs" />

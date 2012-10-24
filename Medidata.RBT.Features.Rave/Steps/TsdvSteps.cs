@@ -43,6 +43,16 @@ namespace Medidata.RBT.Features.Rave
         }
 
         /// <summary>
+        /// Method used to edit blocks, with the supplied information
+        /// </summary>
+        /// <param name="table">all attributes for each TSDV Block</param>
+        [StepDefinition(@"I edit Blocks")]
+        public void GivenIEditBlocks(Table table)
+        {
+            CurrentPage.As<BlockPlansPageBase>().BlocksEdit(table.CreateSet<TSDVObjectModel>());
+        }
+
+        /// <summary>
         /// TSDV step to delete tier from block plan
         /// Tier can only be deleted from study not in prod environment
         /// </summary>
@@ -63,16 +73,6 @@ namespace Medidata.RBT.Features.Rave
         public void ISelectTier____AndSubjectCount____(string tierName, string subjectCount)
         {
             CurrentPage.As<StudyBlockPlansPage>().ApplyTierWithSubjectCount(tierName, subjectCount);
-        }
-
-        /// <summary>
-        /// Method used to edit blocks, with the supplied information
-        /// </summary>
-        /// <param name="table">all attributes for each TSDV Block</param>
-        [Given(@"I edit Blocks")]
-        public void GivenIEditBlocks(Table table)
-        {
-            CurrentPage.As<BlockPlansPageBase>().BlocksEdit(table.CreateSet<TSDVObjectModel>());
         }
 
 

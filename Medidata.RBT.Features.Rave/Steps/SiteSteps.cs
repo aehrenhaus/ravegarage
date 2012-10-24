@@ -21,7 +21,19 @@ namespace Medidata.RBT.Features.Rave.Steps.Seeding
         [StepDefinition(@"Site ""([^""]*)"" exists")]
         public void Site____Exists(string siteName)
         {
-            TestContext.GetExistingFeatureObjectOrMakeNew(siteName, () => new Site(siteName, true));
+            TestContext.GetExistingFeatureObjectOrMakeNew(siteName, () => new Site(siteName, true, ""));
+        }
+
+        /// <summary>
+        /// Create a site if none already exists.
+        /// </summary>
+        /// <param name="siteName">The name that the site is referred to as in the feature file</param>
+        /// <param name=siteGroup">The name that the site group is referred to as in the feature file</param>
+        [StepDefinition(@"Site ""([^""]*)"" with Site Group ""([^""]*)"" exists")]
+        public void Site____Exists(string siteName, string siteGroup)
+        {
+            SiteGroup sg = TestContext.GetExistingFeatureObjectOrMakeNew(siteGroup, () => new SiteGroup(siteGroup, true));
+            TestContext.GetExistingFeatureObjectOrMakeNew(siteName, () => new Site(siteName, true, sg.UniqueName));
         }
 
         /// <summary>

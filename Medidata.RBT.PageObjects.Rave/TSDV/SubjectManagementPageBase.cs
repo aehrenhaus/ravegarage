@@ -7,6 +7,7 @@ using OpenQA.Selenium;
 using OpenQA.Selenium.Remote;
 using Medidata.RBT.SeleniumExtension;
 using TechTalk.SpecFlow;
+using Medidata.RBT.PageObjects.Rave.SharedRaveObjects;
 
 namespace Medidata.RBT.PageObjects.Rave
 {
@@ -16,7 +17,8 @@ namespace Medidata.RBT.PageObjects.Rave
 
         public IPage FilterBySite(string sitename)
         {
-            ChooseFromDropdown("Select Site", sitename);
+            Site site = TestContext.GetExistingFeatureObjectOrMakeNew(sitename, () => new Site(sitename, false));
+            ChooseFromDropdown("Select Site", site.UniqueName + ": " + site.Number);
             var search = GetElementByName("Search");
             search.Click();
             return this;

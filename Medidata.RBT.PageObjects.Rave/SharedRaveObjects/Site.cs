@@ -22,6 +22,7 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
     {
         public UploadedDraft Draft { get; set; }
         public string Number { get; set; }
+        public string Group { get; set; }
         public List<Guid> StudyUIDs { get; set; }
 
         /// <summary>
@@ -29,14 +30,17 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
         /// </summary>
         /// <param name="siteName">The feature defined name of the Site</param>
         /// <param name="seed">Bool determining whether you want to seed the object if it is not in the FeatureObjects dictionary</param>
-        public Site(string siteName, bool seed = false)
-            :base(siteName)
+        /// <param name="siteGroup">Name of site group</param>
+        public Site(string siteName, bool seed = false, string siteGroup = "")
+            : base(siteName)
         {
             if (!UID.HasValue)
             {
                 UID = Guid.NewGuid();
                 Name = siteName;
                 Number = Guid.NewGuid().ToString();
+                Group = siteGroup;
+
 
                 if (seed)
                     Seed();
@@ -66,7 +70,7 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
         /// </summary>
         public override void CreateObject()
         {
-            TestContext.CurrentPage.As<SiteAdministrationDetailsPage>().CreateSite(UniqueName, Number);
+            TestContext.CurrentPage.As<SiteAdministrationDetailsPage>().CreateSite(UniqueName, Number, Group);
         }
     }
 }
