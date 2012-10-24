@@ -46,6 +46,7 @@ namespace Medidata.RBT.PageObjects.Rave
 			    foreach (var row in matchRows)
 			    {
 				    row.Checkboxes()[0].Click();
+                    return tbl; // return something, once we successfully click a parameter.
 			    }
                 return null;
 

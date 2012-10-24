@@ -37,7 +37,7 @@ namespace Medidata.RBT.PageObjects.Rave
             Textbox tierDescBox = Browser.TryFindElementById("TierDescription").EnhanceAs<Textbox>();
             tierDescBox.SetText(description);
 
-            this.ClickButton("_ctl0_Content_CustomTierSaveLabel");
+            Browser.ImageBySrc("../../../Img/i_ccheck.gif").Click();
         
             var elems = Browser.FindElementsByPartialId("FormNameLabel");
 

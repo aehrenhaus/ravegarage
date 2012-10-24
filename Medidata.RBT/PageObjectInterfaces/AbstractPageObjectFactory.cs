@@ -100,7 +100,9 @@ namespace Medidata.RBT
                     return Activator.CreateInstance(po.GetType()) as IPage;
                 }
 			}
-            throw new Exception("Can't create a PO instance for url:"+uri.ToString());
+            return new EmptyPage(); // change needed so that url paths that don't have their own classes DO NOT throw an exception.  
+                                    //...                      (made after conversations with Zhan)
+
         }
 
 		#endregion

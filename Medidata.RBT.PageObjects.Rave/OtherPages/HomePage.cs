@@ -34,23 +34,26 @@ namespace Medidata.RBT.PageObjects.Rave
 		/// <param name="studyName"></param>
 		/// <returns></returns>
 		public HomePage SelectStudy(string studyName)
-		{
+        {
             Project study = TestContext.GetExistingFeatureObjectOrMakeNew(
                 studyName, () => new Project(studyName));
-			
+
             int foundOnPage;
-			IWebElement studyLink = this.FindInPaginatedList("", () =>
-			{
+            IWebElement studyLink = this.FindInPaginatedList("", () =>
+            {
                 //TODO :    Remove the coalescing op when seeding considderation is up to date for all feature files. 
                 //          Use study.UniqueName as the text to search for.
                 return TestContext.Browser.TryFindElementByLinkText(study.Name)
                     ?? TestContext.Browser.TryFindElementByLinkText(study.UniqueName);
-			}, out foundOnPage);
+            }, out foundOnPage);
 
-			studyLink.Click();
+            // don't click null links.  It may be null not just because the project is not found, 
+            // ... but also if it's the only project the user is assigned to!
+            if (studyLink != null)
+                studyLink.Click();
 
-			return this;
-		}
+            return this;
+        }
 
 		//
 		public SubjectPage CreateSubject(IEnumerable<FieldModel> dps)
