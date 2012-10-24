@@ -1,5 +1,5 @@
 ﻿# Configuration Loader specification should include Coder Configuration.
-
+@ignore
 Feature: US13011_DT13976: When the Configuration Settings are downloaded, they should include Coder Configuration details.
   As a Rave Administrator
 	When I am on the Configuration Loader page
@@ -7,7 +7,8 @@ Feature: US13011_DT13976: When the Configuration Settings are downloaded, they s
 	And the Core Configuration specification is downloaded and opened
 	Then the Core Configuration specification contains Coder Configuration details
 
- Background:
+
+Background:
 	#Given I am logged in to Rave with username "defuser" and password "password"
 	#And the URL has Coder installed
 	#And the following Project assignments exist

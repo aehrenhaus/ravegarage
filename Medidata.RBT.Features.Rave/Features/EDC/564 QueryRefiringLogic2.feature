@@ -1,3 +1,4 @@
+@ignore
 Feature: 564QueryRefiringLogic2
 	As a Rave user
 	I want to change data
@@ -8,7 +9,6 @@ Feature: 564QueryRefiringLogic2
 # Verifies query firing between cross forms with no require response and no require manual close.
 
 # Project to be uploaded in excel spreadsheet 'Edit Check Study 3'
-
 Background:
     Given I am logged in to Rave with username "defuser" and password "password"
 	And following Study assignments exist

@@ -36,13 +36,12 @@
 #-- SQL Query: 
 #-- select datapointID, data, RangeStatus, AnalyteRangeID from datapoints where recordid = <nnnn>
 #-- <nnnn> is recordid which can be get from CRF Page, Make sure the RangeStatus for the datapoint is 1.
-
+@ignore
 Feature: DT12651
 	As a Rave user
 	When I change range status to clear
 	Then in SQL the query result in Column RangeStatus = 0 
 
-	
 Background:
     Given I am logged in to Rave with username "defuser" and password "password"
 	And I select Study "LabsReg" and Site "Lab Site 1"

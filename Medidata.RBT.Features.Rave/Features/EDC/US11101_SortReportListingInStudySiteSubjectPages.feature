@@ -1,11 +1,12 @@
 ﻿# Reports on either the Study, Site or Subject pages should be sorted in alphabetical order.
-
+@ignore
 Feature: US11101 When reports are listed on either the Study, Site or Subject pages, they should be sorted in alphabetical order.
   As a Rave Adminstrator
 	When I have configured reports to display on either the Study, Site or Subject pages
 	Then the report names are sorted in alphabetical order
 
- Background:
+
+Background:
 	Given I am logged in to Rave with username "defuser" and password "password"
 	# And the following Project assignments exist
 	# | User    | Project    | Environment | Role         | Site                | Site Number | User Group |

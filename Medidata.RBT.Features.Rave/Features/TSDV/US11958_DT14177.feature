@@ -1,5 +1,7 @@
+@ignore
 Feature: US11958_DT14177
 	Change randomization algorithm to randomize initial set of subjects to the tiers in a block rather than sequentially assigning them.
+
 Background:
 	Given I am logged in to Rave with username "defuser" and password "password"
 	#Given there is a project Edit Check Study 3

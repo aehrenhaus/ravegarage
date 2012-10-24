@@ -4,14 +4,14 @@
 #TESTING FOR LOG FORM WITH 2 FIELDS INVOLVED IN QUERY FIRING
 
 # project to be uploaded in excel spreadsheet 'Standard Study'
-
+@ignore
 Feature: 564QueryRefiringLogic_LogForm_2FldEC
     Query Refiring Logic
 	As a Rave user
 	When I manually close a query or cancel, the query should not re-fire if the exact same data is entered into the system
 	So that I don't have to re-enter the exact same response
 
-Background:  
+Background:
     Given I am logged in to Rave with username "defuser" and password "password"
 	And following Study assignments exist
 		| User   | Stud           | Role | Site   | Site Number |

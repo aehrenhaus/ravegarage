@@ -1,5 +1,5 @@
+@ignore
 Feature: DT14168
-
 
 @PB_DT14168
 @Draft

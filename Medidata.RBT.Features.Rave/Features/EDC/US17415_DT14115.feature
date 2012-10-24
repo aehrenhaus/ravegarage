@@ -1,5 +1,5 @@
 #When a non-visible (View Restricted) field, that does not require signature, on a form with other fields that do require signature and have already been signed, is made visible (View Restriction is removed), the signature on the visible fields is not broken.
-
+@ignore
 Feature: US17415_DT14115 
 	When a non-visible (View Restricted) field, that does not require signature, on a form with other fields that do require signature and have already been signed, is made visible (View Restriction is removed), then the signature on the visible fields should not break.
 	As a Rave Administrator
@@ -11,7 +11,6 @@ Feature: US17415_DT14115
 	Then the signature on the visible fields is not broken
 
 Background:
-
 	Given I am logged in to Rave with username "defuser" and password "password"
 	#And the following Project assignments exist
 	#	| User    | Project           | Environment | Role | Site    | Site Number |

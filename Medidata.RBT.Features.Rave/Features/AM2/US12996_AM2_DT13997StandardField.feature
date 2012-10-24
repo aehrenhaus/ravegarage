@@ -1,12 +1,10 @@
 #DT13997:  AM2 blanks out the default values populated by coded values in the data dictionary if the datapoint has a blank entrylocale
 #AM2 will blank out submitted default values for a log field, that been populated by coded values of data dictionary, if the order of data dictionary entries was changed and coded values updated even when everything was properly mapped in the migration plan for data dictionary entries.
 #Unless other wise stated in this feature file it is assumed that this study has at least one subject which as submitted default values.  The forms #needs to be submitted by a role who has entry resitrctions for the field with default values.
-
 Feature: For a standard field. Submitted default values will remain present on the eCRF when the coded values of the data dictionary have been change or reordered.
 
 
 Background:
-
 Given xml draft "DT13997 Upload Sixth AM SJ_1.6.13.xml" is Uploaded
 Given xml draft "DT13997 Upload Seventh AM SJ_1.6.15.xml" is Uploaded
 Given xml draft "DT13997 Upload Ninth AM SJ_1.6.19.xml" is Uploaded

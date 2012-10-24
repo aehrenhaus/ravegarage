@@ -5,7 +5,7 @@
 # (3) the screen will scroll down as the user tabs so that the user can always see the fields into which they enter data
 # (4) the user is able to tab from the last enterable field to the save button and hit enter to save
 # This is related to DT 13558.
-
+@ignore
 Feature: Updated tab order to enable mouseless data entry - Touched standard form
   As A Rave EDC User
   I want to tab from one editable field to the next editable field 

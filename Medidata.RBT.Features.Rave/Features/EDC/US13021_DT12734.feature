@@ -1,12 +1,12 @@
 ﻿# Help links for all standard reports should be replaced with Cloud links.
-
+@ignore
 Feature: US13021_DT12734
 	The Help link is selected for a standard report in the Reporter module, or View Report Help is selected in the Report Paraments, or View Report Help is selected within a generated report, the link should open a standard report is selected, then I see the cloud-based report help page.
  	As a Rave Adminstrator
 	When the Help link is selected for a standard report
 	Then I see the cloud-based help page
 
- Background:
+Background:
 	#Given I am logged in to Rave with username "defuser" and password "password"
 	#And the following standard report assignments exist
 	#| User    | Project			| Environment | Role         | Report Name                       |

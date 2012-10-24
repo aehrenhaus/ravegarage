@@ -4,6 +4,7 @@
 #TESTING FOR LAB FORM WITH 2 FIELDS INVOLVED IN QUERY FIRING
 
 #-- project to be uploaded in excel spreadsheet 'Standard Study'
+@ignore
 Feature: Query Refiring Logic5
 	As a Rave user
 	When I manually close a query or cancel, the query should not re-fire if the exact same data is entered into the system

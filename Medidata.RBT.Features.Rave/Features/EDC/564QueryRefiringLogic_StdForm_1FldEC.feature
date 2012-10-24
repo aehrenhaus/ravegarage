@@ -4,7 +4,7 @@
 #TESTING FOR STANDARD FORM WITH ONLY 1 FIELD INVOLVED IN QUERY FIRING
 
 #-- project to be uploaded in excel spreadsheet 'Standard Study'
-
+@ignore
 Feature: 564QueryRefiringLogic_StdForm_1FldEC
 	As a Rave user
 	When I manually close a query or cancel, the query should not re-fire if the exact same data is entered into the system

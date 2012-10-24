@@ -6,7 +6,7 @@
 # Also, these is a lab form with sample date = 2010-01-04
 # Now, when system do Lab range searching, system will try to use the Age in Visit 1 which is the closest mapped variable because of subject date.
 # To fix: we need to remove subject date from order by so that subject date will not affect search order. Also we need to keep all lab variable datapoints in search targets, it is to say when record date, datapage date and instance date is null for an Age datapoint, but if it is the only one in subject, it will be fetched.
-
+@ignore
 Feature: US12994_DT10991 
 	Remove Subject Date from order by statement in searching Lab Variable Mapping Value
 	As a Rave user

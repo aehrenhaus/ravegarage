@@ -1,5 +1,5 @@
 ﻿	# When a time of 12:00 PM is saved into a date time field with a format of dd MMM yyyy hh:nn rr, that data can be correctly viewed through the Clinical Views.
-
+@ignore
 Feature: US17743_DT12513
 	A time of 12:00 PM can be saved into a date time field with a format of dd MMM yyyy hh:nn rr, and that data can be correctly viewed through the Clinical Views
 	As a Rave user
