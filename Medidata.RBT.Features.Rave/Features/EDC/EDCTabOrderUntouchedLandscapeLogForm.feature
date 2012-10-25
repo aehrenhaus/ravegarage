@@ -49,7 +49,7 @@ Background:
 	#	|Unit Dictionary 1		|U1					|true		|U1			|
 	#	|Unit Dictionary 1		|U2					|			|U2			|		
 	#And form "Log Form" has log direction "Landscape"
-	Given I am logged in to Rave with username "defuser" and password "password"
+	Given I login to Rave with user "defuser" and password "password"
 	#And study "Standard Study" has role "Role 1"
 	#And I navigate to "Standard Study, Draft 1" in Architect
 	#And I publish and push "CRF Version<RANDOMNUMBER>" to site "Site A1"

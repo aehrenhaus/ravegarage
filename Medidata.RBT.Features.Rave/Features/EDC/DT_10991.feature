@@ -18,7 +18,7 @@ Feature: DT 10991 Remove Subject Date from order by statement in searching Lab V
 	So that I can use the Rave lab features of out of range flagging, clinical significance prompts, and lab clinical view
 
 Background:
-    Given I am logged in to Rave with username "defuser" and password "password"
+    Given I login to Rave with user "defuser" and password "password"
 	And following Project assignments exist
 	|User	|Project	|Environment	|Role |Site	  |Site Number	|
 	|User 1 |Mediflex	|Prod			|cdm1 |Site 1 |S100			|

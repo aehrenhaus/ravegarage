@@ -83,7 +83,7 @@ Background:
 	#And I take a screenshot
 	#And PDF Configuration Profile "PDF A2" has Pre-Filled Values Annotations settings
 	#And I take a screenshot
-	#Given I am logged in to Rave with username "defuser" and password "password"
+	#Given I login to Rave with user "defuser" and password "password"
 	#And study "PDF Default Study" has role "Role 1"
 	#And I publish "CRF Version<RANDOMNUMBER>" to site "Site A1"
 	#And I note "CRF Version"

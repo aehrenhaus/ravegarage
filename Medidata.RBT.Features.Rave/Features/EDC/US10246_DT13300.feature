@@ -10,7 +10,7 @@ Feature: US10246_DT13300
 	And the meridian component of the time in all time fields should be in uppercase
 
 Background:
-	#Given I am logged in to Rave with username "defjapan" and password "password"
+	#Given I login to Rave with user "defjapan" and password "password"
 	#And the following Project assignments exist
 	#| User		| Project		      | Environment	| Role			| Site		| Site Number |
 	#| defuser	| US10246_DT13300_SJ  | Prod		| cdm1			| Site 1	| S100		  |
@@ -37,7 +37,7 @@ Background:
 
 Scenario: @PB_US10246_DT13300_01 As a Study Coordinator, when I save the month into a date field, and the time into a time field, then I see the month and meridian displayed in uppercase.
 	
-	When I am logged in to Rave with username "defjapan" and password "password"
+	When I login to Rave with user "defjapan" and password "password"
 	And I select Study "US10246_DT13300_SJ" and Site "Site 1"
 	And I create a Subject
 	| Field              | Data                  | Control Type |
@@ -75,7 +75,7 @@ Scenario: @PB_US10246_DT13300_01 As a Study Coordinator, when I save the month i
 @Validation 
 Scenario: @PB_US10246_DT13300_02 As a Study Coordinator, I save an unknown month. When I edit the form and save a month, then I see the month displayed in uppercase.
 		
-	When I am logged in to Rave with username "defjapan" and password "password"
+	When I login to Rave with user "defjapan" and password "password"
 	And I select Study "US10246_DT13300_SJ" and Site "Site 1"
 	And I create a Subject
 	| Field				| Data				   |
@@ -121,7 +121,7 @@ Scenario: @PB_US10246_DT13300_02 As a Study Coordinator, I save an unknown month
 @Validation 
 Scenario: @PB_US10246_DT13300_03  As a Study Coordinator, My Profile > Locale is set to English. when I save the month into a date field, and the time into a time field, then I see the month and meridian displayed in uppercase. When I set My Profile > Locale to Japanese, and I edit the form and save a new month and new meridian, then I see the month and meridian displayed in uppercase.
 	
-	When I am logged in to Rave with username "defuser" and password "password"
+	When I login to Rave with user "defuser" and password "password"
 	And I select Study "US10246_DT13300_SJ" and Site "Site 1"
 	And I create a Subject
 	| Field				| Data				   |
@@ -152,7 +152,7 @@ Scenario: @PB_US10246_DT13300_03  As a Study Coordinator, My Profile > Locale is
 	| Device Implant Date 9 | UN UN 1972  |
 	| Device Implant Time   | 11:59 AM    | 	
 	And I take a screenshot
-	And I am logged in to Rave with username "defjapan" and password "password"
+	And I login to Rave with user "defjapan" and password "password"
 	And I select Study "US10246_DT13300_SJ" and Site "Site 1"
 	And I select a Subject "SUB {Var(num1)}"
 	And I select link "Device Form"

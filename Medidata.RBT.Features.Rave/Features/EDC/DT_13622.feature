@@ -9,7 +9,7 @@ Feature: DT 13622 When an Edit Check sets Datapoint XYZ to require verification,
 	Then I should see an audit for the unverification
 
 Background:
-    Given I am logged in to Rave with username "defuser" and password "password"
+    Given I login to Rave with user "defuser" and password "password"
 	Given xml draft "DT13622 Mediflex.xml" is Uploaded with Environment name "Dev"
 	Given Site "MediflexDTSite" exists
 	Given study "Mediflex" is assigned to Site "MediflexDTSite" with study environment "Aux: Dev"

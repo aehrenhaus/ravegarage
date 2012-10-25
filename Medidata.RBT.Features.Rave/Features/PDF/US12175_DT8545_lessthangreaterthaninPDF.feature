@@ -229,7 +229,7 @@ Background:
 	#|Meiryo                   |True                                                                           |True                   |True             |True              |True                         |
 	#
 	#
-	Given I am logged in to Rave with username "defuser" and password "password"
+	Given I login to Rave with user "defuser" and password "password"
 	#And study "PDF Font Study" has role "Role 1"
 	#And I publish and push "CRF Version<RANDOMNUMBER>" to site "PDF Font Site 1"
 	#And I note "CRF Version"

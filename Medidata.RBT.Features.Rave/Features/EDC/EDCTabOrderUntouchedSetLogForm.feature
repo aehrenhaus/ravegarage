@@ -14,7 +14,7 @@ Feature: Updated tab order to enable mouseless data entry - Untouched landscape 
   So that I can enter data without using a mouse 
 
 Background:
-	Given I am logged in to Rave with username "defuser" and password "password"
+	Given I login to Rave with user "defuser" and password "password"
 	And I select Study "Standard Study" and Site "Site 1"
 	And I select a Subject "777777779{Var(num1)}"
 	Given I select Folder "Log Form Landscape (Set)"

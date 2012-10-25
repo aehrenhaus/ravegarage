@@ -16,7 +16,7 @@ namespace Medidata.RBT.Features.Rave
 		/// </summary>
 		/// <param name="username"></param>
 		/// <param name="password"></param>
-        [StepDefinition(@"I am logged in to Rave with username ""([^""]*)"" and password ""([^""]*)""")]
+        [StepDefinition(@"I login to Rave with user ""([^""]*)"" and password ""([^""]*)""")]
 		public void ILoginToRaveWithUsername____AndPassword____(string username, string password)
 		{
 			LoginPage page = new LoginPage();
@@ -36,7 +36,6 @@ namespace Medidata.RBT.Features.Rave
 		/// Login to rave with the username and password in configuration
 		/// </summary>
 		/// <param name="userName">Feature name of the user</param>
-        [StepDefinition(@"I log in to Rave with user ""([^""]*)""")]
         [StepDefinition(@"I login to Rave with user ""([^""]*)""")]
 		public void ILoginToRaveWithUser____(string userName)
 		{

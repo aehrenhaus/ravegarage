@@ -11,7 +11,7 @@ Feature: US17415_DT14115
 	Then the signature on the visible fields is not broken
 
 Background:
-	Given I am logged in to Rave with username "defuser" and password "password"
+	Given I login to Rave with user "defuser" and password "password"
 	#And the following Project assignments exist
 	#	| User    | Project           | Environment | Role | Site    | Site Number |
 	#	| defuser | **US17415_DT14115 | Prod        | CDM1 | Site 01 | S100        |

@@ -43,7 +43,7 @@ Feature: DT12651
 	Then in SQL the query result in Column RangeStatus = 0 
 
 Background:
-    Given I am logged in to Rave with username "defuser" and password "password"
+    Given I login to Rave with user "defuser" and password "password"
 	And I select Study "LabsReg" and Site "Lab Site 1"
 	And following Study assignments exist
 		| User	  | Study	| Role | Site	  	| Site Number	|

@@ -7,7 +7,7 @@ Feature: US17943
 	Then an Invalid* error message is displayed
 
 Background:
-	#Given I am logged in to Rave with username "defuser" and password "password"
+	#Given I login to Rave with user "defuser" and password "password"
 	#And the following User permissions exist
 		#| Module       | Project         | Role | Security Group | Deny Access |
 		#| All Projects | Study Developer |      |                |             |
@@ -25,7 +25,7 @@ Background:
 		#| TEXT4	| Text 4     | 10    | Text         |
 		#| TEXT5    | Text 5     | 10    | Text         |
 		#| TEXT6    | Text 6     | 5     | Text         |
-	And I am logged in to Rave with username "defuser" and password "password"
+	And I login to Rave with user "defuser" and password "password"
 
 
 

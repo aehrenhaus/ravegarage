@@ -10,7 +10,7 @@ Feature: US13011_DT13976
 
 
 Background:
-	Given I am logged in to Rave with username "defuser" and password "password"
+	Given I login to Rave with user "defuser" and password "password"
 	#And the URL has Coder installed
 	#And the following Project assignments exist
 	#	| User    | Project    | Environment | Role         | Site         | Site Number | User Group    |

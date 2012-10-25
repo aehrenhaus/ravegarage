@@ -4,7 +4,7 @@ Feature: DT14168
 @PB_DT14168
 @Draft
 Scenario: DT14168
-	Given I am logged in to Rave with username "defuser" and password "password"
+	Given I login to Rave with user "defuser" and password "password"
 	And I navigate to "User Administration"
 	When I search User by
 		| Login     | Authenticator |

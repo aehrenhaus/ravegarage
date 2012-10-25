@@ -9,7 +9,7 @@ Feature: US12999_DT13977
 	Then I should not see the clinical significance information
 
 Background:
-    Given I am logged in to Rave with username "defuser" and password "password"
+    Given I login to Rave with user "defuser" and password "password"
 #	And following Project assignments exist
 #	|User	 |Project	    	|Environment	|Role |Site	  |Site Number	|
 #	|defuser |US12999_DT13977_SJ|Prod			|cdm1 |Site 1 |S100			|

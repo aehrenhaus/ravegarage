@@ -137,7 +137,7 @@ And I take a screenshot
 @WIP
 Scenario:  When a user navigates to Architect, changes the coded values of a data dictionary, creates a new CRF version, creates a migration plan with the new CRF version as the Target CRF version, in object mapping maps the data dictionary, and migrates a subject that has been submitted by a user with role permissions to edit a field with defaulted values, then user navigate to EDC and sees that the defaulted values for the subject are present.
 
-Given I log in to Rave with user "SUPER USER 2"
+Given I login to Rave with user "SUPER USER 2"
 Given I create a Subject
 | Field                        | Data              |
 | Subject Number (3 digits)    | {RndNum<num1>(3)} |
@@ -199,7 +199,7 @@ And I take a screenshot
 @WIP
 Scenario:  When a user navigates to Architect, reorders the coded values of a data dictionary, creates a new CRF version, creates a migration plan with the new CRF version as the Target CRF version, in object mapping maps the data dictionary, and migrates a subject that has been submitted by a user with role permissions to edit a field with defaulted values, then user navigate to EDC and sees that the defaulted values for the subject are present.
 
-Given I log in to Rave with user "SUPER USER 2"
+Given I login to Rave with user "SUPER USER 2"
 Given I create a Subject
 | Field                        | Data              |
 | Subject Number (3 digits)    | {RndNum<num1>(3)} |

@@ -7,7 +7,7 @@ Feature: US17701_DT13437
 	Then the audit information for the analyte I created is captured in the database
 
 Background:
-	Given I am logged in to Rave with username "defuser" and password "password"
+	Given I login to Rave with user "defuser" and password "password"
 	#And the following Project assignments exist
 	#	| User    | Project  | Environment | Role | Site			| Site Number | Lab Type  | Lab Name		| Description   | Range Type |
 	#	| defuser | Mediflex | Prod        | cdm1 |  Site 10991		| 10991       | Local Lab |  Local Lab		|  Local Lab	| Standard   |
