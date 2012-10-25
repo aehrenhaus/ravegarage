@@ -1,13 +1,13 @@
 ﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
 <html>
 	<head>
-		<title>04 Write a new step definition</title>
+		<title>Write a new step definition</title>
 	</head>
 	<link rel="stylesheet" href="site.css" type="text/css" />
 	<body>
 	
 		<h1>
-			04 Write a new step definition</h1>
+			 Write a new step definition</h1>
 		<p>
 			In the <a href="02%20Create%20and%20run%20a%20feature.htm">previous example</a>, you created a new feature file.
 			<br />
@@ -15,7 +15,7 @@
 			And there is only 1 step in the scenario.<br />
 			And the step has a definition, you can verify this by right clicking the step 
 			and &#39;Go to definition&#39; (or just F12)<br />
-			<img src="04/Go to definition.jpg" alt="test view" /><br />
+			<img src="Write your first step definition/Go to definition.jpg" alt="test view" /><br />
 			When you run the test, it will take you to the specified url. ( this is the 
 			expected behavior of the step)</p>
 		<p>
@@ -37,15 +37,15 @@
 &nbsp;&nbsp;&nbsp; And I bla bla</li>
 			<li>Run your test, in the report window, click &#39;show&#39;<br />
 				You will see the test failed because of the step does not have a definition<br />
-				<img src="04/failed.jpg" /></li>
+				<img src="Write your first step definition/failed.jpg" /></li>
 			<li>Copy the suggested code block , paste it in MiscSteps.cs in Medidata.RBT.Common.Steps 
 				project<br />
-				<img src="04/suggested code.jpg" /></li>
+				<img src="Write your first step definition/suggested code.jpg" /></li>
 			<li>Make a break point on the step<br />
-				<img src="04/breakpoint.jpg" /></li>
+				<img src="Write your first step definition/breakpoint.jpg" /></li>
 			<li>This time, in Test View, <strong>debug</strong> the test.<br />
 				You will see it hitting the break point and press F11 to goto the stepdefinition<br />
-				<img src="04/hitbreakpoint.jpg" /></li>
+				<img src="Write your first step definition/hitbreakpoint.jpg" /></li>
 			<li>The test shall fail on line <strong>ScenarioContext.Current.Pending();</strong><br />
 			Because you are supposed to remove the line and add your logic here.
 
@@ -74,6 +74,29 @@
 
 			</li>
 		</ol>
+	
+		<h2>
+			Guidelines for choosing which step to use</h2>
+		<ul>
+			<li>Prefer using existing steps than creating a new step.<br />
+				<br />
+				For example if you want to verify the study dropdown exists, use the common 
+				step:<br />
+				<strong>I verify control &quot;Study&quot; exists</strong><br />
+				Don&#39;t write your step:<strong>
+				<br />
+				I verify the study dropdown exists.</strong><br />
+				<br />
+				To programmerStep definition method can be very adaptive because in most cases it is calling 
+                methods defined on interfaces. The methods have default implementation, but you 
+			    can override them if you want to change the behavior a little bit.&nbsp; See <a href="05 Page object pattern.htm"> 05 
+                Page object pattern</a> for more details</li>
+			<li>If you have to create a new step, prefer writing a common step def than writing 
+                a domain specific step</li>
+			<li>Finally, if you have to write a new domain specific step, the literal should be very specifc to 
+				describe your domain-specific problem. Don&#39;t let it looks like a common method.</li>
+		</ul>
+	
 		<p>
 			&nbsp;</p>
 		<p>
