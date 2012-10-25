@@ -13,7 +13,6 @@ namespace Medidata.RBT.SeleniumExtension
 {
 	public static class WebDriver
 	{
-
 		public static void TryExecuteJavascript(this RemoteWebDriver driver, string script)
 		{
 			try
@@ -24,47 +23,5 @@ namespace Medidata.RBT.SeleniumExtension
 			{
 			}
 		}
-
-
-		private static IWebElement waitForElement( IWebDriver driver, Func<IWebDriver, IWebElement> getElement, string errorMessage = null, int? timeOutSecond =null)
-		{
-			timeOutSecond = timeOutSecond ?? 10;
-			var wait = new WebDriverWait(driver, TimeSpan.FromSeconds(timeOutSecond.Value));
-			IWebElement ele = null;
-			try
-			{
-				ele = wait.Until(getElement);
-			}
-			catch
-			{
-				if (errorMessage == null)
-					throw;
-				else
-					throw new Exception(errorMessage);
-			}
-			return ele;
-		}
-
-		public static IWebElement WaitForElement(this IWebDriver driver, Func<IWebDriver, IWebElement> getElement, string errorMessage = null, int? timeOutSecond = null)
-		{
-			return waitForElement(driver, getElement, errorMessage, timeOutSecond);
-		}
-
-		public static IWebElement WaitForElement(this IWebDriver driver, By by, string errorMessage = null, int? timeOutSecond = null)
-		{
-			return waitForElement(driver, browser => browser.FindElement(by), errorMessage, timeOutSecond);
-		}
-
-
-		public static IWebElement WaitForElement(this IWebDriver driver, string partialID, Func<IWebElement, bool> predicate = null, string errorMessage = null, int? timeOutSecond = null)
-		{
-			
-			Func<IWebDriver, IWebElement> func =browser => browser.FindElements(By.XPath(".//*[contains(@id,'" + partialID + "')]")).FirstOrDefault((predicate==null)?(c=>true):predicate);
-		
-			return waitForElement(driver, func, errorMessage, timeOutSecond);
-		}
-
-
-
 	}
 }

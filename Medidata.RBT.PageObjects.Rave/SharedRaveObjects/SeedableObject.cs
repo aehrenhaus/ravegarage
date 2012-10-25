@@ -58,8 +58,8 @@ namespace Medidata.RBT.SharedRaveObjects
                 //login as default user to homepage if not already
                 LoginPage.LoginToHomePageIfNotAlready();
                
-                NavigateToSeedPage();
                 MakeUnique();
+                NavigateToSeedPage();
                 CreateObject();
 
                 //login as previous user, to home page
