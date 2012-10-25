@@ -37,20 +37,15 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
             {
                 UID = Guid.NewGuid();
                 Name = name;
-                if (seed)
-                {
-                    FileLocation = RBTConfiguration.Default.UploadPath + @"\Drafts\" + name;
-                    Seed();
-                }
+         
             }
         }
 
         /// <summary>
         /// Navigate to the upload draft page.
         /// </summary>
-        public override void NavigateToSeedPage()
+		protected override void NavigateToSeedPage()
         {
-            LoginPage.LoginToHomePageIfNotAlready();
             TestContext.CurrentPage.As<HomePage>().ClickLink("Architect");
             TestContext.CurrentPage.As<ArchitectPage>().ClickLink("Upload Draft");
         }
@@ -58,7 +53,7 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
         /// <summary>
         /// Upload the unique version of the UploadDraft. Mark it for deletion after scenario completion.
         /// </summary>
-        public override void CreateObject()
+		protected override void CreateObject()
         {
             TestContext.CurrentPage.As<UploadDraftPage>().UploadFile(UniqueFileLocation);
             Factory.FeatureObjectsForDeletion.Add(this);
@@ -68,8 +63,9 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
         /// Load the xml to upload. Replace the project name with a unique version of it with a TID at the end.
         /// Use the draft name to create a draft object, but do NOT make the draft unique.
         /// </summary>
-        public override void MakeUnique()
-        {
+		protected override void MakeUnique()
+		{
+			FileLocation = RBTConfiguration.Default.UploadPath + @"\Drafts\" + Name;
             XmlDocument xmlDoc = new XmlDocument();
             xmlDoc.Load(FileLocation);
             List<XmlNode> worksheets = new List<XmlNode>(xmlDoc.GetElementsByTagName("Worksheet").Cast<XmlNode>());
@@ -132,7 +128,7 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
                         StringBuilder uniqueEntryRestrictions = new StringBuilder();
                         foreach (string entryRestriction in entryRestrictions)
                         {
-                            Role role = TestContext.GetExistingFeatureObjectOrMakeNew(entryRestriction.Trim(), () => new Role(entryRestriction.Trim(), true));
+                            Role role = TestContext.GetExistingFeatureObjectOrMakeNew(entryRestriction.Trim(), () => new Role(entryRestriction.Trim()));
                             uniqueEntryRestrictions.Append(role.UniqueName + ",");
                         }
 
@@ -140,8 +136,6 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
                     }
                 }
             }
-
-            NavigateToSeedPage();
         }
 
         /// <summary>

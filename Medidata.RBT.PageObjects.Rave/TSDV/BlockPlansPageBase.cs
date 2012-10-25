@@ -54,7 +54,7 @@ namespace Medidata.RBT.PageObjects.Rave
                 planNameTextbox.Clear();
                 planNameTextbox.SetText(planName);
 
-                Role role = TestContext.GetExistingFeatureObjectOrMakeNew(dataEntryRole, () => new Role(dataEntryRole, false));
+                Role role = TestContext.GetExistingFeatureObjectOrMakeNew(dataEntryRole, () => new Role(dataEntryRole));
                 if (role != null)
                 {
                     var entryRoleDropdown = Browser.TryFindElementBy(By.TagName("Select"));

@@ -84,12 +84,12 @@ namespace Medidata.RBT.PageObjects.Rave
         public void AssignUserToSecurityRole(User user, SecurityRole securityRole)
         {
             ClickLink("Assign To Project");
-            ChooseFromDropdown("_ctl0_Content_UserSecurityWizard1_DdlSelectRole", securityRole.UniqueName);
+            ChooseFromDropdown("_ctl0_Content_UserSecurityWizard1_DdlSelectRole", securityRole.Name);
             ClickLink("Assign");
 
             if (user.ModuleAssignments == null)
                 user.ModuleAssignments = new List<ModuleAssignment>();
-            user.ModuleAssignments.Add(new ModuleAssignment("All Projects", securityRole.UniqueName));
+            user.ModuleAssignments.Add(new ModuleAssignment("All Projects", securityRole.Name));
         }
 
         /// <summary>

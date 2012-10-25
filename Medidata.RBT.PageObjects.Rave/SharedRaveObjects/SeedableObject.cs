@@ -9,12 +9,15 @@ using System.IO;
 
 namespace Medidata.RBT.SharedRaveObjects
 {
-    ///<summary>
+
+	///<summary>
     ///All objects which can seed should implement this class. 
     ///The seedable objects should be marked for seeding when created.
     ///</summary>
-    public abstract class SeedableObject : IFeatureObject
-    {
+    public abstract class SeedableObject : ISeedableObject
+	{
+	    public bool SuppressSeeding { get; set; } //Only true when you don't want to seed.
+
         public Guid? UID { get; set; } //A unique identifier for the object
         public string Name { get; set; } //The feature file defined name of the SeedableObject
         private string m_UniqueName;
@@ -51,21 +54,22 @@ namespace Medidata.RBT.SharedRaveObjects
         /// </summary>
         public virtual void Seed()
         {
-            if (RBTConfiguration.Default.EnableSeeding)
-            {
-                string loggedInUserBeforeSeed = TestContext.CurrentUser;
-               
-                //login as default user to homepage if not already
-                LoginPage.LoginToHomePageIfNotAlready();
-               
-                MakeUnique();
-                NavigateToSeedPage();
-                CreateObject();
+			if (SuppressSeeding || !RBTConfiguration.Default.EnableSeeding)
+				return;
 
-                //login as previous user, to home page
-                LoginPage.LoginToHomePageIfNotAlready(loggedInUserBeforeSeed);
+            string loggedInUserBeforeSeed = TestContext.CurrentUser;
+               
+            //login as default user to homepage if not already
+            LoginPage.LoginToHomePageIfNotAlready();
+               
+            MakeUnique();
+            NavigateToSeedPage();
+            CreateObject();
+
+            //login as previous user, to home page
+            LoginPage.LoginToHomePageIfNotAlready(loggedInUserBeforeSeed);
              
-            }
+            
         }
 
 
@@ -84,18 +88,18 @@ namespace Medidata.RBT.SharedRaveObjects
         /// <summary>
         /// Navigate to the page where seeding occurs.
         /// </summary>
-        public abstract void NavigateToSeedPage();
+		protected abstract void NavigateToSeedPage();
 
         /// <summary>
         /// Make the object that you are going to seed unique. This usually involves appending the TID to the name. 
         /// If you are uploading an xml, this is where you would save a unique version of the xml.
         /// Make sure to not overwrite the orginial xml provided. 
         /// </summary>
-        public abstract void MakeUnique();
+		protected abstract void MakeUnique();
 
         /// <summary>
         /// Create a unique version of the object, usually by uploading the object.
         /// </summary>
-        public abstract void CreateObject();
+		protected abstract void CreateObject();
     }
 }

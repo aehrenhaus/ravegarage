@@ -30,7 +30,7 @@ namespace Medidata.RBT.Features.Rave
 
             foreach (var reportAssignment in reportAssignments)
             {
-                User user = TestContext.GetExistingFeatureObjectOrMakeNew(reportAssignment.User, () => new User(reportAssignment.User, true));
+                User user = TestContext.GetExistingFeatureObjectOrMakeNew(reportAssignment.User, () => new User(reportAssignment.User));
                 if (!user.ReportAssignmentsExists(reportAssignment.Report))
                 {
                     CurrentPage.As<ReportAssignmentPage>().SelectReportAssignment(reportAssignment.Report, user);

@@ -12,5 +12,7 @@ namespace Medidata.RBT.SharedObjects
     /// </summary>
     public interface IFeatureObject
     {
+		Guid? UID { get; set; }
+		string Name { get; set; }
     }
 }

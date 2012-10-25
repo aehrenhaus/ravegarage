@@ -142,8 +142,8 @@ namespace Medidata.RBT.Features.Rave.Steps
             List<ConfigurationCreationModel> configurations = table.CreateSet<ConfigurationCreationModel>().ToList();
             foreach (ConfigurationCreationModel configuration in configurations)
             {
-                User user = TestContext.GetExistingFeatureObjectOrMakeNew(configuration.User, () => new User(configuration.User, true));
-                Role role = TestContext.GetExistingFeatureObjectOrMakeNew(configuration.Role, () => new Role(configuration.Role, true));
+                User user = TestContext.GetExistingFeatureObjectOrMakeNew(configuration.User, () => new User(configuration.User));
+                Role role = TestContext.GetExistingFeatureObjectOrMakeNew(configuration.Role, () => new Role(configuration.Role));
                 SecurityRole securityRole = TestContext.GetExistingFeatureObjectOrMakeNew
                     (configuration.SecurityRole, () => new SecurityRole(configuration.SecurityRole));
 
@@ -151,7 +151,7 @@ namespace Medidata.RBT.Features.Rave.Steps
                 Project project = TestContext.GetExistingFeatureObjectOrMakeNew(configuration.Project, () => new Project(configuration.Project));
 
                 bool studyAssignmentExists = user.StudyAssignmentExists(role.UID.Value, project.UID.Value, site.UID.Value);
-                bool moduleAssignmentExists = user.ModuleAssignmentExists("All Projects", securityRole.UniqueName);
+                bool moduleAssignmentExists = user.ModuleAssignmentExists("All Projects", securityRole.Name);
                 if (!studyAssignmentExists || !moduleAssignmentExists)
                 {
                     string loggedInUserBeforeAssignments = TestContext.CurrentUser;

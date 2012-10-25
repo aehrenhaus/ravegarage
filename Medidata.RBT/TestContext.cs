@@ -154,15 +154,18 @@ namespace Medidata.RBT
         public static T GetExistingFeatureObjectOrMakeNew<T>(string featureName, Func<T> constructor) where T : IFeatureObject
         {
             IFeatureObject fo;
-            TestContext.FeatureObjects.TryGetValue(featureName, out fo);
+            FeatureObjects.TryGetValue(featureName, out fo);
             if (fo != null)
                 return (T)fo;
-            else
-            {
-                T featureObject = constructor();
-                TestContext.FeatureObjects.Add(featureName, featureObject);
-                return featureObject;
-            }
+
+	        T featureObject = constructor();
+
+	        if (featureObject is ISeedableObject)
+		        (featureObject as ISeedableObject).Seed();
+
+	        FeatureObjects.Add(featureName, featureObject);
+
+	        return featureObject;
         }
 
 		public static DateTime? CurrentScenarioStartTime

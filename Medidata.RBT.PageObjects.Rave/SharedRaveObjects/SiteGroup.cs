@@ -37,16 +37,12 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
             UID = Guid.NewGuid();
             Name = siteGroupName;
             Number = Guid.NewGuid().ToString();
-
-            if (seed)
-                Seed();
-
         }
 
         /// <summary>
         /// Create a unique name for the site by appending a TID.
         /// </summary>
-        public override void MakeUnique()
+		protected override void MakeUnique()
         {
             UniqueName = Name + TID;
         }
@@ -54,9 +50,8 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
         /// <summary>
         /// Navigate to the "New Site" page
         /// </summary>
-        public override void NavigateToSeedPage()
+		protected override void NavigateToSeedPage()
         {
-            LoginPage.LoginToHomePageIfNotAlready();
             TestContext.CurrentPage.As<HomePage>().ClickLink("Site Administration");
             TestContext.CurrentPage.As<SiteAdministrationHomePage>().ClickLink("Site Group Administration");
         }
@@ -64,7 +59,7 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
         /// <summary>
         /// Create a site and add it to the FeatureObjects site dictionary.
         /// </summary>
-        public override void CreateObject()
+		protected override void CreateObject()
         {
             TestContext.CurrentPage.As<SiteAdministrationNewSiteGroupPage>().CreateSiteGroup(UniqueName);
         }

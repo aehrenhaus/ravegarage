@@ -46,7 +46,7 @@ namespace Medidata.RBT.Features.Rave
             }
             else
             {
-                User user = TestContext.GetExistingFeatureObjectOrMakeNew(userName, () => new User(userName, true));
+                User user = TestContext.GetExistingFeatureObjectOrMakeNew(userName, () => new User(userName));
                 LoginPage.LoginToHomePageIfNotAlready(user.UniqueName, user.Password);
             }
 		}
