@@ -1,16 +1,28 @@
 ﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
 <html>
 	<head>
-		<title>01 Project setup</title>
+		<title>Project setup</title>
 	</head>
 	<body>
 		<link rel="stylesheet" href="site.css" type="text/css" />
 		<h1>
-			01 Project setup</h1>
+			Project setup</h1>
 		<ol>
 			<li>Uninstall Typemock 6.0.2 which is usually installed on medidata&#39;s machines, it 
 				conflicts with the version of selenium we are using.</li>
 			<li>Install specflow, this will provide nessisary plugins for VS2010</li>
+			<li>Set powershell execution policy. For windows xp, you shall install KB968930 
+				first to get latest powershell.
+				<br />
+				On windows 7, open
+				<a href="file:///C:/Windows/SysWOW64/WindowsPowerShell/v1.0/powershell_ise.exe">
+				C:\Windows\SysWOW64\WindowsPowerShell\v1.0\powershell_ise.exe</a>
+				<br />
+				enter: Set-ExecutionPolicy unrestricted click &#39;Yes&#39; on the prompt window</li>
+			<li>Turn off UAC(User account control) on Windows 7
+				<br />
+				You can do this from control panel/user accounts/user account control . Do
+				<strong>reboot</strong> to take effect</li>
 			<li>Clone RBT project using git</li>
 			<li>Get your self a copy of firefox12. At this time, only firefox 12 works properly 
 				with the selenium dlls.</li>
@@ -31,13 +43,14 @@
 				it(Menu: Test-&gt;Windows-&gt;TestView)<br />
 				There should already be many tests there .<br />
 				Click the group by dropdown to group by Class<br />
-				<img src="01/test view group by.jpg"  alt="group by" /></li>
+				<img src="Project setup/test view group by.jpg"  alt="group by" /></li>
 			<li>
-				Pick any test , right click and run it. It might fail but at least you should 
+				Pick any 
+				scenario in the list , right click and run it. It might fail but at least you should 
 				see browser pops up trying to run the test.
 				<br />
 				And later the report page pops up.<br />
-				<img src="01/report.jpg" alt="report" />
+				<img src="Project setup/report.jpg" alt="report" />
 			</li>
 		</ol>
 		<p>

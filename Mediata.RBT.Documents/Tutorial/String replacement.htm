@@ -1,0 +1,47 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+	<head>
+		<title>String replacement</title>
+	</head>
+	<link rel="stylesheet" href="site.css" type="text/css" />
+	<body>
+	
+		<h1>String replacement</h1>
+		
+		<p>
+			You will see 
+			many occurrence of litrarl in the form of {xxx&lt;xx&gt;(xxxx)} in feature files. This is the cases of string replacement.</p>
+		<p>
+			<img src="String replacement/example.png" /></p>
+		<p>
+			That is, we don&#39;t want some static literal value, but rather something 
+			different everytime.<br />
+			In the example above, the string {RndNum&lt;num1&gt;(5)} will be replaced to a random 
+			5 digit number every time the step runs.</p>
+		<p>
+			Using a string replacement is as simple as that. Just remember the 3 components 
+			of a string replacement literal.</p>
+		<ul>
+			<li>method name </li>
+			<li>variable name, optional,&nbsp; this is to remember the replaced result for later 
+				use.</li>
+			<li>arguments, seperated by comma</li>
+		</ul>
+		<p>
+			&nbsp;<img src="String replacement/structure.png" /></p>
+		<p>
+			For developers, a&nbsp; string replacement is a class that implmented&nbsp; 
+			IStringReplace.
+			<br />
+			Take a look at thoses classes is helpful to understand how they are constructed.<br />
+			<img src="String replacement/VarReplace.png" /></p>
+		<p>
+			Note that string replacement does not happen by default in every step.<br />
+			The step definition has to call SpecialStringHelper.Replace method to explicitly 
+			replace a string.</p>
+		<p>
+			&nbsp;
+			<img src="String replacement/invoke.png" />
+		</p>
+	</body>
+</html>
