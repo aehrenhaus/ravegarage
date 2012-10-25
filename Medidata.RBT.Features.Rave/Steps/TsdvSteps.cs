@@ -60,7 +60,7 @@ namespace Medidata.RBT.Features.Rave
         [StepDefinition(@"I delete the tier ""([^""]*)"" from plan")]
         public void IDeleteTier____FromPlan(string tierName)
         {
-            CurrentPage.As<StudyBlockPlansPage>().DeleteTier(tierName);
+			CurrentPage.As<BlockPlansPageBase>().DeleteTier(tierName);
         }
 
         /// <summary>
