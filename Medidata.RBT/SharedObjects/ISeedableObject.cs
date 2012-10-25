@@ -8,11 +8,19 @@ namespace Medidata.RBT.SharedObjects
 	public interface ISeedableObject : IFeatureObject
 	{
 		bool SuppressSeeding { get; set; }
+
 		Guid? UID { get; set; }
+
 		string Name { get; set; }
 
-		string UniqueName //A unique name of the SeedableObject, usually formed using the name + TID
-		{ get; set; }
+		//A unique name of the SeedableObject, usually formed using the name + TID
+		string UniqueName{ get; set; }
+
+
+		//void SeedFromUI();
+
+		//void SeedFromBackend();
+
 
 		/// <summary>
 		/// Seed the seedable object.

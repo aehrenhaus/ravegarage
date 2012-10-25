@@ -18,7 +18,7 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
     ///This is a rave specific CrfVersion. It is seedable.
     ///These are not uploaded, and are created entirely through the UI.
     ///</summary>
-    public class CrfVersion : SeedableObject
+    public class CrfVersion : BaseRaveSeedableObject
     {
 		public UploadedDraft UploadedDraft
 		{
@@ -33,9 +33,7 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
         /// </summary>
         /// <param name="draftName">The draft that is uploaded to create this CRFVersion</param>
         /// <param name="crfVersionName">The feature defined name of this Crf Version</param>
-        /// <param name="seed">Bool determining whether you want to seed the object if it is not in the FeatureObjects dictionary</param>
         public CrfVersion(string draftName, string crfVersionName)
-            : base(crfVersionName)
         {
             if (!UID.HasValue)
             {

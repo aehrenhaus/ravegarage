@@ -46,7 +46,7 @@ namespace Medidata.RBT.Features.Rave
         [StepDefinition(@"xml draft ""([^""]*)"" is Uploaded")]
         public void XmlDraft____IsUploaded(string draftName)
         {
-            TestContext.GetExistingFeatureObjectOrMakeNew(draftName, () => new UploadedDraft(draftName, true));
+            TestContext.GetExistingFeatureObjectOrMakeNew(draftName, () => new UploadedDraft(draftName));
         }
 
         /// <summary>
@@ -57,7 +57,7 @@ namespace Medidata.RBT.Features.Rave
         [StepDefinition(@"xml draft ""([^""]*)"" is Uploaded with Environment name ""([^""]*)""")]
         public void XmlDraft____IsUploadedWithEnvironmentName____(string draftName,string envName)
         {
-            UploadedDraft uploadedDraft = TestContext.GetExistingFeatureObjectOrMakeNew(draftName, () => new UploadedDraft(draftName, true));
+            UploadedDraft uploadedDraft = TestContext.GetExistingFeatureObjectOrMakeNew(draftName, () => new UploadedDraft(draftName));
 
             TestContext.CurrentPage.As<HomePage>().ClickLink("Architect");
             TestContext.CurrentPage.As<ArchitectPage>().ClickProject(uploadedDraft.Project.UniqueName);
@@ -90,7 +90,7 @@ namespace Medidata.RBT.Features.Rave
         public void IPublishAndPushECRF____To____WithStudyEnvironment____(string uploadName, string crfVersionName, string studyEnvName)
         {
             UploadedDraft uploadedDraft = TestContext.GetExistingFeatureObjectOrMakeNew
-                     (uploadName, () => new UploadedDraft(uploadName, true));
+                     (uploadName, () => new UploadedDraft(uploadName));
             CrfVersion crfVersion = TestContext.GetExistingFeatureObjectOrMakeNew
                     (crfVersionName, () => new CrfVersion(uploadedDraft.Name, crfVersionName));
             if (TestContext.CurrentUser == null)

@@ -18,7 +18,7 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
     ///This is a rave specific Site. It is seedable.
     ///These are not uploaded, and are created entirely through the UI.
     ///</summary>
-    public class Site : SeedableObject
+    public class Site : BaseRaveSeedableObject
     {
         public UploadedDraft Draft { get; set; }
         public string Number { get; set; }
@@ -29,10 +29,8 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
         /// The Site constructor
         /// </summary>
         /// <param name="siteName">The feature defined name of the Site</param>
-        /// <param name="seed">Bool determining whether you want to seed the object if it is not in the FeatureObjects dictionary</param>
         /// <param name="siteGroup">Name of site group</param>
-        public Site(string siteName, bool seed = false, string siteGroup = "")
-            : base(siteName)
+        public Site(string siteName, string siteGroup = "")
         {
             if (!UID.HasValue)
             {

@@ -116,16 +116,16 @@ namespace Medidata.RBT
             }
         }
 
-        public static string CurrentUser
+		public static string CurrentUser
 		{
-			get
-			{
-                return GetContextValue<string>("CurrentUser");
-			}
-			set
-			{
-                ScenarioContext.Current["CurrentUser"] = value;
-			}
+			get;
+			set;
+		}
+
+		public static string CurrentUserPassword
+		{
+			get;
+			set;
 		}
 
         /// <summary>

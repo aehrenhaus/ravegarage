@@ -20,7 +20,7 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
     ///This is a rave specific Role. It is seedable. 
     ///These sit in Uploads/Roles.
     ///</summary>
-    public class Role : SeedableObject, IRemoveableObject
+    public class Role : BaseRaveSeedableObject, IRemoveableObject
     {
         /// <summary>
         /// The uploaded role constructor. This actually uploads configurations. 
@@ -29,9 +29,7 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
         /// This will upload a unique version of the source controlled "SUPERROLE.xml" and tie it to that name.
         /// </summary>
         /// <param name="roleUploadName">The feature defined name of the role</param>
-        /// <param name="seed">Bool determining whether you want to seed the object if it is not in the FeatureObjects dictionary</param>
         public Role(string roleUploadName)
-            :base(roleUploadName)
         {
             if (!UID.HasValue)
             {

@@ -19,7 +19,7 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
     ///This is a rave specific User. It is seedable. 
     ///These sit in Uploads/Users.
     ///</summary>
-    public class User : SeedableObject, IRemoveableObject
+    public class User : BaseRaveSeedableObject, IRemoveableObject
     {
         public string FileName { get; set; }
         public string ActivationCode { get; set; }
@@ -36,9 +36,7 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
         /// This will upload a unique version of the source controlled "SUPERUSER.xml" and tie it to that name.
         /// </summary>
         /// <param name="userUploadName">The feature defined name of the user</param>
-        /// <param name="seed">Bool determining whether you want to seed the object if it is not in the FeatureObjects dictionary</param>
         public User(string userUploadName)
-            :base(userUploadName)
         {
             if (!UID.HasValue)
             {

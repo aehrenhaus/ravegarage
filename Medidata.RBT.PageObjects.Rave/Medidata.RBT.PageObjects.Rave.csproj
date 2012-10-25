@@ -148,7 +148,7 @@
     <Compile Include="SharedRaveObjects\SecurityRole.cs" />
     <Compile Include="SharedRaveObjects\Draft.cs" />
     <Compile Include="SharedRaveObjects\Project.cs" />
-    <Compile Include="SharedRaveObjects\SeedableObject.cs" />
+    <Compile Include="SharedRaveObjects\BaseRaveSeedableObject.cs" />
     <Compile Include="SharedRaveObjects\Site.cs" />
     <Compile Include="SharedRaveObjects\CrfVersion.cs" />
     <Compile Include="SharedRaveObjects\Role.cs" />

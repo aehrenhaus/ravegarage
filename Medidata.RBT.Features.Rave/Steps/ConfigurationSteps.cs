@@ -147,7 +147,7 @@ namespace Medidata.RBT.Features.Rave.Steps
                 SecurityRole securityRole = TestContext.GetExistingFeatureObjectOrMakeNew
                     (configuration.SecurityRole, () => new SecurityRole(configuration.SecurityRole));
 
-                Site site = TestContext.GetExistingFeatureObjectOrMakeNew(configuration.Site, () => new Site(configuration.Site, true));
+                Site site = TestContext.GetExistingFeatureObjectOrMakeNew(configuration.Site, () => new Site(configuration.Site));
                 Project project = TestContext.GetExistingFeatureObjectOrMakeNew(configuration.Project, () => new Project(configuration.Project));
 
                 bool studyAssignmentExists = user.StudyAssignmentExists(role.UID.Value, project.UID.Value, site.UID.Value);

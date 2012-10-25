@@ -20,7 +20,7 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
     ///It contains both a Project and a Draft, and anything else that is part of an uploaded draft.
     ///These sit in Uploads/Drafts.
     ///</summary>
-    public class UploadedDraft : SeedableObject, IRemoveableObject
+    public class UploadedDraft : BaseRaveSeedableObject, IRemoveableObject
     {
         public Project Project { get; set; }
         public Draft Draft { get; set; }
@@ -29,15 +29,12 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
         ///The uploaded draft constructor
         ///</summary>
         ///<param name="name">The feature defined name of the UploadedDraft</param>
-        ///<param name="seed">Bool determining whether you want to seed the object if it is not in the FeatureObjects dictionary</param>
-        public UploadedDraft(string name, bool seed = false)
-            : base(name)
+		public UploadedDraft(string name)
         {
             if (!UID.HasValue)
             {
                 UID = Guid.NewGuid();
                 Name = name;
-         
             }
         }
 
@@ -145,5 +142,10 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
         {
             File.Delete(UniqueFileLocation);
         }
+
+		protected override void SeedFromBackend()
+		{
+			//
+		}
     }
 }

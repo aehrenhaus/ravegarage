@@ -21,7 +21,7 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
     ///This is a rave specific LabConfiguration. It is seedable. 
     ///These sit in Uploads/LabConfigurations.
     ///</summary>
-    public class LabConfiguration : SeedableObject, IRemoveableObject
+    public class LabConfiguration : BaseRaveSeedableObject, IRemoveableObject
     {
         /// <summary>
         /// The uploaded LabConfiguration constructor. This actually uploads configurations. 
@@ -30,9 +30,8 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
         /// This will upload a unique version of the source controlled "SUPERLabConfiguration.xml" and tie it to that name.
         /// </summary>
         /// <param name="labConfigurationUploadName">The feature defined name of the LabConfiguration</param>
-        /// <param name="seed">Bool determining whether you want to seed the object if it is not in the FeatureObjects dictionary</param>
-        public LabConfiguration(string labConfigurationUploadName)
-            : base(labConfigurationUploadName)
+		 public LabConfiguration(string labConfigurationUploadName)
+
         {
             if (!UID.HasValue)
             {

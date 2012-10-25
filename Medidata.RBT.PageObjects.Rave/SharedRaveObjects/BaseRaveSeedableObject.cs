@@ -14,7 +14,7 @@ namespace Medidata.RBT.SharedRaveObjects
     ///All objects which can seed should implement this class. 
     ///The seedable objects should be marked for seeding when created.
     ///</summary>
-    public abstract class SeedableObject : ISeedableObject
+    public abstract class BaseRaveSeedableObject : ISeedableObject
 	{
 	    public bool SuppressSeeding { get; set; } //Only true when you don't want to seed.
 
@@ -32,48 +32,51 @@ namespace Medidata.RBT.SharedRaveObjects
             }
             set { m_UniqueName = value; }
         }
-        public string FileLocation { get; set; } //The location of the original file upload
-        public string UniqueFileLocation { get; set; } //A unique location of the duplicate of the seedable object, that has been made unique
-        public string TID = TemporalID.GetNewTID(); //This is a unique temporal ID for uniqueness purposes and ease of debugging
+		protected string FileLocation { get; set; } //The location of the original file upload
+		protected string UniqueFileLocation { get; set; } //A unique location of the duplicate of the seedable object, that has been made unique
+        protected string TID = TemporalID.GetNewTID(); //This is a unique temporal ID for uniqueness purposes and ease of debugging
 
-        public SeedableObject()
-            :base()
-        {
-        }
-
-        public SeedableObject(string featureName)
-        {
-            if (UID.HasValue)
-                DraftCounter.DecrementCounter();
-        }
-
-        /// <summary>
-        /// Seed the seedable object.
-        /// All uploads are done logging in with the default user.
-        /// Note the user logged in before that seed. At the end of the seed, this user is logged in again and we return to the HomePage.
-        /// </summary>
-        public virtual void Seed()
-        {
+	
+		public virtual void Seed()
+		{
 			if (SuppressSeeding || !RBTConfiguration.Default.EnableSeeding)
 				return;
 
-            string loggedInUserBeforeSeed = TestContext.CurrentUser;
-               
-            //login as default user to homepage if not already
-            LoginPage.LoginToHomePageIfNotAlready();
-               
-            MakeUnique();
-            NavigateToSeedPage();
-            CreateObject();
+			if (SeedDecision.FromUI(this.GetType()))
+				SeedFromUI();
+			else
+				SeedFromBackend();
+		}
 
-            //login as previous user, to home page
-            LoginPage.LoginToHomePageIfNotAlready(loggedInUserBeforeSeed);
-             
-            
-        }
+		#region Protected methods
+
+		protected virtual void SeedFromUI()
+		{
+			if (SuppressSeeding || !RBTConfiguration.Default.EnableSeeding)
+				return;
+
+			string previousUser = TestContext.CurrentUser;
+			string previousPassword = TestContext.CurrentUserPassword;
+
+			//login as default user to homepage if not already
+			LoginPage.LoginToHomePageIfNotAlready();
+
+			MakeUnique();
+			NavigateToSeedPage();
+			CreateObject();
+
+			//login as previous user, to home page
+			LoginPage.LoginToHomePageIfNotAlready(previousUser, previousPassword);
 
 
-        /// <summary>
+		}
+
+		protected virtual void SeedFromBackend()
+		{
+			throw new NotImplementedException();
+		}
+
+		/// <summary>
         /// Make a unique file location that sits in the "Temporary" folder for the seedable object
         /// </summary>
         /// <param name="fileLocation">Original file location</param>
@@ -101,5 +104,7 @@ namespace Medidata.RBT.SharedRaveObjects
         /// Create a unique version of the object, usually by uploading the object.
         /// </summary>
 		protected abstract void CreateObject();
-    }
+
+		#endregion
+	}
 }
