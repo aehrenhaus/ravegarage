@@ -18,38 +18,39 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
     ///This is a rave specific CrfVersion. It is seedable.
     ///These are not uploaded, and are created entirely through the UI.
     ///</summary>
-    public class CrfVersion : SeedableObject
+    public class CrfVersion : BaseRaveSeedableObject
     {
-        public UploadedDraft UploadedDraft { get; set; } //The draft that is uploaded to create this CRFVersion
+		public UploadedDraft UploadedDraft
+		{
+			get
+			{
+				return TestContext.GetExistingFeatureObjectOrMakeNew<UploadedDraft>(DraftName, () => new UploadedDraft(DraftName));
+			}
+		} //The draft that is uploaded to create this CRFVersion
 
         /// <summary>
         /// The CrfVersion constructor
         /// </summary>
         /// <param name="draftName">The draft that is uploaded to create this CRFVersion</param>
         /// <param name="crfVersionName">The feature defined name of this Crf Version</param>
-        /// <param name="seed">Bool determining whether you want to seed the object if it is not in the FeatureObjects dictionary</param>
-        public CrfVersion(string draftName, string crfVersionName, bool seed = false)
-            : base(crfVersionName)
+        public CrfVersion(string draftName, string crfVersionName)
         {
             if (!UID.HasValue)
             {
                 UID = Guid.NewGuid();
                 Name = crfVersionName;
-                IFeatureObject draftObject;
-                TestContext.FeatureObjects.TryGetValue(draftName, out draftObject);
-                UploadedDraft = (UploadedDraft)draftObject;
 
-                if (seed)
-                    Seed();
             }
+			this.DraftName = draftName;
         }
 
-        /// <summary>
+	    public string DraftName { get; set; }
+
+	    /// <summary>
         /// Navigate to the ArchitectCRFDraft page for the UploadedDraft that creates this crfVersion
         /// </summary>
-        public override void NavigateToSeedPage()
+		protected override void NavigateToSeedPage()
         {
-            LoginPage.LoginToHomePageIfNotAlready();
             TestContext.CurrentPage.As<HomePage>().ClickLink("Architect");
             TestContext.CurrentPage.As<ArchitectPage>().ClickProject(UploadedDraft.Project.UniqueName);
             TestContext.CurrentPage.As<ArchitectLibraryPage>().ClickDraft(UploadedDraft.Draft.Name);
@@ -58,7 +59,7 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
         /// <summary>
         /// Publish this CRF version
         /// </summary>
-        public override void CreateObject()
+		protected override void CreateObject()
         {
             TestContext.CurrentPage.As<ArchitectCRFDraftPage>().PublishCRF(UniqueName);
             new ArchitectPage().ClickProject(UploadedDraft.Project.UniqueName);
@@ -67,7 +68,7 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
         /// <summary>
         /// Make the UniqueName of this CRFVersion by appending a TID on to the end of Name
         /// </summary>
-        public override void MakeUnique()
+		protected override void MakeUnique()
         {
             UniqueName = Name + TID;
         }

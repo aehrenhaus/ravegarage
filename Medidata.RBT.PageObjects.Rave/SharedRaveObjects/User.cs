@@ -19,7 +19,7 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
     ///This is a rave specific User. It is seedable. 
     ///These sit in Uploads/Users.
     ///</summary>
-    public class User : SeedableObject, IRemoveableObject
+    public class User : BaseRaveSeedableObject, IRemoveableObject
     {
         public string FileName { get; set; }
         public string ActivationCode { get; set; }
@@ -36,25 +36,13 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
         /// This will upload a unique version of the source controlled "SUPERUSER.xml" and tie it to that name.
         /// </summary>
         /// <param name="userUploadName">The feature defined name of the user</param>
-        /// <param name="seed">Bool determining whether you want to seed the object if it is not in the FeatureObjects dictionary</param>
-        public User(string userUploadName, bool seed = false)
-            :base(userUploadName)
+        public User(string userUploadName)
         {
             if (!UID.HasValue)
             {
                 UID = Guid.NewGuid();
                 Name = userUploadName;
-                if (seed)
-                {
-                    if (userUploadName.StartsWith("SUPER USER"))
-                        FileName = "SUPERUSER.xml";
-                    else
-                        FileName = userUploadName + ".xml";
-
-                    FileLocation = RBTConfiguration.Default.UploadPath + @"\Users\" + FileName;
-                    Seed();
-                    
-                }
+   
             }
         }
 
@@ -93,9 +81,8 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
         /// <summary>
         /// Navigate to the user upload page.
         /// </summary>
-        public override void NavigateToSeedPage()
+		protected override void NavigateToSeedPage()
         {
-            LoginPage.LoginToHomePageIfNotAlready();
             TestContext.CurrentPage.As<HomePage>().ClickLink("User Administration");
             TestContext.CurrentPage.As<UserAdministrationPage>().ClickLink("Upload Users");
         }
@@ -103,7 +90,7 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
         /// <summary>
         /// Upload the unique version of the User. Mark it for deletion after scenario completion.
         /// </summary>
-        public override void CreateObject()
+		protected override void CreateObject()
         {
             TestContext.CurrentPage.As<UploadUserPage>().UploadFile(UniqueFileLocation);
             Factory.FeatureObjectsForDeletion.Add(this);
@@ -114,8 +101,17 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
         /// <summary>
         /// Load the xml to upload. Replace the user name with a unique version of it with a TID at the end.
         /// </summary>
-        public override void MakeUnique()
+		protected override void MakeUnique()
         {
+
+			if (Name.StartsWith("SUPER USER"))
+				FileName = "SUPERUSER.xml";
+			else
+				FileName = Name + ".xml";
+
+			FileLocation = RBTConfiguration.Default.UploadPath + @"\Users\" + FileName;
+       
+
             XmlDocument xmlDoc = new XmlDocument();
             xmlDoc.Load(FileLocation);
             List<XmlNode> worksheets = new List<XmlNode>(xmlDoc.GetElementsByTagName("Worksheet").Cast<XmlNode>());

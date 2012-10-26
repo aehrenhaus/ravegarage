@@ -8,7 +8,7 @@ Feature: US13002_DT13919
 # When data is entered into a field on a log form that has a Dynamic Search List, and the drop-down list that displays matching results is clicked, it takes a long time to display matching results.
 
 Background:
-	Given I am logged in to Rave with username "defuser" and password "password"
+	Given I login to Rave with user "defuser" and password "password"
 	#And the following Project assignments exist
 	#	 | User    | Project | Environment | Role | Site       | Site Number |
 	#	 | defuser | L1WP-GT | Prod        | cdm1 | Site 1     | S100        |
@@ -947,7 +947,7 @@ Scenario: PB_US13002_04 As a Study Coordinator, when I click the drop-down list 
 		| Field | Data |
 		| Visit | 3    |
 
-	And I am logged in to Rave with username "Defuser01" and password "password"
+	And I login to Rave with user "Defuser01" and password "password"
 	And I navigate to "DDE"
 	And I select link "Second Pass"
 	And I enter data in DDE and save

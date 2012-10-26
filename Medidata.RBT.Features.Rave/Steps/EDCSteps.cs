@@ -532,7 +532,7 @@ namespace Medidata.RBT.Features.Rave
         public void ISignTheFormWithUsername____(string userName)
         {
             User user = TestContext.GetExistingFeatureObjectOrMakeNew(
-                userName, () => new User(userName, false));
+                userName, () => new User(userName));
             new SignatureBox().Sign(user.UniqueName, user.Password);
         }
 

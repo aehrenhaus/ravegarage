@@ -3,7 +3,7 @@
 Feature: Create Package / Install Package
 
 Background:
-	And I am logged in to Rave with username "defuser" and password "password"
+	And I login to Rave with user "defuser" and password "password"
 
 
 

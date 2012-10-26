@@ -26,7 +26,7 @@ namespace Medidata.RBT.Features.Rave
         [StepDefinition(@"role ""([^""]*)"" exists")]
         public void Role____Exists(string roleName)
         {
-            TestContext.GetExistingFeatureObjectOrMakeNew(roleName, () => new Role(roleName, true));
+            TestContext.GetExistingFeatureObjectOrMakeNew(roleName, () => new Role(roleName));
         }
 
         /// <summary>
@@ -46,7 +46,7 @@ namespace Medidata.RBT.Features.Rave
                 Draft draft = TestContext.GetExistingFeatureObjectOrMakeNew<Draft>(config.Draft, () => new Draft(config.Draft));
                 TestContext.CurrentPage.As<ArchitectLibraryPage>().ClickDraft(draft.Name);
                 TestContext.CurrentPage.As<ArchitectCRFDraftPage>().ClickLink("Restrictions");
-                Role role = TestContext.GetExistingFeatureObjectOrMakeNew(roleName, () => new Role(roleName, true));
+                Role role = TestContext.GetExistingFeatureObjectOrMakeNew(roleName, () => new Role(roleName));
                 TestContext.CurrentPage.As<ArchitectRestrictionsPage>().SetEntryRestriction(config.Form, config.Field, role.UniqueName);
             }
         }

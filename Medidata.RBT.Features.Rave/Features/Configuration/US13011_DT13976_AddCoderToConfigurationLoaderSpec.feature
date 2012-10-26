@@ -9,7 +9,7 @@ Feature: US13011_DT13976: When the Configuration Settings are downloaded, they s
 
 
 Background:
-	#Given I am logged in to Rave with username "defuser" and password "password"
+	#Given I login to Rave with user "defuser" and password "password"
 	#And the URL has Coder installed
 	#And the following Project assignments exist
 	#| User    | Project    | Environment | Role         | Site         | Site Number | User Group    |
@@ -34,7 +34,7 @@ Scenario: Test
 
 @PB_US11101_01
 Scenario: FIRST As a Data Manager, when I am on the Configuration Loader page, and I select Get File, and the Core Configuration specification is downloaded, and I open it, then I see Coder Configuration details.
-	Given I am logged in to Rave with username "defuser" and password "password"
+	Given I login to Rave with user "defuser" and password "password"
 	When I navigate to "Configuration" module
 	And I navigate to "Other Settings"
 	And I navigate to "Coder Configuration"
@@ -123,7 +123,7 @@ Scenario: FIRST As a Data Manager, when I am on the Configuration Loader page, a
 
 @PB_US11101_02
 Scenario: As a Data Manager, when I am on the Configuration Loader page, and I select Template Only, and I select Get File, and the Core Configuration specification is downloaded, and I open it, then I see Coder Configuration details.
-	Given I am logged in to Rave with username "defuser" and password "password"
+	Given I login to Rave with user "defuser" and password "password"
 	And I select module "Configuration"
 	And I select Configuration Loader
 	And I select "Template Only"
@@ -171,7 +171,7 @@ Scenario: As a Data Manager, when I am on the Configuration Loader page, and I s
 
 @PB_US11101_03
 Scenario: As a Data Manager, when I am on the Configuration Loader page, and Coder is not enabled, and I select Get File, and the Core Configuration specification is downloaded, and I open it, then I do not see Coder Configuration details.
-	Given I am logged in to Rave with username "defuser" and password "password"
+	Given I login to Rave with user "defuser" and password "password"
 	And I select module "Configuration"
 	And I select Configuration Loader
 	And I select "Get File"

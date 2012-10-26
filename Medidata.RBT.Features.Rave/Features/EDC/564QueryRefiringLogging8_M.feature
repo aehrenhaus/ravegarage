@@ -17,7 +17,7 @@ Feature: 8.1
 #BOXI
 
 Background:
-    Given I am logged in to Rave with username "defuser" and password "password"
+    Given I login to Rave with user "defuser" and password "password"
 	#And following Study assignments exist
 	# | User      | Study               | Role | Site              | Site Number |
 	# | Defuser   | Edit Check Study 3  | cdm1 | Edit Check Site 8 | 80001       |

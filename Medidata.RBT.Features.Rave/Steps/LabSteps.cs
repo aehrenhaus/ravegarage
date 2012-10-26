@@ -19,7 +19,7 @@ namespace Medidata.RBT.Features.Rave
         [StepDefinition(@"xml Lab Configuration ""([^""]*)"" is uploaded")]
         public void XmlDraft____IsUploaded(string configName)
         {
-            TestContext.GetExistingFeatureObjectOrMakeNew(configName, () => new LabConfiguration(configName, true));
+            TestContext.GetExistingFeatureObjectOrMakeNew(configName, () => new LabConfiguration(configName));
         }
 
         /// <summary>

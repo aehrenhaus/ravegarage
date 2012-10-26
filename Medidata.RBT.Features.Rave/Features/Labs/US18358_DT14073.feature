@@ -14,14 +14,14 @@ Given following Project assignments exist
 | SUPER USER 1 | US18358_DT14073 | Live: Prod  | SUPER ROLE 1 | Site 1 | Project Admin Default |
 
 Given I publish and push eCRF "US18358_DT14073.xml" to "Version 1"
-	#Given I am logged in to Rave with username "defuser" and password "password"
+	#Given I login to Rave with user "defuser" and password "password"
 	#And the following Project assignments exist
 	#| User		| Project		      | Environment	| Role			| Site		| Site Number |
 	#| defuser	| US18358_DT14073_SJ  | Prod		| cdm1			| Site 1	| S100		  |
     #And Role "cdm1" has Action "Entry"
 	#And Project "US18358_DT14073_SJ" has Draft "Original Draft"	
 	#And All Upper Case box is checked
-	#And I am logged in to Rave with username "defuser" and password "password"
+	#And I login to Rave with user "defuser" and password "password"
 
 
 

@@ -11,7 +11,7 @@ Feature: US15417_DT13905
 	Then I should see the lab data converted to standard values in the standard units in Clinical Views
 
 Background:
-    Given I am logged in to Rave with username "defuser" and password "password"
+    Given I login to Rave with user "defuser" and password "password"
 		
 	# And following Project assignments exist
 	# |User	  |Project	         |Environment	|Role |Site	  |Site Number	|

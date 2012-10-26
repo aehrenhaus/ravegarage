@@ -18,7 +18,7 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
     ///This is a rave specific Site. It is seedable.
     ///These are not uploaded, and are created entirely through the UI.
     ///</summary>
-    public class Site : SeedableObject
+    public class Site : BaseRaveSeedableObject
     {
         public UploadedDraft Draft { get; set; }
         public string Number { get; set; }
@@ -29,10 +29,8 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
         /// The Site constructor
         /// </summary>
         /// <param name="siteName">The feature defined name of the Site</param>
-        /// <param name="seed">Bool determining whether you want to seed the object if it is not in the FeatureObjects dictionary</param>
         /// <param name="siteGroup">Name of site group</param>
-        public Site(string siteName, bool seed = false, string siteGroup = "")
-            : base(siteName)
+        public Site(string siteName, string siteGroup = "")
         {
             if (!UID.HasValue)
             {
@@ -40,17 +38,13 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
                 Name = siteName;
                 Number = Guid.NewGuid().ToString();
                 Group = siteGroup;
-
-
-                if (seed)
-                    Seed();
             }
         }
 
         /// <summary>
         /// Create a unique name for the site by appending a TID.
         /// </summary>
-        public override void MakeUnique()
+		protected override void MakeUnique()
         {
             UniqueName = Name + TID;
         }
@@ -58,9 +52,8 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
         /// <summary>
         /// Navigate to the "New Site" page
         /// </summary>
-        public override void NavigateToSeedPage()
+		protected override void NavigateToSeedPage()
         {
-            LoginPage.LoginToHomePageIfNotAlready();
             TestContext.CurrentPage.As<HomePage>().ClickLink("Site Administration");
             TestContext.CurrentPage.As<SiteAdministrationHomePage>().ClickLink("New Site");
         }
@@ -68,7 +61,7 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
         /// <summary>
         /// Create a site and add it to the FeatureObjects site dictionary.
         /// </summary>
-        public override void CreateObject()
+		protected override void CreateObject()
         {
             TestContext.CurrentPage.As<SiteAdministrationDetailsPage>().CreateSite(UniqueName, Number, Group);
         }

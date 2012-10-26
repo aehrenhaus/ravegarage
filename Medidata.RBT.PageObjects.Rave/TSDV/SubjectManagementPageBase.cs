@@ -17,7 +17,7 @@ namespace Medidata.RBT.PageObjects.Rave
 
         public IPage FilterBySite(string sitename)
         {
-            Site site = TestContext.GetExistingFeatureObjectOrMakeNew(sitename, () => new Site(sitename, false));
+            Site site = TestContext.GetExistingFeatureObjectOrMakeNew(sitename, () => new Site(sitename));
             ChooseFromDropdown("Select Site", site.UniqueName + ": " + site.Number);
             var search = GetElementByName("Search");
             search.Click();

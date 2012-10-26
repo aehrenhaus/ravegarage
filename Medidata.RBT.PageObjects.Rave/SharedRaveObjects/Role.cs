@@ -20,7 +20,7 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
     ///This is a rave specific Role. It is seedable. 
     ///These sit in Uploads/Roles.
     ///</summary>
-    public class Role : SeedableObject, IRemoveableObject
+    public class Role : BaseRaveSeedableObject, IRemoveableObject
     {
         /// <summary>
         /// The uploaded role constructor. This actually uploads configurations. 
@@ -29,34 +29,28 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
         /// This will upload a unique version of the source controlled "SUPERROLE.xml" and tie it to that name.
         /// </summary>
         /// <param name="roleUploadName">The feature defined name of the role</param>
-        /// <param name="seed">Bool determining whether you want to seed the object if it is not in the FeatureObjects dictionary</param>
-        public Role(string roleUploadName, bool seed = false)
-            :base(roleUploadName)
+        public Role(string roleUploadName)
         {
             if (!UID.HasValue)
             {
                 UID = Guid.NewGuid();
                 Name = roleUploadName;
-
-                if (seed)
-                {
-                    string fileName;
-                    if (roleUploadName.StartsWith("SUPER ROLE"))
-                        fileName = "SUPERROLE.xml";
-                    else
-                        fileName = roleUploadName + ".xml";
-
-                    FileLocation = RBTConfiguration.Default.UploadPath + @"\Roles\" + fileName;
-                    Seed();
-                }
             }
         }
 
         /// <summary>
         /// Load the xml to upload. Replace the role name with a unique version of it with a TID at the end.
         /// </summary>
-        public override void MakeUnique()
+		protected override void MakeUnique()
         {
+			string fileName;
+			if (Name.StartsWith("SUPER ROLE"))
+				fileName = "SUPERROLE.xml";
+			else
+				fileName = Name + ".xml";
+
+			FileLocation = RBTConfiguration.Default.UploadPath + @"\Roles\" + fileName;
+
             XmlDocument xmlDoc = new XmlDocument();
             xmlDoc.Load(FileLocation);
             List<XmlNode> worksheets = new List<XmlNode>(xmlDoc.GetElementsByTagName("Worksheet").Cast<XmlNode>());
@@ -96,16 +90,15 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
         /// <summary>
         /// Navigate to the configuration loader page.
         /// </summary>
-        public override void NavigateToSeedPage()
+		protected override void NavigateToSeedPage()
         {
-            LoginPage.LoginToHomePageIfNotAlready();
             TestContext.CurrentPage = new ConfigurationLoaderPage().NavigateToSelf();
         }
 
         /// <summary>
         /// Upload the unique version of the Role. Mark it for deletion after scenario completion.
         /// </summary>
-        public override void CreateObject()
+		protected override void CreateObject()
         {
             TestContext.CurrentPage.As<ConfigurationLoaderPage>().UploadFile(UniqueFileLocation);
             Factory.FeatureObjectsForDeletion.Add(this);

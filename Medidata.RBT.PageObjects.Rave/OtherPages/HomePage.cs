@@ -74,7 +74,7 @@ namespace Medidata.RBT.PageObjects.Rave
 		public HomePage SelectSite(string siteName)
 		{
             Site site = TestContext.GetExistingFeatureObjectOrMakeNew(
-                siteName, () => new Site(siteName, false));
+                siteName, () => new Site(siteName));
 
             //TODO: the pagination does not work on Inna's site where there is no page buttons for sites list
             //fix this later, but comment for now

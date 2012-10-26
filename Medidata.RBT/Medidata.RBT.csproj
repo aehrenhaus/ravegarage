@@ -96,6 +96,8 @@
     <Compile Include="PDF.cs" />
     <Compile Include="RBTConfiguration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SharedObjects\ISeedableObject.cs" />
+    <Compile Include="SharedObjects\SeedDecision.cs" />
     <Compile Include="StringReplacement\InreaseNumReplace.cs" />
     <Compile Include="StringReplacement\DateFReplace.cs" />
     <Compile Include="StringReplacement\DateReplace.cs" />

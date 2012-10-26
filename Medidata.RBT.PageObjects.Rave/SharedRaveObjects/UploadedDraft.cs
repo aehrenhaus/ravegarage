@@ -20,7 +20,7 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
     ///It contains both a Project and a Draft, and anything else that is part of an uploaded draft.
     ///These sit in Uploads/Drafts.
     ///</summary>
-    public class UploadedDraft : SeedableObject, IRemoveableObject
+    public class UploadedDraft : BaseRaveSeedableObject, IRemoveableObject
     {
         public Project Project { get; set; }
         public Draft Draft { get; set; }
@@ -29,28 +29,20 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
         ///The uploaded draft constructor
         ///</summary>
         ///<param name="name">The feature defined name of the UploadedDraft</param>
-        ///<param name="seed">Bool determining whether you want to seed the object if it is not in the FeatureObjects dictionary</param>
-        public UploadedDraft(string name, bool seed = false)
-            : base(name)
+		public UploadedDraft(string name)
         {
             if (!UID.HasValue)
             {
                 UID = Guid.NewGuid();
                 Name = name;
-                if (seed)
-                {
-                    FileLocation = RBTConfiguration.Default.UploadPath + @"\Drafts\" + name;
-                    Seed();
-                }
             }
         }
 
         /// <summary>
         /// Navigate to the upload draft page.
         /// </summary>
-        public override void NavigateToSeedPage()
+		protected override void NavigateToSeedPage()
         {
-            LoginPage.LoginToHomePageIfNotAlready();
             TestContext.CurrentPage.As<HomePage>().ClickLink("Architect");
             TestContext.CurrentPage.As<ArchitectPage>().ClickLink("Upload Draft");
         }
@@ -58,7 +50,7 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
         /// <summary>
         /// Upload the unique version of the UploadDraft. Mark it for deletion after scenario completion.
         /// </summary>
-        public override void CreateObject()
+		protected override void CreateObject()
         {
             TestContext.CurrentPage.As<UploadDraftPage>().UploadFile(UniqueFileLocation);
             Factory.FeatureObjectsForDeletion.Add(this);
@@ -68,8 +60,9 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
         /// Load the xml to upload. Replace the project name with a unique version of it with a TID at the end.
         /// Use the draft name to create a draft object, but do NOT make the draft unique.
         /// </summary>
-        public override void MakeUnique()
-        {
+		protected override void MakeUnique()
+		{
+			FileLocation = RBTConfiguration.Default.UploadPath + @"\Drafts\" + Name;
             XmlDocument xmlDoc = new XmlDocument();
             xmlDoc.Load(FileLocation);
             List<XmlNode> worksheets = new List<XmlNode>(xmlDoc.GetElementsByTagName("Worksheet").Cast<XmlNode>());
@@ -132,7 +125,7 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
                         StringBuilder uniqueEntryRestrictions = new StringBuilder();
                         foreach (string entryRestriction in entryRestrictions)
                         {
-                            Role role = TestContext.GetExistingFeatureObjectOrMakeNew(entryRestriction.Trim(), () => new Role(entryRestriction.Trim(), true));
+                            Role role = TestContext.GetExistingFeatureObjectOrMakeNew(entryRestriction.Trim(), () => new Role(entryRestriction.Trim()));
                             uniqueEntryRestrictions.Append(role.UniqueName + ",");
                         }
 
@@ -140,8 +133,6 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
                     }
                 }
             }
-
-            NavigateToSeedPage();
         }
 
         /// <summary>
@@ -151,5 +142,10 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
         {
             File.Delete(UniqueFileLocation);
         }
+
+		protected override void SeedFromBackend()
+		{
+			//
+		}
     }
 }

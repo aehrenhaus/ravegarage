@@ -11,7 +11,7 @@ Feature: US11306_DT13637
 # There must exist a mixed form with a standard field and a standard dynamic searchlist field.
 
 Background:
-    Given I am logged in to Rave with username "defuser" and password "password"
+    Given I login to Rave with user "defuser" and password "password"
 	#And following Project assignments exist
 	#|User	 |Project	        |Environment|Role |Site   |Site Number|
 	#|User 1 |US11306_DT13637_SJ|Prod		|cdm1 |Site 1 |S100		  |
