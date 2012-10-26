@@ -6,28 +6,28 @@ Feature: US18812
 	And subject assignment is random for all blocks
 
 Background:
-	Given I am logged in to Rave with username "defuser" and password "password"
-	#Given xml draft "US18812_SJ.xml" is Uploaded with Environment name "Dev"
+	#Given I am logged in to Rave with username "defuser" and password "password"
+	Given xml draft "US18812_SJ.xml" is Uploaded with Environment name "Dev"
 
-	#Given Site "Site 1" with Site Group "Asia" exists
-	#Given Site "Site 2" with Site Group "Europe" exists
-	#Given Site "Site 3" with Site Group "World" exists
-	#Given Site "Site 4" with Site Group "North America" exists
-	#Given study "US18812_SJ" is assigned to Site "Site 1" with study environment "Aux: Dev"
-	#Given study "US18812_SJ" is assigned to Site "Site 2" with study environment "Aux: Dev"
-	#Given study "US18812_SJ" is assigned to Site "Site 3" with study environment "Aux: Dev"
-	#Given study "US18812_SJ" is assigned to Site "Site 4" with study environment "Aux: Dev"
-	#Given I publish and push eCRF "US18812_SJ.xml" to "Version 1" with study environment "Dev"
-	#Given following Project assignments exist
-	#| User         | Project    | Environment | Role         | Site   | SecurityRole          | 
-	#| SUPER USER 1 | US18812_SJ | Aux: Dev    | SUPER ROLE 1 | Site 1 | Project Admin Default | 
-	#| SUPER USER 1 | US18812_SJ | Aux: Dev    | SUPER ROLE 1 | Site 2 | Project Admin Default | 
-	#| SUPER USER 1 | US18812_SJ | Aux: Dev    | SUPER ROLE 1 | Site 3 | Project Admin Default | 
-	#| SUPER USER 1 | US18812_SJ | Aux: Dev    | SUPER ROLE 1 | Site 4 | Project Admin Default | 
-	#Given following Report assignments exist
-	#| User         | Report                                                           |
-	#| SUPER USER 1 | Targeted SDV Configuration - Targeted SDV Configuration          |
-	#| SUPER USER 1 | Targeted SDV Subject Management - Targeted SDV Subject Managemen |
+	Given Site "Site 1" with Site Group "Asia" exists
+	Given Site "Site 2" with Site Group "Europe" exists
+	Given Site "Site 3" with Site Group "World" exists
+	Given Site "Site 4" with Site Group "North America" exists
+	Given study "US18812_SJ" is assigned to Site "Site 1" with study environment "Aux: Dev"
+	Given study "US18812_SJ" is assigned to Site "Site 2" with study environment "Aux: Dev"
+	Given study "US18812_SJ" is assigned to Site "Site 3" with study environment "Aux: Dev"
+	Given study "US18812_SJ" is assigned to Site "Site 4" with study environment "Aux: Dev"
+	Given I publish and push eCRF "US18812_SJ.xml" to "Version 1" with study environment "Dev"
+	Given following Project assignments exist
+	| User         | Project    | Environment | Role         | Site   | SecurityRole          | Lines Per Page |
+	| SUPER USER 1 | US18812_SJ | Aux: Dev    | SUPER ROLE 1 | Site 1 | Project Admin Default | 100            |
+	| SUPER USER 1 | US18812_SJ | Aux: Dev    | SUPER ROLE 1 | Site 2 | Project Admin Default | 100            |
+	| SUPER USER 1 | US18812_SJ | Aux: Dev    | SUPER ROLE 1 | Site 3 | Project Admin Default | 100            |
+	| SUPER USER 1 | US18812_SJ | Aux: Dev    | SUPER ROLE 1 | Site 4 | Project Admin Default | 100            |
+	Given following Report assignments exist
+	| User         | Report                                                           |
+	| SUPER USER 1 | Targeted SDV Configuration - Targeted SDV Configuration          |
+	| SUPER USER 1 | Targeted SDV Subject Management - Targeted SDV Subject Managemen |
 
 
 	# below should be commented out.
@@ -122,8 +122,8 @@ Background:
 @Draft
 
 Scenario: @PB_US18812_01 Enroll 50 subjects in a study to verify that TSDV has randomized the subjects in non sequential order when the subjects are included in TSDV using the Targeted SDV Subject Include report in Study level.
-	When I select Study "US18812_SJ" and Site "Site 1"
-	#Given I login to Rave with user "SUPER USER 1"
+	#When I select Study "US18812_SJ" and Site "Site 1"
+	When I login to Rave with user "SUPER USER 1"
 	And I select link "Home"
 	And I navigate to "Reporter"
 	And I select Report "Targeted SDV Configuration"
@@ -181,8 +181,7 @@ Scenario: @PB_US18812_01 Enroll 50 subjects in a study to verify that TSDV has r
 		| US18812_SJ | Dev         |
 	And I click button "Submit Report"
 	And I switch to "Targeted SDV Subject Override" window
-#TODO: Need to investigate below method
-	#And I filter by site "Site 1" 
+    And I filter by site "Site 1" 
 	Then I verify that Tiers in subject override table are not in the following order
 		| Tier Name         | Row |
 		| All Forms         | 1   |
@@ -235,10 +234,14 @@ Scenario: @PB_US18812_01 Enroll 50 subjects in a study to verify that TSDV has r
 		| Custom Tier 5     | 48  |
 		| Custom Tier 6     | 49  |
 		| Custom Tier 7     | 50  |
-#TODO: Need below method
-	#And I verify there is no exact tier match between rows
-	#	| Row 1 | Row 2 |
-	#	| 11    | 21    |
+
+	And I verify there is no exact tier match between rows
+		| Row 1 | Row 2 |
+		| 11    | 21    |
+		| 12    | 22    |
+		| 13    | 23    |
+		| 14    | 24    |
+
 	And I switch to "Reports" window
 	And I select link "Home"
 	And I navigate to "Reporter"
@@ -256,8 +259,8 @@ Scenario: @PB_US18812_01 Enroll 50 subjects in a study to verify that TSDV has r
 
 
 Scenario: @PB_US18812_02 Enroll 50 subjects in a study to verify that TSDV has randomized the subjects in non sequential order when the subjects are included in TSDV using the Targeted SDV Subject Include report in World Site group level.
-	When I select Study "US18812_SJ (Dev)" and Site "Site 2"
-	#When I login to Rave with user "SUPER USER 1"
+	#When I select Study "US18812_SJ (Dev)" and Site "Site 2"
+	When I login to Rave with user "SUPER USER 1"
 	And I select link "Home"
 	And I navigate to "Reporter"
 	And I select Report "Targeted SDV Configuration"
@@ -272,7 +275,6 @@ Scenario: @PB_US18812_02 Enroll 50 subjects in a study to verify that TSDV has r
 	And I edit Blocks 
 	| Name              | Subject Count |
 	| Architect Defined | 10            | 
-#TODO: Need to investigate below method. Can't run any furthur
 	And I select the tier "All Forms" and Subject Count "1"
 	And I select the tier "No Forms" and Subject Count "1"
 	And I select the tier "Architect Defined" and Subject Count "1"
@@ -398,10 +400,12 @@ Scenario: @PB_US18812_02 Enroll 50 subjects in a study to verify that TSDV has r
 		| Custom Tier 5     | 98  |
 		| Custom Tier 6     | 99  |
 		| Custom Tier 7     | 100 |
-#TODO: Need below method
-	#And I verify there is no exact tier match between rows
-	#	| Row 1 | Row 2 |
-	#	| 11    | 21    |
+	And I verify there is no exact tier match between rows
+		| Row 1 | Row 2 |
+		| 11    | 21    |
+		| 12    | 22    |
+		| 13    | 23    |
+		| 14    | 24    |
 	And I switch to "Reports" window
 	And I select link "Home"
 	And I navigate to "Reporter"
