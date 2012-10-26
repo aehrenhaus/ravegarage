@@ -20,7 +20,7 @@ namespace Medidata.RBT.Features.Rave
         {
             bool result = false;
 
-            IWebElement element = CurrentPage.As<SubjectPage>().CanSeeControl("_ctl0_Content_SubjectAddEvent_DisableMatrixHyperlink");
+            IWebElement element = Browser.FindElementById("_ctl0_Content_SubjectAddEvent_DisableMatrixHyperlink");
             if (element != null)
             {
                 result = true;

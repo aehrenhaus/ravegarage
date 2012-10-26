@@ -226,7 +226,7 @@ namespace Medidata.RBT.PageObjects.Rave
         public bool IsElementFocused(ControlType type, string value)
         {
             var element = this.GetElementByControlTypeAndValue(type, value);
-            return this.GetCurrentFocusedElement().GetAttribute("ID") == element.GetAttribute("ID");
+            return this.GetFocusElement().GetAttribute("ID") == element.GetAttribute("ID");
         }
 
 

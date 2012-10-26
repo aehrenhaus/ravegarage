@@ -89,13 +89,13 @@ namespace Medidata.RBT.PageObjects.Rave
 		public override bool IsElementFocused(ControlType type, int position) 
         {
             var element = GetElementInColumnByRowIDColumnID(type, position);
-            return this.Page.GetCurrentFocusedElement()
+            return this.Page.GetFocusElement()
                 .GetAttribute("ID") == element.GetAttribute("ID");
         }
 		public override void FocusElement(ControlType type, int position) 
         {
             var element = GetElementInColumnByRowIDColumnID(type, position);
-            this.Page.FocusOnElementById(element.GetAttribute("ID"));
+            this.Page.SetFocusElement(element);
         }
         #endregion
 

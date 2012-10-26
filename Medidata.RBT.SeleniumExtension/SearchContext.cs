@@ -344,6 +344,7 @@ namespace Medidata.RBT.SeleniumExtension
 		{
 			return SelectExtendElementByPartialID<T>(context, tag, partialID, true);
 		}
+
 		public static IWebElement TryFindElementByPartialID(this ISearchContext context, string partialID)
 		{
 			var ele = context.TryFindElementBy(By.XPath(".//*[contains(@id,'" + partialID + "')]"));
@@ -371,7 +372,7 @@ namespace Medidata.RBT.SeleniumExtension
             return waitForElement(driver, func, errorMessage, timeOutSecond);
         }
 
-        public static IWebElement waitForElement(ISearchContext context, By by, string errorMessage = null, int? timeOutSecond = null)
+        public static IWebElement WaitForElement(ISearchContext context, By by, string errorMessage = null, int? timeOutSecond = null)
         {
            return waitForElement(context, x=> context.FindElement(by), errorMessage, timeOutSecond);
         }
@@ -382,14 +383,14 @@ namespace Medidata.RBT.SeleniumExtension
             string errorMessage = null, 
             int? timeOutSecond = null)
         {
-            IWebDriver driver;
+			RemoteWebDriver driver;
 
             if (context is IWrapsDriver)
-                driver = ((IWrapsDriver)context).WrappedDriver;
+                driver = ((IWrapsDriver)context).WrappedDriver as RemoteWebDriver;
             else
                 driver = ((RemoteWebDriver)context);
 
-
+			
             timeOutSecond = timeOutSecond ?? 3;
             var wait = new WebDriverWait(driver, TimeSpan.FromSeconds(timeOutSecond.Value));
             IWebElement ele = null;
@@ -414,7 +415,7 @@ namespace Medidata.RBT.SeleniumExtension
             try
             {
                 if (isWait)
-                    ele = waitForElement(context, by);
+                    ele = WaitForElement(context, by);
                 else
                     ele = context.FindElement(by);
             }

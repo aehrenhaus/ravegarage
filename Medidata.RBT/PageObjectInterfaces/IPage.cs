@@ -34,7 +34,7 @@ namespace Medidata.RBT
 		/// 
 		/// <code>
 		/// CurrentPage
-		///		.As< UserAdministrationPage>()
+		///		.As<UserAdministrationPage>()
 		///		.SearchUser("user1")
 		///		.Choose("something")
 		///		.As<UserAdministrationPage>()
@@ -48,7 +48,7 @@ namespace Medidata.RBT
 		/// Example: "Modules/AmendmentManager/MigrationResults.aspx"
 		/// 
 		/// URL property is not the actual url in the browser. 
-		/// But is a static value of POClass that can be compared to the actual url or navigate.
+		/// But is a fix and UNIQUE value of POClass that used in comparison and navigtion
 		/// See NavigateToSelf() and IsThePage()
 		/// </summary>
 		string URL { get; }
@@ -91,23 +91,16 @@ namespace Medidata.RBT
 		/// <summary>
 		/// Click on a clickable UI control
 		/// </summary>
-		/// <param name="name"></param>
-		/// <returns></returns>
 		IPage ClickButton(string identifier);
 
         /// <summary>
         /// Press a key on the keyboard
         /// </summary>
-        /// <param name="name"></param>
-        /// <returns></returns>
         void PressKey(string key);
 		
 		/// <summary>
 		/// Type in a typable UI control
 		/// </summary>
-		/// <param name="name"></param>
-		/// <param name="text"></param>
-		/// <returns></returns>
 		IPage Type(string identifier, string text);
 
 		/// <summary>
@@ -136,10 +129,8 @@ namespace Medidata.RBT
         bool CanSeeTextInArea(string text, string areaIdentifier);
 
 		/// <summary>
-		/// NavigateTo() is abstract compares to ClickLink(), which clicks on a concrete link text
+		/// NavigateTo() is abstract compares to ClickLink() which clicks on a concrete link text
 		/// </summary>
-		/// <param name="name"></param>
-		/// <returns></returns>
 		IPage NavigateTo(string identifier);
 
         /// <summary>
@@ -162,33 +153,28 @@ namespace Medidata.RBT
 		/// Get the CRF version displayed on the bottom of the page
 		/// Get how many items are in the list
 		/// 
-		/// The 'infomation' is abstract and depend on the page implementation, 
-		/// it does not necessarily be some text on that user can see on page.
+		/// What the 'information' is is depend on the page implementation, 
+		/// it does not necessarily be some text on the page.
 		/// 
 		/// </summary>
 		/// <param name="identifier"></param>
 		string GetInfomation(string identifier);
 
+		/// <summary>
+		/// Set element to obain focus
+		/// </summary>
+        void SetFocusElement(IWebElement id);
 
-        ///// <returns></returns>
-        ///// <summary>
-        ///// Delete a removeableObject on the page.
-        ///// </summary>
-        ///// /// <param name="removeableObject">Element to be deleted</param>
-        ///// <returns></returns>
-        //void DeleteObjectOnPage(RemoveableObject removeableObject);
-
-        void FocusOnElementById(string id);
-        IWebElement GetCurrentFocusedElement();
-        long GetPageOffsetX();
-        long GetPageOffsetY();
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <returns></returns>
+        IWebElement GetFocusElement();
 
 
 		/// <summary>
 		/// 
 		/// </summary>
-		/// <param name="identifier"></param>
-		/// <returns></returns>
 		IWebElement GetElementByName(string identifier, string areaIdentifier= null, string listItem = null);
 	}
 }

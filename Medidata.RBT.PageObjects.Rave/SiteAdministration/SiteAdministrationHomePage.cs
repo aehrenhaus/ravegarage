@@ -66,8 +66,9 @@ namespace Medidata.RBT.PageObjects.Rave.SiteAdministration
                 throw new Exception("User not found in result table: " + siteName);
 
             siteLink.Click();
-            TestContext.CurrentPage = new SiteAdministrationDetailsPage();
-            return new SiteAdministrationDetailsPage();
+            var page = new SiteAdministrationDetailsPage();
+			TestContext.CurrentPage = page;
+			return page;
         }
 
         #region ICanPaginate

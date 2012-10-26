@@ -366,28 +366,17 @@ namespace Medidata.RBT
         }
 
 
-        public void FocusOnElementById(string id)
+        public void SetFocusElement(IWebElement ele)
         {
             this.Browser
-                .TryExecuteJavascript("document.getElementById('" + id + "').focus()");
+                .TryExecuteJavascript("document.getElementById('" + ele.GetAttribute("ID") + "').focus()");
         }
 
-        public long GetPageOffsetX()
-        {
-            IJavaScriptExecutor js = Browser as IJavaScriptExecutor;
-            return (long)js.ExecuteScript("return window.pageXOffset");
-        }
+		public IWebElement GetFocusElement()
+		{
+			return Browser.SwitchTo().ActiveElement();
+		}
 
-        public long GetPageOffsetY()
-        {
-            IJavaScriptExecutor js = Browser as IJavaScriptExecutor;
-            return (long)js.ExecuteScript("return window.pageYOffset");
-        }
-
-        public IWebElement GetCurrentFocusedElement()
-        {
-            return Browser.SwitchTo().ActiveElement();
-        }
 
 	}
 }
