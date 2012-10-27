@@ -16,7 +16,8 @@
 	<!--DownloadPath SHOULD NOT be used for anything else and SHOULD NOT contain other files. 
 		It should be an empty folder, and be the same as your browser's download folder. -->
 	<RBTConfiguration
-		TestResultPath="Output"
+		
+		TestResultPath="Output"	
 		AutoCloseBrowser ="False"
 		TakeScreenShotsEveryStep ="False"
 		SqlScriptsPath="C:\"
@@ -30,8 +31,11 @@
 		ScenarioNamePrefix="PB_"
 		AutoSaveMimeTypes="application/zip;application/pdf;application/octet-stream"
 		EnableSeeding ="True"
-		SeedFromBackendClasses ="UploadedDraft"
-		/>
+		SeedFromBackendClasses =""
+		SuppressSeeding="User"
+		>
+	
+	</RBTConfiguration>
 
 	<RaveConfiguration
 		RaveURL ="http://rave564nycdev02a.mdsol.com/MedidataRAVE/"

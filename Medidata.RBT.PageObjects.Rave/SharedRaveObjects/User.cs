@@ -21,9 +21,9 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
     ///</summary>
     public class User : BaseRaveSeedableObject, IRemoveableObject
     {
-        public string FileName { get; set; }
-        public string ActivationCode { get; set; }
-        public string UniquePin { get; set; }
+        private string FileName { get; set; }
+        private string ActivationCode { get; set; }
+        private string UniquePin { get; set; }
         public List<StudyAssignment> StudyAssignments { get; set; }
         public List<ModuleAssignment> ModuleAssignments { get; set; }
         public List<ReportAssignment> ReportAssignments { get; set; }
@@ -217,5 +217,12 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
             else
                 return false;
         }
+
+		protected override void WhenSeedingSuppressed()
+		{
+			Password = RaveConfiguration.Default.DefaultUserPassword;
+
+			base.WhenSeedingSuppressed();
+		}
     }
 }

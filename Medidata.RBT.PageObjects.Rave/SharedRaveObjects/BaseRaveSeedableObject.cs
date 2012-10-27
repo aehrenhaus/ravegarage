@@ -14,47 +14,58 @@ namespace Medidata.RBT.SharedRaveObjects
     ///All objects which can seed should implement this class. 
     ///The seedable objects should be marked for seeding when created.
     ///</summary>
-    public abstract class BaseRaveSeedableObject : ISeedableObject
+    public class BaseRaveSeedableObject : ISeedableObject
 	{
 	    public bool SuppressSeeding { get; set; } //Only true when you don't want to seed.
 
         public Guid? UID { get; set; } //A unique identifier for the object
         public string Name { get; set; } //The feature file defined name of the SeedableObject
-        private string m_UniqueName;
-        public string UniqueName //A unique name of the SeedableObject, usually formed using the name + TID
-        {
-            get
-            {
-                if (RBTConfiguration.Default.EnableSeeding)
-                    return m_UniqueName;
-                else
-                    return Name;
-            }
-            set { m_UniqueName = value; }
-        }
+
+		public string UniqueName { get; set; }
+
 		protected string FileLocation { get; set; } //The location of the original file upload
 		protected string UniqueFileLocation { get; set; } //A unique location of the duplicate of the seedable object, that has been made unique
         protected string TID = TemporalID.GetNewTID(); //This is a unique temporal ID for uniqueness purposes and ease of debugging
 
-	
+		public BaseRaveSeedableObject()
+		{
+			//set global suppress seeding option, it can be overwrite later
+			SuppressSeeding = SeedDecision.SuppressSeeding(GetType());
+		}
+
+		protected virtual void WhenSeedingSuppressed()
+		{
+			UniqueName = Name;
+		}
+
 		public virtual void Seed()
 		{
-			if (SuppressSeeding || !RBTConfiguration.Default.EnableSeeding)
-				return;
+			var type = this.GetType();
 
-			if (SeedDecision.FromUI(this.GetType()))
+			if (SuppressSeeding || !RBTConfiguration.Default.EnableSeeding)
+			{
+				Console.WriteLine("-> Seeding --> suppressed --> {0} -->{1}", type.Name, Name);
+				WhenSeedingSuppressed();
+				return;
+			}
+
+
+			if (SeedDecision.FromUI(type))
+			{
+				Console.WriteLine("-> Seeding --> UI --> {0} -->{1}", type.Name, Name); 
 				SeedFromUI();
+			}
 			else
+			{
+				Console.WriteLine("-> Seeding --> backend --> {0} -->{1}", type.Name, Name); 
 				SeedFromBackend();
+			}
 		}
 
 		#region Protected methods
 
 		protected virtual void SeedFromUI()
 		{
-			if (SuppressSeeding || !RBTConfiguration.Default.EnableSeeding)
-				return;
-
 			string previousUser = TestContext.CurrentUser;
 			string previousPassword = TestContext.CurrentUserPassword;
 
@@ -91,19 +102,25 @@ namespace Medidata.RBT.SharedRaveObjects
         /// <summary>
         /// Navigate to the page where seeding occurs.
         /// </summary>
-		protected abstract void NavigateToSeedPage();
+		protected virtual void NavigateToSeedPage()
+        {
+        }
 
-        /// <summary>
+		/// <summary>
         /// Make the object that you are going to seed unique. This usually involves appending the TID to the name. 
         /// If you are uploading an xml, this is where you would save a unique version of the xml.
         /// Make sure to not overwrite the orginial xml provided. 
         /// </summary>
-		protected abstract void MakeUnique();
+		protected virtual void MakeUnique()
+		{
+		}
 
-        /// <summary>
+		/// <summary>
         /// Create a unique version of the object, usually by uploading the object.
         /// </summary>
-		protected abstract void CreateObject();
+		protected virtual void CreateObject()
+		{
+		}
 
 		#endregion
 	}

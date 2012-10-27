@@ -159,6 +159,11 @@ namespace Medidata.RBT
 			set { this["SeedFromBackendClasses"] = value; }
 		}
 
-
+		[ConfigurationProperty("SuppressSeeding")]
+		public String SuppressSeeding
+		{
+			get { return (String)this["SuppressSeeding"]; }
+			set { this["SuppressSeeding"] = value; }
+		}
     }
 }
