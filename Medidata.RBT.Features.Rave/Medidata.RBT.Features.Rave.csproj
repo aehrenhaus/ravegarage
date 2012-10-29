@@ -57,8 +57,9 @@
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Xml.Linq" />
-    <Reference Include="TechTalk.SpecFlow">
-      <HintPath>..\ExternalDlls\TechTalk.SpecFlow.dll</HintPath>
+    <Reference Include="TechTalk.SpecFlow, Version=1.9.0.77, Culture=neutral, PublicKeyToken=0778194805d6db41, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\SpecFlow.1.9.0\lib\net35\TechTalk.SpecFlow.dll</HintPath>
     </Reference>
     <Reference Include="ThoughtWorks.Selenium.Core">
       <HintPath>..\ExternalDlls\ThoughtWorks.Selenium.Core.dll</HintPath>
@@ -409,6 +410,7 @@
     <None Include="App.config">
       <SubType>Designer</SubType>
     </None>
+    <None Include="App.config.template" />
     <None Include="Features\AM2\US12996_AM2_DT13997StandardField.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>US12996_AM2_DT13997StandardField.feature.cs</LastGenOutput>
@@ -633,6 +635,7 @@
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>DT14168.feature.cs</LastGenOutput>
     </None>
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="TableModels\" />
