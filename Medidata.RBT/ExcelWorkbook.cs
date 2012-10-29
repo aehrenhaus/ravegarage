@@ -35,7 +35,7 @@ namespace Medidata.RBT
 			for (int i = 1; i <= columnsCount; i++)
 			{
 				var headerCell = _rawTable[1, i];
-				if (!string.IsNullOrWhiteSpace(headerCell.ToString()))
+				if (!string.IsNullOrWhiteSpace(headerCell as string))
 				{
 					//will throw up if the column name is already added
 					//this is expected behavior
@@ -43,6 +43,16 @@ namespace Medidata.RBT
 				}
 			}
 
+		}
+
+		public int RowsCount
+		{
+			get { return _rawTable.GetLength(0) - 1; }
+		}
+
+		public int NamedColumnsCount
+		{
+			get { return _rawTable.GetLength(1); }
 		}
 
 		Dictionary<string, int> _columnPosMapping = new Dictionary<string, int>();
@@ -116,7 +126,7 @@ namespace Medidata.RBT
 		{
 
 			Worksheet sheet = (Worksheet)_workBook.Sheets[sheetName];
-
+			sheet.Unprotect();
 			//
 			// Take the used range of the sheet. Finally, get an object array of all
 			// of the cells in the sheet (their values). You can do things with those
