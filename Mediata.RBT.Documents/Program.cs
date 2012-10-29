@@ -4,7 +4,6 @@ using System.Linq;
 using System.Text;
 using System.Reflection;
 using System.IO;
-using Microsoft.VisualStudio.TextTemplating;
 using Mediata.RBT.Documents.Templates;
 using RazorEngine;
 using System.Diagnostics;
@@ -22,7 +21,7 @@ namespace Mediata.RBT.Documents
 		{
 
 			GenerateAllRazor();
-			GenerateAllT4();
+			//GenerateAllT4();
 		}
 	
 		static void GenerateAllRazor()
@@ -41,19 +40,19 @@ namespace Mediata.RBT.Documents
 			}
 		}
 
-		static void GenerateAllT4()
-		{
-			var assem = Assembly.GetEntryAssembly();
-			foreach (var type in assem.GetTypes().Where(x => !x.IsAbstract && x.IsSubclassOf(typeof(TextTransformation))))
-			{
-				var template = (TextTransformation)Activator.CreateInstance(type);
-				var str = template.TransformText();
-				string folder = Path.Combine(assem.Location + "/../../../", "Templates");
-				string fileName = Path.Combine(folder, type.Name + ".htm");
+		//static void GenerateAllT4()
+		//{
+		//    var assem = Assembly.GetEntryAssembly();
+		//    foreach (var type in assem.GetTypes().Where(x => !x.IsAbstract && x.IsSubclassOf(typeof(TextTransformation))))
+		//    {
+		//        var template = (TextTransformation)Activator.CreateInstance(type);
+		//        var str = template.TransformText();
+		//        string folder = Path.Combine(assem.Location + "/../../../", "Templates");
+		//        string fileName = Path.Combine(folder, type.Name + ".htm");
 
-				File.WriteAllText(fileName, str);
-				Process.Start(fileName);
-			}
-		}
+		//        File.WriteAllText(fileName, str);
+		//        Process.Start(fileName);
+		//    }
+		//}
 	}
 }
