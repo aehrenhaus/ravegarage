@@ -17,8 +17,27 @@ namespace Medidata.RBT.PageObjects.Rave
 
         public IPage FilterBySite(string sitename)
         {
-            Site site = TestContext.GetExistingFeatureObjectOrMakeNew(sitename, () => new Site(sitename));
-            ChooseFromDropdown("Select Site", site.UniqueName + ": " + site.Number);
+            if (RBTConfiguration.Default.EnableSeeding)
+            {
+                Site site = TestContext.GetExistingFeatureObjectOrMakeNew(sitename, () => new Site(sitename));
+                ChooseFromDropdown("Select Site", site.UniqueName + ": " + site.Number);
+            }
+            else
+                ChooseFromDropdown("Select Site", sitename);
+            var search = GetElementByName("Search");
+            search.Click();
+            return this;
+        }
+
+        public IPage FilterBySiteGroup(string siteGroupName)
+        {
+            if (RBTConfiguration.Default.EnableSeeding)
+            {
+                SiteGroup siteGroup = TestContext.GetExistingFeatureObjectOrMakeNew(siteGroupName, () => new SiteGroup(siteGroupName));
+                ChooseFromDropdown("Select Site Group", siteGroup.UniqueName);
+            }
+            else
+                ChooseFromDropdown("Select Site Group", siteGroupName);
             var search = GetElementByName("Search");
             search.Click();
             return this;

@@ -30,6 +30,15 @@ namespace Medidata.RBT.PageObjects.Rave
                 option.Click();
 
             }
+            else if (name == "Select Site Group")
+            {
+                Browser.TextboxById("_ctl0_Content_HeaderControl_slSiteGroup_TxtBx").SetText(text);
+                Browser.FindElementById("_ctl0_Content_HeaderControl_slSiteGroup").Textboxes()[1].Click();
+                var option = Browser.WaitForElement(b => b.FindElements(By.XPath("//div[@id='_ctl0_Content_HeaderControl_slSiteGroup_PickListBox']/div")).FirstOrDefault(elm => elm.Text == text),
+                    "");
+                option.Click();
+
+            }
             return this;
         }
 
@@ -57,6 +66,26 @@ namespace Medidata.RBT.PageObjects.Rave
             }
 
             return IsSubjectsRandomized;
+        }
+
+        /// <summary>
+        /// This method is to check whether there is a pattern for subject allocation or not.  
+        /// </summary>
+        /// <param name="table">The table: Row 1 and Row 2 columns represent which rows need to be compared</param>
+        /// <returns>
+        ///   <c>true</c> if there is a pattern (bad), otherwise, <c>false</c>.
+        /// </returns>
+        public bool ISThereExactTierMatch(Table table)
+        {
+            var subjectsDiv = Browser.TryFindElementBy(By.Id("SubjectOverrideDiv"));
+            
+            foreach (TableRow row in table.Rows)
+            {
+                if (!Browser.FindElementById(String.Format("_ctl0_Content_SubjectOverrideRepeater__ctl{0}_BlockTierName", row[0].ToString()))
+                        .Equals(Browser.FindElementById(String.Format("_ctl0_Content_SubjectOverrideRepeater__ctl{0}_BlockTierName", row[1].ToString()))))
+                    return false;
+            }
+            return true;
         }
 
         public override string URL

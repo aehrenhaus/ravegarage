@@ -36,17 +36,37 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
         /// This will upload a unique version of the source controlled "SUPERUSER.xml" and tie it to that name.
         /// </summary>
         /// <param name="userUploadName">The feature defined name of the user</param>
-        public User(string userUploadName)
-        {
+        /// <param name="seed">Bool determining whether you want to seed the object if it is not in the FeatureObjects dictionary</param>
+       public User(string userUploadName)
+       {
             if (!UID.HasValue)
             {
                 UID = Guid.NewGuid();
                 Name = userUploadName;
-   
             }
+
         }
 
-        
+        /// <summary>
+        /// sets lines per page number for a given user.  
+        /// </summary>
+        /// <param name="linesPerPage">lines per page setting</param>
+        public void SetLinesPerPage(int linesPerPage)
+        {
+            if (linesPerPage < 1)
+                return;
+
+            var sql = string.Format(@"  update us
+                                        set us.value = {0}, updated = getUTCDate()
+                                        from userSettings us
+	                                        join users u
+		                                        on u.userID = us.userID
+                                        where tag = 'pageSize' and login = '{1}'
+                                    ", linesPerPage, UniqueName);
+
+            DbHelper.ExecuteDataSet(sql);
+        }
+
         /// <summary>
         /// Activate the user created by this object
         /// </summary>

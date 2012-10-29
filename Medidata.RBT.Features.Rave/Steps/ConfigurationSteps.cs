@@ -143,6 +143,7 @@ namespace Medidata.RBT.Features.Rave.Steps
             foreach (ConfigurationCreationModel configuration in configurations)
             {
                 User user = TestContext.GetExistingFeatureObjectOrMakeNew(configuration.User, () => new User(configuration.User));
+                user.SetLinesPerPage(configuration.LinesPerPage);
                 Role role = TestContext.GetExistingFeatureObjectOrMakeNew(configuration.Role, () => new Role(configuration.Role));
                 SecurityRole securityRole = TestContext.GetExistingFeatureObjectOrMakeNew
                     (configuration.SecurityRole, () => new SecurityRole(configuration.SecurityRole));

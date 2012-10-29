@@ -16,10 +16,23 @@ namespace Medidata.RBT.Features.Rave
             Assert.IsTrue(isSubjectRandomized, "Subjects enrolled sequentially");
         }
 
+        [StepDefinition(@"I verify there is no exact tier match between rows")]
+        public void IVerifyThatThereIsNoExactTierMatchBetweenRows(Table table)
+        {
+            bool noPattern = CurrentPage.As<SubjectOverridePage>().ISThereExactTierMatch(table);
+            Assert.IsFalse(noPattern, "There is a pattern with tier assignment");
+        }
+
         [StepDefinition(@"I filter by site ""([^""]*)""")]
         public void IFilterBySite____(string siteName)
         {
             CurrentPage.As<SubjectManagementPageBase>().FilterBySite(siteName);
+        }
+
+        [StepDefinition(@"I filter by site group ""([^""]*)""")]
+        public void IFilterBySiteGroup____(string siteGroupName)
+        {
+            CurrentPage.As<SubjectManagementPageBase>().FilterBySiteGroup(siteGroupName);
         }
 
         [StepDefinition(@"I include ([^""]*) subjects in TSDV")]
@@ -72,7 +85,14 @@ namespace Medidata.RBT.Features.Rave
         [StepDefinition(@"I select the tier ""([^""]*)"" and Subject Count ""([^""]*)""")]
         public void ISelectTier____AndSubjectCount____(string tierName, string subjectCount)
         {
-            CurrentPage.As<StudyBlockPlansPage>().ApplyTierWithSubjectCount(tierName, subjectCount);
+            try
+            {
+                CurrentPage.As<StudyBlockPlansPage>().ApplyTierWithSubjectCount(tierName, subjectCount);
+            }
+            catch
+            {
+                CurrentPage.As<SiteGroupBlockPlansPage>().ApplyTierWithSubjectCount(tierName, subjectCount);
+            }
         }
 
 
@@ -98,9 +118,15 @@ namespace Medidata.RBT.Features.Rave
         [StepDefinition(@"I create a new block plan named ""([^""]*)"" with Data entry Role ""([^""]*)""")]
         public void ICreateANewBlockPlanNamed____WithDataEntryRole____(string planName, string dataEntryRole)
         {
-            CurrentPage.As<BlockPlansPageBase>().CreateNewBlockPlan(planName, dataEntryRole);
+            try
+            {
+                CurrentPage.As<BlockPlansPageBase>().CreateNewBlockPlan(planName, dataEntryRole);
+            }
+            catch
+            {
+                CurrentPage.As<BlockPlansPageBase>().CreateNewBlockPlan(planName, dataEntryRole);
+            }
         }
-
 
     }
 }
