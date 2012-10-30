@@ -163,27 +163,27 @@ namespace Medidata.RBT
         /// <summary>
         /// Mapping of the name provided in the feature file to the FeatureObject object created by the FeatureObject constructor.
         /// </summary>
-        public static Dictionary<string, IFeatureObject> FeatureObjects
+		public static Dictionary<string, ISeedableObject> SeedableObjects
         {
             get
             {
 				var objs = RBTConfiguration.Default.SeedOncePerFeature ?
-					Storage.GetFeatureLevelValue<Dictionary<string, IFeatureObject>>("FeatureObjects") :
-					Storage.GetScenarioLevelValue<Dictionary<string, IFeatureObject>>("FeatureObjects");
+					Storage.GetFeatureLevelValue<Dictionary<string, ISeedableObject>>("SeedableObjects") :
+					Storage.GetScenarioLevelValue<Dictionary<string, ISeedableObject>>("SeedableObjects");
 
 				if (objs == null)
 				{
-					objs = new Dictionary<string, IFeatureObject>();
-					FeatureObjects =  objs;
+					objs = new Dictionary<string, ISeedableObject>();
+					SeedableObjects = objs;
 				}
 				return objs;
             }
             set
             {
 				if (RBTConfiguration.Default.SeedOncePerFeature)
-					Storage.SetFeatureLevelValue("FeatureObjects", value);
+					Storage.SetFeatureLevelValue("SeedableObjects", value);
 				else
-					Storage.SetScenarioLevelValue("FeatureObjects", value);
+					Storage.SetScenarioLevelValue("SeedableObjects", value);
             }
         }
 
@@ -192,24 +192,26 @@ namespace Medidata.RBT
         /// Or, call that object's constructor to make a new one and add that to the FeatureObjects dictionary.
         /// </summary>
         /// <typeparam name="T">A feature object type</typeparam>
-        /// <param name="featureName">The feature name of the object, the name the object is referred to as in the feature file.</param>
+        /// <param name="originalName">The feature name of the object, the name the object is referred to as in the feature file.</param>
         /// <param name="constructor">The delegate of the call to the constructor</param>
         /// <returns></returns>
-        public static T GetExistingFeatureObjectOrMakeNew<T>(string featureName, Func<T> constructor) where T : IFeatureObject
+		public static T GetExistingFeatureObjectOrMakeNew<T>(string originalName, Func<T> constructor) where T : ISeedableObject
         {
-            IFeatureObject fo;
-            FeatureObjects.TryGetValue(featureName, out fo);
-            if (fo != null)
-                return (T)fo;
+			ISeedableObject seedable;
+			SeedableObjects.TryGetValue(originalName, out seedable);
 
-	        T featureObject = constructor();
+            if (seedable != null)
+                return (T)seedable;
 
-	        if (featureObject is ISeedableObject)
-		        (featureObject as ISeedableObject).Seed();
+			seedable = constructor();
 
-	        FeatureObjects.Add(featureName, featureObject);
+			seedable.Seed();
 
-	        return featureObject;
+			//add to dictionary using both original name and unique name.
+			SeedableObjects[originalName] = seedable;
+			SeedableObjects[seedable.UniqueName] = seedable;
+
+			return (T)seedable;
         }
 
 		public static DateTime? CurrentScenarioStartTime

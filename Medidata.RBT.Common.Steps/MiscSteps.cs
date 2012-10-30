@@ -91,7 +91,7 @@ namespace Medidata.RBT.Common.Steps
 			NameValueCollection parameters = new NameValueCollection();
 			foreach (var row in table.Rows)
 			{
-				parameters[row["Name"]] = row["Value"];
+				parameters[row["UniqueName"]] = row["Value"];
 			}
 			CurrentPage = page.NavigateToSelf(parameters);
 		}

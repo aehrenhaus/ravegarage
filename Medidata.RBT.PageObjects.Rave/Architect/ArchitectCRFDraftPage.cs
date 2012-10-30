@@ -46,15 +46,6 @@ namespace Medidata.RBT.PageObjects.Rave
 			return base.NavigateTo(name);
 		}
 
-        public override IPage ClickLink(string linkText)
-        {
-            base.ClickLink(linkText);
-
-            if (linkText == "Restrictions")
-                TestContext.CurrentPage = new ArchitectNewDraftPage();
-
-            return TestContext.CurrentPage;
-        }
 
 		public override string GetInfomation(string identifier)
 		{
@@ -80,6 +71,8 @@ namespace Medidata.RBT.PageObjects.Rave
 				return "Modules/Architect/CrfDraftPage.aspx";
 			}
 		}
+
+
 	
 	}
 }

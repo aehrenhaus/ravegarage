@@ -73,7 +73,7 @@ namespace Medidata.RBT.PageObjects.Rave
 
             if (user.StudyAssignments == null)
                 user.StudyAssignments = new List<StudyAssignment>();
-            user.StudyAssignments.Add(new StudyAssignment(project.UID.Value, role.UID.Value, site.UID.Value));
+			user.StudyAssignments.Add(new StudyAssignment(project.UniqueName, role.UniqueName, site.UniqueName));
         }
 
         /// <summary>
@@ -84,12 +84,12 @@ namespace Medidata.RBT.PageObjects.Rave
         public void AssignUserToSecurityRole(User user, SecurityRole securityRole)
         {
             ClickLink("Assign To Project");
-            ChooseFromDropdown("_ctl0_Content_UserSecurityWizard1_DdlSelectRole", securityRole.Name);
+            ChooseFromDropdown("_ctl0_Content_UserSecurityWizard1_DdlSelectRole", securityRole.UniqueName);
             ClickLink("Assign");
 
             if (user.ModuleAssignments == null)
                 user.ModuleAssignments = new List<ModuleAssignment>();
-            user.ModuleAssignments.Add(new ModuleAssignment("All Projects", securityRole.Name));
+            user.ModuleAssignments.Add(new ModuleAssignment("All Projects", securityRole.UniqueName));
         }
 
         /// <summary>

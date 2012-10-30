@@ -28,7 +28,7 @@ namespace Medidata.RBT.PageObjects.Rave
         public void DeletePDF(string name)
         {
             int foundOnPage;
-            Table dt = new Table("Name");
+            Table dt = new Table("UniqueName");
             dt.AddRow(name);
 
             ((FileRequestPage)Page).ClickLink("File Requests");

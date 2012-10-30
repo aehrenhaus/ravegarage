@@ -603,7 +603,7 @@ namespace Medidata.RBT.Features.Rave
         /// Enter data on dynamic search list adverse event grade in log line.
         /// </summary>
         /// <param name="data">The data.</param>
-        /// <param name="fieldName">Name of the field.</param>
+        /// <param name="fieldName">UniqueName of the field.</param>
         /// <param name="lineNum">The line num.</param>
         [StepDefinition(@"I enter ""([^""]*)"" on dynamic search list ""([^""]*)"" in log line ([^""]*)")]
         public void WhenIEnter__OnDynamicSearchList__InLogLine__(string data, string fieldName, int lineNum)

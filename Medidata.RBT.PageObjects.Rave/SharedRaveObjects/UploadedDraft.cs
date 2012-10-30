@@ -31,11 +31,8 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
         ///<param name="name">The feature defined name of the UploadedDraft</param>
 		public UploadedDraft(string name)
         {
-            if (!UID.HasValue)
-            {
-                UID = Guid.NewGuid();
-                Name = name;
-            }
+			UniqueName = name;
+			UniqueName = UniqueName + TID;
         }
 
         /// <summary>
@@ -62,7 +59,7 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
         /// </summary>
 		protected override void MakeUnique()
 		{
-			FileLocation = RBTConfiguration.Default.UploadPath + @"\Drafts\" + Name;
+			FileLocation = RBTConfiguration.Default.UploadPath + @"\Drafts\" + UniqueName;
 
 
 
@@ -114,7 +111,7 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
 				excel.SetWorksheetValueRange("CRFDraft", draftRaw);
 
 				//Create a unique version of the file to upload
-				UniqueName = FileLocation.Substring(0, Name.LastIndexOf(".xml")) + UID + ".xml";
+				
 				UniqueFileLocation = MakeFileLocationUnique(FileLocation);
 
 				excel.SaveAs(UniqueFileLocation);

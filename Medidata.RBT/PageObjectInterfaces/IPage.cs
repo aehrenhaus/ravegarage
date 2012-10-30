@@ -69,24 +69,15 @@ namespace Medidata.RBT
         /// <param name="identifier">ID of web element</param>
         IWebElement CanSeeControl(string identifier);
 
+	
 		/// <summary>
-		/// Click a link in all page area.
+		/// I click "Study" link "xxxStudy" in "header"
 		/// </summary>
 		/// <param name="linkText"></param>
-		/// <returns></returns>
-		IPage ClickLink(string linkText);
-
-		/// <summary>
-		/// Click a hyperlink in a certen area.
-		/// areaIdentifier not only points out the area, but also implies what is the target page type.
-		/// 
-		/// Example : when you want to click a 'Study' 'Study 123' in 'Header area'
-		///
-		/// </summary>
-		/// <param name="linkText"></param>
+		/// <param name="objectType"></param>
 		/// <param name="areaIdentifier"></param>
 		/// <returns></returns>
-		IPage ClickLinkInArea(string type, string linkText, string areaIdentifier);
+		IPage ClickLink(string linkText, string objectType = null, string areaIdentifier= null);
 
 		/// <summary>
 		/// Click on a clickable UI control

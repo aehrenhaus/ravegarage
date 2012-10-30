@@ -23,30 +23,27 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
         public UploadedDraft Draft { get; set; }
         public string Number { get; set; }
         public string Group { get; set; }
-        public List<Guid> StudyUIDs { get; set; }
+        public List<string> Studies { get; set; }
 
         /// <summary>
         /// The Site constructor
         /// </summary>
         /// <param name="siteName">The feature defined name of the Site</param>
-        /// <param name="siteGroup">Name of site group</param>
-        public Site(string siteName, string siteGroup = "")
+        /// <param name="siteGroup">UniqueName of site group</param>
+		public Site(string siteName, string siteGroup = "")
         {
-            if (!UID.HasValue)
-            {
-                UID = Guid.NewGuid();
-                Name = siteName;
-                Number = Guid.NewGuid().ToString();
-                Group = siteGroup;
-            }
+	        UniqueName = siteName;
+	        Number = Guid.NewGuid().ToString();
+	        Group = siteGroup;
+	        Studies = new List<string>();
         }
 
-        /// <summary>
+	    /// <summary>
         /// Create a unique name for the site by appending a TID.
         /// </summary>
 		protected override void MakeUnique()
         {
-            UniqueName = Name + TID;
+            UniqueName = UniqueName + TID;
         }
 
         /// <summary>

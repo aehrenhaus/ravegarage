@@ -79,7 +79,6 @@
     <Compile Include="FileHelper.cs" />
     <Compile Include="PageObjectInterfaces\EmptyPage.cs" />
     <Compile Include="PageObjectInterfaces\EmptyPOFactory.cs" />
-    <Compile Include="SharedObjects\IFeatureObject.cs" />
     <Compile Include="Misc.cs" />
     <Compile Include="Factory.cs" />
     <Compile Include="SharedObjects\IRemoveableObject.cs" />

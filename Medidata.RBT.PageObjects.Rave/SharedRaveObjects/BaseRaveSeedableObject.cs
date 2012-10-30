@@ -18,10 +18,7 @@ namespace Medidata.RBT.SharedRaveObjects
 	{
 	    public bool SuppressSeeding { get; set; } //Only true when you don't want to seed.
 
-        public Guid? UID { get; set; } //A unique identifier for the object
-        public string Name { get; set; } //The feature file defined name of the SeedableObject
-
-		public string UniqueName { get; set; }
+        public string UniqueName { get; set; } 
 
 		protected string FileLocation { get; set; } //The location of the original file upload
 		protected string UniqueFileLocation { get; set; } //A unique location of the duplicate of the seedable object, that has been made unique
@@ -33,10 +30,6 @@ namespace Medidata.RBT.SharedRaveObjects
 			SuppressSeeding = SeedDecision.SuppressSeeding(GetType());
 		}
 
-		protected virtual void WhenSeedingSuppressed()
-		{
-			UniqueName = Name;
-		}
 
 		public virtual void Seed()
 		{
@@ -44,20 +37,20 @@ namespace Medidata.RBT.SharedRaveObjects
 
 			if (SuppressSeeding || !RBTConfiguration.Default.EnableSeeding)
 			{
-				Console.WriteLine("-> Seeding --> suppressed --> {0} -->{1}", type.Name, Name);
-				WhenSeedingSuppressed();
+				Console.WriteLine("-> Seeding --> suppressed --> {0} -->{1}", type.Name, UniqueName);
+		
 				return;
 			}
 
 
 			if (SeedDecision.FromUI(type))
 			{
-				Console.WriteLine("-> Seeding --> UI --> {0} -->{1}", type.Name, Name); 
+				Console.WriteLine("-> Seeding --> UI --> {0} -->{1}", type.Name, UniqueName); 
 				SeedFromUI();
 			}
 			else
 			{
-				Console.WriteLine("-> Seeding --> backend --> {0} -->{1}", type.Name, Name); 
+				Console.WriteLine("-> Seeding --> backend --> {0} -->{1}", type.Name, UniqueName); 
 				SeedFromBackend();
 			}
 		}
@@ -96,7 +89,7 @@ namespace Medidata.RBT.SharedRaveObjects
         {
             return Path.GetDirectoryName(FileLocation)
                 + @"\Temporary\"
-                + Path.GetFileName(FileLocation).Substring(0, Path.GetFileName(FileLocation).LastIndexOf(".xml")) + UID + ".xml";
+                + Path.GetFileNameWithoutExtension(FileLocation)+ Guid.NewGuid() + ".xml";
         }
 
         /// <summary>

@@ -10,15 +10,15 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
     /// </summary>
     public class StudyAssignment
     {
-        public Guid ProjectUID { get; set; }
-        public Guid RoleUID { get; set; }
-        public Guid SiteUID { get; set; }
+        public string ProjectName { get; set; }
+		public string RoleName { get; set; }
+		public string SiteName { get; set; }
 
-        public StudyAssignment(Guid projectUID, Guid roleUID, Guid siteUID)
+		public StudyAssignment(string projectName, string roleName, string siteName)
         {
-            ProjectUID = projectUID;
-            RoleUID = roleUID;
-            SiteUID = siteUID;
+            ProjectName = projectName;
+            RoleName = roleName;
+            SiteName = siteName;
         }
     }
 }

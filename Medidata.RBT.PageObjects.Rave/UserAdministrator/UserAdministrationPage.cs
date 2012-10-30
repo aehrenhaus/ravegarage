@@ -126,16 +126,6 @@ namespace Medidata.RBT.PageObjects.Rave
             return new UserActivationPage();
         }
 
-        public override IPage ClickLink(string linkText)
-		{
-			base.ClickLink(linkText);
-
-            if (linkText == "Upload Users")
-                TestContext.CurrentPage = new UploadUserPage();
-
-            return TestContext.CurrentPage;
-		}
-
 		public override string URL
 		{
 			get

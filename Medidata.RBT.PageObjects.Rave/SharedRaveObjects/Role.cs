@@ -31,11 +31,8 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
         /// <param name="roleUploadName">The feature defined name of the role</param>
         public Role(string roleUploadName)
         {
-            if (!UID.HasValue)
-            {
-                UID = Guid.NewGuid();
-                Name = roleUploadName;
-            }
+ 
+			UniqueName = roleUploadName;
         }
 
         /// <summary>
@@ -44,10 +41,10 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
 		protected override void MakeUnique()
         {
 			string fileName;
-			if (Name.StartsWith("SUPER ROLE"))
+			if (UniqueName.StartsWith("SUPER ROLE"))
 				fileName = "SUPERROLE.xml";
 			else
-				fileName = Name + ".xml";
+				fileName = UniqueName + ".xml";
 
 			FileLocation = RBTConfiguration.Default.UploadPath + @"\Roles\" + fileName;
 
@@ -59,9 +56,9 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
 				var actionsRaw = excel.GetWorksheetValueRange("Role Actions");
 				var actionsTable = new ExcelTable(actionsRaw);
 				
-				var name = rolesTable[1, "Name"];
+				var name = rolesTable[1, "UniqueName"];
 				UniqueName = name + TID;
-				rolesTable[1, "Name"] = UniqueName;
+				rolesTable[1, "UniqueName"] = UniqueName;
 
 				actionsTable[1, "Role"] = UniqueName;
 

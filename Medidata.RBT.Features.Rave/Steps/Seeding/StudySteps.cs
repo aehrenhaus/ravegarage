@@ -92,7 +92,7 @@ namespace Medidata.RBT.Features.Rave
             UploadedDraft uploadedDraft = TestContext.GetExistingFeatureObjectOrMakeNew
                      (uploadName, () => new UploadedDraft(uploadName));
             CrfVersion crfVersion = TestContext.GetExistingFeatureObjectOrMakeNew
-                    (crfVersionName, () => new CrfVersion(uploadedDraft.Name, crfVersionName));
+                    (crfVersionName, () => new CrfVersion(uploadedDraft.UniqueName, crfVersionName));
             if (TestContext.CurrentUser == null)
                 LoginPage.LoginToHomePageIfNotAlready();
             TestContext.CurrentPage = new ArchitectPage().NavigateToSelf();

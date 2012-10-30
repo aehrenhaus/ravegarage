@@ -37,17 +37,13 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
         /// </summary>
         /// <param name="userUploadName">The feature defined name of the user</param>
         /// <param name="seed">Bool determining whether you want to seed the object if it is not in the FeatureObjects dictionary</param>
-       public User(string userUploadName)
-       {
-            if (!UID.HasValue)
-            {
-                UID = Guid.NewGuid();
-                Name = userUploadName;
-            }
-
+		public User(string userUploadName)
+        {
+	        UniqueName = userUploadName;
+	        Password = RaveConfiguration.Default.DefaultUserPassword;
         }
 
-        /// <summary>
+	    /// <summary>
         /// sets lines per page number for a given user.  
         /// </summary>
         /// <param name="linesPerPage">lines per page setting</param>
@@ -124,10 +120,10 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
 		protected override void MakeUnique()
         {
 
-			if (Name.StartsWith("SUPER USER"))
+			if (UniqueName.StartsWith("SUPER USER"))
 				FileName = "SUPERUSER.xml";
 			else
-				FileName = Name + ".xml";
+				FileName = UniqueName + ".xml";
 
 			FileLocation = RBTConfiguration.Default.UploadPath + @"\Users\" + FileName;
 
@@ -167,16 +163,16 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
         /// <summary>
         /// Check if there is a study assignment for this user
         /// </summary>
-        /// <param name="roleUID">The UID of the role assigned</param>
+        /// <param name="roleName">The UID of the role assigned</param>
         /// <param name="projectUID">The UID of the project assigned</param>
-        /// <param name="siteUID">The UID of the site assigned</param>
+        /// <param name="siteName">The UID of the site assigned</param>
         /// <returns></returns>
-        public bool StudyAssignmentExists(Guid roleUID, Guid projectUID, Guid siteUID)
+		public bool StudyAssignmentExists(string roleName, string projectName, string siteName)
         {
             if (StudyAssignments != null)
             {
                 foreach (StudyAssignment sa in StudyAssignments)
-                    if (sa.ProjectUID == projectUID && sa.RoleUID == roleUID && sa.SiteUID == siteUID)
+					if (sa.ProjectName == projectName && sa.RoleName == roleName && sa.SiteName == siteName)
                         return true;
             }
             return false;
@@ -185,8 +181,8 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
         /// <summary>
         /// Check if there is a module assignment for this user
         /// </summary>
-        /// <param name="projectName">Name of the project</param>
-        /// <param name="securityRoleName">Name of the security role</param>
+        /// <param name="projectName">UniqueName of the project</param>
+        /// <param name="securityRoleName">UniqueName of the security role</param>
         /// <returns></returns>
         public bool ModuleAssignmentExists(string projectName, string securityRoleName)
         {
@@ -212,11 +208,5 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
                 return false;
         }
 
-		protected override void WhenSeedingSuppressed()
-		{
-			Password = RaveConfiguration.Default.DefaultUserPassword;
-
-			base.WhenSeedingSuppressed();
-		}
     }
 }

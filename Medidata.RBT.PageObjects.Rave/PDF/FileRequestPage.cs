@@ -18,7 +18,7 @@ namespace Medidata.RBT.PageObjects.Rave
         /// <summary>
         /// Create a new data pdf file request
         /// </summary>
-        /// <param name="args">The pdfCreationModel dictates what on the page gets set. For instace, Name dictates the data PDF's name</param>
+        /// <param name="args">The pdfCreationModel dictates what on the page gets set. For instace, UniqueName dictates the data PDF's name</param>
         /// <returns>Returns a new FileRequestPage</returns>
 		public FileRequestPage CreateDataPDF(PDFCreationModel args)
 		{
@@ -30,7 +30,7 @@ namespace Medidata.RBT.PageObjects.Rave
         /// <summary>
         /// Create a new blank pdf file request
         /// </summary>
-        /// <param name="args">The pdfCreationModel dictates what on the page gets set. For instace, Name dictates the data PDF's name</param>
+        /// <param name="args">The pdfCreationModel dictates what on the page gets set. For instace, UniqueName dictates the data PDF's name</param>
         /// <returns>Returns a new FileRequestPage</returns>
         public FileRequestPage CreateBlankPDF(PDFCreationModel args)
         {
@@ -48,7 +48,7 @@ namespace Medidata.RBT.PageObjects.Rave
 		{
             new PDFSpecific(pdfName);
             int foundOnPage;
-            Table dt = new Table("Name");
+            Table dt = new Table("UniqueName");
             dt.AddRow(pdfName);
 
             IWebElement pdfTr = this.FindInPaginatedList("", () =>
@@ -122,7 +122,7 @@ namespace Medidata.RBT.PageObjects.Rave
 		{
             Thread.Sleep(1000);
 			var table = Browser.Table("_ctl0_Content_Results");
-			Table dt = new Table("Name");
+			Table dt = new Table("UniqueName");
 			dt.AddRow(pdf);
 			var tr = table.FindMatchRows(dt).FirstOrDefault();
 

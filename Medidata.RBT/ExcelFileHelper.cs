@@ -45,8 +45,8 @@ namespace Medidata.RBT
         /// Gets the excel value.
         /// </summary>
         /// <param name="nameSpace">The name space.</param>
-        /// <param name="spreadSheetName">Name of the spread sheet.</param>
-        /// <param name="columnName">Name of the column.</param>
+        /// <param name="spreadSheetName">UniqueName of the spread sheet.</param>
+        /// <param name="columnName">UniqueName of the column.</param>
         /// <param name="columnPosition">The column position.</param>
         /// <param name="isZipped">if set to <c>true</c> [is zipped].</param>
         /// <returns></returns>
@@ -95,7 +95,7 @@ namespace Medidata.RBT
         /// Spreads the sheet exists.
         /// </summary>
         /// <param name="nameSpace">The name space.</param>
-        /// <param name="spreadSheetName">Name of the spread sheet.</param>
+        /// <param name="spreadSheetName">UniqueName of the spread sheet.</param>
         /// <returns></returns>
         public bool SpreadSheetExists(string nameSpace, string spreadSheetName)
         {
@@ -107,13 +107,13 @@ namespace Medidata.RBT
         /// Gets the spread sheet XML.
         /// </summary>
         /// <param name="nameSpace">The name space.</param>
-        /// <param name="spreadSheetName">Name of the spread sheet.</param>
+        /// <param name="spreadSheetName">UniqueName of the spread sheet.</param>
         /// <returns></returns>
         private XmlNode GetSpreadSheetXml(string nameSpace, string spreadSheetName)
         {
             XmlNamespaceManager nsManager = new XmlNamespaceManager(XmlDoc.NameTable);
             nsManager.AddNamespace(nameSpace, XmlDoc.DocumentElement.NamespaceURI);
-            string selString = "//" + nameSpace + ":Worksheet[@" + nameSpace + ":Name='" + spreadSheetName + "']";
+            string selString = "//" + nameSpace + ":Worksheet[@" + nameSpace + ":UniqueName='" + spreadSheetName + "']";
             XmlNode xmlNode = XmlDoc.SelectNodes(selString, nsManager).Item(0);
             return xmlNode;
         }

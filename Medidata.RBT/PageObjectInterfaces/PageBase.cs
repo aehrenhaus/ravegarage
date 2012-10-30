@@ -97,30 +97,26 @@ namespace Medidata.RBT
                 Browser.Keyboard.PressKey(key);
         }
 
-		/// <summary>
-		/// See IPage interface
-		/// </summary>
-        public virtual IPage ClickLinkInArea(string type, string linkText, string areaIdentifier)
-        {
-			
-            IWebElement area = Browser.TryFindElementById(areaIdentifier);
-            if (area == null)
-                area = GetElementByName(areaIdentifier);
-
-            var link = area.Link(linkText);
-            link.Click();
-
-			return GetPageByCurrentUrlIfNoAlert();
-        }
 
 		/// <summary>
 		/// See IPage interface
 		/// </summary>
-        public virtual IPage ClickLink(string linkText)
+        public virtual IPage ClickLink(string linkText, string objectType = null, string areaIdentifier = null)
         {
-            var link = Browser.Link(linkText);
-            link.Click();
+			ISearchContext area = null;
+			if (!string.IsNullOrEmpty(areaIdentifier))
+			{
+				area = Browser.TryFindElementById(areaIdentifier);
+				if (area == null)
+					area = GetElementByName(areaIdentifier);
+			}
+			else
+			{
+				area = Browser;
+			}
 
+			var link = area.Link(linkText);
+			link.Click();
 
 			return GetPageByCurrentUrlIfNoAlert();
         }

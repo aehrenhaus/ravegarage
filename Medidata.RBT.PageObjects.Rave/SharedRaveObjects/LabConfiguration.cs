@@ -31,26 +31,20 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
         /// </summary>
         /// <param name="labConfigurationUploadName">The feature defined name of the LabConfiguration</param>
 		 public LabConfiguration(string labConfigurationUploadName)
-
         {
-            if (!UID.HasValue)
-            {
-                UID = Guid.NewGuid();
-                Name = labConfigurationUploadName;
-
  
+                UniqueName = labConfigurationUploadName;
+
                 Upload();
-       
-            }
         }
 
         public void Upload()
         {
 			string fileName;
-			if (Name.StartsWith("SUPER LabConfiguration"))
+			if (UniqueName.StartsWith("SUPER LabConfiguration"))
 				fileName = "SUPERLabConfiguration.xml";
 			else
-				fileName = Name;
+				fileName = UniqueName;
 
 			FileLocation = RBTConfiguration.Default.UploadPath + @"\LabConfigurations\" + fileName;
             NavigateToSeedPage();

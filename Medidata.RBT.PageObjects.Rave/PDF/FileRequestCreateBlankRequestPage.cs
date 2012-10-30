@@ -16,12 +16,12 @@ namespace Medidata.RBT.PageObjects.Rave
         /// <summary>
         /// Create a new blank PDF file request
         /// </summary>
-        /// <param name="args">The pdfCreationModel dictates what on the page gets set. For instace, Name dictates the data PDF's name</param>
+        /// <param name="args">The pdfCreationModel dictates what on the page gets set. For instace, UniqueName dictates the data PDF's name</param>
         /// <returns>A new FileRequestPage</returns>
         public FileRequestPage CreateBlankPDF(PDFCreationModel args)
         {
             if (!string.IsNullOrEmpty(args.Name))
-                Type("Name", args.Name);
+                Type("UniqueName", args.Name);
             if (!string.IsNullOrEmpty(args.Profile))
                 ChooseFromDropdown("_ctl0_Content_FileRequestForm_ConfigProfileID", args.Profile);
             if (!string.IsNullOrEmpty(args.Study))

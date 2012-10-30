@@ -35,7 +35,7 @@ namespace Medidata.RBT
 			{
                 if(dicNameType.ContainsKey(poType.Name))
                 {
-                    throw new Exception("Already add a PO class that has Name "+poType.Name);
+                    throw new Exception("Already add a PO class that has UniqueName "+poType.Name);
                 }
 
                 

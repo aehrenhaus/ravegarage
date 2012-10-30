@@ -41,10 +41,10 @@ namespace Medidata.RBT.Features.Rave
             foreach(ConfigurationCreationModel config in configurations)
             {
                 TestContext.CurrentPage = new ArchitectPage().NavigateToSelf();
-                Project project = TestContext.GetExistingFeatureObjectOrMakeNew<Project>(config.Project, () => new Project(config.Project));
+                Project project = TestContext.GetExistingFeatureObjectOrMakeNew(config.Project, () => new Project(config.Project));
                 TestContext.CurrentPage.As<ArchitectPage>().ClickProject(project.UniqueName);
-                Draft draft = TestContext.GetExistingFeatureObjectOrMakeNew<Draft>(config.Draft, () => new Draft(config.Draft));
-                TestContext.CurrentPage.As<ArchitectLibraryPage>().ClickDraft(draft.Name);
+                Draft draft = TestContext.GetExistingFeatureObjectOrMakeNew(config.Draft, () => new Draft(config.Draft));
+                TestContext.CurrentPage.As<ArchitectLibraryPage>().ClickDraft(draft.UniqueName);
                 TestContext.CurrentPage.As<ArchitectCRFDraftPage>().ClickLink("Restrictions");
                 Role role = TestContext.GetExistingFeatureObjectOrMakeNew(roleName, () => new Role(roleName));
                 TestContext.CurrentPage.As<ArchitectRestrictionsPage>().SetEntryRestriction(config.Form, config.Field, role.UniqueName);

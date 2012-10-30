@@ -21,7 +21,7 @@ namespace Medidata.RBT.PageObjects.Rave
 		public void ViewPDF(string pdfName)
 		{
 			var table = Browser.Table("_ctl0_Content_Results");
-			Table dt = new Table("Name");
+			Table dt = new Table("UniqueName");
             dt.AddRow(pdfName);
 			var tr = table.FindMatchRows(dt).FirstOrDefault();
 			tr.FindImagebuttons()[0].Click();
