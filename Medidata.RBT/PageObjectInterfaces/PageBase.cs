@@ -263,7 +263,7 @@ namespace Medidata.RBT
         /// </summary>
 		public virtual IPage NavigateToSelf(NameValueCollection parameters = null)
         {
-            string contextSessionIdstring = TestContext.GetContextValue<string>("UrlSessionID");
+            string contextSessionIdstring = Storage.GetScenarioLevelValue<string>("UrlSessionID");
             string url = string.Format("{0}{1}{2}", BaseURL, string.IsNullOrEmpty(contextSessionIdstring) ? string.Empty : contextSessionIdstring + "/", URL);
             string querystring = string.Empty;
 
@@ -292,7 +292,7 @@ namespace Medidata.RBT
             {
                 int sessionidstart = modifiedUrl.IndexOf("(S(");
                 string sessionIdstring = modifiedUrl.Substring(sessionidstart, (modifiedUrl.IndexOf("/", sessionidstart) - sessionidstart));
-                TestContext.SetContextValue("UrlSessionID", sessionIdstring);
+                Storage.SetScenarioLevelValue("UrlSessionID", sessionIdstring);
             }
 
             Browser = TestContext.Browser;

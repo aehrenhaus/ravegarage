@@ -18,6 +18,44 @@ using Medidata.RBT.SharedObjects;
 
 namespace Medidata.RBT
 {
+	public static class Storage
+	{
+		//values inside FeatureContext.Current is not really the full feature, but rather a scenario.
+		//So we use this static value to store varible accross the whole feature.
+		//[ThreadStatic]
+		public static Dictionary<string, object> FeatureValues = new Dictionary<string, object>();
+		public static Dictionary<string, object> ScenarioValues = new Dictionary<string, object>();
+
+		public static T GetFeatureLevelValue<T>(string key)
+		{
+			if (!Storage.FeatureValues.ContainsKey(key))
+			{
+				return default(T);
+			}
+			return (T)Storage.FeatureValues[key];
+		}
+
+		public static void SetFeatureLevelValue<T>(string key, T val)
+		{
+			Storage.FeatureValues[key] = val;
+		}
+
+
+		public static T GetScenarioLevelValue<T>(string key)
+		{
+			if (!Storage.ScenarioValues.ContainsKey(key))
+			{
+				return default(T);
+			}
+			return (T)Storage.ScenarioValues[key];
+		}
+
+		public static void SetScenarioLevelValue<T>(string key, T val)
+		{
+			Storage.ScenarioValues[key] = val;
+		}
+	}
+
 	[Binding]
 	public class TestContext
 	{
@@ -105,16 +143,10 @@ namespace Medidata.RBT
 		#endregion
 
 		public static IPage CurrentPage
-        {
-            get
-            {
-				return GetContextValue<IPage>("PageBase");
-            }
-            set
-            {
-				ScenarioContext.Current["PageBase"] = value;
-            }
-        }
+		{
+			get;
+			set;
+		}
 
 		public static string CurrentUser
 		{
@@ -135,11 +167,23 @@ namespace Medidata.RBT
         {
             get
             {
-                return Medidata.RBT.TestContext.GetFeatureContextValue<Dictionary<string, IFeatureObject>>("FeatureObjects");
+				var objs = RBTConfiguration.Default.SeedOncePerFeature ?
+					Storage.GetFeatureLevelValue<Dictionary<string, IFeatureObject>>("FeatureObjects") :
+					Storage.GetScenarioLevelValue<Dictionary<string, IFeatureObject>>("FeatureObjects");
+
+				if (objs == null)
+				{
+					objs = new Dictionary<string, IFeatureObject>();
+					FeatureObjects =  objs;
+				}
+				return objs;
             }
             set
             {
-                Medidata.RBT.TestContext.SetFeatureContextValue("FeatureObjects", value);
+				if (RBTConfiguration.Default.SeedOncePerFeature)
+					Storage.SetFeatureLevelValue("FeatureObjects", value);
+				else
+					Storage.SetScenarioLevelValue("FeatureObjects", value);
             }
         }
 
@@ -172,11 +216,11 @@ namespace Medidata.RBT
 		{
 			get
 			{
-				return GetContextValue<DateTime?>("CurrentScenarioStartTime");
+				return Storage.GetScenarioLevelValue<DateTime?>("CurrentScenarioStartTime");
 			}
 			set
 			{
-				ScenarioContext.Current["CurrentScenarioStartTime"] = value;
+				Storage.SetScenarioLevelValue("CurrentScenarioStartTime", value);
 			}
 		}
 
@@ -184,11 +228,11 @@ namespace Medidata.RBT
         {
             get
             {
-                return GetContextValue<string>("ScenarioText");
+				return Storage.GetFeatureLevelValue<string>("ScenarioText");
             }
             set
             {
-                ScenarioContext.Current["ScenarioText"] = value;
+               Storage.SetFeatureLevelValue("ScenarioText", value);
             }
         }
 
@@ -220,33 +264,7 @@ namespace Medidata.RBT
 			}
 		}
 
-        public static T GetFeatureContextValue<T>(string key)
-        {
-            if (!FeatureContext.Current.ContainsKey(key))
-            {
-                return default(T);
-            }
-            return (T)FeatureContext.Current[key];
-        }
 
-        public static void SetFeatureContextValue<T>(string key, T val)
-        {
-            FeatureContext.Current[key] = val;
-        }
-
-		public static T GetContextValue<T>(string key)
-		{
-			if (!ScenarioContext.Current.ContainsKey(key))
-			{
-				return default(T);
-			}
-			return (T)ScenarioContext.Current[key];
-		}
-		
-		public  static void SetContextValue<T>(string key, T val)
-		{
-			ScenarioContext.Current[key] = val;
-		}
 		
 		/// <summary>
 		/// After whole test
@@ -295,7 +313,8 @@ namespace Medidata.RBT
 		[BeforeFeature()]
 		public static void BeforeFeature()
 		{
-            Medidata.RBT.TestContext.SetFeatureContextValue<Dictionary<string, IFeatureObject>>("FeatureObjects", new Dictionary<string, IFeatureObject>());
+			Storage.FeatureValues.Clear();
+            
 			CurrentFeatureStartTime = DateTime.Now;
             DraftCounter.ResetCounter();
 		}
@@ -317,6 +336,8 @@ namespace Medidata.RBT
 		[BeforeScenario()]
 		public void BeforeScenario()
 		{
+			Storage.ScenarioValues.Clear();
+
 			//start time
 			CurrentScenarioStartTime = DateTime.Now;
 

@@ -33,6 +33,7 @@
 		EnableSeeding ="True"
 		SeedFromBackendClasses =""
 		SuppressSeeding="User"
+		SeedOncePerFeature ="false"
 		>
 	
 	</RBTConfiguration>

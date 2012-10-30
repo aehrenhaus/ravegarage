@@ -165,5 +165,12 @@ namespace Medidata.RBT
 			get { return (String)this["SuppressSeeding"]; }
 			set { this["SuppressSeeding"] = value; }
 		}
+
+		[ConfigurationProperty("SeedOncePerFeature", DefaultValue = false)]
+		public bool SeedOncePerFeature
+		{
+			get { return (bool)this["SeedOncePerFeature"]; }
+			set { this["SeedOncePerFeature"] = value; }
+		}
     }
 }
