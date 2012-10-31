@@ -42,13 +42,13 @@ namespace Medidata.RBT.PageObjects.Rave
         /// <summary>
         /// Finds the lab.
         /// </summary>
-        /// <param name="labName">UniqueName of the lab.</param>
+        /// <param name="labName">Name of the lab.</param>
         /// <param name="labType">Type of Lab</param>
         /// <returns></returns>
         public IWebElement FindLab(string labName, string type)
         {
             int foundOnPage;
-            Table dt = new Table("Type", "UniqueName");
+			Table dt = new Table("Type", "Name");
             dt.AddRow(type, labName);
 
             IWebElement pdfTr = this.FindInPaginatedList("", () =>
@@ -78,7 +78,7 @@ namespace Medidata.RBT.PageObjects.Rave
         /// <summary>
         /// Adds the new lab.
         /// </summary>
-        /// <param name="labName">UniqueName of the lab.</param>
+        /// <param name="labName">Name of the lab.</param>
         /// <param name="type">The type.</param>
          public void AddNewLab(string labName, string type, string rangeType = null)
         {

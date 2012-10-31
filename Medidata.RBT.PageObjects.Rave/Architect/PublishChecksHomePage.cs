@@ -25,7 +25,7 @@ namespace Medidata.RBT.PageObjects.Rave
 		public override IPage ChooseFromCheckboxes(string identifier, bool isChecked, string areaIdentifier = null, string listItem = null)
 		{
 			var table = Browser.Table("dgObjects");
-			Table filter = new Table("UniqueName");
+			Table filter = new Table("Name");
 			filter.AddRow (areaIdentifier);
 			var foundRow = table.FindMatchRows(filter);
 

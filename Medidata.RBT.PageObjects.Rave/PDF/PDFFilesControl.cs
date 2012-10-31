@@ -23,7 +23,7 @@ namespace Medidata.RBT.PageObjects.Rave
         public void DeletePDF(string name)
         {
             int foundOnPage;
-            Table dt = new Table("UniqueName");
+            Table dt = new Table("Name");
             dt.AddRow(name);
 
             IWebElement pdfTr = this.FindInPaginatedList("", () =>

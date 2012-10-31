@@ -142,7 +142,7 @@ namespace Medidata.RBT.PageObjects.Rave
         /// <summary>
         /// Finds the lab range.
         /// </summary>
-        /// <param name="labRangeName">UniqueName of the lab range.</param>
+        /// <param name="labRangeName">Name of the lab range.</param>
         /// <returns></returns>
         public IWebElement FindLabRange(string analyteRangeName)
         {

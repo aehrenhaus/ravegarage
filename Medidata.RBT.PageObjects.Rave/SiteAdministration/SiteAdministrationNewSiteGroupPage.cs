@@ -20,10 +20,10 @@ namespace Medidata.RBT.PageObjects.Rave.SiteAdministration
         }
 
 
-        public void CreateSiteGroup(string uniqueName)
+        public void CreateSiteGroup(string Name)
         {
             Browser.FindElementById("_ctl0_Content_ImagebuttonInsert01").Click();
-            Browser.TextboxById("_ctl0_Content_txtSiteGroupName").EnhanceAs<Textbox>().SetText(uniqueName);
+            Browser.TextboxById("_ctl0_Content_txtSiteGroupName").EnhanceAs<Textbox>().SetText(Name);
             Browser.FindElementById("_ctl0_Content_ImgBtnSave").Click();
         }
     }

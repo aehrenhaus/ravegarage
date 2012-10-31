@@ -29,7 +29,7 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
         /// The Site constructor
         /// </summary>
         /// <param name="siteName">The feature defined name of the Site</param>
-        /// <param name="siteGroup">UniqueName of site group</param>
+        /// <param name="siteGroup">Name of site group</param>
 		public Site(string siteName, string siteGroup = "")
         {
 	        UniqueName = siteName;

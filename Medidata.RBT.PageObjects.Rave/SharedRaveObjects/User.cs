@@ -129,9 +129,8 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
 
 			using (var excel = new ExcelWorkbook(FileLocation))
 			{
-				var usersRaw = excel.GetWorksheetValueRange("Users");
-				var usersTable = new ExcelTable(usersRaw);
-
+				var usersTable = excel.OpenTableForEdit("Users");
+	
 				//make login unique
 				var oldUserName = usersTable[1, "Login"];
 				UniqueName = oldUserName + TID;
@@ -146,8 +145,6 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
 				//Create a unique version of the file to upload
 				UniqueFileLocation = MakeFileLocationUnique(FileLocation);
 
-				//save to unique file
-				excel.SetWorksheetValueRange("Users", usersRaw);
 				excel.SaveAs(UniqueFileLocation);
 			}
         }
@@ -181,8 +178,8 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
         /// <summary>
         /// Check if there is a module assignment for this user
         /// </summary>
-        /// <param name="projectName">UniqueName of the project</param>
-        /// <param name="securityRoleName">UniqueName of the security role</param>
+        /// <param name="projectName">Name of the project</param>
+        /// <param name="securityRoleName">Name of the security role</param>
         /// <returns></returns>
         public bool ModuleAssignmentExists(string projectName, string securityRoleName)
         {

@@ -24,8 +24,8 @@ namespace Medidata.RBT.PageObjects.Rave
         /// <summary>
         /// Assign the specified report to specified user
         /// </summary>
-        /// <param name="reportName">UniqueName of report to be assigned</param>
-        /// <param name="UserName">UniqueName of the user to assign report to</param>
+        /// <param name="reportName">Name of report to be assigned</param>
+        /// <param name="UserName">Name of the user to assign report to</param>
         /// <returns></returns>
         public IPage SelectReportAssignment(string reportName, User user)
         {

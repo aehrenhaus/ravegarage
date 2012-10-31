@@ -118,7 +118,7 @@ namespace Medidata.RBT.Common.Steps
 		}
 
 		[StepDefinition(@"I select ""([^""]*)"" link ""([^""]*)""")]
-		public void ISelect____Linke____(string type, string linkText)
+		public void ISelect____Link____(string type, string linkText)
 		{
 			linkText = SpecialStringHelper.Replace(linkText);
 			CurrentPage = CurrentPage.ClickLink(linkText, type);

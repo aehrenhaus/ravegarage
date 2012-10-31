@@ -247,7 +247,7 @@ namespace Medidata.RBT
 		/// This is a convention, we use the tag name as a identifier of  a scenario
 		/// 
 		/// </summary>
-		public static string ScenarioUniqueName { get; private set; }
+		public static string ScenarioName { get; private set; }
 
 		public static NameValueCollection Vars
 		{
@@ -347,9 +347,9 @@ namespace Medidata.RBT
 			ScreenshotIndex = 1;
 
 			//set scenario name with tag that starts with PB_
-			ScenarioUniqueName =  ScenarioContext.Current.ScenarioInfo.Tags.FirstOrDefault(x=>x.StartsWith(RBTConfiguration.Default.ScenarioNamePrefix));
-			if (ScenarioUniqueName == null)
-				ScenarioUniqueName = "Scenario_" + DateTime.Now.Ticks.ToString() ;
+			ScenarioName =  ScenarioContext.Current.ScenarioInfo.Tags.FirstOrDefault(x=>x.StartsWith(RBTConfiguration.Default.ScenarioNamePrefix));
+			if (ScenarioName == null)
+				ScenarioName = "Scenario_" + DateTime.Now.Ticks.ToString() ;
 
 			//restore snapshot
 			//DbHelper.RestoreSnapshot();
@@ -409,7 +409,7 @@ namespace Medidata.RBT
 					string resultPath = GetTestResultPath();
 
 					var fileName = ScreenshotIndex.ToString();
-					fileName = ScenarioUniqueName+"_"+fileName+ ".jpg";
+					fileName = ScenarioName+"_"+fileName+ ".jpg";
 
 					Console.WriteLine("img->"+fileName);
 					Console.WriteLine( "->"+Browser.Url);

@@ -28,7 +28,7 @@ namespace Medidata.RBT.PageObjects.Rave.SiteAdministration
         /// <summary>
         /// Search for a site
         /// </summary>
-        /// <param name="siteName">UniqueName of the site to search for</param>
+        /// <param name="siteName">Name of the site to search for</param>
         public void SearchForSite(string siteName)
         {
             SiteNameBox.EnhanceAs<Textbox>().SetText(siteName);
@@ -39,7 +39,7 @@ namespace Medidata.RBT.PageObjects.Rave.SiteAdministration
         /// <summary>
         /// Click a site after you've searched for it
         /// </summary>
-        /// <param name="siteName">UniqueName of the site to click</param>
+        /// <param name="siteName">Name of the site to click</param>
         /// <returns>Returns the SiteAdministrationSiteDetailsPage for the clicked site</returns>
         public SiteAdministrationDetailsPage ClickSite(string siteName)
         {

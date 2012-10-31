@@ -51,23 +51,19 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
 
 			using (var excel = new ExcelWorkbook(FileLocation))
 			{
-				var rolesRaw = excel.GetWorksheetValueRange("EDC Roles");
-				var rolesTable = new ExcelTable(rolesRaw);
-				var actionsRaw = excel.GetWorksheetValueRange("Role Actions");
-				var actionsTable = new ExcelTable(actionsRaw);
+	
+				var rolesTable = excel.OpenTableForEdit("EDC Roles");
+				var actionsTable = excel.OpenTableForEdit("Role Actions");
+	
 				
-				var name = rolesTable[1, "UniqueName"];
+				var name = rolesTable[1, "Name"];
 				UniqueName = name + TID;
-				rolesTable[1, "UniqueName"] = UniqueName;
+				rolesTable[1, "Name"] = UniqueName;
 
 				actionsTable[1, "Role"] = UniqueName;
 
 				//Create a unique version of the file to upload
 				UniqueFileLocation = MakeFileLocationUnique(FileLocation);
-
-				
-				excel.SetWorksheetValueRange("EDC Roles", rolesRaw);
-				excel.SetWorksheetValueRange("Role Actions", actionsRaw);
 
 				UniqueFileLocation = MakeFileLocationUnique(FileLocation);
 				excel.SaveAs(UniqueFileLocation);

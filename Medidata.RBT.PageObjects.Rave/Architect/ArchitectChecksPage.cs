@@ -28,7 +28,7 @@ namespace Medidata.RBT.PageObjects.Rave
 		private void Activate(string identifier, bool activate)
 		{
 			var table = Browser.Table("_ctl0_Content_DisplayGrid");
-			Table matchTable = new Table("UniqueName");
+			Table matchTable = new Table("Name");
 			matchTable.AddRow(identifier);
 			var rows = table.FindMatchRows(matchTable);
 
@@ -38,7 +38,7 @@ namespace Medidata.RBT.PageObjects.Rave
 			rows[0].Images().First(x => x.GetAttribute("src").EndsWith("i_cedit.gif")).Click();
 
 			//redo ,because page refreshed
-			matchTable = new Table("UniqueName");
+			matchTable = new Table("Name");
 			matchTable.AddRow("");//because it's text box, Text property is ""
 			table = Browser.Table("_ctl0_Content_DisplayGrid");
 			rows = table.FindMatchRows(matchTable);

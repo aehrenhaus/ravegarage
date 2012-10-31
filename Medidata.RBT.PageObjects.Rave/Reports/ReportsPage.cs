@@ -54,7 +54,7 @@ namespace Medidata.RBT.PageObjects.Rave
 			//first make sure all reports in the list exist;
 			foreach (var report in reports)
 			{
-				Table query = new Table("UniqueName");
+				Table query = new Table("Name");
 				query.AddRow(new string[] { report.Name });
 				var rows = t.FindMatchRows(query);
 				if (rows.Count == 0)
@@ -65,7 +65,7 @@ namespace Medidata.RBT.PageObjects.Rave
 			
 			foreach (var report in reports)
 			{
-				Table query = new Table("UniqueName");
+				Table query = new Table("Name");
 				query.AddRow(new string[]{report.Name});
 				var rows = t.FindMatchRows(query);
 				var link = rows[0].FindElement(By.LinkText("Help"));
@@ -83,7 +83,7 @@ namespace Medidata.RBT.PageObjects.Rave
 			//first make sure all reports in the list exist;
 			foreach (var report in reports)
 			{
-				Table query = new Table("UniqueName");
+				Table query = new Table("Name");
 				query.AddRow(new string[] { report.Name });
 				var rows = t.FindMatchRows(query);
 				if (rows.Count == 0)
@@ -94,7 +94,7 @@ namespace Medidata.RBT.PageObjects.Rave
 			
 			foreach (var report in reports)
 			{
-				Table query = new Table("UniqueName");
+				Table query = new Table("Name");
 				query.AddRow(new string[]{report.Name});
 				var rows = t.FindMatchRows(query);
 				var link = rows[0].FindElement(By.LinkText(report.Name));

@@ -19,9 +19,7 @@ namespace Mediata.RBT.Documents
 	{
 		static void Main(string[] args)
 		{
-
 			GenerateAllRazor();
-			//GenerateAllT4();
 		}
 	
 		static void GenerateAllRazor()
@@ -40,19 +38,5 @@ namespace Mediata.RBT.Documents
 			}
 		}
 
-		//static void GenerateAllT4()
-		//{
-		//    var assem = Assembly.GetEntryAssembly();
-		//    foreach (var type in assem.GetTypes().Where(x => !x.IsAbstract && x.IsSubclassOf(typeof(TextTransformation))))
-		//    {
-		//        var template = (TextTransformation)Activator.CreateInstance(type);
-		//        var str = template.TransformText();
-		//        string folder = Path.Combine(assem.Location + "/../../../", "Templates");
-		//        string fileName = Path.Combine(folder, type.Name + ".htm");
-
-		//        File.WriteAllText(fileName, str);
-		//        Process.Start(fileName);
-		//    }
-		//}
 	}
 }

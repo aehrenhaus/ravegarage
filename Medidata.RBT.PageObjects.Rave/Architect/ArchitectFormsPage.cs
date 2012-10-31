@@ -44,7 +44,7 @@ namespace Medidata.RBT.PageObjects.Rave
             var dummy = Browser.WaitForElement("_ctl0_Content_FormGrid");  // wait for page to load.
 
             var table = Browser.Table("_ctl0_Content_FormGrid");
-            Table matchTable = new Table("Form UniqueName");
+            Table matchTable = new Table("Form Name");
             matchTable.AddRow(form);
             var rows = table.FindMatchRows(matchTable);
 
@@ -60,7 +60,7 @@ namespace Medidata.RBT.PageObjects.Rave
             Browser.Keyboard.PressKey("\n");
 
             var table = Browser.Table("_ctl0_Content_FormGrid");
-            Table matchTable = new Table("Form UniqueName");
+            Table matchTable = new Table("Form Name");
 			matchTable.AddRow(identifier);
 			var rows = table.FindMatchRows(matchTable);
 
@@ -70,7 +70,7 @@ namespace Medidata.RBT.PageObjects.Rave
 			rows[0].Images().First(x => x.GetAttribute("src").EndsWith("i_cedit.gif")).Click();
 
 			//redo ,because page refreshed
-            matchTable = new Table("Form UniqueName");
+            matchTable = new Table("Form Name");
 			matchTable.AddRow("");//because it's text box, Text property is ""
             table = Browser.Table("_ctl0_Content_FormGrid");
 			rows = table.FindMatchRows(matchTable);

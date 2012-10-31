@@ -22,10 +22,15 @@ namespace Medidata.RBT
 	/// </summary>
 	public class ExcelTable
 	{
-		object[,] _rawTable;
+		public string SheetName { get; private set; }
+		public string Range { get; private set; }
+		internal object[,] _rawTable;
 
-		public ExcelTable(object[,] table)
+		public ExcelTable(object[,] table,string sheetName, string range = null)
 		{
+			SheetName = sheetName;
+			Range = range;
+
 			_rawTable = table;
 			_columnPosMapping = new Dictionary<string, int>();
 
@@ -71,10 +76,13 @@ namespace Medidata.RBT
 			{
 				int columnNum = _columnPosMapping[column];
 				_rawTable[row + 1, columnNum] = value;
+
+				Modified = true;
 		
 			}
 		}
 
+		public bool Modified { get; private set; }
 	}
 
 	public class ExcelWorkbook : IDisposable
@@ -83,13 +91,26 @@ namespace Medidata.RBT
 
 		readonly Workbook _workBook;
 
+		readonly List<ExcelTable> _openedTables = new List<ExcelTable>();
+
 		public void Save()
 		{
+			foreach (var table in _openedTables)
+			{
+				if (table.Modified)
+					SetWorksheetValueRange(table.SheetName, table._rawTable, table.Range);
+			}
+
 			_workBook.Save();
 		}
 
 		public void SaveAs(string filePath)
 		{
+			foreach (var table in _openedTables)
+			{
+				if (table.Modified)
+					SetWorksheetValueRange(table.SheetName, table._rawTable, table.Range);
+			}
 			_workBook.SaveAs(filePath);
 		}
 
@@ -122,7 +143,7 @@ namespace Medidata.RBT
 			}
 		}
 
-		public void SetWorksheetValueRange(string sheetName, object[,] newValue, string range = null)
+		private void SetWorksheetValueRange(string sheetName, object[,] newValue, string range = null)
 		{
 
 			Worksheet sheet = (Worksheet)_workBook.Sheets[sheetName];
@@ -137,6 +158,14 @@ namespace Medidata.RBT
 		}
 
 
+		public ExcelTable OpenTableForEdit(string sheetName, string range = null)
+		{
+			var raw = GetWorksheetValueRange(sheetName,range);
+			var table = new ExcelTable(raw,sheetName,range);
+			_openedTables.Add(table);
+			return table;
+		}
+
 		/// <summary>
 		/// 
 		/// </summary>
@@ -146,7 +175,7 @@ namespace Medidata.RBT
 		/// Is left empty, will return used range
 		/// </param>
 		/// <returns></returns>
-		public object[,] GetWorksheetValueRange(string sheetName, string range = null)
+		private object[,] GetWorksheetValueRange(string sheetName, string range = null)
 		{
 
 			Worksheet sheet = (Worksheet)_workBook.Sheets[sheetName];

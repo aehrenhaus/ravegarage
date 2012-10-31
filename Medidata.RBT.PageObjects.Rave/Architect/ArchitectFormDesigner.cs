@@ -110,7 +110,7 @@ namespace Medidata.RBT.PageObjects.Rave
         private void ClickEditForField(string field)
         {
             var table = Browser.Table("_ctl0_Content_FieldsGrid");
-            Table matchTable = new Table("UniqueName");
+			Table matchTable = new Table("Name");
             matchTable.AddRow(field);
             var rows = table.FindMatchRows(matchTable);
 

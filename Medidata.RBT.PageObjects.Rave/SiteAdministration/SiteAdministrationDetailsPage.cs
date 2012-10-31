@@ -46,7 +46,7 @@ namespace Medidata.RBT.PageObjects.Rave.SiteAdministration
         /// <summary>
         /// Link the study provided with the site you are on and environment desired
         /// </summary>
-        /// <param name="studyName">name of the study to link the site with, this should be the UniqueName, not the feature provided one</param>
+        /// <param name="studyName">name of the study to link the site with, this should be the Name, not the feature provided one</param>
         /// <param name="envName">name of the environment type</param>
         public void LinkStudyWithSite( string studyName, string envName)
         {
@@ -61,8 +61,8 @@ namespace Medidata.RBT.PageObjects.Rave.SiteAdministration
         /// <summary>
         /// Selects the element in study site.
         /// </summary>
-        /// <param name="elementName">UniqueName of the element.</param>
-        /// <param name="studyName">UniqueName of the study.</param>
+        /// <param name="elementName">Name of the element.</param>
+        /// <param name="studyName">Name of the study.</param>
         /// <param name="environment">The environment.</param>
         public void SelectElementInStudySite(string elementName, string studyName, string environment)
         {
@@ -81,7 +81,7 @@ namespace Medidata.RBT.PageObjects.Rave.SiteAdministration
             ChooseFromDropdown("StudyDDL", environment.ToLower() == "prod" ? "Live: Prod" : String.Concat("Aux: ", environment));
             TestContext.CurrentPage.ClickLink("Add");
             var table = TestContext.CurrentPage.GetElementByName("_WizardTitleBox_AddStudySiteWzrd_StudyGrid").EnhanceAs<HtmlTable>();
-            Table matchTable = new Table("UniqueName");
+            Table matchTable = new Table("Name");
             matchTable.AddRow(String.Format("{0}-{1}", studyName, environment));            
             var rows = table.FindMatchRows(matchTable);
             rows[0].Images().First(x => x.GetAttribute("src").EndsWith(mapGifId)).Click();

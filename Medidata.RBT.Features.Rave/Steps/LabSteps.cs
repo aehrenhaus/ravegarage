@@ -25,7 +25,7 @@ namespace Medidata.RBT.Features.Rave
         /// <summary>
         /// Select ranges for lab
         /// </summary>
-        /// <param name="labName">UniqueName of the lab.</param>
+        /// <param name="labName">Name of the lab.</param>
         [StepDefinition(@"I select Ranges for ""([^""]*)"" for ""([^""]*)"" lab")]
         public void ISelectRangesFor__(string labName, string labType)
         {
@@ -53,7 +53,7 @@ namespace Medidata.RBT.Features.Rave
         [StepDefinition(@"I create lab")]
         public void ICreateLab__(Table table)
         {
-            SpecialStringHelper.ReplaceTableColumn(table, "UniqueName");
+            SpecialStringHelper.ReplaceTableColumn(table, "Name");
             LabModel lab = table.CreateInstance<LabModel>();
             CurrentPage.As<LabPageBase>().AddNewLab(lab.Name, lab.Type, lab.RangeType);
         }

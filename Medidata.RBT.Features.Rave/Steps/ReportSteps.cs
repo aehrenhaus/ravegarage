@@ -51,7 +51,7 @@ namespace Medidata.RBT.Features.Rave
                 newTable.AddRow(project.UniqueName, envName);
             }
 
-            SpecialStringHelper.ReplaceTableColumn(newTable, "UniqueName");
+            SpecialStringHelper.ReplaceTableColumn(newTable, "Name");
             CurrentPage.As<PromptsPage>().SetParameter(name, newTable);
 		}
 

@@ -24,7 +24,7 @@ namespace Medidata.RBT.Features.Rave.Steps
                     objectTypeName = "Medidata.Core.Objects.Labs.AnalyteRange";
                     break;
                 default:
-                    throw new NotImplementedException(String.Format("Unknown Object UniqueName: {0}", model.ObjectName));
+                    throw new NotImplementedException(String.Format("Unknown Object Name: {0}", model.ObjectName));
             }    
             return String.Format("declare @Analyte varchar(2000) = '{0}' " +
                                        "declare @LabName varchar(2000)= '{1}' " +

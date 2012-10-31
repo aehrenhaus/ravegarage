@@ -32,7 +32,7 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
 		public UploadedDraft(string name)
         {
 			UniqueName = name;
-			UniqueName = UniqueName + TID;
+			
         }
 
         /// <summary>
@@ -61,14 +61,12 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
 		{
 			FileLocation = RBTConfiguration.Default.UploadPath + @"\Drafts\" + UniqueName;
 
-
+			UniqueName = UniqueName + TID;
 
 			using (var excel = new ExcelWorkbook(FileLocation))
 			{
-				var draftRaw = excel.GetWorksheetValueRange("CRFDraft");
-				var draftTable = new ExcelTable(draftRaw);
-				var fieldsRaw = excel.GetWorksheetValueRange("Fields");
-				var fieldsTable = new ExcelTable(fieldsRaw);
+				var draftTable = excel.OpenTableForEdit("CRFDraft");
+				var fieldsTable = excel.OpenTableForEdit("Fields");
 
 
 				//project 
@@ -106,9 +104,6 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
 				//Create a unique version of the file to upload
 				UniqueFileLocation = MakeFileLocationUnique(FileLocation);
 
-				//save to unique file
-				excel.SetWorksheetValueRange("Fields", fieldsRaw);
-				excel.SetWorksheetValueRange("CRFDraft", draftRaw);
 
 				//Create a unique version of the file to upload
 				

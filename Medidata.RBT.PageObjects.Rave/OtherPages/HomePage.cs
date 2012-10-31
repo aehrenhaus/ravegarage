@@ -42,7 +42,7 @@ namespace Medidata.RBT.PageObjects.Rave
             IWebElement studyLink = this.FindInPaginatedList("", () =>
             {
                 //TODO :    Remove the coalescing op when seeding considderation is up to date for all feature files. 
-                //          Use study.UniqueName as the text to search for.
+                //          Use study.Name as the text to search for.
                 return TestContext.Browser.TryFindElementByLinkText(study.UniqueName);
             }, out foundOnPage);
 
@@ -79,7 +79,7 @@ namespace Medidata.RBT.PageObjects.Rave
             //fix this later, but comment for now
 
             //TODO :    Remove the coalescing op when seeding considderation is up to date for all feature files. 
-            //          Use site.UniqueName as the text to search for.
+            //          Use site.Name as the text to search for.
             var siteLink = TestContext.Browser.TryFindElementByLinkText(site.UniqueName);
 
 			siteLink.Click();
