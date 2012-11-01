@@ -50,6 +50,7 @@ And I verify data on Fields in CRF
 | Field A | Gastrointestinal | False    |
 And I take a screenshot
 
+@ignore
 @release_2012.1.0
 @DT13997_60
 @WIP

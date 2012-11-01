@@ -1,5 +1,6 @@
 ﻿# When a user selects  Dynamic Allocation Randomization Block algorithm , subject assignment satisfies a specified allocation and ratio is random for all blocks.
 
+@ignore
 Feature: US18812
 	When user selects Dynamic Allocation Randomization Block algorithm
 	Then subject assignment satisfies a specified allocation ratio
