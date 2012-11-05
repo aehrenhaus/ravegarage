@@ -130,6 +130,7 @@
     <Compile Include="OtherPages\LogoutPage.cs" />
     <Compile Include="OtherPages\PasswordChangedPage.cs" />
     <Compile Include="OtherPages\PasswordPage.cs" />
+    <Compile Include="PDF\PDFConfigProfilesPage.cs" />
     <Compile Include="PDF\PDFFileRequestsControl.cs" />
     <Compile Include="PDF\FileRequestCreateBlankRequestPage.cs" />
     <Compile Include="PDF\FileRequestViewPage.cs" />
@@ -143,6 +144,7 @@
     <Compile Include="ReportAdmin\ReportAssignmentPage.cs" />
     <Compile Include="SharedRaveObjects\LabConfiguration.cs" />
     <Compile Include="SharedRaveObjects\ModuleAssignment.cs" />
+    <Compile Include="SharedRaveObjects\PdfProfile.cs" />
     <Compile Include="SharedRaveObjects\ReportAssignment.cs" />
     <Compile Include="SharedRaveObjects\SiteGroup.cs" />
     <Compile Include="SharedRaveObjects\StudyAssignment.cs" />
@@ -170,6 +172,7 @@
     <Compile Include="TableModels\ArchitectObjectModel.cs" />
     <Compile Include="TableModels\AuditModel.cs" />
     <Compile Include="TableModels\FormModel.cs" />
+    <Compile Include="TableModels\PdfProfileModel.cs" />
     <Compile Include="TableModels\TSDVObjectModel.cs" />
     <Compile Include="TableModels\CustomTierModel.cs" />
     <Compile Include="TableModels\IFieldModel.cs" />
