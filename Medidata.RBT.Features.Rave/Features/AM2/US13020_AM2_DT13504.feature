@@ -15,6 +15,9 @@ Given following Project assignments exist
 | User         | Project | Environment | Role         | Site     | SecurityRole          |
 | SUPER USER 1 | DT13504 | Live: Prod  | SUPER ROLE 1 | Site_001 | Project Admin Default |
 Given I publish and push eCRF "DT13504_1.xml" to "Version 1"
+Given following Report assignments exist
+| User         | Report      |
+| SUPER USER 1 | Audit Trail |
 
 #Given "SUPER USER 1" has access to "Architect"
 #And "SUPER USER 1" has access to Amendment Manager
@@ -79,6 +82,17 @@ Then I verify Audits exist
 	| Audit Type        | Query Message                                                                                    | User   | Time                 |
 	| Amendment Manager | Query closed during migration process because the edit check no longer exists in target version. | System | dd MMM yyyy hh:mm:ss |
 And I take a screenshot
+And I navigate to "Home"
+And I navigate to "Reporter"
+And I select Report "Audit Trail"
+And I select Report Parameters
+| Study   | Site     | Subjects      |
+| DT13504 | Site_001 | "{Var(num1)}" |
+When I click button "Submit Report"
+Then I verify text available
+| Site     | Site Group | Subject       | Folder        | Form   | Page Rpt Number | Field   | Log# | Audit Action                                                                                                        | Audit User | Audit Role | Audit ActionType | Audit Time (GMT)     |
+| Site_001 | World      | "{Var(num1)}" | Subject Level | Form A | 0               | Field D | 0    | Amendment Manager: Query closed during migration process because the edit check no longer exists in target version. | S.User     | SYSTEM     | MigQueryClosed   | dd MMM yyyy hh:mm:ss |
+And I take a screenshot
 
 
 @release_2012.1.0
@@ -123,4 +137,17 @@ When I click audit on Field "Field B"
 Then I verify Audits exist
 	| Audit Type        | Query Message                                                                                    | User   | Time                 |
 	| Amendment Manager | Query closed during migration process because the edit check no longer exists in target version. | System | dd MMM yyyy hh:mm:ss |
+And I take a screenshot
+And I navigate to "My Profile"
+And I select link "Edit"
+And I select "Localization Test" Locale
+And I select link "Save"
+And I navigate to "Home"
+And I select Study "LDT13504" and Site "LSite_001"
+And I select a Subject "{Var(num1)}"
+And I select form "LForm A"
+When I click audit on Field "LField B"
+Then I verify Audits exist
+	| Audit Type         | Query Message                                                                                     | User    | Time                 |
+	| LAmendment Manager | LQuery closed during migration process because the edit check no longer exists in target version. | LSystem | dd MMM yyyy hh:mm:ss |
 And I take a screenshot
