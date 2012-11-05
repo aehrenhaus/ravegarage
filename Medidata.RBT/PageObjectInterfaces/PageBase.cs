@@ -97,30 +97,26 @@ namespace Medidata.RBT
                 Browser.Keyboard.PressKey(key);
         }
 
-		/// <summary>
-		/// See IPage interface
-		/// </summary>
-        public virtual IPage ClickLinkInArea(string type, string linkText, string areaIdentifier)
-        {
-			
-            IWebElement area = Browser.TryFindElementById(areaIdentifier);
-            if (area == null)
-                area = GetElementByName(areaIdentifier);
-
-            var link = area.Link(linkText);
-            link.Click();
-
-			return GetPageByCurrentUrlIfNoAlert();
-        }
 
 		/// <summary>
 		/// See IPage interface
 		/// </summary>
-        public virtual IPage ClickLink(string linkText)
+        public virtual IPage ClickLink(string linkText, string objectType = null, string areaIdentifier = null)
         {
-            var link = Browser.Link(linkText);
-            link.Click();
+			ISearchContext area = null;
+			if (!string.IsNullOrEmpty(areaIdentifier))
+			{
+				area = Browser.TryFindElementById(areaIdentifier);
+				if (area == null)
+					area = GetElementByName(areaIdentifier);
+			}
+			else
+			{
+				area = Browser;
+			}
 
+			var link = area.Link(linkText);
+			link.Click();
 
 			return GetPageByCurrentUrlIfNoAlert();
         }
@@ -263,7 +259,7 @@ namespace Medidata.RBT
         /// </summary>
 		public virtual IPage NavigateToSelf(NameValueCollection parameters = null)
         {
-            string contextSessionIdstring = TestContext.GetContextValue<string>("UrlSessionID");
+            string contextSessionIdstring = Storage.GetScenarioLevelValue<string>("UrlSessionID");
             string url = string.Format("{0}{1}{2}", BaseURL, string.IsNullOrEmpty(contextSessionIdstring) ? string.Empty : contextSessionIdstring + "/", URL);
             string querystring = string.Empty;
 
@@ -292,7 +288,7 @@ namespace Medidata.RBT
             {
                 int sessionidstart = modifiedUrl.IndexOf("(S(");
                 string sessionIdstring = modifiedUrl.Substring(sessionidstart, (modifiedUrl.IndexOf("/", sessionidstart) - sessionidstart));
-                TestContext.SetContextValue("UrlSessionID", sessionIdstring);
+                Storage.SetScenarioLevelValue("UrlSessionID", sessionIdstring);
             }
 
             Browser = TestContext.Browser;
@@ -309,43 +305,16 @@ namespace Medidata.RBT
 			throw new Exception("Don't know how to get text from "+identifier);
 		}
 
-        #endregion
-
-
-
-
-		/// <summary>
-		/// This method is used by many default implmentation of IPage methods, where a friendly name is used to find a IWebElement
-		/// In many case you will only need to orverride this method to provide mappings on your specific page object in order for a step to work.
-		/// <example>
-		/// 
-		///public override IWebElement GetElementByName(string name)
-		///{
-		///    if (name == "Active Projects")
-		///        return Browser.Table("_ctl0_Content_ProjectGrid");
-		///    if (name == "Inactive Projects")
-		///        return Browser.Table("_ctl0_Content_InactiveProjectGrid");
-		///
-		///    return base.GetElementByName(name);
-		///}
-		/// 
-		/// </example>
-		/// </summary>
-		public virtual IWebElement GetElementByName(string identifier, string areaIdentifier = null, string listItem = null)
+		public virtual IWebElement GetElementByName(string identifier, string areaIdentifier = null, string listItemIdentifier = null)
 		{
-			throw new Exception(string.Format("This page ({0}) does not provide information about element: {1}",this.GetType().Name, identifier ));
+			IWebElement element = Browser.TryFindElementBy(By.XPath("//input[@value='" + identifier + "']"));
+			if (element != null)
+				return element;
+			throw new Exception(string.Format("This page ({0}) does not provide information about element: {1}", this.GetType().Name, identifier));
 		}
 
-        public virtual IWebElement CanSeeControl(string identifier)
-        {
-            IWebElement element = Browser.TryFindElementBy(By.XPath("//input[@value='" + identifier + "']"));
-            if (element == null)
-                element = Browser.TryFindElementById(identifier);
-            if (element == null)
-                element = GetElementByName(identifier);
+        #endregion
 
-            return element;
-        }
 
         /// <summary>
         /// See IPage interface
@@ -366,28 +335,17 @@ namespace Medidata.RBT
         }
 
 
-        public void FocusOnElementById(string id)
+        public void SetFocusElement(IWebElement ele)
         {
             this.Browser
-                .TryExecuteJavascript("document.getElementById('" + id + "').focus()");
+                .TryExecuteJavascript("document.getElementById('" + ele.GetAttribute("ID") + "').focus()");
         }
 
-        public long GetPageOffsetX()
-        {
-            IJavaScriptExecutor js = Browser as IJavaScriptExecutor;
-            return (long)js.ExecuteScript("return window.pageXOffset");
-        }
+		public IWebElement GetFocusElement()
+		{
+			return Browser.SwitchTo().ActiveElement();
+		}
 
-        public long GetPageOffsetY()
-        {
-            IJavaScriptExecutor js = Browser as IJavaScriptExecutor;
-            return (long)js.ExecuteScript("return window.pageYOffset");
-        }
-
-        public IWebElement GetCurrentFocusedElement()
-        {
-            return Browser.SwitchTo().ActiveElement();
-        }
 
 	}
 }

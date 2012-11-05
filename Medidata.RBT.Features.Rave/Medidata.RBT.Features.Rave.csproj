@@ -57,8 +57,9 @@
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Xml.Linq" />
-    <Reference Include="TechTalk.SpecFlow">
-      <HintPath>..\ExternalDlls\TechTalk.SpecFlow.dll</HintPath>
+    <Reference Include="TechTalk.SpecFlow, Version=1.9.0.77, Culture=neutral, PublicKeyToken=0778194805d6db41, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\SpecFlow.1.9.0\lib\net35\TechTalk.SpecFlow.dll</HintPath>
     </Reference>
     <Reference Include="ThoughtWorks.Selenium.Core">
       <HintPath>..\ExternalDlls\ThoughtWorks.Selenium.Core.dll</HintPath>
@@ -100,6 +101,11 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>US17943.feature</DependentUpon>
+    </Compile>
+    <Compile Include="Features\Configuration\US13011_DT13976_Upload.feature.cs">
+      <DependentUpon>US13011_DT13976_Upload.feature</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
     </Compile>
     <Compile Include="Features\EDC\564QueryRefiringLogging8_M.feature.cs">
       <AutoGen>True</AutoGen>
@@ -409,6 +415,7 @@
     <None Include="App.config">
       <SubType>Designer</SubType>
     </None>
+    <None Include="App.config.template" />
     <None Include="Features\AM2\US12996_AM2_DT13997StandardField.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>US12996_AM2_DT13997StandardField.feature.cs</LastGenOutput>
@@ -428,6 +435,10 @@
     <None Include="Features\Architect\US17943.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>US17943.feature.cs</LastGenOutput>
+    </None>
+    <None Include="Features\Configuration\US13011_DT13976_Upload.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>US13011_DT13976_Upload.feature.cs</LastGenOutput>
     </None>
     <None Include="Features\EDC\564QueryRefiringLogging8_M.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
@@ -633,15 +644,15 @@
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>DT14168.feature.cs</LastGenOutput>
     </None>
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="TableModels\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PreBuildEvent>echo Starting to generate SpecFlow unit tests
-SpecFlow generateAll "$(ProjectPath)"  /force /verbose
-echo Finished generating SpecFlow unit tests</PreBuildEvent>
+    <PreBuildEvent>
+    </PreBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

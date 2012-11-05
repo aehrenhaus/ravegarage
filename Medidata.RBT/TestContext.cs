@@ -18,6 +18,44 @@ using Medidata.RBT.SharedObjects;
 
 namespace Medidata.RBT
 {
+	public static class Storage
+	{
+		//values inside FeatureContext.Current is not really the full feature, but rather a scenario.
+		//So we use this static value to store varible accross the whole feature.
+		//[ThreadStatic]
+		public static Dictionary<string, object> FeatureValues = new Dictionary<string, object>();
+		public static Dictionary<string, object> ScenarioValues = new Dictionary<string, object>();
+
+		public static T GetFeatureLevelValue<T>(string key)
+		{
+			if (!Storage.FeatureValues.ContainsKey(key))
+			{
+				return default(T);
+			}
+			return (T)Storage.FeatureValues[key];
+		}
+
+		public static void SetFeatureLevelValue<T>(string key, T val)
+		{
+			Storage.FeatureValues[key] = val;
+		}
+
+
+		public static T GetScenarioLevelValue<T>(string key)
+		{
+			if (!Storage.ScenarioValues.ContainsKey(key))
+			{
+				return default(T);
+			}
+			return (T)Storage.ScenarioValues[key];
+		}
+
+		public static void SetScenarioLevelValue<T>(string key, T val)
+		{
+			Storage.ScenarioValues[key] = val;
+		}
+	}
+
 	[Binding]
 	public class TestContext
 	{
@@ -105,16 +143,10 @@ namespace Medidata.RBT
 		#endregion
 
 		public static IPage CurrentPage
-        {
-            get
-            {
-				return GetContextValue<IPage>("PageBase");
-            }
-            set
-            {
-				ScenarioContext.Current["PageBase"] = value;
-            }
-        }
+		{
+			get;
+			set;
+		}
 
 		public static string CurrentUser
 		{
@@ -131,15 +163,27 @@ namespace Medidata.RBT
         /// <summary>
         /// Mapping of the name provided in the feature file to the FeatureObject object created by the FeatureObject constructor.
         /// </summary>
-        public static Dictionary<string, IFeatureObject> FeatureObjects
+		public static Dictionary<string, ISeedableObject> SeedableObjects
         {
             get
             {
-                return Medidata.RBT.TestContext.GetFeatureContextValue<Dictionary<string, IFeatureObject>>("FeatureObjects");
+				var objs = RBTConfiguration.Default.SeedOncePerFeature ?
+					Storage.GetFeatureLevelValue<Dictionary<string, ISeedableObject>>("SeedableObjects") :
+					Storage.GetScenarioLevelValue<Dictionary<string, ISeedableObject>>("SeedableObjects");
+
+				if (objs == null)
+				{
+					objs = new Dictionary<string, ISeedableObject>();
+					SeedableObjects = objs;
+				}
+				return objs;
             }
             set
             {
-                Medidata.RBT.TestContext.SetFeatureContextValue("FeatureObjects", value);
+				if (RBTConfiguration.Default.SeedOncePerFeature)
+					Storage.SetFeatureLevelValue("SeedableObjects", value);
+				else
+					Storage.SetScenarioLevelValue("SeedableObjects", value);
             }
         }
 
@@ -148,35 +192,37 @@ namespace Medidata.RBT
         /// Or, call that object's constructor to make a new one and add that to the FeatureObjects dictionary.
         /// </summary>
         /// <typeparam name="T">A feature object type</typeparam>
-        /// <param name="featureName">The feature name of the object, the name the object is referred to as in the feature file.</param>
+        /// <param name="originalName">The feature name of the object, the name the object is referred to as in the feature file.</param>
         /// <param name="constructor">The delegate of the call to the constructor</param>
         /// <returns></returns>
-        public static T GetExistingFeatureObjectOrMakeNew<T>(string featureName, Func<T> constructor) where T : IFeatureObject
+		public static T GetExistingFeatureObjectOrMakeNew<T>(string originalName, Func<T> constructor) where T : ISeedableObject
         {
-            IFeatureObject fo;
-            FeatureObjects.TryGetValue(featureName, out fo);
-            if (fo != null)
-                return (T)fo;
+			ISeedableObject seedable;
+			SeedableObjects.TryGetValue(originalName, out seedable);
 
-	        T featureObject = constructor();
+            if (seedable != null)
+                return (T)seedable;
 
-	        if (featureObject is ISeedableObject)
-		        (featureObject as ISeedableObject).Seed();
+			seedable = constructor();
 
-	        FeatureObjects.Add(featureName, featureObject);
+			seedable.Seed();
 
-	        return featureObject;
+			//add to dictionary using both original name and unique name.
+			SeedableObjects[originalName] = seedable;
+			SeedableObjects[seedable.UniqueName] = seedable;
+
+			return (T)seedable;
         }
 
 		public static DateTime? CurrentScenarioStartTime
 		{
 			get
 			{
-				return GetContextValue<DateTime?>("CurrentScenarioStartTime");
+				return Storage.GetScenarioLevelValue<DateTime?>("CurrentScenarioStartTime");
 			}
 			set
 			{
-				ScenarioContext.Current["CurrentScenarioStartTime"] = value;
+				Storage.SetScenarioLevelValue("CurrentScenarioStartTime", value);
 			}
 		}
 
@@ -184,11 +230,11 @@ namespace Medidata.RBT
         {
             get
             {
-                return GetContextValue<string>("ScenarioText");
+				return Storage.GetFeatureLevelValue<string>("ScenarioText");
             }
             set
             {
-                ScenarioContext.Current["ScenarioText"] = value;
+               Storage.SetFeatureLevelValue("ScenarioText", value);
             }
         }
 
@@ -201,7 +247,7 @@ namespace Medidata.RBT
 		/// This is a convention, we use the tag name as a identifier of  a scenario
 		/// 
 		/// </summary>
-		public static string ScenarioUniqueName { get; private set; }
+		public static string ScenarioName { get; private set; }
 
 		public static NameValueCollection Vars
 		{
@@ -220,33 +266,7 @@ namespace Medidata.RBT
 			}
 		}
 
-        public static T GetFeatureContextValue<T>(string key)
-        {
-            if (!FeatureContext.Current.ContainsKey(key))
-            {
-                return default(T);
-            }
-            return (T)FeatureContext.Current[key];
-        }
 
-        public static void SetFeatureContextValue<T>(string key, T val)
-        {
-            FeatureContext.Current[key] = val;
-        }
-
-		public static T GetContextValue<T>(string key)
-		{
-			if (!ScenarioContext.Current.ContainsKey(key))
-			{
-				return default(T);
-			}
-			return (T)ScenarioContext.Current[key];
-		}
-		
-		public  static void SetContextValue<T>(string key, T val)
-		{
-			ScenarioContext.Current[key] = val;
-		}
 		
 		/// <summary>
 		/// After whole test
@@ -295,7 +315,8 @@ namespace Medidata.RBT
 		[BeforeFeature()]
 		public static void BeforeFeature()
 		{
-            Medidata.RBT.TestContext.SetFeatureContextValue<Dictionary<string, IFeatureObject>>("FeatureObjects", new Dictionary<string, IFeatureObject>());
+			Storage.FeatureValues.Clear();
+            
 			CurrentFeatureStartTime = DateTime.Now;
             DraftCounter.ResetCounter();
 		}
@@ -317,6 +338,8 @@ namespace Medidata.RBT
 		[BeforeScenario()]
 		public void BeforeScenario()
 		{
+			Storage.ScenarioValues.Clear();
+
 			//start time
 			CurrentScenarioStartTime = DateTime.Now;
 
@@ -324,9 +347,9 @@ namespace Medidata.RBT
 			ScreenshotIndex = 1;
 
 			//set scenario name with tag that starts with PB_
-			ScenarioUniqueName =  ScenarioContext.Current.ScenarioInfo.Tags.FirstOrDefault(x=>x.StartsWith(RBTConfiguration.Default.ScenarioNamePrefix));
-			if (ScenarioUniqueName == null)
-				ScenarioUniqueName = "Scenario_" + DateTime.Now.Ticks.ToString() ;
+			ScenarioName =  ScenarioContext.Current.ScenarioInfo.Tags.FirstOrDefault(x=>x.StartsWith(RBTConfiguration.Default.ScenarioNamePrefix));
+			if (ScenarioName == null)
+				ScenarioName = "Scenario_" + DateTime.Now.Ticks.ToString() ;
 
 			//restore snapshot
 			//DbHelper.RestoreSnapshot();
@@ -386,7 +409,7 @@ namespace Medidata.RBT
 					string resultPath = GetTestResultPath();
 
 					var fileName = ScreenshotIndex.ToString();
-					fileName = ScenarioUniqueName+"_"+fileName+ ".jpg";
+					fileName = ScenarioName+"_"+fileName+ ".jpg";
 
 					Console.WriteLine("img->"+fileName);
 					Console.WriteLine( "->"+Browser.Url);

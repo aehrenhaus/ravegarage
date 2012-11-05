@@ -42,9 +42,8 @@ namespace Medidata.RBT.PageObjects.Rave
             IWebElement studyLink = this.FindInPaginatedList("", () =>
             {
                 //TODO :    Remove the coalescing op when seeding considderation is up to date for all feature files. 
-                //          Use study.UniqueName as the text to search for.
-                return TestContext.Browser.TryFindElementByLinkText(study.Name)
-                    ?? TestContext.Browser.TryFindElementByLinkText(study.UniqueName);
+                //          Use study.Name as the text to search for.
+                return TestContext.Browser.TryFindElementByLinkText(study.UniqueName);
             }, out foundOnPage);
 
             // don't click null links.  It may be null not just because the project is not found, 
@@ -80,9 +79,8 @@ namespace Medidata.RBT.PageObjects.Rave
             //fix this later, but comment for now
 
             //TODO :    Remove the coalescing op when seeding considderation is up to date for all feature files. 
-            //          Use site.UniqueName as the text to search for.
-            var siteLink = TestContext.Browser.TryFindElementByLinkText(site.Name)
-                ?? TestContext.Browser.TryFindElementByLinkText(site.UniqueName);
+            //          Use site.Name as the text to search for.
+            var siteLink = TestContext.Browser.TryFindElementByLinkText(site.UniqueName);
 
 			siteLink.Click();
 

@@ -31,9 +31,7 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
         /// <param name="siteGroupName">The feature defined name of the Site Group</param>
         public SiteGroup(string siteGroupName)
         {
-
-            UID = Guid.NewGuid();
-            Name = siteGroupName;
+            UniqueName = siteGroupName;
             Number = Guid.NewGuid().ToString();
         }
 
@@ -42,7 +40,7 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
         /// </summary>
 		protected override void MakeUnique()
         {
-            UniqueName = Name + TID;
+            UniqueName = UniqueName + TID;
         }
 
         /// <summary>

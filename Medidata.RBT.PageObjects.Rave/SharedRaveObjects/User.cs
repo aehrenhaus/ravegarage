@@ -21,9 +21,9 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
     ///</summary>
     public class User : BaseRaveSeedableObject, IRemoveableObject
     {
-        public string FileName { get; set; }
-        public string ActivationCode { get; set; }
-        public string UniquePin { get; set; }
+        private string FileName { get; set; }
+        private string ActivationCode { get; set; }
+        private string UniquePin { get; set; }
         public List<StudyAssignment> StudyAssignments { get; set; }
         public List<ModuleAssignment> ModuleAssignments { get; set; }
         public List<ReportAssignment> ReportAssignments { get; set; }
@@ -37,17 +37,13 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
         /// </summary>
         /// <param name="userUploadName">The feature defined name of the user</param>
         /// <param name="seed">Bool determining whether you want to seed the object if it is not in the FeatureObjects dictionary</param>
-       public User(string userUploadName)
-       {
-            if (!UID.HasValue)
-            {
-                UID = Guid.NewGuid();
-                Name = userUploadName;
-            }
-
+		public User(string userUploadName)
+        {
+	        UniqueName = userUploadName;
+	        Password = RaveConfiguration.Default.DefaultUserPassword;
         }
 
-        /// <summary>
+	    /// <summary>
         /// sets lines per page number for a given user.  
         /// </summary>
         /// <param name="linesPerPage">lines per page setting</param>
@@ -124,42 +120,33 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
 		protected override void MakeUnique()
         {
 
-			if (Name.StartsWith("SUPER USER"))
+			if (UniqueName.StartsWith("SUPER USER"))
 				FileName = "SUPERUSER.xml";
 			else
-				FileName = Name + ".xml";
+				FileName = UniqueName + ".xml";
 
 			FileLocation = RBTConfiguration.Default.UploadPath + @"\Users\" + FileName;
-       
 
-            XmlDocument xmlDoc = new XmlDocument();
-            xmlDoc.Load(FileLocation);
-            List<XmlNode> worksheets = new List<XmlNode>(xmlDoc.GetElementsByTagName("Worksheet").Cast<XmlNode>());
-            XmlNode userWorksheet = worksheets.FirstOrDefault(x => x.Attributes["ss:Name"].Value.ToLower() == "users");
-            XmlNode table = (userWorksheet.ChildNodes.Cast<XmlNode>()).Where(x => x.Name.ToLower() == "table").FirstOrDefault();
-            List<XmlNode> rows = (table.ChildNodes.Cast<XmlNode>()).Where(x => x.Name.ToLower() == "row").ToList();
-            List<XmlNode> firstRowCells = new List<XmlNode>(rows[0].ChildNodes.Cast<XmlNode>());
-            List<XmlNode> secondRowCells = new List<XmlNode>(rows[1].ChildNodes.Cast<XmlNode>());
+			using (var excel = new ExcelWorkbook(FileLocation))
+			{
+				var usersTable = excel.OpenTableForEdit("Users");
+	
+				//make login unique
+				var oldUserName = usersTable[1, "Login"];
+				UniqueName = oldUserName + TID;
+				usersTable[1, "Login"] = UniqueName;
 
-            //Make the user name unique
-            int loginCell = firstRowCells.FindIndex(x => x.InnerText.ToLower() == "login");
-            string oldUserName = secondRowCells[loginCell].ChildNodes[0].InnerText;
-            string uniqueUserName = oldUserName + TID;
-            secondRowCells[loginCell].ChildNodes[0].InnerText = uniqueUserName;
-            UniqueName = uniqueUserName;
+				//make pin unique
+				var oldPin = usersTable[1, "PIN"];
+				UniquePin = oldPin + TID;
+				usersTable[1, "PIN"] = UniquePin;
 
-            //Make the pin unique
-            int pinTitleCell = firstRowCells.FindIndex(x => x.InnerText.ToLower() == "pin") + 1; //Add 1, because the index in the XML is 1 indexed, not 0 indexed
-            List<XmlNode> secondRowCellsWithIndexAttr = secondRowCells.Where(x => x.Attributes["ss:Index"] != null).ToList();
-            string oldPin = secondRowCellsWithIndexAttr.FirstOrDefault(x => x.Attributes["ss:Index"].Value == pinTitleCell.ToString()).ChildNodes[0].InnerText;
-            int secondRowPinIndex = secondRowCells.FindIndex(x => x.ChildNodes[0].InnerText == oldPin);
-            UniquePin = oldPin + TID;
-            secondRowCells[secondRowPinIndex].ChildNodes[0].InnerText = UniquePin;
 
-            //Create a unique version of the file to upload
-            UniqueFileLocation = MakeFileLocationUnique(FileLocation);
+				//Create a unique version of the file to upload
+				UniqueFileLocation = MakeFileLocationUnique(FileLocation);
 
-            xmlDoc.Save(UniqueFileLocation);
+				excel.SaveAs(UniqueFileLocation);
+			}
         }
 
         /// <summary>
@@ -173,16 +160,16 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
         /// <summary>
         /// Check if there is a study assignment for this user
         /// </summary>
-        /// <param name="roleUID">The UID of the role assigned</param>
+        /// <param name="roleName">The UID of the role assigned</param>
         /// <param name="projectUID">The UID of the project assigned</param>
-        /// <param name="siteUID">The UID of the site assigned</param>
+        /// <param name="siteName">The UID of the site assigned</param>
         /// <returns></returns>
-        public bool StudyAssignmentExists(Guid roleUID, Guid projectUID, Guid siteUID)
+		public bool StudyAssignmentExists(string roleName, string projectName, string siteName)
         {
             if (StudyAssignments != null)
             {
                 foreach (StudyAssignment sa in StudyAssignments)
-                    if (sa.ProjectUID == projectUID && sa.RoleUID == roleUID && sa.SiteUID == siteUID)
+					if (sa.ProjectName == projectName && sa.RoleName == roleName && sa.SiteName == siteName)
                         return true;
             }
             return false;
@@ -217,5 +204,6 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
             else
                 return false;
         }
+
     }
 }

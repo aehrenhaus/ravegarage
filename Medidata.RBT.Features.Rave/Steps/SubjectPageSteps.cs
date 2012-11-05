@@ -20,7 +20,7 @@ namespace Medidata.RBT.Features.Rave
         {
             bool result = false;
 
-            IWebElement element = CurrentPage.As<SubjectPage>().CanSeeControl("_ctl0_Content_SubjectAddEvent_DisableMatrixHyperlink");
+            IWebElement element = Browser.FindElementById("_ctl0_Content_SubjectAddEvent_DisableMatrixHyperlink");
             if (element != null)
             {
                 result = true;
@@ -79,7 +79,7 @@ namespace Medidata.RBT.Features.Rave
                 isDisabled = true;
 
             bool result = false;
-            IWebElement element = CurrentPage.As<SubjectPage>().CanSeeControl(label);
+            IWebElement element = CurrentPage.As<SubjectPage>().GetElementByName(label);
 
             if (element != null && element.GetAttribute("disabled").ToLower() == isDisabled.ToString().ToLower())
                 result = true;
@@ -92,7 +92,7 @@ namespace Medidata.RBT.Features.Rave
         public void ICanNotSeeDropdownLabeled____(string label)
         {
             bool result = false;
-            IWebElement element = CurrentPage.As<SubjectPage>().CanSeeControl(label);
+            IWebElement element = CurrentPage.As<SubjectPage>().GetElementByName(label);
 
             if (element == null)
                 result = true;
@@ -104,7 +104,7 @@ namespace Medidata.RBT.Features.Rave
         public void ICanSeeToolTip____On____WithID____(string toolTip, string label)
         {
             bool result = false;
-            IWebElement element = CurrentPage.As<SubjectPage>().CanSeeControl(label);
+            IWebElement element = CurrentPage.As<SubjectPage>().GetElementByName(label);
 
             if (element != null && element.GetAttribute("title").Equals(toolTip))
                 result = true;
@@ -116,7 +116,7 @@ namespace Medidata.RBT.Features.Rave
         public void The____ButtonIsAvailable(string value)
         {
             bool result = false;
-            IWebElement element = CurrentPage.As<SubjectPage>().CanSeeControl(value);
+            IWebElement element = CurrentPage.As<SubjectPage>().GetElementByName(value);
 
             if (element != null)
             {
@@ -160,7 +160,7 @@ namespace Medidata.RBT.Features.Rave
         public void IClickRadiobuttonWithLabel____(string label)
         {
             bool result = false;
-            IWebElement element = CurrentPage.As<SubjectPage>().CanSeeControl(label);
+            IWebElement element = CurrentPage.As<SubjectPage>().GetElementByName(label);
 
             if (element != null)
             {

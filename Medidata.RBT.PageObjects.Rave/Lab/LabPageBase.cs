@@ -48,7 +48,7 @@ namespace Medidata.RBT.PageObjects.Rave
         public IWebElement FindLab(string labName, string type)
         {
             int foundOnPage;
-            Table dt = new Table("Type", "Name");
+			Table dt = new Table("Type", "Name");
             dt.AddRow(type, labName);
 
             IWebElement pdfTr = this.FindInPaginatedList("", () =>

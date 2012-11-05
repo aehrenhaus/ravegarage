@@ -56,15 +56,21 @@ namespace Medidata.RBT.Features.Rave.Steps.Seeding
         [StepDefinition(@"study ""([^""]*)"" is assigned to Site ""([^""]*)"" with study environment ""([^""]*)""")]
         public void Study____IsAssignedToSite____WithStudyEnvironment____(string studyName, string siteName, string studyEnvName)
         {
-            TestContext.CurrentPage = new SiteAdministrationHomePage().NavigateToSelf();
             Site site = TestContext.GetExistingFeatureObjectOrMakeNew(siteName, () => new Site(siteName));
-            if (site.StudyUIDs == null || !site.StudyUIDs.Contains(site.UID.Value))
+			Project project = TestContext.GetExistingFeatureObjectOrMakeNew(studyName, () => new Project(studyName));
+
+			if (!site.Studies.Contains(studyName))
             {
-                TestContext.CurrentPage = new SiteAdministrationHomePage().NavigateToSelf();
-                CurrentPage.As<SiteAdministrationHomePage>().SearchForSite(site.UniqueName);
-                CurrentPage.As<SiteAdministrationHomePage>().ClickSite(site.UniqueName);
-                Project project = TestContext.GetExistingFeatureObjectOrMakeNew(studyName, () => new Project(studyName));
-                CurrentPage.As<SiteAdministrationDetailsPage>().LinkStudyWithSite(site, project.UniqueName, studyEnvName);
+				site.Studies.Add(project.UniqueName);
+
+				
+				var page = new SiteAdministrationHomePage();
+				page.NavigateToSelf();
+				page.SearchForSite(site.UniqueName);
+				page.ClickSite(site.UniqueName);
+		
+                
+                CurrentPage.As<SiteAdministrationDetailsPage>().LinkStudyWithSite( project.UniqueName, studyEnvName);
             }
         }
 

@@ -6,6 +6,7 @@ using System.Threading;
 using System.Collections.Specialized;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Medidata.RBT.SeleniumExtension;
+using System.IO;
 
 namespace Medidata.RBT.Common.Steps
 {
@@ -153,28 +154,33 @@ namespace Medidata.RBT.Common.Steps
 		/// </summary>
 		/// <param name="timeValue"></param>
 		/// <param name="timeUnit"></param>
-		[StepDefinition(@"I wait for ([^""]*) ([^""]*)")]
-		public void IWaitFor____Of____(int timeValue, string timeUnit)
+		[StepDefinition(@"I wait for ([^""]*) seconds?")]
+		public void IWaitFor____Of____Seconds(int timeValue)
 		{
-			switch (timeUnit)
-			{
-				case "second":
-				case "seconds":
-					System.Threading.Thread.Sleep(timeValue * 1000);
-					break;
-				case "minute":
-				case "minutes":
-					System.Threading.Thread.Sleep(timeValue * 60000);
-					break;
-				case "hour":
-				case "hours":
-					System.Threading.Thread.Sleep(timeValue * 3600000);
-					break;
-				default:
-					throw new Exception("Not supported time unit: " + timeUnit);
-			}
+	
+			System.Threading.Thread.Sleep(timeValue * 1000);
+
 		}
 
+		[StepDefinition(@"I wait for ([^""]*) minutes?")]
+		public void IWaitFor____Of____Minutes(int timeValue)
+		{
+	
+			System.Threading.Thread.Sleep(timeValue * 60000);
+			
+		}
+
+
+		[StepDefinition(@"I click ""([^""]*)"" to upload ""([^""]*)"" file ""([^""]*)"" and wait until I see ""([^""]*)""")]
+		public void IClick____ToUpload____AndWaitUntilISee____(string buttonName, string uploadControlIdentifier, string fileName, string finishSignal)
+		{
+			var uploadControl = CurrentPage.GetElementByName(uploadControlIdentifier);
+			var fileInfo = new FileInfo(Path.Combine(RBTConfiguration.Default.UploadPath, fileName));
+			uploadControl.SendKeys(fileInfo.FullName);
+			CurrentPage.ClickButton(buttonName);
+
+			Browser.WaitForElement((b) => CurrentPage.GetElementByName(finishSignal), null, 60);
+		}
 
 	}
 

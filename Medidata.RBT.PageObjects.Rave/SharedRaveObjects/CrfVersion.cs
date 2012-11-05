@@ -35,12 +35,8 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
         /// <param name="crfVersionName">The feature defined name of this Crf Version</param>
         public CrfVersion(string draftName, string crfVersionName)
         {
-            if (!UID.HasValue)
-            {
-                UID = Guid.NewGuid();
-                Name = crfVersionName;
-
-            }
+                UniqueName = crfVersionName;
+				UniqueName = UniqueName+TID;
 			this.DraftName = draftName;
         }
 
@@ -53,7 +49,7 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
         {
             TestContext.CurrentPage.As<HomePage>().ClickLink("Architect");
             TestContext.CurrentPage.As<ArchitectPage>().ClickProject(UploadedDraft.Project.UniqueName);
-            TestContext.CurrentPage.As<ArchitectLibraryPage>().ClickDraft(UploadedDraft.Draft.Name);
+            TestContext.CurrentPage.As<ArchitectLibraryPage>().ClickDraft(UploadedDraft.Draft.UniqueName);
         }
 
         /// <summary>
@@ -65,12 +61,6 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
             new ArchitectPage().ClickProject(UploadedDraft.Project.UniqueName);
         }
 
-        /// <summary>
-        /// Make the UniqueName of this CRFVersion by appending a TID on to the end of Name
-        /// </summary>
-		protected override void MakeUnique()
-        {
-            UniqueName = Name + TID;
-        }
+		
     }
 }

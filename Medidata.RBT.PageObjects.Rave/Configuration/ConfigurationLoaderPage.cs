@@ -57,5 +57,16 @@ namespace Medidata.RBT.PageObjects.Rave.Configuration
                 "Did not complete in time(" + waitTime + "s)", waitTime
                 );
         }
+
+		public override IWebElement GetElementByName(string identifier, string areaIdentifier = null, string listItem = null)
+		{
+			if (identifier == "configureation settings")
+				return Browser.TryFindElementByPartialID("CtrlDraftFile");
+
+			if (identifier == "Save successful")
+				return Browser.TryFindElementBySpanLinktext("Save successful");
+
+			return base.GetElementByName(identifier, areaIdentifier, listItem);
+		}
     }
 }

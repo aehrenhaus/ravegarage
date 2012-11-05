@@ -16,17 +16,17 @@ namespace Medidata.RBT.PageObjects.Rave
 			PageFactory.InitElements(Browser, this);
 		}
 
-        public override IPage ClickLink(string linkName)
+        public override IPage ClickLink(string linkText, string objectType = null, string areaIdentifier = null)
         {
             try
             {
-                base.ClickLink(linkName);
+                base.ClickLink(linkText);
             }
             catch (Exception ex)
             {
-                base.ClickLink("L" + linkName); //Adding localization support
+                base.ClickLink("L" + linkText); //Adding localization support
             }
-            if (linkName == "Click here to continue..." || linkName == "LClick here to continue...") //Adding localization test support
+            if (linkText == "Click here to continue..." || linkText == "LClick here to continue...") //Adding localization test support
                 TestContext.CurrentPage = new HomePage();
             return TestContext.CurrentPage;
         }

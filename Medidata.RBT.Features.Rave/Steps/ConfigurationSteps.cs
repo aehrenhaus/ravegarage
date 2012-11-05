@@ -26,6 +26,9 @@ namespace Medidata.RBT.Features.Rave.Steps
         [StepDefinition(@"the ""([^""]*)"" spreadsheet is downloaded")]
         public void The____IsDownloaded(string fileName)
         {
+			TestContext.WaitForDownloadFinish();
+
+
             string path = RBTConfiguration.Default.DownloadPath + @"\";
             bool zipped = false;
             string fullPath = null;
@@ -151,8 +154,8 @@ namespace Medidata.RBT.Features.Rave.Steps
                 Site site = TestContext.GetExistingFeatureObjectOrMakeNew(configuration.Site, () => new Site(configuration.Site));
                 Project project = TestContext.GetExistingFeatureObjectOrMakeNew(configuration.Project, () => new Project(configuration.Project));
 
-                bool studyAssignmentExists = user.StudyAssignmentExists(role.UID.Value, project.UID.Value, site.UID.Value);
-                bool moduleAssignmentExists = user.ModuleAssignmentExists("All Projects", securityRole.Name);
+                bool studyAssignmentExists = user.StudyAssignmentExists(role.UniqueName, project.UniqueName, site.UniqueName);
+                bool moduleAssignmentExists = user.ModuleAssignmentExists("All Projects", securityRole.UniqueName);
                 if (!studyAssignmentExists || !moduleAssignmentExists)
                 {
                     string loggedInUserBeforeAssignments = TestContext.CurrentUser;
