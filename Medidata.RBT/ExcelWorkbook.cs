@@ -4,7 +4,6 @@ using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
 using Microsoft.Office.Interop.Excel;
-using System.Threading;
 
 namespace Medidata.RBT
 {
@@ -23,10 +22,12 @@ namespace Medidata.RBT
 	/// </summary>
 	public class ExcelTable
 	{
+		internal object[,] _rawTable;
+		private Dictionary<string, int> _columnPosMapping = new Dictionary<string, int>();
+
 		public string SheetName { get; private set; }
 		public string Range { get; private set; }
-		internal object[,] _rawTable;
-
+	
 		public ExcelTable(object[,] table,string sheetName, string range = null)
 		{
 			SheetName = sheetName;
@@ -61,13 +62,24 @@ namespace Medidata.RBT
 			get { return _rawTable.GetLength(1); }
 		}
 
-		Dictionary<string, int> _columnPosMapping = new Dictionary<string, int>();
+		public string[] ColumnNames
+		{
+			get
+			{
+				string[] names = new string[_columnPosMapping.Keys.Count];
+				 _columnPosMapping.Keys.CopyTo(names, 0);
+				 return names;
+			}
+		}
 
+	
 		//Row is 1 based 
 		public object this[int row, string column]
 		{
 			get
 			{
+				if (!_columnPosMapping.ContainsKey(column))
+					throw new Exception("No such column: "+column);
 				int columnNum = _columnPosMapping[column];
 				var value = _rawTable[row + 1, columnNum];
 				return value;
@@ -88,11 +100,11 @@ namespace Medidata.RBT
 
 	public class ExcelWorkbook : IDisposable
 	{
-		readonly Application _excelApp;
+		private readonly Application _excelApp;
 
-		readonly Workbook _workBook;
+		private readonly Workbook _workBook;
 
-		readonly List<ExcelTable> _openedTables = new List<ExcelTable>();
+		private readonly List<ExcelTable> _openedTables = new List<ExcelTable>();
 
 		public void Save()
 		{
@@ -119,11 +131,27 @@ namespace Medidata.RBT
 		/// Initialize a new Excel reader. Must be integrated
 		/// with an Excel interface object.
 		/// </summary>
-		public ExcelWorkbook(string thisFilePath)
+		public ExcelWorkbook(string thisFileName)
 		{
 			_excelApp = new Application();
-            _excelApp.Visible = false;
-			_workBook = _excelApp.Workbooks.Open(thisFilePath);
+
+			try
+			{
+				//
+				// This mess of code opens an Excel workbook. I don't know what all
+				// those arguments do, but they can be changed to influence behavior.
+				//
+				_workBook = _excelApp.Workbooks.Open(thisFileName,
+					Type.Missing, Type.Missing, Type.Missing, Type.Missing,
+					Type.Missing, Type.Missing, Type.Missing, Type.Missing,
+					Type.Missing, Type.Missing, Type.Missing, Type.Missing,
+					Type.Missing, Type.Missing);
+
+			}
+			catch
+			{
+				throw new Exception("Failed to open file as excel object: "+thisFileName);
+			}
 		}
 
 		private void SetWorksheetValueRange(string sheetName, object[,] newValue, string range = null)

@@ -72,10 +72,6 @@ namespace Medidata.RBT
 
 		public static RemoteWebDriver Browser { get; set; }
 
-        public static string SpreadsheetName { get; set; }
-
-        public static ExcelFileHelper ExcelFile { get; set; }
-
 		#region switch browser window
 
 		public static void SwitchBrowserWindow(string windowName)

@@ -135,18 +135,7 @@ namespace Medidata.RBT.Common.Steps
 			SpecialStringHelper.SetVar(varName, text);
 		}
 
-		[StepDefinition(@"I prepare to download")]
-		public void IPrepareToDownload()
-		{
-			TestContext.WatchForDownload();
-		}
 
-
-		[StepDefinition(@"I wait for download to finish")]
-		public void IWaitForDownloadToFinish()
-		{
-			TestContext.WaitForDownloadFinish();
-		}
 
 
 		/// <summary>
@@ -171,16 +160,6 @@ namespace Medidata.RBT.Common.Steps
 		}
 
 
-		[StepDefinition(@"I click ""([^""]*)"" to upload ""([^""]*)"" file ""([^""]*)"" and wait until I see ""([^""]*)""")]
-		public void IClick____ToUpload____AndWaitUntilISee____(string buttonName, string uploadControlIdentifier, string fileName, string finishSignal)
-		{
-			var uploadControl = CurrentPage.GetElementByName(uploadControlIdentifier);
-			var fileInfo = new FileInfo(Path.Combine(RBTConfiguration.Default.UploadPath, fileName));
-			uploadControl.SendKeys(fileInfo.FullName);
-			CurrentPage.ClickButton(buttonName);
-
-			Browser.WaitForElement((b) => CurrentPage.GetElementByName(finishSignal), null, 60);
-		}
 
 	}
 

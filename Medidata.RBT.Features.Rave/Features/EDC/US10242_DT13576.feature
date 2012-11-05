@@ -81,7 +81,7 @@ Scenario:@PB-DT13576-01 As an EDC user, when I have an edit check that sets a su
 	|Requiring Signature    |2			|
   And I take a screenshot
 
-  And I click "Sign and Save"
+  And I click button "Sign and Save"
   And I sign the form with username "SUPER USER 1"
   And I verify text "Signature attempt was successful" exists
 
@@ -168,7 +168,7 @@ Scenario:@PB-DT13576-02 As an EDC user, when I have an edit check associated to 
 	|Requiring Signature    |2			|
   And I take a screenshot
 
-  And I click "Sign and Save"
+  And I click button "Sign and Save"
   And I sign the form with username "SUPER USER 1"
   And I verify text "Signature attempt was successful" exists
 
@@ -237,7 +237,7 @@ Scenario:@PB-DT13576-03 As an EDC user, when I have an edit check that sets a su
 	|Requiring Signature    |2			|
   And I take a screenshot
   
-  And I click "Sign and Save"
+  And I click button "Sign and Save"
   And I sign the form with username "SUPER USER 1"
   And I verify text "Signature attempt was successful" exists
   
