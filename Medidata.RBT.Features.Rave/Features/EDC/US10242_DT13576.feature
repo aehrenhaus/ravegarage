@@ -31,9 +31,9 @@ Given following Project assignments exist
 #Note: Study "13576 Study B" is set up with an edit check "If Enrollment Date field in Enrollment form IsNotEmpty Or Stop Date field in AE form IsNotEmpty then set Subject to Requires Signature"
 
 @Release_2012.1.0
-@WIP
 @PB-DT13576-01
-Scenario: As an EDC user, when I have an edit check that sets a subject to require signature, and I sign, and I change data such that the subject no longer requires signature, then I should not see a task that requires signature for the subject in the task summary.
+@Validation
+Scenario:@PB-DT13576-01 As an EDC user, when I have an edit check that sets a subject to require signature, and I sign, and I change data such that the subject no longer requires signature, then I should not see a task that requires signature for the subject in the task summary.
 
   Given I login to Rave with user "SUPER USER 1"
   And I select Study "13576 Study A" and Site "Site_A"
@@ -120,9 +120,9 @@ Scenario: As an EDC user, when I have an edit check that sets a subject to requi
   And I take a screenshot
 
 @Release_2012.1.0
-@WIP
 @PB-DT13576-02
-Scenario: As an EDC user, when I have an edit check associated to data dictionary that sets a subject to require signature, and I sign, and I change data such that the subject no longer requires signature, then I should not see a task that requires signature for the subject in the task summary. 
+@Validation
+Scenario:@PB-DT13576-02 As an EDC user, when I have an edit check associated to data dictionary that sets a subject to require signature, and I sign, and I change data such that the subject no longer requires signature, then I should not see a task that requires signature for the subject in the task summary. 
 
   Given I login to Rave with user "SUPER USER 1"
   And I select Study "13576 Study A" and Site "Site_A"
@@ -206,9 +206,9 @@ Scenario: As an EDC user, when I have an edit check associated to data dictionar
   And I take a screenshot 
   
 @Release_2012.1.0
-@WIP
 @PB-DT13576-03
-Scenario: As an EDC user, when I have an edit check that sets a subject to require signature, and I sign, and I change data such that the subject no longer requires signature, and change back to data where the subject requires signature then I should see a task that requires signature for the subject in the task summary.
+@Validation
+Scenario:@PB-DT13576-03 As an EDC user, when I have an edit check that sets a subject to require signature, and I sign, and I change data such that the subject no longer requires signature, and change back to data where the subject requires signature then I should see a task that requires signature for the subject in the task summary.
 
   Given I login to Rave with user "SUPER USER 1"
   And I select Study "13576 Study A" and Site "Site_A"
@@ -289,9 +289,9 @@ Scenario: As an EDC user, when I have an edit check that sets a subject to requi
   And I take a screenshot
 
 @Release_2012.1.0
-@WIP
 @PB-DT13576-04
-Scenario: As an EDC user, when I have an edit check that sets a subject to require signature on two forms and I change data such that the subject no longer requires signature on first form, then I should see a task that requires signature on both forms for the subject in the task summary.
+@Validation
+Scenario:@PB-DT13576-04 As an EDC user, when I have an edit check that sets a subject to require signature on two forms and I change data such that the subject no longer requires signature on first form, then I should see a task that requires signature on both forms for the subject in the task summary.
 
   Given I login to Rave with user "SUPER USER 1"
   And I select Study "13576 Study B" and Site "Site_B"
