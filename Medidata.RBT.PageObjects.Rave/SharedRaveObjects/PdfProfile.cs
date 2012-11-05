@@ -17,45 +17,35 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
     /// <summary>
     /// 
     /// </summary>
-    public class PdfProfile : SeedableObject
+    public class PdfProfile : BaseRaveSeedableObject
     {
         /// <summary>
-        /// 
+        /// Contructor for pdf profile object
         /// </summary>
-        /// <param name="profileName"></param>
-        /// <param name="seed"></param>
-        public PdfProfile(string profileName, bool seed = false)
-            :base(profileName)
+        /// <param name="profileName">Name by which new pdf profile should be created</param>
+        public PdfProfile(string profileName)
         {
-            if (!UID.HasValue)
-            {
-                UID = Guid.NewGuid();
-                Name = profileName;
-
-                if (seed)
-                    Seed();
-            }
+            UniqueName = profileName;
         }
         /// <summary>
-        /// 
+        /// Navigate to the "PDF Settings" page
         /// </summary>
-        public override void NavigateToSeedPage()
+        protected override void NavigateToSeedPage()
         {
-            LoginPage.LoginUsingDefaultUserFromAnyPage();
             TestContext.CurrentPage.As<HomePage>().ClickLink("Configuration");
-            TestContext.CurrentPage.As<ConfigurationPage>().ClickLink("PDF Settings");
+            TestContext.CurrentPage.As<WorkflowConfigPage>().ClickLink("PDF Settings");
         }
         /// <summary>
         /// Create a unique name for the pdf profile by appending a TID.
         /// </summary>
-        public override void MakeUnique()
+        protected override void MakeUnique()
         {
-            UniqueName = Name + TID;
+            UniqueName = UniqueName + TID;
         }
         /// <summary>
-        /// 
+        /// Created the new pdf profile using the UniqueName
         /// </summary>
-        public override void CreateObject()
+        protected override void CreateObject()
         {
             TestContext.CurrentPage.As<PDFConfigProfilesPage>().CreateNewPdfProfile(UniqueName);
         }

@@ -7,7 +7,8 @@ using Medidata.RBT.SeleniumExtension;
 namespace Medidata.RBT.PageObjects.Rave.PDF
 {
     /// <summary>
-    /// 
+    /// PDFConfigProfilesPage object to manage Rave pdf configuration
+    /// related functionality
     /// </summary>
     class PDFConfigProfilesPage : RavePageBase
     {
