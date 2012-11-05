@@ -62,13 +62,6 @@ namespace Medidata.RBT
 		/// BaseURL combined with URL can form a full url that is valid
 		/// </summary>
         string BaseURL { get; }
-
-        /// <summary>
-        /// Returns a control in a given page if it is found.
-        /// </summary>
-        /// <param name="identifier">ID of web element</param>
-        IWebElement CanSeeControl(string identifier);
-
 	
 		/// <summary>
 		/// I click "Study" link "xxxStudy" in "header"
@@ -164,8 +157,9 @@ namespace Medidata.RBT
 
 
 		/// <summary>
-		/// 
+		/// This method is used by many default implmentation of IPage methods, where a friendly name is used to find a IWebElement
+		/// In many case you will only need to orverride this method to provide mappings on your specific page object in order for a step to work.
 		/// </summary>
-		IWebElement GetElementByName(string identifier, string areaIdentifier= null, string listItem = null);
+		IWebElement GetElementByName(string identifier, string areaIdentifier= null, string listItemIdentifier = null);
 	}
 }

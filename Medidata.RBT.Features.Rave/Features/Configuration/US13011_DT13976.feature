@@ -1,6 +1,6 @@
 ﻿# Configuration Loader specification should include Coder Configuration.
-@ignore
-Feature: US13011_DT13976
+
+Feature: US13011_DT13976_1
 	When the Configuration Settings are downloaded, they should include Coder Configuration details.
 	As a Rave Administrator
 	When I am on the Configuration Loader page
@@ -96,10 +96,10 @@ Scenario: @PB_US11101_03 As a Data Manager, when I am on the Configuration Loade
 
 	And I navigate to "Configuration"
 	When I navigate to "Other Settings"
-	Then I should not see link "Coder Configuration"
 
+	Then I verify link "Coder Configuration" does not exist
 	And I select link "Configuration Loader"
-	And I select "Get File"
+	And I click button "Get File"
 	#When the Core Configuration specification is downloaded
 	And I open the Core Configuration specification
 	Then I do not see Coder Configuration tab

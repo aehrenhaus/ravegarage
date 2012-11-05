@@ -305,43 +305,16 @@ namespace Medidata.RBT
 			throw new Exception("Don't know how to get text from "+identifier);
 		}
 
-        #endregion
-
-
-
-
-		/// <summary>
-		/// This method is used by many default implmentation of IPage methods, where a friendly name is used to find a IWebElement
-		/// In many case you will only need to orverride this method to provide mappings on your specific page object in order for a step to work.
-		/// <example>
-		/// 
-		///public override IWebElement GetElementByName(string name)
-		///{
-		///    if (name == "Active Projects")
-		///        return Browser.Table("_ctl0_Content_ProjectGrid");
-		///    if (name == "Inactive Projects")
-		///        return Browser.Table("_ctl0_Content_InactiveProjectGrid");
-		///
-		///    return base.GetElementByName(name);
-		///}
-		/// 
-		/// </example>
-		/// </summary>
-		public virtual IWebElement GetElementByName(string identifier, string areaIdentifier = null, string listItem = null)
+		public virtual IWebElement GetElementByName(string identifier, string areaIdentifier = null, string listItemIdentifier = null)
 		{
-			throw new Exception(string.Format("This page ({0}) does not provide information about element: {1}",this.GetType().Name, identifier ));
+			IWebElement element = Browser.TryFindElementBy(By.XPath("//input[@value='" + identifier + "']"));
+			if (element != null)
+				return element;
+			throw new Exception(string.Format("This page ({0}) does not provide information about element: {1}", this.GetType().Name, identifier));
 		}
 
-        public virtual IWebElement CanSeeControl(string identifier)
-        {
-            IWebElement element = Browser.TryFindElementBy(By.XPath("//input[@value='" + identifier + "']"));
-            if (element == null)
-                element = Browser.TryFindElementById(identifier);
-            if (element == null)
-                element = GetElementByName(identifier);
+        #endregion
 
-            return element;
-        }
 
         /// <summary>
         /// See IPage interface

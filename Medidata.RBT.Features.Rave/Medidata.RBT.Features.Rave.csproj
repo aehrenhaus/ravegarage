@@ -102,6 +102,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>US17943.feature</DependentUpon>
     </Compile>
+    <Compile Include="Features\Configuration\US13011_DT13976_Upload.feature.cs">
+      <DependentUpon>US13011_DT13976_Upload.feature</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Include="Features\EDC\564QueryRefiringLogging8_M.feature.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -430,6 +435,10 @@
     <None Include="Features\Architect\US17943.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>US17943.feature.cs</LastGenOutput>
+    </None>
+    <None Include="Features\Configuration\US13011_DT13976_Upload.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>US13011_DT13976_Upload.feature.cs</LastGenOutput>
     </None>
     <None Include="Features\EDC\564QueryRefiringLogging8_M.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>

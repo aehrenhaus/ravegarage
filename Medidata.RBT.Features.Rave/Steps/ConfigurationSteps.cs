@@ -26,6 +26,9 @@ namespace Medidata.RBT.Features.Rave.Steps
         [StepDefinition(@"the ""([^""]*)"" spreadsheet is downloaded")]
         public void The____IsDownloaded(string fileName)
         {
+			TestContext.WaitForDownloadFinish();
+
+
             string path = RBTConfiguration.Default.DownloadPath + @"\";
             bool zipped = false;
             string fullPath = null;

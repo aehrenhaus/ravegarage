@@ -123,7 +123,7 @@ namespace Medidata.RBT.PageObjects.Rave
                     break;
                 //Add additional cases here
                 default:
-                    result = base.CanSeeControl(identifier);
+                    result = GetElementByName(identifier);
                     break;
             }
 
@@ -144,7 +144,7 @@ namespace Medidata.RBT.PageObjects.Rave
 
         public IPage ClickAuditOnFormLevel()
         {
-            IWebElement element = CanSeeControl("_ctl0_Content_CRFRenderer_header_SG_DataStatusHyperlink");
+            IWebElement element = Browser.TryFindElementById("_ctl0_Content_CRFRenderer_header_SG_DataStatusHyperlink");
             if (element != null)
                 element.Click();
 
