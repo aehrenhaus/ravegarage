@@ -1,6 +1,5 @@
 ﻿# When a user selects  Dynamic Allocation Randomization Block algorithm , subject assignment satisfies a specified allocation and ratio is random for all blocks.
 
-@ignore
 Feature: US18812
 	When user selects Dynamic Allocation Randomization Block algorithm
 	Then subject assignment satisfies a specified allocation ratio
@@ -9,7 +8,6 @@ Feature: US18812
 Background:
 	#Given I am logged in to Rave with username "defuser" and password "password"
 	Given xml draft "US18812_SJ.xml" is Uploaded with Environment name "Dev"
-
 	Given Site "Site 1" with Site Group "Asia" exists
 	Given Site "Site 2" with Site Group "Europe" exists
 	Given Site "Site 3" with Site Group "World" exists
@@ -122,10 +120,9 @@ Background:
 @PB_US18812_01
 @Draft
 
-Scenario: @PB_US18812_01 Enroll 50 subjects in a study to verify that TSDV has randomized the subjects in non sequential order when the subjects are included in TSDV using the Targeted SDV Subject Include report in Study level.
+Scenario: @PB_US18812_01 Enroll 50 subjects in a study to verify that TSDV has randomized the subjects in non sequential order when the subjects are included in TSDV using the Targeted SDV Subject Include report in Study level, Site group level and Site level.
 	#When I select Study "US18812_SJ" and Site "Site 1"
 	When I login to Rave with user "SUPER USER 1"
-	And I select link "Home"
 	And I navigate to "Reporter"
 	And I select Report "Targeted SDV Configuration"
 	And I set report parameter "Study" with table
@@ -181,8 +178,7 @@ Scenario: @PB_US18812_01 Enroll 50 subjects in a study to verify that TSDV has r
 		| Name        | Environment |
 		| US18812_SJ | Dev         |
 	And I click button "Submit Report"
-	And I switch to "Targeted SDV Subject Override" window
-    And I filter by site "Site 1" 
+	And I switch to "Targeted SDV Subject Override" window 
 	Then I verify that Tiers in subject override table are not in the following order
 		| Tier Name         | Row |
 		| All Forms         | 1   |
@@ -235,14 +231,38 @@ Scenario: @PB_US18812_01 Enroll 50 subjects in a study to verify that TSDV has r
 		| Custom Tier 5     | 48  |
 		| Custom Tier 6     | 49  |
 		| Custom Tier 7     | 50  |
-
 	And I verify there is no exact tier match between rows
 		| Row 1 | Row 2 |
 		| 11    | 21    |
 		| 12    | 22    |
 		| 13    | 23    |
 		| 14    | 24    |
-
+		| 15    | 25    |
+		| 16    | 26    |
+		| 17    | 27    |
+		| 18    | 28    |
+		| 19    | 29    |
+		| 20    | 30    |
+		| 21    | 31    |
+		| 22    | 32    |
+		| 23    | 33    |
+		| 24    | 34    |
+		| 25    | 35    |
+		| 26    | 36    |
+		| 27    | 37    |
+		| 28    | 38    |
+		| 29    | 39    |
+		| 30    | 40    |
+		| 31    | 41    |
+		| 32    | 42    |
+		| 33    | 43    |
+		| 34    | 44    |
+		| 35    | 45    |
+		| 36    | 46    |
+		| 37    | 47    |
+		| 38    | 48    |
+		| 39    | 49    |
+		| 40    | 50    |
 	And I switch to "Reports" window
 	And I select link "Home"
 	And I navigate to "Reporter"
@@ -253,23 +273,6 @@ Scenario: @PB_US18812_01 Enroll 50 subjects in a study to verify that TSDV has r
 	And I click button "Submit Report"
 	And I switch to "Targeted SDV Study Plan" window
 	And I inactivate the plan
-
-@release_2012.1.0 
-@PB_US18812_02 
-@Draft
-
-
-Scenario: @PB_US18812_02 Enroll 50 subjects in a study to verify that TSDV has randomized the subjects in non sequential order when the subjects are included in TSDV using the Targeted SDV Subject Include report in World Site group level.
-	#When I select Study "US18812_SJ (Dev)" and Site "Site 2"
-	When I login to Rave with user "SUPER USER 1"
-	And I select link "Home"
-	And I navigate to "Reporter"
-	And I select Report "Targeted SDV Configuration"
-	And I set report parameter "Study" with table
-		| Name        | Environment |
-		| US18812_SJ | Dev         |
-	And I click button "Submit Report"
-	And I switch to "Targeted SDV Study Plan" window
 	And I select link "World"
 	And I create a new block plan named "World Block Plan" with Data entry Role "SUPER ROLE 1"
 	And I delete the tier "Architect Defined" from plan
@@ -289,7 +292,7 @@ Scenario: @PB_US18812_02 Enroll 50 subjects in a study to verify that TSDV has r
 	And I activate the plan
 	And I switch to "Reports" window
 	And I select link "Home"
-	And I create 50 random Subjects with name "BBB" in Study "US18812_SJ (Dev)" in Site "Site 2"
+	And I create 50 random Subjects with name "BBC" in Study "US18812_SJ (Dev)" in Site "Site 2"
 	And I select link "Home"
 	And I navigate to "Reporter"
 	And I select Report "Targeted SDV Subject Management"
@@ -407,6 +410,72 @@ Scenario: @PB_US18812_02 Enroll 50 subjects in a study to verify that TSDV has r
 		| 12    | 22    |
 		| 13    | 23    |
 		| 14    | 24    |
+		| 15    | 25    |
+		| 16    | 26    |
+		| 17    | 27    |
+		| 18    | 28    |
+		| 19    | 29    |
+		| 20    | 30    |
+		| 21    | 31    |
+		| 22    | 32    |
+		| 23    | 33    |
+		| 24    | 34    |
+		| 25    | 35    |
+		| 26    | 36    |
+		| 27    | 37    |
+		| 28    | 38    |
+		| 29    | 39    |
+		| 30    | 40    |
+		| 31    | 41    |
+		| 32    | 42    |
+		| 33    | 43    |
+		| 34    | 44    |
+		| 35    | 45    |
+		| 36    | 46    |
+		| 37    | 47    |
+		| 38    | 48    |
+		| 39    | 49    |
+		| 40    | 50    |
+		| 41    | 51    |
+		| 42    | 52    |
+		| 43    | 53    |
+		| 44    | 54    |
+		| 45    | 55    |
+		| 46    | 56    |
+		| 47    | 57    |
+		| 48    | 58    |
+		| 49    | 59    |
+		| 50    | 60    |
+		| 61    | 71    |
+		| 62    | 72    |
+		| 63    | 73    |
+		| 64    | 74    |
+		| 65    | 75    |
+		| 66    | 76    |
+		| 67    | 77    |
+		| 68    | 78    |
+		| 69    | 79    |
+		| 60    | 70    |
+		| 71    | 81    |
+		| 72    | 82    |
+		| 73    | 83    |
+		| 74    | 84    |
+		| 75    | 85    |
+		| 76    | 86    |
+		| 77    | 87    |
+		| 78    | 88    |
+		| 79    | 89    |
+		| 80    | 90    |
+		| 81    | 91    |
+		| 82    | 92    |
+		| 83    | 93    |
+		| 84    | 94    |
+		| 85    | 95    |
+		| 86    | 96    |
+		| 87    | 97    |
+		| 88    | 98    |
+		| 89    | 99    |
+		| 90    | 100   |
 	And I switch to "Reports" window
 	And I select link "Home"
 	And I navigate to "Reporter"
@@ -416,34 +485,14 @@ Scenario: @PB_US18812_02 Enroll 50 subjects in a study to verify that TSDV has r
 		| US18812_SJ | Dev         |
 	And I click button "Submit Report"
 	And I switch to "Targeted SDV Study Plan" window
-	And I inactivate the plan
-	
-
-	 
-
-@release_2012.1.0 
-@PB_US18812_03
-@Draft
-
-Scenario: Enroll 10 subjects in a study to verify that TSDV has randomized the subjects in non sequential order when the subjects are included in TSDV using the Targeted SDV Subject Include report in site level.
-	Given I login to Rave with user "SUPER USER 1"
-	And I select link "Home"
-	And I navigate to "Reporter"
-	And I select Report "Targeted SDV Configuration"
-	And I set report parameter "Study" with table
-		| Name       | Environment |
-		| US18812_SJ | Dev         |
-	And I click button "Submit Report"
-	And I switch to "Targeted SDV Study Plan" window
 	And I select link "World"
-	And I select link "Site 4"
-	And I create a new block plan named "Site 4 Block Plan" with Data entry Role "SUPER ROLE 1"
+	And I inactivate the plan
+	And I select link "Site 3"
+	And I create a new block plan named "Site 3 Block Plan" with Data entry Role "SUPER ROLE 1"
 	And I delete the tier "Architect Defined" from plan
 	And I edit Blocks 
 	| Name              | Subject Count |
 	| Architect Defined | 10            |
-#TODO: Need to investigate below method. Can't run any furthur
-
 	And I select the tier "All Forms" and Subject Count "1"
 	And I select the tier "No Forms" and Subject Count "1"
 	And I select the tier "Architect Defined" and Subject Count "1"
@@ -457,7 +506,7 @@ Scenario: Enroll 10 subjects in a study to verify that TSDV has randomized the s
 	And I activate the plan
 	And I switch to "Reports" window
 	And I select link "Home"
-	And I create 100 random Subjects with name "CGC" in Study "US18812_SJ (Dev)" in Site "Site 4"
+	And I create 50 random Subjects with name "CCD" in Study "US18812_SJ (Dev)" in Site "Site 3"
 	And I select link "Home"
 	And I navigate to "Reporter"
 	And I select Report "Targeted SDV Subject Management"
@@ -466,8 +515,7 @@ Scenario: Enroll 10 subjects in a study to verify that TSDV has randomized the s
 		| US18812_SJ | Dev         |
 	And I click button "Submit Report"
 	And I switch to "Targeted SDV Subject Override" window
-#TODO: Need to investigate below method
-	#And I filter by site "Site 4"
+	And I filter by site "Site 3"
 	Then I verify that Tiers in subject override table are not in the following order
 		| Tier Name         | Row |
 		| All Forms         | 1   |
@@ -520,67 +568,47 @@ Scenario: Enroll 10 subjects in a study to verify that TSDV has randomized the s
 		| Custom Tier 5     | 48  |
 		| Custom Tier 6     | 49  |
 		| Custom Tier 7     | 50  |
-		| All Forms         | 51  |
-		| No Forms          | 52  |
-		| Architect Defined | 53  |
-		| Custom Tier 1     | 54  |
-		| Custom Tier 2     | 55  |
-		| Custom Tier 3     | 56  |
-		| Custom Tier 4     | 57  |
-		| Custom Tier 5     | 58  |
-		| Custom Tier 6     | 59  |
-		| Custom Tier 7     | 60  |
-		| All Forms         | 61  |
-		| No Forms          | 62  |
-		| Architect Defined | 63  |
-		| Custom Tier 1     | 64  |
-		| Custom Tier 2     | 65  |
-		| Custom Tier 3     | 66  |
-		| Custom Tier 4     | 67  |
-		| Custom Tier 5     | 68  |
-		| Custom Tier 6     | 69  |
-		| Custom Tier 7     | 70  |
-		| All Forms         | 71  |
-		| No Forms          | 72  |
-		| Architect Defined | 73  |
-		| Custom Tier 1     | 74  |
-		| Custom Tier 2     | 75  |
-		| Custom Tier 3     | 76  |
-		| Custom Tier 4     | 77  |
-		| Custom Tier 5     | 78  |
-		| Custom Tier 6     | 79  |
-		| Custom Tier 7     | 80  |
-		| All Forms         | 81  |
-		| No Forms          | 82  |
-		| Architect Defined | 83  |
-		| Custom Tier 1     | 84  |
-		| Custom Tier 2     | 85  |
-		| Custom Tier 3     | 86  |
-		| Custom Tier 4     | 87  |
-		| Custom Tier 5     | 88  |
-		| Custom Tier 6     | 89  |
-		| Custom Tier 7     | 90  |
-		| All Forms         | 91  |
-		| No Forms          | 92  |
-		| Architect Defined | 93  |
-		| Custom Tier 1     | 94  |
-		| Custom Tier 2     | 95  |
-		| Custom Tier 3     | 96  |
-		| Custom Tier 4     | 97  |
-		| Custom Tier 5     | 98  |
-		| Custom Tier 6     | 99  |
-		| Custom Tier 7     | 100 |
-#TODO: Need new method below
-	#And I verify there is no exact tier match between rows
-	#	| Row 1 | Row 2 |
-	#	| 11    | 21    |
+	And I verify there is no exact tier match between rows
+		| Row 1 | Row 2 |
+		| 11    | 21    |
+		| 12    | 22    |
+		| 13    | 23    |
+		| 14    | 24    |
+		| 15    | 25    |
+		| 16    | 26    |
+		| 17    | 27    |
+		| 18    | 28    |
+		| 19    | 29    |
+		| 20    | 30    |
+		| 21    | 31    |
+		| 22    | 32    |
+		| 23    | 33    |
+		| 24    | 34    |
+		| 25    | 35    |
+		| 26    | 36    |
+		| 27    | 37    |
+		| 28    | 38    |
+		| 29    | 39    |
+		| 30    | 40    |
+		| 31    | 41    |
+		| 32    | 42    |
+		| 33    | 43    |
+		| 34    | 44    |
+		| 35    | 45    |
+		| 36    | 46    |
+		| 37    | 47    |
+		| 38    | 48    |
+		| 39    | 49    |
+		| 40    | 50    |
 	And I switch to "Reports" window
 	And I select link "Home"
 	And I navigate to "Reporter"
 	And I select Report "Targeted SDV Configuration"
 	And I set report parameter "Study" with table
-		| Name       | Environment |
+		| Name        | Environment |
 		| US18812_SJ | Dev         |
 	And I click button "Submit Report"
 	And I switch to "Targeted SDV Study Plan" window
+	And I select link "World"
+	And I select link "Site 3"
 	And I inactivate the plan
