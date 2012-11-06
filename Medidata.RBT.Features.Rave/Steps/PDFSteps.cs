@@ -68,7 +68,24 @@ namespace Medidata.RBT.Features.Rave
             }
         }
 
+        /// <summary>
+        /// Step definition to edit pdf file requrest
+        /// </summary>
+        [StepDefinition(@"I click edit datapdf ""([^""]*)""")]
+        public void IClickEditDatapdfDataPDF____(string pdfName)
+        {
+            pdfName = SpecialStringHelper.Replace(pdfName);
+            CurrentPage = CurrentPage.As<FileRequestPage>().EditPdf(pdfName);
+        }
 
+        /// <summary>
+        /// Step definition to expand Display multiple log lines per page
+        /// </summary>
+        [StepDefinition(@"I expand Display multiple log lines per page")]
+        public void IExpandDisplayMultipleLogLinesPerPage()
+        {
+            CurrentPage.As<FileRequestPage>().ExpandDisplayMultipleLogLines();
+        }
 
 	}
 }

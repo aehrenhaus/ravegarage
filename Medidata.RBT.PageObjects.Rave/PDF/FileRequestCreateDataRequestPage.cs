@@ -8,23 +8,12 @@ using OpenQA.Selenium.Remote;
 using TechTalk.SpecFlow;
 using Medidata.RBT.SeleniumExtension;
 using System.Threading;
+using Medidata.RBT.PageObjects.Rave.SharedRaveObjects;
 
 namespace Medidata.RBT.PageObjects.Rave
 {
-    public class PDFCreationModel
-    {
-        public string Name { get; set; }
-        public string Profile { get; set; }
-        public string Study { get; set; }
-        public string Role { get; set; }
-        public string SiteGroup { get; set; }
-        public string Site { get; set; }
-        public string Subject { get; set; }
-        public string Locale { get; set; }
-        public string CRFVersion { get; set; }
-    }
 
-    public class FileRequestCreateDataRequestPage : RavePageBase
+    public class FileRequestCreateDataRequestPage : FileRequestCreateRequestPageBase
     {
         /// <summary>
         /// Create a new data pdf file request
@@ -33,20 +22,8 @@ namespace Medidata.RBT.PageObjects.Rave
         /// <returns>A new FileRequestPage</returns>
         public FileRequestPage CreateDataPDF(PDFCreationModel args)
         {
-            if (!string.IsNullOrEmpty(args.Name))
-                Type("Name", args.Name);
-            if (!string.IsNullOrEmpty(args.Profile))
-                ChooseFromDropdown("_ctl0_Content_FileRequestForm_ConfigProfileID", args.Profile);
-            if (!string.IsNullOrEmpty(args.Study))
-                ChooseFromDropdown("Study", args.Study);
-            if (!string.IsNullOrEmpty(args.Locale))
-                ChooseFromDropdown("Locale", args.Locale);
-            if (!string.IsNullOrEmpty(args.Role))
-            {
-                var dlRole = Browser.FindElementById("Role");
-                Thread.Sleep(1000);
-                ChooseFromDropdown("Role", args.Role);
-            }
+            base.CreatePDF(args);
+
             if (!string.IsNullOrEmpty(args.SiteGroup))
             {
                 IWebElement div = Browser.TryFindElementById("SitesSitegroups");
@@ -61,7 +38,11 @@ namespace Medidata.RBT.PageObjects.Rave
                     expandSite.Click();
 
                 IWebElement div = Browser.TryFindElementById("DSitesSitegroups_SG_1");
-				IWebElement span = Browser.WaitForElement(b => div.Spans().FirstOrDefault(x => x.Text == args.Site));
+
+                string siteName = TestContext.GetExistingFeatureObjectOrMakeNew
+                    (args.Site, () => new Site(args.Site)).UniqueName;
+
+                IWebElement span = Browser.WaitForElement(b => div.Spans().FirstOrDefault(x => x.Text == siteName));
                 span.Checkboxes()[0].EnhanceAs<Checkbox>().Check();
             }
             if (!string.IsNullOrEmpty(args.Subject))

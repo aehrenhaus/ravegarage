@@ -41,6 +41,7 @@ namespace Medidata.RBT.PageObjects.Rave
         #region ICanVerifyExist
         public bool VerifyTableRowsExist(string tableIdentifier, Table matchTable)
         {
+            SpecialStringHelper.ReplaceTableColumn(matchTable, "Subject");
             return this.VerifyTableRowsExist_Default(tableIdentifier, matchTable);
         }
 
