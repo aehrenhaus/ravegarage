@@ -391,7 +391,7 @@ namespace Medidata.RBT.SeleniumExtension
                 driver = ((RemoteWebDriver)context);
 
 			
-            timeOutSecond = timeOutSecond ?? 3;
+            timeOutSecond = timeOutSecond ?? 6;
             var wait = new WebDriverWait(driver, TimeSpan.FromSeconds(timeOutSecond.Value));
             IWebElement ele = null;
             try
