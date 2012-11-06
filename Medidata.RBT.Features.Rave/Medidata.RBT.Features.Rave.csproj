@@ -87,10 +87,20 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>US12996_AM2_DT13997.feature</DependentUpon>
     </Compile>
+    <Compile Include="Features\AM2\US13020_AM2_DT13504.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>US13020_AM2_DT13504.feature</DependentUpon>
+    </Compile>
     <Compile Include="Features\AM2\US13780_AM2_DT13557.feature.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>US13780_AM2_DT13557.Feature</DependentUpon>
+    </Compile>
+    <Compile Include="Features\AM2\US18531_AM2_DT13626.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>US18531_AM2_DT13626.feature</DependentUpon>
     </Compile>
     <Compile Include="Features\Architect\US17446.feature.cs">
       <DependentUpon>US17446.feature</DependentUpon>
@@ -424,9 +434,17 @@
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>US12996_AM2_DT13997.feature.cs</LastGenOutput>
     </None>
+    <None Include="Features\AM2\US13020_AM2_DT13504.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>US13020_AM2_DT13504.feature.cs</LastGenOutput>
+    </None>
     <None Include="Features\AM2\US13780_AM2_DT13557.Feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>US13780_AM2_DT13557.feature.cs</LastGenOutput>
+    </None>
+    <None Include="Features\AM2\US18531_AM2_DT13626.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>US18531_AM2_DT13626.feature.cs</LastGenOutput>
     </None>
     <None Include="Features\Architect\US17446.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
