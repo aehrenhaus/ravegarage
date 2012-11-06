@@ -46,10 +46,11 @@ namespace Medidata.RBT.PageObjects.Rave
                 return TestContext.Browser.TryFindElementByLinkText(study.UniqueName);
             }, out foundOnPage);
 
-            // don't click null links.  It may be null not just because the project is not found, 
-            // ... but also if it's the only project the user is assigned to!
-            if (studyLink != null)
-                studyLink.Click();
+
+			if (studyLink == null)
+				throw new Exception("Study not found!");
+
+            studyLink.Click();
 
             return this;
         }

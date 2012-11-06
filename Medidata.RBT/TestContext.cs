@@ -266,7 +266,21 @@ namespace Medidata.RBT
 			}
 		}
 
+		private static void Do()
+		{
+			System.Diagnostics.Process p = new System.Diagnostics.Process();
 
+#if DEBUG
+			p.StartInfo = new System.Diagnostics.ProcessStartInfo(
+				@"powershell.exe",
+			"-NoExit ../../../reportGen.ps1");
+#else
+				p.StartInfo = new System.Diagnostics.ProcessStartInfo(
+				@"powershell.exe",
+			"../../../reportGen.ps1");
+#endif
+			p.Start();
+		}
 		
 		/// <summary>
 		/// After whole test
