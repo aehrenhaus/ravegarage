@@ -84,7 +84,8 @@ namespace Medidata.RBT.PageObjects.Rave
             {
                 if (URL.Equals("Modules/EDC/PrimaryRecordPage.aspx"))
                     return false;
-                var contentR = TestContext.Browser.FindElementsByPartialId("Content_R")[0];
+
+                var contentR = TestContext.Browser.TryFindElementByPartialID("Content_R");
                 var labDropdown = contentR.DropdownById("LOC_DropDown", true);
                 bool isLabform = labDropdown != null;
                 return isLabform;
