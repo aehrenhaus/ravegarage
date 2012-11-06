@@ -113,7 +113,10 @@ namespace Medidata.RBT.PageObjects.Rave
 			IWebElement queryTable = null;
 			foreach (var tmpQueryTable in queryTables)
 			{
-				if (filter.QueryMessage != null && tmpQueryTable.Text.LastIndexOf(filter.QueryMessage) == -1)
+                //If the filter has a specific QueryMessage, 
+                //the existence of that message becomes a required condition
+				if (filter.QueryMessage != null
+                    && !tmpQueryTable.Text.Contains(filter.QueryMessage))
 					continue;
 
 				var hasDropdown = tmpQueryTable.Dropdowns().Count == 1;
