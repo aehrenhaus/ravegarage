@@ -87,11 +87,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>US12996_AM2_DT13997.feature</DependentUpon>
     </Compile>
-    <Compile Include="Features\AM2\US13780_AM2_DT13557.feature.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>US13780_AM2_DT13557.Feature</DependentUpon>
-    </Compile>
     <Compile Include="Features\Architect\US17446.feature.cs">
       <DependentUpon>US17446.feature</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -146,6 +141,11 @@
       <DependentUpon>US12994_DT10991.feature</DependentUpon>
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
+    </Compile>
+    <Compile Include="Features\EDC\US12994_DT109911.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>US12994_DT10991.feature</DependentUpon>
     </Compile>
     <Compile Include="Features\EDC\US18745_DT11148_AddEvents.feature.cs">
       <DependentUpon>US18745_DT11148_AddEvents.feature</DependentUpon>
@@ -252,15 +252,15 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>US18358_DT14073.feature</DependentUpon>
     </Compile>
+    <Compile Include="Features\Labs\US18358_DT140733.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>US18358_DT14073.feature</DependentUpon>
+    </Compile>
     <Compile Include="Features\PDF\DT11249_US12607_US19066_DataPDF_Automated.feature.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>DT11249_US12607_US19066_DataPDF_Automated.feature</DependentUpon>
-    </Compile>
-    <Compile Include="Features\PDF\DT11249_US12607_US19066_DataPDF_manual.feature.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>DT11249_US12607_US19066_DataPDF_manual.feature</DependentUpon>
     </Compile>
     <Compile Include="Features\PDF\US12175_DT8545_lessthangreaterthaninPDF.feature.cs">
       <AutoGen>True</AutoGen>
@@ -540,10 +540,6 @@
     <None Include="Features\PDF\DT11249_US12607_US19066_DataPDF_Automated.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>DT11249_US12607_US19066_DataPDF_Automated.feature.cs</LastGenOutput>
-    </None>
-    <None Include="Features\PDF\DT11249_US12607_US19066_DataPDF_manual.feature">
-      <Generator>SpecFlowSingleFileGenerator</Generator>
-      <LastGenOutput>DT11249_US12607_US19066_DataPDF_manual.feature.cs</LastGenOutput>
     </None>
     <None Include="Features\PDF\US12175_DT8545_lessthangreaterthaninPDF.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
