@@ -1,6 +1,6 @@
 # When All Upper Case is selected in the Configuration Other Settings and my Locale is Japanese, the month component of the date, and the meridian component of the time, should be displayed in uppercase.
 
-
+@ignore
 Feature: US10246_DT13300
 	The month component of the date in a date field, and the meridian component of the time in a time field, should be displayed in uppercase when All Upper Case is selected in Configuration and Locale is set to Japanese
 	As a Rave Administrator

@@ -1,5 +1,5 @@
 ﻿# Configuration Loader specification should include Coder Configuration.
-
+@ignore
 Feature: US13011_DT13976 Upload
 
 Background:
