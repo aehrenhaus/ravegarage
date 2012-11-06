@@ -64,18 +64,19 @@ Given following PDF Configuration Profile Settings exist
 @WIP
 Scenario:@US12607_US19066-01A - By Default the user can view all assigned forms.
 
-  Given I log in to Rave with user "US12607_user1"
+  Given I login to Rave with user "US12607_user1"
   And I create a Subject
-    |Field      |Data                  |Control Type |
-    |Label 1    |SUB{RndNum<num1>(3)}  |textbox      |
+    |Field               |Data              |Control Type |
+    |Subject Initials    |SUB               |textbox      |
+    |Subject Number      |{RndNum<num1>(3)} |textbox      |
+    |Subject ID 	     |SUB {Var(num1)}   |textbox      |
   And I navigate to "Home"
   And I navigate to "PDF Generator" module
   And I select link "Create Data Request"  
-  And I enter "DataPDFA{RndNum<num>(3)}" in "Name"
-  And I select Configuration Profile "US12607PDFA"
-  And I select Study "US12607DataPDFStudy"
-  And I select Role "SUPER ROLE 1"
-  And I select Locale "English"
+   And I create Data PDF
+   | Name                     | Profile     | Study               | Environment |Role         | Locale  |
+   | DataPDFA{RndNum<num>(3)} | US12607PDFA | US12607DataPDFStudy | Prod        |SUPER ROLE 1 | English |
+  And I click edit datapdf "DataPDFA" 
   And I verify text "Display multiple log lines per page" exists
   And I click icon with label "Display multiple log lines per page"
   And I verify form "Adverse Events1" exist
@@ -91,18 +92,19 @@ Scenario:@US12607_US19066-01A - By Default the user can view all assigned forms.
 @WIP
 Scenario:@US12607_US19066-02A - The localization user can view strings are localized
 
-  Given I log in to Rave with user "US12607_locuser"
+  Given I login to Rave with user "US12607_locuser"
   And I create a Subject
-    |Field      |Data                  |Control Type |
-    |Label 1    |SUB{RndNum<num2>(3)}  |textbox      |
+    |Field               |Data              |Control Type |
+    |Subject Initials    |SUB               |textbox      |
+    |Subject Number      |{RndNum<num2>(3)} |textbox      |
+    |Subject ID 	     |SUB {Var(num2)}   |textbox      |
   And I navigate to "LHome"
   And I navigate to "LPDF Generator" module
   And I select link "LCreate Data Request"  
-  And I enter "LocDataPDF{RndNum<num>(3)}" in "Name"
-  And I select Configuration Profile "LUS12607PDFA"
-  And I select Study "LUS12607DataPDFStudy"
-  And I select Role "LSUPER ROLE 1"
-  And I select Locale "LLocalization Test"
+  And I create Data PDF
+   |Name                       |Profile      |Study                |Environment  |Role          |Locale             |
+   |LocDataPDF{RndNum<num>(3)} |LUS12607PDFA |LUS12607DataPDFStudy |LProd        |LSUPER ROLE 1 |LLocalization Test |
+  And I click edit datapdf "LLocDataPDF"  
   And I verify text "LDisplay multiple log lines per page" exists
   And I click icon with label "LDisplay multiple log lines per page"
   And I verify form "LAdverse Events1" exist
@@ -118,18 +120,19 @@ Scenario:@US12607_US19066-02A - The localization user can view strings are local
 @WIP
 Scenario:@US12607_US19066-03A - Selecting all assigned forms.
 
-  Given I log in to Rave with user "US12607_user1"
+  Given I login to Rave with user "US12607_user1"
   And I create a Subject
-    |Field      |Data                  |Control Type |
-    |Label 1    |SUB{RndNum<num3>(3)}  |textbox      |
+    |Field               |Data              |Control Type |
+    |Subject Initials    |SUB               |textbox      |
+    |Subject Number      |{RndNum<num3>(3)} |textbox      |
+    |Subject ID 	     |SUB {Var(num3)}   |textbox      |
   And I navigate to "Home"
   And I navigate to "PDF Generator" module
   And I select link "Create Data Request"  
-  And I enter "DataPDFC{RndNum<num>(3)}" in "Name"
-  And I select Configuration Profile "US12607PDFA"
-  And I select Study "US12607DataPDFStudy"
-  And I select Role "SUPER ROLE 1"
-  And I select Locale "English"
+  And I create Data PDF
+   | Name                     | Profile     | Study               | Environment |Role         | Locale  |
+   | DataPDFC{RndNum<num>(3)} | US12607PDFA | US12607DataPDFStudy | Prod        |SUPER ROLE 1 | English |
+  And I click edit datapdf "DataPDFC"  
   And I verify text "Display multiple log lines per page" exists
   And I click icon with label "Display multiple log lines per page"
   And I verify form "Adverse Events1" exist
@@ -152,18 +155,19 @@ Scenario:@US12607_US19066-03A - Selecting all assigned forms.
 @WIP
 Scenario:@US12607_US19066-04A - Unselecting all assigned forms.
 
-  Given I log in to Rave with user "US12607_user1"
+  Given I login to Rave with user "US12607_user1"
   And I create a Subject
-    |Field      |Data                  |Control Type |
-    |Label 1    |SUB{RndNum<num4>(3)}  |textbox      |
+    |Field               |Data              |Control Type |
+    |Subject Initials    |SUB               |textbox      |
+    |Subject Number      |{RndNum<num4>(3)} |textbox      |
+    |Subject ID 	     |SUB {Var(num4)}   |textbox      |
   And I navigate to "Home"
   And I navigate to "PDF Generator" module
   And I select link "Create Data Request"  
-  And I enter "DataPDFD{RndNum<num>(3)}" in "Name"
-  And I select Configuration Profile "US12607PDFA"
-  And I select Study "US12607DataPDFStudy"
-  And I select Role "SUPER ROLE 1"
-  And I select Locale "English"
+  And I create Data PDF
+   | Name                     | Profile     | Study               | Environment |Role         | Locale  |
+   | DataPDFD{RndNum<num>(3)} | US12607PDFA | US12607DataPDFStudy | Prod        |SUPER ROLE 1 | English |
+  And I click edit datapdf "DataPDFD"  
   And I verify text "Display multiple log lines per page" exists
   And I click icon with label "Display multiple log lines per page"
   And I verify form "Adverse Events1" exist
@@ -186,18 +190,19 @@ Scenario:@US12607_US19066-04A - Unselecting all assigned forms.
 @WIP
 Scenario:@US12607_US19066-05A - Selecting only one assigned form.
 
-  Given I log in to Rave with user "US12607_user1"
+  Given I login to Rave with user "US12607_user1"
   And I create a Subject
-    |Field      |Data                  |Control Type |
-    |Label 1    |SUB{RndNum<num5>(3)}  |textbox      |
+    |Field               |Data              |Control Type |
+    |Subject Initials    |SUB               |textbox      |
+    |Subject Number      |{RndNum<num5>(3)} |textbox      |
+    |Subject ID 	     |SUB {Var(num5)}   |textbox      |
   And I navigate to "Home"
   And I navigate to "PDF Generator" module
   And I select link "Create Data Request"  
-  And I enter "DataPDFE{RndNum<num>(3)}" in "Name"
-  And I select Configuration Profile "US12607PDFA"
-  And I select Study "US12607DataPDFStudy"
-  And I select Role "SUPER ROLE 1"
-  And I select Locale "English"
+  And I create Data PDF
+   | Name                     | Profile     | Study               | Environment |Role         | Locale  |
+   | DataPDFE{RndNum<num>(3)} | US12607PDFA | US12607DataPDFStudy | Prod        |SUPER ROLE 1 | English |
+  And I click edit datapdf "DataPDFE"  
   And I verify text "Display multiple log lines per page" exists
   And I click icon with label "Display multiple log lines per page"
   And I verify form "Adverse Events1" exist
@@ -217,18 +222,19 @@ Scenario:@US12607_US19066-05A - Selecting only one assigned form.
 @WIP
 Scenario:@US12607_US19066-06A - Selecting only one assigned form.
 
-  Given I log in to Rave with user "US12607_user1"
+  Given I login to Rave with user "US12607_user1"
   And I create a Subject
-    |Field      |Data                  |Control Type |
-    |Label 1    |SUB{RndNum<num6>(3)}  |textbox      |
+    |Field               |Data              |Control Type |
+    |Subject Initials    |SUB               |textbox      |
+    |Subject Number      |{RndNum<num6>(3)} |textbox      |
+    |Subject ID 	     |SUB {Var(num6)}   |textbox      |
   And I navigate to "Home"
   And I navigate to "PDF Generator" module
   And I select link "Create Data Request"  
-  And I enter "DataPDFF{RndNum<num>(3)}" in "Name"
-  And I select Configuration Profile "US12607PDFA"
-  And I select Study "US12607DataPDFStudy"
-  And I select Role "SUPER ROLE 1"
-  And I select Locale "English"
+  And I create Data PDF
+   | Name                     | Profile     | Study               | Environment |Role         | Locale  |
+   | DataPDFF{RndNum<num>(3)} | US12607PDFA | US12607DataPDFStudy | Prod        |SUPER ROLE 1 | English |
+  And I click edit datapdf "DataPDFF"  
   And I verify text "Display multiple log lines per page" exists
   And I click icon with label "Display multiple log lines per page"
   And I verify form "Adverse Events1" exist
@@ -248,18 +254,19 @@ Scenario:@US12607_US19066-06A - Selecting only one assigned form.
 @WIP
 Scenario:@US12607_US19066-07A - Selecting only one assigned form.
 
-  Given I log in to Rave with user "US12607_user1"
+  Given I login to Rave with user "US12607_user1"
   And I create a Subject
-    |Field      |Data                  |Control Type |
-    |Label 1    |SUB{RndNum<num7>(3)}  |textbox      |
+    |Field               |Data              |Control Type |
+    |Subject Initials    |SUB               |textbox      |
+    |Subject Number      |{RndNum<num7>(3)} |textbox      |
+    |Subject ID 	     |SUB {Var(num7)}   |textbox      |
   And I navigate to "Home"
   And I navigate to "PDF Generator" module
   And I select link "Create Data Request"  
-  And I enter "DataPDFG{RndNum<num>(3)}" in "Name"
-  And I select Configuration Profile "US12607PDFA"
-  And I select Study "US12607DataPDFStudy"
-  And I select Role "SUPER ROLE 1"
-  And I select Locale "English"
+  And I create Data PDF
+   | Name                     | Profile     | Study               | Environment |Role         | Locale  |
+   | DataPDFG{RndNum<num>(3)} | US12607PDFA | US12607DataPDFStudy | Prod        |SUPER ROLE 1 | English |
+  And I click edit datapdf "DataPDFG" 
   And I verify text "Display multiple log lines per page" exists
   And I click icon with label "Display multiple log lines per page"
   And I verify form "Adverse Events1" exist
@@ -279,18 +286,19 @@ Scenario:@US12607_US19066-07A - Selecting only one assigned form.
 @WIP
 Scenario:@US12607_US19066-08A - Selecting only one assigned form.
 
-  Given I log in to Rave with user "US12607_user1"
+  Given I login to Rave with user "US12607_user1"
   And I create a Subject
-    |Field      |Data                  |Control Type |
-    |Label 1    |SUB{RndNum<num8>(3)}  |textbox      |
+    |Field               |Data              |Control Type |
+    |Subject Initials    |SUB               |textbox      |
+    |Subject Number      |{RndNum<num8>(3)} |textbox      |
+    |Subject ID 	     |SUB {Var(num8)}   |textbox      |
   And I navigate to "Home"
   And I navigate to "PDF Generator" module
   And I select link "Create Data Request"  
-  And I enter "DataPDFH{RndNum<num>(3)}" in "Name"
-  And I select Configuration Profile "US12607PDFA"
-  And I select Study "US12607DataPDFStudy"
-  And I select Role "SUPER ROLE 1"
-  And I select Locale "English"
+    And I create Data PDF
+   | Name                     | Profile     | Study               | Environment |Role         | Locale  |
+   | DataPDFH{RndNum<num>(3)} | US12607PDFA | US12607DataPDFStudy | Prod        |SUPER ROLE 1 | English |
+  And I click edit datapdf "DataPDFH"  
   And I verify text "Display multiple log lines per page" exists
   And I click icon with label "Display multiple log lines per page"
   And I verify form "Adverse Events1" exist
