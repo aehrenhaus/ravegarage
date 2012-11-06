@@ -31,7 +31,16 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
 		public Project(string projectName)
         {
 	        UniqueName = projectName;
-	        SuppressSeeding = true;
         }
+
+        /// <summary>
+        /// Make the project id unique
+        /// </summary>
+        protected override void MakeUnique()
+        {
+            UniqueName = UniqueName + TID;
+        }
+
+
     }
 }
