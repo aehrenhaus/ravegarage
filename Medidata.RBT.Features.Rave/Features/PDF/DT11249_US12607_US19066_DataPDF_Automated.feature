@@ -76,7 +76,7 @@ Scenario:@US12607_US19066-01A - By Default the user can view all assigned forms.
    And I create Data PDF
    | Name                     | Profile     | Study               | Environment |Role         | Locale  |
    | DataPDFA{RndNum<num>(3)} | US12607PDFA | US12607DataPDFStudy | Prod        |SUPER ROLE 1 | English |
-  And I click edit datapdf "DataPDFA" 
+  And I click edit datapdf "DataPDFA{Var(num)}" 
   And I verify text "Display multiple log lines per page" exists
   And I click icon with label "Display multiple log lines per page"
   And I verify form "Adverse Events1" exist
@@ -104,7 +104,7 @@ Scenario:@US12607_US19066-02A - The localization user can view strings are local
   And I create Data PDF
    |Name                       |Profile      |Study                |Environment  |Role          |Locale             |
    |LocDataPDF{RndNum<num>(3)} |LUS12607PDFA |LUS12607DataPDFStudy |LProd        |LSUPER ROLE 1 |LLocalization Test |
-  And I click edit datapdf "LLocDataPDF"  
+  And I click edit datapdf "LLocDataPDF{Var(num)}"  
   And I verify text "LDisplay multiple log lines per page" exists
   And I click icon with label "LDisplay multiple log lines per page"
   And I verify form "LAdverse Events1" exist
@@ -132,7 +132,7 @@ Scenario:@US12607_US19066-03A - Selecting all assigned forms.
   And I create Data PDF
    | Name                     | Profile     | Study               | Environment |Role         | Locale  |
    | DataPDFC{RndNum<num>(3)} | US12607PDFA | US12607DataPDFStudy | Prod        |SUPER ROLE 1 | English |
-  And I click edit datapdf "DataPDFC"  
+  And I click edit datapdf "DataPDFC{Var(num)}"  
   And I verify text "Display multiple log lines per page" exists
   And I click icon with label "Display multiple log lines per page"
   And I verify form "Adverse Events1" exist
@@ -167,7 +167,7 @@ Scenario:@US12607_US19066-04A - Unselecting all assigned forms.
   And I create Data PDF
    | Name                     | Profile     | Study               | Environment |Role         | Locale  |
    | DataPDFD{RndNum<num>(3)} | US12607PDFA | US12607DataPDFStudy | Prod        |SUPER ROLE 1 | English |
-  And I click edit datapdf "DataPDFD"  
+  And I click edit datapdf "DataPDFD{Var(num)}"  
   And I verify text "Display multiple log lines per page" exists
   And I click icon with label "Display multiple log lines per page"
   And I verify form "Adverse Events1" exist
@@ -202,7 +202,7 @@ Scenario:@US12607_US19066-05A - Selecting only one assigned form.
   And I create Data PDF
    | Name                     | Profile     | Study               | Environment |Role         | Locale  |
    | DataPDFE{RndNum<num>(3)} | US12607PDFA | US12607DataPDFStudy | Prod        |SUPER ROLE 1 | English |
-  And I click edit datapdf "DataPDFE"  
+  And I click edit datapdf "DataPDFE{Var(num)}"  
   And I verify text "Display multiple log lines per page" exists
   And I click icon with label "Display multiple log lines per page"
   And I verify form "Adverse Events1" exist
@@ -234,7 +234,7 @@ Scenario:@US12607_US19066-06A - Selecting only one assigned form.
   And I create Data PDF
    | Name                     | Profile     | Study               | Environment |Role         | Locale  |
    | DataPDFF{RndNum<num>(3)} | US12607PDFA | US12607DataPDFStudy | Prod        |SUPER ROLE 1 | English |
-  And I click edit datapdf "DataPDFF"  
+  And I click edit datapdf "DataPDFF{Var(num)}"  
   And I verify text "Display multiple log lines per page" exists
   And I click icon with label "Display multiple log lines per page"
   And I verify form "Adverse Events1" exist
@@ -266,7 +266,7 @@ Scenario:@US12607_US19066-07A - Selecting only one assigned form.
   And I create Data PDF
    | Name                     | Profile     | Study               | Environment |Role         | Locale  |
    | DataPDFG{RndNum<num>(3)} | US12607PDFA | US12607DataPDFStudy | Prod        |SUPER ROLE 1 | English |
-  And I click edit datapdf "DataPDFG" 
+  And I click edit datapdf "DataPDFG{Var(num)}" 
   And I verify text "Display multiple log lines per page" exists
   And I click icon with label "Display multiple log lines per page"
   And I verify form "Adverse Events1" exist
@@ -298,7 +298,7 @@ Scenario:@US12607_US19066-08A - Selecting only one assigned form.
     And I create Data PDF
    | Name                     | Profile     | Study               | Environment |Role         | Locale  |
    | DataPDFH{RndNum<num>(3)} | US12607PDFA | US12607DataPDFStudy | Prod        |SUPER ROLE 1 | English |
-  And I click edit datapdf "DataPDFH"  
+  And I click edit datapdf "DataPDFH{Var(num)}"  
   And I verify text "Display multiple log lines per page" exists
   And I click icon with label "Display multiple log lines per page"
   And I verify form "Adverse Events1" exist
