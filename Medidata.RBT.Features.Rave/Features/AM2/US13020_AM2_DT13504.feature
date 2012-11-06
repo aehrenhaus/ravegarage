@@ -11,6 +11,7 @@ Feature: When an edit check has been removed from a target CRF version in Archit
 Background:
 Given xml draft "DT13504_1.xml" is Uploaded
 Given xml draft "DT13504_2.xml" is Uploaded
+Given study "DT13504" is assigned to site "Site_001"
 Given following Project assignments exist
 | User         | Project | Environment | Role         | Site     | SecurityRole          |
 | SUPER USER 1 | DT13504 | Live: Prod  | SUPER ROLE 1 | Site_001 | Project Admin Default |
