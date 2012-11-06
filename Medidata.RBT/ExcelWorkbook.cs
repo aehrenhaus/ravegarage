@@ -4,6 +4,7 @@ using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
 using Microsoft.Office.Interop.Excel;
+using System.Threading;
 
 namespace Medidata.RBT
 {
@@ -118,29 +119,11 @@ namespace Medidata.RBT
 		/// Initialize a new Excel reader. Must be integrated
 		/// with an Excel interface object.
 		/// </summary>
-		public ExcelWorkbook(string thisFileName)
+		public ExcelWorkbook(string thisFilePath)
 		{
 			_excelApp = new Application();
-
-			try
-			{
-				//
-				// This mess of code opens an Excel workbook. I don't know what all
-				// those arguments do, but they can be changed to influence behavior.
-				//
-				_workBook = _excelApp.Workbooks.Open(thisFileName,
-					Type.Missing, Type.Missing, Type.Missing, Type.Missing,
-					Type.Missing, Type.Missing, Type.Missing, Type.Missing,
-					Type.Missing, Type.Missing, Type.Missing, Type.Missing,
-					Type.Missing, Type.Missing);
-
-			}
-			catch
-			{
-				//
-				// Deal with exceptions.
-				//
-			}
+            _excelApp.Visible = false;
+			_workBook = _excelApp.Workbooks.Open(thisFilePath);
 		}
 
 		private void SetWorksheetValueRange(string sheetName, object[,] newValue, string range = null)

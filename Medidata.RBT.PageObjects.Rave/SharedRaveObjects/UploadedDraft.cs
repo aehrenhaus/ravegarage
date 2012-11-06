@@ -63,7 +63,7 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
 
 			UniqueName = UniqueName + TID;
 
-			using (var excel = new ExcelWorkbook(FileLocation))
+            using (ExcelWorkbook excel = new ExcelWorkbook(FileLocation))
 			{
 				var draftTable = excel.OpenTableForEdit("CRFDraft");
 				var fieldsTable = excel.OpenTableForEdit("Fields");
