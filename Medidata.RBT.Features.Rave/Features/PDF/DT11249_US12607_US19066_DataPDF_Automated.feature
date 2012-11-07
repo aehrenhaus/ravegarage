@@ -78,11 +78,13 @@ Scenario:@US12607_US19066-01A - By Default the user can view all assigned forms.
    | DataPDFA{RndNum<num>(3)} | US12607PDFA | US12607DataPDFStudy | Prod        |SUPER ROLE 1 | English |
   And I click edit datapdf "DataPDFA{Var(num)}" 
   And I verify text "Display multiple log lines per page" exists
-  And I click icon with label "Display multiple log lines per page"
-  And I verify form "Adverse Events1" exist
-  And I verify form "Adverse Events2" exist
-  And I verify form "Medical History1" exist
-  And I verify form "Medical History2" exist
+  And I expand Display multiple log lines per page
+  And I verify rows exist in "Display multiple log lines per page" table
+   |Form             |
+   |Adverse Events1  |
+   |Adverse Events2  |
+   |Medical History1 |
+   |Medical History2 |
   And I verify text "When selected all log lines on the selected form or forms will display continuously. If un-selected a new page will be created for each log line." exists
   And I take a screenshot
   And I log out of Rave
@@ -106,11 +108,13 @@ Scenario:@US12607_US19066-02A - The localization user can view strings are local
    |LocDataPDF{RndNum<num>(3)} |LUS12607PDFA |LUS12607DataPDFStudy |LProd        |LSUPER ROLE 1 |LLocalization Test |
   And I click edit datapdf "LLocDataPDF{Var(num)}"  
   And I verify text "LDisplay multiple log lines per page" exists
-  And I click icon with label "LDisplay multiple log lines per page"
-  And I verify form "LAdverse Events1" exist
-  And I verify form "LAdverse Events2" exist
-  And I verify form "LMedical History1" exist
-  And I verify form "LMedical History2" exist
+  And I expand LDisplay multiple log lines per page
+  And I verify rows exist in "Display multiple log lines per page" table
+   |Form              |
+   |LAdverse Events1  |
+   |LAdverse Events2  |
+   |LMedical History1 |
+   |LMedical History2 |
   And I verify text "LWhen selected all log lines on the selected form or forms will display continuously. If un-selected a new page will be created for each log line." exists
   And I take a screenshot
   And I log out of Rave
@@ -134,11 +138,13 @@ Scenario:@US12607_US19066-03A - Selecting all assigned forms.
    | DataPDFC{RndNum<num>(3)} | US12607PDFA | US12607DataPDFStudy | Prod        |SUPER ROLE 1 | English |
   And I click edit datapdf "DataPDFC{Var(num)}"  
   And I verify text "Display multiple log lines per page" exists
-  And I click icon with label "Display multiple log lines per page"
-  And I verify form "Adverse Events1" exist
-  And I verify form "Adverse Events2" exist
-  And I verify form "Medical History1" exist
-  And I verify form "Medical History2" exist
+  And I expand Display multiple log lines per page
+  And I verify rows exist in "Display multiple log lines per page" table
+   |Form             |
+   |Adverse Events1  |
+   |Adverse Events2  |
+   |Medical History1 |
+   |Medical History2 |
   And I verify text "When selected all log lines on the selected form or forms will display continuously. If un-selected a new page will be created for each log line." exists
   And I take a screenshot
   When I check "Select All" checkbox
@@ -169,11 +175,13 @@ Scenario:@US12607_US19066-04A - Unselecting all assigned forms.
    | DataPDFD{RndNum<num>(3)} | US12607PDFA | US12607DataPDFStudy | Prod        |SUPER ROLE 1 | English |
   And I click edit datapdf "DataPDFD{Var(num)}"  
   And I verify text "Display multiple log lines per page" exists
-  And I click icon with label "Display multiple log lines per page"
-  And I verify form "Adverse Events1" exist
-  And I verify form "Adverse Events2" exist
-  And I verify form "Medical History1" exist
-  And I verify form "Medical History2" exist
+  And I expand Display multiple log lines per page
+  And I verify rows exist in "Display multiple log lines per page" table
+   |Form             |
+   |Adverse Events1  |
+   |Adverse Events2  |
+   |Medical History1 |
+   |Medical History2 |
   And I verify text "When selected all log lines on the selected form or forms will display continuously. If un-selected a new page will be created for each log line." exists
   And I take a screenshot
   When I uncheck "Select All" checkbox
@@ -204,11 +212,13 @@ Scenario:@US12607_US19066-05A - Selecting only one assigned form.
    | DataPDFE{RndNum<num>(3)} | US12607PDFA | US12607DataPDFStudy | Prod        |SUPER ROLE 1 | English |
   And I click edit datapdf "DataPDFE{Var(num)}"  
   And I verify text "Display multiple log lines per page" exists
-  And I click icon with label "Display multiple log lines per page"
-  And I verify form "Adverse Events1" exist
-  And I verify form "Adverse Events2" exist
-  And I verify form "Medical History1" exist
-  And I verify form "Medical History2" exist
+  And I expand Display multiple log lines per page
+  And I verify rows exist in "Display multiple log lines per page" table
+   |Form             |
+   |Adverse Events1  |
+   |Adverse Events2  |
+   |Medical History1 |
+   |Medical History2 |
   And I verify text "When selected all log lines on the selected form or forms will display continuously. If un-selected a new page will be created for each log line." exists
   And I take a screenshot
   When I check "Adverse Events1" checkbox
@@ -236,11 +246,13 @@ Scenario:@US12607_US19066-06A - Selecting only one assigned form.
    | DataPDFF{RndNum<num>(3)} | US12607PDFA | US12607DataPDFStudy | Prod        |SUPER ROLE 1 | English |
   And I click edit datapdf "DataPDFF{Var(num)}"  
   And I verify text "Display multiple log lines per page" exists
-  And I click icon with label "Display multiple log lines per page"
-  And I verify form "Adverse Events1" exist
-  And I verify form "Adverse Events2" exist
-  And I verify form "Medical History1" exist
-  And I verify form "Medical History2" exist
+  And I expand Display multiple log lines per page
+  And I verify rows exist in "Display multiple log lines per page" table
+   |Form             |
+   |Adverse Events1  |
+   |Adverse Events2  |
+   |Medical History1 |
+   |Medical History2 |
   And I verify text "When selected all log lines on the selected form or forms will display continuously. If un-selected a new page will be created for each log line." exists
   And I take a screenshot
   When I check "Adverse Events2" checkbox
@@ -268,11 +280,13 @@ Scenario:@US12607_US19066-07A - Selecting only one assigned form.
    | DataPDFG{RndNum<num>(3)} | US12607PDFA | US12607DataPDFStudy | Prod        |SUPER ROLE 1 | English |
   And I click edit datapdf "DataPDFG{Var(num)}" 
   And I verify text "Display multiple log lines per page" exists
-  And I click icon with label "Display multiple log lines per page"
-  And I verify form "Adverse Events1" exist
-  And I verify form "Adverse Events2" exist
-  And I verify form "Medical History1" exist
-  And I verify form "Medical History2" exist
+  And I expand Display multiple log lines per page
+  And I verify rows exist in "Display multiple log lines per page" table
+   |Form             |
+   |Adverse Events1  |
+   |Adverse Events2  |
+   |Medical History1 |
+   |Medical History2 |
   And I verify text "When selected all log lines on the selected form or forms will display continuously. If un-selected a new page will be created for each log line." exists
   And I take a screenshot
   When I check "Medical History1" checkbox
@@ -300,11 +314,13 @@ Scenario:@US12607_US19066-08A - Selecting only one assigned form.
    | DataPDFH{RndNum<num>(3)} | US12607PDFA | US12607DataPDFStudy | Prod        |SUPER ROLE 1 | English |
   And I click edit datapdf "DataPDFH{Var(num)}"  
   And I verify text "Display multiple log lines per page" exists
-  And I click icon with label "Display multiple log lines per page"
-  And I verify form "Adverse Events1" exist
-  And I verify form "Adverse Events2" exist
-  And I verify form "Medical History1" exist
-  And I verify form "Medical History2" exist
+  And I expand Display multiple log lines per page
+  And I verify rows exist in "Display multiple log lines per page" table
+   |Form             |
+   |Adverse Events1  |
+   |Adverse Events2  |
+   |Medical History1 |
+   |Medical History2 |
   And I verify text "When selected all log lines on the selected form or forms will display continuously. If un-selected a new page will be created for each log line." exists
   And I take a screenshot
   When I check "Medical History2" checkbox
