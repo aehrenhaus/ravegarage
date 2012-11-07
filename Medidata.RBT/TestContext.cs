@@ -167,9 +167,7 @@ namespace Medidata.RBT
         {
             get
             {
-				var objs = RBTConfiguration.Default.SeedOncePerFeature ?
-					Storage.GetFeatureLevelValue<Dictionary<string, ISeedableObject>>("SeedableObjects") :
-					Storage.GetScenarioLevelValue<Dictionary<string, ISeedableObject>>("SeedableObjects");
+				var objs = Storage.GetFeatureLevelValue<Dictionary<string, ISeedableObject>>("SeedableObjects");
 
 				if (objs == null)
 				{
@@ -180,10 +178,7 @@ namespace Medidata.RBT
             }
             set
             {
-				if (RBTConfiguration.Default.SeedOncePerFeature)
-					Storage.SetFeatureLevelValue("SeedableObjects", value);
-				else
-					Storage.SetScenarioLevelValue("SeedableObjects", value);
+				Storage.SetFeatureLevelValue("SeedableObjects", value);
             }
         }
 
