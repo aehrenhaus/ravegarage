@@ -80,11 +80,11 @@ Scenario:@US12607_US19066-01A - By Default the user can view all assigned forms.
   And I verify text "Display multiple log lines per page" exists
   And I expand Display multiple log lines per page
   And I verify rows exist in "Display multiple log lines per page" table
-   |Form             |
-   |Adverse Events1  |
-   |Adverse Events2  |
-   |Medical History1 |
-   |Medical History2 |
+   |Form             |Checked |
+   |Adverse Events1  |false   |
+   |Adverse Events2  |false   |
+   |Medical History1 |false   |
+   |Medical History2 |false   |
   And I verify text "When selected all log lines on the selected form or forms will display continuously. If un-selected a new page will be created for each log line." exists
   And I take a screenshot
   And I log out of Rave
@@ -110,11 +110,11 @@ Scenario:@US12607_US19066-02A - The localization user can view strings are local
   And I verify text "LDisplay multiple log lines per page" exists
   And I expand LDisplay multiple log lines per page
   And I verify rows exist in "Display multiple log lines per page" table
-   |Form              |
-   |LAdverse Events1  |
-   |LAdverse Events2  |
-   |LMedical History1 |
-   |LMedical History2 |
+   |Form              |Checked |
+   |LAdverse Events1  |false   |
+   |LAdverse Events2  |false   |
+   |LMedical History1 |false   |
+   |LMedical History2 |false   |
   And I verify text "LWhen selected all log lines on the selected form or forms will display continuously. If un-selected a new page will be created for each log line." exists
   And I take a screenshot
   And I log out of Rave
@@ -140,18 +140,20 @@ Scenario:@US12607_US19066-03A - Selecting all assigned forms.
   And I verify text "Display multiple log lines per page" exists
   And I expand Display multiple log lines per page
   And I verify rows exist in "Display multiple log lines per page" table
-   |Form             |
-   |Adverse Events1  |
-   |Adverse Events2  |
-   |Medical History1 |
-   |Medical History2 |
+   |Form             |Checked |
+   |Adverse Events1  |false   |
+   |Adverse Events2  |false   |
+   |Medical History1 |false   |
+   |Medical History2 |false   |
   And I verify text "When selected all log lines on the selected form or forms will display continuously. If un-selected a new page will be created for each log line." exists
   And I take a screenshot
-  When I check "Select All" checkbox
-  Then I verify form "Adverse Events1" checked
-  And I verify form "Adverse Events2" checked
-  And I verify form "Medical History1" checked
-  And I verify form "Medical History2" checked 
+  When I check "Select All" in "Display multiple log lines per page"
+  Then I verify rows exist in "Display multiple log lines per page" table
+   |Form             |Checked |
+   |Adverse Events1  |true    |
+   |Adverse Events2  |true    |
+   |Medical History1 |true    |
+   |Medical History2 |true    |
   And I take a screenshot  
   And I select link "Save"
   And I log out of Rave
@@ -177,18 +179,21 @@ Scenario:@US12607_US19066-04A - Unselecting all assigned forms.
   And I verify text "Display multiple log lines per page" exists
   And I expand Display multiple log lines per page
   And I verify rows exist in "Display multiple log lines per page" table
-   |Form             |
-   |Adverse Events1  |
-   |Adverse Events2  |
-   |Medical History1 |
-   |Medical History2 |
+   |Form             |Checked |
+   |Adverse Events1  |false   |
+   |Adverse Events2  |false   |
+   |Medical History1 |false   |
+   |Medical History2 |false   |
   And I verify text "When selected all log lines on the selected form or forms will display continuously. If un-selected a new page will be created for each log line." exists
   And I take a screenshot
-  When I uncheck "Select All" checkbox
-  Then I verify form "Adverse Events1" unchecked
-  And I verify form "Adverse Events2" unchecked
-  And I verify form "Medical History1" unchecked
-  And I verify form "Medical History2" unchecked 
+  And I check "Select All" in "Display multiple log lines per page"
+  When I uncheck "Select All" in "Display multiple log lines per page"
+  Then I verify rows exist in "Display multiple log lines per page" table
+   |Form             |Checked |
+   |Adverse Events1  |false   |
+   |Adverse Events2  |false   |
+   |Medical History1 |false   |
+   |Medical History2 |false   |
   And I take a screenshot  
   And I select link "Save"
   And I log out of Rave
@@ -214,11 +219,11 @@ Scenario:@US12607_US19066-05A - Selecting only one assigned form.
   And I verify text "Display multiple log lines per page" exists
   And I expand Display multiple log lines per page
   And I verify rows exist in "Display multiple log lines per page" table
-   |Form             |
-   |Adverse Events1  |
-   |Adverse Events2  |
-   |Medical History1 |
-   |Medical History2 |
+   |Form             |Checked |
+   |Adverse Events1  |false   |
+   |Adverse Events2  |false   |
+   |Medical History1 |false   |
+   |Medical History2 |false   |
   And I verify text "When selected all log lines on the selected form or forms will display continuously. If un-selected a new page will be created for each log line." exists
   And I take a screenshot
   When I check "Adverse Events1" checkbox
@@ -248,11 +253,11 @@ Scenario:@US12607_US19066-06A - Selecting only one assigned form.
   And I verify text "Display multiple log lines per page" exists
   And I expand Display multiple log lines per page
   And I verify rows exist in "Display multiple log lines per page" table
-   |Form             |
-   |Adverse Events1  |
-   |Adverse Events2  |
-   |Medical History1 |
-   |Medical History2 |
+   |Form             |Checked |
+   |Adverse Events1  |false   |
+   |Adverse Events2  |false   |
+   |Medical History1 |false   |
+   |Medical History2 |false   |
   And I verify text "When selected all log lines on the selected form or forms will display continuously. If un-selected a new page will be created for each log line." exists
   And I take a screenshot
   When I check "Adverse Events2" checkbox
@@ -282,11 +287,11 @@ Scenario:@US12607_US19066-07A - Selecting only one assigned form.
   And I verify text "Display multiple log lines per page" exists
   And I expand Display multiple log lines per page
   And I verify rows exist in "Display multiple log lines per page" table
-   |Form             |
-   |Adverse Events1  |
-   |Adverse Events2  |
-   |Medical History1 |
-   |Medical History2 |
+   |Form             |Checked |
+   |Adverse Events1  |false   |
+   |Adverse Events2  |false   |
+   |Medical History1 |false   |
+   |Medical History2 |false   |
   And I verify text "When selected all log lines on the selected form or forms will display continuously. If un-selected a new page will be created for each log line." exists
   And I take a screenshot
   When I check "Medical History1" checkbox
@@ -316,11 +321,11 @@ Scenario:@US12607_US19066-08A - Selecting only one assigned form.
   And I verify text "Display multiple log lines per page" exists
   And I expand Display multiple log lines per page
   And I verify rows exist in "Display multiple log lines per page" table
-   |Form             |
-   |Adverse Events1  |
-   |Adverse Events2  |
-   |Medical History1 |
-   |Medical History2 |
+   |Form             |Checked |
+   |Adverse Events1  |false   |
+   |Adverse Events2  |false   |
+   |Medical History1 |false   |
+   |Medical History2 |false   |
   And I verify text "When selected all log lines on the selected form or forms will display continuously. If un-selected a new page will be created for each log line." exists
   And I take a screenshot
   When I check "Medical History2" checkbox
