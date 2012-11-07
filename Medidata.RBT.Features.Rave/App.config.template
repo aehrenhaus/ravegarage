@@ -32,8 +32,7 @@
 		AutoSaveMimeTypes="application/zip;application/pdf;application/octet-stream"
 		EnableSeeding ="True"
 		SeedFromBackendClasses =""
-		SuppressSeeding="User"
-		SeedOncePerFeature ="false"
+		SuppressSeeding=""
 		>
 	
 	</RBTConfiguration>
