@@ -24,14 +24,36 @@ namespace Medidata.RBT.PageObjects.Rave
         {
             base.CreatePDF(args);
 
-            if (!string.IsNullOrEmpty(args.SiteGroup))
+            SelectSiteGroup(args.SiteGroup);
+            SelectSite(args.Site);
+            SelectSubject(args.Subject);
+            
+            ClickLink("Save");
+            return new FileRequestPage();
+        }
+
+        /// <summary>
+        /// Select the site group from the checkbox span for pdf generator
+        /// </summary>
+        /// <param name="siteGroup"></param>
+        public void SelectSiteGroup(string siteGroup)
+        {
+            if (!string.IsNullOrEmpty(siteGroup))
             {
                 IWebElement div = Browser.TryFindElementById("SitesSitegroups");
-				IWebElement span = Browser.WaitForElement(b => div.Spans().FirstOrDefault(x => x.Text == args.SiteGroup));
+                IWebElement span = Browser.WaitForElement(b => div.Spans().FirstOrDefault(x => x.Text == siteGroup));
 
                 span.Checkboxes()[0].EnhanceAs<Checkbox>().Check();
             }
-            if (!string.IsNullOrEmpty(args.Site))
+        }
+
+        /// <summary>
+        /// Select the site name form the dropdown checkboxes for pdf generator
+        /// </summary>
+        /// <param name="sName"></param>
+        public void SelectSite(string sName)
+        {
+            if (!string.IsNullOrEmpty(sName))
             {
                 IWebElement expandSite = Browser.FindElementById("ISitesSitegroups_SG_1");
                 if (expandSite.GetAttribute("src").Contains("plus"))
@@ -40,24 +62,28 @@ namespace Medidata.RBT.PageObjects.Rave
                 IWebElement div = Browser.TryFindElementById("DSitesSitegroups_SG_1");
 
                 string siteName = TestContext.GetExistingFeatureObjectOrMakeNew
-                    (args.Site, () => new Site(args.Site)).UniqueName;
+                    (sName, () => new Site(sName)).UniqueName;
 
                 IWebElement span = Browser.WaitForElement(b => div.Spans().FirstOrDefault(x => x.Text == siteName));
                 span.Checkboxes()[0].EnhanceAs<Checkbox>().Check();
             }
-            if (!string.IsNullOrEmpty(args.Subject))
+        }
+
+        /// <summary>
+        /// Select the subject from the checkboxes for pdf generator
+        /// </summary>
+        /// <param name="subject"></param>
+        public void SelectSubject(string subject)
+        {
+            if (!string.IsNullOrEmpty(subject))
             {
                 IWebElement expandBtn = Browser.FindElementById("Subjects_ShowHideBtn");
                 expandBtn.Click();
 
-				IWebElement tr = Browser.WaitForElement(b => b.FindElements(By.XPath("//table[@id='Subjects_FrontEndCBList']/tbody/tr")).FirstOrDefault(x => x.Text == args.Subject));
+                IWebElement tr = Browser.WaitForElement(b => b.FindElements(By.XPath("//table[@id='Subjects_FrontEndCBList']/tbody/tr")).FirstOrDefault(x => x.Text == subject));
 
                 tr.Checkboxes()[0].Click();
             }
-
-
-            ClickLink("Save");
-            return new FileRequestPage();
         }
 
         public override string URL

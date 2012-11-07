@@ -22,13 +22,22 @@ namespace Medidata.RBT.PageObjects.Rave
         {
             base.CreatePDF(args);
 
-            if (!string.IsNullOrEmpty(args.CRFVersion))
-            {
-                ChooseFromDropdown("CRFVersion", args.CRFVersion);
-            }
+            SelectCRFVersion(args.CRFVersion);
 
             ClickLink("Save");
             return new FileRequestPage();
+        }
+
+        /// <summary>
+        /// select the crf version for the blank pdf generator
+        /// </summary>
+        /// <param name="crfVersion"></param>
+        public void SelectCRFVersion(string crfVersion)
+        {
+            if (!string.IsNullOrEmpty(crfVersion))
+            {
+                ChooseFromDropdown("CRFVersion", crfVersion);
+            }
         }
 
         public override string URL
