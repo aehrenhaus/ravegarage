@@ -87,7 +87,6 @@ Scenario:@US12607_US19066-01A - By Default the user can view all assigned forms.
    |Medical History2 |false   |
   And I verify text "When selected all log lines on the selected form or forms will display continuously. If un-selected a new page will be created for each log line." exists
   And I take a screenshot
-  And I log out of Rave
   
 @release_2012.1.0
 @US12607_US19066-02A
@@ -117,7 +116,6 @@ Scenario:@US12607_US19066-02A - The localization user can view strings are local
    |LMedical History2 |false   |
   And I verify text "LWhen selected all log lines on the selected form or forms will display continuously. If un-selected a new page will be created for each log line." exists
   And I take a screenshot
-  And I log out of Rave
   
 @release_2012.1.0
 @US12607_US19066-03A
@@ -156,7 +154,6 @@ Scenario:@US12607_US19066-03A - Selecting all assigned forms.
    |Medical History2 |true    |
   And I take a screenshot  
   And I select link "Save"
-  And I log out of Rave
   
 @release_2012.1.0
 @US12607_US19066-04A
@@ -196,7 +193,6 @@ Scenario:@US12607_US19066-04A - Unselecting all assigned forms.
    |Medical History2 |false   |
   And I take a screenshot  
   And I select link "Save"
-  And I log out of Rave
   
 @release_2012.1.0
 @US12607_US19066-05A
@@ -232,7 +228,6 @@ Scenario:@US12607_US19066-05A - Selecting only one assigned form.
    |Adverse Events1 |true    |
   And I take a screenshot  
   And I select link "Save"
-  And I log out of Rave
   
 @release_2012.1.0
 @US12607_US19066-06A
@@ -268,7 +263,6 @@ Scenario:@US12607_US19066-06A - Selecting only one assigned form.
    |Adverse Events2 |true    |
   And I take a screenshot  
   And I select link "Save"
-  And I log out of Rave
   
 @release_2012.1.0
 @US12607_US19066-07A
@@ -304,7 +298,6 @@ Scenario:@US12607_US19066-07A - Selecting only one assigned form.
    |Medical History1 |true    |
   And I take a screenshot  
   And I select link "Save"
-  And I log out of Rave
   
 @release_2012.1.0
 @US12607_US19066-08A
@@ -340,4 +333,3 @@ Scenario:@US12607_US19066-08A - Selecting only one assigned form.
    |Medical History2 |true    |
   And I take a screenshot  
   And I select link "Save"
-  And I log out of Rave
