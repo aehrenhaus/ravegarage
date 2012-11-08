@@ -72,10 +72,6 @@ namespace Medidata.RBT
 
 		public static RemoteWebDriver Browser { get; set; }
 
-        public static string SpreadsheetName { get; set; }
-
-        public static ExcelFileHelper ExcelFile { get; set; }
-
 		#region switch browser window
 
 		public static void SwitchBrowserWindow(string windowName)
@@ -276,7 +272,8 @@ namespace Medidata.RBT
 #endif
 			p.Start();
 		}
-		
+		private static MultipleStreamWriter output;
+
 		/// <summary>
 		/// After whole test
 		/// </summary>
@@ -311,6 +308,7 @@ namespace Medidata.RBT
             DeleteAllDownloadFiles();
             DeleteAllDownloadDirectories();
             DeleteFilesInTemporaryUploadDirectories();
+		
 
 			SpecialStringHelper.Replaced += new Action<string, string>((input, output) =>
 			{
@@ -347,6 +345,17 @@ namespace Medidata.RBT
 		[BeforeScenario()]
 		public void BeforeScenario()
 		{
+			if (output ==null)
+			{
+				output = new MultipleStreamWriter();
+				var extraConsole = ExtraConsoleWriterSetup.GetConsoleWriter();
+				output.AddStreamWriter(new FilteredWriter(extraConsole));
+
+				//the previous Console.Out has already been redirect to MSTest output, add it back to multiple output writer, so we still see results from MSTest
+				output.AddStreamWriter(Console.Out);
+				Console.SetOut(output);
+				Console.WriteLine("Set console output to console");
+			}
 			Storage.ScenarioValues.Clear();
 
 			//start time
