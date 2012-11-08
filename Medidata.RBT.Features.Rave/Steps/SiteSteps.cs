@@ -59,7 +59,7 @@ namespace Medidata.RBT.Features.Rave.Steps.Seeding
             Site site = TestContext.GetExistingFeatureObjectOrMakeNew(siteName, () => new Site(siteName));
 			Project project = TestContext.GetExistingFeatureObjectOrMakeNew(studyName, () => new Project(studyName));
 
-			if (!site.Studies.Contains(studyName))
+			if (!site.Studies.Contains(project.UniqueName))
             {
 				site.Studies.Add(project.UniqueName);
 

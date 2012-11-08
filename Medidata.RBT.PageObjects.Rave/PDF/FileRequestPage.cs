@@ -210,6 +210,7 @@ namespace Medidata.RBT.PageObjects.Rave
             if (elem != null)
                 elem.Click();
 
+            Thread.Sleep(1000);
             // Wait for log line form div
             Browser.WaitForElement(By.Id("CombineLogLinesFrms_div"));
         }
