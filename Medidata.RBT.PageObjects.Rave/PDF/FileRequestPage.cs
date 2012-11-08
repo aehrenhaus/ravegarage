@@ -23,7 +23,11 @@ namespace Medidata.RBT.PageObjects.Rave
         /// <returns>Returns a new FileRequestPage</returns>
         public FileRequestPage CreateDataPDF(PDFCreationModel args)
         {
-            ClickLink("Create Data Request");
+            string linkText = "Create Data Request";
+            if (!string.IsNullOrEmpty(args.Locale) && args.Locale == "LLocalization Test")
+                linkText = "L" + linkText;
+
+            ClickLink(linkText);
             var page = new FileRequestCreateDataRequestPage();
             return page.CreateDataPDF(args);
         }
@@ -35,7 +39,12 @@ namespace Medidata.RBT.PageObjects.Rave
         /// <returns>Returns a new FileRequestPage</returns>
         public FileRequestPage CreateBlankPDF(PDFCreationModel args)
         {
-            ClickLink("Create Blank Request");
+            string linkText = "Create Blank Request";
+            if (!string.IsNullOrEmpty(args.Locale) && args.Locale == "LLocalization Test")
+                linkText = "L" + linkText;
+
+            ClickLink(linkText);
+
             var page = new FileRequestCreateBlankRequestPage();
             return page.CreateBlankPDF(args);
         }
@@ -84,6 +93,18 @@ namespace Medidata.RBT.PageObjects.Rave
                 HtmlTable table = Browser.WaitForElement("_ctl0_Content_Results").EnhanceAs<HtmlTable>();
                 return table.FindMatchRows(dt).FirstOrDefault();
             }, out foundOnPage);
+
+            if (pdfTr == null)
+            {
+                dt = new Table("LName");
+                dt.AddRow(pdfName);
+
+                pdfTr = this.FindInPaginatedList("", () =>
+                {
+                    HtmlTable table = Browser.WaitForElement("_ctl0_Content_Results").EnhanceAs<HtmlTable>();
+                    return table.FindMatchRows(dt).FirstOrDefault();
+                }, out foundOnPage);
+            }
 
             EnhancedElement genButton = pdfTr.FindImagebuttons().FirstOrDefault(x => x.GetAttribute("id").EndsWith("imgEdit"));
 

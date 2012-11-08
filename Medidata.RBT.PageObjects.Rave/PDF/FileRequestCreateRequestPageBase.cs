@@ -105,5 +105,10 @@ namespace Medidata.RBT.PageObjects.Rave
                 ChooseFromDropdown("Role", roleName);
             }
         }
+
+        protected string PrependLocalization(string stringToLocalize)
+        {
+            return "L" + stringToLocalize;
+        }
     }
 }

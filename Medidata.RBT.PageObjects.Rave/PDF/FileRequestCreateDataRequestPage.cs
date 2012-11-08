@@ -24,11 +24,20 @@ namespace Medidata.RBT.PageObjects.Rave
         {
             base.CreatePDF(args);
 
+            bool isLocalizationTest = false;
+            if (!string.IsNullOrEmpty(args.Locale) && args.Locale == "LLocalization Test")
+                isLocalizationTest = true;
+
             SelectSiteGroup(args.SiteGroup);
             SelectSite(args.Site);
             SelectSubject(args.Subject);
-            
-            ClickLink("Save");
+
+            string saveLinkText = "Save";
+
+            if (isLocalizationTest)
+                saveLinkText = PrependLocalization(saveLinkText);
+
+            ClickLink(saveLinkText);
             return new FileRequestPage();
         }
 
