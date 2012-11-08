@@ -25,7 +25,7 @@ namespace Medidata.RBT.PageObjects.Rave
         {
             string linkText = "Create Data Request";
             if (!string.IsNullOrEmpty(args.Locale) && args.Locale == "LLocalization Test")
-                linkText = "L" + linkText;
+                linkText = string.Concat("L",linkText);
 
             ClickLink(linkText);
             var page = new FileRequestCreateDataRequestPage();
@@ -41,7 +41,7 @@ namespace Medidata.RBT.PageObjects.Rave
         {
             string linkText = "Create Blank Request";
             if (!string.IsNullOrEmpty(args.Locale) && args.Locale == "LLocalization Test")
-                linkText = "L" + linkText;
+                linkText = string.Concat("L", linkText);
 
             ClickLink(linkText);
 

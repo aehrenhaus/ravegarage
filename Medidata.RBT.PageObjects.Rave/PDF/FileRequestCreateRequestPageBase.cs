@@ -108,7 +108,7 @@ namespace Medidata.RBT.PageObjects.Rave
 
         protected string PrependLocalization(string stringToLocalize)
         {
-            return "L" + stringToLocalize;
+            return string.Concat("L", stringToLocalize);
         }
     }
 }
