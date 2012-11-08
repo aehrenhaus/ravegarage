@@ -8,7 +8,7 @@
 # should be displayed in a continuous list
 # When a user navigates to the PDF generator and creates a data populated PDF request there should be a new section below locale that says Display multiple log lines per page"
 # When the user selects the "Display multiple log lines per page" triangle, a list of all the log forms in the study that are available to the role selected in the PDF request is displayed with a tickbox next to each form name.
-# A label at the top of the tickbox column is displayed that says "Display multiple log lines per page" with text in the whitespace next to the tickbox control that says "When selected all log lines on the selected form or forms will display continuously.  If un-selected a new page will be created for each log line."
+# A label at the top of the tickbox column is displayed that says "Display multiple log lines per page" with text in the whitespace next to the tickbox control that says "When selected, all log lines on the selected form or forms will display continuously. If un-selected, a new page will be created for each log line."
 # If the user does not select the box then the PDF generated should include a page break after each individual record. If the selects the box then each
 # record should display on the same page as the previous record.
 
@@ -85,7 +85,7 @@ Scenario:@US12607_US19066-01A - By Default the user can view all assigned forms.
    |Adverse Events2  |false   |
    |Medical History1 |false   |
    |Medical History2 |false   |
-  And I verify text "When selected all log lines on the selected form or forms will display continuously. If un-selected a new page will be created for each log line." exists
+  And I verify text "When selected, all log lines on the selected form or forms will display continuously. If un-selected, a new page will be created for each log line." exists
   And I take a screenshot
   
 @release_2012.1.0
@@ -103,8 +103,8 @@ Scenario:@US12607_US19066-02A - The localization user can view strings are local
   And I navigate to "LPDF Generator" module
   And I select link "LCreate Data Request"  
   And I create Data PDF
-   |Name                       |Profile      |Study                |Environment  |Role          |Locale             |
-   |LocDataPDF{RndNum<num>(3)} |LUS12607PDFA |LUS12607DataPDFStudy |LProd        |LSUPER ROLE 1 |LLocalization Test |
+   |Name                       |Profile      |Study                |Environment   |Role          |Locale             |
+   |LocDataPDF{RndNum<num>(3)} |US12607PDFA  |US12607DataPDFStudy  |LProd         |SUPER ROLE 1  |LLocalization Test |
   And I click edit datapdf "LLocDataPDF{Var(num)}"  
   And I verify text "LDisplay multiple log lines per page" exists
   And I expand LDisplay multiple log lines per page
@@ -114,7 +114,7 @@ Scenario:@US12607_US19066-02A - The localization user can view strings are local
    |LAdverse Events2  |false   |
    |LMedical History1 |false   |
    |LMedical History2 |false   |
-  And I verify text "LWhen selected all log lines on the selected form or forms will display continuously. If un-selected a new page will be created for each log line." exists
+  And I verify text "LWhen selected, all log lines on the selected form or forms will display continuously. If un-selected, a new page will be created for each log line." exists
   And I take a screenshot
   
 @release_2012.1.0
@@ -143,7 +143,7 @@ Scenario:@US12607_US19066-03A - Selecting all assigned forms.
    |Adverse Events2  |false   |
    |Medical History1 |false   |
    |Medical History2 |false   |
-  And I verify text "When selected all log lines on the selected form or forms will display continuously. If un-selected a new page will be created for each log line." exists
+  And I verify text "When selected, all log lines on the selected form or forms will display continuously. If un-selected, a new page will be created for each log line." exists
   And I take a screenshot
   When I check "Select All" in "Display multiple log lines per page"
   Then I verify rows exist in "Display multiple log lines per page" table
@@ -181,7 +181,7 @@ Scenario:@US12607_US19066-04A - Unselecting all assigned forms.
    |Adverse Events2  |false   |
    |Medical History1 |false   |
    |Medical History2 |false   |
-  And I verify text "When selected all log lines on the selected form or forms will display continuously. If un-selected a new page will be created for each log line." exists
+  And I verify text "When selected, all log lines on the selected form or forms will display continuously. If un-selected, a new page will be created for each log line." exists
   And I take a screenshot
   And I check "Select All" in "Display multiple log lines per page"
   When I uncheck "Select All" in "Display multiple log lines per page"
@@ -220,7 +220,7 @@ Scenario:@US12607_US19066-05A - Selecting only one assigned form.
    |Adverse Events2  |false   |
    |Medical History1 |false   |
    |Medical History2 |false   |
-  And I verify text "When selected all log lines on the selected form or forms will display continuously. If un-selected a new page will be created for each log line." exists
+  And I verify text "When selected, all log lines on the selected form or forms will display continuously. If un-selected, a new page will be created for each log line." exists
   And I take a screenshot
   When I check "Adverse Events1" in "Display multiple log lines per page"
   Then I verify rows exist in "Display multiple log lines per page" table
@@ -255,7 +255,7 @@ Scenario:@US12607_US19066-06A - Selecting only one assigned form.
    |Adverse Events2  |false   |
    |Medical History1 |false   |
    |Medical History2 |false   |
-  And I verify text "When selected all log lines on the selected form or forms will display continuously. If un-selected a new page will be created for each log line." exists
+  And I verify text "When selected, all log lines on the selected form or forms will display continuously. If un-selected, a new page will be created for each log line." exists
   And I take a screenshot
   When I check "Adverse Events2" in "Display multiple log lines per page"
   Then I verify rows exist in "Display multiple log lines per page" table
@@ -290,7 +290,7 @@ Scenario:@US12607_US19066-07A - Selecting only one assigned form.
    |Adverse Events2  |false   |
    |Medical History1 |false   |
    |Medical History2 |false   |
-  And I verify text "When selected all log lines on the selected form or forms will display continuously. If un-selected a new page will be created for each log line." exists
+  And I verify text "When selected, all log lines on the selected form or forms will display continuously. If un-selected, a new page will be created for each log line." exists
   And I take a screenshot
   When I check "Medical History1" in "Display multiple log lines per page"
   Then I verify rows exist in "Display multiple log lines per page" table
@@ -325,7 +325,7 @@ Scenario:@US12607_US19066-08A - Selecting only one assigned form.
    |Adverse Events2  |false   |
    |Medical History1 |false   |
    |Medical History2 |false   |
-  And I verify text "When selected all log lines on the selected form or forms will display continuously. If un-selected a new page will be created for each log line." exists
+  And I verify text "When selected, all log lines on the selected form or forms will display continuously. If un-selected, a new page will be created for each log line." exists
   And I take a screenshot
   When I check "Medical History2" in "Display multiple log lines per page"
   Then I verify rows exist in "Display multiple log lines per page" table
