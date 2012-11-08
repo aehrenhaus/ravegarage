@@ -210,7 +210,7 @@ namespace Medidata.RBT
 
             var element = Browser.CheckboxByID(identifier, true);
             if (element == null)
-                element = GetElementByName(identifier).EnhanceAs<Checkbox>();
+                element = GetElementByName(identifier, areaIdentifier).EnhanceAs<Checkbox>();
 
             if (isChecked)
                 element.Check();
