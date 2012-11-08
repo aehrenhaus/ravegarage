@@ -75,18 +75,21 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BrowserStepsBase.cs" />
-    <Compile Include="Constants.cs" />
-    <Compile Include="EnumHelper.cs" />
-    <Compile Include="ExcelFileHelper.cs" />
-    <Compile Include="ExcelWorkbook.cs" />
-    <Compile Include="FileHelper.cs" />
+    <Compile Include="Helpers\ConsoleWriterSetup.cs" />
+    <Compile Include="Helpers\Constants.cs" />
+    <Compile Include="Helpers\EnumHelper.cs" />
+    <Compile Include="Helpers\ExcelFileHelper.cs" />
+    <Compile Include="Helpers\ExcelWorkbook.cs" />
+    <Compile Include="Helpers\FileHelper.cs" />
+    <Compile Include="Helpers\FilteredConsoleWriter.cs" />
+    <Compile Include="Helpers\MultipleStreamWriter.cs" />
     <Compile Include="PageObjectInterfaces\EmptyPage.cs" />
     <Compile Include="PageObjectInterfaces\EmptyPOFactory.cs" />
     <Compile Include="Misc.cs" />
     <Compile Include="Factory.cs" />
     <Compile Include="SharedObjects\IRemoveableObject.cs" />
     <Compile Include="PageObjectInterfaces\ControlBase.cs" />
-    <Compile Include="DbHelper.cs" />
+    <Compile Include="Helpers\DbHelper.cs" />
     <Compile Include="PageObjectInterfaces\ICanVerifyInOrder.cs" />
     <Compile Include="PageObjectInterfaces\ICanHighlight.cs" />
     <Compile Include="PageObjectInterfaces\IPageObjectFactory.cs" />

@@ -137,15 +137,7 @@ namespace Medidata.RBT
 
 			try
 			{
-				//
-				// This mess of code opens an Excel workbook. I don't know what all
-				// those arguments do, but they can be changed to influence behavior.
-				//
-				_workBook = _excelApp.Workbooks.Open(thisFileName,
-					Type.Missing, Type.Missing, Type.Missing, Type.Missing,
-					Type.Missing, Type.Missing, Type.Missing, Type.Missing,
-					Type.Missing, Type.Missing, Type.Missing, Type.Missing,
-					Type.Missing, Type.Missing);
+				_workBook = _excelApp.Workbooks.Open(thisFileName);
 
 			}
 			catch
