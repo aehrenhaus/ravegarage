@@ -24,7 +24,7 @@ namespace Medidata.RBT.PageObjects.Rave
         public FileRequestPage CreateDataPDF(PDFCreationModel args)
         {
             string linkText = "Create Data Request";
-            if (!string.IsNullOrEmpty(args.Locale) && args.Locale == "LLocalization Test")
+            if (!string.IsNullOrEmpty(args.Locale) && args.Locale.Equals("LLocalization Test",StringComparison.CurrentCultureIgnoreCase))
                 linkText = string.Concat("L",linkText);
 
             ClickLink(linkText);
