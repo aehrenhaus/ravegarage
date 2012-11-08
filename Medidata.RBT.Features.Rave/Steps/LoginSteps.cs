@@ -29,6 +29,7 @@ namespace Medidata.RBT.Features.Rave
 		/// 
 		/// </summary>
         [StepDefinition(@"I am logged in to Rave with default account")]
+		[StepDefinition(@"I login to Rave with default account")]
         public void ILoginToRaveWithDefaultAccount()
         {
             ILoginToRaveWithUsername____AndPassword____(RaveConfiguration.Default.DefaultUser,

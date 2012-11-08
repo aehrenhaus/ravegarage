@@ -25,8 +25,9 @@ namespace Medidata.RBT.PageObjects.Rave
             {
                 Browser.TextboxById("_ctl0_Content_HeaderControl_slSite_TxtBx").SetText(text);
                 Browser.FindElementById("_ctl0_Content_HeaderControl_slSite").Textboxes()[1].Click();
-                var option = Browser.WaitForElement(b => b.FindElements(By.XPath("//div[@id='_ctl0_Content_HeaderControl_slSite_PickListBox']/div")).FirstOrDefault(elm => elm.Text == text),
-                    "");
+                var option = Browser.TryFindElementBy(b =>
+					b.FindElements(By.XPath("//div[@id='_ctl0_Content_HeaderControl_slSite_PickListBox']/div"))
+					.FirstOrDefault(elm => elm.Text == text));
                 option.Click();
 
             }
@@ -34,8 +35,9 @@ namespace Medidata.RBT.PageObjects.Rave
             {
                 Browser.TextboxById("_ctl0_Content_HeaderControl_slSiteGroup_TxtBx").SetText(text);
                 Browser.FindElementById("_ctl0_Content_HeaderControl_slSiteGroup").Textboxes()[1].Click();
-                var option = Browser.WaitForElement(b => b.FindElements(By.XPath("//div[@id='_ctl0_Content_HeaderControl_slSiteGroup_PickListBox']/div")).FirstOrDefault(elm => elm.Text == text),
-                    "");
+                var option = Browser.TryFindElementBy(b => 
+					b.FindElements(By.XPath("//div[@id='_ctl0_Content_HeaderControl_slSiteGroup_PickListBox']/div"))
+					.FirstOrDefault(elm => elm.Text == text));
                 option.Click();
 
             }

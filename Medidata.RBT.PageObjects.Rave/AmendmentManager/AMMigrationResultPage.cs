@@ -15,7 +15,7 @@ namespace Medidata.RBT.PageObjects.Rave.AmendmentManager
 		public void WaitForComplete()
 		{
 			int timeout = 960;
-			var span = Browser.WaitForElement(b=>
+			var span = Browser.TryFindElementBy(b=>
 				{
                     Thread.Sleep(2000);
 					var firstJob = Browser.TryFindElementByPartialID("_lblStatusValue");
@@ -25,7 +25,9 @@ namespace Medidata.RBT.PageObjects.Rave.AmendmentManager
 					this.Browser.Navigate().Refresh();
 					return null;
 
-				},"Take forever to complete", timeout);
+				},true, timeout);
+			if (span==null)
+				throw new Exception("Takes forever to complete");
 		}
 
 		public override string URL

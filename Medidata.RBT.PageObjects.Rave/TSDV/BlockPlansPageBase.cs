@@ -46,7 +46,7 @@ namespace Medidata.RBT.PageObjects.Rave
         {
 
             //only do this if the block plan already doesn't exist
-            IWebElement elem = Browser.FindElementById("_ctl0_Content__ctl0_AddNewBlockPlanLabel");
+            IWebElement elem = Browser.TryFindElementByPartialID("AddNewBlockPlanLabel");
             if (elem != null && elem.Displayed)
             {
                 this.ClickLink("New Block Plan");
@@ -57,8 +57,7 @@ namespace Medidata.RBT.PageObjects.Rave
                 Role role = TestContext.GetExistingFeatureObjectOrMakeNew(dataEntryRole, () => new Role(dataEntryRole));
                 if (role != null)
                 {
-                    var entryRoleDropdown = Browser.TryFindElementBy(By.TagName("Select"));
-                    new SelectElement(entryRoleDropdown).SelectByText(role.UniqueName);
+	                ChooseFromDropdown("NewRoleDDL", role.UniqueName);
                 }
 
                 this.ClickLink("Save");

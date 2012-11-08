@@ -71,7 +71,7 @@ namespace Medidata.RBT.PageObjects.Rave
                 }
                 
                 this.ClickButton("SaveForms");
-                Browser.WaitForElement(b =>
+                Browser.TryFindElementBy(b =>
                 {
                     var pubBtn = Browser.TryFindElementById("PublishButton");
                     if (pubBtn == null || !pubBtn.Enabled)
@@ -80,10 +80,10 @@ namespace Medidata.RBT.PageObjects.Rave
                 });
                 this.ClickButton("PublishButton");
                 //confirmation to publish the draft
-				Browser.WaitForElement(b => Browser.TryFindElementById("_ctl0_Content__ctl10_PublishDraft"));
+				Browser.TryFindElementByPartialID("_ctl0_Content__ctl10_PublishDraft");
 
                 this.ClickButton("_ctl0_Content__ctl10_PublishDraft");
-				Browser.WaitForElement(b => Browser.TryFindElementById("TiersDiv"));
+				Browser.TryFindElementByPartialID("TiersDiv");
             }
           
             return this;

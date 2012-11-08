@@ -1,32 +1,32 @@
 ﻿# When a user selects  Dynamic Allocation Randomization Block algorithm , subject assignment satisfies a specified allocation and ratio is random for all blocks.
-@ignore
+
 Feature: US18812
 	When user selects Dynamic Allocation Randomization Block algorithm
 	Then subject assignment satisfies a specified allocation ratio
 	And subject assignment is random for all blocks
 
 Background:
-	#Given I am logged in to Rave with username "defuser" and password "password"
-	Given xml draft "US18812_SJ.xml" is Uploaded with Environment name "Dev"
-	Given Site "Site 1" with Site Group "Asia" exists
-	Given Site "Site 2" with Site Group "Europe" exists
-	Given Site "Site 3" with Site Group "World" exists
-	Given Site "Site 4" with Site Group "North America" exists
-	Given study "US18812_SJ" is assigned to Site "Site 1" with study environment "Aux: Dev"
-	Given study "US18812_SJ" is assigned to Site "Site 2" with study environment "Aux: Dev"
-	Given study "US18812_SJ" is assigned to Site "Site 3" with study environment "Aux: Dev"
-	Given study "US18812_SJ" is assigned to Site "Site 4" with study environment "Aux: Dev"
-	Given I publish and push eCRF "US18812_SJ.xml" to "Version 1" with study environment "Dev"
-	Given following Project assignments exist
-	| User         | Project    | Environment | Role         | Site   | SecurityRole          | Lines Per Page |
-	| SUPER USER 1 | US18812_SJ | Aux: Dev    | SUPER ROLE 1 | Site 1 | Project Admin Default | 100            |
-	| SUPER USER 1 | US18812_SJ | Aux: Dev    | SUPER ROLE 1 | Site 2 | Project Admin Default | 100            |
-	| SUPER USER 1 | US18812_SJ | Aux: Dev    | SUPER ROLE 1 | Site 3 | Project Admin Default | 100            |
-	| SUPER USER 1 | US18812_SJ | Aux: Dev    | SUPER ROLE 1 | Site 4 | Project Admin Default | 100            |
-	Given following Report assignments exist
-	| User         | Report                                                           |
-	| SUPER USER 1 | Targeted SDV Configuration - Targeted SDV Configuration          |
-	| SUPER USER 1 | Targeted SDV Subject Management - Targeted SDV Subject Managemen |
+	Given I login to Rave with default account
+	#Given xml draft "US18812_SJ.xml" is Uploaded with Environment name "Dev"
+	#Given Site "Site 1" with Site Group "Asia" exists
+	#Given Site "Site 2" with Site Group "Europe" exists
+	#Given Site "Site 3" with Site Group "World" exists
+	#Given Site "Site 4" with Site Group "North America" exists
+	#Given study "US18812_SJ" is assigned to Site "Site 1" with study environment "Aux: Dev"
+	#Given study "US18812_SJ" is assigned to Site "Site 2" with study environment "Aux: Dev"
+	#Given study "US18812_SJ" is assigned to Site "Site 3" with study environment "Aux: Dev"
+	#Given study "US18812_SJ" is assigned to Site "Site 4" with study environment "Aux: Dev"
+	#Given I publish and push eCRF "US18812_SJ.xml" to "Version 1" with study environment "Dev"
+	#Given following Project assignments exist
+	#| User         | Project    | Environment | Role         | Site   | SecurityRole          | Lines Per Page |
+	#| SUPER USER 1 | US18812_SJ | Aux: Dev    | SUPER ROLE 1 | Site 1 | Project Admin Default | 100            |
+	#| SUPER USER 1 | US18812_SJ | Aux: Dev    | SUPER ROLE 1 | Site 2 | Project Admin Default | 100            |
+	#| SUPER USER 1 | US18812_SJ | Aux: Dev    | SUPER ROLE 1 | Site 3 | Project Admin Default | 100            |
+	#| SUPER USER 1 | US18812_SJ | Aux: Dev    | SUPER ROLE 1 | Site 4 | Project Admin Default | 100            |
+	#Given following Report assignments exist
+	#| User         | Report                                                           |
+	#| SUPER USER 1 | Targeted SDV Configuration - Targeted SDV Configuration          |
+	#| SUPER USER 1 | Targeted SDV Subject Management - Targeted SDV Subject Managemen |
 
 
 	# below should be commented out.
@@ -122,19 +122,24 @@ Background:
 
 Scenario: @PB_US18812_01 Enroll 50 subjects in a study to verify that TSDV has randomized the subjects in non sequential order when the subjects are included in TSDV using the Targeted SDV Subject Include report in Study level, Site group level and Site level.
 	#When I select Study "US18812_SJ" and Site "Site 1"
-	When I login to Rave with user "SUPER USER 1"
+	#When I login to Rave with user "SUPER USER 1"
 	And I navigate to "Reporter"
 	And I select Report "Targeted SDV Configuration"
 	And I set report parameter "Study" with table
-		| Name       | Environment |
-		| US18812_SJ | Dev         |
+		| Name                | Environment |
+		| US18812_SJ | Dev         | 
 	And I click button "Submit Report"
 	And I switch to "Targeted SDV Study Plan" window
 	And I create a new block plan named "US18812_SJ (Dev) Block Plan" with Data entry Role "SUPER ROLE 1"
 	And I delete the tier "Architect Defined" from plan
 	And I edit Blocks 
 	| Name              | Subject Count |
-	| Architect Defined | 10            |            
+	| Architect Defined | 10            |
+	
+	And I select link "Tiers"
+	And I remove all costom tiers
+	And I select link "Study Block Plan"
+
 	And I create a custom tier named "Custom Tier 1" and description "Adverse Events" with table
 	| Form           | Selected |
 	| Adverse Events | True     |
@@ -146,7 +151,7 @@ Scenario: @PB_US18812_01 Enroll 50 subjects in a study to verify that TSDV has r
 	| Cholesterol | True     |
 	And I create a custom tier named "Custom Tier 4" and description "Concomitant Medications" with table
 	| Form                    | Selected |
-	| Concomitant Medications | True     |
+	| 	Occlusion  | True     |
 	And I create a custom tier named "Custom Tier 5" and description "Demographics" with table
 	| Form         | Selected |
 	| Demographics | True     |

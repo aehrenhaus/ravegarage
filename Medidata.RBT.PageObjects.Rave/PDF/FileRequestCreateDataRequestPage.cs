@@ -50,7 +50,7 @@ namespace Medidata.RBT.PageObjects.Rave
             if (!string.IsNullOrEmpty(siteGroup))
             {
                 IWebElement div = Browser.TryFindElementById("SitesSitegroups");
-                IWebElement span = Browser.WaitForElement(b => div.Spans().FirstOrDefault(x => x.Text == siteGroup));
+                IWebElement span = Browser.TryFindElementBy(b => div.Spans().FirstOrDefault(x => x.Text == siteGroup));
 
                 span.Checkboxes()[0].EnhanceAs<Checkbox>().Check();
             }
@@ -73,7 +73,7 @@ namespace Medidata.RBT.PageObjects.Rave
                 string siteName = TestContext.GetExistingFeatureObjectOrMakeNew
                     (sName, () => new Site(sName)).UniqueName;
 
-                IWebElement span = Browser.WaitForElement(b => div.Spans().FirstOrDefault(x => x.Text == siteName));
+                IWebElement span = Browser.TryFindElementBy(b => div.Spans().FirstOrDefault(x => x.Text == siteName));
                 span.Checkboxes()[0].EnhanceAs<Checkbox>().Check();
             }
         }
@@ -89,7 +89,7 @@ namespace Medidata.RBT.PageObjects.Rave
                 IWebElement expandBtn = Browser.FindElementById("Subjects_ShowHideBtn");
                 expandBtn.Click();
 
-                IWebElement tr = Browser.WaitForElement(b => b.FindElements(By.XPath("//table[@id='Subjects_FrontEndCBList']/tbody/tr")).FirstOrDefault(x => x.Text == subject));
+                IWebElement tr = Browser.TryFindElementBy(b => b.FindElements(By.XPath("//table[@id='Subjects_FrontEndCBList']/tbody/tr")).FirstOrDefault(x => x.Text == subject));
 
                 tr.Checkboxes()[0].Click();
             }

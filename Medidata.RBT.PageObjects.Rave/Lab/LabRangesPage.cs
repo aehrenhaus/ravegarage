@@ -85,7 +85,7 @@ namespace Medidata.RBT.PageObjects.Rave
         {
             Textbox element = Browser.TryFindElementByPartialID(identifier).EnhanceAs<Textbox>();
             element.SetText(text);
-            var option = Browser.WaitForElement(b => b.FindElementsByPartialId("PickListBox").FirstOrDefault(elm => elm.Text == text));
+            var option = Browser.TryFindElementBy(b => b.FindElementsByPartialId("PickListBox").FirstOrDefault(elm => elm.Text == text));
             Browser.FindElement(By.XPath("*//div[@class = 'SearchList_PickListBoxItem_Hover']")).Click();
           
             //SearchList_PickListBoxItem_Hover

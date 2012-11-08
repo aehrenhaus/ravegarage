@@ -58,7 +58,7 @@ namespace Medidata.RBT.PageObjects.Rave
 		//
 		public SubjectPage CreateSubject(IEnumerable<FieldModel> dps)
 		{
-			IWebElement addSubjectLink = Browser.WaitForElement("lbAddSubject");
+			IWebElement addSubjectLink = Browser.TryFindElementByPartialID("lbAddSubject");
 			addSubjectLink.Click();
 			var prp =new PrimaryRecordPage();
             SubjectPage subPage = prp.FillNameAndSave(dps);
@@ -81,9 +81,8 @@ namespace Medidata.RBT.PageObjects.Rave
 
             //TODO :    Remove the coalescing op when seeding considderation is up to date for all feature files. 
             //          Use site.Name as the text to search for.
-            var siteLink = TestContext.Browser.TryFindElementByLinkText(site.UniqueName);
+            ClickLink(site.UniqueName,null,null);
 
-			siteLink.Click();
 
 			return this;
 		}

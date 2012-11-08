@@ -14,10 +14,10 @@ namespace Medidata.RBT.SeleniumExtension
 {
 	public static class ISearchContextExtend
 	{
-		private static T SelectExtendElementByPartialID<T>(ISearchContext context,string tag, string partialID, bool nullable, bool isWait = true)
+		private static T SelectExtendElementByPartialID<T>(ISearchContext context, string tag, string partialID, bool nullable, bool? isWait = null, int? timeOutSecond = null)
 			where T : EnhancedElement, new()
 		{
-            var ele = context.TryFindElementBy(By.XPath(".//"+tag+"[contains(@id,'" + partialID + "')]"), isWait);
+            var ele = context.TryFindElementBy(By.XPath(".//"+tag+"[contains(@id,'" + partialID + "')]"), isWait,timeOutSecond);
 			if (ele == null)
 			{
 				if (nullable)
@@ -468,43 +468,23 @@ namespace Medidata.RBT.SeleniumExtension
 
 		#region TryFind
 
-		public static T TryFindElementByPartialID<T>(this ISearchContext context, string partialID, string tag=null)
+		public static T TryFindElementByPartialID<T>(this ISearchContext context, string partialID, string tag = null, bool? isWait = null, int? timeOutSecond = null)
 			where T : EnhancedElement, new()
 		{
-			return SelectExtendElementByPartialID<T>(context, tag, partialID, true);
+			return SelectExtendElementByPartialID<T>(context, tag, partialID, true, isWait,timeOutSecond);
 		}
 
-		public static IWebElement TryFindElementByPartialID(this ISearchContext context, string partialID)
+		public static IWebElement TryFindElementByPartialID(this ISearchContext context, string partialID, bool? isWait = null, int? timeOutSecond = null)
 		{
-			var ele = context.TryFindElementBy(By.XPath(".//*[contains(@id,'" + partialID + "')]"));
+			var ele = context.TryFindElementBy(By.XPath(".//*[contains(@id,'" + partialID + "')]"),isWait,timeOutSecond);
 			return ele;
 		}
 
-        public static IWebElement WaitForElement(this IWebDriver driver, 
-            Func<IWebDriver, IWebElement> getElement, 
-            string errorMessage = null, 
-            int? timeOutSecond = null)
-        {
-            return waitForElement(driver, getElement, errorMessage, timeOutSecond);
-        }
+		public static IWebElement TryFindElementByXPath(this ISearchContext context, string xpath, bool? isWait = null , int? timeOutSecond = null)
+		{
+			return context.TryFindElementBy(By.XPath(xpath), isWait, timeOutSecond);
+		}
 
-        public static IWebElement WaitForElement(this IWebDriver driver, By by, string errorMessage = null, int? timeOutSecond = null)
-        {
-            return waitForElement(driver, browser => browser.FindElement(by), errorMessage, timeOutSecond);
-        }
-
-        public static IWebElement WaitForElement(this IWebDriver driver, string partialID, Func<IWebElement, bool> predicate = null, string errorMessage = null, int? timeOutSecond = null)
-        {
-
-            Func<IWebDriver, IWebElement> func = browser => browser.FindElements(By.XPath(".//*[contains(@id,'" + partialID + "')]")).FirstOrDefault((predicate == null) ? (c => true) : predicate);
-
-            return waitForElement(driver, func, errorMessage, timeOutSecond);
-        }
-
-        public static IWebElement WaitForElement(ISearchContext context, By by, string errorMessage = null, int? timeOutSecond = null)
-        {
-           return waitForElement(context, x=> context.FindElement(by), errorMessage, timeOutSecond);
-        }
 
         private static IWebElement waitForElement(
             ISearchContext context, 
@@ -513,38 +493,58 @@ namespace Medidata.RBT.SeleniumExtension
             int? timeOutSecond = null)
         {
 			RemoteWebDriver driver;
-
+			
             if (context is IWrapsDriver)
                 driver = ((IWrapsDriver)context).WrappedDriver as RemoteWebDriver;
             else
                 driver = ((RemoteWebDriver)context);
 
 			
-            timeOutSecond = timeOutSecond ?? 6;
+            timeOutSecond = timeOutSecond ?? SeleniumConfiguration.Default.WaitElementTimeout;
             var wait = new WebDriverWait(driver, TimeSpan.FromSeconds(timeOutSecond.Value));
             IWebElement ele = null;
-            try
-            {
-                ele = wait.Until(getElement);
-            }
-            catch
-            {
-                if (errorMessage == null)
-                    throw;
-                else
-                    throw new Exception(errorMessage);
-            }
+
+	        try
+	        {
+				ele = wait.Until(getElement);
+	        }
+	        catch (Exception err)
+	        {
+		        
+		    
+	        }
+               
+         
             return ele;
         }
 
+		public static IWebElement TryFindElementBy(this ISearchContext context, Func<IWebDriver, IWebElement> getElement, bool? isWait = null, int? timeOutSecond = null)
+		{
+			IWebElement ele = null;
 
-		public static IWebElement TryFindElementBy(this ISearchContext context,  By by, bool isWait = true)
+			isWait = isWait ?? SeleniumConfiguration.Default.WaitByDefault;
+			try
+			{
+				if (isWait.Value)
+					ele = waitForElement(context, getElement, null, timeOutSecond);
+				else
+					ele = waitForElement(context, getElement, null, 0);
+			}
+			catch
+			{
+			}
+			return ele;
+		}
+
+		public static IWebElement TryFindElementBy(this ISearchContext context, By by, bool? isWait = null, int? timeOutSecond = null)
         {
             IWebElement ele = null;
-            try
-            {
-                if (isWait)
-                    ele = WaitForElement(context, by);
+
+			isWait = isWait ?? SeleniumConfiguration.Default.WaitByDefault;
+			try
+			{
+				if (isWait.Value)
+					ele = waitForElement(context, b => context.FindElement(by), null, timeOutSecond);
                 else
                     ele = context.FindElement(by);
             }
@@ -554,18 +554,24 @@ namespace Medidata.RBT.SeleniumExtension
 			return ele;
 		}
 
-		public static IWebElement TryFindElementById(this RemoteWebDriver context, string Id)
+		public static IWebElement TryFindElementById(this ISearchContext context, string Id, bool? isWait = null, int? timeOutSecond = null)
 		{
 			IWebElement ele = null;
+
+			isWait = isWait ?? SeleniumConfiguration.Default.WaitByDefault;
 			try
 			{
-				ele = context.FindElementById(Id);
+				if (isWait.Value)
+					ele = waitForElement(context, b => context.FindElement(By.Id(Id)), null, timeOutSecond);
+				else
+					ele = context.FindElement(By.Id(Id));
 			}
 			catch
 			{
 			}
 			return ele;
 		}
+
 
 		public static IWebElement TryFindElementByName(this RemoteWebDriver context, string name)
 		{
@@ -595,7 +601,7 @@ namespace Medidata.RBT.SeleniumExtension
 			return ele;
 		}
 
-        public static IWebElement TryFindElementBySpanLinktext(this RemoteWebDriver context, string linkText)
+		public static IWebElement TryFindElementBySpanLinktext(this ISearchContext context, string linkText)
         {
             IWebElement ele = null;
             try

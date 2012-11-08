@@ -18,7 +18,7 @@ namespace Medidata.RBT.PageObjects.Rave
 
 		public BaseEDCPage ClickModify()
 		{
-			IWebElement editButton = Browser.WaitForElement("header_SG_PencilButton");
+			IWebElement editButton = Browser.TryFindElementByPartialID("header_SG_PencilButton");
 			if (editButton == null)
 				throw new Exception("Can not find the modify button");
 			editButton.Click();
@@ -37,7 +37,7 @@ namespace Medidata.RBT.PageObjects.Rave
 
 		public BaseEDCPage CancelForm()
 		{
-			IWebElement btn = Browser.WaitForElement("footer_CB");
+			IWebElement btn = Browser.TryFindElementByPartialID("footer_CB");
 			if (btn == null)
 				throw new Exception("Can not find the Cancel button");
 			btn.Click();
@@ -50,7 +50,7 @@ namespace Medidata.RBT.PageObjects.Rave
         /// <returns>This page</returns>
 		public BaseEDCPage SaveForm()
 		{
-			IWebElement btn = Browser.WaitForElement("footer_SB");
+			IWebElement btn = Browser.TryFindElementByPartialID("footer_SB");
 			if (btn == null)
 				throw new Exception("Can not find the Save button");
 			btn.Click();

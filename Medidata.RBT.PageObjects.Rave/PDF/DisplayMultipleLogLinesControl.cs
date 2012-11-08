@@ -82,7 +82,7 @@ namespace Medidata.RBT.PageObjects.Rave
 
             IWebElement displayTr = this.FindInPaginatedList("", () =>
             {
-                HtmlTable table = TestContext.Browser.WaitForElement("CombineLogLinesFrms_FrontEndCBList").EnhanceAs<HtmlTable>();
+                HtmlTable table = TestContext.Browser.TryFindElementByPartialID("CombineLogLinesFrms_FrontEndCBList").EnhanceAs<HtmlTable>();
                 return table.FindMatchRows(dt).FirstOrDefault();
             }, out foundOnPage);
 

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -22,8 +23,11 @@ namespace Medidata.RBT
 
         static SpecialStringHelper()
         {
-			var assembly = typeof(SpecialStringHelper).Assembly;
-			RegisterStringReplaceAssembly(assembly);
+	        foreach (var assembly in Directory.GetFiles(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location),"*.dll"))
+	        {
+				RegisterStringReplaceAssembly(Assembly.LoadFile(assembly));
+	        }
+	        
         }
 
 		private static void RegisterStringReplaceType(Type type)
@@ -112,6 +116,16 @@ namespace Medidata.RBT
 		public static void SetVar(string varName, string value)
 		{
 			TestContext.Vars[varName] = value;
+		}
+
+		public static Table ReplaceTable(Table table)
+		{
+			foreach (var row in table.Rows)
+			{
+				foreach (var col in table.Header)
+					row[col] = Replace(row[col]);
+			}
+			return table;
 		}
 
 		public static Table ReplaceTableColumn(Table table, string colName)

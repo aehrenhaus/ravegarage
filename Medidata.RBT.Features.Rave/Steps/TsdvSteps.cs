@@ -96,6 +96,13 @@ namespace Medidata.RBT.Features.Rave
         }
 
 
+		[StepDefinition(@"I remove all costom tiers")]
+		public void IRemoveAllCustomTiers()
+		{
+			CurrentPage.As<TiersPage>().RemoveTiers();
+		}
+
+
         /// <summary>
         /// 
         /// </summary>

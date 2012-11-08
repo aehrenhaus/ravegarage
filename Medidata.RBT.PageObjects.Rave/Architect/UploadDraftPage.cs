@@ -30,7 +30,7 @@ namespace Medidata.RBT.PageObjects.Rave
         private void WaitForUploadToComplete()
         {
             int waitTime = 480;
-			Browser.WaitForElement(b =>
+			Browser.TryFindElementBy(b =>
                 {
                     IWebElement currentStatus = Browser.FindElementByXPath("//span[@id = 'CurrentStatus']");
                     if (currentStatus.Text.Contains("Save successful"))
@@ -38,9 +38,7 @@ namespace Medidata.RBT.PageObjects.Rave
                     else
                         return null;
                 }
-                ,
-                "Did not complete in time(" + waitTime + "s)", waitTime
-                );
+                , true, waitTime);
         }
 
 		public override string URL

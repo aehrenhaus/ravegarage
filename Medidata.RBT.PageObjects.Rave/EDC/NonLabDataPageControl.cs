@@ -48,6 +48,8 @@ namespace Medidata.RBT.PageObjects.Rave
 						.Split(new string[] { "<" }, StringSplitOptions.None)[0].Trim() == fieldName;
 				});
 
+														  return areaInner;
+	                                                  });
             if (area == null)
                 throw new Exception("Can't find field area:" + fieldName);
             var tds = area.Parent().Children();

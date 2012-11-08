@@ -11,6 +11,7 @@
 
 	<SeleniumConfiguration
 		WaitElementTimeout="10"
+		WaitByDefault="true"
 		/>
 	
 	<!--DownloadPath SHOULD NOT be used for anything else and SHOULD NOT contain other files. 

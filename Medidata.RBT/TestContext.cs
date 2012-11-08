@@ -59,8 +59,12 @@ namespace Medidata.RBT
 	[Binding]
 	public class TestContext
 	{
-		private static bool _watchingForDownload;
-		private static FileInfo _downloadedFile;
+		#region Some context variables that may be used durnig test.
+
+		//System console writer. MSTest will set it to it's own writer, but we will wrap the MSTest's writer inside this writer 
+		//so we can output to both MSTest result and console @ runtime 
+		private static MultipleStreamWriter consoleWriter;
+
 
 		public static FileInfo LastDownloadFile
 		{
@@ -69,74 +73,6 @@ namespace Medidata.RBT
 				return _downloadedFile;
 			}
 		}
-
-		public static RemoteWebDriver Browser { get; set; }
-
-		#region switch browser window
-
-		public static void SwitchBrowserWindow(string windowName)
-		{
-			
-			bool found = false;
-			IWebDriver window = null;
-			foreach (var handle in Browser.WindowHandles)
-			{
-				window = Browser.SwitchTo().Window(handle);
-				if (window.Title == windowName)
-				{
-					found = true;
-					break;
-				}
-			}
-			if (!found) throw new Exception(string.Format("window {0} not found", windowName));
-			while (Browser.Url == "about:blank")
-				Thread.Sleep(500);
-			
-			CurrentPage = TestContext.POFactory.GetPageByUrl(new Uri(Browser.Url));
-		}
-
-		public static void SwitchToSecondBrowserWindow()
-		{
-			if (Browser.WindowHandles.Count < 2)
-				throw new Exception("There isn't a second window");
-			var secondWindowHandle = Browser.WindowHandles[1];
-
-			IWebDriver window = Browser.SwitchTo().Window(secondWindowHandle);
-
-			while (Browser.Url == "about:blank")
-				Thread.Sleep(500);
-			CurrentPage = TestContext.POFactory.GetPageByUrl(new Uri(Browser.Url));
-		}
-
-
-		public static void SwitchToMainBrowserWindow(bool close = false)
-		{
-			if (close)
-				Browser.Close();
-
-			var secondWindowHandle = Browser.WindowHandles[0];
-
-			IWebDriver window = Browser.SwitchTo().Window(secondWindowHandle); ;
-
-			CurrentPage = TestContext.POFactory.GetPageByUrl(new Uri(Browser.Url));
-		}
-
-		public static void AcceptAlert()
-		{
-			CurrentPage.As<PageBase>().GetAlertWindow().Accept();
-
-			var uri = new Uri(Browser.Url);
-			CurrentPage = TestContext.POFactory.GetPageByUrl(uri);
-		}
-
-		public static void CancelAlert()
-		{
-			CurrentPage.As<PageBase>().GetAlertWindow().Dismiss();
-			var uri = new Uri(Browser.Url);
-			CurrentPage = TestContext.POFactory.GetPageByUrl(uri);
-		}
-
-		#endregion
 
 		public static IPage CurrentPage
 		{
@@ -154,6 +90,21 @@ namespace Medidata.RBT
 		{
 			get;
 			set;
+		}
+
+		/// <summary>
+		/// A variable holding temp string during scenario?? 
+		/// </summary>
+		public static string ScenarioText
+		{
+			get
+			{
+				return Storage.GetFeatureLevelValue<string>("ScenarioText");
+			}
+			set
+			{
+				Storage.SetFeatureLevelValue("ScenarioText", value);
+			}
 		}
 
         /// <summary>
@@ -217,18 +168,6 @@ namespace Medidata.RBT
 			}
 		}
 
-        public static string ScenarioText
-        {
-            get
-            {
-				return Storage.GetFeatureLevelValue<string>("ScenarioText");
-            }
-            set
-            {
-               Storage.SetFeatureLevelValue("ScenarioText", value);
-            }
-        }
-
 		public static DateTime? CurrentFeatureStartTime { get; set; }
 
 		public static int ScreenshotIndex { get; private set; }
@@ -257,22 +196,32 @@ namespace Medidata.RBT
 			}
 		}
 
-		private static void Do()
-		{
-			System.Diagnostics.Process p = new System.Diagnostics.Process();
+		public static RemoteWebDriver Browser { get; set; }
 
-#if DEBUG
-			p.StartInfo = new System.Diagnostics.ProcessStartInfo(
-				@"powershell.exe",
-			"-NoExit ../../../reportGen.ps1");
-#else
-				p.StartInfo = new System.Diagnostics.ProcessStartInfo(
-				@"powershell.exe",
-			"../../../reportGen.ps1");
-#endif
-			p.Start();
+
+		private static IPageObjectFactory _POFactory;
+		public static IPageObjectFactory POFactory
+		{
+			get
+			{
+				if (CurrentPage == null)
+					return new EmptyPOFactory();
+				if (_POFactory == null)
+				{
+					Type factoryType = CurrentPage.GetType()
+						.Assembly
+						.GetTypes()
+						.FirstOrDefault(x => x.GetInterface("IPageObjectFactory") != null && !x.IsAbstract);
+					_POFactory = Activator.CreateInstance(factoryType) as IPageObjectFactory;
+				}
+				return _POFactory;
+			}
 		}
-		private static MultipleStreamWriter output;
+
+		#endregion
+
+
+		#region Test setup and tear down
 
 		/// <summary>
 		/// After whole test
@@ -280,22 +229,12 @@ namespace Medidata.RBT
 		[AfterTestRun]
 		public static void TestTearDown()
 		{
-			//generate report using powershell
-			if (RBTConfiguration.Default.GenerateReportAfterTest)
-			{
-		
-				System.Diagnostics.Process p = new System.Diagnostics.Process();
-				p.StartInfo = new System.Diagnostics.ProcessStartInfo(
-					@"powershell.exe",
-					"../../../reportGen.ps1");
-				p.Start();
-			}
 
-            
 
-			//close browser
 			if (RBTConfiguration.Default.AutoCloseBrowser)
 				CloseBrower();
+
+			GernerateReport();
 		}
 
 		/// <summary>
@@ -312,7 +251,7 @@ namespace Medidata.RBT
 
 			SpecialStringHelper.Replaced += new Action<string, string>((input, output) =>
 			{
-				Console.WriteLine("replace --> " + input + " --> " + output);
+				Console.WriteLine("-> replace --> " + input + " --> " + output);
 			});
 		}
 
@@ -348,14 +287,15 @@ namespace Medidata.RBT
             TestContext.CurrentUser = null;
 			if (output ==null)
 			{
-				output = new MultipleStreamWriter();
+				consoleWriter = new MultipleStreamWriter();
 				var extraConsole = ExtraConsoleWriterSetup.GetConsoleWriter();
-				output.AddStreamWriter(new FilteredWriter(extraConsole));
+				consoleWriter.AddStreamWriter(new FilteredWriter(extraConsole));
 
 				//the previous Console.Out has already been redirect to MSTest output, add it back to multiple output writer, so we still see results from MSTest
-				output.AddStreamWriter(Console.Out);
-				Console.SetOut(output);
-				Console.WriteLine("Set console output to console");
+				consoleWriter.AddStreamWriter(Console.Out);
+				Console.SetOut(consoleWriter);
+				Console.WriteLine("-------------> Scenario:" + ScenarioName);
+				Console.WriteLine();
 			}
 			Storage.ScenarioValues.Clear();
 
@@ -400,68 +340,93 @@ namespace Medidata.RBT
             
         }
 
-	    /// <summary>
-		/// Points to the folder that contains result files(Screenshots etc.)
+		#endregion
+
+		#region watching file download
+
+		//the system can only watch for 1 download for a time, this flag indicates whether a download is being watched.
+		private static bool _watchingForDownload;
+
+		//last downloaded file.
+		private static FileInfo _downloadedFile;
+
+		/// <summary>
+		/// returns the last download file's full name
 		/// </summary>
 		/// <returns></returns>
-		public static string GetTestResultPath()
+		public static void WatchForDownload()
 		{
-			string featureStartTime = CurrentFeatureStartTime.ToString().Replace(":", "-").Replace("/", "-");
+			if (_watchingForDownload)
+			{
+				throw new Exception("Only 1 download task can be watched at a time.");
+			}
+			_watchingForDownload = true;
+			_downloadedFile = null;
 
-			//file path
-			string path = RBTConfiguration.Default.TestResultPath
-				.Replace("{time}", featureStartTime);
+			// Create a new FileSystemWatcher and set its properties.
+			FileSystemWatcher watcher = new FileSystemWatcher();
+			watcher.Path = RBTConfiguration.Default.DownloadPath;
 
-			return path;
+			/* Watch for changes in LastAccess and LastWrite times, and 
+			   the renaming of files or directories. */
+			watcher.NotifyFilter = NotifyFilters.LastAccess | NotifyFilters.LastWrite
+			   | NotifyFilters.FileName | NotifyFilters.DirectoryName;
+
+			watcher.IncludeSubdirectories = false;
+
+			// Only watch text files.
+			watcher.Filter = "*.*";
+
+			// Add event handlers.
+
+			watcher.Created += new FileSystemEventHandler(watcher_Created);
+
+
+			// Begin watching.
+			watcher.EnableRaisingEvents = true;
 		}
 
-		public static void TrySaveScreenShot(bool explicitTake = false)
+		static void watcher_Created(object sender, FileSystemEventArgs e)
 		{
-            //If configured to take sceenshot after every step, don't take those from step command to avoid duplicate
-            if (RBTConfiguration.Default.TakeScreenShotsEveryStep && !explicitTake)
+			//ignore this temp file created by firefox
+			if (Path.GetExtension(e.FullPath) == ".part")
+			{
 				return;
-
-			try
-			{
-				if (Browser is ITakesScreenshot)
-				{
-					string resultPath = GetTestResultPath();
-
-					var fileName = ScreenshotIndex.ToString();
-					fileName = ScenarioName+"_"+fileName+ ".jpg";
-
-					Console.WriteLine("img->"+fileName);
-					Console.WriteLine( "->"+Browser.Url);
-					//file path
-					string screenshotPath = Path.Combine(resultPath,fileName);
-
-					Directory.CreateDirectory(new FileInfo(screenshotPath).DirectoryName);
-					var screenShot = ((ITakesScreenshot)Browser).GetScreenshot();
-					screenShot.SaveAsFile(screenshotPath, ImageFormat.Jpeg);
-
-				}
 			}
-			catch
-			{
-			}
-
-			ScreenshotIndex++;
+			_downloadedFile = new FileInfo(e.FullPath);
 		}
 
-		#region Private methods
-
-		private static string MakeValidFileName(string name)
+		public static FileInfo WaitForDownloadFinish()
 		{
-			//TODO: implment
-			return name;
-		}
+			while (_downloadedFile == null)
+			{
+				Thread.Sleep(500);
+			}
 
+			_watchingForDownload = false;
+
+			return _downloadedFile;
+		}
+		#endregion
+
+		#region Open/close browsers / Screenshot /Report generation
 
 		private static void OpenBrower()
 		{
 			if (Browser == null)
 			{
 				Browser = OpenBrowser();
+			}
+		}
+
+
+		private static void CloseBrower()
+		{
+			//Close browser
+			if (Browser != null)
+			{
+				Browser.Close();
+				Browser = null;
 			}
 		}
 
@@ -507,68 +472,82 @@ namespace Medidata.RBT
 			return _webdriver;
 		}
 
+		private static void GernerateReport()
+		{
+	
+										   System.Diagnostics.Process p = new System.Diagnostics.Process();
+
+#if DEBUG
+										   p.StartInfo = new System.Diagnostics.ProcessStartInfo(
+											   @"powershell.exe",
+										   "-NoExit ../../../reportGen.ps1");
+										   p.Start();
+										   //p.WaitForExit();
+#else
+				p.StartInfo = new System.Diagnostics.ProcessStartInfo(
+				@"powershell.exe",
+			"../../../reportGen.ps1");
+			p.Start();
+#endif
+
+				     
+	
+		}
+		/// <summary>
+		/// Points to the folder that contains result files(Screenshots etc.)
+		/// </summary>
+		/// <returns></returns>
+		public static string GetTestResultPath()
+		{
+			string featureStartTime = CurrentFeatureStartTime.ToString().Replace(":", "-").Replace("/", "-");
+
+			//file path
+			string path = RBTConfiguration.Default.TestResultPath
+				.Replace("{time}", featureStartTime);
+
+			return path;
+		}
+
+		public static void TrySaveScreenShot(bool explicitTake = false)
+		{
+			//If configured to take sceenshot after every step, don't take those from step command to avoid duplicate
+			if (RBTConfiguration.Default.TakeScreenShotsEveryStep && !explicitTake)
+				return;
+
+			try
+			{
+				if (Browser is ITakesScreenshot)
+				{
+					string resultPath = GetTestResultPath();
+
+					var fileName = ScreenshotIndex.ToString();
+					fileName = ScenarioName + "_" + fileName + ".jpg";
+
+					Console.WriteLine("img->" + fileName);
+					Console.WriteLine("->" + Browser.Url);
+					//file path
+					string screenshotPath = Path.Combine(resultPath, fileName);
+
+					Directory.CreateDirectory(new FileInfo(screenshotPath).DirectoryName);
+					var screenShot = ((ITakesScreenshot)Browser).GetScreenshot();
+					screenShot.SaveAsFile(screenshotPath, ImageFormat.Jpeg);
+
+				}
+			}
+			catch
+			{
+			}
+
+			ScreenshotIndex++;
+		}
+
+
+		#endregion 
+
+		#region Remove temp files
 
 
 		/// <summary>
-		/// returns the last download file's full name
-		/// </summary>
-		/// <returns></returns>
-		public static void WatchForDownload()
-		{
-			if (_watchingForDownload)
-			{
-				throw new Exception("Only 1 download task can be watched at a time.");
-			}
-			_watchingForDownload = true;
-			_downloadedFile = null;
-
-			// Create a new FileSystemWatcher and set its properties.
-			FileSystemWatcher watcher = new FileSystemWatcher();
-			watcher.Path = RBTConfiguration.Default.DownloadPath;
-
-			/* Watch for changes in LastAccess and LastWrite times, and 
-			   the renaming of files or directories. */
-			watcher.NotifyFilter = NotifyFilters.LastAccess | NotifyFilters.LastWrite
-			   | NotifyFilters.FileName | NotifyFilters.DirectoryName;
-
-			watcher.IncludeSubdirectories = false;
-
-			// Only watch text files.
-			watcher.Filter = "*.*";
-
-			// Add event handlers.
-
-			watcher.Created += new FileSystemEventHandler(watcher_Created);
-
-			
-			// Begin watching.
-			watcher.EnableRaisingEvents = true; 
-		}
-
-		static void watcher_Created(object sender, FileSystemEventArgs e)
-		{
-			//ignore this temp file created by firefox
-			if (Path.GetExtension(e.FullPath)==".part")
-			{
-				return;
-			}
-			_downloadedFile = new FileInfo(e.FullPath);
-		}
-
-		public static FileInfo WaitForDownloadFinish()
-		{
-			while (_downloadedFile == null)
-			{
-				Thread.Sleep(500);
-			}
-
-			_watchingForDownload = false;
-
-			return _downloadedFile;
-		}
-
-
-        /// <summary>
         /// Delete all files in the download path
         /// </summary>
         private static void DeleteAllDownloadFiles()
@@ -638,35 +617,7 @@ namespace Medidata.RBT
             }
         }
 
-		private static void CloseBrower()
-		{
-			//Close browser
-			if (Browser != null)
-			{
-				Browser.Close();
-				Browser = null;
-			}
-		}
-
 		#endregion
 
-		private static IPageObjectFactory _POFactory;
-		public static  IPageObjectFactory POFactory
-		{
-			get
-			{
-				if (CurrentPage == null)
-					return new EmptyPOFactory();
-				if (_POFactory == null)
-				{
-					Type factoryType = CurrentPage.GetType()
-						.Assembly
-						.GetTypes()
-						.FirstOrDefault(x => x.GetInterface("IPageObjectFactory") != null && !x.IsAbstract) ;
-					_POFactory = Activator.CreateInstance(factoryType) as IPageObjectFactory;
-				}
-				return _POFactory;
-			}
-		}
 	}
 }

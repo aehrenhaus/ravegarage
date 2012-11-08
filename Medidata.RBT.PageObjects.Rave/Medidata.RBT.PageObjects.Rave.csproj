@@ -193,6 +193,7 @@
     <Compile Include="TableModels\TaskSummaryItemModel.cs" />
     <Compile Include="TableModels\UnitConversionModel.cs" />
     <Compile Include="TSDV\BlockPlansPageBase.cs" />
+    <Compile Include="TSDV\TiersPage.cs" />
     <Compile Include="TSDV\CustomTierDraftPage.cs" />
     <Compile Include="TSDV\SiteGroupBlockPlansPage.cs" />
     <Compile Include="TSDV\StudyBlockPlansPage.cs" />

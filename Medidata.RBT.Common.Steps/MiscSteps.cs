@@ -32,7 +32,8 @@ namespace Medidata.RBT.Common.Steps
         [StepDefinition(@"I switch to ""([^""]*)"" window")]
 		public void ISwitchTo____Window(string windowName)
 		{
-			TestContext.SwitchBrowserWindow(windowName);
+			Browser.SwitchBrowserWindow(windowName);
+			CurrentPage = TestContext.POFactory.GetPageByUrl(new Uri(Browser.Url));
 		}
 
 		/// <summary>
@@ -41,7 +42,8 @@ namespace Medidata.RBT.Common.Steps
 		[StepDefinition(@"I switch to the second window")]
 		public void ISwitchToTheSecondWindow()
 		{
-			TestContext.SwitchToSecondBrowserWindow();
+			Browser.SwitchToSecondBrowserWindow();
+			CurrentPage = TestContext.POFactory.GetPageByUrl(new Uri(Browser.Url));
 		}
 
 		/// <summary>
@@ -50,7 +52,8 @@ namespace Medidata.RBT.Common.Steps
 		[StepDefinition(@"I switch to main window")]
 		public void ISwitchToMainWindow()
 		{
-			TestContext.SwitchToMainBrowserWindow();
+			Browser.SwitchToMainBrowserWindow();
+			CurrentPage = TestContext.POFactory.GetPageByUrl(new Uri(Browser.Url));
 		}
 
 		/// <summary>
@@ -59,7 +62,8 @@ namespace Medidata.RBT.Common.Steps
         [StepDefinition(@"I accept alert window")]
         public void IAcceptAlertWindow()
         {
-			TestContext.AcceptAlert();
+			CurrentPage.As<PageBase>().GetAlertWindow().Accept();
+			CurrentPage = TestContext.POFactory.GetPageByUrl(new Uri(Browser.Url));
         }
 
 		/// <summary>
@@ -68,7 +72,8 @@ namespace Medidata.RBT.Common.Steps
         [StepDefinition(@"I dismiss alert window")]
         public void IDismissAlertWindow()
         {
-			TestContext.CancelAlert();
+			CurrentPage.As<PageBase>().GetAlertWindow().Dismiss();
+			CurrentPage = TestContext.POFactory.GetPageByUrl(new Uri(Browser.Url));
         }
 
 		[StepDefinition(@"I verify current URL is ""([^""]*)""")]
