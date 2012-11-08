@@ -95,10 +95,10 @@ Scenario:@US12607_US19066-02A - The localization user can view strings are local
 
   Given I login to Rave with user "US12607_locuser"
   And I create a Subject
-    |Field               |Data              |Control Type |
-    |Subject Initials    |SUB               |textbox      |
-    |Subject Number      |{RndNum<num2>(3)} |textbox      |
-    |Subject ID 	     |SUB {Var(num2)}   |textbox      |
+    |Field                |Data              |Control Type |
+    |LSubject Initials    |SUB               |textbox      |
+    |LSubject Number      |{RndNum<num2>(3)} |textbox      |
+    |LSubject ID 	      |SUB {Var(num2)}   |textbox      |
   And I navigate to "LHome"
   And I navigate to "LPDF Generator" module
   And I select link "LCreate Data Request"  

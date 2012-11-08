@@ -142,11 +142,6 @@
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
     </Compile>
-    <Compile Include="Features\EDC\US12994_DT109911.feature.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>US12994_DT10991.feature</DependentUpon>
-    </Compile>
     <Compile Include="Features\EDC\US18745_DT11148_AddEvents.feature.cs">
       <DependentUpon>US18745_DT11148_AddEvents.feature</DependentUpon>
       <DesignTime>True</DesignTime>
@@ -248,11 +243,6 @@
       <DependentUpon>US17943.feature</DependentUpon>
     </Compile>
     <Compile Include="Features\Labs\US18358_DT14073.feature.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>US18358_DT14073.feature</DependentUpon>
-    </Compile>
-    <Compile Include="Features\Labs\US18358_DT140733.feature.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>US18358_DT14073.feature</DependentUpon>
