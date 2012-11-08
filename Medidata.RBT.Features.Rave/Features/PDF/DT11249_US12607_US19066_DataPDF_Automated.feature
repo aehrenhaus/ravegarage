@@ -105,9 +105,9 @@ Scenario:@US12607_US19066-02A - The localization user can view strings are local
   And I create Data PDF
    |Name                       |Profile      |Study                |Environment   |Role          |Locale             |
    |LocDataPDF{RndNum<num>(3)} |US12607PDFA  |US12607DataPDFStudy  |LProd         |SUPER ROLE 1  |LLocalization Test |
-  And I click edit datapdf "LLocDataPDF{Var(num)}"  
+  And I click edit datapdf "LocDataPDF{Var(num)}"  
   And I verify text "LDisplay multiple log lines per page" exists
-  And I expand LDisplay multiple log lines per page
+  And I expand Display multiple log lines per page
   And I verify rows exist in "Display multiple log lines per page" table
    |Form              |Checked |
    |LAdverse Events1  |false   |
