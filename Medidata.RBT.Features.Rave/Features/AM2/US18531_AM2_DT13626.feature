@@ -4,7 +4,7 @@ Feature: When records are soft deleted by an edit check, duplicate records shoul
 
 Background: 
 Given xml draft "DT13626.xml" is Uploaded
-Given study "DT13626" is assigned to site "Site_001"
+Given study "DT13626" is assigned to Site "Site_001"
 Given following Project assignments exist
 | User         | Project | Environment | Role         | Site     | SecurityRole          |
 | SUPER USER 1 | DT13626 | Live: Prod  | SUPER ROLE 1 | Site_001 | Project Admin Default |
@@ -39,13 +39,12 @@ Given following Report assignments exist
 Scenario:  When the data is soft deleted and subject is migrated, then extra records should not be created
 
 Given I login to Rave with user "SUPER USER 1"
-And I select Study "DT13626" and Site "Site_001"
 And I create a Subject
     |Field               |Data              |Control Type |
     |Subject Initials    |SUB               |textbox      |
     |Subject Number      |{RndNum<num1>(3)} |textbox      |
     |Subject ID 	     |SUB {Var(num1)}   |textbox      |	
-And I navigate to form "Form A"
+And I select Form "Form A"
 And I enter data in CRF and save
     | Field   | Data | Control Type |
     | Field A | Yes  | Drop Down    |

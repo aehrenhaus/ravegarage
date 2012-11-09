@@ -6,7 +6,7 @@ Feature: When records are soft deleted by an edit check, duplicate records shoul
 
 Background: 
 Given xml draft "DT13626.xml" is Uploaded
-Given study "DT13626" is assigned to site "Site_001"
+Given study "DT13626" is assigned to Site "Site_001"
 Given following Project assignments exist
 | User         | Project | Environment | Role         | Site     | SecurityRole          |
 | SUPER USER 1 | DT13626 | Live: Prod  | SUPER ROLE 1 | Site_001 | Project Admin Default |
