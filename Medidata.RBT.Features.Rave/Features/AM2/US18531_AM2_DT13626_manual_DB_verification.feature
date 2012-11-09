@@ -59,7 +59,7 @@ And I navigate to form "Form A"
 And I enter data in CRF and save
     | Field   | Data | Control Type |
     | Field A | No   | Drop Down    |
-And I verify Form "Form B" is not displayed
+And I verify text "Form B" does not exist
 And I take a screenshot
 Given I publish and push eCRF "DT13626.xml" to "Version 2"
 And I go to Amendment Manager for study "DT13626"

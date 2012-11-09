@@ -10,8 +10,8 @@ Given following Project assignments exist
 | SUPER USER 1 | DT13626 | Live: Prod  | SUPER ROLE 1 | Site_001 | Project Admin Default |
 Given I publish and push eCRF "DT13626.xml" to "Version 1"
 Given following Report assignments exist
-| User         | Report      |
-| SUPER USER 1 | Audit Trail |
+| User         | Report							  |
+| SUPER USER 1 | Audit Trail - Audit Trail Report |
 
 	
 #And mixed form "Form A" exists
@@ -50,12 +50,12 @@ And I enter data in CRF and save
     | Field A | Yes  | Drop Down    |
     | Field B | 1234 | textbox      |
     | Field C | 5678 | textbox      |
-And I verify Form "Form B" is displayed
+And I verify text "Form B" exists
 And I take a screenshot
 And I enter data in CRF and save
     | Field   | Data | Control Type |
     | Field A | No   | Drop Down    |
-And I verify Form "Form B" is not displayed
+And I verify text "Form B" does not exist
 And I take a screenshot
 Given I publish and push eCRF "DT13626.xml" to "Version 2"
 And I go to Amendment Manager for study "DT13626"
