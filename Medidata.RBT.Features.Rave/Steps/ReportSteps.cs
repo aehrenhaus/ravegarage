@@ -3,6 +3,7 @@ using Medidata.RBT.PageObjects.Rave;
 using TechTalk.SpecFlow.Assist;
 using System.Collections.Generic;
 using Medidata.RBT.PageObjects.Rave.SharedRaveObjects;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Medidata.RBT.Features.Rave
 {
@@ -101,6 +102,15 @@ namespace Medidata.RBT.Features.Rave
 			CurrentPage.As<ReportsPage>().VerifyHelpLinksInPromptsPage(reports);
 		}
 
+        /// <summary>
+        /// Verifies that no duplicate records exist
+        /// </summary>
+        [StepDefinition(@"I verify duplicate records are not displayed")]
+        public void IVerifyDuplicateRecordsAreNotDisplayed()
+        {
+            bool result = CurrentPage.As<CrystalReportPage>().VerifyDuplicateRecordsAreNotDisplayed();
+            Assert.IsTrue(result);
+        }
 
 	}
 }
