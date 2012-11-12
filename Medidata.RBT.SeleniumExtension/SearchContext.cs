@@ -462,7 +462,7 @@ namespace Medidata.RBT.SeleniumExtension
 
 		public static ReadOnlyCollection<EnhancedElement> FindImagebuttons(this ISearchContext context)
 		{
-			return context.FindElements(By.XPath(".//input[@type='image']")).CastReadOnlyCollection < EnhancedElement>();
+            return context.FindElements(By.XPath(".//input[@type='image']")).CastReadOnlyCollection<EnhancedElement>();
 		}
 
 

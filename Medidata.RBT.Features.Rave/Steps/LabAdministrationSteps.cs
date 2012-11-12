@@ -2,6 +2,9 @@
 using Medidata.RBT.PageObjects.Rave;
 using TechTalk.SpecFlow.Assist;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Medidata.RBT.PageObjects.Rave.SharedRaveObjects;
+using System.Collections.Generic;
+using Medidata.RBT.PageObjects.Rave.TableModels;
 
 namespace Medidata.RBT.Features.Rave
 {
@@ -93,6 +96,21 @@ namespace Medidata.RBT.Features.Rave
             CurrentPage.As<LabUnitDictionariesPage>().LabUnitDictionariesDelete(table.CreateSet<ArchitectObjectModel>());
         }
 
+        #endregion
+
+        #region Range Types
+        /// <summary>
+        /// Check that the rangetypes exist add them if they don't
+        /// </summary>
+        /// <param name="table">Table containing the rangetypes to check</param>
+        [StepDefinition(@"the following Range Types exist")]
+        public void TheFollowingRangeTypesExists(Table table)
+        {
+            IEnumerable<RangeTypeModel> rangeTypeList = table.CreateSet<RangeTypeModel>();
+
+            foreach (RangeTypeModel rangeType in rangeTypeList)
+                TestContext.GetExistingFeatureObjectOrMakeNew<RangeType>(rangeType.RangeTypeName, () => new RangeType(rangeType.RangeTypeName));
+        }
         #endregion
 
         #region Global Variables

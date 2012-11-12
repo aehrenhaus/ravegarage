@@ -115,6 +115,7 @@
     <Compile Include="EDC\TaskSummaryItem.cs" />
     <Compile Include="Lab\AnalytesPage.cs" />
     <Compile Include="Lab\CentralLabsPage.cs" />
+    <Compile Include="Lab\RangeTypesPage.cs" />
     <Compile Include="Lab\LabLoaderPage.cs" />
     <Compile Include="Lab\CopyLabRanges.cs" />
     <Compile Include="Lab\GlobalDataDictionariesPage.cs" />
@@ -144,6 +145,7 @@
     <Compile Include="ReportAdmin\PackageDownload.cs" />
     <Compile Include="ReportAdmin\ReportManagerPage.cs" />
     <Compile Include="ReportAdmin\ReportAssignmentPage.cs" />
+    <Compile Include="SharedRaveObjects\RangeType.cs" />
     <Compile Include="SharedRaveObjects\LabConfiguration.cs" />
     <Compile Include="SharedRaveObjects\ModuleAssignment.cs" />
     <Compile Include="SharedRaveObjects\PdfProfile.cs" />
@@ -173,6 +175,7 @@
     <Compile Include="TableModels\AnalyteRangeModel.cs" />
     <Compile Include="TableModels\ArchitectObjectModel.cs" />
     <Compile Include="TableModels\AuditModel.cs" />
+    <Compile Include="TableModels\RangeTypeModel.cs" />
     <Compile Include="TableModels\FormModel.cs" />
     <Compile Include="TableModels\PDFCreationModel.cs" />
     <Compile Include="TableModels\PdfProfileModel.cs" />

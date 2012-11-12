@@ -4,7 +4,6 @@
 #Note: KnownDT14336 - Bold and Italic field and data are not converted in Data PDF's and Annotated PDF's when Font: Times New Roman Embedded is used
 # When a PDF form is generated special character such as "<" ">" "≤" "≥" "•" should be displayed properly
 # Carriage return should display correctly on the generated data PDF when Bold font is used in Field Label.
-#Uncommented
 @ignore
 Feature: When an EDC form contains special characters such as "<" ">" "≤" "≥" the PDF file should display the special characters appropriately.
 #Rave architect allows for characters that the PDF generator does support. The PDF generator should convert the special characters so that they are displayed appropriately as follows:
@@ -55,6 +54,9 @@ Given following PDF Configuration Profile Settings exist
 	| US12175PDF6  |
 Given xml draft "PDF_Font_Study_Draft_1.xml" is Uploaded
 Given study "PDF Font Study" is assigned to Site "Site_001"
+And the following Range Types exist
+	| Range Type Name                        |
+	| &lt &lt; &gt &gt; &le; &ge;Range&le&ge |
 And I navigate to "Site Administration" module
 And I search for site "Site_001"
 And I select Site Details for Site "Site_001"
@@ -78,10 +80,7 @@ Given I publish and push eCRF "PDF_Font_Study_Draft_1.xml" to "Version 1"
 # |&le&geWBC&lt &lt; &gt &gt; &le; &ge; |&le&geUnit&lt &lt; &gt &gt; &le; &ge; |
 # |&le&geNeutrophils&lt &lt; &gt &gt; &le; &ge; |&le&geUnit&lt &lt; &gt &gt; &le; &ge; |
 #
-# And the following Range Types exists
-# |Range Type |
-# |&lt &lt; &gt &gt; &le; &ge;Range&le&ge |
-#
+
 # And lab "&le&geLab&lt &lt; &gt &gt; &le; &ge;" with Description "US12175" with Range Type "&lt &lt; &gt &gt; &le; &ge;Range&le&ge" has analyte "Analyte" has from date "From Date" has to date "To Date" has low value "Low Value" has high value "High Value" has units "Units"
 # |Analyte |From Date |To Date |Low Value |High Value |Units |
 # |&le&geWBC&lt &lt; &gt &gt; &le; &ge; |01 Jan 2005 |01 Jan 2015 |15 |25 |&le&geUnit&lt &lt; &gt &gt; &le; &ge; |
@@ -108,22 +107,24 @@ And I wait for PDF "Blank PDF A{Var(num2)}" to complete
 And I take a screenshot
 When I View Blank PDF "Blank PDF A{Var(num2)}"
 Then the text should not contain "<Symbol>"
-| Symbol      |
-| &lt         |
-| &lt;        |
-| &gt         |
-| &gt;        |
-| &le;        |
-| &ge;        |
-| &lt;li&gt;  |
-| &lt;br/&gt; |
-| <li>        |
-| <br />      |
-| &le         |
-| &ge         |
-| < =         |
-| > =         |
-| <b>         |
+| Symbol                |
+| &lt                   |
+| &lt;                  |
+| &gt                   |
+| &gt;                  |
+| &le;                  |
+| &ge;                  |
+| &lt;li&gt;            |
+| &lt;br/&gt;           |
+| <li>                  |
+| <br />                |
+| &le                   |
+| &ge                   |
+| < =                   |
+| > =                   |
+| <b>                   |
+| Test1=Test2=Test3=    |
+| Test1==Test2==Test3== |
 And the text should contain "<Symbol>"
 | Symbol |
 | <      |
@@ -147,22 +148,24 @@ And I wait for PDF "Blank PDF B{Var(num3)}" to complete
 And I take a screenshot
 When I View Blank PDF "Blank PDF B{Var(num3)}"
 Then the text should not contain "<Symbol>"
-| Symbol      |
-| &lt         |
-| &lt;        |
-| &gt         |
-| &gt;        |
-| &le;        |
-| &ge;        |
-| &lt;li&gt;  |
-| &lt;br/&gt; |
-| <li>        |
-| <br />      |
-| &le         |
-| &ge         |
-| < =         |
-| > =         |
-| <b>         |
+| Symbol                |
+| &lt                   |
+| &lt;                  |
+| &gt                   |
+| &gt;                  |
+| &le;                  |
+| &ge;                  |
+| &lt;li&gt;            |
+| &lt;br/&gt;           |
+| <li>                  |
+| <br />                |
+| &le                   |
+| &ge                   |
+| < =                   |
+| > =                   |
+| <b>                   |
+| Test1=Test2=Test3=    |
+| Test1==Test2==Test3== |
 And the text should contain "<Symbol>"
 | Symbol |
 | <      |
@@ -186,22 +189,24 @@ And I wait for PDF "Blank PDF C{Var(num4)}" to complete
 And I take a screenshot
 When I View Blank PDF "Blank PDF C{Var(num4)}"
 Then the text should not contain "<Symbol>"
-| Symbol      |
-| &lt         |
-| &lt;        |
-| &gt         |
-| &gt;        |
-| &le;        |
-| &ge;        |
-| &lt;li&gt;  |
-| &lt;br/&gt; |
-| <li>        |
-| <br />      |
-| &le         |
-| &ge         |
-| < =         |
-| > =         |
-| <b>         |
+| Symbol                |
+| &lt                   |
+| &lt;                  |
+| &gt                   |
+| &gt;                  |
+| &le;                  |
+| &ge;                  |
+| &lt;li&gt;            |
+| &lt;br/&gt;           |
+| <li>                  |
+| <br />                |
+| &le                   |
+| &ge                   |
+| < =                   |
+| > =                   |
+| <b>                   |
+| Test1=Test2=Test3=    |
+| Test1==Test2==Test3== |
 And the text should contain "<Symbol>"
 | Symbol |
 | <      |
@@ -225,22 +230,24 @@ And I wait for PDF "Blank PDF D{Var(num5)}" to complete
 And I take a screenshot
 When I View Blank PDF "Blank PDF D{Var(num5)}"
 Then the text should not contain "<Symbol>"
-| Symbol      |
-| &lt         |
-| &lt;        |
-| &gt         |
-| &gt;        |
-| &le;        |
-| &ge;        |
-| &lt;li&gt;  |
-| &lt;br/&gt; |
-| <li>        |
-| <br />      |
-| &le         |
-| &ge         |
-| < =         |
-| > =         |
-| <b>         |
+| Symbol                |
+| &lt                   |
+| &lt;                  |
+| &gt                   |
+| &gt;                  |
+| &le;                  |
+| &ge;                  |
+| &lt;li&gt;            |
+| &lt;br/&gt;           |
+| <li>                  |
+| <br />                |
+| &le                   |
+| &ge                   |
+| < =                   |
+| > =                   |
+| <b>                   |
+| Test1=Test2=Test3=    |
+| Test1==Test2==Test3== |
 And the text should contain "<Symbol>"
 | Symbol |
 | <      |
@@ -264,22 +271,24 @@ And I wait for PDF "Blank PDF E{Var(num6)}" to complete
 And I take a screenshot
 When I View Blank PDF "Blank PDF E{Var(num6)}"
 Then the text should not contain "<Symbol>"
-| Symbol      |
-| &lt         |
-| &lt;        |
-| &gt         |
-| &gt;        |
-| &le;        |
-| &ge;        |
-| &lt;li&gt;  |
-| &lt;br/&gt; |
-| <li>        |
-| <br />      |
-| &le         |
-| &ge         |
-| < =         |
-| > =         |
-| <b>         |
+| Symbol                |
+| &lt                   |
+| &lt;                  |
+| &gt                   |
+| &gt;                  |
+| &le;                  |
+| &ge;                  |
+| &lt;li&gt;            |
+| &lt;br/&gt;           |
+| <li>                  |
+| <br />                |
+| &le                   |
+| &ge                   |
+| < =                   |
+| > =                   |
+| <b>                   |
+| Test1=Test2=Test3=    |
+| Test1==Test2==Test3== |
 And the text should contain "<Symbol>"
 | Symbol |
 | <      |
@@ -372,90 +381,28 @@ And I wait for PDF "Data PDF A{Var(num7)}" to complete
 And I take a screenshot
 When I View Data PDF "Data PDF A{Var(num7)}"
 Then the text should not contain "<Symbol>"
-| Symbol      |
-| &lt         |
-| &lt;        |
-| &gt         |
-| &gt;        |
-| &le;        |
-| &ge;        |
-| &lt;li&gt;  |
-| &lt;br/&gt; |
-| <li>        |
-| <br />      |
-| &le         |
-| &ge         |
-| < =         |
-| > =         |
-| <b>         |
+| Symbol                |
+| &lt                   |
+| &lt;                  |
+| &gt                   |
+| &gt;                  |
+| &le;                  |
+| &ge;                  |
+| &lt;li&gt;            |
+| &lt;br/&gt;           |
+| <li>                  |
+| <br />                |
+| &le                   |
+| &ge                   |
+| < =                   |
+| > =                   |
+| <b>                   |
+| Test1=Test2=Test3=    |
+| Test1==Test2==Test3== |
 And the text should contain "<Symbol>"
 | Symbol |
 | <      |
 | >      |
-And I navigate to "Home"
-And I select a Subject "S{Var(num1)}"
-And I select link "< < > > ≤ ≥ •\brPDF Folder &le &ge"
-And I select link "< < > > ≤ ≥ •\brPDF Standard Form &le &ge"
-And I click audit on Field "&le &ge\br Radio Button\rField< < > > ≤ ≥ •"
-And I verify Audits exist
-	| Audit Type          | Query Message                                           | User                               | Time                 |
-	| Signature Succeeded |                                                         | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |
-	| User entered        | '&lt &lt; &gt &gt; &le; &ge; <li></li>DD1&le &ge (CAR)' | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |
-And I navigate to "Home"
-And I select a Subject "S{Var(num1)}"
-And I select link "< < > > ≤ ≥ •\brPDF Folder &le &ge"
-And I select link "< < > > ≤ ≥ •\brPDF Standard Form &le &ge"
-And I click audit on Field "< < > > ≤ ≥ •\br DropDown\rField2&le &ge"
-And I verify Audits exist
-	| Audit Type          | Query Message    | User                               | Time                 |
-	| Signature Succeeded |                  | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |
-	| User entered        | '<>≤ ≥DD2 (SYM)' | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |
-And I navigate to "Home"
-And I select a Subject "S{Var(num1)}"
-And I select link "< < > > ≤ ≥ •\brPDF Folder &le &ge"
-And I select link "< < > > ≤ ≥ •\brPDF Standard Form &le &ge"
-And I click audit on Field "< < > > ≤ ≥ •\br Text\rField1&le &ge"
-And I verify Audits exist
-	| Audit Type          | Query Message                                         | User                               | Time                 |
-	| Signature Succeeded |                                                       | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |
-	| User entered        | '1.1' &lt &lt; &gt &gt; &le; &ge; <li></li>UD1&le &ge | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |
-And I navigate to "Home"
-And I select a Subject "S{Var(num1)}"
-And I select link "< < > > ≤ ≥ •\brPDF Folder &le &ge"
-And I select link "< < > > ≤ ≥ •\brPDF Standard Form &le &ge"
-And I click audit on Field "< < > > ≤ ≥ •\br Text\rField2&le &ge"
-And I verify Audits exist
-	| Audit Type          | Query Message  | User                               | Time                 |
-	| Signature Succeeded |                | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |
-	| User entered        | '2.2' <>≤ ≥UD2 | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |
-And I navigate to "Home"
-And I select a Subject "S{Var(num1)}"
-And I select link "< < > > ≤ ≥ •\brPDF Folder &le &ge"
-And I select link "< < > > ≤ ≥ •\brPDF Standard Form &le &ge"
-And I click audit on Field "&le &ge\br Text\rField< < > > ≤ ≥ •"
-And I verify Audits exist
-	| Audit Type          | Query Message                                      | User                               | Time                 |
-	| Signature Succeeded |                                                    | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |
-	| User entered        | '&le &gedata1&lt &lt; &gt &gt; &le; &ge;<li></li>' | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |
-And I navigate to "Home"
-And I select a Subject "S{Var(num1)}"
-And I select link "< < > > ≤ ≥ •\brPDF Folder &le &ge"
-And I select link "< < > > ≤ ≥ •\brPDF Standard Form &le &ge"
-And I click audit on Field "Long\rText< < > > ≤ ≥ •\br Field&le &ge"
-And I verify Audits exist
-	| Audit Type          | Query Message                                              | User                               | Time                 |
-	| Signature Succeeded |                                                            | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |
-	| User entered        | '&le &geaaaaaaaaaa123&lt &lt; &gt &gt; &le; &ge;<li></li>' | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |
-And I navigate to "Home"
-And I select a Subject "S{Var(num1)}"
-And I select link "< < > > ≤ ≥ •\brPDF Folder &le &ge"
-And I select link "< < > > ≤ ≥ •\brPDF Standard Form &le &ge"
-And I click audit on Field "< < > > ≤ ≥ •\br DSL\rField&le &ge"
-And I verify Audits exist
-	| Audit Type          | Query Message                        | User                               | Time                 |
-	| Signature Succeeded |                                      | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |
-	| User entered        | '&le&ge&lt &lt; &gt &gt; &le; &ge;0' | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |
-And I take a screenshot
 
 
 @release_2012.1.0
@@ -545,90 +492,28 @@ And I wait for PDF "Data PDF B{Var(num8)}" to complete
 And I take a screenshot
 When I View Data PDF "Data PDF B{Var(num8)}"
 Then the text should not contain "<Symbol>"
-| Symbol      |
-| &lt         |
-| &lt;        |
-| &gt         |
-| &gt;        |
-| &le;        |
-| &ge;        |
-| &lt;li&gt;  |
-| &lt;br/&gt; |
-| <li>        |
-| <br />      |
-| &le         |
-| &ge         |
-| < =         |
-| > =         |
-| <b>         |
+| Symbol                |
+| &lt                   |
+| &lt;                  |
+| &gt                   |
+| &gt;                  |
+| &le;                  |
+| &ge;                  |
+| &lt;li&gt;            |
+| &lt;br/&gt;           |
+| <li>                  |
+| <br />                |
+| &le                   |
+| &ge                   |
+| < =                   |
+| > =                   |
+| <b>                   |
+| Test1=Test2=Test3=    |
+| Test1==Test2==Test3== |
 And the text should contain "<Symbol>"
 | Symbol |
 | <      |
 | >      |
-And I navigate to "Home"
-And I select a Subject "S{Var(num1)}"
-And I select link "< < > > ≤ ≥ •\brPDF Folder &le &ge"
-And I select link "< < > > ≤ ≥ •\brPDF Standard Form &le &ge"
-And I click audit on Field "&le &ge\br Radio Button\rField< < > > ≤ ≥ •"
-And I verify Audits exist
-	| Audit Type          | Query Message                                           | User                               | Time                 |
-	| Signature Succeeded |                                                         | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |
-	| User entered        | '&lt &lt; &gt &gt; &le; &ge; <li></li>DD1&le &ge (CAR)' | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |
-And I navigate to "Home"
-And I select a Subject "S{Var(num1)}"
-And I select link "< < > > ≤ ≥ •\brPDF Folder &le &ge"
-And I select link "< < > > ≤ ≥ •\brPDF Standard Form &le &ge"
-And I click audit on Field "< < > > ≤ ≥ •\br DropDown\rField2&le &ge"
-And I verify Audits exist
-	| Audit Type          | Query Message    | User                               | Time                 |
-	| Signature Succeeded |                  | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |
-	| User entered        | '<>≤ ≥DD2 (SYM)' | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |
-And I navigate to "Home"
-And I select a Subject "S{Var(num1)}"
-And I select link "< < > > ≤ ≥ •\brPDF Folder &le &ge"
-And I select link "< < > > ≤ ≥ •\brPDF Standard Form &le &ge"
-And I click audit on Field "< < > > ≤ ≥ •\br Text\rField1&le &ge"
-And I verify Audits exist
-	| Audit Type          | Query Message                                         | User                               | Time                 |
-	| Signature Succeeded |                                                       | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |
-	| User entered        | '1.1' &lt &lt; &gt &gt; &le; &ge; <li></li>UD1&le &ge | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |
-And I navigate to "Home"
-And I select a Subject "S{Var(num1)}"
-And I select link "< < > > ≤ ≥ •\brPDF Folder &le &ge"
-And I select link "< < > > ≤ ≥ •\brPDF Standard Form &le &ge"
-And I click audit on Field "< < > > ≤ ≥ •\br Text\rField2&le &ge"
-And I verify Audits exist
-	| Audit Type          | Query Message  | User                               | Time                 |
-	| Signature Succeeded |                | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |
-	| User entered        | '2.2' <>≤ ≥UD2 | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |
-And I navigate to "Home"
-And I select a Subject "S{Var(num1)}"
-And I select link "< < > > ≤ ≥ •\brPDF Folder &le &ge"
-And I select link "< < > > ≤ ≥ •\brPDF Standard Form &le &ge"
-And I click audit on Field "&le &ge\br Text\rField< < > > ≤ ≥ •"
-And I verify Audits exist
-	| Audit Type          | Query Message                                      | User                               | Time                 |
-	| Signature Succeeded |                                                    | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |
-	| User entered        | '&le &gedata1&lt &lt; &gt &gt; &le; &ge;<li></li>' | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |
-And I navigate to "Home"
-And I select a Subject "S{Var(num1)}"
-And I select link "< < > > ≤ ≥ •\brPDF Folder &le &ge"
-And I select link "< < > > ≤ ≥ •\brPDF Standard Form &le &ge"
-And I click audit on Field "Long\rText< < > > ≤ ≥ •\br Field&le &ge"
-And I verify Audits exist
-	| Audit Type          | Query Message                                              | User                               | Time                 |
-	| Signature Succeeded |                                                            | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |
-	| User entered        | '&le &geaaaaaaaaaa123&lt &lt; &gt &gt; &le; &ge;<li></li>' | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |
-And I navigate to "Home"
-And I select a Subject "S{Var(num1)}"
-And I select link "< < > > ≤ ≥ •\brPDF Folder &le &ge"
-And I select link "< < > > ≤ ≥ •\brPDF Standard Form &le &ge"
-And I click audit on Field "< < > > ≤ ≥ •\br DSL\rField&le &ge"
-And I verify Audits exist
-	| Audit Type          | Query Message                        | User                               | Time                 |
-	| Signature Succeeded |                                      | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |
-	| User entered        | '&le&ge&lt &lt; &gt &gt; &le; &ge;0' | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |
-And I take a screenshot
 
 @release_2012.1.0
 @US12175H
@@ -718,90 +603,28 @@ And I wait for PDF "Data PDF C{Var(num9)}" to complete
 And I take a screenshot
 When I View Data PDF "Data PDF C{Var(num9)}"
 Then the text should not contain "<Symbol>"
-| Symbol      |
-| &lt         |
-| &lt;        |
-| &gt         |
-| &gt;        |
-| &le;        |
-| &ge;        |
-| &lt;li&gt;  |
-| &lt;br/&gt; |
-| <li>        |
-| <br />      |
-| &le         |
-| &ge         |
-| < =         |
-| > =         |
-| <b>         |
+| Symbol                |
+| &lt                   |
+| &lt;                  |
+| &gt                   |
+| &gt;                  |
+| &le;                  |
+| &ge;                  |
+| &lt;li&gt;            |
+| &lt;br/&gt;           |
+| <li>                  |
+| <br />                |
+| &le                   |
+| &ge                   |
+| < =                   |
+| > =                   |
+| <b>                   |
+| Test1=Test2=Test3=    |
+| Test1==Test2==Test3== |
 And the text should contain "<Symbol>"
 | Symbol |
 | <      |
 | >      |
-And I navigate to "Home"
-And I select a Subject "S{Var(num1)}"
-And I select link "< < > > ≤ ≥ •\brPDF Folder &le &ge"
-And I select link "< < > > ≤ ≥ •\brPDF Standard Form &le &ge"
-And I click audit on Field "&le &ge\br Radio Button\rField< < > > ≤ ≥ •"
-And I verify Audits exist
-	| Audit Type          | Query Message                                           | User                               | Time                 |
-	| Signature Succeeded |                                                         | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |
-	| User entered        | '&lt &lt; &gt &gt; &le; &ge; <li></li>DD1&le &ge (CAR)' | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |
-And I navigate to "Home"
-And I select a Subject "S{Var(num1)}"
-And I select link "< < > > ≤ ≥ •\brPDF Folder &le &ge"
-And I select link "< < > > ≤ ≥ •\brPDF Standard Form &le &ge"
-And I click audit on Field "< < > > ≤ ≥ •\br DropDown\rField2&le &ge"
-And I verify Audits exist
-	| Audit Type          | Query Message    | User                               | Time                 |
-	| Signature Succeeded |                  | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |
-	| User entered        | '<>≤ ≥DD2 (SYM)' | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |
-And I navigate to "Home"
-And I select a Subject "S{Var(num1)}"
-And I select link "< < > > ≤ ≥ •\brPDF Folder &le &ge"
-And I select link "< < > > ≤ ≥ •\brPDF Standard Form &le &ge"
-And I click audit on Field "< < > > ≤ ≥ •\br Text\rField1&le &ge"
-And I verify Audits exist
-	| Audit Type          | Query Message                                         | User                               | Time                 |
-	| Signature Succeeded |                                                       | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |
-	| User entered        | '1.1' &lt &lt; &gt &gt; &le; &ge; <li></li>UD1&le &ge | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |
-And I navigate to "Home"
-And I select a Subject "S{Var(num1)}"
-And I select link "< < > > ≤ ≥ •\brPDF Folder &le &ge"
-And I select link "< < > > ≤ ≥ •\brPDF Standard Form &le &ge"
-And I click audit on Field "< < > > ≤ ≥ •\br Text\rField2&le &ge"
-And I verify Audits exist
-	| Audit Type          | Query Message  | User                               | Time                 |
-	| Signature Succeeded |                | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |
-	| User entered        | '2.2' <>≤ ≥UD2 | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |
-And I navigate to "Home"
-And I select a Subject "S{Var(num1)}"
-And I select link "< < > > ≤ ≥ •\brPDF Folder &le &ge"
-And I select link "< < > > ≤ ≥ •\brPDF Standard Form &le &ge"
-And I click audit on Field "&le &ge\br Text\rField< < > > ≤ ≥ •"
-And I verify Audits exist
-	| Audit Type          | Query Message                                      | User                               | Time                 |
-	| Signature Succeeded |                                                    | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |
-	| User entered        | '&le &gedata1&lt &lt; &gt &gt; &le; &ge;<li></li>' | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |
-And I navigate to "Home"
-And I select a Subject "S{Var(num1)}"
-And I select link "< < > > ≤ ≥ •\brPDF Folder &le &ge"
-And I select link "< < > > ≤ ≥ •\brPDF Standard Form &le &ge"
-And I click audit on Field "Long\rText< < > > ≤ ≥ •\br Field&le &ge"
-And I verify Audits exist
-	| Audit Type          | Query Message                                              | User                               | Time                 |
-	| Signature Succeeded |                                                            | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |
-	| User entered        | '&le &geaaaaaaaaaa123&lt &lt; &gt &gt; &le; &ge;<li></li>' | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |
-And I navigate to "Home"
-And I select a Subject "S{Var(num1)}"
-And I select link "< < > > ≤ ≥ •\brPDF Folder &le &ge"
-And I select link "< < > > ≤ ≥ •\brPDF Standard Form &le &ge"
-And I click audit on Field "< < > > ≤ ≥ •\br DSL\rField&le &ge"
-And I verify Audits exist
-	| Audit Type          | Query Message                        | User                               | Time                 |
-	| Signature Succeeded |                                      | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |
-	| User entered        | '&le&ge&lt &lt; &gt &gt; &le; &ge;0' | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |
-And I take a screenshot
 
 @release_2012.1.0
 @US12175I
@@ -890,90 +713,28 @@ And I wait for PDF "Data PDF D{Var(num10)}" to complete
 And I take a screenshot
 When I View Data PDF "Data PDF D{Var(num10)}"
 Then the text should not contain "<Symbol>"
-| Symbol      |
-| &lt         |
-| &lt;        |
-| &gt         |
-| &gt;        |
-| &le;        |
-| &ge;        |
-| &lt;li&gt;  |
-| &lt;br/&gt; |
-| <li>        |
-| <br />      |
-| &le         |
-| &ge         |
-| < =         |
-| > =         |
-| <b>         |
+| Symbol                |
+| &lt                   |
+| &lt;                  |
+| &gt                   |
+| &gt;                  |
+| &le;                  |
+| &ge;                  |
+| &lt;li&gt;            |
+| &lt;br/&gt;           |
+| <li>                  |
+| <br />                |
+| &le                   |
+| &ge                   |
+| < =                   |
+| > =                   |
+| <b>                   |
+| Test1=Test2=Test3=    |
+| Test1==Test2==Test3== |
 And the text should contain "<Symbol>"
 | Symbol |
 | <      |
 | >      |
-And I navigate to "Home"
-And I select a Subject "S{Var(num1)}"
-And I select link "< < > > ≤ ≥ •\brPDF Folder &le &ge"
-And I select link "< < > > ≤ ≥ •\brPDF Standard Form &le &ge"
-And I click audit on Field "&le &ge\br Radio Button\rField< < > > ≤ ≥ •"
-And I verify Audits exist
-	| Audit Type          | Query Message                                           | User                               | Time                 |
-	| Signature Succeeded |                                                         | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |
-	| User entered        | '&lt &lt; &gt &gt; &le; &ge; <li></li>DD1&le &ge (CAR)' | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |
-And I navigate to "Home"
-And I select a Subject "S{Var(num1)}"
-And I select link "< < > > ≤ ≥ •\brPDF Folder &le &ge"
-And I select link "< < > > ≤ ≥ •\brPDF Standard Form &le &ge"
-And I click audit on Field "< < > > ≤ ≥ •\br DropDown\rField2&le &ge"
-And I verify Audits exist
-	| Audit Type          | Query Message    | User                               | Time                 |
-	| Signature Succeeded |                  | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |
-	| User entered        | '<>≤ ≥DD2 (SYM)' | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |
-And I navigate to "Home"
-And I select a Subject "S{Var(num1)}"
-And I select link "< < > > ≤ ≥ •\brPDF Folder &le &ge"
-And I select link "< < > > ≤ ≥ •\brPDF Standard Form &le &ge"
-And I click audit on Field "< < > > ≤ ≥ •\br Text\rField1&le &ge"
-And I verify Audits exist
-	| Audit Type          | Query Message                                         | User                               | Time                 |
-	| Signature Succeeded |                                                       | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |
-	| User entered        | '1.1' &lt &lt; &gt &gt; &le; &ge; <li></li>UD1&le &ge | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |
-And I navigate to "Home"
-And I select a Subject "S{Var(num1)}"
-And I select link "< < > > ≤ ≥ •\brPDF Folder &le &ge"
-And I select link "< < > > ≤ ≥ •\brPDF Standard Form &le &ge"
-And I click audit on Field "< < > > ≤ ≥ •\br Text\rField2&le &ge"
-And I verify Audits exist
-	| Audit Type          | Query Message  | User                               | Time                 |
-	| Signature Succeeded |                | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |
-	| User entered        | '2.2' <>≤ ≥UD2 | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |
-And I navigate to "Home"
-And I select a Subject "S{Var(num1)}"
-And I select link "< < > > ≤ ≥ •\brPDF Folder &le &ge"
-And I select link "< < > > ≤ ≥ •\brPDF Standard Form &le &ge"
-And I click audit on Field "&le &ge\br Text\rField< < > > ≤ ≥ •"
-And I verify Audits exist
-	| Audit Type          | Query Message                                      | User                               | Time                 |
-	| Signature Succeeded |                                                    | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |
-	| User entered        | '&le &gedata1&lt &lt; &gt &gt; &le; &ge;<li></li>' | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |
-And I navigate to "Home"
-And I select a Subject "S{Var(num1)}"
-And I select link "< < > > ≤ ≥ •\brPDF Folder &le &ge"
-And I select link "< < > > ≤ ≥ •\brPDF Standard Form &le &ge"
-And I click audit on Field "Long\rText< < > > ≤ ≥ •\br Field&le &ge"
-And I verify Audits exist
-	| Audit Type          | Query Message                                              | User                               | Time                 |
-	| Signature Succeeded |                                                            | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |
-	| User entered        | '&le &geaaaaaaaaaa123&lt &lt; &gt &gt; &le; &ge;<li></li>' | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |
-And I navigate to "Home"
-And I select a Subject "S{Var(num1)}"
-And I select link "< < > > ≤ ≥ •\brPDF Folder &le &ge"
-And I select link "< < > > ≤ ≥ •\brPDF Standard Form &le &ge"
-And I click audit on Field "< < > > ≤ ≥ •\br DSL\rField&le &ge"
-And I verify Audits exist
-	| Audit Type          | Query Message                        | User                               | Time                 |
-	| Signature Succeeded |                                      | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |
-	| User entered        | '&le&ge&lt &lt; &gt &gt; &le; &ge;0' | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |
-And I take a screenshot
 
 @release_2012.1.0
 @US12175J
@@ -1062,90 +823,28 @@ And I wait for PDF "Data PDF E{Var(num11)}" to complete
 And I take a screenshot
 When I View Data PDF "Data PDF E{Var(num11)}"
 Then the text should not contain "<Symbol>"
-| Symbol      |
-| &lt         |
-| &lt;        |
-| &gt         |
-| &gt;        |
-| &le;        |
-| &ge;        |
-| &lt;li&gt;  |
-| &lt;br/&gt; |
-| <li>        |
-| <br />      |
-| &le         |
-| &ge         |
-| < =         |
-| > =         |
-| <b>         |
+| Symbol                |
+| &lt                   |
+| &lt;                  |
+| &gt                   |
+| &gt;                  |
+| &le;                  |
+| &ge;                  |
+| &lt;li&gt;            |
+| &lt;br/&gt;           |
+| <li>                  |
+| <br />                |
+| &le                   |
+| &ge                   |
+| < =                   |
+| > =                   |
+| <b>                   |
+| Test1=Test2=Test3=    |
+| Test1==Test2==Test3== |
 And the text should contain "<Symbol>"
 | Symbol |
 | <      |
 | >      |
-And I navigate to "Home"
-And I select a Subject "S{Var(num1)}"
-And I select link "< < > > ≤ ≥ •\brPDF Folder &le &ge"
-And I select link "< < > > ≤ ≥ •\brPDF Standard Form &le &ge"
-And I click audit on Field "&le &ge\br Radio Button\rField< < > > ≤ ≥ •"
-And I verify Audits exist
-	| Audit Type          | Query Message                                           | User                               | Time                 |
-	| Signature Succeeded |                                                         | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |
-	| User entered        | '&lt &lt; &gt &gt; &le; &ge; <li></li>DD1&le &ge (CAR)' | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |
-And I navigate to "Home"
-And I select a Subject "S{Var(num1)}"
-And I select link "< < > > ≤ ≥ •\brPDF Folder &le &ge"
-And I select link "< < > > ≤ ≥ •\brPDF Standard Form &le &ge"
-And I click audit on Field "< < > > ≤ ≥ •\br DropDown\rField2&le &ge"
-And I verify Audits exist
-	| Audit Type          | Query Message    | User                               | Time                 |
-	| Signature Succeeded |                  | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |
-	| User entered        | '<>≤ ≥DD2 (SYM)' | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |
-And I navigate to "Home"
-And I select a Subject "S{Var(num1)}"
-And I select link "< < > > ≤ ≥ •\brPDF Folder &le &ge"
-And I select link "< < > > ≤ ≥ •\brPDF Standard Form &le &ge"
-And I click audit on Field "< < > > ≤ ≥ •\br Text\rField1&le &ge"
-And I verify Audits exist
-	| Audit Type          | Query Message                                         | User                               | Time                 |
-	| Signature Succeeded |                                                       | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |
-	| User entered        | '1.1' &lt &lt; &gt &gt; &le; &ge; <li></li>UD1&le &ge | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |
-And I navigate to "Home"
-And I select a Subject "S{Var(num1)}"
-And I select link "< < > > ≤ ≥ •\brPDF Folder &le &ge"
-And I select link "< < > > ≤ ≥ •\brPDF Standard Form &le &ge"
-And I click audit on Field "< < > > ≤ ≥ •\br Text\rField2&le &ge"
-And I verify Audits exist
-	| Audit Type          | Query Message  | User                               | Time                 |
-	| Signature Succeeded |                | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |
-	| User entered        | '2.2' <>≤ ≥UD2 | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |
-And I navigate to "Home"
-And I select a Subject "S{Var(num1)}"
-And I select link "< < > > ≤ ≥ •\brPDF Folder &le &ge"
-And I select link "< < > > ≤ ≥ •\brPDF Standard Form &le &ge"
-And I click audit on Field "&le &ge\br Text\rField< < > > ≤ ≥ •"
-And I verify Audits exist
-	| Audit Type          | Query Message                                      | User                               | Time                 |
-	| Signature Succeeded |                                                    | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |
-	| User entered        | '&le &gedata1&lt &lt; &gt &gt; &le; &ge;<li></li>' | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |
-And I navigate to "Home"
-And I select a Subject "S{Var(num1)}"
-And I select link "< < > > ≤ ≥ •\brPDF Folder &le &ge"
-And I select link "< < > > ≤ ≥ •\brPDF Standard Form &le &ge"
-And I click audit on Field "Long\rText< < > > ≤ ≥ •\br Field&le &ge"
-And I verify Audits exist
-	| Audit Type          | Query Message                                              | User                               | Time                 |
-	| Signature Succeeded |                                                            | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |
-	| User entered        | '&le &geaaaaaaaaaa123&lt &lt; &gt &gt; &le; &ge;<li></li>' | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |
-And I navigate to "Home"
-And I select a Subject "S{Var(num1)}"
-And I select link "< < > > ≤ ≥ •\brPDF Folder &le &ge"
-And I select link "< < > > ≤ ≥ •\brPDF Standard Form &le &ge"
-And I click audit on Field "< < > > ≤ ≥ •\br DSL\rField&le &ge"
-And I verify Audits exist
-	| Audit Type          | Query Message                        | User                               | Time                 |
-	| Signature Succeeded |                                      | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |
-	| User entered        | '&le&ge&lt &lt; &gt &gt; &le; &ge;0' | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |
-And I take a screenshot
 
 @release_2012.1.0
 @US12175K
@@ -1233,87 +932,25 @@ And I wait for PDF "Data PDF F{Var(num12)}" to complete
 And I take a screenshot
 When I View Data PDF "Data PDF F{Var(num12)}"
 Then the text should not contain "<Symbol>"
-| Symbol      |
-| &lt         |
-| &lt;        |
-| &gt         |
-| &gt;        |
-| &le;        |
-| &ge;        |
-| &lt;li&gt;  |
-| &lt;br/&gt; |
-| <li>        |
-| <br />      |
-| &le         |
-| &ge         |
-| < =         |
-| > =         |
-| <b>         |
+| Symbol                |
+| &lt                   |
+| &lt;                  |
+| &gt                   |
+| &gt;                  |
+| &le;                  |
+| &ge;                  |
+| &lt;li&gt;            |
+| &lt;br/&gt;           |
+| <li>                  |
+| <br />                |
+| &le                   |
+| &ge                   |
+| < =                   |
+| > =                   |
+| <b>                   |
+| Test1=Test2=Test3=    |
+| Test1==Test2==Test3== |
 And the text should contain "<Symbol>"
 | Symbol |
 | <      |
 | >      |
-And I navigate to "Home"
-And I select a Subject "S{Var(num1)}"
-And I select link "< < > > ≤ ≥ •\brPDF Folder &le &ge"
-And I select link "< < > > ≤ ≥ •\brPDF Standard Form &le &ge"
-And I click audit on Field "&le &ge\br Radio Button\rField< < > > ≤ ≥ •"
-And I verify Audits exist
-	| Audit Type          | Query Message                                           | User                               | Time                 |
-	| Signature Succeeded |                                                         | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |
-	| User entered        | '&lt &lt; &gt &gt; &le; &ge; <li></li>DD1&le &ge (CAR)' | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |
-And I navigate to "Home"
-And I select a Subject "S{Var(num1)}"
-And I select link "< < > > ≤ ≥ •\brPDF Folder &le &ge"
-And I select link "< < > > ≤ ≥ •\brPDF Standard Form &le &ge"
-And I click audit on Field "< < > > ≤ ≥ •\br DropDown\rField2&le &ge"
-And I verify Audits exist
-	| Audit Type          | Query Message    | User                               | Time                 |
-	| Signature Succeeded |                  | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |
-	| User entered        | '<>≤ ≥DD2 (SYM)' | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |
-And I navigate to "Home"
-And I select a Subject "S{Var(num1)}"
-And I select link "< < > > ≤ ≥ •\brPDF Folder &le &ge"
-And I select link "< < > > ≤ ≥ •\brPDF Standard Form &le &ge"
-And I click audit on Field "< < > > ≤ ≥ •\br Text\rField1&le &ge"
-And I verify Audits exist
-	| Audit Type          | Query Message                                         | User                               | Time                 |
-	| Signature Succeeded |                                                       | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |
-	| User entered        | '1.1' &lt &lt; &gt &gt; &le; &ge; <li></li>UD1&le &ge | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |
-And I navigate to "Home"
-And I select a Subject "S{Var(num1)}"
-And I select link "< < > > ≤ ≥ •\brPDF Folder &le &ge"
-And I select link "< < > > ≤ ≥ •\brPDF Standard Form &le &ge"
-And I click audit on Field "< < > > ≤ ≥ •\br Text\rField2&le &ge"
-And I verify Audits exist
-	| Audit Type          | Query Message  | User                               | Time                 |
-	| Signature Succeeded |                | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |
-	| User entered        | '2.2' <>≤ ≥UD2 | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |
-And I navigate to "Home"
-And I select a Subject "S{Var(num1)}"
-And I select link "< < > > ≤ ≥ •\brPDF Folder &le &ge"
-And I select link "< < > > ≤ ≥ •\brPDF Standard Form &le &ge"
-And I click audit on Field "&le &ge\br Text\rField< < > > ≤ ≥ •"
-And I verify Audits exist
-	| Audit Type          | Query Message                                      | User                               | Time                 |
-	| Signature Succeeded |                                                    | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |
-	| User entered        | '&le &gedata1&lt &lt; &gt &gt; &le; &ge;<li></li>' | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |
-And I navigate to "Home"
-And I select a Subject "S{Var(num1)}"
-And I select link "< < > > ≤ ≥ •\brPDF Folder &le &ge"
-And I select link "< < > > ≤ ≥ •\brPDF Standard Form &le &ge"
-And I click audit on Field "Long\rText< < > > ≤ ≥ •\br Field&le &ge"
-And I verify Audits exist
-	| Audit Type          | Query Message                                              | User                               | Time                 |
-	| Signature Succeeded |                                                            | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |
-	| User entered        | '&le &geaaaaaaaaaa123&lt &lt; &gt &gt; &le; &ge;<li></li>' | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |
-And I navigate to "Home"
-And I select a Subject "S{Var(num1)}"
-And I select link "< < > > ≤ ≥ •\brPDF Folder &le &ge"
-And I select link "< < > > ≤ ≥ •\brPDF Standard Form &le &ge"
-And I click audit on Field "< < > > ≤ ≥ •\br DSL\rField&le &ge"
-And I verify Audits exist
-	| Audit Type          | Query Message                        | User                               | Time                 |
-	| Signature Succeeded |                                      | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |
-	| User entered        | '&le&ge&lt &lt; &gt &gt; &le; &ge;0' | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |
-And I take a screenshot

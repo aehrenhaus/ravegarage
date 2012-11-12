@@ -247,11 +247,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>US18358_DT14073.feature</DependentUpon>
     </Compile>
-    <Compile Include="Features\PDF\DT11249_US12607_US19066_DataPDF_Automated.feature.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>DT11249_US12607_US19066_DataPDF_Automated.feature</DependentUpon>
-    </Compile>
     <Compile Include="Features\PDF\US12175_DT8545_lessthangreaterthaninPDF.feature.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

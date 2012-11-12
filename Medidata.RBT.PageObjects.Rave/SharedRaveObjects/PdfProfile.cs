@@ -36,7 +36,7 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
         protected override void MakeUnique()
         {
             string fileName;
-            if (UniqueName.StartsWith("SUPER PDF PROFILE "))
+            if (UniqueName.StartsWith("SUPER PDF PROFILE"))
                 fileName = "SUPERPDFPROFILE.xml";
             else
                 fileName = UniqueName + ".xml";
