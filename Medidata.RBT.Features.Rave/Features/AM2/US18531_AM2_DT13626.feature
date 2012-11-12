@@ -1,6 +1,6 @@
-#DT13626: Amendment Manager inserts duplicate log records for soft deleted datapages
+#DT13626: Amendment Manager inserts duplicate log records for soft deleted datapages. Soft deleting can be done by adding and removing objects with a merge matrix edit check, a script or a custom function.
 
-Feature: When records are soft deleted by an edit check, duplicate records should not show up in the database after migration.
+Feature: When objects are added and then removed by an edit check with a merge matrix check action, duplicate records should not show up in the database after migration.
 
 Background: 
 Given xml draft "DT13626.xml" is Uploaded
@@ -70,10 +70,11 @@ And I take a screenshot
 And I navigate to "Home"
 And I navigate to "Reporter"
 And I select Report "Audit Trail"
-And I select Report Parameters
-| Study   | Site     | Subjects      |
-| DT13626 | Site_001 | "{Var(num1)}" |
-When I click button "Submit Report"
+And I set report parameter "Study" with "DT13626"
+And I set report parameter "Sites" with "Site_001"
+And I set report Parameter "Subjects" with "Sub {Var(num1)}"
+And I click button "Submit Report"
+When I switch to the second window
 Then I verify duplicate records are not displayed
 And I take a screenshot
 
