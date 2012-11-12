@@ -92,8 +92,8 @@ namespace Medidata.RBT.PageObjects.Rave
 			ISearchContext area = null;
 			if (!string.IsNullOrEmpty(areaIdentifier))
 			{
-				area = Browser.TryFindElementById(areaIdentifier);
-				if (area == null)
+				//area = Browser.TryFindElementById(areaIdentifier);
+				//if (area == null)
 					area = GetElementByName(areaIdentifier);
 			}
 			else

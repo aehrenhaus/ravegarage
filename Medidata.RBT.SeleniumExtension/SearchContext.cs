@@ -504,17 +504,9 @@ namespace Medidata.RBT.SeleniumExtension
             var wait = new WebDriverWait(driver, TimeSpan.FromSeconds(timeOutSecond.Value));
             IWebElement ele = null;
 
-	        try
-	        {
-				ele = wait.Until(getElement);
-	        }
-	        catch (Exception err)
-	        {
-		        
-		    
-	        }
-               
-         
+	
+			ele = wait.Until(getElement);
+
             return ele;
         }
 

@@ -79,7 +79,7 @@ namespace Medidata.RBT.PageObjects.Rave
         /// <returns>The current CRFPage</returns>
 		public CRFPage SelectForm(string formName)
 		{
-			IWebElement formFolderTable = Browser.FindElementById("_ctl0_LeftNav_EDCTaskList_TblTaskItems");
+			IWebElement formFolderTable = Browser.TryFindElementByPartialID("_ctl0_LeftNav_EDCTaskList_TblTaskItems");
 			formFolderTable.FindElement(By.LinkText(formName)).Click();
             TestContext.CurrentPage = new CRFPage();
             return TestContext.CurrentPage.As<CRFPage>();
@@ -96,7 +96,7 @@ namespace Medidata.RBT.PageObjects.Rave
         public BaseEDCPage ClickCheckBoxOnForm(string checkboxName)
         {
             string partialID = GetCheckboxPartialIdFromCheckName(checkboxName);
-            IWebElement chkBox = Browser.FindElementById("_ctl0_Content_R_header_SG_" + partialID);
+			IWebElement chkBox = Browser.TryFindElementByPartialID("_ctl0_Content_R_header_SG_" + partialID);
 
             if (chkBox == null)
                 throw new Exception("Cannot find the checkbox named: " + checkboxName);

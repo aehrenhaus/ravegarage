@@ -86,7 +86,7 @@ namespace Medidata.RBT.PageObjects.Rave
                     return false;
 
                 var contentR = TestContext.Browser.TryFindElementByPartialID("Content_R");
-                var labDropdown = contentR.DropdownById("LOC_DropDown", true);
+                var labDropdown = contentR.TryFindElementByPartialID("LOC_DropDown", false);
                 bool isLabform = labDropdown != null;
                 return isLabform;
             }

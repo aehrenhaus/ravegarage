@@ -132,9 +132,10 @@ namespace Medidata.RBT.PageObjects.Rave
 			{
 				return "Modules/UserAdmin/UsersPage.aspx";
 			}
-		}	
-        
-        int pageIndex = 1;
+		}
+
+		#region Pagination
+		int pageIndex = 1;
 		int count = 0;
 		int lastValue = -1;
 
@@ -181,5 +182,7 @@ namespace Medidata.RBT.PageObjects.Rave
 		{
 			return true;
 		}
+
+		#endregion
 	}
 }
