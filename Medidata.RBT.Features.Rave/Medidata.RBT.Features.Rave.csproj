@@ -287,6 +287,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DT11249_US12607_US19066_DataPDF_Automated.feature</DependentUpon>
     </Compile>
+    <Compile Include="Features\PDF\DT11249_US12607_US19066_DataPDF_manual.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DT11249_US12607_US19066_DataPDF_manual.feature</DependentUpon>
+    </Compile>
     <Compile Include="Features\PDF\US12175_DT8545_lessthangreaterthaninPDF.feature.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -592,6 +597,10 @@
     <None Include="Features\PDF\DT11249_US12607_US19066_DataPDF_Automated.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>DT11249_US12607_US19066_DataPDF_Automated.feature.cs</LastGenOutput>
+    </None>
+    <None Include="Features\PDF\DT11249_US12607_US19066_DataPDF_manual.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>DT11249_US12607_US19066_DataPDF_manual.feature.cs</LastGenOutput>
     </None>
     <None Include="Features\PDF\US12175_DT8545_lessthangreaterthaninPDF.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
