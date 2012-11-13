@@ -1,4 +1,3 @@
-@ignore
 Feature: US13780_DT13557 
   As a data manager
   I want to be able to apply rules in AM Object Heirarchy
@@ -33,14 +32,12 @@ Background:
 	
 
 @Rave564_2012.1.1
-@US13780_AM2_DT13557_01
+@PB_US13780_AM2_DT13557_01
 @Draft
 Scenario: US13780_AM2_DT13557_01 When a user navigates to Architect, creates a migration plan with a new CRF version as the Target CRF version, adds a Move Element object hierarchy rule with the “Only if target parent exists?box checked, in the Source patch enters "[Subject]/FOLDER:Folder(4)/FOLDER:Folder(1)/FORM:Form(1)" and in the Target Source enters "[Subject]/FOLDER:Folder 3/FOLDER:Folder(1)", and executes the migration then the user will see the form appear only in "Folder(4)"
 
-	
-
 	Given I login to Rave with user "defuser" and password "password"
-	Given study "*US13780_DT13557" is assigned to Site "Site_US13780_DT13557"
+	#Given study "*US13780_DT13557" is assigned to Site "Site_US13780_DT13557"
 	And I navigate to "Architect"
 	And I select "Study" link "*US13780_DT13557" in "Active Projects"
 	And I select link "Draft 1" in "CRF Drafts"
@@ -55,7 +52,6 @@ Scenario: US13780_AM2_DT13557_01 When a user navigates to Architect, creates a m
 	| Field          | Data              | Control Type |
 	| Subject Name   | SUB               | text         |
 	| Subject Number | {RndNum<num1>(3)} | text         |
-	#And I note down "crfversion" to "ver#"
 	And I select Form "Demographics" in Folder "Baseline"
 	And I enter data in CRF and save
 	    | Field  | Data | Control Type |
@@ -67,9 +63,11 @@ Scenario: US13780_AM2_DT13557_01 When a user navigates to Architect, creates a m
 	    | Derived Age | 3    | text         |
 	And I take a screenshot
 	And I select link "SUB{Var(num1)}"
-
+	And I choose "Add Matrix" from "Add Event"
 	And I click button "Add"
+	And I choose "Add Matrix" from "Add Event"
 	And I click button "Add"
+	And I choose "Add Matrix" from "Add Event"
 	And I click button "Add"
 	And I take a screenshot
 
@@ -89,7 +87,7 @@ Scenario: US13780_AM2_DT13557_01 When a user navigates to Architect, creates a m
 	And I navigate to "Object Hierarchy"
 	And I select link "Add Rule"
 	And I choose "Move Elements" from "Action"
-	#And I check "Only if target parent exists"
+	And I check "Only if target parent exists"
 	And I choose "CYCLE (CYC)" from "SourceFolderDropDown"
 	And I choose "(3)" from "SourceRepeatNumber"
 	And I choose "Demographics (DEMOGRAPHICS)" from "SourceFormDropDown"

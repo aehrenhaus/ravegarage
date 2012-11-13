@@ -201,7 +201,7 @@ namespace Medidata.RBT.PageObjects.Rave
 
         public bool AuditExist_SignatureBroken(int? position = null)
         {
-            return AuditExist("Signature has been broken", null, null, position);
+            return AuditExist("Signature has been broken.", null, null, position);
         }
 
         public bool AuditExist_UserEntered(string userInput,string user, string timeFormat, int? position = null)
