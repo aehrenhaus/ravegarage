@@ -105,7 +105,7 @@ namespace Medidata.RBT
             ISearchContext area = null;
             if (!string.IsNullOrEmpty(areaIdentifier))
             {
-                area = Browser.TryFindElementById(areaIdentifier);
+                area = Browser.TryFindElementById(areaIdentifier,false);
                 if (area == null)
                     area = GetElementByName(areaIdentifier);
             }
@@ -191,11 +191,11 @@ namespace Medidata.RBT
 		/// </summary>
         public virtual IPage ChooseFromDropdown(string identifier, string text)
         {
-            Dropdown element = Browser.DropdownById(identifier, true);
-            if (element == null)
-                element = GetElementByName(identifier).EnhanceAs<Dropdown>();
+			var ele = Browser.TryFindElementByPartialID(identifier, false);
+			if (ele == null)
+                ele = GetElementByName(identifier).EnhanceAs<Dropdown>();
 
-            element.SelectByText(text);
+			ele.EnhanceAs<Dropdown>().SelectByText(text);
 
 			return GetPageByCurrentUrlIfNoAlert();
         }
@@ -206,14 +206,17 @@ namespace Medidata.RBT
 		public virtual IPage ChooseFromCheckboxes(string identifier, bool isChecked, string areaIdentifier = null, string listItem = null)
         {
 
-            var element = Browser.CheckboxByID(identifier, true);
+            var element = Browser.TryFindElementByPartialID(identifier, false);
             if (element == null)
                 element = GetElementByName(identifier, areaIdentifier).EnhanceAs<Checkbox>();
+			if (element == null)
+				element = Browser.TryFindElementById(identifier, true);
+
 
             if (isChecked)
-                element.Check();
+                element.EnhanceAs<Checkbox>().Check();
             else
-                element.Uncheck();
+				element.EnhanceAs<Checkbox>().Uncheck();
 
 			return GetPageByCurrentUrlIfNoAlert();
         }
@@ -309,6 +312,19 @@ namespace Medidata.RBT
 			if (element != null)
 				return element;
 			throw new Exception(string.Format("This page ({0}) does not provide information about element: {1}", this.GetType().Name, identifier));
+		}
+
+		public virtual IWebElement TryGetElementByName(string identifier, string areaIdentifier = null, string listItemIdentifier = null)
+		{
+			IWebElement ele = null;
+			try
+			{
+				ele = GetElementByName(identifier, areaIdentifier, listItemIdentifier);
+			}
+			catch (Exception)
+			{
+			}
+			return ele;
 		}
 
         #endregion

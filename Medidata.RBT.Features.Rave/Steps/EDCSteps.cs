@@ -634,5 +634,12 @@ namespace Medidata.RBT.Features.Rave
         {
             CurrentPage.As<SubjectPage>().ExpandTask(header);
         }
+
+		[StepDefinition(@"I verify only ""(.*)"" Form ""(.*)"" is displayed")]
+		public void IVerifyOnly____Form____IsDisplayed(int formCount, string formName)
+		{
+			CurrentPage.As<CRFPage>().CheckFormCount(formName, formCount);
+		}
+
     }
 }

@@ -102,7 +102,7 @@ namespace Medidata.RBT.PageObjects.Rave
                 if (URL.Equals("Modules/EDC/PrimaryRecordPage.aspx"))
                     return false;
 
-                IWebElement logTable = TestContext.Browser.TryFindElementById("log");
+                IWebElement logTable = TestContext.Browser.TryFindElementById("log",false);
                 IWebElement rowLeftSide = TestContext.Browser.TryFindElementBy(By.XPath("*//td[@class='crf_rowLeftSide']"));
                 if (logTable != null && rowLeftSide != null)
                     return true;
@@ -302,5 +302,14 @@ namespace Medidata.RBT.PageObjects.Rave
             }
             return true;
         }
+
+		public void CheckFormCount(string formName, int formCount)
+		{
+			var area = Browser.TryFindElementByPartialID("TblTaskItems");
+
+			var formLinks = area.FindElements(By.XPath("./tbody/tr[position()>1]")).Where(x=>x.Text.Trim()==formName).ToList();
+
+			Assert.AreEqual(formCount, formLinks.Count, string.Format("There are {0} forms ,expect {1}", formLinks.Count,formCount));
+		}
     }
 }

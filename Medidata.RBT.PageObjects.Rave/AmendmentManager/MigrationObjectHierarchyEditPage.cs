@@ -13,12 +13,20 @@ namespace Medidata.RBT.PageObjects.Rave.AmendmentManager
 	{
         public override IWebElement GetElementByName(string identifier, string areaIdentifier = null, string listItem = null)
         {
-            if(identifier=="Action")
+			if (identifier == "Action Dropdown")
             {
                 return Browser.TryFindElementByPartialID("SelectCommand");
             }
+
+
+			if (identifier == "Only if target parent exists")
+				return Browser.TryFindElementById("_ctl0_Content_MigrationStepObjectHierarchyEdit1_MoveCheckBoxList_0");
+
+
             return base.GetElementByName(identifier, areaIdentifier, listItem);
         }
+
+
 
 		public override string URL
 		{

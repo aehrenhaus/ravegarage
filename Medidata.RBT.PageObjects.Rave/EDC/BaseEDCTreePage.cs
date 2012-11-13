@@ -63,7 +63,7 @@ namespace Medidata.RBT.PageObjects.Rave
 			IWebElement subLink = Browser.FindElementById("_ctl0_PgHeader_TabTextHyperlink3");
 			subLink.Click();
 
-			IWebElement formFolderTable = Browser.FindElementById("_ctl0_LeftNav_EDCTaskList_TblTaskItems");
+			IWebElement formFolderTable = Browser.TryFindElementById("_ctl0_LeftNav_EDCTaskList_TblTaskItems", true);
 			var folderLink = formFolderTable.TryFindElementBy(By.PartialLinkText(folderName));
 				
 			if(folderLink==null)
@@ -79,7 +79,7 @@ namespace Medidata.RBT.PageObjects.Rave
         /// <returns>The current CRFPage</returns>
 		public CRFPage SelectForm(string formName)
 		{
-			IWebElement formFolderTable = Browser.TryFindElementByPartialID("_ctl0_LeftNav_EDCTaskList_TblTaskItems");
+			IWebElement formFolderTable = Browser.TryFindElementById("_ctl0_LeftNav_EDCTaskList_TblTaskItems", true);
 			formFolderTable.FindElement(By.LinkText(formName)).Click();
             TestContext.CurrentPage = new CRFPage();
             return TestContext.CurrentPage.As<CRFPage>();
