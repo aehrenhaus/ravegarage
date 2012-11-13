@@ -77,10 +77,11 @@ namespace Medidata.RBT.PageObjects.Rave
 
         public void ModifyBlock(string tierName, int subjectCount = -1)
         {
-            Browser.TryFindElementByLinkText("Architect Defined").Parent().Parent().Images()[0].Click();
-            Browser.FindElementsByPartialId("EditBlockNameTextBox")[0].EnhanceAs<Textbox>().SetText(tierName);
-            Browser.FindElementsByPartialId("EditBlockSizeTextBox")[0].EnhanceAs<Textbox>().SetText(subjectCount.ToString());
-            Browser.FindElementsByPartialId("EditBlockSizeTextBox")[0].Parent().Parent().Parent().Images()[2].Click();
+			var container = Browser.TryFindElementByLinkText("Architect Defined").Parent().Parent();
+			container.Images()[0].Click();
+            Browser.TryFindElementByPartialID("EditBlockNameTextBox").EnhanceAs<Textbox>().SetText(tierName);
+			Browser.TryFindElementByPartialID("EditBlockSizeTextBox").EnhanceAs<Textbox>().SetText(subjectCount.ToString());
+			Browser.TryFindElementByPartialID("EditBlockSizeTextBox").Parent().Parent().Parent().Images()[2].Click();
         }
 
 		/// <summary>

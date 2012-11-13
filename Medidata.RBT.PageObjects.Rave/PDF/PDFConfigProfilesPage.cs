@@ -34,7 +34,7 @@ namespace Medidata.RBT.PageObjects.Rave.PDF
 
         public bool GoNextPage(string areaIdentifer)
         {
-            HtmlTable table = Browser.WaitForElement("_ctl0_Content_Results").EnhanceAs<HtmlTable>();
+            HtmlTable table = Browser.TryFindElementByPartialID("_ctl0_Content_Results").EnhanceAs<HtmlTable>();
             IWebElement pageTable = table.FindElement(By.XPath(".//tr[@align='center']"));
             ReadOnlyCollection<IWebElement> pageLinks = pageTable.FindElements(By.XPath(".//a|.//span"));
 

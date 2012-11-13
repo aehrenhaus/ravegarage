@@ -285,7 +285,7 @@ namespace Medidata.RBT
 		public void BeforeScenario()
 		{
             TestContext.CurrentUser = null;
-			if (output ==null)
+			if (consoleWriter == null)
 			{
 				consoleWriter = new MultipleStreamWriter();
 				var extraConsole = ExtraConsoleWriterSetup.GetConsoleWriter();

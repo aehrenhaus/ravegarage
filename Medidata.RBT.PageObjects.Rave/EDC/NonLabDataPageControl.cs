@@ -40,21 +40,27 @@ namespace Medidata.RBT.PageObjects.Rave
 
 		public IEDCFieldControl FindField(string fieldName)
 		{
-            fieldName = ISearchContextExtend.ReplaceSpecialCharactersWithEscapeCharacters(fieldName);
-            ReadOnlyCollection<IWebElement> leftSideTds = TestContext.Browser.FindElements(By.ClassName("crf_rowLeftSide"));
-			var area = leftSideTds.FirstOrDefault(x => 
-				{
-                    return ISearchContextExtend.ReplaceTagsWithEscapedCharacters(x.FindElement(By.ClassName("crf_preText")).GetInnerHtml())
-						.Split(new string[] { "<" }, StringSplitOptions.None)[0].Trim() == fieldName;
-				});
+			fieldName = ISearchContextExtend.ReplaceSpecialCharactersWithEscapeCharacters(fieldName);
 
-														  return areaInner;
-	                                                  });
-            if (area == null)
-                throw new Exception("Can't find field area:" + fieldName);
-            var tds = area.Parent().Children();
-            return new NonLabFieldControl(Page, area, tds[tds.Count - 1]);
-        }
+			var area = this.Page.Browser.TryFindElementBy(context =>
+												   {
+													   ReadOnlyCollection<IWebElement> leftSideTds = TestContext.Browser.FindElements(By.ClassName("crf_rowLeftSide"));
+													   var areaInner = leftSideTds.FirstOrDefault(x =>
+													   {
+														   return ISearchContextExtend.ReplaceTagsWithEscapedCharacters(x.FindElement(By.ClassName("crf_preText")).GetInnerHtml())
+															   .Split(new string[] { "<" }, StringSplitOptions.None)[0].Trim() == fieldName;
+													   });
+
+													   return areaInner;
+												   });
+			
+
+			if (area == null)
+				throw new Exception("Can't find field area:" + fieldName);
+
+			var tds = area.Parent().Children();
+			return new NonLabFieldControl(Page, area, tds[tds.Count - 1]);
+		}
 
         public void FindFieldByText(string fieldText)
         {
