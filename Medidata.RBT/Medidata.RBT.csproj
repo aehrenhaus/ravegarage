@@ -109,11 +109,9 @@
     <Compile Include="StringReplacement\DateFReplace.cs" />
     <Compile Include="StringReplacement\DateReplace.cs" />
     <Compile Include="StringReplacement\RndNumReplace.cs" />
-    <Compile Include="StringReplacement\MaxSubjectNumReplace.cs" />
     <Compile Include="StringReplacement\VarReplace.cs" />
     <Compile Include="StringReplacement\SpecialStringHelper.cs" />
     <Compile Include="StringReplacement\IStringReplace.cs" />
-    <Compile Include="StringReplacement\NextSubjectNumReplace.cs" />
     <Compile Include="TemporalID.cs" />
     <Compile Include="TestContext.cs" />
   </ItemGroup>

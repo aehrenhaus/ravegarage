@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Remote;
 using System.Collections.ObjectModel;
@@ -41,6 +42,49 @@ namespace Medidata.RBT.SeleniumExtension
 			return (long)js.ExecuteScript("return window.pageYOffset");
 		}
 
+		public static void SwitchBrowserWindow(this RemoteWebDriver driver, string windowName)
+		{
 
+			bool found = false;
+			IWebDriver window = null;
+			foreach (var handle in driver.WindowHandles)
+			{
+				window = driver.SwitchTo().Window(handle);
+				if (window.Title == windowName)
+				{
+					found = true;
+					break;
+				}
+			}
+			if (!found) throw new Exception(string.Format("window {0} not found", windowName));
+			while (driver.Url == "about:blank")
+				Thread.Sleep(500);
+
+
+		}
+
+		public static void SwitchToSecondBrowserWindow(this RemoteWebDriver driver)
+		{
+			if (driver.WindowHandles.Count < 2)
+				throw new Exception("There isn't a second window");
+			var secondWindowHandle = driver.WindowHandles[1];
+
+			IWebDriver window = driver.SwitchTo().Window(secondWindowHandle);
+
+			while (driver.Url == "about:blank")
+				Thread.Sleep(500);
+
+		}
+
+
+		public static void SwitchToMainBrowserWindow(this RemoteWebDriver driver, bool close = false)
+		{
+			if (close)
+				driver.Close();
+
+			var secondWindowHandle = driver.WindowHandles[0];
+
+			IWebDriver window = driver.SwitchTo().Window(secondWindowHandle); ;
+		}
 	}
 }

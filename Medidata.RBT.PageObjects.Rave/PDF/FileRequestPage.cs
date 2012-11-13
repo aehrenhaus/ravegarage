@@ -63,7 +63,7 @@ namespace Medidata.RBT.PageObjects.Rave
 
             IWebElement pdfTr = this.FindInPaginatedList("", () =>
             {
-                HtmlTable table = Browser.WaitForElement("_ctl0_Content_Results").EnhanceAs<HtmlTable>();
+				HtmlTable table = Browser.TryFindElementByPartialID("Content_Results").EnhanceAs<HtmlTable>();
                 return table.FindMatchRows(dt).FirstOrDefault();
             }, out foundOnPage);
 
@@ -90,7 +90,7 @@ namespace Medidata.RBT.PageObjects.Rave
 
             IWebElement pdfTr = this.FindInPaginatedList("", () =>
             {
-                HtmlTable table = Browser.WaitForElement("_ctl0_Content_Results").EnhanceAs<HtmlTable>();
+                HtmlTable table = Browser.TryFindElementByPartialID("_ctl0_Content_Results").EnhanceAs<HtmlTable>();
                 return table.FindMatchRows(dt).FirstOrDefault();
             }, out foundOnPage);
 
@@ -101,7 +101,7 @@ namespace Medidata.RBT.PageObjects.Rave
 
                 pdfTr = this.FindInPaginatedList("", () =>
                 {
-                    HtmlTable table = Browser.WaitForElement("_ctl0_Content_Results").EnhanceAs<HtmlTable>();
+                    HtmlTable table = Browser.TryFindElementByPartialID("_ctl0_Content_Results").EnhanceAs<HtmlTable>();
                     return table.FindMatchRows(dt).FirstOrDefault();
                 }, out foundOnPage);
             }
@@ -123,7 +123,7 @@ namespace Medidata.RBT.PageObjects.Rave
 
         public bool GoNextPage(string areaIdentifer)
         {
-            HtmlTable table = Browser.WaitForElement("_ctl0_Content_Results").EnhanceAs<HtmlTable>();
+            HtmlTable table = Browser.TryFindElementByPartialID("_ctl0_Content_Results").EnhanceAs<HtmlTable>();
             IWebElement pageTable = table.FindElement(By.XPath(".//tr[@align='center']"));
             ReadOnlyCollection<IWebElement> pageLinks = pageTable.FindElements(By.XPath(".//a|.//span"));
 
@@ -175,10 +175,12 @@ namespace Medidata.RBT.PageObjects.Rave
             var tr = table.FindMatchRows(dt).FirstOrDefault();
 
             int waitTime = 60;
-            Browser.WaitForElement(b =>
+            var ele  = Browser.TryFindElementBy(b =>
                 tr.Spans().FirstOrDefault(x => x.GetAttribute("id").EndsWith("StatusValue") && x.Text == "Completed"),
-                "Did not complete in time(" + waitTime + "s)", waitTime
+              true, waitTime
                 );
+			if (ele == null)
+				throw new Exception("Did not complete in time(" + waitTime + "s)");
 
             return this;
         }
@@ -233,7 +235,7 @@ namespace Medidata.RBT.PageObjects.Rave
 
             Thread.Sleep(1000);
             // Wait for log line form div
-            Browser.WaitForElement(By.Id("CombineLogLinesFrms_div"));
+            Browser.TryFindElementByPartialID("CombineLogLinesFrms_div");
         }
 
         public bool VerifyTableRowsExist(string tableIdentifier, Table matchTable)

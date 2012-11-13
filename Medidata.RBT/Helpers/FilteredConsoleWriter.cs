@@ -17,6 +17,8 @@ namespace Medidata.RBT
 		}
 		private TextWriter sw;
 		bool skipNextToo;
+		bool muted;
+
 		public FilteredWriter(TextWriter writer)
 		{
 		
@@ -25,6 +27,9 @@ namespace Medidata.RBT
 
 		private bool SkipThis(string str)
 		{
+			if (muted)
+				return true;
+
 			if (str.StartsWith("img->"))
 			{
 				skipNextToo = true;
@@ -35,7 +40,13 @@ namespace Medidata.RBT
 				sw.WriteLine();
 				return true;
 			}
-
+			if (str.StartsWith("-> error:") || str.StartsWith("-> pending:"))
+			{
+				sw.WriteLine(str);
+				sw.WriteLine();
+				muted = true;
+				return true;
+			}
 			return false;
 
 		}

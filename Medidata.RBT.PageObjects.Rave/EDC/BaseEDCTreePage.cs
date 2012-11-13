@@ -18,7 +18,7 @@ namespace Medidata.RBT.PageObjects.Rave
 
 		public BaseEDCPage ClickModify()
 		{
-			IWebElement editButton = Browser.WaitForElement("header_SG_PencilButton");
+			IWebElement editButton = Browser.TryFindElementByPartialID("header_SG_PencilButton");
 			if (editButton == null)
 				throw new Exception("Can not find the modify button");
 			editButton.Click();
@@ -37,7 +37,7 @@ namespace Medidata.RBT.PageObjects.Rave
 
 		public BaseEDCPage CancelForm()
 		{
-			IWebElement btn = Browser.WaitForElement("footer_CB");
+			IWebElement btn = Browser.TryFindElementByPartialID("footer_CB");
 			if (btn == null)
 				throw new Exception("Can not find the Cancel button");
 			btn.Click();
@@ -50,7 +50,7 @@ namespace Medidata.RBT.PageObjects.Rave
         /// <returns>This page</returns>
 		public BaseEDCPage SaveForm()
 		{
-			IWebElement btn = Browser.WaitForElement("footer_SB");
+			IWebElement btn = Browser.TryFindElementByPartialID("footer_SB");
 			if (btn == null)
 				throw new Exception("Can not find the Save button");
 			btn.Click();
@@ -79,7 +79,7 @@ namespace Medidata.RBT.PageObjects.Rave
         /// <returns>The current CRFPage</returns>
 		public CRFPage SelectForm(string formName)
 		{
-			IWebElement formFolderTable = Browser.FindElementById("_ctl0_LeftNav_EDCTaskList_TblTaskItems");
+			IWebElement formFolderTable = Browser.TryFindElementByPartialID("_ctl0_LeftNav_EDCTaskList_TblTaskItems");
 			formFolderTable.FindElement(By.LinkText(formName)).Click();
             TestContext.CurrentPage = new CRFPage();
             return TestContext.CurrentPage.As<CRFPage>();
@@ -96,7 +96,7 @@ namespace Medidata.RBT.PageObjects.Rave
         public BaseEDCPage ClickCheckBoxOnForm(string checkboxName)
         {
             string partialID = GetCheckboxPartialIdFromCheckName(checkboxName);
-            IWebElement chkBox = Browser.FindElementById("_ctl0_Content_R_header_SG_" + partialID);
+			IWebElement chkBox = Browser.TryFindElementByPartialID("_ctl0_Content_R_header_SG_" + partialID);
 
             if (chkBox == null)
                 throw new Exception("Cannot find the checkbox named: " + checkboxName);

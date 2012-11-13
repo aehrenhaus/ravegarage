@@ -80,7 +80,7 @@ namespace Medidata.RBT.SeleniumExtension
 
 		public static IWebElement Parent(this IWebElement element)
 		{
-			return element.TryFindElementBy(By.XPath("./.."));
+			return element.TryFindElementByXPath("./..");
 		}
 
 		public static IWebElement Ancestor(this IWebElement element, string tagName)

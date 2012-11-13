@@ -80,6 +80,7 @@ namespace Medidata.RBT.PageObjects.Rave
 
 		public override IPage ClickLink(string linkText, string type = null, string areaIdentifier = null)
 		{
+
 			if (type == "Study")
 			{
 				Project project = TestContext.GetExistingFeatureObjectOrMakeNew(linkText, () => new Project(linkText));
@@ -87,16 +88,30 @@ namespace Medidata.RBT.PageObjects.Rave
 			}
 
 			IPage page = null;
-			try
-			{
-				page = base.ClickLink(linkText);
 
-			}
-			catch (Exception e)
+			ISearchContext area = null;
+			if (!string.IsNullOrEmpty(areaIdentifier))
 			{
-				page = this.ClickSpanLink(linkText);
+				//area = Browser.TryFindElementById(areaIdentifier);
+				//if (area == null)
+					area = GetElementByName(areaIdentifier);
 			}
-			return page;
+			else
+			{
+				area = Browser;
+			}
+
+			var link = area.TryFindElementBy(By.LinkText(linkText),false);
+
+			if(link==null)
+				link = area.TryFindElementBySpanLinktext(linkText);
+
+			//another try, but with wait
+			if (link == null)
+				link = area.TryFindElementBy(By.LinkText(linkText), true);
+
+			link.Click();
+			return TestContext.POFactory.GetPageByUrl(new Uri(Browser.Url));
 		}
 
         public virtual IEDCFieldControl FindLandscapeLogField(string fieldName, int rowIndex, ControlType controlType = ControlType.Default)

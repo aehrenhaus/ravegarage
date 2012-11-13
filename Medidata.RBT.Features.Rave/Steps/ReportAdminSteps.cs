@@ -21,7 +21,10 @@ namespace Medidata.RBT.Features.Rave
 			CurrentPage.ChooseFromCheckboxes(null, true, null, reportName);
 			CurrentPage = CurrentPage.ClickButton("Continue");
 			CurrentPage = CurrentPage.ClickButton("Create Package");
-			TestContext.AcceptAlert();
+
+			CurrentPage.As<PageBase>().GetAlertWindow().Accept();
+			CurrentPage = TestContext.POFactory.GetPageByUrl(new Uri(Browser.Url));
+
 			Browser.ButtonByText("Download Package");
 
 			TestContext.WatchForDownload();
@@ -66,7 +69,9 @@ namespace Medidata.RBT.Features.Rave
 			DbHelper.ExecuteScalar("delete from Reports where ReportID='" + reportID + "'", System.Data.CommandType.Text);
 			CurrentPage = CurrentPage.ClickButton("Next");
 			CurrentPage = CurrentPage.ClickButton("Install Eligible Reports");
-			TestContext.AcceptAlert();
+			
+			CurrentPage.As<PageBase>().GetAlertWindow().Accept();
+			CurrentPage = TestContext.POFactory.GetPageByUrl(new Uri(Browser.Url));
 
 			unzipedExcelFile.Delete();
 			lastFile.Delete();

@@ -86,7 +86,7 @@ namespace Medidata.RBT.PageObjects.Rave
                     return false;
 
                 var contentR = TestContext.Browser.TryFindElementByPartialID("Content_R");
-                var labDropdown = contentR.DropdownById("LOC_DropDown", true);
+                var labDropdown = contentR.TryFindElementByPartialID("LOC_DropDown", false);
                 bool isLabform = labDropdown != null;
                 return isLabform;
             }
@@ -185,7 +185,7 @@ namespace Medidata.RBT.PageObjects.Rave
         /// <returns>Returns true if the values are in the order passed in</returns>
         public bool FindFieldValuesInOrder(string fieldName, List<string> values)
         {
-            IWebElement field = TestContext.Browser.WaitForElement(By.XPath("//a[text()='" + fieldName + "']"));
+            IWebElement field = TestContext.Browser.TryFindElementByXPath("//a[text()='" + fieldName + "']");
             IWebElement tbody = field.Parent().Parent().Parent();
             List<IWebElement> rows = tbody.FindElements(By.XPath("tr[@class='evenRow' or @class='oddRow']")).ToList();
             for (int i = 0; i < values.Count; i++)

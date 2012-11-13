@@ -31,7 +31,7 @@ namespace Medidata.RBT.Features.Rave
         {
             labName =  SpecialStringHelper.Replace(labName);
 
-            var currentPage = TestContext.CurrentPage.As<LabRangesPage>();
+			var currentPage = TestContext.CurrentPage.As<LabPageBase>();
             var currentRow = currentPage.FindLab(labName, labType);
             currentPage.SelectLabRange(currentRow);
 

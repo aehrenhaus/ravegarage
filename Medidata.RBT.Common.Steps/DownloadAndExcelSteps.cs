@@ -31,7 +31,7 @@ namespace Medidata.RBT.Common.Steps
 			uploadControl.SendKeys(fileInfo.FullName);
 			CurrentPage.ClickButton(buttonName);
 
-			Browser.WaitForElement((b) => CurrentPage.GetElementByName(finishSignal), null, 60);
+			Browser.TryFindElementBy((b) => CurrentPage.GetElementByName(finishSignal),true, 60);
 		}
 
 		[StepDefinition(@"I verify ""([^""]*)"" spreadsheet data")]

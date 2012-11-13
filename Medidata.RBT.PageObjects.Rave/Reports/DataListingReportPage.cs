@@ -18,11 +18,11 @@ namespace Medidata.RBT.PageObjects.Rave
 		public override IWebElement GetElementByName(string identifier, string areaIdentifier = null, string listItem = null)
 		{
 			if (identifier == "Data Source")
-				return Browser.WaitForElement("ddlSource");
+				return Browser.TryFindElementByPartialID("ddlSource");
 			if (identifier == "Form")
-				return Browser.WaitForElement("ddlDomain");
+				return Browser.TryFindElementByPartialID("ddlDomain");
             if (identifier == "Result")
-                return Browser.WaitForElement("dgResult");
+				return Browser.TryFindElementByPartialID("dgResult");
 
 
 			return base.GetElementByName(identifier,areaIdentifier,listItem);

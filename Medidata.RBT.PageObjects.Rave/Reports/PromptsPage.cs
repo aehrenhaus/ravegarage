@@ -33,20 +33,19 @@ namespace Medidata.RBT.PageObjects.Rave
             IWebElement subjectLink = this.FindInPaginatedList(name, () =>
             {
 			    var paraTR = FindParameterTr(name);
-			    //wait till the div div becomes visible, that means the table is loaded complete
-				var div = Browser.WaitForElement(x => paraTR.TryFindElementBy(By.XPath("./td[position()=2]/table/tbody/tr[position()=2]/td/div[@style='display: block;']")),
-				    "timeout before div becomes visible");
+			   
+				//wait till the div div becomes visible, that means the table is loaded complete
+				paraTR.TryFindElementByXPath("./td[position()=2]/table/tbody/tr[position()=2]/td/div[@style='display: block;']", true, 20);
 
 			    var tbl = paraTR.FindElements(By.XPath(".//td[@style='border-width:0px;border-collapse:collapse;']/table"))[1].EnhanceAs<HtmlTable>();
 
-		    //	Thread.Sleep(1000);
+
 			    var matchRows = tbl.FindMatchRows(table);
-                //if (matchRows.Count == 0)
-                //    throw new Exception("Can't find matched options");
+
 			    foreach (var row in matchRows)
 			    {
 				    row.Checkboxes()[0].Click();
-                    return tbl; // return something, once we successfully click a parameter.
+					return tbl; // return anthing but null, just let FindInPaginatedList() know that match found.
 			    }
                 return null;
 
@@ -83,15 +82,14 @@ namespace Medidata.RBT.PageObjects.Rave
 		{			
 			var paraTR = FindParameterTr(name);
 			//wait till the div div becomes visible, that means the table is loaded complete
-			var div = Browser.WaitForElement(x => paraTR.TryFindElementBy(By.XPath("./td[position()=2]/table/tbody/tr[position()=2]/td/div[@style='display: block;']")),
-				"timeout before div becomes visible");
+			var div = Browser.TryFindElementByXPath("./td[position()=2]/table/tbody/tr[position()=2]/td/div[@style='display: block;']",true);
 
 			var textbox = paraTR.TextboxById("SearchTxt");
 			textbox.SetText(value);
 			var btnSearch = paraTR.TryFindElementByPartialID("SearchBtn");
 			btnSearch.Click();
 
-			Browser.WaitForElement(b =>
+			Browser.TryFindElementBy(b =>
 			{
 
 				var working = paraTR.TryFindElementByPartialID("Working2");

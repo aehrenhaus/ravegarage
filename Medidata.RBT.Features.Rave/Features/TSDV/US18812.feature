@@ -1,32 +1,32 @@
 ﻿# When a user selects  Dynamic Allocation Randomization Block algorithm , subject assignment satisfies a specified allocation and ratio is random for all blocks.
-@ignore
+
 Feature: US18812
 	When user selects Dynamic Allocation Randomization Block algorithm
 	Then subject assignment satisfies a specified allocation ratio
 	And subject assignment is random for all blocks
 
 Background:
-	#Given I am logged in to Rave with username "defuser" and password "password"
-	Given xml draft "US18812_SJ.xml" is Uploaded with Environment name "Dev"
-	Given Site "Site 1" with Site Group "Asia" exists
-	Given Site "Site 2" with Site Group "Europe" exists
-	Given Site "Site 3" with Site Group "World" exists
-	Given Site "Site 4" with Site Group "North America" exists
-	Given study "US18812_SJ" is assigned to Site "Site 1" with study environment "Aux: Dev"
-	Given study "US18812_SJ" is assigned to Site "Site 2" with study environment "Aux: Dev"
-	Given study "US18812_SJ" is assigned to Site "Site 3" with study environment "Aux: Dev"
-	Given study "US18812_SJ" is assigned to Site "Site 4" with study environment "Aux: Dev"
-	Given I publish and push eCRF "US18812_SJ.xml" to "Version 1" with study environment "Dev"
-	Given following Project assignments exist
-	| User         | Project    | Environment | Role         | Site   | SecurityRole          | Lines Per Page |
-	| SUPER USER 1 | US18812_SJ | Aux: Dev    | SUPER ROLE 1 | Site 1 | Project Admin Default | 100            |
-	| SUPER USER 1 | US18812_SJ | Aux: Dev    | SUPER ROLE 1 | Site 2 | Project Admin Default | 100            |
-	| SUPER USER 1 | US18812_SJ | Aux: Dev    | SUPER ROLE 1 | Site 3 | Project Admin Default | 100            |
-	| SUPER USER 1 | US18812_SJ | Aux: Dev    | SUPER ROLE 1 | Site 4 | Project Admin Default | 100            |
-	Given following Report assignments exist
-	| User         | Report                                                           |
-	| SUPER USER 1 | Targeted SDV Configuration - Targeted SDV Configuration          |
-	| SUPER USER 1 | Targeted SDV Subject Management - Targeted SDV Subject Managemen |
+	Given I login to Rave with default account
+	#Given xml draft "US18812_SJ.xml" is Uploaded with Environment name "Dev"
+	#Given Site "Site 1" with Site Group "Asia" exists
+	#Given Site "Site 2" with Site Group "Europe" exists
+	#Given Site "Site 3" with Site Group "World" exists
+	#Given Site "Site 4" with Site Group "North America" exists
+	#Given study "US18812_SJ" is assigned to Site "Site 1" with study environment "Aux: Dev"
+	#Given study "US18812_SJ" is assigned to Site "Site 2" with study environment "Aux: Dev"
+	#Given study "US18812_SJ" is assigned to Site "Site 3" with study environment "Aux: Dev"
+	#Given study "US18812_SJ" is assigned to Site "Site 4" with study environment "Aux: Dev"
+	#Given I publish and push eCRF "US18812_SJ.xml" to "Version 1" with study environment "Dev"
+	#Given following Project assignments exist
+	#| User         | Project    | Environment | Role         | Site   | SecurityRole          | Lines Per Page |
+	#| SUPER USER 1 | US18812_SJ | Aux: Dev    | SUPER ROLE 1 | Site 1 | Project Admin Default | 100            |
+	#| SUPER USER 1 | US18812_SJ | Aux: Dev    | SUPER ROLE 1 | Site 2 | Project Admin Default | 100            |
+	#| SUPER USER 1 | US18812_SJ | Aux: Dev    | SUPER ROLE 1 | Site 3 | Project Admin Default | 100            |
+	#| SUPER USER 1 | US18812_SJ | Aux: Dev    | SUPER ROLE 1 | Site 4 | Project Admin Default | 100            |
+	#Given following Report assignments exist
+	#| User         | Report                                                           |
+	#| SUPER USER 1 | Targeted SDV Configuration - Targeted SDV Configuration          |
+	#| SUPER USER 1 | Targeted SDV Subject Management - Targeted SDV Subject Managemen |
 
 
 	# below should be commented out.
@@ -122,41 +122,46 @@ Background:
 
 Scenario: @PB_US18812_01 Enroll 50 subjects in a study to verify that TSDV has randomized the subjects in non sequential order when the subjects are included in TSDV using the Targeted SDV Subject Include report in Study level, Site group level and Site level.
 	#When I select Study "US18812_SJ" and Site "Site 1"
-	When I login to Rave with user "SUPER USER 1"
+	#When I login to Rave with user "SUPER USER 1"
 	And I navigate to "Reporter"
 	And I select Report "Targeted SDV Configuration"
 	And I set report parameter "Study" with table
-		| Name       | Environment |
-		| US18812_SJ | Dev         |
+		| Name                | Environment |
+		| US18812_SJ | Dev         | 
 	And I click button "Submit Report"
 	And I switch to "Targeted SDV Study Plan" window
 	And I create a new block plan named "US18812_SJ (Dev) Block Plan" with Data entry Role "SUPER ROLE 1"
 	And I delete the tier "Architect Defined" from plan
 	And I edit Blocks 
 	| Name              | Subject Count |
-	| Architect Defined | 10            |            
-	And I create a custom tier named "Custom Tier 1" and description "Adverse Events" with table
-	| Form           | Selected |
-	| Adverse Events | True     |
-	And I create a custom tier named "Custom Tier 2" and description "BloodWork" with table
-	| Form      | Selected |
-	| BloodWork | True     |
-	And I create a custom tier named "Custom Tier 3" and description "Cholesterol" with table
-	| Form        | Selected |
-	| Cholesterol | True     |
-	And I create a custom tier named "Custom Tier 4" and description "Concomitant Medications" with table
-	| Form                    | Selected |
-	| Concomitant Medications | True     |
-	And I create a custom tier named "Custom Tier 5" and description "Demographics" with table
-	| Form         | Selected |
-	| Demographics | True     |
-	And I create a custom tier named "Custom Tier 6" and description "Device Form" with table
-	| Form        | Selected |
-	| Device Form | True     |
-	And I create a custom tier named "Custom Tier 7" and description "Drug Administration" with table
-	| Form                | Selected |
-	| Drug Administration | True     |
-	And I select link "Study Block Plan"
+	| Architect Defined | 10            |
+	
+	#And I select link "Tiers"
+	#And I remove all costom tiers
+	#And I select link "Study Block Plan"
+	#
+	#And I create a custom tier named "Custom Tier 1" and description "Adverse Events" with table
+	#| Form           | Selected |
+	#| Adverse Events | True     |
+	#And I create a custom tier named "Custom Tier 2" and description "BloodWork" with table
+	#| Form      | Selected |
+	#| BloodWork | True     |
+	#And I create a custom tier named "Custom Tier 3" and description "Cholesterol" with table
+	#| Form        | Selected |
+	#| Cholesterol | True     |
+	#And I create a custom tier named "Custom Tier 4" and description "Concomitant Medications" with table
+	#| Form                    | Selected |
+	#| 	Occlusion  | True     |
+	#And I create a custom tier named "Custom Tier 5" and description "Demographics" with table
+	#| Form         | Selected |
+	#| Demographics | True     |
+	#And I create a custom tier named "Custom Tier 6" and description "Device Form" with table
+	#| Form        | Selected |
+	#| Device Form | True     |
+	#And I create a custom tier named "Custom Tier 7" and description "Drug Administration" with table
+	#| Form                | Selected |
+	#| Drug Administration | True     |
+	#And I select link "Study Block Plan"
 	And I select the tier "All Forms" and Subject Count "1"
 	And I select the tier "No Forms" and Subject Count "1"
 	And I select the tier "Architect Defined" and Subject Count "1"
@@ -231,38 +236,7 @@ Scenario: @PB_US18812_01 Enroll 50 subjects in a study to verify that TSDV has r
 		| Custom Tier 5     | 48  |
 		| Custom Tier 6     | 49  |
 		| Custom Tier 7     | 50  |
-	And I verify there is no exact tier match between rows
-		| Row 1 | Row 2 |
-		| 11    | 21    |
-		| 12    | 22    |
-		| 13    | 23    |
-		| 14    | 24    |
-		| 15    | 25    |
-		| 16    | 26    |
-		| 17    | 27    |
-		| 18    | 28    |
-		| 19    | 29    |
-		| 20    | 30    |
-		| 21    | 31    |
-		| 22    | 32    |
-		| 23    | 33    |
-		| 24    | 34    |
-		| 25    | 35    |
-		| 26    | 36    |
-		| 27    | 37    |
-		| 28    | 38    |
-		| 29    | 39    |
-		| 30    | 40    |
-		| 31    | 41    |
-		| 32    | 42    |
-		| 33    | 43    |
-		| 34    | 44    |
-		| 35    | 45    |
-		| 36    | 46    |
-		| 37    | 47    |
-		| 38    | 48    |
-		| 39    | 49    |
-		| 40    | 50    |
+	And I verify every 10 rows of subjects in 50 rows do not have tiers pattern
 	And I switch to "Reports" window
 	And I select link "Home"
 	And I navigate to "Reporter"
@@ -404,78 +378,7 @@ Scenario: @PB_US18812_01 Enroll 50 subjects in a study to verify that TSDV has r
 		| Custom Tier 5     | 98  |
 		| Custom Tier 6     | 99  |
 		| Custom Tier 7     | 100 |
-	And I verify there is no exact tier match between rows
-		| Row 1 | Row 2 |
-		| 11    | 21    |
-		| 12    | 22    |
-		| 13    | 23    |
-		| 14    | 24    |
-		| 15    | 25    |
-		| 16    | 26    |
-		| 17    | 27    |
-		| 18    | 28    |
-		| 19    | 29    |
-		| 20    | 30    |
-		| 21    | 31    |
-		| 22    | 32    |
-		| 23    | 33    |
-		| 24    | 34    |
-		| 25    | 35    |
-		| 26    | 36    |
-		| 27    | 37    |
-		| 28    | 38    |
-		| 29    | 39    |
-		| 30    | 40    |
-		| 31    | 41    |
-		| 32    | 42    |
-		| 33    | 43    |
-		| 34    | 44    |
-		| 35    | 45    |
-		| 36    | 46    |
-		| 37    | 47    |
-		| 38    | 48    |
-		| 39    | 49    |
-		| 40    | 50    |
-		| 41    | 51    |
-		| 42    | 52    |
-		| 43    | 53    |
-		| 44    | 54    |
-		| 45    | 55    |
-		| 46    | 56    |
-		| 47    | 57    |
-		| 48    | 58    |
-		| 49    | 59    |
-		| 50    | 60    |
-		| 61    | 71    |
-		| 62    | 72    |
-		| 63    | 73    |
-		| 64    | 74    |
-		| 65    | 75    |
-		| 66    | 76    |
-		| 67    | 77    |
-		| 68    | 78    |
-		| 69    | 79    |
-		| 60    | 70    |
-		| 71    | 81    |
-		| 72    | 82    |
-		| 73    | 83    |
-		| 74    | 84    |
-		| 75    | 85    |
-		| 76    | 86    |
-		| 77    | 87    |
-		| 78    | 88    |
-		| 79    | 89    |
-		| 80    | 90    |
-		| 81    | 91    |
-		| 82    | 92    |
-		| 83    | 93    |
-		| 84    | 94    |
-		| 85    | 95    |
-		| 86    | 96    |
-		| 87    | 97    |
-		| 88    | 98    |
-		| 89    | 99    |
-		| 90    | 100   |
+	And I verify every 10 rows of subjects in 50 rows do not have tiers pattern
 	And I switch to "Reports" window
 	And I select link "Home"
 	And I navigate to "Reporter"
@@ -568,38 +471,7 @@ Scenario: @PB_US18812_01 Enroll 50 subjects in a study to verify that TSDV has r
 		| Custom Tier 5     | 48  |
 		| Custom Tier 6     | 49  |
 		| Custom Tier 7     | 50  |
-	And I verify there is no exact tier match between rows
-		| Row 1 | Row 2 |
-		| 11    | 21    |
-		| 12    | 22    |
-		| 13    | 23    |
-		| 14    | 24    |
-		| 15    | 25    |
-		| 16    | 26    |
-		| 17    | 27    |
-		| 18    | 28    |
-		| 19    | 29    |
-		| 20    | 30    |
-		| 21    | 31    |
-		| 22    | 32    |
-		| 23    | 33    |
-		| 24    | 34    |
-		| 25    | 35    |
-		| 26    | 36    |
-		| 27    | 37    |
-		| 28    | 38    |
-		| 29    | 39    |
-		| 30    | 40    |
-		| 31    | 41    |
-		| 32    | 42    |
-		| 33    | 43    |
-		| 34    | 44    |
-		| 35    | 45    |
-		| 36    | 46    |
-		| 37    | 47    |
-		| 38    | 48    |
-		| 39    | 49    |
-		| 40    | 50    |
+	And I verify every 10 rows of subjects in 50 rows do not have tiers pattern
 	And I switch to "Reports" window
 	And I select link "Home"
 	And I navigate to "Reporter"

@@ -46,7 +46,7 @@ namespace Medidata.RBT.PageObjects.Rave
         {
 
             //only do this if the block plan already doesn't exist
-            IWebElement elem = Browser.FindElementById("_ctl0_Content__ctl0_AddNewBlockPlanLabel");
+            IWebElement elem = Browser.TryFindElementByPartialID("AddNewBlockPlanLabel");
             if (elem != null && elem.Displayed)
             {
                 this.ClickLink("New Block Plan");
@@ -57,8 +57,7 @@ namespace Medidata.RBT.PageObjects.Rave
                 Role role = TestContext.GetExistingFeatureObjectOrMakeNew(dataEntryRole, () => new Role(dataEntryRole));
                 if (role != null)
                 {
-                    var entryRoleDropdown = Browser.TryFindElementBy(By.TagName("Select"));
-                    new SelectElement(entryRoleDropdown).SelectByText(role.UniqueName);
+	                ChooseFromDropdown("NewRoleDDL", role.UniqueName);
                 }
 
                 this.ClickLink("Save");
@@ -78,10 +77,11 @@ namespace Medidata.RBT.PageObjects.Rave
 
         public void ModifyBlock(string tierName, int subjectCount = -1)
         {
-            Browser.TryFindElementByLinkText("Architect Defined").Parent().Parent().Images()[0].Click();
-            Browser.FindElementsByPartialId("EditBlockNameTextBox")[0].EnhanceAs<Textbox>().SetText(tierName);
-            Browser.FindElementsByPartialId("EditBlockSizeTextBox")[0].EnhanceAs<Textbox>().SetText(subjectCount.ToString());
-            Browser.FindElementsByPartialId("EditBlockSizeTextBox")[0].Parent().Parent().Parent().Images()[2].Click();
+			var container = Browser.TryFindElementByLinkText("Architect Defined").Parent().Parent();
+			container.Images()[0].Click();
+            Browser.TryFindElementByPartialID("EditBlockNameTextBox").EnhanceAs<Textbox>().SetText(tierName);
+			Browser.TryFindElementByPartialID("EditBlockSizeTextBox").EnhanceAs<Textbox>().SetText(subjectCount.ToString());
+			Browser.TryFindElementByPartialID("EditBlockSizeTextBox").Parent().Parent().Parent().Images()[2].Click();
         }
 
 		/// <summary>

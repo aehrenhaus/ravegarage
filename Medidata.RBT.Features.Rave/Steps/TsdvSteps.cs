@@ -16,12 +16,12 @@ namespace Medidata.RBT.Features.Rave
             Assert.IsTrue(isSubjectRandomized, "Subjects enrolled sequentially");
         }
 
-        [StepDefinition(@"I verify there is no exact tier match between rows")]
-        public void IVerifyThatThereIsNoExactTierMatchBetweenRows(Table table)
-        {
-            bool noPattern = CurrentPage.As<SubjectOverridePage>().ISThereExactTierMatch(table);
-            Assert.IsFalse(noPattern, "There is a pattern with tier assignment");
-        }
+		[StepDefinition(@"I verify every (.*) rows of subjects in (.*) rows do not have tiers pattern")]
+		public void IVerifyEvery____RowsOfSubjectsIn____RowsDoNotHaveTiersPattern(int rowsOfGroup, int rowsTotal)
+		{
+			CurrentPage.As<SubjectOverridePage>().AsserEachGroupOfSubjectsHaveDifferentTierNames(rowsOfGroup, rowsTotal);
+		}
+
 
         [StepDefinition(@"I filter by site ""([^""]*)""")]
         public void IFilterBySite____(string siteName)
@@ -94,6 +94,13 @@ namespace Medidata.RBT.Features.Rave
                 CurrentPage.As<SiteGroupBlockPlansPage>().ApplyTierWithSubjectCount(tierName, subjectCount);
             }
         }
+
+
+		[StepDefinition(@"I remove all costom tiers")]
+		public void IRemoveAllCustomTiers()
+		{
+			CurrentPage.As<TiersPage>().RemoveTiers();
+		}
 
 
         /// <summary>

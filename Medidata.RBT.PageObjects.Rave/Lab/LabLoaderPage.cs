@@ -49,17 +49,16 @@ namespace Medidata.RBT.PageObjects.Rave.Lab
         private void WaitForUploadToComplete()
         {
             int waitTime = 480;
-            Browser.WaitForElement(b =>
+           var ele =  Browser.TryFindElementBy(b =>
             {
                 IWebElement currentStatus = Browser.FindElementById("CurrentStatus");
                 if (currentStatus.Text.Contains("Upload successful.") ||currentStatus.Text.Contains("Transaction rolled back."))
                     return currentStatus;
                 else
                     return null;
-            }
-                ,
-                "Did not complete in time(" + waitTime + "s)", waitTime
-                );
+            } ,true, waitTime );
+		   if (ele == null)
+			   throw new Exception("Did not complete in time(" + waitTime + "s)");
         }
 
         #region ICanVerifyExist

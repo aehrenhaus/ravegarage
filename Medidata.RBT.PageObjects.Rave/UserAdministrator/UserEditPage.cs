@@ -112,7 +112,9 @@ namespace Medidata.RBT.PageObjects.Rave
 
             IWebElement siteButton = studyRoleRow.TryFindElementByPartialID("Imagebutton2");
             siteButton.Click();
-            Browser.WaitForElement(By.Id("_ctl0_Content_UserSiteWizard1_StudySiteGrid"), "StudySites did not load", 60);
+            var studyLink = Browser.TryFindElementByPartialID("_ctl0_Content_UserSiteWizard1_StudySiteGrid", true, 60);
+			if (studyLink == null)
+				throw new Exception("StudySites did not load");
             IWebElement siteRowToSelect = this.FindInPaginatedList("", () =>
             {
                 IWebElement resultTable = Browser.TryFindElementBy(By.Id("_ctl0_Content_UserSiteWizard1_StudySiteGrid"));
