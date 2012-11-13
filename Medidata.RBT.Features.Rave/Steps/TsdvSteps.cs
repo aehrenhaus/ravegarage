@@ -91,12 +91,19 @@ namespace Medidata.RBT.Features.Rave
             }
             catch
             {
-                CurrentPage.As<SiteGroupBlockPlansPage>().ApplyTierWithSubjectCount(tierName, subjectCount);
+                try
+                {
+                    CurrentPage.As<SiteGroupBlockPlansPage>().ApplyTierWithSubjectCount(tierName, subjectCount);
+                }
+                catch
+                {
+                    CurrentPage.As<SiteBlockPlansPage>().ApplyTierWithSubjectCount(tierName, subjectCount);
+                }
             }
         }
 
 
-		[StepDefinition(@"I remove all costom tiers")]
+		[StepDefinition(@"I remove all custom tiers")]
 		public void IRemoveAllCustomTiers()
 		{
 			CurrentPage.As<TiersPage>().RemoveTiers();
