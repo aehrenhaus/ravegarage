@@ -14,13 +14,10 @@ namespace Medidata.RBT.SeleniumExtension
 {
 	public static partial class ISearchContextExtend
 	{
-		private static T SelectExtendElementByPartialID<T>(ISearchContext context, string tag, string partialID, bool nullable)
+		private static T SelectExtendElementByPartialID<T>(ISearchContext context, string tag, string partialID, bool nullable,bool? wait = null)
 			where T : EnhancedElement, new()
 		{
-            var ele = context.TryFindElementBy(By.XPath(".//"+tag+"[contains(@id,'" + partialID + "')]"),false);
-
-			if(ele==null)
-				ele = context.TryFindElementBy(By.XPath(".//"+tag+"[contains(@id,'" + partialID + "')]"),true);
+			var ele = context.TryFindElementBy(By.XPath(".//" + tag + "[contains(@id,'" + partialID + "')]"), wait);
 
 			if (ele == null)
 			{
@@ -151,12 +148,12 @@ namespace Medidata.RBT.SeleniumExtension
 
         public static IWebElement ButtonByID(this ISearchContext context, string partialID, bool nullable = false, bool isWait = true)
         {
-            var element = SelectExtendElementByPartialID<EnhancedElement>(context, "button", partialID, true);
-            //<input type="submit"/>
+            var element = SelectExtendElementByPartialID<EnhancedElement>(context, "input", partialID,true,false);
+       
             if (element == null)
-                element = SelectExtendElementByPartialID<EnhancedElement>(context, "input", partialID, true);
+				element = SelectExtendElementByPartialID<EnhancedElement>(context, "button", partialID, true, false);
             if (element == null)
-                element = SelectExtendElementByPartialID<EnhancedElement>(context, "select", partialID, true);
+				element = SelectExtendElementByPartialID<EnhancedElement>(context, "select", partialID, true, false);
             
 
 

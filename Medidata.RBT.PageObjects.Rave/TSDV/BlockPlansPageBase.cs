@@ -57,7 +57,7 @@ namespace Medidata.RBT.PageObjects.Rave
                 Role role = TestContext.GetExistingFeatureObjectOrMakeNew(dataEntryRole, () => new Role(dataEntryRole));
                 if (role != null)
                 {
-	                ChooseFromDropdown("NewRoleDDL", role.UniqueName);
+					ChooseFromDropdown("==_ctl0_Content__ctl0_NewRoleDDL", role.UniqueName);
                 }
 
                 this.ClickLink("Save");

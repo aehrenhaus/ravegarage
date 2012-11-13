@@ -41,6 +41,9 @@ namespace Medidata.RBT.Features.Rave.Steps
         [StepDefinition(@"following Project assignments exist")]
         public void FollowingProjectAssignmentsExist(Table table)
         {
+			string previousUser = TestContext.CurrentUser;
+			string previousPassword = TestContext.CurrentUserPassword;
+
             List<ConfigurationCreationModel> configurations = table.CreateSet<ConfigurationCreationModel>().ToList();
             foreach (ConfigurationCreationModel configuration in configurations)
             {
@@ -71,13 +74,14 @@ namespace Medidata.RBT.Features.Rave.Steps
                     if (!studyAssignmentExists)
                         CurrentPage.As<UserEditPage>().AssignUserToPermissions(user, project, role, configuration.Environment, site);
 
-                    LoginPage page = new LoginPage();
-                    page.NavigateToSelf();
-                    CurrentPage = page.Login(loggedInUserBeforeAssignments, RaveConfiguration.Default.DefaultUserPassword);
+					//CurrentPage = CurrentPage.ClickLink("User Administration");
 
-                    CurrentPage = new UserAdministrationPage().NavigateToSelf();
                 }
             }
+
+			//login as previous user, to home page
+			LoginPage.LoginToHomePageIfNotAlready(previousUser, previousPassword);
+
         }
 
         /// <summary>

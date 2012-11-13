@@ -30,10 +30,10 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
         /// </summary>
         /// <param name="siteName">The feature defined name of the Site</param>
         /// <param name="siteGroup">Name of site group</param>
-		public Site(string siteName, string siteGroup = "")
+		public Site(string siteName, string siteGroup = "", string siteNumber = null)
         {
 	        UniqueName = siteName;
-	        Number = Guid.NewGuid().ToString();
+			Number = siteNumber?? Guid.NewGuid().ToString();
 	        Group = siteGroup;
 	        Studies = new List<string>();
         }

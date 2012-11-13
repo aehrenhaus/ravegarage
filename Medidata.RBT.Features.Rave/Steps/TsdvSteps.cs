@@ -85,21 +85,9 @@ namespace Medidata.RBT.Features.Rave
         [StepDefinition(@"I select the tier ""([^""]*)"" and Subject Count ""([^""]*)""")]
         public void ISelectTier____AndSubjectCount____(string tierName, string subjectCount)
         {
-            try
-            {
-                CurrentPage.As<StudyBlockPlansPage>().ApplyTierWithSubjectCount(tierName, subjectCount);
-            }
-            catch
-            {
-                try
-                {
-                    CurrentPage.As<SiteGroupBlockPlansPage>().ApplyTierWithSubjectCount(tierName, subjectCount);
-                }
-                catch
-                {
-                    CurrentPage.As<SiteBlockPlansPage>().ApplyTierWithSubjectCount(tierName, subjectCount);
-                }
-            }
+          
+			CurrentPage.As<BlockPlansPageBase>().ApplyTierWithSubjectCount(tierName, subjectCount);
+           
         }
 
 
@@ -132,14 +120,7 @@ namespace Medidata.RBT.Features.Rave
         [StepDefinition(@"I create a new block plan named ""([^""]*)"" with Data entry Role ""([^""]*)""")]
         public void ICreateANewBlockPlanNamed____WithDataEntryRole____(string planName, string dataEntryRole)
         {
-            try
-            {
-                CurrentPage.As<BlockPlansPageBase>().CreateNewBlockPlan(planName, dataEntryRole);
-            }
-            catch
-            {
-                CurrentPage.As<BlockPlansPageBase>().CreateNewBlockPlan(planName, dataEntryRole);
-            }
+              CurrentPage.As<BlockPlansPageBase>().CreateNewBlockPlan(planName, dataEntryRole);
         }
 
     }

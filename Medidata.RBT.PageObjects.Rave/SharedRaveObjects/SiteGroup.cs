@@ -48,8 +48,8 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
         /// </summary>
 		protected override void NavigateToSeedPage()
         {
-            TestContext.CurrentPage.As<HomePage>().ClickLink("Site Administration");
-            TestContext.CurrentPage.As<SiteAdministrationHomePage>().ClickLink("Site Group Administration");
+            TestContext.CurrentPage.ClickLink("Site Administration");
+            TestContext.CurrentPage.ClickLink("Site Group Administration");
         }
 
         /// <summary>

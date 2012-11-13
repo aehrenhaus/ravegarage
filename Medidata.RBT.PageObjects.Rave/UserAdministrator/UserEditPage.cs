@@ -104,9 +104,10 @@ namespace Medidata.RBT.PageObjects.Rave
             int foundOnPage;
             IWebElement studyRoleRow = this.FindInPaginatedList("", () =>
             {
-                IWebElement resultTable = Browser.TryFindElementBy(By.Id("_ctl0_Content_UserSiteWizard1_UserGrid"));
-                IWebElement row = resultTable.TryFindElementBy(By.XPath("tbody/tr[position()>1]/td[position() = 1 and text() = '"
-                    + studyName + ": " + envName + "']/../td[position()=2 and text()='" + roleName + "']/.."));
+                IWebElement resultTable = Browser.TryFindElementBy(By.Id("_ctl0_Content_UserSiteWizard1_UserGrid"),true,2);
+
+                IWebElement row = resultTable.TryFindElementByXPath("tbody/tr[position()>1]/td[position() = 1 and text() = '"
+                    + studyName + ": " + envName + "']/../td[position()=2 and text()='" + roleName + "']/..",false);
                 return row;
             }, out foundOnPage);
 
@@ -118,8 +119,7 @@ namespace Medidata.RBT.PageObjects.Rave
             IWebElement siteRowToSelect = this.FindInPaginatedList("", () =>
             {
                 IWebElement resultTable = Browser.TryFindElementBy(By.Id("_ctl0_Content_UserSiteWizard1_StudySiteGrid"));
-                IWebElement row = resultTable.TryFindElementBy(By.XPath("tbody/tr[position()>1]/td[position()=1 and contains(text(),'" + siteName + "')]/../"
-                    + "td[position()=2 and contains(text(),'" + siteNumber + "')]/.."));
+                IWebElement row = resultTable.TryFindElementBy(By.XPath("tbody/tr[position()>1]/td[position()=1 and contains(text(),'" + siteName + "')]/.."));
                 return row;
             }, out foundOnPage);
             IWebElement siteCheckbox = siteRowToSelect.TryFindElementByPartialID("chkStudySite");
@@ -136,7 +136,7 @@ namespace Medidata.RBT.PageObjects.Rave
         }
 
         #region ICanPaginate
-        int pageIndex = 1;
+        int pageIndex = 0;
         int count = 0;
         int lastValue = -1;
         int secondPageIndex = 1;
@@ -145,7 +145,8 @@ namespace Medidata.RBT.PageObjects.Rave
 
         public bool GoNextPage(string areaIdentifier)
         {
-            IWebElement studyTable = TestContext.Browser.TryFindElementById("_ctl0_Content_UserSiteWizard1_UserGrid");
+            IWebElement studyTable = TestContext.Browser.TryFindElementById("_ctl0_Content_UserSiteWizard1_UserGrid",true,2);
+
             if (studyTable != null)
             {
                 var pageTable = studyTable.TryFindElementBy(By.XPath("./tbody/tr[last()]"));

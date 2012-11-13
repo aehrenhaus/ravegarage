@@ -43,7 +43,7 @@ namespace Medidata.RBT.PageObjects.Rave
             {
                 //TODO :    Remove the coalescing op when seeding considderation is up to date for all feature files. 
                 //          Use study.Name as the text to search for.
-                return TestContext.Browser.TryFindElementByLinkText(study.UniqueName);
+                return TestContext.Browser.TryFindElementBy(By.PartialLinkText(study.UniqueName));
             }, out foundOnPage);
 
 

@@ -142,23 +142,6 @@ namespace Medidata.RBT
 	
 		}
 
-
-        /// <summary>
-        /// Clicks the link that is created as a span with an onclick event.  
-        /// </summary>
-        /// <param name="linkText">The link text.</param>
-        /// <returns></returns>
-        public virtual IPage ClickSpanLink(string linkText)
-        {
-            IWebElement item = Browser.TryFindElementByLinkText(linkText);
-            if (item != null) 
-			    item.Click();
-            else 
-			    throw new Exception("Can't find link by text:" + linkText);
-
-			return GetPageByCurrentUrlIfNoAlert();
-        }
-
         /// <summary>
 		/// See IPage interface
         /// </summary>
@@ -174,15 +157,32 @@ namespace Medidata.RBT
             throw new Exception("Don't know how to navigate to "+identifier);
         }
 
+		private IWebElement TryFindElement(string identifier)
+		{
+			
+			var ele = identifier.StartsWith("==") ?
+			   Browser.TryFindElementById(identifier.Substring(2), false) :
+			   Browser.TryFindElementByPartialID(identifier, false);
+
+			if (ele == null)
+				ele =TryGetElementByName(identifier);
+
+			if (ele == null)
+				ele = identifier.StartsWith("==") ?
+				Browser.TryFindElementById(identifier.Substring(2), true) :
+				Browser.TryFindElementByPartialID(identifier, true);
+
+			return ele;
+		}
+
 		/// <summary>
 		/// See IPage interface
 		/// </summary>
         public virtual IPage Type(string identifier, string text)
         {
-            var element = Browser.TextboxById(identifier);
-            if (element == null)
-                element = GetElementByName(identifier).EnhanceAs<Textbox>();
-            element.SetText(text);
+			var ele = TryFindElement(identifier);
+
+			ele.EnhanceAs<Textbox>().SetText(text);
             return this;
         }
 
@@ -191,9 +191,7 @@ namespace Medidata.RBT
 		/// </summary>
         public virtual IPage ChooseFromDropdown(string identifier, string text)
         {
-			var ele = Browser.TryFindElementByPartialID(identifier, false);
-			if (ele == null)
-                ele = GetElementByName(identifier).EnhanceAs<Dropdown>();
+			var ele = TryFindElement(identifier);
 
 			ele.EnhanceAs<Dropdown>().SelectByText(text);
 
@@ -206,11 +204,7 @@ namespace Medidata.RBT
 		public virtual IPage ChooseFromCheckboxes(string identifier, bool isChecked, string areaIdentifier = null, string listItem = null)
         {
 
-            var element = Browser.TryFindElementByPartialID(identifier, false);
-            if (element == null)
-                element = GetElementByName(identifier, areaIdentifier).EnhanceAs<Checkbox>();
-			if (element == null)
-				element = Browser.TryFindElementById(identifier, true);
+			var element = TryFindElement(identifier);
 
 
             if (isChecked)
@@ -308,9 +302,9 @@ namespace Medidata.RBT
 
 		public virtual IWebElement GetElementByName(string identifier, string areaIdentifier = null, string listItemIdentifier = null)
 		{
-			IWebElement element = Browser.TryFindElementBy(By.XPath("//input[@value='" + identifier + "']"));
-			if (element != null)
-				return element;
+			//IWebElement element = Browser.TryFindElementBy(By.XPath("//input[@value='" + identifier + "']"));
+			//if (element != null)
+			//	return element;
 			throw new Exception(string.Format("This page ({0}) does not provide information about element: {1}", this.GetType().Name, identifier));
 		}
 

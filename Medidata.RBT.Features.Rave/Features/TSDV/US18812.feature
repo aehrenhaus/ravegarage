@@ -1,25 +1,25 @@
 ﻿# When a user selects  Dynamic Allocation Randomization Block algorithm , subject assignment satisfies a specified allocation and ratio is random for all blocks.
-
+@ignore
 Feature: US18812
 	When user selects Dynamic Allocation Randomization Block algorithm
 	Then subject assignment satisfies a specified allocation ratio
 	And subject assignment is random for all blocks
 
 Background:
-	Given I login to Rave with default account
-	#Given xml draft "US18812_SJ.xml" is Uploaded with Environment name "Dev"
-	#Given Site "Site 1" with Site Group "Asia" exists
+	Given I login to Rave with user "SUPER USER 1"
+	Given xml draft "US18812_SJ.xml" is Uploaded with Environment name "Dev"
+	Given Site "Site 1" with Site Group "Asia" exists
 	#Given Site "Site 2" with Site Group "Europe" exists
 	#Given Site "Site 3" with Site Group "World" exists
 	#Given Site "Site 4" with Site Group "North America" exists
-	#Given study "US18812_SJ" is assigned to Site "Site 1" with study environment "Aux: Dev"
+	Given study "US18812_SJ" is assigned to Site "Site 1" with study environment "Aux: Dev"
 	#Given study "US18812_SJ" is assigned to Site "Site 2" with study environment "Aux: Dev"
 	#Given study "US18812_SJ" is assigned to Site "Site 3" with study environment "Aux: Dev"
 	#Given study "US18812_SJ" is assigned to Site "Site 4" with study environment "Aux: Dev"
-	#Given I publish and push eCRF "US18812_SJ.xml" to "Version 1" with study environment "Dev"
-	#Given following Project assignments exist
-	#| User         | Project    | Environment | Role         | Site   | SecurityRole          | Lines Per Page |
-	#| SUPER USER 1 | US18812_SJ | Aux: Dev    | SUPER ROLE 1 | Site 1 | Project Admin Default | 100            |
+	Given I publish and push eCRF "US18812_SJ.xml" to "Version 1" with study environment "Dev"
+	Given following Project assignments exist
+	| User         | Project    | Environment | Role         | Site   | SecurityRole          | Lines Per Page |
+	| SUPER USER 1 | US18812_SJ | Aux: Dev    | SUPER ROLE 1 | Site 1 | Project Admin Default | 100            |
 	#| SUPER USER 1 | US18812_SJ | Aux: Dev    | SUPER ROLE 1 | Site 2 | Project Admin Default | 100            |
 	#| SUPER USER 1 | US18812_SJ | Aux: Dev    | SUPER ROLE 1 | Site 3 | Project Admin Default | 100            |
 	#| SUPER USER 1 | US18812_SJ | Aux: Dev    | SUPER ROLE 1 | Site 4 | Project Admin Default | 100            |
@@ -27,6 +27,8 @@ Background:
 	#| User         | Report                                                           |
 	#| SUPER USER 1 | Targeted SDV Configuration - Targeted SDV Configuration          |
 	#| SUPER USER 1 | Targeted SDV Subject Management - Targeted SDV Subject Managemen |
+
+
 
 
 	# below should be commented out.
@@ -131,40 +133,43 @@ Scenario: @PB_US18812_01 Enroll 50 subjects in a study to verify that TSDV has r
 	And I click button "Submit Report"
 	And I switch to "Targeted SDV Study Plan" window
 	And I create a new block plan named "US18812_SJ (Dev) Block Plan" with Data entry Role "SUPER ROLE 1"
-	And I delete the tier "Architect Defined" from plan
+	#################And I delete the tier "Architect Defined" from plan
 	And I edit Blocks 
 	| Name              | Subject Count |
 	| Architect Defined | 10            |
 	
-	#And I select link "Tiers"
+	And I select link "Tiers"
 	#And I remove all costom tiers
 	#And I select link "Study Block Plan"
 	#
-	#And I create a custom tier named "Custom Tier 1" and description "Adverse Events" with table
-	#| Form           | Selected |
-	#| Adverse Events | True     |
-	#And I create a custom tier named "Custom Tier 2" and description "BloodWork" with table
-	#| Form      | Selected |
-	#| BloodWork | True     |
-	#And I create a custom tier named "Custom Tier 3" and description "Cholesterol" with table
-	#| Form        | Selected |
-	#| Cholesterol | True     |
-	#And I create a custom tier named "Custom Tier 4" and description "Concomitant Medications" with table
-	#| Form                    | Selected |
-	#| 	Occlusion  | True     |
-	#And I create a custom tier named "Custom Tier 5" and description "Demographics" with table
-	#| Form         | Selected |
-	#| Demographics | True     |
-	#And I create a custom tier named "Custom Tier 6" and description "Device Form" with table
-	#| Form        | Selected |
-	#| Device Form | True     |
-	#And I create a custom tier named "Custom Tier 7" and description "Drug Administration" with table
-	#| Form                | Selected |
-	#| Drug Administration | True     |
-	#And I select link "Study Block Plan"
+	And I create a custom tier named "Custom Tier 1" and description "Adverse Events" with table
+	| Form           | Selected |
+	| Adverse Events | True     |
+	And I create a custom tier named "Custom Tier 2" and description "BloodWork" with table
+	| Form      | Selected |
+	| BloodWork | True     |
+	And I create a custom tier named "Custom Tier 3" and description "Cholesterol" with table
+	| Form        | Selected |
+	| Cholesterol | True     |
+	And I create a custom tier named "Custom Tier 4" and description "Concomitant Medications" with table
+	| Form                    | Selected |
+	| 	Occlusion  | True     |
+	And I create a custom tier named "Custom Tier 5" and description "Demographics" with table
+	| Form         | Selected |
+	| Demographics | True     |
+	And I create a custom tier named "Custom Tier 6" and description "Device Form" with table
+	| Form        | Selected |
+	| Device Form | True     |
+	And I create a custom tier named "Custom Tier 7" and description "Drug Administration" with table
+	| Form                | Selected |
+	| Drug Administration | True     |
+	And I select link "Study Block Plan"
 	And I select the tier "All Forms" and Subject Count "1"
 	And I select the tier "No Forms" and Subject Count "1"
-	And I select the tier "Architect Defined" and Subject Count "1"
+
+	
+	#############And I select the tier "Architect Defined" and Subject Count "1"
+
 	And I select the tier "Custom Tier 1" and Subject Count "1"
 	And I select the tier "Custom Tier 2" and Subject Count "1"
 	And I select the tier "Custom Tier 3" and Subject Count "1"
@@ -175,7 +180,7 @@ Scenario: @PB_US18812_01 Enroll 50 subjects in a study to verify that TSDV has r
 	And I activate the plan
 	And I switch to "Reports" window
 	And I select link "Home"
-	And I create 50 random Subjects with name "ABB" in Study "US18812_SJ (Dev)" in Site "Site 1"
+	And I create 50 random Subjects with name "ABB" in Study "US18812_SJ" in Site "Site 1"
 	And I select link "Home"
 	And I navigate to "Reporter"
 	And I select Report "Targeted SDV Subject Management"
@@ -266,7 +271,7 @@ Scenario: @PB_US18812_01 Enroll 50 subjects in a study to verify that TSDV has r
 	And I activate the plan
 	And I switch to "Reports" window
 	And I select link "Home"
-	And I create 50 random Subjects with name "BBC" in Study "US18812_SJ (Dev)" in Site "Site 2"
+	And I create 50 random Subjects with name "BBC" in Study "US18812_SJ" in Site "Site 2"
 	And I select link "Home"
 	And I navigate to "Reporter"
 	And I select Report "Targeted SDV Subject Management"
@@ -409,7 +414,7 @@ Scenario: @PB_US18812_01 Enroll 50 subjects in a study to verify that TSDV has r
 	And I activate the plan
 	And I switch to "Reports" window
 	And I select link "Home"
-	And I create 50 random Subjects with name "CCD" in Study "US18812_SJ (Dev)" in Site "Site 3"
+	And I create 50 random Subjects with name "CCD" in Study "US18812_SJ" in Site "Site 3"
 	And I select link "Home"
 	And I navigate to "Reporter"
 	And I select Report "Targeted SDV Subject Management"
