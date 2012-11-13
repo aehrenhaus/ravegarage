@@ -80,6 +80,43 @@ alter database {0} set multi_user with rollback immediate",
 
 		}
 
+        public static void SetDatabaseToOffline()
+        {
+            var builder = new System.Data.SqlClient.SqlConnectionStringBuilder();
+            builder.ConnectionString = System.Configuration.ConfigurationManager.ConnectionStrings[RBTConfiguration.Default.DatabaseConnection].ConnectionString;
+            string catalog = builder.InitialCatalog;
+            var offlineQuery = String.Format(
+@"
+ALTER DATABASE {0} SET SINGLE_USER WITH ROLLBACK IMMEDIATE
+ALTER DATABASE {0} SET OFFLINE WITH ROLLBACK IMMEDIATE ",
+                                                         catalog, builder.InitialCatalog);
+
+            builder.InitialCatalog = "master";
+            SqlCommand cmd = new SqlCommand(offlineQuery, new SqlConnection(builder.ToString()));
+            cmd.Connection.Open();
+            cmd.ExecuteNonQuery();
+            cmd.Connection.Close();
+        }
+
+
+        public static void SetDatabaseToOnline()
+        {
+            var builder = new System.Data.SqlClient.SqlConnectionStringBuilder();
+            builder.ConnectionString = System.Configuration.ConfigurationManager.ConnectionStrings[RBTConfiguration.Default.DatabaseConnection].ConnectionString;
+            string catalog = builder.InitialCatalog;
+            var onlineQuery = String.Format(
+@"
+ALTER DATABASE {0} SET MULTI_USER
+ALTER DATABASE {0} SET ONLINE WITH ROLLBACK IMMEDIATE ",
+                                                         catalog, builder.InitialCatalog);
+
+            builder.InitialCatalog = "master";
+            SqlCommand cmd = new SqlCommand(onlineQuery, new SqlConnection(builder.ToString()));
+            cmd.Connection.Open();
+            cmd.ExecuteNonQuery();
+            cmd.Connection.Close();
+        }
+
         public static DataSet ExecuteDataSet(string sql, object[] args = null)
         {
 		

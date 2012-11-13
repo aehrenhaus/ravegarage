@@ -14,6 +14,28 @@ namespace Medidata.RBT.Features.Rave
 {
 	public partial class EDCSteps
     {
+
+        /// <summary>
+        /// sets the database to "offline", so nobody can access it
+        /// </summary>
+        [StepDefinition(@"I set the database to offline")]
+        public void ISetTheDatabaseToOffline()
+        {
+            DbHelper.SetDatabaseToOffline();
+        }
+
+        /// <summary>
+        /// sets the database to "online", so it is available
+        /// </summary>
+        [StepDefinition(@"I set the database to online")]
+        public void ISetTheDatabaseToOnline()
+        {
+            DbHelper.SetDatabaseToOnline();
+        }
+
+
+
+
 		/// <summary>
 		/// Based on the column name, we call an appropriate method and assert true/false whether or not column in table datapoints propagates
 		/// </summary>
