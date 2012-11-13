@@ -31,7 +31,6 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
         /// <param name="roleUploadName">The feature defined name of the role</param>
         public Role(string roleUploadName)
         {
- 
 			UniqueName = roleUploadName;
         }
 
@@ -64,14 +63,8 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
 
 				//Create a unique version of the file to upload
 				UniqueFileLocation = MakeFileLocationUnique(FileLocation);
-
-				UniqueFileLocation = MakeFileLocationUnique(FileLocation);
 				excel.SaveAs(UniqueFileLocation);
-
-		
 			}
-
-
         }
 
         /// <summary>

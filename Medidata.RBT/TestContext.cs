@@ -345,6 +345,7 @@ namespace Medidata.RBT
 		[BeforeScenario()]
 		public void BeforeScenario()
 		{
+            TestContext.CurrentUser = null;
 			if (output ==null)
 			{
 				output = new MultipleStreamWriter();

@@ -8,6 +8,7 @@ using OpenQA.Selenium.Remote;
 using TechTalk.SpecFlow;
 using Medidata.RBT.SeleniumExtension;
 using System.Threading;
+using Medidata.RBT.PageObjects.Rave.SharedRaveObjects;
 
 namespace Medidata.RBT.PageObjects.Rave
 {
@@ -36,7 +37,8 @@ namespace Medidata.RBT.PageObjects.Rave
         {
             if (!string.IsNullOrEmpty(crfVersion))
             {
-                ChooseFromDropdown("CRFVersion", crfVersion);
+                Dropdown crfVersionDropdown = Browser.DropdownById("CRFVersion", true);
+                crfVersionDropdown.SelectByPartialText(TestContext.GetExistingFeatureObjectOrMakeNew<CrfVersion>(crfVersion, () => null).UniqueName);
             }
         }
 

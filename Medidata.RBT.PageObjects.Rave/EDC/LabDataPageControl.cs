@@ -48,17 +48,20 @@ namespace Medidata.RBT.PageObjects.Rave
 		//			table(other query)
 		public IEDCFieldControl FindField(string fieldText)
 		{
+            fieldText = ISearchContextExtend.ReplaceSpecialCharactersWithEscapeCharacters(fieldText);
             IWebElement el = TestContext.Browser.FindElements(By.XPath("//span[contains(@id,'Content_R')]")).FirstOrDefault();
             var area = el.FindElementsByText<IWebElement>(fieldText).FirstOrDefault();
 
             var fieldTRs = el.FindElements(By.XPath("table[2]/tbody/tr"));
-            int i = 0;
 
-            for (; i < fieldTRs.Count; i++)
+            int i;
+            for (i = 0; i < fieldTRs.Count; i++)
             {
-                if (fieldTRs[i].Children()[1].Text == fieldText)
+                if (ISearchContextExtend.ReplaceTagsWithEscapedCharacters(fieldTRs[i].Children()[1].GetInnerHtml())
+                        .Split(new string[] { "<" }, StringSplitOptions.None)[0].Trim()== fieldText)
                     break;
             }
+
             IWebElement fieldTR = fieldTRs[i];
             IWebElement fieldTRQueries = fieldTRs[i + 1];
 

@@ -81,7 +81,7 @@ namespace Medidata.RBT.Features.Rave.Steps.Seeding
         public void ISearchForSite__(string siteName)
         {
             var currentPage  = CurrentPage.As<SiteAdministrationHomePage>();
-            currentPage.SearchForSite(siteName);            
+            currentPage.SearchForSite(TestContext.GetExistingFeatureObjectOrMakeNew<Site>(siteName, () => new Site(siteName)).UniqueName);            
         }
 
         /// <summary>
@@ -91,7 +91,7 @@ namespace Medidata.RBT.Features.Rave.Steps.Seeding
         public void ISelectSiteDetailsForSite__(string siteName)
         {
             var currentPage = CurrentPage.As<SiteAdministrationHomePage>();
-            currentPage.ClickSite(siteName);
+            currentPage.ClickSite(TestContext.GetExistingFeatureObjectOrMakeNew<Site>(siteName, () => new Site(siteName)).UniqueName);
         }
 
 
@@ -102,7 +102,7 @@ namespace Medidata.RBT.Features.Rave.Steps.Seeding
         public void ISelect__ForStudy__inEnvironment__(string elementName, string studyName, string environment)
         {
             var currentPage = CurrentPage.As<SiteAdministrationDetailsPage>();
-            currentPage.SelectElementInStudySite(elementName, studyName, environment);
+            currentPage.SelectElementInStudySite(elementName, TestContext.GetExistingFeatureObjectOrMakeNew<Project>(studyName, () => new Project(studyName)).UniqueName, environment);
 
         }
 

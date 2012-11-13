@@ -5,6 +5,9 @@ using System.Text;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
 using Medidata.RBT.SeleniumExtension;
+using System.Text.RegularExpressions;
+using System.Collections.ObjectModel;
+using Medidata.RBT.PageObjects.Rave.SharedRaveObjects;
 
 
 namespace Medidata.RBT.PageObjects.Rave
@@ -60,7 +63,7 @@ namespace Medidata.RBT.PageObjects.Rave
             return result;
         }
 
-		public virtual void EnterData(string text, ControlType controlType = ControlType.Default) 
+		public virtual void EnterData(string text, ControlType controlType = ControlType.Default, string additionalData = "") 
 		{
 			switch (controlType)
 			{
@@ -70,10 +73,8 @@ namespace Medidata.RBT.PageObjects.Rave
 
 				case ControlType.Text:
 				case ControlType.LongText:
-					EnterTextBoxValue(text);
+                    EnterTextBoxValue(text, additionalData);
 					break;
-
-
 
 				case ControlType.Datetime:
 					EnterDatetimeValue(text);
@@ -84,12 +85,17 @@ namespace Medidata.RBT.PageObjects.Rave
 					EnterRadiobuttonValue(text);
 					break;
 
+                case ControlType.SearchList:
 				case ControlType.DynamicSearchList:
 					EnterDynamicSearchListValue(text);
 					break;
 
                 case ControlType.CheckBox:
                     EnterCheckBox(bool.Parse(text));
+                    break;
+
+                case ControlType.Signature:
+                    EnterSignature(TestContext.GetExistingFeatureObjectOrMakeNew<User>(text, () => new User(text)));
                     break;
 
 				default:
@@ -115,8 +121,7 @@ namespace Medidata.RBT.PageObjects.Rave
 				var options = new SelectElement(x).Options;
 				return options.Count == 1 && (options[0].Text == "Data Entry Error" || options[0].Text == "Entry Error");
 			});
-			//	int dataEntyErrorDropdownCount = dataEntyErrorDropdown == null ? 0 : 1;
-			//int datapointDropdownCount =  dropdowns.Count - dataEntyErrorDropdownCount ;
+
 			if (dataEntyErrorDropdown != null)
 				dropdowns.Remove(dataEntyErrorDropdown);
 
@@ -161,11 +166,40 @@ namespace Medidata.RBT.PageObjects.Rave
 			}
 		}
 
-		protected virtual void EnterTextBoxValue(string val)
+        /// <summary>
+        /// Enter a value into a textbox
+        /// </summary>
+        /// <param name="val">Value to enter into the textbox</param>
+        /// <param name="additionalData">If the textbox has a unit dictionary, select from the unit dictionary using additional data</param>
+		protected virtual void EnterTextBoxValue(string val, string additionalData = "")
 		{
-			var textboxes = FieldControlContainer.Textboxes();
-			textboxes[0].SetText(val);
+			ReadOnlyCollection<Textbox> textboxes = FieldControlContainer.Textboxes();
+            SendTextWithCommands(textboxes[0], val);
+
+            List<IWebElement> dropdowns = FieldControlContainer.FindElements(By.TagName("select")).ToList();
+            if (!String.IsNullOrEmpty(additionalData))
+                new SelectElement(dropdowns[0]).SelectByText(additionalData);
 		}
+
+        private void SendTextWithCommands(Textbox placeToInputText, string inputString)
+        {
+            Regex lookaheadLookbehindRegex = new Regex(@"((?<=\[cmd:.*\])|(?=\[cmd:.*\]))", RegexOptions.IgnoreCase);
+
+            List<string> cmdSplitStrings = lookaheadLookbehindRegex.Split(inputString).ToList();
+            StringBuilder stringToSet = new StringBuilder();
+
+            foreach (string stringParsed in cmdSplitStrings)
+            {
+                if (stringParsed.Equals("[cmd:enter]"))
+                    stringToSet.Append(Keys.Enter);
+                else if (stringParsed.Equals("[cmd:shift+enter]"))
+                    stringToSet.Append(Keys.Shift + Keys.Enter + Keys.Shift);
+                else
+                    stringToSet.Append(stringParsed);
+            }
+
+            placeToInputText.SetText(stringToSet.ToString());
+        }
 	
         //new method
         protected virtual void EnterCheckBox(bool selected)		
@@ -174,6 +208,20 @@ namespace Medidata.RBT.PageObjects.Rave
             if (checkboxes[0].Selected != selected)
                 checkboxes[0].Click();
 		}
+
+        /// <summary>
+        /// Enter signature into the signature field.
+        /// If the signature has happened recently, username is not required.
+        /// </summary>
+        /// <param name="user">The user to sign the form with</param>
+        protected virtual void EnterSignature(User user)
+        {
+            IWebElement usernameBox = FieldControlContainer.TryFindElementByPartialID("TwoPart");
+            if(usernameBox != null)
+                usernameBox.EnhanceAs<Textbox>().SetText(user.UniqueName);
+            Textbox passwordBox = FieldControlContainer.TextboxByType("password");
+            passwordBox.SetText(user.Password);
+        }
 
 		protected virtual void EnterDatetimeValue(string val)
 		{
@@ -231,7 +279,8 @@ namespace Medidata.RBT.PageObjects.Rave
 		{
 			HtmlTable table = FieldControlContainer.Table("_RadioBtnList");
 			var optionTDs = table.FindElements(By.XPath("./tbody/tr/td"));
-			var td = optionTDs.FirstOrDefault(x=>x.Text.Trim()==val);
+            var td = optionTDs.FirstOrDefault(x => ISearchContextExtend.ReplaceTagsWithEscapedCharacters(x.FindElement(By.XPath("label")).GetInnerHtml()).Trim() 
+                .Equals(ISearchContextExtend.ReplaceSpecialCharactersWithEscapeCharacters(val)));
 			td.RadioButtons()[0].Set();
 	
 		}

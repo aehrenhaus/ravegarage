@@ -8,6 +8,7 @@ using System.Collections.ObjectModel;
 using TechTalk.SpecFlow;
 using OpenQA.Selenium.Internal;
 using OpenQA.Selenium.Support.UI;
+using System.Text.RegularExpressions;
 
 namespace Medidata.RBT.SeleniumExtension
 {
@@ -60,6 +61,18 @@ namespace Medidata.RBT.SeleniumExtension
 		{
 			return SelectExtendElementByPartialID<Textbox>(context,"input", partialID, nullable);
 		}
+
+        /// <summary>
+        /// Select a textbox by the type
+        /// </summary>
+        /// <param name="context">The context to search</param>
+        /// <param name="type">The type of textbox to search for</param>
+        /// <param name="nullable"></param>
+        /// <returns></returns>
+        public static Textbox TextboxByType(this ISearchContext context, string type)
+        {
+            return context.FindElement(By.XPath(".//input[@type='" + type + "']")).EnhanceAs<Textbox>();
+        }
 
 		public static ReadOnlyCollection<Textbox> Textboxes(this ISearchContext context, bool allLevel = true)
 		{
@@ -170,20 +183,136 @@ namespace Medidata.RBT.SeleniumExtension
 
 		#endregion
 
-		#region Hyperlink
+        #region Hyperlink
 
-		public static Hyperlink LinkByID(this ISearchContext context, string partialID, bool nullable = false)
+        public static Hyperlink LinkByID(this ISearchContext context, string partialID, bool nullable = false)
 		{
 			return SelectExtendElementByPartialID<Hyperlink>(context, "a", partialID, nullable);
 		}
 
-        public static Hyperlink Link(this ISearchContext context, string linktext)
-        {
-			var ele = context.TryFindElementBy(By.LinkText(linktext));
+
+		public static Hyperlink Link(this ISearchContext context, string linktext)
+		{
+            IWebElement ele;
+            //If the element is separated by a bullet it gets translated into <li></li><br> so special consideration must be taken
+            if (linktext.Contains("•"))
+                ele = FindLinkWithBulletPoint(context, linktext);
+            else
+			    ele = context.TryFindElementBy(By.LinkText(linktext));
+
+            if(ele == null)
+                ele = context.TryFindElementBy(By.XPath("//div[normalize-space(text())='" + linktext + "']"));
+
 			if (ele == null)
 				throw new Exception("Can't find hyperlink by text:" + linktext);
 			return ele.EnhanceAs<Hyperlink>();
+		}
+
+        /// <summary>
+        /// If the link has a bullet point you need to search for the text before the bullet point.
+        /// Then you look for the text after to see if it matches up with the part after the bullet point
+        /// </summary>
+        /// <param name="context">The context to find the link in</param>
+        /// <param name="linkText">The text of the link</param>
+        /// <returns>The link with the bullet point</returns>
+        private static IWebElement FindLinkWithBulletPoint(ISearchContext context, string linkText)
+        {
+            string linkTextBeforeBulletPoint = linkText.Substring(0, linkText.IndexOf("•"));
+            string linkTextInSelenium = ReplaceSpecialCharactersWithEscapeCharacters(linkText);
+
+            List<IWebElement> linksWhichStartWithPreBulletText = context.FindElements(By.XPath("//a[text()[contains(.,'" + linkTextBeforeBulletPoint + "')]]")).ToList();
+            foreach (IWebElement link in linksWhichStartWithPreBulletText)
+                if (ReplaceTagsWithEscapedCharacters(link.GetInnerHtml()).Equals(linkTextInSelenium))
+                    return link;
+
+            return null;
         }
+
+
+        /// <summary>
+        /// Replace tags that exist in the inner html with the searchable version.
+        /// </summary>
+        /// <param name="originalString">The inner html in the area to search</param>
+        /// <returns>The string with the tags replaced with elements that won't get split up</returns>
+        public static string ReplaceTagsWithEscapedCharacters(string originalString)
+        {
+            Regex re = new Regex("<br/>|<br>|<li></li>|<b>|</b>", RegexOptions.IgnoreCase);
+
+            string convertedString = re.Replace(originalString, delegate(Match m)
+            {
+                string value = m.Value;
+
+                if (value.Equals("<br>", StringComparison.OrdinalIgnoreCase))
+                {
+                    return "\br";
+                }
+                else if (value.Equals("<li></li>", StringComparison.OrdinalIgnoreCase))
+                {
+                    return "•";
+                }
+                else if (value.Equals("<b>", StringComparison.OrdinalIgnoreCase))
+                {
+                    return "\\b";
+                }
+                else if (value.Equals("</b>", StringComparison.OrdinalIgnoreCase))
+                {
+                    return "\\/b";
+                }
+                else if (value.Equals("<br/>", StringComparison.OrdinalIgnoreCase))
+                {
+                    return "\br";
+                }
+                else
+                {
+                    return "";
+                }
+            });
+
+            return convertedString;
+        }
+
+        /// <summary>
+        /// Replace characters in the feature file string with the escaped version that matches the string from ReplaceTagsWithEscapedCharacters
+        /// </summary>
+        /// <param name="originalString">The string from the feature file</param>
+        /// <returns>A string that matches the format returned from ReplaceTagsWithEscapedCharacters</returns>
+        public static string ReplaceSpecialCharactersWithEscapeCharacters(string originalString)
+        {
+            Regex re = new Regex("&|<|>|\\\\r|\\\\br", RegexOptions.IgnoreCase);
+
+            string convertedString = re.Replace(originalString, delegate(Match m)
+            {
+                string value = m.Value;
+
+                if (value.Equals("&", StringComparison.OrdinalIgnoreCase))
+                {
+                    return "&amp;";
+                }
+                else if (value.Equals("<", StringComparison.OrdinalIgnoreCase))
+                {
+                    return "&lt;";
+                }
+                else if (value.Equals(">", StringComparison.OrdinalIgnoreCase))
+                {
+                    return "&gt;";
+                }
+                else if (value.Equals("\\r", StringComparison.OrdinalIgnoreCase))
+                {
+                    return "\r\n";
+                }
+                else if (value.Equals("\\br", StringComparison.OrdinalIgnoreCase))
+                {
+                    return "\br";
+                }
+                else
+                {
+                    return "•";
+                }
+            });
+
+            return convertedString;
+        }
+
 
         public static Hyperlink LinkByPartialText(this ISearchContext context, string linktext)
         {
@@ -333,7 +462,7 @@ namespace Medidata.RBT.SeleniumExtension
 
 		public static ReadOnlyCollection<EnhancedElement> FindImagebuttons(this ISearchContext context)
 		{
-			return context.FindElements(By.XPath(".//input[@type='image']")).CastReadOnlyCollection < EnhancedElement>();
+            return context.FindElements(By.XPath(".//input[@type='image']")).CastReadOnlyCollection<EnhancedElement>();
 		}
 
 

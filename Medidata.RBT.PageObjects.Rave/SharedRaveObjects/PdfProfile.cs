@@ -11,13 +11,15 @@ using Medidata.RBT.PageObjects.Rave.SiteAdministration;
 using Medidata.RBT.SharedRaveObjects;
 using Medidata.RBT.PageObjects.Rave.Configuration;
 using Medidata.RBT.PageObjects.Rave.PDF;
+using Medidata.RBT.SharedObjects;
+using System.IO;
 
 namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
 {
     /// <summary>
     /// 
     /// </summary>
-    public class PdfProfile : BaseRaveSeedableObject
+    public class PdfProfile : BaseRaveSeedableObject, IRemoveableObject
     {
         /// <summary>
         /// Contructor for pdf profile object
@@ -27,27 +29,65 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
         {
             UniqueName = profileName;
         }
+
+        /// <summary>
+        /// Load the xml to upload. Replace the role name with a unique version of it with a TID at the end.
+        /// </summary>
+        protected override void MakeUnique()
+        {
+            string fileName;
+            if (UniqueName.StartsWith("SUPER PDF PROFILE"))
+                fileName = "SUPERPDFPROFILE.xml";
+            else
+                fileName = UniqueName + ".xml";
+
+            FileLocation = RBTConfiguration.Default.UploadPath + @"\PdfProfile\" + fileName;
+
+            using (ExcelWorkbook excel = new ExcelWorkbook(FileLocation))
+            {
+                ExcelTable pdfProfilesTable = excel.OpenTableForEdit("PDF Profiles");
+                ExcelTable pdfSettingsTable = excel.OpenTableForEdit("PDF Settings");
+
+                var name = pdfProfilesTable[1, "Profile Name"];
+                UniqueName = name + TID;
+                pdfProfilesTable[1, "Profile Name"] = UniqueName;
+
+                for (int i = 1; i < pdfSettingsTable.RowsCount; i++)
+                {
+                    if (pdfSettingsTable[i, "Profile"].Equals("Profile"))
+                        break;
+                    pdfSettingsTable[i, "Profile"] = UniqueName;
+                }
+
+                //Create a unique version of the file to upload
+                UniqueFileLocation = MakeFileLocationUnique(FileLocation);
+                excel.SaveAs(UniqueFileLocation);
+            }
+        }
+
         /// <summary>
         /// Navigate to the "PDF Settings" page
         /// </summary>
         protected override void NavigateToSeedPage()
         {
-            TestContext.CurrentPage.As<HomePage>().ClickLink("Configuration");
-            TestContext.CurrentPage.As<WorkflowConfigPage>().ClickLink("PDF Settings");
+            TestContext.CurrentPage = new ConfigurationLoaderPage().NavigateToSelf();
         }
-        /// <summary>
-        /// Create a unique name for the pdf profile by appending a TID.
-        /// </summary>
-        protected override void MakeUnique()
-        {
-            UniqueName = UniqueName + TID;
-        }
+
         /// <summary>
         /// Created the new pdf profile using the UniqueName
         /// </summary>
         protected override void CreateObject()
         {
-            TestContext.CurrentPage.As<PDFConfigProfilesPage>().CreateNewPdfProfile(UniqueName);
+            TestContext.CurrentPage.As<ConfigurationLoaderPage>().UploadFile(UniqueFileLocation);
+            Factory.FeatureObjectsForDeletion.Add(this);
+        }
+
+        /// <summary>
+        /// Delete the unique pdf profile created by seeding
+        /// </summary>
+        public void DeleteSelf()
+        {
+            File.Delete(UniqueFileLocation);
         }
     }
 }

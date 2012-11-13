@@ -24,7 +24,7 @@ namespace Medidata.RBT.PageObjects.Rave
 			Table dt = new Table("Name");
             dt.AddRow(pdfName);
 			var tr = table.FindMatchRows(dt).FirstOrDefault();
-			tr.FindImagebuttons()[0].Click();
+			tr.FindImagebuttons()[1].Click();
             List<String> extractedFilePaths = Misc.UnzipAllDownloads();
 
             StringBuilder sb = new StringBuilder();
@@ -38,7 +38,7 @@ namespace Medidata.RBT.PageObjects.Rave
 
         public override string URL
         {
-            get { return "Modules/PDF/FileRequests.aspx"; }
+            get { return "Modules/PDF/FileRequests.aspx?MyPDF=True"; }
         }
 	}
 }

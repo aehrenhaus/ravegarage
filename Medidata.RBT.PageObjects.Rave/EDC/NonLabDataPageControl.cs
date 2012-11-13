@@ -7,6 +7,7 @@ using OpenQA.Selenium;
 using OpenQA.Selenium.Remote;
 using Medidata.RBT.SeleniumExtension;
 using System.Collections.Specialized;
+using System.Collections.ObjectModel;
 
 namespace Medidata.RBT.PageObjects.Rave
 {
@@ -36,14 +37,15 @@ namespace Medidata.RBT.PageObjects.Rave
 		//                        td 3 class=crf_rowRightSide
 
 		//
+
 		public IEDCFieldControl FindField(string fieldName)
 		{
-            
-            var leftSideTds = TestContext.Browser.FindElements(By.XPath("//td[@class='crf_rowLeftSide']"));
+            fieldName = ISearchContextExtend.ReplaceSpecialCharactersWithEscapeCharacters(fieldName);
+            ReadOnlyCollection<IWebElement> leftSideTds = TestContext.Browser.FindElements(By.ClassName("crf_rowLeftSide"));
 			var area = leftSideTds.FirstOrDefault(x => 
 				{
-					return x.FindElement(By.XPath(".//td[@class='crf_preText']")).GetInnerHtml()
-						.Split(new string[] { "\r\n", "<" }, StringSplitOptions.None)[0].Trim() == fieldName;
+                    return ISearchContextExtend.ReplaceTagsWithEscapedCharacters(x.FindElement(By.ClassName("crf_preText")).GetInnerHtml())
+						.Split(new string[] { "<" }, StringSplitOptions.None)[0].Trim() == fieldName;
 				});
 
             if (area == null)
@@ -55,7 +57,6 @@ namespace Medidata.RBT.PageObjects.Rave
         public void FindFieldByText(string fieldText)
         {
             var el = TestContext.Browser.FindElementById("_ctl0_Content_R");
-           
         }
 	}
 }

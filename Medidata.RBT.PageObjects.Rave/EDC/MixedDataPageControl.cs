@@ -29,12 +29,13 @@ namespace Medidata.RBT.PageObjects.Rave
         /// <returns>The IWebElement associated with the passed in field text</returns>
 		public IEDCFieldControl FindField(string fieldName)
 		{
+            fieldName = ISearchContextExtend.ReplaceSpecialCharactersWithEscapeCharacters(fieldName);
             //First, look for the field as a non-lab field
             IEnumerable<IWebElement> leftSideTds = TestContext.Browser.FindElements(By.XPath("//td[@class='crf_rowLeftSide']"));
             IWebElement area = leftSideTds.FirstOrDefault(x =>
             {
-                return x.FindElement(By.XPath(".//td[@class='crf_preText']")).GetInnerHtml()
-                    .Split(new string[] { "\r\n", "<" }, StringSplitOptions.None)[0].Trim() == fieldName;
+                return ISearchContextExtend.ReplaceTagsWithEscapedCharacters(x.FindElement(By.XPath(".//td[@class='crf_preText']")).GetInnerHtml())
+                       .Split(new string[] { "<" }, StringSplitOptions.None)[0].Trim() == fieldName;
             });
 
             if (area != null)

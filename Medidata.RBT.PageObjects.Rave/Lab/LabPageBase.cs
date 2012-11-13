@@ -8,6 +8,7 @@ using OpenQA.Selenium.Remote;
 using TechTalk.SpecFlow;
 using Medidata.RBT.SeleniumExtension;
 using System.Collections.Specialized;
+using Medidata.RBT.PageObjects.Rave.SharedRaveObjects;
 namespace Medidata.RBT.PageObjects.Rave
 {
     public abstract class LabPageBase : RavePageBase, ICanPaginate
@@ -86,7 +87,7 @@ namespace Medidata.RBT.PageObjects.Rave
             
             //table.Dropdown("_ddlLabType").SendKeys(type);
             ChooseFromDropdown("_ddlLabType", type);
-            if (!String.IsNullOrEmpty(rangeType)) ChooseFromDropdown("_ddlRangeType", rangeType);
+            if (!String.IsNullOrEmpty(rangeType)) ChooseFromDropdown("_ddlRangeType", TestContext.GetExistingFeatureObjectOrMakeNew<RangeType>(rangeType, () => new RangeType(rangeType)).UniqueName);
              
             HtmlTable table = Browser.TryFindElementByPartialID("LabsGrid").EnhanceAs<HtmlTable>();
             var currentRow =  table.TextboxById("_txtName").Parent().Parent();

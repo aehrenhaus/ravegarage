@@ -14,9 +14,5 @@ namespace Medidata.RBT.PageObjects.Rave
         /// Name to be used to create pdf
         /// </summary>
         public string ProfileName { get; set; }
-        /// <summary>
-        /// Annotation to be selected for pdf
-        /// </summary>
-        public string Annotation { get; set; }
     }
 }

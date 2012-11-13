@@ -55,6 +55,8 @@ namespace Medidata.RBT
         {
             foreach (IRemoveableObject obj in ScenarioObjectsForDeletion)
                 obj.DeleteSelf();
+
+            ScenarioObjectsForDeletion = new List<IRemoveableObject>();
         }
 
         /// <summary>
@@ -65,6 +67,8 @@ namespace Medidata.RBT
         {
             foreach (IRemoveableObject obj in FeatureObjectsForDeletion)
                 obj.DeleteSelf();
+
+            FeatureObjectsForDeletion = new List<IRemoveableObject>();
         }
     }
 }
