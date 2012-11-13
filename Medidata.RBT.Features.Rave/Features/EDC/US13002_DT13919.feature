@@ -1,4 +1,4 @@
-﻿@ignore
+﻿
 Feature: US13002_DT13919
 	As a Rave user
 	When I navigate to a log form that has a Dynamic Search List
@@ -892,8 +892,7 @@ Scenario: PB_US13002_02 As a Study Coordinator, when I enter data into a Dynamic
 	And I wait for 3 seconds
 	Then I should see dynamic search list "Adverse Event Grade" in log line 1 open
 	And I take a screenshot
-	And I navigate to "Home"
-	And I accept alert window
+	And I cancel the CRF page
 
 #----------------------------------------------------------------------------------------------------------------------------------------
 @release_564_2012.1.0	
@@ -929,6 +928,7 @@ Scenario: PB_US13002_04 As a Study Coordinator, when I click the drop-down list 
 	And I select link "First Pass"
 	And I select link "New Batch"
 	And I choose "L1WP-GT" from "Study"
+	And I choose "Prod" from "Environment"
 	And I choose "Site 13919" from "Site"
 	And I type "SUB {RndNum<num4>(5)}" in "Subject"
 	And I choose "Subject Enrollment Form" from "Form"
@@ -950,6 +950,11 @@ Scenario: PB_US13002_04 As a Study Coordinator, when I click the drop-down list 
 	And I login to Rave with user "Defuser01" and password "password"
 	And I navigate to "DDE"
 	And I select link "Second Pass"
+	And I choose "L1WP-GT" from "Study"
+	And I choose "Site 13919" from "Site"
+	And I type "SUB {Var(num4)}" in "Subject"
+	And I choose "Subject Enrollment Form" from "Form"
+	And I click button "Locate"
 	And I enter data in DDE and save
 		| Field         | Data            |
 		| Datacenter ID | SUB {Var(num4)} |
