@@ -9,6 +9,7 @@ using TechTalk.SpecFlow;
 using System.Collections.ObjectModel;
 using System.Threading;
 using Medidata.RBT.SeleniumExtension;
+using Medidata.RBT.PageObjects.Rave.SharedRaveObjects;
 
 
 namespace Medidata.RBT.PageObjects.Rave
@@ -77,6 +78,21 @@ namespace Medidata.RBT.PageObjects.Rave
 			if(extendButton!=null)
 				extendButton.Click();
 
+
+            var elem = paraTR.TryFindElementBy(By.XPath(".//div[@id='PromptsBox_st_div']"));
+
+            if (elem != null)
+            {
+                double timeOutSeconds = 5;
+                while (timeOutSeconds > 0)
+                {
+                    if (elem.GetCssValue("display").Equals("block", StringComparison.InvariantCultureIgnoreCase))
+                        break;
+                    Thread.Sleep(200);
+                    timeOutSeconds = timeOutSeconds - 0.2;
+                }
+            }
+
 			return paraTR;
 		}
 
@@ -104,35 +120,45 @@ namespace Medidata.RBT.PageObjects.Rave
 		}
 
 		public PromptsPage SetParameter(string name, string value)
-		{
-			var paraTR = FindParameterTr(name);
-			var textbox = paraTR.Textboxes()[0];
+        {
+            if ("Study".Equals(name)) { value = TestContext.GetExistingFeatureObjectOrMakeNew(value, () => new Project(value)).UniqueName; }
+            else if ("Sites".Equals(name)) { value = TestContext.GetExistingFeatureObjectOrMakeNew(value, () => new Site(value)).UniqueName; }
 
-			if (textbox.GetAttribute("readonly") == "true")
-			{
-				//a datetime control
-				//This is a hack 
-				//Because selecting a date from the calendar control is hard
-				//I fill the textbox directly. And 'readonly' must be removed before setting the text
-				textbox.Element.RemoveAttribute("readonly");
+            var paraTR = FindParameterTr(name);
+            var textbox = paraTR.Textboxes()[0];
 
-				textbox.SetText(value);
-				textbox.Click();
-				var div = paraTR.TryFindElementByPartialID("LabelDiv");
-				div.SetInnerHtml(value);
-			}
-			else
-			{
-				// a text box control
+            if (textbox.GetAttribute("readonly") == "true")
+            {
+                //a datetime control
+                //This is a hack 
+                //Because selecting a date from the calendar control is hard
+                //I fill the textbox directly. And 'readonly' must be removed before setting the text
+                textbox.Element.RemoveAttribute("readonly");
 
-				textbox.SetText(value);
-				//
-				var checkButton = paraTR
-					.FindImagebuttons()
-					.FirstOrDefault(x => x.GetAttribute("src").EndsWith("Img/i_ccheck.gif"));
+                textbox.SetText(value);
+                textbox.Click();
+                var div = paraTR.TryFindElementByPartialID("LabelDiv");
+                div.SetInnerHtml(value);
+            }
+            else
+            {
+                // a text box control
 
-				checkButton.Click();
-			}
+                textbox.SetText(value);
+
+                paraTR.FindElement(By.XPath(".//input[contains(@id, '_SearchBtn')]")).Click();   //Click search
+
+                var checkbox = paraTR.FindElement(By.XPath(".//tr/td[text()='" + value + "']/../td[1]/input"))
+                    .EnhanceAs<Checkbox>();
+                checkbox.Check();
+
+                //This doesn;t even exist ???
+                //var checkButton = paraTR
+                //	.FindImagebuttons()
+                //	.FirstOrDefault(x => x.GetAttribute("src").EndsWith("Img/i_ccheck.gif"));
+
+                //checkButton.Click();
+            }
 
             return this;
         }
