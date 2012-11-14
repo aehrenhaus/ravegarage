@@ -1,5 +1,4 @@
-﻿#Note: Background of the feature file needs to be executed manually.
-#Note: KnownDT14291 - &ge and &le characters are not coverted to symbols on CRF page in EDC. This issue is applicable to the entire feature file
+﻿#Note: KnownDT14291 - &ge and &le characters are not coverted to symbols on CRF page in EDC. This issue is applicable to the entire feature file
 #Note: KnownDT14335 - Bold, Italic Text and data are not converted in PDF's when Asian Fonts are used
 #Note: KnownDT14336 - Bold and Italic field and data are not converted in Data PDF's and Annotated PDF's when Font: Times New Roman Embedded is used
 # When a PDF form is generated special character such as "<" ">" "≤" "≥" "•" should be displayed properly
@@ -52,40 +51,16 @@ Given following PDF Configuration Profile Settings exist
 	| US12175PDF4  |
 	| US12175PDF5  |
 	| US12175PDF6  |
-Given xml draft "PDF_Font_Study_Draft_1.xml" is Uploaded
 Given study "PDF Font Study" is assigned to Site "Site_001"
 And the following Range Types exist
 	| Range Type Name                        |
 	| &lt &lt; &gt &gt; &le; &ge;Range&le&ge |
-And I navigate to "Site Administration" module
-And I search for site "Site_001"
-And I select Site Details for Site "Site_001"
-And I select "Lab Maintenance" for Study "PDF Font Study" in Environment "Prod"
-And I create lab
-	| Type      | Name                                 | Range Type                             |
-	| Local Lab | &le&geLab&lt &lt; &gt &gt; &le; &ge; | &lt &lt; &gt &gt; &le; &ge;Range&le&ge |
+And xml Lab Configuration "PDF_Font_Lab_Configuration.xml" is uploaded
+Given xml draft "PDF_Font_Study_Draft_1.xml" is Uploaded
 Given following Project assignments exist
 | User         | Project        | Environment | Role         | Site     | SecurityRole          |
 | SUPER USER 1 | PDF Font Study | Live: Prod  | SUPER ROLE 1 | Site_001 | Project Admin Default |
 Given I publish and push eCRF "PDF_Font_Study_Draft_1.xml" to "Version 1"
-
-
-
-# And the following Lab Units exists
-# |Lab Unit |
-# |&le&geUnit&lt &lt; &gt &gt; &le; &ge; |
-#
-# And the following Lab Unit Dictionary exists
-# |Name |Units |
-# |&le&geWBC&lt &lt; &gt &gt; &le; &ge; |&le&geUnit&lt &lt; &gt &gt; &le; &ge; |
-# |&le&geNeutrophils&lt &lt; &gt &gt; &le; &ge; |&le&geUnit&lt &lt; &gt &gt; &le; &ge; |
-#
-
-# And lab "&le&geLab&lt &lt; &gt &gt; &le; &ge;" with Description "US12175" with Range Type "&lt &lt; &gt &gt; &le; &ge;Range&le&ge" has analyte "Analyte" has from date "From Date" has to date "To Date" has low value "Low Value" has high value "High Value" has units "Units"
-# |Analyte |From Date |To Date |Low Value |High Value |Units |
-# |&le&geWBC&lt &lt; &gt &gt; &le; &ge; |01 Jan 2005 |01 Jan 2015 |15 |25 |&le&geUnit&lt &lt; &gt &gt; &le; &ge; |
-# |&le&geNEUTROPHILS&lt &lt; &gt &gt; &le; &ge; |01 Jan 2005 |01 Jan 2015 |40 |50 |&le&geUnit&lt &lt; &gt &gt; &le; &ge; |
-
 And I navigate to "Home"
 #*******************************************************************************************************
 

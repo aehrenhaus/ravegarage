@@ -88,8 +88,6 @@ namespace Medidata.RBT.PageObjects.Rave
 				linkText = project.UniqueName;
 			}
 
-			IPage page = null;
-
 			ISearchContext area = null;
 			if (!string.IsNullOrEmpty(areaIdentifier))
 			{
@@ -101,15 +99,21 @@ namespace Medidata.RBT.PageObjects.Rave
 			{
 				area = Browser;
 			}
+            
+			IWebElement link = area.TryFindElementBy(By.LinkText(linkText),false);
 
-			var link = area.TryFindElementBy(By.LinkText(linkText),false);
+            if(link == null && linkText.Contains("•"))
+                link = ISearchContextExtend.FindLinkWithBulletPoint(area, linkText);
 
-			if(link==null)
+			if(link == null)
 				link = area.TryFindElementBySpanLinktext(linkText);
 
 			//another try, but with wait
 			if (link == null)
 				link = area.TryFindElementBy(By.LinkText(linkText), true);
+
+            if (link == null)
+                throw new Exception("Link not found!");
 
 			link.Click();
 			Thread.Sleep(200);

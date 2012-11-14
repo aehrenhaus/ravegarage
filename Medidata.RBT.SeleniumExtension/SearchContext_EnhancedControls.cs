@@ -208,7 +208,7 @@ namespace Medidata.RBT.SeleniumExtension
         /// <param name="context">The context to find the link in</param>
         /// <param name="linkText">The text of the link</param>
         /// <returns>The link with the bullet point</returns>
-        private static IWebElement FindLinkWithBulletPoint(ISearchContext context, string linkText)
+        public static IWebElement FindLinkWithBulletPoint(ISearchContext context, string linkText)
         {
             string linkTextBeforeBulletPoint = linkText.Substring(0, linkText.IndexOf("•"));
             string linkTextInSelenium = ReplaceSpecialCharactersWithEscapeCharacters(linkText);

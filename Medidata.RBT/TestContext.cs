@@ -150,8 +150,8 @@ namespace Medidata.RBT
 			seedable.Seed();
 
 			//add to dictionary using both original name and unique name.
-			SeedableObjects[originalName] = seedable;
-			SeedableObjects[seedable.UniqueName] = seedable;
+            SeedableObjects[originalName] = seedable;
+            SeedableObjects[seedable.UniqueName] = seedable;
 
 			return (T)seedable;
         }

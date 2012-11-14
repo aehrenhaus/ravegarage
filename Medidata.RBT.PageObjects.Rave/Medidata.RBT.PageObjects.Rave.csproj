@@ -118,6 +118,7 @@
     <Compile Include="EDC\TaskSummaryItem.cs" />
     <Compile Include="Lab\AnalytesPage.cs" />
     <Compile Include="Lab\CentralLabsPage.cs" />
+    <Compile Include="Lab\LabUnitsPage.cs" />
     <Compile Include="Lab\RangeTypesPage.cs" />
     <Compile Include="Lab\LabLoaderPage.cs" />
     <Compile Include="Lab\CopyLabRanges.cs" />
@@ -148,6 +149,10 @@
     <Compile Include="ReportAdmin\PackageDownload.cs" />
     <Compile Include="ReportAdmin\ReportManagerPage.cs" />
     <Compile Include="ReportAdmin\ReportAssignmentPage.cs" />
+    <Compile Include="SharedRaveObjects\Analyte.cs" />
+    <Compile Include="SharedRaveObjects\Lab.cs" />
+    <Compile Include="SharedRaveObjects\LabUnitDictionary.cs" />
+    <Compile Include="SharedRaveObjects\LabUnit.cs" />
     <Compile Include="SharedControls\RavePaginationControl_CurrentPageNotLink.cs" />
     <Compile Include="SharedControls\RavePaginationControl_Arrow.cs" />
     <Compile Include="SharedRaveObjects\RangeType.cs" />
@@ -180,6 +185,9 @@
     <Compile Include="TableModels\AnalyteRangeModel.cs" />
     <Compile Include="TableModels\ArchitectObjectModel.cs" />
     <Compile Include="TableModels\AuditModel.cs" />
+    <Compile Include="TableModels\LabUnitDictionaryModel.cs" />
+    <Compile Include="TableModels\AnalyteModel.cs" />
+    <Compile Include="TableModels\LabUnitModel.cs" />
     <Compile Include="TableModels\RangeTypeModel.cs" />
     <Compile Include="TableModels\FormModel.cs" />
     <Compile Include="TableModels\PDFCreationModel.cs" />
