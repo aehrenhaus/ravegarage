@@ -100,11 +100,12 @@ namespace Medidata.RBT
 
 	public class ExcelWorkbook : IDisposable
 	{
-		private readonly Application _excelApp;
-
-		private readonly Workbook _workBook;
-
-		private readonly List<ExcelTable> _openedTables = new List<ExcelTable>();
+        private Range _range;
+        private Worksheet _workSheet;
+		private Workbook _workBook;
+        private Workbooks _workBooks;
+        private Application _excelApp;
+		private List<ExcelTable> _openedTables = new List<ExcelTable>();
 
 		public void Save()
 		{
@@ -119,7 +120,7 @@ namespace Medidata.RBT
 
 		public void SaveAs(string filePath)
 		{
-			foreach (var table in _openedTables)
+			foreach (ExcelTable table in _openedTables)
 			{
 				if (table.Modified)
 					SetWorksheetValueRange(table.SheetName, table._rawTable, table.Range);
@@ -136,9 +137,9 @@ namespace Medidata.RBT
 			_excelApp = new Application();
 
 			try
-			{
-				_workBook = _excelApp.Workbooks.Open(thisFileName);
-
+            {
+                _workBooks = _excelApp.Workbooks;
+				_workBook = _workBooks.Open(thisFileName);
 			}
 			catch
 			{
@@ -148,23 +149,22 @@ namespace Medidata.RBT
 
 		private void SetWorksheetValueRange(string sheetName, object[,] newValue, string range = null)
 		{
-
-			Worksheet sheet = (Worksheet)_workBook.Sheets[sheetName];
-			sheet.Unprotect();
+            _workSheet = (Worksheet)_workBook.Sheets[sheetName];
+            _workSheet.Unprotect();
 			//
 			// Take the used range of the sheet. Finally, get an object array of all
 			// of the cells in the sheet (their values). You can do things with those
 			// values. See notes about compatibility.
 			//
-			Range excelRange = string.IsNullOrEmpty(range) ? sheet.UsedRange : sheet.Range[range];
-			excelRange.set_Value(XlRangeValueDataType.xlRangeValueDefault, newValue);
+            _range = string.IsNullOrEmpty(range) ? _workSheet.UsedRange : _workSheet.Range[range];
+            _range.set_Value(XlRangeValueDataType.xlRangeValueDefault, newValue);
 		}
 
 
 		public ExcelTable OpenTableForEdit(string sheetName, string range = null)
 		{
-			var raw = GetWorksheetValueRange(sheetName,range);
-			var table = new ExcelTable(raw,sheetName,range);
+            object[,] raw = GetWorksheetValueRange(sheetName, range);
+            ExcelTable table = new ExcelTable(raw, sheetName, range);
 			_openedTables.Add(table);
 			return table;
 		}
@@ -180,29 +180,44 @@ namespace Medidata.RBT
 		/// <returns></returns>
 		private object[,] GetWorksheetValueRange(string sheetName, string range = null)
 		{
-
-			Worksheet sheet = (Worksheet)_workBook.Sheets[sheetName];
+            _workSheet = (Worksheet)_workBook.Sheets[sheetName];
 
 			//
 			// Take the used range of the sheet. Finally, get an object array of all
 			// of the cells in the sheet (their values). You can do things with those
 			// values. See notes about compatibility.
 			//
-			Range excelRange = string.IsNullOrEmpty(range) ? sheet.UsedRange : sheet.Range[range];
-			object[,] valueArray = (object[,])excelRange.get_Value(XlRangeValueDataType.xlRangeValueDefault);
+            _range = string.IsNullOrEmpty(range) ? _workSheet.UsedRange : _workSheet.Range[range];
+            object[,] valueArray = (object[,])_range.get_Value(XlRangeValueDataType.xlRangeValueDefault);
 
 			return valueArray;
 		}
 
 		public void Dispose()
 		{
-			if (_workBook != null)
-			{
+            if (_range != null)
+                Marshal.ReleaseComObject(_range);
+            if(_workSheet != null)
+                Marshal.ReleaseComObject(_workSheet);
+            _workBook.Close(false);
+            if (_workBook != null)
+                Marshal.ReleaseComObject(_workBook);
+            _workBooks.Close();
+            if (_workBooks != null)
+                Marshal.ReleaseComObject(_workBooks);
+            _excelApp.Quit();
+            if (_excelApp != null)
+                Marshal.ReleaseComObject(_excelApp);
 
-				_workBook.Close(false);
-				Marshal.ReleaseComObject(_workBook);
-				Marshal.ReleaseComObject(_excelApp);
-			}
+            _range = null;
+            _workSheet = null;
+            _workBook = null;
+            _workBooks = null;
+            _excelApp = null;
+            _openedTables = null;
+
+            GC.Collect();
+            GC.WaitForPendingFinalizers();
 		}
 	}
 }
