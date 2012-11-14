@@ -180,7 +180,7 @@ Scenario:@US12607_US19066-04A - Unselecting all assigned forms.
   And I verify text "When selected, all log lines on the selected form or forms will display continuously. If un-selected, a new page will be created for each log line." exists
   And I take a screenshot
   And I check "Select All" in "Display multiple log lines per page"
-  When I uncheck "unselect All" in "Display multiple log lines per page"
+  When I uncheck "Unselect All" in "Display multiple log lines per page"
   Then I verify rows exist in "Display multiple log lines per page" table
    |Form             |Checked |
    |Adverse Events1  |false   |
