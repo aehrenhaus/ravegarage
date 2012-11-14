@@ -147,7 +147,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>US10242_DT13576.feature</DependentUpon>
     </Compile>
-    <Compile Include="Features\EDC\US12994_DT109911.feature.cs">
+    <Compile Include="Features\EDC\US12994_DT10991.feature.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>US12994_DT10991.feature</DependentUpon>
@@ -252,7 +252,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>US17943.feature</DependentUpon>
     </Compile>
-    <Compile Include="Features\Labs\US18358_DT140733.feature.cs">
+    <Compile Include="Features\Labs\US18358_DT14073.feature.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>US18358_DT14073.feature</DependentUpon>
@@ -472,7 +472,7 @@
     </None>
     <None Include="Features\EDC\US12994_DT10991.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
-      <LastGenOutput>US12994_DT109911.feature.cs</LastGenOutput>
+      <LastGenOutput>US12994_DT10991.feature.cs</LastGenOutput>
     </None>
     <None Include="Features\EDC\US18745_DT11148_AddEvents.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
@@ -532,7 +532,7 @@
     </None>
     <None Include="Features\Labs\US18358_DT14073.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
-      <LastGenOutput>US18358_DT140733.feature.cs</LastGenOutput>
+      <LastGenOutput>US18358_DT14073.feature.cs</LastGenOutput>
     </None>
     <None Include="Features\PDF\DT11249_US12607_US19066_DataPDF_Automated.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
