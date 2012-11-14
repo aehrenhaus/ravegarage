@@ -110,7 +110,7 @@ namespace Medidata.RBT.PageObjects.Rave
                     {
                         goToNextElem.Click();
                         //wait for page to load 
-                        Browser.WaitForElement(By.Id("Logo1_HeaderImage"));
+                        Browser.TryFindElementBy(By.Id("Logo1_HeaderImage"), true);
                         result = true;
                     }
 
