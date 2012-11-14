@@ -15,6 +15,7 @@ Given study "DT13504" is assigned to site "Site_001"
 Given following Project assignments exist
 | User         | Project | Environment | Role         | Site     | SecurityRole          |
 | SUPER USER 1 | DT13504 | Live: Prod  | SUPER ROLE 1 | Site_001 | Project Admin Default |
+| locuser      | DT13504 | Live: Prod  | SUPER ROLE 1 | Site_001 | Project Admin Default |
 Given I publish and push eCRF "DT13504_1.xml" to "Version 1"
 Given following Report assignments exist
 | User         | Report      |
@@ -139,12 +140,7 @@ Then I verify Audits exist
 	| Audit Type        | Query Message                                                                                    | User   | Time                 |
 	| Amendment Manager | Query closed during migration process because the edit check no longer exists in target version. | System | dd MMM yyyy hh:mm:ss |
 And I take a screenshot
-And I navigate to "My Profile"
-And I select link "Edit"
-And I select "Localization Test" Locale
-And I select link "Save"
-And I navigate to "Home"
-And I select Study "LDT13504" and Site "LSite_001"
+And I login to Rave with user "locuser"
 And I select a Subject "{Var(num1)}"
 And I select form "LForm A"
 When I click audit on Field "LField B"
