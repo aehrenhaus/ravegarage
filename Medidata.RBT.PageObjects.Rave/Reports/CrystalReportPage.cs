@@ -82,7 +82,7 @@ namespace Medidata.RBT.PageObjects.Rave
 
         public bool CanPaginate(string areaIdentifier)
         {
-            throw new NotImplementedException();
+            return true;
         }
 
         /// <summary>
