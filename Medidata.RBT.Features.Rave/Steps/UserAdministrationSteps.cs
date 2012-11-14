@@ -18,12 +18,27 @@ namespace Medidata.RBT.Features.Rave
 			Assert.IsTrue(CurrentPage.As<UserEditPage>().ControlsAreDisabled(table));
 		}
 
+		[StepDefinition(@"I seach and edit User ""([^""]*)""")]
+		public void ISearchAndEditUser____(string login)
+		{
+			CurrentPage.As<UserAdministrationPage>()
+				   .SearchUser(new UserAdministrationPage.SearchByModel { Login=login});
+			CurrentPage = CurrentPage.As<UserAdministrationPage>().ClickUser(login);
+		}
+
 		[StepDefinition(@"I click edit User ""([^""]*)""")]
 		public void IClickEditUser____(string userName)
 		{
 			CurrentPage = CurrentPage.As <UserAdministrationPage>().ClickUser(userName);
 		}
 
+		[StepDefinition(@"I search User ""([^""]*)""")]
+		public void ISearchUser(string login)
+		{
+
+			CurrentPage.As<UserAdministrationPage>()
+				 .SearchUser(new UserAdministrationPage.SearchByModel { Login = login });
+		}
 		[StepDefinition(@"I search User by")]
 		public void ISearchUserBy(Table table)
 		{

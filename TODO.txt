@@ -1,0 +1,5 @@
+1 Factor out all the pagination into help method, notice there are some differences among rave pagination controls
+
+2 work on all the TODOs in the projects( now there are about 30)
+
+3 Take out some of the enhanced element method (TextboxByID....) . use TryFindElementBy...and  .EnhancedAs<> instead 

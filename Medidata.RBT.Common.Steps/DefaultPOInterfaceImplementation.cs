@@ -12,6 +12,33 @@ namespace Medidata.RBT
 
 	public static class DefaultPOInterfaceImplementation
 	{
+
+		public static IWebElement FindInPaginatedList(this IHavePaginationControl page, string areaIdentifier, Func<IWebElement> searchFunc, out int foundOnPage)
+		{
+			ICanPaginate pager = null;
+
+			IWebElement found = null;
+			foundOnPage = 0;
+			try
+			{
+				do
+				{
+					foundOnPage++;
+					found = searchFunc();
+					if (found != null)
+						break;
+					pager = page.GetPaginationControl(areaIdentifier);
+				}
+				while (pager.GoNextPage(areaIdentifier));
+			}
+			catch
+			{
+			}
+
+			return found;
+
+		}
+
 		/// <summary>
 		/// Extend ICanPaginate, use a passed in Func to find the element on each page.
 		/// The search will stop till the Func returns IWebElement

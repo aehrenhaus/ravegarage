@@ -31,7 +31,7 @@ namespace Medidata.RBT.PageObjects.Rave
 			//dropdownButton.Click();
 
 			var option = TestContext.Browser.TryFindElementBy(
-				driver => wrapper.FindElements(By.XPath("./div[position()=2]/div")).FirstOrDefault(x => x.Text == text)
+				driver => wrapper.FindElements(By.XPath("./div[position()=2]/div")).FirstOrDefault(x => x.Text.Contains( text))
 				);
 
 			option.Click();

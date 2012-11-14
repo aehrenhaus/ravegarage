@@ -13,7 +13,7 @@ using Medidata.RBT.PageObjects.Rave.SharedRaveObjects;
 using Medidata.RBT.PageObjects.Rave.UserAdministrator;
 namespace Medidata.RBT.PageObjects.Rave
 {
-	public  class UserAdministrationPage : RavePageBase, ICanPaginate
+	public  class UserAdministrationPage : RavePageBase, IHavePaginationControl
 	{
 		[FindsBy(How = How.Id, Using = "_ctl0_Content_AuthenticatorDDL")]
 		IWebElement Authenticator;
@@ -81,7 +81,18 @@ namespace Medidata.RBT.PageObjects.Rave
 			return this;
 		}
 
-        /// <summary>
+		#region Pagination
+
+		public ICanPaginate GetPaginationControl(string areaIdentifier)
+		{
+			var pageTable = TestContext.Browser.TryFindElementById("_ctl0_Content_UserGrid").TryFindElementBy(By.XPath("./tbody/tr[last()]"));
+			var pager = new RavePaginationControl_CurrentPageNotLink(this, pageTable);
+			return pager;
+		}
+
+		#endregion
+
+		/// <summary>
         /// Click a user on the UserAdministrationPage.
         /// </summary>
         /// <param name="userName">The unique user name to click</param>
@@ -94,7 +105,7 @@ namespace Medidata.RBT.PageObjects.Rave
 				Thread.Sleep(500);//wiat for while, although the TryFindElementByXPath will wait anyway, the Exception is always showing in debug mode
 
 				var resultTable = Browser.TryFindElementBy(By.Id("_ctl0_Content_UserGrid"));
-				var link = resultTable.TryFindElementBy(By.XPath("tbody/tr[position()>1]/td[position()=1 and text()='" + userName + "']/../td[position()=7]/a"));
+				var link = resultTable.TryFindElementBy(By.XPath("tbody/tr[position()>1]/td[position()=1 and text()='" + userName + "']/../td[position()=7]/a"),false);
 				return link;
 
 			}, out foundOnPage);
@@ -137,55 +148,5 @@ namespace Medidata.RBT.PageObjects.Rave
 			}
 		}
 
-		#region Pagination
-		int pageIndex = 1;
-		int count = 0;
-		int lastValue = -1;
-
-		public bool GoNextPage(string areaIdentifier)
-		{
-			var pageTable = TestContext.Browser.TryFindElementById("_ctl0_Content_UserGrid").TryFindElementBy(By.XPath("./tbody/tr[last()]"));
-
-			var pageLinks = pageTable.FindElements(By.XPath(".//a"));
-
-			count = pageLinks.Count;
-			if (pageIndex == count)
-				return false;
-
-			while (!pageLinks[pageIndex].Text.Equals("...") && int.Parse(pageLinks[pageIndex].Text) <= lastValue && pageIndex <= count)
-			{
-				pageIndex++;
-			}
-
-			if (pageLinks[pageIndex].Text.Equals("..."))
-			{
-				lastValue = int.Parse(pageLinks[pageIndex - 1].Text);
-				pageLinks[pageIndex].Click();
-				pageIndex = 1;
-			}
-			else
-			{
-				pageLinks[pageIndex].Click();
-				pageIndex++;
-			}
-			return true;
-		}
-
-		public bool GoPreviousPage(string areaIdentifier)
-		{
-			throw new NotImplementedException();
-		}
-
-		public bool GoToPage(string areaIdentifier, int page)
-		{
-			throw new NotImplementedException();
-		}
-
-		public bool CanPaginate(string areaIdentifier)
-		{
-			return true;
-		}
-
-		#endregion
 	}
 }

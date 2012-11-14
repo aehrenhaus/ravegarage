@@ -83,10 +83,12 @@
     <Compile Include="Helpers\FileHelper.cs" />
     <Compile Include="Helpers\FilteredConsoleWriter.cs" />
     <Compile Include="Helpers\MultipleStreamWriter.cs" />
+    <Compile Include="PageObjectInterfaces\AbstractPaginationControl.cs" />
     <Compile Include="PageObjectInterfaces\EmptyPage.cs" />
     <Compile Include="PageObjectInterfaces\EmptyPOFactory.cs" />
     <Compile Include="Misc.cs" />
     <Compile Include="Factory.cs" />
+    <Compile Include="PageObjectInterfaces\IHavePaginationControl.cs" />
     <Compile Include="SharedObjects\IRemoveableObject.cs" />
     <Compile Include="PageObjectInterfaces\ControlBase.cs" />
     <Compile Include="Helpers\DbHelper.cs" />

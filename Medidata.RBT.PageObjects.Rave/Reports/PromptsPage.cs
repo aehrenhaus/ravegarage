@@ -194,8 +194,10 @@ namespace Medidata.RBT.PageObjects.Rave
 
             TestContext.ScenarioText = sb.ToString();
         }
+		#region Pagination
+		public int CurrentPageNumber { get; private set; }
 
-        public bool GoNextPage(string areaIdentifier)
+		public bool GoNextPage(string areaIdentifier)
         {
             IWebElement nextLink = null;
 
@@ -232,8 +234,9 @@ namespace Medidata.RBT.PageObjects.Rave
 		{
 			return true;
 		}
+		#endregion
 
-        public override string URL
+		public override string URL
         {
             get { return "Modules/Reporting/PromptsPage.aspx"; }
         }

@@ -23,6 +23,14 @@ namespace Medidata.RBT.Features.Rave
 		}
 
 
+		[StepDefinition(@"I verify that every ""(.*)"" subjects has a pattern of")]
+		public void GivenIVerifyThatEverySubjectsHasAPatternOf(int blockSize, Table table)
+		{
+			CurrentPage.As<SubjectOverridePage>().CheckRepeatPattern(blockSize, table.CreateSet<TierPattern>());
+		}
+
+
+
         [StepDefinition(@"I filter by site ""([^""]*)""")]
         public void IFilterBySite____(string siteName)
         {

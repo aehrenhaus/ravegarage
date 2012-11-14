@@ -11,42 +11,29 @@ using TechTalk.SpecFlow;
 
 namespace Medidata.RBT.PageObjects.Rave
 {
-    public class SubjectOverridePage : SubjectManagementPageBase,ICanPaginate
+    public class SubjectOverridePage : SubjectManagementPageBase,IHavePaginationControl
     {
-		public override IWebElement GetElementByName(string identifier, string areaIdentifier = null, string listItem = null)
-        {
-            if (identifier == "Search")
-                return Browser.FindElementById("_ctl0_Content_HeaderControl_SearchLabel");
-            return base.GetElementByName(identifier, areaIdentifier,listItem);
-        }
 
-        public override IPage ChooseFromDropdown(string name, string text)
-        {
-            if (name == "Select Site")
-            {
-                Browser.TextboxById("_ctl0_Content_HeaderControl_slSite_TxtBx").SetText(text);
-                Browser.FindElementById("_ctl0_Content_HeaderControl_slSite").Textboxes()[1].Click();
-                var option = Browser.TryFindElementBy(b =>
-					b.FindElements(By.XPath("//div[@id='_ctl0_Content_HeaderControl_slSite_PickListBox']/div"))
-					.FirstOrDefault(elm => elm.Text == text));
-                option.Click();
+		public void CheckRepeatPattern(int blockSize, IEnumerable<TierPattern> tiers)
+	    {
+			//collect all subject tier names
+		    var tierNames = GetTierNamesFromAllPages();
+			int roundCount = (int) Math.Ceiling(tierNames.Count*1.0/blockSize);
 
-            }
-            else if (name == "Select Site Group")
-            {
-                Browser.TextboxById("_ctl0_Content_HeaderControl_slSiteGroup_TxtBx").SetText(text);
-                Browser.FindElementById("_ctl0_Content_HeaderControl_slSiteGroup").Textboxes()[1].Click();
-                var option = Browser.TryFindElementBy(b => 
-					b.FindElements(By.XPath("//div[@id='_ctl0_Content_HeaderControl_slSiteGroup_PickListBox']/div"))
-					.FirstOrDefault(elm => elm.Text == text));
-                option.Click();
+			for (int i = 0; i < roundCount; i++)
+			{
+				var itemsInThisRound = tierNames.Skip(i*blockSize).Take(blockSize).ToList();
 
-            }
-            return this;
-        }
+				foreach (var tier in tiers)
+				{
+					Assert.AreEqual(tier.NumberOfOccurrence, itemsInThisRound.Count(x => x == tier.TierName),
+					                string.Format("Tier {0} does not have expected subject count {1}.", tier.TierName,
+					                              tier.NumberOfOccurrence));
+				}
+			}
+	    }
 
-
-        /// <summary>
+	    /// <summary>
         /// Determines whether enrolled subjects have been randomized on initla enrollment top the site.
         /// </summary>
         /// <param name="table">The table.</param>
@@ -71,7 +58,25 @@ namespace Medidata.RBT.PageObjects.Rave
             return IsSubjectsRandomized;
         }
 
-        /// <summary>
+	    private List<string> GetTierNamesFromAllPages()
+	    {
+			var tierNames = new List<string>();
+			int page;
+			this.FindInPaginatedList(null, () =>
+			{
+				var subjectsDiv = Browser.TryFindElementBy(By.Id("SubjectOverrideDiv"));
+
+				var itemsOnThisPage =
+					subjectsDiv.FindElementsByPartialId("OriginalBlockTierIdLable").Select(x => x.Text).ToList();
+				tierNames.AddRange(itemsOnThisPage);
+				return null;
+			}
+			, out page);
+
+			return tierNames;
+	    }
+
+	    /// <summary>
         /// This method is to check whether there is a pattern for subject allocation or not.  
         /// </summary>
         /// <returns>
@@ -80,28 +85,8 @@ namespace Medidata.RBT.PageObjects.Rave
 		public void AsserEachGroupOfSubjectsHaveDifferentTierNames(int rowsOfGroup, int rowsTotal)
         {
 			//collect all subject tier names
-			int pageSize = 20;
-			int currentIndex = 0;
-			var tierNames = new List<string>();
 
-	        while (true)
-	        {
-				var subjectsDiv = Browser.TryFindElementBy(By.Id("SubjectOverrideDiv"));
-
-				tierNames.AddRange(subjectsDiv.FindElementsByPartialId("OriginalBlockTierIdLable").Select(x => x.Text));
-
-				currentIndex += pageSize;
-
-				if (currentIndex < rowsTotal)
-				{
-					GoNextPage(null);
-				}
-				else
-				{
-					
-					break;
-				}
-	        }
+		    var tierNames = GetTierNamesFromAllPages();
 			
 			//verify no pattern exists
 			int groupCount =  rowsTotal / rowsOfGroup;
@@ -126,54 +111,15 @@ namespace Medidata.RBT.PageObjects.Rave
 
 
 		#region Pagination
-		int pageIndex = 0;
-		int count = 0;
-		int lastValue = -1;
 
-		public bool GoNextPage(string areaIdentifier)
+		public ICanPaginate GetPaginationControl(string areaIdentifier)
 		{
-			var pageTable = TestContext.Browser.TryFindElementByPartialID("Content_TblPage");
-
-			var pageLinks = pageTable.FindElements(By.XPath(".//a"));
-
-			count = pageLinks.Count;
-			if (pageIndex == count)
-				return false;
-
-			while (!pageLinks[pageIndex].Text.Equals("...") && int.Parse(pageLinks[pageIndex].Text) <= lastValue && pageIndex <= count)
-			{
-				pageIndex++;
-			}
-
-			if (pageLinks[pageIndex].Text.Equals("..."))
-			{
-				lastValue = int.Parse(pageLinks[pageIndex - 1].Text);
-				pageLinks[pageIndex].Click();
-				pageIndex = 0;
-			}
-			else
-			{
-				pageLinks[pageIndex].Click();
-				pageIndex++;
-			}
-			return true;
+			var pageTable = TestContext.Browser.TryFindElementByPartialID("PagingHolder", true, 2);
+			return new RavePaginationControl_CurrentPageNotLink(this, pageTable);
 		}
-
-		public bool GoPreviousPage(string areaIdentifier)
-		{
-			throw new NotImplementedException();
-		}
-
-		public bool GoToPage(string areaIdentifier, int page)
-		{
-			throw new NotImplementedException();
-		}
-
-		public bool CanPaginate(string areaIdentifier)
-		{
-			return true;
-		}
-
+		
 		#endregion
-    }
+
+	
+	}
 }

@@ -145,6 +145,8 @@
     <Compile Include="ReportAdmin\PackageDownload.cs" />
     <Compile Include="ReportAdmin\ReportManagerPage.cs" />
     <Compile Include="ReportAdmin\ReportAssignmentPage.cs" />
+    <Compile Include="SharedControls\RavePaginationControl_CurrentPageNotLink.cs" />
+    <Compile Include="SharedControls\RavePaginationControl_Arrow.cs" />
     <Compile Include="SharedRaveObjects\RangeType.cs" />
     <Compile Include="SharedRaveObjects\LabConfiguration.cs" />
     <Compile Include="SharedRaveObjects\ModuleAssignment.cs" />
@@ -191,6 +193,7 @@
     <Compile Include="TableModels\ReportAssignmentModel.cs" />
     <Compile Include="TableModels\ReportListModel.cs" />
     <Compile Include="TableModels\TaskSummaryItemModel.cs" />
+    <Compile Include="TableModels\TSDV\TierPattern.cs" />
     <Compile Include="TableModels\UnitConversionModel.cs" />
     <Compile Include="TSDV\BlockPlansPageBase.cs" />
     <Compile Include="TSDV\TiersPage.cs" />
