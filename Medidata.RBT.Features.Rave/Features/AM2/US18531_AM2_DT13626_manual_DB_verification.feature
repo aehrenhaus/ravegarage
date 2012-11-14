@@ -35,7 +35,7 @@ Given I publish and push eCRF "DT13626.xml" to "Version 1"
 
 @release_2012.1.0
 @DT13626_10
-@WIP
+@VAL
 Scenario:  When the data is soft deleted and subject is migrated, then extra records should not be created in the database
 
 Given I login to Rave with user "SUPER USER 1"

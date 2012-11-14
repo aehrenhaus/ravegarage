@@ -35,7 +35,7 @@ Given following Report assignments exist
 
 @release_2012.1.0
 @DT13626_10
-@WIP
+@VAL
 Scenario:  When the data is soft deleted and subject is migrated, then extra records should not be created
 
 Given I login to Rave with user "SUPER USER 1"
@@ -74,7 +74,8 @@ And I set report parameter "Study" with "DT13626"
 And I set report parameter "Sites" with "Site_001"
 And I set report Parameter "Subjects" with "Sub {Var(num1)}"
 And I click button "Submit Report"
-When I switch to the second window
+When I switch to "ReportViewer" window
 Then I verify duplicate records are not displayed
 And I take a screenshot
+And I switch to "Reports" window
 
