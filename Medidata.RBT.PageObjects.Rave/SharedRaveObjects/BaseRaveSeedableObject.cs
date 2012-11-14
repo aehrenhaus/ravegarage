@@ -37,22 +37,23 @@ namespace Medidata.RBT.SharedRaveObjects
 
 			if (SuppressSeeding || !RBTConfiguration.Default.EnableSeeding)
 			{
-				Console.WriteLine("-> Seeding --> suppressed --> {0} -->{1}", type.Name, UniqueName);
+				Console.WriteLine("-> Seeding --> suppressed --> {0} --> {1}", type.Name, UniqueName);
 		
 				return;
 			}
 
-
+			string originalName = UniqueName;
 			if (SeedDecision.FromUI(type))
 			{
-				Console.WriteLine("-> Seeding --> UI --> {0} -->{1}", type.Name, UniqueName); 
+				Console.WriteLine("-> Seeding --> UI --> {0} --> {1}", type.Name, originalName); 
 				SeedFromUI();
 			}
 			else
 			{
-				Console.WriteLine("-> Seeding --> backend --> {0} -->{1}", type.Name, UniqueName); 
+				Console.WriteLine("-> Seeding --> backend --> {0} --> {1}", type.Name, originalName); 
 				SeedFromBackend();
 			}
+			Console.WriteLine("-> {0} --> {1} --> {2}", type.Name, originalName, UniqueName); 
 		}
 
 		#region Protected methods

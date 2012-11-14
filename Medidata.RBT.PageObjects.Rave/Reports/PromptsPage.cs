@@ -29,11 +29,13 @@ namespace Medidata.RBT.PageObjects.Rave
 		public PromptsPage SetParameter(string name, Table table)
 		{
              int foundOnPage;
-
+			
             IWebElement subjectLink = this.FindInPaginatedList(name, () =>
             {
 			    var paraTR = FindParameterTr(name);
-			   
+
+				Thread.Sleep(500);//wiat for while, although the TryFindElementByXPath will wait anyway, the Exception is always showing in debug mode
+
 				//wait till the div div becomes visible, that means the table is loaded complete
 				paraTR.TryFindElementByXPath("./td[position()=2]/table/tbody/tr[position()=2]/td/div[@style='display: block;']", true, 20);
 

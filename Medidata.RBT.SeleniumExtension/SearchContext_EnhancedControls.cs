@@ -14,10 +14,11 @@ namespace Medidata.RBT.SeleniumExtension
 {
 	public static partial class ISearchContextExtend
 	{
-		private static T SelectExtendElementByPartialID<T>(ISearchContext context, string tag, string partialID, bool nullable, bool? isWait = null, int? timeOutSecond = null)
+		private static T SelectExtendElementByPartialID<T>(ISearchContext context, string tag, string partialID, bool nullable,bool? wait = null)
 			where T : EnhancedElement, new()
 		{
-            var ele = context.TryFindElementBy(By.XPath(".//"+tag+"[contains(@id,'" + partialID + "')]"), isWait,timeOutSecond);
+			var ele = context.TryFindElementBy(By.XPath(".//" + tag + "[contains(@id,'" + partialID + "')]"), wait);
+
 			if (ele == null)
 			{
 				if (nullable)
@@ -147,21 +148,13 @@ namespace Medidata.RBT.SeleniumExtension
 
         public static IWebElement ButtonByID(this ISearchContext context, string partialID, bool nullable = false, bool isWait = true)
         {
-            var element = SelectExtendElementByPartialID<EnhancedElement>(context, "button", partialID, true, false);
-            //<input type="submit"/>
+            var element = SelectExtendElementByPartialID<EnhancedElement>(context, "input", partialID,true,false);
+       
             if (element == null)
-                element = SelectExtendElementByPartialID<EnhancedElement>(context, "input", partialID, true, false);
+				element = SelectExtendElementByPartialID<EnhancedElement>(context, "button", partialID, true, false);
             if (element == null)
-                element = SelectExtendElementByPartialID<EnhancedElement>(context, "select", partialID, true, false);
-            if (isWait)
-            {
-                if (element == null)
-                    element = SelectExtendElementByPartialID<EnhancedElement>(context, "button", partialID, true, true);
-                if (element == null)
-                    element = SelectExtendElementByPartialID<EnhancedElement>(context, "input", partialID, true, true);
-                if (element == null)
-                    element = SelectExtendElementByPartialID<EnhancedElement>(context, "select", partialID, true, true);
-            }
+				element = SelectExtendElementByPartialID<EnhancedElement>(context, "select", partialID, true, false);
+            
 
 
             if (!nullable && element == null)

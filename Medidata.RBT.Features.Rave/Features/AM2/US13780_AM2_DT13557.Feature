@@ -1,3 +1,4 @@
+@ignore
 Feature: US13780_DT13557 
   As a data manager
   I want to be able to apply rules in AM Object Heirarchy
@@ -86,7 +87,7 @@ Scenario: US13780_AM2_DT13557_01 When a user navigates to Architect, creates a m
 	
 	And I navigate to "Object Hierarchy"
 	And I select link "Add Rule"
-	And I choose "Move Elements" from "Action"
+	And I choose "Move Elements" from "Action Dropdown"
 	And I check "Only if target parent exists"
 	And I choose "CYCLE (CYC)" from "SourceFolderDropDown"
 	And I choose "(3)" from "SourceRepeatNumber"
@@ -105,6 +106,6 @@ Scenario: US13780_AM2_DT13557_01 When a user navigates to Architect, creates a m
 	And I select Study "*US13780_DT13557" and Site "Site_US13780_DT13557"
     And I select a Subject "SUB{Var(num1)}"
 	And I select Folder "Screening"
-	#And I verify only "1" Form "Demographics" is displayed
+	And I verify only "1" Form "Demographics" is displayed
 	And I take a screenshot
 	

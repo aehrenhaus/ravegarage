@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using OpenQA.Selenium.Support.PageObjects;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Remote;
@@ -90,6 +91,8 @@ namespace Medidata.RBT.PageObjects.Rave
 			int foundOnPage;
 			IWebElement userLink = this.FindInPaginatedList("", () =>
 			{
+				Thread.Sleep(500);//wiat for while, although the TryFindElementByXPath will wait anyway, the Exception is always showing in debug mode
+
 				var resultTable = Browser.TryFindElementBy(By.Id("_ctl0_Content_UserGrid"));
 				var link = resultTable.TryFindElementBy(By.XPath("tbody/tr[position()>1]/td[position()=1 and text()='" + userName + "']/../td[position()=7]/a"));
 				return link;

@@ -30,11 +30,19 @@ namespace Medidata.RBT.Features.Rave.Steps.Seeding
         /// <param name="siteName">The name that the site is referred to as in the feature file</param>
         /// <param name=siteGroup">The name that the site group is referred to as in the feature file</param>
         [StepDefinition(@"Site ""([^""]*)"" with Site Group ""([^""]*)"" exists")]
-        public void Site____Exists(string siteName, string siteGroup)
+        public void Site____WithSiteGroup____Exists(string siteName, string siteGroup)
         {
             SiteGroup sg = TestContext.GetExistingFeatureObjectOrMakeNew(siteGroup, () => new SiteGroup(siteGroup));
-            TestContext.GetExistingFeatureObjectOrMakeNew(siteName, () => new Site(siteName, sg.UniqueName));
+            var site = TestContext.GetExistingFeatureObjectOrMakeNew(siteName, () => new Site(siteName, sg.UniqueName));
         }
+
+		[StepDefinition(@"Site ""(.*)"" with number \((.*)\) and Site Group ""(.*)"" exists")]
+		public void Site____WithNumber____AndSiteGroup____Exists(string siteName, string siteNumber, string siteGroup)
+		{
+			SiteGroup sg = TestContext.GetExistingFeatureObjectOrMakeNew(siteGroup, () => new SiteGroup(siteGroup));
+			var site = TestContext.GetExistingFeatureObjectOrMakeNew(siteName, () => new Site(siteName, sg.UniqueName, siteNumber));
+		}
+
 
         /// <summary>
         /// Asign a study to a site

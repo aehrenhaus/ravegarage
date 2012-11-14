@@ -14,13 +14,6 @@ namespace Medidata.RBT.SeleniumExtension
 {
 	public  static partial class ISearchContextExtend
 	{
-
-		public static T TryFindElementByPartialID<T>(this ISearchContext context, string partialID, string tag = null, bool? isWait = null, int? timeOutSecond = null)
-			where T : EnhancedElement, new()
-		{
-			return SelectExtendElementByPartialID<T>(context, tag, partialID, true, isWait,timeOutSecond);
-		}
-
 		public static IWebElement TryFindElementByPartialID(this ISearchContext context, string partialID, bool? isWait = null, int? timeOutSecond = null)
 		{
 			var ele = context.TryFindElementBy(By.XPath(".//*[contains(@id,'" + partialID + "')]"),isWait,timeOutSecond);

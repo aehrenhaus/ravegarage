@@ -161,5 +161,7 @@ namespace Medidata.RBT
 		/// In many case you will only need to orverride this method to provide mappings on your specific page object in order for a step to work.
 		/// </summary>
 		IWebElement GetElementByName(string identifier, string areaIdentifier= null, string listItemIdentifier = null);
+
+		IWebElement TryGetElementByName(string identifier, string areaIdentifier = null, string listItemIdentifier = null);
 	}
 }

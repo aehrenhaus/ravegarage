@@ -99,8 +99,8 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
         /// </summary>
 		protected override void NavigateToSeedPage()
         {
-            TestContext.CurrentPage.As<HomePage>().ClickLink("User Administration");
-            TestContext.CurrentPage.As<UserAdministrationPage>().ClickLink("Upload Users");
+            TestContext.CurrentPage.ClickLink("User Administration");
+            TestContext.CurrentPage.ClickLink("Upload Users");
         }
 
         /// <summary>
