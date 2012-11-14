@@ -1,4 +1,4 @@
-﻿
+﻿@ignore
 Feature: US13002_DT13919
 	As a Rave user
 	When I navigate to a log form that has a Dynamic Search List

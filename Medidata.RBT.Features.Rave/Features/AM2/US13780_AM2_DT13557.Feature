@@ -15,6 +15,13 @@ Feature: US13780_DT13557
 
 
 Background:
+	Given xml draft "US13780_DT13557_Draft_1.xml" is Uploaded
+	Given Site "Site 1" exists
+	Given study "US13780_DT13557" is assigned to Site "Site 1"
+	Given I publish and push eCRF "US13780_DT13557_Draft_1.xml" to "Version 1"
+	Given following Project assignments exist
+		| User 		   | Project 		 | Environment| Role         | Site  | SecurityRole 		 |
+		| SUPER USER 1 | US13780_DT13557 | Live: Prod | SUPER ROLE 1 | Site 1| Project Admin Default |
 	#Given I am logged in as a Rave user "User1" 
 	#And I have access as Rave user "User2"
 	#And I have access to "Architect"
@@ -31,14 +38,13 @@ Background:
 	#And I have access to folder "Folder (4)"
 	#And I have access to form "Form (1)"
 	
-
+#----------------------------------------------------------------------------------------------------------------------------------------
 @Rave564_2012.1.1
 @PB_US13780_AM2_DT13557_01
 @Draft
 Scenario: US13780_AM2_DT13557_01 When a user navigates to Architect, creates a migration plan with a new CRF version as the Target CRF version, adds a Move Element object hierarchy rule with the “Only if target parent exists?box checked, in the Source patch enters "[Subject]/FOLDER:Folder(4)/FOLDER:Folder(1)/FORM:Form(1)" and in the Target Source enters "[Subject]/FOLDER:Folder 3/FOLDER:Folder(1)", and executes the migration then the user will see the form appear only in "Folder(4)"
 
 	Given I login to Rave with user "defuser" and password "password"
-	#Given study "*US13780_DT13557" is assigned to Site "Site_US13780_DT13557"
 	And I navigate to "Architect"
 	And I select "Study" link "*US13780_DT13557" in "Active Projects"
 	And I select link "Draft 1" in "CRF Drafts"
@@ -48,7 +54,7 @@ Scenario: US13780_AM2_DT13557_01 When a user navigates to Architect, creates a m
 	And I push CRF Version "{Var(newversion1#)}" to "All Sites"
 
 	And I navigate to "Home"	
-	And I select Study "*US13780_DT13557" and Site "Site_US13780_DT13557"
+	And I select Study "*US13780_DT13557" and Site "Site 1"
 	And I create a Subject
 	| Field          | Data              | Control Type |
 	| Subject Name   | SUB               | text         |
@@ -103,9 +109,10 @@ Scenario: US13780_AM2_DT13557_01 When a user navigates to Architect, creates a m
 	And I verify Job Status is set to Complete
 	And I take a screenshot	
 	And I navigate to "Home"
-	And I select Study "*US13780_DT13557" and Site "Site_US13780_DT13557"
+	And I select Study "*US13780_DT13557" and Site "Site 1"
     And I select a Subject "SUB{Var(num1)}"
 	And I select Folder "Screening"
 	And I verify only "1" Form "Demographics" is displayed
 	And I take a screenshot
-	
+
+#----------------------------------------------------------------------------------------------------------------------------------------	
