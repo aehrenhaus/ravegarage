@@ -15,8 +15,8 @@ namespace Medidata.RBT.Features.Rave
         [StepDefinition(@"I verify text")]
         public void IVerifyText(Table table)
         {
-            var args = table.CreateSet<QueryAuditReportSearchModel>();
-            //TODO finish logic to parse text.  
+            Assert.IsTrue(CurrentPage.As<ICanVerifyExist>()
+                .VerifyTableRowsExist(null, table));
         }
 
 		/// <summary>

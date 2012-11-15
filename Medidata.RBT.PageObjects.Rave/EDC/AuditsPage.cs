@@ -13,6 +13,8 @@ namespace Medidata.RBT.PageObjects.Rave
 {
 	public class AuditsPage : RavePageBase
 	{
+        private static readonly string[] s_sysUsers = new[] { "System", "LSystem" };
+
 		//TODO: support wild char or regex
 		public bool AuditExist(AuditModel audit, int? position = null)
 		{
@@ -59,6 +61,14 @@ namespace Medidata.RBT.PageObjects.Rave
             else if (audit.AuditType.ToLower().Equals("un-reviewed"))
             {
                 return AuditExist_UnReviewed(audit.QueryMessage, audit.User, audit.Time, position);
+            }
+            else if (audit.AuditType == "Amendment Manager" || audit.AuditType == "LAmendment Manager")
+            {
+                return AuditExist(
+                    string.Format("{0}: {1}",
+                        audit.AuditType,
+                        audit.QueryMessage),
+                    audit.User, audit.Time, position);
             }
 
 			throw new Exception("Invalid audit type " + audit.AuditType);
@@ -123,15 +133,20 @@ namespace Medidata.RBT.PageObjects.Rave
                 string actualFirstName = actualUserDetail[0].TrimEnd(' ');
                 isSpecifiedData = actualFirstName.Equals(specifiedFirstName);
 
-                if (specifiedUserDetail.FirstOrDefault().Equals("System"))
-                    return actualUserDetail.FirstOrDefault().Equals("System");
+                if (s_sysUsers.Contains(specifiedUserDetail.FirstOrDefault()))
+                {
+                    isSpecifiedData = s_sysUsers.Contains(actualUserDetail.FirstOrDefault());
+                }
+                else
+                {
 
-                string specifiedLogin = specifiedUserDetail[1].Split('-')[1].TrimStart(' ');
-                //Get the unique user object created during seeding
-                User spUser = TestContext.GetExistingFeatureObjectOrMakeNew(specifiedLogin, () => new User(specifiedLogin));
+                    string specifiedLogin = specifiedUserDetail[1].Split('-')[1].TrimStart(' ');
+                    //Get the unique user object created during seeding
+                    User spUser = TestContext.GetExistingFeatureObjectOrMakeNew(specifiedLogin, () => new User(specifiedLogin));
 
-                string actualLogin = actualUserDetail[1].Split('-')[1].TrimStart(' ');
-                isSpecifiedData = actualLogin.Equals(spUser.UniqueName);
+                    string actualLogin = actualUserDetail[1].Split('-')[1].TrimStart(' ');
+                    isSpecifiedData = actualLogin.Equals(spUser.UniqueName);
+                }
 
                 if (!isSpecifiedData.Value)
                     return isSpecifiedData.Value;

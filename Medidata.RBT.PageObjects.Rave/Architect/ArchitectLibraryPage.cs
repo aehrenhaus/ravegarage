@@ -70,15 +70,20 @@ namespace Medidata.RBT.PageObjects.Rave
 		public override IPage NavigateTo(string name)
 		{
             IWebElement leftNavContainer = Browser.TryFindElementBy(By.Id("TblOuter"));
-		
-			if (name == "Amendment Manager")
-			{
-                return ClickLink("Amendment Manager");
-                //var link = leftNavContainer.Link("Amendment Manager");
-                //link.Click();
-                //return new AMMigrationHomePage();
-			}
-			return base.NavigateTo(name);
+
+            IPage result;
+            switch (name)
+            {
+                case "Publish Checks":
+                case "Amendment Manager":
+                    result = ClickLink(name);
+                    break;
+                default:
+                    result = base.NavigateTo(name);
+                    break;
+            }//End switch
+
+            return result;
 		}
 
 		public override IWebElement GetElementByName(string identifier, string areaIdentifier = null, string listItem = null)
