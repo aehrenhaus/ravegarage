@@ -8,6 +8,7 @@ using OpenQA.Selenium.Remote;
 using System.Collections.Specialized;
 using Medidata.RBT.SeleniumExtension;
 using Medidata.RBT.PageObjects.Rave.SharedRaveObjects;
+using System.Threading;
 namespace Medidata.RBT.PageObjects.Rave
 {
 	public class UserEditPage : RavePageBase, ICanPaginate
@@ -102,14 +103,21 @@ namespace Medidata.RBT.PageObjects.Rave
         public void AssignUserToSite(string studyName, string roleName, string siteName, string siteNumber, string envName)
         {
             int foundOnPage;
-            IWebElement studyRoleRow = this.FindInPaginatedList("", () =>
-            {
-                IWebElement resultTable = Browser.TryFindElementBy(By.Id("_ctl0_Content_UserSiteWizard1_UserGrid"),true,2);
+			IWebElement studyRoleRow = this.FindInPaginatedList("", () =>
+				                                                        {
+					                                                        Thread.Sleep(500);
+					                                                        IWebElement resultTable =
+						                                                        Browser.TryFindElementBy(
+							                                                        By.Id("_ctl0_Content_UserSiteWizard1_UserGrid"), true);
 
-                IWebElement row = resultTable.TryFindElementByXPath("tbody/tr[position()>1]/td[position() = 1 and text() = '"
-                    + studyName + ": " + envName + "']/../td[position()=2 and text()='" + roleName + "']/..",false);
-                return row;
-            }, out foundOnPage);
+					                                                        IWebElement row =
+						                                                        resultTable.TryFindElementByXPath(
+							                                                        "tbody/tr[position()>1]/td[position() = 1 and text() = '"
+							                                                        + studyName + ": " + envName +
+							                                                        "']/../td[position()=2 and text()='" + roleName + "']/..",
+							                                                        false);
+					                                                        return row;
+				                                                        }, out foundOnPage);
 
             IWebElement siteButton = studyRoleRow.TryFindElementByPartialID("Imagebutton2");
             siteButton.Click();
@@ -142,6 +150,8 @@ namespace Medidata.RBT.PageObjects.Rave
         int secondPageIndex = 1;
         int secondCount = 0;
         int secondLastValue = -1;
+
+		public int CurrentPageNumber { get; private set; }
 
         public bool GoNextPage(string areaIdentifier)
         {

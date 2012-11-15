@@ -12,8 +12,21 @@ using Medidata.RBT.PageObjects.Rave.SharedRaveObjects;
 
 namespace Medidata.RBT.PageObjects.Rave
 {
-    public abstract class BlockPlansPageBase : RavePageBase
+	public abstract class BlockPlansPageBase : RavePageBase, ICanVerifyExist
     {
+		public override IWebElement GetElementByName(string identifier, string areaIdentifier = null, string listItem = null)
+		{
+			if (identifier == "edit block plan")
+				return Browser.TryFindElementById("_ctl0_Content__ctl0_dgProjectBlockPlan__ctl2_ProjectBlockPlanEdit");
+
+			if (identifier == "save block plan")
+				return Browser.TryFindElementById("_ctl0_Content__ctl0_dgProjectBlockPlan__ctl2_ProjectBlockPlanEditSave");
+
+			if (identifier == "Randomization Type")
+				return Browser.TryFindElementById("_ctl0_Content__ctl0_dgProjectBlockPlan__ctl2_ddl_RandomizationType");
+
+			return base.GetElementByName(identifier, areaIdentifier, listItem);
+		}
 
         public IPage InactivatePlan()
         {
@@ -158,5 +171,25 @@ namespace Medidata.RBT.PageObjects.Rave
 			}
 		}
 		#endregion
-    }
+
+
+		#region VerifyExist
+		public bool VerifyTableRowsExist(string tableIdentifier, Table matchTable)
+		{
+			throw new NotImplementedException();
+		}
+
+		public bool VerifyControlExist(string identifier)
+		{
+			throw new NotImplementedException();
+		}
+
+		public bool VerifyTextExist(string identifier, string text)
+		{
+			var area = Browser.TryFindElementById("_ctl0_Content__ctl0_dgProjectBlockPlan");
+			return area.Text.Contains(text);
+		}
+
+		#endregion
+	}
 }

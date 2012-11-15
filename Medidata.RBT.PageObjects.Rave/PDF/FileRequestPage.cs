@@ -120,7 +120,7 @@ namespace Medidata.RBT.PageObjects.Rave
         int pageIndex = 1;
         int count = 0;
         int lastValue = -1;
-
+		public int CurrentPageNumber { get; private set; }
         public bool GoNextPage(string areaIdentifer)
         {
             HtmlTable table = Browser.TryFindElementByPartialID("_ctl0_Content_Results").EnhanceAs<HtmlTable>();

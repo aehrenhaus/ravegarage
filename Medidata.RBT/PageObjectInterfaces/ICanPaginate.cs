@@ -8,6 +8,8 @@ namespace Medidata.RBT
 {
 	public interface ICanPaginate
 	{
+		int CurrentPageNumber { get; }
+
 		/// <summary>
 		/// Returns true if find and goes to next page
 		/// </summary>

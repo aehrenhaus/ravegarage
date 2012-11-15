@@ -58,6 +58,9 @@ namespace Medidata.RBT.PageObjects.Rave
 
        
         #region ICanPaginate
+
+		public int CurrentPageNumber { get; private set; }
+
         int lastValue = -1;
         public bool GoNextPage(string areaIdentifier)
         {

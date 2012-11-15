@@ -1,6 +1,7 @@
 ﻿using TechTalk.SpecFlow;
 using Medidata.RBT.PageObjects.Rave.SharedRaveObjects;
 using Medidata.RBT.PageObjects.Rave;
+using System.Threading;
 
 namespace Medidata.RBT.Features.Rave
 {
@@ -59,7 +60,8 @@ namespace Medidata.RBT.Features.Rave
         {
             UploadedDraft uploadedDraft = TestContext.GetExistingFeatureObjectOrMakeNew(draftName, () => new UploadedDraft(draftName));
 
-            TestContext.CurrentPage.As<HomePage>().ClickLink("Architect");
+			TestContext.CurrentPage.As<HomePage>().ClickLink("Architect");
+	        TestContext.CurrentPage = new ArchitectPage();
             TestContext.CurrentPage.As<ArchitectPage>().ClickProject(uploadedDraft.Project.UniqueName);
             TestContext.CurrentPage.As<ArchitectLibraryPage>().ClickLink("Studies Environment Setup");
             TestContext.CurrentPage.As<ArchitectEnvironmentSetupPage>().AddNewEnvironment(envName);

@@ -66,7 +66,10 @@ namespace Medidata.RBT.PageObjects.Rave.SiteAdministration
         int pageIndex = 1;
         int count = 0;
         int lastValue = -1;
-
+		public int CurrentPageNumber
+		{
+			get { return -1; }
+		}
         public bool GoNextPage(string areaIdentifier)
         {
             var pageTable = TestContext.Browser.TryFindElementById("_ctl0_Content_DisplayGrid").TryFindElementBy(By.XPath("./tbody/tr[last()]"));

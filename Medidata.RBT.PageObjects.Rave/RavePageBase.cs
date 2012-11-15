@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using Medidata.RBT.PageObjects;
 using Medidata.RBT.PageObjects.Rave.SharedRaveObjects;
 using OpenQA.Selenium.Support.PageObjects;
@@ -111,6 +112,7 @@ namespace Medidata.RBT.PageObjects.Rave
 				link = area.TryFindElementBy(By.LinkText(linkText), true);
 
 			link.Click();
+			Thread.Sleep(200);
 			return TestContext.POFactory.GetPageByUrl(new Uri(Browser.Url));
 		}
 

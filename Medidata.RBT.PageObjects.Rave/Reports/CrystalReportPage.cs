@@ -65,7 +65,10 @@ namespace Medidata.RBT.PageObjects.Rave
 
 
         #region pagination
-        public bool GoNextPage(string areaIdentifier)
+
+		public int CurrentPageNumber { get; private set; }
+
+	    public bool GoNextPage(string areaIdentifier)
         {
             return GoToPage("IconImg_crViewer_toptoolbar_nextPg");
         }

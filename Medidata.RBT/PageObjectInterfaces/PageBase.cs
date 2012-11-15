@@ -80,7 +80,8 @@ namespace Medidata.RBT
             var element = Browser.ButtonByText(identifier, true, false);
             if (element == null)
                 element = Browser.ButtonByID(identifier, true, false);
-
+			if (element == null)
+				element = TryGetElementByName(identifier, null, null);
             if (element == null)
                 throw new Exception("Can't find button:" + identifier);
 
