@@ -111,15 +111,16 @@ namespace Medidata.RBT.Features.Rave
 
         }
 
+
         // <summary>
         /// Wait for CV refresh to finish
         /// </summary>
         /// <param name="project"></param>
-        [StepDefinition(@"Then I verify ""([^""])"" status for field ""([^""])"" has been propaged")]
+        [StepDefinition(@"I verify ""([^""]*)"" status for field ""([^""]*)"" has been propaged on logline")]
         public void IVerify__StatusForField__HasBeenPropaged(string status, string fieldOid)
         {
             Uri tempUri = new Uri(Browser.Url);
-            int dataPageId =  int.Parse(tempUri.Query.Replace("?DP=", ""));
+            int dataPageId = int.Parse(tempUri.Query.Replace("?DP=", ""));
             var sql = CheckDataPointStatusPropagate(dataPageId, fieldOid, status);
             var isPropagated = DbHelper.ExecuteScalar(sql, System.Data.CommandType.Text);
             Assert.IsTrue((int)isPropagated == 1, "Propagation did not occured");
