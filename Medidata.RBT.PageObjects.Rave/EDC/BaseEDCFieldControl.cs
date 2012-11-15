@@ -137,7 +137,7 @@ namespace Medidata.RBT.PageObjects.Rave
 				new SelectElement(dropdowns[0]).SelectByValue(dateParts[1]);
 				textboxes[1].SetText(dateParts[2]);
 			}
-            if (textboxes.Count == 5 && dropdowns.Count == 1)//date field format: dd MMM yyyy hh:nn rr
+            else if (textboxes.Count == 5 && dropdowns.Count == 1)//date field format: dd MMM yyyy hh:nn rr
             {
                 string[] dateParts = text.Split(' ');
                 if (dateParts.Length != 6)
