@@ -71,6 +71,7 @@
     <Compile Include="AmendmentManager\AMMigrationResultPage.cs" />
     <Compile Include="AmendmentManager\AMMigrationObjectMappingPage.cs" />
     <Compile Include="AmendmentManager\AMMigrationBasePage.cs" />
+    <Compile Include="AmendmentManager\MigrationConfigure.cs" />
     <Compile Include="AmendmentManager\MigrationObjectHierarchyEditPage.cs" />
     <Compile Include="AmendmentManager\MigrationObjectHierarchy.cs" />
     <Compile Include="AmendmentManager\MigrationModel.cs" />
