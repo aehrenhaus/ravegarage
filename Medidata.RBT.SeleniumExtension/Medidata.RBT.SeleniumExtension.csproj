@@ -61,6 +61,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="SearchContext_CurrentPage.cs" />
     <Compile Include="SearchContext_EnhancedControls.cs" />
     <Compile Include="EnhancedControls\Checkbox.cs" />
     <Compile Include="EnhancedControls\Option.cs" />
