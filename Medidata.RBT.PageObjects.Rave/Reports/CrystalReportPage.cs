@@ -60,6 +60,19 @@ namespace Medidata.RBT.PageObjects.Rave
 
             result = distinctRows.Count().Equals(rowContentList.Count()) ? true : false;
 
+            //Check if SYSTEM user has created a record 
+            //this happens during Migration if duplicate records are created
+            foreach (string rowCont in rowContentList)
+            {
+                if (result && rowCont.Contains("SYSTEM") &&
+                    rowCont.Contains("Record created."))
+                {
+                    result = false;
+                    break;
+                }
+            }
+
+
             return result;
         }
 

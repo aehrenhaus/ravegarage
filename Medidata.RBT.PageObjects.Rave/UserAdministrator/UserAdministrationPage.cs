@@ -30,11 +30,6 @@ namespace Medidata.RBT.PageObjects.Rave
 		[FindsBy(How = How.Id, Using = "_ctl0_Content_StudyDDL")]
 		IWebElement Study;
 
-		[FindsBy(How = How.Id, Using = "_ctl0_Content_LoginBox")]
-		IWebElement Login;
-
-		[FindsBy(How = How.Id, Using = "_ctl0_Content_SearchButtonLnk")]
-		IWebElement Search;
 		
 
 		public class SearchByModel
@@ -67,15 +62,20 @@ namespace Medidata.RBT.PageObjects.Rave
 			if (by.Site != null)
 				Site.EnhanceAs<Textbox>().SetText(by.Site);
 
-			if (by.Login != null)
-				Login.EnhanceAs<Textbox>().SetText(by.Login);
 
-			if (by.Role != null)
+			if (by.Login != null)
+			{
+				var Login = Browser.TryFindElementById("_ctl0_Content_LoginBox");
+				Login.EnhanceAs<Textbox>().SetText(by.Login);
+			}
+
+	        if (by.Role != null)
 				new SelectElement(Role).SelectByText(by.Role);
 
 			if (by.Study != null)
 				new SelectElement(Study).SelectByText(by.Study);
 
+			var Search = Browser.TryFindElementById("_ctl0_Content_SearchButtonLnk");
 			Search.Click();
 
 			return this;

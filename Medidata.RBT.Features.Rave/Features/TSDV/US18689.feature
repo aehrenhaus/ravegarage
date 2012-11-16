@@ -1,4 +1,6 @@
 ﻿# When a user selects Permuted Block Randomization, subject assignment satisfies a specified allocation and ratio is random for all blocks.
+@EnableSeeding=true
+@SuppressSeeding=Site,SiteGroup,Role,User,SecurityRole
 @ignore
 Feature: 18689
 	When user selects Permuted Block Randomization
@@ -11,21 +13,21 @@ Background:
 	Given xml draft "US18812_SJ.xml" is Uploaded with Environment name "Dev"
 
 	Given Site "Site 1" with Site Group "Asia" exists
-	#Given Site "Site 2" with Site Group "Europe" exists
-	#Given Site "Site 3" with Site Group "World" exists
-	#Given Site "Site 4" with Site Group "North America" exists
+	Given Site "Site 2" with Site Group "Europe" exists
+	Given Site "Site 3" with Site Group "World" exists
+	Given Site "Site 4" with Site Group "North America" exists
 	Given study "US18812_SJ" is assigned to Site "Site 1" with study environment "Aux: Dev"
-	#Given study "US18812_SJ" is assigned to Site "Site 2" with study environment "Aux: Dev"
-	#Given study "US18812_SJ" is assigned to Site "Site 3" with study environment "Aux: Dev"
-	#Given study "US18812_SJ" is assigned to Site "Site 4" with study environment "Aux: Dev"
+	Given study "US18812_SJ" is assigned to Site "Site 2" with study environment "Aux: Dev"
+	Given study "US18812_SJ" is assigned to Site "Site 3" with study environment "Aux: Dev"
+	Given study "US18812_SJ" is assigned to Site "Site 4" with study environment "Aux: Dev"
 	Given I publish and push eCRF "US18812_SJ.xml" to "Version 1" with study environment "Dev"
 	
 	Given following Project assignments exist
 	| User         | Project    | Environment | Role         | Site   | SecurityRole          | 
 	| SUPER USER 1 | US18812_SJ | Aux: Dev    | SUPER ROLE 1 | Site 1 | Project Admin Default | 
-	#| SUPER USER 1 | US18812_SJ | Aux: Dev    | SUPER ROLE 1 | Site 2 | Project Admin Default | 
-	#| SUPER USER 1 | US18812_SJ | Aux: Dev    | SUPER ROLE 1 | Site 3 | Project Admin Default | 
-	#| SUPER USER 1 | US18812_SJ | Aux: Dev    | SUPER ROLE 1 | Site 4 | Project Admin Default | 
+	| SUPER USER 1 | US18812_SJ | Aux: Dev    | SUPER ROLE 1 | Site 2 | Project Admin Default | 
+	| SUPER USER 1 | US18812_SJ | Aux: Dev    | SUPER ROLE 1 | Site 3 | Project Admin Default | 
+	| SUPER USER 1 | US18812_SJ | Aux: Dev    | SUPER ROLE 1 | Site 4 | Project Admin Default | 
 	
 	
 	#   Given following Report assignments exist
@@ -247,7 +249,7 @@ And I switch to "Reports" window
 	And I activate the plan
 	And I switch to "Reports" window
 	And I select link "Home"
-	And I create 1 random Subjects with name "KKI" in Study "US18812_SJ" in Site "Site 4"
+	And I create 6 random Subjects with name "KKI" in Study "US18812_SJ" in Site "Site 4"
 	And I select link "Home"
 	And I navigate to "Reporter"
 	And I select Report "Targeted SDV Subject Management"
@@ -255,21 +257,13 @@ And I switch to "Reports" window
 		| Name       | Environment |
 		| US18812_SJ | Dev         |
 	And I click button "Submit Report"
+	And I switch to "Targeted SDV Subject Override" window
 	And I filter by site "Site 4"
-	#Then I verify that one of the following Permutations has been used
-	#|Randomization Permutations                               |
-	#|All Forms, Architect Defined, Architect Defined, No Forms|
-	#|All Forms, Architect Defined, No Forms, Architect Defined|
-	#|All Forms, No Forms, Architect Defined, Architect Defined|
-	#|Architect Defined, All Forms, Architect Defined, No Forms|
-	#|Architect Defined, All Forms, No Forms, Architect Defined|
-	#|No Forms, All Forms, Architect Defined, Architect Defined|
-	#|Architect Defined, Architect Defined, All Forms, No Forms|
-	#|Architect Defined, No Forms, All Forms, Architect Defined|
-	#|No Forms, Architect Defined, All Forms, Architect Defined|
-	#|Architect Defined, Architect Defined, No Forms, All Forms|
-	#|Architect Defined, No Forms, Architect Defined, All Forms|
-	#|No Forms, Architect Defined, Architect Defined, All Forms|
+	And I verify that every "6" subjects has a pattern of 
+		| Tier name                        | Number of occurrence |
+		| All Forms (Default Tier)         | 2                    |
+		| No Forms (Default Tier)          | 3                    |
+		| Architect Defined (Default Tier) | 1                    |
 	And I switch to "Reports" window
 	And I select link "Home"
 	And I navigate to "Reporter"

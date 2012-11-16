@@ -31,6 +31,11 @@ namespace Medidata.RBT
 
 
 		private List<TextWriter> innerWriters = new List<TextWriter>();
+
+		public List<TextWriter> InnerWriters {
+			get { return innerWriters; }
+		}
+
 		public void AddStreamWriter(TextWriter sw)
 		{
 			innerWriters.Add(sw);

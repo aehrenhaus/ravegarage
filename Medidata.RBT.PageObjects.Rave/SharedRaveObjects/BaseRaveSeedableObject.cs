@@ -27,7 +27,7 @@ namespace Medidata.RBT.SharedRaveObjects
 		public BaseRaveSeedableObject()
 		{
 			//set global suppress seeding option, it can be overwrite later
-			SuppressSeeding = SeedDecision.SuppressSeeding(GetType());
+			SuppressSeeding = (TestContext.FeatureSeedingOption ?? TestContext.DefaultSeedingOption).SuppressSeeding(GetType());
 		}
 
 
@@ -35,7 +35,7 @@ namespace Medidata.RBT.SharedRaveObjects
 		{
 			var type = this.GetType();
 
-			if (SuppressSeeding || !RBTConfiguration.Default.EnableSeeding)
+			if (SuppressSeeding || !(TestContext.FeatureSeedingOption ?? TestContext.DefaultSeedingOption).EnableSeeding)
 			{
 				Console.WriteLine("-> Seeding --> suppressed --> {0} --> {1}", type.Name, UniqueName);
 		
@@ -43,7 +43,7 @@ namespace Medidata.RBT.SharedRaveObjects
 			}
 
 			string originalName = UniqueName;
-			if (SeedDecision.FromUI(type))
+			if ((TestContext.FeatureSeedingOption ?? TestContext.DefaultSeedingOption).FromUI(type))
 			{
 				Console.WriteLine("-> Seeding --> UI --> {0} --> {1}", type.Name, originalName); 
 				SeedFromUI();

@@ -218,6 +218,10 @@ namespace Medidata.RBT
 			}
 		}
 
+		public static SeedingOptions DefaultSeedingOption { get; set; }
+
+		public static SeedingOptions FeatureSeedingOption { get; set; }
+
 		#endregion
 
 
@@ -247,7 +251,12 @@ namespace Medidata.RBT
             DeleteAllDownloadFiles();
             DeleteAllDownloadDirectories();
             DeleteFilesInTemporaryUploadDirectories();
-		
+
+	
+			DefaultSeedingOption = new SeedingOptions(
+				RBTConfiguration.Default.EnableSeeding,
+				RBTConfiguration.Default.SeedFromBackendClasses,
+				 RBTConfiguration.Default.SuppressSeeding);
 
 			SpecialStringHelper.Replaced += new Action<string, string>((input, output) =>
 			{
@@ -261,10 +270,49 @@ namespace Medidata.RBT
 		[BeforeFeature()]
 		public static void BeforeFeature()
 		{
+
 			Storage.FeatureValues.Clear();
-            
+			HandleFeatureTags();
 			CurrentFeatureStartTime = DateTime.Now;
             DraftCounter.ResetCounter();
+		}
+
+		private static void HandleFeatureTags()
+		{
+			string backend = null;
+			string suppress = null;
+			bool enable = false;
+			bool hasSettings = false;
+
+			foreach (var featureTag in FeatureContext.Current.FeatureInfo.Tags)
+			{
+				string[] parts = featureTag.Split('=');
+				if (parts.Length != 2)
+					continue;
+
+				if (parts[0] == "SeedFromBackendClasses")
+				{
+					backend = parts[1];
+					hasSettings = true;
+				}
+				else if (parts[0] == "SuppressSeeding")
+				{
+					suppress = parts[1];
+					hasSettings = true;
+				}
+				else if (parts[0] == "EnableSeeding")
+				{
+					bool.TryParse(parts[1], out enable);
+					hasSettings = true;
+				}
+			}
+
+			//Feature will use either all default settings from config , or all settings from feature tag.
+			//there is no cascading here.
+			//If there are any seeding settings on the feature, then feature will use feature level setting instead of global settings
+
+			if(hasSettings)
+				FeatureSeedingOption = new SeedingOptions(enable, backend, suppress);
 		}
 
 		/// <summary>
@@ -273,6 +321,7 @@ namespace Medidata.RBT
 		[AfterFeature()]
 		public static void AfterFeature()
 		{
+			FeatureSeedingOption = null;
             Factory.DeleteObjectsMarkedForFeatureDeletion();
             DeleteCreatedFiles();
             DeleteCreatedDirectories();
@@ -285,18 +334,7 @@ namespace Medidata.RBT
 		public void BeforeScenario()
 		{
             TestContext.CurrentUser = null;
-			if (consoleWriter == null)
-			{
-				consoleWriter = new MultipleStreamWriter();
-				var extraConsole = ExtraConsoleWriterSetup.GetConsoleWriter();
-				consoleWriter.AddStreamWriter(new FilteredWriter(extraConsole));
 
-				//the previous Console.Out has already been redirect to MSTest output, add it back to multiple output writer, so we still see results from MSTest
-				consoleWriter.AddStreamWriter(Console.Out);
-				Console.SetOut(consoleWriter);
-				Console.WriteLine("-------------> Scenario:" + ScenarioName);
-				Console.WriteLine();
-			}
 			Storage.ScenarioValues.Clear();
 
 			//start time
@@ -313,9 +351,31 @@ namespace Medidata.RBT
 			//restore snapshot
 			//DbHelper.RestoreSnapshot();
 
+			SetOutput();
+
+			Console.WriteLine("-------------> Scenario:" + ScenarioName);
+			Console.WriteLine();
 		}
 
-		
+		private void SetOutput()
+		{
+			if (consoleWriter == null)
+			{
+				consoleWriter = new MultipleStreamWriter();
+				var extraConsole = ExtraConsoleWriterSetup.GetConsoleWriter();
+				consoleWriter.AddStreamWriter(new FilteredWriter(extraConsole));
+
+				//the previous Console.Out has already been redirect to MSTest output, add it back to multiple output writer, so we still see results from MSTest
+
+
+			}
+			if (consoleWriter.InnerWriters.Count == 2)
+				consoleWriter.InnerWriters.RemoveAt(1);
+			consoleWriter.AddStreamWriter(Console.Out);
+			Console.SetOut(consoleWriter);
+		}
+
+
 		/// <summary>
 		/// After each scenario
 		/// </summary>
@@ -425,8 +485,12 @@ namespace Medidata.RBT
 			//Close browser
 			if (Browser != null)
 			{
-				Browser.Close();
-				Browser = null;
+                foreach (string winHandle in Browser.WindowHandles)
+                {
+                    IWebDriver window = Browser.SwitchTo().Window(winHandle);
+                    window.Close();
+                }
+                Browser = null;
 			}
 		}
 
