@@ -73,7 +73,7 @@ And I navigate to "Reporter"
 And I select Report "Audit Trail"
 And I set report parameter "Study" with "DT13626"
 And I set report parameter "Sites" with "Site_001"
-And I set report Parameter "Subjects" with "Sub {Var(num1)}"
+And I set report parameter "Subjects" with "SUB {Var(num1)}"
 And I click button "Submit Report"
 When I switch to "ReportViewer" window
 Then I verify duplicate records are not displayed
