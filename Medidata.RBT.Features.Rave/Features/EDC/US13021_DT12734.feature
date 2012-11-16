@@ -7,7 +7,7 @@ Feature: US13021_DT12734
 	Then I see the cloud-based help page
 
 Background:
-	#Given I am logged in to Rave with username "defuser" and password "password"
+	#Given I login to Rave with user "defuser" and password "password"
 	#And the following standard report assignments exist
 	#| User    | Project			| Environment | Role         | Report Name                       |
 	#| defuser | US15417_DT13905_SJ | Prod        | Data Manager | 360 Data Cleaning Progress Report |
@@ -65,7 +65,7 @@ Background:
 
 Scenario: @US13021_DT12734_01 As a Data Manager, when I select the Help link, in the Help column, in Reporter > My Reports, then I see the cloud-based report help page.
 
-	Given I am logged in to Rave with username "defuser" and password "password"
+	Given I login to Rave with user "defuser" and password "password"
 	When I select link "Reporter"
 	And I choose "Standard Reports" from "Report Type"
 	And I click button "Search"
@@ -119,7 +119,7 @@ Scenario: @US13021_DT12734_01 As a Data Manager, when I select the Help link, in
 @US13021_DT12734_02
 @Draft
 Scenario: @US13021_DT12734_02 As a Data Manager, when I select a standard report in Reporter > My Reports, and I select View Report Help, then I see the cloud-based report help page.
-	Given I am logged in to Rave with username "defuser" and password "password"
+	Given I login to Rave with user "defuser" and password "password"
 	When I select link "Reporter"
 	And I choose "Standard Reports" from "Report Type"
 	And I click button "Search"
@@ -175,7 +175,7 @@ Scenario: @US13021_DT12734_02 As a Data Manager, when I select a standard report
 @US13021_DT12734_03
 @Draft
 Scenario: @US13021_DT12734_03 As a Data Manager, when I a standard report in Reporter > My Reports, and I execute that report, and I select View Report Help, then I see the cloud-based report help page.
-	Given I am logged in to Rave with username "defuser" and password "password"
+	Given I login to Rave with user "defuser" and password "password"
 	When I select link "Report"
 	And I set report parameter "Study" with table
 		| Name               | Environment |

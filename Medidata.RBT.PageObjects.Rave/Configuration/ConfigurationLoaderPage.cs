@@ -45,7 +45,7 @@ namespace Medidata.RBT.PageObjects.Rave.Configuration
         private void WaitForUploadToComplete()
         {
             int waitTime = 120;
-			Browser.WaitForElement(b =>
+			var ele = Browser.TryFindElementBy(b =>
             {
                 IWebElement currentStatus = Browser.FindElementByXPath("//span[@id = '_ctl0_Content_CurrentStatus']");
                 if (currentStatus.Text.Contains("Save successful"))
@@ -53,9 +53,22 @@ namespace Medidata.RBT.PageObjects.Rave.Configuration
                 else
                     return null;
             }
-                ,
-                "Did not complete in time(" + waitTime + "s)", waitTime
-                );
+                ,true, waitTime);
+
+			if (ele == null)
+				throw new Exception(
+				"Did not complete in time(" + waitTime + "s)");
         }
+
+		public override IWebElement GetElementByName(string identifier, string areaIdentifier = null, string listItem = null)
+		{
+			if (identifier == "configureation settings")
+				return Browser.TryFindElementByPartialID("CtrlDraftFile");
+
+			if (identifier == "Save successful")
+				return Browser.TryFindElementBySpanLinktext("Save successful");
+
+			return base.GetElementByName(identifier, areaIdentifier, listItem);
+		}
     }
 }

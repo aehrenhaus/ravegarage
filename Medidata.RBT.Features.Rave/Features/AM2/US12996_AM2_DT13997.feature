@@ -2,7 +2,7 @@
 #AM2 will blank out submitted default values for a log field, that been populated by coded values of data dictionary, if the order of data dictionary entries was changed and coded values updated even when everything was properly mapped in the migration plan for data dictionary entries.
 #Unless other wise stated in this feature file it is assumed that this study has at least one subject which as submitted default values.  The forms #needs to be submitted by a role who has entry resitrctions for the field with default values.
 @ignore
-Feature: Submitted default values will remain present on the eCRF when the coded values of the data dictionary have been change or reordered.
+Feature: US12996_DT13997 Submitted default values will remain present on the eCRF when the coded values of the data dictionary have been change or reordered.
 
 
 Background:
@@ -137,7 +137,7 @@ And I take a screenshot
 @WIP
 Scenario:  When a user navigates to Architect, changes the coded values of a data dictionary, creates a new CRF version, creates a migration plan with the new CRF version as the Target CRF version, in object mapping maps the data dictionary, and migrates a subject that has been submitted by a user with role permissions to edit a field with defaulted values, then user navigate to EDC and sees that the defaulted values for the subject are present.
 
-Given I log in to Rave with user "SUPER USER 2"
+Given I login to Rave with user "SUPER USER 2"
 Given I create a Subject
 | Field                        | Data              |
 | Subject Number (3 digits)    | {RndNum<num1>(3)} |
@@ -199,7 +199,7 @@ And I take a screenshot
 @WIP
 Scenario:  When a user navigates to Architect, reorders the coded values of a data dictionary, creates a new CRF version, creates a migration plan with the new CRF version as the Target CRF version, in object mapping maps the data dictionary, and migrates a subject that has been submitted by a user with role permissions to edit a field with defaulted values, then user navigate to EDC and sees that the defaulted values for the subject are present.
 
-Given I log in to Rave with user "SUPER USER 2"
+Given I login to Rave with user "SUPER USER 2"
 Given I create a Subject
 | Field                        | Data              |
 | Subject Number (3 digits)    | {RndNum<num1>(3)} |

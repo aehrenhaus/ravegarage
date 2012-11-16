@@ -41,7 +41,7 @@ namespace Medidata.RBT.PageObjects.Rave
 
         private void SelectFields(string form)
         {
-            var dummy = Browser.WaitForElement("_ctl0_Content_FormGrid");  // wait for page to load.
+            var dummy = Browser.TryFindElementById("_ctl0_Content_FormGrid");  // wait for page to load.
 
             var table = Browser.Table("_ctl0_Content_FormGrid");
             Table matchTable = new Table("Form Name");

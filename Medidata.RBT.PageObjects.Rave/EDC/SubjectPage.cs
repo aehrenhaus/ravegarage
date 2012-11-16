@@ -31,7 +31,7 @@ namespace Medidata.RBT.PageObjects.Rave
 			expandButton.Click();
 			
 			//wait for contents to load
-			Browser.WaitForElement(driver => Browser.FindElementByXPath("//body[@style='cursor: default;']"));
+			Browser.TryFindElementByXPath("//body[@style='cursor: default;']",true);
 
 
 			return this;
@@ -213,9 +213,7 @@ namespace Medidata.RBT.PageObjects.Rave
             {
                 //We have to wait for this element in the situation where the text appears after 
                 //eSign window phases out.
-                Browser.WaitForElement(b => Browser.FindElementByXPath(string.Format(
-                    "//*[text()='{0}']",
-                    text)));
+                Browser.TryFindElementByXPath(string.Format("//*[text()='{0}']",text));
                 result = base.VerifyTextExist(null, text);
             }
             else

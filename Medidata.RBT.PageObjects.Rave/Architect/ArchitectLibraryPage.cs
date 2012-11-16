@@ -24,7 +24,7 @@ namespace Medidata.RBT.PageObjects.Rave
             TestContext.CurrentPage.As<ArchitectPushPage>().PushToSites(env, sites);
 			//
 			//go back to study
-            ClickLinkInArea(null, studyName, "Header");
+            ClickLink( studyName,null, "Header");
 		
 			return this;
 		}
@@ -69,13 +69,14 @@ namespace Medidata.RBT.PageObjects.Rave
         
 		public override IPage NavigateTo(string name)
 		{
-			var leftNavContainer = Browser.FindElementById("TblOuter");
+            IWebElement leftNavContainer = Browser.TryFindElementBy(By.Id("TblOuter"));
 		
 			if (name == "Amendment Manager")
 			{
-				var link = leftNavContainer.Link("Amendment Manager");
-				link.Click();
-				return new AMMigrationHomePage();
+                return ClickLink("Amendment Manager");
+                //var link = leftNavContainer.Link("Amendment Manager");
+                //link.Click();
+                //return new AMMigrationHomePage();
 			}
 			return base.NavigateTo(name);
 		}
@@ -91,16 +92,6 @@ namespace Medidata.RBT.PageObjects.Rave
 			return base.GetElementByName(identifier,areaIdentifier,listItem);
 		}
 
-		//public override IPage ClickLinkInArea(string type, string linkText, string areaIdentifier)
-		//{
-		//    if (areaIdentifier == "CRFDrafts")
-		//    {
-		//        Browser.Link(linkText).Click();
-		//        return new ArchitectCRFDraftPage();
-		//    }
-
-		//    return base.ClickLinkInArea(type, linkText, areaIdentifier);
-		//}
 
 		public override string URL
 		{

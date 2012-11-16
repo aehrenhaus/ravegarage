@@ -62,20 +62,12 @@ namespace Medidata.RBT.PageObjects.Rave
 			LoginButton.Click();
 
             TestContext.CurrentUser = userName;
+			TestContext.CurrentUserPassword = password;
+
             TestContext.CurrentPage = new HomePage();
             return (HomePage)TestContext.CurrentPage;
 		}
 
-        public override IPage ClickLink(string linkText)
-        {
-            base.ClickLink(linkText);
-            if (linkText == "Activate New Account")
-            {
-                TestContext.CurrentPage = new ActivatePage();
-                return TestContext.CurrentPage;
-            }
-            return this;
-        }
 
         public override string URL{ get { return "login.aspx"; }}
 	}

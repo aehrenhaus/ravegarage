@@ -21,7 +21,7 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
     ///This is a rave specific LabConfiguration. It is seedable. 
     ///These sit in Uploads/LabConfigurations.
     ///</summary>
-    public class LabConfiguration : SeedableObject, IRemoveableObject
+    public class LabConfiguration : BaseRaveSeedableObject, IRemoveableObject
     {
         /// <summary>
         /// The uploaded LabConfiguration constructor. This actually uploads configurations. 
@@ -29,32 +29,24 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
         /// You may call this constuctor with "SUPER LabConfiguration 'N'" where "N" is an integer.
         /// This will upload a unique version of the source controlled "SUPERLabConfiguration.xml" and tie it to that name.
         /// </summary>
-        /// <param name="LabConfigurationUploadName">The feature defined name of the LabConfiguration</param>
-        /// <param name="seed">Bool determining whether you want to seed the object if it is not in the FeatureObjects dictionary</param>
-        public LabConfiguration(string LabConfigurationUploadName, bool seed = false)
-            : base(LabConfigurationUploadName)
+        /// <param name="labConfigurationUploadName">The feature defined name of the LabConfiguration</param>
+		 public LabConfiguration(string labConfigurationUploadName)
         {
-            if (!UID.HasValue)
-            {
-                UID = Guid.NewGuid();
-                Name = LabConfigurationUploadName;
+ 
+                UniqueName = labConfigurationUploadName;
 
-                if (seed)
-                {
-                    string fileName;
-                    if (LabConfigurationUploadName.StartsWith("SUPER LabConfiguration"))
-                        fileName = "SUPERLabConfiguration.xml";
-                    else
-                        fileName = LabConfigurationUploadName;
-
-                    FileLocation = RBTConfiguration.Default.UploadPath + @"\LabConfigurations\" + fileName;
-                    Upload();
-                }
-            }
+                Upload();
         }
 
         public void Upload()
         {
+			string fileName;
+			if (UniqueName.StartsWith("SUPER LabConfiguration"))
+				fileName = "SUPERLabConfiguration.xml";
+			else
+				fileName = UniqueName;
+
+			FileLocation = RBTConfiguration.Default.UploadPath + @"\LabConfigurations\" + fileName;
             NavigateToSeedPage();
 
             UniqueFileLocation = FileLocation;
@@ -63,7 +55,7 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
         /// <summary>
         /// Load the xml to upload. Replace the LabConfiguration name with a unique version of it with a TID at the end.
         /// </summary>
-        public override void MakeUnique()
+		protected override void MakeUnique()
         {
             throw new NotImplementedException("MakeUnique() not implemented");
         }
@@ -71,7 +63,7 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
         /// <summary>
         /// Navigate to the configuration loader page.
         /// </summary>
-        public override void NavigateToSeedPage()
+		protected override void NavigateToSeedPage()
         {
             TestContext.CurrentPage = new LabLoaderPage().NavigateToSelf();
         }
@@ -79,7 +71,7 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
         /// <summary>
         /// Upload LabConfiguration. 
         /// </summary>
-        public override void CreateObject()
+		protected override void CreateObject()
         {
             TestContext.CurrentPage.As<LabLoaderPage>().UploadFile(UniqueFileLocation);
         }

@@ -12,6 +12,12 @@ namespace Medidata.RBT.SeleniumExtension
 {
 	public static class WebElement
 	{
+		public static RemoteWebDriver Brower(this IWebElement ele)
+		{
+			var driver = ((IWrapsDriver)ele).WrappedDriver as RemoteWebDriver;
+
+			return driver;
+		}
 
 		public static T EnhanceAs<T>(this IWebElement ele) where T : EnhancedElement, new() 
 		{
@@ -46,6 +52,7 @@ namespace Medidata.RBT.SeleniumExtension
 			IJavaScriptExecutor jsExe = GetJsExecutor(element);
 			jsExe.ExecuteScript("arguments[0].innerHTML = arguments[1]", element, html);
 		}
+
 		public static void SetAttribute(this IWebElement element, string attributeName, string value)
 		{
 			IJavaScriptExecutor jsExe = GetJsExecutor(element);
@@ -73,7 +80,7 @@ namespace Medidata.RBT.SeleniumExtension
 
 		public static IWebElement Parent(this IWebElement element)
 		{
-			return element.TryFindElementBy(By.XPath("./.."));
+			return element.TryFindElementByXPath("./..");
 		}
 
 		public static IWebElement Ancestor(this IWebElement element, string tagName)

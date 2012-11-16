@@ -1,6 +1,9 @@
 ﻿using System;
+using OpenQA.Selenium;
 using TechTalk.SpecFlow;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Medidata.RBT.SeleniumExtension;
+
 
 namespace Medidata.RBT.Common.Steps
 {
@@ -22,7 +25,6 @@ namespace Medidata.RBT.Common.Steps
 		[StepDefinition(@"I verify rows exist in ""([^""]*)"" table")]
 		public void IVerifyRowsExistIn____Table(string tableIdentifier, Table matchTable)
 		{
-            SpecialStringHelper.ReplaceTableColumn(matchTable, "Subject");
 			bool allExist = CurrentPage.As<ICanVerifyExist>().VerifyTableRowsExist(tableIdentifier, matchTable);
 			Assert.IsTrue(allExist,String.Format("Not all rows have been found in the table {0}", tableIdentifier));
 		}
@@ -70,6 +72,28 @@ namespace Medidata.RBT.Common.Steps
 		{
 			bool exist = CurrentPage.As<ICanVerifyExist>().VerifyTextExist(null, text);
 			Assert.IsFalse(exist, String.Format("Text does exist :{0}", text));
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="linkText"></param>
+		[StepDefinition(@"I verify link ""([^""]*)"" does not exist")]
+		public void IVerifyLink____DoesNotExist(string linkText)
+		{
+			IWebElement link = Browser.TryFindElementByLinkText(linkText);
+			Assert.IsNull(link, String.Format("Link does exist :{0}", linkText));
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="linkText"></param>
+		[StepDefinition(@"I verify link ""([^""]*)"" exists")]
+		public void IVerifyLink____Exists(string linkText)
+		{
+			IWebElement link = Browser.TryFindElementByLinkText(linkText);
+			Assert.IsNotNull(link, String.Format("Link does not exist :{0}", linkText));
 		}
 	}
 }

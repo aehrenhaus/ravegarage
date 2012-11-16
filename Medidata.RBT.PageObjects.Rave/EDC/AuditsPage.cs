@@ -128,7 +128,7 @@ namespace Medidata.RBT.PageObjects.Rave
 
                 string specifiedLogin = specifiedUserDetail[1].Split('-')[1].TrimStart(' ');
                 //Get the unique user object created during seeding
-                User spUser = TestContext.GetExistingFeatureObjectOrMakeNew(specifiedLogin, () => new User(specifiedLogin, false));
+                User spUser = TestContext.GetExistingFeatureObjectOrMakeNew(specifiedLogin, () => new User(specifiedLogin));
 
                 string actualLogin = actualUserDetail[1].Split('-')[1].TrimStart(' ');
                 isSpecifiedData = actualLogin.Equals(spUser.UniqueName);
@@ -196,12 +196,12 @@ namespace Medidata.RBT.PageObjects.Rave
 
         public bool AuditExist_SignatureSucceeded(int? position = null)
         {
-            return AuditExist("User signature succeeded", null, null, position);
+            return AuditExist("User signature succeeded.", null, null, position);
         }
 
         public bool AuditExist_SignatureBroken(int? position = null)
         {
-            return AuditExist("Signature has been broken", null, null, position);
+            return AuditExist("Signature has been broken.", null, null, position);
         }
 
         public bool AuditExist_UserEntered(string userInput,string user, string timeFormat, int? position = null)

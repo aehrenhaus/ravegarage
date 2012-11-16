@@ -151,5 +151,19 @@ namespace Medidata.RBT
             set { this["ScenarioNamePrefix"] = value; }
         }
 
+
+		[ConfigurationProperty("SeedFromBackendClasses", DefaultValue = "", IsRequired = false)]
+		public String SeedFromBackendClasses
+		{
+			get { return (String)this["SeedFromBackendClasses"]; }
+			set { this["SeedFromBackendClasses"] = value; }
+		}
+
+		[ConfigurationProperty("SuppressSeeding")]
+		public String SuppressSeeding
+		{
+			get { return (String)this["SuppressSeeding"]; }
+			set { this["SuppressSeeding"] = value; }
+		}
     }
 }

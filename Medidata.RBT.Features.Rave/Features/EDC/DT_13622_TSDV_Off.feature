@@ -8,7 +8,7 @@ Feature: DT 13622 TSDV Off When an Edit Check sets Datapoint XYZ to require veri
 	Then I should see an audit for the unverification
 
 Background:
-    #Given I am logged in to Rave with username "defuser" and password "password"
+    #Given I login to Rave with user "defuser" and password "password"
 	Given xml draft "DT13622 Mediflex.xml" is Uploaded
 	Given study "Mediflex" is assigned to Site "MediflexDTSite" with study environment "Live: Prod"
 	Given I publish and push eCRF "DT13622 Mediflex.xml" to "Version 1" with study environment "Prod"

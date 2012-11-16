@@ -18,7 +18,7 @@ namespace Medidata.RBT.PageObjects.Rave
 
 		public BaseEDCPage ClickModify()
 		{
-			IWebElement editButton = Browser.WaitForElement("header_SG_PencilButton");
+			IWebElement editButton = Browser.TryFindElementByPartialID("header_SG_PencilButton");
 			if (editButton == null)
 				throw new Exception("Can not find the modify button");
 			editButton.Click();
@@ -30,14 +30,14 @@ namespace Medidata.RBT.PageObjects.Rave
 		public BaseEDCPage FillDataPoints(IEnumerable<FieldModel> fields)
 		{
 			foreach (var field in fields)
-				FindField(field.Field).EnterData(field.Data, EnumHelper.GetEnumByDescription<ControlType>(field.ControlType));
+				FindField(field.Field).EnterData(field.Data, EnumHelper.GetEnumByDescription<ControlType>(field.ControlType), field.AdditionalData);
 
 			return this;
 		}
 
 		public BaseEDCPage CancelForm()
 		{
-			IWebElement btn = Browser.WaitForElement("footer_CB");
+			IWebElement btn = Browser.TryFindElementByPartialID("footer_CB");
 			if (btn == null)
 				throw new Exception("Can not find the Cancel button");
 			btn.Click();
@@ -50,7 +50,7 @@ namespace Medidata.RBT.PageObjects.Rave
         /// <returns>This page</returns>
 		public BaseEDCPage SaveForm()
 		{
-			IWebElement btn = Browser.WaitForElement("footer_SB");
+			IWebElement btn = Browser.TryFindElementByPartialID("footer_SB");
 			if (btn == null)
 				throw new Exception("Can not find the Save button");
 			btn.Click();
@@ -63,7 +63,7 @@ namespace Medidata.RBT.PageObjects.Rave
 			IWebElement subLink = Browser.FindElementById("_ctl0_PgHeader_TabTextHyperlink3");
 			subLink.Click();
 
-			IWebElement formFolderTable = Browser.FindElementById("_ctl0_LeftNav_EDCTaskList_TblTaskItems");
+			IWebElement formFolderTable = Browser.TryFindElementById("_ctl0_LeftNav_EDCTaskList_TblTaskItems", true);
 			var folderLink = formFolderTable.TryFindElementBy(By.PartialLinkText(folderName));
 				
 			if(folderLink==null)
@@ -79,7 +79,7 @@ namespace Medidata.RBT.PageObjects.Rave
         /// <returns>The current CRFPage</returns>
 		public CRFPage SelectForm(string formName)
 		{
-			IWebElement formFolderTable = Browser.FindElementById("_ctl0_LeftNav_EDCTaskList_TblTaskItems");
+			IWebElement formFolderTable = Browser.TryFindElementById("_ctl0_LeftNav_EDCTaskList_TblTaskItems", true);
 			formFolderTable.FindElement(By.LinkText(formName)).Click();
             TestContext.CurrentPage = new CRFPage();
             return TestContext.CurrentPage.As<CRFPage>();
@@ -96,7 +96,7 @@ namespace Medidata.RBT.PageObjects.Rave
         public BaseEDCPage ClickCheckBoxOnForm(string checkboxName)
         {
             string partialID = GetCheckboxPartialIdFromCheckName(checkboxName);
-            IWebElement chkBox = Browser.FindElementById("_ctl0_Content_R_header_SG_" + partialID);
+			IWebElement chkBox = Browser.TryFindElementByPartialID("_ctl0_Content_R_header_SG_" + partialID);
 
             if (chkBox == null)
                 throw new Exception("Cannot find the checkbox named: " + checkboxName);
@@ -123,7 +123,7 @@ namespace Medidata.RBT.PageObjects.Rave
                     break;
                 //Add additional cases here
                 default:
-                    result = base.CanSeeControl(identifier);
+                    result = GetElementByName(identifier);
                     break;
             }
 
@@ -144,7 +144,7 @@ namespace Medidata.RBT.PageObjects.Rave
 
         public IPage ClickAuditOnFormLevel()
         {
-            IWebElement element = CanSeeControl("_ctl0_Content_CRFRenderer_header_SG_DataStatusHyperlink");
+            IWebElement element = Browser.TryFindElementById("_ctl0_Content_CRFRenderer_header_SG_DataStatusHyperlink");
             if (element != null)
                 element.Click();
 

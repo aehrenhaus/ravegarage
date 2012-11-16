@@ -18,7 +18,7 @@ namespace Medidata.RBT.PageObjects.Rave.AmendmentManager
 		{
 			ChooseFromRadiobuttons(null, "rblMigrationMode_0");
 	
-			Browser.WaitForElement("CRFDraftsLabel");
+			Browser.TryFindElementByPartialID("CRFDraftsLabel");
 			Browser.Div("pnlSubjects").Link("All").Click();
 			Browser.Link("Migrate").Click();
 			return this;
@@ -33,7 +33,7 @@ namespace Medidata.RBT.PageObjects.Rave.AmendmentManager
         {
             ChooseFromRadiobuttons(null, "rblMigrationMode_0");
 
-            Browser.WaitForElement("CRFDraftsLabel");
+            Browser.TryFindElementByPartialID("CRFDraftsLabel");
             SubjectNameBox.EnhanceAs<Textbox>().SetText(subjectSearchString);
             ClickLink("Search");
             IWebElement selectedSubject = Browser.TryFindElementBySelectPartialLinktext(subjectSearchString);

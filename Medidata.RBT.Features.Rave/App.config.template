@@ -11,12 +11,14 @@
 
 	<SeleniumConfiguration
 		WaitElementTimeout="10"
+		WaitByDefault="true"
 		/>
 	
 	<!--DownloadPath SHOULD NOT be used for anything else and SHOULD NOT contain other files. 
 		It should be an empty folder, and be the same as your browser's download folder. -->
 	<RBTConfiguration
-		TestResultPath="Output"
+		
+		TestResultPath="Output"	
 		AutoCloseBrowser ="False"
 		TakeScreenShotsEveryStep ="False"
 		SqlScriptsPath="C:\"
@@ -29,8 +31,12 @@
 		GenerateReportAfterTest="true"
 		ScenarioNamePrefix="PB_"
 		AutoSaveMimeTypes="application/zip;application/pdf;application/octet-stream"
-		EnableSeeding ="False"
-		/>
+		EnableSeeding ="True"
+		SeedFromBackendClasses =""
+		SuppressSeeding=""
+		>
+	
+	</RBTConfiguration>
 
 	<RaveConfiguration
 		RaveURL ="http://rave564nycdev02a.mdsol.com/MedidataRAVE/"

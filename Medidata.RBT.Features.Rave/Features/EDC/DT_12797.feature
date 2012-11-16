@@ -20,7 +20,7 @@ Given following Project assignments exist
 Given review group number "<Numbers>" is active
 | Numbers |
 | 1       |
-Given I log in to Rave with user "SUPER USER 1" 
+Given I login to Rave with user "SUPER USER 1" 
 
 
 # Edit check exists to set field Visit Date on form Visit Date to require review if field Age has a value less than 18.

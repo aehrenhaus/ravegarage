@@ -8,23 +8,12 @@ using OpenQA.Selenium.Remote;
 using TechTalk.SpecFlow;
 using Medidata.RBT.SeleniumExtension;
 using System.Threading;
+using Medidata.RBT.PageObjects.Rave.SharedRaveObjects;
 
 namespace Medidata.RBT.PageObjects.Rave
 {
-    public class PDFCreationModel
-    {
-        public string Name { get; set; }
-        public string Profile { get; set; }
-        public string Study { get; set; }
-        public string Role { get; set; }
-        public string SiteGroup { get; set; }
-        public string Site { get; set; }
-        public string Subject { get; set; }
-        public string Locale { get; set; }
-        public string CRFVersion { get; set; }
-    }
 
-    public class FileRequestCreateDataRequestPage : RavePageBase
+    public class FileRequestCreateDataRequestPage : FileRequestCreateRequestPageBase
     {
         /// <summary>
         /// Create a new data pdf file request
@@ -33,50 +22,77 @@ namespace Medidata.RBT.PageObjects.Rave
         /// <returns>A new FileRequestPage</returns>
         public FileRequestPage CreateDataPDF(PDFCreationModel args)
         {
-            if (!string.IsNullOrEmpty(args.Name))
-                Type("Name", args.Name);
-            if (!string.IsNullOrEmpty(args.Profile))
-                ChooseFromDropdown("_ctl0_Content_FileRequestForm_ConfigProfileID", args.Profile);
-            if (!string.IsNullOrEmpty(args.Study))
-                ChooseFromDropdown("Study", args.Study);
-            if (!string.IsNullOrEmpty(args.Locale))
-                ChooseFromDropdown("Locale", args.Locale);
-            if (!string.IsNullOrEmpty(args.Role))
-            {
-                var dlRole = Browser.FindElementById("Role");
-                Thread.Sleep(1000);
-                ChooseFromDropdown("Role", args.Role);
-            }
-            if (!string.IsNullOrEmpty(args.SiteGroup))
+            base.CreatePDF(args);
+
+            bool isLocalizationTest = false;
+            if (!string.IsNullOrEmpty(args.Locale) && args.Locale == "LLocalization Test")
+                isLocalizationTest = true;
+
+            SelectSiteGroup(args.SiteGroup);
+            SelectSite(args.Site);
+            SelectSubject(args.Subject);
+
+            string saveLinkText = "Save";
+
+            if (isLocalizationTest)
+                saveLinkText = PrependLocalization(saveLinkText);
+
+            ClickLink(saveLinkText);
+            return new FileRequestPage();
+        }
+
+        /// <summary>
+        /// Select the site group from the checkbox span for pdf generator
+        /// </summary>
+        /// <param name="siteGroup"></param>
+        public void SelectSiteGroup(string siteGroup)
+        {
+            if (!string.IsNullOrEmpty(siteGroup))
             {
                 IWebElement div = Browser.TryFindElementById("SitesSitegroups");
-				IWebElement span = Browser.WaitForElement(b => div.Spans().FirstOrDefault(x => x.Text == args.SiteGroup));
+                IWebElement span = Browser.TryFindElementBy(b => div.Spans().FirstOrDefault(x => x.Text == siteGroup));
 
                 span.Checkboxes()[0].EnhanceAs<Checkbox>().Check();
             }
-            if (!string.IsNullOrEmpty(args.Site))
+        }
+
+        /// <summary>
+        /// Select the site name form the dropdown checkboxes for pdf generator
+        /// </summary>
+        /// <param name="sName"></param>
+        public void SelectSite(string sName)
+        {
+            if (!string.IsNullOrEmpty(sName))
             {
                 IWebElement expandSite = Browser.FindElementById("ISitesSitegroups_SG_1");
                 if (expandSite.GetAttribute("src").Contains("plus"))
                     expandSite.Click();
 
                 IWebElement div = Browser.TryFindElementById("DSitesSitegroups_SG_1");
-				IWebElement span = Browser.WaitForElement(b => div.Spans().FirstOrDefault(x => x.Text == args.Site));
+
+                string siteName = TestContext.GetExistingFeatureObjectOrMakeNew
+                    (sName, () => new Site(sName)).UniqueName;
+
+                IWebElement span = Browser.TryFindElementBy(b => div.Spans().FirstOrDefault(x => x.Text == siteName));
                 span.Checkboxes()[0].EnhanceAs<Checkbox>().Check();
             }
-            if (!string.IsNullOrEmpty(args.Subject))
+        }
+
+        /// <summary>
+        /// Select the subject from the checkboxes for pdf generator
+        /// </summary>
+        /// <param name="subject"></param>
+        public void SelectSubject(string subject)
+        {
+            if (!string.IsNullOrEmpty(subject))
             {
                 IWebElement expandBtn = Browser.FindElementById("Subjects_ShowHideBtn");
                 expandBtn.Click();
 
-				IWebElement tr = Browser.WaitForElement(b => b.FindElements(By.XPath("//table[@id='Subjects_FrontEndCBList']/tbody/tr")).FirstOrDefault(x => x.Text == args.Subject));
+                IWebElement tr = Browser.TryFindElementBy(b => b.FindElements(By.XPath("//table[@id='Subjects_FrontEndCBList']/tbody/tr")).FirstOrDefault(x => x.Text == subject));
 
                 tr.Checkboxes()[0].Click();
             }
-
-
-            ClickLink("Save");
-            return new FileRequestPage();
         }
 
         public override string URL

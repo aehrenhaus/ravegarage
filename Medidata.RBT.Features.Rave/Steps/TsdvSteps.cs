@@ -16,10 +16,31 @@ namespace Medidata.RBT.Features.Rave
             Assert.IsTrue(isSubjectRandomized, "Subjects enrolled sequentially");
         }
 
+		[StepDefinition(@"I verify every (.*) rows of subjects in (.*) rows do not have tiers pattern")]
+		public void IVerifyEvery____RowsOfSubjectsIn____RowsDoNotHaveTiersPattern(int rowsOfGroup, int rowsTotal)
+		{
+			CurrentPage.As<SubjectOverridePage>().AsserEachGroupOfSubjectsHaveDifferentTierNames(rowsOfGroup, rowsTotal);
+		}
+
+
+		[StepDefinition(@"I verify that every ""(.*)"" subjects has a pattern of")]
+		public void GivenIVerifyThatEverySubjectsHasAPatternOf(int blockSize, Table table)
+		{
+			CurrentPage.As<SubjectOverridePage>().CheckRepeatPattern(blockSize, table.CreateSet<TierPattern>());
+		}
+
+
+
         [StepDefinition(@"I filter by site ""([^""]*)""")]
         public void IFilterBySite____(string siteName)
         {
             CurrentPage.As<SubjectManagementPageBase>().FilterBySite(siteName);
+        }
+
+        [StepDefinition(@"I filter by site group ""([^""]*)""")]
+        public void IFilterBySiteGroup____(string siteGroupName)
+        {
+            CurrentPage.As<SubjectManagementPageBase>().FilterBySiteGroup(siteGroupName);
         }
 
         [StepDefinition(@"I include ([^""]*) subjects in TSDV")]
@@ -60,7 +81,7 @@ namespace Medidata.RBT.Features.Rave
         [StepDefinition(@"I delete the tier ""([^""]*)"" from plan")]
         public void IDeleteTier____FromPlan(string tierName)
         {
-            CurrentPage.As<StudyBlockPlansPage>().DeleteTier(tierName);
+			CurrentPage.As<BlockPlansPageBase>().DeleteTier(tierName);
         }
 
         /// <summary>
@@ -72,8 +93,17 @@ namespace Medidata.RBT.Features.Rave
         [StepDefinition(@"I select the tier ""([^""]*)"" and Subject Count ""([^""]*)""")]
         public void ISelectTier____AndSubjectCount____(string tierName, string subjectCount)
         {
-            CurrentPage.As<StudyBlockPlansPage>().ApplyTierWithSubjectCount(tierName, subjectCount);
+          
+			CurrentPage.As<BlockPlansPageBase>().ApplyTierWithSubjectCount(tierName, subjectCount);
+           
         }
+
+
+		[StepDefinition(@"I remove all custom tiers")]
+		public void IRemoveAllCustomTiers()
+		{
+			CurrentPage.As<TiersPage>().RemoveTiers();
+		}
 
 
         /// <summary>
@@ -98,9 +128,8 @@ namespace Medidata.RBT.Features.Rave
         [StepDefinition(@"I create a new block plan named ""([^""]*)"" with Data entry Role ""([^""]*)""")]
         public void ICreateANewBlockPlanNamed____WithDataEntryRole____(string planName, string dataEntryRole)
         {
-            CurrentPage.As<BlockPlansPageBase>().CreateNewBlockPlan(planName, dataEntryRole);
+              CurrentPage.As<BlockPlansPageBase>().CreateNewBlockPlan(planName, dataEntryRole);
         }
-
 
     }
 }

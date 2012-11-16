@@ -1,0 +1,108 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+	<head>
+		<title>Write a new step definition</title>
+	</head>
+	<link rel="stylesheet" href="site.css" type="text/css" />
+	<body>
+	
+		<h1>
+			 Write a new step definition</h1>
+		<p>
+			In the <a href="02%20Create%20and%20run%20a%20feature.htm">previous example</a>, you created a new feature file.
+			<br />
+			And there is only 1 scenario in the feature file.<br />
+			And there is only 1 step in the scenario.<br />
+			And the step has a definition, you can verify this by right clicking the step 
+			and &#39;Go to definition&#39; (or just F12)<br />
+			<img src="Write your first step definition/Go to definition.jpg" alt="test view" /><br />
+			When you run the test, it will take you to the specified url. ( this is the 
+			expected behavior of the step)</p>
+		<p>
+			In this part, you will write a step that does not have definition, and write one 
+			yourelf. <br />
+			
+		</p>
+		<ol>
+			
+			<li>Add a new line in the previous feature file:<br />
+				Feature: My feature title
+				<br />
+&nbsp;&nbsp;&nbsp; Description line 1
+				<br />
+				Scenario: my scenario title
+				<br />
+&nbsp;&nbsp;&nbsp; Given I navigate to url &quot;<a href="http://www.bing.com">http://www.bing.com</a>&quot;
+				<br />
+&nbsp;&nbsp;&nbsp; And I bla bla</li>
+			<li>Run your test, in the report window, click &#39;show&#39;<br />
+				You will see the test failed because of the step does not have a definition<br />
+				<img src="Write your first step definition/failed.jpg" /></li>
+			<li>Copy the suggested code block , paste it in MiscSteps.cs in Medidata.RBT.Common.Steps 
+				project<br />
+				<img src="Write your first step definition/suggested code.jpg" /></li>
+			<li>Make a break point on the step<br />
+				<img src="Write your first step definition/breakpoint.jpg" /></li>
+			<li>This time, in Test View, <strong>debug</strong> the test.<br />
+				You will see it hitting the break point and press F11 to goto the stepdefinition<br />
+				<img src="Write your first step definition/hitbreakpoint.jpg" /></li>
+			<li>The test shall fail on line <strong>ScenarioContext.Current.Pending();</strong><br />
+			Because you are supposed to remove the line and add your logic here.
+
+			</li>
+			<li>Let&#39;s remove the line, and add:
+				<br />
+				CurrentPage.ClickLink(&quot;IMAGES&quot;);<br />
+				Run the test again to see it pass this time.</li>
+			<li><strong>Given</strong> <strong>When</strong> and <strong>Then</strong> attribute<br />
+				There are 4 kinds of attributes mark a method as a step definition.<br />
+				Given Then When StepDefinition<br />
+				&#39;Given&#39; only match the steps that start with &#39;Given&#39; or &#39;And&#39; after previous 
+				&#39;Given&#39;<br />
+				<br />
+				In the example,&#39; <strong>And</strong> I bla bla&#39; is equal to <strong>&#39;Given</strong> 
+                I bla bla&#39; because the &#39;And&#39; line follows the &#39;Given&#39; line<br />
+				Hence the [Given(@&quot;I bla bla&quot;)] attribute will match this line&nbsp; <strong>
+				&quot;And</strong> I bla bla&quot;<br />
+				<br />
+				Same thing to the When and Then<br />
+				<strong>StepDefinition</strong> attribute can match all 3 cases.
+				<br />
+				We often mark step definition method with attribute <strong>StepDefinition</strong>&nbsp; 
+				instead of the other 3, so in the feature file we can use any of Given When Then 
+				to start a line.<br />
+
+			</li>
+		</ol>
+	
+		<h2>
+			Guidelines for choosing which step to use</h2>
+		<ul>
+			<li>Prefer using existing steps than creating a new step.<br />
+				<br />
+				For example if you want to verify the study dropdown exists, use the common 
+				step:<br />
+				<strong>I verify control &quot;Study&quot; exists</strong><br />
+				Don&#39;t write your step:<strong>
+				<br />
+				I verify the study dropdown exists.</strong><br />
+				<br />
+				To programmerStep definition method can be very adaptive because in most cases it is calling 
+                methods defined on interfaces. The methods have default implementation, but you 
+			    can override them if you want to change the behavior a little bit.&nbsp; See <a href="05 Page object pattern.htm"> 05 
+                Page object pattern</a> for more details</li>
+			<li>If you have to create a new step, prefer writing a common step def than writing 
+                a domain specific step</li>
+			<li>Finally, if you have to write a new domain specific step, the literal should be very specifc to 
+				describe your domain-specific problem. Don&#39;t let it looks like a common method.</li>
+		</ul>
+	
+		<p>
+			&nbsp;</p>
+		<p>
+			&nbsp;</p>
+		<p>
+			&nbsp;</p>
+	
+	</body>
+</html>

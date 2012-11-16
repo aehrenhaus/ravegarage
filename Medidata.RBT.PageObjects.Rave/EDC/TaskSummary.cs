@@ -15,8 +15,8 @@ namespace Medidata.RBT.PageObjects.Rave
         public TaskSummary(IPage page) 
             : base(page)
         {
-            _rootElement = base.Page.Browser.WaitForElement(
-                By.XPath("//span[@id='_ctl0_Content_TsBox_CBoxC']/../../../../.."),
+            _rootElement = base.Page.Browser.TryFindElementBy(
+                By.XPath("//span[@id='_ctl0_Content_TsBox_CBoxC']/../../../../.."),true,
                 timeOutSecond: 10);
         }
 
@@ -40,8 +40,7 @@ namespace Medidata.RBT.PageObjects.Rave
                 element.Click();
 
                 //Make sure this table is loaded in before anything else is accessed within it
-                base.Page.Browser.WaitForElement(
-                    By.XPath("//span[@id='_ctl0_Content_TsBox_CBoxC']/table"));
+                base.Page.Browser.TryFindElementByXPath("//span[@id='_ctl0_Content_TsBox_CBoxC']/table");
             }
         }
         public void Collapse()

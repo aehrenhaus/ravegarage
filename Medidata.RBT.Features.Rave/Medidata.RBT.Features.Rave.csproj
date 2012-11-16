@@ -45,6 +45,9 @@
     <Reference Include="Newtonsoft.Json">
       <HintPath>..\ExternalDlls\Newtonsoft.Json.dll</HintPath>
     </Reference>
+    <Reference Include="Selenium.WebDriverBackedSelenium">
+      <HintPath>..\ExternalDlls\Selenium.WebDriverBackedSelenium.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.configuration" />
     <Reference Include="System.Core">
@@ -54,8 +57,12 @@
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Xml.Linq" />
-    <Reference Include="TechTalk.SpecFlow">
-      <HintPath>..\ExternalDlls\TechTalk.SpecFlow.dll</HintPath>
+    <Reference Include="TechTalk.SpecFlow, Version=1.9.0.77, Culture=neutral, PublicKeyToken=0778194805d6db41, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\SpecFlow.1.9.0\lib\net35\TechTalk.SpecFlow.dll</HintPath>
+    </Reference>
+    <Reference Include="ThoughtWorks.Selenium.Core">
+      <HintPath>..\ExternalDlls\ThoughtWorks.Selenium.Core.dll</HintPath>
     </Reference>
     <Reference Include="WebDriver">
       <HintPath>..\ExternalDlls\WebDriver.dll</HintPath>
@@ -94,6 +101,11 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>US17943.feature</DependentUpon>
+    </Compile>
+    <Compile Include="Features\Configuration\US13011_DT13976_Upload.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>US13011_DT13976_Upload.feature</DependentUpon>
     </Compile>
     <Compile Include="Features\EDC\564QueryRefiringLogging8_M.feature.cs">
       <AutoGen>True</AutoGen>
@@ -141,9 +153,19 @@
       <DependentUpon>US12994_DT10991.feature</DependentUpon>
     </Compile>
     <Compile Include="Features\EDC\US18745_DT11148_AddEvents.feature.cs">
+      <DependentUpon>US18745_DT11148_AddEvents.feature</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
+    <Compile Include="Features\EDC\US18784_DT14321.feature.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>US18745_DT11148_AddEvents.feature</DependentUpon>
+      <DependentUpon>US18784_DT14321.feature</DependentUpon>
+    </Compile>
+    <Compile Include="Features\EDC\US19302_DT14205.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>US19302_DT14205.feature</DependentUpon>
     </Compile>
     <Compile Include="Features\Labs\US18087_DT14073.feature.cs">
       <AutoGen>True</AutoGen>
@@ -245,6 +267,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>US18358_DT14073.feature</DependentUpon>
     </Compile>
+    <Compile Include="Features\PDF\DT11249_US12607_US19066_DataPDF_Automated.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DT11249_US12607_US19066_DataPDF_Automated.feature</DependentUpon>
+    </Compile>
     <Compile Include="Features\PDF\US12175_DT8545_lessthangreaterthaninPDF.feature.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -330,6 +357,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>EDCTabOrderUntouchedPortraitLogForm.feature</DependentUpon>
     </Compile>
+    <Compile Include="Features\TSDV\US18689.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>US18689.feature</DependentUpon>
+    </Compile>
     <Compile Include="Features\TSDV\US18812.feature.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -380,6 +412,8 @@
     </Compile>
     <Compile Include="Steps\EDCSteps.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="StringReplacement\MaxSubjectNumReplace.cs" />
+    <Compile Include="StringReplacement\NextSubjectNumReplace.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Medidata.RBT.Common.Steps\Medidata.RBT.Common.Steps.csproj">
@@ -403,6 +437,7 @@
     <None Include="App.config">
       <SubType>Designer</SubType>
     </None>
+    <None Include="App.config.template" />
     <None Include="Features\AM2\US12996_AM2_DT13997StandardField.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>US12996_AM2_DT13997StandardField.feature.cs</LastGenOutput>
@@ -422,6 +457,10 @@
     <None Include="Features\Architect\US17943.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>US17943.feature.cs</LastGenOutput>
+    </None>
+    <None Include="Features\Configuration\US13011_DT13976_Upload.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>US13011_DT13976_Upload.feature.cs</LastGenOutput>
     </None>
     <None Include="Features\EDC\564QueryRefiringLogging8_M.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
@@ -451,9 +490,21 @@
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>US10242_DT13576.feature.cs</LastGenOutput>
     </None>
+    <None Include="Features\EDC\US12994_DT10991.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>US12994_DT10991.feature.cs</LastGenOutput>
+    </None>
     <None Include="Features\EDC\US18745_DT11148_AddEvents.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>US18745_DT11148_AddEvents.feature.cs</LastGenOutput>
+    </None>
+    <None Include="Features\EDC\US18784_DT14321.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>US18784_DT14321.feature.cs</LastGenOutput>
+    </None>
+    <None Include="Features\EDC\US19302_DT14205.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>US19302_DT14205.feature.cs</LastGenOutput>
     </None>
     <None Include="Features\Labs\US18087_DT14073.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
@@ -466,10 +517,6 @@
     <None Include="Features\Configuration\US13011_DT13976_AddCoderToConfigurationLoaderSpec.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>US13011_DT13976_AddCoderToConfigurationLoaderSpec.feature.cs</LastGenOutput>
-    </None>
-    <None Include="Features\Labs\US18358_DT14073.feature">
-      <Generator>SpecFlowSingleFileGenerator</Generator>
-      <LastGenOutput>US18358_DT14073.feature.cs</LastGenOutput>
     </None>
     <None Include="Features\EDC\US13021_DT12734.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
@@ -486,10 +533,6 @@
     <None Include="Features\EDC\US17701_DT13437.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>US17701_DT13437.feature.cs</LastGenOutput>
-    </None>
-    <None Include="Features\EDC\US12994_DT10991.feature">
-      <Generator>SpecFlowSingleFileGenerator</Generator>
-      <LastGenOutput>US12994_DT10991.feature.cs</LastGenOutput>
     </None>
     <None Include="Features\EDC\US17415_DT14115.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
@@ -514,6 +557,14 @@
     <None Include="Features\EDC\US17943.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>US17943.feature.cs</LastGenOutput>
+    </None>
+    <None Include="Features\Labs\US18358_DT14073.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>US18358_DT14073.feature.cs</LastGenOutput>
+    </None>
+    <None Include="Features\PDF\DT11249_US12607_US19066_DataPDF_Automated.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>DT11249_US12607_US19066_DataPDF_Automated.feature.cs</LastGenOutput>
     </None>
     <None Include="Features\PDF\US12175_DT8545_lessthangreaterthaninPDF.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
@@ -615,6 +666,10 @@
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>US11306_DT13637.feature.cs</LastGenOutput>
     </None>
+    <None Include="Features\TSDV\US18689.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>US18689.feature.cs</LastGenOutput>
+    </None>
     <None Include="Features\TSDV\US18812.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>US18812.feature.cs</LastGenOutput>
@@ -627,15 +682,15 @@
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>DT14168.feature.cs</LastGenOutput>
     </None>
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="TableModels\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PreBuildEvent>echo Starting to generate SpecFlow unit tests
-SpecFlow generateAll "$(ProjectPath)"  /force /verbose
-echo Finished generating SpecFlow unit tests</PreBuildEvent>
+    <PreBuildEvent>
+    </PreBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

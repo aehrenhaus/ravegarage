@@ -71,9 +71,13 @@ namespace Medidata.RBT.PageObjects.Rave
 				var link = rows[0].FindElement(By.LinkText("Help"));
 				link.Click();
 
-				TestContext.SwitchToSecondBrowserWindow();
+				Browser.SwitchToSecondBrowserWindow();
+				TestContext.CurrentPage = TestContext.POFactory.GetPageByUrl(new Uri(Browser.Url));
+
 				Assert.AreEqual(Browser.Url, report.URLAddress,"Url is different than expected");
-				TestContext.SwitchToMainBrowserWindow(true);
+
+				Browser.SwitchToMainBrowserWindow(true);
+				TestContext.CurrentPage = TestContext.POFactory.GetPageByUrl(new Uri(Browser.Url));
 			}
 		}
 
@@ -101,9 +105,14 @@ namespace Medidata.RBT.PageObjects.Rave
 				link.Click();
 				this.ClickLink("View Report Help");
 
-				TestContext.SwitchToSecondBrowserWindow();
+				Browser.SwitchToSecondBrowserWindow();
+				TestContext.CurrentPage = TestContext.POFactory.GetPageByUrl(new Uri(Browser.Url));
+
 				Assert.AreEqual(Browser.Url, report.URLAddress,"Url is different than expected");
-				TestContext.SwitchToMainBrowserWindow(true);
+
+				Browser.SwitchToMainBrowserWindow(true);
+				TestContext.CurrentPage = TestContext.POFactory.GetPageByUrl(new Uri(Browser.Url));
+
 				this.GoBack();
 
 				//refresh the Selenium object , because page changed

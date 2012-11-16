@@ -16,5 +16,6 @@ namespace Medidata.RBT.PageObjects.Rave.Configuration
         public string Form { get; set; }
         public string Field { get; set; }
         public string Draft { get; set; }
+        public int LinesPerPage { get; set; }
     }
 }

@@ -9,7 +9,7 @@ Feature: QueryRefiringLogic4tgt
 	So that I don't have to re-enter the exact same response
 
 Background:
-    Given I am logged in to Rave with username "defuser" and password "password"
+    Given I login to Rave with user "defuser" and password "password"
 	And following Study assignments exist
 		| User   | Study          | Role | Site   | Site Number |
 		| User 1 | Standard Study | cdm1 | Site 1 | S100        |

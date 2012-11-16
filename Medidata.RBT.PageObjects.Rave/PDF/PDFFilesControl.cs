@@ -22,20 +22,23 @@ namespace Medidata.RBT.PageObjects.Rave
 
         public void DeletePDF(string name)
         {
-            int foundOnPage;
+            int foundOnPage = 0;
             Table dt = new Table("Name");
             dt.AddRow(name);
-
+            
             IWebElement pdfTr = this.FindInPaginatedList("", () =>
             {
-                HtmlTable table = TestContext.Browser.WaitForElement("_ctl0_Content_Results").EnhanceAs<HtmlTable>();
+				HtmlTable table = TestContext.Browser.Table("_ctl0_Content_Results");
                 return table.FindMatchRows(dt).FirstOrDefault();
             }, out foundOnPage);
 
-            EnhancedElement deleteButton = pdfTr.FindImagebuttons().FirstOrDefault(x => x.GetAttribute("id").EndsWith("Delete"));
+            if (pdfTr != null)
+            {
+                EnhancedElement deleteButton = pdfTr.FindImagebuttons().FirstOrDefault(x => x.GetAttribute("id").EndsWith("Delete"));
 
-            deleteButton.Click();
-            ((FileRequestPage)Page).GetAlertWindow().Accept();
+                deleteButton.Click();
+                ((FileRequestPage)Page).GetAlertWindow().Accept();
+            }
         }
 
         #region IPaginatedPage
@@ -44,10 +47,10 @@ namespace Medidata.RBT.PageObjects.Rave
         int pageIndex = 1;
         int count = 0;
         int lastValue = -1;
-
+		public int CurrentPageNumber { get; private set; }
         public bool GoNextPage(string areaIdentifer)
         {
-            HtmlTable table = TestContext.Browser.WaitForElement("_ctl0_Content_Results").EnhanceAs<HtmlTable>();
+            HtmlTable table = TestContext.Browser.TryFindElementByPartialID("Content_Results").EnhanceAs<HtmlTable>();
             IWebElement pageTable = table.FindElement(By.XPath(".//tr[@align='center']"));
             ReadOnlyCollection<IWebElement> pageLinks = pageTable.FindElements(By.XPath(".//a|.//span"));
 

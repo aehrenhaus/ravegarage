@@ -16,7 +16,7 @@ Feature: US12994_DT10991
 	So that I can use the Rave lab features of out of range flagging, clinical significance prompts, and lab clinical view
 
 Background:
-    Given I am logged in to Rave with username "defuser" and password "password"
+    Given I login to Rave with user "defuser" and password "password"
 	#And following Project assignments exist
 	#	| User    | Project         | Environment | Role | Site                                   | Site Number |
 	#	| Defuser | US12994_DT10991 | Prod        | CDM1 | Latest Date Site                       | LDS1        |

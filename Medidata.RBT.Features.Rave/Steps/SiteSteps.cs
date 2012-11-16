@@ -21,7 +21,7 @@ namespace Medidata.RBT.Features.Rave.Steps.Seeding
         [StepDefinition(@"Site ""([^""]*)"" exists")]
         public void Site____Exists(string siteName)
         {
-            TestContext.GetExistingFeatureObjectOrMakeNew(siteName, () => new Site(siteName, true, ""));
+            TestContext.GetExistingFeatureObjectOrMakeNew(siteName, () => new Site(siteName, ""));
         }
 
         /// <summary>
@@ -30,11 +30,19 @@ namespace Medidata.RBT.Features.Rave.Steps.Seeding
         /// <param name="siteName">The name that the site is referred to as in the feature file</param>
         /// <param name=siteGroup">The name that the site group is referred to as in the feature file</param>
         [StepDefinition(@"Site ""([^""]*)"" with Site Group ""([^""]*)"" exists")]
-        public void Site____Exists(string siteName, string siteGroup)
+        public void Site____WithSiteGroup____Exists(string siteName, string siteGroup)
         {
-            SiteGroup sg = TestContext.GetExistingFeatureObjectOrMakeNew(siteGroup, () => new SiteGroup(siteGroup, true));
-            TestContext.GetExistingFeatureObjectOrMakeNew(siteName, () => new Site(siteName, true, sg.UniqueName));
+            SiteGroup sg = TestContext.GetExistingFeatureObjectOrMakeNew(siteGroup, () => new SiteGroup(siteGroup));
+            var site = TestContext.GetExistingFeatureObjectOrMakeNew(siteName, () => new Site(siteName, sg.UniqueName));
         }
+
+		[StepDefinition(@"Site ""(.*)"" with number \((.*)\) and Site Group ""(.*)"" exists")]
+		public void Site____WithNumber____AndSiteGroup____Exists(string siteName, string siteNumber, string siteGroup)
+		{
+			SiteGroup sg = TestContext.GetExistingFeatureObjectOrMakeNew(siteGroup, () => new SiteGroup(siteGroup));
+			var site = TestContext.GetExistingFeatureObjectOrMakeNew(siteName, () => new Site(siteName, sg.UniqueName, siteNumber));
+		}
+
 
         /// <summary>
         /// Asign a study to a site
@@ -56,15 +64,21 @@ namespace Medidata.RBT.Features.Rave.Steps.Seeding
         [StepDefinition(@"study ""([^""]*)"" is assigned to Site ""([^""]*)"" with study environment ""([^""]*)""")]
         public void Study____IsAssignedToSite____WithStudyEnvironment____(string studyName, string siteName, string studyEnvName)
         {
-            TestContext.CurrentPage = new SiteAdministrationHomePage().NavigateToSelf();
-            Site site = TestContext.GetExistingFeatureObjectOrMakeNew(siteName, () => new Site(siteName, true));
-            if (site.StudyUIDs == null || !site.StudyUIDs.Contains(site.UID.Value))
+            Site site = TestContext.GetExistingFeatureObjectOrMakeNew(siteName, () => new Site(siteName));
+			Project project = TestContext.GetExistingFeatureObjectOrMakeNew(studyName, () => new Project(studyName));
+
+			if (!site.Studies.Contains(project.UniqueName))
             {
-                TestContext.CurrentPage = new SiteAdministrationHomePage().NavigateToSelf();
-                CurrentPage.As<SiteAdministrationHomePage>().SearchForSite(site.UniqueName);
-                CurrentPage.As<SiteAdministrationHomePage>().ClickSite(site.UniqueName);
-                Project project = TestContext.GetExistingFeatureObjectOrMakeNew(studyName, () => new Project(studyName));
-                CurrentPage.As<SiteAdministrationDetailsPage>().LinkStudyWithSite(site, project.UniqueName, studyEnvName);
+				site.Studies.Add(project.UniqueName);
+
+				
+				var page = new SiteAdministrationHomePage();
+				page.NavigateToSelf();
+				page.SearchForSite(site.UniqueName);
+				page.ClickSite(site.UniqueName);
+		
+                
+                CurrentPage.As<SiteAdministrationDetailsPage>().LinkStudyWithSite( project.UniqueName, studyEnvName);
             }
         }
 
@@ -75,7 +89,7 @@ namespace Medidata.RBT.Features.Rave.Steps.Seeding
         public void ISearchForSite__(string siteName)
         {
             var currentPage  = CurrentPage.As<SiteAdministrationHomePage>();
-            currentPage.SearchForSite(siteName);            
+            currentPage.SearchForSite(TestContext.GetExistingFeatureObjectOrMakeNew<Site>(siteName, () => new Site(siteName)).UniqueName);            
         }
 
         /// <summary>
@@ -85,7 +99,7 @@ namespace Medidata.RBT.Features.Rave.Steps.Seeding
         public void ISelectSiteDetailsForSite__(string siteName)
         {
             var currentPage = CurrentPage.As<SiteAdministrationHomePage>();
-            currentPage.ClickSite(siteName);
+            currentPage.ClickSite(TestContext.GetExistingFeatureObjectOrMakeNew<Site>(siteName, () => new Site(siteName)).UniqueName);
         }
 
 
@@ -96,7 +110,7 @@ namespace Medidata.RBT.Features.Rave.Steps.Seeding
         public void ISelect__ForStudy__inEnvironment__(string elementName, string studyName, string environment)
         {
             var currentPage = CurrentPage.As<SiteAdministrationDetailsPage>();
-            currentPage.SelectElementInStudySite(elementName, studyName, environment);
+            currentPage.SelectElementInStudySite(elementName, TestContext.GetExistingFeatureObjectOrMakeNew<Project>(studyName, () => new Project(studyName)).UniqueName, environment);
 
         }
 

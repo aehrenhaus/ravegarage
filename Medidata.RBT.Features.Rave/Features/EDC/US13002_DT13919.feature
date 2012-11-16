@@ -8,7 +8,7 @@ Feature: US13002_DT13919
 # When data is entered into a field on a log form that has a Dynamic Search List, and the drop-down list that displays matching results is clicked, it takes a long time to display matching results.
 
 Background:
-	Given I am logged in to Rave with username "defuser" and password "password"
+	Given I login to Rave with user "defuser" and password "password"
 	#And the following Project assignments exist
 	#	 | User    | Project | Environment | Role | Site       | Site Number |
 	#	 | defuser | L1WP-GT | Prod        | cdm1 | Site 1     | S100        |
@@ -892,8 +892,7 @@ Scenario: PB_US13002_02 As a Study Coordinator, when I enter data into a Dynamic
 	And I wait for 3 seconds
 	Then I should see dynamic search list "Adverse Event Grade" in log line 1 open
 	And I take a screenshot
-	And I navigate to "Home"
-	And I accept alert window
+	And I cancel the CRF page
 
 #----------------------------------------------------------------------------------------------------------------------------------------
 @release_564_2012.1.0	
@@ -929,6 +928,7 @@ Scenario: PB_US13002_04 As a Study Coordinator, when I click the drop-down list 
 	And I select link "First Pass"
 	And I select link "New Batch"
 	And I choose "L1WP-GT" from "Study"
+	And I choose "Prod" from "Environment"
 	And I choose "Site 13919" from "Site"
 	And I type "SUB {RndNum<num4>(5)}" in "Subject"
 	And I choose "Subject Enrollment Form" from "Form"
@@ -947,9 +947,14 @@ Scenario: PB_US13002_04 As a Study Coordinator, when I click the drop-down list 
 		| Field | Data |
 		| Visit | 3    |
 
-	And I am logged in to Rave with username "Defuser01" and password "password"
+	And I login to Rave with user "Defuser01" and password "password"
 	And I navigate to "DDE"
 	And I select link "Second Pass"
+	And I choose "L1WP-GT" from "Study"
+	And I choose "Site 13919" from "Site"
+	And I type "SUB {Var(num4)}" in "Subject"
+	And I choose "Subject Enrollment Form" from "Form"
+	And I click button "Locate"
 	And I enter data in DDE and save
 		| Field         | Data            |
 		| Datacenter ID | SUB {Var(num4)} |

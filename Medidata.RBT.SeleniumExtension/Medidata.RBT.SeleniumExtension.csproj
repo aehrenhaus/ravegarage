@@ -34,6 +34,9 @@
     <Reference Include="Newtonsoft.Json">
       <HintPath>..\ExternalDlls\Newtonsoft.Json.dll</HintPath>
     </Reference>
+    <Reference Include="Selenium.WebDriverBackedSelenium">
+      <HintPath>..\ExternalDlls\Selenium.WebDriverBackedSelenium.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
@@ -43,8 +46,12 @@
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
-    <Reference Include="TechTalk.SpecFlow">
-      <HintPath>..\ExternalDlls\TechTalk.SpecFlow.dll</HintPath>
+    <Reference Include="TechTalk.SpecFlow, Version=1.9.0.77, Culture=neutral, PublicKeyToken=0778194805d6db41, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\SpecFlow.1.9.0\lib\net35\TechTalk.SpecFlow.dll</HintPath>
+    </Reference>
+    <Reference Include="ThoughtWorks.Selenium.Core">
+      <HintPath>..\ExternalDlls\ThoughtWorks.Selenium.Core.dll</HintPath>
     </Reference>
     <Reference Include="WebDriver">
       <HintPath>..\ExternalDlls\WebDriver.dll</HintPath>
@@ -54,12 +61,13 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="SearchContext_EnhancedControls.cs" />
     <Compile Include="EnhancedControls\Checkbox.cs" />
     <Compile Include="EnhancedControls\Option.cs" />
     <Compile Include="EnhancedControls\RadioButton.cs" />
     <Compile Include="EnhancedControls\Hyperlink.cs" />
     <Compile Include="SeleniumConfiguration.cs" />
-    <Compile Include="SearchContext.cs" />
+    <Compile Include="SearchContext_TryFindAndWait.cs" />
     <Compile Include="WebDriverExtend.cs" />
     <Compile Include="WebElement.cs" />
     <Compile Include="EnhancedControls\HtmlTable.cs" />

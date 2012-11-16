@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Medidata.RBT.SeleniumExtension;
 using TechTalk.SpecFlow;
 using Medidata.RBT.PageObjects.Rave;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -449,13 +450,13 @@ namespace Medidata.RBT.Features.Rave
         [StepDefinition(@"the browser scrolls to the right")]
         public void TheBrowserScrollsToTheRight()
         {
-            Assert.AreNotEqual(0, CurrentPage.As<CRFPage>().GetPageOffsetX());
+			Assert.AreNotEqual(0, Browser.GetPageOffsetX());
         }
 
         [StepDefinition(@"the browser scrolls down")]
         public void TheBrowserScrollsDown()
         {
-            Assert.AreNotEqual(0, CurrentPage.As<CRFPage>().GetPageOffsetY());
+			Assert.AreNotEqual(0, Browser.GetPageOffsetY());
         }
 
         [StepDefinition(@"move cursor focus to ""([^""]*)"" in the column labeled ""([^""]*)"" in the ""([^""]*)"" position in the ""([^""]*)"" row")]
@@ -532,7 +533,7 @@ namespace Medidata.RBT.Features.Rave
         public void ISignTheFormWithUsername____(string userName)
         {
             User user = TestContext.GetExistingFeatureObjectOrMakeNew(
-                userName, () => new User(userName, false));
+                userName, () => new User(userName));
             new SignatureBox().Sign(user.UniqueName, user.Password);
         }
 
@@ -633,5 +634,12 @@ namespace Medidata.RBT.Features.Rave
         {
             CurrentPage.As<SubjectPage>().ExpandTask(header);
         }
+
+		[StepDefinition(@"I verify only ""(.*)"" Form ""(.*)"" is displayed")]
+		public void IVerifyOnly____Form____IsDisplayed(int formCount, string formName)
+		{
+			CurrentPage.As<CRFPage>().CheckFormCount(formName, formCount);
+		}
+
     }
 }

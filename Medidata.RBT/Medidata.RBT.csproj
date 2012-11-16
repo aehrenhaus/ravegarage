@@ -37,12 +37,18 @@
     <Reference Include="ICSharpCode.SharpZipLib">
       <HintPath>..\ExternalDlls\ICSharpCode.SharpZipLib.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.Office.Interop.Excel, Version=12.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
     <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
     <Reference Include="Newtonsoft.Json">
       <HintPath>..\ExternalDlls\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="O2S.Components.PDF4NET">
       <HintPath>..\ExternalDlls\O2S.Components.PDF4NET.dll</HintPath>
+    </Reference>
+    <Reference Include="Selenium.WebDriverBackedSelenium">
+      <HintPath>..\ExternalDlls\Selenium.WebDriverBackedSelenium.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.configuration" />
@@ -53,8 +59,12 @@
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
-    <Reference Include="TechTalk.SpecFlow">
-      <HintPath>..\ExternalDlls\TechTalk.SpecFlow.dll</HintPath>
+    <Reference Include="TechTalk.SpecFlow, Version=1.8.1.0, Culture=neutral, PublicKeyToken=0778194805d6db41, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\SpecFlow.1.9.0\lib\net35\TechTalk.SpecFlow.dll</HintPath>
+    </Reference>
+    <Reference Include="ThoughtWorks.Selenium.Core">
+      <HintPath>..\ExternalDlls\ThoughtWorks.Selenium.Core.dll</HintPath>
     </Reference>
     <Reference Include="WebDriver">
       <HintPath>..\ExternalDlls\WebDriver.dll</HintPath>
@@ -65,18 +75,23 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BrowserStepsBase.cs" />
-    <Compile Include="Constants.cs" />
-    <Compile Include="EnumHelper.cs" />
-    <Compile Include="ExcelFileHelper.cs" />
-    <Compile Include="FileHelper.cs" />
+    <Compile Include="Helpers\ConsoleWriterSetup.cs" />
+    <Compile Include="Helpers\Constants.cs" />
+    <Compile Include="Helpers\EnumHelper.cs" />
+    <Compile Include="Helpers\ExcelFileHelper.cs" />
+    <Compile Include="Helpers\ExcelWorkbook.cs" />
+    <Compile Include="Helpers\FileHelper.cs" />
+    <Compile Include="Helpers\FilteredConsoleWriter.cs" />
+    <Compile Include="Helpers\MultipleStreamWriter.cs" />
+    <Compile Include="PageObjectInterfaces\AbstractPaginationControl.cs" />
     <Compile Include="PageObjectInterfaces\EmptyPage.cs" />
     <Compile Include="PageObjectInterfaces\EmptyPOFactory.cs" />
-    <Compile Include="SharedObjects\IFeatureObject.cs" />
     <Compile Include="Misc.cs" />
     <Compile Include="Factory.cs" />
+    <Compile Include="PageObjectInterfaces\IHavePaginationControl.cs" />
     <Compile Include="SharedObjects\IRemoveableObject.cs" />
     <Compile Include="PageObjectInterfaces\ControlBase.cs" />
-    <Compile Include="DbHelper.cs" />
+    <Compile Include="Helpers\DbHelper.cs" />
     <Compile Include="PageObjectInterfaces\ICanVerifyInOrder.cs" />
     <Compile Include="PageObjectInterfaces\ICanHighlight.cs" />
     <Compile Include="PageObjectInterfaces\IPageObjectFactory.cs" />
@@ -90,15 +105,15 @@
     <Compile Include="PDF.cs" />
     <Compile Include="RBTConfiguration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SharedObjects\ISeedableObject.cs" />
+    <Compile Include="SharedObjects\SeedDecision.cs" />
     <Compile Include="StringReplacement\InreaseNumReplace.cs" />
     <Compile Include="StringReplacement\DateFReplace.cs" />
     <Compile Include="StringReplacement\DateReplace.cs" />
     <Compile Include="StringReplacement\RndNumReplace.cs" />
-    <Compile Include="StringReplacement\MaxSubjectNumReplace.cs" />
     <Compile Include="StringReplacement\VarReplace.cs" />
     <Compile Include="StringReplacement\SpecialStringHelper.cs" />
     <Compile Include="StringReplacement\IStringReplace.cs" />
-    <Compile Include="StringReplacement\NextSubjectNumReplace.cs" />
     <Compile Include="TemporalID.cs" />
     <Compile Include="TestContext.cs" />
   </ItemGroup>
@@ -108,7 +123,26 @@
       <Name>Medidata.RBT.SeleniumExtension</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <COMReference Include="Microsoft.Office.Core">
+      <Guid>{2DF8D04C-5BFA-101B-BDE5-00AA0044DE52}</Guid>
+      <VersionMajor>2</VersionMajor>
+      <VersionMinor>4</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="VBIDE">
+      <Guid>{0002E157-0000-0000-C000-000000000046}</Guid>
+      <VersionMajor>5</VersionMajor>
+      <VersionMinor>3</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

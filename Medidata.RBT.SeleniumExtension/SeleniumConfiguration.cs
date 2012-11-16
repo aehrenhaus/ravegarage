@@ -23,5 +23,15 @@ namespace Medidata.RBT.SeleniumExtension
 			get { return (int)this["WaitElementTimeout"]; }
 			set { this["WaitElementTimeout"] = value; }
         }
+
+
+		[ConfigurationProperty("WaitByDefault", DefaultValue = true, IsRequired = false)]
+		public bool WaitByDefault
+		{
+			get { return (bool)this["WaitByDefault"]; }
+			set { this["WaitByDefault"] = value; }
+		}
+	
+
 	}
 }

@@ -17,8 +17,52 @@ namespace Medidata.RBT.PageObjects.Rave
 
         public IPage FilterBySite(string sitename)
         {
-            Site site = TestContext.GetExistingFeatureObjectOrMakeNew(sitename, () => new Site(sitename, false));
-            ChooseFromDropdown("Select Site", site.UniqueName + ": " + site.Number);
+ 
+            Site site = TestContext.GetExistingFeatureObjectOrMakeNew(sitename, () => new Site(sitename));
+            ChooseFromDropdown("Select Site", site.UniqueName);
+           
+           
+            var search = GetElementByName("Search");
+            search.Click();
+            return this;
+        }
+
+		public override IWebElement GetElementByName(string identifier, string areaIdentifier = null, string listItem = null)
+		{
+			if (identifier == "Search")
+				return Browser.FindElementById("_ctl0_Content_HeaderControl_SearchLabel");
+			return base.GetElementByName(identifier, areaIdentifier, listItem);
+		}
+
+
+		public override IPage ChooseFromDropdown(string identifier, string text)
+		{
+			if (identifier == "Select Site")
+			{
+				var container = Browser.TryFindElementById("_ctl0_Content_HeaderControl_slSite").Parent();
+				CompositeDropdown d = new CompositeDropdown(this, "DSL", container);
+				d.TypeAndSelect(text);
+				return this;
+			}
+
+			else if (identifier == "Select Site Group")
+			{
+				var container = Browser.TryFindElementById("_ctl0_Content_HeaderControl_slSiteGroup").Parent();
+				CompositeDropdown d = new CompositeDropdown(this, "DSL", container);
+				d.TypeAndSelect(text);
+				return this;
+			}
+		
+
+			return base.ChooseFromDropdown(identifier, text);
+		}
+
+        public IPage FilterBySiteGroup(string siteGroupName)
+        {
+    
+            SiteGroup siteGroup = TestContext.GetExistingFeatureObjectOrMakeNew(siteGroupName, () => new SiteGroup(siteGroupName));
+            ChooseFromDropdown("Select Site Group", siteGroup.UniqueName);
+          
             var search = GetElementByName("Search");
             search.Click();
             return this;

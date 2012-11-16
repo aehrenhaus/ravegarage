@@ -27,8 +27,8 @@ namespace Medidata.RBT.PageObjects.Rave
 
 		public void Sign(string userName, string password)
 		{
-			UsernameBox.EnhanceAs<Textbox>().SetText(userName);
-			PasswordBox.EnhanceAs<Textbox>().SetText(password);
+            UsernameBox.EnhanceAs<Textbox>().SetText(userName);
+            PasswordBox.EnhanceAs<Textbox>().SetText(password);
 			ValidateSignAndSave.Click();
 		}
 

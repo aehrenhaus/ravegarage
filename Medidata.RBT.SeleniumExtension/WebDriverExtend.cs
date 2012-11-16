@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Remote;
 using System.Collections.ObjectModel;
@@ -13,58 +14,77 @@ namespace Medidata.RBT.SeleniumExtension
 {
 	public static class WebDriver
 	{
-
-		public static void TryExecuteJavascript(this RemoteWebDriver driver, string script)
+		public static bool TryExecuteJavascript(this RemoteWebDriver driver, string script)
 		{
 			try
 			{
 				driver.ExecuteScript(script);
-			}
-			catch
-			{
-			}
-		}
-
-
-		private static IWebElement waitForElement( IWebDriver driver, Func<IWebDriver, IWebElement> getElement, string errorMessage = null, int? timeOutSecond =null)
-		{
-			timeOutSecond = timeOutSecond ?? 10;
-			var wait = new WebDriverWait(driver, TimeSpan.FromSeconds(timeOutSecond.Value));
-			IWebElement ele = null;
-			try
-			{
-				ele = wait.Until(getElement);
-			}
-			catch
-			{
-				if (errorMessage == null)
-					throw;
-				else
-					throw new Exception(errorMessage);
-			}
-			return ele;
-		}
-
-		public static IWebElement WaitForElement(this IWebDriver driver, Func<IWebDriver, IWebElement> getElement, string errorMessage = null, int? timeOutSecond = null)
-		{
-			return waitForElement(driver, getElement, errorMessage, timeOutSecond);
-		}
-
-		public static IWebElement WaitForElement(this IWebDriver driver, By by, string errorMessage = null, int? timeOutSecond = null)
-		{
-			return waitForElement(driver, browser => browser.FindElement(by), errorMessage, timeOutSecond);
-		}
-
-
-		public static IWebElement WaitForElement(this IWebDriver driver, string partialID, Func<IWebElement, bool> predicate = null, string errorMessage = null, int? timeOutSecond = null)
-		{
 			
-			Func<IWebDriver, IWebElement> func =browser => browser.FindElements(By.XPath(".//*[contains(@id,'" + partialID + "')]")).FirstOrDefault((predicate==null)?(c=>true):predicate);
-		
-			return waitForElement(driver, func, errorMessage, timeOutSecond);
+			}
+			catch
+			{
+				return false;
+			}
+
+			return true;
 		}
 
 
+		public static long GetPageOffsetX(this RemoteWebDriver driver)
+		{
+			IJavaScriptExecutor js = driver as IJavaScriptExecutor;
+			return (long)js.ExecuteScript("return window.pageXOffset");
+		}
 
+		public static long GetPageOffsetY(this RemoteWebDriver driver)
+		{
+			IJavaScriptExecutor js = driver as IJavaScriptExecutor;
+			return (long)js.ExecuteScript("return window.pageYOffset");
+		}
+
+		public static void SwitchBrowserWindow(this RemoteWebDriver driver, string windowName)
+		{
+
+			bool found = false;
+			IWebDriver window = null;
+			foreach (var handle in driver.WindowHandles)
+			{
+				window = driver.SwitchTo().Window(handle);
+				if (window.Title == windowName)
+				{
+					found = true;
+					break;
+				}
+			}
+			if (!found) throw new Exception(string.Format("window {0} not found", windowName));
+			while (driver.Url == "about:blank")
+				Thread.Sleep(500);
+
+
+		}
+
+		public static void SwitchToSecondBrowserWindow(this RemoteWebDriver driver)
+		{
+			if (driver.WindowHandles.Count < 2)
+				throw new Exception("There isn't a second window");
+			var secondWindowHandle = driver.WindowHandles[1];
+
+			IWebDriver window = driver.SwitchTo().Window(secondWindowHandle);
+
+			while (driver.Url == "about:blank")
+				Thread.Sleep(500);
+
+		}
+
+
+		public static void SwitchToMainBrowserWindow(this RemoteWebDriver driver, bool close = false)
+		{
+			if (close)
+				driver.Close();
+
+			var secondWindowHandle = driver.WindowHandles[0];
+
+			IWebDriver window = driver.SwitchTo().Window(secondWindowHandle); ;
+		}
 	}
 }

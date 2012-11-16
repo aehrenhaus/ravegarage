@@ -19,7 +19,7 @@ namespace Medidata.RBT.Features.Rave
         [StepDefinition(@"xml Lab Configuration ""([^""]*)"" is uploaded")]
         public void XmlDraft____IsUploaded(string configName)
         {
-            TestContext.GetExistingFeatureObjectOrMakeNew(configName, () => new LabConfiguration(configName, true));
+            TestContext.GetExistingFeatureObjectOrMakeNew(configName, () => new LabConfiguration(configName));
         }
 
         /// <summary>
@@ -31,7 +31,7 @@ namespace Medidata.RBT.Features.Rave
         {
             labName =  SpecialStringHelper.Replace(labName);
 
-            var currentPage = TestContext.CurrentPage.As<LabRangesPage>();
+			var currentPage = TestContext.CurrentPage.As<LabPageBase>();
             var currentRow = currentPage.FindLab(labName, labType);
             currentPage.SelectLabRange(currentRow);
 

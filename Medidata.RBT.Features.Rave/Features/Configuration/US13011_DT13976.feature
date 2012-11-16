@@ -1,6 +1,6 @@
 ﻿# Configuration Loader specification should include Coder Configuration.
 @ignore
-Feature: US13011_DT13976
+Feature: US13011_DT13976_1
 	When the Configuration Settings are downloaded, they should include Coder Configuration details.
 	As a Rave Administrator
 	When I am on the Configuration Loader page
@@ -10,7 +10,7 @@ Feature: US13011_DT13976
 
 
 Background:
-	Given I am logged in to Rave with username "defuser" and password "password"
+	Given I login to Rave with user "defuser" and password "password"
 	#And the URL has Coder installed
 	#And the following Project assignments exist
 	#	| User    | Project    | Environment | Role         | Site         | Site Number | User Group    |
@@ -39,12 +39,9 @@ Scenario: @PB_US11101_01 As a Data Manager, when I am on the Configuration Loade
 		| Review Marking Group | Requires Response | Requires Manual Close |
 		| site from system     | True              | True                  |
 	And I select link "Configuration Loader"
-	And I prepare to download
-	And I click button "Get File"
-	When the "Core Configuration Specification" spreadsheet is downloaded
-	Then I verify "Coder Configuration" tab exists in the spreadsheet
+	And I click the "Get File" button to download
 	And I verify "Coder Configuration" spreadsheet data
-		| Version | Coder Manual Queries  | Setting          | Instructions Comments                                                                                                                                                                 |
+		| Version | Coder Manual Queries  | Setting          | Instructions/Comments                                                                                                                                                                 |
 		|         | Review Marking Group  | site from system | Marking Groups enable queries to be opened by Coder and directed to specific roles.  These roles will be able to take action against the query as long as the role action permits it. |
 		|         | Requires Response     | True             | A response by the user role the query has been opened against is needed.  True = a response is required.  False = No response is required and query text will just be displayed.      |
 		|         | Requires Manual Close | True             | The user role the query has been opened against will be able to close the query.  True = Query can be closed manually.  False = Query cannot be closed manually.                      |
@@ -57,12 +54,10 @@ Scenario: @PB_US11101_01 As a Data Manager, when I am on the Configuration Loade
 		| Monitor from Lead Monitor | False             | False                 |
 	And I navigate to "Other Settings"
 	And I navigate to "Configuration Loader"
-	And I prepare to download
-	And I click button "Get File"
-	When the "Core Configuration Specification" spreadsheet is downloaded
-	Then I verify "Coder Configuration" tab exists in the spreadsheet
+
+	And I click the "Get File" button to download
 	And I verify "Coder Configuration" spreadsheet data
-		| Version | Coder Manual Queries  | Setting                   | Instructions Comments                                                                                                                                                                 |
+		| Version | Coder Manual Queries  | Setting                   | Instructions/Comments                                                                                                                                                                 |
 		|         | Review Marking Group  | Monitor from Lead Monitor | Marking Groups enable queries to be opened by Coder and directed to specific roles.  These roles will be able to take action against the query as long as the role action permits it. |
 		|         | Requires Response     | False                     | A response by the user role the query has been opened against is needed.  True = a response is required.  False = No response is required and query text will just be displayed.      |
 		|         | Requires Manual Close | False                     | The user role the query has been opened against will be able to close the query.  True = Query can be closed manually.  False = Query cannot be closed manually.                      |
@@ -78,12 +73,9 @@ Scenario:@PB_US11101_02  As a Data Manager, when I am on the Configuration Loade
 	And I navigate to "Configuration Loader"
 	And I check "Template Only"
 	And I take a screenshot
-	And I prepare to download
-	And I click button "Get File"
-	And the "Core Configuration Specification Template" spreadsheet is downloaded
-	When I verify "Coder Configuration" tab exists in the spreadsheet
+	And I click the "Get File" button to download
 	Then I verify "Coder Configuration" spreadsheet data
-		| Version | Coder Manual Queries  | Setting | Instructions Comments                                                                                                                                                                 |
+		| Version | Coder Manual Queries  | Setting | Instructions/Comments                                                                                                                                                                 |
 		|         | Review Marking Group  | [None]  | Marking Groups enable queries to be opened by Coder and directed to specific roles.  These roles will be able to take action against the query as long as the role action permits it. |
 		|         | Requires Response     |         | A response by the user role the query has been opened against is needed.  True = a response is required.  False = No response is required and query text will just be displayed.      |
 		|         | Requires Manual Close |         | The user role the query has been opened against will be able to close the query.  True = Query can be closed manually.  False = Query cannot be closed manually.                      |
@@ -96,10 +88,10 @@ Scenario: @PB_US11101_03 As a Data Manager, when I am on the Configuration Loade
 
 	And I navigate to "Configuration"
 	When I navigate to "Other Settings"
-	Then I should not see link "Coder Configuration"
 
+	Then I verify link "Coder Configuration" does not exist
 	And I select link "Configuration Loader"
-	And I select "Get File"
+	And I click button "Get File"
 	#When the Core Configuration specification is downloaded
 	And I open the Core Configuration specification
 	Then I do not see Coder Configuration tab

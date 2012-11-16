@@ -9,7 +9,7 @@ Feature: US11305_DT10514
 # Datapoints in same lab datapage may associate analyte ranges of different labs.
 
 Background:
-	Given I am logged in to Rave with username "defuser" and password "password"
+	Given I login to Rave with user "defuser" and password "password"
 	#And following Project assignments exist
 	# |User |Project |Environment |Role |Site |Site Number |
 	# |User 1 |Mediflex |Prod |CDM1 |LabSite01 |2426 |

@@ -6,6 +6,7 @@ using System.Threading;
 using System.Collections.Specialized;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Medidata.RBT.SeleniumExtension;
+using System.IO;
 
 namespace Medidata.RBT.Common.Steps
 {
@@ -31,7 +32,8 @@ namespace Medidata.RBT.Common.Steps
         [StepDefinition(@"I switch to ""([^""]*)"" window")]
 		public void ISwitchTo____Window(string windowName)
 		{
-			TestContext.SwitchBrowserWindow(windowName);
+			Browser.SwitchBrowserWindow(windowName);
+			CurrentPage = TestContext.POFactory.GetPageByUrl(new Uri(Browser.Url));
 		}
 
 		/// <summary>
@@ -40,7 +42,8 @@ namespace Medidata.RBT.Common.Steps
 		[StepDefinition(@"I switch to the second window")]
 		public void ISwitchToTheSecondWindow()
 		{
-			TestContext.SwitchToSecondBrowserWindow();
+			Browser.SwitchToSecondBrowserWindow();
+			CurrentPage = TestContext.POFactory.GetPageByUrl(new Uri(Browser.Url));
 		}
 
 		/// <summary>
@@ -49,7 +52,8 @@ namespace Medidata.RBT.Common.Steps
 		[StepDefinition(@"I switch to main window")]
 		public void ISwitchToMainWindow()
 		{
-			TestContext.SwitchToMainBrowserWindow();
+			Browser.SwitchToMainBrowserWindow();
+			CurrentPage = TestContext.POFactory.GetPageByUrl(new Uri(Browser.Url));
 		}
 
 		/// <summary>
@@ -58,7 +62,8 @@ namespace Medidata.RBT.Common.Steps
         [StepDefinition(@"I accept alert window")]
         public void IAcceptAlertWindow()
         {
-			TestContext.AcceptAlert();
+			CurrentPage.As<PageBase>().GetAlertWindow().Accept();
+			CurrentPage = TestContext.POFactory.GetPageByUrl(new Uri(Browser.Url));
         }
 
 		/// <summary>
@@ -67,7 +72,8 @@ namespace Medidata.RBT.Common.Steps
         [StepDefinition(@"I dismiss alert window")]
         public void IDismissAlertWindow()
         {
-			TestContext.CancelAlert();
+			CurrentPage.As<PageBase>().GetAlertWindow().Dismiss();
+			CurrentPage = TestContext.POFactory.GetPageByUrl(new Uri(Browser.Url));
         }
 
 		[StepDefinition(@"I verify current URL is ""([^""]*)""")]
@@ -134,18 +140,7 @@ namespace Medidata.RBT.Common.Steps
 			SpecialStringHelper.SetVar(varName, text);
 		}
 
-		[StepDefinition(@"I prepare to download")]
-		public void IPrepareToDownload()
-		{
-			TestContext.WatchForDownload();
-		}
 
-
-		[StepDefinition(@"I wait for download to finish")]
-		public void IWaitForDownloadToFinish()
-		{
-			TestContext.WaitForDownloadFinish();
-		}
 
 
 		/// <summary>
@@ -153,27 +148,22 @@ namespace Medidata.RBT.Common.Steps
 		/// </summary>
 		/// <param name="timeValue"></param>
 		/// <param name="timeUnit"></param>
-		[StepDefinition(@"I wait for ([^""]*) ([^""]*)")]
-		public void IWaitFor____Of____(int timeValue, string timeUnit)
+		[StepDefinition(@"I wait for ([^""]*) seconds?")]
+		public void IWaitFor____Of____Seconds(int timeValue)
 		{
-			switch (timeUnit)
-			{
-				case "second":
-				case "seconds":
-					System.Threading.Thread.Sleep(timeValue * 1000);
-					break;
-				case "minute":
-				case "minutes":
-					System.Threading.Thread.Sleep(timeValue * 60000);
-					break;
-				case "hour":
-				case "hours":
-					System.Threading.Thread.Sleep(timeValue * 3600000);
-					break;
-				default:
-					throw new Exception("Not supported time unit: " + timeUnit);
-			}
+	
+			System.Threading.Thread.Sleep(timeValue * 1000);
+
 		}
+
+		[StepDefinition(@"I wait for ([^""]*) minutes?")]
+		public void IWaitFor____Of____Minutes(int timeValue)
+		{
+	
+			System.Threading.Thread.Sleep(timeValue * 60000);
+			
+		}
+
 
 
 	}

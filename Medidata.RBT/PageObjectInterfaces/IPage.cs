@@ -34,7 +34,7 @@ namespace Medidata.RBT
 		/// 
 		/// <code>
 		/// CurrentPage
-		///		.As< UserAdministrationPage>()
+		///		.As<UserAdministrationPage>()
 		///		.SearchUser("user1")
 		///		.Choose("something")
 		///		.As<UserAdministrationPage>()
@@ -48,7 +48,7 @@ namespace Medidata.RBT
 		/// Example: "Modules/AmendmentManager/MigrationResults.aspx"
 		/// 
 		/// URL property is not the actual url in the browser. 
-		/// But is a static value of POClass that can be compared to the actual url or navigate.
+		/// But is a fix and UNIQUE value of POClass that used in comparison and navigtion
 		/// See NavigateToSelf() and IsThePage()
 		/// </summary>
 		string URL { get; }
@@ -62,52 +62,29 @@ namespace Medidata.RBT
 		/// BaseURL combined with URL can form a full url that is valid
 		/// </summary>
         string BaseURL { get; }
-
-        /// <summary>
-        /// Returns a control in a given page if it is found.
-        /// </summary>
-        /// <param name="identifier">ID of web element</param>
-        IWebElement CanSeeControl(string identifier);
-
+	
 		/// <summary>
-		/// Click a link in all page area.
+		/// I click "Study" link "xxxStudy" in "header"
 		/// </summary>
 		/// <param name="linkText"></param>
-		/// <returns></returns>
-		IPage ClickLink(string linkText);
-
-		/// <summary>
-		/// Click a hyperlink in a certen area.
-		/// areaIdentifier not only points out the area, but also implies what is the target page type.
-		/// 
-		/// Example : when you want to click a 'Study' 'Study 123' in 'Header area'
-		///
-		/// </summary>
-		/// <param name="linkText"></param>
+		/// <param name="objectType"></param>
 		/// <param name="areaIdentifier"></param>
 		/// <returns></returns>
-		IPage ClickLinkInArea(string type, string linkText, string areaIdentifier);
+		IPage ClickLink(string linkText, string objectType = null, string areaIdentifier= null);
 
 		/// <summary>
 		/// Click on a clickable UI control
 		/// </summary>
-		/// <param name="name"></param>
-		/// <returns></returns>
 		IPage ClickButton(string identifier);
 
         /// <summary>
         /// Press a key on the keyboard
         /// </summary>
-        /// <param name="name"></param>
-        /// <returns></returns>
         void PressKey(string key);
 		
 		/// <summary>
 		/// Type in a typable UI control
 		/// </summary>
-		/// <param name="name"></param>
-		/// <param name="text"></param>
-		/// <returns></returns>
 		IPage Type(string identifier, string text);
 
 		/// <summary>
@@ -136,10 +113,8 @@ namespace Medidata.RBT
         bool CanSeeTextInArea(string text, string areaIdentifier);
 
 		/// <summary>
-		/// NavigateTo() is abstract compares to ClickLink(), which clicks on a concrete link text
+		/// NavigateTo() is abstract compares to ClickLink() which clicks on a concrete link text
 		/// </summary>
-		/// <param name="name"></param>
-		/// <returns></returns>
 		IPage NavigateTo(string identifier);
 
         /// <summary>
@@ -162,33 +137,31 @@ namespace Medidata.RBT
 		/// Get the CRF version displayed on the bottom of the page
 		/// Get how many items are in the list
 		/// 
-		/// The 'infomation' is abstract and depend on the page implementation, 
-		/// it does not necessarily be some text on that user can see on page.
+		/// What the 'information' is is depend on the page implementation, 
+		/// it does not necessarily be some text on the page.
 		/// 
 		/// </summary>
 		/// <param name="identifier"></param>
 		string GetInfomation(string identifier);
 
-
-        ///// <returns></returns>
-        ///// <summary>
-        ///// Delete a removeableObject on the page.
-        ///// </summary>
-        ///// /// <param name="removeableObject">Element to be deleted</param>
-        ///// <returns></returns>
-        //void DeleteObjectOnPage(RemoveableObject removeableObject);
-
-        void FocusOnElementById(string id);
-        IWebElement GetCurrentFocusedElement();
-        long GetPageOffsetX();
-        long GetPageOffsetY();
-
+		/// <summary>
+		/// Set element to obain focus
+		/// </summary>
+        void SetFocusElement(IWebElement id);
 
 		/// <summary>
 		/// 
 		/// </summary>
-		/// <param name="identifier"></param>
 		/// <returns></returns>
-		IWebElement GetElementByName(string identifier, string areaIdentifier= null, string listItem = null);
+        IWebElement GetFocusElement();
+
+
+		/// <summary>
+		/// This method is used by many default implmentation of IPage methods, where a friendly name is used to find a IWebElement
+		/// In many case you will only need to orverride this method to provide mappings on your specific page object in order for a step to work.
+		/// </summary>
+		IWebElement GetElementByName(string identifier, string areaIdentifier= null, string listItemIdentifier = null);
+
+		IWebElement TryGetElementByName(string identifier, string areaIdentifier = null, string listItemIdentifier = null);
 	}
 }

@@ -10,7 +10,7 @@ Feature: 564QueryRefiringLogic1
 # Project to be uploaded in excel spreadsheet 'Edit Check Study 1'
 
 Background:
-    Given I am logged in to Rave with username "defuser" and password "password"
+    Given I login to Rave with user "defuser" and password "password"
 	#And following Study assignments exist
 	#	|User		|Study		       |Role |Site		        |Site Number |
 	#	|editcheck  |Edit Check Study 1|cdm1 |Edit Check Site 1 |10001       |

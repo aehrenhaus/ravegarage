@@ -21,7 +21,7 @@ Feature: Rave Monitor. When an EDC form contains special characters such as "<" 
 	This rendering should be implemented for all parts of the PDFs.
 
 Background:
-    Given I am logged in to Rave with username "defuser" and password "password"
+    Given I login to Rave with user "defuser" and password "password"
 	#And Study "Site Monitor" exist in "Architect"
 	#And user "defuser" has a report assignment to "Monitor Visit - PDF Report"
 	#And reports matrix for project "Site Monitor" has "<Permission>" selected for "Monitor Visit - PDF Report"

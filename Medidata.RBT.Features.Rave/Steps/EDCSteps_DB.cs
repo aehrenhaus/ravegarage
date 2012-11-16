@@ -14,6 +14,28 @@ namespace Medidata.RBT.Features.Rave
 {
 	public partial class EDCSteps
     {
+
+        /// <summary>
+        /// sets the database to "offline", so nobody can access it
+        /// </summary>
+        [StepDefinition(@"I set the database to offline")]
+        public void ISetTheDatabaseToOffline()
+        {
+            DbHelper.SetDatabaseToOffline();
+        }
+
+        /// <summary>
+        /// sets the database to "online", so it is available
+        /// </summary>
+        [StepDefinition(@"I set the database to online")]
+        public void ISetTheDatabaseToOnline()
+        {
+            DbHelper.SetDatabaseToOnline();
+        }
+
+
+
+
 		/// <summary>
 		/// Based on the column name, we call an appropriate method and assert true/false whether or not column in table datapoints propagates
 		/// </summary>
@@ -90,6 +112,20 @@ namespace Medidata.RBT.Features.Rave
         }
 
 
+        // <summary>
+        /// Wait for CV refresh to finish
+        /// </summary>
+        /// <param name="project"></param>
+        [StepDefinition(@"I verify ""([^""]*)"" status for field ""([^""]*)"" has been propaged on logline")]
+        public void IVerify__StatusForField__HasBeenPropaged(string status, string fieldOid)
+        {
+            Uri tempUri = new Uri(Browser.Url);
+            int dataPageId = int.Parse(tempUri.Query.Replace("?DP=", ""));
+            var sql = CheckDataPointStatusPropagate(dataPageId, fieldOid, status);
+            var isPropagated = DbHelper.ExecuteScalar(sql, System.Data.CommandType.Text);
+            Assert.IsTrue((int)isPropagated == 1, "Propagation did not occured");
+        }
+
 		private string GenerateSQLQueryForColumnName(string column, int datapageID)
 		{
 			if (column.Equals("AltCodedValue"))
@@ -124,6 +160,41 @@ namespace Medidata.RBT.Features.Rave
 
 
 		}
+
+        private string CheckDataPointStatusPropagate(int datapageID, string fieldOID, string status)
+        {
+            return String.Format(@"     declare @status varchar(200)
+                                        declare @numberOfStatuses int
+                                        declare @numberOfRows int
+
+                                        set @status = '{2}'
+
+                                        select @numberOfRows = COUNT(recordid)
+                                        from records
+                                        where DataPageID = {0}
+
+                                        select  @numberOfStatuses = COUNT(datapointid)
+                                        from DataPoints d
+                                            join records r on r.recordid = d.recordid
+                                            join Fields f on f.fieldid = d.fieldid
+                                        where 
+                                            r.recordid in (	Select recordid 
+                                                        from Records 
+                                                        where DataPageID = {0}
+                                                        ) 
+                                            and f.OID = '{1}'
+                                            and	(case 
+			                                        when @status = 'isfrozen' then d.isfrozen
+			                                        end
+		                                        ) = 1
+
+                                        if @numberOfStatuses = @numberOfRows
+	                                        select 1 
+                                        else
+	                                        select 0
+                                    ", datapageID, fieldOID, status);
+
+        }
 
 
 		public class ClinicalViewsScripts

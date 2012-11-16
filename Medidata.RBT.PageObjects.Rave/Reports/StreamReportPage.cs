@@ -20,13 +20,13 @@ namespace Medidata.RBT.PageObjects.Rave
 		public override IWebElement GetElementByName(string identifier, string areaIdentifier = null, string listItem = null)
 		{
 			if (identifier == "Separator")
-				return Browser.WaitForElement("txtSeparator");
+				return Browser.TryFindElementByPartialID("txtSeparator");
 			if (identifier == "File type")
-				return Browser.WaitForElement("ddlFileType");
+				return Browser.TryFindElementByPartialID("ddlFileType");
 			if (identifier == "Export type")
-				return Browser.WaitForElement("ddlExportType");
+				return Browser.TryFindElementByPartialID("ddlExportType");
 			if (identifier == "Save as Unicode")
-				return Browser.WaitForElement("chkEncoding");
+				return Browser.TryFindElementByPartialID("chkEncoding");
 			return base.GetElementByName(identifier,areaIdentifier,listItem);
 		}
 

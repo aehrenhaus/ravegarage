@@ -10,22 +10,27 @@ using Medidata.RBT.SeleniumExtension;
 using System.Threading;
 using System.Collections.ObjectModel;
 using Medidata.RBT.PageObjects.Rave.SharedRaveObjects;
+using TechTalk.SpecFlow.Assist;
 
 namespace Medidata.RBT.PageObjects.Rave
 {
-    public class FileRequestPage : RavePageBase, ICanPaginate
-	{
+    public class FileRequestPage : RavePageBase, ICanPaginate, ICanVerifyExist
+    {
         /// <summary>
         /// Create a new data pdf file request
         /// </summary>
         /// <param name="args">The pdfCreationModel dictates what on the page gets set. For instace, Name dictates the data PDF's name</param>
         /// <returns>Returns a new FileRequestPage</returns>
-		public FileRequestPage CreateDataPDF(PDFCreationModel args)
-		{
-			ClickLink("Create Data Request");
-			var page = new FileRequestCreateDataRequestPage();
-			return page.CreateDataPDF(args);
-		}
+        public FileRequestPage CreateDataPDF(PDFCreationModel args)
+        {
+            string linkText = "Create Data Request";
+            if (!string.IsNullOrEmpty(args.Locale) && args.Locale.Equals("LLocalization Test",StringComparison.InvariantCultureIgnoreCase))
+                linkText = string.Concat("L",linkText);
+
+            ClickLink(linkText);
+            var page = new FileRequestCreateDataRequestPage();
+            return page.CreateDataPDF(args);
+        }
 
         /// <summary>
         /// Create a new blank pdf file request
@@ -34,7 +39,12 @@ namespace Medidata.RBT.PageObjects.Rave
         /// <returns>Returns a new FileRequestPage</returns>
         public FileRequestPage CreateBlankPDF(PDFCreationModel args)
         {
-            ClickLink("Create Blank Request");
+            string linkText = "Create Blank Request";
+            if (!string.IsNullOrEmpty(args.Locale) && args.Locale.Equals("LLocalization Test", StringComparison.InvariantCultureIgnoreCase))
+                linkText = string.Concat("L", linkText);
+
+            ClickLink(linkText);
+
             var page = new FileRequestCreateBlankRequestPage();
             return page.CreateBlankPDF(args);
         }
@@ -44,27 +54,65 @@ namespace Medidata.RBT.PageObjects.Rave
         /// </summary>
         /// <param name="pdf">The pdf that you want to generate, should already have a file request created</param>
         /// <returns>Returns this FileRequestPage</returns>
-		public FileRequestPage Generate(string pdfName)
-		{
-            new PDFSpecific(pdfName);
+        public FileRequestPage Generate(string pdfName)
+        {
+            new PDFSpecific(SpecialStringHelper.Replace(pdfName));
+            int foundOnPage;
+            Table dt = new Table("Name");
+            dt.AddRow(SpecialStringHelper.Replace(pdfName));
+
+            IWebElement pdfTr = this.FindInPaginatedList("", () =>
+            {
+				HtmlTable table = Browser.TryFindElementByPartialID("Content_Results").EnhanceAs<HtmlTable>();
+                return table.FindMatchRows(dt).FirstOrDefault();
+            }, out foundOnPage);
+
+            ChooseFromCheckboxes("Live Status Update", true);
+            
+            EnhancedElement genButton = pdfTr.FindImagebuttons().FirstOrDefault(x => x.GetAttribute("id").EndsWith("imgGenerateNow"));
+
+            genButton.Click();
+            Thread.Sleep(1000);
+            GetAlertWindow().Accept();
+            return this;
+        }
+
+        /// <summary>
+        /// Edit a pdf 
+        /// </summary>
+        /// <param name="pdf">The pdf that you want to edit, should already have a file request created</param>
+        /// <returns>Returns this FileRequestPage</returns>
+        public FileRequestPage EditPdf(string pdfName)
+        {
             int foundOnPage;
             Table dt = new Table("Name");
             dt.AddRow(pdfName);
 
             IWebElement pdfTr = this.FindInPaginatedList("", () =>
             {
-                HtmlTable table = Browser.WaitForElement("_ctl0_Content_Results").EnhanceAs<HtmlTable>();
+                HtmlTable table = Browser.TryFindElementByPartialID("_ctl0_Content_Results").EnhanceAs<HtmlTable>();
                 return table.FindMatchRows(dt).FirstOrDefault();
             }, out foundOnPage);
 
-            ChooseFromCheckboxes("Live Status Update", true);
+            if (pdfTr == null)
+            {
+                dt = new Table("LName");
+                dt.AddRow(pdfName);
 
-            EnhancedElement genButton = pdfTr.FindImagebuttons().FirstOrDefault(x => x.GetAttribute("id").EndsWith("imgGenerateNow"));
+                pdfTr = this.FindInPaginatedList("", () =>
+                {
+                    HtmlTable table = Browser.TryFindElementByPartialID("_ctl0_Content_Results").EnhanceAs<HtmlTable>();
+                    return table.FindMatchRows(dt).FirstOrDefault();
+                }, out foundOnPage);
+            }
+
+            EnhancedElement genButton = pdfTr.FindImagebuttons().FirstOrDefault(x => x.GetAttribute("id").EndsWith("imgEdit"));
 
             genButton.Click();
-            GetAlertWindow().Accept();
             return this;
-		}
+        }
+
+
 
         #region IPaginatedPage
 
@@ -72,10 +120,10 @@ namespace Medidata.RBT.PageObjects.Rave
         int pageIndex = 1;
         int count = 0;
         int lastValue = -1;
-
+		public int CurrentPageNumber { get; private set; }
         public bool GoNextPage(string areaIdentifer)
         {
-            HtmlTable table = Browser.WaitForElement("_ctl0_Content_Results").EnhanceAs<HtmlTable>();
+            HtmlTable table = Browser.TryFindElementByPartialID("_ctl0_Content_Results").EnhanceAs<HtmlTable>();
             IWebElement pageTable = table.FindElement(By.XPath(".//tr[@align='center']"));
             ReadOnlyCollection<IWebElement> pageLinks = pageTable.FindElements(By.XPath(".//a|.//span"));
 
@@ -118,48 +166,127 @@ namespace Medidata.RBT.PageObjects.Rave
         }
         #endregion
 
-		public FileRequestPage WaitForPDFComplete(string pdf)
-		{
+        public FileRequestPage WaitForPDFComplete(string pdf)
+        {
             Thread.Sleep(1000);
-			var table = Browser.Table("_ctl0_Content_Results");
-			Table dt = new Table("Name");
-			dt.AddRow(pdf);
-			var tr = table.FindMatchRows(dt).FirstOrDefault();
+            var table = Browser.Table("_ctl0_Content_Results");
+            Table dt = new Table("Name");
+            dt.AddRow(pdf);
+            var tr = table.FindMatchRows(dt).FirstOrDefault();
 
-			int waitTime = 60;
-			Browser.WaitForElement(b =>
-				tr.Spans().FirstOrDefault(x => x.GetAttribute("id").EndsWith("StatusValue") && x.Text == "Completed"),
-				"Did not complete in time("+waitTime+"s)", waitTime
-				);
+            int waitTime = 60;
+            var ele  = Browser.TryFindElementBy(b =>
+                tr.Spans().FirstOrDefault(x => x.GetAttribute("id").EndsWith("StatusValue") && x.Text == "Completed"),
+              true, waitTime
+                );
+			if (ele == null)
+				throw new Exception("Did not complete in time(" + waitTime + "s)");
 
-			return this;
-		}
+            return this;
+        }
 
         /// <summary>
         /// Open the generated pdf and load its text into ScenarioText.
         /// </summary>
         /// <param name="pdf">The name of the pdf of be viewed</param>
         /// <returns></returns>
-		public void ViewPDF(string pdf)
-		{
+        public void ViewPDF(string pdf)
+        {
             ClickLink("My PDF Files");
             FileRequestViewPage page = new FileRequestViewPage();
             page.ViewPDF(pdf);
-		}
+        }
 
-		public override IWebElement GetElementByName(string identifier, string areaIdentifier = null, string listItem = null)
-		{
-			if (identifier == "Live Status Update")
-				return Browser.FindElementById("LiveStatusUpdate");
-			return base.GetElementByName(identifier,areaIdentifier,listItem);
-		}
+        public override IWebElement GetElementByName(string identifier, string areaIdentifier = null, string listItem = null)
+        {
+            if (identifier == "Live Status Update")
+                return Browser.FindElementById("LiveStatusUpdate");
+
+            var element = Browser.TryFindElementBy(By.XPath("//input[@title='" + identifier + "']"));
+
+            if (element == null && areaIdentifier == "Display multiple log lines per page")
+            {
+                element = FindCheckboxForLogForm(identifier);
+            }
+
+            if (element != null)
+                return element;
+
+            return base.GetElementByName(identifier, areaIdentifier, listItem);
+        }
 
         public override string URL
         {
             get
             {
-                return "Modules/PDF/FileRequest.aspx";
+                return "Modules/PDF/FileRequests.aspx";
             }
         }
-	}
+
+        /// <summary>
+        /// Expand the multiple log lines display to show/select log line form to be displayed per page
+        /// </summary>
+        public void ExpandDisplayMultipleLogLines()
+        {
+            var elem = Browser.TryFindElementById("CombineLogLinesFrms_LabelDiv");
+
+            if (elem != null)
+                elem.Click();
+
+            Thread.Sleep(1000);
+            // Wait for log line form div
+            Browser.TryFindElementByPartialID("CombineLogLinesFrms_div");
+        }
+
+        public bool VerifyTableRowsExist(string tableIdentifier, Table matchTable)
+        {
+            bool allExists = false;
+            if (tableIdentifier == "Display multiple log lines per page")
+            {
+                IEnumerable<FormModel> forms = matchTable.CreateSet<FormModel>();
+
+                foreach (FormModel fm in forms)
+                {
+                    allExists = VerifyDisplayLogLinesFormExist(fm.Form, fm.Checked);
+                    if (!allExists)
+                        break;
+                }
+
+                return allExists;
+            }
+            throw new NotImplementedException();
+        }
+
+        public bool VerifyControlExist(string identifier)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool VerifyTextExist(string identifier, string text)
+        {
+            if (identifier == null)
+            {
+                if (Browser.FindElementByTagName("body").Text.Contains(text))
+                    return true;
+                else
+                    return false;
+            }
+            throw new NotImplementedException();
+        }
+
+        #region helper methods
+        private bool VerifyDisplayLogLinesFormExist(string formName, bool? isChecked)
+        {
+            DisplayMultipleLogLinesControl disMulLLcontrol = new DisplayMultipleLogLinesControl(this);
+            return disMulLLcontrol.VerifyFormExist(formName, isChecked);
+        }
+
+        private IWebElement FindCheckboxForLogForm(string formName)
+        {
+            DisplayMultipleLogLinesControl disMulLLcontrol = new DisplayMultipleLogLinesControl(this);
+            return disMulLLcontrol.FindCheckboxForLogFrom(formName);
+        }
+
+        #endregion
+    }
 }

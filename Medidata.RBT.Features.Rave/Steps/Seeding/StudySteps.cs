@@ -1,6 +1,7 @@
 ﻿using TechTalk.SpecFlow;
 using Medidata.RBT.PageObjects.Rave.SharedRaveObjects;
 using Medidata.RBT.PageObjects.Rave;
+using System.Threading;
 
 namespace Medidata.RBT.Features.Rave
 {
@@ -46,7 +47,7 @@ namespace Medidata.RBT.Features.Rave
         [StepDefinition(@"xml draft ""([^""]*)"" is Uploaded")]
         public void XmlDraft____IsUploaded(string draftName)
         {
-            TestContext.GetExistingFeatureObjectOrMakeNew(draftName, () => new UploadedDraft(draftName, true));
+            TestContext.GetExistingFeatureObjectOrMakeNew(draftName, () => new UploadedDraft(draftName));
         }
 
         /// <summary>
@@ -57,9 +58,10 @@ namespace Medidata.RBT.Features.Rave
         [StepDefinition(@"xml draft ""([^""]*)"" is Uploaded with Environment name ""([^""]*)""")]
         public void XmlDraft____IsUploadedWithEnvironmentName____(string draftName,string envName)
         {
-            UploadedDraft uploadedDraft = TestContext.GetExistingFeatureObjectOrMakeNew(draftName, () => new UploadedDraft(draftName, true));
+            UploadedDraft uploadedDraft = TestContext.GetExistingFeatureObjectOrMakeNew(draftName, () => new UploadedDraft(draftName));
 
-            TestContext.CurrentPage.As<HomePage>().ClickLink("Architect");
+			TestContext.CurrentPage.As<HomePage>().ClickLink("Architect");
+	        TestContext.CurrentPage = new ArchitectPage();
             TestContext.CurrentPage.As<ArchitectPage>().ClickProject(uploadedDraft.Project.UniqueName);
             TestContext.CurrentPage.As<ArchitectLibraryPage>().ClickLink("Studies Environment Setup");
             TestContext.CurrentPage.As<ArchitectEnvironmentSetupPage>().AddNewEnvironment(envName);
@@ -90,9 +92,9 @@ namespace Medidata.RBT.Features.Rave
         public void IPublishAndPushECRF____To____WithStudyEnvironment____(string uploadName, string crfVersionName, string studyEnvName)
         {
             UploadedDraft uploadedDraft = TestContext.GetExistingFeatureObjectOrMakeNew
-                     (uploadName, () => new UploadedDraft(uploadName, true));
+                     (uploadName, () => new UploadedDraft(uploadName));
             CrfVersion crfVersion = TestContext.GetExistingFeatureObjectOrMakeNew
-                    (crfVersionName, () => new CrfVersion(uploadedDraft.Name, crfVersionName, true));
+                    (crfVersionName, () => new CrfVersion(uploadedDraft.UniqueName, crfVersionName));
             if (TestContext.CurrentUser == null)
                 LoginPage.LoginToHomePageIfNotAlready();
             TestContext.CurrentPage = new ArchitectPage().NavigateToSelf();

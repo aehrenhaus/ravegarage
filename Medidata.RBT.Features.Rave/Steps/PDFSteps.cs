@@ -2,6 +2,7 @@
 using Medidata.RBT.PageObjects.Rave;
 using TechTalk.SpecFlow.Assist;
 using Medidata.RBT.PageObjects.Rave.SharedRaveObjects;
+using System.Collections.Generic;
 
 namespace Medidata.RBT.Features.Rave
 {
@@ -51,5 +52,40 @@ namespace Medidata.RBT.Features.Rave
 		{
 			ScenarioContext.Current.Pending();
 		}
+
+        /// <summary>
+        /// Step definition to create the specified pdf configuration if it doesn't exist
+        /// </summary>
+        /// <param name="table"></param>
+        [StepDefinition(@"following PDF Configuration Profile Settings exist")]
+        public void FollowingPDFConfigurationProfileSettingsExist(Table table)
+        {
+            IEnumerable<PdfProfileModel> pdfProfileList = table.CreateSet<PdfProfileModel>();
+
+            foreach (PdfProfileModel ppModel in pdfProfileList)
+            {
+                TestContext.GetExistingFeatureObjectOrMakeNew(ppModel.ProfileName, () => new PdfProfile(ppModel.ProfileName));
+            }
+        }
+
+        /// <summary>
+        /// Step definition to edit pdf file requrest
+        /// </summary>
+        [StepDefinition(@"I click edit datapdf ""([^""]*)""")]
+        public void IClickEditDatapdfDataPDF____(string pdfName)
+        {
+            pdfName = SpecialStringHelper.Replace(pdfName);
+            CurrentPage = CurrentPage.As<FileRequestPage>().EditPdf(pdfName);
+        }
+
+        /// <summary>
+        /// Step definition to expand Display multiple log lines per page
+        /// </summary>
+        [StepDefinition(@"I expand Display multiple log lines per page")]
+        public void IExpandDisplayMultipleLogLinesPerPage()
+        {
+            CurrentPage.As<FileRequestPage>().ExpandDisplayMultipleLogLines();
+        }
+
 	}
 }

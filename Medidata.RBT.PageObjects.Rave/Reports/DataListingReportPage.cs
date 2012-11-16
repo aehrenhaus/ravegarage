@@ -18,11 +18,11 @@ namespace Medidata.RBT.PageObjects.Rave
 		public override IWebElement GetElementByName(string identifier, string areaIdentifier = null, string listItem = null)
 		{
 			if (identifier == "Data Source")
-				return Browser.WaitForElement("ddlSource");
+				return Browser.TryFindElementByPartialID("ddlSource");
 			if (identifier == "Form")
-				return Browser.WaitForElement("ddlDomain");
+				return Browser.TryFindElementByPartialID("ddlDomain");
             if (identifier == "Result")
-                return Browser.WaitForElement("dgResult");
+				return Browser.TryFindElementByPartialID("dgResult");
 
 
 			return base.GetElementByName(identifier,areaIdentifier,listItem);
@@ -41,6 +41,7 @@ namespace Medidata.RBT.PageObjects.Rave
         #region ICanVerifyExist
         public bool VerifyTableRowsExist(string tableIdentifier, Table matchTable)
         {
+            SpecialStringHelper.ReplaceTableColumn(matchTable, "Subject");
             return this.VerifyTableRowsExist_Default(tableIdentifier, matchTable);
         }
 
@@ -57,6 +58,9 @@ namespace Medidata.RBT.PageObjects.Rave
 
        
         #region ICanPaginate
+
+		public int CurrentPageNumber { get; private set; }
+
         int lastValue = -1;
         public bool GoNextPage(string areaIdentifier)
         {

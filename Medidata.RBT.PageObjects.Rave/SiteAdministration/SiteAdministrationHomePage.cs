@@ -25,15 +25,6 @@ namespace Medidata.RBT.PageObjects.Rave.SiteAdministration
             }
         }
 
-        public override IPage ClickLink(string linkText)
-        {
-            base.ClickLink(linkText);
-            if (linkText == "New Site")
-                TestContext.CurrentPage = new SiteAdministrationDetailsPage();
-
-            return TestContext.CurrentPage;
-        }
-
         /// <summary>
         /// Search for a site
         /// </summary>
@@ -66,15 +57,19 @@ namespace Medidata.RBT.PageObjects.Rave.SiteAdministration
                 throw new Exception("User not found in result table: " + siteName);
 
             siteLink.Click();
-            TestContext.CurrentPage = new SiteAdministrationDetailsPage();
-            return new SiteAdministrationDetailsPage();
+            var page = new SiteAdministrationDetailsPage();
+			TestContext.CurrentPage = page;
+			return page;
         }
 
         #region ICanPaginate
         int pageIndex = 1;
         int count = 0;
         int lastValue = -1;
-
+		public int CurrentPageNumber
+		{
+			get { return -1; }
+		}
         public bool GoNextPage(string areaIdentifier)
         {
             var pageTable = TestContext.Browser.TryFindElementById("_ctl0_Content_DisplayGrid").TryFindElementBy(By.XPath("./tbody/tr[last()]"));

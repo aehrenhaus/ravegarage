@@ -8,6 +8,7 @@ using OpenQA.Selenium.Remote;
 using TechTalk.SpecFlow;
 using Medidata.RBT.SeleniumExtension;
 using System.Collections.Specialized;
+using Medidata.RBT.PageObjects.Rave.SharedRaveObjects;
 namespace Medidata.RBT.PageObjects.Rave
 {
     public abstract class LabPageBase : RavePageBase, ICanPaginate
@@ -48,7 +49,7 @@ namespace Medidata.RBT.PageObjects.Rave
         public IWebElement FindLab(string labName, string type)
         {
             int foundOnPage;
-            Table dt = new Table("Type", "Name");
+			Table dt = new Table("Type", "Name");
             dt.AddRow(type, labName);
 
             IWebElement pdfTr = this.FindInPaginatedList("", () =>
@@ -86,7 +87,7 @@ namespace Medidata.RBT.PageObjects.Rave
             
             //table.Dropdown("_ddlLabType").SendKeys(type);
             ChooseFromDropdown("_ddlLabType", type);
-            if (!String.IsNullOrEmpty(rangeType)) ChooseFromDropdown("_ddlRangeType", rangeType);
+            if (!String.IsNullOrEmpty(rangeType)) ChooseFromDropdown("_ddlRangeType", TestContext.GetExistingFeatureObjectOrMakeNew<RangeType>(rangeType, () => new RangeType(rangeType)).UniqueName);
              
             HtmlTable table = Browser.TryFindElementByPartialID("LabsGrid").EnhanceAs<HtmlTable>();
             var currentRow =  table.TextboxById("_txtName").Parent().Parent();
@@ -104,6 +105,7 @@ namespace Medidata.RBT.PageObjects.Rave
         int pageIndex = 0;
         int count = 0;
         int lastValue = -1;
+		public int CurrentPageNumber { get; private set; }
 
         public bool GoNextPage(string areaIdentifer)
         {

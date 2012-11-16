@@ -84,8 +84,9 @@ namespace Medidata.RBT.PageObjects.Rave
             {
                 if (URL.Equals("Modules/EDC/PrimaryRecordPage.aspx"))
                     return false;
-                var contentR = TestContext.Browser.FindElementsByPartialId("Content_R")[0];
-                var labDropdown = contentR.DropdownById("LOC_DropDown", true);
+
+                var contentR = TestContext.Browser.TryFindElementByPartialID("Content_R");
+                var labDropdown = contentR.TryFindElementByPartialID("LOC_DropDown", false);
                 bool isLabform = labDropdown != null;
                 return isLabform;
             }
@@ -101,7 +102,7 @@ namespace Medidata.RBT.PageObjects.Rave
                 if (URL.Equals("Modules/EDC/PrimaryRecordPage.aspx"))
                     return false;
 
-                IWebElement logTable = TestContext.Browser.TryFindElementById("log");
+                IWebElement logTable = TestContext.Browser.TryFindElementById("log",false);
                 IWebElement rowLeftSide = TestContext.Browser.TryFindElementBy(By.XPath("*//td[@class='crf_rowLeftSide']"));
                 if (logTable != null && rowLeftSide != null)
                     return true;
@@ -184,7 +185,7 @@ namespace Medidata.RBT.PageObjects.Rave
         /// <returns>Returns true if the values are in the order passed in</returns>
         public bool FindFieldValuesInOrder(string fieldName, List<string> values)
         {
-            IWebElement field = TestContext.Browser.WaitForElement(By.XPath("//a[text()='" + fieldName + "']"));
+            IWebElement field = TestContext.Browser.TryFindElementByXPath("//a[text()='" + fieldName + "']");
             IWebElement tbody = field.Parent().Parent().Parent();
             List<IWebElement> rows = tbody.FindElements(By.XPath("tr[@class='evenRow' or @class='oddRow']")).ToList();
             for (int i = 0; i < values.Count; i++)
@@ -226,7 +227,7 @@ namespace Medidata.RBT.PageObjects.Rave
         public bool IsElementFocused(ControlType type, string value)
         {
             var element = this.GetElementByControlTypeAndValue(type, value);
-            return this.GetCurrentFocusedElement().GetAttribute("ID") == element.GetAttribute("ID");
+            return this.GetFocusElement().GetAttribute("ID") == element.GetAttribute("ID");
         }
 
 
@@ -301,5 +302,14 @@ namespace Medidata.RBT.PageObjects.Rave
             }
             return true;
         }
+
+		public void CheckFormCount(string formName, int formCount)
+		{
+			var area = Browser.TryFindElementByPartialID("TblTaskItems");
+
+			var formLinks = area.FindElements(By.XPath("./tbody/tr[position()>1]")).Where(x=>x.Text.Trim()==formName).ToList();
+
+			Assert.AreEqual(formCount, formLinks.Count, string.Format("There are {0} forms ,expect {1}", formLinks.Count,formCount));
+		}
     }
 }

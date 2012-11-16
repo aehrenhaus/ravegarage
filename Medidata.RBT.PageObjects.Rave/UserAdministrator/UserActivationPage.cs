@@ -20,7 +20,7 @@ namespace Medidata.RBT.PageObjects.Rave
         /// <returns>The activation code IWebElement</returns>
         public IWebElement GetActivationCode()
         {
-            return Browser.WaitForElement(By.Id("_ctl0_Content_ActCodeValueLabel"), "ActivationCode timeout", 10);
+			return Browser.TryFindElementByPartialID("_ctl0_Content_ActCodeValueLabel");
         }
 
         public override string URL

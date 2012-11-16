@@ -14,7 +14,7 @@ Feature: 564QueryRefiringLogic8
 
 
 Background:
-    Given I am logged in to Rave with username "defuser" and password "password"
+    Given I login to Rave with user "defuser" and password "password"
 	#And following Study assignments exist
 	# | User      | Study               | Role | Site              | Site Number |
 	# | Defuser   | Edit Check Study 3  | cdm1 | Edit Check Site 8 | 80001       |
@@ -70,7 +70,7 @@ Scenario: PB_8.1.1 As an EDC user, Data setup and verification for query re-firi
 	    | Original Axis Number | 10          |
 	    | Current Axis Number  | 20          |
 	
-	And I am logged in to Rave with username "Defuser01" and password "password"
+	And I login to Rave with user "Defuser01" and password "password"
 	And I navigate to "DDE"
 	And I select link "Second Pass"
 	And I choose "Edit Check Study 3" from "Study"

@@ -32,7 +32,7 @@ namespace Medidata.RBT.Common.Steps
 			var dataTable = DbHelper.ExecuteDataSet(sql).Tables[0];
 
 			SaveDataTable(dataTable);
-			TestContext.SetContextValue(LastSqlResultTable, dataTable);
+			Storage.SetScenarioLevelValue(LastSqlResultTable, dataTable);
 		}
 
 
@@ -40,7 +40,7 @@ namespace Medidata.RBT.Common.Steps
 		[StepDefinition(@"I should see SQL result")]
 		public void IShouldSeeResult(Table table)
 		{
-			var dataTable = TestContext.GetContextValue<System.Data.DataTable>(LastSqlResultTable);
+			var dataTable = Storage.GetScenarioLevelValue<System.Data.DataTable>(LastSqlResultTable);
 			AssertAreSameTable(dataTable, table);
 
 		}
@@ -48,7 +48,7 @@ namespace Medidata.RBT.Common.Steps
 		[StepDefinition(@"I should NOT see SQL result")]
 		public void IShouldNOTSeeResult(Table table)
 		{
-			var dataTable = TestContext.GetContextValue<System.Data.DataTable>(LastSqlResultTable);
+			var dataTable = Storage.GetScenarioLevelValue<System.Data.DataTable>(LastSqlResultTable);
 			AssertAreNOTSameTable(dataTable, table);
 		}
 
@@ -59,7 +59,7 @@ namespace Medidata.RBT.Common.Steps
 			var dataTable = DbHelper.ExecuteDataSet(sql, new object[] { projectName, siteName }).Tables[0];
 
             SaveDataTable(dataTable);
-            TestContext.SetContextValue(LastSqlResultTable, dataTable);
+            Storage.SetScenarioLevelValue(LastSqlResultTable, dataTable);
         }
 
 

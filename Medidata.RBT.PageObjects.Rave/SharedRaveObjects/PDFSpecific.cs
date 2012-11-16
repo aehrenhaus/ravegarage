@@ -19,7 +19,8 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
         public PDFSpecific(string name)
         {
             Name = name;
-            Factory.ScenarioObjectsForDeletion.Add(this);
+            if(!Factory.ScenarioObjectsForDeletion.Contains(this))
+                Factory.ScenarioObjectsForDeletion.Add(this);
         }
 
         /// <summary>
@@ -29,11 +30,13 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
         public void DeleteSelf()
         {
             //Call PDF Delete the file from the DB
+            new FileRequestPage().NavigateToSelf();
             PDFFilesControl pdfFilesControl = new PDFFilesControl(new FileRequestPage());
             pdfFilesControl.DeletePDF(Name);
 
             //Delete the File Request
-            PDFFileRequestsControl pdfFileRequestsControl = new PDFFileRequestsControl(new FileRequestPage());
+            new FileRequestViewPage().NavigateToSelf();
+            PDFFileRequestsControl pdfFileRequestsControl = new PDFFileRequestsControl(new FileRequestViewPage());
             pdfFileRequestsControl.DeletePDF(Name);
         }
     }

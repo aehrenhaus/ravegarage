@@ -7,7 +7,7 @@ Feature: US11101 When reports are listed on either the Study, Site or Subject pa
 
 
 Background:
-	Given I am logged in to Rave with username "defuser" and password "password"
+	Given I login to Rave with user "defuser" and password "password"
 	# And the following Project assignments exist
 	# | User    | Project    | Environment | Role         | Site                | Site Number | User Group |
 	# | defuser | Jennicilin | Prod        | Data Manager | ABC Hospital        | 12333       | Reports    |

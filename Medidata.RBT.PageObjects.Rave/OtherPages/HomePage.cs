@@ -12,13 +12,14 @@ using Medidata.RBT.SeleniumExtension;
 
 using Medidata.RBT.PageObjects.Rave.SiteAdministration;
 using Medidata.RBT.PageObjects.Rave.SharedRaveObjects;
+using System.Threading;
 
 namespace Medidata.RBT.PageObjects.Rave
 {
 	/// <summary>
 	/// Because HomePage is a all in one page. It also inherits from BaseEDCPage
 	/// </summary>
-	public  class HomePage : BaseEDCPage, ICanPaginate, ICanHighlight, ICanVerifyExist, ICanVerifyInOrder, ITaskSummaryContainer
+	public class HomePage : BaseEDCPage, IHavePaginationControl, ICanHighlight, ICanVerifyExist, ICanVerifyInOrder, ITaskSummaryContainer
 	{
 		[FindsBy(How = How.Id, Using = "_ctl0_Content_ListDisplayNavigation_txtSearch")]
 		IWebElement SearchBox;
@@ -38,19 +39,20 @@ namespace Medidata.RBT.PageObjects.Rave
             Project study = TestContext.GetExistingFeatureObjectOrMakeNew(
                 studyName, () => new Project(studyName));
 
-            int foundOnPage;
-            IWebElement studyLink = this.FindInPaginatedList("", () =>
-            {
-                //TODO :    Remove the coalescing op when seeding considderation is up to date for all feature files. 
-                //          Use study.UniqueName as the text to search for.
-                return TestContext.Browser.TryFindElementByLinkText(study.Name)
-                    ?? TestContext.Browser.TryFindElementByLinkText(study.UniqueName);
-            }, out foundOnPage);
 
-            // don't click null links.  It may be null not just because the project is not found, 
-            // ... but also if it's the only project the user is assigned to!
-            if (studyLink != null)
-                studyLink.Click();
+            int foundOnPage;
+			IWebElement studyLink = this.FindInPaginatedList("", () =>
+				{
+					//with some page settings, this may not be the container of studies
+					var studyList = TestContext.Browser.TryFindElementById("_ctl0_Content_ListDisplayNavigation_dgObjects");
+					return studyList.TryFindElementBy(By.PartialLinkText(study.UniqueName), true, 2);
+				}, out foundOnPage);
+
+
+			if (studyLink == null)
+				throw new Exception("Study not found!" + study.UniqueName);
+
+            studyLink.Click();
 
             return this;
         }
@@ -58,7 +60,8 @@ namespace Medidata.RBT.PageObjects.Rave
 		//
 		public SubjectPage CreateSubject(IEnumerable<FieldModel> dps)
 		{
-			IWebElement addSubjectLink = Browser.WaitForElement("lbAddSubject");
+			Thread.Sleep(500);
+			IWebElement addSubjectLink = Browser.TryFindElementByPartialID("lbAddSubject",true);
 			addSubjectLink.Click();
 			var prp =new PrimaryRecordPage();
             SubjectPage subPage = prp.FillNameAndSave(dps);
@@ -74,17 +77,15 @@ namespace Medidata.RBT.PageObjects.Rave
 		public HomePage SelectSite(string siteName)
 		{
             Site site = TestContext.GetExistingFeatureObjectOrMakeNew(
-                siteName, () => new Site(siteName, false));
+                siteName, () => new Site(siteName));
 
             //TODO: the pagination does not work on Inna's site where there is no page buttons for sites list
             //fix this later, but comment for now
 
             //TODO :    Remove the coalescing op when seeding considderation is up to date for all feature files. 
-            //          Use site.UniqueName as the text to search for.
-            var siteLink = TestContext.Browser.TryFindElementByLinkText(site.Name)
-                ?? TestContext.Browser.TryFindElementByLinkText(site.UniqueName);
+            //          Use site.Name as the text to search for.
+            ClickLink(site.UniqueName,null,null);
 
-			siteLink.Click();
 
 			return this;
 		}
@@ -115,52 +116,11 @@ namespace Medidata.RBT.PageObjects.Rave
 
 		#region IPaginatedPage
 
-		//TODO: clean these vars, they are uesd in GoNextPage()
-		int pageIndex = 1;
-		int count = 0;
-		int lastValue = -1;
-
-		public bool GoNextPage(string areaIdentifier)
+		public ICanPaginate GetPaginationControl(string areaIdentifier)
 		{
-			var pageTable = TestContext.Browser.FindElementById("_ctl0_Content_ListDisplayNavigation_DlPagination");
-			var pageLinks = pageTable.FindElements(By.XPath(".//a"));
-
-			count = pageLinks.Count;
-			if (pageIndex == count)
-				return false;
-
-			while (!pageLinks[pageIndex].Text.Equals("...") && int.Parse(pageLinks[pageIndex].Text) <= lastValue && pageIndex <= count)
-			{
-				pageIndex++;
-			}
-
-			if (pageLinks[pageIndex].Text.Equals("..."))
-			{
-				lastValue = int.Parse(pageLinks[pageIndex - 1].Text);
-				pageLinks[pageIndex].Click();
-				pageIndex = 1;
-			}
-			else
-			{
-				pageLinks[pageIndex].Click();
-				pageIndex++;
-			}
-			return true;
-		}
-
-		public bool GoPreviousPage(string areaIdentifier)
-		{
-			throw new NotImplementedException();
-		}
-
-		public bool GoToPage(string areaIdentifier, int page)
-		{
-			throw new NotImplementedException();
-		}
-
-		public bool CanPaginate(string areaIdentifier)
-		{
-			return true;
+			var pageTable = TestContext.Browser.TryFindElementById("_ctl0_Content_ListDisplayNavigation_TrPagination").Children()[1];
+			var pager = new RavePaginationControl_Arrow(this, pageTable);
+			return pager;
 		}
 
 		#endregion
@@ -261,5 +221,7 @@ namespace Medidata.RBT.PageObjects.Rave
         public TaskSummary GetTaskSummary() { return new TaskSummary(this); }
 
         #endregion
-    }
+
+
+	}
 }

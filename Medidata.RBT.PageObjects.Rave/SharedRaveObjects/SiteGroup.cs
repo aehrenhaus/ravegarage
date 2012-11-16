@@ -18,7 +18,7 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
     ///This is a rave specific Site. It is seedable.
     ///These are not uploaded, and are created entirely through the UI.
     ///</summary>
-    public class SiteGroup : SeedableObject
+    public class SiteGroup : BaseRaveSeedableObject
     {
         public UploadedDraft Draft { get; set; }
         public string Number { get; set; }
@@ -29,42 +29,33 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
         /// The Site constructor
         /// </summary>
         /// <param name="siteGroupName">The feature defined name of the Site Group</param>
-        /// <param name="seed">Bool determining whether you want to seed the object if it is not in the FeatureObjects dictionary</param>
-        public SiteGroup(string siteGroupName, bool seed = false)
-            : base(siteGroupName)
+        public SiteGroup(string siteGroupName)
         {
-
-            UID = Guid.NewGuid();
-            Name = siteGroupName;
+            UniqueName = siteGroupName;
             Number = Guid.NewGuid().ToString();
-
-            if (seed)
-                Seed();
-
         }
 
         /// <summary>
         /// Create a unique name for the site by appending a TID.
         /// </summary>
-        public override void MakeUnique()
+		protected override void MakeUnique()
         {
-            UniqueName = Name + TID;
+            UniqueName = UniqueName + TID;
         }
 
         /// <summary>
         /// Navigate to the "New Site" page
         /// </summary>
-        public override void NavigateToSeedPage()
+		protected override void NavigateToSeedPage()
         {
-            LoginPage.LoginToHomePageIfNotAlready();
-            TestContext.CurrentPage.As<HomePage>().ClickLink("Site Administration");
-            TestContext.CurrentPage.As<SiteAdministrationHomePage>().ClickLink("Site Group Administration");
+            TestContext.CurrentPage.ClickLink("Site Administration");
+            TestContext.CurrentPage.ClickLink("Site Group Administration");
         }
 
         /// <summary>
         /// Create a site and add it to the FeatureObjects site dictionary.
         /// </summary>
-        public override void CreateObject()
+		protected override void CreateObject()
         {
             TestContext.CurrentPage.As<SiteAdministrationNewSiteGroupPage>().CreateSiteGroup(UniqueName);
         }

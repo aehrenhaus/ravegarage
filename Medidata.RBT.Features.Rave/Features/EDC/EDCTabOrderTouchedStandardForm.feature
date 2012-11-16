@@ -50,7 +50,7 @@ Background:
 	#	|Unit Dictionary 1		|U2					|			|U2			|			
 	#And "Standard Form Touched" has been submitted with data
 	
-	Given I am logged in to Rave with username "defuser" and password "password"
+	Given I login to Rave with user "defuser" and password "password"
 	And I select Study "Standard Study" and Site "Site 1"
 	And I select a Subject "777777791{Var(num1)}"
 	And I select link "Standard Form" located in "Left Nav"

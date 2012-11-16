@@ -117,10 +117,17 @@ namespace Medidata.RBT.Common.Steps
 
 		}
 
+		[StepDefinition(@"I select ""([^""]*)"" link ""([^""]*)""")]
+		public void ISelect____Link____(string type, string linkText)
+		{
+			linkText = SpecialStringHelper.Replace(linkText);
+			CurrentPage = CurrentPage.ClickLink(linkText, type);
+
+		}
+
 		/// <summary>
 		/// Click a hyperlink
 		/// </summary>
-		/// <param name="linkText"></param>
 		[StepDefinition(@"I select link ""([^""]*)""")]
 		public void ISelect____(string linkText)
 		{
@@ -130,15 +137,24 @@ namespace Medidata.RBT.Common.Steps
 		}
 
 		/// <summary>
-		/// Click a hyperlink in an area
+		/// I select "Study" link "Mediflex" in "Header"
 		/// </summary>
-		/// <param name="linkText"></param>
-		/// <param name="areaName"></param>
-		[StepDefinition(@"I select link ""([^""]*)"" in ""([^""]*)""")]
-		public void ISelect____In____(string linkText, string areaName)
+		[StepDefinition(@"I select ""([^""]*)"" link ""([^""]*)"" in ""([^""]*)""")]
+		public void ISelect____Link____In____(string objectType, string linkText, string areaName)
 		{
 			linkText = SpecialStringHelper.Replace(linkText);
-			CurrentPage = CurrentPage.ClickLinkInArea(null,linkText, areaName);
+			CurrentPage = CurrentPage.ClickLink(linkText, objectType, areaName);
+
+		}
+
+		/// <summary>
+		/// I select link "Mediflex" in "Header"
+		/// </summary>
+		[StepDefinition(@"I select link ""([^""]*)"" in ""([^""]*)""")]
+		public void ISelectLink____In____(string linkText, string areaName)
+		{
+			linkText = SpecialStringHelper.Replace(linkText);
+			CurrentPage = CurrentPage.ClickLink(linkText,null, areaName);
 			
 		}
 

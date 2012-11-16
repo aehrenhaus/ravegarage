@@ -85,7 +85,7 @@ namespace Medidata.RBT.PageObjects.Rave
         {
             Textbox element = Browser.TryFindElementByPartialID(identifier).EnhanceAs<Textbox>();
             element.SetText(text);
-            var option = Browser.WaitForElement(b => b.FindElementsByPartialId("PickListBox").FirstOrDefault(elm => elm.Text == text));
+            var option = Browser.TryFindElementBy(b => b.FindElementsByPartialId("PickListBox").FirstOrDefault(elm => elm.Text == text));
             Browser.FindElement(By.XPath("*//div[@class = 'SearchList_PickListBoxItem_Hover']")).Click();
           
             //SearchList_PickListBoxItem_Hover
@@ -165,7 +165,7 @@ namespace Medidata.RBT.PageObjects.Rave
         int pageIndex = 0;
         int count = 0;
         int lastValue = -1;
-
+		public int CurrentPageNumber { get; private set; }
         public bool GoNextPage(string areaIdentifer)
         {
             var pageTable = Browser.TryFindElementByPartialID("_LabRangesGrid").TryFindElementBy(By.XPath("./tbody/tr[last()]"));

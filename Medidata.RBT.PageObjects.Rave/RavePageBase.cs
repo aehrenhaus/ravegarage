@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using Medidata.RBT.PageObjects;
+using Medidata.RBT.PageObjects.Rave.SharedRaveObjects;
 using OpenQA.Selenium.Support.PageObjects;
 using OpenQA.Selenium;
 
@@ -17,18 +19,23 @@ namespace Medidata.RBT.PageObjects.Rave
 	{
 		public override IPage NavigateTo(string name)
 		{
-			if (name == "Home")
+			if (new string[] {
+				"Architect",
+				"User Administration",
+				"Site Administration",
+				"Reporter",
+				"Configuration",
+				"Report Administration",
+				"Lab Administration",
+				"EED",
+				"Translation Workbench","PDF Generator","DCF","Query Management","Welcome Message"}.Contains(name))
 			{
-				Browser.FindElementById("_ctl0_PgHeader_TabHyperlink0").Click();
-				return new HomePage();
+				if (!(TestContext.CurrentPage is HomePage))
+					TestContext.CurrentPage = new HomePage().NavigateToSelf();
 			}
 
-            if (name == "PDF Generator")
-            {
-                if(TestContext.CurrentPage.URL != "Modules/PDF/FileRequest.aspx")
-                    Browser.FindElementByXPath("//a[@href='LaunchModule.aspx?M=~/Modules/PDF/FileRequests.aspx&I=12']").Click();
-                return new FileRequestPage();
-            }
+			if (name == "Home")
+				return new HomePage().NavigateToSelf();
 
 			return base.NavigateTo(name);
 			
@@ -42,20 +49,7 @@ namespace Medidata.RBT.PageObjects.Rave
 			return base.GetElementByName(identifier,areaIdentifier,listItem);
 		}
 
-        public override IPage ClickLink(string linkText)
-        {
-            IPage page = null;
-            try 
-            {
-                page = base.ClickLink(linkText);
-                
-            }
-            catch(Exception e)
-            {
-                page = this.ClickSpanLink(linkText);
-            }
-            return page;
-        }
+   
 
         public override string BaseURL
         {
@@ -85,6 +79,42 @@ namespace Medidata.RBT.PageObjects.Rave
 			return  TestContext.POFactory.GetPageByUrl(new Uri(Browser.Url));
 		}
 
+		public override IPage ClickLink(string linkText, string type = null, string areaIdentifier = null)
+		{
+
+			if (type == "Study")
+			{
+				Project project = TestContext.GetExistingFeatureObjectOrMakeNew(linkText, () => new Project(linkText));
+				linkText = project.UniqueName;
+			}
+
+			IPage page = null;
+
+			ISearchContext area = null;
+			if (!string.IsNullOrEmpty(areaIdentifier))
+			{
+				//area = Browser.TryFindElementById(areaIdentifier);
+				//if (area == null)
+					area = GetElementByName(areaIdentifier);
+			}
+			else
+			{
+				area = Browser;
+			}
+
+			var link = area.TryFindElementBy(By.LinkText(linkText),false);
+
+			if(link==null)
+				link = area.TryFindElementBySpanLinktext(linkText);
+
+			//another try, but with wait
+			if (link == null)
+				link = area.TryFindElementBy(By.LinkText(linkText), true);
+
+			link.Click();
+			Thread.Sleep(200);
+			return TestContext.POFactory.GetPageByUrl(new Uri(Browser.Url));
+		}
 
         public virtual IEDCFieldControl FindLandscapeLogField(string fieldName, int rowIndex, ControlType controlType = ControlType.Default)
         {
@@ -132,5 +162,22 @@ namespace Medidata.RBT.PageObjects.Rave
             return className;
 
         }
+
+
+		/// <summary>
+		/// Clicks the link that is created as a span with an onclick event.  
+		/// </summary>
+		/// <param name="linkText">The link text.</param>
+		/// <returns></returns>
+		public virtual IPage ClickSpanLink(string linkText)
+		{
+			IWebElement item = Browser.TryFindElementByLinkText(linkText);
+			if (item != null)
+				item.Click();
+			else
+				throw new Exception("Can't find link by text:" + linkText);
+
+			return GetPageByCurrentUrlIfNoAlert();
+		}
 	}
 }

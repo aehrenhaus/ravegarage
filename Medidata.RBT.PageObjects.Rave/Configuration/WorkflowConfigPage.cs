@@ -9,15 +9,6 @@ namespace Medidata.RBT.PageObjects.Rave.Configuration
 {
     public class WorkflowConfigPage : ConfigurationBasePage
     {
-        public override IPage ClickLink(string linkText)
-        {
-            base.ClickLink(linkText);
-
-            if (linkText == "Add New Draft")
-                return new ArchitectNewDraftPage();
-
-            return this;
-        }
 
         /// <summary>
         /// Set the review group to active or inactive.

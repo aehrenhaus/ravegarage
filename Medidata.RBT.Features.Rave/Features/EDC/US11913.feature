@@ -8,7 +8,7 @@ Then the report names are sorted in alphabetical order
 
 
 Background:
-Given I am logged in to Rave with username "defuser" and password "password"
+Given I login to Rave with user "defuser" and password "password"
 # And the following Project assignments exist
 # | User    | Project    | Environment | Role | Site     | Site Number | User Group |
 # | defuser | Mediflex   | Prod        | cdm1 | LabSite01| 2426        | Reports    |

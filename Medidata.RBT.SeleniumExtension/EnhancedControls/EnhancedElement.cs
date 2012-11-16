@@ -14,7 +14,7 @@ namespace Medidata.RBT.SeleniumExtension
 	/// 
 	/// 
 	/// </summary>
-	public class EnhancedElement:IWebElement
+    public class EnhancedElement : IWebElement, IWrapsDriver
 	{
 		#region Private 
 
@@ -209,5 +209,10 @@ namespace Medidata.RBT.SeleniumExtension
 		#endregion
 
 
-	}
+
+        public IWebDriver WrappedDriver
+        {
+            get { return (ele as IWrapsDriver).WrappedDriver; }
+        }
+    }
 }

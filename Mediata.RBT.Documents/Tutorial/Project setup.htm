@@ -1,0 +1,60 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+	<head>
+		<title>Project setup</title>
+	</head>
+	<body>
+		<link rel="stylesheet" href="site.css" type="text/css" />
+		<h1>
+			Project setup</h1>
+		<ol>
+			<li>Uninstall Typemock 6.0.2 which is usually installed on medidata&#39;s machines, it 
+				conflicts with the version of selenium we are using.</li>
+			<li>Install specflow, this will provide nessisary plugins for VS2010</li>
+			<li>Set powershell execution policy. For windows xp, you shall install KB968930 
+				first to get latest powershell.
+				<br />
+				On windows 7, open
+				<a href="file:///C:/Windows/SysWOW64/WindowsPowerShell/v1.0/powershell_ise.exe">
+				C:\Windows\SysWOW64\WindowsPowerShell\v1.0\powershell_ise.exe</a>
+				<br />
+				enter: Set-ExecutionPolicy unrestricted click &#39;Yes&#39; on the prompt window</li>
+			<li>Turn off UAC(User account control) on Windows 7
+				<br />
+				You can do this from control panel/user accounts/user account control . Do
+				<strong>reboot</strong> to take effect</li>
+			<li>Clone RBT project using git</li>
+			<li>Get your self a copy of firefox12. At this time, only firefox 12 works properly 
+				with the selenium dlls.</li>
+			<li>In ravegarage\Medidata.RBT.Features.Rave folder, make a copy of 
+				App.config.template ,rename the new file to App.config</li>
+			<li>Now you can open the solution, and edit app.config.<ol>
+			<li>Config your path to the copy of firefox browser</li>
+				<li>Optionally you can config the path to the firefox&#39;s profile folder. There is a 
+					zipped copy in ExternalDlls folder.
+					<br />
+					This profile contains firebug.<br />
+					With a blank profile setting, eachtime there will be a new profile generated and 
+					you won&#39;t get any of you plugins installed to other firefox.</li>
+				<li>Config the rave url and database connection strings</li>
+			</ol>
+			</li>
+			<li>Open the solution in VS, compile it(F6), open &#39;test view&#39;&nbsp; if you don&#39;t see 
+				it(Menu: Test-&gt;Windows-&gt;TestView)<br />
+				There should already be many tests there .<br />
+				Click the group by dropdown to group by Class<br />
+				<img src="Project setup/test view group by.jpg"  alt="group by" /></li>
+			<li>
+				Pick any 
+				scenario in the list , right click and run it. It might fail but at least you should 
+				see browser pops up trying to run the test.
+				<br />
+				And later the report page pops up.<br />
+				<img src="Project setup/report.jpg" alt="report" />
+			</li>
+		</ol>
+		<p>
+			&nbsp;</p>
+	
+	</body>
+</html>

@@ -41,6 +41,9 @@
     <Reference Include="Newtonsoft.Json">
       <HintPath>..\ExternalDlls\Newtonsoft.Json.dll</HintPath>
     </Reference>
+    <Reference Include="Selenium.WebDriverBackedSelenium">
+      <HintPath>..\ExternalDlls\Selenium.WebDriverBackedSelenium.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
@@ -49,8 +52,12 @@
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
-    <Reference Include="TechTalk.SpecFlow">
-      <HintPath>..\ExternalDlls\TechTalk.SpecFlow.dll</HintPath>
+    <Reference Include="TechTalk.SpecFlow, Version=1.9.0.77, Culture=neutral, PublicKeyToken=0778194805d6db41, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\SpecFlow.1.9.0\lib\net35\TechTalk.SpecFlow.dll</HintPath>
+    </Reference>
+    <Reference Include="ThoughtWorks.Selenium.Core">
+      <HintPath>..\ExternalDlls\ThoughtWorks.Selenium.Core.dll</HintPath>
     </Reference>
     <Reference Include="WebDriver">
       <HintPath>..\ExternalDlls\WebDriver.dll</HintPath>
@@ -64,6 +71,7 @@
     <Compile Include="AmendmentManager\AMMigrationResultPage.cs" />
     <Compile Include="AmendmentManager\AMMigrationObjectMappingPage.cs" />
     <Compile Include="AmendmentManager\AMMigrationBasePage.cs" />
+    <Compile Include="AmendmentManager\MigrationConfigure.cs" />
     <Compile Include="AmendmentManager\MigrationObjectHierarchyEditPage.cs" />
     <Compile Include="AmendmentManager\MigrationObjectHierarchy.cs" />
     <Compile Include="AmendmentManager\MigrationModel.cs" />
@@ -108,6 +116,7 @@
     <Compile Include="EDC\TaskSummaryItem.cs" />
     <Compile Include="Lab\AnalytesPage.cs" />
     <Compile Include="Lab\CentralLabsPage.cs" />
+    <Compile Include="Lab\RangeTypesPage.cs" />
     <Compile Include="Lab\LabLoaderPage.cs" />
     <Compile Include="Lab\CopyLabRanges.cs" />
     <Compile Include="Lab\GlobalDataDictionariesPage.cs" />
@@ -123,6 +132,9 @@
     <Compile Include="OtherPages\LogoutPage.cs" />
     <Compile Include="OtherPages\PasswordChangedPage.cs" />
     <Compile Include="OtherPages\PasswordPage.cs" />
+    <Compile Include="PDF\DisplayMultipleLogLinesControl.cs" />
+    <Compile Include="PDF\FileRequestCreateRequestPageBase.cs" />
+    <Compile Include="PDF\PDFConfigProfilesPage.cs" />
     <Compile Include="PDF\PDFFileRequestsControl.cs" />
     <Compile Include="PDF\FileRequestCreateBlankRequestPage.cs" />
     <Compile Include="PDF\FileRequestViewPage.cs" />
@@ -134,15 +146,19 @@
     <Compile Include="ReportAdmin\PackageDownload.cs" />
     <Compile Include="ReportAdmin\ReportManagerPage.cs" />
     <Compile Include="ReportAdmin\ReportAssignmentPage.cs" />
+    <Compile Include="SharedControls\RavePaginationControl_CurrentPageNotLink.cs" />
+    <Compile Include="SharedControls\RavePaginationControl_Arrow.cs" />
+    <Compile Include="SharedRaveObjects\RangeType.cs" />
     <Compile Include="SharedRaveObjects\LabConfiguration.cs" />
     <Compile Include="SharedRaveObjects\ModuleAssignment.cs" />
+    <Compile Include="SharedRaveObjects\PdfProfile.cs" />
     <Compile Include="SharedRaveObjects\ReportAssignment.cs" />
     <Compile Include="SharedRaveObjects\SiteGroup.cs" />
     <Compile Include="SharedRaveObjects\StudyAssignment.cs" />
     <Compile Include="SharedRaveObjects\SecurityRole.cs" />
     <Compile Include="SharedRaveObjects\Draft.cs" />
     <Compile Include="SharedRaveObjects\Project.cs" />
-    <Compile Include="SharedRaveObjects\SeedableObject.cs" />
+    <Compile Include="SharedRaveObjects\BaseRaveSeedableObject.cs" />
     <Compile Include="SharedRaveObjects\Site.cs" />
     <Compile Include="SharedRaveObjects\CrfVersion.cs" />
     <Compile Include="SharedRaveObjects\Role.cs" />
@@ -162,7 +178,10 @@
     <Compile Include="TableModels\AnalyteRangeModel.cs" />
     <Compile Include="TableModels\ArchitectObjectModel.cs" />
     <Compile Include="TableModels\AuditModel.cs" />
+    <Compile Include="TableModels\RangeTypeModel.cs" />
     <Compile Include="TableModels\FormModel.cs" />
+    <Compile Include="TableModels\PDFCreationModel.cs" />
+    <Compile Include="TableModels\PdfProfileModel.cs" />
     <Compile Include="TableModels\TSDVObjectModel.cs" />
     <Compile Include="TableModels\CustomTierModel.cs" />
     <Compile Include="TableModels\IFieldModel.cs" />
@@ -175,8 +194,10 @@
     <Compile Include="TableModels\ReportAssignmentModel.cs" />
     <Compile Include="TableModels\ReportListModel.cs" />
     <Compile Include="TableModels\TaskSummaryItemModel.cs" />
+    <Compile Include="TableModels\TSDV\TierPattern.cs" />
     <Compile Include="TableModels\UnitConversionModel.cs" />
     <Compile Include="TSDV\BlockPlansPageBase.cs" />
+    <Compile Include="TSDV\TiersPage.cs" />
     <Compile Include="TSDV\CustomTierDraftPage.cs" />
     <Compile Include="TSDV\SiteGroupBlockPlansPage.cs" />
     <Compile Include="TSDV\StudyBlockPlansPage.cs" />
@@ -216,7 +237,6 @@
       <Name>Medidata.RBT</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

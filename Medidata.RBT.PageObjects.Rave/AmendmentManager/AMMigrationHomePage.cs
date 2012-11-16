@@ -30,16 +30,6 @@ namespace Medidata.RBT.PageObjects.Rave.AmendmentManager
             return base.NavigateTo(name);
         }
 
-        public override IPage ClickLink(string linkName)
-        {
-            base.ClickLink(linkName);
-            if (linkName == "Create Plan")
-                TestContext.CurrentPage = new AMMigrationHomePage();
-            if (linkName == "Execute Plan")
-                TestContext.CurrentPage = new AMMigrationExecutePage();
-
-            return TestContext.CurrentPage;
-        }
 
         /// <summary>
         /// Select the source crf
@@ -47,7 +37,7 @@ namespace Medidata.RBT.PageObjects.Rave.AmendmentManager
         /// <param name="sourceCRFName">The feature defined source crf name</param>
         public void SelectSourceCRF(string sourceCRFName)
         {
-            string uniqueSourceCRFName = ((CrfVersion)TestContext.FeatureObjects[sourceCRFName]).UniqueName;
+            string uniqueSourceCRFName = ((CrfVersion)TestContext.SeedableObjects[sourceCRFName]).UniqueName;
             Dropdown sourceDropdown = Browser.FindElementById("_ctl0_Content_MigrationStepStart1_ddlSimpleSourceVersionId").EnhanceAs<Dropdown>();
             sourceDropdown.SelectByPartialText(uniqueSourceCRFName);
         }
@@ -58,7 +48,7 @@ namespace Medidata.RBT.PageObjects.Rave.AmendmentManager
         /// <param name="sourceCRFName">The feature defined target crf name</param>
         public void SelectTargetCRF(string targetCRFName)
         {
-            string uniqueTargetCRFName = ((CrfVersion)TestContext.FeatureObjects[targetCRFName]).UniqueName;
+			string uniqueTargetCRFName = ((CrfVersion)TestContext.SeedableObjects[targetCRFName]).UniqueName;
             Dropdown sourceDropdown = Browser.FindElementById("_ctl0_Content_MigrationStepStart1_ddlSimpleTargetVersionId").EnhanceAs<Dropdown>();
             sourceDropdown.SelectByPartialText(uniqueTargetCRFName);
         }

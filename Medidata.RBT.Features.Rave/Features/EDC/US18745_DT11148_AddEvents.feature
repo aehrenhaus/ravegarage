@@ -35,7 +35,7 @@ Given following Project assignments exist
 @Validation
 Scenario:@US18745-01 By Default the user with entry permission can not see Enable and Disable radio buttons on subject page and grid view page.
 
-	Given I log in to Rave with user "US18745_entryuser"
+	Given I login to Rave with user "US18745_entryuser"
     When I create a Subject
     |Field      |Data                 |Control Type |
     |Label 1    |SUB{RndNum<num1>(3)} |textbox      |
@@ -57,14 +57,14 @@ Scenario:@US18745-01 By Default the user with entry permission can not see Enabl
 @Validation  
 Scenario:@US18745-02 When the Add Events disabled, the user with entry permission can see Lock icon with Audit link on subject page and grid view page.
 
-	Given I log in to Rave with user "US18745_entrylockunlockuser"
+	Given I login to Rave with user "US18745_entrylockunlockuser"
     And I create a Subject
     |Field      |Data                 |Control Type |
     |Label 1    |SUB{RndNum<num2>(3)} |textbox      |
 	And I click radiobutton with label "Disabled"
 	And I take a screenshot
 	And I log out of Rave
-	And I log in to Rave with user "US18745_entryuser"
+	And I login to Rave with user "US18745_entryuser"
     When I select a Subject "{Var(num2)}"
 	And I can not see "Enabled" radio button
 	And I can not see "Disabled" radio button
@@ -105,12 +105,12 @@ Scenario:@US18745-02 When the Add Events disabled, the user with entry permissio
 @Validation 
 Scenario:@US18745-03 When the Add Events enabled, the user with entry permission can see the Add Events dropdown and Add button on subject page and grid view page.
 
-	Given I log in to Rave with user "US18745_entrylockunlockuser"
+	Given I login to Rave with user "US18745_entrylockunlockuser"
     And I create a Subject
     |Field      |Data                 |Control Type |
     |Label 1    |SUB{RndNum<num3>(3)} |textbox      |
 	And I log out of Rave
-	And I log in to Rave with user "US18745_entryuser"
+	And I login to Rave with user "US18745_entryuser"
     When I select a Subject "{Var(num3)}"
 	Then I can see "enabled" dropdown labeled "Add Event"
 	And I can see "Add" button
@@ -134,13 +134,13 @@ Scenario:@US18745-03 When the Add Events enabled, the user with entry permission
 @Validation   
 Scenario:@US18745-04 By Default the read only user with seeentry permission can not see Enable and Disable radio buttons on subject page and grid view page.
 
-	Given I log in to Rave with user "US18745_entrylockunlockuser"
+	Given I login to Rave with user "US18745_entrylockunlockuser"
     And I create a Subject
     |Field      |Data                 |Control Type |
     |Label 1    |SUB{RndNum<num4>(3)} |textbox      |
 	And I take a screenshot
 	And I log out of Rave
-	And I log in to Rave with user "US18745_readonlyuser"
+	And I login to Rave with user "US18745_readonlyuser"
     When I select a Subject "{Var(num4)}"
 	Then I can not see "Enabled" radio button
 	And I can not see "Disabled" radio button
@@ -160,14 +160,14 @@ Scenario:@US18745-04 By Default the read only user with seeentry permission can 
 @Validation    
 Scenario:@US18745-05 When the Add Events disabled, the read only user with seeentry permission can not see Enable and Disable radio buttons on subject page and grid view page.
 
-	Given I log in to Rave with user "US18745_entrylockunlockuser"
+	Given I login to Rave with user "US18745_entrylockunlockuser"
     And I create a Subject
     |Field      |Data                 |Control Type |
     |Label 1    |SUB{RndNum<num5>(3)} |textbox      |
 	And I click radiobutton with label "Disabled"
 	And I take a screenshot
 	And I log out of Rave
-	And I log in to Rave with user "US18745_readonlyuser"
+	And I login to Rave with user "US18745_readonlyuser"
     When I select a Subject "{Var(num5)}"
 	Then I can not see Add Event lock icon
 	And I can not see link "Add Event is currently disabled for this subject."
@@ -191,12 +191,12 @@ Scenario:@US18745-05 When the Add Events disabled, the read only user with seeen
 @Validation   
 Scenario:@US18745-06 When the Add Events enabled, the read only user with seeentry permission can not see Enable and Disable radio buttons on subject page and grid view page.
 
-	Given I log in to Rave with user "US18745_entrylockunlockuser"
+	Given I login to Rave with user "US18745_entrylockunlockuser"
     And I create a Subject
     |Field      |Data                 |Control Type |
     |Label 1    |SUB{RndNum<num6>(3)} |textbox      |
 	And I log out of Rave
-	And I log in to Rave with user "US18745_readonlyuser"
+	And I login to Rave with user "US18745_readonlyuser"
     When I select a Subject "{Var(num6)}"
 	Then I can not see Add Event lock icon
 	And I can not see link "Add Event is currently disabled for this subject."
@@ -220,7 +220,7 @@ Scenario:@US18745-06 When the Add Events enabled, the read only user with seeent
 @Validation 
 Scenario:@US18745-07 By Default the user with lock, unlock and entry permission can see Enable, Disable radio buttons and add event drop down on subject page and grid view page.
 
-	Given I log in to Rave with user "US18745_entrylockunlockuser"
+	Given I login to Rave with user "US18745_entrylockunlockuser"
     When I create a Subject
     |Field      |Data                 |Control Type |
     |Label 1    |SUB{RndNum<num7>(3)} |textbox      |
@@ -242,7 +242,7 @@ Scenario:@US18745-07 By Default the user with lock, unlock and entry permission 
 @Validation 
 Scenario:@US18745-08 When the Add Events disabled on subject page, the user with lock, unlock and entry permission can see the greyed out Add Events dropdown with lock icon and Audit link on subject page and grid view page.
 
-	Given I log in to Rave with user "US18745_entrylockunlockuser"
+	Given I login to Rave with user "US18745_entrylockunlockuser"
     When I create a Subject
     |Field      |Data                 |Control Type |
     |Label 1    |SUB{RndNum<num8>(3)} |textbox      |
@@ -287,7 +287,7 @@ Scenario:@US18745-08 When the Add Events disabled on subject page, the user with
 @Validation 
 Scenario:@US18745-09 When the Add Events enabled on subject page, the user with lock, unlock and entry permission can see the enable Add Events dropdown and add button on subject page and grid view page.
 
-	Given I log in to Rave with user "US18745_entrylockunlockuser"
+	Given I login to Rave with user "US18745_entrylockunlockuser"
     When I create a Subject
     |Field      |Data                 |Control Type |
     |Label 1    |SUB{RndNum<num9>(3)} |textbox      |
@@ -312,7 +312,7 @@ Scenario:@US18745-09 When the Add Events enabled on subject page, the user with 
 @Validation 
 Scenario:@US18745-10 The user with lock, unlock and entry permission disable, enable and disable the radio button on subject page, then the user can see the three actions of the Audit trail on the subject page, grid view page and Parent: Subject page.
  
-	Given I log in to Rave with user "US18745_entrylockunlockuser"
+	Given I login to Rave with user "US18745_entrylockunlockuser"
     When I create a Subject
     |Field      |Data                  |Control Type |
     |Label 1    |SUB{RndNum<num10>(3)} |textbox      |
@@ -365,7 +365,7 @@ Scenario:@US18745-10 The user with lock, unlock and entry permission disable, en
 @Validation 
 Scenario:@US18745-11 When the Add Events disabled on subject grid view page, the user with lock, unlock and entry permission can see the greyed out Add Events dropdown with lock icon and Audit link on grid view page and subject calendar page.
 
-	Given I log in to Rave with user "US18745_entrylockunlockuser"
+	Given I login to Rave with user "US18745_entrylockunlockuser"
     And I create a Subject
     |Field      |Data                  |Control Type |
     |Label 1    |SUB{RndNum<num11>(3)} |textbox      |
@@ -404,7 +404,7 @@ Scenario:@US18745-11 When the Add Events disabled on subject grid view page, the
 @Validation 
 Scenario:@US18745-12 When the Add Events enabled on subject grid view page, the user with lock, unlock and entry permission can see the enable Add Events dropdown and add button on grid view page and subject calendar page.
 
-	Given I log in to Rave with user "US18745_entrylockunlockuser"
+	Given I login to Rave with user "US18745_entrylockunlockuser"
     And I create a Subject
     |Field      |Data                 |Control Type |
     |Label 1    |SUB{RndNum<num12>(3)} |textbox      |
@@ -431,7 +431,7 @@ Scenario:@US18745-12 When the Add Events enabled on subject grid view page, the 
 @Validation 
 Scenario:@US18745-13 The user with lock, unlock and entry permission disable, enable and disable the radio button on grid view page, then the user can see the three actions of the Audit trail on the grid view page, subject calendar page and Parent: Subject page.
 
-	Given I log in to Rave with user "US18745_entrylockunlockuser"
+	Given I login to Rave with user "US18745_entrylockunlockuser"
     And I create a Subject
     |Field      |Data                  |Control Type |
     |Label 1    |SUB{RndNum<num13>(3)} |textbox      |
@@ -477,14 +477,14 @@ Scenario:@US18745-13 The user with lock, unlock and entry permission disable, en
 @Validation 
 Scenario:@US18745-14 When the Add Events disabled by other user with entry and lock permission on subject page, the user with lock, unlock and entry permission can see the greyed out Add Events dropdown with lock icon and Audit link on subject page and grid view page.
 
-	Given I log in to Rave with user "US18745_entrylockuser"
+	Given I login to Rave with user "US18745_entrylockuser"
     And I create a Subject
     |Field      |Data                  |Control Type |
     |Label 1    |SUB{RndNum<num14>(3)} |textbox      |
 	And I click radiobutton with label "Disabled"
 	And I take a screenshot
 	And I log out of Rave
-	And I log in to Rave with user "US18745_entrylockunlockuser"
+	And I login to Rave with user "US18745_entrylockunlockuser"
     When I select a Subject "{Var(num14)}"
     Then I can see "disabled" dropdown labeled "Add Event"
 	And I can not see "Add" button
@@ -522,7 +522,7 @@ Scenario:@US18745-14 When the Add Events disabled by other user with entry and l
 Scenario:@US18745-15 All the Add Events controls will disappear by adding all max add events on the subject page.
 #Note: Allow Add Max are "3" for "Unscheduled" matrices
 
-    Given I log in to Rave with user "US18745_entrylockunlockuser"
+    Given I login to Rave with user "US18745_entrylockunlockuser"
 	And I create a Subject
     |Field      |Data                  |Control Type |
     |Label 1    |SUB{RndNum<num15>(3)} |textbox      |
@@ -558,7 +558,7 @@ Scenario:@US18745-15 All the Add Events controls will disappear by adding all ma
 Scenario:@US18745-16 All the Add Events controls will disappear by adding all max add events on the subject grid view page.
 #Note: Allow Add Max are "3" for "Unscheduled" matrices
 
-    Given I log in to Rave with user "US18745_entrylockunlockuser"
+    Given I login to Rave with user "US18745_entrylockunlockuser"
 	And I create a Subject
     |Field      |Data                  |Control Type |
     |Label 1    |SUB{RndNum<num16>(3)} |textbox      |
@@ -594,7 +594,7 @@ Scenario:@US18745-16 All the Add Events controls will disappear by adding all ma
 @Validation  
 Scenario:@US18745-17 By Default the user with entry and lock permission, can see the disable radio button, Add Event dropdown and Add Button on subject page and grid view page.
 
-	Given I log in to Rave with user "US18745_entrylockuser"
+	Given I login to Rave with user "US18745_entrylockuser"
     When I create a Subject
     |Field      |Data                  |Control Type |
     |Label 1    |SUB{RndNum<num17>(3)} |textbox      |
@@ -616,7 +616,7 @@ Scenario:@US18745-17 By Default the user with entry and lock permission, can see
 @Validation 
 Scenario:@US18745-18 When the Add Events disabled on subject page, the user with lock and entry permission can see the greyed out Add Events dropdown with lock icon and Audit link on subject page and grid view page.
 
-	Given I log in to Rave with user "US18745_entrylockuser"
+	Given I login to Rave with user "US18745_entrylockuser"
     When I create a Subject
     |Field      |Data                  |Control Type |
     |Label 1    |SUB{RndNum<num18>(3)} |textbox      |
@@ -661,14 +661,14 @@ Scenario:@US18745-18 When the Add Events disabled on subject page, the user with
 @Validation 
 Scenario:@US18745-19 When the Add Events disabled by other user with entry, lock and unlock permission on subject page, the user with lock and entry permission can see the greyed out Add Events dropdown with lock icon and Audit link on subject page and grid view page.
 
-	Given I log in to Rave with user "US18745_entrylockunlockuser"
+	Given I login to Rave with user "US18745_entrylockunlockuser"
     And I create a Subject
     |Field      |Data                  |Control Type |
     |Label 1    |SUB{RndNum<num19>(3)} |textbox      |
 	And I click radiobutton with label "Disabled"
 	And I take a screenshot
 	And I log out of Rave
-	And I log in to Rave with user "US18745_entrylockuser"
+	And I login to Rave with user "US18745_entrylockuser"
     When I select a Subject "{Var(num19)}"
     Then I can see "disabled" dropdown labeled "Add Event"
 	And I can not see "Add" button
@@ -705,7 +705,7 @@ Scenario:@US18745-19 When the Add Events disabled by other user with entry, lock
 @Validation 
 Scenario:@US18745-20 By Default the user with entry and unlock permission, can see the enabled Add Event dropdown and Add Button on subject page and grid view page.
 
-	Given I log in to Rave with user "US18745_entryunlockuser"
+	Given I login to Rave with user "US18745_entryunlockuser"
     When I create a Subject
     |Field      |Data                  |Control Type |
     |Label 1    |SUB{RndNum<num20>(3)} |textbox      |
@@ -727,14 +727,14 @@ Scenario:@US18745-20 By Default the user with entry and unlock permission, can s
 @Validation 
 Scenario:@US18745-21 When the Add Events disabled by other user with entry, lock and unlock permission on subject page, the user with unlock and entry permission can see the enabled radio button greyed out Add Events dropdown with lock icon and Audit link on subject page and grid view page.
 
-	Given I log in to Rave with user "US18745_entrylockunlockuser"
+	Given I login to Rave with user "US18745_entrylockunlockuser"
     And I create a Subject
     |Field      |Data                  |Control Type |
     |Label 1    |SUB{RndNum<num21>(3)} |textbox      |
 	And I click radiobutton with label "Disabled"
 	And I take a screenshot
 	And I log out of Rave
-	And I log in to Rave with user "US18745_entryunlockuser"
+	And I login to Rave with user "US18745_entryunlockuser"
     When I select a Subject "{Var(num21)}"
 	Then I can see "Enabled" radio button
 	And I can not see "Disabled" radio button
@@ -775,14 +775,14 @@ Scenario:@US18745-21 When the Add Events disabled by other user with entry, lock
 @Validation 
 Scenario:@US18745-22 When the Add Events disabled by other user with entry, lock and unlock permission on subject page, the user with unlock and entry permission selects enabled radio button will enable Add Events dropdown and Add button is displayed on subject page and grid view page.
 
-	Given I log in to Rave with user "US18745_entrylockunlockuser"
+	Given I login to Rave with user "US18745_entrylockunlockuser"
     And I create a Subject
     |Field      |Data                  |Control Type |
     |Label 1    |SUB{RndNum<num22>(3)} |textbox      |
 	And I click radiobutton with label "Disabled"
 	And I take a screenshot
 	And I log out of Rave
-	And I log in to Rave with user "US18745_entryunlockuser"
+	And I login to Rave with user "US18745_entryunlockuser"
     When I select a Subject "{Var(num22)}"
 	Then I can see "Enabled" radio button
 	And I can not see "Disabled" radio button
@@ -795,7 +795,7 @@ Scenario:@US18745-22 When the Add Events disabled by other user with entry, lock
 	And I can not see "Disabled" radio button
 	And I can not see "Enabled" radio button 
 	And I log out of Rave
-	And I log in to Rave with user "US18745_entrylockunlockuser"
+	And I login to Rave with user "US18745_entrylockunlockuser"
 	And I select a Subject "{Var(num22)}"
 	And I click radiobutton with label "Disabled"
 	When I select link "Add Event is currently disabled for this subject."
@@ -833,12 +833,12 @@ Scenario:@US18745-22 When the Add Events disabled by other user with entry, lock
 @Validation 
 Scenario:@US18745-23 By Default the user with seeentry, lock and unlock permission, can see disable and enable radio buttons with message on subject page and grid view page.
 
-	Given I log in to Rave with user "US18745_entrylockunlockuser"
+	Given I login to Rave with user "US18745_entrylockunlockuser"
     When I create a Subject
     |Field      |Data                  |Control Type |
     |Label 1    |SUB{RndNum<num23>(3)} |textbox      |
 	And I log out of Rave
-	And I log in to Rave with user "US18745_seeentrylockunlockuser"
+	And I login to Rave with user "US18745_seeentrylockunlockuser"
 	When I select a Subject "{Var(num23)}"
 	Then I can see "Disabled" radio button
 	And I can see "Enabled" radio button
@@ -860,12 +860,12 @@ Scenario:@US18745-23 By Default the user with seeentry, lock and unlock permissi
 @Validation 
 Scenario:@US18745-24 When the Add Events disabled, the user with lock, unlock and seeentry permission can see the message with lock icon and Audit link on subject page and grid view page.
 
-	Given I log in to Rave with user "US18745_entrylockunlockuser"
+	Given I login to Rave with user "US18745_entrylockunlockuser"
     When I create a Subject
     |Field      |Data                  |Control Type |
     |Label 1    |SUB{RndNum<num24>(3)} |textbox      |
 	And I log out of Rave
-	And I log in to Rave with user "US18745_seeentrylockunlockuser"
+	And I login to Rave with user "US18745_seeentrylockunlockuser"
 	When I select a Subject "{Var(num24)}"
 	Then I can see "Disabled" radio button
 	And I can see "Enabled" radio button
@@ -924,13 +924,13 @@ Scenario:@US18745-24 When the Add Events disabled, the user with lock, unlock an
 Scenario:@US18745-25 When the Add Events disabled by other user with entry, lock and unlock permission, the user with lock, unlock and seeentry permission can see the message with lock icon and Audit link on subject page and grid view page.
 The user with lock, unlock and seeentry permission enable and disable the radio button, then the user can see the three actions of the Audit trail done by two users.
 
-	Given I log in to Rave with user "US18745_entrylockunlockuser"
+	Given I login to Rave with user "US18745_entrylockunlockuser"
     When I create a Subject
     |Field      |Data                  |Control Type |
     |Label 1    |SUB{RndNum<num25>(3)} |textbox      |
 	And I click radiobutton with label "Disabled"
 	And I log out of Rave
-	And I log in to Rave with user "US18745_seeentrylockunlockuser"
+	And I login to Rave with user "US18745_seeentrylockunlockuser"
 	When I select a Subject "{Var(num25)}"
 	Then I can see "Disabled" radio button
 	And I can see "Enabled" radio button
@@ -983,7 +983,7 @@ The user with lock, unlock and seeentry permission enable and disable the radio 
 @Validation 	
 Scenario:@US18745-26  The Add Events controls can be localized on the subject page.
 
-	Given I log in to Rave with user "US18745_locuser"
+	Given I login to Rave with user "US18745_locuser"
 	When I create a Subject
     |Field       |Data                  |Control Type |
     |LLabel 1    |SUB{RndNum<num26>(3)} |textbox      |
@@ -1024,7 +1024,7 @@ Scenario:@US18745-26  The Add Events controls can be localized on the subject pa
 @Validation 	
 Scenario:@US18745-27 The Add Events controls can be localized on the grid view page.
 
-	Given I log in to Rave with user "US18745_locuser"
+	Given I login to Rave with user "US18745_locuser"
 	And I create a Subject
     |Field       |Data                  |Control Type |
     |LLabel 1    |SUB{RndNum<num27>(3)} |textbox      |
@@ -1067,7 +1067,7 @@ Scenario:@US18745-27 The Add Events controls can be localized on the grid view p
 Scenario:@US18745-28 Locking "All" in the subject grid view page disables the Add Event feature. 
 Unlocking "All" in the subject grid view page enables the Add Event feature.
 
-	Given I log in to Rave with user "US18745_entrylockunlockuser"
+	Given I login to Rave with user "US18745_entrylockunlockuser"
     And I create a Subject
     |Field      |Data                  |Control Type |
     |Label 1    |SUB{RndNum<num28>(3)} |textbox      |
