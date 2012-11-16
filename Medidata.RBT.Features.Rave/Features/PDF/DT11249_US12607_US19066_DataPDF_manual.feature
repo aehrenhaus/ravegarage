@@ -1,4 +1,4 @@
-﻿# This is a manual feature file for DT11249_@US12607_US19066
+# This is a manual feature file for DT11249_@US12607_US19066
 # It is a manual feature file, because this testing is looking for page breaks in a PDF which cannot be done via an automated service.  
 #
 # When a data populated PDF file is generated and a log form is displayed in portrait mode, the user should have the ability to determine if there should be 
@@ -269,7 +269,8 @@ so that I can minimize the number of pages generated in the PDF if I choose to d
 #  
 #@release_2012.1.0
 #@US12607_US19066-01B
-#@ignore@manual
+#@ignore
+#@manual
 #Scenario:@US12607_US19066-01B When I select all assigned forms while creating PDF with default PDF Configuration Profile, then i should see a continuous list of all records.
 #
 #    Given I log in to Rave with user "US12607_user1"
@@ -289,7 +290,8 @@ so that I can minimize the number of pages generated in the PDF if I choose to d
 #	
 #@release_2012.1.0
 #@US12607_US19066-02B
-#@ignore@manual
+#@ignore
+#@manual
 #Scenario:@US12607_US19066-02B When I unselect all assigned forms while creating PDF with default PDF Configuration Profile, then i should see a page break after each individual record.
 #
 #    Given I log in to Rave with user "US12607_user1"
@@ -309,7 +311,8 @@ so that I can minimize the number of pages generated in the PDF if I choose to d
 #	
 #@release_2012.1.0
 #@US12607_US19066-03B
-#@ignore@manual
+#@ignore
+#@manual
 #Scenario:@US12607_US19066-03B When i select two forms while creating PDF with default PDF Configuration Profile, then i should see continuous list of records on selected two forms and i should see a page break after each individual record on unselected forms.
 #
 #    Given I log in to Rave with user "US12607_user1"
@@ -329,7 +332,8 @@ so that I can minimize the number of pages generated in the PDF if I choose to d
 #		
 #@release_2012.1.0
 #@US12607_US19066-04B
-#@ignore@manual
+#@ignore
+#@manual
 #Scenario:@US12607_US19066-04B When I select all assigned forms while creating PDF with default PDF Configuration Profile with Localization locale, then i should see a continuous list of all records with "L" locale.
 #
 #    Given I log in to Rave with user "US12607_locuser"
@@ -349,7 +353,8 @@ so that I can minimize the number of pages generated in the PDF if I choose to d
 #	
 #@release_2012.1.0
 #@US12607_US19066-05B
-#@ignore@manual
+#@ignore
+#@manual
 #Scenario:@US12607_US19066-05B When I unselect all assigned forms while creating PDF with default PDF Configuration Profile with Localization locale, then i should see a page break after each individual record with "L" locale.
 #
 #    Given I log in to Rave with user "US12607_locuser"
