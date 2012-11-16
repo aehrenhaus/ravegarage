@@ -334,18 +334,7 @@ namespace Medidata.RBT
 		public void BeforeScenario()
 		{
             TestContext.CurrentUser = null;
-			if (consoleWriter == null)
-			{
-				consoleWriter = new MultipleStreamWriter();
-				var extraConsole = ExtraConsoleWriterSetup.GetConsoleWriter();
-				consoleWriter.AddStreamWriter(new FilteredWriter(extraConsole));
 
-				//the previous Console.Out has already been redirect to MSTest output, add it back to multiple output writer, so we still see results from MSTest
-				consoleWriter.AddStreamWriter(Console.Out);
-				Console.SetOut(consoleWriter);
-				Console.WriteLine("-------------> Scenario:" + ScenarioName);
-				Console.WriteLine();
-			}
 			Storage.ScenarioValues.Clear();
 
 			//start time
@@ -362,9 +351,31 @@ namespace Medidata.RBT
 			//restore snapshot
 			//DbHelper.RestoreSnapshot();
 
+			SetOutput();
+
+			Console.WriteLine("-------------> Scenario:" + ScenarioName);
+			Console.WriteLine();
 		}
 
-		
+		private void SetOutput()
+		{
+			if (consoleWriter == null)
+			{
+				consoleWriter = new MultipleStreamWriter();
+				var extraConsole = ExtraConsoleWriterSetup.GetConsoleWriter();
+				consoleWriter.AddStreamWriter(new FilteredWriter(extraConsole));
+
+				//the previous Console.Out has already been redirect to MSTest output, add it back to multiple output writer, so we still see results from MSTest
+
+
+			}
+			if (consoleWriter.InnerWriters.Count == 2)
+				consoleWriter.InnerWriters.RemoveAt(1);
+			consoleWriter.AddStreamWriter(Console.Out);
+			Console.SetOut(consoleWriter);
+		}
+
+
 		/// <summary>
 		/// After each scenario
 		/// </summary>

@@ -18,18 +18,18 @@
 		It should be an empty folder, and be the same as your browser's download folder. -->
 	<RBTConfiguration
 		
-		TestResultPath="Output"	
+		TestResultPath="Output"	<!--Where will the generated test related files be, relative to mstest result path, or absolute path-->
 		AutoCloseBrowser ="False"
-		TakeScreenShotsEveryStep ="False"
+		TakeScreenShotsEveryStep ="False" 
 		SqlScriptsPath="C:\"
-		BrowserName="firefox"
-		BrowserPath="D:\MDSOL\Firefox12\firefox.exe"
-		FirefoxProfilePath="FAKEDIRECTORY:\yourpath\Profile"
+		BrowserName="firefox" <!--Although selenium supports many browsers, RBT project only works well in firefox-->
+		BrowserPath="D:\MDSOL\Firefox12\firefox.exe" 
+		FirefoxProfilePath="FAKEDIRECTORY:\yourpath\Profile" <!--A firefox profile contains history, pluging, cache, settings etc. It's nice to point to a profile folder that contains firebug for debuging propurse-->
 		WebDriverPath="..\..\..\ExternalDlls\WebDrivers\"
 		SnapshotName="UAT_Snap"
 		DatabaseConnection="RaveConnection"
 		GenerateReportAfterTest="true"
-		ScenarioNamePrefix="PB_"
+		ScenarioNamePrefix="PB_" <!--Determines which tag on a scenario is used as a 'scenario name'-->
 		AutoSaveMimeTypes="application/zip;application/pdf;application/octet-stream"
 		EnableSeeding ="True"
 		SeedFromBackendClasses =""
