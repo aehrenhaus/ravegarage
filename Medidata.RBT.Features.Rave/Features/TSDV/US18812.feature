@@ -1,4 +1,6 @@
 ﻿# When a user selects  Dynamic Allocation Randomization Block algorithm , subject assignment satisfies a specified allocation and ratio is random for all blocks.
+@EnableSeeding=true
+@SuppressSeeding=Site,SiteGroup,Role,User,SecurityRole
 @ignore
 Feature: US18812
 	When user selects Dynamic Allocation Randomization Block algorithm
