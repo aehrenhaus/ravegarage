@@ -1,6 +1,11 @@
 #When a non-visible (View Restricted) field, that does not require signature, on a form with other fields that do require signature and have already been signed, is made visible (View Restriction is removed), the signature on the visible fields is not broken.
+<<<<<<< HEAD
 @ignore
 Feature: US17415_DT14115 When a non-visible (View Restricted) field, that does not require signature, on a form with other fields that do require signature and have already been signed, is made visible (View Restriction is removed), then the signature on the visible fields should not break.
+=======
+#@ignore
+Feature: US17415_DT14115 
+>>>>>>> 65caaec... using seeding by draft upload for feature tests.
 	When a non-visible (View Restricted) field, that does not require signature, on a form with other fields that do require signature and have already been signed, is made visible (View Restriction is removed), then the signature on the visible fields should not break.
 	As a Rave Administrator
 	When I have a form that has visible and non-visible fields
@@ -11,125 +16,13 @@ Feature: US17415_DT14115 When a non-visible (View Restricted) field, that does n
 	Then the signature on the visible fields is not broken
 
 Background:
-	Given I login to Rave with user "defuser" and password "password"
-	#And the following Project assignments exist
-	#	| User    | Project           | Environment | Role | Site    | Site Number |
-	#	| defuser | **US17415_DT14115 | Prod        | CDM1 | Site 01 | S100        |
-	#And Role "CDM1" has Action "Sign"
-	#And Project "**US17415_DT14115" has Draft "<Source Draft>"
-	#And Draft "<Source Draft>" has Form "Adverse Events" with fields
-	#	| FieldOID 		| Field Label           		| Data Dictionary 	| Control Type 	| Data Format 	| Log data entry	|IsVisible | Does not participate in Signature 	|
-	#	| AENUM      	| AE Number                		| N/A              	| Text 			| $10          	| True				|True      | False               				|
-	#	| AETERM     	| Description of Adverse Events | N/A            	| LongText		| $350          | True				|True      | False               				|
-	#	| EXTRAEV  		| Ready for Extra Review        | N/A       		| Checkbox 		| 1         	| True				|True      | True               				|
-	#	| AEMOR1     	| Added 1 For Extra Review 		| N/A             	| Text     		| $10 			| True				|False     | True              				 	|
-	#	| AEMOR2  		| Added 2 For Extra Review      | N/A             	| Text         	| $10           | True				|False     | True			              		|	
-	#And Draft "<Source Draft>" has Form "Adverse Events 1" with fields
-	#	| FieldOID 		| Field Label           		| Data Dictionary 	| Control Type 	| Data Format 	| Log data entry	|IsVisible | Does not participate in Signature 	|
-	#	| AENUM2      	| AE Number                		| N/A              	| Text 			| $10          	| False				|True      | False               				|
-	#	| AETERM2     	| Description of Adverse Events | N/A            	| LongText		| $350          | False				|True      | False               				|
-	#	| EXTRAEV2 		| Ready for Extra Review        | N/A       		| Checkbox 		| 1         	| False				|True      | True               				|
-	#	| AEMOR3     	| Added 1 For Extra Review 		| N/A             	| Text     		| $10 			| False				|False     | True              				 	|
-	#	| AEMOR4  		| Added 2 For Extra Review      | N/A             	| Text         	| $10           | False				|False     | True			              		|	
-	#And Draft "<Source Draft>" has Form "Demographics" with fields
-	#	| FieldOID | Field Label           | Data Dictionary | Control Type | Data Format | IsVisible | Requires Signature |
-	#	| SEX      | Gender                | MF              | DropDownList | $7          | True      | True               |
-	#	| RACE     | Ethnicity             | Race            | DropDownList | 2           | True      | True               |
-	#	| COUNTRY  | Country               | Countries       | DropDownList | $20         | True      | True               |
-	#	| ICDT     | Informed Consent Date | N/A             | DateTime     | dd MMM yyyy | True      | True               |
-	#	| ICDTAGE  | Derived Age           | N/A             | Text         | 3           | False     | True	           |
-	#And Draft "<Source Draft>" has Form "Serious Adverse Events" with fields
-	#	| FieldOID 		| Field Label           		| Data Dictionary 	| Control Type 	| Data Format 	| Log data entry	|IsVisible | Does not participate in Signature 	|
-	#	| AENUM      	| AE Number                		| N/A              	| Text 			| $10          	| True				|True      | False               				|
-	#	| AETERM     	| Description of Adverse Events | N/A            	| LongText		| $350          | True				|True      | False               				|
-	#	| EXTRAEV  		| Ready for Extra Review        | N/A       		| Checkbox 		| 1         	| True				|True      | True               				|
-	#	| AEMOR1     	| Added 1 For Extra Review 		| N/A             	| Text     		| $10 			| True				|False     | True              				 	|
-	#	| AEMOR2  		| Added 2 For Extra Review      | N/A             	| Text         	| $10           | True				|False     | False			              		|	
-	#And Draft "<Source Draft>" has Form "Serious Adverse Events" with fields
-	#	| FieldOID 		| Field Label           		| Data Dictionary 	| Control Type 	| Data Format 	| Log data entry	|IsVisible | Does not participate in Signature 	|
-	#	| AENUM5      	| AE Number                		| N/A              	| Text 			| $10          	| False				|True      | False               				|
-	#	| AETERM5     	| Description of Adverse Events | N/A            	| LongText		| $350          | False				|True      | False               				|
-	#	| EXTRAEV5 		| Ready for Extra Review        | N/A       		| Checkbox 		| 1         	| False				|True      | True               				|
-	#	| AEMOR15     	| Added 1 For Extra Review 		| N/A             	| Text     		| $10 			| False				|False     | True              				 	|
-	#	| AEMOR25  		| Added 2 For Extra Review      | N/A             	| Text         	| $10           | False				|False     | False			              		|	
-	#And Draft "<Source Draft>" has Form "Test Demographics" with fields
-	#	| FieldOID | Field Label           | Data Dictionary | Control Type | Data Format | IsVisible | Requires Signature |
-	#	| SEX      | Gender                | MF              | DropDownList | $7          | True      | True               |
-	#	| RACE     | Ethnicity             | Race            | DropDownList | 2           | True      | True               |
-	#	| COUNTRY  | Country               | Countries       | DropDownList | $20         | True      | True               |
-	#	| ICDT     | Informed Consent Date | N/A             | DateTime     | dd MMM yyyy | True      | True               |
-	#	| ICDTAGE  | Derived Age           | N/A             | Text         | 3           | True	  | True	           |
-	#And Project "**US17415_DT14115" has Draft "<Target Draft>"
-	#And Draft "<Target Draft1>" has Form "Adverse Events" with fields
-	#	| FieldOID 		| Field Label           		| Data Dictionary 	| Control Type 	| Data Format 	| Log data entry	|IsVisible | Does not participate in Signature 	|
-	#	| AENUM      	| AE Number                		| N/A              	| Text 			| $10          	| True				|True      | False               				|
-	#	| AETERM     	| Description of Adverse Events | N/A            	| LongText		| $350          | True				|True      | False               				|
-	#	| EXTRAEV  		| Ready for Extra Review        | N/A       		| Checkbox 		| 1         	| True				|True      | True               				|
-	#	| AEMOR1     	| Added 1 For Extra Review 		| N/A             	| Text     		| $10 			| True				|False     | True              				 	|
-	#	| AEMOR2  		| Added 2 For Extra Review      | N/A             	| Text         	| $10           | True				|False     | True			              		|	
-	#And Draft "<Target Draft>" has Form "Demographics" with fields
-	#	| FieldOID | Field Label           | Data Dictionary | Control Type | Data Format | IsVisible | Requires Signature |
-	#	| SEX      | Gender                | MF              | DropDownList | $7          | True      | True               |
-	#	| RACE     | Ethnicity             | Race            | DropDownList | 2           | True      | True               |
-	#	| COUNTRY  | Country               | Countries       | DropDownList | $20         | True      | True               |
-	#	| ICDT     | Informed Consent Date | N/A             | DateTime     | dd MMM yyyy | True      | True               |
-	#	| ICDTAGE  | Derived Age           | N/A             | Text         | 3           | True	  | True	           |
-	#And Draft "<Target Draft>" has Form "Serious Adverse Events" with fields
-	#	| FieldOID 		| Field Label           		| Data Dictionary 	| Control Type 	| Data Format 	| Log data entry	|IsVisible | Does not participate in Signature 	|
-	#	| AENUM      	| AE Number                		| N/A              	| Text 			| $10          	| True				|True      | False               				|
-	#	| AETERM     	| Description of Adverse Events | N/A            	| LongText		| $350          | True				|True      | False               				|
-	#	| EXTRAEV  		| Ready for Extra Review        | N/A       		| Checkbox 		| 1         	| True				|True      | True               				|
-	#	| AEMOR1     	| Added 1 For Extra Review 		| N/A             	| Text     		| $10 			| True				|False     | True              				 	|
-	#	| AEMOR2  		| Added 2 For Extra Review      | N/A             	| Text         	| $10           | True				|False     | False			              		|	
-	#And Draft "<Target Draft>" has Form "Test Demographics" with fields
-	#	| FieldOID | Field Label           | Data Dictionary | Control Type | Data Format | IsVisible | Requires Signature |
-	#	| SEX      | Gender                | MF              | DropDownList | $7          | True      | True               |
-	#	| RACE     | Ethnicity             | Race            | DropDownList | 2           | True      | True               |
-	#	| COUNTRY  | Country               | Countries       | DropDownList | $20         | True      | True               |
-	#	| ICDT     | Informed Consent Date | N/A             | DateTime     | dd MMM yyyy | True      | True               |
-	#	| ICDTAGE  | Derived Age           | N/A             | Text         | 3           | False	  | True	           |
-	#And Draft "<Target Draft>" has Form "Serious Adverse Events" with fields
-	#	| FieldOID 		| Field Label           		| Data Dictionary 	| Control Type 	| Data Format 	| Log data entry	|IsVisible | Does not participate in Signature 	|
-	#	| AENUM5      	| AE Number                		| N/A              	| Text 			| $10          	| False				|True      | False               				|
-	#	| AETERM5     	| Description of Adverse Events | N/A            	| LongText		| $350          | False				|True      | False               				|
-	#	| EXTRAEV5 		| Ready for Extra Review        | N/A       		| Checkbox 		| 1         	| False				|True      | True               				|
-	#	| AEMOR15     	| Added 1 For Extra Review 		| N/A             	| Text     		| $10 			| False				|False     | True              				 	|
-	#	| AEMOR25  		| Added 2 For Extra Review      | N/A             	| Text         	| $10           | False				|False     | False			              		|	
-	#And Draft "<Target Draft>" has Form "Adverse Events 1" with fields
-	#	| FieldOID 		| Field Label           		| Data Dictionary 	| Control Type 	| Data Format 	| Log data entry	|IsVisible | Does not participate in Signature 	|
-	#	| AENUM2      	| AE Number                		| N/A              	| Text 			| $10          	| False				|True      | False               				|
-	#	| AETERM2     	| Description of Adverse Events | N/A            	| LongText		| $350          | False				|True      | False               				|
-	#	| EXTRAEV2 		| Ready for Extra Review        | N/A       		| Checkbox 		| 1         	| False				|True      | True               				|
-	#	| AEMOR3     	| Added 1 For Extra Review 		| N/A             	| Text     		| $10 			| False				|False     | True              				 	|
-	#	| AEMOR4  		| Added 2 For Extra Review      | N/A             	| Text         	| $10           | False				|False     | True			              		|	
-
-	#And Data Dictionary "MF" has entries
-	#	| User Value | Coded Value |
-	#	| Male       | 1           |
-	#And Data Dictionary "Race" has entries
-	#   | User Value                | Coded Value |
-	#   | Black or African American | 1           |
-	#   | Asian                     | 2           |
-	#   | White                     | 3           |
-	#And Data Dictionary "Countries" has entries
-	#   | User Value | Coded Value |
-	#   | USA        | 1           |
-	#   | Canada     | 2           |
-	#And Edit Check "ADD_AE" exists with "Check Steps"
-	#	|DataType		|Adverse Events	|EXTRAEV|
-	#	|Constant		|1				|1		|
-	#	|Check Function	|IsEqualTo		|		|
-	#And Edit Check "ADD_AE" exists with "Check Actions"	
-	#	|Adverse Events	|AEMOR1	|Set Datapoint Visible: TRUE |
-	#	|Adverse Events	|AEMOR2	|Set Datapoint Visible: TRUE |
-	#And Edit Check "ADD_AE2" exists with "Check Steps"
-	#	|DataType		|Adverse Events	|EXTRAEV|
-	#	|Constant		|1				|1		|
-	#	|Check Function	|IsEqualTo		|		|
-	#And Edit Check "ADD_AE2" exists with "Check Actions"	
-	#	|Adverse Events	|AEMOR1	|Set Datapoint Visible: TRUE |
-	#	|Adverse Events	|AEMOR2	|Set Datapoint Visible: TRUE |
-	#And I publish and push CRF Version "CRF Version<RANDOMNUMBER>" of Draft "<Source Draft>" to site "Site 01" in Project "**US17415_DT14115" for Enviroment "Prod"
+	Given xml draft "US17415_DT14115_Source_Draft.xml" is Uploaded
+	Given xml draft "US17415_DT14115_Target_Draft.xml" is Uploaded
+	Given study "**US17415_DT14115" is assigned to Site "Site 01"
+	Given following Project assignments exist
+		| User          | Project             | Environment | Role        | Site    | SecurityRole          |
+		| SUPER USER 1  | **US17415_DT14115   | Live: Prod  | SUPER ROLE 1| Site 01 | Project Admin Default |
+	And Role "SUPER ROLE" has Action "Sign"
 
 #----------------------------------------------------------------------------------------------------------------------------------------
 @release_564_2012.1.0
@@ -137,6 +30,8 @@ Background:
 @Validation	
 Scenario: @PB_US17415_DT14115_01 As an Investigator, when I sign the "Adverse Events" log form, the form level signature does not break when the "Added 1 For Extra Review" field is made visible.
 
+	Given I publish and push eCRF "US17415_DT14115_Source_Draft.xml" to "SourceVersion1"
+	Given I login to Rave with user "SUPER USER 1"
 	And I select Study "**US17415_DT14115" and Site "Site 01"
 	And I create a Subject
 		| Field          | Data              | Control Type |
@@ -149,15 +44,17 @@ Scenario: @PB_US17415_DT14115_01 As an Investigator, when I sign the "Adverse Ev
 		| Description of Adverse Events | Cramps    | textbox      |
 		| Ready for Extra Review        | False     | checkbox     |
 	And I click button "Sign and Save"
-	And I sign the form with username "defuser" and password "password"
+	And I sign the form with username "SUPER USER 1"
 	And I wait for 5 seconds
-	And I verify text "Please Sign - Default User  (defuser)" exists
+	#And I verify text "Please Sign - Default User  (SUPER USER 1)" exists
+	And I verify text "Please Sign - Default User  (" exists
 	And I take a screenshot
 	And I open log line 1 for edit
 	When I enter data in CRF and save
 		| Field                  | Data | Control Type |
 		| Ready for Extra Review | True | checkbox     |
-	Then I verify text "Please Sign - Default User  (defuser)" exists
+	#Then I verify text "Please Sign - Default User  (SUPER USER 1)" exists
+	Then I verify text "Please Sign - Default User  (" exists
 	And I take a screenshot
 	And I open log line 1 for edit
 	And I verify text "Added 1 For Extra Review" exists
@@ -181,7 +78,8 @@ Scenario: @PB_US17415_DT14115_01 As an Investigator, when I sign the "Adverse Ev
 		| Field                  | Data  | Control Type |
 		| Ready for Extra Review | False | checkbox     |
 	And I open log line 1 for edit
-	Then I verify text "Please Sign - Default User  (defuser)" exists
+	#Then I verify text "Please Sign - Default User  (SUPER USER 1)" exists
+	Then I verify text "Please Sign - Default User  (" exists
 	And I verify text "Added 1 For Extra Review" does not exist
 	And I verify text "Added 2 For Extra Review" does not exist
 	And I take a screenshot
@@ -192,6 +90,8 @@ Scenario: @PB_US17415_DT14115_01 As an Investigator, when I sign the "Adverse Ev
 @Validation	
 Scenario: @PB_US17415_DT14115_02 As an Investigator, when I sign the "Serious Adverse Events" log form, the form level signature does not break when the "Added 1 For Extra Review" field is made visible.
 
+	Given I publish and push eCRF "US17415_DT14115_Source_Draft.xml" to "SourceVersion1"
+	Given I login to Rave with user "SUPER USER 1"
 	And I select Study "**US17415_DT14115" and Site "Site 01"
 	And I create a Subject
 		| Field          | Data              | Control Type |
@@ -204,15 +104,17 @@ Scenario: @PB_US17415_DT14115_02 As an Investigator, when I sign the "Serious Ad
 		| Description of Adverse Events | Cramps    | textbox      |
 		| Ready for Extra Review        | False     | checkbox     |
 	And I click button "Sign and Save"
-	And I sign the form with username "defuser" and password "password"
+	And I sign the form with username "SUPER USER 1"
 	And I wait for 5 seconds
-	And I verify text "Please Sign - Default User  (defuser)" exists
+	#And I verify text "Please Sign - Default User  (SUPER USER 1)" exists
+	And I verify text "Please Sign - Default User  (" exists
 	And I take a screenshot
 	And I open log line 1 for edit
 	When I enter data in CRF and save
 		| Field                  | Data | Control Type |
 		| Ready for Extra Review | True | checkbox     |
-	And I verify text "Please Sign - Default User  (defuser)" does not exist
+	#And I verify text "Please Sign - Default User  (SUPER USER 1)" does not exist
+	And I verify text "Please Sign - Default User  (" does not exist
 	And I take a screenshot
 	And I open log line 1 for edit
 	And I verify text "Added 1 For Extra Review" exists
@@ -230,6 +132,7 @@ Scenario: @PB_US17415_DT14115_02 As an Investigator, when I sign the "Serious Ad
 @release_564_2012.1.0
 @PB_US17415_DT14115_03
 @Validation	
+<<<<<<< HEAD
 Scenario: @PB_US17415_DT14115_03 As an Investigator, when I sign the "Demographics" form, the form level signature does not break when the ICDTAGE field is made visible.
 	
 	And I navigate to "Architect"
@@ -240,11 +143,18 @@ Scenario: @PB_US17415_DT14115_03 As an Investigator, when I sign the "Demographi
 	And I select "Study" link "**US17415_DT14115" in "Header"
 	And I push CRF Version "{Var(newversion1#)}" to "All Sites"
 	And I navigate to "Home"
+=======
+Scenario: @PB_US17415_03 As an Investigator, when I sign the "Demographics" form, the form level signature does not break when the ICDTAGE field is made visible.
+
+	Given I publish and push eCRF "US17415_DT14115_Source_Draft.xml" to "SourceVersion1"
+	Given I login to Rave with user "SUPER USER 1"
+>>>>>>> 65caaec... using seeding by draft upload for feature tests.
 	And I select Study "**US17415_DT14115" and Site "Site 01"
 	And I create a Subject
 		| Field          | Data              | Control Type |
 		| Subject Name   | SUB               | textbox      |
 		| Subject Number | {RndNum<num1>(5)} | textbox      |
+	And I note down "crfversion" to "ver#"
 	And I select link "Demographics"
 	And I enter data in CRF and save
 		| Field                 | Data        | Control Type |
@@ -254,29 +164,24 @@ Scenario: @PB_US17415_DT14115_03 As an Investigator, when I sign the "Demographi
 		| Informed Consent Date | 12 Jul 2012 | dateTime     |
 	And I take a screenshot
 	And I click button "Sign and Save"
-	And I sign the form with username "defuser" and password "password"
+	And I sign the form with username "SUPER USER 1"
 	And I wait for 5 seconds
-	And I verify text "Please Sign - Default User  (defuser)" exists
+	#And I verify text "Please Sign - Default User  (SUPER USER 1)" exists
+	And I verify text "Please Sign - Default User  (" exists
 	And I take a screenshot
 
-	And I navigate to "Home"
-	And I navigate to "Architect"
-	And I select link "**US17415_DT14115" in "Active Projects"
-	And I select link "Target Draft" in "CRF Drafts"
-	And I publish CRF Version "Target {RndNum<TV#>(5)}"
-	And I note down "crfversion" to "newversion2#"
-	And I select link "**US17415_DT14115" in "Header"
-	And I navigate to "Amendment Manager"
-	And I choose "{Var(newversion1#)}" from "Source CRF"
-	And I choose "{Var(newversion2#)}" from "Target CRF"
-	And I click button "Create Plan"
+	Given I publish and push eCRF "US17415_DT14115_Target_Draft.xml" to "TargetVersion1"
+	And I go to Amendment Manager for study "**US17415_DT14115"
+	And I select Source CRF version "SourceVersion1"
+	And I select Target CRF version "TargetVersion1"
+	And I create migration plan
 	And I take a screenshot
-	And I navigate to "Execute Plan"
-	And I migrate all Subjects
+	And I execute plan for subject "SUB{Var(num1)}"
 	And I select link "Migration Results"
-	And I verify Job Status is set to Complete
 	And I take a screenshot
-		
+	And I verify Job Status is set to Complete
+	And I take a screenshot	
+
 	And I navigate to "Home"
 	And I select Study "**US17415_DT14115" and Site "Site 01"
 	And I select a Subject "SUB{Var(num1)}"
@@ -317,13 +222,15 @@ Scenario: @PB_US17415_DT14115_03 As an Investigator, when I sign the "Demographi
 	And I enter data in CRF and save
 		| Field       | Data | Control Type |
 		| Derived Age | 30   | textbox      |
-	And I verify text "Please Sign - Default User  (defuser)" exists
+	#And I verify text "Please Sign - Default User  (SUPER USER 1)" exists
+	And I verify text "Please Sign - Default User  (" exists
 	And I take a screenshot
 					
 #----------------------------------------------------------------------------------------------------------------------------------------
 @release_564_2012.1.0
 @PB_US17415_DT14115_04
 @Validation	
+<<<<<<< HEAD
 Scenario: @PB_US17415_DT14115_04 As an Investigator, when I sign the "Test Demographics" form, the form level signature does not break when the ICDTAGE field is made invisible.
 	
 	And I navigate to "Architect"
@@ -334,6 +241,13 @@ Scenario: @PB_US17415_DT14115_04 As an Investigator, when I sign the "Test Demog
 	And I select "Study" link "**US17415_DT14115" in "Header"
 	And I push CRF Version "{Var(newversion1#)}" to "All Sites"
 	And I navigate to "Home"
+=======
+Scenario: @PB_US17415_04 As an Investigator, when I sign the "Test Demographics" form, the form level signature does not break when the ICDTAGE field is made invisible.
+
+	Given I publish and push eCRF "US17415_DT14115_Source_Draft.xml" to "SourceVersion1"
+
+	Given I login to Rave with user "SUPER USER 1"
+>>>>>>> 65caaec... using seeding by draft upload for feature tests.
 	And I select Study "**US17415_DT14115" and Site "Site 01"
 	And I create a Subject
 		| Field          | Data              | Control Type |
@@ -349,34 +263,30 @@ Scenario: @PB_US17415_DT14115_04 As an Investigator, when I sign the "Test Demog
 		| Derived Age           | 30          | textbox      |
 	And I take a screenshot
 	And I click button "Sign and Save"
-	And I sign the form with username "defuser" and password "password"
+	And I sign the form with username "SUPER USER 1"
 	And I wait for 5 seconds
-	And I verify text "Please Sign - Default User  (defuser)" exists
+	#And I verify text "Please Sign - Default User  (SUPER USER 1)" exists
+	And I verify text "Please Sign - Default User  (" exists
 	And I take a screenshot
 
-	And I navigate to "Home"
-	And I navigate to "Architect"
-	And I select link "**US17415_DT14115" in "Active Projects"
-	And I select link "Target Draft" in "CRF Drafts"
-	And I publish CRF Version "Target {RndNum<TV#>(5)}"
-	And I note down "crfversion" to "newversion2#"
-	And I select link "**US17415_DT14115" in "Header"
-	And I navigate to "Amendment Manager"
-	And I choose "{Var(newversion1#)}" from "Source CRF"
-	And I choose "{Var(newversion2#)}" from "Target CRF"
-	And I click button "Create Plan"
+	Given I publish and push eCRF "US17415_DT14115_Target_Draft.xml" to "TargetVersion1"
+	And I go to Amendment Manager for study "**US17415_DT14115"
+	And I select Source CRF version "SourceVersion1"
+	And I select Target CRF version "TargetVersion1"
+	And I create migration plan
 	And I take a screenshot
-	And I navigate to "Execute Plan"
-	And I migrate all Subjects
+	And I execute plan for subject "SUB{Var(num1)}"
 	And I select link "Migration Results"
+	And I take a screenshot
 	And I verify Job Status is set to Complete
 	And I take a screenshot	
 
 	And I navigate to "Home"
 	And I select Study "**US17415_DT14115" and Site "Site 01"
-    And I select a Subject "SUB{Var(num2)}"
+	And I select a Subject "SUB{Var(num2)}"
 	And I select link "Test Demographics"
-	And I verify text "Please Sign - Default User  (defuser)" exists
+	#And I verify text "Please Sign - Default User  (SUPER USER 1)" exists
+	And I verify text "Please Sign - Default User  (" exists
 	And I take a screenshot
 	And I verify text "Derived Age" does not exist
 	And I take a screenshot	
@@ -414,6 +324,7 @@ Scenario: @PB_US17415_DT14115_04 As an Investigator, when I sign the "Test Demog
 @release_564_2012.1.0
 @PB_US17415_DT14115_05
 @Validation	
+<<<<<<< HEAD
 Scenario: @PB_US17415_DT14115_05 As an Investigator, when I sign the "Demographics" form and "Field Visibility Changed" is checked in Amendment Manager>Configure Plan, the form level signature does not break when the ICDTAGE field is made visible.
 	
 	And I navigate to "Architect"
@@ -424,6 +335,13 @@ Scenario: @PB_US17415_DT14115_05 As an Investigator, when I sign the "Demographi
 	And I select "Study" link "**US17415_DT14115" in "Header"
 	And I push CRF Version "{Var(newversion1#)}" to "All Sites"
 	And I navigate to "Home"
+=======
+Scenario: @PB_US17415_05 As an Investigator, when I sign the "Demographics" form and "Field Visibility Changed" is checked in Amendment Manager>Configure Plan, the form level signature does not break when the ICDTAGE field is made visible.
+
+	Given I publish and push eCRF "US17415_DT14115_Source_Draft.xml" to "SourceVersion1"
+
+	Given I login to Rave with user "SUPER USER 1"
+>>>>>>> 65caaec... using seeding by draft upload for feature tests.
 	And I select Study "**US17415_DT14115" and Site "Site 01"
 	And I create a Subject
 		| Field          | Data              | Control Type |
@@ -438,30 +356,28 @@ Scenario: @PB_US17415_DT14115_05 As an Investigator, when I sign the "Demographi
 		| Informed Consent Date | 12 Jul 2012 | dateTime     |
 	And I take a screenshot
 	And I click button "Sign and Save"
-	And I sign the form with username "defuser" and password "password"
+	And I sign the form with username "SUPER USER 1"
 	And I wait for 5 seconds
-	And I verify text "Please Sign - Default User  (defuser)" exists
+	#And I verify text "Please Sign - Default User  (SUPER USER 1)" exists
+	And I verify text "Please Sign - Default User  (" exists
 	And I take a screenshot
 
-	And I navigate to "Home"
-	And I navigate to "Architect"
-	And I select link "**US17415_DT14115" in "Active Projects"
-	And I select link "Target Draft" in "CRF Drafts"
-	And I publish CRF Version "Target {RndNum<TV#>(5)}"
-	And I note down "crfversion" to "newversion2#"
-	And I select link "**US17415_DT14115" in "Header"
-	And I navigate to "Amendment Manager"
-	And I choose "{Var(newversion1#)}" from "Source CRF"
-	And I choose "{Var(newversion2#)}" from "Target CRF"
-	And I click button "Create Plan"
+	Given I publish and push eCRF "US17415_DT14115_Target_Draft.xml" to "TargetVersion1"
+	And I go to Amendment Manager for study "**US17415_DT14115"
+	And I select Source CRF version "SourceVersion1"
+	And I select Target CRF version "TargetVersion1"
+	And I create migration plan
 	And I take a screenshot
+
 	And I navigate to "Configure Plan"
 	And I check "Field visibility changed"
 	And I select link "Update"
 	And I take a screenshot
-	And I navigate to "Execute Plan"
-	And I migrate all Subjects
+
+	And I go to Amendment Manager for study "**US17415_DT14115"
+	And I execute plan for subject "SUB{Var(num1)}"
 	And I select link "Migration Results"
+	And I take a screenshot
 	And I verify Job Status is set to Complete
 	And I take a screenshot	
 
@@ -505,13 +421,15 @@ Scenario: @PB_US17415_DT14115_05 As an Investigator, when I sign the "Demographi
 	And I enter data in CRF and save
 		| Field       | Data | Control Type |
 		| Derived Age | 30   | textbox      |
-	And I verify text "Please Sign - Default User  (defuser)" exists
+	#And I verify text "Please Sign - Default User  (SUPER USER 1)" exists
+	And I verify text "Please Sign - Default User  (" exists
 	And I take a screenshot
 					
 #----------------------------------------------------------------------------------------------------------------------------------------
 @release_564_2012.1.0
 @PB_US17415_DT14115_06
 @Validation	
+<<<<<<< HEAD
 Scenario: @PB_US17415_DT14115_06 As an Investigator, when I sign the "Test Demographics" form and "Field Visibility Changed" is checked in Amendment Manager>Configure Plan, the form level signature does not break when the ICDTAGE field is made invisible.
 	
 	And I navigate to "Architect"
@@ -522,11 +440,18 @@ Scenario: @PB_US17415_DT14115_06 As an Investigator, when I sign the "Test Demog
 	And I select "Study" link "**US17415_DT14115" in "Header"
 	And I push CRF Version "{Var(newversion1#)}" to "All Sites"
 	And I navigate to "Home"
+=======
+Scenario: @PB_US17415_06 As an Investigator, when I sign the "Test Demographics" form and "Field Visibility Changed" is checked in Amendment Manager>Configure Plan, the form level signature does not break when the ICDTAGE field is made invisible.
+
+	Given I publish and push eCRF "US17415_DT14115_Source_Draft.xml" to "SourceVersion1"
+
+	Given I login to Rave with user "SUPER USER 1"
+>>>>>>> 65caaec... using seeding by draft upload for feature tests.
 	And I select Study "**US17415_DT14115" and Site "Site 01"
 	And I create a Subject
 		| Field          | Data              | Control Type |
 		| Subject Name   | SUB               | textbox      |
-		| Subject Number | {RndNum<num2>(5)} | textbox      |
+		| Subject Number | {RndNum<num1>(5)} | textbox      |
 	And I select link "Test Demographics"
 	And I enter data in CRF and save
 		| Field                 | Data        | Control Type |
@@ -537,38 +462,37 @@ Scenario: @PB_US17415_DT14115_06 As an Investigator, when I sign the "Test Demog
 		| Derived Age           | 30          | textbox      |
 	And I take a screenshot
 	And I click button "Sign and Save"
-	And I sign the form with username "defuser" and password "password"
+	And I sign the form with username "SUPER USER 1"
 	And I wait for 5 seconds
-	And I verify text "Please Sign - Default User  (defuser)" exists
+	#And I verify text "Please Sign - Default User  (SUPER USER 1)" exists
+	And I verify text "Please Sign - Default User  (" exists
 	And I take a screenshot
 
-	And I navigate to "Home"
-	And I navigate to "Architect"
-	And I select link "**US17415_DT14115" in "Active Projects"
-	And I select link "Target Draft" in "CRF Drafts"
-	And I publish CRF Version "Target {RndNum<TV#>(5)}"
-	And I note down "crfversion" to "newversion2#"
-	And I select link "**US17415_DT14115" in "Header"
-	And I navigate to "Amendment Manager"
-	And I choose "{Var(newversion1#)}" from "Source CRF"
-	And I choose "{Var(newversion2#)}" from "Target CRF"
-	And I click button "Create Plan"
+	Given I publish and push eCRF "US17415_DT14115_Target_Draft.xml" to "TargetVersion1"
+	And I go to Amendment Manager for study "**US17415_DT14115"
+	And I select Source CRF version "SourceVersion1"
+	And I select Target CRF version "TargetVersion1"
+	And I create migration plan
 	And I take a screenshot
+
 	And I navigate to "Configure Plan"
 	And I check "Field visibility changed"
 	And I select link "Update"
 	And I take a screenshot
-	And I navigate to "Execute Plan"
-	And I migrate all Subjects
+
+	And I go to Amendment Manager for study "**US17415_DT14115"
+	And I execute plan for subject "SUB{Var(num1)}"
 	And I select link "Migration Results"
-	And I verify Job Status is set to Complete
 	And I take a screenshot
-		
+	And I verify Job Status is set to Complete
+	And I take a screenshot	
+
 	And I navigate to "Home"
 	And I select Study "**US17415_DT14115" and Site "Site 01"
-    And I select a Subject "SUB{Var(num2)}"
+	And I select a Subject "SUB{Var(num1)}"
 	And I select link "Test Demographics"
-	And I verify text "Please Sign - Default User  (defuser)" exists
+	#And I verify text "Please Sign - Default User  (SUPER USER 1)" exists
+	And I verify text "Please Sign - Default User  (" exists
 	And I take a screenshot
 	And I verify text "Derived Age" does not exist
 	And I take a screenshot	
