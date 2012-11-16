@@ -485,8 +485,12 @@ namespace Medidata.RBT
 			//Close browser
 			if (Browser != null)
 			{
-				Browser.Close();
-				Browser = null;
+                foreach (string winHandle in Browser.WindowHandles)
+                {
+                    IWebDriver window = Browser.SwitchTo().Window(winHandle);
+                    window.Close();
+                }
+                Browser = null;
 			}
 		}
 
