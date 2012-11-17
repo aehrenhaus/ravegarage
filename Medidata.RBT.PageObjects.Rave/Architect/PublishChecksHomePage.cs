@@ -54,15 +54,24 @@ namespace Medidata.RBT.PageObjects.Rave
 
         public override IPage ClickLink(string linkText, string type = null, string areaIdentifier = null)
         {
-            var page = base.ClickLink(linkText, type, areaIdentifier);
-            
+            IPage page = null;
+
             if ("Publish".Equals(linkText))
             {
+                var link = Browser.TryFindElementBy(By.LinkText(linkText), true);
+                link.Click();
+
                 try
                 {
                     this.GetAlertWindow().Accept();
                 }
                 catch { }
+
+                page = TestContext.POFactory.GetPageByUrl(new Uri(Browser.Url));
+            }
+            else
+            {
+                page = base.ClickLink(linkText, type, areaIdentifier);
             }
 
             return page;
