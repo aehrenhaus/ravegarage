@@ -8,11 +8,16 @@ using OpenQA.Selenium.Remote;
 using Medidata.RBT.SeleniumExtension;
 using System.Collections.Specialized;
 using System.Collections.ObjectModel;
+using System.Text.RegularExpressions;
 
 namespace Medidata.RBT.PageObjects.Rave
 {
 	public class NonLabDataPageControl:ControlBase, IEDCDataPageControl
 	{
+        //Matches on {Field Name (possibly wihth special chars)}<br><table>....
+        private static readonly Regex s_fieldNameExtractor = new Regex(@"^(?<FIELD>.*?)(<\s*br\s*/*\s*>\s*<\s*table.*?>.*)*$", 
+            RegexOptions.Singleline | RegexOptions.IgnoreCase);
+
 		public NonLabDataPageControl(IPage page)
 			: base(page)
 		{
@@ -38,29 +43,41 @@ namespace Medidata.RBT.PageObjects.Rave
 
 		//
 
+        private string MatchFieldString(IWebElement element)
+        {
+            var html = element.FindElement(By.XPath(".//td[@class='crf_preText']")).GetInnerHtml();
+            
+            Match M = s_fieldNameExtractor.Match(html);
+            var field = M.Success 
+                ? M.Groups["FIELD"].Value 
+                : html;
+
+            return field;
+        }
 		public IEDCFieldControl FindField(string fieldName)
 		{
-			fieldName = ISearchContextExtend.ReplaceSpecialCharactersWithEscapeCharacters(fieldName);
+            
+            var leftSideTds = TestContext.Browser.FindElements(By.XPath("//td[@class='crf_rowLeftSide']"));
+            var area = leftSideTds.FirstOrDefault(x =>
+                {
+                    var escFieldName = ISearchContextExtend.ReplaceSpecialCharactersWithEscapeCharacters(fieldName);
+                    var escFieldString = ISearchContextExtend.ReplaceTagsWithEscapedCharacters(MatchFieldString(x));
 
-			var area = this.Page.Browser.TryFindElementBy(context =>
-												   {
-													   ReadOnlyCollection<IWebElement> leftSideTds = TestContext.Browser.FindElements(By.ClassName("crf_rowLeftSide"));
-													   var areaInner = leftSideTds.FirstOrDefault(x =>
-													   {
-														   return ISearchContextExtend.ReplaceTagsWithEscapedCharacters(x.FindElement(By.ClassName("crf_preText")).GetInnerHtml())
-															   .Split(new string[] { "<" }, StringSplitOptions.None)[0].Trim() == fieldName;
-													   });
+                    //This should be already caught in the regex (s_fieldNameExtractor) but just 
+                    //leaving it here for the time being - it should be transient
+                    escFieldString = escFieldString
+                        .Split(new string[] { "<" }, 
+                            StringSplitOptions.None)[0]
+                        .Trim();
+                     
+                    return escFieldName == escFieldString;
+                });
 
-													   return areaInner;
-												   });
-			
-
-			if (area == null)
-				throw new Exception("Can't find field area:" + fieldName);
-
-			var tds = area.Parent().Children();
-			return new NonLabFieldControl(Page, area, tds[tds.Count - 1]);
-		}
+            if (area == null)
+                throw new Exception("Can't find field area:" + fieldName);
+            var tds = area.Parent().Children();
+            return new NonLabFieldControl(Page, area, tds[tds.Count - 1]);
+        }
 
         public void FindFieldByText(string fieldText)
         {

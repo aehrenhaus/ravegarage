@@ -32,8 +32,17 @@ namespace Medidata.RBT.Features.Rave
             TestContext.CurrentPage.As<AMMigrationHomePage>().NavigateToStudy(studyName);
         }
 
+        [Given(@"I go to Publish Checks for study ""(.*?)""")]
+        public void IGoToPublishChecksForStudy____(string studyName)
+        {
+            new PublishChecksHomePage()
+                .NavigateToStudy(studyName);
+        }
+
+
         /// <summary>
-        /// Select the source crf version
+        /// Selects the source crf version
+        /// AM specific implementation and naming convention
         /// </summary>
         /// <param name="sourceCRFName">Feature defined source crfVersion name</param>
         [StepDefinition(@"I select Source CRF version ""([^""]*)""")]
@@ -43,7 +52,23 @@ namespace Medidata.RBT.Features.Rave
         }
 
         /// <summary>
+        /// Selects the current crf version
+        /// Publish Checks implementation and naming convention 
+        /// - analogous to AM method ISelectSourceCRFVersion____(string sourceCRFName)
+        /// </summary>
+        /// <param name="currentCrfName"></param>
+        [StepDefinition(@"I select Current CRF version ""(.*?)""")]
+        public void ISelectCurrentCRFVersion___(string currentCrfName)
+        {
+            TestContext.CurrentPage.As<PublishChecksHomePage>()
+                .SelectCurrentCRF(currentCrfName);
+        }
+
+
+
+        /// <summary>
         /// Select the target crf version
+        /// AM specific implementation and naming convention
         /// </summary>
         /// <param name="targetCRFName">Feature defined target crfVersion name</param>
         [StepDefinition(@"I select Target CRF version ""([^""]*)""")]
@@ -51,6 +76,70 @@ namespace Medidata.RBT.Features.Rave
         {
             TestContext.CurrentPage.As<AMMigrationHomePage>().SelectTargetCRF(targetCRFName);
         }
+
+        /// <summary>
+        /// Selects the reference crf version
+        /// Publish Checks implementation and naming convention 
+        /// - analogous to AM method ISelectTargetCRFVersion____(string targetCRFName)
+        /// </summary>
+        /// <param name="referenceCrfName"></param>
+        [StepDefinition(@"I select Reference CRF version ""(.*?)""")]
+        public void ISelectReferenceCRFVersion___(string referenceCrfName)
+        {
+            TestContext.CurrentPage.As<PublishChecksHomePage>()
+                .SelectReferenceCRF(referenceCrfName);
+        }
+
+
+        /// <summary>
+        /// Selects the specified form from the Forms dropdown on Publish Checks page.
+        /// It only applies to functionality exposed on Publish Checks page.
+        /// </summary>
+        /// <param name="form"></param>
+        [StepDefinition(@"I select ""(.*?)"" from Forms in Edit Checks")]
+        public void ISelect____FromFromsInEditChecks(string form)
+        {
+            TestContext.CurrentPage.As<PublishChecksHomePage>()
+                .EditChecks
+                .SelectForm(form);
+        }
+
+        /// <summary>
+        /// Clicks on a button to search on the Publish Checks page.
+        /// It only applies to functionality exposed on Publish Checks page.
+        /// </summary>
+        [StepDefinition(@"I select search icon in Edit Checks")]
+        public void ISelectSearchIcon()
+        {
+            TestContext.CurrentPage.As<PublishChecksHomePage>()
+                .EditChecks
+                .Search();
+        }
+
+        [StepDefinition(@"I check ""(Publish|Run|Inactivate)"" for ""(.*?)"" in Edit Checks")]
+        public void ICheck____For____InEditChecks(string action, string name)
+        {
+            var item = TestContext.CurrentPage.As<PublishChecksHomePage>()
+                .EditChecks.FindEditChecksItemByName(name);
+
+            switch (action)
+            {
+                case "Publish":
+                    item.Publish = true;
+                    break;
+                case "Run":
+                    item.Run = true;
+                    break;
+                case "Inactivate":
+                    item.Inactivate = true;
+                    break;
+            }//End switch
+        }
+
+
+
+
+
 
         /// <summary>
         /// Create the migration plan

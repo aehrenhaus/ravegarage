@@ -80,6 +80,8 @@
     <Compile Include="Architect\ArchitectFormsPage.cs" />
     <Compile Include="Architect\ArchitectFormDesigner.cs" />
     <Compile Include="Architect\ArchitectRestrictionsPage.cs" />
+    <Compile Include="Architect\EditChecksItem.cs" />
+    <Compile Include="Architect\PublishChecksEditChecksControl.cs" />
     <Compile Include="Architect\UploadDraftPage.cs" />
     <Compile Include="Architect\PublishChecksHomePage.cs" />
     <Compile Include="Configuration\CoderConfigurationPage.cs" />

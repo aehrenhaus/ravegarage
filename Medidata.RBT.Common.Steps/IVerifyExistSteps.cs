@@ -29,6 +29,21 @@ namespace Medidata.RBT.Common.Steps
 			Assert.IsTrue(allExist,String.Format("Not all rows have been found in the table {0}", tableIdentifier));
 		}
 
+        /// <summary>
+        /// Save as IVerifyRowsExistIn____Table(string tableIdentifier, Table matchTable)
+        /// except this step should be used where the tableIdentifier parameter is meaningless (ex. Crystal Reports page)
+        /// </summary>
+        /// <param name="matchTable"></param>
+        [StepDefinition(@"I verify rows exist in table")]
+        public void IVerifyRowsExistInTable(Table matchTable)
+        {
+            SpecialStringHelper.ReplaceTableColumn(matchTable, "Subject");
+            bool result = CurrentPage.As<ICanVerifyExist>()
+                .VerifyTableRowsExist(null, matchTable);
+            Assert.IsTrue(result, "Not all rows have been found in the table");
+        }
+
+
 		/// <summary>
 		/// 
 		/// </summary>

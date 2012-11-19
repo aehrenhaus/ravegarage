@@ -8,15 +8,17 @@ using OpenQA.Selenium.Remote;
 using Medidata.RBT.SeleniumExtension;
 using System.Collections.Specialized;
 using System.Collections.ObjectModel;
+using Medidata.RBT.PageObjects.Rave.SharedRaveObjects;
+using TechTalk.SpecFlow;
+using TechTalk.SpecFlow.Assist;
 
 namespace Medidata.RBT.PageObjects.Rave
 {
-    public class CrystalReportPage : RavePageBase, ICanPaginate
-    {
-        public CrystalReportPage()
-        {
-
-        }
+    public class CrystalReportPage 
+        : RavePageBase, ICanPaginate, ICanVerifyExist
+	{
+        public CrystalReportPage() { }
+        
         public override string URL
         {
             get { return "CrystalReportViewer.aspx"; }
@@ -193,7 +195,360 @@ namespace Medidata.RBT.PageObjects.Rave
             return rowContentList;
         }
 
-    }
+        /// <summary>
+        /// Checks each row in the report for the exact existence of each column and its value
+        /// as given by the QueryAuditReportSearchModel instance. Returns true immediately after 
+        /// the first match is found. Each column is checked assuming that if the Column is null, represented by the property in
+        /// the QueryAuditReportSearchModel instance, it is a don't care condition.
+        /// </summary>
+        /// <param name="model">
+        /// QueryAuditReportSearchModel instance representing the parameters that the method will match on.
+        /// Each property represents a column in the report. If all the properties are null, the search will
+        /// collapse into the trivial case where all the parameters are don't care conditions and the method will return True.
+        /// </param>
+        /// <returns>True only if at least one match exists</returns>
+        private bool VerifyTableRowsExist(QueryAuditReportSearchModel model)
+        {
+            model.Site = TestContext.GetExistingFeatureObjectOrMakeNew(model.Site, 
+                () => new Site(model.Site)).UniqueName;
 
-    
+            try
+            {
+                bool exists = false;    //Asume the row does not exist
+                
+                do
+                {
+                    var iframe = this.Browser.FindElement(By.XPath("//iframe"));
+                    this.Browser.SwitchTo().Frame(iframe);
+
+                    var rows = this.Browser.FindElements(By.XPath("//div[@id='Section3']"));
+                    foreach (var row in rows)
+                    {
+                        if (ConfirmSite(row, model)
+                            && ConfirmSiteGroup(row, model)
+                            && ConfirmSubject(row, model)
+                            && ConfirmFolder(row, model)
+                            && ConfirmForm(row, model)
+                            && ConfirmPageRptNumber(row, model)
+                            && ConfirmField(row, model)
+                            && ConfirmLogNo(row, model)
+                            && ConfirmAuditAction(row, model)
+                            && ConfirmAuditUser(row, model)
+                            && ConfirmAuditRole(row, model)
+                            && ConfirmAuditActionType(row, model)
+                            && ConfirmAuditTime(row, model))
+                        {
+                            exists = true;
+                            break;
+                        }
+                    }//End foreach
+                }
+                //Continue searching while there are more pages to look at and row wasn't found yet
+                while (!exists
+                    && this.GoNextPage(null));
+
+
+                return exists;
+            }
+            catch (Exception ex)
+            { 
+                return false; 
+            }
+        }
+
+
+        private bool ConfirmSite(IWebElement row, QueryAuditReportSearchModel model)
+        {
+            var result = true;
+
+            //model.Site == null is a don't care condition
+            if (model.Site != null)
+            {
+                try
+                {
+                    var site = row.FindElement(
+                        By.XPath("./following-sibling::div[@id='Field4'][1]"));
+                    
+                    var text = (site.Text ?? string.Empty)
+                        .Replace("\r", string.Empty)
+                        .Replace("\n", string.Empty)
+                        .Trim();
+                    result = model.Site.Equals(text);
+                }
+                catch { result = false; }   //The element isn't even there
+            }
+
+            return result;
+        }
+        private bool ConfirmSiteGroup(IWebElement row, QueryAuditReportSearchModel model)
+        {
+            var result = true;
+
+            //model.SiteGroup == null is a don't care condition
+            if (model.SiteGroup != null)
+            {
+                try
+                {
+                    var siteGroup = row.FindElement(
+                        By.XPath("./following-sibling::div[@id='SiteGroupName1'][1]"));
+                    result = model.SiteGroup
+                        .Equals(siteGroup.Text.Trim());
+                }
+                catch { result = false; }
+            }
+
+            return result;
+        }
+        private bool ConfirmSubject(IWebElement row, QueryAuditReportSearchModel model)
+        {
+            var result = true;
+
+            //model.Subject == null is a don't care condition
+            if (model.Subject != null)
+            {
+                try
+                {
+                    var subject = row.FindElement(
+                        By.XPath("./following-sibling::div[@id='Field6'][1]"));
+                    result = model.Subject
+                        .Equals(subject.Text.Trim());
+                }
+                catch { result = false; }
+            }
+
+            return result;
+        }
+        private bool ConfirmFolder(IWebElement row, QueryAuditReportSearchModel model)
+        {
+            var result = true;
+
+            //model.Folder == null is a don't care condition
+            if (model.Folder != null)
+            {
+                try
+                {
+                    var folder = row.FindElement(
+                        By.XPath("./following-sibling::div[@id='Field8'][1]"));
+                    result = model.Folder
+                        .Equals(folder.Text.Trim());
+                }
+                catch { result = false; }
+            }
+
+            return result;
+        }
+        private bool ConfirmForm(IWebElement row, QueryAuditReportSearchModel model)
+        {
+            var result = true;
+
+            //model.Form == null is a don't care condition
+            if (model.Form != null)
+            {
+                try
+                {
+                    var form = row.FindElement(
+                        By.XPath("./following-sibling::div[@id='Field10'][1]"));
+                    result = model.Form
+                        .Equals(form.Text.Trim());
+                }
+                catch { result = false; }
+            }
+
+            return result;
+        }
+        private bool ConfirmPageRptNumber(IWebElement row, QueryAuditReportSearchModel model)
+        {
+            var result = true;
+
+            //model.PageRptNumber == null is a don't care condition
+            if (model.PageRptNumber.HasValue)
+            {
+                try
+                {
+                    var pageRptNumber = row.FindElement(
+                        By.XPath("./following-sibling::div[@id='PageRepeatNumber1'][1]"));
+                    result = model.PageRptNumber.ToString()
+                        .Equals(pageRptNumber.Text.Trim());
+                }
+                catch { result = false; }
+            }
+
+            return result;
+        }
+        private bool ConfirmField(IWebElement row, QueryAuditReportSearchModel model)
+        {
+            var result = true;
+
+            //model.Field == null is a don't care condition
+            if (model.Field != null)
+            {
+                try
+                {
+                    var field = row.FindElement(
+                        By.XPath("./following-sibling::div[@id='Field12'][1]"));
+                    result = model.Field
+                        .Equals(field.Text.Trim());
+                }
+                catch { result = false; }
+            }
+
+            return result;
+        }
+        private bool ConfirmLogNo(IWebElement row, QueryAuditReportSearchModel model)
+        {
+            var result = true;
+
+            //model.LogNo == null is a don't care condition
+            if (model.LogNo.HasValue)
+            {
+                try
+                {
+                    var logNo = row.FindElement(
+                        By.XPath("./following-sibling::div[@id='Field13'][1]"));
+                    result = model.LogNo.ToString()
+                        .Equals(logNo.Text.Trim());
+                }
+                catch { result = false; }
+            }
+
+            return result;
+        }
+        private bool ConfirmAuditAction(IWebElement row, QueryAuditReportSearchModel model)
+        {
+            var result = true;
+
+            //model.AuditAction == null is a don't care condition
+            if (model.AuditAction != null)
+            {
+                try
+                {
+                    var auditAction = row.FindElement(
+                        By.XPath("./following-sibling::div[@id='Field7'][1]"));
+
+                    var text = (auditAction.Text ?? string.Empty)
+                        .Replace("\r", string.Empty)
+                        .Replace("\n", string.Empty)
+                        .Trim();
+                    result = model.AuditAction.Equals(text);
+                }
+                catch { result = false; }
+            }
+
+            return result;
+        }
+        private bool ConfirmAuditUser(IWebElement row, QueryAuditReportSearchModel model)
+        {
+            var result = true;
+
+            //model.AuditUser == null is a don't care condition
+            if (model.AuditUser != null)
+            {
+                try
+                {
+                    var auditUser = row.FindElement(
+                        By.XPath("./following-sibling::div[@id='Field16'][1]"));
+                    result = model.AuditUser
+                        .Equals(auditUser.Text.Trim());
+                }
+                catch { result = false; }
+            }
+
+            return result;
+        }
+        private bool ConfirmAuditRole(IWebElement row, QueryAuditReportSearchModel model)
+        {
+            var result = true;
+
+            //model.AuditRole == null is a don't care condition
+            if (model.AuditRole != null)
+            {
+                try
+                {
+                    var auditRole = row.FindElement(
+                        By.XPath("./following-sibling::div[@id='Field18'][1]"));
+                    
+                    var text = (auditRole.Text ?? string.Empty)
+                        .Replace("\r", string.Empty)
+                        .Replace("\n", string.Empty)
+                        .Trim();
+                    result = model.AuditRole.Equals(text);
+                }
+                catch { result = false; }
+            }
+
+            return result;
+        }
+        private bool ConfirmAuditActionType(IWebElement row, QueryAuditReportSearchModel model)
+        {
+            var result = true;
+
+            //model.AuditActionType == null is a don't care condition
+            if (model.AuditActionType != null)
+            {
+                try
+                {
+                    var auditActionType = row.FindElement(
+                        By.XPath("./following-sibling::div[@id='Field5'][1]"));
+
+                    var text = (auditActionType.Text ?? string.Empty)
+                        .Replace("\r", string.Empty)
+                        .Replace("\n", string.Empty)
+                        .Trim();
+                    result = model.AuditActionType.Equals(text);
+                }
+                catch { result = false; }
+            }
+
+            return result;
+        }
+        private bool ConfirmAuditTime(IWebElement row, QueryAuditReportSearchModel model)
+        {
+            var result = true;
+
+            //model.AuditTime == null is a don't care condition
+            if (model.AuditTime != null)
+            {
+                try
+                {
+                    var auditTime = row.FindElement(
+                        By.XPath("./following-sibling::div[@id='AuditTimeLocalized1'][1]"));
+
+                    var text = (auditTime.Text ?? string.Empty)
+                        .Replace("\r", string.Empty)
+                        .Replace("\n", string.Empty)
+                        .Trim();
+
+                    DateTime dt;
+                    DateTime.TryParse(text, out dt);
+
+                    result = text.Equals(dt.ToString(model.AuditTime));
+                }
+                catch { result = false; }
+            }
+
+            return result;
+        }
+
+        #region ICanVerifyExist
+        public bool VerifyTableRowsExist(string tableIdentifier, Table table)
+        {
+            var result = true;
+            var args = table.CreateSet<QueryAuditReportSearchModel>();
+            foreach (var arg in args)
+                result &= this.VerifyTableRowsExist(arg);
+
+            return result;
+        }
+
+        public bool VerifyControlExist(string identifier)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool VerifyTextExist(string identifier, string text)
+        {
+            throw new NotImplementedException();
+        }
+        #endregion
+    }
 }

@@ -75,24 +75,19 @@ namespace Medidata.RBT.PageObjects.Rave
 				.FirstOrDefault(x => x.GetAttribute("src").EndsWith("arrow_small_right.gif"));
 			
 			//may be already clicked 
-			if(extendButton!=null)
-				extendButton.Click();
-
-
-            var elem = paraTR.TryFindElementBy(By.XPath(".//div[@id='PromptsBox_st_div']"));
-
-            if (elem != null)
+            if (extendButton != null)
             {
-                double timeOutSeconds = 5;
-                while (timeOutSeconds > 0)
-                {
-                    if (elem.GetCssValue("display").Equals("block", StringComparison.InvariantCultureIgnoreCase))
-                        break;
-                    Thread.Sleep(200);
-                    timeOutSeconds = timeOutSeconds - 0.2;
-                }
-            }
+                extendButton.Click();
 
+                var id = paraTR.GetAttribute("id");
+                var filter = id.Substring(id.LastIndexOf('_'));
+                filter += "_div";
+                
+                //Wait for this element to appear (it actually already exists 
+                //but it has style='display:none') thus the second filter in the expath
+                var el = paraTR.TryFindElementBy(
+                    By.XPath(".//div[contains(@id, '" + filter + "') and contains(@style, 'block')]"));
+            }
 			return paraTR;
 		}
 
@@ -242,4 +237,3 @@ namespace Medidata.RBT.PageObjects.Rave
         }
     }
 }
-
