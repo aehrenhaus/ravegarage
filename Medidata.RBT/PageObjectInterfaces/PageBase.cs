@@ -12,6 +12,7 @@ using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
 using Medidata.RBT.SeleniumExtension;
 using System.Collections.Specialized;
+using OpenQA.Selenium.Internal;
 
 
 
@@ -62,14 +63,33 @@ namespace Medidata.RBT
             if (page == null)
             {
                 TestContext.CurrentPage = TestContext.POFactory.GetPageByUrl(new Uri(Browser.Url));
-                var currentpage = TestContext.CurrentPage as TPage;
+                IPage currentpage = TestContext.CurrentPage as TPage as IPage;
                 if (currentpage == null)
                 {
-					throw new Exception("Expect current page to be " + typeof(TPage).Name + ", but it's " + (TestContext.CurrentPage==null?"null":TestContext.CurrentPage.GetType().Name));
+                    IWebElement fakeEle = TestContext.Browser.CheckURLIsCorrect(b => CheckCurrentPage(TestContext.CurrentPage.URL));
+
+                    if(fakeEle != null)
+                        currentpage = TestContext.CurrentPage as TPage as IPage;
+                    else
+					    throw new Exception("Expect current page to be " + typeof(TPage).Name + ", but it's " + (TestContext.CurrentPage==null?"null":TestContext.CurrentPage.GetType().Name));
                 }
-                return currentpage;
+                return (TPage)currentpage;
             }
             return page;
+        }
+
+        /// <summary>
+        /// This is a bit of a hack to use web driver wait to wait a controlled amount for the page to load.
+        /// </summary>
+        /// <param name="expectedPageUrl">The url of the page we expect to be here</param>
+        /// <returns>Returns an empty textbox if the page matches the expected page, a null if the page doesn't</returns>
+        private static IWebElement CheckCurrentPage(string expectedPageUrl)
+        {
+            IPage currentPage = TestContext.POFactory.GetPageByUrl(new Uri(TestContext.Browser.Url)) as IPage;
+            if (currentPage.URL == expectedPageUrl)
+                return new Textbox();
+            else
+                return null;
         }
 
 		/// <summary>
