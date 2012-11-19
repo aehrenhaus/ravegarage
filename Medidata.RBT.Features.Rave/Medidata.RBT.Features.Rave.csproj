@@ -157,6 +157,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>US10242_DT13576.feature</DependentUpon>
     </Compile>
+    <Compile Include="Features\EDC\US12991_DT13751.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>US12991_DT13751.feature</DependentUpon>
+    </Compile>
     <Compile Include="Features\EDC\US12994_DT10991.feature.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -507,6 +512,10 @@
     <None Include="Features\EDC\US10242_DT13576.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>US10242_DT13576.feature.cs</LastGenOutput>
+    </None>
+    <None Include="Features\EDC\US12991_DT13751.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>US12991_DT13751.feature.cs</LastGenOutput>
     </None>
     <None Include="Features\EDC\US12994_DT10991.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
