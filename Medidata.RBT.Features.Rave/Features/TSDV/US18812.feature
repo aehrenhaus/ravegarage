@@ -1,14 +1,14 @@
 ﻿# When a user selects  Dynamic Allocation Randomization Block algorithm , subject assignment satisfies a specified allocation and ratio is random for all blocks.
 @EnableSeeding=true
 @SuppressSeeding=Site,SiteGroup,Role,User,SecurityRole
-@ignore
+#SecurityRole
+
 Feature: US18812
 	When user selects Dynamic Allocation Randomization Block algorithm
 	Then subject assignment satisfies a specified allocation ratio
 	And subject assignment is random for all blocks
 
 Background:
-	Given I login to Rave with user "SUPER USER 1"
 	Given xml draft "US18812_SJ.xml" is Uploaded with Environment name "Dev"
 	Given Site "Site 1" with Site Group "Asia" exists
 	Given Site "Site 2" with Site Group "Europe" exists
@@ -122,29 +122,24 @@ Background:
 
 @release_2012.1.0 
 @PB_US18812_01
-@Draft
+@Validation
 
 Scenario: @PB_US18812_01 Enroll 50 subjects in a study to verify that TSDV has randomized the subjects in non sequential order when the subjects are included in TSDV using the Targeted SDV Subject Include report in Study level, Site group level and Site level.
-	#When I select Study "US18812_SJ" and Site "Site 1"
-	#When I login to Rave with user "SUPER USER 1"
+	Given I login to Rave with user "SUPER USER 1"
 	And I navigate to "Reporter"
 	And I select Report "Targeted SDV Configuration"
 	And I set report parameter "Study" with table
-		| Name                | Environment |
+		| Name       | Environment |
 		| US18812_SJ | Dev         | 
 	And I click button "Submit Report"
 	And I switch to "Targeted SDV Study Plan" window
 	And I create a new block plan named "US18812_SJ (Dev) Block Plan" with Data entry Role "SUPER ROLE 1"
-	#nd I verify text "Dynamic Allocation" exists
+	And I verify text "Dynamic Allocation" exists
 	And I delete the tier "Architect Defined" from plan
 	And I edit Blocks 
 	| Name              | Subject Count |
 	| Architect Defined | 10            |
-	
 	And I select link "Tiers"
-	#And I remove all costom tiers
-	#And I select link "Study Block Plan"
-	#
 	And I create a custom tier named "Custom Tier 1" and description "Adverse Events" with table
 	| Form           | Selected |
 	| Adverse Events | True     |
@@ -169,10 +164,7 @@ Scenario: @PB_US18812_01 Enroll 50 subjects in a study to verify that TSDV has r
 	And I select link "Study Block Plan"
 	And I select the tier "All Forms" and Subject Count "1"
 	And I select the tier "No Forms" and Subject Count "1"
-
-	
 	And I select the tier "Architect Defined" and Subject Count "1"
-
 	And I select the tier "Custom Tier 1" and Subject Count "1"
 	And I select the tier "Custom Tier 2" and Subject Count "1"
 	And I select the tier "Custom Tier 3" and Subject Count "1"
@@ -184,12 +176,11 @@ Scenario: @PB_US18812_01 Enroll 50 subjects in a study to verify that TSDV has r
 	And I switch to "Reports" window
 	And I select link "Home"
 	And I create 50 random Subjects with name "ABB" in Study "US18812_SJ" in Site "Site 1"
-	#And I verify text "Dynamic Allocation" exists
 	And I select link "Home"
 	And I navigate to "Reporter"
 	And I select Report "Targeted SDV Subject Management"
 	And I set report parameter "Study" with table
-		| Name        | Environment |
+		| Name       | Environment |
 		| US18812_SJ | Dev         |
 	And I click button "Submit Report"
 	And I switch to "Targeted SDV Subject Override" window 
@@ -388,7 +379,7 @@ Scenario: @PB_US18812_01 Enroll 50 subjects in a study to verify that TSDV has r
 		| Custom Tier 5     | 98  |
 		| Custom Tier 6     | 99  |
 		| Custom Tier 7     | 100 |
-	And I verify every 10 rows of subjects in 50 rows do not have tiers pattern
+	And I verify every 10 rows of subjects in 100 rows do not have tiers pattern
 	And I switch to "Reports" window
 	And I select link "Home"
 	And I navigate to "Reporter"
@@ -488,7 +479,7 @@ Scenario: @PB_US18812_01 Enroll 50 subjects in a study to verify that TSDV has r
 	And I navigate to "Reporter"
 	And I select Report "Targeted SDV Configuration"
 	And I set report parameter "Study" with table
-		| Name        | Environment |
+		| Name       | Environment |
 		| US18812_SJ | Dev         |
 	And I click button "Submit Report"
 	And I switch to "Targeted SDV Study Plan" window
