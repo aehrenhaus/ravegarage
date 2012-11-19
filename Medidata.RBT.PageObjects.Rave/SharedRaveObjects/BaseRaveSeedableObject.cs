@@ -60,19 +60,12 @@ namespace Medidata.RBT.SharedRaveObjects
 
 		protected virtual void SeedFromUI()
 		{
-			string previousUser = TestContext.CurrentUser;
-			string previousPassword = TestContext.CurrentUserPassword;
-
-			//login as default user to homepage if not already
-			LoginPage.LoginToHomePageIfNotAlready();
-
-			MakeUnique();
-			NavigateToSeedPage();
-			CreateObject();
-
-			//login as previous user, to home page
-			LoginPage.LoginToHomePageIfNotAlready(previousUser, previousPassword);
-
+			using (new LoginSession())
+			{
+				MakeUnique();
+				NavigateToSeedPage();
+				CreateObject();
+			}
 
 		}
 

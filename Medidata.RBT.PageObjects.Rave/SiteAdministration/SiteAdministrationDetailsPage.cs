@@ -13,11 +13,6 @@ namespace Medidata.RBT.PageObjects.Rave.SiteAdministration
 {
     public class SiteAdministrationDetailsPage : SiteAdministrationBasePage
     {
-        [FindsBy(How = How.Id, Using = "_ctl0_Content_SiteNameBox")]
-        public IWebElement SiteNameBox;
-
-        [FindsBy(How = How.Id, Using = "_ctl0_Content_SiteNumberBox")]
-        public IWebElement SiteNumberBox;
 
         public override string URL
         {
@@ -36,6 +31,9 @@ namespace Medidata.RBT.PageObjects.Rave.SiteAdministration
         /// <param name="siteGroup">The site group name of site to be created</param>
         public void CreateSite(string siteName, string siteNumber, string siteGroup)
         {
+			IWebElement SiteNameBox = Browser.TryFindElementById("_ctl0_Content_SiteNameBox");
+			IWebElement SiteNumberBox = Browser.TryFindElementById("_ctl0_Content_SiteNumberBox");
+
             SiteNameBox.EnhanceAs<Textbox>().SetText(siteName);
             SiteNumberBox.EnhanceAs<Textbox>().SetText(siteNumber);
             if (siteGroup != "")
