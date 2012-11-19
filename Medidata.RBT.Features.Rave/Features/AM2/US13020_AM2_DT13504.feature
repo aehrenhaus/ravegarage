@@ -44,7 +44,6 @@ Given following Report assignments exist
 Scenario:  When a user navigates to Publish Checks, selects the noted source version and the noted target version, clicks create plan, checks the 'Show field edit check' box, selects "Form A" from the Form dropdown, checks the 'Inactivate' box for the "SYS_REQ_FIELDD_FORMA" edit check, clicks 'Publish', and navigates to created subject in EDC then the system will show an audit trail message of "Amendment Manager: Query closed during migration process because the edit check no longer exists in target version." in "Field D"
 
 Given I login to Rave with user "SUPER USER 1"
-And I select Study "DT13504" and Site "Site_001"
 And I create a Subject
     |Field               |Data              |Control Type |
     |Subject Initials    |SUB               |textbox      |
@@ -77,7 +76,6 @@ And I select link "Migration Results"
 And I verify Job Status is set to Complete
 And I take a screenshot
 And I navigate to "Home"
-And I select Study "DT13504" and Site "Site_001"
 And I select a Subject "{Var(num1)}"
 And I select form "Form A"
 When I click audit on Field "Field D"
@@ -107,7 +105,6 @@ Scenario:  When a user navigates to Amendment Manager, selects the noted source 
 
 Given I publish and push eCRF "DT13504_1.xml" to "Version 3"
 And I login to Rave with user "SUPER USER 1"
-And I select Study "DT13504" and Site "Site_001"
 And I create a Subject
     |Field               |Data              |Control Type |
     |Subject Initials    |SUB               |textbox      |
@@ -135,7 +132,6 @@ And I select link "Migration Results"
 And I verify Job Status is set to Complete
 And I take a screenshot
 And I navigate to "Home"
-And I select Study "DT13504" and Site "Site_001"
 And I select a Subject "{Var(num1)}"
 And I select form "Form A"
 When I click audit on Field "Field B"
