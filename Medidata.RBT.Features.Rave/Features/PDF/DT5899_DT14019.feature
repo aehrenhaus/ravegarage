@@ -1,8 +1,8 @@
 #Note: This DT5899/14019 can be tested only through manual verification
 # When a blank PDF form is generated based on a log form populated with default values, the PDF file should not include page breaks between each of the 
 # default values.
-
-#Feature: Blank PDF files that are generated for log forms with default values should not include page breaks between records
+@ignore
+Feature: Blank PDF files that are generated for log forms with default values should not include page breaks between records
 	#As a Rave User with access to PDF generator and a study with a log form with default values
 	#I want to generate a blank PDF for the log form with default value that is a continuous list of all records instead of multiple pages
 	#so that I can minimize the number of pages generated in the PDF
@@ -93,64 +93,66 @@
 @US15841A
 @US17279
 @US17414
-@Validation  
-Scenario: @US15841A A blank PDF that is generated should not product multiple pages for the default log lines
-	When I view the blank PDF that is generated
-	I should see a continuous page or set of pages for the default log lines
-	I should not see a new page produced for every default log line
-	I should not see a blank page in PDF
-
-	When I create Blank PDF
-		| Name						   | Profile | Study				    |Role   |Locale  |CRFVersion                 |
-		| Blank PDF 1A{RndNum<num>(3)} | PDF A1  | PDF Default Study (Prod) |Role 1 |English |CRF Version<RANDOMNUMBER>  |
-	And I take a screenshot
-	And I generate Blank PDF "Blank PDF 1A{Var(num)}"
-	And I wait for PDF "Blank PDF 1A{Var(num)}" to complete
-	And I take a screenshot
-	When I View Blank PDF "Blank PDF 1A{Var(num)}"
-	Then I should not see a blank page in PDF
-    And I take a screenshot
-	When I click on link "Medical History" on the PDF in the left side
-	Then I should see a continuous page or set of pages for the default log lines on the "Medical History" form
-	And I should not see a new page produced for every default log line on the "Medical History" form
-	And I take a screenshot
-	When I click on link "Demographics" on the PDF in the left side
-	Then I should see a continuous page or set of pages for the default log lines on the "Demographics" form
-	And I should not see a new page produced for every default log line on the "Demographics" form
-    And I take a screenshot
+@ignore
+@manual  
+#Scenario: @US15841A A blank PDF that is generated should not product multiple pages for the default log lines
+	#When I view the blank PDF that is generated
+	#I should see a continuous page or set of pages for the default log lines
+	#I should not see a new page produced for every default log line
+	#I should not see a blank page in PDF
+	#
+	#When I create Blank PDF
+	#	| Name						   | Profile | Study				    |Role   |Locale  |CRFVersion                 |
+	#	| Blank PDF 1A{RndNum<num>(3)} | PDF A1  | PDF Default Study (Prod) |Role 1 |English |CRF Version<RANDOMNUMBER>  |
+	#And I take a screenshot
+	#And I generate Blank PDF "Blank PDF 1A{Var(num)}"
+	#And I wait for PDF "Blank PDF 1A{Var(num)}" to complete
+	#And I take a screenshot
+	#When I View Blank PDF "Blank PDF 1A{Var(num)}"
+	#Then I should not see a blank page in PDF
+    #And I take a screenshot
+	#When I click on link "Medical History" on the PDF in the left side
+	#Then I should see a continuous page or set of pages for the default log lines on the "Medical History" form
+	#And I should not see a new page produced for every default log line on the "Medical History" form
+	#And I take a screenshot
+	#When I click on link "Demographics" on the PDF in the left side
+	#Then I should see a continuous page or set of pages for the default log lines on the "Demographics" form
+	#And I should not see a new page produced for every default log line on the "Demographics" form
+    #And I take a screenshot
 
 @release_2012.1.0
 @US15841B
 @US17279
 @US17414
-@Validation  
-Scenario: @US15841B As a user when I navigate to "PDF Generator" and select "Create Blank Request" 
-using "Annotated PDF profile" where the "Pre-Filled Values" checkbox has been checked 
-from the "Annotations" category, then I should see all the prefilled values in one page.
-I should not see a blank page in PDF
+@ignore
+@manual  
+#Scenario: @US15841B As a user when I navigate to "PDF Generator" and select "Create Blank Request" 
+#using "Annotated PDF profile" where the "Pre-Filled Values" checkbox has been checked 
+#from the "Annotations" category, then I should see all the prefilled values in one page.
+#I should not see a blank page in PDF
 
-	When I create Blank PDF
-		| Name						   | Profile | Study				    |Role   |Locale  |CRFVersion                 |
-		| Blank PDF 2A{RndNum<num>(3)} | PDF A2  | PDF Default Study (Prod) |Role 1 |English |CRF Version<RANDOMNUMBER>  |
-	And I take a screenshot
-	And I generate Blank PDF "Blank PDF 2A{Var(num)}"
-	And I wait for PDF "Blank PDF 2A{Var(num)}" to complete
-	And I take a screenshot
-	When I View Blank PDF "Blank PDF 2A{Var(num)}"
-	Then I should not see a blank page in PDF
-	Then I should see all the prefilled values in one page on "Medical History" form
-	And I take a screenshot
-	Then I should see all the prefilled values in one page on "Demographics" form
-	And I take a screenshot
-	When I click on link "Medical History" on the PDF in the left side
-	Then I should see the "Medical History" form on the right side of the PDF with Annonations
-	And I take a screenshot	
-    When I click on the Annotations on the "Medical History" form on the PDF
-    Then I should take to the Annotations page of "Medical History" form
-	And I take a screenshot	
-    When I click on link "Demographics" on the PDF in the left side
-	Then I should see the "Demographics" form on the right side of the PDF with Annonations
-	And I take a screenshot	
-    When I click on the Annotations on the "Demographics" form on the PDF
-    Then I should take to the Annotations page of "Demographics" form
-	And I take a screenshot
+	#When I create Blank PDF
+	#	| Name						   | Profile | Study				    |Role   |Locale  |CRFVersion                 |
+	#	| Blank PDF 2A{RndNum<num>(3)} | PDF A2  | PDF Default Study (Prod) |Role 1 |English |CRF Version<RANDOMNUMBER>  |
+	#And I take a screenshot
+	#And I generate Blank PDF "Blank PDF 2A{Var(num)}"
+	#And I wait for PDF "Blank PDF 2A{Var(num)}" to complete
+	#And I take a screenshot
+	#When I View Blank PDF "Blank PDF 2A{Var(num)}"
+	#Then I should not see a blank page in PDF
+	#Then I should see all the prefilled values in one page on "Medical History" form
+	#And I take a screenshot
+	#Then I should see all the prefilled values in one page on "Demographics" form
+	#And I take a screenshot
+	#When I click on link "Medical History" on the PDF in the left side
+	#Then I should see the "Medical History" form on the right side of the PDF with Annonations
+	#And I take a screenshot	
+    #When I click on the Annotations on the "Medical History" form on the PDF
+    #Then I should take to the Annotations page of "Medical History" form
+	#And I take a screenshot	
+    #When I click on link "Demographics" on the PDF in the left side
+	#Then I should see the "Demographics" form on the right side of the PDF with Annonations
+	#And I take a screenshot	
+    #When I click on the Annotations on the "Demographics" form on the PDF
+    #Then I should take to the Annotations page of "Demographics" form
+	#And I take a screenshot
