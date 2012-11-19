@@ -1,6 +1,6 @@
 @ignore
 Feature: US13780_DT13557 
-  As a data manager
+  As a Rave user
   I want to be able to apply rules in AM Object Heirarchy
   So that I can Move Elements in AM Object Heirarchy
   I want to be able to see the correct number of elements moved
@@ -22,39 +22,23 @@ Background:
 	Given following Project assignments exist
 		| User 		   | Project 		 | Environment| Role         | Site  | SecurityRole 		 |
 		| SUPER USER 1 | US13780_DT13557 | Live: Prod | SUPER ROLE 1 | Site 1| Project Admin Default |
-	#Given I am logged in as a Rave user "User1" 
-	#And I have access as Rave user "User2"
-	#And I have access to "Architect"
-	#And I have access to "EDC"
-	#And I have access to Amendment Manager
-	#And I have access to Study "Study_001"
-	#And I have access to Site "Site_001"
-    #And I have access to Subject "Subject001"
-	#And I have access to folder "Folder"
-	#And I have access to folder "Folder 1"
-	#And I have access to folder "Folder 2"
-	#And I have access to folder "Folder 3"
-	#And I have access to folder "Folder 4"
-	#And I have access to folder "Folder (4)"
-	#And I have access to form "Form (1)"
 	
 #----------------------------------------------------------------------------------------------------------------------------------------
 @Rave564_2012.1.1
 @PB_US13780_AM2_DT13557_01
-@Draft
+@Validation
 Scenario: US13780_AM2_DT13557_01 When a user navigates to Architect, creates a migration plan with a new CRF version as the Target CRF version, adds a Move Element object hierarchy rule with the “Only if target parent exists?box checked, in the Source patch enters "[Subject]/FOLDER:Folder(4)/FOLDER:Folder(1)/FORM:Form(1)" and in the Target Source enters "[Subject]/FOLDER:Folder 3/FOLDER:Folder(1)", and executes the migration then the user will see the form appear only in "Folder(4)"
-
-	Given I login to Rave with user "defuser" and password "password"
+	
+	Given I login to Rave with user "SUPER USER 1"
 	And I navigate to "Architect"
-	And I select "Study" link "*US13780_DT13557" in "Active Projects"
+	And I select "Study" link "US13780_DT13557" in "Active Projects"
 	And I select link "Draft 1" in "CRF Drafts"
 	And I publish CRF Version "Source {RndNum<TV#>(5)}"
 	And I note down "crfversion" to "newversion1#"
-	And I select "Study" link "*US13780_DT13557" in "Header"
+	And I select "Study" link "US13780_DT13557" in "Header"
 	And I push CRF Version "{Var(newversion1#)}" to "All Sites"
 
-	And I navigate to "Home"	
-	And I select Study "*US13780_DT13557" and Site "Site 1"
+	And I navigate to "Home"
 	And I create a Subject
 	| Field          | Data              | Control Type |
 	| Subject Name   | SUB               | text         |
@@ -80,11 +64,11 @@ Scenario: US13780_AM2_DT13557_01 When a user navigates to Architect, creates a m
 
 	And I navigate to "Home"
 	And I navigate to "Architect"
-	And I select "Study" link "*US13780_DT13557" in "Active Projects"
+	And I select "Study" link "US13780_DT13557" in "Active Projects"
 	And I select link "Draft 1" in "CRF Drafts"
 	And I publish CRF Version "Target {RndNum<TV#>(5)}"
 	And I note down "crfversion" to "newversion2#"
-	And I select link "*US13780_DT13557" in "Header"
+	And I select "Study" link "US13780_DT13557" in "Header"
 	And I navigate to "Amendment Manager"
 	And I choose "{Var(newversion1#)}" from "Source CRF"
 	And I choose "{Var(newversion2#)}" from "Target CRF"
@@ -109,7 +93,6 @@ Scenario: US13780_AM2_DT13557_01 When a user navigates to Architect, creates a m
 	And I verify Job Status is set to Complete
 	And I take a screenshot	
 	And I navigate to "Home"
-	And I select Study "*US13780_DT13557" and Site "Site 1"
     And I select a Subject "SUB{Var(num1)}"
 	And I select Folder "Screening"
 	And I verify only "1" Form "Demographics" is displayed

@@ -19,11 +19,10 @@ Background:
 #----------------------------------------------------------------------------------------------------------------------------------------
 @release_564_2012.1.0
 @PB_US19032_01
-@Draft	
+@Validation	
 Scenario: PB_US19032_01 As a Study Coordinator, when I submit 'Standard Derivations' form which has check steps with standard value, then remaining fields are automatically calculated.
 	
 	Given I login to Rave with user "SUPER USER 1"
-	And I select Study "US19032_DT14205" and Site "Site 1"
 	And I create a Subject
 		| Field            | Data              | Control Type |
 		| Subject Initials | SUB               | textbox      |
@@ -54,7 +53,6 @@ Scenario: PB_US19032_01 As a Study Coordinator, when I submit 'Standard Derivati
 		| AddSec Field      | 01 Jan 2010 01:01:03 |
 		| AddMin Field      | 01 Jan 2010 01:03:01 |
 		| AddHour Field     | 01 Jan 2010 03:01:01 |
-		| DaySpan Field     | 13832                |
 		| TimeSpan Field    | 21038400             |
 		| StringAdd Field   | TESTSUB              |
 		| Space Field       | TEST SUB             |
@@ -63,11 +61,10 @@ Scenario: PB_US19032_01 As a Study Coordinator, when I submit 'Standard Derivati
 #----------------------------------------------------------------------------------------------------------------------------------------
 @release_564_2012.1.0
 @PB_US19032_02
-@Draft	
+@Validation	
 Scenario: PB_US19032_02 As a Study Coordinator, when I submit 'Test DT Derivation' form, then remaining fields are automatically calculated.
 
 	Given I login to Rave with user "SUPER USER 1"
-	And I select Study "US19032_DT14205" and Site "Site 1"
 	And I create a Subject
 		| Field            | Data              | Control Type |
 		| Subject Initials | SUB               | textbox      |
@@ -87,11 +84,10 @@ Scenario: PB_US19032_02 As a Study Coordinator, when I submit 'Test DT Derivatio
 #----------------------------------------------------------------------------------------------------------------------------------------
 @release_564_2012.1.0
 @PB_US19032_03
-@Draft	
+@Validation	
 Scenario: PB_US19032_03 As a Study Coordinator, when I submit 'User Derivations' form which has check steps with user value, then remaining fields are automatically calculated.
 
 	Given I login to Rave with user "SUPER USER 1"
-	And I select Study "US19032_DT14205" and Site "Site 1"
 	And I create a Subject
 		| Field            | Data              | Control Type |
 		| Subject Initials | SUB               | textbox      |
@@ -122,11 +118,10 @@ Scenario: PB_US19032_03 As a Study Coordinator, when I submit 'User Derivations'
 #----------------------------------------------------------------------------------------------------------------------------------------
 @release_564_2012.1.0
 @PB_US19032_03
-@Draft	
+@Validation	
 Scenario: PB_US19032_03 As a Study Coordinator, when I submit 'Standard Derivation' form which has check steps with standard value, then remaining fields are automatically calculated.
 
 	Given I login to Rave with user "SUPER USER 1"
-	And I select Study "US19032_DT14205" and Site "Site 1"
 	And I create a Subject
 		| Field            | Data              | Control Type |
 		| Subject Initials | SUB               | textbox      |
@@ -153,3 +148,5 @@ Scenario: PB_US19032_03 As a Study Coordinator, when I submit 'Standard Derivati
 		| DIV_STR_NUM  | 0.50   |
 		| DIV_NUM_STR  | 0.50   |
 	And I take a screenshot
+
+#----------------------------------------------------------------------------------------------------------------------------------------
