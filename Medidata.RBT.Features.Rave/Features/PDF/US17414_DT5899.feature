@@ -97,7 +97,8 @@ Background:
 	
 @release_2012.1.0
 @US15841A
-@Draft  
+@ignore
+@manual  
 Scenario: @US15841A A blank PDF that is generated should not product multiple pages for the default log lines
 	When I view the blank PDF that is generated
 	#I should see a continuous page or set of pages for the default log lines
@@ -123,7 +124,8 @@ Scenario: @US15841A A blank PDF that is generated should not product multiple pa
 
 @release_2012.1.0
 @US15841B
-@Draft  
+@ignore
+@manual  
 Scenario: @US15841B As a user when I navigate to "PDF Generator" and select "Create Blank Request" 
 using "Annotated PDF profile" where the "Pre-Filled Values" checkbox has been checked 
 from the "Annotations" category, then I should see all the prefilled values in one page.
