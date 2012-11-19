@@ -1,3 +1,4 @@
+@ignore
 #DT13504: AM2 audit text needs to be corrected. The audit text "Amendment Manager: Query is closed during migration process, because it no longer exists in target version" should be updated to "Amendment Manager: Query closed during migration process because the edit check no longer exists in target version."
 
 #The scenarios described in this feature file go under the assumption that there is at least the following:
@@ -11,10 +12,15 @@ Feature: When an edit check has been removed from a target CRF version in Archit
 Background:
 Given xml draft "DT13504_1.xml" is Uploaded
 Given xml draft "DT13504_2.xml" is Uploaded
+Given study "DT13504" is assigned to Site "Site_001"
 Given following Project assignments exist
 | User         | Project | Environment | Role         | Site     | SecurityRole          |
 | SUPER USER 1 | DT13504 | Live: Prod  | SUPER ROLE 1 | Site_001 | Project Admin Default |
+| locuser      | DT13504 | Live: Prod  | SUPER ROLE 1 | Site_001 | Project Admin Default |
 Given I publish and push eCRF "DT13504_1.xml" to "Version 1"
+Given following Report assignments exist
+| User         | Report                           |
+| SUPER USER 1 | Audit Trail - Audit Trail Report |
 
 #Given "SUPER USER 1" has access to "Architect"
 #And "SUPER USER 1" has access to Amendment Manager
@@ -34,11 +40,10 @@ Given I publish and push eCRF "DT13504_1.xml" to "Version 1"
 
 @release_2012.1.0
 @DT13504_10
-@WIP
+@VAL
 Scenario:  When a user navigates to Publish Checks, selects the noted source version and the noted target version, clicks create plan, checks the 'Show field edit check' box, selects "Form A" from the Form dropdown, checks the 'Inactivate' box for the "SYS_REQ_FIELDD_FORMA" edit check, clicks 'Publish', and navigates to created subject in EDC then the system will show an audit trail message of "Amendment Manager: Query closed during migration process because the edit check no longer exists in target version." in "Field D"
 
 Given I login to Rave with user "SUPER USER 1"
-And I select Study "DT13504" and Site "Site_001"
 And I create a Subject
     |Field               |Data              |Control Type |
     |Subject Initials    |SUB               |textbox      |
@@ -57,38 +62,49 @@ And I verify Query is displayed
 And I take a screenshot
 Given I publish and push eCRF "DT13504_2.xml" to "Version 2"
 And I go to Publish Checks for study "DT13504"
-And I select Source CRF version "Version 1"
-And I select Target CRF version "Version 2"
-And I create migration plan
+And I select Current CRF version "Version 1"
+And I select Reference CRF version "Version 2"
+And I click button "Create Plan"
 And I check "Show Field Edit Checks"
-And I select Form "Form A"
-And I select search icon
-And I check "Inactivate" for "SYS_REQ_FIELDD_FRMA"
-And I select Save
+And I select "Form A" from Forms in Edit Checks
+And I select search icon in Edit Checks
+And I check "Inactivate" for "SYS_REQ_FIELDD|FRMA" in Edit Checks
+And I select link "Save"
 And I take a screenshot
-And I select Publish
+And I select link "Publish"
 And I select link "Migration Results"
 And I verify Job Status is set to Complete
 And I take a screenshot
 And I navigate to "Home"
-And I select Study "DT13504" and Site "Site_001"
 And I select a Subject "{Var(num1)}"
 And I select form "Form A"
 When I click audit on Field "Field D"
 Then I verify Audits exist
 	| Audit Type        | Query Message                                                                                    | User   | Time                 |
-	| Amendment Manager | Query closed during migration process because the edit check no longer exists in target version. | System | dd MMM yyyy hh:mm:ss |
+	| Amendment Manager | Query closed during migration process because the edit check no longer exists in target version. | System | dd MMM yyyy HH:mm:ss |
 And I take a screenshot
+And I navigate to "Home"
+And I navigate to "Reporter"
+And I select Report "Audit Trail"
+And I set report parameter "Study" with "DT13504"
+And I set report parameter "Sites" with "Site_001"
+And I set report parameter "Subjects" with "SUB {Var(num1)}"
+When I click button "Submit Report"
+And I switch to "ReportViewer" window
+Then I verify rows exist in table
+| Site     | Site Group | Subject         | Folder        | Form   | Page Rpt Number | Field   | Log# | Audit Action                                                                                                        | Audit User | Audit Role | Audit ActionType | Audit Time (GMT)     |
+| Site_001 | World      | SUB {Var(num1)} | Subject Level | Form A | 0               | Field D | 0    | Amendment Manager: Query closed during migration process because the edit check no longer exists in target version. | S.User     | SYSTEM     | MigQueryClosed   | dd MMM yyyy HH:mm:ss |
+And I take a screenshot
+And I switch to "Reports" window
 
 
 @release_2012.1.0
 @DT13504_20
-@WIP
+@VAL
 Scenario:  When a user navigates to Amendment Manager, selects the noted source version and the noted target version, clicks create plan, and executes the plan on created subject, and the user navigates to EDC  then the system will show an audit trail message of "Amendment Manager: Query closed during migration process because the edit check no longer exists in target version." in "Field B"
 
 Given I publish and push eCRF "DT13504_1.xml" to "Version 3"
 And I login to Rave with user "SUPER USER 1"
-And I select Study "DT13504" and Site "Site_001"
 And I create a Subject
     |Field               |Data              |Control Type |
     |Subject Initials    |SUB               |textbox      |
@@ -116,11 +132,18 @@ And I select link "Migration Results"
 And I verify Job Status is set to Complete
 And I take a screenshot
 And I navigate to "Home"
-And I select Study "DT13504" and Site "Site_001"
 And I select a Subject "{Var(num1)}"
 And I select form "Form A"
 When I click audit on Field "Field B"
 Then I verify Audits exist
 	| Audit Type        | Query Message                                                                                    | User   | Time                 |
-	| Amendment Manager | Query closed during migration process because the edit check no longer exists in target version. | System | dd MMM yyyy hh:mm:ss |
+	| Amendment Manager | Query closed during migration process because the edit check no longer exists in target version. | System | dd MMM yyyy HH:mm:ss |
+And I take a screenshot
+And I login to Rave with user "locuser"
+And I select a Subject "{Var(num1)}"
+And I select form "LForm A"
+When I click audit on Field "LField B"
+Then I verify Audits exist
+	| Audit Type         | Query Message                                                                                     | User    | Time                  |
+	| LAmendment Manager | LQuery closed during migration process because the edit check no longer exists in target version. | LSystem | dd LMMM yyyy HH:mm:ss |
 And I take a screenshot
