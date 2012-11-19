@@ -5,9 +5,8 @@ using System.Text;
 
 namespace Medidata.RBT.PageObjects.Rave
 {
-	public class TierPattern
+	public class Permutations
 	{
-		public string TierName { get; set; }
-		public int NumberOfOccurrence { get; set; }
+		public string RandomizationPermutations  { get; set; }
 	}
 }
