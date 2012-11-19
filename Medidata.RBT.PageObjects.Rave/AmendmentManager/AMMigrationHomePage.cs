@@ -26,6 +26,8 @@ namespace Medidata.RBT.PageObjects.Rave.AmendmentManager
         {
             if (name == "Execute Plan")
                 return ClickLink("Execute Plan");
+            if (name == "Configure Plan")
+                return ClickLink("Configure Plan");
 
             return base.NavigateTo(name);
         }
