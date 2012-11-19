@@ -53,15 +53,15 @@ Given following Project assignments exist
 |US12607_user1   |US12607DataPDFStudy  |Live: Prod  |SUPER ROLE 1 | Site_A  |Project Admin Default |
 |US12607_locuser |US12607DataPDFStudy  |Live: Prod  |SUPER ROLE 1 | Site_A  |Project Admin Default |
 Given following PDF Configuration Profile Settings exist
-|Profile Name |
-|US12607PDFA  |
+|Profile Name         |
+|SUPER PDF PROFILE 1  |
 
 #Note: Study "US12607DataPDFStudy" is set up with 4 forms "Adverse Events1" in "Landscape" mode, "Adverse Events2" in "Portrait" mode,
 # "Medical History1" in "Landscape" mode with no default values and "Medical History2" in "Landscape" mode with default values.
 
 @release_2012.1.0
 @US12607_US19066-01A
-@Validation
+@WIP
 Scenario:@US12607_US19066-01A - By Default the user can view all assigned forms.
 
   Given I login to Rave with user "US12607_user1"
@@ -71,11 +71,10 @@ Scenario:@US12607_US19066-01A - By Default the user can view all assigned forms.
     |Subject Number      |{RndNum<num1>(3)} |textbox      |
     |Subject ID 	     |SUB {Var(num1)}   |textbox      |
   And I navigate to "Home"
-  And I navigate to "PDF Generator" module
-  And I select link "Create Data Request"  
+  And I navigate to "PDF Generator" module 
    And I create Data PDF
-   | Name                     | Profile     | Study               | Environment |Role         | Locale  |
-   | DataPDFA{RndNum<num>(3)} | US12607PDFA | US12607DataPDFStudy | Prod        |SUPER ROLE 1 | English |
+   | Name                     | Profile             | Study               | Environment |Role         | Locale  |
+   | DataPDFA{RndNum<num>(3)} | SUPER PDF PROFILE 1 | US12607DataPDFStudy | Prod        |SUPER ROLE 1 | English |
   And I click edit datapdf "DataPDFA{Var(num)}" 
   And I verify text "Display multiple log lines per page" exists
   And I expand Display multiple log lines per page
@@ -90,7 +89,7 @@ Scenario:@US12607_US19066-01A - By Default the user can view all assigned forms.
   
 @release_2012.1.0
 @US12607_US19066-02A
-@Validation
+@WIP
 Scenario:@US12607_US19066-02A - The localization user can view strings are localized
 
   Given I login to Rave with user "US12607_locuser"
@@ -101,10 +100,9 @@ Scenario:@US12607_US19066-02A - The localization user can view strings are local
     |LSubject ID 	      |SUB {Var(num2)}   |textbox      |
   And I navigate to "LHome"
   And I navigate to "LPDF Generator" module
-  And I select link "LCreate Data Request"  
   And I create Data PDF
-   |Name                       |Profile      |Study                |Environment   |Role          |Locale             |
-   |LocDataPDF{RndNum<num>(3)} |US12607PDFA  |US12607DataPDFStudy  |LProd         |SUPER ROLE 1  |LLocalization Test |
+   |Name                       |Profile              |Study                |Environment   |Role          |Locale             |
+   |LocDataPDF{RndNum<num>(3)} |SUPER PDF PROFILE 1  |US12607DataPDFStudy  |LProd         |SUPER ROLE 1  |LLocalization Test |
   And I click edit datapdf "LocDataPDF{Var(num)}"  
   And I verify text "LDisplay multiple log lines per page" exists
   And I expand Display multiple log lines per page
@@ -119,7 +117,7 @@ Scenario:@US12607_US19066-02A - The localization user can view strings are local
   
 @release_2012.1.0
 @US12607_US19066-03A
-@Validation
+@WIP
 Scenario:@US12607_US19066-03A - Selecting all assigned forms.
 
   Given I login to Rave with user "US12607_user1"
@@ -129,11 +127,10 @@ Scenario:@US12607_US19066-03A - Selecting all assigned forms.
     |Subject Number      |{RndNum<num3>(3)} |textbox      |
     |Subject ID 	     |SUB {Var(num3)}   |textbox      |
   And I navigate to "Home"
-  And I navigate to "PDF Generator" module
-  And I select link "Create Data Request"  
+  And I navigate to "PDF Generator" module 
   And I create Data PDF
-   | Name                     | Profile     | Study               | Environment |Role         | Locale  |
-   | DataPDFC{RndNum<num>(3)} | US12607PDFA | US12607DataPDFStudy | Prod        |SUPER ROLE 1 | English |
+   | Name                     | Profile             | Study               | Environment |Role         | Locale  |
+   | DataPDFC{RndNum<num>(3)} | SUPER PDF PROFILE 1 | US12607DataPDFStudy | Prod        |SUPER ROLE 1 | English |
   And I click edit datapdf "DataPDFC{Var(num)}"  
   And I verify text "Display multiple log lines per page" exists
   And I expand Display multiple log lines per page
@@ -157,7 +154,7 @@ Scenario:@US12607_US19066-03A - Selecting all assigned forms.
   
 @release_2012.1.0
 @US12607_US19066-04A
-@Validation
+@WIP
 Scenario:@US12607_US19066-04A - Unselecting all assigned forms.
 
   Given I login to Rave with user "US12607_user1"
@@ -167,11 +164,10 @@ Scenario:@US12607_US19066-04A - Unselecting all assigned forms.
     |Subject Number      |{RndNum<num4>(3)} |textbox      |
     |Subject ID 	     |SUB {Var(num4)}   |textbox      |
   And I navigate to "Home"
-  And I navigate to "PDF Generator" module
-  And I select link "Create Data Request"  
+  And I navigate to "PDF Generator" module 
   And I create Data PDF
-   | Name                     | Profile     | Study               | Environment |Role         | Locale  |
-   | DataPDFD{RndNum<num>(3)} | US12607PDFA | US12607DataPDFStudy | Prod        |SUPER ROLE 1 | English |
+   | Name                     | Profile             | Study               | Environment |Role         | Locale  |
+   | DataPDFD{RndNum<num>(3)} | SUPER PDF PROFILE 1 | US12607DataPDFStudy | Prod        |SUPER ROLE 1 | English |
   And I click edit datapdf "DataPDFD{Var(num)}"  
   And I verify text "Display multiple log lines per page" exists
   And I expand Display multiple log lines per page
@@ -184,7 +180,7 @@ Scenario:@US12607_US19066-04A - Unselecting all assigned forms.
   And I verify text "When selected, all log lines on the selected form or forms will display continuously. If un-selected, a new page will be created for each log line." exists
   And I take a screenshot
   And I check "Select All" in "Display multiple log lines per page"
-  When I uncheck "Select All" in "Display multiple log lines per page"
+  When I uncheck "Unselect All" in "Display multiple log lines per page"
   Then I verify rows exist in "Display multiple log lines per page" table
    |Form             |Checked |
    |Adverse Events1  |false   |
@@ -196,7 +192,7 @@ Scenario:@US12607_US19066-04A - Unselecting all assigned forms.
   
 @release_2012.1.0
 @US12607_US19066-05A
-@Validation
+@WIP
 Scenario:@US12607_US19066-05A - Selecting only one assigned form.
 
   Given I login to Rave with user "US12607_user1"
@@ -206,11 +202,10 @@ Scenario:@US12607_US19066-05A - Selecting only one assigned form.
     |Subject Number      |{RndNum<num5>(3)} |textbox      |
     |Subject ID 	     |SUB {Var(num5)}   |textbox      |
   And I navigate to "Home"
-  And I navigate to "PDF Generator" module
-  And I select link "Create Data Request"  
+  And I navigate to "PDF Generator" module 
   And I create Data PDF
-   | Name                     | Profile     | Study               | Environment |Role         | Locale  |
-   | DataPDFE{RndNum<num>(3)} | US12607PDFA | US12607DataPDFStudy | Prod        |SUPER ROLE 1 | English |
+   | Name                     | Profile             | Study               | Environment |Role         | Locale  |
+   | DataPDFE{RndNum<num>(3)} | SUPER PDF PROFILE 1 | US12607DataPDFStudy | Prod        |SUPER ROLE 1 | English |
   And I click edit datapdf "DataPDFE{Var(num)}"  
   And I verify text "Display multiple log lines per page" exists
   And I expand Display multiple log lines per page
@@ -231,7 +226,7 @@ Scenario:@US12607_US19066-05A - Selecting only one assigned form.
   
 @release_2012.1.0
 @US12607_US19066-06A
-@Validation
+@WIP
 Scenario:@US12607_US19066-06A - Selecting only one assigned form.
 
   Given I login to Rave with user "US12607_user1"
@@ -241,11 +236,10 @@ Scenario:@US12607_US19066-06A - Selecting only one assigned form.
     |Subject Number      |{RndNum<num6>(3)} |textbox      |
     |Subject ID 	     |SUB {Var(num6)}   |textbox      |
   And I navigate to "Home"
-  And I navigate to "PDF Generator" module
-  And I select link "Create Data Request"  
+  And I navigate to "PDF Generator" module 
   And I create Data PDF
-   | Name                     | Profile     | Study               | Environment |Role         | Locale  |
-   | DataPDFF{RndNum<num>(3)} | US12607PDFA | US12607DataPDFStudy | Prod        |SUPER ROLE 1 | English |
+   | Name                     | Profile             | Study               | Environment |Role         | Locale  |
+   | DataPDFF{RndNum<num>(3)} | SUPER PDF PROFILE 1 | US12607DataPDFStudy | Prod        |SUPER ROLE 1 | English |
   And I click edit datapdf "DataPDFF{Var(num)}"  
   And I verify text "Display multiple log lines per page" exists
   And I expand Display multiple log lines per page
@@ -266,7 +260,7 @@ Scenario:@US12607_US19066-06A - Selecting only one assigned form.
   
 @release_2012.1.0
 @US12607_US19066-07A
-@Validation
+@WIP
 Scenario:@US12607_US19066-07A - Selecting only one assigned form.
 
   Given I login to Rave with user "US12607_user1"
@@ -276,11 +270,10 @@ Scenario:@US12607_US19066-07A - Selecting only one assigned form.
     |Subject Number      |{RndNum<num7>(3)} |textbox      |
     |Subject ID 	     |SUB {Var(num7)}   |textbox      |
   And I navigate to "Home"
-  And I navigate to "PDF Generator" module
-  And I select link "Create Data Request"  
+  And I navigate to "PDF Generator" module 
   And I create Data PDF
-   | Name                     | Profile     | Study               | Environment |Role         | Locale  |
-   | DataPDFG{RndNum<num>(3)} | US12607PDFA | US12607DataPDFStudy | Prod        |SUPER ROLE 1 | English |
+   | Name                     | Profile             | Study               | Environment |Role         | Locale  |
+   | DataPDFG{RndNum<num>(3)} | SUPER PDF PROFILE 1 | US12607DataPDFStudy | Prod        |SUPER ROLE 1 | English |
   And I click edit datapdf "DataPDFG{Var(num)}" 
   And I verify text "Display multiple log lines per page" exists
   And I expand Display multiple log lines per page
@@ -301,7 +294,7 @@ Scenario:@US12607_US19066-07A - Selecting only one assigned form.
   
 @release_2012.1.0
 @US12607_US19066-08A
-@Validation
+@WIP
 Scenario:@US12607_US19066-08A - Selecting only one assigned form.
 
   Given I login to Rave with user "US12607_user1"
@@ -311,11 +304,10 @@ Scenario:@US12607_US19066-08A - Selecting only one assigned form.
     |Subject Number      |{RndNum<num8>(3)} |textbox      |
     |Subject ID 	     |SUB {Var(num8)}   |textbox      |
   And I navigate to "Home"
-  And I navigate to "PDF Generator" module
-  And I select link "Create Data Request"  
+  And I navigate to "PDF Generator" module 
     And I create Data PDF
-   | Name                     | Profile     | Study               | Environment |Role         | Locale  |
-   | DataPDFH{RndNum<num>(3)} | US12607PDFA | US12607DataPDFStudy | Prod        |SUPER ROLE 1 | English |
+   | Name                     | Profile             | Study               | Environment |Role         | Locale  |
+   | DataPDFH{RndNum<num>(3)} | SUPER PDF PROFILE 1 | US12607DataPDFStudy | Prod        |SUPER ROLE 1 | English |
   And I click edit datapdf "DataPDFH{Var(num)}"  
   And I verify text "Display multiple log lines per page" exists
   And I expand Display multiple log lines per page

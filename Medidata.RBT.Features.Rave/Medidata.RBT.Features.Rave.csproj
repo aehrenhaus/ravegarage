@@ -152,10 +152,20 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>EDCTabOrderTouchedStandardForm.feature</DependentUpon>
     </Compile>
+    <Compile Include="Features\EDC\US13000_DT13378.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>US13000_DT13378.feature</DependentUpon>
+    </Compile>
     <Compile Include="Features\EDC\US10242_DT13576.feature.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>US10242_DT13576.feature</DependentUpon>
+    </Compile>
+    <Compile Include="Features\EDC\US12991_DT13751.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>US12991_DT13751.feature</DependentUpon>
     </Compile>
     <Compile Include="Features\EDC\US12994_DT10991.feature.cs">
       <AutoGen>True</AutoGen>
@@ -282,6 +292,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DT11249_US12607_US19066_DataPDF_Automated.feature</DependentUpon>
     </Compile>
+    <Compile Include="Features\PDF\DT11249_US12607_US19066_DataPDF_manual.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DT11249_US12607_US19066_DataPDF_manual.feature</DependentUpon>
+    </Compile>
     <Compile Include="Features\PDF\US12175_DT8545_lessthangreaterthaninPDF.feature.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -301,6 +316,21 @@
       <DependentUpon>Temp.feature</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Features\TSDV\US19877.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>US19877.feature</DependentUpon>
+    </Compile>
+    <Compile Include="Features\TSDV\US19695.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>US19695.feature</DependentUpon>
+    </Compile>
+    <Compile Include="Features\TSDV\US18689.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>US18689.feature</DependentUpon>
     </Compile>
     <Compile Include="Features\test.feature.cs">
       <DependentUpon>test.feature</DependentUpon>
@@ -366,11 +396,6 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>EDCTabOrderUntouchedPortraitLogForm.feature</DependentUpon>
-    </Compile>
-    <Compile Include="Features\TSDV\US18689.feature.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>US18689.feature</DependentUpon>
     </Compile>
     <Compile Include="Features\TSDV\US18812.feature.cs">
       <AutoGen>True</AutoGen>
@@ -504,9 +529,17 @@
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>EDCTabOrderTouchedStandardForm.feature.cs</LastGenOutput>
     </None>
+    <None Include="Features\EDC\US13000_DT13378.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>US13000_DT13378.feature.cs</LastGenOutput>
+    </None>
     <None Include="Features\EDC\US10242_DT13576.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>US10242_DT13576.feature.cs</LastGenOutput>
+    </None>
+    <None Include="Features\EDC\US12991_DT13751.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>US12991_DT13751.feature.cs</LastGenOutput>
     </None>
     <None Include="Features\EDC\US12994_DT10991.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
@@ -584,6 +617,10 @@
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>DT11249_US12607_US19066_DataPDF_Automated.feature.cs</LastGenOutput>
     </None>
+    <None Include="Features\PDF\DT11249_US12607_US19066_DataPDF_manual.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>DT11249_US12607_US19066_DataPDF_manual.feature.cs</LastGenOutput>
+    </None>
     <None Include="Features\PDF\US12175_DT8545_lessthangreaterthaninPDF.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>US12175_DT8545_lessthangreaterthaninPDF.feature.cs</LastGenOutput>
@@ -599,6 +636,18 @@
     <None Include="Features\ReportAdmin\Temp.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>Temp.feature.cs</LastGenOutput>
+    </None>
+    <None Include="Features\TSDV\US19877.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>US19877.feature.cs</LastGenOutput>
+    </None>
+    <None Include="Features\TSDV\US19695.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>US19695.feature.cs</LastGenOutput>
+    </None>
+    <None Include="Features\TSDV\US18689.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>US18689.feature.cs</LastGenOutput>
     </None>
     <None Include="Features\test.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
@@ -683,10 +732,6 @@
     <None Include="Features\EDC\US11306_DT13637.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>US11306_DT13637.feature.cs</LastGenOutput>
-    </None>
-    <None Include="Features\TSDV\US18689.feature">
-      <Generator>SpecFlowSingleFileGenerator</Generator>
-      <LastGenOutput>US18689.feature.cs</LastGenOutput>
     </None>
     <None Include="Features\TSDV\US18812.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>

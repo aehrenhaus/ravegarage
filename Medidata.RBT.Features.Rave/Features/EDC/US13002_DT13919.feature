@@ -952,7 +952,7 @@ Scenario: PB_US13002_04 As a Study Coordinator, when I click the drop-down list 
 	And I select link "Second Pass"
 	And I choose "L1WP-GT" from "Study"
 	And I choose "Site 13919" from "Site"
-	And I type "SUB {Var(num4)}" in "Subject"
+	And I choose "SUB {Var(num4)}" from "Subject"
 	And I choose "Subject Enrollment Form" from "Form"
 	And I click button "Locate"
 	And I enter data in DDE and save

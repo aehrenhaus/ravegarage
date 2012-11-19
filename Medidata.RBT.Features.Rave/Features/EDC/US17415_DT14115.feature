@@ -232,12 +232,19 @@ Scenario: @PB_US17415_02 As an Investigator, when I sign the "Serious Adverse Ev
 @Validation	
 Scenario: @PB_US17415_03 As an Investigator, when I sign the "Demographics" form, the form level signature does not break when the ICDTAGE field is made visible.
 	
+	And I navigate to "Architect"
+	And I select "Study" link "**US17415_DT14115" in "Active Projects"
+	And I select link "Source Draft" in "CRF Drafts"
+	And I publish CRF Version "Source {RndNum<TV#>(5)}"
+	And I note down "crfversion" to "newversion1#"
+	And I select "Study" link "**US17415_DT14115" in "Header"
+	And I push CRF Version "{Var(newversion1#)}" to "All Sites"
+	And I navigate to "Home"
 	And I select Study "**US17415_DT14115" and Site "Site 01"
 	And I create a Subject
 		| Field          | Data              | Control Type |
 		| Subject Name   | SUB               | textbox      |
 		| Subject Number | {RndNum<num1>(5)} | textbox      |
-	And I note down "crfversion" to "ver#"
 	And I select link "Demographics"
 	And I enter data in CRF and save
 		| Field                 | Data        | Control Type |
@@ -256,19 +263,20 @@ Scenario: @PB_US17415_03 As an Investigator, when I sign the "Demographics" form
 	And I navigate to "Architect"
 	And I select link "**US17415_DT14115" in "Active Projects"
 	And I select link "Target Draft" in "CRF Drafts"
-	And I publish CRF Version "Target{RndNum<TV#>(5)}"
-	And I note down "crfversion" to "newversion#"
+	And I publish CRF Version "Target {RndNum<TV#>(5)}"
+	And I note down "crfversion" to "newversion2#"
 	And I select link "**US17415_DT14115" in "Header"
 	And I navigate to "Amendment Manager"
-	And I choose "VS3 ({Var(ver#)})" from "Source CRF"
-	And I choose "{Var(newversion#)}" from "Target CRF"
+	And I choose "{Var(newversion1#)}" from "Source CRF"
+	And I choose "{Var(newversion2#)}" from "Target CRF"
 	And I click button "Create Plan"
 	And I take a screenshot
 	And I navigate to "Execute Plan"
 	And I migrate all Subjects
 	And I select link "Migration Results"
 	And I verify Job Status is set to Complete
-	And I take a screenshot	
+	And I take a screenshot
+		
 	And I navigate to "Home"
 	And I select Study "**US17415_DT14115" and Site "Site 01"
 	And I select a Subject "SUB{Var(num1)}"
@@ -318,12 +326,19 @@ Scenario: @PB_US17415_03 As an Investigator, when I sign the "Demographics" form
 @Validation	
 Scenario: @PB_US17415_04 As an Investigator, when I sign the "Test Demographics" form, the form level signature does not break when the ICDTAGE field is made invisible.
 	
+	And I navigate to "Architect"
+	And I select "Study" link "**US17415_DT14115" in "Active Projects"
+	And I select link "Source Draft" in "CRF Drafts"
+	And I publish CRF Version "Source {RndNum<TV#>(5)}"
+	And I note down "crfversion" to "newversion1#"
+	And I select "Study" link "**US17415_DT14115" in "Header"
+	And I push CRF Version "{Var(newversion1#)}" to "All Sites"
+	And I navigate to "Home"
 	And I select Study "**US17415_DT14115" and Site "Site 01"
 	And I create a Subject
 		| Field          | Data              | Control Type |
 		| Subject Name   | SUB               | textbox      |
 		| Subject Number | {RndNum<num2>(5)} | textbox      |
-	And I note down "crfversion" to "ver2#"
 	And I select link "Test Demographics"
 	And I enter data in CRF and save
 		| Field                 | Data        | Control Type |
@@ -343,11 +358,11 @@ Scenario: @PB_US17415_04 As an Investigator, when I sign the "Test Demographics"
 	And I navigate to "Architect"
 	And I select link "**US17415_DT14115" in "Active Projects"
 	And I select link "Target Draft" in "CRF Drafts"
-	And I publish CRF Version "Target2{RndNum<TV#>(5)}"
+	And I publish CRF Version "Target {RndNum<TV#>(5)}"
 	And I note down "crfversion" to "newversion2#"
 	And I select link "**US17415_DT14115" in "Header"
 	And I navigate to "Amendment Manager"
-	And I choose "VS3 ({Var(ver2#)})" from "Source CRF"
+	And I choose "{Var(newversion1#)}" from "Source CRF"
 	And I choose "{Var(newversion2#)}" from "Target CRF"
 	And I click button "Create Plan"
 	And I take a screenshot
@@ -356,6 +371,7 @@ Scenario: @PB_US17415_04 As an Investigator, when I sign the "Test Demographics"
 	And I select link "Migration Results"
 	And I verify Job Status is set to Complete
 	And I take a screenshot	
+
 	And I navigate to "Home"
 	And I select Study "**US17415_DT14115" and Site "Site 01"
     And I select a Subject "SUB{Var(num2)}"
@@ -400,12 +416,19 @@ Scenario: @PB_US17415_04 As an Investigator, when I sign the "Test Demographics"
 @Validation	
 Scenario: @PB_US17415_05 As an Investigator, when I sign the "Demographics" form and "Field Visibility Changed" is checked in Amendment Manager>Configure Plan, the form level signature does not break when the ICDTAGE field is made visible.
 	
+	And I navigate to "Architect"
+	And I select "Study" link "**US17415_DT14115" in "Active Projects"
+	And I select link "Source Draft" in "CRF Drafts"
+	And I publish CRF Version "Source {RndNum<TV#>(5)}"
+	And I note down "crfversion" to "newversion1#"
+	And I select "Study" link "**US17415_DT14115" in "Header"
+	And I push CRF Version "{Var(newversion1#)}" to "All Sites"
+	And I navigate to "Home"
 	And I select Study "**US17415_DT14115" and Site "Site 01"
 	And I create a Subject
 		| Field          | Data              | Control Type |
 		| Subject Name   | SUB               | textbox      |
 		| Subject Number | {RndNum<num1>(5)} | textbox      |
-	And I note down "crfversion" to "ver#"
 	And I select link "Demographics"
 	And I enter data in CRF and save
 		| Field                 | Data        | Control Type |
@@ -424,12 +447,12 @@ Scenario: @PB_US17415_05 As an Investigator, when I sign the "Demographics" form
 	And I navigate to "Architect"
 	And I select link "**US17415_DT14115" in "Active Projects"
 	And I select link "Target Draft" in "CRF Drafts"
-	And I publish CRF Version "Target{RndNum<TV#>(5)}"
-	And I note down "crfversion" to "newversion#"
+	And I publish CRF Version "Target {RndNum<TV#>(5)}"
+	And I note down "crfversion" to "newversion2#"
 	And I select link "**US17415_DT14115" in "Header"
 	And I navigate to "Amendment Manager"
-	And I choose "VS3 ({Var(ver#)})" from "Source CRF"
-	And I choose "{Var(newversion#)}" from "Target CRF"
+	And I choose "{Var(newversion1#)}" from "Source CRF"
+	And I choose "{Var(newversion2#)}" from "Target CRF"
 	And I click button "Create Plan"
 	And I take a screenshot
 	And I navigate to "Configure Plan"
@@ -441,6 +464,7 @@ Scenario: @PB_US17415_05 As an Investigator, when I sign the "Demographics" form
 	And I select link "Migration Results"
 	And I verify Job Status is set to Complete
 	And I take a screenshot	
+
 	And I navigate to "Home"
 	And I select Study "**US17415_DT14115" and Site "Site 01"
 	And I select a Subject "SUB{Var(num1)}"
@@ -490,12 +514,19 @@ Scenario: @PB_US17415_05 As an Investigator, when I sign the "Demographics" form
 @Validation	
 Scenario: @PB_US17415_06 As an Investigator, when I sign the "Test Demographics" form and "Field Visibility Changed" is checked in Amendment Manager>Configure Plan, the form level signature does not break when the ICDTAGE field is made invisible.
 	
+	And I navigate to "Architect"
+	And I select "Study" link "**US17415_DT14115" in "Active Projects"
+	And I select link "Source Draft" in "CRF Drafts"
+	And I publish CRF Version "Source {RndNum<TV#>(5)}"
+	And I note down "crfversion" to "newversion1#"
+	And I select "Study" link "**US17415_DT14115" in "Header"
+	And I push CRF Version "{Var(newversion1#)}" to "All Sites"
+	And I navigate to "Home"
 	And I select Study "**US17415_DT14115" and Site "Site 01"
 	And I create a Subject
 		| Field          | Data              | Control Type |
 		| Subject Name   | SUB               | textbox      |
 		| Subject Number | {RndNum<num2>(5)} | textbox      |
-	And I note down "crfversion" to "ver2#"
 	And I select link "Test Demographics"
 	And I enter data in CRF and save
 		| Field                 | Data        | Control Type |
@@ -515,11 +546,11 @@ Scenario: @PB_US17415_06 As an Investigator, when I sign the "Test Demographics"
 	And I navigate to "Architect"
 	And I select link "**US17415_DT14115" in "Active Projects"
 	And I select link "Target Draft" in "CRF Drafts"
-	And I publish CRF Version "Target2{RndNum<TV#>(5)}"
+	And I publish CRF Version "Target {RndNum<TV#>(5)}"
 	And I note down "crfversion" to "newversion2#"
 	And I select link "**US17415_DT14115" in "Header"
 	And I navigate to "Amendment Manager"
-	And I choose "VS3 ({Var(ver2#)})" from "Source CRF"
+	And I choose "{Var(newversion1#)}" from "Source CRF"
 	And I choose "{Var(newversion2#)}" from "Target CRF"
 	And I click button "Create Plan"
 	And I take a screenshot
@@ -531,7 +562,8 @@ Scenario: @PB_US17415_06 As an Investigator, when I sign the "Test Demographics"
 	And I migrate all Subjects
 	And I select link "Migration Results"
 	And I verify Job Status is set to Complete
-	And I take a screenshot	
+	And I take a screenshot
+		
 	And I navigate to "Home"
 	And I select Study "**US17415_DT14115" and Site "Site 01"
     And I select a Subject "SUB{Var(num2)}"
