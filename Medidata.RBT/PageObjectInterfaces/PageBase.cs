@@ -180,20 +180,20 @@ namespace Medidata.RBT
 
 		private IWebElement TryFindElement(string identifier)
 		{
-			
-			var ele = identifier.StartsWith("==") ?
-			   Browser.TryFindElementById(identifier.Substring(2), false) :
-			   Browser.TryFindElementByPartialID(identifier, false);
+            var ele = Browser.TryFindElementById(identifier);
+            if (ele == null)
+                ele = TryGetElementByName(identifier);
 
-			if (ele == null)
-				ele =TryGetElementByName(identifier);
+            if (ele == null)
+                ele = Browser.TryFindElementByPartialID(identifier, false);
+            if (ele == null)
+            {
+                ele = Browser.TryFindElementById(identifier, true);
 
-			if (ele == null)
-				ele = identifier.StartsWith("==") ?
-				Browser.TryFindElementById(identifier.Substring(2), true) :
-				Browser.TryFindElementByPartialID(identifier, true);
-
-			return ele;
+                if (ele == null)
+                    ele = Browser.TryFindElementByPartialID(identifier, true);
+            }
+            return ele;
 		}
 
 		/// <summary>
