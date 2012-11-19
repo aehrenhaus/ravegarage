@@ -1,5 +1,5 @@
 ﻿# When using Subject Include feature, Subjects are enrolled per selected Randomization. 
-
+@ignore
 Feature: US19695
 	When user creates subjects 
 	And user selects Dynamic Allocation Randomization Block algorithm

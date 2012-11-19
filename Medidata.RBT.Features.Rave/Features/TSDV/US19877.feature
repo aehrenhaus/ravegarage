@@ -1,5 +1,5 @@
 ﻿# TSDV will regenerate a new randomization permutation when a TSDV plan using Permuted Block randomization is updated
-
+@ignore
 Feature: US19877
 	When subjects are allocated to tiers using the Permuted Block Randomization Type
 	And the TSDV plan is updated to include a new custom tier

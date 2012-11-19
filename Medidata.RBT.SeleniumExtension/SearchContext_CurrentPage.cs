@@ -22,7 +22,7 @@ namespace Medidata.RBT.SeleniumExtension
         /// <returns></returns>
         public static IWebElement CheckURLIsCorrect(this ISearchContext context, Func<IWebDriver, IWebElement> urlCheckMethod)
         {
-            return waitForElement(context, urlCheckMethod);
+            return waitForElement(context, urlCheckMethod, "Page Mismatch", 20);
         }
 	}
 }

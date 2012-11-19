@@ -2,7 +2,7 @@
 @EnableSeeding=true
 @SuppressSeeding=Site,SiteGroup,Role,User,SecurityRole
 #SecurityRole
-
+@ignore
 Feature: US18812
 	When user selects Dynamic Allocation Randomization Block algorithm
 	Then subject assignment satisfies a specified allocation ratio

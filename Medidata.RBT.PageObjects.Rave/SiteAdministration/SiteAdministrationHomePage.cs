@@ -11,12 +11,6 @@ namespace Medidata.RBT.PageObjects.Rave.SiteAdministration
 {
     public class SiteAdministrationHomePage : SiteAdministrationBasePage, ICanPaginate
     {
-        [FindsBy(How = How.Id, Using = "_ctl0_Content_SiteNameBox")]
-        IWebElement SiteNameBox;
-
-        [FindsBy(How = How.Id, Using = "_ctl0_Content_FilterButton")]
-        IWebElement Search;
-
         public override string URL
         {
             get
@@ -31,8 +25,8 @@ namespace Medidata.RBT.PageObjects.Rave.SiteAdministration
         /// <param name="siteName">Name of the site to search for</param>
         public void SearchForSite(string siteName)
         {
-            SiteNameBox.EnhanceAs<Textbox>().SetText(siteName);
-            Search.Click();
+            Browser.TryFindElementById("_ctl0_Content_SiteNameBox").EnhanceAs<Textbox>().SetText(siteName);
+            Browser.TryFindElementById("_ctl0_Content_FilterButton").Click();
             TestContext.CurrentPage = new SiteAdministrationHomePage();
         }
 

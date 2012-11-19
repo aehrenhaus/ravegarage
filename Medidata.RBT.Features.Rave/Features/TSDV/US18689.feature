@@ -1,5 +1,5 @@
 ﻿# When a user selects Permuted Block Randomization, subject assignment satisfies a specified allocation and ratio is random for all blocks.
-
+@ignore
 Feature: US18689
 	When user selects Permuted Block Randomization
 	Then subject assignment satisfies a specified allocation ratio
