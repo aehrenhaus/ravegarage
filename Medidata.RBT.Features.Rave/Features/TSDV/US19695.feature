@@ -127,7 +127,7 @@ Scenario: @PB_US19695_01 Enroll subjects in studies to verify that TSDV has rand
 	And I click button "Submit Report"
 	And I switch to "Targeted SDV Subject Override" window 
 	And I select link "Subject Include"
-	And I include "50" subjects in TSDV
+	And I include 50 subjects in TSDV
 	And I select link "Subject Override"
 	Then I verify that Tiers in subject override table are not in the following order
 		| Tier Name         | Row |
