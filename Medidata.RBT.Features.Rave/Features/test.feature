@@ -1,9 +1,9 @@
+@EnableSeeding=false
+@ignore
 Feature: test
 
-@PB_DT14168
+@PB_TEST
 @Draft
-@ignore
+
 Scenario: TestScenario
-	Given I login to Rave with user "zlpass1" and password "password"
-	Given xml draft "US18812_SJ.xml" is Uploaded
-	
+	Given I login to Rave with user "defuser" and password "password"

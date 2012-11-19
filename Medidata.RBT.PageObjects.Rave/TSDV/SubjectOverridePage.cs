@@ -14,22 +14,27 @@ namespace Medidata.RBT.PageObjects.Rave
     public class SubjectOverridePage : SubjectManagementPageBase,IHavePaginationControl
     {
 
-		public void CheckRepeatPattern(int blockSize, IEnumerable<TierPattern> tiers)
+		public void CheckRepeatPattern(int blockSize, IEnumerable<Permutations> permutationses)
 	    {
+			List<string> all	 = new List<string>();
+			foreach (var p in permutationses)
+			{
+				string[] parts = p.RandomizationPermutations.Split(',').Select(x=>x.Trim()).ToArray();
+				if (parts.Length != blockSize)
+					throw new Exception(string.Format("Permutation {0} does not have {1} slots", p.RandomizationPermutations, blockSize));
+				all.Add(string.Join(",", parts));
+			}
 			//collect all subject tier names
 		    var tierNames = GetTierNamesFromAllPages();
 			int roundCount = (int) Math.Ceiling(tierNames.Count*1.0/blockSize);
 
 			for (int i = 0; i < roundCount; i++)
 			{
-				var itemsInThisRound = tierNames.Skip(i*blockSize).Take(blockSize).ToList();
+				var itemsInThisRound = tierNames.Skip(i*blockSize).Take(blockSize).Select(x=>x.Split('(')[0].Trim()).ToArray();
 
-				foreach (var tier in tiers)
-				{
-					Assert.AreEqual(tier.NumberOfOccurrence, itemsInThisRound.Count(x => x == tier.TierName),
-					                string.Format("Tier {0} does not have expected subject count {1}.", tier.TierName,
-					                              tier.NumberOfOccurrence));
-				}
+				string permutation = string.Join(",", itemsInThisRound);
+
+				Assert.IsTrue(all.Contains(permutation),permutation+" is not in the list");
 			}
 	    }
 

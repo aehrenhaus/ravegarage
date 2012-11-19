@@ -42,7 +42,7 @@ namespace Medidata.RBT.PageObjects.Rave.SiteAdministration
             {
                 var resultTable = Browser.TryFindElementBy(By.Id("_ctl0_Content_DisplayGrid"));
                 var link = resultTable.TryFindElementBy(By.XPath(
-                    "tbody/tr[position()>1]/td[position()=1 and contains(text(),'" + siteName + "')]/../td[position()=7]/a"));
+					"tbody/tr[position()>1]/td[position()=1 and normalize-space(text())='" + siteName + "']/../td[position()=7]/a"));
                 return link;
 
             }, out foundOnPage);

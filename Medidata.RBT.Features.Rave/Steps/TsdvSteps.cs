@@ -23,13 +23,12 @@ namespace Medidata.RBT.Features.Rave
 		}
 
 
-		[StepDefinition(@"I verify that every ""(.*)"" subjects has a pattern of")]
-		public void GivenIVerifyThatEverySubjectsHasAPatternOf(int blockSize, Table table)
+		[StepDefinition(@"I verify that one of the following Permutations has been used every (.+) subjects")]
+		public void IVerifyThatOneOfTheFolowingPermutationsHasBeenUsedEvery____Subjects(int blockSize, Table table)
 		{
-			CurrentPage.As<SubjectOverridePage>().CheckRepeatPattern(blockSize, table.CreateSet<TierPattern>());
+			CurrentPage.As<SubjectOverridePage>().CheckRepeatPattern(blockSize, table.CreateSet<Permutations>());
 		}
-
-
+		
 
         [StepDefinition(@"I filter by site ""([^""]*)""")]
         public void IFilterBySite____(string siteName)
