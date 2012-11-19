@@ -95,7 +95,7 @@ Scenario: @PB_US17415_DT14115_02 As an Investigator, when I sign the "Serious Ad
 	Given I publish and push eCRF "US17415_DT14115_Source_Draft.xml" to "SourceVersion1"
 	And I login to Rave with user "SUPER USER 1"
 
-	And I create a Subject
+	When I create a Subject
 		| Field          | Data              | Control Type |
 		| Subject Name   | SUB               | textbox      |
 		| Subject Number | {RndNum<num1>(5)} | textbox      |
@@ -109,7 +109,7 @@ Scenario: @PB_US17415_DT14115_02 As an Investigator, when I sign the "Serious Ad
 	And I sign the form with username "SUPER USER 1"
 	And I wait for 5 seconds
 	#And I verify text "Please Sign - Default User  (SUPER USER 1)" exists
-	And I verify text "Please Sign - Default User  (" exists
+	Then I verify text "Please Sign - Default User  (" exists
 	And I take a screenshot
 	And I open log line 1 for edit
 
@@ -117,7 +117,7 @@ Scenario: @PB_US17415_DT14115_02 As an Investigator, when I sign the "Serious Ad
 		| Field                  | Data | Control Type |
 		| Ready for Extra Review | True | checkbox     |
 	#And I verify text "Please Sign - Default User  (SUPER USER 1)" does not exist
-	And I verify text "Please Sign - Default User  (" does not exist
+	Then I verify text "Please Sign - Default User  (" does not exist
 	And I take a screenshot
 	And I open log line 1 for edit
 	And I verify text "Added 1 For Extra Review" exists
@@ -152,7 +152,7 @@ Scenario: @PB_US17415_03 As an Investigator, when I sign the "Demographics" form
 	Given I publish and push eCRF "US17415_DT14115_Source_Draft.xml" to "SourceVersion1"
 	And I login to Rave with user "SUPER USER 1"
 
-	And I create a Subject
+	When I create a Subject
 		| Field          | Data              | Control Type |
 		| Subject Name   | SUB               | textbox      |
 		| Subject Number | {RndNum<num1>(5)} | textbox      |
@@ -169,11 +169,12 @@ Scenario: @PB_US17415_03 As an Investigator, when I sign the "Demographics" form
 	And I sign the form with username "SUPER USER 1"
 	And I wait for 5 seconds
 	#And I verify text "Please Sign - Default User  (SUPER USER 1)" exists
-	And I verify text "Please Sign - Default User  (" exists
+	Then I verify text "Please Sign - Default User  (" exists
 	And I take a screenshot
 
 	Given I publish and push eCRF "US17415_DT14115_Target_Draft.xml" to "TargetVersion1"
-	And I go to Amendment Manager for study "**US17415_DT14115"
+	
+	When I go to Amendment Manager for study "**US17415_DT14115"
 	And I select Source CRF version "SourceVersion1"
 	And I select Target CRF version "TargetVersion1"
 	And I create migration plan
@@ -182,9 +183,8 @@ Scenario: @PB_US17415_03 As an Investigator, when I sign the "Demographics" form
 	And I migrate all Subjects
 	And I select link "Migration Results"
 	And I take a screenshot
-	And I verify Job Status is set to Complete
+	Then I verify Job Status is set to Complete
 	And I take a screenshot	
-
 	And I navigate to "Home"
 	And I select a Subject "SUB{Var(num1)}"
 	And I select link "Demographics"
@@ -219,13 +219,13 @@ Scenario: @PB_US17415_03 As an Investigator, when I sign the "Demographics" form
 		| Audit Type          |
 		| Signature Succeeded |
 	And I take a screenshot
-	And I select link "SUB{Var(num1)}" in "Header"
+	When I select link "SUB{Var(num1)}" in "Header"
 	And I select link "Demographics"
 	And I enter data in CRF and save
 		| Field       | Data | Control Type |
 		| Derived Age | 30   | textbox      |
 	#And I verify text "Please Sign - Default User  (SUPER USER 1)" exists
-	And I verify text "Please Sign - Default User  (" exists
+	Then I verify text "Please Sign - Default User  (" exists
 	And I take a screenshot
 					
 #----------------------------------------------------------------------------------------------------------------------------------------
@@ -249,10 +249,7 @@ Scenario: @PB_US17415_04 As an Investigator, when I sign the "Test Demographics"
 	Given I publish and push eCRF "US17415_DT14115_Source_Draft.xml" to "SourceVersion1"
 	And I login to Rave with user "SUPER USER 1"
 
-	Given I login to Rave with user "SUPER USER 1"
->>>>>>> 65caaec... using seeding by draft upload for feature tests.
-	And I select Study "**US17415_DT14115" and Site "Site 01"
-	And I create a Subject
+	When I create a Subject
 		| Field          | Data              | Control Type |
 		| Subject Name   | SUB               | textbox      |
 		| Subject Number | {RndNum<num1>(5)} | textbox      |
@@ -269,11 +266,11 @@ Scenario: @PB_US17415_04 As an Investigator, when I sign the "Test Demographics"
 	And I sign the form with username "SUPER USER 1"
 	And I wait for 5 seconds
 	#And I verify text "Please Sign - Default User  (SUPER USER 1)" exists
-	And I verify text "Please Sign - Default User  (" exists
+	Then I verify text "Please Sign - Default User  (" exists
 	And I take a screenshot
 
 	Given I publish and push eCRF "US17415_DT14115_Target_Draft.xml" to "TargetVersion1"
-	And I go to Amendment Manager for study "**US17415_DT14115"
+	When I go to Amendment Manager for study "**US17415_DT14115"
 	And I select Source CRF version "SourceVersion1"
 	And I select Target CRF version "TargetVersion1"
 	And I create migration plan
@@ -282,9 +279,8 @@ Scenario: @PB_US17415_04 As an Investigator, when I sign the "Test Demographics"
 	And I migrate all Subjects
 	And I select link "Migration Results"
 	And I take a screenshot
-	And I verify Job Status is set to Complete
+	Then I verify Job Status is set to Complete
 	And I take a screenshot	
-
 	And I navigate to "Home"
 	#And I select Study "**US17415_DT14115" and Site "Site 01"
 	And I select a Subject "SUB{Var(num1)}"
@@ -345,10 +341,7 @@ Scenario: @PB_US17415_05 As an Investigator, when I sign the "Demographics" form
 	Given I publish and push eCRF "US17415_DT14115_Source_Draft.xml" to "SourceVersion1"
 	And I login to Rave with user "SUPER USER 1"
 
-	Given I login to Rave with user "SUPER USER 1"
->>>>>>> 65caaec... using seeding by draft upload for feature tests.
-	And I select Study "**US17415_DT14115" and Site "Site 01"
-	And I create a Subject
+	When I create a Subject
 		| Field          | Data              | Control Type |
 		| Subject Name   | SUB               | textbox      |
 		| Subject Number | {RndNum<num1>(5)} | textbox      |
@@ -364,11 +357,11 @@ Scenario: @PB_US17415_05 As an Investigator, when I sign the "Demographics" form
 	And I sign the form with username "SUPER USER 1"
 	And I wait for 5 seconds
 	#And I verify text "Please Sign - Default User  (SUPER USER 1)" exists
-	And I verify text "Please Sign - Default User  (" exists
+	Then I verify text "Please Sign - Default User  (" exists
 	And I take a screenshot
 
 	Given I publish and push eCRF "US17415_DT14115_Target_Draft.xml" to "TargetVersion1"
-	And I go to Amendment Manager for study "**US17415_DT14115"
+	When I go to Amendment Manager for study "**US17415_DT14115"
 	And I select Source CRF version "SourceVersion1"
 	And I select Target CRF version "TargetVersion1"
 	And I create migration plan
@@ -384,9 +377,8 @@ Scenario: @PB_US17415_05 As an Investigator, when I sign the "Demographics" form
 	And I migrate all Subjects
 	And I select link "Migration Results"
 	And I take a screenshot
-	And I verify Job Status is set to Complete
+	Then I verify Job Status is set to Complete
 	And I take a screenshot	
-
 	And I navigate to "Home"
 	And I select a Subject "SUB{Var(num1)}"
 	And I select link "Demographics"
@@ -421,13 +413,13 @@ Scenario: @PB_US17415_05 As an Investigator, when I sign the "Demographics" form
 		| Audit Type          |
 		| Signature Succeeded |
 	And I take a screenshot
-	And I select link "SUB{Var(num1)}" in "Header"
+	When I select link "SUB{Var(num1)}" in "Header"
 	And I select link "Demographics"
 	And I enter data in CRF and save
 		| Field       | Data | Control Type |
 		| Derived Age | 30   | textbox      |
 	#And I verify text "Please Sign - Default User  (SUPER USER 1)" exists
-	And I verify text "Please Sign - Default User  (" exists
+	Then I verify text "Please Sign - Default User  (" exists
 	And I take a screenshot
 					
 #----------------------------------------------------------------------------------------------------------------------------------------
@@ -451,10 +443,7 @@ Scenario: @PB_US17415_06 As an Investigator, when I sign the "Test Demographics"
 	Given I publish and push eCRF "US17415_DT14115_Source_Draft.xml" to "SourceVersion1"
 	And I login to Rave with user "SUPER USER 1"
 
-	Given I login to Rave with user "SUPER USER 1"
->>>>>>> 65caaec... using seeding by draft upload for feature tests.
-	And I select Study "**US17415_DT14115" and Site "Site 01"
-	And I create a Subject
+	When I create a Subject
 		| Field          | Data              | Control Type |
 		| Subject Name   | SUB               | textbox      |
 		| Subject Number | {RndNum<num1>(5)} | textbox      |
@@ -471,11 +460,11 @@ Scenario: @PB_US17415_06 As an Investigator, when I sign the "Test Demographics"
 	And I sign the form with username "SUPER USER 1"
 	And I wait for 5 seconds
 	#And I verify text "Please Sign - Default User  (SUPER USER 1)" exists
-	And I verify text "Please Sign - Default User  (" exists
+	Then I verify text "Please Sign - Default User  (" exists
 	And I take a screenshot
 
 	Given I publish and push eCRF "US17415_DT14115_Target_Draft.xml" to "TargetVersion1"
-	And I go to Amendment Manager for study "**US17415_DT14115"
+	When I go to Amendment Manager for study "**US17415_DT14115"
 	And I select Source CRF version "SourceVersion1"
 	And I select Target CRF version "TargetVersion1"
 	And I create migration plan
@@ -491,9 +480,8 @@ Scenario: @PB_US17415_06 As an Investigator, when I sign the "Test Demographics"
 	And I migrate all Subjects
 	And I select link "Migration Results"
 	And I take a screenshot
-	And I verify Job Status is set to Complete
+	Then I verify Job Status is set to Complete
 	And I take a screenshot	
-
 	And I navigate to "Home"
 	And I select a Subject "SUB{Var(num1)}"
 	And I select link "Test Demographics"
@@ -541,7 +529,7 @@ Scenario: @PB_US17415_DT14115_07 As an Investigator, when I sign the "Adverse Ev
 	Given I publish and push eCRF "US17415_DT14115_Source_Draft.xml" to "SourceVersion1"
 	And I login to Rave with user "SUPER USER 1"
 
-	And I create a Subject
+	When I create a Subject
 		| Field          | Data              | Control Type |
 		| Subject Name   | SUB               | textbox      |
 		| Subject Number | {RndNum<num1>(5)} | textbox      |
@@ -555,7 +543,7 @@ Scenario: @PB_US17415_DT14115_07 As an Investigator, when I sign the "Adverse Ev
 	And I sign the form with username "SUPER USER 1"
 	And I wait for 5 seconds
 	#And I verify text "Please Sign - Default User  (SUPER USER 1)" exists
-	And I verify text "Please Sign - Default User  (" exists
+	Then I verify text "Please Sign - Default User  (" exists
 	And I take a screenshot
 
 	When I enter data in CRF and save
@@ -599,7 +587,7 @@ Scenario: @PB_US17415_DT14115_08 As an Investigator, when I sign the "Serious Ad
 	Given I publish and push eCRF "US17415_DT14115_Source_Draft.xml" to "SourceVersion1"
 	And I login to Rave with user "SUPER USER 1"
 
-	And I create a Subject
+	When I create a Subject
 		| Field          | Data              | Control Type |
 		| Subject Name   | SUB               | textbox      |
 		| Subject Number | {RndNum<num1>(5)} | textbox      |
@@ -613,14 +601,14 @@ Scenario: @PB_US17415_DT14115_08 As an Investigator, when I sign the "Serious Ad
 	And I sign the form with username "SUPER USER 1"
 	And I wait for 5 seconds
 	#And I verify text "Please Sign - Default User  (SUPER USER 1)" exists
-	And I verify text "Please Sign - Default User  (" exists
+	Then I verify text "Please Sign - Default User  (" exists
 	And I take a screenshot
 
 	When I enter data in CRF and save
 		| Field                  | Data | Control Type |
 		| Ready for Extra Review | True | checkbox     |
 	#And I verify text "Please Sign - Default User  (SUPER USER 1)" does not exist
-	And I verify text "Please Sign - Default User  (" does not exist
+	Then I verify text "Please Sign - Default User  (" does not exist
 	And I take a screenshot
 	And I verify text "Added 1 For Extra Review" exists
 	And I verify text "Added 2 For Extra Review" exists
