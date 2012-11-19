@@ -44,8 +44,8 @@ namespace Medidata.RBT.PageObjects.Rave
 			IWebElement studyLink = this.FindInPaginatedList("", () =>
 				{
 					//with some page settings, this may not be the container of studies
-					var studyList = TestContext.Browser.TryFindElementById("_ctl0_Content_ListDisplayNavigation_dgObjects");
-					return studyList.TryFindElementBy(By.PartialLinkText(study.UniqueName), true, 2);
+					//var studyList = TestContext.Browser.TryFindElementById("_ctl0_Content_ListDisplayNavigation_dgObjects");
+                    return TestContext.Browser.TryFindElementBy(By.PartialLinkText(study.UniqueName), true, 2);
 				}, out foundOnPage);
 
 
