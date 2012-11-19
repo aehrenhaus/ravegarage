@@ -178,7 +178,8 @@ Scenario: @PB_US17415_03 As an Investigator, when I sign the "Demographics" form
 	And I select Target CRF version "TargetVersion1"
 	And I create migration plan
 	And I take a screenshot
-	And I execute plan for subject "SUB{Var(num1)}"
+	And I navigate to "Execute Plan"
+	And I migrate all Subjects
 	And I select link "Migration Results"
 	And I take a screenshot
 	And I verify Job Status is set to Complete
@@ -279,7 +280,8 @@ Scenario: @PB_US17415_04 As an Investigator, when I sign the "Test Demographics"
 	And I select Target CRF version "TargetVersion1"
 	And I create migration plan
 	And I take a screenshot
-	And I execute plan for subject "SUB{Var(num1)}"
+	And I navigate to "Execute Plan"
+	And I migrate all Subjects
 	And I select link "Migration Results"
 	And I take a screenshot
 	And I verify Job Status is set to Complete
@@ -381,7 +383,8 @@ Scenario: @PB_US17415_05 As an Investigator, when I sign the "Demographics" form
 	And I take a screenshot
 
 	And I go to Amendment Manager for study "**US17415_DT14115"
-	And I execute plan for subject "SUB{Var(num1)}"
+	And I navigate to "Execute Plan"
+	And I migrate all Subjects
 	And I select link "Migration Results"
 	And I take a screenshot
 	And I verify Job Status is set to Complete
@@ -489,7 +492,8 @@ Scenario: @PB_US17415_06 As an Investigator, when I sign the "Test Demographics"
 	And I take a screenshot
 
 	And I go to Amendment Manager for study "**US17415_DT14115"
-	And I execute plan for subject "SUB{Var(num1)}"
+	And I navigate to "Execute Plan"
+	And I migrate all Subjects
 	And I select link "Migration Results"
 	And I take a screenshot
 	And I verify Job Status is set to Complete
