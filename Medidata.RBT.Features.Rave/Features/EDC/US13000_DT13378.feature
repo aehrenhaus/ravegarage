@@ -2,7 +2,7 @@
 # What happens in these cases is that changes cascade for the same analyte and the same lab in one form, however, in a different form for the same subject, the alerts do not cascade properly and therefore cause a discrepancy. In one form you have a different alert status than another for the same subject, same analyte and same lab.
 # The impact and severity of this issue is high, as many prompts for clinical significance may be destroyed in the cascading of changes causing sites to have to re-enter CS data. Also, the integrity of labs is potentially compromised as the alert ranges are discrepant in various forms for the same analyte.
 # In order to resolve this issue, the affected subjects need to either be inserted back into the labupdatequeue for processing, or splabcascadechangetosubject needs to be called in a cursor or while loop on the affected subjects. The latter takes more time to execute and may cause performance issues on the server, as it uses a lot of memory in execution and does the cascade changes at the time of processing. The former solution will do them at a deferred rate, and will generally take more time, however, it will not cause performance issues on the SQL server.
-
+@ignore
 @EnableSeeding=False
 @SuppressSeeding=Site,SiteGroup,Role,User,SecurityRole
 

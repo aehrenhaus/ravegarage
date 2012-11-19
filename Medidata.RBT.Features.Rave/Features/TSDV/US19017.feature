@@ -1,5 +1,5 @@
 ﻿# As a user, I can choose between two randomization types and change randomization types for non-Production plans
-
+@ignore
 Feature: US19017
 	When user selects Targeted SDV Configuration report
 	And environment is equal to Production
