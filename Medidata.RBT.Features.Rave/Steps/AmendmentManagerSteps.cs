@@ -91,7 +91,11 @@ namespace Medidata.RBT.Features.Rave
         }
 
 
-
+        /// <summary>
+        /// Selects the specified form from the Forms dropdown on Publish Checks page.
+        /// It only applies to functionality exposed on Publish Checks page.
+        /// </summary>
+        /// <param name="form"></param>
         [StepDefinition(@"I select ""(.*?)"" from Forms in Edit Checks")]
         public void ISelect____FromFromsInEditChecks(string form)
         {
@@ -100,8 +104,12 @@ namespace Medidata.RBT.Features.Rave
                 .SelectForm(form);
         }
 
+        /// <summary>
+        /// Clicks on a button to search on the Publish Checks page.
+        /// It only applies to functionality exposed on Publish Checks page.
+        /// </summary>
         [StepDefinition(@"I select search icon in Edit Checks")]
-        public void GivenISelectSearchIcon()
+        public void ISelectSearchIcon()
         {
             TestContext.CurrentPage.As<PublishChecksHomePage>()
                 .EditChecks

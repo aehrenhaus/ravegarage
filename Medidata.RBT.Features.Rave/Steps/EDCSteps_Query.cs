@@ -60,13 +60,12 @@ namespace Medidata.RBT.Features.Rave
 		[StepDefinition(@"I verify Query is displayed")]
 		public void IVerifyQueryIsDisplayed(Table table)
 		{
-            bool canFind = true;
             var filters = table.CreateSet<QuerySearchModel>();
             foreach (var filter in filters)
             {
-                canFind &= CurrentPage.As<CRFPage>().CanFindQuery(filter);
+                Assert.IsTrue(CurrentPage.As<CRFPage>().CanFindQuery(filter), 
+                    "One or More Queries do not exist");
             }
-            Assert.IsTrue(canFind, "One or More Queries do not exist");
 		}
 
 

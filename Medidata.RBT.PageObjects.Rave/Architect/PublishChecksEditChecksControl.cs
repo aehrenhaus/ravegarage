@@ -11,15 +11,14 @@ namespace Medidata.RBT.PageObjects.Rave.Architect
         : ControlBase
     {
         private IWebElement _editChecksContainer;
- 
-        public PublishChecksEditChecksControl(IPage page) : base(page) 
+
+        public PublishChecksEditChecksControl(IPage page)
+            : base(page)
         {
-            try
-            {
-                _editChecksContainer = this.Page.Browser.FindElement(
-                    By.XPath("//div[@id='_ctl0_Content_pnlGrid']/div/table/tbody"));
-            }
-            catch { throw new NoSuchElementException("The Edit Checks control was not found on this page"); }
+            _editChecksContainer = this.Page.Browser.TryFindElementBy(
+                By.XPath("//div[@id='_ctl0_Content_pnlGrid']/div/table/tbody"));
+            if (_editChecksContainer == null)
+                throw new NoSuchElementException("The Edit Checks control was not found on this page");
         }
 
 

@@ -4,6 +4,7 @@ using TechTalk.SpecFlow.Assist;
 using System.Collections.Generic;
 using Medidata.RBT.PageObjects.Rave.SharedRaveObjects;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System;
 
 namespace Medidata.RBT.Features.Rave
 {
@@ -13,10 +14,9 @@ namespace Medidata.RBT.Features.Rave
 
 
         [StepDefinition(@"I verify text")]
+        [Obsolete("Use step definitions from Medidata.RBT.Common.Steps.IVerifyExistSteps")]
         public void IVerifyText(Table table)
         {
-            Assert.IsTrue(CurrentPage.As<ICanVerifyExist>()
-                .VerifyTableRowsExist(null, table));
         }
 
 		/// <summary>
