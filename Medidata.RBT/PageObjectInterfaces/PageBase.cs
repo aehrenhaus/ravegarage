@@ -178,11 +178,11 @@ namespace Medidata.RBT
             throw new Exception("Don't know how to navigate to "+identifier);
         }
 
-		private IWebElement TryFindElement(string identifier)
+        private IWebElement TryFindElement(string identifier, string areaIdentifier = null)
 		{
             var ele = Browser.TryFindElementById(identifier);
             if (ele == null)
-                ele = TryGetElementByName(identifier);
+                ele = TryGetElementByName(identifier, areaIdentifier);
 
             if (ele == null)
                 ele = Browser.TryFindElementByPartialID(identifier, false);
@@ -225,7 +225,7 @@ namespace Medidata.RBT
 		public virtual IPage ChooseFromCheckboxes(string identifier, bool isChecked, string areaIdentifier = null, string listItem = null)
         {
 
-			var element = TryFindElement(identifier);
+			var element = TryFindElement(identifier, areaIdentifier);
 
 
             if (isChecked)
