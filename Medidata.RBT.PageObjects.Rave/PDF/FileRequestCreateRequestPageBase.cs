@@ -85,7 +85,7 @@ namespace Medidata.RBT.PageObjects.Rave
         public void SelectLocale(string locale)
         {
             if (!string.IsNullOrEmpty(locale))
-                ChooseFromDropdown("Locale", locale);
+                ChooseFromDropdown("_ctl0_Content_FileRequestForm_Locale", locale);
         }
 
         /// <summary>
