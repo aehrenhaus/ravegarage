@@ -11,6 +11,9 @@ namespace Medidata.RBT.SeleniumExtension
 		{
 		}
 
-	
+		public string Href
+		{
+			get { return this.GetAttribute("href"); }
+		}
 	}
 }
