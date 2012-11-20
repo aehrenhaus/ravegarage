@@ -233,9 +233,8 @@ namespace Medidata.RBT.PageObjects.Rave
             if (elem != null)
                 elem.Click();
 
-            Thread.Sleep(1000);
             // Wait for log line form div
-            Browser.TryFindElementByPartialID("CombineLogLinesFrms_div");
+            Browser.TryFindElementBy(By.XPath(".//div[contains(@id, 'CombineLogLinesFrms_div') and contains(@style, 'block')]"));
         }
 
         public bool VerifyTableRowsExist(string tableIdentifier, Table matchTable)
