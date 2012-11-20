@@ -88,7 +88,7 @@ namespace Medidata.RBT
             TestContext.CurrentPage = TestContext.POFactory.GetPageByUrl(new Uri(pageBaseBrowser.Url));
             IPage currentpage = TestContext.CurrentPage as TPage as IPage;
 
-            if (!(currentpage is EmptyPage))
+            if (currentpage is TPage)
                 return new Textbox();
             return null;
         }
