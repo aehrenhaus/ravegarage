@@ -69,7 +69,7 @@ namespace Medidata.RBT
                     IWebElement fakeEle = TestContext.Browser.CheckURLIsCorrect(b => CheckCurrentPage<TPage>(Browser));
 
                     if(fakeEle != null)
-                        currentpage = TestContext.CurrentPage as TPage as IPage;
+                        currentpage = TestContext.POFactory.GetPageByUrl(new Uri(Browser.Url)) as TPage as IPage;
                     else
 					    throw new Exception("Expect current page to be " + typeof(TPage).Name + ", but it's " + (TestContext.CurrentPage==null?"null":TestContext.CurrentPage.GetType().Name));
                 }
