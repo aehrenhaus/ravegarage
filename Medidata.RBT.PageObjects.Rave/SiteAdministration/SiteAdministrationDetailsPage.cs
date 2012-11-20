@@ -78,16 +78,11 @@ namespace Medidata.RBT.PageObjects.Rave.SiteAdministration
             ChooseFromDropdown("ProjectDDL", studyName);
             ChooseFromDropdown("StudyDDL", environment.ToLower() == "prod" ? "Live: Prod" : String.Concat("Aux: ", environment));
             TestContext.CurrentPage.ClickLink("Add");
-            var table = TestContext.CurrentPage.GetElementByName("_WizardTitleBox_AddStudySiteWzrd_StudyGrid").EnhanceAs<HtmlTable>();
+            var table = TestContext.Browser.TryFindElementByPartialID("_WizardTitleBox_AddStudySiteWzrd_StudyGrid").EnhanceAs<HtmlTable>();
             Table matchTable = new Table("Name");
             matchTable.AddRow(String.Format("{0}-{1}", studyName, environment));            
             var rows = table.FindMatchRows(matchTable);
             rows[0].Images().First(x => x.GetAttribute("src").EndsWith(mapGifId)).Click();
-        }
-
-        public override IWebElement GetElementByName(string identifier, string areaIdentifier = null, string listItem = null)
-        {
-            return Browser.Table("_WizardTitleBox_AddStudySiteWzrd_StudyGrid");
         }
     }
 }

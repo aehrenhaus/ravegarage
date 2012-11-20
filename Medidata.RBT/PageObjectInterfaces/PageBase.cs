@@ -180,7 +180,7 @@ namespace Medidata.RBT
 
         private IWebElement TryFindElement(string identifier, string areaIdentifier = null)
 		{
-            var ele = Browser.TryFindElementById(identifier);
+            var ele = Browser.TryFindElementById(identifier,false);
             if (ele == null)
                 ele = TryGetElementByName(identifier, areaIdentifier);
 
