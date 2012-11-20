@@ -18,10 +18,10 @@ Feature: US17415_DT14115
 Background:
 	Given xml draft "US17415_DT14115_Source_Draft.xml" is Uploaded
 	And xml draft "US17415_DT14115_Target_Draft.xml" is Uploaded
-	And study "**US17415_DT14115" is assigned to Site "Site 01"
+	And study "US17415_DT14115" is assigned to Site "Site 01"
 	And following Project assignments exist
 		| User          | Project             | Environment | Role        | Site    | SecurityRole          |
-		| SUPER USER 1  | **US17415_DT14115   | Live: Prod  | SUPER ROLE 1| Site 01 | Project Admin Default |
+		| SUPER USER 1  | US17415_DT14115   | Live: Prod  | SUPER ROLE 1| Site 01 | Project Admin Default |
 	And Role "SUPER ROLE" has Action "Sign"
 
 #----------------------------------------------------------------------------------------------------------------------------------------
@@ -46,16 +46,14 @@ Scenario: @PB_US17415_DT14115_01 As an Investigator, when I sign the "Adverse Ev
 	And I click button "Sign and Save"
 	And I sign the form with username "SUPER USER 1"
 	And I wait for 5 seconds
-	#And I verify text "Please Sign - Default User  (SUPER USER 1)" exists
-	And I verify text "Please Sign - Default User  (" exists
+	And I verify text "Please Sign - Default User  (SUPER USER 1)" with username "SUPER USER 1" exists
 	And I take a screenshot
 	And I open log line 1 for edit
 
 	When I enter data in CRF and save
 		| Field                  | Data | Control Type |
 		| Ready for Extra Review | True | checkbox     |
-	#Then I verify text "Please Sign - Default User  (SUPER USER 1)" exists
-	Then I verify text "Please Sign - Default User  (" exists
+	Then I verify text "Please Sign - Default User  (SUPER USER 1)" with username "SUPER USER 1" exists
 	And I take a screenshot
 	And I open log line 1 for edit
 	And I verify text "Added 1 For Extra Review" exists
@@ -80,8 +78,7 @@ Scenario: @PB_US17415_DT14115_01 As an Investigator, when I sign the "Adverse Ev
 		| Field                  | Data  | Control Type |
 		| Ready for Extra Review | False | checkbox     |
 	And I open log line 1 for edit
-	#Then I verify text "Please Sign - Default User  (SUPER USER 1)" exists
-	Then I verify text "Please Sign - Default User  (" exists
+	Then I verify text "Please Sign - Default User  (SUPER USER 1)" with username "SUPER USER 1" exists
 	And I verify text "Added 1 For Extra Review" does not exist
 	And I verify text "Added 2 For Extra Review" does not exist
 	And I take a screenshot
@@ -108,16 +105,14 @@ Scenario: @PB_US17415_DT14115_02 As an Investigator, when I sign the "Serious Ad
 	And I click button "Sign and Save"
 	And I sign the form with username "SUPER USER 1"
 	And I wait for 5 seconds
-	#And I verify text "Please Sign - Default User  (SUPER USER 1)" exists
-	Then I verify text "Please Sign - Default User  (" exists
+	Then I verify text "Please Sign - Default User  (SUPER USER 1)" with username "SUPER USER 1" exists
 	And I take a screenshot
 	And I open log line 1 for edit
 
 	When I enter data in CRF and save
 		| Field                  | Data | Control Type |
 		| Ready for Extra Review | True | checkbox     |
-	#And I verify text "Please Sign - Default User  (SUPER USER 1)" does not exist
-	Then I verify text "Please Sign - Default User  (" does not exist
+	Then I verify text "Please Sign - Default User  (SUPER USER 1)" with username "SUPER USER 1" exists
 	And I take a screenshot
 	And I open log line 1 for edit
 	And I verify text "Added 1 For Extra Review" exists
@@ -167,13 +162,12 @@ Scenario: @PB_US17415_03 As an Investigator, when I sign the "Demographics" form
 	And I click button "Sign and Save"
 	And I sign the form with username "SUPER USER 1"
 	And I wait for 5 seconds
-	#And I verify text "Please Sign - Default User  (SUPER USER 1)" exists
-	Then I verify text "Please Sign - Default User  (" exists
+	Then I verify text "Please Sign - Default User  (SUPER USER 1)" with username "SUPER USER 1" exists
 	And I take a screenshot
 
 	Given I publish and push eCRF "US17415_DT14115_Target_Draft.xml" to "TV1"
 	
-	When I go to Amendment Manager for study "**US17415_DT14115"
+	When I go to Amendment Manager for study "US17415_DT14115"
 	And I select Source CRF version "SV1"
 	And I select Target CRF version "TV1"
 	And I create migration plan
@@ -223,8 +217,7 @@ Scenario: @PB_US17415_03 As an Investigator, when I sign the "Demographics" form
 	And I enter data in CRF and save
 		| Field       | Data | Control Type |
 		| Derived Age | 30   | textbox      |
-	#And I verify text "Please Sign - Default User  (SUPER USER 1)" exists
-	Then I verify text "Please Sign - Default User  (" exists
+	Then I verify text "Please Sign - Default User  (SUPER USER 1)" with username "SUPER USER 1" exists
 	And I take a screenshot
 					
 #----------------------------------------------------------------------------------------------------------------------------------------
@@ -264,12 +257,11 @@ Scenario: @PB_US17415_04 As an Investigator, when I sign the "Test Demographics"
 	And I click button "Sign and Save"
 	And I sign the form with username "SUPER USER 1"
 	And I wait for 5 seconds
-	#And I verify text "Please Sign - Default User  (SUPER USER 1)" exists
-	Then I verify text "Please Sign - Default User  (" exists
+	Then I verify text "Please Sign - Default User  (SUPER USER 1)" with username "SUPER USER 1" exists
 	And I take a screenshot
 
 	Given I publish and push eCRF "US17415_DT14115_Target_Draft.xml" to "TV1"
-	When I go to Amendment Manager for study "**US17415_DT14115"
+	When I go to Amendment Manager for study "US17415_DT14115"
 	And I select Source CRF version "SV1"
 	And I select Target CRF version "TV1"
 	And I create migration plan
@@ -281,11 +273,9 @@ Scenario: @PB_US17415_04 As an Investigator, when I sign the "Test Demographics"
 	Then I verify Job Status is set to Complete
 	And I take a screenshot	
 	And I navigate to "Home"
-	#And I select Study "**US17415_DT14115" and Site "Site 01"
 	And I select a Subject "SUB{Var(num1)}"
 	And I select link "Test Demographics"
-	#And I verify text "Please Sign - Default User  (SUPER USER 1)" exists
-	And I verify text "Please Sign - Default User  (" exists
+	And I verify text "Please Sign - Default User  (SUPER USER 1)" with username "SUPER USER 1" exists
 	And I take a screenshot
 	And I verify text "Derived Age" does not exist
 	And I take a screenshot	
@@ -355,12 +345,11 @@ Scenario: @PB_US17415_05 As an Investigator, when I sign the "Demographics" form
 	And I click button "Sign and Save"
 	And I sign the form with username "SUPER USER 1"
 	And I wait for 5 seconds
-	#And I verify text "Please Sign - Default User  (SUPER USER 1)" exists
-	Then I verify text "Please Sign - Default User  (" exists
+	Then I verify text "Please Sign - Default User  (SUPER USER 1)" with username "SUPER USER 1" exists
 	And I take a screenshot
 
 	Given I publish and push eCRF "US17415_DT14115_Target_Draft.xml" to "TV1"
-	When I go to Amendment Manager for study "**US17415_DT14115"
+	When I go to Amendment Manager for study "US17415_DT14115"
 	And I select Source CRF version "SV1"
 	And I select Target CRF version "TV1"
 	And I create migration plan
@@ -371,7 +360,7 @@ Scenario: @PB_US17415_05 As an Investigator, when I sign the "Demographics" form
 	And I select link "Update"
 	And I take a screenshot
 
-	And I go to Amendment Manager for study "**US17415_DT14115"
+	And I go to Amendment Manager for study "US17415_DT14115"
 	And I navigate to "Execute Plan"
 	And I migrate all Subjects
 	And I select link "Migration Results"
@@ -417,8 +406,7 @@ Scenario: @PB_US17415_05 As an Investigator, when I sign the "Demographics" form
 	And I enter data in CRF and save
 		| Field       | Data | Control Type |
 		| Derived Age | 30   | textbox      |
-	#And I verify text "Please Sign - Default User  (SUPER USER 1)" exists
-	Then I verify text "Please Sign - Default User  (" exists
+	Then I verify text "Please Sign - Default User  (SUPER USER 1)" with username "SUPER USER 1" exists
 	And I take a screenshot
 					
 #----------------------------------------------------------------------------------------------------------------------------------------
@@ -458,12 +446,11 @@ Scenario: @PB_US17415_06 As an Investigator, when I sign the "Test Demographics"
 	And I click button "Sign and Save"
 	And I sign the form with username "SUPER USER 1"
 	And I wait for 5 seconds
-	#And I verify text "Please Sign - Default User  (SUPER USER 1)" exists
-	Then I verify text "Please Sign - Default User  (" exists
+	Then I verify text "Please Sign - Default User  (SUPER USER 1)" with username "SUPER USER 1" exists
 	And I take a screenshot
 
 	Given I publish and push eCRF "US17415_DT14115_Target_Draft.xml" to "TV1"
-	When I go to Amendment Manager for study "**US17415_DT14115"
+	When I go to Amendment Manager for study "US17415_DT14115"
 	And I select Source CRF version "SV1"
 	And I select Target CRF version "TV1"
 	And I create migration plan
@@ -474,7 +461,7 @@ Scenario: @PB_US17415_06 As an Investigator, when I sign the "Test Demographics"
 	And I select link "Update"
 	And I take a screenshot
 
-	And I go to Amendment Manager for study "**US17415_DT14115"
+	And I go to Amendment Manager for study "US17415_DT14115"
 	And I navigate to "Execute Plan"
 	And I migrate all Subjects
 	And I select link "Migration Results"
@@ -484,8 +471,7 @@ Scenario: @PB_US17415_06 As an Investigator, when I sign the "Test Demographics"
 	And I navigate to "Home"
 	And I select a Subject "SUB{Var(num1)}"
 	And I select link "Test Demographics"
-	#And I verify text "Please Sign - Default User  (SUPER USER 1)" exists
-	And I verify text "Please Sign - Default User  (" exists
+	And I verify text "Please Sign - Default User  (SUPER USER 1)" with username "SUPER USER 1" exists
 	And I take a screenshot
 	And I verify text "Derived Age" does not exist
 	And I take a screenshot	
@@ -541,15 +527,13 @@ Scenario: @PB_US17415_DT14115_07 As an Investigator, when I sign the "Adverse Ev
 	And I click button "Sign and Save"
 	And I sign the form with username "SUPER USER 1"
 	And I wait for 5 seconds
-	#And I verify text "Please Sign - Default User  (SUPER USER 1)" exists
-	Then I verify text "Please Sign - Default User  (" exists
+	Then I verify text "Please Sign - Default User  (SUPER USER 1)" with username "SUPER USER 1" exists
 	And I take a screenshot
 
 	When I enter data in CRF and save
 		| Field                  | Data | Control Type |
 		| Ready for Extra Review | True | checkbox     |
-	#Then I verify text "Please Sign - Default User  (SUPER USER 1)" exists
-	Then I verify text "Please Sign - Default User  (" exists
+	Then I verify text "Please Sign - Default User  (SUPER USER 1)" with username "SUPER USER 1" exists
 	And I take a screenshot
 	And I verify text "Added 1 For Extra Review" exists
 	And I verify text "Added 2 For Extra Review" exists
@@ -571,8 +555,7 @@ Scenario: @PB_US17415_DT14115_07 As an Investigator, when I sign the "Adverse Ev
 	When I enter data in CRF and save
 		| Field                  | Data  | Control Type |
 		| Ready for Extra Review | False | checkbox     |
-	#Then I verify text "Please Sign - Default User  (SUPER USER 1)" exists
-	Then I verify text "Please Sign - Default User  (" exists
+	Then I verify text "Please Sign - Default User  (SUPER USER 1)" with username "SUPER USER 1" exists
 	And I verify text "Added 1 For Extra Review" does not exist
 	And I verify text "Added 2 For Extra Review" does not exist
 	And I take a screenshot
@@ -599,15 +582,13 @@ Scenario: @PB_US17415_DT14115_08 As an Investigator, when I sign the "Serious Ad
 	And I click button "Sign and Save"
 	And I sign the form with username "SUPER USER 1"
 	And I wait for 5 seconds
-	#And I verify text "Please Sign - Default User  (SUPER USER 1)" exists
-	Then I verify text "Please Sign - Default User  (" exists
+	Then I verify text "Please Sign - Default User  (SUPER USER 1)" with username "SUPER USER 1" exists
 	And I take a screenshot
 
 	When I enter data in CRF and save
 		| Field                  | Data | Control Type |
 		| Ready for Extra Review | True | checkbox     |
-	#And I verify text "Please Sign - Default User  (SUPER USER 1)" does not exist
-	Then I verify text "Please Sign - Default User  (" does not exist
+	Then I verify text "Please Sign - Default User  (SUPER USER 1)" with username "SUPER USER 1" exists
 	And I take a screenshot
 	And I verify text "Added 1 For Extra Review" exists
 	And I verify text "Added 2 For Extra Review" exists
