@@ -399,22 +399,22 @@ namespace Medidata.RBT.SeleniumExtension
 
 		public static ReadOnlyCollection<IWebElement> Spans(this ISearchContext context)
 		{
-			return context.FindElements(By.XPath(".//span"));
+            return context.TryFindElementsBy(By.XPath(".//span"));
 		}
 
         public static ReadOnlyCollection<IWebElement> Selects(this ISearchContext context)
         {
-            return context.FindElements(By.XPath(".//select"));
+            return context.TryFindElementsBy(By.XPath(".//select"));
         }
 
         public static ReadOnlyCollection<IWebElement> Options(this ISearchContext context)
         {
-            return context.FindElements(By.XPath(".//option"));
+            return context.TryFindElementsBy(By.XPath(".//option"));
         }
 
         public static ReadOnlyCollection<IWebElement> Spans(this ISearchContext context, string xpath)
 		{
-			return context.FindElements(By.XPath(xpath));
+            return context.TryFindElementsBy(By.XPath(xpath));
 		}
 
 		#endregion
