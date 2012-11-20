@@ -10,23 +10,23 @@ Feature: US18689
 
 Background:
 	#Given I am logged in to Rave with username "defuser" and password "password"
-	Given xml draft "US18689_SJ.xml" is Uploaded with Environment name "Dev"
+	Given xml draft "US18689.xml" is Uploaded with Environment name "Dev"
 
 	Given Site "Site 1" with Site Group "Asia" exists
 	#Given Site "Site 2" with Site Group "Europe" exists
 	#Given Site "Site 3" with Site Group "World" exists
 	#Given Site "Site 4" with Site Group "North America" exists
-	Given study "US18689_SJ" is assigned to Site "Site 1" with study environment "Aux: Dev"
-	#Given study "US18689_SJ" is assigned to Site "Site 2" with study environment "Aux: Dev"
-	#Given study "US18689_SJ" is assigned to Site "Site 3" with study environment "Aux: Dev"
-	#Given study "US18689_SJ" is assigned to Site "Site 4" with study environment "Aux: Dev"
-	Given I publish and push eCRF "US18689_SJ.xml" to "Version 1" with study environment "Dev"
+	Given study "US18689" is assigned to Site "Site 1" with study environment "Aux: Dev"
+	#Given study "US18689" is assigned to Site "Site 2" with study environment "Aux: Dev"
+	#Given study "US18689" is assigned to Site "Site 3" with study environment "Aux: Dev"
+	#Given study "US18689" is assigned to Site "Site 4" with study environment "Aux: Dev"
+	Given I publish and push eCRF "US18689.xml" to "Version 1" with study environment "Dev"
 	Given following Project assignments exist
 	| User         | Project    | Environment | Role         | Site   | SecurityRole          | 
-	| SUPER USER 1 | US18689_SJ | Aux: Dev    | SUPER ROLE 1 | Site 1 | Project Admin Default | 
-	#| SUPER USER 1 | US18689_SJ | Aux: Dev    | SUPER ROLE 1 | Site 2 | Project Admin Default | 
-	#| SUPER USER 1 | US18689_SJ | Aux: Dev    | SUPER ROLE 1 | Site 3 | Project Admin Default | 
-	#| SUPER USER 1 | US18689_SJ | Aux: Dev    | SUPER ROLE 1 | Site 4 | Project Admin Default | 
+	| SUPER USER 1 | US18689 | Aux: Dev    | SUPER ROLE 1 | Site 1 | Project Admin Default | 
+	#| SUPER USER 1 | US18689 | Aux: Dev    | SUPER ROLE 1 | Site 2 | Project Admin Default | 
+	#| SUPER USER 1 | US18689 | Aux: Dev    | SUPER ROLE 1 | Site 3 | Project Admin Default | 
+	#| SUPER USER 1 | US18689 | Aux: Dev    | SUPER ROLE 1 | Site 4 | Project Admin Default | 
 	Given following Report assignments exist
 	| User         | Report                                                           |
 	| SUPER USER 1 | Targeted SDV Configuration - Targeted SDV Configuration          |
@@ -35,9 +35,9 @@ Background:
 	# Note: The setup used for the testing of this Feature File is not the only setup that will work with the Permuted Block randomization algorithm. The randomization algorithm will work for all Block and Tier combinations, or a block of n of n.
 
 	# below should be commented out.
-	#Given there is a project US18689_SJ
-	#Given there is an environment Prod for project US18689_SJ
-	#And there are four sites assigned to study US18689_SJ(Dev):
+	#Given there is a project US18689
+	#Given there is an environment Prod for project US18689
+	#And there are four sites assigned to study US18689(Dev):
 		# | Site Name  | Site Number      |
 		# | Site 1     | 1001             |
 		# | Site 2     | 2001             |
@@ -47,7 +47,7 @@ Background:
 	#And site Site 2 is assigned to site group Europe
 	#And site Site 3 is assigned to site group World
 	#And site Site 4 is assigned to site group North America
-	#And TSDV Study Plan has been setup for Study "US18689_SJ"
+	#And TSDV Study Plan has been setup for Study "US18689"
 	# And TSDV Study Plan has block with tier(s)
 	# | Block Name | Subject Count | IsRepeated | Tier Name         | Subject Count | Folder | Form                         | Field |
 	# | Architect  | 6             | Yes        |                   |               |        |                              |       |
@@ -81,20 +81,20 @@ Background:
 
 
 @release_2012.1.0 
-@PB_US18689_SJ_01
+@PB_US18689_01
 @Draft
-Scenario: @PB_US18689_SJ_01 As a Rave user, when I select Permuted Block Randomization and I Enroll 50 subjects in study then subject assignment satisfies the specified ratio and is random for all blocks in study level.
-	#When I select Study "US18689_SJ" and Site "Site 1"
+Scenario: @PB_US18689_01 As a Rave user, when I select Permuted Block Randomization and I Enroll 50 subjects in study then subject assignment satisfies the specified ratio and is random for all blocks in study level.
+	#When I select Study "US18689" and Site "Site 1"
 	Given I login to Rave with user "SUPER USER 1"
 	And I select link "Home"
 	And I navigate to "Reporter"
 	And I select Report "Targeted SDV Configuration"
 	And I set report parameter "Study" with table
 		| Name    | Environment |
-		| US18689_SJ | Dev         |
+		| US18689 | Dev         |
 	And I click button "Submit Report"
 	And I switch to "Targeted SDV Study Plan" window
-	And I create a new block plan named "US18689_SJ Block Plan" with Data entry Role "SUPER ROLE 1"
+	And I create a new block plan named "US18689 Block Plan" with Data entry Role "SUPER ROLE 1"
 	And I verify text "Dynamic Allocation" exists
 	And I click button "edit block plan"
 	And I choose "Permuted Block" from "Randomization Type"
@@ -109,13 +109,13 @@ Scenario: @PB_US18689_SJ_01 As a Rave user, when I select Permuted Block Randomi
 	And I activate the plan
 	And I switch to "Reports" window
 	And I select link "Home"
-	And I create 12 random Subjects with name "KKP" in Study "US18689_SJ" in Site "Site 1"
+	And I create 12 random Subjects with name "KKP" in Study "US18689" in Site "Site 1"
 	And I select link "Home"
 	And I navigate to "Reporter"
 	And I select Report "Targeted SDV Subject Management"
 	And I set report parameter "Study" with table
 		| Name        | Environment |
-		| US18689_SJ | Dev         |
+		| US18689 | Dev         |
 	And I click button "Submit Report"
 	And I switch to "Targeted SDV Subject Override" window
 
@@ -187,7 +187,7 @@ Scenario: @PB_US18689_SJ_01 As a Rave user, when I select Permuted Block Randomi
 	And I select Report "Targeted SDV Configuration"
 	And I set report parameter "Study" with table
 		| Name        | Environment |
-		| US18689_SJ | Dev         |
+		| US18689 | Dev         |
 	And I click button "Submit Report"
 	And I switch to "Targeted SDV Study Plan" window
 	And I inactivate the plan
@@ -207,13 +207,13 @@ Scenario: @PB_US18689_SJ_01 As a Rave user, when I select Permuted Block Randomi
 	And I activate the plan
 	And I switch to "Reports" window
 	And I select link "Home"
-	And I create 6 random Subjects with name "BBC" in Study "US18689_SJ" in Site "Site 2"
+	And I create 6 random Subjects with name "BBC" in Study "US18689" in Site "Site 2"
 	And I select link "Home"
 	And I navigate to "Reporter"
 	And I select Report "Targeted SDV Subject Management"
 	And I set report parameter "Study" with table
 		| Name       | Environment |
-		| US18689_SJ | Dev         |
+		| US18689 | Dev         |
 	And I click button "Submit Report"
 	And I switch to "Targeted SDV Subject Override" window
 	And I filter by site group "World"
@@ -287,7 +287,7 @@ Scenario: @PB_US18689_SJ_01 As a Rave user, when I select Permuted Block Randomi
 	And I select Report "Targeted SDV Configuration"
 	And I set report parameter "Study" with table
 		| Name       | Environment |
-		| US18689_SJ | Dev         |
+		| US18689 | Dev         |
 	And I click button "Submit Report"
 	And I switch to "Targeted SDV Study Plan" window
 	And I select link "World"
@@ -308,13 +308,13 @@ Scenario: @PB_US18689_SJ_01 As a Rave user, when I select Permuted Block Randomi
 	And I activate the plan
 	And I switch to "Reports" window
 	And I select link "Home"
-	And I create 6 random Subjects with name "CCD" in Study "US18689_SJ" in Site "Site 3"
+	And I create 6 random Subjects with name "CCD" in Study "US18689" in Site "Site 3"
 	And I select link "Home"
 	And I navigate to "Reporter"
 	And I select Report "Targeted SDV Subject Management"
 	And I set report parameter "Study" with table
 		| Name       | Environment |
-		| US18689_SJ | Dev         |
+		| US18689 | Dev         |
 	And I click button "Submit Report"
 	And I switch to "Targeted SDV Subject Override" window
 	And I filter by site "Site 3"
@@ -386,7 +386,7 @@ Then I verify that one of the following Permutations has been used every 6 subje
 	And I select Report "Targeted SDV Configuration"
 	And I set report parameter "Study" with table
 		| Name    | Environment |
-		| US18689_SJ | Dev         |
+		| US18689 | Dev         |
 	And I click button "Submit Report"
 	And I switch to "Targeted SDV Study Plan" window
 	And I select link "World"
@@ -399,7 +399,7 @@ Then I verify that one of the following Permutations has been used every 6 subje
 	And I select Report "Targeted SDV Configuration"
 	And I set report parameter "Study" with table
 		| Name    | Environment |
-		| US18689_SJ | Dev         |
+		| US18689 | Dev         |
 	And I click button "Submit Report"
 	And I switch to "Targeted SDV Study Plan" window
 	And I select link "World"
@@ -419,13 +419,13 @@ Then I verify that one of the following Permutations has been used every 6 subje
 	And I activate the plan
 	And I switch to "Reports" window
 	And I select link "Home"
-	And I create 6 random Subjects with name "KKI" in Study "US18689_SJ" in Site "Site 4"
+	And I create 6 random Subjects with name "KKI" in Study "US18689" in Site "Site 4"
 	And I select link "Home"
 	And I navigate to "Reporter"
 	And I select Report "Targeted SDV Subject Management"
 	And I set report parameter "Study" with table
 		| Name       | Environment |
-		| US18689_SJ | Dev         |
+		| US18689 | Dev         |
 	And I click button "Submit Report"
 	And I filter by site "Site 4"
 	Then I verify that one of the following Permutations has been used every 6 subjects
@@ -496,7 +496,7 @@ Then I verify that one of the following Permutations has been used every 6 subje
 	And I select Report "Targeted SDV Configuration"
 	And I set report parameter "Study" with table
 		| Name    | Environment |
-		| US18689_SJ | Dev         |
+		| US18689 | Dev         |
 	And I click button "Submit Report"
 	And I switch to "Targeted SDV Study Plan" window
 	And I select link "World"
