@@ -204,7 +204,7 @@ namespace Medidata.RBT.PageObjects.Rave
 
             var element = Browser.TryFindElementBy(By.XPath("//input[@title='" + identifier + "']"));
 
-            if (element == null)
+            if (element == null && areaIdentifier == "Display multiple log lines per page")
             {
                 element = FindCheckboxForLogForm(identifier);
             }
