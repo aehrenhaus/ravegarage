@@ -6,13 +6,15 @@ using TechTalk.SpecFlow;
 
 namespace Medidata.RBT
 {
-	public interface ICanVerifyExist: IPage
+	public interface IVerifyRowsExist
 	{
 
 		bool VerifyTableRowsExist(string tableIdentifier, Table matchTable);
 
-		bool VerifyControlExist(string identifier);
+	}
 
-		bool VerifyTextExist(string identifier, string text);
+	public interface IVerifySomethingExists 
+	{
+		bool VerifySomethingExist(string areaIdentifier, string type, string identifier);
 	}
 }

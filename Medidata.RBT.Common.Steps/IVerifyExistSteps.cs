@@ -25,7 +25,7 @@ namespace Medidata.RBT.Common.Steps
 		[StepDefinition(@"I verify rows exist in ""([^""]*)"" table")]
 		public void IVerifyRowsExistIn____Table(string tableIdentifier, Table matchTable)
 		{
-			bool allExist = CurrentPage.As<ICanVerifyExist>().VerifyTableRowsExist(tableIdentifier, matchTable);
+			bool allExist = CurrentPage.As<IVerifyRowsExist>().VerifyTableRowsExist(tableIdentifier, matchTable);
 			Assert.IsTrue(allExist,String.Format("Not all rows have been found in the table {0}", tableIdentifier));
 		}
 
@@ -38,7 +38,7 @@ namespace Medidata.RBT.Common.Steps
         public void IVerifyRowsExistInTable(Table matchTable)
         {
             SpecialStringHelper.ReplaceTableColumn(matchTable, "Subject");
-            bool result = CurrentPage.As<ICanVerifyExist>()
+            bool result = CurrentPage.As<IVerifyRowsExist>()
                 .VerifyTableRowsExist(null, matchTable);
             Assert.IsTrue(result, "Not all rows have been found in the table");
         }
@@ -51,7 +51,7 @@ namespace Medidata.RBT.Common.Steps
 		[StepDefinition(@"I verify control ""([^""]*)"" exists")]
 		public void IVerifyControl____Exist(string identifier)
 		{
-			bool exist = CurrentPage.As<ICanVerifyExist>().VerifyControlExist(identifier);
+			bool exist = CurrentPage.As<IVerifySomethingExists>().VerifySomethingExist(null,"control",identifier);
 			Assert.IsTrue(exist, String.Format("Control does not exist :{0}", identifier));
 		}
 
@@ -61,9 +61,9 @@ namespace Medidata.RBT.Common.Steps
 		/// <param name="text"></param>
 		/// <param name="identifier"></param>
 		[StepDefinition(@"I verify text ""([^""]*)"" exists in ""([^""]*)""")]
-		public void IVerifyText____ExistsIn____(string text, string identifier)
+		public void IVerifyText____ExistsIn____(string text, string areaIdentifier)
 		{
-			bool exist = CurrentPage.As<ICanVerifyExist>().VerifyTextExist(identifier,text);
+			bool exist = CurrentPage.As<IVerifySomethingExists>().VerifySomethingExist(areaIdentifier,"text",text);
 			Assert.IsTrue(exist, String.Format("Text does not exist :{0}", text));
 		}
 
@@ -74,7 +74,7 @@ namespace Medidata.RBT.Common.Steps
 		[StepDefinition(@"I verify text ""([^""]*)"" exists")]
 		public void IVerifyText____Exists(string text)
 		{
-			bool exist = CurrentPage.As<ICanVerifyExist>().VerifyTextExist(null, text);
+			bool exist = CurrentPage.As<IVerifySomethingExists>().VerifySomethingExist(null,"text",text);
 			Assert.IsTrue(exist, String.Format("Text does not exist :{0}", text));
 		}
 
@@ -85,7 +85,7 @@ namespace Medidata.RBT.Common.Steps
 		[StepDefinition(@"I verify text ""([^""]*)"" does not exist")]
 		public void IVerifyText____DoesNotExist(string text)
 		{
-			bool exist = CurrentPage.As<ICanVerifyExist>().VerifyTextExist(null, text);
+			bool exist = CurrentPage.As<IVerifySomethingExists>().VerifySomethingExist(null,"text",text);
 			Assert.IsFalse(exist, String.Format("Text does exist :{0}", text));
 		}
 
@@ -109,6 +109,20 @@ namespace Medidata.RBT.Common.Steps
 		{
 			IWebElement link = Browser.TryFindElementByLinkText(linkText);
 			Assert.IsNotNull(link, String.Format("Link does not exist :{0}", linkText));
+		}
+
+		[StepDefinition(@"I should see ""([^""]*)"" in ""([^""]*)""")]
+		public void IShouldSee____In____(string identifier,string areaIdentifer)
+		{
+			bool exist = CurrentPage.As<IVerifySomethingExists>().VerifySomethingExist(areaIdentifer, null, identifier);
+			Assert.IsFalse(exist, String.Format("Does exist :{0}", identifier));
+		}
+
+		[StepDefinition(@"I should see ""([^""]*)""")]
+		public void IShouldSee____(string identifier)
+		{
+			bool exist = CurrentPage.As<IVerifySomethingExists>().VerifySomethingExist(null, null, identifier);
+			Assert.IsFalse(exist, String.Format("Does exist :{0}", identifier));
 		}
 	}
 }

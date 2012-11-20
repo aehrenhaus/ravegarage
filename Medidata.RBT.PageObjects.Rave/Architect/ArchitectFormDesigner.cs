@@ -4,7 +4,7 @@ using Medidata.RBT.SeleniumExtension;
 using TechTalk.SpecFlow;
 namespace Medidata.RBT.PageObjects.Rave
 {
-	public class ArchitectFormDesignerPage : ArchitectBasePage, IActivatePage, ICanVerifyExist
+	public class ArchitectFormDesignerPage : ArchitectBasePage, IActivatePage, IVerifySomethingExists
 	{
 		#region IActivatePage
 
@@ -141,26 +141,16 @@ namespace Medidata.RBT.PageObjects.Rave
 			}
 		}
 
-		#region ICanVerifyExist
+		#region IVerifySomethingExists
 
-		public bool VerifyTableRowsExist(string tableIdentifier, Table matchTable)
+		bool IVerifySomethingExists.VerifySomethingExist(string areaIdentifier, string type, string identifier)
 		{
-			throw new NotImplementedException();
-		}
-
-		public bool VerifyControlExist(string identifier)
-		{
-			throw new NotImplementedException();
-		}
-
-		public bool VerifyTextExist(string identifier, string text)
-		{
-			if (identifier == null)
+			if (areaIdentifier == null)
 			{
-                if (Browser.FindElementByTagName("body").Text.Contains(text))
-                    return true;
-                else
-                    return false;
+				if (Browser.FindElementByTagName("body").Text.Contains(identifier))
+					return true;
+				else
+					return false;
 			}
 			throw new NotImplementedException();
 		}

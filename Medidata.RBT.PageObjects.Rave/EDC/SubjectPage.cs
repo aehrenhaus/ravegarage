@@ -11,7 +11,7 @@ using TechTalk.SpecFlow;
 
 namespace Medidata.RBT.PageObjects.Rave
 {
-    public class SubjectPage : BaseEDCPage, ICanVerifyInOrder, ICanVerifyExist, ITaskSummaryContainer
+    public class SubjectPage : BaseEDCPage, ICanVerifyInOrder, IVerifySomethingExists, ITaskSummaryContainer
 	{
 
         public IWebElement GetTaskSummaryArea(string header)
@@ -37,13 +37,6 @@ namespace Medidata.RBT.PageObjects.Rave
 			return this;
 		}
 
-        public override bool CanSeeTextInArea(string text, string areaName)
-        {
-            //TODO: this is just a simple version of finding text. Implement more useful version later
-            var TR = GetTaskSummaryArea(areaName);
-
-            return TR.Text.Contains(text);
-        }
 
 		public override IWebElement GetElementByName(string identifier, string areaIdentifier = null, string listItem = null)
 		{
@@ -168,67 +161,57 @@ namespace Medidata.RBT.PageObjects.Rave
 
 		#endregion
 
-		#region ICanVerifyExist
-		
-		public bool VerifyTableRowsExist(string tableIdentifier, Table matchTable)
-		{
-			throw new NotImplementedException();
-		}
-
         /// <summary>
         /// New method to be used to verify if a control exist
         /// for ex: I can see control xyz
         /// </summary>
         /// <param name="identifier"></param>
         /// <returns></returns>
-        public bool VerifyControlExist(string identifier) 
-        {
-            bool result = false;
-            IWebElement element;
-            switch (identifier)
-            {
-                case "Add Event is currently disabled for this subject.":
-                case "LAdd Event is currently disabled for this subject.":
-                case "Select 'Disabled' to not allow others to add events.":
-                case "Select 'Enabled' to allow others to add events.":
-                    {
-                        element = Browser.TryFindElementBy(
-                        By.XPath("//span[text()=\"" + identifier + "\"]"));
-                        result = element != null;
-                        break;
-                    }
-                default:
-                    {
-                        result = base.VerifyControlExist(identifier);
-                        break;
-                    }
-            }
-            return result; 
-        }
 
-		bool ICanVerifyExist.VerifyTextExist(string identifier, string text)
+
+		bool IVerifySomethingExists.VerifySomethingExist(string areaIdentifier,string type, string identifier)
 		{
-            bool result = false;
-            if (string.IsNullOrEmpty(identifier))
-            {
-                //We have to wait for this element in the situation where the text appears after 
-                //eSign window phases out.
-                Browser.TryFindElementByXPath(string.Format("//*[text()='{0}']",text));
-                result = base.VerifyTextExist(null, text);
-            }
-            else
-            {
-                //TODO: this is just a simple version of finding text. Implement more useful version later
-                var TR = GetTaskSummaryArea(identifier);
+			if (identifier == "Add Event lock icon")
+				return Browser.TryFindElementById("_ctl0_Content_SubjectAddEvent_DisableMatrixImage") == null;
 
-                result = TR.Text.Contains(text);
-            }
 
-            return result;
+			bool result = false;
+			IWebElement element;
+			switch (identifier)
+			{
+				case "Add Event is currently disabled for this subject.":
+				case "LAdd Event is currently disabled for this subject.":
+				case "Select 'Disabled' to not allow others to add events.":
+				case "Select 'Enabled' to allow others to add events.":
+					{
+						element = Browser.TryFindElementBy(
+						By.XPath("//span[text()=\"" + identifier + "\"]"));
+						result = element != null;
+						
+					}
+					break;
+				default:
+					{
+						if (string.IsNullOrEmpty(identifier))
+						{
+							//We have to wait for this element in the situation where the text appears after 
+							//eSign window phases out.
+							var ele = Browser.TryFindElementByXPath(string.Format("//*[text()='{0}']", identifier));
+							result = ele == null;
+						}
+						else
+						{
+							//TODO: this is just a simple version of finding text. Implement more useful version later
+							var TR = GetTaskSummaryArea(identifier);
+
+							result = TR != null;
+						}
+					}
+					break;
+			
+			}
+			return result; 
 		}
-
-		#endregion
-
 
         #region ITaskSummaryContainer
 

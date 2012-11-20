@@ -15,7 +15,7 @@ using Medidata.RBT.PageObjects.Rave.Configuration;
 
 namespace Medidata.RBT.PageObjects.Rave.Lab
 {
-    public class LabLoaderPage : LabPageBase, ICanVerifyExist
+	public class LabLoaderPage : LabPageBase, IVerifySomethingExists
     {
         public LabLoaderPage()
         {
@@ -73,17 +73,17 @@ namespace Medidata.RBT.PageObjects.Rave.Lab
             throw new NotImplementedException();
         }
 
-        public bool VerifyTextExist(string identifier, string text)
-        {
-            if (identifier == null)
-            {
-                if (Browser.PageSource.Contains(text))
-                    return true;
-                else
-                    return false;
-            }
-            throw new NotImplementedException();
-        }
+		bool IVerifySomethingExists.VerifySomethingExist(string areaIdentifier, string type, string identifier)
+		{
+			if (identifier == null)
+			{
+				if (Browser.PageSource.Contains(identifier))
+					return true;
+				else
+					return false;
+			}
+			throw new NotImplementedException();
+		}
 
         #endregion
     }

@@ -9,7 +9,7 @@ using TechTalk.SpecFlow;
 using Medidata.RBT.SeleniumExtension;
 namespace Medidata.RBT.PageObjects.Rave
 {
-    public class LabUnitDictionariesPage : LabPageBase, ICanVerifyExist
+    public class LabUnitDictionariesPage : LabPageBase, IVerifySomethingExists
     {
         
 
@@ -123,21 +123,11 @@ namespace Medidata.RBT.PageObjects.Rave
 
         #region ICanVerifyExist
 
-        public bool VerifyTableRowsExist(string tableIdentifier, Table matchTable)
+		bool IVerifySomethingExists.VerifySomethingExist(string areaIdentifier, string type,string identifier)
         {
-            throw new NotImplementedException();
-        }
-
-        public bool VerifyControlExist(string identifier)
-        {
-            throw new NotImplementedException();
-        }
-
-        public bool VerifyTextExist(string identifier, string text)
-        {
-            if (identifier == null)
+			if (areaIdentifier == null)
             {
-                if (Browser.FindElementByTagName("body").Text.Contains(text))
+				if (Browser.FindElementByTagName("body").Text.Contains(identifier))
                     return true;
                 else
                     return false;

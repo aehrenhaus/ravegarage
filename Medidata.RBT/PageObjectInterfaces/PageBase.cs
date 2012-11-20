@@ -349,10 +349,10 @@ namespace Medidata.RBT
         /// <summary>
         /// See IPage interface
         /// </summary>
-        public virtual bool CanSeeTextInArea(string text, string areaIdentifier)
-        {
-            throw new Exception("This page does not implement this method");
-        }
+		//public virtual bool CanSeeTextInArea(string text, string areaIdentifier)
+		//{
+		//    throw new Exception("This page does not implement this method");
+		//}
 
 
         public void SetFocusElement(IWebElement ele)

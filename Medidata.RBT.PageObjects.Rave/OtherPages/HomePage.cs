@@ -19,7 +19,7 @@ namespace Medidata.RBT.PageObjects.Rave
 	/// <summary>
 	/// Because HomePage is a all in one page. It also inherits from BaseEDCPage
 	/// </summary>
-	public class HomePage : BaseEDCPage, IHavePaginationControl, ICanHighlight, ICanVerifyExist, ICanVerifyInOrder, ITaskSummaryContainer
+	public class HomePage : BaseEDCPage, IHavePaginationControl, ICanHighlight, IVerifyRowsExist, ICanVerifyInOrder, ITaskSummaryContainer
 	{
 		[FindsBy(How = How.Id, Using = "_ctl0_Content_ListDisplayNavigation_txtSearch")]
 		IWebElement SearchBox;
@@ -161,24 +161,10 @@ namespace Medidata.RBT.PageObjects.Rave
 		#endregion
 
 
-		#region ICanVerifyExist
-
-		public bool VerifyTableRowsExist(string tableIdentifier, Table matchTable)
+		bool IVerifyRowsExist.VerifyTableRowsExist(string tableIdentifier, Table matchTable)
 		{
 			return this.VerifyTableRowsExist_Default(tableIdentifier, matchTable);
 		}
-
-		public bool VerifyControlExist(string identifier)
-		{
-			throw new NotImplementedException();
-		}
-
-		public bool VerifyTextExist(string identifier, string text)
-		{
-			throw new NotImplementedException();
-		}
-
-		#endregion
 
 		#region ICanVerifyInOrder
 

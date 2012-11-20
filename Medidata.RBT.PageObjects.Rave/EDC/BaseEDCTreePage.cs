@@ -8,7 +8,7 @@ using Medidata.RBT.PageObjects.Rave.SharedRaveObjects;
 
 namespace Medidata.RBT.PageObjects.Rave
 {
-	public abstract class BaseEDCPage : RavePageBase, ICanVerifyExist
+	public abstract class BaseEDCPage : RavePageBase, IVerifySomethingExists
 	{
 		public virtual IEDCFieldControl FindField(string fieldName)
 		{
@@ -105,44 +105,38 @@ namespace Medidata.RBT.PageObjects.Rave
             return this;
         }
 
-        #region ICanVerifyExist
+		#region IVerifySomethingExists
 
-        public bool VerifyTableRowsExist(string tableIdentifier, Table matchTable)
-        {
-            throw new NotImplementedException();
-        }
 
-        public bool VerifyControlExist(string identifier)
-        {
-            IWebElement result = null;
-            switch (identifier)
-            {
-                case "Sign and Save":
-                    result = Browser.TryFindElementBy(
-                        By.XPath("//button[text()='" + identifier + "']"));
-                    break;
-                //Add additional cases here
-                default:
-                    result = GetElementByName(identifier);
-                    break;
-            }
 
-            return result != null;
-        }
+		bool IVerifySomethingExists.VerifySomethingExist(string areaIdentifier, string type, string identifier)
+		{
+			IWebElement result = null;
+			switch (identifier)
+			{
+				case "Sign and Save":
+					result = Browser.TryFindElementBy(
+						By.XPath("//button[text()='" + identifier + "']"));
+					break;
+				//Add additional cases here
+				default:
+					result = GetElementByName(identifier);
+					break;
+			}
 
-        public bool VerifyTextExist(string identifier, string text)
-        {
-            if (identifier == null)
-            {
-                if (Browser.FindElementByTagName("body").Text.Contains(text))
-                    return true;
-                else
-                    return false;
-            }
-            throw new NotImplementedException();
-        }
+			return result != null;
 
-        public IPage ClickAuditOnFormLevel()
+			if (areaIdentifier == null)
+			{
+				if (Browser.FindElementByTagName("body").Text.Contains(identifier))
+					return true;
+				else
+					return false;
+			}
+			throw new NotImplementedException();
+		}
+
+		public IPage ClickAuditOnFormLevel()
         {
             IWebElement element = Browser.TryFindElementById("_ctl0_Content_CRFRenderer_header_SG_DataStatusHyperlink");
             if (element != null)

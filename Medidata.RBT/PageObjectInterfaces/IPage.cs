@@ -104,13 +104,6 @@ namespace Medidata.RBT
 		/// </summary>
 		IPage ChooseFromRadiobuttons(string areaIdentifier, string identifier);
 
-        /// <summary>
-        /// Example scenario: Can I see 'Medidata' in the 'Header area'?
-        /// </summary>
-        /// <param name="text"></param>
-        /// <param name="areaIdentifier"></param>
-        /// <returns></returns>
-        bool CanSeeTextInArea(string text, string areaIdentifier);
 
 		/// <summary>
 		/// NavigateTo() is abstract compares to ClickLink() which clicks on a concrete link text

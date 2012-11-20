@@ -1085,7 +1085,7 @@ Unlocking "All" in the subject grid view page enables the Add Event feature.
 	And I take a screenshot
 	Then I can see "disabled" dropdown labeled "Add Event"
 	And I can not see "Add" button
-	And I can see Add Event lock icon
+	And I should see "Add Event lock icon"
 	And I can see link "Add Event is currently disabled for this subject."
 	And I take a screenshot
 	And I check "Lock" in "Subject level"

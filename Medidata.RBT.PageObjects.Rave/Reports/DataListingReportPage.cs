@@ -13,7 +13,7 @@ using Medidata.RBT.SeleniumExtension;
 
 namespace Medidata.RBT.PageObjects.Rave
 {
-    public class DataListingReportPage : RavePageBase, ICanVerifyExist, ICanPaginate, ICanHighlight
+    public class DataListingReportPage : RavePageBase, IVerifyRowsExist, ICanPaginate, ICanHighlight
 	{
 		public override IWebElement GetElementByName(string identifier, string areaIdentifier = null, string listItem = null)
 		{
@@ -39,21 +39,13 @@ namespace Medidata.RBT.PageObjects.Rave
 
 
         #region ICanVerifyExist
-        public bool VerifyTableRowsExist(string tableIdentifier, Table matchTable)
-        {
-            SpecialStringHelper.ReplaceTableColumn(matchTable, "Subject");
-            return this.VerifyTableRowsExist_Default(tableIdentifier, matchTable);
-        }
 
-        public bool VerifyControlExist(string identifier)
-        {
-            throw new NotImplementedException();
-        }
-
-        public bool VerifyTextExist(string identifier, string text)
-        {
-            throw new NotImplementedException();
-        }
+		bool IVerifyRowsExist.VerifyTableRowsExist(string tableIdentifier, Table matchTable)
+		{
+			SpecialStringHelper.ReplaceTableColumn(matchTable, "Subject");
+			return this.VerifyTableRowsExist_Default(tableIdentifier, matchTable);
+		}
+      
         #endregion ICanVerifyExist
 
        
@@ -123,6 +115,8 @@ namespace Medidata.RBT.PageObjects.Rave
             }
         }
         #endregion ICanPaginate
-    }
+
+
+	}
 }
 

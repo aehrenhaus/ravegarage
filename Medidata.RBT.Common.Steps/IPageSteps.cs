@@ -186,18 +186,7 @@ namespace Medidata.RBT.Common.Steps
 			CurrentPage.Type(identifier, text);
 		}
 
-		/// <summary>
-		/// Assert something (eg. text) exist in an area
-		/// </summary>
-		/// <param name="text"></param>
-		/// <param name="areaName"></param>
-        [StepDefinition(@"I should see ""([^""]*)"" in ""([^""]*)""")]
-		public void IShouldSee____In____(string text, string areaName)
-		{
-			text = SpecialStringHelper.Replace(text);
-			var cansee = CurrentPage.CanSeeTextInArea(text,areaName);
-			Assert.IsTrue(cansee, "Can't see {0} in {1}",text,areaName);
-		}
+
 
 		/// <summary>
 		/// Simulates the key stroke to the browser

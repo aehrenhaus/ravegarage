@@ -12,7 +12,7 @@ using Medidata.RBT.PageObjects.Rave.SharedRaveObjects;
 
 namespace Medidata.RBT.PageObjects.Rave
 {
-	public abstract class BlockPlansPageBase : RavePageBase, ICanVerifyExist
+	public abstract class BlockPlansPageBase : RavePageBase, IVerifySomethingExists
     {
 		public override IWebElement GetElementByName(string identifier, string areaIdentifier = null, string listItem = null)
 		{
@@ -174,21 +174,14 @@ namespace Medidata.RBT.PageObjects.Rave
 
 
 		#region VerifyExist
-		public bool VerifyTableRowsExist(string tableIdentifier, Table matchTable)
-		{
-			throw new NotImplementedException();
-		}
 
-		public bool VerifyControlExist(string identifier)
-		{
-			throw new NotImplementedException();
-		}
-
-		public bool VerifyTextExist(string identifier, string text)
+		bool IVerifySomethingExists.VerifySomethingExist(string areaIdentifier, string type, string identifier)
 		{
 			var area = Browser.TryFindElementById("_ctl0_Content__ctl0_dgProjectBlockPlan");
-			return area.Text.Contains(text);
+			return area.Text.Contains(identifier);
 		}
+
+
 
 		#endregion
 	}

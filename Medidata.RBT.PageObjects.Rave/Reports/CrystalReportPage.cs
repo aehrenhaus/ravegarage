@@ -14,8 +14,8 @@ using TechTalk.SpecFlow.Assist;
 
 namespace Medidata.RBT.PageObjects.Rave
 {
-    public class CrystalReportPage 
-        : RavePageBase, ICanPaginate, ICanVerifyExist
+    public class CrystalReportPage
+		: RavePageBase, ICanPaginate, IVerifyRowsExist
 	{
         public CrystalReportPage() { }
         
@@ -529,26 +529,15 @@ namespace Medidata.RBT.PageObjects.Rave
             return result;
         }
 
-        #region ICanVerifyExist
-        public bool VerifyTableRowsExist(string tableIdentifier, Table table)
+        bool IVerifyRowsExist.VerifyTableRowsExist(string tableIdentifier, Table matchTable)
         {
-            var result = true;
-            var args = table.CreateSet<QueryAuditReportSearchModel>();
-            foreach (var arg in args)
-                result &= this.VerifyTableRowsExist(arg);
+			var result = true;
+			var args = matchTable.CreateSet<QueryAuditReportSearchModel>();
+			foreach (var arg in args)
+				result &= this.VerifyTableRowsExist(arg);
 
-            return result;
+			return result;
         }
 
-        public bool VerifyControlExist(string identifier)
-        {
-            throw new NotImplementedException();
-        }
-
-        public bool VerifyTextExist(string identifier, string text)
-        {
-            throw new NotImplementedException();
-        }
-        #endregion
     }
 }

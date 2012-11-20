@@ -70,7 +70,7 @@ namespace Medidata.RBT
 		
 		}
 
-		public static bool VerifyTableRowsExist_Default(this ICanVerifyExist page, string tableIdentifier, Table matchTable)
+		public static bool VerifyTableRowsExist_Default(this IVerifyRowsExist page, string tableIdentifier, Table matchTable)
 		{
 			ICanPaginate ppage = page as ICanPaginate;
 			ICanHighlight hpage = page as ICanHighlight;
@@ -79,7 +79,7 @@ namespace Medidata.RBT
 			//defines  the Func that searchs the current page.
 			Func<IWebElement> searchOnPage = () =>
 			{
-				HtmlTable htmlTable = page.GetElementByName(tableIdentifier).EnhanceAs<HtmlTable>();
+				HtmlTable htmlTable = (page as IPage).GetElementByName(tableIdentifier).EnhanceAs<HtmlTable>();
 				var matchTRs = htmlTable.FindMatchRows(matchTable);
 				totalMatchCount += matchTRs.Count;
 

@@ -14,7 +14,7 @@ using TechTalk.SpecFlow.Assist;
 
 namespace Medidata.RBT.PageObjects.Rave
 {
-    public class FileRequestPage : RavePageBase, ICanPaginate, ICanVerifyExist
+    public class FileRequestPage : RavePageBase, ICanPaginate, IVerifyRowsExist,IVerifySomethingExists
     {
         /// <summary>
         /// Create a new data pdf file request
@@ -238,43 +238,40 @@ namespace Medidata.RBT.PageObjects.Rave
             Browser.TryFindElementByPartialID("CombineLogLinesFrms_div");
         }
 
-        public bool VerifyTableRowsExist(string tableIdentifier, Table matchTable)
-        {
-            bool allExists = false;
-            if (tableIdentifier == "Display multiple log lines per page")
-            {
-                IEnumerable<FormModel> forms = matchTable.CreateSet<FormModel>();
+     
 
-                foreach (FormModel fm in forms)
-                {
-                    allExists = VerifyDisplayLogLinesFormExist(fm.Form, fm.Checked);
-                    if (!allExists)
-                        break;
-                }
+		bool IVerifyRowsExist.VerifyTableRowsExist(string tableIdentifier, Table matchTable)
+		{
+			bool allExists = false;
+			if (tableIdentifier == "Display multiple log lines per page")
+			{
+				IEnumerable<FormModel> forms = matchTable.CreateSet<FormModel>();
 
-                return allExists;
-            }
-            throw new NotImplementedException();
-        }
+				foreach (FormModel fm in forms)
+				{
+					allExists = VerifyDisplayLogLinesFormExist(fm.Form, fm.Checked);
+					if (!allExists)
+						break;
+				}
 
-        public bool VerifyControlExist(string identifier)
-        {
-            throw new NotImplementedException();
-        }
+				return allExists;
+			}
+			throw new NotImplementedException();
+		}
 
-        public bool VerifyTextExist(string identifier, string text)
-        {
-            if (identifier == null)
-            {
-                if (Browser.FindElementByTagName("body").Text.Contains(text))
-                    return true;
-                else
-                    return false;
-            }
-            throw new NotImplementedException();
-        }
+		bool IVerifySomethingExists.VerifySomethingExist(string areaIdentifier, string type, string identifier)
+		{
+			if (areaIdentifier == null)
+			{
+				if (Browser.FindElementByTagName("body").Text.Contains(identifier))
+					return true;
+				else
+					return false;
+			}
+			throw new NotImplementedException();
+		}
 
-        #region helper methods
+	    #region helper methods
         private bool VerifyDisplayLogLinesFormExist(string formName, bool? isChecked)
         {
             DisplayMultipleLogLinesControl disMulLLcontrol = new DisplayMultipleLogLinesControl(this);
