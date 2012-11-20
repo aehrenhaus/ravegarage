@@ -1,5 +1,5 @@
 ﻿# If there is a datapoint which currently has a value in it that is outside the normal ranges, and therefore has a clinical significance prompt or value, re-submitting the datapoint to have a ND code will not remove clinical significance prompts.
-@ignore
+
 Feature: US12999_DT13977 
 	If Datapoint with Clinical Significance is edited again to be a ND code, Clinical Significance does not get removed
 	As a Rave user
@@ -9,25 +9,33 @@ Feature: US12999_DT13977
 	Then I should not see the clinical significance information
 
 Background:
-    Given I login to Rave with user "defuser" and password "password"
+Given xml draft "US12999_DT13977.xml" is Uploaded
+Given study "US12999_DT13977" is assigned to Site "Site 1"
+Given following Project assignments exist
+| User         | Project         | Environment | Role         | Site   | SecurityRole          |
+| SUPER USER 1 | US12999_DT13977 | Live: Prod  | SUPER ROLE 1 | Site 1 | Project Admin Default |
+Given I publish and push eCRF "US17446_SJ.xml" to "Version 1"
+
+#    Given I am logged in to Rave with username "defuser" and password "password"
 #	And following Project assignments exist
 #	|User	 |Project	    	|Environment	|Role |Site	  |Site Number	|
-#	|defuser |US12999_DT13977_SJ|Prod			|cdm1 |Site 1 |S100			|
+#	|defuser |US12999_DT13977|Prod			|cdm1 |Site 1 |S100			|
 #    And Role "cdm1" has Action "Query"
 #	And Role "cdm1" has Missing Code "ND"
-#	And Project "US12999_DT13977_SJ" has Draft "<Draft1>"
+#	And Project "US12999_DT13977" has Draft "<Draft1>"
 #	And I publish and push CRF Version "CRF Version<RANDOMNUMBER>" of Draft "<Draft1>" to site "Site 1" in Project "DT13977 SJ " for Enviroment "Prod"
 #	And the Local Lab "US15417_DT13905_LocalLab" exists
 #	And the following Lab assignment exists
 #	|Project	        |Environment	|Site	|Lab				     |
-#	|US12999_DT13977_SJ |Prod			|Site 1	|US15417_DT13905_LocalLab|
+#	|US12999_DT13977 |Prod			|Site 1	|US15417_DT13905_LocalLab|
 #	And Lab analyte fields should have "Prompt for Clinical Significance" checked in Architect
-	And I select Study "US12999_DT13977_SJ" and Site "Site 1"	
+	#And I select Study "US12999_DT13977" and Site "Site 1"	
 
 @release_2012.1.0 		
 @PB-DT13977-01
 @Validation
 Scenario: @PB-DT13977-01 As an EDC user, when I change an out of range value to be a missing code, then I should still see the clinical significance information.
+	Given I login to Rave with user "SUPER USER 1"
 	When I create a Subject
 	| Field            | Data               |
 	| Subject Initials | SUB                |
