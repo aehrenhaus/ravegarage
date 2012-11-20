@@ -86,5 +86,15 @@ namespace Medidata.RBT.SeleniumExtension
 
 			IWebDriver window = driver.SwitchTo().Window(secondWindowHandle); ;
 		}
+
+		/// <summary>
+		/// Get the alert reference inorder to click yes, no etc.
+		/// </summary>
+		/// <returns></returns>
+		public static IAlert GetAlertWindow(this RemoteWebDriver driver)
+		{
+			IAlert alert = driver.SwitchTo().Alert();
+			return alert;
+		}
 	}
 }

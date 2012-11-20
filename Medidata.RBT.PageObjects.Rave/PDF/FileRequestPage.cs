@@ -73,7 +73,7 @@ namespace Medidata.RBT.PageObjects.Rave
 
             genButton.Click();
             Thread.Sleep(1000);
-            GetAlertWindow().Accept();
+			Browser.GetAlertWindow().Accept();
             return this;
         }
 

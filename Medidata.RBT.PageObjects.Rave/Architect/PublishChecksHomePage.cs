@@ -63,7 +63,7 @@ namespace Medidata.RBT.PageObjects.Rave
 
                 try
                 {
-                    this.GetAlertWindow().Accept();
+					Browser.GetAlertWindow().Accept();
                 }
                 catch { }
 

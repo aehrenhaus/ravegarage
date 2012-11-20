@@ -34,7 +34,7 @@ namespace Medidata.RBT.PageObjects.Rave
             if (elem != null)
             {
                 elem.Click();
-                TestContext.CurrentPage.As<PageBase>().GetAlertWindow().Accept();
+				Browser.GetAlertWindow().Accept();
             }
             return this;
         }
@@ -45,7 +45,7 @@ namespace Medidata.RBT.PageObjects.Rave
             if (elem != null)
             {
                 elem.Click();
-                TestContext.CurrentPage.As<PageBase>().GetAlertWindow().Accept();
+				Browser.GetAlertWindow().Accept();
             }
             return this;
         }
@@ -116,7 +116,7 @@ namespace Medidata.RBT.PageObjects.Rave
 					if (delButton != null)
 					{
 						delButton.Click();
-						TestContext.CurrentPage.As<PageBase>().GetAlertWindow().Accept();
+						Browser.GetAlertWindow().Accept();
 					}
 				}
 			}

@@ -42,7 +42,7 @@ namespace Medidata.RBT.PageObjects.Rave
                 EnhancedElement deleteButton = pdfTr.FindImagebuttons().FirstOrDefault(x => x.GetAttribute("id").EndsWith("Delete"));
 
                 deleteButton.Click();
-                ((FileRequestViewPage)Page).GetAlertWindow().Accept();
+				Page.Browser.GetAlertWindow().Accept();
             }
         }
 

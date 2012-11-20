@@ -62,7 +62,7 @@ namespace Medidata.RBT.Common.Steps
         [StepDefinition(@"I accept alert window")]
         public void IAcceptAlertWindow()
         {
-			CurrentPage.As<PageBase>().GetAlertWindow().Accept();
+			Browser.GetAlertWindow().Accept();
 			CurrentPage = TestContext.POFactory.GetPageByUrl(new Uri(Browser.Url));
         }
 
@@ -72,7 +72,7 @@ namespace Medidata.RBT.Common.Steps
         [StepDefinition(@"I dismiss alert window")]
         public void IDismissAlertWindow()
         {
-			CurrentPage.As<PageBase>().GetAlertWindow().Dismiss();
+			Browser.GetAlertWindow().Dismiss();
 			CurrentPage = TestContext.POFactory.GetPageByUrl(new Uri(Browser.Url));
         }
 

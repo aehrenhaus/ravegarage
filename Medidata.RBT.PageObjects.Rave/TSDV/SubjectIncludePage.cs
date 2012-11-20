@@ -33,7 +33,7 @@ namespace Medidata.RBT.PageObjects.Rave
                 }
             }
             this.ClickSpanLink("Include Subjects");
-            this.GetAlertWindow().Accept();
+			Browser.GetAlertWindow().Accept();
             return this;
         }
 	}

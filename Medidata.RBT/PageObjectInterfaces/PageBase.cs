@@ -151,7 +151,7 @@ namespace Medidata.RBT
 				
 			try
 			{
-				var alert = this.GetAlertWindow();
+				var alert = Browser.GetAlertWindow();
 			}
 			catch
 			{
@@ -177,24 +177,6 @@ namespace Medidata.RBT
 
             throw new Exception("Don't know how to navigate to "+identifier);
         }
-
-        private IWebElement TryFindElement(string identifier, string areaIdentifier = null)
-		{
-            var ele = Browser.TryFindElementById(identifier,false);
-            if (ele == null)
-                ele = TryGetElementByName(identifier, areaIdentifier);
-
-            if (ele == null)
-                ele = Browser.TryFindElementByPartialID(identifier, false);
-            if (ele == null)
-            {
-                ele = Browser.TryFindElementById(identifier, true);
-
-                if (ele == null)
-                    ele = Browser.TryFindElementByPartialID(identifier, true);
-            }
-            return ele;
-		}
 
 		/// <summary>
 		/// See IPage interface
@@ -329,7 +311,8 @@ namespace Medidata.RBT
 			throw new Exception(string.Format("This page ({0}) does not provide information about element: {1}", this.GetType().Name, identifier));
 		}
 
-		public virtual IWebElement TryGetElementByName(string identifier, string areaIdentifier = null, string listItemIdentifier = null)
+		//Don't make this virtual , override GetElementByName in base classes
+		public IWebElement TryGetElementByName(string identifier, string areaIdentifier = null, string listItemIdentifier = null)
 		{
 			IWebElement ele = null;
 			try
@@ -344,6 +327,24 @@ namespace Medidata.RBT
 
         #endregion
 
+		//Don't make this public. This method is only a lines saver inside PageBase
+		private IWebElement TryFindElement(string identifier, string areaIdentifier = null)
+		{
+			var ele = Browser.TryFindElementById(identifier, false);
+			if (ele == null)
+				ele = TryGetElementByName(identifier, areaIdentifier);
+
+			if (ele == null)
+				ele = Browser.TryFindElementByPartialID(identifier, false);
+			if (ele == null)
+			{
+				ele = Browser.TryFindElementById(identifier, true);
+
+				if (ele == null)
+					ele = Browser.TryFindElementByPartialID(identifier, true);
+			}
+			return ele;
+		}
 
         /// <summary>
         /// See IPage interface
@@ -351,16 +352,6 @@ namespace Medidata.RBT
         public virtual bool CanSeeTextInArea(string text, string areaIdentifier)
         {
             throw new Exception("This page does not implement this method");
-        }
-
-        /// <summary>
-        /// Get the alert reference inorder to click yes, no etc.
-        /// </summary>
-        /// <returns></returns>
-        public IAlert GetAlertWindow()
-        {
-            IAlert alert = Browser.SwitchTo().Alert();
-            return alert;
         }
 
 
