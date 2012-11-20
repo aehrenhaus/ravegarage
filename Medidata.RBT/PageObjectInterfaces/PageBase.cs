@@ -149,7 +149,9 @@ namespace Medidata.RBT
 		{
 			//if a model dialog presents, then Browser.Url will throw error
 			//In this case there are usually more step the handle the situaltion, like accept or dismiss the dialog first.
-				
+
+			 var wait = new WebDriverWait(Browser, TimeSpan.FromSeconds(SeleniumConfiguration.Default.WaitElementTimeout));
+			 wait.Until(driver1 => ((IJavaScriptExecutor)Browser).ExecuteScript("return document.readyState").Equals("complete"));
 			try
 			{
 				var alert = Browser.GetAlertWindow();
