@@ -18,11 +18,11 @@ namespace Medidata.RBT.SeleniumExtension
         /// This is a bit of a hack to use web driver wait to wait a controlled amount for the page to load.
         /// </summary>
         /// <param name="context">The browser CurrentPage's browser instance</param>
-        /// <param name="urlCheckMethod">A method to check that the URL is the correct page</param>
+        /// <param name="pageCheckMethod">A method to check that the URL is the correct page</param>
         /// <returns></returns>
-        public static IWebElement CheckURLIsCorrect(this ISearchContext context, Func<IWebDriver, IWebElement> urlCheckMethod)
+        public static IWebElement CheckURLIsCorrect(this ISearchContext context, Func<IWebDriver, IWebElement> pageCheckMethod)
         {
-            return waitForElement(context, urlCheckMethod, "Page Mismatch", 20);
+            return waitForElement(context, pageCheckMethod, "Page Mismatch", 20);
         }
 	}
 }

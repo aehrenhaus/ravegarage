@@ -66,10 +66,10 @@ namespace Medidata.RBT
                 IPage currentpage = TestContext.CurrentPage as TPage as IPage;
                 if (currentpage == null)
                 {
-                    IWebElement fakeEle = TestContext.Browser.CheckURLIsCorrect(b => CheckCurrentPage(TestContext.CurrentPage.URL));
+                    IWebElement fakeEle = TestContext.Browser.CheckURLIsCorrect(b => CheckCurrentPage<TPage>(Browser));
 
                     if(fakeEle != null)
-                        currentpage = TestContext.CurrentPage as TPage as IPage;
+                        currentpage = TestContext.POFactory.GetPageByUrl(new Uri(Browser.Url)) as TPage as IPage;
                     else
 					    throw new Exception("Expect current page to be " + typeof(TPage).Name + ", but it's " + (TestContext.CurrentPage==null?"null":TestContext.CurrentPage.GetType().Name));
                 }
@@ -83,13 +83,14 @@ namespace Medidata.RBT
         /// </summary>
         /// <param name="expectedPageUrl">The url of the page we expect to be here</param>
         /// <returns>Returns an empty textbox if the page matches the expected page, a null if the page doesn't</returns>
-        private static IWebElement CheckCurrentPage(string expectedPageUrl)
+        private static IWebElement CheckCurrentPage<TPage>(RemoteWebDriver pageBaseBrowser) where TPage : class
         {
-            IPage currentPage = TestContext.POFactory.GetPageByUrl(new Uri(TestContext.Browser.Url)) as IPage;
-            if (currentPage.URL == expectedPageUrl)
+            TestContext.CurrentPage = TestContext.POFactory.GetPageByUrl(new Uri(pageBaseBrowser.Url));
+            IPage currentpage = TestContext.CurrentPage as TPage as IPage;
+
+            if (currentpage is TPage)
                 return new Textbox();
-            else
-                return null;
+            return null;
         }
 
 		/// <summary>
