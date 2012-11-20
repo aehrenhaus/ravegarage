@@ -13,20 +13,20 @@ Background:
 	Given xml draft "US18689.xml" is Uploaded with Environment name "Dev"
 
 	Given Site "Site 1" with Site Group "Asia" exists
-	#Given Site "Site 2" with Site Group "Europe" exists
-	#Given Site "Site 3" with Site Group "World" exists
-	#Given Site "Site 4" with Site Group "North America" exists
+	Given Site "Site 2" with Site Group "Europe" exists
+	Given Site "Site 3" with Site Group "World" exists
+	Given Site "Site 4" with Site Group "North America" exists
 	Given study "US18689" is assigned to Site "Site 1" with study environment "Aux: Dev"
-	#Given study "US18689" is assigned to Site "Site 2" with study environment "Aux: Dev"
-	#Given study "US18689" is assigned to Site "Site 3" with study environment "Aux: Dev"
-	#Given study "US18689" is assigned to Site "Site 4" with study environment "Aux: Dev"
+	Given study "US18689" is assigned to Site "Site 2" with study environment "Aux: Dev"
+	Given study "US18689" is assigned to Site "Site 3" with study environment "Aux: Dev"
+	Given study "US18689" is assigned to Site "Site 4" with study environment "Aux: Dev"
 	Given I publish and push eCRF "US18689.xml" to "Version 1" with study environment "Dev"
 	Given following Project assignments exist
 	| User         | Project    | Environment | Role         | Site   | SecurityRole          | 
 	| SUPER USER 1 | US18689 | Aux: Dev    | SUPER ROLE 1 | Site 1 | Project Admin Default | 
-	#| SUPER USER 1 | US18689 | Aux: Dev    | SUPER ROLE 1 | Site 2 | Project Admin Default | 
-	#| SUPER USER 1 | US18689 | Aux: Dev    | SUPER ROLE 1 | Site 3 | Project Admin Default | 
-	#| SUPER USER 1 | US18689 | Aux: Dev    | SUPER ROLE 1 | Site 4 | Project Admin Default | 
+	| SUPER USER 1 | US18689 | Aux: Dev    | SUPER ROLE 1 | Site 2 | Project Admin Default | 
+	| SUPER USER 1 | US18689 | Aux: Dev    | SUPER ROLE 1 | Site 3 | Project Admin Default | 
+	| SUPER USER 1 | US18689 | Aux: Dev    | SUPER ROLE 1 | Site 4 | Project Admin Default | 
 	Given following Report assignments exist
 	| User         | Report                                                           |
 	| SUPER USER 1 | Targeted SDV Configuration - Targeted SDV Configuration          |

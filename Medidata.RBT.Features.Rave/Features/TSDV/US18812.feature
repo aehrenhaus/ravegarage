@@ -1,6 +1,6 @@
 ﻿# When a user selects  Dynamic Allocation Randomization Block algorithm , subject assignment satisfies a specified allocation and ratio is random for all blocks.
 @EnableSeeding=true
-@SuppressSeeding=Site,SiteGroup,Role,User,SecurityRole
+@SuppressSeeding=Site,SiteGroup,Role,SecurityRole
 #SecurityRole
 @ignore
 Feature: US18812
@@ -174,9 +174,9 @@ Scenario: @PB_US18812_01 Enroll 50 subjects in a study to verify that TSDV has r
 	And I select the tier "Custom Tier 7" and Subject Count "1"
 	And I activate the plan
 	And I switch to "Reports" window
-	And I select link "Home"
+	And I navigate to "Home"
 	And I create 50 random Subjects with name "ABB" in Study "US18812" in Site "Site 1"
-	And I select link "Home"
+	And I navigate to "Home"
 	And I navigate to "Reporter"
 	And I select Report "Targeted SDV Subject Management"
 	And I set report parameter "Study" with table
@@ -238,7 +238,7 @@ Scenario: @PB_US18812_01 Enroll 50 subjects in a study to verify that TSDV has r
 		| Custom Tier 7     | 50  |
 	And I verify every 10 rows of subjects in 50 rows do not have tiers pattern
 	And I switch to "Reports" window
-	And I select link "Home"
+	And I navigate to "Home"
 	And I navigate to "Reporter"
 	And I select Report "Targeted SDV Configuration"
 	And I set report parameter "Study" with table
@@ -266,9 +266,9 @@ Scenario: @PB_US18812_01 Enroll 50 subjects in a study to verify that TSDV has r
 	And I select the tier "Custom Tier 7" and Subject Count "1"
 	And I activate the plan
 	And I switch to "Reports" window
-	And I select link "Home"
+	And I navigate to "Home"
 	And I create 50 random Subjects with name "BBC" in Study "US18812" in Site "Site 2"
-	And I select link "Home"
+	And I navigate to "Home"
 	And I navigate to "Reporter"
 	And I select Report "Targeted SDV Subject Management"
 	And I set report parameter "Study" with table
@@ -381,7 +381,7 @@ Scenario: @PB_US18812_01 Enroll 50 subjects in a study to verify that TSDV has r
 		| Custom Tier 7     | 100 |
 	And I verify every 10 rows of subjects in 100 rows do not have tiers pattern
 	And I switch to "Reports" window
-	And I select link "Home"
+	And I navigate to "Home"
 	And I navigate to "Reporter"
 	And I select Report "Targeted SDV Configuration"
 	And I set report parameter "Study" with table
@@ -410,9 +410,9 @@ Scenario: @PB_US18812_01 Enroll 50 subjects in a study to verify that TSDV has r
 	And I select the tier "Custom Tier 7" and Subject Count "1"
 	And I activate the plan
 	And I switch to "Reports" window
-	And I select link "Home"
+	And I navigate to "Home"
 	And I create 50 random Subjects with name "CCD" in Study "US18812" in Site "Site 3"
-	And I select link "Home"
+	And I navigate to "Home"
 	And I navigate to "Reporter"
 	And I select Report "Targeted SDV Subject Management"
 	And I set report parameter "Study" with table
@@ -475,7 +475,7 @@ Scenario: @PB_US18812_01 Enroll 50 subjects in a study to verify that TSDV has r
 		| Custom Tier 7     | 50  |
 	And I verify every 10 rows of subjects in 50 rows do not have tiers pattern
 	And I switch to "Reports" window
-	And I select link "Home"
+	And I navigate to "Home"
 	And I navigate to "Reporter"
 	And I select Report "Targeted SDV Configuration"
 	And I set report parameter "Study" with table
