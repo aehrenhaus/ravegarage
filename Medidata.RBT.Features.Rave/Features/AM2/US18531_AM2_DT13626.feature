@@ -1,5 +1,4 @@
 #DT13626: Amendment Manager inserts duplicate log records for soft deleted datapages. Soft deleting can be done by adding and removing objects with a merge matrix edit check, a script or a custom function.
-@ignore
 Feature: When objects are added and then removed by an edit check with a merge matrix check action, duplicate records should not show up in the database after migration.
 
 Background: 
