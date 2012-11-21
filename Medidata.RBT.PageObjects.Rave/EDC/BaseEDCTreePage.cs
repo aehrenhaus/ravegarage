@@ -107,25 +107,26 @@ namespace Medidata.RBT.PageObjects.Rave
 
 		#region IVerifySomethingExists
 
-
-
-		bool IVerifySomethingExists.VerifySomethingExist(string areaIdentifier, string type, string identifier)
-		{
-            if (areaIdentifier == null && Browser.FindElementByTagName("body").Text.Contains(identifier))
+		public bool VerifySomethingExist(string areaIdentifier, string type, string identifier)
+		{        
+            if (areaIdentifier == null
+                && Browser.FindElementByTagName("body").Text.Contains(identifier))
+            {
                 return true;
+            }
 
-			IWebElement result = null;
-			switch (identifier)
-			{
-				case "Sign and Save":
-					result = Browser.TryFindElementBy(
-						By.XPath("//button[text()='" + identifier + "']"));
-					break;
-				//Add additional cases here
-				default:
-					result = GetElementByName(identifier);
-					break;
-			}
+            IWebElement result = null;
+            switch (identifier)
+            {
+                case "Sign and Save":
+                    result = Browser.TryFindElementBy(
+                        By.XPath("//button[text()='" + identifier + "']"));
+                    break;
+                //Add additional cases here
+                default:
+                    result = GetElementByName(identifier);
+                    break;
+            }
 
             return result != null;
 		}

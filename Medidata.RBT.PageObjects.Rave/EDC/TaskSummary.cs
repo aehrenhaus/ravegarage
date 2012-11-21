@@ -16,8 +16,7 @@ namespace Medidata.RBT.PageObjects.Rave
             : base(page)
         {
             _rootElement = base.Page.Browser.TryFindElementBy(
-                By.XPath("//span[@id='_ctl0_Content_TsBox_CBoxC']/../../../../.."),true,
-                timeOutSecond: 10);
+                By.XPath("//span[@id='_ctl0_Content_TsBox_CBoxC']/../../../../.."));
         }
 
         private bool IsExpanded

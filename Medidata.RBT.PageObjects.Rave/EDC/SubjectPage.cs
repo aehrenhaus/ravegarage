@@ -167,13 +167,10 @@ namespace Medidata.RBT.PageObjects.Rave
         /// </summary>
         /// <param name="identifier"></param>
         /// <returns></returns>
-
-
-		bool IVerifySomethingExists.VerifySomethingExist(string areaIdentifier,string type, string identifier)
+		public new bool VerifySomethingExist(string areaIdentifier,string type, string identifier)
 		{
 			if (identifier == "Add Event lock icon")
 				return Browser.TryFindElementById("_ctl0_Content_SubjectAddEvent_DisableMatrixImage") == null;
-
 
 			bool result = false;
 			IWebElement element;
@@ -199,11 +196,14 @@ namespace Medidata.RBT.PageObjects.Rave
 							var ele = Browser.TryFindElementByXPath(string.Format("//*[text()='{0}']", identifier));
 							result = ele == null;
 						}
+                        else if(base.VerifySomethingExist(areaIdentifier, type, identifier))
+                        {
+                            result = true;
+                        }
 						else
 						{
-							//TODO: this is just a simple version of finding text. Implement more useful version later
-							var TR = GetTaskSummaryArea(identifier);
-
+                            //TODO: This needs to be refactored by moving this functionality into TaskSummary control
+                            var TR = GetTaskSummaryArea(identifier);
 							result = TR != null;
 						}
 					}
