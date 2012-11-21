@@ -13,7 +13,7 @@ namespace Medidata.RBT.PageObjects.Rave
 {
 	public class DCFQueriesPage : RavePageBase
 	{
-		public override IPage ChooseFromDropdown(string name, string text)
+		public override IPage ChooseFromDropdown(string name, string text, string objectType = null, string areaIdentifier = null)
 		{
 			if ("Study,Folder,Site Group,Form,Site,Subject".Split(',').Contains(name))
 			{

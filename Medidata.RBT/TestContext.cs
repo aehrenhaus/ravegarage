@@ -618,8 +618,19 @@ namespace Medidata.RBT
         {
             List<String> createdFiles = Directory.GetFiles(RBTConfiguration.Default.DownloadPath).ToList();
             foreach (String filePath in createdFiles)
-                if (!filePath.EndsWith("placeholder.txt"))
-                    File.Delete(filePath);
+				if (!filePath.EndsWith("placeholder.txt"))
+				{
+					//supress the error when the file is locked by excel process.
+
+					try
+					{
+						File.Delete(filePath);
+					}
+					catch (Exception)
+					{
+
+					}
+				}
         }
 
         /// <summary>

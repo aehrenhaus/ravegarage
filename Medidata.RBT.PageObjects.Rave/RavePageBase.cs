@@ -79,14 +79,48 @@ namespace Medidata.RBT.PageObjects.Rave
 			return  TestContext.POFactory.GetPageByUrl(new Uri(Browser.Url));
 		}
 
-		public override IPage ClickLink(string linkText, string type = null, string areaIdentifier = null)
+		public override IPage ChooseFromDropdown(string identifier, string text, string objectType = null, string areaIdentifier = null)
 		{
+			return base.ChooseFromDropdown(identifier, ReplaceSeedableObjectName(objectType, text), objectType, areaIdentifier);
+		}
 
+		private string ReplaceSeedableObjectName(string type, string name)
+		{
 			if (type == "Study")
 			{
-				Project project = TestContext.GetExistingFeatureObjectOrMakeNew(linkText, () => new Project(linkText));
-				linkText = project.UniqueName;
+				Project project = TestContext.GetExistingFeatureObjectOrMakeNew(name, () => default(Project));
+				name = project.UniqueName;
 			}
+			else if (type == "Site")
+			{
+				Site site = TestContext.GetExistingFeatureObjectOrMakeNew(name, () => default(Site));
+				name = site.UniqueName;
+			}
+			else if (type == "Role")
+			{
+				Role role = TestContext.GetExistingFeatureObjectOrMakeNew(name, () => default(Role));
+				name = role.UniqueName;
+			}
+			else if (type == "User")
+			{
+				User user = TestContext.GetExistingFeatureObjectOrMakeNew(name, () => default(User));
+				name = user.UniqueName;
+			}
+			else if (type == "Project")
+			{
+				Project project = TestContext.GetExistingFeatureObjectOrMakeNew(name, () => default(Project));
+				name = project.UniqueName;
+			}
+
+
+			return name;
+		}
+
+		public override IPage ClickLink(string linkText, string objectType = null, string areaIdentifier = null)
+		{
+			linkText = ReplaceSeedableObjectName(objectType, linkText);
+		
+
 
 			ISearchContext area = null;
 			if (!string.IsNullOrEmpty(areaIdentifier))

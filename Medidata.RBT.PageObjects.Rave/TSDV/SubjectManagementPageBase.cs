@@ -35,7 +35,7 @@ namespace Medidata.RBT.PageObjects.Rave
 		}
 
 
-		public override IPage ChooseFromDropdown(string identifier, string text)
+		public override IPage ChooseFromDropdown(string identifier, string text, string objectType = null, string areaIdentifier = null)
 		{
 			if (identifier == "Select Site")
 			{

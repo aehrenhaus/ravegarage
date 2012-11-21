@@ -142,7 +142,7 @@ declare
 				Tier=x["tierName"].ToString(),
 				SiteGroup=x["sitegroup"].ToString(),
 				Site=x["sitename"].ToString()
-			}).Where(x =>( x.Site == siteName|| siteName=="All Sites") && (x.SiteGroup == siteGroupName || siteGroupName == "All Site Groups")).Select(x => x.Tier).ToList();
+			}).Where(x => (x.Site == siteName || siteName == "All Sites") && (x.SiteGroup == siteGroupName || siteGroupName == "All Site Groups" || siteGroupName == "World")).Select(x => x.Tier).ToList();
 
 			return names;
 	    }

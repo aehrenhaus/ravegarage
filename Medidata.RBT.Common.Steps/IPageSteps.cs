@@ -18,6 +18,13 @@ namespace Medidata.RBT.Common.Steps
 			CurrentPage = CurrentPage.ChooseFromDropdown(identifier, text);
 		}
 
+		[StepDefinition(@"I choose ""([^""]*)"" ""([^""]*)"" from ""([^""]*)""")]
+		public void IChoose________From____(string objectType, string text, string identifier)
+		{
+			text = SpecialStringHelper.Replace(text);
+			CurrentPage = CurrentPage.ChooseFromDropdown(identifier, text, objectType);
+		}
+
 		/// <summary>
 		/// Select a radio button
 		/// </summary>

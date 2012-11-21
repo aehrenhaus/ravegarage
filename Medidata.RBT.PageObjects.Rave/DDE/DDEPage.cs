@@ -59,7 +59,7 @@ namespace Medidata.RBT.PageObjects.Rave
             return this;
         }
 
-        public override IPage ChooseFromDropdown(string name, string text)
+		public override IPage ChooseFromDropdown(string name, string text, string objectType = null, string areaIdentifier = null)
         {
             IWebElement dropdownTD = GetElementByName(name);
 			CompositeDropdown dropdown = new CompositeDropdown(this,name, dropdownTD);

@@ -195,7 +195,7 @@ namespace Medidata.RBT
 		/// <summary>
 		/// See IPage interface
 		/// </summary>
-        public virtual IPage ChooseFromDropdown(string identifier, string text)
+		public virtual IPage ChooseFromDropdown(string identifier, string text, string objectType = null, string areaIdentifier = null)
         {
 			var ele = TryFindElement(identifier);
 

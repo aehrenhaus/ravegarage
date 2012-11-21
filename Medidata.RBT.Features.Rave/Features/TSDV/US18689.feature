@@ -1,7 +1,7 @@
 ﻿# When a user selects Permuted Block Randomization, subject assignment satisfies a specified allocation and ratio is random for all blocks.
 @EnableSeeding=true
-@SuppressSeeding=SiteGroup,Site,Role,SecurityRole
-@ignore
+@SuppressSeeding=SiteGroup,Role,SecurityRole
+
 Feature: US18689
 	When user selects Permuted Block Randomization
 	Then subject assignment satisfies a specified allocation ratio
@@ -86,7 +86,7 @@ Background:
 Scenario: @PB_US18689_01 As a Rave user, when I select Permuted Block Randomization and I Enroll 50 subjects in study then subject assignment satisfies the specified ratio and is random for all blocks in study level.
 	#When I select Study "US18689" and Site "Site 1"
 	Given I login to Rave with user "SUPER USER 1"
-	And I select link "Home"
+	And I navigate to "Home"
 	And I navigate to "Reporter"
 	And I select Report "Targeted SDV Configuration"
 	And I set report parameter "Study" with table
@@ -108,9 +108,9 @@ Scenario: @PB_US18689_01 As a Rave user, when I select Permuted Block Randomizat
 	And I select the tier "No Forms" and Subject Count "3"
 	And I activate the plan
 	And I switch to "Reports" window
-	And I select link "Home"
+	And I navigate to "Home"
 	And I create 12 random Subjects with name "KKP" in Study "US18689" in Site "Site 1"
-	And I select link "Home"
+	And I navigate to "Home"
 	And I navigate to "Reporter"
 	And I select Report "Targeted SDV Subject Management"
 	And I set report parameter "Study" with table
@@ -182,7 +182,7 @@ Scenario: @PB_US18689_01 As a Rave user, when I select Permuted Block Randomizat
 		| No Forms, No Forms, Architect Defined, No Forms, All Forms, All Forms |
 		| No Forms, No Forms, No Forms, Architect Defined, All Forms, All Forms |
 	And I switch to "Reports" window
-	And I select link "Home"
+	And I navigate to "Home"
 	And I navigate to "Reporter"
 	And I select Report "Targeted SDV Configuration"
 	And I set report parameter "Study" with table
@@ -206,9 +206,9 @@ Scenario: @PB_US18689_01 As a Rave user, when I select Permuted Block Randomizat
 	And I select the tier "No Forms" and Subject Count "3"
 	And I activate the plan
 	And I switch to "Reports" window
-	And I select link "Home"
+	And I navigate to "Home"
 	And I create 6 random Subjects with name "BBC" in Study "US18689" in Site "Site 2"
-	And I select link "Home"
+	And I navigate to "Home"
 	And I navigate to "Reporter"
 	And I select Report "Targeted SDV Subject Management"
 	And I set report parameter "Study" with table
@@ -282,7 +282,7 @@ Scenario: @PB_US18689_01 As a Rave user, when I select Permuted Block Randomizat
 		| No Forms, No Forms, No Forms, Architect Defined, All Forms, All Forms |
 
 	And I switch to "Reports" window
-	And I select link "Home"
+	And I navigate to "Home"
 	And I navigate to "Reporter"
 	And I select Report "Targeted SDV Configuration"
 	And I set report parameter "Study" with table
@@ -292,7 +292,7 @@ Scenario: @PB_US18689_01 As a Rave user, when I select Permuted Block Randomizat
 	And I switch to "Targeted SDV Study Plan" window
 	And I select link "World"
 	And I inactivate the plan
-	And I select link "Site 3"
+	And I select "Site" link "Site 3"
 	And I create a new block plan named "Site 3 Block Plan" with Data entry Role "SUPER ROLE 1"
 	And I verify text "Dynamic Allocation" exists
 	And I click button "edit block plan"
@@ -307,9 +307,9 @@ Scenario: @PB_US18689_01 As a Rave user, when I select Permuted Block Randomizat
 	And I select the tier "No Forms" and Subject Count "3"
 	And I activate the plan
 	And I switch to "Reports" window
-	And I select link "Home"
+	And I navigate to "Home"
 	And I create 6 random Subjects with name "CCD" in Study "US18689" in Site "Site 3"
-	And I select link "Home"
+	And I navigate to "Home"
 	And I navigate to "Reporter"
 	And I select Report "Targeted SDV Subject Management"
 	And I set report parameter "Study" with table
@@ -318,7 +318,7 @@ Scenario: @PB_US18689_01 As a Rave user, when I select Permuted Block Randomizat
 	And I click button "Submit Report"
 	And I switch to "Targeted SDV Subject Override" window
 	And I filter by site "Site 3"
-Then I verify that one of the following Permutations has been used every 6 subjects
+	Then I verify that one of the following Permutations has been used every 6 subjects
 		| Randomization Permutations                                            |
 		| All Forms, All Forms, Architect Defined, No Forms, No Forms, No Forms |
 		| All Forms, All Forms, No Forms, Architect Defined, No Forms, No Forms |
@@ -380,8 +380,8 @@ Then I verify that one of the following Permutations has been used every 6 subje
 		| No Forms, Architect Defined, No Forms, No Forms, All Forms, All Forms |
 		| No Forms, No Forms, Architect Defined, No Forms, All Forms, All Forms |
 		| No Forms, No Forms, No Forms, Architect Defined, All Forms, All Forms |
-	
-	And I select link "Home"
+	And I switch to "Reports" window
+	And I navigate to "Home"
 	And I navigate to "Reporter"
 	And I select Report "Targeted SDV Configuration"
 	And I set report parameter "Study" with table
@@ -390,11 +390,11 @@ Then I verify that one of the following Permutations has been used every 6 subje
 	And I click button "Submit Report"
 	And I switch to "Targeted SDV Study Plan" window
 	And I select link "World"
-	And I select link "Site 3"
+	And I select "Site" link "Site 3"
 	And I inactivate the plan
 
 	And I switch to "Reports" window
-	And I select link "Home"
+	And I navigate to "Home"
 	And I navigate to "Reporter"
 	And I select Report "Targeted SDV Configuration"
 	And I set report parameter "Study" with table
@@ -403,7 +403,7 @@ Then I verify that one of the following Permutations has been used every 6 subje
 	And I click button "Submit Report"
 	And I switch to "Targeted SDV Study Plan" window
 	And I select link "World"
-	And I select link "Site 4"
+	And I select "Site" link "Site 4"
 	And I create a new block plan named "Site 4 Block Plan" with Data entry Role "SUPER ROLE 1"
 	And I verify text "Dynamic Allocation" exists
 	And I click button "edit block plan"
@@ -418,15 +418,16 @@ Then I verify that one of the following Permutations has been used every 6 subje
 	And I select the tier "No Forms" and Subject Count "2"
 	And I activate the plan
 	And I switch to "Reports" window
-	And I select link "Home"
+	And I navigate to "Home"
 	And I create 6 random Subjects with name "KKI" in Study "US18689" in Site "Site 4"
-	And I select link "Home"
+	And I navigate to "Home"
 	And I navigate to "Reporter"
 	And I select Report "Targeted SDV Subject Management"
 	And I set report parameter "Study" with table
 		| Name       | Environment |
 		| US18689 | Dev         |
 	And I click button "Submit Report"
+	And I switch to "Targeted SDV Subject Override" window
 	And I filter by site "Site 4"
 	Then I verify that one of the following Permutations has been used every 6 subjects
 		| Randomization Permutations                                            |
@@ -490,8 +491,8 @@ Then I verify that one of the following Permutations has been used every 6 subje
 		| No Forms, Architect Defined, No Forms, No Forms, All Forms, All Forms |
 		| No Forms, No Forms, Architect Defined, No Forms, All Forms, All Forms |
 		| No Forms, No Forms, No Forms, Architect Defined, All Forms, All Forms |
-
-	And I select link "Home"
+	And I switch to "Reports" window
+	And I navigate to "Home"
 	And I navigate to "Reporter"
 	And I select Report "Targeted SDV Configuration"
 	And I set report parameter "Study" with table
@@ -500,5 +501,5 @@ Then I verify that one of the following Permutations has been used every 6 subje
 	And I click button "Submit Report"
 	And I switch to "Targeted SDV Study Plan" window
 	And I select link "World"
-	And I select link "Site 4"
+	And I select "Site" link "Site 4"
 	And I inactivate the plan

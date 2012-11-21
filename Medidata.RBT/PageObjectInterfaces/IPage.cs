@@ -90,7 +90,7 @@ namespace Medidata.RBT
 		/// <summary>
 		/// Choose by text from a dropdown like UI control
 		/// </summary>
-		IPage ChooseFromDropdown(string identifier, string text);
+		IPage ChooseFromDropdown(string identifier,string text, string objectType = null, string areaIdentifier = null);
 
 		/// <summary>
 		/// Choose by text from checkbox
