@@ -84,7 +84,6 @@ namespace Medidata.RBT.PageObjects.Rave
         /// <returns>Returns this FileRequestPage</returns>
         public FileRequestPage EditPdf(string pdfName)
         {
-            this.Browser.Navigate().Refresh();
             int foundOnPage;
             Table dt = new Table("Name");
             dt.AddRow(pdfName);
