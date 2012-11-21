@@ -7,7 +7,10 @@ namespace Medidata.RBT.PageObjects.Rave
 	{
 		public SignatureBox()
 		{
-			PageFactory.InitElements(Browser, this);
+            UsernameBox = Browser.TryFindElementById("TwoPart");
+            PasswordBox = Browser.TryFindElementById("SignatureBox");
+            ValidateSignAndSave = Browser.TryFindElementById("ValidateSignAndSave");
+
 		}
 
 		public override IWebElement GetElementByName(string identifier, string areaIdentifier = null, string listItem = null)
@@ -15,19 +18,15 @@ namespace Medidata.RBT.PageObjects.Rave
             return Browser.FindElementById("ESigControlTable");
 		}
 
-		[FindsBy(How = How.Id, Using = "TwoPart")]
-		public IWebElement UsernameBox;
-
-		[FindsBy(How = How.Id, Using = "SignatureBox")]
-		public IWebElement PasswordBox;
-
-
-		[FindsBy(How = How.Id, Using = "ValidateSignAndSave")]
-        public IWebElement ValidateSignAndSave;
+        public IWebElement UsernameBox { get; private set; }
+        public IWebElement PasswordBox { get; private set; }
+        public IWebElement ValidateSignAndSave { get; private set; }
 
 		public void Sign(string userName, string password)
 		{
-            UsernameBox.EnhanceAs<Textbox>().SetText(userName);
+            if (this.UsernameBox != null)
+                this.UsernameBox.EnhanceAs<Textbox>().SetText(userName);
+            
             PasswordBox.EnhanceAs<Textbox>().SetText(password);
 			ValidateSignAndSave.Click();
 		}
