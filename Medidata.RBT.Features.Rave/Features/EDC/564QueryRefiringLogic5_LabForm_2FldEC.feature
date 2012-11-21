@@ -11,14 +11,23 @@ Feature: Query Refiring Logic5
 	So that I dont have to re-enter the exact same response
 
 Background:
-    Given I login to Rave with user "defuser" and password "password"
-	And I select Study "Standard Study" and Site "Site 1"
-	And following Study assignments exist
-		|User	|Study		    |Role |Site	  |Site Number	|
-		|User 1 |Standard Study	|cdm1 |Site 1 |S100			|
-	And Role "cdm1" has Action "Query"
-	And Study "Standard Study" has Draft "<Draft1>"
-	And I publish and push CRF Version "CRF Version<RANDOMNUMBER>" of Draft "<Draft1>" to site "Site 1" in Study "Standard Study"
+ 	Given xml draft "Standard_Study_Draft_1.xml" is Uploaded
+	Given Site "Site 1" exists
+	Given study "Standard Study" is assigned to Site "Site 1"
+	Given I publish and push eCRF "Standard_Study_Draft_1.xml" to "Version 1"
+	Given following Project assignments exist
+		| User         | Project        | Environment | Role            | Site   | SecurityRole          |
+		| SUPER USER 1 | Standard Study | Live: Prod  | Edit Check Role | Site 1 | Project Admin Default |
+	Given I login to Rave with user "SUPER USER 1"
+
+    #Given I login to Rave with user "defuser" and password "password"
+	#And I select Study "Standard Study" and Site "Site 1"
+	#And following Study assignments exist
+	#	|User	|Study		    |Role |Site	  |Site Number	|
+	#	|User 1 |Standard Study	|cdm1 |Site 1 |S100			|
+	#And Role "cdm1" has Action "Query"
+	#And Study "Standard Study" has Draft "<Draft1>"
+	#And I publish and push CRF Version "CRF Version<RANDOMNUMBER>" of Draft "<Draft1>" to site "Site 1" in Study "Standard Study"
 
 @release_564_Patch11
 @PB_US12940_01A	

@@ -7,32 +7,39 @@ Feature: 564QueryRefiringLogic3
 # Query Issue: Edit Checks with require response and no require manual close
 # Open a query and answer a query, change the correct data closes the query automatically and change it back to previous data query did refires and verify there is no log
 # Verifies query firing between cross forms with require response and no require manual close.
-
 # Project to be uploaded in excel spreadsheet 'Edit Check Study 3'
 
 Background:
-    Given I login to Rave with user "defuser" and password "password"
-	And following Study assignments exist
-		|User		|Study		       	|Role |Site		        	|Site Number|
-		|editcheck  |Edit Check Study 3	|CDM1 |Edit Check Site 3	|30001      |
-    And Role "cdm1" has Action "Query"
-	And Study "Edit Check Study 3" has Draft "Draft 1" includes Edit Checks from the table below
-		| Edit Check                                             | Folder    | Form                    | Field                       | Query Message                                                                                                 |
-		| *Greater Than Log same form                            | Week 1    | Concomitant Medications | End Date                    | Start Date can not be greater than End Date.                                                                  |
-		| *Greater Than Open Query Cross Folder                  | Week 1    | Concomitant Medications | Start Date                  | 'Date Informed Consent Signed' can not be greater than.                                                       |
-		| *Greater Than Open Query Log Cross Form                | Screening | Concomitant Medications | Start Date                  | 'Date Informed Consent Signed' is greater. Please revise.                                                     |
-		| *Is Greater Than or Equal To Open Query Log Cross Form | Screening | Concomitant Medications | Original Axis Number        | 'AE Number' is greater than or Equal to 'Original Axis Number' on Log.                                        |
-		| *Is Less Than Log same form                            | Week 1    | Concomitant Medications | Current Axis Number         | 'Original Axis Number' is Less Than 'Current Axis Number' on first Number field.                              |
-		| *Is Less Than Open Query Log Cross Form                | Screening | Concomitant Medications | End Date                    | Date is Less Than Date on the first log form.                                                                 |
-		| *Is Less Than To Open Query Log Cross Form             | Screening | Concomitant Medications | Start Date                  | Date can not be less than.                                                                                    |
-		| *Is Not Equal to Open Query Cross Folder               | Week 1    | Concomitant Medications | Current Axis Number         | 'Current Distribution Number' is not equal 'Current Axis Number'.                                             |
-		| *Is Not Equal To Open Query Log Cross Form             | Screening | Concomitant Medications | Current Axis Number         | 'Duration' and 'Current Axis Number' cannot equal.                                                            |
-		| *Is Not Equal to Open Query Log Cross Form*            | Screening | Concomitant Medications | Current Axis Number         | Informed Consent 'Current Distribution Number' is not equal to Concomitant Medications 'Current Axis Number'. |
-		| *Is Not Equal To Open Query Log Same form              | Week 1    | Informed Consent        | Current Distribution Number | Informed Consent 'Current Distribution Number' is not equal to Concomitant Medications 'Current Axis Number'. |
-		| *Greater Than or Equal To Open Query Log same form     | Week 1    | Informed Consent        | End Date                    | 'Date Informed Consent Signed' is not equal to 'Current Date'.                                                |
-	And Draft "Draft 3" in Study "Edit Check Study 3" has been published to CRF Version "<RANDOMNUMBER>" 
-	And CRF Version "<RANDOMNUMBER>" in Study "Edit Check Study 3" has been pushed to Site "Edit Check Site 3" in Environment "Prod"
-	And I select Study "Edit Check Study 3" and Site "Edit Check Site 3"
+ 	Given xml draft "Edit_Check_Study_3_Draft_3.xml" is Uploaded
+	Given Site "Edit Check Site 3" exists
+	Given study "Edit Check Study 3" is assigned to Site "Edit Check Site 3"
+	Given I publish and push eCRF "Edit_Check_Study_3_Draft_3.xml" to "Version 1"
+	Given following Project assignments exist
+		| User         | Project            | Environment | Role            | Site              | SecurityRole          |
+		| SUPER USER 1 | Edit Check Study 3 | Live: Prod  | Edit Check Role | Edit Check Site 3 | Project Admin Default |
+
+    #Given I login to Rave with user "defuser" and password "password"
+	#And following Study assignments exist
+	#	|User		|Study		       	|Role |Site		        	|Site Number|
+	#	|editcheck  |Edit Check Study 3	|CDM1 |Edit Check Site 3	|30001      |
+    #And Role "cdm1" has Action "Query"
+	#And Study "Edit Check Study 3" has Draft "Draft 1" includes Edit Checks from the table below
+	#	| Edit Check                                             | Folder    | Form                    | Field                       | Query Message                                                                                                 |
+	#	| *Greater Than Log same form                            | Week 1    | Concomitant Medications | End Date                    | Start Date can not be greater than End Date.                                                                  |
+	#	| *Greater Than Open Query Cross Folder                  | Week 1    | Concomitant Medications | Start Date                  | 'Date Informed Consent Signed' can not be greater than.                                                       |
+	#	| *Greater Than Open Query Log Cross Form                | Screening | Concomitant Medications | Start Date                  | 'Date Informed Consent Signed' is greater. Please revise.                                                     |
+	#	| *Is Greater Than or Equal To Open Query Log Cross Form | Screening | Concomitant Medications | Original Axis Number        | 'AE Number' is greater than or Equal to 'Original Axis Number' on Log.                                        |
+	#	| *Is Less Than Log same form                            | Week 1    | Concomitant Medications | Current Axis Number         | 'Original Axis Number' is Less Than 'Current Axis Number' on first Number field.                              |
+	#	| *Is Less Than Open Query Log Cross Form                | Screening | Concomitant Medications | End Date                    | Date is Less Than Date on the first log form.                                                                 |
+	#	| *Is Less Than To Open Query Log Cross Form             | Screening | Concomitant Medications | Start Date                  | Date can not be less than.                                                                                    |
+	#	| *Is Not Equal to Open Query Cross Folder               | Week 1    | Concomitant Medications | Current Axis Number         | 'Current Distribution Number' is not equal 'Current Axis Number'.                                             |
+	#	| *Is Not Equal To Open Query Log Cross Form             | Screening | Concomitant Medications | Current Axis Number         | 'Duration' and 'Current Axis Number' cannot equal.                                                            |
+	#	| *Is Not Equal to Open Query Log Cross Form*            | Screening | Concomitant Medications | Current Axis Number         | Informed Consent 'Current Distribution Number' is not equal to Concomitant Medications 'Current Axis Number'. |
+	#	| *Is Not Equal To Open Query Log Same form              | Week 1    | Informed Consent        | Current Distribution Number | Informed Consent 'Current Distribution Number' is not equal to Concomitant Medications 'Current Axis Number'. |
+	#	| *Greater Than or Equal To Open Query Log same form     | Week 1    | Informed Consent        | End Date                    | 'Date Informed Consent Signed' is not equal to 'Current Date'.                                                |
+	#And Draft "Draft 3" in Study "Edit Check Study 3" has been published to CRF Version "<RANDOMNUMBER>" 
+	#And CRF Version "<RANDOMNUMBER>" in Study "Edit Check Study 3" has been pushed to Site "Edit Check Site 3" in Environment "Prod"
+	#And I select Study "Edit Check Study 3" and Site "Edit Check Site 3"
 
 #----------------------------------------------------------------------------------------------------------------------------------------
 @release_564_Patch11
@@ -40,7 +47,8 @@ Background:
 @Validation
 Scenario: PB_3.1.1 As an EDC user, On a Cross Form Standard form to log form, When a query has been answered and auto closed with the same data and I enter the same data that originally opened the query, then queries are not displayed. 
    
-	 And I create a Subject
+	Given I login to Rave with user "SUPER USER 1"
+	And I create a Subject
 		| Field            | Data              |
 		| Subject Number   | {RndNum<num1>(5)} |
 		| Subject Initials | sub               |
@@ -111,6 +119,7 @@ Scenario: PB_3.1.1 As an EDC user, On a Cross Form Standard form to log form, Wh
 @Validation
 Scenario: PB_3.1.2 As an EDC user, On a Cross Form Standard form to log form, When a query has been answered and auto closed with the different data and I enter the same data that originally opened the query, then queries are displayed. 
 
+	Given I login to Rave with user "SUPER USER 1"
 	And I select a Subject "sub{Var(num1)}"
 	And I select Form "Concomitant Medications" in Folder "Screening"
 	And I add a new log line
@@ -163,6 +172,7 @@ Scenario: PB_3.1.2 As an EDC user, On a Cross Form Standard form to log form, Wh
 @Validation
 Scenario: PB_3.1.3 As an EDC user, On a Cross Form Standard form to log form, When a query has been canceled with the different data and I enter the same data that originally opened the query, then queries are displayed. 
 
+	Given I login to Rave with user "SUPER USER 1"
 	And I select a Subject "sub{Var(num1)}"
 	And I select Form "Concomitant Medications" in Folder "Screening"
 	And I add a new log line
@@ -222,6 +232,7 @@ Scenario: PB_3.1.3 As an EDC user, On a Cross Form Standard form to log form, Wh
 @Validation
 Scenario: PB_3.1.4 As an EDC user, On a Cross Form Standard form to log form, When a query has been canceled with the same data and I enter the same data that originally opened the query, then queries are displayed. 
 
+	Given I login to Rave with user "SUPER USER 1"
 	And I select a Subject "sub{Var(num1)}"
 	And I select Form "Concomitant Medications" in Folder "Screening"
 	And I add a new log line
@@ -285,7 +296,8 @@ Scenario: PB_3.1.4 As an EDC user, On a Cross Form Standard form to log form, Wh
 @Validation
 Scenario: PB_3.2.1 As an EDC user, On a Cross Folder Standard form to log form, When a query has been answered and auto closed with the same data and I enter the same data that originally opened the query, then queries are not displayed.
 		
-	 And I create a Subject
+	Given I login to Rave with user "SUPER USER 1"
+	And I create a Subject
 		| Field            | Data              |
 		| Subject Number   | {RndNum<num1>(5)} |
 		| Subject Initials | sub               |
@@ -339,6 +351,7 @@ Scenario: PB_3.2.1 As an EDC user, On a Cross Folder Standard form to log form, 
 @Validation
 Scenario: PB_3.2.2 As an EDC user, On a Cross Folder Standard form to log form, When a query has been answered and auto closed with the different data and I enter the same data that originally opened the query, then queries are displayed.
 	
+	Given I login to Rave with user "SUPER USER 1"
 	And I select a Subject "sub{Var(num1)}"
 	And I select Form "Concomitant Medications" in Folder "Week 1"
 	And I add a new log line
@@ -386,6 +399,7 @@ Scenario: PB_3.2.2 As an EDC user, On a Cross Folder Standard form to log form, 
 @Validation
 Scenario: PB_3.2.3 As an EDC user, On a Cross Folder Standard form to log form, When a query has been canceled with the different data and I enter the same data that originally opened the query, then queries are displayed.
 	
+	Given I login to Rave with user "SUPER USER 1"
 	And I select a Subject "sub{Var(num1)}"
 	And I select Form "Concomitant Medications" in Folder "Week 1"
 	And I add a new log line
@@ -445,6 +459,7 @@ Scenario: PB_3.2.3 As an EDC user, On a Cross Folder Standard form to log form, 
 @Validation
 Scenario: PB_3.3.1 As an EDC user, On a Cross Forms log form to Standard form, When a query has been answered and auto closed with the different data and I enter the same data that originally opened the query, then queries are displayed. 
 
+	Given I login to Rave with user "SUPER USER 1"
 	And I create a Subject
 		| Field            | Data              |
 		| Subject Number   | {RndNum<num1>(5)} |
@@ -499,6 +514,7 @@ Scenario: PB_3.3.1 As an EDC user, On a Cross Forms log form to Standard form, W
 @Validation
 Scenario: PB_3.3.2 As an EDC user, On a Cross Forms log form to Standard form, When a query has been canceled with the different data and I enter the same data that originally opened the query, then queries are displayed. 
 
+	Given I login to Rave with user "SUPER USER 1"
 	And I create a Subject
 		| Field            | Data              |
 		| Subject Number   | {RndNum<num1>(5)} |
@@ -564,6 +580,7 @@ Scenario: PB_3.3.2 As an EDC user, On a Cross Forms log form to Standard form, W
 @Validation
 Scenario: PB_3.4.1 As an EDC user, On a Cross Forms log form to log form, When a query has been answered and auto closed with the same data and I enter the same data that originally opened the query, then queries are not displayed.
 
+	Given I login to Rave with user "SUPER USER 1"
 	And I create a Subject
 		| Field            | Data              |
 		| Subject Number   | {RndNum<num1>(5)} |
@@ -642,6 +659,7 @@ Scenario: PB_3.4.1 As an EDC user, On a Cross Forms log form to log form, When a
 @Validation
 Scenario: PB_3.4.2 As an EDC user, On a Cross Forms log form to log form, When a query has been answered and auto closed with the different data and I enter the same data that originally opened the query, then queries are not displayed.
 
+	Given I login to Rave with user "SUPER USER 1"
 	And I select a Subject "sub{Var(num1)}"
 	And I select Form "Concomitant Medications" in Folder "Screening"
 	And I add a new log line
@@ -715,6 +733,7 @@ Scenario: PB_3.4.2 As an EDC user, On a Cross Forms log form to log form, When a
 @Validation
 Scenario: PB_3.4.3 As an EDC user, On a Cross Forms log form to log form, When a query has been canceled with the different data and I enter the same data that originally opened the query, then queries are not displayed.
 
+	Given I login to Rave with user "SUPER USER 1"
 	And I select a Subject "sub{Var(num1)}"
 	And I select Form "Concomitant Medications" in Folder "Screening"
 	And I add a new log line
@@ -815,8 +834,9 @@ Scenario: PB_3.4.3 As an EDC user, On a Cross Forms log form to log form, When a
 @PB_3.1.5
 @Validation
 Scenario: PB_3.1.5 As an EDC user, On a Cross Form Standard form to log form, When a query has been canceled with the different data and I enter the same data that originally opened the query, then queries are displayed. 
-   
-	 And I create a Subject
+  
+  	Given I login to Rave with user "SUPER USER 1" 
+	And I create a Subject
 		| Field            | Data              |
 		| Subject Number   | {RndNum<num1>(5)} |
 		| Subject Initials | sub               |

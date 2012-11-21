@@ -11,14 +11,22 @@ Feature: 564QueryRefiringLogic4
 # Project to be uploaded in excel spreadsheet 'Edit Check Study 3'
 
 Background:
-    Given I login to Rave with user "defuser" and password "password"
-	And following Study assignments exist
-		|User		|Study		       	|Role |Site		        	|Site Number|
-		|editcheck  |Edit Check Study 3	|CDM1 |Edit Check Site 4	|40001      |
-    And Role "cdm1" has Action "Query"
-	And Draft "Draft 4" in Study "Edit Check Study 3" has been published to CRF Version "<RANDOMNUMBER>" 
-	And CRF Version "<RANDOMNUMBER>" in Study "Edit Check Study 3" has been pushed to Site "Edit Check Site 4" in Environment "Prod"
-	And I select Study "Edit Check Study 3" and Site "Edit Check Site 4"
+ 	Given xml draft "Edit_Check_Study_3_Draft_4.xml" is Uploaded
+	Given Site "Edit Check Site 4" exists
+	Given study "Edit Check Study 3" is assigned to Site "Edit Check Site 4"
+	Given I publish and push eCRF "Edit_Check_Study_3_Draft_4.xml" to "Version 1"
+	Given following Project assignments exist
+		| User         | Project            | Environment | Role            | Site              | SecurityRole          |
+		| SUPER USER 1 | Edit Check Study 3 | Live: Prod  | Edit Check Role | Edit Check Site 4 | Project Admin Default |
+
+    #Given I login to Rave with user "defuser" and password "password"
+	#And following Study assignments exist
+	#	|User		|Study		       	|Role |Site		        	|Site Number|
+	#	|editcheck  |Edit Check Study 3	|CDM1 |Edit Check Site 4	|40001      |
+    #And Role "cdm1" has Action "Query"
+	#And Draft "Draft 4" in Study "Edit Check Study 3" has been published to CRF Version "<RANDOMNUMBER>" 
+	#And CRF Version "<RANDOMNUMBER>" in Study "Edit Check Study 3" has been pushed to Site "Edit Check Site 4" in Environment "Prod"
+	#And I select Study "Edit Check Study 3" and Site "Edit Check Site 4"
 
 #----------------------------------------------------------------------------------------------------------------------------------------
 @release_564_Patch11
@@ -26,6 +34,7 @@ Background:
 @Validation
 Scenario: PB_4.1.1 As an EDC user, On a Cross Forms Standard form to log form, when a query has been auto answered and closed with the same data and I enter the same data that originally opened the query, then queries are displayed.
 
+	Given I login to Rave with user "SUPER USER 1"
     And I create a Subject
 		| Field            | Data              |
 		| Subject Number   | {RndNum<num1>(5)} |
@@ -88,6 +97,7 @@ Scenario: PB_4.1.1 As an EDC user, On a Cross Forms Standard form to log form, w
 @Validation
 Scenario: PB_4.1.2 As an EDC user, On a Cross Forms Standard form to log form, when a query has been canceled with the same data and I enter the same data that originally opened the query, then queries are displayed.
 
+	Given I login to Rave with user "SUPER USER 1"
     And I select a Subject "SUB{Var(num1)}"
 	And I select Form "Concomitant Medications" in Folder "Screening"
     And I enter data in CRF on a new log line and save and reopen
@@ -145,6 +155,7 @@ Scenario: PB_4.2.1 As an EDC user, On a Cross Folders - Standard form to log for
 #Folder  enter and save data on form "Concomitant Medications"
 #"Screening" enter and save data on form "Informed Consent" , Folder "Week 1
 
+	Given I login to Rave with user "SUPER USER 1"
     And I create a Subject
 		| Field            | Data              |
 		| Subject Number   | {RndNum<num1>(5)} |
@@ -207,7 +218,8 @@ Scenario: PB_4.2.1 As an EDC user, On a Cross Folders - Standard form to log for
 @PB_4.2.2
 @Validation
 Scenario: PB_4.2.2 As an EDC user, On a Cross Folders - Standard form to log form, when a query has been canceled with the same data and I enter the same data that originally opened the query, then queries are displayed.
-	
+
+	Given I login to Rave with user "SUPER USER 1"	
     And I select a Subject "SUB{Var(num1)}"
 	And I select Form "Concomitant Medications" in Folder "Week 1"
     And I enter data in CRF on a new log line and save and reopen
@@ -272,6 +284,7 @@ Scenario: PB_4.2.2 As an EDC user, On a Cross Folders - Standard form to log for
 Scenario: PB_4.3.1 As an EDC user, On a Cross Forms - log form to Standard form, when a query has been auto answered and closed with the same data and I enter the same data that originally opened the query, then queries are displayed.
 #Folder "Week 1" enter and save data on forms "Concomitant Medications" and "Informed Consent"
   
+	Given I login to Rave with user "SUPER USER 1"
     And I create a Subject
 		| Field            | Data              |
 		| Subject Number   | {RndNum<num1>(5)} |
@@ -323,7 +336,8 @@ Scenario: PB_4.3.1 As an EDC user, On a Cross Forms - log form to Standard form,
 @PB_4.3.2
 @Validation
 Scenario: PB_4.3.2 As an EDC user, On a Cross Forms - log form to Standard form, when a query has been canceled with the same data and I enter the same data that originally opened the query, then queries are displayed.
-	
+
+	Given I login to Rave with user "SUPER USER 1"	
     And I select a Subject "SUB{Var(num1)}"
 	And I select Form "Concomitant Medications" in Folder "Week 1"
     And I enter data in CRF on a new log line and save and reopen
@@ -379,6 +393,7 @@ Scenario: PB_4.3.2 As an EDC user, On a Cross Forms - log form to Standard form,
 @Validation
 Scenario: PB_4.3.3 As an EDC user, On a Cross Forms - log form to Standard form, when a query has been canceled with the same data and I enter the same data that originally opened the query, then queries are displayed.
 
+	Given I login to Rave with user "SUPER USER 1"
     And I select a Subject "SUB{Var(num1)}" 
 	And I select Form "Informed Consent" in Folder "Week 1"
 	And I enter data in CRF and save
@@ -430,7 +445,8 @@ Scenario: PB_4.3.3 As an EDC user, On a Cross Forms - log form to Standard form,
 @Validation
 Scenario: PB_4.4.1 As an EDC user, Cross Forms - log form to log form , when a query has been auto answered and closed with the same data and I enter the same data that originally opened the query, then queries are displayed.
 #Folder "Screening" enter and save data on forms "Concomitant Medications" and "Adverse Events"
-	  
+
+	Given I login to Rave with user "SUPER USER 1"	  
     And I create a Subject
 		| Field            | Data              |
 		| Subject Number   | {RndNum<num1>(5)} |
@@ -515,6 +531,7 @@ Scenario: PB_4.4.1 As an EDC user, Cross Forms - log form to log form , when a q
 @Validation
 Scenario: PB_4.4.2 As an EDC user, Cross Forms - log form to log form , when a query has been canceled with the same data and I enter the same data that originally opened the query, then queries are displayed.
 
+	Given I login to Rave with user "SUPER USER 1"
     And I select a Subject "SUB{Var(num1)}"
 	And I select Form "Concomitant Medications" in Folder "Screening"
     And I enter data in CRF on a new log line and save and reopen
@@ -603,6 +620,7 @@ Scenario: PB_4.4.2 As an EDC user, Cross Forms - log form to log form , when a q
 Scenario: PB_4.5.1 As an EDC user, Cross Forms - Standard form to log form, when a query has been canceled with the same data and I enter the same data that originally opened the query, then queries are not displayed.
 #Folder "Screening" enter and save data on forms "Informed Consent" and "Concomitant Medications"
 
+	Given I login to Rave with user "SUPER USER 1"
     And I create a Subject
 		| Field            | Data              |
 		| Subject Number   | {RndNum<num1>(5)} |
@@ -668,6 +686,7 @@ Scenario: PB_4.5.1 As an EDC user, Cross Forms - Standard form to log form, when
 @Validation
 Scenario: PB_4.5.2 As an EDC user, Cross Forms - Standard form to log form, when a query has been canceled with the different data and I enter the same data that originally opened the query, then queries are displayed.
 
+	Given I login to Rave with user "SUPER USER 1"
     And I select a Subject "SUB{Var(num1)}"	
 	And I select Form "Concomitant Medications" in Folder "Screening"
     And I enter data in CRF on a new log line and save and reopen
@@ -721,7 +740,8 @@ Scenario: PB_4.5.2 As an EDC user, Cross Forms - Standard form to log form, when
 Scenario: PB_4.6.1 As an EDC user, Cross Folders - Standard form to log form, when a query has been canceled with the same data and I enter the same data that originally opened the query, then queries are not displayed.
 #Folder "Screening" enter and save data on form "Informed Consent"
 #Folder "Week 1" enter and save data on form "Concomitant Medications"
-		  
+
+	Given I login to Rave with user "SUPER USER 1"		  
     And I create a Subject
 		| Field            | Data              |
 		| Subject Number   | {RndNum<num1>(5)} |
@@ -788,6 +808,7 @@ Scenario: PB_4.6.1 As an EDC user, Cross Folders - Standard form to log form, wh
 @Validation
 Scenario: PB_4.6.2 As an EDC user, Cross Folders - Standard form to log form, when a query has been canceled with the different data and I enter the same data that originally opened the query, then queries are displayed.
 
+	Given I login to Rave with user "SUPER USER 1"
     And I select a Subject "SUB{Var(num1)}"	
 	And I select Form "Concomitant Medications" in Folder "Week 1"
     And I enter data in CRF on a new log line and save and reopen
@@ -842,7 +863,8 @@ Scenario: PB_4.6.2 As an EDC user, Cross Folders - Standard form to log form, wh
 @Validation
 Scenario: PB_4.7.1 As an EDC user, Cross Forms - log form to Standard form, when a query has been canceled with the same data and I enter the same data that originally opened the query, then queries are not displayed.
 #Folder "Week 1" enter and save data on forms "Concomitant Medications" and "Informed Consent"
-	  
+
+	Given I login to Rave with user "SUPER USER 1"	  
     And I create a Subject
 		| Field            | Data              |
 		| Subject Number   | {RndNum<num1>(5)} |
@@ -899,7 +921,8 @@ Scenario: PB_4.7.1 As an EDC user, Cross Forms - log form to Standard form, when
 @PB_4.7.2
 @Validation
 Scenario: PB_4.7.2 As an EDC user, Cross Forms - log form to Standard form, when a query has been canceled with the different data and I enter the same data that originally opened the query, then queries are displayed.
-
+	
+	Given I login to Rave with user "SUPER USER 1"
     And I select a Subject "SUB{Var(num1)}"	
 	And I select Form "Concomitant Medications" in Folder "Week 1"
 	And I add a new log line
@@ -954,6 +977,7 @@ Scenario: PB_4.7.2 As an EDC user, Cross Forms - log form to Standard form, when
 @Validation
 Scenario: PB_4.7.3 As an EDC user, Cross Forms - log form to Standard form, when a query has been canceled with the same data and I enter the same data that originally opened the query, then queries are displayed.
 
+	Given I login to Rave with user "SUPER USER 1"
     And I select a Subject "SUB{Var(num1)}"   
 	And I select Form "Informed Consent" in Folder "Week 1"
     And I enter data in CRF and save
@@ -1002,7 +1026,8 @@ Scenario: PB_4.7.3 As an EDC user, Cross Forms - log form to Standard form, when
 @Validation
 Scenario: PB_4.8.1 As an EDC user, Cross Forms - log form to log form, when a query has been canceled with the same data and I enter the same data that originally opened the query, then queries are not displayed.
 #Folder "Screening" enter and save data on forms "Concomitant Medications" and "Adverse Events"
-	  
+
+	Given I login to Rave with user "SUPER USER 1"	  
     And I create a Subject
 		| Field            | Data              |
 		| Subject Number   | {RndNum<num1>(5)} |
@@ -1096,6 +1121,7 @@ Scenario: PB_4.8.1 As an EDC user, Cross Forms - log form to log form, when a qu
 @Validation
 Scenario: PB_4.8.2 As an EDC user, Cross Forms - log form to log form, when a query has been canceled with the different data and I enter the same data that originally opened the query, then queries are displayed.
 
+	Given I login to Rave with user "SUPER USER 1"
     And I select a Subject "SUB{Var(num1)}"   
     And I select Form "Concomitant Medications" in Folder "Screening"
 	And I add a new log line

@@ -7,17 +7,25 @@ Feature: 564QueryRefiringLogic2
 # Query Issue: Edit Checks with no require response and no require manual close
 # Open a query, change the correct data closes the query automatically and change it back to previous data query refires and verify no log
 # Verifies query firing between cross forms with no require response and no require manual close.
-
 # Project to be uploaded in excel spreadsheet 'Edit Check Study 3'
+
 Background:
-    Given I login to Rave with user "defuser" and password "password"
-	And following Study assignments exist
-		| User      | Study              | Role | Site              | Site Number |
-		| editcheck | Edit Check Study 3 | CDM1 | Edit Check Site 2 | 20001       |
-    And Role "cdm1" has Action "Query"
-	And Draft "Draft 2" in Study "Edit Check Study 3" has been published to CRF Version "<RANDOMNUMBER>" 
-	And CRF Version "<RANDOMNUMBER>" in Study "Edit Check Study 3" has been pushed to Site "Edit Check Site 2" in Environment "Prod"
-	And I select Study "Edit Check Study 3" and Site "Edit Check Site 2"
+ 	Given xml draft "Edit_Check_Study_3_Draft_2.xml" is Uploaded
+	Given Site "Edit Check Site 2" exists
+	Given study "Edit Check Study 3" is assigned to Site "Edit Check Site 2"
+	Given I publish and push eCRF "Edit_Check_Study_3_Draft_2.xml" to "Version 1"
+	Given following Project assignments exist
+		| User         | Project            | Environment | Role            | Site              | SecurityRole          |
+		| SUPER USER 1 | Edit Check Study 3 | Live: Prod  | Edit Check Role | Edit Check Site 2 | Project Admin Default |
+
+    #Given I login to Rave with user "defuser" and password "password"
+	#And following Study assignments exist
+	#	| User      | Study              | Role | Site              | Site Number |
+	#	| editcheck | Edit Check Study 3 | CDM1 | Edit Check Site 2 | 20001       |
+    #And Role "cdm1" has Action "Query"
+	#And Draft "Draft 2" in Study "Edit Check Study 3" has been published to CRF Version "<RANDOMNUMBER>" 
+	#And CRF Version "<RANDOMNUMBER>" in Study "Edit Check Study 3" has been pushed to Site "Edit Check Site 2" in Environment "Prod"
+	#And I select Study "Edit Check Study 3" and Site "Edit Check Site 2"
 	
 #----------------------------------------------------------------------------------------------------------------------------------------	
 @release_564_Patch11
@@ -26,7 +34,8 @@ Background:
 Scenario: PB_2.1.1 As an EDC user, On a Cross Forms - Standard form to log form, when a query has been auto answered and auto closed with the same data and I enter the same data that originally opened the query, then queries are displayed. 
 #Folder "Screening" enter and save data on forms "Informed Consent" and "Concomitant Medications"
 	
-    Given I create a Subject
+	Given I login to Rave with user "SUPER USER 1"
+    And I create a Subject
 		| Field            | Data              |
 		| Subject Number   | {RndNum<num1>(5)} |
 		| Subject Initials | SUB               |
@@ -85,7 +94,7 @@ Scenario: PB_2.1.1 As an EDC user, On a Cross Forms - Standard form to log form,
 @Validation
 Scenario: PB_2.1.2 when a query has been auto answered and auto closed with the different data and I enter the same data that originally opened the query, then queries are displayed. 
    
-    Given I select Study "Edit Check Study 3" and Site "Edit Check Site 2"
+    Given I login to Rave with user "SUPER USER 1"
     And I select a Subject "SUB{Var(num1)}"
 	And I select Form "Concomitant Medications" in Folder "Screening"
     And I enter data in CRF on a new log line and save and reopen	    
@@ -132,7 +141,7 @@ Scenario: PB_2.1.2 when a query has been auto answered and auto closed with the 
 Scenario: PB_2.2.1 As an EDC user, On a Cross Folders - Standard form to log form, when a query has been auto answered and auto closed with the same data and I enter the same data that originally opened the query, then queries are displayed. 
 #Folder "Screening" enter and save data on form "Informed Consent", Folder "Week 1" enter and save data on form "Concomitant Medications". 			  
 
-    Given I select Study "Edit Check Study 3" and Site "Edit Check Site 2"
+    Given I login to Rave with user "SUPER USER 1"
     And I create a Subject
 		| Field            | Data              |
 		| Subject Number   | {RndNum<num1>(5)} |
@@ -191,7 +200,7 @@ Scenario: PB_2.2.1 As an EDC user, On a Cross Folders - Standard form to log for
 @Validation
 Scenario: PB_2.2.2 As an EDC user, On a Cross Folders - Standard form to log form, when a query has been auto answered and auto closed with the differnt data and I enter the same data that originally opened the query, then queries are displayed. 
  
-    Given I select Study "Edit Check Study 3" and Site "Edit Check Site 2"
+    Given I login to Rave with user "SUPER USER 1"
     And I select a Subject "SUB{Var(num1)}"
 	And I select Form "Concomitant Medications" in Folder "Week 1"
     And I enter data in CRF on a new log line and save and reopen	    
@@ -239,7 +248,7 @@ Scenario: PB_2.2.2 As an EDC user, On a Cross Folders - Standard form to log for
 Scenario: PB_2.3.1 As an EDC user, On a Cross Forms - log form to Standard form, when a query has been auto answered and auto closed with the same data and I enter the same data that originally opened the query, then queries are displayed. 
 #Folder "Week 1" enter and save data on forms "Concomitant Medications" and "Informed Consent"
     
-	Given I select Study "Edit Check Study 3" and Site "Edit Check Site 2"
+	Given I login to Rave with user "SUPER USER 1"
     And I create a Subject
 		| Field            | Data              |
 		| Subject Number   | {RndNum<num1>(5)} |
@@ -288,7 +297,7 @@ Scenario: PB_2.3.1 As an EDC user, On a Cross Forms - log form to Standard form,
 @Validation
 Scenario: PB_2.3.2 As an EDC user, On a Cross Forms - log form to Standard form, when a query has been auto answered and auto closed with the same data and I enter the same data that originally opened the query, then queries are displayed. 
 	
-    Given I select Study "Edit Check Study 3" and Site "Edit Check Site 2"
+    Given I login to Rave with user "SUPER USER 1"
     And I select a Subject "SUB{Var(num1)}"
 	And I select Form "Concomitant Medications" in Folder "Week 1"
 	And I enter data in CRF on a new log line and save and reopen
@@ -333,7 +342,7 @@ Scenario: PB_2.3.2 As an EDC user, On a Cross Forms - log form to Standard form,
 @Validation
 Scenario: PB_2.3.3 As an EDC user, On a Cross Forms - log form to Standard form, when a query has been auto answered and auto closed with the differnt data and I enter the same data that originally opened the query, then queries are displayed. 
 
-    Given I select Study "Edit Check Study 3" and Site "Edit Check Site 2"
+    Given I login to Rave with user "SUPER USER 1"
     And I select a Subject "SUB{Var(num1)}"
 	And I select Form "Informed Consent" in Folder "Week 1"
     And I enter data in CRF and save
@@ -378,7 +387,7 @@ Scenario: PB_2.3.3 As an EDC user, On a Cross Forms - log form to Standard form,
 Scenario: PB_2.4.1 As and EDC user, On a Cross Forms - log form to log form, when a query has been auto answered and auto closed with the same data and I enter the same data that originally opened the query, then queries are displayed. 
 #Folder "Screening" enter and save data on forms "Concomitant Medications" and "Adverse Events"
 			  
-    Given I select Study "Edit Check Study 3" and Site "Edit Check Site 2"
+    Given I login to Rave with user "SUPER USER 1"
     And I create a Subject
 		| Field            | Data              |
 		| Subject Number   | {RndNum<num1>(5)} |
@@ -457,7 +466,7 @@ Scenario: PB_2.4.1 As and EDC user, On a Cross Forms - log form to log form, whe
 @Validation
 Scenario: PB_2.4.2 As and EDC user, On a Cross Forms - log form to log form, when a query has been auto answered and auto closed with the differnt data and I enter the same data that originally opened the query, then queries are displayed. 
    
-    Given I select Study "Edit Check Study 3" and Site "Edit Check Site 2"
+    Given I login to Rave with user "SUPER USER 1"
     And I select a Subject "SUB{Var(num1)}"
 	And I select Form "Concomitant Medications" in Folder "Screening"
 	And I enter data in CRF on a new log line and save
@@ -536,7 +545,7 @@ Scenario: PB_2.4.2 As and EDC user, On a Cross Forms - log form to log form, whe
 Scenario: PB_2.5.1  As an EDC user, on a Cross Forms - Standard form to log form, when a query has been auto answered and auto closed with the same data and I enter the same data that originally opened the query, then queries are not displayed. 
 #Folder "Screening" enter and save data on forms "Informed Consent" and "Concomitant Medications"
 	
-    Given I select Study "Edit Check Study 3" and Site "Edit Check Site 2"
+    Given I login to Rave with user "SUPER USER 1"
     And I create a Subject
 		| Field            | Data              |
 		| Subject Number   | {RndNum<num1>(5)} |
@@ -598,7 +607,7 @@ Scenario: PB_2.5.1  As an EDC user, on a Cross Forms - Standard form to log form
 @Validation
 Scenario: PB_2.5.2 As an EDC user, on a Cross Forms - Standard form to log form, when a query has been auto answered and auto closed with the differnt data and I enter the same data that originally opened the query, then queries are displayed. 
    
-    Given I select Study "Edit Check Study 3" and Site "Edit Check Site 2"
+    Given I login to Rave with user "SUPER USER 1"
     And I select a Subject "SUB{Var(num1)}"
 	And I select Form "Concomitant Medications" in Folder "Screening"
 	And I enter data in CRF on a new log line and save and reopen
@@ -648,7 +657,7 @@ Scenario: PB_2.5.2 As an EDC user, on a Cross Forms - Standard form to log form,
 Scenario: PB_2.6.1 As an EDC user, On a Cross Folders - Standard form to log form, when a query has been auto answered and auto closed with the same data and I enter the same data that originally opened the query, then queries are not displayed. 
 #Folder "Screening" enter and save data on form "Informed Consent", Folder "Week 1" enter and save data on form "Concomitant Medications"
 			  
-    Given I select Study "Edit Check Study 3" and Site "Edit Check Site 2"
+    Given I login to Rave with user "SUPER USER 1"
     And I create a Subject
 		| Field            | Data              |
 		| Subject Number   | {RndNum<num1>(5)} |
@@ -713,7 +722,7 @@ Scenario: PB_2.6.1 As an EDC user, On a Cross Folders - Standard form to log for
 @Validation
 Scenario: PB_2.6.2 As an EDC user, On a Cross Folders - Standard form to log form, when a query has been auto answered and auto closed with the differnt data and I enter the same data that originally opened the query, then queries are displayed. 
  
-    Given I select Study "Edit Check Study 3" and Site "Edit Check Site 2"
+    Given I login to Rave with user "SUPER USER 1"
     And I select a Subject "SUB{Var(num1)}"
 	And I select Form "Concomitant Medications" in Folder "Week 1"
 	And I enter data in CRF on a new log line and save and reopen
@@ -765,7 +774,7 @@ Scenario: PB_2.6.2 As an EDC user, On a Cross Folders - Standard form to log for
 Scenario: PB_2.7.1 As an EDC user, On a Cross Forms log - form to Standard form, when a query has been auto answered and auto closed with the same data and I enter the same data that originally opened the query, then queries are  not displayed. 
 #Folder "Week 1" enter and save data on forms "Concomitant Medications" and "Informed Consent"
 			  
-    Given I select Study "Edit Check Study 3" and Site "Edit Check Site 2"
+    Given I login to Rave with user "SUPER USER 1"
     And I create a Subject
 		| Field            | Data              |
 		| Subject Number   | {RndNum<num1>(5)} |
@@ -820,7 +829,7 @@ Scenario: PB_2.7.1 As an EDC user, On a Cross Forms log - form to Standard form,
 @Validation
 Scenario: PB_2.7.2 As an EDC user, On a Cross Forms log - form to Standard form, when a query has been auto answered and auto closed with the differnt data and I enter the same data that originally opened the query, then queries are displayed. 
 	
-    Given I select Study "Edit Check Study 3" and Site "Edit Check Site 2"
+    Given I login to Rave with user "SUPER USER 1"
     And I select a Subject "SUB{Var(num1)}"
 	And I select Form "Concomitant Medications" in Folder "Week 1"
 	And I enter data in CRF on a new log line and save and reopen
@@ -869,7 +878,7 @@ Scenario: PB_2.7.2 As an EDC user, On a Cross Forms log - form to Standard form,
 @Validation
 Scenario: PB_2.7.3 As an EDC user, On a Cross Forms log - form to Standard form, when a query has been auto answered and auto closed with the differnt data and I enter the same data that originally opened the query, then queries are displayed. 
   
-    Given I select Study "Edit Check Study 3" and Site "Edit Check Site 2"
+    Given I login to Rave with user "SUPER USER 1"
     And I select a Subject "SUB{Var(num1)}"
 	And I select Form "Informed Consent" in Folder "Week 1"
 	And I enter data in CRF and save
@@ -918,7 +927,7 @@ Scenario: PB_2.7.3 As an EDC user, On a Cross Forms log - form to Standard form,
 Scenario: PB_2.8.1	As and EDC user, on a Cross Forms - log form to log form, when a query has been auto answered and auto closed with the same data and I enter the same data that originally opened the query, then queries are not displayed. 
 #Folder "Screening" enter and save data on forms "Concomitant Medications" and "Adverse Events"
 			  
-    Given I select Study "Edit Check Study 3" and Site "Edit Check Site 2"
+    Given I login to Rave with user "SUPER USER 1"
     And I create a Subject
 		| Field            | Data              |
 		| Subject Number   | {RndNum<num1>(5)} |
@@ -1005,7 +1014,7 @@ Scenario: PB_2.8.1	As and EDC user, on a Cross Forms - log form to log form, whe
 @Validation
 Scenario: PB_2.8.2 As and EDC user, on a Cross Forms - log form to log form, when a query has been auto answered and auto closed with the differnt data and I enter the same data that originally opened the query, then queries are displayed.
   
-    Given I select Study "Edit Check Study 3" and Site "Edit Check Site 2"
+    Given I login to Rave with user "SUPER USER 1"
     And I select a Subject "SUB{Var(num1)}"
 	And I select Form "Concomitant Medications" in Folder "Screening"
 	And I add a new log line
