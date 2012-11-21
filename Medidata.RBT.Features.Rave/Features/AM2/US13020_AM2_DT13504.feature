@@ -1,4 +1,3 @@
-@ignore
 #DT13504: AM2 audit text needs to be corrected. The audit text "Amendment Manager: Query is closed during migration process, because it no longer exists in target version" should be updated to "Amendment Manager: Query closed during migration process because the edit check no longer exists in target version."
 
 #The scenarios described in this feature file go under the assumption that there is at least the following:

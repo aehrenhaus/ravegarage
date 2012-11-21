@@ -1,4 +1,3 @@
-@ignore
 Feature: US13780_DT13557 
   As a Rave user
   I want to be able to apply rules in AM Object Heirarchy
