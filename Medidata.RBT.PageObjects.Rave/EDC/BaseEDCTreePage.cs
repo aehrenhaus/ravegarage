@@ -111,13 +111,8 @@ namespace Medidata.RBT.PageObjects.Rave
 
 		bool IVerifySomethingExists.VerifySomethingExist(string areaIdentifier, string type, string identifier)
 		{
-            if (areaIdentifier == null)
-            {
-                if (Browser.FindElementByTagName("body").Text.Contains(identifier))
-                    return true;
-                else
-                    return false;
-            }
+            if (areaIdentifier == null && Browser.FindElementByTagName("body").Text.Contains(identifier))
+                return true;
 
 			IWebElement result = null;
 			switch (identifier)
@@ -133,8 +128,6 @@ namespace Medidata.RBT.PageObjects.Rave
 			}
 
             return result != null;
-
-			throw new NotImplementedException();
 		}
 
 		public IPage ClickAuditOnFormLevel()
