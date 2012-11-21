@@ -84,6 +84,7 @@ namespace Medidata.RBT.PageObjects.Rave
         /// <returns>Returns this FileRequestPage</returns>
         public FileRequestPage EditPdf(string pdfName)
         {
+            this.Browser.Navigate().Refresh();
             int foundOnPage;
             Table dt = new Table("Name");
             dt.AddRow(pdfName);
@@ -106,9 +107,12 @@ namespace Medidata.RBT.PageObjects.Rave
                 }, out foundOnPage);
             }
 
-            EnhancedElement genButton = pdfTr.FindImagebuttons().FirstOrDefault(x => x.GetAttribute("id").EndsWith("imgEdit"));
+            EnhancedElement editButton = pdfTr.FindImagebuttons().FirstOrDefault(x => x.GetAttribute("id").EndsWith("imgEdit"));
 
-            genButton.Click();
+            editButton.Click();
+
+            //Wait for save link on edit pdf page to make sure that edit pdf page has loaded
+            Browser.TryFindElementById("_ctl0_Content_SaveLnkBtn", true, 10);
             return this;
         }
 
@@ -124,7 +128,7 @@ namespace Medidata.RBT.PageObjects.Rave
         public bool GoNextPage(string areaIdentifer)
         {
             HtmlTable table = Browser.TryFindElementByPartialID("_ctl0_Content_Results").EnhanceAs<HtmlTable>();
-            IWebElement pageTable = table.FindElement(By.XPath(".//tr[@align='center']"));
+            IWebElement pageTable = table.TryFindElementBy(By.XPath(".//tr[@align='center']"));
             ReadOnlyCollection<IWebElement> pageLinks = pageTable.FindElements(By.XPath(".//a|.//span"));
 
             count = pageLinks.Count;
@@ -144,7 +148,10 @@ namespace Medidata.RBT.PageObjects.Rave
             }
             else
             {
+                string linkText = pageLinks[pageIndex].Text;
                 pageLinks[pageIndex].Click();
+                //Adding necessary check so that we make sure that new page is loaded properly
+                IWebElement clickedSpanElem = Browser.TryFindElementBy(By.XPath(".//span[text()='" + linkText + "']"), true, 20);
                 pageIndex++;
             }
             return true;
@@ -234,7 +241,7 @@ namespace Medidata.RBT.PageObjects.Rave
                 elem.Click();
 
             // Wait for log line form div
-            Browser.TryFindElementBy(By.XPath(".//div[contains(@id, 'CombineLogLinesFrms_div') and contains(@style, 'block')]"));
+            Browser.TryFindElementBy(By.XPath(".//div[contains(@id, 'CombineLogLinesFrms_div') and contains(@style, 'block')]"), true, 30);
         }
 
      
