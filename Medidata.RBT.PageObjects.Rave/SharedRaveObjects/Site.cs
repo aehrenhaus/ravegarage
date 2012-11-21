@@ -23,7 +23,7 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
         public UploadedDraft Draft { get; set; }
         public string Number { get; set; }
         public string Group { get; set; }
-        public List<string> Studies { get; set; }
+		public List<StudySite> StudySites { get; set; }
 
         /// <summary>
         /// The Site constructor
@@ -35,7 +35,7 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
 	        UniqueName = siteName;
 			Number = siteNumber?? Guid.NewGuid().ToString();
 	        Group = siteGroup;
-	        Studies = new List<string>();
+			StudySites = new List<StudySite>();
         }
 
 	    /// <summary>

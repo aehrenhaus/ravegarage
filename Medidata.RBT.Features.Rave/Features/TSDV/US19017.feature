@@ -1,5 +1,7 @@
 ﻿# As a user, I can choose between two randomization types and change randomization types for non-Production plans
-@ignore
+@EnableSeeding=true
+@SuppressSeeding=SiteGroup,Role,SecurityRole
+
 Feature: US19017
 	When user selects Targeted SDV Configuration report
 	And environment is equal to Production
@@ -13,23 +15,23 @@ Background:
 	Given Site "Site 1" with Site Group "Asia" exists
 	Given Site "Site 2" with Site Group "Europe" exists
 	Given study "US19017" is assigned to Site "Site 1" with study environment "Aux: Dev"
-	Given study "US19017" is assigned to Site "Site 1" with study environment "Prod"
+	Given study "US19017" is assigned to Site "Site 1" with study environment "Live: Prod"
 	Given study "US19017" is assigned to Site "Site 2" with study environment "Aux: Dev"
-	Given study "US19017" is assigned to Site "Site 2" with study environment "Prod"
+	Given study "US19017" is assigned to Site "Site 2" with study environment "Live: Prod"
 	Given I publish and push eCRF "US19017.xml" to "Version 1" with study environment "Dev"
 	Given I publish and push eCRF "US19017.xml" to "Version 1" with study environment "Prod"
 	And following Project assignments exist
 	| User         | Project | Environment | Role         | Site   | SecurityRole          | Lines Per Page |
-	| SUPER USER 1 | US19017 | Prod        | SUPER ROLE 1 | Site 1 | Project Admin Default | 100            |
+	| SUPER USER 1 | US19017 | Live: Prod  | SUPER ROLE 1 | Site 1 | Project Admin Default | 100            |
 	| SUPER USER 1 | US19017 | Aux: Dev    | SUPER ROLE 1 | Site 1 | Project Admin Default | 100            |
-	| SUPER USER 1 | US19017 | Prod        | SUPER ROLE 1 | Site 2 | Project Admin Default | 100            |
+	| SUPER USER 1 | US19017 | Live: Prod  | SUPER ROLE 1 | Site 2 | Project Admin Default | 100            |
 	| SUPER USER 1 | US19017 | Aux: Dev    | SUPER ROLE 1 | Site 2 | Project Admin Default | 100            |
 
 	And Role "SUPER ROLE 1" has Action "Entry"
 	Given following Report assignments exist
 	| User         | Report                                                            |
 	| SUPER USER 1 | Targeted SDV Configuration - Targeted SDV Configuration           |
-	| SUPER USER 1 | Targeted SDV Subject Management - Targeted SDV Subject Management |
+	| SUPER USER 1 | Targeted SDV Subject Management - Targeted SDV Subject Managemen |
 	
 	#| Block Name        | Subject Count | IsRepeated | Tier Name                        | Subject Count | Folder | Form | Field |
 	#| Architect Defined | 7             | Yes        |                                  |               |        |      |       |
@@ -73,7 +75,7 @@ Scenario: @PB_US19017_01 When I enroll 20 subjects in a Production environment, 
 	And I activate the plan
 	And I switch to "Reports" window
 	And I select link "Home"
-	And I create 30 random Subjects with name "ABB" in Study "US19017 (Prod)" in Site "1"
+	And I create 30 random Subjects with name "ABB" in Study "US19017" in Site "1"
 	And I select link "Home"
 	And I navigate to "Reporter"
 	And I select Report "Targeted SDV Subject Management"
@@ -158,7 +160,7 @@ Scenario: @PB_US19017_02 When I enroll 20 subjects in a Non-Production environme
 	And I activate the plan
 	And I switch to "Reports" window
 	And I select link "Home"
-	And I create 30 random Subjects with name "ABB" in Study "US19017 (Prod)" in Site "1"
+	And I create 30 random Subjects with name "ABB" in Study "US19017" in Site "1"
 	And I select link "Home"
 	And I navigate to "Reporter"
 	And I select Report "Targeted SDV Subject Management"
@@ -250,7 +252,7 @@ Scenario: @PB_US19017_03 When I enroll 20 subjects in a Production environment, 
 	And I activate the plan
 	And I switch to "Reports" window
 	And I select link "Home"
-	And I create 30 random Subjects with name "ABB" in Study "US19017 (Prod)" in Site "Site 1"
+	And I create 30 random Subjects with name "ABB" in Study "US19017" in Site "Site 1"
 	And I select link "Home"
 	And I navigate to "Reporter"
 	And I select Report "Targeted SDV Subject Management"

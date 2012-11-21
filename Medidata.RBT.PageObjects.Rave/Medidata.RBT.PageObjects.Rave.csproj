@@ -150,6 +150,7 @@
     <Compile Include="ReportAdmin\ReportManagerPage.cs" />
     <Compile Include="ReportAdmin\ReportAssignmentPage.cs" />
     <Compile Include="SharedRaveObjects\Analyte.cs" />
+    <Compile Include="SharedRaveObjects\StudySite.cs" />
     <Compile Include="SharedRaveObjects\Lab.cs" />
     <Compile Include="SharedRaveObjects\LabUnitDictionary.cs" />
     <Compile Include="SharedRaveObjects\LabUnit.cs" />
