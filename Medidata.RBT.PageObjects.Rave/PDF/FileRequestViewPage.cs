@@ -24,7 +24,7 @@ namespace Medidata.RBT.PageObjects.Rave
 			Table dt = new Table("Name");
             dt.AddRow(pdfName);
 			var tr = table.FindMatchRows(dt).FirstOrDefault();
-			tr.FindImagebuttons()[1].Click();
+			tr.FindImagebuttons()[0].Click();
             List<String> extractedFilePaths = Misc.UnzipAllDownloads();
 
             StringBuilder sb = new StringBuilder();

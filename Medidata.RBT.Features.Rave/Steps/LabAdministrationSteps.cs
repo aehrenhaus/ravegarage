@@ -69,6 +69,11 @@ namespace Medidata.RBT.Features.Rave
 
         #endregion
 
+        /*
+         * This is only to be used if you need to keep track of the exact amount of characters in the lab unit or lab unit dictionary string.
+         * Otherwise the unique versions are better as they guarantee that the lab units 
+         * or lab unit dictionary names will not collide against other feature files, and allow you to move the creation of these to the background.
+        */
         #region Lab Unit Dictionaries
 
         [StepDefinition(@"I add new Lab Unit Dictionaries")]
@@ -100,11 +105,11 @@ namespace Medidata.RBT.Features.Rave
 
         #region Range Types
         /// <summary>
-        /// Check that the rangetypes exist add them if they don't
+        /// Check that the rangetypes exist, add them if they don't
         /// </summary>
         /// <param name="table">Table containing the rangetypes to check</param>
         [StepDefinition(@"the following Range Types exist")]
-        public void TheFollowingRangeTypesExists(Table table)
+        public void TheFollowingRangeTypesExist(Table table)
         {
             IEnumerable<RangeTypeModel> rangeTypeList = table.CreateSet<RangeTypeModel>();
 

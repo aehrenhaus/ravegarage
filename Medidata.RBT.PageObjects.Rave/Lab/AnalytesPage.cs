@@ -8,11 +8,13 @@ using OpenQA.Selenium.Remote;
 using TechTalk.SpecFlow;
 using Medidata.RBT.SeleniumExtension;
 using System.Collections.Specialized;
-namespace Medidata.RBT.PageObjects.Rave
+using System.Collections.ObjectModel;
+using Medidata.RBT.PageObjects.Rave.SharedRaveObjects;
+
+namespace Medidata.RBT.PageObjects.Rave.Lab
 {
     public class AnalytesPage : LabPageBase
     {
-
         public override string URL
         {
             get
@@ -20,7 +22,5 @@ namespace Medidata.RBT.PageObjects.Rave
                 return "Modules/LabAdmin/AnalytesPage.aspx";
             }
         }
-
-
     }
 }

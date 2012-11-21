@@ -32,7 +32,6 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
 		public UploadedDraft(string name)
         {
 			UniqueName = name;
-			
         }
 
         /// <summary>
@@ -65,53 +64,74 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
 
             using (ExcelWorkbook excel = new ExcelWorkbook(FileLocation))
 			{
-				var draftTable = excel.OpenTableForEdit("CRFDraft");
-				var fieldsTable = excel.OpenTableForEdit("Fields");
+				ExcelTable draftTable = excel.OpenTableForEdit("CRFDraft");
+				ExcelTable fieldsTable = excel.OpenTableForEdit("Fields");
 
 
 				//project 
 				var projectName = draftTable[1, "ProjectName"].ToString();
-				if (Project == null)
-					Project = TestContext.GetExistingFeatureObjectOrMakeNew(projectName, () => new Project(projectName));
+                if (Project == null)
+                    Project = TestContext.GetExistingFeatureObjectOrMakeNew(projectName, () => new Project(projectName, true));
+
 				draftTable[1, "ProjectName"] = Project.UniqueName;
 
 				//draft
 				var oldDraftName = draftTable[1, "DraftName"].ToString();
 				Draft = TestContext.GetExistingFeatureObjectOrMakeNew(oldDraftName, () => new Draft(oldDraftName));
 
-				//If there are entry restrictions for specifc roles, then create the roles for them and make the role names unique.
 				for (int row = 1; row <= fieldsTable.RowsCount; row++)
 				{
-					var entryRestrictionsCommaSeparated = fieldsTable[row, "EntryRestrictions"] as string;
+                    //Entry restrictions
+                    ReplaceEntryRestrictionsWithUniqueRoles(fieldsTable, row);
 
-					if (entryRestrictionsCommaSeparated == null)
-						continue;
-
-					List<string> entryRestrictions = entryRestrictionsCommaSeparated.Split(',').ToList();
-					StringBuilder uniqueEntryRestrictions = new StringBuilder();
-					foreach (string entryRestriction in entryRestrictions)
-					{
-						Role role = TestContext.GetExistingFeatureObjectOrMakeNew(entryRestriction.Trim(), () => new Role(entryRestriction.Trim()));
-						uniqueEntryRestrictions.Append(role.UniqueName + ",");
-					}
-
-					fieldsTable[row, "EntryRestrictions"] = uniqueEntryRestrictions.ToString().Substring(0, uniqueEntryRestrictions.Length - 1);
-                   
-
+                    //Analytes
+                    ReplaceAnalytesWithUniqueAnalytes(fieldsTable, row);
 				}
-				
 
 				//Create a unique version of the file to upload
-				UniqueFileLocation = MakeFileLocationUnique(FileLocation);
-
-
-				//Create a unique version of the file to upload
-				
 				UniqueFileLocation = MakeFileLocationUnique(FileLocation);
 
 				excel.SaveAs(UniqueFileLocation);
 			}
+        }
 
+        /// <summary>
+        /// If there are entry restrictions for specifc roles, then create the roles for them and make the role names unique.
+        /// </summary>
+        /// <param name="fieldsTable">The excel table containing the fields</param>
+        /// <param name="currentRow">The current row in the fields table</param>
+        private void ReplaceEntryRestrictionsWithUniqueRoles(ExcelTable fieldsTable, int currentRow)
+        {
+            string entryRestrictionsCommaSeparated = fieldsTable[currentRow, "EntryRestrictions"] as string;
+
+            if (entryRestrictionsCommaSeparated != null)
+            {
+                List<string> entryRestrictions = entryRestrictionsCommaSeparated.Split(',').ToList();
+                StringBuilder uniqueEntryRestrictions = new StringBuilder();
+                foreach (string entryRestriction in entryRestrictions)
+                {
+                    Role role = TestContext.GetExistingFeatureObjectOrMakeNew<Role>(entryRestriction.Trim(), () => new Role(entryRestriction.Trim()));
+                    uniqueEntryRestrictions.Append(role.UniqueName + ",");
+                }
+
+                fieldsTable[currentRow, "EntryRestrictions"] = uniqueEntryRestrictions.ToString().Substring(0, uniqueEntryRestrictions.Length - 1);
+            }
+        }
+
+        /// <summary>
+        /// If there are lab analytes used for specifc roles, use analytes that were created in a previous step def
+        /// </summary>
+        /// <param name="fieldsTable">The excel table containing the fields</param>
+        /// <param name="currentRow">The current row in the fields table</param>
+        private void ReplaceAnalytesWithUniqueAnalytes(ExcelTable fieldsTable, int currentRow)
+        {
+            string analyteString = fieldsTable[currentRow, "AnalyteName"] as string;
+
+            if (!String.IsNullOrEmpty(analyteString))
+            {
+                Analyte analyte = TestContext.GetExistingFeatureObjectOrMakeNew<Analyte>(analyteString.Trim(), () => new Analyte(analyteString));
+                fieldsTable[currentRow, "AnalyteName"] = analyte.UniqueName.ToString();
+            }
         }
 
 

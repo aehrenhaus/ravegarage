@@ -7,32 +7,37 @@ using OpenQA.Selenium;
 using OpenQA.Selenium.Remote;
 using TechTalk.SpecFlow;
 using Medidata.RBT.SeleniumExtension;
+using System.Collections.ObjectModel;
 namespace Medidata.RBT.PageObjects.Rave
 {
     public class LabUnitDictionariesPage : LabPageBase, IVerifySomethingExists
     {
-        
-
         public override string URL
         {
             get
             {
-                return "Modules/LabAdmin/LabUnitDictionary.aspx";
+                return "Modules/LabAdmin/LabUnitDictionaryPage.aspx";
             }
         }
 
         public void IAddNewLabUnitDictionaries(IEnumerable<ArchitectObjectModel> dictionaries)
 		{
-            HtmlTable mainTable;
-
             foreach (var dictionary in dictionaries)
-            {
-                ClickLink("Add Lab Unit Dictionary");
-                mainTable = Browser.TryFindElementById("_ctl0_Content_LabUnitDictionaryGrid").EnhanceAs<HtmlTable>();
-                mainTable.Rows()[mainTable.Rows().Count - 2].Textboxes()[0].EnhanceAs<Textbox>().SetText(dictionary.Name);
-                Browser.ImageBySrc("../../Img/i_ccheck.gif").Click();
-            }          
+                AddLabUnitDictionary(dictionary.Name);   
 		}
+
+        /// <summary>
+        /// Add a single lab unit dictionary
+        /// </summary>
+        /// <param name="dictionaryName">The name of the dictionary to add</param>
+        public void AddLabUnitDictionary(string dictionaryName)
+        {
+            ClickLink("Add Lab Unit Dictionary");
+            HtmlTable mainTable = Browser.TryFindElementById("_ctl0_Content_LabUnitDictionaryGrid").EnhanceAs<HtmlTable>();
+            ReadOnlyCollection<IWebElement> mainTableRows = mainTable.Rows();
+            mainTableRows[mainTableRows.Count - 2].Textboxes()[0].EnhanceAs<Textbox>().SetText(dictionaryName);
+            Browser.LinkByPartialText("Update").Click();
+        }
 
         public bool LabUnitDictionariesExistWithNames(IEnumerable<ArchitectObjectModel> dictionaries, int page = 1)
         {

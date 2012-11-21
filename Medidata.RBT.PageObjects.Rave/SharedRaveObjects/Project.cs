@@ -20,17 +20,18 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
     ///</summary>
 	public class Project : BaseRaveSeedableObject
     {
-       
         public string Number { get; set; }
- 
+        public bool SkipUpload { get; set; }
 
         /// <summary>
         /// Create a Project if it is not already in the dictionary of projects in FeatureObject
         /// </summary>
         /// <param name="projectName">Feature defined name of the project</param>
-		public Project(string projectName)
+        /// <param name="skipUpload">Skip upload portion of the seeding, so that you upload drafts don't </param>
+        public Project(string projectName, bool skipUpload = false)
         {
-	        UniqueName = projectName;
+            UniqueName = projectName;
+            SkipUpload = skipUpload;
         }
 
         /// <summary>
@@ -41,6 +42,29 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
             UniqueName = UniqueName + TID;
         }
 
+        /// <summary>
+        /// Navigate to the architect page to be able to seed the project
+        /// This step is skipped when using uploaddraft so that you don't have the additional time of going to the page, 
+        /// when upload draft will do it for you.
+        /// </summary>
+        protected override void NavigateToSeedPage()
+        {
+            if(!SkipUpload)
+                new ArchitectPage().NavigateToSelf();
+        }
 
+        /// <summary>
+        /// Add a new project.
+        /// This step is skipped when using uploaddraft so that you don't have the additional time of going to the page, 
+        /// when upload draft will do it for you.
+        /// </summary>
+        protected override void  CreateObject()
+        {
+            if (!SkipUpload)
+            {
+                TestContext.Browser.TryFindElementByPartialID("NewProjectName").EnhanceAs<Textbox>().SetText(UniqueName);
+                TestContext.CurrentPage.ClickLink("Add Project");
+            }
+        }
     }
 }

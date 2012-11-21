@@ -10,11 +10,10 @@ using Medidata.RBT.SeleniumExtension;
 using System.Collections.Specialized;
 using System.Collections.ObjectModel;
 
-namespace Medidata.RBT.PageObjects.Rave
+namespace Medidata.RBT.PageObjects.Rave.Lab
 {
     public class RangeTypesPage : LabPageBase
     {
-
         public override string URL
         {
             get
@@ -26,7 +25,7 @@ namespace Medidata.RBT.PageObjects.Rave
         /// <summary>
         /// Add a range type
         /// </summary>
-        /// <param name="rangeTypeName">The name of the rangeTypeTo be added</param>
+        /// <param name="rangeTypeName">The name of the range type to be added</param>
         public void AddRangeType(string rangeTypeName)
         {
             this.ClickLink("Add New");

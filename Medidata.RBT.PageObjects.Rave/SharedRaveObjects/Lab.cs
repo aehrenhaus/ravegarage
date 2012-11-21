@@ -3,31 +3,31 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Medidata.RBT;
-using Medidata.RBT.SharedRaveObjects;
 using TechTalk.SpecFlow;
 using Medidata.RBT.SeleniumExtension;
 using OpenQA.Selenium;
 using System.Collections.ObjectModel;
 using System.IO;
 using System.Xml;
-using Medidata.RBT.PageObjects.Rave.SiteAdministration;
+using Medidata.RBT.PageObjects.Rave.UserAdministrator;
 using Medidata.RBT.SharedObjects;
+using Medidata.RBT.SharedRaveObjects;
+using Medidata.RBT.PageObjects.Rave.Lab;
 
 namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
 {
     /// <summary>
-    ///This is a rave specific Draft.
+    ///This is a rave specific Lab.
     ///</summary>
-	public class Draft : BaseRaveSeedableObject
+    public class Lab : BaseRaveSeedableObject
     {
         /// <summary>
-        /// Create a Draft if it is not already in the dictionary of projects in FeatureObject
+        /// The Lab constructor
         /// </summary>
-        /// <param name="draftName">Feature defined name of the draft</param>
-		public Draft(string draftName)
+        /// <param name="analyteName">The feature file lab name</param>
+        public Lab(string analyteName)
         {
-	        UniqueName = draftName;
-	        SuppressSeeding = true;
+            UniqueName = analyteName;
         }
     }
 }

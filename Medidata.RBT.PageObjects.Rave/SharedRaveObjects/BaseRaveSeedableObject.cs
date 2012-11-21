@@ -30,7 +30,6 @@ namespace Medidata.RBT.SharedRaveObjects
 			SuppressSeeding = (TestContext.FeatureSeedingOption ?? TestContext.DefaultSeedingOption).SuppressSeeding(GetType());
 		}
 
-
 		public virtual void Seed()
 		{
 			var type = this.GetType();

@@ -81,20 +81,20 @@ namespace Medidata.RBT.PageObjects.Rave
         /// </summary>
         /// <param name="labName">Name of the lab.</param>
         /// <param name="type">The type.</param>
-         public void AddNewLab(string labName, string type, string rangeType = null)
+        public void AddNewLab(string labName, string type, string rangeType = null)
         {
             TestContext.CurrentPage.ClickLink("Add New Lab");
-            
+
             //table.Dropdown("_ddlLabType").SendKeys(type);
             ChooseFromDropdown("_ddlLabType", type);
             if (!String.IsNullOrEmpty(rangeType)) ChooseFromDropdown("_ddlRangeType", TestContext.GetExistingFeatureObjectOrMakeNew<RangeType>(rangeType, () => new RangeType(rangeType)).UniqueName);
-             
+
             HtmlTable table = Browser.TryFindElementByPartialID("LabsGrid").EnhanceAs<HtmlTable>();
-            var currentRow =  table.TextboxById("_txtName").Parent().Parent();
+            var currentRow = table.TextboxById("_txtName").Parent().Parent();
             table.TextboxById("_txtName").SetText(labName);
             table.TextboxById("_txtDescription").SetText(labName);
-            
-         
+
+
             var checkButton = currentRow.ImageBySrc("../../Img/i_ccheck.gif");
             checkButton.Click();
         }
