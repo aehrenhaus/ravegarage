@@ -14,6 +14,20 @@ Feature: Updated tab order to enable mouseless data entry - Untouched portrait l
   So that I can enter data without using a mouse 
 
 Background:
+Given xml draft "US11550.xml" is Uploaded
+Given study "US11550" is assigned to Site "Site_001"
+Given following Project assignments exist
+| User         | Project | Environment | Role         | Site     | SecurityRole          |
+| SUPER USER 1 | US11550 | Live: Prod  | SUPER ROLE 1 | Site_001 | Project Admin Default |
+Given I publish and push eCRF "US11550.xml" to "Version 1"
+Given I login to Rave with user "SUPER USER 1"
+Given I create a Subject
+    |Field               |Data              |Control Type |
+    |Subject Initials    |SUB               |textbox      |
+    |Subject Number      |{RndNum<num1>(5)} |textbox      |
+    |Subject ID 	     |SUB {Var(num1)}   |textbox      |	
+Given I select Form "Log Form Portrait"
+
 	#Given user "User 1"  has study "Standard Study" has site "Site A1" has subject "Subj A1001" in database "<EDC> Database"
 	#And study "Standard Study" has draft "Draft 1" has form "Log Form"
 	#And draft "Draft 1" has form "Log Form"
@@ -52,32 +66,30 @@ Background:
 	#	|Unit Dictionary 1		|U2					|			|U2			|		
 	#And form "Log Form" has log direction "Portrait"
 	#And I login to Rave as user "User 1" with password "Password"
-	Given I login to Rave with user "defuser" and password "password"
 	#And study "Standard Study" has role "Role 1"
 	#And I navigate to "Standard Study, Draft 1" in Architect
 	#And I publish and push "CRF Version<RANDOMNUMBER>" to site "Site A1"
 	#And I note "CRF Version"
 	#And I navigate to "study {Standard Study}, site {Site A1}, subject {Subj A1001}"
-	And I select Study "Standard Study" and Site "Site 1"
-	And I select a Subject "777777779{Var(num1)}"
-	Given I select Folder "Log Form Portrait"
+
+
   
 @release_2012.1.0
 @US11550-01a
-@WIP  
+@Validation  
 Scenario: The cursor begins in the data entry position for the first field on the page when I click on the page from the left-hand side menu.
 	Then the cursor focus is located on "textbox" in the row labeled "Field Label 1" in the "first" position in the row
   
 @release_2012.1.0
 @US11550-02a
-@WIP  
+@Validation   
 Scenario: The cursor moves from one field to the next when the user hits the tab key and ignores help text.
 	When I hit "tab" key
 	Then the cursor focus is located on "datetime" in the row labeled "Field Label 2" in the "first" position in the row
 	
 @release_2012.1.0
 @US11550-03a
-@WIP  
+@Validation  
 Scenario: The cursor moves from one field to the next when the user hits the tab key and ignores other non-enterable fields.
 	Given move cursor focus to "textbox" in the row labeled "Field Label 17" in the "first" position in the row
 	When I hit "tab" key
@@ -85,7 +97,7 @@ Scenario: The cursor moves from one field to the next when the user hits the tab
 
 @release_2012.1.0
 @US11550-04a
-@WIP  
+@Validation   
 Scenario: The cursor moves through all data entry input elements in a datetime field before moving to the next field.
 	Given move cursor focus to "datetime" in the row labeled "Field Label 2" in the "first" position in the row
 	When I hit "tab" key
@@ -103,7 +115,7 @@ Scenario: The cursor moves through all data entry input elements in a datetime f
 	
 @release_2012.1.0
 @US11550-05a
-@WIP  
+@Validation   
 Scenario: The cursor moves through all options in a radio button (horizontal).
 	Given move cursor focus to "radiobutton" in the row labeled "Field Label 7" in the "first" position in the row
 	When I hit "tab" key
@@ -113,7 +125,7 @@ Scenario: The cursor moves through all options in a radio button (horizontal).
 
 @release_2012.1.0
 @US11550-06a
-@WIP  
+@Validation   
 Scenario: The cursor moves through all options in a radio button (vertical).
 	Given move cursor focus to "radiobutton vertical" in the row labeled "Field Label 8" in the "first" position in the row
 	When I hit "tab" key
@@ -125,7 +137,7 @@ Scenario: The cursor moves through all options in a radio button (vertical).
 	
 @release_2012.1.0
 @US11550-07a
-@WIP  
+@Validation   
 Scenario: The cursor moves through all data entry input elements for a field associated with a unit dictionary before moving to the next field.
 	Given move cursor focus to "textbox" in the row labeled "Field Label 15" in the "first" position in the row
 	When I hit "tab" key
@@ -135,7 +147,7 @@ Scenario: The cursor moves through all data entry input elements for a field ass
 
 @release_2012.1.0
 @US11550-08a
-@WIP  
+@Validation   
 Scenario: The screen scrolls down when the eCRF is longer than the height of the screen and I tab away from the last visible field.
 	Given move cursor focus to "textbox" in the row labeled "Field Label 19" in the "first" position in the row
 	When I hit "tab" key
@@ -144,7 +156,7 @@ Scenario: The screen scrolls down when the eCRF is longer than the height of the
 
 @release_2012.1.0
 @US11550-09a
-@WIP  
+@Validation  
 Scenario: When I tab away from the last field, I should tab to the save button.
 	Given move cursor focus to "eSigPage" in the row labeled "Field Label 10" in the "second" position in the row
 	When I hit "tab" key

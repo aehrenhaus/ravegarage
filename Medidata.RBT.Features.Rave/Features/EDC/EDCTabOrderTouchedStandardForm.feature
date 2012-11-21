@@ -12,6 +12,21 @@ Feature: Updated tab order to enable mouseless data entry - Touched standard for
   So that I can enter data without using a mouse 
 
 Background:
+Given xml draft "US11550.xml" is Uploaded
+Given study "US11550" is assigned to Site "Site_001"
+Given following Project assignments exist
+| User         | Project | Environment | Role         | Site     | SecurityRole          |
+| SUPER USER 1 | US11550 | Live: Prod  | SUPER ROLE 1 | Site_001 | Project Admin Default |
+Given I publish and push eCRF "US11550.xml" to "Version 1"
+Given I login to Rave with user "SUPER USER 1"
+Given I create a Subject
+    |Field               |Data              |Control Type |
+    |Subject Initials    |SUB               |textbox      |
+    |Subject Number      |{RndNum<num1>(5)} |textbox      |
+    |Subject ID 	     |SUB {Var(num1)}   |textbox      |	
+Given I select Form "Standard Form"
+
+
 	#Given user "User 1"  has study "Standard Study" has site "Site A1" has subject "Subj A1001" in database "<EDC> Database"
 	#And study "Standard Study" had draft "Draft 1" has form "Standard Form"
 	#And draft "Draft 1" has form "Standard Form"
@@ -49,17 +64,14 @@ Background:
 	#	|Unit Dictionary 1		|U1					|true		|U1			|
 	#	|Unit Dictionary 1		|U2					|			|U2			|			
 	#And "Standard Form Touched" has been submitted with data
+
+
 	
-	Given I login to Rave with user "defuser" and password "password"
-	And I select Study "Standard Study" and Site "Site 1"
-	And I select a Subject "777777791{Var(num1)}"
-	And I select link "Standard Form" located in "Left Nav"
-	And I enter data in CRF
-	    | Field                        | Data        |
+
 
 @release_2012.1.0
 @US11550-01d
-@WIP 
+@Validation 
 Scenario: The cursor begins in the first available editable field on the page 
 
 		Then the cursor focus is located on "textbox" in the row labeled "Field Label 1" in the "first" position in the row
@@ -67,7 +79,7 @@ Scenario: The cursor begins in the first available editable field on the page
   
 @release_2012.1.0
 @US11550-02d
-@WIP  
+@Validation  
 Scenario: The cursor moves from one editable field to the next when the user hits the tab key and ignores help text.
 	
 		Given move cursor focus to "textbox" in the row labeled "Field Label 16" in the "first" position in the row
@@ -77,7 +89,7 @@ Scenario: The cursor moves from one editable field to the next when the user hit
 
 @release_2012.1.0
 @US11550-03d
-@WIP  
+@Validation  
 Scenario: When I tab away from the last editable field, I should tab to the save button.
 		
 		Given move cursor focus to "textbox" in the row labeled "Field Label 19" in the "first" position in the row
