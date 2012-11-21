@@ -11,11 +11,20 @@ Feature: QueryRefiringLogic_LogForm_MultiFldEC
 	So that I don't have to re-enter the exact same response
 
 Background:
-    Given I login to Rave with user "defuser" and password "password"
-	And following Study assignments exist
-		|User	|Study		    |Role |Site	  |Site Number	|
-		|User 1 |Standard Study	|cdm1 |Site 1 |S100			|
-	And I select Study "Standard Study" and Site "Site 1"
+ 	Given xml draft "Standard_Study_Draft_1.xml" is Uploaded
+	Given Site "Site 1" exists
+	Given study "Standard Study" is assigned to Site "Site 1"
+	Given I publish and push eCRF "Standard_Study_Draft_1.xml" to "Version 1"
+	Given following Project assignments exist
+		| User         | Project        | Environment | Role            | Site   | SecurityRole          |
+		| SUPER USER 1 | Standard Study | Live: Prod  | Edit Check Role | Site 1 | Project Admin Default |
+	Given I login to Rave with user "SUPER USER 1"
+
+    #Given I login to Rave with user "defuser" and password "password"
+	#And following Study assignments exist
+	#	|User	|Study		    |Role |Site	  |Site Number	|
+	#	|User 1 |Standard Study	|cdm1 |Site 1 |S100			|
+	#And I select Study "Standard Study" and Site "Site 1"
 
 @release_564_Patch11
 @PB_US12940_01A	

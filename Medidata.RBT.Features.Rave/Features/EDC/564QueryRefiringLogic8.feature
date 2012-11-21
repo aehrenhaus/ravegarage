@@ -12,9 +12,25 @@ Feature: 564QueryRefiringLogic8
 #Publish Checks
 #Queries on Locked datapoints, Freezed datapoints, Inactive records
 
-
 Background:
-    Given I login to Rave with user "defuser" and password "password"
+ 	Given xml draft "Edit_Check_Study_3_Draft_8.xml" is Uploaded
+ 	Given xml draft "AM_Edit_Check_Study_Draft_1.xml" is Uploaded
+	Given Site "Edit Check Site 1" exists
+	Given Site "Edit Check Site 8" exists
+	Given Site "AM Edit Site" exists
+	Given study "Edit Check Study 3" is assigned to Site "Edit Check Site 8"
+	Given study "Edit Check Study 3" is assigned to Site "Edit Check Site 1"
+	Given study "AM Edit Check Study" is assigned to Site "AM Edit Site"
+	Given I publish and push eCRF "Edit_Check_Study_3_Draft_8.xml" to "Version 1"
+	Given I publish and push eCRF "AM_Edit_Check_Study_Draft_1.xml" to "Version 1"
+	Given following Project assignments exist
+		| User         | Project             | Environment | Role            | Site              | SecurityRole          |
+		| SUPER USER 1 | Edit Check Study 3  | Live: Prod  | Edit Check Role | Edit Check Site 8 | Project Admin Default |
+		| SUPER USER 1 | Edit Check Study 3  | Live: Prod  | Edit Check Role | Edit Check Site 1 | Project Admin Default |
+		| SUPER USER 1 | AM Edit Check Study | Live: Prod  | Edit Check Role | AM Edit Site      | Project Admin Default |
+		| SUPER USER 2 | Edit Check Study 3  | Live: Prod  | Edit Check Role | Edit Check Site 8 | Project Admin Default |
+
+    #Given I login to Rave with user "defuser" and password "password"
 	#And following Study assignments exist
 	# | User      | Study               | Role | Site              | Site Number |
 	# | Defuser   | Edit Check Study 3  | cdm1 | Edit Check Site 8 | 80001       |
@@ -39,11 +55,12 @@ Background:
 @Validation
 Scenario: PB_8.1.1 As an EDC user, Data setup and verification for query re-firing. Folder "Screening" enter and save data on forms "Informed Consent" and "Concomitant Medications"
 	
+	Given I login to Rave with user "SUPER USER 1"
 	And I navigate to "DDE"
 	And I select link "First Pass"
 	And I select link "New Batch"
 	And I choose "Edit Check Study 3" from "Study"
-	And I choose "Prod" from "Environment"
+	#And I choose "Prod" from "Environment"
 	And I choose "Edit Check Site 8" from "Site"
 	And I type "sub {RndNum<num1>(5)}" in "Subject"
 	And I choose "Subject Identification" from "Form"
@@ -70,11 +87,11 @@ Scenario: PB_8.1.1 As an EDC user, Data setup and verification for query re-firi
 	    | Original Axis Number | 10          |
 	    | Current Axis Number  | 20          |
 	
-	And I login to Rave with user "Defuser01" and password "password"
+	Given I login to Rave with user "SUPER USER 2"
 	And I navigate to "DDE"
 	And I select link "Second Pass"
 	And I choose "Edit Check Study 3" from "Study"
-	And I choose "Prod" from "Environment"
+	#And I choose "Prod" from "Environment"
 	And I choose "Edit Check Site 8" from "Site"
 	And I choose "sub {Var(num1)}" from "Subject"
 	And I choose "Subject Identification" from "Form"
@@ -146,8 +163,8 @@ Scenario: PB_8.1.1 As an EDC user, Data setup and verification for query re-firi
 @PB_8.1.2
 @Validation
 Scenario: PB_8.1.2
- 
-    Given I select Study "Edit Check Study 3" and Site "Edit Check Site 8"
+	Given I login to Rave with user "SUPER USER 2"
+    And I select Study "Edit Check Study 3" and Site "Edit Check Site 8"
     And I select a Subject "sub{Var(num1)}"
 	And I select Form "Concomitant Medications" in Folder "Screening"
 	And I enter data in CRF on a new log line and save
@@ -197,7 +214,8 @@ Scenario: PB_8.1.2
 @Validation
 Scenario: PB_8.1.3
 	
-    Given I select Study "Edit Check Study 3" and Site "Edit Check Site 8"
+	Given I login to Rave with user "SUPER USER 2"
+    And I select Study "Edit Check Study 3" and Site "Edit Check Site 8"
     And I select a Subject "sub{Var(num1)}"
 	And I select Form "Concomitant Medications" in Folder "Screening"
 	And I enter data in CRF on a new log line and save
@@ -243,6 +261,7 @@ Scenario: PB_8.1.3
 @Validation
 Scenario: PB_8.2.1 Task Summary
 
+	Given I login to Rave with user "SUPER USER 2"
 	And I select Study "Edit Check Study 3" and Site "Edit Check Site 8"
     And I select a Subject "sub{Var(num1)}"
 	When I expand "Open Queries" in Task Summary
@@ -272,6 +291,7 @@ Scenario: PB_8.2.1 Task Summary
 @Validation
 Scenario: PB_8.3.1 Query Management
 
+	Given I login to Rave with user "SUPER USER 2"
 	And I navigate to "Query Management"
 	And I choose "Edit Check Study 3 (Prod)" from "Study"
 	And I choose "World" from "Site Group"
@@ -335,7 +355,8 @@ Scenario: PB_8.3.1 Query Management
 @ignore
 # Failing due to DT 14230
 Scenario: PB_8.3.2
-	
+
+	Given I login to Rave with user "SUPER USER 2"
 	And I navigate to "Query Management"
 	And I choose "Edit Check Study 3 (Prod)" from "Study"
 	And I choose "World" from "Site Group"
@@ -395,6 +416,7 @@ Scenario: PB_8.3.2
 @Validation
 Scenario: PB_8.4.1 Migrate Subject
 	
+	Given I login to Rave with user "SUPER USER 1"	
 	And I select Study "AM Edit Check Study" and Site "AM Edit Site"
 	And I create a Subject
 	| Field            | Data              |
@@ -569,6 +591,7 @@ Scenario: PB_8.4.1 Migrate Subject
 # The feature is not implemented in 5.6.3
 Scenario: PB_8.5.1 Publish Checks
 
+	Given I login to Rave with user "SUPER USER 1"	
 	And I navigate to "Architect"
 	And I select link "AM Edit Check Study" in "Active Projects"
 	And I select link "Draft 1" in "CRF Drafts"
@@ -672,6 +695,7 @@ Scenario: PB_8.5.1 Publish Checks
 @Validation
 Scenario: PB_8.6.1 Queries verification on data points with Freeze, Hard lock and Inactive records
 
+	Given I login to Rave with user "SUPER USER 1"
 	And I select Study "Edit Check Study 3" and Site "Edit Check Site 1"
     And I create a Subject
 		| Field            | Data              |

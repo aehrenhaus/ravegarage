@@ -2,7 +2,6 @@
 # will be examining the answered query data instead of the original query data.
 
 #TESTING FOR STANDARD FORM WITH ONLY 1 FIELD INVOLVED IN QUERY FIRING
-
 #-- project to be uploaded in excel spreadsheet 'Standard Study'
 @ignore
 Feature: 564QueryRefiringLogic_StdForm_1FldEC
@@ -11,16 +10,20 @@ Feature: 564QueryRefiringLogic_StdForm_1FldEC
 	So that I don't have to re-enter the exact same response
 
 Background:
-    Given I login to Rave with user "defuser" and password "password"
-	And following Study assignments exist
-		|User	 |Study		        |Role |Site	  |Site Number	|
-		|Defuser |Standard Study	|cdm1 |Site 1 |S100			|
-	And I select Study "Standard Study" and Site "Site 1"
+ 	Given xml draft "Standard_Study_Draft_1.xml" is Uploaded
+	Given Site "Site 1" exists
+	Given study "Standard Study" is assigned to Site "Site 1"
+	Given I publish and push eCRF "Standard_Study_Draft_1.xml" to "Version 1"
+	Given following Project assignments exist
+		| User         | Project        | Environment | Role            | Site   | SecurityRole          |
+		| SUPER USER 1 | Standard Study | Live: Prod  | Edit Check Role | Site 1 | Project Admin Default |
+	Given I login to Rave with user "SUPER USER 1"
 
 @release_564_Patch11
 @PB_US12940_01A
 @Validation		
 Scenario: PB_US12940_01A As an EDC user, when I entered bad data in field A that resulted in the system opening a query on field A, and I answered the query without changing the data, and the query is then closed, and I entered good data in field A, if I then entered the same bad data in field A as when the query was closed, then the system should not refire a query on field A. Query with requires response = true and requires manual close = true.
+	
 	And I create a Subject
 	| Field            | Data              |
 	| Subject Initials | SUB               |
