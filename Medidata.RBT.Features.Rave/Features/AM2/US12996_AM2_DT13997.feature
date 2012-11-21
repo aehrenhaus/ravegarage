@@ -318,7 +318,7 @@ And I take a screenshot
 And I click audit on Field "Field A" log line "4"
 And I verify Audits exist
 	| Audit Type | Query Message | User   | Time                 |
-	| Record     | Inactivated.  | System | dd MMM yyyy hh:mm:ss |
+	| Record     | Inactivated.  | System | dd MMM yyyy HH:mm:ss |
 And I take a screenshot
 
 @release_2012.1.0
@@ -365,5 +365,5 @@ And I take a screenshot
 And I click audit on Field "Field A" log line "4"
 And I verify Audits exist
 	| Audit Type | Query Message | User   | Time                 |
-	| Record     | Inactivated.  | System | dd MMM yyyy hh:mm:ss |
+	| Record     | Inactivated.  | System | dd MMM yyyy HH:mm:ss |
 And I take a screenshot
