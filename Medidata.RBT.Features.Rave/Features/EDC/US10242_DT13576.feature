@@ -4,7 +4,7 @@
 # 3. The value for the field got changed to the value the edit check should not set the subject to requires signature.
 # You will not see the signature prompt anywhere, but the subject will requires signature in its summary.
 # And the report will display the subject as requires signature.
-@ignore
+
 Feature: DT 13576 Edit Check 'sets subject to require signature' unexpectedly sets subject to req. signature in its summary on the value change, but there are no forms that are required signature.
 	As a Rave user
 	Given I enter data
