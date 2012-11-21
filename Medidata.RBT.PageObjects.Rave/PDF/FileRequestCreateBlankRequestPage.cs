@@ -26,6 +26,12 @@ namespace Medidata.RBT.PageObjects.Rave
             SelectCRFVersion(args.CRFVersion);
 
             ClickLink("Save");
+
+
+            Browser.TryFindElementById("_ctl0_Content_SearchCriteriaLabel", true, 10);
+            //To make sure saved pdf is avaialble in the list before we try to generate it
+            Browser.Navigate().Refresh();
+
             return new FileRequestPage();
         }
 
