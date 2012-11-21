@@ -1,4 +1,3 @@
-@ignore
 Feature: US13780_DT13557 Amendment Manger should not apply the same Object Heirarchy rules on renamed folders and folders that have an instance number.
   As a Rave user
   I want to be able to apply rules in AM Object Heirarchy
