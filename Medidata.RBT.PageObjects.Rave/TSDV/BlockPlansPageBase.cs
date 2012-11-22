@@ -12,7 +12,7 @@ using Medidata.RBT.PageObjects.Rave.SharedRaveObjects;
 
 namespace Medidata.RBT.PageObjects.Rave
 {
-	public abstract class BlockPlansPageBase : RavePageBase, IVerifySomethingExists
+	public abstract class BlockPlansPageBase : RavePageBase, IVerifySomethingExists,IVerifyConstrolDisabled
     {
 		public override IWebElement GetElementByName(string identifier, string areaIdentifier = null, string listItem = null)
 		{
@@ -184,5 +184,15 @@ namespace Medidata.RBT.PageObjects.Rave
 
 
 		#endregion
+
+		public bool IsControlEnabled(string controlName)
+		{
+			if (controlName == "Randomization Type")
+			{
+				var ele = Browser.TryFindElementById("_ctl0_Content__ctl0_dgProjectBlockPlan__ctl2_ddl_RandomizationType");
+				return ele.EnhanceAs<EnhancedElement>().Disabled;
+			}
+			throw new NotImplementedException();
+		}
 	}
 }

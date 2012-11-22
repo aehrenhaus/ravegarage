@@ -1,6 +1,7 @@
 ﻿# As a user, I can choose between two randomization types and change randomization types for non-Production plans
 @EnableSeeding=true
 @SuppressSeeding=SiteGroup,Role,SecurityRole
+@ignore
 
 Feature: US19017
 	When user selects Targeted SDV Configuration report
@@ -75,7 +76,7 @@ Scenario: @PB_US19017_01 When I enroll 20 subjects in a Production environment, 
 	And I activate the plan
 	And I switch to "Reports" window
 	And I select link "Home"
-	And I create 30 random Subjects with name "ABB" in Study "US19017" in Site "1"
+	And I create 30 random Subjects with name "ABB" in Study "US19017" in Site "Site 1"
 	And I select link "Home"
 	And I navigate to "Reporter"
 	And I select Report "Targeted SDV Subject Management"
@@ -129,8 +130,7 @@ Scenario: @PB_US19017_01 When I enroll 20 subjects in a Production environment, 
 	And I inactivate the plan
 	And I verify text "Dynamic Allocation" exists
 	And I click button "edit block plan"
-#TODO: Need method below to verify unable to change Randomization Type:
-	Then I verify that unable to change Randomization Type
+	Then I can see "Randomization Type" is disabled
 	
 	
 
@@ -160,7 +160,7 @@ Scenario: @PB_US19017_02 When I enroll 20 subjects in a Non-Production environme
 	And I activate the plan
 	And I switch to "Reports" window
 	And I select link "Home"
-	And I create 30 random Subjects with name "ABB" in Study "US19017" in Site "1"
+	And I create 30 random Subjects with name "ABB" in Study "US19017" in Site "Site 1"
 	And I select link "Home"
 	And I navigate to "Reporter"
 	And I select Report "Targeted SDV Subject Management"

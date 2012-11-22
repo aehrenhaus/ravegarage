@@ -111,6 +111,17 @@ namespace Medidata.RBT.SeleniumExtension
 			}
 		}
 
+		public bool Disabled {
+			get {
+				string disabled = ele.GetDisabled();
+
+				return disabled == "true";
+			}
+			set {
+				ele.SetAttribute("disabled",value.ToString());
+			}
+		}
+
 		#endregion
 
 		#region Enhanced Methods

@@ -84,6 +84,8 @@
     <Compile Include="Helpers\FilteredConsoleWriter.cs" />
     <Compile Include="Helpers\MultipleStreamWriter.cs" />
     <Compile Include="PageObjectInterfaces\AbstractPaginationControl.cs" />
+    <Compile Include="PageObjectInterfaces\IVerifyControlDisabled.cs" />
+    <Compile Include="PageObjectInterfaces\IVerifyRowsExist.cs" />
     <Compile Include="PageObjectInterfaces\EmptyPage.cs" />
     <Compile Include="PageObjectInterfaces\EmptyPOFactory.cs" />
     <Compile Include="Misc.cs" />
@@ -98,7 +100,7 @@
     <Compile Include="PageObjectInterfaces\PageBase.cs" />
     <Compile Include="PageObjectInterfaces\IControl.cs" />
     <Compile Include="PageObjectInterfaces\IActivatePage.cs" />
-    <Compile Include="PageObjectInterfaces\ICanVerifyExist.cs" />
+    <Compile Include="PageObjectInterfaces\IVerifySomethingExists.cs" />
     <Compile Include="PageObjectInterfaces\IPage.cs" />
     <Compile Include="PageObjectInterfaces\ICanPaginate.cs" />
     <Compile Include="PageObjectInterfaces\AbstractPageObjectFactory.cs" />
