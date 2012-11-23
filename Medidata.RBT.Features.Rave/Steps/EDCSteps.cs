@@ -556,7 +556,7 @@ namespace Medidata.RBT.Features.Rave
             User user = TestContext.GetExistingFeatureObjectOrMakeNew(
                 userName, () => new User(userName));
             text = text.Replace(userName, user.UniqueName);
-            bool exist = CurrentPage.As<ICanVerifyExist>().VerifyTextExist(null, text);
+            bool exist = CurrentPage.As<IVerifySomethingExists>().VerifySomethingExist(null, "text", text);
             Assert.IsTrue(exist, String.Format("Text does not exist :{0}", text));
 
         }
