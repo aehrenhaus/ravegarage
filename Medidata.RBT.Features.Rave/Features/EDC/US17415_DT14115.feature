@@ -1,9 +1,6 @@
 #When a non-visible (View Restricted) field, that does not require signature, on a form with other fields that do require signature and have already been signed, is made visible (View Restriction is removed), the signature on the visible fields is not broken.
-<<<<<<< HEAD
-@ignore
-Feature: US17415_DT14115 When a non-visible (View Restricted) field, that does not require signature, on a form with other fields that do require signature and have already been signed, is made visible (View Restriction is removed), then the signature on the visible fields should not break.
-=======
 #@ignore
+@ignore
 Feature: US17415_DT14115 
 >>>>>>> 65caaec... using seeding by draft upload for feature tests.
 	When a non-visible (View Restricted) field, that does not require signature, on a form with other fields that do require signature and have already been signed, is made visible (View Restriction is removed), then the signature on the visible fields should not break.
@@ -21,7 +18,7 @@ Background:
 	And study "US17415_DT14115" is assigned to Site "Site 01"
 	And following Project assignments exist
 		| User          | Project             | Environment | Role        | Site    | SecurityRole          |
-		| SUPER USER 1  | US17415_DT14115   | Live: Prod  | SUPER ROLE 1| Site 01 | Project Admin Default |
+		| SUPER USER 1  | US17415_DT14115     | Live: Prod  | SUPER ROLE 1| Site 01 | Project Admin Default |
 	And Role "SUPER ROLE" has Action "Sign"
 
 #----------------------------------------------------------------------------------------------------------------------------------------
@@ -30,9 +27,8 @@ Background:
 @Validation	
 Scenario: @PB_US17415_DT14115_01 As an Investigator, when I sign the "Adverse Events" log form, the form level signature does not break when the "Added 1 For Extra Review" field is made visible.
 
-	Given I publish and push eCRF "US17415_DT14115_Source_Draft.xml" to "SV1"
+	Given I publish and push eCRF "US17415_DT14115_Source_Draft.xml" to "SourceVersion1"
 	And I login to Rave with user "SUPER USER 1"
-
 	And I create a Subject
 		| Field          | Data              | Control Type |
 		| Subject Name   | SUB               | textbox      |
@@ -49,7 +45,6 @@ Scenario: @PB_US17415_DT14115_01 As an Investigator, when I sign the "Adverse Ev
 	And I verify text "Please Sign - Default User  (SUPER USER 1)" with username "SUPER USER 1" exists
 	And I take a screenshot
 	And I open log line 1 for edit
-
 	When I enter data in CRF and save
 		| Field                  | Data | Control Type |
 		| Ready for Extra Review | True | checkbox     |
@@ -73,7 +68,6 @@ Scenario: @PB_US17415_DT14115_01 As an Investigator, when I sign the "Adverse Ev
 	And I select link "SUB{Var(num1)}" in "Header"
 	And I select link "Adverse Events"
 	And I open log line 1 for edit
-
 	When I enter data in CRF and save
 		| Field                  | Data  | Control Type |
 		| Ready for Extra Review | False | checkbox     |
@@ -89,9 +83,8 @@ Scenario: @PB_US17415_DT14115_01 As an Investigator, when I sign the "Adverse Ev
 @Validation	
 Scenario: @PB_US17415_DT14115_02 As an Investigator, when I sign the "Serious Adverse Events" log form, the form level signature does not break when the "Added 1 For Extra Review" field is made visible.
 
-	Given I publish and push eCRF "US17415_DT14115_Source_Draft.xml" to "SV1"
+	Given I publish and push eCRF "US17415_DT14115_Source_Draft.xml" to "SourceVersion1"
 	And I login to Rave with user "SUPER USER 1"
-
 	When I create a Subject
 		| Field          | Data              | Control Type |
 		| Subject Name   | SUB               | textbox      |
@@ -108,7 +101,6 @@ Scenario: @PB_US17415_DT14115_02 As an Investigator, when I sign the "Serious Ad
 	Then I verify text "Please Sign - Default User  (SUPER USER 1)" with username "SUPER USER 1" exists
 	And I take a screenshot
 	And I open log line 1 for edit
-
 	When I enter data in CRF and save
 		| Field                  | Data | Control Type |
 		| Ready for Extra Review | True | checkbox     |
@@ -144,9 +136,8 @@ Scenario: @PB_US17415_DT14115_03 As an Investigator, when I sign the "Demographi
 =======
 Scenario: @PB_US17415_03 As an Investigator, when I sign the "Demographics" form, the form level signature does not break when the ICDTAGE field is made visible.
 
-	Given I publish and push eCRF "US17415_DT14115_Source_Draft.xml" to "SV1"
+	Given I publish and push eCRF "US17415_DT14115_Source_Draft.xml" to "SourceVersion1"
 	And I login to Rave with user "SUPER USER 1"
-
 	When I create a Subject
 		| Field          | Data              | Control Type |
 		| Subject Name   | SUB               | textbox      |
@@ -164,12 +155,10 @@ Scenario: @PB_US17415_03 As an Investigator, when I sign the "Demographics" form
 	And I wait for 5 seconds
 	Then I verify text "Please Sign - Default User  (SUPER USER 1)" with username "SUPER USER 1" exists
 	And I take a screenshot
-
-	Given I publish and push eCRF "US17415_DT14115_Target_Draft.xml" to "TV1"
-	
+	Given I publish and push eCRF "US17415_DT14115_Target_Draft.xml" to "TargetVersion1"
 	When I go to Amendment Manager for study "US17415_DT14115"
-	And I select Source CRF version "SV1"
-	And I select Target CRF version "TV1"
+	And I select Source CRF version "SourceVersion1"
+	And I select Target CRF version "TargetVersion1"
 	And I create migration plan
 	And I take a screenshot
 	And I navigate to "Execute Plan"
@@ -238,9 +227,8 @@ Scenario: @PB_US17415_DT14115_04 As an Investigator, when I sign the "Test Demog
 =======
 Scenario: @PB_US17415_04 As an Investigator, when I sign the "Test Demographics" form, the form level signature does not break when the ICDTAGE field is made invisible.
 
-	Given I publish and push eCRF "US17415_DT14115_Source_Draft.xml" to "SV1"
+	Given I publish and push eCRF "US17415_DT14115_Source_Draft.xml" to "SourceVersion1"
 	And I login to Rave with user "SUPER USER 1"
-
 	When I create a Subject
 		| Field          | Data              | Control Type |
 		| Subject Name   | SUB               | textbox      |
@@ -259,11 +247,10 @@ Scenario: @PB_US17415_04 As an Investigator, when I sign the "Test Demographics"
 	And I wait for 5 seconds
 	Then I verify text "Please Sign - Default User  (SUPER USER 1)" with username "SUPER USER 1" exists
 	And I take a screenshot
-
-	Given I publish and push eCRF "US17415_DT14115_Target_Draft.xml" to "TV1"
+	Given I publish and push eCRF "US17415_DT14115_Target_Draft.xml" to "TargetVersion1"
 	When I go to Amendment Manager for study "US17415_DT14115"
-	And I select Source CRF version "SV1"
-	And I select Target CRF version "TV1"
+	And I select Source CRF version "SourceVersion1"
+	And I select Target CRF version "TargetVersion1"
 	And I create migration plan
 	And I take a screenshot
 	And I navigate to "Execute Plan"
@@ -327,9 +314,8 @@ Scenario: @PB_US17415_DT14115_05 As an Investigator, when I sign the "Demographi
 =======
 Scenario: @PB_US17415_05 As an Investigator, when I sign the "Demographics" form and "Field Visibility Changed" is checked in Amendment Manager>Configure Plan, the form level signature does not break when the ICDTAGE field is made visible.
 
-	Given I publish and push eCRF "US17415_DT14115_Source_Draft.xml" to "SV1"
+	Given I publish and push eCRF "US17415_DT14115_Source_Draft.xml" to "SourceVersion1"
 	And I login to Rave with user "SUPER USER 1"
-
 	When I create a Subject
 		| Field          | Data              | Control Type |
 		| Subject Name   | SUB               | textbox      |
@@ -347,19 +333,16 @@ Scenario: @PB_US17415_05 As an Investigator, when I sign the "Demographics" form
 	And I wait for 5 seconds
 	Then I verify text "Please Sign - Default User  (SUPER USER 1)" with username "SUPER USER 1" exists
 	And I take a screenshot
-
-	Given I publish and push eCRF "US17415_DT14115_Target_Draft.xml" to "TV1"
+	Given I publish and push eCRF "US17415_DT14115_Target_Draft.xml" to "TargetVersion1"
 	When I go to Amendment Manager for study "US17415_DT14115"
-	And I select Source CRF version "SV1"
-	And I select Target CRF version "TV1"
+	And I select Source CRF version "SourceVersion1"
+	And I select Target CRF version "TargetVersion1"
 	And I create migration plan
 	And I take a screenshot
-
 	And I navigate to "Configure Plan"
 	And I check "Field visibility changed"
 	And I select link "Update"
 	And I take a screenshot
-
 	And I go to Amendment Manager for study "US17415_DT14115"
 	And I navigate to "Execute Plan"
 	And I migrate all Subjects
@@ -427,9 +410,8 @@ Scenario: @PB_US17415_DT14115_06 As an Investigator, when I sign the "Test Demog
 =======
 Scenario: @PB_US17415_06 As an Investigator, when I sign the "Test Demographics" form and "Field Visibility Changed" is checked in Amendment Manager>Configure Plan, the form level signature does not break when the ICDTAGE field is made invisible.
 
-	Given I publish and push eCRF "US17415_DT14115_Source_Draft.xml" to "SV1"
+	Given I publish and push eCRF "US17415_DT14115_Source_Draft.xml" to "SourceVersion1"
 	And I login to Rave with user "SUPER USER 1"
-
 	When I create a Subject
 		| Field          | Data              | Control Type |
 		| Subject Name   | SUB               | textbox      |
@@ -448,19 +430,16 @@ Scenario: @PB_US17415_06 As an Investigator, when I sign the "Test Demographics"
 	And I wait for 5 seconds
 	Then I verify text "Please Sign - Default User  (SUPER USER 1)" with username "SUPER USER 1" exists
 	And I take a screenshot
-
-	Given I publish and push eCRF "US17415_DT14115_Target_Draft.xml" to "TV1"
+	Given I publish and push eCRF "US17415_DT14115_Target_Draft.xml" to "TargetVersion1"
 	When I go to Amendment Manager for study "US17415_DT14115"
-	And I select Source CRF version "SV1"
-	And I select Target CRF version "TV1"
+	And I select Source CRF version "SourceVersion1"
+	And I select Target CRF version "TargetVersion1"
 	And I create migration plan
 	And I take a screenshot
-
 	And I navigate to "Configure Plan"
 	And I check "Field visibility changed"
 	And I select link "Update"
 	And I take a screenshot
-
 	And I go to Amendment Manager for study "US17415_DT14115"
 	And I navigate to "Execute Plan"
 	And I migrate all Subjects
@@ -511,9 +490,8 @@ Scenario: @PB_US17415_06 As an Investigator, when I sign the "Test Demographics"
 @Validation	
 Scenario: @PB_US17415_DT14115_07 As an Investigator, when I sign the "Adverse Events 1" standard form, the form level signature does not break when the "Added 1 For Extra Review" field is made visible.
 
-	Given I publish and push eCRF "US17415_DT14115_Source_Draft.xml" to "SV1"
+	Given I publish and push eCRF "US17415_DT14115_Source_Draft.xml" to "SourceVersion1"
 	And I login to Rave with user "SUPER USER 1"
-
 	When I create a Subject
 		| Field          | Data              | Control Type |
 		| Subject Name   | SUB               | textbox      |
@@ -529,7 +507,6 @@ Scenario: @PB_US17415_DT14115_07 As an Investigator, when I sign the "Adverse Ev
 	And I wait for 5 seconds
 	Then I verify text "Please Sign - Default User  (SUPER USER 1)" with username "SUPER USER 1" exists
 	And I take a screenshot
-
 	When I enter data in CRF and save
 		| Field                  | Data | Control Type |
 		| Ready for Extra Review | True | checkbox     |
@@ -551,7 +528,6 @@ Scenario: @PB_US17415_DT14115_07 As an Investigator, when I sign the "Adverse Ev
 	And I take a screenshot
 	And I select link "SUB{Var(num1)}" in "Header"
 	And I select link "Adverse Events 1"
-
 	When I enter data in CRF and save
 		| Field                  | Data  | Control Type |
 		| Ready for Extra Review | False | checkbox     |
@@ -566,9 +542,8 @@ Scenario: @PB_US17415_DT14115_07 As an Investigator, when I sign the "Adverse Ev
 @Validation	
 Scenario: @PB_US17415_DT14115_08 As an Investigator, when I sign the "Serious Adverse Events 1" standard form, the form level signature does not break when the "Added 1 For Extra Review" field is made visible.
 
-	Given I publish and push eCRF "US17415_DT14115_Source_Draft.xml" to "SV1"
+	Given I publish and push eCRF "US17415_DT14115_Source_Draft.xml" to "SourceVersion1"
 	And I login to Rave with user "SUPER USER 1"
-
 	When I create a Subject
 		| Field          | Data              | Control Type |
 		| Subject Name   | SUB               | textbox      |
@@ -584,7 +559,6 @@ Scenario: @PB_US17415_DT14115_08 As an Investigator, when I sign the "Serious Ad
 	And I wait for 5 seconds
 	Then I verify text "Please Sign - Default User  (SUPER USER 1)" with username "SUPER USER 1" exists
 	And I take a screenshot
-
 	When I enter data in CRF and save
 		| Field                  | Data | Control Type |
 		| Ready for Extra Review | True | checkbox     |
