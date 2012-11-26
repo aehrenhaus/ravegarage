@@ -93,10 +93,10 @@ Scenario:@US12607_US19066-02A - The localization user can view strings are local
 
   Given I login to Rave with user "US12607_locuser"
   And I create a Subject
-    |Field                |Data              |Control Type |
-    |LSubject Initials    |SUB               |textbox      |
-    |LSubject Number      |{RndNum<num2>(3)} |textbox      |
-    |LSubject ID 	      |SUB {Var(num2)}   |textbox      |
+    | Field            | Data              | Control Type |
+    | Subject Initials | SUB               | textbox      |
+    | Subject Number   | {RndNum<num2>(3)} | textbox      |
+    | Subject ID       | SUB {Var(num2)}   | textbox      |
   And I navigate to "LHome"
   And I navigate to "LPDF Generator" module
   And I create Data PDF
@@ -107,10 +107,10 @@ Scenario:@US12607_US19066-02A - The localization user can view strings are local
   And I expand Display multiple log lines per page
   And I verify rows exist in "Display multiple log lines per page" table
    |Form              |Checked |
-   |LAdverse Events1  |false   |
-   |LAdverse Events2  |false   |
-   |LMedical History1 |false   |
-   |LMedical History2 |false   |
+   |Adverse Events1  |false   |
+   |Adverse Events2  |false   |
+   |Medical History1 |false   |
+   |Medical History2 |false   |
   And I verify text "LWhen selected, all log lines on the selected form or forms will display continuously. If un-selected, a new page will be created for each log line." exists
   And I take a screenshot
   

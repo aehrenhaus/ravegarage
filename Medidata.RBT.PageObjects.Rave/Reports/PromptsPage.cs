@@ -175,7 +175,6 @@ namespace Medidata.RBT.PageObjects.Rave
             //If you get a unexpected end of file issue, this is an intermittent issue.
             do
             {
-                Thread.Sleep(5000);
 				extractedFilePaths = Misc.UnzipAllDownloads();
             }
             while (extractedFilePaths.Count == 0);

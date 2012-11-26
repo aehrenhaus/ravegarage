@@ -122,7 +122,7 @@ namespace Medidata.RBT.Common.Steps
 		public void IShouldSee____(string identifier)
 		{
 			bool exist = CurrentPage.As<IVerifySomethingExists>().VerifySomethingExist(null, null, identifier);
-			Assert.IsFalse(exist, String.Format("Does exist :{0}", identifier));
+			Assert.IsTrue(exist, String.Format("Does exist :{0}", identifier));
 		}
 	}
 }
