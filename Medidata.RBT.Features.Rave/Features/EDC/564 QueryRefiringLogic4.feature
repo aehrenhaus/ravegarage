@@ -1,5 +1,5 @@
 @ignore
-Feature: 564QueryRefiringLogic4
+Feature: 564QueryRefiringLogic4 Edit Checks refire with no require response and require manual close.
 	As a Rave user
 	I want to change data
 	So I can see refired queries

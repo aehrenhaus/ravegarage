@@ -4,7 +4,7 @@
 #TESTING FOR STANDARD FORM WITH ONLY 1 FIELD INVOLVED IN QUERY FIRING
 #-- project to be uploaded in excel spreadsheet 'Standard Study'
 @ignore
-Feature: 564QueryRefiringLogic_StdForm_1FldEC
+Feature: 564QueryRefiringLogic_StdForm_1FldEC The logic that is used to determine when a query that has already been cancelled or closed should or should not be re-fired in Rave.
 	As a Rave user
 	When I manually close a query or cancel, the query should not re-fire if the exact same data is entered into the system
 	So that I don't have to re-enter the exact same response
