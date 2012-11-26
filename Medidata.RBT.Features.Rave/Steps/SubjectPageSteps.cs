@@ -4,6 +4,7 @@ using Medidata.RBT.PageObjects.Rave;
 using OpenQA.Selenium;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Medidata.RBT.PageObjects.Rave.TableModels;
+using Medidata.RBT.SeleniumExtension;
 
 namespace Medidata.RBT.Features.Rave
 {
@@ -29,7 +30,23 @@ namespace Medidata.RBT.Features.Rave
             Assert.IsTrue(result);
         }
 
+        /// <summary>
+        /// Method to check if ADD event lock icon is displayed on subject page
+        /// </summary>
+        [StepDefinition(@"I can see Add Event lock icon")]
+        public void ICanSeeAddEventLockIcon()
+        {
+            Assert.IsNotNull(Browser.TryFindElementById("_ctl0_Content_SubjectAddEvent_DisableMatrixImage"));
+        }
 
+        /// <summary>
+        /// Method to check if ADD event lock icon is not displayed on subject page
+        /// </summary>
+        [StepDefinition(@"I can not see Add Event lock icon")]
+        public void ICanNotSeeAddEventLockIcon()
+        {
+            Assert.IsNull(Browser.TryFindElementById("_ctl0_Content_SubjectAddEvent_DisableMatrixImage"));
+        }
 
         [StepDefinition(@"I can see ""([^""]*)"" button")]
         [StepDefinition(@"I can see ""([^""]*)"" radio button")]
@@ -58,14 +75,8 @@ namespace Medidata.RBT.Features.Rave
             if (enabled.ToLower() == "disabled")
                 isDisabled = true;
 
-            bool result = false;
             IWebElement element = CurrentPage.As<SubjectPage>().GetElementByName(label);
-
-            if (element != null && element.GetAttribute("disabled").ToLower() == isDisabled.ToString().ToLower())
-                result = true;
-
-            Assert.IsTrue(result);
-
+            Assert.IsTrue(isDisabled == !element.Enabled);
         }
 
         [StepDefinition(@"I can not see dropdown labeled ""([^""]*)""")]

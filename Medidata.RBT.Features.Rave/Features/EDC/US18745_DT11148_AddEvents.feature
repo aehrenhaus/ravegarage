@@ -985,7 +985,7 @@ Scenario:@US18745-26  The Add Events controls can be localized on the subject pa
 	Given I login to Rave with user "US18745_locuser"
 	When I create a Subject
     |Field       |Data                  |Control Type |
-    |LLabel 1    |SUB{RndNum<num26>(3)} |textbox      |
+    |Label 1    |SUB{RndNum<num26>(3)} |textbox      |
     Then I can see "LDisabled" radio button
 	And I can see "LEnabled" radio button
 	And I can see "enabled" dropdown labeled "LAdd Event"
@@ -1026,7 +1026,7 @@ Scenario:@US18745-27 The Add Events controls can be localized on the grid view p
 	Given I login to Rave with user "US18745_locuser"
 	And I create a Subject
     |Field       |Data                  |Control Type |
-    |LLabel 1    |SUB{RndNum<num27>(3)} |textbox      |
+    |Label 1    |SUB{RndNum<num27>(3)} |textbox      |
 	When I select link "LGrid View"
     Then I can see "LDisabled" radio button
 	And I can see "LEnabled" radio button

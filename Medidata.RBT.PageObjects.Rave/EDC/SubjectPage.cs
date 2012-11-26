@@ -67,7 +67,13 @@ namespace Medidata.RBT.PageObjects.Rave
                 || (identifier == "Select 'Enabled' to allow others to add events."))
                 id = "_ctl0_Content_SubjectAddEvent_NoEntryPermitHelpLabel";
             else
-                return GetTaskSummaryArea(identifier);
+            {
+                IWebElement result = base.GetElementByName(identifier, areaIdentifier, listItem);
+                if (result != null)
+                    return result;
+                else
+                    return GetTaskSummaryArea(identifier);
+            }
             
             try
             {
@@ -170,7 +176,7 @@ namespace Medidata.RBT.PageObjects.Rave
 		public new bool VerifySomethingExist(string areaIdentifier,string type, string identifier)
 		{
 			if (identifier == "Add Event lock icon")
-				return Browser.TryFindElementById("_ctl0_Content_SubjectAddEvent_DisableMatrixImage") == null;
+				return Browser.TryFindElementById("_ctl0_Content_SubjectAddEvent_DisableMatrixImage") != null;
 
 			bool result = false;
 			IWebElement element;
