@@ -77,6 +77,11 @@ namespace Medidata.RBT.SeleniumExtension
 			return jsExe.ExecuteScript("return arguments[0].style[arguments[1]]", element, style) as string;
 		}
 
+		public static string GetDisabled(this IWebElement element)
+		{
+			return element.GetAttribute("disabled");
+		}
+		 
 
 		public static IWebElement Parent(this IWebElement element)
 		{

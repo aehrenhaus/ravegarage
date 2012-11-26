@@ -28,7 +28,6 @@ namespace Medidata.RBT
 
         public PageBase()
         {
-			this.Browser = TestContext.Browser;
 			PageFactory.InitElements(Browser, this);
         }
 
@@ -41,7 +40,7 @@ namespace Medidata.RBT
         /// <summary>
 		/// See IPage interface
         /// </summary>
-		public RemoteWebDriver Browser { get; set; }
+		public RemoteWebDriver Browser { get { return TestContext.Browser; } }
 
 
 		/// <summary>
@@ -248,11 +247,20 @@ namespace Medidata.RBT
 		/// </summary>
         public virtual bool IsThePage()
         {
-			//TODO: this does not take the {} template into account, provide fix later
 			if (string.IsNullOrEmpty(this.URL))
 				return false;
+			var uri = new Uri(Browser.Url);
+			string stripSessionUrl = uri.Scheme + "://" + uri.Host+string.Join("",uri.Segments.Where(x=>!x.StartsWith("(S(")).ToArray()).ToLower();
+			//uri = new Uri(stripSessionUrl);
 
-			return Browser.Url.ToLower().Contains(this.URL.ToLower());
+			if (!stripSessionUrl.StartsWith(BaseURL.ToLower()))
+				return false;
+
+			string path = stripSessionUrl.Replace(BaseURL.ToLower(), "");
+
+
+			bool isThePage = string.Equals(this.URL, path, StringComparison.InvariantCultureIgnoreCase);
+			return isThePage;
         }
 
         /// <summary>
@@ -292,7 +300,7 @@ namespace Medidata.RBT
                 Storage.SetScenarioLevelValue("UrlSessionID", sessionIdstring);
             }
 
-            Browser = TestContext.Browser;
+            
             PageFactory.InitElements(Browser, this);
 
             return this;

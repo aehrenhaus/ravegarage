@@ -150,6 +150,7 @@
     <Compile Include="ReportAdmin\ReportManagerPage.cs" />
     <Compile Include="ReportAdmin\ReportAssignmentPage.cs" />
     <Compile Include="SharedRaveObjects\Analyte.cs" />
+    <Compile Include="SharedRaveObjects\StudySite.cs" />
     <Compile Include="SharedRaveObjects\Lab.cs" />
     <Compile Include="SharedRaveObjects\LabUnitDictionary.cs" />
     <Compile Include="SharedRaveObjects\LabUnit.cs" />
@@ -222,7 +223,6 @@
     <Compile Include="UserAdministrator\UserActivationPage.cs" />
     <Compile Include="UserAdministrator\UploadUserPage.cs" />
     <Compile Include="UserAdministrator\UserEditPage.cs" />
-    <Compile Include="RavePageObjectFactory.cs" />
     <Compile Include="UserAdministrator\UserAdministrationPage.cs" />
     <Compile Include="OtherPages\RWSLogPage.cs" />
     <Compile Include="EDC\CRFPage.cs" />

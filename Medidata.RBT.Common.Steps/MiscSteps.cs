@@ -164,7 +164,19 @@ namespace Medidata.RBT.Common.Steps
 			
 		}
 
+		[StepDefinition(@"I can see ""([^""]*)"" is enalbed")]
+		public void ICanSee____IsEnabled(string controlName)
+		{
+			bool enabled = CurrentPage.As<IVerifyConstrolDisabled>().IsControlEnabled(controlName);
+			Assert.IsTrue(enabled,controlName+" is disabled!");
+		}
 
+		[StepDefinition(@"I can see ""([^""]*)"" is disabled")]
+		public void ICanSee____IsDisabled(string controlName)
+		{
+			bool enabled = CurrentPage.As<IVerifyConstrolDisabled>().IsControlEnabled(controlName);
+			Assert.IsTrue(enabled, controlName + " is enabled!");
+		}
 
 	}
 
