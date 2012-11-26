@@ -38,6 +38,14 @@ namespace Medidata.RBT.PageObjects.Rave
                        .Split(new string[] { "<" }, StringSplitOptions.None)[0].Trim() == fieldName;
             });
 
+            if (area == null) //bringing back original code to locate area, if the the area is not found.
+            {
+                area = leftSideTds.FirstOrDefault(x =>
+                {
+                    return x.FindElement(By.XPath(".//td[@class='crf_preText']")).GetInnerHtml()
+                        .Split(new string[] { "\r\n", "<" }, StringSplitOptions.None)[0].Trim() == fieldName;
+                });
+            }
             if (area != null)
             {
                 ReadOnlyCollection<IWebElement> tds = area.Parent().Children();
