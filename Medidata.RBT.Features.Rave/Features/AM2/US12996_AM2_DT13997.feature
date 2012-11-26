@@ -34,7 +34,7 @@ Given I publish and push eCRF "DT13997 Upload First AM SJ_1.6.3.xml" to "Version
 
 @release_2012.1.0
 @DT13997_10
-@WIP
+@Validation
 Scenario:  When a user navigates to Architect, changes the coded values of a data dictionary, creates a new CRF version, creates a migration plan with the new CRF version as the Target CRF version, in object mapping maps the data dictionary, and migrates the subject, then user navigate to EDC and sees that the defaulted values for the subject are present.
 
 Given I login to Rave with user "SUPER USER 1"
@@ -94,7 +94,7 @@ And I take a screenshot
 	
 @release_2012.1.0
 @DT13997_20
-@WIP
+@Validation
 Scenario:  When a user navigates to Architect, reorders the coded values of a data dictionary, creates a new CRF version, creates a migration plan with the new CRF version as the Target CRF version, in object mapping maps the data dictionary, and migrates the subject, then user navigate to EDC and sees that the defaulted values for the subject are present.
 
 Given I login to Rave with user "SUPER USER 1"
@@ -134,7 +134,7 @@ And I take a screenshot
 	
 @release_2012.1.0
 @DT13997_30
-@WIP
+@Validation
 Scenario:  When a user navigates to Architect, changes the coded values of a data dictionary, creates a new CRF version, creates a migration plan with the new CRF version as the Target CRF version, in object mapping maps the data dictionary, and migrates a subject that has been submitted by a user with role permissions to edit a field with defaulted values, then user navigate to EDC and sees that the defaulted values for the subject are present.
 
 Given I login to Rave with user "SUPER USER 2"
@@ -196,7 +196,7 @@ And I take a screenshot
 
 @release_2012.1.0
 @DT13997_40
-@WIP
+@Validation
 Scenario:  When a user navigates to Architect, reorders the coded values of a data dictionary, creates a new CRF version, creates a migration plan with the new CRF version as the Target CRF version, in object mapping maps the data dictionary, and migrates a subject that has been submitted by a user with role permissions to edit a field with defaulted values, then user navigate to EDC and sees that the defaulted values for the subject are present.
 
 Given I login to Rave with user "SUPER USER 2"
@@ -237,7 +237,7 @@ And I take a screenshot
 
 @release_2012.1.0
 @DT13997_50
-@WIP
+@Validation
 Scenario:  When a user navigates to Architect, changes the order of the coded values of a data dictionary, creates a new CRF version, creates a migration plan with the new CRF version as the Target CRF version, in object mapping maps the data dictionary, and migrates the subject, then user navigate to EDC and sees that the defaulted values for the subject are present.
 
 Given I login to Rave with user "SUPER USER 1"
@@ -276,7 +276,7 @@ And I take a screenshot
 
 @release_2012.1.0
 @DT13997_60
-@WIP
+@Validation
 Scenario:  When a user navigates to Architect, removes one default value of the coded values of a data dictionary, creates a new CRF version, creates a migration plan with the new CRF version as the Target CRF version, in object mapping maps the data dictionary, and migrates the subject, then user navigate to EDC and sees that the defaulted values for the subject are present and the removed one is disabled.
 
 Given I login to Rave with user "SUPER USER 2"
@@ -323,7 +323,7 @@ And I take a screenshot
 
 @release_2012.1.0
 @DT13997_60
-@WIP
+@Validation
 Scenario:  When a user navigates to Architect, removes one default value of the coded values of a data dictionary and adds one value of the coded values, creates a new CRF version, creates a migration plan with the new CRF version as the Target CRF version, in object mapping maps the data dictionary, and migrates the subject, then user navigate to EDC and sees that the defaulted values for the subject are present and the removed one is disabled.
 
 Given I login to Rave with user "SUPER USER 1"
