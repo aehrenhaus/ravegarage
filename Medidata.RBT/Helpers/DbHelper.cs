@@ -89,7 +89,7 @@ alter database {0} set multi_user with rollback immediate",
 @"
 ALTER DATABASE {0} SET SINGLE_USER WITH ROLLBACK IMMEDIATE
 ALTER DATABASE {0} SET OFFLINE WITH ROLLBACK IMMEDIATE ",
-                                                         catalog, builder.InitialCatalog);
+                                                         catalog);
 
             builder.InitialCatalog = "master";
             SqlCommand cmd = new SqlCommand(offlineQuery, new SqlConnection(builder.ToString()));
@@ -108,7 +108,7 @@ ALTER DATABASE {0} SET OFFLINE WITH ROLLBACK IMMEDIATE ",
 @"
 ALTER DATABASE {0} SET MULTI_USER
 ALTER DATABASE {0} SET ONLINE WITH ROLLBACK IMMEDIATE ",
-                                                         catalog, builder.InitialCatalog);
+                                                         catalog);
 
             builder.InitialCatalog = "master";
             SqlCommand cmd = new SqlCommand(onlineQuery, new SqlConnection(builder.ToString()));
