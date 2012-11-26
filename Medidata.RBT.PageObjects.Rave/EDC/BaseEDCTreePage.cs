@@ -109,10 +109,24 @@ namespace Medidata.RBT.PageObjects.Rave
 
 		public bool VerifySomethingExist(string areaIdentifier, string type, string identifier)
 		{        
-            if (areaIdentifier == null
-                && Browser.FindElementByTagName("body").Text.Contains(identifier))
+            if (areaIdentifier == null)
             {
-                return true;
+                var element = Browser.TryFindElementBy(b =>
+                {
+                    var body = Browser.FindElementByTagName("body");
+                    IWebElement bodyResult = null;
+                    if (body.Text.Contains(identifier))
+                        bodyResult = body;
+
+                    return bodyResult;
+                }, 
+                isWait: true, 
+                timeOutSecond: 20); //We need to wait somewhat longer in some situations
+                    
+                if(element != null)
+                {
+                    return true;
+                }
             }
 
             IWebElement result = null;
