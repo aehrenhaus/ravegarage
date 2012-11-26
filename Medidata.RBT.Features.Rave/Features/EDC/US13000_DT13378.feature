@@ -39,10 +39,10 @@ Background:
 @GDraft
 Scenario: PB-US13000_DT13378-01 As an EDC user, when I clinical significance information and make changes to the local lab and Alert lab ranges such that the lab value is still above range, then I should still see the clinical significance information.
 	
-	When I select Study "IMCLCP11-0805" and Site "131 - Schott"
+	When I select Study "IMCLCP11-0805" and Site "135 - Denis"
 	And I create a Subject
 	| Field        | Data                 | Control Type	|
-	| Site Number: | 131                  | textbox			|
+	| Site Number: | 135                  | textbox			|
 	| Subject ID:  | LAB{RndNum<num1>(4)} | textbox			|
 	And I select link "Pre-Treatment"
 	And I select link "Informed Consent"
@@ -57,15 +57,35 @@ Scenario: PB-US13000_DT13378-01 As an EDC user, when I clinical significance inf
 	| Sex:                        | Male        | radiobutton  |
 	And I click button "Save"
 	And I select link "Serum Chemistry"
-	And I choose "laboratoire de biologie" from "Lab"
+	And I choose "laboratoire beauverger" from "Lab"
 	And I enter data in CRF and save
-	| Field     | Data | Unit   |
-	| Potassium | 8    | mmol/L |
-	And I verify lab ranges
-	| Field       | Data | Range Status | Range		| Unit   |
-	| Potassium   | 8    | ++           | 3.5 - 5.1 | mmol/L |
+	| Field                       | Data | Unit   |
+	| Sodium                      | ND   | mEq/L  |
+	| Potassium                   | 8    | mEq/L  |
+	| Chloride                    | ND   | mEq/L  |
+	| Creatinine                  | ND   | µmol/L |
+	| BUN                         | ND   | mmol/L |
+	| Glucose                     | ND   | mmol/L |
+	| Calcium                     | ND   | mmol/L |
+	| Phosphorus                  | ND   | mmol/L |
+	| Magnesium                   | ND   | mmol/L |
+	| Total Protein               | ND   | g/L    |
+	| Albumin                     | ND   | g/L    |
+	| Uric Acid                   | ND   | µmol/L |
+	| Total Bilirubin             | ND   | µmol/L |
+	| ALT                         | ND   | U/L    |
+	| AST                         | ND   | U/L    |
+	| Alkaline Phosphatase        | ND   | U/L    |
+	| Lactate Dehydrogenase (LDH) | ND   | U/L    |
+	#And I enter data in CRF and save
+	#| Field						| Data			| Control Type	|
+	#| Sample Date (dd MMM yyyy) | 01 Jan 2012	| datetime		|
+	And I click button "Save"
 	And I choose "Clinically Significant" from "Clinical Significance"
 	And I click button "Save"
+	And I verify lab ranges
+	| Field		| Data | Range Status | Range		| Unit	| Status Icon			|
+	| Potassium	| 8    | ++           | 3.8 - 4.8	| mEq/L	| Requires Verification	|
 	And I select link "Demographics"
 	And I enter data in CRF and save
 	| Field							| Data			| Control Type |
@@ -75,18 +95,18 @@ Scenario: PB-US13000_DT13378-01 As an EDC user, when I clinical significance inf
 	And I select link "Serum Chemistry"
 	Then I should see Clinical Significance "Clinically Significant" on Field "Potassium"
 	And I verify lab ranges
-	| Field       | Data | Range Status | Range		| Unit   |
-	| Potassium   | 8    | ++           | 3.5 - 5.1 | mmol/L |
+	| Field		| Data | Range Status | Range		| Unit	| Status Icon			|
+	| Potassium	| 8    | ++           | 3.8 - 4.8	| mEq/L	| Requires Verification	|
 
 @release_2012.1.0		
 @US13000_DT13378-02
 @GDraft
 Scenario: PB-US13000_DT13378-02 As an EDC user, when I clinical significance information and make changes to the local lab and Alert lab ranges such that the lab value is still below range, then I should still see the clinical significance information.
 
-	When I select Study "IMCLCP11-0805" and Site "131 - Schott"
+	When I select Study "IMCLCP11-0805" and Site "135 - Denis"
 	And I create a Subject
 	| Field        | Data                 | Control Type	|
-	| Site Number: | 131                  | textbox			|
+	| Site Number: | 135                  | textbox			|
 	| Subject ID:  | LAB{RndNum<num1>(4)} | textbox			|
 	And I select link "Pre-Treatment"
 	And I select link "Informed Consent"
@@ -101,15 +121,35 @@ Scenario: PB-US13000_DT13378-02 As an EDC user, when I clinical significance inf
 	| Sex:                        | Male        | radiobutton  |
 	And I click button "Save"
 	And I select link "Serum Chemistry"
-	And I choose "laboratoire de biologie" from "Lab"
+	And I choose "laboratoire beauverger" from "Lab"
 	And I enter data in CRF and save
-	| Field     | Data | Unit   |
-	| Potassium | 1    | mmol/L |
-	And I verify lab ranges
-	| Field       | Data | Range Status | Range		| Unit   |
-	| Potassium   | 1    | --			| 3.5 - 5.1 | mmol/L |
+	| Field							| Data	| Unit		|
+	| Sodium						| ND    | mEq/L		|
+	| Potassium						| 1		| mEq/L		|
+	| Chloride						| ND    | mEq/L		|
+	| Creatinine					| ND    | µmol/L	|
+	| BUN							| ND    | mmol/L	|
+	| Glucose						| ND    | mmol/L	|
+	| Calcium						| ND    | mmol/L	|
+	| Phosphorus					| ND    | mmol/L	|
+	| Magnesium						| ND    | mmol/L	|
+	| Total Protein					| ND    | g/L		|
+	| Albumin						| ND    | g/L		|
+	| Uric Acid						| ND    | µmol/L	|
+	| Total Bilirubin				| ND    | µmol/L	|
+	| ALT							| ND    | U/L		|
+	| AST							| ND    | U/L		|
+	| Alkaline Phosphatase			| ND    | U/L		|
+	| Lactate Dehydrogenase (LDH)	| ND    | U/L		|
+	#And I enter data in CRF and save
+	#| Field						| Data			| Control Type	|
+	#| Sample Date (dd MMM yyyy) | 01 Jan 2012	| datetime		|
+	And I click button "Save"
 	And I choose "Clinically Significant" from "Clinical Significance"
 	And I click button "Save"
+	And I verify lab ranges
+	| Field		| Data | Range Status | Range		| Unit	| Status Icon			|
+	| Potassium	| 1    | --           | 3.8 - 4.8	| mEq/L	| Requires Verification	|
 	And I select link "Demographics"
 	And I enter data in CRF and save
 	| Field							| Data			| Control Type |
@@ -119,5 +159,5 @@ Scenario: PB-US13000_DT13378-02 As an EDC user, when I clinical significance inf
 	And I select link "Serum Chemistry"
 	Then I should see Clinical Significance "Clinically Significant" on Field "Potassium"
 	And I verify lab ranges
-	| Field       | Data | Range Status | Range		| Unit   |
-	| Potassium   | 1    | --           | 3.5 - 5.1 | mmol/L |
+	| Field		| Data | Range Status | Range		| Unit	| Status Icon			|
+	| Potassium	| 1    | --           | 3.8 - 4.8	| mEq/L	| Requires Verification	|

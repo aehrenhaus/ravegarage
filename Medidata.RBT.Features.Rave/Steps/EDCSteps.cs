@@ -271,6 +271,19 @@ namespace Medidata.RBT.Features.Rave
         }
 
         /// <summary>
+        /// Clinical Significance for field displayed
+        /// </summary>
+        /// <param name="clinSignificance"></param> 
+        /// <param name="field"></param> 
+        [StepDefinition(@"I should see Clinical Significance ""([^""]*)"" on Field ""([^""]*)""")]
+        public void IShouldSeeClinicalSignificance____OnField____(string clinSignificance, string field)
+        {
+            CRFPage page = CurrentPage.As<CRFPage>();
+            bool isFound = page.FieldWithClinSignificanceExists(clinSignificance, field);
+            Assert.IsTrue(isFound, "No Clinical Significance found.");
+        }
+
+        /// <summary>
         /// Fill CRF and save
         /// </summary>
         /// <param name="table"></param>
