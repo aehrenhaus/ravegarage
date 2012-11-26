@@ -14,6 +14,7 @@ using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.IE;
 using Medidata.RBT.SeleniumExtension;
 using Medidata.RBT.SharedObjects;
+using System.Reflection;
 
 
 namespace Medidata.RBT
@@ -65,6 +66,13 @@ namespace Medidata.RBT
 		//so we can output to both MSTest result and console @ runtime 
 		private static MultipleStreamWriter consoleWriter;
 
+		static TestContext()
+		{
+			POFactory = new PageObjectFactory();
+			string assemPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, RBTConfiguration.Default.POAssembly);
+			var assem = Assembly.LoadFile( assemPath);
+			POFactory.AddAssembly(assem);
+		}
 
 		public static FileInfo LastDownloadFile
 		{
@@ -199,23 +207,10 @@ namespace Medidata.RBT
 		public static RemoteWebDriver Browser { get; set; }
 
 
-		private static IPageObjectFactory _POFactory;
-		public static IPageObjectFactory POFactory
+		public static PageObjectFactory POFactory
 		{
-			get
-			{
-				if (CurrentPage == null)
-					return new EmptyPOFactory();
-				if (_POFactory == null)
-				{
-					Type factoryType = CurrentPage.GetType()
-						.Assembly
-						.GetTypes()
-						.FirstOrDefault(x => x.GetInterface("IPageObjectFactory") != null && !x.IsAbstract);
-					_POFactory = Activator.CreateInstance(factoryType) as IPageObjectFactory;
-				}
-				return _POFactory;
-			}
+			get;
+			private set;
 		}
 
 		public static SeedingOptions DefaultSeedingOption { get; set; }

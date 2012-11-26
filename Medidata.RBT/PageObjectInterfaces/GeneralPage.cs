@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Medidata.RBT
 {
-    public class EmptyPage : PageBase
+    public class GeneralPage : PageBase
     {
         public override string URL
         {

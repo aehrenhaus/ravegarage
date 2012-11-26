@@ -28,7 +28,6 @@ namespace Medidata.RBT
 
         public PageBase()
         {
-			this.Browser = TestContext.Browser;
 			PageFactory.InitElements(Browser, this);
         }
 
@@ -41,7 +40,7 @@ namespace Medidata.RBT
         /// <summary>
 		/// See IPage interface
         /// </summary>
-		public RemoteWebDriver Browser { get; set; }
+		public RemoteWebDriver Browser { get { return TestContext.Browser; } }
 
 
 		/// <summary>
@@ -292,7 +291,7 @@ namespace Medidata.RBT
                 Storage.SetScenarioLevelValue("UrlSessionID", sessionIdstring);
             }
 
-            Browser = TestContext.Browser;
+            
             PageFactory.InitElements(Browser, this);
 
             return this;
