@@ -1,6 +1,6 @@
 ﻿# When a user selects Permuted Block Randomization, subject assignment satisfies a specified allocation and ratio is random for all blocks.
 @EnableSeeding=true
-
+@ignore
 
 Feature: US18689
 	When user selects Permuted Block Randomization
