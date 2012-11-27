@@ -21,7 +21,7 @@ namespace Medidata.RBT.PageObjects.Rave.Configuration
         public IPage BuildClinicalViews(string projectName)
         {
             ClickLink("Add New");
-            ChooseFromDropdown("Project", projectName);
+            ChooseFromDropdown("_ddlProjects", projectName);
             Browser.FindElement(By.XPath("//img[@src = '../../Img/i_ccheck.gif']")).Click();
 
             return this;

@@ -1,6 +1,5 @@
 # When All Upper Case is selected in the Configuration Other Settings and my Locale is Japanese, the month component of the date, and the meridian component of the time, should be displayed in uppercase.
 
-@ignore
 Feature: US10246_DT13300
 	The month component of the date in a date field, and the meridian component of the time in a time field, should be displayed in uppercase when All Upper Case is selected in Configuration and Locale is set to Japanese
 	As a Rave Administrator
@@ -18,8 +17,9 @@ Background:
 	Given I publish and push eCRF "US10246_DT13300.xml" to "Version 1" with study environment "Prod"
 	Given Clinical Views exist for project "US10246_DT13300"
 	Given following Project assignments exist
-	| User 		   | Project 		 | Environment| Role         | Site  | SecurityRole 		 |
-	| defjapan		| US10246_DT13300 | Live: Prod | SUPER ROLE 1 | Site 1| Project Admin Default |
+	| User         | Project         | Environment | Role              | Site   | SecurityRole          |
+	| defjapan     | US10246_DT13300 | Live: Prod  | SUPERROLE_US10246 | Site 1 | Project Admin Default |
+	| SUPER USER 1 | US10246_DT13300 | Live: Prod  | SUPERROLE_US10246 | Site 1 | Project Admin Default |
 	
 	#Given I login to Rave with user "defjapan" and password "password"
 	#And the following Project assignments exist
@@ -69,15 +69,15 @@ Scenario: @PB_US10246_DT13300_01 As a Study Coordinator, when I save the month i
 	Then I should see data on Fields in CRF
 	| Field                 | Data        |
 	| Device Implant Date 1 | UN          |
-	| Device Implant Date 2 | Jul         |
+	| Device Implant Date 2 | JUL         |
 	| Device Implant Date 3 | UNK         |
-	| Device Implant Date 4 | 12 Jul 1972 |
+	| Device Implant Date 4 | 12 JUL 1972 |
 	| Device Implant Date 5 | UN JUL 1972 |
 	| Device Implant Date 6 | 12 UNK 1972 |
 	| Device Implant Date 7 | UN UNK 1972 |
 	| Device Implant Date 8 | UN 07 1972  |
 	| Device Implant Date 9 | UN UN 1972  |
-	| Device Implant Time   | 11:59 am    |
+	| Device Implant Time   | 11:59 AM    |
 	And I take a screenshot
 
 @release_2012.1.0 
@@ -87,8 +87,8 @@ Scenario: @PB_US10246_DT13300_02 As a Study Coordinator, I save an unknown month
 		
 	When I login to Rave with user "SUPER USER 1"
 	And I create a Subject
-	| Field				| Data				   |
-	| Subject Identifier| SUB {RndNum<num1>(3)}|
+	| Field              | Data                  | Control Type |
+	| Subject Identifier | SUB {RndNum<num1>(3)} | text         |
 	And I select link "Device Form"
 	And I enter data in CRF and save
 	| Field                 | Data        | Control Type |
@@ -133,8 +133,8 @@ Scenario: @PB_US10246_DT13300_03  As a Study Coordinator, My Profile > Locale is
 	
 	When I login to Rave with user "SUPER USER 1"
 	And I create a Subject
-	| Field				| Data				   |
-	| Subject Identifier| SUB {RndNum<num1>(3)}|
+	| Field              | Data                  | Control Type |
+	| Subject Identifier | SUB {RndNum<num1>(3)} | text         |
 	And I select link "Device Form"
 	And I enter data in CRF and save
 	| Field                 | Data        | Control Type |
@@ -161,8 +161,8 @@ Scenario: @PB_US10246_DT13300_03  As a Study Coordinator, My Profile > Locale is
 	| Device Implant Date 9 | UN UN 1972  |
 	| Device Implant Time   | 11:59 AM    | 	
 	And I take a screenshot
-	And I login to Rave with user "defjapan" and password "password"
-	And I select Study "US10246_DT13300" and Site "Site 1"
+	When I login to Rave with user "defjapan"
+	#And I login to Rave with user "defjapan" and password "password"
 	And I select a Subject "SUB {Var(num1)}"
 	And I select link "Device Form"
 	And I enter data in CRF and save
