@@ -10,6 +10,7 @@ using System.Collections.Specialized;
 using OpenQA.Selenium.Support.UI;
 using TechTalk.SpecFlow;
 using System.Collections.ObjectModel;
+using System.Threading;
 
 namespace Medidata.RBT.PageObjects.Rave
 {
@@ -37,6 +38,7 @@ namespace Medidata.RBT.PageObjects.Rave
                 EnhancedElement deleteButton = pdfTr.FindImagebuttons().FirstOrDefault(x => x.GetAttribute("id").EndsWith("Delete"));
 
                 deleteButton.Click();
+                Thread.Sleep(1000);
 				Page.Browser.GetAlertWindow().Accept();
             }
         }

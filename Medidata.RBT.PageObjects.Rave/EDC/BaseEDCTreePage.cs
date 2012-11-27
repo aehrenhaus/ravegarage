@@ -107,7 +107,7 @@ namespace Medidata.RBT.PageObjects.Rave
 
 		#region IVerifySomethingExists
 
-		public bool VerifySomethingExist(string areaIdentifier, string type, string identifier)
+		public bool VerifySomethingExist(string areaIdentifier, string type, string identifier, bool exactMatch = false)
 		{        
             if (areaIdentifier == null)
             {
@@ -115,7 +115,9 @@ namespace Medidata.RBT.PageObjects.Rave
                 {
                     var body = Browser.FindElementByTagName("body");
                     IWebElement bodyResult = null;
-                    if (body.Text.Contains(identifier))
+                    if (exactMatch && body.Text.Equals(identifier))
+                        bodyResult = body;
+                    else if (!exactMatch && body.Text.Contains(identifier))
                         bodyResult = body;
 
                     return bodyResult;

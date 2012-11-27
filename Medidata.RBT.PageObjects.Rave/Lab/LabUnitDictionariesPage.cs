@@ -128,11 +128,11 @@ namespace Medidata.RBT.PageObjects.Rave
 
         #region ICanVerifyExist
 
-		bool IVerifySomethingExists.VerifySomethingExist(string areaIdentifier, string type,string identifier)
+		bool IVerifySomethingExists.VerifySomethingExist(string areaIdentifier, string type,string identifier, bool exactMatch)
         {
 			if (areaIdentifier == null)
             {
-				if (Browser.FindElementByTagName("body").Text.Contains(identifier))
+				if (!exactMatch && Browser.FindElementByTagName("body").Text.Contains(identifier))
                     return true;
                 else
                     return false;

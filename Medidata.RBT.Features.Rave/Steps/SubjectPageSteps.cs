@@ -53,7 +53,7 @@ namespace Medidata.RBT.Features.Rave
         public void ICanSee____Button(string btnValue)
         {
             bool canSee = CurrentPage.As<IVerifySomethingExists>()
-                .VerifySomethingExist(null,"control",btnValue);
+                .VerifySomethingExist(null, "control", btnValue, true);
 
             Assert.IsTrue(canSee);
         }
@@ -63,7 +63,7 @@ namespace Medidata.RBT.Features.Rave
         public void ICanNotSee____Button(string btnValue)
         {
 			bool canSee = CurrentPage.As<IVerifySomethingExists>()
-				 .VerifySomethingExist(null, "control", btnValue);
+				 .VerifySomethingExist(null, "control", btnValue, true);
 
             Assert.IsFalse(canSee);
         }

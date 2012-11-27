@@ -100,8 +100,8 @@ Scenario:@US12607_US19066-02A - The localization user can view strings are local
   And I navigate to "LHome"
   And I navigate to "LPDF Generator" module
   And I create Data PDF
-   |Name                       |Profile              |Study                |Environment   |Role          |Locale             |
-   |LocDataPDF{RndNum<num>(3)} |SUPER PDF PROFILE 1  |US12607DataPDFStudy  |LProd         |SUPER ROLE 1  |LLocalization Test |
+   | Name                       | Profile             | Study               | Environment | Role         | Locale             |
+   | LocDataPDF{RndNum<num>(3)} | SUPER PDF PROFILE 1 | US12607DataPDFStudy | Prod        | SUPER ROLE 1 | LLocalization Test |
   And I click edit datapdf "LocDataPDF{Var(num)}"  
   And I verify text "LDisplay multiple log lines per page" exists
   And I expand Display multiple log lines per page
