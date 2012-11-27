@@ -1,5 +1,5 @@
 ﻿# Derivations that use the Step Function Add, Subtract, Multiply or Divide should not derive to Null when one of the fields involved in the derviation is not numeric and the derivation uses User Value and not Standard Value.
-@ignore
+
 Feature: US19302_DT14205
 	As a Rave user
 	When create a Derivation
