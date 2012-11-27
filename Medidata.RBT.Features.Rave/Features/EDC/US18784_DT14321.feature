@@ -1,5 +1,5 @@
 # US 18784 Frozen status is not propagated to the standard field on a log line
-@ignore
+
 Feature: US18784_DT14321
 	When I Verify and Freeze a standard field on a mixed form at the same time at the form level, the frozen status should progagate to the standard field on the log line.
 	As a Rave Administrator
