@@ -165,5 +165,13 @@ namespace Medidata.RBT
 			get { return (String)this["SuppressSeeding"]; }
 			set { this["SuppressSeeding"] = value; }
 		}
+
+		[ConfigurationProperty("POAssembly", DefaultValue = "Medidata.RBT.PageObjects.Rave.dll")]
+		public String POAssembly
+		{
+			get { return (String)this["POAssembly"]; }
+			set { this["POAssembly"] = value; }
+		}
+		
     }
 }

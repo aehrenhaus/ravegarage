@@ -1,7 +1,7 @@
 ﻿# When a user selects Permuted Block Randomization, subject assignment satisfies a specified allocation and ratio is random for all blocks.
 @EnableSeeding=true
-@SuppressSeeding=SiteGroup,Role,SecurityRole
-@ignore
+
+
 Feature: US18689
 	When user selects Permuted Block Randomization
 	Then subject assignment satisfies a specified allocation ratio
@@ -9,9 +9,7 @@ Feature: US18689
 	And each randomization permutation has an equal probability of being selected
 
 Background:
-	#Given I am logged in to Rave with username "defuser" and password "password"
 	Given xml draft "US18689.xml" is Uploaded with Environment name "Dev"
-
 	Given Site "Site 1" with Site Group "Asia" exists
 	Given Site "Site 2" with Site Group "Europe" exists
 	Given Site "Site 3" with Site Group "World" exists
@@ -82,9 +80,8 @@ Background:
 
 @release_2012.1.0 
 @PB_US18689_01
-@Draft
+@Validation
 Scenario: @PB_US18689_01 As a Rave user, when I select Permuted Block Randomization and I Enroll 50 subjects in study then subject assignment satisfies the specified ratio and is random for all blocks in study level.
-	#When I select Study "US18689" and Site "Site 1"
 	Given I login to Rave with user "SUPER USER 1"
 	And I navigate to "Home"
 	And I navigate to "Reporter"
@@ -109,16 +106,15 @@ Scenario: @PB_US18689_01 As a Rave user, when I select Permuted Block Randomizat
 	And I activate the plan
 	And I switch to "Reports" window
 	And I navigate to "Home"
-	And I create 12 random Subjects with name "KKP" in Study "US18689" in Site "Site 1"
+	And I create 24 random Subjects with name "KKP" in Study "US18689" in Site "Site 1"
 	And I navigate to "Home"
 	And I navigate to "Reporter"
 	And I select Report "Targeted SDV Subject Management"
 	And I set report parameter "Study" with table
-		| Name        | Environment |
+		| Name    | Environment |
 		| US18689 | Dev         |
 	And I click button "Submit Report"
 	And I switch to "Targeted SDV Subject Override" window
-
 	Then I verify that one of the following Permutations has been used every 6 subjects
 		| Randomization Permutations                                            |
 		| All Forms, All Forms, Architect Defined, No Forms, No Forms, No Forms |
@@ -186,7 +182,7 @@ Scenario: @PB_US18689_01 As a Rave user, when I select Permuted Block Randomizat
 	And I navigate to "Reporter"
 	And I select Report "Targeted SDV Configuration"
 	And I set report parameter "Study" with table
-		| Name        | Environment |
+		| Name    | Environment |
 		| US18689 | Dev         |
 	And I click button "Submit Report"
 	And I switch to "Targeted SDV Study Plan" window
@@ -207,17 +203,16 @@ Scenario: @PB_US18689_01 As a Rave user, when I select Permuted Block Randomizat
 	And I activate the plan
 	And I switch to "Reports" window
 	And I navigate to "Home"
-	And I create 6 random Subjects with name "BBC" in Study "US18689" in Site "Site 2"
+	And I create 24 random Subjects with name "BBC" in Study "US18689" in Site "Site 2"
 	And I navigate to "Home"
 	And I navigate to "Reporter"
 	And I select Report "Targeted SDV Subject Management"
 	And I set report parameter "Study" with table
-		| Name       | Environment |
+		| Name    | Environment |
 		| US18689 | Dev         |
 	And I click button "Submit Report"
 	And I switch to "Targeted SDV Subject Override" window
 	And I filter by site group "World"
-
 	Then I verify that one of the following Permutations has been used every 6 subjects
 		| Randomization Permutations                                            |
 		| All Forms, All Forms, Architect Defined, No Forms, No Forms, No Forms |
@@ -286,7 +281,7 @@ Scenario: @PB_US18689_01 As a Rave user, when I select Permuted Block Randomizat
 	And I navigate to "Reporter"
 	And I select Report "Targeted SDV Configuration"
 	And I set report parameter "Study" with table
-		| Name       | Environment |
+		| Name    | Environment |
 		| US18689 | Dev         |
 	And I click button "Submit Report"
 	And I switch to "Targeted SDV Study Plan" window
@@ -301,14 +296,14 @@ Scenario: @PB_US18689_01 As a Rave user, when I select Permuted Block Randomizat
 	And I delete the tier "Architect Defined" from plan
 	And I edit Blocks 
 	| Name              | Subject Count |
-	| Architect Defined | 6            |
+	| Architect Defined | 6             |
 	And I select the tier "Architect Defined" and Subject Count "1"
 	And I select the tier "All Forms" and Subject Count "2"
 	And I select the tier "No Forms" and Subject Count "3"
 	And I activate the plan
 	And I switch to "Reports" window
 	And I navigate to "Home"
-	And I create 6 random Subjects with name "CCD" in Study "US18689" in Site "Site 3"
+	And I create 24 random Subjects with name "CCD" in Study "US18689" in Site "Site 3"
 	And I navigate to "Home"
 	And I navigate to "Reporter"
 	And I select Report "Targeted SDV Subject Management"
@@ -392,7 +387,6 @@ Scenario: @PB_US18689_01 As a Rave user, when I select Permuted Block Randomizat
 	And I select link "World"
 	And I select "Site" link "Site 3"
 	And I inactivate the plan
-
 	And I switch to "Reports" window
 	And I navigate to "Home"
 	And I navigate to "Reporter"
@@ -412,19 +406,19 @@ Scenario: @PB_US18689_01 As a Rave user, when I select Permuted Block Randomizat
 	And I delete the tier "Architect Defined" from plan
 	And I edit Blocks 
 	| Name              | Subject Count |
-	| Architect Defined | 4            |
+	| Architect Defined | 4             |
 	And I select the tier "Architect Defined" and Subject Count "1"
 	And I select the tier "All Forms" and Subject Count "1"
 	And I select the tier "No Forms" and Subject Count "2"
 	And I activate the plan
 	And I switch to "Reports" window
 	And I navigate to "Home"
-	And I create 6 random Subjects with name "KKI" in Study "US18689" in Site "Site 4"
+	And I create 24 random Subjects with name "KKI" in Study "US18689" in Site "Site 4"
 	And I navigate to "Home"
 	And I navigate to "Reporter"
 	And I select Report "Targeted SDV Subject Management"
 	And I set report parameter "Study" with table
-		| Name       | Environment |
+		| Name    | Environment |
 		| US18689 | Dev         |
 	And I click button "Submit Report"
 	And I switch to "Targeted SDV Subject Override" window

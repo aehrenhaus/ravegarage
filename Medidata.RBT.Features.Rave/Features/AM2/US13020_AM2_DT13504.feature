@@ -5,8 +5,7 @@
 # 2. One subject has been created in the environment 
 # 3. One form with a query has been created
 
-Feature: When an edit check has been removed from a target CRF version in Architect, and a subject is migrated to the target CRF version and a query closed then the audit trail says "Amendment Manager: Query closed during migration process because check no longer exists in target version.".
-
+Feature: US13020_AM2_DT13504 When an edit check has been removed from a target CRF version in Architect, and a subject is migrated to the target CRF version and a query closed then the audit trail says "Amendment Manager: Query closed during migration process because check no longer exists in target version.".
 
 Background:
 Given xml draft "DT13504_1.xml" is Uploaded
@@ -38,9 +37,9 @@ Given following Report assignments exist
 #If "Field A" is empty and "Field C" is empty fire query "Test Query DT13504 2" on "Field C".
 
 @release_2012.1.0
-@DT13504_10
-@VAL
-Scenario:  When a user navigates to Publish Checks, selects the noted source version and the noted target version, clicks create plan, checks the 'Show field edit check' box, selects "Form A" from the Form dropdown, checks the 'Inactivate' box for the "SYS_REQ_FIELDD_FORMA" edit check, clicks 'Publish', and navigates to created subject in EDC then the system will show an audit trail message of "Amendment Manager: Query closed during migration process because the edit check no longer exists in target version." in "Field D"
+@PB_US13020_AM2_DT13504_01
+@Validation
+Scenario:  PB_US13020_AM2_DT13504_01, When a user navigates to Publish Checks, selects the noted source version and the noted target version, clicks create plan, checks the 'Show field edit check' box, selects "Form A" from the Form dropdown, checks the 'Inactivate' box for the "SYS_REQ_FIELDD_FORMA" edit check, clicks 'Publish', and navigates to created subject in EDC then the system will show an audit trail message of "Amendment Manager: Query closed during migration process because the edit check no longer exists in target version." in "Field D"
 
 Given I login to Rave with user "SUPER USER 1"
 And I create a Subject
@@ -98,9 +97,9 @@ And I switch to "Reports" window
 
 
 @release_2012.1.0
-@DT13504_20
-@VAL
-Scenario:  When a user navigates to Amendment Manager, selects the noted source version and the noted target version, clicks create plan, and executes the plan on created subject, and the user navigates to EDC  then the system will show an audit trail message of "Amendment Manager: Query closed during migration process because the edit check no longer exists in target version." in "Field B"
+@PB_US13020_AM2_DT13504_02
+@Validation
+Scenario:  PB_US13020_AM2_DT13504_02, When a user navigates to Amendment Manager, selects the noted source version and the noted target version, clicks create plan, and executes the plan on created subject, and the user navigates to EDC  then the system will show an audit trail message of "Amendment Manager: Query closed during migration process because the edit check no longer exists in target version." in "Field B"
 
 Given I publish and push eCRF "DT13504_1.xml" to "Version 3"
 And I login to Rave with user "SUPER USER 1"

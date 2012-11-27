@@ -35,10 +35,10 @@ namespace Medidata.RBT.PageObjects.Rave
             {
 			    var paraTR = FindParameterTr(name);
 
-				Thread.Sleep(500);//wiat for while, although the TryFindElementByXPath will wait anyway, the Exception is always showing in debug mode
+				//Thread.Sleep(5000);//wiat for while, although the TryFindElementByXPath will wait anyway, the Exception is always showing in debug mode
 
-				//wait till the div div becomes visible, that means the table is loaded complete
-				paraTR.TryFindElementByXPath("./td[position()=2]/table/tbody/tr[position()=2]/td/div[@style='display: block;']", true);
+				////wait till the div div becomes visible, that means the table is loaded complete
+				//paraTR.TryFindElementByXPath("./td[position()=2]/table/tbody/tr[position()=2]/td/div[@style='display: block;']", true);
 
 			    var tbl = paraTR.FindElements(By.XPath(".//td[@style='border-width:0px;border-collapse:collapse;']/table"))[1].EnhanceAs<HtmlTable>();
 
@@ -85,6 +85,8 @@ namespace Medidata.RBT.PageObjects.Rave
                 
                 //Wait for this element to appear (it actually already exists 
                 //but it has style='display:none') thus the second filter in the expath
+
+				Thread.Sleep(1000);
                 var el = paraTR.TryFindElementBy(
                     By.XPath(".//div[contains(@id, '" + filter + "') and contains(@style, 'block')]"));
             }
@@ -94,8 +96,8 @@ namespace Medidata.RBT.PageObjects.Rave
 		public PromptsPage SearchInParameter(string name, string value)
 		{			
 			var paraTR = FindParameterTr(name);
-			//wait till the div div becomes visible, that means the table is loaded complete
-			var div = Browser.TryFindElementByXPath("./td[position()=2]/table/tbody/tr[position()=2]/td/div[@style='display: block;']",true);
+			////wait till the div div becomes visible, that means the table is loaded complete
+			//var div = Browser.TryFindElementByXPath("./td[position()=2]/table/tbody/tr[position()=2]/td/div[@style='display: block;']",true);
 
 			var textbox = paraTR.TextboxById("SearchTxt");
 			textbox.SetText(value);
