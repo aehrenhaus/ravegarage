@@ -5,7 +5,7 @@
 
 #-- project to be uploaded in excel spreadsheet 'Standard Study'
 @ignore
-Feature: QueryRefiringLogic_LogForm_MultiFldEC
+Feature: QueryRefiringLogic_LogForm_MultiFldEC Edit Checks refire 
 	As a Rave user
 	When I manually close a query or cancel, the query should not re-fire if the exact same data is entered into the system
 	So that I don't have to re-enter the exact same response

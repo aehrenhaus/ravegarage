@@ -1,6 +1,6 @@
 ﻿# When saving Low and High ranges for Field Edit Check, an incorrect Invalid* error message is displayed even though the data is correctly saved to the database.
 @ignore
-Feature: US17943 When saving Low and High ranges for Field Edit Check in Global Library Volumes, an incorrect Invalid* error message is displayed even though the data is correctly saved to the database.
+Feature: US17943_DT14276 When saving Low and High ranges for Field Edit Check in Global Library Volumes, an incorrect Invalid* error message is displayed even though the data is correctly saved to the database.
 	When Low and High ranges for Field Edit Check are saved, an incorrect Invalid* error message is displayed even though the data is correctly saved to the database.
  	As a Study Developer
 	When I enter Low and High ranges for Field Edit Check
@@ -30,9 +30,9 @@ Background:
 
 
 @release_2012.1.0
-@PB_US17943_01
+@PB_US17943_DT14276_01
 @Validation
-Scenario: @PB_US17943_01 As Study Developer, when I save Low and High ranges for Field Edit Check, I do not see an Invalid* error message displayed.
+Scenario: PB_US17943_DT14276_01 As Study Developer, when I save Low and High ranges for Field Edit Check, I do not see an Invalid* error message displayed.
 
 	When I navigate to "Architect"
 	And I select link "US17446_SJ" in "Active Global Library Volumes" 	
@@ -55,9 +55,9 @@ Scenario: @PB_US17943_01 As Study Developer, when I save Low and High ranges for
 	And I take a screenshot
 
 @release_2012.1.0
-@PB_US17943_02
+@PB_US17943_DT14276_02
 @Validation
-Scenario: @PB_US17943_02 As Study Developer, when I save Low and High ranges for Field Edit Check, I do not see an Invalid* error message displayed.
+Scenario: PB_US17943_DT14276_02 As Study Developer, when I save Low and High ranges for Field Edit Check, I do not see an Invalid* error message displayed.
 	
 	When I navigate to "Architect"
 	And I select link "US17446_SJ" in "Active Global Library Volumes"  
@@ -82,9 +82,9 @@ Scenario: @PB_US17943_02 As Study Developer, when I save Low and High ranges for
 	And I take a screenshot
 
 @release_2012.1.0
-@PB_US17943_03
+@PB_US17943_DT14276_03
 @Validation
-Scenario: @PB_US17943_03 As Study Developer, when I save Low and High ranges for Field Edit Check, I do not see an Invalid* error message displayed.
+Scenario: PB_US17943_DT14276_03 As Study Developer, when I save Low and High ranges for Field Edit Check, I do not see an Invalid* error message displayed.
 	
 	When I navigate to "Architect"
 	And I select link "US17446_SJ" in "Active Global Library Volumes" 
@@ -107,9 +107,9 @@ Scenario: @PB_US17943_03 As Study Developer, when I save Low and High ranges for
 	And I take a screenshot
 
 @release_2012.1.0
-@PB_US17943_04
+@PB_US17943_DT14276_04
 @Validation
-Scenario: @PB_US17943_04 As Study Developer, when I save Low and High ranges for Field Edit Check, I do not see an Invalid* error message displayed.
+Scenario: PB_US17943_DT14276_04 As Study Developer, when I save Low and High ranges for Field Edit Check, I do not see an Invalid* error message displayed.
 	
 	When I navigate to "Architect"
 	And I select link "US17446_SJ" in "Active Global Library Volumes"  
@@ -133,9 +133,9 @@ Scenario: @PB_US17943_04 As Study Developer, when I save Low and High ranges for
 	And I take a screenshot
 
 @release_2012.1.0
-@PB_US17943_05
+@PB_US17943_DT14276_05
 @Validation
-Scenario: @PB_US17943_05 As Study Developer, when I save Low and High ranges for Field Edit Check, I do not see an Invalid* error message displayed.
+Scenario: PB_US17943_DT14276_05 As Study Developer, when I save Low and High ranges for Field Edit Check, I do not see an Invalid* error message displayed.
 	
 	When I navigate to "Architect"
 	And I select link "US17446_SJ" in "Active Global Library Volumes" 
@@ -158,9 +158,9 @@ Scenario: @PB_US17943_05 As Study Developer, when I save Low and High ranges for
 	And I take a screenshot
 
 @release_2012.1.0
-@PB_US17943_06
+@PB_US17943_DT14276_06
 @Validation
-Scenario: @PB_US17943_06 As Study Developer, when I save Low and High ranges for Field Edit Check, I do not see an Invalid* error message displayed.
+Scenario: PB_US17943_DT14276_06 As Study Developer, when I save Low and High ranges for Field Edit Check, I do not see an Invalid* error message displayed.
 	
 	When I navigate to "Architect"
 	And I select link "US17446_SJ" in "Active Global Library Volumes" 
@@ -183,9 +183,9 @@ Scenario: @PB_US17943_06 As Study Developer, when I save Low and High ranges for
 	And I take a screenshot
 	
 @release_2012.1.0
-@PB_US17943_07
+@PB_US17943_DT14276_07
 @Validation
-Scenario: @PB_US17943_07 As Study Developer, when I save Low and High ranges for Field Edit Check, I do not see an Invalid* error message displayed.
+Scenario: PB_US17943_DT14276_07 As Study Developer, when I save Low and High ranges for Field Edit Check, I do not see an Invalid* error message displayed.
 	
 	When I navigate to "Architect"
 	And I select link "US17446_SJ" in "Active Global Library Volumes" 
@@ -206,9 +206,9 @@ Scenario: @PB_US17943_07 As Study Developer, when I save Low and High ranges for
 	And I take a screenshot
 
 @release_2012.1.0
-@PB_US17943_08
+@PB_US17943_DT14276_08
 @Validation
-Scenario: @PB_US17943_08 As Study Developer, when I save Low and High ranges for Field Edit Check, I do not see an Invalid* error message displayed.
+Scenario: PB_US17943_DT14276_08 As Study Developer, when I save Low and High ranges for Field Edit Check, I do not see an Invalid* error message displayed.
 	
 	When I navigate to "Architect"
 	And I select link "US17446_SJ" in "Active Global Library Volumes" 
@@ -229,9 +229,9 @@ Scenario: @PB_US17943_08 As Study Developer, when I save Low and High ranges for
 	And I take a screenshot	
 
 @release_2012.1.0
-@PB_US17943_09
+@PB_US17943_DT14276_09
 @Validation
-Scenario: @PB_US17943_09 As an EDC user, when I enter out of range data and save the form, then I should see queries for field edit checks.
+Scenario: PB_US17943_DT14276_09 As an EDC user, when I enter out of range data and save the form, then I should see queries for field edit checks.
 	
 	And I navigate to "Architect"
     And I select link "US17446_SJ" in "Active Projects"

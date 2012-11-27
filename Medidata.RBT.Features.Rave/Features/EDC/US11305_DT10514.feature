@@ -1,12 +1,12 @@
-﻿@ignore
-Feature: US11305_DT10514
+﻿# Datapoints in same lab datapage may associate analyte ranges of different labs.
+
+@ignore
+Feature: US11305_DT10514 Datapoints in same lab datapage may associate analyte ranges of different labs.
 	As a Rave user
 	When a lab form is partially locked
 	And I change the selected lab
 	Then I expect to see lab ranges from the new lab for the lab data
 	So that I can reference the applicable lab ranges
-
-# Datapoints in same lab datapage may associate analyte ranges of different labs.
 
 Background:
 	Given I login to Rave with user "defuser" and password "password"
@@ -78,9 +78,9 @@ Background:
 
 #----------------------------------------------------------------------------------------------------------------------------------------
 @release_564_2012.1.0
-@PB-DT10514-01
+@PB_US11305_DT10514_01
 @Validation	
-Scenario: @PB-DT10514-01 As an EDC user, I have a partially locked lab form, and I change the selected lab to another local lab, then I should see the ranges update for all lab datapoints.
+Scenario: PB_US11305_DT10514_01 As an EDC user, I have a partially locked lab form, and I change the selected lab to another local lab, then I should see the ranges update for all lab datapoints.
 
 	And I select Study "Mediflex" and Site "LabSite01"
 	And I create a Subject
@@ -126,9 +126,9 @@ Scenario: @PB-DT10514-01 As an EDC user, I have a partially locked lab form, and
 
 #----------------------------------------------------------------------------------------------------------------------------------------
 @release_564_2012.1.0
-@PB-DT10514-02
+@PB_US11305_DT10514_02
 @Validation	
-Scenario: @PB-DT10514-02 As an EDC user, I have a partially locked lab form, and I change the selected lab to another local lab, then I should see the ranges update for all lab datapoints.
+Scenario: PB_US11305_DT10514_02 As an EDC user, I have a partially locked lab form, and I change the selected lab to another local lab, then I should see the ranges update for all lab datapoints.
 
 	And I select Study "Mediflex" and Site "LabSite01"
 	And I create a Subject
@@ -174,9 +174,9 @@ Scenario: @PB-DT10514-02 As an EDC user, I have a partially locked lab form, and
 
 #----------------------------------------------------------------------------------------------------------------------------------------
 @release_564_2012.1.0
-@PB-DT10514-03
+@PB_US11305_DT10514_03
 @Validation	
-Scenario: @PB-DT10514-03 As an EDC user, I have a partially locked lab form, and I change the selected lab to central lab, then I should see the ranges update for all lab datapoints.
+Scenario: PB_US11305_DT10514_03 As an EDC user, I have a partially locked lab form, and I change the selected lab to central lab, then I should see the ranges update for all lab datapoints.
 
 	And I select Study "Mediflex" and Site "LabSite01"
 	And I create a Subject
@@ -222,9 +222,9 @@ Scenario: @PB-DT10514-03 As an EDC user, I have a partially locked lab form, and
 
 #----------------------------------------------------------------------------------------------------------------------------------------
 @release_564_2012.1.0
-@PB-DT10514-04
+@PB_US11305_DT10514_04
 @Validation	
-Scenario: @PB-DT10514-04 As an EDC user, I have a partially locked lab form, and I change the selected central lab to local lab, then I should see the ranges update for all lab datapoints.
+Scenario: PB_US11305_DT10514_04 As an EDC user, I have a partially locked lab form, and I change the selected central lab to local lab, then I should see the ranges update for all lab datapoints.
 
 	And I select Study "Mediflex" and Site "LabSite01"
 	And I create a Subject
@@ -270,9 +270,9 @@ Scenario: @PB-DT10514-04 As an EDC user, I have a partially locked lab form, and
 
 #----------------------------------------------------------------------------------------------------------------------------------------
 @release_564_2012.1.0
-@PB-DT10514-05
+@PB_US11305_DT10514_05
 @Validation	
-Scenario: @PB-DT10514-05 As an EDC user, I have a partially locked lab form, and I change the selected lab to Units Only lab, then I should see the ranges update for all lab datapoints.
+Scenario: PB_US11305_DT10514_05 As an EDC user, I have a partially locked lab form, and I change the selected lab to Units Only lab, then I should see the ranges update for all lab datapoints.
 
 	And I select Study "Mediflex" and Site "LabSite02"
 	And I create a Subject
@@ -328,9 +328,9 @@ Scenario: @PB-DT10514-05 As an EDC user, I have a partially locked lab form, and
 
 #----------------------------------------------------------------------------------------------------------------------------------------
 @release_564_2012.1.0
-@PB-DT10514-06
+@PB_US11305_DT10514_06
 @Validation	
-Scenario: @PB-DT10514-06 As an EDC user, I have a locked lab form, and I set lab variable, then I should see the ranges update for all lab datapoints.
+Scenario: PB_US11305_DT10514_06 As an EDC user, I have a locked lab form, and I set lab variable, then I should see the ranges update for all lab datapoints.
 
 	And I select Study "Mediflex" and Site "LabSite01"
 	And I create a Subject

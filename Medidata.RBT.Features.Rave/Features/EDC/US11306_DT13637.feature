@@ -1,7 +1,7 @@
 # In 5.6.4 (DT 11659 fixed the same issue on Rave v5.6.3)
 # A form has standard and log fields.  One of the standard fields uses Dynamic Search List as the control type.  After initially submitting the datapage, and later creating a new log line, value for "AltCodedValue"  doesn't get propagated to the newly-created records in the database.  
 @ignore
-Feature: US11306_DT13637
+Feature: US11306_DT13637 On a mixed form, AltCodedValue from a standard DSL field doesn't get propagated into hidden datapoints on newly-created records.
 	In Rave 5.6.4, in a mixed form, AltCodedValue from a standard DSL field doesn't get propagated into hidden datapoints on newly-created records.
 	As a Rave user
 	Given I enter a value for a dynamic searchlist field on a mixed form
@@ -56,12 +56,10 @@ Background:
 	# Datapoint: Device Form>Device>DEVICE>0
 	# Action: Set DynamicSearchList:Lookup Device CF
 
-
-
 @release_2012.1.0		
-@PB-DT13637-01
+@PB_US11306_DT13637_01
 @Validation
-Scenario: PB-DT13637-01 As a Data Manager, when an EDC user enters data for a standard dynamic searchlist field, then I expect to see the AltCodedValue for that field propagated to the hidden datapoints on the log lines.
+Scenario: PB_US11306_DT13637_01 As a Data Manager, when an EDC user enters data for a standard dynamic searchlist field, then I expect to see the AltCodedValue for that field propagated to the hidden datapoints on the log lines.
 	
 	When I select Study "US11306_DT13637_SJ" and Site "Site 1"
 	And I create a Subject
@@ -82,13 +80,12 @@ Scenario: PB-DT13637-01 As a Data Manager, when an EDC user enters data for a st
 	| Devcomments | N/A         |              |
 	And I take a screenshot
 	And "AltCodedValue" propagates correctly
-	
-
-		
+			
 @release_2012.1.0		
-@PB-DT13637-02
+@PB_US11306_DT13637_02
 @Validation
-Scenario: PB-DT13637-02 As a Data Manager, when an EDC user enters data for a standard dynamic searchlist field, then I expect to see the AltCodedValue for that field propagated to the hidden datapoints on the log lines.
+Scenario: PB_US11306_DT13637_02 As a Data Manager, when an EDC user enters data for a standard dynamic searchlist field, then I expect to see the AltCodedValue for that field propagated to the hidden datapoints on the log lines.
+	
 	When I select Study "US11306_DT13637_SJ" and Site "Site 1"
 	And I create a Subject
 		| Field            | Data              |

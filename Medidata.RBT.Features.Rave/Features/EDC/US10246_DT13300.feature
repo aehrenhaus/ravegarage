@@ -1,7 +1,7 @@
 # When All Upper Case is selected in the Configuration Other Settings and my Locale is Japanese, the month component of the date, and the meridian component of the time, should be displayed in uppercase.
 
 @ignore
-Feature: US10246_DT13300
+Feature: US10246_DT13300 When All Upper Case is selected in the Configuration Other Settings and my Locale is Japanese, the month component of the date, and the meridian component of the time, should be displayed in uppercase.
 	The month component of the date in a date field, and the meridian component of the time in a time field, should be displayed in uppercase when All Upper Case is selected in Configuration and Locale is set to Japanese
 	As a Rave Administrator
 	When I have selected All Upper Case in Configuration > Other Settings
@@ -11,7 +11,6 @@ Feature: US10246_DT13300
 	And the meridian component of the time in all time fields should be in uppercase
 
 Background:
-
 	Given xml draft "US10246_DT13300.xml" is Uploaded
 	Given Site "Site 1" exists
 	Given study "US10246_DT13300" is assigned to Site "Site 1" with study environment "Live: Prod"
@@ -44,9 +43,7 @@ Background:
 @release_2012.1.0 
 @PB_US10246_DT13300_01
 @Validation 
-
-
-Scenario: @PB_US10246_DT13300_01 As a Study Coordinator, when I save the month into a date field, and the time into a time field, then I see the month and meridian displayed in uppercase.
+Scenario: PB_US10246_DT13300_01 As a Study Coordinator, when I save the month into a date field, and the time into a time field, then I see the month and meridian displayed in uppercase.
 	
 	When I login to Rave with user "defjapan"
 	And I create a Subject
@@ -83,7 +80,7 @@ Scenario: @PB_US10246_DT13300_01 As a Study Coordinator, when I save the month i
 @release_2012.1.0 
 @PB_US10246_DT13300_02
 @Validation 
-Scenario: @PB_US10246_DT13300_02 As a Study Coordinator, I save an unknown month. When I edit the form and save a month, then I see the month displayed in uppercase.
+Scenario: PB_US10246_DT13300_02 As a Study Coordinator, I save an unknown month. When I edit the form and save a month, then I see the month displayed in uppercase.
 		
 	When I login to Rave with user "SUPER USER 1"
 	And I create a Subject
@@ -128,9 +125,8 @@ Scenario: @PB_US10246_DT13300_02 As a Study Coordinator, I save an unknown month
 @release_2012.1.0 
 @PB_US10246_DT13300_03
 @Validation 
-Scenario: @PB_US10246_DT13300_03  As a Study Coordinator, My Profile > Locale is set to English. when I save the month into a date field, and the time into a time field, then I see the month and meridian displayed in uppercase. When I set My Profile > Locale to Japanese, and I edit the form and save a new month and new meridian, then I see the month and meridian displayed in uppercase.
-	
-	
+Scenario: PB_US10246_DT13300_03  As a Study Coordinator, My Profile > Locale is set to English. when I save the month into a date field, and the time into a time field, then I see the month and meridian displayed in uppercase. When I set My Profile > Locale to Japanese, and I edit the form and save a new month and new meridian, then I see the month and meridian displayed in uppercase.
+		
 	When I login to Rave with user "SUPER USER 1"
 	And I create a Subject
 	| Field				| Data				   |

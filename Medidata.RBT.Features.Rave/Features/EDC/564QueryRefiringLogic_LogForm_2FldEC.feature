@@ -30,9 +30,9 @@ Background:
 	#And I select Study "Standard Study" and Site "Site 1"	
 
 @release_564_Patch11
-@PB-US12940-01A
+@PB_US12940_01A
 @validation	
-Scenario: @PB-US12940-01A As an EDC user, when I entered bad data in log field A and log field B that resulted in the system opening a query on log field B, and I answered the query and I changed the data in log field B to another bad data, and the query is then closed, if I entered good data in log field B and then again entered the same bad data in log field B as when the query was closed, then the system should not refire a query on log field B. 
+Scenario: PB_US12940_01A As an EDC user, when I entered bad data in log field A and log field B that resulted in the system opening a query on log field B, and I answered the query and I changed the data in log field B to another bad data, and the query is then closed, if I entered good data in log field B and then again entered the same bad data in log field B as when the query was closed, then the system should not refire a query on log field B. 
 Query with requires response = true and requires manual close = true.
 	
 	Given I login to Rave with user "SUPER USER 1"
@@ -89,9 +89,9 @@ Query with requires response = true and requires manual close = true.
 	And I take a screenshot 	
  
 @release_564_Patch11
-@PB-US12940-01B
+@PB_US12940_01B
 @validation
-Scenario: @PB-US12940-01B As an EDC user, when I entered bad data in log field A and log field B that resulted in the system opening a query on log field B, and I changed the data in log field B to another bad data, and the new query will open, if I entered good data in log field B and then again entered the same bad data in log field B as when the query was closed, then the system should refire a query on log field B. 
+Scenario: PB_US12940_01B As an EDC user, when I entered bad data in log field A and log field B that resulted in the system opening a query on log field B, and I changed the data in log field B to another bad data, and the new query will open, if I entered good data in log field B and then again entered the same bad data in log field B as when the query was closed, then the system should refire a query on log field B. 
 Query with requires response = false and requires manual close = false.
 
 	Given I login to Rave with user "SUPER USER 1"	
@@ -140,10 +140,10 @@ Query with requires response = false and requires manual close = false.
 	And I take a screenshot 	
 
 @release_564_Patch11
-@PB-US12940-01C	
+@PB_US12940_01C	
 @ignore
 # Due to DT 14208 
-Scenario: @PB-US12940-01C As an EDC user, when I entered bad data in log field A and log field B that resulted in the system opening a query on log field B, and I answered the query and I changed the data in log field B to another bad data, and the query is then closed, if I entered good data in log field B and then again entered the same bad data in log field B as when the query was closed, then the system should refire a query on log field B. 
+Scenario: PB_US12940_01C As an EDC user, when I entered bad data in log field A and log field B that resulted in the system opening a query on log field B, and I answered the query and I changed the data in log field B to another bad data, and the query is then closed, if I entered good data in log field B and then again entered the same bad data in log field B as when the query was closed, then the system should refire a query on log field B. 
 Query with requires response = true and requires manual close = false.
 
 	Given I login to Rave with user "SUPER USER 1"	
@@ -194,9 +194,9 @@ Query with requires response = true and requires manual close = false.
 # DT 14208
 		
 @release_564_Patch11
-@PB-US12940-01D
+@PB_US12940_01D
 @validation 
-Scenario: @PB-US12940-01D As an EDC user, when I entered bad data in log field A and log field B that resulted in the system opening a query on log field B, and I answered the query and I changed the data in log field B to another bad data, and the query is then closed, if I entered good data in log field B and then again entered the same bad data in log field B as when the query was closed, then the system should not refire a query on log field B. 
+Scenario: PB_US12940_01D As an EDC user, when I entered bad data in log field A and log field B that resulted in the system opening a query on log field B, and I answered the query and I changed the data in log field B to another bad data, and the query is then closed, if I entered good data in log field B and then again entered the same bad data in log field B as when the query was closed, then the system should not refire a query on log field B. 
 Query with requires response = false and requires manual close = true
 	
 	Given I login to Rave with user "SUPER USER 1"
@@ -258,9 +258,9 @@ Query with requires response = false and requires manual close = true
 	And I take a screenshot	
 	 
 @release_564_Patch11
-@PB-US12940-02A
+@PB_US12940_02A
 @validation
-Scenario: @PB-US12940-02A As an EDC user, when I entered bad data in log field A and log field B that resulted in the system opening a query on log field B, and I answered the query and I changed the data in log field B to another bad data, and the query is then closed, if I then entered the original bad data in log field B, then the system should refire a query on log field B. 
+Scenario: PB_US12940_02A As an EDC user, when I entered bad data in log field A and log field B that resulted in the system opening a query on log field B, and I answered the query and I changed the data in log field B to another bad data, and the query is then closed, if I then entered the original bad data in log field B, then the system should refire a query on log field B. 
 Query with requires response = true and requires manual close = true
 	
 	Given I login to Rave with user "SUPER USER 1"
@@ -317,9 +317,9 @@ Query with requires response = true and requires manual close = true
 	And I take a screenshot 
 	
 @release_564_Patch11
-@PB-US12940-02B
+@PB_US12940_02B
 @validation		
-Scenario: @PB-US12940-02B	As an EDC user, when I entered bad data in log field A and log field B that resulted in the system opening a query on log field B, and I answered the query and I changed the data in log field B to another bad data, and the query is then closed, if I then entered the original bad data in log field B, then the system should refire a query on log field B. 
+Scenario: PB_US12940_02B	As an EDC user, when I entered bad data in log field A and log field B that resulted in the system opening a query on log field B, and I answered the query and I changed the data in log field B to another bad data, and the query is then closed, if I then entered the original bad data in log field B, then the system should refire a query on log field B. 
 Query with requires response = false and requires manual close = false.
 	
 	Given I login to Rave with user "SUPER USER 1"
@@ -367,10 +367,10 @@ Query with requires response = false and requires manual close = false.
     And I take a screenshot 
 			
 @release_564_Patch11
-@PB-US12940-02C
+@PB_US12940_02C
 @ignore
 # Failed due to DT 14208		
-Scenario: @PB-US12940-02C As an EDC user, when I entered bad data in log field A and log field B that resulted in the system opening a query on log field B, and I answered the query and I changed the data in log field B to another bad data, and the query is then closed, if I then entered the original bad data in log field B, then the system should refire a query on log field B. 
+Scenario: PB_US12940_02C As an EDC user, when I entered bad data in log field A and log field B that resulted in the system opening a query on log field B, and I answered the query and I changed the data in log field B to another bad data, and the query is then closed, if I then entered the original bad data in log field B, then the system should refire a query on log field B. 
 Query with requires response = true and requires manual close = false.
 	
 	Given I login to Rave with user "SUPER USER 1"
@@ -421,9 +421,9 @@ Query with requires response = true and requires manual close = false.
 	And I take a screenshot    
 			
 @release_564_Patch11
-@PB-US12940-02D
+@PB_US12940_02D
 @validation	
-Scenario: @PB-US12940-02D As an EDC user, when I entered bad data in log field A and log field B that resulted in the system opening a query on log field B, and I answered the query and I changed the data in log field B to another bad data, and the query is then closed, if I then entered the original bad data in log field B, then the system should refire a query on log field B. 
+Scenario: PB_US12940_02D As an EDC user, when I entered bad data in log field A and log field B that resulted in the system opening a query on log field B, and I answered the query and I changed the data in log field B to another bad data, and the query is then closed, if I then entered the original bad data in log field B, then the system should refire a query on log field B. 
 Query with requires response = false and requires manual close = true.
 	
 	Given I login to Rave with user "SUPER USER 1"
@@ -478,9 +478,9 @@ Query with requires response = false and requires manual close = true.
 	  | Log Field 8 | Log field 8 must be equal to Log field 7. Please verify. | False    | False  |   
 
 @release_564_Patch11
-@PB-US12940-03A
+@PB_US12940_03A
 @validation
-Scenario: @PB-US12940-03A As an EDC user, when I entered bad data in log field A and log field B that resulted in the system opening a query on log field B, and I answered the query without changing the data, and the query is then closed, if I then entered new bad data in log field B, then the system should refire a query on log field B. 
+Scenario: PB_US12940_03A As an EDC user, when I entered bad data in log field A and log field B that resulted in the system opening a query on log field B, and I answered the query without changing the data, and the query is then closed, if I then entered new bad data in log field B, then the system should refire a query on log field B. 
 Query with requires response = true and requires manual close = true.
 	
 	Given I login to Rave with user "SUPER USER 1"
@@ -537,9 +537,9 @@ Query with requires response = true and requires manual close = true.
 	And I take a screenshot	 
 
 @release_564_Patch11
-@PB-US12940-03B
+@PB_US12940_03B
 @validation		
-Scenario: @PB-US12940-03B	 As an EDC user, when I entered bad data in log field A and log field B that resulted in the system opening a query on log field B, and I answered the query without changing the data, and the query is then closed, if I then entered new bad data in log field B, then the system should refire a query on log field B. 
+Scenario: PB_US12940_03B	 As an EDC user, when I entered bad data in log field A and log field B that resulted in the system opening a query on log field B, and I answered the query without changing the data, and the query is then closed, if I then entered new bad data in log field B, then the system should refire a query on log field B. 
 Query with requires response = false and requires manual close = false.
 	
 	Given I login to Rave with user "SUPER USER 1"
@@ -570,9 +570,9 @@ Query with requires response = false and requires manual close = false.
 	And I take a screenshot  
 
 @release_564_Patch11
-@PB-US12940-03C
+@PB_US12940_03C
 @validation	
-Scenario: @PB-US12940-03C As an EDC user, when I entered bad data in log field A and log field B that resulted in the system opening a query on log field B, and I answered the query without changing the data, and the query is then closed, if I then entered new bad data in log field B, then the system should refire a query on log field B. 
+Scenario: PB_US12940_03C As an EDC user, when I entered bad data in log field A and log field B that resulted in the system opening a query on log field B, and I answered the query without changing the data, and the query is then closed, if I then entered new bad data in log field B, then the system should refire a query on log field B. 
 Query with requires response = true and requires manual close = false
 	
 	Given I login to Rave with user "SUPER USER 1"
@@ -610,9 +610,9 @@ Query with requires response = true and requires manual close = false
 	And I take a screenshot 
 
 @release_564_Patch11
-@PB-US12940-03D
+@PB_US12940_03D
 @validation	
-Scenario: @PB-US12940-03D As an EDC user, when I entered bad data in log field A and log field B that resulted in the system opening a query on log field B, and I answered the query without changing the data, and the query is then closed, if I then entered new bad data in log field B, then the system should refire a query on log field B. 
+Scenario: PB_US12940_03D As an EDC user, when I entered bad data in log field A and log field B that resulted in the system opening a query on log field B, and I answered the query without changing the data, and the query is then closed, if I then entered new bad data in log field B, then the system should refire a query on log field B. 
 Query with requires response = false and requires manual close = true.
 	
 	Given I login to Rave with user "SUPER USER 1"
@@ -643,9 +643,9 @@ Query with requires response = false and requires manual close = true.
 	And I take a screenshot 
 
 @release_564_Patch11
-@PB-US12940-04A	
+@PB_US12940_04A	
 @validation	
-Scenario: @PB-US12940-04A As an EDC user, when I entered bad data in log field A and log field B that resulted in the system opening a query on log field B, and I answered the query and I changed the data in log field A to another bad data, and the query is then closed, if I then entered the new bad data in log field A, then the system should refire a query on log field B. 
+Scenario: PB_US12940_04A As an EDC user, when I entered bad data in log field A and log field B that resulted in the system opening a query on log field B, and I answered the query and I changed the data in log field A to another bad data, and the query is then closed, if I then entered the new bad data in log field A, then the system should refire a query on log field B. 
 Query with requires response = true and requires manual close = true
 	
 	Given I login to Rave with user "SUPER USER 1"
@@ -693,10 +693,10 @@ Query with requires response = true and requires manual close = true
 	And I take a screenshot
 
 @release_564_Patch11
-@PB-US12940-04B
+@PB_US12940_04B
 @ignore
 # DT14207		
-Scenario: @PB-US12940-04B As an EDC user, when I entered bad data in log field A and log field B that resulted in the system opening a query on log field B, and I answered the query and I changed the data in log field A to another bad data, and the query is then closed, if I then entered the new bad data in log field A, then the system should refire a query on log field B. 
+Scenario: PB_US12940_04B As an EDC user, when I entered bad data in log field A and log field B that resulted in the system opening a query on log field B, and I answered the query and I changed the data in log field A to another bad data, and the query is then closed, if I then entered the new bad data in log field A, then the system should refire a query on log field B. 
 Query with requires response = false and requires manual close = false
 	
 	Given I login to Rave with user "SUPER USER 1"
@@ -737,10 +737,10 @@ Query with requires response = false and requires manual close = false
 	And I takea screenshot 
 
 @release_564_Patch11	
-@PB-US12940-04C
+@PB_US12940_04C
 @ignore 
 # failing due to DT 14208	
-Scenario: @PB-US12940-04C As an EDC user, when I entered bad data in log field A and log field B that resulted in the system opening a query on log field B, and I answered the query and I changed the data in log field A to another bad data, and the query is then closed, if I then entered the new bad data in log field A, then the system should refire a query on log field B. 
+Scenario: PB_US12940_04C As an EDC user, when I entered bad data in log field A and log field B that resulted in the system opening a query on log field B, and I answered the query and I changed the data in log field A to another bad data, and the query is then closed, if I then entered the new bad data in log field A, then the system should refire a query on log field B. 
 Query with requires response = true and requires manual close = false
 	
 	Given I login to Rave with user "SUPER USER 1"
@@ -782,10 +782,10 @@ Query with requires response = true and requires manual close = false
 	And I take a screenshot 		
 
 @release_564_Patch11		
-@PB-US12940-04D	
+@PB_US12940_04D	
 @ignore	
 # Failed due to DT 14207
-Scenario: @PB-US12940-04D As an EDC user, when I entered bad data in log field A and log field B that resulted in the system opening a query on log field B, and I answered the query and I changed the data in log field A to another bad data, and the query is then closed, if I then entered the new bad data in log field A, then the system should refire a query on log field B. 
+Scenario: PB_US12940_04D As an EDC user, when I entered bad data in log field A and log field B that resulted in the system opening a query on log field B, and I answered the query and I changed the data in log field A to another bad data, and the query is then closed, if I then entered the new bad data in log field A, then the system should refire a query on log field B. 
 Query with requires response = false and requires manual close = true.
 	
 	Given I login to Rave with user "SUPER USER 1"
@@ -832,9 +832,9 @@ Query with requires response = false and requires manual close = true.
 	And I take a screenshot 
 	
 @release_564_Patch11
-@PB-US12940-05A
+@PB_US12940_05A
 @validation	
-Scenario: @PB-US12940-05A As an EDC user, when I entered bad data in log field A and log field B that resulted in the system opening a query on log field B, and I answered the query and I changed the data in log field B to another bad data, and the query is then closed, if I then entered the new bad data in log field B, then the system should refire a query on log field B. 
+Scenario: PB_US12940_05A As an EDC user, when I entered bad data in log field A and log field B that resulted in the system opening a query on log field B, and I answered the query and I changed the data in log field B to another bad data, and the query is then closed, if I then entered the new bad data in log field B, then the system should refire a query on log field B. 
 Query with requires response = true and requires manual close = true.
 	
 	Given I login to Rave with user "SUPER USER 1"
@@ -882,9 +882,9 @@ Query with requires response = true and requires manual close = true.
 	And I take a screenshot	
 
 @release_564_Patch11
-@PB-US12940-05B
+@PB_US12940_05B
 @validation	
-Scenario: @PB-US12940-05B As an EDC user, when I entered bad data in log field A and log field B that resulted in the system opening a query on log field B, and I answered the query and I changed the data in log field B to another bad data, and the query is then closed, if I then entered the new bad data in log field B, then the system should refire a query on log field B. 
+Scenario: PB_US12940_05B As an EDC user, when I entered bad data in log field A and log field B that resulted in the system opening a query on log field B, and I answered the query and I changed the data in log field B to another bad data, and the query is then closed, if I then entered the new bad data in log field B, then the system should refire a query on log field B. 
 Query with requires response = false and requires manual close = false
 	
 	Given I login to Rave with user "SUPER USER 1"
@@ -924,10 +924,10 @@ Query with requires response = false and requires manual close = false
 	And I take a screenshot	
 
 @release_564_Patch11		
-@PB-US12940-05C	
+@PB_US12940_05C	
 @ignore
 # failing due to DT 14208	
-Scenario: @PB-US12940-05C As an EDC user, when I entered bad data in log field A and log field B that resulted in the system opening a query on log field B, and I answered the query and I changed the data in log field B to another bad data, and the query is then closed, if I then entered the new bad data in log field B, then the system should refire a query on log field B. 
+Scenario: PB_US12940_05C As an EDC user, when I entered bad data in log field A and log field B that resulted in the system opening a query on log field B, and I answered the query and I changed the data in log field B to another bad data, and the query is then closed, if I then entered the new bad data in log field B, then the system should refire a query on log field B. 
 Query with requires response = true and requires manual close = false.
 	
 	Given I login to Rave with user "SUPER USER 1"
@@ -969,9 +969,9 @@ Query with requires response = true and requires manual close = false.
 	And I take a screenshot	
 
 @release_564_Patch11
-@PB-US12940-05D
+@PB_US12940_05D
 @validation	
-Scenario: @PB-US12940-05D As an EDC user, when I entered bad data in log field A and log field B that resulted in the system opening a query on log field B, and I answered the query and I changed the data in log field B to another bad data, and the query is then closed, if I then entered the new bad data in log field B, then the system should refire a query on log field B. 
+Scenario: PB_US12940_05D As an EDC user, when I entered bad data in log field A and log field B that resulted in the system opening a query on log field B, and I answered the query and I changed the data in log field B to another bad data, and the query is then closed, if I then entered the new bad data in log field B, then the system should refire a query on log field B. 
 Query with requires response = false and requires manual close = true.
 	
 	Given I login to Rave with user "SUPER USER 1"
