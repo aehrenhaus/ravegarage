@@ -6,6 +6,7 @@ using TechTalk.SpecFlow;
 using TechTalk.SpecFlow.Assist;
 using Medidata.RBT.PageObjects.Rave.SharedRaveObjects;
 using Medidata.RBT.PageObjects.Rave;
+using System.Text.RegularExpressions;
 
 namespace Medidata.RBT.Features.Rave
 {
@@ -26,13 +27,21 @@ namespace Medidata.RBT.Features.Rave
             var reportAssignments = table.CreateSet<ReportAssignmentModel>();
             TestContext.CurrentPage = new HomePage().NavigateToSelf();
             CurrentPage = CurrentPage.NavigateTo("Report Administration");
-            CurrentPage = CurrentPage.NavigateTo("Report Assignment");
-
+            
             foreach (var reportAssignment in reportAssignments)
             {
                 User user = TestContext.GetExistingFeatureObjectOrMakeNew(reportAssignment.User, () => new User(reportAssignment.User));
                 if (!user.ReportAssignmentsExists(reportAssignment.Report))
                 {
+                    string[] reportArgs = Regex.Split(reportAssignment.Report, " - ");
+                    //Activate the report, require report name and report description to be able to activate the report
+                    if (reportArgs.Length == 2)
+                    {
+                        CurrentPage = CurrentPage.NavigateTo("Report Manager");
+                        CurrentPage.As<ReportManagerPage>().Activate(reportArgs[0], reportArgs[1]);
+                    }
+
+                    CurrentPage = CurrentPage.NavigateTo("Report Assignment");
                     CurrentPage.As<ReportAssignmentPage>().SelectReportAssignment(reportAssignment.Report, user);
                 }
             }

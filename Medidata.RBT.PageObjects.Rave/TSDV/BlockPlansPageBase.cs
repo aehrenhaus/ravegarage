@@ -117,6 +117,14 @@ namespace Medidata.RBT.PageObjects.Rave
 					{
 						delButton.Click();
 						Browser.GetAlertWindow().Accept();
+                        //To acknowlege deletion
+                        try
+                        {
+                            IAlert alertWin = Browser.GetAlertWindow();
+                            if (alertWin != null)
+                                alertWin.Accept();
+                        }
+                        catch { }
 					}
 				}
 			}
