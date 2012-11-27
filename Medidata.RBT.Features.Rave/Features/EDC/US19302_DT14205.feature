@@ -1,6 +1,6 @@
 ﻿# Derivations that use the Step Function Add, Subtract, Multiply or Divide should not derive to Null when one of the fields involved in the derviation is not numeric and the derivation uses User Value and not Standard Value.
 @ignore
-Feature: US19302_DT14205
+Feature: US19302_DT14205 Derivations that use the Step Function Add, Subtract, Multiply or Divide should not derive to Null when one of the fields involved in the derviation is not numeric and the derivation uses User Value and not Standard Value.
 	As a Rave user
 	When create a Derivation
 	And I use the Step Function Add, Subtract, Multiply or Divide
@@ -18,9 +18,9 @@ Background:
 
 #----------------------------------------------------------------------------------------------------------------------------------------
 @release_564_2012.1.0
-@PB_US19032_01
+@PB_US19302_DT14205_01
 @Validation	
-Scenario: PB_US19032_01 As a Study Coordinator, when I submit 'Standard Derivations' form which has check steps with standard value, then remaining fields are automatically calculated.
+Scenario: PB_US19302_DT14205_01 As a Study Coordinator, when I submit 'Standard Derivations' form which has check steps with standard value, then remaining fields are automatically calculated.
 	
 	Given I login to Rave with user "SUPER USER 1"
 	And I create a Subject
@@ -60,9 +60,9 @@ Scenario: PB_US19032_01 As a Study Coordinator, when I submit 'Standard Derivati
 
 #----------------------------------------------------------------------------------------------------------------------------------------
 @release_564_2012.1.0
-@PB_US19032_02
+@PB_US19302_DT14205_02
 @Validation	
-Scenario: PB_US19032_02 As a Study Coordinator, when I submit 'Test DT Derivation' form, then remaining fields are automatically calculated.
+Scenario: PB_US19302_DT14205_02 As a Study Coordinator, when I submit 'Test DT Derivation' form, then remaining fields are automatically calculated.
 
 	Given I login to Rave with user "SUPER USER 1"
 	And I create a Subject
@@ -83,9 +83,9 @@ Scenario: PB_US19032_02 As a Study Coordinator, when I submit 'Test DT Derivatio
 
 #----------------------------------------------------------------------------------------------------------------------------------------
 @release_564_2012.1.0
-@PB_US19032_03
+@PB_US19302_DT14205_03
 @Validation	
-Scenario: PB_US19032_03 As a Study Coordinator, when I submit 'User Derivations' form which has check steps with user value, then remaining fields are automatically calculated.
+Scenario: PB_US19302_DT14205_03 As a Study Coordinator, when I submit 'User Derivations' form which has check steps with user value, then remaining fields are automatically calculated.
 
 	Given I login to Rave with user "SUPER USER 1"
 	And I create a Subject
@@ -117,9 +117,9 @@ Scenario: PB_US19032_03 As a Study Coordinator, when I submit 'User Derivations'
 
 #----------------------------------------------------------------------------------------------------------------------------------------
 @release_564_2012.1.0
-@PB_US19032_03
+@PB_US19302_DT14205_03
 @Validation	
-Scenario: PB_US19032_03 As a Study Coordinator, when I submit 'Standard Derivation' form which has check steps with standard value, then remaining fields are automatically calculated.
+Scenario: PB_US19302_DT14205_03 As a Study Coordinator, when I submit 'Standard Derivation' form which has check steps with standard value, then remaining fields are automatically calculated.
 
 	Given I login to Rave with user "SUPER USER 1"
 	And I create a Subject

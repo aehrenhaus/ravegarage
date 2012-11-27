@@ -1,7 +1,6 @@
-﻿	# When a time of 12:00 PM is saved into a date time field with a format of dd MMM yyyy hh:nn rr, that data can be correctly viewed through the Clinical Views.
-
+﻿# When a time of 12:00 PM is saved into a date time field with a format of dd MMM yyyy hh:nn rr, that data can be correctly viewed through the Clinical Views.
 @ignore
-Feature: US17743_DT12513
+Feature: US17743_DT12513 When a time of 12:00 PM is saved into a date time field with a format of dd MMM yyyy hh:nn rr, that data can be correctly viewed through the Clinical Views.
 	A time of 12:00 PM can be saved into a date time field with a format of dd MMM yyyy hh:nn rr, and that data can be correctly viewed through the Clinical Views
 	As a Rave user
 	When I enter a time of 12:00 PM into a date time field
@@ -24,7 +23,7 @@ Background:
 @release_564_2012.1.0				
 @PB_US17743_DT12513_01
 @Validation
-Scenario: @PB_US17743_DT12513_01 As a Study Coordinator, when I enter a time of 12:00 PM, I am able to correctly view the data through the Clinical Views.
+Scenario: PB_US17743_DT12513_01 As a Study Coordinator, when I enter a time of 12:00 PM, I am able to correctly view the data through the Clinical Views.
 	When I login to Rave with user "SUPER USER 1"
 	And I create a Subject
 	| Field            | Data              |
@@ -63,7 +62,7 @@ Scenario: @PB_US17743_DT12513_01 As a Study Coordinator, when I enter a time of 
 @release_564_2012.1.0				
 @PB_US17743_DT12513_02
 @Validation
-Scenario: @PB_US17743_DT12513_02 As a Study Coordinator, when I change a time to 12:00 PM, I am able to correctly view the data through the Clinical Views.
+Scenario: PB_US17743_DT12513_02 As a Study Coordinator, when I change a time to 12:00 PM, I am able to correctly view the data through the Clinical Views.
 	When I login to Rave with user "SUPER USER 1"
 	And I create a Subject
 	| Field            | Data              |

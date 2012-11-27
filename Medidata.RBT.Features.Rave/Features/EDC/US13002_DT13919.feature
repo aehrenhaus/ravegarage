@@ -1,6 +1,6 @@
 ﻿@ignore
-Feature: US13002_DT13919
-	As a Rave user
+Feature: US13002_DT13919 A field on a log form that has a Dynamic Search List should display matching results within 3 seconds.
+	As a Rave user 
 	When I navigate to a log form that has a Dynamic Search List
 	And I click the Dynamic Search List dropdown button to display matching results
 	Then the Dynamic Search List dropdown is open within 3 seconds
@@ -861,9 +861,9 @@ Background:
 
 #----------------------------------------------------------------------------------------------------------------------------------------
 @release_564_2012.1.0	
-@PB_US13002_01
+@PB_US13002_DT13919_01
 @Validation
-Scenario: PB_US13002_01 As a Study Coordinator, when I click the drop-down list to see matching results, then matching results are displayed within 3 seconds.
+Scenario: PB_US13002_DT13919_01 As a Study Coordinator, when I click the drop-down list to see matching results, then matching results are displayed within 3 seconds.
 	
 	And I select Study "L1WP-GT" and Site "Site 1"
 	And I create a Subject
@@ -878,9 +878,9 @@ Scenario: PB_US13002_01 As a Study Coordinator, when I click the drop-down list 
 
 #----------------------------------------------------------------------------------------------------------------------------------------
 @release_564_2012.1.0	
-@PB_US13002_02
+@PB_US13002_DT13919_02
 @Validation
-Scenario: PB_US13002_02 As a Study Coordinator, when I enter data into a Dynamic Search List field on a log form, and I see matching results are displayed within 3 seconds.
+Scenario: PB_US13002_DT13919_02 As a Study Coordinator, when I enter data into a Dynamic Search List field on a log form, and I see matching results are displayed within 3 seconds.
 	
 	And I select Study "L1WP-GT" and Site "Site 1"
 	And I create a Subject
@@ -896,9 +896,9 @@ Scenario: PB_US13002_02 As a Study Coordinator, when I enter data into a Dynamic
 
 #----------------------------------------------------------------------------------------------------------------------------------------
 @release_564_2012.1.0	
-@PB_US13002_03
+@PB_US13002_DT13919_03
 @Validation
-Scenario: PB_US13002_03 As a Study Coordinator, when I enter data into a Dynamic Search List field on a log form, and I see matching results are displayed within 3 seconds.
+Scenario: PB_US13002_DT13919_03 As a Study Coordinator, when I enter data into a Dynamic Search List field on a log form, and I see matching results are displayed within 3 seconds.
 	
 	And I select Study "L1WP-GT" and Site "Site 1"
 	And I create a Subject
@@ -920,9 +920,9 @@ Scenario: PB_US13002_03 As a Study Coordinator, when I enter data into a Dynamic
 
 #----------------------------------------------------------------------------------------------------------------------------------------
 @release_564_2012.1.0	
-@PB_US13002_04
+@PB_US13002_DT13919_04
 @Validation
-Scenario: PB_US13002_04 As a Study Coordinator, when I click the drop-down list to see matching results in DDE, then matching results are displayed within 3 seconds.
+Scenario: PB_US13002_DT13919_04 As a Study Coordinator, when I click the drop-down list to see matching results in DDE, then matching results are displayed within 3 seconds.
 	
 	And I navigate to "DDE"
 	And I select link "First Pass"

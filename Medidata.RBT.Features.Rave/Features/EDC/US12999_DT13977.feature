@@ -1,6 +1,6 @@
 ﻿# If there is a datapoint which currently has a value in it that is outside the normal ranges, and therefore has a clinical significance prompt or value, re-submitting the datapoint to have a ND code will not remove clinical significance prompts.
 @ignore
-Feature: US12999_DT13977 
+Feature: US12999_DT13977 If Datapoint with Clinical Significance is edited again to be a ND code, Clinical Significance does not get removed.
 	If Datapoint with Clinical Significance is edited again to be a ND code, Clinical Significance does not get removed
 	As a Rave user
 	Given I enter a lab value that is out of range
@@ -32,9 +32,10 @@ Given I publish and push eCRF "US17446_SJ.xml" to "Version 1"
 	#And I select Study "US12999_DT13977" and Site "Site 1"	
 
 @release_2012.1.0 		
-@PB-DT13977-01
+@PB_US12999_DT13977_01
 @Validation
-Scenario: @PB-DT13977-01 As an EDC user, when I change an out of range value to be a missing code, then I should still see the clinical significance information.
+Scenario: PB_US12999_DT13977_01 As an EDC user, when I change an out of range value to be a missing code, then I should still see the clinical significance information.
+	
 	Given I login to Rave with user "SUPER USER 1"
 	When I create a Subject
 	| Field            | Data               |

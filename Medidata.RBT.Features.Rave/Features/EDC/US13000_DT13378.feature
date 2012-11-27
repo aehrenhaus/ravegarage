@@ -32,12 +32,10 @@ Background:
 #	And Lab analyte fields should have "Prompt for Clinical Significance" checked in Architect
 # Lab analyte fields should have "Prompt for Clinical Significance" checked in Architect
 
-
-
 @release_2012.1.0		
-@US13000_DT13378-01
+@PB_US13000_DT13378_01
 @GDraft
-Scenario: PB-US13000_DT13378-01 As an EDC user, when I clinical significance information and make changes to the local lab and Alert lab ranges such that the lab value is still above range, then I should still see the clinical significance information.
+Scenario: PB_US13000_DT13378_01 As an EDC user, when I clinical significance information and make changes to the local lab and Alert lab ranges such that the lab value is still above range, then I should still see the clinical significance information.
 	
 	When I select Study "IMCLCP11-0805" and Site "135 - Denis"
 	And I create a Subject
@@ -99,9 +97,9 @@ Scenario: PB-US13000_DT13378-01 As an EDC user, when I clinical significance inf
 	| Potassium	| 8    | ++           | 3.8 - 4.8	| mEq/L	| Requires Verification	|
 
 @release_2012.1.0		
-@US13000_DT13378-02
+@PB_US13000_DT13378_02
 @GDraft
-Scenario: PB-US13000_DT13378-02 As an EDC user, when I clinical significance information and make changes to the local lab and Alert lab ranges such that the lab value is still below range, then I should still see the clinical significance information.
+Scenario: PB_US13000_DT13378_02 As an EDC user, when I clinical significance information and make changes to the local lab and Alert lab ranges such that the lab value is still below range, then I should still see the clinical significance information.
 
 	When I select Study "IMCLCP11-0805" and Site "135 - Denis"
 	And I create a Subject
