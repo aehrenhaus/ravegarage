@@ -115,8 +115,8 @@ namespace Medidata.RBT.PageObjects.Rave
                 {
                     var body = Browser.FindElementByTagName("body");
                     IWebElement bodyResult = null;
-                    if (exactMatch && body.Text.Equals(identifier))
-                        bodyResult = body;
+                    if (exactMatch)
+                        bodyResult = Browser.TryFindElementBy(By.XPath("//*[text()= '" + identifier + "']"));
                     else if (!exactMatch && body.Text.Contains(identifier))
                         bodyResult = body;
 
