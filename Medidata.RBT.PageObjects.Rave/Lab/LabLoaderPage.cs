@@ -73,11 +73,11 @@ namespace Medidata.RBT.PageObjects.Rave.Lab
             throw new NotImplementedException();
         }
 
-		bool IVerifySomethingExists.VerifySomethingExist(string areaIdentifier, string type, string identifier)
+		bool IVerifySomethingExists.VerifySomethingExist(string areaIdentifier, string type, string identifier, bool exactMatch)
 		{
 			if (identifier == null)
 			{
-				if (Browser.PageSource.Contains(identifier))
+                if (!exactMatch && Browser.PageSource.Contains(identifier))
 					return true;
 				else
 					return false;

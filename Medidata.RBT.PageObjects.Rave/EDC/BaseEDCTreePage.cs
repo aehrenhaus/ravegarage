@@ -107,33 +107,44 @@ namespace Medidata.RBT.PageObjects.Rave
 
 		#region IVerifySomethingExists
 
+		public bool VerifySomethingExist(string areaIdentifier, string type, string identifier, bool exactMatch = false)
+		{        
+            if (areaIdentifier == null)
+            {
+                var element = Browser.TryFindElementBy(b =>
+                {
+                    var body = Browser.FindElementByTagName("body");
+                    IWebElement bodyResult = null;
+                    if (exactMatch && body.Text.Equals(identifier))
+                        bodyResult = body;
+                    else if (!exactMatch && body.Text.Contains(identifier))
+                        bodyResult = body;
 
+                    return bodyResult;
+                }, 
+                isWait: true, 
+                timeOutSecond: 20); //We need to wait somewhat longer in some situations
+                    
+                if(element != null)
+                {
+                    return true;
+                }
+            }
 
-		bool IVerifySomethingExists.VerifySomethingExist(string areaIdentifier, string type, string identifier)
-		{
-			IWebElement result = null;
-			switch (identifier)
-			{
-				case "Sign and Save":
-					result = Browser.TryFindElementBy(
-						By.XPath("//button[text()='" + identifier + "']"));
-					break;
-				//Add additional cases here
-				default:
-					result = GetElementByName(identifier);
-					break;
-			}
+            IWebElement result = null;
+            switch (identifier)
+            {
+                case "Sign and Save":
+                    result = Browser.TryFindElementBy(
+                        By.XPath("//button[text()='" + identifier + "']"));
+                    break;
+                //Add additional cases here
+                default:
+                    result = GetElementByName(identifier);
+                    break;
+            }
 
-			return result != null;
-
-			if (areaIdentifier == null)
-			{
-				if (Browser.FindElementByTagName("body").Text.Contains(identifier))
-					return true;
-				else
-					return false;
-			}
-			throw new NotImplementedException();
+            return result != null;
 		}
 
 		public IPage ClickAuditOnFormLevel()

@@ -1,7 +1,6 @@
 #DT13997:  AM2 blanks out the default values populated by coded values in the data dictionary if the datapoint has a blank entrylocale
 #AM2 will blank out submitted default values for a log field, that been populated by coded values of data dictionary, if the order of data dictionary entries was changed and coded values updated even when everything was properly mapped in the migration plan for data dictionary entries.
 #Unless other wise stated in this feature file it is assumed that this study has at least one subject which as submitted default values.  The forms #needs to be submitted by a role who has entry resitrctions for the field with default values.
-@ignore
 Feature: US12996_DT13997 Submitted default values will remain present on the eCRF when the coded values of the data dictionary have been change or reordered.
 
 
@@ -318,7 +317,7 @@ And I take a screenshot
 And I click audit on Field "Field A" log line "4"
 And I verify Audits exist
 	| Audit Type | Query Message | User   | Time                 |
-	| Record     | Inactivated.  | System | dd MMM yyyy hh:mm:ss |
+	| Record     | Inactivated.  | System | dd MMM yyyy HH:mm:ss |
 And I take a screenshot
 
 @release_2012.1.0
@@ -365,5 +364,5 @@ And I take a screenshot
 And I click audit on Field "Field A" log line "4"
 And I verify Audits exist
 	| Audit Type | Query Message | User   | Time                 |
-	| Record     | Inactivated.  | System | dd MMM yyyy hh:mm:ss |
+	| Record     | Inactivated.  | System | dd MMM yyyy HH:mm:ss |
 And I take a screenshot

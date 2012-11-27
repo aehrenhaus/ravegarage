@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using OpenQA.Selenium;
 using System.Collections.ObjectModel;
+using Medidata.RBT.SeleniumExtension;
 
 namespace Medidata.RBT.PageObjects.Rave
 {
@@ -42,7 +43,7 @@ namespace Medidata.RBT.PageObjects.Rave
 
         private IWebElement GetElementInRowByLabel(ControlType type, int position)
         {
-            string suffix;
+            string suffix, altSuffix = null;
             if (type == ControlType.RadioButton
                 || type == ControlType.RadioButtonVertical
                 || type == ControlType.ESigPage
@@ -51,22 +52,41 @@ namespace Medidata.RBT.PageObjects.Rave
                 suffix = ControlTypeInformation.GetSuffixByControlType(type, position);
             else
                 suffix = ControlTypeInformation.GetSuffixByControlType(type);
-            return GetElementBySuffixRow(this.m_fieldName, suffix);
+
+            //In the case where ESigPage is missing the username textbox - ESigPage just converges into Text
+            if (type == ControlType.ESigPage)
+                altSuffix = ControlTypeInformation.GetSuffixByControlType(ControlType.Text);
+            
+            return GetElementBySuffixRow(this.m_fieldName, suffix, altSuffix);
         }
-        private static IWebElement GetElementBySuffixRow(string label, string suffix)
+        private static IWebElement GetElementBySuffixRow(string label, params string[] suffixParams)
         {
+            //Filter out any null suffixes
+            suffixParams = suffixParams
+                .Where(item => !string.IsNullOrEmpty(item))
+                .ToArray();
+
             ReadOnlyCollection<IWebElement> leftSideTds = TestContext.Browser.FindElements(By.XPath("//td[@class='crf_rowLeftSide']"));
             IWebElement leftSideTd = leftSideTds.FirstOrDefault(x => x.Text.Split(new string[] { "\r\n" }, StringSplitOptions.None)[0] == label);
 
             if (leftSideTd == null)
                 throw new Exception("Can't find field area:" + label);
 
-            return leftSideTd.FindElement(By.XPath
-                ("./../td[@class='crf_rowRightSide']//table[@class='crf_dataPointInternal']//*['"
-                + suffix +
-                "' = substring(@id, string-length(@id) - string-length('"
-                + suffix +
-                "') + 1)]"));
+            IWebElement result = null;
+            foreach (var suffix in suffixParams)
+            {
+                result = leftSideTd.TryFindElementBy(
+                    By.XPath("./../td[@class='crf_rowRightSide']//table[@class='crf_dataPointInternal']//*['"
+                        + suffix +
+                        "' = substring(@id, string-length(@id) - string-length('"
+                        + suffix +
+                        "') + 1)]"));
+
+                if (result != null)
+                    break;
+            }
+            
+            return result;
         }
 
 

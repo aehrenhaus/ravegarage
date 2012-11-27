@@ -1,5 +1,5 @@
 ﻿# When an Edit Check sets Datapoint XYZ to require verification, if the verification is broken on XYZ by a data change, this is not audited.
-@ignore
+
 Feature: DT 13622 TSDV Off When an Edit Check sets Datapoint XYZ to require verification, if the verification is broken on XYZ by a data change, this is not audited.
 	As a Rave user
 	Given I verify data
@@ -57,7 +57,7 @@ Scenario: As an EDC user, when I have an edit check fired on one field that sets
 	And I verify data on Fields in CRF
 	| Field      | Data        | Requires Verification |
 	| Visit Date | 01 Feb 2011 | True                  |
-	| Age        | 17          | False                 |
+	| Age        | 17          | False               |
 	And I check "Verify" in "Visit Date"
 	And I save the CRF page
 	And I take a screenshot

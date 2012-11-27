@@ -1,4 +1,3 @@
-@ignore
 #DT13504: AM2 audit text needs to be corrected. The audit text "Amendment Manager: Query is closed during migration process, because it no longer exists in target version" should be updated to "Amendment Manager: Query closed during migration process because the edit check no longer exists in target version."
 
 #The scenarios described in this feature file go under the assumption that there is at least the following:
@@ -140,7 +139,8 @@ Then I verify Audits exist
 And I take a screenshot
 And I login to Rave with user "locuser"
 And I select a Subject "{Var(num1)}"
-And I select form "LForm A"
+#And I select form "LForm A" - this will not work in CI since this localized string will not exist on clean DB
+And I select form "Form A"
 When I click audit on Field "LField B"
 Then I verify Audits exist
 	| Audit Type         | Query Message                                                                                     | User    | Time                  |

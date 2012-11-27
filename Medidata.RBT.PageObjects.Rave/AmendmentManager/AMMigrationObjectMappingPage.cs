@@ -19,7 +19,7 @@ namespace Medidata.RBT.PageObjects.Rave.AmendmentManager
         {
             foreach(MigrationModel migrationModel in migrationModels)
             {
-                IWebElement source = Browser.FindElementByXPath(".//span[text() = '" + migrationModel.Source + "']");
+                IWebElement source = Browser.TryFindElementByXPath(".//span[text() = '" + migrationModel.Source + "']");
                 IWebElement sourceTargetRow = source.Parent().Parent();
                 Dropdown targetDropdown = sourceTargetRow.FindElement(By.XPath("td/select")).EnhanceAs<Dropdown>();
                 targetDropdown.SelectByText(migrationModel.Target);

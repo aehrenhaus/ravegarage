@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.IO;
 using ICSharpCode.SharpZipLib.Zip;
+using System.Threading;
 
 namespace Medidata.RBT
 {
@@ -15,6 +16,7 @@ namespace Medidata.RBT
 		/// </summary>
 		public static List<String> UnzipAllDownloads()
 		{
+            Thread.Sleep(5000);
 			List<String> extractedFilePaths = new List<string>();
 			List<String> zipFilePaths = Directory.GetFiles(RBTConfiguration.Default.DownloadPath, "*.zip").ToList();
 			foreach (String zipFilePath in zipFilePaths)

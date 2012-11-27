@@ -8,7 +8,6 @@
 # NOTE: The ability to disable and enable the Add Event functionality only depends on the user role permission to lock or unlock and DO NOT take into consideration any pre-conditions that may be associated with the lock or unlock actions.
 # When a user clicks on the lock icon and link after it has been disabled, and the user is navigated to the audits page then the audit trail will display the following "Audit: Add Events disabled. User: Username Time: date and time stamp of action"
 # When a user clicks on the Parent: Subject - <Subject Name>, and the user is navigated to the audits page then the audit trail will display the following "Audit: Add Events Disabled.	User: Username Time: date and time stamp of action"
-@ignore
 Feature: Disabling/Enabling Add Events 
   As a data manager
   I want to be able to disable and reenable Add Events
@@ -986,7 +985,7 @@ Scenario:@US18745-26  The Add Events controls can be localized on the subject pa
 	Given I login to Rave with user "US18745_locuser"
 	When I create a Subject
     |Field       |Data                  |Control Type |
-    |LLabel 1    |SUB{RndNum<num26>(3)} |textbox      |
+    |Label 1    |SUB{RndNum<num26>(3)} |textbox      |
     Then I can see "LDisabled" radio button
 	And I can see "LEnabled" radio button
 	And I can see "enabled" dropdown labeled "LAdd Event"
@@ -1027,7 +1026,7 @@ Scenario:@US18745-27 The Add Events controls can be localized on the grid view p
 	Given I login to Rave with user "US18745_locuser"
 	And I create a Subject
     |Field       |Data                  |Control Type |
-    |LLabel 1    |SUB{RndNum<num27>(3)} |textbox      |
+    |Label 1    |SUB{RndNum<num27>(3)} |textbox      |
 	When I select link "LGrid View"
     Then I can see "LDisabled" radio button
 	And I can see "LEnabled" radio button

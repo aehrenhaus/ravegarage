@@ -175,10 +175,10 @@ namespace Medidata.RBT.PageObjects.Rave
 
 		#region VerifyExist
 
-		bool IVerifySomethingExists.VerifySomethingExist(string areaIdentifier, string type, string identifier)
+		bool IVerifySomethingExists.VerifySomethingExist(string areaIdentifier, string type, string identifier, bool exactMatch)
 		{
 			var area = Browser.TryFindElementById("_ctl0_Content__ctl0_dgProjectBlockPlan");
-			return area.Text.Contains(identifier);
+            return !exactMatch && area.Text.Contains(identifier);
 		}
 
 

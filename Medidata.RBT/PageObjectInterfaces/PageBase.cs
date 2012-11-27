@@ -316,10 +316,8 @@ namespace Medidata.RBT
 
 		public virtual IWebElement GetElementByName(string identifier, string areaIdentifier = null, string listItemIdentifier = null)
 		{
-			//IWebElement element = Browser.TryFindElementBy(By.XPath("//input[@value='" + identifier + "']"));
-			//if (element != null)
-			//	return element;
-			throw new Exception(string.Format("This page ({0}) does not provide information about element: {1}", this.GetType().Name, identifier));
+            IWebElement element = Browser.TryFindElementBy(By.XPath("//input[@value='" + identifier + "']"));
+            return element;
 		}
 
 		//Don't make this virtual , override GetElementByName in base classes

@@ -6,7 +6,6 @@
 # (4) the screen will scroll to the right as the user tabs so that the user can always see the fields into which they enter data
 # (5) the user is able to tab from the last enterable field of a log line to the add log line link
 # This is related to DT 13558.
-@ignore
 Feature: Updated tab order to enable mouseless data entry - Untouched landscape log form
   As A Rave EDC User
   I want to tab from field to field 
