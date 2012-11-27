@@ -24,12 +24,22 @@ namespace Medidata.RBT.PageObjects.Rave
             m_controlType = ControlType.Default;
 
             //Get ColumnID
-            IWebElement topRowCell = this.Page.Browser.FindElement(By.XPath("//tr[@class='breaker']//td//*[contains(text(),'" + fieldName + "')]"));
+            IWebElement topRowCell = this.Page.Browser.TryFindElementBy(
+                By.XPath("//tr[@class='breaker']//td//*[contains(text(),'" + fieldName + "')]"));
+            if (topRowCell == null)
+                throw new Exception(
+                    string.Format("Cannot find top row cell for fieldName [{0}]", fieldName));
+
             string topRowCellID = topRowCell.GetAttribute("id");
             m_columnId = Convert.ToInt32(topRowCellID.Substring(topRowCellID.LastIndexOf('_') + 2, topRowCellID.Length - (topRowCellID.LastIndexOf('_') + 2)));
 
             //Get RowID
-            IWebElement tableCell = this.Page.Browser.FindElement(By.XPath("//td[contains(@id, 'Val_" + index + "_" + m_columnId + "')]"));
+            IWebElement tableCell = this.Page.Browser.TryFindElementBy(
+                By.XPath("//td[contains(@id, 'Val_" + index + "_" + m_columnId + "')]"));
+            if(tableCell == null)
+                throw new Exception(
+                    string.Format("Cannot find table cell for fieldName [{0}]", fieldName));
+
             string elementCellID = tableCell.GetAttribute("id");
 
             Match m = new Regex(@"^lVal_\d+_\d+_(?<ROW_ID>\d+)").Match(elementCellID);
@@ -53,7 +63,13 @@ namespace Medidata.RBT.PageObjects.Rave
                 case ControlType.DropDownList:
                     throw new NotImplementedException("Not implemented yet for :" + m_controlType);
                 case ControlType.DynamicSearchList:
-                    IWebElement topRowCell = this.Page.Browser.FindElement(By.XPath("//tr[@class='breaker']//td//*[contains(text(),'" + fieldName + "')]")).FindElement(By.XPath("../.."));
+                    IWebElement topRowCell = this.Page.Browser.TryFindElementBy(
+                        By.XPath("//tr[@class='breaker']//td//*[contains(text(),'" + fieldName + "')]../.."));
+                    if (topRowCell == null)
+                        throw new Exception(
+                            string.Format("Cannot find top row cell for fieldName [{0}]", fieldName));
+
+                    //IWebElement topRowCell = this.Page.Browser.FindElement(By.XPath("//tr[@class='breaker']//td//*[contains(text(),'" + fieldName + "')]")).FindElement(By.XPath("../.."));
                     string topRowCellID = topRowCell.GetAttribute("id");
                     m_columnId = Convert.ToInt32(topRowCellID.Substring(topRowCellID.LastIndexOf('_') + 2, topRowCellID.Length - (topRowCellID.LastIndexOf('_') + 2)));
                     break;
@@ -118,12 +134,14 @@ namespace Medidata.RBT.PageObjects.Rave
                 || ControlType.RadioButtonVertical == type
                    ? "id"
                    : "name";
-            return TestContext.Browser.FindElement(By.XPath
+            var result = TestContext.Browser.TryFindElementBy(By.XPath
                 ("//*['"
                 + suffix +
                 "' = substring(@" + attr + ", string-length(@" + attr + ") - string-length('"
                 + suffix +
                 "') + 1)]"));
+
+            return result;
         }
         public override void Click()
         {

@@ -66,8 +66,12 @@ namespace Medidata.RBT.PageObjects.Rave
                 .Where(item => !string.IsNullOrEmpty(item))
                 .ToArray();
 
-            ReadOnlyCollection<IWebElement> leftSideTds = TestContext.Browser.FindElements(By.XPath("//td[@class='crf_rowLeftSide']"));
-            IWebElement leftSideTd = leftSideTds.FirstOrDefault(x => x.Text.Split(new string[] { "\r\n" }, StringSplitOptions.None)[0] == label);
+            var leftSideTd = TestContext.Browser.TryFindElementBy(w => {
+                var tDs = w.FindElements(By.XPath("//td[@class='crf_rowLeftSide']"));
+                var tD = tDs.FirstOrDefault(x =>
+                    x.Text.Split(new [] { "\r\n" }, StringSplitOptions.None)[0] == label);
+                return tD;
+            });
 
             if (leftSideTd == null)
                 throw new Exception("Can't find field area:" + label);
