@@ -1,43 +1,42 @@
 ﻿# Reports on either the Study, Site or Subject pages should be sorted in alphabetical order.
 @ignore
-Feature: US11913
+Feature: US11913 Reports on either the Study, Site or Subject pages should be sorted in alphabetical order.
  When reports are listed on either the Study, Site or Subject pages, they should be sorted in alphabetical order.
   As a Rave Adminstrator
 When I have configured reports to display on either the Study, Site or Subject pages
 Then the report names are sorted in alphabetical order
 
-
 Background:
-Given I login to Rave with user "defuser" and password "password"
-# And the following Project assignments exist
-# | User    | Project    | Environment | Role | Site     | Site Number | User Group |
-# | defuser | Mediflex   | Prod        | cdm1 | LabSite01| 2426        | Reports    |
-# And User Group has "Reports"
-# And Role "cdm1" has Action "Entry"
-# And Role "Data Manager" has the following Report assignments
-# | Report Name          |
-# | Coding Assignments   | 
-# | Data Listing         |
-# | eLearning Status     |
-# | Enrollment           |
-# | Page Status v2.0     |
-# | Query Aging          |
-# | Stream-Audit Trail   |
-# | Subject CRF Versions |
-# | User Listing         |
-# And the following Reports Matrix assignments exist
-# | Projects   | Report Name          | Study | Site | Subject |
-# | Mediflex   | Coding Assignments   | X     |      |         |
-# | Mediflex   | Data Listing         | X     |      |         |
-# | Mediflex   | eLearning Status     |       | X    |         |
-# | Mediflex   | Enrollment           | X     | X    |         |
-# | Mediflex   | Page Status v2.0     | X     | X    | X       |
-# | Mediflex   | Query Aging          | X     | X    | X       |
-# | Mediflex   | Stream-Audit Trail   | X     | X    | X       |
-# | Mediflex   | Subject CRF Versions | X     |      | X       |
-# | Mediflex   | User Listing         | X     | X    |         |
+	Given I login to Rave with user "defuser" and password "password"
+	# And the following Project assignments exist
+	# | User    | Project    | Environment | Role | Site     | Site Number | User Group |
+	# | defuser | Mediflex   | Prod        | cdm1 | LabSite01| 2426        | Reports    |
+	# And User Group has "Reports"
+	# And Role "cdm1" has Action "Entry"
+	# And Role "Data Manager" has the following Report assignments
+	# | Report Name          |
+	# | Coding Assignments   | 
+	# | Data Listing         |
+	# | eLearning Status     |
+	# | Enrollment           |
+	# | Page Status v2.0     |
+	# | Query Aging          |
+	# | Stream-Audit Trail   |
+	# | Subject CRF Versions |
+	# | User Listing         |
+	# And the following Reports Matrix assignments exist
+	# | Projects   | Report Name          | Study | Site | Subject |
+	# | Mediflex   | Coding Assignments   | X     |      |         |
+	# | Mediflex   | Data Listing         | X     |      |         |
+	# | Mediflex   | eLearning Status     |       | X    |         |
+	# | Mediflex   | Enrollment           | X     | X    |         |
+	# | Mediflex   | Page Status v2.0     | X     | X    | X       |
+	# | Mediflex   | Query Aging          | X     | X    | X       |
+	# | Mediflex   | Stream-Audit Trail   | X     | X    | X       |
+	# | Mediflex   | Subject CRF Versions | X     |      | X       |
+	# | Mediflex   | User Listing         | X     | X    |         |
 
-#And I select Study "Mediflex" and Site "LabSite01"
+	#And I select Study "Mediflex" and Site "LabSite01"
 
 @release_2012.1.0
 @PB_US11913_01

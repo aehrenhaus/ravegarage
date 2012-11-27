@@ -2,7 +2,7 @@
 # It is partially correct because if this Lab Unit Conversion is not used by Alert Lab (which means only Standard Units Group or Standard Units Group/Reference Lab is being defined in Lab Setting of study), the range status should not be changed. But the problem is that, even the range status is same as before, the standard value should be updated accordingly. So in above stored procedure, for the datapoints using lab unit in the Lab Unit Conversion and the study using the Standard Units Group of the Lab Unit Conversion, we need to set NeedsCVRefresh on. 
 # This DT covered the DT 10086 that the description is not clear enough.
 @ignore
-Feature: US15417_DT13905
+Feature: US15417_DT13905 NeedsCVRefresh is not set to On for all datapoints related when Lab Unit Conversion is created or updated.
 	NeedsCVRefresh is not set to On for all datapoints related when Lab Unit Conversion is created or updated
 	As a Rave user
 	Given I enter lab data in non-standard units
@@ -83,9 +83,10 @@ Background:
 	 #And I select Study "US15417_DT13905_SJ" and Site "Site 1"
 
 @release_2012.1.0 
-@PB_DT13905_01
+@PB_US15417_DT13905_01
 @Validation
-Scenario: PB_DT13905_01 As an EDC user, when I create a unit conversion formula to convert lab data in a non-standard unit to standard values in a standard unit, then I should see the standard value and standard units in Clinical Views.
+Scenario: PB_US15417_DT13905_01 As an EDC user, when I create a unit conversion formula to convert lab data in a non-standard unit to standard values in a standard unit, then I should see the standard value and standard units in Clinical Views.
+	
 	When I select Study "US15417_DT13905_SJ" and Site "Site 1"
 	And I create a Subject
 	| Field            | Data               |
@@ -129,9 +130,9 @@ Scenario: PB_DT13905_01 As an EDC user, when I create a unit conversion formula 
 	And I take a screenshot
 	
 @release_2012.1.0 
-@PB_DT13905_02
+@PB_US15417_DT13905_02
 @Validation
-Scenario: PB_DT13905_02 As an EDC user, when I update a unit conversion formula to convert lab data in a non-standard unit to standard values in a standard unit, then I should see the standard value and standard units in Clinical Views.
+Scenario: PB_US15417_DT13905_02 As an EDC user, when I update a unit conversion formula to convert lab data in a non-standard unit to standard values in a standard unit, then I should see the standard value and standard units in Clinical Views.
 
 	When I select Study "US15417_DT13905_SJ" and Site "Site 1"
 	And I create a Subject
@@ -203,9 +204,9 @@ Scenario: PB_DT13905_02 As an EDC user, when I update a unit conversion formula 
 
 
 @release_2012.1.0 
-@PB_DT13905_03
+@PB_US15417_DT13905_03
 @Validation
-Scenario: PB_DT13905_03 As an EDC user, when I create a unit conversion formula to convert lab data in a non-standard unit to standard values in a standard unit for a specific analyte, then I should see the standard value and standard units in Clinical Views.
+Scenario: PB_US15417_DT13905_03 As an EDC user, when I create a unit conversion formula to convert lab data in a non-standard unit to standard values in a standard unit for a specific analyte, then I should see the standard value and standard units in Clinical Views.
 	When I select Study "US15417_DT13905_SJ" and Site "Site 1"
 	And I create a Subject
 	| Field            | Data               |
@@ -253,9 +254,9 @@ Scenario: PB_DT13905_03 As an EDC user, when I create a unit conversion formula 
 	And I take a screenshot
 	
 @release_2012.1.0 
-@PB_DT13905_04
+@PB_US15417_DT13905_04
 @Validation
-Scenario: PB_DT13905_04 As an EDC user, when I update a unit conversion formula to convert lab data in a non-standard unit to standard values in a standard unit for a specific analyte, then I should see the standard value and standard units in Clinical Views.
+Scenario: PB_US15417_DT13905_04 As an EDC user, when I update a unit conversion formula to convert lab data in a non-standard unit to standard values in a standard unit for a specific analyte, then I should see the standard value and standard units in Clinical Views.
 	
 	When I select Study "US15417_DT13905_SJ" and Site "Site 1"
 	And I create a Subject

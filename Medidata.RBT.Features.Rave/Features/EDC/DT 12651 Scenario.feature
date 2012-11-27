@@ -55,9 +55,9 @@ Background:
 	And I navigate to site "Lab Site 1"
 	
 @release_563_Patch241
-@PB_US12651_01
+@PB_US12995_DT12651_01
 @Validation		
-Scenario: @PB_US12651 As an EDC user, when I entered above range data in lab field A, and I run the query "Query" in the database, then there will be value in "RangeStatus" column.
+Scenario: PB_US12995_DT12651_01 As an EDC user, when I entered above range data in lab field A, and I run the query "Query" in the database, then there will be value in "RangeStatus" column.
 
 	And I create a Subject
 	  | Field   			| Data              |

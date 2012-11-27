@@ -1,6 +1,6 @@
 ﻿# When an analyte range is manually created, the audit information should be captured in the database.
 @ignore
-Feature: US17701_DT13437
+Feature: US17701_DT13437 When an analyte range is manually created, the audit information should be captured in the database.
 	Audit information for manually create analyte ranges is captured in the database.
 	As a Rave user
 	When I manually create an analyte range
@@ -55,7 +55,7 @@ Background:
 
 #----------------------------------------------------------------------------------------------------------------------------------------
 @release_564_2012.1.0
-@PB_US17701_01
+@PB_US17701_DT13437_01
 @Validation
 Scenario: PB_US17701_01 As a Lab Administrator, when manually create an analyte range for an Local Lab, then the audit information for the analyte I created is captured in the database.
 
@@ -78,9 +78,9 @@ Scenario: PB_US17701_01 As a Lab Administrator, when manually create an analyte 
 	
 #----------------------------------------------------------------------------------------------------------------------------------------
 @release_564_2012.1.0
-@PB_US17701_02
+@PB_US17701_DT13437_02
 @Validation
-Scenario: PB_US17701_02 As a Lab Administrator, when manually create an analyte range for an Central Lab, then the audit information for the analyte I created is captured in the database.
+Scenario: PB_US17701_DT13437_02 As a Lab Administrator, when manually create an analyte range for an Central Lab, then the audit information for the analyte I created is captured in the database.
 
 	And I navigate to "Lab Administration" module
 	And I navigate to "Central Labs" module
@@ -96,9 +96,9 @@ Scenario: PB_US17701_02 As a Lab Administrator, when manually create an analyte 
 
 #----------------------------------------------------------------------------------------------------------------------------------------
 @release_564_2012.1.0
-@PB_US17701_03
+@PB_US17701_DT13437_03
 @Validation
-Scenario: PB_US17701_03 As a Lab Administrator, when manually create an analyte range for an Alert Lab, then the audit information for the analyte I created is captured in the database.
+Scenario: PB_US17701_DT13437_03 As a Lab Administrator, when manually create an analyte range for an Alert Lab, then the audit information for the analyte I created is captured in the database.
 
 	And I navigate to "Lab Administration" module
 	And I navigate to "Global Labs" module
@@ -117,9 +117,9 @@ Scenario: PB_US17701_03 As a Lab Administrator, when manually create an analyte 
 
 #----------------------------------------------------------------------------------------------------------------------------------------
 @release_564_2012.1.0
-@PB_US17701_04
+@PB_US17701_DT13437_04
 @Validation
-Scenario: PB_US17701_04 As a Lab Administrator, when manually create an analyte range for an Reference Lab, then the audit information for the analyte I created is captured in the database.
+Scenario: PB_US17701_DT13437_04 As a Lab Administrator, when manually create an analyte range for an Reference Lab, then the audit information for the analyte I created is captured in the database.
 
 	And I navigate to "Lab Administration" module
 	And I navigate to "Global Labs" module
@@ -139,9 +139,9 @@ Scenario: PB_US17701_04 As a Lab Administrator, when manually create an analyte 
 
 #----------------------------------------------------------------------------------------------------------------------------------------
 @release_564_2012.1.0
-@PB_US17701_05
+@PB_US17701_DT13437_05
 @Validation
-Scenario: PB_US17701_05 As a Lab Administrator, when manually create an analyte range for a Local Lab in EDC, then the audit information for the analyte I created is captured in the database.
+Scenario: PB_US17701_DT13437_05 As a Lab Administrator, when manually create an analyte range for a Local Lab in EDC, then the audit information for the analyte I created is captured in the database.
 		
 	And I select Study "Mediflex" and Site "Site 10991"
 	And I select link "Labs"
@@ -160,9 +160,9 @@ Scenario: PB_US17701_05 As a Lab Administrator, when manually create an analyte 
 
 #----------------------------------------------------------------------------------------------------------------------------------------
 @release_564_2012.1.0
-@PB_US17701_06
+@PB_US17701_DT13437_06
 @Validation
-Scenario: PB_US17701_06 As a Lab Administrator, when manually copy analyte range for an Alert Lab, then the audit information for the analyte I copied is captured in the database.
+Scenario: PB_US17701_DT13437_06 As a Lab Administrator, when manually copy analyte range for an Alert Lab, then the audit information for the analyte I copied is captured in the database.
 
 	And I navigate to "Lab Administration" module
 	And I navigate to "Global Labs" module
@@ -178,9 +178,9 @@ Scenario: PB_US17701_06 As a Lab Administrator, when manually copy analyte range
 
 #----------------------------------------------------------------------------------------------------------------------------------------
 @release_564_2012.1.0
-@PB_US17701_07
+@PB_US17701_DT13437_07
 @Validation
-Scenario: PB_US17701_07 As a Lab Administrator, when manually create an analyte range from New Version for an Alert Lab, then the audit information for the analyte I created is captured in the database.
+Scenario: PB_US17701_DT13437_07 As a Lab Administrator, when manually create an analyte range from New Version for an Alert Lab, then the audit information for the analyte I created is captured in the database.
 
 	And I navigate to "Lab Administration" module
 	And I navigate to "Global Labs" module
@@ -207,9 +207,9 @@ Scenario: PB_US17701_07 As a Lab Administrator, when manually create an analyte 
 
 #----------------------------------------------------------------------------------------------------------------------------------------
 @release_564_2012.1.0
-@PB_US17701_08
+@PB_US17701_DT13437_08
 @Validation
-Scenario: PB_US17701_08 As a Lab Administrator, when manually create an analyte range from New Version for an Reference Lab, then the audit information for the analyte I created is captured in the database.
+Scenario: PB_US17701_DT13437_08 As a Lab Administrator, when manually create an analyte range from New Version for an Reference Lab, then the audit information for the analyte I created is captured in the database.
 
 	And I navigate to "Lab Administration" module
 	And I navigate to "Global Labs" module

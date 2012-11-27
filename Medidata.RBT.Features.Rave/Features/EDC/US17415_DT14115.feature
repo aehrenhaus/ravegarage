@@ -1,6 +1,6 @@
 #When a non-visible (View Restricted) field, that does not require signature, on a form with other fields that do require signature and have already been signed, is made visible (View Restriction is removed), the signature on the visible fields is not broken.
 @ignore
-Feature: US17415_DT14115 
+Feature: US17415_DT14115 When a non-visible (View Restricted) field, that does not require signature, on a form with other fields that do require signature and have already been signed, is made visible (View Restriction is removed), then the signature on the visible fields should not break.
 	When a non-visible (View Restricted) field, that does not require signature, on a form with other fields that do require signature and have already been signed, is made visible (View Restriction is removed), then the signature on the visible fields should not break.
 	As a Rave Administrator
 	When I have a form that has visible and non-visible fields
@@ -133,9 +133,9 @@ Background:
 
 #----------------------------------------------------------------------------------------------------------------------------------------
 @release_564_2012.1.0
-@PB_US17415_01
+@PB_US17415_DT14115_01
 @Validation	
-Scenario: @PB_US17415_01 As an Investigator, when I sign the "Adverse Events" log form, the form level signature does not break when the "Added 1 For Extra Review" field is made visible.
+Scenario: @PB_US17415_DT14115_01 As an Investigator, when I sign the "Adverse Events" log form, the form level signature does not break when the "Added 1 For Extra Review" field is made visible.
 
 	And I select Study "**US17415_DT14115" and Site "Site 01"
 	And I create a Subject
@@ -188,9 +188,9 @@ Scenario: @PB_US17415_01 As an Investigator, when I sign the "Adverse Events" lo
 
 #----------------------------------------------------------------------------------------------------------------------------------------
 @release_564_2012.1.0
-@PB_US17415_02
+@PB_US17415_DT14115_02
 @Validation	
-Scenario: @PB_US17415_02 As an Investigator, when I sign the "Serious Adverse Events" log form, the form level signature does not break when the "Added 1 For Extra Review" field is made visible.
+Scenario: @PB_US17415_DT14115_02 As an Investigator, when I sign the "Serious Adverse Events" log form, the form level signature does not break when the "Added 1 For Extra Review" field is made visible.
 
 	And I select Study "**US17415_DT14115" and Site "Site 01"
 	And I create a Subject
@@ -228,9 +228,9 @@ Scenario: @PB_US17415_02 As an Investigator, when I sign the "Serious Adverse Ev
 
 #----------------------------------------------------------------------------------------------------------------------------------------
 @release_564_2012.1.0
-@PB_US17415_03
+@PB_US17415_DT14115_03
 @Validation	
-Scenario: @PB_US17415_03 As an Investigator, when I sign the "Demographics" form, the form level signature does not break when the ICDTAGE field is made visible.
+Scenario: @PB_US17415_DT14115_03 As an Investigator, when I sign the "Demographics" form, the form level signature does not break when the ICDTAGE field is made visible.
 	
 	And I navigate to "Architect"
 	And I select "Study" link "**US17415_DT14115" in "Active Projects"
@@ -322,9 +322,9 @@ Scenario: @PB_US17415_03 As an Investigator, when I sign the "Demographics" form
 					
 #----------------------------------------------------------------------------------------------------------------------------------------
 @release_564_2012.1.0
-@PB_US17415_04
+@PB_US17415_DT14115_04
 @Validation	
-Scenario: @PB_US17415_04 As an Investigator, when I sign the "Test Demographics" form, the form level signature does not break when the ICDTAGE field is made invisible.
+Scenario: @PB_US17415_DT14115_04 As an Investigator, when I sign the "Test Demographics" form, the form level signature does not break when the ICDTAGE field is made invisible.
 	
 	And I navigate to "Architect"
 	And I select "Study" link "**US17415_DT14115" in "Active Projects"
@@ -412,9 +412,9 @@ Scenario: @PB_US17415_04 As an Investigator, when I sign the "Test Demographics"
 
 #----------------------------------------------------------------------------------------------------------------------------------------
 @release_564_2012.1.0
-@PB_US17415_05
+@PB_US17415_DT14115_05
 @Validation	
-Scenario: @PB_US17415_05 As an Investigator, when I sign the "Demographics" form and "Field Visibility Changed" is checked in Amendment Manager>Configure Plan, the form level signature does not break when the ICDTAGE field is made visible.
+Scenario: @PB_US17415_DT14115_05 As an Investigator, when I sign the "Demographics" form and "Field Visibility Changed" is checked in Amendment Manager>Configure Plan, the form level signature does not break when the ICDTAGE field is made visible.
 	
 	And I navigate to "Architect"
 	And I select "Study" link "**US17415_DT14115" in "Active Projects"
@@ -510,9 +510,9 @@ Scenario: @PB_US17415_05 As an Investigator, when I sign the "Demographics" form
 					
 #----------------------------------------------------------------------------------------------------------------------------------------
 @release_564_2012.1.0
-@PB_US17415_06
+@PB_US17415_DT14115_06
 @Validation	
-Scenario: @PB_US17415_06 As an Investigator, when I sign the "Test Demographics" form and "Field Visibility Changed" is checked in Amendment Manager>Configure Plan, the form level signature does not break when the ICDTAGE field is made invisible.
+Scenario: @PB_US17415_DT14115_06 As an Investigator, when I sign the "Test Demographics" form and "Field Visibility Changed" is checked in Amendment Manager>Configure Plan, the form level signature does not break when the ICDTAGE field is made invisible.
 	
 	And I navigate to "Architect"
 	And I select "Study" link "**US17415_DT14115" in "Active Projects"
@@ -604,9 +604,9 @@ Scenario: @PB_US17415_06 As an Investigator, when I sign the "Test Demographics"
 
 #----------------------------------------------------------------------------------------------------------------------------------------
 @release_564_2012.1.0
-@PB_US17415_07
+@PB_US17415_DT14115_07
 @Validation	
-Scenario: @PB_US17415_07 As an Investigator, when I sign the "Adverse Events 1" standard form, the form level signature does not break when the "Added 1 For Extra Review" field is made visible.
+Scenario: @PB_US17415_DT14115_07 As an Investigator, when I sign the "Adverse Events 1" standard form, the form level signature does not break when the "Added 1 For Extra Review" field is made visible.
 
 	And I select Study "**US17415_DT14115" and Site "Site 01"
 	And I create a Subject
@@ -655,9 +655,9 @@ Scenario: @PB_US17415_07 As an Investigator, when I sign the "Adverse Events 1" 
 
 #----------------------------------------------------------------------------------------------------------------------------------------
 @release_564_2012.1.0
-@PB_US17415_08
+@PB_US17415_DT14115_08
 @Validation	
-Scenario: @PB_US17415_08 As an Investigator, when I sign the "Serious Adverse Events 1" standard form, the form level signature does not break when the "Added 1 For Extra Review" field is made visible.
+Scenario: @PB_US17415_DT14115_08 As an Investigator, when I sign the "Serious Adverse Events 1" standard form, the form level signature does not break when the "Added 1 For Extra Review" field is made visible.
 
 	And I select Study "**US17415_DT14115" and Site "Site 01"
 	And I create a Subject

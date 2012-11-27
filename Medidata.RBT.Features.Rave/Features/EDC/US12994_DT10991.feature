@@ -6,8 +6,9 @@
 # Also, these is a lab form with sample date = 2010-01-04
 # Now, when system do Lab range searching, system will try to use the Age in Visit 1 which is the closest mapped variable because of subject date.
 # To fix: we need to remove subject date from order by so that subject date will not affect search order. Also we need to keep all lab variable datapoints in search targets, it is to say when record date, datapage date and instance date is null for an Age datapoint, but if it is the only one in subject, it will be fetched.
+
 @ignore
-Feature: US12994_DT10991 
+Feature: US12994_DT10991 Remove Subject Date from order by statement in searching Lab Variable Mapping Value
 	Remove Subject Date from order by statement in searching Lab Variable Mapping Value
 	As a Rave user
 	When I skip a visit
@@ -63,9 +64,9 @@ Background:
 
 #----------------------------------------------------------------------------------------------------------------------------------------
 @release_564_2012.1.0
-@PB-US12994_01
-@Draft			
-Scenario: PB-US12994_01 As an EDC user, when I enter a missing date in the first Visit Date, a valid date in the second Visit Date, and a Lab Date after the second Visit Date and the lab Age variable is mapped to the Earliest date, then I should see lab ranges.
+@PB_US12994_DT10991_01
+@Validation		
+Scenario: PB_US12994_DT10991_01 As an EDC user, when I enter a missing date in the first Visit Date, a valid date in the second Visit Date, and a Lab Date after the second Visit Date and the lab Age variable is mapped to the Earliest date, then I should see lab ranges.
 	
 	And I select Study "US12994_DT10991" and Site "Earliest Date Site"
 	And I create a Subject
@@ -94,10 +95,9 @@ Scenario: PB-US12994_01 As an EDC user, when I enter a missing date in the first
 
 #----------------------------------------------------------------------------------------------------------------------------------------
 @release_564_2012.1.0
-@PB-US12994_02
-@Draft	
-
-Scenario: PB-US12994_02 As an EDC user, when I enter a missing date in the first Visit Date, a valid date in the second Visit Date, and a Lab Date after the second Visit Date and the lab Age variable is mapped to the Latest date, then I should see lab ranges.
+@PB_US12994_DT10991_02
+@Validation
+Scenario: PBUS12994_DT10991_02 As an EDC user, when I enter a missing date in the first Visit Date, a valid date in the second Visit Date, and a Lab Date after the second Visit Date and the lab Age variable is mapped to the Latest date, then I should see lab ranges.
 	
 	And I select Study "US12994_DT10991" and Site "Latest Date Site"
 	And I create a Subject
@@ -123,10 +123,9 @@ Scenario: PB-US12994_02 As an EDC user, when I enter a missing date in the first
 
 #----------------------------------------------------------------------------------------------------------------------------------------
 @release_564_2012.1.0
-@PB-US12994_03
-@Draft	
-
-Scenario: PB-US12994_03 As an EDC user, when I enter a missing date in the first Visit Date, a valid date in the second Visit Date, and a Lab Date after the second Visit Date and the lab Age variable is mapped to the Closest in time to the lab date, then I should see lab ranges.
+@PB_US12994_DT10991_03
+@Validation
+Scenario: PB_US12994_DT10991_03 As an EDC user, when I enter a missing date in the first Visit Date, a valid date in the second Visit Date, and a Lab Date after the second Visit Date and the lab Age variable is mapped to the Closest in time to the lab date, then I should see lab ranges.
 	
 	And I select Study "US12994_DT10991" and Site "Closest in Time to Lab Date Site"
 	And I create a Subject
@@ -152,10 +151,9 @@ Scenario: PB-US12994_03 As an EDC user, when I enter a missing date in the first
 
 #----------------------------------------------------------------------------------------------------------------------------------------
 @release_564_2012.1.0
-@PB-US12994_04
-@Draft	
-
-Scenario: PB-US12994_04 As an EDC user, when I enter a missing date in the first Visit Date, a valid date in the second Visit Date, and a Lab Date after the second Visit Date and the lab Age variable is mapped to the Closest in time prior to lab date, then I should see lab ranges.
+@PB_US12994_DT10991_04
+@Validation
+Scenario: PB_US12994_DT10991_04 As an EDC user, when I enter a missing date in the first Visit Date, a valid date in the second Visit Date, and a Lab Date after the second Visit Date and the lab Age variable is mapped to the Closest in time prior to lab date, then I should see lab ranges.
 	
 	And I select Study "US12994_DT10991" and Site "Closest in Time Prior to Lab Date Site"
 	And I create a Subject

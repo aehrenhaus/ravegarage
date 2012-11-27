@@ -32,9 +32,9 @@ Given following Report assignments exist
 #And report "Audit Trail" exists
 
 @release_2012.1.0
-@US18531_AM2_DT13626_01
+@PB_US18531_AM2_DT13626_01
 @Validation
-Scenario:  US18531_AM2_DT13626_01 When the data is soft deleted and subject is migrated, then extra records should not be created
+Scenario:  PB_US18531_AM2_DT13626_01 When the data is soft deleted and subject is migrated, then extra records should not be created
 
 Given I login to Rave with user "SUPER USER 1"
 And I create a Subject

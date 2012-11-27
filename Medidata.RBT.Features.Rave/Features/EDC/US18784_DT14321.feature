@@ -1,6 +1,6 @@
 # US 18784 Frozen status is not propagated to the standard field on a log line
 
-Feature: US18784_DT14321
+Feature: US18784_DT14321 Frozen status is not propagated to the standard field on a log line
 	When I Verify and Freeze a standard field on a mixed form at the same time at the form level, the frozen status should progagate to the standard field on the log line.
 	As a Rave Administrator
 	When I have a mixed form that contains standard and log fields
@@ -18,9 +18,9 @@ Feature: US18784_DT14321
 
 #----------------------------------------------------------------------------------------------------------------------------------------
 @release_564_2012.1.0
-@PB_US18784_01
+@PB_US18784_DT14321_01
 @Validation	
-Scenario: PB_US18784_01 As a Data Manager, when I Verify and Freeze a mixed form at the form level, then the frozen status will propagate to the standard field on the log line.
+Scenario: PB_US18784_DT14321_01 As a Data Manager, when I Verify and Freeze a mixed form at the form level, then the frozen status will propagate to the standard field on the log line.
 
 	Given I login to Rave with user "US18784_DT14321user"
 	And I create a Subject
@@ -41,9 +41,9 @@ Scenario: PB_US18784_01 As a Data Manager, when I Verify and Freeze a mixed form
 
 #----------------------------------------------------------------------------------------------------------------------------------------
 @release_564_2012.1.0
-@PB_US18784_02
+@PB_US18784_DT14321_02
 @Validation	
-Scenario: PB_US18784_02 As a Data Manager, when I Verify and Freeze a mixed form at the form level, then the frozen status will propagate to the standard field on all log lines.
+Scenario: PB_US18784_DT14321_02 As a Data Manager, when I Verify and Freeze a mixed form at the form level, then the frozen status will propagate to the standard field on all log lines.
 
 	Given I login to Rave with user "US18784_DT14321user"
 	And I create a Subject
