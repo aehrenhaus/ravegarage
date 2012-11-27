@@ -77,7 +77,7 @@ namespace Medidata.RBT.PageObjects.Rave
             
             try
             {
-                element = base.Browser.FindElementById(id);
+                element = base.Browser.TryFindElementById(id);
             }
             catch
             {
@@ -173,7 +173,7 @@ namespace Medidata.RBT.PageObjects.Rave
         /// </summary>
         /// <param name="identifier"></param>
         /// <returns></returns>
-		public new bool VerifySomethingExist(string areaIdentifier,string type, string identifier)
+		public new bool VerifySomethingExist(string areaIdentifier,string type, string identifier, bool exactMatch = false)
 		{
 			if (identifier == "Add Event lock icon")
 				return Browser.TryFindElementById("_ctl0_Content_SubjectAddEvent_DisableMatrixImage") != null;
@@ -202,7 +202,7 @@ namespace Medidata.RBT.PageObjects.Rave
 							var ele = Browser.TryFindElementByXPath(string.Format("//*[text()='{0}']", identifier));
 							result = ele == null;
 						}
-                        else if(base.VerifySomethingExist(areaIdentifier, type, identifier))
+                        else if(base.VerifySomethingExist(areaIdentifier, type, identifier, exactMatch))
                         {
                             result = true;
                         }
