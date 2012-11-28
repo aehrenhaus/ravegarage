@@ -1,8 +1,7 @@
 ﻿# When a user selects  Dynamic Allocation Randomization Block algorithm , subject assignment satisfies a specified allocation and ratio is random for all blocks.
 @EnableSeeding=true
-@SuppressSeeding=Site,SiteGroup,Role,SecurityRole
+#@SuppressSeeding=Site,SiteGroup,Role,SecurityRole
 #SecurityRole
-@ignore
 Feature: US18812
 	When user selects Dynamic Allocation Randomization Block algorithm
 	Then subject assignment satisfies a specified allocation ratio
@@ -11,20 +10,23 @@ Feature: US18812
 Background:
 	Given xml draft "US18812.xml" is Uploaded with Environment name "Dev"
 	Given Site "Site 1" with Site Group "Asia" exists
-	Given Site "Site 2" with Site Group "Europe" exists
-	Given Site "Site 3" with Site Group "World" exists
-	Given Site "Site 4" with Site Group "North America" exists
+	#Given Site "Site 2" with Site Group "Europe" exists
+	#Given Site "Site 3" with Site Group "World" exists
+	#Given Site "Site 4" with Site Group "North America" exists
 	Given study "US18812" is assigned to Site "Site 1" with study environment "Aux: Dev"
-	Given study "US18812" is assigned to Site "Site 2" with study environment "Aux: Dev"
-	Given study "US18812" is assigned to Site "Site 3" with study environment "Aux: Dev"
-	Given study "US18812" is assigned to Site "Site 4" with study environment "Aux: Dev"
+	#Given study "US18812" is assigned to Site "Site 2" with study environment "Aux: Dev"
+	#Given study "US18812" is assigned to Site "Site 3" with study environment "Aux: Dev"
+	#Given study "US18812" is assigned to Site "Site 4" with study environment "Aux: Dev"
 	Given I publish and push eCRF "US18812.xml" to "Version 1" with study environment "Dev"
 	Given following Project assignments exist
 	| User         | Project    | Environment | Role         | Site   | SecurityRole          | Lines Per Page |
 	| SUPER USER 1 | US18812 | Aux: Dev    | SUPER ROLE 1 | Site 1 | Project Admin Default | 100            |
-	| SUPER USER 1 | US18812 | Aux: Dev    | SUPER ROLE 1 | Site 2 | Project Admin Default | 100            |
-	| SUPER USER 1 | US18812 | Aux: Dev    | SUPER ROLE 1 | Site 3 | Project Admin Default | 100            |
-	| SUPER USER 1 | US18812 | Aux: Dev    | SUPER ROLE 1 | Site 4 | Project Admin Default | 100            |
+	#Given following Project assignments exist
+	#| User         | Project    | Environment | Role         | Site   | SecurityRole          | Lines Per Page |
+	#| SUPER USER 1 | US18812 | Aux: Dev    | SUPER ROLE 1 | Site 1 | Project Admin Default | 100            |
+	#| SUPER USER 1 | US18812 | Aux: Dev    | SUPER ROLE 1 | Site 2 | Project Admin Default | 100            |
+	#| SUPER USER 1 | US18812 | Aux: Dev    | SUPER ROLE 1 | Site 3 | Project Admin Default | 100            |
+	#| SUPER USER 1 | US18812 | Aux: Dev    | SUPER ROLE 1 | Site 4 | Project Admin Default | 100            |
 	Given following Report assignments exist
 	| User         | Report                                                           |
 	| SUPER USER 1 | Targeted SDV Configuration - Targeted SDV Configuration          |

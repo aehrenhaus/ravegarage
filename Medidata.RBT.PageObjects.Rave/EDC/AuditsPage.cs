@@ -278,7 +278,7 @@ namespace Medidata.RBT.PageObjects.Rave
             return AuditExist(string.Format("Un-reviewed for {0}.", query), user, timeFormat, position);
         }
 
-        public override string URL { get { return "AuditsPage.aspx"; } }
+        public override string URL { get { return "Modules/EDC/AuditsPage.aspx"; } }
 
     }
 }
