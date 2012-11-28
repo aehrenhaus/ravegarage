@@ -22,6 +22,17 @@ namespace Medidata.RBT.Features.Rave
             TestContext.GetExistingFeatureObjectOrMakeNew(configName, () => new LabConfiguration(configName));
         }
 
+
+        /// <summary>
+        /// XML config file is uploaded with no seeding
+        /// </summary>
+        /// <param name="configName">The name of lab configuration to be loaded (seeded)</param>
+        [StepDefinition(@"literal xml Lab Configuration ""([^""]*)"" is uploaded")]
+        public void LiteralXmlDraft____IsUploaded(string configName)
+        {
+            TestContext.GetExistingFeatureObjectOrMakeNew(configName, () => new LabConfiguration(configName, true));
+        }
+
         /// <summary>
         /// Select ranges for lab
         /// </summary>

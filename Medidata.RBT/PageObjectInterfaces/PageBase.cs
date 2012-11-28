@@ -43,6 +43,10 @@ namespace Medidata.RBT
         /// </summary>
 		public RemoteWebDriver Browser { get; set; }
 
+        /// <summary>
+        /// Whether or not to stay on current page
+        /// </summary>
+        public bool StayOnPage { get; set; } //by default it is false;
 
 		/// <summary>
 		/// See IPage interface
