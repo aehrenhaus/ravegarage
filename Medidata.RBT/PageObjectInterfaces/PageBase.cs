@@ -13,6 +13,7 @@ using OpenQA.Selenium.Support.UI;
 using Medidata.RBT.SeleniumExtension;
 using System.Collections.Specialized;
 using OpenQA.Selenium.Internal;
+using System.Threading;
 
 
 
@@ -114,12 +115,39 @@ namespace Medidata.RBT
 			return GetPageByCurrentUrlIfNoAlert();
         }
 		
+        /// <summary>
+        /// Will try to press a key in two attempts.
+        /// It has been observed that Selenium throws an ambiguous "a is null" exception on occasions
+        /// that may be caused by a timeout.
+        /// </summary>
+        /// <param name="key"></param>
 		public virtual void PressKey(string key)
         {
-            if (key == "<tab>" || key == "tab")
-                Browser.Keyboard.PressKey("\t");
-            else
-                Browser.Keyboard.PressKey(key);
+            InvalidOperationException ex = null;
+            if (PressKeyWrapper(key) != null)
+            {
+                //Since this is and attempt to fix an 
+                //intermittent issue, lets wait before attempting again
+                Thread.Sleep(1000);
+                if (null != (ex = PressKeyWrapper(key)))
+                    throw new Exception(
+                        string.Format("There was a problem pressing the key [{0}] on the second attempt", key),
+                        ex);
+            }
+        }
+        private InvalidOperationException PressKeyWrapper(string key)
+        {
+            InvalidOperationException result = null;
+            try
+            {
+                if (key == "<tab>" || key == "tab")
+                    Browser.Keyboard.PressKey("\t");
+                else
+                    Browser.Keyboard.PressKey(key);
+            }
+            catch (InvalidOperationException ioe) { result = ioe; }
+           
+            return result;
         }
 
         /// <summary>

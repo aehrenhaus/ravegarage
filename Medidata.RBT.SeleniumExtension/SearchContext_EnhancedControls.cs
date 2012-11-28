@@ -399,7 +399,8 @@ namespace Medidata.RBT.SeleniumExtension
 
 		public static ReadOnlyCollection<IWebElement> Spans(this ISearchContext context)
 		{
-            return context.TryFindElementsBy(By.XPath(".//span"));
+            var result = context.TryFindElementsBy(By.XPath(".//span"));
+            return result ?? new ReadOnlyCollection<IWebElement>(new List<IWebElement>());
 		}
 
         public static ReadOnlyCollection<IWebElement> Selects(this ISearchContext context)
