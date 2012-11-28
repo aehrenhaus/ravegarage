@@ -7,6 +7,7 @@ using Medidata.RBT.PageObjects.Rave.SharedRaveObjects;
 using Medidata.RBT.PageObjects.Rave;
 using Medidata.RBT.PageObjects.Rave.Configuration;
 using TechTalk.SpecFlow.Assist;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Medidata.RBT.Features.Rave
 {
@@ -16,6 +17,26 @@ namespace Medidata.RBT.Features.Rave
 		[StepDefinition(@"Role ""([^""]*)"" has Action ""([^""]*)""")]
 		public void Role____HasAction____(string roleName, string actionNames)
 		{
+		}
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="roleName">name of the role</param>
+        /// <param name="actionName">name of the action</param>
+        /// <param name="actionGroupName">name of the action group</param>
+        /// <param name="status">status one of "Checked" and "Unchecked"</param>
+        [StepDefinition(@"Role ""([^""]*)"" has Action ""([^""]*)"" in ActionGroup ""([^""]*)"" with Status ""([^""]*)""")]
+		public void Role____HasAction____InActionGroup____WithStatus____(string roleName, string actionName, string actionGroupName, string status)
+		{
+            CurrentPage = new WorkflowConfigPage().NavigateToSelf();
+            Role role = TestContext.GetExistingFeatureObjectOrMakeNew(roleName, () => new Role(roleName));
+            CurrentPage.As<WorkflowConfigPage>().ClickActionsLinkForGivenRole(role.UniqueName);
+            CurrentPage.As<RoleActionsConfigPage>().ChooseFromDropdown("DisplayGroupDDL", actionGroupName);
+            bool expected = status.Equals("Checked");
+            bool actual = CurrentPage.As<RoleActionsConfigPage>().ClickEditFromRoleActionGridAndCheckState(actionName);
+            Assert.IsTrue(actual == expected, String.Format("Action {0} is not set as expected {1}.", actual, expected));
+
 
 		}
 
