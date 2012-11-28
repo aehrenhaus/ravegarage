@@ -33,6 +33,26 @@ namespace Medidata.RBT.PageObjects.Rave.Configuration
             reviewGroupRow.TryFindElementBy(By.XPath("td/a[normalize-space(text() = '  Update')]")).Click();
         }
 
+        /// <summary>
+        /// Select actions for given role
+        /// </summary>
+        public void ClickActionsLinkForGivenRole(string RoleName)
+        {
+            //FindTable
+            IWebElement rolesTable = TestContext.Browser.TryFindElementByPartialID("RolesTable");
+            //FindRow
+            rolesTable.TryFindElementByPartialID("TxtFilter").EnhanceAs<Textbox>().SetText(RoleName);
+            rolesTable.TryFindElementByPartialID("LnkBtnSearch").Click();
+
+            //FindTable
+            IWebElement edcRolesTable = TestContext.Browser.TryFindElementByPartialID("RolesGrid");
+            //FindRow
+            IWebElement edcRoleRow = edcRolesTable.TryFindElementBy(By.XPath("//td[normalize-space(text())='" + RoleName + "']")).Parent();
+            //click action link
+            edcRoleRow.TryFindElementByPartialID("RoleActionsConfigImgLnk").Click();
+
+        }
+
         public override string URL
         {
             get

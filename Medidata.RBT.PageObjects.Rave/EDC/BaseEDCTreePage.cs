@@ -112,6 +112,14 @@ namespace Medidata.RBT.PageObjects.Rave
 		bool IVerifySomethingExists.VerifySomethingExist(string areaIdentifier, string type, string identifier)
 		{
 			IWebElement result = null;
+            if (!string.IsNullOrEmpty(type) && type.Equals("text"))
+            {
+                if (Browser.FindElementByTagName("body").Text.Contains(identifier))
+                    return true;
+                else
+                    return false;
+            }
+
 			switch (identifier)
 			{
 				case "Sign and Save":
