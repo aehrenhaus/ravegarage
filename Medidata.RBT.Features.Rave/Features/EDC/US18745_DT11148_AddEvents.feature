@@ -986,20 +986,20 @@ Scenario:@US18745-26  The Add Events controls can be localized on the subject pa
 	When I create a Subject
     |Field       |Data                  |Control Type |
     |Label 1    |SUB{RndNum<num26>(3)} |textbox      |
-    Then I can see "Disabled" radio button
+    Then I can see "LDisabled" radio button
 	And I can see "LEnabled" radio button
 	And I can see "enabled" dropdown labeled "LAdd Event"
 	And I can see "LAdd" button
 	And I take a screenshot
-	When I click radiobutton with label "Disabled"	
+	When I click radiobutton with label "LDisabled"	
 	Then I can see "disabled" dropdown labeled "LAdd Event"
 	And I can not see "LAdd" button
-	And I can see "Disabled" radio button
+	And I can see "LDisabled" radio button
 	And I can see "LEnabled" radio button	
  	And I take a screenshot
 	And I click radiobutton with label "LEnabled"
-    And I click radiobutton with label "Disabled"
- 	When I select link "Add Event is currently disabled for this subject."
+    And I click radiobutton with label "LDisabled"
+ 	When I select link "LAdd Event is currently disabled for this subject."
 	Then I verify Audits exist
        |Audit Type    |Query Message  |User                              |Time                 |
        |LAdd Events   |disabled.      |loc user ([id] - US18745_locuser) |dd LMMM yyyy HH:mm:ss|	   
@@ -1010,7 +1010,7 @@ Scenario:@US18745-26  The Add Events controls can be localized on the subject pa
 	And I select a Subject "{Var(num26)}"
 	And I select primary record form
 	And I click audit on form level
-	When I select link "Subject - SUB{Var(num26)}"
+	When I select link "LSubject - SUB{Var(num26)}"
 	Then I verify Audits exist
        |Audit Type    |Query Message  |User                              |Time                 |
        |LAdd Events   |disabled.      |loc user ([id] - US18745_locuser) |dd LMMM yyyy HH:mm:ss|	   
@@ -1028,20 +1028,20 @@ Scenario:@US18745-27 The Add Events controls can be localized on the grid view p
     |Field       |Data                  |Control Type |
     |Label 1    |SUB{RndNum<num27>(3)} |textbox      |
 	When I select link "LGrid View"
-    Then I can see "Disabled" radio button
+    Then I can see "LDisabled" radio button
 	And I can see "LEnabled" radio button
 	And I can see "enabled" dropdown labeled "LAdd Event"
 	And I can see "LAdd" button
 	And I take a screenshot
-	When I click radiobutton with label "Disabled"	
+	When I click radiobutton with label "LDisabled"	
 	Then I can see "disabled" dropdown labeled "LAdd Event"
 	And I can not see "LAdd" button
-	And I can see "Disabled" radio button
+	And I can see "LDisabled" radio button
 	And I can see "LEnabled" radio button	
  	And I take a screenshot
 	And I click radiobutton with label "LEnabled"
-    And I click radiobutton with label "Disabled"
- 	When I select link "Add Event is currently disabled for this subject."
+    And I click radiobutton with label "LDisabled"
+ 	When I select link "LAdd Event is currently disabled for this subject."
 	Then I verify Audits exist
        |Audit Type    |Query Message  |User                              |Time                 |
        |LAdd Events   |disabled.      |loc user ([id] - US18745_locuser) |dd LMMM yyyy HH:mm:ss|	   
@@ -1052,7 +1052,7 @@ Scenario:@US18745-27 The Add Events controls can be localized on the grid view p
 	And I select a Subject "{Var(num27)}"
 	And I select primary record form
 	And I click audit on form level
-	When I select link "Subject - SUB{Var(num27)}"
+	When I select link "LSubject - SUB{Var(num27)}"
 	Then I verify Audits exist
        |Audit Type    |Query Message  |User                              |Time                 |
        |LAdd Events   |disabled.      |loc user ([id] - US18745_locuser) |dd LMMM yyyy HH:mm:ss|	   

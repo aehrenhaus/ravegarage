@@ -7,11 +7,11 @@ using TechTalk.SpecFlow;
 using Medidata.RBT.PageObjects;
 using Medidata.RBT.PageObjects.Rave;
 using System.IO;
-
 using System.Data;
 using Medidata.RBT.PageObjects.Rave.SharedRaveObjects;
 using Medidata.RBT.PageObjects.Rave.AmendmentManager;
 using TechTalk.SpecFlow.Assist;
+using Medidata.RBT.SeleniumExtension;
 
 namespace Medidata.RBT.Features.Rave
 {
@@ -180,7 +180,7 @@ namespace Medidata.RBT.Features.Rave
             TestContext.CurrentPage.As<AMMigrationObjectMappingPage>().ClickLink(linkToClick);
             List<MigrationModel> migration = table.CreateSet<MigrationModel>().ToList();
             TestContext.CurrentPage.As<AMMigrationObjectMappingPage>().SetMapping(migration);
-            Browser.FindElementById("_ctl0_Content_MigrationStepManagePlan1_buttonBar_buttonSave_lb_buttonSave").Click(); //Click save at the bottom of the page
+            Browser.TryFindElementById("_ctl0_Content_MigrationStepManagePlan1_buttonBar_buttonSave_lb_buttonSave").Click(); //Click save at the bottom of the page
         }
 
         /// <summary>
@@ -202,7 +202,7 @@ namespace Medidata.RBT.Features.Rave
             List<MigrationModel> migration = table.CreateSet<MigrationModel>().ToList();
             TestContext.CurrentPage.As<AMMigrationObjectMappingPage>().EditMapping(source);
             TestContext.CurrentPage.As<AMMigrationObjectMappingPage>().SetChildMapping(migration);
-            Browser.FindElementById("_ctl0_Content_MigrationStepManagePlan1_buttonBar_buttonSave_lb_buttonSave").Click(); //Click save at the bottom of the page
+            Browser.TryFindElementById("_ctl0_Content_MigrationStepManagePlan1_buttonBar_buttonSave_lb_buttonSave").Click(); //Click save at the bottom of the page
         }
 	}
 }

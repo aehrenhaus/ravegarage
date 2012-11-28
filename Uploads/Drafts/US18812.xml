@@ -19,6 +19,8 @@
   <WindowWidth>10005</WindowWidth>
   <WindowTopX>120</WindowTopX>
   <WindowTopY>135</WindowTopY>
+  <ActiveSheet>14</ActiveSheet>
+  <FirstVisibleSheet>14</FirstVisibleSheet>
   <RefModeR1C1/>
   <ProtectStructure>False</ProtectStructure>
   <ProtectWindows>False</ProtectWindows>
@@ -190,19 +192,19 @@
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Forms!RC1)&gt;0,Forms!RC1,&quot;&quot;)"><Data
       ss:Type="String">MEDHX</Data></Cell>
    </Row>
-   <Row ss:Height="25.5">
+   <Row ss:AutoFitHeight="0" ss:Height="25.5">
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Forms!RC1)&gt;0,Forms!RC1,&quot;&quot;)"><Data
       ss:Type="String">BLOODWORK</Data></Cell>
    </Row>
-   <Row ss:Height="25.5">
+   <Row ss:AutoFitHeight="0" ss:Height="25.5">
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Forms!RC1)&gt;0,Forms!RC1,&quot;&quot;)"><Data
       ss:Type="String">CHOLESTEROL</Data></Cell>
    </Row>
-   <Row ss:Height="25.5">
+   <Row ss:AutoFitHeight="0" ss:Height="25.5">
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Forms!RC1)&gt;0,Forms!RC1,&quot;&quot;)"><Data
       ss:Type="String">LABFORM</Data></Cell>
    </Row>
-   <Row ss:Height="38.25">
+   <Row ss:AutoFitHeight="0" ss:Height="38.25">
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Forms!RC1)&gt;0,Forms!RC1,&quot;&quot;)"><Data
       ss:Type="String">LABDEMOGRAPHICS</Data></Cell>
    </Row>
@@ -288,7 +290,6 @@
    </Row>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
-   <Selected/>
    <FreezePanes/>
    <FrozenNoSplit/>
    <SplitHorizontal>1</SplitHorizontal>
@@ -310,6 +311,7 @@
     </Pane>
     <Pane>
      <Number>0</Number>
+     <ActiveRow>17</ActiveRow>
     </Pane>
    </Panes>
    <ProtectObjects>True</ProtectObjects>
@@ -1404,7 +1406,7 @@
     <Cell ss:Formula="=IF(LEN(UnitDictionaries!RC1)&gt;0,UnitDictionaries!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
    </Row>
-   <Row ss:Height="25.5">
+   <Row ss:AutoFitHeight="0" ss:Height="25.5">
     <Cell><Data ss:Type="String">DEMOG</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s64"><Data ss:Type="String">BIRTHDT</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1454,7 +1456,7 @@
     <Cell ss:Formula="=IF(LEN(UnitDictionaries!RC1)&gt;0,UnitDictionaries!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
    </Row>
-   <Row ss:Height="25.5">
+   <Row ss:AutoFitHeight="0" ss:Height="25.5">
     <Cell><Data ss:Type="String">DEMOG</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s64"><Data ss:Type="String">TODAYDT</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1504,7 +1506,7 @@
     <Cell ss:Formula="=IF(LEN(UnitDictionaries!RC1)&gt;0,UnitDictionaries!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
    </Row>
-   <Row ss:Height="25.5">
+   <Row ss:AutoFitHeight="0" ss:Height="25.5">
     <Cell><Data ss:Type="String">DEMOG</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s64"><Data ss:Type="String">RACE</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1881,7 +1883,7 @@
     <Cell ss:Formula="=IF(LEN(UnitDictionaries!RC1)&gt;0,UnitDictionaries!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
    </Row>
-   <Row ss:Height="25.5">
+   <Row ss:AutoFitHeight="0" ss:Height="25.5">
     <Cell ss:StyleID="s65"><Data ss:Type="String">INCLEXCL</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s65"><Data ss:Type="String">INCL1</Data><NamedCell
@@ -1953,7 +1955,7 @@
     <Cell ss:Formula="=IF(LEN(UnitDictionaries!RC1)&gt;0,UnitDictionaries!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
    </Row>
-   <Row ss:Height="63.75">
+   <Row ss:AutoFitHeight="0" ss:Height="63.75">
     <Cell ss:StyleID="s65"><Data ss:Type="String">INCLEXCL</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s65"><Data ss:Type="String">INCL2</Data><NamedCell
@@ -2025,7 +2027,7 @@
     <Cell ss:Formula="=IF(LEN(UnitDictionaries!RC1)&gt;0,UnitDictionaries!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
    </Row>
-   <Row ss:Height="63.75">
+   <Row ss:AutoFitHeight="0" ss:Height="63.75">
     <Cell ss:StyleID="s65"><Data ss:Type="String">INCLEXCL</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s65"><Data ss:Type="String">INCL3</Data><NamedCell
@@ -2167,7 +2169,7 @@
     <Cell ss:Formula="=IF(LEN(UnitDictionaries!RC1)&gt;0,UnitDictionaries!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
    </Row>
-   <Row ss:Height="38.25">
+   <Row ss:AutoFitHeight="0" ss:Height="38.25">
     <Cell ss:StyleID="s65"><Data ss:Type="String">INCLEXCL</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s65"><Data ss:Type="String">EXCL1</Data><NamedCell
@@ -2239,7 +2241,7 @@
     <Cell ss:Formula="=IF(LEN(UnitDictionaries!RC1)&gt;0,UnitDictionaries!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
    </Row>
-   <Row ss:Height="51">
+   <Row ss:AutoFitHeight="0" ss:Height="51">
     <Cell ss:StyleID="s65"><Data ss:Type="String">INCLEXCL</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s65"><Data ss:Type="String">EXCL2</Data><NamedCell
@@ -2309,7 +2311,7 @@
     <Cell ss:Formula="=IF(LEN(UnitDictionaries!RC1)&gt;0,UnitDictionaries!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
    </Row>
-   <Row ss:Height="38.25">
+   <Row ss:AutoFitHeight="0" ss:Height="38.25">
     <Cell ss:StyleID="s65"><Data ss:Type="String">INCLEXCL</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s65"><Data ss:Type="String">EXCL3</Data><NamedCell
@@ -2379,7 +2381,7 @@
     <Cell ss:Formula="=IF(LEN(UnitDictionaries!RC1)&gt;0,UnitDictionaries!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
    </Row>
-   <Row ss:Height="25.5">
+   <Row ss:AutoFitHeight="0" ss:Height="25.5">
     <Cell><Data ss:Type="String">REQFRMS</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s64"><Data ss:Type="String">COMMENT</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -4259,7 +4261,7 @@
     <Cell ss:Formula="=IF(LEN(UnitDictionaries!RC1)&gt;0,UnitDictionaries!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
    </Row>
-   <Row ss:Height="63.75">
+   <Row ss:AutoFitHeight="0" ss:Height="63.75">
     <Cell><Data ss:Type="String">SUBJID</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s64"><Data ss:Type="String">SUBJNUM</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -4518,7 +4520,7 @@
     <Cell ss:Formula="=IF(LEN(UnitDictionaries!RC1)&gt;0,UnitDictionaries!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
    </Row>
-   <Row ss:Height="38.25">
+   <Row ss:AutoFitHeight="0" ss:Height="38.25">
     <Cell ss:StyleID="s65"><Data ss:Type="String">OCCLU</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s65"><Data ss:Type="String">IMG</Data><NamedCell
@@ -4576,7 +4578,7 @@
     <Cell ss:Formula="=IF(LEN(UnitDictionaries!RC1)&gt;0,UnitDictionaries!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
    </Row>
-   <Row ss:Height="25.5">
+   <Row ss:AutoFitHeight="0" ss:Height="25.5">
     <Cell ss:StyleID="s65"><Data ss:Type="String">OCCLU</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s65"><Data ss:Type="String">OCCLU_HEARTAREA</Data><NamedCell
@@ -4644,7 +4646,7 @@
     <Cell ss:Formula="=IF(LEN(UnitDictionaries!RC1)&gt;0,UnitDictionaries!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
    </Row>
-   <Row ss:Height="25.5">
+   <Row ss:AutoFitHeight="0" ss:Height="25.5">
     <Cell ss:StyleID="s65"><Data ss:Type="String">OCCLU</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s65"><Data ss:Type="String">OCCLU_INFARCTION</Data><NamedCell
@@ -5736,7 +5738,7 @@
     <Cell ss:Formula="=IF(LEN(UnitDictionaries!RC1)&gt;0,UnitDictionaries!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
    </Row>
-   <Row ss:Height="25.5">
+   <Row ss:AutoFitHeight="0" ss:Height="25.5">
     <Cell><Data ss:Type="String">CONMED</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s64"><Data ss:Type="String">CONMED_INDIC</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -6214,7 +6216,7 @@
     <Cell ss:Formula="=IF(LEN(UnitDictionaries!RC1)&gt;0,UnitDictionaries!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
    </Row>
-   <Row ss:Height="38.25">
+   <Row ss:AutoFitHeight="0" ss:Height="38.25">
     <Cell><Data ss:Type="String">MEDHX</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s64"><Data ss:Type="String">MEDHX_INDIC</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -6311,7 +6313,7 @@
     <Cell ss:Formula="=IF(LEN(UnitDictionaries!RC1)&gt;0,UnitDictionaries!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
    </Row>
-   <Row ss:Height="38.25">
+   <Row ss:AutoFitHeight="0" ss:Height="38.25">
     <Cell><Data ss:Type="String">MEDHX</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s64"><Data ss:Type="String">MEDHX_DT</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -9098,7 +9100,7 @@
      ss:Formula="=IF(LEN(DataDictionaries!RC1)&gt;0,DataDictionaries!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
    </Row>
-   <Row ss:Height="25.5">
+   <Row ss:AutoFitHeight="0" ss:Height="25.5">
     <Cell><Data ss:Type="String">ECG Result</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">2</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -11191,7 +11193,7 @@
     <Cell ss:StyleID="s63"><Data ss:Type="String">SourceUrlId</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
    </Row>
-   <Row ss:Height="38.25">
+   <Row ss:AutoFitHeight="0" ss:Height="38.25">
     <Cell ss:StyleID="s64"><Data ss:Type="String">ADDFM_PREG</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">TRUE</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -11206,7 +11208,7 @@
       ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">15728</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
    </Row>
-   <Row ss:Height="51">
+   <Row ss:AutoFitHeight="0" ss:Height="51">
     <Cell ss:StyleID="s64"><Data ss:Type="String">AE01</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">TRUE</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -11221,7 +11223,7 @@
       ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">15729</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
    </Row>
-   <Row ss:Height="38.25">
+   <Row ss:AutoFitHeight="0" ss:Height="38.25">
     <Cell ss:StyleID="s64"><Data ss:Type="String">AE02</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">TRUE</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -11236,7 +11238,7 @@
       ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">15730</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
    </Row>
-   <Row ss:Height="38.25">
+   <Row ss:AutoFitHeight="0" ss:Height="38.25">
     <Cell ss:StyleID="s64"><Data ss:Type="String">CALENDAR(V1)</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">TRUE</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -11251,7 +11253,7 @@
       ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">15731</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
    </Row>
-   <Row ss:Height="38.25">
+   <Row ss:AutoFitHeight="0" ss:Height="38.25">
     <Cell ss:StyleID="s64"><Data ss:Type="String">CALENDAR(V2)</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">TRUE</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -11266,7 +11268,7 @@
       ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">15732</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
    </Row>
-   <Row ss:Height="38.25">
+   <Row ss:AutoFitHeight="0" ss:Height="38.25">
     <Cell ss:StyleID="s64"><Data ss:Type="String">DEMOG01</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">TRUE</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -11281,7 +11283,7 @@
       ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">15733</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
    </Row>
-   <Row ss:Height="38.25">
+   <Row ss:AutoFitHeight="0" ss:Height="38.25">
     <Cell ss:StyleID="s64"><Data ss:Type="String">DEMOG02</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">TRUE</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -11296,7 +11298,7 @@
       ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">15734</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
    </Row>
-   <Row ss:Height="38.25">
+   <Row ss:AutoFitHeight="0" ss:Height="38.25">
     <Cell ss:StyleID="s64"><Data ss:Type="String">DEMOG_IF FEMALE ADD CHLDBR</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">TRUE</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -11311,7 +11313,7 @@
       ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">15735</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
    </Row>
-   <Row ss:Height="89.25">
+   <Row ss:AutoFitHeight="0" ss:Height="89.25">
     <Cell ss:StyleID="s64"><Data ss:Type="String">ENRL02(Min ConMed)</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">TRUE</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -11326,7 +11328,7 @@
       ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">15736</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
    </Row>
-   <Row ss:Height="38.25">
+   <Row ss:AutoFitHeight="0" ss:Height="38.25">
     <Cell ss:StyleID="s64"><Data ss:Type="String">EXCL02</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">TRUE</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -11342,7 +11344,7 @@
     <Cell><Data ss:Type="String">29188</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">15737</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
    </Row>
-   <Row ss:Height="38.25">
+   <Row ss:AutoFitHeight="0" ss:Height="38.25">
     <Cell ss:StyleID="s64"><Data ss:Type="String">INCL01</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">TRUE</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -11358,7 +11360,7 @@
     <Cell><Data ss:Type="String">29189</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">15738</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
    </Row>
-   <Row ss:Height="89.25">
+   <Row ss:AutoFitHeight="0" ss:Height="89.25">
     <Cell ss:StyleID="s64"><Data ss:Type="String">PREG01</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">TRUE</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -11373,7 +11375,7 @@
       ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">15739</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
    </Row>
-   <Row ss:Height="38.25">
+   <Row ss:AutoFitHeight="0" ss:Height="38.25">
     <Cell ss:StyleID="s64"><Data ss:Type="String">REQ01</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">TRUE</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -11389,7 +11391,7 @@
     <Cell><Data ss:Type="String">29191</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">15740</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
    </Row>
-   <Row ss:Height="38.25">
+   <Row ss:AutoFitHeight="0" ss:Height="38.25">
     <Cell ss:StyleID="s64"><Data ss:Type="String">REQ02</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">TRUE</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -11405,7 +11407,7 @@
     <Cell><Data ss:Type="String">29192</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">15741</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
    </Row>
-   <Row ss:Height="38.25">
+   <Row ss:AutoFitHeight="0" ss:Height="38.25">
     <Cell ss:StyleID="s64"><Data ss:Type="String">REQ03</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">TRUE</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -11421,7 +11423,7 @@
     <Cell><Data ss:Type="String">29193</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">15742</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
    </Row>
-   <Row ss:Height="38.25">
+   <Row ss:AutoFitHeight="0" ss:Height="38.25">
     <Cell ss:StyleID="s64"><Data ss:Type="String">REQ04</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">TRUE</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -11437,7 +11439,7 @@
     <Cell><Data ss:Type="String">29194</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">15743</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
    </Row>
-   <Row ss:Height="38.25">
+   <Row ss:AutoFitHeight="0" ss:Height="38.25">
     <Cell ss:StyleID="s64"><Data ss:Type="String">REQ05</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">TRUE</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -11453,7 +11455,7 @@
     <Cell><Data ss:Type="String">29195</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">15744</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
    </Row>
-   <Row ss:Height="38.25">
+   <Row ss:AutoFitHeight="0" ss:Height="38.25">
     <Cell ss:StyleID="s64"><Data ss:Type="String">REQ06</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">TRUE</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -11469,7 +11471,7 @@
     <Cell><Data ss:Type="String">29196</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">15745</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
    </Row>
-   <Row ss:Height="38.25">
+   <Row ss:AutoFitHeight="0" ss:Height="38.25">
     <Cell ss:StyleID="s64"><Data ss:Type="String">REQ07</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">TRUE</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -11485,7 +11487,7 @@
     <Cell><Data ss:Type="String">29197</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">15746</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
    </Row>
-   <Row ss:Height="51">
+   <Row ss:AutoFitHeight="0" ss:Height="51">
     <Cell ss:StyleID="s64"><Data ss:Type="String">SetSubjectName</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">TRUE</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -11500,7 +11502,7 @@
       ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">15747</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
    </Row>
-   <Row ss:Height="51">
+   <Row ss:AutoFitHeight="0" ss:Height="51">
     <Cell ss:StyleID="s64"><Data ss:Type="String">VISDT01</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">TRUE</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -11515,7 +11517,7 @@
       ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">15748</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
    </Row>
-   <Row ss:Height="51">
+   <Row ss:AutoFitHeight="0" ss:Height="51">
     <Cell ss:StyleID="s64"><Data ss:Type="String">VISDT02</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">TRUE</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -11530,7 +11532,7 @@
       ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">15749</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
    </Row>
-   <Row ss:Height="38.25">
+   <Row ss:AutoFitHeight="0" ss:Height="38.25">
     <Cell ss:StyleID="s64"><Data ss:Type="String">VITALS01</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">TRUE</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -11546,7 +11548,7 @@
     <Cell><Data ss:Type="String">29201</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">15750</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
    </Row>
-   <Row ss:Height="51">
+   <Row ss:AutoFitHeight="0" ss:Height="51">
     <Cell ss:StyleID="s64"><Data ss:Type="String">Vitals_log1</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">TRUE</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -11561,7 +11563,7 @@
       ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">15751</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
    </Row>
-   <Row ss:Height="51">
+   <Row ss:AutoFitHeight="0" ss:Height="51">
     <Cell ss:StyleID="s64"><Data ss:Type="String">Vitals_log2</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">TRUE</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -11576,7 +11578,7 @@
       ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">15752</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
    </Row>
-   <Row ss:Height="51">
+   <Row ss:AutoFitHeight="0" ss:Height="51">
     <Cell ss:StyleID="s64"><Data ss:Type="String">Vitals_log3</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">TRUE</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -11591,7 +11593,7 @@
       ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">15753</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
    </Row>
-   <Row ss:Height="127.5">
+   <Row ss:AutoFitHeight="0" ss:Height="127.5">
     <Cell ss:StyleID="s64"><Data ss:Type="String">Device DSL Check</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">TRUE</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -12112,7 +12114,7 @@
     <Cell ss:Formula="=IF(LEN(Fields!RC2)&gt;0,Fields!RC2,&quot;&quot;)"><Data
       ss:Type="String">EXCLCMT</Data></Cell>
    </Row>
-   <Row ss:Height="25.5">
+   <Row ss:AutoFitHeight="0" ss:Height="25.5">
     <Cell ss:StyleID="s65"><Data ss:Type="String">DEMOG_IF FEMALE ADD CHLDBR</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s65"><Data ss:Type="String">1</Data><NamedCell
@@ -12138,7 +12140,7 @@
     <Cell ss:Formula="=IF(LEN(Fields!RC2)&gt;0,Fields!RC2,&quot;&quot;)"><Data
       ss:Type="String">EXCL1</Data></Cell>
    </Row>
-   <Row ss:Height="25.5">
+   <Row ss:AutoFitHeight="0" ss:Height="25.5">
     <Cell ss:StyleID="s65"><Data ss:Type="String">DEMOG_IF FEMALE ADD CHLDBR</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s65"><Data ss:Type="String">2</Data><NamedCell
@@ -12160,7 +12162,7 @@
     <Cell ss:Formula="=IF(LEN(Fields!RC2)&gt;0,Fields!RC2,&quot;&quot;)"><Data
       ss:Type="String">EXCL2</Data></Cell>
    </Row>
-   <Row ss:Height="25.5">
+   <Row ss:AutoFitHeight="0" ss:Height="25.5">
     <Cell ss:StyleID="s65"><Data ss:Type="String">DEMOG_IF FEMALE ADD CHLDBR</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s65"><Data ss:Type="String">3</Data><NamedCell
@@ -12214,8 +12216,6 @@
     <Cell ss:Index="8"><Data ss:Type="String">CONMED</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">CM_STARTDT</Data><NamedCell
-      ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:Index="12"><Data ss:Type="String">MinByDataPage</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:Index="15" ss:StyleID="s64"><Data ss:Type="String">IsActive</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -13547,7 +13547,7 @@
     <Cell ss:Formula="=IF(LEN(Fields!RC2)&gt;0,Fields!RC2,&quot;&quot;)"><Data
       ss:Type="String">REASONFORENTRY1</Data></Cell>
    </Row>
-   <Row ss:Height="38.25">
+   <Row ss:AutoFitHeight="0" ss:Height="38.25">
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Checks!RC1)&gt;0,Checks!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
     <Cell ss:Formula="=IF(LEN(Folders!RC1)&gt;0,Folders!RC1,&quot;&quot;)"><Data
@@ -13559,7 +13559,7 @@
     <Cell ss:Formula="=IF(LEN(Fields!RC2)&gt;0,Fields!RC2,&quot;&quot;)"><Data
       ss:Type="String">PREVIOUSMEDICATIONS</Data></Cell>
    </Row>
-   <Row ss:Height="38.25">
+   <Row ss:AutoFitHeight="0" ss:Height="38.25">
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Checks!RC1)&gt;0,Checks!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
     <Cell ss:Formula="=IF(LEN(Folders!RC1)&gt;0,Folders!RC1,&quot;&quot;)"><Data
@@ -13571,7 +13571,7 @@
     <Cell ss:Formula="=IF(LEN(Fields!RC2)&gt;0,Fields!RC2,&quot;&quot;)"><Data
       ss:Type="String">PREVIOUSILLNESS</Data></Cell>
    </Row>
-   <Row ss:Height="25.5">
+   <Row ss:AutoFitHeight="0" ss:Height="25.5">
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Checks!RC1)&gt;0,Checks!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
     <Cell ss:Formula="=IF(LEN(Folders!RC1)&gt;0,Folders!RC1,&quot;&quot;)"><Data
@@ -13583,7 +13583,7 @@
     <Cell ss:Formula="=IF(LEN(Fields!RC2)&gt;0,Fields!RC2,&quot;&quot;)"><Data
       ss:Type="String">SIGNATURE1</Data></Cell>
    </Row>
-   <Row ss:Height="25.5">
+   <Row ss:AutoFitHeight="0" ss:Height="25.5">
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Checks!RC1)&gt;0,Checks!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
     <Cell ss:Formula="=IF(LEN(Folders!RC1)&gt;0,Folders!RC1,&quot;&quot;)"><Data
@@ -13595,7 +13595,7 @@
     <Cell ss:Formula="=IF(LEN(Fields!RC2)&gt;0,Fields!RC2,&quot;&quot;)"><Data
       ss:Type="String">FIRSTNAME</Data></Cell>
    </Row>
-   <Row ss:Height="25.5">
+   <Row ss:AutoFitHeight="0" ss:Height="25.5">
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Checks!RC1)&gt;0,Checks!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
     <Cell ss:Formula="=IF(LEN(Folders!RC1)&gt;0,Folders!RC1,&quot;&quot;)"><Data
@@ -13607,7 +13607,7 @@
     <Cell ss:Formula="=IF(LEN(Fields!RC2)&gt;0,Fields!RC2,&quot;&quot;)"><Data
       ss:Type="String">LASTNAME</Data></Cell>
    </Row>
-   <Row ss:Height="38.25">
+   <Row ss:AutoFitHeight="0" ss:Height="38.25">
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Checks!RC1)&gt;0,Checks!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
     <Cell ss:Formula="=IF(LEN(Folders!RC1)&gt;0,Folders!RC1,&quot;&quot;)"><Data
@@ -13619,7 +13619,7 @@
     <Cell ss:Formula="=IF(LEN(Fields!RC2)&gt;0,Fields!RC2,&quot;&quot;)"><Data
       ss:Type="String">AGE_BLOODWORK</Data></Cell>
    </Row>
-   <Row ss:Height="38.25">
+   <Row ss:AutoFitHeight="0" ss:Height="38.25">
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Checks!RC1)&gt;0,Checks!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
     <Cell ss:Formula="=IF(LEN(Folders!RC1)&gt;0,Folders!RC1,&quot;&quot;)"><Data
@@ -13631,7 +13631,7 @@
     <Cell ss:Formula="=IF(LEN(Fields!RC2)&gt;0,Fields!RC2,&quot;&quot;)"><Data
       ss:Type="String">WHITEBLOODCELLS</Data></Cell>
    </Row>
-   <Row ss:Height="38.25">
+   <Row ss:AutoFitHeight="0" ss:Height="38.25">
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Checks!RC1)&gt;0,Checks!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
     <Cell ss:Formula="=IF(LEN(Folders!RC1)&gt;0,Folders!RC1,&quot;&quot;)"><Data
@@ -13643,7 +13643,7 @@
     <Cell ss:Formula="=IF(LEN(Fields!RC2)&gt;0,Fields!RC2,&quot;&quot;)"><Data
       ss:Type="String">REDBLOODCELLS</Data></Cell>
    </Row>
-   <Row ss:Height="25.5">
+   <Row ss:AutoFitHeight="0" ss:Height="25.5">
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Checks!RC1)&gt;0,Checks!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
     <Cell ss:Formula="=IF(LEN(Folders!RC1)&gt;0,Folders!RC1,&quot;&quot;)"><Data
@@ -13655,7 +13655,7 @@
     <Cell ss:Formula="=IF(LEN(Fields!RC2)&gt;0,Fields!RC2,&quot;&quot;)"><Data
       ss:Type="String">ISHDLNORMAL</Data></Cell>
    </Row>
-   <Row ss:Height="25.5">
+   <Row ss:AutoFitHeight="0" ss:Height="25.5">
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Checks!RC1)&gt;0,Checks!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
     <Cell ss:Formula="=IF(LEN(Folders!RC1)&gt;0,Folders!RC1,&quot;&quot;)"><Data
@@ -13667,7 +13667,7 @@
     <Cell ss:Formula="=IF(LEN(Fields!RC2)&gt;0,Fields!RC2,&quot;&quot;)"><Data
       ss:Type="String">DERIVEDFNAME</Data></Cell>
    </Row>
-   <Row ss:Height="25.5">
+   <Row ss:AutoFitHeight="0" ss:Height="25.5">
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Checks!RC1)&gt;0,Checks!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
     <Cell ss:Formula="=IF(LEN(Folders!RC1)&gt;0,Folders!RC1,&quot;&quot;)"><Data
@@ -13679,7 +13679,7 @@
     <Cell ss:Formula="=IF(LEN(Fields!RC2)&gt;0,Fields!RC2,&quot;&quot;)"><Data
       ss:Type="String">DERIVEDLNAME</Data></Cell>
    </Row>
-   <Row ss:Height="25.5">
+   <Row ss:AutoFitHeight="0" ss:Height="25.5">
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Checks!RC1)&gt;0,Checks!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
     <Cell ss:Formula="=IF(LEN(Folders!RC1)&gt;0,Folders!RC1,&quot;&quot;)"><Data
@@ -13715,7 +13715,7 @@
     <Cell ss:Formula="=IF(LEN(Fields!RC2)&gt;0,Fields!RC2,&quot;&quot;)"><Data
       ss:Type="String">HDL</Data></Cell>
    </Row>
-   <Row ss:Height="25.5">
+   <Row ss:AutoFitHeight="0" ss:Height="25.5">
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Checks!RC1)&gt;0,Checks!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
     <Cell ss:Formula="=IF(LEN(Folders!RC1)&gt;0,Folders!RC1,&quot;&quot;)"><Data
@@ -13727,7 +13727,7 @@
     <Cell ss:Formula="=IF(LEN(Fields!RC2)&gt;0,Fields!RC2,&quot;&quot;)"><Data
       ss:Type="String">TRIGLYCERIDES</Data></Cell>
    </Row>
-   <Row ss:Height="25.5">
+   <Row ss:AutoFitHeight="0" ss:Height="25.5">
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Checks!RC1)&gt;0,Checks!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
     <Cell ss:Formula="=IF(LEN(Folders!RC1)&gt;0,Folders!RC1,&quot;&quot;)"><Data
@@ -13739,7 +13739,7 @@
     <Cell ss:Formula="=IF(LEN(Fields!RC2)&gt;0,Fields!RC2,&quot;&quot;)"><Data
       ss:Type="String">BODYMASS</Data></Cell>
    </Row>
-   <Row ss:Height="25.5">
+   <Row ss:AutoFitHeight="0" ss:Height="25.5">
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Checks!RC1)&gt;0,Checks!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
     <Cell ss:Formula="=IF(LEN(Folders!RC1)&gt;0,Folders!RC1,&quot;&quot;)"><Data
@@ -13763,7 +13763,7 @@
     <Cell ss:Formula="=IF(LEN(Fields!RC2)&gt;0,Fields!RC2,&quot;&quot;)"><Data
       ss:Type="String">HEIGHT3</Data></Cell>
    </Row>
-   <Row ss:Height="25.5">
+   <Row ss:AutoFitHeight="0" ss:Height="25.5">
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Checks!RC1)&gt;0,Checks!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
     <Cell ss:Formula="=IF(LEN(Folders!RC1)&gt;0,Folders!RC1,&quot;&quot;)"><Data
@@ -13775,7 +13775,7 @@
     <Cell ss:Formula="=IF(LEN(Fields!RC2)&gt;0,Fields!RC2,&quot;&quot;)"><Data
       ss:Type="String">WEIGHT2</Data></Cell>
    </Row>
-   <Row ss:Height="25.5">
+   <Row ss:AutoFitHeight="0" ss:Height="25.5">
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Checks!RC1)&gt;0,Checks!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
     <Cell ss:Formula="=IF(LEN(Folders!RC1)&gt;0,Folders!RC1,&quot;&quot;)"><Data
@@ -13799,7 +13799,7 @@
     <Cell ss:Formula="=IF(LEN(Fields!RC2)&gt;0,Fields!RC2,&quot;&quot;)"><Data
       ss:Type="String">WBC</Data></Cell>
    </Row>
-   <Row ss:Height="25.5">
+   <Row ss:AutoFitHeight="0" ss:Height="25.5">
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Checks!RC1)&gt;0,Checks!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
     <Cell ss:Formula="=IF(LEN(Folders!RC1)&gt;0,Folders!RC1,&quot;&quot;)"><Data
@@ -13811,7 +13811,7 @@
     <Cell ss:Formula="=IF(LEN(Fields!RC2)&gt;0,Fields!RC2,&quot;&quot;)"><Data
       ss:Type="String">VISITDATE</Data></Cell>
    </Row>
-   <Row ss:Height="38.25">
+   <Row ss:AutoFitHeight="0" ss:Height="38.25">
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Checks!RC1)&gt;0,Checks!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
     <Cell ss:Formula="=IF(LEN(Folders!RC1)&gt;0,Folders!RC1,&quot;&quot;)"><Data
@@ -13823,7 +13823,7 @@
     <Cell ss:Formula="=IF(LEN(Fields!RC2)&gt;0,Fields!RC2,&quot;&quot;)"><Data
       ss:Type="String">AGE_LABDEMOG</Data></Cell>
    </Row>
-   <Row ss:Height="25.5">
+   <Row ss:AutoFitHeight="0" ss:Height="25.5">
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Checks!RC1)&gt;0,Checks!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
     <Cell ss:Formula="=IF(LEN(Folders!RC1)&gt;0,Folders!RC1,&quot;&quot;)"><Data
@@ -13835,7 +13835,7 @@
     <Cell ss:Formula="=IF(LEN(Fields!RC2)&gt;0,Fields!RC2,&quot;&quot;)"><Data
       ss:Type="String">SEX_LABDEMOG</Data></Cell>
    </Row>
-   <Row ss:Height="38.25">
+   <Row ss:AutoFitHeight="0" ss:Height="38.25">
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Checks!RC1)&gt;0,Checks!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
     <Cell ss:Formula="=IF(LEN(Folders!RC1)&gt;0,Folders!RC1,&quot;&quot;)"><Data
@@ -14329,12 +14329,13 @@
    </Row>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
+   <Selected/>
    <FreezePanes/>
    <FrozenNoSplit/>
    <SplitHorizontal>1</SplitHorizontal>
-   <TopRowBottomPane>1</TopRowBottomPane>
+   <TopRowBottomPane>10</TopRowBottomPane>
    <SplitVertical>2</SplitVertical>
-   <LeftColumnRightPane>2</LeftColumnRightPane>
+   <LeftColumnRightPane>11</LeftColumnRightPane>
    <ActivePane>0</ActivePane>
    <Panes>
     <Pane>
@@ -14342,12 +14343,15 @@
     </Pane>
     <Pane>
      <Number>1</Number>
+     <ActiveCol>2</ActiveCol>
     </Pane>
     <Pane>
      <Number>2</Number>
+     <ActiveRow>1</ActiveRow>
     </Pane>
     <Pane>
      <Number>0</Number>
+     <ActiveRow>23</ActiveRow>
     </Pane>
    </Panes>
    <ProtectObjects>True</ProtectObjects>
@@ -14892,7 +14896,7 @@
     <Cell ss:Formula="=IF(LEN(Fields!RC7)&gt;0,Fields!RC7,&quot;&quot;)"><Data
       ss:Type="String">BODYSYS_INDIC</Data></Cell>
    </Row>
-   <Row ss:Height="25.5">
+   <Row ss:AutoFitHeight="0" ss:Height="25.5">
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Forms!RC1)&gt;0,Forms!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
     <Cell ss:Formula="=IF(LEN(Checks!RC1)&gt;0,Checks!RC1,&quot;&quot;)"><Data
@@ -14904,7 +14908,7 @@
     <Cell ss:Formula="=IF(LEN(Fields!RC7)&gt;0,Fields!RC7,&quot;&quot;)"><Data
       ss:Type="String">BODYSYS</Data></Cell>
    </Row>
-   <Row ss:Height="38.25">
+   <Row ss:AutoFitHeight="0" ss:Height="38.25">
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Forms!RC1)&gt;0,Forms!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
     <Cell ss:Formula="=IF(LEN(Checks!RC1)&gt;0,Checks!RC1,&quot;&quot;)"><Data
@@ -14916,7 +14920,7 @@
     <Cell ss:Formula="=IF(LEN(Fields!RC7)&gt;0,Fields!RC7,&quot;&quot;)"><Data
       ss:Type="String">BODYSYS_RESULT</Data></Cell>
    </Row>
-   <Row ss:Height="38.25">
+   <Row ss:AutoFitHeight="0" ss:Height="38.25">
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Forms!RC1)&gt;0,Forms!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
     <Cell ss:Formula="=IF(LEN(Checks!RC1)&gt;0,Checks!RC1,&quot;&quot;)"><Data
@@ -14928,7 +14932,7 @@
     <Cell ss:Formula="=IF(LEN(Fields!RC7)&gt;0,Fields!RC7,&quot;&quot;)"><Data
       ss:Type="String">BODYSYS_SPECIFY</Data></Cell>
    </Row>
-   <Row ss:Height="25.5">
+   <Row ss:AutoFitHeight="0" ss:Height="25.5">
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Forms!RC1)&gt;0,Forms!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
     <Cell ss:Formula="=IF(LEN(Checks!RC1)&gt;0,Checks!RC1,&quot;&quot;)"><Data
@@ -14964,7 +14968,7 @@
     <Cell ss:Formula="=IF(LEN(Fields!RC7)&gt;0,Fields!RC7,&quot;&quot;)"><Data
       ss:Type="String">ECG_PR</Data></Cell>
    </Row>
-   <Row ss:Height="25.5">
+   <Row ss:AutoFitHeight="0" ss:Height="25.5">
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Forms!RC1)&gt;0,Forms!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
     <Cell ss:Formula="=IF(LEN(Checks!RC1)&gt;0,Checks!RC1,&quot;&quot;)"><Data
@@ -14988,7 +14992,7 @@
     <Cell ss:Formula="=IF(LEN(Fields!RC7)&gt;0,Fields!RC7,&quot;&quot;)"><Data
       ss:Type="String">ECG_QT</Data></Cell>
    </Row>
-   <Row ss:Height="25.5">
+   <Row ss:AutoFitHeight="0" ss:Height="25.5">
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Forms!RC1)&gt;0,Forms!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
     <Cell ss:Formula="=IF(LEN(Checks!RC1)&gt;0,Checks!RC1,&quot;&quot;)"><Data
@@ -15000,7 +15004,7 @@
     <Cell ss:Formula="=IF(LEN(Fields!RC7)&gt;0,Fields!RC7,&quot;&quot;)"><Data
       ss:Type="String">ECG_QTC</Data></Cell>
    </Row>
-   <Row ss:Height="25.5">
+   <Row ss:AutoFitHeight="0" ss:Height="25.5">
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Forms!RC1)&gt;0,Forms!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
     <Cell ss:Formula="=IF(LEN(Checks!RC1)&gt;0,Checks!RC1,&quot;&quot;)"><Data
@@ -15012,7 +15016,7 @@
     <Cell ss:Formula="=IF(LEN(Fields!RC7)&gt;0,Fields!RC7,&quot;&quot;)"><Data
       ss:Type="String">ECG_RESULT</Data></Cell>
    </Row>
-   <Row ss:Height="25.5">
+   <Row ss:AutoFitHeight="0" ss:Height="25.5">
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Forms!RC1)&gt;0,Forms!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
     <Cell ss:Formula="=IF(LEN(Checks!RC1)&gt;0,Checks!RC1,&quot;&quot;)"><Data
@@ -15024,7 +15028,7 @@
     <Cell ss:Formula="=IF(LEN(Fields!RC7)&gt;0,Fields!RC7,&quot;&quot;)"><Data
       ss:Type="String">ECG_SPECIFY</Data></Cell>
    </Row>
-   <Row ss:Height="25.5">
+   <Row ss:AutoFitHeight="0" ss:Height="25.5">
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Forms!RC1)&gt;0,Forms!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
     <Cell ss:Formula="=IF(LEN(Checks!RC1)&gt;0,Checks!RC1,&quot;&quot;)"><Data
@@ -15036,7 +15040,7 @@
     <Cell ss:Formula="=IF(LEN(Fields!RC7)&gt;0,Fields!RC7,&quot;&quot;)"><Data
       ss:Type="String">VITALS_VISITDT</Data></Cell>
    </Row>
-   <Row ss:Height="25.5">
+   <Row ss:AutoFitHeight="0" ss:Height="25.5">
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Forms!RC1)&gt;0,Forms!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
     <Cell ss:Formula="=IF(LEN(Checks!RC1)&gt;0,Checks!RC1,&quot;&quot;)"><Data
@@ -15120,7 +15124,7 @@
     <Cell ss:Formula="=IF(LEN(Fields!RC7)&gt;0,Fields!RC7,&quot;&quot;)"><Data
       ss:Type="String">HEIGHT2</Data></Cell>
    </Row>
-   <Row ss:Height="38.25">
+   <Row ss:AutoFitHeight="0" ss:Height="38.25">
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Forms!RC1)&gt;0,Forms!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
     <Cell ss:Formula="=IF(LEN(Checks!RC1)&gt;0,Checks!RC1,&quot;&quot;)"><Data
@@ -15132,7 +15136,7 @@
     <Cell ss:Formula="=IF(LEN(Fields!RC7)&gt;0,Fields!RC7,&quot;&quot;)"><Data
       ss:Type="String">REASONFORENTRY</Data></Cell>
    </Row>
-   <Row ss:Height="25.5">
+   <Row ss:AutoFitHeight="0" ss:Height="25.5">
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Forms!RC1)&gt;0,Forms!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
     <Cell ss:Formula="=IF(LEN(Checks!RC1)&gt;0,Checks!RC1,&quot;&quot;)"><Data
@@ -15156,7 +15160,7 @@
     <Cell ss:Formula="=IF(LEN(Fields!RC7)&gt;0,Fields!RC7,&quot;&quot;)"><Data
       ss:Type="String">ILLNESS</Data></Cell>
    </Row>
-   <Row ss:Height="25.5">
+   <Row ss:AutoFitHeight="0" ss:Height="25.5">
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Forms!RC1)&gt;0,Forms!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
     <Cell ss:Formula="=IF(LEN(Checks!RC1)&gt;0,Checks!RC1,&quot;&quot;)"><Data
@@ -15180,7 +15184,7 @@
     <Cell ss:Formula="=IF(LEN(Fields!RC7)&gt;0,Fields!RC7,&quot;&quot;)"><Data
       ss:Type="String">SUBJINI</Data></Cell>
    </Row>
-   <Row ss:Height="25.5">
+   <Row ss:AutoFitHeight="0" ss:Height="25.5">
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Forms!RC1)&gt;0,Forms!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
     <Cell ss:Formula="=IF(LEN(Checks!RC1)&gt;0,Checks!RC1,&quot;&quot;)"><Data
@@ -15216,7 +15220,7 @@
     <Cell ss:Formula="=IF(LEN(Fields!RC7)&gt;0,Fields!RC7,&quot;&quot;)"><Data
       ss:Type="String">VISITDT</Data></Cell>
    </Row>
-   <Row ss:Height="25.5">
+   <Row ss:AutoFitHeight="0" ss:Height="25.5">
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Forms!RC1)&gt;0,Forms!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
     <Cell ss:Formula="=IF(LEN(Checks!RC1)&gt;0,Checks!RC1,&quot;&quot;)"><Data
@@ -15228,7 +15232,7 @@
     <Cell ss:Formula="=IF(LEN(Fields!RC7)&gt;0,Fields!RC7,&quot;&quot;)"><Data
       ss:Type="String">PREG_DATE</Data></Cell>
    </Row>
-   <Row ss:Height="25.5">
+   <Row ss:AutoFitHeight="0" ss:Height="25.5">
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Forms!RC1)&gt;0,Forms!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
     <Cell ss:Formula="=IF(LEN(Checks!RC1)&gt;0,Checks!RC1,&quot;&quot;)"><Data
@@ -15252,7 +15256,7 @@
     <Cell ss:Formula="=IF(LEN(Fields!RC7)&gt;0,Fields!RC7,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
    </Row>
-   <Row ss:Height="38.25">
+   <Row ss:AutoFitHeight="0" ss:Height="38.25">
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Forms!RC1)&gt;0,Forms!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
     <Cell ss:Formula="=IF(LEN(Checks!RC1)&gt;0,Checks!RC1,&quot;&quot;)"><Data
@@ -15264,7 +15268,7 @@
     <Cell ss:Formula="=IF(LEN(Fields!RC7)&gt;0,Fields!RC7,&quot;&quot;)"><Data
       ss:Type="String">OCCLU_HEARTAREA</Data></Cell>
    </Row>
-   <Row ss:Height="38.25">
+   <Row ss:AutoFitHeight="0" ss:Height="38.25">
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Forms!RC1)&gt;0,Forms!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
     <Cell ss:Formula="=IF(LEN(Checks!RC1)&gt;0,Checks!RC1,&quot;&quot;)"><Data
@@ -15276,7 +15280,7 @@
     <Cell ss:Formula="=IF(LEN(Fields!RC7)&gt;0,Fields!RC7,&quot;&quot;)"><Data
       ss:Type="String">OCCLU_INFARCTION</Data></Cell>
    </Row>
-   <Row ss:Height="38.25">
+   <Row ss:AutoFitHeight="0" ss:Height="38.25">
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Forms!RC1)&gt;0,Forms!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
     <Cell ss:Formula="=IF(LEN(Checks!RC1)&gt;0,Checks!RC1,&quot;&quot;)"><Data
@@ -15312,7 +15316,7 @@
     <Cell ss:Formula="=IF(LEN(Fields!RC7)&gt;0,Fields!RC7,&quot;&quot;)"><Data
       ss:Type="String">DOSETM</Data></Cell>
    </Row>
-   <Row ss:Height="25.5">
+   <Row ss:AutoFitHeight="0" ss:Height="25.5">
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Forms!RC1)&gt;0,Forms!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
     <Cell ss:Formula="=IF(LEN(Checks!RC1)&gt;0,Checks!RC1,&quot;&quot;)"><Data
@@ -15336,7 +15340,7 @@
     <Cell ss:Formula="=IF(LEN(Fields!RC7)&gt;0,Fields!RC7,&quot;&quot;)"><Data
       ss:Type="String">DOSE</Data></Cell>
    </Row>
-   <Row ss:Height="25.5">
+   <Row ss:AutoFitHeight="0" ss:Height="25.5">
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Forms!RC1)&gt;0,Forms!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
     <Cell ss:Formula="=IF(LEN(Checks!RC1)&gt;0,Checks!RC1,&quot;&quot;)"><Data
@@ -15384,7 +15388,7 @@
     <Cell ss:Formula="=IF(LEN(Fields!RC7)&gt;0,Fields!RC7,&quot;&quot;)"><Data
       ss:Type="String">STOPDT</Data></Cell>
    </Row>
-   <Row ss:Height="25.5">
+   <Row ss:AutoFitHeight="0" ss:Height="25.5">
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Forms!RC1)&gt;0,Forms!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
     <Cell ss:Formula="=IF(LEN(Checks!RC1)&gt;0,Checks!RC1,&quot;&quot;)"><Data
@@ -15396,7 +15400,7 @@
     <Cell ss:Formula="=IF(LEN(Fields!RC7)&gt;0,Fields!RC7,&quot;&quot;)"><Data
       ss:Type="String">CONTINUE</Data></Cell>
    </Row>
-   <Row ss:Height="25.5">
+   <Row ss:AutoFitHeight="0" ss:Height="25.5">
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Forms!RC1)&gt;0,Forms!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
     <Cell ss:Formula="=IF(LEN(Checks!RC1)&gt;0,Checks!RC1,&quot;&quot;)"><Data
@@ -15408,7 +15412,7 @@
     <Cell ss:Formula="=IF(LEN(Fields!RC7)&gt;0,Fields!RC7,&quot;&quot;)"><Data
       ss:Type="String">SERIOUSCD</Data></Cell>
    </Row>
-   <Row ss:Height="25.5">
+   <Row ss:AutoFitHeight="0" ss:Height="25.5">
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Forms!RC1)&gt;0,Forms!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
     <Cell ss:Formula="=IF(LEN(Checks!RC1)&gt;0,Checks!RC1,&quot;&quot;)"><Data
@@ -15420,7 +15424,7 @@
     <Cell ss:Formula="=IF(LEN(Fields!RC7)&gt;0,Fields!RC7,&quot;&quot;)"><Data
       ss:Type="String">RELATEDCD</Data></Cell>
    </Row>
-   <Row ss:Height="25.5">
+   <Row ss:AutoFitHeight="0" ss:Height="25.5">
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Forms!RC1)&gt;0,Forms!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
     <Cell ss:Formula="=IF(LEN(Checks!RC1)&gt;0,Checks!RC1,&quot;&quot;)"><Data
@@ -15432,7 +15436,7 @@
     <Cell ss:Formula="=IF(LEN(Fields!RC7)&gt;0,Fields!RC7,&quot;&quot;)"><Data
       ss:Type="String">ACTIONCD1</Data></Cell>
    </Row>
-   <Row ss:Height="25.5">
+   <Row ss:AutoFitHeight="0" ss:Height="25.5">
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Forms!RC1)&gt;0,Forms!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
     <Cell ss:Formula="=IF(LEN(Checks!RC1)&gt;0,Checks!RC1,&quot;&quot;)"><Data
@@ -15444,7 +15448,7 @@
     <Cell ss:Formula="=IF(LEN(Fields!RC7)&gt;0,Fields!RC7,&quot;&quot;)"><Data
       ss:Type="String">ACTIONCD2</Data></Cell>
    </Row>
-   <Row ss:Height="25.5">
+   <Row ss:AutoFitHeight="0" ss:Height="25.5">
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Forms!RC1)&gt;0,Forms!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
     <Cell ss:Formula="=IF(LEN(Checks!RC1)&gt;0,Checks!RC1,&quot;&quot;)"><Data
@@ -15456,7 +15460,7 @@
     <Cell ss:Formula="=IF(LEN(Fields!RC7)&gt;0,Fields!RC7,&quot;&quot;)"><Data
       ss:Type="String">ACTIONCD3</Data></Cell>
    </Row>
-   <Row ss:Height="25.5">
+   <Row ss:AutoFitHeight="0" ss:Height="25.5">
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Forms!RC1)&gt;0,Forms!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
     <Cell ss:Formula="=IF(LEN(Checks!RC1)&gt;0,Checks!RC1,&quot;&quot;)"><Data
@@ -15468,7 +15472,7 @@
     <Cell ss:Formula="=IF(LEN(Fields!RC7)&gt;0,Fields!RC7,&quot;&quot;)"><Data
       ss:Type="String">AE_DURATION</Data></Cell>
    </Row>
-   <Row ss:Height="25.5">
+   <Row ss:AutoFitHeight="0" ss:Height="25.5">
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Forms!RC1)&gt;0,Forms!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
     <Cell ss:Formula="=IF(LEN(Checks!RC1)&gt;0,Checks!RC1,&quot;&quot;)"><Data
@@ -15480,7 +15484,7 @@
     <Cell ss:Formula="=IF(LEN(Fields!RC7)&gt;0,Fields!RC7,&quot;&quot;)"><Data
       ss:Type="String">CONMED_INDIC</Data></Cell>
    </Row>
-   <Row ss:Height="25.5">
+   <Row ss:AutoFitHeight="0" ss:Height="25.5">
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Forms!RC1)&gt;0,Forms!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
     <Cell ss:Formula="=IF(LEN(Checks!RC1)&gt;0,Checks!RC1,&quot;&quot;)"><Data
@@ -15492,7 +15496,7 @@
     <Cell ss:Formula="=IF(LEN(Fields!RC7)&gt;0,Fields!RC7,&quot;&quot;)"><Data
       ss:Type="String">CMVERBATIM</Data></Cell>
    </Row>
-   <Row ss:Height="25.5">
+   <Row ss:AutoFitHeight="0" ss:Height="25.5">
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Forms!RC1)&gt;0,Forms!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
     <Cell ss:Formula="=IF(LEN(Checks!RC1)&gt;0,Checks!RC1,&quot;&quot;)"><Data
@@ -15504,7 +15508,7 @@
     <Cell ss:Formula="=IF(LEN(Fields!RC7)&gt;0,Fields!RC7,&quot;&quot;)"><Data
       ss:Type="String">CM_STARTDT</Data></Cell>
    </Row>
-   <Row ss:Height="25.5">
+   <Row ss:AutoFitHeight="0" ss:Height="25.5">
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Forms!RC1)&gt;0,Forms!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
     <Cell ss:Formula="=IF(LEN(Checks!RC1)&gt;0,Checks!RC1,&quot;&quot;)"><Data
@@ -15516,7 +15520,7 @@
     <Cell ss:Formula="=IF(LEN(Fields!RC7)&gt;0,Fields!RC7,&quot;&quot;)"><Data
       ss:Type="String">CM_STOPDT</Data></Cell>
    </Row>
-   <Row ss:Height="25.5">
+   <Row ss:AutoFitHeight="0" ss:Height="25.5">
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Forms!RC1)&gt;0,Forms!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
     <Cell ss:Formula="=IF(LEN(Checks!RC1)&gt;0,Checks!RC1,&quot;&quot;)"><Data
@@ -15528,7 +15532,7 @@
     <Cell ss:Formula="=IF(LEN(Fields!RC7)&gt;0,Fields!RC7,&quot;&quot;)"><Data
       ss:Type="String">CM_CONTINUE</Data></Cell>
    </Row>
-   <Row ss:Height="25.5">
+   <Row ss:AutoFitHeight="0" ss:Height="25.5">
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Forms!RC1)&gt;0,Forms!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
     <Cell ss:Formula="=IF(LEN(Checks!RC1)&gt;0,Checks!RC1,&quot;&quot;)"><Data
@@ -15540,7 +15544,7 @@
     <Cell ss:Formula="=IF(LEN(Fields!RC7)&gt;0,Fields!RC7,&quot;&quot;)"><Data
       ss:Type="String">CM_DOSE</Data></Cell>
    </Row>
-   <Row ss:Height="25.5">
+   <Row ss:AutoFitHeight="0" ss:Height="25.5">
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Forms!RC1)&gt;0,Forms!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
     <Cell ss:Formula="=IF(LEN(Checks!RC1)&gt;0,Checks!RC1,&quot;&quot;)"><Data
@@ -15576,7 +15580,7 @@
     <Cell ss:Formula="=IF(LEN(Fields!RC7)&gt;0,Fields!RC7,&quot;&quot;)"><Data
       ss:Type="String">LABTM</Data></Cell>
    </Row>
-   <Row ss:Height="25.5">
+   <Row ss:AutoFitHeight="0" ss:Height="25.5">
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Forms!RC1)&gt;0,Forms!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
     <Cell ss:Formula="=IF(LEN(Checks!RC1)&gt;0,Checks!RC1,&quot;&quot;)"><Data
@@ -15588,7 +15592,7 @@
     <Cell ss:Formula="=IF(LEN(Fields!RC7)&gt;0,Fields!RC7,&quot;&quot;)"><Data
       ss:Type="String">MEDHX_INDIC</Data></Cell>
    </Row>
-   <Row ss:Height="25.5">
+   <Row ss:AutoFitHeight="0" ss:Height="25.5">
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Forms!RC1)&gt;0,Forms!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
     <Cell ss:Formula="=IF(LEN(Checks!RC1)&gt;0,Checks!RC1,&quot;&quot;)"><Data
@@ -15600,7 +15604,7 @@
     <Cell ss:Formula="=IF(LEN(Fields!RC7)&gt;0,Fields!RC7,&quot;&quot;)"><Data
       ss:Type="String">MEDHX_DIAG</Data></Cell>
    </Row>
-   <Row ss:Height="25.5">
+   <Row ss:AutoFitHeight="0" ss:Height="25.5">
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Forms!RC1)&gt;0,Forms!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
     <Cell ss:Formula="=IF(LEN(Checks!RC1)&gt;0,Checks!RC1,&quot;&quot;)"><Data
@@ -15612,7 +15616,7 @@
     <Cell ss:Formula="=IF(LEN(Fields!RC7)&gt;0,Fields!RC7,&quot;&quot;)"><Data
       ss:Type="String">MEDHX_DT</Data></Cell>
    </Row>
-   <Row ss:Height="25.5">
+   <Row ss:AutoFitHeight="0" ss:Height="25.5">
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Forms!RC1)&gt;0,Forms!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
     <Cell ss:Formula="=IF(LEN(Checks!RC1)&gt;0,Checks!RC1,&quot;&quot;)"><Data
@@ -15624,7 +15628,7 @@
     <Cell ss:Formula="=IF(LEN(Fields!RC7)&gt;0,Fields!RC7,&quot;&quot;)"><Data
       ss:Type="String">MEDHX_STATUS</Data></Cell>
    </Row>
-   <Row ss:Height="25.5">
+   <Row ss:AutoFitHeight="0" ss:Height="25.5">
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Forms!RC1)&gt;0,Forms!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
     <Cell ss:Formula="=IF(LEN(Checks!RC1)&gt;0,Checks!RC1,&quot;&quot;)"><Data
@@ -15636,7 +15640,7 @@
     <Cell ss:Formula="=IF(LEN(Fields!RC7)&gt;0,Fields!RC7,&quot;&quot;)"><Data
       ss:Type="String">MEDHX_SPECIFY</Data></Cell>
    </Row>
-   <Row ss:Height="25.5">
+   <Row ss:AutoFitHeight="0" ss:Height="25.5">
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Forms!RC1)&gt;0,Forms!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
     <Cell ss:Formula="=IF(LEN(Checks!RC1)&gt;0,Checks!RC1,&quot;&quot;)"><Data
@@ -15648,7 +15652,7 @@
     <Cell ss:Formula="=IF(LEN(Fields!RC7)&gt;0,Fields!RC7,&quot;&quot;)"><Data
       ss:Type="String">MEDHX_HEIGHT</Data></Cell>
    </Row>
-   <Row ss:Height="38.25">
+   <Row ss:AutoFitHeight="0" ss:Height="38.25">
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Forms!RC1)&gt;0,Forms!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
     <Cell ss:Formula="=IF(LEN(Checks!RC1)&gt;0,Checks!RC1,&quot;&quot;)"><Data
@@ -15660,7 +15664,7 @@
     <Cell ss:Formula="=IF(LEN(Fields!RC7)&gt;0,Fields!RC7,&quot;&quot;)"><Data
       ss:Type="String">REASONFORENTRY1</Data></Cell>
    </Row>
-   <Row ss:Height="38.25">
+   <Row ss:AutoFitHeight="0" ss:Height="38.25">
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Forms!RC1)&gt;0,Forms!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
     <Cell ss:Formula="=IF(LEN(Checks!RC1)&gt;0,Checks!RC1,&quot;&quot;)"><Data
@@ -15672,7 +15676,7 @@
     <Cell ss:Formula="=IF(LEN(Fields!RC7)&gt;0,Fields!RC7,&quot;&quot;)"><Data
       ss:Type="String">PREVIOUSMEDICATIONS</Data></Cell>
    </Row>
-   <Row ss:Height="38.25">
+   <Row ss:AutoFitHeight="0" ss:Height="38.25">
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Forms!RC1)&gt;0,Forms!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
     <Cell ss:Formula="=IF(LEN(Checks!RC1)&gt;0,Checks!RC1,&quot;&quot;)"><Data
@@ -15684,7 +15688,7 @@
     <Cell ss:Formula="=IF(LEN(Fields!RC7)&gt;0,Fields!RC7,&quot;&quot;)"><Data
       ss:Type="String">PREVIOUSILLNESS</Data></Cell>
    </Row>
-   <Row ss:Height="25.5">
+   <Row ss:AutoFitHeight="0" ss:Height="25.5">
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Forms!RC1)&gt;0,Forms!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
     <Cell ss:Formula="=IF(LEN(Checks!RC1)&gt;0,Checks!RC1,&quot;&quot;)"><Data
@@ -15696,7 +15700,7 @@
     <Cell ss:Formula="=IF(LEN(Fields!RC7)&gt;0,Fields!RC7,&quot;&quot;)"><Data
       ss:Type="String">SIGNATURE1</Data></Cell>
    </Row>
-   <Row ss:Height="25.5">
+   <Row ss:AutoFitHeight="0" ss:Height="25.5">
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Forms!RC1)&gt;0,Forms!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
     <Cell ss:Formula="=IF(LEN(Checks!RC1)&gt;0,Checks!RC1,&quot;&quot;)"><Data
@@ -15708,7 +15712,7 @@
     <Cell ss:Formula="=IF(LEN(Fields!RC7)&gt;0,Fields!RC7,&quot;&quot;)"><Data
       ss:Type="String">FIRSTNAME</Data></Cell>
    </Row>
-   <Row ss:Height="25.5">
+   <Row ss:AutoFitHeight="0" ss:Height="25.5">
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Forms!RC1)&gt;0,Forms!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
     <Cell ss:Formula="=IF(LEN(Checks!RC1)&gt;0,Checks!RC1,&quot;&quot;)"><Data
@@ -15720,7 +15724,7 @@
     <Cell ss:Formula="=IF(LEN(Fields!RC7)&gt;0,Fields!RC7,&quot;&quot;)"><Data
       ss:Type="String">LASTNAME</Data></Cell>
    </Row>
-   <Row ss:Height="38.25">
+   <Row ss:AutoFitHeight="0" ss:Height="38.25">
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Forms!RC1)&gt;0,Forms!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
     <Cell ss:Formula="=IF(LEN(Checks!RC1)&gt;0,Checks!RC1,&quot;&quot;)"><Data
@@ -15732,7 +15736,7 @@
     <Cell ss:Formula="=IF(LEN(Fields!RC7)&gt;0,Fields!RC7,&quot;&quot;)"><Data
       ss:Type="String">AGE_BLOODWORK</Data></Cell>
    </Row>
-   <Row ss:Height="38.25">
+   <Row ss:AutoFitHeight="0" ss:Height="38.25">
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Forms!RC1)&gt;0,Forms!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
     <Cell ss:Formula="=IF(LEN(Checks!RC1)&gt;0,Checks!RC1,&quot;&quot;)"><Data
@@ -15744,7 +15748,7 @@
     <Cell ss:Formula="=IF(LEN(Fields!RC7)&gt;0,Fields!RC7,&quot;&quot;)"><Data
       ss:Type="String">WHITEBLOODCELLS</Data></Cell>
    </Row>
-   <Row ss:Height="38.25">
+   <Row ss:AutoFitHeight="0" ss:Height="38.25">
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Forms!RC1)&gt;0,Forms!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
     <Cell ss:Formula="=IF(LEN(Checks!RC1)&gt;0,Checks!RC1,&quot;&quot;)"><Data
@@ -15756,7 +15760,7 @@
     <Cell ss:Formula="=IF(LEN(Fields!RC7)&gt;0,Fields!RC7,&quot;&quot;)"><Data
       ss:Type="String">REDBLOODCELLS</Data></Cell>
    </Row>
-   <Row ss:Height="25.5">
+   <Row ss:AutoFitHeight="0" ss:Height="25.5">
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Forms!RC1)&gt;0,Forms!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
     <Cell ss:Formula="=IF(LEN(Checks!RC1)&gt;0,Checks!RC1,&quot;&quot;)"><Data
@@ -15768,7 +15772,7 @@
     <Cell ss:Formula="=IF(LEN(Fields!RC7)&gt;0,Fields!RC7,&quot;&quot;)"><Data
       ss:Type="String">ISHDLNORMAL</Data></Cell>
    </Row>
-   <Row ss:Height="25.5">
+   <Row ss:AutoFitHeight="0" ss:Height="25.5">
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Forms!RC1)&gt;0,Forms!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
     <Cell ss:Formula="=IF(LEN(Checks!RC1)&gt;0,Checks!RC1,&quot;&quot;)"><Data
@@ -15780,7 +15784,7 @@
     <Cell ss:Formula="=IF(LEN(Fields!RC7)&gt;0,Fields!RC7,&quot;&quot;)"><Data
       ss:Type="String">DERIVEDFNAME</Data></Cell>
    </Row>
-   <Row ss:Height="25.5">
+   <Row ss:AutoFitHeight="0" ss:Height="25.5">
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Forms!RC1)&gt;0,Forms!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
     <Cell ss:Formula="=IF(LEN(Checks!RC1)&gt;0,Checks!RC1,&quot;&quot;)"><Data
@@ -15792,7 +15796,7 @@
     <Cell ss:Formula="=IF(LEN(Fields!RC7)&gt;0,Fields!RC7,&quot;&quot;)"><Data
       ss:Type="String">DERIVEDLNAME</Data></Cell>
    </Row>
-   <Row ss:Height="25.5">
+   <Row ss:AutoFitHeight="0" ss:Height="25.5">
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Forms!RC1)&gt;0,Forms!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
     <Cell ss:Formula="=IF(LEN(Checks!RC1)&gt;0,Checks!RC1,&quot;&quot;)"><Data
@@ -15828,7 +15832,7 @@
     <Cell ss:Formula="=IF(LEN(Fields!RC7)&gt;0,Fields!RC7,&quot;&quot;)"><Data
       ss:Type="String">HDL</Data></Cell>
    </Row>
-   <Row ss:Height="25.5">
+   <Row ss:AutoFitHeight="0" ss:Height="25.5">
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Forms!RC1)&gt;0,Forms!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
     <Cell ss:Formula="=IF(LEN(Checks!RC1)&gt;0,Checks!RC1,&quot;&quot;)"><Data
@@ -15840,7 +15844,7 @@
     <Cell ss:Formula="=IF(LEN(Fields!RC7)&gt;0,Fields!RC7,&quot;&quot;)"><Data
       ss:Type="String">TRIGLYCERIDES</Data></Cell>
    </Row>
-   <Row ss:Height="25.5">
+   <Row ss:AutoFitHeight="0" ss:Height="25.5">
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Forms!RC1)&gt;0,Forms!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
     <Cell ss:Formula="=IF(LEN(Checks!RC1)&gt;0,Checks!RC1,&quot;&quot;)"><Data
@@ -15852,7 +15856,7 @@
     <Cell ss:Formula="=IF(LEN(Fields!RC7)&gt;0,Fields!RC7,&quot;&quot;)"><Data
       ss:Type="String">BODYMASS</Data></Cell>
    </Row>
-   <Row ss:Height="25.5">
+   <Row ss:AutoFitHeight="0" ss:Height="25.5">
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Forms!RC1)&gt;0,Forms!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
     <Cell ss:Formula="=IF(LEN(Checks!RC1)&gt;0,Checks!RC1,&quot;&quot;)"><Data
@@ -15876,7 +15880,7 @@
     <Cell ss:Formula="=IF(LEN(Fields!RC7)&gt;0,Fields!RC7,&quot;&quot;)"><Data
       ss:Type="String">HEIGHT3</Data></Cell>
    </Row>
-   <Row ss:Height="25.5">
+   <Row ss:AutoFitHeight="0" ss:Height="25.5">
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Forms!RC1)&gt;0,Forms!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
     <Cell ss:Formula="=IF(LEN(Checks!RC1)&gt;0,Checks!RC1,&quot;&quot;)"><Data
@@ -15888,7 +15892,7 @@
     <Cell ss:Formula="=IF(LEN(Fields!RC7)&gt;0,Fields!RC7,&quot;&quot;)"><Data
       ss:Type="String">WEIGHT2</Data></Cell>
    </Row>
-   <Row ss:Height="25.5">
+   <Row ss:AutoFitHeight="0" ss:Height="25.5">
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Forms!RC1)&gt;0,Forms!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
     <Cell ss:Formula="=IF(LEN(Checks!RC1)&gt;0,Checks!RC1,&quot;&quot;)"><Data
@@ -15912,7 +15916,7 @@
     <Cell ss:Formula="=IF(LEN(Fields!RC7)&gt;0,Fields!RC7,&quot;&quot;)"><Data
       ss:Type="String">WBC</Data></Cell>
    </Row>
-   <Row ss:Height="25.5">
+   <Row ss:AutoFitHeight="0" ss:Height="25.5">
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Forms!RC1)&gt;0,Forms!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
     <Cell ss:Formula="=IF(LEN(Checks!RC1)&gt;0,Checks!RC1,&quot;&quot;)"><Data
@@ -15924,7 +15928,7 @@
     <Cell ss:Formula="=IF(LEN(Fields!RC7)&gt;0,Fields!RC7,&quot;&quot;)"><Data
       ss:Type="String">VISITDATE</Data></Cell>
    </Row>
-   <Row ss:Height="38.25">
+   <Row ss:AutoFitHeight="0" ss:Height="38.25">
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Forms!RC1)&gt;0,Forms!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
     <Cell ss:Formula="=IF(LEN(Checks!RC1)&gt;0,Checks!RC1,&quot;&quot;)"><Data
@@ -15936,7 +15940,7 @@
     <Cell ss:Formula="=IF(LEN(Fields!RC7)&gt;0,Fields!RC7,&quot;&quot;)"><Data
       ss:Type="String">AGE_LABDEMOG</Data></Cell>
    </Row>
-   <Row ss:Height="25.5">
+   <Row ss:AutoFitHeight="0" ss:Height="25.5">
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Forms!RC1)&gt;0,Forms!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
     <Cell ss:Formula="=IF(LEN(Checks!RC1)&gt;0,Checks!RC1,&quot;&quot;)"><Data
@@ -15948,7 +15952,7 @@
     <Cell ss:Formula="=IF(LEN(Fields!RC7)&gt;0,Fields!RC7,&quot;&quot;)"><Data
       ss:Type="String">SEX_LABDEMOG</Data></Cell>
    </Row>
-   <Row ss:Height="38.25">
+   <Row ss:AutoFitHeight="0" ss:Height="38.25">
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Forms!RC1)&gt;0,Forms!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
     <Cell ss:Formula="=IF(LEN(Checks!RC1)&gt;0,Checks!RC1,&quot;&quot;)"><Data
@@ -16555,7 +16559,7 @@
     <Cell ss:StyleID="s63"><Data ss:Type="String">SourceUrlId</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
    </Row>
-   <Row ss:Height="38.25">
+   <Row ss:AutoFitHeight="0" ss:Height="38.25">
     <Cell ss:StyleID="s64"><Data ss:Type="String">AE Duration</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">TRUE</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -16584,7 +16588,7 @@
     <Cell ss:Formula="=IF(LEN(Folders!RC1)&gt;0,Folders!RC1,&quot;&quot;)"><Data
       ss:Type="String">BASE</Data></Cell>
    </Row>
-   <Row ss:Height="38.25">
+   <Row ss:AutoFitHeight="0" ss:Height="38.25">
     <Cell ss:StyleID="s64"><Data ss:Type="String">Age Calculation</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">TRUE</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -16611,7 +16615,7 @@
     <Cell ss:Formula="=IF(LEN(Folders!RC1)&gt;0,Folders!RC1,&quot;&quot;)"><Data
       ss:Type="String">FU1</Data></Cell>
    </Row>
-   <Row ss:Height="38.25">
+   <Row ss:AutoFitHeight="0" ss:Height="38.25">
     <Cell ss:StyleID="s64"><Data ss:Type="String">Expected Dosage</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">TRUE</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -16640,7 +16644,7 @@
     <Cell ss:Formula="=IF(LEN(Folders!RC1)&gt;0,Folders!RC1,&quot;&quot;)"><Data
       ss:Type="String">FU2</Data></Cell>
    </Row>
-   <Row ss:Height="38.25">
+   <Row ss:AutoFitHeight="0" ss:Height="38.25">
     <Cell ss:StyleID="s64"><Data ss:Type="String">Subject ID</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">TRUE</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -16779,7 +16783,7 @@
     <Cell ss:Formula="=IF(LEN(Folders!RC1)&gt;0,Folders!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
    </Row>
-   <Row ss:Height="25.5">
+   <Row ss:AutoFitHeight="0" ss:Height="25.5">
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Fields!RC2)&gt;0,Fields!RC2,&quot;&quot;)"><Data
       ss:Type="String">EXCLCMT</Data></Cell>
     <Cell ss:Formula="=IF(LEN(Fields!RC7)&gt;0,Fields!RC7,&quot;&quot;)"><Data
@@ -16811,7 +16815,7 @@
     <Cell ss:Formula="=IF(LEN(Folders!RC1)&gt;0,Folders!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
    </Row>
-   <Row ss:Height="25.5">
+   <Row ss:AutoFitHeight="0" ss:Height="25.5">
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Fields!RC2)&gt;0,Fields!RC2,&quot;&quot;)"><Data
       ss:Type="String">COMMENT</Data></Cell>
     <Cell ss:Formula="=IF(LEN(Fields!RC7)&gt;0,Fields!RC7,&quot;&quot;)"><Data
@@ -16819,7 +16823,7 @@
     <Cell ss:Formula="=IF(LEN(Folders!RC1)&gt;0,Folders!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
    </Row>
-   <Row ss:Height="25.5">
+   <Row ss:AutoFitHeight="0" ss:Height="25.5">
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Fields!RC2)&gt;0,Fields!RC2,&quot;&quot;)"><Data
       ss:Type="String">MEDHX_REQ</Data></Cell>
     <Cell ss:Formula="=IF(LEN(Fields!RC7)&gt;0,Fields!RC7,&quot;&quot;)"><Data
@@ -16835,7 +16839,7 @@
     <Cell ss:Formula="=IF(LEN(Folders!RC1)&gt;0,Folders!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
    </Row>
-   <Row ss:Height="25.5">
+   <Row ss:AutoFitHeight="0" ss:Height="25.5">
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Fields!RC2)&gt;0,Fields!RC2,&quot;&quot;)"><Data
       ss:Type="String">ECG_REQ</Data></Cell>
     <Cell ss:Formula="=IF(LEN(Fields!RC7)&gt;0,Fields!RC7,&quot;&quot;)"><Data
@@ -16843,7 +16847,7 @@
     <Cell ss:Formula="=IF(LEN(Folders!RC1)&gt;0,Folders!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
    </Row>
-   <Row ss:Height="25.5">
+   <Row ss:AutoFitHeight="0" ss:Height="25.5">
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Fields!RC2)&gt;0,Fields!RC2,&quot;&quot;)"><Data
       ss:Type="String">VITALS_REQ</Data></Cell>
     <Cell ss:Formula="=IF(LEN(Fields!RC7)&gt;0,Fields!RC7,&quot;&quot;)"><Data
@@ -16851,7 +16855,7 @@
     <Cell ss:Formula="=IF(LEN(Folders!RC1)&gt;0,Folders!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
    </Row>
-   <Row ss:Height="25.5">
+   <Row ss:AutoFitHeight="0" ss:Height="25.5">
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Fields!RC2)&gt;0,Fields!RC2,&quot;&quot;)"><Data
       ss:Type="String">PREG_REQ</Data></Cell>
     <Cell ss:Formula="=IF(LEN(Fields!RC7)&gt;0,Fields!RC7,&quot;&quot;)"><Data
@@ -16859,7 +16863,7 @@
     <Cell ss:Formula="=IF(LEN(Folders!RC1)&gt;0,Folders!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
    </Row>
-   <Row ss:Height="25.5">
+   <Row ss:AutoFitHeight="0" ss:Height="25.5">
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Fields!RC2)&gt;0,Fields!RC2,&quot;&quot;)"><Data
       ss:Type="String">OCCLU_REQ</Data></Cell>
     <Cell ss:Formula="=IF(LEN(Fields!RC7)&gt;0,Fields!RC7,&quot;&quot;)"><Data
@@ -16867,7 +16871,7 @@
     <Cell ss:Formula="=IF(LEN(Folders!RC1)&gt;0,Folders!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
    </Row>
-   <Row ss:Height="38.25">
+   <Row ss:AutoFitHeight="0" ss:Height="38.25">
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Fields!RC2)&gt;0,Fields!RC2,&quot;&quot;)"><Data
       ss:Type="String">DRUGADMIN_REQ</Data></Cell>
     <Cell ss:Formula="=IF(LEN(Fields!RC7)&gt;0,Fields!RC7,&quot;&quot;)"><Data
@@ -16875,7 +16879,7 @@
     <Cell ss:Formula="=IF(LEN(Folders!RC1)&gt;0,Folders!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
    </Row>
-   <Row ss:Height="25.5">
+   <Row ss:AutoFitHeight="0" ss:Height="25.5">
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Fields!RC2)&gt;0,Fields!RC2,&quot;&quot;)"><Data
       ss:Type="String">BODYSYS_INDIC</Data></Cell>
     <Cell ss:Formula="=IF(LEN(Fields!RC7)&gt;0,Fields!RC7,&quot;&quot;)"><Data
@@ -16883,7 +16887,7 @@
     <Cell ss:Formula="=IF(LEN(Folders!RC1)&gt;0,Folders!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
    </Row>
-   <Row ss:Height="25.5">
+   <Row ss:AutoFitHeight="0" ss:Height="25.5">
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Fields!RC2)&gt;0,Fields!RC2,&quot;&quot;)"><Data
       ss:Type="String">BODYSYS</Data></Cell>
     <Cell ss:Formula="=IF(LEN(Fields!RC7)&gt;0,Fields!RC7,&quot;&quot;)"><Data
@@ -16891,7 +16895,7 @@
     <Cell ss:Formula="=IF(LEN(Folders!RC1)&gt;0,Folders!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
    </Row>
-   <Row ss:Height="38.25">
+   <Row ss:AutoFitHeight="0" ss:Height="38.25">
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Fields!RC2)&gt;0,Fields!RC2,&quot;&quot;)"><Data
       ss:Type="String">BODYSYS_RESULT</Data></Cell>
     <Cell ss:Formula="=IF(LEN(Fields!RC7)&gt;0,Fields!RC7,&quot;&quot;)"><Data
@@ -16899,7 +16903,7 @@
     <Cell ss:Formula="=IF(LEN(Folders!RC1)&gt;0,Folders!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
    </Row>
-   <Row ss:Height="38.25">
+   <Row ss:AutoFitHeight="0" ss:Height="38.25">
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Fields!RC2)&gt;0,Fields!RC2,&quot;&quot;)"><Data
       ss:Type="String">BODYSYS_SPECIFY</Data></Cell>
     <Cell ss:Formula="=IF(LEN(Fields!RC7)&gt;0,Fields!RC7,&quot;&quot;)"><Data
@@ -16907,7 +16911,7 @@
     <Cell ss:Formula="=IF(LEN(Folders!RC1)&gt;0,Folders!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
    </Row>
-   <Row ss:Height="25.5">
+   <Row ss:AutoFitHeight="0" ss:Height="25.5">
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Fields!RC2)&gt;0,Fields!RC2,&quot;&quot;)"><Data
       ss:Type="String">ECG_DATE</Data></Cell>
     <Cell ss:Formula="=IF(LEN(Fields!RC7)&gt;0,Fields!RC7,&quot;&quot;)"><Data
@@ -16931,7 +16935,7 @@
     <Cell ss:Formula="=IF(LEN(Folders!RC1)&gt;0,Folders!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
    </Row>
-   <Row ss:Height="25.5">
+   <Row ss:AutoFitHeight="0" ss:Height="25.5">
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Fields!RC2)&gt;0,Fields!RC2,&quot;&quot;)"><Data
       ss:Type="String">ECG_QRS</Data></Cell>
     <Cell ss:Formula="=IF(LEN(Fields!RC7)&gt;0,Fields!RC7,&quot;&quot;)"><Data
@@ -16947,7 +16951,7 @@
     <Cell ss:Formula="=IF(LEN(Folders!RC1)&gt;0,Folders!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
    </Row>
-   <Row ss:Height="25.5">
+   <Row ss:AutoFitHeight="0" ss:Height="25.5">
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Fields!RC2)&gt;0,Fields!RC2,&quot;&quot;)"><Data
       ss:Type="String">ECG_QTC</Data></Cell>
     <Cell ss:Formula="=IF(LEN(Fields!RC7)&gt;0,Fields!RC7,&quot;&quot;)"><Data
@@ -16955,7 +16959,7 @@
     <Cell ss:Formula="=IF(LEN(Folders!RC1)&gt;0,Folders!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
    </Row>
-   <Row ss:Height="25.5">
+   <Row ss:AutoFitHeight="0" ss:Height="25.5">
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Fields!RC2)&gt;0,Fields!RC2,&quot;&quot;)"><Data
       ss:Type="String">ECG_RESULT</Data></Cell>
     <Cell ss:Formula="=IF(LEN(Fields!RC7)&gt;0,Fields!RC7,&quot;&quot;)"><Data
@@ -16963,7 +16967,7 @@
     <Cell ss:Formula="=IF(LEN(Folders!RC1)&gt;0,Folders!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
    </Row>
-   <Row ss:Height="25.5">
+   <Row ss:AutoFitHeight="0" ss:Height="25.5">
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Fields!RC2)&gt;0,Fields!RC2,&quot;&quot;)"><Data
       ss:Type="String">ECG_SPECIFY</Data></Cell>
     <Cell ss:Formula="=IF(LEN(Fields!RC7)&gt;0,Fields!RC7,&quot;&quot;)"><Data
@@ -16971,7 +16975,7 @@
     <Cell ss:Formula="=IF(LEN(Folders!RC1)&gt;0,Folders!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
    </Row>
-   <Row ss:Height="25.5">
+   <Row ss:AutoFitHeight="0" ss:Height="25.5">
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Fields!RC2)&gt;0,Fields!RC2,&quot;&quot;)"><Data
       ss:Type="String">VITALS_VISITDT</Data></Cell>
     <Cell ss:Formula="=IF(LEN(Fields!RC7)&gt;0,Fields!RC7,&quot;&quot;)"><Data
@@ -16979,7 +16983,7 @@
     <Cell ss:Formula="=IF(LEN(Folders!RC1)&gt;0,Folders!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
    </Row>
-   <Row ss:Height="25.5">
+   <Row ss:AutoFitHeight="0" ss:Height="25.5">
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Fields!RC2)&gt;0,Fields!RC2,&quot;&quot;)"><Data
       ss:Type="String">VITALS_VISITTM</Data></Cell>
     <Cell ss:Formula="=IF(LEN(Fields!RC7)&gt;0,Fields!RC7,&quot;&quot;)"><Data
@@ -17035,7 +17039,7 @@
     <Cell ss:Formula="=IF(LEN(Folders!RC1)&gt;0,Folders!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
    </Row>
-   <Row ss:Height="38.25">
+   <Row ss:AutoFitHeight="0" ss:Height="38.25">
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Fields!RC2)&gt;0,Fields!RC2,&quot;&quot;)"><Data
       ss:Type="String">REASONFORENTRY</Data></Cell>
     <Cell ss:Formula="=IF(LEN(Fields!RC7)&gt;0,Fields!RC7,&quot;&quot;)"><Data
@@ -17043,7 +17047,7 @@
     <Cell ss:Formula="=IF(LEN(Folders!RC1)&gt;0,Folders!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
    </Row>
-   <Row ss:Height="25.5">
+   <Row ss:AutoFitHeight="0" ss:Height="25.5">
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Fields!RC2)&gt;0,Fields!RC2,&quot;&quot;)"><Data
       ss:Type="String">MEDICATIONS</Data></Cell>
     <Cell ss:Formula="=IF(LEN(Fields!RC7)&gt;0,Fields!RC7,&quot;&quot;)"><Data
@@ -17059,7 +17063,7 @@
     <Cell ss:Formula="=IF(LEN(Folders!RC1)&gt;0,Folders!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
    </Row>
-   <Row ss:Height="25.5">
+   <Row ss:AutoFitHeight="0" ss:Height="25.5">
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Fields!RC2)&gt;0,Fields!RC2,&quot;&quot;)"><Data
       ss:Type="String">SIGNATURE</Data></Cell>
     <Cell ss:Formula="=IF(LEN(Fields!RC7)&gt;0,Fields!RC7,&quot;&quot;)"><Data
@@ -17075,7 +17079,7 @@
     <Cell ss:Formula="=IF(LEN(Folders!RC1)&gt;0,Folders!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
    </Row>
-   <Row ss:Height="25.5">
+   <Row ss:AutoFitHeight="0" ss:Height="25.5">
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Fields!RC2)&gt;0,Fields!RC2,&quot;&quot;)"><Data
       ss:Type="String">SUBJNUM</Data></Cell>
     <Cell ss:Formula="=IF(LEN(Fields!RC7)&gt;0,Fields!RC7,&quot;&quot;)"><Data
@@ -17099,7 +17103,7 @@
     <Cell ss:Formula="=IF(LEN(Folders!RC1)&gt;0,Folders!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
    </Row>
-   <Row ss:Height="25.5">
+   <Row ss:AutoFitHeight="0" ss:Height="25.5">
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Fields!RC2)&gt;0,Fields!RC2,&quot;&quot;)"><Data
       ss:Type="String">PREG_DATE</Data></Cell>
     <Cell ss:Formula="=IF(LEN(Fields!RC7)&gt;0,Fields!RC7,&quot;&quot;)"><Data
@@ -17107,7 +17111,7 @@
     <Cell ss:Formula="=IF(LEN(Folders!RC1)&gt;0,Folders!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
    </Row>
-   <Row ss:Height="25.5">
+   <Row ss:AutoFitHeight="0" ss:Height="25.5">
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Fields!RC2)&gt;0,Fields!RC2,&quot;&quot;)"><Data
       ss:Type="String">PREG_RESULTS</Data></Cell>
     <Cell ss:Formula="=IF(LEN(Fields!RC7)&gt;0,Fields!RC7,&quot;&quot;)"><Data
@@ -17123,7 +17127,7 @@
     <Cell ss:Formula="=IF(LEN(Folders!RC1)&gt;0,Folders!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
    </Row>
-   <Row ss:Height="38.25">
+   <Row ss:AutoFitHeight="0" ss:Height="38.25">
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Fields!RC2)&gt;0,Fields!RC2,&quot;&quot;)"><Data
       ss:Type="String">OCCLU_HEARTAREA</Data></Cell>
     <Cell ss:Formula="=IF(LEN(Fields!RC7)&gt;0,Fields!RC7,&quot;&quot;)"><Data
@@ -17131,7 +17135,7 @@
     <Cell ss:Formula="=IF(LEN(Folders!RC1)&gt;0,Folders!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
    </Row>
-   <Row ss:Height="38.25">
+   <Row ss:AutoFitHeight="0" ss:Height="38.25">
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Fields!RC2)&gt;0,Fields!RC2,&quot;&quot;)"><Data
       ss:Type="String">OCCLU_INFARCTION</Data></Cell>
     <Cell ss:Formula="=IF(LEN(Fields!RC7)&gt;0,Fields!RC7,&quot;&quot;)"><Data
@@ -17139,7 +17143,7 @@
     <Cell ss:Formula="=IF(LEN(Folders!RC1)&gt;0,Folders!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
    </Row>
-   <Row ss:Height="38.25">
+   <Row ss:AutoFitHeight="0" ss:Height="38.25">
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Fields!RC2)&gt;0,Fields!RC2,&quot;&quot;)"><Data
       ss:Type="String">OCCLUSIONDICTIONARY</Data></Cell>
     <Cell ss:Formula="=IF(LEN(Fields!RC7)&gt;0,Fields!RC7,&quot;&quot;)"><Data
@@ -17163,7 +17167,7 @@
     <Cell ss:Formula="=IF(LEN(Folders!RC1)&gt;0,Folders!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
    </Row>
-   <Row ss:Height="25.5">
+   <Row ss:AutoFitHeight="0" ss:Height="25.5">
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Fields!RC2)&gt;0,Fields!RC2,&quot;&quot;)"><Data
       ss:Type="String">CALCDOSE</Data></Cell>
     <Cell ss:Formula="=IF(LEN(Fields!RC7)&gt;0,Fields!RC7,&quot;&quot;)"><Data
@@ -17179,7 +17183,7 @@
     <Cell ss:Formula="=IF(LEN(Folders!RC1)&gt;0,Folders!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
    </Row>
-   <Row ss:Height="25.5">
+   <Row ss:AutoFitHeight="0" ss:Height="25.5">
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Fields!RC2)&gt;0,Fields!RC2,&quot;&quot;)"><Data
       ss:Type="String">AE_INDIC</Data></Cell>
     <Cell ss:Formula="=IF(LEN(Fields!RC7)&gt;0,Fields!RC7,&quot;&quot;)"><Data
@@ -17211,7 +17215,7 @@
     <Cell ss:Formula="=IF(LEN(Folders!RC1)&gt;0,Folders!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
    </Row>
-   <Row ss:Height="25.5">
+   <Row ss:AutoFitHeight="0" ss:Height="25.5">
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Fields!RC2)&gt;0,Fields!RC2,&quot;&quot;)"><Data
       ss:Type="String">CONTINUE</Data></Cell>
     <Cell ss:Formula="=IF(LEN(Fields!RC7)&gt;0,Fields!RC7,&quot;&quot;)"><Data
@@ -17219,7 +17223,7 @@
     <Cell ss:Formula="=IF(LEN(Folders!RC1)&gt;0,Folders!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
    </Row>
-   <Row ss:Height="25.5">
+   <Row ss:AutoFitHeight="0" ss:Height="25.5">
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Fields!RC2)&gt;0,Fields!RC2,&quot;&quot;)"><Data
       ss:Type="String">SERIOUSCD</Data></Cell>
     <Cell ss:Formula="=IF(LEN(Fields!RC7)&gt;0,Fields!RC7,&quot;&quot;)"><Data
@@ -17227,7 +17231,7 @@
     <Cell ss:Formula="=IF(LEN(Folders!RC1)&gt;0,Folders!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
    </Row>
-   <Row ss:Height="25.5">
+   <Row ss:AutoFitHeight="0" ss:Height="25.5">
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Fields!RC2)&gt;0,Fields!RC2,&quot;&quot;)"><Data
       ss:Type="String">RELATEDCD</Data></Cell>
     <Cell ss:Formula="=IF(LEN(Fields!RC7)&gt;0,Fields!RC7,&quot;&quot;)"><Data
@@ -17235,7 +17239,7 @@
     <Cell ss:Formula="=IF(LEN(Folders!RC1)&gt;0,Folders!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
    </Row>
-   <Row ss:Height="25.5">
+   <Row ss:AutoFitHeight="0" ss:Height="25.5">
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Fields!RC2)&gt;0,Fields!RC2,&quot;&quot;)"><Data
       ss:Type="String">ACTIONCD1</Data></Cell>
     <Cell ss:Formula="=IF(LEN(Fields!RC7)&gt;0,Fields!RC7,&quot;&quot;)"><Data
@@ -17243,7 +17247,7 @@
     <Cell ss:Formula="=IF(LEN(Folders!RC1)&gt;0,Folders!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
    </Row>
-   <Row ss:Height="25.5">
+   <Row ss:AutoFitHeight="0" ss:Height="25.5">
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Fields!RC2)&gt;0,Fields!RC2,&quot;&quot;)"><Data
       ss:Type="String">ACTIONCD2</Data></Cell>
     <Cell ss:Formula="=IF(LEN(Fields!RC7)&gt;0,Fields!RC7,&quot;&quot;)"><Data
@@ -17251,7 +17255,7 @@
     <Cell ss:Formula="=IF(LEN(Folders!RC1)&gt;0,Folders!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
    </Row>
-   <Row ss:Height="25.5">
+   <Row ss:AutoFitHeight="0" ss:Height="25.5">
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Fields!RC2)&gt;0,Fields!RC2,&quot;&quot;)"><Data
       ss:Type="String">ACTIONCD3</Data></Cell>
     <Cell ss:Formula="=IF(LEN(Fields!RC7)&gt;0,Fields!RC7,&quot;&quot;)"><Data
@@ -17259,7 +17263,7 @@
     <Cell ss:Formula="=IF(LEN(Folders!RC1)&gt;0,Folders!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
    </Row>
-   <Row ss:Height="25.5">
+   <Row ss:AutoFitHeight="0" ss:Height="25.5">
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Fields!RC2)&gt;0,Fields!RC2,&quot;&quot;)"><Data
       ss:Type="String">AE_DURATION</Data></Cell>
     <Cell ss:Formula="=IF(LEN(Fields!RC7)&gt;0,Fields!RC7,&quot;&quot;)"><Data
@@ -17267,7 +17271,7 @@
     <Cell ss:Formula="=IF(LEN(Folders!RC1)&gt;0,Folders!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
    </Row>
-   <Row ss:Height="25.5">
+   <Row ss:AutoFitHeight="0" ss:Height="25.5">
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Fields!RC2)&gt;0,Fields!RC2,&quot;&quot;)"><Data
       ss:Type="String">CONMED_INDIC</Data></Cell>
     <Cell ss:Formula="=IF(LEN(Fields!RC7)&gt;0,Fields!RC7,&quot;&quot;)"><Data
@@ -17275,7 +17279,7 @@
     <Cell ss:Formula="=IF(LEN(Folders!RC1)&gt;0,Folders!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
    </Row>
-   <Row ss:Height="25.5">
+   <Row ss:AutoFitHeight="0" ss:Height="25.5">
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Fields!RC2)&gt;0,Fields!RC2,&quot;&quot;)"><Data
       ss:Type="String">CMVERBATIM</Data></Cell>
     <Cell ss:Formula="=IF(LEN(Fields!RC7)&gt;0,Fields!RC7,&quot;&quot;)"><Data
@@ -17283,7 +17287,7 @@
     <Cell ss:Formula="=IF(LEN(Folders!RC1)&gt;0,Folders!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
    </Row>
-   <Row ss:Height="25.5">
+   <Row ss:AutoFitHeight="0" ss:Height="25.5">
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Fields!RC2)&gt;0,Fields!RC2,&quot;&quot;)"><Data
       ss:Type="String">CM_STARTDT</Data></Cell>
     <Cell ss:Formula="=IF(LEN(Fields!RC7)&gt;0,Fields!RC7,&quot;&quot;)"><Data
@@ -17291,7 +17295,7 @@
     <Cell ss:Formula="=IF(LEN(Folders!RC1)&gt;0,Folders!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
    </Row>
-   <Row ss:Height="25.5">
+   <Row ss:AutoFitHeight="0" ss:Height="25.5">
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Fields!RC2)&gt;0,Fields!RC2,&quot;&quot;)"><Data
       ss:Type="String">CM_STOPDT</Data></Cell>
     <Cell ss:Formula="=IF(LEN(Fields!RC7)&gt;0,Fields!RC7,&quot;&quot;)"><Data
@@ -17299,7 +17303,7 @@
     <Cell ss:Formula="=IF(LEN(Folders!RC1)&gt;0,Folders!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
    </Row>
-   <Row ss:Height="25.5">
+   <Row ss:AutoFitHeight="0" ss:Height="25.5">
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Fields!RC2)&gt;0,Fields!RC2,&quot;&quot;)"><Data
       ss:Type="String">CM_CONTINUE</Data></Cell>
     <Cell ss:Formula="=IF(LEN(Fields!RC7)&gt;0,Fields!RC7,&quot;&quot;)"><Data
@@ -17307,7 +17311,7 @@
     <Cell ss:Formula="=IF(LEN(Folders!RC1)&gt;0,Folders!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
    </Row>
-   <Row ss:Height="25.5">
+   <Row ss:AutoFitHeight="0" ss:Height="25.5">
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Fields!RC2)&gt;0,Fields!RC2,&quot;&quot;)"><Data
       ss:Type="String">CM_DOSE</Data></Cell>
     <Cell ss:Formula="=IF(LEN(Fields!RC7)&gt;0,Fields!RC7,&quot;&quot;)"><Data
@@ -17315,7 +17319,7 @@
     <Cell ss:Formula="=IF(LEN(Folders!RC1)&gt;0,Folders!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
    </Row>
-   <Row ss:Height="25.5">
+   <Row ss:AutoFitHeight="0" ss:Height="25.5">
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Fields!RC2)&gt;0,Fields!RC2,&quot;&quot;)"><Data
       ss:Type="String">CM_FREQUENCY</Data></Cell>
     <Cell ss:Formula="=IF(LEN(Fields!RC7)&gt;0,Fields!RC7,&quot;&quot;)"><Data
@@ -17339,7 +17343,7 @@
     <Cell ss:Formula="=IF(LEN(Folders!RC1)&gt;0,Folders!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
    </Row>
-   <Row ss:Height="25.5">
+   <Row ss:AutoFitHeight="0" ss:Height="25.5">
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Fields!RC2)&gt;0,Fields!RC2,&quot;&quot;)"><Data
       ss:Type="String">MEDHX_INDIC</Data></Cell>
     <Cell ss:Formula="=IF(LEN(Fields!RC7)&gt;0,Fields!RC7,&quot;&quot;)"><Data
@@ -17347,7 +17351,7 @@
     <Cell ss:Formula="=IF(LEN(Folders!RC1)&gt;0,Folders!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
    </Row>
-   <Row ss:Height="25.5">
+   <Row ss:AutoFitHeight="0" ss:Height="25.5">
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Fields!RC2)&gt;0,Fields!RC2,&quot;&quot;)"><Data
       ss:Type="String">MEDHX_DIAG</Data></Cell>
     <Cell ss:Formula="=IF(LEN(Fields!RC7)&gt;0,Fields!RC7,&quot;&quot;)"><Data
@@ -17355,7 +17359,7 @@
     <Cell ss:Formula="=IF(LEN(Folders!RC1)&gt;0,Folders!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
    </Row>
-   <Row ss:Height="25.5">
+   <Row ss:AutoFitHeight="0" ss:Height="25.5">
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Fields!RC2)&gt;0,Fields!RC2,&quot;&quot;)"><Data
       ss:Type="String">MEDHX_DT</Data></Cell>
     <Cell ss:Formula="=IF(LEN(Fields!RC7)&gt;0,Fields!RC7,&quot;&quot;)"><Data
@@ -17363,7 +17367,7 @@
     <Cell ss:Formula="=IF(LEN(Folders!RC1)&gt;0,Folders!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
    </Row>
-   <Row ss:Height="25.5">
+   <Row ss:AutoFitHeight="0" ss:Height="25.5">
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Fields!RC2)&gt;0,Fields!RC2,&quot;&quot;)"><Data
       ss:Type="String">MEDHX_STATUS</Data></Cell>
     <Cell ss:Formula="=IF(LEN(Fields!RC7)&gt;0,Fields!RC7,&quot;&quot;)"><Data
@@ -17371,7 +17375,7 @@
     <Cell ss:Formula="=IF(LEN(Folders!RC1)&gt;0,Folders!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
    </Row>
-   <Row ss:Height="25.5">
+   <Row ss:AutoFitHeight="0" ss:Height="25.5">
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Fields!RC2)&gt;0,Fields!RC2,&quot;&quot;)"><Data
       ss:Type="String">MEDHX_SPECIFY</Data></Cell>
     <Cell ss:Formula="=IF(LEN(Fields!RC7)&gt;0,Fields!RC7,&quot;&quot;)"><Data
@@ -17379,7 +17383,7 @@
     <Cell ss:Formula="=IF(LEN(Folders!RC1)&gt;0,Folders!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
    </Row>
-   <Row ss:Height="25.5">
+   <Row ss:AutoFitHeight="0" ss:Height="25.5">
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Fields!RC2)&gt;0,Fields!RC2,&quot;&quot;)"><Data
       ss:Type="String">MEDHX_HEIGHT</Data></Cell>
     <Cell ss:Formula="=IF(LEN(Fields!RC7)&gt;0,Fields!RC7,&quot;&quot;)"><Data
@@ -17387,7 +17391,7 @@
     <Cell ss:Formula="=IF(LEN(Folders!RC1)&gt;0,Folders!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
    </Row>
-   <Row ss:Height="38.25">
+   <Row ss:AutoFitHeight="0" ss:Height="38.25">
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Fields!RC2)&gt;0,Fields!RC2,&quot;&quot;)"><Data
       ss:Type="String">REASONFORENTRY1</Data></Cell>
     <Cell ss:Formula="=IF(LEN(Fields!RC7)&gt;0,Fields!RC7,&quot;&quot;)"><Data
@@ -17395,7 +17399,7 @@
     <Cell ss:Formula="=IF(LEN(Folders!RC1)&gt;0,Folders!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
    </Row>
-   <Row ss:Height="38.25">
+   <Row ss:AutoFitHeight="0" ss:Height="38.25">
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Fields!RC2)&gt;0,Fields!RC2,&quot;&quot;)"><Data
       ss:Type="String">PREVIOUSMEDICATIONS</Data></Cell>
     <Cell ss:Formula="=IF(LEN(Fields!RC7)&gt;0,Fields!RC7,&quot;&quot;)"><Data
@@ -17403,7 +17407,7 @@
     <Cell ss:Formula="=IF(LEN(Folders!RC1)&gt;0,Folders!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
    </Row>
-   <Row ss:Height="38.25">
+   <Row ss:AutoFitHeight="0" ss:Height="38.25">
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Fields!RC2)&gt;0,Fields!RC2,&quot;&quot;)"><Data
       ss:Type="String">PREVIOUSILLNESS</Data></Cell>
     <Cell ss:Formula="=IF(LEN(Fields!RC7)&gt;0,Fields!RC7,&quot;&quot;)"><Data
@@ -17411,7 +17415,7 @@
     <Cell ss:Formula="=IF(LEN(Folders!RC1)&gt;0,Folders!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
    </Row>
-   <Row ss:Height="25.5">
+   <Row ss:AutoFitHeight="0" ss:Height="25.5">
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Fields!RC2)&gt;0,Fields!RC2,&quot;&quot;)"><Data
       ss:Type="String">SIGNATURE1</Data></Cell>
     <Cell ss:Formula="=IF(LEN(Fields!RC7)&gt;0,Fields!RC7,&quot;&quot;)"><Data
@@ -17419,7 +17423,7 @@
     <Cell ss:Formula="=IF(LEN(Folders!RC1)&gt;0,Folders!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
    </Row>
-   <Row ss:Height="25.5">
+   <Row ss:AutoFitHeight="0" ss:Height="25.5">
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Fields!RC2)&gt;0,Fields!RC2,&quot;&quot;)"><Data
       ss:Type="String">FIRSTNAME</Data></Cell>
     <Cell ss:Formula="=IF(LEN(Fields!RC7)&gt;0,Fields!RC7,&quot;&quot;)"><Data
@@ -17427,7 +17431,7 @@
     <Cell ss:Formula="=IF(LEN(Folders!RC1)&gt;0,Folders!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
    </Row>
-   <Row ss:Height="25.5">
+   <Row ss:AutoFitHeight="0" ss:Height="25.5">
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Fields!RC2)&gt;0,Fields!RC2,&quot;&quot;)"><Data
       ss:Type="String">LASTNAME</Data></Cell>
     <Cell ss:Formula="=IF(LEN(Fields!RC7)&gt;0,Fields!RC7,&quot;&quot;)"><Data
@@ -17435,7 +17439,7 @@
     <Cell ss:Formula="=IF(LEN(Folders!RC1)&gt;0,Folders!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
    </Row>
-   <Row ss:Height="38.25">
+   <Row ss:AutoFitHeight="0" ss:Height="38.25">
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Fields!RC2)&gt;0,Fields!RC2,&quot;&quot;)"><Data
       ss:Type="String">AGE_BLOODWORK</Data></Cell>
     <Cell ss:Formula="=IF(LEN(Fields!RC7)&gt;0,Fields!RC7,&quot;&quot;)"><Data
@@ -17443,7 +17447,7 @@
     <Cell ss:Formula="=IF(LEN(Folders!RC1)&gt;0,Folders!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
    </Row>
-   <Row ss:Height="38.25">
+   <Row ss:AutoFitHeight="0" ss:Height="38.25">
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Fields!RC2)&gt;0,Fields!RC2,&quot;&quot;)"><Data
       ss:Type="String">WHITEBLOODCELLS</Data></Cell>
     <Cell ss:Formula="=IF(LEN(Fields!RC7)&gt;0,Fields!RC7,&quot;&quot;)"><Data
@@ -17451,7 +17455,7 @@
     <Cell ss:Formula="=IF(LEN(Folders!RC1)&gt;0,Folders!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
    </Row>
-   <Row ss:Height="38.25">
+   <Row ss:AutoFitHeight="0" ss:Height="38.25">
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Fields!RC2)&gt;0,Fields!RC2,&quot;&quot;)"><Data
       ss:Type="String">REDBLOODCELLS</Data></Cell>
     <Cell ss:Formula="=IF(LEN(Fields!RC7)&gt;0,Fields!RC7,&quot;&quot;)"><Data
@@ -17459,7 +17463,7 @@
     <Cell ss:Formula="=IF(LEN(Folders!RC1)&gt;0,Folders!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
    </Row>
-   <Row ss:Height="25.5">
+   <Row ss:AutoFitHeight="0" ss:Height="25.5">
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Fields!RC2)&gt;0,Fields!RC2,&quot;&quot;)"><Data
       ss:Type="String">ISHDLNORMAL</Data></Cell>
     <Cell ss:Formula="=IF(LEN(Fields!RC7)&gt;0,Fields!RC7,&quot;&quot;)"><Data
@@ -17467,7 +17471,7 @@
     <Cell ss:Formula="=IF(LEN(Folders!RC1)&gt;0,Folders!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
    </Row>
-   <Row ss:Height="25.5">
+   <Row ss:AutoFitHeight="0" ss:Height="25.5">
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Fields!RC2)&gt;0,Fields!RC2,&quot;&quot;)"><Data
       ss:Type="String">DERIVEDFNAME</Data></Cell>
     <Cell ss:Formula="=IF(LEN(Fields!RC7)&gt;0,Fields!RC7,&quot;&quot;)"><Data
@@ -17475,7 +17479,7 @@
     <Cell ss:Formula="=IF(LEN(Folders!RC1)&gt;0,Folders!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
    </Row>
-   <Row ss:Height="25.5">
+   <Row ss:AutoFitHeight="0" ss:Height="25.5">
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Fields!RC2)&gt;0,Fields!RC2,&quot;&quot;)"><Data
       ss:Type="String">DERIVEDLNAME</Data></Cell>
     <Cell ss:Formula="=IF(LEN(Fields!RC7)&gt;0,Fields!RC7,&quot;&quot;)"><Data
@@ -17483,7 +17487,7 @@
     <Cell ss:Formula="=IF(LEN(Folders!RC1)&gt;0,Folders!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
    </Row>
-   <Row ss:Height="25.5">
+   <Row ss:AutoFitHeight="0" ss:Height="25.5">
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Fields!RC2)&gt;0,Fields!RC2,&quot;&quot;)"><Data
       ss:Type="String">DERIVEDLDLHDL</Data></Cell>
     <Cell ss:Formula="=IF(LEN(Fields!RC7)&gt;0,Fields!RC7,&quot;&quot;)"><Data
@@ -17507,7 +17511,7 @@
     <Cell ss:Formula="=IF(LEN(Folders!RC1)&gt;0,Folders!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
    </Row>
-   <Row ss:Height="25.5">
+   <Row ss:AutoFitHeight="0" ss:Height="25.5">
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Fields!RC2)&gt;0,Fields!RC2,&quot;&quot;)"><Data
       ss:Type="String">TRIGLYCERIDES</Data></Cell>
     <Cell ss:Formula="=IF(LEN(Fields!RC7)&gt;0,Fields!RC7,&quot;&quot;)"><Data
@@ -17515,7 +17519,7 @@
     <Cell ss:Formula="=IF(LEN(Folders!RC1)&gt;0,Folders!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
    </Row>
-   <Row ss:Height="25.5">
+   <Row ss:AutoFitHeight="0" ss:Height="25.5">
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Fields!RC2)&gt;0,Fields!RC2,&quot;&quot;)"><Data
       ss:Type="String">BODYMASS</Data></Cell>
     <Cell ss:Formula="=IF(LEN(Fields!RC7)&gt;0,Fields!RC7,&quot;&quot;)"><Data
@@ -17523,7 +17527,7 @@
     <Cell ss:Formula="=IF(LEN(Folders!RC1)&gt;0,Folders!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
    </Row>
-   <Row ss:Height="25.5">
+   <Row ss:AutoFitHeight="0" ss:Height="25.5">
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Fields!RC2)&gt;0,Fields!RC2,&quot;&quot;)"><Data
       ss:Type="String">BODYFAT</Data></Cell>
     <Cell ss:Formula="=IF(LEN(Fields!RC7)&gt;0,Fields!RC7,&quot;&quot;)"><Data
@@ -17539,7 +17543,7 @@
     <Cell ss:Formula="=IF(LEN(Folders!RC1)&gt;0,Folders!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
    </Row>
-   <Row ss:Height="25.5">
+   <Row ss:AutoFitHeight="0" ss:Height="25.5">
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Fields!RC2)&gt;0,Fields!RC2,&quot;&quot;)"><Data
       ss:Type="String">WEIGHT2</Data></Cell>
     <Cell ss:Formula="=IF(LEN(Fields!RC7)&gt;0,Fields!RC7,&quot;&quot;)"><Data
@@ -17547,7 +17551,7 @@
     <Cell ss:Formula="=IF(LEN(Folders!RC1)&gt;0,Folders!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
    </Row>
-   <Row ss:Height="25.5">
+   <Row ss:AutoFitHeight="0" ss:Height="25.5">
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Fields!RC2)&gt;0,Fields!RC2,&quot;&quot;)"><Data
       ss:Type="String">NEUTROPHILS</Data></Cell>
     <Cell ss:Formula="=IF(LEN(Fields!RC7)&gt;0,Fields!RC7,&quot;&quot;)"><Data
@@ -17563,7 +17567,7 @@
     <Cell ss:Formula="=IF(LEN(Folders!RC1)&gt;0,Folders!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
    </Row>
-   <Row ss:Height="25.5">
+   <Row ss:AutoFitHeight="0" ss:Height="25.5">
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Fields!RC2)&gt;0,Fields!RC2,&quot;&quot;)"><Data
       ss:Type="String">VISITDATE</Data></Cell>
     <Cell ss:Formula="=IF(LEN(Fields!RC7)&gt;0,Fields!RC7,&quot;&quot;)"><Data
@@ -17571,7 +17575,7 @@
     <Cell ss:Formula="=IF(LEN(Folders!RC1)&gt;0,Folders!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
    </Row>
-   <Row ss:Height="38.25">
+   <Row ss:AutoFitHeight="0" ss:Height="38.25">
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Fields!RC2)&gt;0,Fields!RC2,&quot;&quot;)"><Data
       ss:Type="String">AGE_LABDEMOG</Data></Cell>
     <Cell ss:Formula="=IF(LEN(Fields!RC7)&gt;0,Fields!RC7,&quot;&quot;)"><Data
@@ -17579,7 +17583,7 @@
     <Cell ss:Formula="=IF(LEN(Folders!RC1)&gt;0,Folders!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
    </Row>
-   <Row ss:Height="25.5">
+   <Row ss:AutoFitHeight="0" ss:Height="25.5">
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Fields!RC2)&gt;0,Fields!RC2,&quot;&quot;)"><Data
       ss:Type="String">SEX_LABDEMOG</Data></Cell>
     <Cell ss:Formula="=IF(LEN(Fields!RC7)&gt;0,Fields!RC7,&quot;&quot;)"><Data
@@ -17587,7 +17591,7 @@
     <Cell ss:Formula="=IF(LEN(Folders!RC1)&gt;0,Folders!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
    </Row>
-   <Row ss:Height="38.25">
+   <Row ss:AutoFitHeight="0" ss:Height="38.25">
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Fields!RC2)&gt;0,Fields!RC2,&quot;&quot;)"><Data
       ss:Type="String">PREGNANT_LABDEMOG</Data></Cell>
     <Cell ss:Formula="=IF(LEN(Fields!RC7)&gt;0,Fields!RC7,&quot;&quot;)"><Data
@@ -18359,7 +18363,7 @@
     <Cell ss:Formula="=IF(LEN(Fields!RC2)&gt;0,Fields!RC2,&quot;&quot;)"><Data
       ss:Type="String">INCL2</Data></Cell>
    </Row>
-   <Row ss:Height="25.5">
+   <Row ss:AutoFitHeight="0" ss:Height="25.5">
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Forms!RC1)&gt;0,Forms!RC1,&quot;&quot;)"><Data
       ss:Type="String">BLOODWORK</Data></Cell>
     <Cell ss:Formula="=IF(LEN(Derivations!RC1)&gt;0,Derivations!RC1,&quot;&quot;)"><Data
@@ -18373,7 +18377,7 @@
     <Cell ss:Formula="=IF(LEN(Fields!RC2)&gt;0,Fields!RC2,&quot;&quot;)"><Data
       ss:Type="String">INCL3</Data></Cell>
    </Row>
-   <Row ss:Height="25.5">
+   <Row ss:AutoFitHeight="0" ss:Height="25.5">
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Forms!RC1)&gt;0,Forms!RC1,&quot;&quot;)"><Data
       ss:Type="String">CHOLESTEROL</Data></Cell>
     <Cell ss:Formula="=IF(LEN(Derivations!RC1)&gt;0,Derivations!RC1,&quot;&quot;)"><Data
@@ -18387,7 +18391,7 @@
     <Cell ss:Formula="=IF(LEN(Fields!RC2)&gt;0,Fields!RC2,&quot;&quot;)"><Data
       ss:Type="String">EXCLCMT</Data></Cell>
    </Row>
-   <Row ss:Height="25.5">
+   <Row ss:AutoFitHeight="0" ss:Height="25.5">
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Forms!RC1)&gt;0,Forms!RC1,&quot;&quot;)"><Data
       ss:Type="String">LABFORM</Data></Cell>
     <Cell ss:Formula="=IF(LEN(Derivations!RC1)&gt;0,Derivations!RC1,&quot;&quot;)"><Data
@@ -18401,7 +18405,7 @@
     <Cell ss:Formula="=IF(LEN(Fields!RC2)&gt;0,Fields!RC2,&quot;&quot;)"><Data
       ss:Type="String">EXCL1</Data></Cell>
    </Row>
-   <Row ss:Height="38.25">
+   <Row ss:AutoFitHeight="0" ss:Height="38.25">
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Forms!RC1)&gt;0,Forms!RC1,&quot;&quot;)"><Data
       ss:Type="String">LABDEMOGRAPHICS</Data></Cell>
     <Cell ss:Formula="=IF(LEN(Derivations!RC1)&gt;0,Derivations!RC1,&quot;&quot;)"><Data
@@ -18429,7 +18433,7 @@
     <Cell ss:Formula="=IF(LEN(Fields!RC2)&gt;0,Fields!RC2,&quot;&quot;)"><Data
       ss:Type="String">EXCL3</Data></Cell>
    </Row>
-   <Row ss:Height="25.5">
+   <Row ss:AutoFitHeight="0" ss:Height="25.5">
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Forms!RC1)&gt;0,Forms!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
     <Cell ss:Formula="=IF(LEN(Derivations!RC1)&gt;0,Derivations!RC1,&quot;&quot;)"><Data
@@ -18443,7 +18447,7 @@
     <Cell ss:Formula="=IF(LEN(Fields!RC2)&gt;0,Fields!RC2,&quot;&quot;)"><Data
       ss:Type="String">COMMENT</Data></Cell>
    </Row>
-   <Row ss:Height="25.5">
+   <Row ss:AutoFitHeight="0" ss:Height="25.5">
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Forms!RC1)&gt;0,Forms!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
     <Cell ss:Formula="=IF(LEN(Derivations!RC1)&gt;0,Derivations!RC1,&quot;&quot;)"><Data
@@ -18471,7 +18475,7 @@
     <Cell ss:Formula="=IF(LEN(Fields!RC2)&gt;0,Fields!RC2,&quot;&quot;)"><Data
       ss:Type="String">PE_REQ</Data></Cell>
    </Row>
-   <Row ss:Height="25.5">
+   <Row ss:AutoFitHeight="0" ss:Height="25.5">
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Forms!RC1)&gt;0,Forms!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
     <Cell ss:Formula="=IF(LEN(Derivations!RC1)&gt;0,Derivations!RC1,&quot;&quot;)"><Data
@@ -18485,7 +18489,7 @@
     <Cell ss:Formula="=IF(LEN(Fields!RC2)&gt;0,Fields!RC2,&quot;&quot;)"><Data
       ss:Type="String">ECG_REQ</Data></Cell>
    </Row>
-   <Row ss:Height="25.5">
+   <Row ss:AutoFitHeight="0" ss:Height="25.5">
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Forms!RC1)&gt;0,Forms!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
     <Cell ss:Formula="=IF(LEN(Derivations!RC1)&gt;0,Derivations!RC1,&quot;&quot;)"><Data
@@ -18499,7 +18503,7 @@
     <Cell ss:Formula="=IF(LEN(Fields!RC2)&gt;0,Fields!RC2,&quot;&quot;)"><Data
       ss:Type="String">VITALS_REQ</Data></Cell>
    </Row>
-   <Row ss:Height="25.5">
+   <Row ss:AutoFitHeight="0" ss:Height="25.5">
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Forms!RC1)&gt;0,Forms!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
     <Cell ss:Formula="=IF(LEN(Derivations!RC1)&gt;0,Derivations!RC1,&quot;&quot;)"><Data
@@ -18513,7 +18517,7 @@
     <Cell ss:Formula="=IF(LEN(Fields!RC2)&gt;0,Fields!RC2,&quot;&quot;)"><Data
       ss:Type="String">PREG_REQ</Data></Cell>
    </Row>
-   <Row ss:Height="25.5">
+   <Row ss:AutoFitHeight="0" ss:Height="25.5">
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Forms!RC1)&gt;0,Forms!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
     <Cell ss:Formula="=IF(LEN(Derivations!RC1)&gt;0,Derivations!RC1,&quot;&quot;)"><Data
@@ -18527,7 +18531,7 @@
     <Cell ss:Formula="=IF(LEN(Fields!RC2)&gt;0,Fields!RC2,&quot;&quot;)"><Data
       ss:Type="String">OCCLU_REQ</Data></Cell>
    </Row>
-   <Row ss:Height="38.25">
+   <Row ss:AutoFitHeight="0" ss:Height="38.25">
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Forms!RC1)&gt;0,Forms!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
     <Cell ss:Formula="=IF(LEN(Derivations!RC1)&gt;0,Derivations!RC1,&quot;&quot;)"><Data
@@ -18541,7 +18545,7 @@
     <Cell ss:Formula="=IF(LEN(Fields!RC2)&gt;0,Fields!RC2,&quot;&quot;)"><Data
       ss:Type="String">DRUGADMIN_REQ</Data></Cell>
    </Row>
-   <Row ss:Height="25.5">
+   <Row ss:AutoFitHeight="0" ss:Height="25.5">
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Forms!RC1)&gt;0,Forms!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
     <Cell ss:Formula="=IF(LEN(Derivations!RC1)&gt;0,Derivations!RC1,&quot;&quot;)"><Data
@@ -18555,7 +18559,7 @@
     <Cell ss:Formula="=IF(LEN(Fields!RC2)&gt;0,Fields!RC2,&quot;&quot;)"><Data
       ss:Type="String">BODYSYS_INDIC</Data></Cell>
    </Row>
-   <Row ss:Height="25.5">
+   <Row ss:AutoFitHeight="0" ss:Height="25.5">
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Forms!RC1)&gt;0,Forms!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
     <Cell ss:Formula="=IF(LEN(Derivations!RC1)&gt;0,Derivations!RC1,&quot;&quot;)"><Data
@@ -18569,7 +18573,7 @@
     <Cell ss:Formula="=IF(LEN(Fields!RC2)&gt;0,Fields!RC2,&quot;&quot;)"><Data
       ss:Type="String">BODYSYS</Data></Cell>
    </Row>
-   <Row ss:Height="38.25">
+   <Row ss:AutoFitHeight="0" ss:Height="38.25">
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Forms!RC1)&gt;0,Forms!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
     <Cell ss:Formula="=IF(LEN(Derivations!RC1)&gt;0,Derivations!RC1,&quot;&quot;)"><Data
@@ -18583,7 +18587,7 @@
     <Cell ss:Formula="=IF(LEN(Fields!RC2)&gt;0,Fields!RC2,&quot;&quot;)"><Data
       ss:Type="String">BODYSYS_RESULT</Data></Cell>
    </Row>
-   <Row ss:Height="38.25">
+   <Row ss:AutoFitHeight="0" ss:Height="38.25">
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Forms!RC1)&gt;0,Forms!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
     <Cell ss:Formula="=IF(LEN(Derivations!RC1)&gt;0,Derivations!RC1,&quot;&quot;)"><Data
@@ -18597,7 +18601,7 @@
     <Cell ss:Formula="=IF(LEN(Fields!RC2)&gt;0,Fields!RC2,&quot;&quot;)"><Data
       ss:Type="String">BODYSYS_SPECIFY</Data></Cell>
    </Row>
-   <Row ss:Height="25.5">
+   <Row ss:AutoFitHeight="0" ss:Height="25.5">
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Forms!RC1)&gt;0,Forms!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
     <Cell ss:Formula="=IF(LEN(Derivations!RC1)&gt;0,Derivations!RC1,&quot;&quot;)"><Data
@@ -18639,7 +18643,7 @@
     <Cell ss:Formula="=IF(LEN(Fields!RC2)&gt;0,Fields!RC2,&quot;&quot;)"><Data
       ss:Type="String">ECG_PR</Data></Cell>
    </Row>
-   <Row ss:Height="25.5">
+   <Row ss:AutoFitHeight="0" ss:Height="25.5">
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Forms!RC1)&gt;0,Forms!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
     <Cell ss:Formula="=IF(LEN(Derivations!RC1)&gt;0,Derivations!RC1,&quot;&quot;)"><Data
@@ -18667,7 +18671,7 @@
     <Cell ss:Formula="=IF(LEN(Fields!RC2)&gt;0,Fields!RC2,&quot;&quot;)"><Data
       ss:Type="String">ECG_QT</Data></Cell>
    </Row>
-   <Row ss:Height="25.5">
+   <Row ss:AutoFitHeight="0" ss:Height="25.5">
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Forms!RC1)&gt;0,Forms!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
     <Cell ss:Formula="=IF(LEN(Derivations!RC1)&gt;0,Derivations!RC1,&quot;&quot;)"><Data
@@ -18681,7 +18685,7 @@
     <Cell ss:Formula="=IF(LEN(Fields!RC2)&gt;0,Fields!RC2,&quot;&quot;)"><Data
       ss:Type="String">ECG_QTC</Data></Cell>
    </Row>
-   <Row ss:Height="25.5">
+   <Row ss:AutoFitHeight="0" ss:Height="25.5">
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Forms!RC1)&gt;0,Forms!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
     <Cell ss:Formula="=IF(LEN(Derivations!RC1)&gt;0,Derivations!RC1,&quot;&quot;)"><Data
@@ -18695,7 +18699,7 @@
     <Cell ss:Formula="=IF(LEN(Fields!RC2)&gt;0,Fields!RC2,&quot;&quot;)"><Data
       ss:Type="String">ECG_RESULT</Data></Cell>
    </Row>
-   <Row ss:Height="25.5">
+   <Row ss:AutoFitHeight="0" ss:Height="25.5">
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Forms!RC1)&gt;0,Forms!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
     <Cell ss:Formula="=IF(LEN(Derivations!RC1)&gt;0,Derivations!RC1,&quot;&quot;)"><Data
@@ -18709,7 +18713,7 @@
     <Cell ss:Formula="=IF(LEN(Fields!RC2)&gt;0,Fields!RC2,&quot;&quot;)"><Data
       ss:Type="String">ECG_SPECIFY</Data></Cell>
    </Row>
-   <Row ss:Height="25.5">
+   <Row ss:AutoFitHeight="0" ss:Height="25.5">
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Forms!RC1)&gt;0,Forms!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
     <Cell ss:Formula="=IF(LEN(Derivations!RC1)&gt;0,Derivations!RC1,&quot;&quot;)"><Data
@@ -18723,7 +18727,7 @@
     <Cell ss:Formula="=IF(LEN(Fields!RC2)&gt;0,Fields!RC2,&quot;&quot;)"><Data
       ss:Type="String">VITALS_VISITDT</Data></Cell>
    </Row>
-   <Row ss:Height="25.5">
+   <Row ss:AutoFitHeight="0" ss:Height="25.5">
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Forms!RC1)&gt;0,Forms!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
     <Cell ss:Formula="=IF(LEN(Derivations!RC1)&gt;0,Derivations!RC1,&quot;&quot;)"><Data
@@ -18821,7 +18825,7 @@
     <Cell ss:Formula="=IF(LEN(Fields!RC2)&gt;0,Fields!RC2,&quot;&quot;)"><Data
       ss:Type="String">HEIGHT2</Data></Cell>
    </Row>
-   <Row ss:Height="38.25">
+   <Row ss:AutoFitHeight="0" ss:Height="38.25">
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Forms!RC1)&gt;0,Forms!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
     <Cell ss:Formula="=IF(LEN(Derivations!RC1)&gt;0,Derivations!RC1,&quot;&quot;)"><Data
@@ -18835,7 +18839,7 @@
     <Cell ss:Formula="=IF(LEN(Fields!RC2)&gt;0,Fields!RC2,&quot;&quot;)"><Data
       ss:Type="String">REASONFORENTRY</Data></Cell>
    </Row>
-   <Row ss:Height="25.5">
+   <Row ss:AutoFitHeight="0" ss:Height="25.5">
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Forms!RC1)&gt;0,Forms!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
     <Cell ss:Formula="=IF(LEN(Derivations!RC1)&gt;0,Derivations!RC1,&quot;&quot;)"><Data
@@ -18863,7 +18867,7 @@
     <Cell ss:Formula="=IF(LEN(Fields!RC2)&gt;0,Fields!RC2,&quot;&quot;)"><Data
       ss:Type="String">ILLNESS</Data></Cell>
    </Row>
-   <Row ss:Height="25.5">
+   <Row ss:AutoFitHeight="0" ss:Height="25.5">
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Forms!RC1)&gt;0,Forms!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
     <Cell ss:Formula="=IF(LEN(Derivations!RC1)&gt;0,Derivations!RC1,&quot;&quot;)"><Data
@@ -18891,7 +18895,7 @@
     <Cell ss:Formula="=IF(LEN(Fields!RC2)&gt;0,Fields!RC2,&quot;&quot;)"><Data
       ss:Type="String">SUBJINI</Data></Cell>
    </Row>
-   <Row ss:Height="25.5">
+   <Row ss:AutoFitHeight="0" ss:Height="25.5">
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Forms!RC1)&gt;0,Forms!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
     <Cell ss:Formula="=IF(LEN(Derivations!RC1)&gt;0,Derivations!RC1,&quot;&quot;)"><Data
@@ -18933,7 +18937,7 @@
     <Cell ss:Formula="=IF(LEN(Fields!RC2)&gt;0,Fields!RC2,&quot;&quot;)"><Data
       ss:Type="String">VISITDT</Data></Cell>
    </Row>
-   <Row ss:Height="25.5">
+   <Row ss:AutoFitHeight="0" ss:Height="25.5">
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Forms!RC1)&gt;0,Forms!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
     <Cell ss:Formula="=IF(LEN(Derivations!RC1)&gt;0,Derivations!RC1,&quot;&quot;)"><Data
@@ -18947,7 +18951,7 @@
     <Cell ss:Formula="=IF(LEN(Fields!RC2)&gt;0,Fields!RC2,&quot;&quot;)"><Data
       ss:Type="String">PREG_DATE</Data></Cell>
    </Row>
-   <Row ss:Height="25.5">
+   <Row ss:AutoFitHeight="0" ss:Height="25.5">
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Forms!RC1)&gt;0,Forms!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
     <Cell ss:Formula="=IF(LEN(Derivations!RC1)&gt;0,Derivations!RC1,&quot;&quot;)"><Data
@@ -18975,7 +18979,7 @@
     <Cell ss:Formula="=IF(LEN(Fields!RC2)&gt;0,Fields!RC2,&quot;&quot;)"><Data
       ss:Type="String">IMG</Data></Cell>
    </Row>
-   <Row ss:Height="38.25">
+   <Row ss:AutoFitHeight="0" ss:Height="38.25">
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Forms!RC1)&gt;0,Forms!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
     <Cell ss:Formula="=IF(LEN(Derivations!RC1)&gt;0,Derivations!RC1,&quot;&quot;)"><Data
@@ -18989,7 +18993,7 @@
     <Cell ss:Formula="=IF(LEN(Fields!RC2)&gt;0,Fields!RC2,&quot;&quot;)"><Data
       ss:Type="String">OCCLU_HEARTAREA</Data></Cell>
    </Row>
-   <Row ss:Height="38.25">
+   <Row ss:AutoFitHeight="0" ss:Height="38.25">
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Forms!RC1)&gt;0,Forms!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
     <Cell ss:Formula="=IF(LEN(Derivations!RC1)&gt;0,Derivations!RC1,&quot;&quot;)"><Data
@@ -19003,7 +19007,7 @@
     <Cell ss:Formula="=IF(LEN(Fields!RC2)&gt;0,Fields!RC2,&quot;&quot;)"><Data
       ss:Type="String">OCCLU_INFARCTION</Data></Cell>
    </Row>
-   <Row ss:Height="38.25">
+   <Row ss:AutoFitHeight="0" ss:Height="38.25">
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Forms!RC1)&gt;0,Forms!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
     <Cell ss:Formula="=IF(LEN(Derivations!RC1)&gt;0,Derivations!RC1,&quot;&quot;)"><Data
@@ -19045,7 +19049,7 @@
     <Cell ss:Formula="=IF(LEN(Fields!RC2)&gt;0,Fields!RC2,&quot;&quot;)"><Data
       ss:Type="String">DOSETM</Data></Cell>
    </Row>
-   <Row ss:Height="25.5">
+   <Row ss:AutoFitHeight="0" ss:Height="25.5">
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Forms!RC1)&gt;0,Forms!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
     <Cell ss:Formula="=IF(LEN(Derivations!RC1)&gt;0,Derivations!RC1,&quot;&quot;)"><Data
@@ -19073,7 +19077,7 @@
     <Cell ss:Formula="=IF(LEN(Fields!RC2)&gt;0,Fields!RC2,&quot;&quot;)"><Data
       ss:Type="String">DOSE</Data></Cell>
    </Row>
-   <Row ss:Height="25.5">
+   <Row ss:AutoFitHeight="0" ss:Height="25.5">
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Forms!RC1)&gt;0,Forms!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
     <Cell ss:Formula="=IF(LEN(Derivations!RC1)&gt;0,Derivations!RC1,&quot;&quot;)"><Data
@@ -19129,7 +19133,7 @@
     <Cell ss:Formula="=IF(LEN(Fields!RC2)&gt;0,Fields!RC2,&quot;&quot;)"><Data
       ss:Type="String">STOPDT</Data></Cell>
    </Row>
-   <Row ss:Height="25.5">
+   <Row ss:AutoFitHeight="0" ss:Height="25.5">
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Forms!RC1)&gt;0,Forms!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
     <Cell ss:Formula="=IF(LEN(Derivations!RC1)&gt;0,Derivations!RC1,&quot;&quot;)"><Data
@@ -19143,7 +19147,7 @@
     <Cell ss:Formula="=IF(LEN(Fields!RC2)&gt;0,Fields!RC2,&quot;&quot;)"><Data
       ss:Type="String">CONTINUE</Data></Cell>
    </Row>
-   <Row ss:Height="25.5">
+   <Row ss:AutoFitHeight="0" ss:Height="25.5">
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Forms!RC1)&gt;0,Forms!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
     <Cell ss:Formula="=IF(LEN(Derivations!RC1)&gt;0,Derivations!RC1,&quot;&quot;)"><Data
@@ -19157,7 +19161,7 @@
     <Cell ss:Formula="=IF(LEN(Fields!RC2)&gt;0,Fields!RC2,&quot;&quot;)"><Data
       ss:Type="String">SERIOUSCD</Data></Cell>
    </Row>
-   <Row ss:Height="25.5">
+   <Row ss:AutoFitHeight="0" ss:Height="25.5">
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Forms!RC1)&gt;0,Forms!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
     <Cell ss:Formula="=IF(LEN(Derivations!RC1)&gt;0,Derivations!RC1,&quot;&quot;)"><Data
@@ -19171,7 +19175,7 @@
     <Cell ss:Formula="=IF(LEN(Fields!RC2)&gt;0,Fields!RC2,&quot;&quot;)"><Data
       ss:Type="String">RELATEDCD</Data></Cell>
    </Row>
-   <Row ss:Height="25.5">
+   <Row ss:AutoFitHeight="0" ss:Height="25.5">
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Forms!RC1)&gt;0,Forms!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
     <Cell ss:Formula="=IF(LEN(Derivations!RC1)&gt;0,Derivations!RC1,&quot;&quot;)"><Data
@@ -19185,7 +19189,7 @@
     <Cell ss:Formula="=IF(LEN(Fields!RC2)&gt;0,Fields!RC2,&quot;&quot;)"><Data
       ss:Type="String">ACTIONCD1</Data></Cell>
    </Row>
-   <Row ss:Height="25.5">
+   <Row ss:AutoFitHeight="0" ss:Height="25.5">
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Forms!RC1)&gt;0,Forms!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
     <Cell ss:Formula="=IF(LEN(Derivations!RC1)&gt;0,Derivations!RC1,&quot;&quot;)"><Data
@@ -19199,7 +19203,7 @@
     <Cell ss:Formula="=IF(LEN(Fields!RC2)&gt;0,Fields!RC2,&quot;&quot;)"><Data
       ss:Type="String">ACTIONCD2</Data></Cell>
    </Row>
-   <Row ss:Height="25.5">
+   <Row ss:AutoFitHeight="0" ss:Height="25.5">
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Forms!RC1)&gt;0,Forms!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
     <Cell ss:Formula="=IF(LEN(Derivations!RC1)&gt;0,Derivations!RC1,&quot;&quot;)"><Data
@@ -19213,7 +19217,7 @@
     <Cell ss:Formula="=IF(LEN(Fields!RC2)&gt;0,Fields!RC2,&quot;&quot;)"><Data
       ss:Type="String">ACTIONCD3</Data></Cell>
    </Row>
-   <Row ss:Height="25.5">
+   <Row ss:AutoFitHeight="0" ss:Height="25.5">
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Forms!RC1)&gt;0,Forms!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
     <Cell ss:Formula="=IF(LEN(Derivations!RC1)&gt;0,Derivations!RC1,&quot;&quot;)"><Data
@@ -19227,7 +19231,7 @@
     <Cell ss:Formula="=IF(LEN(Fields!RC2)&gt;0,Fields!RC2,&quot;&quot;)"><Data
       ss:Type="String">AE_DURATION</Data></Cell>
    </Row>
-   <Row ss:Height="25.5">
+   <Row ss:AutoFitHeight="0" ss:Height="25.5">
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Forms!RC1)&gt;0,Forms!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
     <Cell ss:Formula="=IF(LEN(Derivations!RC1)&gt;0,Derivations!RC1,&quot;&quot;)"><Data
@@ -19241,7 +19245,7 @@
     <Cell ss:Formula="=IF(LEN(Fields!RC2)&gt;0,Fields!RC2,&quot;&quot;)"><Data
       ss:Type="String">CONMED_INDIC</Data></Cell>
    </Row>
-   <Row ss:Height="25.5">
+   <Row ss:AutoFitHeight="0" ss:Height="25.5">
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Forms!RC1)&gt;0,Forms!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
     <Cell ss:Formula="=IF(LEN(Derivations!RC1)&gt;0,Derivations!RC1,&quot;&quot;)"><Data
@@ -19255,7 +19259,7 @@
     <Cell ss:Formula="=IF(LEN(Fields!RC2)&gt;0,Fields!RC2,&quot;&quot;)"><Data
       ss:Type="String">CMVERBATIM</Data></Cell>
    </Row>
-   <Row ss:Height="25.5">
+   <Row ss:AutoFitHeight="0" ss:Height="25.5">
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Forms!RC1)&gt;0,Forms!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
     <Cell ss:Formula="=IF(LEN(Derivations!RC1)&gt;0,Derivations!RC1,&quot;&quot;)"><Data
@@ -19269,7 +19273,7 @@
     <Cell ss:Formula="=IF(LEN(Fields!RC2)&gt;0,Fields!RC2,&quot;&quot;)"><Data
       ss:Type="String">CM_STARTDT</Data></Cell>
    </Row>
-   <Row ss:Height="25.5">
+   <Row ss:AutoFitHeight="0" ss:Height="25.5">
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Forms!RC1)&gt;0,Forms!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
     <Cell ss:Formula="=IF(LEN(Derivations!RC1)&gt;0,Derivations!RC1,&quot;&quot;)"><Data
@@ -19283,7 +19287,7 @@
     <Cell ss:Formula="=IF(LEN(Fields!RC2)&gt;0,Fields!RC2,&quot;&quot;)"><Data
       ss:Type="String">CM_STOPDT</Data></Cell>
    </Row>
-   <Row ss:Height="25.5">
+   <Row ss:AutoFitHeight="0" ss:Height="25.5">
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Forms!RC1)&gt;0,Forms!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
     <Cell ss:Formula="=IF(LEN(Derivations!RC1)&gt;0,Derivations!RC1,&quot;&quot;)"><Data
@@ -19297,7 +19301,7 @@
     <Cell ss:Formula="=IF(LEN(Fields!RC2)&gt;0,Fields!RC2,&quot;&quot;)"><Data
       ss:Type="String">CM_CONTINUE</Data></Cell>
    </Row>
-   <Row ss:Height="25.5">
+   <Row ss:AutoFitHeight="0" ss:Height="25.5">
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Forms!RC1)&gt;0,Forms!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
     <Cell ss:Formula="=IF(LEN(Derivations!RC1)&gt;0,Derivations!RC1,&quot;&quot;)"><Data
@@ -19311,7 +19315,7 @@
     <Cell ss:Formula="=IF(LEN(Fields!RC2)&gt;0,Fields!RC2,&quot;&quot;)"><Data
       ss:Type="String">CM_DOSE</Data></Cell>
    </Row>
-   <Row ss:Height="25.5">
+   <Row ss:AutoFitHeight="0" ss:Height="25.5">
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Forms!RC1)&gt;0,Forms!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
     <Cell ss:Formula="=IF(LEN(Derivations!RC1)&gt;0,Derivations!RC1,&quot;&quot;)"><Data
@@ -19353,7 +19357,7 @@
     <Cell ss:Formula="=IF(LEN(Fields!RC2)&gt;0,Fields!RC2,&quot;&quot;)"><Data
       ss:Type="String">LABTM</Data></Cell>
    </Row>
-   <Row ss:Height="25.5">
+   <Row ss:AutoFitHeight="0" ss:Height="25.5">
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Forms!RC1)&gt;0,Forms!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
     <Cell ss:Formula="=IF(LEN(Derivations!RC1)&gt;0,Derivations!RC1,&quot;&quot;)"><Data
@@ -19367,7 +19371,7 @@
     <Cell ss:Formula="=IF(LEN(Fields!RC2)&gt;0,Fields!RC2,&quot;&quot;)"><Data
       ss:Type="String">MEDHX_INDIC</Data></Cell>
    </Row>
-   <Row ss:Height="25.5">
+   <Row ss:AutoFitHeight="0" ss:Height="25.5">
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Forms!RC1)&gt;0,Forms!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
     <Cell ss:Formula="=IF(LEN(Derivations!RC1)&gt;0,Derivations!RC1,&quot;&quot;)"><Data
@@ -19381,7 +19385,7 @@
     <Cell ss:Formula="=IF(LEN(Fields!RC2)&gt;0,Fields!RC2,&quot;&quot;)"><Data
       ss:Type="String">MEDHX_DIAG</Data></Cell>
    </Row>
-   <Row ss:Height="25.5">
+   <Row ss:AutoFitHeight="0" ss:Height="25.5">
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Forms!RC1)&gt;0,Forms!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
     <Cell ss:Formula="=IF(LEN(Derivations!RC1)&gt;0,Derivations!RC1,&quot;&quot;)"><Data
@@ -19395,7 +19399,7 @@
     <Cell ss:Formula="=IF(LEN(Fields!RC2)&gt;0,Fields!RC2,&quot;&quot;)"><Data
       ss:Type="String">MEDHX_DT</Data></Cell>
    </Row>
-   <Row ss:Height="25.5">
+   <Row ss:AutoFitHeight="0" ss:Height="25.5">
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Forms!RC1)&gt;0,Forms!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
     <Cell ss:Formula="=IF(LEN(Derivations!RC1)&gt;0,Derivations!RC1,&quot;&quot;)"><Data
@@ -19409,7 +19413,7 @@
     <Cell ss:Formula="=IF(LEN(Fields!RC2)&gt;0,Fields!RC2,&quot;&quot;)"><Data
       ss:Type="String">MEDHX_STATUS</Data></Cell>
    </Row>
-   <Row ss:Height="25.5">
+   <Row ss:AutoFitHeight="0" ss:Height="25.5">
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Forms!RC1)&gt;0,Forms!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
     <Cell ss:Formula="=IF(LEN(Derivations!RC1)&gt;0,Derivations!RC1,&quot;&quot;)"><Data
@@ -19423,7 +19427,7 @@
     <Cell ss:Formula="=IF(LEN(Fields!RC2)&gt;0,Fields!RC2,&quot;&quot;)"><Data
       ss:Type="String">MEDHX_SPECIFY</Data></Cell>
    </Row>
-   <Row ss:Height="25.5">
+   <Row ss:AutoFitHeight="0" ss:Height="25.5">
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Forms!RC1)&gt;0,Forms!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
     <Cell ss:Formula="=IF(LEN(Derivations!RC1)&gt;0,Derivations!RC1,&quot;&quot;)"><Data
@@ -19437,7 +19441,7 @@
     <Cell ss:Formula="=IF(LEN(Fields!RC2)&gt;0,Fields!RC2,&quot;&quot;)"><Data
       ss:Type="String">MEDHX_HEIGHT</Data></Cell>
    </Row>
-   <Row ss:Height="38.25">
+   <Row ss:AutoFitHeight="0" ss:Height="38.25">
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Forms!RC1)&gt;0,Forms!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
     <Cell ss:Formula="=IF(LEN(Derivations!RC1)&gt;0,Derivations!RC1,&quot;&quot;)"><Data
@@ -19451,7 +19455,7 @@
     <Cell ss:Formula="=IF(LEN(Fields!RC2)&gt;0,Fields!RC2,&quot;&quot;)"><Data
       ss:Type="String">REASONFORENTRY1</Data></Cell>
    </Row>
-   <Row ss:Height="38.25">
+   <Row ss:AutoFitHeight="0" ss:Height="38.25">
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Forms!RC1)&gt;0,Forms!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
     <Cell ss:Formula="=IF(LEN(Derivations!RC1)&gt;0,Derivations!RC1,&quot;&quot;)"><Data
@@ -19465,7 +19469,7 @@
     <Cell ss:Formula="=IF(LEN(Fields!RC2)&gt;0,Fields!RC2,&quot;&quot;)"><Data
       ss:Type="String">PREVIOUSMEDICATIONS</Data></Cell>
    </Row>
-   <Row ss:Height="38.25">
+   <Row ss:AutoFitHeight="0" ss:Height="38.25">
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Forms!RC1)&gt;0,Forms!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
     <Cell ss:Formula="=IF(LEN(Derivations!RC1)&gt;0,Derivations!RC1,&quot;&quot;)"><Data
@@ -19479,7 +19483,7 @@
     <Cell ss:Formula="=IF(LEN(Fields!RC2)&gt;0,Fields!RC2,&quot;&quot;)"><Data
       ss:Type="String">PREVIOUSILLNESS</Data></Cell>
    </Row>
-   <Row ss:Height="25.5">
+   <Row ss:AutoFitHeight="0" ss:Height="25.5">
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Forms!RC1)&gt;0,Forms!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
     <Cell ss:Formula="=IF(LEN(Derivations!RC1)&gt;0,Derivations!RC1,&quot;&quot;)"><Data
@@ -19493,7 +19497,7 @@
     <Cell ss:Formula="=IF(LEN(Fields!RC2)&gt;0,Fields!RC2,&quot;&quot;)"><Data
       ss:Type="String">SIGNATURE1</Data></Cell>
    </Row>
-   <Row ss:Height="25.5">
+   <Row ss:AutoFitHeight="0" ss:Height="25.5">
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Forms!RC1)&gt;0,Forms!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
     <Cell ss:Formula="=IF(LEN(Derivations!RC1)&gt;0,Derivations!RC1,&quot;&quot;)"><Data
@@ -19507,7 +19511,7 @@
     <Cell ss:Formula="=IF(LEN(Fields!RC2)&gt;0,Fields!RC2,&quot;&quot;)"><Data
       ss:Type="String">FIRSTNAME</Data></Cell>
    </Row>
-   <Row ss:Height="25.5">
+   <Row ss:AutoFitHeight="0" ss:Height="25.5">
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Forms!RC1)&gt;0,Forms!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
     <Cell ss:Formula="=IF(LEN(Derivations!RC1)&gt;0,Derivations!RC1,&quot;&quot;)"><Data
@@ -19521,7 +19525,7 @@
     <Cell ss:Formula="=IF(LEN(Fields!RC2)&gt;0,Fields!RC2,&quot;&quot;)"><Data
       ss:Type="String">LASTNAME</Data></Cell>
    </Row>
-   <Row ss:Height="38.25">
+   <Row ss:AutoFitHeight="0" ss:Height="38.25">
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Forms!RC1)&gt;0,Forms!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
     <Cell ss:Formula="=IF(LEN(Derivations!RC1)&gt;0,Derivations!RC1,&quot;&quot;)"><Data
@@ -19535,7 +19539,7 @@
     <Cell ss:Formula="=IF(LEN(Fields!RC2)&gt;0,Fields!RC2,&quot;&quot;)"><Data
       ss:Type="String">AGE_BLOODWORK</Data></Cell>
    </Row>
-   <Row ss:Height="38.25">
+   <Row ss:AutoFitHeight="0" ss:Height="38.25">
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Forms!RC1)&gt;0,Forms!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
     <Cell ss:Formula="=IF(LEN(Derivations!RC1)&gt;0,Derivations!RC1,&quot;&quot;)"><Data
@@ -19549,7 +19553,7 @@
     <Cell ss:Formula="=IF(LEN(Fields!RC2)&gt;0,Fields!RC2,&quot;&quot;)"><Data
       ss:Type="String">WHITEBLOODCELLS</Data></Cell>
    </Row>
-   <Row ss:Height="38.25">
+   <Row ss:AutoFitHeight="0" ss:Height="38.25">
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Forms!RC1)&gt;0,Forms!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
     <Cell ss:Formula="=IF(LEN(Derivations!RC1)&gt;0,Derivations!RC1,&quot;&quot;)"><Data
@@ -19563,7 +19567,7 @@
     <Cell ss:Formula="=IF(LEN(Fields!RC2)&gt;0,Fields!RC2,&quot;&quot;)"><Data
       ss:Type="String">REDBLOODCELLS</Data></Cell>
    </Row>
-   <Row ss:Height="25.5">
+   <Row ss:AutoFitHeight="0" ss:Height="25.5">
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Forms!RC1)&gt;0,Forms!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
     <Cell ss:Formula="=IF(LEN(Derivations!RC1)&gt;0,Derivations!RC1,&quot;&quot;)"><Data
@@ -19577,7 +19581,7 @@
     <Cell ss:Formula="=IF(LEN(Fields!RC2)&gt;0,Fields!RC2,&quot;&quot;)"><Data
       ss:Type="String">ISHDLNORMAL</Data></Cell>
    </Row>
-   <Row ss:Height="25.5">
+   <Row ss:AutoFitHeight="0" ss:Height="25.5">
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Forms!RC1)&gt;0,Forms!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
     <Cell ss:Formula="=IF(LEN(Derivations!RC1)&gt;0,Derivations!RC1,&quot;&quot;)"><Data
@@ -19591,7 +19595,7 @@
     <Cell ss:Formula="=IF(LEN(Fields!RC2)&gt;0,Fields!RC2,&quot;&quot;)"><Data
       ss:Type="String">DERIVEDFNAME</Data></Cell>
    </Row>
-   <Row ss:Height="25.5">
+   <Row ss:AutoFitHeight="0" ss:Height="25.5">
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Forms!RC1)&gt;0,Forms!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
     <Cell ss:Formula="=IF(LEN(Derivations!RC1)&gt;0,Derivations!RC1,&quot;&quot;)"><Data
@@ -19605,7 +19609,7 @@
     <Cell ss:Formula="=IF(LEN(Fields!RC2)&gt;0,Fields!RC2,&quot;&quot;)"><Data
       ss:Type="String">DERIVEDLNAME</Data></Cell>
    </Row>
-   <Row ss:Height="25.5">
+   <Row ss:AutoFitHeight="0" ss:Height="25.5">
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Forms!RC1)&gt;0,Forms!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
     <Cell ss:Formula="=IF(LEN(Derivations!RC1)&gt;0,Derivations!RC1,&quot;&quot;)"><Data
@@ -19647,7 +19651,7 @@
     <Cell ss:Formula="=IF(LEN(Fields!RC2)&gt;0,Fields!RC2,&quot;&quot;)"><Data
       ss:Type="String">HDL</Data></Cell>
    </Row>
-   <Row ss:Height="25.5">
+   <Row ss:AutoFitHeight="0" ss:Height="25.5">
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Forms!RC1)&gt;0,Forms!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
     <Cell ss:Formula="=IF(LEN(Derivations!RC1)&gt;0,Derivations!RC1,&quot;&quot;)"><Data
@@ -19661,7 +19665,7 @@
     <Cell ss:Formula="=IF(LEN(Fields!RC2)&gt;0,Fields!RC2,&quot;&quot;)"><Data
       ss:Type="String">TRIGLYCERIDES</Data></Cell>
    </Row>
-   <Row ss:Height="25.5">
+   <Row ss:AutoFitHeight="0" ss:Height="25.5">
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Forms!RC1)&gt;0,Forms!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
     <Cell ss:Formula="=IF(LEN(Derivations!RC1)&gt;0,Derivations!RC1,&quot;&quot;)"><Data
@@ -19675,7 +19679,7 @@
     <Cell ss:Formula="=IF(LEN(Fields!RC2)&gt;0,Fields!RC2,&quot;&quot;)"><Data
       ss:Type="String">BODYMASS</Data></Cell>
    </Row>
-   <Row ss:Height="25.5">
+   <Row ss:AutoFitHeight="0" ss:Height="25.5">
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Forms!RC1)&gt;0,Forms!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
     <Cell ss:Formula="=IF(LEN(Derivations!RC1)&gt;0,Derivations!RC1,&quot;&quot;)"><Data
@@ -19703,7 +19707,7 @@
     <Cell ss:Formula="=IF(LEN(Fields!RC2)&gt;0,Fields!RC2,&quot;&quot;)"><Data
       ss:Type="String">HEIGHT3</Data></Cell>
    </Row>
-   <Row ss:Height="25.5">
+   <Row ss:AutoFitHeight="0" ss:Height="25.5">
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Forms!RC1)&gt;0,Forms!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
     <Cell ss:Formula="=IF(LEN(Derivations!RC1)&gt;0,Derivations!RC1,&quot;&quot;)"><Data
@@ -19717,7 +19721,7 @@
     <Cell ss:Formula="=IF(LEN(Fields!RC2)&gt;0,Fields!RC2,&quot;&quot;)"><Data
       ss:Type="String">WEIGHT2</Data></Cell>
    </Row>
-   <Row ss:Height="25.5">
+   <Row ss:AutoFitHeight="0" ss:Height="25.5">
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Forms!RC1)&gt;0,Forms!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
     <Cell ss:Formula="=IF(LEN(Derivations!RC1)&gt;0,Derivations!RC1,&quot;&quot;)"><Data
@@ -19745,7 +19749,7 @@
     <Cell ss:Formula="=IF(LEN(Fields!RC2)&gt;0,Fields!RC2,&quot;&quot;)"><Data
       ss:Type="String">WBC</Data></Cell>
    </Row>
-   <Row ss:Height="25.5">
+   <Row ss:AutoFitHeight="0" ss:Height="25.5">
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Forms!RC1)&gt;0,Forms!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
     <Cell ss:Formula="=IF(LEN(Derivations!RC1)&gt;0,Derivations!RC1,&quot;&quot;)"><Data
@@ -19759,7 +19763,7 @@
     <Cell ss:Formula="=IF(LEN(Fields!RC2)&gt;0,Fields!RC2,&quot;&quot;)"><Data
       ss:Type="String">VISITDATE</Data></Cell>
    </Row>
-   <Row ss:Height="38.25">
+   <Row ss:AutoFitHeight="0" ss:Height="38.25">
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Forms!RC1)&gt;0,Forms!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
     <Cell ss:Formula="=IF(LEN(Derivations!RC1)&gt;0,Derivations!RC1,&quot;&quot;)"><Data
@@ -19773,7 +19777,7 @@
     <Cell ss:Formula="=IF(LEN(Fields!RC2)&gt;0,Fields!RC2,&quot;&quot;)"><Data
       ss:Type="String">AGE_LABDEMOG</Data></Cell>
    </Row>
-   <Row ss:Height="25.5">
+   <Row ss:AutoFitHeight="0" ss:Height="25.5">
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Forms!RC1)&gt;0,Forms!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
     <Cell ss:Formula="=IF(LEN(Derivations!RC1)&gt;0,Derivations!RC1,&quot;&quot;)"><Data
@@ -19787,7 +19791,7 @@
     <Cell ss:Formula="=IF(LEN(Fields!RC2)&gt;0,Fields!RC2,&quot;&quot;)"><Data
       ss:Type="String">SEX_LABDEMOG</Data></Cell>
    </Row>
-   <Row ss:Height="38.25">
+   <Row ss:AutoFitHeight="0" ss:Height="38.25">
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Forms!RC1)&gt;0,Forms!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
     <Cell ss:Formula="=IF(LEN(Derivations!RC1)&gt;0,Derivations!RC1,&quot;&quot;)"><Data
@@ -20824,7 +20828,7 @@
     <Cell ss:Formula="=IF(LEN(Folders!RC1)&gt;0,Folders!RC1,&quot;&quot;)"><Data
       ss:Type="String">SCRN</Data></Cell>
    </Row>
-   <Row ss:Height="38.25">
+   <Row ss:AutoFitHeight="0" ss:Height="38.25">
     <Cell ss:Index="6" ss:StyleID="s64"><Data ss:Type="String">1NAMENAMENAMENAMENAMENAMENAMENAMENAMENAMENAMENAMEN</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Forms!RC1)&gt;0,Forms!RC1,&quot;&quot;)"><Data
@@ -20834,7 +20838,7 @@
     <Cell ss:Formula="=IF(LEN(Folders!RC1)&gt;0,Folders!RC1,&quot;&quot;)"><Data
       ss:Type="String">UNSCH</Data></Cell>
    </Row>
-   <Row ss:Height="25.5">
+   <Row ss:AutoFitHeight="0" ss:Height="25.5">
     <Cell ss:Index="6" ss:StyleID="s64"><Data ss:Type="String">aaaaaaaaaaaaabbbbbbbcccccccccccccccccddddddddddddd</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Forms!RC1)&gt;0,Forms!RC1,&quot;&quot;)"><Data
@@ -20954,7 +20958,7 @@
     <Cell ss:Formula="=IF(LEN(Folders!RC1)&gt;0,Folders!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
    </Row>
-   <Row ss:Height="25.5">
+   <Row ss:AutoFitHeight="0" ss:Height="25.5">
     <Cell ss:Index="6" ss:StyleID="s64"><Data ss:Type="String">Pregnancy StatusREG_P2012V21</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Forms!RC1)&gt;0,Forms!RC1,&quot;&quot;)"><Data
@@ -20964,7 +20968,7 @@
     <Cell ss:Formula="=IF(LEN(Folders!RC1)&gt;0,Folders!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
    </Row>
-   <Row ss:Height="25.5">
+   <Row ss:AutoFitHeight="0" ss:Height="25.5">
     <Cell ss:Index="6" ss:StyleID="s64"><Data ss:Type="String">Pregnancy StatusREG_US17701</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Forms!RC1)&gt;0,Forms!RC1,&quot;&quot;)"><Data
@@ -21052,7 +21056,7 @@
     <Cell ss:Formula="=IF(LEN(Folders!RC1)&gt;0,Folders!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
    </Row>
-   <Row ss:Height="25.5">
+   <Row ss:AutoFitHeight="0" ss:Height="25.5">
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Forms!RC1)&gt;0,Forms!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
     <Cell ss:Formula="=IF(LEN(Fields!RC2)&gt;0,Fields!RC2,&quot;&quot;)"><Data
@@ -21060,7 +21064,7 @@
     <Cell ss:Formula="=IF(LEN(Folders!RC1)&gt;0,Folders!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
    </Row>
-   <Row ss:Height="38.25">
+   <Row ss:AutoFitHeight="0" ss:Height="38.25">
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Forms!RC1)&gt;0,Forms!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
     <Cell ss:Formula="=IF(LEN(Fields!RC2)&gt;0,Fields!RC2,&quot;&quot;)"><Data
@@ -21068,7 +21072,7 @@
     <Cell ss:Formula="=IF(LEN(Folders!RC1)&gt;0,Folders!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
    </Row>
-   <Row ss:Height="38.25">
+   <Row ss:AutoFitHeight="0" ss:Height="38.25">
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Forms!RC1)&gt;0,Forms!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
     <Cell ss:Formula="=IF(LEN(Fields!RC2)&gt;0,Fields!RC2,&quot;&quot;)"><Data
@@ -21076,7 +21080,7 @@
     <Cell ss:Formula="=IF(LEN(Folders!RC1)&gt;0,Folders!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
    </Row>
-   <Row ss:Height="25.5">
+   <Row ss:AutoFitHeight="0" ss:Height="25.5">
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Forms!RC1)&gt;0,Forms!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
     <Cell ss:Formula="=IF(LEN(Fields!RC2)&gt;0,Fields!RC2,&quot;&quot;)"><Data
@@ -21100,7 +21104,7 @@
     <Cell ss:Formula="=IF(LEN(Folders!RC1)&gt;0,Folders!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
    </Row>
-   <Row ss:Height="25.5">
+   <Row ss:AutoFitHeight="0" ss:Height="25.5">
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Forms!RC1)&gt;0,Forms!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
     <Cell ss:Formula="=IF(LEN(Fields!RC2)&gt;0,Fields!RC2,&quot;&quot;)"><Data
@@ -21116,7 +21120,7 @@
     <Cell ss:Formula="=IF(LEN(Folders!RC1)&gt;0,Folders!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
    </Row>
-   <Row ss:Height="25.5">
+   <Row ss:AutoFitHeight="0" ss:Height="25.5">
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Forms!RC1)&gt;0,Forms!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
     <Cell ss:Formula="=IF(LEN(Fields!RC2)&gt;0,Fields!RC2,&quot;&quot;)"><Data
@@ -21124,7 +21128,7 @@
     <Cell ss:Formula="=IF(LEN(Folders!RC1)&gt;0,Folders!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
    </Row>
-   <Row ss:Height="25.5">
+   <Row ss:AutoFitHeight="0" ss:Height="25.5">
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Forms!RC1)&gt;0,Forms!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
     <Cell ss:Formula="=IF(LEN(Fields!RC2)&gt;0,Fields!RC2,&quot;&quot;)"><Data
@@ -21132,7 +21136,7 @@
     <Cell ss:Formula="=IF(LEN(Folders!RC1)&gt;0,Folders!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
    </Row>
-   <Row ss:Height="25.5">
+   <Row ss:AutoFitHeight="0" ss:Height="25.5">
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Forms!RC1)&gt;0,Forms!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
     <Cell ss:Formula="=IF(LEN(Fields!RC2)&gt;0,Fields!RC2,&quot;&quot;)"><Data
@@ -21140,7 +21144,7 @@
     <Cell ss:Formula="=IF(LEN(Folders!RC1)&gt;0,Folders!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
    </Row>
-   <Row ss:Height="25.5">
+   <Row ss:AutoFitHeight="0" ss:Height="25.5">
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Forms!RC1)&gt;0,Forms!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
     <Cell ss:Formula="=IF(LEN(Fields!RC2)&gt;0,Fields!RC2,&quot;&quot;)"><Data
@@ -21148,7 +21152,7 @@
     <Cell ss:Formula="=IF(LEN(Folders!RC1)&gt;0,Folders!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
    </Row>
-   <Row ss:Height="25.5">
+   <Row ss:AutoFitHeight="0" ss:Height="25.5">
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Forms!RC1)&gt;0,Forms!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
     <Cell ss:Formula="=IF(LEN(Fields!RC2)&gt;0,Fields!RC2,&quot;&quot;)"><Data
@@ -21204,7 +21208,7 @@
     <Cell ss:Formula="=IF(LEN(Folders!RC1)&gt;0,Folders!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
    </Row>
-   <Row ss:Height="38.25">
+   <Row ss:AutoFitHeight="0" ss:Height="38.25">
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Forms!RC1)&gt;0,Forms!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
     <Cell ss:Formula="=IF(LEN(Fields!RC2)&gt;0,Fields!RC2,&quot;&quot;)"><Data
@@ -21212,7 +21216,7 @@
     <Cell ss:Formula="=IF(LEN(Folders!RC1)&gt;0,Folders!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
    </Row>
-   <Row ss:Height="25.5">
+   <Row ss:AutoFitHeight="0" ss:Height="25.5">
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Forms!RC1)&gt;0,Forms!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
     <Cell ss:Formula="=IF(LEN(Fields!RC2)&gt;0,Fields!RC2,&quot;&quot;)"><Data
@@ -21228,7 +21232,7 @@
     <Cell ss:Formula="=IF(LEN(Folders!RC1)&gt;0,Folders!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
    </Row>
-   <Row ss:Height="25.5">
+   <Row ss:AutoFitHeight="0" ss:Height="25.5">
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Forms!RC1)&gt;0,Forms!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
     <Cell ss:Formula="=IF(LEN(Fields!RC2)&gt;0,Fields!RC2,&quot;&quot;)"><Data
@@ -21244,7 +21248,7 @@
     <Cell ss:Formula="=IF(LEN(Folders!RC1)&gt;0,Folders!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
    </Row>
-   <Row ss:Height="25.5">
+   <Row ss:AutoFitHeight="0" ss:Height="25.5">
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Forms!RC1)&gt;0,Forms!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
     <Cell ss:Formula="=IF(LEN(Fields!RC2)&gt;0,Fields!RC2,&quot;&quot;)"><Data
@@ -21268,7 +21272,7 @@
     <Cell ss:Formula="=IF(LEN(Folders!RC1)&gt;0,Folders!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
    </Row>
-   <Row ss:Height="25.5">
+   <Row ss:AutoFitHeight="0" ss:Height="25.5">
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Forms!RC1)&gt;0,Forms!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
     <Cell ss:Formula="=IF(LEN(Fields!RC2)&gt;0,Fields!RC2,&quot;&quot;)"><Data
@@ -21276,7 +21280,7 @@
     <Cell ss:Formula="=IF(LEN(Folders!RC1)&gt;0,Folders!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
    </Row>
-   <Row ss:Height="25.5">
+   <Row ss:AutoFitHeight="0" ss:Height="25.5">
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Forms!RC1)&gt;0,Forms!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
     <Cell ss:Formula="=IF(LEN(Fields!RC2)&gt;0,Fields!RC2,&quot;&quot;)"><Data
@@ -21292,7 +21296,7 @@
     <Cell ss:Formula="=IF(LEN(Folders!RC1)&gt;0,Folders!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
    </Row>
-   <Row ss:Height="38.25">
+   <Row ss:AutoFitHeight="0" ss:Height="38.25">
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Forms!RC1)&gt;0,Forms!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
     <Cell ss:Formula="=IF(LEN(Fields!RC2)&gt;0,Fields!RC2,&quot;&quot;)"><Data
@@ -21300,7 +21304,7 @@
     <Cell ss:Formula="=IF(LEN(Folders!RC1)&gt;0,Folders!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
    </Row>
-   <Row ss:Height="38.25">
+   <Row ss:AutoFitHeight="0" ss:Height="38.25">
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Forms!RC1)&gt;0,Forms!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
     <Cell ss:Formula="=IF(LEN(Fields!RC2)&gt;0,Fields!RC2,&quot;&quot;)"><Data
@@ -21308,7 +21312,7 @@
     <Cell ss:Formula="=IF(LEN(Folders!RC1)&gt;0,Folders!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
    </Row>
-   <Row ss:Height="38.25">
+   <Row ss:AutoFitHeight="0" ss:Height="38.25">
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Forms!RC1)&gt;0,Forms!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
     <Cell ss:Formula="=IF(LEN(Fields!RC2)&gt;0,Fields!RC2,&quot;&quot;)"><Data
@@ -21332,7 +21336,7 @@
     <Cell ss:Formula="=IF(LEN(Folders!RC1)&gt;0,Folders!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
    </Row>
-   <Row ss:Height="25.5">
+   <Row ss:AutoFitHeight="0" ss:Height="25.5">
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Forms!RC1)&gt;0,Forms!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
     <Cell ss:Formula="=IF(LEN(Fields!RC2)&gt;0,Fields!RC2,&quot;&quot;)"><Data
@@ -21348,7 +21352,7 @@
     <Cell ss:Formula="=IF(LEN(Folders!RC1)&gt;0,Folders!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
    </Row>
-   <Row ss:Height="25.5">
+   <Row ss:AutoFitHeight="0" ss:Height="25.5">
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Forms!RC1)&gt;0,Forms!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
     <Cell ss:Formula="=IF(LEN(Fields!RC2)&gt;0,Fields!RC2,&quot;&quot;)"><Data
@@ -21380,7 +21384,7 @@
     <Cell ss:Formula="=IF(LEN(Folders!RC1)&gt;0,Folders!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
    </Row>
-   <Row ss:Height="25.5">
+   <Row ss:AutoFitHeight="0" ss:Height="25.5">
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Forms!RC1)&gt;0,Forms!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
     <Cell ss:Formula="=IF(LEN(Fields!RC2)&gt;0,Fields!RC2,&quot;&quot;)"><Data
@@ -21388,7 +21392,7 @@
     <Cell ss:Formula="=IF(LEN(Folders!RC1)&gt;0,Folders!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
    </Row>
-   <Row ss:Height="25.5">
+   <Row ss:AutoFitHeight="0" ss:Height="25.5">
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Forms!RC1)&gt;0,Forms!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
     <Cell ss:Formula="=IF(LEN(Fields!RC2)&gt;0,Fields!RC2,&quot;&quot;)"><Data
@@ -21396,7 +21400,7 @@
     <Cell ss:Formula="=IF(LEN(Folders!RC1)&gt;0,Folders!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
    </Row>
-   <Row ss:Height="25.5">
+   <Row ss:AutoFitHeight="0" ss:Height="25.5">
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Forms!RC1)&gt;0,Forms!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
     <Cell ss:Formula="=IF(LEN(Fields!RC2)&gt;0,Fields!RC2,&quot;&quot;)"><Data
@@ -21404,7 +21408,7 @@
     <Cell ss:Formula="=IF(LEN(Folders!RC1)&gt;0,Folders!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
    </Row>
-   <Row ss:Height="25.5">
+   <Row ss:AutoFitHeight="0" ss:Height="25.5">
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Forms!RC1)&gt;0,Forms!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
     <Cell ss:Formula="=IF(LEN(Fields!RC2)&gt;0,Fields!RC2,&quot;&quot;)"><Data
@@ -21412,7 +21416,7 @@
     <Cell ss:Formula="=IF(LEN(Folders!RC1)&gt;0,Folders!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
    </Row>
-   <Row ss:Height="25.5">
+   <Row ss:AutoFitHeight="0" ss:Height="25.5">
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Forms!RC1)&gt;0,Forms!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
     <Cell ss:Formula="=IF(LEN(Fields!RC2)&gt;0,Fields!RC2,&quot;&quot;)"><Data
@@ -21420,7 +21424,7 @@
     <Cell ss:Formula="=IF(LEN(Folders!RC1)&gt;0,Folders!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
    </Row>
-   <Row ss:Height="25.5">
+   <Row ss:AutoFitHeight="0" ss:Height="25.5">
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Forms!RC1)&gt;0,Forms!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
     <Cell ss:Formula="=IF(LEN(Fields!RC2)&gt;0,Fields!RC2,&quot;&quot;)"><Data
@@ -21428,7 +21432,7 @@
     <Cell ss:Formula="=IF(LEN(Folders!RC1)&gt;0,Folders!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
    </Row>
-   <Row ss:Height="25.5">
+   <Row ss:AutoFitHeight="0" ss:Height="25.5">
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Forms!RC1)&gt;0,Forms!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
     <Cell ss:Formula="=IF(LEN(Fields!RC2)&gt;0,Fields!RC2,&quot;&quot;)"><Data
@@ -21436,7 +21440,7 @@
     <Cell ss:Formula="=IF(LEN(Folders!RC1)&gt;0,Folders!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
    </Row>
-   <Row ss:Height="25.5">
+   <Row ss:AutoFitHeight="0" ss:Height="25.5">
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Forms!RC1)&gt;0,Forms!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
     <Cell ss:Formula="=IF(LEN(Fields!RC2)&gt;0,Fields!RC2,&quot;&quot;)"><Data
@@ -21444,7 +21448,7 @@
     <Cell ss:Formula="=IF(LEN(Folders!RC1)&gt;0,Folders!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
    </Row>
-   <Row ss:Height="25.5">
+   <Row ss:AutoFitHeight="0" ss:Height="25.5">
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Forms!RC1)&gt;0,Forms!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
     <Cell ss:Formula="=IF(LEN(Fields!RC2)&gt;0,Fields!RC2,&quot;&quot;)"><Data
@@ -21452,7 +21456,7 @@
     <Cell ss:Formula="=IF(LEN(Folders!RC1)&gt;0,Folders!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
    </Row>
-   <Row ss:Height="25.5">
+   <Row ss:AutoFitHeight="0" ss:Height="25.5">
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Forms!RC1)&gt;0,Forms!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
     <Cell ss:Formula="=IF(LEN(Fields!RC2)&gt;0,Fields!RC2,&quot;&quot;)"><Data
@@ -21460,7 +21464,7 @@
     <Cell ss:Formula="=IF(LEN(Folders!RC1)&gt;0,Folders!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
    </Row>
-   <Row ss:Height="25.5">
+   <Row ss:AutoFitHeight="0" ss:Height="25.5">
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Forms!RC1)&gt;0,Forms!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
     <Cell ss:Formula="=IF(LEN(Fields!RC2)&gt;0,Fields!RC2,&quot;&quot;)"><Data
@@ -21468,7 +21472,7 @@
     <Cell ss:Formula="=IF(LEN(Folders!RC1)&gt;0,Folders!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
    </Row>
-   <Row ss:Height="25.5">
+   <Row ss:AutoFitHeight="0" ss:Height="25.5">
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Forms!RC1)&gt;0,Forms!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
     <Cell ss:Formula="=IF(LEN(Fields!RC2)&gt;0,Fields!RC2,&quot;&quot;)"><Data
@@ -21476,7 +21480,7 @@
     <Cell ss:Formula="=IF(LEN(Folders!RC1)&gt;0,Folders!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
    </Row>
-   <Row ss:Height="25.5">
+   <Row ss:AutoFitHeight="0" ss:Height="25.5">
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Forms!RC1)&gt;0,Forms!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
     <Cell ss:Formula="=IF(LEN(Fields!RC2)&gt;0,Fields!RC2,&quot;&quot;)"><Data
@@ -21484,7 +21488,7 @@
     <Cell ss:Formula="=IF(LEN(Folders!RC1)&gt;0,Folders!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
    </Row>
-   <Row ss:Height="25.5">
+   <Row ss:AutoFitHeight="0" ss:Height="25.5">
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Forms!RC1)&gt;0,Forms!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
     <Cell ss:Formula="=IF(LEN(Fields!RC2)&gt;0,Fields!RC2,&quot;&quot;)"><Data
@@ -21508,7 +21512,7 @@
     <Cell ss:Formula="=IF(LEN(Folders!RC1)&gt;0,Folders!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
    </Row>
-   <Row ss:Height="25.5">
+   <Row ss:AutoFitHeight="0" ss:Height="25.5">
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Forms!RC1)&gt;0,Forms!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
     <Cell ss:Formula="=IF(LEN(Fields!RC2)&gt;0,Fields!RC2,&quot;&quot;)"><Data
@@ -21516,7 +21520,7 @@
     <Cell ss:Formula="=IF(LEN(Folders!RC1)&gt;0,Folders!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
    </Row>
-   <Row ss:Height="25.5">
+   <Row ss:AutoFitHeight="0" ss:Height="25.5">
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Forms!RC1)&gt;0,Forms!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
     <Cell ss:Formula="=IF(LEN(Fields!RC2)&gt;0,Fields!RC2,&quot;&quot;)"><Data
@@ -21524,7 +21528,7 @@
     <Cell ss:Formula="=IF(LEN(Folders!RC1)&gt;0,Folders!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
    </Row>
-   <Row ss:Height="25.5">
+   <Row ss:AutoFitHeight="0" ss:Height="25.5">
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Forms!RC1)&gt;0,Forms!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
     <Cell ss:Formula="=IF(LEN(Fields!RC2)&gt;0,Fields!RC2,&quot;&quot;)"><Data
@@ -21532,7 +21536,7 @@
     <Cell ss:Formula="=IF(LEN(Folders!RC1)&gt;0,Folders!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
    </Row>
-   <Row ss:Height="25.5">
+   <Row ss:AutoFitHeight="0" ss:Height="25.5">
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Forms!RC1)&gt;0,Forms!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
     <Cell ss:Formula="=IF(LEN(Fields!RC2)&gt;0,Fields!RC2,&quot;&quot;)"><Data
@@ -21540,7 +21544,7 @@
     <Cell ss:Formula="=IF(LEN(Folders!RC1)&gt;0,Folders!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
    </Row>
-   <Row ss:Height="25.5">
+   <Row ss:AutoFitHeight="0" ss:Height="25.5">
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Forms!RC1)&gt;0,Forms!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
     <Cell ss:Formula="=IF(LEN(Fields!RC2)&gt;0,Fields!RC2,&quot;&quot;)"><Data
@@ -21548,7 +21552,7 @@
     <Cell ss:Formula="=IF(LEN(Folders!RC1)&gt;0,Folders!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
    </Row>
-   <Row ss:Height="25.5">
+   <Row ss:AutoFitHeight="0" ss:Height="25.5">
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Forms!RC1)&gt;0,Forms!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
     <Cell ss:Formula="=IF(LEN(Fields!RC2)&gt;0,Fields!RC2,&quot;&quot;)"><Data
@@ -21556,7 +21560,7 @@
     <Cell ss:Formula="=IF(LEN(Folders!RC1)&gt;0,Folders!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
    </Row>
-   <Row ss:Height="38.25">
+   <Row ss:AutoFitHeight="0" ss:Height="38.25">
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Forms!RC1)&gt;0,Forms!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
     <Cell ss:Formula="=IF(LEN(Fields!RC2)&gt;0,Fields!RC2,&quot;&quot;)"><Data
@@ -21564,7 +21568,7 @@
     <Cell ss:Formula="=IF(LEN(Folders!RC1)&gt;0,Folders!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
    </Row>
-   <Row ss:Height="38.25">
+   <Row ss:AutoFitHeight="0" ss:Height="38.25">
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Forms!RC1)&gt;0,Forms!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
     <Cell ss:Formula="=IF(LEN(Fields!RC2)&gt;0,Fields!RC2,&quot;&quot;)"><Data
@@ -21572,7 +21576,7 @@
     <Cell ss:Formula="=IF(LEN(Folders!RC1)&gt;0,Folders!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
    </Row>
-   <Row ss:Height="38.25">
+   <Row ss:AutoFitHeight="0" ss:Height="38.25">
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Forms!RC1)&gt;0,Forms!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
     <Cell ss:Formula="=IF(LEN(Fields!RC2)&gt;0,Fields!RC2,&quot;&quot;)"><Data
@@ -21580,7 +21584,7 @@
     <Cell ss:Formula="=IF(LEN(Folders!RC1)&gt;0,Folders!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
    </Row>
-   <Row ss:Height="25.5">
+   <Row ss:AutoFitHeight="0" ss:Height="25.5">
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Forms!RC1)&gt;0,Forms!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
     <Cell ss:Formula="=IF(LEN(Fields!RC2)&gt;0,Fields!RC2,&quot;&quot;)"><Data
@@ -21588,7 +21592,7 @@
     <Cell ss:Formula="=IF(LEN(Folders!RC1)&gt;0,Folders!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
    </Row>
-   <Row ss:Height="25.5">
+   <Row ss:AutoFitHeight="0" ss:Height="25.5">
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Forms!RC1)&gt;0,Forms!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
     <Cell ss:Formula="=IF(LEN(Fields!RC2)&gt;0,Fields!RC2,&quot;&quot;)"><Data
@@ -21596,7 +21600,7 @@
     <Cell ss:Formula="=IF(LEN(Folders!RC1)&gt;0,Folders!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
    </Row>
-   <Row ss:Height="25.5">
+   <Row ss:AutoFitHeight="0" ss:Height="25.5">
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Forms!RC1)&gt;0,Forms!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
     <Cell ss:Formula="=IF(LEN(Fields!RC2)&gt;0,Fields!RC2,&quot;&quot;)"><Data
@@ -21604,7 +21608,7 @@
     <Cell ss:Formula="=IF(LEN(Folders!RC1)&gt;0,Folders!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
    </Row>
-   <Row ss:Height="38.25">
+   <Row ss:AutoFitHeight="0" ss:Height="38.25">
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Forms!RC1)&gt;0,Forms!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
     <Cell ss:Formula="=IF(LEN(Fields!RC2)&gt;0,Fields!RC2,&quot;&quot;)"><Data
@@ -21612,7 +21616,7 @@
     <Cell ss:Formula="=IF(LEN(Folders!RC1)&gt;0,Folders!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
    </Row>
-   <Row ss:Height="38.25">
+   <Row ss:AutoFitHeight="0" ss:Height="38.25">
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Forms!RC1)&gt;0,Forms!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
     <Cell ss:Formula="=IF(LEN(Fields!RC2)&gt;0,Fields!RC2,&quot;&quot;)"><Data
@@ -21620,7 +21624,7 @@
     <Cell ss:Formula="=IF(LEN(Folders!RC1)&gt;0,Folders!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
    </Row>
-   <Row ss:Height="38.25">
+   <Row ss:AutoFitHeight="0" ss:Height="38.25">
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Forms!RC1)&gt;0,Forms!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
     <Cell ss:Formula="=IF(LEN(Fields!RC2)&gt;0,Fields!RC2,&quot;&quot;)"><Data
@@ -21628,7 +21632,7 @@
     <Cell ss:Formula="=IF(LEN(Folders!RC1)&gt;0,Folders!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
    </Row>
-   <Row ss:Height="25.5">
+   <Row ss:AutoFitHeight="0" ss:Height="25.5">
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Forms!RC1)&gt;0,Forms!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
     <Cell ss:Formula="=IF(LEN(Fields!RC2)&gt;0,Fields!RC2,&quot;&quot;)"><Data
@@ -21636,7 +21640,7 @@
     <Cell ss:Formula="=IF(LEN(Folders!RC1)&gt;0,Folders!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
    </Row>
-   <Row ss:Height="25.5">
+   <Row ss:AutoFitHeight="0" ss:Height="25.5">
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Forms!RC1)&gt;0,Forms!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
     <Cell ss:Formula="=IF(LEN(Fields!RC2)&gt;0,Fields!RC2,&quot;&quot;)"><Data
@@ -21644,7 +21648,7 @@
     <Cell ss:Formula="=IF(LEN(Folders!RC1)&gt;0,Folders!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
    </Row>
-   <Row ss:Height="25.5">
+   <Row ss:AutoFitHeight="0" ss:Height="25.5">
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Forms!RC1)&gt;0,Forms!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
     <Cell ss:Formula="=IF(LEN(Fields!RC2)&gt;0,Fields!RC2,&quot;&quot;)"><Data
@@ -21652,7 +21656,7 @@
     <Cell ss:Formula="=IF(LEN(Folders!RC1)&gt;0,Folders!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
    </Row>
-   <Row ss:Height="25.5">
+   <Row ss:AutoFitHeight="0" ss:Height="25.5">
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Forms!RC1)&gt;0,Forms!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
     <Cell ss:Formula="=IF(LEN(Fields!RC2)&gt;0,Fields!RC2,&quot;&quot;)"><Data
@@ -21676,7 +21680,7 @@
     <Cell ss:Formula="=IF(LEN(Folders!RC1)&gt;0,Folders!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
    </Row>
-   <Row ss:Height="25.5">
+   <Row ss:AutoFitHeight="0" ss:Height="25.5">
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Forms!RC1)&gt;0,Forms!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
     <Cell ss:Formula="=IF(LEN(Fields!RC2)&gt;0,Fields!RC2,&quot;&quot;)"><Data
@@ -21684,7 +21688,7 @@
     <Cell ss:Formula="=IF(LEN(Folders!RC1)&gt;0,Folders!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
    </Row>
-   <Row ss:Height="25.5">
+   <Row ss:AutoFitHeight="0" ss:Height="25.5">
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Forms!RC1)&gt;0,Forms!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
     <Cell ss:Formula="=IF(LEN(Fields!RC2)&gt;0,Fields!RC2,&quot;&quot;)"><Data
@@ -21692,7 +21696,7 @@
     <Cell ss:Formula="=IF(LEN(Folders!RC1)&gt;0,Folders!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
    </Row>
-   <Row ss:Height="25.5">
+   <Row ss:AutoFitHeight="0" ss:Height="25.5">
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Forms!RC1)&gt;0,Forms!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
     <Cell ss:Formula="=IF(LEN(Fields!RC2)&gt;0,Fields!RC2,&quot;&quot;)"><Data
@@ -21708,7 +21712,7 @@
     <Cell ss:Formula="=IF(LEN(Folders!RC1)&gt;0,Folders!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
    </Row>
-   <Row ss:Height="25.5">
+   <Row ss:AutoFitHeight="0" ss:Height="25.5">
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Forms!RC1)&gt;0,Forms!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
     <Cell ss:Formula="=IF(LEN(Fields!RC2)&gt;0,Fields!RC2,&quot;&quot;)"><Data
@@ -21716,7 +21720,7 @@
     <Cell ss:Formula="=IF(LEN(Folders!RC1)&gt;0,Folders!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
    </Row>
-   <Row ss:Height="25.5">
+   <Row ss:AutoFitHeight="0" ss:Height="25.5">
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Forms!RC1)&gt;0,Forms!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
     <Cell ss:Formula="=IF(LEN(Fields!RC2)&gt;0,Fields!RC2,&quot;&quot;)"><Data
@@ -21732,7 +21736,7 @@
     <Cell ss:Formula="=IF(LEN(Folders!RC1)&gt;0,Folders!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
    </Row>
-   <Row ss:Height="25.5">
+   <Row ss:AutoFitHeight="0" ss:Height="25.5">
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Forms!RC1)&gt;0,Forms!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
     <Cell ss:Formula="=IF(LEN(Fields!RC2)&gt;0,Fields!RC2,&quot;&quot;)"><Data
@@ -21740,7 +21744,7 @@
     <Cell ss:Formula="=IF(LEN(Folders!RC1)&gt;0,Folders!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
    </Row>
-   <Row ss:Height="38.25">
+   <Row ss:AutoFitHeight="0" ss:Height="38.25">
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Forms!RC1)&gt;0,Forms!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
     <Cell ss:Formula="=IF(LEN(Fields!RC2)&gt;0,Fields!RC2,&quot;&quot;)"><Data
@@ -21748,7 +21752,7 @@
     <Cell ss:Formula="=IF(LEN(Folders!RC1)&gt;0,Folders!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
    </Row>
-   <Row ss:Height="25.5">
+   <Row ss:AutoFitHeight="0" ss:Height="25.5">
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Forms!RC1)&gt;0,Forms!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
     <Cell ss:Formula="=IF(LEN(Fields!RC2)&gt;0,Fields!RC2,&quot;&quot;)"><Data
@@ -21756,7 +21760,7 @@
     <Cell ss:Formula="=IF(LEN(Folders!RC1)&gt;0,Folders!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
    </Row>
-   <Row ss:Height="38.25">
+   <Row ss:AutoFitHeight="0" ss:Height="38.25">
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Forms!RC1)&gt;0,Forms!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
     <Cell ss:Formula="=IF(LEN(Fields!RC2)&gt;0,Fields!RC2,&quot;&quot;)"><Data
@@ -22176,7 +22180,7 @@
    <Row>
     <Cell ss:StyleID="s64"><Data ss:Type="String">LookupDeviceCF</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell><Data ss:Type="String">select dbo.fnlocaldefault(userdataStringid), right(codedData,len(codeddata)-3)&#13;&#10;from datadictionaryentries dde join datadictionaries dd&#13;&#10;on dd.datadictionaryid=dde.datadictionaryid join subjects s on&#13;&#10;dd.crfversionid=s.crfversionid&#13;&#10;where s.subjectid = {subjectid} &#13;&#10;	and rtrim(left(codedData,4)) ='{text='datapoint.standardvalue' fieldoid='DEVICETYPE'}'&#13;&#10;and dd.oid='DEVICEDD'&#10;</Data><NamedCell
+    <Cell><Data ss:Type="String">select dbo.fnlocaldefault(userdataStringid), right(codedData,len(codeddata)-3)&#13;&#10;from datadictionaryentries dde join datadictionaries dd&#13;&#10;on dd.datadictionaryid=dde.datadictionaryid join subjects s on&#13;&#10;dd.crfversionid=s.crfversionid&#13;&#10;where s.subjectid = {subjectid} &#13;&#10; and rtrim(left(codedData,4)) ='{text='datapoint.standardvalue' fieldoid='DEVICETYPE'}'&#13;&#10;and dd.oid='DEVICEDD'&#10;</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">SQ</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">950</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
