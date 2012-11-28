@@ -1,8 +1,6 @@
 #When a non-visible (View Restricted) field, that does not require signature, on a form with other fields that do require signature and have already been signed, is made visible (View Restriction is removed), the signature on the visible fields is not broken.
 #@ignore
-@ignore
 Feature: US17415_DT14115 
->>>>>>> 65caaec... using seeding by draft upload for feature tests.
 	When a non-visible (View Restricted) field, that does not require signature, on a form with other fields that do require signature and have already been signed, is made visible (View Restriction is removed), then the signature on the visible fields should not break.
 	As a Rave Administrator
 	When I have a form that has visible and non-visible fields
@@ -17,7 +15,7 @@ Background:
 	And xml draft "US17415_DT14115_Target_Draft.xml" is Uploaded
 	And study "US17415_DT14115" is assigned to Site "Site 01"
 	And following Project assignments exist
-		| User          | Project             | Environment | Role        | Site    | SecurityRole          |
+		| User               | Project             | Environment | Role             | Site    | SecurityRole          |
 		| US17415_SUPERUSER  | US17415_DT14115     | Live: Prod  | US17415_SUPERROLE| Site 01 | Project Admin Default |
 	And Role "US17415_SUPERROLE" has Action "Sign" in ActionGroup "Sign" with Status "Checked"
 
@@ -122,19 +120,7 @@ Scenario: @PB_US17415_DT14115_02 As an Investigator, when I sign the "Serious Ad
 @release_564_2012.1.0
 @PB_US17415_DT14115_03
 @Validation	
-<<<<<<< HEAD
 Scenario: @PB_US17415_DT14115_03 As an Investigator, when I sign the "Demographics" form, the form level signature does not break when the ICDTAGE field is made visible.
-	
-	And I navigate to "Architect"
-	And I select "Study" link "**US17415_DT14115" in "Active Projects"
-	And I select link "Source Draft" in "CRF Drafts"
-	And I publish CRF Version "Source {RndNum<TV#>(5)}"
-	And I note down "crfversion" to "newversion1#"
-	And I select "Study" link "**US17415_DT14115" in "Header"
-	And I push CRF Version "{Var(newversion1#)}" to "All Sites"
-	And I navigate to "Home"
-=======
-Scenario: @PB_US17415_03 As an Investigator, when I sign the "Demographics" form, the form level signature does not break when the ICDTAGE field is made visible.
 
 	Given I publish and push eCRF "US17415_DT14115_Source_Draft.xml" to "SourceVersion1"
 	And I login to Rave with user "US17415_SUPERUSER"
@@ -213,19 +199,7 @@ Scenario: @PB_US17415_03 As an Investigator, when I sign the "Demographics" form
 @release_564_2012.1.0
 @PB_US17415_DT14115_04
 @Validation	
-<<<<<<< HEAD
 Scenario: @PB_US17415_DT14115_04 As an Investigator, when I sign the "Test Demographics" form, the form level signature does not break when the ICDTAGE field is made invisible.
-	
-	And I navigate to "Architect"
-	And I select "Study" link "**US17415_DT14115" in "Active Projects"
-	And I select link "Source Draft" in "CRF Drafts"
-	And I publish CRF Version "Source {RndNum<TV#>(5)}"
-	And I note down "crfversion" to "newversion1#"
-	And I select "Study" link "**US17415_DT14115" in "Header"
-	And I push CRF Version "{Var(newversion1#)}" to "All Sites"
-	And I navigate to "Home"
-=======
-Scenario: @PB_US17415_04 As an Investigator, when I sign the "Test Demographics" form, the form level signature does not break when the ICDTAGE field is made invisible.
 
 	Given I publish and push eCRF "US17415_DT14115_Source_Draft.xml" to "SourceVersion1"
 	And I login to Rave with user "US17415_SUPERUSER"
@@ -300,19 +274,7 @@ Scenario: @PB_US17415_04 As an Investigator, when I sign the "Test Demographics"
 @release_564_2012.1.0
 @PB_US17415_DT14115_05
 @Validation	
-<<<<<<< HEAD
 Scenario: @PB_US17415_DT14115_05 As an Investigator, when I sign the "Demographics" form and "Field Visibility Changed" is checked in Amendment Manager>Configure Plan, the form level signature does not break when the ICDTAGE field is made visible.
-	
-	And I navigate to "Architect"
-	And I select "Study" link "**US17415_DT14115" in "Active Projects"
-	And I select link "Source Draft" in "CRF Drafts"
-	And I publish CRF Version "Source {RndNum<TV#>(5)}"
-	And I note down "crfversion" to "newversion1#"
-	And I select "Study" link "**US17415_DT14115" in "Header"
-	And I push CRF Version "{Var(newversion1#)}" to "All Sites"
-	And I navigate to "Home"
-=======
-Scenario: @PB_US17415_05 As an Investigator, when I sign the "Demographics" form and "Field Visibility Changed" is checked in Amendment Manager>Configure Plan, the form level signature does not break when the ICDTAGE field is made visible.
 
 	Given I publish and push eCRF "US17415_DT14115_Source_Draft.xml" to "SourceVersion1"
 	And I login to Rave with user "US17415_SUPERUSER"
@@ -396,19 +358,7 @@ Scenario: @PB_US17415_05 As an Investigator, when I sign the "Demographics" form
 @release_564_2012.1.0
 @PB_US17415_DT14115_06
 @Validation	
-<<<<<<< HEAD
 Scenario: @PB_US17415_DT14115_06 As an Investigator, when I sign the "Test Demographics" form and "Field Visibility Changed" is checked in Amendment Manager>Configure Plan, the form level signature does not break when the ICDTAGE field is made invisible.
-	
-	And I navigate to "Architect"
-	And I select "Study" link "**US17415_DT14115" in "Active Projects"
-	And I select link "Source Draft" in "CRF Drafts"
-	And I publish CRF Version "Source {RndNum<TV#>(5)}"
-	And I note down "crfversion" to "newversion1#"
-	And I select "Study" link "**US17415_DT14115" in "Header"
-	And I push CRF Version "{Var(newversion1#)}" to "All Sites"
-	And I navigate to "Home"
-=======
-Scenario: @PB_US17415_06 As an Investigator, when I sign the "Test Demographics" form and "Field Visibility Changed" is checked in Amendment Manager>Configure Plan, the form level signature does not break when the ICDTAGE field is made invisible.
 
 	Given I publish and push eCRF "US17415_DT14115_Source_Draft.xml" to "SourceVersion1"
 	And I login to Rave with user "US17415_SUPERUSER"
