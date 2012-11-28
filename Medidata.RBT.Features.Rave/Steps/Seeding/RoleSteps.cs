@@ -36,8 +36,6 @@ namespace Medidata.RBT.Features.Rave
             bool expected = status.Equals("Checked");
             bool actual = CurrentPage.As<RoleActionsConfigPage>().ClickEditFromRoleActionGridAndCheckState(actionName);
             Assert.IsTrue(actual == expected, String.Format("Action {0} is not set as expected {1}.", actual, expected));
-
-
 		}
 
         /// <summary>
