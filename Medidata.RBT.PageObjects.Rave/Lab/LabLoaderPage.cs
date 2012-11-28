@@ -26,13 +26,14 @@ namespace Medidata.RBT.PageObjects.Rave.Lab
         /// Upload a Lab
         /// </summary>
         /// <param name="filepath">Path of the Lab to upload</param>
-        public void UploadFile(string filepath)
+        /// <param name="stayOnPage">stay on this page afterwards</param>
+        public void UploadFile(string filepath, bool stayOnPage = false)
         {
+            StayOnPage = stayOnPage;
             TestContext.Browser.FindElementById("_ctl0_Content_FileUpload").SendKeys(filepath);
             ClickButton("Upload");
             WaitForUploadToComplete();
         }
-
 
         public override IPage ChooseFromCheckboxes(string identifier, bool isChecked, string areaIdentifier = null, string listItem = null)
         {

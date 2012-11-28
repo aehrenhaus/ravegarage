@@ -62,6 +62,12 @@ namespace Medidata.RBT
 		/// BaseURL combined with URL can form a full url that is valid
 		/// </summary>
         string BaseURL { get; }
+
+
+        /// <summary>
+        /// Whether or not to stay on the current page.
+        /// </summary>
+        bool StayOnPage { get; }
 	
 		/// <summary>
 		/// I click "Study" link "xxxStudy" in "header"

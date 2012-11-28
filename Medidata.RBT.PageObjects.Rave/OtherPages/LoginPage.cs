@@ -83,7 +83,7 @@ namespace Medidata.RBT.PageObjects.Rave
 
 		public void Dispose()
 		{
-			if(previousUser!=null)
+            if (previousUser != null && !TestContext.CurrentPage.StayOnPage) // for some tests, we dont' want to go back to homepage.
 				LoginPage.LoginToHomePageIfNotAlready(previousUser, previousPassword);
 		}
 	}

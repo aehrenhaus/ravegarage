@@ -65,7 +65,6 @@ namespace Medidata.RBT.SharedRaveObjects
 				NavigateToSeedPage();
 				CreateObject();
 			}
-
 		}
 
 		protected virtual void SeedFromBackend()

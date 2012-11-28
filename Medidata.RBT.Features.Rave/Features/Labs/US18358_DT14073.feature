@@ -31,7 +31,7 @@ Given I publish and push eCRF "US18358_DT14073.xml" to "Version 1"
 Scenario: @PB_US18358_DT14073_01 As a Lab Administrator, when I upload Lab Loader draft with Global Data Dictionaries name that is greater than 80 characters, I do not see exception error message displayed
 	Given I login to Rave with user "SUPER USER 1"
 	And I navigate to "Lab Administration"
-	And xml Lab Configuration "All_Exact255Char.xml" is uploaded
+	And literal xml Lab Configuration "All_Exact255Char.xml" is uploaded
 	And I take a screenshot
 	And I navigate to "Global Data Dictionaries"
 	#It has 255 characters
@@ -69,7 +69,7 @@ Scenario: @PB_US18358_DT14073_01 As a Lab Administrator, when I upload Lab Loade
 	And I delete Lab Unit Dictionaries
 	| Name                                                                                                                                                                                                                                                          |
 	|255 Test Characters Test Characters Test Characters Test Characters Test Characters Characters Test Characters Test Characters Test Characters Test Characters Test Characters Characters Test Characters Test Characters Test Characters Test Characters Tests|
-	And xml Lab Configuration "All_MoreThan255Char.xml" is uploaded
+	And literal xml Lab Configuration "All_MoreThan255Char.xml" is uploaded
 	And I take a screenshot
 	And I verify text "Upload successful." does not exist
 	And I verify text "Row 26 - Name cannot exceed 255 characters." exists
@@ -85,7 +85,7 @@ Scenario: @PB_US18358_DT14073_01 As a Lab Administrator, when I upload Lab Loade
 Scenario: @PB_US18358_DT14073_02 As a Lab Administrator, when I upload Lab Loader draft with Global Data Dictionaries name that is greater than 80 characters, I do not see exception error message displayed
 
 	When I navigate to "Lab Administration"	
-	And xml Lab Configuration "Global_Data_Dictionaries_Exact255Char.xml" is uploaded
+	And literal xml Lab Configuration "Global_Data_Dictionaries_Exact255Char.xml" is uploaded
 	And I take a screenshot
 	And I navigate to "Global Data Dictionaries"
 	#It has 255 characters
@@ -96,7 +96,7 @@ Scenario: @PB_US18358_DT14073_02 As a Lab Administrator, when I upload Lab Loade
 	And I delete Global Data Dictionaries
 	| Name                                                                                                                                                                                                                                                            |
 	| 255 Test Characters Test Characters Test Characters Test Characters Test Characters Characters Test Characters Test Characters Test Characters Test Characters Test Characters Characters Test Characters Test Characters Test Characters Test Characters Tests |
-	And xml Lab Configuration "Global_Data_Dictionaries_MoreThan255Char.xml" is uploaded
+	And literal xml Lab Configuration "Global_Data_Dictionaries_MoreThan255Char.xml" is uploaded
 	And I verify text "Upload successful." does not exist
 	And I verify text "Row 4 - Name cannot exceed 255 characters." exists
 	And I take a screenshot
@@ -109,7 +109,7 @@ Scenario: @PB_US18358_DT14073_02 As a Lab Administrator, when I upload Lab Loade
 Scenario: @PB_US18358_DT14073_03 As a Lab Administrator, when I upload Lab Loader draft with Global Data Dictionaries name that is greater than 80 characters, I do not see exception error message displayed
 
 	When I navigate to "Lab Administration"	
-	And xml Lab Configuration "Global_Unit_Dictionaries_Exact255Char.xml" is uploaded
+	And literal xml Lab Configuration "Global_Unit_Dictionaries_Exact255Char.xml" is uploaded
 	And I take a screenshot
 	And I navigate to "Global Unit Dictionaries"
 	#It has 255 characters
@@ -120,7 +120,7 @@ Scenario: @PB_US18358_DT14073_03 As a Lab Administrator, when I upload Lab Loade
 	And I delete Global Unit Dictionaries
 	| Name                                                                                                                                                                                                                                                            |
 	| 255 Test Characters Test Characters Test Characters Test Characters Test Characters Characters Test Characters Test Characters Test Characters Test Characters Test Characters Characters Test Characters Test Characters Test Characters Test Characters Tests |
-	And xml Lab Configuration "Global_Unit_Dictionaries_MoreThan255Char.xml" is uploaded
+	And literal xml Lab Configuration "Global_Unit_Dictionaries_MoreThan255Char.xml" is uploaded
 	And I verify text "Upload successful." does not exist
 	And I verify text "Row 2 - Name cannot exceed 255 characters." exists
 	And I take a screenshot
@@ -133,7 +133,7 @@ Scenario: @PB_US18358_DT14073_03 As a Lab Administrator, when I upload Lab Loade
 Scenario: @PB_US18358_DT14073_04 As a Lab Administrator, when I upload Lab Loader draft with Global Data Dictionaries name that is greater than 80 characters, I do not see exception error message displayed
 
 	When I navigate to "Lab Administration"	
-	And xml Lab Configuration "Lab_Unit_Dictionaries_Exact255Char.xml" is uploaded
+	And literal xml Lab Configuration "Lab_Unit_Dictionaries_Exact255Char.xml" is uploaded
 	And I take a screenshot
 	And I navigate to "Lab Unit Dictionaries"
 	#It has 255 characters
@@ -144,7 +144,7 @@ Scenario: @PB_US18358_DT14073_04 As a Lab Administrator, when I upload Lab Loade
 	And I delete Lab Unit Dictionaries
 	| Name                                                                                                                                                                                                                                                            |
 	| 255 Test Characters Test Characters Test Characters Test Characters Test Characters Characters Test Characters Test Characters Test Characters Test Characters Test Characters Characters Test Characters Test Characters Test Characters Test Characters Tests |
-	And xml Lab Configuration "Lab_Unit_Dictionaries_MoreThan255Char.xml" is uploaded
+	And literal xml Lab Configuration "Lab_Unit_Dictionaries_MoreThan255Char.xml" is uploaded
 	And I verify text "Upload successful." does not exist
 	And I verify text "Row 18 - Name cannot exceed 255 characters." exists
 	And I take a screenshot
@@ -157,7 +157,7 @@ Scenario: @PB_US18358_DT14073_04 As a Lab Administrator, when I upload Lab Loade
 Scenario: @PB_US18358_DT14073_05 As a Lab Administrator, when I upload Lab Loader draft with Global Data Dictionaries name that is greater than 80 characters, I do not see exception error message displayed
 
 	When I navigate to "Lab Administration"	
-	And xml Lab Configuration "Global_Variables_Exact255Char.xml" is uploaded
+	And literal xml Lab Configuration "Global_Variables_Exact255Char.xml" is uploaded
 	And I take a screenshot
 	And I navigate to "Global Variables"
 	#It has 255 characters
@@ -168,7 +168,7 @@ Scenario: @PB_US18358_DT14073_05 As a Lab Administrator, when I upload Lab Loade
 	And I delete Global Variables
 	| OID                                                |
 	| 1NAMENAMENAMENAMENAMENAMENAMENAMENAMENAMENAMENAMEN |
-	And xml Lab Configuration "Global_Variables_MoreThan255Char.xml" is uploaded
+	And literal xml Lab Configuration "Global_Variables_MoreThan255Char.xml" is uploaded
 	And I verify text "Upload successful." does not exist
 	And I verify text "Row 10 - OID cannot exceed 50 characters." exists
 	And I take a screenshot

@@ -23,14 +23,22 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
     ///</summary>
     public class LabConfiguration : BaseRaveSeedableObject, IRemoveableObject
     {
+
+        /// <summary>
+        /// When using "literal" names, no seeding of names is done.  We need this to test string length limits, etc.
+        /// </summary>
+        public bool UseLiteralNames { get; set; } //don't seed
+
         /// <summary>
         /// The uploaded LabConfiguration constructor. This actually uploads configurations. 
         /// These configurations should be the template plus the LabConfiguration information/LabConfiguration actions.
         /// </summary>
         /// <param name="labConfigurationUploadName">The feature defined name of the LabConfiguration</param>
-		public LabConfiguration(string labConfigurationUploadName)
+        /// <param name="useLiteralNames">use actual unadulterated names</param>
+		public LabConfiguration(string labConfigurationUploadName, bool useLiteralNames = false)
         {
             UniqueName = labConfigurationUploadName;
+            UseLiteralNames = useLiteralNames;
         }
 
         /// <summary>
@@ -44,14 +52,16 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
 
             using (ExcelWorkbook excel = new ExcelWorkbook(FileLocation))
             {
-                MakeRangeTypesUnique(excel);
-                MakeLabUnitsUnique(excel);
-                MakeLabUnitsDictionariesUnique(excel);
-                MakeLabUnitsDictionariesEntriesUnique(excel);
-                MakeAnalytesUnique(excel);
-                MakeLabUnique(excel);
-                MakeAnalyteRangesUnique(excel);
-
+                if (!UseLiteralNames)
+                {
+                    MakeRangeTypesUnique(excel);
+                    MakeLabUnitsUnique(excel);
+                    MakeLabUnitsDictionariesUnique(excel);
+                    MakeLabUnitsDictionariesEntriesUnique(excel);
+                    MakeAnalytesUnique(excel);
+                    MakeLabUnique(excel);
+                    MakeAnalyteRangesUnique(excel);
+                }
                 //Create a unique version of the file to upload
                 UniqueFileLocation = MakeFileLocationUnique(FileLocation);
 
@@ -256,7 +266,10 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
         /// </summary>
 		protected override void CreateObject()
         {
-            TestContext.CurrentPage.As<LabLoaderPage>().UploadFile(UniqueFileLocation);
+            if (!UseLiteralNames)
+                TestContext.CurrentPage.As<LabLoaderPage>().UploadFile(UniqueFileLocation);
+            else
+                TestContext.CurrentPage.As<LabLoaderPage>().UploadFile(UniqueFileLocation, true);
         }
 
         /// <summary>
