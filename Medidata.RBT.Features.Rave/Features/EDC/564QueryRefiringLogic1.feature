@@ -1,4 +1,4 @@
-@ignore
+
 Feature: 564QueryRefiringLogic1 Edit Checks refire with require response and require manual close.
 	As a Rave user
 	I want to change data
