@@ -76,8 +76,14 @@ namespace Medidata.RBT.Features.Rave.Steps
 							CurrentPage.As<UserEditPage>().AssignUserToPermissions(user, project, role, configuration.Environment, site);
 
 						//CurrentPage = CurrentPage.ClickLink("User Administration");
-
+                        //assign globallibrary role
+                        if (!String.IsNullOrEmpty(configuration.GlobalLibraryRole))
+                        {
+                            CurrentPage.As<UserEditPage>().AssignUserToGlobalLibraryRole();
+                        }
 					}
+                    
+
 				}
 
 			}

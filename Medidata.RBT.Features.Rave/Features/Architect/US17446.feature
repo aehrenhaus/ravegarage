@@ -1,5 +1,5 @@
 # When saving Low and High ranges for Field Edit Check, an incorrect Invalid* error message is displayed even though the data is correctly saved to the database.
-@ignore
+
 Feature: US17446 When saving Low and High ranges for Field Edit Check, an incorrect Invalid* error message is displayed even though the data is correctly saved to the database.
 	When Low and High ranges for Field Edit Check are saved, an incorrect Invalid* error message is displayed even though the data is correctly saved to the database.
  	As a Study Developer
@@ -7,12 +7,12 @@ Feature: US17446 When saving Low and High ranges for Field Edit Check, an incorr
 	Then an Invalid* error message is displayed
 
 Background:
-
+Given xml draft "US17446_SJ_GL.xml" is Uploaded
 Given xml draft "US17446_SJ.xml" is Uploaded
 Given study "US17446_SJ" is assigned to Site "Site 1"
 Given following Project assignments exist
-| User         | Project    | Environment | Role         | Site   | SecurityRole          |
-| SUPER USER 1 | US17446_SJ | Live: Prod  | SUPER ROLE 1 | Site 1 | Project Admin Default |
+| User         | Project    | Environment | Role              | Site   | SecurityRole          | GlobalLibraryRole            |
+| SUPER USER 1 | US17446_SJ | Live: Prod  | SUPERROLE_US17446 | Site 1 | Project Admin Default | Global Library Admin Default |
 Given I publish and push eCRF "US17446_SJ.xml" to "Version 1"
  
 	#Given I login to Rave with user "defuser" and password "password"
@@ -47,8 +47,8 @@ Given I publish and push eCRF "US17446_SJ.xml" to "Version 1"
 Scenario: @PB_US17446_01 As Study Developer, when I save Low and High ranges for Field Edit Check, I do not see an Invalid* error message displayed.
 	Given I login to Rave with user "SUPER USER 1"
 	And I navigate to "Architect"
-	And I select link "US17446_SJ" in "Active Projects" 
-	And I select Draft "Orginal Draft"
+	And I select "Project" link "US17446_SJ" in "Active Projects" 
+	And I select Draft "Original Draft"
 	And I navigate to "Forms"
 	And I select Fields for Form "TEXT"
 	And I edit Field "TEXT1"
@@ -71,8 +71,8 @@ Scenario: @PB_US17446_01 As Study Developer, when I save Low and High ranges for
 @Validation
 Scenario: @PB_US17446_02 As Study Developer, when I save Low and High ranges for Field Edit Check, I do not see an Invalid* error message displayed.
 	When I navigate to "Architect"
-	And I select link "US17446_SJ" in "Active Projects" 
-	And I select Draft "Orginal Draft"
+	And I select "Project" link "US17446_SJ" in "Active Projects" 
+	And I select Draft "Original Draft"
 	And I navigate to "Forms"
 	And I select Fields for Form "TEXT"
 	And I edit Field "TEXT2"
@@ -97,8 +97,8 @@ Scenario: @PB_US17446_02 As Study Developer, when I save Low and High ranges for
 @Validation
 Scenario: @PB_US17446_03 As Study Developer, when I save Low and High ranges for Field Edit Check, I do not see an Invalid* error message displayed.
 	When I navigate to "Architect"
-	And I select link "US17446_SJ" in "Active Projects" 
-	And I select Draft "Orginal Draft"
+	And I select "Project" link "US17446_SJ" in "Active Projects" 
+	And I select Draft "Original Draft"
 	And I navigate to "Forms"
 	And I select Fields for Form "TEXT"
 	And I edit Field "TEXT3"
@@ -121,8 +121,8 @@ Scenario: @PB_US17446_03 As Study Developer, when I save Low and High ranges for
 @Validation
 Scenario: @PB_US17446_04 As Study Developer, when I save Low and High ranges for Field Edit Check, I do not see an Invalid* error message displayed.
 	When I navigate to "Architect"
-	And I select link "US17446_SJ" in "Active Projects" 
-	And I select Draft "Orginal Draft"
+	And I select "Project" link "US17446_SJ" in "Active Projects" 
+	And I select Draft "Original Draft"
 	And I navigate to "Forms"
 	And I select Fields for Form "TEXT"
 	And I edit Field "TEXT4"
@@ -147,8 +147,8 @@ Scenario: @PB_US17446_04 As Study Developer, when I save Low and High ranges for
 @Validation
 Scenario: @PB_US17446_05 As Study Developer, when I save Low and High ranges for Field Edit Check, I do not see an Invalid* error message displayed.
 	When I navigate to "Architect"
-	And I select link "US17446_SJ" in "Active Projects" 
-	And I select Draft "Orginal Draft"
+	And I select "Project" link "US17446_SJ" in "Active Projects" 
+	And I select Draft "Original Draft"
 	And I navigate to "Forms"
 	And I select Fields for Form "TEXT"
 	And I edit Field "TEXT5"
@@ -173,8 +173,8 @@ Scenario: @PB_US17446_05 As Study Developer, when I save Low and High ranges for
 @Validation
 Scenario: @PB_US17446_06 As Study Developer, when I save Low and High ranges for Field Edit Check, I do not see an Invalid* error message displayed.
 	When I navigate to "Architect"
-	And I select link "US17446_SJ" in "Active Projects" 
-	And I select Draft "Orginal Draft"
+	And I select "Project" link "US17446_SJ" in "Active Projects" 
+	And I select Draft "Original Draft"
 	And I navigate to "Forms"
 	And I select Fields for Form "TEXT"
 	And I edit Field "TEXT6"
@@ -199,8 +199,8 @@ Scenario: @PB_US17446_06 As Study Developer, when I save Low and High ranges for
 @Validation
 Scenario: @PB_US17446_07 As Study Developer, when I save Low and High ranges for Field Edit Check, I do not see an Invalid* error message displayed.
 	When I navigate to "Architect"
-	And I select link "US17446_SJ" in "Active Projects" 
-	And I select Draft "Orginal Draft"
+	And I select "Project" link "US17446_SJ" in "Active Projects" 
+	And I select Draft "Original Draft"
 	And I navigate to "Forms"
 	And I select Fields for Form "TEXT"
 	And I edit Field "TEXT5"
@@ -222,8 +222,8 @@ Scenario: @PB_US17446_07 As Study Developer, when I save Low and High ranges for
 @Validation
 Scenario: @PB_US17446_08 As Study Developer, when I save Low and High ranges for Field Edit Check, I do not see an Invalid* error message displayed.
 	When I navigate to "Architect"
-	And I select link "US17446_SJ" in "Active Projects" 
-	And I select Draft "Orginal Draft"
+	And I select "Project" link "US17446_SJ" in "Active Projects" 
+	And I select Draft "Original Draft"
 	And I navigate to "Forms"
 	And I select Fields for Form "TEXT"
 	And I edit Field "TEXT5"
@@ -246,8 +246,8 @@ Scenario: @PB_US17446_08 As Study Developer, when I save Low and High ranges for
 Scenario: @PB_US17446_09 As Study Developer, when I save Low and High ranges for Field Edit Check, I do not see an Invalid* error message displayed.
 
 	When I navigate to "Architect"
-	And I select link "US17446_SJ" in "Active Global Library Volumes" 	
-	And I select Draft "Orginal Draft"
+	And I select "Project" link "US17446_SJ_GL" in "Active Global Library Volumes" 	
+	And I select Draft "Original Draft"
 	And I navigate to "Forms"
 	And I select Fields for Form "TEXT"
 	And I edit Field "TEXT1"
@@ -271,8 +271,8 @@ Scenario: @PB_US17446_09 As Study Developer, when I save Low and High ranges for
 Scenario: @PB_US17446_010 As Study Developer, when I save Low and High ranges for Field Edit Check, I do not see an Invalid* error message displayed.
 	
 	When I navigate to "Architect"
-	And I select link "US17446_SJ" in "Active Global Library Volumes"  
-	And I select Draft "Orginal Draft"
+	And I select "Project" link "US17446_SJ_GL" in "Active Global Library Volumes"  
+	And I select Draft "Original Draft"
 	And I navigate to "Forms"
 	And I select Fields for Form "TEXT"
 	And I edit Field "TEXT2"
@@ -298,8 +298,8 @@ Scenario: @PB_US17446_010 As Study Developer, when I save Low and High ranges fo
 Scenario: @PB_US17446_011 As Study Developer, when I save Low and High ranges for Field Edit Check, I do not see an Invalid* error message displayed.
 	
 	When I navigate to "Architect"
-	And I select link "US17446_SJ" in "Active Global Library Volumes" 
-	And I select Draft "Orginal Draft"
+	And I select "Project" link "US17446_SJ_GL" in "Active Global Library Volumes" 
+	And I select Draft "Original Draft"
 	And I navigate to "Forms"
 	And I select Fields for Form "TEXT"
 	And I edit Field "TEXT3"
@@ -323,8 +323,8 @@ Scenario: @PB_US17446_011 As Study Developer, when I save Low and High ranges fo
 Scenario: @PB_US17446_012 As Study Developer, when I save Low and High ranges for Field Edit Check, I do not see an Invalid* error message displayed.
 	
 	When I navigate to "Architect"
-	And I select link "US17446_SJ" in "Active Global Library Volumes"  
-	And I select Draft "Orginal Draft"
+	And I select "Project" link "US17446_SJ_GL" in "Active Global Library Volumes"  
+	And I select Draft "Original Draft"
 	And I navigate to "Forms"
 	And I select Fields for Form "TEXT"
 	And I edit Field "TEXT4"
@@ -349,8 +349,8 @@ Scenario: @PB_US17446_012 As Study Developer, when I save Low and High ranges fo
 Scenario: @PB_US17446_013 As Study Developer, when I save Low and High ranges for Field Edit Check, I do not see an Invalid* error message displayed.
 	
 	When I navigate to "Architect"
-	And I select link "US17446_SJ" in "Active Global Library Volumes" 
-	And I select Draft "Orginal Draft"
+	And I select "Project" link "US17446_SJ_GL" in "Active Global Library Volumes" 
+	And I select Draft "Original Draft"
 	And I navigate to "Forms"
 	And I select Fields for Form "TEXT"
 	And I edit Field "TEXT5"
@@ -374,8 +374,8 @@ Scenario: @PB_US17446_013 As Study Developer, when I save Low and High ranges fo
 Scenario: @PB_US17446_014 As Study Developer, when I save Low and High ranges for Field Edit Check, I do not see an Invalid* error message displayed.
 	
 	When I navigate to "Architect"
-	And I select link "US17446_SJ" in "Active Global Library Volumes" 
-	And I select Draft "Orginal Draft"
+	And I select "Project" link "US17446_SJ_GL" in "Active Global Library Volumes" 
+	And I select Draft "Original Draft"
 	And I navigate to "Forms"
 	And I select Fields for Form "TEXT"
 	And I edit Field "TEXT6"
@@ -399,8 +399,8 @@ Scenario: @PB_US17446_014 As Study Developer, when I save Low and High ranges fo
 Scenario: @PB_US17446_015 As Study Developer, when I save Low and High ranges for Field Edit Check, I do not see an Invalid* error message displayed.
 	
 	When I navigate to "Architect"
-	And I select link "US17446_SJ" in "Active Global Library Volumes" 
-	And I select Draft "Orginal Draft"
+	And I select "Project" link "US17446_SJ_GL" in "Active Global Library Volumes" 
+	And I select Draft "Original Draft"
 	And I navigate to "Forms"
 	And I select Fields for Form "TEXT"
 	And I edit Field "TEXT5"
@@ -422,8 +422,8 @@ Scenario: @PB_US17446_015 As Study Developer, when I save Low and High ranges fo
 Scenario: @PB_US17446_016 As Study Developer, when I save Low and High ranges for Field Edit Check, I do not see an Invalid* error message displayed.
 	
 	When I navigate to "Architect"
-	And I select link "US17446_SJ" in "Active Global Library Volumes" 
-	And I select Draft "Orginal Draft"
+	And I select "Project" link "US17446_SJ_GL" in "Active Global Library Volumes" 
+	And I select Draft "Original Draft"
 	And I navigate to "Forms"
 	And I select Fields for Form "TEXT"
 	And I edit Field "TEXT5"
@@ -434,7 +434,7 @@ Scenario: @PB_US17446_016 As Study Developer, when I save Low and High ranges fo
 	And I take a screenshot
 	Then I verify text "Invalid*" does not exist
 	And I edit Field "TEXT5"
-	And I should see ranges for Field Edit Checks
+	And I should see ranges for Field Edit Checks	
 		| Field Edit Check                      | Low | High |
 		| Mark non-conformant data out of range | 250 | 270  |
 	And I take a screenshot	
@@ -445,45 +445,38 @@ Scenario: @PB_US17446_016 As Study Developer, when I save Low and High ranges fo
 Scenario: @PB_US17446_017 As an EDC user, when I enter out of range data and save the form, then I should see queries for field edit checks.
 	
 	And I navigate to "Architect"
-	And I select link "US17446_SJ" in "Active Projects"
-	And I select link "Orginal Draft" in "CRF Drafts"
+	And I select "Project" link "US17446_SJ" in "Active Projects"
+	And I select link "Original Draft" in "CRF Drafts"
 	And I publish CRF Version "Pub1{RndNum<TV#>(5)}"
 	And I note down "crfversion" to "newversion1#"
-	And I select link "US17446_SJ" in "Header"
+	And I select "Project" link "US17446_SJ" in "Header"
 	And I push CRF Version "{Var(newversion1#)}" to "All Sites"
-	And I navigate to "Home"
-	And I select Study "AM Edit Check Study" and Site "AM Edit Site"
-    And I create a Subject
+	And I login to Rave with user "SUPER USER 1"
+	And I create a Subject
 		| Field            | Data              |
 		| Subject Initials | SUB               |		
 		| Subject Number   | {RndNum<num1>(3)} |
 	And I select Form "TEXT"
 	When I enter data in CRF and save
 	    |Field  |Data 	|
-        |TEXT 1 |4    	|
-	    |TEXT 3 |1111   |
-	    |TEXT 6 |180    |
+        |Text 1 |4    	|
+	    |Text 3 |1111   |
+	    |Text 6 |180    |
 	Then I verify Query is displayed
-		| Field  | Query Message               | 
-		| TEXT 1 | Out of Range Checks Message |
-		| TEXT 3 | Out of Range Checks Message | 		
-		| TEXT 6 | Out of Range Checks Message | 		
+		| Field  | Query Message       |
+		| Text 1 | Out of Range Checks |
+		| Text 3 | Out of Range Checks |
+		| Text 6 | Out of Range Checks | 		
 	And I take a screenshot
 	When I enter data in CRF and save
 	    |Field  |Data 	|
-        |TEXT 1 |10    	|
-	    |TEXT 3 |3333   |
-	    |TEXT 6 |240    |
+        |Text 1 |10    	|
+	    |Text 3 |3333   |
+	    |Text 6 |240    |
 	Then I verify Query is displayed
-		| Field  | Query Message               | 
-		| TEXT 1 | Out of Range Checks Message |
-		| TEXT 3 | Out of Range Checks Message | 		
-		| TEXT 6 | Out of Range Checks Message | 		
+		| Field  | Query Message       |
+		| Text 1 | Out of Range Checks |
+		| Text 3 | Out of Range Checks |
+		| Text 6 | Out of Range Checks | 		
 	And I take a screenshot		
-	When I enter data in CRF and save
-	    |Field  |Data 	|
-        |TEXT 1 |6    	|
-	Then I verify Query is displayed
-		| Field  | Query Message               | 
-		| TEXT 1 | Out of Range Checks Message |
-	And I take a screenshot	
+		
