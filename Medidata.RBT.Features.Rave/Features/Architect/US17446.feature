@@ -7,6 +7,7 @@ Feature: US17446 When saving Low and High ranges for Field Edit Check, an incorr
 	Then an Invalid* error message is displayed
 
 Background:
+Given role "SUPERROLE_US17446" exists
 Given xml draft "US17446_SJ_GL.xml" is Uploaded
 Given xml draft "US17446_SJ.xml" is Uploaded
 Given study "US17446_SJ" is assigned to Site "Site 1"
