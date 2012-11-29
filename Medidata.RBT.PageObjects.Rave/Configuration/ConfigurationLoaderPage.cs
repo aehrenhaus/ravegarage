@@ -44,7 +44,7 @@ namespace Medidata.RBT.PageObjects.Rave.Configuration
         /// </summary>
         private void WaitForUploadToComplete()
         {
-            int waitTime = 180;
+            int waitTime = 240;
 			var ele = Browser.TryFindElementBy(b =>
             {
                 IWebElement currentStatus = Browser.FindElementByXPath("//span[@id = '_ctl0_Content_CurrentStatus']");
