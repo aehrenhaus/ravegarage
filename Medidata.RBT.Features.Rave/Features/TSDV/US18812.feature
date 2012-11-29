@@ -10,23 +10,29 @@ Feature: US18812
 Background:
 	Given xml draft "US18812.xml" is Uploaded with Environment name "Dev"
 	Given Site "Site 1" with Site Group "Asia" exists
-	#Given Site "Site 2" with Site Group "Europe" exists
+	Given Site "Site 2" with Site Group "Europe" exists
+	Given Site "Site 3" with Site Group "North America" exists
 	#Given Site "Site 3" with Site Group "World" exists
 	#Given Site "Site 4" with Site Group "North America" exists
 	Given study "US18812" is assigned to Site "Site 1" with study environment "Aux: Dev"
-	#Given study "US18812" is assigned to Site "Site 2" with study environment "Aux: Dev"
-	#Given study "US18812" is assigned to Site "Site 3" with study environment "Aux: Dev"
+	Given study "US18812" is assigned to Site "Site 2" with study environment "Aux: Dev"
+	Given study "US18812" is assigned to Site "Site 3" with study environment "Aux: Dev"
 	#Given study "US18812" is assigned to Site "Site 4" with study environment "Aux: Dev"
 	Given I publish and push eCRF "US18812.xml" to "Version 1" with study environment "Dev"
-	Given following Project assignments exist
-	| User         | Project    | Environment | Role         | Site   | SecurityRole          | Lines Per Page |
-	| SUPER USER 1 | US18812 | Aux: Dev    | SUPER ROLE 1 | Site 1 | Project Admin Default | 100            |
 	#Given following Project assignments exist
-	#| User         | Project    | Environment | Role         | Site   | SecurityRole          | Lines Per Page |
+	#| User         | Project | Environment | Role         | Site   | SecurityRole          | Lines Per Page |
+	#| SUPER USER 1 | US18812 | Aux: Dev    | SUPER ROLE 1 | Site 1 | Project Admin Default | 100            |
+	#Given following Project assignments exist
+	#| User         | Project | Environment | Role         | Site   | SecurityRole          | Lines Per Page |
 	#| SUPER USER 1 | US18812 | Aux: Dev    | SUPER ROLE 1 | Site 1 | Project Admin Default | 100            |
 	#| SUPER USER 1 | US18812 | Aux: Dev    | SUPER ROLE 1 | Site 2 | Project Admin Default | 100            |
 	#| SUPER USER 1 | US18812 | Aux: Dev    | SUPER ROLE 1 | Site 3 | Project Admin Default | 100            |
 	#| SUPER USER 1 | US18812 | Aux: Dev    | SUPER ROLE 1 | Site 4 | Project Admin Default | 100            |
+	Given following Project assignments exist
+	| User         | Project | Environment | Role         | Site   | SecurityRole          | Lines Per Page |
+	| SUPER USER 1 | US18812 | Aux: Dev    | SUPER ROLE 1 | Site 1 | Project Admin Default | 100            |
+	| SUPER USER 1 | US18812 | Aux: Dev    | SUPER ROLE 1 | Site 2 | Project Admin Default | 100            |
+	| SUPER USER 1 | US18812 | Aux: Dev    | SUPER ROLE 1 | Site 3 | Project Admin Default | 100            |
 	Given following Report assignments exist
 	| User         | Report                                                           |
 	| SUPER USER 1 | Targeted SDV Configuration - Targeted SDV Configuration          |
@@ -131,8 +137,8 @@ Scenario: @PB_US18812_01 Enroll 50 subjects in a study to verify that TSDV has r
 	And I navigate to "Reporter"
 	And I select Report "Targeted SDV Configuration"
 	And I set report parameter "Study" with table
-		| Name       | Environment |
-		| US18812 | Dev         | 
+		| Name    | Environment |
+		| US18812 | Dev         |
 	And I click button "Submit Report"
 	And I switch to "Targeted SDV Study Plan" window
 	And I create a new block plan named "US18812 (Dev) Block Plan" with Data entry Role "SUPER ROLE 1"
@@ -152,8 +158,8 @@ Scenario: @PB_US18812_01 Enroll 50 subjects in a study to verify that TSDV has r
 	| Form        | Selected |
 	| Cholesterol | True     |
 	And I create a custom tier named "Custom Tier 4" and description "Concomitant Medications" with table
-	| Form                    | Selected |
-	| 	Occlusion  | True     |
+	| Form      | Selected |
+	| Occlusion | True     |
 	And I create a custom tier named "Custom Tier 5" and description "Demographics" with table
 	| Form         | Selected |
 	| Demographics | True     |
@@ -182,7 +188,7 @@ Scenario: @PB_US18812_01 Enroll 50 subjects in a study to verify that TSDV has r
 	And I navigate to "Reporter"
 	And I select Report "Targeted SDV Subject Management"
 	And I set report parameter "Study" with table
-		| Name       | Environment |
+		| Name    | Environment |
 		| US18812 | Dev         |
 	And I click button "Submit Report"
 	And I switch to "Targeted SDV Subject Override" window 
@@ -244,7 +250,7 @@ Scenario: @PB_US18812_01 Enroll 50 subjects in a study to verify that TSDV has r
 	And I navigate to "Reporter"
 	And I select Report "Targeted SDV Configuration"
 	And I set report parameter "Study" with table
-		| Name        | Environment |
+		| Name    | Environment |
 		| US18812 | Dev         |
 	And I click button "Submit Report"
 	And I switch to "Targeted SDV Study Plan" window
@@ -274,11 +280,11 @@ Scenario: @PB_US18812_01 Enroll 50 subjects in a study to verify that TSDV has r
 	And I navigate to "Reporter"
 	And I select Report "Targeted SDV Subject Management"
 	And I set report parameter "Study" with table
-		| Name       | Environment |
+		| Name    | Environment |
 		| US18812 | Dev         |
 	And I click button "Submit Report"
 	And I switch to "Targeted SDV Subject Override" window
-	And I filter by site group "World"
+	And I filter by site group "All Site Groups"
 	Then I verify that Tiers in subject override table are not in the following order
 		| Tier Name         | Row |
 		| All Forms         | 1   |
@@ -387,19 +393,20 @@ Scenario: @PB_US18812_01 Enroll 50 subjects in a study to verify that TSDV has r
 	And I navigate to "Reporter"
 	And I select Report "Targeted SDV Configuration"
 	And I set report parameter "Study" with table
-		| Name       | Environment |
+		| Name    | Environment |
 		| US18812 | Dev         |
 	And I click button "Submit Report"
 	And I switch to "Targeted SDV Study Plan" window
 	And I select link "World"
 	And I inactivate the plan
-	And I select link "Site 3"
+	#And I select link "Site 3"
+	And I select partial link "Site 3"
 	And I create a new block plan named "Site 3 Block Plan" with Data entry Role "SUPER ROLE 1"
 	And I verify text "Dynamic Allocation" exists
 	And I delete the tier "Architect Defined" from plan
 	And I edit Blocks 
-	| Name              | Subject Count |
-	| Architect Defined | 10            |
+		| Name              | Subject Count |
+		| Architect Defined | 10            |
 	And I select the tier "All Forms" and Subject Count "1"
 	And I select the tier "No Forms" and Subject Count "1"
 	And I select the tier "Architect Defined" and Subject Count "1"
@@ -418,7 +425,7 @@ Scenario: @PB_US18812_01 Enroll 50 subjects in a study to verify that TSDV has r
 	And I navigate to "Reporter"
 	And I select Report "Targeted SDV Subject Management"
 	And I set report parameter "Study" with table
-		| Name       | Environment |
+		| Name    | Environment |
 		| US18812 | Dev         |
 	And I click button "Submit Report"
 	And I switch to "Targeted SDV Subject Override" window
@@ -481,11 +488,12 @@ Scenario: @PB_US18812_01 Enroll 50 subjects in a study to verify that TSDV has r
 	And I navigate to "Reporter"
 	And I select Report "Targeted SDV Configuration"
 	And I set report parameter "Study" with table
-		| Name       | Environment |
+		| Name    | Environment |
 		| US18812 | Dev         |
 	And I click button "Submit Report"
 	And I switch to "Targeted SDV Study Plan" window
 	And I select link "World"
-	And I select link "Site 3"
+	#And I select link "Site 3"
+	And I select partial link "Site 3"
 	And I inactivate the plan
 	

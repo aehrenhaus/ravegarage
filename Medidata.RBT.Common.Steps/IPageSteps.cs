@@ -1,5 +1,7 @@
 ﻿using TechTalk.SpecFlow;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Medidata.RBT.SeleniumExtension;
+using OpenQA.Selenium;
 
 namespace Medidata.RBT.Common.Steps
 {
@@ -140,8 +142,20 @@ namespace Medidata.RBT.Common.Steps
 		{
 			linkText = SpecialStringHelper.Replace(linkText);
 			CurrentPage = CurrentPage.ClickLink(linkText);
-
 		}
+
+        /// <summary>
+        /// Click a partial hyperlink
+        /// </summary>
+        [StepDefinition(@"I select partial link ""([^""]*)""")]
+        public void ISelectPartialLink____(string linkText)
+        {
+            linkText = SpecialStringHelper.Replace(linkText);
+            IWebElement link = CurrentPage.Browser.TryFindElementBy(By.XPath(".//span[contains(text(),'" + linkText + "')]"));
+            if(link == null)
+                link = CurrentPage.Browser.TryFindElementBy(By.XPath(".//a[contains(text(),'" + linkText + "')]"));
+            link.Click();
+        }
 
 		/// <summary>
 		/// I select "Study" link "Mediflex" in "Header"
