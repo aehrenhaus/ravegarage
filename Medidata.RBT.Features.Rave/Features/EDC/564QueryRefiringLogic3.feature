@@ -112,12 +112,7 @@ Scenario: PB_3.1.1 As an EDC user, On a Cross Form Standard form to log form, Wh
       | Current Axis Number | Informed Consent 'Current Distribution Number' is not equal to Concomitant Medications 'Current Axis Number'. |
 	And I take a screenshot
 
-#----------------------------------------------------------------------------------------------------------------------------------------
-@release_564_Patch11
-@PB_3.1.2
-@Validation
-Scenario: PB_3.1.2 As an EDC user, On a Cross Form Standard form to log form, When a query has been answered and auto closed with the different data and I enter the same data that originally opened the query, then queries are displayed. 
-
+	#Merging PB_3.1.2
 	Given I login to Rave with user "SUPER USER 1"
 	And I select a Subject "sub{Var(num1)}"
 	And I select Form "Concomitant Medications" in Folder "Screening"
@@ -165,12 +160,7 @@ Scenario: PB_3.1.2 As an EDC user, On a Cross Form Standard form to log form, Wh
       | Current Axis Number | Informed Consent 'Current Distribution Number' is not equal to Concomitant Medications 'Current Axis Number'. | false    | false  |
 	And I take a screenshot
 
-#----------------------------------------------------------------------------------------------------------------------------------------
-@release_564_Patch11
-@PB_3.1.3
-@Validation
-Scenario: PB_3.1.3 As an EDC user, On a Cross Form Standard form to log form, When a query has been canceled with the different data and I enter the same data that originally opened the query, then queries are displayed. 
-
+	#Merging PB_3.1.3
 	Given I login to Rave with user "SUPER USER 1"
 	And I select a Subject "sub{Var(num1)}"
 	And I select Form "Concomitant Medications" in Folder "Screening"
@@ -225,12 +215,7 @@ Scenario: PB_3.1.3 As an EDC user, On a Cross Form Standard form to log form, Wh
 	And I verify Query with message "Informed Consent 'Current Distribution Number' is not equal to Concomitant Medications 'Current Axis Number'." is displayed on Field "Current Axis Number"
 	And I take a screenshot
 
-#----------------------------------------------------------------------------------------------------------------------------------------
-@release_564_Patch11
-@PB_3.1.4
-@Validation
-Scenario: PB_3.1.4 As an EDC user, On a Cross Form Standard form to log form, When a query has been canceled with the same data and I enter the same data that originally opened the query, then queries are displayed. 
-
+	#Merging PB_3.1.4
 	Given I login to Rave with user "SUPER USER 1"
 	And I select a Subject "sub{Var(num1)}"
 	And I select Form "Concomitant Medications" in Folder "Screening"
@@ -289,6 +274,7 @@ Scenario: PB_3.1.4 As an EDC user, On a Cross Form Standard form to log form, Wh
 	And I verify Query with message "Informed Consent 'Current Distribution Number' is not equal to Concomitant Medications 'Current Axis Number'." is not displayed on Field "Current Axis Number"
 	And I take a screenshot
 
+
 #----------------------------------------------------------------------------------------------------------------------------------------	
 @release_564_Patch11
 @PB_3.2.1
@@ -344,12 +330,7 @@ Scenario: PB_3.2.1 As an EDC user, On a Cross Folder Standard form to log form, 
 	And I verify Query with message "'Current Distribution Number' is not equal 'Current Axis Number'." is not displayed on Field "Current Axis Number"
 	And I take a screenshot
 
-#----------------------------------------------------------------------------------------------------------------------------------------	
-@release_564_Patch11
-@PB_3.2.2
-@Validation
-Scenario: PB_3.2.2 As an EDC user, On a Cross Folder Standard form to log form, When a query has been answered and auto closed with the different data and I enter the same data that originally opened the query, then queries are displayed.
-	
+	#Merging PB_3.2.2
 	Given I login to Rave with user "SUPER USER 1"
 	And I select a Subject "sub{Var(num1)}"
 	And I select Form "Concomitant Medications" in Folder "Week 1"
@@ -391,13 +372,8 @@ Scenario: PB_3.2.2 As an EDC user, On a Cross Folder Standard form to log form, 
 	Then I verify Query with message "'Date Informed Consent Signed' can not be greater than." is displayed on Field "Start Date"
 	And I verify Query with message "'Current Distribution Number' is not equal 'Current Axis Number'." is displayed on Field "Current Axis Number"
 	And I take a screenshot
-	
-#----------------------------------------------------------------------------------------------------------------------------------------	
-@release_564_Patch11
-@PB_3.2.3
-@Validation
-Scenario: PB_3.2.3 As an EDC user, On a Cross Folder Standard form to log form, When a query has been canceled with the different data and I enter the same data that originally opened the query, then queries are displayed.
-	
+
+	#Merging PB_3.2.3
 	Given I login to Rave with user "SUPER USER 1"
 	And I select a Subject "sub{Var(num1)}"
 	And I select Form "Concomitant Medications" in Folder "Week 1"
@@ -452,6 +428,7 @@ Scenario: PB_3.2.3 As an EDC user, On a Cross Folder Standard form to log form, 
 	Then I verify Query with message "'Date Informed Consent Signed' can not be greater than." is displayed on Field "Start Date"
 	And I verify Query with message "'Current Distribution Number' is not equal 'Current Axis Number'." is displayed on Field "Current Axis Number"
 	And I take a screenshot
+	
 #----------------------------------------------------------------------------------------------------------------------------------------
 @release_564_Patch11
 @PB_3.3.1
@@ -507,12 +484,7 @@ Scenario: PB_3.3.1 As an EDC user, On a Cross Forms log form to Standard form, W
 	Then I verify Requires Response Query with message "'Original Distribution Number' and 'Current Distribution Number' fields are not equal." is displayed on Field "Current Distribution Number"
 	And I take a screenshot
 
-#----------------------------------------------------------------------------------------------------------------------------------------
-@release_564_Patch11
-@PB_3.3.2
-@Validation
-Scenario: PB_3.3.2 As an EDC user, On a Cross Forms log form to Standard form, When a query has been canceled with the different data and I enter the same data that originally opened the query, then queries are displayed. 
-
+	#Merging PB_3.3.2
 	Given I login to Rave with user "SUPER USER 1"
 	And I create a Subject
 		| Field            | Data              |
@@ -652,12 +624,7 @@ Scenario: PB_3.4.1 As an EDC user, On a Cross Forms log form to log form, When a
 	And I verify Query with message "'Duration' and 'Current Axis Number' cannot equal." is not displayed on Field "Current Axis Number"
 	And I take a screenshot
 
-#----------------------------------------------------------------------------------------------------------------------------------------	
-@release_564_Patch11
-@PB_3.4.2
-@Validation
-Scenario: PB_3.4.2 As an EDC user, On a Cross Forms log form to log form, When a query has been answered and auto closed with the different data and I enter the same data that originally opened the query, then queries are not displayed.
-
+	#Merging PB_3.4.2
 	Given I login to Rave with user "SUPER USER 1"
 	And I select a Subject "sub{Var(num1)}"
 	And I select Form "Concomitant Medications" in Folder "Screening"
@@ -725,13 +692,8 @@ Scenario: PB_3.4.2 As an EDC user, On a Cross Forms log form to log form, When a
 	And I verify Query with message "'AE Number' is greater than or Equal to 'Original Axis Number' on Log." is displayed on Field "Original Axis Number" 
 	And I verify Query with message "'Duration' and 'Current Axis Number' cannot equal." is displayed on Field "Current Axis Number"
 	And I take a screenshot
-
-#----------------------------------------------------------------------------------------------------------------------------------------	
-@release_564_Patch11
-@PB_3.4.3
-@Validation
-Scenario: PB_3.4.3 As an EDC user, On a Cross Forms log form to log form, When a query has been canceled with the different data and I enter the same data that originally opened the query, then queries are not displayed.
-
+	
+	#Merging PB_3.4.3
 	Given I login to Rave with user "SUPER USER 1"
 	And I select a Subject "sub{Var(num1)}"
 	And I select Form "Concomitant Medications" in Folder "Screening"
