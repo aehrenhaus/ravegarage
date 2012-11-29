@@ -1,4 +1,4 @@
-@ignore
+
 Feature: 564QueryRefiringLogic8 Edit Checks refire with require response and require manual close.
 	As a Rave user
 	I want to change data
@@ -23,6 +23,8 @@ Background:
 	Given study "AM Edit Check Study" is assigned to Site "AM Edit Site"
 	Given I publish and push eCRF "Edit_Check_Study_3_Draft_8.xml" to "Version 1"
 	Given I publish and push eCRF "AM_Edit_Check_Study_Draft_1.xml" to "Version 1"
+	Given Site "Edit Check Site 1" is DDE-enabled
+	Given Site "Edit Check Site 8" is DDE-enabled
 	Given following Project assignments exist
 		| User         | Project             | Environment | Role            | Site              | SecurityRole          |
 		| SUPER USER 1 | Edit Check Study 3  | Live: Prod  | Edit Check Role | Edit Check Site 8 | Project Admin Default |
@@ -90,7 +92,7 @@ Scenario: PB_8.1.1 As an EDC user, Data setup and verification for query re-firi
 	Given I login to Rave with user "SUPER USER 2"
 	And I navigate to "DDE"
 	And I select link "Second Pass"
-	And I choose "Edit Check Study 3" from "Study"
+	#And I choose "Edit Check Study 3" from "Study"
 	#And I choose "Prod" from "Environment"
 	And I choose "Edit Check Site 8" from "Site"
 	And I choose "sub {Var(num1)}" from "Subject"
@@ -273,7 +275,8 @@ Scenario: PB_8.2.1 Task Summary
 		| Start Date          | 'Date Informed Consent Signed' is greater. Please revise.                                                     | false    | false  |
 		| Current Axis Number | Informed Consent 'Current Distribution Number' is not equal to Concomitant Medications 'Current Axis Number'. | false    | false  |
 	And I take a screenshot
-	And I select link "Edit Check Site 8" in "Header"
+	And I navigate to "Home"
+	And I select Study "Edit Check Study 3" and Site "Edit Check Site 8"
     And I select a Subject "sub{Var(num1)}"
 	When I expand "Cancel Queries" in Task Summary
 	Then I should see "Screening-Concomitant Medications" in "Cancel Queries"
@@ -288,6 +291,7 @@ Scenario: PB_8.2.1 Task Summary
 #----------------------------------------------------------------------------------------------------------------------------------------	
 @release_564_Patch11
 @PB_8.3.1
+@ignore
 @Validation
 Scenario: PB_8.3.1 Query Management
 
@@ -413,6 +417,7 @@ Scenario: PB_8.3.2
 #----------------------------------------------------------------------------------------------------------------------------------------	
 @release_564_Patch11
 @PB_8.4.1
+@ignore
 @Validation
 Scenario: PB_8.4.1 Migrate Subject
 	
@@ -440,7 +445,8 @@ Scenario: PB_8.4.1 Migrate Subject
 	And I close the Query "Query Opened on Log Field 1" on Field "Log Field 1"
 	And I save the CRF page
 	And I take a screenshot	
-	And I select link "AM Edit Site" in "Header"
+	And I navigate to "Home"
+	And I select Study "AM Edit Check Study" and Site "AM Edit Site"
     And I create a Subject
 		| Field            | Data              |
 		| Subject Number   | {RndNum<num3>(5)} |
@@ -512,7 +518,8 @@ Scenario: PB_8.4.1 Migrate Subject
 		| Field       | Query Message               | Answered | Closed |
 		| Log Field 1 | Query Opened on Log Field 1 | false    | false  |
 	And I take a screenshot	
-	And I select link "AM Edit Site" in "Header"
+	And I navigate to "Home"
+	And I select Study "AM Edit Check Study" and Site "AM Edit Site"
     And I select a Subject "sub{Var(num3)}"
 	And I select Form "Mixed Form"
 	And I open the last log line
@@ -569,7 +576,8 @@ Scenario: PB_8.4.1 Migrate Subject
 		| Field       | Query Message               | Answered | Closed |
 		| Log Field 1 | Query Opened on Log Field 1 | false    | false  |
 	And I take a screenshot	
-	And I select link "AM Edit Site" in "Header"
+	And I navigate to "Home"
+	And I select Study "AM Edit Check Study" and Site "AM Edit Site"
     And I select a Subject "sub{Var(num3)}"
 	And I select Form "Mixed Form"
 	When I open log line 1
@@ -587,6 +595,7 @@ Scenario: PB_8.4.1 Migrate Subject
 #----------------------------------------------------------------------------------------------------------------------------------------	
 @release_564_Patch11
 @PB_8.5.1
+@ignore
 @Validation
 # The feature is not implemented in 5.6.3
 Scenario: PB_8.5.1 Publish Checks
@@ -692,6 +701,7 @@ Scenario: PB_8.5.1 Publish Checks
 #----------------------------------------------------------------------------------------------------------------------------------------	
 @release_564_Patch11
 @PB_8.6.1
+@ignore
 @Validation
 Scenario: PB_8.6.1 Queries verification on data points with Freeze, Hard lock and Inactive records
 
