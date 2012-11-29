@@ -81,10 +81,12 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
             {
                 //Name
                 string rangeTypeString = rangeTypesTable[row, "Name"] as string;
-
-                RangeType rangeType = TestContext.GetExistingFeatureObjectOrMakeNew<RangeType>(rangeTypeString.Trim(), 
-                    () => new RangeType(rangeTypeString.Trim()));
-                rangeTypesTable[row, "Name"] = rangeType.UniqueName.ToString();
+                if (!string.IsNullOrEmpty(rangeTypeString))
+                {
+                    RangeType rangeType = TestContext.GetExistingFeatureObjectOrMakeNew<RangeType>(rangeTypeString.Trim(),
+                        () => new RangeType(rangeTypeString.Trim()));
+                    rangeTypesTable[row, "Name"] = rangeType.UniqueName.ToString();
+                }
             }
         }
 
@@ -99,10 +101,12 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
             {
                 //Name
                 string labUnitString = labUnitsTable[row, "Name"] as string;
-
-                LabUnit labUnit = TestContext.GetExistingFeatureObjectOrMakeNew<LabUnit>(labUnitString.Trim(), 
-                    () => new LabUnit(labUnitString.Trim()));
-                labUnitsTable[row, "Name"] = labUnit.UniqueName.ToString();
+                if (!string.IsNullOrEmpty(labUnitString))
+                {
+                    LabUnit labUnit = TestContext.GetExistingFeatureObjectOrMakeNew<LabUnit>(labUnitString.Trim(),
+                        () => new LabUnit(labUnitString.Trim()));
+                    labUnitsTable[row, "Name"] = labUnit.UniqueName.ToString();
+                }
             }
         }
 
@@ -117,10 +121,12 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
             {
                 //Name
                 string labUnitDictionaryString = labUnitDictionariesTable[row, "Name"] as string;
-
-                LabUnitDictionary labUnitDictionary = TestContext.GetExistingFeatureObjectOrMakeNew<LabUnitDictionary>(labUnitDictionaryString.Trim(),
-                    () => new LabUnitDictionary(labUnitDictionaryString.Trim()));
-                labUnitDictionariesTable[row, "Name"] = labUnitDictionary.UniqueName.ToString();
+                if (!string.IsNullOrEmpty(labUnitDictionaryString))
+                {
+                    LabUnitDictionary labUnitDictionary = TestContext.GetExistingFeatureObjectOrMakeNew<LabUnitDictionary>(labUnitDictionaryString.Trim(),
+                        () => new LabUnitDictionary(labUnitDictionaryString.Trim()));
+                    labUnitDictionariesTable[row, "Name"] = labUnitDictionary.UniqueName.ToString();
+                }
             }
         }
 
@@ -136,9 +142,12 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
                 //Name
                 string labUnitDictionaryString = labUnitDictionaryEntriesTable[row, "LabUnitDictionary"] as string;
 
-                LabUnitDictionary labUnitDictionary = TestContext.GetExistingFeatureObjectOrMakeNew<LabUnitDictionary>(labUnitDictionaryString.Trim(),
-                    () => new LabUnitDictionary(labUnitDictionaryString.Trim()));
-                labUnitDictionaryEntriesTable[row, "LabUnitDictionary"] = labUnitDictionary.UniqueName.ToString();
+                if (!string.IsNullOrEmpty(labUnitDictionaryString))
+                {
+                    LabUnitDictionary labUnitDictionary = TestContext.GetExistingFeatureObjectOrMakeNew<LabUnitDictionary>(labUnitDictionaryString.Trim(),
+                        () => new LabUnitDictionary(labUnitDictionaryString.Trim()));
+                    labUnitDictionaryEntriesTable[row, "LabUnitDictionary"] = labUnitDictionary.UniqueName.ToString();
+                }
             }
         }
 
@@ -154,16 +163,21 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
                 //Name
                 string analyteString = analytesTable[row, "Name"] as string;
 
-                Analyte analyte = TestContext.GetExistingFeatureObjectOrMakeNew<Analyte>(analyteString.Trim(), 
-                    () => new Analyte(analyteString.Trim()));
-                analytesTable[row, "Name"] = analyte.UniqueName.ToString();
-
+                if (!string.IsNullOrEmpty(analyteString))
+                {
+                    Analyte analyte = TestContext.GetExistingFeatureObjectOrMakeNew<Analyte>(analyteString.Trim(), 
+                        () => new Analyte(analyteString.Trim()));
+                    analytesTable[row, "Name"] = analyte.UniqueName.ToString();
+                }
                 //Lab Unit Dictionary
                 string labUnitDictionaryString = analytesTable[row, "LabUnitDictionary"] as string;
-
-                LabUnitDictionary labUnitDictionary = TestContext.GetExistingFeatureObjectOrMakeNew<LabUnitDictionary>(labUnitDictionaryString.Trim(),
-                    () => new LabUnitDictionary(labUnitDictionaryString.Trim()));
-                analytesTable[row, "LabUnitDictionary"] = labUnitDictionary.UniqueName.ToString();
+                if (!string.IsNullOrEmpty(labUnitDictionaryString))
+                {
+                    LabUnitDictionary labUnitDictionary = TestContext.GetExistingFeatureObjectOrMakeNew<LabUnitDictionary>(labUnitDictionaryString.Trim(),
+                        () => new LabUnitDictionary(labUnitDictionaryString.Trim()));
+                    analytesTable[row, "LabUnitDictionary"] = labUnitDictionary.UniqueName.ToString();
+                }
+                
             }
         }
 
@@ -178,38 +192,46 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
             {
                 //Lab
                 string labString = analyteRangesTable[row, "Lab"] as string;
-
-                Lab lab = TestContext.GetExistingFeatureObjectOrMakeNew<Lab>(labString.Trim(),
-                    () => new Lab(labString.Trim()));
-                analyteRangesTable[row, "Lab"] = lab.UniqueName.ToString();
+                if (!string.IsNullOrEmpty(labString))
+                {
+                    Lab lab = TestContext.GetExistingFeatureObjectOrMakeNew<Lab>(labString.Trim(),
+                        () => new Lab(labString.Trim()));
+                    analyteRangesTable[row, "Lab"] = lab.UniqueName.ToString();
+                }
 
                 //Study
                 string studyString = analyteRangesTable[row, "Study"] as string;
-
-                Project project = TestContext.GetExistingFeatureObjectOrMakeNew<Project>(studyString.Trim(),
-                    () => new Project(studyString.Trim(), true));
-                analyteRangesTable[row, "Study"] = project.UniqueName.ToString();
-
+                if (!string.IsNullOrEmpty(studyString))
+                {
+                    Project project = TestContext.GetExistingFeatureObjectOrMakeNew<Project>(studyString.Trim(),
+                        () => new Project(studyString.Trim(), true));
+                    analyteRangesTable[row, "Study"] = project.UniqueName.ToString();
+                }
                 //Site
                 string siteString = analyteRangesTable[row, "SiteNumber"] as string;
-
-                Site site = TestContext.GetExistingFeatureObjectOrMakeNew<Site>(siteString.Trim(), 
-                    () => new Site(siteString.Trim(), ""));
-                analyteRangesTable[row, "SiteNumber"] = site.Number.ToString();
-
+                if (!string.IsNullOrEmpty(siteString))
+                {
+                    Site site = TestContext.GetExistingFeatureObjectOrMakeNew<Site>(siteString.Trim(),
+                        () => new Site(siteString.Trim(), ""));
+                    analyteRangesTable[row, "SiteNumber"] = site.Number.ToString();
+                }
                 //Analyte
                 string analyteString = analyteRangesTable[row, "Analyte"] as string;
-
-                Analyte analyte = TestContext.GetExistingFeatureObjectOrMakeNew<Analyte>(analyteString.Trim(),
-                    () => new Analyte(analyteString.Trim()));
-                analyteRangesTable[row, "Analyte"] = analyte.UniqueName.ToString();
-
+                if (!string.IsNullOrEmpty(analyteString))
+                {
+                    Analyte analyte = TestContext.GetExistingFeatureObjectOrMakeNew<Analyte>(analyteString.Trim(),
+                        () => new Analyte(analyteString.Trim()));
+                    analyteRangesTable[row, "Analyte"] = analyte.UniqueName.ToString();
+                }
                 //Lab Unit
                 string labUnitString = analyteRangesTable[row, "LabUnit"] as string;
-
-                LabUnit labUnit = TestContext.GetExistingFeatureObjectOrMakeNew<LabUnit>(labUnitString.Trim(),
-                    () => new LabUnit(labUnitString.Trim()));
-                analyteRangesTable[row, "LabUnit"] = labUnit.UniqueName.ToString();
+                if (!string.IsNullOrEmpty(labUnitString))
+                {
+                    LabUnit labUnit = TestContext.GetExistingFeatureObjectOrMakeNew<LabUnit>(labUnitString.Trim(),
+                        () => new LabUnit(labUnitString.Trim()));
+                    analyteRangesTable[row, "LabUnit"] = labUnit.UniqueName.ToString();
+                }
+                
             }
         }
 
@@ -226,30 +248,36 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
                 //Name
                 string labString = labsTable[row, "Name"] as string;
 
-                Lab lab = TestContext.GetExistingFeatureObjectOrMakeNew<Lab>(labString.Trim(), 
-                    () => new Lab(labString.Trim()));
-                labsTable[row, "Name"] = lab.UniqueName.ToString();
-
+                if (!string.IsNullOrEmpty(labString))
+                {
+                    Lab lab = TestContext.GetExistingFeatureObjectOrMakeNew<Lab>(labString.Trim(), 
+                        () => new Lab(labString.Trim()));
+                    labsTable[row, "Name"] = lab.UniqueName.ToString();
+                }
                 //Study
                 string studyString = labsTable[row, "Study"] as string;
-
-                Project project = TestContext.GetExistingFeatureObjectOrMakeNew<Project>(studyString.Trim(), 
-                    () => new Project(studyString.Trim(), true));
-                labsTable[row, "Study"] = project.UniqueName.ToString();
-
+                if (!string.IsNullOrEmpty(studyString))
+                {
+                    Project project = TestContext.GetExistingFeatureObjectOrMakeNew<Project>(studyString.Trim(),
+                        () => new Project(studyString.Trim(), true));
+                    labsTable[row, "Study"] = project.UniqueName.ToString();
+                }
                 //Site
                 string siteString = labsTable[row, "SiteNumber"] as string;
-
-                Site site = TestContext.GetExistingFeatureObjectOrMakeNew<Site>(siteString.Trim(), 
-                    () => new Site(siteString.Trim(), ""));
-                labsTable[row, "SiteNumber"] = site.Number.ToString();
-
+                if (!string.IsNullOrEmpty(siteString))
+                {
+                    Site site = TestContext.GetExistingFeatureObjectOrMakeNew<Site>(siteString.Trim(),
+                        () => new Site(siteString.Trim(), ""));
+                    labsTable[row, "SiteNumber"] = site.Number.ToString();
+                }
                 //RangeType
                 string rangeTypeString = labsTable[row, "RangeType"] as string;
-
-                RangeType rangeType = TestContext.GetExistingFeatureObjectOrMakeNew<RangeType>(rangeTypeString.Trim(),
-                    () => new RangeType(rangeTypeString.Trim()));
-                labsTable[row, "RangeType"] = rangeType.UniqueName.ToString();
+                if (!string.IsNullOrEmpty(rangeTypeString))
+                {
+                    RangeType rangeType = TestContext.GetExistingFeatureObjectOrMakeNew<RangeType>(rangeTypeString.Trim(),
+                        () => new RangeType(rangeTypeString.Trim()));
+                    labsTable[row, "RangeType"] = rangeType.UniqueName.ToString();
+                }
             }
         }
 
