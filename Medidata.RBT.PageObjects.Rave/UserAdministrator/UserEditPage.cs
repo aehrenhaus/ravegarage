@@ -94,6 +94,17 @@ namespace Medidata.RBT.PageObjects.Rave
         }
 
         /// <summary>
+        /// Assign the user to a global library role
+        /// </summary>
+        public void AssignUserToGlobalLibraryRole()
+        {
+            ChooseFromDropdown("_UserSecurityWizard1_DdlModule", "Architect Global Library");
+            ClickLink("Assign To Global Library Volume");
+            ChooseFromDropdown("_ctl0_Content_UserSecurityWizard1_DdlSelectRole", "Global Library Admin Default");
+            ClickLink("Assign");
+        }
+
+        /// <summary>
         /// Assign the user to a site
         /// </summary>
         /// <param name="studyName">The study to assign the user to</param>
