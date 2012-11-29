@@ -28,8 +28,7 @@ namespace Medidata.RBT.PageObjects.Rave
                 linkText = string.Concat("L",linkText);
 
             ClickLink(linkText);
-            var page = new FileRequestCreateDataRequestPage();
-            return page.CreateDataPDF(args);
+            return TestContext.CurrentPage.As<FileRequestCreateDataRequestPage>().CreateDataPDF(args);
         }
 
         /// <summary>
@@ -45,8 +44,7 @@ namespace Medidata.RBT.PageObjects.Rave
 
             ClickLink(linkText);
 
-            var page = new FileRequestCreateBlankRequestPage();
-            return page.CreateBlankPDF(args);
+            return TestContext.CurrentPage.As<FileRequestCreateBlankRequestPage>().CreateBlankPDF(args);
         }
 
         /// <summary>

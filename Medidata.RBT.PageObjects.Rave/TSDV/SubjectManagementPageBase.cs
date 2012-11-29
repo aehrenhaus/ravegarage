@@ -59,9 +59,10 @@ namespace Medidata.RBT.PageObjects.Rave
 
         public IPage FilterBySiteGroup(string siteGroupName)
         {
-    
-            SiteGroup siteGroup = TestContext.GetExistingFeatureObjectOrMakeNew(siteGroupName, () => new SiteGroup(siteGroupName));
-            ChooseFromDropdown("Select Site Group", siteGroup.UniqueName);
+            if (!(siteGroupName.ToLower().Equals("world") || siteGroupName.ToLower().Equals("all site groups")))
+                siteGroupName = TestContext.GetExistingFeatureObjectOrMakeNew(siteGroupName, () => new SiteGroup(siteGroupName)).UniqueName;
+
+            ChooseFromDropdown("Select Site Group", siteGroupName);
           
             var search = GetElementByName("Search");
             search.Click();
