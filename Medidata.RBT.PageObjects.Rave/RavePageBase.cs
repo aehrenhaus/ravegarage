@@ -119,7 +119,7 @@ namespace Medidata.RBT.PageObjects.Rave
 		public override IPage ClickLink(string linkText, string objectType = null, string areaIdentifier = null)
 		{
 			linkText = ReplaceSeedableObjectName(objectType, linkText);
-		
+            var xPathSelector = By.XPath(string.Format(".//a[text()='{0}']", linkText));
 
 
 			ISearchContext area = null;
@@ -133,8 +133,8 @@ namespace Medidata.RBT.PageObjects.Rave
 			{
 				area = Browser;
 			}
-            
-			IWebElement link = area.TryFindElementBy(By.LinkText(linkText),false);
+
+            IWebElement link = area.TryFindElementBy(xPathSelector, false);
 
             if(link == null && linkText.Contains("•"))
                 link = ISearchContextExtend.FindLinkWithBulletPoint(area, linkText);
@@ -143,14 +143,18 @@ namespace Medidata.RBT.PageObjects.Rave
 				link = area.TryFindElementBySpanLinktext(linkText);
 
 			//another try, but with wait
-			if (link == null)
-				link = area.TryFindElementBy(By.LinkText(linkText), true);
+            if (link == null)
+                link = area.TryFindElementBy(xPathSelector, true);
 
             if (link == null)
                 throw new Exception("Link not found!");
 
+            //We need to try to set focus to this element because in some cases 
+            //the element is not in the view port and thus cannot be interacted with
+            this.SetFocusElement(link);
 			link.Click();
-			Thread.Sleep(200);
+			
+            Thread.Sleep(200);
 			return TestContext.POFactory.GetPageByUrl(new Uri(Browser.Url));
 		}
 

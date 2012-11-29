@@ -60,7 +60,7 @@ namespace Medidata.RBT.PageObjects.Rave
 		public BaseEDCPage SelectFolder(string folderName)
 		{
 			//navigate to subject first, incase it is alreay in a folder.
-			IWebElement subLink = Browser.FindElementById("_ctl0_PgHeader_TabTextHyperlink3");
+			IWebElement subLink = Browser.TryFindElementById("_ctl0_PgHeader_TabTextHyperlink3");
 			subLink.Click();
 
 			IWebElement formFolderTable = Browser.TryFindElementById("_ctl0_LeftNav_EDCTaskList_TblTaskItems", true);
@@ -116,7 +116,11 @@ namespace Medidata.RBT.PageObjects.Rave
                     var body = Browser.FindElementByTagName("body");
                     IWebElement bodyResult = null;
                     if (exactMatch)
-                        bodyResult = Browser.TryFindElementBy(By.XPath("//*[text()= '" + identifier + "']"));
+                    {
+                        bodyResult = Browser.TryFindElementBy(
+                            By.XPath(string.Format("//*[text()='{0}']", identifier)), 
+                            isWait: false); //Don't wait here - let the caller do the waiting
+                    }
                     else if (!exactMatch && body.Text.Contains(identifier))
                         bodyResult = body;
 
