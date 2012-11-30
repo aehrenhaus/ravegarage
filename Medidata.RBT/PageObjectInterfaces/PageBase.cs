@@ -291,7 +291,8 @@ namespace Medidata.RBT
 			string path = stripSessionUrl.Replace(BaseURL.ToLower(), "");
 
 
-			bool isThePage = string.Equals(this.URL, path, StringComparison.InvariantCultureIgnoreCase);
+			bool isThePage = string.Equals(this.URL, path, StringComparison.InvariantCultureIgnoreCase) 
+                || string.Equals(this.URL, path + uri.Query, StringComparison.InvariantCultureIgnoreCase);
 			return isThePage;
         }
 
