@@ -80,6 +80,31 @@ alter database {0} set multi_user with rollback immediate",
 
 		}
 
+        public static void EnableDDEForSiteAndStudy(string site)
+        {
+            var builder = new System.Data.SqlClient.SqlConnectionStringBuilder();
+            builder.ConnectionString = System.Configuration.ConfigurationManager.ConnectionStrings[RBTConfiguration.Default.DatabaseConnection].ConnectionString;
+            string catalog = builder.InitialCatalog;
+            var DDESiteQuery = String.Format(
+            @"
+            update ss
+            set ss.isDDE = 1
+            from studySites ss
+	            join studies st
+		            on st.studyID = ss.studyID
+	            join projects p
+		            on p.projectID = st.projectID
+	            join sites si
+		            on si.siteID = ss.siteID
+            where dbo.fnlocaldefault(siteNameID) = '{0}'",
+                                                         site);
+
+            SqlCommand cmd = new SqlCommand(DDESiteQuery, new SqlConnection(builder.ToString()));
+            cmd.Connection.Open();
+            cmd.ExecuteNonQuery();
+            cmd.Connection.Close();
+        }
+
         public static void SetDatabaseToOffline()
         {
             var builder = new System.Data.SqlClient.SqlConnectionStringBuilder();

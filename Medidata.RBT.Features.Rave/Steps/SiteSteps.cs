@@ -25,6 +25,17 @@ namespace Medidata.RBT.Features.Rave.Steps.Seeding
         }
 
         /// <summary>
+        /// Turn on DDE for a site
+        /// </summary>
+        /// <param name="p0"></param>
+        /// <param name="p1"></param>
+        [Given(@"Site ""([^""]*)"" is DDE-enabled")]
+        public void GivenSiteForStudyIsDDEEnabled(string site)
+        {
+            var siteObject = TestContext.GetExistingFeatureObjectOrMakeNew(site, () => new Site(site));
+            DbHelper.EnableDDEForSiteAndStudy(siteObject.UniqueName);
+        }
+        /// <summary>
         /// Create a site if none already exists.
         /// </summary>
         /// <param name="siteName">The name that the site is referred to as in the feature file</param>

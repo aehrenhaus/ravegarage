@@ -115,7 +115,7 @@ namespace Medidata.RBT.Common.Steps
 		public void IShouldSee____In____(string identifier,string areaIdentifer)
 		{
 			bool exist = CurrentPage.As<IVerifySomethingExists>().VerifySomethingExist(areaIdentifer, null, identifier);
-			Assert.IsFalse(exist, String.Format("Does exist :{0}", identifier));
+			Assert.IsTrue(exist, String.Format("Does exist :{0}", identifier));
 		}
 
 		[StepDefinition(@"I should see ""([^""]*)""")]
