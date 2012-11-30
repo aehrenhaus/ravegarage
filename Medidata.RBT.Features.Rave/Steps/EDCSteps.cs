@@ -550,6 +550,16 @@ namespace Medidata.RBT.Features.Rave
             new SignatureBox().Sign(user.UniqueName, user.Password);
         }
 
+        [StepDefinition(@"I verify text ""([^""]*)"" with username ""([^""]*)"" exists")]
+        public void IVerifyText____WithUsername____Exists(string text, string userName)
+        {
+            User user = TestContext.GetExistingFeatureObjectOrMakeNew(
+                userName, () => new User(userName));
+            text = text.Replace(userName, user.UniqueName);
+            bool exist = CurrentPage.As<IVerifySomethingExists>().VerifySomethingExist(null, "text", text);
+            Assert.IsTrue(exist, String.Format("Text does not exist :{0}", text));
+
+        }
         /// <summary>
         /// Click drop button on a field on CRF page
         /// </summary>
