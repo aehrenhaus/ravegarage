@@ -1,6 +1,4 @@
-@ignore
 #DT13626: Amendment Manager inserts duplicate log records for soft deleted datapages. Soft deleting can be done by adding and removing objects with a merge matrix edit check, a script or a custom function.
-
 Feature: US18531_AM2_DT13626 When objects are added and then removed by an edit check with a merge matrix check action, duplicate records should not show up in the database after migration.
 
 Background: 
@@ -32,9 +30,9 @@ Given following Report assignments exist
 #And report "Audit Trail" exists
 
 @release_2012.1.0
-@US18531_AM2_DT13626_01
+@PB_US18531_AM2_DT13626_01
 @Validation
-Scenario:  US18531_AM2_DT13626_01 When the data is soft deleted and subject is migrated, then extra records should not be created
+Scenario:  PB_US18531_AM2_DT13626_01 When the data is soft deleted and subject is migrated, then extra records should not be created
 
 Given I login to Rave with user "SUPER USER 1"
 And I create a Subject

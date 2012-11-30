@@ -123,6 +123,8 @@ namespace Medidata.RBT.PageObjects.Rave
                     }
                     else if (!exactMatch && body.Text.Contains(identifier))
                         bodyResult = body;
+                    else if (!exactMatch && body.Text.Contains(identifier))
+                        bodyResult = body;
 
                     return bodyResult;
                 }, 

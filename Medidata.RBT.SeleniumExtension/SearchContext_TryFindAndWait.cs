@@ -100,7 +100,7 @@ namespace Medidata.RBT.SeleniumExtension
 			try
 			{
 				if (isWait.Value)
-					ele = waitForElement(context, b => context.FindElement(by), null, timeOutSecond);
+                    ele = waitForElement(context, b => context.FindElement(by), null, timeOutSecond);
                 else
                     ele = context.FindElement(by);
             }
@@ -118,7 +118,7 @@ namespace Medidata.RBT.SeleniumExtension
 			try
 			{
 				if (isWait.Value)
-					ele = waitForElement(context, b => context.FindElement(By.Id(Id)), null, timeOutSecond);
+                    ele = waitForElement(context, b => context.FindElement(By.Id(Id)), null, timeOutSecond);
 				else
 					ele = context.FindElement(By.Id(Id));
 			}

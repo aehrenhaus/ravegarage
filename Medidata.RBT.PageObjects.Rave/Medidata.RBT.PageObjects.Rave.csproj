@@ -89,6 +89,7 @@
     <Compile Include="Configuration\ConfigurationClinicalViewsPage.cs" />
     <Compile Include="Configuration\ConfigurationCreationModel.cs" />
     <Compile Include="Configuration\ConfigurationLoaderPage.cs" />
+    <Compile Include="Configuration\RoleActionsConfigPage.cs" />
     <Compile Include="Configuration\WorkflowConfigPage.cs" />
     <Compile Include="Configuration\Models\CoderConfigurationModel.cs" />
     <Compile Include="Configuration\Models\ExcelConfigurationModel.cs" />

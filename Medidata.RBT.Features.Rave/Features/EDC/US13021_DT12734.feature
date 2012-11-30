@@ -1,6 +1,6 @@
 ﻿# Help links for all standard reports should be replaced with Cloud links.
 @ignore
-Feature: US13021_DT12734
+Feature: US13021_DT12734 Help links for all standard reports should be replaced with Cloud links.
 	The Help link is selected for a standard report in the Reporter module, or View Report Help is selected in the Report Paraments, or View Report Help is selected within a generated report, the link should open a standard report is selected, then I see the cloud-based report help page.
  	As a Rave Adminstrator
 	When the Help link is selected for a standard report
@@ -60,10 +60,9 @@ Background:
 
 
 @release_2012.1.0	
-@US13021_DT12734_01
+@PB_US13021_DT12734_01
 @Draft
-
-Scenario: @US13021_DT12734_01 As a Data Manager, when I select the Help link, in the Help column, in Reporter > My Reports, then I see the cloud-based report help page.
+Scenario: PB_US13021_DT12734_01 As a Data Manager, when I select the Help link, in the Help column, in Reporter > My Reports, then I see the cloud-based report help page.
 
 	Given I login to Rave with user "defuser" and password "password"
 	When I select link "Reporter"
@@ -111,14 +110,12 @@ Scenario: @US13021_DT12734_01 As a Data Manager, when I select the Help link, in
 	#| Subject CRF Versions                   |                                                                                                |
 	#| Subject PDF Report                     |                                                                                                |
 	#| User Listing                           |                                                                                                |
-
 	And I take a screenshot
 
-
 @release_2012.1.0	
-@US13021_DT12734_02
+@PB_US13021_DT12734_02
 @Draft
-Scenario: @US13021_DT12734_02 As a Data Manager, when I select a standard report in Reporter > My Reports, and I select View Report Help, then I see the cloud-based report help page.
+Scenario: PB_US13021_DT12734_02 As a Data Manager, when I select a standard report in Reporter > My Reports, and I select View Report Help, then I see the cloud-based report help page.
 	Given I login to Rave with user "defuser" and password "password"
 	When I select link "Reporter"
 	And I choose "Standard Reports" from "Report Type"
@@ -166,15 +163,12 @@ Scenario: @US13021_DT12734_02 As a Data Manager, when I select a standard report
 	#| Subject CRF Versions                   |                                                                                                |
 	#| Subject PDF Report                     |                                                                                                |
 	#| User Listing                           |                                                                                                |
-
 	And I take a screenshot
 	
-
-
 @release_2012.1.0	
-@US13021_DT12734_03
+@PB_US13021_DT12734_03
 @Draft
-Scenario: @US13021_DT12734_03 As a Data Manager, when I a standard report in Reporter > My Reports, and I execute that report, and I select View Report Help, then I see the cloud-based report help page.
+Scenario: @PB_US13021_DT12734_03 As a Data Manager, when I a standard report in Reporter > My Reports, and I execute that report, and I select View Report Help, then I see the cloud-based report help page.
 	Given I login to Rave with user "defuser" and password "password"
 	When I select link "Report"
 	And I set report parameter "Study" with table
@@ -227,6 +221,5 @@ Scenario: @US13021_DT12734_03 As a Data Manager, when I a standard report in Rep
 	#| Subject CRF Versions                   |                                                                                                |
 	#| Subject PDF Report                     |                                                                                                |
 	#| User Listing                           |                                                                                                |
-
 	And I take a screenshot
 	                                                                                   
