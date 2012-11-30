@@ -34,7 +34,7 @@ Background:
 
 @release_2012.1.0		
 @PB_US13000_DT13378_01
-@GDraft
+@Validation
 Scenario: PB_US13000_DT13378_01 As an EDC user, when I clinical significance information and make changes to the local lab and Alert lab ranges such that the lab value is still above range, then I should still see the clinical significance information.
 	
 	When I select Study "IMCLCP11-0805" and Site "135 - Denis"
@@ -98,7 +98,7 @@ Scenario: PB_US13000_DT13378_01 As an EDC user, when I clinical significance inf
 
 @release_2012.1.0		
 @PB_US13000_DT13378_02
-@GDraft
+@Validation
 Scenario: PB_US13000_DT13378_02 As an EDC user, when I clinical significance information and make changes to the local lab and Alert lab ranges such that the lab value is still below range, then I should still see the clinical significance information.
 
 	When I select Study "IMCLCP11-0805" and Site "135 - Denis"
@@ -139,9 +139,6 @@ Scenario: PB_US13000_DT13378_02 As an EDC user, when I clinical significance inf
 	| AST							| ND    | U/L		|
 	| Alkaline Phosphatase			| ND    | U/L		|
 	| Lactate Dehydrogenase (LDH)	| ND    | U/L		|
-	#And I enter data in CRF and save
-	#| Field						| Data			| Control Type	|
-	#| Sample Date (dd MMM yyyy) | 01 Jan 2012	| datetime		|
 	And I click button "Save"
 	And I choose "Clinically Significant" from "Clinical Significance"
 	And I click button "Save"
