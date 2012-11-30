@@ -36,8 +36,12 @@ namespace Medidata.RBT.PageObjects.Rave
 
         public CRFPage OpenLastLogline()
         {
-            var editButtons = Browser.FindElements(
-    By.XPath("//table[@id='log']//input[@src='../../Img/i_pen.gif']"));
+            var editButtons = Browser.TryFindElementsBy(
+                By.XPath("//table[@id='log']//input[@src='../../Img/i_pen.gif']"));
+            if (editButtons == null || editButtons.Count == 0)
+                throw new Exception(
+                    "Last Log line cannot be opened becuase no log lines were found");
+
             editButtons[editButtons.Count - 1].Click();
             return this;
         }
@@ -46,8 +50,15 @@ namespace Medidata.RBT.PageObjects.Rave
         {
             //TODO: this should not work in a non -log line form
 
-            var editButtons = Browser.FindElements(
-                By.XPath("//table[@id='log']//input[@src='../../Img/i_pen.gif']"));
+            var editButtons = Browser.TryFindElementsBy(
+                By.XPath("//table[@id='log']//input[@src='../../Img/i_pen.gif']"), 
+                isWait: true);
+            if (editButtons == null || editButtons.Count == 0)
+                throw new Exception(
+                    string.Format(
+                        "Log line [{0}] cannot be opened becuase no log lines were found", 
+                        lineNum));
+
             editButtons[lineNum - 1].Click();
             return this;
         }
