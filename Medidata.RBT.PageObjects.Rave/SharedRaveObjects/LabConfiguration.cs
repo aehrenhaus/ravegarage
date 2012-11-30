@@ -61,6 +61,8 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
                     MakeAnalytesUnique(excel);
                     MakeLabUnique(excel);
                     MakeAnalyteRangesUnique(excel);
+                    MakeStandardGroupUnique(excel);
+                    MakeStandardGroupEntriesUnique(excel);
                 }
                 //Create a unique version of the file to upload
                 UniqueFileLocation = MakeFileLocationUnique(FileLocation);
@@ -278,6 +280,59 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
                         () => new RangeType(rangeTypeString.Trim()));
                     labsTable[row, "RangeType"] = rangeType.UniqueName.ToString();
                 }
+            }
+        }
+
+        /// <summary>
+        /// Make the standard group unique
+        /// </summary>
+        /// <param name="excel"></param>
+        private void MakeStandardGroupUnique(ExcelWorkbook excel)
+        {
+            ExcelTable standardGroupsTable = excel.OpenTableForEdit("StandardGroups");
+            for (int row = 1; row <= standardGroupsTable.RowsCount; row++)
+            {
+                //Name
+                string standardGroupString = standardGroupsTable[row, "Name"] as string;
+
+                if (!string.IsNullOrEmpty(standardGroupString))
+                {
+                    StandardGroup lab = TestContext.GetExistingFeatureObjectOrMakeNew<StandardGroup>(standardGroupString.Trim(),
+                        () => new StandardGroup(standardGroupString.Trim()));
+                    standardGroupsTable[row, "Name"] = lab.UniqueName.ToString();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Make the standard group entries unique
+        /// </summary>
+        /// <param name="excel"></param>
+        private void MakeStandardGroupEntriesUnique(ExcelWorkbook excel)
+        {
+            ExcelTable standardGroupEntriesTable = excel.OpenTableForEdit("StandardGroupEntries");
+
+            for (int row = 1; row <= standardGroupEntriesTable.RowsCount; row++)
+            {
+                //Standard group
+                string standardGroupString = standardGroupEntriesTable[row, "StandardGroup"] as string;
+
+                if (!string.IsNullOrEmpty(standardGroupString))
+                {
+                    StandardGroup lab = TestContext.GetExistingFeatureObjectOrMakeNew<StandardGroup>(standardGroupString.Trim(),
+                        () => new StandardGroup(standardGroupString.Trim()));
+                    standardGroupEntriesTable[row, "StandardGroup"] = lab.UniqueName.ToString();
+                }
+
+                //Analyte
+                string analyteString = standardGroupEntriesTable[row, "Analyte"] as string;
+                if (!string.IsNullOrEmpty(analyteString))
+                {
+                    Analyte analyte = TestContext.GetExistingFeatureObjectOrMakeNew<Analyte>(analyteString.Trim(),
+                        () => new Analyte(analyteString.Trim()));
+                    standardGroupEntriesTable[row, "Analyte"] = analyte.UniqueName.ToString();
+                }
+
             }
         }
 
