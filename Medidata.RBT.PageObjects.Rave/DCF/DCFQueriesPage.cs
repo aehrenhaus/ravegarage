@@ -7,27 +7,48 @@ using OpenQA.Selenium;
 using OpenQA.Selenium.Remote;
 using System.Collections.Specialized;
 using Medidata.RBT.SeleniumExtension;
+using Medidata.RBT.PageObjects.Rave.SharedRaveObjects;
 
 
 namespace Medidata.RBT.PageObjects.Rave
 {
 	public class DCFQueriesPage : RavePageBase
 	{
-		public override IPage ChooseFromDropdown(string name, string text, string objectType = null, string areaIdentifier = null)
-		{
-			if ("Study,Folder,Site Group,Form,Site,Subject".Split(',').Contains(name))
-			{
-				IWebElement dropdownTD = GetElementByName(name);
-				CompositeDropdown dropdown = new CompositeDropdown(this, name, dropdownTD);
-				dropdown.TypeAndSelect(text);
-			}
-			else
-			{
-				base.ChooseFromDropdown(name, text);
-			}
+        /// <summary>
+        /// returns study name, used in dropdowns.
+        /// </summary>
+        /// <param name="name"></param>
+        /// <returns></returns>
+        private string GetSeededStudyName(string name)
+        {
+            string newName;
+            string environment = " (Prod)";
+            if (name.Contains(environment))
+            {
+                newName = name.Replace(environment, "");
+                Project projectObject = TestContext.GetExistingFeatureObjectOrMakeNew(newName, () => new Project(newName));
+                return projectObject.UniqueName + environment;
+            }
+            return name;
+        }
+        public override IPage ChooseFromDropdown(string name, string text, string objectType = null, string areaIdentifier = null)
+        {
+            if ("Study,Folder,Site Group,Form,Site,Subject".Split(',').Contains(name))
+            {
+                IWebElement dropdownTD = GetElementByName(name);
+                CompositeDropdown dropdown = new CompositeDropdown(this, name, dropdownTD);
+                if (name == "Study")
+                    dropdown.TypeAndSelect(GetSeededStudyName(text));
+                else
+                    dropdown.TypeAndSelect(text);
+            }
+            else
+            {
+                base.ChooseFromDropdown(name, text);
+            }
 
-			return this;
-		}
+            return this;
+        }
 
         /// <summary>
         /// See IPage interface
