@@ -19,8 +19,8 @@
   <WindowWidth>10005</WindowWidth>
   <WindowTopX>120</WindowTopX>
   <WindowTopY>135</WindowTopY>
-  <ActiveSheet>16</ActiveSheet>
-  <FirstVisibleSheet>11</FirstVisibleSheet>
+  <ActiveSheet>7</ActiveSheet>
+  <FirstVisibleSheet>6</FirstVisibleSheet>
   <RefModeR1C1/>
   <ProtectStructure>False</ProtectStructure>
   <ProtectWindows>False</ProtectWindows>
@@ -37,7 +37,7 @@
   <Style ss:ID="s62" ss:Name="Normal_Sheet1">
    <Font ss:FontName="Arial" x:Family="Swiss"/>
   </Style>
-  <Style ss:ID="m106393600" ss:Parent="s62">
+  <Style ss:ID="m73008000" ss:Parent="s62">
    <Alignment ss:Vertical="Bottom" ss:WrapText="1"/>
    <Borders>
     <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"/>
@@ -50,7 +50,7 @@
    <NumberFormat/>
    <Protection/>
   </Style>
-  <Style ss:ID="m106393620" ss:Parent="s62">
+  <Style ss:ID="m73008020" ss:Parent="s62">
    <Alignment ss:Horizontal="Center" ss:Vertical="Top" ss:WrapText="1"/>
    <Borders>
     <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"/>
@@ -63,7 +63,7 @@
    <NumberFormat/>
    <Protection ss:Protected="0"/>
   </Style>
-  <Style ss:ID="m106393640" ss:Parent="s62">
+  <Style ss:ID="m73008040" ss:Parent="s62">
    <Alignment ss:Vertical="Bottom" ss:WrapText="1"/>
    <Borders>
     <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"/>
@@ -76,7 +76,7 @@
    <NumberFormat/>
    <Protection/>
   </Style>
-  <Style ss:ID="m106393660" ss:Parent="s62">
+  <Style ss:ID="m73008060" ss:Parent="s62">
    <Alignment ss:Horizontal="Center" ss:Vertical="Top" ss:WrapText="1"/>
    <Borders>
     <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"/>
@@ -89,7 +89,7 @@
    <NumberFormat/>
    <Protection ss:Protected="0"/>
   </Style>
-  <Style ss:ID="m106393680" ss:Parent="s62">
+  <Style ss:ID="m73008080" ss:Parent="s62">
    <Alignment ss:Vertical="Bottom" ss:WrapText="1"/>
    <Borders>
     <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="2"/>
@@ -102,7 +102,7 @@
    <NumberFormat/>
    <Protection/>
   </Style>
-  <Style ss:ID="m106393700" ss:Parent="s62">
+  <Style ss:ID="m73008100" ss:Parent="s62">
    <Alignment ss:Horizontal="Center" ss:Vertical="Top" ss:WrapText="1"/>
    <Borders>
     <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="2"/>
@@ -115,7 +115,7 @@
    <NumberFormat/>
    <Protection ss:Protected="0"/>
   </Style>
-  <Style ss:ID="m106405600" ss:Parent="s62">
+  <Style ss:ID="m73007776" ss:Parent="s62">
    <Alignment ss:Vertical="Bottom" ss:WrapText="1"/>
    <Borders>
     <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"/>
@@ -128,7 +128,7 @@
    <NumberFormat/>
    <Protection/>
   </Style>
-  <Style ss:ID="m106405620" ss:Parent="s62">
+  <Style ss:ID="m73007796" ss:Parent="s62">
    <Alignment ss:Horizontal="Center" ss:Vertical="Top" ss:WrapText="1"/>
    <Borders>
     <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"/>
@@ -141,7 +141,7 @@
    <NumberFormat ss:Format="@"/>
    <Protection ss:Protected="0"/>
   </Style>
-  <Style ss:ID="m106405640" ss:Parent="s62">
+  <Style ss:ID="m73007816" ss:Parent="s62">
    <Alignment ss:Vertical="Bottom" ss:WrapText="1"/>
    <Borders>
     <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"/>
@@ -154,7 +154,7 @@
    <NumberFormat/>
    <Protection/>
   </Style>
-  <Style ss:ID="m106405660" ss:Parent="s62">
+  <Style ss:ID="m73007836" ss:Parent="s62">
    <Alignment ss:Horizontal="Center" ss:Vertical="Top" ss:WrapText="1"/>
    <Borders>
     <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"/>
@@ -167,7 +167,7 @@
    <NumberFormat/>
    <Protection ss:Protected="0"/>
   </Style>
-  <Style ss:ID="m106405680" ss:Parent="s62">
+  <Style ss:ID="m73007856" ss:Parent="s62">
    <Alignment ss:Vertical="Bottom" ss:WrapText="1"/>
    <Borders>
     <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"/>
@@ -180,7 +180,7 @@
    <NumberFormat/>
    <Protection/>
   </Style>
-  <Style ss:ID="m106405700" ss:Parent="s62">
+  <Style ss:ID="m73007876" ss:Parent="s62">
    <Alignment ss:Horizontal="Center" ss:Vertical="Top" ss:WrapText="1"/>
    <Borders>
     <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"/>
@@ -410,33 +410,33 @@
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="15.75">
     <Cell ss:StyleID="s72"/>
-    <Cell ss:MergeAcross="1" ss:StyleID="m106405600"><Data ss:Type="String">Client</Data></Cell>
-    <Cell ss:MergeAcross="1" ss:StyleID="m106405620"/>
+    <Cell ss:MergeAcross="1" ss:StyleID="m73007776"><Data ss:Type="String">Client</Data></Cell>
+    <Cell ss:MergeAcross="1" ss:StyleID="m73007796"/>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="20.25">
     <Cell ss:StyleID="s72"/>
-    <Cell ss:MergeAcross="1" ss:StyleID="m106405640"><Data ss:Type="String">Client Project Name</Data></Cell>
-    <Cell ss:MergeAcross="1" ss:StyleID="m106405660"/>
+    <Cell ss:MergeAcross="1" ss:StyleID="m73007816"><Data ss:Type="String">Client Project Name</Data></Cell>
+    <Cell ss:MergeAcross="1" ss:StyleID="m73007836"/>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="17.25">
     <Cell ss:StyleID="s72"/>
-    <Cell ss:MergeAcross="1" ss:StyleID="m106405680"><Data ss:Type="String">Medidata Project Number</Data></Cell>
-    <Cell ss:MergeAcross="1" ss:StyleID="m106405700"/>
+    <Cell ss:MergeAcross="1" ss:StyleID="m73007856"><Data ss:Type="String">Medidata Project Number</Data></Cell>
+    <Cell ss:MergeAcross="1" ss:StyleID="m73007876"/>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="18.75">
     <Cell ss:StyleID="s72"/>
-    <Cell ss:MergeAcross="1" ss:StyleID="m106393600"><Data ss:Type="String">Client Implementation Manager</Data></Cell>
-    <Cell ss:MergeAcross="1" ss:StyleID="m106393620"/>
+    <Cell ss:MergeAcross="1" ss:StyleID="m73008000"><Data ss:Type="String">Client Implementation Manager</Data></Cell>
+    <Cell ss:MergeAcross="1" ss:StyleID="m73008020"/>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="19.5">
     <Cell ss:StyleID="s72"/>
-    <Cell ss:MergeAcross="1" ss:StyleID="m106393640"><Data ss:Type="String">Medidata Implementation Manager</Data></Cell>
-    <Cell ss:MergeAcross="1" ss:StyleID="m106393660"/>
+    <Cell ss:MergeAcross="1" ss:StyleID="m73008040"><Data ss:Type="String">Medidata Implementation Manager</Data></Cell>
+    <Cell ss:MergeAcross="1" ss:StyleID="m73008060"/>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="18.75">
     <Cell ss:StyleID="s72"/>
-    <Cell ss:MergeAcross="1" ss:StyleID="m106393680"><Data ss:Type="String">Medidata Study Designer</Data></Cell>
-    <Cell ss:MergeAcross="1" ss:StyleID="m106393700"/>
+    <Cell ss:MergeAcross="1" ss:StyleID="m73008080"><Data ss:Type="String">Medidata Study Designer</Data></Cell>
+    <Cell ss:MergeAcross="1" ss:StyleID="m73008100"/>
    </Row>
    <Row>
     <Cell ss:StyleID="s66"/>
@@ -1684,29 +1684,6 @@
       ss:Name="_FilterDatabase"/></Cell>
    </Row>
    <Row>
-    <Cell><Data ss:Type="String">AlertLab_1REG_STD</Data><NamedCell
-      ss:Name="_FilterDatabase"/></Cell>
-    <Cell><Data ss:Type="String">AlertLab</Data><NamedCell
-      ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:Index="6"><Data ss:Type="String">NeutrophilsREG_STD</Data><NamedCell
-      ss:Name="_FilterDatabase"/></Cell>
-    <Cell><Data ss:Type="String">2005 01 01</Data><NamedCell
-      ss:Name="_FilterDatabase"/></Cell>
-    <Cell><Data ss:Type="String">2015 01 01</Data><NamedCell
-      ss:Name="_FilterDatabase"/></Cell>
-    <Cell><Data ss:Type="String">35</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell><Data ss:Type="String">48</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell><Data ss:Type="String">FractionREG_STD</Data><NamedCell
-      ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:Index="14"><Data ss:Type="String">TRUE</Data><NamedCell
-      ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:Index="21"><Data ss:Type="String">20</Data><NamedCell
-      ss:Name="_FilterDatabase"/></Cell>
-    <Cell><Data ss:Type="String">YearREG_STD</Data><NamedCell
-      ss:Name="_FilterDatabase"/></Cell>
-    <Cell><Data ss:Type="String">40</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell><Data ss:Type="String">YearREG_STD</Data><NamedCell
-      ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:Index="200"
      ss:Formula="=IF(LEN(GlobalDataDictionaries!#REF!)&gt;0,GlobalDataDictionaries!#REF!,&quot;&quot;)"><Data
       ss:Type="Error">#REF!</Data></Cell>
@@ -1718,29 +1695,6 @@
       ss:Type="Error">#REF!</Data></Cell>
    </Row>
    <Row>
-    <Cell><Data ss:Type="String">AlertLab_1REG_STD</Data><NamedCell
-      ss:Name="_FilterDatabase"/></Cell>
-    <Cell><Data ss:Type="String">AlertLab</Data><NamedCell
-      ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:Index="6"><Data ss:Type="String">WBCREG_STD</Data><NamedCell
-      ss:Name="_FilterDatabase"/></Cell>
-    <Cell><Data ss:Type="String">2005 01 01</Data><NamedCell
-      ss:Name="_FilterDatabase"/></Cell>
-    <Cell><Data ss:Type="String">2015 01 01</Data><NamedCell
-      ss:Name="_FilterDatabase"/></Cell>
-    <Cell><Data ss:Type="String">10</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell><Data ss:Type="String">20</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell><Data ss:Type="String">*10E6/ulREG_STD</Data><NamedCell
-      ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:Index="14"><Data ss:Type="String">TRUE</Data><NamedCell
-      ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:Index="21"><Data ss:Type="String">20</Data><NamedCell
-      ss:Name="_FilterDatabase"/></Cell>
-    <Cell><Data ss:Type="String">YearREG_STD</Data><NamedCell
-      ss:Name="_FilterDatabase"/></Cell>
-    <Cell><Data ss:Type="String">40</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell><Data ss:Type="String">YearREG_STD</Data><NamedCell
-      ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:Index="200"
      ss:Formula="=IF(LEN(GlobalDataDictionaries!R[-1]C1)&gt;0,GlobalDataDictionaries!R[-1]C1,&quot;&quot;)"><Data
       ss:Type="String">sexREG_STD</Data></Cell>
@@ -1752,32 +1706,19 @@
       ss:Type="Error">#REF!</Data></Cell>
    </Row>
    <Row>
-    <Cell ss:StyleID="s128"><Data ss:Type="String">ReferenceLab_1REG_STD</Data><NamedCell
-      ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s128"><Data ss:Type="String">ReferenceLab</Data><NamedCell
-      ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:Index="6" ss:StyleID="s128"><Data ss:Type="String">NeutrophilsREG_STD</Data><NamedCell
-      ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s128"><Data ss:Type="String">2005 01 01</Data><NamedCell
-      ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s128"><Data ss:Type="String">2015 01 01</Data><NamedCell
-      ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s128"><Data ss:Type="String">40</Data><NamedCell
-      ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s128"><Data ss:Type="String">50</Data><NamedCell
-      ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s128"><Data ss:Type="String">FractionREG_STD</Data><NamedCell
-      ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:Index="14" ss:StyleID="s128"><Data ss:Type="String">TRUE</Data><NamedCell
-      ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:Index="21" ss:StyleID="s128"><Data ss:Type="String">20</Data><NamedCell
-      ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s128"><Data ss:Type="String">YearREG_STD</Data><NamedCell
-      ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s128"><Data ss:Type="String">40</Data><NamedCell
-      ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s128"><Data ss:Type="String">YearREG_STD</Data><NamedCell
-      ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s128"><NamedCell ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s128"><NamedCell ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:Index="6" ss:StyleID="s128"><NamedCell ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s128"><NamedCell ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s128"><NamedCell ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s128"><NamedCell ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s128"><NamedCell ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s128"><NamedCell ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:Index="14" ss:StyleID="s128"><NamedCell ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:Index="21" ss:StyleID="s128"><NamedCell ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s128"><NamedCell ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s128"><NamedCell ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s128"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:Index="200"
      ss:Formula="=IF(LEN(GlobalDataDictionaries!R[10]C1)&gt;0,GlobalDataDictionaries!R[10]C1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
@@ -1789,32 +1730,19 @@
       ss:Type="String"></Data></Cell>
    </Row>
    <Row>
-    <Cell ss:StyleID="s128"><Data ss:Type="String">ReferenceLab_1REG_STD</Data><NamedCell
-      ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s128"><Data ss:Type="String">ReferenceLab</Data><NamedCell
-      ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:Index="6" ss:StyleID="s128"><Data ss:Type="String">WBCREG_STD</Data><NamedCell
-      ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s128"><Data ss:Type="String">2005 01 01</Data><NamedCell
-      ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s128"><Data ss:Type="String">2015 01 01</Data><NamedCell
-      ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s128"><Data ss:Type="String">15</Data><NamedCell
-      ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s128"><Data ss:Type="String">25</Data><NamedCell
-      ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s128"><Data ss:Type="String">*10E6/ulREG_STD</Data><NamedCell
-      ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:Index="14" ss:StyleID="s128"><Data ss:Type="String">TRUE</Data><NamedCell
-      ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:Index="21" ss:StyleID="s128"><Data ss:Type="String">20</Data><NamedCell
-      ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s128"><Data ss:Type="String">YearREG_STD</Data><NamedCell
-      ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s128"><Data ss:Type="String">40</Data><NamedCell
-      ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s128"><Data ss:Type="String">YearREG_STD</Data><NamedCell
-      ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s128"><NamedCell ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s128"><NamedCell ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:Index="6" ss:StyleID="s128"><NamedCell ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s128"><NamedCell ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s128"><NamedCell ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s128"><NamedCell ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s128"><NamedCell ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s128"><NamedCell ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:Index="14" ss:StyleID="s128"><NamedCell ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:Index="21" ss:StyleID="s128"><NamedCell ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s128"><NamedCell ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s128"><NamedCell ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s128"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:Index="200"
      ss:Formula="=IF(LEN(GlobalDataDictionaries!R[10]C1)&gt;0,GlobalDataDictionaries!R[10]C1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
@@ -2245,12 +2173,13 @@
    </Row>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
+   <Selected/>
    <FreezePanes/>
    <FrozenNoSplit/>
    <SplitHorizontal>1</SplitHorizontal>
    <TopRowBottomPane>1</TopRowBottomPane>
    <SplitVertical>1</SplitVertical>
-   <LeftColumnRightPane>1</LeftColumnRightPane>
+   <LeftColumnRightPane>55</LeftColumnRightPane>
    <ActivePane>0</ActivePane>
    <Panes>
     <Pane>
@@ -2259,12 +2188,15 @@
     </Pane>
     <Pane>
      <Number>1</Number>
+     <ActiveCol>1</ActiveCol>
     </Pane>
     <Pane>
      <Number>2</Number>
     </Pane>
     <Pane>
      <Number>0</Number>
+     <ActiveCol>0</ActiveCol>
+     <RangeSelection>R2C1:R14C81</RangeSelection>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -3757,20 +3689,13 @@
       ss:Name="_FilterDatabase"/></Cell>
    </Row>
    <Row>
-    <Cell ss:StyleID="s128"><Data ss:Type="String">StandardREG_STD</Data><NamedCell
-      ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s128"><Data ss:Type="String">AgeREG_STD</Data><NamedCell
-      ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s128"><Data ss:Type="String">From Age</Data><NamedCell
-      ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s128"><Data ss:Type="String">GreaterThanOrEqualTo</Data><NamedCell
-      ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s128"><Data ss:Type="String">To Age</Data><NamedCell
-      ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s128"><Data ss:Type="String">LessThanOrEqualTo</Data><NamedCell
-      ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:Index="11" ss:StyleID="s128"><Data ss:Type="String">TRUE</Data><NamedCell
-      ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s128"><NamedCell ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s128"><NamedCell ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s128"><NamedCell ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s128"><NamedCell ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s128"><NamedCell ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s128"><NamedCell ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:Index="11" ss:StyleID="s128"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:Index="200"
      ss:Formula="=IF(LEN(RangeTypes!R[1]C1)&gt;0,RangeTypes!R[1]C1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
@@ -3778,18 +3703,12 @@
       ss:Type="Error">#REF!</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="25.5">
-    <Cell ss:StyleID="s128"><Data ss:Type="String">StandardREG_STD</Data><NamedCell
-      ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s128"><Data ss:Type="String">Pregnancy StatusREG_STD</Data><NamedCell
-      ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s128"><Data ss:Type="String">Pregnancy Status</Data><NamedCell
-      ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s128"><Data ss:Type="String">EqualTo</Data><NamedCell
-      ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:Index="6" ss:StyleID="s128"><Data ss:Type="String">None</Data><NamedCell
-      ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:Index="11" ss:StyleID="s128"><Data ss:Type="String">TRUE</Data><NamedCell
-      ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s128"><NamedCell ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s128"><NamedCell ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s128"><NamedCell ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s128"><NamedCell ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:Index="6" ss:StyleID="s128"><NamedCell ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:Index="11" ss:StyleID="s128"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:Index="200"
      ss:Formula="=IF(LEN(RangeTypes!R[1]C1)&gt;0,RangeTypes!R[1]C1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
@@ -3797,18 +3716,12 @@
       ss:Type="String">Pregnancy StatusREG_STD</Data></Cell>
    </Row>
    <Row>
-    <Cell ss:StyleID="s128"><Data ss:Type="String">StandardREG_STD</Data><NamedCell
-      ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s128"><Data ss:Type="String">sexREG_STD</Data><NamedCell
-      ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s128"><Data ss:Type="String">Sex</Data><NamedCell
-      ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s128"><Data ss:Type="String">EqualTo</Data><NamedCell
-      ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:Index="6" ss:StyleID="s128"><Data ss:Type="String">None</Data><NamedCell
-      ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:Index="11" ss:StyleID="s128"><Data ss:Type="String">TRUE</Data><NamedCell
-      ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s128"><NamedCell ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s128"><NamedCell ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s128"><NamedCell ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s128"><NamedCell ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:Index="6" ss:StyleID="s128"><NamedCell ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:Index="11" ss:StyleID="s128"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:Index="200"
      ss:Formula="=IF(LEN(RangeTypes!R[1]C1)&gt;0,RangeTypes!R[1]C1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
@@ -4300,6 +4213,8 @@
     </Pane>
     <Pane>
      <Number>0</Number>
+     <ActiveRow>24</ActiveRow>
+     <ActiveCol>10</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -4369,7 +4284,6 @@
    </Row>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
-   <Selected/>
    <FreezePanes/>
    <FrozenNoSplit/>
    <SplitHorizontal>1</SplitHorizontal>
