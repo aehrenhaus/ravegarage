@@ -53,13 +53,15 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
 	
 				var rolesTable = excel.OpenTableForEdit("EDC Roles");
 				var actionsTable = excel.OpenTableForEdit("Role Actions");
-	
+                var missingcodesTable = excel.OpenTableForEdit("Missing Codes");
 				
 				var name = rolesTable[1, "Name"];
 				UniqueName = name + TID;
 				rolesTable[1, "Name"] = UniqueName;
 
 				actionsTable[1, "Role"] = UniqueName;
+                if (missingcodesTable[1, "Role"] != null)
+                    missingcodesTable[1, "Role"] = UniqueName;
 
 				//Create a unique version of the file to upload
 				UniqueFileLocation = MakeFileLocationUnique(FileLocation);
