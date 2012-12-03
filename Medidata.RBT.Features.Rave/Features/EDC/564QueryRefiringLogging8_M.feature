@@ -1,5 +1,5 @@
 @ignore
-Feature: 8.1
+Feature: US12940_8.1 Edit Checks with require response and require manual close
 	As a Rave user
 	I want to change data
 	So I can see refired queries

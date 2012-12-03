@@ -12,8 +12,8 @@ Background:
 Given xml draft "US12999_DT13977.xml" is Uploaded
 Given study "US12999_DT13977" is assigned to Site "Site 1"
 Given following Project assignments exist
-| User         | Project         | Environment | Role         | Site   | SecurityRole          |
-| SUPER USER 1 | US12999_DT13977 | Live: Prod  | SUPER ROLE 1 | Site 1 | Project Admin Default |
+	| User         | Project         | Environment | Role         | Site   | SecurityRole          |
+	| SUPER USER 1 | US12999_DT13977 | Live: Prod  | SUPER ROLE 1 | Site 1 | Project Admin Default |
 Given I publish and push eCRF "US17446_SJ.xml" to "Version 1"
 
 #    Given I am logged in to Rave with username "defuser" and password "password"

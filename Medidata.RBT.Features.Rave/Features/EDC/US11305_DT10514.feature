@@ -1,5 +1,4 @@
 ﻿# Datapoints in same lab datapage may associate analyte ranges of different labs.
-
 @ignore
 Feature: US11305_DT10514 Datapoints in same lab datapage may associate analyte ranges of different labs.
 	As a Rave user

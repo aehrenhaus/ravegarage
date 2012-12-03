@@ -6,7 +6,7 @@
 # (4) the screen will scroll down as the user tabs so that the user can always see the fields into which they enter data
 # (5) the user is able to tab from the last enterable field to the save button and hit enter to save
 # This is related to DT 13558.
-Feature: Updated tab order to enable mouseless data entry - Untouched portrait log form
+Feature: US11550_DT13558 Ability to navigate by keyboard (tab). Updated tab order to enable mouseless data entry - Untouched portrait log form
   As A Rave EDC User
   I want to tab from field to field 
   So that I can enter data without using a mouse 
@@ -70,33 +70,36 @@ Given I select Form "Log Form Portrait"
 	#And I note "CRF Version"
 	#And I navigate to "study {Standard Study}, site {Site A1}, subject {Subj A1001}"
 
-
-  
+ 
 @release_2012.1.0
-@US11550-01a
+@PB_US11550_DT13558_01a
 @Validation  
-Scenario: The cursor begins in the data entry position for the first field on the page when I click on the page from the left-hand side menu.
+Scenario: PB_US11550_DT13558_01a The cursor begins in the data entry position for the first field on the page when I click on the page from the left-hand side menu.
+	
 	Then the cursor focus is located on "textbox" in the row labeled "Field Label 1" in the "first" position in the row
   
 @release_2012.1.0
-@US11550-02a
+@PB_US11550_DT13558_02a
 @Validation   
-Scenario: The cursor moves from one field to the next when the user hits the tab key and ignores help text.
+Scenario: PB_US11550_DT13558_02a The cursor moves from one field to the next when the user hits the tab key and ignores help text.
+	
 	When I hit "tab" key
 	Then the cursor focus is located on "datetime" in the row labeled "Field Label 2" in the "first" position in the row
 	
 @release_2012.1.0
-@US11550-03a
+@PB_US11550_DT13558_03a
 @Validation  
-Scenario: The cursor moves from one field to the next when the user hits the tab key and ignores other non-enterable fields.
+Scenario: PB_US11550_DT13558_03a The cursor moves from one field to the next when the user hits the tab key and ignores other non-enterable fields.
+	
 	Given move cursor focus to "textbox" in the row labeled "Field Label 17" in the "first" position in the row
 	When I hit "tab" key
 	Then the cursor focus is located on "textbox" in the row labeled "Field Label 19" in the "first" position in the row
 
 @release_2012.1.0
-@US11550-04a
+@PB_US11550_DT13558_04a
 @Validation   
-Scenario: The cursor moves through all data entry input elements in a datetime field before moving to the next field.
+Scenario: PB_US11550_DT13558_04a The cursor moves through all data entry input elements in a datetime field before moving to the next field.
+	
 	Given move cursor focus to "datetime" in the row labeled "Field Label 2" in the "first" position in the row
 	When I hit "tab" key
 	Then the cursor focus is located on "datetime" in the row labeled "Field Label 2" in the "second" position in the row
@@ -112,9 +115,10 @@ Scenario: The cursor moves through all data entry input elements in a datetime f
 	Then the cursor focus is located on "dropdown" in the row labeled "Field Label 3" in the "first" position in the row
 	
 @release_2012.1.0
-@US11550-05a
+@PB_US11550_DT13558_05a
 @Validation   
-Scenario: The cursor moves through all options in a radio button (horizontal).
+Scenario: PB_US11550_DT13558_05a The cursor moves through all options in a radio button (horizontal).
+	
 	Given move cursor focus to "radiobutton" in the row labeled "Field Label 7" in the "first" position in the row
 	When I hit "tab" key
 	Then the cursor focus is located on "radiobutton" in the row labeled "Field Label 7" in the "second" position in the row
@@ -122,9 +126,10 @@ Scenario: The cursor moves through all options in a radio button (horizontal).
 	Then the cursor focus is located on "radiobutton" in the row labeled "Field Label 7" in the "third" position in the row
 
 @release_2012.1.0
-@US11550-06a
+@PB_US11550_DT13558_06a
 @Validation   
-Scenario: The cursor moves through all options in a radio button (vertical).
+Scenario: PB_US11550_DT13558_06a The cursor moves through all options in a radio button (vertical).
+	
 	Given move cursor focus to "radiobutton vertical" in the row labeled "Field Label 8" in the "first" position in the row
 	When I hit "tab" key
 	Then the cursor focus is located on "radiobutton vertical" in the row labeled "Field Label 8" in the "second" position in the row
@@ -134,9 +139,10 @@ Scenario: The cursor moves through all options in a radio button (vertical).
 	Then the cursor focus is located on "specify textbox" in the row labeled "Field Label 8" in the "fourth" position in the row
 	
 @release_2012.1.0
-@US11550-07a
+@PB_US11550_DT13558_07a
 @Validation   
-Scenario: The cursor moves through all data entry input elements for a field associated with a unit dictionary before moving to the next field.
+Scenario: PB_US11550_DT13558_07a The cursor moves through all data entry input elements for a field associated with a unit dictionary before moving to the next field.
+	
 	Given move cursor focus to "textbox" in the row labeled "Field Label 15" in the "first" position in the row
 	When I hit "tab" key
 	Then the cursor focus is located on "unit dictionary" in the row labeled "Field Label 15" in the "second" position in the row
@@ -144,18 +150,20 @@ Scenario: The cursor moves through all data entry input elements for a field ass
 	Then the cursor focus is located on "textbox" in the row labeled "Field Label 16" in the "first" position in the row
 
 @release_2012.1.0
-@US11550-08a
+@PB_US11550_DT13558_08a
 @Validation   
-Scenario: The screen scrolls down when the eCRF is longer than the height of the screen and I tab away from the last visible field.
+Scenario: PB_US11550_DT13558_08a The screen scrolls down when the eCRF is longer than the height of the screen and I tab away from the last visible field.
+	
 	Given move cursor focus to "textbox" in the row labeled "Field Label 19" in the "first" position in the row
 	When I hit "tab" key
 	Then the cursor focus is located on "eSigPage" in the row labeled "Field Label 10" in the "first" position in the row
 	And the browser scrolls down	
 
 @release_2012.1.0
-@US11550-09a
+@PB_US11550_DT13558_09a
 @Validation  
-Scenario: When I tab away from the last field, I should tab to the save button.
+Scenario: PB_US11550_DT13558_09a When I tab away from the last field, I should tab to the save button.
+	
 	Given move cursor focus to "eSigPage" in the row labeled "Field Label 10" in the "second" position in the row
 	When I hit "tab" key
 	Then the cursor focus is on "button" labeled "Save"

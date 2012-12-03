@@ -1,7 +1,6 @@
 #When a non-visible (View Restricted) field, that does not require signature, on a form with other fields that do require signature and have already been signed, is made visible (View Restriction is removed), the signature on the visible fields is not broken.
 @ignore
-Feature: US17415_DT14115 
-	When a non-visible (View Restricted) field, that does not require signature, on a form with other fields that do require signature and have already been signed, is made visible (View Restriction is removed), then the signature on the visible fields should not break.
+Feature: US17415_DT14115 When a non-visible (View Restricted) field, that does not require signature, on a form with other fields that do require signature and have already been signed, is made visible (View Restriction is removed), then the signature on the visible fields should not break.
 	As a Rave Administrator
 	When I have a form that has visible and non-visible fields
 	And the visible fields require signature
@@ -23,7 +22,7 @@ Background:
 @release_564_2012.1.0
 @PB_US17415_DT14115_01
 @Validation	
-Scenario: @PB_US17415_DT14115_01 As an Investigator, when I sign the "Adverse Events" log form, the form level signature does not break when the "Added 1 For Extra Review" field is made visible.
+Scenario: PB_US17415_DT14115_01 As an Investigator, when I sign the "Adverse Events" log form, the form level signature does not break when the "Added 1 For Extra Review" field is made visible.
 
 	Given I publish and push eCRF "US17415_DT14115_Source_Draft.xml" to "SourceVersion1"
 	And I login to Rave with user "US17415_SUPERUSER"
@@ -79,7 +78,7 @@ Scenario: @PB_US17415_DT14115_01 As an Investigator, when I sign the "Adverse Ev
 @release_564_2012.1.0
 @PB_US17415_DT14115_02
 @Validation	
-Scenario: @PB_US17415_DT14115_02 As an Investigator, when I sign the "Serious Adverse Events" log form, the form level signature does not break when the "Added 1 For Extra Review" field is made visible.
+Scenario: PB_US17415_DT14115_02 As an Investigator, when I sign the "Serious Adverse Events" log form, the form level signature does not break when the "Added 1 For Extra Review" field is made visible.
 
 	Given I publish and push eCRF "US17415_DT14115_Source_Draft.xml" to "SourceVersion1"
 	And I login to Rave with user "US17415_SUPERUSER"
@@ -120,7 +119,7 @@ Scenario: @PB_US17415_DT14115_02 As an Investigator, when I sign the "Serious Ad
 @release_564_2012.1.0
 @PB_US17415_DT14115_03
 @Validation	
-Scenario: @PB_US17415_DT14115_03 As an Investigator, when I sign the "Demographics" form, the form level signature does not break when the ICDTAGE field is made visible.
+Scenario: PB_US17415_DT14115_03 As an Investigator, when I sign the "Demographics" form, the form level signature does not break when the ICDTAGE field is made visible.
 
 	Given I publish and push eCRF "US17415_DT14115_Source_Draft.xml" to "SourceVersion1"
 	And I login to Rave with user "US17415_SUPERUSER"
@@ -199,7 +198,7 @@ Scenario: @PB_US17415_DT14115_03 As an Investigator, when I sign the "Demographi
 @release_564_2012.1.0
 @PB_US17415_DT14115_04
 @Validation	
-Scenario: @PB_US17415_DT14115_04 As an Investigator, when I sign the "Test Demographics" form, the form level signature does not break when the ICDTAGE field is made invisible.
+Scenario: PB_US17415_DT14115_04 As an Investigator, when I sign the "Test Demographics" form, the form level signature does not break when the ICDTAGE field is made invisible.
 
 	Given I publish and push eCRF "US17415_DT14115_Source_Draft.xml" to "SourceVersion1"
 	And I login to Rave with user "US17415_SUPERUSER"
@@ -274,7 +273,7 @@ Scenario: @PB_US17415_DT14115_04 As an Investigator, when I sign the "Test Demog
 @release_564_2012.1.0
 @PB_US17415_DT14115_05
 @Validation	
-Scenario: @PB_US17415_DT14115_05 As an Investigator, when I sign the "Demographics" form and "Field Visibility Changed" is checked in Amendment Manager>Configure Plan, the form level signature does not break when the ICDTAGE field is made visible.
+Scenario: PB_US17415_DT14115_05 As an Investigator, when I sign the "Demographics" form and "Field Visibility Changed" is checked in Amendment Manager>Configure Plan, the form level signature does not break when the ICDTAGE field is made visible.
 
 	Given I publish and push eCRF "US17415_DT14115_Source_Draft.xml" to "SourceVersion1"
 	And I login to Rave with user "US17415_SUPERUSER"
@@ -358,7 +357,7 @@ Scenario: @PB_US17415_DT14115_05 As an Investigator, when I sign the "Demographi
 @release_564_2012.1.0
 @PB_US17415_DT14115_06
 @Validation	
-Scenario: @PB_US17415_DT14115_06 As an Investigator, when I sign the "Test Demographics" form and "Field Visibility Changed" is checked in Amendment Manager>Configure Plan, the form level signature does not break when the ICDTAGE field is made invisible.
+Scenario: PB_US17415_DT14115_06 As an Investigator, when I sign the "Test Demographics" form and "Field Visibility Changed" is checked in Amendment Manager>Configure Plan, the form level signature does not break when the ICDTAGE field is made invisible.
 
 	Given I publish and push eCRF "US17415_DT14115_Source_Draft.xml" to "SourceVersion1"
 	And I login to Rave with user "US17415_SUPERUSER"
@@ -438,7 +437,7 @@ Scenario: @PB_US17415_DT14115_06 As an Investigator, when I sign the "Test Demog
 @release_564_2012.1.0
 @PB_US17415_DT14115_07
 @Validation	
-Scenario: @PB_US17415_DT14115_07 As an Investigator, when I sign the "Adverse Events 1" standard form, the form level signature does not break when the "Added 1 For Extra Review" field is made visible.
+Scenario: PB_US17415_DT14115_07 As an Investigator, when I sign the "Adverse Events 1" standard form, the form level signature does not break when the "Added 1 For Extra Review" field is made visible.
 
 	Given I publish and push eCRF "US17415_DT14115_Source_Draft.xml" to "SourceVersion1"
 	And I login to Rave with user "US17415_SUPERUSER"
@@ -490,7 +489,7 @@ Scenario: @PB_US17415_DT14115_07 As an Investigator, when I sign the "Adverse Ev
 @release_564_2012.1.0
 @PB_US17415_DT14115_08
 @Validation	
-Scenario: @PB_US17415_DT14115_08 As an Investigator, when I sign the "Serious Adverse Events 1" standard form, the form level signature does not break when the "Added 1 For Extra Review" field is made visible.
+Scenario: PB_US17415_DT14115_08 As an Investigator, when I sign the "Serious Adverse Events 1" standard form, the form level signature does not break when the "Added 1 For Extra Review" field is made visible.
 
 	Given I publish and push eCRF "US17415_DT14115_Source_Draft.xml" to "SourceVersion1"
 	And I login to Rave with user "US17415_SUPERUSER"

@@ -5,7 +5,7 @@ Feature: US17701_DT13437 When an analyte range is manually created, the audit in
 	As a Rave user
 	When I manually create an analyte range
 	Then the audit information for the analyte I created is captured in the database
-
+ 
 Background:
 	Given I login to Rave with user "defuser" and password "password"
 	#And the following Project assignments exist

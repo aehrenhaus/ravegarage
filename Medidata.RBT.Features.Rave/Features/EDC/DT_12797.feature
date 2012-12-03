@@ -2,7 +2,7 @@
 # What happens internally is that datapoints wind up not requiring review; however, their "object statuses" show that they do require review. Datapoints wind up having a "requires review" icon, but the checkboxes for review are disabled.
 # After refreshing object statuses for a given subject, the icon displays as "complete".
 
-Feature: DT 12797 For a field that has a derivation, edit check does not set it to require review correctly in certain cases.
+Feature: US10241_DT12797 For a field that has a derivation, edit check does not set it to require review correctly in certain cases.
 As a Rave user
 Given I enter data
 And there is an edit check that sets the data to require review
@@ -29,9 +29,9 @@ Given I login to Rave with user "SUPER USER 1"
 # Derivation exists to derive field Age on Form 2 from field Visit Date and DOB on Form 2.
 
 @release_2012.1.0
-@PB-DT12797-01
-@VAL
-Scenario: As an EDC user, when I have an edit check fired on one field that sets another field to require review and I see the requires review icon, then I should see the review box enabled.
+@PB_US10241_DT12797_01
+@Validation
+Scenario: PB_US10241_DT12797_01 As an EDC user, when I have an edit check fired on one field that sets another field to require review and I see the requires review icon, then I should see the review box enabled.
 When I create a Subject
 | Field            | Data |
 | Subject Number   | 101  |
@@ -60,9 +60,9 @@ And I verify data on current CRF
 And I take a screenshot
 
 @release_2012.1.0
-@PB-DT12797-02
-@VAL
-Scenario: As an EDC user, when I have an edit check that sets a field to require review and I see the requires review icon, I review the data for the field, and I change the data, then I should see the review box enabled.
+@PB_US10241_DT12797_02
+@Validation
+Scenario: PB_US10241_DT12797_02 As an EDC user, when I have an edit check that sets a field to require review and I see the requires review icon, I review the data for the field, and I change the data, then I should see the review box enabled.
 When I create a Subject
 | Field            | Data |
 | Subject Number   | 102  |
@@ -104,9 +104,9 @@ Then I verify Audits exist
 | User entered | '19'           |
 
 @release_2012.1.0
-@PB-DT12797-03
-@VAL
-Scenario: As an EDC user, when I have an edit check fired on a field that is derived to sets another field to require review and I see the requires review icon, then I should see the review box enabled.
+@PB_US10241_DT12797_03
+@Validation
+Scenario: PB_US10241_DT12797_03 As an EDC user, when I have an edit check fired on a field that is derived to sets another field to require review and I see the requires review icon, then I should see the review box enabled.
 When I create a Subject
 | Field            | Data |
 | Subject Number   | 103  |

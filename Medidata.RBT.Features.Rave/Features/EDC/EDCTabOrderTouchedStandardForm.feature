@@ -5,7 +5,7 @@
 # (3) the screen will scroll down as the user tabs so that the user can always see the fields into which they enter data
 # (4) the user is able to tab from the last enterable field to the save button and hit enter to save
 # This is related to DT 13558.
-Feature: Updated tab order to enable mouseless data entry - Touched standard form
+Feature: US11550_DT13558 Ability to navigate by keyboard (tab). Updated tab order to enable mouseless data entry - Touched standard form
   As A Rave EDC User
   I want to tab from one editable field to the next editable field 
   So that I can enter data without using a mouse 
@@ -24,7 +24,6 @@ Given I create a Subject
     |Subject Number      |{RndNum<num1>(5)} |textbox      |
     |Subject ID 	     |SUB {Var(num1)}   |textbox      |	
 Given I select Form "Standard Form"
-
 
 	#Given user "User 1"  has study "Standard Study" has site "Site A1" has subject "Subj A1001" in database "<EDC> Database"
 	#And study "Standard Study" had draft "Draft 1" has form "Standard Form"
@@ -64,22 +63,18 @@ Given I select Form "Standard Form"
 	#	|Unit Dictionary 1		|U2					|			|U2			|			
 	#And "Standard Form Touched" has been submitted with data
 
-
-	
-
-
 @release_2012.1.0
-@US11550-01d
+@PB_US11550_DT13558_01d
 @Validation 
-Scenario: The cursor begins in the first available editable field on the page 
+Scenario: PB_US11550_DT13558_01d The cursor begins in the first available editable field on the page 
 
 		Then the cursor focus is located on "textbox" in the row labeled "Field Label 1" in the "first" position in the row
    
   
 @release_2012.1.0
-@US11550-02d
+@PB_US11550_DT13558_02d
 @Validation  
-Scenario: The cursor moves from one editable field to the next when the user hits the tab key and ignores help text.
+Scenario: PB_US11550_DT13558_02d The cursor moves from one editable field to the next when the user hits the tab key and ignores help text.
 	
 		Given move cursor focus to "textbox" in the row labeled "Field Label 16" in the "first" position in the row
 		When I hit "tab" key
@@ -87,9 +82,9 @@ Scenario: The cursor moves from one editable field to the next when the user hit
 		
 
 @release_2012.1.0
-@US11550-03d
+@PB_US11550_DT13558_03d
 @Validation  
-Scenario: When I tab away from the last editable field, I should tab to the save button.
+Scenario: PB_US11550_DT13558_03d When I tab away from the last editable field, I should tab to the save button.
 		
 		Given move cursor focus to "textbox" in the row labeled "Field Label 19" in the "first" position in the row
 		When I hit "tab" key

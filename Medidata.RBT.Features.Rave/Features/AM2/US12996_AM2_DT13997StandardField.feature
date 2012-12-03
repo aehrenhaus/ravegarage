@@ -19,9 +19,9 @@ Given I publish and push eCRF "DT13997 Upload Sixth AM SJ_1.6.13.xml" to "Versio
 #And Coded Data is assigned to Default value for log field "Field A" 
 
 @release_2012.1.0
-@PB_US12996_DT13997_70
+@PB_US12996_DT13997_80
 @Validation
-Scenario:  PB_US12996_DT13997_70 For a standard field. When a user navigates to Architect, removes one default value of the coded values of a data dictionary, creates a new CRF version, creates a migration plan with the new CRF version as the Target CRF version, in object mapping maps the data dictionary, and migrates the subject, then user navigate to EDC and sees that the defaulted values for the subject are present and the removed one is disabled.
+Scenario:  PB_US12996_DT13997_80 For a standard field. When a user navigates to Architect, removes one default value of the coded values of a data dictionary, creates a new CRF version, creates a migration plan with the new CRF version as the Target CRF version, in object mapping maps the data dictionary, and migrates the subject, then user navigate to EDC and sees that the defaulted values for the subject are present and the removed one is disabled.
 
 Given I login to Rave with user "SUPER USER 1"
 Given I create a Subject
@@ -50,9 +50,9 @@ And I verify data on Fields in CRF
 And I take a screenshot
 
 @release_2012.1.0
-@PB_US12996_DT13997_80
+@PB_US12996_DT13997_90
 @Validation
-Scenario:  PB_US12996_DT13997_80 Moving from a standard to a log field, the user removes a default value. Leaves original stard value and adds new default log values after.
+Scenario:  PB_US12996_DT13997_90 Moving from a standard to a log field, the user removes a default value. Leaves original stard value and adds new default log values after.
 
 Given I login to Rave with user "SUPER USER 1"
 Given I create a Subject

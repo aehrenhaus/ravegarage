@@ -38,7 +38,7 @@
 #If there is not enough room to display the PDF in horizontal view, it should be displayed vertically.
 #
 @ignore
-Feature: DT11249_US12607_US19066_Manual Users should have the option to generate data populated PDF files for log forms in portrait mode with or without page breaks 
+Feature: US12607_US19066_DT11249 Manual Users should have the option to generate data populated PDF files for log forms in portrait mode with or without page breaks 
 As a Rave User with access to PDF generator and a study with a log form that render in portrait mode in the PDF generator
 I want to have the option to generate the PDFs either with or without page breaks between each records
 so that I can minimize the number of pages generated in the PDF if I choose to do so.
@@ -266,12 +266,13 @@ so that I can minimize the number of pages generated in the PDF if I choose to d
 #    |Description:  |Test16                           |
 #  And I navigate to "Home"
 #  And I log out of Rave
-#  
+ 
 #@release_2012.1.0
-#@US12607_US19066-01B
+#@PB_US12607_US19066_DT11249_01B
 #@ignore
 #@manual
-#Scenario:@US12607_US19066-01B When I select all assigned forms while creating PDF with default PDF Configuration Profile, then i should see a continuous list of all records.
+#@Validation
+#Scenario: PB_US12607_US19066_DT11249_01B When I select all assigned forms while creating PDF with default PDF Configuration Profile, then i should see a continuous list of all records.
 #
 #    Given I log in to Rave with user "US12607_user1"
 #	And I navigate to "PDF Generator" module
@@ -287,12 +288,13 @@ so that I can minimize the number of pages generated in the PDF if I choose to d
 #	Then I should see continuous list of all records/loglines on "Medical History2" form with default values
 #	And I should see all fields correctly on one page (depending on the fields) on "Adverse Events1", "Adverse Events2" and "Medical History1" forms without default values
 #	And I take a screenshot
-#	
+	
 #@release_2012.1.0
-#@US12607_US19066-02B
+#@PB_US12607_US19066_DT11249_02B
 #@ignore
 #@manual
-#Scenario:@US12607_US19066-02B When I unselect all assigned forms while creating PDF with default PDF Configuration Profile, then i should see a page break after each individual record.
+#@Validation
+#Scenario: PB_US12607_US19066_DT11249_02B When I unselect all assigned forms while creating PDF with default PDF Configuration Profile, then i should see a page break after each individual record.
 #
 #    Given I log in to Rave with user "US12607_user1"
 #	And I navigate to "PDF Generator" module
@@ -308,12 +310,13 @@ so that I can minimize the number of pages generated in the PDF if I choose to d
 #   	Then I should see a page break after each individual record/logline on "Medical History2" form with default values
 #	And I should see all fields correctly on one page (depending on the fields) on "Adverse Events1", "Adverse Events2" and "Medical History1" forms without default values
 #    And I take a screenshot
-#	
+	
 #@release_2012.1.0
-#@US12607_US19066-03B
+#@PB_US12607_US19066_DT11249_03B
 #@ignore
 #@manual
-#Scenario:@US12607_US19066-03B When i select two forms while creating PDF with default PDF Configuration Profile, then i should see continuous list of records on selected two forms and i should see a page break after each individual record on unselected forms.
+#@Validation
+#Scenario: PB_US12607_US19066_DT11249_03B When i select two forms while creating PDF with default PDF Configuration Profile, then i should see continuous list of records on selected two forms and i should see a page break after each individual record on unselected forms.
 #
 #    Given I log in to Rave with user "US12607_user1"
 #	And I navigate to "PDF Generator" module
@@ -329,12 +332,13 @@ so that I can minimize the number of pages generated in the PDF if I choose to d
 #	Then I should see continuous list of all records/loglines on "Medical History2" form with default values
 #	And I should see all fields correctly on one page (depending on the fields) on "Adverse Events1", "Adverse Events2" and "Medical History1" forms without default values
 #	And I take a screenshot
-#		
+		
 #@release_2012.1.0
-#@US12607_US19066-04B
+#@PB_US12607_US19066_DT11249_04B
 #@ignore
 #@manual
-#Scenario:@US12607_US19066-04B When I select all assigned forms while creating PDF with default PDF Configuration Profile with Localization locale, then i should see a continuous list of all records with "L" locale.
+#@Validation
+#Scenario: PB_US12607_US19066_DT11249_04B When I select all assigned forms while creating PDF with default PDF Configuration Profile with Localization locale, then i should see a continuous list of all records with "L" locale.
 #
 #    Given I log in to Rave with user "US12607_locuser"
 #	And I navigate to "LPDF Generator" module
@@ -350,12 +354,13 @@ so that I can minimize the number of pages generated in the PDF if I choose to d
 #	Then I should see continuous list of all records/loglines with "L" locale on "LMedical History2" form with default values
 #	And I should see all fields correctly on one page (depending on the fields) with "L" locale on "LAdverse Events1", "LAdverse Events2" and "LMedical History1" forms without default values
 #	And I take a screenshot
-#	
+	
 #@release_2012.1.0
-#@US12607_US19066-05B
+#@PB_US12607_US19066_DT11249_05B
 #@ignore
 #@manual
-#Scenario:@US12607_US19066-05B When I unselect all assigned forms while creating PDF with default PDF Configuration Profile with Localization locale, then i should see a page break after each individual record with "L" locale.
+#@Validation
+#Scenario: PB_US12607_US19066_DT11249_05B When I unselect all assigned forms while creating PDF with default PDF Configuration Profile with Localization locale, then i should see a page break after each individual record with "L" locale.
 #
 #    Given I log in to Rave with user "US12607_locuser"
 #	And I navigate to "LPDF Generator" module
