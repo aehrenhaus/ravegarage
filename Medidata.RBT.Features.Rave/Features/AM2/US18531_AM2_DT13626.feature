@@ -43,14 +43,14 @@ And I create a Subject
 And I select Form "Form A"
 And I enter data in CRF and save
     | Field   | Data | Control Type |
-    | Field A | Yes  | Drop Down    |
+    | Field A | Yes  | dropdown     |
     | Field B | 1234 | textbox      |
     | Field C | 5678 | textbox      |
 And I verify text "Form B" exists
 And I take a screenshot
 And I enter data in CRF and save
     | Field   | Data | Control Type |
-    | Field A | No   | Drop Down    |
+    | Field A | No   | dropdown     |
 And I verify text "Form B" does not exist
 And I take a screenshot
 Given I publish and push eCRF "DT13626.xml" to "Version 2"
