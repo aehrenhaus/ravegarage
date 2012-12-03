@@ -15,7 +15,7 @@ using TechTalk.SpecFlow.Assist;
 namespace Medidata.RBT.PageObjects.Rave
 {
     public class CrystalReportPage
-		: RavePageBase, ICanPaginate, IVerifyRowsExist
+        : CrystalReportPageBase, ICanPaginate, IVerifyRowsExist
 	{
         public CrystalReportPage() { }
         
