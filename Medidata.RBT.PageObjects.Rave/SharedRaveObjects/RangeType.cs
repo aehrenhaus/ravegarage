@@ -27,7 +27,7 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
         /// <param name="rangeTypeName">The feature file range type name</param>
         public RangeType(string rangeTypeName)
         {
-            UniqueName = rangeTypeName + TID;
+            UniqueName = rangeTypeName;
         }
 
         /// <summary>
