@@ -7,13 +7,13 @@ Feature: US17446_DT14276 When saving Low and High ranges for Field Edit Check, a
 	Then an Invalid* error message is displayed
 
 Background:
-Given role "SUPERROLE_US17446" exists
+Given role "US17446_SUPERROLE" exists
 Given xml draft "US17446_SJ_GL.xml" is Uploaded
 Given xml draft "US17446_SJ.xml" is Uploaded
 Given study "US17446_SJ" is assigned to Site "Site 1"
 Given following Project assignments exist
 | User         | Project    | Environment | Role              | Site   | SecurityRole          | GlobalLibraryRole            |
-| SUPER USER 1 | US17446_SJ | Live: Prod  | SUPERROLE_US17446 | Site 1 | Project Admin Default | Global Library Admin Default |
+| SUPER USER 1 | US17446_SJ | Live: Prod  | US17446_SUPERROLE | Site 1 | Project Admin Default | Global Library Admin Default |
 Given I publish and push eCRF "US17446_SJ.xml" to "Version 1"
  
 	#Given I login to Rave with user "defuser" and password "password"
