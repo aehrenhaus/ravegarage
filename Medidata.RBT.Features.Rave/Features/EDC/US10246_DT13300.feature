@@ -17,8 +17,8 @@ Background:
 	Given Clinical Views exist for project "US10246_DT13300"
 	Given following Project assignments exist
 	| User         | Project         | Environment | Role              | Site   | SecurityRole          |
-	| defjapan     | US10246_DT13300 | Live: Prod  | SUPERROLE_US10246 | Site 1 | Project Admin Default |
-	| SUPER USER 1 | US10246_DT13300 | Live: Prod  | SUPERROLE_US10246 | Site 1 | Project Admin Default |
+	| defjapan     | US10246_DT13300 | Live: Prod  | US10246_SUPERROLE | Site 1 | Project Admin Default |
+	| SUPER USER 1 | US10246_DT13300 | Live: Prod  | US10246_SUPERROLE | Site 1 | Project Admin Default |
 	
 	#Given I login to Rave with user "defjapan" and password "password"
 	#And the following Project assignments exist
