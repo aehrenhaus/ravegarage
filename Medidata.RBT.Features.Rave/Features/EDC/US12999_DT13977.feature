@@ -10,7 +10,7 @@ Feature: US12999_DT13977
 	Then I should not see the clinical significance information
 
 Background:
-Given I login to Rave with user "US12999_SUPERUSER"
+Given I login to Rave with user "SUPER USER 1"
 And Site "Site_001" exists
 And  study "US12999_DT13977" is assigned to Site "Site_001"
 And the following Range Types exist
@@ -20,7 +20,7 @@ And xml Lab Configuration "Lab_US12999_DT13977.xml" is uploaded
 And xml draft "US12999_DT13977.xml" is Uploaded
 And following Project assignments exist
   | User              | Project         | Environment | Role              | Site     | SecurityRole          |
-  | US12999_SUPERUSER | US12999_DT13977 | Live: Prod  | US12999_SUPERROLE | Site_001 | Project Admin Default |
+  | SUPER USER 1 | US12999_DT13977 | Live: Prod  | US12999_SUPERROLE | Site_001 | Project Admin Default |
 And I publish and push eCRF "US12999_DT13977.xml" to "Version 1" with study environment "Prod"
 
 
@@ -28,7 +28,7 @@ And I publish and push eCRF "US12999_DT13977.xml" to "Version 1" with study envi
 @PB-DT13977-01
 @Validation
 Scenario: @PB-DT13977-01 As an EDC user, when I change an out of range value to be a missing code, then I should still see the clinical significance information.
-	When I login to Rave with user "US12999_SUPERUSER"
+	When I login to Rave with user "SUPER USER 1"
 	And I create a Subject
 	  | Field            | Data               |
 	  | Subject Initials | SUB                |
