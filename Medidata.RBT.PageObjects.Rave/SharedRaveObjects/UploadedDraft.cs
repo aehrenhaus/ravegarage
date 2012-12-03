@@ -78,8 +78,11 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
                 //Lab standard group
                 string labStandardGroupName = draftTable[1, "LabStandardGroup"].ToString();
 
-                StandardGroup labStandardGroup = TestContext.GetExistingFeatureObjectOrMakeNew(labStandardGroupName, () => new StandardGroup(labStandardGroupName));
-                draftTable[1, "LabStandardGroup"] = labStandardGroup.UniqueName;
+                if (!string.IsNullOrEmpty(labStandardGroupName))
+                {
+                    StandardGroup labStandardGroup = TestContext.GetExistingFeatureObjectOrMakeNew(labStandardGroupName, () => new StandardGroup(labStandardGroupName));
+                    draftTable[1, "LabStandardGroup"] = labStandardGroup.UniqueName;
+                }
 
 				//draft
 				var oldDraftName = draftTable[1, "DraftName"].ToString();
