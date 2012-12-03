@@ -1,6 +1,5 @@
 # In 5.6.4 (DT 11659 fixed the same issue on Rave v5.6.3)
-# A form has standard and log fields.  One of the standard fields uses Dynamic Search List as the control type.  After initially submitting the datapage, and later creating a new log line, value for "AltCodedValue"  doesn't get propagated to the newly-created records in the database.  
-@ignore
+# A form has standard and log fields.  One of the standard fields uses Dynamic Search List as the control type.  After initially submitting the datapage, and later creating a new log line, value for "AltCodedValue"  doesn't get propagated to the newly-created records in the database.
 Feature: US11306_DT13637 On a mixed form, AltCodedValue from a standard DSL field doesn't get propagated into hidden datapoints on newly-created records.
 	In Rave 5.6.4, in a mixed form, AltCodedValue from a standard DSL field doesn't get propagated into hidden datapoints on newly-created records.
 	As a Rave user
