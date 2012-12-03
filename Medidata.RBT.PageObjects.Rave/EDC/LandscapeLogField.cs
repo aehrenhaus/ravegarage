@@ -105,8 +105,13 @@ namespace Medidata.RBT.PageObjects.Rave
 		public override bool IsElementFocused(ControlType type, int position) 
         {
             var element = GetElementInColumnByRowIDColumnID(type, position);
-            return this.Page.GetFocusElement()
-                .GetAttribute("ID") == element.GetAttribute("ID");
+            var actualId = this.Page.GetFocusElement().GetAttribute("ID");
+            var expectedId = element.GetAttribute("ID");
+            Console.WriteLine(string.Format(
+                "-> LandscapeLogField.IsElementFocused : Actual [{0}], Expected [{1}]",
+                actualId,
+                expectedId));
+            return actualId == expectedId;
         }
 		public override void FocusElement(ControlType type, int position) 
         {
