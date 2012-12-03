@@ -138,6 +138,12 @@ namespace Medidata.RBT.PageObjects.Rave
             }
 
             IWebElement result = null;
+            if (!string.IsNullOrEmpty(type) && type.Equals("text"))
+            {
+                if (Browser.FindElementByTagName("body").Text.Contains(identifier))
+                    return true;
+            }
+
             switch (identifier)
             {
                 case "Sign and Save":
