@@ -13,7 +13,7 @@ using Medidata.RBT.SeleniumExtension;
 
 namespace Medidata.RBT.PageObjects.Rave
 {
-    public class DataListingReportPage : RavePageBase, IVerifyRowsExist, ICanPaginate, ICanHighlight
+    public class DataListingReportPage : CrystalReportPageBase, IVerifyRowsExist, ICanPaginate, ICanHighlight
 	{
 		public override IWebElement GetElementByName(string identifier, string areaIdentifier = null, string listItem = null)
 		{
@@ -36,14 +36,6 @@ namespace Medidata.RBT.PageObjects.Rave
 				return "DataListingsReport.aspx";
 			}
 		}
-
-        public override string BaseURL
-        {
-            get
-            {
-                return RaveConfiguration.Default.ReportURL;
-            }
-        }
 
         #region ICanVerifyExist
 

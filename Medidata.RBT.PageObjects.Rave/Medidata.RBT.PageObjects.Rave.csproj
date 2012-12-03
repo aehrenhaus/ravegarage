@@ -150,6 +150,7 @@
     <Compile Include="ReportAdmin\PackageDownload.cs" />
     <Compile Include="ReportAdmin\ReportManagerPage.cs" />
     <Compile Include="ReportAdmin\ReportAssignmentPage.cs" />
+    <Compile Include="Reports\CrystalReportPageBase.cs" />
     <Compile Include="SharedRaveObjects\Analyte.cs" />
     <Compile Include="SharedRaveObjects\StandardGroups.cs" />
     <Compile Include="SharedRaveObjects\StudySite.cs" />
