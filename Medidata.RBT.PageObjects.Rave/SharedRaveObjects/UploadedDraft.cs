@@ -76,13 +76,17 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
 				draftTable[1, "ProjectName"] = Project.UniqueName;
 
                 //Lab standard group
-                string labStandardGroupName = draftTable[1, "LabStandardGroup"].ToString();
-
-                if (!string.IsNullOrEmpty(labStandardGroupName))
+                try
                 {
-                    StandardGroup labStandardGroup = TestContext.GetExistingFeatureObjectOrMakeNew(labStandardGroupName, () => new StandardGroup(labStandardGroupName));
-                    draftTable[1, "LabStandardGroup"] = labStandardGroup.UniqueName;
+                    string labStandardGroupName = draftTable[1, "LabStandardGroup"].ToString();
+
+                    if (!string.IsNullOrEmpty(labStandardGroupName))
+                    {
+                        StandardGroup labStandardGroup = TestContext.GetExistingFeatureObjectOrMakeNew(labStandardGroupName, () => new StandardGroup(labStandardGroupName));
+                        draftTable[1, "LabStandardGroup"] = labStandardGroup.UniqueName;
+                    }
                 }
+                catch (NullReferenceException) { }
 
 				//draft
 				var oldDraftName = draftTable[1, "DraftName"].ToString();
