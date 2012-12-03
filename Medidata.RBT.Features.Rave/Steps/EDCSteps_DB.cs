@@ -8,6 +8,7 @@ using Medidata.RBT.PageObjects.Rave;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Medidata.RBT;
 using TechTalk.SpecFlow.Assist;
+using Medidata.RBT.PageObjects.Rave.SharedRaveObjects;
 
 
 namespace Medidata.RBT.Features.Rave
@@ -83,7 +84,8 @@ namespace Medidata.RBT.Features.Rave
 		[StepDefinition(@"I wait for Clinical View refresh to complete for project ""([^""]*)""")]
 		public void IWaitForClinicalViewRefreshToCompleteForProject____(string project)
 		{
-			var sql = ClinicalViewsScripts.GenerateSQLForNumberOfRecordsThatNeedCVRefresh(project);
+            var projectUniqueName = TestContext.GetExistingFeatureObjectOrMakeNew(project, () => new Project(project)).UniqueName;
+            var sql = ClinicalViewsScripts.GenerateSQLForNumberOfRecordsThatNeedCVRefresh(projectUniqueName);
 			System.Data.DataTable dataTable;
 			do
 			{

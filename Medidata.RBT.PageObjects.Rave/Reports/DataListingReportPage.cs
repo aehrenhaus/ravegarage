@@ -37,6 +37,13 @@ namespace Medidata.RBT.PageObjects.Rave
 			}
 		}
 
+        public override string BaseURL
+        {
+            get
+            {
+                return RaveConfiguration.Default.ReportURL;
+            }
+        }
 
         #region ICanVerifyExist
 
