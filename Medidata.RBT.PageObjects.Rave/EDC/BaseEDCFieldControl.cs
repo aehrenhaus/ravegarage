@@ -100,7 +100,9 @@ namespace Medidata.RBT.PageObjects.Rave
                 case ControlType.Signature:
                     EnterSignature(TestContext.GetExistingFeatureObjectOrMakeNew<User>(text, () => new User(text)));
                     break;
-
+                case ControlType.DropDownList:
+                    EnterDropdownValue(text);
+                    break;
 				default:
 					throw new Exception("Not supported control type:"+controlType);
 			}
