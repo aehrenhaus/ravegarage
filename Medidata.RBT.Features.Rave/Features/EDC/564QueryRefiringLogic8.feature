@@ -15,10 +15,12 @@ Background:
  	Given xml draft "Edit_Check_Study_3_Draft_8.xml" is Uploaded
  	Given xml draft "AM_Edit_Check_Study_Draft_1.xml" is Uploaded
 	Given Site "Edit Check Site 1" exists
+	Given Site "Edit Check Site 2" exists
 	Given Site "Edit Check Site 8" exists
 	Given Site "AM Edit Site" exists
 	Given study "Edit Check Study 3" is assigned to Site "Edit Check Site 8"
 	Given study "Edit Check Study 3" is assigned to Site "Edit Check Site 1"
+	Given study "Edit Check Study 3" is assigned to Site "Edit Check Site 2"
 	Given study "AM Edit Check Study" is assigned to Site "AM Edit Site"
 	Given I publish and push eCRF "Edit_Check_Study_3_Draft_8.xml" to "Version 1"
 	Given I publish and push eCRF "AM_Edit_Check_Study_Draft_1.xml" to "Version 1"
@@ -28,6 +30,7 @@ Background:
 		| User         | Project             | Environment | Role            | Site              | SecurityRole          |
 		| SUPER USER 1 | Edit Check Study 3  | Live: Prod  | Edit Check Role | Edit Check Site 8 | Project Admin Default |
 		| SUPER USER 1 | Edit Check Study 3  | Live: Prod  | Edit Check Role | Edit Check Site 1 | Project Admin Default |
+		| SUPER USER 1 | Edit Check Study 3  | Live: Prod  | Edit Check Role | Edit Check Site 2 | Project Admin Default |
 		| SUPER USER 1 | AM Edit Check Study | Live: Prod  | Edit Check Role | AM Edit Site      | Project Admin Default |
 		| SUPER USER 2 | Edit Check Study 3  | Live: Prod  | Edit Check Role | Edit Check Site 8 | Project Admin Default |
 
@@ -290,7 +293,6 @@ Scenario: PB_8.2.1 Task Summary
 #----------------------------------------------------------------------------------------------------------------------------------------	
 @release_564_Patch11
 @PB_8.3.1
-@ignore
 @Validation
 Scenario: PB_8.3.1 Query Management
 
@@ -416,7 +418,6 @@ Scenario: PB_8.3.2
 #----------------------------------------------------------------------------------------------------------------------------------------	
 @release_564_Patch11
 @PB_8.4.1
-@ignore
 @Validation
 Scenario: PB_8.4.1 Migrate Subject
 	
@@ -594,7 +595,6 @@ Scenario: PB_8.4.1 Migrate Subject
 #----------------------------------------------------------------------------------------------------------------------------------------	
 @release_564_Patch11
 @PB_8.5.1
-@ignore
 @Validation
 # The feature is not implemented in 5.6.3
 Scenario: PB_8.5.1 Publish Checks
@@ -649,7 +649,7 @@ Scenario: PB_8.5.1 Publish Checks
 	And I select link "Save"
 	And I take a screenshot
 	And I select link "Publish"
-	And I accept alert window
+	#And I accept alert window
 	And I select link "Migration Results"
 	And I verify Job Status is set to Complete
 	And I take a screenshot	
@@ -676,7 +676,7 @@ Scenario: PB_8.5.1 Publish Checks
 	And I select link "Save"
 	And I take a screenshot
 	And I select link "Publish"
-	And I accept alert window
+	#And I accept alert window
 	And I select link "Migration Results"
 	And I verify Job Status is set to Complete
 	And I take a screenshot
@@ -700,12 +700,11 @@ Scenario: PB_8.5.1 Publish Checks
 #----------------------------------------------------------------------------------------------------------------------------------------	
 @release_564_Patch11
 @PB_8.6.1
-@ignore
 @Validation
 Scenario: PB_8.6.1 Queries verification on data points with Freeze, Hard lock and Inactive records
 
 	Given I login to Rave with user "SUPER USER 1"
-	And I select Study "Edit Check Study 3" and Site "Edit Check Site 1"
+	And I select Study "Edit Check Study 3" and Site "Edit Check Site 2"
     And I create a Subject
 		| Field            | Data              |
 		| Subject Number   | {RndNum<num1>(5)} |

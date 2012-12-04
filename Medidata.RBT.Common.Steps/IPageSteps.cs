@@ -168,16 +168,6 @@ namespace Medidata.RBT.Common.Steps
 
 		}
 
-		/// <summary>
-		/// I select link "Mediflex" in "Header"
-		/// </summary>
-		[StepDefinition(@"I select link ""([^""]*)"" in ""([^""]*)""")]
-		public void ISelectLink____In____(string linkText, string areaName)
-		{
-			linkText = SpecialStringHelper.Replace(linkText);
-			CurrentPage = CurrentPage.ClickLink(linkText,null, areaName);
-			
-		}
 
 		/// <summary>
 		/// Navigate to an other page.
