@@ -1,6 +1,6 @@
 ﻿# When a PDF form is generated special character such as "<" ">" "<=" ">=" should be displayed properly 
 @ignore
-Feature: Rave Monitor. When an EDC form contains special characters such as "<" ">" "<=" ">=" the PDF file should display the special characters appropriately. 
+Feature: US12175_DT8545 Rave Monitor. When an EDC form contains special characters such as "<" ">" "<=" ">=" the PDF file should display the special characters appropriately. 
 	Rave architect allows for characters that the PDF generator does support. The PDF generator should convert the special characters so that they are displayed appropriately as follows:
 	|Rave Architect	 		|PDF Interpretation |Symbol in PDF                 |
 	|&lt 					|&lt;               |<                             |
@@ -67,9 +67,9 @@ Background:
 	#And I assign user "defuser" to have "CDM1B144V1" role for "Test6: Prod"
 	
 @release_2012.1.0
-@US11043K
-@Draft 
-Scenario: @US11043K A blank-populated PDF that is generated should properly display special characters
+@UPB_US12175_DT8545_K
+@Validation
+Scenario: PB_US12175_DT8545_K A blank-populated PDF that is generated should properly display special characters
 This should be tested with all 3 forms (Standard, log and mixed forms)
  	
 	When I select Study "test15"
@@ -89,9 +89,9 @@ This should be tested with all 3 forms (Standard, log and mixed forms)
         | <br/>       |
 		
 @release_2012.1.0
-@US11043L
-@Draft 
-Scenario: @US11043L A data-populated PDF that is generated should properly display special characters
+@PB_US12175_DT8545_L
+@Validation
+Scenario: PB_US12175_DT8545_L A data-populated PDF that is generated should properly display special characters
 This should be tested with all 3 forms (Standard, log and mixed forms)
 	
 	When I select Study "test14"

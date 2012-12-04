@@ -3,7 +3,7 @@
 #Note: KnownDT14336 - Bold and Italic field and data are not converted in Data PDF's and Annotated PDF's when Font: Times New Roman Embedded is used
 # When a PDF form is generated special character such as "<" ">" "≤" "≥" "•" should be displayed properly
 # Carriage return should display correctly on the generated data PDF when Bold font is used in Field Label.
-Feature: When an EDC form contains special characters such as "<" ">" "≤" "≥" the PDF file should display the special characters appropriately.
+Feature: US12175_DT8545 When an EDC form contains special characters such as "<" ">" "≤" "≥" the PDF file should display the special characters appropriately.
 #Rave architect allows for characters that the PDF generator does support. The PDF generator should convert the special characters so that they are displayed appropriately as follows:
 #|Rave Architect |Symbol in PDF |
 #|&lt |< |
@@ -61,12 +61,13 @@ Given following Project assignments exist
 | SUPER USER 1 | PDF Font Study | Live: Prod  | SUPER ROLE 1 | Site_001 | Project Admin Default |
 Given I publish and push eCRF "PDF_Font_Study_Draft_1.xml" to "Version 1"
 And I navigate to "Home"
+
 #*******************************************************************************************************
 
 @release_2012.1.0
-@US12175A
-@Draft
-Scenario: @US12175A A blank PDF that is generated should properly display special characters.
+@PB_US12175_DT8545_A
+@Validation
+Scenario: PB_US12175_DT8545_A A blank PDF that is generated should properly display special characters.
 An annotated Blank PDF that is generated should properly display special characters.
 This should be tested for each possible font combination (english & Japanese fonts)
 This should be tested with all 4 forms
@@ -105,9 +106,9 @@ And the text should contain "<Symbol>"
 | >      |
 
 @release_2012.1.0
-@US12175B
-@Draft
-Scenario: @US12175B A blank PDF that is generated should properly display special characters.
+@PB_US12175_DT8545_B
+@Validation
+Scenario: PB_US12175_DT8545_B A blank PDF that is generated should properly display special characters.
 An annotated Blank PDF that is generated should properly display special characters.
 This should be tested for each possible font combination (english & Japanese fonts)
 This should be tested with all 4 forms
@@ -146,9 +147,9 @@ And the text should contain "<Symbol>"
 | >      |
 
 @release_2012.1.0
-@US12175C
-@Draft
-Scenario: @US12175C A blank PDF that is generated should properly display special characters.
+@PB_US12175_DT8545_C
+@Validation
+Scenario: PB_US12175_DT8545_C A blank PDF that is generated should properly display special characters.
 An annotated Blank PDF that is generated should properly display special characters.
 This should be tested for each possible font combination (english & Japanese fonts)
 This should be tested with all 4 forms
@@ -187,9 +188,9 @@ And the text should contain "<Symbol>"
 | >      |
 
 @release_2012.1.0
-@US12175D
-@Draft
-Scenario: @US12175D A blank PDF that is generated should properly display special characters.
+@PB_US12175_DT8545_D
+@Validation
+Scenario: PB_US12175_DT8545_D A blank PDF that is generated should properly display special characters.
 An annotated Blank PDF that is generated should properly display special characters.
 This should be tested for each possible font combination (english & Japanese fonts)
 This should be tested with all 4 forms
@@ -228,9 +229,9 @@ And the text should contain "<Symbol>"
 | >      |
 
 @release_2012.1.0
-@US12175E
-@Draft
-Scenario: @US12175E A blank PDF that is generated should properly display special characters.
+@PB_US12175_DT8545_E
+@Validation
+Scenario: PB_US12175_DT8545_E A blank PDF that is generated should properly display special characters.
 An annotated Blank PDF that is generated should properly display special characters.
 This should be tested for each possible font combination (english & Japanese fonts)
 This should be tested with all 4 forms
@@ -269,9 +270,9 @@ And the text should contain "<Symbol>"
 | >      |
 
 @release_2012.1.0
-@US12175F
-@Draft
-Scenario: @US12175F A data-populated PDF that is generated should properly display special characters
+@PB_US12175_DT8545_F
+@Validation
+Scenario: PB_US12175_DT8545_F A data-populated PDF that is generated should properly display special characters
 An annotated Data PDF that is generated should properly display special characters.
 This should be tested for each possible font combination (english & Japanese fonts)
 This should be tested with all 4 forms
@@ -380,9 +381,9 @@ And the text should contain "<Symbol>"
 
 
 @release_2012.1.0
-@US12175G
-@Draft
-Scenario: @US12175G A data-populated PDF that is generated should properly display special characters
+@PB_US12175_DT8545_G
+@Validation
+Scenario: PB_US12175_DT8545_G A data-populated PDF that is generated should properly display special characters
 An annotated Data PDF that is generated should properly display special characters.
 This should be tested for each possible font combination (english & Japanese fonts)
 This should be tested with all 4 forms
@@ -490,9 +491,9 @@ And the text should contain "<Symbol>"
 | >      |
 
 @release_2012.1.0
-@US12175H
-@Draft
-Scenario: @US12175H A data-populated PDF that is generated should properly display special characters
+@PB_US12175_DT8545_H
+@Validation
+Scenario: PB_US12175_DT8545_H A data-populated PDF that is generated should properly display special characters
 An annotated Data PDF that is generated should properly display special characters.
 This should be tested for each possible font combination (english & Japanese fonts)
 This should be tested with all 4 forms
@@ -601,9 +602,9 @@ And the text should contain "<Symbol>"
 | >      |
 
 @release_2012.1.0
-@US12175I
-@Draft
-Scenario: @US12175I A data-populated PDF that is generated should properly display special characters
+@PB_US12175_DT8545_I
+@Validation
+Scenario: PB_US12175_DT8545_I A data-populated PDF that is generated should properly display special characters
 An annotated Data PDF that is generated should properly display special characters.
 This should be tested for each possible font combination (english & Japanese fonts)
 This should be tested with all 4 forms
@@ -711,9 +712,9 @@ And the text should contain "<Symbol>"
 | >      |
 
 @release_2012.1.0
-@US12175J
-@Draft
-Scenario: @US12175J A data-populated PDF that is generated should properly display special characters
+@PB_US12175_DT8545_J
+@Validation
+Scenario: PB_US12175_DT8545_J A data-populated PDF that is generated should properly display special characters
 An annotated Data PDF that is generated should properly display special characters.
 This should be tested for each possible font combination (english & Japanese fonts)
 This should be tested with all 4 forms
@@ -821,9 +822,9 @@ And the text should contain "<Symbol>"
 | >      |
 
 @release_2012.1.0
-@US12175K
-@Draft
-Scenario: @US12175K A data-populated PDF that is generated should properly display special characters
+@PB_US12175_DT8545_K
+@Validation
+Scenario: PB_US12175_DT8545_K A data-populated PDF that is generated should properly display special characters
 An annotated Data PDF that is generated should properly display special characters.
 Carriage return should display correctly on the data PDF when Bold font is used in Field Label.
 

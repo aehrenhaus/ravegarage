@@ -18,7 +18,6 @@ Background:
 	| User			| Report								|
 	| SUPER USER 1	| Data Listing - Data Listing Report	|
 
-
 @release_564_2012.1.0				
 @PB_US17743_DT12513_01
 @Validation

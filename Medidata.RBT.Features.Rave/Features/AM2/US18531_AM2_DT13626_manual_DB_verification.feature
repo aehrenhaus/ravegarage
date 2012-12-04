@@ -2,7 +2,7 @@
 @manual
 #DT13626: Amendment Manager inserts duplicate log records for soft deleted datapages. Soft deleting can be done by adding and removing objects with a merge matrix edit check, a script or a custom function.
 
-Feature: US18531_AM2_DT13626 When objects are added and then removed by an edit check with a merge matrix check action, duplicate records should not show up in the database after migration.
+Feature: US18531_DT13626 When objects are added and then removed by an edit check with a merge matrix check action, duplicate records should not show up in the database after migration.
 
 Background: 
 Given xml draft "DT13626.xml" is Uploaded
@@ -29,9 +29,9 @@ Given I publish and push eCRF "DT13626.xml" to "Version 1"
 #If field "Field A" in Form "Form A" is equal to "Y" then merge the "Merge Matrix" matrix
 
 @release_2012.1.0
-@PB_US18531_AM2_DT13626_10
+@PB_US18531_DT13626_10
 @Validation
-Scenario: PB_US18531_AM2_DT13626_10 When the data is soft deleted and subject is migrated, then extra records should not be created in the database
+Scenario: PB_US18531_DT13626_10 When the data is soft deleted and subject is migrated, then extra records should not be created in the database
 
 Given I login to Rave with user "SUPER USER 1"
 And I select Study "DT13626" and Site "Site_001"

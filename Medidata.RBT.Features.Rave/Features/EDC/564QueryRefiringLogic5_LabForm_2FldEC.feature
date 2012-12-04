@@ -5,7 +5,7 @@
 
 #-- project to be uploaded in excel spreadsheet 'Standard Study'
 
-Feature: Query Refiring Logic5 The logic that is used to determine when a query that has already been cancelled or closed should or should not be re-fired in Rave.
+Feature: US12940_Query Refiring Logic5 The logic that is used to determine when a query that has already been cancelled or closed should or should not be re-fired in Rave.
 	As a Rave user
 	When I manually close a query or cancel, the query should not re-fire if the exact same data is entered into the system
 	So that I dont have to re-enter the exact same response

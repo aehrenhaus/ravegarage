@@ -35,7 +35,7 @@
 #Instead, 
 #If there is enough room to display the PDF in horizontal log view, it should be displayed on 1 page in horizontal log view
 #If there is not enough room to display the PDF in horizontal view, it should be displayed vertically.
-Feature: DT11249_US12607_US19066 Users should have the option to generate data populated PDF files for log forms in portrait mode with or without page breaks 
+Feature: US12607_US19066_DT11249 Users should have the option to generate data populated PDF files for log forms in portrait mode with or without page breaks 
 As a Rave User with access to PDF generator and a study with a log form that render in portrait mode in the PDF generator
 I want to have the option to generate the PDFs either with or without page breaks between each records
 so that I can minimize the number of pages generated in the PDF if I choose to do so.
@@ -59,9 +59,9 @@ Given following PDF Configuration Profile Settings exist
 # "Medical History1" in "Landscape" mode with no default values and "Medical History2" in "Landscape" mode with default values.
 
 @release_2012.1.0
-@US12607_US19066-01A
-@WIP
-Scenario:@US12607_US19066-01A - By Default the user can view all assigned forms.
+@PB_US12607_US19066_DT11249_01A
+@Validation
+Scenario: PB_US12607_US19066_DT11249_01A - By Default the user can view all assigned forms.
 
   Given I login to Rave with user "US12607_user1"
   And I create a Subject
@@ -87,9 +87,9 @@ Scenario:@US12607_US19066-01A - By Default the user can view all assigned forms.
   And I take a screenshot
   
 @release_2012.1.0
-@US12607_US19066-02A
-@WIP
-Scenario:@US12607_US19066-02A - The localization user can view strings are localized
+@PB_US12607_US19066_DT11249_02A
+@Validation
+Scenario: PB_US12607_US19066_DT11249_02A - The localization user can view strings are localized
 
   Given I login to Rave with user "US12607_locuser"
   And I create a Subject
@@ -115,9 +115,9 @@ Scenario:@US12607_US19066-02A - The localization user can view strings are local
   And I take a screenshot
   
 @release_2012.1.0
-@US12607_US19066-03A
-@WIP
-Scenario:@US12607_US19066-03A - Selecting all assigned forms.
+@PB_US12607_US19066_DT11249_03A
+@Validation
+Scenario: PB_US12607_US19066_DT11249_03A - Selecting all assigned forms.
 
   Given I login to Rave with user "US12607_user1"
   And I create a Subject
@@ -152,9 +152,9 @@ Scenario:@US12607_US19066-03A - Selecting all assigned forms.
   And I select link "Save"
   
 @release_2012.1.0
-@US12607_US19066-04A
-@WIP
-Scenario:@US12607_US19066-04A - Unselecting all assigned forms.
+@PB_US12607_US19066_DT11249_04A
+@Validation
+Scenario: PB_US12607_US19066_DT11249_04A - Unselecting all assigned forms.
 
   Given I login to Rave with user "US12607_user1"
   And I create a Subject
@@ -190,9 +190,9 @@ Scenario:@US12607_US19066-04A - Unselecting all assigned forms.
   And I select link "Save"
   
 @release_2012.1.0
-@US12607_US19066-05A
-@WIP
-Scenario:@US12607_US19066-05A - Selecting only one assigned form.
+@PB_US12607_US19066_DT11249_05A
+@Validation
+Scenario: PB_US12607_US19066_DT11249_05A - Selecting only one assigned form.
 
   Given I login to Rave with user "US12607_user1"
   And I create a Subject
@@ -224,9 +224,9 @@ Scenario:@US12607_US19066-05A - Selecting only one assigned form.
   And I select link "Save"
   
 @release_2012.1.0
-@US12607_US19066-06A
-@WIP
-Scenario:@US12607_US19066-06A - Selecting only one assigned form.
+@PB_US12607_US19066_DT11249_06A
+@Validation
+Scenario: PB_US12607_US19066_DT11249_06A - Selecting only one assigned form.
 
   Given I login to Rave with user "US12607_user1"
   And I create a Subject
@@ -258,9 +258,9 @@ Scenario:@US12607_US19066-06A - Selecting only one assigned form.
   And I select link "Save"
   
 @release_2012.1.0
-@US12607_US19066-07A
-@WIP
-Scenario:@US12607_US19066-07A - Selecting only one assigned form.
+@PB_US12607_US19066_DT11249_07A
+@Validation
+Scenario: PB_US12607_US19066_DT11249_07A - Selecting only one assigned form.
 
   Given I login to Rave with user "US12607_user1"
   And I create a Subject
@@ -292,9 +292,9 @@ Scenario:@US12607_US19066-07A - Selecting only one assigned form.
   And I select link "Save"
   
 @release_2012.1.0
-@US12607_US19066-08A
-@WIP
-Scenario:@US12607_US19066-08A - Selecting only one assigned form.
+@PB_US12607_US19066_DT11249_08A
+@Validation
+Scenario: PB_US12607_US19066_DT11249_08A - Selecting only one assigned form.
 
   Given I login to Rave with user "US12607_user1"
   And I create a Subject

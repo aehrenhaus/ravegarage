@@ -1,6 +1,7 @@
 ﻿# Derivations that use the Step Function Add, Subtract, Multiply or Divide should not derive to Null when one of the fields involved in the derviation is not numeric and the derivation uses User Value and not Standard Value.
 
-Feature: US19302_DT14205 Derivations that use the Step Function Add, Subtract, Multiply or Divide should not derive to Null when one of the fields involved in the derviation is not numeric and the derivation uses User Value and not Standard Value.
+Feature: US19302_DT14205 The derivation field will always derive to NULL when one of the source fields is of char (text) data format.
+	Derivations that use the Step Function Add, Subtract, Multiply or Divide should not derive to Null when one of the fields involved in the derviation is not numeric and the derivation uses User Value and not Standard Value.
 	As a Rave user
 	When create a Derivation
 	And I use the Step Function Add, Subtract, Multiply or Divide

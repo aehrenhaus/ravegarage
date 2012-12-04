@@ -2,7 +2,7 @@
 # When a blank PDF form is generated based on a log form populated with default values, the PDF file should not include page breaks between each of the 
 # default values.
 @ignore
-Feature: Blank PDF files that are generated for log forms with default values should not include page breaks between records
+Feature: US15841_US17279_US17414_DT5899_DT14019 Blank PDF files that are generated for log forms with default values should not include page breaks between records
 	#As a Rave User with access to PDF generator and a study with a log form with default values
 	#I want to generate a blank PDF for the log form with default value that is a continuous list of all records instead of multiple pages
 	#so that I can minimize the number of pages generated in the PDF
@@ -90,12 +90,12 @@ Feature: Blank PDF files that are generated for log forms with default values sh
     #Note: Three user stories are linked with this feature file US15841, US17279 and US17414
 	
 @release_2012.1.0
-@US15841A
-@US17279
-@US17414
+@PB_US15841_US17279_US17414_DT5899_DT14019A
 @ignore
-@manual  
-#Scenario: @US15841A A blank PDF that is generated should not product multiple pages for the default log lines
+@manual
+@Validation 
+#Scenario: PB_US15841_US17279_US17414_DT5899_DT14019A A blank PDF that is generated should not product multiple pages for the default log lines
+	
 	#When I view the blank PDF that is generated
 	#I should see a continuous page or set of pages for the default log lines
 	#I should not see a new page produced for every default log line
@@ -121,12 +121,11 @@ Feature: Blank PDF files that are generated for log forms with default values sh
     #And I take a screenshot
 
 @release_2012.1.0
-@US15841B
-@US17279
-@US17414
+@PB_US15841_US17279_US17414_DT5899_DT14019B
 @ignore
 @manual  
-#Scenario: @US15841B As a user when I navigate to "PDF Generator" and select "Create Blank Request" 
+@Validation
+#Scenario: PB_US15841_US17279_US17414_DT5899_DT14019B As a user when I navigate to "PDF Generator" and select "Create Blank Request" 
 #using "Annotated PDF profile" where the "Pre-Filled Values" checkbox has been checked 
 #from the "Annotations" category, then I should see all the prefilled values in one page.
 #I should not see a blank page in PDF

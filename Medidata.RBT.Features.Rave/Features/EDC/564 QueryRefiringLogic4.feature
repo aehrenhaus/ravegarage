@@ -1,4 +1,4 @@
-Feature: 564QueryRefiringLogic4 Edit Checks refire with no require response and require manual close.
+Feature: US12940_564QueryRefiringLogic4 Edit Checks refire with no require response and require manual close.
 	As a Rave user
 	I want to change data
 	So I can see refired queries

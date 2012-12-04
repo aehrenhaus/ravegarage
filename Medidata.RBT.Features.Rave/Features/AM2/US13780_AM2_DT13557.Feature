@@ -24,9 +24,9 @@ Background:
 	
 #----------------------------------------------------------------------------------------------------------------------------------------
 @Rave564_2012.1.1
-@PB_US13780_AM2_DT13557_01
+@PB_US13780_DT13557_01
 @Validation
-Scenario: US13780_AM2_DT13557_01 When a user navigates to Architect, creates a migration plan with a new CRF version as the Target CRF version, adds a Move Element object hierarchy rule with the “Only if target parent exists?box checked, in the Source patch enters "[Subject]/FOLDER:Folder(4)/FOLDER:Folder(1)/FORM:Form(1)" and in the Target Source enters "[Subject]/FOLDER:Folder 3/FOLDER:Folder(1)", and executes the migration then the user will see the form appear only in "Folder(4)"
+Scenario: PB_US13780_DT13557_01 When a user navigates to Architect, creates a migration plan with a new CRF version as the Target CRF version, adds a Move Element object hierarchy rule with the “Only if target parent exists?box checked, in the Source patch enters "[Subject]/FOLDER:Folder(4)/FOLDER:Folder(1)/FORM:Form(1)" and in the Target Source enters "[Subject]/FOLDER:Folder 3/FOLDER:Folder(1)", and executes the migration then the user will see the form appear only in "Folder(4)"
 	
 	Given I login to Rave with user "SUPER USER 1"
 	And I navigate to "Architect"
