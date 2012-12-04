@@ -89,6 +89,29 @@ namespace Medidata.RBT.Features.Rave
         }
 
         /// <summary>
+		/// I select link "Mediflex" in "Header"
+		/// </summary>
+		[StepDefinition(@"I select link ""([^""]*)"" in ""([^""]*)""")]
+		public void ISelectLink____In____(string linkText, string areaName)
+		{
+            try
+            {
+                if (areaName.ToLower().Contains("project") || linkText.ToLower().Contains("project") || linkText.ToLower().Contains("study"))
+                    linkText = SpecialStringHelper.Replace(GetSeededProjectName(linkText));
+                else
+                    linkText = SpecialStringHelper.Replace(linkText);
+            }
+
+            catch
+            {
+                linkText = SpecialStringHelper.Replace(linkText);
+            }
+
+			CurrentPage = CurrentPage.ClickLink(linkText,null, areaName);
+			
+		}
+
+        /// <summary>
         /// Select forlder on DEC page
         /// </summary>
         /// <param name="folderName"></param>
@@ -664,5 +687,15 @@ namespace Medidata.RBT.Features.Rave
 			CurrentPage.As<CRFPage>().CheckFormCount(formName, formCount);
 		}
 
+        /// <summary>
+        /// returns study name, used in dropdowns.
+        /// </summary>
+        /// <param name="name"></param>
+        /// <returns></returns>
+        private string GetSeededProjectName(string name)
+        {
+            Project projectObject = TestContext.GetExistingFeatureObjectOrMakeNew(name, () => new Project(name));
+            return projectObject.UniqueName;
+        }
     }
 }
