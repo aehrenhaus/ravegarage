@@ -11,7 +11,6 @@ And I should see the review box enabled for the data
 
 Background:
 Given xml draft "DT12797_Draft_1.xml" is Uploaded
-Given Site "Site_001" exists
 Given study "DT12797" is assigned to Site "Site_001"
 Given I publish and push eCRF "DT12797_Draft_1.xml" to "Version 1"
 Given following Project assignments exist
