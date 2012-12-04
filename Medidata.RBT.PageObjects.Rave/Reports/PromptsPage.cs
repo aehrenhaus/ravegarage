@@ -157,9 +157,18 @@ namespace Medidata.RBT.PageObjects.Rave
 
                 paraTR.FindElement(By.XPath(".//input[contains(@id, '_SearchBtn')]")).Click();   //Click search
 
-                var checkbox = paraTR.FindElement(By.XPath(".//tr/td[text()='" + value + "']/../td[1]/input"))
-                    .EnhanceAs<Checkbox>();
-                checkbox.Check();
+                IWebElement chkElem = paraTR.TryFindElementBy(w =>
+                {
+                    IWebElement result = null;
+                    IWebElement pagTd = paraTR.FindElement(By.XPath(".//tr/td[@align='center']"));
+                    int pagNum;
+                    if (int.TryParse(pagTd.Text, out pagNum))
+                        result = paraTR.FindElement(By.XPath(".//tr/td[text()='" + value + "']/../td[1]/input"));
+
+                    return result;
+                }, true);
+
+                chkElem.EnhanceAs<Checkbox>().Check();
 
                 //This doesn;t even exist ???
                 //var checkButton = paraTR
