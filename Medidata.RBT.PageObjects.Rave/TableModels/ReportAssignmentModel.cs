@@ -8,6 +8,7 @@ namespace Medidata.RBT.PageObjects.Rave
     public class ReportAssignmentModel
     {
         public string User { get; set; }
+        public string Role { get; set; }
         public string Report { get; set; }
     }
 }

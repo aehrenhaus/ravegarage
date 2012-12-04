@@ -22,6 +22,7 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
     {
         public string Number { get; set; }
         public bool SkipUpload { get; set; }
+        public List<MatrixAssignment> MatrixAssignments { get; set; }
 
         /// <summary>
         /// Create a Project if it is not already in the dictionary of projects in FeatureObject

@@ -59,5 +59,42 @@ namespace Medidata.RBT.PageObjects.Rave
             this.ClickLink("Update Report Assignments");
             return this;
         }
+
+        /// <summary>
+        /// Assign the specified report to specified role
+        /// </summary>
+        /// <param name="reportName">Name of report to be assigned</param>
+        /// <param name="role">Name of the role to assign report to</param>
+        /// <returns></returns>
+        public IPage SelectReportAssignment(string reportName, Role role)
+        {
+            if (role.ReportAssignments == null)
+                role.ReportAssignments = new List<ReportAssignment>();
+            role.ReportAssignments.Add(new ReportAssignment(reportName));
+
+            //Choose report from dropdown, find the role and select it
+            ChooseFromDropdown("_ctl0_Content_ReportsDDL", reportName);
+            ClickButton("_ctl0_Content_RolesSelectDG_EditBtn");
+
+            Browser.FindElementById("_ctl0_Content_RolesSelectDG_FilterBox")
+                .EnhanceAs<Textbox>().SetText(role.UniqueName);
+
+            ClickButton("_ctl0_Content_RolesSelectDG_Search");
+
+            IWebElement logInTableElem = Browser.TryFindElementById("_ctl0_Content_RolesSelectDG_DisplayGrid");
+            if (logInTableElem != null)
+            {
+                IWebElement logInNameElem = logInTableElem.FindElementsByText<IWebElement>(role.UniqueName).First();
+
+                if (logInTableElem != null)
+                {
+                    logInTableElem.Parent().TryFindElementByPartialID("SelectionBox")
+                        .EnhanceAs<Checkbox>().Check();
+                }
+            }
+
+            this.ClickLink("Update Report Assignments");
+            return this;
+        }
     }
 }

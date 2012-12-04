@@ -146,12 +146,16 @@
     <Compile Include="PDF\FileRequestPage.cs" />
     <Compile Include="DCF\DCFQueriesPage.cs" />
     <Compile Include="PDF\PDFFilesControl.cs" />
+    <Compile Include="ReportAdmin\ReportMatrixPage.cs" />
     <Compile Include="ReportAdmin\PackageUpload.cs" />
     <Compile Include="ReportAdmin\PackageDownload.cs" />
     <Compile Include="ReportAdmin\ReportManagerPage.cs" />
     <Compile Include="ReportAdmin\ReportAssignmentPage.cs" />
     <Compile Include="Reports\CrystalReportPageBase.cs" />
     <Compile Include="SharedRaveObjects\Analyte.cs" />
+    <Compile Include="SharedRaveObjects\MatrixAssignment.cs" />
+    <Compile Include="SharedRaveObjects\UserGroups.cs" />
+    <Compile Include="SharedRaveObjects\UserGroup.cs" />
     <Compile Include="SharedRaveObjects\StandardGroups.cs" />
     <Compile Include="SharedRaveObjects\StudySite.cs" />
     <Compile Include="SharedRaveObjects\Lab.cs" />
@@ -189,6 +193,7 @@
     <Compile Include="TableModels\AnalyteRangeModel.cs" />
     <Compile Include="TableModels\ArchitectObjectModel.cs" />
     <Compile Include="TableModels\AuditModel.cs" />
+    <Compile Include="TableModels\ReportMatrixAssignmentModel.cs" />
     <Compile Include="TableModels\LabUnitDictionaryModel.cs" />
     <Compile Include="TableModels\AnalyteModel.cs" />
     <Compile Include="TableModels\LabUnitModel.cs" />
