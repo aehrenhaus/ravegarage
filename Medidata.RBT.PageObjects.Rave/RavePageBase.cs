@@ -81,37 +81,49 @@ namespace Medidata.RBT.PageObjects.Rave
 
 		public override IPage ChooseFromDropdown(string identifier, string text, string objectType = null, string areaIdentifier = null)
 		{
+            if (objectType == null && identifier.ToUpper().Contains("CRF"))
+                objectType = "CRF";
 			return base.ChooseFromDropdown(identifier, ReplaceSeedableObjectName(objectType, text), objectType, areaIdentifier);
 		}
 
 		private string ReplaceSeedableObjectName(string type, string name)
 		{
-			if (type == "Study")
-			{
-				Project project = TestContext.GetExistingFeatureObjectOrMakeNew(name, () => default(Project));
-				name = project.UniqueName;
-			}
-			else if (type == "Site")
-			{
-				Site site = TestContext.GetExistingFeatureObjectOrMakeNew(name, () => default(Site));
-				name = site.UniqueName;
-			}
-			else if (type == "Role")
-			{
-				Role role = TestContext.GetExistingFeatureObjectOrMakeNew(name, () => default(Role));
-				name = role.UniqueName;
-			}
-			else if (type == "User")
-			{
-				User user = TestContext.GetExistingFeatureObjectOrMakeNew(name, () => default(User));
-				name = user.UniqueName;
-			}
-			else if (type == "Project")
-			{
-				Project project = TestContext.GetExistingFeatureObjectOrMakeNew(name, () => default(Project));
-				name = project.UniqueName;
-			}
-
+            try // try needed, in case name comes in as already seeded.   
+            {
+                if (type == "Study")
+                {
+                    Project project = TestContext.GetExistingFeatureObjectOrMakeNew(name, () => default(Project));
+                    name = project.UniqueName;
+                }
+                else if (type == "Site")
+                {
+                    Site site = TestContext.GetExistingFeatureObjectOrMakeNew(name, () => default(Site));
+                    name = site.UniqueName;
+                }
+                else if (type == "Role")
+                {
+                    Role role = TestContext.GetExistingFeatureObjectOrMakeNew(name, () => default(Role));
+                    name = role.UniqueName;
+                }
+                else if (type == "User")
+                {
+                    User user = TestContext.GetExistingFeatureObjectOrMakeNew(name, () => default(User));
+                    name = user.UniqueName;
+                }
+                else if (type == "Project")
+                {
+                    Project project = TestContext.GetExistingFeatureObjectOrMakeNew(name, () => default(Project));
+                    name = project.UniqueName;
+                }
+                else if (type != null && type.ToUpper().Contains("CRF"))
+                {
+                    CrfVersion crf = TestContext.GetExistingFeatureObjectOrMakeNew(name, () => default(CrfVersion));
+                    name = crf.UniqueName;
+                }
+            }
+            catch
+            {
+            }
 
 			return name;
 		}

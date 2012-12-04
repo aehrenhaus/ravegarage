@@ -53,8 +53,8 @@ namespace Medidata.RBT.PageObjects.Rave
 		{
 			ClickLink("Add New Draft");
 			ChooseFromRadiobuttons(null, "_ctl0_Content_RadioButtonList1_1");
-			ChooseFromDropdown("_ctl0_Content_ProjectDropDown", project);
-			ChooseFromDropdown("_ctl0_Content_VersionDropDown", version);
+			ChooseFromDropdown("_ctl0_Content_ProjectDropDown", project, "Project");
+			ChooseFromPartialDropdown("_ctl0_Content_VersionDropDown", version, "CRFVersion");
 			Type("_ctl0_Content_DraftText", draftName);
 			ClickButton("Create Draft");
 
