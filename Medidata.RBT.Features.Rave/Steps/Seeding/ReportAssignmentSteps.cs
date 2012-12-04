@@ -8,7 +8,7 @@ using Medidata.RBT.PageObjects.Rave.SharedRaveObjects;
 using Medidata.RBT.PageObjects.Rave;
 using System.Text.RegularExpressions;
 
-namespace Medidata.RBT.Features.Rave
+namespace Medidata.RBT.Features.Rave.Seeding
 {
     /// <summary>
     /// Steps that set reporting assignments
@@ -27,11 +27,18 @@ namespace Medidata.RBT.Features.Rave
             var reportAssignments = table.CreateSet<ReportAssignmentModel>();
             TestContext.CurrentPage = new HomePage().NavigateToSelf();
             CurrentPage = CurrentPage.NavigateTo("Report Administration");
-            
-            foreach (var reportAssignment in reportAssignments)
+
+            foreach (ReportAssignmentModel reportAssignment in reportAssignments)
             {
-                User user = TestContext.GetExistingFeatureObjectOrMakeNew(reportAssignment.User, () => new User(reportAssignment.User));
-                if (!user.ReportAssignmentsExists(reportAssignment.Report))
+                User user = null;
+                if (!String.IsNullOrEmpty(reportAssignment.User))
+                    user = TestContext.GetExistingFeatureObjectOrMakeNew(reportAssignment.User, () => new User(reportAssignment.User));
+
+                Role role = null;
+                if (!String.IsNullOrEmpty(reportAssignment.Role))
+                    role = TestContext.GetExistingFeatureObjectOrMakeNew(reportAssignment.Role, () => new Role(reportAssignment.Role));
+
+                if (user != null || role != null)
                 {
                     string[] reportArgs = Regex.Split(reportAssignment.Report, " - ");
                     //Activate the report, require report name and report description to be able to activate the report
@@ -40,10 +47,14 @@ namespace Medidata.RBT.Features.Rave
                         CurrentPage = CurrentPage.NavigateTo("Report Manager");
                         CurrentPage.As<ReportManagerPage>().Activate(reportArgs[0], reportArgs[1]);
                     }
-
                     CurrentPage = CurrentPage.NavigateTo("Report Assignment");
-                    CurrentPage.As<ReportAssignmentPage>().SelectReportAssignment(reportAssignment.Report, user);
                 }
+
+                if (user != null && !user.ReportAssignmentsExists(reportAssignment.Report))
+                    CurrentPage.As<ReportAssignmentPage>().SelectReportAssignment(reportAssignment.Report, user);
+
+                if (role != null && !role.ReportAssignmentsExists(reportAssignment.Report))
+                    CurrentPage.As<ReportAssignmentPage>().SelectReportAssignment(reportAssignment.Report, role);
             }
 
             TestContext.CurrentPage = new HomePage().NavigateToSelf();

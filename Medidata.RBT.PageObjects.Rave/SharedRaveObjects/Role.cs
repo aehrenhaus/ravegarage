@@ -22,6 +22,8 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
     ///</summary>
     public class Role : BaseRaveSeedableObject, IRemoveableObject
     {
+        public List<ReportAssignment> ReportAssignments { get; set; }
+
         /// <summary>
         /// The uploaded role constructor. This actually uploads configurations. 
         /// These configurations should be the template plus the role information/role actions.
@@ -92,6 +94,18 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
         public void DeleteSelf()
         {
             File.Delete(UniqueFileLocation);
+        }
+
+        /// <summary>
+        /// Check if thre is a report assignment for this role
+        /// </summary>
+        /// <param name="reportName">name of the report</param>
+        /// <returns>True if the report assignment exists, false if not</returns>
+        public bool ReportAssignmentsExists(string reportName)
+        {
+            if (ReportAssignments != null && ReportAssignments.Exists(p => p.ReportName.Equals(reportName)))
+                return true;
+            return false;
         }
     }
 }

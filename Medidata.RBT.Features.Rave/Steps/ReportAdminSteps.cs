@@ -2,13 +2,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using TechTalk.SpecFlow;
+using TechTalk.SpecFlow.Assist;
 using Medidata.RBT.PageObjects.Rave;
 using Medidata.RBT.SeleniumExtension;
 
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using OpenQA.Selenium;
 using System.IO;
-
 
 namespace Medidata.RBT.Features.Rave
 {
@@ -79,5 +79,20 @@ namespace Medidata.RBT.Features.Rave
 			Browser.TryFindElementBy(By.XPath("//span[text()='"+"The Report Package has been installed successfully."+"']"));
 		}
 
+        /// <summary>
+        /// Check if report matrix assigments exist, create them if they don't
+        /// </summary>
+        /// <param name="table"></param>
+        [StepDefinition(@"the following Reports Matrix assignments exist")]
+        public void TheFollowingReportsMatrixAssignmentsExist(Table table)
+        {
+            IEnumerable<ReportMatrixAssignmentModel> reportMatrixAssignments = table.CreateSet<ReportMatrixAssignmentModel>();
+            TestContext.CurrentPage = new ReportMatrixPage().NavigateToSelf();
+
+            CurrentPage.As<ReportMatrixPage>().AssignReportMatrices(reportMatrixAssignments.ToList());
+
+            TestContext.CurrentPage = new HomePage().NavigateToSelf();
+
+        }
 	}
 }
