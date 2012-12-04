@@ -228,11 +228,25 @@ namespace Medidata.RBT
 		/// </summary>
 		public virtual IPage ChooseFromDropdown(string identifier, string text, string objectType = null, string areaIdentifier = null)
         {
+            if (identifier.ToUpper().Contains("CRF"))
+                return ChooseFromPartialDropdown(identifier, text, objectType, areaIdentifier);
 			var ele = TryFindElement(identifier);
 
 			ele.EnhanceAs<Dropdown>().SelectByText(text);
 
 			return GetPageByCurrentUrlIfNoAlert();
+        }
+
+        /// <summary>
+        /// See IPage interface
+        /// </summary>
+        public virtual IPage ChooseFromPartialDropdown(string identifier, string text, string objectType = null, string areaIdentifier = null)
+        {
+            var ele = TryFindElement(identifier);
+
+            ele.EnhanceAs<Dropdown>().SelectByPartialText(text);
+
+            return GetPageByCurrentUrlIfNoAlert();
         }
 
 		/// <summary>

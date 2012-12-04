@@ -24,7 +24,7 @@ Background:
 	Given study "Edit Check Study 3" is assigned to Site "Edit Check Site 2"
 	Given study "AM Edit Check Study" is assigned to Site "AM Edit Site"
 	Given I publish and push eCRF "Edit_Check_Study_3_Draft_8.xml" to "Version 1"
-	Given I publish and push eCRF "AM_Edit_Check_Study_Draft_1.xml" to "Version 1"
+	Given I publish and push eCRF "AM_Edit_Check_Study_Draft_1.xml" to "Version 2"
 	Given Site "Edit Check Site 1" is DDE-enabled
 	Given Site "Edit Check Site 8" is DDE-enabled
 	Given following Project assignments exist
@@ -477,7 +477,7 @@ Scenario: PB_8.4.1 Migrate Subject
 	And I navigate to "Home"
 	And I navigate to "Architect"
 	And I select link "AM Edit Check Study" in "Active Projects"
-	And I create Draft "Draft {RndNum<d#>(5)}" from Project "AM Edit Check Study" and Version "V1 ({Var(ver#)})"
+	And I create Draft "Draft {RndNum<d#>(5)}" from Project "AM Edit Check Study" and Version "Version 2"
 	And I navigate to "Edit Checks"
 	And I inactivate edit check "Mixed Form Query"
 	And I take a screenshot
@@ -486,7 +486,7 @@ Scenario: PB_8.4.1 Migrate Subject
 	And I note down "crfversion" to "newversion#"
 	And I select link "AM Edit Check Study" in "Header"
 	And I navigate to "Amendment Manager"
-	And I choose "V1 ({Var(ver#)})" from "Source CRF"
+	And I choose "Version 2" from "Source CRF"
 	And I choose "{Var(newversion#)}" from "Target CRF"
 	And I click button "Create Plan"
 	And I take a screenshot

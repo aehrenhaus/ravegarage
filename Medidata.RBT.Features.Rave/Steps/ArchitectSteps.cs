@@ -18,7 +18,7 @@ namespace Medidata.RBT.Features.Rave
 		[StepDefinition(@"I create Draft ""([^""]*)"" from Project ""([^""]*)"" and Version ""([^""]*)""")]
 		public void ICreateDraft____FromProject____AndVersion____(string draftName, string project, string version)
 		{
-			draftName = SpecialStringHelper.Replace( draftName);
+			draftName = SpecialStringHelper.Replace(draftName);
 			project =SpecialStringHelper.Replace(project);
 			version = SpecialStringHelper.Replace(version);
 			CurrentPage = CurrentPage.As<ArchitectLibraryPage>().CreateDraftFromProject(draftName,project,version);
@@ -136,6 +136,7 @@ namespace Medidata.RBT.Features.Rave
             bool found = CurrentPage.As<ArchitectFormDesignerPage>().VerifyRangesForFieldEditChecks(table.CreateSet<FieldModel>());
             Assert.IsFalse(found, "Ranges for field do match.");
         }
+
 	}
 
 }
