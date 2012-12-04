@@ -82,8 +82,12 @@ namespace Medidata.RBT.PageObjects.Rave
 		public override IPage ChooseFromDropdown(string identifier, string text, string objectType = null, string areaIdentifier = null)
 		{
             if (objectType == null && identifier.ToUpper().Contains("CRF"))
+            {                
                 objectType = "CRF";
-			return base.ChooseFromDropdown(identifier, ReplaceSeedableObjectName(objectType, text), objectType, areaIdentifier);
+                return base.ChooseFromPartialDropdown(identifier, ReplaceSeedableObjectName(objectType, text), objectType, areaIdentifier);
+            }
+            else
+                return base.ChooseFromDropdown(identifier, ReplaceSeedableObjectName(objectType, text), objectType, areaIdentifier);
 		}
 
 		private string ReplaceSeedableObjectName(string type, string name)
