@@ -154,7 +154,6 @@
     <Compile Include="Reports\CrystalReportPageBase.cs" />
     <Compile Include="SharedRaveObjects\Analyte.cs" />
     <Compile Include="SharedRaveObjects\MatrixAssignment.cs" />
-    <Compile Include="SharedRaveObjects\UserGroups.cs" />
     <Compile Include="SharedRaveObjects\UserGroup.cs" />
     <Compile Include="SharedRaveObjects\StandardGroups.cs" />
     <Compile Include="SharedRaveObjects\StudySite.cs" />
@@ -185,6 +184,7 @@
     <Compile Include="Reports\StreamReportPage.cs" />
     <Compile Include="Reports\CrystalReportPage.cs" />
     <Compile Include="SharedControls\CompositeDropdown.cs" />
+    <Compile Include="SharedRaveObjects\UserGroupConfiguration.cs" />
     <Compile Include="SiteAdministration\SiteAdministrationDetailsPage.cs" />
     <Compile Include="SiteAdministration\SiteAdministrationHomePage.cs" />
     <Compile Include="SiteAdministration\SiteAdministrationBasePage.cs" />
