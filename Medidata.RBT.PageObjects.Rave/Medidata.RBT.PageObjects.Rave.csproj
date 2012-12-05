@@ -90,6 +90,8 @@
     <Compile Include="Configuration\ConfigurationCreationModel.cs" />
     <Compile Include="Configuration\ConfigurationLoaderPage.cs" />
     <Compile Include="Configuration\RoleActionsConfigPage.cs" />
+    <Compile Include="Configuration\ConfigurationSettingsPage.cs" />
+    <Compile Include="Configuration\Models\ConfigurationSettingsModel.cs" />
     <Compile Include="Configuration\WorkflowConfigPage.cs" />
     <Compile Include="Configuration\Models\CoderConfigurationModel.cs" />
     <Compile Include="Configuration\Models\ExcelConfigurationModel.cs" />
@@ -130,6 +132,7 @@
     <Compile Include="Lab\LabRangesPage.cs" />
     <Compile Include="Lab\LabsPage.cs" />
     <Compile Include="Lab\LabUnitDictionariesPage.cs" />
+    <Compile Include="Lab\StandardGroupsPage.cs" />
     <Compile Include="Lab\UnitConversionsPage.cs" />
     <Compile Include="EDC\SignatureBox.cs" />
     <Compile Include="OtherPages\ActivatePage.cs" />

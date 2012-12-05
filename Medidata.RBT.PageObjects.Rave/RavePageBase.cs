@@ -115,7 +115,12 @@ namespace Medidata.RBT.PageObjects.Rave
                     Project project = TestContext.GetExistingFeatureObjectOrMakeNew(name, () => default(Project));
                     name = project.UniqueName;
                 }
-                else if (type != null && type.ToUpper().Contains("CRF"))
+				else if (type == "Lab")
+				{
+					SharedRaveObjects.Lab lab = TestContext.GetExistingFeatureObjectOrMakeNew(name, () => default(SharedRaveObjects.Lab));
+					name = lab.UniqueName;
+				}
+				else if (type != null && type.ToUpper().Contains("CRF"))
                 {
                     CrfVersion crf = TestContext.GetExistingFeatureObjectOrMakeNew(name, () => default(CrfVersion));
                     name = crf.UniqueName;
@@ -124,7 +129,6 @@ namespace Medidata.RBT.PageObjects.Rave
             catch
             {
             }
-
 			return name;
 		}
 
