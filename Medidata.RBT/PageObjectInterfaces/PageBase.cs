@@ -228,8 +228,6 @@ namespace Medidata.RBT
 		/// </summary>
 		public virtual IPage ChooseFromDropdown(string identifier, string text, string objectType = null, string areaIdentifier = null)
         {
-            if (identifier.ToUpper().Contains("CRF"))
-                return ChooseFromPartialDropdown(identifier, text, objectType, areaIdentifier);
 			var ele = TryFindElement(identifier);
 
 			ele.EnhanceAs<Dropdown>().SelectByText(text);
