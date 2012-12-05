@@ -10,9 +10,9 @@ using TechTalk.SpecFlow;
 
 namespace Medidata.RBT.PageObjects.Rave
 {
-    public class SubjectIncludePage : SubjectManagementPageBase
+    public class SubjectIncludePage : SubjectManagementPageBase,IHavePaginationControl
 	{
-		public const string repeaterCheckbox = "_ctl0_Content_SubjectIncludeRepeater__ctl{0}_Checkbox";
+
         public override string URL
         {
             get
@@ -23,18 +23,33 @@ namespace Medidata.RBT.PageObjects.Rave
 
         public IPage IncludeSubjects(int num)
         {
-            IWebElement elem = null;
-            for (int i = 1; i <= num; i++)
-            {
-                elem = Browser.TryFindElementById(string.Format(repeaterCheckbox, i));
-                if (elem != null)
-                {
-                    elem.EnhanceAs<Checkbox>().Check();
-                }
-            }
-            this.ClickSpanLink("Include Subjects");
-			Browser.GetAlertWindow().Accept();
+
+			int selectedCount = 0;
+
+	        while(selectedCount!=num)
+			{
+				IWebElement table = Browser.TryFindElementById("SubjectIncludeDiv");
+				var checks = table.Checkboxes();
+				int countToCheckThisTime = Math.Min(checks.Count - 1, num - selectedCount);
+				for(int i =1;i<=countToCheckThisTime;i++)
+					checks[i].Check();
+				this.ClickSpanLink("Include Subjects");
+				Browser.GetAlertWindow().Accept();
+				selectedCount += countToCheckThisTime;
+
+				Browser.WaitForDocumentLoad();
+			}
+
+ 
+			
             return this;
         }
+
+		public ICanPaginate GetPaginationControl(string areaIdentifier)
+		{
+			var pageTable = TestContext.Browser.TryFindElementById("_ctl0_Content_TblPage").Children()[1];
+			var pager = new RavePaginationControl_CurrentPageNotLink(this, pageTable);
+			return pager;
+		}
 	}
 }

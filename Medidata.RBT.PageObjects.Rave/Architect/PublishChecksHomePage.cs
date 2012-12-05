@@ -52,7 +52,7 @@ namespace Medidata.RBT.PageObjects.Rave
             return result;
 		}
 
-        public override IPage ClickLink(string linkText, string type = null, string areaIdentifier = null)
+		public override IPage ClickLink(string linkText, string type = null, string areaIdentifier = null, bool partial = false)
         {
             IPage page = null;
 

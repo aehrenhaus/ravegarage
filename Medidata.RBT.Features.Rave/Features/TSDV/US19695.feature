@@ -1,5 +1,6 @@
 ﻿# When using Subject Include feature, Subjects are enrolled per selected Randomization. 
-@ignore
+@EnableSeeding=true
+
 Feature: US19695
 	When user creates subjects 
 	And user selects Dynamic Allocation Randomization Block algorithm
@@ -67,10 +68,10 @@ Background:
 
 Scenario: @PB_US19695_01 Enroll subjects in studies to verify that TSDV has randomized the subjects based on selected randomization type. 
 	#When I select Study "US19695" and Site "Site 1"
-	#And I login to Rave with user "SUPER USER 1"
+	And I login to Rave with user "SUPER USER 1"
 
-	When I create 50 random Subjects with name "QQR" in Study "US19695 (Dev)" in Site "Site 1"
-	And I select link "Home"
+	When I create 50 random Subjects with name "QQR" in Study "US19695" (Dev) in Site "Site 1"
+	And I navigate to "Home"
 	And I navigate to "Reporter"
 	And I select Report "Targeted SDV Configuration"
 	And I set report parameter "Study" with table
@@ -91,11 +92,11 @@ Scenario: @PB_US19695_01 Enroll subjects in studies to verify that TSDV has rand
 	| Form      | Selected |
 	| BloodWork | True     |
 	And I create a custom tier named "Custom Tier 3" and description "Cholesterol" with table
-	| Form        | Selected |
-	| Cholesterol | True     |
-	And I create a custom tier named "Custom Tier 4" and description "Concomitant Medications" with table
-	| Form                    | Selected |
-	| Concomitant Medications | True     |
+	| Form       | Selected |
+	| Enrollment | True     |
+	And I create a custom tier named "Custom Tier 4" and description "Enrollment" with table
+	| Form       | Selected |
+	| Enrollment | True     |
 	And I create a custom tier named "Custom Tier 5" and description "Demographics" with table
 	| Form         | Selected |
 	| Demographics | True     |
@@ -118,7 +119,7 @@ Scenario: @PB_US19695_01 Enroll subjects in studies to verify that TSDV has rand
 	And I select the tier "Custom Tier 7" and Subject Count "1"
 	And I activate the plan
 	And I switch to "Reports" window
-	And I select link "Home"
+	And I navigate to "Home"
 	And I navigate to "Reporter"
 	And I select Report "Targeted SDV Subject Management"
 	And I set report parameter "Study" with table
@@ -181,9 +182,9 @@ Scenario: @PB_US19695_01 Enroll subjects in studies to verify that TSDV has rand
 		| Custom Tier 5     | 48  |
 		| Custom Tier 6     | 49  |
 		| Custom Tier 7     | 50  |
-	And I verify there is no exact tier match between rows
+	And I verify every 10 rows of subjects in 50 rows do not have tiers pattern
 	And I switch to "Reports" window
-	And I select link "Home"
+	And I navigate to "Home"
 	And I navigate to "Reporter"
 	And I select Report "Targeted SDV Configuration"
 	And I set report parameter "Study" with table
@@ -193,9 +194,9 @@ Scenario: @PB_US19695_01 Enroll subjects in studies to verify that TSDV has rand
 	And I switch to "Targeted SDV Study Plan" window
 	And I inactivate the plan
 	And I switch to "Reports" window
-	And I select link "Home"
-	And I create 40 random Subjects with name "CCD" in Study "US19695 (Dev)" in Site "Site 2"
-	And I select link "Home"
+	And I navigate to "Home"
+	And I create 40 random Subjects with name "CCD" in Study "US19695" (Dev) in Site "Site 2"
+	And I navigate to "Home"
 	And I navigate to "Reporter"
 	And I select Report "Targeted SDV Configuration"
 	And I set report parameter "Study" with table
@@ -203,8 +204,8 @@ Scenario: @PB_US19695_01 Enroll subjects in studies to verify that TSDV has rand
 		| US19695 | Dev         |
 	And I click button "Submit Report"
 	And I switch to "Targeted SDV Study Plan" window
-	And I select link "World"
-	And I select link "Site 2"
+	And I select Site Group link "World"
+	And I select Site link "Site 2"
 	And I create a new block plan named "Site 2 Block Plan" with Data entry Role "SUPER ROLE 1"
 	And I verify text "Dynamic Allocation" exists
 	And I click button "edit block plan"
@@ -220,7 +221,7 @@ Scenario: @PB_US19695_01 Enroll subjects in studies to verify that TSDV has rand
 	And I select the tier "Architect Defined" and Subject Count "2"
 	And I activate the plan
 	And I switch to "Reports" window
-	And I select link "Home"
+	And I navigate to "Home"
 	And I navigate to "Reporter"
 	And I select Report "Targeted SDV Subject Management"
 	And I set report parameter "Study" with table
@@ -229,10 +230,11 @@ Scenario: @PB_US19695_01 Enroll subjects in studies to verify that TSDV has rand
 	And I click button "Submit Report"
 	And I switch to "Targeted SDV Subject Override" window
 	And I select link "Subject Include"
-	And I include "50" subjects in TSDV
+	And I include 40 subjects in TSDV
 	And I select link "Subject Override"
-	And I filter by site "Site 2"
-	Then I verify that one of the following Permutations has been used
+	And I choose Site "Site 2" from "Sites"
+	And I select link "Search"
+	Then I verify that one of the following Permutations has been used every 4 subjects
 	|Randomization Permutations                               |
 	|All Forms, Architect Defined, Architect Defined, No Forms|
 	|All Forms, Architect Defined, No Forms, Architect Defined|
@@ -247,7 +249,7 @@ Scenario: @PB_US19695_01 Enroll subjects in studies to verify that TSDV has rand
 	|Architect Defined, No Forms, Architect Defined, All Forms|
 	|No Forms, Architect Defined, Architect Defined, All Forms|
 	And I switch to "Reports" window
-	And I select link "Home"
+	And I navigate to "Home"
 	And I navigate to "Reporter"
 	And I select Report "Targeted SDV Configuration"
 	And I set report parameter "Study" with table
@@ -255,6 +257,6 @@ Scenario: @PB_US19695_01 Enroll subjects in studies to verify that TSDV has rand
 		| US19695 | Dev         |
 	And I click button "Submit Report"
 	And I switch to "Targeted SDV Study Plan" window
-	And I select link "World"
-	And I select link "Site 2"
+	And I select Site Group link "World"
+	And I select Site link "Site 2"
 	And I inactivate the plan

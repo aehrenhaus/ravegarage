@@ -1,5 +1,6 @@
 ﻿# TSDV will regenerate a new randomization permutation when a TSDV plan using Permuted Block randomization is updated
-@ignore
+@EnableSeeding=true
+
 Feature: US19877
 	When subjects are allocated to tiers using the Permuted Block Randomization Type
 	And the TSDV plan is updated to include a new custom tier
@@ -57,7 +58,7 @@ Background:
 Scenario: @PB_US19877_01 As a Rave user, when I select Permuted Block Randomization and I Enroll 50 subjects in study then subject assignment satisfies the specified ratio and is random for all blocks in study level.
 	#When I select Study "US19877" and Site "Site 1"
 	Given I login to Rave with user "SUPER USER 1"
-	And I select link "Home"
+	And I navigate to "Home"
 	And I navigate to "Reporter"
 	And I select Report "Targeted SDV Configuration"
 	And I set report parameter "Study" with table
@@ -79,9 +80,9 @@ Scenario: @PB_US19877_01 As a Rave user, when I select Permuted Block Randomizat
 	And I select the tier "No Forms" and Subject Count "3"
 	And I activate the plan
 	And I switch to "Reports" window
-	And I select link "Home"
-	And I create 30 random Subjects with name "KKP" in Study "US19877 (Dev)" in Site "Site 1"
-	And I select link "Home"
+	And I navigate to "Home"
+	And I create 30 random Subjects with name "BBB" in Study "US19877" in Site "Site 1"
+	And I navigate to "Home"
 	And I navigate to "Reporter"
 	And I select Report "Targeted SDV Subject Management"
 	And I set report parameter "Study" with table
@@ -90,7 +91,7 @@ Scenario: @PB_US19877_01 As a Rave user, when I select Permuted Block Randomizat
 	And I click button "Submit Report"
 	And I switch to "Targeted SDV Subject Override" window
 
-	Then I verify that one of the following Permutations has been used
+	Then I verify that one of the following Permutations has been used every 6 subjects
 	| Randomization Permutations                                            |
 	| All Forms, All Forms, Architect Defined, No Forms, No Forms, No Forms |
 	| All Forms, All Forms, No Forms, Architect Defined, No Forms, No Forms |
@@ -153,7 +154,7 @@ Scenario: @PB_US19877_01 As a Rave user, when I select Permuted Block Randomizat
 	| No Forms, No Forms, Architect Defined, No Forms, All Forms, All Forms |
 	| No Forms, No Forms, No Forms, Architect Defined, All Forms, All Forms |
 And I switch to "Reports" window
-	And I select link "Home"
+	And I navigate to "Home"
 	And I navigate to "Reporter"
 	And I select Report "Targeted SDV Configuration"
 	And I set report parameter "Study" with table
@@ -171,9 +172,9 @@ And I switch to "Reports" window
 	And I select link "Study Block Plan"
 	And I select the tier "Custom Tier 1" and Subject Count "1"
 	And I activate the plan
-	And I select link "Home"
-	And I create 42 random Subjects with name "KKP" in Study "US19877 (Dev)" in Site "Site 1"
-	And I select link "Home"
+	And I navigate to "Home"
+	And I create 21 random Subjects with name "KKP" in Study "US19877" in Site "Site 1"
+	And I navigate to "Home"
 	And I navigate to "Reporter"
 	And I select Report "Targeted SDV Subject Management"
 	And I set report parameter "Study" with table
@@ -183,7 +184,7 @@ And I switch to "Reports" window
 	And I switch to "Targeted SDV Subject Override" window
 
 #TODO: Need new method below
-	Then I verify that one of the following Permutations has been used
+	Then I verify that one of the following Permutations has been used every 7 subjects with name "KKP"
 	| Randomization Permutations                                                           |
 	| All Forms, All Forms, Architect Defined, Custom Tier 1, No Forms, No Forms, No Forms |
 	| All Forms, All Forms, Architect Defined, No Forms, Custom Tier 1, No Forms, No Forms |

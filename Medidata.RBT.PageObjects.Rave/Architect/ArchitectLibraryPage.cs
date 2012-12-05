@@ -19,7 +19,7 @@ namespace Medidata.RBT.PageObjects.Rave
             IWebElement row = versionsTable.FindElement(By.XPath("tbody/tr/td/a[contains(text(),'" + version + "')]/../.."));
             IWebElement push = row.FindElement(By.XPath("td/a[text() = 'Push']"));
 			push.Click();
-
+			Browser.WaitForDocumentLoad();
             TestContext.CurrentPage = new ArchitectPushPage();
             TestContext.CurrentPage.As<ArchitectPushPage>().PushToSites(env, sites);
 			//

@@ -34,35 +34,46 @@ namespace Medidata.RBT.PageObjects.Rave
 		/// </summary>
 		/// <param name="studyName"></param>
 		/// <returns></returns>
-		public HomePage SelectStudy(string studyName)
+		public HomePage SelectStudy(string studyName, string environment = null)
         {
             Project study = TestContext.GetExistingFeatureObjectOrMakeNew(
                 studyName, () => new Project(studyName));
 
 
             int foundOnPage;
-			IWebElement studyLink = this.FindInPaginatedList("", () =>
-				{
-					//with some page settings, this may not be the container of studies
-					//var studyList = TestContext.Browser.TryFindElementById("_ctl0_Content_ListDisplayNavigation_dgObjects");
-                    return TestContext.Browser.TryFindElementBy(By.PartialLinkText(study.UniqueName), true, 2);
-				}, out foundOnPage);
 
+			var header = Browser.TryFindElementById("_ctl0_PgHeader_TabTable");
+			IWebElement studyLink = header.TryFindElementBySelectLinktext(study.UniqueName,true,false);
+
+			if (studyLink == null)
+			{
+				studyLink = this.FindInPaginatedList("", () =>
+					{
+						//with some page settings, this may not be the container of studies
+						//var studyList = TestContext.Browser.TryFindElementById("_ctl0_Content_ListDisplayNavigation_dgObjects");
+
+						string linkText = study.UniqueName;
+						if (!string.IsNullOrWhiteSpace(environment) && environment != "Prod")
+							linkText += " (" + environment + ")";
+						return TestContext.Browser.TryFindElementBy(By.LinkText(linkText), true, 2);
+					}, out foundOnPage);
+
+			}
 
 			if (studyLink == null)
 				throw new Exception("Study not found!" + study.UniqueName);
 
             studyLink.Click();
-
+			Browser.WaitForDocumentLoad();
             return this;
         }
 
 		//
 		public SubjectPage CreateSubject(IEnumerable<FieldModel> dps)
 		{
-			Thread.Sleep(500);
 			IWebElement addSubjectLink = Browser.TryFindElementByPartialID("lbAddSubject",true);
 			addSubjectLink.Click();
+			Browser.WaitForDocumentLoad();
 			var prp =new PrimaryRecordPage();
             SubjectPage subPage = prp.FillNameAndSave(dps);
 			
@@ -85,7 +96,7 @@ namespace Medidata.RBT.PageObjects.Rave
             //TODO :    Remove the coalescing op when seeding considderation is up to date for all feature files. 
             //          Use site.Name as the text to search for.
             ClickLink(site.UniqueName,null,null);
-
+			Browser.WaitForDocumentLoad();
 
 			return this;
 		}
@@ -125,9 +136,6 @@ namespace Medidata.RBT.PageObjects.Rave
 
 		#endregion
 
-		#region IPage
-
-	
         public override string URL { get { return "homepage.aspx"; } }
 
 		public override IWebElement GetElementByName(string identifier, string areaIdentifier = null, string listItem = null)
@@ -144,8 +152,6 @@ namespace Medidata.RBT.PageObjects.Rave
 			return base.GetElementByName(identifier,areaIdentifier,listItem);
 		}
 
-
-		#endregion
 
 
 		#region ICanHighlight

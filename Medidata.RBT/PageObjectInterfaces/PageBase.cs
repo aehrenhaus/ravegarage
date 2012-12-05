@@ -149,53 +149,43 @@ namespace Medidata.RBT
            
             return result;
         }
-
-        /// <summary>
-        /// See IPage interface
-        /// </summary>
-        public virtual IPage ClickLink(string linkText, string objectType = null, string areaIdentifier = null)
-        {
-            ISearchContext area = null;
-            if (!string.IsNullOrEmpty(areaIdentifier))
-            {
-                area = Browser.TryFindElementById(areaIdentifier,false);
-                if (area == null)
-                    area = GetElementByName(areaIdentifier);
-            }
-            else
-            {
-                area = Browser;
-            }
-
-            var link = area.Link(linkText);
-            link.Click();
-
-            return GetPageByCurrentUrlIfNoAlert();
-        }
-
+		
 		/// <summary>
 		/// See IPage interface
 		/// </summary>
 		protected IPage GetPageByCurrentUrlIfNoAlert()
 		{
-			//if a model dialog presents, then Browser.Url will throw error
-			//In this case there are usually more step the handle the situaltion, like accept or dismiss the dialog first.
-
-			 var wait = new WebDriverWait(Browser, TimeSpan.FromSeconds(SeleniumConfiguration.Default.WaitElementTimeout));
-			 wait.Until(driver1 => ((IJavaScriptExecutor)Browser).ExecuteScript("return document.readyState").Equals("complete"));
 			try
 			{
-				var alert = Browser.GetAlertWindow();
+				//if alert presents , return current page object
+				var alert = Browser.SwitchTo().Alert();
 			}
 			catch
 			{
+				//if no alert window, wait and return the new page
+				Browser.WaitForDocumentLoad();
 				var uri = new Uri(Browser.Url);
+
 				return TestContext.POFactory.GetPageByUrl(uri);
-				
+
 			}
 			return this;
 	
+	
 		}
+        /// <summary>
+        /// See IPage interface
+        /// </summary>
+		public virtual IPage ClickLink(string linkText, string objectType = null, string areaIdentifier = null, bool partial = false)
+        {
+			ISearchContext context = string.IsNullOrEmpty(areaIdentifier) ? Browser as ISearchContext : this.GetElementByName(areaIdentifier, null);
+
+			IWebElement link = partial ? context.TryFindElementBy(By.PartialLinkText(linkText)) : context.TryFindElementBy(By.LinkText(linkText));
+			link.Click();
+ 
+            return GetPageByCurrentUrlIfNoAlert();
+        }
+
 
         /// <summary>
 		/// See IPage interface
@@ -217,7 +207,7 @@ namespace Medidata.RBT
 		/// </summary>
         public virtual IPage Type(string identifier, string text)
         {
-			var ele = TryFindElement(identifier);
+			var ele = FindElementDelayedWait(identifier,null);
 
 			ele.EnhanceAs<Textbox>().SetText(text);
             return this;
@@ -228,7 +218,7 @@ namespace Medidata.RBT
 		/// </summary>
 		public virtual IPage ChooseFromDropdown(string identifier, string text, string objectType = null, string areaIdentifier = null)
         {
-			var ele = TryFindElement(identifier);
+			var ele = FindElementDelayedWait(identifier,areaIdentifier);
 
 			ele.EnhanceAs<Dropdown>().SelectByText(text);
 
@@ -240,7 +230,7 @@ namespace Medidata.RBT
         /// </summary>
         public virtual IPage ChooseFromPartialDropdown(string identifier, string text, string objectType = null, string areaIdentifier = null)
         {
-            var ele = TryFindElement(identifier);
+            var ele = FindElementDelayedWait(identifier,areaIdentifier);
 
             ele.EnhanceAs<Dropdown>().SelectByPartialText(text);
 
@@ -253,7 +243,7 @@ namespace Medidata.RBT
 		public virtual IPage ChooseFromCheckboxes(string identifier, bool isChecked, string areaIdentifier = null, string listItem = null)
         {
 
-			var element = TryFindElement(identifier, areaIdentifier);
+			var element = FindElementDelayedWait(identifier, areaIdentifier);
 
 
             if (isChecked)
@@ -277,11 +267,8 @@ namespace Medidata.RBT
 		/// </summary>
         public virtual IPage ChooseFromRadiobuttons(string areaIdentifier, string identifier)
         {
-            var element = Browser.RadioButton(identifier, true);
-            if (element == null)
-                element = GetElementByName(identifier) as RadioButton;
-
-            element.Set();
+			var element = FindElementDelayedWait(identifier, areaIdentifier);
+            element.EnhanceAs<RadioButton>().Set();
 
             return this;
         }
@@ -361,8 +348,8 @@ namespace Medidata.RBT
 
 		public virtual IWebElement GetElementByName(string identifier, string areaIdentifier = null, string listItemIdentifier = null)
 		{
-            IWebElement element = Browser.TryFindElementBy(By.XPath("//input[@value='" + identifier + "']"));
-            return element;
+			throw new Exception(string.Format("This page ({0}) does not provide information about element: {1}", this.GetType().Name, identifier));
+		
 		}
 
 		//Don't make this virtual , override GetElementByName in base classes
@@ -382,31 +369,25 @@ namespace Medidata.RBT
         #endregion
 
 		//Don't make this public. This method is only a lines saver inside PageBase
-		private IWebElement TryFindElement(string identifier, string areaIdentifier = null)
+		private IWebElement FindElementDelayedWait(string identifier, string areaIdentifier)
 		{
-			var ele = Browser.TryFindElementById(identifier, false);
+			ISearchContext context = string.IsNullOrEmpty(areaIdentifier) ? Browser as ISearchContext : this.GetElementByName(areaIdentifier, null);
+
+			var ele = context.TryFindElementById(identifier, false);
 			if (ele == null)
 				ele = TryGetElementByName(identifier, areaIdentifier);
 
 			if (ele == null)
-				ele = Browser.TryFindElementByPartialID(identifier, false);
+				ele = context.TryFindElementByPartialID(identifier, false);
 			if (ele == null)
 			{
-				ele = Browser.TryFindElementById(identifier, true);
+				ele = context.TryFindElementById(identifier, true);
 
 				if (ele == null)
-					ele = Browser.TryFindElementByPartialID(identifier, true);
+					ele = context.TryFindElementByPartialID(identifier, true);
 			}
 			return ele;
 		}
-
-        /// <summary>
-        /// See IPage interface
-        /// </summary>
-		//public virtual bool CanSeeTextInArea(string text, string areaIdentifier)
-		//{
-		//    throw new Exception("This page does not implement this method");
-		//}
 
 
         public void SetFocusElement(IWebElement ele)

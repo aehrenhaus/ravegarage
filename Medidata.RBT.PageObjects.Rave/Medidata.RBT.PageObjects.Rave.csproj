@@ -200,6 +200,7 @@
     <Compile Include="TableModels\LabUnitDictionaryModel.cs" />
     <Compile Include="TableModels\AnalyteModel.cs" />
     <Compile Include="TableModels\LabUnitModel.cs" />
+    <Compile Include="TableModels\NameObject.cs" />
     <Compile Include="TableModels\RangeTypeModel.cs" />
     <Compile Include="TableModels\FormModel.cs" />
     <Compile Include="TableModels\PDFCreationModel.cs" />

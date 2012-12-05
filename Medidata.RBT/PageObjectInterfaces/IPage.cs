@@ -76,7 +76,7 @@ namespace Medidata.RBT
 		/// <param name="objectType"></param>
 		/// <param name="areaIdentifier"></param>
 		/// <returns></returns>
-		IPage ClickLink(string linkText, string objectType = null, string areaIdentifier= null);
+		IPage ClickLink(string linkText, string objectType = null, string areaIdentifier = null, bool partial = false);
 
 		/// <summary>
 		/// Click on a clickable UI control

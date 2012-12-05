@@ -44,7 +44,7 @@ namespace Medidata.RBT.SeleniumExtension
 
 		public static void SwitchBrowserWindow(this RemoteWebDriver driver, string windowName)
 		{
-
+			driver.WaitForDocumentLoad();
 			bool found = false;
 			IWebDriver window = null;
 			foreach (var handle in driver.WindowHandles)
@@ -60,7 +60,7 @@ namespace Medidata.RBT.SeleniumExtension
 			while (driver.Url == "about:blank")
 				Thread.Sleep(500);
 
-
+			driver.WaitForDocumentLoad();
 		}
 
 		public static void SwitchToSecondBrowserWindow(this RemoteWebDriver driver)
@@ -95,6 +95,13 @@ namespace Medidata.RBT.SeleniumExtension
 		{
 			IAlert alert = driver.SwitchTo().Alert();
 			return alert;
+		}
+
+		public static void WaitForDocumentLoad(this RemoteWebDriver driver)
+		{
+			var wait = new WebDriverWait(driver, TimeSpan.FromSeconds(SeleniumConfiguration.Default.WaitElementTimeout));
+			wait.Until(driver1 => ((IJavaScriptExecutor)driver).ExecuteScript("return document.readyState").Equals("complete"));
+
 		}
 	}
 }

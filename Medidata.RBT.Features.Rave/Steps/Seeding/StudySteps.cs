@@ -1,7 +1,7 @@
 ﻿using TechTalk.SpecFlow;
 using Medidata.RBT.PageObjects.Rave.SharedRaveObjects;
 using Medidata.RBT.PageObjects.Rave;
-using System.Threading;
+using TechTalk.SpecFlow.Assist;
 
 namespace Medidata.RBT.Features.Rave
 {
@@ -71,6 +71,29 @@ namespace Medidata.RBT.Features.Rave
 				TestContext.CurrentPage = new HomePage().NavigateToSelf();
 			}
         }
+
+
+		[StepDefinition(@"xml draft ""([^""]*)"" is Uploaded with Environments")]
+		public void XmlDraft____IsUploadedWithEnvironmentName____(string draftName, Table tableEnvs)
+		{
+			using (new LoginSession())
+			{
+				UploadedDraft uploadedDraft = TestContext.GetExistingFeatureObjectOrMakeNew(draftName,
+																							() => new UploadedDraft(draftName));
+
+				TestContext.CurrentPage.As<HomePage>().ClickLink("Architect");
+				TestContext.CurrentPage = new ArchitectPage();
+				TestContext.CurrentPage.As<ArchitectPage>().ClickProject(uploadedDraft.Project.UniqueName);
+				TestContext.CurrentPage.As<ArchitectLibraryPage>().ClickLink("Studies Environment Setup");
+
+				foreach (var env in tableEnvs.CreateSet<NameObject>())
+				{
+					TestContext.CurrentPage.As<ArchitectEnvironmentSetupPage>().AddNewEnvironment(env.Name);
+				}
+				
+				TestContext.CurrentPage = new HomePage().NavigateToSelf();
+			}
+		}
 
         /// <summary>
         /// Publish and push a UploadDraft to a crf version. This will create a CRFVersion with that name if none already exists.

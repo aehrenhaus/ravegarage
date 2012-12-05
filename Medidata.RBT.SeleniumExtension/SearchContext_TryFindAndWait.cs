@@ -179,19 +179,18 @@ namespace Medidata.RBT.SeleniumExtension
 			return ele;
 		}
 
-		public static IWebElement TryFindElementBySpanLinktext(this ISearchContext context, string linkText)
+		public static IWebElement TryFindElementBySpanLinktext(this ISearchContext context, string linkText, bool isWait = false)
         {
             return context.Spans().FirstOrDefault(x => x.Text.Trim() == linkText);
         }
 
-        public static IWebElement TryFindElementBySelectPartialLinktext(this RemoteWebDriver context, string linkText)
-        {
-            return context.Options().FirstOrDefault(x => x.Text.Trim().Contains(linkText));
-        }
 
-        public static IWebElement TryFindElementBySelectLinktext(this RemoteWebDriver context, string linkText)
+		public static IWebElement TryFindElementBySelectLinktext(this ISearchContext context, string linkText, bool partial, bool? isWait = null)
         {
-            return context.Options().FirstOrDefault(x => x.Text.Trim() == linkText);
+			var ele =partial?
+				context.TryFindElementBy(By.XPath(".//a[contains(text(),'" + linkText + "')] | .//span[contains(text(),'" + linkText + "')]"), isWait)
+				: context.TryFindElementBy(By.XPath(".//a[text()='" + linkText + "'] | .//span[text()='" + linkText + "']"), isWait);
+			return ele;
         }
 
 	}

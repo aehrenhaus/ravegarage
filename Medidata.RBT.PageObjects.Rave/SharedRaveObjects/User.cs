@@ -164,12 +164,12 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
         /// <param name="projectUID">The UID of the project assigned</param>
         /// <param name="siteName">The UID of the site assigned</param>
         /// <returns></returns>
-		public bool StudyAssignmentExists(string roleName, string projectName, string siteName)
+		public bool StudyAssignmentExists(string roleName, string projectName, string siteName, string environment)
         {
             if (StudyAssignments != null)
             {
                 foreach (StudyAssignment sa in StudyAssignments)
-					if (sa.ProjectName == projectName && sa.RoleName == roleName && sa.SiteName == siteName)
+					if (sa.ProjectName == projectName && sa.RoleName == roleName && sa.SiteName == siteName && sa.Environment==environment)
                         return true;
             }
             return false;
