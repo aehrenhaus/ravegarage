@@ -11,122 +11,69 @@ Feature: US15417_DT13905 NeedsCVRefresh is not set to On for all datapoints rela
 	Then I should see the lab data converted to standard values in the standard units in Clinical Views
 
 Background:
-    Given I login to Rave with user "defuser" and password "password"
-		
-	# And following Project assignments exist
-	# |User	  |Project	         |Environment	|Role |Site	  |Site Number	|
-	# |defuser|US15417_DT13905_SJ|Prod			|cdm1 |Site 1 |S100			|
-    # #And Role "cdm1" has Action "Entry"
-	# And the following Lab Units exixt
-	# | Lab Unit |
-	# | 10^9/L   |
-	# | %		 |
 
-	# And the following Lab Unit Dictionary exists
-	# | Name        | Units  |
-	# | WBC         | %      |
-	# | WBC         | 10^9/L |
-	# | Neutrophils | %      |
-	# | Neutrophils | 10^9/L |
-
-
-	# And the following Analytes exists
-	# | Analytes    | Lab Unit Dictionary |
-	# | WBC         | WBC                 |
-	# | Neutrophils | Neutrophils         |
-
-	# And the following Standard Group Exists with Entries and their related Analytes and Units
-	# | Standard Group					| Analyte    | Units  |
-	# | US15417_DT13905_Standard_Groups | Neutrophils| %      |
-	# | US15417_DT13905_Standard_Groups | WBC        | %      |
-
-	#And the following Range Types Exists
-	#| Range Type                 |
-	#| US15417_DT13905_Range_Type |
-
-	#And the following Central Labs Exists
-	#| Central Labs       | Range Type				   |
-	#| US15417_DT13905_SJ | US15417_DT13905_Range_Type |
-
-	#And the following Reference Lab Exists
-	#| Type          | Name                      | Range Type                 |
-	#| Reference Lab | US15417_DT13905_SJ_RefLab | US15417_DT13905_Range_Type |
-
-	#And the following Lab Settings Exists 
-	#| Standard Units                  | Reference Labs            |
-	#| US15417_DT13905_Standard_Groups | US15417_DT13905_SJ_RefLab |
-
-	#And the following Labs Exsits
-	#| Type      | Name               | Description        | Range Type                 |
-	#| Local Lab | US15417_DT13905_SJ | US15417_DT13905_SJ | US15417_DT13905_Range_Type |
-
-	#And the following Analyte Ranges Exsits
-	#| Analyte     | From Date   | To Date     | Low Value | High Value | Units  | Dictionary | Comments |
-	#| Neutrophils | 01 Jan 2000 | 01 Jan 2020 | 10        | 20         | 10^9/L | ...        |          |
-	#| WBC         | 01 Jan 2000 | 01 Jan 2020 | 10        | 20         | 10^9/L | ...        |          |
-	
-	# And I Checked box for "Normalized Lab View Name" in Configuration
-	# And I Type
-	# | Normalized Lab View Name |
-	# | AnalytesView             |
-
-	#And Project "Mediflex_SJ" has Draft "<Draft1>"
-	#And I publish and push CRF Version "CRF Version<RANDOMNUMBER>" of Draft "<Draft1>" to site "Site 1" in Project "Mediflex_SJ" for Enviroment "Prod"
-	#And the Local Lab "Local Lab DT13905" exists
-	#And the following Lab assignment exists
-	#|Project		|Environment	|Site	|Lab				|
-	#|Mediflex_SJ	|Prod			|Site 1	|Local Lab DT13905	|
-	# And lab has ranges set for the Analytes
-	# | Lab               | Analyte     |
-	# | Local Lab DT13905 | WBC         |
-	# | Local Lab DT13905 | NEUTROPHILS |
-	 #And I select Study "US15417_DT13905_SJ" and Site "Site 1"
+	Given I login to Rave with user "SUPER USER 1"
+	And Site "Site 01" exists
+	And study "US15417_DT13905" is assigned to Site "Site 01"
+	And xml Lab Configuration "Lab_US15417_DT13905.xml" is uploaded
+	And xml draft "US15417_DT13905_Version1.xml" is Uploaded
+	And following Project assignments exist
+		| User         | Project         | Environment | Role         | Site    | SecurityRole          |
+		| SUPER USER 1 | US15417_DT13905 | Live: Prod  | SUPER ROLE 1 | Site 01 | Project Admin Default |
+	And Role "SUPER ROLE 1" has Action "Entry" in ActionGroup "Entry" with Status "Checked"
+	And I publish and push eCRF "US15417_DT13905_Version1.xml" to "SourceVersion1"
+	And Clinical Views exist for project "US15417_DT13905"
+	And following Report assignments exist
+		| Role         | Report                             |
+		| SUPER ROLE 1 | Data Listing - Data Listing Report |
+	And following Configuration Settings Exist
+	|Checkbox|Parameter               |Value       |
+	|True    |Normalized Lab View Name|Lab         |
 
 @release_2012.1.0 
 @PB_US15417_DT13905_01
 @Validation
 Scenario: PB_US15417_DT13905_01 As an EDC user, when I create a unit conversion formula to convert lab data in a non-standard unit to standard values in a standard unit, then I should see the standard value and standard units in Clinical Views.
 	
-	When I select Study "US15417_DT13905_SJ" and Site "Site 1"
-	And I create a Subject
+	When I create a Subject
 	| Field            | Data               |
 	| Subject Initials | SUB                |
 	| Subject number   | {RndNum<num1>(3)}  |
 	| Age              | 20                 |
-	| Sex              | MaleREGAQT         |
-	| Pregancy Status  | NoREGAQT           |
+	| Sex              | maleUS15417_DT13905|
+	| Pregancy Status  | NoUS15417_DT13905  |
 	| Subject Date     | 01 Feb 2011        |	
 	And I take a screenshot
 	And I select link "Hematology"
-	And I choose "US15417_DT13905_SJ" from "Lab"
+	And I choose "Lab" "LocalLab_1US15417_DT13905" from "Lab"
 	And I enter data in CRF and save
-	| Field | Data  | Unit   |
-	| WBC   | 10    | 10^9/L |
+	| Field | Data  | Unit                    |
+	| WBC   | 10    | *10E6/ulUS15417_DT13905 |
 	And I take a screenshot
 	And I select link "Home"
 	And I navigate to "Lab Administration"
 	And I navigate to "Unit Conversions"
 	And I add new unit conversion data
-	| From   | To | Analyte | A | B | C | D |
-	| 10^9/L | %  | ...     | 2 | 1 | 0 | 0 |
+	| From                    | To                       | Analyte | A | B | C | D |
+	| *10E6/ulUS15417_DT13905 | FractionUS15417_DT13905  | ...     | 2 | 1 | 0 | 0 |
 	And I take a screenshot
+	And I wait for lab update queue to be processed 
+	And I wait for Clinical View refresh to complete for project "US15417_DT13905"
 	And I navigate to "Home"
 	And I navigate to "Reporter"
-	And I wait for lab update queue to be processed
-	And I wait for Clinical View refresh to complete for project "US15417_DT13905_SJ"
 	And I wait for 1 minute
 	And I select Report "Data Listing" 
 	And I set report parameter "Study" with table
 		| Name               | Environment |
-		| US15417_DT13905_SJ | Prod        |
+		| US15417_DT13905    | Prod        |
 	And I click button "Submit Report"
 	And I switch to "DataListingsReport" window
 	And I choose "Clinical Views" from "Data Source"
 	And I choose "AnalytesView" from "Form"	
 	And I click button "Run"
 	Then I verify rows exist in "Result" table
-	| Subject        | FormName   | AnalyteName | AnalyteValue | LabUnits | StdValue | StdUnits |
-	| SUB{Var(num1)} | Hematology | WBC         | 10           | 10^9/L   | 20       | %        |
+	| Subject        | FormName   | AnalyteName          | AnalyteValue | LabUnits                  | StdValue | StdUnits               |
+	| SUB{Var(num1)} | Hematology | AnWBCUS15417_DT13905 | 10           | *10E6/ulUS15417_DT13905   | 20       | FractionUS15417_DT13905|
 	And I take a screenshot
 	
 @release_2012.1.0 
@@ -134,123 +81,122 @@ Scenario: PB_US15417_DT13905_01 As an EDC user, when I create a unit conversion 
 @Validation
 Scenario: PB_US15417_DT13905_02 As an EDC user, when I update a unit conversion formula to convert lab data in a non-standard unit to standard values in a standard unit, then I should see the standard value and standard units in Clinical Views.
 
-	When I select Study "US15417_DT13905_SJ" and Site "Site 1"
-	And I create a Subject
-	| Field			   | Data	           |
-	| Subject Initials | SUB               |
-	| Subject number   | {RndNum<num1>(3)} |
-	| Age              | 20                |
-	| Sex              | MaleREGAQT        |
-	| Pregancy Status  | NoREGAQT          |
-	| Subject Date     | 01 Feb 2011       |
+	When I create a Subject
+	| Field			   | Data	            |
+	| Subject Initials | SUB                |
+	| Subject number   | {RndNum<num1>(3)}  |
+	| Age              | 20                 |
+	| Sex              | maleUS15417_DT13905|
+	| Pregancy Status  | NoUS15417_DT13905  |
+	| Subject Date     | 01 Feb 2011        |
 	And I take a screenshot
 	And I select link "Hematology"
-	And I choose "US15417_DT13905_SJ" from "Lab"
+	And I choose "Lab" "LocalLab_1US15417_DT13905" from "Lab"
 	And I enter data in CRF and save
-	| Field | Data | Unit   |
-	| WBC   | 10   | 10^9/L |
+	| Field | Data | Unit                    |
+	| WBC   | 10   | *10E6/ulUS15417_DT13905 |
 	And I take a screenshot
 	And I wait for lab update queue to be processed
-	And I wait for Clinical View refresh to complete for project "US15417_DT13905_SJ"
+	And I wait for Clinical View refresh to complete for project "US15417_DT13905"
 	And I wait for 1 minute
 	And I navigate to "Home"
 	And I navigate to "Reporter"
 	And I select Report "Data Listing" 
 	And I set report parameter "Study" with table
-		| Name               | Environment |
-		| US15417_DT13905_SJ | Prod        |
+		| Name            | Environment |
+		| US15417_DT13905 | Prod        |
 	And I click button "Submit Report"
 	And I switch to "DataListingsReport" window
 	And I choose "Clinical Views" from "Data Source"
 	And I choose "AnalytesView" from "Form"	
 	And I click button "Run"
 	Then I verify rows exist in "Result" table
-	| Subject        | FormName   | AnalyteName | AnalyteValue | LabUnits | StdValue | StdUnits |
-	| SUB{Var(num1)} | Hematology | WBC         | 10           | 10^9/L   | 20       | %        |
+	| Subject        | FormName   | AnalyteName         | AnalyteValue | LabUnits                  | StdValue | StdUnits               |
+	| SUB{Var(num1)} | Hematology | AnWBCUS15417_DT13905| 10           | *10E6/ulUS15417_DT13905   | 20       | FractionUS15417_DT13905|
 	And I take a screenshot
 	And I switch to "Reports" window
 	And I select link "Home"
 	And I navigate to "Lab Administration"
 	And I navigate to "Unit Conversions"
 	And I edit unit conversion data
-	| From   | To | Analyte | A | B | C | D |
-	| 10^9/L | %  | ...     | 3 | 1 | 0 | 0 |
+	| From                    | To                       | Analyte | A | B | C | D |
+	| *10E6/ulUS15417_DT13905 | FractionUS15417_DT13905  | ...     | 3 | 1 | 0 | 0 |
 	And I take a screenshot
 	And I wait for lab update queue to be processed
-	And I wait for Clinical View refresh to complete for project "US15417_DT13905_SJ"
+	And I wait for Clinical View refresh to complete for project "US15417_DT13905"
 	And I wait for 1 minute
 	And I navigate to "Home"
 	And I navigate to "Reporter"
 	And I select Report "Data Listing" 
 	And I set report parameter "Study" with table
-		| Name               | Environment |
-		| US15417_DT13905_SJ | Prod        |
+		| Name            | Environment |
+		| US15417_DT13905 | Prod        |
 	And I click button "Submit Report"
 	And I switch to "DataListingsReport" window
 	And I choose "Clinical Views" from "Data Source"
 	And I choose "AnalytesView" from "Form"	
 	And I click button "Run"
 	Then I verify rows exist in "Result" table
-	| Subject        | FormName   | AnalyteName | AnalyteValue | LabUnits | StdValue | StdUnits |
-	| SUB{Var(num1)} | Hematology | WBC         | 10           | 10^9/L   | 30       | %        |
+	| Subject        | FormName   | AnalyteName         | AnalyteValue | LabUnits                  | StdValue | StdUnits               |
+	| SUB{Var(num1)} | Hematology | AnWBCUS15417_DT13905| 10           | *10E6/ulUS15417_DT13905   | 30       | FractionUS15417_DT13905|
 	And I take a screenshot
 	And I switch to "Reports" window
 	And I select link "Home"
 	And I navigate to "Lab Administration"
 	And I navigate to "Unit Conversions"
 	And I delete unit conversion data
-	| From   | To |
-	| 10^9/L | %  |
+	| From                    | To                     |
+	| *10E6/ulUS15417_DT13905 | FractionUS15417_DT13905|
 
 
 @release_2012.1.0 
 @PB_US15417_DT13905_03
 @Validation
 Scenario: PB_US15417_DT13905_03 As an EDC user, when I create a unit conversion formula to convert lab data in a non-standard unit to standard values in a standard unit for a specific analyte, then I should see the standard value and standard units in Clinical Views.
-	When I select Study "US15417_DT13905_SJ" and Site "Site 1"
+#	When I select Study "US15417_DT13905" and Site "Site 1"
 	And I create a Subject
 	| Field            | Data               |
 	| Subject Initials | SUB                |
 	| Subject number   | {RndNum<num1>(3)}  |
 	| Age              | 20                 |
-	| Sex              | MaleREGAQT         |
-	| Pregancy Status  | NoREGAQT           |
+	| Sex              | maleUS15417_DT13905|
+	| Pregancy Status  | NoUS15417_DT13905  |
 	| Subject Date     | 01 Feb 2011        |
 	And I take a screenshot
 	And I select link "Hematology"
-	And I choose "US15417_DT13905_SJ" from "Lab"
+	And I choose "Lab" "LocalLab_1US15417_DT13905" from "Lab"
 	And I enter data in CRF and save
 	| Field       | Data | Unit   |
-	| WBC         | 10   | 10^9/L |
-	| NEUTROPHILS | 10   | 10^9/L |
+	| WBC         | 10   | *10E6/ulUS15417_DT13905 |
+	| NEUTROPHILS | 10   | *10E6/ulUS15417_DT13905 |
 	And I take a screenshot 
 	And I wait for lab update queue to be processed
-	And I wait for Clinical View refresh to complete for project "US15417_DT13905_SJ"
+	And I wait for Clinical View refresh to complete for project "US15417_DT13905"
 	And I wait for 1 minute
 	And I select link "Home"
 	And I navigate to "Lab Administration"
 	And I navigate to "Unit Conversions"
 	And I add new unit conversion data
-	| From   | To | Analyte | A | B | C | D |
-	| 10^9/L | %  | WBC     | 4 | 1 | 0 | 0 |
+	| From                    | To                       | Analyte             | A | B | C | D |
+	| *10E6/ulUS15417_DT13905 | FractionUS15417_DT13905  | AnWBCUS15417_DT13905| 4 | 1 | 0 | 0 |
 	And I take a screenshot
 	And I navigate to "Home"
 	And I wait for lab update queue to be processed
-	And I wait for Clinical View refresh to complete for project "US15417_DT13905_SJ"
+	And I wait for Clinical View refresh to complete for project "US15417_DT13905"
 	And I wait for 1 minute
 	And I navigate to "Reporter"
 	And I select Report "Data Listing" 
 	And I set report parameter "Study" with table
-		| Name               | Environment |
-		| US15417_DT13905_SJ | Prod        |
+		| Name            | Environment |
+		| US15417_DT13905 | Prod        |
 	And I click button "Submit Report"
 	And I switch to "DataListingsReport" window
 	And I choose "Clinical Views" from "Data Source"
 	And I choose "AnalytesView" from "Form"	
 	And I click button "Run"
 	Then I verify rows exist in "Result" table
-	| Subject        | FormName   | AnalyteName | AnalyteValue | LabUnits | StdValue | StdUnits |
-	| SUB{Var(num1)} | Hematology | WBC         | 10           | 10^9/L   | 40       | %        |
+	| Subject        | FormName   | AnalyteName         | AnalyteValue | LabUnits                  | StdValue | StdUnits               |
+	| SUB{Var(num1)} | Hematology | AnWBCUS15417_DT13905| 10           | *10E6/ulUS15417_DT13905   | 40       | FractionUS15417_DT13905|
 	And I take a screenshot
 	
 @release_2012.1.0 
@@ -258,74 +204,74 @@ Scenario: PB_US15417_DT13905_03 As an EDC user, when I create a unit conversion 
 @Validation
 Scenario: PB_US15417_DT13905_04 As an EDC user, when I update a unit conversion formula to convert lab data in a non-standard unit to standard values in a standard unit for a specific analyte, then I should see the standard value and standard units in Clinical Views.
 	
-	When I select Study "US15417_DT13905_SJ" and Site "Site 1"
+#	When I select Study "US15417_DT13905" and Site "Site 1"
 	And I create a Subject
-	| Field			   | Data	           |
-	| Subject Initials | SUB               |
-	| Subject number   | {RndNum<num1>(3)} |
-	| Age              | 20                |
-	| Sex              | MaleREGAQT        |
-	| Pregancy Status  | NoREGAQT          |
-	| Subject Date     | 01 Feb 2011       |
+	| Field			   | Data	            |
+	| Subject Initials | SUB                |
+	| Subject number   | {RndNum<num1>(3)}  |
+	| Age              | 20                 |
+	| Sex              | maleUS15417_DT13905|
+	| Pregancy Status  | NoUS15417_DT13905  |
+	| Subject Date     | 01 Feb 2011        |
 	And I take a screenshot
 	And I select link "Hematology"
-	And I choose "US15417_DT13905_SJ" from "Lab"
+	And I choose "Lab" "LocalLab_1US15417_DT13905" from "Lab"
 	And I enter data in CRF and save
-	| Field       | Data | Unit   |
-	| WBC         | 10   | 10^9/L |
-	| NEUTROPHILS | 10   | 10^9/L |
+	| Field       | Data | Unit                    |
+	| WBC         | 10   | *10E6/ulUS15417_DT13905 |
+	| NEUTROPHILS | 10   | *10E6/ulUS15417_DT13905 |
 	And I take a screenshot
-	And I navigate to "Home"
 	And I wait for lab update queue to be processed
-	And I wait for Clinical View refresh to complete for project "US15417_DT13905_SJ"
+	And I wait for Clinical View refresh to complete for project "US15417_DT13905"
 	And I wait for 1 minute
+	And I navigate to "Home"
 	And I navigate to "Reporter"
 	And I select Report "Data Listing" 
 	And I set report parameter "Study" with table
-		| Name               | Environment |
-		| US15417_DT13905_SJ | Prod        |
+		| Name            | Environment |
+		| US15417_DT13905 | Prod        |
 	And I click button "Submit Report"
 	And I switch to "DataListingsReport" window
 	And I choose "Clinical Views" from "Data Source"
 	And I choose "AnalytesView" from "Form"	
 	And I click button "Run"
 	Then I verify rows exist in "Result" table
-	| Subject        | FormName   | AnalyteName | AnalyteValue | LabUnits | StdValue | StdUnits |
-	| SUB{Var(num1)} | Hematology | WBC         | 10           | 10^9/L   | 40       | %        |
+	| Subject        | FormName   | AnalyteName         | AnalyteValue | LabUnits                | StdValue | StdUnits               |
+	| SUB{Var(num1)} | Hematology | AnWBCUS15417_DT13905| 10           | *10E6/ulUS15417_DT13905 | 40       | FractionUS15417_DT13905|
 	And I take a screenshot
 	And I switch to "Reports" window
 	And I select link "Home"
 	And I navigate to "Lab Administration"
 	And I navigate to "Unit Conversions"
 	And I edit unit conversion data
-	| From   | To | Analyte | A | B | C | D |
-	| 10^9/L | %  | WBC     | 5 | 1 | 0 | 0 |
+	| From                    | To                       | Analyte             | A | B | C | D |
+	| *10E6/ulUS15417_DT13905 | FractionUS15417_DT13905  | AnWBCUS15417_DT13905| 5 | 1 | 0 | 0 |
 	And I take a screenshot
-	And I navigate to "Home"
 	And I wait for lab update queue to be processed
-	And I wait for Clinical View refresh to complete for project "US15417_DT13905_SJ"
+	And I wait for Clinical View refresh to complete for project "US15417_DT13905"
 	And I wait for 1 minute
+	And I navigate to "Home"
 	And I navigate to "Reporter"
 	And I select Report "Data Listing" 
 	And I set report parameter "Study" with table
 		| Name               | Environment |
-		| US15417_DT13905_SJ | Prod        |
+		| US15417_DT13905 | Prod        |
 	And I click button "Submit Report"
 	And I switch to "DataListingsReport" window
 	And I choose "Clinical Views" from "Data Source"
 	And I choose "AnalytesView" from "Form"	
 	And I click button "Run"
 	Then I verify rows exist in "Result" table
-	| Subject        | FormName   | AnalyteName | AnalyteValue | LabUnits | StdValue | StdUnits |
-	| SUB{Var(num1)} | Hematology | WBC         | 10           | 10^9/L   | 50       | %        |
+	| Subject        | FormName   | AnalyteName         | AnalyteValue | LabUnits                  | StdValue | StdUnits               |
+	| SUB{Var(num1)} | Hematology | AnWBCUS15417_DT13905| 10           | *10E6/ulUS15417_DT13905   | 50       | FractionUS15417_DT13905|
 	And I take a screenshot
 	And I wait for lab update queue to be processed
-	And I wait for Clinical View refresh to complete for project "US15417_DT13905_SJ"
+	And I wait for Clinical View refresh to complete for project "US15417_DT13905"
 	And I wait for 1 minute
 	And I switch to "Reports" window
 	And I select link "Home"
 	And I navigate to "Lab Administration"
 	And I navigate to "Unit Conversions"
 	And I delete unit conversion data
-	| From   | Analyte | To |
-	| 10^9/L | WBC     | %  |
+	| From                    | Analyte             | To                       |
+	| *10E6/ulUS15417_DT13905 | AnWBCUS15417_DT13905| FractionUS15417_DT13905  |

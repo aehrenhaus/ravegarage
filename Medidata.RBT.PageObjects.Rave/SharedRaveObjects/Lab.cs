@@ -24,10 +24,10 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
         /// <summary>
         /// The Lab constructor
         /// </summary>
-        /// <param name="analyteName">The feature file lab name</param>
-        public Lab(string analyteName)
+        /// <param name="labName">The feature file lab name</param>
+        public Lab(string labName)
         {
-            UniqueName = analyteName;
+			UniqueName = labName + TID;
         }
     }
 }

@@ -94,27 +94,27 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
             }
         }
 
-        /// <summary>
-        /// Make range type variables unique
-        /// </summary>
-        /// <param name="excel"></param>
-        private void MakeRangeTypeVariablesUnique(ExcelWorkbook excel)
-        {
-            ExcelTable rangeTypeVarTable = excel.OpenTableForEdit("RangeTypeVariables");
-            for (int row = 1; row <= rangeTypeVarTable.RowsCount; row++)
-            {
-                //RangeType
-                string rangeTypeVariableString = rangeTypeVarTable[row, "RangeType"] as string;
-                if (!string.IsNullOrEmpty(rangeTypeVariableString))
-                {
-                    RangeType rangeType = TestContext.GetExistingFeatureObjectOrMakeNew<RangeType>(rangeTypeVariableString.Trim(),
-                        () => new RangeType(rangeTypeVariableString.Trim()));
-                    rangeTypeVarTable[row, "RangeType"] = rangeType.UniqueName.ToString();
-                }
-            }
-        }
+		/// <summary>
+		/// Replace range type variables with the seedable object equivalents.
+		/// </summary>
+		/// <param name="excel">The lab configuration workbook</param>
+		private void MakeRangeTypeVariablesUnique(ExcelWorkbook excel)
+		{
+			ExcelTable rangeTypeVariablesTable = excel.OpenTableForEdit("RangeTypeVariables");
+			for (int row = 1; row <= rangeTypeVariablesTable.RowsCount; row++)
+			{
+				//Name
+				string rangeTypeString = rangeTypeVariablesTable[row, "RangeType"] as string;
+				if (!string.IsNullOrEmpty(rangeTypeString))
+				{
+					RangeType rangeType = TestContext.GetExistingFeatureObjectOrMakeNew<RangeType>(rangeTypeString.Trim(),
+						() => new RangeType(rangeTypeString.Trim()));
+					rangeTypeVariablesTable[row, "RangeType"] = rangeType.UniqueName.ToString();
+				}
+			}
+		}
 
-        /// <summary>
+		/// <summary>
         /// Replace lab units with the seedable object equivalents.
         /// </summary>
         /// <param name="excel">The lab configuration workbook</param>
@@ -211,7 +211,31 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
         /// <param name="excel">The lab configuration workbook</param>
         private void MakeAnalyteRangesUnique(ExcelWorkbook excel)
         {
-            ExcelTable analyteRangesTable = excel.OpenTableForEdit("AnalyteRanges");
+			Dictionary<string, string> mappingDictionary = new Dictionary<string, string>();
+			//identify the rangeTypes with uniquename
+			ExcelTable rangeTypesTable = excel.OpenTableForEdit("RangeTypes");
+			for (int row = 1; row <= rangeTypesTable.RowsCount; row++)
+			{
+				string rangeTypeString = rangeTypesTable[row, "Name"] as string;
+				RangeType rangeType = TestContext.GetExistingFeatureObjectOrMakeNew<RangeType>(rangeTypeString.Trim(),
+					() => new RangeType(rangeTypeString.Trim()));
+				mappingDictionary.Add(rangeTypeString, rangeType.UniqueName);
+			}
+
+			ExcelTable analyteRangesTable = excel.OpenTableForEdit("AnalyteRanges");
+			//rename column headers for analyteRanges
+			for (int i = 0; i < analyteRangesTable.ColumnNames.Length; i++)
+			{
+				foreach (string key in mappingDictionary.Keys)
+				{
+					if (analyteRangesTable.ColumnNames[i].StartsWith(key))
+					{
+						analyteRangesTable[0, analyteRangesTable.ColumnNames[i]] = analyteRangesTable.ColumnNames[i].Replace(key, mappingDictionary[key]);
+					}
+				}
+			}
+
+
             for (int row = 1; row <= analyteRangesTable.RowsCount; row++)
             {
                 //Lab
@@ -256,6 +280,7 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
                     analyteRangesTable[row, "LabUnit"] = labUnit.UniqueName.ToString();
                 }
                 
+
             }
         }
 
@@ -371,9 +396,9 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
 
                 if (!string.IsNullOrEmpty(standardGroupString))
                 {
-                    StandardGroup lab = TestContext.GetExistingFeatureObjectOrMakeNew<StandardGroup>(standardGroupString.Trim(),
+                    StandardGroup standardGroup = TestContext.GetExistingFeatureObjectOrMakeNew<StandardGroup>(standardGroupString.Trim(),
                         () => new StandardGroup(standardGroupString.Trim()));
-                    standardGroupEntriesTable[row, "StandardGroup"] = lab.UniqueName.ToString();
+					standardGroupEntriesTable[row, "StandardGroup"] = standardGroup.UniqueName.ToString();
                 }
 
                 //Analyte

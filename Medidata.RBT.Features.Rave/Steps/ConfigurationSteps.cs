@@ -33,6 +33,15 @@ namespace Medidata.RBT.Features.Rave.Steps
             page.Save();
         }
 
+		[StepDefinition(@"following Configuration Settings Exist")]
+		public void FollowingConfigurationSettingsExist(Table table)
+		{
+			var page = new WorkflowConfigPage().NavigateToSelf().ClickLink("Other Settings").As<ConfigurationSettingsPage>();
+			bool bOk = page.VerifyRowWithValuesExists(table.CreateSet<ConfigurationSettingsModel>());
+			Assert.IsTrue(bOk);
+			CurrentPage = new HomePage().NavigateToSelf();
+			//page.Save();
+		}
 
         /// <summary>
         /// Assign the user to various project assignments
@@ -129,5 +138,6 @@ namespace Medidata.RBT.Features.Rave.Steps
                 TestContext.CurrentPage.As<ConfigurationClinicalViewsPage>().BuildClinicalViews(project.UniqueName);
             }
         }
-   }
+
+	}
 }
