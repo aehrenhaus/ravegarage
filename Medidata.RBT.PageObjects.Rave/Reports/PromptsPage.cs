@@ -59,8 +59,20 @@ namespace Medidata.RBT.PageObjects.Rave
 
 		private IWebElement FindParameterTr(string name)
 		{
-			var paraTRs = Browser.FindElementsByXPath("/html/body/div[3]/div[2]/div/form/div/table[2]/tbody/tr/td/table/tbody/tr/td/table/tbody/tr[2]/td/table/tbody/tr");
-			var paraTR = paraTRs.FirstOrDefault(x => x.FindElement(By.XPath("./td")).Text == name + ":");
+            int count = 1;
+            var paraTR = Browser.TryFindElementBy(w =>
+            {
+                Console.WriteLine(string.Format(
+                    "-> PromptsPage.FindParameterTr({0}) : attempt # {1}",
+                    name, 
+                    count));
+                count++;
+                
+                var trs = Browser.FindElementsByXPath("/html/body/div[3]/div[2]/div/form/div/table[2]/tbody/tr/td/table/tbody/tr/td/table/tbody/tr[2]/td/table/tbody/tr");
+                var tr = trs.FirstOrDefault(x => x.FindElement(By.XPath("./td")).Text == name + ":");
+                return tr;
+            });
+			
 
 			if (paraTR == null)
 				throw new Exception("Can not find argument block:"+name);

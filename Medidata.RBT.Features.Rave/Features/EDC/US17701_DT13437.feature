@@ -1,5 +1,4 @@
 ﻿# When an analyte range is manually created, the audit information should be captured in the database.
-@ignore
 Feature: US17701_DT13437 When an analyte range is manually created, the audit information should be captured in the database.
 	Audit information for manually create analyte ranges is captured in the database.
 	As a Rave user
@@ -7,7 +6,19 @@ Feature: US17701_DT13437 When an analyte range is manually created, the audit in
 	Then the audit information for the analyte I created is captured in the database
  
 Background:
-	Given I login to Rave with user "defuser" and password "password"
+	
+	Given xml Lab Configuration "All_US17701.xml" is uploaded
+	Given role "Edit Check Role" exists
+ 	Given xml draft "Mediflex_Draft_US17701_DT13437.xml" is Uploaded
+	Given Site "Site 10991" exists
+	Given study "Mediflex" is assigned to Site "Site 10991"
+	Given I publish and push eCRF "Mediflex_Draft_US17701_DT13437.xml" to "Version 1"
+	Given following Project assignments exist
+		| User         | Project        | Environment | Role            | Site       | SecurityRole          |
+		| SUPER USER 1 | Mediflex       | Live: Prod  | Edit Check Role | Site 10991 | Project Admin Default |
+	Given I login to Rave with user "SUPER USER 1"
+	
+	
 	#And the following Project assignments exist
 	#	| User    | Project  | Environment | Role | Site			| Site Number | Lab Type  | Lab Name		| Description   | Range Type |
 	#	| defuser | Mediflex | Prod        | cdm1 |  Site 10991		| 10991       | Local Lab |  Local Lab		|  Local Lab	| Standard   |
