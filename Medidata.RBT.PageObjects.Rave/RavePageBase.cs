@@ -166,7 +166,9 @@ namespace Medidata.RBT.PageObjects.Rave
                 link = ISearchContextExtend.FindLinkWithBulletPoint(context, linkText);
 			else
 			{
-				link = context.TryFindElementBySelectLinktext(linkText, partial);
+                link = partial ?
+                context.TryFindElementBy(By.XPath(".//a[contains(text(),'" + linkText + "')] | .//span[contains(text(),'" + linkText + "')]"))
+                : context.TryFindElementBy(By.XPath(".//a[text()='" + linkText + "'] | .//span[text()='" + linkText + "']"));
 			}
 
 			if (link == null)
