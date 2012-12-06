@@ -59,7 +59,10 @@ namespace Medidata.RBT.PageObjects.Rave
                 id = "_ctl0_Content_SubjectAddEvent_NoEntryPermitHelpLabel";
             else
             {
-                IWebElement result = base.GetElementByName(identifier, areaIdentifier, listItem);
+                IWebElement result = Browser.TryFindElementBy(By.XPath("//input[@value='" + identifier + "']"));
+                
+                if(result == null)
+                    result = base.GetElementByName(identifier, areaIdentifier, listItem);
                 if (result != null)
                     return result;
                 else
