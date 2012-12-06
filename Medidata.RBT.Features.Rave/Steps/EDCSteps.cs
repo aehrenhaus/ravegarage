@@ -545,7 +545,7 @@ namespace Medidata.RBT.Features.Rave
         public void ISelectLab_____(string labName)
         {
             CRFPage page = CurrentPage.As<CRFPage>();
-            page.SelectLabValue(labName);
+            page.SelectLabValue(TestContext.GetExistingFeatureObjectOrMakeNew<Lab>(labName, () => new Lab(labName)).UniqueName);
         }
 
         [StepDefinition(@"I sign the form with username ""([^""]*)"" and password ""([^""]*)""")]
