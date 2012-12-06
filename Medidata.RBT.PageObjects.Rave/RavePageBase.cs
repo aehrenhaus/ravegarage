@@ -120,13 +120,14 @@ namespace Medidata.RBT.PageObjects.Rave
 			}
 				else if (type == "Lab")
 				{
-					SharedRaveObjects.Lab lab = TestContext.GetExistingFeatureObjectOrMakeNew(name, () => default(SharedRaveObjects.Lab));
+					SharedRaveObjects.Lab lab = TestContext.GetExistingFeatureObjectOrMakeNew(name, () =>new SharedRaveObjects.Lab(name));
 					name = lab.UniqueName;
 				}
 				else if (type != null && type.ToUpper().Contains("CRF"))
                 {
-                    CrfVersion crf = TestContext.GetExistingFeatureObjectOrMakeNew(name, () => default(CrfVersion));
-                    name = crf.UniqueName;
+                    CrfVersion crf = TestContext.GetExistingFeatureObjectOrMakeNew<CrfVersion>(name, () => null);
+					if(crf!=null)
+						name = crf.UniqueName;
                 }
 			return name;
 		}

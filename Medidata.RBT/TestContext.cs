@@ -154,6 +154,9 @@ namespace Medidata.RBT
                 return (T)seedable;
 
 			seedable = constructor();
+			if (seedable == null)
+				return default(T);
+
 
 			seedable.Seed();
 

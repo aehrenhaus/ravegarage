@@ -4,7 +4,7 @@ using OpenQA.Selenium;
 using TechTalk.SpecFlow;
 using Medidata.RBT.SeleniumExtension;
 using Medidata.RBT.PageObjects.Rave.SharedRaveObjects;
-
+using System.Linq;
 
 namespace Medidata.RBT.PageObjects.Rave
 {
@@ -15,6 +15,15 @@ namespace Medidata.RBT.PageObjects.Rave
 			throw new NotImplementedException();
 		}
 
+
+		public IWebElement GetTaskSummaryArea(string header)
+		{
+			var TRs = Browser.FindElementsByXPath("//span[@id='_ctl0_Content_TsBox_CBoxC']/table/tbody/tr[position()>1]");
+
+			var TR = TRs.FirstOrDefault(x => x.Text.Contains(header));
+
+			return TR;
+		}
 
 		public BaseEDCPage ClickModify()
 		{
@@ -152,11 +161,34 @@ namespace Medidata.RBT.PageObjects.Rave
                     break;
                 //Add additional cases here
                 default:
-                    result = GetElementByName(identifier);
+                    result = TryGetElementByName(identifier);
                     break;
             }
 
             return result != null;
+		}
+
+		public override IWebElement GetElementByName(string identifier, string areaIdentifier = null, string listItem = null)
+		{
+			if ((new string[] { 
+				"Requiring Signature",
+				"NonConformant Data",
+				"Requiring Coding",
+				"",
+				"Open Queries",
+				"Answered Queries",
+				"Sticky Notes",
+				"Requiring Review",
+				"",
+				"",
+				"",
+				"",
+				"Cancel Queries",
+			}).Contains(identifier))
+			{
+				return GetTaskSummaryArea(identifier);
+			}
+			return base.GetElementByName(identifier, areaIdentifier, listItem);
 		}
 
 		public IPage ClickAuditOnFormLevel()

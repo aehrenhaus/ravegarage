@@ -118,10 +118,8 @@ namespace Medidata.RBT.PageObjects.Rave
 
 		public DDEPage SaveForm()
 		{
-			IWebElement btn = Browser.TryFindElementById("_ctl0_Content_dde1_header_SaveLink1");
-			if(btn==null)
-				btn = Browser.TryFindElementById("_ctl0_Content_dde2_header_SaveLink1");
-
+			IWebElement btn = Browser.TryFindElementByPartialID("_header_SaveLink1");
+	
 			if (btn == null)
 				throw new Exception("Can not find the Save button");
 			btn.Click();
