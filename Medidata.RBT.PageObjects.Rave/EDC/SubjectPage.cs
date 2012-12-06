@@ -197,7 +197,7 @@ namespace Medidata.RBT.PageObjects.Rave
                         {
                             result = true;
                         }
-						else
+						else if (!string.IsNullOrEmpty(areaIdentifier))
 						{
                             //TODO: This needs to be refactored by moving this functionality into TaskSummary control
                             var TR = GetTaskSummaryArea(areaIdentifier);
