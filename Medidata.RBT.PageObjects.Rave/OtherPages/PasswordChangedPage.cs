@@ -16,6 +16,21 @@ namespace Medidata.RBT.PageObjects.Rave
 			PageFactory.InitElements(Browser, this);
 		}
 
+        public override IPage ClickLink(string linkText, string objectType = null, string areaIdentifier = null, bool partial = false)
+        {
+            try
+            {
+                base.ClickLink(linkText);
+            }
+            catch (Exception ex)
+            {
+                base.ClickLink("L" + linkText); //Adding localization support
+            }
+            if (linkText == "Click here to continue..." || linkText == "LClick here to continue...") //Adding localization test support
+                TestContext.CurrentPage = new HomePage();
+            return TestContext.CurrentPage;
+        }
+
         public override string URL { get { return "PasswordChanged.aspx"; } }
 	}
 }
