@@ -2,17 +2,16 @@
 # will be examining the answered query data instead of the original query data.
 #TESTING FOR STANDARD FORM WITH 2 FIELDS INVOLVED IN QUERY FIRING
 #Project to be uploaded in excel spreadsheet 'Standard Study'
-@ignore
 Feature: US12940_QueryRefiringLogic_StdForm_2FldEC Edit Checks refire 
 	As a Rave user
 	When I manually close a query or cancel, the query should not re-fire if the exact same data is entered into the system
 	So that I don't have to re-enter the exact same response
 
 Background:
- 	Given xml draft "Standard_Study_Draft_1.xml" is Uploaded
+ 	Given xml draft "Standard_Study_Draft_3.xml" is Uploaded
 	Given Site "Site 1" exists
 	Given study "Standard Study" is assigned to Site "Site 1"
-	Given I publish and push eCRF "Standard_Study_Draft_1.xml" to "Version 1"
+	Given I publish and push eCRF "Standard_Study_Draft_3.xml" to "Version 1"
 	Given following Project assignments exist
 		| User         | Project        | Environment | Role            | Site   | SecurityRole          |
 		| SUPER USER 1 | Standard Study | Live: Prod  | Edit Check Role | Site 1 | Project Admin Default |
