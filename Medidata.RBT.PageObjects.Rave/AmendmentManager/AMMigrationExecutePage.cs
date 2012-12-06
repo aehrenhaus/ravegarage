@@ -36,7 +36,7 @@ namespace Medidata.RBT.PageObjects.Rave.AmendmentManager
             Browser.TryFindElementByPartialID("CRFDraftsLabel");
             SubjectNameBox.EnhanceAs<Textbox>().SetText(subjectSearchString);
             ClickLink("Search");
-            IWebElement selectedSubject = Browser.TryFindElementBySelectLinktext(subjectSearchString,true);
+            IWebElement selectedSubject = Browser.TryFindElementByOptionText(subjectSearchString,true);
             selectedSubject.Click();
             ClickLink("Add Subject");
 

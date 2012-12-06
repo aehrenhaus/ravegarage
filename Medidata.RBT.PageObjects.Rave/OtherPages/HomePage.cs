@@ -43,7 +43,7 @@ namespace Medidata.RBT.PageObjects.Rave
             int foundOnPage;
 
 			var header = Browser.TryFindElementById("_ctl0_PgHeader_TabTable");
-			IWebElement studyLink = header.TryFindElementBySelectLinktext(study.UniqueName,true,false);
+			IWebElement studyLink = header.TryFindElementBy(By.PartialLinkText(study.UniqueName), false);
 
 			if (studyLink == null)
 			{
