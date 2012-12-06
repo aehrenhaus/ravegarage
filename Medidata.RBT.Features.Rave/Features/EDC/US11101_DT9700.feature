@@ -96,7 +96,7 @@ And I select link "Enrollment - Enrollment Report"
 And I switch to "ReportViewer" window
 And I take a screenshot
 And I switch to "Home - Medidata Rave" window
-And I select link "Site_001"
+And I select Site link "Site_001"
 And I select link "User Listing - User Listing Report"
 And I switch to "ReportViewer" window
 And I take a screenshot
