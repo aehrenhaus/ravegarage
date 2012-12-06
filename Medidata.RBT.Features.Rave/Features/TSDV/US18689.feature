@@ -1,6 +1,5 @@
 ﻿# When a user selects Permuted Block Randomization, subject assignment satisfies a specified allocation and ratio is random for all blocks.
 @EnableSeeding=true
-@ignore
 
 Feature: US18689
 	When user selects Permuted Block Randomization
@@ -187,7 +186,7 @@ Scenario: @PB_US18689_01 As a Rave user, when I select Permuted Block Randomizat
 	And I click button "Submit Report"
 	And I switch to "Targeted SDV Study Plan" window
 	And I inactivate the plan
-	And I select link "World"
+	And I select Site Group link "World"
 	And I create a new block plan named "World Block Plan" with Data entry Role "SUPER ROLE 1"
 	And I verify text "Dynamic Allocation" exists
 	And I click button "edit block plan"
@@ -212,7 +211,8 @@ Scenario: @PB_US18689_01 As a Rave user, when I select Permuted Block Randomizat
 		| US18689 | Dev         |
 	And I click button "Submit Report"
 	And I switch to "Targeted SDV Subject Override" window
-	And I filter by site group "World"
+	And I choose "World" from "Site Groups"
+	And I click button "Search"
 	Then I verify that one of the following Permutations has been used every 6 subjects
 		| Randomization Permutations                                            |
 		| All Forms, All Forms, Architect Defined, No Forms, No Forms, No Forms |
@@ -285,9 +285,9 @@ Scenario: @PB_US18689_01 As a Rave user, when I select Permuted Block Randomizat
 		| US18689 | Dev         |
 	And I click button "Submit Report"
 	And I switch to "Targeted SDV Study Plan" window
-	And I select link "World"
+	And I select Site Group link "World"
 	And I inactivate the plan
-	And I select "Site" link "Site 3"
+	And I select Site link "Site 3"
 	And I create a new block plan named "Site 3 Block Plan" with Data entry Role "SUPER ROLE 1"
 	And I verify text "Dynamic Allocation" exists
 	And I click button "edit block plan"
@@ -312,7 +312,8 @@ Scenario: @PB_US18689_01 As a Rave user, when I select Permuted Block Randomizat
 		| US18689 | Dev         |
 	And I click button "Submit Report"
 	And I switch to "Targeted SDV Subject Override" window
-	And I filter by site "Site 3"
+	And I choose "Site 3" from "Sites"
+	And I click button "Search"
 	Then I verify that one of the following Permutations has been used every 6 subjects
 		| Randomization Permutations                                            |
 		| All Forms, All Forms, Architect Defined, No Forms, No Forms, No Forms |
@@ -384,8 +385,8 @@ Scenario: @PB_US18689_01 As a Rave user, when I select Permuted Block Randomizat
 		| US18689 | Dev         |
 	And I click button "Submit Report"
 	And I switch to "Targeted SDV Study Plan" window
-	And I select link "World"
-	And I select "Site" link "Site 3"
+	And I select Site Group link "World"
+	And I select Site link "Site 3"
 	And I inactivate the plan
 	And I switch to "Reports" window
 	And I navigate to "Home"
@@ -396,8 +397,8 @@ Scenario: @PB_US18689_01 As a Rave user, when I select Permuted Block Randomizat
 		| US18689 | Dev         |
 	And I click button "Submit Report"
 	And I switch to "Targeted SDV Study Plan" window
-	And I select link "World"
-	And I select "Site" link "Site 4"
+	And I select Site Group link "World"
+	And I select Site link "Site 4"
 	And I create a new block plan named "Site 4 Block Plan" with Data entry Role "SUPER ROLE 1"
 	And I verify text "Dynamic Allocation" exists
 	And I click button "edit block plan"
@@ -407,9 +408,9 @@ Scenario: @PB_US18689_01 As a Rave user, when I select Permuted Block Randomizat
 	And I edit Blocks 
 	| Name              | Subject Count |
 	| Architect Defined | 4             |
-	And I select the tier "Architect Defined" and Subject Count "1"
+	And I select the tier "Architect Defined" and Subject Count "2"
 	And I select the tier "All Forms" and Subject Count "1"
-	And I select the tier "No Forms" and Subject Count "2"
+	And I select the tier "No Forms" and Subject Count "1"
 	And I activate the plan
 	And I switch to "Reports" window
 	And I navigate to "Home"
@@ -422,69 +423,22 @@ Scenario: @PB_US18689_01 As a Rave user, when I select Permuted Block Randomizat
 		| US18689 | Dev         |
 	And I click button "Submit Report"
 	And I switch to "Targeted SDV Subject Override" window
-	And I filter by site "Site 4"
-	Then I verify that one of the following Permutations has been used every 6 subjects
-		| Randomization Permutations                                            |
-		| All Forms, All Forms, Architect Defined, No Forms, No Forms, No Forms |
-		| All Forms, All Forms, No Forms, Architect Defined, No Forms, No Forms |
-		| All Forms, All Forms, No Forms, No Forms, Architect Defined, No Forms |
-		| All Forms, All Forms, No Forms, No Forms, No Forms, Architect Defined |
-		| All Forms, Architect Defined, All Forms, No Forms, No Forms, No Forms |
-		| All Forms, No Forms, All Forms, Architect Defined, No Forms, No Forms |
-		| All Forms, No Forms, All Forms, No Forms, Architect Defined, No Forms |
-		| All Forms, No Forms, All Forms, No Forms, No Forms, Architect Defined |
-		| All Forms, Architect Defined, No Forms, All Forms, No Forms, No Forms |
-		| All Forms, No Forms, Architect Defined, All Forms, No Forms, No Forms |
-		| All Forms, No Forms, No Forms, All Forms, Architect Defined, No Forms |
-		| All Forms, No Forms, No Forms, All Forms, No Forms, Architect Defined |
-		| All Forms, Architect Defined, No Forms, No Forms, All Forms, No Forms |
-		| All Forms, No Forms, Architect Defined, No Forms, All Forms, No Forms |
-		| All Forms, No Forms, No Forms, Architect Defined, All Forms, No Forms |
-		| All Forms, No Forms, No Forms, No Forms, All Forms, Architect Defined |
-		| All Forms, Architect Defined, No Forms, No Forms, No Forms, All Forms |
-		| All Forms, No Forms, Architect Defined, No Forms, No Forms, All Forms |
-		| All Forms, No Forms, No Forms, Architect Defined, No Forms, All Forms |
-		| All Forms, No Forms, No Forms, No Forms, Architect Defined, All Forms |
-		| Architect Defined, All Forms, All Forms, No Forms, No Forms, No Forms |
-		| No Forms, All Forms, All Forms, Architect Defined, No Forms, No Forms |
-		| No Forms, All Forms, All Forms, No Forms, Architect Defined, No Forms |
-		| No Forms, All Forms, All Forms, No Forms, No Forms, Architect Defined |
-		| Architect Defined, All Forms, No Forms, All Forms, No Forms, No Forms |
-		| No Forms, All Forms, Architect Defined, All Forms, No Forms, No Forms |
-		| No Forms, All Forms, No Forms, All Forms, Architect Defined, No Forms |
-		| No Forms, All Forms, No Forms, All Forms, No Forms, Architect Defined |
-		| Architect Defined, All Forms, No Forms, No Forms, All Forms, No Forms |
-		| No Forms, All Forms, Architect Defined, No Forms, All Forms, No Forms |
-		| No Forms, All Forms, No Forms, Architect Defined, All Forms, No Forms |
-		| No Forms, All Forms, No Forms, No Forms, All Forms, Architect Defined |
-		| Architect Defined, All Forms, No Forms, No Forms, No Forms, All Forms |
-		| No Forms, All Forms, Architect Defined, No Forms, No Forms, All Forms |
-		| No Forms, All Forms, No Forms, Architect Defined, No Forms, All Forms |
-		| No Forms, All Forms, No Forms, No Forms, Architect Defined, All Forms |
-		| Architect Defined, No Forms, All Forms, All Forms, No Forms, No Forms |
-		| No Forms, Architect Defined, All Forms, All Forms, No Forms, No Forms |
-		| No Forms, No Forms, All Forms, All Forms, Architect Defined, No Forms |
-		| No Forms, No Forms, All Forms, All Forms, No Forms, Architect Defined |
-		| Architect Defined, No Forms, All Forms, No Forms, All Forms, No Forms |
-		| No Forms, Architect Defined, All Forms, No Forms, All Forms, No Forms |
-		| No Forms, No Forms, All Forms, Architect Defined, All Forms, No Forms |
-		| No Forms, No Forms, All Forms, No Forms, All Forms, Architect Defined |
-		| Architect Defined, No Forms, All Forms, No Forms, No Forms, All Forms |
-		| No Forms, Architect Defined, All Forms, No Forms, No Forms, All Forms |
-		| No Forms, No Forms, All Forms, Architect Defined, No Forms, All Forms |
-		| No Forms, No Forms, All Forms, No Forms, Architect Defined, All Forms |
-		| Architect Defined, No Forms, No Forms, All Forms, All Forms, No Forms |
-		| No Forms, Architect Defined, No Forms, All Forms, All Forms, No Forms |
-		| No Forms, No Forms, Architect Defined, All Forms, All Forms, No Forms |
-		| No Forms, No Forms, No Forms, All Forms, All Forms, Architect Defined |
-		| Architect Defined, No Forms, No Forms, All Forms, No Forms, All Forms |
-		| No Forms, Architect Defined, No Forms, All Forms, No Forms, All Forms |
-		| No Forms, No Forms, Architect Defined, All Forms, No Forms, All Forms |
-		| No Forms, No Forms, No Forms, All Forms, Architect Defined, All Forms |
-		| Architect Defined, No Forms, No Forms, No Forms, All Forms, All Forms |
-		| No Forms, Architect Defined, No Forms, No Forms, All Forms, All Forms |
-		| No Forms, No Forms, Architect Defined, No Forms, All Forms, All Forms |
-		| No Forms, No Forms, No Forms, Architect Defined, All Forms, All Forms |
+	And I choose "Site 4" from "Sites"
+	And I click button "Search"
+	Then I verify that one of the following Permutations has been used every 4 subjects
+		| Randomization Permutations                                |
+		| All Forms, Architect Defined, Architect Defined, No Forms |
+		| All Forms, Architect Defined, No Forms, Architect Defined |
+		| All Forms, No Forms, Architect Defined, Architect Defined |
+		| Architect Defined, All Forms, Architect Defined, No Forms |
+		| Architect Defined, All Forms, No Forms, Architect Defined |
+		| No Forms, All Forms, Architect Defined, Architect Defined |
+		| Architect Defined, Architect Defined, All Forms, No Forms |
+		| Architect Defined, No Forms, All Forms, Architect Defined |
+		| No Forms, Architect Defined, All Forms, Architect Defined |
+		| Architect Defined, Architect Defined, No Forms, All Forms |
+		| Architect Defined, No Forms, Architect Defined, All Forms |
+		| No Forms, Architect Defined, Architect Defined, All Forms |
 	And I switch to "Reports" window
 	And I navigate to "Home"
 	And I navigate to "Reporter"
@@ -494,6 +448,6 @@ Scenario: @PB_US18689_01 As a Rave user, when I select Permuted Block Randomizat
 		| US18689 | Dev         |
 	And I click button "Submit Report"
 	And I switch to "Targeted SDV Study Plan" window
-	And I select link "World"
-	And I select "Site" link "Site 4"
+	And I select Site Group link "World"
+	And I select Site link "Site 4"
 	And I inactivate the plan

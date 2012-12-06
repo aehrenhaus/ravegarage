@@ -33,6 +33,7 @@ namespace Medidata.RBT.Common.Steps
 		public void ISwitchTo____Window(string windowName)
 		{
 			Browser.SwitchBrowserWindow(windowName);
+		
 			CurrentPage = TestContext.POFactory.GetPageByUrl(new Uri(Browser.Url));
 		}
 
@@ -43,6 +44,7 @@ namespace Medidata.RBT.Common.Steps
 		public void ISwitchToTheSecondWindow()
 		{
 			Browser.SwitchToSecondBrowserWindow();
+			Browser.WaitForDocumentLoad();
 			CurrentPage = TestContext.POFactory.GetPageByUrl(new Uri(Browser.Url));
 		}
 
@@ -53,6 +55,7 @@ namespace Medidata.RBT.Common.Steps
 		public void ISwitchToMainWindow()
 		{
 			Browser.SwitchToMainBrowserWindow();
+			Browser.WaitForDocumentLoad();
 			CurrentPage = TestContext.POFactory.GetPageByUrl(new Uri(Browser.Url));
 		}
 
@@ -63,6 +66,7 @@ namespace Medidata.RBT.Common.Steps
         public void IAcceptAlertWindow()
         {
 			Browser.GetAlertWindow().Accept();
+			Browser.WaitForDocumentLoad();
 			CurrentPage = TestContext.POFactory.GetPageByUrl(new Uri(Browser.Url));
         }
 
@@ -73,6 +77,7 @@ namespace Medidata.RBT.Common.Steps
         public void IDismissAlertWindow()
         {
 			Browser.GetAlertWindow().Dismiss();
+			Browser.WaitForDocumentLoad();
 			CurrentPage = TestContext.POFactory.GetPageByUrl(new Uri(Browser.Url));
         }
 
@@ -100,6 +105,7 @@ namespace Medidata.RBT.Common.Steps
 				parameters[row["Name"]] = row["Value"];
 			}
 			CurrentPage = page.NavigateToSelf(parameters);
+			Browser.WaitForDocumentLoad();
 		}
 
 
@@ -113,6 +119,7 @@ namespace Medidata.RBT.Common.Steps
 		{
 
 			CurrentPage = TestContext.POFactory.GetPage(pageName.Replace(" ", "") + "Page").NavigateToSelf();
+			Browser.WaitForDocumentLoad();
 		}
 
 		/// <summary>

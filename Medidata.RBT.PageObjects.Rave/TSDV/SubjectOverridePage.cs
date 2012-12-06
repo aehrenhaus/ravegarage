@@ -15,7 +15,7 @@ namespace Medidata.RBT.PageObjects.Rave
     public class SubjectOverridePage : SubjectManagementPageBase,IHavePaginationControl
     {
  
-		public void CheckRepeatPattern(int blockSize, IEnumerable<Permutations> permutationses)
+		public void CheckRepeatPattern(int blockSize, IEnumerable<Permutations> permutationses, string subjectNameStartsWith = null)
 	    {
 			
 			List<string> all= new List<string>();
@@ -27,7 +27,7 @@ namespace Medidata.RBT.PageObjects.Rave
 				all.Add(string.Join(",", parts));
 			}
 			//collect all subject tier names
-			var tierNames = GetTierNames();
+			var tierNames = GetTierNames(subjectNameStartsWith);
 			int roundCount = (int) Math.Ceiling(tierNames.Count*1.0/blockSize);
 
 			for (int i = 0; i < roundCount; i++)
@@ -65,7 +65,7 @@ namespace Medidata.RBT.PageObjects.Rave
             return IsSubjectsRandomized;
         }
 
-	    private List<string> GetTierNames()
+		private List<string> GetTierNames(string subjectNameStartsWith = null)
 	    {
 
 			var link = Browser.TryFindElementById("_ctl0_PgHeader_TabTable").Links()[0];
@@ -74,7 +74,7 @@ namespace Medidata.RBT.PageObjects.Rave
 
 			string siteGroupName = Browser.TryFindElementById("_ctl0_Content_HeaderControl_slSiteGroup_TxtBx").GetAttribute("value");
 			string siteName = Browser.TryFindElementById("_ctl0_Content_HeaderControl_slSite_TxtBx").GetAttribute("value");
-
+			siteName = siteName.Split(':')[0];
 
 			var table = DbHelper.ExecuteDataSet(string.Format(@"
 declare               
@@ -141,8 +141,9 @@ declare
 			var names = table.Rows.Cast<DataRow>().Select(x=>new {
 				Tier=x["tierName"].ToString(),
 				SiteGroup=x["sitegroup"].ToString(),
-				Site=x["sitename"].ToString()
-			}).Where(x => (x.Site == siteName || siteName == "All Sites") && (x.SiteGroup == siteGroupName || siteGroupName == "All Site Groups" || siteGroupName == "World")).Select(x => x.Tier).ToList();
+				Site=x["sitename"].ToString(),
+				SubjectName = x["SubjectName"].ToString()
+			}).Where(x => (subjectNameStartsWith==null || x.SubjectName.StartsWith(subjectNameStartsWith)) && (x.Site == siteName || siteName == "All Sites") && (x.SiteGroup == siteGroupName || siteGroupName == "All Site Groups" || siteGroupName == "World")).Select(x => x.Tier).ToList();
 
 			return names;
 	    }

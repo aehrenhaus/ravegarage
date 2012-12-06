@@ -10,6 +10,8 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using TechTalk.SpecFlow.Assist;
 using Medidata.RBT.PageObjects.Rave;
 using Medidata.RBT.PageObjects.Rave.SharedRaveObjects;
+using Medidata.RBT.SeleniumExtension;
+
 
 namespace Medidata.RBT.Features.Rave.Steps
 {
@@ -43,6 +45,14 @@ namespace Medidata.RBT.Features.Rave.Steps
 			//page.Save();
 		}
 
+		[StepDefinition(@"I set lines per page to (.*) for User ""(.*)""")]
+		public void ISetLinesPerPageTo____ForUser____(int linesPerPage, string userName)
+		{
+			User user = TestContext.GetExistingFeatureObjectOrMakeNew(userName, () =>new User(userName));
+			user.SetLinesPerPage(linesPerPage);
+		}
+
+
         /// <summary>
         /// Assign the user to various project assignments
         /// </summary>
@@ -57,7 +67,7 @@ namespace Medidata.RBT.Features.Rave.Steps
 				foreach (ConfigurationCreationModel configuration in configurations)
 				{
 					User user = TestContext.GetExistingFeatureObjectOrMakeNew(configuration.User, () => new User(configuration.User));
-					user.SetLinesPerPage(configuration.LinesPerPage);
+
 					Role role = TestContext.GetExistingFeatureObjectOrMakeNew(configuration.Role, () => new Role(configuration.Role));
 					SecurityRole securityRole = TestContext.GetExistingFeatureObjectOrMakeNew
 						(configuration.SecurityRole, () => new SecurityRole(configuration.SecurityRole));
@@ -66,7 +76,7 @@ namespace Medidata.RBT.Features.Rave.Steps
 					Project project = TestContext.GetExistingFeatureObjectOrMakeNew(configuration.Project,
 					                                                                () => new Project(configuration.Project));
 
-					bool studyAssignmentExists = user.StudyAssignmentExists(role.UniqueName, project.UniqueName, site.UniqueName);
+					bool studyAssignmentExists = user.StudyAssignmentExists(role.UniqueName, project.UniqueName, site.UniqueName,configuration.Environment);
 					bool moduleAssignmentExists = user.ModuleAssignmentExists("All Projects", securityRole.UniqueName);
 					if (!studyAssignmentExists || !moduleAssignmentExists)
 					{
@@ -96,6 +106,8 @@ namespace Medidata.RBT.Features.Rave.Steps
 				}
 
 			}
+
+			Browser.WaitForDocumentLoad();
         }
 
         /// <summary>

@@ -28,19 +28,13 @@ namespace Medidata.RBT.Features.Rave
 		{
 			CurrentPage.As<SubjectOverridePage>().CheckRepeatPattern(blockSize, table.CreateSet<Permutations>());
 		}
-		
 
-        [StepDefinition(@"I filter by site ""([^""]*)""")]
-        public void IFilterBySite____(string siteName)
-        {
-            CurrentPage.As<SubjectManagementPageBase>().FilterBySite(siteName);
-        }
+		[StepDefinition(@"I verify that one of the following Permutations has been used every (.+) subjects with name (.+)")]
+		public void IVerifyThatOneOfTheFolowingPermutationsHasBeenUsedEvery____Subjects(int blockSize, string name, Table table)
+		{
+			CurrentPage.As<SubjectOverridePage>().CheckRepeatPattern(blockSize, table.CreateSet<Permutations>(), name);
+		}
 
-        [StepDefinition(@"I filter by site group ""([^""]*)""")]
-        public void IFilterBySiteGroup____(string siteGroupName)
-        {
-            CurrentPage.As<SubjectManagementPageBase>().FilterBySiteGroup(siteGroupName);
-        }
 
         [StepDefinition(@"I include ([^""]*) subjects in TSDV")]
         public void IInclude____SubjectsInTSDV(string numSubjects)

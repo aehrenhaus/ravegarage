@@ -13,12 +13,13 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
         public string ProjectName { get; set; }
 		public string RoleName { get; set; }
 		public string SiteName { get; set; }
-
-		public StudyAssignment(string projectName, string roleName, string siteName)
+		public string Environment { get; set; }
+		public StudyAssignment(string projectName, string roleName, string siteName, string environment )
         {
             ProjectName = projectName;
             RoleName = roleName;
             SiteName = siteName;
+			Environment = environment;
         }
     }
 }

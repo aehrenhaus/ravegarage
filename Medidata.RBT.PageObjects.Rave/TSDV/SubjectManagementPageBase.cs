@@ -37,7 +37,7 @@ namespace Medidata.RBT.PageObjects.Rave
 
 		public override IPage ChooseFromDropdown(string identifier, string text, string objectType = null, string areaIdentifier = null)
 		{
-			if (identifier == "Select Site")
+			if (identifier == "Sites")
 			{
 				var container = Browser.TryFindElementById("_ctl0_Content_HeaderControl_slSite").Parent();
 				CompositeDropdown d = new CompositeDropdown(this, "DSL", container);
@@ -45,7 +45,7 @@ namespace Medidata.RBT.PageObjects.Rave
 				return this;
 			}
 
-			else if (identifier == "Select Site Group")
+			else if (identifier == "Site Groups")
 			{
 				var container = Browser.TryFindElementById("_ctl0_Content_HeaderControl_slSiteGroup").Parent();
 				CompositeDropdown d = new CompositeDropdown(this, "DSL", container);

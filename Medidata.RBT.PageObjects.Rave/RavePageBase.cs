@@ -92,90 +92,93 @@ namespace Medidata.RBT.PageObjects.Rave
 
 		private string ReplaceSeedableObjectName(string type, string name)
 		{
-            try // try needed, in case name comes in as already seeded.   
-            {
-                if (type == "Study")
-                {
-                    Project project = TestContext.GetExistingFeatureObjectOrMakeNew(name, () => default(Project));
-                    name = project.UniqueName;
-                }
-                else if (type == "Site")
-                {
-                    Site site = TestContext.GetExistingFeatureObjectOrMakeNew(name, () => default(Site));
-                    name = site.UniqueName;
-                }
-                else if (type == "Role")
-                {
-                    Role role = TestContext.GetExistingFeatureObjectOrMakeNew(name, () => default(Role));
-                    name = role.UniqueName;
-                }
-                else if (type == "User")
-                {
-                    User user = TestContext.GetExistingFeatureObjectOrMakeNew(name, () => default(User));
-                    name = user.UniqueName;
-                }
-                else if (type == "Project")
-                {
-                    Project project = TestContext.GetExistingFeatureObjectOrMakeNew(name, () => default(Project));
-                    name = project.UniqueName;
-                }
+			if (type != null) type = type.Replace(" ", "");
+			if (string.Equals(type,"Study", StringComparison.InvariantCultureIgnoreCase))
+			{
+				Project project = TestContext.GetExistingFeatureObjectOrMakeNew(name, () => new Project(name));
+				name = project.UniqueName;
+			}
+			else if (string.Equals(type, "Site", StringComparison.InvariantCultureIgnoreCase))
+			{
+				Site site = TestContext.GetExistingFeatureObjectOrMakeNew(name, () => new Site(name));
+				name = site.UniqueName;
+			}
+			else if (string.Equals(type, "Role", StringComparison.InvariantCultureIgnoreCase))
+			{
+				Role role = TestContext.GetExistingFeatureObjectOrMakeNew(name, () => new Role(name));
+				name = role.UniqueName;
+			}
+			else if (string.Equals(type, "User", StringComparison.InvariantCultureIgnoreCase))
+			{
+				User user = TestContext.GetExistingFeatureObjectOrMakeNew(name, () => new User(name));
+				name = user.UniqueName;
+			}
+			else if (string.Equals(type, "Project", StringComparison.InvariantCultureIgnoreCase))
+			{
+				Project project = TestContext.GetExistingFeatureObjectOrMakeNew(name, () => new Project(name));
+				name = project.UniqueName;
+			}
 				else if (type == "Lab")
 				{
-					SharedRaveObjects.Lab lab = TestContext.GetExistingFeatureObjectOrMakeNew(name, () => default(SharedRaveObjects.Lab));
+					SharedRaveObjects.Lab lab = TestContext.GetExistingFeatureObjectOrMakeNew(name, () =>new SharedRaveObjects.Lab(name));
 					name = lab.UniqueName;
 				}
 				else if (type != null && type.ToUpper().Contains("CRF"))
                 {
-                    CrfVersion crf = TestContext.GetExistingFeatureObjectOrMakeNew(name, () => default(CrfVersion));
-                    name = crf.UniqueName;
+                    CrfVersion crf = TestContext.GetExistingFeatureObjectOrMakeNew<CrfVersion>(name, () => null);
+					if(crf!=null)
+						name = crf.UniqueName;
                 }
-            }
-            catch
-            {
-            }
 			return name;
 		}
-
-		public override IPage ClickLink(string linkText, string objectType = null, string areaIdentifier = null)
+		/// <summary>
+		/// returns study name, used in dropdowns.
+		/// </summary>
+		/// <param name="name"></param>
+		/// <returns></returns>
+		private string GetSeededProjectName(string name)
 		{
-			linkText = ReplaceSeedableObjectName(objectType, linkText);
-            var xPathSelector = By.XPath(string.Format(".//a[text()='{0}']", linkText));
-
-
-			ISearchContext area = null;
-			if (!string.IsNullOrEmpty(areaIdentifier))
+			Project projectObject = TestContext.GetExistingFeatureObjectOrMakeNew(name, () => new Project(name));
+			return projectObject.UniqueName;
+		}
+		public override IPage ClickLink(string linkText, string objectType = null, string areaIdentifier = null, bool partial = false)
+		{
+			//move D's code from EDC steps.ISelectLink____In____() to here
+			try
 			{
-				//area = Browser.TryFindElementById(areaIdentifier);
-				//if (area == null)
-					area = GetElementByName(areaIdentifier);
+				if (areaIdentifier.ToLower().Contains("project") || linkText.ToLower().Contains("project") || linkText.ToLower().Contains("study"))
+					linkText = SpecialStringHelper.Replace(GetSeededProjectName(linkText));
+				else
+					linkText = SpecialStringHelper.Replace(linkText);
 			}
+
+			catch
+			{
+				linkText = SpecialStringHelper.Replace(linkText);
+			}
+
+
+
+			linkText = ReplaceSeedableObjectName(objectType, linkText);
+			ISearchContext  context = string.IsNullOrEmpty(areaIdentifier) ? Browser as ISearchContext : this.GetElementByName(areaIdentifier, null);
+			IWebElement link = null;
+			if(linkText.Contains("•"))
+                link = ISearchContextExtend.FindLinkWithBulletPoint(context, linkText);
 			else
 			{
-				area = Browser;
+				link = context.TryFindElementBySelectLinktext(linkText, partial);
 			}
 
-            IWebElement link = area.TryFindElementBy(xPathSelector, false);
-
-            if(link == null && linkText.Contains("•"))
-                link = ISearchContextExtend.FindLinkWithBulletPoint(area, linkText);
-
-			if(link == null)
-				link = area.TryFindElementBySpanLinktext(linkText);
-
-			//another try, but with wait
-            if (link == null)
-                link = area.TryFindElementBy(xPathSelector, true);
-
-            if (link == null)
+			if (link == null)
                 throw new Exception("Link not found!");
 
             //We need to try to set focus to this element because in some cases 
             //the element is not in the view port and thus cannot be interacted with
             this.SetFocusElement(link);
 			link.Click();
-			
-            Thread.Sleep(200);
-			return TestContext.POFactory.GetPageByUrl(new Uri(Browser.Url));
+
+
+			return base.GetPageByCurrentUrlIfNoAlert();
 		}
 
         public virtual IEDCFieldControl FindLandscapeLogField(string fieldName, int rowIndex, ControlType controlType = ControlType.Default)
@@ -195,34 +198,6 @@ namespace Medidata.RBT.PageObjects.Rave
                 default:
                     throw new Exception("Not supported control type:" + controlType);
             }
-        }
-
-        public virtual string GetClassMapping(string name)
-        {
-            string className;
-            switch (name)
-            {
-                case "Query Management":
-                    className = "DCFQueriesPage";
-                    break;
-                case "PDF Generator":
-                    className = "FileRequestPage";
-                    break;
-                case "Lab Administration":
-                    className = "AnalytesPage";
-                    break;
-                case "Reporter":
-                    className = "ReportsPage";
-                    break;
-                case "Site Administration":
-                    className = "SiteAdministrationHomePage";
-                    break;
-                default:
-                    className = name.Replace(" ", "") + "Page";
-                    break;
-            }
-            return className;
-
         }
 
 

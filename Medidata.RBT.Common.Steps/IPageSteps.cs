@@ -20,7 +20,7 @@ namespace Medidata.RBT.Common.Steps
 			CurrentPage = CurrentPage.ChooseFromDropdown(identifier, text);
 		}
 
-		[StepDefinition(@"I choose ""([^""]*)"" ""([^""]*)"" from ""([^""]*)""")]
+		[StepDefinition(@"I choose ([^""]*) ""([^""]*)"" from ""([^""]*)""")]
 		public void IChoose________From____(string objectType, string text, string identifier)
 		{
 			text = SpecialStringHelper.Replace(text);
@@ -126,14 +126,6 @@ namespace Medidata.RBT.Common.Steps
 
 		}
 
-		[StepDefinition(@"I select ""([^""]*)"" link ""([^""]*)""")]
-		public void ISelect____Link____(string type, string linkText)
-		{
-			linkText = SpecialStringHelper.Replace(linkText);
-			CurrentPage = CurrentPage.ClickLink(linkText, type);
-
-		}
-
 		/// <summary>
 		/// Click a hyperlink
 		/// </summary>
@@ -147,26 +139,69 @@ namespace Medidata.RBT.Common.Steps
         /// <summary>
         /// Click a partial hyperlink
         /// </summary>
-        [StepDefinition(@"I select partial link ""([^""]*)""")]
-        public void ISelectPartialLink____(string linkText)
+        [StepDefinition(@"I select link\(partial\) ""([^""]*)""")]
+		public void ISelectLinkPartial____(string linkText)
         {
-            linkText = SpecialStringHelper.Replace(linkText);
-            IWebElement link = CurrentPage.Browser.TryFindElementBy(By.XPath(".//span[contains(text(),'" + linkText + "')]"));
-            if(link == null)
-                link = CurrentPage.Browser.TryFindElementBy(By.XPath(".//a[contains(text(),'" + linkText + "')]"));
-            link.Click();
+			linkText = SpecialStringHelper.Replace(linkText);
+			CurrentPage = CurrentPage.ClickLink(linkText,null,null,true);
         }
+
+		/// <summary>
+		/// I select link "Mediflex" in "Header"
+		/// </summary>
+		[StepDefinition(@"I select link ""([^""]*)"" in ""([^""]*)""")]
+		public void ISelectLink____In____(string linkText, string areaName)
+		{
+			linkText = SpecialStringHelper.Replace(linkText);
+			CurrentPage = CurrentPage.ClickLink(linkText, null, areaName);
+
+		}
+
+
+
+		[StepDefinition(@"I select (.+) link ""([^""]*)""")]
+		public void ISelect____Type____Link____(string objectType, string linkText)
+		{
+			if (objectType != null && objectType.StartsWith(@"""") && objectType.EndsWith(@""""))
+			{
+				objectType = objectType.Substring(1, objectType.Length - 2);
+			}
+
+			linkText = SpecialStringHelper.Replace(linkText);
+			CurrentPage = CurrentPage.ClickLink(linkText, objectType);
+
+		}
+
+
+
+		/// <summary>
+		/// I select link(partial) "Mediflex" in "Header"
+		/// </summary>
+		[StepDefinition(@"I select link\(partial\) ""([^""]*)"" in ""([^""]*)""")]
+		public void ISelectLink____PartialIn____(string linkText, string areaName)
+		{
+			linkText = SpecialStringHelper.Replace(linkText);
+			CurrentPage = CurrentPage.ClickLink(linkText, null, areaName, true);
+
+		}
+
 
 		/// <summary>
 		/// I select "Study" link "Mediflex" in "Header"
 		/// </summary>
-		[StepDefinition(@"I select ""([^""]*)"" link ""([^""]*)"" in ""([^""]*)""")]
-		public void ISelect____Link____In____(string objectType, string linkText, string areaName)
+		[StepDefinition(@"I select (.*) link ""([^""]*)"" in ""([^""]*)""")]
+		public void ISelect____Type____Link____In____(string objectType, string linkText, string areaName)
 		{
+			if (objectType != null && objectType.StartsWith(@"""") && objectType.EndsWith(@""""))
+			{
+				objectType = objectType.Substring(1, objectType.Length - 2);
+			}
 			linkText = SpecialStringHelper.Replace(linkText);
 			CurrentPage = CurrentPage.ClickLink(linkText, objectType, areaName);
 
 		}
+
+
 
 
 		/// <summary>

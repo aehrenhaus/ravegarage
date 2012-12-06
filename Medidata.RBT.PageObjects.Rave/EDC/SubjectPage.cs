@@ -14,15 +14,6 @@ namespace Medidata.RBT.PageObjects.Rave
     public class SubjectPage : BaseEDCPage, ICanVerifyInOrder, IVerifySomethingExists, ITaskSummaryContainer
 	{
 
-        public IWebElement GetTaskSummaryArea(string header)
-		{
-			var TRs = Browser.FindElementsByXPath("//span[@id='_ctl0_Content_TsBox_CBoxC']/table/tbody/tr[position()>1]");
-
-			var TR = TRs.FirstOrDefault(x => x.Text.Contains(header));
-
-			return TR;
-		}
-
 		public SubjectPage ExpandTask(string header)
 		{
 			var TR = GetTaskSummaryArea(header);
@@ -209,8 +200,8 @@ namespace Medidata.RBT.PageObjects.Rave
 						else
 						{
                             //TODO: This needs to be refactored by moving this functionality into TaskSummary control
-                            var TR = GetTaskSummaryArea(identifier);
-							result = TR != null;
+                            var TR = GetTaskSummaryArea(areaIdentifier);
+							result = TR != null && TR.Text.Contains(identifier);
 						}
 					}
 					break;

@@ -11,7 +11,7 @@ using Medidata.RBT.PageObjects.Rave.SharedRaveObjects;
 using System.Threading;
 namespace Medidata.RBT.PageObjects.Rave
 {
-	public class UserEditPage : RavePageBase, ICanPaginate
+	public class UserEditPage : RavePageBase, IHavePaginationControl
 	{
 		[FindsBy(How = How.Id, Using = "_ctl0_Content_TopSaveLnkBtn")]
 		public IWebElement TopUpdate;
@@ -74,7 +74,7 @@ namespace Medidata.RBT.PageObjects.Rave
 
             if (user.StudyAssignments == null)
                 user.StudyAssignments = new List<StudyAssignment>();
-			user.StudyAssignments.Add(new StudyAssignment(project.UniqueName, role.UniqueName, site.UniqueName));
+			user.StudyAssignments.Add(new StudyAssignment(project.UniqueName, role.UniqueName, site.UniqueName, environment));
         }
 
         /// <summary>
@@ -114,7 +114,7 @@ namespace Medidata.RBT.PageObjects.Rave
         public void AssignUserToSite(string studyName, string roleName, string siteName, string siteNumber, string envName)
         {
             int foundOnPage;
-			IWebElement studyRoleRow = this.FindInPaginatedList("", () =>
+			IWebElement studyRoleRow = this.FindInPaginatedList(null, () =>
 				                                                        {
 					                                                        Thread.Sleep(500);
 					                                                        IWebElement resultTable =
@@ -135,12 +135,14 @@ namespace Medidata.RBT.PageObjects.Rave
             var studyLink = Browser.TryFindElementByPartialID("_ctl0_Content_UserSiteWizard1_StudySiteGrid", true, 60);
 			if (studyLink == null)
 				throw new Exception("StudySites did not load");
-            IWebElement siteRowToSelect = this.FindInPaginatedList("", () =>
+
+			IWebElement siteRowToSelect = this.FindInPaginatedList("sites", () =>
             {
                 IWebElement resultTable = Browser.TryFindElementBy(By.Id("_ctl0_Content_UserSiteWizard1_StudySiteGrid"));
                 IWebElement row = resultTable.TryFindElementBy(By.XPath("tbody/tr[position()>1]/td[position()=1 and contains(text(),'" + siteName + "')]/.."));
                 return row;
             }, out foundOnPage);
+
             IWebElement siteCheckbox = siteRowToSelect.TryFindElementByPartialID("chkStudySite");
             siteCheckbox.EnhanceAs<Checkbox>().Check();
             Browser.TryFindElementById("_ctl0_Content_UserSiteWizard1_UpdateSSLnkBtn").Click();
@@ -154,91 +156,24 @@ namespace Medidata.RBT.PageObjects.Rave
 			}
         }
 
-        #region ICanPaginate
-        int pageIndex = 0;
-        int count = 0;
-        int lastValue = -1;
-        int secondPageIndex = 1;
-        int secondCount = 0;
-        int secondLastValue = -1;
 
-		public int CurrentPageNumber { get; private set; }
+		public ICanPaginate GetPaginationControl(string areaIdentifier)
+		{
+			if (areaIdentifier == "sites")
+			{
+				var pageTable = TestContext.Browser.TryFindElementById("_ctl0_Content_UserSiteWizard1_UserGrid").Children()[1];
+				var pager = new RavePaginationControl_Arrow(this, pageTable);
+				return pager;
+			}
+			else
+			{
+				var pageTable = TestContext.Browser.TryFindElementById("_ctl0_Content_UserSiteWizard1_StudySiteGrid").Children()[1];
+				var pager = new RavePaginationControl_Arrow(this, pageTable);
+				return pager;
+				
+			}
+		}
 
-        public bool GoNextPage(string areaIdentifier)
-        {
-            IWebElement studyTable = TestContext.Browser.TryFindElementById("_ctl0_Content_UserSiteWizard1_UserGrid",true,2);
 
-            if (studyTable != null)
-            {
-                var pageTable = studyTable.TryFindElementBy(By.XPath("./tbody/tr[last()]"));
-
-                var pageLinks = pageTable.FindElements(By.XPath(".//a"));
-
-                count = pageLinks.Count;
-                if (pageIndex == count)
-                    return false;
-
-                while (!pageLinks[pageIndex].Text.Equals("...") && int.Parse(pageLinks[pageIndex].Text) <= lastValue && pageIndex <= count)
-                {
-                    pageIndex++;
-                }
-
-                if (pageLinks[pageIndex].Text.Equals("..."))
-                {
-                    lastValue = int.Parse(pageLinks[pageIndex - 1].Text);
-                    pageLinks[pageIndex].Click();
-                    pageIndex = 1;
-                }
-                else
-                {
-                    pageLinks[pageIndex].Click();
-                    pageIndex++;
-                }
-            }
-            else
-            {
-                var pageTable = TestContext.Browser.TryFindElementById("_ctl0_Content_UserSiteWizard1_StudySiteGrid").TryFindElementBy(By.XPath("./tbody/tr[last()]"));
-
-                var pageLinks = pageTable.FindElements(By.XPath(".//a"));
-
-                secondCount = pageLinks.Count;
-                if (secondPageIndex == secondCount)
-                    return false;
-
-                while (!pageLinks[secondPageIndex].Text.Equals("...") && int.Parse(pageLinks[secondPageIndex].Text) <= secondLastValue && secondPageIndex <= secondCount)
-                {
-                    secondPageIndex++;
-                }
-
-                if (pageLinks[secondPageIndex].Text.Equals("..."))
-                {
-                    secondLastValue = int.Parse(pageLinks[secondPageIndex - 1].Text);
-                    pageLinks[secondPageIndex].Click();
-                    secondPageIndex = 1;
-                }
-                else
-                {
-                    pageLinks[secondPageIndex].Click();
-                    secondPageIndex++;
-                }
-            }
-            return true;
-        }
-
-        public bool GoPreviousPage(string areaIdentifier)
-        {
-            throw new NotImplementedException();
-        }
-
-        public bool GoToPage(string areaIdentifier, int page)
-        {
-            throw new NotImplementedException();
-        }
-
-        public bool CanPaginate(string areaIdentifier)
-        {
-            return true;
-        }
-        #endregion
-    }
+	}
 }

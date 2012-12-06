@@ -1,6 +1,6 @@
 ﻿# When a user selects  Dynamic Allocation Randomization Block algorithm , subject assignment satisfies a specified allocation and ratio is random for all blocks.
 @EnableSeeding=true
-#@SuppressSeeding=Site,SiteGroup,Role,SecurityRole
+
 #SecurityRole
 Feature: US18812
 	When user selects Dynamic Allocation Randomization Block algorithm
@@ -12,12 +12,11 @@ Background:
 	Given Site "Site 1" with Site Group "Asia" exists
 	Given Site "Site 2" with Site Group "Europe" exists
 	Given Site "Site 3" with Site Group "North America" exists
-	#Given Site "Site 3" with Site Group "World" exists
-	#Given Site "Site 4" with Site Group "North America" exists
+
 	Given study "US18812" is assigned to Site "Site 1" with study environment "Aux: Dev"
 	Given study "US18812" is assigned to Site "Site 2" with study environment "Aux: Dev"
 	Given study "US18812" is assigned to Site "Site 3" with study environment "Aux: Dev"
-	#Given study "US18812" is assigned to Site "Site 4" with study environment "Aux: Dev"
+
 	Given I publish and push eCRF "US18812.xml" to "Version 1" with study environment "Dev"
 	#Given following Project assignments exist
 	#| User         | Project | Environment | Role         | Site   | SecurityRole          | Lines Per Page |
@@ -284,7 +283,8 @@ Scenario: @PB_US18812_01 Enroll 50 subjects in a study to verify that TSDV has r
 		| US18812 | Dev         |
 	And I click button "Submit Report"
 	And I switch to "Targeted SDV Subject Override" window
-	And I filter by site group "All Site Groups"
+	And I choose Site Group "All Site Groups" from "Site Groups"
+	And I select link "Search"
 	Then I verify that Tiers in subject override table are not in the following order
 		| Tier Name         | Row |
 		| All Forms         | 1   |
@@ -400,7 +400,7 @@ Scenario: @PB_US18812_01 Enroll 50 subjects in a study to verify that TSDV has r
 	And I select link "World"
 	And I inactivate the plan
 	#And I select link "Site 3"
-	And I select partial link "Site 3"
+	And I select link(partial) "Site 3"
 	And I create a new block plan named "Site 3 Block Plan" with Data entry Role "SUPER ROLE 1"
 	And I verify text "Dynamic Allocation" exists
 	And I delete the tier "Architect Defined" from plan
@@ -429,7 +429,8 @@ Scenario: @PB_US18812_01 Enroll 50 subjects in a study to verify that TSDV has r
 		| US18812 | Dev         |
 	And I click button "Submit Report"
 	And I switch to "Targeted SDV Subject Override" window
-	And I filter by site "Site 3"
+	And I choose "Site 3" from "Sites"
+	And I select link "Search"
 	Then I verify that Tiers in subject override table are not in the following order
 		| Tier Name         | Row |
 		| All Forms         | 1   |
@@ -493,7 +494,6 @@ Scenario: @PB_US18812_01 Enroll 50 subjects in a study to verify that TSDV has r
 	And I click button "Submit Report"
 	And I switch to "Targeted SDV Study Plan" window
 	And I select link "World"
-	#And I select link "Site 3"
-	And I select partial link "Site 3"
+	And I select link(partial) "Site 3"
 	And I inactivate the plan
 	

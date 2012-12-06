@@ -14,6 +14,14 @@ namespace Medidata.RBT.Features.Rave
     [Binding]
     public partial class EDCSteps : BrowserStepsBase
     {
+		[StepDefinition(@"I select Study ""([^""]*)"" \([^\)]*\)")]
+		public void ISelectStudy____AndSite____Env____(string studyName,string environment)
+		{
+			CurrentPage = CurrentPage.As<HomePage>()
+				.SelectStudy(TestContext.GetExistingFeatureObjectOrMakeNew(studyName, () => new Project(studyName)).UniqueName,environment);
+		}
+
+
         /// <summary>
         /// Select study and site on Home page
         /// </summary>
@@ -22,8 +30,7 @@ namespace Medidata.RBT.Features.Rave
         [StepDefinition(@"I select Study ""([^""]*)""")]
         public void ISelectStudy____AndSite____(string studyName)
         {
-            CurrentPage = CurrentPage.As<HomePage>()
-                .SelectStudy(TestContext.GetExistingFeatureObjectOrMakeNew(studyName, () => new Project(studyName)).UniqueName);
+			ISelectStudy____AndSite____Env____(studyName, null);
         }
 
         /// <summary>
@@ -39,6 +46,25 @@ namespace Medidata.RBT.Features.Rave
                 .SelectSite(TestContext.GetExistingFeatureObjectOrMakeNew(siteName, () => new Site(siteName)).UniqueName);
         }
 
+		[StepDefinition(@"I create ([^""]*) random Subjects with name ""([^""]*)"" in Study ""([^""]*)"" \(([^\)]*)\) in Site ""([^""]*)""")]
+		public void ICreate____RandomSubjectsWithName____inStudy____Env____inSite____(int subjectCount, string subjectName, string studyName,string environment, string siteName)
+		{
+
+			// var subjectNameTemplate = String.Concat(subjectName, " {RndNum<num1>(5)}");
+			for (int i = 0; i < subjectCount; i++)
+			{
+				var page = CurrentPage.As<HomePage>().SelectStudy(studyName,environment).SelectSite(siteName);
+				var randomSubjectNumber = SpecialStringHelper.Replace("{RndNum<num1>(5)}");
+
+				IEnumerable<FieldModel> dps = new List<FieldModel>
+				{
+					new FieldModel{ Field= "Subject Number", Data=randomSubjectNumber },
+					new FieldModel{ Field= "Subject Initials", Data=subjectName }
+				};
+				page.CreateSubject(dps);
+				page.NavigateTo("Home");
+			}
+		}
 
         /// <summary>
         /// As it's name
@@ -50,21 +76,7 @@ namespace Medidata.RBT.Features.Rave
         [StepDefinition(@"I create ([^""]*) random Subjects with name ""([^""]*)"" in Study ""([^""]*)"" in Site ""([^""]*)""")]
         public void ICreate____RandomSubjectsWithName____inStudy____inSite____(int subjectCount, string subjectName, string studyName, string siteName)
         {
-
-            // var subjectNameTemplate = String.Concat(subjectName, " {RndNum<num1>(5)}");
-            for (int i = 0; i < subjectCount; i++)
-            {
-                var page = CurrentPage.As<HomePage>().SelectStudy(studyName).SelectSite(siteName);
-                var randomSubjectNumber = SpecialStringHelper.Replace("{RndNum<num1>(5)}");
-
-                IEnumerable<FieldModel> dps = new List<FieldModel>
-				{
-					new FieldModel{ Field= "Subject Number", Data=randomSubjectNumber },
-					new FieldModel{ Field= "Subject Initials", Data=subjectName }
-				};
-                page.CreateSubject(dps);
-                page.NavigateTo("Home");
-            }
+			ICreate____RandomSubjectsWithName____inStudy____Env____inSite____(subjectCount, subjectName, studyName, null, siteName);
         }
 
         /// <summary>
@@ -87,29 +99,6 @@ namespace Medidata.RBT.Features.Rave
             SpecialStringHelper.ReplaceTableColumn(table, "Data");
             CurrentPage = CurrentPage.As<HomePage>().CreateSubject(table.CreateSet<FieldModel>());
         }
-
-        /// <summary>
-		/// I select link "Mediflex" in "Header"
-		/// </summary>
-		[StepDefinition(@"I select link ""([^""]*)"" in ""([^""]*)""")]
-		public void ISelectLink____In____(string linkText, string areaName)
-		{
-            try
-            {
-                if (areaName.ToLower().Contains("project") || linkText.ToLower().Contains("project") || linkText.ToLower().Contains("study"))
-                    linkText = SpecialStringHelper.Replace(GetSeededProjectName(linkText));
-                else
-                    linkText = SpecialStringHelper.Replace(linkText);
-            }
-
-            catch
-            {
-                linkText = SpecialStringHelper.Replace(linkText);
-            }
-
-			CurrentPage = CurrentPage.ClickLink(linkText,null, areaName);
-			
-		}
 
         /// <summary>
         /// Select forlder on DEC page
@@ -687,15 +676,6 @@ namespace Medidata.RBT.Features.Rave
 			CurrentPage.As<CRFPage>().CheckFormCount(formName, formCount);
 		}
 
-        /// <summary>
-        /// returns study name, used in dropdowns.
-        /// </summary>
-        /// <param name="name"></param>
-        /// <returns></returns>
-        private string GetSeededProjectName(string name)
-        {
-            Project projectObject = TestContext.GetExistingFeatureObjectOrMakeNew(name, () => new Project(name));
-            return projectObject.UniqueName;
-        }
+
     }
 }
