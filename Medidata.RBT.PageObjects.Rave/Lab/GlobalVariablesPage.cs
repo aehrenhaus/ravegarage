@@ -34,6 +34,7 @@ namespace Medidata.RBT.PageObjects.Rave
                 mainTable.Rows()[mainTable.Rows().Count - 2].Textboxes()[0].EnhanceAs<Textbox>().SetText(variable.OID);
                 mainTable.Rows()[mainTable.Rows().Count - 2].Textboxes()[1].EnhanceAs<Textbox>().SetText(variable.Format);
                 Browser.ImageBySrc("../../Img/i_ccheck.gif").Click();
+                Browser.WaitForDocumentLoad();
             }          
 		}
         public bool GlobalVariablesExistWithOIDs(IEnumerable<ArchitectObjectModel> variables)
