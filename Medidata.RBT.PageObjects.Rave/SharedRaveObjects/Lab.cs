@@ -27,7 +27,15 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
         /// <param name="labName">The feature file lab name</param>
         public Lab(string labName)
         {
-			UniqueName = labName + TID;
+			UniqueName = labName;
+        }
+
+        /// <summary>
+        /// Make labName unique
+        /// </summary>
+        protected override void MakeUnique()
+        {
+            UniqueName = UniqueName + TID;
         }
     }
 }

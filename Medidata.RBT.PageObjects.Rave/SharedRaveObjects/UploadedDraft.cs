@@ -88,6 +88,32 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
                 }
                 catch (NullReferenceException) { }
 
+                //ReferenceLabs
+                try
+                {
+                    string referenceLabName = draftTable[1, "ReferenceLabs"].ToString();
+
+                    if (!string.IsNullOrEmpty(referenceLabName))
+                    {
+                        Lab referenceLabsGroup = TestContext.GetExistingFeatureObjectOrMakeNew(referenceLabName, () => new Lab(referenceLabName));
+                        draftTable[1, "ReferenceLabs"] = referenceLabsGroup.UniqueName;
+                    }
+                }
+                catch (NullReferenceException) { }
+
+                //AlertLabs
+                try
+                {
+                    string alertLabName = draftTable[1, "AlertLabs"].ToString();
+
+                    if (!string.IsNullOrEmpty(alertLabName))
+                    {
+                        Lab alertLabsGroup = TestContext.GetExistingFeatureObjectOrMakeNew(alertLabName, () => new Lab(alertLabName));
+                        draftTable[1, "AlertLabs"] = alertLabsGroup.UniqueName;
+                    }
+                }
+                catch (NullReferenceException) { }
+
 				//draft
 				var oldDraftName = draftTable[1, "DraftName"].ToString();
 				Draft = TestContext.GetExistingFeatureObjectOrMakeNew(oldDraftName, () => new Draft(oldDraftName));
