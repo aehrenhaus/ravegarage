@@ -8,12 +8,10 @@ Feature: US18087_DT14073 An exception is thrown when entering a name with more t
 Background:
 Given xml draft "US18087_DT14073.xml" is Uploaded
 Given study "US18087_DT14073" is assigned to Site "Site 1"
+Given I publish and push eCRF "US18087_DT14073.xml" to "Version 1"
 Given following Project assignments exist
 | User         | Project         | Environment | Role         | Site   | SecurityRole          |
 | SUPER USER 1 | US18087_DT14073 | Live: Prod  | SUPER ROLE 1 | Site 1 | Project Admin Default |
-
-Given I publish and push eCRF "US18087_DT14073.xml" to "Version 1"
-
 
 	#Given I login to Rave with user "defuser" and password "password"
 	#And the following Project assignments exist
