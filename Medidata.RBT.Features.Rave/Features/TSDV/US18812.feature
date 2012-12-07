@@ -2,7 +2,7 @@
 @EnableSeeding=true
 
 #SecurityRole
-Feature: US18812
+Feature: US18812 When a user selects  Dynamic Allocation Randomization Block algorithm , subject assignment satisfies a specified allocation and ratio is random for all blocks.
 	When user selects Dynamic Allocation Randomization Block algorithm
 	Then subject assignment satisfies a specified allocation ratio
 	And subject assignment is random for all blocks
@@ -131,7 +131,7 @@ Background:
 @PB_US18812_01
 @Validation
 
-Scenario: @PB_US18812_01 Enroll 50 subjects in a study to verify that TSDV has randomized the subjects in non sequential order when the subjects are included in TSDV using the Targeted SDV Subject Include report in Study level, Site group level and Site level.
+Scenario: PB_US18812_01 Enroll 50 subjects in a study to verify that TSDV has randomized the subjects in non sequential order when the subjects are included in TSDV using the Targeted SDV Subject Include report in Study level, Site group level and Site level.
 	Given I login to Rave with user "SUPER USER 1"
 	And I navigate to "Reporter"
 	And I select Report "Targeted SDV Configuration"

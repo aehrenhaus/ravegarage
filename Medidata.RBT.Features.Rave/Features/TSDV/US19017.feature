@@ -2,7 +2,7 @@
 @EnableSeeding=true
 
 
-Feature: US19017
+Feature: US19017 As a user, I can choose between two randomization types and change randomization types for non-Production plans
 	When user selects Targeted SDV Configuration report
 	And environment is equal to Production
 	And user selects a Randomization Type 
@@ -61,9 +61,9 @@ Background:
 
 @release_2012.1.0 
 @PB_US19017_01
-@Draft
+@Validation
 
-Scenario: @PB_US19017_01 When I enroll 20 subjects in a Production environment, and my Randomization Type is Dynamic Allocation, TSDV will randomize subjects in non-sequential order and I am not able to change the Randomization Type after a subject is enrolled. 
+Scenario: PB_US19017_01 When I enroll 20 subjects in a Production environment, and my Randomization Type is Dynamic Allocation, TSDV will randomize subjects in non-sequential order and I am not able to change the Randomization Type after a subject is enrolled. 
 	When I login to Rave with user "SUPER USER 1"
 	And I navigate to "Reporter"
 	And I select Report "Targeted SDV Configuration"

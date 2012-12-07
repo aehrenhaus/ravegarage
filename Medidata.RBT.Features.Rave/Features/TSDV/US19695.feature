@@ -1,7 +1,7 @@
 ﻿# When using Subject Include feature, Subjects are enrolled per selected Randomization. 
 @EnableSeeding=true
 
-Feature: US19695
+Feature: US19695 When using Subject Include feature, Subjects are enrolled per selected Randomization.
 	When user creates subjects 
 	And user selects Dynamic Allocation Randomization Block algorithm
 	And user selects Permuted Block Randomization Block algorithm
@@ -64,9 +64,9 @@ Background:
 
 @release_2012.1.0 
 @PB_US19695_01
-@Draft
+@Validation
 
-Scenario: @PB_US19695_01 Enroll subjects in studies to verify that TSDV has randomized the subjects based on selected randomization type. 
+Scenario: PB_US19695_01 Enroll subjects in studies to verify that TSDV has randomized the subjects based on selected randomization type. 
 	#When I select Study "US19695" and Site "Site 1"
 	And I login to Rave with user "SUPER USER 1"
 
