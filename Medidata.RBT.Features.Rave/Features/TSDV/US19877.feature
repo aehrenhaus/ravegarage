@@ -1,7 +1,7 @@
 ﻿# TSDV will regenerate a new randomization permutation when a TSDV plan using Permuted Block randomization is updated
 @EnableSeeding=true
 
-Feature: US19877
+Feature: US19877 TSDV will regenerate a new randomization permutation when a TSDV plan using Permuted Block randomization is updated
 	When subjects are allocated to tiers using the Permuted Block Randomization Type
 	And the TSDV plan is updated to include a new custom tier
 	Then a new randomization permutation is generated
@@ -54,8 +54,8 @@ Background:
 
 @release_2012.1.0 
 @PB_US19877_01
-@Draft
-Scenario: @PB_US19877_01 As a Rave user, when I select Permuted Block Randomization and I Enroll 50 subjects in study then subject assignment satisfies the specified ratio and is random for all blocks in study level.
+@Validation
+Scenario: PB_US19877_01 As a Rave user, when I select Permuted Block Randomization and I Enroll 50 subjects in study then subject assignment satisfies the specified ratio and is random for all blocks in study level.
 	#When I select Study "US19877" and Site "Site 1"
 	Given I login to Rave with user "SUPER USER 1"
 	And I navigate to "Home"

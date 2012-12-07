@@ -1,7 +1,7 @@
 ﻿# When a user selects Permuted Block Randomization, subject assignment satisfies a specified allocation and ratio is random for all blocks.
 @EnableSeeding=true
 
-Feature: US18689
+Feature: US18689 When a user selects Permuted Block Randomization, subject assignment satisfies a specified allocation and ratio is random for all blocks.
 	When user selects Permuted Block Randomization
 	Then subject assignment satisfies a specified allocation ratio
 	And subject assignment is random for all blocks
@@ -80,7 +80,7 @@ Background:
 @release_2012.1.0 
 @PB_US18689_01
 @Validation
-Scenario: @PB_US18689_01 As a Rave user, when I select Permuted Block Randomization and I Enroll 50 subjects in study then subject assignment satisfies the specified ratio and is random for all blocks in study level.
+Scenario: PB_US18689_01 As a Rave user, when I select Permuted Block Randomization and I Enroll 50 subjects in study then subject assignment satisfies the specified ratio and is random for all blocks in study level.
 	Given I login to Rave with user "SUPER USER 1"
 	And I navigate to "Home"
 	And I navigate to "Reporter"
