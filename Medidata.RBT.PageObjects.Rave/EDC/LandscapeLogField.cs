@@ -64,7 +64,7 @@ namespace Medidata.RBT.PageObjects.Rave
                     throw new NotImplementedException("Not implemented yet for :" + m_controlType);
                 case ControlType.DynamicSearchList:
                     IWebElement topRowCell = this.Page.Browser.TryFindElementBy(
-                        By.XPath("//tr[@class='breaker']//td//*[contains(text(),'" + fieldName + "')]../.."));
+                        By.XPath("//tr[@class='breaker']//td//*[contains(text(),'" + fieldName + "')]/../.."));
                     if (topRowCell == null)
                         throw new Exception(
                             string.Format("Cannot find top row cell for fieldName [{0}]", fieldName));
