@@ -1,6 +1,6 @@
 ﻿# When an Edit Check sets Datapoint XYZ to require verification, if the verification is broken on XYZ by a data change, this is not audited.
 
-Feature: DT 13622 TSDV Off When an Edit Check sets Datapoint XYZ to require verification, if the verification is broken on XYZ by a data change, this is not audited.
+Feature: US10244_DT13622_TSDV_Off When an Edit Check sets Datapoint XYZ to require verification, if the verification is broken on XYZ by a data change, this is not audited.
 	As a Rave user
 	Given I verify data
 	When I change the data
@@ -32,9 +32,9 @@ Background:
 	# TSDV is turned off in the database.
 
 @release_2012.1.0 
-@PB-DT13622_1-01
-@WIP
-Scenario: As an EDC user, when I have an edit check fired on one field that sets another field to require verification, and TSDV is off, and I verify the data for the field, and I change the data, and the verification is broken, then I should see an audit recorded for the unverification.
+@PB_US10244_DT13622_10
+@Validation
+Scenario: PB_US10244_DT13622_10 As an EDC user, when I have an edit check fired on one field that sets another field to require verification, and TSDV is off, and I verify the data for the field, and I change the data, and the verification is broken, then I should see an audit recorded for the unverification.
 	Given I login to Rave with user "SUPER USER 1"
 	When I create a Subject
 	|Field			 |Data|
@@ -80,9 +80,9 @@ Scenario: As an EDC user, when I have an edit check fired on one field that sets
 	And I take a screenshot
 
 @release_2012.1.0
-@PB-DT13622_1-02
-@WIP
-Scenario: As an EDC user, when I have an edit check fired on one field that sets another field to require verification, and TSDV is off, and I verify the data for the form, and I change the data, and the verification is broken, then I should see an audit recorded for the unverification.
+@PB_US10244_DT13622_11
+@Validation
+Scenario: PB_US10244_DT13622_11 As an EDC user, when I have an edit check fired on one field that sets another field to require verification, and TSDV is off, and I verify the data for the form, and I change the data, and the verification is broken, then I should see an audit recorded for the unverification.
 	Given I login to Rave with user "SUPER USER 1"
 	When I create a Subject
 	|Field			 |Data |
@@ -128,9 +128,9 @@ Scenario: As an EDC user, when I have an edit check fired on one field that sets
 	And I take a screenshot
 
 @release_2012.1.0
-@PB-DT13622_1-03
-@WIP
-Scenario: As an EDC user, when I have an edit check that sets a field to require verification, and TSDV is off, and I verify the data for the field, and I change the data, and the verification is broken, then I should see an audit recorded for the unverification.
+@PB_US10244_DT13622_12
+@Validation
+Scenario: PB_US10244_DT13622_12 As an EDC user, when I have an edit check that sets a field to require verification, and TSDV is off, and I verify the data for the field, and I change the data, and the verification is broken, then I should see an audit recorded for the unverification.
 	Given I login to Rave with user "SUPER USER 1"
 	When I create a Subject
 	|Field			 |Data |
@@ -165,9 +165,9 @@ Scenario: As an EDC user, when I have an edit check that sets a field to require
 	And I take a screenshot
 
 @release_2012.1.0
-@PB-DT13622_1-04
-@WIP
-Scenario: As an EDC user, when I have an edit check that sets a field to require verification, and TSDV is off, and I verify the data for the form, and I change the data, and the verification is broken, then I should see an audit recorded for the unverification.
+@PB_US10244_DT13622_13
+@Validation
+Scenario: PB_US10244_DT13622_13 As an EDC user, when I have an edit check that sets a field to require verification, and TSDV is off, and I verify the data for the form, and I change the data, and the verification is broken, then I should see an audit recorded for the unverification.
 	Given I login to Rave with user "SUPER USER 1"
 	When I create a Subject
 	|Field			 |Data |
@@ -202,9 +202,9 @@ Scenario: As an EDC user, when I have an edit check that sets a field to require
 	And I take a screenshot
 
 @release_2012.1.0
-@PB-DT13622_1-05
-@WIP
-Scenario: As an EDC user, when I have an edit check fired on a field that is derived to sets another field to require verification, and TSDV is off, and I verify the data for the field, and I change the data, and the verification is broken, then I should see an audit recorded for the unverification.
+@PB_US10244_DT13622_14
+@Validation
+Scenario: PB_US10244_DT13622_14 As an EDC user, when I have an edit check fired on a field that is derived to sets another field to require verification, and TSDV is off, and I verify the data for the field, and I change the data, and the verification is broken, then I should see an audit recorded for the unverification.
 	Given I login to Rave with user "SUPER USER 1"
 	When I create a Subject
 	|Field			 |Data |
@@ -244,9 +244,9 @@ Scenario: As an EDC user, when I have an edit check fired on a field that is der
 	And I take a screenshot
 
 @release_2012.1.0
-@PB-DT13622_1-06
-@WIP
-Scenario: As an EDC user, when I have an edit check fired on a field that is derived to sets another field to require verification, and TSDV is off, and I verify the data for the form, and I change the data, and the verification is broken, then I should see an audit recorded for the unverification.
+@PB_US10244_DT13622_15
+@Validation
+Scenario: PB_US10244_DT13622_15 As an EDC user, when I have an edit check fired on a field that is derived to sets another field to require verification, and TSDV is off, and I verify the data for the form, and I change the data, and the verification is broken, then I should see an audit recorded for the unverification.
 	Given I login to Rave with user "SUPER USER 1"
 	When I create a Subject
 	|Field			 |Data |

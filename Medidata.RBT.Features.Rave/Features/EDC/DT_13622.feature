@@ -297,7 +297,7 @@ Scenario: PB_US10244_DT13622_06 As an EDC user, when I have an edit check fired 
 	And I take a screenshot
 
 @release_2012.1.0
-@PB_US10244_DT13622_017
+@PB_US10244_DT13622_07
 @Validation
 Scenario: PB_US10244_DT13622_07 As an EDC user, when I have TSDV turned off for a form, when I have an edit check that sets a field to require verification, and I verify the data for the field, and I change the data, and the verification is broken, then I should see an audit recorded for the unverification.
 	
