@@ -6,6 +6,8 @@ Feature: US17743_DT12513 When a time of 12:00 PM is saved into a date time field
 	Then I am able to correctly view the data in the Clinical Views
 
 Background:
+
+	Given xml Lab Configuration "All_US17743.xml" is uploaded
 	Given xml draft "US17743_DT12513.xml" is Uploaded
 	Given Site "Site 1" exists
 	Given study "US17743_DT12513" is assigned to Site "Site 1" with study environment "Live: Prod"
