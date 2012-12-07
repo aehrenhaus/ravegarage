@@ -27,7 +27,7 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
         /// <summary>
         /// When using "literal" names, no seeding of names is done.  We need this to test string length limits, etc.
         /// </summary>
-        public bool UseLiteralNames { get; set; } //don't seed
+        public bool MaintainStringLength { get; set; } //maintain the length of the uploaded strings
 
         /// <summary>
         /// The uploaded LabConfiguration constructor. This actually uploads configurations. 
@@ -35,10 +35,11 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
         /// </summary>
         /// <param name="labConfigurationUploadName">The feature defined name of the LabConfiguration</param>
         /// <param name="useLiteralNames">use actual unadulterated names</param>
-		public LabConfiguration(string labConfigurationUploadName, bool useLiteralNames = false)
+        public LabConfiguration(string labConfigurationUploadName, bool maintainStringLength = false, bool redirectAfterSeed = true)
         {
             UniqueName = labConfigurationUploadName;
-            UseLiteralNames = useLiteralNames;
+            MaintainStringLength = maintainStringLength;
+            RedirectAfterSeed = redirectAfterSeed;
         }
 
         /// <summary>
@@ -52,20 +53,18 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
 
             using (ExcelWorkbook excel = new ExcelWorkbook(FileLocation))
             {
-                if (!UseLiteralNames)
-                {
-                    MakeRangeTypesUnique(excel);
-                    MakeRangeTypeVariablesUnique(excel);
-                    MakeLabUnitsUnique(excel);
-                    MakeLabUnitsDictionariesUnique(excel);
-                    MakeLabUnitsDictionariesEntriesUnique(excel);
-                    MakeAnalytesUnique(excel);
-                    MakeLabUnique(excel);
-                    MakeAnalyteRangesUnique(excel);
-                    MakeUnitConversionAnalyteUnique(excel);
-                    MakeStandardGroupUnique(excel);
-                    MakeStandardGroupEntriesUnique(excel);
-                }
+                MakeRangeTypesUnique(excel);
+                MakeRangeTypeVariablesUnique(excel);
+                MakeLabUnitsUnique(excel);
+                MakeLabUnitsDictionariesUnique(excel);
+                MakeLabUnitsDictionariesEntriesUnique(excel);
+                MakeAnalytesUnique(excel);
+                MakeLabUnique(excel);
+                MakeAnalyteRangesUnique(excel);
+                MakeUnitConversionAnalyteUnique(excel);
+                MakeStandardGroupUnique(excel);
+                MakeStandardGroupEntriesUnique(excel);
+
                 //Create a unique version of the file to upload
                 UniqueFileLocation = MakeFileLocationUnique(FileLocation);
 
@@ -92,6 +91,16 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
                     rangeTypesTable[row, "Name"] = rangeType.UniqueName.ToString();
                 }
             }
+        }
+
+        private string RemoveCharactersFromStringEqualToTIDLength(BaseRaveSeedableObject originalSeedableObject)
+        {
+            string ret = originalSeedableObject.UniqueName;
+            int tidLength = originalSeedableObject.TID.Length;
+            int startOfTid = ret.IndexOf(originalSeedableObject.TID);
+            if (MaintainStringLength && startOfTid - tidLength > 0)
+                ret = ret.Substring(0, startOfTid - tidLength) + originalSeedableObject.TID;
+            return ret;
         }
 
 		/// <summary>
@@ -170,6 +179,7 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
                 {
                     LabUnitDictionary labUnitDictionary = TestContext.GetExistingFeatureObjectOrMakeNew<LabUnitDictionary>(labUnitDictionaryString.Trim(),
                         () => new LabUnitDictionary(labUnitDictionaryString.Trim()));
+                    labUnitDictionary.UniqueName = RemoveCharactersFromStringEqualToTIDLength(labUnitDictionary);
                     labUnitDictionaryEntriesTable[row, "LabUnitDictionary"] = labUnitDictionary.UniqueName.ToString();
                 }
             }
@@ -426,10 +436,7 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
         /// </summary>
 		protected override void CreateObject()
         {
-            if (!UseLiteralNames)
-                TestContext.CurrentPage.As<LabLoaderPage>().UploadFile(UniqueFileLocation);
-            else
-                TestContext.CurrentPage.As<LabLoaderPage>().UploadFile(UniqueFileLocation, true);
+            TestContext.CurrentPage.As<LabLoaderPage>().UploadFile(UniqueFileLocation);
         }
 
         /// <summary>

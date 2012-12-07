@@ -22,15 +22,25 @@ namespace Medidata.RBT.Features.Rave
             TestContext.GetExistingFeatureObjectOrMakeNew(configName, () => new LabConfiguration(configName));
         }
 
-
         /// <summary>
-        /// XML config file is uploaded with no seeding
+        /// XML config file is uploaded while maintaining the length of the strings of some of the lab configuration's uploaded items.
         /// </summary>
         /// <param name="configName">The name of lab configuration to be loaded (seeded)</param>
-        [StepDefinition(@"literal xml Lab Configuration ""([^""]*)"" is uploaded")]
-        public void LiteralXmlDraft____IsUploaded(string configName)
+        [StepDefinition(@"xml Lab Configuration ""([^""]*)"" is uploaded maintaining length")]
+        public void XmlLabConfiguration____IsUploadedMaintainingLength(string configName)
         {
             TestContext.GetExistingFeatureObjectOrMakeNew(configName, () => new LabConfiguration(configName, true));
+        }
+
+        /// <summary>
+        /// XML config file is uploaded while maintaining the length of the strings of some of the lab configuration's uploaded items.
+        /// It also stays on the page after upload. So that errors may be verified.
+        /// </summary>
+        /// <param name="configName">The name of lab configuration to be loaded (seeded)</param>
+        [StepDefinition(@"xml Lab Configuration ""([^""]*)"" is uploaded maintaining length and staying on page")]
+        public void XmlLabConfiguration____IsUploadedMaintainingLengthAndStayingOnPage(string configName)
+        {
+            TestContext.GetExistingFeatureObjectOrMakeNew(configName, () => new LabConfiguration(configName, true, false));
         }
 
         /// <summary>

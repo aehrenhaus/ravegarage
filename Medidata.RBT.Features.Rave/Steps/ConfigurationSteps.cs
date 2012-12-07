@@ -111,6 +111,33 @@ namespace Medidata.RBT.Features.Rave.Steps
         }
 
         /// <summary>
+        /// Assign the user to a security role
+        /// </summary>
+        /// <param name="userFeature">The user to assign the role to</param>
+        /// <param name="securityRoleFeature">The security role to assign to the user</param>
+        [StepDefinition(@"I assign user ""([^""]*)"" to security role ""([^""]*)""")]
+        public void FollowingProjectAssignmentsExist(string userFeature, string securityRoleFeature)
+        {
+            
+            using (new LoginSession())
+            {
+                User user = TestContext.GetExistingFeatureObjectOrMakeNew(userFeature, () => new User(userFeature));
+                SecurityRole securityRole = TestContext.GetExistingFeatureObjectOrMakeNew
+                            (securityRoleFeature, () => new SecurityRole(securityRoleFeature));
+                if (!user.ModuleAssignmentExists("All Projects", securityRole.UniqueName))
+                {
+                    CurrentPage = new UserAdministrationPage().NavigateToSelf();
+                    CurrentPage = CurrentPage.As<UserAdministrationPage>().SearchUser(new UserAdministrationPage.SearchByModel()
+                    {
+                        Login = user.UniqueName
+                    });
+                    CurrentPage = CurrentPage.As<UserAdministrationPage>().ClickUser(user.UniqueName);
+                    CurrentPage.As<UserEditPage>().AssignUserToSecurityRole(user, securityRole);
+                }
+            }
+        }
+
+        /// <summary>
         /// Make review groups active
         /// </summary>
         /// <param name="numbers">The numbers of the review groups to make active</param>
