@@ -209,14 +209,12 @@ namespace Medidata.RBT.PageObjects.Rave
             var element = Browser.TryFindElementBy(By.XPath("//input[@title='" + identifier + "']"));
 
             if (element == null && areaIdentifier == "Display multiple log lines per page")
-            {
                 element = FindCheckboxForLogForm(identifier);
-            }
 
-            if (element != null)
-                return element;
-
-            return base.GetElementByName(identifier, areaIdentifier, listItem);
+            if (identifier != null && element == null)
+                return base.GetElementByName(identifier, areaIdentifier, listItem);
+            
+            return element;
         }
 
         public override string URL

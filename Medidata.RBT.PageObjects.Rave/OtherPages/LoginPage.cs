@@ -75,15 +75,17 @@ namespace Medidata.RBT.PageObjects.Rave
 	{
 		string previousUser = TestContext.CurrentUser;
 		string previousPassword = TestContext.CurrentUserPassword;
+        public bool RedirectOnDispose { get; set; }
 
-		public LoginSession(string username = null, string passowrd = null)
+		public LoginSession(string username = null, string passowrd = null, bool redirectOnDispose = true)
 		{
+            RedirectOnDispose = redirectOnDispose;
 			LoginPage.LoginToHomePageIfNotAlready(username,passowrd);
 		}
 
 		public void Dispose()
 		{
-            if (previousUser != null && !TestContext.CurrentPage.StayOnPage) // for some tests, we dont' want to go back to homepage.
+            if (previousUser != null && RedirectOnDispose) // for some tests, we dont' want to go back to homepage.
 				LoginPage.LoginToHomePageIfNotAlready(previousUser, previousPassword);
 		}
 	}

@@ -21,13 +21,15 @@ namespace Medidata.RBT.SharedRaveObjects
         public string UniqueName { get; set; } 
 
 		protected string FileLocation { get; set; } //The location of the original file upload
-		protected string UniqueFileLocation { get; set; } //A unique location of the duplicate of the seedable object, that has been made unique
-        protected string TID = TemporalID.GetNewTID(); //This is a unique temporal ID for uniqueness purposes and ease of debugging
+		protected string UniqueFileLocation { get; set; } //A unique location of the duplicate of the seedable object, that has been made unique\
+        protected bool RedirectAfterSeed { get; set; }
+        public string TID = TemporalID.GetNewTID(); //This is a unique temporal ID for uniqueness purposes and ease of debugging
 
 		public BaseRaveSeedableObject()
 		{
 			//set global suppress seeding option, it can be overwrite later
 			SuppressSeeding = (TestContext.FeatureSeedingOption ?? TestContext.DefaultSeedingOption).SuppressSeeding(GetType());
+            RedirectAfterSeed = true;
 		}
 
 		public virtual void Seed()
@@ -59,7 +61,7 @@ namespace Medidata.RBT.SharedRaveObjects
 
 		protected virtual void SeedFromUI()
 		{
-			using (new LoginSession())
+            using (new LoginSession(redirectOnDispose : RedirectAfterSeed))
 			{
 				MakeUnique();
 				NavigateToSeedPage();

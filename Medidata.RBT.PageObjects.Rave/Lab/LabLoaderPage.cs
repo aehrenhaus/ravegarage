@@ -27,9 +27,8 @@ namespace Medidata.RBT.PageObjects.Rave.Lab
         /// </summary>
         /// <param name="filepath">Path of the Lab to upload</param>
         /// <param name="stayOnPage">stay on this page afterwards</param>
-        public void UploadFile(string filepath, bool stayOnPage = false)
+        public void UploadFile(string filepath)
         {
-            StayOnPage = stayOnPage;
             TestContext.Browser.FindElementById("_ctl0_Content_FileUpload").SendKeys(filepath);
             ClickButton("Upload");
             WaitForUploadToComplete();
@@ -76,7 +75,7 @@ namespace Medidata.RBT.PageObjects.Rave.Lab
 
 		bool IVerifySomethingExists.VerifySomethingExist(string areaIdentifier, string type, string identifier, bool exactMatch)
 		{
-			if (identifier == null)
+			if (identifier != null)
 			{
                 if (!exactMatch && Browser.PageSource.Contains(identifier))
 					return true;

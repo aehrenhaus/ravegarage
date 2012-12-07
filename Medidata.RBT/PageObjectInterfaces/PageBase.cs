@@ -43,11 +43,6 @@ namespace Medidata.RBT
         /// </summary>
 		public RemoteWebDriver Browser { get { return TestContext.Browser; } }
 
-        /// <summary>
-        /// Whether or not to stay on current page
-        /// </summary>
-        public bool StayOnPage { get; set; } //by default it is false;
-
 		/// <summary>
 		/// See IPage interface
 		/// </summary>
@@ -371,7 +366,7 @@ namespace Medidata.RBT
 		//Don't make this public. This method is only a lines saver inside PageBase
 		private IWebElement FindElementDelayedWait(string identifier, string areaIdentifier)
 		{
-			ISearchContext context = string.IsNullOrEmpty(areaIdentifier) ? Browser as ISearchContext : this.GetElementByName(areaIdentifier, null);
+			ISearchContext context = string.IsNullOrEmpty(areaIdentifier) ? Browser as ISearchContext : this.GetElementByName(null, areaIdentifier, null);
 
 			var ele = context.TryFindElementById(identifier, false);
 			if (ele == null)
