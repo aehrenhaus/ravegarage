@@ -204,7 +204,7 @@ namespace Medidata.RBT.PageObjects.Rave
                     throw new NotImplementedException("Not implemented yet for :" + m_controlType);
                 case ControlType.DynamicSearchList:
                     //_ctl0_Content_dde1_log_log_CF67041_27853_C_CRFSL_PickListBox
-                    string contolId = String.Format("_ctl0_Content_{0}_log_log_CF{1}_{2}_C_CRFSL", prefix, m_columnId.ToString(), m_rowId.ToString()); 
+                    string contolId = String.Format("_ctl0_Content_{0}_log_log_CF{1}_{2}_C_CRFSL_PickListBox", prefix, m_columnId.ToString(), m_rowId.ToString()); 
                     IWebElement tableCell = this.Page.Browser.FindElementById(contolId);
                     return tableCell.Displayed;
                 default:
