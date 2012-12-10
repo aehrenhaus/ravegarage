@@ -249,9 +249,9 @@ Scenario: PB_US17446_DT14276_08 As Study Developer, when I save Low and High ran
 
 #Check for Global Library Volumes
 @release_2012.1.0
-@PB_US17446_09
-@Draft
-Scenario: PB_US17446_09 As Study Developer, when I save Low and High ranges for Field Edit Check, I do not see an Invalid* error message displayed.
+@PB_US17446_DT14276_09
+@Validation
+Scenario: PB_US17446_DT14276_09 As Study Developer, when I save Low and High ranges for Field Edit Check, I do not see an Invalid* error message displayed.
 
 	When I navigate to "Architect"
 	And I select "Project" link "US17446_SJ_GL" in "Active Global Library Volumes" 	
@@ -274,9 +274,9 @@ Scenario: PB_US17446_09 As Study Developer, when I save Low and High ranges for 
 	And I take a screenshot
 
 @release_2012.1.0
-@PB_US17446_010
-@Draft
-Scenario: @PB_US17446_010 As Study Developer, when I save Low and High ranges for Field Edit Check, I do not see an Invalid* error message displayed.
+@PB_US17446_DT14276_10
+@Validation
+Scenario: PB_US17446_DT14276_10 As Study Developer, when I save Low and High ranges for Field Edit Check, I do not see an Invalid* error message displayed.
 	
 	When I navigate to "Architect"
 	And I select "Project" link "US17446_SJ_GL" in "Active Global Library Volumes"  
@@ -301,9 +301,9 @@ Scenario: @PB_US17446_010 As Study Developer, when I save Low and High ranges fo
 	And I take a screenshot
 
 @release_2012.1.0
-@PB_US17446_011
-@Draft
-Scenario: @PB_US17446_011 As Study Developer, when I save Low and High ranges for Field Edit Check, I do not see an Invalid* error message displayed.
+@PB_US17446_DT14276_11
+@Validation
+Scenario: PB_US17446_DT14276_11 As Study Developer, when I save Low and High ranges for Field Edit Check, I do not see an Invalid* error message displayed.
 	
 	When I navigate to "Architect"
 	And I select "Project" link "US17446_SJ_GL" in "Active Global Library Volumes" 
@@ -326,9 +326,9 @@ Scenario: @PB_US17446_011 As Study Developer, when I save Low and High ranges fo
 	And I take a screenshot
 
 @release_2012.1.0
-@PB_US17446_012
-@Draft
-Scenario: @PB_US17446_012 As Study Developer, when I save Low and High ranges for Field Edit Check, I do not see an Invalid* error message displayed.
+@PB_US17446_DT14276_12
+@Validation
+Scenario: PB_US17446_DT14276_12 As Study Developer, when I save Low and High ranges for Field Edit Check, I do not see an Invalid* error message displayed.
 	
 	When I navigate to "Architect"
 	And I select "Project" link "US17446_SJ_GL" in "Active Global Library Volumes"  
@@ -352,9 +352,9 @@ Scenario: @PB_US17446_012 As Study Developer, when I save Low and High ranges fo
 	And I take a screenshot
 
 @release_2012.1.0
-@PB_US17446_013
-@Draft
-Scenario: @PB_US17446_013 As Study Developer, when I save Low and High ranges for Field Edit Check, I do not see an Invalid* error message displayed.
+@PB_US17446_DT14276_13
+@Validation
+Scenario: PB_US17446_DT14276_13 As Study Developer, when I save Low and High ranges for Field Edit Check, I do not see an Invalid* error message displayed.
 	
 	When I navigate to "Architect"
 	And I select "Project" link "US17446_SJ_GL" in "Active Global Library Volumes" 
@@ -377,9 +377,9 @@ Scenario: @PB_US17446_013 As Study Developer, when I save Low and High ranges fo
 	And I take a screenshot
 
 @release_2012.1.0
-@PB_US17446_014
-@Draft
-Scenario: @PB_US17446_014 As Study Developer, when I save Low and High ranges for Field Edit Check, I do not see an Invalid* error message displayed.
+@PB_US17446_DT14276_14
+@Validation
+Scenario: PB_US17446_DT14276_14 As Study Developer, when I save Low and High ranges for Field Edit Check, I do not see an Invalid* error message displayed.
 	
 	When I navigate to "Architect"
 	And I select "Project" link "US17446_SJ_GL" in "Active Global Library Volumes" 
@@ -402,9 +402,9 @@ Scenario: @PB_US17446_014 As Study Developer, when I save Low and High ranges fo
 	And I take a screenshot
 	
 @release_2012.1.0
-@PB_US17446_015
-@Draft
-Scenario: @PB_US17446_015 As Study Developer, when I save Low and High ranges for Field Edit Check, I do not see an Invalid* error message displayed.
+@PB_US17446_DT14276_15
+@Validation
+Scenario: PB_US17446_DT14276_15 As Study Developer, when I save Low and High ranges for Field Edit Check, I do not see an Invalid* error message displayed.
 	
 	When I navigate to "Architect"
 	And I select "Project" link "US17446_SJ_GL" in "Active Global Library Volumes" 
@@ -425,9 +425,9 @@ Scenario: @PB_US17446_015 As Study Developer, when I save Low and High ranges fo
 	And I take a screenshot
 
 @release_2012.1.0
-@PB_US17446_016
-@Draft
-Scenario: @PB_US17446_016 As Study Developer, when I save Low and High ranges for Field Edit Check, I do not see an Invalid* error message displayed.
+@PB_US17446_DT14276_16
+@Validation
+Scenario: PB_US17446_DT14276_16 As Study Developer, when I save Low and High ranges for Field Edit Check, I do not see an Invalid* error message displayed.
 	
 	When I navigate to "Architect"
 	And I select "Project" link "US17446_SJ_GL" in "Active Global Library Volumes" 
@@ -448,9 +448,9 @@ Scenario: @PB_US17446_016 As Study Developer, when I save Low and High ranges fo
 	And I take a screenshot	
 
 @release_2012.1.0
-@PB_US17446_017
-@Draft
-Scenario: @PB_US17446_017 As an EDC user, when I enter out of range data and save the form, then I should see queries for field edit checks.
+@PB_US17446_DT14276_17
+@Validation
+Scenario: PB_US17446_DT14276_17 As an EDC user, when I enter out of range data and save the form, then I should see queries for field edit checks.
 	
 	And I navigate to "Architect"
 	And I select "Project" link "US17446_SJ" in "Active Projects"

@@ -67,9 +67,9 @@ Background:
 	#And I assign user "defuser" to have "CDM1B144V1" role for "Test6: Prod"
 	
 @release_2012.1.0
-@UPB_US12175_DT8545_K
+@PB_US12175_DT8545_L
 @Validation
-Scenario: PB_US12175_DT8545_K A blank-populated PDF that is generated should properly display special characters
+Scenario: PB_US12175_DT8545_L A blank-populated PDF that is generated should properly display special characters
 This should be tested with all 3 forms (Standard, log and mixed forms)
  	
 	When I select Study "test15"
@@ -89,9 +89,9 @@ This should be tested with all 3 forms (Standard, log and mixed forms)
         | <br/>       |
 		
 @release_2012.1.0
-@PB_US12175_DT8545_L
+@PB_US12175_DT8545_M
 @Validation
-Scenario: PB_US12175_DT8545_L A data-populated PDF that is generated should properly display special characters
+Scenario: PB_US12175_DT8545_M A data-populated PDF that is generated should properly display special characters
 This should be tested with all 3 forms (Standard, log and mixed forms)
 	
 	When I select Study "test14"
