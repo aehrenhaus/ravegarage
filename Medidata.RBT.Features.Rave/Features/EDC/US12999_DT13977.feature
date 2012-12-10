@@ -39,7 +39,7 @@ Scenario: PB_US12999_DT13977_01 As an EDC user, when I change an out of range va
 	  | Subject Date     | 01 Feb 2011        |	
 	And I take a screenshot
 	And I select link "Hematology"
-	And I choose "LocalLab_1US12999_DT13977" from "Lab"
+	And I select Lab "LocalLab_1US12999_DT13977"
 	And I enter data in CRF and save
 	  | Field | Data | Unit   |
 	  | WBC   | 30   | 10^9/L |
