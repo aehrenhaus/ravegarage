@@ -141,7 +141,7 @@ Background:
 #----------------------------------------------------------------------------------------------------------------------------------------	
 @release_564_Patch11
 @PB_8.1.1.1
-@Draft
+@Validation
 @Manual
 Scenario: PB_8.1.1.1 As an user, When I Generate Data PDFs and view Data PDF, then query related data are displayed.
 #Can not handle save dialog, must verify manually
@@ -159,7 +159,7 @@ Scenario: PB_8.1.1.1 As an user, When I Generate Data PDFs and view Data PDF, th
 #----------------------------------------------------------------------------------------------------------------------------------------	
 @release_564_Patch11
 @PB_8.1.2.1
-@Draft
+@Validation
 @Manual
 Scenario: PB_8.1.2.1 As an user, When I run the 'Audit Trail' Report, then query related data are displayed in the report.
 
@@ -206,7 +206,7 @@ Scenario: PB_8.1.2.1 As an user, When I run the 'Audit Trail' Report, then query
 #----------------------------------------------------------------------------------------------------------------------------------------	
 @release_564_Patch11
 @PB_8.1.2.2
-@Draft
+@Validation
 @Manual
 Scenario: PB_8.1.2.2 As an user, When I run the 'Query Detail' Report, then query related data are displayed in the report.
 	
@@ -250,7 +250,7 @@ Scenario: PB_8.1.2.2 As an user, When I run the 'Query Detail' Report, then quer
 #----------------------------------------------------------------------------------------------------------------------------------------	
 @release_564_Patch11
 @PB_8.1.2.3
-@Draft
+@Validation
 @Manual
 Scenario: PB_8.1.2.3 As an user, When I run the 'Edit Check Log Report' Report, then query related data are displayed in the report.
 
@@ -278,7 +278,7 @@ Scenario: PB_8.1.2.3 As an user, When I run the 'Edit Check Log Report' Report, 
 #----------------------------------------------------------------------------------------------------------------------------------------	
 @release_564_Patch11
 @PB_8.1.2.4
-@Draft
+@Validation
 @Manual
 Scenario: PB_8.1.2.4 As an user, When I run the 'Stream-Audit Trail' Report, then query related data are displayed in the report.
 
@@ -318,7 +318,7 @@ Scenario: PB_8.1.2.4 As an user, When I run the 'Stream-Audit Trail' Report, the
 #----------------------------------------------------------------------------------------------------------------------------------------	
 @release_564_Patch11
 @PB_8.1.2.5
-@Draft
+@Validation
 @Manual
 Scenario: PB_8.1.2.5 As an user, When I run the 'Stream-Query Detail' Report, then query related data are displayed in the report.
 
@@ -357,7 +357,7 @@ Scenario: PB_8.1.2.5 As an user, When I run the 'Stream-Query Detail' Report, th
 #----------------------------------------------------------------------------------------------------------------------------------------	
 @release_564_Patch11
 @PB_8.1.2.6
-@Draft
+@Validation
 @Manual
 Scenario: PB_8.1.2.6 As an user, When I run the 'Stream-Edit Check Log Report' Report, then query related data are displayed in the report.
 
@@ -393,7 +393,7 @@ Scenario: PB_8.1.2.6 As an user, When I run the 'Stream-Edit Check Log Report' R
 #----------------------------------------------------------------------------------------------------------------------------------------	
 @release_564_Patch11
 @PB_8.1.2.7
-@Draft
+@Validation
 @Manual
 Scenario: PB_8.1.2.7 As an user, When I run the 'J-Review' Report, then query related data are displayed in the report.
 
@@ -419,7 +419,7 @@ Scenario: PB_8.1.2.7 As an user, When I run the 'J-Review' Report, then query re
 #----------------------------------------------------------------------------------------------------------------------------------------	
 @release_564_Patch11
 @PB_8.1.2.8
-@Draft
+@Validation
 @Manual
 Scenario: PB_8.1.2.8 As an user, When I run the 'BOXI' Report, then query related data are displayed in the report.
 
