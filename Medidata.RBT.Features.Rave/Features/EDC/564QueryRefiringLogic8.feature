@@ -166,7 +166,7 @@ Scenario: PB_8.1.1 As an EDC user, Data setup and verification for query re-firi
 @release_564_Patch11
 @PB_8.1.2
 @Validation
-Scenario: PB_8.1.2
+Scenario: PB_8.1.2 As an EDC user, Data verification for closed query re-firing. Folder "Screening" enter and save data on forms "Informed Consent" and "Concomitant Medications"
 	Given I login to Rave with user "SUPER USER 2"
     And I select Study "Edit Check Study 3" and Site "Edit Check Site 8"
     And I select a Subject "sub{Var(num1)}"
@@ -216,7 +216,7 @@ Scenario: PB_8.1.2
 @release_564_Patch11
 @PB_8.1.3
 @Validation
-Scenario: PB_8.1.3
+Scenario: PB_8.1.3 As an EDC user, Data verification for canceled query re-firing. Folder "Screening" enter and save data on forms "Informed Consent" and "Concomitant Medications"
 	
 	Given I login to Rave with user "SUPER USER 2"
     And I select Study "Edit Check Study 3" and Site "Edit Check Site 8"
@@ -263,7 +263,7 @@ Scenario: PB_8.1.3
 @release_564_Patch11
 @PB_8.2.1
 @Validation
-Scenario: PB_8.2.1 Task Summary
+Scenario: PB_8.2.1 As an EDC user, Task Summary Verification for query re-firing in . Folder "Screening" enter and save data on forms "Informed Consent" and "Concomitant Medications"
 
 	Given I login to Rave with user "SUPER USER 2"
 	And I select Study "Edit Check Study 3" and Site "Edit Check Site 8"
@@ -294,7 +294,7 @@ Scenario: PB_8.2.1 Task Summary
 @release_564_Patch11
 @PB_8.3.1
 @Validation
-Scenario: PB_8.3.1 Query Management
+Scenario: PB_8.3.1 As an EDC user, Query Management Verification for query re-firing in . Folder "Screening" enter and save data on forms "Informed Consent" and "Concomitant Medications"
 
 	Given I login to Rave with user "SUPER USER 2"
 	And I navigate to "Query Management"
@@ -359,7 +359,7 @@ Scenario: PB_8.3.1 Query Management
 @PB_8.3.2
 @ignore
 # Failing due to DT 14230
-Scenario: PB_8.3.2
+Scenario: PB_8.3.2 As an EDC user, Query Management Verification for query re-firing in . Folder "Screening" enter and save data on forms "Informed Consent" and "Concomitant Medications"
 
 	Given I login to Rave with user "SUPER USER 2"
 	And I navigate to "Query Management"
@@ -419,7 +419,7 @@ Scenario: PB_8.3.2
 @release_564_Patch11
 @PB_8.4.1
 @Validation
-Scenario: PB_8.4.1 Migrate Subject
+Scenario: PB_8.4.1 As an EDC user, Migrating Subject Verification for query re-firing in . Folder "Screening" enter and save data on forms "Informed Consent" and "Concomitant Medications"
 	
 	Given I login to Rave with user "SUPER USER 1"	
 	And I select Study "AM Edit Check Study" and Site "AM Edit Site"
@@ -597,7 +597,7 @@ Scenario: PB_8.4.1 Migrate Subject
 @PB_8.5.1
 @Validation
 # The feature is not implemented in 5.6.3
-Scenario: PB_8.5.1 Publish Checks
+Scenario: PB_8.5.1 As an EDC user, Publish Checks Verification for query re-firing in . Folder "Screening" enter and save data on forms "Informed Consent" and "Concomitant Medications"
 
 	Given I login to Rave with user "SUPER USER 1"	
 	And I navigate to "Architect"

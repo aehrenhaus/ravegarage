@@ -36,11 +36,112 @@ Background:
 	# And I do cacheflush
 	# And I select Study "Edit Check Study 3" and Site "Edit Check Site 8"
 	# And subject exists sub{Var(num1)} FROM Feaure8_A1.feature
+	#Given I login to Rave with user "SUPER USER 1"
+	#And I navigate to "DDE"
+	#And I select link "First Pass"
+	#And I select link "New Batch"
+	#And I choose "Edit Check Study 3" from "Study"
+	#And I choose "Prod" from "Environment"
+	#And I choose "Edit Check Site 8" from "Site"
+	#And I type "sub {RndNum<num1>(5)}" in "Subject"
+	#And I choose "Subject Identification" from "Form"
+	#And I click button "Locate"
+	#And I enter data in DDE and save
+	#	| Field            | Data        |
+	#	| Subject Number   | {Var(num1)} |
+	#	| Subject Initials | sub         |	
+	#And I choose "Screening" from "Folder"
+	#And I choose "Informed Consent" from "Form"
+	#And I click button "Locate"
+	#And I enter data in DDE and save
+	#    | Field                        | Data        |
+	#    | Date Informed Consent Signed | 09 Jan 2000 |
+	#    | End Date                     | 10 Jan 2000 |
+	#    | Original Distribution Number | 10          |
+	#    | Current Distribution Number  | 19          |
+	#And I choose "Concomitant Medications" from "Form"
+	#And I click button "Locate"	
+	#And I enter data in DDE log line 1 and save
+	#    | Field                | Data        |
+	#    | Start Date           | 08 Jan 2000 |
+	#    | End Date             | 11 Jan 2000 |
+	#    | Original Axis Number | 10          |
+	#    | Current Axis Number  | 20          |
+	
+	#Given I login to Rave with user "SUPER USER 2"
+	#And I navigate to "DDE"
+	#And I select link "Second Pass"
+	#And I choose "Edit Check Study 3" from "Study"
+	#And I choose "Prod" from "Environment"
+	#And I choose "Edit Check Site 8" from "Site"
+	#And I choose "sub {Var(num1)}" from "Subject"
+	#And I choose "Subject Identification" from "Form"
+	#And I click button "Locate"
+	#And I enter data in DDE and save
+	#	| Field            | Data        |
+	#	| Subject Number   | {Var(num1)} |
+	#	| Subject Initials | sub         |
+	#And I choose "Screening" from "Folder"
+	#And I choose "Informed Consent" from "Form"
+	#And I click button "Locate"
+	#And I enter data in DDE and save
+	#    | Field                        | Data        |
+	#    | Date Informed Consent Signed | 09 Jan 2000 |
+	#    | End Date                     | 10 Jan 2000 |
+	#    | Original Distribution Number | 10          |
+	#    | Current Distribution Number  | 19          |
+	#And I choose "Concomitant Medications" from "Form"
+	#And I click button "Locate"	
+	#And I enter data in DDE log line 1 and save
+	#    | Field                | Data        |
+	#    | Start Date           | 08 Jan 2000 |
+	#    | End Date             | 11 Jan 2000 |
+	#    | Original Axis Number | 10          |
+	#    | Current Axis Number  | 20          |	
+	
+	#And I navigate to "Home"
+	#And I select Study "Edit Check Study 3" and Site "Edit Check Site 8"
+	#And I select a Subject "sub{Var(num1)}"
+	#When I select Form "Concomitant Medications" in Folder "Screening"
+	#And I open log line 1
+	#Then I verify Query is displayed
+	#	| Field               | Query Message                                                                                                 | Answered | Closed |
+	#	| Start Date          | 'Date Informed Consent Signed' is greater. Please revise.                                                     | false    | false  |
+	#	| Current Axis Number | Informed Consent 'Current Distribution Number' is not equal to Concomitant Medications 'Current Axis Number'. | false    | false  |
+	#And I take a screenshot
+	#And I answer the Query "'Date Informed Consent Signed' is greater. Please revise." on Field "Start Date" with "{answer}"
+	#And I answer the Query "Informed Consent 'Current Distribution Number' is not equal to Concomitant Medications 'Current Axis Number'." on Field "Current Axis Number" with "{answer}"
+	#And I save the CRF page
+	#And I open log line 1
+	#And I close the Query "'Date Informed Consent Signed' is greater. Please revise." on Field "Start Date"
+	#And I close the Query "Informed Consent 'Current Distribution Number' is not equal to Concomitant Medications 'Current Axis Number'." on Field "Current Axis Number"
+	#And I save the CRF page
+	#And I take a screenshot
+	#And I open log line 1
+	#And I enter data in CRF and save
+	#	| Field               | Data        |
+	#	| Start Date          | 09 Jan 2000 |
+	#	| Current Axis Number | 19          |
+	#And I open log line 1
+	#And I verify Query is displayed
+	#	| Field               | Query Message                                                                                                 |Answered | Closed |
+	#	| Start Date          | 'Date Informed Consent Signed' is greater. Please revise.                                                     |true     | true   | 
+	#	| Current Axis Number | Informed Consent 'Current Distribution Number' is not equal to Concomitant Medications 'Current Axis Number'. |true     | true   |
+	#And I take a screenshot
+	#When I enter data in CRF and save
+	#	| Field               | Data        |
+	#	| Start Date          | 08 Jan 2000 |
+	#	| Current Axis Number | 20          |
+	#And I open log line 1
+	#Then I verify Query is displayed
+	#	| Field               | Query Message                                                                                                 | Answered | Closed |
+	#	| Start Date          | 'Date Informed Consent Signed' is greater. Please revise.                                                     | true     | true   |
+	#	| Current Axis Number | Informed Consent 'Current Distribution Number' is not equal to Concomitant Medications 'Current Axis Number'. | true     | true   |
 		
 #----------------------------------------------------------------------------------------------------------------------------------------	
 @release_564_Patch11
 @PB_8.1.1.1
-@Draft
+@Validation
 @Manual
 Scenario: PB_8.1.1.1 As an user, When I Generate Data PDFs and view Data PDF, then query related data are displayed.
 #Can not handle save dialog, must verify manually
@@ -58,7 +159,7 @@ Scenario: PB_8.1.1.1 As an user, When I Generate Data PDFs and view Data PDF, th
 #----------------------------------------------------------------------------------------------------------------------------------------	
 @release_564_Patch11
 @PB_8.1.2.1
-@Draft
+@Validation
 @Manual
 Scenario: PB_8.1.2.1 As an user, When I run the 'Audit Trail' Report, then query related data are displayed in the report.
 
@@ -105,7 +206,7 @@ Scenario: PB_8.1.2.1 As an user, When I run the 'Audit Trail' Report, then query
 #----------------------------------------------------------------------------------------------------------------------------------------	
 @release_564_Patch11
 @PB_8.1.2.2
-@Draft
+@Validation
 @Manual
 Scenario: PB_8.1.2.2 As an user, When I run the 'Query Detail' Report, then query related data are displayed in the report.
 	
@@ -149,7 +250,7 @@ Scenario: PB_8.1.2.2 As an user, When I run the 'Query Detail' Report, then quer
 #----------------------------------------------------------------------------------------------------------------------------------------	
 @release_564_Patch11
 @PB_8.1.2.3
-@Draft
+@Validation
 @Manual
 Scenario: PB_8.1.2.3 As an user, When I run the 'Edit Check Log Report' Report, then query related data are displayed in the report.
 
@@ -177,7 +278,7 @@ Scenario: PB_8.1.2.3 As an user, When I run the 'Edit Check Log Report' Report, 
 #----------------------------------------------------------------------------------------------------------------------------------------	
 @release_564_Patch11
 @PB_8.1.2.4
-@Draft
+@Validation
 @Manual
 Scenario: PB_8.1.2.4 As an user, When I run the 'Stream-Audit Trail' Report, then query related data are displayed in the report.
 
@@ -217,7 +318,7 @@ Scenario: PB_8.1.2.4 As an user, When I run the 'Stream-Audit Trail' Report, the
 #----------------------------------------------------------------------------------------------------------------------------------------	
 @release_564_Patch11
 @PB_8.1.2.5
-@Draft
+@Validation
 @Manual
 Scenario: PB_8.1.2.5 As an user, When I run the 'Stream-Query Detail' Report, then query related data are displayed in the report.
 
@@ -256,7 +357,7 @@ Scenario: PB_8.1.2.5 As an user, When I run the 'Stream-Query Detail' Report, th
 #----------------------------------------------------------------------------------------------------------------------------------------	
 @release_564_Patch11
 @PB_8.1.2.6
-@Draft
+@Validation
 @Manual
 Scenario: PB_8.1.2.6 As an user, When I run the 'Stream-Edit Check Log Report' Report, then query related data are displayed in the report.
 
@@ -292,7 +393,7 @@ Scenario: PB_8.1.2.6 As an user, When I run the 'Stream-Edit Check Log Report' R
 #----------------------------------------------------------------------------------------------------------------------------------------	
 @release_564_Patch11
 @PB_8.1.2.7
-@Draft
+@Validation
 @Manual
 Scenario: PB_8.1.2.7 As an user, When I run the 'J-Review' Report, then query related data are displayed in the report.
 
@@ -318,7 +419,7 @@ Scenario: PB_8.1.2.7 As an user, When I run the 'J-Review' Report, then query re
 #----------------------------------------------------------------------------------------------------------------------------------------	
 @release_564_Patch11
 @PB_8.1.2.8
-@Draft
+@Validation
 @Manual
 Scenario: PB_8.1.2.8 As an user, When I run the 'BOXI' Report, then query related data are displayed in the report.
 
