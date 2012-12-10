@@ -96,7 +96,7 @@ Scenario: PB_US12994_DT10991_01 As an EDC user, when I enter a missing date in t
 @release_564_2012.1.0
 @PB_US12994_DT10991_02
 @Validation
-Scenario: PBUS12994_DT10991_02 As an EDC user, when I enter a missing date in the first Visit Date, a valid date in the second Visit Date, and a Lab Date after the second Visit Date and the lab Age variable is mapped to the Latest date, then I should see lab ranges.
+Scenario: PB_US12994_DT10991_02 As an EDC user, when I enter a missing date in the first Visit Date, a valid date in the second Visit Date, and a Lab Date after the second Visit Date and the lab Age variable is mapped to the Latest date, then I should see lab ranges.
 	
 	And I select Study "US12994_DT10991" and Site "Latest Date Site"
 	And I create a Subject
