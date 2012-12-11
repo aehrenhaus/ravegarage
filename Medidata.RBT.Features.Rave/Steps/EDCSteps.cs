@@ -572,6 +572,18 @@ namespace Medidata.RBT.Features.Rave
             Assert.IsTrue(exist, String.Format("Text does not exist :{0}", text));
 
         }
+
+        [StepDefinition(@"I verify text ""([^""]*)"" with username ""([^""]*)"" does not exists")]
+        public void IVerifyText____WithUsername____DoesNotExists(string text, string userName)
+        {
+            User user = TestContext.GetExistingFeatureObjectOrMakeNew(
+                userName, () => new User(userName));
+            text = text.Replace(userName, user.UniqueName);
+            bool exist = CurrentPage.As<IVerifySomethingExists>().VerifySomethingExist(null, "text", text);
+            Assert.IsFalse(exist, String.Format("Text exist :{0}", text));
+
+        }
+
         /// <summary>
         /// Click drop button on a field on CRF page
         /// </summary>

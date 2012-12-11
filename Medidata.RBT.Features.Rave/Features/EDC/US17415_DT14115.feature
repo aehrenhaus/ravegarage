@@ -101,7 +101,7 @@ Scenario: PB_US17415_DT14115_02 As an Investigator, when I sign the "Serious Adv
 	When I enter data in CRF and save
 		| Field                  | Data | Control Type |
 		| Ready for Extra Review | True | checkbox     |
-	Then I verify text "Please Sign - Default User  (US17415_SUPERUSER)" with username "US17415_SUPERUSER" exists
+	Then I verify text "Please Sign - Default User  (US17415_SUPERUSER)" with username "US17415_SUPERUSER" does not exists
 	And I take a screenshot
 	And I open log line 1 for edit
 	And I verify text "Added 1 For Extra Review" exists
@@ -511,7 +511,7 @@ Scenario: PB_US17415_DT14115_08 As an Investigator, when I sign the "Serious Adv
 	When I enter data in CRF and save
 		| Field                  | Data | Control Type |
 		| Ready for Extra Review | True | checkbox     |
-	Then I verify text "Please Sign - Default User  (US17415_SUPERUSER)" with username "US17415_SUPERUSER" exists
+	Then I verify text "Please Sign - Default User  (US17415_SUPERUSER)" with username "US17415_SUPERUSER" does not exists
 	And I take a screenshot
 	And I verify text "Added 1 For Extra Review" exists
 	And I verify text "Added 2 For Extra Review" exists
