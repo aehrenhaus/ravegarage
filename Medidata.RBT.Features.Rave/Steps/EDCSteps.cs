@@ -573,7 +573,7 @@ namespace Medidata.RBT.Features.Rave
 
         }
 
-        [StepDefinition(@"I verify text ""([^""]*)"" with username ""([^""]*)"" does not exists")]
+        [StepDefinition(@"I verify text ""([^""]*)"" with username ""([^""]*)"" does not exist")]
         public void IVerifyText____WithUsername____DoesNotExists(string text, string userName)
         {
             User user = TestContext.GetExistingFeatureObjectOrMakeNew(
