@@ -458,5 +458,6 @@ Scenario: PB_US19017_01 When I enroll 20 subjects in a Production environment, a
 	And I choose "Dynamic Allocation" from "Randomization Type"
 	And I click button "save block plan"
 	Then I verify text "Dynamic Allocation" exists
+	And I switch to the second window
 	
 	

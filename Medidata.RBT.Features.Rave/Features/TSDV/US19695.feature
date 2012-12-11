@@ -260,3 +260,4 @@ Scenario: PB_US19695_01 Enroll subjects in studies to verify that TSDV has rando
 	And I select Site Group link "World"
 	And I select Site link "Site 2"
 	And I inactivate the plan
+	And I switch to the second window

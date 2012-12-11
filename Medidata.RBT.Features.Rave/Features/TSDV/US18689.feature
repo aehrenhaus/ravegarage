@@ -451,3 +451,4 @@ Scenario: PB_US18689_01 As a Rave user, when I select Permuted Block Randomizati
 	And I select Site Group link "World"
 	And I select Site link "Site 4"
 	And I inactivate the plan
+	And I switch to the second window
