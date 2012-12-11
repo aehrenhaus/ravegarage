@@ -84,7 +84,7 @@ Scenario: PB_US19302_DT14205_02 As a Study Coordinator, when I submit 'Test DT D
 
 #----------------------------------------------------------------------------------------------------------------------------------------
 @release_564_2012.1.0
-@PB_US19302_DT14205_03
+@PB_US19302_DT14205_04
 @Validation	
 Scenario: PB_US19302_DT14205_03 As a Study Coordinator, when I submit 'User Derivations' form which has check steps with user value, then remaining fields are automatically calculated.
 
@@ -120,7 +120,7 @@ Scenario: PB_US19302_DT14205_03 As a Study Coordinator, when I submit 'User Deri
 @release_564_2012.1.0
 @PB_US19302_DT14205_03
 @Validation	
-Scenario: PB_US19302_DT14205_03 As a Study Coordinator, when I submit 'Standard Derivation' form which has check steps with standard value, then remaining fields are automatically calculated.
+Scenario: PB_US19302_DT14205_04 As a Study Coordinator, when I submit 'Standard Derivation' form which has check steps with standard value, then remaining fields are automatically calculated.
 
 	Given I login to Rave with user "SUPER USER 1"
 	And I create a Subject
