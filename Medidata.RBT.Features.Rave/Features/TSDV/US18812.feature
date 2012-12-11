@@ -496,4 +496,5 @@ Scenario: PB_US18812_01 Enroll 50 subjects in a study to verify that TSDV has ra
 	And I select link "World"
 	And I select link(partial) "Site 3"
 	And I inactivate the plan
+	And I switch to the second window
 	

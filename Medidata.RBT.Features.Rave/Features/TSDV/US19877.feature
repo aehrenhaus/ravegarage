@@ -606,3 +606,4 @@ And I switch to "Reports" window
 	| No Forms, Custom Tier 1, No Forms, No Forms, Architect Defined, All Forms, All Forms |
 	| No Forms, No Forms, Custom Tier 1, No Forms, Architect Defined, All Forms, All Forms |
 	| No Forms, No Forms, No Forms, Custom Tier 1, Architect Defined, All Forms, All Forms |
+	And I switch to the second window
