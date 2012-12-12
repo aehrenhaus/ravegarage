@@ -67,10 +67,9 @@ Background:
 @Validation
 
 Scenario: PB_US19695_01 Enroll subjects in studies to verify that TSDV has randomized the subjects based on selected randomization type. 
-	#When I select Study "US19695" and Site "Site 1"
 	And I login to Rave with user "SUPER USER 1"
-
 	When I create 50 random Subjects with name "QQR" in Study "US19695" (Dev) in Site "Site 1"
+	And I take a screenshot
 	And I navigate to "Home"
 	And I navigate to "Reporter"
 	And I select Report "Targeted SDV Configuration"
@@ -81,6 +80,7 @@ Scenario: PB_US19695_01 Enroll subjects in studies to verify that TSDV has rando
 	And I switch to "Targeted SDV Study Plan" window
 	And I create a new block plan named "US19695 (Dev) Block Plan" with Data entry Role "SUPER ROLE 1"
 	And I verify text "Dynamic Allocation" exists
+	And I take a screenshot
 	And I delete the tier "Architect Defined" from plan
 	And I edit Blocks 
 	| Name              | Subject Count |
@@ -118,6 +118,7 @@ Scenario: PB_US19695_01 Enroll subjects in studies to verify that TSDV has rando
 	And I select the tier "Custom Tier 6" and Subject Count "1"
 	And I select the tier "Custom Tier 7" and Subject Count "1"
 	And I activate the plan
+	And I take a screenshot
 	And I switch to "Reports" window
 	And I navigate to "Home"
 	And I navigate to "Reporter"
@@ -129,7 +130,9 @@ Scenario: PB_US19695_01 Enroll subjects in studies to verify that TSDV has rando
 	And I switch to "Targeted SDV Subject Override" window 
 	And I select link "Subject Include"
 	And I include 50 subjects in TSDV
+	And I take a screenshot
 	And I select link "Subject Override"
+	And I take a screenshot
 	Then I verify that Tiers in subject override table are not in the following order
 		| Tier Name         | Row |
 		| All Forms         | 1   |
@@ -196,6 +199,7 @@ Scenario: PB_US19695_01 Enroll subjects in studies to verify that TSDV has rando
 	And I switch to "Reports" window
 	And I navigate to "Home"
 	And I create 40 random Subjects with name "CCD" in Study "US19695" (Dev) in Site "Site 2"
+	And I take a screenshot
 	And I navigate to "Home"
 	And I navigate to "Reporter"
 	And I select Report "Targeted SDV Configuration"
@@ -208,10 +212,12 @@ Scenario: PB_US19695_01 Enroll subjects in studies to verify that TSDV has rando
 	And I select Site link "Site 2"
 	And I create a new block plan named "Site 2 Block Plan" with Data entry Role "SUPER ROLE 1"
 	And I verify text "Dynamic Allocation" exists
+	And I take a screenshot
 	And I click button "edit block plan"
 	And I choose "Permuted Block" from "Randomization Type"
 	And I click button "save block plan"
 	And I verify text "Permuted Block" exists
+	And I take a screenshot
 	And I delete the tier "Architect Defined" from plan
 	And I edit Blocks 
 	| Name              | Subject Count |
@@ -220,6 +226,7 @@ Scenario: PB_US19695_01 Enroll subjects in studies to verify that TSDV has rando
 	And I select the tier "No Forms" and Subject Count "1"
 	And I select the tier "Architect Defined" and Subject Count "2"
 	And I activate the plan
+	And I take a screenshot
 	And I switch to "Reports" window
 	And I navigate to "Home"
 	And I navigate to "Reporter"
@@ -231,9 +238,12 @@ Scenario: PB_US19695_01 Enroll subjects in studies to verify that TSDV has rando
 	And I switch to "Targeted SDV Subject Override" window
 	And I select link "Subject Include"
 	And I include 40 subjects in TSDV
+	And I take a screenshot
 	And I select link "Subject Override"
+	And I take a screenshot
 	And I choose Site "Site 2" from "Sites"
 	And I select link "Search"
+	And I take a screenshot
 	Then I verify that one of the following Permutations has been used every 4 subjects
 	|Randomization Permutations                               |
 	|All Forms, Architect Defined, Architect Defined, No Forms|

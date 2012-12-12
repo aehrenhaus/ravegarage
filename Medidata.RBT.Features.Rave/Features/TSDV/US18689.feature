@@ -92,9 +92,11 @@ Scenario: PB_US18689_01 As a Rave user, when I select Permuted Block Randomizati
 	And I switch to "Targeted SDV Study Plan" window
 	And I create a new block plan named "US18689 Block Plan" with Data entry Role "SUPER ROLE 1"
 	And I verify text "Dynamic Allocation" exists
+	And I take a screenshot
 	And I click button "edit block plan"
 	And I choose "Permuted Block" from "Randomization Type"
 	And I click button "save block plan"
+	And I take a screenshot
 	And I delete the tier "Architect Defined" from plan
 	And I edit Blocks 
 	| Name              | Subject Count |
@@ -103,9 +105,11 @@ Scenario: PB_US18689_01 As a Rave user, when I select Permuted Block Randomizati
 	And I select the tier "All Forms" and Subject Count "2"
 	And I select the tier "No Forms" and Subject Count "3"
 	And I activate the plan
+	And I take a screenshot
 	And I switch to "Reports" window
 	And I navigate to "Home"
 	And I create 24 random Subjects with name "KKP" in Study "US18689" in Site "Site 1"
+	And I take a screenshot
 	And I navigate to "Home"
 	And I navigate to "Reporter"
 	And I select Report "Targeted SDV Subject Management"
@@ -114,6 +118,7 @@ Scenario: PB_US18689_01 As a Rave user, when I select Permuted Block Randomizati
 		| US18689 | Dev         |
 	And I click button "Submit Report"
 	And I switch to "Targeted SDV Subject Override" window
+	And I take a screenshot
 	Then I verify that one of the following Permutations has been used every 6 subjects
 		| Randomization Permutations                                            |
 		| All Forms, All Forms, Architect Defined, No Forms, No Forms, No Forms |
@@ -189,8 +194,10 @@ Scenario: PB_US18689_01 As a Rave user, when I select Permuted Block Randomizati
 	And I select Site Group link "World"
 	And I create a new block plan named "World Block Plan" with Data entry Role "SUPER ROLE 1"
 	And I verify text "Dynamic Allocation" exists
+	And I take a screenshot
 	And I click button "edit block plan"
 	And I choose "Permuted Block" from "Randomization Type"
+	And I take a screenshot
 	And I click button "save block plan"
 	And I delete the tier "Architect Defined" from plan
 	And I edit Blocks 
@@ -200,9 +207,11 @@ Scenario: PB_US18689_01 As a Rave user, when I select Permuted Block Randomizati
 	And I select the tier "All Forms" and Subject Count "2"
 	And I select the tier "No Forms" and Subject Count "3"
 	And I activate the plan
+	And I take a screenshot
 	And I switch to "Reports" window
 	And I navigate to "Home"
 	And I create 24 random Subjects with name "BBC" in Study "US18689" in Site "Site 2"
+	And I take a screenshot
 	And I navigate to "Home"
 	And I navigate to "Reporter"
 	And I select Report "Targeted SDV Subject Management"
@@ -213,6 +222,7 @@ Scenario: PB_US18689_01 As a Rave user, when I select Permuted Block Randomizati
 	And I switch to "Targeted SDV Subject Override" window
 	And I choose "World" from "Site Groups"
 	And I click button "Search"
+	And I take a screenshot
 	Then I verify that one of the following Permutations has been used every 6 subjects
 		| Randomization Permutations                                            |
 		| All Forms, All Forms, Architect Defined, No Forms, No Forms, No Forms |
@@ -290,9 +300,11 @@ Scenario: PB_US18689_01 As a Rave user, when I select Permuted Block Randomizati
 	And I select Site link "Site 3"
 	And I create a new block plan named "Site 3 Block Plan" with Data entry Role "SUPER ROLE 1"
 	And I verify text "Dynamic Allocation" exists
+	And I take a screenshot
 	And I click button "edit block plan"
 	And I choose "Permuted Block" from "Randomization Type"
 	And I click button "save block plan"
+	And I take a screenshot
 	And I delete the tier "Architect Defined" from plan
 	And I edit Blocks 
 	| Name              | Subject Count |
@@ -301,9 +313,11 @@ Scenario: PB_US18689_01 As a Rave user, when I select Permuted Block Randomizati
 	And I select the tier "All Forms" and Subject Count "2"
 	And I select the tier "No Forms" and Subject Count "3"
 	And I activate the plan
+	And I take a screenshot
 	And I switch to "Reports" window
 	And I navigate to "Home"
 	And I create 24 random Subjects with name "CCD" in Study "US18689" in Site "Site 3"
+	And I take a screenshot
 	And I navigate to "Home"
 	And I navigate to "Reporter"
 	And I select Report "Targeted SDV Subject Management"
@@ -314,6 +328,7 @@ Scenario: PB_US18689_01 As a Rave user, when I select Permuted Block Randomizati
 	And I switch to "Targeted SDV Subject Override" window
 	And I choose "Site 3" from "Sites"
 	And I click button "Search"
+	And I take a screenshot
 	Then I verify that one of the following Permutations has been used every 6 subjects
 		| Randomization Permutations                                            |
 		| All Forms, All Forms, Architect Defined, No Forms, No Forms, No Forms |
@@ -401,9 +416,11 @@ Scenario: PB_US18689_01 As a Rave user, when I select Permuted Block Randomizati
 	And I select Site link "Site 4"
 	And I create a new block plan named "Site 4 Block Plan" with Data entry Role "SUPER ROLE 1"
 	And I verify text "Dynamic Allocation" exists
+	And I take a screenshot
 	And I click button "edit block plan"
 	And I choose "Permuted Block" from "Randomization Type"
 	And I click button "save block plan"
+	And I take a screenshot
 	And I delete the tier "Architect Defined" from plan
 	And I edit Blocks 
 	| Name              | Subject Count |
@@ -412,9 +429,11 @@ Scenario: PB_US18689_01 As a Rave user, when I select Permuted Block Randomizati
 	And I select the tier "All Forms" and Subject Count "1"
 	And I select the tier "No Forms" and Subject Count "1"
 	And I activate the plan
+	And I take a screenshot
 	And I switch to "Reports" window
 	And I navigate to "Home"
 	And I create 24 random Subjects with name "KKI" in Study "US18689" in Site "Site 4"
+	And I take a screenshot
 	And I navigate to "Home"
 	And I navigate to "Reporter"
 	And I select Report "Targeted SDV Subject Management"
@@ -425,6 +444,7 @@ Scenario: PB_US18689_01 As a Rave user, when I select Permuted Block Randomizati
 	And I switch to "Targeted SDV Subject Override" window
 	And I choose "Site 4" from "Sites"
 	And I click button "Search"
+	And I take a screenshot
 	Then I verify that one of the following Permutations has been used every 4 subjects
 		| Randomization Permutations                                |
 		| All Forms, Architect Defined, Architect Defined, No Forms |

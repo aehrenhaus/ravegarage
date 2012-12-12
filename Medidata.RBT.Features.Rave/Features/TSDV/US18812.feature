@@ -142,6 +142,7 @@ Scenario: PB_US18812_01 Enroll 50 subjects in a study to verify that TSDV has ra
 	And I switch to "Targeted SDV Study Plan" window
 	And I create a new block plan named "US18812 (Dev) Block Plan" with Data entry Role "SUPER ROLE 1"
 	And I verify text "Dynamic Allocation" exists
+	And I take a screenshot
 	And I delete the tier "Architect Defined" from plan
 	And I edit Blocks 
 	| Name              | Subject Count |
@@ -180,9 +181,11 @@ Scenario: PB_US18812_01 Enroll 50 subjects in a study to verify that TSDV has ra
 	And I select the tier "Custom Tier 6" and Subject Count "1"
 	And I select the tier "Custom Tier 7" and Subject Count "1"
 	And I activate the plan
+	And I take a screenshot
 	And I switch to "Reports" window
 	And I navigate to "Home"
 	And I create 50 random Subjects with name "ABB" in Study "US18812" in Site "Site 1"
+	And I take a screenshot
 	And I navigate to "Home"
 	And I navigate to "Reporter"
 	And I select Report "Targeted SDV Subject Management"
@@ -191,6 +194,7 @@ Scenario: PB_US18812_01 Enroll 50 subjects in a study to verify that TSDV has ra
 		| US18812 | Dev         |
 	And I click button "Submit Report"
 	And I switch to "Targeted SDV Subject Override" window 
+	And I take a screenshot
 	Then I verify that Tiers in subject override table are not in the following order
 		| Tier Name         | Row |
 		| All Forms         | 1   |
@@ -257,6 +261,7 @@ Scenario: PB_US18812_01 Enroll 50 subjects in a study to verify that TSDV has ra
 	And I select link "World"
 	And I create a new block plan named "World Block Plan" with Data entry Role "SUPER ROLE 1"
 	And I verify text "Dynamic Allocation" exists
+	And I take a screenshot
 	And I delete the tier "Architect Defined" from plan
 	And I edit Blocks 
 	| Name              | Subject Count |
@@ -272,9 +277,11 @@ Scenario: PB_US18812_01 Enroll 50 subjects in a study to verify that TSDV has ra
 	And I select the tier "Custom Tier 6" and Subject Count "1"
 	And I select the tier "Custom Tier 7" and Subject Count "1"
 	And I activate the plan
+	And I take a screenshot
 	And I switch to "Reports" window
 	And I navigate to "Home"
 	And I create 50 random Subjects with name "BBC" in Study "US18812" in Site "Site 2"
+	And I take a screenshot
 	And I navigate to "Home"
 	And I navigate to "Reporter"
 	And I select Report "Targeted SDV Subject Management"
@@ -285,6 +292,7 @@ Scenario: PB_US18812_01 Enroll 50 subjects in a study to verify that TSDV has ra
 	And I switch to "Targeted SDV Subject Override" window
 	And I choose Site Group "All Site Groups" from "Site Groups"
 	And I select link "Search"
+	And I take a screenshot
 	Then I verify that Tiers in subject override table are not in the following order
 		| Tier Name         | Row |
 		| All Forms         | 1   |
@@ -399,10 +407,10 @@ Scenario: PB_US18812_01 Enroll 50 subjects in a study to verify that TSDV has ra
 	And I switch to "Targeted SDV Study Plan" window
 	And I select link "World"
 	And I inactivate the plan
-	#And I select link "Site 3"
 	And I select link(partial) "Site 3"
 	And I create a new block plan named "Site 3 Block Plan" with Data entry Role "SUPER ROLE 1"
 	And I verify text "Dynamic Allocation" exists
+	And I take a screenshot
 	And I delete the tier "Architect Defined" from plan
 	And I edit Blocks 
 		| Name              | Subject Count |
@@ -418,9 +426,11 @@ Scenario: PB_US18812_01 Enroll 50 subjects in a study to verify that TSDV has ra
 	And I select the tier "Custom Tier 6" and Subject Count "1"
 	And I select the tier "Custom Tier 7" and Subject Count "1"
 	And I activate the plan
+	And I take a screenshot
 	And I switch to "Reports" window
 	And I navigate to "Home"
 	And I create 50 random Subjects with name "CCD" in Study "US18812" in Site "Site 3"
+	And I take a screenshot
 	And I navigate to "Home"
 	And I navigate to "Reporter"
 	And I select Report "Targeted SDV Subject Management"
@@ -431,6 +441,7 @@ Scenario: PB_US18812_01 Enroll 50 subjects in a study to verify that TSDV has ra
 	And I switch to "Targeted SDV Subject Override" window
 	And I choose "Site 3" from "Sites"
 	And I select link "Search"
+	And I take a screenshot
 	Then I verify that Tiers in subject override table are not in the following order
 		| Tier Name         | Row |
 		| All Forms         | 1   |

@@ -56,7 +56,6 @@ Background:
 @PB_US19877_01
 @Validation
 Scenario: PB_US19877_01 As a Rave user, when I select Permuted Block Randomization and I Enroll 50 subjects in study then subject assignment satisfies the specified ratio and is random for all blocks in study level.
-	#When I select Study "US19877" and Site "Site 1"
 	Given I login to Rave with user "SUPER USER 1"
 	And I navigate to "Home"
 	And I navigate to "Reporter"
@@ -68,9 +67,11 @@ Scenario: PB_US19877_01 As a Rave user, when I select Permuted Block Randomizati
 	And I switch to "Targeted SDV Study Plan" window
 	And I create a new block plan named "US19877 (Dev) Block Plan" with Data entry Role "SUPER ROLE 1"
 	And I verify text "Dynamic Allocation" exists
+	And I take a screenshot
 	And I click button "edit block plan"
 	And I choose "Permuted Block" from "Randomization Type"
 	And I click button "save block plan"
+	And I take a screenshot
 	And I delete the tier "Architect Defined" from plan
 	And I edit Blocks 
 	| Name              | Subject Count |
@@ -79,9 +80,11 @@ Scenario: PB_US19877_01 As a Rave user, when I select Permuted Block Randomizati
 	And I select the tier "All Forms" and Subject Count "2"
 	And I select the tier "No Forms" and Subject Count "3"
 	And I activate the plan
+	And I take a screenshot
 	And I switch to "Reports" window
 	And I navigate to "Home"
 	And I create 30 random Subjects with name "BBB" in Study "US19877" in Site "Site 1"
+	And I take a screenshot
 	And I navigate to "Home"
 	And I navigate to "Reporter"
 	And I select Report "Targeted SDV Subject Management"
@@ -90,7 +93,7 @@ Scenario: PB_US19877_01 As a Rave user, when I select Permuted Block Randomizati
 		| US19877 | Dev         |
 	And I click button "Submit Report"
 	And I switch to "Targeted SDV Subject Override" window
-
+	And I take a screenshot
 	Then I verify that one of the following Permutations has been used every 6 subjects
 	| Randomization Permutations                                            |
 	| All Forms, All Forms, Architect Defined, No Forms, No Forms, No Forms |
@@ -172,8 +175,10 @@ And I switch to "Reports" window
 	And I select link "Study Block Plan"
 	And I select the tier "Custom Tier 1" and Subject Count "1"
 	And I activate the plan
+	And I take a screenshot
 	And I navigate to "Home"
 	And I create 21 random Subjects with name "KKP" in Study "US19877" in Site "Site 1"
+	And I take a screenshot
 	And I navigate to "Home"
 	And I navigate to "Reporter"
 	And I select Report "Targeted SDV Subject Management"
@@ -182,8 +187,7 @@ And I switch to "Reports" window
 		| US19877 | Dev         |
 	And I click button "Submit Report"
 	And I switch to "Targeted SDV Subject Override" window
-
-#TODO: Need new method below
+	And I take a screenshot
 	Then I verify that one of the following Permutations has been used every 7 subjects with name "KKP"
 	| Randomization Permutations                                                           |
 	| All Forms, All Forms, Architect Defined, Custom Tier 1, No Forms, No Forms, No Forms |

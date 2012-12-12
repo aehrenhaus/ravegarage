@@ -74,6 +74,7 @@ Scenario: PB_US19017_01 When I enroll 20 subjects in a Production environment, a
 	And I switch to "Targeted SDV Study Plan" window
 	And I create a new block plan named "US19017 (Prod) Block Plan" with Data entry Role "SUPER ROLE 1"
 	And I verify text "Dynamic Allocation" exists
+	And I take a screenshot
 	And I delete the tier "Architect Defined" from plan
 	And I edit Blocks 
 	| Name              | Subject Count |
@@ -82,9 +83,11 @@ Scenario: PB_US19017_01 When I enroll 20 subjects in a Production environment, a
 	And I select the tier "All Forms" and Subject Count "2"
 	And I select the tier "No Forms" and Subject Count "3"
 	And I activate the plan
+	And I take a screenshot
 	And I switch to "Reports" window
 	And I navigate to "Home"
 	And I create 30 random Subjects with name "ABB" in Study "US19017" (Prod) in Site "Site 1"
+	And I take a screenshot
 	And I navigate to "Home"
 	And I navigate to "Reporter"
 	And I select Report "Targeted SDV Subject Management"
@@ -93,6 +96,7 @@ Scenario: PB_US19017_01 When I enroll 20 subjects in a Production environment, a
 	| US19017 | Prod        |
 	And I click button "Submit Report"
 	And I switch to "Targeted SDV Subject Override" window 
+	And I take a screenshot
 	Then I verify that Tiers in subject override table are not in the following order
 		| Tier Name         | Row  |
 		| All Forms         | 1    |
@@ -138,10 +142,7 @@ Scenario: PB_US19017_01 When I enroll 20 subjects in a Production environment, a
 	And I verify text "Dynamic Allocation" exists
 	And I click button "edit block plan"
 	Then I can see "Randomization Type" is disabled
-
-
-
-
+	And I take a screenshot
 	And I switch to "Reports" window
 	And I navigate to "Home"
 	And I navigate to "Reporter"
@@ -153,6 +154,7 @@ Scenario: PB_US19017_01 When I enroll 20 subjects in a Production environment, a
 	And I switch to "Targeted SDV Study Plan" window
 	And I create a new block plan named "US19017 (Dev) Block Plan" with Data entry Role "SUPER ROLE 1"
 	And I verify text "Dynamic Allocation" exists
+	And I take a screenshot
 	And I delete the tier "Architect Defined" from plan
 	And I edit Blocks 
 	| Name              | Subject Count |
@@ -161,9 +163,11 @@ Scenario: PB_US19017_01 When I enroll 20 subjects in a Production environment, a
 	And I select the tier "All Forms" and Subject Count "2"
 	And I select the tier "No Forms" and Subject Count "3"
 	And I activate the plan
+	And I take a screenshot
 	And I switch to "Reports" window
 	And I navigate to "Home"
 	And I create 30 random Subjects with name "ABB" in Study "US19017" (Dev) in Site "Site 1"
+	And I take a screenshot
 	And I navigate to "Home"
 	And I navigate to "Reporter"
 	And I select Report "Targeted SDV Subject Management"
@@ -172,6 +176,7 @@ Scenario: PB_US19017_01 When I enroll 20 subjects in a Production environment, a
 	| US19017 | Dev	        |
 	And I click button "Submit Report"
 	And I switch to "Targeted SDV Subject Override" window 
+	And I take a screenshot
 	Then I verify that Tiers in subject override table are not in the following order
 		| Tier Name         | Row  |
 		| All Forms         | 1    |
@@ -214,31 +219,32 @@ Scenario: PB_US19017_01 When I enroll 20 subjects in a Production environment, a
 	| US19017 | Dev	        |
 	And I click button "Submit Report"
 	And I switch to "Targeted SDV Study Plan" window
-
 	And I verify text "Dynamic Allocation" exists
+	And I take a screenshot
 	And I click button "edit block plan"
 	And I choose "Permuted Block" from "Randomization Type"
 	And I click button "save block plan"
 	Then I verify text "Permuted Block" exists
+	And I take a screenshot
 	And I switch to "Reports" window
 	And I navigate to "Home"
 	And I navigate to "Reporter"
-
 	And I select Report "Targeted SDV Configuration"
 	And I set report parameter "Study" with table
 	| Name    | Environment |
 	| US19017 | Prod        |
 	And I click button "Submit Report"
 	And I switch to "Targeted SDV Study Plan" window
-
 	And I select Site Group link "World"
 	And I select Site link "Site 2"
 	And I create a new block plan named "Site 2 Block Plan" with Data entry Role "SUPER ROLE 1"
 	And I verify text "Dynamic Allocation" exists
+	And I take a screenshot
 	And I click button "edit block plan"
 	And I choose "Permuted Block" from "Randomization Type"
 	And I click button "save block plan"
 	And I verify text "Permuted Block" exists
+	And I take a screenshot
 	And I delete the tier "Architect Defined" from plan
 	And I edit Blocks 
 	| Name              | Subject Count |
@@ -247,9 +253,11 @@ Scenario: PB_US19017_01 When I enroll 20 subjects in a Production environment, a
 	And I select the tier "All Forms" and Subject Count "2"
 	And I select the tier "No Forms" and Subject Count "3"
 	And I activate the plan
+	And I take a screenshot
 	And I switch to "Reports" window
 	And I navigate to "Home"
 	And I create 30 random Subjects with name "ABB" in Study "US19017" (Prod) in Site "Site 1"
+	And I take a screenshot
 	And I navigate to "Home"
 	And I navigate to "Reporter"
 	And I select Report "Targeted SDV Subject Management"
@@ -260,6 +268,7 @@ Scenario: PB_US19017_01 When I enroll 20 subjects in a Production environment, a
 	And I switch to "Targeted SDV Subject Override" window 
 	And I choose Site "Site 2" from "Sites"
 	And I select link "Search"
+	And I take a screenshot
 	Then I verify that one of the following Permutations has been used every 6 subjects
 		| Randomization Permutations                                            |
 		| All Forms, All Forms, Architect Defined, No Forms, No Forms, No Forms |
@@ -331,10 +340,10 @@ Scenario: PB_US19017_01 When I enroll 20 subjects in a Production environment, a
 	| US19017 | Prod        |
 	And I click button "Submit Report"
 	And I switch to "Targeted SDV Study Plan" window
-
 	And I click button "edit block plan"
 	And I verify text "Permuted Block" exists
 	Then I can see "Randomization Type" is disabled
+	And I take a screenshot
 	
 
 
@@ -352,9 +361,11 @@ Scenario: PB_US19017_01 When I enroll 20 subjects in a Production environment, a
 	And I select Site link "Site 2"
 	And I create a new block plan named "Site 2 Block Plan" with Data entry Role "SUPER ROLE 1"
 	And I verify text "Dynamic Allocation" exists
+	And I take a screenshot
 	And I click button "edit block plan"
 	And I choose "Permuted Block" from "Randomization Type"
 	And I click button "save block plan"
+	And I take a screenshot
 	And I verify text "Permuted Block" exists
 	And I delete the tier "Architect Defined" from plan
 	And I edit Blocks 
@@ -364,9 +375,11 @@ Scenario: PB_US19017_01 When I enroll 20 subjects in a Production environment, a
 	And I select the tier "All Forms" and Subject Count "2"
 	And I select the tier "No Forms" and Subject Count "3"
 	And I activate the plan
+	And I take a screenshot
 	And I switch to "Reports" window
 	And I navigate to "Home"
 	And I create 30 random Subjects with name "ABB" in Study "US19017" (Dev) in Site "Site 2"
+	And I take a screenshot
 	And I navigate to "Home"
 	And I navigate to "Reporter"
 	And I select Report "Targeted SDV Subject Management"
@@ -377,6 +390,7 @@ Scenario: PB_US19017_01 When I enroll 20 subjects in a Production environment, a
 	And I switch to "Targeted SDV Subject Override" window 
 	And I choose Site "Site 2" from "Sites"
 	And I select link "Search"
+	And I take a screenshot
 	Then I verify that one of the following Permutations has been used every 6 subjects
 		| Randomization Permutations                                            |
 		| All Forms, All Forms, Architect Defined, No Forms, No Forms, No Forms |
@@ -454,10 +468,12 @@ Scenario: PB_US19017_01 When I enroll 20 subjects in a Production environment, a
 	And I click button "edit block plan"
 	And I inactivate the plan
 	And I verify text "Permuted Block" exists
+	And I take a screenshot
 	And I click button "edit block plan"
 	And I choose "Dynamic Allocation" from "Randomization Type"
 	And I click button "save block plan"
 	Then I verify text "Dynamic Allocation" exists
+	And I take a screenshot
 	And I switch to the second window
 	
 	
