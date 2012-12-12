@@ -9,11 +9,12 @@ using TechTalk.SpecFlow;
 using Medidata.RBT.SeleniumExtension;
 using System.Collections.Specialized;
 using Medidata.RBT.PageObjects.Rave.SharedRaveObjects;
+using Medidata.RBT.SharedObjects;
+
 namespace Medidata.RBT.PageObjects.Rave
 {
     public abstract class LabPageBase : RavePageBase, ICanPaginate
     {
-
         public override IPage NavigateTo(string name)
         {
             NameValueCollection poClassMapping = new NameValueCollection();
@@ -48,6 +49,10 @@ namespace Medidata.RBT.PageObjects.Rave
         /// <returns></returns>
         public IWebElement FindLab(string labName, string type)
         {
+            KeyValuePair<string, ISeedableObject> kvpSeedable = TestContext.SeedableObjects.FirstOrDefault(x => x.Key == labName);
+            if (kvpSeedable.Value != null)
+                labName = kvpSeedable.Value.UniqueName;
+
             int foundOnPage;
 			Table dt = new Table("Type", "Name");
             dt.AddRow(type, labName);
