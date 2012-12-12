@@ -26,6 +26,18 @@ namespace Medidata.RBT.Common.Steps
             TestContext.TrySaveScreenShot();
         }
 
+		[StepDefinition(@"I disable ""([^""]*)""")]
+		public void IDisable____(string identifier)
+		{
+			CurrentPage.As<ICanDisableEnable>().Disable(null, identifier);
+		}
+
+		[StepDefinition(@"I enable ""([^""]*)""")]
+		public void IEnable____(string identifier)
+		{
+			CurrentPage.As<ICanDisableEnable>().Enable(null, identifier);
+		}
+
 		/// <summary>
 		/// When the browser opens an other window, and next step is on that new window, you shall use this step to switch focus first.
 		/// The window name is the title.

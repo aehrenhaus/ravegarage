@@ -24,14 +24,6 @@ Background:
 	#| Monitor from Sponsor      |
 	#| CRA from DM               |
 
-@PB_US11101_01
-Scenario: Test
-	Given the "Core Configuration Specification Template" is downloaded
-	Then I verify spreadsheet data 
-	| Version | Coder Manual Queries  | Setting          | Instructions/Comments |
-	|         | Review Marking Group  | site from system |                       |
-	|         | Requires Response     | True             |                       |
-	|         | Requires Manual Close | True             |                       |
 
 @PB_US11101_01
 Scenario: FIRST As a Data Manager, when I am on the Configuration Loader page, and I select Get File, and the Core Configuration specification is downloaded, and I open it, then I see Coder Configuration details.
@@ -40,16 +32,17 @@ Scenario: FIRST As a Data Manager, when I am on the Configuration Loader page, a
 	And I navigate to "Other Settings"
 	And I navigate to "Coder Configuration"
 	And I enter data in "Coder Configuration" and save
-	| Review Marking Group | Requires Response | Requires Manual Close |
-	| site from system     | True               | True                   |
-	And I navigate to "Configuration" module
+		| Review Marking Group | Requires Response | Requires Manual Close |
+		| site from system     | True              | True                  |
 	And I navigate to "Configuration Loader"
 	And I click the "Get File" button to download
-	Then I verify spreadsheet data 
-	| Version | Coder Manual Queries  | Setting          | Instructions/Comments |
-	|         | Review Marking Group  | site from system |                       |
-	|         | Requires Response     | True             |                       |
-	|         | Requires Manual Close | True             |                       |
+	And I verify "Coder Configuration" spreadsheet data
+		| Coder Manual Queries  | Setting          |
+		| Review Marking Group  | site from system | #And I take a screenshot                                    |
+		| Requires Response     | True             | And I click the drop-down arrow for field "Site from Sytem" |
+		| Requires Manual Close | True             | Then I see data                                             |
+
+
 	#And I take a screenshot
 	And I click the drop-down arrow for field "Site from Sytem"
 	Then I see data

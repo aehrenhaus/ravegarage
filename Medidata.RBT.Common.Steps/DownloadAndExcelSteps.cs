@@ -44,6 +44,35 @@ namespace Medidata.RBT.Common.Steps
 			Browser.TryFindElementBy((b) => CurrentPage.GetElementByName(finishSignal),true, 60);
 		}
 
+
+		[StepDefinition(@"I verify ""([^""]*)"" spreadsheet exists")]
+		public void IVerify___SpreadsheetExists(string name)
+		{
+			string fileName = TestContext.LastDownloadFile.FullName;
+			if (Path.GetExtension(fileName).ToLower() == ".zip")
+				fileName = FileHelper.UnZipFile(fileName);
+
+			using (var excel = new ExcelWorkbook(fileName))
+			{
+				bool has = excel.HasSheet(name);
+				Assert.IsTrue(has, "Not exsits:" + name);
+			}
+		}
+
+		[StepDefinition(@"I verify ""([^""]*)"" spreadsheet does not exist")]
+		public void IVerify___SpreadsheetDoesNotExist(string name)
+		{
+			string fileName = TestContext.LastDownloadFile.FullName;
+			if (Path.GetExtension(fileName).ToLower()==".zip")
+				fileName = FileHelper.UnZipFile(fileName);
+
+			using (var excel = new ExcelWorkbook(fileName))
+			{
+				bool has = excel.HasSheet(name);
+				Assert.IsFalse(has, "Exsits:" + name);
+			}
+		}
+
         /// <summary>
         /// Verify data from a downloaded spreadsheet
         /// </summary>
@@ -68,7 +97,7 @@ namespace Medidata.RBT.Common.Steps
 						string expected = row[column]??"";
 						string actual = sheet[rowIndex, column] as string??"";
 
-						if (expected != actual)
+						if (expected != null && actual != null && expected.Trim()!=actual.Trim())
 							throw new Exception(string.Format(
 								"Sheet data does not match, (Row {0},Column {1})\r\nExpected:\"{2}\", actual:\"{3}\"",
 								rowIndex,

@@ -203,20 +203,6 @@ namespace Medidata.RBT.PageObjects.Rave
         }
 
 
-		/// <summary>
-		/// Clicks the link that is created as a span with an onclick event.  
-		/// </summary>
-		/// <param name="linkText">The link text.</param>
-		/// <returns></returns>
-		public virtual IPage ClickSpanLink(string linkText)
-		{
-			IWebElement item = Browser.TryFindElementByLinkText(linkText);
-			if (item != null)
-				item.Click();
-			else
-				throw new Exception("Can't find link by text:" + linkText);
 
-			return GetPageByCurrentUrlIfNoAlert();
-		}
 	}
 }

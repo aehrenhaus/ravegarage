@@ -193,8 +193,12 @@ namespace Medidata.RBT.SeleniumExtension
             if (linktext.Contains("•"))
                 ele = FindLinkWithBulletPoint(context, linktext);
             else
-			    ele = context.TryFindElementBy(By.LinkText(linktext));
+			    ele = context.TryFindElementBy(By.LinkText(linktext),false);
 
+			if (ele == null)
+				ele = context.TryFindElementBy(By.XPath("//span[normalize-space(text())='" + linktext + "']"));
+
+			//DOTO: !!!!!! This 2 lines should not be here, this is a great performance drop and make no sense to treat a div as a link
             if(ele == null)
                 ele = context.TryFindElementBy(By.XPath("//div[normalize-space(text())='" + linktext + "']"));
 

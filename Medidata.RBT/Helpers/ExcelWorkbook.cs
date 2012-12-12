@@ -161,6 +161,11 @@ namespace Medidata.RBT
             _range.set_Value(XlRangeValueDataType.xlRangeValueDefault, newValue);
 		}
 
+		public bool HasSheet(string sheetName)
+		{
+			var sheet = (Worksheet)_workBook.Sheets[sheetName];
+			return sheet != null;
+		}
 
 		public ExcelTable OpenTableForEdit(string sheetName, string range = null)
 		{
