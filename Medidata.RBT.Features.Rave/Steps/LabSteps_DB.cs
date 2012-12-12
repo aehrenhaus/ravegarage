@@ -6,6 +6,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using TechTalk.SpecFlow.Assist;
 using Medidata.RBT.PageObjects.Rave.SharedRaveObjects;
 using System.Linq;
+using Medidata.RBT.SharedObjects;
 
 namespace Medidata.RBT.Features.Rave.Steps
 {
@@ -25,7 +26,11 @@ namespace Medidata.RBT.Features.Rave.Steps
                     break;
                 default:
                     throw new NotImplementedException(String.Format("Unknown Object Name: {0}", model.ObjectName));
-            }    
+            }
+            KeyValuePair<string, ISeedableObject> kvpSeedable = TestContext.SeedableObjects.FirstOrDefault(x => x.Key == model.Lab);
+            if (kvpSeedable.Value != null)
+                model.Lab = kvpSeedable.Value.UniqueName;
+
             return String.Format("declare @Analyte varchar(2000) = '{0}' " +
                                        "declare @LabName varchar(2000)= '{1}' " +
                                        "declare @ObjectTypeName varchar(2000) = '{2}' " +
@@ -38,7 +43,12 @@ namespace Medidata.RBT.Features.Rave.Steps
                                        "   join analyteranges ar on ar.analyterangeid = ad.objectid and ad.objecttypeid = @Objecttypeid " +
                                        "  join analytes an on an.analyteid = ar.analyteid " +
                                        "  join labs lb on lb.labid = ar.labid " +
-                                       "where dbo.fnlocaldefault(lb.labnameid) = @LabName and lb.Active = 1 and ar.Active = 1 and ad.AuditSubCategoryId = @AuditSubCategoryId", model.Analyte, model.Lab, objectTypeName, model.AuditName);
+                                       "where dbo.fnlocaldefault(lb.labnameid) = @LabName and lb.Active = 1 and ar.Active = 1 and ad.AuditSubCategoryId = @AuditSubCategoryId", 
+                                       TestContext.GetExistingFeatureObjectOrMakeNew<Analyte>(model.Analyte, () => new Analyte(model.Analyte)).UniqueName,
+                                       model.Lab
+                                       , 
+                                       objectTypeName, 
+                                       model.AuditName);
         }
 
 
