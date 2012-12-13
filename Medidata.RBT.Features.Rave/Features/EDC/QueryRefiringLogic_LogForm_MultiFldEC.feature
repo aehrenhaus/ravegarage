@@ -4,7 +4,7 @@
 #TESTING FOR LOG FORM WITH MULTIPLE FIELDS INVOLVED IN QUERY FIRING
 
 #-- project to be uploaded in excel spreadsheet 'Standard Study'
-
+@FT_QueryRefiringLogic_LogForm_MultiFldEC
 Feature: US12940_QueryRefiringLogic_LogForm_MultiFldEC Edit Checks refire 
 	As a Rave user
 	When I manually close a query or cancel, the query should not re-fire if the exact same data is entered into the system

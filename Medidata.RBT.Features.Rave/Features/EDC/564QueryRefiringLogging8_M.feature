@@ -1,4 +1,5 @@
 @ignore
+@FT_564QueryRefiringLogging8_M
 Feature: US12940_8.1 Edit Checks with require response and require manual close
 	As a Rave user
 	I want to change data

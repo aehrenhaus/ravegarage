@@ -1,6 +1,7 @@
 ﻿# US 12991 Core service should try to reconnect to the SQL server (web, app, reporting) until successful
 # When the core service connection to the SQL server is lost (web server, app server, reporting server), the core service will try to reconnect itself automatically, and will keep trying until the connection is restored.
 @ignore
+@FT_US12991_DT13751
 Feature: US12991_DT13751 Core service should try to reconnect to the SQL server (web, app, reporting) until successful
 		As a Rave Administrator
 		When my connection to the SQL server is lost (web/app/reporting servers)

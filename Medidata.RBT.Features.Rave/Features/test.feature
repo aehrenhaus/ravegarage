@@ -1,5 +1,6 @@
 @EnableSeeding=false
 @ignore
+@FT_test
 Feature: test
 
 @PB_TEST

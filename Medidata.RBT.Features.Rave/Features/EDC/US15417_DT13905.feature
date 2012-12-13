@@ -2,6 +2,7 @@
 # It is partially correct because if this Lab Unit Conversion is not used by Alert Lab (which means only Standard Units Group or Standard Units Group/Reference Lab is being defined in Lab Setting of study), the range status should not be changed. But the problem is that, even the range status is same as before, the standard value should be updated accordingly. So in above stored procedure, for the datapoints using lab unit in the Lab Unit Conversion and the study using the Standard Units Group of the Lab Unit Conversion, we need to set NeedsCVRefresh on. 
 # This DT covered the DT 10086 that the description is not clear enough.
 @ignore
+@FT_US15417_DT13905
 Feature: US15417_DT13905 NeedsCVRefresh is not set to On for all datapoints related when Lab Unit Conversion is created or updated.
 	NeedsCVRefresh is not set to On for all datapoints related when Lab Unit Conversion is created or updated
 	As a Rave user

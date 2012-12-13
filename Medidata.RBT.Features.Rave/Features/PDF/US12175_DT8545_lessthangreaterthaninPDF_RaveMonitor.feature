@@ -1,5 +1,6 @@
 ﻿# When a PDF form is generated special character such as "<" ">" "<=" ">=" should be displayed properly 
 @ignore
+@FT_US12175_DT8545_lessthangreaterthaninPDF_RaveMonitor
 Feature: US12175_DT8545 Rave Monitor. When an EDC form contains special characters such as "<" ">" "<=" ">=" the PDF file should display the special characters appropriately. 
 	Rave architect allows for characters that the PDF generator does support. The PDF generator should convert the special characters so that they are displayed appropriately as follows:
 	|Rave Architect	 		|PDF Interpretation |Symbol in PDF                 |
