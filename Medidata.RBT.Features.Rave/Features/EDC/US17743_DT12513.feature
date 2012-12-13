@@ -38,11 +38,8 @@ Scenario: PB_US17743_DT12513_01 As a Study Coordinator, when I enter a time of 1
 	And I navigate to "Home"
 	And I navigate to "Reporter"
 	And I wait for Clinical View refresh to complete for project "US17743_DT12513"
-	And I wait for 1 minute
 	And I select Report "Data Listing" 
-	And I set report parameter "Study" with table
-		| Name            | Environment |
-		| US17743_DT12513 | Prod        |
+	And I set report parameter "Study" with "US17743_DT12513"
 	And I click button "Submit Report"
 	And I switch to "DataListingsReport" window
 	And I choose "Clinical Views" from "Data Source"
@@ -77,11 +74,8 @@ Scenario: PB_US17743_DT12513_02 As a Study Coordinator, when I change a time to 
 	And I navigate to "Home"
 	And I navigate to "Reporter"
 	And I wait for Clinical View refresh to complete for project "US17743_DT12513"
-	And I wait for 1 minute
 	And I select Report "Data Listing" 
-	And I set report parameter "Study" with table
-		| Name            | Environment |
-		| US17743_DT12513 | Prod        |
+	And I set report parameter "Study" with "US17743_DT12513"
 	And I click button "Submit Report"
 	And I switch to "DataListingsReport" window
 	And I choose "Clinical Views" from "Data Source"
@@ -102,11 +96,8 @@ Scenario: PB_US17743_DT12513_02 As a Study Coordinator, when I change a time to 
 	And I navigate to "Home"
 	And I navigate to "Reporter"
 	And I wait for Clinical View refresh to complete for project "US17743_DT12513"
-	And I wait for 1 minute
 	And I select Report "Data Listing" 
-	And I set report parameter "Study" with table
-		| Name            | Environment |
-		| US17743_DT12513 | Prod        |
+	And I set report parameter "Study" with "US17743_DT12513"
 	And I click button "Submit Report"
 	And I switch to "DataListingsReport" window
 	And I choose "Clinical Views" from "Data Source"
