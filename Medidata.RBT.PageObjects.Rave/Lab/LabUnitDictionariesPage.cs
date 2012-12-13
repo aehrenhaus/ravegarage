@@ -79,7 +79,7 @@ namespace Medidata.RBT.PageObjects.Rave
                     if (row.Children()[0].Text.Equals(dictionary.Name))
                     {
                         row.Images().First(x => x.GetAttribute("src").EndsWith("i_cedit.gif")).Click();
-                        Browser.Checkboxes()[0].Click();  
+                        Browser.TryFindElementBy(By.XPath(".//input[@type='checkbox' and contains(@id,'_chkDeleteDictionary')]")).EnhanceAs<Checkbox>().Check();  
                         Browser.ImageBySrc("../../Img/i_ccheck.gif").Click();
                         found = true;
                         break;
