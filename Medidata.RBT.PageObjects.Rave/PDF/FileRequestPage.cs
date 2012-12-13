@@ -178,7 +178,7 @@ namespace Medidata.RBT.PageObjects.Rave
             dt.AddRow(pdf);
             var tr = table.FindMatchRows(dt).FirstOrDefault();
 
-            int waitTime = 60;
+            int waitTime = 120;
             var ele  = Browser.TryFindElementBy(b =>
                 tr.Spans().FirstOrDefault(x => x.GetAttribute("id").EndsWith("StatusValue") && x.Text == "Completed"),
               true, waitTime
