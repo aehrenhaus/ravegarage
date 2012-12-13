@@ -4,7 +4,7 @@
 #TESTING FOR LOG FORM WITH 2 FIELDS INVOLVED IN QUERY FIRING
 
 # project to be uploaded in excel spreadsheet 'Standard Study'
-
+@FT_564QueryRefiringLogic_LogForm_2FldEC
 Feature: US12940_564QueryRefiringLogic_LogForm_2FldEC The logic that is used to determine when a query that has already been cancelled or closed should or should not be re-fired in Rave.
     Query Refiring Logic
 	As a Rave user

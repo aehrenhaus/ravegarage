@@ -1,5 +1,6 @@
 ﻿# If there is a datapoint which currently has a value in it that is outside the normal ranges, and therefore has a clinical significance prompt or value, 
 # re-submitting the datapoint to have a ND code will not remove clinical significance prompts.
+@FT_US12999_DT13977
 Feature: US12999_DT13977 If Datapoint with Clinical Significance is edited again to be a ND code, Clinical Significance does not get removed.
 	If Datapoint with Clinical Significance is edited again to be a ND code, Clinical Significance does not get removed
 	As a Rave user

@@ -38,6 +38,7 @@
 #If there is not enough room to display the PDF in horizontal view, it should be displayed vertically.
 #
 @ignore
+@FT_DT11249_US12607_US19066_DataPDF_manual
 Feature: US12607_US19066_DT11249 Manual Users should have the option to generate data populated PDF files for log forms in portrait mode with or without page breaks 
 As a Rave User with access to PDF generator and a study with a log form that render in portrait mode in the PDF generator
 I want to have the option to generate the PDFs either with or without page breaks between each records

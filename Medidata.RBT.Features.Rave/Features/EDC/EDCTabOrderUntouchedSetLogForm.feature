@@ -6,6 +6,7 @@
 # (4) the screen will scroll to the right as the user tabs so that the user can always see the fields into which they enter data
 # (5) the user is able to tab from the last enterable field to the add button and hit enter to save
 # This is related to DT 13558.
+@FT_EDCTabOrderUntouchedSetLogForm
 Feature: US11550_DT13558 Ability to navigate by keyboard (tab). Updated tab order to enable mouseless data entry - Untouched landscape log form with set log lines
   As A Rave EDC User
   I want to tab from field to field 

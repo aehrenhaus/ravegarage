@@ -1,4 +1,5 @@
 # When user enters a name with more than 80 characters for Lab Unit Dictionaries and Global Variables that are greater than 80 characters, the application throws an exception error. The error says that names must be less than 255 character.
+@FT_US18087_DT14073
 Feature: US18087_DT14073 An exception is thrown when entering a name with more than 80 characters for Lab Unit Dictionary.
 	When user enters names with more than 80 characters for Lab Unit Dictionary and Global Variables, the application throws an exception error.
  	As a Study Developer
