@@ -1,5 +1,6 @@
 ﻿# When using Subject Include feature, Subjects are enrolled per selected Randomization. 
 @EnableSeeding=true
+@ignore
 
 Feature: US19695 When using Subject Include feature, Subjects are enrolled per selected Randomization.
 	When user creates subjects 
