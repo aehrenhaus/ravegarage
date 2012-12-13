@@ -1,5 +1,5 @@
 ﻿# When an Edit Check sets Datapoint XYZ to require verification, if the verification is broken on XYZ by a data change, this is not audited.
-
+@FT_DT_13622_TSDV_Off
 Feature: US10244_DT13622_TSDV_Off When an Edit Check sets Datapoint XYZ to require verification, if the verification is broken on XYZ by a data change, this is not audited.
 	As a Rave user
 	Given I verify data

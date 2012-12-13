@@ -1,5 +1,6 @@
 ﻿# Configuration Loader specification should include Coder Configuration.
 @ignore
+@FT_US13011_DT13976AddCoderToLoaderSpec
 Feature: US13011_DT13976: When the Configuration Settings are downloaded, they should include Coder Configuration details.
   As a Rave Administrator
 	When I am on the Configuration Loader page

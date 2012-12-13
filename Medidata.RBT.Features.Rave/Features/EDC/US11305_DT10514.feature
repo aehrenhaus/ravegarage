@@ -1,5 +1,6 @@
 ﻿# Datapoints in same lab datapage may associate analyte ranges of different labs.
 @ignore
+@FT_US11305_DT10514
 Feature: US11305_DT10514 Datapoints in same lab datapage may associate analyte ranges of different labs.
 	As a Rave user
 	When a lab form is partially locked

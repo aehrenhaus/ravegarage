@@ -2,6 +2,7 @@
 # will be examining the answered query data instead of the original query data.
 #TESTING FOR STANDARD FORM WITH 2 FIELDS INVOLVED IN QUERY FIRING
 #Project to be uploaded in excel spreadsheet 'Standard Study'
+@FT_QueryRefiringLogic_StdForm_2FldEC
 Feature: US12940_QueryRefiringLogic_StdForm_2FldEC Edit Checks refire 
 	As a Rave user
 	When I manually close a query or cancel, the query should not re-fire if the exact same data is entered into the system

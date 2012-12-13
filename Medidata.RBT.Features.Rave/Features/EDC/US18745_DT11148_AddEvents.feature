@@ -8,6 +8,7 @@
 # NOTE: The ability to disable and enable the Add Event functionality only depends on the user role permission to lock or unlock and DO NOT take into consideration any pre-conditions that may be associated with the lock or unlock actions.
 # When a user clicks on the lock icon and link after it has been disabled, and the user is navigated to the audits page then the audit trail will display the following "Audit: Add Events disabled. User: Username Time: date and time stamp of action"
 # When a user clicks on the Parent: Subject - <Subject Name>, and the user is navigated to the audits page then the audit trail will display the following "Audit: Add Events Disabled.	User: Username Time: date and time stamp of action"
+@FT_US18745_DT11148_AddEvents
 Feature: US18745_DT11148 Ability to Disable Add Events. When a subject is locked it is still possible for a site to use Add Event to add additional data to the database.
   As a data manager
   I want to be able to disable and reenable Add Events

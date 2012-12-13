@@ -10,6 +10,7 @@
 
 # To fix: we need to remove subject date from order by so that subject date will not affect search order. Also we need to keep all lab variable datapoints in search targets, it is to say when record date, datapage date and instance date is null for an Age datapoint, but if it is the only one in subject, it will be fetched.
 @ignore
+@FT_DT10911
 Feature: DT 10991 Remove Subject Date from order by statement in searching Lab Variable Mapping Value
 	As a Rave user
 	When I skip a visit

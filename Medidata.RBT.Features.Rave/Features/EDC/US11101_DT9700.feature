@@ -1,4 +1,5 @@
 ﻿# Reports on either the Study, Site or Subject pages should be sorted in alphabetical order.
+@FT_US11101_DT9700
 Feature: US11101_DT9700 When reports are listed on either the Study, Site or Subject pages, they should be sorted in alphabetical order.
   As a Rave Adminstrator
 	When I have configured reports to display on either the Study, Site or Subject pages

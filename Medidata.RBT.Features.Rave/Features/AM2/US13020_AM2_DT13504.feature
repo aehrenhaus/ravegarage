@@ -4,7 +4,7 @@
 # 1. One CRF version has been published to an environment
 # 2. One subject has been created in the environment 
 # 3. One form with a query has been created
-
+@FT_US13020_AM2_DT13504
 Feature: US13020_DT13504 When an edit check has been removed from a target CRF version in Architect, and a subject is migrated to the target CRF version and a query closed then the audit trail says "Amendment Manager: Query closed during migration process because check no longer exists in target version.".
 
 Background:

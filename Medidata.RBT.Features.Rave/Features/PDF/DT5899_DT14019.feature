@@ -2,6 +2,7 @@
 # When a blank PDF form is generated based on a log form populated with default values, the PDF file should not include page breaks between each of the 
 # default values.
 @ignore
+@FT_DT5899_DT14019
 Feature: US15841_US17279_US17414_DT5899_DT14019 Blank PDF files that are generated for log forms with default values should not include page breaks between records
 	#As a Rave User with access to PDF generator and a study with a log form with default values
 	#I want to generate a blank PDF for the log form with default value that is a continuous list of all records instead of multiple pages
