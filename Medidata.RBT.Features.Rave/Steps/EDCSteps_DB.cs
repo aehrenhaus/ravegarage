@@ -65,6 +65,11 @@ namespace Medidata.RBT.Features.Rave
             Assert.IsTrue(dataTable.Rows[0][0].ToString() == value.ToString(), "Data doesn't propagate into Reporting Records correctly");
         }
 
+        /// <summary>
+        /// Verify the log message for query not opening event for a specific Project and Site
+        /// </summary>
+        /// <param name="projectName">The project to verify</param>
+        /// <param name="siteName">The site to verify</param>
 		[When(@"I verify the log message for query not opening event for Project ""([^""]*)"" and Site ""([^""]*)""")]
 		public void WhenIVerifyTheLogMessagesForQueryNotOpeningEventsForProjectEditCheckStudy3AndSiteEditCheckSite3(string projectName, string siteName)
 		{
@@ -75,7 +80,6 @@ namespace Medidata.RBT.Features.Rave
 			//TestContext.SetContextValue(LastSqlResultTable, dataTable);
 			throw new NotImplementedException();
 		}
-
 
 		/// <summary>
 		/// Wait for CV refresh to finish
@@ -114,10 +118,11 @@ namespace Medidata.RBT.Features.Rave
         }
 
 
-        // <summary>
+        /// <summary>
         /// Wait for CV refresh to finish
         /// </summary>
-        /// <param name="project"></param>
+        /// <param name="status">The status of the field</param>
+        /// <param name="fieldOid">The fieldOid of the field</param>
         [StepDefinition(@"I verify ""([^""]*)"" status for field ""([^""]*)"" has been propaged on logline")]
         public void IVerify__StatusForField__HasBeenPropaged(string status, string fieldOid)
         {
@@ -198,10 +203,15 @@ namespace Medidata.RBT.Features.Rave
 
         }
 
-
+        /// <summary>
+        /// Scripts pertaining to clinical views
+        /// </summary>
 		public class ClinicalViewsScripts
 		{
-
+            /// <summary>
+            /// Generate SQL for number of records in lab update queue
+            /// </summary>
+            /// <returns>The number of records in the lab update queue</returns>
             public static string GenerateSQLForNumberOfRecordsInLabUpdateQueue()
             {
                 return CountOfRecordsInLabUpdateQueue();
@@ -211,11 +221,17 @@ namespace Medidata.RBT.Features.Rave
 			{
 				return "select count(labUpdateQueueID) from labUpdateQueue";
             }
-
+            
+            /// <summary>
+            /// Generate SQL for number of records that need CV refreshing
+            /// </summary>
+            /// <param name="projectName">The name of the project to check the Clinical Views that need refreshing</param>
+            /// <returns>The number of records that need CV refreshing</returns>
 			public static string GenerateSQLForNumberOfRecordsThatNeedCVRefresh(string projectName)
 			{
 				return CountOfRecordsRequiringCVRefreshForProject(projectName);
 			}
+
 			private static string CountOfRecordsRequiringCVRefreshForProject(string project)
 			{
 				return String.Format(@"     select count(r.recordID)
@@ -235,8 +251,6 @@ namespace Medidata.RBT.Features.Rave
 		                                        and r.deleted <> 1
 		                                        and dbo.fnlocaldefault(projectName) = '{0}'
                                     ", project);
-
-
 			}
 		}
 	}

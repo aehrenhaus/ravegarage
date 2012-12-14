@@ -12,9 +12,16 @@ using System.IO;
 
 namespace Medidata.RBT.Features.Rave
 {
+    /// <summary>
+    /// Steps pertaining to the report administrator
+    /// </summary>
 	[Binding]
 	public class ReportAdminSteps : BrowserStepsBase
 	{
+        /// <summary>
+        /// Create a report package with the passed in name
+        /// </summary>
+        /// <param name="reportName">The name of the report package</param>
 		[StepDefinition(@"I create report package ""(.+?)""")]
 		public void ICreateReportPackage____(string reportName)
 		{
@@ -35,10 +42,12 @@ namespace Medidata.RBT.Features.Rave
 			string tempFolderSharedByOtherScenarios = "c:\\";
 			TestContext.Vars["tempFile"] = lastFile.Name;
 			lastFile.MoveTo(Path.Combine(tempFolderSharedByOtherScenarios,lastFile.Name));
-
 		}
 
-
+        /// <summary>
+        /// Install report packed with the passed in name
+        /// </summary>
+        /// <param name="reportName">Name of the report package to install</param>
 		[StepDefinition(@"I install report package ""(.+?)""")]
 		public void IInstallReportPackage____(string reportName)
 		{
@@ -92,7 +101,6 @@ namespace Medidata.RBT.Features.Rave
             CurrentPage.As<ReportMatrixPage>().AssignReportMatrices(reportMatrixAssignments.ToList());
 
             TestContext.CurrentPage = new HomePage().NavigateToSelf();
-
         }
 	}
 }

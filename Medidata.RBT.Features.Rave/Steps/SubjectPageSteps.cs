@@ -8,9 +8,11 @@ using Medidata.RBT.SeleniumExtension;
 
 namespace Medidata.RBT.Features.Rave
 {
+    /// <summary>
+    /// The steps pertaining to the the subject page
+    /// </summary>
     [Binding]
-    public class
-        SubjectPageSteps : BrowserStepsBase
+    public class SubjectPageSteps : BrowserStepsBase
     {
 
         /// <summary>
@@ -48,6 +50,10 @@ namespace Medidata.RBT.Features.Rave
             Assert.IsNull(Browser.TryFindElementById("_ctl0_Content_SubjectAddEvent_DisableMatrixImage"));
         }
 
+        /// <summary>
+        /// Verify that the specified button is visible
+        /// </summary>
+        /// <param name="btnValue">The value of the button (the text within it)</param>
         [StepDefinition(@"I can see ""([^""]*)"" button")]
         [StepDefinition(@"I can see ""([^""]*)"" radio button")]
         public void ICanSee____Button(string btnValue)
@@ -58,6 +64,10 @@ namespace Medidata.RBT.Features.Rave
             Assert.IsTrue(canSee);
         }
 
+        /// <summary>
+        /// Verify that the specified button is not visible
+        /// </summary>
+        /// <param name="btnValue">The value of the button (the text within it)</param>
         [StepDefinition(@"I can not see ""([^""]*)"" button")]
         [StepDefinition(@"I can not see ""([^""]*)"" radio button")]
         public void ICanNotSee____Button(string btnValue)
@@ -68,6 +78,11 @@ namespace Medidata.RBT.Features.Rave
             Assert.IsFalse(canSee);
         }
 
+        /// <summary>
+        /// Verify that the dropdown is visible and enabled/disabled according to the passed in paramter
+        /// </summary>
+        /// <param name="enabled">Whether or not the dropdown is enabled</param>
+        /// <param name="label">The label of the dropdown</param>
         [StepDefinition(@"I can see ""([^""]*)"" dropdown labeled ""([^""]*)""")]
         public void ICanSee____DropdownLabeled____(string enabled, string label)
         {
@@ -79,6 +94,10 @@ namespace Medidata.RBT.Features.Rave
             Assert.IsTrue(isDisabled == !element.Enabled);
         }
 
+        /// <summary>
+        /// Verify that the dropdown is not visible
+        /// </summary>
+        /// <param name="label">The label of the dropdown</param>
         [StepDefinition(@"I can not see dropdown labeled ""([^""]*)""")]
         public void ICanNotSeeDropdownLabeled____(string label)
         {
@@ -91,6 +110,11 @@ namespace Medidata.RBT.Features.Rave
             Assert.IsTrue(result);
         }
 
+        /// <summary>
+        /// Verify that the tooltip is visible on a button
+        /// </summary>
+        /// <param name="toolTip">The tooltip to verify</param>
+        /// <param name="label">The value of the button (I.E. the text within the button)</param>
         [StepDefinition(@"I can see tooltip ""([^""]*)"" on button labeled ""([^""]*)""")]
         public void ICanSeeToolTip____On____WithID____(string toolTip, string label)
         {
@@ -103,6 +127,10 @@ namespace Medidata.RBT.Features.Rave
             Assert.IsTrue(result);
         }
 
+        /// <summary>
+        /// The specified button is available
+        /// </summary>
+        /// <param name="value">The value of the button</param>
         [StepDefinition(@"The ""([^""]*)"" button is available")]
         public void The____ButtonIsAvailable(string value)
         {
@@ -130,6 +158,10 @@ namespace Medidata.RBT.Features.Rave
             CurrentPage.As<CRFPage>().SaveForm();
         }
 
+        /// <summary>
+        /// Verify link or label is visible
+        /// </summary>
+        /// <param name="label">The text of the link or label</param>
         [StepDefinition(@"I can see link ""([^""]*)""")]
         [StepDefinition(@"I can see the label ""([^""]*)""")]
         public void ICanSeeLink(string label)
@@ -139,6 +171,10 @@ namespace Medidata.RBT.Features.Rave
             Assert.IsTrue(result);
         }
 
+        /// <summary>
+        /// Verify link or label is not visible
+        /// </summary>
+        /// <param name="label">The text of the link or label</param>
         [StepDefinition(@"I can not see link ""([^""]*)""")]
         public void ICanNotSeeLink(string label)
         {
@@ -147,6 +183,10 @@ namespace Medidata.RBT.Features.Rave
             Assert.IsFalse(result);
         }
 
+        /// <summary>
+        /// Click a radio button with specified label
+        /// </summary>
+        /// <param name="label">The text of the radio button's label</param>
         [StepDefinition(@"I click radiobutton with label ""([^""]*)""")]
         public void IClickRadiobuttonWithLabel____(string label)
         {
@@ -162,6 +202,10 @@ namespace Medidata.RBT.Features.Rave
             Assert.IsTrue(result);
         }
 
+        /// <summary>
+        /// Verify a task summary
+        /// </summary>
+        /// <param name="table">The task summary to verify</param>
         [StepDefinition(@"I verify the task summary")]
         public void IVerifyTheTaskSummary(Table table)
         {
@@ -179,6 +223,9 @@ namespace Medidata.RBT.Features.Rave
             }
         }
 
+        /// <summary>
+        /// Expand the task summary box
+        /// </summary>
         [Given(@"I expand Task Summary")]
         public void GivenIExpandTaskSummary()
         {
@@ -186,7 +233,5 @@ namespace Medidata.RBT.Features.Rave
                 .GetTaskSummary()
                 .Expand();
         }
-
-
     }
 }

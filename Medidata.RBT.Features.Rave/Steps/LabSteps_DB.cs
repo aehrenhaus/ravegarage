@@ -10,6 +10,9 @@ using Medidata.RBT.SharedObjects;
 
 namespace Medidata.RBT.Features.Rave.Steps
 {
+    /// <summary>
+    /// The steps pertaining to manipulating or verifying labs via the database
+    /// </summary>
     [Binding]
     public partial class LabSteps_DB : BrowserStepsBase
     {
@@ -66,7 +69,5 @@ namespace Medidata.RBT.Features.Rave.Steps
         }
 
         #endregion LabAnalyteAudit
-
-       
     }
 }

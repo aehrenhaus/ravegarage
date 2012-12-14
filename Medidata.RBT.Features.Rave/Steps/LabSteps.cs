@@ -9,6 +9,9 @@ using System.Linq;
 
 namespace Medidata.RBT.Features.Rave
 {
+    /// <summary>
+    /// Steps pertaining to labs
+    /// </summary>
     [Binding]
     public partial class LabSteps : BrowserStepsBase
     {
@@ -47,6 +50,7 @@ namespace Medidata.RBT.Features.Rave
         /// Select ranges for lab
         /// </summary>
         /// <param name="labName">Name of the lab.</param>
+        /// <param name="labType">Type of the lab.</param>
         [StepDefinition(@"I select Ranges for ""([^""]*)"" for ""([^""]*)"" lab")]
         public void ISelectRangesFor__(string labName, string labType)
         {
@@ -89,11 +93,11 @@ namespace Medidata.RBT.Features.Rave
             CurrentPage.As<LabRangesPage>().AddNewAnalyteRange(table.CreateInstance<AnalyteRangeModel>());
         }
 
-          /// <summary>
-          /// Copy ranges for lab
-          /// </summary>
-          /// <param name="link">The link.</param>
-          /// <param name="labType">Type of the lab.</param>
+        /// <summary>
+        /// Copy ranges for lab
+        /// </summary>
+        /// <param name="link">The link.</param>
+        /// <param name="labType">Type of the lab.</param>
         [StepDefinition(@"I select ""([^""]*)"" form ""([^""]*)""")]
         public void ISelect__form__(string link, string labType)
         {
@@ -102,11 +106,14 @@ namespace Medidata.RBT.Features.Rave
 
         }
 
+        /// <summary>
+        /// Add a new analyte to a lab
+        /// </summary>
+        /// <param name="analyte">Analyte to add as new version</param>
         [StepDefinition(@"I select ""New Version"" for ""([^""]*)"" lab")]
         public void ISelect__For__Lab(string analyte)
         {
             CurrentPage.As<LabRangesPage>().AddNewVersion(analyte);
         }
-        
     }
 }

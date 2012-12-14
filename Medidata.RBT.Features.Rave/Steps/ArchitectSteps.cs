@@ -6,15 +6,31 @@ using Medidata.RBT.PageObjects.Rave.AmendmentManager;
 
 namespace Medidata.RBT.Features.Rave
 {
+    /// <summary>
+    /// Steps pertaining to architect
+    /// </summary>
 	[Binding]
 	public class ArchitectSteps : BrowserStepsBase
 	{
+        /// <summary>
+        /// Step has no implementation
+        /// </summary>
+        /// <param name="crfName"></param>
+        /// <param name="draftName"></param>
+        /// <param name="siteName"></param>
+        /// <param name="studyName"></param>
 		[StepDefinition(@"I publish and push CRF Version ""([^""]*)"" of Draft ""([^""]*)"" to site ""([^""]*)"" in Study ""([^""]*)""")]
 		public void IPublishAndPushCRFVersion____OfDraftToSite____InStudy____(string crfName, string draftName, string siteName, string studyName)
 		{
 
 		}
 
+        /// <summary>
+        /// Create a draft from the project and version passed in
+        /// </summary>
+        /// <param name="draftName">The name of the draft to create</param>
+        /// <param name="project">The project to create the draft from</param>
+        /// <param name="version">The version to create the draft from</param>
 		[StepDefinition(@"I create Draft ""([^""]*)"" from Project ""([^""]*)"" and Version ""([^""]*)""")]
 		public void ICreateDraft____FromProject____AndVersion____(string draftName, string project, string version)
 		{
@@ -24,12 +40,20 @@ namespace Medidata.RBT.Features.Rave
 			CurrentPage = CurrentPage.As<ArchitectLibraryPage>().CreateDraftFromProject(draftName,project,version);
 		}
 
+        /// <summary>
+        /// Unused step
+        /// </summary>
+        /// <param name="version"></param>
         [StepDefinition(@"I publish and push eCRF ""([^""]*)""")]
         public void IPublishAndPushECRF____(string version)
         {
             CurrentPage = CurrentPage.NavigateTo("Architect Library Page");
         }
 
+        /// <summary>
+        /// Select a draft 
+        /// </summary>
+        /// <param name="draftName">Name of the draft to select</param>
         [StepDefinition(@"I select Draft ""([^""]*)""")]
         public void GivenICreateDraft____FromProject____AndVersion____(string draftName)
         {
@@ -37,15 +61,22 @@ namespace Medidata.RBT.Features.Rave
             CurrentPage = CurrentPage.As<ArchitectLibraryPage>().SelectDraft(draftName);
         }
 
-
+        /// <summary>
+        /// Publish the CRF version
+        /// </summary>
+        /// <param name="crfVersion">The version to publish</param>
 		[StepDefinition(@"I publish CRF Version ""([^""]*)""")]
 		public void IPublishCRFVersion____(string crfVersion)
 		{
 			crfVersion = SpecialStringHelper.Replace(crfVersion);
 			CurrentPage.As<ArchitectCRFDraftPage>().PublishCRF(crfVersion);
-			
 		}
 
+        /// <summary>
+        /// Publish the CRF version to specific site or sites
+        /// </summary>
+        /// <param name="crfVersion">The version to publish</param>
+        /// <param name="sites">The site or sites to push the version to</param>
 		[StepDefinition(@"I push CRF Version ""([^""]*)"" to ""([^""]*)""")]
 		public void IPublishCRFVersion____(string crfVersion, string sites)
 		{
@@ -55,18 +86,27 @@ namespace Medidata.RBT.Features.Rave
 
 		}
 
+        /// <summary>
+        /// Step has no implementation
+        /// </summary>
 		[StepDefinition(@"I select ""Target\{RndNum\(3\)}"" from ""Target CRF""")]
 		public void ISelectTargetRndNum3FromTargetCRF()
 		{
 			ScenarioContext.Current.Pending();
 		}
 
+        /// <summary>
+        /// Step has no implementation
+        /// </summary>
 		[StepDefinition(@"I select ""V1"" from ""Source CRF""")]
 		public void ISelectV1FromSourceCRF()
 		{
 			ScenarioContext.Current.Pending();
 		}
 
+        /// <summary>
+        /// Migrate all subjects in amendment manager
+        /// </summary>
 		[StepDefinition(@"I migrate all Subjects")]
 		public void IMigrateAllSubjects()
 		{
@@ -81,12 +121,21 @@ namespace Medidata.RBT.Features.Rave
 		{
 			CurrentPage.As<AMMigrationResultPage>().WaitForComplete();
 		}
+
+        /// <summary>
+        /// Unused step
+        /// </summary>
+        /// <param name="form"></param>
         [StepDefinition(@"I search for form ""([^""]*)""")]
         public void ISearchForForm____(string form)
         {
             CurrentPage = CurrentPage.As<ArchitectFormsPage>().SearchForForm(form);
         }
 
+        /// <summary>
+        /// Select fields in a form
+        /// </summary>
+        /// <param name="form">Form to select the fields from</param>
         [StepDefinition(@"I select Fields for Form ""([^""]*)""")]
         public void ISelectFieldsForForm____(string form)
         {
@@ -94,19 +143,29 @@ namespace Medidata.RBT.Features.Rave
             CurrentPage = CurrentPage.As<ArchitectFormsPage>().SelectFieldsForForm(form);
         }
 
+        /// <summary>
+        /// Edit a field
+        /// </summary>
+        /// <param name="field">The field to edit</param>
         [StepDefinition(@"I edit Field ""([^""]*)""")]
         public void IEditField____(string field)
         {
             CurrentPage = CurrentPage.As<ArchitectFormDesignerPage>().EditField(field);
         }
         
+        /// <summary>
+        /// Expand field checks
+        /// </summary>
         [StepDefinition(@"I expand ""Field Edit Checks""")]
         public void IExpandFieldEditChecks()
         {
             CurrentPage = CurrentPage.As<ArchitectFormDesignerPage>().ExpandEditChecks();
         }
 
-
+        /// <summary>
+        /// Enter ranges for Field Edit Checks and save
+        /// </summary>
+        /// <param name="table">Ranges to enter</param>
         [StepDefinition(@"I enter ranges for Field Edit Checks and save")]
         public void IEnterRangesForFieldEditChecksAndSave(Table table)
         {
@@ -115,14 +174,20 @@ namespace Medidata.RBT.Features.Rave
             CurrentPage.As<ArchitectFormDesignerPage>().Save();
         }
 
-
+        /// <summary>
+        /// Enter ranges for Field Edit Checks, don't save
+        /// </summary>
+        /// <param name="table">Ranges to enter</param>
         [StepDefinition(@"I enter ranges for Field Edit Checks")]
         public void IEnterRangesForFieldEditChecks(Table table)
         {
              CurrentPage.As<ArchitectFormDesignerPage>().FillRangesForFieldEditChecks(table.CreateSet<FieldModel>());
         }
 
-
+        /// <summary>
+        /// Verify the ranges against field edit checks exist
+        /// </summary>
+        /// <param name="table">The data to verify</param>
         [StepDefinition(@"I should see ranges for Field Edit Checks")]
         public void ISeeRangesForFieldEditChecks(Table table)
         {
@@ -130,13 +195,15 @@ namespace Medidata.RBT.Features.Rave
             Assert.IsTrue(found, "Ranges for field do not match.");
         }
 
+        /// <summary>
+        /// Verify that the ranges against field edit checks don't exist
+        /// </summary>
+        /// <param name="table">The data to verify</param>
         [StepDefinition(@"I should not see ranges for Field Edit Checks")]
         public void IDontSeeRangesForFieldEditChecks(Table table)
         {
             bool found = CurrentPage.As<ArchitectFormDesignerPage>().VerifyRangesForFieldEditChecks(table.CreateSet<FieldModel>());
             Assert.IsFalse(found, "Ranges for field do match.");
         }
-
 	}
-
 }

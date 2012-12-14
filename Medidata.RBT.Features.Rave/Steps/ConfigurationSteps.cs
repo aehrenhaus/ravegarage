@@ -15,9 +15,15 @@ using Medidata.RBT.SeleniumExtension;
 
 namespace Medidata.RBT.Features.Rave.Steps
 {
+    /// <summary>
+    /// Steps pertaining to configuration
+    /// </summary>
     [Binding]
     public class ConfigurationSteps : BrowserStepsBase
     {
+        /// <summary>
+        /// Check if the URL has coder enabled
+        /// </summary>
         [StepDefinition(@"the URL has ""([^""]*)"" installed")]
         public void TheURLHas____Installed()
         {
@@ -25,7 +31,10 @@ namespace Medidata.RBT.Features.Rave.Steps
             Assert.IsTrue(isCoderEnabled);
         }
 
-
+        /// <summary>
+        /// Enter the passed in data into coder configuration
+        /// </summary>
+        /// <param name="table">The data to enter into coder configuration</param>
         [StepDefinition(@"I enter data in ""Coder Configuration"" and save")]
         public void IEnterDataInCoderConfiguration(Table table)
         {
@@ -35,6 +44,10 @@ namespace Medidata.RBT.Features.Rave.Steps
             page.Save();
         }
 
+        /// <summary>
+        /// Check that the passed in configuration settings exist
+        /// </summary>
+        /// <param name="table">The settings to check</param>
 		[StepDefinition(@"following Configuration Settings Exist")]
 		public void FollowingConfigurationSettingsExist(Table table)
 		{
@@ -42,16 +55,19 @@ namespace Medidata.RBT.Features.Rave.Steps
 			bool bOk = page.VerifyRowWithValuesExists(table.CreateSet<ConfigurationSettingsModel>());
 			Assert.IsTrue(bOk);
 			CurrentPage = new HomePage().NavigateToSelf();
-			//page.Save();
 		}
 
+        /// <summary>
+        /// Set the amount of lines displayed per page for a specified user
+        /// </summary>
+        /// <param name="linesPerPage">The number of lines to display</param>
+        /// <param name="userName">The user to edit the line display for</param>
 		[StepDefinition(@"I set lines per page to (.*) for User ""(.*)""")]
 		public void ISetLinesPerPageTo____ForUser____(int linesPerPage, string userName)
 		{
 			User user = TestContext.GetExistingFeatureObjectOrMakeNew(userName, () =>new User(userName));
 			user.SetLinesPerPage(linesPerPage);
 		}
-
 
         /// <summary>
         /// Assign the user to various project assignments
@@ -94,17 +110,13 @@ namespace Medidata.RBT.Features.Rave.Steps
 						if (!studyAssignmentExists)
 							CurrentPage.As<UserEditPage>().AssignUserToPermissions(user, project, role, configuration.Environment, site);
 
-						//CurrentPage = CurrentPage.ClickLink("User Administration");
                         //assign globallibrary role
                         if (!String.IsNullOrEmpty(configuration.GlobalLibraryRole))
                         {
                             CurrentPage.As<UserEditPage>().AssignUserToGlobalLibraryRole();
                         }
 					}
-                    
-
 				}
-
 			}
 
 			Browser.WaitForDocumentLoad();
@@ -166,6 +178,10 @@ namespace Medidata.RBT.Features.Rave.Steps
             CurrentPage = new WorkflowConfigPage().NavigateToSelf();
         }
  
+        /// <summary>
+        /// Build Clinical Views for passed in project
+        /// </summary>
+        /// <param name="projectName">The name of the project</param>
         [StepDefinition(@"Clinical Views exist for project ""([^""]*)""")]
         public void ClinicalViewsExistForProject____(string projectName)
         {
@@ -177,6 +193,5 @@ namespace Medidata.RBT.Features.Rave.Steps
                 TestContext.CurrentPage.As<ConfigurationClinicalViewsPage>().BuildClinicalViews(project.UniqueName);
             }
         }
-
 	}
 }
