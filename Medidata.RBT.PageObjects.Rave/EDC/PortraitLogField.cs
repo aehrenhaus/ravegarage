@@ -28,10 +28,15 @@ namespace Medidata.RBT.PageObjects.Rave
         #region INTERFACE IEDCLogFieldControl
         public override bool IsElementFocused(ControlType type, int position) 
         {
-            var element = GetElementInRowByLabel(type, position);
-            return this.Page.GetFocusElement()
-                .GetAttribute("ID") == element.GetAttribute("ID");
+            IWebElement currentElement = TestContext.Browser.TryFindElementBy(b =>
+                {
+                    return TestContext.CurrentPage.GetFocusElement().FindElement(By.XPath(".[@id != '']"));
+                });
+            IWebElement element = GetElementInRowByLabel(type, position);
+
+            return currentElement.GetAttribute("ID") == element.GetAttribute("ID");
         }
+
 		public override void FocusElement(ControlType type, int position) 
         {
             var element = GetElementInRowByLabel(type, position);
