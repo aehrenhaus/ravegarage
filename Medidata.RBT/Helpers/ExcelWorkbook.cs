@@ -216,8 +216,8 @@ namespace Medidata.RBT
             _excelApp = null;
             _openedTables = null;
 
-            GC.Collect();
-            GC.WaitForPendingFinalizers();
+            //GC.Collect();
+            //GC.WaitForPendingFinalizers();
 		}
 	}
 }
