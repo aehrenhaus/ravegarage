@@ -268,11 +268,11 @@ namespace Medidata.RBT
 		[BeforeFeature()]
 		public static void BeforeFeature()
 		{
-
 			Storage.FeatureValues.Clear();
 			HandleFeatureTags();
 			CurrentFeatureStartTime = DateTime.Now;
             DraftCounter.ResetCounter();
+            Browser.WaitForDocumentLoad();
 		}
 
 		private static void HandleFeatureTags()
