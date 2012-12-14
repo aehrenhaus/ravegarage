@@ -8,15 +8,26 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Medidata.RBT.Features.Rave
 {
+    /// <summary>
+    /// Steps pertaining to all of rave
+    /// </summary>
 	[Binding]
 	public class RaveSteps : BrowserStepsBase
 	{
+        /// <summary>
+        /// Unused step, should be removed
+        /// </summary>
+        /// <param name="table"></param>
         [StepDefinition(@"I should see the logging data for queries")]
         public void IShouldSeeTheLoggingDataForQueries(Table table)
         {
             
         }
 
+        /// <summary>
+        /// Unused step, should be removed
+        /// </summary>
+        /// <param name="logger"></param>
         [StepDefinition(@"I go to the log page for logger ""([^""]*)""")]
         public PageBase IGoToTheLogPageForLoggerQueryNotOpeningEvent(string logger)
         {

@@ -5,6 +5,9 @@ using TechTalk.SpecFlow.Assist;
 
 namespace Medidata.RBT.Features.Rave
 {
+    /// <summary>
+    /// Steps pertaining to double data entry
+    /// </summary>
 	[Binding]
 	public class DDESteps : BrowserStepsBase
 	{

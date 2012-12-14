@@ -9,6 +9,9 @@ using System.Linq;
 
 namespace Medidata.RBT.Features.Rave
 {
+    /// <summary>
+    /// Stepts pertaining to user groups
+    /// </summary>
     [Binding]
     public partial class UserGroupSteps : BrowserStepsBase
     {

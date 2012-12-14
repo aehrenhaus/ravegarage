@@ -5,36 +5,62 @@ using TechTalk.SpecFlow.Assist;
 
 namespace Medidata.RBT.Features.Rave
 {
+    /// <summary>
+    /// Steps pertaining to studies
+    /// </summary>
 	[Binding]
 	public class StudySteps : BrowserStepsBase
 	{
-
+        /// <summary>
+        /// This is an unused step definition
+        /// </summary>
+        /// <param name="crfName"></param>
+        /// <param name="siteName"></param>
+        /// <param name="studyName"></param>
+        /// <param name="environmentName"></param>
 		[StepDefinition(@"CRF Version ""([^""]*)"" in Study ""([^""]*)"" has been pushed to Site ""([^""]*)"" in Environment ""([^""]*)""")]
 		public void CRF____IsPushedInSite____InStudy____InEnvironment____(string crfName, string siteName, string studyName,string environmentName)
 		{
 
 		}
 
-
+        /// <summary>
+        /// This is used only in the ignored DT12651.feature, consider removing or replacing usage with correct step
+        /// </summary>
+        /// <param name="studyName"></param>
+        /// <param name="draftName"></param>
 		[StepDefinition(@"Study ""([^""]*)"" has Draft ""([^""]*)""")]
 		public void Study____HasDraft____(string studyName, string draftName)
 		{
 
 		}
 
+        /// <summary>
+        /// This is an unused step definition
+        /// </summary>
+        /// <param name="table"></param>
 		[StepDefinition(@"Study ""[^""]*"" has Draft ""[^""]*"" includes Edit Checks from the table below")]
 		public void Study____HasDraf____HasEditChecks(Table table)
 		{
 
 		}
 
+        /// <summary>
+        /// This is an unused step definition
+        /// </summary>
+        /// <param name="draftName"></param>
+        /// <param name="studyName"></param>
+        /// <param name="CRFVersion"></param>
 		[StepDefinition(@"Draft ""([^""]*)"" in Study ""([^""]*)"" has been published to CRF Version ""([^""]*)""")]
 		public void Draft____InStudy____HasBeenPublishedToCRFVersion____(string draftName,string studyName, string CRFVersion)
 		{
 
 		}
 
-
+        /// <summary>
+        /// This is used only in the ignored DT12651.feature and SpecFlowFeature1.feature, consider removing or replacing usage with correct step
+        /// </summary>
+        /// <param name="table"></param>
 		[StepDefinition(@"following Study assignments exist")]
 		public void FollowingStudyAssignmentsExist(Table table)
 		{
@@ -72,7 +98,11 @@ namespace Medidata.RBT.Features.Rave
 			}
         }
 
-
+        /// <summary>
+        /// Upload an xml upload draft to multiple environments
+        /// </summary>
+        /// <param name="draftName">The draft to upload</param>
+        /// <param name="tableEnvs">The environments to upload the drafts to</param>
 		[StepDefinition(@"xml draft ""([^""]*)"" is Uploaded with Environments")]
 		public void XmlDraft____IsUploadedWithEnvironmentName____(string draftName, Table tableEnvs)
 		{

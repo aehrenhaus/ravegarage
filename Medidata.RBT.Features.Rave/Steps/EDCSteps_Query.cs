@@ -12,15 +12,18 @@ using TechTalk.SpecFlow.Assist;
 
 namespace Medidata.RBT.Features.Rave
 {
+    /// <summary>
+    /// Steps pertaining to EDC
+    /// </summary>
 	public partial class EDCSteps
     {
-
-
         #region Verify with table
 
-
-
-        //table, logline, not exist
+        /// <summary>
+        /// table, logline, not exist
+        /// </summary>
+        /// <param name="logLine"></param>
+        /// <param name="table"></param>
 		[StepDefinition(@"I verify Query is not displayed on log line (\d+)")]
 		public void IVerifyQueryIsNotDisplayedOnLogline____(int logLine, Table table)
 		{
@@ -29,7 +32,11 @@ namespace Medidata.RBT.Features.Rave
 			Assert.IsFalse(canFind, "Query exists");
 		}
 
-		//table, logline exist
+        /// <summary>
+        /// table, logline exist
+        /// </summary>
+        /// <param name="logLine"></param>
+        /// <param name="table"></param>
 		[StepDefinition(@"I verify Query is displayed on log line (\d+)")]
 		public void IVerifyQueryIsDisplayedOnLogline____(int logLine, Table table)
 		{
@@ -38,14 +45,13 @@ namespace Medidata.RBT.Features.Rave
 			Assert.IsTrue(canFind, "Query doesn't exist");
 		}
 
-		//table, not eixst
+        /// <summary>
+        /// table, not exist
+        /// </summary>
+        /// <param name="table"></param>
 		[StepDefinition(@"I verify Query is not displayed")]
 		public void IVerifyQueryIsNotDisplayed(Table table)
 		{
-            //var filter = table.CreateInstance<QuerySearchModel>();
-            //bool canFind = CurrentPage.As<CRFPage>().CanFindQuery( filter);
-            //Assert.IsFalse(canFind, "Query exists");
-            
             bool canFind = false;
             var filters = table.CreateSet<QuerySearchModel>();
             foreach (var filter in filters)
@@ -53,10 +59,12 @@ namespace Medidata.RBT.Features.Rave
                 canFind = CurrentPage.As<CRFPage>().CanFindQuery(filter);
             }
             Assert.IsFalse(canFind, "One or More Queries exist");
-
 		}
 
-		//table ,exist
+        /// <summary>
+        /// table, exist
+        /// </summary>
+        /// <param name="table"></param>
 		[StepDefinition(@"I verify Query is displayed")]
 		public void IVerifyQueryIsDisplayed(Table table)
 		{
@@ -67,15 +75,14 @@ namespace Medidata.RBT.Features.Rave
                     "One or More Queries do not exist");
             }
 		}
-
-
-
 		#endregion 
 
 		#region No query at all
 
-
-		//no query
+        /// <summary>
+        /// no query
+        /// </summary>
+        /// <param name="fieldNames"></param>
 		[StepDefinition(@"I verify Field ""([^""]*)"" has no Query")]
 		public void IVerifyField____HasNoQuery(string fieldNames)
 		{
@@ -84,7 +91,11 @@ namespace Medidata.RBT.Features.Rave
 			Assert.IsFalse(canFind, "Queries found");
 		}
 
-		//no query, logline
+        /// <summary>
+        /// no query, logline
+        /// </summary>
+        /// <param name="fieldNames"></param>
+        /// <param name="logline"></param>
 		[StepDefinition(@"I verify Field ""([^""]*)"" has no Query on log line (\d+)")]
 		public void IVerifyField____HasNoQuery(string fieldNames, int logline)
 		{
@@ -97,7 +108,12 @@ namespace Medidata.RBT.Features.Rave
 
 		#region Inline verification
 
-		// not displayed , logline
+        /// <summary>
+        /// not displayed, logline
+        /// </summary>
+        /// <param name="message"></param>
+        /// <param name="fieldNames"></param>
+        /// <param name="logLine"></param>
 		[StepDefinition(@"I verify Query with message ""([^""]*)"" is not displayed on Field ""([^""]*)"" on log line (\d+)")]
 		public void IVerifyQueryWithMesage____IsNotDisplayedOnField____OnLogline____(string message, string fieldNames, int logLine)
 		{
@@ -106,7 +122,12 @@ namespace Medidata.RBT.Features.Rave
 			Assert.IsFalse(canFind, "Can find query");
 		}
 
-		// displayed , logline
+        /// <summary>
+        /// displayed, logline
+        /// </summary>
+        /// <param name="message"></param>
+        /// <param name="fieldNames"></param>
+        /// <param name="logLine"></param>
 		[StepDefinition(@"I verify Query with message ""([^""]*)"" is displayed on Field ""([^""]*)"" on log line (\d+)")]
 		public void IVerifyQueryWithMesage____IsDisplayedOnField____OnLogline____(string message, string fieldNames, int logLine)
 		{
@@ -115,7 +136,11 @@ namespace Medidata.RBT.Features.Rave
 			Assert.IsTrue(canFind, "Can't find query");
 		}
 
-		//displayed
+        /// <summary>
+        /// displayed
+        /// </summary>
+        /// <param name="message"></param>
+        /// <param name="fieldNames"></param>
 		[StepDefinition(@"I verify Query with message ""([^""]*)"" is displayed on Field ""([^""]*)""")]
 		public void IVerifyQueryWithMessage____IsDisplayedOnField____(string message, string fieldNames)
 		{
@@ -125,7 +150,11 @@ namespace Medidata.RBT.Features.Rave
 			Assert.IsTrue(canFind, "Can't find query");
 		}
 
-		//not displayed
+        /// <summary>
+        /// not displayed
+        /// </summary>
+        /// <param name="message"></param>
+        /// <param name="fieldNames"></param>
 		[StepDefinition(@"I verify Query with message ""([^""]*)"" is not displayed on Field ""([^""]*)""")]
 		public void IVerifyQueryWithMessage____IsNotDisplayedOnField____(string message, string fieldNames)
 		{
@@ -134,7 +163,11 @@ namespace Medidata.RBT.Features.Rave
 			Assert.IsFalse(canFind, "Can find query");
 		}
 
-		//RR, displayed
+        /// <summary>
+        /// RR, displayed
+        /// </summary>
+        /// <param name="message"></param>
+        /// <param name="fieldNames"></param>
 		[StepDefinition(@"I verify Requires Response Query with message ""([^""]*)"" is displayed on Field ""([^""]*)""")]
 		public void IVerifyRequiresResponseQueryWithMessage____IsDisplayedOnField____(string message, string fieldNames)
 		{
@@ -143,7 +176,11 @@ namespace Medidata.RBT.Features.Rave
 			Assert.IsTrue(canFind, "Can't find Requres Response query");
 		}
 
-		//not RR, displayed
+        /// <summary>
+        /// not RR, displayed
+        /// </summary>
+        /// <param name="message"></param>
+        /// <param name="fieldNames"></param>
 		[StepDefinition(@"I verify Not Requires Response Query with message ""([^""]*)"" is displayed on Field ""([^""]*)""")]
 		public void IVerifyNotRequiresResponseQueryWithMessage____IsDisplayedOnField____(string message, string fieldNames)
         {
@@ -152,8 +189,11 @@ namespace Medidata.RBT.Features.Rave
             Assert.IsTrue(canFind, "Can't find Not Requires Response query");
         }
 
-
-		//closed, displayed
+        /// <summary>
+        /// closed, displayed
+        /// </summary>
+        /// <param name="message"></param>
+        /// <param name="fieldNames"></param>
 		[StepDefinition(@"I verify closed Query with message ""([^""]*)"" is displayed on Field ""([^""]*)""")]
 		public void IVerifyClosedQueryWithMessage____IsDisplayedOnField____(string message, string fieldNames)
 		{
@@ -161,22 +201,28 @@ namespace Medidata.RBT.Features.Rave
 			bool canFind = CurrentPage.As<CRFPage>().CanFindQuery(filter);
 			Assert.IsTrue(canFind, "Can't find closed query");
 		}
-
-
 		#endregion
 
 		#region Close ,Cancel ,Answer
 
-		//answer
+        /// <summary>
+        /// answer
+        /// </summary>
+        /// <param name="message"></param>
+        /// <param name="fieldName"></param>
+        /// <param name="answer"></param>
 		[StepDefinition(@"I answer the Query ""([^""]*)"" on Field ""([^""]*)"" with ""([^""]*)""")]
 		public void IAnswerTheQueryOnField____With____(string message, string fieldName, string answer)
 		{
 			CRFPage page = CurrentPage.As<CRFPage>();
 			page.AnswerQuery(message, fieldName, answer);
-
 		}
 
-		//answer with random text
+        /// <summary>
+        /// answer with random text
+        /// </summary>
+        /// <param name="message"></param>
+        /// <param name="fieldNames"></param>
 		[StepDefinition(@"I answer the Query ""([^""]*)"" on Field ""([^""]*)""")]
 		public void IAnswerTheQueryOn____(string message, string fieldNames)
 		{
@@ -184,16 +230,22 @@ namespace Medidata.RBT.Features.Rave
 			page.AnswerQuery(message, fieldNames, System.DateTime.Today.Ticks.ToString());
 		}
 
-		//answer the only query
+        /// <summary>
+        /// answer the only query
+        /// </summary>
+        /// <param name="fieldName"></param>
+        /// <param name="answer"></param>
 		[StepDefinition(@"I answer the only Query on Field ""([^""]*)"" with ""([^""]*)""")]
 		public void IAnswerTheOnlyQueryOnField____With____(string fieldName, string answer)
 		{
 			CRFPage page = CurrentPage.As<CRFPage>();
 			page.AnswerQuery(null, fieldName, answer);
-
 		}
 
-		//answer the only query with random text
+        /// <summary>
+        /// answer the only query with random text
+        /// </summary>
+        /// <param name="fieldNames"></param>
 		[StepDefinition(@"I answer the only Query on Field ""([^""]*)""")]
 		public void IAnswerTheOnlyQueryOn____(string fieldNames)
 		{
@@ -201,15 +253,22 @@ namespace Medidata.RBT.Features.Rave
 			page.AnswerQuery(null, fieldNames, System.DateTime.Today.Ticks.ToString());
 		}
 
+        /// <summary>
+        /// Answer the query. Never used.
+        /// </summary>
+        /// <param name="table"></param>
 		[StepDefinition(@"I answer the Query")]
 		public void IAnswerTheQuery(Table table)
 		{
 			var model = table.CreateInstance<QuerySearchModel>();
 			CurrentPage.As<CRFPage>().AnswerQuery(model.QueryMessage, model.Field, model.Answer);
-	
 		}
 
-		//cancel
+        /// <summary>
+        /// cancel
+        /// </summary>
+        /// <param name="message"></param>
+        /// <param name="fieldName"></param>
 		[StepDefinition(@"I cancel the Query ""([^""]*)"" on Field ""([^""]*)""")]
 		public void ICancelTheQueryOnField____With____(string message, string fieldName)
 		{
@@ -217,7 +276,10 @@ namespace Medidata.RBT.Features.Rave
             page.CancelQuery(message, fieldName);
 		}
 
-		//cancel the only query
+        /// <summary>
+        /// cancel the only query
+        /// </summary>
+        /// <param name="fieldName"></param>
 		[StepDefinition(@"I cancel the only Query on Field ""([^""]*)""")]
 		public void ICancelTheQueryOnField____With____(string fieldName)
 		{
@@ -225,8 +287,11 @@ namespace Medidata.RBT.Features.Rave
 			page.CancelQuery(null, fieldName);
 		}
 
-
-		//close 
+        /// <summary>
+        /// close
+        /// </summary>
+        /// <param name="message"></param>
+        /// <param name="fieldNames"></param>
         [StepDefinition(@"I close the Query ""([^""]*)"" on Field ""([^""]*)""")]
         public void ICloseTheQuery____OnField____(string message, string fieldNames)
         {
@@ -234,7 +299,10 @@ namespace Medidata.RBT.Features.Rave
             page.CloseQuery(message, fieldNames);
         }
 
-		//close the only  query
+        /// <summary>
+        /// close the only query
+        /// </summary>
+        /// <param name="fieldNames"></param>
 		[StepDefinition(@"I close the only Query on Field ""([^""]*)""")]
 		public void ICloseTheQueryOnField____(string fieldNames)
 		{

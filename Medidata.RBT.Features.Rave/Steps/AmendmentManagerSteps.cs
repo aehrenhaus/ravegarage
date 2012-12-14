@@ -32,13 +32,16 @@ namespace Medidata.RBT.Features.Rave
             TestContext.CurrentPage.As<AMMigrationHomePage>().NavigateToStudy(studyName);
         }
 
+        /// <summary>
+        /// Publish checks for a study
+        /// </summary>
+        /// <param name="studyName">Study to publish checks for</param>
         [Given(@"I go to Publish Checks for study ""(.*?)""")]
         public void IGoToPublishChecksForStudy____(string studyName)
         {
             new PublishChecksHomePage()
                 .NavigateToStudy(studyName);
         }
-
 
         /// <summary>
         /// Selects the source crf version
@@ -64,8 +67,6 @@ namespace Medidata.RBT.Features.Rave
                 .SelectCurrentCRF(currentCrfName);
         }
 
-
-
         /// <summary>
         /// Select the target crf version
         /// AM specific implementation and naming convention
@@ -89,7 +90,6 @@ namespace Medidata.RBT.Features.Rave
             TestContext.CurrentPage.As<PublishChecksHomePage>()
                 .SelectReferenceCRF(referenceCrfName);
         }
-
 
         /// <summary>
         /// Selects the specified form from the Forms dropdown on Publish Checks page.
@@ -116,6 +116,11 @@ namespace Medidata.RBT.Features.Rave
                 .Search();
         }
 
+        /// <summary>
+        /// Check Publish, Run, or Inactivate next to an edit check
+        /// </summary>
+        /// <param name="action">Publish, Run, or Inactivate</param>
+        /// <param name="name">Edit check to check</param>
         [StepDefinition(@"I check ""(Publish|Run|Inactivate)"" for ""(.*?)"" in Edit Checks")]
         public void ICheck____For____InEditChecks(string action, string name)
         {
@@ -135,11 +140,6 @@ namespace Medidata.RBT.Features.Rave
                     break;
             }//End switch
         }
-
-
-
-
-
 
         /// <summary>
         /// Create the migration plan

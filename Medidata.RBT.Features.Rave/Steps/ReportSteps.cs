@@ -8,11 +8,16 @@ using System;
 
 namespace Medidata.RBT.Features.Rave
 {
+    /// <summary>
+    /// Steps pertaining to reports
+    /// </summary>
 	[Binding]
 	public class ReportSteps : BrowserStepsBase
 	{
-
-
+        /// <summary>
+        /// Obsolete method
+        /// </summary>
+        /// <param name="table"></param>
         [StepDefinition(@"I verify text")]
         [Obsolete("Use step definitions from Medidata.RBT.Common.Steps.IVerifyExistSteps")]
         public void IVerifyText(Table table)
@@ -111,6 +116,5 @@ namespace Medidata.RBT.Features.Rave
             bool result = CurrentPage.As<CrystalReportPage>().VerifyDuplicateRecordsAreNotDisplayed();
             Assert.IsTrue(result);
         }
-
 	}
 }

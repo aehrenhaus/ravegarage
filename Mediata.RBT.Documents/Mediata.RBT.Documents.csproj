@@ -38,9 +38,6 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\ExternalDlls\RazorEngine.dll</HintPath>
     </Reference>
-    <Reference Include="RazorEngine.Web">
-      <HintPath>..\ExternalDlls\RazorEngine.Web.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Runtime.Serialization" />

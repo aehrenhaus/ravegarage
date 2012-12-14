@@ -5,10 +5,16 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Medidata.RBT.Features.Rave
 {
+    /// <summary>
+    /// Steps pertaining to TSDV
+    /// </summary>
 	[Binding]
 	public class TsdvSteps : BrowserStepsBase
 	{
-
+        /// <summary>
+        /// Verify that tiers in the subject override table are not in the specified order
+        /// </summary>
+        /// <param name="table">The order of the the tiers in the subject override table</param>
         [StepDefinition(@"I verify that Tiers in subject override table are not in the following order")]
         public void IVerifyThatTiersInSubjectOverrideTableAreNotInTheFollowingOrder(Table table)
         {
@@ -16,26 +22,44 @@ namespace Medidata.RBT.Features.Rave
             Assert.IsTrue(isSubjectRandomized, "Subjects enrolled sequentially");
         }
 
+        /// <summary>
+        /// Verify that there is not a repeating pattern in every rowsTotal rows in a list of rowsTotal amount of rows
+        /// </summary>
+        /// <param name="rowsOfGroup">Check for a repeating pattern every amount of rows equal to this</param>
+        /// <param name="rowsTotal">The amount of rows to check for the repeating pattern</param>
 		[StepDefinition(@"I verify every (.*) rows of subjects in (.*) rows do not have tiers pattern")]
 		public void IVerifyEvery____RowsOfSubjectsIn____RowsDoNotHaveTiersPattern(int rowsOfGroup, int rowsTotal)
 		{
 			CurrentPage.As<SubjectOverridePage>().AsserEachGroupOfSubjectsHaveDifferentTierNames(rowsOfGroup, rowsTotal);
 		}
 
-
+        /// <summary>
+        /// Verify that out of a table of permutations that one has been used every blockSize of subjects
+        /// </summary>
+        /// <param name="blockSize">The amount of subjects to search</param>
+        /// <param name="table">The table of permutations to look for</param>
 		[StepDefinition(@"I verify that one of the following Permutations has been used every (.+) subjects")]
 		public void IVerifyThatOneOfTheFolowingPermutationsHasBeenUsedEvery____Subjects(int blockSize, Table table)
 		{
 			CurrentPage.As<SubjectOverridePage>().CheckRepeatPattern(blockSize, table.CreateSet<Permutations>());
 		}
 
+        /// <summary>
+        /// Verify that out of a table of permutations that one has been used every blockSize of subjects with the passed in name
+        /// </summary>
+        /// <param name="blockSize">The amount of subjects to search</param>
+        /// <param name="name">The subject to search for</param>
+        /// <param name="table">The table of permutations to look for</param>
 		[StepDefinition(@"I verify that one of the following Permutations has been used every (.+) subjects with name (.+)")]
 		public void IVerifyThatOneOfTheFolowingPermutationsHasBeenUsedEvery____Subjects(int blockSize, string name, Table table)
 		{
 			CurrentPage.As<SubjectOverridePage>().CheckRepeatPattern(blockSize, table.CreateSet<Permutations>(), name);
 		}
 
-
+        /// <summary>
+        /// Include a certain number of subjects in TSDV
+        /// </summary>
+        /// <param name="numSubjects">Number of subjects to include</param>
         [StepDefinition(@"I include ([^""]*) subjects in TSDV")]
         public void IInclude____SubjectsInTSDV(string numSubjects)
         {
@@ -44,12 +68,18 @@ namespace Medidata.RBT.Features.Rave
                 CurrentPage.As<SubjectIncludePage>().IncludeSubjects(num);
         }
 
+        /// <summary>
+        /// Inactivate a TSDV plan
+        /// </summary>
         [StepDefinition(@"I inactivate the plan")]
         public void IInactivatePlan()
         {
             CurrentPage.As<BlockPlansPageBase>().InactivatePlan();
         }
 
+        /// <summary>
+        /// Activate a TSDV plan
+        /// </summary>
         [StepDefinition(@"I activate the plan")]
         public void IActivatePlan()
         {
@@ -86,25 +116,24 @@ namespace Medidata.RBT.Features.Rave
         [StepDefinition(@"I select the tier ""([^""]*)"" and Subject Count ""([^""]*)""")]
         public void ISelectTier____AndSubjectCount____(string tierName, string subjectCount)
         {
-          
 			CurrentPage.As<BlockPlansPageBase>().ApplyTierWithSubjectCount(tierName, subjectCount);
-           
         }
 
-
+        /// <summary>
+        /// Remove all custom tiers
+        /// </summary>
 		[StepDefinition(@"I remove all custom tiers")]
 		public void IRemoveAllCustomTiers()
 		{
 			CurrentPage.As<TiersPage>().RemoveTiers();
 		}
 
-
         /// <summary>
-        /// 
+        /// Create a custom tier with a passed in name, description, and table
         /// </summary>
-        /// <param name="tierName"></param>
-        /// <param name="description"></param>
-        /// <param name="table"></param>
+        /// <param name="tierName">Name of the tier</param>
+        /// <param name="description">Description of the tier</param>
+        /// <param name="table">Table of the tier</param>
         [StepDefinition(@"I create a custom tier named ""([^""]*)"" and description ""([^""]*)"" with table")]
         public void ICreateACustomTierNamed____AndDescription____WithTable(string tierName, string description, Table table)
         {
@@ -116,13 +145,12 @@ namespace Medidata.RBT.Features.Rave
         /// <summary>
         /// Step definition to create a new plan using plan name and data entry role specified
         /// </summary>
-        /// <param name="planName"></param>
-        /// <param name="dataEntryRole"></param>
+        /// <param name="planName">The name of the block plan</param>
+        /// <param name="dataEntryRole">The data entry role of the block plan</param>
         [StepDefinition(@"I create a new block plan named ""([^""]*)"" with Data entry Role ""([^""]*)""")]
         public void ICreateANewBlockPlanNamed____WithDataEntryRole____(string planName, string dataEntryRole)
         {
               CurrentPage.As<BlockPlansPageBase>().CreateNewBlockPlan(planName, dataEntryRole);
         }
-
     }
 }
