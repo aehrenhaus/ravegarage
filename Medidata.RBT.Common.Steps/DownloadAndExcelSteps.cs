@@ -97,7 +97,7 @@ namespace Medidata.RBT.Common.Steps
 						string expected = row[column]??"";
 						string actual = sheet[rowIndex, column] as string??"";
 
-						if (expected != null && actual != null && expected.Trim()!=actual.Trim())
+						if (actual != null && expected.Trim()!=actual.Trim())
 							throw new Exception(string.Format(
 								"Sheet data does not match, (Row {0},Column {1})\r\nExpected:\"{2}\", actual:\"{3}\"",
 								rowIndex,
