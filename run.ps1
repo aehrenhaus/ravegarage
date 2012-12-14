@@ -19,8 +19,8 @@ if($args.Count -eq 1)
 
 if($args.Count -eq 1)
 {
-    
-    $categories = $categories | ?{ $_ -eq $filter}
+    $filter = $filter.Split(',');
+    $categories = $categories | ?{ $filter.Contains($_) }
 }
 
 
