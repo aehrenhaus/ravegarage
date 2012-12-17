@@ -5,6 +5,9 @@ using OpenQA.Selenium;
 
 namespace Medidata.RBT.Common.Steps
 {
+    /// <summary>
+    /// Steps pertaining to all pages
+    /// </summary>
 	[Binding]
 	public class IPageSteps : BrowserStepsBase
 	{
@@ -20,6 +23,12 @@ namespace Medidata.RBT.Common.Steps
 			CurrentPage = CurrentPage.ChooseFromDropdown(identifier, text);
 		}
 
+        /// <summary>
+        /// Unused step
+        /// </summary>
+        /// <param name="objectType"></param>
+        /// <param name="text"></param>
+        /// <param name="identifier"></param>
 		[StepDefinition(@"I choose ([^""]*) ""([^""]*)"" from ""([^""]*)""")]
 		public void IChoose________From____(string objectType, string text, string identifier)
 		{
@@ -157,8 +166,11 @@ namespace Medidata.RBT.Common.Steps
 
 		}
 
-
-
+        /// <summary>
+        /// Unused step
+        /// </summary>
+        /// <param name="objectType"></param>
+        /// <param name="linkText"></param>
 		[StepDefinition(@"I select (.+) link ""([^""]*)""")]
 		public void ISelect____Type____Link____(string objectType, string linkText)
 		{
@@ -169,10 +181,7 @@ namespace Medidata.RBT.Common.Steps
 
 			linkText = SpecialStringHelper.Replace(linkText);
 			CurrentPage = CurrentPage.ClickLink(linkText, objectType);
-
 		}
-
-
 
 		/// <summary>
 		/// I select link(partial) "Mediflex" in "Header"
@@ -182,9 +191,7 @@ namespace Medidata.RBT.Common.Steps
 		{
 			linkText = SpecialStringHelper.Replace(linkText);
 			CurrentPage = CurrentPage.ClickLink(linkText, null, areaName, true);
-
 		}
-
 
 		/// <summary>
 		/// I select "Study" link "Mediflex" in "Header"
@@ -198,11 +205,7 @@ namespace Medidata.RBT.Common.Steps
 			}
 			linkText = SpecialStringHelper.Replace(linkText);
 			CurrentPage = CurrentPage.ClickLink(linkText, objectType, areaName);
-
 		}
-
-
-
 
 		/// <summary>
 		/// Navigate to an other page.
@@ -231,8 +234,6 @@ namespace Medidata.RBT.Common.Steps
 			text = SpecialStringHelper.Replace(text);
 			CurrentPage.Type(identifier, text);
 		}
-
-
 
 		/// <summary>
 		/// Simulates the key stroke to the browser

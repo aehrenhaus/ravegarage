@@ -250,7 +250,7 @@ namespace Medidata.RBT.PageObjects.Rave
 
                 return exists;
             }
-            catch (Exception ex)
+            catch
             { 
                 return false; 
             }

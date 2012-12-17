@@ -4,8 +4,6 @@ using System.Linq;
 using System.Text;
 using OpenQA.Selenium;
 using Medidata.RBT.SeleniumExtension;
-using Medidata.RBT.SeleniumExtension;
-
 
 namespace Medidata.RBT.PageObjects.Rave
 {

@@ -7,6 +7,9 @@ using Medidata.RBT.SeleniumExtension;
 
 namespace Medidata.RBT.Common.Steps
 {
+    /// <summary>
+    /// Steps to verify objects exists
+    /// </summary>
     [Binding]
     public class IVerifyExistSteps : BrowserStepsBase
     {
@@ -43,7 +46,6 @@ namespace Medidata.RBT.Common.Steps
             Assert.IsTrue(result, "Not all rows have been found in the table");
         }
 
-
 		/// <summary>
 		/// 
 		/// </summary>
@@ -59,7 +61,7 @@ namespace Medidata.RBT.Common.Steps
 		/// 
 		/// </summary>
 		/// <param name="text"></param>
-		/// <param name="identifier"></param>
+        /// <param name="areaIdentifier"></param>
 		[StepDefinition(@"I verify text ""([^""]*)"" exists in ""([^""]*)""")]
 		public void IVerifyText____ExistsIn____(string text, string areaIdentifier)
 		{
@@ -111,6 +113,11 @@ namespace Medidata.RBT.Common.Steps
 			Assert.IsNotNull(link, String.Format("Link does not exist :{0}", linkText));
 		}
 
+        /// <summary>
+        /// Unused step
+        /// </summary>
+        /// <param name="identifier"></param>
+        /// <param name="areaIdentifer"></param>
 		[StepDefinition(@"I should see ""([^""]*)"" in ""([^""]*)""")]
 		public void IShouldSee____In____(string identifier,string areaIdentifer)
 		{
@@ -118,6 +125,10 @@ namespace Medidata.RBT.Common.Steps
 			Assert.IsTrue(exist, String.Format("Does exist :{0}", identifier));
 		}
 
+        /// <summary>
+        /// Unused step
+        /// </summary>
+        /// <param name="identifier"></param>
 		[StepDefinition(@"I should see ""([^""]*)""")]
 		public void IShouldSee____(string identifier)
 		{

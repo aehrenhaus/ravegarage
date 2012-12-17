@@ -26,8 +26,12 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
 			if (obj == null)
 				return false;
 			return b.ProjectName == this.ProjectName && b.Environment == this.Environment && b.SiteName == this.SiteName;
-		
 		}
+
+        public override int GetHashCode()
+        {
+            return base.GetHashCode();
+        }
 
 		public override string ToString()
 		{
