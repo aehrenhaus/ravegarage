@@ -14,68 +14,35 @@ namespace Medidata.RBT.Features.Rave
     [Binding]
     public class SubjectPageSteps : BrowserStepsBase
     {
-
         /// <summary>
-        /// Step def to click on add icon which will bring user to subject level audit page
+        /// Method to check if ADD event lock icon is or is not displayed on subject page
         /// </summary>
-        [StepDefinition(@"I click Add Event lock icon")]
-        public void IClickAddEventLockIcon()
+        /// <param name="not">not is used when the button should not be seen</param>
+        [StepDefinition(@"I can (not )?see Add Event lock icon")]
+        public void ICanSeeAddEventLockIcon(string not)
         {
-            bool result = false;
-
-            IWebElement element = Browser.FindElementById("_ctl0_Content_SubjectAddEvent_DisableMatrixHyperlink");
-            if (element != null)
-            {
-                result = true;
-                element.Click();
-            }
-            Assert.IsTrue(result);
-        }
-
-        /// <summary>
-        /// Method to check if ADD event lock icon is displayed on subject page
-        /// </summary>
-        [StepDefinition(@"I can see Add Event lock icon")]
-        public void ICanSeeAddEventLockIcon()
-        {
-            Assert.IsNotNull(Browser.TryFindElementById("_ctl0_Content_SubjectAddEvent_DisableMatrixImage"));
-        }
-
-        /// <summary>
-        /// Method to check if ADD event lock icon is not displayed on subject page
-        /// </summary>
-        [StepDefinition(@"I can not see Add Event lock icon")]
-        public void ICanNotSeeAddEventLockIcon()
-        {
-            Assert.IsNull(Browser.TryFindElementById("_ctl0_Content_SubjectAddEvent_DisableMatrixImage"));
+            if(not.ToLower().Equals("not "))
+                Assert.IsNull(Browser.TryFindElementById("_ctl0_Content_SubjectAddEvent_DisableMatrixImage"));
+            else
+                Assert.IsNotNull(Browser.TryFindElementById("_ctl0_Content_SubjectAddEvent_DisableMatrixImage"));
         }
 
         /// <summary>
         /// Verify that the specified button is visible
         /// </summary>
+        /// <param name="not">not is used when the button should not be seen</param>
         /// <param name="btnValue">The value of the button (the text within it)</param>
-        [StepDefinition(@"I can see ""([^""]*)"" button")]
-        [StepDefinition(@"I can see ""([^""]*)"" radio button")]
-        public void ICanSee____Button(string btnValue)
+        [StepDefinition(@"I can (not )?see ""([^""]*)"" button")]
+        [StepDefinition(@"I can (not )?see ""([^""]*)"" radio button")]
+        public void ICanSee____Button(string not, string btnValue)
         {
             bool canSee = CurrentPage.As<IVerifySomethingExists>()
                 .VerifySomethingExist(null, "control", btnValue, true);
 
-            Assert.IsTrue(canSee);
-        }
-
-        /// <summary>
-        /// Verify that the specified button is not visible
-        /// </summary>
-        /// <param name="btnValue">The value of the button (the text within it)</param>
-        [StepDefinition(@"I can not see ""([^""]*)"" button")]
-        [StepDefinition(@"I can not see ""([^""]*)"" radio button")]
-        public void ICanNotSee____Button(string btnValue)
-        {
-			bool canSee = CurrentPage.As<IVerifySomethingExists>()
-				 .VerifySomethingExist(null, "control", btnValue, true);
-
-            Assert.IsFalse(canSee);
+            if (not.ToLower().Equals("not "))
+                Assert.IsFalse(canSee);
+            else
+                Assert.IsTrue(canSee);
         }
 
         /// <summary>
@@ -159,28 +126,20 @@ namespace Medidata.RBT.Features.Rave
         }
 
         /// <summary>
-        /// Verify link or label is visible
+        /// Verify link or label is or is not visible
         /// </summary>
+        /// <param name="not">not is used when the link or label should not be seen</param>
         /// <param name="label">The text of the link or label</param>
-        [StepDefinition(@"I can see link ""([^""]*)""")]
-        [StepDefinition(@"I can see the label ""([^""]*)""")]
-        public void ICanSeeLink(string label)
+        [StepDefinition(@"I can (not )?see link ""([^""]*)""")]
+        [StepDefinition(@"I can (not )?see the label ""([^""]*)""")]
+        public void ICanSeeLink(string not, string label)
         {
 			bool result = CurrentPage.As<IVerifySomethingExists>().VerifySomethingExist(null,null,label);
 
-            Assert.IsTrue(result);
-        }
-
-        /// <summary>
-        /// Verify link or label is not visible
-        /// </summary>
-        /// <param name="label">The text of the link or label</param>
-        [StepDefinition(@"I can not see link ""([^""]*)""")]
-        public void ICanNotSeeLink(string label)
-        {
-			bool result = CurrentPage.As<IVerifySomethingExists>().VerifySomethingExist(null, null, label);
-
-            Assert.IsFalse(result);
+            if (not.ToLower().Equals("not "))
+                Assert.IsFalse(result);
+            else
+                Assert.IsTrue(result);
         }
 
         /// <summary>

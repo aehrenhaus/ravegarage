@@ -39,7 +39,5 @@ namespace Medidata.RBT.Features.Rave
         {
             CurrentPage.As<UnitConversionsPage>().DeleteConversion(table.CreateInstance<UnitConversionModel>());
         }
-
-
     }
 }

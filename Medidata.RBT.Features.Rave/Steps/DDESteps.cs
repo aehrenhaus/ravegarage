@@ -20,7 +20,6 @@ namespace Medidata.RBT.Features.Rave
 		{
 			var page = CurrentPage.As<DDEPage>();
 			page.FillDataPoints(table.CreateSet<FieldModel>());
-
 		}
 
 		/// <summary>

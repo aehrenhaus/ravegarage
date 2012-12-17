@@ -420,7 +420,6 @@
     <Compile Include="Steps\ReportSteps.cs" />
     <Compile Include="Steps\UserAdministrationSteps.cs" />
     <Compile Include="Steps\LoginSteps.cs" />
-    <Compile Include="Steps\Seeding\MarkingSteps.cs" />
     <Compile Include="Steps\Seeding\StudySteps.cs" />
     <Compile Include="Steps\ArchitectSteps.cs" />
     <Compile Include="Steps\Seeding\RoleSteps.cs" />

@@ -18,16 +18,6 @@ namespace Medidata.RBT.Features.Rave
 	public class RoleSteps : BrowserStepsBase
 	{
         /// <summary>
-        /// Used only in ignored feature files
-        /// </summary>
-        /// <param name="roleName"></param>
-        /// <param name="actionNames"></param>
-		[StepDefinition(@"Role ""([^""]*)"" has Action ""([^""]*)""")]
-		public void Role____HasAction____(string roleName, string actionNames)
-		{
-		}
-
-        /// <summary>
         /// 
         /// </summary>
         /// <param name="roleName">name of the role</param>
