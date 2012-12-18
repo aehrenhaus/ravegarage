@@ -218,7 +218,7 @@ namespace Medidata.RBT.PageObjects.Rave
         #endregion
 
         #region INTERFACE IEDCFieldControl
-        public AuditsPage ClickAudit() { throw new NotImplementedException(); }
+        public override AuditsPage ClickAudit() { throw new NotImplementedException(); }
 	
         public override void EnterData(string text, ControlType controlType, string additionalData = "") {
             switch (controlType)
@@ -241,14 +241,14 @@ namespace Medidata.RBT.PageObjects.Rave
             }
         
         }
-        public bool HasDataEntered(string text) { throw new NotImplementedException(); }
-        public OpenQA.Selenium.IWebElement FindQuery(QuerySearchModel filter) { throw new NotImplementedException(); }
-        public void AnswerQuery(QuerySearchModel filter) { throw new NotImplementedException(); }
-        public void CloseQuery(QuerySearchModel filter) { throw new NotImplementedException(); }
-        public void CancelQuery(QuerySearchModel filter) { throw new NotImplementedException(); }
-        public void Check(string checkName) { throw new NotImplementedException(); }
-        public void Uncheck(string checkName) { throw new NotImplementedException(); }
-        public string StatusIconPathLookup(string lookupIcon) { throw new NotImplementedException(); }
+        public override bool HasDataEntered(string text) { throw new NotImplementedException(); }
+        public override OpenQA.Selenium.IWebElement FindQuery(QuerySearchModel filter) { throw new NotImplementedException(); }
+        public override void AnswerQuery(QuerySearchModel filter) { throw new NotImplementedException(); }
+        public override void CloseQuery(QuerySearchModel filter) { throw new NotImplementedException(); }
+        public override void CancelQuery(QuerySearchModel filter) { throw new NotImplementedException(); }
+        public override void Check(string checkName) { throw new NotImplementedException(); }
+        public override void Uncheck(string checkName) { throw new NotImplementedException(); }
+        public override string StatusIconPathLookup(string lookupIcon) { throw new NotImplementedException(); }
         #endregion
 
 

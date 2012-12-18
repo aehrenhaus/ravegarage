@@ -10,10 +10,12 @@ using System.IO;
 
 namespace Medidata.RBT.Common.Steps
 {
+    /// <summary>
+    /// Miscelaneous steps that don't fit anywhere else
+    /// </summary>
     [Binding]
     public class MiscSteps : BrowserStepsBase
     {
-
 		/// <summary>
 		/// Captures the screen of browser(if the browser supports) and save it to a local file in the configuared location
 		/// The captured files will be under the step itself in report.
@@ -81,12 +83,15 @@ namespace Medidata.RBT.Common.Steps
 			CurrentPage = TestContext.POFactory.GetPageByUrl(new Uri(Browser.Url));
         }
 
+        /// <summary>
+        /// Verify the current URL matches the passed in expected URL
+        /// </summary>
+        /// <param name="expectURL">The URL we expect the current page to be</param>
 		[StepDefinition(@"I verify current URL is ""([^""]*)""")]
 		public void IVerifyCurrentURLIs____(string expectURL)
 		{
 			Assert.AreEqual(expectURL, Browser.Url);
 		}
-
 
 		/// <summary>
 		/// pageName is the PO class name without the 'Page' part. 
@@ -107,7 +112,6 @@ namespace Medidata.RBT.Common.Steps
 			CurrentPage = page.NavigateToSelf(parameters);
 			Browser.WaitForDocumentLoad();
 		}
-
 
 		/// <summary>
 		/// pageName is the PO class name without the 'Page' part. 
@@ -147,30 +151,30 @@ namespace Medidata.RBT.Common.Steps
 			SpecialStringHelper.SetVar(varName, text);
 		}
 
-
-
-
 		/// <summary>
 		/// Wait for [timeValue] [timeUnit]
 		/// </summary>
 		/// <param name="timeValue"></param>
-		/// <param name="timeUnit"></param>
 		[StepDefinition(@"I wait for ([^""]*) seconds?")]
 		public void IWaitFor____Of____Seconds(int timeValue)
 		{
-	
-			System.Threading.Thread.Sleep(timeValue * 1000);
-
+            System.Threading.Thread.Sleep(timeValue * 1000);
 		}
 
+        /// <summary>
+        /// Sleep for a specified number of minutes
+        /// </summary>
+        /// <param name="timeValue">Number of minutes to wait</param>
 		[StepDefinition(@"I wait for ([^""]*) minutes?")]
 		public void IWaitFor____Of____Minutes(int timeValue)
 		{
-	
 			System.Threading.Thread.Sleep(timeValue * 60000);
-			
 		}
 
+        /// <summary>
+        /// Verify that a control is enabled
+        /// </summary>
+        /// <param name="controlName">The name of the control to verify</param>
 		[StepDefinition(@"I can see ""([^""]*)"" is enalbed")]
 		public void ICanSee____IsEnabled(string controlName)
 		{
@@ -178,13 +182,15 @@ namespace Medidata.RBT.Common.Steps
 			Assert.IsTrue(enabled,controlName+" is disabled!");
 		}
 
+        /// <summary>
+        /// Verify that a control is disabled
+        /// </summary>
+        /// <param name="controlName">The name of the control to verify</param>
 		[StepDefinition(@"I can see ""([^""]*)"" is disabled")]
 		public void ICanSee____IsDisabled(string controlName)
 		{
 			bool enabled = CurrentPage.As<IVerifyConstrolDisabled>().IsControlEnabled(controlName);
 			Assert.IsTrue(enabled, controlName + " is enabled!");
 		}
-
 	}
-
 }

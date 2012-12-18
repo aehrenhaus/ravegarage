@@ -22,7 +22,7 @@ namespace Medidata.RBT.PageObjects.Rave
             {
                 base.ClickLink(linkText);
             }
-            catch (Exception ex)
+            catch
             {
                 base.ClickLink("L" + linkText); //Adding localization support
             }

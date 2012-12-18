@@ -22,10 +22,10 @@ namespace Medidata.RBT.PageObjects.Rave
 	public class HomePage : BaseEDCPage, IHavePaginationControl, ICanHighlight, IVerifyRowsExist, ICanVerifyInOrder, ITaskSummaryContainer
 	{
 		[FindsBy(How = How.Id, Using = "_ctl0_Content_ListDisplayNavigation_txtSearch")]
-		IWebElement SearchBox;
+        IWebElement SearchBox { get; set; }
 
 		[FindsBy(How = How.Id, Using = "_ctl0_Content_ListDisplayNavigation_ibSearch")]
-		IWebElement SearchButton;
+        IWebElement SearchButton { get; set; }
 
 		/// <summary>
 		/// First suppose it is study table view. If the table exist, then find study inside
@@ -201,7 +201,7 @@ namespace Medidata.RBT.PageObjects.Rave
         /// </summary>
         /// <param name="formName">The name of the form to select</param>
         /// <returns>A new MonitorSiteSubjectPage</returns>
-        public SubjectPage SelectForm(string formName)
+        public override RavePageBase SelectForm(string formName)
         {
             IWebElement formFolderTable = Browser.FindElementById("TblOuter");
             formFolderTable.FindElement(By.LinkText(formName)).Click();

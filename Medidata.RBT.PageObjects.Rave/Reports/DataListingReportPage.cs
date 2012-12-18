@@ -52,7 +52,6 @@ namespace Medidata.RBT.PageObjects.Rave
 
 		public int CurrentPageNumber { get; private set; }
 
-        int lastValue = -1;
         public bool GoNextPage(string areaIdentifier)
         {
             int pageIndex = 0;

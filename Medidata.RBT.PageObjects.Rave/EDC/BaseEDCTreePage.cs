@@ -86,7 +86,7 @@ namespace Medidata.RBT.PageObjects.Rave
         /// </summary>
         /// <param name="formName">The form to select</param>
         /// <returns>The current CRFPage</returns>
-		public CRFPage SelectForm(string formName)
+		public virtual RavePageBase SelectForm(string formName)
 		{
 			IWebElement formFolderTable = Browser.TryFindElementById("_ctl0_LeftNav_EDCTaskList_TblTaskItems", true);
 			formFolderTable.FindElement(By.LinkText(formName)).Click();

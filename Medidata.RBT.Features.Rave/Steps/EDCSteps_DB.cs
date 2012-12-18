@@ -70,7 +70,7 @@ namespace Medidata.RBT.Features.Rave
         /// </summary>
         /// <param name="projectName">The project to verify</param>
         /// <param name="siteName">The site to verify</param>
-		[When(@"I verify the log message for query not opening event for Project ""([^""]*)"" and Site ""([^""]*)""")]
+        [StepDefinition(@"I verify the log message for query not opening event for Project ""([^""]*)"" and Site ""([^""]*)""")]
 		public void WhenIVerifyTheLogMessagesForQueryNotOpeningEventsForProjectEditCheckStudy3AndSiteEditCheckSite3(string projectName, string siteName)
 		{
 			var sql = "spVerifyQueryLog";

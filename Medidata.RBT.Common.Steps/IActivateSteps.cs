@@ -4,6 +4,9 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Medidata.RBT.Common.Steps
 {
+    /// <summary>
+    /// Steps pertaining to activation and deactivation
+    /// </summary>
     [Binding]
     public class IActivateSteps : BrowserStepsBase
     {
@@ -18,7 +21,6 @@ namespace Medidata.RBT.Common.Steps
 			CurrentPage.As<IActivatePage>().Inactivate(type, identifier);
 		}
 
-
 		/// <summary>
 		/// Activate something on page
 		/// </summary>
@@ -29,6 +31,5 @@ namespace Medidata.RBT.Common.Steps
 		{
 			CurrentPage.As<IActivatePage>().Activate(type, identifier);
 		}
-
 	}
 }

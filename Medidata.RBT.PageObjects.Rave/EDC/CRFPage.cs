@@ -211,7 +211,7 @@ namespace Medidata.RBT.PageObjects.Rave
             return new LandscapeLogField(this, 
                 fieldName, rowIndex);
         }
-        public IEDCFieldControl FindLandscapeLogField(string fieldName, int rowIndex, ControlType controlType = ControlType.Default)
+        public override IEDCFieldControl FindLandscapeLogField(string fieldName, int rowIndex, ControlType controlType = ControlType.Default)
         {
             switch (controlType)
             {

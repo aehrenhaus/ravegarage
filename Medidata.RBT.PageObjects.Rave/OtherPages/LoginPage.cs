@@ -18,7 +18,7 @@ namespace Medidata.RBT.PageObjects.Rave
 		}
 
 
-		[FindsBy(How = How.Id, Using = "LoginButton")] private IWebElement LoginButton;
+		[FindsBy(How = How.Id, Using = "LoginButton")] IWebElement LoginButton { get; set; }
 
 		/// <summary>
 		/// Login the default user from any page.

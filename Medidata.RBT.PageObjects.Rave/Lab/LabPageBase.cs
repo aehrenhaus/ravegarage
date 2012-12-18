@@ -76,7 +76,7 @@ namespace Medidata.RBT.PageObjects.Rave
         /// <summary>
         /// Select Range for Lab
         /// </summary>
-        public void SelectLabRange(IWebElement row)
+        public virtual void SelectLabRange(IWebElement row)
         {
             EnhancedElement checkButton = row.FindImagebuttons().FirstOrDefault(img => img.GetAttribute("id").EndsWith("_ImgBtnLabRanges"));
             checkButton.Click();
@@ -110,9 +110,9 @@ namespace Medidata.RBT.PageObjects.Rave
         int pageIndex = 0;
         int count = 0;
         int lastValue = -1;
-		public int CurrentPageNumber { get; private set; }
+        public virtual int CurrentPageNumber { get; set; }
 
-        public bool GoNextPage(string areaIdentifer)
+        public virtual bool GoNextPage(string areaIdentifer)
         {
             var pageTable = Browser.TryFindElementByPartialID("_LabsGrid").TryFindElementBy(By.XPath("./tbody/tr[last()]"));
 
@@ -141,17 +141,17 @@ namespace Medidata.RBT.PageObjects.Rave
             return true;
         }
 
-        public bool GoPreviousPage(string areaIdentifer)
+        public virtual bool GoPreviousPage(string areaIdentifer)
         {
             throw new NotImplementedException();
         }
 
-        public bool GoToPage(string areaIdentifer, int page)
+        public virtual bool GoToPage(string areaIdentifer, int page)
         {
             throw new NotImplementedException();
         }
 
-        public bool CanPaginate(string areaIdentifier)
+        public virtual bool CanPaginate(string areaIdentifier)
         {
             return true;
         }

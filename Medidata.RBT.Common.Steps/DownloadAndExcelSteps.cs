@@ -8,10 +8,16 @@ using TechTalk.SpecFlow.Assist;
 
 namespace Medidata.RBT.Common.Steps
 {
+    /// <summary>
+    /// Steps pertaining to downloading and verifying excel data
+    /// </summary>
 	[Binding]
 	public class DownloadAndExcelSteps : BrowserStepsBase
 	{
-		
+        /// <summary>
+        /// Click a button to download a file
+        /// </summary>
+        /// <param name="button">The value of the button to download (the text in the button)</param>
 		[StepDefinition(@"I click the ""([^""]*)"" button to download")]
 		public void IClickThe___ButtonToDownload(string button)
 		{
@@ -20,9 +26,13 @@ namespace Medidata.RBT.Common.Steps
 			TestContext.WaitForDownloadFinish();
 		}
 
-
-
-
+        /// <summary>
+        /// Click a button to upload a specific type of file and wait until some text is present to verify completion.
+        /// </summary>
+        /// <param name="buttonName">The value of the button to click to upload</param>
+        /// <param name="uploadControlIdentifier">Type of object to upload</param>
+        /// <param name="fileName">Name of the file to upload</param>
+        /// <param name="finishSignal">The text that verifies upload completion</param>
 		[StepDefinition(@"I click ""([^""]*)"" to upload ""([^""]*)"" file ""([^""]*)"" and wait until I see ""([^""]*)""")]
 		public void IClick____ToUpload____AndWaitUntilISee____(string buttonName, string uploadControlIdentifier, string fileName, string finishSignal)
 		{
@@ -34,6 +44,11 @@ namespace Medidata.RBT.Common.Steps
 			Browser.TryFindElementBy((b) => CurrentPage.GetElementByName(finishSignal),true, 60);
 		}
 
+        /// <summary>
+        /// Verify data from a downloaded spreadsheet
+        /// </summary>
+        /// <param name="name">The name of the downloaded spreadsheet</param>
+        /// <param name="table">The data to verify</param>
 		[StepDefinition(@"I verify ""([^""]*)"" spreadsheet data")]
 		public void IVerify___SpreadsheetData(string name, Table table)
 		{
@@ -66,9 +81,6 @@ namespace Medidata.RBT.Common.Steps
 					}
 				}
 			}
-
-
 		}
-
 	}
 }

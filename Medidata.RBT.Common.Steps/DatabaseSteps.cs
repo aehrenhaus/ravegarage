@@ -4,6 +4,9 @@ using System.IO;
 
 namespace Medidata.RBT.Common.Steps
 {
+    /// <summary>
+    /// Steps that require direct contact with the DB
+    /// </summary>
 	[Binding]
 	public class DatabaseSteps : BrowserStepsBase
 	{
@@ -22,9 +25,9 @@ namespace Medidata.RBT.Common.Steps
 		//}
 
 		/// <summary>
-		/// test
+		/// Run a sql script by name
 		/// </summary>
-		/// <param name="scriptName"></param>
+		/// <param name="scriptName">The name of the sql script to run</param>
 		[StepDefinition(@"I run SQL Script ""([^""]*)""")]
 		public void IRunSQLScript____(string scriptName)
 		{
@@ -36,7 +39,10 @@ namespace Medidata.RBT.Common.Steps
 		}
 
 
-
+        /// <summary>
+        /// Verify the result of a sql command
+        /// </summary>
+        /// <param name="table">The result you should see</param>
 		[StepDefinition(@"I should see SQL result")]
 		public void IShouldSeeResult(Table table)
 		{
@@ -45,23 +51,16 @@ namespace Medidata.RBT.Common.Steps
 
 		}
 
+        /// <summary>
+        /// Verify the result of a sql command that you should not see
+        /// </summary>
+        /// <param name="table">The result you should not see</param>
 		[StepDefinition(@"I should NOT see SQL result")]
 		public void IShouldNOTSeeResult(Table table)
 		{
 			var dataTable = Storage.GetScenarioLevelValue<System.Data.DataTable>(LastSqlResultTable);
 			AssertAreNOTSameTable(dataTable, table);
 		}
-
-        [StepDefinition(@"I verify the log message for query not opening event for Project ""([^""]*)"" and Site ""([^""]*)""")]
-        public void IVerifyTheLogMessagesForQueryNotOpeningEventsForProjectEditCheckStudy3AndSiteEditCheckSite3(string projectName, string siteName)
-        {
-            var sql = "spVerifyQueryLog";
-			var dataTable = DbHelper.ExecuteDataSet(sql, new object[] { projectName, siteName }).Tables[0];
-
-            SaveDataTable(dataTable);
-            Storage.SetScenarioLevelValue(LastSqlResultTable, dataTable);
-        }
-
 
 		#region Private
 
