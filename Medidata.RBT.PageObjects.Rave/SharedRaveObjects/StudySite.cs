@@ -30,7 +30,7 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
 
         public override int GetHashCode()
         {
-            return base.GetHashCode();
+            return this.ToString().GetHashCode();
         }
 
 		public override string ToString()
