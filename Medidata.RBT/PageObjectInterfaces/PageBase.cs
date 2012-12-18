@@ -319,6 +319,9 @@ namespace Medidata.RBT
                 url = url + "?" + querystring;
 
             Browser.Url = url;
+
+            Browser.WaitForPageToBeReady();
+            
             string modifiedUrl = Browser.Url;
             if (modifiedUrl.Contains("S(") && string.IsNullOrEmpty(contextSessionIdstring))
             {
