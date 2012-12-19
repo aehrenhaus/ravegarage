@@ -1,0 +1,103 @@
+﻿@{
+    ViewBag.Title = "StepDefReport";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@model List<Mediata.RBT.Documents.StepDefClass>
+		   
+@section header
+{
+<style>
+		ul
+		{
+		}
+		li
+		{
+			list-style: none;
+		}
+		li.method
+		{
+			margin: 5px;
+			padding: 5px;
+			border-bottom: 1px solid #ddd;
+		
+		}
+		
+		.comment
+		{
+			color:#008000;
+			font-size:12px;
+		}
+		
+		.nocomment
+		{
+			color:orange;
+		}
+		.page
+		{
+			font-weight:bold;
+		}
+		
+		.regex
+		{
+			color:gray;
+			size: 10px;
+			float: right;
+		}
+		.unused
+		{
+			color: red;
+		}
+	</style>
+}
+
+
+<h2>StepDefReport</h2>
+
+
+	<table>
+			
+		<tr>
+			<td>Total step def methods</td>
+			<td>@Model.SelectMany(x=>x.Methods).Count()</td>
+		</tr>
+		<tr>
+			<td>Unused methods</td>
+			<td>@Model.SelectMany(x => x.Methods).Count(x=>x.StepDefs.All(y=>y.Unused))</td>
+		</tr>
+		<tr>
+			<td>Total step defs</td>
+			<td>@Model.SelectMany(x=>x.Methods).SelectMany(x=>x.StepDefs).Count()</td>
+		</tr>
+		<tr>
+			<td>Unused step defs</td>
+			<td>@Model.SelectMany(x => x.Methods).SelectMany(x => x.StepDefs).Count(x => x.Unused))</td>
+		</tr>
+	</table>
+	
+
+	@foreach (var type in Model)
+		{
+		<h3>@type.Name (@type.Methods.Count)</h3>
+	
+		<ul>
+			@foreach (var method in type.Methods)
+			{
+				<li class="method">
+					@if (method.Comments != null)
+					{
+						<p class="comment"> @method.Comments</p>
+					}
+					  	else
+					{
+						<p class="comment nocomment">[No comments]</p>
+					}
+					<ul>	
+						@foreach (var stepDef in method.StepDefs)
+					  {
+						  <li class="@(stepDef.Unused ? "unused" : "")"> @stepDef.RegexWithArgName <span class="regex">@stepDef.Regex</span></li>
+					  }
+					</ul>
+				</li>
+			}
+		</ul>
+		}

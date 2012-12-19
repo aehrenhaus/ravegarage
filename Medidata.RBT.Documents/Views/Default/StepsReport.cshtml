@@ -1,0 +1,107 @@
+﻿@{
+	ViewBag.Title = "Features report";
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@model List< Mediata.RBT.Documents.Feature>
+@section header
+{
+	<style>
+		ul
+		{
+		}
+		
+		li
+		{
+			margin: 5px;
+			padding: 5px;
+			border-bottom: 1px solid #ddd;
+			list-style: none;
+		}
+		
+		h4, h4 a
+		{
+			color: #008000;
+			font-size: 12px;
+		}
+		
+		h4, h4.ignored a
+		{
+			color: red;
+		}
+		.page
+		{
+			font-weight: bold;
+		}
+	</style>
+}
+<h2>
+	Features report</h2>
+<table>
+	<tr>
+		<td>
+			Total features
+		</td>
+		<td>@Model.Count
+		</td>
+	</tr>
+	<tr>
+		<td>
+			Ignored features
+		</td>
+		<td>@Model.Count(x => x.Ignored)
+		</td>
+	</tr>
+	<tr>
+		<td>
+			Unignored features
+		</td>
+		<td>@Model.Count(x => !x.Ignored)
+		</td>
+	</tr>
+	<tr>
+		<td>
+			Total scenarios
+		</td>
+		<td>@Model.SelectMany(x => x.Scenarios).Count()
+		</td>
+	</tr>
+	<tr>
+		<td>
+			Ignored scenarios
+		</td>
+		<td>@Model.SelectMany(x => x.Scenarios).Count(x => x.Ignored || x.Feature.Ignored)
+		</td>
+	</tr>
+	<tr>
+		<td>
+			Unignored scenarios
+		</td>
+		<td>@Model.SelectMany(x => x.Scenarios).Count(x => !x.Ignored && !x.Feature.Ignored)
+		</td>
+	</tr>
+</table>
+<ul>
+	@foreach (var feature in Model)
+ {
+		
+			
+		<li>
+			<h3 class="@(feature.Ignored ? "ignored" : "")">@feature.Title</h3>
+			@feature.Scenarios.Count scenarios.
+			<ul>
+				@foreach (var scenario in feature.Scenarios)
+	{
+					<li>
+						<h4 class="@((feature.Ignored || scenario.Ignored) ? "ignored" : "")">
+							<a href="#">@scenario.Title</a></h4>
+					</li>
+	}
+			</ul>
+		</li>
+		
+		
+	
+		
+		
+ }
+</ul>

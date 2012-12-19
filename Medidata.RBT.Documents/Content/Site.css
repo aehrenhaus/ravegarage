@@ -73,3 +73,13 @@ textarea
 {
     display: none;
 }
+
+/* Custom common styles
+-----------------------------------------------------------*/
+		ul
+		{
+		}
+		li
+		{
+			list-style: none;
+		}
