@@ -1,6 +1,6 @@
 ﻿# As a user, I can choose between two randomization types and change randomization types for non-Production plans
 @EnableSeeding=true
-@ignore
+
 @FT_US19017
 Feature: US19017 As a user, I can choose between two randomization types and change randomization types for non-Production plans
 	When user selects Targeted SDV Configuration report
@@ -256,7 +256,7 @@ Scenario: PB_US19017_01 When I enroll 20 subjects in a Production environment, a
 	And I take a screenshot
 	And I switch to "Reports" window
 	And I navigate to "Home"
-	And I create 30 random Subjects with name "ABB" in Study "US19017" (Prod) in Site "Site 1"
+	And I create 30 random Subjects with name "ABB" in Study "US19017" (Prod) in Site "Site 2"
 	And I take a screenshot
 	And I navigate to "Home"
 	And I navigate to "Reporter"
@@ -340,14 +340,12 @@ Scenario: PB_US19017_01 When I enroll 20 subjects in a Production environment, a
 	| US19017 | Prod        |
 	And I click button "Submit Report"
 	And I switch to "Targeted SDV Study Plan" window
+	And I select Site Group link "World"
+	And I select Site link "Site 2"
 	And I click button "edit block plan"
 	And I verify text "Permuted Block" exists
 	Then I can see "Randomization Type" is disabled
 	And I take a screenshot
-	
-
-
-
 	And I switch to "Reports" window
 	And I navigate to "Home"
 	And I navigate to "Reporter"
@@ -464,7 +462,6 @@ Scenario: PB_US19017_01 When I enroll 20 subjects in a Production environment, a
 	And I switch to "Targeted SDV Study Plan" window
 	And I select Site Group link "World"
 	And I select Site link "Site 2"
-
 	And I click button "edit block plan"
 	And I inactivate the plan
 	And I verify text "Permuted Block" exists
