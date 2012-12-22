@@ -10,7 +10,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Medidata Solutions Inc")]
 [assembly: AssemblyProduct("Medidata.RBT.Documents")]
-[assembly: AssemblyCopyright("Copyright © Medidata Solutions Inc 2012")]
+[assembly: AssemblyCopyright("Copyright © Medidata Solutions Inc 2013")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("40637177-2bfd-468c-89f9-81e644c3125d")]
+[assembly: Guid("cafcd739-90f3-438c-93cd-81fa457117d6")]
 
 // Version information for an assembly consists of the following four values:
 //

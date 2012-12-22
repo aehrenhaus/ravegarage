@@ -2,14 +2,10 @@
 	ViewBag.Title = "Features report";
 	Layout = "~/Views/Shared/_Layout.cshtml";
 }
-@model List< Mediata.RBT.Documents.Feature>
-@section header
+@model List< Medidata.RBT.Documents.Feature>
+@section styles
 {
 	<style>
-		ul
-		{
-		}
-		
 		li
 		{
 			margin: 5px;
@@ -18,13 +14,13 @@
 			list-style: none;
 		}
 		
-		h4, h4 a
+		p, p a
 		{
 			color: #008000;
 			font-size: 12px;
 		}
 		
-		h4, h4.ignored a
+		p, p.ignored a
 		{
 			color: red;
 		}
@@ -92,8 +88,8 @@
 				@foreach (var scenario in feature.Scenarios)
 	{
 					<li>
-						<h4 class="@((feature.Ignored || scenario.Ignored) ? "ignored" : "")">
-							<a href="#">@scenario.Title</a></h4>
+						<p class="@((feature.Ignored || scenario.Ignored) ? "ignored" : "")">
+							<a href="#">@scenario.Title</a></p>
 					</li>
 	}
 			</ul>

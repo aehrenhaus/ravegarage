@@ -3,21 +3,14 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-@section header
-{
- <style>
- 
- </style>
-}
 
-<h2>Index</h2>
 
+<h1>Utilities and reports:</h1>
+@ViewBag.StatusMessage
+@Html.ValidationSummary()
 <ul>
-	<li><a target="_blank" href="StepDefReport">Step def report</a></li>
-
-	<li><a target="_blank" href="StepsReport">Feature files report</a></li>
-
+	<li>@Html.ActionLink("Step def report", "StepDefReport", "Default",null, new { @class = "_blank" })</li>
+	<li>@Html.ActionLink("Feature files report", "StepsReport", "Default", null, new { @class = "_blank" })</li>
 	<li><a target="_blank" href="/Tutorial/00 Index.htm">Tutorial</a></li>
-
-	<li><a target="_blank" href="FeatureComposer">Feature Composer</a></li>
+	<li>@Html.ActionLink("Feature Composer", "FeatureComposer", "Default", null, new { @class = "_blank" })</li>
 </ul>

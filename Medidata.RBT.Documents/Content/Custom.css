@@ -1,0 +1,42 @@
+﻿
+*
+{
+	font-family: Arial;
+	font-size: 16px;
+	line-height: 140%;
+}
+
+p
+{
+	font-size: 16px;
+}
+
+
+h1, h2, h3, h4, h5, h6
+{
+	background-color: #777;
+	color: #ddd;
+}
+
+h1
+{
+	font-size: 30px;
+	padding: 20px;
+}
+
+li
+{
+	padding: 5px;
+	list-style: none;
+}
+
+header, footer, nav, section
+{
+	display: block;
+}
+
+a, a:hover, a:visited
+{
+	color: #293955;
+}
+

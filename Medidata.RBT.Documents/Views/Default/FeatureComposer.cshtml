@@ -2,12 +2,85 @@
 	ViewBag.Title = "Feature Composer";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-@model List<Mediata.RBT.Documents.StepDefClass>
+@model List<Medidata.RBT.Documents.StepDefClass>
 		   
-@section header
+@section styles
 {
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.9.2/themes/base/jquery-ui.css" />
+	@Styles.Render("~/Content/FeatureComposer.css")
+}
+
+
+@section scripts
+{    
+	<script type="text/javascript" src="/zeroclipboard/ZeroClipboard.js"></script>
+	<script  type="text/javascript" src="http://code.jquery.com/ui/1.9.2/jquery-ui.js"></script>
+	@Scripts.Render("~/Scripts/knockout-2.2.0.js")
+	@Scripts.Render("~/Scripts/knockout-sortable.min.js")
+	
+	@Scripts.Render("~/Scripts/Site/FeatureComposer.js")
 
 }
 <h2>Feature Composer</h2>
 
+<table width="100%">
 
+	<tr>
+		<td width="400px" style="vertical-align:top;">
+		
+			<div class="accordionCate" >
+				@foreach (var ns in Model.GroupBy(x=>x.Namespace))
+				{
+				<h3>@ns.Key</h3>
+				<div class="accordion">
+
+				@foreach (var type in ns)
+				{
+					<h3>@type.Name</h3>
+					<ul class="stepDefs">
+						@foreach (var stepDefMethod in type.Methods)
+						{
+							  foreach (var stepDef in stepDefMethod.StepDefs)
+							  {
+		   
+						<li title="">
+							<div >
+							@stepDef.Regex 
+							<p class="comment">@stepDefMethod.Comments </p>
+							
+
+							</div>
+							<span class="regex">@stepDef.RegexWithArgName</span>
+				
+						</li>
+							}
+						}
+					</ul>
+
+				}
+				</div>
+				}
+			</div>
+
+		</td>
+		<td style="vertical-align:top;">
+		
+			<div id="d_clip_button" class="my_clip_button"><b>Copy To Clipboard...</b></div>
+
+			<ul id="sortable" data-bind="sortable: Steps">
+				<li class="ui-state-default" title="">
+					<div>
+						<p class="comment" data-bind="html: Comment"></p>
+					</div>
+					<span class="ui-icon ui-icon-arrowthick-2-n-s"></span>
+					<span data-bind="text: Step"></span>
+					<span class="removeStep" data-bind="click: $root.RemoveStep">X</span>
+				</li>
+			</ul>
+ 
+
+
+		
+		</td>
+	</tr>
+</table>

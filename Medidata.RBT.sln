@@ -11,7 +11,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Medidata.RBT.PageObjects.Ra
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Medidata.RBT.SeleniumExtension", "Medidata.RBT.SeleniumExtension\Medidata.RBT.SeleniumExtension.csproj", "{22945718-331A-4CC1-A98A-A7E7500FAF76}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Medidata.RBT.Documents", "Medidata.RBT.Documents\Medidata.RBT.Documents.csproj", "{BD34D5C5-E995-4DED-A45E-13CB05525115}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Medidata.RBT.Documents", "Medidata.RBT.Documents\Medidata.RBT.Documents.csproj", "{992FAE21-1367-4795-A9AC-C8F8CE8D8DA9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -73,16 +73,16 @@ Global
 		{22945718-331A-4CC1-A98A-A7E7500FAF76}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{22945718-331A-4CC1-A98A-A7E7500FAF76}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{22945718-331A-4CC1-A98A-A7E7500FAF76}.Release|x86.ActiveCfg = Release|Any CPU
-		{BD34D5C5-E995-4DED-A45E-13CB05525115}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{BD34D5C5-E995-4DED-A45E-13CB05525115}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{BD34D5C5-E995-4DED-A45E-13CB05525115}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
-		{BD34D5C5-E995-4DED-A45E-13CB05525115}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
-		{BD34D5C5-E995-4DED-A45E-13CB05525115}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{BD34D5C5-E995-4DED-A45E-13CB05525115}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{BD34D5C5-E995-4DED-A45E-13CB05525115}.Release|Any CPU.Build.0 = Release|Any CPU
-		{BD34D5C5-E995-4DED-A45E-13CB05525115}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
-		{BD34D5C5-E995-4DED-A45E-13CB05525115}.Release|Mixed Platforms.Build.0 = Release|Any CPU
-		{BD34D5C5-E995-4DED-A45E-13CB05525115}.Release|x86.ActiveCfg = Release|Any CPU
+		{992FAE21-1367-4795-A9AC-C8F8CE8D8DA9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{992FAE21-1367-4795-A9AC-C8F8CE8D8DA9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{992FAE21-1367-4795-A9AC-C8F8CE8D8DA9}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{992FAE21-1367-4795-A9AC-C8F8CE8D8DA9}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{992FAE21-1367-4795-A9AC-C8F8CE8D8DA9}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{992FAE21-1367-4795-A9AC-C8F8CE8D8DA9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{992FAE21-1367-4795-A9AC-C8F8CE8D8DA9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{992FAE21-1367-4795-A9AC-C8F8CE8D8DA9}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{992FAE21-1367-4795-A9AC-C8F8CE8D8DA9}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{992FAE21-1367-4795-A9AC-C8F8CE8D8DA9}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
