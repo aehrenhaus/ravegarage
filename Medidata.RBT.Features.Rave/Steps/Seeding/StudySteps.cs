@@ -147,21 +147,45 @@ namespace Medidata.RBT.Features.Rave
         [StepDefinition(@"I publish and push eCRF ""([^""]*)"" to ""([^""]*)"" with study environment ""([^""]*)""")]
         public void IPublishAndPushECRF____To____WithStudyEnvironment____(string uploadName, string crfVersionName, string studyEnvName)
         {
-			using (new LoginSession())
-			{
-				UploadedDraft uploadedDraft = TestContext.GetExistingFeatureObjectOrMakeNew
-					(uploadName, () => new UploadedDraft(uploadName));
-				CrfVersion crfVersion = TestContext.GetExistingFeatureObjectOrMakeNew
-					(crfVersionName, () => new CrfVersion(uploadedDraft.UniqueName, crfVersionName));
-				if (TestContext.CurrentUser == null)
-					LoginPage.LoginToHomePageIfNotAlready();
-				TestContext.CurrentPage = new ArchitectPage().NavigateToSelf();
-				if (!(TestContext.CurrentPage is ArchitectPage))
-					LoginPage.LoginToHomePageIfNotAlready();
-				TestContext.CurrentPage.As<ArchitectPage>().ClickProject(crfVersion.UploadedDraft.Project.UniqueName);
-				TestContext.CurrentPage.As<ArchitectLibraryPage>().PushVersion(crfVersion.UniqueName, studyEnvName, "All Sites");
-				TestContext.CurrentPage = new HomePage().NavigateToSelf();
-			}
+            IPublishAndPushECRF____To____WithStudyEnvironment____ForSite____(uploadName, crfVersionName, studyEnvName, "All Sites");
         }
-	}
+
+        /// <summary>
+        /// Publish and push a UploadDraft to a crf version. This will create a CRFVersion with that name if none already exists.
+        /// Since UploadDraft contains both project and draft, you do not need to specify these.
+        /// </summary>
+        /// <param name="uploadName">UploadDraft name, should have been created prior in the feature file</param>
+        /// <param name="crfVersionName">The name that the crfVersion is referred to as in the feature file</param>
+        /// <param name="studyEnvName">Environment name</param>
+        /// <param name="siteName">Site selection</param>
+        [StepDefinition(@"I publish and push eCRF ""([^""]*)"" to ""([^""]*)"" with study environment ""([^""]*)"" for site ""([^""]*)""")]
+        public void IPublishAndPushECRF____To____WithStudyEnvironment____ForSite____(string uploadName, string crfVersionName, string studyEnvName, string siteSelection)
+        {
+            using (new LoginSession())
+            {
+                UploadedDraft uploadedDraft = TestContext.GetExistingFeatureObjectOrMakeNew
+                        (uploadName, () => new UploadedDraft(uploadName));
+                CrfVersion crfVersion = TestContext.GetExistingFeatureObjectOrMakeNew
+                        (crfVersionName, () => new CrfVersion(uploadedDraft.UniqueName, crfVersionName));
+                if (TestContext.CurrentUser == null)
+                    LoginPage.LoginToHomePageIfNotAlready();
+                TestContext.CurrentPage = new ArchitectPage().NavigateToSelf();
+                if (!(TestContext.CurrentPage is ArchitectPage))
+                    LoginPage.LoginToHomePageIfNotAlready();
+                TestContext.CurrentPage.As<ArchitectPage>().ClickProject(crfVersion.UploadedDraft.Project.UniqueName);
+                string siteName;
+                if (siteSelection == "All Sites")
+                {
+                    siteName = siteSelection;
+                }
+                else
+                {
+                    siteName = TestContext.GetExistingFeatureObjectOrMakeNew(siteSelection, () => new Site(siteSelection)).UniqueName;
+                }
+                TestContext.CurrentPage.As<ArchitectLibraryPage>().PushVersion(crfVersion.UniqueName, studyEnvName, siteName);
+                TestContext.CurrentPage = new HomePage().NavigateToSelf();
+            }
+        }
+
+    }
 }

@@ -13,14 +13,17 @@ namespace Medidata.RBT.PageObjects.Rave
 	public class ArchitectPushPage :  RavePageBase
 	{
 		public IPage PushToSites(string env, string sites)
-		{
-			if (sites == "All Sites")
-			{
-				return PushToAllSites(env);
-			}
-			throw new NotImplementedException();
-		}
-
+        {
+            if (sites == "All Sites")
+            {
+                return PushToAllSites(env);
+            }
+            else //single site, need a change in incoming parameters if want to include sitegroup here  or passing multiple sites from one step
+            {
+                return PushToSelectedSite(env, sites);
+            }
+            throw new NotImplementedException();
+        }
 
 		public IPage PushToAllSites(string env)
 		{
@@ -37,7 +40,24 @@ namespace Medidata.RBT.PageObjects.Rave
 			return this;
 		}
 
-		public override string URL
+        public IPage PushToSelectedSite(string env, string site)
+        {
+            Browser.DropdownById("StudyDDL").SelectByText(env);
+            ChooseFromRadiobuttons(null, "ctl0_Content_SelectSitesRB");
+            IWebElement listbox = Browser.TryFindElementById("_ctl0_Content_DestinationLB");
+            listbox.FindElement(By.XPath("//option[contains(text(),'" + site + "')]")).Click();
+            this.ClickButton("Push");
+            Browser.TryFindElementBy(b =>
+            {
+                var span = Browser.Span("SuccessMessageLBL");
+                if (span.Text == "")
+                    return null;
+                return span;
+            });
+            return this;
+        }
+
+        public override string URL
 		{
 			get
 			{
