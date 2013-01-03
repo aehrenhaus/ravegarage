@@ -6,7 +6,7 @@
 # Also, these is a lab form with sample date = 2010-01-04
 # Now, when system do Lab range searching, system will try to use the Age in Visit 1 which is the closest mapped variable because of subject date.
 # To fix: we need to remove subject date from order by so that subject date will not affect search order. Also we need to keep all lab variable datapoints in search targets, it is to say when record date, datapage date and instance date is null for an Age datapoint, but if it is the only one in subject, it will be fetched.
-@ignore
+@FT_US12994_DT10991
 Feature: US12994_DT10991 Remove Subject Date from order by statement in searching Lab Variable Mapping Value
 	Remove Subject Date from order by statement in searching Lab Variable Mapping Value
 	As a Rave user
@@ -17,10 +17,6 @@ Feature: US12994_DT10991 Remove Subject Date from order by statement in searchin
 
 Background:
     Given I login to Rave with user "defuser" and password "password"
-	And Site "EDS1" exists
-	And Site "LDS1" exists
-	And Site "CTLDS1" exists
-	And Site "CTPLDV1" exists
     And study "US12994_DT10991" is assigned to Site "EDS1"
     And study "US12994_DT10991" is assigned to Site "LDS1"
     And study "US12994_DT10991" is assigned to Site "CTLDS1"
@@ -45,14 +41,14 @@ Background:
 		| SUPER USER 1	| US12994_DT10991	| Live: Prod    | SUPER ROLE 1	| LDS1      |Project Admin Default	|
 		| SUPER USER 1	| US12994_DT10991	| Live: Prod    | SUPER ROLE 1	| CTLDS1    |Project Admin Default	|
 		| SUPER USER 1	| US12994_DT10991	| Live: Prod    | SUPER ROLE 1	| CTPLDV1	|Project Admin Default	|
+	And I login to Rave with user "SUPER USER 1"
 
 #----------------------------------------------------------------------------------------------------------------------------------------
 @release_564_2012.1.0
 @PB_US12994_DT10991_01
 @Validation		
 Scenario: PB_US12994_DT10991_01 As an EDC user, when I enter a missing date in the first Visit Date, a valid date in the second Visit Date, and a Lab Date after the second Visit Date and the lab Age variable is mapped to the Earliest date, then I should see lab ranges.
-	When I login to Rave with user "SUPER USER 1"
-	And I select Site link "EDS1"
+	When I select Site link "EDS1"
 	And I create a Subject
 		| Field      | Data                  | Control Type |
 		| Subject ID | SUB {RndNum<num1>(5)} | textbox      |
@@ -82,8 +78,7 @@ Scenario: PB_US12994_DT10991_01 As an EDC user, when I enter a missing date in t
 @PB_US12994_DT10991_02
 @Validation
 Scenario: PB_US12994_DT10991_02 As an EDC user, when I enter a missing date in the first Visit Date, a valid date in the second Visit Date, and a Lab Date after the second Visit Date and the lab Age variable is mapped to the Latest date, then I should see lab ranges.
-	When I login to Rave with user "SUPER USER 1"	
-    And I select Site link "LDS1"
+    When I select Site link "LDS1"
 	And I create a Subject
 		| Field      | Data                  | Control Type |
 		| Subject ID | SUB {RndNum<num1>(5)} | textbox      |
@@ -113,8 +108,7 @@ Scenario: PB_US12994_DT10991_02 As an EDC user, when I enter a missing date in t
 @PB_US12994_DT10991_03
 @Validation
 Scenario: PB_US12994_DT10991_03 As an EDC user, when I enter a missing date in the first Visit Date, a valid date in the second Visit Date, and a Lab Date after the second Visit Date and the lab Age variable is mapped to the Closest in time to the lab date, then I should see lab ranges.
-	When I login to Rave with user "SUPER USER 1"	
-    And I select Site link "CTLDS1"
+    When I select Site link "CTLDS1"
 	And I create a Subject
 		| Field      | Data                  | Control Type |
 		| Subject ID | SUB {RndNum<num1>(5)} | textbox      |
@@ -144,8 +138,7 @@ Scenario: PB_US12994_DT10991_03 As an EDC user, when I enter a missing date in t
 @PB_US12994_DT10991_04
 @Validation
 Scenario: PB_US12994_DT10991_04 As an EDC user, when I enter a missing date in the first Visit Date, a valid date in the second Visit Date, and a Lab Date after the second Visit Date and the lab Age variable is mapped to the Closest in time prior to lab date, then I should see lab ranges.
-	When I login to Rave with user "SUPER USER 1"	
-    And I select Site link "CTPLDV1"
+    When I select Site link "CTPLDV1"
 	And I create a Subject
 		| Field      | Data                  | Control Type |
 		| Subject ID | SUB {RndNum<num1>(5)} | textbox      |
