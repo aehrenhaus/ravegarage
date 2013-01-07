@@ -13,7 +13,13 @@
 
 @section scripts
 {    
-	<script type="text/javascript" src="/zeroclipboard/ZeroClipboard.js"></script>
+
+	@Scripts.Render("~/zeroclipboard/ZeroClipboard.js")
+	<script>
+		ZeroClipboard.setMoviePath("@Url.Content("~/zeroclipboard/ZeroClipboard2.swf")");
+	
+	</script>
+
 	<script  type="text/javascript" src="http://code.jquery.com/ui/1.9.2/jquery-ui.js"></script>
 	@Scripts.Render("~/Scripts/knockout-2.2.0.js")
 	@Scripts.Render("~/Scripts/knockout-sortable.min.js")

@@ -116,7 +116,7 @@ $(function () {
 
 
 
-	ZeroClipboard.setMoviePath("/zeroclipboard/ZeroClipboard2.swf");
+	
 	clip = new ZeroClipboard.Client();
 
 	clip.addEventListener('mouseOver', function (client) {
