@@ -47,7 +47,10 @@ ul#sortable input
 	color: Green;
 	width: 90px;
 }
-
+ul.stepDefs
+{
+	width:350px;
+}
 
 ul.stepDefs li
 {
@@ -84,4 +87,36 @@ ul.stepDefs div
 ul#sortable li div
 {
 	display: none;
+}
+
+
+
+ul.toogleStepClass li
+{
+ display:inline;
+ padding:5px;
+ background:#FFD17E;
+ border:1px solid gray;
+ float:left;
+ margin:5px;
+  cursor:pointer;
+ 
+}
+
+ul.toogleStepClass li.disabled
+{
+	 background:#eee;
+}
+ ul.toogleStepClass li:hover.disabled
+{
+	background:#f5f5f5;
+}
+
+ul.toogleStepClass li:hover
+{
+	background:orange;
+}
+ul.toogleStepClass
+{
+	margin:0;
 }
