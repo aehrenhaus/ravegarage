@@ -39,8 +39,7 @@ namespace Medidata.RBT.Documents.Controllers
 	
 		public ActionResult FeatureComposer()
 		{
-			var model = service.GetStepDefinitionClassInfo();
-			return View(model);
+			return View();
 		}
 
     }

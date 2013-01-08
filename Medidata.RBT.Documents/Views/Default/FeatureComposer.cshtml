@@ -2,8 +2,7 @@
 	ViewBag.Title = "Feature Composer";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-@model List<Medidata.RBT.Documents.StepDefClass>
-		   
+   
 @section styles
 {
     <link rel="stylesheet" href="http://code.jquery.com/ui/1.9.2/themes/base/jquery-ui.css" />
@@ -17,7 +16,7 @@
 	@Scripts.Render("~/zeroclipboard/ZeroClipboard.js")
 	<script>
 		ZeroClipboard.setMoviePath("@Url.Content("~/zeroclipboard/ZeroClipboard2.swf")");
-	
+		var serviceURL = '@Url.Content("~/api/docapi")';
 	</script>
 
 	<script  type="text/javascript" src="http://code.jquery.com/ui/1.9.2/jquery-ui.js"></script>
@@ -32,40 +31,25 @@
 <table width="100%">
 
 	<tr>
-		<td width="400px" style="vertical-align:top;">
 		
-			<div class="accordionCate" >
-				@foreach (var ns in Model.GroupBy(x=>x.Namespace))
-				{
-				<h3>@ns.Key</h3>
-				<div class="accordion">
-
-				@foreach (var type in ns)
-				{
-					<h3>@type.Name</h3>
-					<ul class="stepDefs">
-						@foreach (var stepDefMethod in type.Methods)
-						{
-							  foreach (var stepDef in stepDefMethod.StepDefs)
-							  {
-		   
+		<td style="vertical-align:top; width:400px" >
+			<span data-bind="visible:!$root.ToolsLoaded()">Loading tools ...<img src="@Url.Content("~/Content/Images/loading.gif")" alt="loading" /> </span>
+			<div class="accordionCate" data-bind="foreach: StepDefCategories">
+				<h3 data-bind="text: Name"></h3>
+				<div class="accordion" data-bind="foreach: StepDefClasses">
+					<h3 data-bind="text: Name"></h3>
+					<ul class="stepDefs" data-bind="foreach: StepDefs">
 						<li title="">
-							<div >
-							@stepDef.Regex 
-							<p class="comment">@stepDefMethod.Comments </p>
-							
-
+							<div>
+								<p data-bind="text: Regex"></p> 
+								<p class="comment" data-bind="text: Comment"></p>
 							</div>
-							<span class="regex">@stepDef.RegexWithArgName</span>
+							<span class="regex" data-bind="text: Name"></span>
 				
 						</li>
-							}
-						}
 					</ul>
-
-				}
 				</div>
-				}
+
 			</div>
 
 		</td>

@@ -1,14 +1,28 @@
 
-var model = null;
-var clip = null;
+var model = null;	//nockout clint model
+var clip = null;	//clipboard object of zClipboard
+
+//client side models----------------------
+
+function StepDefCategory(data) {
+	this.StepDefClasses = ko.observableArray(data.StepDefClasses); 
+	this.Name = ko.observable(data.Name);
+} 
+
 
 function Step(step, comment) {
 	this.Step = ko.observable(step);
 	this.Comment = ko.observable(comment);
 }
 
+
 function CreateModel() {
 	var self = this;
+
+	//public StepDefs collection
+	self.StepDefCategories = ko.observableArray([]);
+
+	self.ToolsLoaded = ko.observable(false);
 
 	//public Steps collection
 	self.Steps = ko.observableArray([]);
@@ -22,37 +36,54 @@ function CreateModel() {
 	self.RemoveStep = function (step) {
 		self.Steps.remove(step);
 	}
+
+	self.LoadStepDefs = function () {
+		$.getJSON(serviceURL, function (allData) {
+			self.ToolsLoaded(true);
+			//you can map the returned json to a defined client model, 
+			// or set it directly to StepDefCategories
+			//$.map(allData, function (item) { return new StepDefCategory(item) });
+
+			self.StepDefCategories(allData);
+			//alert(self.StepDefCategories()[0].StepDefClasses[0].StepDefs[0].Name);
+			MakeAccordion();
+		});
+
+	}
+
+	function MakeAccordion() {
+		//jquery accordion applied to step defs
+		$(".accordionCate").accordion({
+			alwaysOpen: false,
+			heightStyle: "content",
+			collapsible: true, active: false,
+			autoHeight: false
+		});
+
+		//jquery accordion applied to step defs
+		$(".accordion").accordion({
+			heightStyle: "content",
+			collapsible: true
+		});
+	}
 }
 
 
+//page load
 
 $(function () {
 
-
+	//knockout client side MVVM bindnig
 	model = new CreateModel();
 	ko.applyBindings(model);
-
-
-	//jquery sort applied to steps
-	//sortable does not work well with the knockout
-	//so comment out this line until find a solution
-
-	//$("#sortable").sortable();
-
+	model.LoadStepDefs();
+	
+	
 
 	//	//deal with the input can't be focused bug,
 	//	$('#sortable input').bind('click.sortable mousedown.sortable', function (ev) {
 	//		ev.target.focus();
 	//	});
-
-
-	//jquery accordion applied to step defs
-	$(".accordionCate").accordion({
-		alwaysOpen: false,
-		heightStyle: "content",
-		collapsible: true, active: false,
-		autoHeight: false
-	});
 
 
 	//jquery tooltip
@@ -73,15 +104,9 @@ $(function () {
 		}
 	});
 
-	//jquery accordion applied to step defs
-	$(".accordion").accordion({
-		heightStyle: "content",
-		collapsible: true
-	});
-
 
 	//click step def to add step
-	$("ul.stepDefs li").mousedown(function () {
+	$("ul.stepDefs li").live('mousedown', function () {
 
 
 		//retrive the current html
@@ -116,19 +141,18 @@ $(function () {
 
 
 
-	
+
 	clip = new ZeroClipboard.Client();
 
 	clip.addEventListener('mouseOver', function (client) {
 		var text = "";
 		var steps = model.Steps();
 
-		for(var i =0;i<steps.length;i++)
-		{
+		for (var i = 0; i < steps.length; i++) {
 			text += steps[i].Step() + "\r\n";
 		}
 
-		
+
 		clip.setText(text);
 	});
 
