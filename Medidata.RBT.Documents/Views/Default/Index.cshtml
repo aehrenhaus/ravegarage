@@ -1,0 +1,16 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<h1>Utilities and reports:</h1>
+@ViewBag.StatusMessage
+@Html.ValidationSummary()
+<ul>
+	<li>@Html.ActionLink("Step def report", "StepDefReport", "Default",null, new { @class = "_blank" })</li>
+	<li>@Html.ActionLink("Feature files report", "StepsReport", "Default", null, new { @class = "_blank" })</li>
+	<li><a target="_blank" href="/Tutorial/00 Index.htm">Tutorial</a></li>
+	<li>@Html.ActionLink("Feature Composer", "FeatureComposer", "Default", null, new { @class = "_blank" })</li>
+</ul>
