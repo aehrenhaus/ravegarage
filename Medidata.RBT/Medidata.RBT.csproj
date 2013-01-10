@@ -108,6 +108,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SharedObjects\ISeedableObject.cs" />
     <Compile Include="SharedObjects\SeedingOptions.cs" />
+    <Compile Include="StringReplacement\RndRangeNumReplace.cs" />
     <Compile Include="StringReplacement\InreaseNumReplace.cs" />
     <Compile Include="StringReplacement\DateFReplace.cs" />
     <Compile Include="StringReplacement\DateReplace.cs" />

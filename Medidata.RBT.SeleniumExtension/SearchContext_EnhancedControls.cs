@@ -78,7 +78,7 @@ namespace Medidata.RBT.SeleniumExtension
 		public static ReadOnlyCollection<Textbox> Textboxes(this ISearchContext context, bool allLevel = true)
 		{
 			string xpath = allLevel ? ".//input[@type='text'] | .//textarea" : "./input[@type='text'] | ./textarea";
-            var result = context.TryFindElementsBy(By.XPath(xpath))
+            var result = context.TryFindElementsBy(By.XPath(xpath),false)
                 ?? new ReadOnlyCollection<IWebElement>(new List<IWebElement>());
             return result.CastReadOnlyCollection<Textbox>();
 		}

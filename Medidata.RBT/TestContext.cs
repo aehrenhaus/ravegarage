@@ -80,6 +80,16 @@ namespace Medidata.RBT
 			{
 				return _downloadedFile;
 			}
+			set
+			{
+				_downloadedFile = value ;
+			}
+		}
+
+		public static FileInfo FileToUpload
+		{
+			get;
+			set;
 		}
 
 		public static IPage CurrentPage
@@ -452,6 +462,7 @@ namespace Medidata.RBT
 				return;
 			}
 			_downloadedFile = new FileInfo(e.FullPath);
+			(sender as FileSystemWatcher).Dispose();
 		}
 
 		public static FileInfo WaitForDownloadFinish()

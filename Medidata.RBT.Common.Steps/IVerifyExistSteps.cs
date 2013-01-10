@@ -28,6 +28,8 @@ namespace Medidata.RBT.Common.Steps
 		[StepDefinition(@"I verify rows exist in ""([^""]*)"" table")]
 		public void IVerifyRowsExistIn____Table(string tableIdentifier, Table matchTable)
 		{
+			SpecialStringHelper.ReplaceTable(matchTable);
+
 			bool allExist = CurrentPage.As<IVerifyRowsExist>().VerifyTableRowsExist(tableIdentifier, matchTable);
 			Assert.IsTrue(allExist,String.Format("Not all rows have been found in the table {0}", tableIdentifier));
 		}

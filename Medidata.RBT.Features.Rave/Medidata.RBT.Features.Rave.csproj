@@ -107,6 +107,11 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
+    <Compile Include="Features\Configuration\US13012_2.feature.cs">
+      <DependentUpon>US13012_2.feature</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Include="Features\EDC\564QueryRefiringLogging8_M.feature.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -472,6 +477,10 @@
     <None Include="Features\Architect\US17446.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>US17446.feature.cs</LastGenOutput>
+    </None>
+    <None Include="Features\Configuration\US13012_2.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>US13012_2.feature.cs</LastGenOutput>
     </None>
     <None Include="Features\EDC\564QueryRefiringLogging8_M.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>

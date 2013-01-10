@@ -44,6 +44,28 @@ namespace Medidata.RBT.Features.Rave.Steps
             page.Save();
         }
 
+
+		[StepDefinition(@"I enter data in Coding Settings")]
+		public void IEnterDataInCodingSettings(Table table)
+		{
+			var page = CurrentPage.As<CodingColumnSettingPage>();
+
+			page.EnterData(table.CreateSet<CodingColumnModel>());
+			page.Save();
+		}
+
+
+		[StepDefinition(@"I upload configuration settings file")]
+		public void IUploadConfigurationSettingsFile()
+		{
+			var page = CurrentPage.As<ConfigurationLoaderPage>();
+
+			page.UploadFile(TestContext.FileToUpload.FullName);
+
+	
+		}
+
+
         /// <summary>
         /// Check that the passed in configuration settings exist
         /// </summary>
