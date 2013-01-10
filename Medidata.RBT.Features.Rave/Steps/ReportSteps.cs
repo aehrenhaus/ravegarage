@@ -14,16 +14,6 @@ namespace Medidata.RBT.Features.Rave
 	[Binding]
 	public class ReportSteps : BrowserStepsBase
 	{
-        /// <summary>
-        /// Obsolete method
-        /// </summary>
-        /// <param name="table"></param>
-        [StepDefinition(@"I verify text")]
-        [Obsolete("Use step definitions from Medidata.RBT.Common.Steps.IVerifyExistSteps")]
-        public void IVerifyText(Table table)
-        {
-        }
-
 		/// <summary>
 		/// Select report by name on Report page
 		/// </summary>

@@ -34,9 +34,6 @@ namespace Medidata.RBT.Features.Rave
             DbHelper.SetDatabaseToOnline();
         }
 
-
-
-
 		/// <summary>
 		/// Based on the column name, we call an appropriate method and assert true/false whether or not column in table datapoints propagates
 		/// </summary>
@@ -97,7 +94,6 @@ namespace Medidata.RBT.Features.Rave
 				dataTable = DbHelper.ExecuteDataSet(sql).Tables[0]; //run backend query to count records needing cv refresh.
 			}
 			while (((int)dataTable.Rows[0][0] != 0));
-
 		}
 
         /// <summary>
@@ -114,7 +110,6 @@ namespace Medidata.RBT.Features.Rave
                 dataTable = DbHelper.ExecuteDataSet(sql).Tables[0]; //run backend query to count records in lab update queue
             }
             while (((int)dataTable.Rows[0][0] != 0));
-
         }
 
 
@@ -139,7 +134,6 @@ namespace Medidata.RBT.Features.Rave
 				return AltCodedValuePropagateForDatapageIDScript(datapageID);
 			else
 				throw new NotImplementedException("Propagation verificaiton for " + column + " not implemented");
-
 		}
 
 		private string AltCodedValuePropagateForDatapageIDScript(int datapageID)
@@ -164,8 +158,6 @@ namespace Medidata.RBT.Features.Rave
                                                                 and dL.deleted <> 1
                                                     where r.datapageID = {0} 
                                     ", datapageID);
-
-
 		}
 
         private string CheckDataPointStatusPropagate(int datapageID, string fieldOID, string status)
@@ -200,7 +192,6 @@ namespace Medidata.RBT.Features.Rave
                                         else
 	                                        select 0
                                     ", datapageID, fieldOID, status);
-
         }
 
         /// <summary>

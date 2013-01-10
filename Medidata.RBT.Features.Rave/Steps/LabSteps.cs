@@ -103,7 +103,6 @@ namespace Medidata.RBT.Features.Rave
         {
             TestContext.CurrentPage.ClickLink(link);
             CurrentPage.As<CopyLabRanges>().CopyLabRange(labType);
-
         }
 
         /// <summary>
