@@ -19,5 +19,3 @@ Scenario: DT14168
 		| Active        |
 		| Locked Out    |
 		| Log In        |
-
-

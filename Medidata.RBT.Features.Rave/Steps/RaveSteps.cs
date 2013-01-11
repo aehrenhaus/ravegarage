@@ -15,26 +15,6 @@ namespace Medidata.RBT.Features.Rave
 	public class RaveSteps : BrowserStepsBase
 	{
         /// <summary>
-        /// Unused step, should be removed
-        /// </summary>
-        /// <param name="table"></param>
-        [StepDefinition(@"I should see the logging data for queries")]
-        public void IShouldSeeTheLoggingDataForQueries(Table table)
-        {
-            
-        }
-
-        /// <summary>
-        /// Unused step, should be removed
-        /// </summary>
-        /// <param name="logger"></param>
-        [StepDefinition(@"I go to the log page for logger ""([^""]*)""")]
-        public PageBase IGoToTheLogPageForLoggerQueryNotOpeningEvent(string logger)
-        {
-            return new RWSLogPage(logger);
-        }
-
-        /// <summary>
         /// Step definition to check if a the text stored in the scenario text contains the listed symbols. Fails if it does.
         /// </summary>
         /// <param name="table">The list of characters to look for</param>

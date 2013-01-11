@@ -612,17 +612,6 @@ namespace Medidata.RBT.Features.Rave
         }
 
         /// <summary>
-        /// Sign the EDC form with the given username and password
-        /// </summary>
-        /// <param name="username">The username to sign the form with</param>
-        /// <param name="password">The password to sign the form with</param>
-        [StepDefinition(@"I sign the form with username ""([^""]*)"" and password ""([^""]*)""")]
-        public void ISignTheFormWithUsername____AndPassword____(string username, string password)
-        {
-            new SignatureBox().Sign(username, password);
-        }
-
-        /// <summary>
         /// Sign the form with a username. Will also provide the matching password for that username.
         /// </summary>
         /// <param name="userName">The username to sign the form with.</param>

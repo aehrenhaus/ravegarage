@@ -54,7 +54,6 @@ namespace Medidata.RBT.Features.Rave
             return dataTable.Rows.Count;
         }
 
-
         private static void VerifyTableEntriesWithOIDExist(string tableName, Table table)
         {
             var dictionaries = table.CreateSet<ArchitectObjectModel>();

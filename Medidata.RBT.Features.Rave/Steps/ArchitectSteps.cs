@@ -13,19 +13,6 @@ namespace Medidata.RBT.Features.Rave
 	public class ArchitectSteps : BrowserStepsBase
 	{
         /// <summary>
-        /// Step has no implementation
-        /// </summary>
-        /// <param name="crfName"></param>
-        /// <param name="draftName"></param>
-        /// <param name="siteName"></param>
-        /// <param name="studyName"></param>
-		[StepDefinition(@"I publish and push CRF Version ""([^""]*)"" of Draft ""([^""]*)"" to site ""([^""]*)"" in Study ""([^""]*)""")]
-		public void IPublishAndPushCRFVersion____OfDraftToSite____InStudy____(string crfName, string draftName, string siteName, string studyName)
-		{
-
-		}
-
-        /// <summary>
         /// Create a draft from the project and version passed in
         /// </summary>
         /// <param name="draftName">The name of the draft to create</param>
@@ -39,16 +26,6 @@ namespace Medidata.RBT.Features.Rave
 			version = SpecialStringHelper.Replace(version);
 			CurrentPage = CurrentPage.As<ArchitectLibraryPage>().CreateDraftFromProject(draftName,project,version);
 		}
-
-        /// <summary>
-        /// Unused step
-        /// </summary>
-        /// <param name="version"></param>
-        [StepDefinition(@"I publish and push eCRF ""([^""]*)""")]
-        public void IPublishAndPushECRF____(string version)
-        {
-            CurrentPage = CurrentPage.NavigateTo("Architect Library Page");
-        }
 
         /// <summary>
         /// Select a draft 
@@ -83,25 +60,6 @@ namespace Medidata.RBT.Features.Rave
 			crfVersion = SpecialStringHelper.Replace(crfVersion);
 			sites = SpecialStringHelper.Replace(sites);
 			CurrentPage.As<ArchitectLibraryPage>().PushVersion(crfVersion,"Prod", sites);
-
-		}
-
-        /// <summary>
-        /// Step has no implementation
-        /// </summary>
-		[StepDefinition(@"I select ""Target\{RndNum\(3\)}"" from ""Target CRF""")]
-		public void ISelectTargetRndNum3FromTargetCRF()
-		{
-			ScenarioContext.Current.Pending();
-		}
-
-        /// <summary>
-        /// Step has no implementation
-        /// </summary>
-		[StepDefinition(@"I select ""V1"" from ""Source CRF""")]
-		public void ISelectV1FromSourceCRF()
-		{
-			ScenarioContext.Current.Pending();
 		}
 
         /// <summary>
@@ -123,9 +81,9 @@ namespace Medidata.RBT.Features.Rave
 		}
 
         /// <summary>
-        /// Unused step
+        /// Search for a form
         /// </summary>
-        /// <param name="form"></param>
+        /// <param name="form">Form to search for</param>
         [StepDefinition(@"I search for form ""([^""]*)""")]
         public void ISearchForForm____(string form)
         {
@@ -185,25 +143,18 @@ namespace Medidata.RBT.Features.Rave
         }
 
         /// <summary>
-        /// Verify the ranges against field edit checks exist
+        /// Verify the ranges against field edit checks exist or do not, depending on the not parameter
         /// </summary>
+        /// <param name="not">Whether to verify the range exists or doesn't</param>
         /// <param name="table">The data to verify</param>
-        [StepDefinition(@"I should see ranges for Field Edit Checks")]
-        public void ISeeRangesForFieldEditChecks(Table table)
+        [StepDefinition(@"I should (not )?see ranges for Field Edit Checks")]
+        public void ISeeRangesForFieldEditChecks(string not, Table table)
         {
             bool found = CurrentPage.As<ArchitectFormDesignerPage>().VerifyRangesForFieldEditChecks(table.CreateSet<FieldModel>());
-            Assert.IsTrue(found, "Ranges for field do not match.");
-        }
-
-        /// <summary>
-        /// Verify that the ranges against field edit checks don't exist
-        /// </summary>
-        /// <param name="table">The data to verify</param>
-        [StepDefinition(@"I should not see ranges for Field Edit Checks")]
-        public void IDontSeeRangesForFieldEditChecks(Table table)
-        {
-            bool found = CurrentPage.As<ArchitectFormDesignerPage>().VerifyRangesForFieldEditChecks(table.CreateSet<FieldModel>());
-            Assert.IsFalse(found, "Ranges for field do match.");
+            if (not.ToLower().Equals("not "))
+                Assert.IsFalse(found, "Ranges for field do match.");
+            else
+                Assert.IsTrue(found, "Ranges for field do not match.");
         }
 	}
 }

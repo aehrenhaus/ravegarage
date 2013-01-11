@@ -70,15 +70,6 @@ namespace Medidata.RBT.Features.Rave
 		}
 
         /// <summary>
-        /// It is impossible to do this step in specflow, as it requires looking at a specific audit in a PDF.
-        /// </summary>
-		[StepDefinition(@"I should see ""Query Data"" in Audits")]
-		public void IShouldSeeQueryDataInAudits()
-		{
-			ScenarioContext.Current.Pending();
-		}
-
-        /// <summary>
         /// Step definition to create the specified pdf configuration if it doesn't exist
         /// </summary>
         /// <param name="table"></param>
