@@ -15,6 +15,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mediata.RBT.Documents", "Me
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Medidata.RBT.Features.Integration", "Medidata.RBT.Features.Integration\Medidata.RBT.Features.Integration.csproj", "{F2412C15-9328-41D5-B71C-26C66C00C601}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Medidata.RBT.Objects.Integration", "Medidata.RBT.Objects.Integration\Medidata.RBT.Objects.Integration.csproj", "{63CCCE89-9E7D-4F5A-B7CA-0BEE1297B902}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -96,6 +98,16 @@ Global
 		{F2412C15-9328-41D5-B71C-26C66C00C601}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{F2412C15-9328-41D5-B71C-26C66C00C601}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{F2412C15-9328-41D5-B71C-26C66C00C601}.Release|x86.ActiveCfg = Release|Any CPU
+		{63CCCE89-9E7D-4F5A-B7CA-0BEE1297B902}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{63CCCE89-9E7D-4F5A-B7CA-0BEE1297B902}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{63CCCE89-9E7D-4F5A-B7CA-0BEE1297B902}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{63CCCE89-9E7D-4F5A-B7CA-0BEE1297B902}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{63CCCE89-9E7D-4F5A-B7CA-0BEE1297B902}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{63CCCE89-9E7D-4F5A-B7CA-0BEE1297B902}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{63CCCE89-9E7D-4F5A-B7CA-0BEE1297B902}.Release|Any CPU.Build.0 = Release|Any CPU
+		{63CCCE89-9E7D-4F5A-B7CA-0BEE1297B902}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{63CCCE89-9E7D-4F5A-B7CA-0BEE1297B902}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{63CCCE89-9E7D-4F5A-B7CA-0BEE1297B902}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

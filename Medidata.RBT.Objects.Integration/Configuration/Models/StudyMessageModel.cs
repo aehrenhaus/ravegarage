@@ -1,0 +1,14 @@
+﻿using System;
+
+namespace Medidata.RBT.Objects.Integration.Configuration.Models
+{
+    public class StudyMessageModel
+    {
+        public string Name { get; set; }
+        public bool IsProd { get; set; }
+        public string Description { get; set; }
+        public Guid UUID { get; set; }
+        public DateTime Timestamp { get; set; }
+        public Guid MessageId { get; set; }
+    }
+}

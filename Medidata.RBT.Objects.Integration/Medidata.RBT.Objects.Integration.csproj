@@ -5,11 +5,11 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{F2412C15-9328-41D5-B71C-26C66C00C601}</ProjectGuid>
+    <ProjectGuid>{63CCCE89-9E7D-4F5A-B7CA-0BEE1297B902}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Medidata.RBT.Features.Integration</RootNamespace>
-    <AssemblyName>Medidata.RBT.Features.Integration</AssemblyName>
+    <RootNamespace>Medidata.RBT.Objects.Integration</RootNamespace>
+    <AssemblyName>Medidata.RBT.Objects.Integration</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -31,12 +31,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="nunit.framework">
-      <HintPath>..\packages\NUnit.2.6.2\lib\nunit.framework.dll</HintPath>
-    </Reference>
-    <Reference Include="Nustache.Core">
-      <HintPath>..\packages\Nustache.1.12.4.29\lib\net20\Nustache.Core.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -44,32 +38,13 @@
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
-    <Reference Include="TechTalk.SpecFlow">
-      <HintPath>..\packages\SpecFlow.1.9.0\lib\net35\TechTalk.SpecFlow.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Features\Studies.feature.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Studies.feature</DependentUpon>
-    </Compile>
+    <Compile Include="Configuration\Models\StudyMessageModel.cs" />
+    <Compile Include="Configuration\Templates\StudyTemplates.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Steps\SQSSteps.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <None Include="Features\Studies.feature">
-      <Generator>SpecFlowSingleFileGenerator</Generator>
-      <LastGenOutput>Studies.feature.cs</LastGenOutput>
-    </None>
-    <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Medidata.RBT.Objects.Integration\Medidata.RBT.Objects.Integration.csproj">
-      <Project>{63CCCE89-9E7D-4F5A-B7CA-0BEE1297B902}</Project>
-      <Name>Medidata.RBT.Objects.Integration</Name>
-    </ProjectReference>
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
