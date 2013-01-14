@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<configuration>
+  <appSettings>
+    <add key="AwsAccessKey" value="%%%AwsAccessKey%%%"/>
+    <add key="AwsSecretKey" value="%%%AwsSecretKey%%%"/>
+    <add key="AwsRegion" value="%%%AwsRegion%%%"/>
+
+    <add key="SqsQueueName" value="%%%SqsQueueName%%%"/>
+  </appSettings>
+</configuration>

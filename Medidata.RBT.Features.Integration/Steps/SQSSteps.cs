@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Configuration;
 using System.Linq;
+using System.Threading;
 using Medidata.AmazonSimpleServices;
 using Medidata.RBT.Objects.Integration.Configuration.Models;
 using Medidata.RBT.Objects.Integration.Configuration.Templates;
@@ -18,34 +19,34 @@ namespace Medidata.RBT.Features.Integration.Steps
         [Given(@"I have a SimpleQueueWrapper")]
         public void GivenIHaveASimpleQueueWrapper()
         {
-            if(!Storage.FeatureValues.ContainsKey("sqsWrapper") && !Storage.FeatureValues.ContainsKey("sqsQueueUrl"))
+            if (Storage.FeatureValues.ContainsKey("sqsWrapper") || Storage.FeatureValues.ContainsKey("sqsQueueUrl"))
+                return;
+
+            var accessKey = ConfigurationManager.AppSettings["AwsAccessKey"];
+            var secretKey = ConfigurationManager.AppSettings["AwsSecretKey"];
+            var region = ConfigurationManager.AppSettings["AwsRegion"];
+
+            var sqsWrapper = new SimpleQueueWrapper(accessKey, secretKey, region);
+            Storage.SetFeatureLevelValue("sqsWrapper", sqsWrapper);
+
+            var queueName = ConfigurationManager.AppSettings["SqsQueueName"];
+            try
             {
-                var accessKey = ConfigurationManager.AppSettings["AwsAccessKey"];
-                var secretKey = ConfigurationManager.AppSettings["AwsSecretKey"];
-                var region = ConfigurationManager.AppSettings["AwsRegion"];
-
-                var sqsWrapper = new SimpleQueueWrapper(accessKey, secretKey, region);
-                Storage.SetFeatureLevelValue("sqsWrapper", sqsWrapper);
-
-                var queueName = ConfigurationManager.AppSettings["SqsQueueName"];
-                try
-                {
-                    Storage.SetFeatureLevelValue("sqsQueueUrl", sqsWrapper.GetQueueURLByQueueName(queueName));
-                }
-                catch (Exception e)
-                {
-                    Storage.SetFeatureLevelValue("sqsQueueUrl", sqsWrapper.CreateQueue(queueName, 1209600)); //14 days
-                }
+                Storage.SetFeatureLevelValue("sqsQueueUrl", sqsWrapper.GetQueueURLByQueueName(queueName));
+            }
+            catch (Exception e)
+            {
+                Storage.SetFeatureLevelValue("sqsQueueUrl", sqsWrapper.CreateQueue(queueName, 1209600)); //14 days
             }
         }
 
         [Given(@"I send the following Study POST message to SQS")]
-        public void ISendTheFollowingMessageToSQS(Table table)
+        public void ISendTheFollowingStudyPostMessageToSQS(Table table)
         {
             var sqsWrapper = Storage.GetFeatureLevelValue<SimpleQueueWrapper>("sqsWrapper");
             var url = Storage.GetFeatureLevelValue<String>("sqsQueueUrl");
 
-            List<StudyMessageModel> messageConfigs = table.CreateSet<StudyMessageModel>().ToList();
+            var messageConfigs = table.CreateSet<StudyMessageModel>().ToList();
             foreach(var config in messageConfigs)
             {
                 var message = Render.StringToString(StudyTemplates.STUDY_POST_TEMPLATE, new { config });
@@ -57,12 +58,26 @@ namespace Medidata.RBT.Features.Integration.Steps
         [When(@"the message is successfully processed")]
         public void WhenTheMessageIsSuccessfullyProcessed()
         {
-            var sqsWrapper = Storage.GetFeatureLevelValue<SimpleQueueWrapper>("sqsQueueUrl");
-            ScenarioContext.Current.Pending();
+            var sqsWrapper = Storage.GetFeatureLevelValue<SimpleQueueWrapper>("sqsWrapper");
+            var url = Storage.GetFeatureLevelValue<String>("sqsQueueUrl");
+
+            Thread.Sleep(5000);
+
+            var numVisibleMessages = sqsWrapper.GetApproximateNumberOfVisibleMessages(url);
+            var numInvisibleMessages = sqsWrapper.GetApproximateNumberOfInvisibleMessages(url);
+            var endTime = DateTime.Now.AddSeconds(10);
+
+            while(numVisibleMessages > 0 || numInvisibleMessages > 0)
+            {
+                if(DateTime.Now.Ticks > endTime.Ticks) throw new TimeoutException("Message was not processed");
+                
+                numVisibleMessages = sqsWrapper.GetApproximateNumberOfVisibleMessages(url);
+                numInvisibleMessages = sqsWrapper.GetApproximateNumberOfInvisibleMessages(url);
+            }
         }
 
-        [Then(@"I should see the study in the Rave database\.")]
-        public void ThenIShouldSeeTheStudyInTheRaveDatabase_()
+        [Then(@"I should see the study in the Rave database")]
+        public void ThenIShouldSeeTheStudyInTheRaveDatabase()
         {
             ScenarioContext.Current.Pending();
         }

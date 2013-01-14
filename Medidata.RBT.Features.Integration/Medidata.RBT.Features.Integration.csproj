@@ -56,6 +56,7 @@
     <Compile Include="Steps\SQSSteps.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="App.config" />
     <None Include="Features\Studies.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>Studies.feature.cs</LastGenOutput>
