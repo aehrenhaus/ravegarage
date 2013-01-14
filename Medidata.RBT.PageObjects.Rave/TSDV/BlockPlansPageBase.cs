@@ -46,7 +46,7 @@ namespace Medidata.RBT.PageObjects.Rave
             if (elem != null)
             {
                 elem.Click();
-				Thread.Sleep(100);
+				Thread.Sleep(1000);
 				Browser.GetAlertWindow().Accept();
             }
             return this;

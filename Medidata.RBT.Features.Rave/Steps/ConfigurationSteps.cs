@@ -44,7 +44,10 @@ namespace Medidata.RBT.Features.Rave.Steps
             page.Save();
         }
 
-
+		/// <summary>
+		/// Fill the table on CodingColumnSetting.aspx
+		/// </summary>
+		/// <param name="table"></param>
 		[StepDefinition(@"I enter data in Coding Settings")]
 		public void IEnterDataInCodingSettings(Table table)
 		{
@@ -55,6 +58,9 @@ namespace Medidata.RBT.Features.Rave.Steps
 		}
 
 
+		/// <summary>
+		/// Upload file on ConfigurationLoader.aspx
+		/// </summary>
 		[StepDefinition(@"I upload configuration settings file")]
 		public void IUploadConfigurationSettingsFile()
 		{

@@ -84,7 +84,6 @@
     <Compile Include="Helpers\FilteredConsoleWriter.cs" />
     <Compile Include="Helpers\MultipleStreamWriter.cs" />
     <Compile Include="PageObjectInterfaces\AbstractPaginationControl.cs" />
-    <Compile Include="PageObjectInterfaces\ICanDisableEnable.cs" />
     <Compile Include="PageObjectInterfaces\IVerifyControlDisabled.cs" />
     <Compile Include="PageObjectInterfaces\IVerifyRowsExist.cs" />
     <Compile Include="PageObjectInterfaces\GeneralPage.cs" />

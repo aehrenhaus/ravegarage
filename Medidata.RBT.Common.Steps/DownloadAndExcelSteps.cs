@@ -70,7 +70,10 @@ namespace Medidata.RBT.Common.Steps
 			Browser.TryFindElementBy((b) => CurrentPage.GetElementByName(finishSignal),true, 60);
 		}
 
-
+		/// <summary>
+		/// Verify a spreadsheet file exists in an excel file (using the last downloaded file).
+		/// </summary>
+		/// <param name="name"></param>
 		[StepDefinition(@"I verify ""([^""]*)"" spreadsheet exists")]
 		public void IVerify___SpreadsheetExists(string name)
 		{
@@ -81,10 +84,14 @@ namespace Medidata.RBT.Common.Steps
 			using (var excel = new ExcelWorkbook(fileName))
 			{
 				bool has = excel.HasSheet(name);
-				Assert.IsTrue(has, "Not exsits:" + name);
+				Assert.IsTrue(has, "Spreadsheet does not exist: " + name);
 			}
 		}
-
+		
+		/// <summary>
+		/// Verify a spreadsheet file does not exist in an excel file (using the last downloaded file).
+		/// </summary>
+		/// <param name="name"></param>
 		[StepDefinition(@"I verify ""([^""]*)"" spreadsheet does not exist")]
 		public void IVerify___SpreadsheetDoesNotExist(string name)
 		{
@@ -95,7 +102,7 @@ namespace Medidata.RBT.Common.Steps
 			using (var excel = new ExcelWorkbook(fileName))
 			{
 				bool has = excel.HasSheet(name);
-				Assert.IsFalse(has, "Exsits:" + name);
+				Assert.IsFalse(has, "Spreadsheet exists: " + name);
 			}
 		}
 
@@ -141,7 +148,7 @@ namespace Medidata.RBT.Common.Steps
 		}
 
 		/// <summary>
-		/// 
+		/// Clear the whole spreadsheet (keeps the first line which is considered header) in the last downloaded excel file.
 		/// </summary>
 		/// <param name="name"></param>
 		[StepDefinition(@"I clear ""([^""]*)"" spreadsheet data")]
@@ -163,7 +170,7 @@ namespace Medidata.RBT.Common.Steps
 		}
 
 		/// <summary>
-		/// 
+		/// Clear the spreadsheet's content from the X line on, in the last downloaded excel file.
 		/// </summary>
 		/// <param name="name"></param>
 		[StepDefinition(@"I clear ""([^""]*)"" spreadsheet data from line (\d+)")]
@@ -185,7 +192,7 @@ namespace Medidata.RBT.Common.Steps
 		}
 
 		/// <summary>
-		/// 
+		/// Modify the lasted downloaded spreadsheet file
 		/// </summary>
 		/// <param name="name"></param>
 		/// <param name="table"></param>

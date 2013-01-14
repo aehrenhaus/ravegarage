@@ -60,7 +60,7 @@ namespace Medidata.RBT.PageObjects.Rave.Configuration
 
 		private string TdTextSelector(IWebElement td)
 		{
-			var textboxes = td.Textboxes();
+			var textboxes = td.Textboxes(true,false);
 			if (textboxes.Count != 0)
 				return textboxes[0].Value.Trim();
 

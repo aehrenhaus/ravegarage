@@ -1,10 +1,10 @@
 ﻿@ignore
-@FT_US13011_DT13976
-Feature: US13011_2
+@FT_MCC-427034
+Feature: MCC-427034
 
 
 Background:
-	Given I login to Rave with user "defuser" and password "password"
+	Given I login to Rave with user "SUPER USER 1"
 	
 
 
