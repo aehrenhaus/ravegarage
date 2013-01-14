@@ -95,6 +95,25 @@ namespace Medidata.RBT
 			}
 		}
 
+		/// <summary>
+		/// 1 for the first line, not including header
+		/// </summary>
+		/// <param name="fromLines"></param>
+		public void ClearContent(int fromLines = 1)
+		{
+			for (int i = fromLines+1; i <= RowsCount; i++)
+			{
+				for (int j = 1; j <= NamedColumnsCount;j++)
+				{
+					_rawTable[i, j] = null;
+				}
+			}
+			
+
+			Modified = true;
+		}
+
+
 		public bool Modified { get; private set; }
 	}
 
@@ -161,6 +180,11 @@ namespace Medidata.RBT
             _range.set_Value(XlRangeValueDataType.xlRangeValueDefault, newValue);
 		}
 
+		public bool HasSheet(string sheetName)
+		{
+			var sheet = (Worksheet)_workBook.Sheets[sheetName];
+			return sheet != null;
+		}
 
 		public ExcelTable OpenTableForEdit(string sheetName, string range = null)
 		{

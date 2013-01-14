@@ -26,6 +26,7 @@ namespace Medidata.RBT.Common.Steps
             TestContext.TrySaveScreenShot();
         }
 
+
 		/// <summary>
 		/// When the browser opens an other window, and next step is on that new window, you shall use this step to switch focus first.
 		/// The window name is the title.

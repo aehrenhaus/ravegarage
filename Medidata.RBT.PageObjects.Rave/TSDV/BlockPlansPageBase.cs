@@ -9,6 +9,7 @@ using Medidata.RBT.SeleniumExtension;
 using TechTalk.SpecFlow;
 using OpenQA.Selenium.Support.UI;
 using Medidata.RBT.PageObjects.Rave.SharedRaveObjects;
+using System.Threading;
 
 namespace Medidata.RBT.PageObjects.Rave
 {
@@ -45,6 +46,7 @@ namespace Medidata.RBT.PageObjects.Rave
             if (elem != null)
             {
                 elem.Click();
+				Thread.Sleep(1000);
 				Browser.GetAlertWindow().Accept();
             }
             return this;

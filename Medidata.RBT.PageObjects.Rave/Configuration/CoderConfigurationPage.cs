@@ -15,8 +15,9 @@ namespace Medidata.RBT.PageObjects.Rave.Configuration
 
             CoderConfigurationModel model = coderConfigurationModel.First();
             base.ChooseFromDropdown("_ctl0_Content_coderMarkingGroup", model.ReviewMarkingGroup);
-            base.ChooseFromCheckboxes("_ctl0_Content_chkReqResponse", model.RequiresResponse == "True");
-            base.ChooseFromCheckboxes("_ctl0_Content_chkReqManualClose", model.RequiresManualClose == "True");
+
+			base.ChooseFromCheckboxes("_ctl0_Content_chkReqResponse", model.RequiresResponse == "True");
+			base.ChooseFromCheckboxes("_ctl0_Content_chkReqManualClose", model.RequiresManualClose == "True");
         }
 
         public IPage Save()

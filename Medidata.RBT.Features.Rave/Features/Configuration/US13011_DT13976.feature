@@ -82,18 +82,22 @@ Scenario:@PB_US11101_02  As a Data Manager, when I am on the Configuration Loade
 		|         | Requires Manual Close |         | The user role the query has been opened against will be able to close the query.  True = Query can be closed manually.  False = Query cannot be closed manually.                      |
 
 #----------------------------------------------------------------------------------------------------------------------------------------
-@release_564_2012.1.0
-@PB_US11101_03
-@Manual
-Scenario: @PB_US11101_03 As a Data Manager, when I am on the Configuration Loader page, and Coder is not enabled, and I select Get File, and the Core Configuration specification is downloaded, and I open it, then I do not see Coder Configuration details.
 
-	And I navigate to "Configuration"
-	When I navigate to "Other Settings"
 
-	Then I verify link "Coder Configuration" does not exist
-	And I select link "Configuration Loader"
-	And I click button "Get File"
-	#When the Core Configuration specification is downloaded
-	And I open the Core Configuration specification
-	Then I do not see Coder Configuration tab
-	And I take a screenshot
+#WARNING this scnario can not be automaticlly verified, becase the coder can not be disabled once enabled.
+
+#@release_564_2012.1.0
+#@PB_US11101_03
+#@Manual
+#Scenario: @PB_US11101_03 As a Data Manager, when I am on the Configuration Loader page, and Coder is not enabled, and I select Get File, and the Core Configuration specification is downloaded, and I open it, then I do not see Coder Configuration details.
+#	
+#	And I navigate to "Configuration"
+#	When I navigate to "Other Settings"
+#
+#	Then I verify link "Coder Configuration" does not exist
+#	And I select link "Configuration Loader"
+#	And I disable "Coder"
+#	And I click the "Get File" button to download
+#	
+#	And I verify "Coder Configuration" spreadsheet does not exist
+#	And I take a screenshot

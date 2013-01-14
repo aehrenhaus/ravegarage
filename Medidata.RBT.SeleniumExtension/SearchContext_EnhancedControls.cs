@@ -75,10 +75,10 @@ namespace Medidata.RBT.SeleniumExtension
             return context.FindElement(By.XPath(".//input[@type='" + type + "']")).EnhanceAs<Textbox>();
         }
 
-		public static ReadOnlyCollection<Textbox> Textboxes(this ISearchContext context, bool allLevel = true)
+		public static ReadOnlyCollection<Textbox> Textboxes(this ISearchContext context, bool allLevel = true, bool? isWait = null)
 		{
 			string xpath = allLevel ? ".//input[@type='text'] | .//textarea" : "./input[@type='text'] | ./textarea";
-            var result = context.TryFindElementsBy(By.XPath(xpath))
+			var result = context.TryFindElementsBy(By.XPath(xpath), isWait)
                 ?? new ReadOnlyCollection<IWebElement>(new List<IWebElement>());
             return result.CastReadOnlyCollection<Textbox>();
 		}
@@ -193,8 +193,12 @@ namespace Medidata.RBT.SeleniumExtension
             if (linktext.Contains("•"))
                 ele = FindLinkWithBulletPoint(context, linktext);
             else
-			    ele = context.TryFindElementBy(By.LinkText(linktext));
+				ele = context.TryFindElementBy(By.LinkText(linktext));
 
+			if (ele == null)
+				ele = context.TryFindElementBy(By.XPath("//span[normalize-space(text())='" + linktext + "']"));
+
+			//DOTO: !!!!!! This 2 lines should not be here, this is a great performance drop and make no sense to treat a div as a link
             if(ele == null)
                 ele = context.TryFindElementBy(By.XPath("//div[normalize-space(text())='" + linktext + "']"));
 

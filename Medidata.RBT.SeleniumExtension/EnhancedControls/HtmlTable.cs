@@ -23,8 +23,12 @@ namespace Medidata.RBT.SeleniumExtension
 		/// <param name="dataTable"></param>
 		/// <param name="htmlTable"></param>
 		/// <returns></returns>
-		public ReadOnlyCollection<IWebElement> FindMatchRows(Table dataTable)
+		public ReadOnlyCollection<IWebElement> FindMatchRows(Table dataTable, Func<IWebElement, string> tdTextSelector = null)
 		{
+			if (tdTextSelector == null)
+				tdTextSelector = td => td.Text.Trim();
+
+
 			//TODO:here could be th instead of td 
 			var ths = this.FindElements(By.XPath("./tbody/tr[position()=1]/td"));
 
@@ -53,7 +57,7 @@ namespace Medidata.RBT.SeleniumExtension
 				return dataTable.Rows.Any(dr =>
 				{
 					//use trim because there could be spaces 
-					return dr.All(x => x.Value.Trim() == tds[indexMapping[x.Key]].Text.Trim());
+					return dr.All(x => x.Value.Trim() ==tdTextSelector( tds[indexMapping[x.Key]]));
 				});
 
 			});
