@@ -2,6 +2,9 @@
 	In order to create external studies in Rave,
 	I want to be able to process study messages from SQS.
 
+Background: 
+	Given I have a SimpleQueueWrapper
+
 @mytag
 Scenario: When a Study POST message gets put onto the queue, the study is created in Rave.
 	Given I send the following Study POST message to SQS

@@ -40,12 +40,8 @@
       <HintPath>..\packages\Nustache.1.12.4.29\lib\net20\Nustache.Core.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="Microsoft.CSharp" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Xml" />
     <Reference Include="TechTalk.SpecFlow">
       <HintPath>..\packages\SpecFlow.1.9.0\lib\net35\TechTalk.SpecFlow.dll</HintPath>
     </Reference>
@@ -67,9 +63,17 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\Medidata.AmazonSimpleServices\Medidata.AmazonSimpleServices\Medidata.AmazonSimpleServices.csproj">
+      <Project>{E7B6D8DA-C944-44BE-9F39-453E4C0E86C7}</Project>
+      <Name>Medidata.AmazonSimpleServices</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Medidata.RBT.Objects.Integration\Medidata.RBT.Objects.Integration.csproj">
       <Project>{63CCCE89-9E7D-4F5A-B7CA-0BEE1297B902}</Project>
       <Name>Medidata.RBT.Objects.Integration</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Medidata.RBT\Medidata.RBT.csproj">
+      <Project>{89C8F41A-E7F8-4D94-BE93-C2C5B8097A32}</Project>
+      <Name>Medidata.RBT</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
