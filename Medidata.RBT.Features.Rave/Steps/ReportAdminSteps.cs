@@ -30,17 +30,17 @@ namespace Medidata.RBT.Features.Rave
 			CurrentPage = CurrentPage.ClickButton("Create Package");
 
 			Browser.GetAlertWindow().Accept();
-			CurrentPage = TestContext.POFactory.GetPageByUrl(new Uri(Browser.Url));
+			CurrentPage = WebTestContext.POFactory.GetPageByUrl(new Uri(Browser.Url));
 
 			Browser.ButtonByText("Download Package");
 
-			TestContext.WatchForDownload();
+			WebTestContext.WatchForDownload();
 			CurrentPage.ClickButton("Download Package");
-			FileInfo lastFile =  TestContext.WaitForDownloadFinish();
+			FileInfo lastFile =  WebTestContext.WaitForDownloadFinish();
 
 		
 			string tempFolderSharedByOtherScenarios = "c:\\";
-			TestContext.Vars["tempFile"] = lastFile.Name;
+			WebTestContext.Storage["tempFile"] = lastFile.Name;
 			lastFile.MoveTo(Path.Combine(tempFolderSharedByOtherScenarios,lastFile.Name));
 		}
 
@@ -51,10 +51,10 @@ namespace Medidata.RBT.Features.Rave
 		[StepDefinition(@"I install report package ""(.+?)""")]
 		public void IInstallReportPackage____(string reportName)
 		{
-			Assert.IsNotNull(TestContext.Vars["tempFile"], "File not exist, should run the create package scenario to download the file.");
+			Assert.IsNotNull(WebTestContext.Storage["tempFile"], "File not exist, should run the create package scenario to download the file.");
 
 			string tempFolderSharedByOtherScenarios = "c:\\";
-			FileInfo lastFile = new FileInfo(Path.Combine(tempFolderSharedByOtherScenarios, TestContext.Vars["tempFile"]));
+			FileInfo lastFile = new FileInfo(Path.Combine(tempFolderSharedByOtherScenarios, WebTestContext.Storage["tempFile"] as string));
 
 			Assert.IsTrue(lastFile.Exists, "File not exist, should run the create package scenario to download the file.");
 
@@ -80,7 +80,7 @@ namespace Medidata.RBT.Features.Rave
 			CurrentPage = CurrentPage.ClickButton("Install Eligible Reports");
 
 			Browser.GetAlertWindow().Accept();
-			CurrentPage = TestContext.POFactory.GetPageByUrl(new Uri(Browser.Url));
+			CurrentPage = WebTestContext.POFactory.GetPageByUrl(new Uri(Browser.Url));
 
 			unzipedExcelFile.Delete();
 			lastFile.Delete();
@@ -96,11 +96,11 @@ namespace Medidata.RBT.Features.Rave
         public void TheFollowingReportsMatrixAssignmentsExist(Table table)
         {
             IEnumerable<ReportMatrixAssignmentModel> reportMatrixAssignments = table.CreateSet<ReportMatrixAssignmentModel>();
-            TestContext.CurrentPage = new ReportMatrixPage().NavigateToSelf();
+            WebTestContext.CurrentPage = new ReportMatrixPage().NavigateToSelf();
 
             CurrentPage.As<ReportMatrixPage>().AssignReportMatrices(reportMatrixAssignments.ToList());
 
-            TestContext.CurrentPage = new HomePage().NavigateToSelf();
+            WebTestContext.CurrentPage = new HomePage().NavigateToSelf();
         }
 	}
 }

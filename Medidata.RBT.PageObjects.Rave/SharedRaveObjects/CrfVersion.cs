@@ -24,7 +24,7 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
 		{
 			get
 			{
-				return TestContext.GetExistingFeatureObjectOrMakeNew<UploadedDraft>(DraftName, () => new UploadedDraft(DraftName));
+				return SeedingContext.GetExistingFeatureObjectOrMakeNew<UploadedDraft>(DraftName, () => new UploadedDraft(DraftName));
 			}
 		} //The draft that is uploaded to create this CRFVersion
 
@@ -47,9 +47,9 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
         /// </summary>
 		protected override void NavigateToSeedPage()
         {
-            TestContext.CurrentPage.As<HomePage>().ClickLink("Architect");
-            TestContext.CurrentPage.As<ArchitectPage>().ClickProject(UploadedDraft.Project.UniqueName);
-            TestContext.CurrentPage.As<ArchitectLibraryPage>().ClickDraft(UploadedDraft.Draft.UniqueName);
+            WebTestContext.CurrentPage.As<HomePage>().ClickLink("Architect");
+            WebTestContext.CurrentPage.As<ArchitectPage>().ClickProject(UploadedDraft.Project.UniqueName);
+            WebTestContext.CurrentPage.As<ArchitectLibraryPage>().ClickDraft(UploadedDraft.Draft.UniqueName);
         }
 
         /// <summary>
@@ -57,7 +57,7 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
         /// </summary>
 		protected override void CreateObject()
         {
-            TestContext.CurrentPage.As<ArchitectCRFDraftPage>().PublishCRF(UniqueName);
+            WebTestContext.CurrentPage.As<ArchitectCRFDraftPage>().PublishCRF(UniqueName);
             new ArchitectPage().ClickProject(UploadedDraft.Project.UniqueName);
         }
 

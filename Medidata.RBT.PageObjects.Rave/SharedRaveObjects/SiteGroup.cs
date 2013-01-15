@@ -48,8 +48,8 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
         /// </summary>
 		protected override void NavigateToSeedPage()
         {
-            TestContext.CurrentPage.ClickLink("Site Administration");
-            TestContext.CurrentPage.ClickLink("Site Group Administration");
+            WebTestContext.CurrentPage.ClickLink("Site Administration");
+            WebTestContext.CurrentPage.ClickLink("Site Group Administration");
         }
 
         /// <summary>
@@ -57,7 +57,7 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
         /// </summary>
 		protected override void CreateObject()
         {
-            TestContext.CurrentPage.As<SiteAdministrationNewSiteGroupPage>().CreateSiteGroup(UniqueName);
+            WebTestContext.CurrentPage.As<SiteAdministrationNewSiteGroupPage>().CreateSiteGroup(UniqueName);
         }
     }
 }

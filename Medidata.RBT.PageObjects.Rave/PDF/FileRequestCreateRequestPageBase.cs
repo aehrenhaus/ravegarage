@@ -46,7 +46,7 @@ namespace Medidata.RBT.PageObjects.Rave
         {
             if (!string.IsNullOrEmpty(pName))
             {
-                string profileName = TestContext.GetExistingFeatureObjectOrMakeNew
+                string profileName = SeedingContext.GetExistingFeatureObjectOrMakeNew
                     ( pName, () => new PdfProfile(pName)).UniqueName;
 
                 ChooseFromDropdown("_ctl0_Content_FileRequestForm_ConfigProfileID", profileName);
@@ -63,7 +63,7 @@ namespace Medidata.RBT.PageObjects.Rave
         {
             if (!string.IsNullOrEmpty(sName))
             {
-                string studyName = TestContext.GetExistingFeatureObjectOrMakeNew
+                string studyName = SeedingContext.GetExistingFeatureObjectOrMakeNew
                     (sName, () => new Project(sName)).UniqueName;
                 if (envName != null)
                 {
@@ -99,7 +99,7 @@ namespace Medidata.RBT.PageObjects.Rave
                 var dlRole = Browser.FindElementById("Role");
                 Thread.Sleep(1000);
 
-                string roleName = TestContext.GetExistingFeatureObjectOrMakeNew
+                string roleName = SeedingContext.GetExistingFeatureObjectOrMakeNew
                     (role, () => new Role(role)).UniqueName;
 
                 ChooseFromDropdown("Role", roleName);

@@ -85,7 +85,7 @@ namespace Medidata.RBT.Features.Rave
 		[StepDefinition(@"I wait for Clinical View refresh to complete for project ""([^""]*)""")]
 		public void IWaitForClinicalViewRefreshToCompleteForProject____(string project)
 		{
-            var projectUniqueName = TestContext.GetExistingFeatureObjectOrMakeNew(project, () => new Project(project)).UniqueName;
+            var projectUniqueName = SeedingContext.GetExistingFeatureObjectOrMakeNew(project, () => new Project(project)).UniqueName;
             var sql = ClinicalViewsScripts.GenerateSQLForNumberOfRecordsThatNeedCVRefresh(projectUniqueName);
 			System.Data.DataTable dataTable;
 			do

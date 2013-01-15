@@ -70,28 +70,28 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
         {
     
             //Activate the User
-            TestContext.CurrentPage = new UserAdministrationPage().NavigateToSelf();
-            TestContext.CurrentPage.As<UserAdministrationPage>().SearchUser(
+            WebTestContext.CurrentPage = new UserAdministrationPage().NavigateToSelf();
+            WebTestContext.CurrentPage.As<UserAdministrationPage>().SearchUser(
                 new Medidata.RBT.PageObjects.Rave.UserAdministrationPage.SearchByModel() { Login = UniqueName }
                 );
-            TestContext.CurrentPage = TestContext.CurrentPage.As<UserAdministrationPage>().ClickActivated(UniqueName);
-            ActivationCode = TestContext.CurrentPage.As<UserActivationPage>().GetActivationCode().Text;
-            TestContext.CurrentPage.ClickLink("Logout");
-            TestContext.CurrentPage = new LoginPage().NavigateToSelf();
-            TestContext.CurrentPage.As<LoginPage>().ClickLink("Activate New Account");
-            TestContext.CurrentPage.As<ActivatePage>().Pin.EnhanceAs<Textbox>().SetText(UniquePin);
-            TestContext.CurrentPage.As<ActivatePage>().ActivationCode.EnhanceAs<Textbox>().SetText(ActivationCode);
-            TestContext.CurrentPage.As<ActivatePage>().ClickButton("ActivateButton");
+            WebTestContext.CurrentPage = WebTestContext.CurrentPage.As<UserAdministrationPage>().ClickActivated(UniqueName);
+            ActivationCode = WebTestContext.CurrentPage.As<UserActivationPage>().GetActivationCode().Text;
+            WebTestContext.CurrentPage.ClickLink("Logout");
+            WebTestContext.CurrentPage = new LoginPage().NavigateToSelf();
+            WebTestContext.CurrentPage.As<LoginPage>().ClickLink("Activate New Account");
+            WebTestContext.CurrentPage.As<ActivatePage>().Pin.EnhanceAs<Textbox>().SetText(UniquePin);
+            WebTestContext.CurrentPage.As<ActivatePage>().ActivationCode.EnhanceAs<Textbox>().SetText(ActivationCode);
+            WebTestContext.CurrentPage.As<ActivatePage>().ClickButton("ActivateButton");
 
             //Set New Password
             this.Password = RaveConfiguration.Default.DefaultUserPassword;
-            TestContext.CurrentPage.As<PasswordPage>().NewPasswordBox.EnhanceAs<Textbox>().SetText(this.Password);
-            TestContext.CurrentPage.As<PasswordPage>().ConfirmPasswordBox.EnhanceAs<Textbox>().SetText(this.Password);
-            TestContext.CurrentPage.As<PasswordPage>().ClickButton("Save Password and Continue");
-            TestContext.CurrentPage.As<PasswordChangedPage>().ClickLink("Click here to continue...");
+            WebTestContext.CurrentPage.As<PasswordPage>().NewPasswordBox.EnhanceAs<Textbox>().SetText(this.Password);
+            WebTestContext.CurrentPage.As<PasswordPage>().ConfirmPasswordBox.EnhanceAs<Textbox>().SetText(this.Password);
+            WebTestContext.CurrentPage.As<PasswordPage>().ClickButton("Save Password and Continue");
+            WebTestContext.CurrentPage.As<PasswordChangedPage>().ClickLink("Click here to continue...");
 
             //this is important because after continue, will login as the new user.
-            TestContext.CurrentUser = this.UniqueName;
+            WebTestContext.CurrentUser = this.UniqueName;
         }
 
         /// <summary>
@@ -99,8 +99,8 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
         /// </summary>
 		protected override void NavigateToSeedPage()
         {
-            TestContext.CurrentPage.ClickLink("User Administration");
-            TestContext.CurrentPage.ClickLink("Upload Users");
+            WebTestContext.CurrentPage.ClickLink("User Administration");
+            WebTestContext.CurrentPage.ClickLink("Upload Users");
         }
 
         /// <summary>
@@ -108,7 +108,7 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
         /// </summary>
 		protected override void CreateObject()
         {
-            TestContext.CurrentPage.As<UploadUserPage>().UploadFile(UniqueFileLocation);
+            WebTestContext.CurrentPage.As<UploadUserPage>().UploadFile(UniqueFileLocation);
             Factory.FeatureObjectsForDeletion.Add(this);
 
             ActivateUser();

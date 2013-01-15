@@ -15,7 +15,7 @@ namespace Medidata.RBT.PageObjects.Rave.Configuration
 	{
         public ConfigurationLoaderPage()
 		{
-			PageFactory.InitElements(Browser, this);
+			//PageFactory.InitElements(Browser, this);
 		}
 
         /// <summary>
@@ -24,7 +24,7 @@ namespace Medidata.RBT.PageObjects.Rave.Configuration
         /// <param name="filepath">Path of the configuration to upload</param>
         public void UploadFile(string filepath)
         {
-            TestContext.Browser.FindElementById("_ctl0_Content_CtrlDraftFile").SendKeys(filepath);
+            Context.Browser.FindElementById("_ctl0_Content_CtrlDraftFile").SendKeys(filepath);
             ClickButton("Upload");
             WaitForUploadToComplete();
         }

@@ -66,7 +66,7 @@ namespace Medidata.RBT.Features.Rave.Steps
 		{
 			var page = CurrentPage.As<ConfigurationLoaderPage>();
 
-			page.UploadFile(TestContext.FileToUpload.FullName);
+			page.UploadFile(WebTestContext.FileToUpload.FullName);
 
 	
 		}
@@ -93,7 +93,7 @@ namespace Medidata.RBT.Features.Rave.Steps
 		[StepDefinition(@"I set lines per page to (.*) for User ""(.*)""")]
 		public void ISetLinesPerPageTo____ForUser____(int linesPerPage, string userName)
 		{
-			User user = TestContext.GetExistingFeatureObjectOrMakeNew(userName, () =>new User(userName));
+			User user = SeedingContext.GetExistingFeatureObjectOrMakeNew(userName, () =>new User(userName));
 			user.SetLinesPerPage(linesPerPage);
 		}
 
@@ -104,28 +104,28 @@ namespace Medidata.RBT.Features.Rave.Steps
         [StepDefinition(@"following Project assignments exist")]
         public void FollowingProjectAssignmentsExist(Table table)
         {
-			using (new LoginSession())
+			using (new LoginSession(WebTestContext))
 			{
 
 				List<ConfigurationCreationModel> configurations = table.CreateSet<ConfigurationCreationModel>().ToList();
 				foreach (ConfigurationCreationModel configuration in configurations)
 				{
-					User user = TestContext.GetExistingFeatureObjectOrMakeNew(configuration.User, () => new User(configuration.User));
+					User user = SeedingContext.GetExistingFeatureObjectOrMakeNew(configuration.User, () => new User(configuration.User));
 
-					Role role = TestContext.GetExistingFeatureObjectOrMakeNew(configuration.Role, () => new Role(configuration.Role));
-					SecurityRole securityRole = TestContext.GetExistingFeatureObjectOrMakeNew
+					Role role = SeedingContext.GetExistingFeatureObjectOrMakeNew(configuration.Role, () => new Role(configuration.Role));
+					SecurityRole securityRole = SeedingContext.GetExistingFeatureObjectOrMakeNew
 						(configuration.SecurityRole, () => new SecurityRole(configuration.SecurityRole));
 
-					Site site = TestContext.GetExistingFeatureObjectOrMakeNew(configuration.Site, () => new Site(configuration.Site));
-					Project project = TestContext.GetExistingFeatureObjectOrMakeNew(configuration.Project,
+					Site site = SeedingContext.GetExistingFeatureObjectOrMakeNew(configuration.Site, () => new Site(configuration.Site));
+					Project project = SeedingContext.GetExistingFeatureObjectOrMakeNew(configuration.Project,
 					                                                                () => new Project(configuration.Project));
 
 					bool studyAssignmentExists = user.StudyAssignmentExists(role.UniqueName, project.UniqueName, site.UniqueName,configuration.Environment);
 					bool moduleAssignmentExists = user.ModuleAssignmentExists("All Projects", securityRole.UniqueName);
 					if (!studyAssignmentExists || !moduleAssignmentExists)
 					{
-						string loggedInUserBeforeAssignments = TestContext.CurrentUser;
-						LoginPage.LoginToHomePageIfNotAlready();
+						string loggedInUserBeforeAssignments = WebTestContext.CurrentUser;
+						LoginPage.LoginToHomePageIfNotAlready(WebTestContext);
 
 						CurrentPage = new UserAdministrationPage().NavigateToSelf();
 						CurrentPage = CurrentPage.As<UserAdministrationPage>().SearchUser(new UserAdministrationPage.SearchByModel()
@@ -158,11 +158,11 @@ namespace Medidata.RBT.Features.Rave.Steps
         [StepDefinition(@"I assign user ""([^""]*)"" to security role ""([^""]*)""")]
         public void FollowingProjectAssignmentsExist(string userFeature, string securityRoleFeature)
         {
-            
-            using (new LoginSession())
+
+			using (new LoginSession(WebTestContext))
             {
-                User user = TestContext.GetExistingFeatureObjectOrMakeNew(userFeature, () => new User(userFeature));
-                SecurityRole securityRole = TestContext.GetExistingFeatureObjectOrMakeNew
+                User user = SeedingContext.GetExistingFeatureObjectOrMakeNew(userFeature, () => new User(userFeature));
+                SecurityRole securityRole = SeedingContext.GetExistingFeatureObjectOrMakeNew
                             (securityRoleFeature, () => new SecurityRole(securityRoleFeature));
                 if (!user.ModuleAssignmentExists("All Projects", securityRole.UniqueName))
                 {
@@ -184,8 +184,8 @@ namespace Medidata.RBT.Features.Rave.Steps
         [StepDefinition(@"review group number ""<Numbers>"" is active")]
         public void ReviewGroupNumber____IsActive(Table numbers)
         {
-            string loggedInUserBeforeAssignments = TestContext.CurrentUser;
-            LoginPage.LoginToHomePageIfNotAlready();
+            string loggedInUserBeforeAssignments = WebTestContext.CurrentUser;
+            LoginPage.LoginToHomePageIfNotAlready(WebTestContext);
 
             CurrentPage = new WorkflowConfigPage().NavigateToSelf();
 
@@ -213,12 +213,12 @@ namespace Medidata.RBT.Features.Rave.Steps
         [StepDefinition(@"Clinical Views exist for project ""([^""]*)""")]
         public void ClinicalViewsExistForProject____(string projectName)
         {
-            Project project = TestContext.GetExistingFeatureObjectOrMakeNew(projectName, () => new Project(projectName));
-            TestContext.CurrentPage = new ConfigurationClinicalViewsPage().NavigateToSelf();
+            Project project = SeedingContext.GetExistingFeatureObjectOrMakeNew(projectName, () => new Project(projectName));
+            WebTestContext.CurrentPage = new ConfigurationClinicalViewsPage().NavigateToSelf();
             bool hasClinicalViews = CurrentPage.Browser.FindElementByTagName("body").Text.Contains(project.UniqueName);
             if (!hasClinicalViews)
             {
-                TestContext.CurrentPage.As<ConfigurationClinicalViewsPage>().BuildClinicalViews(project.UniqueName);
+                WebTestContext.CurrentPage.As<ConfigurationClinicalViewsPage>().BuildClinicalViews(project.UniqueName);
             }
         }
 	}

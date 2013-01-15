@@ -105,9 +105,9 @@ namespace Medidata.RBT.PageObjects.Rave
 		public override bool IsElementFocused(ControlType type, int position) 
         {
             var element = GetElementInColumnByRowIDColumnID(type, position);
-            IWebElement currentElement = TestContext.Browser.TryFindElementBy(b =>
+            IWebElement currentElement = Page.Browser.TryFindElementBy(b =>
             {
-                return TestContext.CurrentPage.GetFocusElement().FindElement(By.XPath(".[@id != '']"));
+				return Page.GetFocusElement().FindElement(By.XPath(".[@id != '']"));
             });
             var actualId = currentElement.GetAttribute("ID");
             var expectedId = element.GetAttribute("ID");
@@ -137,13 +137,13 @@ namespace Medidata.RBT.PageObjects.Rave
                 suffix.Append(ControlTypeInformation.GetSuffixByControlType(type));
             return GetElementBySuffixColumn(type, suffix.ToString());
         }
-        private static IWebElement GetElementBySuffixColumn(ControlType type, string suffix)
+        private IWebElement GetElementBySuffixColumn(ControlType type, string suffix)
         {
             var attr = ControlType.RadioButton == type
                 || ControlType.RadioButtonVertical == type
                    ? "id"
                    : "name";
-            var result = TestContext.Browser.TryFindElementBy(By.XPath
+			var result = Page.Browser.TryFindElementBy(By.XPath
                 ("//*['"
                 + suffix +
                 "' = substring(@" + attr + ", string-length(@" + attr + ") - string-length('"

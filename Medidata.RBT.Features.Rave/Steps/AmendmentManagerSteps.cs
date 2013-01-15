@@ -28,8 +28,8 @@ namespace Medidata.RBT.Features.Rave
         [StepDefinition(@"I go to Amendment Manager for study ""([^""]*)""")]
         public void IGoToAmendmentManagerForStudy____(string studyName)
         {
-            TestContext.CurrentPage = new AMMigrationHomePage();
-            TestContext.CurrentPage.As<AMMigrationHomePage>().NavigateToStudy(studyName);
+            WebTestContext.CurrentPage = new AMMigrationHomePage();
+            WebTestContext.CurrentPage.As<AMMigrationHomePage>().NavigateToStudy(studyName);
         }
 
         /// <summary>
@@ -51,7 +51,7 @@ namespace Medidata.RBT.Features.Rave
         [StepDefinition(@"I select Source CRF version ""([^""]*)""")]
         public void ISelectSourceCRFVersion____(string sourceCRFName)
         {
-            TestContext.CurrentPage.As<AMMigrationHomePage>().SelectSourceCRF(sourceCRFName);
+            WebTestContext.CurrentPage.As<AMMigrationHomePage>().SelectSourceCRF(sourceCRFName);
         }
 
         /// <summary>
@@ -63,7 +63,7 @@ namespace Medidata.RBT.Features.Rave
         [StepDefinition(@"I select Current CRF version ""(.*?)""")]
         public void ISelectCurrentCRFVersion___(string currentCrfName)
         {
-            TestContext.CurrentPage.As<PublishChecksHomePage>()
+            WebTestContext.CurrentPage.As<PublishChecksHomePage>()
                 .SelectCurrentCRF(currentCrfName);
         }
 
@@ -75,7 +75,7 @@ namespace Medidata.RBT.Features.Rave
         [StepDefinition(@"I select Target CRF version ""([^""]*)""")]
         public void ISelectTargetCRFVersion____(string targetCRFName)
         {
-            TestContext.CurrentPage.As<AMMigrationHomePage>().SelectTargetCRF(targetCRFName);
+            WebTestContext.CurrentPage.As<AMMigrationHomePage>().SelectTargetCRF(targetCRFName);
         }
 
         /// <summary>
@@ -87,7 +87,7 @@ namespace Medidata.RBT.Features.Rave
         [StepDefinition(@"I select Reference CRF version ""(.*?)""")]
         public void ISelectReferenceCRFVersion___(string referenceCrfName)
         {
-            TestContext.CurrentPage.As<PublishChecksHomePage>()
+            WebTestContext.CurrentPage.As<PublishChecksHomePage>()
                 .SelectReferenceCRF(referenceCrfName);
         }
 
@@ -99,7 +99,7 @@ namespace Medidata.RBT.Features.Rave
         [StepDefinition(@"I select ""(.*?)"" from Forms in Edit Checks")]
         public void ISelect____FromFromsInEditChecks(string form)
         {
-            TestContext.CurrentPage.As<PublishChecksHomePage>()
+            WebTestContext.CurrentPage.As<PublishChecksHomePage>()
                 .EditChecks
                 .SelectForm(form);
         }
@@ -111,7 +111,7 @@ namespace Medidata.RBT.Features.Rave
         [StepDefinition(@"I select search icon in Edit Checks")]
         public void ISelectSearchIcon()
         {
-            TestContext.CurrentPage.As<PublishChecksHomePage>()
+            WebTestContext.CurrentPage.As<PublishChecksHomePage>()
                 .EditChecks
                 .Search();
         }
@@ -124,7 +124,7 @@ namespace Medidata.RBT.Features.Rave
         [StepDefinition(@"I check ""(Publish|Run|Inactivate)"" for ""(.*?)"" in Edit Checks")]
         public void ICheck____For____InEditChecks(string action, string name)
         {
-            var item = TestContext.CurrentPage.As<PublishChecksHomePage>()
+            var item = WebTestContext.CurrentPage.As<PublishChecksHomePage>()
                 .EditChecks.FindEditChecksItemByName(name);
 
             switch (action)
@@ -147,7 +147,7 @@ namespace Medidata.RBT.Features.Rave
         [StepDefinition(@"I create migration plan")]
         public void ICreateMigrationPlan()
         {
-            TestContext.CurrentPage.As<AMMigrationHomePage>().ClickButton("Create Plan");
+            WebTestContext.CurrentPage.As<AMMigrationHomePage>().ClickButton("Create Plan");
         }
 
         /// <summary>
@@ -158,8 +158,8 @@ namespace Medidata.RBT.Features.Rave
         [StepDefinition(@"I execute plan for subject ""([^""]*)""")]
         public void IExecutePlanForSubject____(string subjectSearchString)
         {
-            TestContext.CurrentPage.As<AMMigrationBasePage>().ClickLink("Execute Plan");
-            TestContext.CurrentPage.As<AMMigrationExecutePage>().Migrate(SpecialStringHelper.Replace(subjectSearchString));
+            WebTestContext.CurrentPage.As<AMMigrationBasePage>().ClickLink("Execute Plan");
+            WebTestContext.CurrentPage.As<AMMigrationExecutePage>().Migrate(SpecialStringHelper.Replace(subjectSearchString));
         }
 
         /// <summary>
@@ -170,16 +170,16 @@ namespace Medidata.RBT.Features.Rave
         [StepDefinition(@"I set up a ""([^""]*)"" object mapping")]
         public void ISetUpA____ObjectMapping(string typeToMap, Table table)
         {
-            TestContext.CurrentPage.As<AMMigrationHomePage>().ClickLink("Object Mapping");
+            WebTestContext.CurrentPage.As<AMMigrationHomePage>().ClickLink("Object Mapping");
             string linkToClick;
             if (typeToMap.ToLower().Equals("data dictionary"))
                 linkToClick = "Data Dictionary";
             else
                 linkToClick = typeToMap;
 
-            TestContext.CurrentPage.As<AMMigrationObjectMappingPage>().ClickLink(linkToClick);
+            WebTestContext.CurrentPage.As<AMMigrationObjectMappingPage>().ClickLink(linkToClick);
             List<MigrationModel> migration = table.CreateSet<MigrationModel>().ToList();
-            TestContext.CurrentPage.As<AMMigrationObjectMappingPage>().SetMapping(migration);
+            WebTestContext.CurrentPage.As<AMMigrationObjectMappingPage>().SetMapping(migration);
             Browser.TryFindElementById("_ctl0_Content_MigrationStepManagePlan1_buttonBar_buttonSave_lb_buttonSave").Click(); //Click save at the bottom of the page
         }
 
@@ -198,10 +198,10 @@ namespace Medidata.RBT.Features.Rave
             else
                 linkToClick = typeToMap;
 
-            TestContext.CurrentPage.As<AMMigrationObjectMappingPage>().ClickLink(linkToClick);
+            WebTestContext.CurrentPage.As<AMMigrationObjectMappingPage>().ClickLink(linkToClick);
             List<MigrationModel> migration = table.CreateSet<MigrationModel>().ToList();
-            TestContext.CurrentPage.As<AMMigrationObjectMappingPage>().EditMapping(source);
-            TestContext.CurrentPage.As<AMMigrationObjectMappingPage>().SetChildMapping(migration);
+            WebTestContext.CurrentPage.As<AMMigrationObjectMappingPage>().EditMapping(source);
+            WebTestContext.CurrentPage.As<AMMigrationObjectMappingPage>().SetChildMapping(migration);
             Browser.TryFindElementById("_ctl0_Content_MigrationStepManagePlan1_buttonBar_buttonSave_lb_buttonSave").Click(); //Click save at the bottom of the page
         }
 	}

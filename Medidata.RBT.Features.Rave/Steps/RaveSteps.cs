@@ -21,10 +21,11 @@ namespace Medidata.RBT.Features.Rave
         /// <returns></returns>
         [StepDefinition(@"the text should not contain ""<Symbol>""")]
         public void TheTextShouldNotContainSymbol(Table table)
-        {
-            Assert.IsFalse(String.IsNullOrEmpty(TestContext.ScenarioText));
+		{
+			string str = WebTestContext.Storage["TripReports"] as string;
+			Assert.IsFalse(String.IsNullOrEmpty(str));
 
-            if (CreateSymbolsTable(table).Any(s => TestContext.ScenarioText.Contains(s)))
+			if (CreateSymbolsTable(table).Any(s => str.Contains(s)))
                 Assert.Fail();
         }
 
@@ -36,9 +37,10 @@ namespace Medidata.RBT.Features.Rave
         [StepDefinition(@"the text should contain ""<Symbol>""")]
         public void TheTextShouldContainSymbol(Table table)
         {
-            Assert.IsFalse(String.IsNullOrEmpty(TestContext.ScenarioText));
+			string str = WebTestContext.Storage["TripReports"] as string;
+			Assert.IsFalse(String.IsNullOrEmpty(str));
 
-            if (CreateSymbolsTable(table).Any(s => !TestContext.ScenarioText.Contains(s)))
+			if (CreateSymbolsTable(table).Any(s => !str.Contains(s)))
                 Assert.Fail();
         }
 

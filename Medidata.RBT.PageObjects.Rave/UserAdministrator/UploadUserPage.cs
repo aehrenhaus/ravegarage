@@ -19,7 +19,7 @@ namespace Medidata.RBT.PageObjects.Rave.UserAdministrator
         /// <param name="filepath">The path to the user to upload</param>
         public void UploadFile(string filepath)
         {
-            TestContext.Browser.FindElementById("_ctl0_Content_FileUpload").SendKeys(filepath);
+            Context.Browser.FindElementById("_ctl0_Content_FileUpload").SendKeys(filepath);
             ClickButton("Upload");
             WaitForUploadToComplete();
         }

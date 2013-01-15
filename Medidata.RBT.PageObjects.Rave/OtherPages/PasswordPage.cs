@@ -19,7 +19,7 @@ namespace Medidata.RBT.PageObjects.Rave
 
         public PasswordPage()
 		{
-			PageFactory.InitElements(Browser, this);
+			//PageFactory.InitElements(Browser, this);
 		}
 
         public override string URL{ get { return "Password.aspx"; }}

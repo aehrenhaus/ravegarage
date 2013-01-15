@@ -8,8 +8,11 @@ namespace Medidata.RBT
 {
 	public class PageObjectFactory
 	{
-		public PageObjectFactory()
+		private WebTestContext context;
+
+		public PageObjectFactory(WebTestContext context)
 		{
+			this.context = context;
 		}
 
 		public void AddAssembly(Assembly assembly)
@@ -28,6 +31,7 @@ namespace Medidata.RBT
 				_dicNameType[poType.Name] = poType;
 
 				IPage po2 = Activator.CreateInstance(poType) as IPage;
+				po2.Context = context;
 
 				string url = po2.BaseURL + po2.URL;
 				if (urls.ContainsKey(url))
@@ -77,7 +81,7 @@ namespace Medidata.RBT
 			}
 
 
-			return new GeneralPage();
+			return new GeneralPage(context);
 		}
 	}
 }

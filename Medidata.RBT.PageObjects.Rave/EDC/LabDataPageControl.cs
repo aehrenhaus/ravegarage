@@ -49,7 +49,7 @@ namespace Medidata.RBT.PageObjects.Rave
 		public IEDCFieldControl FindField(string fieldText)
 		{
             fieldText = ISearchContextExtend.ReplaceSpecialCharactersWithEscapeCharacters(fieldText);
-            IWebElement el = TestContext.Browser.FindElements(By.XPath("//span[contains(@id,'Content_R')]")).FirstOrDefault();
+			IWebElement el = Page.Browser.FindElements(By.XPath("//span[contains(@id,'Content_R')]")).FirstOrDefault();
             var area = el.FindElementsByText<IWebElement>(fieldText).FirstOrDefault();
 
             var fieldTRs = el.FindElements(By.XPath("table[2]/tbody/tr"));
@@ -71,7 +71,7 @@ namespace Medidata.RBT.PageObjects.Rave
 
         public IEDCFieldControl FindUnitDropdown(string fieldText)
         {
-            IWebElement el = TestContext.Browser.FindElements(By.XPath("//span[contains(@id,'Content_R')]")).FirstOrDefault();
+			IWebElement el = Page.Browser.FindElements(By.XPath("//span[contains(@id,'Content_R')]")).FirstOrDefault();
             var area = el.FindElementsByText<IWebElement>(fieldText).FirstOrDefault();
 
             if (area == null)

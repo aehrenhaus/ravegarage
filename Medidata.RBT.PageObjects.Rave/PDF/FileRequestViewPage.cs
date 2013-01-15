@@ -33,7 +33,7 @@ namespace Medidata.RBT.PageObjects.Rave
                 if(filePath.ToLower().EndsWith(".pdf"))
                     sb.Append(new Medidata.RBT.PDF(pdfName, filePath).Text);
 
-            TestContext.ScenarioText = sb.ToString();
+			Context.Storage["TripReports"] = sb.ToString();
 		}
 
         public override string URL

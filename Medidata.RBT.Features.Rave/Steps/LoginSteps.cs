@@ -1,6 +1,7 @@
 ﻿using TechTalk.SpecFlow;
 using Medidata.RBT.PageObjects.Rave;
 using Medidata.RBT.PageObjects.Rave.SharedRaveObjects;
+using System;
 
 
 namespace Medidata.RBT.Features.Rave
@@ -46,8 +47,8 @@ namespace Medidata.RBT.Features.Rave
             }
             else
             {
-                User user = TestContext.GetExistingFeatureObjectOrMakeNew(userName, () => new User(userName));
-                LoginPage.LoginToHomePageIfNotAlready(user.UniqueName, user.Password);
+                User user = SeedingContext.GetExistingFeatureObjectOrMakeNew(userName, () => new User(userName));
+				LoginPage.LoginToHomePageIfNotAlready(WebTestContext, user.UniqueName, user.Password);
             }
 		}
 

@@ -63,8 +63,8 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
         {
             if (!SkipUpload)
             {
-                TestContext.Browser.TryFindElementByPartialID("NewProjectName").EnhanceAs<Textbox>().SetText(UniqueName);
-                TestContext.CurrentPage.ClickLink("Add Project");
+                WebTestContext.Browser.TryFindElementByPartialID("NewProjectName").EnhanceAs<Textbox>().SetText(UniqueName);
+                WebTestContext.CurrentPage.ClickLink("Add Project");
             }
         }
     }

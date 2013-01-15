@@ -76,7 +76,7 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
         /// </summary>
 		protected override void NavigateToSeedPage()
         {
-            TestContext.CurrentPage = new ConfigurationLoaderPage().NavigateToSelf();
+            WebTestContext.CurrentPage = new ConfigurationLoaderPage().NavigateToSelf();
         }
 
         /// <summary>
@@ -84,7 +84,7 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
         /// </summary>
 		protected override void CreateObject()
         {
-            TestContext.CurrentPage.As<ConfigurationLoaderPage>().UploadFile(UniqueFileLocation);
+            WebTestContext.CurrentPage.As<ConfigurationLoaderPage>().UploadFile(UniqueFileLocation);
             Factory.FeatureObjectsForDeletion.Add(this);
         }
 

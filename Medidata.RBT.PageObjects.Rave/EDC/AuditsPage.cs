@@ -142,7 +142,7 @@ namespace Medidata.RBT.PageObjects.Rave
 
                     string specifiedLogin = specifiedUserDetail[1].Split('-')[1].TrimStart(' ');
                     //Get the unique user object created during seeding
-                    User spUser = TestContext.GetExistingFeatureObjectOrMakeNew(specifiedLogin, () => new User(specifiedLogin));
+                    User spUser = SeedingContext.GetExistingFeatureObjectOrMakeNew(specifiedLogin, () => new User(specifiedLogin));
 
                     string actualLogin = actualUserDetail[1].Split('-')[1].TrimStart(' ');
                     isSpecifiedData = actualLogin.Equals(spUser.UniqueName);

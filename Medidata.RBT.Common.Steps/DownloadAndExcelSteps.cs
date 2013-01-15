@@ -24,9 +24,9 @@ namespace Medidata.RBT.Common.Steps
 		[StepDefinition(@"I click the ""([^""]*)"" button to download")]
 		public void IClickThe___ButtonToDownload(string button)
 		{
-			TestContext.WatchForDownload();
+			WebTestContext.WatchForDownload();
 			CurrentPage.ClickButton(button);
-			TestContext.WaitForDownloadFinish();
+			WebTestContext.WaitForDownloadFinish();
 		}
 
 		/// <summary>
@@ -37,7 +37,7 @@ namespace Medidata.RBT.Common.Steps
 		[StepDefinition(@"I verify ""([^""]*)"" spreadsheet has column ""([^""]*)""")]
 		public void IVerify___SpreadsheetHasColumn____(string name, string columnName)
 		{
-			string fileName = TestContext.LastDownloadFile.FullName;
+			string fileName = WebTestContext.LastDownloadFile.FullName;
 			if (Path.GetExtension(fileName).ToLower() == ".zip")
 				fileName = FileHelper.UnZipFile(fileName);
 			bool contains = false;
@@ -77,7 +77,7 @@ namespace Medidata.RBT.Common.Steps
 		[StepDefinition(@"I verify ""([^""]*)"" spreadsheet exists")]
 		public void IVerify___SpreadsheetExists(string name)
 		{
-			string fileName = TestContext.LastDownloadFile.FullName;
+			string fileName = WebTestContext.LastDownloadFile.FullName;
 			if (Path.GetExtension(fileName).ToLower() == ".zip")
 				fileName = FileHelper.UnZipFile(fileName);
 
@@ -95,7 +95,7 @@ namespace Medidata.RBT.Common.Steps
 		[StepDefinition(@"I verify ""([^""]*)"" spreadsheet does not exist")]
 		public void IVerify___SpreadsheetDoesNotExist(string name)
 		{
-			string fileName = TestContext.LastDownloadFile.FullName;
+			string fileName = WebTestContext.LastDownloadFile.FullName;
 			if (Path.GetExtension(fileName).ToLower()==".zip")
 				fileName = FileHelper.UnZipFile(fileName);
 
@@ -116,7 +116,7 @@ namespace Medidata.RBT.Common.Steps
 		{
 			SpecialStringHelper.ReplaceTable(table);
 
-			string fileName = TestContext.LastDownloadFile.FullName;
+			string fileName = WebTestContext.LastDownloadFile.FullName;
 			if (Path.GetExtension(fileName).ToLower()==".zip")
 				fileName = FileHelper.UnZipFile(fileName);
 
@@ -154,13 +154,13 @@ namespace Medidata.RBT.Common.Steps
 		[StepDefinition(@"I clear ""([^""]*)"" spreadsheet data")]
 		public void IClear___SpreadsheetData(string name)
 		{
-			string fileName = TestContext.LastDownloadFile.FullName;
+			string fileName = WebTestContext.LastDownloadFile.FullName;
 			if (Path.GetExtension(fileName).ToLower() == ".zip")
 			{
 				fileName = FileHelper.UnZipFile(fileName);
-				TestContext.LastDownloadFile = new FileInfo(fileName);
+				WebTestContext.LastDownloadFile = new FileInfo(fileName);
 			}
-			TestContext.FileToUpload = new FileInfo(fileName);
+			WebTestContext.FileToUpload = new FileInfo(fileName);
 			using (var excel = new ExcelWorkbook(fileName))
 			{
 				var sheet = excel.OpenTableForEdit(name);
@@ -176,13 +176,13 @@ namespace Medidata.RBT.Common.Steps
 		[StepDefinition(@"I clear ""([^""]*)"" spreadsheet data from line (\d+)")]
 		public void IClear___SpreadsheetData(string name, int startLine)
 		{
-			string fileName = TestContext.LastDownloadFile.FullName;
+			string fileName = WebTestContext.LastDownloadFile.FullName;
 			if (Path.GetExtension(fileName).ToLower() == ".zip")
 			{
 				fileName = FileHelper.UnZipFile(fileName);
-				TestContext.LastDownloadFile = new FileInfo(fileName);
+				WebTestContext.LastDownloadFile = new FileInfo(fileName);
 			}
-			TestContext.FileToUpload = new FileInfo(fileName);
+			WebTestContext.FileToUpload = new FileInfo(fileName);
 			using (var excel = new ExcelWorkbook(fileName))
 			{
 				var sheet = excel.OpenTableForEdit(name);
@@ -201,13 +201,13 @@ namespace Medidata.RBT.Common.Steps
 		{
 			SpecialStringHelper.ReplaceTable(table);
 
-			string fileName = TestContext.LastDownloadFile.FullName;
+			string fileName = WebTestContext.LastDownloadFile.FullName;
 			if (Path.GetExtension(fileName).ToLower() == ".zip")
 			{
 				fileName = FileHelper.UnZipFile(fileName);
-				TestContext.LastDownloadFile = new FileInfo(fileName);
+				WebTestContext.LastDownloadFile = new FileInfo(fileName);
 			}
-			TestContext.FileToUpload = new FileInfo(fileName); 
+			WebTestContext.FileToUpload = new FileInfo(fileName); 
 			using (var excel = new ExcelWorkbook(fileName))
 			{
 				var sheet = excel.OpenTableForEdit(name);

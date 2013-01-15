@@ -44,7 +44,7 @@ namespace Medidata.RBT.PageObjects.Rave
             if (!string.IsNullOrEmpty(crfVersion))
             {
                 Dropdown crfVersionDropdown = Browser.DropdownById("CRFVersion", true);
-                crfVersionDropdown.SelectByPartialText(TestContext.GetExistingFeatureObjectOrMakeNew<CrfVersion>(crfVersion, () => null).UniqueName);
+                crfVersionDropdown.SelectByPartialText(SeedingContext.GetExistingFeatureObjectOrMakeNew<CrfVersion>(crfVersion, () => null).UniqueName);
             }
         }
 

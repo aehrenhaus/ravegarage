@@ -39,8 +39,8 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
         /// </summary>
 		protected override void NavigateToSeedPage()
         {
-            TestContext.CurrentPage.As<HomePage>().ClickLink("Architect");
-            TestContext.CurrentPage.As<ArchitectPage>().ClickLink("Upload Draft");
+            WebTestContext.CurrentPage.As<HomePage>().ClickLink("Architect");
+            WebTestContext.CurrentPage.As<ArchitectPage>().ClickLink("Upload Draft");
         }
 
         /// <summary>
@@ -48,7 +48,7 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
         /// </summary>
 		protected override void CreateObject()
         {
-            TestContext.CurrentPage.As<UploadDraftPage>().UploadFile(UniqueFileLocation);
+            WebTestContext.CurrentPage.As<UploadDraftPage>().UploadFile(UniqueFileLocation);
             Factory.FeatureObjectsForDeletion.Add(this);
         }
 
@@ -71,7 +71,7 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
 				//project 
 				var projectName = draftTable[1, "ProjectName"].ToString();
                 if (Project == null)
-                    Project = TestContext.GetExistingFeatureObjectOrMakeNew(projectName, () => new Project(projectName, true));
+					Project = SeedingContext.GetExistingFeatureObjectOrMakeNew(projectName, () => new Project(projectName, true));
 
 				draftTable[1, "ProjectName"] = Project.UniqueName;
 
@@ -82,7 +82,7 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
 
                     if (!string.IsNullOrEmpty(labStandardGroupName))
                     {
-                        StandardGroup labStandardGroup = TestContext.GetExistingFeatureObjectOrMakeNew(labStandardGroupName, () => new StandardGroup(labStandardGroupName));
+						StandardGroup labStandardGroup = SeedingContext.GetExistingFeatureObjectOrMakeNew(labStandardGroupName, () => new StandardGroup(labStandardGroupName));
                         draftTable[1, "LabStandardGroup"] = labStandardGroup.UniqueName;
                     }
                 }
@@ -95,7 +95,7 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
 
                     if (!string.IsNullOrEmpty(referenceLabName))
                     {
-                        Lab referenceLabsGroup = TestContext.GetExistingFeatureObjectOrMakeNew(referenceLabName, () => new Lab(referenceLabName));
+						Lab referenceLabsGroup = SeedingContext.GetExistingFeatureObjectOrMakeNew(referenceLabName, () => new Lab(referenceLabName));
                         draftTable[1, "ReferenceLabs"] = referenceLabsGroup.UniqueName;
                     }
                 }
@@ -108,7 +108,7 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
 
                     if (!string.IsNullOrEmpty(alertLabName))
                     {
-                        Lab alertLabsGroup = TestContext.GetExistingFeatureObjectOrMakeNew(alertLabName, () => new Lab(alertLabName));
+						Lab alertLabsGroup = SeedingContext.GetExistingFeatureObjectOrMakeNew(alertLabName, () => new Lab(alertLabName));
                         draftTable[1, "AlertLabs"] = alertLabsGroup.UniqueName;
                     }
                 }
@@ -116,7 +116,7 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
 
 				//draft
 				var oldDraftName = draftTable[1, "DraftName"].ToString();
-				Draft = TestContext.GetExistingFeatureObjectOrMakeNew(oldDraftName, () => new Draft(oldDraftName));
+				Draft = SeedingContext.GetExistingFeatureObjectOrMakeNew(oldDraftName, () => new Draft(oldDraftName));
 
 				for (int row = 1; row <= fieldsTable.RowsCount; row++)
 				{
@@ -149,7 +149,7 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
                 StringBuilder uniqueEntryRestrictions = new StringBuilder();
                 foreach (string entryRestriction in entryRestrictions)
                 {
-                    Role role = TestContext.GetExistingFeatureObjectOrMakeNew<Role>(entryRestriction.Trim(), () => new Role(entryRestriction.Trim()));
+					Role role = SeedingContext.GetExistingFeatureObjectOrMakeNew<Role>(entryRestriction.Trim(), () => new Role(entryRestriction.Trim()));
                     uniqueEntryRestrictions.Append(role.UniqueName + ",");
                 }
 
@@ -168,7 +168,7 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
 
             if (!String.IsNullOrEmpty(analyteString))
             {
-                Analyte analyte = TestContext.GetExistingFeatureObjectOrMakeNew<Analyte>(analyteString.Trim(), () => new Analyte(analyteString));
+				Analyte analyte = SeedingContext.GetExistingFeatureObjectOrMakeNew<Analyte>(analyteString.Trim(), () => new Analyte(analyteString));
                 fieldsTable[currentRow, "AnalyteName"] = analyte.UniqueName.ToString();
             }
         }

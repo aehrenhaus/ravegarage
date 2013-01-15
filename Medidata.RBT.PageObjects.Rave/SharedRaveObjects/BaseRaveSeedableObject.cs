@@ -16,6 +16,14 @@ namespace Medidata.RBT.SharedRaveObjects
     ///</summary>
     public class BaseRaveSeedableObject : ISeedableObject
 	{
+		public WebTestContext WebTestContext
+		{
+			get
+			{
+				return (SpecflowStaticBindings.Current as SpecflowWebTestContext).WebTestContext;
+			}
+		}
+
 	    public bool SuppressSeeding { get; set; } //Only true when you don't want to seed.
 
         public string UniqueName { get; set; } 
@@ -28,7 +36,7 @@ namespace Medidata.RBT.SharedRaveObjects
 		public BaseRaveSeedableObject()
 		{
 			//set global suppress seeding option, it can be overwrite later
-			SuppressSeeding = (TestContext.FeatureSeedingOption ?? TestContext.DefaultSeedingOption).SuppressSeeding(GetType());
+			SuppressSeeding = (SeedingContext.FeatureSeedingOption ?? SeedingContext.DefaultSeedingOption).SuppressSeeding(GetType());
             RedirectAfterSeed = true;
 		}
 
@@ -36,7 +44,7 @@ namespace Medidata.RBT.SharedRaveObjects
 		{
 			var type = this.GetType();
 
-			if (SuppressSeeding || !(TestContext.FeatureSeedingOption ?? TestContext.DefaultSeedingOption).EnableSeeding)
+			if (SuppressSeeding || !(SeedingContext.FeatureSeedingOption ?? SeedingContext.DefaultSeedingOption).EnableSeeding)
 			{
 				Console.WriteLine("-> Seeding --> suppressed --> {0} --> {1}", type.Name, UniqueName);
 		
@@ -44,7 +52,7 @@ namespace Medidata.RBT.SharedRaveObjects
 			}
 
 			string originalName = UniqueName;
-			if ((TestContext.FeatureSeedingOption ?? TestContext.DefaultSeedingOption).FromUI(type))
+			if ((SeedingContext.FeatureSeedingOption ?? SeedingContext.DefaultSeedingOption).FromUI(type))
 			{
 				Console.WriteLine("-> Seeding --> UI --> {0} --> {1}", type.Name, originalName); 
 				SeedFromUI();
@@ -61,7 +69,7 @@ namespace Medidata.RBT.SharedRaveObjects
 
 		protected virtual void SeedFromUI()
 		{
-            using (new LoginSession(redirectOnDispose : RedirectAfterSeed))
+			using (new LoginSession(WebTestContext, redirectOnDispose: RedirectAfterSeed))
 			{
 				MakeUnique();
 				NavigateToSeedPage();

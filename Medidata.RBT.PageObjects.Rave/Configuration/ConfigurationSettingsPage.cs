@@ -17,7 +17,7 @@ namespace Medidata.RBT.PageObjects.Rave.Configuration
 			var configurationSettingsModel = createSet as List<ConfigurationSettingsModel> ?? createSet.ToList();
 
 			//FindTable
-			IWebElement edcConfigSettingsTable = TestContext.Browser.TryFindElementByPartialID("tblOuter");
+			IWebElement edcConfigSettingsTable = Context.Browser.TryFindElementByPartialID("tblOuter");
 			foreach (ConfigurationSettingsModel csm in createSet)
 			{
 				IWebElement edcConfigSettingsRow = edcConfigSettingsTable.TryFindElementBySpanLinktext(csm.Parameter).Parent().Parent();
@@ -55,7 +55,7 @@ namespace Medidata.RBT.PageObjects.Rave.Configuration
 			var configurationSettingsModel = createSet as List<ConfigurationSettingsModel> ?? createSet.ToList();
 			
 			//FindTable
-			IWebElement edcConfigSettingsTable = TestContext.Browser.TryFindElementByPartialID("tblOuter");
+			IWebElement edcConfigSettingsTable = Context.Browser.TryFindElementByPartialID("tblOuter");
 			foreach(ConfigurationSettingsModel csm in createSet)
 			{
 				IWebElement edcConfigSettingsRow = edcConfigSettingsTable.TryFindElementBySpanLinktext(csm.Parameter).Parent().Parent();

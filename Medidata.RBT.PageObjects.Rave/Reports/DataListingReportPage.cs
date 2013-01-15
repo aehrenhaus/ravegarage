@@ -61,7 +61,7 @@ namespace Medidata.RBT.PageObjects.Rave
             HtmlTable htmlTable = GetElementByName(areaIdentifier).EnhanceAs<HtmlTable>();
             var trs = htmlTable.FindElements(By.XPath("./tbody/tr"));
             numberOfRows = trs.Count;
-            var pageTable = TestContext.Browser.FindElementByXPath(String.Format("/html/body/form/table[3]/tbody/tr/td/table/tbody/tr[{0}]/td", numberOfRows.ToString()));
+            var pageTable = Context.Browser.FindElementByXPath(String.Format("/html/body/form/table[3]/tbody/tr/td/table/tbody/tr[{0}]/td", numberOfRows.ToString()));
             var current = pageTable.FindElement(By.XPath(".//span"));
             var pageLinks = pageTable.FindElements(By.XPath(".//a"));
 

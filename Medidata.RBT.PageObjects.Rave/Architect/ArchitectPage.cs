@@ -35,8 +35,8 @@ namespace Medidata.RBT.PageObjects.Rave
         public IPage ClickProject(string projectName)
         {
             base.ClickLink(projectName);
-            TestContext.CurrentPage = new ArchitectLibraryPage();
-            return TestContext.CurrentPage;
+            Context.CurrentPage = new ArchitectLibraryPage();
+            return Context.CurrentPage;
         }
 
 		public override string URL

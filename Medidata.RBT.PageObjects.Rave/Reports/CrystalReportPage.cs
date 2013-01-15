@@ -209,7 +209,7 @@ namespace Medidata.RBT.PageObjects.Rave
         /// <returns>True only if at least one match exists</returns>
         private bool VerifyTableRowsExist(QueryAuditReportSearchModel model)
         {
-            model.Site = TestContext.GetExistingFeatureObjectOrMakeNew(model.Site, 
+            model.Site = SeedingContext.GetExistingFeatureObjectOrMakeNew(model.Site, 
                 () => new Site(model.Site)).UniqueName;
 
             try

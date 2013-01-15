@@ -12,9 +12,11 @@ namespace Medidata.RBT
 	/// Represent a page 
 	/// See 'page object pattern'
 	/// Every actual url that are tested should have a corresponding page class, that implments IPage
-	/// </summary>
+	/// </summary>internal
 	public interface IPage
 	{
+		WebTestContext Context { get; set; }
+
 		/// <summary>
 		/// The browser driver. Represents the browser
 		/// </summary>

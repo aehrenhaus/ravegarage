@@ -39,7 +39,7 @@ namespace Medidata.RBT.PageObjects.Rave
 
             foreach (string projectString in hashProject)
             {
-                Project project = TestContext.GetExistingFeatureObjectOrMakeNew<Project>(projectString, () => new Project(projectString));
+                Project project = SeedingContext.GetExistingFeatureObjectOrMakeNew<Project>(projectString, () => new Project(projectString));
                 OriginalMatrixAssigments.Add(project, project.MatrixAssignments);
                 List<ReportMatrixAssignmentModel> reportMatrixAssignmentModelsForProject = reportMatrixAssignmentModels
                     .Where(x => x.Project == projectString).ToList();

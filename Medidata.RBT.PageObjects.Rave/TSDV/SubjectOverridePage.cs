@@ -186,7 +186,7 @@ declare
 
 		public ICanPaginate GetPaginationControl(string areaIdentifier)
 		{
-			var pageTable = TestContext.Browser.TryFindElementByPartialID("PagingHolder", true, 2);
+			var pageTable = Context.Browser.TryFindElementByPartialID("PagingHolder", true, 2);
 			return new RavePaginationControl_CurrentPageNotLink(this, pageTable);
 		}
 		

@@ -27,8 +27,6 @@ namespace Medidata.RBT
 
 		public static TextWriter GetConsoleWriter(int codePage = 437)
 		{
-
-			AllocConsole();
 			IntPtr stdHandle = GetStdHandle(STD_OUTPUT_HANDLE);
 			SafeFileHandle safeFileHandle = new SafeFileHandle(stdHandle, true);
 			FileStream fileStream = new FileStream(safeFileHandle, FileAccess.Write);
@@ -37,6 +35,13 @@ namespace Medidata.RBT
 			standardOutput.AutoFlush = true;
 
 			return standardOutput;
+		}
+
+		public static void OpenConsole(int codePage = 437)
+		{
+
+			AllocConsole();
+		
 		}
 	}
 }

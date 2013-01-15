@@ -90,8 +90,8 @@ namespace Medidata.RBT.PageObjects.Rave
 		{
 			IWebElement formFolderTable = Browser.TryFindElementById("_ctl0_LeftNav_EDCTaskList_TblTaskItems", true);
 			formFolderTable.FindElement(By.LinkText(formName)).Click();
-            TestContext.CurrentPage = new CRFPage();
-            return TestContext.CurrentPage.As<CRFPage>();
+            Context.CurrentPage = new CRFPage();
+            return Context.CurrentPage.As<CRFPage>();
 		}
 
 
