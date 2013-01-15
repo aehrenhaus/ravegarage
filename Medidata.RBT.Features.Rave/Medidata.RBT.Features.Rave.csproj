@@ -132,10 +132,10 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DT_10991.feature</DependentUpon>
     </Compile>
-    <Compile Include="Features\EDC\DT_12797.feature.cs">
+    <Compile Include="Features\EDC\US10241_DT12797.feature.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>DT_12797.feature</DependentUpon>
+      <DependentUpon>US10241_DT12797.feature</DependentUpon>
     </Compile>
     <Compile Include="Features\EDC\DT_13622_TSDV_Off.feature.cs">
       <AutoGen>True</AutoGen>
@@ -494,9 +494,9 @@
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>DT_10991.feature.cs</LastGenOutput>
     </None>
-    <None Include="Features\EDC\DT_12797.feature">
+    <None Include="Features\EDC\US10241_DT12797.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
-      <LastGenOutput>DT_12797.feature.cs</LastGenOutput>
+      <LastGenOutput>US10241_DT12797.feature.cs</LastGenOutput>
     </None>
     <None Include="Features\EDC\DT_13622_TSDV_Off.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>

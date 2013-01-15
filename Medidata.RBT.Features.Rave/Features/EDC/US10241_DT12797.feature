@@ -1,8 +1,7 @@
 # Sometimes, edit checks, that set review requirement for datapoints do not fire correctly.
 # What happens internally is that datapoints wind up not requiring review; however, their "object statuses" show that they do require review. Datapoints wind up having a "requires review" icon, but the checkboxes for review are disabled.
 # After refreshing object statuses for a given subject, the icon displays as "complete".
-@FT_DT_12797
-@Ignore
+@FT_US10241_DT12797
 Feature: US10241_DT12797 For a field that has a derivation, edit check does not set it to require review correctly in certain cases.
 As a Rave user
 Given I enter data
