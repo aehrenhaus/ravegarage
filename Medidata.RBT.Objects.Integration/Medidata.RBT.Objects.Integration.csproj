@@ -48,6 +48,7 @@
   <ItemGroup>
     <Compile Include="Configuration\Models\StudyMessageModel.cs" />
     <Compile Include="Configuration\Templates\StudyTemplates.cs" />
+    <Compile Include="Configuration\IntegrationTestContext.cs" />
     <Compile Include="Helpers\SQSHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -55,6 +56,14 @@
     <ProjectReference Include="..\..\Medidata.AmazonSimpleServices\Medidata.AmazonSimpleServices\Medidata.AmazonSimpleServices.csproj">
       <Project>{E7B6D8DA-C944-44BE-9F39-453E4C0E86C7}</Project>
       <Name>Medidata.AmazonSimpleServices</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Medidata.Core\Medidata.Core.Common\Medidata.Core.Common.csproj">
+      <Project>{88DB8DE5-1545-46BB-A6E9-168393EE4F78}</Project>
+      <Name>Medidata.Core.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Medidata.Data\Medidata.Data.csproj">
+      <Project>{9AF5B9A2-B80E-4D99-87F7-343C4E932539}</Project>
+      <Name>Medidata.Data</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

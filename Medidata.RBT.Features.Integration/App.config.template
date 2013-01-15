@@ -1,10 +1,20 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <configuration>
+  <configSections>
+    <section name="specFlow" type="TechTalk.SpecFlow.Configuration.ConfigurationSectionHandler,TechTalk.SpecFlow" />
+    <section name="DataSettings" type="Medidata.Utilities.XmlSectionHandler, Medidata.Utilities"/>
+  </configSections>
+
+  <specFlow>
+    <language feature="en-US" tool="" />
+    <unitTestProvider name="MsTest.2010" />
+  </specFlow>
+
+  <DataSettings configSource="connections.config" />
+  
   <appSettings>
     <add key="AwsAccessKey" value="%%%AwsAccessKey%%%"/>
     <add key="AwsSecretKey" value="%%%AwsSecretKey%%%"/>
     <add key="AwsRegion" value="%%%AwsRegion%%%"/>
-
-    <add key="SqsQueueName" value="%%%SqsQueueName%%%"/>
   </appSettings>
 </configuration>

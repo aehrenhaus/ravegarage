@@ -33,9 +33,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="nunit.framework">
-      <HintPath>..\packages\NUnit.2.6.2\lib\nunit.framework.dll</HintPath>
-    </Reference>
+    <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
     <Reference Include="Nustache.Core">
       <HintPath>..\packages\Nustache.1.12.4.29\lib\net20\Nustache.Core.dll</HintPath>
     </Reference>
@@ -52,11 +50,13 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Studies.feature</DependentUpon>
     </Compile>
+    <Compile Include="Hooks\IntegrationTestRunHooks.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Steps\SQSSteps.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="connections.config" />
     <None Include="Features\Studies.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>Studies.feature.cs</LastGenOutput>
@@ -67,6 +67,14 @@
     <ProjectReference Include="..\..\Medidata.AmazonSimpleServices\Medidata.AmazonSimpleServices\Medidata.AmazonSimpleServices.csproj">
       <Project>{E7B6D8DA-C944-44BE-9F39-453E4C0E86C7}</Project>
       <Name>Medidata.AmazonSimpleServices</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Medidata.Core\Medidata.Core.Common\Medidata.Core.Common.csproj">
+      <Project>{88DB8DE5-1545-46BB-A6E9-168393EE4F78}</Project>
+      <Name>Medidata.Core.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Medidata.Core\Medidata.Core.Objects\Medidata.Core.Objects.csproj">
+      <Project>{D593442C-DC75-4279-B3D5-B203D292C9B4}</Project>
+      <Name>Medidata.Core.Objects</Name>
     </ProjectReference>
     <ProjectReference Include="..\Medidata.RBT.Objects.Integration\Medidata.RBT.Objects.Integration.csproj">
       <Project>{63CCCE89-9E7D-4F5A-B7CA-0BEE1297B902}</Project>
