@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Medidata.RBT.Objects.Integration.Configuration.Templates
 {
-    public class StudyTemplates
+    public static class StudyTemplates
     {
         public const string STUDY_POST_TEMPLATE = "{\r\n" +
                                                     "{{#config}}\r\n" +

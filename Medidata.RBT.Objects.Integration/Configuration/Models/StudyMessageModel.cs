@@ -4,8 +4,9 @@ namespace Medidata.RBT.Objects.Integration.Configuration.Models
 {
     public class StudyMessageModel
     {
+        public string EventType { get; set; }
         public string Name { get; set; }
-        public bool IsProd { get; set; }
+        public string IsProd { get; set; }
         public string Description { get; set; }
         public Guid UUID { get; set; }
         public DateTime Timestamp { get; set; }

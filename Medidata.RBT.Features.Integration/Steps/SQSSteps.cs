@@ -6,6 +6,7 @@ using System.Threading;
 using Medidata.AmazonSimpleServices;
 using Medidata.RBT.Objects.Integration.Configuration.Models;
 using Medidata.RBT.Objects.Integration.Configuration.Templates;
+using Medidata.RBT.Objects.Integration.Helpers;
 using Nustache.Core;
 using TechTalk.SpecFlow;
 using TechTalk.SpecFlow.Assist;
@@ -40,18 +41,17 @@ namespace Medidata.RBT.Features.Integration.Steps
             }
         }
 
-        [Given(@"I send the following Study POST message to SQS")]
-        public void ISendTheFollowingStudyPostMessageToSQS(Table table)
+        [Given(@"I send the following (.*) messages to SQS")]
+        public void ISendTheFollowing____MessagesToSQS(string resourceName, Table table)
         {
             var sqsWrapper = Storage.GetFeatureLevelValue<SimpleQueueWrapper>("sqsWrapper");
             var url = Storage.GetFeatureLevelValue<String>("sqsQueueUrl");
 
-            var messageConfigs = table.CreateSet<StudyMessageModel>().ToList();
-            foreach(var config in messageConfigs)
+            switch(resourceName.ToLowerInvariant())
             {
-                var message = Render.StringToString(StudyTemplates.STUDY_POST_TEMPLATE, new { config });
-
-                sqsWrapper.SendMessage(url, message);
+                case "study":
+                    SQSHelper.StudyMessageHandler(table, sqsWrapper, url);
+                    break;
             }
         }
 
@@ -76,11 +76,12 @@ namespace Medidata.RBT.Features.Integration.Steps
             }
         }
 
-        [Then(@"I should see the study in the Rave database")]
-        public void ThenIShouldSeeTheStudyInTheRaveDatabase()
+        [Then(@"I should see the study with UUID ""(.*)"" in the Rave database")]
+        public void ThenIShouldSeeTheStudyWithUUIDInTheRaveDatabase(string p0)
         {
             ScenarioContext.Current.Pending();
         }
+
 
     }
 }
