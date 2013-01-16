@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Medidata.AmazonSimpleServices;
+﻿using Medidata.AmazonSimpleServices;
 
 namespace Medidata.RBT.Objects.Integration.Configuration
 {

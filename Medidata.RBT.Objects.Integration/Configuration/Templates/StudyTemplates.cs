@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace Medidata.RBT.Objects.Integration.Configuration.Templates
+﻿namespace Medidata.RBT.Objects.Integration.Configuration.Templates
 {
     public static class StudyTemplates
     {
@@ -14,7 +9,7 @@ namespace Medidata.RBT.Objects.Integration.Configuration.Templates
                                                         "\"is_production\": {{IsProd}},\r\n" +
                                                         "\"full_description\": \"{{Description}}\",\r\n" +
                                                         "\"uuid\": \"{{UUID}}\",\r\n" +
-                                                        "\"id\": \"IRRELEVANT_CONTENT\",\r\n" +
+                                                        "\"id\": \"{{ID}}\",\r\n" +
                                                         "\"enrollment_target\": \"155\",\r\n" +
                                                         "\"parent\": {\r\n" +
                                                             "\"uuid\": \"6bf09b9e-548e-11df-1234-002608fffe99\"\r\n" +

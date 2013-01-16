@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Configuration;
-using System.Linq;
-using System.Text;
+using System.ServiceProcess;
 using Medidata.AmazonSimpleServices;
 using Medidata.RBT.Objects.Integration.Helpers;
 using TechTalk.SpecFlow;
@@ -30,6 +28,18 @@ namespace Medidata.RBT.Features.Integration.Hooks
             SQSHelper.UpdateQueueUuid(SQSHelper.EDC_APP_NAME, queueName);
             SQSHelper.UpdateQueueUuid(SQSHelper.MODULES_APP_NAME, Guid.NewGuid());
             SQSHelper.UpdateQueueUuid(SQSHelper.SECURITY_APP_NAME, Guid.NewGuid());
+
+            var service = new ServiceController(string.Format("Medidata Rave Integration Service - \"{0}\"", 
+                ConfigurationManager.AppSettings["ServiceName"]));
+
+            if(service.CanStop)
+            {
+                service.Stop();
+                service.WaitForStatus(ServiceControllerStatus.Stopped);
+            }
+
+            service.Start();
+            service.WaitForStatus(ServiceControllerStatus.Running);
         }
 
         [AfterTestRun]

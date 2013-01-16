@@ -40,6 +40,7 @@
     <Reference Include="System" />
     <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.ServiceProcess" />
     <Reference Include="TechTalk.SpecFlow">
       <HintPath>..\packages\SpecFlow.1.9.0\lib\net35\TechTalk.SpecFlow.dll</HintPath>
     </Reference>
@@ -56,7 +57,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <None Include="connections.config" />
+    <None Include="connections.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="Features\Studies.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>Studies.feature.cs</LastGenOutput>
@@ -75,6 +78,18 @@
     <ProjectReference Include="..\..\Medidata.Core\Medidata.Core.Objects\Medidata.Core.Objects.csproj">
       <Project>{D593442C-DC75-4279-B3D5-B203D292C9B4}</Project>
       <Name>Medidata.Core.Objects</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Medidata.Data\Medidata.Data.csproj">
+      <Project>{9AF5B9A2-B80E-4D99-87F7-343C4E932539}</Project>
+      <Name>Medidata.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Medidata.ExternalSystems.iMedidata\Medidata.ExternalSystems.iMedidata.csproj">
+      <Project>{60A94FE2-5789-4857-A70D-BF348C2B86FC}</Project>
+      <Name>Medidata.ExternalSystems.iMedidata</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Medidata.Utilities\Medidata.Utilities.csproj">
+      <Project>{CF46277D-7473-44E6-8472-2B6DFAEC3601}</Project>
+      <Name>Medidata.Utilities</Name>
     </ProjectReference>
     <ProjectReference Include="..\Medidata.RBT.Objects.Integration\Medidata.RBT.Objects.Integration.csproj">
       <Project>{63CCCE89-9E7D-4F5A-B7CA-0BEE1297B902}</Project>

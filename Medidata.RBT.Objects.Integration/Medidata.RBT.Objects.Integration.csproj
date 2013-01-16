@@ -35,6 +35,7 @@
       <HintPath>..\packages\Nustache.1.12.4.29\lib\net20\Nustache.Core.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -64,6 +65,10 @@
     <ProjectReference Include="..\..\Medidata.Data\Medidata.Data.csproj">
       <Project>{9AF5B9A2-B80E-4D99-87F7-343C4E932539}</Project>
       <Name>Medidata.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Medidata.Utilities\Medidata.Utilities.csproj">
+      <Project>{CF46277D-7473-44E6-8472-2B6DFAEC3601}</Project>
+      <Name>Medidata.Utilities</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
