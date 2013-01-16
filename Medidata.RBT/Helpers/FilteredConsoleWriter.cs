@@ -44,6 +44,8 @@ namespace Medidata.RBT
 			{
 				sw.WriteLine(str);
 				sw.WriteLine();
+                if (str.StartsWith("-> error:"))
+                    SpecflowStaticBindings.Current.TrySaveScreenShot();
 				muted = true;
 				return true;
 			}
