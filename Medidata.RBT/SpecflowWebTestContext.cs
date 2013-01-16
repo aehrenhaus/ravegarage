@@ -25,11 +25,12 @@ namespace Medidata.RBT
 		{
 			base.AfterTestRun();
 
+			//do clean up both before and after test run :)
 			WebTestContext.ClearTempFiles();
 			WebTestContext.ClearDownloads();
 
 			if (RBTConfiguration.Default.AutoCloseBrowser)
-				WebTestContext.CloseBrower();
+				WebTestContext.CloseBrowser();
 
 			GernerateReport();
 		}
@@ -38,9 +39,15 @@ namespace Medidata.RBT
 		{
 			base.BeforeTestRun();
 
+
+
 			WebTestContext = new RBT.WebTestContext();
 
-			WebTestContext.OpenBrower();
+			//do clean up both before and after test run :)
+			WebTestContext.ClearTempFiles();
+			WebTestContext.ClearDownloads();
+
+			WebTestContext.OpenBrowser();
 
 
 			SeedingContext.DefaultSeedingOption = new SeedingOptions(
@@ -88,11 +95,11 @@ namespace Medidata.RBT
 			ScreenshotIndex = 1;
 
 			//set scenario name with tag that starts with PB_
-			ScenarioName = ScenarioContext.Current.ScenarioInfo.Tags.FirstOrDefault(x => x.StartsWith(RBTConfiguration.Default.ScenarioNamePrefix));
-			if (ScenarioName == null)
-				ScenarioName = "Scenario_" + DateTime.Now.Ticks.ToString();
+			CurrentScenarioName = ScenarioContext.Current.ScenarioInfo.Tags.FirstOrDefault(x => x.StartsWith(RBTConfiguration.Default.ScenarioNamePrefix));
+			if (CurrentScenarioName == null)
+				CurrentScenarioName = "Scenario_" + DateTime.Now.Ticks.ToString();
 
-			Console.WriteLine("-------------> Scenario:" + ScenarioName);
+			Console.WriteLine("-------------> Scenario:" + CurrentScenarioName);
 			Console.WriteLine();
 		}
 
@@ -162,11 +169,12 @@ namespace Medidata.RBT
 		{
 			Image img = WebTestContext.TrySaveScreenShot();
 
+			ScreenshotIndex++;
 
 			string resultPath = RBTConfiguration.Default.TestResultPath;
 
 			var fileName = ScreenshotIndex.ToString();
-			fileName = ScenarioName + "_" + fileName + ".jpg";
+			fileName = CurrentScenarioName + "_" + fileName + ".jpg";
 
 			Console.WriteLine("img->" + fileName);
 			Console.WriteLine("->" + WebTestContext.Browser.Url);

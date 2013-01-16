@@ -29,7 +29,7 @@ namespace Medidata.RBT.Features.Rave
         [StepDefinition(@"xml draft ""([^""]*)"" is Uploaded with Environment name ""([^""]*)""")]
         public void XmlDraft____IsUploadedWithEnvironmentName____(string draftName,string envName)
         {
-			using (new LoginSession(WebTestContext))
+			using (var session = new LoginSession(WebTestContext, restoreOriginalUser: false))
 			{
 				UploadedDraft uploadedDraft = SeedingContext.GetExistingFeatureObjectOrMakeNew(draftName,
 				                                                                            () => new UploadedDraft(draftName));
@@ -40,6 +40,8 @@ namespace Medidata.RBT.Features.Rave
 				WebTestContext.CurrentPage.As<ArchitectLibraryPage>().ClickLink("Studies Environment Setup");
 				WebTestContext.CurrentPage.As<ArchitectEnvironmentSetupPage>().AddNewEnvironment(envName);
 				WebTestContext.CurrentPage = new HomePage().NavigateToSelf();
+
+				session.RestoreOriginalUser = true;
 			}
         }
 
@@ -51,7 +53,7 @@ namespace Medidata.RBT.Features.Rave
 		[StepDefinition(@"xml draft ""([^""]*)"" is Uploaded with Environments")]
 		public void XmlDraft____IsUploadedWithEnvironmentName____(string draftName, Table tableEnvs)
 		{
-			using (new LoginSession(WebTestContext))
+			using (var session = new LoginSession(WebTestContext, restoreOriginalUser: false))
 			{
 				UploadedDraft uploadedDraft = SeedingContext.GetExistingFeatureObjectOrMakeNew(draftName,
 																							() => new UploadedDraft(draftName));
@@ -67,6 +69,8 @@ namespace Medidata.RBT.Features.Rave
 				}
 				
 				WebTestContext.CurrentPage = new HomePage().NavigateToSelf();
+
+				session.RestoreOriginalUser = true;
 			}
 		}
 
@@ -106,7 +110,7 @@ namespace Medidata.RBT.Features.Rave
         [StepDefinition(@"I publish and push eCRF ""([^""]*)"" to ""([^""]*)"" with study environment ""([^""]*)"" for site ""([^""]*)""")]
         public void IPublishAndPushECRF____To____WithStudyEnvironment____ForSite____(string uploadName, string crfVersionName, string studyEnvName, string siteSelection)
         {
-			using (new LoginSession(WebTestContext))
+			using (var session = new LoginSession(WebTestContext, restoreOriginalUser: false))
             {
                 UploadedDraft uploadedDraft = SeedingContext.GetExistingFeatureObjectOrMakeNew
                         (uploadName, () => new UploadedDraft(uploadName));
@@ -129,6 +133,8 @@ namespace Medidata.RBT.Features.Rave
                 }
                 WebTestContext.CurrentPage.As<ArchitectLibraryPage>().PushVersion(crfVersion.UniqueName, studyEnvName, siteName);
                 WebTestContext.CurrentPage = new HomePage().NavigateToSelf();
+
+				session.RestoreOriginalUser = true;
             }
         }
 

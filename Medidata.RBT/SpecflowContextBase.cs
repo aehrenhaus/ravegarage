@@ -15,24 +15,11 @@ namespace Medidata.RBT
 
 		private MultipleStreamWriter consoleWriter;
 
-		public Hashtable Storage { get; set; } 
 
-		public DateTime? CurrentScenarioStartTime
-		{
-			get
-			{
-				return Storage["CurrentScenarioStartTime"] as DateTime?;
-			}
-			set
-			{
-				Storage["CurrentScenarioStartTime"] = value;
-			}
-		}
-
-		public string ScenarioName { get; protected set; }
-
-
-		public DateTime? CurrentFeatureStartTime { get; set; }
+		public Hashtable Storage { get; set; }
+		public DateTime? CurrentScenarioStartTime { get; protected set; }
+		public DateTime? CurrentFeatureStartTime { get; protected set; }
+		public string CurrentScenarioName { get; protected set; }
 
 
 		public virtual void BeforeTestRun()
@@ -89,7 +76,7 @@ namespace Medidata.RBT
 		/// This method is hacky
 		/// specflow hijacks the standard output to it's own output, before every scenario begins
 		/// We want to output to the regular console too, that's why we need MultipleStreamWriter
-		/// And we need to call this method to hijack the stand output back to our own use.
+		/// And we need to call this method to hijack the standard output back to our own use.
 		/// </summary>
 		private void SetOutput()
 		{

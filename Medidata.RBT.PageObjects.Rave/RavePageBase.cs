@@ -193,13 +193,13 @@ namespace Medidata.RBT.PageObjects.Rave
 		}
 
 		/// <summary>
-		/// Should call WebTestContext.WaitForPage() directly instead of this
+		/// Should call WebTestContext.WaitForPageLoads() directly instead of this
 		/// </summary>
 		/// <returns></returns>
 		[Obsolete]
 		protected IPage GetPageByCurrentUrlIfNoAlert()
 		{
-			return Context.WaitForPage();
+			return this.WaitForPageLoads();
 		}
 
         public virtual IEDCFieldControl FindLandscapeLogField(string fieldName, int rowIndex, ControlType controlType = ControlType.Default)

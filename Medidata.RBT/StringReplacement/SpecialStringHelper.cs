@@ -22,13 +22,13 @@ namespace Medidata.RBT
 		public static NameValueCollection StringReplacementVars { get; set; }
 
 
-
 		public static event Action<string, string> Replaced;
 
 		static Dictionary<string, IStringReplace> allReplaces = new Dictionary<string, IStringReplace>();
 
         static SpecialStringHelper()
         {
+			StringReplacementVars = new NameValueCollection();
 	        foreach (var assembly in Directory.GetFiles(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location),"*.dll"))
 	        {
 				RegisterStringReplaceAssembly(Assembly.LoadFile(assembly));

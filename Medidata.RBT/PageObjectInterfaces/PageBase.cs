@@ -134,9 +134,25 @@ namespace Medidata.RBT
 
             element.Click();
 
-			return Context.WaitForPage();
+			return this.WaitForPageLoads();
         }
-		
+
+		public IPage WaitForPageLoads()
+		{
+			try
+			{
+				var alert = Browser.SwitchTo().Alert();
+			}
+			catch
+			{
+
+			}
+
+			Browser.WaitForDocumentLoad();
+			var uri = new Uri(Browser.Url);
+			return Context.POFactory.GetPageByUrl(uri);
+		}
+
         /// <summary>
         /// Will try to press a key in two attempts.
         /// It has been observed that Selenium throws an ambiguous "a is null" exception on occasions
@@ -172,29 +188,7 @@ namespace Medidata.RBT
             return result;
         }
 		
-		///// <summary>
-		///// See IPage interface
-		///// </summary>
-		//protected IPage GetPageByCurrentUrlIfNoAlert()
-		//{
-		//    try
-		//    {
-		//        //if alert presents , return current page object
-		//        var alert = Browser.SwitchTo().Alert();
-		//    }
-		//    catch
-		//    {
-		//        //if no alert window, wait and return the new page
-		//        Browser.WaitForDocumentLoad();
-		//        var uri = new Uri(Browser.Url);
 
-		//        return WebTestContext.POFactory.GetPageByUrl(uri);
-
-		//    }
-		//    return this;
-	
-	
-		//}
         /// <summary>
         /// See IPage interface
         /// </summary>
@@ -205,7 +199,7 @@ namespace Medidata.RBT
 			IWebElement link = partial ? context.TryFindElementBy(By.PartialLinkText(linkText)) : context.TryFindElementBy(By.LinkText(linkText));
 			link.Click();
  
-            return Context.WaitForPage();
+            return this.WaitForPageLoads();
         }
 
 
@@ -218,7 +212,7 @@ namespace Medidata.RBT
 			if (link != null)
 			{
 				link.Click();
-				return Context.WaitForPage();
+				return this.WaitForPageLoads();
 			}
 
             throw new Exception("Don't know how to navigate to "+identifier);
@@ -244,7 +238,7 @@ namespace Medidata.RBT
 
 			ele.EnhanceAs<Dropdown>().SelectByText(text);
 
-			return Context.WaitForPage();
+			return this.WaitForPageLoads();
         }
 
         /// <summary>
@@ -256,7 +250,7 @@ namespace Medidata.RBT
 
             ele.EnhanceAs<Dropdown>().SelectByPartialText(text);
 
-            return Context.WaitForPage();
+            return this.WaitForPageLoads();
         }
 
 		/// <summary>
@@ -273,7 +267,7 @@ namespace Medidata.RBT
             else
 				element.EnhanceAs<Checkbox>().Uncheck();
 
-			return Context.WaitForPage();
+			return this.WaitForPageLoads();
         }
 
 		/// <summary>

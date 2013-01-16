@@ -69,11 +69,12 @@ namespace Medidata.RBT.SharedRaveObjects
 
 		protected virtual void SeedFromUI()
 		{
-			using (new LoginSession(WebTestContext, redirectOnDispose: RedirectAfterSeed))
+			using (var session = new LoginSession(WebTestContext,restoreOriginalUser:false))
 			{
 				MakeUnique();
 				NavigateToSeedPage();
 				CreateObject();
+				session.RestoreOriginalUser = RedirectAfterSeed;
 			}
 		}
 

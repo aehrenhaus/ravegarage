@@ -71,30 +71,6 @@ namespace Medidata.RBT.PageObjects.Rave
 		}
 	}
 
-	public class LoginSession : IDisposable
-	{
-		WebTestContext context;
 
-
-		string previousUser;
-		string previousPassword;
-        public bool RedirectOnDispose { get; set; }
-
-		public LoginSession(WebTestContext context, string username = null, string passowrd = null, bool redirectOnDispose = true)
-		{
-			this.context = context;
-			previousUser = context.CurrentUser;
-			previousPassword = context.CurrentUserPassword;
-
-            RedirectOnDispose = redirectOnDispose;
-			LoginPage.LoginToHomePageIfNotAlready(context, username, passowrd);
-		}
-
-		public void Dispose()
-		{
-            if (previousUser != null && RedirectOnDispose) // for some tests, we dont' want to go back to homepage.
-				LoginPage.LoginToHomePageIfNotAlready(context, previousUser, previousPassword);
-		}
-	}
 }
 

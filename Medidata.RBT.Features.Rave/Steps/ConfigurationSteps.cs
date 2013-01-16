@@ -104,7 +104,7 @@ namespace Medidata.RBT.Features.Rave.Steps
         [StepDefinition(@"following Project assignments exist")]
         public void FollowingProjectAssignmentsExist(Table table)
         {
-			using (new LoginSession(WebTestContext))
+			using (var session = new LoginSession(WebTestContext, restoreOriginalUser:false))
 			{
 
 				List<ConfigurationCreationModel> configurations = table.CreateSet<ConfigurationCreationModel>().ToList();
@@ -145,6 +145,8 @@ namespace Medidata.RBT.Features.Rave.Steps
                         }
 					}
 				}
+
+				session.RestoreOriginalUser = true;
 			}
 
 			Browser.WaitForDocumentLoad();
@@ -159,7 +161,7 @@ namespace Medidata.RBT.Features.Rave.Steps
         public void FollowingProjectAssignmentsExist(string userFeature, string securityRoleFeature)
         {
 
-			using (new LoginSession(WebTestContext))
+			using (var session = new LoginSession(WebTestContext, restoreOriginalUser: false))
             {
                 User user = SeedingContext.GetExistingFeatureObjectOrMakeNew(userFeature, () => new User(userFeature));
                 SecurityRole securityRole = SeedingContext.GetExistingFeatureObjectOrMakeNew
@@ -174,6 +176,7 @@ namespace Medidata.RBT.Features.Rave.Steps
                     CurrentPage = CurrentPage.As<UserAdministrationPage>().ClickUser(user.UniqueName);
                     CurrentPage.As<UserEditPage>().AssignUserToSecurityRole(user, securityRole);
                 }
+				session.RestoreOriginalUser = true;
             }
         }
 
