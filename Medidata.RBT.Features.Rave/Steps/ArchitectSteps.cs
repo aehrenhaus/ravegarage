@@ -3,6 +3,7 @@ using Medidata.RBT.PageObjects.Rave;
 using TechTalk.SpecFlow.Assist;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Medidata.RBT.PageObjects.Rave.AmendmentManager;
+using System.Collections.Generic;
 
 namespace Medidata.RBT.Features.Rave
 {
@@ -156,5 +157,66 @@ namespace Medidata.RBT.Features.Rave
             else
                 Assert.IsTrue(found, "Ranges for field do not match.");
         }
+
+        /// <summary>
+        /// Enter coder configuration data such as coding level, priority and locale followed by saving the new settings
+        /// </summary>
+        /// <param name="table"></param>
+        [StepDefinition(@"I enter data in architect coder configuration and save")]
+        public void IEnterDataInCoderConfigurationAndSave(Table table)
+        {
+            IEnumerable<ArchitectCoderConfigurationModel> coderConfigurations = table.CreateSet<ArchitectCoderConfigurationModel>();
+
+            foreach (ArchitectCoderConfigurationModel coderConf in coderConfigurations)
+            {
+                CurrentPage.As<ArchitectCoderConfigPage>().FillCoderConfigurationData(coderConf);
+            }
+
+            CurrentPage.ClickButton("Save");
+        }
+
+        /// <summary>
+        /// Enable/disable coder workflow variables such as 'IsApprovalRequired, IsAutoRequired'
+        /// </summary>
+        /// <param name="table"></param>
+        [StepDefinition(@"I set the coder workflow variables")]
+        public void ISetTheCoderWorkflowVariables(Table table)
+        {
+            IEnumerable<CoderWorkflowVariableModel> coderWorkflowVariables = table.CreateSet<CoderWorkflowVariableModel>();
+
+            foreach (CoderWorkflowVariableModel coderWorkflowVariable in coderWorkflowVariables)
+            {
+                CurrentPage.As<ArchitectCoderConfigPage>().SetCoderWorkflowVariable(coderWorkflowVariable);
+            }
+        }
+
+        /// <summary>
+        /// Add coder Supplemental or Component terms
+        /// </summary>
+        /// <param name="termName">Term name, Supplemental or Component</param>
+        /// <param name="table">Table containing information about Supplemental/Component term to be added</param>
+        [StepDefinition(@"I add the coder ""([^""]*)"" terms")]
+        public void IAddTheCoderTerms(string termName, Table table)
+        {
+            IEnumerable<CoderTermModel> coderTerms = table.CreateSet<CoderTermModel>();
+
+            foreach (CoderTermModel coderTerm in coderTerms)
+            {
+                CurrentPage.As<ArchitectCoderConfigPage>().AddCoderTerm(termName, coderTerm);
+            }
+        }
+
+        /// <summary>
+        /// Step to enter architect field setting related data followed by saving it
+        /// </summary>
+        /// <param name="table"></param>
+        [StepDefinition(@"I enter data in Architect Field and save")]
+        public void IEnterDataInArchitectFieldAndSave(Table table)
+        {
+            CurrentPage.As<ArchitectFormDesignerPage>().FillDataPoints(table.CreateSet<FieldModel>());
+        }
+
+
+
 	}
 }
