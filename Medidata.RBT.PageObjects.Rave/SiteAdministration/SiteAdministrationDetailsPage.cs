@@ -46,15 +46,29 @@ namespace Medidata.RBT.PageObjects.Rave.SiteAdministration
         /// </summary>
         /// <param name="studyName">name of the study to link the site with, this should be the Name, not the feature provided one</param>
         /// <param name="envName">name of the environment type</param>
-        public void LinkStudyWithSite( string studyName, string envName)
+        public void LinkStudyWithSite(string studyName, string envName)
         {
             TestContext.CurrentPage.ClickLink("Add Study");
-            ChooseFromDropdown("ProjectDDL", studyName);
+
+            IWebElement ele = Browser.TryFindElementByXPath("//select[@id = '_ctl0_Content_WizardTitleBox_AddStudySiteWzrd_ProjectDDL']" 
+                + "/option[text() = '" + studyName + "']/..", true);
+            //If the study hasn't loaded yet, try to refresh the page and give the study time to load
+            if (ele == null)
+            {
+                Browser.Navigate().Refresh();
+                Browser.SwitchTo().Alert().Accept();
+                ele = Browser.TryFindElementByXPath("//select[@id = '_ctl0_Content_WizardTitleBox_AddStudySiteWzrd_ProjectDDL']"
+                + "/option[text() = '" + studyName + "']/..", true);
+            }
+            ele.EnhanceAs<Dropdown>().SelectByText(studyName);
+
             if (!string.IsNullOrEmpty(envName))
                 ChooseFromDropdown("StudyDDL", envName);
             TestContext.CurrentPage.ClickLink("Add");
    
         }
+
+
 
 
         /// <summary>
