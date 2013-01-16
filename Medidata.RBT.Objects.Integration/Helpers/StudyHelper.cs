@@ -27,6 +27,10 @@ namespace Medidata.RBT.Objects.Integration.Helpers
                         ScenarioContext.Current.Add("studyUuid", config.UUID.ToString());
                         message = Render.StringToString(StudyTemplates.STUDY_POST_TEMPLATE, new { config });
                         break;
+                    case "put":
+                        config.UUID = new Guid(ScenarioContext.Current.Get<String>("studyUuid"));
+                        message = Render.StringToString(StudyTemplates.STUDY_PUT_TEMPLATE, new { config});
+                        break;
                 }
 
                 if (!string.IsNullOrWhiteSpace(message))

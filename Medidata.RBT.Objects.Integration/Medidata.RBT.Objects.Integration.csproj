@@ -51,6 +51,7 @@
     <Compile Include="Configuration\Templates\StudyTemplates.cs" />
     <Compile Include="Configuration\IntegrationTestContext.cs" />
     <Compile Include="Helpers\SQSHelper.cs" />
+    <Compile Include="Helpers\StudyHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

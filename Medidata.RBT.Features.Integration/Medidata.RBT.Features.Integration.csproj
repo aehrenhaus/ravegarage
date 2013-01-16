@@ -54,6 +54,7 @@
     <Compile Include="Hooks\IntegrationTestRunHooks.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Steps\SQSSteps.cs" />
+    <Compile Include="Steps\StudySteps.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

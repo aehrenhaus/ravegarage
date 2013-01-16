@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading;
 using Medidata.RBT.Objects.Integration.Configuration;
 using Medidata.RBT.Objects.Integration.Helpers;
 using TechTalk.SpecFlow;
@@ -8,7 +9,7 @@ namespace Medidata.RBT.Features.Integration.Steps
     [Binding]
     public class SQSSteps
     {
-        [Given(@"I send the following (.*) messages to SQS")]
+        [StepDefinition(@"I send the following (.*) message(?:s)? to SQS")]
         public void ISendTheFollowing____MessagesToSQS(string resourceName, Table table)
         {
             switch(resourceName.ToLowerInvariant())
@@ -19,11 +20,12 @@ namespace Medidata.RBT.Features.Integration.Steps
             }
         }
 
-        [When(@"the message is successfully processed")]
+        [When(@"the messages? (?:is|are) successfully processed")]
         public void WhenTheMessageIsSuccessfullyProcessed()
         {
             var numVisibleMessages = IntegrationTestContext.SqsWrapper.GetApproximateNumberOfVisibleMessages(IntegrationTestContext.SqsQueueUrl);
             var numInvisibleMessages = IntegrationTestContext.SqsWrapper.GetApproximateNumberOfInvisibleMessages(IntegrationTestContext.SqsQueueUrl);
+            Thread.Sleep(5000);
             var endTime = DateTime.Now.AddSeconds(30);
 
             while(numVisibleMessages > 0 || numInvisibleMessages > 0)

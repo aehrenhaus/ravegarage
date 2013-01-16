@@ -21,7 +21,7 @@ namespace Medidata.RBT.Features.Integration.Steps
         }
 
         [Then(@"the study should have Name ""(.*)""")]
-        public void ThenTheStudyShouldHaveName____(string name)
+       public void ThenTheStudyShouldHaveName____(string name)
         {
             var study = ScenarioContext.Current.Get<Study>("study");
 
@@ -35,5 +35,38 @@ namespace Medidata.RBT.Features.Integration.Steps
 
             Assert.AreEqual(environment, study.Environment);
         }
+
+        [Then(@"the study should have Description ""(.*)""")]
+        public void ThenTheStudyShouldHaveDescription(string description)
+        {
+            var study = ScenarioContext.Current.Get<Study>("study");
+
+            Assert.AreEqual(description, study.Project.Description);
+        }
+
+        [Then(@"the study should have LastExternalUpdateDate ""(.*)""")]
+        public void ThenTheStudyShouldHaveLastExternalUpdateDate(DateTime updated)
+        {
+            var study = ScenarioContext.Current.Get<Study>("study");
+
+            Assert.AreEqual(updated, study.LastExternalUpdateDate);
+        }
+
+        [Then(@"the study should not be TestStudy")]
+        public void ThenTheStudyShouldNotBeTestStudy()
+        {
+            var study = ScenarioContext.Current.Get<Study>("study");
+
+            Assert.AreEqual(false, study.TestStudy);
+        }
+
+        [Then(@"the study should have ExternalID ""(.*)""")]
+        public void ThenTheStudyShouldHaveExternalId(int externalId)
+        {
+            var study = ScenarioContext.Current.Get<Study>("study");
+
+            Assert.AreEqual(externalId, study.ExternalID);
+        }
+
     }
 }
