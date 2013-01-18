@@ -51,7 +51,7 @@ Scenario: Verify Coder settings are maintained after changing field format on a 
 	And I take a screenshot
 	And I edit Field "varcheckbx3"
 	And I click button "Coder Configuration"
-	And I verify text "PRODUCT" exists in "Coding Level"
+	Then I verify text "PRODUCT" exists in "Coding Level"
 	And I verify text "2" exists in "Priority"
 	And I verify rows exist in "Workflow Variables" table
 		| Name               | Value |
@@ -61,6 +61,13 @@ Scenario: Verify Coder settings are maintained after changing field format on a 
 		| Name |
 		| TEST1|
 	And I verify rows exist in "Component Terms" table
+		| Name       | Component Name   |
+		| VARCHECKBX | DRUGRECORDNUMBER |
+	And I take a screenshot
+	And I delete the coder "Supplemental" terms
+		| Name |
+		| TEST1|
+	And I delete the coder "Component" terms
 		| Name       | Component Name   |
 		| VARCHECKBX | DRUGRECORDNUMBER |
 	And I take a screenshot
@@ -102,7 +109,7 @@ Scenario: Verify Coder settings are maintained after changing field format on a 
 		| Format| $400 | textbox      |
 	And I take a screenshot
 	And I click button "Coder Configuration"
-	And I verify text "PRODUCT" exists in "Coding Level"
+	Then I verify text "PRODUCT" exists in "Coding Level"
 	And I verify text "3" exists in "Priority"
 	And I verify rows exist in "Workflow Variables" table
 		| Name               | Value |
@@ -112,8 +119,15 @@ Scenario: Verify Coder settings are maintained after changing field format on a 
 		| Name      |
 		| VARCHECKBX|
 	And I verify rows exist in "Component Terms" table
-	| Name  | Component Name   |
-	| TEST1 | DRUGRECORDNUMBER |
+		| Name  | Component Name   |
+		| TEST1 | DRUGRECORDNUMBER |
+	And I take a screenshot
+	And I delete the coder "Supplemental" terms
+		| Name      |
+		| VARCHECKBX|
+	And I delete the coder "Component" terms
+		| Name  | Component Name   |
+		| TEST1 | DRUGRECORDNUMBER |
 	And I take a screenshot
 
 @PBMCC41512-003
@@ -127,7 +141,7 @@ Scenario: Verify Coder settings are maintained after changing Coding Dictionary 
 	And I navigate to "Forms"
 	And I select Fields for Form "MCC42707"
 	And I edit Field "varcheckbx"
-	And I choose "CODER-AZDD" from "Coding Dictionary:"
+	And I choose "CODER- AZDD" from "Coding Dictionary:"
 	And I select link "Save"
 	And I click button "Coder Configuration"
 	And I enter data in architect coder configuration and save
@@ -147,12 +161,12 @@ Scenario: Verify Coder settings are maintained after changing Coding Dictionary 
 	And I take a screenshot
 	And I select link "MCC42707"
 	And I edit Field "varcheckbx"
-	And I choose "CODER-WHODRUGB2" from "Coding Dictionary:"
+	And I choose "CODER- WHODRUGB2" from "Coding Dictionary:"
 	And I select link "Save"
-	And I choose "CODER-AZDD" from "Coding Dictionary:"
+	And I choose "CODER- AZDD" from "Coding Dictionary:"
 	And I select link "Save"
 	And I click button "Coder Configuration"
-	And I verify text "PRODUCT" exists in "Coding Level"
+	Then I verify text "PRODUCT" exists in "Coding Level"
 	And I verify text "4" exists in "Priority"
 	And I verify rows exist in "Workflow Variables" table
 		| Name               | Value |
@@ -164,6 +178,13 @@ Scenario: Verify Coder settings are maintained after changing Coding Dictionary 
 	And I verify rows exist in "Component Terms" table
 		| Name       | Component Name|
 		| VARCHECKBX2| SOURCE        |
+	And I take a screenshot
+	And I delete the coder "Supplemental" terms
+		| Name       |
+		| VARCHECKBX3|
+	And I delete the coder "Component" terms
+		| Name        | Component Name|
+		| VARCHECKBX2 | SOURCE        |
 	And I take a screenshot
 
 @PBMCC41512-04
@@ -177,7 +198,7 @@ Scenario: Verify local setting in Coder is maintained after changing format on a
 	And I navigate to "Forms"
 	And I select Fields for Form "ETE2"
 	And I edit Field "ETE2"
-	And I choose "CODER-MedDRA" from "Coding Dictionary:"
+	And I choose "CODER- MedDRA" from "Coding Dictionary:"
 	And I select link "Save"
 	And I click button "Coder Configuration"
 	And I enter data in architect coder configuration and save
@@ -209,7 +230,7 @@ Scenario: Verify Locale setting in Coder is maintained after changing Coding Dic
 	And I navigate to "Forms"
 	And I select Fields for Form "ETE2"
 	And I edit Field "LogCompField1"
-	And I choose "CODER-MedDRA" from "Coding Dictionary:"
+	And I choose "CODER- MedDRA" from "Coding Dictionary:"
 	And I select link "Save"
 	And I click button "Coder Configuration"
 	And I enter data in architect coder configuration and save
@@ -220,9 +241,9 @@ Scenario: Verify Locale setting in Coder is maintained after changing Coding Dic
 	And I take a screenshot
 	And I select link "ETE2"
 	And I edit Field "LogCompField1"
-	And I choose "CODER-AZDD" from "Coding Dictionary:"
+	And I choose "CODER- AZDD" from "Coding Dictionary:"
 	And I select link "Save"
-	And I choose "CODER-MedDRA" from "Coding Dictionary:"
+	And I choose "CODER- MedDRA" from "Coding Dictionary:"
 	And I select link "Save"
 	And I take a screenshot
 	And I click button "Coder Configuration"
