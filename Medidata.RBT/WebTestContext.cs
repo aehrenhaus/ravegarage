@@ -21,7 +21,12 @@ using System.Collections;
 
 namespace Medidata.RBT
 {
-
+	/// <summary>
+	/// This class represent a Selenium web test.
+	/// All PO should know their context( through IPaeg.Context property).
+	/// 
+	/// WebTestContext should be ignorant of specflow test
+	/// </summary>
 	public class WebTestContext
 	{
 		#region Some context variables that may be used durnig test.

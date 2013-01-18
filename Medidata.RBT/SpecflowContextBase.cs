@@ -77,6 +77,8 @@ namespace Medidata.RBT
 		/// specflow hijacks the standard output to it's own output, before every scenario begins
 		/// We want to output to the regular console too, that's why we need MultipleStreamWriter
 		/// And we need to call this method to hijack the standard output back to our own use.
+		/// 
+		/// Old version of the method
 		/// </summary>
 		private void SetOutput()
 		{
@@ -84,16 +86,15 @@ namespace Medidata.RBT
 			{
 				consoleWriter = new MultipleStreamWriter();
 				ExtraConsoleWriterSetup.OpenConsole();
-			}
-
-			if (Console.Out != consoleWriter)
-			{
-				consoleWriter.InnerWriters.Clear();
 				var extraConsole = ExtraConsoleWriterSetup.GetConsoleWriter();
 				consoleWriter.AddStreamWriter(new FilteredWriter(extraConsole));
-				consoleWriter.AddStreamWriter(Console.Out);
-				Console.SetOut(consoleWriter);
+
+				//the previous Console.Out has already been redirect to MSTest output, add it back to multiple output writer, so we still see results from MSTest
 			}
+			if (consoleWriter.InnerWriters.Count == 2)
+				consoleWriter.InnerWriters.RemoveAt(1);
+			consoleWriter.AddStreamWriter(Console.Out);
+			Console.SetOut(consoleWriter);
 		}
 
 
