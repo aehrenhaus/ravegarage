@@ -17,3 +17,4 @@ Metrics.*
 /_ReSharper.Medidata.RBT/
 App.config
 connections.config
+packages/*

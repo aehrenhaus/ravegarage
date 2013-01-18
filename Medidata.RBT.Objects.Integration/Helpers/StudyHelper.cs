@@ -25,6 +25,7 @@ namespace Medidata.RBT.Objects.Integration.Helpers
                     case "post":
                         config.UUID = Guid.NewGuid();
                         ScenarioContext.Current.Add("studyUuid", config.UUID.ToString());
+                        Console.WriteLine("Study UUID: {0}", config.UUID);
                         message = Render.StringToString(StudyTemplates.STUDY_POST_TEMPLATE, new { config });
                         break;
                     case "put":

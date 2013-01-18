@@ -23,17 +23,17 @@ namespace Medidata.RBT.Features.Integration.Steps
         [When(@"the messages? (?:is|are) successfully processed")]
         public void WhenTheMessageIsSuccessfullyProcessed()
         {
-            var numVisibleMessages = IntegrationTestContext.SqsWrapper.GetApproximateNumberOfVisibleMessages(IntegrationTestContext.SqsQueueUrl);
-            var numInvisibleMessages = IntegrationTestContext.SqsWrapper.GetApproximateNumberOfInvisibleMessages(IntegrationTestContext.SqsQueueUrl);
-            Thread.Sleep(5000);
+            var numVisibleMessages = IntegrationTestContext.SqsWrapper.GetApproxNumberOfMessages(IntegrationTestContext.SqsQueueUrl, true);
+            var numInvisibleMessages = IntegrationTestContext.SqsWrapper.GetApproxNumberOfMessages(IntegrationTestContext.SqsQueueUrl, false);
+            Thread.Sleep(10000);
             var endTime = DateTime.Now.AddSeconds(30);
 
             while(numVisibleMessages > 0 || numInvisibleMessages > 0)
             {
                 if(DateTime.Now.Ticks > endTime.Ticks) throw new TimeoutException("Message was not processed");
 
-                numVisibleMessages = IntegrationTestContext.SqsWrapper.GetApproximateNumberOfVisibleMessages(IntegrationTestContext.SqsQueueUrl);
-                numInvisibleMessages = IntegrationTestContext.SqsWrapper.GetApproximateNumberOfInvisibleMessages(IntegrationTestContext.SqsQueueUrl);
+                numVisibleMessages = IntegrationTestContext.SqsWrapper.GetApproxNumberOfMessages(IntegrationTestContext.SqsQueueUrl, true);
+                numInvisibleMessages = IntegrationTestContext.SqsWrapper.GetApproxNumberOfMessages(IntegrationTestContext.SqsQueueUrl, false);
             }
         }
     }

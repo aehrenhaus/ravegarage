@@ -24,6 +24,7 @@ namespace Medidata.RBT.Features.Integration.Hooks
 
             var queueName = Guid.NewGuid();
             IntegrationTestContext.SqsQueueUrl = IntegrationTestContext.SqsWrapper.CreateQueue(queueName.ToString(), 1209600);
+            Console.WriteLine("Queue URL: {0}", IntegrationTestContext.SqsQueueUrl);
 
             SQSHelper.UpdateQueueUuid(SQSHelper.EDC_APP_NAME, queueName);
             SQSHelper.UpdateQueueUuid(SQSHelper.MODULES_APP_NAME, Guid.NewGuid());
