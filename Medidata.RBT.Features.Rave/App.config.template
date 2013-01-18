@@ -42,9 +42,10 @@
 	<RaveConfiguration
 		RaveURL ="http://rave564nycdev02a.mdsol.com/MedidataRAVE/"
 		RWSURL=""
-    ReportURL="http://rave564nycdev02a.mdsol.com/RaveCrystalViewer/"
+		ReportURL="http://rave564nycdev02a.mdsol.com/RaveCrystalViewer/"
 		DefaultUser="defuser"
 		DefaultUserPassword="password"
+		UploadTimeout="100"
 		/>
 
 	<specFlow>

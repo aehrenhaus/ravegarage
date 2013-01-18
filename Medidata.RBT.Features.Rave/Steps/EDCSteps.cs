@@ -26,7 +26,7 @@ namespace Medidata.RBT.Features.Rave
 		public void ISelectStudy____AndSite____Env____(string studyName,string environment)
 		{
 			CurrentPage = CurrentPage.As<HomePage>()
-				.SelectStudy(TestContext.GetExistingFeatureObjectOrMakeNew(studyName, () => new Project(studyName)).UniqueName,environment);
+				.SelectStudy(SeedingContext.GetExistingFeatureObjectOrMakeNew(studyName, () => new Project(studyName)).UniqueName,environment);
 		}
 
         /// <summary>
@@ -48,8 +48,8 @@ namespace Medidata.RBT.Features.Rave
         public void ISelectStudy____AndSite____(string studyName, string siteName)
         {
             CurrentPage = CurrentPage.As<HomePage>()
-                .SelectStudy(TestContext.GetExistingFeatureObjectOrMakeNew(studyName, () => new Project(studyName)).UniqueName)
-                .SelectSite(TestContext.GetExistingFeatureObjectOrMakeNew(siteName, () => new Site(siteName)).UniqueName);
+                .SelectStudy(SeedingContext.GetExistingFeatureObjectOrMakeNew(studyName, () => new Project(studyName)).UniqueName)
+                .SelectSite(SeedingContext.GetExistingFeatureObjectOrMakeNew(siteName, () => new Site(siteName)).UniqueName);
         }
 
         /// <summary>
@@ -608,7 +608,7 @@ namespace Medidata.RBT.Features.Rave
         public void ISelectLab_____(string labName)
         {
             CRFPage page = CurrentPage.As<CRFPage>();
-            page.SelectLabValue(TestContext.GetExistingFeatureObjectOrMakeNew<Lab>(labName, () => new Lab(labName)).UniqueName);
+            page.SelectLabValue(SeedingContext.GetExistingFeatureObjectOrMakeNew<Lab>(labName, () => new Lab(labName)).UniqueName);
         }
 
         /// <summary>
@@ -618,7 +618,7 @@ namespace Medidata.RBT.Features.Rave
         [StepDefinition(@"I sign the form with username ""([^""]*)""")]
         public void ISignTheFormWithUsername____(string userName)
         {
-            User user = TestContext.GetExistingFeatureObjectOrMakeNew(
+            User user = SeedingContext.GetExistingFeatureObjectOrMakeNew(
                 userName, () => new User(userName));
             new SignatureBox().Sign(user.UniqueName, user.Password);
         }
@@ -631,7 +631,7 @@ namespace Medidata.RBT.Features.Rave
         [StepDefinition(@"I verify text ""([^""]*)"" with username ""([^""]*)"" exists")]
         public void IVerifyText____WithUsername____Exists(string text, string userName)
         {
-            User user = TestContext.GetExistingFeatureObjectOrMakeNew(
+            User user = SeedingContext.GetExistingFeatureObjectOrMakeNew(
                 userName, () => new User(userName));
             text = text.Replace(userName, user.UniqueName);
             bool exist = CurrentPage.As<IVerifySomethingExists>().VerifySomethingExist(null, "text", text);
@@ -646,7 +646,7 @@ namespace Medidata.RBT.Features.Rave
         [StepDefinition(@"I verify text ""([^""]*)"" with username ""([^""]*)"" does not exist")]
         public void IVerifyText____WithUsername____DoesNotExists(string text, string userName)
         {
-            User user = TestContext.GetExistingFeatureObjectOrMakeNew(
+            User user = SeedingContext.GetExistingFeatureObjectOrMakeNew(
                 userName, () => new User(userName));
             text = text.Replace(userName, user.UniqueName);
             bool exist = CurrentPage.As<IVerifySomethingExists>().VerifySomethingExist(null, "text", text);

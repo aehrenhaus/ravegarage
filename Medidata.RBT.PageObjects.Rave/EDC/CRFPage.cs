@@ -96,7 +96,7 @@ namespace Medidata.RBT.PageObjects.Rave
                 if (URL.Equals("Modules/EDC/PrimaryRecordPage.aspx"))
                     return false;
 
-                var contentR = TestContext.Browser.TryFindElementByPartialID("Content_R");
+                var contentR = Context.Browser.TryFindElementByPartialID("Content_R");
                 var labDropdown = contentR.TryFindElementByPartialID("LOC_DropDown", false);
                 bool isLabform = labDropdown != null;
                 return isLabform;
@@ -113,8 +113,8 @@ namespace Medidata.RBT.PageObjects.Rave
                 if (URL.Equals("Modules/EDC/PrimaryRecordPage.aspx"))
                     return false;
 
-                IWebElement logTable = TestContext.Browser.TryFindElementById("log",false);
-                IWebElement rowLeftSide = TestContext.Browser.TryFindElementBy(By.XPath("*//td[@class='crf_rowLeftSide']"));
+                IWebElement logTable = Context.Browser.TryFindElementById("log",false);
+                IWebElement rowLeftSide = Context.Browser.TryFindElementBy(By.XPath("*//td[@class='crf_rowLeftSide']"));
                 if (logTable != null && rowLeftSide != null)
                     return true;
                 return false;
@@ -129,7 +129,7 @@ namespace Medidata.RBT.PageObjects.Rave
 		/// <returns></returns>
         public bool FieldWithClinSignificanceExists(string clinSignificance, string fieldText)
         {
-            IWebElement el = TestContext.Browser.FindElements(By.XPath("//span[contains(@id,'Content_R')]")).FirstOrDefault();
+            IWebElement el = Context.Browser.FindElements(By.XPath("//span[contains(@id,'Content_R')]")).FirstOrDefault();
             if (el.Tables().Count <= 5)
                 return false;
 
@@ -196,7 +196,7 @@ namespace Medidata.RBT.PageObjects.Rave
         /// <returns>Returns true if the values are in the order passed in</returns>
         public bool FindFieldValuesInOrder(string fieldName, List<string> values)
         {
-            IWebElement field = TestContext.Browser.TryFindElementByXPath("//a[text()='" + fieldName + "']");
+            IWebElement field = Context.Browser.TryFindElementByXPath("//a[text()='" + fieldName + "']");
             IWebElement tbody = field.Parent().Parent().Parent();
             List<IWebElement> rows = tbody.FindElements(By.XPath("tr[@class='evenRow' or @class='oddRow']")).ToList();
             for (int i = 0; i < values.Count; i++)
@@ -237,9 +237,9 @@ namespace Medidata.RBT.PageObjects.Rave
 
         public bool IsElementFocused(ControlType type, string value)
         {
-            IWebElement currentElement = TestContext.Browser.TryFindElementBy(b =>
+            IWebElement currentElement = Context.Browser.TryFindElementBy(b =>
             {
-                return TestContext.CurrentPage.GetFocusElement().FindElement(By.XPath(".[@id != '']"));
+                return Context.CurrentPage.GetFocusElement().FindElement(By.XPath(".[@id != '']"));
             });
             IWebElement element = this.GetElementByControlTypeAndValue(type, value);
 

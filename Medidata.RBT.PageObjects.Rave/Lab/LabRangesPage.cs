@@ -28,7 +28,7 @@ namespace Medidata.RBT.PageObjects.Rave
         /// </summary>
         public void AddNewVersion(string analyteName)
         {
-            var analyte = TestContext.GetExistingFeatureObjectOrMakeNew<Analyte>(analyteName,
+            var analyte = SeedingContext.GetExistingFeatureObjectOrMakeNew<Analyte>(analyteName,
                     () => new Analyte(analyteName));
             this.FindLabRange(analyte.UniqueName).TryFindElementByPartialID("_ImgBtnNewVer").Click();
         }
@@ -39,7 +39,7 @@ namespace Medidata.RBT.PageObjects.Rave
         /// </summary>
         public void AddNewRange(string rangeName)
         {
-            TestContext.CurrentPage.ClickLink("Add New Range");
+            Context.CurrentPage.ClickLink("Add New Range");
         }
 
         /// <summary>
@@ -63,7 +63,7 @@ namespace Medidata.RBT.PageObjects.Rave
 
         private void ModifyRangeAndUpdate(AnalyteRangeModel model)
         {
-            var analyte = TestContext.GetExistingFeatureObjectOrMakeNew<Analyte>(model.Analyte,
+            var analyte = SeedingContext.GetExistingFeatureObjectOrMakeNew<Analyte>(model.Analyte,
                     () => new Analyte(model.Analyte));
             this.ChooseFromDynamicSearchListText("slLabAnalyte_TxtBx", analyte.UniqueName);
             this.ChooseFromDateTime("ldcFromDate", model.FromDate);

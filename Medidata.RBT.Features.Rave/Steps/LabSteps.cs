@@ -22,7 +22,7 @@ namespace Medidata.RBT.Features.Rave
         [StepDefinition(@"xml Lab Configuration ""([^""]*)"" is uploaded")]
         public void XmlDraft____IsUploaded(string configName)
         {
-            TestContext.GetExistingFeatureObjectOrMakeNew(configName, () => new LabConfiguration(configName));
+            SeedingContext.GetExistingFeatureObjectOrMakeNew(configName, () => new LabConfiguration(configName));
         }
 
         /// <summary>
@@ -32,7 +32,7 @@ namespace Medidata.RBT.Features.Rave
         [StepDefinition(@"xml Lab Configuration ""([^""]*)"" is uploaded maintaining length")]
         public void XmlLabConfiguration____IsUploadedMaintainingLength(string configName)
         {
-            TestContext.GetExistingFeatureObjectOrMakeNew(configName, () => new LabConfiguration(configName, true));
+            SeedingContext.GetExistingFeatureObjectOrMakeNew(configName, () => new LabConfiguration(configName, true));
         }
 
         /// <summary>
@@ -43,7 +43,7 @@ namespace Medidata.RBT.Features.Rave
         [StepDefinition(@"xml Lab Configuration ""([^""]*)"" is uploaded maintaining length and staying on page")]
         public void XmlLabConfiguration____IsUploadedMaintainingLengthAndStayingOnPage(string configName)
         {
-            TestContext.GetExistingFeatureObjectOrMakeNew(configName, () => new LabConfiguration(configName, true, false));
+            SeedingContext.GetExistingFeatureObjectOrMakeNew(configName, () => new LabConfiguration(configName, true, false));
         }
 
         /// <summary>
@@ -56,7 +56,7 @@ namespace Medidata.RBT.Features.Rave
         {
             labName =  SpecialStringHelper.Replace(labName);
 
-			var currentPage = TestContext.CurrentPage.As<LabPageBase>();
+			var currentPage = WebTestContext.CurrentPage.As<LabPageBase>();
             var currentRow = currentPage.FindLab(labName, labType);
             currentPage.SelectLabRange(currentRow);
         }
@@ -67,7 +67,7 @@ namespace Medidata.RBT.Features.Rave
         [StepDefinition(@"I select ""Add New Range""")]
         public void ISelectAddNewRange()
         {
-            TestContext.CurrentPage.ClickLink("Add New Range");
+            WebTestContext.CurrentPage.ClickLink("Add New Range");
         }
 
         /// <summary>
@@ -101,7 +101,7 @@ namespace Medidata.RBT.Features.Rave
         [StepDefinition(@"I select ""([^""]*)"" form ""([^""]*)""")]
         public void ISelect__form__(string link, string labType)
         {
-            TestContext.CurrentPage.ClickLink(link);
+            WebTestContext.CurrentPage.ClickLink(link);
             CurrentPage.As<CopyLabRanges>().CopyLabRange(labType);
         }
 

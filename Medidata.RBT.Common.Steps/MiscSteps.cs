@@ -23,7 +23,10 @@ namespace Medidata.RBT.Common.Steps
         [StepDefinition(@"I take a screenshot")]
         public void ITakeScreenshot()
         {
-            TestContext.TrySaveScreenShot();
+			if (RBTConfiguration.Default.TakeScreenShotsEveryStep )
+				return;
+
+			SpecflowContext.TrySaveScreenShot();
         }
 
 
@@ -37,7 +40,7 @@ namespace Medidata.RBT.Common.Steps
 		{
 			Browser.SwitchBrowserWindow(windowName);
 		
-			CurrentPage = TestContext.POFactory.GetPageByUrl(new Uri(Browser.Url));
+			CurrentPage = WebTestContext.POFactory.GetPageByUrl(new Uri(Browser.Url));
 		}
 
 		/// <summary>
@@ -48,7 +51,7 @@ namespace Medidata.RBT.Common.Steps
 		{
 			Browser.SwitchToSecondBrowserWindow();
 			Browser.WaitForDocumentLoad();
-			CurrentPage = TestContext.POFactory.GetPageByUrl(new Uri(Browser.Url));
+			CurrentPage = WebTestContext.POFactory.GetPageByUrl(new Uri(Browser.Url));
 		}
 
 		/// <summary>
@@ -59,7 +62,7 @@ namespace Medidata.RBT.Common.Steps
 		{
 			Browser.SwitchToMainBrowserWindow();
 			Browser.WaitForDocumentLoad();
-			CurrentPage = TestContext.POFactory.GetPageByUrl(new Uri(Browser.Url));
+			CurrentPage = WebTestContext.POFactory.GetPageByUrl(new Uri(Browser.Url));
 		}
 
 		/// <summary>
@@ -70,7 +73,7 @@ namespace Medidata.RBT.Common.Steps
         {
 			Browser.GetAlertWindow().Accept();
 			Browser.WaitForDocumentLoad();
-			CurrentPage = TestContext.POFactory.GetPageByUrl(new Uri(Browser.Url));
+			CurrentPage = WebTestContext.POFactory.GetPageByUrl(new Uri(Browser.Url));
         }
 
 		/// <summary>
@@ -81,7 +84,7 @@ namespace Medidata.RBT.Common.Steps
         {
 			Browser.GetAlertWindow().Dismiss();
 			Browser.WaitForDocumentLoad();
-			CurrentPage = TestContext.POFactory.GetPageByUrl(new Uri(Browser.Url));
+			CurrentPage = WebTestContext.POFactory.GetPageByUrl(new Uri(Browser.Url));
         }
 
         /// <summary>
@@ -104,7 +107,7 @@ namespace Medidata.RBT.Common.Steps
 		public void INavigateTo____PageWithParameters(string pageName, Table table)
 		{
 			//TODO:Set parameters from table
-			PageBase page = TestContext.POFactory.GetPage(pageName.Replace(" ", "") + "Page") as PageBase;
+			PageBase page = WebTestContext.POFactory.GetPage(pageName.Replace(" ", "") + "Page") as PageBase;
 			NameValueCollection parameters = new NameValueCollection();
 			foreach (var row in table.Rows)
 			{
@@ -123,7 +126,7 @@ namespace Medidata.RBT.Common.Steps
 		public void INavigateTo____Page(string pageName)
 		{
 
-			CurrentPage = TestContext.POFactory.GetPage(pageName.Replace(" ", "") + "Page").NavigateToSelf();
+			CurrentPage = WebTestContext.POFactory.GetPage(pageName.Replace(" ", "") + "Page").NavigateToSelf();
 			Browser.WaitForDocumentLoad();
 		}
 
@@ -136,7 +139,7 @@ namespace Medidata.RBT.Common.Steps
 		{
 			Browser.Url = url;
 			var uri = new Uri(Browser.Url);
-			CurrentPage = TestContext.POFactory.GetPageByUrl(uri);
+			CurrentPage = WebTestContext.POFactory.GetPageByUrl(uri);
 		}
 
 		/// <summary>

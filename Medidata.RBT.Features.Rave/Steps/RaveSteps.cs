@@ -14,6 +14,7 @@ namespace Medidata.RBT.Features.Rave
 	[Binding]
 	public class RaveSteps : BrowserStepsBase
 	{
+		public const string TripReports = "TripReports";
         /// <summary>
         /// Step definition to check if a the text stored in the scenario text contains the listed symbols. Fails if it does.
         /// </summary>
@@ -21,10 +22,11 @@ namespace Medidata.RBT.Features.Rave
         /// <returns></returns>
         [StepDefinition(@"the text should not contain ""<Symbol>""")]
         public void TheTextShouldNotContainSymbol(Table table)
-        {
-            Assert.IsFalse(String.IsNullOrEmpty(TestContext.ScenarioText));
+		{
+			string str = WebTestContext.Storage[RaveSteps.TripReports] as string;
+			Assert.IsFalse(String.IsNullOrEmpty(str));
 
-            if (CreateSymbolsTable(table).Any(s => TestContext.ScenarioText.Contains(s)))
+			if (CreateSymbolsTable(table).Any(s => str.Contains(s)))
                 Assert.Fail();
         }
 
@@ -36,9 +38,10 @@ namespace Medidata.RBT.Features.Rave
         [StepDefinition(@"the text should contain ""<Symbol>""")]
         public void TheTextShouldContainSymbol(Table table)
         {
-            Assert.IsFalse(String.IsNullOrEmpty(TestContext.ScenarioText));
+			string str = WebTestContext.Storage[RaveSteps.TripReports] as string;
+			Assert.IsFalse(String.IsNullOrEmpty(str));
 
-            if (CreateSymbolsTable(table).Any(s => !TestContext.ScenarioText.Contains(s)))
+			if (CreateSymbolsTable(table).Any(s => !str.Contains(s)))
                 Assert.Fail();
         }
 

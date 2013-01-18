@@ -36,7 +36,7 @@ namespace Medidata.RBT.PageObjects.Rave
 		/// <returns></returns>
 		public HomePage SelectStudy(string studyName, string environment = null)
         {
-            Project study = TestContext.GetExistingFeatureObjectOrMakeNew(
+            Project study = SeedingContext.GetExistingFeatureObjectOrMakeNew(
                 studyName, () => new Project(studyName));
 
 
@@ -55,7 +55,7 @@ namespace Medidata.RBT.PageObjects.Rave
 						string linkText = study.UniqueName;
 						if (!string.IsNullOrWhiteSpace(environment) && environment != "Prod")
 							linkText += " (" + environment + ")";
-						return TestContext.Browser.TryFindElementBy(By.LinkText(linkText), true, 2);
+						return Context.Browser.TryFindElementBy(By.LinkText(linkText), true, 2);
 					}, out foundOnPage);
 
 			}
@@ -87,7 +87,7 @@ namespace Medidata.RBT.PageObjects.Rave
 		/// <returns></returns>
 		public HomePage SelectSite(string siteName)
 		{
-            Site site = TestContext.GetExistingFeatureObjectOrMakeNew(
+            Site site = SeedingContext.GetExistingFeatureObjectOrMakeNew(
                 siteName, () => new Site(siteName));
 
             //TODO: the pagination does not work on Inna's site where there is no page buttons for sites list
@@ -129,7 +129,7 @@ namespace Medidata.RBT.PageObjects.Rave
 
 		public ICanPaginate GetPaginationControl(string areaIdentifier)
 		{
-			var pageTable = TestContext.Browser.TryFindElementById("_ctl0_Content_ListDisplayNavigation_TrPagination").Children()[1];
+			var pageTable = Context.Browser.TryFindElementById("_ctl0_Content_ListDisplayNavigation_TrPagination").Children()[1];
 			var pager = new RavePaginationControl_Arrow(this, pageTable);
 			return pager;
 		}

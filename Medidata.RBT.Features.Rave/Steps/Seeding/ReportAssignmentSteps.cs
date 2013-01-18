@@ -25,18 +25,18 @@ namespace Medidata.RBT.Features.Rave.Seeding
         public void FollowingReportAssignmentsExist(Table table)
         {
             var reportAssignments = table.CreateSet<ReportAssignmentModel>();
-            TestContext.CurrentPage = new HomePage().NavigateToSelf();
+            WebTestContext.CurrentPage = new HomePage().NavigateToSelf();
             CurrentPage = CurrentPage.NavigateTo("Report Administration");
 
             foreach (ReportAssignmentModel reportAssignment in reportAssignments)
             {
                 User user = null;
                 if (!String.IsNullOrEmpty(reportAssignment.User))
-                    user = TestContext.GetExistingFeatureObjectOrMakeNew(reportAssignment.User, () => new User(reportAssignment.User));
+                    user = SeedingContext.GetExistingFeatureObjectOrMakeNew(reportAssignment.User, () => new User(reportAssignment.User));
 
                 Role role = null;
                 if (!String.IsNullOrEmpty(reportAssignment.Role))
-                    role = TestContext.GetExistingFeatureObjectOrMakeNew(reportAssignment.Role, () => new Role(reportAssignment.Role));
+                    role = SeedingContext.GetExistingFeatureObjectOrMakeNew(reportAssignment.Role, () => new Role(reportAssignment.Role));
 
                 if (user != null || role != null)
                 {
@@ -57,7 +57,7 @@ namespace Medidata.RBT.Features.Rave.Seeding
                     CurrentPage.As<ReportAssignmentPage>().SelectReportAssignment(reportAssignment.Report, role);
             }
 
-            TestContext.CurrentPage = new HomePage().NavigateToSelf();
+            WebTestContext.CurrentPage = new HomePage().NavigateToSelf();
         }
 
     }

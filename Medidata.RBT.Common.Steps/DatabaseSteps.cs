@@ -10,6 +10,7 @@ namespace Medidata.RBT.Common.Steps
 	[Binding]
 	public class DatabaseSteps : BrowserStepsBase
 	{
+		private const string LastSqlResultTable = "LastSqlResultTable";
 
 		//[StepDefinition(@"I restore to snapshot ""([^""]*)""")]
 		//public void IRestoreToSnapshot____(string snapshotName)
@@ -35,7 +36,8 @@ namespace Medidata.RBT.Common.Steps
 			var dataTable = DbHelper.ExecuteDataSet(sql).Tables[0];
 
 			SaveDataTable(dataTable);
-			Storage.SetScenarioLevelValue(LastSqlResultTable, dataTable);
+		
+			SpecflowContext.Storage[LastSqlResultTable] = dataTable;
 		}
 
 
@@ -46,7 +48,7 @@ namespace Medidata.RBT.Common.Steps
 		[StepDefinition(@"I should see SQL result")]
 		public void IShouldSeeResult(Table table)
 		{
-			var dataTable = Storage.GetScenarioLevelValue<System.Data.DataTable>(LastSqlResultTable);
+			var dataTable = SpecflowContext.Storage[LastSqlResultTable] as System.Data.DataTable;
 			AssertAreSameTable(dataTable, table);
 
 		}
@@ -58,13 +60,13 @@ namespace Medidata.RBT.Common.Steps
 		[StepDefinition(@"I should NOT see SQL result")]
 		public void IShouldNOTSeeResult(Table table)
 		{
-			var dataTable = Storage.GetScenarioLevelValue<System.Data.DataTable>(LastSqlResultTable);
+			var dataTable = SpecflowContext.Storage[LastSqlResultTable] as System.Data.DataTable;
 			AssertAreNOTSameTable(dataTable, table);
 		}
 
 		#region Private
 
-		private const string LastSqlResultTable = "LastSqlResultTable";
+		
 
 		private void AssertAreSameTable(System.Data.DataTable dataTable, Table table)
 		{
@@ -103,7 +105,7 @@ namespace Medidata.RBT.Common.Steps
 
 		private void SaveDataTable(System.Data.DataTable dataTable)
 		{
-			string resultPath = TestContext.GetTestResultPath();
+			string resultPath = RBTConfiguration.Default.TestResultPath;
 			Directory.CreateDirectory(resultPath);
 			File.WriteAllText(Path.Combine(resultPath, "a.txt"), DateTime.Now.ToString());
 		}

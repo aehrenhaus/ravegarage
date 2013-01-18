@@ -17,6 +17,15 @@ namespace Medidata.RBT.PageObjects.Rave
 {
 	public abstract class RavePageBase : PageBase
 	{
+		public RavePageBase()
+		{
+		}
+
+		public RavePageBase(WebTestContext context)
+			: base(context)
+		{
+		}
+
 		public override IPage NavigateTo(string name)
 		{
 			if (new string[] {
@@ -30,8 +39,8 @@ namespace Medidata.RBT.PageObjects.Rave
 				"EED",
 				"Translation Workbench","PDF Generator","DCF","Query Management","Welcome Message"}.Contains(name))
 			{
-				if (!(TestContext.CurrentPage is HomePage))
-					TestContext.CurrentPage = new HomePage().NavigateToSelf();
+				if (!(Context.CurrentPage is HomePage))
+					Context.CurrentPage = new HomePage().NavigateToSelf();
 			}
 
 			if (name == "Home")
@@ -63,11 +72,11 @@ namespace Medidata.RBT.PageObjects.Rave
         {
             if (controlType == ControlType.Button)
             {
-                return TestContext.Browser.TryFindElementBy(By.XPath("//input[contains(@value, '" + value + "')]"));
+                return Context.Browser.TryFindElementBy(By.XPath("//input[contains(@value, '" + value + "')]"));
             }
             else if (controlType == ControlType.Link)
             {
-                return TestContext.Browser.TryFindElementBy(By.XPath("//a[text() = '" + value + "']"));
+                return Context.Browser.TryFindElementBy(By.XPath("//a[text() = '" + value + "']"));
             }
             else
                 return null;
@@ -76,7 +85,7 @@ namespace Medidata.RBT.PageObjects.Rave
 		public IPage GoBack()
 		{
 			Browser.Navigate().Back();
-			return  TestContext.POFactory.GetPageByUrl(new Uri(Browser.Url));
+			return  Context.POFactory.GetPageByUrl(new Uri(Browser.Url));
 		}
 
 		public override IPage ChooseFromDropdown(string identifier, string text, string objectType = null, string areaIdentifier = null)
@@ -95,37 +104,37 @@ namespace Medidata.RBT.PageObjects.Rave
 			if (type != null) type = type.Replace(" ", "");
 			if (string.Equals(type,"Study", StringComparison.InvariantCultureIgnoreCase))
 			{
-				Project project = TestContext.GetExistingFeatureObjectOrMakeNew(name, () => new Project(name));
+				Project project = SeedingContext.GetExistingFeatureObjectOrMakeNew(name, () => new Project(name));
 				name = project.UniqueName;
 			}
 			else if (string.Equals(type, "Site", StringComparison.InvariantCultureIgnoreCase))
 			{
-				Site site = TestContext.GetExistingFeatureObjectOrMakeNew(name, () => new Site(name));
+				Site site = SeedingContext.GetExistingFeatureObjectOrMakeNew(name, () => new Site(name));
 				name = site.UniqueName;
 			}
 			else if (string.Equals(type, "Role", StringComparison.InvariantCultureIgnoreCase))
 			{
-				Role role = TestContext.GetExistingFeatureObjectOrMakeNew(name, () => new Role(name));
+				Role role = SeedingContext.GetExistingFeatureObjectOrMakeNew(name, () => new Role(name));
 				name = role.UniqueName;
 			}
 			else if (string.Equals(type, "User", StringComparison.InvariantCultureIgnoreCase))
 			{
-				User user = TestContext.GetExistingFeatureObjectOrMakeNew(name, () => new User(name));
+				User user = SeedingContext.GetExistingFeatureObjectOrMakeNew(name, () => new User(name));
 				name = user.UniqueName;
 			}
 			else if (string.Equals(type, "Project", StringComparison.InvariantCultureIgnoreCase))
 			{
-				Project project = TestContext.GetExistingFeatureObjectOrMakeNew(name, () => new Project(name));
+				Project project = SeedingContext.GetExistingFeatureObjectOrMakeNew(name, () => new Project(name));
 				name = project.UniqueName;
 			}
 				else if (type == "Lab")
 				{
-					SharedRaveObjects.Lab lab = TestContext.GetExistingFeatureObjectOrMakeNew(name, () =>new SharedRaveObjects.Lab(name));
+					SharedRaveObjects.Lab lab = SeedingContext.GetExistingFeatureObjectOrMakeNew(name, () =>new SharedRaveObjects.Lab(name));
 					name = lab.UniqueName;
 				}
 				else if (type != null && type.ToUpper().Contains("CRF"))
                 {
-                    CrfVersion crf = TestContext.GetExistingFeatureObjectOrMakeNew<CrfVersion>(name, () => null);
+                    CrfVersion crf = SeedingContext.GetExistingFeatureObjectOrMakeNew<CrfVersion>(name, () => null);
 					if(crf!=null)
 						name = crf.UniqueName;
                 }
@@ -138,7 +147,7 @@ namespace Medidata.RBT.PageObjects.Rave
 		/// <returns></returns>
 		private string GetSeededProjectName(string name)
 		{
-			Project projectObject = TestContext.GetExistingFeatureObjectOrMakeNew(name, () => new Project(name));
+			Project projectObject = SeedingContext.GetExistingFeatureObjectOrMakeNew(name, () => new Project(name));
 			return projectObject.UniqueName;
 		}
 		public override IPage ClickLink(string linkText, string objectType = null, string areaIdentifier = null, bool partial = false)
@@ -180,7 +189,17 @@ namespace Medidata.RBT.PageObjects.Rave
 			link.Click();
 
 
-			return base.GetPageByCurrentUrlIfNoAlert();
+			return GetPageByCurrentUrlIfNoAlert();
+		}
+
+		/// <summary>
+		/// Should call WebTestContext.WaitForPageLoads() directly instead of this
+		/// </summary>
+		/// <returns></returns>
+		[Obsolete]
+		protected IPage GetPageByCurrentUrlIfNoAlert()
+		{
+			return this.WaitForPageLoads();
 		}
 
         public virtual IEDCFieldControl FindLandscapeLogField(string fieldName, int rowIndex, ControlType controlType = ControlType.Default)

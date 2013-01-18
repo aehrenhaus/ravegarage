@@ -28,7 +28,7 @@ namespace Medidata.RBT.Features.Rave
 		public void Role____HasAction____InActionGroup____WithStatus____(string roleName, string actionName, string actionGroupName, string status)
 		{
             CurrentPage = new WorkflowConfigPage().NavigateToSelf();
-            Role role = TestContext.GetExistingFeatureObjectOrMakeNew(roleName, () => new Role(roleName));
+            Role role = SeedingContext.GetExistingFeatureObjectOrMakeNew(roleName, () => new Role(roleName));
             CurrentPage.As<WorkflowConfigPage>().ClickActionsLinkForGivenRole(role.UniqueName);
             CurrentPage.As<RoleActionsConfigPage>().ChooseFromDropdown("DisplayGroupDDL", actionGroupName);
             bool expected = status.Equals("Checked");
@@ -43,7 +43,7 @@ namespace Medidata.RBT.Features.Rave
         [StepDefinition(@"role ""([^""]*)"" exists")]
         public void Role____Exists(string roleName)
         {
-            TestContext.GetExistingFeatureObjectOrMakeNew(roleName, () => new Role(roleName));
+            SeedingContext.GetExistingFeatureObjectOrMakeNew(roleName, () => new Role(roleName));
         }
 
         /// <summary>
@@ -57,14 +57,14 @@ namespace Medidata.RBT.Features.Rave
             List<ConfigurationCreationModel> configurations = table.CreateSet<ConfigurationCreationModel>().ToList();
             foreach(ConfigurationCreationModel config in configurations)
             {
-                TestContext.CurrentPage = new ArchitectPage().NavigateToSelf();
-                Project project = TestContext.GetExistingFeatureObjectOrMakeNew(config.Project, () => new Project(config.Project));
-                TestContext.CurrentPage.As<ArchitectPage>().ClickProject(project.UniqueName);
-                Draft draft = TestContext.GetExistingFeatureObjectOrMakeNew(config.Draft, () => new Draft(config.Draft));
-                TestContext.CurrentPage.As<ArchitectLibraryPage>().ClickDraft(draft.UniqueName);
-                TestContext.CurrentPage.As<ArchitectCRFDraftPage>().ClickLink("Restrictions");
-                Role role = TestContext.GetExistingFeatureObjectOrMakeNew(roleName, () => new Role(roleName));
-                TestContext.CurrentPage.As<ArchitectRestrictionsPage>().SetEntryRestriction(config.Form, config.Field, role.UniqueName);
+                WebTestContext.CurrentPage = new ArchitectPage().NavigateToSelf();
+                Project project = SeedingContext.GetExistingFeatureObjectOrMakeNew(config.Project, () => new Project(config.Project));
+                WebTestContext.CurrentPage.As<ArchitectPage>().ClickProject(project.UniqueName);
+                Draft draft = SeedingContext.GetExistingFeatureObjectOrMakeNew(config.Draft, () => new Draft(config.Draft));
+                WebTestContext.CurrentPage.As<ArchitectLibraryPage>().ClickDraft(draft.UniqueName);
+                WebTestContext.CurrentPage.As<ArchitectCRFDraftPage>().ClickLink("Restrictions");
+                Role role = SeedingContext.GetExistingFeatureObjectOrMakeNew(roleName, () => new Role(roleName));
+                WebTestContext.CurrentPage.As<ArchitectRestrictionsPage>().SetEntryRestriction(config.Form, config.Field, role.UniqueName);
             }
         }
 	}

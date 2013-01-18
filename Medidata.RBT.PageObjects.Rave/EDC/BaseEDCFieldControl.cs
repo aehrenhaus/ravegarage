@@ -98,7 +98,7 @@ namespace Medidata.RBT.PageObjects.Rave
                     break;
 
                 case ControlType.Signature:
-                    EnterSignature(TestContext.GetExistingFeatureObjectOrMakeNew<User>(text, () => new User(text)));
+					EnterSignature(SeedingContext.GetExistingFeatureObjectOrMakeNew<User>(text, () => new User(text)));
                     break;
                 case ControlType.DropDownList:
                     EnterDropdownValue(text);

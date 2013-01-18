@@ -72,12 +72,12 @@ namespace Medidata.RBT.PageObjects.Rave
 				link.Click();
 
 				Browser.SwitchToSecondBrowserWindow();
-				TestContext.CurrentPage = TestContext.POFactory.GetPageByUrl(new Uri(Browser.Url));
+				Context.CurrentPage = Context.POFactory.GetPageByUrl(new Uri(Browser.Url));
 
 				Assert.AreEqual(Browser.Url, report.URLAddress,"Url is different than expected");
 
 				Browser.SwitchToMainBrowserWindow(true);
-				TestContext.CurrentPage = TestContext.POFactory.GetPageByUrl(new Uri(Browser.Url));
+				Context.CurrentPage = Context.POFactory.GetPageByUrl(new Uri(Browser.Url));
 			}
 		}
 
@@ -106,12 +106,12 @@ namespace Medidata.RBT.PageObjects.Rave
 				this.ClickLink("View Report Help");
 
 				Browser.SwitchToSecondBrowserWindow();
-				TestContext.CurrentPage = TestContext.POFactory.GetPageByUrl(new Uri(Browser.Url));
+				Context.CurrentPage = Context.POFactory.GetPageByUrl(new Uri(Browser.Url));
 
 				Assert.AreEqual(Browser.Url, report.URLAddress,"Url is different than expected");
 
 				Browser.SwitchToMainBrowserWindow(true);
-				TestContext.CurrentPage = TestContext.POFactory.GetPageByUrl(new Uri(Browser.Url));
+				Context.CurrentPage = Context.POFactory.GetPageByUrl(new Uri(Browser.Url));
 
 				this.GoBack();
 

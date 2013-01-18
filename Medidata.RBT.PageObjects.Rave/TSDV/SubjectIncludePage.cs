@@ -47,7 +47,7 @@ namespace Medidata.RBT.PageObjects.Rave
 
 		public ICanPaginate GetPaginationControl(string areaIdentifier)
 		{
-			var pageTable = TestContext.Browser.TryFindElementById("_ctl0_Content_TblPage").Children()[1];
+			var pageTable = Context.Browser.TryFindElementById("_ctl0_Content_TblPage").Children()[1];
 			var pager = new RavePaginationControl_CurrentPageNotLink(this, pageTable);
 			return pager;
 		}

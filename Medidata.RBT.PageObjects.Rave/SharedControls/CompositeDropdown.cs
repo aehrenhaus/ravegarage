@@ -28,7 +28,7 @@ namespace Medidata.RBT.PageObjects.Rave
 			//IWebElement dropdownButton = field.TryFindElementBy(By.XPath("./span/input[position()=2]"));
 			//dropdownButton.Click();
 
-			var option = TestContext.Browser.TryFindElementBy(
+			var option = Page.Browser.TryFindElementBy(
 				driver => wrapper.FindElements(By.XPath("./div[position()=2]/div")).FirstOrDefault(x => x.Text.Contains( text))
 				);
 
@@ -38,7 +38,7 @@ namespace Medidata.RBT.PageObjects.Rave
 
 		public void OpenWithinTime(int seconds)
 		{
-			var option = TestContext.Browser.TryFindElementBy(
+			var option = Page.Browser.TryFindElementBy(
 				driver => wrapper.FindElements(By.XPath("./div[position()=2]/div")).FirstOrDefault(x => true), true, seconds);
 
 		}

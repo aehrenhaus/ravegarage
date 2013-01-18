@@ -161,13 +161,13 @@ namespace Medidata.RBT.PageObjects.Rave
 		{
 			if (areaIdentifier == "sites")
 			{
-				var pageTable = TestContext.Browser.TryFindElementById("_ctl0_Content_UserSiteWizard1_UserGrid").Children()[1];
+				var pageTable = Context.Browser.TryFindElementById("_ctl0_Content_UserSiteWizard1_UserGrid").Children()[1];
 				var pager = new RavePaginationControl_Arrow(this, pageTable);
 				return pager;
 			}
 			else
 			{
-				var pageTable = TestContext.Browser.TryFindElementById("_ctl0_Content_UserSiteWizard1_StudySiteGrid").Children()[1];
+				var pageTable = Context.Browser.TryFindElementById("_ctl0_Content_UserSiteWizard1_StudySiteGrid").Children()[1];
 				var pager = new RavePaginationControl_Arrow(this, pageTable);
 				return pager;
 				

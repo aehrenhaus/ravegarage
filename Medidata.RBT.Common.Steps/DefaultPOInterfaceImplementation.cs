@@ -110,7 +110,7 @@ namespace Medidata.RBT
 				//if found , take a screenshot
 				if (matchTRs.Count != 0)
 				{
-					TestContext.TrySaveScreenShot();
+					SpecflowStaticBindings.Current.TrySaveScreenShot();
 				}
                 if (matchTRs.Count > 0)
                 {

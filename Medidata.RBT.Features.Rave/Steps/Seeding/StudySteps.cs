@@ -18,7 +18,7 @@ namespace Medidata.RBT.Features.Rave
         [StepDefinition(@"xml draft ""([^""]*)"" is Uploaded")]
         public void XmlDraft____IsUploaded(string draftName)
         {
-            TestContext.GetExistingFeatureObjectOrMakeNew(draftName, () => new UploadedDraft(draftName));
+            SeedingContext.GetExistingFeatureObjectOrMakeNew(draftName, () => new UploadedDraft(draftName));
         }
 
         /// <summary>
@@ -29,17 +29,19 @@ namespace Medidata.RBT.Features.Rave
         [StepDefinition(@"xml draft ""([^""]*)"" is Uploaded with Environment name ""([^""]*)""")]
         public void XmlDraft____IsUploadedWithEnvironmentName____(string draftName,string envName)
         {
-			using (new LoginSession())
+			using (var session = new LoginSession(WebTestContext, restoreOriginalUser: false))
 			{
-				UploadedDraft uploadedDraft = TestContext.GetExistingFeatureObjectOrMakeNew(draftName,
+				UploadedDraft uploadedDraft = SeedingContext.GetExistingFeatureObjectOrMakeNew(draftName,
 				                                                                            () => new UploadedDraft(draftName));
 
-				TestContext.CurrentPage.As<HomePage>().ClickLink("Architect");
-				TestContext.CurrentPage = new ArchitectPage();
-				TestContext.CurrentPage.As<ArchitectPage>().ClickProject(uploadedDraft.Project.UniqueName);
-				TestContext.CurrentPage.As<ArchitectLibraryPage>().ClickLink("Studies Environment Setup");
-				TestContext.CurrentPage.As<ArchitectEnvironmentSetupPage>().AddNewEnvironment(envName);
-				TestContext.CurrentPage = new HomePage().NavigateToSelf();
+				WebTestContext.CurrentPage.As<HomePage>().ClickLink("Architect");
+				WebTestContext.CurrentPage = new ArchitectPage();
+				WebTestContext.CurrentPage.As<ArchitectPage>().ClickProject(uploadedDraft.Project.UniqueName);
+				WebTestContext.CurrentPage.As<ArchitectLibraryPage>().ClickLink("Studies Environment Setup");
+				WebTestContext.CurrentPage.As<ArchitectEnvironmentSetupPage>().AddNewEnvironment(envName);
+				WebTestContext.CurrentPage = new HomePage().NavigateToSelf();
+
+				session.RestoreOriginalUser = true;
 			}
         }
 
@@ -51,22 +53,24 @@ namespace Medidata.RBT.Features.Rave
 		[StepDefinition(@"xml draft ""([^""]*)"" is Uploaded with Environments")]
 		public void XmlDraft____IsUploadedWithEnvironmentName____(string draftName, Table tableEnvs)
 		{
-			using (new LoginSession())
+			using (var session = new LoginSession(WebTestContext, restoreOriginalUser: false))
 			{
-				UploadedDraft uploadedDraft = TestContext.GetExistingFeatureObjectOrMakeNew(draftName,
+				UploadedDraft uploadedDraft = SeedingContext.GetExistingFeatureObjectOrMakeNew(draftName,
 																							() => new UploadedDraft(draftName));
 
-				TestContext.CurrentPage.As<HomePage>().ClickLink("Architect");
-				TestContext.CurrentPage = new ArchitectPage();
-				TestContext.CurrentPage.As<ArchitectPage>().ClickProject(uploadedDraft.Project.UniqueName);
-				TestContext.CurrentPage.As<ArchitectLibraryPage>().ClickLink("Studies Environment Setup");
+				WebTestContext.CurrentPage.As<HomePage>().ClickLink("Architect");
+				WebTestContext.CurrentPage = new ArchitectPage();
+				WebTestContext.CurrentPage.As<ArchitectPage>().ClickProject(uploadedDraft.Project.UniqueName);
+				WebTestContext.CurrentPage.As<ArchitectLibraryPage>().ClickLink("Studies Environment Setup");
 
 				foreach (var env in tableEnvs.CreateSet<NameObject>())
 				{
-					TestContext.CurrentPage.As<ArchitectEnvironmentSetupPage>().AddNewEnvironment(env.Name);
+					WebTestContext.CurrentPage.As<ArchitectEnvironmentSetupPage>().AddNewEnvironment(env.Name);
 				}
 				
-				TestContext.CurrentPage = new HomePage().NavigateToSelf();
+				WebTestContext.CurrentPage = new HomePage().NavigateToSelf();
+
+				session.RestoreOriginalUser = true;
 			}
 		}
 
@@ -106,18 +110,18 @@ namespace Medidata.RBT.Features.Rave
         [StepDefinition(@"I publish and push eCRF ""([^""]*)"" to ""([^""]*)"" with study environment ""([^""]*)"" for site ""([^""]*)""")]
         public void IPublishAndPushECRF____To____WithStudyEnvironment____ForSite____(string uploadName, string crfVersionName, string studyEnvName, string siteSelection)
         {
-            using (new LoginSession())
+			using (var session = new LoginSession(WebTestContext, restoreOriginalUser: false))
             {
-                UploadedDraft uploadedDraft = TestContext.GetExistingFeatureObjectOrMakeNew
+                UploadedDraft uploadedDraft = SeedingContext.GetExistingFeatureObjectOrMakeNew
                         (uploadName, () => new UploadedDraft(uploadName));
-                CrfVersion crfVersion = TestContext.GetExistingFeatureObjectOrMakeNew
+                CrfVersion crfVersion = SeedingContext.GetExistingFeatureObjectOrMakeNew
                         (crfVersionName, () => new CrfVersion(uploadedDraft.UniqueName, crfVersionName));
-                if (TestContext.CurrentUser == null)
-                    LoginPage.LoginToHomePageIfNotAlready();
-                TestContext.CurrentPage = new ArchitectPage().NavigateToSelf();
-                if (!(TestContext.CurrentPage is ArchitectPage))
-                    LoginPage.LoginToHomePageIfNotAlready();
-                TestContext.CurrentPage.As<ArchitectPage>().ClickProject(crfVersion.UploadedDraft.Project.UniqueName);
+                if (WebTestContext.CurrentUser == null)
+                    LoginPage.LoginToHomePageIfNotAlready(WebTestContext);
+                WebTestContext.CurrentPage = new ArchitectPage().NavigateToSelf();
+                if (!(WebTestContext.CurrentPage is ArchitectPage))
+					LoginPage.LoginToHomePageIfNotAlready(WebTestContext);
+                WebTestContext.CurrentPage.As<ArchitectPage>().ClickProject(crfVersion.UploadedDraft.Project.UniqueName);
                 string siteName;
                 if (siteSelection == "All Sites")
                 {
@@ -125,10 +129,12 @@ namespace Medidata.RBT.Features.Rave
                 }
                 else
                 {
-                    siteName = TestContext.GetExistingFeatureObjectOrMakeNew(siteSelection, () => new Site(siteSelection)).UniqueName;
+                    siteName = SeedingContext.GetExistingFeatureObjectOrMakeNew(siteSelection, () => new Site(siteSelection)).UniqueName;
                 }
-                TestContext.CurrentPage.As<ArchitectLibraryPage>().PushVersion(crfVersion.UniqueName, studyEnvName, siteName);
-                TestContext.CurrentPage = new HomePage().NavigateToSelf();
+                WebTestContext.CurrentPage.As<ArchitectLibraryPage>().PushVersion(crfVersion.UniqueName, studyEnvName, siteName);
+                WebTestContext.CurrentPage = new HomePage().NavigateToSelf();
+
+				session.RestoreOriginalUser = true;
             }
         }
 

@@ -41,7 +41,7 @@ namespace Medidata.RBT.Features.Rave
             {
                 string studyName = "";
                 tabRow.TryGetValue(headers[0], out studyName);
-                Project project = TestContext.GetExistingFeatureObjectOrMakeNew(studyName, () => new Project(studyName));
+                Project project = SeedingContext.GetExistingFeatureObjectOrMakeNew(studyName, () => new Project(studyName));
                 string envName = "";
                 tabRow.TryGetValue(headers[1], out envName);
                 newTable.AddRow(project.UniqueName, envName);

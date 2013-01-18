@@ -26,7 +26,7 @@ namespace Medidata.RBT.PageObjects.Rave
             if (name.Contains(environment))
             {
                 newName = name.Replace(environment, "");
-                Project projectObject = TestContext.GetExistingFeatureObjectOrMakeNew(newName, () => new Project(newName));
+                Project projectObject = SeedingContext.GetExistingFeatureObjectOrMakeNew(newName, () => new Project(newName));
                 return projectObject.UniqueName + environment;
             }
             return name;

@@ -15,6 +15,8 @@ namespace Medidata.RBT
 	/// </summary>
 	public interface IPage
 	{
+		WebTestContext Context { get; set; }
+
 		/// <summary>
 		/// The browser driver. Represents the browser
 		/// </summary>

@@ -31,7 +31,7 @@ namespace Medidata.RBT.PageObjects.Rave
 		{
             fieldName = ISearchContextExtend.ReplaceSpecialCharactersWithEscapeCharacters(fieldName);
             //First, look for the field as a non-lab field
-            IEnumerable<IWebElement> leftSideTds = TestContext.Browser.FindElements(By.XPath("//td[@class='crf_rowLeftSide']"));
+			IEnumerable<IWebElement> leftSideTds = Page.Browser.FindElements(By.XPath("//td[@class='crf_rowLeftSide']"));
             IWebElement area = leftSideTds.FirstOrDefault(x =>
             {
                 return ISearchContextExtend.ReplaceTagsWithEscapedCharacters(x.FindElement(By.XPath(".//td[@class='crf_preText']")).GetInnerHtml())
@@ -54,7 +54,7 @@ namespace Medidata.RBT.PageObjects.Rave
             //If it wasn't found as a non-lab field, then look for the field as a lab field
             else
             {
-                IEnumerable<IWebElement> els = TestContext.Browser.FindElements(By.XPath("//table[@id='log']/tbody/tr/td/a[contains(@id,'Content_R')]"));
+				IEnumerable<IWebElement> els = Page.Browser.FindElements(By.XPath("//table[@id='log']/tbody/tr/td/a[contains(@id,'Content_R')]"));
                 area = els.FirstOrDefault(x => x.Text == fieldName);
 
                 if (area != null)

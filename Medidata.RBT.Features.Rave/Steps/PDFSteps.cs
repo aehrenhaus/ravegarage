@@ -80,7 +80,7 @@ namespace Medidata.RBT.Features.Rave
 
             foreach (PdfProfileModel ppModel in pdfProfileList)
             {
-                TestContext.GetExistingFeatureObjectOrMakeNew(ppModel.ProfileName, () => new PdfProfile(ppModel.ProfileName));
+                SeedingContext.GetExistingFeatureObjectOrMakeNew(ppModel.ProfileName, () => new PdfProfile(ppModel.ProfileName));
             }
         }
 

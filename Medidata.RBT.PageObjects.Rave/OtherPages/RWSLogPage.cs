@@ -16,6 +16,11 @@ namespace Medidata.RBT.PageObjects.Rave
 		{
 		}
 
+		public RWSLogPage(WebTestContext context)
+			: base(context)
+		{
+		}
+
         public RWSLogPage(string logger)
         {
 

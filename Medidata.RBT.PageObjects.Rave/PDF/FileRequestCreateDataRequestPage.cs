@@ -75,7 +75,7 @@ namespace Medidata.RBT.PageObjects.Rave
 
                 IWebElement div = Browser.TryFindElementById("DSitesSitegroups_SG_1");
 
-                string siteName = TestContext.GetExistingFeatureObjectOrMakeNew
+                string siteName = SeedingContext.GetExistingFeatureObjectOrMakeNew
                     (sName, () => new Site(sName)).UniqueName;
 
                 IWebElement span = Browser.TryFindElementBy(b => div.Spans().FirstOrDefault(x => x.Text == siteName));

@@ -62,7 +62,7 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
                 string userGroupString = userGroupsWorksheet[row, "Name"] as string;
                 if (!string.IsNullOrEmpty(userGroupString))
                 {
-                    UserGroup userGroup = TestContext.GetExistingFeatureObjectOrMakeNew<UserGroup>(userGroupString.Trim(),
+                    UserGroup userGroup = SeedingContext.GetExistingFeatureObjectOrMakeNew<UserGroup>(userGroupString.Trim(),
                         () => new UserGroup(userGroupString.Trim()));
                     userGroupsWorksheet[row, "Name"] = userGroup.UniqueName.ToString();
                 }
@@ -74,7 +74,7 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
         /// </summary>
 		protected override void NavigateToSeedPage()
         {
-            TestContext.CurrentPage = new ConfigurationLoaderPage().NavigateToSelf();
+            WebTestContext.CurrentPage = new ConfigurationLoaderPage().NavigateToSelf();
         }
 
         /// <summary>
@@ -82,7 +82,7 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
         /// </summary>
 		protected override void CreateObject()
         {
-            TestContext.CurrentPage.As<ConfigurationLoaderPage>().UploadFile(UniqueFileLocation);
+            WebTestContext.CurrentPage.As<ConfigurationLoaderPage>().UploadFile(UniqueFileLocation);
             Factory.FeatureObjectsForDeletion.Add(this);
         }
 

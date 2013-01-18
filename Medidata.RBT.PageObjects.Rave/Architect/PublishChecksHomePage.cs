@@ -67,7 +67,7 @@ namespace Medidata.RBT.PageObjects.Rave
                 }
                 catch { }
 
-                page = TestContext.POFactory.GetPageByUrl(new Uri(Browser.Url));
+                page = Context.POFactory.GetPageByUrl(new Uri(Browser.Url));
             }
             else
             {
@@ -79,11 +79,11 @@ namespace Medidata.RBT.PageObjects.Rave
 
         public void NavigateToStudy(string studyName)
         {
-            TestContext.CurrentPage = new ArchitectPage().NavigateToSelf();
-            Project project = TestContext.GetExistingFeatureObjectOrMakeNew(studyName, () => new Project(studyName));
-            TestContext.CurrentPage.As<ArchitectPage>().ClickProject(project.UniqueName);
-            TestContext.CurrentPage.As<ArchitectLibraryPage>().NavigateTo("Publish Checks");
-            TestContext.CurrentPage = this;
+            Context.CurrentPage = new ArchitectPage().NavigateToSelf();
+            Project project = SeedingContext.GetExistingFeatureObjectOrMakeNew(studyName, () => new Project(studyName));
+            Context.CurrentPage.As<ArchitectPage>().ClickProject(project.UniqueName);
+            Context.CurrentPage.As<ArchitectLibraryPage>().NavigateTo("Publish Checks");
+            Context.CurrentPage = this;
         }
 
 		public override string URL
@@ -105,14 +105,14 @@ namespace Medidata.RBT.PageObjects.Rave
 
         public void SelectCurrentCRF(string currentCrfName)
         {
-            string uniqueSourceCRFName = ((CrfVersion)TestContext.SeedableObjects[currentCrfName]).UniqueName;
+            string uniqueSourceCRFName = ((CrfVersion)SeedingContext.SeedableObjects[currentCrfName]).UniqueName;
             Dropdown sourceDropdown = Browser.FindElementById("_ctl0_Content_ddlCurrentVersionId").EnhanceAs<Dropdown>();
             sourceDropdown.SelectByPartialText(uniqueSourceCRFName);
         }
 
         public void SelectReferenceCRF(string referenceCrfName)
         {
-            string uniqueTargetCRFName = ((CrfVersion)TestContext.SeedableObjects[referenceCrfName]).UniqueName;
+            string uniqueTargetCRFName = ((CrfVersion)SeedingContext.SeedableObjects[referenceCrfName]).UniqueName;
             Dropdown sourceDropdown = Browser.FindElementById("_ctl0_Content_ddlReferenceVersionId").EnhanceAs<Dropdown>();
             sourceDropdown.SelectByPartialText(uniqueTargetCRFName);
         }

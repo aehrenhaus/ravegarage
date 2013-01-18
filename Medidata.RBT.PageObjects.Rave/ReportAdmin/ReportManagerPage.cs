@@ -50,7 +50,7 @@ namespace Medidata.RBT.PageObjects.Rave
                 IWebElement saveLink = Browser.TryFindElementById("_ctl0_Content_LinkbuttonReportSave");
                 saveLink.Click();
 
-                TestContext.CurrentPage = new ReportManagerPage().NavigateToSelf();
+                Context.CurrentPage = new ReportManagerPage().NavigateToSelf();
             }
 
             return this;

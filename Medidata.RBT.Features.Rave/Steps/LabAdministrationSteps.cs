@@ -164,7 +164,7 @@ namespace Medidata.RBT.Features.Rave
             IEnumerable<RangeTypeModel> rangeTypeList = table.CreateSet<RangeTypeModel>();
 
             foreach (RangeTypeModel rangeType in rangeTypeList)
-                TestContext.GetExistingFeatureObjectOrMakeNew<RangeType>(rangeType.RangeTypeName, () => new RangeType(rangeType.RangeTypeName));
+                SeedingContext.GetExistingFeatureObjectOrMakeNew<RangeType>(rangeType.RangeTypeName, () => new RangeType(rangeType.RangeTypeName));
         }
         #endregion
 

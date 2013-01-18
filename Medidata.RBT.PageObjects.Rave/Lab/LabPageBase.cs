@@ -38,7 +38,7 @@ namespace Medidata.RBT.PageObjects.Rave
 
             link.Click();
             string className = poClassMapping[name];
-            return TestContext.POFactory.GetPage(className);
+            return Context.POFactory.GetPage(className);
         }
 
         /// <summary>
@@ -49,7 +49,7 @@ namespace Medidata.RBT.PageObjects.Rave
         /// <returns></returns>
         public IWebElement FindLab(string labName, string type)
         {
-            KeyValuePair<string, ISeedableObject> kvpSeedable = TestContext.SeedableObjects.FirstOrDefault(x => x.Key == labName);
+            KeyValuePair<string, ISeedableObject> kvpSeedable = SeedingContext.SeedableObjects.FirstOrDefault(x => x.Key == labName);
             if (kvpSeedable.Value != null)
                 labName = kvpSeedable.Value.UniqueName;
 
@@ -88,11 +88,11 @@ namespace Medidata.RBT.PageObjects.Rave
         /// <param name="type">The type.</param>
         public void AddNewLab(string labName, string type, string rangeType = null)
         {
-            TestContext.CurrentPage.ClickLink("Add New Lab");
+            Context.CurrentPage.ClickLink("Add New Lab");
 
             //table.Dropdown("_ddlLabType").SendKeys(type);
             ChooseFromDropdown("_ddlLabType", type);
-            if (!String.IsNullOrEmpty(rangeType)) ChooseFromDropdown("_ddlRangeType", TestContext.GetExistingFeatureObjectOrMakeNew<RangeType>(rangeType, () => new RangeType(rangeType)).UniqueName);
+            if (!String.IsNullOrEmpty(rangeType)) ChooseFromDropdown("_ddlRangeType", SeedingContext.GetExistingFeatureObjectOrMakeNew<RangeType>(rangeType, () => new RangeType(rangeType)).UniqueName);
 
             HtmlTable table = Browser.TryFindElementByPartialID("LabsGrid").EnhanceAs<HtmlTable>();
             var currentRow = table.TextboxById("_txtName").Parent().Parent();

@@ -82,7 +82,7 @@ namespace Medidata.RBT.PageObjects.Rave
 
             IWebElement displayTr = this.FindInPaginatedList("", () =>
             {
-                HtmlTable table = TestContext.Browser.TryFindElementByPartialID("CombineLogLinesFrms_FrontEndCBList").EnhanceAs<HtmlTable>();
+                HtmlTable table = Page.Browser.TryFindElementByPartialID("CombineLogLinesFrms_FrontEndCBList").EnhanceAs<HtmlTable>();
                 return table.FindMatchRows(dt).FirstOrDefault();
             }, out foundOnPage);
 
@@ -98,7 +98,7 @@ namespace Medidata.RBT.PageObjects.Rave
 		public int CurrentPageNumber { get; private set; }
         public bool GoNextPage(string areaIdentifer)
         {
-            var elem = TestContext.Browser.TryFindElementById("CombineLogLinesFrms_Links");
+            var elem = Page.Browser.TryFindElementById("CombineLogLinesFrms_Links");
             ReadOnlyCollection<EnhancedElement> pageLinks = elem.FindElementsByPartialId("CombineLogLinesFrms_PageLink");
 
             count = pageLinks.Count;

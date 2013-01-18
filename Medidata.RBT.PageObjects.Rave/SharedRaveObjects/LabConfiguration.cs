@@ -86,7 +86,7 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
                 string rangeTypeString = rangeTypesTable[row, "Name"] as string;
                 if (!string.IsNullOrEmpty(rangeTypeString))
                 {
-                    RangeType rangeType = TestContext.GetExistingFeatureObjectOrMakeNew<RangeType>(rangeTypeString.Trim(),
+                    RangeType rangeType = SeedingContext.GetExistingFeatureObjectOrMakeNew<RangeType>(rangeTypeString.Trim(),
                         () => new RangeType(rangeTypeString.Trim()));
                     rangeTypesTable[row, "Name"] = rangeType.UniqueName.ToString();
                 }
@@ -116,7 +116,7 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
 				string rangeTypeString = rangeTypeVariablesTable[row, "RangeType"] as string;
 				if (!string.IsNullOrEmpty(rangeTypeString))
 				{
-					RangeType rangeType = TestContext.GetExistingFeatureObjectOrMakeNew<RangeType>(rangeTypeString.Trim(),
+					RangeType rangeType = SeedingContext.GetExistingFeatureObjectOrMakeNew<RangeType>(rangeTypeString.Trim(),
 						() => new RangeType(rangeTypeString.Trim()));
 					rangeTypeVariablesTable[row, "RangeType"] = rangeType.UniqueName.ToString();
 				}
@@ -136,7 +136,7 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
                 string labUnitString = labUnitsTable[row, "Name"] as string;
                 if (!string.IsNullOrEmpty(labUnitString))
                 {
-                    LabUnit labUnit = TestContext.GetExistingFeatureObjectOrMakeNew<LabUnit>(labUnitString.Trim(),
+                    LabUnit labUnit = SeedingContext.GetExistingFeatureObjectOrMakeNew<LabUnit>(labUnitString.Trim(),
                         () => new LabUnit(labUnitString.Trim()));
                     labUnitsTable[row, "Name"] = labUnit.UniqueName.ToString();
                 }
@@ -156,7 +156,7 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
                 string labUnitDictionaryString = labUnitDictionariesTable[row, "Name"] as string;
                 if (!string.IsNullOrEmpty(labUnitDictionaryString))
                 {
-                    LabUnitDictionary labUnitDictionary = TestContext.GetExistingFeatureObjectOrMakeNew<LabUnitDictionary>(labUnitDictionaryString.Trim(),
+                    LabUnitDictionary labUnitDictionary = SeedingContext.GetExistingFeatureObjectOrMakeNew<LabUnitDictionary>(labUnitDictionaryString.Trim(),
                         () => new LabUnitDictionary(labUnitDictionaryString.Trim()));
                     labUnitDictionariesTable[row, "Name"] = labUnitDictionary.UniqueName.ToString();
                 }
@@ -177,7 +177,7 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
 
                 if (!string.IsNullOrEmpty(labUnitDictionaryString))
                 {
-                    LabUnitDictionary labUnitDictionary = TestContext.GetExistingFeatureObjectOrMakeNew<LabUnitDictionary>(labUnitDictionaryString.Trim(),
+                    LabUnitDictionary labUnitDictionary = SeedingContext.GetExistingFeatureObjectOrMakeNew<LabUnitDictionary>(labUnitDictionaryString.Trim(),
                         () => new LabUnitDictionary(labUnitDictionaryString.Trim()));
                     labUnitDictionary.UniqueName = RemoveCharactersFromStringEqualToTIDLength(labUnitDictionary);
                     labUnitDictionaryEntriesTable[row, "LabUnitDictionary"] = labUnitDictionary.UniqueName.ToString();
@@ -199,7 +199,7 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
 
                 if (!string.IsNullOrEmpty(analyteString))
                 {
-                    Analyte analyte = TestContext.GetExistingFeatureObjectOrMakeNew<Analyte>(analyteString.Trim(), 
+                    Analyte analyte = SeedingContext.GetExistingFeatureObjectOrMakeNew<Analyte>(analyteString.Trim(), 
                         () => new Analyte(analyteString.Trim()));
                     analytesTable[row, "Name"] = analyte.UniqueName.ToString();
                 }
@@ -207,7 +207,7 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
                 string labUnitDictionaryString = analytesTable[row, "LabUnitDictionary"] as string;
                 if (!string.IsNullOrEmpty(labUnitDictionaryString))
                 {
-                    LabUnitDictionary labUnitDictionary = TestContext.GetExistingFeatureObjectOrMakeNew<LabUnitDictionary>(labUnitDictionaryString.Trim(),
+                    LabUnitDictionary labUnitDictionary = SeedingContext.GetExistingFeatureObjectOrMakeNew<LabUnitDictionary>(labUnitDictionaryString.Trim(),
                         () => new LabUnitDictionary(labUnitDictionaryString.Trim()));
                     analytesTable[row, "LabUnitDictionary"] = labUnitDictionary.UniqueName.ToString();
                 }
@@ -227,7 +227,7 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
 			for (int row = 1; row <= rangeTypesTable.RowsCount; row++)
 			{
 				string rangeTypeString = rangeTypesTable[row, "Name"] as string;
-				RangeType rangeType = TestContext.GetExistingFeatureObjectOrMakeNew<RangeType>(rangeTypeString.Trim(),
+				RangeType rangeType = SeedingContext.GetExistingFeatureObjectOrMakeNew<RangeType>(rangeTypeString.Trim(),
 					() => new RangeType(rangeTypeString.Trim()));
 				mappingDictionary.Add(rangeTypeString, rangeType.UniqueName);
 			}
@@ -252,7 +252,7 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
                 string labString = analyteRangesTable[row, "Lab"] as string;
                 if (!string.IsNullOrEmpty(labString))
                 {
-                    Lab lab = TestContext.GetExistingFeatureObjectOrMakeNew<Lab>(labString.Trim(),
+                    Lab lab = SeedingContext.GetExistingFeatureObjectOrMakeNew<Lab>(labString.Trim(),
                         () => new Lab(labString.Trim()));
                     analyteRangesTable[row, "Lab"] = lab.UniqueName.ToString();
                 }
@@ -261,7 +261,7 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
                 string studyString = analyteRangesTable[row, "Study"] as string;
                 if (!string.IsNullOrEmpty(studyString))
                 {
-                    Project project = TestContext.GetExistingFeatureObjectOrMakeNew<Project>(studyString.Trim(),
+                    Project project = SeedingContext.GetExistingFeatureObjectOrMakeNew<Project>(studyString.Trim(),
                         () => new Project(studyString.Trim(), true));
                     analyteRangesTable[row, "Study"] = project.UniqueName.ToString();
                 }
@@ -269,7 +269,7 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
                 string siteString = analyteRangesTable[row, "SiteNumber"] as string;
                 if (!string.IsNullOrEmpty(siteString))
                 {
-                    Site site = TestContext.GetExistingFeatureObjectOrMakeNew<Site>(siteString.Trim(),
+                    Site site = SeedingContext.GetExistingFeatureObjectOrMakeNew<Site>(siteString.Trim(),
                         () => new Site(siteString.Trim(), ""));
                     analyteRangesTable[row, "SiteNumber"] = site.Number.ToString();
                 }
@@ -277,7 +277,7 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
                 string analyteString = analyteRangesTable[row, "Analyte"] as string;
                 if (!string.IsNullOrEmpty(analyteString))
                 {
-                    Analyte analyte = TestContext.GetExistingFeatureObjectOrMakeNew<Analyte>(analyteString.Trim(),
+                    Analyte analyte = SeedingContext.GetExistingFeatureObjectOrMakeNew<Analyte>(analyteString.Trim(),
                         () => new Analyte(analyteString.Trim()));
                     analyteRangesTable[row, "Analyte"] = analyte.UniqueName.ToString();
                 }
@@ -285,7 +285,7 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
                 string labUnitString = analyteRangesTable[row, "LabUnit"] as string;
                 if (!string.IsNullOrEmpty(labUnitString))
                 {
-                    LabUnit labUnit = TestContext.GetExistingFeatureObjectOrMakeNew<LabUnit>(labUnitString.Trim(),
+                    LabUnit labUnit = SeedingContext.GetExistingFeatureObjectOrMakeNew<LabUnit>(labUnitString.Trim(),
                         () => new LabUnit(labUnitString.Trim()));
                     analyteRangesTable[row, "LabUnit"] = labUnit.UniqueName.ToString();
                 }
@@ -309,7 +309,7 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
 
                 if (!string.IsNullOrEmpty(labString))
                 {
-                    Lab lab = TestContext.GetExistingFeatureObjectOrMakeNew<Lab>(labString.Trim(), 
+                    Lab lab = SeedingContext.GetExistingFeatureObjectOrMakeNew<Lab>(labString.Trim(), 
                         () => new Lab(labString.Trim()));
                     labsTable[row, "Name"] = lab.UniqueName.ToString();
                 }
@@ -317,7 +317,7 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
                 string studyString = labsTable[row, "Study"] as string;
                 if (!string.IsNullOrEmpty(studyString))
                 {
-                    Project project = TestContext.GetExistingFeatureObjectOrMakeNew<Project>(studyString.Trim(),
+                    Project project = SeedingContext.GetExistingFeatureObjectOrMakeNew<Project>(studyString.Trim(),
                         () => new Project(studyString.Trim(), true));
                     labsTable[row, "Study"] = project.UniqueName.ToString();
                 }
@@ -325,7 +325,7 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
                 string siteString = labsTable[row, "SiteNumber"] as string;
                 if (!string.IsNullOrEmpty(siteString))
                 {
-                    Site site = TestContext.GetExistingFeatureObjectOrMakeNew<Site>(siteString.Trim(),
+                    Site site = SeedingContext.GetExistingFeatureObjectOrMakeNew<Site>(siteString.Trim(),
                         () => new Site(siteString.Trim(), ""));
                     labsTable[row, "SiteNumber"] = site.Number.ToString();
                 }
@@ -333,7 +333,7 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
                 string rangeTypeString = labsTable[row, "RangeType"] as string;
                 if (!string.IsNullOrEmpty(rangeTypeString))
                 {
-                    RangeType rangeType = TestContext.GetExistingFeatureObjectOrMakeNew<RangeType>(rangeTypeString.Trim(),
+                    RangeType rangeType = SeedingContext.GetExistingFeatureObjectOrMakeNew<RangeType>(rangeTypeString.Trim(),
                         () => new RangeType(rangeTypeString.Trim()));
                     labsTable[row, "RangeType"] = rangeType.UniqueName.ToString();
                 }
@@ -354,7 +354,7 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
 
                 if (!string.IsNullOrEmpty(topAnalyteString))
                 {
-                    Analyte topAnalyte = TestContext.GetExistingFeatureObjectOrMakeNew<Analyte>(topAnalyteString.Trim(),
+                    Analyte topAnalyte = SeedingContext.GetExistingFeatureObjectOrMakeNew<Analyte>(topAnalyteString.Trim(),
                         () => new Analyte(topAnalyteString.Trim()));
                     unitConversionsTable[row, "TopAnalyteInFormula"] = topAnalyte.UniqueName.ToString();
                 }
@@ -362,7 +362,7 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
                 string bottomAnalyteString = unitConversionsTable[row, "BottomAnalyteInFormula"] as string;
                 if (!string.IsNullOrEmpty(bottomAnalyteString))
                 {
-                    Analyte bottomAnalyte = TestContext.GetExistingFeatureObjectOrMakeNew<Analyte>(bottomAnalyteString.Trim(),
+                    Analyte bottomAnalyte = SeedingContext.GetExistingFeatureObjectOrMakeNew<Analyte>(bottomAnalyteString.Trim(),
                         () => new Analyte(bottomAnalyteString.Trim()));
                     unitConversionsTable[row, "BottomAnalyteInFormula"] = bottomAnalyte.UniqueName.ToString();
                 }
@@ -384,7 +384,7 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
 
                 if (!string.IsNullOrEmpty(standardGroupString))
                 {
-                    StandardGroup lab = TestContext.GetExistingFeatureObjectOrMakeNew<StandardGroup>(standardGroupString.Trim(),
+                    StandardGroup lab = SeedingContext.GetExistingFeatureObjectOrMakeNew<StandardGroup>(standardGroupString.Trim(),
                         () => new StandardGroup(standardGroupString.Trim()));
                     standardGroupsTable[row, "Name"] = lab.UniqueName.ToString();
                 }
@@ -406,7 +406,7 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
 
                 if (!string.IsNullOrEmpty(standardGroupString))
                 {
-                    StandardGroup standardGroup = TestContext.GetExistingFeatureObjectOrMakeNew<StandardGroup>(standardGroupString.Trim(),
+                    StandardGroup standardGroup = SeedingContext.GetExistingFeatureObjectOrMakeNew<StandardGroup>(standardGroupString.Trim(),
                         () => new StandardGroup(standardGroupString.Trim()));
 					standardGroupEntriesTable[row, "StandardGroup"] = standardGroup.UniqueName.ToString();
                 }
@@ -415,7 +415,7 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
                 string analyteString = standardGroupEntriesTable[row, "Analyte"] as string;
                 if (!string.IsNullOrEmpty(analyteString))
                 {
-                    Analyte analyte = TestContext.GetExistingFeatureObjectOrMakeNew<Analyte>(analyteString.Trim(),
+                    Analyte analyte = SeedingContext.GetExistingFeatureObjectOrMakeNew<Analyte>(analyteString.Trim(),
                         () => new Analyte(analyteString.Trim()));
                     standardGroupEntriesTable[row, "Analyte"] = analyte.UniqueName.ToString();
                 }
@@ -428,7 +428,7 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
         /// </summary>
 		protected override void NavigateToSeedPage()
         {
-            TestContext.CurrentPage = new LabLoaderPage().NavigateToSelf();
+            WebTestContext.CurrentPage = new LabLoaderPage().NavigateToSelf();
         }
 
         /// <summary>
@@ -436,7 +436,7 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
         /// </summary>
 		protected override void CreateObject()
         {
-            TestContext.CurrentPage.As<LabLoaderPage>().UploadFile(UniqueFileLocation);
+            WebTestContext.CurrentPage.As<LabLoaderPage>().UploadFile(UniqueFileLocation);
         }
 
         /// <summary>
