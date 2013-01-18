@@ -51,7 +51,7 @@ namespace Medidata.RBT
 
 			this.Context = context;
 			PageFactory.InitElements(Browser, this);
-			
+			this.SearchContext = Browser;
         }
 
 
@@ -69,6 +69,11 @@ namespace Medidata.RBT
 		/// See IPage interface
         /// </summary>
 		public RemoteWebDriver Browser { get { return Context.Browser; } }
+
+		/// <summary>
+		/// 
+		/// </summary>
+		public ISearchContext SearchContext { get; set; }
 
 		/// <summary>
 		/// See IPage interface
@@ -124,9 +129,9 @@ namespace Medidata.RBT
 		/// </summary>
         public virtual IPage ClickButton(string identifier)
         {
-            var element = Browser.ButtonByText(identifier, true, false);
+			var element = SearchContext.ButtonByText(identifier, true, false);
             if (element == null)
-                element = Browser.ButtonByID(identifier, true, false);
+				element = SearchContext.ButtonByID(identifier, true, false);
 			if (element == null)
 				element = TryGetElementByName(identifier, null, null);
             if (element == null)
@@ -194,7 +199,7 @@ namespace Medidata.RBT
         /// </summary>
 		public virtual IPage ClickLink(string linkText, string objectType = null, string areaIdentifier = null, bool partial = false)
         {
-			ISearchContext context = string.IsNullOrEmpty(areaIdentifier) ? Browser as ISearchContext : this.GetElementByName(areaIdentifier, null);
+			ISearchContext context = string.IsNullOrEmpty(areaIdentifier) ? SearchContext : this.GetElementByName(areaIdentifier, null);
 
 			IWebElement link = partial ? context.TryFindElementBy(By.PartialLinkText(linkText)) : context.TryFindElementBy(By.LinkText(linkText));
 			link.Click();
@@ -208,7 +213,7 @@ namespace Medidata.RBT
         /// </summary>
         public virtual IPage NavigateTo(string identifier)
         {
-			var link = Browser.Link(identifier);
+			var link = SearchContext.Link(identifier);
 			if (link != null)
 			{
 				link.Click();
@@ -367,7 +372,6 @@ namespace Medidata.RBT
 		public virtual IWebElement GetElementByName(string identifier, string areaIdentifier = null, string listItemIdentifier = null)
 		{
 			throw new Exception(string.Format("This page ({0}) does not provide information about element: {1}", this.GetType().Name, identifier));
-		
 		}
 
 		//Don't make this virtual , override GetElementByName in base classes
@@ -389,7 +393,7 @@ namespace Medidata.RBT
 		//Don't make this public. This method is only a lines saver inside PageBase
 		private IWebElement FindElementDelayedWait(string identifier, string areaIdentifier)
 		{
-			ISearchContext context = string.IsNullOrEmpty(areaIdentifier) ? Browser as ISearchContext : this.GetElementByName(null, areaIdentifier, null);
+			ISearchContext context = string.IsNullOrEmpty(areaIdentifier) ? SearchContext : this.GetElementByName(null, areaIdentifier, null);
 
 			var ele = context.TryFindElementById(identifier, false);
 			if (ele == null)

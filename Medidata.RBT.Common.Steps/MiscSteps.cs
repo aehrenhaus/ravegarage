@@ -196,5 +196,31 @@ namespace Medidata.RBT.Common.Steps
 			bool enabled = CurrentPage.As<IVerifyConstrolDisabled>().IsControlEnabled(controlName);
 			Assert.IsTrue(enabled, controlName + " is enabled!");
 		}
+
+		[StepDefinition(@"I do the following operations in ""(.*)""")]
+		public void IDoTheFollowingOperationsIn____(string area)
+		{
+			CurrentPage.SearchContext = CurrentPage.GetElementByName(area);
+		}
+
+		[StepDefinition(@"I do the following operations in table ""(.*)"", row (.+)")]
+		public void IDoTheFollowingOperationsIn____TableRowColumn(string tableIdentifier, int row)
+		{
+			CurrentPage.SearchContext = CurrentPage.GetElementByName(tableIdentifier).EnhanceAs<HtmlTable>().Rows()[row] ;
+		}
+
+		[StepDefinition(@"I do the following operations in table ""(.*)"", row (.+), ""(.*)"" column")]
+		public void IDoTheFollowingOperationsIn____TableRowColumn(string tableIdentifier, int row, string columnName)
+		{
+			CurrentPage.SearchContext = CurrentPage.GetElementByName(tableIdentifier).EnhanceAs<HtmlTable>().Cell(row,columnName);
+		}
+
+		[StepDefinition(@"I do the following operations in whole browser")]
+		public void IDoTheFollowingOperationsInWholeBrowser()
+		{
+			CurrentPage.SearchContext = Browser;
+		}
+
+
 	}
 }

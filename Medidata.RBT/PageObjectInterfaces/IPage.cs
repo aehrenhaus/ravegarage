@@ -23,6 +23,14 @@ namespace Medidata.RBT
 		RemoteWebDriver Browser { get; }
 
 		/// <summary>
+		/// SearchContext, 
+		/// operations on the page should be restricted in SearchContext , not Browser,
+		/// although it's more likely in most cases SearchContext is the Browser.
+		/// 
+		/// </summary>
+		ISearchContext SearchContext { get; set; }
+
+		/// <summary>
 		/// Cast current object to a child type, just to support stream lined code style
 		/// Example:
 		/// CurrentPage is a IPage

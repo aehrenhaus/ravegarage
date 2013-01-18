@@ -54,7 +54,7 @@ namespace Medidata.RBT.PageObjects.Rave
 		public override IWebElement GetElementByName(string identifier, string areaIdentifier = null, string listItem = null)
 		{
 			if (identifier == "Header")
-				return Browser.Table("_ctl0_PgHeader_TabTable");
+				return SearchContext.Table("_ctl0_PgHeader_TabTable");
 			return base.GetElementByName(identifier,areaIdentifier,listItem);
 		}
 
@@ -72,11 +72,11 @@ namespace Medidata.RBT.PageObjects.Rave
         {
             if (controlType == ControlType.Button)
             {
-                return Context.Browser.TryFindElementBy(By.XPath("//input[contains(@value, '" + value + "')]"));
+				return SearchContext.TryFindElementBy(By.XPath("//input[contains(@value, '" + value + "')]"));
             }
             else if (controlType == ControlType.Link)
             {
-                return Context.Browser.TryFindElementBy(By.XPath("//a[text() = '" + value + "']"));
+				return SearchContext.TryFindElementBy(By.XPath("//a[text() = '" + value + "']"));
             }
             else
                 return null;
@@ -169,7 +169,7 @@ namespace Medidata.RBT.PageObjects.Rave
 
 
 			linkText = ReplaceSeedableObjectName(objectType, linkText);
-			ISearchContext  context = string.IsNullOrEmpty(areaIdentifier) ? Browser as ISearchContext : this.GetElementByName(areaIdentifier, null);
+			ISearchContext context = string.IsNullOrEmpty(areaIdentifier) ? SearchContext : this.GetElementByName(areaIdentifier, null);
 			IWebElement link = null;
 			if(linkText.Contains("•"))
                 link = ISearchContextExtend.FindLinkWithBulletPoint(context, linkText);
