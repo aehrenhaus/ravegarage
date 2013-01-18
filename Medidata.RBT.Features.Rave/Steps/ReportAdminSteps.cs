@@ -34,14 +34,14 @@ namespace Medidata.RBT.Features.Rave
 
 			Browser.ButtonByText("Download Package");
 
-			WebTestContext.WatchForDownload();
-			CurrentPage.ClickButton("Download Package");
-			FileInfo lastFile =  WebTestContext.WaitForDownloadFinish();
+			using (var fileWatcher = WebTestContext.WatchForDownload())
+			{
+				CurrentPage.ClickButton("Download Package");
+			}
 
-		
 			string tempFolderSharedByOtherScenarios = "c:\\";
-			WebTestContext.Storage["tempFile"] = lastFile.Name;
-			lastFile.MoveTo(Path.Combine(tempFolderSharedByOtherScenarios,lastFile.Name));
+			WebTestContext.Storage["tempFile"] = WebTestContext.LastDownloadedFile.Name;
+			WebTestContext.LastDownloadedFile.MoveTo(Path.Combine(tempFolderSharedByOtherScenarios, WebTestContext.LastDownloadedFile.Name));
 		}
 
         /// <summary>

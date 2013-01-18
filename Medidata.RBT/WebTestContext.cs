@@ -88,69 +88,104 @@ namespace Medidata.RBT
 
 		#region watching file download
 
-		//the system can only watch for 1 download for a time, this flag indicates whether a download is being watched.
-		private bool _watchingForDownload;
-
+		public DownloadFileWatcher WatchForDownload()
+		{
+			return new DownloadFileWatcher(this);
+		}
 
 		/// <summary>
-		/// returns the last download file's full name
+		/// Start to watch over the target folder, till some file created in the folder.
 		/// </summary>
-		/// <returns></returns>
-		public void WatchForDownload()
+		public class DownloadFileWatcher :IDisposable
 		{
-			if (_watchingForDownload)
+			private WebTestContext context;
+			internal  DownloadFileWatcher(WebTestContext context, string path = null)
 			{
-				throw new Exception("Only 1 download task can be watched at a time.");
-			}
-			_watchingForDownload = true;
-			LastDownloadedFile = null;
-
-			// Create a new FileSystemWatcher and set its properties.
-			FileSystemWatcher watcher = new FileSystemWatcher();
-			watcher.Path = RBTConfiguration.Default.DownloadPath;
-
-			/* Watch for changes in LastAccess and LastWrite times, and 
-			   the renaming of files or directories. */
-			watcher.NotifyFilter = NotifyFilters.LastAccess | NotifyFilters.LastWrite
-			   | NotifyFilters.FileName | NotifyFilters.DirectoryName;
-
-			watcher.IncludeSubdirectories = false;
-
-			// Only watch text files.
-			watcher.Filter = "*.*";
-
-			// Add event handlers.
-
-			watcher.Created += new FileSystemEventHandler(watcher_Created);
-
-
-			// Begin watching.
-			watcher.EnableRaisingEvents = true;
-		}
-
-		void watcher_Created(object sender, FileSystemEventArgs e)
-		{
-			//ignore this temp file created by firefox
-			if (Path.GetExtension(e.FullPath) == ".part")
-			{
-				return;
-			}
-			LastDownloadedFile = new FileInfo(e.FullPath);
-			(sender as FileSystemWatcher).Dispose();
-		}
-
-		public FileInfo WaitForDownloadFinish()
-		{
-			while (LastDownloadedFile == null)
-			{
-				Thread.Sleep(500);
+				if (path == null)
+					path = RBTConfiguration.Default.DownloadPath;
+				this.context = context;
+				WatchForDownload(path);
 			}
 
-			_watchingForDownload = false;
+			public FileInfo WaitForFile()
+			{
+				return WaitForDownloadFinish();
+			}
 
-			return LastDownloadedFile;
-		}
+			/// <summary>
+			/// If user does not call WaitForFile or Dispose, GC will call it to make sure file watcher is disposed.
+			/// </summary>
+			public void Dispose()
+			{
+				WaitForDownloadFinish();
+			}
+
+			//the system can only watch for 1 download for a time, this flag indicates whether a download is being watched.
+			private bool _watchingForDownload;
+			private FileInfo _lastDownloadedFile;
+
+
+			private void WatchForDownload(string path)
+			{
+				if (_watchingForDownload)
+				{
+					throw new Exception("Only 1 download task can be watched at a time.");
+				}
+				_watchingForDownload = true;
+				_lastDownloadedFile = null;
+
+				// Create a new FileSystemWatcher and set its properties.
+				FileSystemWatcher watcher = new FileSystemWatcher();
+				watcher.Path = path;
+
+				/* Watch for changes in LastAccess and LastWrite times, and 
+				   the renaming of files or directories. */
+				watcher.NotifyFilter = NotifyFilters.LastAccess | NotifyFilters.LastWrite
+				   | NotifyFilters.FileName | NotifyFilters.DirectoryName;
+
+				watcher.IncludeSubdirectories = false;
+
+				// Only watch text files.
+				watcher.Filter = "*.*";
+
+				// Add event handlers.
+
+				watcher.Created += new FileSystemEventHandler(watcher_Created);
+
+
+				// Begin watching.
+				watcher.EnableRaisingEvents = true;
+			}
+
+			private void watcher_Created(object sender, FileSystemEventArgs e)
+			{
+				//ignore this temp file created by firefox
+				if (Path.GetExtension(e.FullPath) == ".part")
+				{
+					return;
+				}
+				_lastDownloadedFile = new FileInfo(e.FullPath);
+				(sender as FileSystemWatcher).Dispose();
+			}
+
+			private FileInfo WaitForDownloadFinish()
+			{
+				if (_watchingForDownload == false)
+					return null;
+
+				while (_lastDownloadedFile == null)
+				{
+					Thread.Sleep(500);
+				}
+
+				_watchingForDownload = false;
+				context.LastDownloadedFile = _lastDownloadedFile;
+				return _lastDownloadedFile;
+			}
 		
+		}
+
+
 		#endregion
 
 		#region Open/close browsers / Screenshot /Report generation
