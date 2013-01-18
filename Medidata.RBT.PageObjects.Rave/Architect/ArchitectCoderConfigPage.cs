@@ -148,11 +148,12 @@ namespace Medidata.RBT.PageObjects.Rave
         /// <returns></returns>
         private IWebElement FindControlTdFromAreaIdentifier(string areaIdentifier)
         {
-            IWebElement elem = Browser.TryFindElementByXPath(string.Format(".//td/span[text()='{0}']", areaIdentifier)).Parent();
-            int controlPosition = elem.Parent().Children().IndexOf(elem);
+            IWebElement elem = Browser.TryFindElementByXPath(string.Format(".//td/span[text()='{0}']", areaIdentifier)).Parent(); //find td corresponding the coder config name
+            int controlPosition = elem.Parent().Children().IndexOf(elem) + 1; //find the position of the control td
+            int controlTrPosition = elem.Parent().Parent().Children().IndexOf(elem.Parent()) + 2; //find the position of the control tr
 
             //find the td corresponding to the same position as the configuration name but in the second tr
-            IWebElement controlTd = elem.TryFindElementByXPath(string.Format("../../tr[position()=2]/td[position()={0}]", controlPosition + 1));
+            IWebElement controlTd = elem.TryFindElementByXPath(string.Format("../../tr[position()={0}]/td[position()={1}]", controlTrPosition, controlPosition));
 
             return controlTd;
         }
