@@ -11,24 +11,11 @@ using System.Linq;
 namespace Medidata.RBT.Common.Steps
 {
     /// <summary>
-    /// Steps pertaining to downloading and verifying excel data
+    /// Steps related to excel file operations.
     /// </summary>
 	[Binding]
-	public class DownloadAndExcelSteps : BrowserStepsBase
+	public class ExcelSteps : BrowserStepsBase
 	{
-
-        /// <summary>
-        /// Click a button to download a file
-        /// </summary>
-        /// <param name="button">The value of the button to download (the text in the button)</param>
-		[StepDefinition(@"I click the ""([^""]*)"" button to download")]
-		public void IClickThe___ButtonToDownload(string button)
-		{
-			WebTestContext.WatchForDownload();
-			CurrentPage.ClickButton(button);
-			WebTestContext.WaitForDownloadFinish();
-		}
-
 		/// <summary>
 		/// 
 		/// </summary>

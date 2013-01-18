@@ -69,7 +69,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DownloadAndExcelSteps.cs" />
+    <Compile Include="DownloadSteps.cs" />
+    <Compile Include="ExcelSteps.cs" />
     <Compile Include="IActivateSteps.cs" />
     <Compile Include="IVerifyInOrderSteps.cs" />
     <Compile Include="IVerifyExistSteps.cs" />
