@@ -31,7 +31,7 @@ namespace Medidata.RBT.PageObjects.Rave
             IWebElement currentElement = Page.Browser.TryFindElementBy(b =>
                 {
 					return Page.GetFocusElement().FindElement(By.XPath(".[@id != '']"));
-                });
+                }, true, 30);
             IWebElement element = GetElementInRowByLabel(type, position);
 
             return currentElement.GetAttribute("ID") == element.GetAttribute("ID");
