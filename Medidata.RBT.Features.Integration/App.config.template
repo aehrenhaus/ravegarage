@@ -16,5 +16,8 @@
     <add key="AwsAccessKey" value="%%%AwsAccessKey%%%"/>
     <add key="AwsSecretKey" value="%%%AwsSecretKey%%%"/>
     <add key="AwsRegion" value="%%%AwsRegion%%%"/>
+    <add key="RunCleaningEngineInProcess" value="True" />
+    <add key="ServiceName" value="%%%ServiceName%%%"/>
+    <add key="AwsConfigXmlFilePath" value="%%%AwsConfgiXmlFilePath%%%"/>
   </appSettings>
 </configuration>

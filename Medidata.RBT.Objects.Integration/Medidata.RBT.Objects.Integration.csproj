@@ -50,6 +50,7 @@
     <Compile Include="Configuration\Models\StudyMessageModel.cs" />
     <Compile Include="Configuration\Templates\StudyTemplates.cs" />
     <Compile Include="Configuration\IntegrationTestContext.cs" />
+    <Compile Include="Helpers\DbHelper.cs" />
     <Compile Include="Helpers\SQSHelper.cs" />
     <Compile Include="Helpers\StudyHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -62,6 +63,10 @@
     <ProjectReference Include="..\..\Medidata.Core\Medidata.Core.Common\Medidata.Core.Common.csproj">
       <Project>{88DB8DE5-1545-46BB-A6E9-168393EE4F78}</Project>
       <Name>Medidata.Core.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Medidata.Core\Medidata.Core.Objects\Medidata.Core.Objects.csproj">
+      <Project>{D593442C-DC75-4279-B3D5-B203D292C9B4}</Project>
+      <Name>Medidata.Core.Objects</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\Medidata.Data\Medidata.Data.csproj">
       <Project>{9AF5B9A2-B80E-4D99-87F7-343C4E932539}</Project>

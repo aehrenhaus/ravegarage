@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Configuration;
+using System.IO;
+using System.Reflection;
 using System.ServiceProcess;
 using Medidata.AmazonSimpleServices;
 using Medidata.RBT.Objects.Integration.Helpers;
@@ -16,6 +18,10 @@ namespace Medidata.RBT.Features.Integration.Hooks
         [BeforeTestRun]
         public static void BeforeTestRun()
         {
+            Objects.Integration.Helpers.DbHelper.RestoreDatabase();
+
+            IntegrationTestContext.TestFailed = false;
+
             var accessKey = ConfigurationManager.AppSettings["AwsAccessKey"];
             var secretKey = ConfigurationManager.AppSettings["AwsSecretKey"];
             var region = ConfigurationManager.AppSettings["AwsRegion"];
@@ -47,6 +53,11 @@ namespace Medidata.RBT.Features.Integration.Hooks
         public static void AfterTestRun()
         {
             IntegrationTestContext.SqsWrapper.DeleteQueue(IntegrationTestContext.SqsQueueUrl);
+            
+            if(IntegrationTestContext.TestFailed)
+            {
+                
+            }
         }
 
         [BeforeScenario]
@@ -58,7 +69,10 @@ namespace Medidata.RBT.Features.Integration.Hooks
         [AfterScenario]
         public void AfterScenario()
         {
-            //TODO: implement logic that has to run after executing each scenario
+            if(ScenarioContext.Current.TestError != null)
+            {
+                IntegrationTestContext.TestFailed = true;
+            }
         }
     }
 }
