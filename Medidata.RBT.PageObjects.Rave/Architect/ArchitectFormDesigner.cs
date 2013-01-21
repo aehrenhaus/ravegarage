@@ -1,7 +1,9 @@
 ﻿using System;
+using System.Linq;
 using System.Collections.Generic;
 using Medidata.RBT.SeleniumExtension;
 using TechTalk.SpecFlow;
+using OpenQA.Selenium;
 namespace Medidata.RBT.PageObjects.Rave
 {
 	public class ArchitectFormDesignerPage : ArchitectBasePage, IActivatePage, IVerifySomethingExists
@@ -156,5 +158,96 @@ namespace Medidata.RBT.PageObjects.Rave
 		}
 
 		#endregion
-	}
+        /// <summary>
+        /// Overriding ChooseFromDropdown to find the dropdown based on field name, if drop down selected fails then fall back to base implementation
+        /// </summary>
+        /// <param name="identifier"></param>
+        /// <param name="text"></param>
+        /// <param name="objectType"></param>
+        /// <param name="areaIdentifier"></param>
+        /// <returns></returns>
+        public override IPage ChooseFromDropdown(string identifier, string text, string objectType = null, string areaIdentifier = null)
+        {
+            //try finding the tr corresponding to the identifier which is architect field variable name
+            IWebElement elem = TryFindTrByFieldSettingName(identifier);
+            //Try finding the dropdown withing the tr
+            IWebElement dropDownElem = null;
+            if (elem != null)
+            {
+                dropDownElem = elem.TryFindElementByXPath(".//select");
+            }
+
+            if (dropDownElem != null)
+            {
+                dropDownElem.EnhanceAs<Dropdown>().SelectByText(text);
+                return GetPageByCurrentUrlIfNoAlert();
+            }
+            else
+                return base.ChooseFromDropdown(identifier, text, objectType, areaIdentifier);
+        }
+
+        /// <summary>
+        /// Method to set the field text based for architect field variable
+        /// </summary>
+        /// <param name="identifier">Identifier should be the field variable name</param>
+        /// <param name="text">Text to set for the field</param>
+        public void SetFieldText(string identifier, string text)
+        {
+            //try finding the tr corresponding to the identifier which is architect field variable name
+            IWebElement elem = TryFindTrByFieldSettingName(identifier);
+
+            if (elem != null)
+            {
+                IWebElement textFieldElem = elem.TryFindElementByXPath(".//input");
+                textFieldElem.EnhanceAs<Textbox>().SetText(text);
+            }
+        }
+
+        /// <summary>
+        /// Helper method to find the tr corresponding the architect field variable based on field setting name
+        /// </summary>
+        /// <param name="settingName">Name of the architect field setting</param>
+        /// <returns></returns>
+        private IWebElement TryFindTrByFieldSettingName(string settingName)
+        {
+            IWebElement elem = Browser.TryFindElementsBy(By.XPath("//tr")).FirstOrDefault(e => e.Text.StartsWith(settingName));
+            return elem;
+        }
+
+        /// <summary>
+        /// Method to fill the Architect field setting related data points
+        /// </summary>
+        /// <param name="fieldModels"></param>
+        public void FillDataPoints(IEnumerable<FieldModel> fieldModels)
+        {
+            //This method support filling dropdowns and textbox data so far and should be extended in future if 
+            //support for other control type is needed.
+            foreach (FieldModel fm in fieldModels)
+            {
+                ControlType controlType = EnumHelper.GetEnumByDescription<ControlType>(fm.ControlType);
+
+                switch (controlType)
+                {
+                    case ControlType.Text:
+                        {
+                            SetFieldText(fm.Field, fm.Data);
+                            break;
+                        }
+                    case ControlType.DropDownList:
+                        {
+                            ChooseFromDropdown(fm.Field, fm.Data);
+                            break;
+                        }
+                    default:
+                        {
+                            throw new NotSupportedException("Not supported control type:" + controlType);
+                        }
+                }
+            }
+
+            //save the setting after filling the data points and wait for document load to finish before returning
+            this.ClickLink("Save");
+            Browser.WaitForDocumentLoad();
+        }
+    }
 }

@@ -75,6 +75,7 @@
     <Compile Include="AmendmentManager\MigrationObjectHierarchyEditPage.cs" />
     <Compile Include="AmendmentManager\MigrationObjectHierarchy.cs" />
     <Compile Include="AmendmentManager\MigrationModel.cs" />
+    <Compile Include="Architect\ArchitectCoderConfigPage.cs" />
     <Compile Include="Architect\ArchitectEnvironmentSetupPage.cs" />
     <Compile Include="Architect\ArchitectPushPage.cs" />
     <Compile Include="Architect\ArchitectFormsPage.cs" />
@@ -199,6 +200,9 @@
     <Compile Include="TableModels\AnalyteRangeModel.cs" />
     <Compile Include="TableModels\ArchitectObjectModel.cs" />
     <Compile Include="TableModels\AuditModel.cs" />
+    <Compile Include="TableModels\ArchitectCoderConfigurationModel.cs" />
+    <Compile Include="TableModels\CoderTermModel.cs" />
+    <Compile Include="TableModels\CoderWorkflowVariableModel.cs" />
     <Compile Include="TableModels\ReportMatrixAssignmentModel.cs" />
     <Compile Include="TableModels\LabUnitDictionaryModel.cs" />
     <Compile Include="TableModels\AnalyteModel.cs" />
