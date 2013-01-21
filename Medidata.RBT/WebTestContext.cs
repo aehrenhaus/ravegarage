@@ -258,6 +258,7 @@ namespace Medidata.RBT
 			if (Browser is ITakesScreenshot)
 			{
 				MemoryStream stream = new MemoryStream();
+                Browser.WaitForDocumentLoad();
 				var bytes = ((ITakesScreenshot)Browser).GetScreenshot().AsByteArray;
 				stream.Write(bytes,0,bytes.Length);
 				return Image.FromStream(stream);
