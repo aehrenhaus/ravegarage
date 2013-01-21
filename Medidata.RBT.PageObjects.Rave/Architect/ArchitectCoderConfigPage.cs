@@ -49,32 +49,13 @@ namespace Medidata.RBT.PageObjects.Rave
         public void SetCoderWorkflowVariable(CoderWorkflowVariableModel coderWorkflowVariable)
         {
             //Based on workflow variable name choose the appropriate row to be edited
-            EditWorkflowVariable(coderWorkflowVariable.Name);
+            EditCoderConfTableRow(coderWorkflowVariable.Name, GetTableIdFromTableName("Workflow Variables"));
 
             IWebElement valueElem = Browser.TryFindElementByPartialID("_ValueDDL");
             valueElem.EnhanceAs<Dropdown>().SelectByText(coderWorkflowVariable.Value);
 
             IWebElement checkButton = Browser.TryFindElementByXPath(".//img[contains(@src, 'i_ccheck.gif')]");
             checkButton.Click();
-        }
-
-        /// <summary>
-        /// Method to click edit button for coder workflow variable based on the variable name
-        /// </summary>
-        /// <param name="variableName"></param>
-        public void EditWorkflowVariable(string variableName)
-        {
-            Table dt = new Table("Name");
-            dt.AddRow(variableName);
-
-            HtmlTable table = Browser.TryFindElementById("_ctl0_Content_m_CoderFieldConfig_VariableGrid").EnhanceAs<HtmlTable>();
-            IWebElement workflowTr = table.FindMatchRows(dt).FirstOrDefault();
-
-            IWebElement editButton = workflowTr.TryFindElementByXPath(".//img[contains(@src, 'i_cedit.gif')]");
-            editButton.Click();
-
-            //wait for check image to make sure page has loaded
-            Browser.TryFindElementByXPath(".//img[contains(@src, 'i_ccheck.gif')]", true, 10);
         }
 
         /// <summary>
@@ -92,7 +73,54 @@ namespace Medidata.RBT.PageObjects.Rave
                 throw new InvalidOperationException(string.Format("No coder term named {0} exist", termName)); //If not Supplemental or Component model throw exception
         }
 
+
+        /// <summary>
+        /// Delete the Supplemental or Component term in coder configuration
+        /// </summary>
+        /// <param name="termName">Either Supplemental or Component</param>
+        /// <param name="coderTerm">Name and Component Name passed as CoderTermModel</param>
+        public void DeleteCoderTerm(string termName, CoderTermModel coderTerm)
+        {
+            Table dt = new Table("Name");
+            dt.AddRow(coderTerm.Name);
+
+            termName = termName + " Terms";
+            string tableId = GetTableIdFromTableName(termName);
+
+            EditCoderConfTableRow(coderTerm.Name, tableId);
+
+            HtmlTable table = Browser.TryFindElementById(tableId).EnhanceAs<HtmlTable>();
+            IWebElement workflowTr = table.FindMatchRows(dt).FirstOrDefault();
+            //select the delete checkbox for table row where specified coder term exist followed by
+            //clicking the update button
+            workflowTr.TryFindElementByPartialID("_DeleteDictionaryCB").EnhanceAs<Checkbox>().Check();
+            IWebElement updateButton = workflowTr.TryFindElementByXPath(".//img[contains(@src, 'i_ccheck.gif')]");
+            updateButton.Click();
+        }
+
         #region private helper methods
+
+        /// <summary>
+        /// Helper method to click edit button for coder workflow variable, supplemental term or 
+        /// component term table based on the configuratin name and table id
+        /// </summary>
+        /// <param name="confName">Name of the coder supplemental,workflow or component term to be edited</param>
+        /// <param name="tableId">id of the table where the row containing coder conf term exist</param>
+        private void EditCoderConfTableRow(string confName, string tableId)
+        {
+            Table dt = new Table("Name");
+            dt.AddRow(confName);
+
+            HtmlTable table = Browser.TryFindElementById(tableId).EnhanceAs<HtmlTable>();
+            IWebElement workflowTr = table.FindMatchRows(dt).FirstOrDefault();
+
+            IWebElement editButton = workflowTr.TryFindElementByXPath(".//img[contains(@src, 'i_cedit.gif')]");
+            editButton.Click();
+
+            //wait for check image to make sure page has loaded
+            Browser.TryFindElementByXPath(".//img[contains(@src, 'i_ccheck.gif')]", true, 10);
+        }
+
         /// <summary>
         /// Helper method to allow adding coder supplemental term
         /// </summary>
@@ -237,5 +265,6 @@ namespace Medidata.RBT.PageObjects.Rave
             return matchTrs.Count == matchTable.Rows.Count;
         }
         #endregion
+
     }
 }

@@ -216,6 +216,22 @@ namespace Medidata.RBT.Features.Rave
             CurrentPage.As<ArchitectFormDesignerPage>().FillDataPoints(table.CreateSet<FieldModel>());
         }
 
+        /// <summary>
+        /// Step to let deleted the coder configuration supplemental or component terms
+        /// </summary>
+        /// <param name="termName"></param>
+        /// <param name="table"></param>
+        [StepDefinition(@"I delete the coder ""([^""]*)"" terms")]
+        public void IDeleteTheCoderTerms(string termName, Table table)
+        {
+            IEnumerable<CoderTermModel> coderTerms = table.CreateSet<CoderTermModel>();
+
+            foreach (CoderTermModel coderTerm in coderTerms)
+            {
+                CurrentPage.As<ArchitectCoderConfigPage>().DeleteCoderTerm(termName, coderTerm);
+            }
+        }
+
 
 
 	}
