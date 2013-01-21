@@ -21,6 +21,7 @@ namespace Medidata.RBT.Objects.Integration.Helpers
              var query = string.Format("IF db_id('{0}') IS NOT NULL BEGIN SELECT 1 END ELSE BEGIN SELECT 0 END", dbName);
             
             var builder = new SqlConnectionStringBuilder(DataSettings.Settings.ConnectionSettings.ResolveDataSourceHint(Agent.DefaultHint).ConnectionString);
+            builder.InitialCatalog = "master";
             var cmd = new SqlCommand(query, new SqlConnection(builder.ToString()));
             try
             {
@@ -40,9 +41,7 @@ namespace Medidata.RBT.Objects.Integration.Helpers
 
         public static void RestoreDatabase()
         {
-            var environmentVariables = Environment.GetEnvironmentVariables();
-            var ravePath = environmentVariables["RAVE_PATH"].ToString();
-            var snapshot = Path.Combine(new[] { ravePath, "Medidata 5 RAVE Database Project", "Rave 564 Gold DB Backup", "rave564gold.bak" });
+            var snapshot = ConfigurationManager.AppSettings["RaveBackupLocation"];
 
             var builder = new SqlConnectionStringBuilder(DataSettings.Settings.ConnectionSettings.ResolveDataSourceHint(Agent.DefaultHint).ConnectionString);
             var catalog = builder.InitialCatalog;
@@ -54,8 +53,11 @@ namespace Medidata.RBT.Objects.Integration.Helpers
             }
             restoreQuery.AppendFormat(
 @"
-RESTORE DATABASE {0} FROM DISK = '{1}' WITH REPLACE
-alter database {0} set multi_user with rollback immediate",
+RESTORE DATABASE {0} FROM DISK = '{1}' 
+WITH MOVE 'rave564gold' TO 'C:\data\{0}.mdf',
+     MOVE 'rave564gold_log' TO 'C:\log\{0}_log.ldf',
+     REPLACE
+ALTER DATABASE {0} SET MULTI_USER WITH ROLLBACK IMMEDIATE",
                                                           catalog, snapshot);
 
             builder.InitialCatalog = "master";
