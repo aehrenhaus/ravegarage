@@ -29,7 +29,6 @@ namespace Medidata.RBT.Common.Steps
 			SpecflowContext.TrySaveScreenShot();
         }
 
-
 		/// <summary>
 		/// When the browser opens an other window, and next step is on that new window, you shall use this step to switch focus first.
 		/// The window name is the title.
@@ -173,29 +172,7 @@ namespace Medidata.RBT.Common.Steps
 		public void IWaitFor____Of____Minutes(int timeValue)
 		{
 			System.Threading.Thread.Sleep(timeValue * 60000);
-		}
-
-        /// <summary>
-        /// Verify that a control is enabled
-        /// </summary>
-        /// <param name="controlName">The name of the control to verify</param>
-		[StepDefinition(@"I can see ""([^""]*)"" is enalbed")]
-		public void ICanSee____IsEnabled(string controlName)
-		{
-			bool enabled = CurrentPage.As<IVerifyConstrolDisabled>().IsControlEnabled(controlName);
-			Assert.IsTrue(enabled,controlName+" is disabled!");
-		}
-
-        /// <summary>
-        /// Verify that a control is disabled
-        /// </summary>
-        /// <param name="controlName">The name of the control to verify</param>
-		[StepDefinition(@"I can see ""([^""]*)"" is disabled")]
-		public void ICanSee____IsDisabled(string controlName)
-		{
-			bool enabled = CurrentPage.As<IVerifyConstrolDisabled>().IsControlEnabled(controlName);
-			Assert.IsTrue(enabled, controlName + " is enabled!");
-		}
+		}        
 
 		[StepDefinition(@"I do the following operations in ""(.*)""")]
 		public void IDoTheFollowingOperationsIn____(string area)

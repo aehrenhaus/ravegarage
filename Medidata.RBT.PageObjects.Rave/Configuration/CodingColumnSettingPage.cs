@@ -39,7 +39,7 @@ namespace Medidata.RBT.PageObjects.Rave.Configuration
             }
         }
 
-		public bool VerifySomethingExist(string areaIdentifier, string type, string identifier, bool exactMatch = false)
+        public bool VerifySomethingExist(string areaIdentifier, string type, string identifier, bool exactMatch = false, int? amountOfTimes = null)
 		{
 			if (type == "text")
 			{

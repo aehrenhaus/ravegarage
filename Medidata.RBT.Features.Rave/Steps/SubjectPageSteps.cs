@@ -181,16 +181,5 @@ namespace Medidata.RBT.Features.Rave
                 Assert.AreEqual(model.PageCount, item.PageCount);
             }
         }
-
-        /// <summary>
-        /// Expand the task summary box
-        /// </summary>
-        [Given(@"I expand Task Summary")]
-        public void GivenIExpandTaskSummary()
-        {
-            CurrentPage.As<ITaskSummaryContainer>()
-                .GetTaskSummary()
-                .Expand();
-        }
     }
 }

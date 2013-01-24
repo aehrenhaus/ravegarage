@@ -80,7 +80,9 @@
     <Compile Include="Architect\ArchitectFormsPage.cs" />
     <Compile Include="Architect\ArchitectFormDesigner.cs" />
     <Compile Include="Architect\ArchitectRestrictionsPage.cs" />
+    <Compile Include="Architect\DefineCopySourcesPage.cs" />
     <Compile Include="Architect\EditChecksItem.cs" />
+    <Compile Include="Architect\LibraryWizardPage.cs" />
     <Compile Include="Architect\Models\ProjectCodingDictionaryModel.cs" />
     <Compile Include="Architect\PublishChecksEditChecksControl.cs" />
     <Compile Include="Architect\UploadDraftPage.cs" />
@@ -168,6 +170,9 @@
     <Compile Include="SharedRaveObjects\CodingColumn.cs" />
     <Compile Include="SharedRaveObjects\CodingDictionary.cs" />
     <Compile Include="SharedRaveObjects\CoderLocale.cs" />
+    <Compile Include="SharedRaveObjects\LocalizedDataStringManagement.cs" />
+    <Compile Include="SharedRaveObjects\Proposal.cs" />
+    <Compile Include="SharedRaveObjects\ExternalSystem.cs" />
     <Compile Include="SharedRaveObjects\MatrixAssignment.cs" />
     <Compile Include="SharedRaveObjects\ProjectCoderRegistration.cs" />
     <Compile Include="SharedRaveObjects\ProjectCoderRegistrationWorkFlow.cs" />

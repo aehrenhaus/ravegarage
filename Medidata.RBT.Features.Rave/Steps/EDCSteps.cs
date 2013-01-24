@@ -459,6 +459,12 @@ namespace Medidata.RBT.Features.Rave
         {
             if (logForm == "Monitor Visits")
                 CurrentPage = CurrentPage.As<HomePage>().SelectForm(logForm);
+            else if (logForm.Equals("Copy to Draft", StringComparison.InvariantCultureIgnoreCase))
+                CurrentPage = CurrentPage.As<ArchitectCRFDraftPage>().ClickLink("Copy to Draft");
+            else if (logForm.Equals("Propose Objects", StringComparison.InvariantCultureIgnoreCase))
+                CurrentPage = CurrentPage.As<ArchitectCRFDraftPage>().ClickLink("Propose Objects");
+            else if (logForm.Equals("Forms", StringComparison.InvariantCultureIgnoreCase))
+                CurrentPage = CurrentPage.As<ArchitectCRFDraftPage>().ClickLink("Forms");
             else
                 CurrentPage.As<SubjectPage>().SelectForm(logForm);
         }
@@ -739,16 +745,6 @@ namespace Medidata.RBT.Features.Rave
         {
             List<string> values = table.Rows.Select(x => x.Values.FirstOrDefault()).ToList();
             Assert.IsTrue(CurrentPage.As<CRFPage>().FindFieldValuesInOrder(fieldName, values));
-        }
-
-        /// <summary>
-        /// Expand a header in Task Summary area on Subject page.
-        /// </summary>
-        /// <param name="header"></param>
-        [StepDefinition(@"I expand ""([^""]*)"" in Task Summary")]
-        public void IExpand____InTaskSummary(string header)
-        {
-            CurrentPage.As<SubjectPage>().ExpandTask(header);
         }
 
         /// <summary>

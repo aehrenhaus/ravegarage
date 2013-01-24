@@ -20,5 +20,14 @@ namespace Medidata.RBT.SeleniumExtension
 			this.Clear();
 			this.SendKeys(text);
 		}
+
+        /// <summary>
+        /// Gets the text in a textbox
+        /// </summary>
+        /// <returns>Value in the textbox</returns>
+        public string GetText()
+        {
+            return this.GetAttribute("value");
+        }
 	}
 }

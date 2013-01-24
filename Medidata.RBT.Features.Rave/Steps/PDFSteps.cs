@@ -93,14 +93,5 @@ namespace Medidata.RBT.Features.Rave
             pdfName = SpecialStringHelper.Replace(pdfName);
             CurrentPage = CurrentPage.As<FileRequestPage>().EditPdf(pdfName);
         }
-
-        /// <summary>
-        /// Step definition to expand Display multiple log lines per page
-        /// </summary>
-        [StepDefinition(@"I expand Display multiple log lines per page")]
-        public void IExpandDisplayMultipleLogLinesPerPage()
-        {
-            CurrentPage.As<FileRequestPage>().ExpandDisplayMultipleLogLines();
-        }
 	}
 }

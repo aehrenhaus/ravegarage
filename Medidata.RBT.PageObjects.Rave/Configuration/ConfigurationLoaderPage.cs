@@ -72,7 +72,7 @@ namespace Medidata.RBT.PageObjects.Rave.Configuration
 			return base.GetElementByName(identifier, areaIdentifier, listItem);
 		}
 
-		public bool VerifySomethingExist(string areaIdentifier, string type, string identifier, bool exactMatch = false)
+        public bool VerifySomethingExist(string areaIdentifier, string type, string identifier, bool exactMatch = false, int? amountOfTimes = null)
 		{
 			areaIdentifier = areaIdentifier ?? string.Empty;
 

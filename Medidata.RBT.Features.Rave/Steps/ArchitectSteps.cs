@@ -4,6 +4,7 @@ using TechTalk.SpecFlow.Assist;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Medidata.RBT.PageObjects.Rave.AmendmentManager;
 using System.Collections.Generic;
+using Medidata.RBT.PageObjects.Rave.SharedRaveObjects;
 
 namespace Medidata.RBT.Features.Rave
 {
@@ -27,6 +28,19 @@ namespace Medidata.RBT.Features.Rave
 			version = SpecialStringHelper.Replace(version);
 			CurrentPage = CurrentPage.As<ArchitectLibraryPage>().CreateDraftFromProject(draftName,project,version);
 		}
+
+
+        /// <summary>
+        /// Verify that a field has a specific coding dictionary
+        /// </summary>
+        /// <param name="identifier">The identifier for the field</param>
+        /// <param name="codingDictionary">The coding dictionary to verify the field has</param>
+        [StepDefinition(@"I verify field ""([^""]*)"" has coding dictionary ""([^""]*)""")]
+        public void IVerifyField____DoesNotExist(string identifier, string codingDictionary)
+        {
+            Assert.IsTrue(CurrentPage.As<ArchitectFormDesignerPage>().VerifyCodingDictionaryForField(identifier,
+                SeedingContext.GetExistingFeatureObjectOrMakeNew<CodingDictionary>(codingDictionary, null).UniqueName));
+        }
 
         /// <summary>
         /// Select a draft 
@@ -110,15 +124,6 @@ namespace Medidata.RBT.Features.Rave
         public void IEditField____(string field)
         {
             CurrentPage = CurrentPage.As<ArchitectFormDesignerPage>().EditField(field);
-        }
-        
-        /// <summary>
-        /// Expand field checks
-        /// </summary>
-        [StepDefinition(@"I expand ""Field Edit Checks""")]
-        public void IExpandFieldEditChecks()
-        {
-            CurrentPage = CurrentPage.As<ArchitectFormDesignerPage>().ExpandEditChecks();
         }
 
         /// <summary>

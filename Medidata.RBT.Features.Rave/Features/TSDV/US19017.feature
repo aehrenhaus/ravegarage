@@ -141,7 +141,7 @@ Scenario: PB_US19017_01 When I enroll 20 subjects in a Production environment, a
 	And I switch to "Targeted SDV Study Plan" window
 	And I verify text "Dynamic Allocation" exists
 	And I click button "edit block plan"
-	Then I can see "Randomization Type" is disabled
+	Then I verify "Randomization Type" is disabled
 	And I take a screenshot
 	And I switch to "Reports" window
 	And I navigate to "Home"
@@ -344,7 +344,7 @@ Scenario: PB_US19017_01 When I enroll 20 subjects in a Production environment, a
 	And I select Site link "Site 2"
 	And I click button "edit block plan"
 	And I verify text "Permuted Block" exists
-	Then I can see "Randomization Type" is disabled
+	Then I verify "Randomization Type" is disabled
 	And I take a screenshot
 	And I switch to "Reports" window
 	And I navigate to "Home"

@@ -8,6 +8,7 @@ using OpenQA.Selenium.Remote;
 using Medidata.RBT.SeleniumExtension;
 using TechTalk.SpecFlow;
 using OpenQA.Selenium.Support.UI;
+using System.Collections.ObjectModel;
 
 namespace Medidata.RBT.PageObjects.Rave
 {
@@ -232,18 +233,63 @@ namespace Medidata.RBT.PageObjects.Rave
         /// <param name="identifier"></param>
         /// <param name="exactMatch"></param>
         /// <returns></returns>
-        public bool VerifySomethingExist(string areaIdentifier, string type, string identifier, bool exactMatch = true)
+        public bool VerifySomethingExist(string areaIdentifier, string type, string identifier, bool exactMatch = true, int? amountOfTimes = null)
         {
+            if (areaIdentifier.Equals("Coding Level", StringComparison.InvariantCultureIgnoreCase))
+                return VerifyCodingLevelExists(identifier);
+            else if (areaIdentifier.Equals("Priority", StringComparison.InvariantCultureIgnoreCase))
+                return VerifyPriority(identifier);
+            else if (areaIdentifier.Equals("Component Terms", StringComparison.InvariantCultureIgnoreCase))
+                return VerifyComponentTermExists(identifier, amountOfTimes);
+            else if (areaIdentifier.Equals("Supplemental Terms", StringComparison.InvariantCultureIgnoreCase))
+                return VerifySupplementalTermExists(identifier, amountOfTimes);
+            else if (areaIdentifier.Equals("Component Terms Component Name", StringComparison.InvariantCultureIgnoreCase))
+                return VerifyComponentNameExists(identifier);
             //Support for verifying existing text, for verifying anything else the if else statement should be extended
-            if (type.Equals("text", StringComparison.InvariantCultureIgnoreCase))
-            {
+            else if (type.Equals("text", StringComparison.InvariantCultureIgnoreCase))
                 return VerifyTextExist(areaIdentifier, identifier);
-            }
             else
             {
                 //if specified type does not exist then throw not implemented exception
                 throw new NotImplementedException(string.Format("No implementation exist for type {0}", type));
             }
+        }
+
+        private bool VerifyCodingLevelExists(string codingLevel)
+        {
+            Dropdown codingLevelDropdown = Browser.TryFindElementByPartialID("LevelDDL").EnhanceAs<Dropdown>();
+            return codingLevelDropdown.VerifyByText(codingLevel);
+        }
+
+        private bool VerifyPriority(string priorityLevel)
+        {
+            Textbox priorityTextBox = Browser.TryFindElementByPartialID("PriorityTXT").EnhanceAs<Textbox>();
+            return priorityTextBox.GetText().Equals(priorityLevel, StringComparison.InvariantCultureIgnoreCase);
+        }
+
+        private bool VerifyComponentNameExists(string componentName)
+        {
+            IWebElement componentGrid = Browser.TryFindElementByPartialID("ComponentGrid");
+            IWebElement componentNameTD = componentGrid.TryFindElementBy(By.XPath("tbody/tr/td[2][contains(text(), '" + componentName + "')]"));
+            return componentNameTD != null;
+        }
+
+        private bool VerifyComponentTermExists(string name, int? amountOfTimes = null)
+        {
+            IWebElement componentGrid = Browser.TryFindElementByPartialID("ComponentGrid");
+            ReadOnlyCollection<IWebElement> nameTDs = componentGrid.TryFindElementsBy(By.XPath("tbody/tr/td[1][contains(text(), '" + name + "')]"));
+            if (amountOfTimes == null)
+                return (nameTDs != null);
+            return (nameTDs != null && nameTDs.Count.Equals(amountOfTimes));
+        }
+
+        private bool VerifySupplementalTermExists(string name, int? amountOfTimes = null)
+        {
+            IWebElement supplementalGrid = Browser.TryFindElementByPartialID("SupplementalGrid");
+            ReadOnlyCollection<IWebElement> nameTDs = supplementalGrid.TryFindElementsBy(By.XPath("tbody/tr/td[1][contains(text(), '" + name + "')]"));
+            if (amountOfTimes == null)
+                return (nameTDs != null);
+            return (nameTDs != null && nameTDs.Count.Equals(amountOfTimes));
         }
 
         #endregion
