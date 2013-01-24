@@ -164,17 +164,38 @@ namespace Medidata.RBT.SeleniumExtension
             return (ReadOnlyCollection<IWebElement>)eles;
         }
 
-		public static IWebElement TryFindElementByLinkText(this RemoteWebDriver context, string LinkText)
+		public static IWebElement TryFindElementByLinkText(this RemoteWebDriver context, string LinkText, bool? isWait = null, int? timeOutSecond = null)
 		{
 			IWebElement ele = null;
+
+			isWait = isWait ?? SeleniumConfiguration.Default.WaitByDefault;
+
 			try
 			{
-				ele = context.FindElementByLinkText(LinkText);
+				if (isWait.Value)
+					ele = waitForElement(context, drv =>
+					{
+						return context.FindElementByLinkText(LinkText);
+						
+					}, null, timeOutSecond);
+				else
+					ele = context.FindElementByLinkText(LinkText);
+
+				
 			}
 			catch
 
 			{
-                ele = context.TryFindElementBySpanLinktext(LinkText);
+				if (isWait.Value)
+					ele = waitForElement(context, drv =>
+					{
+						return context.TryFindElementBySpanLinktext(LinkText);
+
+					}, null, timeOutSecond);
+				else
+					ele = context.TryFindElementBySpanLinktext(LinkText);
+
+                
 			}
 			return ele;
 		}
