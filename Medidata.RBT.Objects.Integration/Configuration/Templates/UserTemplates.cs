@@ -31,7 +31,7 @@ namespace Medidata.RBT.Objects.Integration.Configuration.Templates
                                                         "\"institution\": \"{{Institution}}\"\r\n" +
                                                     "},\r\n" +
                                                     "\"timestamp\": \"{{Timestamp}}\",\r\n" +
-                                                    "\"resource\": \"com:mdsol:external_user:~~\",\r\n" +
+                                                    "\"resource\": \"com:mdsol:user:~~\",\r\n" +
                                                     "\"event\": \"PUT\",\r\n" +
                                                     "\"source_id\": \"93f46ac9-fcd4-4c45-ac9a-7f1553409c00\",\r\n" +
                                                     "\"source\": \"http://localhost:3001\",\r\n" +
