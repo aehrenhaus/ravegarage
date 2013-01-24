@@ -287,6 +287,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DT5899_DT14019.feature</DependentUpon>
     </Compile>
+    <Compile Include="Features\PDF\MCC46591.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MCC46591.feature</DependentUpon>
+    </Compile>
     <Compile Include="Features\PDF\US12175_DT8545_lessthangreaterthaninPDF.feature.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -598,6 +603,10 @@
     <None Include="Features\PDF\DT5899_DT14019.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>DT5899_DT14019.feature.cs</LastGenOutput>
+    </None>
+    <None Include="Features\PDF\MCC46591.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>MCC46591.feature.cs</LastGenOutput>
     </None>
     <None Include="Features\PDF\US12175_DT8545_lessthangreaterthaninPDF.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
