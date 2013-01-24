@@ -66,7 +66,31 @@ namespace Medidata.RBT.SeleniumExtension
 			return new ReadOnlyCollection<IWebElement>(matchTrs.ToList());
 		}
 
+		/// <summary>
+		/// for content ,contentRow starts from 1. 
+		/// contentRow is 0 for header
+		/// </summary>
+		/// <param name="contentRow"></param>
+		/// <param name="columnName"></param>
+		/// <returns></returns>
+		public IWebElement Cell(int contentRow, string columnName)
+		{
+			//TODO:here could be th instead of td 
+			var ths = this.FindElements(By.XPath("./tbody/tr[position()=1]/td"));
 
+			//data rows
+			var tr = this.FindElements(By.XPath("./tbody/tr[position()="+(contentRow+1)+"]"));
+
+			//key=column name of htmlTable, value = index of htmlTable
+			var indexMapping = new Dictionary<string, int>();
+			for (int i = 0; i < ths.Count; i++)
+			{
+				indexMapping[ths[i].Text] = i;
+			}
+
+			var cell = tr[0].FindElements(By.TagName("td"))[indexMapping[columnName]];
+			return cell;
+		}
 
 		public ReadOnlyCollection<IWebElement> Rows()
 		{
