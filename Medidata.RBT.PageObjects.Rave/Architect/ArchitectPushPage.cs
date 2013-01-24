@@ -29,7 +29,7 @@ namespace Medidata.RBT.PageObjects.Rave
 		{
 			Browser.DropdownById("StudyDDL").SelectByText(env);
 			Thread.Sleep(1000);
-			this.ClickButton("Push");
+			this.ClickButton("PushBTN");
 			Browser.TryFindElementBy(b =>
 			{
 				var span = Browser.Span("SuccessMessageLBL");
@@ -46,7 +46,7 @@ namespace Medidata.RBT.PageObjects.Rave
             ChooseFromRadiobuttons(null, "ctl0_Content_SelectSitesRB");
             IWebElement listbox = Browser.TryFindElementById("_ctl0_Content_DestinationLB");
             listbox.FindElement(By.XPath("//option[contains(text(),'" + site + "')]")).Click();
-            this.ClickButton("Push");
+            this.ClickButton("PushBTN");
             Browser.TryFindElementBy(b =>
             {
                 var span = Browser.Span("SuccessMessageLBL");
