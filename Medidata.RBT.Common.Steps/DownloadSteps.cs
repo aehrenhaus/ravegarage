@@ -26,7 +26,13 @@ namespace Medidata.RBT.Common.Steps
 		{
 			using (var fileWatcher = WebTestContext.WatchForDownload())
 			{
-				CurrentPage.ClickButton(button);
+				var linkButton = Browser.TryFindElementByLinkText(button, false);
+				if (linkButton != null)
+				{
+					linkButton.Click();
+				}
+				else
+					CurrentPage.ClickButton(button);
 			}
 		}
 
