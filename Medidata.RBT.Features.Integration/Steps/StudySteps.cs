@@ -9,6 +9,11 @@ namespace Medidata.RBT.Features.Integration.Steps
     public class StudySteps
     {
         // For additional details on SpecFlow step definitions see http://go.specflow.org/doc-stepdef
+        [Given(@"the study with name ""(.*)"" and environment ""(.*)"" exists in the Rave database")]
+        public void GivenTheStudyWithName____AndEnvironment____ExistsInTheRaveDatabase(string name, string environment)
+        { // see implementation for Given the user with name... in UserSteps.cs
+            ScenarioContext.Current.Pending();
+        }
 
         [Then(@"I should see the study in the Rave database")]
         public void ThenIShouldSeeTheStudyInTheRaveDatabase()

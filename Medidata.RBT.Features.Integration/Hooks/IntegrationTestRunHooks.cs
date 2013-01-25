@@ -28,13 +28,21 @@ namespace Medidata.RBT.Features.Integration.Hooks
 
             IntegrationTestContext.SqsWrapper = new SimpleQueueWrapper(accessKey, secretKey, region);
 
-            var queueName = Guid.NewGuid();
-            IntegrationTestContext.SqsQueueUrl = IntegrationTestContext.SqsWrapper.CreateQueue(queueName.ToString(), 1209600);
-            Console.WriteLine("Queue URL: {0}", IntegrationTestContext.SqsQueueUrl);
+            var edcQueueName = Guid.NewGuid();
+            var modulesQueueName = Guid.NewGuid();
+            var securityQueueName = Guid.NewGuid();
 
-            SQSHelper.UpdateQueueUuid(SQSHelper.EDC_APP_NAME, queueName);
-            SQSHelper.UpdateQueueUuid(SQSHelper.MODULES_APP_NAME, Guid.NewGuid());
-            SQSHelper.UpdateQueueUuid(SQSHelper.SECURITY_APP_NAME, Guid.NewGuid());
+            IntegrationTestContext.SqsQueueUrl = IntegrationTestContext.SqsWrapper.CreateQueue(edcQueueName.ToString(), 1209600);
+            Console.WriteLine("EDC Queue URL: {0}", IntegrationTestContext.SqsQueueUrl);
+
+            Console.WriteLine("Modules Queue URL: {0}",
+                IntegrationTestContext.SqsWrapper.CreateQueue(modulesQueueName.ToString(), 1209600));
+            Console.WriteLine("Security Queue URL: {0}",
+                IntegrationTestContext.SqsWrapper.CreateQueue(securityQueueName.ToString(), 1209600));
+
+            SQSHelper.UpdateQueueUuid(SQSHelper.EDC_APP_NAME, edcQueueName);
+            SQSHelper.UpdateQueueUuid(SQSHelper.MODULES_APP_NAME, modulesQueueName);
+            SQSHelper.UpdateQueueUuid(SQSHelper.SECURITY_APP_NAME, securityQueueName);
 
             var service = new ServiceController(string.Format("Medidata Rave Integration Service - \"{0}\"", 
                 ConfigurationManager.AppSettings["ServiceName"]));
