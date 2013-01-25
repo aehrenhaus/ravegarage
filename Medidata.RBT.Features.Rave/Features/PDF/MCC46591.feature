@@ -1,4 +1,6 @@
 ﻿@MCC-46591
+@ignore
+
 Feature: MCC-46591 Log Lines in Blank/Blank Annotated PDFs are not displayed.
 
 #Note: Known DT12954 - Annotated PDFs cannot display all dictionary entries for Dictionaries with a large Number of Entries
