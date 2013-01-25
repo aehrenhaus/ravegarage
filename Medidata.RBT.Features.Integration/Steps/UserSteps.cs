@@ -37,7 +37,6 @@ namespace Medidata.RBT.Features.Integration.Steps
         public void TheUserShouldHaveEmail____(string email)
         {
             var user = ScenarioContext.Current.Get<User>("user");
-            Assert.IsNotNull(user);
             Assert.AreEqual(email, user.Email);
         }
 
@@ -45,7 +44,6 @@ namespace Medidata.RBT.Features.Integration.Steps
         public void TheUserShouldHaveLogin____(string login)
         {
             var user = ScenarioContext.Current.Get<User>("user");
-            Assert.IsNotNull(user);
             Assert.AreEqual(login, user.Login);
         }
 
@@ -53,7 +51,6 @@ namespace Medidata.RBT.Features.Integration.Steps
         public void TheUserShouldHaveFirstName____(string firstName)
         {
             var user = ScenarioContext.Current.Get<User>("user");
-            Assert.IsNotNull(user);
             Assert.AreEqual(firstName, user.FirstName);
         }
 
@@ -61,7 +58,6 @@ namespace Medidata.RBT.Features.Integration.Steps
         public void TheUserShouldHaveMiddleName____(string middleName)
         {
             var user = ScenarioContext.Current.Get<User>("user");
-            Assert.IsNotNull(user);
             Assert.AreEqual(middleName, user.MiddleName);
         }
 
@@ -69,7 +65,6 @@ namespace Medidata.RBT.Features.Integration.Steps
         public void TheUserShouldHaveLastName____(string lastName)
         {
             var user = ScenarioContext.Current.Get<User>("user");
-            Assert.IsNotNull(user);
             Assert.AreEqual(lastName, user.LastName);
         }
 
@@ -77,7 +72,6 @@ namespace Medidata.RBT.Features.Integration.Steps
         public void TheUserShouldHaveAddress1____(string address1)
         {
             var user = ScenarioContext.Current.Get<User>("user");
-            Assert.IsNotNull(user);
             Assert.AreEqual(address1, user.AddressLine1);
         }
 
@@ -85,7 +79,6 @@ namespace Medidata.RBT.Features.Integration.Steps
         public void TheUserShouldHaveCity____(string city)
         {
             var user = ScenarioContext.Current.Get<User>("user");
-            Assert.IsNotNull(user);
             Assert.AreEqual(city, user.City);
         }
 
@@ -93,7 +86,6 @@ namespace Medidata.RBT.Features.Integration.Steps
         public void TheUserShouldHaveState____(string state)
         {
             var user = ScenarioContext.Current.Get<User>("user");
-            Assert.IsNotNull(user);
             Assert.AreEqual(state, user.State);
         }
 
@@ -101,7 +93,6 @@ namespace Medidata.RBT.Features.Integration.Steps
         public void TheUserShouldHavePostalCode____(string postalCode)
         {
             var user = ScenarioContext.Current.Get<User>("user");
-            Assert.IsNotNull(user);
             Assert.AreEqual(postalCode, user.PostalCode);
         }
 
@@ -109,7 +100,6 @@ namespace Medidata.RBT.Features.Integration.Steps
         public void TheUserShouldHaveCountry____(string country)
         {
             var user = ScenarioContext.Current.Get<User>("user");
-            Assert.IsNotNull(user);
             Assert.AreEqual(country, user.Country);
         }
 
@@ -117,7 +107,6 @@ namespace Medidata.RBT.Features.Integration.Steps
         public void TheUserShouldHaveTelephone____(string telephone)
         {
             var user = ScenarioContext.Current.Get<User>("user");
-            Assert.IsNotNull(user);
             Assert.AreEqual(telephone, user.Telephone);
         }
 
@@ -125,7 +114,6 @@ namespace Medidata.RBT.Features.Integration.Steps
         public void TheUserShouldHaveLocale____(string locale)
         {
             var user = ScenarioContext.Current.Get<User>("user");
-            Assert.IsNotNull(user);
             Assert.AreEqual(locale, user.Localization);
         }
 
@@ -133,7 +121,6 @@ namespace Medidata.RBT.Features.Integration.Steps
         public void TheUserShouldHaveTimeZone____(string timeZone)
         {
             var user = ScenarioContext.Current.Get<User>("user");
-            Assert.IsNotNull(user);
             var userTimeZone = Timezone.Fetch(user.TimeZone);
             Assert.IsTrue(userTimeZone.TimezoneDisplay.Contains(timeZone));
         }
