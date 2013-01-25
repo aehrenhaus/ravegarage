@@ -1,20 +1,19 @@
 ﻿@MCC-46591
-@ignore
-
 Feature: MCC-46591 Log Lines in Blank/Blank Annotated PDFs are not displayed.
 
 #Note: Known DT12954 - Annotated PDFs cannot display all dictionary entries for Dictionaries with a large Number of Entries
+#Note: Known Issue MCC-47332 Last coded data entry is not displayed on the PDF.
 
 Background:
 
 Given I login to Rave with user "SUPER USER 1"
-Given study "PDF Font Study" is assigned to Site "SiteA"
+Given xml draft "BlankPDF Study.xml" is Uploaded
+Given study "BlankPDF Study" is assigned to Site "SiteA"
 Given following PDF Configuration Profile Settings exist
 	|Profile Name  |
 	|MCC46591PDF1  |
 	|MCC46591PDF2  |
 	|MCC46591PDF3  |
-Given xml draft "BlankPDF Study.xml" is Uploaded
 Given following Project assignments exist
 | User             | Project        | Environment | Role            | Site  | SecurityRole          |
 | SUPER USER 1     | BlankPDF Study | Live: Prod  | SUPER ROLE 1    | SiteA | Project Admin Default |
@@ -811,7 +810,6 @@ Then the text should contain "<Symbol>"
 |Atrium                 |
 |Aorta                  |
 |Mitral                 |
-|Other (please specify) |
 
 @Release_2013.1.0
 @PBMCC46591-017
@@ -871,7 +869,6 @@ Then the text should contain "<Symbol>"
 |Atrium                 |
 |Aorta                  |
 |Mitral                 |
-|Other (please specify) |
 
 @Release_2013.1.0
 @PBMCC46591-018
@@ -938,7 +935,6 @@ Then the text should contain "<Symbol>"
 |Atrium                 |
 |Aorta                  |
 |Mitral                 |
-|Other (please specify) |
 
 @Release_2013.1.0
 @PBMCC46591-019
@@ -1005,7 +1001,6 @@ Then the text should contain "<Symbol>"
 |Atrium                 |
 |Aorta                  |
 |Mitral                 |
-|Other (please specify) |
 
 @Release_2013.1.0
 @PBMCC46591-020
@@ -1072,7 +1067,6 @@ Then the text should contain "<Symbol>"
 |Atrium                 |
 |Aorta                  |
 |Mitral                 |
-|Other (please specify) |
 
 @Release_2013.1.0
 @PBMCC46591-021
@@ -1139,7 +1133,6 @@ Then the text should contain "<Symbol>"
 |Atrium                 |
 |Aorta                  |
 |Mitral                 |
-|Other (please specify) |
 
 @Release_2013.1.0
 @PBMCC46591-022
@@ -1199,7 +1192,6 @@ Then the text should contain "<Symbol>"
 |Atrium                 |
 |Aorta                  |
 |Mitral                 |
-|Other (please specify) |
 
 @Release_2013.1.0
 @PBMCC46591-023
@@ -1259,7 +1251,6 @@ Then the text should contain "<Symbol>"
 |Atrium                 |
 |Aorta                  |
 |Mitral                 |
-|Other (please specify) |
 
 @Release_2013.1.0
 @PBMCC46591-024
@@ -1326,7 +1317,6 @@ Then the text should contain "<Symbol>"
 |Atrium                 |
 |Aorta                  |
 |Mitral                 |
-|Other (please specify) |
 
 @Release_2013.1.0
 @PBMCC46591-025
@@ -1393,7 +1383,6 @@ Then the text should contain "<Symbol>"
 |Atrium                 |
 |Aorta                  |
 |Mitral                 |
-|Other (please specify) |
 
 @Release_2013.1.0
 @PBMCC46591-026
@@ -1460,7 +1449,6 @@ Then the text should contain "<Symbol>"
 |Atrium                 |
 |Aorta                  |
 |Mitral                 |
-|Other (please specify) |
 
 @Release_2013.1.0
 @PBMCC46591-027
@@ -1527,7 +1515,6 @@ Then the text should contain "<Symbol>"
 |Atrium                 |
 |Aorta                  |
 |Mitral                 |
-|Other (please specify) |
 And I log out of Rave
 
 @Release_2013.1.0
