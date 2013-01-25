@@ -19,5 +19,6 @@
     <add key="RunCleaningEngineInProcess" value="True" />
     <add key="ServiceName" value="%%%ServiceName%%%"/>
     <add key="AwsConfigXmlFilePath" value="%%%AwsConfgiXmlFilePath%%%"/>
+    <add key ="RaveBackupLocation" value="%%%RaveBackupLocation%%%"/>
   </appSettings>
 </configuration>

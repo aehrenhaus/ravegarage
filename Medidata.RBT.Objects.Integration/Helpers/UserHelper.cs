@@ -12,7 +12,7 @@ namespace Medidata.RBT.Objects.Integration.Helpers
 {
     public static class UserHelper
     {
-        public static void UserMessageHandler(Table table, SimpleQueueWrapper sqsWrapper, string url)
+        public static void MessageHandler(Table table, SimpleQueueWrapper sqsWrapper, string url)
         {
             var messageConfigs = table.CreateSet<UserMessageModel>().ToList();
             foreach (var config in messageConfigs)

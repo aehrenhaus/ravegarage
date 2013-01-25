@@ -459,7 +459,6 @@
     <None Include="App.config">
       <SubType>Designer</SubType>
     </None>
-    <None Include="App.config.template" />
     <None Include="Features\AM2\US12996_AM2_DT13997StandardField.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>US12996_AM2_DT13997StandardField.feature.cs</LastGenOutput>
