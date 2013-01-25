@@ -69,6 +69,7 @@ ALTER DATABASE {0} SET MULTI_USER WITH ROLLBACK IMMEDIATE",
             RunDbMigration();
             UpdateConfigurationTable_AwsCredentials();
             UpdateConfigurationTable_ProjectCreatorDefaultRole();
+            UpdateConfigurationTable_iMedidataBaseUrl();
         }
 
         public static void RunDbMigration()
@@ -116,6 +117,20 @@ ALTER DATABASE {0} SET MULTI_USER WITH ROLLBACK IMMEDIATE",
             @"
             exec spConfigurationUpsert '{0}', '{1}', -1, 0",
                                                          ConfigTags.ProjectCreatorDefaultRole, 2);
+
+            var cmd = new SqlCommand(updateConfigQuery, new SqlConnection(builder.ToString()));
+            cmd.Connection.Open();
+            cmd.ExecuteNonQuery();
+            cmd.Connection.Close();
+        }
+
+        public static void UpdateConfigurationTable_iMedidataBaseUrl()
+        {
+            var builder = new SqlConnectionStringBuilder(DataSettings.Settings.ConnectionSettings.ResolveDataSourceHint(Agent.DefaultHint).ConnectionString);
+            var updateConfigQuery = String.Format(
+            @"
+            exec spConfigurationUpsert '{0}', '{1}', -1, 0",
+                                                         ConfigTags.iMedidataBaseUrl, "http://localhost:3000");
 
             var cmd = new SqlCommand(updateConfigQuery, new SqlConnection(builder.ToString()));
             cmd.Connection.Open();

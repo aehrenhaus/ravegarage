@@ -17,6 +17,9 @@ namespace Medidata.RBT.Features.Integration.Steps
                 case "study":
                     StudyHelper.StudyMessageHandler(table, IntegrationTestContext.SqsWrapper, IntegrationTestContext.SqsQueueUrl);
                     break;
+                case "user":
+                    UserHelper.UserMessageHandler(table, IntegrationTestContext.SqsWrapper, IntegrationTestContext.SqsQueueUrl);
+                    break;
             }
         }
 
