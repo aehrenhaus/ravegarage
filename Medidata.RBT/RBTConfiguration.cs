@@ -172,6 +172,22 @@ namespace Medidata.RBT
 			get { return (String)this["POAssembly"]; }
 			set { this["POAssembly"] = value; }
 		}
-		
+
+
+		[ConfigurationProperty("UploadTimeout", DefaultValue = 200)]
+		public int UploadTimeout
+		{
+			get { return (int)this["UploadTimeout"]; }
+			set { this["UploadTimeout"] = value; }
+		}
+
+
+		[ConfigurationProperty("DownloadTimeout", DefaultValue = 200)]
+		public int DownloadTimeout
+		{
+			get { return (int)this["DownloadTimeout"]; }
+			set { this["DownloadTimeout"] = value; }
+		}
+
     }
 }

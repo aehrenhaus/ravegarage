@@ -14,6 +14,14 @@ namespace Medidata.RBT.SeleniumExtension
 			new SelectElement(this).SelectByText(text); 
 		}
 
+		public string SelectedText
+		{
+			get
+			{
+				return new SelectElement(this).SelectedOption.Text;
+			}
+		}
+
         public void SelectByPartialText(string text)
         {
             IWebElement optionElement = this.FindElement(By.XPath("option[contains(., '" + text + "')]"));

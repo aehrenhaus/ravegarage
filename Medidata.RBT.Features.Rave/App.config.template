@@ -35,6 +35,8 @@
 		SeedFromBackendClasses="CodingDictionary,ProjectCoderRegistration,CodingColumn,CoderDictLevelComponent,CoderLocale"
 		SuppressSeeding=""
 		POAssembly="Medidata.RBT.PageObjects.Rave.dll"
+		UploadTimeout="100"
+		DownloadTimeout="100"
 		>
 	
 	</RBTConfiguration>
@@ -45,7 +47,7 @@
 		ReportURL="http://rave564nycdev02a.mdsol.com/RaveCrystalViewer/"
 		DefaultUser="defuser"
 		DefaultUserPassword="password"
-		UploadTimeout="100"
+		
 		/>
 
 	<specFlow>
