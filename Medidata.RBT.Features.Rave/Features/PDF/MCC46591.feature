@@ -2,7 +2,7 @@
 Feature: MCC-46591 Log Lines in Blank/Blank Annotated PDFs are not displayed.
 
 #Note: Known DT12954 - Annotated PDFs cannot display all dictionary entries for Dictionaries with a large Number of Entries
-#Note: Known Issue MCC-47332 Last coded data entry is not displayed on the PDF.
+#Note: Known Issue MCC-47332 Last Coded Value Missing from PDF Output with default PDF configuration profile settings
 
 Background:
 
@@ -969,6 +969,7 @@ Then the text should contain "<Symbol>"
 |Atrium                 |
 |Aorta                  |
 |Mitral                 |
+|Other(please specify)  |
 And I log out of Rave
 
 @Release_2013.1.0
@@ -1037,6 +1038,7 @@ Then the text should contain "<Symbol>"
 |Atrium                 |
 |Aorta                  |
 |Mitral                 |
+|Other(please specify)  |
 And I log out of Rave
 
 @Release_2013.1.0
@@ -1105,6 +1107,7 @@ Then the text should contain "<Symbol>"
 |Atrium                 |
 |Aorta                  |
 |Mitral                 |
+|Other(please specify)  |
 And I log out of Rave
 
 @Release_2013.1.0
@@ -1173,6 +1176,7 @@ Then the text should contain "<Symbol>"
 |Atrium                 |
 |Aorta                  |
 |Mitral                 |
+|Other(please specify)  |
 And I log out of Rave
 
 @Release_2013.1.0
@@ -1363,6 +1367,7 @@ Then the text should contain "<Symbol>"
 |Atrium                 |
 |Aorta                  |
 |Mitral                 |
+|Other(please specify)  |
 And I log out of Rave
 
 @Release_2013.1.0
@@ -1431,6 +1436,7 @@ Then the text should contain "<Symbol>"
 |Atrium                 |
 |Aorta                  |
 |Mitral                 |
+|Other(please specify)  |
 And I log out of Rave
 
 @Release_2013.1.0
@@ -1499,6 +1505,7 @@ Then the text should contain "<Symbol>"
 |Atrium                 |
 |Aorta                  |
 |Mitral                 |
+|Other(please specify)  |
 And I log out of Rave
 
 @Release_2013.1.0
@@ -1567,6 +1574,7 @@ Then the text should contain "<Symbol>"
 |Atrium                 |
 |Aorta                  |
 |Mitral                 |
+|Other(please specify)  |
 And I log out of Rave
 
 @Release_2013.1.0
