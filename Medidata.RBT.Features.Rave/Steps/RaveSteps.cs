@@ -5,6 +5,7 @@ using TechTalk.SpecFlow;
 using Medidata.RBT.PageObjects.Rave;
 
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System.Text.RegularExpressions;
 
 namespace Medidata.RBT.Features.Rave
 {
@@ -40,8 +41,9 @@ namespace Medidata.RBT.Features.Rave
         {
 			string str = WebTestContext.Storage[RaveSteps.TripReports] as string;
 			Assert.IsFalse(String.IsNullOrEmpty(str));
+            string noWhitespacePDFtext = Regex.Replace(str, @"\s", "");
 
-			if (CreateSymbolsTable(table).Any(s => !str.Contains(s)))
+            if (CreateSymbolsTable(table).Any(s => !noWhitespacePDFtext.Contains(Regex.Replace(s, @"\s", ""))))
                 Assert.Fail();
         }
 

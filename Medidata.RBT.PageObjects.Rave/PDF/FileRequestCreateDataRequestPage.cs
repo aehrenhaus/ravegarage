@@ -28,10 +28,6 @@ namespace Medidata.RBT.PageObjects.Rave
             if (!string.IsNullOrEmpty(args.Locale) && args.Locale == "LLocalization Test")
                 isLocalizationTest = true;
 
-            SelectSiteGroup(args.SiteGroup);
-            SelectSite(args.Site);
-            SelectSubject(args.Subject);
-
             string saveLinkText = "Save";
 
             if (isLocalizationTest)
@@ -44,6 +40,17 @@ namespace Medidata.RBT.PageObjects.Rave
             this.Browser.Navigate().Refresh();
 
             return new FileRequestPage();
+        }
+
+        /// <summary>
+        /// Perform specific PDF selections that are only viable for data PDF
+        /// </summary>
+        /// <param name="args">The PDF arguments you want to select</param>
+        public override void PerformPDFSpecificSelections(PDFCreationModel args)
+        {
+            SelectSiteGroup(args.SiteGroup);
+            SelectSite(args.Site);
+            SelectSubject(args.Subject);
         }
 
         /// <summary>

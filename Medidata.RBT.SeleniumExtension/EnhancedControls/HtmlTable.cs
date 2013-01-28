@@ -56,8 +56,20 @@ namespace Medidata.RBT.SeleniumExtension
 
 				return dataTable.Rows.Any(dr =>
 				{
-					//use trim because there could be spaces 
-					return dr.All(x => x.Value.Trim() ==tdTextSelector( tds[indexMapping[x.Key]]));
+                    List<IWebElement> trsToReturn = new List<IWebElement>();
+                    foreach (KeyValuePair<string, string> x in dr)
+                    {
+                        int value = -1;
+                        indexMapping.TryGetValue(x.Key, out value);
+                        if (value > -1)
+                        {
+                            IWebElement td = tds[value];
+                            //use trim because there could be spaces 
+                            if (x.Value.Trim() == tdTextSelector(td))
+                                return true;
+                        }
+                    }
+                    return false;
 				});
 
 			});

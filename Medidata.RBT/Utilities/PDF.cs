@@ -35,6 +35,10 @@ namespace Medidata.RBT
                         string tempText = ip.ExtractText();
                         sb.AppendLine(tempText);
                     }
+
+                    foreach (PDFBookmark bookmark in pdfDoc.Bookmarks)
+                        DepthFirstGetTextInBookmarkTree(sb, bookmark);
+
                     string text = sb.ToString();
 
                     pdfDoc.Dispose();
@@ -44,6 +48,14 @@ namespace Medidata.RBT
                 else
                     return m_Text;
             }
+        }
+
+        private StringBuilder DepthFirstGetTextInBookmarkTree(StringBuilder sb, PDFBookmark bookmark)
+        {
+            sb.AppendLine(bookmark.Title); //Either this, or replace it in the FF, (e.g. Pre Filled\r\nValues
+            foreach(PDFBookmark bookmarkChild in bookmark.Bookmarks)
+                DepthFirstGetTextInBookmarkTree(sb, bookmarkChild);
+            return sb;
         }
 
         public PDF()
