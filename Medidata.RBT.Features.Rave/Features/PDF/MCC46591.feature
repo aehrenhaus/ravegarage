@@ -19,7 +19,6 @@ Given following Project assignments exist
 | SUPER USER 1     | BlankPDF Study | Live: Prod  | SUPER ROLE 1    | SiteA | Project Admin Default |
 | MCC46591_locuser | BlankPDF Study | Live: Prod  | MCC46591_Role 1 | SiteA | Project Admin Default |
 Given I publish and push eCRF "BlankPDF Study.xml" to "Version 1"
-And I navigate to "Home"
 
 #Note: 1) Adverse Events1 - log form without default values in Landscape direction 
 #Note: 2) Adverse Events2 - log form without default values in Portrait direction 
@@ -47,6 +46,7 @@ Scenario: MCC46591-001 Verify log form without default values in Landscape direc
 #When I create, generate and view a blank pdf
 #Then I should see all log lines in the form on PDF
 
+And I login to Rave with user "SUPER USER 1"
 And I navigate to "PDF Generator" module
 When I create Blank PDF
 | Name                            | Profile      | Study          | Role         | Locale  | CRFVersion |
@@ -77,6 +77,7 @@ Then the text should contain "<Symbol>"
 |Action taken (7)                   |
 |Action taken (8)                   |
 |Duration                           |
+And I log out of Rave
 
 @Release_2013.1.0
 @PBMCC46591-002
@@ -88,6 +89,7 @@ Scenario: MCC46591-002 Verify log form without default values in Portrait direct
 #When I create, generate and view a blank pdf
 #Then I should see all log lines in the form on PDF
 
+And I login to Rave with user "SUPER USER 1"
 And I navigate to "PDF Generator" module
 When I create Blank PDF
 | Name                            | Profile      | Study          | Role         | Locale  | CRFVersion |
@@ -118,6 +120,7 @@ Then the text should contain "<Symbol>"
 |Action taken (7)                   |
 |Action taken (8)                   |
 |Duration                           |
+And I log out of Rave
 
 @Release_2013.1.0
 @PBMCC46591-003
@@ -129,6 +132,7 @@ Scenario: MCC46591-003 Verify mixed form without default values in Landscape dir
 #When I create, generate and view a blank pdf
 #Then I should see all fields standard and log in the form on PDF
 
+And I login to Rave with user "SUPER USER 1"
 And I navigate to "PDF Generator" module
 When I create Blank PDF
 | Name                            | Profile      | Study          | Role         | Locale  | CRFVersion |
@@ -152,6 +156,7 @@ Then the text should contain "<Symbol>"
 |Related to study drug?             |
 |Action taken                       |
 |Duration                           |
+And I log out of Rave
 
 @Release_2013.1.0
 @PBMCC46591-004
@@ -163,6 +168,7 @@ Scenario: MCC46591-004 Verify mixed form without default values in Portrait dire
 #When I create, generate and view a blank pdf
 #Then I should see all fields standard and log in the form on PDF
 
+And I login to Rave with user "SUPER USER 1"
 And I navigate to "PDF Generator" module
 When I create Blank PDF
 | Name                            | Profile      | Study          | Role         | Locale  | CRFVersion |
@@ -186,6 +192,7 @@ Then the text should contain "<Symbol>"
 |Related to study drug?             |
 |Action taken                       |
 |Duration                           |
+And I log out of Rave
 
 @Release_2013.1.0
 @PBMCC46591-005
@@ -197,6 +204,7 @@ Scenario: MCC46591-005 Verify standard form without default values display all f
 #When I create, generate and view a blank pdf
 #Then I should see all fields on blank PDF
 
+And I login to Rave with user "SUPER USER 1"
 And I navigate to "PDF Generator" module
 When I create Blank PDF
 | Name                            | Profile      | Study          | Role         | Locale  | CRFVersion |
@@ -215,6 +223,7 @@ Then the text should contain "<Symbol>"
 |Ethnicity     |
 |Specify race  |
 |Gender        |
+And I log out of Rave
 
 @Release_2013.1.0
 @PBMCC46591-006
@@ -226,6 +235,7 @@ Scenario: MCC46591-006 Verify log form without default values in Landscape direc
 #When I create, generate and view a blank pdf
 #Then I should see all log lines in the form on PDF with selected Annotations
 
+And I login to Rave with user "SUPER USER 1"
 And I navigate to "PDF Generator" module
 When I create Blank PDF
 | Name                            | Profile      | Study          | Role         | Locale  | CRFVersion |
@@ -278,7 +288,8 @@ Then the text should contain "<Symbol>"
 | ACTIONCD6                      |
 | ACTIONCD7                      |
 | ACTIONCD8                      |
-| AE_DURATION                    |                     
+| AE_DURATION                    |
+And I log out of Rave                     
 
 @Release_2013.1.0
 @PBMCC46591-007
@@ -290,6 +301,7 @@ Scenario: MCC46591-007 Verify log form without default values in Portrait direct
 #When I create, generate and view a blank pdf
 #Then I should see all log lines in the form on PDF with selected Annotations
 
+And I login to Rave with user "SUPER USER 1"
 And I navigate to "PDF Generator" module
 When I create Blank PDF
 | Name                            | Profile      | Study          | Role         | Locale  | CRFVersion |
@@ -343,6 +355,7 @@ Then the text should contain "<Symbol>"
 |ACTIONCD7A                           |
 |ACTIONCD8A                           |
 |AE_DURATION2                         |
+And I log out of Rave
 
 @Release_2013.1.0
 @PBMCC46591-008
@@ -354,6 +367,7 @@ Scenario: MCC46591-008 Verify mixed form without default values in Landscape dir
 #When I create, generate and view a blank pdf
 #Then I should see all fields standard and log in the form on PDF with selected Annotations
 
+And I login to Rave with user "SUPER USER 1"
 And I navigate to "PDF Generator" module
 When I create Blank PDF
 | Name                            | Profile      | Study          | Role         | Locale  | CRFVersion |
@@ -393,6 +407,7 @@ Then the text should contain "<Symbol>"
 |RELATEDCD3                       |
 |ACTIONCD                         |
 |AE_DURATION3                     |
+And I log out of Rave
 
 @Release_2013.1.0
 @PBMCC46591-009
@@ -404,6 +419,7 @@ Scenario: MCC46591-009 Verify mixed form without default values in Portrait dire
 #When I create, generate and view a blank pdf
 #Then I should see all fields standard and log in the form on PDF with selected Annotations
 
+And I login to Rave with user "SUPER USER 1"
 And I navigate to "PDF Generator" module
 When I create Blank PDF
 | Name                             | Profile      | Study          | Role         | Locale  | CRFVersion |
@@ -443,6 +459,7 @@ Then the text should contain "<Symbol>"
 |RELATEDCD4                       |
 |ACTIONCDA                        |
 |AE_DURATION4                     |
+And I log out of Rave
 
 @Release_2013.1.0
 @PBMCC46591-010
@@ -454,6 +471,7 @@ Scenario: MCC46591-010 Verify standard form without default values display all f
 #When I create, generate and view a blank pdf
 #Then I should see all fields on blank PDF with selected Annotations
 
+And I login to Rave with user "SUPER USER 1"
 And I navigate to "PDF Generator" module
 When I create Blank PDF
 | Name                             | Profile      | Study          | Role         | Locale  | CRFVersion |
@@ -483,6 +501,7 @@ Then the text should contain "<Symbol>"
 |RACE1               |
 |SPECIFY             |
 |GENDER3             |
+And I log out of Rave
 
 @Release_2013.1.0
 @PBMCC46591-011
@@ -494,6 +513,7 @@ Scenario: MCC46591-011 Verify log form without default values in Landscape direc
 #When I create, generate and view a blank pdf
 #Then I should see all log lines in the form on PDF with selected Annotations
 
+And I login to Rave with user "SUPER USER 1"
 And I navigate to "PDF Generator" module
 When I create Blank PDF
 | Name                             | Profile      | Study          | Role         | Locale  | CRFVersion |
@@ -547,6 +567,7 @@ Then the text should contain "<Symbol>"
 |ACTIONCD7                           |
 |ACTIONCD8                           |
 |AE_DURATION                         |
+And I log out of Rave
 
 @Release_2013.1.0
 @PBMCC46591-012
@@ -558,6 +579,7 @@ Scenario: MCC46591-012 Verify log form without default values in Portrait direct
 #When I create, generate and view a blank pdf
 #Then I should see all log lines in the form on PDF with selected Annotations
 
+And I login to Rave with user "SUPER USER 1"
 And I navigate to "PDF Generator" module
 When I create Blank PDF
 | Name                             | Profile      | Study          | Role         | Locale  | CRFVersion |
@@ -611,6 +633,7 @@ Then the text should contain "<Symbol>"
 |ACTIONCD7A                           |
 |ACTIONCD8A                           |
 |AE_DURATION2                         |
+And I log out of Rave
 
 @Release_2013.1.0
 @PBMCC46591-013
@@ -622,6 +645,7 @@ Scenario: MCC46591-013 Verify mixed form without default values in Landscape dir
 #When I create, generate and view a blank pdf
 #Then I should see all fields standard and log in the form on PDF with selected Annotations
 
+And I login to Rave with user "SUPER USER 1"
 And I navigate to "PDF Generator" module
 When I create Blank PDF
 | Name                             | Profile      | Study          | Role         | Locale  | CRFVersion |
@@ -661,6 +685,7 @@ Then the text should contain "<Symbol>"
 |RELATEDCD3                       |
 |ACTIONCD                         |
 |AE_DURATION3                     |
+And I log out of Rave
 
 @Release_2013.1.0
 @PBMCC46591-014
@@ -672,6 +697,7 @@ Scenario: MCC46591-014 Verify mixed form without default values in Portrait dire
 #When I create, generate and view a blank pdf
 #Then I should see all fields standard and log in the form on PDF with selected Annotations
 
+And I login to Rave with user "SUPER USER 1"
 And I navigate to "PDF Generator" module
 When I create Blank PDF
 | Name                             | Profile      | Study          | Role         | Locale  | CRFVersion |
@@ -711,6 +737,7 @@ Then the text should contain "<Symbol>"
 |RELATEDCD4                       |
 |ACTIONCDA                        |
 |AE_DURATION4                     |
+And I log out of Rave
 
 @Release_2013.1.0
 @PBMCC46591-015
@@ -722,6 +749,7 @@ Scenario: MCC46591-015 Verify standard form without default values display all f
 #When I create, generate and view a blank pdf
 #Then I should see all fields on blank PDF with selected Annotations
 
+And I login to Rave with user "SUPER USER 1"
 And I navigate to "PDF Generator" module
 When I create Blank PDF
 | Name                             | Profile      | Study          | Role         | Locale  | CRFVersion |
@@ -751,6 +779,7 @@ Then the text should contain "<Symbol>"
 |RACE1               |
 |SPECIFY             |
 |GENDER3             |
+And I log out of Rave
 
 @Release_2013.1.0
 @PBMCC46591-016
@@ -762,6 +791,7 @@ Scenario: MCC46591-016 Verify log form with default values in Portrait direction
 #When I create, generate and view a blank pdf
 #Then I should see all log lines with default values in the form on PDF
 
+And I login to Rave with user "SUPER USER 1"
 And I navigate to "PDF Generator" module
 When I create Blank PDF
 | Name                             | Profile      | Study          | Role         | Locale  | CRFVersion |
@@ -810,6 +840,7 @@ Then the text should contain "<Symbol>"
 |Atrium                 |
 |Aorta                  |
 |Mitral                 |
+And I log out of Rave
 
 @Release_2013.1.0
 @PBMCC46591-017
@@ -821,6 +852,7 @@ Scenario: MCC46591-017 Verify log form with default values in Landscape directio
 #When I create, generate and view a blank pdf
 #Then I should see all log lines with default values in the form on PDF
 
+And I login to Rave with user "SUPER USER 1"
 And I navigate to "PDF Generator" module
 When I create Blank PDF
 | Name                             | Profile      | Study          | Role         | Locale  | CRFVersion |
@@ -869,6 +901,7 @@ Then the text should contain "<Symbol>"
 |Atrium                 |
 |Aorta                  |
 |Mitral                 |
+And I log out of Rave
 
 @Release_2013.1.0
 @PBMCC46591-018
@@ -880,6 +913,7 @@ Scenario: MCC46591-018 Verify log form with default values in Portrait direction
 #When I create, generate and view a blank pdf
 #Then I should see all log lines with default values in the form on PDF with selected Annotations
 
+And I login to Rave with user "SUPER USER 1"
 And I navigate to "PDF Generator" module
 When I create Blank PDF
 | Name                             | Profile      | Study          | Role         | Locale  | CRFVersion |
@@ -935,6 +969,7 @@ Then the text should contain "<Symbol>"
 |Atrium                 |
 |Aorta                  |
 |Mitral                 |
+And I log out of Rave
 
 @Release_2013.1.0
 @PBMCC46591-019
@@ -946,6 +981,7 @@ Scenario: MCC46591-019 Verify log form with default values in Landscape directio
 #When I create, generate and view a blank pdf
 #Then I should see all log lines with default values in the form on PDF with selected Annotations
 
+And I login to Rave with user "SUPER USER 1"
 And I navigate to "PDF Generator" module
 When I create Blank PDF
 | Name                             | Profile      | Study          | Role         | Locale  | CRFVersion |
@@ -1001,6 +1037,7 @@ Then the text should contain "<Symbol>"
 |Atrium                 |
 |Aorta                  |
 |Mitral                 |
+And I log out of Rave
 
 @Release_2013.1.0
 @PBMCC46591-020
@@ -1012,6 +1049,7 @@ Scenario: MCC46591-020 Verify log form with default values in Portrait direction
 #When I create, generate and view a blank pdf
 #Then I should see all log lines with default values in the form on PDF with selected Annotations
 
+And I login to Rave with user "SUPER USER 1"
 And I navigate to "PDF Generator" module
 When I create Blank PDF
 | Name                             | Profile      | Study          | Role         | Locale  | CRFVersion |
@@ -1067,6 +1105,7 @@ Then the text should contain "<Symbol>"
 |Atrium                 |
 |Aorta                  |
 |Mitral                 |
+And I log out of Rave
 
 @Release_2013.1.0
 @PBMCC46591-021
@@ -1078,6 +1117,7 @@ Scenario: MCC46591-021 Verify log form with default values in Landscape directio
 #When I create, generate and view a blank pdf
 #Then I should see all log lines with default values in the form on PDF with selected Annotations
 
+And I login to Rave with user "SUPER USER 1"
 And I navigate to "PDF Generator" module
 When I create Blank PDF
 | Name                             | Profile      | Study          | Role         | Locale  | CRFVersion |
@@ -1133,6 +1173,7 @@ Then the text should contain "<Symbol>"
 |Atrium                 |
 |Aorta                  |
 |Mitral                 |
+And I log out of Rave
 
 @Release_2013.1.0
 @PBMCC46591-022
@@ -1144,6 +1185,7 @@ Scenario: MCC46591-022 Verify mixed form with default values in Portrait directi
 #When I create, generate and view a blank pdf
 #Then I should see all fields standard and log with default values in the form on PDF
 
+And I login to Rave with user "SUPER USER 1"
 And I navigate to "PDF Generator" module
 When I create Blank PDF
 | Name                             | Profile      | Study          | Role         | Locale  | CRFVersion |
@@ -1192,6 +1234,7 @@ Then the text should contain "<Symbol>"
 |Atrium                 |
 |Aorta                  |
 |Mitral                 |
+And I log out of Rave
 
 @Release_2013.1.0
 @PBMCC46591-023
@@ -1203,6 +1246,7 @@ Scenario: MCC46591-023 Verify mixed form with default values in Landscape direct
 #When I create, generate and view a blank pdf
 #Then I should see all fields standard and log with default values in the form on PDF
 
+And I login to Rave with user "SUPER USER 1"
 And I navigate to "PDF Generator" module
 When I create Blank PDF
 | Name                             | Profile      | Study          | Role         | Locale  | CRFVersion |
@@ -1251,6 +1295,7 @@ Then the text should contain "<Symbol>"
 |Atrium                 |
 |Aorta                  |
 |Mitral                 |
+And I log out of Rave
 
 @Release_2013.1.0
 @PBMCC46591-024
@@ -1262,6 +1307,7 @@ Scenario: MCC46591-024 Verify mixed form with default values in Portrait directi
 #When I create, generate and view a blank pdf
 #Then I should see all fields standard and log with default values in the form on PDF with selected Annotations
 
+And I login to Rave with user "SUPER USER 1"
 And I navigate to "PDF Generator" module
 When I create Blank PDF
 | Name                             | Profile      | Study          | Role         | Locale  | CRFVersion |
@@ -1317,6 +1363,7 @@ Then the text should contain "<Symbol>"
 |Atrium                 |
 |Aorta                  |
 |Mitral                 |
+And I log out of Rave
 
 @Release_2013.1.0
 @PBMCC46591-025
@@ -1328,6 +1375,7 @@ Scenario: MCC46591-025 Verify mixed form with default values in Landscape direct
 #When I create, generate and view a blank pdf
 #Then I should see all fields standard and log with default values in the form on PDF with selected Annotations
 
+And I login to Rave with user "SUPER USER 1"
 And I navigate to "PDF Generator" module
 When I create Blank PDF
 | Name                             | Profile      | Study          | Role         | Locale  | CRFVersion |
@@ -1383,6 +1431,7 @@ Then the text should contain "<Symbol>"
 |Atrium                 |
 |Aorta                  |
 |Mitral                 |
+And I log out of Rave
 
 @Release_2013.1.0
 @PBMCC46591-026
@@ -1394,6 +1443,7 @@ Scenario: MCC46591-026 Verify mixed form with default values in Portrait directi
 #When I create, generate and view a blank pdf
 #Then I should see all fields standard and log with default values in the form on PDF with selected Annotations
 
+And I login to Rave with user "SUPER USER 1"
 And I navigate to "PDF Generator" module
 When I create Blank PDF
 | Name                             | Profile      | Study          | Role         | Locale  | CRFVersion |
@@ -1449,6 +1499,7 @@ Then the text should contain "<Symbol>"
 |Atrium                 |
 |Aorta                  |
 |Mitral                 |
+And I log out of Rave
 
 @Release_2013.1.0
 @PBMCC46591-027
@@ -1460,6 +1511,7 @@ Scenario: MCC46591-027 Verify mixed form with default values in Landscape direct
 #When I create, generate and view a blank pdf
 #Then I should see all fields standard and log with default values in the form on PDF with selected Annotations
 
+And I login to Rave with user "SUPER USER 1"
 And I navigate to "PDF Generator" module
 When I create Blank PDF
 | Name                              | Profile      | Study          | Role         | Locale  | CRFVersion |
@@ -1527,12 +1579,12 @@ Scenario: MCC46591-028 Verify log form without default values display all log li
 #When I create, generate and view a blank pdf
 #Then as a localization user I should see all log lines in the form on PDF
 
-And I log in to Rave with user "MCC46591_locuser"
+And I login to Rave with user "MCC46591_locuser
 And I navigate to "LPDF Generator" module
 When I create Blank PDF
-| LName                             | LProfile      | LStudy          | LRole            | LLocale            | LCRFVersion |
-| MCC46591BlankZb{RndNum<num28>(3)} | LMCC46591PDF1 | LBlankPDF Study | LMCC46591_Role 1 | LLocalization Test | LVersion 1  |
-#LForm Exclusions                                                                                                                                                 | 
+| Name                              | Profile      | Study          | Role            | Locale             | CRFVersion |
+| MCC46591BlankZb{RndNum<num28>(3)} | MCC46591PDF1 | BlankPDF Study | MCC46591_Role 1 | LLocalization Test | Version 1  |
+#Form Exclusions                                                                                                                                                  | 
 #LAdverse Events2, LAdverse Events3, LAdverse Events4, LDemographics1, LDemographics2, LMedical History1, LMedical History2, LMedical History3, LMedical History4 |
 And I take a screenshot
 And I generate Blank PDF "MCC46591BlankZb{Var(num28)}"
@@ -1558,6 +1610,7 @@ Then the text should contain "<Symbol>"
 |LAction taken (7)                   |
 |LAction taken (8)                   |
 |LDuration                           |
+And I log out of Rave
 
 
 @Release_2013.1.0
@@ -1570,11 +1623,12 @@ Scenario: MCC46591-029 Verify mixed form without default values display all fiel
 #When I create, generate and view a blank pdf
 #Then as a localization user I should see all fields standard and log in the form on PDF
 
+And I login to Rave with user "MCC46591_locuser
 And I navigate to "LPDF Generator" module
 When I create Blank PDF
-| LName                             | LProfile      | LStudy          | LRole            | LLocale            | LCRFVersion |
-| MCC46591BlankZc{RndNum<num29>(3)} | LMCC46591PDF1 | LBlankPDF Study | LMCC46591_Role 1 | LLocalization Test | LVersion 1  |
-#LForm Exclusions                                                                                                                                                 |
+| Name                              | Profile      | Study          | Role            | Locale             | CRFVersion |
+| MCC46591BlankZc{RndNum<num29>(3)} | MCC46591PDF1 | BlankPDF Study | MCC46591_Role 1 | LLocalization Test | Version 1  |
+#Form Exclusions                                                                                                                                                  |
 #LAdverse Events1, LAdverse Events2, LAdverse Events4, LDemographics1, LDemographics2, LMedical History1, LMedical History2, LMedical History3, LMedical History4 |
 And I take a screenshot
 And I generate Blank PDF "MCC46591BlankZc{Var(num29)}"
@@ -1593,6 +1647,7 @@ Then the text should contain "<Symbol>"
 |LRelated to study drug?             |
 |LAction taken                       |
 |LDuration                           |
+And I log out of Rave
 
 @Release_2013.1.0
 @PBMCC46591-030
@@ -1604,11 +1659,12 @@ Scenario: MCC46591-030 Verify standard form without default values display all f
 #When I create, generate and view a blank pdf
 #Then as a localization user I should see all fields in the form on PDF
 
+And I login to Rave with user "MCC46591_locuser
 And I navigate to "LPDF Generator" module
 When I create Blank PDF
-| LName                             | LProfile      | LStudy          | LRole            | LLocale            | LCRFVersion |
-| MCC46591BlankZd{RndNum<num30>(3)} | LMCC46591PDF1 | LBlankPDF Study | LMCC46591_Role 1 | LLocalization Test | LVersion 1  |
-#LForm Exclusions                                                                                                                                                   |
+| Name                              | Profile      | Study          | Role            | Locale             | CRFVersion |
+| MCC46591BlankZd{RndNum<num30>(3)} | MCC46591PDF1 | BlankPDF Study | MCC46591_Role 1 | LLocalization Test | Version 1  |
+#Form Exclusions                                                                                                                                                    |
 #LAdverse Events1, LAdverse Events2, LAdverse Events3, LAdverse Events4, LDemographics2, LMedical History1, LMedical History2, LMedical History3, LMedical History4 |
 And I take a screenshot
 And I generate Blank PDF "MCC46591BlankZd{Var(num30)}"
@@ -1634,7 +1690,7 @@ Scenario: MCC46591-031 Verify standard form with default values display all fiel
 #When I create, generate and view a blank pdf
 #Then I should see all fields with default values on blank PDF
 
-And I log in to Rave with user "SUPER USER 1"
+And I login to Rave with user "SUPER USER 1"
 And I navigate to "PDF Generator" module
 When I create Blank PDF
 | Name                              | Profile      | Study          | Role         | Locale  | CRFVersion |
@@ -1655,7 +1711,7 @@ Then the text should contain "<Symbol>"
 |Gender          |
 |Asian           |
 |Female          |
-
+And I log out of Rave
 
 @Release_2013.1.0
 @PBMCC46591-032
@@ -1667,6 +1723,7 @@ Scenario: MCC46591-032 Verify standard form with default values display all fiel
 #When I create, generate and view a blank pdf
 #Then I should see all fields with default values on blank PDF with selected Annotations
 
+And I login to Rave with user "SUPER USER 1"
 And I navigate to "PDF Generator" module
 When I create Blank PDF
 | Name                              | Profile      | Study          | Role         | Locale  | CRFVersion |
@@ -1694,6 +1751,7 @@ Then the text should contain "<Symbol>"
 |Include Field OID    |
 |Asian                |
 |Female               |
+And I log out of Rave
 
 @Release_2013.1.0
 @PBMCC46591-033
@@ -1705,6 +1763,7 @@ Scenario: MCC46591-033 Verify standard form with default values display all fiel
 #When I create, generate and view a blank pdf
 #Then I should see all fields with default values on blank PDF with selected Annotations
 
+And I login to Rave with user "SUPER USER 1"
 And I navigate to "PDF Generator" module
 When I create Blank PDF
 | Name                              | Profile      | Study          | Role         | Locale  | CRFVersion |
