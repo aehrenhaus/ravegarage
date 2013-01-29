@@ -1,4 +1,6 @@
 ﻿@MCC-46591
+@ignore
+
 Feature: MCC-46591 Log Lines in Blank/Blank Annotated PDFs are not displayed.
 
 #Note: Known DT12954 - Annotated PDFs cannot display all dictionary entries for Dictionaries with a large Number of Entries
@@ -46,12 +48,9 @@ Scenario: MCC46591-001 Verify log form without default values in Landscape direc
 #When I create, generate and view a blank pdf
 #Then I should see all log lines in the form on PDF
 
-And I navigate to "PDF Generator" module
 When I create Blank PDF
-| Name                            | Profile      | Study          | Role         | Locale  | CRFVersion |
-| MCC46591BlankA{RndNum<num2>(3)} | MCC46591PDF1 | BlankPDF Study | SUPER ROLE 1 | English | Version 1  |
-#Form Exclusions                                                                                                                                         | 
-#Adverse Events2, Adverse Events3, Adverse Events4, Demographics1, Demographics2, Medical History1, Medical History2, Medical History3, Medical History4 |
+| Name                            | Profile      | Study          | Role         | Locale  | CRFVersion |Form Exclusions                                                                                                                                         |
+| MCC46591BlankA{RndNum<num2>(3)} | MCC46591PDF1 | BlankPDF Study | SUPER ROLE 1 | English | Version 1  |Adverse Events2, Adverse Events3, Adverse Events4, Demographics1, Demographics2, Medical History1, Medical History2, Medical History3, Medical History4 |
 And I take a screenshot
 And I generate Blank PDF "MCC46591BlankA{Var(num2)}"
 And I wait for PDF "MCC46591BlankA{Var(num2)}" to complete
@@ -87,12 +86,9 @@ Scenario: MCC46591-002 Verify log form without default values in Portrait direct
 #When I create, generate and view a blank pdf
 #Then I should see all log lines in the form on PDF
 
-And I navigate to "PDF Generator" module
 When I create Blank PDF
-| Name                            | Profile      | Study          | Role         | Locale  | CRFVersion |
-| MCC46591BlankB{RndNum<num3>(3)} | MCC46591PDF1 | BlankPDF Study | SUPER ROLE 1 | English | Version 1  |
-#Form Exclusions                                                                                                                                         |
-#Adverse Events1, Adverse Events3, Adverse Events4, Demographics1, Demographics2, Medical History1, Medical History2, Medical History3, Medical History4 |
+| Name                            | Profile      | Study          | Role         | Locale  | CRFVersion |Form Exclusions                                                                                                                                         |
+| MCC46591BlankB{RndNum<num3>(3)} | MCC46591PDF1 | BlankPDF Study | SUPER ROLE 1 | English | Version 1  |Adverse Events1, Adverse Events3, Adverse Events4, Demographics1, Demographics2, Medical History1, Medical History2, Medical History3, Medical History4 |
 And I take a screenshot
 And I generate Blank PDF "MCC46591BlankB{Var(num3)}"
 And I wait for PDF "MCC46591BlankB{Var(num3)}" to complete
@@ -128,12 +124,9 @@ Scenario: MCC46591-003 Verify mixed form without default values in Landscape dir
 #When I create, generate and view a blank pdf
 #Then I should see all fields standard and log in the form on PDF
 
-And I navigate to "PDF Generator" module
 When I create Blank PDF
-| Name                            | Profile      | Study          | Role         | Locale  | CRFVersion |
-| MCC46591BlankC{RndNum<num4>(3)} | MCC46591PDF1 | BlankPDF Study | SUPER ROLE 1 | English | Version 1  |
-#Form Exclusions                                                                                                                                         |
-#Adverse Events1, Adverse Events2, Adverse Events4, Demographics1, Demographics2, Medical History1, Medical History2, Medical History3, Medical History4 |
+| Name                            | Profile      | Study          | Role         | Locale  | CRFVersion |Form Exclusions                                                                                                                                         |
+| MCC46591BlankC{RndNum<num4>(3)} | MCC46591PDF1 | BlankPDF Study | SUPER ROLE 1 | English | Version 1  |Adverse Events1, Adverse Events2, Adverse Events4, Demographics1, Demographics2, Medical History1, Medical History2, Medical History3, Medical History4 |
 And I take a screenshot
 And I generate Blank PDF "MCC46591BlankC{Var(num4)}"
 And I wait for PDF "MCC46591BlankC{Var(num4)}" to complete
@@ -162,12 +155,9 @@ Scenario: MCC46591-004 Verify mixed form without default values in Portrait dire
 #When I create, generate and view a blank pdf
 #Then I should see all fields standard and log in the form on PDF
 
-And I navigate to "PDF Generator" module
 When I create Blank PDF
-| Name                            | Profile      | Study          | Role         | Locale  | CRFVersion |
-| MCC46591BlankD{RndNum<num5>(3)} | MCC46591PDF1 | BlankPDF Study | SUPER ROLE 1 | English | Version 1  |
-#Form Exclusions                                                                                                                                         |
-#Adverse Events1, Adverse Events2, Adverse Events3, Demographics1, Demographics2, Medical History1, Medical History2, Medical History3, Medical History4 |
+| Name                            | Profile      | Study          | Role         | Locale  | CRFVersion |Form Exclusions                                                                                                                                         |
+| MCC46591BlankD{RndNum<num5>(3)} | MCC46591PDF1 | BlankPDF Study | SUPER ROLE 1 | English | Version 1  |Adverse Events1, Adverse Events2, Adverse Events3, Demographics1, Demographics2, Medical History1, Medical History2, Medical History3, Medical History4 |
 And I take a screenshot
 And I generate Blank PDF "MCC46591BlankD{Var(num5)}"
 And I wait for PDF "MCC46591BlankD{Var(num5)}" to complete
@@ -196,12 +186,9 @@ Scenario: MCC46591-005 Verify standard form without default values display all f
 #When I create, generate and view a blank pdf
 #Then I should see all fields on blank PDF
 
-And I navigate to "PDF Generator" module
 When I create Blank PDF
-| Name                            | Profile      | Study          | Role         | Locale  | CRFVersion |
-| MCC46591BlankE{RndNum<num6>(3)} | MCC46591PDF1 | BlankPDF Study | SUPER ROLE 1 | English | Version 1  |
-#Form Exclusions                                                                                                                                           |
-#Adverse Events1, Adverse Events2, Adverse Events3, Adverse Events4, Demographics2, Medical History1, Medical History2, Medical History3, Medical History4 |
+| Name                            | Profile      | Study          | Role         | Locale  | CRFVersion |Form Exclusions                                                                                                                                           |
+| MCC46591BlankE{RndNum<num6>(3)} | MCC46591PDF1 | BlankPDF Study | SUPER ROLE 1 | English | Version 1  |Adverse Events1, Adverse Events2, Adverse Events3, Adverse Events4, Demographics2, Medical History1, Medical History2, Medical History3, Medical History4 |
 And I take a screenshot
 And I generate Blank PDF "MCC46591BlankE{Var(num6)}"
 And I wait for PDF "MCC46591BlankE{Var(num6)}" to complete
@@ -225,12 +212,9 @@ Scenario: MCC46591-006 Verify log form without default values in Landscape direc
 #When I create, generate and view a blank pdf
 #Then I should see all log lines in the form on PDF with selected Annotations
 
-And I navigate to "PDF Generator" module
 When I create Blank PDF
-| Name                            | Profile      | Study          | Role         | Locale  | CRFVersion |
-| MCC46591BlankF{RndNum<num7>(3)} | MCC46591PDF2 | BlankPDF Study | SUPER ROLE 1 | English | Version 1  |
-#Form Exclusions                                                                                                                                         |
-#Adverse Events2, Adverse Events3, Adverse Events4, Demographics1, Demographics2, Medical History1, Medical History2, Medical History3, Medical History4 |
+| Name                            | Profile      | Study          | Role         | Locale  | CRFVersion |Form Exclusions                                                                                                                                         |
+| MCC46591BlankF{RndNum<num7>(3)} | MCC46591PDF2 | BlankPDF Study | SUPER ROLE 1 | English | Version 1  |Adverse Events2, Adverse Events3, Adverse Events4, Demographics1, Demographics2, Medical History1, Medical History2, Medical History3, Medical History4 |
 And I take a screenshot
 And I generate Blank PDF "MCC46591BlankF{Var(num7)}"
 And I wait for PDF "MCC46591BlankF{Var(num7)}" to complete
@@ -289,12 +273,9 @@ Scenario: MCC46591-007 Verify log form without default values in Portrait direct
 #When I create, generate and view a blank pdf
 #Then I should see all log lines in the form on PDF with selected Annotations
 
-And I navigate to "PDF Generator" module
 When I create Blank PDF
-| Name                            | Profile      | Study          | Role         | Locale  | CRFVersion |
-| MCC46591BlankG{RndNum<num8>(3)} | MCC46591PDF2 | BlankPDF Study | SUPER ROLE 1 | English | Version 1  |
-#Form Exclusions                                                                                                                                         |
-#Adverse Events1, Adverse Events3, Adverse Events4, Demographics1, Demographics2, Medical History1, Medical History2, Medical History3, Medical History4 |
+| Name                            | Profile      | Study          | Role         | Locale  | CRFVersion |Form Exclusions                                                                                                                                         |
+| MCC46591BlankG{RndNum<num8>(3)} | MCC46591PDF2 | BlankPDF Study | SUPER ROLE 1 | English | Version 1  |Adverse Events1, Adverse Events3, Adverse Events4, Demographics1, Demographics2, Medical History1, Medical History2, Medical History3, Medical History4 |
 And I take a screenshot
 And I generate Blank PDF "MCC46591BlankG{Var(num8)}"
 And I wait for PDF "MCC46591BlankG{Var(num8)}" to complete
@@ -353,12 +334,9 @@ Scenario: MCC46591-008 Verify mixed form without default values in Landscape dir
 #When I create, generate and view a blank pdf
 #Then I should see all fields standard and log in the form on PDF with selected Annotations
 
-And I navigate to "PDF Generator" module
 When I create Blank PDF
-| Name                            | Profile      | Study          | Role         | Locale  | CRFVersion |
-| MCC46591BlankH{RndNum<num9>(3)} | MCC46591PDF2 | BlankPDF Study | SUPER ROLE 1 | English | Version 1  |
-#Form Exclusions                                                                                                                                         |
-#Adverse Events1, Adverse Events2, Adverse Events4, Demographics1, Demographics2, Medical History1, Medical History2, Medical History3, Medical History4 |
+| Name                            | Profile      | Study          | Role         | Locale  | CRFVersion |Form Exclusions                                                                                                                                         |
+| MCC46591BlankH{RndNum<num9>(3)} | MCC46591PDF2 | BlankPDF Study | SUPER ROLE 1 | English | Version 1  |Adverse Events1, Adverse Events2, Adverse Events4, Demographics1, Demographics2, Medical History1, Medical History2, Medical History3, Medical History4 |
 And I take a screenshot
 And I generate Blank PDF "MCC46591BlankH{Var(num9)}"
 And I wait for PDF "MCC46591BlankH{Var(num9)}" to complete
@@ -403,12 +381,9 @@ Scenario: MCC46591-009 Verify mixed form without default values in Portrait dire
 #When I create, generate and view a blank pdf
 #Then I should see all fields standard and log in the form on PDF with selected Annotations
 
-And I navigate to "PDF Generator" module
 When I create Blank PDF
-| Name                             | Profile      | Study          | Role         | Locale  | CRFVersion |
-| MCC46591BlankI{RndNum<num10>(3)} | MCC46591PDF2 | BlankPDF Study | SUPER ROLE 1 | English | Version 1  |
-#Form Exclusions                                                                                                                                         |
-#Adverse Events1, Adverse Events2, Adverse Events3, Demographics1, Demographics2, Medical History1, Medical History2, Medical History3, Medical History4 |
+| Name                             | Profile      | Study          | Role         | Locale  | CRFVersion |Form Exclusions                                                                                                                                         |
+| MCC46591BlankI{RndNum<num10>(3)} | MCC46591PDF2 | BlankPDF Study | SUPER ROLE 1 | English | Version 1  |Adverse Events1, Adverse Events2, Adverse Events3, Demographics1, Demographics2, Medical History1, Medical History2, Medical History3, Medical History4 |
 And I take a screenshot
 And I generate Blank PDF "MCC46591BlankI{Var(num10)}"
 And I wait for PDF "MCC46591BlankI{Var(num10)}" to complete
@@ -453,12 +428,9 @@ Scenario: MCC46591-010 Verify standard form without default values display all f
 #When I create, generate and view a blank pdf
 #Then I should see all fields on blank PDF with selected Annotations
 
-And I navigate to "PDF Generator" module
 When I create Blank PDF
-| Name                             | Profile      | Study          | Role         | Locale  | CRFVersion |
-| MCC46591BlankJ{RndNum<num11>(3)} | MCC46591PDF2 | BlankPDF Study | SUPER ROLE 1 | English | Version 1  |
-#Form Exclusions                                                                                                                                           |
-#Adverse Events1, Adverse Events2, Adverse Events3, Adverse Events4, Demographics2, Medical History1, Medical History2, Medical History3, Medical History4 |
+| Name                             | Profile      | Study          | Role         | Locale  | CRFVersion |Form Exclusions                                                                                                                                           |
+| MCC46591BlankJ{RndNum<num11>(3)} | MCC46591PDF2 | BlankPDF Study | SUPER ROLE 1 | English | Version 1  |Adverse Events1, Adverse Events2, Adverse Events3, Adverse Events4, Demographics2, Medical History1, Medical History2, Medical History3, Medical History4 |
 And I take a screenshot
 And I generate Blank PDF "MCC46591BlankJ{Var(num11)}"
 And I wait for PDF "MCC46591BlankJ{Var(num11)}" to complete
@@ -493,12 +465,9 @@ Scenario: MCC46591-011 Verify log form without default values in Landscape direc
 #When I create, generate and view a blank pdf
 #Then I should see all log lines in the form on PDF with selected Annotations
 
-And I navigate to "PDF Generator" module
 When I create Blank PDF
-| Name                             | Profile      | Study          | Role         | Locale  | CRFVersion |
-| MCC46591BlankK{RndNum<num12>(3)} | MCC46591PDF3 | BlankPDF Study | SUPER ROLE 1 | English | Version 1  |
-#Form Exclusions                                                                                                                                         |
-#Adverse Events2, Adverse Events3, Adverse Events4, Demographics1, Demographics2, Medical History1, Medical History2, Medical History3, Medical History4 |
+| Name                             | Profile      | Study          | Role         | Locale  | CRFVersion |Form Exclusions                                                                                                                                         |
+| MCC46591BlankK{RndNum<num12>(3)} | MCC46591PDF3 | BlankPDF Study | SUPER ROLE 1 | English | Version 1  |Adverse Events2, Adverse Events3, Adverse Events4, Demographics1, Demographics2, Medical History1, Medical History2, Medical History3, Medical History4 |
 And I take a screenshot
 And I generate Blank PDF "MCC46591BlankK{Var(num12)}"
 And I wait for PDF "MCC46591BlankK{Var(num12)}" to complete
@@ -557,12 +526,9 @@ Scenario: MCC46591-012 Verify log form without default values in Portrait direct
 #When I create, generate and view a blank pdf
 #Then I should see all log lines in the form on PDF with selected Annotations
 
-And I navigate to "PDF Generator" module
 When I create Blank PDF
-| Name                             | Profile      | Study          | Role         | Locale  | CRFVersion |
-| MCC46591BlankL{RndNum<num13>(3)} | MCC46591PDF3 | BlankPDF Study | SUPER ROLE 1 | English | Version 1  |
-#Form Exclusions                                                                                                                                         |
-#Adverse Events1, Adverse Events3, Adverse Events4, Demographics1, Demographics2, Medical History1, Medical History2, Medical History3, Medical History4 |
+| Name                             | Profile      | Study          | Role         | Locale  | CRFVersion |Form Exclusions                                                                                                                                         |
+| MCC46591BlankL{RndNum<num13>(3)} | MCC46591PDF3 | BlankPDF Study | SUPER ROLE 1 | English | Version 1  |Adverse Events1, Adverse Events3, Adverse Events4, Demographics1, Demographics2, Medical History1, Medical History2, Medical History3, Medical History4 |
 And I take a screenshot
 And I generate Blank PDF "MCC46591BlankL{Var(num13)}"
 And I wait for PDF "MCC46591BlankL{Var(num13)}" to complete
@@ -621,12 +587,9 @@ Scenario: MCC46591-013 Verify mixed form without default values in Landscape dir
 #When I create, generate and view a blank pdf
 #Then I should see all fields standard and log in the form on PDF with selected Annotations
 
-And I navigate to "PDF Generator" module
 When I create Blank PDF
-| Name                             | Profile      | Study          | Role         | Locale  | CRFVersion |
-| MCC46591BlankM{RndNum<num14>(3)} | MCC46591PDF3 | BlankPDF Study | SUPER ROLE 1 | English | Version 1  |
-#Form Exclusions                                                                                                                                         |
-#Adverse Events1, Adverse Events2, Adverse Events4, Demographics1, Demographics2, Medical History1, Medical History2, Medical History3, Medical History4 |
+| Name                             | Profile      | Study          | Role         | Locale  | CRFVersion |Form Exclusions                                                                                                                                         |
+| MCC46591BlankM{RndNum<num14>(3)} | MCC46591PDF3 | BlankPDF Study | SUPER ROLE 1 | English | Version 1  |Adverse Events1, Adverse Events2, Adverse Events4, Demographics1, Demographics2, Medical History1, Medical History2, Medical History3, Medical History4 |
 And I take a screenshot
 And I generate Blank PDF "MCC46591BlankM{Var(num14)}"
 And I wait for PDF "MCC46591BlankM{Var(num14)}" to complete
@@ -671,12 +634,9 @@ Scenario: MCC46591-014 Verify mixed form without default values in Portrait dire
 #When I create, generate and view a blank pdf
 #Then I should see all fields standard and log in the form on PDF with selected Annotations
 
-And I navigate to "PDF Generator" module
 When I create Blank PDF
-| Name                             | Profile      | Study          | Role         | Locale  | CRFVersion |
-| MCC46591BlankN{RndNum<num15>(3)} | MCC46591PDF3 | BlankPDF Study | SUPER ROLE 1 | English | Version 1  |
-#Form Exclusions                                                                                                                                         |
-#Adverse Events1, Adverse Events2, Adverse Events3, Demographics1, Demographics2, Medical History1, Medical History2, Medical History3, Medical History4 |
+| Name                             | Profile      | Study          | Role         | Locale  | CRFVersion |Form Exclusions                                                                                                                                         |
+| MCC46591BlankN{RndNum<num15>(3)} | MCC46591PDF3 | BlankPDF Study | SUPER ROLE 1 | English | Version 1  |Adverse Events1, Adverse Events2, Adverse Events3, Demographics1, Demographics2, Medical History1, Medical History2, Medical History3, Medical History4 |
 And I take a screenshot
 And I generate Blank PDF "MCC46591BlankN{Var(num15)}"
 And I wait for PDF "MCC46591BlankN{Var(num15)}" to complete
@@ -721,12 +681,9 @@ Scenario: MCC46591-015 Verify standard form without default values display all f
 #When I create, generate and view a blank pdf
 #Then I should see all fields on blank PDF with selected Annotations
 
-And I navigate to "PDF Generator" module
 When I create Blank PDF
-| Name                             | Profile      | Study          | Role         | Locale  | CRFVersion |
-| MCC46591BlankO{RndNum<num16>(3)} | MCC46591PDF3 | BlankPDF Study | SUPER ROLE 1 | English | Version 1  |
-#Form Exclusions                                                                                                                                           |
-#Adverse Events1, Adverse Events2, Adverse Events3, Adverse Events4, Demographics2, Medical History1, Medical History2, Medical History3, Medical History4 |
+| Name                             | Profile      | Study          | Role         | Locale  | CRFVersion |Form Exclusions                                                                                                                                           |
+| MCC46591BlankO{RndNum<num16>(3)} | MCC46591PDF3 | BlankPDF Study | SUPER ROLE 1 | English | Version 1  |Adverse Events1, Adverse Events2, Adverse Events3, Adverse Events4, Demographics2, Medical History1, Medical History2, Medical History3, Medical History4 |
 And I take a screenshot
 And I generate Blank PDF "MCC46591BlankO{Var(num16)}"
 And I wait for PDF "MCC46591BlankO{Var(num16)}" to complete
@@ -761,12 +718,9 @@ Scenario: MCC46591-016 Verify log form with default values in Portrait direction
 #When I create, generate and view a blank pdf
 #Then I should see all log lines with default values in the form on PDF
 
-And I navigate to "PDF Generator" module
 When I create Blank PDF
-| Name                             | Profile      | Study          | Role         | Locale  | CRFVersion |
-| MCC46591BlankP{RndNum<num17>(3)} | MCC46591PDF1 | BlankPDF Study | SUPER ROLE 1 | English | Version 1  |
-#Form Exclusions                                                                                                                                        |
-#Adverse Events1, Adverse Events2, Adverse Events3, Adverse Events4, Demographics1, Demographics2, Medical History2, Medical History3, Medical History4 | 
+| Name                             | Profile      | Study          | Role         | Locale  | CRFVersion |Form Exclusions                                                                                                                                        |
+| MCC46591BlankP{RndNum<num17>(3)} | MCC46591PDF1 | BlankPDF Study | SUPER ROLE 1 | English | Version 1  |Adverse Events1, Adverse Events2, Adverse Events3, Adverse Events4, Demographics1, Demographics2, Medical History2, Medical History3, Medical History4 | 
 And I take a screenshot
 And I generate Blank PDF "MCC46591BlankP{Var(num17)}"
 And I wait for PDF "MCC46591BlankP{Var(num17)}" to complete
@@ -820,12 +774,9 @@ Scenario: MCC46591-017 Verify log form with default values in Landscape directio
 #When I create, generate and view a blank pdf
 #Then I should see all log lines with default values in the form on PDF
 
-And I navigate to "PDF Generator" module
 When I create Blank PDF
-| Name                             | Profile      | Study          | Role         | Locale  | CRFVersion |
-| MCC46591BlankQ{RndNum<num18>(3)} | MCC46591PDF1 | BlankPDF Study | SUPER ROLE 1 | English | Version 1  |
-#Form Exclusions                                                                                                                                        |
-#Adverse Events1, Adverse Events2, Adverse Events3, Adverse Events4, Demographics1, Demographics2, Medical History1, Medical History3, Medical History4 |
+| Name                             | Profile      | Study          | Role         | Locale  | CRFVersion |Form Exclusions                                                                                                                                        |
+| MCC46591BlankQ{RndNum<num18>(3)} | MCC46591PDF1 | BlankPDF Study | SUPER ROLE 1 | English | Version 1  |Adverse Events1, Adverse Events2, Adverse Events3, Adverse Events4, Demographics1, Demographics2, Medical History1, Medical History3, Medical History4 |
 And I take a screenshot
 And I generate Blank PDF "MCC46591BlankQ{Var(num18)}"
 And I wait for PDF "MCC46591BlankQ{Var(num18)}" to complete
@@ -879,12 +830,9 @@ Scenario: MCC46591-018 Verify log form with default values in Portrait direction
 #When I create, generate and view a blank pdf
 #Then I should see all log lines with default values in the form on PDF with selected Annotations
 
-And I navigate to "PDF Generator" module
 When I create Blank PDF
-| Name                             | Profile      | Study          | Role         | Locale  | CRFVersion |
-| MCC46591BlankR{RndNum<num19>(3)} | MCC46591PDF2 | BlankPDF Study | SUPER ROLE 1 | English | Version 1  |
-#Form Exclusions                                                                                                                                        |
-#Adverse Events1, Adverse Events2, Adverse Events3, Adverse Events4, Demographics1, Demographics2, Medical History2, Medical History3, Medical History4 |
+| Name                             | Profile      | Study          | Role         | Locale  | CRFVersion |Form Exclusions                                                                                                                                        |
+| MCC46591BlankR{RndNum<num19>(3)} | MCC46591PDF2 | BlankPDF Study | SUPER ROLE 1 | English | Version 1  |Adverse Events1, Adverse Events2, Adverse Events3, Adverse Events4, Demographics1, Demographics2, Medical History2, Medical History3, Medical History4 |
 And I take a screenshot
 And I generate Blank PDF "MCC46591BlankR{Var(num19)}"
 And I wait for PDF "MCC46591BlankR{Var(num19)}" to complete
@@ -946,12 +894,9 @@ Scenario: MCC46591-019 Verify log form with default values in Landscape directio
 #When I create, generate and view a blank pdf
 #Then I should see all log lines with default values in the form on PDF with selected Annotations
 
-And I navigate to "PDF Generator" module
 When I create Blank PDF
-| Name                             | Profile      | Study          | Role         | Locale  | CRFVersion |
-| MCC46591BlankS{RndNum<num20>(3)} | MCC46591PDF2 | BlankPDF Study | SUPER ROLE 1 | English | Version 1  |
-#Form Exclusions                                                                                                                                        |
-#Adverse Events1, Adverse Events2, Adverse Events3, Adverse Events4, Demographics1, Demographics2, Medical History1, Medical History3, Medical History4 |
+| Name                             | Profile      | Study          | Role         | Locale  | CRFVersion |Form Exclusions                                                                                                                                        |
+| MCC46591BlankS{RndNum<num20>(3)} | MCC46591PDF2 | BlankPDF Study | SUPER ROLE 1 | English | Version 1  |Adverse Events1, Adverse Events2, Adverse Events3, Adverse Events4, Demographics1, Demographics2, Medical History1, Medical History3, Medical History4 |
 And I take a screenshot
 And I generate Blank PDF "MCC46591BlankS{Var(num20)}"
 And I wait for PDF "MCC46591BlankS{Var(num20)}" to complete
@@ -1013,12 +958,9 @@ Scenario: MCC46591-020 Verify log form with default values in Portrait direction
 #When I create, generate and view a blank pdf
 #Then I should see all log lines with default values in the form on PDF with selected Annotations
 
-And I navigate to "PDF Generator" module
 When I create Blank PDF
-| Name                             | Profile      | Study          | Role         | Locale  | CRFVersion |
-| MCC46591BlankT{RndNum<num21>(3)} | MCC46591PDF3 | BlankPDF Study | SUPER ROLE 1 | English | Version 1  |
-#Form Exclusions                                                                                                                                        |
-#Adverse Events1, Adverse Events2, Adverse Events3, Adverse Events4, Demographics1, Demographics2, Medical History2, Medical History3, Medical History4 |
+| Name                             | Profile      | Study          | Role         | Locale  | CRFVersion |Form Exclusions                                                                                                                                        |
+| MCC46591BlankT{RndNum<num21>(3)} | MCC46591PDF3 | BlankPDF Study | SUPER ROLE 1 | English | Version 1  |Adverse Events1, Adverse Events2, Adverse Events3, Adverse Events4, Demographics1, Demographics2, Medical History2, Medical History3, Medical History4 |
 And I take a screenshot
 And I generate Blank PDF "MCC46591BlankT{Var(num21)}"
 And I wait for PDF "MCC46591BlankT{Var(num21)}" to complete
@@ -1080,12 +1022,9 @@ Scenario: MCC46591-021 Verify log form with default values in Landscape directio
 #When I create, generate and view a blank pdf
 #Then I should see all log lines with default values in the form on PDF with selected Annotations
 
-And I navigate to "PDF Generator" module
 When I create Blank PDF
-| Name                             | Profile      | Study          | Role         | Locale  | CRFVersion |
-| MCC46591BlankU{RndNum<num22>(3)} | MCC46591PDF3 | BlankPDF Study | SUPER ROLE 1 | English | Version 1  |
-#Form Exclusions                                                                                                                                        |
-#Adverse Events1, Adverse Events2, Adverse Events3, Adverse Events4, Demographics1, Demographics2, Medical History1, Medical History3, Medical History4 |
+| Name                             | Profile      | Study          | Role         | Locale  | CRFVersion |Form Exclusions                                                                                                                                        |
+| MCC46591BlankU{RndNum<num22>(3)} | MCC46591PDF3 | BlankPDF Study | SUPER ROLE 1 | English | Version 1  |Adverse Events1, Adverse Events2, Adverse Events3, Adverse Events4, Demographics1, Demographics2, Medical History1, Medical History3, Medical History4 |
 And I take a screenshot
 And I generate Blank PDF "MCC46591BlankU{Var(num22)}"
 And I wait for PDF "MCC46591BlankU{Var(num22)}" to complete
@@ -1147,12 +1086,9 @@ Scenario: MCC46591-022 Verify mixed form with default values in Portrait directi
 #When I create, generate and view a blank pdf
 #Then I should see all fields standard and log with default values in the form on PDF
 
-And I navigate to "PDF Generator" module
 When I create Blank PDF
-| Name                             | Profile      | Study          | Role         | Locale  | CRFVersion |
-| MCC46591BlankV{RndNum<num23>(3)} | MCC46591PDF1 | BlankPDF Study | SUPER ROLE 1 | English | Version 1  |
-#Form Exclusions                                                                                                                                        |
-#Adverse Events1, Adverse Events2, Adverse Events3, Adverse Events4, Demographics1, Demographics2, Medical History1, Medical History2, Medical History4 |
+| Name                             | Profile      | Study          | Role         | Locale  | CRFVersion |Form Exclusions                                                                                                                                        |
+| MCC46591BlankV{RndNum<num23>(3)} | MCC46591PDF1 | BlankPDF Study | SUPER ROLE 1 | English | Version 1  |Adverse Events1, Adverse Events2, Adverse Events3, Adverse Events4, Demographics1, Demographics2, Medical History1, Medical History2, Medical History4 |
 And I take a screenshot
 And I generate Blank PDF "MCC46591BlankV{Var(num23)}"
 And I wait for PDF "MCC46591BlankV{Var(num23)}" to complete
@@ -1206,12 +1142,9 @@ Scenario: MCC46591-023 Verify mixed form with default values in Landscape direct
 #When I create, generate and view a blank pdf
 #Then I should see all fields standard and log with default values in the form on PDF
 
-And I navigate to "PDF Generator" module
 When I create Blank PDF
-| Name                             | Profile      | Study          | Role         | Locale  | CRFVersion |
-| MCC46591BlankW{RndNum<num24>(3)} | MCC46591PDF1 | BlankPDF Study | SUPER ROLE 1 | English | Version 1  |
-#Form Exclusions                                                                                                                                         |
-#Adverse Events1, Adv erse Events2, Adverse Events3, Adverse Events4, Demographics1, Demographics2, Medical History1, Medical History2, Medical History3 |
+| Name                             | Profile      | Study          | Role         | Locale  | CRFVersion |Form Exclusions                                                                                                                                        |
+| MCC46591BlankW{RndNum<num24>(3)} | MCC46591PDF1 | BlankPDF Study | SUPER ROLE 1 | English | Version 1  |Adverse Events1, Adverse Events2, Adverse Events3, Adverse Events4, Demographics1, Demographics2, Medical History1, Medical History2, Medical History3 |
 And I take a screenshot
 And I generate Blank PDF "MCC46591BlankW{Var(num24)}"
 And I wait for PDF "MCC46591BlankW{Var(num24)}" to complete
@@ -1265,12 +1198,9 @@ Scenario: MCC46591-024 Verify mixed form with default values in Portrait directi
 #When I create, generate and view a blank pdf
 #Then I should see all fields standard and log with default values in the form on PDF with selected Annotations
 
-And I navigate to "PDF Generator" module
 When I create Blank PDF
-| Name                             | Profile      | Study          | Role         | Locale  | CRFVersion |
-| MCC46591BlankX{RndNum<num25>(3)} | MCC46591PDF2 | BlankPDF Study | SUPER ROLE 1 | English | Version 1  |
-#Form Exclusions                                                                                                                                        |
-#Adverse Events1, Adverse Events2, Adverse Events3, Adverse Events4, Demographics1, Demographics2, Medical History2, Medical History3, Medical History4 |
+| Name                             | Profile      | Study          | Role         | Locale  | CRFVersion |Form Exclusions                                                                                                                                        |
+| MCC46591BlankX{RndNum<num25>(3)} | MCC46591PDF2 | BlankPDF Study | SUPER ROLE 1 | English | Version 1  |Adverse Events1, Adverse Events2, Adverse Events3, Adverse Events4, Demographics1, Demographics2, Medical History2, Medical History3, Medical History4 |
 And I take a screenshot
 And I generate Blank PDF "MCC46591BlankX{Var(num25)}"
 And I wait for PDF "MCC46591BlankX{Var(num25)}" to complete
@@ -1332,12 +1262,9 @@ Scenario: MCC46591-025 Verify mixed form with default values in Landscape direct
 #When I create, generate and view a blank pdf
 #Then I should see all fields standard and log with default values in the form on PDF with selected Annotations
 
-And I navigate to "PDF Generator" module
 When I create Blank PDF
-| Name                             | Profile      | Study          | Role         | Locale  | CRFVersion |
-| MCC46591BlankY{RndNum<num26>(3)} | MCC46591PDF2 | BlankPDF Study | SUPER ROLE 1 | English | Version 1  |
-#Form Exclusions                                                                                                                                        |
-#Adverse Events1, Adverse Events2, Adverse Events3, Adverse Events4, Demographics1, Demographics2, Medical History1, Medical History3, Medical History4 |
+| Name                             | Profile      | Study          | Role         | Locale  | CRFVersion |Form Exclusions                                                                                                                                        |
+| MCC46591BlankY{RndNum<num26>(3)} | MCC46591PDF2 | BlankPDF Study | SUPER ROLE 1 | English | Version 1  |Adverse Events1, Adverse Events2, Adverse Events3, Adverse Events4, Demographics1, Demographics2, Medical History1, Medical History3, Medical History4 |
 And I take a screenshot
 And I generate Blank PDF "MCC46591BlankY{Var(num26)}"
 And I wait for PDF "MCC46591BlankY{Var(num26)}" to complete
@@ -1399,12 +1326,9 @@ Scenario: MCC46591-026 Verify mixed form with default values in Portrait directi
 #When I create, generate and view a blank pdf
 #Then I should see all fields standard and log with default values in the form on PDF with selected Annotations
 
-And I navigate to "PDF Generator" module
 When I create Blank PDF
-| Name                             | Profile      | Study          | Role         | Locale  | CRFVersion |
-| MCC46591BlankZ{RndNum<num26>(3)} | MCC46591PDF3 | BlankPDF Study | SUPER ROLE 1 | English | Version 1  |
-#Form Exclusions                                                                                                                                        |
-#Adverse Events1, Adverse Events2, Adverse Events3, Adverse Events4, Demographics1, Demographics2, Medical History2, Medical History3, Medical History4 |
+| Name                             | Profile      | Study          | Role         | Locale  | CRFVersion |Form Exclusions                                                                                                                                        |
+| MCC46591BlankZ{RndNum<num26>(3)} | MCC46591PDF3 | BlankPDF Study | SUPER ROLE 1 | English | Version 1  |Adverse Events1, Adverse Events2, Adverse Events3, Adverse Events4, Demographics1, Demographics2, Medical History2, Medical History3, Medical History4 |
 And I take a screenshot
 And I generate Blank PDF "MCC46591BlankZ{Var(num26)}"
 And I wait for PDF "MCC46591BlankZ{Var(num26)}" to complete
@@ -1466,12 +1390,9 @@ Scenario: MCC46591-027 Verify mixed form with default values in Landscape direct
 #When I create, generate and view a blank pdf
 #Then I should see all fields standard and log with default values in the form on PDF with selected Annotations
 
-And I navigate to "PDF Generator" module
 When I create Blank PDF
-| Name                              | Profile      | Study          | Role         | Locale  | CRFVersion |
-| MCC46591BlankZa{RndNum<num27>(3)} | MCC46591PDF3 | BlankPDF Study | SUPER ROLE 1 | English | Version 1  |
-#Form Exclusions                                                                                                                                        |
-#Adverse Events1, Adverse Events2, Adverse Events3, Adverse Events4, Demographics1, Demographics2, Medical History1, Medical History3, Medical History4 |
+| Name                              | Profile      | Study          | Role         | Locale  | CRFVersion |Form Exclusions                                                                                                                                        |
+| MCC46591BlankZa{RndNum<num27>(3)} | MCC46591PDF3 | BlankPDF Study | SUPER ROLE 1 | English | Version 1  |Adverse Events1, Adverse Events2, Adverse Events3, Adverse Events4, Demographics1, Demographics2, Medical History1, Medical History3, Medical History4 |
 And I take a screenshot
 And I generate Blank PDF "MCC46591BlankZa{Var(num27)}"
 And I wait for PDF "MCC46591BlankZa{Var(num27)}" to complete
@@ -1533,12 +1454,9 @@ Scenario: MCC46591-028 Verify standard form with default values display all fiel
 #When I create, generate and view a blank pdf
 #Then I should see all fields with default values on blank PDF
 
-And I navigate to "PDF Generator" module
 When I create Blank PDF
-| Name                              | Profile      | Study          | Role         | Locale  | CRFVersion |
-| MCC46591BlankZb{RndNum<num31>(3)} | MCC46591PDF1 | BlankPDF Study | SUPER ROLE 1 | English | Version 1  |
-#Form Exclusions                                                                                                                                           |
-#Adverse Events1, Adverse Events2, Adverse Events3, Adverse Events4, Demographics1, Medical History1, Medical History2, Medical History3, Medical History4 |
+| Name                              | Profile      | Study          | Role         | Locale  | CRFVersion |Form Exclusions                                                                                                                                           |
+| MCC46591BlankZb{RndNum<num31>(3)} | MCC46591PDF1 | BlankPDF Study | SUPER ROLE 1 | English | Version 1  |Adverse Events1, Adverse Events2, Adverse Events3, Adverse Events4, Demographics1, Medical History1, Medical History2, Medical History3, Medical History4 |
 And I take a screenshot
 And I generate Blank PDF "MCC46591BlankZb{Var(num31)}"
 And I wait for PDF "MCC46591BlankZb{Var(num31)}" to complete
@@ -1564,12 +1482,9 @@ Scenario: MCC46591-029 Verify standard form with default values display all fiel
 #When I create, generate and view a blank pdf
 #Then I should see all fields with default values on blank PDF with selected Annotations
 
-And I navigate to "PDF Generator" module
 When I create Blank PDF
-| Name                              | Profile      | Study          | Role         | Locale  | CRFVersion |
-| MCC46591BlankZc{RndNum<num32>(3)} | MCC46591PDF2 | BlankPDF Study | SUPER ROLE 1 | English | Version 1  |
-#Form Exclusions                                                                                                                                           |
-#Adverse Events1, Adverse Events2, Adverse Events3, Adverse Events4, Demographics1, Medical History1, Medical History2, Medical History3, Medical History4 |
+| Name                              | Profile      | Study          | Role         | Locale  | CRFVersion |Form Exclusions                                                                                                                                           |
+| MCC46591BlankZc{RndNum<num32>(3)} | MCC46591PDF2 | BlankPDF Study | SUPER ROLE 1 | English | Version 1  |Adverse Events1, Adverse Events2, Adverse Events3, Adverse Events4, Demographics1, Medical History1, Medical History2, Medical History3, Medical History4 |
 And I take a screenshot
 And I generate Blank PDF "MCC46591BlankZc{Var(num32)}"
 And I wait for PDF "MCC46591BlankZc{Var(num32)}" to complete
@@ -1602,12 +1517,9 @@ Scenario: MCC46591-030 Verify standard form with default values display all fiel
 #When I create, generate and view a blank pdf
 #Then I should see all fields with default values on blank PDF with selected Annotations
 
-And I navigate to "PDF Generator" module
 When I create Blank PDF
-| Name                              | Profile      | Study          | Role         | Locale  | CRFVersion |
-| MCC46591BlankZd{RndNum<num33>(3)} | MCC46591PDF3 | BlankPDF Study | SUPER ROLE 1 | English | Version 1  |
-#Form Exclusions                                                                                                                                           |
-#Adverse Events1, Adverse Events2, Adverse Events3, Adverse Events4, Demographics1, Medical History1, Medical History2, Medical History3, Medical History4 |
+| Name                              | Profile      | Study          | Role         | Locale  | CRFVersion |Form Exclusions                                                                                                                                           |
+| MCC46591BlankZd{RndNum<num33>(3)} | MCC46591PDF3 | BlankPDF Study | SUPER ROLE 1 | English | Version 1  |Adverse Events1, Adverse Events2, Adverse Events3, Adverse Events4, Demographics1, Medical History1, Medical History2, Medical History3, Medical History4 |
 And I take a screenshot
 And I generate Blank PDF "MCC46591BlankZd{Var(num33)}"
 And I wait for PDF "MCC46591BlankZd{Var(num33)}" to complete
