@@ -300,19 +300,6 @@ Scenario: PBMCC28550-007 Verify Signature is broken in Audit when Primary form i
 
 
 	When I login to Rave with user "SUPER USER 1"
-	And I navigate to "Site Administration" module
-	And I search for site "Site 1"
-	And I select Site Details for Site "Site 1"
-	And I select "Lab Maintenance" for Study "MCC-28550" in Environment "Prod"
-	And I create lab
-		| Type      | Name                        | Range Type        |
-		| Local Lab | Local Lab {RndNum<num1>(5)} | RtStandardMCC28550|
-	And I select Ranges for "Local Lab {Var(num1)}" for "Local Lab" lab
-	And I select "Add New Range"
-	And I create range
-		| Analyte                | From Date   | To Date     | From Age        | To Age          | Sex | Low Value | High Value | Units            | Dictionary | Comments | Edit | New Version |
-		| AnNeutrophilsMCC-28550 | 01 Jan 2000 | 01 Jan 2020 | 15 YearMCC28550 | 99 YearMCC28550 |     | 15        | 25         | FractionMCC28550 |            |          |      |             |
-		| AnWBCMCC-28550         | 01 Jan 2000 | 01 Jan 2020 | 15 YearMCC28550 | 99 YearMCC28550 |     | 15        | 25         | *10E6/ulMCC28550 |            |          |      |             |
 	And I create a Subject
 		| Field            | Data               |
 	  	| Subject Initials | SUB                |
@@ -335,9 +322,9 @@ Scenario: PBMCC28550-007 Verify Signature is broken in Audit when Primary form i
 		| Signature Succeeded | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |  
     And I take a screenshot 	        
     And I navigate to "Home"	
-	And I select a Subject "{Var(num7)}
+	And I select a Subject "{Var(num7)}"
     And I select link "Lab Form"
-    And I choose "Lab" "Local Lab {RndNum<num1>(5)}" from "Lab"
+	And I select Lab "LocalLab_MCC-28550"
     And I enter data in CRF and save
    		| Field       | Data | Control Type |
    		| WBC         | 20   | textbox      |
@@ -365,19 +352,7 @@ Scenario: PBMCC28550-007 Verify Signature is broken in Audit when Primary form i
 Scenario: PBMCC28550-008 Verify Signature is broken in Audit when Primary form is signed and data saved in a lab form with default value.
 
 	When I login to Rave with user "SUPER USER 1"
-	And I navigate to "Site Administration" module
-	And I search for site "Site 1"
-	And I select Site Details for Site "Site 1"
-	And I select "Lab Maintenance" for Study "MCC-28550" in Environment "Prod"
-	And I create lab
-		| Type      | Name                        | Range Type        |
-		| Local Lab | Local Lab {RndNum<num1>(5)} | RtStandardMCC28550|
-	And I select Ranges for "Local Lab {Var(num1)}" for "Local Lab" lab
-	And I select "Add New Range"
-	And I create range
-		| Analyte                | From Date   | To Date     | From Age        | To Age          | Sex          | Low Value | High Value | Units            | Dictionary | Comments | Edit | New Version |
-		| AnNeutrophilsMCC-28550 | 01 Jan 2000 | 01 Jan 2020 | 15 YearMCC28550 | 99 YearMCC28550 | maleMCC28550 | 15        | 25         | FractionMCC28550 |            |          |      |             |
-		| AnWBCMCC-28550         | 01 Jan 2000 | 01 Jan 2020 | 15 YearMCC28550 | 99 YearMCC28550 | maleMCC28550 | 15        | 25         | *10E6/ulMCC28550 |            |          |      |             |
+	
 	And I create a Subject
 		| Field            | Data               |
 	  	| Subject Initials | SUB                |
@@ -400,9 +375,9 @@ Scenario: PBMCC28550-008 Verify Signature is broken in Audit when Primary form i
 		| Signature Succeeded | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |  
     And I take a screenshot 	        
     And I navigate to "Home"	
-	And I select a Subject "{Var(num7)}"
+	And I select a Subject "{Var(num8)}"
     And I select link "Lab Form 1"
-    And I choose "Lab" "Local Lab {RndNum<num1>(5)}" from "Lab"
+    And I select Lab "LocalLab_MCC-28550"
     And I take a screenshot
     And I enter data in CRF and save
    		| Field       | Data | Control Type |
@@ -410,7 +385,7 @@ Scenario: PBMCC28550-008 Verify Signature is broken in Audit when Primary form i
    		| Neutrophils |      | textbox      |
    	And I take a screenshot
    	And I navigate to "Home"	
-	And I select a Subject "{Var(num7)}"	
+	And I select a Subject "{Var(num8)}"	
 	And I select primary record form
 	And I click audit on form level
 	And I select link "Subject - {Var(num8)} SUB"
@@ -774,19 +749,7 @@ Scenario: PBMCC28550-014 Verify Signature is broken in Audit when a Mixed Form w
 Scenario: PBMCC28550-015 Verify Signature is broken in Audit when a lab Form is signed and modify data point.
 
 	When I login to Rave with user "SUPER USER 1"
-	And I navigate to "Site Administration" module
-	And I search for site "Site 1"
-	And I select Site Details for Site "Site 1"
-	And I select "Lab Maintenance" for Study "MCC-28550" in Environment "Prod"
-	And I create lab
-		| Type      | Name                        | Range Type        |
-		| Local Lab | Local Lab {RndNum<num1>(5)} | RtStandardMCC28550|
-	And I select Ranges for "Local Lab {Var(num1)}" for "Local Lab" lab
-	And I select "Add New Range"
-	And I create range
-		| Analyte                | From Date   | To Date     | From Age        | To Age          | Sex          | Low Value | High Value | Units            | Dictionary | Comments | Edit | New Version |
-		| AnNeutrophilsMCC-28550 | 01 Jan 2000 | 01 Jan 2020 | 15 YearMCC28550 | 99 YearMCC28550 | maleMCC28550 | 15        | 25         | FractionMCC28550 |            |          |      |             |
-		| AnWBCMCC-28550         | 01 Jan 2000 | 01 Jan 2020 | 15 YearMCC28550 | 99 YearMCC28550 | maleMCC28550 | 15        | 25         | *10E6/ulMCC28550 |            |          |      |             |
+	
 	And I create a Subject
 		| Field            | Data               |
 		| Subject Initials | SUB                |
@@ -797,7 +760,7 @@ Scenario: PBMCC28550-015 Verify Signature is broken in Audit when a lab Form is 
    		| Field       | Data | Control Type |
    		| Age         | 22   | textbox      |	
 	And I select link "Lab Form" 
-    And I choose "Lab" "Local Lab {RndNum<num1>(5)}" from "Lab"
+    And I select Lab "LocalLab_MCC-28550"
     And I enter data in CRF and save
    		| Field       | Data         | Control Type |
    		| WBC         | 20           | textbox      |
@@ -850,19 +813,7 @@ Scenario: PBMCC28550-015 Verify Signature is broken in Audit when a lab Form is 
 Scenario: PBMCC28550-016 Verify Signature is broken in Audit when a lab Form with default value is signed and modify data point.
 
 	When I login to Rave with user "SUPER USER 1"
-	And I navigate to "Site Administration" module
-	And I search for site "Site 1"
-	And I select Site Details for Site "Site 1"
-	And I select "Lab Maintenance" for Study "MCC-28550" in Environment "Prod"
-	And I create lab
-		| Type      | Name                        | Range Type        |
-		| Local Lab | Local Lab {RndNum<num1>(5)} | RtStandardMCC28550|
-	And I select Ranges for "Local Lab {Var(num1)}" for "Local Lab" lab
-	And I select "Add New Range"
-	And I create range
-		| Analyte                | From Date   | To Date     | From Age        | To Age          | Sex          | Low Value | High Value | Units            | Dictionary | Comments | Edit | New Version |
-		| AnNeutrophilsMCC-28550 | 01 Jan 2000 | 01 Jan 2020 | 15 YearMCC28550 | 99 YearMCC28550 | maleMCC28550 | 15        | 25         | FractionMCC28550 |            |          |      |             |
-		| AnWBCMCC-28550         | 01 Jan 2000 | 01 Jan 2020 | 15 YearMCC28550 | 99 YearMCC28550 | maleMCC28550 | 15        | 25         | *10E6/ulMCC28550 |            |          |      |             |
+	
 	And I create a Subject
 		| Field            | Data               |
 		| Subject Initials | SUB                |
@@ -874,7 +825,7 @@ Scenario: PBMCC28550-016 Verify Signature is broken in Audit when a lab Form wit
    		| Age         | 22   | textbox      |	
 	And I select link "Lab Form 1" 
 	And I take a screenshot
-	And I choose "Lab" "Local Lab {RndNum<num1>(5)}" from "Lab"
+	And I select Lab "LocalLab_MCC-28550"
 	And I click button "Sign and Save"
 	And I sign the form with username "SUPER USER 1"
 	And I verify text "Please Sign the Data Page - Default User  (defuser)" exists
@@ -1273,19 +1224,7 @@ Scenario: PBMCC28550-023 Verify Signature is succeeded in Audit when a lab form 
 
 
 	When I login to Rave with user "SUPER USER 1"
-	And I navigate to "Site Administration" module
-	And I search for site "Site 1"
-	And I select Site Details for Site "Site 1"
-	And I select "Lab Maintenance" for Study "MCC-28550" in Environment "Prod"
-	And I create lab
-		| Type      | Name                        | Range Type        |
-		| Local Lab | Local Lab {RndNum<num1>(5)} | RtStandardMCC28550|
-	And I select Ranges for "Local Lab {Var(num1)}" for "Local Lab" lab
-	And I select "Add New Range"
-	And I create range
-		| Analyte                | From Date   | To Date     | From Age        | To Age          | Sex          | Low Value | High Value | Units            | Dictionary | Comments | Edit | New Version |
-		| AnNeutrophilsMCC-28550 | 01 Jan 2000 | 01 Jan 2020 | 15 YearMCC28550 | 99 YearMCC28550 | maleMCC28550 | 15        | 25         | FractionMCC28550 |            |          |      |             |
-		| AnWBCMCC-28550         | 01 Jan 2000 | 01 Jan 2020 | 15 YearMCC28550 | 99 YearMCC28550 | maleMCC28550 | 15        | 25         | *10E6/ulMCC28550 |            |          |      |             |
+	
 	And I create a Subject
 		| Field            | Data               |
 		| Subject Initials | SUB                |
@@ -1311,7 +1250,7 @@ Scenario: PBMCC28550-023 Verify Signature is succeeded in Audit when a lab form 
     And I navigate to "Home"
     And I select a Subject "{Var(num23)}"
     And I select link "Log Form"
-    And I choose "Lab" "Local Lab {RndNum<num1>(5)}" from "Lab"	
+	And I select Lab "LocalLab_MCC-28550"	
     And I take a screenshot 
     And I enter data in CRF and save
    		| Field       | Data | Control Type |
@@ -1351,19 +1290,7 @@ Scenario: PBMCC28550-024 Verify Signature is succeeded in Audit when a lab form 
 
 
 	When I login to Rave with user "SUPER USER 1"
-	And I navigate to "Site Administration" module
-	And I search for site "Site 1"
-	And I select Site Details for Site "Site 1"
-	And I select "Lab Maintenance" for Study "MCC-28550" in Environment "Prod"
-	And I create lab
-		| Type      | Name                        | Range Type        |
-		| Local Lab | Local Lab {RndNum<num1>(5)} | RtStandardMCC28550|
-	And I select Ranges for "Local Lab {Var(num1)}" for "Local Lab" lab
-	And I select "Add New Range"
-	And I create range
-		| Analyte                | From Date   | To Date     | From Age        | To Age          | Sex          | Low Value | High Value | Units            | Dictionary | Comments | Edit | New Version |
-		| AnNeutrophilsMCC-28550 | 01 Jan 2000 | 01 Jan 2020 | 15 YearMCC28550 | 99 YearMCC28550 | maleMCC28550 | 15        | 25         | FractionMCC28550 |            |          |      |             |
-		| AnWBCMCC-28550         | 01 Jan 2000 | 01 Jan 2020 | 15 YearMCC28550 | 99 YearMCC28550 | maleMCC28550 | 15        | 25         | *10E6/ulMCC28550 |            |          |      |             |
+	
 	And I create a Subject
 		| Field            | Data               |
 		| Subject Initials | SUB                |
@@ -1389,7 +1316,7 @@ Scenario: PBMCC28550-024 Verify Signature is succeeded in Audit when a lab form 
     And I navigate to "Home"
     And I select a Subject "{Var(num24)}"
     And I select link "Log Form 1"
-    And I choose "Lab" "LocalLab_MCC28550" from "Lab"	
+	And I select Lab "LocalLab_MCC-28550"	
     And I take a screenshot 
     And I enter data in CRF and save
    		| Field		  | Data | Control Type|
@@ -1793,19 +1720,7 @@ Scenario: PBMCC28550-031 Verify Signature is succeeded in Audit when a lab form 
 
 
 	When I login to Rave with user "SUPER USER 1"
-	And I navigate to "Site Administration" module
-	And I search for site "Site 1"
-	And I select Site Details for Site "Site 1"
-	And I select "Lab Maintenance" for Study "MCC-28550" in Environment "Prod"
-	And I create lab
-		| Type      | Name                        | Range Type        |
-		| Local Lab | Local Lab {RndNum<num1>(5)} | RtStandardMCC28550|
-	And I select Ranges for "Local Lab {Var(num1)}" for "Local Lab" lab
-	And I select "Add New Range"
-	And I create range
-		| Analyte                | From Date   | To Date     | From Age        | To Age          | Sex | Low Value | High Value | Units            | Dictionary | Comments | Edit | New Version |
-		| AnNeutrophilsMCC-28550 | 01 Jan 2000 | 01 Jan 2020 | 15 YearMCC28550 | 99 YearMCC28550 |     | 15        | 25         | FractionMCC28550 |            |          |      |             |
-		| AnWBCMCC-28550         | 01 Jan 2000 | 01 Jan 2020 | 15 YearMCC28550 | 99 YearMCC28550 |     | 15        | 25         | *10E6/ulMCC28550 |            |          |      |             |
+	
 	And I create a Subject
 		| Field            | Data               |
 		| Subject Initials | SUB                |
@@ -1816,7 +1731,7 @@ Scenario: PBMCC28550-031 Verify Signature is succeeded in Audit when a lab form 
    		| Field       | Data | Control Type |
    		| Age         | 22   | textbox      |
 	And I select link "Lab Form"
-	And I choose "Lab" "Local Lab {RndNum<num1>(5)}" from "Lab"
+	And I select Lab "LocalLab_MCC-28550"
 	And I enter data in CRF and save
    		| Field       | Data         | Control Type |
    		| WBC         | 15           | textbox      |
@@ -1872,19 +1787,7 @@ Scenario: PBMCC28550-032 Verify Signature is succeeded in Audit when a lab form 
 
 
 	When I login to Rave with user "SUPER USER 1"
-	And I navigate to "Site Administration" module
-	And I search for site "Site 1"
-	And I select Site Details for Site "Site 1"
-	And I select "Lab Maintenance" for Study "MCC-28550" in Environment "Prod"
-	And I create lab
-		| Type      | Name                        | Range Type        |
-		| Local Lab | Local Lab {RndNum<num1>(5)} | RtStandardMCC28550|
-	And I select Ranges for "Local Lab {Var(num1)}" for "Local Lab" lab
-	And I select "Add New Range"
-	And I create range
-		| Analyte                | From Date   | To Date     | From Age        | To Age          | Sex | Low Value | High Value | Units            | Dictionary | Comments | Edit | New Version |
-		| AnNeutrophilsMCC-28550 | 01 Jan 2000 | 01 Jan 2020 | 15 YearMCC28550 | 99 YearMCC28550 |     | 15        | 25         | FractionMCC28550 |            |          |      |             |
-		| AnWBCMCC-28550         | 01 Jan 2000 | 01 Jan 2020 | 15 YearMCC28550 | 99 YearMCC28550 |     | 15        | 25         | *10E6/ulMCC28550 |            |          |      |             |
+	
 	And I create a Subject
 		| Field            | Data               |
 		| Subject Initials | SUB                |
@@ -1895,7 +1798,7 @@ Scenario: PBMCC28550-032 Verify Signature is succeeded in Audit when a lab form 
    		| Field       | Data | Control Type |
    		| Age         | 22   | textbox      |
 	And I select link "Lab Form"
-	And I choose "Lab" "Local Lab {RndNum<num1>(5)}" from "Lab"
+	And I select Lab "LocalLab_MCC-28550"
 	And I take a screenshot
 	And I click button "Sign and Save"
 	And I verify text "Please Sign - Default User  (defuser)" exists 
