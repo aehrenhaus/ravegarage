@@ -40,7 +40,9 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
 		protected override void NavigateToSeedPage()
         {
             WebTestContext.CurrentPage.As<HomePage>().ClickLink("Architect");
+            WebTestContext.Browser.WaitForPageToBeReady();
             WebTestContext.CurrentPage.As<ArchitectPage>().ClickLink("Upload Draft");
+            WebTestContext.Browser.WaitForPageToBeReady();
         }
 
         /// <summary>
