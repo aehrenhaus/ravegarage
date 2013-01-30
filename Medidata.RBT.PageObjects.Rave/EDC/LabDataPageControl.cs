@@ -52,7 +52,7 @@ namespace Medidata.RBT.PageObjects.Rave
 			IWebElement el = Page.Browser.FindElements(By.XPath("//span[contains(@id,'Content_R')]")).FirstOrDefault();
             var area = el.FindElementsByText<IWebElement>(fieldText).FirstOrDefault();
 
-            var fieldTRs = el.FindElements(By.XPath("table[2]/tbody/tr"));
+            var fieldTRs = area.FindElements(By.XPath("./../../tr"));
 
             int i;
             for (i = 0; i < fieldTRs.Count; i++)
