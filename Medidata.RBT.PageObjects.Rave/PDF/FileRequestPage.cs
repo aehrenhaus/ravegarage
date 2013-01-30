@@ -55,15 +55,16 @@ namespace Medidata.RBT.PageObjects.Rave
         public FileRequestPage Generate(string pdfName)
         {
             new PDFSpecific(SpecialStringHelper.Replace(pdfName));
-            int foundOnPage;
+            
             Table dt = new Table("Name");
-            dt.AddRow(SpecialStringHelper.Replace(pdfName));
+            IWebElement pdfTr = SearchContentResultsTable(dt, pdfName);
 
-            IWebElement pdfTr = this.FindInPaginatedList("", () =>
+            //Search for localized name table if it is localized
+            if (pdfTr == null)
             {
-				HtmlTable table = Browser.TryFindElementByPartialID("Content_Results").EnhanceAs<HtmlTable>();
-                return table.FindMatchRows(dt).FirstOrDefault();
-            }, out foundOnPage);
+                dt = new Table("LName");
+                pdfTr = SearchContentResultsTable(dt, pdfName);
+            }
 
             ChooseFromCheckboxes("Live Status Update", true);
             
@@ -73,6 +74,18 @@ namespace Medidata.RBT.PageObjects.Rave
             Thread.Sleep(1000);
 			Browser.GetAlertWindow().Accept();
             return this;
+        }
+
+        private IWebElement SearchContentResultsTable(Table tableHeader, string pdfName)
+        {
+            int foundOnPage;
+            tableHeader.AddRow(SpecialStringHelper.Replace(pdfName));
+
+            return this.FindInPaginatedList("", () =>
+            {
+                HtmlTable table = Browser.TryFindElementByPartialID("Content_Results").EnhanceAs<HtmlTable>();
+                return table.FindMatchRows(tableHeader).FirstOrDefault();
+            }, out foundOnPage);
         }
 
         /// <summary>
@@ -176,11 +189,19 @@ namespace Medidata.RBT.PageObjects.Rave
             var table = Browser.Table("_ctl0_Content_Results");
             Table dt = new Table("Name");
             dt.AddRow(pdf);
-            var tr = table.FindMatchRows(dt).FirstOrDefault();
+            ReadOnlyCollection<IWebElement> matchingRows = table.FindMatchRows(dt);
+            if(matchingRows == null || matchingRows.Count == 0)
+            {
+                dt = new Table("LName");
+                dt.AddRow(pdf);
+                matchingRows = table.FindMatchRows(dt);
+            }
+
+            var tr = matchingRows.FirstOrDefault();
 
             int waitTime = 240;
             var ele  = Browser.TryFindElementBy(b =>
-                tr.Spans().FirstOrDefault(x => x.GetAttribute("id").EndsWith("StatusValue") && x.Text == "Completed"),
+                tr.Spans().FirstOrDefault(x => x.GetAttribute("id").EndsWith("StatusValue") && (x.Text.Equals("Completed") || x.Text.Equals("LCompleted"))),
               true, waitTime
                 );
 			if (ele == null)
@@ -196,7 +217,9 @@ namespace Medidata.RBT.PageObjects.Rave
         /// <returns></returns>
         public void ViewPDF(string pdf)
         {
-            ClickLink("My PDF Files");
+            IWebElement pdfLink = Browser.TryFindElementByXPath(".//a[contains(text(), 'My PDF Files') or contains(text(), 'LMy PDF Files')]");
+            pdfLink.Click();
+
             FileRequestViewPage page = new FileRequestViewPage();
             page.ViewPDF(pdf);
         }
@@ -204,7 +227,7 @@ namespace Medidata.RBT.PageObjects.Rave
         public override IWebElement GetElementByName(string identifier, string areaIdentifier = null, string listItem = null)
         {
             if (identifier == "Live Status Update")
-                return Browser.FindElementById("LiveStatusUpdate");
+                return Browser.FindElementById("LiveStatusUpdate"); 
 
             var element = Browser.TryFindElementBy(By.XPath("//input[@title='" + identifier + "']"));
 

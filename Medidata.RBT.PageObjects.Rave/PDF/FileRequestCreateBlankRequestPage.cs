@@ -22,17 +22,22 @@ namespace Medidata.RBT.PageObjects.Rave
         public FileRequestPage CreateBlankPDF(PDFCreationModel args)
         {
             base.CreatePDF(args);
-
-            SelectCRFVersion(args.CRFVersion);
-
-            ClickLink("Save");
-
+            Browser.TryFindElementByPartialID("SaveLnkBtn").Click();
 
             Browser.TryFindElementById("_ctl0_Content_SearchCriteriaLabel", true, 10);
             //To make sure saved pdf is avaialble in the list before we try to generate it
             Browser.Navigate().Refresh();
 
             return new FileRequestPage();
+        }
+
+        /// <summary>
+        /// Perform specific PDF selections that are only viable for blank PDF
+        /// </summary>
+        /// <param name="args">The PDF arguments you want to select</param>
+        public override void PerformPDFSpecificSelections(PDFCreationModel args)
+        {
+            SelectCRFVersion(args.CRFVersion);
         }
 
         /// <summary>

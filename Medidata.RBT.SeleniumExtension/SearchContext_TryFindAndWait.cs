@@ -92,6 +92,62 @@ namespace Medidata.RBT.SeleniumExtension
 			return ele;
 		}
 
+        /// <summary>
+        /// Show attempt to show an area on the page. That is closed via a show/hide button.
+        /// </summary>
+        /// <param name="context">The search context</param>
+        /// <param name="areaToDisplayID">The id of the area you want to display</param>
+        /// <param name="showHideButtonID">The id of the button that controls the display of that area</param>
+        /// <param name="isWait">Should you wait for the area to display</param>
+        /// <param name="timeOutSecond"></param>
+        /// <returns>Expanded area</returns>
+        public static IWebElement TryShowArea(
+            this ISearchContext context, 
+            string areaToDisplayID, 
+            string showHideButtonID, 
+            bool? isWait = null, 
+            int? timeOutSecond = null)
+        {
+            IWebElement areaToDisplay;
+            IWebElement ele = null;
+
+            isWait = isWait ?? SeleniumConfiguration.Default.WaitByDefault;
+            try
+            {
+                if (isWait.Value)
+                    ele = waitForElement(context, b =>
+                        {
+                            areaToDisplay = context.TryFindElementById(areaToDisplayID, false);
+                            if (areaToDisplay.Displayed)
+                                return areaToDisplay;
+                            else
+                            {
+                                context.TryFindElementById(showHideButtonID, false).Click();
+
+                                areaToDisplay = context.TryFindElementById(areaToDisplayID, false);
+                                if (areaToDisplay.Displayed)
+                                    return areaToDisplay;
+                                else 
+                                    return null;
+                            }
+                        }, null, timeOutSecond);
+                else
+                {
+                    areaToDisplay = context.TryFindElementById(areaToDisplayID);
+                    if (!areaToDisplay.Displayed)
+                    {
+                        context.TryFindElementById(showHideButtonID).Click();
+                        return context.TryFindElementById(areaToDisplayID);
+                    }
+                    return areaToDisplay;
+                }
+            }
+            catch
+            {
+            }
+            return ele;
+        }
+
 		public static IWebElement TryFindElementBy(this ISearchContext context, By by, bool? isWait = null, int? timeOutSecond = null)
         {
             IWebElement ele = null;

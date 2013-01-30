@@ -17,5 +17,6 @@ namespace Medidata.RBT.PageObjects.Rave
         public string Subject { get; set; }
         public string Locale { get; set; }
         public string CRFVersion { get; set; }
+        public string FormExclusions { get; set; }
     }
 }

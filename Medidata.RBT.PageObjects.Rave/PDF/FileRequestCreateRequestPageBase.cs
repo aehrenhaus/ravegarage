@@ -26,7 +26,15 @@ namespace Medidata.RBT.PageObjects.Rave
             SelectStudy(args.Study, args.Environment);
             SelectLocale(args.Locale);
             SelectRole(args.Role);
+            PerformPDFSpecificSelections(args);
+            SelectFormExclusions(args.FormExclusions.Split(',').ToList());
         }
+
+        /// <summary>
+        /// Perform specific PDF selections that are only viable for either data PDF or blank PDF
+        /// </summary>
+        /// <param name="args">The PDF arguments you want to select</param>
+        public abstract void PerformPDFSpecificSelections(PDFCreationModel args);
 
         /// <summary>
         /// Enter the desired pdf name in the textbox
@@ -103,6 +111,21 @@ namespace Medidata.RBT.PageObjects.Rave
                     (role, () => new Role(role)).UniqueName;
 
                 ChooseFromDropdown("Role", roleName);
+            }
+        }
+
+        /// <summary>
+        /// Select the form exclusions for the pdf generator
+        /// </summary>
+        /// <param name="formExclusions">List of forms to exclude</param>
+        public void SelectFormExclusions(List<string> formExclusions)
+        {
+            //Open Form Exclusions box if it isn't already open
+            IWebElement formsDiv = Browser.TryShowArea("Forms_div", "Forms_ShowHideBtn");
+            foreach (string formToExclude in formExclusions)
+            {
+                //get checkbox next to form and check it
+                formsDiv.TryFindElementBy(By.XPath(".//td[contains(text(), '" + formToExclude.Trim() + "')]/../td/input")).EnhanceAs<Checkbox>().Check();
             }
         }
 

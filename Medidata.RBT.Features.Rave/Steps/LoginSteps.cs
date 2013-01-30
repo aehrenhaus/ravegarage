@@ -2,6 +2,7 @@
 using Medidata.RBT.PageObjects.Rave;
 using Medidata.RBT.PageObjects.Rave.SharedRaveObjects;
 using System;
+using Medidata.RBT.SeleniumExtension;
 
 
 namespace Medidata.RBT.Features.Rave
@@ -58,7 +59,7 @@ namespace Medidata.RBT.Features.Rave
         [StepDefinition(@"I log out of Rave")]
         public void ILogOutOfRave()
         {
-            CurrentPage.ClickLink("Logout");
+            CurrentPage.Browser.TryFindElementByPartialID("LogoutLink").Click();
         }
 	}
 }
