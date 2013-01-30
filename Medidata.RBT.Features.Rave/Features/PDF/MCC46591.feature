@@ -4,7 +4,6 @@
 Feature: MCC-46591 Log Lines in Blank/Blank Annotated PDFs are not displayed.
 
 #Note: Known DT12954 - Annotated PDFs cannot display all dictionary entries for Dictionaries with a large Number of Entries
-#Note: Known Issue MCC-47332 Last Coded Value Missing from PDF Output with default PDF configuration profile settings
 
 Background:
 
@@ -778,6 +777,7 @@ Then the text should contain "<Symbol>"
 |Atrium                 |
 |Aorta                  |
 |Mitral                 |
+|Other(please specify)  |
 
 @Release_2013.1.0
 @PBMCC46591-017
@@ -835,6 +835,7 @@ Then the text should contain "<Symbol>"
 |Atrium                 |
 |Aorta                  |
 |Mitral                 |
+|Other(please specify)  |
 
 @Release_2013.1.0
 @PBMCC46591-018
@@ -1152,6 +1153,7 @@ Then the text should contain "<Symbol>"
 |Atrium                 |
 |Aorta                  |
 |Mitral                 |
+|Other(please specify)  |
 
 @Release_2013.1.0
 @PBMCC46591-023
@@ -1209,6 +1211,7 @@ Then the text should contain "<Symbol>"
 |Atrium                 |
 |Aorta                  |
 |Mitral                 |
+|Other(please specify)  |
 
 @Release_2013.1.0
 @PBMCC46591-024
