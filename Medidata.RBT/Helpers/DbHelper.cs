@@ -201,5 +201,20 @@ ALTER DATABASE {0} SET ONLINE WITH ROLLBACK IMMEDIATE ",
             }
         }
 
+		/// <summary>
+		/// Helper method that returns the first DataRow in the first DataTable of a given DataSet.
+		/// Will return null if
+		///		1.	There are 0 DataTables in given DataSet
+		///		2.	There are 0 DataRows in the first DataTable
+		/// </summary>
+		/// <param name="set">DataSet instance for which to return the first DataRow</param>
+		/// <returns>The first DataRow of the parameter DataSet 'set'</returns>
+		public static DataRow GetFirstRow(this DataSet set)
+		{
+			var result = set.Tables.Count > 0 && set.Tables[0].Rows.Count > 0
+				? set.Tables[0].Rows[0]
+				: null;
+			return result;
+		}
 	}
 }

@@ -409,6 +409,7 @@
     <Compile Include="ReferenceFix.cs" />
     <Compile Include="Steps\ArchitectSteps_DB.cs" />
     <Compile Include="Steps\ConfigurationSteps.cs" />
+    <Compile Include="Steps\Seeding\CoderDictionarySteps.cs" />
     <Compile Include="Steps\UserGroupSteps.cs" />
     <Compile Include="Steps\ReportAdminSteps.cs" />
     <Compile Include="Steps\LabUnitConversionSteps.cs" />

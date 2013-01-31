@@ -12,6 +12,7 @@ using System.Xml;
 using System.Reflection;
 using Medidata.RBT.SharedObjects;
 using Medidata.RBT.SharedRaveObjects;
+using System.Text.RegularExpressions;
 
 namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
 {
@@ -127,6 +128,9 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
 
                     //Analytes
                     ReplaceAnalytesWithUniqueAnalytes(fieldsTable, row);
+
+					//Coding Dictionaries
+					ReplaceCodingDictionariesWithUniqueCodingDictionaries(fieldsTable, row);
 				}
 
 				//Create a unique version of the file to upload
@@ -174,6 +178,35 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
                 fieldsTable[currentRow, "AnalyteName"] = analyte.UniqueName.ToString();
             }
         }
+
+		/// <summary>
+		/// Replaces any coding dictionary assignments with seeded coding dictionaries.
+		/// The coding dictionary mus have already been seeded othervise an exception is thrown.
+		/// The version component will be replaced by the seeded version if the two versions don't match.
+		/// </summary>
+		/// <param name="fieldsTable">The excel table containing the fields</param>
+		/// <param name="currentRow">The current row in the fields table</param>
+		private void ReplaceCodingDictionariesWithUniqueCodingDictionaries(ExcelTable fieldsTable, int currentRow)
+		{
+			string codingDictionaryString = fieldsTable[currentRow, "CodingDictionary"] as string;
+
+			if (!string.IsNullOrEmpty(codingDictionaryString))
+			{
+				var match = Regex.Match(codingDictionaryString, @"(?<VERSION>\(.*?\))");
+				var version = match.Groups["VERSION"].Value;
+
+				codingDictionaryString = codingDictionaryString
+					.Replace(version, string.Empty).Trim();
+				
+				var cd = SeedingContext.GetExistingFeatureObjectOrMakeNew<CodingDictionary>(codingDictionaryString,
+					() => { throw new Exception(string.Format("Coding Dictionary [{0}] not found", codingDictionaryString)); });
+
+				codingDictionaryString = string.Format("{0} ({1})", 
+					cd.UniqueName, 
+					cd.DictionaryVersion);	//Lets use the seeded version instead of the one from the draft
+				fieldsTable[currentRow, "CodingDictionary"] = codingDictionaryString;
+			}
+		}
 
 
         /// <summary>

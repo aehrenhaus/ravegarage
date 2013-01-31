@@ -11,6 +11,17 @@ namespace Medidata.RBT.Features.Rave
 	[Binding]
 	public class StudySteps : BrowserStepsBase
 	{
+		/// <summary>
+		/// Creates a blank seeded Project (Study)
+		/// </summary>
+		/// <param name="studyName">Project (Study) name to be created</param>
+		[Given(@"study ""([^""]*)"" exists")]
+		public void GivenStudy____Exists(string studyName)
+		{
+			SeedingContext.GetExistingFeatureObjectOrMakeNew(studyName, () => new Project(studyName, false));
+			WebTestContext.CurrentPage = new HomePage().NavigateToSelf();
+		}
+
         /// <summary>
         /// XML draft is uploaded for seeding purposes.
         /// </summary>
