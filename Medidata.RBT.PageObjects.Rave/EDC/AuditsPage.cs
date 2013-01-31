@@ -112,7 +112,7 @@ namespace Medidata.RBT.PageObjects.Rave
                     
                     if (td != null)
                     {
-                        auditPosition = auditTDs.IndexOf(td) + 1;
+                        auditPosition = auditTDs.IndexOf(td) + 2;
                     }
 
                     isSpecifiedData = (td != null);
