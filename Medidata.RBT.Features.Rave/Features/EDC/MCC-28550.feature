@@ -616,7 +616,7 @@ Scenario: PBMCC28550-012 Verify Signature is broken in Audit when a log Form wwi
 	And I select primary record form
 	And I click audit on form level
    	And I select link "Subject - {Var(num12)} SUB"
-	And I choose "DataPage - Log Form" from "Children" 
+	And I choose "DataPage - Log Form 1" from "Children" 
 	Then I verify Audits exist
 		| Audit Type          | User                               | Time                 |
 		| Signature Broken    | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |
@@ -639,10 +639,10 @@ Scenario: PBMCC28550-013 Verify Signature is broken in Audit when a mixed Form i
 	And I select link "Mixed Form" 
 	And I take a screenshot
     And I enter data in CRF and save
-   		| Field     | Data         | Control Type |
-   		| Freeze    | TEST1        | textbox      |
-   		| DATA      | 20           | textbox      |
-   		| Signature | SUPER USER 1 | Signature    |
+   		| Field  | Data         | Control Type |
+   		| Freeze | TEST1        | textbox      |
+   		| DATA   | 20           | textbox      |
+   		| SIGN   | SUPER USER 1 | Signature    |
    	And I verify text "Default User" exists
    	And I take a screenshot
    	And I navigate to "Home"	
@@ -698,7 +698,7 @@ Scenario: PBMCC28550-014 Verify Signature is broken in Audit when a Mixed Form w
 	And I take a screenshot
     And I click button "Sign and Save"
 	And I sign the form with username "SUPER USER 1"
-	And I verify text "Please Sign the Data Page - Default User " exists
+	And I verify text "Please Sign the Data Page - Default User" exists
    	And I take a screenshot
    	And I navigate to "Home"	
 	And I select a Subject "{Var(num14)}"	
@@ -1583,10 +1583,10 @@ Scenario: PBMCC28550-029 Verify Signature is succeeded in Audit when a mixed for
 	And I take a screenshot
 	And I select link "Mixed Form"
 	And I enter data in CRF and save
-   		| Field     | Data         | Control Type |
-   		| Freeze    | TEST1        | textbox      |
-   		| DATA      | 20           | textbox      |
-   		| Signature | SUPER USER 1 | Signature    |
+   		| Field  | Data         | Control Type |
+   		| Freeze | TEST1        | textbox      |
+   		| DATA   | 20           | textbox      |
+   		| SIGN   | SUPER USER 1 | Signature    |
 	And I verify text "Default User  (defuser)" exists
 	And I take a screenshot	
    	And I click audit on form level
