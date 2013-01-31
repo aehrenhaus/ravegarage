@@ -1,23 +1,26 @@
 ﻿@FT_MCC-42707
-@ignore
 
-Feature: When configuring Coder settings, the settings are preserved even after changes are made to the data point settings on form designer.
+
+Feature: MCC-42707 When configuring Coder settings, the settings are preserved even after changes are made to the data point settings on form designer.
 
 
 Background:
 
-    Given role "MCC-42707_SUPERROLE" exists
-    Given xml draft "MCC-42707.xml" is Uploaded
-    Given study "MCC-42707" is assigned to Site "Site 1"
-    Given following Project assignments exist
-    | User         | Project   | Environment | Role               | Site   | SecurityRole          |
-    | SUPER USER 1 | MCC-42707 | Live: Prod  | MCC-42707_SUPERROLE| Site 1 | Project Admin Default | 
-    Given I login to Rave with user "SUPER USER 1"
+    #Given role "MCC-42707_SUPERROLE" exists
+    #Given xml draft "MCC-42707.xml" is Uploaded
+    #Given study "MCC-42707" is assigned to Site "Site 1"
+    #Given following Project assignments exist
+    #| User         | Project   | Environment | Role               | Site   | SecurityRole          |
+    #| SUPER USER 1 | MCC-42707 | Live: Prod  | MCC-42707_SUPERROLE| Site 1 | Project Admin Default | 
+    #Given I login to Rave with user "SUPER USER 1"
 
 
-@PBMCC41512-001
+@Release_2013.1.0
+@PBMCC-42707-001
+@SJ31.JAN.2013
 @Draft
-Scenario: Verify Coder settings are maintained after changing field format on a Log form designer. 
+
+Scenario: PBMCC-42707-001 Verify Coder settings are maintained after changing field format on a Log form designer. 
 
 	Given I login to Rave with user "SUPER USER 1"
 	When I navigate to "Architect"
@@ -73,9 +76,14 @@ Scenario: Verify Coder settings are maintained after changing field format on a 
 	And I take a screenshot
 
 
-@PBMCC41512-002
+
+@Release_2013.1.0
+@PBMCC-42707-002
+@SJ31.JAN.2013
 @Draft
-Scenario: Verify Coder settings are maintained after changing field format on a standard form designer.
+
+
+Scenario: PBMCC-42707-002 Verify Coder settings are maintained after changing field format on a standard form designer.
 
 	Given I login to Rave with user "SUPER USER 1"
 	When I navigate to "Architect"
@@ -130,9 +138,11 @@ Scenario: Verify Coder settings are maintained after changing field format on a 
 		| TEST1 | DRUGRECORDNUMBER |
 	And I take a screenshot
 
-@PBMCC41512-003
+@Release_2013.1.0
+@PBMCC-42707-003
+@SJ31.JAN.2013
 @Draft
-Scenario: Verify Coder settings are maintained after changing Coding Dictionary on a log form designer.
+Scenario: PBMCC-42707-003 Verify Coder settings are maintained after changing Coding Dictionary on a log form designer.
 
 	Given I login to Rave with user "SUPER USER 1"
 	When I navigate to "Architect"
@@ -187,9 +197,11 @@ Scenario: Verify Coder settings are maintained after changing Coding Dictionary 
 		| VARCHECKBX2 | SOURCE        |
 	And I take a screenshot
 
-@PBMCC41512-04
+@Release_2013.1.0
+@PBMCC-42707-004
+@SJ31.JAN.2013
 @Draft
-Scenario: Verify local setting in Coder is maintained after changing format on a log form designer.
+Scenario: PBMCC-42707-004 Verify local setting in Coder is maintained after changing format on a log form designer.
 
 	Given I login to Rave with user "SUPER USER 1"
 	When I navigate to "Architect"
@@ -219,9 +231,11 @@ Scenario: Verify local setting in Coder is maintained after changing format on a
 	And I verify text "3" exists in "Priority"
 	And I take a screenshot
 
-@PBMCC41512-05
+@Release_2013.1.0
+@PBMCC-42707-005
+@SJ31.JAN.2013
 @Draft
-Scenario: Verify Locale setting in Coder is maintained after changing Coding Dictionary on a log form designer.
+Scenario: PBMCC-42707-005 Verify Locale setting in Coder is maintained after changing Coding Dictionary on a log form designer.
 
 	Given I login to Rave with user "SUPER USER 1"
 	When I navigate to "Architect"
