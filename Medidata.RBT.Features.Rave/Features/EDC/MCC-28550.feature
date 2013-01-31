@@ -873,6 +873,7 @@ Scenario:  PBMCC28550-017 Verify Signature is succeeded in Audit when a standard
 	And I select link "Grid View"
 	And I select link "All"
 	And I click button "Sign and Save"
+	And I sign the form with username "SUPER USER 1"
 	And I verify text "Signature attempt was successful" exists 
 	And I take a screenshot	
 	And I select primary record form
@@ -932,6 +933,7 @@ Scenario: PBMCC28550-018 Verify Signature is succeeded in Audit when a standard 
 	And I select link "Grid View"
 	And I select link "All"
 	And I click button "Sign and Save"
+	And I sign the form with username "SUPER USER 1"
 	And I verify text "Signature attempt was successful" exists 
 	And I take a screenshot	
 	And I select primary record form
@@ -957,6 +959,7 @@ Scenario: PBMCC28550-018 Verify Signature is succeeded in Audit when a standard 
     And I select link "Grid View"
 	And I select link "Standard Form 1"
 	And I click button "Sign and Save"
+	And I sign the form with username "SUPER USER 1"
 	And I verify text "Signature attempt was successful" exists 
 	And I take a screenshot
 	And I select link "Calendar View"
@@ -989,6 +992,7 @@ Scenario: PBMCC28550-019 Verify Signature is succeeded in Audit when a log form 
 	And I select link "Grid View"
 	And I select link "All"
 	And I click button "Sign and Save"
+	And I sign the form with username "SUPER USER 1"
 	And I verify text "Signature attempt was successful" exists 
 	And I take a screenshot	
 	And I select primary record form
@@ -1017,6 +1021,7 @@ Scenario: PBMCC28550-019 Verify Signature is succeeded in Audit when a log form 
     And I select link "Grid View"
 	And I select link "Log Form"
 	And I click button "Sign and Save"
+	And I sign the form with username "SUPER USER 1"
 	And I verify text "Signature attempt was successful" exists 
 	And I take a screenshot
 	And I select link "Calendar View"
@@ -1049,6 +1054,7 @@ Scenario: PBMCC28550-020 Verify Signature is succeeded in Audit when a log form 
 	And I select link "Grid View"
 	And I select link "All"
 	And I click button "Sign and Save"
+	And I sign the form with username "SUPER USER 1"
 	And I verify text "Signature attempt was successful" exists 
 	And I take a screenshot	
 	And I select primary record form
@@ -1074,6 +1080,7 @@ Scenario: PBMCC28550-020 Verify Signature is succeeded in Audit when a log form 
     And I select link "Grid View"
 	And I select link "Log Form 1"
 	And I click button "Sign and Save"
+	And I sign the form with username "SUPER USER 1"
 	And I verify text "Signature attempt was successful" exists 
 	And I take a screenshot
 	And I select link "Calendar View"
@@ -1104,6 +1111,7 @@ Scenario: PBMCC28550-021 Verify Signature is succeeded in Audit when a mixed for
 	And I select link "Grid View"
 	And I select link "All"
 	And I click button "Sign and Save"
+	And I sign the form with username "SUPER USER 1"
 	And I verify text "Signature attempt was successful" exists 
 	And I take a screenshot	
 	And I select primary record form
@@ -1132,6 +1140,7 @@ Scenario: PBMCC28550-021 Verify Signature is succeeded in Audit when a mixed for
     And I select link "Grid View"
 	And I select link "Mixed Form"
 	And I click button "Sign and Save"
+	And I sign the form with username "SUPER USER 1"
 	And I verify text "Signature attempt was successful" exists 
 	And I take a screenshot
 	And I select link "Calendar View"
@@ -1163,6 +1172,7 @@ Scenario: PBMCC28550-022 Verify Signature is succeeded in Audit when a mixed for
 	And I select link "Grid View"
 	And I select link "All"
 	And I click button "Sign and Save"
+	And I sign the form with username "SUPER USER 1"
 	And I verify text "Signature attempt was successful" exists 
 	And I take a screenshot	
 	And I select primary record form
@@ -1188,6 +1198,7 @@ Scenario: PBMCC28550-022 Verify Signature is succeeded in Audit when a mixed for
     And I select link "Grid View"
 	And I select link "Mixed Form 1"
 	And I click button "Sign and Save"
+	And I sign the form with username "SUPER USER 1"
 	And I verify text "Signature attempt was successful" exists 
 	And I take a screenshot
 	And I select link "Calendar View"
@@ -1225,6 +1236,7 @@ Scenario: PBMCC28550-023 Verify Signature is succeeded in Audit when a lab form 
 	And I select link "Grid View"
 	And I select link "All"
 	And I click button "Sign and Save"
+	And I sign the form with username "SUPER USER 1"
 	And I verify text "Signature attempt was successful" exists 
 	And I take a screenshot	
 	And I select primary record form
@@ -1254,6 +1266,7 @@ Scenario: PBMCC28550-023 Verify Signature is succeeded in Audit when a lab form 
     And I select link "Grid View"
 	And I select link "Log Form"
 	And I click button "Sign and Save"
+	And I sign the form with username "SUPER USER 1"
 	And I verify text "Signature attempt was successful" exists 
 	And I take a screenshot
 	And I select link "Calendar View"
@@ -1291,6 +1304,7 @@ Scenario: PBMCC28550-024 Verify Signature is succeeded in Audit when a lab form 
 	And I select link "Grid View"
 	And I select link "All"
 	And I click button "Sign and Save"
+	And I sign the form with username "SUPER USER 1"
 	And I verify text "Signature attempt was successful" exists 
 	And I take a screenshot	
 	And I select primary record form
@@ -1317,6 +1331,7 @@ Scenario: PBMCC28550-024 Verify Signature is succeeded in Audit when a lab form 
     And I select link "Grid View"
 	And I select link "Log Form 1"
 	And I click button "Sign and Save"
+	And I sign the form with username "SUPER USER 1"
 	And I verify text "Signature attempt was successful" exists 
 	And I take a screenshot
 	And I select link "Calendar View"
@@ -1373,6 +1388,7 @@ Scenario: PBMCC28550-025 Verify Signature is succeeded in Audit when a standard 
     And I select link "Grid View"
     And I select link "Standard Form"
     And I click button "Sign and Save"
+	And I sign the form with username "SUPER USER 1"
     And I verify text "Signature attempt was successful" exists 
 	And I take a screenshot
     And I select link "Calendar View"
@@ -1429,6 +1445,7 @@ Scenario: PBMCC28550-026 Verify Signature is succeeded in Audit when a standard 
     And I select link "Grid View"
     And I select link "Standard Form 1"
     And I click button "Sign and Save"
+	And I sign the form with username "SUPER USER 1"
     And I verify text "Signature attempt was successful" exists 
 	And I take a screenshot
     And I select link "Calendar View"
@@ -1672,6 +1689,7 @@ Scenario: PBMCC28550-030 Verify Signature is succeeded in Audit when a mixed for
     And I select link "Grid View"
     And I select link "Mixed Form 1"
     And I click button "Sign and Save"
+	And I sign the form with username "SUPER USER 1"
     And I verify text "Signature attempt was successful" exists 
 	And I take a screenshot
     And I select link "Calendar View"
@@ -1737,6 +1755,7 @@ Scenario: PBMCC28550-031 Verify Signature is succeeded in Audit when a lab form 
     And I select link "Grid View"
     And I select link "Lab Form"
     And I click button "Sign and Save"
+	And I sign the form with username "SUPER USER 1"
     And I verify text "Signature attempt was successful" exists 
 	And I take a screenshot
     And I select link "Calendar View"
@@ -1774,7 +1793,8 @@ Scenario: PBMCC28550-032 Verify Signature is succeeded in Audit when a lab form 
 	And I select Lab "LocalLab_MCC-28550"
 	And I take a screenshot
 	And I click button "Sign and Save"
-	And I verify text "Please Sign - Default User  (defuser)" exists 
+	And I sign the form with username "SUPER USER 1"
+	And I verify text "Please Sign - Default User" exists 
    	And I take a screenshot
    	And I click audit on form level
    	Then I verify Audits exist
@@ -1799,6 +1819,7 @@ Scenario: PBMCC28550-032 Verify Signature is succeeded in Audit when a lab form 
     And I select link "Grid View"
     And I select link "Lab Form 1"
     And I click button "Sign and Save"
+	And I sign the form with username "SUPER USER 1"
     And I verify text "Signature attempt was successful" exists 
 	And I take a screenshot
     And I select link "Calendar View"
