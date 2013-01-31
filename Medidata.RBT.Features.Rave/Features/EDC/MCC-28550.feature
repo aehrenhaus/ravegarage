@@ -5,14 +5,13 @@ Feature:
 
 
 Background:
-
+	Given study "MCC-28550" is assigned to Site "Site1"
 	Given xml Lab Configuration "Lab_MCC-28550.xml" is uploaded
     Given role "SUPER ROLE 1" exists
     Given xml draft "MCC-28550.xml" is Uploaded
-    Given study "MCC-28550" is assigned to Site "Site 1"
     Given following Project assignments exist
-    | User         | Project   | Environment | Role        | Site   | SecurityRole          |
-    | SUPER USER 1 | MCC-28550 | Live: Prod  | SUPER ROLE 1| Site 1 | Project Admin Default | 
+    | User         | Project   | Environment | Role         | Site  | SecurityRole          |
+    | SUPER USER 1 | MCC-28550 | Live: Prod  | SUPER ROLE 1 | Site1 | Project Admin Default | 
     Given I publish and push eCRF "MCC-28550.xml" to "Version 1"
    
 	
@@ -26,9 +25,9 @@ Scenario: PBMCC28550-001 Verify Signature is broken in Audit when Primary form i
 
 	When I login to Rave with user "SUPER USER 1"
 	And I create a Subject
-		| Field            | Data               |
-	  	| Subject Initials | SUB                |
-	  	| Subject Number   | {RndNum<num1>(4)}  |
+		| Field            | Data              |
+		| Subject Initials | SUB               |
+		| Subject Number   | {RndNum<num1>(4)} |
 	And I take a screenshot
 	And I click button "Sign and Save"
 	And I sign the form with username "SUPER USER 1"
@@ -37,7 +36,7 @@ Scenario: PBMCC28550-001 Verify Signature is broken in Audit when Primary form i
 	And I select primary record form
 	And I click audit on form level
 	Then I verify Audits exist
-		| Audit Type 		  | User 							   | Time 				  |
+		| Audit Type          | User                               | Time                 |
 		| Signature Succeeded | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |
     And I take a screenshot 	        
     And I navigate to "Home"	
@@ -45,8 +44,8 @@ Scenario: PBMCC28550-001 Verify Signature is broken in Audit when Primary form i
     And I select link "Standard Form"
     And I take a screenshot 
     And I enter data in CRF and save
-   		| Field 		| Data  	| Control Type |
-   		| Text          | TEST1     | dropdown	   |
+   		| Field | Data  | Control Type |
+   		| Text  | TEST1 | dropdown     |
    	And I take a screenshot
    	And I navigate to "Home"	
 	And I select a Subject "{Var(num1)}"	
@@ -115,9 +114,9 @@ Scenario: PBMCC28550-003 Verify Signature is broken in Audit when Primary form i
 
 	When I login to Rave with user "SUPER USER 1"
 	And I create a Subject
-		| Field            | Data               |
-	  	| Subject Initials | SUB                |
-	  	| Subject Number   | {RndNum<num3>(4)}  |
+		| Field            | Data              |
+		| Subject Initials | SUB               |
+		| Subject Number   | {RndNum<num3>(4)} |
 	And I take a screenshot
 	And I click button "Sign and Save"
 	And I sign the form with username "SUPER USER 1"
@@ -126,7 +125,7 @@ Scenario: PBMCC28550-003 Verify Signature is broken in Audit when Primary form i
 	And I select primary record form
 	And I click audit on form level
 	Then I verify Audits exist
-		| Audit Type 		  | User 							   | Time 				  |
+		| Audit Type          | User                               | Time                 |
 		| Signature Succeeded | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |  
     And I take a screenshot 	        
     And I take a screenshot 	        
@@ -147,9 +146,9 @@ Scenario: PBMCC28550-003 Verify Signature is broken in Audit when Primary form i
 	And I select link "Subject - {Var(num3)} SUB"
 	And I choose "DataPage - Log Form" from "Children" 
 	Then I verify Audits exist
-		| Audit Type 	     | User 							  | Time 				 |
-		| Signature Broken   | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |
-		| Signature Succeeded| Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |
+		| Audit Type          | User                               | Time                 |
+		| Signature Broken    | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |
+		| Signature Succeeded | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |
     And I take a screenshot
 
 
@@ -163,9 +162,9 @@ Scenario: PBMCC28550-004 Verify Signature is broken in Audit when Primary form i
 
 	When I login to Rave with user "SUPER USER 1"
 	And I create a Subject
-		| Field            | Data               |
-	  	| Subject Initials | SUB                |
-	  	| Subject Number   | {RndNum<num4>(4)}  |
+		| Field            | Data              |
+		| Subject Initials | SUB               |
+		| Subject Number   | {RndNum<num4>(4)} |
 	And I take a screenshot
 	And I click button "Sign and Save"
 	And I sign the form with username "SUPER USER 1"
@@ -174,7 +173,7 @@ Scenario: PBMCC28550-004 Verify Signature is broken in Audit when Primary form i
 	And I select primary record form
 	And I click audit on form level
 	Then I verify Audits exist
-		| Audit Type 		  | User 							   | Time 				  |
+		| Audit Type          | User                               | Time                 |
 		| Signature Succeeded | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |   
     And I take a screenshot 	        
     And I navigate to "Home"	
@@ -193,9 +192,9 @@ Scenario: PBMCC28550-004 Verify Signature is broken in Audit when Primary form i
 	And I select link "Subject - {Var(num4)} SUB"
 	And I choose "DataPage - Log Form 1" from "Children" 
 	Then I verify Audits exist
-		| Audit Type 	     | User 							  | Time 				 |
-		| Signature Broken   | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |
-		| Signature Succeeded| Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |
+		| Audit Type          | User                               | Time                 |
+		| Signature Broken    | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |
+		| Signature Succeeded | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |
     And I take a screenshot
 
 
@@ -209,9 +208,9 @@ Scenario: PBMCC28550-00 Verify Signature is broken in Audit when Primary form is
 
 	When I login to Rave with user "SUPER USER 1"
 	And I create a Subject
-		| Field            | Data               |
-	  	| Subject Initials | SUB                |
-	  	| Subject Number   | {RndNum<num5>(4)}  |
+		| Field            | Data              |
+		| Subject Initials | SUB               |
+		| Subject Number   | {RndNum<num5>(4)} |
 	And I take a screenshot
 	And I click button "Sign and Save"
 	And I sign the form with username "SUPER USER 1"
@@ -220,7 +219,7 @@ Scenario: PBMCC28550-00 Verify Signature is broken in Audit when Primary form is
 	And I select primary record form
 	And I click audit on form level
 	Then I verify Audits exist
-		| Audit Type 		  | User 							   | Time 				  |
+		| Audit Type          | User                               | Time                 |
 		| Signature Succeeded | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |   
     And I take a screenshot 	        
     And I navigate to "Home"	
@@ -240,9 +239,9 @@ Scenario: PBMCC28550-00 Verify Signature is broken in Audit when Primary form is
 	And I select link "Subject - {Var(num5)} SUB"
 	And I choose "DataPage - Mixed Form" from "Children" 
 	Then I verify Audits exist
-		| Audit Type 	     | User 							  | Time 				 |
-		| Signature Broken   | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |
-		| Signature Succeeded| Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |
+		| Audit Type          | User                               | Time                 |
+		| Signature Broken    | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |
+		| Signature Succeeded | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |
     And I take a screenshot
 
 
@@ -255,9 +254,9 @@ Scenario: PBMCC28550-006 Verify Signature is broken in Audit when Primary form i
 
 	When I login to Rave with user "SUPER USER 1"
 	And I create a Subject
-		| Field            | Data               |
-	  	| Subject Initials | SUB                |
-	  	| Subject Number   | {RndNum<num6>(4)}  |
+		| Field            | Data              |
+		| Subject Initials | SUB               |
+		| Subject Number   | {RndNum<num6>(4)} |
 	And I take a screenshot
 	And I click button "Sign and Save"
 	And I sign the form with username "SUPER USER 1"
@@ -266,7 +265,7 @@ Scenario: PBMCC28550-006 Verify Signature is broken in Audit when Primary form i
 	And I select primary record form
 	And I click audit on form level
 	Then I verify Audits exist
-		| Audit Type 		  | User 							   | Time 				  |
+		| Audit Type          | User                               | Time                 |
 		| Signature Succeeded | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |  
     And I take a screenshot 	        
     And I navigate to "Home"	
@@ -284,9 +283,9 @@ Scenario: PBMCC28550-006 Verify Signature is broken in Audit when Primary form i
 	And I select link "Subject - {Var(num6)} SUB"
 	And I choose "DataPage - Mixed Form 1" from "Children" 
 	Then I verify Audits exist
-		| Audit Type 	     | User 							  | Time 				 |
-		| Signature Broken   | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |
-		| Signature Succeeded| Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |
+		| Audit Type          | User                               | Time                 |
+		| Signature Broken    | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |
+		| Signature Succeeded | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |
     And I take a screenshot
 
 
@@ -301,14 +300,14 @@ Scenario: PBMCC28550-007 Verify Signature is broken in Audit when Primary form i
 
 	When I login to Rave with user "SUPER USER 1"
 	And I create a Subject
-		| Field            | Data               |
-	  	| Subject Initials | SUB                |
-	  	| Subject Number   | {RndNum<num7>(4)}  |
+		| Field            | Data              |
+		| Subject Initials | SUB               |
+		| Subject Number   | {RndNum<num7>(4)} |
 	And I take a screenshot
 	And I select link "Lab Demographics"
 	And I enter data in CRF and save
-   		| Field       | Data | Control Type |
-   		| Age         | 22   | textbox      |
+   		| Field | Data | Control Type |
+   		| Age   | 22   | textbox      |
 	And I navigate to "Home"
 	And I select a Subject "{Var(num7)}"	
 	And I click button "Sign and Save"
@@ -318,7 +317,7 @@ Scenario: PBMCC28550-007 Verify Signature is broken in Audit when Primary form i
 	And I select primary record form
 	And I click audit on form level
 	Then I verify Audits exist
-		| Audit Type 		  | User 							   | Time 				  |
+		| Audit Type          | User                               | Time                 |
 		| Signature Succeeded | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |  
     And I take a screenshot 	        
     And I navigate to "Home"	
@@ -336,10 +335,10 @@ Scenario: PBMCC28550-007 Verify Signature is broken in Audit when Primary form i
 	And I click audit on form level
 	And I select link "Subject - {Var(num7)} SUB"
 	And I choose "DataPage - Lab Form" from "Children" 
-	Then I verify Audits exist
-		| Audit Type 	     | User 							  | Time 				 |
-		| Signature Broken   | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |
-		| Signature Succeeded| Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |
+	Then I verify last audit exist
+		| Audit Type          | User                               | Time                 |
+		| Signature Broken    | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |
+		| Signature Succeeded | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |
     And I take a screenshot
 
 
@@ -352,16 +351,15 @@ Scenario: PBMCC28550-007 Verify Signature is broken in Audit when Primary form i
 Scenario: PBMCC28550-008 Verify Signature is broken in Audit when Primary form is signed and data saved in a lab form with default value.
 
 	When I login to Rave with user "SUPER USER 1"
-	
 	And I create a Subject
-		| Field            | Data               |
-	  	| Subject Initials | SUB                |
-	  	| Subject Number   | {RndNum<num8>(4)}  |
+		| Field            | Data              |
+		| Subject Initials | SUB               |
+		| Subject Number   | {RndNum<num8>(4)} |
 	And I take a screenshot
 	And I select link "Lab Demographics"
 	And I enter data in CRF and save
-   		| Field       | Data | Control Type |
-   		| Age         | 22   | textbox      |
+   		| Field | Data | Control Type |
+   		| Age   | 22   | textbox      |
 	And I navigate to "Home"
 	And I select a Subject "{Var(num8)}"	
 	And I click button "Sign and Save"
@@ -371,7 +369,7 @@ Scenario: PBMCC28550-008 Verify Signature is broken in Audit when Primary form i
 	And I select primary record form
 	And I click audit on form level
 	Then I verify Audits exist
-		| Audit Type 		  | User 							   | Time 				  |
+		| Audit Type          | User                               | Time                 |
 		| Signature Succeeded | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |  
     And I take a screenshot 	        
     And I navigate to "Home"	
@@ -379,10 +377,7 @@ Scenario: PBMCC28550-008 Verify Signature is broken in Audit when Primary form i
     And I select link "Lab Form 1"
     And I select Lab "LocalLab_MCC-28550"
     And I take a screenshot
-    And I enter data in CRF and save
-   		| Field       | Data | Control Type |
-   		| WBC         |      | textbox      |
-   		| Neutrophils |      | textbox      |
+    And I save the CRF page
    	And I take a screenshot
    	And I navigate to "Home"	
 	And I select a Subject "{Var(num8)}"	
@@ -390,10 +385,10 @@ Scenario: PBMCC28550-008 Verify Signature is broken in Audit when Primary form i
 	And I click audit on form level
 	And I select link "Subject - {Var(num8)} SUB"
 	And I choose "DataPage - Lab Form 1" from "Children" 
-	Then I verify Audits exist
-		| Audit Type 	     | User 							  | Time 				 |
-		| Signature Broken   | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |
-		| Signature Succeeded| Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |
+	Then I verify last audit exist
+		| Audit Type          | User                               | Time                 |
+		| Signature Broken    | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |
+		| Signature Succeeded | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |
     And I take a screenshot
 
 
@@ -407,16 +402,15 @@ Scenario: PBMCC28550-009 Verify Signature is broken in Audit when a Standard For
 
 	When I login to Rave with user "SUPER USER 1"
 	And I create a Subject
-		| Field            | Data               |
-	  	| Subject Initials | SUB                |
-	  	| Subject Number   | {RndNum<num9>(4)}  |
+		| Field            | Data              |
+		| Subject Initials | SUB               |
+		| Subject Number   | {RndNum<num9>(4)} |
 	And I take a screenshot
 	And I select link "Standard Form" 
     And I enter data in CRF and save
-   		| Field      | Data         | Control Type |
-   		| Text       | TEST1        | dropdown     |
-   		| User Name: | SUPER USER 1 | Signature    |
-   		| Password:  | password     | textbox      |
+   		| Field     | Data         | Control Type |
+   		| Text      | TEST1        | dropdown     |
+   		| Signature | SUPER USER 1 | Signature    | 
    	And I verify text "Signature attempt was successful" exists 
    	And I take a screenshot
    	And I navigate to "Home"	
@@ -426,21 +420,21 @@ Scenario: PBMCC28550-009 Verify Signature is broken in Audit when a Standard For
 	And I select link "Subject - {Var(num9)} SUB"
 	And I choose "DataPage - Standard Form" from "Children" 
 	Then I verify Audits exist
-		| Audit Type 		  | User 							   | Time 				  |
+		| Audit Type          | User                               | Time                 |
 		| Signature Succeeded | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |  
     And I take a screenshot
     And I navigate to "Home"	
 	And I select a Subject "{Var(num9)}"
 	And I select link "Standard Form"
 	And I enter data in CRF and save
-   		| Field 		| Data  	| Control Type |
-   		| Action Taken	| None Taken| dropdown	   |
+   		| Field        | Data       | Control Type |
+   		| Action Taken | None Taken | dropdown     |
    	And I take a screenshot
    	And I click audit on form level
    	Then I verify Audits exist
-		| Audit Type 	     | User 							  | Time 				 |
-		| Signature Broken   | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |
-		| Signature Succeeded| Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |
+		| Audit Type          | User                               | Time                 |
+		| Signature Broken    | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |
+		| Signature Succeeded | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |
     And I take a screenshot 
    	And I navigate to "Home"	
 	And I select a Subject "{Var(num9)}"	
@@ -449,9 +443,9 @@ Scenario: PBMCC28550-009 Verify Signature is broken in Audit when a Standard For
 	And I select link "Subject - {Var(num9)} SUB"
 	And I choose "DataPage - Standard Form" from "Children" 
 	Then I verify Audits exist
-		| Audit Type 	     | User 							  | Time 				 |
-		| Signature Broken   | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |
-		| Signature Succeeded| Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss | 
+		| Audit Type          | User                               | Time                 |
+		| Signature Broken    | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |
+		| Signature Succeeded | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss | 
     And I take a screenshot
 
 
@@ -471,11 +465,11 @@ Scenario: PBMCC28550-010 Verify Signature is broken in Audit when a Standard For
 	And I select link "Standard Form 1" 
 	And I take a screenshot
     And I enter data in CRF and save
-   		| Field 		| Data  	| Control Type |
-   		| Action Taken  | None Taken| dropdown	   |
+   		| Field        | Data       | Control Type |
+   		| Action Taken | None Taken | dropdown     |
    	And I click button "Sign and Save"
    	And I sign the form with username "SUPER USER 1"
-   	And I verify text "Please Sign the Data Page - Default User  (defuser)" exists 
+   	And I verify text "Please Sign the Data Page - Default User" exists 
    	And I take a screenshot
    	And I navigate to "Home"	
 	And I select a Subject "{Var(num10)}"	
@@ -484,15 +478,15 @@ Scenario: PBMCC28550-010 Verify Signature is broken in Audit when a Standard For
 	And I select link "Subject - {Var(num10)} SUB"
 	And I choose "DataPage - Standard Form 1" from "Children" 
 	Then I verify Audits exist
-		| Audit Type 		  | User 							   | Time 				  |
-		| Signature Succeeded | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |  
+		| Audit Type          | User                               | Time                 |
+		| Signature Succeeded | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss | 
     And I take a screenshot
     And I navigate to "Home"	
 	And I select a Subject "{Var(num10)}"
 	And I select link "Standard Form 1"
 	And I enter data in CRF and save
-   		| Field 		| Data  	| Control Type |
-   		| Action Taken	| Medication| dropdown	   |
+   		| Field        | Data       | Control Type |
+   		| Action Taken | Medication | dropdown     |
    	And I take a screenshot
    	And I click audit on form level
    	Then I verify Audits exist
@@ -507,9 +501,9 @@ Scenario: PBMCC28550-010 Verify Signature is broken in Audit when a Standard For
    	And I select link "Subject - {Var(num10)} SUB"
 	And I choose "DataPage - Standard Form 1" from "Children" 
 	Then I verify Audits exist
-		| Audit Type 	     | User 							  | Time 				 |
-		| Signature Broken   | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |
-		| Signature Succeeded| Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |  
+		| Audit Type          | User                               | Time                 |
+		| Signature Broken    | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |
+		| Signature Succeeded | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |  
     And I take a screenshot
 
 
@@ -533,8 +527,8 @@ Scenario: PBMCC28550-011 Verify Signature is broken in Audit when a log Form is 
    		| Field      | Data         | Control Type |
    		| Text       | TEST1        | textbox      |
    		| User Name: | SUPER USER 1 | Signature    |
-   		| Password:  | password     | textbox      |
-   	And I verify text "Default User (defuser)" exists
+   	
+   	And I verify text "Default User" exists
    	And I take a screenshot
    	And I navigate to "Home"	
 	And I select a Subject "{Var(num11)}"	
@@ -543,8 +537,8 @@ Scenario: PBMCC28550-011 Verify Signature is broken in Audit when a log Form is 
 	And I select link "Subject - {Var(num11)} SUB"
 	And I choose "DataPage - Log Form" from "Children" 
 	Then I verify Audits exist
-		| Audit Type 	     | User 							  | Time 				 |
-		| Signature Succeeded| Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |  
+		| Audit Type          | User                               | Time                 |
+		| Signature Succeeded | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |  
     And I take a screenshot
     And I navigate to "Home"	
 	And I select a Subject "{Var(num11)}"
@@ -552,14 +546,14 @@ Scenario: PBMCC28550-011 Verify Signature is broken in Audit when a log Form is 
 	And I add a new log line
 	And I take a screenshot
 	And I enter data in CRF and save
-   		| Field 		| Data  	| Control Type |
-   		| Action Taken	| Medication| dropdown	   |
+   		| Field        | Data       | Control Type |
+   		| Action Taken | Medication | dropdown     |
    	And I take a screenshot
    	And I click audit on form level
    	Then I verify Audits exist
-		| Audit Type 	     | User 							  | Time 				 |
-		| Signature Broken   | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |
-		| Signature Succeeded| Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss | 
+		| Audit Type          | User                               | Time                 |
+		| Signature Broken    | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |
+		| Signature Succeeded | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |
     And I take a screenshot 
     And I navigate to "Home"
     And I select a Subject "{Var(num11)}"	
@@ -568,9 +562,9 @@ Scenario: PBMCC28550-011 Verify Signature is broken in Audit when a log Form is 
    	And I select link "Subject - {Var(num11)} SUB"
 	And I choose "DataPage - Log Form" from "Children" 
 	Then I verify Audits exist
-		| Audit Type 	     | User 							  | Time 				 |
-		| Signature Broken   | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |
-		| Signature Succeeded| Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss | 
+		| Audit Type          | User                               | Time                 |
+		| Signature Broken    | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |
+		| Signature Succeeded | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss | 
     And I take a screenshot
 
 
@@ -591,7 +585,7 @@ Scenario: PBMCC28550-012 Verify Signature is broken in Audit when a log Form wwi
 	And I take a screenshot
 	And I click button "Sign and Save"
 	And I sign the form with username "SUPER USER 1"
-	And I verify text "Please Sign the Data Page - Default User  (defuser)" exists
+	And I verify text "Please Sign the Data Page - Default User " exists
    	And I take a screenshot
    	And I navigate to "Home"	
 	And I select a Subject "{Var(num12)}"	
@@ -600,22 +594,22 @@ Scenario: PBMCC28550-012 Verify Signature is broken in Audit when a log Form wwi
 	And I select link "Subject - {Var(num12)} SUB"
 	And I choose "DataPage - Log Form 1" from "Children" 
 	Then I verify Audits exist
-		| Audit Type 	     | User 							  | Time 				 |
-		| Signature Succeeded| Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss | 
+		| Audit Type          | User                               | Time                 |
+		| Signature Succeeded | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss | 
     And I take a screenshot
     And I navigate to "Home"	
 	And I select a Subject "{Var(num12)}"
 	And I select link "Log Form 1"
 	And I add a new log line
 	And I enter data in CRF and save
-   		| Field 		| Data  	| Control Type |
-   		| Action Taken	| Medication| dropdown	   |
+   		| Field        | Data       | Control Type |
+   		| Action Taken | Medication | dropdown     |
    	And I take a screenshot
    	And I click audit on form level
    	Then I verify Audits exist
-		| Audit Type 	     | User 							  | Time 				 |
-		| Signature Broken   | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |
-		| Signature Succeeded| Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss | 
+		| Audit Type          | User                               | Time                 |
+		| Signature Broken    | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |
+		| Signature Succeeded | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss | 
     And I take a screenshot 
     And I navigate to "Home"
     And I select a Subject "{Var(num12)}"	
@@ -624,9 +618,9 @@ Scenario: PBMCC28550-012 Verify Signature is broken in Audit when a log Form wwi
    	And I select link "Subject - {Var(num12)} SUB"
 	And I choose "DataPage - Log Form" from "Children" 
 	Then I verify Audits exist
-		| Audit Type 	     | User 							  | Time 				 |
-		| Signature Broken   | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |
-		| Signature Succeeded| Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss | 
+		| Audit Type          | User                               | Time                 |
+		| Signature Broken    | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |
+		| Signature Succeeded | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss | 
     And I take a screenshot
 
 @Release_2013.1.0
@@ -645,12 +639,11 @@ Scenario: PBMCC28550-013 Verify Signature is broken in Audit when a mixed Form i
 	And I select link "Mixed Form" 
 	And I take a screenshot
     And I enter data in CRF and save
-   		| Field      | Data         | Control Type |
-   		| Freeze     | TEST1        | textbox      |
-   		| DATA       | 20           | textbox      |
-   		| User Name: | SUPER USER 1 | Signature    |
-   		| Password:  | password     | textbox      |
-   	And I verify text "Default User (defuser)" exists
+   		| Field     | Data         | Control Type |
+   		| Freeze    | TEST1        | textbox      |
+   		| DATA      | 20           | textbox      |
+   		| Signature | SUPER USER 1 | Signature    |
+   	And I verify text "Default User" exists
    	And I take a screenshot
    	And I navigate to "Home"	
 	And I select a Subject "{Var(num13)}"	
@@ -659,21 +652,21 @@ Scenario: PBMCC28550-013 Verify Signature is broken in Audit when a mixed Form i
 	And I select link "Subject - {Var(num13)} SUB"
 	And I choose "DataPage - Mixed Form" from "Children" 
 	Then I verify Audits exist
-		| Audit Type 	     | User 							  | Time 				 |
-		| Signature Succeeded| Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss | 
+		| Audit Type          | User                               | Time                 |
+		| Signature Succeeded | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss | 
     And I take a screenshot
     And I navigate to "Home"	
 	And I select a Subject "{Var(num13)}"
 	And I select link "Mixed Form"
 	And I enter data in CRF and save
-   		| Field 		| Data  	| Control Type |
-   		| TRANSLATE 	| 20        | textbox  	   |
+   		| Field     | Data | Control Type |
+   		| TRANSLATE | 20   | textbox      |
    	And I take a screenshot
    	And I click audit on form level
    	Then I verify Audits exist
-		| Audit Type 	     | User 							  | Time 				 |
-		| Signature Broken   | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |
-		| Signature Succeeded| Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss | 
+		| Audit Type          | User                               | Time                 |
+		| Signature Broken    | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |
+		| Signature Succeeded | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss | 
     And I take a screenshot 
     And I navigate to "Home"
     And I select a Subject "{Var(num13)}"	
@@ -682,9 +675,9 @@ Scenario: PBMCC28550-013 Verify Signature is broken in Audit when a mixed Form i
    	And I select link "Subject - {Var(num13)} SUB"
 	And I choose "DataPage - Mixed Form" from "Children" 
 	Then I verify Audits exist
-		| Audit Type 	     | User 							  | Time 				 |
-		| Signature Broken   | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |
-		| Signature Succeeded| Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |  
+		| Audit Type          | User                               | Time                 |
+		| Signature Broken    | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |
+		| Signature Succeeded | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |  
     And I take a screenshot
 
 
@@ -705,7 +698,7 @@ Scenario: PBMCC28550-014 Verify Signature is broken in Audit when a Mixed Form w
 	And I take a screenshot
     And I click button "Sign and Save"
 	And I sign the form with username "SUPER USER 1"
-	And I verify text "Please Sign the Data Page - Default User  (defuser)" exists
+	And I verify text "Please Sign the Data Page - Default User " exists
    	And I take a screenshot
    	And I navigate to "Home"	
 	And I select a Subject "{Var(num14)}"	
@@ -714,21 +707,21 @@ Scenario: PBMCC28550-014 Verify Signature is broken in Audit when a Mixed Form w
 	And I select link "Subject - {Var(num14)} SUB"
 	And I choose "DataPage - Mixed Form 1" from "Children" 
 	Then I verify Audits exist
-		| Audit Type 	     | User 							  | Time 				 |
-		| Signature Succeeded| Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |  
+		| Audit Type          | User                               | Time                 |
+		| Signature Succeeded | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss | 
     And I take a screenshot
     And I navigate to "Home"	
 	And I select a Subject "{Var(num14)}"
 	And I select link "Mixed Form 1"
 	And I enter data in CRF and save
-   		| Field 		| Data  	| Control Type |
-   		| TRANSLATE 	| 20        | textbox  	   |
+   		| Field     | Data | Control Type |
+   		| TRANSLATE | 20   | textbox      |
    	And I take a screenshot
    	And I click audit on form level
    	Then I verify Audits exist
-		| Audit Type 	     | User 							  | Time 				 |
-		| Signature Broken   | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |
-		| Signature Succeeded| Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss | 
+		| Audit Type          | User                               | Time                 |
+		| Signature Broken    | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |
+		| Signature Succeeded | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss | 
     And I navigate to "Home"
     And I select a Subject "{Var(num14)}"	
 	And I select primary record form
@@ -736,9 +729,9 @@ Scenario: PBMCC28550-014 Verify Signature is broken in Audit when a Mixed Form w
    	And I select link "Subject - {Var(num14)} SUB"
 	And I choose "DataPage - Mixed Form 1" from "Children" 
 	Then I verify Audits exist
-		| Audit Type 	     | User 							  | Time 				 |
-		| Signature Broken   | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |
-		| Signature Succeeded| Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |  
+		| Audit Type          | User                               | Time                 |
+		| Signature Broken    | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |
+		| Signature Succeeded | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |  
     And I take a screenshot
 
 @Release_2013.1.0
@@ -757,17 +750,17 @@ Scenario: PBMCC28550-015 Verify Signature is broken in Audit when a lab Form is 
 	And I take a screenshot
 	And I select link "Lab Demographics"
 	And I enter data in CRF and save
-   		| Field       | Data | Control Type |
-   		| Age         | 22   | textbox      |	
+   		| Field | Data | Control Type |
+   		| Age   | 22   | textbox      |	
 	And I select link "Lab Form" 
     And I select Lab "LocalLab_MCC-28550"
     And I enter data in CRF and save
    		| Field       | Data         | Control Type |
    		| WBC         | 20           | textbox      |
    		| Neutrophils | 20           | textbox      |
-   		| User Name:  | SUPER USER 1 | Signature    |
-   		| Password:   | password     | textbox      |
-   	And I verify text "Default User  (defuser)" exists 
+   		| Signature   | SUPER USER 1 | Signature    |
+   		
+   	And I verify text "Default User" exists 
    	And I take a screenshot
    	And I navigate to "Home"	
 	And I select a Subject "{Var(num15)}"	
@@ -776,8 +769,8 @@ Scenario: PBMCC28550-015 Verify Signature is broken in Audit when a lab Form is 
 	And I select link "Subject - {Var(num15)} SUB"
 	And I choose "DataPage - Lab Form" from "Children" 
 	Then I verify Audits exist
-		| Audit Type 	     | User 							  | Time 				 |
-		| Signature Succeeded| Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss | 
+		| Audit Type          | User                               | Time                 |
+		| Signature Succeeded | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss | 
     And I take a screenshot
     And I navigate to "Home"	
 	And I select a Subject "{Var(num15)}"
@@ -787,10 +780,10 @@ Scenario: PBMCC28550-015 Verify Signature is broken in Audit when a lab Form is 
    		| Weight | 20   | textbox      |
    	And I take a screenshot
    	And I click audit on form level
-   	Then I verify Audits exist
-		| Audit Type 	     | User 							  | Time 				 |
-		| Signature Broken   | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |
-		| Signature Succeeded| Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss | 
+   	Then I verify last audit exist
+		| Audit Type          | User                               | Time                 |
+		| Signature Broken    | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |
+		| Signature Succeeded | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss | 
     And I take a screenshot 
     And I navigate to "Home"
     And I select a Subject "{Var(num15)}"	
@@ -798,10 +791,10 @@ Scenario: PBMCC28550-015 Verify Signature is broken in Audit when a lab Form is 
 	And I click audit on form level
    	And I select link "Subject - {Var(num15)} SUB"
 	And I choose "DataPage - Lab Form" from "Children" 
-	Then I verify Audits exist
-		| Audit Type 	     | User 							  | Time 				 |
-		| Signature Broken   | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |
-		| Signature Succeeded| Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss | 
+	Then I verify last audit exist
+		| Audit Type          | User                               | Time                 |
+		| Signature Broken    | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |
+		| Signature Succeeded | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss | 
     And I take a screenshot
 
 
@@ -821,14 +814,14 @@ Scenario: PBMCC28550-016 Verify Signature is broken in Audit when a lab Form wit
 	And I take a screenshot
 	And I select link "Lab Demographics"
 	And I enter data in CRF and save
-   		| Field       | Data | Control Type |
-   		| Age         | 22   | textbox      |	
+   		| Field | Data | Control Type |
+   		| Age   | 22   | textbox      |	
 	And I select link "Lab Form 1" 
 	And I take a screenshot
 	And I select Lab "LocalLab_MCC-28550"
 	And I click button "Sign and Save"
 	And I sign the form with username "SUPER USER 1"
-	And I verify text "Please Sign the Data Page - Default User  (defuser)" exists
+	And I verify text "Please Sign the Data Page - Default User " exists
    	And I take a screenshot
    	And I navigate to "Home"	
 	And I select a Subject "{Var(num16)}"	
@@ -837,8 +830,8 @@ Scenario: PBMCC28550-016 Verify Signature is broken in Audit when a lab Form wit
 	And I select link "Subject - {Var(num16)} SUB"
 	And I choose "DataPage - Lab Form 1" from "Children" 
 	Then I verify Audits exist
-		| Audit Type 	     | User 							  | Time 				 |
-		| Signature Succeeded| Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss | 
+		| Audit Type          | User                               | Time                 |
+		| Signature Succeeded | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss | 
     And I navigate to "Home"	
 	And I select a Subject "{Var(num16)}"
 	And I select link "Lab Form 1"
@@ -847,20 +840,20 @@ Scenario: PBMCC28550-016 Verify Signature is broken in Audit when a lab Form wit
    		| WBC   | 20   | textbox      |
    	And I take a screenshot
    	And I click audit on form level
-   	Then I verify Audits exist
-		| Audit Type 	     | User 							  | Time 				 |
-		| Signature Broken   | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |
-		| Signature Succeeded| Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss | 
+   	Then I verify last audit exist
+		| Audit Type          | User                               | Time                 |
+		| Signature Broken    | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |
+		| Signature Succeeded | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss | 
     And I navigate to "Home"
     And I select a Subject "{Var(num16)}"	
 	And I select primary record form
 	And I click audit on form level
    	And I select link "Subject - {Var(num16)} SUB"
 	And I choose "DataPage - Lab Form 1" from "Children" 
-	Then I verify Audits exist
-		| Audit Type 	     | User 							  | Time 				 |
-		| Signature Broken   | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |
-		| Signature Succeeded| Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |  
+	Then I verify last audit exist
+		| Audit Type          | User                               | Time                 |
+		| Signature Broken    | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |
+		| Signature Succeeded | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |  
     And I take a screenshot
 
 
@@ -886,38 +879,39 @@ Scenario:  PBMCC28550-017 Verify Signature is succeeded in Audit when a standard
 	And I select primary record form
 	And I click audit on form level
 	Then I verify Audits exist
-		| Audit Type 	     | User 							  | Time 				 |
-		| Signature Succeeded| Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss | 
+		| Audit Type          | User                               | Time                 |
+		| Signature Succeeded | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss | 
     And I take a screenshot 	
     And I navigate to "Home"
     And I select a Subject "{Var(num17)}"
     And I select link "Standard Form"
     And I take a screenshot 
     And I enter data in CRF and save
-   		| Field 		| Data  	| Control Type |
-   		| Action Taken  | None Taken| dropdown 	   |	
+   		| Field        | Data       | Control Type |
+   		| Action Taken | None Taken | dropdown     |	
    	And I take a screenshot
    	And I click audit on form level
 	Then I verify Audits exist
-		| Audit Type 	     | User 							  | Time 				 |
-		| Signature Broken   | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |
-		| Signature Succeeded| Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |  
+		| Audit Type          | User                               | Time                 |
+		| Signature Broken    | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |
+		| Signature Succeeded | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |  
     And I take a screenshot
     And I navigate to "Home"
     And I select a Subject "{Var(num17)}"
     And I select link "Grid View"
 	And I select link "Standard Form"
 	And I click button "Sign and Save"
+	And I sign the form with username "SUPER USER 1"
 	And I verify text "Signature attempt was successful" exists 
 	And I take a screenshot
 	And I select link "Calendar View"
 	And I select link "Standard Form"
 	And I click audit on form level
 	Then I verify Audits exist
-		| Audit Type 	     | User 							  | Time 				 |
-		| Signature Succeeded| Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |
-		| Signature Broken   | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |
-		| Signature Succeeded| Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |
+		| Audit Type          | User                               | Time                 |
+		| Signature Succeeded | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |
+		| Signature Broken    | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |
+		| Signature Succeeded | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |
     And I take a screenshot
 
 
@@ -944,22 +938,20 @@ Scenario: PBMCC28550-018 Verify Signature is succeeded in Audit when a standard 
 	And I select primary record form
 	And I click audit on form level
 	Then I verify Audits exist
-      	| Audit Type 	     | User 							  | Time 				 |
-		| Signature Succeeded| Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |   
+      	| Audit Type          | User                               | Time                 |
+      	| Signature Succeeded | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |   
     And I take a screenshot 	
     And I navigate to "Home"
     And I select a Subject "{Var(num18)}"
     And I select link "Standard Form 1"
     And I take a screenshot 
-    And I enter data in CRF and save
-   		| Field 		| Data  	| Control Type |
-   		| Action Taken  | 			| dropdown 	   |	
+    And I save the CRF page	
    	And I take a screenshot
    	And I click audit on form level
    	Then I verify Audits exist
-		| Audit Type 	     | User 							  | Time 				 |
-		| Signature Broken   | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |
-		| Signature Succeeded| Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |  
+		| Audit Type          | User                               | Time                 |
+		| Signature Broken    | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |
+		| Signature Succeeded | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |  
     And I take a screenshot
     And I navigate to "Home"
     And I select a Subject "{Var(num18)}"
@@ -972,10 +964,10 @@ Scenario: PBMCC28550-018 Verify Signature is succeeded in Audit when a standard 
 	And I select link "Standard Form 1"
 	And I click audit on form level
 	Then I verify Audits exist
-		| Audit Type 	     | User 							  | Time 				 |
-		| Signature Succeeded| Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |
-		| Signature Broken   | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |
-		| Signature Succeeded| Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss | 
+		| Audit Type          | User                               | Time                 |
+		| Signature Succeeded | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |
+		| Signature Broken    | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |
+		| Signature Succeeded | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss | 
     And I take a screenshot
 
 
@@ -1017,9 +1009,9 @@ Scenario: PBMCC28550-019 Verify Signature is succeeded in Audit when a log form 
    	And I take a screenshot
    	And I click audit on form level
    	Then I verify Audits exist
-		| Audit Type 	     | User 							  | Time 				 |
-		| Signature Broken   | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |
-		| Signature Succeeded| Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss | 
+		| Audit Type          | User                               | Time                 |
+		| Signature Broken    | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |
+		| Signature Succeeded | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |
     And I take a screenshot
     And I navigate to "Home"
     And I select a Subject "{Var(num19)}"
@@ -1033,10 +1025,10 @@ Scenario: PBMCC28550-019 Verify Signature is succeeded in Audit when a log form 
 	And I click audit on form level
 	Then I verify Audits exist
 		Then I verify Audits exist
-		| Audit Type 	     | User 							  | Time 				 |
-		| Signature Succeeded| Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |
-		| Signature Broken   | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |
-		| Signature Succeeded| Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss | 
+		| Audit Type          | User                               | Time                 |
+		| Signature Succeeded | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |
+		| Signature Broken    | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |
+		| Signature Succeeded | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss | 
     And I take a screenshot
 
 
@@ -1070,15 +1062,13 @@ Scenario: PBMCC28550-020 Verify Signature is succeeded in Audit when a log form 
     And I select a Subject "{Var(num20)}"
     And I select link "Log Form 1"
     And I take a screenshot 
-    And I enter data in CRF and save
-   		| Field | Data | Control Type |
-   		| Text  |      | textbox      |	
+	And I save the CRF page	
    	And I take a screenshot
    	And I click audit on form level
    	Then I verify Audits exist
-		| Audit Type 	     | User 							  | Time 				 |
-		| Signature Broken   | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |
-		| Signature Succeeded| Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |  
+		| Audit Type          | User                               | Time                 |
+		| Signature Broken    | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |
+		| Signature Succeeded | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |  
     And I take a screenshot
     And I navigate to "Home"
     And I select a Subject "{Var(num20)}"
@@ -1134,9 +1124,9 @@ Scenario: PBMCC28550-021 Verify Signature is succeeded in Audit when a mixed for
    	And I take a screenshot
    	And I click audit on form level
    	Then I verify Audits exist
-		| Audit Type 	     | User 							  | Time 				 |
-		| Signature Broken   | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |
-		| Signature Succeeded| Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |   
+		| Audit Type          | User                               | Time                 |
+		| Signature Broken    | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |
+		| Signature Succeeded | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |   
     And I take a screenshot
     And I navigate to "Home"
     And I select a Subject "{Var(num21)}"
@@ -1152,7 +1142,7 @@ Scenario: PBMCC28550-021 Verify Signature is succeeded in Audit when a mixed for
 		| Audit Type          | User                               | Time                 |
 		| Signature Succeeded | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |
 		| Signature Broken    | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |
-		| Signature Succeeded | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss | 
+		| Signature Succeeded | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |
     And I take a screenshot
 
 
@@ -1186,16 +1176,13 @@ Scenario: PBMCC28550-022 Verify Signature is succeeded in Audit when a mixed for
     And I select a Subject "{Var(num22)}"
     And I select link "Mixed Form 1"
     And I take a screenshot 
-    And I enter data in CRF and save
-   		| Field  | Data | Control Type |
-   		| Freeze |      | textbox      |	
-   		
+    And I save the CRF page		
    	And I take a screenshot
    	And I click audit on form level
    	Then I verify Audits exist
-		| Audit Type 	     | User 							  | Time 				 |
-		| Signature Broken   | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |
-		| Signature Succeeded| Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |  
+		| Audit Type          | User                               | Time                 |
+		| Signature Broken    | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |
+		| Signature Succeeded | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |  
     And I take a screenshot
     And I navigate to "Home"
     And I select a Subject "{Var(num22)}"
@@ -1232,8 +1219,8 @@ Scenario: PBMCC28550-023 Verify Signature is succeeded in Audit when a lab form 
 	And I take a screenshot
 	And I select link "Lab Demographics"
 	And I enter data in CRF and save
-   		| Field       | Data | Control Type |
-   		| Age         | 22   | textbox      |
+   		| Field | Data | Control Type |
+   		| Age   | 22   | textbox      |
 	And I navigate to "Home"
 	And I select a Subject "{Var(num23)}"	
 	And I select link "Grid View"
@@ -1258,10 +1245,10 @@ Scenario: PBMCC28550-023 Verify Signature is succeeded in Audit when a lab form 
    		| Neutrophils | 15   | textbox      |	
    	And I take a screenshot
    	And I click audit on form level
-   	Then I verify Audits exist
-		| Audit Type 	     | User 							  | Time 				 |
-		| Signature Broken   | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |
-		| Signature Succeeded| Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |  
+   	Then I verify last audit exist
+		| Audit Type          | User                               | Time                 |
+		| Signature Broken    | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |
+		| Signature Succeeded | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss | 
     And I take a screenshot
     And I navigate to "Home"
     And I select a Subject "{Var(num23)}"
@@ -1273,7 +1260,7 @@ Scenario: PBMCC28550-023 Verify Signature is succeeded in Audit when a lab form 
 	And I select link "Calendar View"
 	And I select link "Log Form"
 	And I click audit on form level
-	Then I verify Audits exist
+	Then I verify last audit exist
 		| Audit Type          | User                               | Time                 |
 		| Signature Succeeded | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |
 		| Signature Broken    | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |
@@ -1298,8 +1285,8 @@ Scenario: PBMCC28550-024 Verify Signature is succeeded in Audit when a lab form 
 	And I take a screenshot
 	And I select link "Lab Demographics"
 	And I enter data in CRF and save
-   		| Field       | Data | Control Type |
-   		| Age         | 22   | textbox      |
+   		| Field | Data | Control Type |
+   		| Age   | 22   | textbox      |
 	And I navigate to "Home"
 	And I select a Subject "{Var(num24)}"	
 	And I select link "Grid View"
@@ -1311,23 +1298,20 @@ Scenario: PBMCC28550-024 Verify Signature is succeeded in Audit when a lab form 
 	And I click audit on form level
 	Then I verify Audits exist
 		| Audit Type          | User                               | Time                 |
-      	| Signature Succeeded | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |   
+		| Signature Succeeded | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |   
     And I take a screenshot 	
     And I navigate to "Home"
     And I select a Subject "{Var(num24)}"
     And I select link "Log Form 1"
 	And I select Lab "LocalLab_MCC-28550"	
     And I take a screenshot 
-    And I enter data in CRF and save
-   		| Field		  | Data | Control Type|
-   		| WBC		  | 	 | textbox 	   |
-   		| Neutrophils |    	 | textbox 	   |	
+	And I save the CRF page	
    	And I take a screenshot
    	And I click audit on form level
-   	Then I verify Audits exist
-		| Audit Type 	     | User 							  | Time 				 |
-		| Signature Broken   | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |
-		| Signature Succeeded| Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |  
+   	Then I verify last audit exist
+		| Audit Type          | User                               | Time                 |
+		| Signature Broken    | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |
+		| Signature Succeeded | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |  
     And I take a screenshot
     And I navigate to "Home"
     And I select a Subject "{Var(num24)}"
@@ -1339,7 +1323,7 @@ Scenario: PBMCC28550-024 Verify Signature is succeeded in Audit when a lab form 
 	And I select link "Calendar View"
 	And I select link "Log Form 1"
 	And I click audit on form level
-	Then I verify Audits exist
+	Then I verify last audit exist
 		| Audit Type          | User                               | Time                 |
 		| Signature Succeeded | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |
 		| Signature Broken    | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |
@@ -1363,28 +1347,27 @@ Scenario: PBMCC28550-025 Verify Signature is succeeded in Audit when a standard 
 	And I take a screenshot
 	And I select link "Standard Form"
 	And I enter data in CRF and save
-   		| Field 	| Data  	| Control Type |
-   		| Text		| TEST1   	| dropdown	   |
-   		| User Name:| defuser 	| textbox	   |	
-   		| Password: | password	| textbox	   | 
-   	And I verify text "Default User (defuser)" exists 
+   		| Field     | Data         | Control Type |
+   		| Text      | TEST1        | dropdown     |
+   		| Signature | SUPER USER 1 | Signature    |	
+   	And I verify text "Default User" exists 
 	And I take a screenshot
    	And I click audit on form level
    	Then I verify Audits exist
 		| Audit Type          | User                               | Time                 |
-      	| Signature Succeeded | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss | 
+		| Signature Succeeded | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss | 
     And I take a screenshot
     And I navigate to "Home"
     And I select a Subject "{Var(num25)}"
     And I select link "Standard Form"
     And I enter data in CRF and save
-   		| Field 		| Data  	| Control Type |
-   		| Action Taken	| None Taken| dropdown	   |
+   		| Field        | Data       | Control Type |
+   		| Action Taken | None Taken | dropdown     |
    	And I click audit on form level
    	Then I verify Audits exist
-		| Audit Type 	     | User 							  | Time 				 |
-		| Signature Broken   | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |
-		| Signature Succeeded| Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss | 
+		| Audit Type          | User                               | Time                 |
+		| Signature Broken    | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |
+		| Signature Succeeded | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss | 
     And I take a screenshot
     And I navigate to "Home"
     And I select a Subject "{Var(num25)}"
@@ -1422,12 +1405,12 @@ Scenario: PBMCC28550-026 Verify Signature is succeeded in Audit when a standard 
 	And I take a screenshot
 	And I select link "Standard Form 1"
 	And I click button "Sign and Save"
-	And I verify text "Please Sign - Default User  (defuser)" exists
+	And I verify text "Please Sign - Default User" exists
 	And I take a screenshot	
    	And I click audit on form level
    	Then I verify Audits exist
 		Then I verify Audits exist
-		| Audit Type 		  | User                               | Time                 |
+		| Audit Type          | User                               | Time                 |
 		| Signature Succeeded | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |
 	And I navigate to "Home"
     And I select a Subject "{Var(num26)}"
@@ -1438,8 +1421,8 @@ Scenario: PBMCC28550-026 Verify Signature is succeeded in Audit when a standard 
    	And I click audit on form level
    	Then I verify Audits exist
 		Then I verify Audits exist
-		| Audit Type 		  | User                               | Time                 |
-		| Signature Broken 	  | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |
+		| Audit Type          | User                               | Time                 |
+		| Signature Broken    | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |
 		| Signature Succeeded | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss | 
     And I take a screenshot
     And I navigate to "Home"
@@ -1456,9 +1439,9 @@ Scenario: PBMCC28550-026 Verify Signature is succeeded in Audit when a standard 
 	And I choose "DataPage - Standard Form 1" from "Children" 
 	Then I verify Audits exist
 	Then I verify Audits exist
-		| Audit Type 		  | User                               | Time                 |
+		| Audit Type          | User                               | Time                 |
 		| Signature Succeeded | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |
-		| Signature Broken 	  | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |
+		| Signature Broken    | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |
 		| Signature Succeeded | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss | 
     And I take a screenshot
 
@@ -1479,15 +1462,14 @@ Scenario: PBMCC28550-027 Verify Signature is succeeded in Audit when a log form 
 	And I take a screenshot
 	And I select link "Log Form"
 	And I enter data in CRF and save
-		| Field      | Data         | Control Type |
-		| Text       | TEST1        | textbox      |
-		| User Name: | SUPER USER 1 | textbox      |
-		| Password:  | password     | textbox      |
-	And I verify text "Default User (defuser) " exists
+		| Field     | Data         | Control Type |
+		| Text      | TEST1        | textbox      |
+		| Signature | SUPER USER 1 | Signature    |	
+	And I verify text "Default User" exists
 	And I take a screenshot	
    	And I click audit on form level
 	Then I verify Audits exist
-		| Audit Type 		  | User                               | Time                 |
+		| Audit Type          | User                               | Time                 |
 		| Signature Succeeded | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |	
     And I take a screenshot
     And I navigate to "Home"
@@ -1495,13 +1477,13 @@ Scenario: PBMCC28550-027 Verify Signature is succeeded in Audit when a log form 
     And I select link "Log Form"
     And I add a new log line
     And I enter data in CRF and save
-		| Field | Data  | Control Type |
-		| Text3 | Text 	| text 		   |
+		| Field | Data | Control Type |
+		| Text3 | Text | text         |
    	And I click audit on form level
    	Then I verify Audits exist
 		Then I verify Audits exist
-		| Audit Type 		  | User                               | Time                 |
-		| Signature Broken 	  | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |
+		| Audit Type          | User                               | Time                 |
+		| Signature Broken    | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |
 		| Signature Succeeded | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |
     And I navigate to "Home"
     And I select a Subject "{Var(num27)}"
@@ -1517,9 +1499,9 @@ Scenario: PBMCC28550-027 Verify Signature is succeeded in Audit when a log form 
 	And I select link "Subject - {Var(num27)} SUB"
 	And I choose "DataPage - Log Form" from "Children" 
 	Then I verify Audits exist
-		| Audit Type 		  | User                               | Time                 |
+		| Audit Type          | User                               | Time                 |
 		| Signature Succeeded | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |
-		| Signature Broken 	  | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |
+		| Signature Broken    | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |
 		| Signature Succeeded | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |
 
 
@@ -1538,17 +1520,15 @@ Scenario: PBMCC28550-028 Verify Signature is succeeded in Audit when a log form 
 		| Subject Number   | {RndNum<num28>(4)} |
 	And I take a screenshot
 	And I select link "Log Form 1"
-	And I enter data in CRF and save
-		| Field | Data  | Control Type |
-		| Text  |       | text         |
+	And I save the CRF page
 	And I click button "Sign and Save"
 	And I sign the form with username "SUPER USER 1"
-	And I verify text "Please Sign - Default User  (defuser)" exists
+	And I verify text "Please Sign - Default User" exists
 	And I take a screenshot	
    	And I click audit on form level
    	Then I verify Audits exist
 		Then I verify Audits exist
-		| Audit Type 		  | User                               | Time                 |
+		| Audit Type          | User                               | Time                 |
 		| Signature Succeeded | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |	
     And I take a screenshot
     And I navigate to "Home"
@@ -1556,13 +1536,13 @@ Scenario: PBMCC28550-028 Verify Signature is succeeded in Audit when a log form 
     And I select link "Log Form 1"
 	And I add log line
     And I enter data in CRF and save
-		| Field        | Data      | Control Type |
-		| Action Taken | None Taken| dropdown 	  |
+		| Field        | Data       | Control Type |
+		| Action Taken | None Taken | dropdown     |
    	And I click audit on form level
    	Then I verify Audits exist
 		Then I verify Audits exist
-		| Audit Type 		  | User                               | Time                 |
-		| Signature Broken 	  | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |
+		| Audit Type          | User                               | Time                 |
+		| Signature Broken    | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |
 		| Signature Succeeded | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |
     And I take a screenshot
     And I navigate to "Home"
@@ -1580,9 +1560,9 @@ Scenario: PBMCC28550-028 Verify Signature is succeeded in Audit when a log form 
 	And I choose "DataPage - Log Form 1" from "Children" 
 	Then I verify Audits exist
 		Then I verify Audits exist
-		| Audit Type 		  | User                               | Time                 |
+		| Audit Type          | User                               | Time                 |
 		| Signature Succeeded | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |
-		| Signature Broken 	  | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |
+		| Signature Broken    | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |
 		| Signature Succeeded | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |
     And I take a screenshot
 
@@ -1604,30 +1584,27 @@ Scenario: PBMCC28550-029 Verify Signature is succeeded in Audit when a mixed for
 	And I take a screenshot
 	And I select link "Mixed Form"
 	And I enter data in CRF and save
-   		| Field      | Data         | Control Type |
-   		| Freeze     | TEST1        | textbox      |
-   		| DATA       | 20           | textbox      |
-   		| User Name: | SUPER USER 1 | Signature    |
-   		| Password:  | password     | textbox      |
+   		| Field     | Data         | Control Type |
+   		| Freeze    | TEST1        | textbox      |
+   		| DATA      | 20           | textbox      |
+   		| Signature | SUPER USER 1 | Signature    |
 	And I verify text "Default User  (defuser)" exists
 	And I take a screenshot	
    	And I click audit on form level
    	Then I verify Audits exist
 		Then I verify Audits exist
-		| Audit Type 		  | User                               | Time                 |
+		| Audit Type          | User                               | Time                 |
 		| Signature Succeeded | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |
     And I take a screenshot
     And I navigate to "Home"
     And I select a Subject "{Var(num29)}"
     And I select link "Mixed Form"
     And I add a new log line
-    And I enter data in CRF and save
-		| Field | Data | Control Type |
-		| CODE  |      | dropdown     |
+	And I save the CRF page
    	And I click audit on form level
 		Then I verify Audits exist
-		| Audit Type 		  | User                               | Time                 |
-		| Signature Broken 	  | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |
+		| Audit Type          | User                               | Time                 |
+		| Signature Broken    | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |
 		| Signature Succeeded | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |
     And I take a screenshot
     And I navigate to "Home"
@@ -1644,9 +1621,9 @@ Scenario: PBMCC28550-029 Verify Signature is succeeded in Audit when a mixed for
 	And I select link "Subject - {Var(num29)} SUB"
 	And I choose "DataPage - Mixed Form" from "Children" 
 	Then I verify Audits exist
-		| Audit Type 		  | User                               | Time                 |
+		| Audit Type          | User                               | Time                 |
 		| Signature Succeeded | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |
-		| Signature Broken 	  | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |
+		| Signature Broken    | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |
 		| Signature Succeeded | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |
     And I take a screenshot
 
@@ -1675,20 +1652,20 @@ Scenario: PBMCC28550-030 Verify Signature is succeeded in Audit when a mixed for
    	And I click audit on form level
    	Then I verify Audits exist
 	Then I verify Audits exist
-		| Audit Type 		  | User                               | Time                 |
+		| Audit Type          | User                               | Time                 |
 		| Signature Succeeded | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |	
     And I take a screenshot
     And I navigate to "Home"
     And I select a Subject "{Var(num30)}"
     And I select link "Mixed Form 1"
     And I enter data in CRF and save
-		| Field     | Data     | Control Type |
-		| CODE      | TEST2    | dropdown     |
+		| Field | Data  | Control Type |
+		| CODE  | TEST2 | textbox      |
    	And I click audit on form level
    	Then I verify Audits exist
 		Then I verify Audits exist
-		| Audit Type 		  | User                               | Time                 |
-		| Signature Broken 	  | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |
+		| Audit Type          | User                               | Time                 |
+		| Signature Broken    | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |
 		| Signature Succeeded | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |
     And I take a screenshot
     And I navigate to "Home"
@@ -1704,9 +1681,9 @@ Scenario: PBMCC28550-030 Verify Signature is succeeded in Audit when a mixed for
 	And I select link "Subject - {Var(num30)} SUB"
 	And I choose "DataPage - Mixed Form 1" from "Children" 
 	Then I verify Audits exist
-		| Audit Type 		  | User                               | Time                 |
+		| Audit Type          | User                               | Time                 |
 		| Signature Succeeded | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |
-		| Signature Broken 	  | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |
+		| Signature Broken    | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |
 		| Signature Succeeded | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss | 
     And I take a screenshot
 
@@ -1720,7 +1697,6 @@ Scenario: PBMCC28550-031 Verify Signature is succeeded in Audit when a lab form 
 
 
 	When I login to Rave with user "SUPER USER 1"
-	
 	And I create a Subject
 		| Field            | Data               |
 		| Subject Initials | SUB                |
@@ -1728,34 +1704,33 @@ Scenario: PBMCC28550-031 Verify Signature is succeeded in Audit when a lab form 
 	And I take a screenshot
 	And I select link "Lab Demographics"
 	And I enter data in CRF and save
-   		| Field       | Data | Control Type |
-   		| Age         | 22   | textbox      |
+   		| Field | Data | Control Type |
+   		| Age   | 22   | textbox      |
 	And I select link "Lab Form"
 	And I select Lab "LocalLab_MCC-28550"
 	And I enter data in CRF and save
    		| Field       | Data         | Control Type |
    		| WBC         | 15           | textbox      |
    		| Neutrophils | 15           | textbox      |
-   		| User Name:  | SUPER USER 1 | Signature    |
-   		| Password:   | password     | textbox      |
-	And I verify text "Default User  (defuser)" exists
+   		| Signature   | SUPER USER 1 | Signature    |	
+	And I verify text "Default User" exists
 	And I take a screenshot	
    	And I click audit on form level
    	Then I verify Audits exist
-		| Audit Type 		  | User                               | Time                 |
+		| Audit Type          | User                               | Time                 |
 		| Signature Succeeded | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |
     And I take a screenshot
     And I navigate to "Home"
     And I select a Subject "{Var(num31)}"
     And I select link "Lab Form"
     And I enter data in CRF and save
-    | Field     | Data     | Control Type |
-    | Weight    | 50       | textbox      |
-    | Password: | password | textbox      |
+		| Field     | Data     | Control Type |
+		| Weight    | 50       | textbox      |
+		| Password: | password | textbox      |
    	And I click audit on form level
-   	Then I verify Audits exist
-		| Audit Type 		  | User                               | Time                 |
-		| Signature Broken 	  | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |
+   	Then I verify last audit exist
+		| Audit Type          | User                               | Time                 |
+		| Signature Broken    | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |
 		| Signature Succeeded | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |
     And I take a screenshot
     And I navigate to "Home"
@@ -1770,10 +1745,10 @@ Scenario: PBMCC28550-031 Verify Signature is succeeded in Audit when a lab form 
 	And I click audit on form level
 	And I select link "Subject - {Var(num31)} SUB"
 	And I choose "DataPage - Lab Form" from "Children" 
-	Then I verify Audits exist
-		| Audit Type 		  | User                               | Time                 |
+	Then I verify last audit exist
+		| Audit Type          | User                               | Time                 |
 		| Signature Succeeded | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |
-		| Signature Broken 	  | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |
+		| Signature Broken    | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |
 		| Signature Succeeded | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |
     And I take a screenshot
 
@@ -1787,7 +1762,6 @@ Scenario: PBMCC28550-032 Verify Signature is succeeded in Audit when a lab form 
 
 
 	When I login to Rave with user "SUPER USER 1"
-	
 	And I create a Subject
 		| Field            | Data               |
 		| Subject Initials | SUB                |
@@ -1795,8 +1769,8 @@ Scenario: PBMCC28550-032 Verify Signature is succeeded in Audit when a lab form 
 	And I take a screenshot
 	And I select link "Lab Demographics"
 	And I enter data in CRF and save
-   		| Field       | Data | Control Type |
-   		| Age         | 22   | textbox      |
+   		| Field | Data | Control Type |
+   		| Age   | 22   | textbox      |
 	And I select link "Lab Form"
 	And I select Lab "LocalLab_MCC-28550"
 	And I take a screenshot
@@ -1805,7 +1779,7 @@ Scenario: PBMCC28550-032 Verify Signature is succeeded in Audit when a lab form 
    	And I take a screenshot
    	And I click audit on form level
    	Then I verify Audits exist
-		| Audit Type 		  | User                               | Time                 |
+		| Audit Type          | User                               | Time                 |
 		| Signature Succeeded | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |	 
     And I take a screenshot
     And I navigate to "Home"
@@ -1816,9 +1790,9 @@ Scenario: PBMCC28550-032 Verify Signature is succeeded in Audit when a lab form 
    		| Field | Data | Control Type |
    		| WBC   | 20   | textbox      |
    	And I click audit on form level
-   	Then I verify Audits exist
-		| Audit Type 		  | User                               | Time                 |
-		| Signature Broken 	  | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |
+   	Then I verify last audit exist
+		| Audit Type          | User                               | Time                 |
+		| Signature Broken    | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |
 		| Signature Succeeded | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |
     And I take a screenshot
     And I navigate to "Home"
@@ -1833,9 +1807,9 @@ Scenario: PBMCC28550-032 Verify Signature is succeeded in Audit when a lab form 
 	And I click audit on form level
 	And I select link "Subject - {Var(num32)} SUB"
 	And I choose "DataPage - Lab Form 1" from "Children" 
-	Then I verify Audits exist
-		| Audit Type 		  | User                               | Time                 |
+	Then I verify last audit exist
+		| Audit Type          | User                               | Time                 |
 		| Signature Succeeded | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |
-		| Signature Broken 	  | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |
+		| Signature Broken    | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |
 		| Signature Succeeded | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |
     And I take a screenshot
