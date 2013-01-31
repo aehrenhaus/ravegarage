@@ -1420,7 +1420,8 @@ Scenario: PBMCC28550-026 Verify Signature is succeeded in Audit when a standard 
 	And I take a screenshot
 	And I select link "Standard Form 1"
 	And I click button "Sign and Save"
-	And I verify text "Please Sign the Data Page - Default Use" exists
+	And I sign the form with username "SUPER USER 1"
+	And I verify text "Please Sign the Data Page - Default User" exists
 	And I take a screenshot	
    	And I click audit on form level
    	Then I verify Audits exist
@@ -1538,7 +1539,7 @@ Scenario: PBMCC28550-028 Verify Signature is succeeded in Audit when a log form 
 	And I save the CRF page
 	And I click button "Sign and Save"
 	And I sign the form with username "SUPER USER 1"
-	And I verify text "Please Sign the Data Page - Default Use" exists
+	And I verify text "Please Sign the Data Page - Default User" exists
 	And I take a screenshot	
    	And I click audit on form level
    	Then I verify Audits exist
@@ -1548,7 +1549,7 @@ Scenario: PBMCC28550-028 Verify Signature is succeeded in Audit when a log form 
     And I navigate to "Home"
     And I select a Subject "{Var(num28)}"
     And I select link "Log Form 1"
-	And I add log line
+	And I add a new log line
     And I enter data in CRF and save
 		| Field        | Data       | Control Type |
 		| Action Taken | None Taken | dropdown     |
@@ -1661,7 +1662,7 @@ Scenario: PBMCC28550-030 Verify Signature is succeeded in Audit when a mixed for
 	And I take a screenshot
 	And I click button "Sign and Save"
 	And I sign the form with username "SUPER USER 1"
-	And I verify text "Signature attempt was successful" exists 
+	And I verify text "Please Sign the Data Page - Default User" exists 
 	And I take a screenshot	
    	And I click audit on form level
 	Then I verify Audits exist
@@ -1740,7 +1741,6 @@ Scenario: PBMCC28550-031 Verify Signature is succeeded in Audit when a lab form 
     And I enter data in CRF and save
 		| Field     | Data         | Control Type |
 		| Weight    | 50           | textbox      |
-		| Signature | SUPER USER 1 | Signature    |
    	And I click audit on form level
    	Then I verify last audit exist
 		| Audit Type          | User                               | Time                 |
@@ -1786,13 +1786,12 @@ Scenario: PBMCC28550-032 Verify Signature is succeeded in Audit when a lab form 
 	And I enter data in CRF and save
    		| Field | Data | Control Type |
    		| Age   | 22   | textbox      |
-	And I select link "Lab Form"
+	And I select link "Lab Form 1"
 	And I select Lab "LocalLab_MCC-28550"
+	And I click button "Sign and Save"
+	And I sign the form with username "SUPER USER 1"
+    And I verify text "Please Sign the Data Page - Default User" exists 
 	And I take a screenshot
-	And I enter data in CRF and save
-		| Signature | SUPER USER 1 | Signature    |
-	And I verify text "Please Sign - Default User" exists 
-   	And I take a screenshot
    	And I click audit on form level
    	Then I verify Audits exist
 		| Audit Type          | User                               | Time                 |
