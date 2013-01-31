@@ -1,5 +1,5 @@
 ﻿@FT_MCC-42707
-
+@ignore
 
 Feature: MCC-42707 When configuring Coder settings, the settings are preserved even after changes are made to the data point settings on form designer.
 
