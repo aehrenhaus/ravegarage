@@ -899,7 +899,7 @@ Scenario:  PBMCC28550-017 Verify Signature is succeeded in Audit when a standard
     And I navigate to "Home"
     And I select a Subject "{Var(num17)}"
     And I select link "Grid View"
-	And I select link "Standard Form"
+	And I select link "Standard Form" in "Grid View"
 	And I click button "Sign and Save"
 	And I sign the form with username "SUPER USER 1"
 	And I verify text "Signature attempt was successful" exists 
@@ -957,7 +957,7 @@ Scenario: PBMCC28550-018 Verify Signature is succeeded in Audit when a standard 
     And I navigate to "Home"
     And I select a Subject "{Var(num18)}"
     And I select link "Grid View"
-	And I select link "Standard Form 1"
+	And I select link "Standard Form 1" in "Grid View"
 	And I click button "Sign and Save"
 	And I sign the form with username "SUPER USER 1"
 	And I verify text "Signature attempt was successful" exists 
@@ -1019,7 +1019,7 @@ Scenario: PBMCC28550-019 Verify Signature is succeeded in Audit when a log form 
     And I navigate to "Home"
     And I select a Subject "{Var(num19)}"
     And I select link "Grid View"
-	And I select link "Log Form"
+	And I select link "Log Form" in "Grid View"
 	And I click button "Sign and Save"
 	And I sign the form with username "SUPER USER 1"
 	And I verify text "Signature attempt was successful" exists 
@@ -1028,7 +1028,7 @@ Scenario: PBMCC28550-019 Verify Signature is succeeded in Audit when a log form 
 	And I select link "Log Form"
 	And I click audit on form level
 	Then I verify Audits exist
-		Then I verify Audits exist
+		
 		| Audit Type          | User                               | Time                 |
 		| Signature Succeeded | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |
 		| Signature Broken    | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |
@@ -1078,7 +1078,7 @@ Scenario: PBMCC28550-020 Verify Signature is succeeded in Audit when a log form 
     And I navigate to "Home"
     And I select a Subject "{Var(num20)}"
     And I select link "Grid View"
-	And I select link "Log Form 1"
+	And I select link "Log Form 1" in "Grid View"
 	And I click button "Sign and Save"
 	And I sign the form with username "SUPER USER 1"
 	And I verify text "Signature attempt was successful" exists 
@@ -1137,7 +1137,7 @@ Scenario: PBMCC28550-021 Verify Signature is succeeded in Audit when a mixed for
     And I take a screenshot
     And I navigate to "Home"
     And I select a Subject "{Var(num21)}"
-    And I select link "Grid View"
+    And I select link "Grid View" in "Grid View"
 	And I select link "Mixed Form"
 	And I click button "Sign and Save"
 	And I sign the form with username "SUPER USER 1"
@@ -1196,7 +1196,7 @@ Scenario: PBMCC28550-022 Verify Signature is succeeded in Audit when a mixed for
     And I navigate to "Home"
     And I select a Subject "{Var(num22)}"
     And I select link "Grid View"
-	And I select link "Mixed Form 1"
+	And I select link "Mixed Form 1" in "Grid View"
 	And I click button "Sign and Save"
 	And I sign the form with username "SUPER USER 1"
 	And I verify text "Signature attempt was successful" exists 
@@ -1263,7 +1263,7 @@ Scenario: PBMCC28550-023 Verify Signature is succeeded in Audit when a lab form 
     And I take a screenshot
     And I navigate to "Home"
     And I select a Subject "{Var(num23)}"
-    And I select link "Grid View"
+    And I select link "Grid View" in "Grid View"
 	And I select link "Log Form"
 	And I click button "Sign and Save"
 	And I sign the form with username "SUPER USER 1"
@@ -1329,7 +1329,7 @@ Scenario: PBMCC28550-024 Verify Signature is succeeded in Audit when a lab form 
     And I navigate to "Home"
     And I select a Subject "{Var(num24)}"
     And I select link "Grid View"
-	And I select link "Log Form 1"
+	And I select link "Log Form 1" in "Grid View"
 	And I click button "Sign and Save"
 	And I sign the form with username "SUPER USER 1"
 	And I verify text "Signature attempt was successful" exists 
@@ -1386,7 +1386,7 @@ Scenario: PBMCC28550-025 Verify Signature is succeeded in Audit when a standard 
     And I navigate to "Home"
     And I select a Subject "{Var(num25)}"
     And I select link "Grid View"
-    And I select link "Standard Form"
+    And I select link "Standard Form" in "Grid View"
     And I click button "Sign and Save"
 	And I sign the form with username "SUPER USER 1"
     And I verify text "Signature attempt was successful" exists 
@@ -1424,7 +1424,7 @@ Scenario: PBMCC28550-026 Verify Signature is succeeded in Audit when a standard 
 	And I take a screenshot	
    	And I click audit on form level
    	Then I verify Audits exist
-		Then I verify Audits exist
+		
 		| Audit Type          | User                               | Time                 |
 		| Signature Succeeded | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |
 	And I navigate to "Home"
@@ -1435,7 +1435,7 @@ Scenario: PBMCC28550-026 Verify Signature is succeeded in Audit when a standard 
    		| Action Taken | None Taken | dropdown     |
    	And I click audit on form level
    	Then I verify Audits exist
-		Then I verify Audits exist
+		
 		| Audit Type          | User                               | Time                 |
 		| Signature Broken    | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |
 		| Signature Succeeded | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss | 
@@ -1443,7 +1443,7 @@ Scenario: PBMCC28550-026 Verify Signature is succeeded in Audit when a standard 
     And I navigate to "Home"
     And I select a Subject "{Var(num26)}"
     And I select link "Grid View"
-    And I select link "Standard Form 1"
+    And I select link "Standard Form 1" in "Grid View"
     And I click button "Sign and Save"
 	And I sign the form with username "SUPER USER 1"
     And I verify text "Signature attempt was successful" exists 
@@ -1453,7 +1453,6 @@ Scenario: PBMCC28550-026 Verify Signature is succeeded in Audit when a standard 
 	And I click audit on form level
 	And I select link "Subject - {Var(num26)} SUB"
 	And I choose "DataPage - Standard Form 1" from "Children" 
-	Then I verify Audits exist
 	Then I verify Audits exist
 		| Audit Type          | User                               | Time                 |
 		| Signature Succeeded | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |
@@ -1497,14 +1496,14 @@ Scenario: PBMCC28550-027 Verify Signature is succeeded in Audit when a log form 
 		| Text3 | Text | text         |
    	And I click audit on form level
    	Then I verify Audits exist
-		Then I verify Audits exist
+		
 		| Audit Type          | User                               | Time                 |
 		| Signature Broken    | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |
 		| Signature Succeeded | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |
     And I navigate to "Home"
     And I select a Subject "{Var(num27)}"
     And I select link "Grid View"
-    And I select link "Log Form"
+    And I select link "Log Form" in "Grid View"
     And I click button "Sign and Save"
     And I sign the form with username "SUPER USER 1"
     And I verify text "Signature attempt was successful" exists 
@@ -1543,7 +1542,6 @@ Scenario: PBMCC28550-028 Verify Signature is succeeded in Audit when a log form 
 	And I take a screenshot	
    	And I click audit on form level
    	Then I verify Audits exist
-		Then I verify Audits exist
 		| Audit Type          | User                               | Time                 |
 		| Signature Succeeded | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |	
     And I take a screenshot
@@ -1556,7 +1554,7 @@ Scenario: PBMCC28550-028 Verify Signature is succeeded in Audit when a log form 
 		| Action Taken | None Taken | dropdown     |
    	And I click audit on form level
    	Then I verify Audits exist
-		Then I verify Audits exist
+		
 		| Audit Type          | User                               | Time                 |
 		| Signature Broken    | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |
 		| Signature Succeeded | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |
@@ -1564,7 +1562,7 @@ Scenario: PBMCC28550-028 Verify Signature is succeeded in Audit when a log form 
     And I navigate to "Home"
     And I select a Subject "{Var(num28)}"
     And I select link "Grid View"
-    And I select link "Log Form 1"
+    And I select link "Log Form 1" in "Grid View"
     And I click button "Sign and Save"
     And I sign the form with username "SUPER USER 1"
     And I verify text "Signature attempt was successful" exists 
@@ -1575,7 +1573,7 @@ Scenario: PBMCC28550-028 Verify Signature is succeeded in Audit when a log form 
 	And I select link "Subject - {Var(num28)} SUB"
 	And I choose "DataPage - Log Form 1" from "Children" 
 	Then I verify Audits exist
-		Then I verify Audits exist
+	
 		| Audit Type          | User                               | Time                 |
 		| Signature Succeeded | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |
 		| Signature Broken    | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |
@@ -1608,7 +1606,7 @@ Scenario: PBMCC28550-029 Verify Signature is succeeded in Audit when a mixed for
 	And I take a screenshot	
    	And I click audit on form level
    	Then I verify Audits exist
-		Then I verify Audits exist
+		
 		| Audit Type          | User                               | Time                 |
 		| Signature Succeeded | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |
     And I take a screenshot
@@ -1618,7 +1616,7 @@ Scenario: PBMCC28550-029 Verify Signature is succeeded in Audit when a mixed for
     And I add a new log line
 	And I save the CRF page
    	And I click audit on form level
-		Then I verify Audits exist
+	Then I verify Audits exist
 		| Audit Type          | User                               | Time                 |
 		| Signature Broken    | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |
 		| Signature Succeeded | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |
@@ -1626,7 +1624,7 @@ Scenario: PBMCC28550-029 Verify Signature is succeeded in Audit when a mixed for
     And I navigate to "Home"
     And I select a Subject "{Var(num29)}"
     And I select link "Grid View"
-    And I select link "Mixed Form"
+    And I select link "Mixed Form" in "Grid View"
     And I click button "Sign and Save"
     And I sign the form with username "SUPER USER 1"
     And I verify text "Signature attempt was successful" exists 
@@ -1666,7 +1664,6 @@ Scenario: PBMCC28550-030 Verify Signature is succeeded in Audit when a mixed for
 	And I verify text "Signature attempt was successful" exists 
 	And I take a screenshot	
    	And I click audit on form level
-   	Then I verify Audits exist
 	Then I verify Audits exist
 		| Audit Type          | User                               | Time                 |
 		| Signature Succeeded | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |	
@@ -1679,7 +1676,7 @@ Scenario: PBMCC28550-030 Verify Signature is succeeded in Audit when a mixed for
 		| CODE  | TEST2 | textbox      |
    	And I click audit on form level
    	Then I verify Audits exist
-		Then I verify Audits exist
+		
 		| Audit Type          | User                               | Time                 |
 		| Signature Broken    | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |
 		| Signature Succeeded | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |
@@ -1687,7 +1684,7 @@ Scenario: PBMCC28550-030 Verify Signature is succeeded in Audit when a mixed for
     And I navigate to "Home"
     And I select a Subject "{Var(num30)}"
     And I select link "Grid View"
-    And I select link "Mixed Form 1"
+    And I select link "Mixed Form 1" in "Grid View"
     And I click button "Sign and Save"
 	And I sign the form with username "SUPER USER 1"
     And I verify text "Signature attempt was successful" exists 
@@ -1753,7 +1750,7 @@ Scenario: PBMCC28550-031 Verify Signature is succeeded in Audit when a lab form 
     And I navigate to "Home"
     And I select a Subject "{Var(num31)}"
     And I select link "Grid View"
-    And I select link "Lab Form"
+    And I select link "Lab Form" in "Grid View"
     And I click button "Sign and Save"
 	And I sign the form with username "SUPER USER 1"
     And I verify text "Signature attempt was successful" exists 
@@ -1817,7 +1814,7 @@ Scenario: PBMCC28550-032 Verify Signature is succeeded in Audit when a lab form 
     And I navigate to "Home"
     And I select a Subject "{Var(num32)}"
     And I select link "Grid View"
-    And I select link "Lab Form 1"
+    And I select link "Lab Form 1" in "Grid View"
     And I click button "Sign and Save"
 	And I sign the form with username "SUPER USER 1"
     And I verify text "Signature attempt was successful" exists 
