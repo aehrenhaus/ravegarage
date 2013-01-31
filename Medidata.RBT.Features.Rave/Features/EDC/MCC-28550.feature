@@ -411,7 +411,7 @@ Scenario: PBMCC28550-009 Verify Signature is broken in Audit when a Standard For
    		| Field     | Data         | Control Type |
    		| Text      | TEST1        | dropdown     |
    		| Signature | SUPER USER 1 | Signature    | 
-   	And I verify text "Signature attempt was successful" exists 
+   	And I verify text "Default User" exists 
    	And I take a screenshot
    	And I navigate to "Home"	
 	And I select a Subject "{Var(num9)}"	
@@ -1123,6 +1123,7 @@ Scenario: PBMCC28550-021 Verify Signature is succeeded in Audit when a mixed for
     And I navigate to "Home"
     And I select a Subject "{Var(num21)}"
     And I select link "Mixed Form"
+	And I add a new log line
     And I take a screenshot 
     And I enter data in CRF and save
    		| Field     | Data | Control Type |
