@@ -22,7 +22,7 @@ Background:
 
 Scenario: PBMCC-42707-001 Verify Coder settings are maintained after changing field format on a Log form designer. 
 
-	Given I login to Rave with user "SUPER USER 1"
+	Given I login to Rave with user "defuser"
 	When I navigate to "Architect"
 	And I select "Project" link "MCC-42707" in "Active Projects"
 	And I select Draft "Draft 1"
