@@ -13,16 +13,24 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
 		public int CodingDictionaryID { get; private set; }
 		public string DictionaryVersion { get; private set; }
 		
-		public ProjectCoderRegistration ProjectCoderRegistration { get; set; }
+		public List<ProjectCoderRegistration> ProjectCoderRegistrations { get; private set; }
+		public List<CodingColumn> CodingColumns { get; private set; }
 
 
 		public CodingDictionary(string codingDictionaryName, string dictionaryVersion)
 		{
+			this.ProjectCoderRegistrations = new List<ProjectCoderRegistration>();
+			this.CodingColumns = new List<CodingColumn>();
 			this.UniqueName = codingDictionaryName;
 			this.DictionaryVersion = dictionaryVersion;
 		}
 
 
+		public CodingColumn GetCodingColumn(string codingColumnName) 
+		{ 
+			return this.CodingColumns
+				.FirstOrDefault((cc) => cc.CodingColumnName.Equals(codingColumnName)); 
+		}
 		protected override void MakeUnique() 
 		{ 
 			this.UniqueName = this.UniqueName + this.TID; 
@@ -38,11 +46,6 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
 		}
 		protected override void CreateObject()
 		{
-			this.CreateCoder();
-		}
-
-		private void CreateCoder()
-		{
 			var sql = string.Format(CodingDictionary.CREATE_CODER_SQL,
 				this.UniqueName,
 				this.DictionaryVersion);
@@ -54,8 +57,7 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
 
 		#region SQL STRINGS
 		private const string CREATE_CODER_SQL =
-			@"declare @timeStamp as datetime;
-			declare @CodingDictionaryID int
+			@"declare @CodingDictionaryID int;
 			declare @CodingDictionaryInsertedTable table
 			(
 				CodingDictionaryID int
@@ -65,9 +67,6 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
 			values ('{0}', '{1}', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 1) 
 
 			select @CodingDictionaryID = CodingDictionaryID from @CodingDictionaryInsertedTable
-
-			insert into CodingColumns
-			values (@CodingDictionaryID, 'FAKE_FEATURE_CC', 1, CURRENT_TIMESTAMP,CURRENT_TIMESTAMP, null, null, null, null, null, null)
 
 			select @CodingDictionaryID as CodingDictionaryID";
 		#endregion

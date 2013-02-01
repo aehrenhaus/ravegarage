@@ -22,12 +22,32 @@ namespace Medidata.RBT.Features.Rave.Steps.Seeding
 		/// </summary>
 		/// <param name="codingDictionary">DictionaryName</param>
 		/// <param name="dictionaryVersion">DictionaryVersion</param>
-		[Given(@"coding dictionary ""([^""]*)"" version ""([^""]*)"" exists")]
-		public void GivenCodingDictionary____Version____Exists(string codingDictionary, string dictionaryVersion)
+		[Given(@"coding dictionary ""([^""]*)"" version ""([^""]*)"" exists with following coding columns")]
+		public void GivenCodingDictionary____Version____ExistsWithFollowingCodingColumns____(string codingDictionary, string dictionaryVersion, Table codingColumnTable)
 		{
-			SeedingContext.GetExistingFeatureObjectOrMakeNew(codingDictionary,
+			var cd = SeedingContext.GetExistingFeatureObjectOrMakeNew(codingDictionary,
 				() => new CodingDictionary(codingDictionary, dictionaryVersion));
+			
+			cd.CodingColumns.AddRange(codingColumnTable
+				.CreateSet<CodingColumn>(() => new CodingColumn(cd.CodingDictionaryID)));
+			
+			foreach (var codingColumn in cd.CodingColumns)
+				codingColumn.Seed();
 		}
+
+		[Given(@"coding dictionary ""([^""]*)"" coding column ""([^""]*)"" has following coding level components")]
+		public void GivenCodingDictionary____CodingColumn____HasFollowingCodingLevelComponents(string codingDictionary, string codingColumn, Table codingDictionaryLevelTable)
+		{
+			var cd = CoderDictionarySteps.FetchSeededCodingDictionary(codingDictionary);
+			var cc = cd.GetCodingColumn(codingColumn);
+
+			cc.CoderDictLevelComponents.AddRange(codingDictionaryLevelTable
+				.CreateSet<CoderDictLevelComponent>(() => new CoderDictLevelComponent(cc.CodingColumnID)));
+
+			foreach (var coderDictLevelComponent in cc.CoderDictLevelComponents)
+				coderDictLevelComponent.Seed();
+		}
+
 
 		/// <summary>
 		/// Assigns an existing CodingDictionary to an existing Project (Study) by executing raw sql queries.
@@ -42,15 +62,28 @@ namespace Medidata.RBT.Features.Rave.Steps.Seeding
 			var modelList = table.CreateSet<ProjectCodingDictionaryModel>();
 			foreach (var model in modelList)
 			{
-				var cd = SeedingContext.GetExistingFeatureObjectOrMakeNew<CodingDictionary>(model.CodingDictionary,
-					() => { throw new Exception(string.Format("Coding Dictionary [{0}] not found", model.CodingDictionary)); });
-				var project = SeedingContext.GetExistingFeatureObjectOrMakeNew<Project>(model.Project,
-					() => { throw new Exception(string.Format("Project [{0}] not found", model.Project)); });
+				var cd = CoderDictionarySteps.FetchSeededCodingDictionary(model.CodingDictionary);
+				var project = CoderDictionarySteps.FetchSeededProject(model.Project);
 
 				var pcrUniqueName = ProjectCoderRegistration.CreateUniqueName(project.UniqueName, cd.UniqueName);
-				SeedingContext.GetExistingFeatureObjectOrMakeNew(pcrUniqueName,
-					() => new ProjectCoderRegistration(project.UniqueName, cd.UniqueName));
+				cd.ProjectCoderRegistrations.Add(
+					SeedingContext.GetExistingFeatureObjectOrMakeNew(pcrUniqueName,
+						() => new ProjectCoderRegistration(project.UniqueName, cd.UniqueName)));
 			}
+		}
+
+
+		private static CodingDictionary FetchSeededCodingDictionary(string codingDictionaryName)
+		{
+			var cd = SeedingContext.GetExistingFeatureObjectOrMakeNew<CodingDictionary>(codingDictionaryName,
+				() => { throw new Exception(string.Format("Coding Dictionary [{0}] not found", codingDictionaryName)); });
+			return cd;
+		}
+		private static Project FetchSeededProject(string projectName)
+		{
+			var project = SeedingContext.GetExistingFeatureObjectOrMakeNew<Project>(projectName,
+				() => { throw new Exception(string.Format("Project [{0}] not found", projectName)); });
+			return project;
 		}
 	}
 }

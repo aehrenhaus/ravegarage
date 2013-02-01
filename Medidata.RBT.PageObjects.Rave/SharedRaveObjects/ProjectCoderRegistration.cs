@@ -12,7 +12,7 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
 	{
 		public int ProjectCoderRegistrationID { get; private set; }
 		public int ProjectID { get; private set; }
-		public int CodingDictionaryID { get; set; }
+		public int CodingDictionaryID { get; private set; }
 		public DateTime Created { get; private set; }
 		public DateTime Updated { get; private set; }
 		public string ProjectName { get; private set; }

@@ -216,5 +216,12 @@ ALTER DATABASE {0} SET ONLINE WITH ROLLBACK IMMEDIATE ",
 				: null;
 			return result;
 		}
+
+		public static string GetSqlString(string val)
+		{
+			return val == null
+				? "null"
+				: string.Format("'{0}'", val);
+		}
 	}
 }
