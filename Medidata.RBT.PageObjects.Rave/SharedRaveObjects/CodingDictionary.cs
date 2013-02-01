@@ -14,13 +14,13 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
 		public string DictionaryVersion { get; private set; }
 		
 		public List<ProjectCoderRegistration> ProjectCoderRegistrations { get; private set; }
-		public List<CodingColumn> CodingColumns { get; private set; }
+		public CodingColumnList CodingColumns { get; private set; }
 
 
 		public CodingDictionary(string codingDictionaryName, string dictionaryVersion)
 		{
 			this.ProjectCoderRegistrations = new List<ProjectCoderRegistration>();
-			this.CodingColumns = new List<CodingColumn>();
+			this.CodingColumns = new CodingColumnList();//new List<CodingColumn>();
 			this.UniqueName = codingDictionaryName;
 			this.DictionaryVersion = dictionaryVersion;
 		}
@@ -70,5 +70,22 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
 
 			select @CodingDictionaryID as CodingDictionaryID";
 		#endregion
+
+		public class CodingColumnList : List<CodingColumn>
+		{
+			private HashSet<string> _codingColumnNameSet = new HashSet<string>();
+
+			public new void Add(CodingColumn codingColumn)
+			{
+				_codingColumnNameSet.Add(codingColumn.CodingColumnName);
+				base.Add(codingColumn);
+			}
+			public new void AddRange(IEnumerable<CodingColumn> l) 
+			{
+				foreach(var codingColumn in l)
+					if (!_codingColumnNameSet.Contains(codingColumn.CodingColumnName))
+						this.Add(codingColumn);
+			}
+		}
 	}
 }

@@ -26,12 +26,12 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
 		public int? TermMaxLength { get; set; }
 		public int? CodeMaxLength { get; set; }
 
-		public List<CoderDictLevelComponent> CoderDictLevelComponents { get; private set; }
+		public CoderDictLevelComponentList CoderDictLevelComponents { get; private set; }
 		
 
 		public CodingColumn(int codingDictionaryId)
 		{
-			this.CoderDictLevelComponents = new List<CoderDictLevelComponent>();
+			this.CoderDictLevelComponents = new CoderDictLevelComponentList();
 			this.CodingDictionaryID = codingDictionaryId;
 		}
 
@@ -40,6 +40,11 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
 		{
 			return this.CoderDictLevelComponents
 				.FirstOrDefault((d) => d.OID.Equals(oid));
+		}
+		public override void Seed()
+		{
+			if(this.CodingColumnID == 0)	//New Coding Column
+				base.Seed();
 		}
 		protected override void SeedFromUI()
 		{
@@ -94,5 +99,22 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
 			select CC.* from CodingColumns CC
 			inner join @CodingColumnInsertedTable X on X.CodingColumnID = CC.CodingColumnID";
 		#endregion
+
+		public class CoderDictLevelComponentList : List<CoderDictLevelComponent>
+		{
+			private HashSet<string> _codingColumnNameSet = new HashSet<string>();
+
+			public new void Add(CoderDictLevelComponent component)
+			{
+				_codingColumnNameSet.Add(component.OID);
+				base.Add(component);
+			}
+			public new void AddRange(IEnumerable<CoderDictLevelComponent> l)
+			{
+				foreach (var component in l)
+					if (!_codingColumnNameSet.Contains(component.OID))
+						this.Add(component);
+			}
+		}
 	}
 }

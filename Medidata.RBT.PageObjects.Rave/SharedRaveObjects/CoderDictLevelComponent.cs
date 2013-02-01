@@ -25,6 +25,11 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
 			this.CoderDictionaryLevelId = codingColumnId;
 		}
 
+		public override void Seed()
+		{
+			if (this.ID == 0)	//New CoderDictLevelComponent
+				base.Seed();
+		}
 		protected override void SeedFromUI()
 		{
 			throw new NotSupportedException("Is not currently possible to create Coder Dict Level Component from Rave UI");
