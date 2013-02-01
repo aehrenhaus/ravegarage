@@ -1,4 +1,5 @@
 ﻿@FT_MCC-42701
+@ignore
 Feature: MCC_42701 Architect download will contain Coder settings and Architect upload will save Coder settings
 
 Background:
