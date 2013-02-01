@@ -1,7 +1,7 @@
 ﻿@FT_MCC-28550
-@ignore
 
-Feature: 
+
+Feature: MCC-28550 Signatures on the data page and in the audit trail are handled in one transaction. End-user signature functionality should remain the same. 
 
 
 Background:
@@ -18,8 +18,8 @@ Background:
 
 @Release_2013.1.0
 @PBMCC28550-001
-@SJ31.JAN.2013
-@Draft
+@SJ01.FEB.2013
+@Validation
 
 Scenario: PBMCC28550-001 Verify Signature is broken in Audit when Primary form is signed and data entered in a Standard form.
 
@@ -62,8 +62,8 @@ Scenario: PBMCC28550-001 Verify Signature is broken in Audit when Primary form i
 
 @Release_2013.1.0
 @PBMCC28550-002
-@SJ31.JAN.2013
-@Draft
+@SJ01.FEB.2013
+@Validation
 
 Scenario: PBMCC28550-002 Verify Signature is broken in Audit when Primary form is signed and data entered in a Standard form with default value.
 
@@ -107,8 +107,8 @@ Scenario: PBMCC28550-002 Verify Signature is broken in Audit when Primary form i
 
 @Release_2013.1.0
 @PBMCC28550-003
-@SJ31.JAN.2013
-@Draft
+@SJ01.FEB.2013
+@Validation
 
 Scenario: PBMCC28550-003 Verify Signature is broken in Audit when Primary form is signed and a new log line is entered in a log form.
 
@@ -155,8 +155,8 @@ Scenario: PBMCC28550-003 Verify Signature is broken in Audit when Primary form i
 
 @Release_2013.1.0
 @PBMCC28550-004
-@SJ31.JAN.2013
-@Draft
+@SJ01.FEB.2013
+@Validation
 
 Scenario: PBMCC28550-004 Verify Signature is broken in Audit when Primary form is signed and data entered in a log form with default value.
 
@@ -201,8 +201,8 @@ Scenario: PBMCC28550-004 Verify Signature is broken in Audit when Primary form i
 
 @Release_2013.1.0
 @PBMCC28550-005
-@SJ31.JAN.2013
-@Draft
+@SJ01.FEB.2013
+@Validation
 
 Scenario: PBMCC28550-005 Verify Signature is broken in Audit when Primary form is signed and data entered in a mixed form.
 
@@ -247,8 +247,8 @@ Scenario: PBMCC28550-005 Verify Signature is broken in Audit when Primary form i
 
 @Release_2013.1.0
 @PBMCC28550-006
-@SJ31.JAN.2013
-@Draft
+@SJ01.FEB.2013
+@Validation
 
 Scenario: PBMCC28550-006 Verify Signature is broken in Audit when Primary form is signed and data entered in a mixed form with default value.
 
@@ -292,8 +292,8 @@ Scenario: PBMCC28550-006 Verify Signature is broken in Audit when Primary form i
 
 @Release_2013.1.0
 @PBMCC28550-007
-@SJ31.JAN.2013
-@Draft
+@SJ01.FEB.2013
+@Validation
 
 Scenario: PBMCC28550-007 Verify Signature is broken in Audit when Primary form is signed and data entered in a lab form.
 
@@ -345,8 +345,8 @@ Scenario: PBMCC28550-007 Verify Signature is broken in Audit when Primary form i
 
 @Release_2013.1.0
 @PBMCC28550-008
-@SJ31.JAN.2013
-@Draft
+@SJ01.FEB.2013
+@Validation
 
 Scenario: PBMCC28550-008 Verify Signature is broken in Audit when Primary form is signed and data saved in a lab form with default value.
 
@@ -395,8 +395,8 @@ Scenario: PBMCC28550-008 Verify Signature is broken in Audit when Primary form i
 
 @Release_2013.1.0
 @PBMCC28550-009
-@SJ31.JAN.2013
-@Draft
+@SJ01.FEB.2013
+@Validation
 
 Scenario: PBMCC28550-009 Verify Signature is broken in Audit when a Standard Form is signed and modify data point.
 
@@ -451,8 +451,8 @@ Scenario: PBMCC28550-009 Verify Signature is broken in Audit when a Standard For
 
 @Release_2013.1.0
 @PBMCC28550-010
-@SJ31.JAN.2013
-@Draft
+@SJ01.FEB.2013
+@Validation
 
 Scenario: PBMCC28550-010 Verify Signature is broken in Audit when a Standard Form with default value is signed and modify data point.
 
@@ -510,8 +510,8 @@ Scenario: PBMCC28550-010 Verify Signature is broken in Audit when a Standard For
 
 @Release_2013.1.0
 @PBMCC28550-011
-@SJ31.JAN.2013
-@Draft
+@SJ01.FEB.2013
+@Validation
 
 Scenario: PBMCC28550-011 Verify Signature is broken in Audit when a log Form is signed and modify data point.
 
@@ -570,8 +570,8 @@ Scenario: PBMCC28550-011 Verify Signature is broken in Audit when a log Form is 
 
 @Release_2013.1.0
 @PBMCC28550-012
-@SJ31.JAN.2013
-@Draft
+@SJ01.FEB.2013
+@Validation
 
 Scenario: PBMCC28550-012 Verify Signature is broken in Audit when a log Form wwith default vlaue is signed and modify data point.
 
@@ -625,8 +625,8 @@ Scenario: PBMCC28550-012 Verify Signature is broken in Audit when a log Form wwi
 
 @Release_2013.1.0
 @PBMCC28550-013
-@SJ31.JAN.2013
-@Draft
+@SJ01.FEB.2013
+@Validation
 
 Scenario: PBMCC28550-013 Verify Signature is broken in Audit when a mixed Form is signed and modify data point.
 
@@ -683,8 +683,8 @@ Scenario: PBMCC28550-013 Verify Signature is broken in Audit when a mixed Form i
 
 @Release_2013.1.0
 @PBMCC28550-014
-@SJ31.JAN.2013
-@Draft
+@SJ01.FEB.2013
+@Validation
 
 Scenario: PBMCC28550-014 Verify Signature is broken in Audit when a Mixed Form with default value is signed and modify data point.
 
@@ -736,8 +736,8 @@ Scenario: PBMCC28550-014 Verify Signature is broken in Audit when a Mixed Form w
 
 @Release_2013.1.0
 @PBMCC28550-015
-@SJ31.JAN.2013
-@Draft
+@SJ01.FEB.2013
+@Validation
 
 Scenario: PBMCC28550-015 Verify Signature is broken in Audit when a lab Form is signed and modify data point.
 
@@ -799,8 +799,8 @@ Scenario: PBMCC28550-015 Verify Signature is broken in Audit when a lab Form is 
 
 @Release_2013.1.0
 @PBMCC28550-016
-@SJ31.JAN.2013
-@Draft
+@SJ01.FEB.2013
+@Validation
 
 Scenario: PBMCC28550-016 Verify Signature is broken in Audit when a lab Form with default value is signed and modify data point.
 
@@ -858,8 +858,8 @@ Scenario: PBMCC28550-016 Verify Signature is broken in Audit when a lab Form wit
 
 @Release_2013.1.0
 @PBMCC28550-017
-@SJ31.JAN.2013
-@Draft
+@SJ01.FEB.2013
+@Validation
 
 Scenario:  PBMCC28550-017 Verify Signature is succeeded in Audit when a standard Form is signed in grid view and resigned after modify data point.
 
@@ -917,8 +917,8 @@ Scenario:  PBMCC28550-017 Verify Signature is succeeded in Audit when a standard
 
 @Release_2013.1.0
 @PBMCC28550-018
-@SJ31.JAN.2013
-@Draft
+@SJ01.FEB.2013
+@Validation
 
 Scenario: PBMCC28550-018 Verify Signature is succeeded in Audit when a standard Form with default value is signed in grid view and resigned after modify data point.
 
@@ -976,8 +976,8 @@ Scenario: PBMCC28550-018 Verify Signature is succeeded in Audit when a standard 
 
 @Release_2013.1.0
 @PBMCC28550-019
-@SJ31.JAN.2013
-@Draft
+@SJ01.FEB.2013
+@Validation
 
 Scenario: PBMCC28550-019 Verify Signature is succeeded in Audit when a log form is signed in grid view and resigned after modify data point.
 
@@ -1038,8 +1038,8 @@ Scenario: PBMCC28550-019 Verify Signature is succeeded in Audit when a log form 
 
 @Release_2013.1.0
 @PBMCC28550-020
-@SJ31.JAN.2013
-@Draft
+@SJ01.FEB.2013
+@Validation
 
 Scenario: PBMCC28550-020 Verify Signature is succeeded in Audit when a log form with default value is signed in grid view and resigned after modify data point.
 
@@ -1095,8 +1095,8 @@ Scenario: PBMCC28550-020 Verify Signature is succeeded in Audit when a log form 
 
 @Release_2013.1.0
 @PBMCC28550-021
-@SJ31.JAN.2013
-@Draft
+@SJ01.FEB.2013
+@Validation
 
 Scenario: PBMCC28550-021 Verify Signature is succeeded in Audit when a mixed form is signed in grid view and resigned after modify data point.
 
@@ -1157,8 +1157,8 @@ Scenario: PBMCC28550-021 Verify Signature is succeeded in Audit when a mixed for
 
 @Release_2013.1.0
 @PBMCC28550-022
-@SJ31.JAN.2013
-@Draft
+@SJ01.FEB.2013
+@Validation
 
 Scenario: PBMCC28550-022 Verify Signature is succeeded in Audit when a mixed form with default value is signed in grid view and resigned after modify data point.
 
@@ -1215,8 +1215,8 @@ Scenario: PBMCC28550-022 Verify Signature is succeeded in Audit when a mixed for
 
 @Release_2013.1.0
 @PBMCC28550-023
-@SJ31.JAN.2013
-@Draft
+@SJ01.FEB.2013
+@Validation
 
 Scenario: PBMCC28550-023 Verify Signature is succeeded in Audit when a lab form is signed in grid view and resigned after modify data point.
 
@@ -1283,8 +1283,8 @@ Scenario: PBMCC28550-023 Verify Signature is succeeded in Audit when a lab form 
 
 @Release_2013.1.0
 @PBMCC28550-024
-@SJ31.JAN.2013
-@Draft
+@SJ01.FEB.2013
+@Validation
 
 Scenario: PBMCC28550-024 Verify Signature is succeeded in Audit when a lab form with defualt value is signed in grid view and resigned after modify data point.
 
@@ -1349,8 +1349,8 @@ Scenario: PBMCC28550-024 Verify Signature is succeeded in Audit when a lab form 
 
 @Release_2013.1.0
 @PBMCC28550-025
-@SJ31.JAN.2013
-@Draft
+@SJ01.FEB.2013
+@Validation
 
 Scenario: PBMCC28550-025 Verify Signature is succeeded in Audit when a standard form is signed after modify data point.
 
@@ -1407,8 +1407,8 @@ Scenario: PBMCC28550-025 Verify Signature is succeeded in Audit when a standard 
 
 @Release_2013.1.0
 @PBMCC28550-026
-@SJ31.JAN.2013
-@Draft
+@SJ01.FEB.2013
+@Validation
 
 Scenario: PBMCC28550-026 Verify Signature is succeeded in Audit when a standard form with default value is signed after modify data point.
 
@@ -1465,8 +1465,8 @@ Scenario: PBMCC28550-026 Verify Signature is succeeded in Audit when a standard 
 
 @Release_2013.1.0
 @PBMCC28550-027
-@SJ31.JAN.2013
-@Draft
+@SJ01.FEB.2013
+@Validation
 
 Scenario: PBMCC28550-027 Verify Signature is succeeded in Audit when a log form is signed after modify data point.
 
@@ -1524,8 +1524,8 @@ Scenario: PBMCC28550-027 Verify Signature is succeeded in Audit when a log form 
 
 @Release_2013.1.0
 @PBMCC28550-028
-@SJ31.JAN.2013
-@Draft
+@SJ01.FEB.2013
+@Validation
 
 Scenario: PBMCC28550-028 Verify Signature is succeeded in Audit when a log form with default value is signed after modify data point.
 
@@ -1586,8 +1586,8 @@ Scenario: PBMCC28550-028 Verify Signature is succeeded in Audit when a log form 
 
 @Release_2013.1.0
 @PBMCC28550-029
-@SJ31.JAN.2013
-@Draft
+@SJ01.FEB.2013
+@Validation
 
 Scenario: PBMCC28550-029 Verify Signature is succeeded in Audit when a mixed form is signed after modify data point.
 
@@ -1647,8 +1647,8 @@ Scenario: PBMCC28550-029 Verify Signature is succeeded in Audit when a mixed for
 	
 @Release_2013.1.0
 @PBMCC28550-030
-@SJ31.JAN.2013
-@Draft
+@SJ01.FEB.2013
+@Validation
 
 Scenario: PBMCC28550-030 Verify Signature is succeeded in Audit when a mixed form with default value is signed after modify data point.
 
@@ -1706,8 +1706,8 @@ Scenario: PBMCC28550-030 Verify Signature is succeeded in Audit when a mixed for
 
 @Release_2013.1.0
 @PBMCC28550-031
-@SJ31.JAN.2013
-@Draft
+@SJ01.FEB.2013
+@Validation
 
 Scenario: PBMCC28550-031 Verify Signature is succeeded in Audit when a lab form is signed after modify data point.
 
@@ -1771,8 +1771,8 @@ Scenario: PBMCC28550-031 Verify Signature is succeeded in Audit when a lab form 
 
 @Release_2013.1.0
 @PBMCC28550-032
-@SJ31.JAN.2013
-@Draft
+@SJ01.FEB.2013
+@Validation
 
 Scenario: PBMCC28550-032 Verify Signature is succeeded in Audit when a lab form with default value is signed after modify data point.
 
