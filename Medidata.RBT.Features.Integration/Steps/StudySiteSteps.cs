@@ -27,5 +27,86 @@ namespace Medidata.RBT.Features.Integration.Steps
             Assert.IsNotNull(studySite);
             ScenarioContext.Current.Add("studySite", studySite);
         }
+
+        [Then(@"the studysite should have the StudySiteId ""(.*)""")]
+        public void ThenTheStudysiteShouldHaveTheStudySiteId____(int studySiteId)
+        {
+            var studySite = ScenarioContext.Current.Get<StudySite>("studySite");
+
+            Assert.AreEqual(studySiteId, studySite.ID);
+        }
+
+        [Then(@"the studysite should have the StudySiteName ""(.*)""")]
+        public void ThenTheStudysiteShouldHaveTheStudySiteName____(string studySiteName)
+        {
+            var studySite = ScenarioContext.Current.Get<StudySite>("studySite");
+
+            Assert.AreEqual(studySiteName, studySite.Name);
+        }
+
+        [Then(@"the studysite should have the StudySiteNumber ""(.*)""")]
+        public void ThenTheStudysiteShouldHaveTheStudySiteNumber____(string studySiteNumber)
+        {
+            var studySite = ScenarioContext.Current.Get<StudySite>("studySite");
+
+            Assert.AreEqual(studySiteNumber, studySite.StudySiteNumber);
+        }
+
+        [Then(@"the studysite should have the ExternalStudyId ""(.*)""")]
+        public void ThenTheStudysiteShouldHaveTheExternalStudyId(int externalStudyId)
+        {
+            var studySite = ScenarioContext.Current.Get<StudySite>("studySite");
+
+            Assert.AreEqual(externalStudyId, studySite.Study.ExternalID);
+        }
+
+        [Then(@"the studysite should have the ExternalSiteId ""(.*)""")]
+        public void ThenTheStudysiteShouldHaveTheExternalSiteId(int externalSiteId)
+        {
+            var studySite = ScenarioContext.Current.Get<StudySite>("studySite");
+
+            Assert.AreEqual(externalSiteId, studySite.Site.ExternalID);
+        }
+
+        [Then(@"the studysite should have the SiteName ""(.*)""")]
+        public void ThenTheStudysiteShouldHaveTheSiteName____(string siteName)
+        {
+            var studySite = ScenarioContext.Current.Get<StudySite>("studySite");
+
+            Assert.AreEqual(siteName, studySite.Site.Name);
+        }
+
+        [Then(@"the studysite should have the SiteNumber ""(.*)""")]
+        public void ThenTheStudysiteShouldHaveTheSiteNumber____(string siteNumber)
+        {
+            var studySite = ScenarioContext.Current.Get<StudySite>("studySite");
+
+            Assert.AreEqual(siteNumber, studySite.Site.Number);
+        }
+
+        [Then(@"the studysite should have a LastExternalUpdateDate ""(.*)""")]
+        public void ThenTheStudysiteShouldHaveALastExternalUpdateDate____(DateTime lastExternalUpdateDate)
+        {
+            var studySite = ScenarioContext.Current.Get<StudySite>("studySite");
+
+            Assert.AreEqual(lastExternalUpdateDate, studySite.LastExternalUpdateDate);
+        }
+
+        [Then(@"the studysite should have ExternalID ""(.*)""")]
+        public void ThenTheStudysiteShouldHaveExternalID____(int externalId)
+        {
+            var studySite = ScenarioContext.Current.Get<StudySite>("studySite");
+
+            Assert.AreEqual(externalId, studySite.ExternalID);
+        }
+
+        [Then(@"the studysite should be inactive")]
+        public void ThenTheStudysiteShouldBeInactive()
+        {
+            var studySite = ScenarioContext.Current.Get<StudySite>("studySite");
+
+            Assert.AreEqual(false, studySite.Active);
+        }
+
     }
 }

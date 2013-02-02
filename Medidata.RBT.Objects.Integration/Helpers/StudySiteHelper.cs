@@ -26,11 +26,10 @@ namespace Medidata.RBT.Objects.Integration.Helpers
                 {
                     case "post":
                         config.StudySiteUuid = Guid.NewGuid();
-                        config.StudyUuid = Guid.NewGuid();
                         config.SiteUuid = Guid.NewGuid();
-
+                        config.StudyUuid = new Guid(ScenarioContext.Current.Get<string>("studyUuid")); // scenarios should verify that study already exists.
+                        
                         ScenarioContext.Current.Add("studySiteUuid", config.StudySiteUuid.ToString());
-                        ScenarioContext.Current.Add("studyUuid", config.StudyUuid.ToString());
                         ScenarioContext.Current.Add("siteUuid", config.SiteUuid.ToString());
 
                         Console.WriteLine("StudySite UUID: {0}", config.StudySiteUuid);
@@ -40,10 +39,18 @@ namespace Medidata.RBT.Objects.Integration.Helpers
                         message = Render.StringToString(StudySiteTemplates.POST_TEMPLATE, new { config });
                         break;
                     case "put":
-                        config.StudySiteUuid = new Guid(ScenarioContext.Current.Get<String>("studyUuid"));
-                        message = Render.StringToString(StudyTemplates.STUDY_PUT_TEMPLATE, new { config });
+                        config.StudyUuid = new Guid(ScenarioContext.Current.Get<string>("studyUuid"));
+                        config.SiteUuid = new Guid(ScenarioContext.Current.Get<string>("siteUuid")); 
+                        config.StudySiteUuid = new Guid(ScenarioContext.Current.Get<String>("studySiteUuid"));
+
+                        message = Render.StringToString(StudySiteTemplates.PUT_TEMPLATE, new { config });
                         break;
                     case "delete":
+                        config.StudyUuid = new Guid(ScenarioContext.Current.Get<string>("studyUuid"));
+                        config.SiteUuid = new Guid(ScenarioContext.Current.Get<string>("siteUuid")); 
+                        config.StudySiteUuid = new Guid(ScenarioContext.Current.Get<String>("studySiteUuid"));
+
+                        message = Render.StringToString(StudySiteTemplates.DELETE_TEMPLATE, new { config });
                         break;
                 }
 
