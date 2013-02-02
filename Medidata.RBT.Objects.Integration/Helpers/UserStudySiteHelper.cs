@@ -2,6 +2,8 @@
 using System.Linq;
 using Medidata.AmazonSimpleServices;
 using Medidata.RBT.Objects.Integration.Configuration.Models;
+using Medidata.RBT.Objects.Integration.Configuration.Templates;
+using Nustache.Core;
 using TechTalk.SpecFlow;
 using TechTalk.SpecFlow.Assist;
 
@@ -23,8 +25,10 @@ namespace Medidata.RBT.Objects.Integration.Helpers
                     case "post":
                         config.UUID = Guid.NewGuid();
                         ScenarioContext.Current.Add("userStudySiteUuid", config.UUID);
+                        message = Render.StringToString(UserStudySiteTemplates.USERSTUDYSITE_POST_TEMPLATE, new { config });
                         break;
                     case "delete":
+                        message = Render.StringToString(UserStudySiteTemplates.USERSTUDYSITE_DELETE_TEMPLATE, new { config });
                         break;
                 }
 

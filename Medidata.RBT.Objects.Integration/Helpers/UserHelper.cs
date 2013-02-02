@@ -67,6 +67,7 @@ namespace Medidata.RBT.Objects.Integration.Helpers
             user.ExternalUser = externalUser;
 
             user.Save();
+            ScenarioContext.Current.Add("userObject", user);
         }
     }
 }

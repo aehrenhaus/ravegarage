@@ -11,12 +11,12 @@ namespace Medidata.RBT.Objects.Integration.Configuration.Templates
                                                                     "\"updated_at\": \"{{UpdatedAt}}\",\r\n" +
                                                                     "\"type\": \"StudySiteAssignment\", \r\n" +
                                                                     "\"user\": {\r\n" +
-                                                                          "\"id\": \"{{ID}}\",\r\n" +
+                                                                          "\"id\": {{UserID}},\r\n" +
                                                                           "\"uuid\": \"{{UserUUID}}\",\r\n" +
                                                                           "\"type\": \"User\"\r\n" +
                                                                     "},\r\n" +
                                                                     "\"study_site\": {\r\n" +
-                                                                          "\"id\": \"{{StudySiteID}}\",\r\n" +
+                                                                          "\"id\": {{StudySiteID}},\r\n" +
                                                                           "\"uuid\": \"{{StudySiteUUID}}\"\r\n" +
                                                                     "}\r\n" +
                                                                 "},\r\n" +

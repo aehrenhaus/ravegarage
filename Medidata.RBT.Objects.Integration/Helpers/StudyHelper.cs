@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using Medidata.AmazonSimpleServices;
+using Medidata.Core.Objects;
 using Medidata.RBT.Objects.Integration.Configuration.Models;
 using Medidata.RBT.Objects.Integration.Configuration.Templates;
 using Nustache.Core;
@@ -37,6 +38,16 @@ namespace Medidata.RBT.Objects.Integration.Helpers
                 if (!string.IsNullOrWhiteSpace(message))
                     sqsWrapper.SendMessage(url, message);
             }
+        }
+
+        public static void CreateRaveStudy(string name, string environment)
+        {
+            var project = new Project(SystemInteraction.Use()) { Name = name, IsActive = true, UUID = new Guid().ToString() };           
+            project.Save();
+
+            var study = new Study("env", false, project, SystemInteraction.Use());
+            study.Save();
+            ScenarioContext.Current.Add("studyObject", study);
         }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System;
 using Medidata.Core.Objects;
+using Medidata.RBT.Objects.Integration.Helpers;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using TechTalk.SpecFlow;
 
@@ -9,6 +10,12 @@ namespace Medidata.RBT.Features.Integration.Steps
     public class StudySteps
     {
         // For additional details on SpecFlow step definitions see http://go.specflow.org/doc-stepdef
+
+        [Given(@"the Study with Name ""(.*)"" and Environment ""(.*)"" exists in the Rave database")]
+        public void TheStudyWithName____AndEnvironment____ExistsInTheRaveDatabase(string name, string environment)
+        {
+            StudyHelper.CreateRaveStudy(name, environment);
+        }
 
         [Then(@"I should see the study in the Rave database")]
         public void ThenIShouldSeeTheStudyInTheRaveDatabase()
