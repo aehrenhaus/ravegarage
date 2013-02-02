@@ -26,14 +26,17 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
         public Project Project { get; set; }
         public Draft Draft { get; set; }
 
+
         /// <summary>
         ///The uploaded draft constructor
         ///</summary>
         ///<param name="name">The feature defined name of the UploadedDraft</param>
-		public UploadedDraft(string name)
+		public UploadedDraft(string name, bool redirectAfterSeed = true)
         {
 			UniqueName = name;
+			this.RedirectAfterSeed = redirectAfterSeed;
         }
+
 
         /// <summary>
         /// Navigate to the upload draft page.

@@ -11,7 +11,9 @@ using System.Threading;
 using TechTalk.SpecFlow;
 namespace Medidata.RBT.PageObjects.Rave
 {
-	public class UploadDraftPage : ArchitectBasePage
+	public class UploadDraftPage : 
+		ArchitectBasePage, 
+		IVerifySomethingExists
 	{
         /// <summary>
         /// Upload a UploadDraft
@@ -33,7 +35,8 @@ namespace Medidata.RBT.PageObjects.Rave
 			Browser.TryFindElementBy(b =>
                 {
                     IWebElement currentStatus = Browser.FindElementByXPath("//span[@id = 'CurrentStatus']");
-                    if (currentStatus.Text.Contains("Save successful"))
+                    if (currentStatus.Text.Contains("Save successful")
+						|| currentStatus.Text.Contains("Transaction rolled back"))
                         return currentStatus;
                     else
                         return null;
@@ -47,6 +50,18 @@ namespace Medidata.RBT.PageObjects.Rave
 			{
                 return "Modules/Architect/UploadDraft.aspx";
 			}
+		}
+
+		bool IVerifySomethingExists.VerifySomethingExist(string areaIdentifier, string type, string identifier, bool exactMatch)
+		{
+			if (identifier != null)
+			{
+				if (!exactMatch && Browser.PageSource.Contains(identifier))
+					return true;
+				else
+					return false;
+			}
+			throw new ArgumentNullException("identifier cannot be null");
 		}
 	}
 }
