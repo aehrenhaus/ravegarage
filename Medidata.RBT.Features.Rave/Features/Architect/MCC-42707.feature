@@ -50,7 +50,7 @@ Background:
 	Given xml draft "MCC-42707.xml" is Uploaded
     Given following Project assignments exist
     | User         | Project   | Environment | Role         | Site   | SecurityRole          |
-    | SUPER USER 1 | MCC-42707 | Live: Prod  | SUPER USER 1 | Site 1 | Project Admin Default |
+    | SUPER USER 1 | MCC-42707 | Live: Prod  | SUPER ROLE 1 | Site 1 | Project Admin Default |
     
 
 
