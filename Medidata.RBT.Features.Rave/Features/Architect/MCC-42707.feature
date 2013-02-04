@@ -68,7 +68,7 @@ Scenario: PBMCC-42707-001 Verify Coder settings are maintained after changing fi
 	And I navigate to "Forms"
 	And I select Fields for Form "MCC42707"
 	And I edit Field "varcheckbx3"
-	And I choose "AZDD" from "Coding Dictionary:"
+	And I choose "CODER- AZDD" from "Coding Dictionary:"
 	And I select link "Save"
 	And I click button "Coder Configuration"
 	And I enter data in architect coder configuration and save
@@ -131,7 +131,7 @@ Scenario: PBMCC-42707-002 Verify Coder settings are maintained after changing fi
 	And I navigate to "Forms"
 	And I select Fields for Form "MCC42707"
 	And I edit Field "varcheckbx2"
-	And I choose "AZDD" from "Coding Dictionary:"
+	And I choose "CODER- AZDD" from "Coding Dictionary:"
 	And I select link "Save"
 	And I click button "Coder Configuration"
 	And I enter data in architect coder configuration and save
@@ -190,7 +190,7 @@ Scenario: PBMCC-42707-003 Verify Coder settings are maintained after changing Co
 	And I navigate to "Forms"
 	And I select Fields for Form "MCC42707"
 	And I edit Field "varcheckbx"
-	And I choose "AZDD" from "Coding Dictionary:"
+	And I choose "CODER- AZDD" from "Coding Dictionary:"
 	And I select link "Save"
 	And I click button "Coder Configuration"
 	And I enter data in architect coder configuration and save
@@ -212,7 +212,7 @@ Scenario: PBMCC-42707-003 Verify Coder settings are maintained after changing Co
 	And I edit Field "varcheckbx"
 	And I choose "CODER- WHODRUGB2" from "Coding Dictionary:"
 	And I select link "Save"
-	And I choose "AZDD" from "Coding Dictionary:"
+	And I choose "CODER- AZDD" from "Coding Dictionary:"
 	And I select link "Save"
 	And I click button "Coder Configuration"
 	Then I verify text "INGREDIENT" exists in "Coding Level"
@@ -249,7 +249,7 @@ Scenario: PBMCC-42707-004 Verify local setting in Coder is maintained after chan
 	And I navigate to "Forms"
 	And I select Fields for Form "ETE2"
 	And I edit Field "CoderField2"
-	And I choose "MedDRA" from "Coding Dictionary:"
+	And I choose "CODER- MedDRA" from "Coding Dictionary:"
 	And I select link "Save"
 	And I click button "Coder Configuration"
 	And I enter data in architect coder configuration and save
@@ -283,7 +283,7 @@ Scenario: PBMCC-42707-005 Verify Locale setting in Coder is maintained after cha
 	And I navigate to "Forms"
 	And I select Fields for Form "ETE2"
 	And I edit Field "LogCompField1"
-	And I choose "MedDRA" from "Coding Dictionary:"
+	And I choose "CODER- MedDRA" from "Coding Dictionary:"
 	And I select link "Save"
 	And I click button "Coder Configuration"
 	And I enter data in architect coder configuration and save
@@ -294,9 +294,9 @@ Scenario: PBMCC-42707-005 Verify Locale setting in Coder is maintained after cha
 	And I take a screenshot
 	And I select link "ETE2"
 	And I edit Field "LogCompField1"
-	And I choose "AZDD" from "Coding Dictionary:"
+	And I choose "CODER- AZDD" from "Coding Dictionary:"
 	And I select link "Save"
-	And I choose "MedDRA" from "Coding Dictionary:"
+	And I choose "CODER- MedDRA" from "Coding Dictionary:"
 	And I select link "Save"
 	And I take a screenshot
 	And I click button "Coder Configuration"
