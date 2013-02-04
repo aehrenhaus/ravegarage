@@ -1,15 +1,44 @@
 ﻿@FT_MCC-42701
 @ignore
+
 Feature: MCC_42701 Architect download will contain Coder settings and Architect upload will save Coder settings
 
 Background:
 
     Given role "SUPER ROLE 1" exists
     Given study "MCC-42701-001" exists
-	Given coding dictionary "AZDD" version "Coder" exists
-	Given coding dictionary "JDrug" version "Coder" exists
-	Given coding dictionary "MedDRA" version "Coder" exists
-	Given coding dictionary "WHODRUGB2" version "Coder" exists
+	Given coding dictionary "AZDD" version "Coder" exists with following coding columns
+	| Coding Column Name |
+	| PRODUCT            |
+	| ATC                |
+	Given coding dictionary "AZDD" coding column "PRODUCT" has following coding level components
+	| OID              |
+	| DRUGRECORDNUMBER |
+	
+	Given coding dictionary "JDrug" version "Coder" exists with following coding columns
+	| Coding Column Name |
+	| PRODUCT            |
+	| ATC                |
+	Given coding dictionary "JDrug" coding column "PRODUCT" has following coding level components
+	| OID              |
+	| DRUGRECORDNUMBER |
+
+	Given coding dictionary "MedDRA" version "Coder" exists with following coding columns
+	| Coding Column Name |
+	| PRODUCT            |
+	| ATC                |
+	Given coding dictionary "MedDRA" coding column "PRODUCT" has following coding level components
+	| OID              |
+	| DRUGRECORDNUMBER |
+
+	Given coding dictionary "WHODRUGB2" version "Coder" exists with following coding columns
+	| Coding Column Name |
+	| PRODUCT            |
+	| ATC                |
+	Given coding dictionary "WHODRUGB2" coding column "PRODUCT" has following coding level components
+	| OID              |
+	| DRUGRECORDNUMBER |
+
 	Given following coding dictionary assignments exist
 		| Project       | Coding Dictionary |
 		| MCC-42701-001 | AZDD              |
@@ -26,7 +55,7 @@ Background:
 
 @Release_2013.1.0
 @PBMCC-42701-001
-@SJ01.FEB.2013
+@SJ04.FEB.2013
 @Draft
 
 Scenario: PBMCC-42701-001 When uploading an architect spreadsheet that contains Coder settings and the URL has Coder registered, the Coder settings will be saved and the upload will be successfull
@@ -57,7 +86,7 @@ Scenario: PBMCC-42701-001 When uploading an architect spreadsheet that contains 
 
 @Release_2013.1.0
 @PBMCC-42701-003
-@SJ01.FEB.2013
+@SJ04.FEB.2013
 @Draft
 Scenario: PBMCC-42701-003 When uploading an architect spreadsheet that does not contain Coder settings including coder in field level and the URL has Coder registered, the upload will be successfull
 	
@@ -69,7 +98,7 @@ Scenario: PBMCC-42701-003 When uploading an architect spreadsheet that does not 
 
 @Release_2013.1.0
 @PBMCC-42701-004
-@SJ01.FEB.2013
+@SJ04.FEB.2013
 @Draft
 Scenario: PBMCC-42701-004When uploading an architect spreadsheet that contain same Field OID and same name for Supplemental Terms and Component Terms and the URL has Coder registered, the upload will fail and user will be provided with appropriate message
 
@@ -81,7 +110,7 @@ Scenario: PBMCC-42701-004When uploading an architect spreadsheet that contain sa
 
 @Release_2013.1.0
 @PBMCC-42701-005
-@SJ01.FEB.2013
+@SJ04.FEB.2013
 @Draft
 Scenario: PBMCC-42701-005 When uploading an architect spreadsheet that contain name and component name for Component Terms and the URL has Coder registered, the upload will be successfull
 
@@ -111,7 +140,7 @@ Scenario: PBMCC-42701-005 When uploading an architect spreadsheet that contain n
 
 @Release_2013.1.0
 @PBMCC-42701-006
-@SJ01.FEB.2013
+@SJ04.FEB.2013
 @Draft
 Scenario: PBMCC-42701-006 When uploading an architect spreadsheet that contain name and no component name in Component Terms and the URL has Coder registered, the upload will fail and user will be provided with appropriate message
 	
@@ -125,7 +154,7 @@ Scenario: PBMCC-42701-006 When uploading an architect spreadsheet that contain n
 
 @Release_2013.1.0
 @PBMCC-42701-007
-@SJ01.FEB.2013
+@SJ04.FEB.2013
 @Draft
 Scenario: PBMCC-42701-007 When uploading an architect spreadsheet after updating coding level in coder configuration and the URL has Coder registered, upload will be successfull and updated coding level will show on Coder configuration page with the intial coding level.
 
@@ -168,7 +197,7 @@ Scenario: PBMCC-42701-007 When uploading an architect spreadsheet after updating
 
 @Release_2013.1.0
 @PBMCC-42701-008
-@SJ01.FEB.2013
+@SJ04.FEB.2013
 @Draft
 Scenario: PBMCC-42701-008 When uploading an architect spreadsheet that assigned coder dictionary to a field and have no Coder settings for the URL which Coder registered, the upload will fail and user will be provided with appropriate message
 	
@@ -181,7 +210,7 @@ Scenario: PBMCC-42701-008 When uploading an architect spreadsheet that assigned 
 
 @Release_2013.1.0
 @PBMCC-42701-009
-@SJ01.FEB.2013
+@SJ04.FEB.2013
 @Draft
 Scenario: PBMCC-42701-009 When uploading an architect spreadsheet that assigned coder dictionary to a field and does not contain Coder settings for CoderConfiguration tab and have Coder settings for the URL which Coder is registered, the upload will fail and user will be provided with appropriate message
 
@@ -196,7 +225,7 @@ Scenario: PBMCC-42701-009 When uploading an architect spreadsheet that assigned 
 
 @Release_2013.1.0
 @PBMCC-42701-010
-@SJ01.FEB.2013
+@SJ04.FEB.2013
 @Draft
 Scenario: PBMCC-42701-010 When uploading an architect spreadsheet which contains same field name for SupplementalTerms and ComponentTerms and the URL has Coder registered, the upload will fail and user will be provided with appropriate message
 
@@ -232,7 +261,7 @@ Scenario: PBMCC-42701-010 When uploading an architect spreadsheet which contains
 
 @Release_2013.1.0
 @PBMCC-42701-011
-@SJ01.FEB.2013
+@SJ04.FEB.2013
 @Draft
 Scenario: PBMCC-42701-011 When uploading an architect spreadsheet by changing Coding Level and the URL has Coder registered, the upload will fail and user will be provided with appropriate message
 
@@ -268,7 +297,7 @@ Scenario: PBMCC-42701-011 When uploading an architect spreadsheet by changing Co
 
 @Release_2013.1.0
 @PBMCC-42701-012
-@SJ01.FEB.2013
+@SJ04.FEB.2013
 @Draft
 	Scenario: PBMCC-42701-012 When uploading an architect spreadsheet where a field does not have VarOID and assigned to coding dictionary and the URL has Coder registered, the upload will fail and user will be provided with appropriate message
 
@@ -282,7 +311,7 @@ Scenario: PBMCC-42701-011 When uploading an architect spreadsheet by changing Co
 
 @Release_2013.1.0
 @PBMCC-42701-013
-@SJ01.FEB.2013
+@SJ04.FEB.2013
 @Draft
 	Scenario: @PBMCC-42701-013 When uploading an architect spreadsheet where a field does not have VarOID,format and field is not assign to coding dictionary and the URL has Coder registered, the upload will fail and user will be provided with appropriate message
 
