@@ -15,7 +15,12 @@ Background:
 	Given coding dictionary "AZDD" coding column "PRODUCT" has following coding level components
 	| OID              |
 	| DRUGRECORDNUMBER |
+	| SOURCE           |
 	
+	Given coding dictionary "AZDD" coding column "ATC" has following coding level components
+	| OID              |
+	| SOURCE           |
+
 	Given coding dictionary "JDrug" version "Coder" exists with following coding columns
 	| Coding Column Name |
 	| PRODUCT            |
