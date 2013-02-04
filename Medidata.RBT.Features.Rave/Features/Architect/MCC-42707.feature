@@ -7,7 +7,7 @@ Feature: MCC-42707 When configuring Coder settings, the settings are preserved e
 Background:
 
     Given role "SUPER ROLE 1" exists
-    Given xml draft "MCC-42707.xml" is Uploaded
+	Given study "MCC-42707" exists
 	Given coding dictionary "AZDD" version "Coder" exists with following coding columns
 	| Coding Column Name |
 	| PRODUCT            |
@@ -39,20 +39,18 @@ Background:
 	Given coding dictionary "WHODRUGB2" coding column "PRODUCT" has following coding level components
 	| OID              |
 	| DRUGRECORDNUMBER |
-	Given coding dictionary "AZDD" version "Coder" exists
-	Given coding dictionary "JDrug" version "Coder" exists
-	Given coding dictionary "MedDRA" version "Coder" exists
-	Given coding dictionary "WHODRUGB2" version "Coder" exists
 	Given following coding dictionary assignments exist
-		| Project   | Coding Dictionary |
-		| MCC-42707 | AZDD              |
-		| MCC-42707 | JDrug             |
-		| MCC-42707 | MedDRA            |
-		| MCC-42707 | WHODRUGB2         |
+	| Project   | Coding Dictionary |
+	| MCC-42707 | AZDD              |
+	| MCC-42707 | JDrug             |
+	| MCC-42707 | MedDRA            |
+	| MCC-42707 | WHODRUGB2         |
+	
     Given study "MCC-42707" is assigned to Site "Site 1"
+	Given xml draft "MCC-42707.xml" is Uploaded
     Given following Project assignments exist
-    | User         | Project   | Environment | Role                | Site   | SecurityRole          |
-    | SUPER USER 1 | MCC-42707 | Live: Prod  | MCC-42707_SUPERROLE | Site 1 | Project Admin Default | 
+    | User         | Project   | Environment | Role         | Site   | SecurityRole          |
+    | SUPER USER 1 | MCC-42707 | Live: Prod  | SUPER USER 1 | Site 1 | Project Admin Default |
     
 
 
