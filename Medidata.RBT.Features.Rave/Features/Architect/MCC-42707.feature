@@ -194,9 +194,9 @@ Scenario: PBMCC-42707-003 Verify Coder settings are maintained after changing Co
 	And I select link "Save"
 	And I click button "Coder Configuration"
 	And I enter data in architect coder configuration and save
-		| Configuration Name | Data       | Control Type |
-		| Coding Level       | INGREDIENT | dropdown     |
-		| Priority           | 4          | textbox      |
+		| Configuration Name | Data | Control Type |
+		| Coding Level       | ATC  | dropdown     |
+		| Priority           | 4    | textbox      |
 	And I set the coder workflow variables
 		| Name               | Value|
 		| IsApprovalRequired | True |
@@ -215,7 +215,7 @@ Scenario: PBMCC-42707-003 Verify Coder settings are maintained after changing Co
 	And I choose "CODER- AZDD" from "Coding Dictionary:"
 	And I select link "Save"
 	And I click button "Coder Configuration"
-	Then I verify text "INGREDIENT" exists in "Coding Level"
+	Then I verify text "ATC" exists in "Coding Level"
 	And I verify text "4" exists in "Priority"
 	And I verify rows exist in "Workflow Variables" table
 		| Name               | Value |
@@ -255,7 +255,7 @@ Scenario: PBMCC-42707-004 Verify local setting in Coder is maintained after chan
 	And I enter data in architect coder configuration and save
 		| Configuration Name | Data    | Control Type |
 		| Locale             | jpn     | dropdown     |
-		| Coding Level       | SOC     | dropdown     |
+		| Coding Level       | PRODUCT | dropdown     |
 		| Priority           | 3       | textbox      |
 	And I take a screenshot
 	And I select link "ETE2"
@@ -266,7 +266,7 @@ Scenario: PBMCC-42707-004 Verify local setting in Coder is maintained after chan
 	And I take a screenshot
 	And I click button "Coder Configuration"
 	Then I verify text "jpn" exists in "Locale"
-	And I verify text "SOC" exists in "Coding Level"
+	And I verify text "PRODUCT" exists in "Coding Level"
 	And I verify text "3" exists in "Priority"
 	And I take a screenshot
 
@@ -289,7 +289,7 @@ Scenario: PBMCC-42707-005 Verify Locale setting in Coder is maintained after cha
 	And I enter data in architect coder configuration and save
 		| Configuration Name | Data    | Control Type |
 		| Locale             | jpn     | dropdown     |
-		| Coding Level       | SOC     | dropdown     |
+		| Coding Level       | ATC     | dropdown     |
 		| Priority           | 2       | textbox      |
 	And I take a screenshot
 	And I select link "ETE2"
@@ -301,6 +301,6 @@ Scenario: PBMCC-42707-005 Verify Locale setting in Coder is maintained after cha
 	And I take a screenshot
 	And I click button "Coder Configuration"
 	Then I verify text "jpn" exists in "Locale"
-	And I verify text "SOC" exists in "Coding Level"
+	And I verify text "ATC" exists in "Coding Level"
 	And I verify text "2" exists in "Priority"
 	And I take a screenshot
