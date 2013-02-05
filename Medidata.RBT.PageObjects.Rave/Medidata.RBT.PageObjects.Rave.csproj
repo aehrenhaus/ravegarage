@@ -81,6 +81,7 @@
     <Compile Include="Architect\ArchitectFormDesigner.cs" />
     <Compile Include="Architect\ArchitectRestrictionsPage.cs" />
     <Compile Include="Architect\EditChecksItem.cs" />
+    <Compile Include="Architect\Models\ProjectCodingDictionaryModel.cs" />
     <Compile Include="Architect\PublishChecksEditChecksControl.cs" />
     <Compile Include="Architect\UploadDraftPage.cs" />
     <Compile Include="Architect\PublishChecksHomePage.cs" />
@@ -159,7 +160,15 @@
     <Compile Include="ReportAdmin\ReportAssignmentPage.cs" />
     <Compile Include="Reports\CrystalReportPageBase.cs" />
     <Compile Include="SharedRaveObjects\Analyte.cs" />
+    <Compile Include="SharedRaveObjects\CoderDictLevelComponent.cs" />
+    <Compile Include="SharedRaveObjects\CoderWorkFlow.cs" />
+    <Compile Include="SharedRaveObjects\CoderWorkFlowData.cs" />
+    <Compile Include="SharedRaveObjects\CodingColumn.cs" />
+    <Compile Include="SharedRaveObjects\CodingDictionary.cs" />
+    <Compile Include="SharedRaveObjects\CoderLocale.cs" />
     <Compile Include="SharedRaveObjects\MatrixAssignment.cs" />
+    <Compile Include="SharedRaveObjects\ProjectCoderRegistration.cs" />
+    <Compile Include="SharedRaveObjects\ProjectCoderRegistrationWorkFlow.cs" />
     <Compile Include="SharedRaveObjects\UserGroup.cs" />
     <Compile Include="SharedRaveObjects\StandardGroups.cs" />
     <Compile Include="SharedRaveObjects\StudySite.cs" />
@@ -200,6 +209,7 @@
     <Compile Include="TableModels\ArchitectObjectModel.cs" />
     <Compile Include="TableModels\AuditModel.cs" />
     <Compile Include="TableModels\ArchitectCoderConfigurationModel.cs" />
+    <Compile Include="TableModels\CoderLocaleTable.cs" />
     <Compile Include="TableModels\CoderTermModel.cs" />
     <Compile Include="TableModels\CoderWorkflowVariableModel.cs" />
     <Compile Include="TableModels\ReportMatrixAssignmentModel.cs" />

@@ -31,12 +31,12 @@ namespace Medidata.RBT.PageObjects.Rave
 		public LoginSession(WebTestContext context, string username = null, string passowrd = null, bool restoreOriginalUser = true, bool restoreOriginalPage = false)
 		{
 			this.context = context;
-			previousUser = context.CurrentUser;
-			previousPassword = context.CurrentUserPassword;
+            previousUser = context.CurrentUser ?? RaveConfiguration.Default.DefaultUser;
+			previousPassword = context.CurrentUserPassword ?? RaveConfiguration.Default.DefaultUserPassword;
 			originalPage = context.CurrentPage;
 
 			this.RestoreOriginalUser = restoreOriginalUser;
-			this.gobackToOriginalPage = restoreOriginalUser;
+			this.gobackToOriginalPage = restoreOriginalPage;
 			LoginPage.LoginToHomePageIfNotAlready(context, username, passowrd);
 		}
 
