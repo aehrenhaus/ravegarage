@@ -19,7 +19,6 @@ namespace Medidata.RBT.Features.Rave
 		public void GivenStudy____Exists(string studyName)
 		{
 			SeedingContext.GetExistingFeatureObjectOrMakeNew(studyName, () => new Project(studyName, false));
-			WebTestContext.CurrentPage = new HomePage().NavigateToSelf();
 		}
 
         /// <summary>

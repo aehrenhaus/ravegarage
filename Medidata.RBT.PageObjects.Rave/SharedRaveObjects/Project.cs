@@ -50,8 +50,11 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
         /// </summary>
         protected override void NavigateToSeedPage()
         {
-            if(!SkipUpload)
-                new ArchitectPage().NavigateToSelf();
+            if (!SkipUpload)
+            {
+                WebTestContext.CurrentPage.As<HomePage>().ClickLink("Architect");
+                WebTestContext.CurrentPage = new ArchitectPage();
+            }
         }
 
         /// <summary>
