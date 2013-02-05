@@ -24,6 +24,9 @@ namespace Medidata.RBT.Features.Integration.Steps
                     UserStudySiteHelper.MessageHandler(table, IntegrationTestContext.SqsWrapper,
                                                            IntegrationTestContext.SqsQueueUrl);
                     break;
+                case "studysite":
+                    StudySiteHelper.MessageHandler(table, IntegrationTestContext.SqsWrapper, IntegrationTestContext.SqsQueueUrl);
+                    break;
             }
         }
 

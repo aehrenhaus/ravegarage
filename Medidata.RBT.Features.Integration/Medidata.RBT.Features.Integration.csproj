@@ -51,6 +51,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Studies.feature</DependentUpon>
     </Compile>
+    <Compile Include="Features\StudySites.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>StudySites.feature</DependentUpon>
+    </Compile>
     <Compile Include="Features\Users.feature.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -83,6 +88,10 @@
     <None Include="Features\Studies.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>Studies.feature.cs</LastGenOutput>
+    </None>
+    <None Include="Features\StudySites.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>StudySites.feature.cs</LastGenOutput>
     </None>
     <None Include="Features\Users.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
