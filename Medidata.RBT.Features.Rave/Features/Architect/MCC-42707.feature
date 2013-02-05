@@ -44,6 +44,14 @@ Background:
 	Given coding dictionary "WHODRUGB2" coding column "PRODUCT" has following coding level components
 	| OID              |
 	| DRUGRECORDNUMBER |
+	Given following locales exist for the coding dictionary
+	| Coding Dictionary Name | Locale |
+	| AZDD                   | eng    |
+	| JDrug                  | eng    |
+	| MedDRA                 | eng    |
+	| MedDRA                 | jpn    |
+	| WHODRUGB2              | eng    |
+
 	Given following coding dictionary assignments exist
 	| Project   | Coding Dictionary |
 	| MCC-42707 | AZDD              |
