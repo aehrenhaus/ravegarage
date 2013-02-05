@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using Medidata.AmazonSimpleServices;
+using Medidata.Core.Objects;
 using Medidata.RBT.Objects.Integration.Configuration.Models;
 using Medidata.RBT.Objects.Integration.Configuration.Templates;
 using Nustache.Core;
@@ -24,10 +25,18 @@ namespace Medidata.RBT.Objects.Integration.Helpers
                 {
                     case "post":
                         config.UUID = Guid.NewGuid();
+                        config.SiteUUID = new Guid(ScenarioContext.Current.Get<Site>("siteObject").Uuid);
+                        config.StudyUUID = new Guid(ScenarioContext.Current.Get<Study>("studyObject").Uuid);
+                        config.UserUUID = new Guid(ScenarioContext.Current.Get<String>("externalUserUUID"));
+
                         ScenarioContext.Current.Add("userStudySiteUuid", config.UUID);
                         message = Render.StringToString(UserStudySiteTemplates.USERSTUDYSITE_POST_TEMPLATE, new { config });
                         break;
                     case "delete":
+                        config.UUID = ScenarioContext.Current.Get<Guid>("userStudySiteUuid");
+                        config.SiteUUID = new Guid(ScenarioContext.Current.Get<Site>("siteObject").Uuid);
+                        config.StudyUUID = new Guid(ScenarioContext.Current.Get<Study>("studyObject").Uuid);
+                        config.UserUUID = new Guid(ScenarioContext.Current.Get<String>("externalUserUUID"));
                         message = Render.StringToString(UserStudySiteTemplates.USERSTUDYSITE_DELETE_TEMPLATE, new { config });
                         break;
                 }

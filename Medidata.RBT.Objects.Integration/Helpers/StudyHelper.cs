@@ -42,10 +42,19 @@ namespace Medidata.RBT.Objects.Integration.Helpers
 
         public static void CreateRaveStudy(string name, string environment)
         {
-            var project = new Project(SystemInteraction.Use()) { Name = name, IsActive = true, UUID = new Guid().ToString() };           
+            var project = new Project(SystemInteraction.Use())
+                              {
+                                  Name = name, 
+                                  IsActive = true, 
+                                  UUID = Guid.NewGuid().ToString()
+                              };           
             project.Save();
 
-            var study = new Study("env", false, project, SystemInteraction.Use());
+            var study = new Study(environment, false, project, SystemInteraction.Use())
+                            {
+                                ExternalSystem = ExternalSystem.GetByID(1),
+                                Uuid = Guid.NewGuid().ToString()
+                            };
             study.Save();
             ScenarioContext.Current.Add("studyObject", study);
         }

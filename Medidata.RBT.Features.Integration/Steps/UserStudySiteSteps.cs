@@ -24,7 +24,19 @@ namespace Medidata.RBT.Features.Integration.Steps
             var isAssigned = user.IsUserAssociatedWithStudySite(studySite);
             
             Assert.IsTrue(isAssigned);
-            //ScenarioContext.Current.Add("site", site);
+        }
+
+        [Then(@"The user should not have a UserStudySite assignment in the Rave database")]
+        public void ThenTheUserShouldNotBeAssignedToTheStudySite()
+        {
+            var study = ScenarioContext.Current.Get<Study>("studyObject");
+            var site = ScenarioContext.Current.Get<Site>("siteObject");
+            var studySite = StudySite.FindByStudyIDandSiteID(study.ID, site.ID, SystemInteraction.Use());
+
+            var user = ScenarioContext.Current.Get<User>("userObject");
+            var isAssigned = user.IsUserAssociatedWithStudySite(studySite);
+
+            Assert.IsFalse(isAssigned);
         }
     }
 }

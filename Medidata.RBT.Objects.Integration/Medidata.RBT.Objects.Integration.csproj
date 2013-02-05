@@ -54,10 +54,12 @@
     <Compile Include="Configuration\IntegrationTestContext.cs" />
     <Compile Include="Configuration\Templates\UserStudySiteTemplates.cs" />
     <Compile Include="Configuration\Templates\UserTemplates.cs" />
+    <Compile Include="Helpers\RoleHelper.cs" />
     <Compile Include="Helpers\DbHelper.cs" />
     <Compile Include="Helpers\SiteHelper.cs" />
     <Compile Include="Helpers\SQSHelper.cs" />
     <Compile Include="Helpers\StudyHelper.cs" />
+    <Compile Include="Helpers\StudyInvitationHelper.cs" />
     <Compile Include="Helpers\StudySiteHelper.cs" />
     <Compile Include="Helpers\UserHelper.cs" />
     <Compile Include="Helpers\UserStudySiteHelper.cs" />

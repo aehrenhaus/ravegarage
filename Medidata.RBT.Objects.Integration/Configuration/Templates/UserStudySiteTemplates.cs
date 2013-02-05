@@ -17,7 +17,17 @@ namespace Medidata.RBT.Objects.Integration.Configuration.Templates
                                                                     "},\r\n" +
                                                                     "\"study_site\": {\r\n" +
                                                                           "\"id\": {{StudySiteID}},\r\n" +
-                                                                          "\"uuid\": \"{{StudySiteUUID}}\"\r\n" +
+                                                                          "\"uuid\": \"{{StudySiteUUID}}\",\r\n" +
+                                                                          "\"study\": {\r\n" +
+                                                                                "\"id\": 0,\r\n" +
+                                                                                "\"uuid\": \"{{StudyUUID}}\",\r\n" +
+                                                                                "\"type\": \"Study\"\r\n" +
+                                                                          "},\r\n" +
+                                                                          "\"site\": {\r\n" +
+                                                                                "\"id\": 0,\r\n" +
+                                                                                "\"uuid\": \"{{SiteUUID}}\",\r\n" +
+                                                                                "\"type\": \"Site\"\r\n" +
+                                                                          "}\r\n" +
                                                                     "}\r\n" +
                                                                 "},\r\n" +
                                                                 "\"timestamp\": \"{{Timestamp}}\",\r\n" +
@@ -43,8 +53,9 @@ namespace Medidata.RBT.Objects.Integration.Configuration.Templates
                                                                         "\"uuid\": \"{{StudySiteUUID}}\"\r\n" +
                                                                     "},\r\n" +
                                                                     "\"user\": {\r\n" +
-                                                                        "uuid\": \"{{UserUUID}}\"\r\n" +
-                                                                "}\r\n" +
+                                                                        "\"uuid\": \"{{UserUUID}}\"\r\n" +
+                                                                    "}\r\n" +
+                                                                "},\r\n" +
                                                                 "\"timestamp\": \"{{Timestamp}}\",\r\n" +
                                                                 "\"resource\": \"com:mdsol:study_site_assignment:~~\",\r\n" +
                                                                 "\"event\": \"DELETE\",\r\n" +
