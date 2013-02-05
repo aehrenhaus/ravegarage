@@ -54,23 +54,22 @@ namespace Medidata.RBT.SeleniumExtension
 
 				//Is there ***ANY*** datarow that ***ALL*** columns match the html row's columns
 
-				return dataTable.Rows.Any(dr =>
-				{
-                    List<IWebElement> trsToReturn = new List<IWebElement>();
+                return dataTable.Rows.Any(dr =>
+                {
                     foreach (KeyValuePair<string, string> x in dr)
                     {
-                        int value = -1;
-                        indexMapping.TryGetValue(x.Key, out value);
-                        if (value > -1)
+                        int positionOfTd = -1;
+                        indexMapping.TryGetValue(x.Key, out positionOfTd);
+                        if (positionOfTd > -1)
                         {
-                            IWebElement td = tds[value];
+                            IWebElement td = tds[positionOfTd];
                             //use trim because there could be spaces 
-                            if (x.Value.Trim() == tdTextSelector(td))
-                                return true;
+                            if (!x.Value.Trim().Equals(tdTextSelector(td)))
+                                return false;
                         }
                     }
-                    return false;
-				});
+                    return true;
+                });
 
 			});
 

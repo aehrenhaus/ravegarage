@@ -27,7 +27,8 @@ namespace Medidata.RBT.PageObjects.Rave
             SelectLocale(args.Locale);
             SelectRole(args.Role);
             PerformPDFSpecificSelections(args);
-            SelectFormExclusions(args.FormExclusions.Split(',').ToList());
+            if(args.FormExclusions != null)
+                SelectFormExclusions(args.FormExclusions.Split(',').ToList());
         }
 
         /// <summary>
