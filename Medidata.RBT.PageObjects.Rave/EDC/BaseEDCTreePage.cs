@@ -193,7 +193,7 @@ namespace Medidata.RBT.PageObjects.Rave
 
 		public IPage ClickAuditOnFormLevel()
         {
-            IWebElement element = Browser.TryFindElementById("_ctl0_Content_CRFRenderer_header_SG_DataStatusHyperlink");
+            IWebElement element = Browser.TryFindElementByPartialID("_header_SG_DataStatusHyperlink");
             if (element != null)
                 element.Click();
 

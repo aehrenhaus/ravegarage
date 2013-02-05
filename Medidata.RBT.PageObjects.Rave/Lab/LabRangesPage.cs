@@ -48,6 +48,11 @@ namespace Medidata.RBT.PageObjects.Rave
         /// <param name="model">The model.</param>
         public void AddNewAnalyteRange(AnalyteRangeModel model)
         {
+            //This element is not visible the first time and hence null check is required
+            IWebElement addRangeElem = Browser.TryFindElementByPartialID("_LnkBtnAddRange", false);
+            if (addRangeElem != null)
+                addRangeElem.Click();
+
             ModifyRangeAndUpdate(model);
         }
 
@@ -70,7 +75,8 @@ namespace Medidata.RBT.PageObjects.Rave
             this.ChooseFromDateTime("ldcToDate", model.ToDate);
             this.ChooseAge("Textbox1", "DropdownlistUnit1", model.FromAge);
             this.ChooseAge("Textbox2", "DropdownlistUnit2", model.ToAge);
-            this.ChooseFromDropdown("Dropdownlist4", model.Sex);
+            if (!string.IsNullOrEmpty(model.Sex))
+                this.ChooseFromDropdown("Dropdownlist4", model.Sex);
             this.Type("_txtLowRange", model.LowValue);
             this.Type("_txtHighRange", model.HighValue);
             this.ChooseFromDropdown("_ddlLabUnits", model.Units);

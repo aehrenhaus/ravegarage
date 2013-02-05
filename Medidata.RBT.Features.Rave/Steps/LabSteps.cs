@@ -6,6 +6,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using TechTalk.SpecFlow.Assist;
 using Medidata.RBT.PageObjects.Rave.SharedRaveObjects;
 using System.Linq;
+using System.Collections;
 
 namespace Medidata.RBT.Features.Rave
 {
@@ -90,7 +91,10 @@ namespace Medidata.RBT.Features.Rave
         [StepDefinition(@"I create range")]
         public void ICreateRange__(Table table)
         {
-            CurrentPage.As<LabRangesPage>().AddNewAnalyteRange(table.CreateInstance<AnalyteRangeModel>());
+            IEnumerable analyteRanges = table.CreateSet<AnalyteRangeModel>();
+            foreach (AnalyteRangeModel analyteRange in analyteRanges)
+                CurrentPage.As<LabRangesPage>().AddNewAnalyteRange(analyteRange);
+           
         }
 
         /// <summary>

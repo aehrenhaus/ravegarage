@@ -102,6 +102,24 @@ namespace Medidata.RBT.PageObjects.Rave
 			return base.GetInfomation(identifier);
 		}
 
+        public override IPage ClickLink(string linkText, string objectType = null, string areaIdentifier = null, bool partial = false)
+        {
+            if (!string.IsNullOrEmpty(areaIdentifier) && string.Equals(areaIdentifier, "Grid View", StringComparison.InvariantCultureIgnoreCase))
+            {
+                IWebElement elem = Browser.TryFindElementById("Table1");
+                if (elem != null)
+                {
+                    IWebElement link = elem.TryFindElementBy(By.XPath(".//a[text()='" + linkText + "'] | .//span[text()='" + linkText + "']"));
+                    link.Click();
+
+                    return this.WaitForPageLoads();
+                }
+                    
+            }
+
+            return base.ClickLink(linkText, objectType, areaIdentifier, partial);
+        }
+
 		public string GetCRFVersion()
 		{
 			var trs = Browser.Table("Table1").Children()[0].Children();
