@@ -165,6 +165,7 @@
     <Compile Include="SharedRaveObjects\CoderWorkFlowData.cs" />
     <Compile Include="SharedRaveObjects\CodingColumn.cs" />
     <Compile Include="SharedRaveObjects\CodingDictionary.cs" />
+    <Compile Include="SharedRaveObjects\CoderLocale.cs" />
     <Compile Include="SharedRaveObjects\MatrixAssignment.cs" />
     <Compile Include="SharedRaveObjects\ProjectCoderRegistration.cs" />
     <Compile Include="SharedRaveObjects\ProjectCoderRegistrationWorkFlow.cs" />
@@ -208,6 +209,7 @@
     <Compile Include="TableModels\ArchitectObjectModel.cs" />
     <Compile Include="TableModels\AuditModel.cs" />
     <Compile Include="TableModels\ArchitectCoderConfigurationModel.cs" />
+    <Compile Include="TableModels\CoderLocaleTable.cs" />
     <Compile Include="TableModels\CoderTermModel.cs" />
     <Compile Include="TableModels\CoderWorkflowVariableModel.cs" />
     <Compile Include="TableModels\ReportMatrixAssignmentModel.cs" />

@@ -32,7 +32,7 @@
 		ScenarioNamePrefix="PB_" 
 		AutoSaveMimeTypes="application/zip;application/pdf;application/octet-stream"
 		EnableSeeding ="True"
-		SeedFromBackendClasses="CodingDictionary,ProjectCoderRegistration,CodingColumn,CoderDictLevelComponent"
+		SeedFromBackendClasses="CodingDictionary,ProjectCoderRegistration,CodingColumn,CoderDictLevelComponent,CoderLocale"
 		SuppressSeeding=""
 		POAssembly="Medidata.RBT.PageObjects.Rave.dll"
 		>

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using Medidata.RBT.SeleniumExtension;
 using TechTalk.SpecFlow;
 using OpenQA.Selenium;
+using Medidata.RBT.PageObjects.Rave.SharedRaveObjects;
 namespace Medidata.RBT.PageObjects.Rave
 {
 	public class ArchitectFormDesignerPage : ArchitectBasePage, IActivatePage, IVerifySomethingExists
@@ -179,6 +180,14 @@ namespace Medidata.RBT.PageObjects.Rave
 
             if (dropDownElem != null)
             {
+                if (identifier.Equals("Coding Dictionary:", StringComparison.InvariantCultureIgnoreCase) && 
+                    text.StartsWith("CODER- ", StringComparison.InvariantCultureIgnoreCase))
+                {
+                    string codingDictionaryName = text.Replace("CODER- ", "");
+                    codingDictionaryName = SeedingContext.GetExistingFeatureObjectOrMakeNew<CodingDictionary>(codingDictionaryName,
+                        () => { throw new Exception(string.Format("Coding Dictionary [{0}] not found", codingDictionaryName)); }).UniqueName;
+                    text = string.Format("CODER- {0}", codingDictionaryName);
+                }
                 dropDownElem.EnhanceAs<Dropdown>().SelectByText(text);
                 return GetPageByCurrentUrlIfNoAlert();
             }

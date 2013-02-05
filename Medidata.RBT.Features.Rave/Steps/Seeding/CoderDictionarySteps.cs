@@ -6,6 +6,7 @@ using TechTalk.SpecFlow;
 using TechTalk.SpecFlow.Assist;
 using Medidata.RBT.PageObjects.Rave.Architect.Models;
 using Medidata.RBT.PageObjects.Rave.SharedRaveObjects;
+using Medidata.RBT.PageObjects.Rave;
 
 namespace Medidata.RBT.Features.Rave.Steps.Seeding
 {
@@ -22,7 +23,7 @@ namespace Medidata.RBT.Features.Rave.Steps.Seeding
 		/// </summary>
 		/// <param name="codingDictionary">DictionaryName</param>
 		/// <param name="dictionaryVersion">DictionaryVersion</param>
-		[Given(@"coding dictionary ""([^""]*)"" version ""([^""]*)"" exists with following coding columns")]
+        [StepDefinition(@"coding dictionary ""([^""]*)"" version ""([^""]*)"" exists with following coding columns")]
 		public void GivenCodingDictionary____Version____ExistsWithFollowingCodingColumns____(string codingDictionary, string dictionaryVersion, Table codingColumnTable)
 		{
 			var cd = SeedingContext.GetExistingFeatureObjectOrMakeNew(codingDictionary,
@@ -35,7 +36,14 @@ namespace Medidata.RBT.Features.Rave.Steps.Seeding
 				codingColumn.Seed();
 		}
 
-		[Given(@"coding dictionary ""([^""]*)"" coding column ""([^""]*)"" has following coding level components")]
+        /// <summary>
+        /// Creates a new Coding Level component by executing raw sql query to 
+        /// insert a record in the CoderDictLevelComponents table
+        /// </summary>
+        /// <param name="codingDictionary"></param>
+        /// <param name="codingColumn"></param>
+        /// <param name="codingDictionaryLevelTable"></param>
+        [StepDefinition(@"coding dictionary ""([^""]*)"" coding column ""([^""]*)"" has following coding level components")]
 		public void GivenCodingDictionary____CodingColumn____HasFollowingCodingLevelComponents(string codingDictionary, string codingColumn, Table codingDictionaryLevelTable)
 		{
 			var cd = CoderDictionarySteps.FetchSeededCodingDictionary(codingDictionary);
@@ -56,7 +64,7 @@ namespace Medidata.RBT.Features.Rave.Steps.Seeding
 		///		2.	Project (Study) is not yet seeded
 		/// </summary>
 		/// <param name="table">Set of Project - CodingDictionary pairs to be assigned</param>
-		[Given(@"following coding dictionary assignments exist")]
+        [StepDefinition(@"following coding dictionary assignments exist")]
 		public void GivenFollowingCodingDictionaryAssignmentsExist(Table table)
 		{
 			var modelList = table.CreateSet<ProjectCodingDictionaryModel>();
@@ -72,6 +80,22 @@ namespace Medidata.RBT.Features.Rave.Steps.Seeding
 			}
 		}
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="codingDictionaryLocaleTable"></param>
+        [StepDefinition(@"following locales exist for the coding dictionary")]
+        public void FollowingLocalesExistForTheCodingDictionary(Table codingDictionaryLocaleTable)
+        {
+            IEnumerable<CoderLocaleTable> coderLocales = codingDictionaryLocaleTable.CreateSet<CoderLocaleTable>();
+
+            foreach (CoderLocaleTable clTable in coderLocales)
+            {
+                var cd = CoderDictionarySteps.FetchSeededCodingDictionary(clTable.CodingDictionaryName);
+                SeedingContext.GetExistingFeatureObjectOrMakeNew(cd.UniqueName + clTable.Locale,
+                    () => new CoderLocale(clTable.Locale, cd.UniqueName));
+            }
+        }
 
 		private static CodingDictionary FetchSeededCodingDictionary(string codingDictionaryName)
 		{
