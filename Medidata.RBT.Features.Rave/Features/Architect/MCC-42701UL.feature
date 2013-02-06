@@ -1,7 +1,7 @@
 ﻿@FT_MCC-42701ULenable
 @ignore
 
-Feature: MCC_42701 Architect download will contain Coder settings and Architect upload will save Coder settings
+Feature: MCC_42701UL Architect download will contain Coder settings and Architect upload will save Coder settings
 
 Background:
 
@@ -27,6 +27,7 @@ Background:
 	| Coding Column Name |
 	| PRODUCT            |
 	| ATC                |
+	| SOC                |
 	Given coding dictionary "MedDRA" coding column "PRODUCT" has following coding level components
 	| OID              |
 	| DRUGRECORDNUMBER |
@@ -107,7 +108,7 @@ Scenario: PBMCC-42701-002 When uploading an architect spreadsheet that does not 
 	And I navigate to "Forms"
 	And I select Fields for Form "MCC42701-001"
 	And I edit Field "varcheckbx3"
-	Then Then I verify text "Coder Configuration" does not exist
+	Then I verify button "Coder Configuration" is not visible
 	And I take a screenshot
 
 
@@ -412,7 +413,7 @@ Scenario: PBMCC-42701-015 When uploading an architect spreadsheet that does not 
 	And I navigate to "Forms"
 	And I select Fields for Form "Form 3"
 	And I edit Field "F3Field2"
-	And I verify text "Coder Configuration" does not exsit
+	Then I verify button "Coder Configuration" is not visible
 	And I take a screenshot
 
 @Release_2013.1.0
@@ -422,12 +423,12 @@ Scenario: PBMCC-42701-015 When uploading an architect spreadsheet that does not 
 Scenario: PBMCC-42701-016 When uploading an architect spreadsheet that contains Coder settings and the URL does not have Coder registered, the upload will fail and user will be provided with appropriate message
 
 	
-	When xml draft "MCC-42701-015.xml" is Uploaded without redirecting
+	When xml draft "MCC-42701-016.xml" is Uploaded without redirecting
 	Then I verify text "Transaction rolled back." exists
-	And  I verify text "Error while reading row 5. Field OID 'CODERTERM1' in form OID 'ETE1' : Coding dictionary 'MedDRA (Coder)' is not registered for this project." exists
-	And  I verify text "Error while reading row 6. Field OID 'JDT' in form OID 'ETE1' : Coding dictionary 'JDrug (Coder)' is not registered for this project." exists
-	And I verify text "Error while reading row 11. Field OID 'CODERFIELD2' in form OID 'ETE2' : Coding dictionary 'WHODRUGB2 (Coder)' is not registered for this project." exists
-	And I verify text "Error while reading row 46. Field OID 'VARCHECKBX3' in form OID 'TESTFORM' : Coding dictionary 'WHODRUGB2 (Coder)' is not registered for this project. " exists
+	And  I verify text "Error while reading row 5. Field OID 'CODERTERM1' in form OID 'ETE1' : Coding dictionary 'MedDRA (Coder)' is not registered for this project." exists in "Coding Dictionary:MedDRA"
+	And  I verify text "Error while reading row 6. Field OID 'JDT' in form OID 'ETE1' : Coding dictionary 'JDrug (Coder)' is not registered for this project." exists in "Coding Dictionary:JDrug"
+	And I verify text "Error while reading row 11. Field OID 'CODERFIELD2' in form OID 'ETE2' : Coding dictionary 'WHODRUGB2 (Coder)' is not registered for this project." exists in "Coding Dictionary:WHODRUGB2"
+	And I verify text "Error while reading row 46. Field OID 'VARCHECKBX3' in form OID 'TESTFORM' : Coding dictionary 'WHODRUGB2 (Coder)' is not registered for this project. " exists in "Coding Dictionary:WHODRUGB2"
 	And I verify text "Error while reading row 10. Check step in check 'testing', ordinal 1 : Field OID 'CODERTERM1' is invalid. " exists
 	And I verify text "Field OID 'CODERTERM1' is invalid." exists
 	And I verify text "Field OID 'JDT' is invalid." exists
