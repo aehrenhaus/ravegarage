@@ -40,7 +40,7 @@ namespace Medidata.RBT.Objects.Integration.Helpers
             }
         }
 
-        public static void CreateRaveStudy(string name, string environment, int externalId = 0)
+        public static void CreateRaveStudy(string name, string environment, int externalId)
         {
             var project = new Project(SystemInteraction.Use())
                               {
