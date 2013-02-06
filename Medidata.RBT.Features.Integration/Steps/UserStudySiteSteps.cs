@@ -16,8 +16,10 @@ namespace Medidata.RBT.Features.Integration.Steps
         [Then(@"I should see the UserStudySite assignment in the Rave database")]
         public void ThenIShouldSeeTheUserStudySiteAssignmentInTheRaveDatabase()
         {
-            var study = ScenarioContext.Current.Get<Study>("studyObject");
-            var site = ScenarioContext.Current.Get<Site>("siteObject");
+            var studyUuid = ScenarioContext.Current.Get<String>("studyUuid");
+            var study = Study.FindByUuid(studyUuid, 1, SystemInteraction.Use());
+            var siteUuid = ScenarioContext.Current.Get<String>("siteUuid");
+            var site = Site.FindByUuid(siteUuid, 1, SystemInteraction.Use());
             var studySite = StudySite.FindByStudyIDandSiteID(study.ID, site.ID, SystemInteraction.Use());
             
             var user = ScenarioContext.Current.Get<User>("userObject");          
@@ -29,8 +31,10 @@ namespace Medidata.RBT.Features.Integration.Steps
         [Then(@"The user should not have a UserStudySite assignment in the Rave database")]
         public void ThenTheUserShouldNotBeAssignedToTheStudySite()
         {
-            var study = ScenarioContext.Current.Get<Study>("studyObject");
-            var site = ScenarioContext.Current.Get<Site>("siteObject");
+            var studyUuid = ScenarioContext.Current.Get<String>("studyUuid");
+            var study = Study.FindByUuid(studyUuid, 1, SystemInteraction.Use());
+            var siteUuid = ScenarioContext.Current.Get<String>("siteUuid");
+            var site = Site.FindByUuid(siteUuid, 1, SystemInteraction.Use());
             var studySite = StudySite.FindByStudyIDandSiteID(study.ID, site.ID, SystemInteraction.Use());
 
             var user = ScenarioContext.Current.Get<User>("userObject");

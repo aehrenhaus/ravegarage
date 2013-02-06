@@ -10,7 +10,7 @@ namespace Medidata.RBT.Objects.Integration.Helpers
         public static void AssignUserToStudy()
         {
             var externalUserID = ScenarioContext.Current.Get<int>("externalUserID");
-            var study = ScenarioContext.Current.Get<Study>("studyObject");
+            var studyUuid = ScenarioContext.Current.Get<String>("studyUuid");
             var roleID = ScenarioContext.Current.Get<int>("roleID");
             var user = ScenarioContext.Current.Get<User>("userObject");
 
@@ -18,7 +18,7 @@ namespace Medidata.RBT.Objects.Integration.Helpers
             user.Save();
 
             ExternalUserRole.StudySave(1, externalUserID,
-                                                    study.ExternalID, study.Uuid, roleID, DateTime.Now,
+                                                    0, studyUuid, roleID, DateTime.Now,
                                                     true);
         }
     }

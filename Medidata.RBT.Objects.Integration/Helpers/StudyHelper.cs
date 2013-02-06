@@ -40,42 +40,23 @@ namespace Medidata.RBT.Objects.Integration.Helpers
             }
         }
 
-        public static void CreateRaveStudy(string name, string environment)
+        public static void CreateRaveStudy(string name, string environment, int externalId = 0)
         {
-            var project = new Project(SystemInteraction.Use())
-                              {
-                                  Name = name, 
-                                  IsActive = true, 
-                                  UUID = Guid.NewGuid().ToString()
-                              };           
-            project.Save();
-
-            var study = new Study(environment, false, project, SystemInteraction.Use())
-                            {
-                                ExternalSystem = ExternalSystem.GetByID(1),
-                                Uuid = Guid.NewGuid().ToString()
-                            };
-            study.Save();
-            ScenarioContext.Current.Add("studyObject", study);
-
-        public static void CreateStudy(string name, string environment, int externalId = 0)
-        {
-            if (ScenarioContext.Current.ContainsKey("studyUuid")) return;
-
             var project = new Project(SystemInteraction.Use())
                               {
                                   Name = name,
-                                  IsActive = true
+                                  IsActive = true,
+                                  UUID = Guid.NewGuid().ToString()
                               };
             project.Save();
 
             var study = new Study(environment, false, project, SystemInteraction.Use())
                             {
                                 ExternalID = externalId,
-                                ExternalSystem = ExternalSystem.GetByID(1)
+                                ExternalSystem = ExternalSystem.GetByID(1),
+                                Uuid = Guid.NewGuid().ToString()
                             };
             study.Save();
-
             ScenarioContext.Current.Add("studyUuid", study.Uuid);
         }
     }

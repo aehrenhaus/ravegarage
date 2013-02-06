@@ -10,7 +10,6 @@ namespace Medidata.RBT.Features.Integration.Steps
     public class StudySteps
     {
         // For additional details on SpecFlow step definitions see http://go.specflow.org/doc-stepdef
-<<<<<<< HEAD
 
         [Given(@"the Study with Name ""(.*)"" and Environment ""(.*)"" exists in the Rave database")]
         public void TheStudyWithName____AndEnvironment____ExistsInTheRaveDatabase(string name, string environment)
@@ -18,15 +17,12 @@ namespace Medidata.RBT.Features.Integration.Steps
             StudyHelper.CreateRaveStudy(name, environment);
         }
 
-=======
-        [Given(@"the study with name ""(.*)"" and environment ""(.*)"" exists in the Rave database")]
         [Given(@"the study with name ""(.*)"" and environment ""(.*)"" with ExternalId ""(.*)"" exists in the Rave database")]
         public void GivenTheStudyWithName____AndEnvironment____AndExternalId____ExistsInTheRaveDatabase(string name, string environment, int externalStudyId)
         {
-            StudyHelper.CreateStudy(name, environment, externalStudyId);
+            StudyHelper.CreateRaveStudy(name, environment, externalStudyId);
         }
         
->>>>>>> remotes/origin/feature/studysiteautomation
         [Then(@"I should see the study in the Rave database")]
         public void ThenIShouldSeeTheStudyInTheRaveDatabase()
         {
