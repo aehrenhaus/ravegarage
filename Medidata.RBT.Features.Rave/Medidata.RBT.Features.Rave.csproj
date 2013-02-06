@@ -146,10 +146,10 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DT_10991.feature</DependentUpon>
     </Compile>
-    <Compile Include="Features\Architect\MCC-42701ULenable.feature.cs">
+    <Compile Include="Features\Architect\MCC-42701UL.feature.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>MCC-42701ULenable.feature</DependentUpon>
+      <DependentUpon>MCC-42701UL.feature</DependentUpon>
     </Compile>
     <Compile Include="Features\EDC\MCC-28550.feature.cs">
       <AutoGen>True</AutoGen>
@@ -536,9 +536,9 @@
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>DT_10991.feature.cs</LastGenOutput>
     </None>
-    <None Include="Features\Architect\MCC-42701ULenable.feature">
+    <None Include="Features\Architect\MCC-42701UL.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
-      <LastGenOutput>MCC-42701ULenable.feature.cs</LastGenOutput>
+      <LastGenOutput>MCC-42701UL.feature.cs</LastGenOutput>
     </None>
     <None Include="Features\EDC\MCC-28550.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>

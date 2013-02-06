@@ -19,12 +19,34 @@
   <RaveDbVersion dt:dt="string">5.6</RaveDbVersion>
  </CustomDocumentProperties>
  <ExcelWorkbook xmlns="urn:schemas-microsoft-com:office:excel">
+  <SupBook>
+   <Path> </Path>
+   <SheetName> </SheetName>
+  </SupBook>
+  <SupBook>
+   <Path> </Path>
+   <SheetName> </SheetName>
+  </SupBook>
+  <SupBook>
+   <Path> </Path>
+   <SheetName> </SheetName>
+  </SupBook>
+  <SupBook>
+   <Path> </Path>
+   <SheetName> </SheetName>
+  </SupBook>
+  <SupBook>
+   <Path> </Path>
+   <SheetName> </SheetName>
+  </SupBook>
+  <SupBook>
+   <Path> </Path>
+   <SheetName> </SheetName>
+  </SupBook>
   <WindowHeight>10005</WindowHeight>
   <WindowWidth>10005</WindowWidth>
   <WindowTopX>120</WindowTopX>
   <WindowTopY>135</WindowTopY>
-  <ActiveSheet>20</ActiveSheet>
-  <FirstVisibleSheet>19</FirstVisibleSheet>
   <RefModeR1C1/>
   <ProtectStructure>False</ProtectStructure>
   <ProtectWindows>False</ProtectWindows>
@@ -146,7 +168,7 @@
       ss:Name="_FilterDatabase"/></Cell>
    </Row>
    <Row>
-    <Cell><Data ss:Type="String">Draft 007</Data><NamedCell
+    <Cell><Data ss:Type="String">Draft 009</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">FALSE</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">MCC-42701-001</Data><NamedCell
@@ -317,6 +339,7 @@
    </Row>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
+   <Selected/>
    <FreezePanes/>
    <FrozenNoSplit/>
    <SplitHorizontal>1</SplitHorizontal>
@@ -338,7 +361,7 @@
     </Pane>
     <Pane>
      <Number>0</Number>
-     <ActiveCol>0</ActiveCol>
+     <ActiveCol>2</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>True</ProtectObjects>
@@ -4405,9 +4428,9 @@
    <FreezePanes/>
    <FrozenNoSplit/>
    <SplitHorizontal>1</SplitHorizontal>
-   <TopRowBottomPane>23</TopRowBottomPane>
+   <TopRowBottomPane>7</TopRowBottomPane>
    <SplitVertical>2</SplitVertical>
-   <LeftColumnRightPane>29</LeftColumnRightPane>
+   <LeftColumnRightPane>8</LeftColumnRightPane>
    <ActivePane>0</ActivePane>
    <Panes>
     <Pane>
@@ -12685,9 +12708,9 @@
     <Cell ss:StyleID="s65"><Data ss:Type="String">TESTFORM</Data></Cell>
     <Cell ss:StyleID="s65"><Data ss:Type="String">VARCHECKBX3</Data></Cell>
     <Cell><Data ss:Type="String">PRODUCT</Data></Cell>
-    <Cell ss:StyleID="s69"><Data ss:Type="Number">2</Data></Cell>
-    <Cell ss:Index="6" ss:StyleID="s70"><Data ss:Type="String">False</Data></Cell>
-    <Cell ss:StyleID="s70"><Data ss:Type="String">False</Data></Cell>
+    <Cell ss:StyleID="s69"><Data ss:Type="Number">3</Data></Cell>
+    <Cell ss:Index="6" ss:StyleID="s70"><Data ss:Type="String">True</Data></Cell>
+    <Cell ss:StyleID="s70"><Data ss:Type="String">True</Data></Cell>
    </Row>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
@@ -12702,12 +12725,11 @@
     <HorizontalResolution>600</HorizontalResolution>
     <VerticalResolution>600</VerticalResolution>
    </Print>
-   <Selected/>
    <Panes>
     <Pane>
      <Number>3</Number>
      <ActiveRow>4</ActiveRow>
-     <ActiveCol>6</ActiveCol>
+     <ActiveCol>3</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -12720,7 +12742,7 @@
   </DataValidation>
  </Worksheet>
  <Worksheet ss:Name="CoderSupplementalTerms">
-  <Table ss:ExpandedColumnCount="4" ss:ExpandedRowCount="1" x:FullColumns="1"
+  <Table ss:ExpandedColumnCount="4" ss:ExpandedRowCount="2" x:FullColumns="1"
    x:FullRows="1" ss:DefaultRowHeight="15">
    <Column ss:StyleID="s67" ss:Width="57.75"/>
    <Column ss:StyleID="s67" ss:Width="77.25"/>
@@ -12731,6 +12753,11 @@
     <Cell ss:StyleID="s68"><Data ss:Type="String">FieldOID</Data></Cell>
     <Cell ss:StyleID="s68"><Data ss:Type="String">SupplementalTerm</Data></Cell>
     <Cell ss:StyleID="s71"><Data ss:Type="String">Instructions/ Comments</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s65"><Data ss:Type="String">TESTFORM</Data></Cell>
+    <Cell ss:StyleID="s65"><Data ss:Type="String">VARCHECKBX3</Data></Cell>
+    <Cell><Data ss:Type="String">TEST1</Data></Cell>
    </Row>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
@@ -12744,15 +12771,20 @@
     <Pane>
      <Number>3</Number>
      <ActiveRow>1</ActiveRow>
-     <RangeSelection>R2</RangeSelection>
+     <ActiveCol>2</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
    <ProtectScenarios>False</ProtectScenarios>
   </WorksheetOptions>
+  <DataValidation xmlns="urn:schemas-microsoft-com:office:excel">
+   <Range>R2C1</Range>
+   <Type>List</Type>
+   <Value>C201</Value>
+  </DataValidation>
  </Worksheet>
  <Worksheet ss:Name="CoderComponentTerms">
-  <Table ss:ExpandedColumnCount="5" ss:ExpandedRowCount="1" x:FullColumns="1"
+  <Table ss:ExpandedColumnCount="5" ss:ExpandedRowCount="2" x:FullColumns="1"
    x:FullRows="1" ss:DefaultRowHeight="15">
    <Column ss:Width="57.75"/>
    <Column ss:Width="77.25"/>
@@ -12766,6 +12798,12 @@
     <Cell ss:StyleID="s71"><Data ss:Type="String">ComponentName</Data></Cell>
     <Cell ss:StyleID="s71"><Data ss:Type="String">Instructions/ Comments</Data></Cell>
    </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s65"><Data ss:Type="String">TESTFORM</Data></Cell>
+    <Cell ss:StyleID="s65"><Data ss:Type="String">VARCHECKBX3</Data></Cell>
+    <Cell><Data ss:Type="String">VARCHECKBX</Data></Cell>
+    <Cell><Data ss:Type="String">DRUGRECORDNUMBER</Data></Cell>
+   </Row>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
    <PageSetup>
@@ -12778,12 +12816,17 @@
     <Pane>
      <Number>3</Number>
      <ActiveRow>1</ActiveRow>
-     <RangeSelection>R2</RangeSelection>
+     <ActiveCol>3</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
    <ProtectScenarios>False</ProtectScenarios>
   </WorksheetOptions>
+  <DataValidation xmlns="urn:schemas-microsoft-com:office:excel">
+   <Range>R2C1</Range>
+   <Type>List</Type>
+   <Value>C201</Value>
+  </DataValidation>
  </Worksheet>
  <ss:DocumentProperties/>
 </Workbook>

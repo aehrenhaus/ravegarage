@@ -23,8 +23,6 @@
   <WindowWidth>10005</WindowWidth>
   <WindowTopX>120</WindowTopX>
   <WindowTopY>135</WindowTopY>
-  <ActiveSheet>22</ActiveSheet>
-  <FirstVisibleSheet>19</FirstVisibleSheet>
   <RefModeR1C1/>
   <ProtectStructure>False</ProtectStructure>
   <ProtectWindows>False</ProtectWindows>
@@ -146,10 +144,10 @@
       ss:Name="_FilterDatabase"/></Cell>
    </Row>
    <Row>
-    <Cell><Data ss:Type="String">Draft 007</Data><NamedCell
+    <Cell><Data ss:Type="String">Draft 001</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">FALSE</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell><Data ss:Type="String">MCC-42701-001</Data><NamedCell
+    <Cell><Data ss:Type="String">MCC-42701-003</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">Project</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">SUBJECT</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -317,6 +315,7 @@
    </Row>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
+   <Selected/>
    <FreezePanes/>
    <FrozenNoSplit/>
    <SplitHorizontal>1</SplitHorizontal>
@@ -338,7 +337,7 @@
     </Pane>
     <Pane>
      <Number>0</Number>
-     <ActiveCol>0</ActiveCol>
+     <ActiveCol>2</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>True</ProtectObjects>
@@ -12654,7 +12653,7 @@
    x:FullRows="1" ss:DefaultRowHeight="15">
    <Column ss:Width="67.5"/>
    <Column ss:Width="77.25"/>
-   <Column ss:StyleID="s67" ss:Width="74.25"/>
+   <Column ss:Width="74.25"/>
    <Column ss:Width="46.5"/>
    <Column ss:Index="6" ss:StyleID="s67" ss:Width="116.25"/>
    <Column ss:StyleID="s67" ss:Width="93"/>
@@ -12684,7 +12683,7 @@
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s65"><Data ss:Type="String">TESTFORM</Data></Cell>
     <Cell ss:StyleID="s65"><Data ss:Type="String">VARCHECKBX3</Data></Cell>
-    <Cell><Data ss:Type="String">ATC</Data></Cell>
+    <Cell><Data ss:Type="String">PRODUCT</Data></Cell>
     <Cell ss:StyleID="s69"><Data ss:Type="Number">2</Data></Cell>
     <Cell ss:Index="6" ss:StyleID="s70"><Data ss:Type="String">True</Data></Cell>
     <Cell ss:StyleID="s70"><Data ss:Type="String">True</Data></Cell>
@@ -12705,8 +12704,8 @@
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>4</ActiveRow>
-     <ActiveCol>2</ActiveCol>
+     <ActiveRow>11</ActiveRow>
+     <ActiveCol>4</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -12719,7 +12718,7 @@
   </DataValidation>
  </Worksheet>
  <Worksheet ss:Name="CoderSupplementalTerms">
-  <Table ss:ExpandedColumnCount="4" ss:ExpandedRowCount="1" x:FullColumns="1"
+  <Table ss:ExpandedColumnCount="4" ss:ExpandedRowCount="2" x:FullColumns="1"
    x:FullRows="1" ss:DefaultRowHeight="15">
    <Column ss:StyleID="s67" ss:Width="57.75"/>
    <Column ss:StyleID="s67" ss:Width="77.25"/>
@@ -12730,6 +12729,11 @@
     <Cell ss:StyleID="s68"><Data ss:Type="String">FieldOID</Data></Cell>
     <Cell ss:StyleID="s68"><Data ss:Type="String">SupplementalTerm</Data></Cell>
     <Cell ss:StyleID="s71"><Data ss:Type="String">Instructions/ Comments</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s65"><Data ss:Type="String">TESTFORM</Data></Cell>
+    <Cell ss:StyleID="s65"><Data ss:Type="String">VARCHECKBX3</Data></Cell>
+    <Cell><Data ss:Type="String">TEST1</Data></Cell>
    </Row>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
@@ -12742,16 +12746,21 @@
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>1</ActiveRow>
-     <RangeSelection>R2</RangeSelection>
+     <ActiveRow>15</ActiveRow>
+     <ActiveCol>6</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
    <ProtectScenarios>False</ProtectScenarios>
   </WorksheetOptions>
+  <DataValidation xmlns="urn:schemas-microsoft-com:office:excel">
+   <Range>R2C1</Range>
+   <Type>List</Type>
+   <Value>C201</Value>
+  </DataValidation>
  </Worksheet>
  <Worksheet ss:Name="CoderComponentTerms">
-  <Table ss:ExpandedColumnCount="5" ss:ExpandedRowCount="1" x:FullColumns="1"
+  <Table ss:ExpandedColumnCount="5" ss:ExpandedRowCount="2" x:FullColumns="1"
    x:FullRows="1" ss:DefaultRowHeight="15">
    <Column ss:Width="57.75"/>
    <Column ss:Width="77.25"/>
@@ -12765,6 +12774,12 @@
     <Cell ss:StyleID="s71"><Data ss:Type="String">ComponentName</Data></Cell>
     <Cell ss:StyleID="s71"><Data ss:Type="String">Instructions/ Comments</Data></Cell>
    </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s65"><Data ss:Type="String">TESTFORM</Data></Cell>
+    <Cell ss:StyleID="s65"><Data ss:Type="String">VARCHECKBX3</Data></Cell>
+    <Cell><Data ss:Type="String">VARCHECKBX</Data></Cell>
+    <Cell><Data ss:Type="String">DRUGRECORDNUMBER</Data></Cell>
+   </Row>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
    <PageSetup>
@@ -12773,17 +12788,21 @@
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
    <Unsynced/>
-   <Selected/>
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>7</ActiveRow>
-     <ActiveCol>2</ActiveCol>
+     <ActiveRow>1</ActiveRow>
+     <ActiveCol>3</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
    <ProtectScenarios>False</ProtectScenarios>
   </WorksheetOptions>
+  <DataValidation xmlns="urn:schemas-microsoft-com:office:excel">
+   <Range>R2C1</Range>
+   <Type>List</Type>
+   <Value>C201</Value>
+  </DataValidation>
  </Worksheet>
  <ss:DocumentProperties/>
 </Workbook>

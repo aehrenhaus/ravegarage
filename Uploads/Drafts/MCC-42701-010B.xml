@@ -23,8 +23,6 @@
   <WindowWidth>10005</WindowWidth>
   <WindowTopX>120</WindowTopX>
   <WindowTopY>135</WindowTopY>
-  <ActiveSheet>21</ActiveSheet>
-  <FirstVisibleSheet>19</FirstVisibleSheet>
   <RefModeR1C1/>
   <ProtectStructure>False</ProtectStructure>
   <ProtectWindows>False</ProtectWindows>
@@ -101,7 +99,7 @@
    <Interior ss:Color="#C0C0C0" ss:Pattern="Solid"/>
   </Style>
  </Styles>
- <Worksheet ss:Name="CRFDraft" ss:Protected="1">
+ <Worksheet ss:Name="CRFDraft">
   <Names>
    <NamedRange ss:Name="_FilterDatabase" ss:RefersTo="=CRFDraft!R1C1:R40C16"
     ss:Hidden="1"/>
@@ -145,11 +143,11 @@
     <Cell ss:StyleID="s63"><Data ss:Type="String">SourceUrlId</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
    </Row>
-   <Row>
+   <Row ss:Height="15">
     <Cell><Data ss:Type="String">Draft 010</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">FALSE</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell><Data ss:Type="String">MCC-42701-001</Data><NamedCell
+    <Cell ss:StyleID="Default"><Data ss:Type="String">MCC-42701-001</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">Project</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">SUBJECT</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -317,6 +315,7 @@
    </Row>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
+   <Selected/>
    <FreezePanes/>
    <FrozenNoSplit/>
    <SplitHorizontal>1</SplitHorizontal>
@@ -338,12 +337,12 @@
     </Pane>
     <Pane>
      <Number>0</Number>
-     <ActiveRow>2</ActiveRow>
-     <ActiveCol>0</ActiveCol>
+     <ActiveRow>7</ActiveRow>
+     <ActiveCol>2</ActiveCol>
     </Pane>
    </Panes>
-   <ProtectObjects>True</ProtectObjects>
-   <ProtectScenarios>True</ProtectScenarios>
+   <ProtectObjects>False</ProtectObjects>
+   <ProtectScenarios>False</ProtectScenarios>
    <AllowFormatCells/>
    <AllowSizeCols/>
    <AllowSizeRows/>
@@ -12685,10 +12684,10 @@
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s65"><Data ss:Type="String">TESTFORM</Data></Cell>
     <Cell ss:StyleID="s65"><Data ss:Type="String">VARCHECKBX3</Data></Cell>
-    <Cell><Data ss:Type="String">PRODUCT</Data></Cell>
-    <Cell ss:StyleID="s69"><Data ss:Type="Number">3</Data></Cell>
-    <Cell ss:Index="6" ss:StyleID="s70"><Data ss:Type="String">True</Data></Cell>
-    <Cell ss:StyleID="s70"><Data ss:Type="String">True</Data></Cell>
+    <Cell><Data ss:Type="String">ATC</Data></Cell>
+    <Cell ss:StyleID="s69"><Data ss:Type="Number">2</Data></Cell>
+    <Cell ss:Index="6" ss:StyleID="s70"><Data ss:Type="String">False</Data></Cell>
+    <Cell ss:StyleID="s70"><Data ss:Type="String">False</Data></Cell>
    </Row>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
@@ -12707,7 +12706,7 @@
     <Pane>
      <Number>3</Number>
      <ActiveRow>4</ActiveRow>
-     <ActiveCol>3</ActiveCol>
+     <ActiveCol>2</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -12735,7 +12734,7 @@
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s65"><Data ss:Type="String">TESTFORM</Data></Cell>
     <Cell ss:StyleID="s65"><Data ss:Type="String">VARCHECKBX3</Data></Cell>
-    <Cell ss:StyleID="Default"><Data ss:Type="String">VARCHECKBX</Data></Cell>
+    <Cell><Data ss:Type="String">TEST1</Data></Cell>
    </Row>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
@@ -12745,12 +12744,11 @@
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
    <Unsynced/>
-   <Selected/>
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>1</ActiveRow>
-     <ActiveCol>2</ActiveCol>
+     <ActiveRow>15</ActiveRow>
+     <ActiveCol>6</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -12795,7 +12793,7 @@
     <Pane>
      <Number>3</Number>
      <ActiveRow>1</ActiveRow>
-     <ActiveCol>2</ActiveCol>
+     <ActiveCol>3</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>

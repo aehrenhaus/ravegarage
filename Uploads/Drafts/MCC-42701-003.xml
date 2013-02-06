@@ -337,7 +337,7 @@
     </Pane>
     <Pane>
      <Number>0</Number>
-     <ActiveCol>0</ActiveCol>
+     <ActiveCol>2</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>True</ProtectObjects>
@@ -1281,7 +1281,8 @@
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s65"><Data ss:Type="String">$450</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:Index="11" ss:StyleID="s65"><NamedCell ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:Index="11" ss:StyleID="s65"><Data ss:Type="String">MedDRA (Coder)</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s65"><Data ss:Type="String">LongText</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:Index="14" ss:StyleID="s65"><Data ss:Type="String">0</Data><NamedCell
@@ -1357,7 +1358,8 @@
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s65"><Data ss:Type="String">$200</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:Index="11" ss:StyleID="s65"><NamedCell ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:Index="11" ss:StyleID="s65"><Data ss:Type="String">JDrug (Coder)</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s65"><Data ss:Type="String">Text</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:Index="14" ss:StyleID="s65"><Data ss:Type="String">0</Data><NamedCell
@@ -1699,7 +1701,9 @@
     <Cell ss:StyleID="s64"><Data ss:Type="String">ETE2</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">$450</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:Index="12"><Data ss:Type="String">LongText</Data><NamedCell
+    <Cell ss:Index="11"><Data ss:Type="String">WHODRUGB2 (Coder)</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell><Data ss:Type="String">LongText</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:Index="14"><Data ss:Type="String">0</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -3833,7 +3837,9 @@
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s65"><Data ss:Type="String">$100</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:Index="12" ss:StyleID="s65"><Data ss:Type="String">Text</Data><NamedCell
+    <Cell ss:Index="11"><Data ss:Type="String">WHODRUGB2 (Coder)</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s65"><Data ss:Type="String">Text</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:Index="14" ss:StyleID="s65"><Data ss:Type="String">0</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -4400,7 +4406,7 @@
    <SplitHorizontal>1</SplitHorizontal>
    <TopRowBottomPane>1</TopRowBottomPane>
    <SplitVertical>2</SplitVertical>
-   <LeftColumnRightPane>29</LeftColumnRightPane>
+   <LeftColumnRightPane>8</LeftColumnRightPane>
    <ActivePane>0</ActivePane>
    <Panes>
     <Pane>
@@ -4415,9 +4421,9 @@
     </Pane>
     <Pane>
      <Number>0</Number>
-     <ActiveRow>3</ActiveRow>
+     <ActiveRow>43</ActiveRow>
      <ActiveCol>10</ActiveCol>
-     <RangeSelection>R4C11:R13C11</RangeSelection>
+     <RangeSelection>R44C11:R48C11</RangeSelection>
     </Pane>
    </Panes>
    <ProtectObjects>True</ProtectObjects>
@@ -12662,12 +12668,25 @@
     <Cell ss:StyleID="s68"><Data ss:Type="String">IsAutoApproval</Data></Cell>
     <Cell ss:StyleID="s68"><Data ss:Type="String">Instructions/ Comments</Data></Cell>
    </Row>
-   <Row ss:Index="5" ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s65"/>
-    <Cell ss:StyleID="s65"/>
-    <Cell ss:Index="4" ss:StyleID="s69"/>
-    <Cell ss:Index="6" ss:StyleID="s70"/>
-    <Cell ss:StyleID="s70"/>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">ETE1</Data></Cell>
+    <Cell><Data ss:Type="String">CODERTERM1</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">ETE1</Data></Cell>
+    <Cell><Data ss:Type="String">JDT</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">ETE2</Data></Cell>
+    <Cell><Data ss:Type="String">CODERFIELD2</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s65"><Data ss:Type="String">TESTFORM</Data></Cell>
+    <Cell ss:StyleID="s65"><Data ss:Type="String">VARCHECKBX3</Data></Cell>
+    <Cell><Data ss:Type="String">PRODUCT</Data></Cell>
+    <Cell ss:StyleID="s69"><Data ss:Type="Number">2</Data></Cell>
+    <Cell ss:Index="6" ss:StyleID="s70"><Data ss:Type="String">True</Data></Cell>
+    <Cell ss:StyleID="s70"><Data ss:Type="String">True</Data></Cell>
    </Row>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
@@ -12685,8 +12704,8 @@
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>1</ActiveRow>
-     <RangeSelection>R2C1:R6C7</RangeSelection>
+     <ActiveRow>4</ActiveRow>
+     <ActiveCol>6</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -12712,8 +12731,9 @@
     <Cell ss:StyleID="s71"><Data ss:Type="String">Instructions/ Comments</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s65"/>
-    <Cell ss:StyleID="s65"/>
+    <Cell ss:StyleID="s65"><Data ss:Type="String">TESTFORM</Data></Cell>
+    <Cell ss:StyleID="s65"><Data ss:Type="String">VARCHECKBX3</Data></Cell>
+    <Cell ss:StyleID="Default"><Data ss:Type="String">VARCHECKBX</Data></Cell>
    </Row>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
@@ -12727,7 +12747,7 @@
     <Pane>
      <Number>3</Number>
      <ActiveRow>1</ActiveRow>
-     <RangeSelection>R2C1:R2C3</RangeSelection>
+     <ActiveCol>2</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -12755,8 +12775,10 @@
     <Cell ss:StyleID="s71"><Data ss:Type="String">Instructions/ Comments</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s65"/>
-    <Cell ss:StyleID="s65"/>
+    <Cell ss:StyleID="s65"><Data ss:Type="String">TESTFORM</Data></Cell>
+    <Cell ss:StyleID="s65"><Data ss:Type="String">VARCHECKBX3</Data></Cell>
+    <Cell><Data ss:Type="String">VARCHECKBX</Data></Cell>
+    <Cell><Data ss:Type="String">DRUGRECORDNUMBER</Data></Cell>
    </Row>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
@@ -12769,7 +12791,7 @@
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>18</ActiveRow>
+     <ActiveRow>1</ActiveRow>
      <ActiveCol>3</ActiveCol>
     </Pane>
    </Panes>
