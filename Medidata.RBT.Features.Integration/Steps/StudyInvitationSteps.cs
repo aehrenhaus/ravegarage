@@ -10,10 +10,10 @@ namespace Medidata.RBT.Features.Integration.Steps
     [Binding]
     public class RoleSteps
     {
-        [Given(@"the Role with Name ""(.*)"" exists in the Rave database")]
-        public void GivenARoleWithName____Exists(string name)
+        [Given(@"a Role with Name ""(.*)"" exists in the Rave database")]
+        public void ARoleWithName____Exists(string name)
         {
-            RoleHelper.AddRoleToDB(name, true);
+            RoleHelper.AddRoleToDB(name);
         }
     }
 }

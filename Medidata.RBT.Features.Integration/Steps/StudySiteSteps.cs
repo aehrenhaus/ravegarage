@@ -14,7 +14,7 @@ namespace Medidata.RBT.Features.Integration.Steps
         // For additional details on SpecFlow step definitions see http://go.specflow.org/doc-stepdef
         
 		[Given(@"the StudySite with ExternalId ""(.*)"" exists in the Rave database")]
-        public void TheStudySiteWithID____ExistsInTheRaveDatabase(int externalId)
+        public void TheStudySiteWithExternalID____ExistsInTheRaveDatabase(int externalId)
         {
             StudySiteHelper.CreateRaveStudySite(externalId);
         }

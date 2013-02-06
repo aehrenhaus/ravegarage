@@ -6,7 +6,7 @@ namespace Medidata.RBT.Objects.Integration.Helpers
 {
     public static class RoleHelper
     {
-        public static void AddRoleToDB(string name, bool viewAllSites=false)
+        public static void AddRoleToDB(string name)
         {
             var role = new Role
                            {

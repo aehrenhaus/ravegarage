@@ -61,7 +61,7 @@ namespace Medidata.RBT.Objects.Integration.Helpers
             }
         }
 
-		public static void CreateRaveStudySite(int externalId) // needs to be converted to int
+		public static void CreateRaveStudySite(int externalId)
 		{
 		    String studyUuid = ScenarioContext.Current.Get<String>("studyUuid");
 		    Study study = Study.FindByUuid(studyUuid, 1, SystemInteraction.Use());
@@ -70,7 +70,8 @@ namespace Medidata.RBT.Objects.Integration.Helpers
             
             var studySite = new StudySite(study, site, SystemInteraction.Use())
                                 {
-                                    ExternalID = externalId
+                                    ExternalID = externalId,
+                                    ExternalSystem = ExternalSystem.GetByID(1)
                                 };
 
             studySite.Save();
