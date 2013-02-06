@@ -1,5 +1,5 @@
 ﻿@FT_MCC-42707
-@ignore
+
 
 Feature: MCC-42707 When configuring Coder settings, the settings are preserved even after changes are made to the data point settings on form designer.
 
@@ -69,8 +69,8 @@ Background:
 
 @Release_2013.1.0
 @PBMCC-42707-001
-@SJ04.FEB.2013
-@Draft
+@SJ06.FEB.2013
+@Validation
 
 Scenario: PBMCC-42707-001 Verify Coder settings are maintained after changing field format on a Log form designer. 
 
@@ -131,8 +131,8 @@ Scenario: PBMCC-42707-001 Verify Coder settings are maintained after changing fi
 
 @Release_2013.1.0
 @PBMCC-42707-002
-@SJ04.FEB.2013
-@Draft
+@SJ06.FEB.2013
+@Validation
 
 
 Scenario: PBMCC-42707-002 Verify Coder settings are maintained after changing field format on a standard form designer.
@@ -192,8 +192,8 @@ Scenario: PBMCC-42707-002 Verify Coder settings are maintained after changing fi
 
 @Release_2013.1.0
 @PBMCC-42707-003
-@SJ04.FEB.2013
-@Draft
+@SJ06.FEB.2013
+@Validation
 Scenario: PBMCC-42707-003 Verify Coder settings are maintained after changing Coding Dictionary on a log form designer.
 
 	Given I login to Rave with user "SUPER USER 1"
@@ -251,8 +251,8 @@ Scenario: PBMCC-42707-003 Verify Coder settings are maintained after changing Co
 
 @Release_2013.1.0
 @PBMCC-42707-004
-@SJ04.FEB.2013
-@Draft
+@SJ06.FEB.2013
+@Validation
 Scenario: PBMCC-42707-004 Verify local setting in Coder is maintained after changing format on a log form designer.
 
 	Given I login to Rave with user "SUPER USER 1"
@@ -285,8 +285,8 @@ Scenario: PBMCC-42707-004 Verify local setting in Coder is maintained after chan
 
 @Release_2013.1.0
 @PBMCC-42707-005
-@SJ04.FEB.2013
-@Draft
+@SJ06.FEB.2013
+@Validation
 Scenario: PBMCC-42707-005 Verify Locale setting in Coder is maintained after changing Coding Dictionary on a log form designer.
 
 	Given I login to Rave with user "SUPER USER 1"
