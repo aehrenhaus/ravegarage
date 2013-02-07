@@ -1,5 +1,5 @@
-﻿@FT_MCC-42701ULenable
-@ignore
+﻿@FT_MCC-42701UL
+
 
 Feature: MCC_42701UL Architect download will contain Coder settings and Architect upload will save Coder settings
 
@@ -63,8 +63,8 @@ Background:
 
 @Release_2013.1.0
 @PBMCC-42701-001
-@SJ06.FEB.2013
-@Draft
+@SJ07.FEB.2013
+@Validation
 
 Scenario: PBMCC-42701-001 When uploading an architect spreadsheet that contains Coder settings and the URL has Coder registered, the Coder settings will be saved and the upload will be successfull
 	
@@ -94,8 +94,8 @@ Scenario: PBMCC-42701-001 When uploading an architect spreadsheet that contains 
 
 @Release_2013.1.0
 @PBMCC-42701-002
-@SJ06.FEB.2013
-@Draft
+@SJ07.FEB.2013
+@Validation
 Scenario: PBMCC-42701-002 When uploading an architect spreadsheet that does not contain Coder settings including coder in field level and the URL has Coder registered, the upload will be successfull
 	
 
@@ -115,8 +115,8 @@ Scenario: PBMCC-42701-002 When uploading an architect spreadsheet that does not 
 
 @Release_2013.1.0
 @PBMCC-42701-003
-@SJ06.FEB.2013
-@Draft
+@SJ07.FEB.2013
+@Validation
 Scenario: PBMCC-42701-003 When uploading an architect spreadsheet that contain same Field OID and same name for Supplemental Terms and Component Terms and the URL has Coder registered, the upload will fail and user will be provided with appropriate message
 
  	When xml draft "MCC-42701-003.xml" is Uploaded without redirecting
@@ -127,8 +127,8 @@ Scenario: PBMCC-42701-003 When uploading an architect spreadsheet that contain s
 
 @Release_2013.1.0
 @PBMCC-42701-004
-@SJ06.FEB.2013
-@Draft
+@SJ07.FEB.2013
+@Validation
 Scenario: PBMCC-42701-004 When uploading an architect spreadsheet that contain name and component name for Component Terms and the URL has Coder registered, the upload will be successfull
 
 	
@@ -157,8 +157,8 @@ Scenario: PBMCC-42701-004 When uploading an architect spreadsheet that contain n
 
 @Release_2013.1.0
 @PBMCC-42701-005
-@SJ06.FEB.2013
-@Draft
+@SJ07.FEB.2013
+@Validation
 Scenario: PBMCC-42701-005 When uploading an architect spreadsheet that contain name and no component name in Component Terms and the URL has Coder registered, the upload will fail and user will be provided with appropriate message
 	
 
@@ -171,8 +171,8 @@ Scenario: PBMCC-42701-005 When uploading an architect spreadsheet that contain n
 
 @Release_2013.1.0
 @PBMCC-42701-006
-@SJ06.FEB.2013
-@Draft
+@SJ07.FEB.2013
+@Validation
 Scenario: PBMCC-42701-006 When uploading an architect spreadsheet after updating coding level in coder configuration and the URL has Coder registered, upload will be successfull and updated coding level will show on Coder configuration page with the intial coding level.
 
 	
@@ -214,8 +214,8 @@ Scenario: PBMCC-42701-006 When uploading an architect spreadsheet after updating
 
 @Release_2013.1.0
 @PBMCC-42701-007
-@SJ06.FEB.2013
-@Draft
+@SJ07.FEB.2013
+@Validation
 Scenario: PBMCC-42701-007 When uploading an architect spreadsheet that assigned coder dictionary to a field and have no Coder settings for the URL which Coder registered, the upload will fail and user will be provided with appropriate message
 	
 	
@@ -227,8 +227,8 @@ Scenario: PBMCC-42701-007 When uploading an architect spreadsheet that assigned 
 
 @Release_2013.1.0
 @PBMCC-42701-008
-@SJ06.FEB.2013
-@Draft
+@SJ07.FEB.2013
+@Validation
 Scenario: PBMCC-42701-008 When uploading an architect spreadsheet that assigned coder dictionary to a field and does not contain Coder settings for CoderConfiguration tab and have Coder settings for the URL which Coder is registered, the upload will fail and user will be provided with appropriate message
 
 
@@ -242,8 +242,8 @@ Scenario: PBMCC-42701-008 When uploading an architect spreadsheet that assigned 
 
 @Release_2013.1.0
 @PBMCC-42701-009
-@SJ06.FEB.2013
-@Draft
+@SJ07.FEB.2013
+@Validation
 Scenario: PBMCC-42701-009 When uploading an architect spreadsheet which contains same field name for SupplementalTerms and ComponentTerms and the URL has Coder registered, the upload will fail and user will be provided with appropriate message
 
 	
@@ -278,8 +278,8 @@ Scenario: PBMCC-42701-009 When uploading an architect spreadsheet which contains
 
 @Release_2013.1.0
 @PBMCC-42701-010
-@SJ06.FEB.2013
-@Draft
+@SJ07.FEB.2013
+@Validation
 Scenario: PBMCC-42701-010 When uploading an architect spreadsheet by changing Coding Level and the URL has Coder registered, the upload will fail and user will be provided with appropriate message
 
 
@@ -314,8 +314,8 @@ Scenario: PBMCC-42701-010 When uploading an architect spreadsheet by changing Co
 
 @Release_2013.1.0
 @PBMCC-42701-011
-@SJ06.FEB.2013
-@Draft
+@SJ07.FEB.2013
+@Validation
 	Scenario: PBMCC-42701-011 When uploading an architect spreadsheet where a field does not have VarOID and assigned to coding dictionary and the URL has Coder registered, the upload will fail and user will be provided with appropriate message
 
 
@@ -328,8 +328,8 @@ Scenario: PBMCC-42701-010 When uploading an architect spreadsheet by changing Co
 
 @Release_2013.1.0
 @PBMCC-42701-012
-@SJ06.FEB.2013
-@Draft
+@SJ07.FEB.2013
+@Validation
 	Scenario: PBMCC-42701-012 When uploading an architect spreadsheet where a field does not have VarOID,format and field is not assign to coding dictionary and the URL has Coder registered, the upload will fail and user will be provided with appropriate message
 
 
@@ -343,8 +343,8 @@ Scenario: PBMCC-42701-010 When uploading an architect spreadsheet by changing Co
 
 @Release_2013.1.0
 @PBMCC-42701-013
-@SJ06.FEB.2013
-@Draft
+@SJ07.FEB.2013
+@Validation
 
 Scenario: PBMCC-42701-013 When uploading an architect spreadsheet that contains local jpn, the upload upload will be successfull and coder page will show local as jpn.
 
@@ -371,8 +371,8 @@ Scenario: PBMCC-42701-013 When uploading an architect spreadsheet that contains 
 
 @Release_2013.1.0
 @PBMCC-42701-014
-@SJ06.FEB.2013
-@Draft
+@SJ07.FEB.2013
+@Validation
 
 Scenario: PBMCC-42701-014 When uploading an architect spreadsheet that does not contain a local, the upload upload will be successfull and coder page will show local as eng.
 
@@ -400,8 +400,8 @@ Scenario: PBMCC-42701-014 When uploading an architect spreadsheet that does not 
 
 @Release_2013.1.0
 @PBMCC-42701-015
-@SJ06.FEB.2013
-@Draft
+@SJ07.FEB.2013
+@Validation
 Scenario: PBMCC-42701-015 When uploading an architect spreadsheet that does not contain tabs for CoderConfiguration, CoderSupplementalTerms and CoderComponentTerms, the upload will be successfull and will not have any coder settings.
 
 	When xml draft "MCC-42701-015.xml" is Uploaded without redirecting
@@ -418,8 +418,8 @@ Scenario: PBMCC-42701-015 When uploading an architect spreadsheet that does not 
 
 @Release_2013.1.0
 @PBMCC-42701-016
-@SJ06.FEB.2013
-@Draft
+@SJ07.FEB.2013
+@Validation
 Scenario: PBMCC-42701-016 When uploading an architect spreadsheet that contains Coder settings and the URL does not have Coder registered, the upload will fail and user will be provided with appropriate message
 
 	
