@@ -74,32 +74,32 @@ namespace Medidata.RBT.PageObjects.Rave.Configuration
 
 		public bool VerifySomethingExist(string areaIdentifier, string type, string identifier, bool exactMatch = false)
 		{
-			if (areaIdentifier == "log")
+			if (areaIdentifier.Equals("log", StringComparison.InvariantCultureIgnoreCase))
 			{
 				var txt = Browser.TextareaById("_ctl0_Content_LogCtl");
 				return txt.Value.Contains(identifier);
 			}
 
-			if (identifier == "Coder Configuration were updated")
+			if (identifier.Equals("Coder Configuration were updated", StringComparison.InvariantCultureIgnoreCase))
 			{
 			
 				return true;
 			}
 
-			if (identifier == "Complete icon for Coder Configuration")
+			if (identifier.Equals("Complete icon for Coder Configuration", StringComparison.InvariantCultureIgnoreCase))
 			{
 				var img = Browser.TryFindElementById("_ctl0_Content_Label_CoderConfig").Parent().Parent().Children()[0].ImageBySrc("dp_ok.gif", false);
 				bool exist = img.GetCssValue("display") != "none";
 				return exist;
 			}
 
-			if (identifier == "Non-Conformant icon for Coder Configuration")
+			if (identifier.Equals("Non-Conformant icon for Coder Configuration", StringComparison.InvariantCultureIgnoreCase))
 			{
 				bool exist = Browser.TryFindElementById("_ctl0_Content_Label_CoderConfig").Parent().Parent().Children()[0].ImageBySrc("dp_nc.gif", false).GetCssValue("display") != "none";
 				return exist;
 			}
 
-			if ( areaIdentifier == "Coder Configuration errors")
+			if ( areaIdentifier.Equals("Coder Configuration errors", StringComparison.InvariantCultureIgnoreCase))
 			{
 				var triangle = Browser.TryFindElementById("_ctl0_Content_Label_CoderConfig").Parent().Parent().Children()[2];
 				triangle.ImageBySrc("arrow_right.gif").Click();
