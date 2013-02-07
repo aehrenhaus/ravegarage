@@ -428,13 +428,13 @@ Scenario: PBMCC-42701-016 When uploading an architect spreadsheet that contains 
 	And  I verify text "Error while reading row 5. Field OID 'CODERTERM1' in form OID 'ETE1' : Coding dictionary 'MedDRA (Coder)' is not registered for this project." exists in "Coding Dictionary:MedDRA"
 	And  I verify text "Error while reading row 6. Field OID 'JDT' in form OID 'ETE1' : Coding dictionary 'JDrug (Coder)' is not registered for this project." exists in "Coding Dictionary:JDrug"
 	And I verify text "Error while reading row 11. Field OID 'CODERFIELD2' in form OID 'ETE2' : Coding dictionary 'WHODRUGB2 (Coder)' is not registered for this project." exists in "Coding Dictionary:WHODRUGB2"
-	And I verify text "Error while reading row 46. Field OID 'VARCHECKBX3' in form OID 'TESTFORM' : Coding dictionary 'WHODRUGB2 (Coder)' is not registered for this project. " exists in "Coding Dictionary:WHODRUGB2"
-	And I verify text "Error while reading row 10. Check step in check 'testing', ordinal 1 : Field OID 'CODERTERM1' is invalid. " exists
+	And I verify text "Error while reading row 46. Field OID 'VARCHECKBX3' in form OID 'TESTFORM' : Coding dictionary 'WHODRUGB2 (Coder)' is not registered for this project." exists in "Coding Dictionary:WHODRUGB2"
+	And I verify text "Error while reading row 10. Check step in check 'testing', ordinal 1 : Field OID 'CODERTERM1' is invalid." exists
 	And I verify text "Field OID 'CODERTERM1' is invalid." exists
 	And I verify text "Field OID 'JDT' is invalid." exists
 	And I verify text "Field OID 'CODERFIELD2' is invalid." exists
-	And I verify text "Field OID 'VARCHECKBX3' is invalid. " exists
-	And I verify text "Field OID 'VARCHECKBX3' is invalid. " exists
+	And I verify text "Field OID 'VARCHECKBX3' is invalid." exists
+	And I verify text "Field OID 'VARCHECKBX3' is invalid." exists
 	And I verify text "Field OID 'VARCHECKBX3' is invalid." exists
 	And I take a screenshot
 
