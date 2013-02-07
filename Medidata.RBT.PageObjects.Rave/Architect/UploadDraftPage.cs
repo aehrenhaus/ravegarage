@@ -9,6 +9,7 @@ using Medidata.RBT.SeleniumExtension;
 using System.IO;
 using System.Threading;
 using TechTalk.SpecFlow;
+using Medidata.RBT.PageObjects.Rave.SharedRaveObjects;
 namespace Medidata.RBT.PageObjects.Rave
 {
 	public class UploadDraftPage : 
@@ -56,6 +57,17 @@ namespace Medidata.RBT.PageObjects.Rave
 		{
 			if (identifier != null)
 			{
+                if (!string.IsNullOrEmpty(areaIdentifier) && 
+                    areaIdentifier.StartsWith("Coding Dictionary:", StringComparison.InvariantCultureIgnoreCase))
+                {
+                    string coderDictionaryName = areaIdentifier.Substring("Coding Dictionary:".Length);
+                    CodingDictionary cd = (CodingDictionary)SeedingContext.GetExistingFeatureObjectOrMakeNew<CodingDictionary>(coderDictionaryName,
+                        () => { throw new Exception(string.Format("Coding Dictionary [{0}] not found", coderDictionaryName)); });
+
+                    string uniqueCoderDictionaryName = cd.UniqueName;
+
+                    identifier = identifier.Replace(coderDictionaryName, uniqueCoderDictionaryName);
+                }
 				if (!exactMatch && Browser.PageSource.Contains(identifier))
 					return true;
 				else

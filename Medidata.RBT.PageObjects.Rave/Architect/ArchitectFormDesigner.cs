@@ -148,12 +148,24 @@ namespace Medidata.RBT.PageObjects.Rave
 
 		bool IVerifySomethingExists.VerifySomethingExist(string areaIdentifier, string type, string identifier, bool exactMatch)
 		{
+            bool retVal = false;
 			if (areaIdentifier == null)
 			{
-                if (!exactMatch && Browser.FindElementByTagName("body").Text.Contains(identifier))
-					return true;
-				else
-					return false;
+                if (type.Equals("button", StringComparison.InvariantCultureIgnoreCase))
+                {
+                    IWebElement buttonDiv = Browser.TryFindElementBy(By.XPath(string.Format("//div/input[@value='{0}']", identifier)));
+                   
+                    string visibility = buttonDiv.GetCssValue("visibility");
+                    if (visibility.Equals("visible", StringComparison.InvariantCultureIgnoreCase))
+                        retVal = true;
+                }
+                else if (string.IsNullOrEmpty(type) || type.Equals("text", StringComparison.InvariantCultureIgnoreCase))
+                {
+                    if (!exactMatch && Browser.FindElementByTagName("body").Text.Contains(identifier))
+					    retVal =  true;
+                }
+
+                return retVal;
 			}
 			throw new NotImplementedException();
 		}
