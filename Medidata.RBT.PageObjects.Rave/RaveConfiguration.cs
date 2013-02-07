@@ -53,12 +53,6 @@ namespace Medidata.RBT.PageObjects.Rave
         }
 
 
-		[ConfigurationProperty("UploadTimeout", DefaultValue = 400)]
-		public int UploadTimeout
-        {
-			get { return (int)this["UploadTimeout"]; }
-			set { this["UploadTimeout"] = value; }
-        }
 
         [ConfigurationProperty("ReportURL", DefaultValue = "", IsRequired = true)]
         public String ReportURL

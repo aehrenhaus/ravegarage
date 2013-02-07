@@ -9,6 +9,6 @@ namespace Medidata.RBT.PageObjects.Rave.Configuration.Models
     {
         public string ReviewMarkingGroup { get; set; }
         public string RequiresResponse { get; set; }
-        public string RequiresManualClose { get; set; }
+
     }
 }

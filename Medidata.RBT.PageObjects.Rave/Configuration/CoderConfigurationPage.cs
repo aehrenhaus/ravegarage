@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Medidata.RBT.PageObjects.Rave.Configuration.Models;
+using Medidata.RBT.SeleniumExtension;
 
 namespace Medidata.RBT.PageObjects.Rave.Configuration
 {
-    public class CoderConfigurationPage : ConfigurationBasePage
+    public class CoderConfigurationPage : ConfigurationBasePage, IVerifySomethingExists
     {
         public void FillData(IEnumerable<CoderConfigurationModel> createSet)
         {
@@ -17,7 +18,6 @@ namespace Medidata.RBT.PageObjects.Rave.Configuration
             base.ChooseFromDropdown("_ctl0_Content_coderMarkingGroup", model.ReviewMarkingGroup);
 
 			base.ChooseFromCheckboxes("_ctl0_Content_chkReqResponse", model.RequiresResponse == "True");
-			base.ChooseFromCheckboxes("_ctl0_Content_chkReqManualClose", model.RequiresManualClose == "True");
         }
 
         public IPage Save()
@@ -29,5 +29,31 @@ namespace Medidata.RBT.PageObjects.Rave.Configuration
         {
             get { return "Modules/Configuration/CoderConfiguration.aspx"; }
         }
+
+		public bool VerifySomethingExist(string areaIdentifier, string type, string identifier, bool exactMatch = false)
+		{
+		
+			if (identifier == "Requires Response checked")
+			{
+				var checkbox = Browser.CheckboxByID("_ctl0_Content_chkReqResponse");
+				return checkbox.Checked;
+			} 
+			
+			if (identifier == "Requires Response unchecked")
+			{
+				var checkbox = Browser.CheckboxByID("_ctl0_Content_chkReqResponse");
+				return !checkbox.Checked;
+			}
+			
+
+			if (areaIdentifier == "Review Marking Group dropdown")
+			{
+				var dropdown = Browser.DropdownById("_ctl0_Content_coderMarkingGroup");
+
+				return dropdown.SelectedText == identifier;
+			}
+
+			return false;
+		}
     }
 }

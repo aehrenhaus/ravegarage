@@ -54,7 +54,9 @@ namespace Medidata.RBT.Common.Steps
 			uploadControl.SendKeys(fileInfo.FullName);
 			CurrentPage.ClickButton(buttonName);
 
-			Browser.TryFindElementBy((b) => CurrentPage.GetElementByName(finishSignal),true, 60);
+			var sign = Browser.TryFindElementBy((b) => CurrentPage.GetElementByName(finishSignal, "upload result"),true, RBTConfiguration.Default.UploadTimeout);
+			if (sign == null)
+				throw new Exception("Upload does not complete in time(" + RBTConfiguration.Default.UploadTimeout + ")");
 		}
 
 		/// <summary>

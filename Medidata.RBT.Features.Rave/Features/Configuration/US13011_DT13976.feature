@@ -1,5 +1,5 @@
 ﻿# Configuration Loader specification should include Coder Configuration.
-@ignore
+#@ignore
 @FT_US13011_DT13976
 Feature: US13011_DT13976_1
 	When the Configuration Settings are downloaded, they should include Coder Configuration details.
@@ -9,7 +9,6 @@ Feature: US13011_DT13976_1
 	And the Core Configuration specification is downloaded and opened
 	Then the Core Configuration specification contains Coder Configuration details
 
-
 Background:
 	Given I login to Rave with user "defuser" and password "password"
 	#And the URL has Coder installed
@@ -17,18 +16,18 @@ Background:
 	#	| User    | Project    | Environment | Role         | Site         | Site Number | User Group    |
 	#	| defuser | Jennicilin | Prod        | Data Manager | ABC Hospital | 12333       | Administrator |
 	#And the following Marking Groups exist
-	#	| Review Marking Groups     |
-	#	| Site from System          |
-	#	| Site from CRA             |
-	#	| Site from DM              |
-	#	| Monitor from Lead Monitor |
-	#	| Monitor from Sponsor      |
-	#	| CRA from DM               |
+	#	| Review Marking Groups   |
+	#	| site from system        |
+	#	| Marking Group 2         |
+	#	| Marking Group 3         |
+	#	| Marking Group 4		  |
+	#	| Marking Group 5		  |
+	#	| Marking Group 6         |
 
 #Note: This feature file assumes that they are only 10 Marking Groups set in Rave.
 
 #----------------------------------------------------------------------------------------------------------------------------------------
-@release_564_2012.1.0
+@release_2013.1.0
 @PB_US11101_01
 @Draft
 Scenario: @PB_US11101_01 As a Data Manager, when I am on the Configuration Loader page, and I select Get File, and the Core Configuration specification is downloaded, and I open it, then I see Coder Configuration details.
@@ -37,34 +36,28 @@ Scenario: @PB_US11101_01 As a Data Manager, when I am on the Configuration Loade
 	And I navigate to "Other Settings"
 	And I navigate to "Coder Configuration"
 	And I enter data in "Coder Configuration" and save
-		| Review Marking Group | Requires Response | Requires Manual Close |
-		| site from system     | True              | True                  |
+		| Review Marking Group | Requires Response |
+		| site from system     | True              |
 	And I select link "Configuration Loader"
 	And I click the "Get File" button to download
 	And I verify "Coder Configuration" spreadsheet data
 		| Version | Coder Manual Queries  | Setting          | Instructions/Comments                                                                                                                                                                 |
 		|         | Review Marking Group  | site from system | Marking Groups enable queries to be opened by Coder and directed to specific roles.  These roles will be able to take action against the query as long as the role action permits it. |
-		|         | Requires Response     | True             | A response by the user role the query has been opened against is needed.  True = a response is required.  False = No response is required and query text will just be displayed.      |
-		|         | Requires Manual Close | True             | The user role the query has been opened against will be able to close the query.  True = Query can be closed manually.  False = Query cannot be closed manually.                      |
-	
 	And I navigate to "Configuration"
 	And I navigate to "Other Settings"
 	And I navigate to "Coder Configuration"
 	And I enter data in "Coder Configuration" and save
-		| Review Marking Group      | Requires Response | Requires Manual Close |
-		| Monitor from Lead Monitor | False             | False                 |
+		| Review Marking Group | Requires Response |
+		| Marking Group 2      | False             |
 	And I navigate to "Other Settings"
 	And I navigate to "Configuration Loader"
-
 	And I click the "Get File" button to download
 	And I verify "Coder Configuration" spreadsheet data
-		| Version | Coder Manual Queries  | Setting                   | Instructions/Comments                                                                                                                                                                 |
-		|         | Review Marking Group  | Monitor from Lead Monitor | Marking Groups enable queries to be opened by Coder and directed to specific roles.  These roles will be able to take action against the query as long as the role action permits it. |
-		|         | Requires Response     | False                     | A response by the user role the query has been opened against is needed.  True = a response is required.  False = No response is required and query text will just be displayed.      |
-		|         | Requires Manual Close | False                     | The user role the query has been opened against will be able to close the query.  True = Query can be closed manually.  False = Query cannot be closed manually.                      |
-
+		| Version | Coder Manual Queries | Setting         | Instructions/Comments                                                                                                                                                                 |
+		|         | Review Marking Group | Marking Group 2 | Marking Groups enable queries to be opened by Coder and directed to specific roles.  These roles will be able to take action against the query as long as the role action permits it. |
+	
 #----------------------------------------------------------------------------------------------------------------------------------------
-@release_564_2012.1.0
+@release_2013.1.0
 @PB_US11101_02
 @Draft
 Scenario:@PB_US11101_02  As a Data Manager, when I am on the Configuration Loader page, and I select Template Only, and I select Get File, and the Core Configuration specification is downloaded, and I open it, then I see Coder Configuration details.
@@ -77,27 +70,4 @@ Scenario:@PB_US11101_02  As a Data Manager, when I am on the Configuration Loade
 	And I click the "Get File" button to download
 	Then I verify "Coder Configuration" spreadsheet data
 		| Version | Coder Manual Queries  | Setting | Instructions/Comments                                                                                                                                                                 |
-		|         | Review Marking Group  | [None]  | Marking Groups enable queries to be opened by Coder and directed to specific roles.  These roles will be able to take action against the query as long as the role action permits it. |
-		|         | Requires Response     |         | A response by the user role the query has been opened against is needed.  True = a response is required.  False = No response is required and query text will just be displayed.      |
-		|         | Requires Manual Close |         | The user role the query has been opened against will be able to close the query.  True = Query can be closed manually.  False = Query cannot be closed manually.                      |
-
-#----------------------------------------------------------------------------------------------------------------------------------------
-
-
-#WARNING this scnario can not be automaticlly verified, becase the coder can not be disabled once enabled.
-
-#@release_564_2012.1.0
-#@PB_US11101_03
-#@Manual
-#Scenario: @PB_US11101_03 As a Data Manager, when I am on the Configuration Loader page, and Coder is not enabled, and I select Get File, and the Core Configuration specification is downloaded, and I open it, then I do not see Coder Configuration details.
-#	
-#	And I navigate to "Configuration"
-#	When I navigate to "Other Settings"
-#
-#	Then I verify link "Coder Configuration" does not exist
-#	And I select link "Configuration Loader"
-#	And I disable "Coder"
-#	And I click the "Get File" button to download
-#	
-#	And I verify "Coder Configuration" spreadsheet does not exist
-#	And I take a screenshot
+		|         | Review Marking Group  |			| Marking Groups enable queries to be opened by Coder and directed to specific roles.  These roles will be able to take action against the query as long as the role action permits it. |

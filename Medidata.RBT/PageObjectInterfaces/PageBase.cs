@@ -272,7 +272,7 @@ namespace Medidata.RBT
             else
 				element.EnhanceAs<Checkbox>().Uncheck();
 
-			return this.WaitForPageLoads();
+			return this;
         }
 
 		/// <summary>

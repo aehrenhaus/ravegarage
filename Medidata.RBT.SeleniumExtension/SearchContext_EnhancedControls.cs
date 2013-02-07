@@ -62,7 +62,10 @@ namespace Medidata.RBT.SeleniumExtension
 		{
 			return SelectExtendElementByPartialID<Textbox>(context,"input", partialID, nullable);
 		}
-
+		public static Textbox TextareaById(this ISearchContext context, string partialID, bool nullable = false)
+		{
+			return SelectExtendElementByPartialID<Textbox>(context, "textarea", partialID, nullable);
+		}
         /// <summary>
         /// Select a textbox by the type
         /// </summary>
@@ -353,9 +356,9 @@ namespace Medidata.RBT.SeleniumExtension
 
 
 
-		public static EnhancedElement ImageBySrc(this ISearchContext context, string src)
+		public static EnhancedElement ImageBySrc(this ISearchContext context, string src, bool? isWait = null)
 		{
-			return context.TryFindElementBy(By.XPath(".//img[@src='" + src + "']")).EnhanceAs < EnhancedElement>();
+			return context.TryFindElementBy(By.XPath(".//img[contains(@src,'" + src  + "')]"), isWait).EnhanceAs<EnhancedElement>();
 		}
 
 
