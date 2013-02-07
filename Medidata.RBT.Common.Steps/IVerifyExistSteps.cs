@@ -146,7 +146,7 @@ namespace Medidata.RBT.Common.Steps
         public void IVerifyButton____IsNotVisible(string buttonName)
         {
             bool visible = CurrentPage.As<IVerifySomethingExists>().VerifySomethingExist(null, "button", buttonName);
-            Assert.IsFalse(visible, String.Format("Is visible :{0} button", buttonName));
+            Assert.IsFalse(visible, String.Format("Is visible :[{0}] button", buttonName));
         }
 
         /// <summary>
@@ -157,7 +157,7 @@ namespace Medidata.RBT.Common.Steps
         public void IVerifyButton____IsVisible(string buttonName)
         {
             bool visible = CurrentPage.As<IVerifySomethingExists>().VerifySomethingExist(null, "button", buttonName);
-            Assert.IsTrue(visible, String.Format("Is not visible :{0} button", buttonName));
+            Assert.IsTrue(visible, String.Format("Is not visible :[{0}] button", buttonName));
         }
 	}
 }
