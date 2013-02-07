@@ -224,7 +224,7 @@
         <WebProjectProperties>
           <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>55215</DevelopmentServerPort>
+          <DevelopmentServerPort>57282</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>http://localhost/Medidata.RBT.Documents</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
