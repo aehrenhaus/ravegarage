@@ -24,15 +24,13 @@ namespace Medidata.RBT.Features.Integration.Steps
             var externalUser = ExternalUser.Fetch(ScenarioContext.Current.Get<int>("externalUserID"));
             Assert.IsNotNull(externalUser);
 
-            var users = Users.FindByExternalUserID(externalUser.ID, SystemInteraction.Use()); ////////////////////////////
+            var users = Users.FindByExternalUserID(externalUser.ID, SystemInteraction.Use());
 
             var user = users.FirstOrDefault(x => x.EdcRole == null);
 
             Assert.IsNotNull(user);
 
-            ScenarioContext.Current.Set(user, "user");//In the database checking phase, assign the user
-                                                      //fetched from the db to the "user" context key,
-                                                      //replacing the original user object from CreateRaveUser().
+            ScenarioContext.Current.Set(user, "user"); //updates the user in the context to reflect updates made by RISS
         }
 
         [StepDefinition(@"the user should have Email ""(.*)""")]
