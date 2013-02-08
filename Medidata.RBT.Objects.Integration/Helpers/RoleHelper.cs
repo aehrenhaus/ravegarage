@@ -1,0 +1,34 @@
+﻿
+using System;
+using Medidata.Core.Objects;
+using TechTalk.SpecFlow;
+
+namespace Medidata.RBT.Objects.Integration.Helpers
+{
+    public static class RoleHelper
+    {
+        public static void AddRoleToDB(string name)
+        {
+            var role = new Role
+                           {
+                               RoleName = name,
+                               IsActive = true
+                           };
+            role.Save();
+            ScenarioContext.Current.Add("role", role);
+        }
+
+        public static void AssignUserToStudyWithCurrentRole()
+        {
+            var externalUserID = ScenarioContext.Current.Get<int>("externalUserID");
+            var studyUuid = ScenarioContext.Current.Get<Study>("study").Uuid;
+            var role = ScenarioContext.Current.Get<Role>("role");
+            var user = ScenarioContext.Current.Get<User>("user");
+
+            user.EdcRole = role;
+            user.Save();
+
+            ExternalUserRole.StudySave(1, externalUserID, 0, studyUuid, role.ID, DateTime.Now);
+        }
+    }
+}

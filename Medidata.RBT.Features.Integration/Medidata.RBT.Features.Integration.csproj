@@ -51,16 +51,30 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Studies.feature</DependentUpon>
     </Compile>
+    <Compile Include="Features\StudySites.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>StudySites.feature</DependentUpon>
+    </Compile>
     <Compile Include="Features\Users.feature.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Users.feature</DependentUpon>
     </Compile>
+    <Compile Include="Features\UserStudySites.feature.cs">
+      <DependentUpon>UserStudySites.feature</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Include="Hooks\IntegrationTestRunHooks.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Steps\RoleSteps.cs" />
+    <Compile Include="Steps\SiteSteps.cs" />
     <Compile Include="Steps\SQSSteps.cs" />
+    <Compile Include="Steps\StudySiteSteps.cs" />
     <Compile Include="Steps\StudySteps.cs" />
     <Compile Include="Steps\UserSteps.cs" />
+    <Compile Include="Steps\UserStudySiteSteps.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config">
@@ -74,9 +88,17 @@
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>Studies.feature.cs</LastGenOutput>
     </None>
+    <None Include="Features\StudySites.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>StudySites.feature.cs</LastGenOutput>
+    </None>
     <None Include="Features\Users.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>Users.feature.cs</LastGenOutput>
+    </None>
+    <None Include="Features\UserStudySites.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>UserStudySites.feature.cs</LastGenOutput>
     </None>
     <None Include="packages.config" />
   </ItemGroup>

@@ -12,7 +12,7 @@ namespace Medidata.RBT.Objects.Integration.Helpers
 {
     public static class UserHelper
     {
-        public static void UserMessageHandler(Table table, SimpleQueueWrapper sqsWrapper, string url)
+        public static void MessageHandler(Table table, SimpleQueueWrapper sqsWrapper, string url)
         {
             var messageConfigs = table.CreateSet<UserMessageModel>().ToList();
             foreach (var config in messageConfigs)
@@ -62,11 +62,13 @@ namespace Medidata.RBT.Objects.Integration.Helpers
             user.IsTrainingOnly = false;
             user.IsClinicalUser = false;
             user.ExternalID = externalUser.ExternalID;
+            user.ExternalSystem = ExternalSystem.GetByID(1);
             user.Trained = dt;
 
             user.ExternalUser = externalUser;
 
             user.Save();
+            ScenarioContext.Current.Add("user", user);
         }
     }
 }
