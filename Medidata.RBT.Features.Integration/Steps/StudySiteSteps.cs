@@ -65,30 +65,6 @@ namespace Medidata.RBT.Features.Integration.Steps
             Assert.AreEqual(externalStudyId, studySite.Study.ExternalID);
         }
 
-        [Then(@"the studysite should have the ExternalSiteId ""(.*)""")]
-        public void ThenTheStudysiteShouldHaveTheExternalSiteId(int externalSiteId)
-        {
-            var studySite = ScenarioContext.Current.Get<StudySite>("studySite");
-
-            Assert.AreEqual(externalSiteId, studySite.Site.ExternalID);
-        }
-
-        [Then(@"the studysite should have the SiteName ""(.*)""")]
-        public void ThenTheStudysiteShouldHaveTheSiteName____(string siteName)
-        {
-            var studySite = ScenarioContext.Current.Get<StudySite>("studySite");
-
-            Assert.AreEqual(siteName, studySite.Site.Name);
-        }
-
-        [Then(@"the studysite should have the SiteNumber ""(.*)""")]
-        public void ThenTheStudysiteShouldHaveTheSiteNumber____(string siteNumber)
-        {
-            var studySite = ScenarioContext.Current.Get<StudySite>("studySite");
-
-            Assert.AreEqual(siteNumber, studySite.Site.Number);
-        }
-
         [Then(@"the studysite should have a LastExternalUpdateDate ""(.*)""")]
         public void ThenTheStudysiteShouldHaveALastExternalUpdateDate____(DateTime lastExternalUpdateDate)
         {
