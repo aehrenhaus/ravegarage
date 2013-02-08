@@ -15,20 +15,20 @@ namespace Medidata.RBT.Objects.Integration.Helpers
                                IsActive = true
                            };
             role.Save();
-            ScenarioContext.Current.Add("roleID", role.ID);
+            ScenarioContext.Current.Add("role", role);
         }
 
         public static void AssignUserToStudyWithCurrentRole()
         {
             var externalUserID = ScenarioContext.Current.Get<int>("externalUserID");
             var studyUuid = ScenarioContext.Current.Get<Study>("study").Uuid;
-            var roleID = ScenarioContext.Current.Get<int>("roleID");
+            var role = ScenarioContext.Current.Get<Role>("role");
             var user = ScenarioContext.Current.Get<User>("user");
 
-            user.EdcRole = Role.Fetch(roleID);
+            user.EdcRole = role;
             user.Save();
 
-            ExternalUserRole.StudySave(1, externalUserID, 0, studyUuid, roleID, DateTime.Now);
+            ExternalUserRole.StudySave(1, externalUserID, 0, studyUuid, role.ID, DateTime.Now);
         }
     }
 }
