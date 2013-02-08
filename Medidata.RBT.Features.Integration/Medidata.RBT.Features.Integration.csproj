@@ -56,6 +56,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Studies.feature</DependentUpon>
     </Compile>
+    <Compile Include="Features\StudyInvitation.feature.cs">
+      <DependentUpon>StudyInvitation.feature</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Include="Features\StudySites.feature.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -77,6 +82,7 @@
     <Compile Include="Steps\SiteSteps.cs" />
     <Compile Include="Steps\SQSSteps.cs" />
     <Compile Include="Steps\StudySiteSteps.cs" />
+    <Compile Include="Steps\StudyInvitationSteps.cs" />
     <Compile Include="Steps\StudySteps.cs" />
     <Compile Include="Steps\UserSteps.cs" />
     <Compile Include="Steps\UserStudySiteSteps.cs" />
@@ -96,6 +102,10 @@
     <None Include="Features\Studies.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>Studies.feature.cs</LastGenOutput>
+    </None>
+    <None Include="Features\StudyInvitation.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>StudyInvitation.feature.cs</LastGenOutput>
     </None>
     <None Include="Features\StudySites.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>

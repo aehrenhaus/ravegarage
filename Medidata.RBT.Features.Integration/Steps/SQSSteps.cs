@@ -29,6 +29,9 @@ namespace Medidata.RBT.Features.Integration.Steps
                 case ResourceNames.SITE:
                     SiteHelper.MessageHandler(table);
                     break;
+				case ResourceNames.STUDY_INVITATION:
+                    StudyInvitationHelper.MessageHandler(table);
+                    break;
             }
         }
 
