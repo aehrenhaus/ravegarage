@@ -5,9 +5,8 @@ Feature: MCC-42701DL Architect download will contain Coder settings and Architec
 Background:
 
     Given role "SUPER ROLE 1" exists
-    Given study "MCC-42701DL" exists
-	Given study "MCC-42701-001DL" exists
-	
+	Given study "MCC-42701DL" exists
+    Given study "MCC-42701-001DL" exists
 	Given coding dictionary "AZDD" version "Coder" exists with following coding columns
 	| Coding Column Name |
 	| PRODUCT            |
@@ -55,8 +54,11 @@ Background:
 	| MCC-42701DL | JDrug             |
 	| MCC-42701DL | MedDRA            |
 	| MCC-42701DL | WHODRUGB2         |
+	
     Given study "MCC-42701DL" is assigned to Site "Site 1"
 	Given study "MCC-42701-001DL" is assigned to Site "Site 1"
+	Given xml draft "MCC-42701DL.xml" is Uploaded
+	Given xml draft "MCC-42701-001DL.xml" is Uploaded
     Given following Project assignments exist
 	| User         | Project         | Environment | Role         | Site   | SecurityRole          |
 	| SUPER USER 1 | MCC-42701DL     | Live: Prod  | SUPER ROLE 1 | Site 1 | Project Admin Default |
@@ -65,11 +67,11 @@ Background:
 
 
 @Release_2013.1.0
-@MCC-42701-01
+@PBMCC-42701-01
 @SJ07.FEB.2013
 @Draft
     
-Scenario: MCC-42701-01 When downloading an architect spreadsheet for a URL that has Coder registered, the Coder settings will be included
+Scenario: PBMCC-42701-01 When downloading an architect spreadsheet for a URL that has Coder registered, the Coder settings will be included
 	
 	And I navigate to "Architect"
 	And I select "Project" link "MCC-42701DL" in "Active Projects"
@@ -77,7 +79,7 @@ Scenario: MCC-42701-01 When downloading an architect spreadsheet for a URL that 
 	And I navigate to "Forms"
 	And I select Fields for Form "MCC42701-001"
 	And I edit Field "varcheckbx3"
-	And I choose "CODER- AZDD" from "Coding Dictionary"
+	And I choose "CODER- AZDD" from "Coding Dictionary:"
 	And I select link "Save"
 	And I click button "Coder Configuration"
 	And I enter data in architect coder configuration and save
@@ -101,29 +103,29 @@ Scenario: MCC-42701-01 When downloading an architect spreadsheet for a URL that 
 	And I select Draft "Draft 001"
 	And I click the "Download" button to download
 	Then I verify "CoderConfiguration" spreadsheet data
-		| FormOID  | FieldOID    | CodingLevel    | Priority | Locale | IsApprovalRequired | IsAutoApproval |
-		| ETE1     | CODERTERM1  | LLT            | 1        | eng    | False              | True           |
-		| ETE1     | JDT         | DrugName       | 1        | jpn    | False              | True           |
-		| ETE2     | CODERFIELD2 | PRODUCTSYNONYM | 1        | eng    | False              | True           |
-		| TESTFORM | VARCHECKBX3 | PRODUCT        | 2        | eng    | False              | False          |
+		| FormOID  | FieldOID    | CodingLevel | Priority | Locale | IsApprovalRequired | IsAutoApproval |
+		| ETE1     | CODERTERM1  | SOC         | 1        | eng    | False              | True           |
+		| ETE1     | JDT         | ATC         | 1        | eng    | False              | True           |
+		| ETE2     | CODERFIELD2 | ATC         | 1        | eng    | False              | True           |
+		| TESTFORM | VARCHECKBX3 | PRODUCT     | 2        | eng    | False              | False          |
 	And I take a screenshot				 
 	And I verify "CoderSupplementalTerms" spreadsheet data
 		| FormOID  | FieldOID    | SupplementalTerm |
 		| TESTFORM | VARCHECKBX3 | TEST1            |
 	And I take a screenshot	
-	And I verify "CoderSupplementalTerms" spreadsheet data
-		| FormOID  | FieldOID    | SupplementalTerm | ComponentName    |
-		| TESTFORM | VARCHECKBX3 | VARCHECKBX       | DRUGRECORDNUMBER |
+	And I verify "CoderComponentTerms" spreadsheet data
+		| FormOID  | FieldOID    | ComponentTerm | ComponentName    |
+		| TESTFORM | VARCHECKBX3 | VARCHECKBX    | DRUGRECORDNUMBER |
 	And I take a screenshot
 
 
 
 @Release_2013.1.0
-@MCC-42701-02
+@PBMCC-42701-02
 @SJ07.FEB.2013
 @Draft
     
-Scenario: MCC-42701-01 When delete Supplemental and Component terms and downloading an architect spreadsheet for a URL that has Coder registered and, the Coder settings will be included
+Scenario: PBMCC-42701-02 When delete Supplemental and Component terms and downloading an architect spreadsheet for a URL that has Coder registered and, the Coder settings will be included
 	
 	And I navigate to "Architect"
 	And I select "Project" link "MCC-42701DL" in "Active Projects"
@@ -131,7 +133,7 @@ Scenario: MCC-42701-01 When delete Supplemental and Component terms and download
 	And I navigate to "Forms"
 	And I select Fields for Form "MCC42701-001"
 	And I edit Field "varcheckbx2"
-	And I choose "CODER- AZDD" from "Coding Dictionary"
+	And I choose "CODER- AZDD" from "Coding Dictionary:"
 	And I select link "Save"
 	And I click button "Coder Configuration"
 	And I enter data in architect coder configuration and save
@@ -155,22 +157,22 @@ Scenario: MCC-42701-01 When delete Supplemental and Component terms and download
 	And I select Draft "Draft 001"
 	And I click the "Download" button to download
 	Then I verify "CoderConfiguration" spreadsheet data
-		| FormOID  | FieldOID    | CodingLevel    | Priority | Locale | IsApprovalRequired | IsAutoApproval |
-		| ETE1     | CODERTERM1  | LLT            | 1        | eng    | False              | True           |
-		| ETE1     | JDT         | DrugName       | 1        | jpn    | False              | True           |
-		| ETE2     | CODERFIELD2 | PRODUCTSYNONYM | 1        | eng    | False              | True           |
-		| TESTFORM | VARCHECKBX3 | PRODUCT        | 2        | eng    | False              | False          |
-		| TESTFORM | VARCHECKBX3 | PRODUCT        | 2        | eng    | False              | False          | 
+		| FormOID  | FieldOID    | CodingLevel | Priority | Locale | IsApprovalRequired | IsAutoApproval |
+		| ETE1     | CODERTERM1  | SOC         | 1        | eng    | False              | True           |
+		| ETE1     | JDT         | ATC         | 1        | eng    | False              | True           |
+		| ETE2     | CODERFIELD2 | ATC         | 1        | eng    | False              | True           |
+		| TESTFORM | VARCHECKBX2 | PRODUCT     | 2        | eng    | False              | False          |
+		| TESTFORM | VARCHECKBX3 | PRODUCT     | 2        | eng    | False              | False          | 
 	And I take a screenshot				 
 	And I verify "CoderSupplementalTerms" spreadsheet data
 		| FormOID  | FieldOID    | SupplementalTerm |
 		| TESTFORM | VARCHECKBX2 | TEST1            |
-		| TESTFORM | VARCHECKBX3 | TEST1            |
+		
 	And I take a screenshot	
-	And I verify "CoderSupplementalTerms" spreadsheet data
-		| FormOID  | FieldOID    | SupplementalTerm | ComponentName    |
-		| TESTFORM | CODERFIELD2 | VARCHECKBX       | DRUGRECORDNUMBER |
-		| TESTFORM | VARCHECKBX3 | VARCHECKBX       | DRUGRECORDNUMBER |
+	And I verify "CoderComponentTerms" spreadsheet data
+		| FormOID  | FieldOID    | ComponentTerm | ComponentName    |
+		| TESTFORM | VARCHECKBX2 | VARCHECKBX    | DRUGRECORDNUMBER |
+		
 	And I take a screenshot
 	And I navigate to "Architect"
 	And I select "Project" link "MCC-42701DL" in "Active Projects"
@@ -201,27 +203,27 @@ Scenario: MCC-42701-01 When delete Supplemental and Component terms and download
 	And I select Draft "Draft 001"
 	And I click the "Download" button to download
 	Then I verify "CoderConfiguration" spreadsheet data
-		| FormOID  | FieldOID    | CodingLevel    | Priority | Locale | IsApprovalRequired | IsAutoApproval |
-		| ETE1     | CODERTERM1  | LLT            | 1        | eng    | False              | True           |
-		| ETE1     | JDT         | DrugName       | 1        | jpn    | False              | True           |
-		| ETE2     | CODERFIELD2 | PRODUCTSYNONYM | 1        | eng    | False              | True           |
-		| TESTFORM | VARCHECKBX2 | ATC            | 3        | eng    | True               | True           |
-		| TESTFORM | VARCHECKBX3 | PRODUCT        | 2        | eng    | False              | False          |
+		| FormOID  | FieldOID    | CodingLevel | Priority | Locale | IsApprovalRequired | IsAutoApproval |
+		| ETE1     | CODERTERM1  | SOC         | 1        | eng    | False              | True           |
+		| ETE1     | JDT         | ATC         | 1        | eng    | False              | True           |
+		| ETE2     | CODERFIELD2 | ATC         | 1        | eng    | False              | True           |
+		| TESTFORM | VARCHECKBX2 | ATC         | 3        | eng    | True               | True           |
+		| TESTFORM | VARCHECKBX3 | PRODUCT     | 2        | eng    | False              | False          |
 	And I take a screenshot				 
 	And I verify "CoderSupplementalTerms" spreadsheet data
-		| FormOID  | FieldOID    | SupplementalTerm |
-		| TESTFORM | VARCHECKBX3 | TEST1            |
+		| FormOID | FieldOID | SupplementalTerm |
+		|         |          |                  |
 	And I take a screenshot	
-	And I verify "CoderSupplementalTerms" spreadsheet data
-		| FormOID  | FieldOID    | SupplementalTerm | ComponentName    |
-		| TESTFORM | VARCHECKBX3 | VARCHECKBX       | DRUGRECORDNUMBER |
+	And I verify "CoderComponentTerms" spreadsheet data
+		| FormOID | FieldOID | ComponentTerm | ComponentName |
+		|         |          |               |               |
 
 @Release_2013.1.0
-@MCC-42701-03
+@PBMCC-42701-03
 @SJ07.FEB.2013
 @Draft
 
-Scenario: MCC-42701-03 When downloading an architect draft template for a URL that has Coder registered, the Coder settings will be included
+Scenario: PBMCC-42701-03 When downloading an architect draft template for a URL that has Coder registered, the Coder settings will be included
 		
 	
 	When I navigate to "Architect"
@@ -240,11 +242,11 @@ Scenario: MCC-42701-03 When downloading an architect draft template for a URL th
 	And I take a screenshot 	
 
 @Release_2013.1.0
-@MCC-42701-04
+@PBMCC-42701-04
 @SJ07.FEB.2013
 @Draft
 
-Scenario: When downloading an architect spreadsheet for a URL that does not have Coder registered, the Coder settings will not be included
+Scenario: PBMCC-42701-04 When downloading an architect spreadsheet for a URL that does not have Coder registered, the Coder settings will not be included
 
 	When I navigate to "Architect"
 	And I select "Project" link "MCC-42701-001DL" in "Active Projects"
