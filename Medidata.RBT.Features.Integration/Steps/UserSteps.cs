@@ -30,7 +30,9 @@ namespace Medidata.RBT.Features.Integration.Steps
 
             Assert.IsNotNull(user);
 
-            ScenarioContext.Current.Add("user", user); // yes
+            ScenarioContext.Current.Set(user, "user");//In the database checking phase, assign the user
+                                                      //fetched from the db to the "user" context key,
+                                                      //replacing the original user object from CreateRaveUser().
         }
 
         [StepDefinition(@"the user should have Email ""(.*)""")]

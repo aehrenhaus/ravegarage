@@ -40,7 +40,7 @@ namespace Medidata.RBT.Objects.Integration.Helpers
             }
         }
 
-        public static void CreateRaveStudy(string name, string environment, int externalId)
+        public static void CreateStudy(string name, string environment, int externalId)
         {
             var project = new Project(SystemInteraction.Use())
                               {
@@ -57,7 +57,7 @@ namespace Medidata.RBT.Objects.Integration.Helpers
                                 Uuid = Guid.NewGuid().ToString()
                             };
             study.Save();
-            ScenarioContext.Current.Add("studyUuid", study.Uuid);
+            ScenarioContext.Current.Add("study", study);
         }
     }
 }

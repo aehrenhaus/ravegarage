@@ -25,8 +25,8 @@ namespace Medidata.RBT.Objects.Integration.Helpers
                 {
                     case "post":
                         config.UUID = Guid.NewGuid();
-                        config.SiteUUID = new Guid(ScenarioContext.Current.Get<String>("siteUuid"));
-                        config.StudyUUID = new Guid(ScenarioContext.Current.Get<String>("studyUuid"));
+                        config.SiteUUID = new Guid(ScenarioContext.Current.Get<Site>("site").Uuid);
+                        config.StudyUUID = new Guid(ScenarioContext.Current.Get<Study>("study").Uuid);
                         config.UserUUID = new Guid(ScenarioContext.Current.Get<String>("externalUserUUID"));
 
                         ScenarioContext.Current.Add("userStudySiteUuid", config.UUID);
@@ -34,8 +34,8 @@ namespace Medidata.RBT.Objects.Integration.Helpers
                         break;
                     case "delete":
                         config.UUID = ScenarioContext.Current.Get<Guid>("userStudySiteUuid");
-                        config.SiteUUID = new Guid(ScenarioContext.Current.Get<String>("siteUuid"));
-                        config.StudyUUID = new Guid(ScenarioContext.Current.Get<String>("studyUuid"));
+                        config.SiteUUID = new Guid(ScenarioContext.Current.Get<Site>("site").Uuid);
+                        config.StudyUUID = new Guid(ScenarioContext.Current.Get<Study>("study").Uuid);
                         config.UserUUID = new Guid(ScenarioContext.Current.Get<String>("externalUserUUID"));
                         message = Render.StringToString(UserStudySiteTemplates.USERSTUDYSITE_DELETE_TEMPLATE, new { config });
                         break;

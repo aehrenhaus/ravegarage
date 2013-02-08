@@ -14,7 +14,7 @@ namespace Medidata.RBT.Features.Integration.Steps
         [Given(@"the study with name ""(.*)"" and environment ""(.*)"" with ExternalId ""(.*)"" exists in the Rave database")]
         public void GivenTheStudyWithName____AndEnvironment____AndExternalId____ExistsInTheRaveDatabase(string name, string environment, int externalStudyId)
         {
-            StudyHelper.CreateRaveStudy(name, environment, externalStudyId);
+            StudyHelper.CreateStudy(name, environment, externalStudyId);
         }
         
         [Then(@"I should see the study in the Rave database")]

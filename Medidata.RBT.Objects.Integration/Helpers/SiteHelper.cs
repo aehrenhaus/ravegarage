@@ -19,7 +19,7 @@ namespace Medidata.RBT.Objects.Integration.Helpers
                                Uuid = Guid.NewGuid().ToString()
                            };
             site.Save();
-            ScenarioContext.Current.Add("siteUuid", site.Uuid);
+            ScenarioContext.Current.Add("site", site);
         }
     }
 }

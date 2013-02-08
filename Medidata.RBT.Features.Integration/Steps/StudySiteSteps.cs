@@ -22,10 +22,9 @@ namespace Medidata.RBT.Features.Integration.Steps
         [Then(@"I should see the studysite in the Rave database")]
         public void ThenIShouldSeeTheStudySiteInTheRaveDatabase()
         {
-            var studyUuid = ScenarioContext.Current.Get<String>("studyUuid");
+            var study = ScenarioContext.Current.Get<Study>("study");
             var siteUuid = ScenarioContext.Current.Get<String>("siteUuid");
 
-            var study = Study.FindByUuid(studyUuid, 1, SystemInteraction.Use());
             var site = Site.FindByUuid(siteUuid, 1, SystemInteraction.Use());
 
             var studySite = StudySite.FindByStudyIDandSiteID(study.ID, site.ID, SystemInteraction.Use());

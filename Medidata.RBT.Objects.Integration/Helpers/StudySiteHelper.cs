@@ -29,7 +29,7 @@ namespace Medidata.RBT.Objects.Integration.Helpers
                     case "post":
                         config.StudySiteUuid = Guid.NewGuid();
                         config.SiteUuid = Guid.NewGuid();
-                        config.StudyUuid = new Guid(ScenarioContext.Current.Get<string>("studyUuid")); // scenarios should verify that study already exists.
+                        config.StudyUuid = new Guid(ScenarioContext.Current.Get<Study>("study").Uuid); // scenarios should verify that study already exists.
                         
                         ScenarioContext.Current.Add("studySiteUuid", config.StudySiteUuid.ToString());
                         ScenarioContext.Current.Add("siteUuid", config.SiteUuid.ToString());
@@ -41,14 +41,14 @@ namespace Medidata.RBT.Objects.Integration.Helpers
                         message = Render.StringToString(StudySiteTemplates.POST_TEMPLATE, new { config });
                         break;
                     case "put":
-                        config.StudyUuid = new Guid(ScenarioContext.Current.Get<string>("studyUuid"));
+                        config.StudyUuid = new Guid(ScenarioContext.Current.Get<Study>("study").Uuid);
                         config.SiteUuid = new Guid(ScenarioContext.Current.Get<string>("siteUuid")); 
                         config.StudySiteUuid = new Guid(ScenarioContext.Current.Get<String>("studySiteUuid"));
 
                         message = Render.StringToString(StudySiteTemplates.PUT_TEMPLATE, new { config });
                         break;
                     case "delete":
-                        config.StudyUuid = new Guid(ScenarioContext.Current.Get<string>("studyUuid"));
+                        config.StudyUuid = new Guid(ScenarioContext.Current.Get<Study>("study").Uuid);
                         config.SiteUuid = new Guid(ScenarioContext.Current.Get<string>("siteUuid")); 
                         config.StudySiteUuid = new Guid(ScenarioContext.Current.Get<String>("studySiteUuid"));
 
@@ -63,10 +63,8 @@ namespace Medidata.RBT.Objects.Integration.Helpers
 
 		public static void CreateRaveStudySite(int externalId)
 		{
-		    String studyUuid = ScenarioContext.Current.Get<String>("studyUuid");
-		    Study study = Study.FindByUuid(studyUuid, 1, SystemInteraction.Use());
-            String siteUuid = ScenarioContext.Current.Get<String>("siteUuid");
-		    Site site = Site.FindByUuid(siteUuid, 1, SystemInteraction.Use());
+            Study study = ScenarioContext.Current.Get<Study>("study");
+            Site site = ScenarioContext.Current.Get<Site>("site");
             
             var studySite = new StudySite(study, site, SystemInteraction.Use())
                                 {
