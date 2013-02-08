@@ -151,6 +151,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>MCC-28550.feature</DependentUpon>
     </Compile>
+    <Compile Include="Features\EDC\SpecFlowFeature3.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SpecFlowFeature3.feature</DependentUpon>
+    </Compile>
     <Compile Include="Features\EDC\US10241_DT12797.feature.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -417,6 +422,11 @@
       <DesignTime>True</DesignTime>
     </Compile>
     <Compile Include="ReferenceFix.cs" />
+    <Compile Include="SpecFlowFeature2.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SpecFlowFeature2.feature</DependentUpon>
+    </Compile>
     <Compile Include="Steps\ArchitectSteps_DB.cs" />
     <Compile Include="Steps\ConfigurationSteps.cs" />
     <Compile Include="Steps\Seeding\CoderDictionarySteps.cs" />
@@ -534,6 +544,10 @@
     <None Include="Features\EDC\MCC-28550.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>MCC-28550.feature.cs</LastGenOutput>
+    </None>
+    <None Include="Features\EDC\SpecFlowFeature3.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>SpecFlowFeature3.feature.cs</LastGenOutput>
     </None>
     <None Include="Features\EDC\US10241_DT12797.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
@@ -757,6 +771,10 @@
     </None>
     <None Include="packages.config">
       <SubType>Designer</SubType>
+    </None>
+    <None Include="SpecFlowFeature2.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>SpecFlowFeature2.feature.cs</LastGenOutput>
     </None>
   </ItemGroup>
   <ItemGroup>
