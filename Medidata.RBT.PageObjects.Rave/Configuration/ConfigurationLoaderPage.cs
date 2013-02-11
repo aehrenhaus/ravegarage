@@ -74,6 +74,8 @@ namespace Medidata.RBT.PageObjects.Rave.Configuration
 
 		public bool VerifySomethingExist(string areaIdentifier, string type, string identifier, bool exactMatch = false)
 		{
+			areaIdentifier = areaIdentifier ?? string.Empty;
+
 			if (areaIdentifier.Equals("log", StringComparison.InvariantCultureIgnoreCase))
 			{
 				var txt = Browser.TextareaById("_ctl0_Content_LogCtl");
