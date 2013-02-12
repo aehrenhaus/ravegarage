@@ -1,5 +1,5 @@
 ﻿# Configuration Loader specification should include Coder Configuration.
-#@ignore
+
 @FT_US13011_DT13976_Upload
 Feature: US13011
 	When the Configuration Settings are Uploaded, they should include Coder Configuration details.
@@ -18,7 +18,7 @@ Feature: US13011
 #----------------------------------------------------------------------------------------------------------------------------------------
 @release_564_2012.1.0	
 @PB_US13011_DT13976_Upload_01
-@Draft
+@Validation
 Scenario: PB_US13011_DT13976_Upload_01, As a Data Manager, When merging configuration settings via Configuration Loader and upload is successful, then 'Coder Configuration' is displayed with complete icon.
 
 	And I navigate to "Configuration"
@@ -30,7 +30,7 @@ Scenario: PB_US13011_DT13976_Upload_01, As a Data Manager, When merging configur
 #----------------------------------------------------------------------------------------------------------------------------------------
 @release_564_2012.1.0	
 @PB_US13011_DT13976_Upload_02
-@Draft
+@Validation
 Scenario: PB_US13011_DT13976_Upload_02, As a Data Manager, When overwriting exisiting configuration settings via Configuration Loader and upload is successful, then 'Coder Configuration' is displayed with complete icon.
 
 	And I navigate to "Configuration"
@@ -44,7 +44,7 @@ Scenario: PB_US13011_DT13976_Upload_02, As a Data Manager, When overwriting exis
 #----------------------------------------------------------------------------------------------------------------------------------------
 @release_564_2012.1.0	
 @PB_US13011_DT13976_Upload_03
-@Draft
+@Validation
 Scenario: PB_US13011_DT13976_Upload_03, As a Data Manager, When merging configuration settings via Configuration Loader, if no Review Marking Group has been specified in the template, then the system will display a message stating that the Review Marking Group is a required field.
 
 	And I navigate to "Configuration"
@@ -56,7 +56,7 @@ Scenario: PB_US13011_DT13976_Upload_03, As a Data Manager, When merging configur
 #----------------------------------------------------------------------------------------------------------------------------------------
 @release_564_2012.1.0	
 @PB_US13011_DT13976_Upload_04
-@Draft
+@Validation
 Scenario: PB_US13011_DT13976_Upload_04, As a Data Manager, When overwriting existing configuration settings via Configuration Loader, if no Review Marking Group has been specified in the template, then the system will display a message stating that the Review Marking Group is a required field.
 
 	And I navigate to "Configuration"
@@ -70,7 +70,7 @@ Scenario: PB_US13011_DT13976_Upload_04, As a Data Manager, When overwriting exis
 #----------------------------------------------------------------------------------------------------------------------------------------	
 @release_564_2012.1.0	
 @PB_US13011_DT13976_Upload_05
-@Draft
+@Validation
 Scenario: PB_US13011_DT13976_Upload_05 As a Data Manager, When I update existing configuration settings via Configuration Loader and upload is successful, then the system will display updates in Coder Configuration page.
 
 	And I navigate to "Configuration"
@@ -84,7 +84,7 @@ Scenario: PB_US13011_DT13976_Upload_05 As a Data Manager, When I update existing
 #----------------------------------------------------------------------------------------------------------------------------------------	
 @release_564_2012.1.0	
 @PB_US13011_DT13976_Upload_06
-@Draft
+@Validation
 Scenario: PB_US13011_DT13976_Upload_06 As a Data Manager, When I update existing configuration settings via Configuration Loader and upload is successful, then the system will display updates in Coder Configuration page.
 
 	And I navigate to "Configuration"
