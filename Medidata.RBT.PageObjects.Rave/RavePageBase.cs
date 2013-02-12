@@ -7,7 +7,7 @@ using Medidata.RBT.PageObjects;
 using Medidata.RBT.PageObjects.Rave.SharedRaveObjects;
 using OpenQA.Selenium.Support.PageObjects;
 using OpenQA.Selenium;
-
+using System.Text.RegularExpressions;
 using System.Collections.Specialized;
 using TechTalk.SpecFlow;
 using Medidata.RBT.SeleniumExtension;
@@ -221,7 +221,56 @@ namespace Medidata.RBT.PageObjects.Rave
             }
         }
 
+        /// <summary>
+        /// This method can be used to modify the Url of current page followed by setting the 
+        /// new Url on Browser
+        /// </summary>
+        /// <param name="page"></param>
+        /// <param name="queryNames"></param>
+        public void ModifyUrl(string page, IEnumerable<string> queryNames)
+        {
+            string newUrl = Browser.Url;
 
+            //if new page is specified replace the existing page with the new page
+            if (!string.IsNullOrEmpty(page))
+                newUrl = Regex.Replace(newUrl, @"/{1}([^/\?""]*\.aspx)", string.Format("/{0}", page));
+
+            //if any query is specified then append this new query to the exist query string of the Url
+            if (queryNames.Count() > 0)
+            {
+                StringBuilder sb = new StringBuilder(newUrl);
+
+                foreach (string queryName in queryNames)
+                {
+                    sb.Append(string.Format("&{0}={1}", 
+                        queryName, Context.Storage[queryName]) as string);
+                }
+
+                newUrl = sb.ToString();
+            }
+
+            Browser.Url = newUrl;
+        }
+
+        /// <summary>
+        /// save the query string's field value pair from the Url based on query name specified
+        /// to the WebTestContext's Storage hashtable
+        /// </summary>
+        /// <param name="queryName"></param>
+        public void StoreQueryString(string queryName)
+        {
+            Dictionary<string, string> queryStringFieldValuePair = this.GetUrlQueryStringFieldValuePair();
+
+            KeyValuePair<string, string> fieldValuePair = queryStringFieldValuePair.FirstOrDefault((p) => p.Key.Equals(queryName));
+
+            if (!fieldValuePair.Equals(default(KeyValuePair<string, string>)))
+            {
+                Context.Storage[fieldValuePair.Key] = fieldValuePair.Value;
+            }
+            else
+                throw new InvalidOperationException(
+                    string.Format("Specified query string field name [{0}] does not in the current Url", queryName));
+        }
 
 	}
 }

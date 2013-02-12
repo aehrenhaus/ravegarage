@@ -120,7 +120,7 @@ namespace Medidata.RBT.PageObjects.Rave
             if (rows.Count == 0)
                 throw new Exception("Can't find target to see field for:" + field);
 
-            rows[0].FindImagebuttons()[1].Click();
+            rows[0].FindImagebuttonByPartialId("_ImgBtnSelect").Click();
         }
 
         private void ClickExpandForFieldEditChecks()

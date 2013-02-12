@@ -166,5 +166,11 @@ namespace Medidata.RBT
 		IWebElement GetElementByName(string identifier, string areaIdentifier= null, string listItemIdentifier = null);
 
 		IWebElement TryGetElementByName(string identifier, string areaIdentifier = null, string listItemIdentifier = null);
+
+        /// <summary>
+        /// This method can be used to retrieve the current Url's query string as a dictionary with key as field and value as value
+        /// </summary>
+        /// <returns></returns>
+        Dictionary<string, string> GetUrlQueryStringFieldValuePair();
 	}
 }

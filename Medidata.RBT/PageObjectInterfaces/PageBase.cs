@@ -423,6 +423,36 @@ namespace Medidata.RBT
 			return Browser.SwitchTo().ActiveElement();
 		}
 
+        /// <summary>
+        /// Get a string based key value pair dictionary that has Url querystring's field as key and 
+        /// value as value
+        /// </summary>
+        /// <returns></returns>
+        public virtual Dictionary<string, string> GetUrlQueryStringFieldValuePair()
+        {
+            Dictionary<string, string> queryStringFieldValuePair = null;
+            Uri pageUri = new Uri(Browser.Url);
 
+            string queryString = pageUri.Query;
+
+            if (!string.IsNullOrEmpty(queryString) && queryString.StartsWith("?"))
+            {
+                queryStringFieldValuePair = new Dictionary<string, string>();
+                queryString = queryString.TrimStart('?');
+                string[] queries = queryString.Split('&');
+
+                foreach (string query in queries)
+                {
+                    string[] fieldValuePair = query.Split('=');
+
+                    if (fieldValuePair.Length == 2)
+                        queryStringFieldValuePair.Add(fieldValuePair[0], fieldValuePair[1]);
+                    else
+                        throw new Exception("The field value pair for the query string in not in the expected format <field>=<Value>.");       
+                }
+            }
+
+            return queryStringFieldValuePair;
+        }
 	}
 }

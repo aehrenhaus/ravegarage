@@ -214,6 +214,7 @@
     <Compile Include="TableModels\CoderLocaleTable.cs" />
     <Compile Include="TableModels\CoderTermModel.cs" />
     <Compile Include="TableModels\CoderWorkflowVariableModel.cs" />
+    <Compile Include="TableModels\GenericDataModel.cs" />
     <Compile Include="TableModels\ReportMatrixAssignmentModel.cs" />
     <Compile Include="TableModels\LabUnitDictionaryModel.cs" />
     <Compile Include="TableModels\AnalyteModel.cs" />

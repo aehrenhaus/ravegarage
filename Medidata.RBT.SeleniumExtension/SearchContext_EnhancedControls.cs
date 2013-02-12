@@ -468,7 +468,17 @@ namespace Medidata.RBT.SeleniumExtension
             return context.FindElements(By.XPath(".//input[@type='image']")).CastReadOnlyCollection<EnhancedElement>();
 		}
 
-
+        /// <summary>
+        /// Returns imagebutton as EnhancedElement based on partial ID
+        /// </summary>
+        /// <param name="context"></param>
+        /// <param name="partialID"></param>
+        /// <returns></returns>
+        public static EnhancedElement FindImagebuttonByPartialId(this ISearchContext context, string partialID)
+        {
+            return context.TryFindElementBy(By.XPath(
+                string.Format(".//input[@type='image' and contains(@id, '{0}')]", partialID))).EnhanceAs<EnhancedElement>();
+        }
 		
 
         /// <summary>
