@@ -52,6 +52,7 @@
     <Compile Include="Configuration\Models\StudySiteMessageModel.cs" />
     <Compile Include="Configuration\Models\UserMessageModel.cs" />
     <Compile Include="Configuration\Models\UserStudySiteMessageModel.cs" />
+    <Compile Include="Configuration\ResourceNames.cs" />
     <Compile Include="Configuration\Templates\SiteTemplates.cs" />
     <Compile Include="Configuration\Templates\StudySiteTemplates.cs" />
     <Compile Include="Configuration\Templates\StudyTemplates.cs" />

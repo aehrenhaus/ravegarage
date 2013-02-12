@@ -2,6 +2,7 @@
 using System.Linq;
 using Medidata.AmazonSimpleServices;
 using Medidata.Core.Objects;
+using Medidata.RBT.Objects.Integration.Configuration;
 using Medidata.RBT.Objects.Integration.Configuration.Models;
 using Medidata.RBT.Objects.Integration.Configuration.Templates;
 using Nustache.Core;
@@ -12,7 +13,7 @@ namespace Medidata.RBT.Objects.Integration.Helpers
 {
     public static class UserHelper
     {
-        public static void MessageHandler(Table table, SimpleQueueWrapper sqsWrapper, string url)
+        public static void MessageHandler(Table table)
         {
             var messageConfigs = table.CreateSet<UserMessageModel>().ToList();
             foreach (var config in messageConfigs)
@@ -25,7 +26,7 @@ namespace Medidata.RBT.Objects.Integration.Helpers
                 message = Render.StringToString(UserTemplates.USER_PUT_TEMPLATE, new {config});
 
                 if (!string.IsNullOrWhiteSpace(message))
-                    sqsWrapper.SendMessage(url, message);
+                    IntegrationTestContext.SqsWrapper.SendMessage(IntegrationTestContext.SqsQueueUrl, message);
             }
         }
 

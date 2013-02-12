@@ -14,20 +14,20 @@ namespace Medidata.RBT.Features.Integration.Steps
         {
             switch(resourceName.ToLowerInvariant())
             {
-                case "study":
-                    StudyHelper.StudyMessageHandler(table, IntegrationTestContext.SqsWrapper, IntegrationTestContext.SqsQueueUrl);
+                case ResourceNames.STUDY:
+                    StudyHelper.StudyMessageHandler(table);
                     break;
-                case "user":
-                    UserHelper.MessageHandler(table, IntegrationTestContext.SqsWrapper, IntegrationTestContext.SqsQueueUrl);
+                case ResourceNames.USER:
+                    UserHelper.MessageHandler(table);
                     break;
-                case "userstudysite":
-                    UserStudySiteHelper.MessageHandler(table, IntegrationTestContext.SqsWrapper, IntegrationTestContext.SqsQueueUrl);
+                case ResourceNames.USER_STUDY_SITE:
+                    UserStudySiteHelper.MessageHandler(table);
                     break;
-                case "studysite":
-                    StudySiteHelper.MessageHandler(table, IntegrationTestContext.SqsWrapper, IntegrationTestContext.SqsQueueUrl);
+                case ResourceNames.STUDY_SITE:
+                    StudySiteHelper.MessageHandler(table);
                     break;
-                case "site":
-                    SiteHelper.MessageHandler(table, IntegrationTestContext.SqsWrapper, IntegrationTestContext.SqsQueueUrl);
+                case ResourceNames.SITE:
+                    SiteHelper.MessageHandler(table);
                     break;
             }
         }
