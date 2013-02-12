@@ -2,6 +2,7 @@
 using System.Linq;
 using Medidata.AmazonSimpleServices;
 using Medidata.Core.Objects;
+using Medidata.RBT.Objects.Integration.Configuration;
 using Medidata.RBT.Objects.Integration.Configuration.Models;
 using Medidata.RBT.Objects.Integration.Configuration.Templates;
 using Nustache.Core;
@@ -12,7 +13,7 @@ namespace Medidata.RBT.Objects.Integration.Helpers
 {
     public static class StudyHelper
     {
-        public static void StudyMessageHandler(Table table, SimpleQueueWrapper sqsWrapper, string url)
+        public static void StudyMessageHandler(Table table)
         {
             var messageConfigs = table.CreateSet<StudyMessageModel>().ToList();
             foreach (var config in messageConfigs)
@@ -36,7 +37,7 @@ namespace Medidata.RBT.Objects.Integration.Helpers
                 }
 
                 if (!string.IsNullOrWhiteSpace(message))
-                    sqsWrapper.SendMessage(url, message);
+                    IntegrationTestContext.SqsWrapper.SendMessage(IntegrationTestContext.SqsQueueUrl, message);
             }
         }
 
