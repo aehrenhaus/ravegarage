@@ -29,6 +29,15 @@ namespace Medidata.RBT.Features.Integration.Steps
             ScenarioContext.Current.Add("site", site);
         }
 
+        [Then(@"the site should have Address1 ""(.*)""")]
+        public void ThenTheSiteShouldHaveAddress1(string address1)
+        {
+            var site = ScenarioContext.Current.Get<Site>("site");
+
+            Assert.AreEqual(address1, site.AddressLine1);
+        }
+
+
         [Then(@"the site should have the ExternalId ""(.*)""")]
         public void ThenTheSiteShouldHaveTheExternalId(int externalId)
         {
@@ -59,6 +68,47 @@ namespace Medidata.RBT.Features.Integration.Steps
             var site = ScenarioContext.Current.Get<Site>("site");
 
             Assert.AreEqual(lastExternalUpdateDate, site.LastExternalUpdateDate);
+        }
+
+        [Then(@"the site should have City ""(.*)""")]
+        public void ThenTheSiteShouldHaveCity(string city)
+        {
+            var site = ScenarioContext.Current.Get<Site>("site");
+
+            Assert.AreEqual(city, site.City);
+        }
+
+        [Then(@"the site should have State ""(.*)""")]
+        public void ThenTheSiteShouldHaveState(string state)
+        {
+            var site = ScenarioContext.Current.Get<Site>("site");
+
+            Assert.AreEqual(state, site.State);
+        }
+
+        [Then(@"the site should have PostalCode ""(.*)""")]
+        public void ThenTheSiteShouldHavePostalCode(string postalCode)
+        {
+            var site = ScenarioContext.Current.Get<Site>("site");
+
+            Assert.AreEqual(postalCode, site.PostalCode);
+        }
+
+
+        [Then(@"the site should have Country ""(.*)""")]
+        public void ThenTheSiteShouldHaveCountry(string country)
+        {
+            var site = ScenarioContext.Current.Get<Site>("site");
+
+            Assert.AreEqual(country, site.Country);
+        }
+
+        [Then(@"the site should have Telephone ""(.*)""")]
+        public void ThenTheSiteShouldHaveTelephone(string telephone)
+        {
+            var site = ScenarioContext.Current.Get<Site>("site");
+
+            Assert.AreEqual(telephone, site.Telephone);
         }
 
     }

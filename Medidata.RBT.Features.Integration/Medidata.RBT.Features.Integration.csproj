@@ -46,6 +46,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Features\Sites.feature.cs">
+      <DependentUpon>Sites.feature</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Include="Features\Studies.feature.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -83,6 +88,10 @@
     <None Include="connections.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <SubType>Designer</SubType>
+    </None>
+    <None Include="Features\Sites.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>Sites.feature.cs</LastGenOutput>
     </None>
     <None Include="Features\Studies.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
