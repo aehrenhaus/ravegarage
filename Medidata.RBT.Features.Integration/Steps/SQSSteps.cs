@@ -21,11 +21,13 @@ namespace Medidata.RBT.Features.Integration.Steps
                     UserHelper.MessageHandler(table, IntegrationTestContext.SqsWrapper, IntegrationTestContext.SqsQueueUrl);
                     break;
                 case "userstudysite":
-                    UserStudySiteHelper.MessageHandler(table, IntegrationTestContext.SqsWrapper,
-                                                           IntegrationTestContext.SqsQueueUrl);
+                    UserStudySiteHelper.MessageHandler(table, IntegrationTestContext.SqsWrapper, IntegrationTestContext.SqsQueueUrl);
                     break;
                 case "studysite":
                     StudySiteHelper.MessageHandler(table, IntegrationTestContext.SqsWrapper, IntegrationTestContext.SqsQueueUrl);
+                    break;
+                case "site":
+                    SiteHelper.MessageHandler(table, IntegrationTestContext.SqsWrapper, IntegrationTestContext.SqsQueueUrl);
                     break;
             }
         }
