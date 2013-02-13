@@ -102,11 +102,11 @@
       <DependentUpon>US18531_AM2_DT13626.feature</DependentUpon>
     </Compile>
     <Compile Include="Features\Architect\MCC-42701DL.feature.cs">
-    <Compile Include="Features\Architect\MCC-42707.feature.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>MCC-42701DL.feature</DependentUpon>
     </Compile>
+    <Compile Include="Features\Architect\MCC-42707.feature.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>MCC-42707.feature</DependentUpon>
