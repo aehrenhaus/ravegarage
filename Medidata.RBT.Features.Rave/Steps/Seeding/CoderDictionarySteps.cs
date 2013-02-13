@@ -18,8 +18,21 @@ namespace Medidata.RBT.Features.Rave.Steps.Seeding
 	public class CoderDictionarySteps
 	{
 		/// <summary>
+		/// Creates a new ClassicCodingDictionary by executing raw sql query 
+		/// to insert a record in the CodingDictionaries table.
+		/// </summary>
+		/// <param name="codingDictionary">DictionaryName</param>
+		/// <param name="dictionaryVersion">DictionaryVersion</param>
+		[StepDefinition(@"classic coding dictionary ""([^""]*)"" version ""([^""]*)"" exists")]
+		public void GivenClassicCodingDictionary____Version____Exists(string codingDictionary, string dictionaryVersion)
+		{
+			var cd = SeedingContext.GetExistingFeatureObjectOrMakeNew(codingDictionary,
+				() => new ClassicCodingDictionary(codingDictionary, dictionaryVersion));
+		}
+
+		/// <summary>
 		/// Creates a new CodingDictionary by executing raw sql query to 
-		/// insert a record in the CodingDictionaries table
+		/// insert a record in the CodingDictionaries table.
 		/// </summary>
 		/// <param name="codingDictionary">DictionaryName</param>
 		/// <param name="dictionaryVersion">DictionaryVersion</param>
