@@ -160,6 +160,8 @@
     <Compile Include="ReportAdmin\ReportAssignmentPage.cs" />
     <Compile Include="Reports\CrystalReportPageBase.cs" />
     <Compile Include="SharedRaveObjects\Analyte.cs" />
+    <Compile Include="SharedRaveObjects\BaseCodingDictionary.cs" />
+    <Compile Include="SharedRaveObjects\ClassicCodingDictionary.cs" />
     <Compile Include="SharedRaveObjects\CoderDictLevelComponent.cs" />
     <Compile Include="SharedRaveObjects\CoderWorkFlow.cs" />
     <Compile Include="SharedRaveObjects\CoderWorkFlowData.cs" />
