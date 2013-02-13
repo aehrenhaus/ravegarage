@@ -1,5 +1,5 @@
 ﻿@FT_MCC-46558
-@ignore
+
 
 Feature: MCC-46558 Rave Architect Coder Configuration Security Issue
 
@@ -75,8 +75,8 @@ Given coding dictionary "AZDD" version "Coder" exists with following coding colu
 
 @Release_2013.1.0
 @PB_MCC-46558_01
-@SJ12.FEB.2013
-@Draft
+@SJ13.FEB.2013
+@Validation
 
 Scenario: PB_MCC-46558_01 Projects that are not registered in Coder can modify Coder Registered Studies by manipulation the URL on Coder Configuration page.
 
@@ -111,8 +111,8 @@ Scenario: PB_MCC-46558_01 Projects that are not registered in Coder can modify C
 
 @Release_2013.1.0
 @PB_MCC-46558_02
-@SJ12.FEB.2013
-@Draft
+@SJ13.FEB.2013
+@Validation
 
 Scenario: PB_MCC-46558_02 Project with Read Only Architect Security Role permission can edit Coder Configuration page.
 
@@ -149,8 +149,8 @@ Scenario: PB_MCC-46558_02 Project with Read Only Architect Security Role permiss
 
 @Release_2013.1.0
 @PB_MCC-46558_03
-@SJ12.FEB.2013
-@Draft
+@SJ13.FEB.2013
+@Validation
 
 Scenario: PB_MCC-46558_03 Coder Configuration page can be accessed from CRF Versions and can be modified.
 
