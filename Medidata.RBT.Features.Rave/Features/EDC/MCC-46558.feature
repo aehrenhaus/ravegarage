@@ -61,15 +61,14 @@ Given coding dictionary "AZDD" version "Coder" exists with following coding colu
 
 	Given study "MCC-465581" is assigned to Site "Site 1"
 	Given study "MCC-465582" is assigned to Site "Site 1"
-
 	Given xml draft "MCC-465581.xml" is Uploaded
 	Given xml draft "MCC-465582.xml" is Uploaded
 
 	Given following Project assignments exist
-	| User         | Project    | Environment | Role           | Site   | SecurityRole          |
-	| SUPER USER 1 | MCC-465581 | Live: Prod  | SUPER ROLE 1   | Site 1 | Project Admin Default |
-	| SUPER USER 1 | MCC-465582 | Live: Prod  | SUPER ROLE 1   | Site 1 | Project Admin Default |
-	| SUPER USER 2 | MCC-465581 | Live: Prod  | MCC-46558 Role | Site 1 | Project Admin Default |
+	| User         | Project    | Environment | Role           | Site   | SecurityRole            |
+	| SUPER USER 1 | MCC-465581 | Live: Prod  | SUPER ROLE 1   | Site 1 | Project Admin Default   |
+	| SUPER USER 1 | MCC-465582 | Live: Prod  | SUPER ROLE 1   | Site 1 | Project Admin Default   |
+	| SUPER USER 2 | MCC-465581 | Live: Prod  | MCC-46558 Role | Site 1 | MCC-46558 Security Role |
 		
 	
 
@@ -89,6 +88,8 @@ Scenario: PB_MCC-46558_01 Projects that are not registered in Coder can modify C
 	And I navigate to "Forms"
 	And I select Fields for Form "MCC42707"
 	And I edit Field "varcheckbx3"
+	And I choose "CODER- AZDD" from "Coding Dictionary:"
+	And I select link "Save"
 	And I click button "Coder Configuration"
 	And I copy the following fields from query string in current url
 		| Data               |
@@ -99,8 +100,7 @@ Scenario: PB_MCC-46558_01 Projects that are not registered in Coder can modify C
 	And I select Draft "Draft 1"
 	And I navigate to "Forms"
 	And I select Fields for Form "MCC42707"
-	And I edit Field "varcheckbx3"
-	And I choose "CODER- AZDD" from "Coding Dictionary:"
+	And I take a screenshot
 	And I replace current page with "CoderConfigPage.aspx" and append following copied fields to query string
 		| Data               |
 		| FieldID            |
@@ -124,6 +124,8 @@ Scenario: PB_MCC-46558_02 Project with Read Only Architect Security Role permiss
 	And I navigate to "Forms"
 	And I select Fields for Form "MCC42707"
 	And I edit Field "varcheckbx2"
+	And I choose "CODER- AZDD" from "Coding Dictionary:"
+	And I select link "Save"
 	And I click button "Coder Configuration"
 	And I copy the following fields from query string in current url
 		| Data               |
@@ -135,7 +137,7 @@ Scenario: PB_MCC-46558_02 Project with Read Only Architect Security Role permiss
 	And I select Draft "Draft 1"
 	And I navigate to "Forms"
 	And I select Fields for Form "MCC42707"
-	And I choose "CODER- AZDD" from "Coding Dictionary:"
+	And I take a screenshot
 	And I replace current page with "CoderConfigPage.aspx" and append following copied fields to query string
 		| Data               |
 		| FieldID            |
@@ -160,16 +162,20 @@ Scenario: PB_MCC-46558_03 Coder Configuration page can be accessed from CRF Vers
 	And I navigate to "Forms"
 	And I select Fields for Form "MCC42707"
 	And I edit Field "varcheckbx"
+	And I choose "CODER- AZDD" from "Coding Dictionary:"
+	And I select link "Save"
 	And I click button "Coder Configuration"
 	And I copy the following fields from query string in current url
 		| Data               |
 		| FieldID            |
 		| CodingDictionaryID |
-	And I select Draft "Draft 1"
-	And I publish and push eCRF "Draft 1" to "Version 1" with study environment "Prod"
 	And I navigate to "Architect"
-	And I select "Project" link "MCC-465581" in "Active Projects" 
-	And I select Version "Version 1"
+	And I select "Project" link "MCC-465581" in "Active Projects"
+	And I select Draft "Draft 1"
+	And I publish CRF Version "Version 1"
+	And I navigate to "Architect"
+	And I select "Project" link "MCC-465581" in "Active Projects"
+	And I select CRF version "Version 1"
 	And I navigate to "Forms"
 	And I select Fields for Form "MCC42707"
 	And I edit Field "varcheckbx"
@@ -182,20 +188,5 @@ Scenario: PB_MCC-46558_03 Coder Configuration page can be accessed from CRF Vers
 	And I take a screenshot
 	
 
-@Release_2013.1.0
-@PB_MCC-46558_04
-@SJ12.FEB.2013
-@Draft
-Scenario: PB_MCC-46558_04 Coder Configuration page can be accessed on a URL, where Coder is not enabled.
 
-
-	Given I login to Rave with user "SUPER USER 1"
-	And I navigate to "Configuration"	
-	And I navigate to "Other Settings"
-	And I replace current page with "CoderConfigPage.aspx" and append following copied fields to query string
-		| Data               |
-		| FieldID            |
-		| CodingDictionaryID |
-	Then I verify text "Your request could not be completed." exists
-	And I take a screenshot
 	
