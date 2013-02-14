@@ -232,7 +232,7 @@ namespace Medidata.RBT.PageObjects.Rave
             string newUrl = Browser.Url;
 
             //if new page is specified replace the existing page with the new page
-            if (!string.IsNullOrEmpty(page))
+            if (!string.IsNullOrWhiteSpace(page))
                 newUrl = Regex.Replace(newUrl, @"/{1}([^/\?""]*\.aspx)", string.Format("/{0}", page));
 
             //if any query is specified then append this new query to the exist query string of the Url
@@ -242,8 +242,11 @@ namespace Medidata.RBT.PageObjects.Rave
 
                 foreach (string queryName in queryNames)
                 {
-                    sb.Append(string.Format("&{0}={1}", 
-                        queryName, Context.Storage[queryName]) as string);
+                    if (!string.IsNullOrWhiteSpace(queryName))
+                    {
+                        sb.Append(string.Format("&{0}={1}", 
+                            queryName, Context.Storage[queryName]) as string);
+                    }
                 }
 
                 newUrl = sb.ToString();
