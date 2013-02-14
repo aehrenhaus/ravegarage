@@ -1,5 +1,5 @@
 ﻿@FT_MCC-42701UL
-
+@ignore
 
 Feature: MCC_42701UL Architect download will contain Coder settings and Architect upload will save Coder settings
 
@@ -7,6 +7,7 @@ Background:
 
     Given role "SUPER ROLE 1" exists
     Given study "MCC-42701-001" exists
+	Given classic coding dictionary "WhoDrugClassic" version "20044" exists
 	Given coding dictionary "AZDD" version "Coder" exists with following coding columns
 	| Coding Column Name |
 	| PRODUCT            |
@@ -63,8 +64,8 @@ Background:
 
 @Release_2013.1.0
 @PBMCC-42701-001
-@SJ07.FEB.2013
-@Validation
+@SJ14.FEB.2013
+@Draft
 
 Scenario: PBMCC-42701-001 When uploading an architect spreadsheet that contains Coder settings and the URL has Coder registered, the Coder settings will be saved and the upload will be successfull
 	
@@ -94,8 +95,8 @@ Scenario: PBMCC-42701-001 When uploading an architect spreadsheet that contains 
 
 @Release_2013.1.0
 @PBMCC-42701-002
-@SJ07.FEB.2013
-@Validation
+@SJ14.FEB.2013
+@Draft
 Scenario: PBMCC-42701-002 When uploading an architect spreadsheet that does not contain Coder settings including coder in field level and the URL has Coder registered, the upload will be successfull
 	
 
@@ -115,8 +116,8 @@ Scenario: PBMCC-42701-002 When uploading an architect spreadsheet that does not 
 
 @Release_2013.1.0
 @PBMCC-42701-003
-@SJ07.FEB.2013
-@Validation
+@SJ14.FEB.2013
+@Draft
 Scenario: PBMCC-42701-003 When uploading an architect spreadsheet that contain same Field OID and same name for Supplemental Terms and Component Terms and the URL has Coder registered, the upload will fail and user will be provided with appropriate message
 
  	When xml draft "MCC-42701-003.xml" is Uploaded without redirecting
@@ -127,8 +128,8 @@ Scenario: PBMCC-42701-003 When uploading an architect spreadsheet that contain s
 
 @Release_2013.1.0
 @PBMCC-42701-004
-@SJ07.FEB.2013
-@Validation
+@SJ14.FEB.2013
+@Draft
 Scenario: PBMCC-42701-004 When uploading an architect spreadsheet that contain name and component name for Component Terms and the URL has Coder registered, the upload will be successfull
 
 	
@@ -157,8 +158,8 @@ Scenario: PBMCC-42701-004 When uploading an architect spreadsheet that contain n
 
 @Release_2013.1.0
 @PBMCC-42701-005
-@SJ07.FEB.2013
-@Validation
+@SJ14.FEB.2013
+@Draft
 Scenario: PBMCC-42701-005 When uploading an architect spreadsheet that contain name and no component name in Component Terms and the URL has Coder registered, the upload will fail and user will be provided with appropriate message
 	
 
@@ -171,8 +172,8 @@ Scenario: PBMCC-42701-005 When uploading an architect spreadsheet that contain n
 
 @Release_2013.1.0
 @PBMCC-42701-006
-@SJ07.FEB.2013
-@Validation
+@SJ14.FEB.2013
+@Draft
 Scenario: PBMCC-42701-006 When uploading an architect spreadsheet after updating coding level in coder configuration and the URL has Coder registered, upload will be successfull and updated coding level will show on Coder configuration page with the intial coding level.
 
 	
@@ -214,8 +215,8 @@ Scenario: PBMCC-42701-006 When uploading an architect spreadsheet after updating
 
 @Release_2013.1.0
 @PBMCC-42701-007
-@SJ07.FEB.2013
-@Validation
+@SJ14.FEB.2013
+@Draft
 Scenario: PBMCC-42701-007 When uploading an architect spreadsheet that assigned coder dictionary to a field and have no Coder settings for the URL which Coder registered, the upload will fail and user will be provided with appropriate message
 	
 	
@@ -227,8 +228,8 @@ Scenario: PBMCC-42701-007 When uploading an architect spreadsheet that assigned 
 
 @Release_2013.1.0
 @PBMCC-42701-008
-@SJ07.FEB.2013
-@Validation
+@SJ14.FEB.2013
+@Draft
 Scenario: PBMCC-42701-008 When uploading an architect spreadsheet that assigned coder dictionary to a field and does not contain Coder settings for CoderConfiguration tab and have Coder settings for the URL which Coder is registered, the upload will fail and user will be provided with appropriate message
 
 
@@ -242,8 +243,8 @@ Scenario: PBMCC-42701-008 When uploading an architect spreadsheet that assigned 
 
 @Release_2013.1.0
 @PBMCC-42701-009
-@SJ07.FEB.2013
-@Validation
+@SJ14.FEB.2013
+@Draft
 Scenario: PBMCC-42701-009 When uploading an architect spreadsheet which contains same field name for SupplementalTerms and ComponentTerms and the URL has Coder registered, the upload will fail and user will be provided with appropriate message
 
 	
@@ -278,8 +279,8 @@ Scenario: PBMCC-42701-009 When uploading an architect spreadsheet which contains
 
 @Release_2013.1.0
 @PBMCC-42701-010
-@SJ07.FEB.2013
-@Validation
+@SJ14.FEB.2013
+@Draft
 Scenario: PBMCC-42701-010 When uploading an architect spreadsheet by changing Coding Level and the URL has Coder registered, the upload will fail and user will be provided with appropriate message
 
 
@@ -314,8 +315,8 @@ Scenario: PBMCC-42701-010 When uploading an architect spreadsheet by changing Co
 
 @Release_2013.1.0
 @PBMCC-42701-011
-@SJ07.FEB.2013
-@Validation
+@SJ14.FEB.2013
+@Draft
 	Scenario: PBMCC-42701-011 When uploading an architect spreadsheet where a field does not have VarOID and assigned to coding dictionary and the URL has Coder registered, the upload will fail and user will be provided with appropriate message
 
 
@@ -328,8 +329,8 @@ Scenario: PBMCC-42701-010 When uploading an architect spreadsheet by changing Co
 
 @Release_2013.1.0
 @PBMCC-42701-012
-@SJ07.FEB.2013
-@Validation
+@SJ14.FEB.2013
+@Draft
 	Scenario: PBMCC-42701-012 When uploading an architect spreadsheet where a field does not have VarOID,format and field is not assign to coding dictionary and the URL has Coder registered, the upload will fail and user will be provided with appropriate message
 
 
@@ -343,8 +344,8 @@ Scenario: PBMCC-42701-010 When uploading an architect spreadsheet by changing Co
 
 @Release_2013.1.0
 @PBMCC-42701-013
-@SJ07.FEB.2013
-@Validation
+@SJ14.FEB.2013
+@Draft
 
 Scenario: PBMCC-42701-013 When uploading an architect spreadsheet that contains local jpn, the upload upload will be successfull and coder page will show local as jpn.
 
@@ -371,8 +372,8 @@ Scenario: PBMCC-42701-013 When uploading an architect spreadsheet that contains 
 
 @Release_2013.1.0
 @PBMCC-42701-014
-@SJ07.FEB.2013
-@Validation
+@SJ14.FEB.2013
+@Draft
 
 Scenario: PBMCC-42701-014 When uploading an architect spreadsheet that does not contain a local, the upload upload will be successfull and coder page will show local as eng.
 
@@ -400,8 +401,8 @@ Scenario: PBMCC-42701-014 When uploading an architect spreadsheet that does not 
 
 @Release_2013.1.0
 @PBMCC-42701-015
-@SJ07.FEB.2013
-@Validation
+@SJ14.FEB.2013
+@Draft
 Scenario: PBMCC-42701-015 When uploading an architect spreadsheet that does not contain tabs for CoderConfiguration, CoderSupplementalTerms and CoderComponentTerms, the upload will be successfull and will not have any coder settings.
 
 	When xml draft "MCC-42701-015.xml" is Uploaded without redirecting
@@ -418,8 +419,8 @@ Scenario: PBMCC-42701-015 When uploading an architect spreadsheet that does not 
 
 @Release_2013.1.0
 @PBMCC-42701-016
-@SJ07.FEB.2013
-@Validation
+@SJ14.FEB.2013
+@Draft
 Scenario: PBMCC-42701-016 When uploading an architect spreadsheet that contains Coder settings and the URL does not have Coder registered, the upload will fail and user will be provided with appropriate message
 
 	
@@ -438,4 +439,73 @@ Scenario: PBMCC-42701-016 When uploading an architect spreadsheet that contains 
 	And I verify text "Field OID 'VARCHECKBX3' is invalid." exists
 	And I take a screenshot
 
+@Release_2013.1.0
+@PBMCC-42701-017
+@SJ14.FEB.2013
+@Draft
 
+Scenario: PBMCC-42701-017 When uploading an architect spreadsheet that contains classic Coder settings, coder configuration tabs do not exist and the URL has Coder registered, the upload will be successfull and  Coder configuration button will not exists
+
+	When xml draft "MCC-42701-017.xml" is Uploaded
+	And I verify text "Save successful" exists
+	And I take a screenshot
+	And I navigate to "Architect"
+	And I select "Project" link "Classic Coding Dictionary 1" in "Active Projects"
+	And I select Draft "Draft 1" 
+	And I navigate to "Forms"
+	And I select Fields for Form "Form1"
+	And I edit Field "FIELD1A"
+	And I choose "Rave- WhoDrugClassic" from "Coding Dictionary:"
+	And I select link "Save"
+	And I verify button "Coder Configuration" is not visible
+	And I take a screenshot
+
+
+@Release_2013.1.0
+@PBMCC-42701-018
+@SJ14.FEB.2013
+@Draft
+
+Scenario: PBMCC-42701-018 When uploading an architect spreadsheet that contains classic Coder settings without correct version and the URL has Coder registered, the upload will fail and user will be provided with appropriate message
+
+	When xml draft "MCC-42701-018.xml" is Uploaded without redirecting
+	Then I verify text "Transaction rolled back." exists
+	And I verify text "Error while reading row 5. Field OID 'FIELD1A' in form OID 'FORM1' : Coding dictionary 'WhoDrug (20)' not found in the target database." exists
+	And I take a screenshot
+
+
+@Release_2013.1.0
+@PBMCC-42701-019
+@SJ14.FEB.2013
+@Draft
+
+Scenario: PBMCC-42701-019 When uploading an architect spreadsheet that contains classic Coder settings, no coder configuration settings and the URL has Coder registered, the upload will be successfull and  Coder configuration button will not exists
+
+	When xml draft "MCC-42701-019.xml" is Uploaded
+	And I verify text "Save successful" exists
+	And I take a screenshot
+	And I navigate to "Architect"
+	And I select "Project" link "Classic Coding Dictionary 3" in "Active Projects"
+	And I select Draft "Draft 1" 
+	And I navigate to "Forms"
+	And I select Fields for Form "Form1"
+	And I edit Field "FIELD1A"
+	And I choose "Rave- WhoDrugClassic" from "Coding Dictionary:"
+	And I select link "Save"
+	And I verify button "Coder Configuration" is not visible
+	And I take a screenshot
+
+
+@Release_2013.1.0
+@PBMCC-42701-020
+@SJ14.FEB.2013
+@Draft
+
+Scenario: PBMCC-42701-020 When uploading an architect spreadsheet that contains classic Coder settings, Coder configuration settings exist and the URL has Coder registered, the upload will fail and user will be provided with appropriate message
+
+	When xml draft "MCC-42701-020.xml" is Uploaded without redirecting
+	Then I verify text "Transaction rolled back." exists
+	And I verify text "Error while reading row 5. Field OID 'FIELD1A' in form OID 'FORM1' : Coding dictionary 'WhoDrugClassic (20044)' not found in the target database." exists
+	And I verify text "Error while reading row 6. Field OID 'FIELD2A' in form OID 'FORM1' : Coding dictionary 'WHODRUGB2 (Coder)' is not registered for this project." exists
+	And I verify text "Field OID 'FIELD2A' is invalid." exists
+	And I take a screenshot
