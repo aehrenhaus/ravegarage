@@ -200,6 +200,15 @@ namespace Medidata.RBT.PageObjects.Rave
                         () => { throw new Exception(string.Format("Coding Dictionary [{0}] not found", codingDictionaryName)); }).UniqueName;
                     text = string.Format("CODER- {0}", codingDictionaryName);
                 }
+                else if (identifier.Equals("Coding Dictionary:", StringComparison.InvariantCultureIgnoreCase) &&
+                    text.StartsWith("Rave- ", StringComparison.InvariantCultureIgnoreCase))
+                {
+                    string codingDictionaryName = text.Replace("Rave- ", "");
+                    codingDictionaryName = SeedingContext.GetExistingFeatureObjectOrMakeNew<ClassicCodingDictionary>(codingDictionaryName,
+                        () => { throw new Exception(string.Format("Classic Coding Dictionary [{0}] not found", codingDictionaryName)); }).UniqueName;
+                    text = string.Format("Rave- {0}", codingDictionaryName);
+                }
+
                 dropDownElem.EnhanceAs<Dropdown>().SelectByText(text);
                 return GetPageByCurrentUrlIfNoAlert();
             }
