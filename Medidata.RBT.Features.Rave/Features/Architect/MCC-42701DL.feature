@@ -58,6 +58,7 @@ Background:
     Given study "MCC-42701DL" is assigned to Site "Site 1"
 	Given study "MCC-42701-001DL" is assigned to Site "Site 1"
 	Given xml draft "MCC-42701DL.xml" is Uploaded
+	Given xml draft "MCC-42701DL_2.xml" is Uploaded
 	Given xml draft "MCC-42701-001DL.xml" is Uploaded
     Given following Project assignments exist
 	| User         | Project         | Environment | Role         | Site   | SecurityRole          |
@@ -129,7 +130,7 @@ Scenario: PBMCC-42701-02 When delete Supplemental and Component terms and downlo
 	
 	And I navigate to "Architect"
 	And I select "Project" link "MCC-42701DL" in "Active Projects"
-	And I select Draft "Draft 001"
+	And I select Draft "Draft 002"
 	And I navigate to "Forms"
 	And I select Fields for Form "MCC42701-001"
 	And I edit Field "varcheckbx2"
@@ -154,7 +155,7 @@ Scenario: PBMCC-42701-02 When delete Supplemental and Component terms and downlo
 	And I navigate to "Home"
 	And I navigate to "Architect"
 	And I select "Project" link "MCC-42701DL" in "Active Projects"
-	And I select Draft "Draft 001"
+	And I select Draft "Draft 002"
 	And I click the "Download" button to download
 	Then I verify "CoderConfiguration" spreadsheet data
 		| FormOID  | FieldOID    | CodingLevel | Priority | Locale | IsApprovalRequired | IsAutoApproval |
@@ -176,7 +177,7 @@ Scenario: PBMCC-42701-02 When delete Supplemental and Component terms and downlo
 	And I take a screenshot
 	And I navigate to "Architect"
 	And I select "Project" link "MCC-42701DL" in "Active Projects"
-	And I select Draft "Draft 001"
+	And I select Draft "Draft 002"
 	And I navigate to "Forms"
 	And I select Fields for Form "MCC42701-001"
 	And I edit Field "varcheckbx2"
@@ -200,7 +201,7 @@ Scenario: PBMCC-42701-02 When delete Supplemental and Component terms and downlo
 	And I navigate to "Home"
 	And I navigate to "Architect"
 	And I select "Project" link "MCC-42701DL" in "Active Projects"
-	And I select Draft "Draft 001"
+	And I select Draft "Draft 002"
 	And I click the "Download" button to download
 	Then I verify "CoderConfiguration" spreadsheet data
 		| FormOID  | FieldOID    | CodingLevel | Priority | Locale | IsApprovalRequired | IsAutoApproval |
@@ -229,7 +230,7 @@ Scenario: PBMCC-42701-03 When downloading an architect draft template for a URL 
 	
 	When I navigate to "Architect"
 	And I click the "Get Draft Template" button to download
-	Then I verify "Coder Configuration" spreadsheet data
+	Then I verify "CoderConfiguration" spreadsheet data
 		| FormOID | FieldOID | CodingLevel | Priority | Locale | IsApprovalRequired | IsAutoApproval | Instructions/ Comments |
 		|         |          |             |          |        |                    |                |                        |
 	And I take a screenshot				 
@@ -253,15 +254,15 @@ Scenario: PBMCC-42701-04 When downloading an architect spreadsheet for a URL tha
 	And I select "Project" link "MCC-42701-001DL" in "Active Projects"
 	And I select Draft "Draft 001"
 	And I click the "Download" button to download
-	Then I verify "Coder Configuration" spreadsheet data
-		| FormOID | FieldOID | CodingLevel | Priority | Locale | IsApprovalRequired | IsAutoApproval | Instructions/ Comments |
-		|         |          |             |          |        |                    |                |                        |
+	Then I verify "CoderConfiguration" spreadsheet data
+		| FormOID | FieldOID | CodingLevel | Priority | Locale | IsApprovalRequired | IsAutoApproval |
+		|         |          |             |          |        |                    |                |
 	And I take a screenshot				 
 	And I verify "CoderSupplementalTerms" spreadsheet data
-		| FormOID | FieldOID | SupplementalTerm | Instructions/ Comments |
-		|         |          |                  |                        |
+		| FormOID | FieldOID | SupplementalTerm |
+		|         |          |                  |
 	And I take a screenshot		   
 	And I verify "CoderComponentTerms" spreadsheet data
-		| FormOID | FieldOID | ComponentTerm | ComponentName | Instructions/ Comments |
-		|         |          |               |               |                        |
+		| FormOID | FieldOID | ComponentTerm | ComponentName |
+		|         |          |               |               |
 	And I take a screenshot
