@@ -1,5 +1,5 @@
 ﻿@FT_@MCC-42701DL
-#@ignore
+
 Feature: MCC-42701DL Architect download will contain Coder settings and Architect upload will save Coder settings when a URL that has Coder registered
 
 Background:
@@ -69,8 +69,8 @@ Background:
 
 @Release_2013.1.0
 @PBMCC-42701-01
-@SJ13.FEB.2013
-@Draft
+@SJ15.FEB.2013
+@Validation
     
 Scenario: PBMCC-42701-01 When downloading an architect spreadsheet for a URL that has Coder registered, the Coder settings will be included
 	
@@ -123,8 +123,8 @@ Scenario: PBMCC-42701-01 When downloading an architect spreadsheet for a URL tha
 
 @Release_2013.1.0
 @PBMCC-42701-02
-@SJ13.FEB.2013
-@Draft
+@SJ15.FEB.2013
+@Validation
     
 Scenario: PBMCC-42701-02 When delete Supplemental and Component terms and downloading an architect spreadsheet for a URL that has Coder registered and, the Coder settings will be included
 	
@@ -222,8 +222,8 @@ Scenario: PBMCC-42701-02 When delete Supplemental and Component terms and downlo
 
 @Release_2013.1.0
 @PBMCC-42701-03
-@SJ13.FEB.2013
-@Draft
+@SJ15.FEB.2013
+@Validation
 
 Scenario: PBMCC-42701-03 When downloading an architect draft template for a URL that has Coder registered, the Coder settings will be included
 		
@@ -245,8 +245,8 @@ Scenario: PBMCC-42701-03 When downloading an architect draft template for a URL 
 
 @Release_2013.1.0
 @PBMCC-42701-04
-@SJ13.FEB.2013
-@Draft
+@SJ15.FEB.2013
+@Validation
 
 Scenario: PBMCC-42701-04 When downloading an architect spreadsheet for a URL that does not have Coder registered, the Coder settings will not be included
 
