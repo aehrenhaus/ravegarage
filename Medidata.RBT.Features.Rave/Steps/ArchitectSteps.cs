@@ -232,6 +232,15 @@ namespace Medidata.RBT.Features.Rave
             }
         }
 
+        /// <summary>
+        /// Step to select the CRF version from the architect library page
+        /// </summary>
+        /// <param name="versionName"></param>
+        [StepDefinition(@"I select CRF version ""([^""]*)""")]
+        public void ISelectCRFVersion(string versionName)
+        {
+            CurrentPage.As<ArchitectLibraryPage>().SelectCrfVersion(versionName);
+        }
 
 
 	}

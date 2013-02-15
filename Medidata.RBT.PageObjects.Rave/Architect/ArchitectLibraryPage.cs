@@ -105,5 +105,21 @@ namespace Medidata.RBT.PageObjects.Rave
 				return "Modules/Architect/LibraryPage.aspx";
 			}
 		}
-	}
+
+        /// <summary>
+        /// Select the CRF versin from architect library page from version grid
+        /// based on the version name specified
+        /// </summary>
+        /// <param name="versionName"></param>
+        /// <returns></returns>
+        public IPage SelectCrfVersion(string versionName)
+        {
+            IWebElement versionsTable = Browser.TryFindElementBy(By.Id("_ctl0_Content_VersionsGrid"));
+            IWebElement versionLink = versionsTable.TryFindElementBy(
+                By.XPath(string.Format("//a[contains(@id,'_LinkVersion') and contains(text(),'{0}')]", versionName)));
+
+            versionLink.Click();
+            return this.WaitForPageLoads();
+        }
+    }
 }
