@@ -200,13 +200,23 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
 
 				codingDictionaryString = codingDictionaryString
 					.Replace(version, string.Empty).Trim();
-				
-				var cd = SeedingContext.GetExistingFeatureObjectOrMakeNew<CodingDictionary>(codingDictionaryString,
-					() => { throw new Exception(string.Format("Coding Dictionary [{0}] not found", codingDictionaryString)); });
 
-				codingDictionaryString = string.Format("{0} ({1})", 
-					cd.UniqueName, 
-					cd.DictionaryVersion);	//Lets use the seeded version instead of the one from the draft
+                ISeedableObject cd;
+                try
+                {
+                    cd = SeedingContext.GetExistingFeatureObjectOrMakeNew<CodingDictionary>(codingDictionaryString,
+                        () => { throw new Exception(string.Format("Coding Dictionary [{0}] not found", codingDictionaryString)); });
+                }
+                catch (InvalidCastException ex)
+                {
+                    cd = SeedingContext.GetExistingFeatureObjectOrMakeNew<ClassicCodingDictionary>(codingDictionaryString,
+                       () => { throw new Exception(string.Format("{0} or\nClassic Coding Dictionary [{1}] not found",
+                           ex.Message, codingDictionaryString)); });
+                }
+
+				codingDictionaryString = string.Format("{0} {1}", 
+					cd.UniqueName,
+                    version);	//Keep the version that is part of the draft (version is not seeded, the registered version if not same as draft should result in error)
 				fieldsTable[currentRow, "CodingDictionary"] = codingDictionaryString;
 			}
 		}

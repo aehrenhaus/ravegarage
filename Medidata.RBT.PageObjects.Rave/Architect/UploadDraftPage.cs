@@ -68,6 +68,17 @@ namespace Medidata.RBT.PageObjects.Rave
 
                     identifier = identifier.Replace(coderDictionaryName, uniqueCoderDictionaryName);
                 }
+                else if (!string.IsNullOrEmpty(areaIdentifier) &&
+                    areaIdentifier.StartsWith("Classic Coding Dictionary:", StringComparison.InvariantCultureIgnoreCase))
+                {
+                    string coderDictionaryName = areaIdentifier.Substring("Classic Coding Dictionary:".Length);
+                    ClassicCodingDictionary cd = (ClassicCodingDictionary)SeedingContext.GetExistingFeatureObjectOrMakeNew<ClassicCodingDictionary>(coderDictionaryName,
+                        () => { throw new Exception(string.Format("Classic Coding Dictionary [{0}] not found", coderDictionaryName)); });
+
+                    string uniqueCoderDictionaryName = cd.UniqueName;
+
+                    identifier = identifier.Replace(coderDictionaryName, uniqueCoderDictionaryName);
+                }
 				if (!exactMatch && Browser.PageSource.Contains(identifier))
 					return true;
 				else
