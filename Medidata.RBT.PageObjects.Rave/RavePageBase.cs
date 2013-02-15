@@ -272,7 +272,7 @@ namespace Medidata.RBT.PageObjects.Rave
             }
             else
                 throw new InvalidOperationException(
-                    string.Format("Specified query string field name [{0}] does not in the current Url", queryName));
+                    string.Format("Specified query string field name [{0}] does not exist in the current Url", queryName));
         }
 
 	}

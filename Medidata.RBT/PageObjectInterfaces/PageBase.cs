@@ -448,7 +448,7 @@ namespace Medidata.RBT
                     if (fieldValuePair.Length == 2)
                         queryStringFieldValuePair.Add(fieldValuePair[0], fieldValuePair[1]);
                     else
-                        throw new Exception("The field value pair for the query string in not in the expected format <field>=<Value>.");       
+                        throw new Exception("The field value pair for the query string is not in the expected format <field>=<Value>.");       
                 }
             }
 
