@@ -116,6 +116,11 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
+    <Compile Include="Features\Configuration\MCC-46558DisableCoder.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MCC-46558DisableCoder.feature</DependentUpon>
+    </Compile>
     <Compile Include="Features\Configuration\US13011_DT13976_Upload.feature.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -515,6 +520,10 @@
     <None Include="Features\Configuration\MCC-427034.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>MCC-427034.feature.cs</LastGenOutput>
+    </None>
+    <None Include="Features\Configuration\MCC-46558DisableCoder.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>MCC-46558DisableCoder.feature.cs</LastGenOutput>
     </None>
     <None Include="Features\Configuration\US13011_DT13976_Upload.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
