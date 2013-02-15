@@ -61,13 +61,14 @@ namespace Medidata.RBT.PageObjects.Rave
                     areaIdentifier.StartsWith("Coding Dictionary:", StringComparison.InvariantCultureIgnoreCase))
                 {
                     string coderDictionaryName = areaIdentifier.Substring("Coding Dictionary:".Length);
-                    CodingDictionary cd = (CodingDictionary)SeedingContext.GetExistingFeatureObjectOrMakeNew<CodingDictionary>(coderDictionaryName,
+                    BaseCodingDictionary cd = SeedingContext.GetExistingFeatureObjectOrMakeNew<BaseCodingDictionary>(coderDictionaryName,
                         () => { throw new Exception(string.Format("Coding Dictionary [{0}] not found", coderDictionaryName)); });
 
                     string uniqueCoderDictionaryName = cd.UniqueName;
 
                     identifier = identifier.Replace(coderDictionaryName, uniqueCoderDictionaryName);
                 }
+              
 				if (!exactMatch && Browser.PageSource.Contains(identifier))
 					return true;
 				else

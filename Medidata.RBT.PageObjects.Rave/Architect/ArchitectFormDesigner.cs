@@ -204,9 +204,9 @@ namespace Medidata.RBT.PageObjects.Rave
                     text.StartsWith("Rave- ", StringComparison.InvariantCultureIgnoreCase))
                 {
                     string codingDictionaryName = text.Replace("Rave- ", "");
-                    codingDictionaryName = SeedingContext.GetExistingFeatureObjectOrMakeNew<ClassicCodingDictionary>(codingDictionaryName,
-                        () => { throw new Exception(string.Format("Classic Coding Dictionary [{0}] not found", codingDictionaryName)); }).UniqueName;
-                    text = string.Format("Rave- {0}", codingDictionaryName);
+                    ClassicCodingDictionary ccd = SeedingContext.GetExistingFeatureObjectOrMakeNew<ClassicCodingDictionary>(codingDictionaryName,
+                        () => { throw new Exception(string.Format("Classic Coding Dictionary [{0}] not found", codingDictionaryName)); });
+                    text = string.Format("Rave- {0} Version: {1}", ccd.UniqueName, ccd.DictionaryVersion);
                 }
 
                 dropDownElem.EnhanceAs<Dropdown>().SelectByText(text);
