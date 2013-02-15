@@ -470,7 +470,7 @@ Scenario: PBMCC-42701-018 When uploading an architect spreadsheet that contains 
 
 	When xml draft "MCC-42701-018.xml" is Uploaded without redirecting
 	Then I verify text "Transaction rolled back." exists
-	And I verify text "Error while reading row 5. Field OID 'FIELD1A' in form OID 'FORM1' : Coding dictionary 'WhoDrugClassic (20)' not found in the target database." exists in "Classic Coding Dictionary:WhoDrugClassic"
+	And I verify text "Error while reading row 5. Field OID 'FIELD1A' in form OID 'FORM1' : Coding dictionary 'WhoDrugClassic (20)' not found in the target database." exists in "Coding Dictionary:WhoDrugClassic"
 	And I take a screenshot
 
 
