@@ -32,7 +32,6 @@ namespace Medidata.RBT.PageObjects.Rave.Configuration
 
 		public bool VerifySomethingExist(string areaIdentifier, string type, string identifier, bool exactMatch = false)
 		{
-		
 			if (identifier == "Requires Response checked")
 			{
 				var checkbox = Browser.CheckboxByID("_ctl0_Content_chkReqResponse");
@@ -52,6 +51,12 @@ namespace Medidata.RBT.PageObjects.Rave.Configuration
 
 				return dropdown.SelectedText == identifier;
 			}
+
+            if (!string.IsNullOrWhiteSpace(type) && type.Equals("text", StringComparison.InvariantCultureIgnoreCase))
+            {
+                if (!exactMatch && Browser.PageSource.Contains(identifier))
+                    return true;
+            }
 
 			return false;
 		}

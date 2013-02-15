@@ -242,16 +242,20 @@ namespace Medidata.RBT.SeleniumExtension
 			catch
 
 			{
-				if (isWait.Value)
-					ele = waitForElement(context, drv =>
-					{
-						return context.TryFindElementBySpanLinktext(LinkText);
+                if (isWait.Value)
+                {
+                    try
+                    {
+                        ele = waitForElement(context, drv =>
+                        {
+                            return context.TryFindElementBySpanLinktext(LinkText);
 
-					}, null, timeOutSecond);
-				else
-					ele = context.TryFindElementBySpanLinktext(LinkText);
-
-                
+                        }, null, timeOutSecond);
+                    }
+                    catch (TimeoutException) { }  
+                }
+                else
+                    ele = context.TryFindElementBySpanLinktext(LinkText);   
 			}
 			return ele;
 		}
