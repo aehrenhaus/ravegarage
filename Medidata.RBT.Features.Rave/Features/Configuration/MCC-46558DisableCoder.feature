@@ -10,8 +10,8 @@ Background:
 
 @Release_2013.1.0
 @PB_MCC-46558DisableCoder_01
-@SJ14.FEB.2013
-@Draft
+@SJ15.FEB.2013
+@Validation
 Scenario: PB_MCC-46558DisableCoder_01 Coder Configuration page cannot be accessed on a URL, where Coder is not enabled.
 
 
