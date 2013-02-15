@@ -39,11 +39,10 @@ namespace Medidata.RBT.Features.Integration.Steps
             RoleHelper.AddUserGroupToDB(name);
         }
 
-        [Given(@"the user is assigned to the study with the following EDC role\(s\)")]
-        public void GivenTheUserIsAssignedToTheStudyWithTheFollowingEDCRoleS(Table table)
+        [Given(@"the user is assigned to the study with the following EDC roles?")]
+        public void GivenTheUserIsAssignedToTheStudyWithTheFollowingEDCRoles(Table table)
         {
-            var externalUserUuid = ScenarioContext.Current.Get<string>("externalUserUUID");
-            var externalUser = ExternalUser.GetByExternalUUID(externalUserUuid, 1);
+            var externalUser = ExternalUser.GetByExternalUUID(ScenarioContext.Current.Get<string>("externalUserUUID"), 1);
 
             var study = ScenarioContext.Current.Get<Study>("study");
 
@@ -68,18 +67,18 @@ namespace Medidata.RBT.Features.Integration.Steps
                 }
                 else
                 {
-                    user = UserHelper.CreateRaveUserWithEdcRole(role);
+                    UserHelper.CreateRaveUser(externalUser.Login, role);
+                    user = ScenarioContext.Current.Get<User>("user");
                 }
 
                 ExternalUserRole.StudySave(1, externalUser.ID, study.ExternalID, study.Uuid, role.ID, DateTime.MinValue);
             }
         }
 
-        [Then(@"the user should be assigned to the study with the following EDC role\(s\)")]
-        public void ThenTheUserShouldBeAssignedToTheStudyWithTheFollowingEDCRoleS(Table table)
+        [Then(@"the user should be assigned to the study with the following EDC roles?")]
+        public void ThenTheUserShouldBeAssignedToTheStudyWithTheFollowingEDCRoles(Table table)
         {
-            var externalUserUuid = ScenarioContext.Current.Get<string>("externalUserUUID");
-            var externalUser = ExternalUser.GetByExternalUUID(externalUserUuid, 1);
+            var externalUser = ExternalUser.GetByExternalUUID(ScenarioContext.Current.Get<string>("externalUserUUID"), 1);
 
             var study = ScenarioContext.Current.Get<Study>("study");
 
@@ -92,16 +91,14 @@ namespace Medidata.RBT.Features.Integration.Steps
                 var user = User.FindByRoleAndExternalID(role, externalUser.ExternalID, 1, SystemInteraction.Use());
                 Assert.IsTrue(user != null);
 
-                var userIsAssociatedWithStudy = user.IsUserAssociatedWithStudy(study);
-                Assert.IsTrue(userIsAssociatedWithStudy);
+                Assert.IsTrue(user.IsUserAssociatedWithStudy(study));
             }
         }
 
-        [Then(@"the user should not be assigned to the study with the following EDC role\(s\)")]
-        public void ThenTheUserShouldNotBeAssignedToTheStudyWithTheFollowingEDCRoleS(Table table)
+        [Then(@"the user should not be assigned to the study with the following EDC roles?")]
+        public void ThenTheUserShouldNotBeAssignedToTheStudyWithTheFollowingEDCRoles(Table table)
         {
-            var externalUserUuid = ScenarioContext.Current.Get<string>("externalUserUUID");
-            var externalUser = ExternalUser.GetByExternalUUID(externalUserUuid, 1);
+            var externalUser = ExternalUser.GetByExternalUUID(ScenarioContext.Current.Get<string>("externalUserUUID"), 1);
 
             var study = ScenarioContext.Current.Get<Study>("study");
 
@@ -114,8 +111,7 @@ namespace Medidata.RBT.Features.Integration.Steps
                 var user = User.FindByRoleAndExternalID(role, externalUser.ExternalID, 1, SystemInteraction.Use());
                 Assert.IsTrue(user != null);
 
-                var userIsAssociatedWithStudy = user.IsUserAssociatedWithStudy(study);
-                Assert.IsFalse(userIsAssociatedWithStudy);
+                Assert.IsFalse(user.IsUserAssociatedWithStudy(study));
             }
         }
 
@@ -123,19 +119,17 @@ namespace Medidata.RBT.Features.Integration.Steps
         public void ThenTheUserShouldHaveTheIMedidataEDCUserGroupAssigned()
         {
             int iMedidataEdcUserGroupId;
-            int.TryParse(Configuration.ConfigItem(ConfigTags.iMedidataEdcUserGroupID) as string, out iMedidataEdcUserGroupId);
+            Int32.TryParse(Configuration.ConfigItem(ConfigTags.iMedidataEdcUserGroupID) as string, out iMedidataEdcUserGroupId);
 
-            var externalUserUuid = ScenarioContext.Current.Get<string>("externalUserUUID");
-            var externalUser = ExternalUser.GetByExternalUUID(externalUserUuid, 1);
+            var externalUser = ExternalUser.GetByExternalUUID(ScenarioContext.Current.Get<string>("externalUserUUID"), 1);
 
             Assert.AreEqual(iMedidataEdcUserGroupId, externalUser.UserGroupID);
         }
 
-        [Then(@"the user should be assigned to the following SecurityGroup\(s\) on the study")]
-        public void ThenTheUserShouldBeAssignedToTheFollowingSecurityGroupSOnTheStudy(Table table)
+        [Then(@"the user should be assigned to the following SecurityGroups? on the study")]
+        public void ThenTheUserShouldBeAssignedToTheFollowingSecurityGroupsOnTheStudy(Table table)
         {
-            var externalUserUuid = ScenarioContext.Current.Get<string>("externalUserUUID");
-            var externalUser = ExternalUser.GetByExternalUUID(externalUserUuid, 1);
+            var externalUser = ExternalUser.GetByExternalUUID(ScenarioContext.Current.Get<string>("externalUserUUID"), 1);
 
             var study = ScenarioContext.Current.Get<Study>("study");
 
@@ -149,16 +143,15 @@ namespace Medidata.RBT.Features.Integration.Steps
 
             foreach (var roleNameObject in roleNames)
             {
-                var secGrp = securityGroups.FirstOrDefault(securityGroup => securityGroup.Name == roleNameObject.RoleName);
-                Assert.IsNotNull(secGrp);
+                var securityGroup = securityGroups.FirstOrDefault(x => x.Name == roleNameObject.RoleName);
+                Assert.IsNotNull(securityGroup);
             }
         }
 
-        [Then(@"the user should be assigned to the following UserGroup\(s\) on the study")]
-        public void ThenTheUserShouldBeAssignedToTheFollowingUserGroupSOnTheStudy(Table table)
+        [Then(@"the user should be assigned to the following UserGroups? the study")]
+        public void ThenTheUserShouldBeAssignedToTheFollowingUserGroupsOnTheStudy(Table table)
         {
-            var externalUserUuid = ScenarioContext.Current.Get<string>("externalUserUUID");
-            var externalUser = ExternalUser.GetByExternalUUID(externalUserUuid, 1);
+            var externalUser = ExternalUser.GetByExternalUUID(ScenarioContext.Current.Get<string>("externalUserUUID"), 1);
 
             var study = ScenarioContext.Current.Get<Study>("study");
 
@@ -205,8 +198,7 @@ namespace Medidata.RBT.Features.Integration.Steps
         [Given(@"the User is assigned to the ""(.*)"" User Group on the study")]
         public void GivenTheUserIsAssignedToTheUserGroupOnTheStudy(string userGroupName)
         {
-            var externalUserUuid = ScenarioContext.Current.Get<string>("externalUserUUID");
-            var externalUser = ExternalUser.GetByExternalUUID(externalUserUuid, 1);
+            var externalUser = ExternalUser.GetByExternalUUID(ScenarioContext.Current.Get<string>("externalUserUUID"), 1);
             var study = ScenarioContext.Current.Get<Study>("study");
 
             AUserGroupRoleWithName____Exists(userGroupName);
@@ -214,11 +206,10 @@ namespace Medidata.RBT.Features.Integration.Steps
             externalUser.AddUserGroupForStudy(userGroup.ID, study.Uuid, true);
         }
 
-        [Then(@"the user should not be assigned to the following SecurityGroup\(s\)")]
-        public void ThenTheUserShouldNotBeAssignedToTheFollowingSecurityGroupS(Table table)
+        [Then(@"the user should not be assigned to the following SecurityGroups?")]
+        public void ThenTheUserShouldNotBeAssignedToTheFollowingSecurityGroups(Table table)
         {
-            var externalUserUuid = ScenarioContext.Current.Get<string>("externalUserUUID");
-            var externalUser = ExternalUser.GetByExternalUUID(externalUserUuid, 1);
+            var externalUser = ExternalUser.GetByExternalUUID(ScenarioContext.Current.Get<string>("externalUserUUID"), 1);
 
             var study = ScenarioContext.Current.Get<Study>("study");
 
@@ -237,11 +228,10 @@ namespace Medidata.RBT.Features.Integration.Steps
             }
         }
 
-        [Then(@"the user should not be assigned to the following UserGroup\(s\) on the study")]
-        public void ThenTheUserShouldNotBeAssignedToTheFollowingUserGroupSOnTheStudy(Table table)
+        [Then(@"the user should not be assigned to the following UserGroups? on the study")]
+        public void ThenTheUserShouldNotBeAssignedToTheFollowingUserGroupsOnTheStudy(Table table)
         {
-            var externalUserUuid = ScenarioContext.Current.Get<string>("externalUserUUID");
-            var externalUser = ExternalUser.GetByExternalUUID(externalUserUuid, 1);
+            var externalUser = ExternalUser.GetByExternalUUID(ScenarioContext.Current.Get<string>("externalUserUUID"), 1);
 
             var study = ScenarioContext.Current.Get<Study>("study");
 

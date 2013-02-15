@@ -8,6 +8,8 @@ namespace Medidata.RBT.Objects.Integration.Helpers
 {
     public static class RoleHelper
     {
+        private const string locale = "eng";
+
         public static void AddRoleToDB(string name)
         {
             Role role;
@@ -30,7 +32,7 @@ namespace Medidata.RBT.Objects.Integration.Helpers
         public static void AddSecurityGroupToDB(string name)
         {
             SecurityGroup securityGroup = null;
-            if(!SecurityGroup.IsNameUnique(name, "eng"))
+            if(!SecurityGroup.IsNameUnique(name, locale))
             {
                 var securityGroupCollection = new SecurityGroupCollection();
                 securityGroupCollection.Load(SystemInteraction.Use());
@@ -57,7 +59,7 @@ namespace Medidata.RBT.Objects.Integration.Helpers
 
         public static void AddUserGroupToDB(string name)
         {
-            var userGroup = UserGroup.FetchByName(name, "eng");
+            var userGroup = UserGroup.FetchByName(name, locale);
 
             if (userGroup == null)
             {

@@ -22,10 +22,7 @@ namespace Medidata.RBT.Features.Integration.Steps
         [Then(@"I should see the user in the Rave database")]
         public void ThenIShouldSeeTheUserInTheRaveDatabase()
         {
-            var externalUser = ScenarioContext.Current.ContainsKey("externalUserID")
-                                   ? ExternalUser.Fetch(ScenarioContext.Current.Get<int>("externalUserID"))
-                                   : ExternalUser.GetByExternalUUID(
-                                       ScenarioContext.Current.Get<string>("externalUserUUID"), 1);
+            var externalUser = ExternalUser.GetByExternalUUID(ScenarioContext.Current.Get<string>("externalUserUUID"), 1);
            
             Assert.IsNotNull(externalUser);
 

@@ -14,25 +14,25 @@ namespace Medidata.RBT.Features.Integration.Steps
     [Binding]
     public class StudyInvitationSteps
     {
-        [Given(@"I have an EDC app assignment with the following role\(s\)")]
+        [Given(@"I have an EDC app assignment with the following roles?")]
         public void GivenIHaveAnEDCAppAssignmentWithTheFollowingRoles(Table table)
         {
             var roleNames = table.CreateSet<RoleNameModel>().ToList();
 
-            var edcAppAssignments = new AppAssignmentModel() {RoleOids = new List<RoleModel>()};
+            var edcAppAssignments = new AppAssignmentModel() { RoleOids = new List<RoleModel>() };
 
             foreach (var roleNameObject in roleNames)
             {
                 RoleSteps.AnEdcRoleWithName____Exists(roleNameObject.RoleName);
                 var role = ScenarioContext.Current.Get<Role>("role");
-                edcAppAssignments.RoleOids.Add(new RoleModel {Oid = "R|" + role.ID});
+                edcAppAssignments.RoleOids.Add(new RoleModel { Oid = "R|" + role.ID });
             }
 
             ScenarioContext.Current.Set(edcAppAssignments, "edcAppAssignments");
         }
 
-        [Given(@"I have an Architect Security app assignment with the following role\(s\)")]
-        public void GivenIHaveAnArchitectSecurityAppAssignmentWithTheFollowingRoleS(Table table)
+        [Given(@"I have an Architect Security app assignment with the following roles?")]
+        public void GivenIHaveAnArchitectSecurityAppAssignmentWithTheFollowingRoles(Table table)
         {
             var roleNames = table.CreateSet<RoleNameModel>().ToList();
 
@@ -48,8 +48,8 @@ namespace Medidata.RBT.Features.Integration.Steps
             ScenarioContext.Current.Set(architectAppAssignments, "architectAppAssignments");
         }
 
-        [Given(@"I have a Modules app assignment with the following role\(s\)")]
-        public void GivenIHaveAModulesAppAssignmentWithTheFollowingRoleS(Table table)
+        [Given(@"I have a Modules app assignment with the following roles?")]
+        public void GivenIHaveAModulesAppAssignmentWithTheFollowingRoles(Table table)
         {
             var roleNames = table.CreateSet<RoleNameModel>().ToList();
 
