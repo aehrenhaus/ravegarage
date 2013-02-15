@@ -201,18 +201,9 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
 				codingDictionaryString = codingDictionaryString
 					.Replace(version, string.Empty).Trim();
 
-                ISeedableObject cd;
-                try
-                {
-                    cd = SeedingContext.GetExistingFeatureObjectOrMakeNew<CodingDictionary>(codingDictionaryString,
+                BaseCodingDictionary cd = SeedingContext.GetExistingFeatureObjectOrMakeNew<BaseCodingDictionary>(codingDictionaryString,
                         () => { throw new Exception(string.Format("Coding Dictionary [{0}] not found", codingDictionaryString)); });
-                }
-                catch (InvalidCastException ex)
-                {
-                    cd = SeedingContext.GetExistingFeatureObjectOrMakeNew<ClassicCodingDictionary>(codingDictionaryString,
-                       () => { throw new Exception(string.Format("{0} or\nClassic Coding Dictionary [{1}] not found",
-                           ex.Message, codingDictionaryString)); });
-                }
+              
 
 				codingDictionaryString = string.Format("{0} {1}", 
 					cd.UniqueName,
