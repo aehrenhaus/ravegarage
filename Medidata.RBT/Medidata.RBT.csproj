@@ -83,7 +83,11 @@
     <Compile Include="Helpers\FilteredConsoleWriter.cs" />
     <Compile Include="Helpers\MultipleStreamWriter.cs" />
     <Compile Include="PageObjectInterfaces\AbstractPaginationControl.cs" />
-    <Compile Include="PageObjectInterfaces\IVerifyControlDisabled.cs" />
+    <Compile Include="PageObjectInterfaces\IExpand.cs" />
+    <Compile Include="PageObjectInterfaces\IEnterValues.cs" />
+    <Compile Include="PageObjectInterfaces\IVerifyState.cs" />
+    <Compile Include="PageObjectInterfaces\StateVerificationInterfaces\IVerifyCheckboxState.cs" />
+    <Compile Include="PageObjectInterfaces\StateVerificationInterfaces\IVerifyControlEnabledState.cs" />
     <Compile Include="PageObjectInterfaces\IVerifyRowsExist.cs" />
     <Compile Include="PageObjectInterfaces\GeneralPage.cs" />
     <Compile Include="Utilities\Misc.cs" />

@@ -68,6 +68,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="EnableDisableSteps.cs" />
+    <Compile Include="CheckboxSteps.cs" />
+    <Compile Include="DataEntrySteps.cs" />
     <Compile Include="DownloadSteps.cs" />
     <Compile Include="ExcelSteps.cs" />
     <Compile Include="IActivateSteps.cs" />

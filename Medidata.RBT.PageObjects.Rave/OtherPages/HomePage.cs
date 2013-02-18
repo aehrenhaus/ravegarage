@@ -167,7 +167,7 @@ namespace Medidata.RBT.PageObjects.Rave
 		#endregion
 
 
-		bool IVerifyRowsExist.VerifyTableRowsExist(string tableIdentifier, Table matchTable)
+        bool IVerifyRowsExist.VerifyTableRowsExist(string tableIdentifier, Table matchTable, int? amountOfTimes)
 		{
 			return this.VerifyTableRowsExist_Default(tableIdentifier, matchTable);
 		}

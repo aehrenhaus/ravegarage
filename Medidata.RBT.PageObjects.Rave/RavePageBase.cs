@@ -99,7 +99,13 @@ namespace Medidata.RBT.PageObjects.Rave
                 return base.ChooseFromDropdown(identifier, ReplaceSeedableObjectName(objectType, text), objectType, areaIdentifier);
 		}
 
-		private string ReplaceSeedableObjectName(string type, string name)
+        /// <summary>
+        /// Replace a seedable object's feature name with its unique name
+        /// </summary>
+        /// <param name="type">The type of the object (eg. Project, User, etc.)</param>
+        /// <param name="name">The feature name of the object</param>
+        /// <returns>The unique name of the seedable object</returns>
+		public static string ReplaceSeedableObjectName(string type, string name)
 		{
 			if (type != null) type = type.Replace(" ", "");
 			if (string.Equals(type,"Study", StringComparison.InvariantCultureIgnoreCase))
@@ -127,17 +133,22 @@ namespace Medidata.RBT.PageObjects.Rave
 				Project project = SeedingContext.GetExistingFeatureObjectOrMakeNew(name, () => new Project(name));
 				name = project.UniqueName;
 			}
-				else if (type == "Lab")
-				{
-					SharedRaveObjects.Lab lab = SeedingContext.GetExistingFeatureObjectOrMakeNew(name, () =>new SharedRaveObjects.Lab(name));
-					name = lab.UniqueName;
-				}
-				else if (type != null && type.ToUpper().Contains("CRF"))
-                {
-                    CrfVersion crf = SeedingContext.GetExistingFeatureObjectOrMakeNew<CrfVersion>(name, () => null);
-					if(crf!=null)
-						name = crf.UniqueName;
-                }
+			else if (type == "Lab")
+			{
+				SharedRaveObjects.Lab lab = SeedingContext.GetExistingFeatureObjectOrMakeNew(name, () =>new SharedRaveObjects.Lab(name));
+				name = lab.UniqueName;
+			}
+            else if (string.Equals(type, "Proposal", StringComparison.InvariantCultureIgnoreCase))
+            {
+                Proposal proposal = SeedingContext.GetExistingFeatureObjectOrMakeNew(name, () => new Proposal(name));
+                name = proposal.UniqueName;
+            }
+			else if (type != null && type.ToUpper().Contains("CRF"))
+            {
+                CrfVersion crf = SeedingContext.GetExistingFeatureObjectOrMakeNew<CrfVersion>(name, () => null);
+				if(crf!=null)
+					name = crf.UniqueName;
+            }
 			return name;
 		}
 		/// <summary>

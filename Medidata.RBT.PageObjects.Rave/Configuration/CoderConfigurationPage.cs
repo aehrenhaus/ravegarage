@@ -30,7 +30,7 @@ namespace Medidata.RBT.PageObjects.Rave.Configuration
             get { return "Modules/Configuration/CoderConfiguration.aspx"; }
         }
 
-		public bool VerifySomethingExist(string areaIdentifier, string type, string identifier, bool exactMatch = false)
+        public bool VerifySomethingExist(string areaIdentifier, string type, string identifier, bool exactMatch = false, int? amountOfTimes = null)
 		{
 			if (identifier == "Requires Response checked")
 			{

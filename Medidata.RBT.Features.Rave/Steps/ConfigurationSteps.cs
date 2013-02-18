@@ -119,6 +119,9 @@ namespace Medidata.RBT.Features.Rave.Steps
 					Site site = SeedingContext.GetExistingFeatureObjectOrMakeNew(configuration.Site, () => new Site(configuration.Site));
 					Project project = SeedingContext.GetExistingFeatureObjectOrMakeNew(configuration.Project,
 					                                                                () => new Project(configuration.Project));
+                    //Create an external system
+                    project.AssignExternalSystem(configuration.ExternalSystem);
+
 
 					bool studyAssignmentExists = user.StudyAssignmentExists(role.UniqueName, project.UniqueName, site.UniqueName,configuration.Environment);
 					bool moduleAssignmentExists = user.ModuleAssignmentExists("All Projects", securityRole.UniqueName);

@@ -8,6 +8,7 @@ using OpenQA.Selenium.Remote;
 using Medidata.RBT.SeleniumExtension;
 using TechTalk.SpecFlow;
 using OpenQA.Selenium.Support.UI;
+using System.Collections.ObjectModel;
 
 namespace Medidata.RBT.PageObjects.Rave
 {
@@ -232,13 +233,15 @@ namespace Medidata.RBT.PageObjects.Rave
         /// <param name="identifier"></param>
         /// <param name="exactMatch"></param>
         /// <returns></returns>
-        public bool VerifySomethingExist(string areaIdentifier, string type, string identifier, bool exactMatch = true)
+        public bool VerifySomethingExist(string areaIdentifier, string type, string identifier, bool exactMatch = true, int? amountOfTimes = null)
         {
+            if (areaIdentifier.Equals("Coding Level", StringComparison.InvariantCultureIgnoreCase))
+                return VerifyCodingLevelExists(identifier);
+            else if (areaIdentifier.Equals("Priority", StringComparison.InvariantCultureIgnoreCase))
+                return VerifyPriority(identifier);
             //Support for verifying existing text, for verifying anything else the if else statement should be extended
-            if (type.Equals("text", StringComparison.InvariantCultureIgnoreCase))
-            {
+            else if (type.Equals("text", StringComparison.InvariantCultureIgnoreCase))
                 return VerifyTextExist(areaIdentifier, identifier);
-            }
             else
             {
                 //if specified type does not exist then throw not implemented exception
@@ -246,6 +249,17 @@ namespace Medidata.RBT.PageObjects.Rave
             }
         }
 
+        private bool VerifyCodingLevelExists(string codingLevel)
+        {
+            Dropdown codingLevelDropdown = Browser.TryFindElementByPartialID("LevelDDL").EnhanceAs<Dropdown>();
+            return codingLevelDropdown.VerifyByText(codingLevel);
+        }
+
+        private bool VerifyPriority(string priorityLevel)
+        {
+            Textbox priorityTextBox = Browser.TryFindElementByPartialID("PriorityTXT").EnhanceAs<Textbox>();
+            return priorityTextBox.GetText().Equals(priorityLevel, StringComparison.InvariantCultureIgnoreCase);
+        }
         #endregion
 
         #region IVerifyRowsExist
@@ -255,14 +269,17 @@ namespace Medidata.RBT.PageObjects.Rave
         /// <param name="tableIdentifier"></param>
         /// <param name="matchTable"></param>
         /// <returns></returns>
-        public bool VerifyTableRowsExist(string tableIdentifier, Table matchTable)
+        public bool VerifyTableRowsExist(string tableIdentifier, Table matchTable, int? amountOfTimes = null)
         {
             string tableId = GetTableIdFromTableName(tableIdentifier);
 
             HtmlTable htmlTable = Browser.TryFindElementById(tableId).EnhanceAs<HtmlTable>();
-            var matchTrs = htmlTable.FindMatchRows(matchTable);
+            ReadOnlyCollection<IWebElement> matchTrs = htmlTable.FindMatchRows(matchTable);
 
-            return matchTrs.Count == matchTable.Rows.Count;
+            if (amountOfTimes.HasValue)
+                return matchTrs.Count.Equals(matchTable.Rows.Count * amountOfTimes);
+            else
+                return matchTrs.Count == matchTable.Rows.Count;
         }
         #endregion
 

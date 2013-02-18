@@ -39,7 +39,7 @@ namespace Medidata.RBT.PageObjects.Rave.Configuration
             }
         }
 
-		public bool VerifySomethingExist(string areaIdentifier, string type, string identifier, bool exactMatch = false)
+        public bool VerifySomethingExist(string areaIdentifier, string type, string identifier, bool exactMatch = false, int? amountOfTimes = null)
 		{
 			if (type == "text")
 			{
@@ -50,7 +50,7 @@ namespace Medidata.RBT.PageObjects.Rave.Configuration
 			return false;
 		}
 
-		public bool VerifyTableRowsExist(string tableIdentifier, TechTalk.SpecFlow.Table matchTable)
+		public bool VerifyTableRowsExist(string tableIdentifier, TechTalk.SpecFlow.Table matchTable, int? amountOfTimes = null)
 		{
 			var eTable = Browser.Table("_ctl0_Content_ColumnGrid");
 			var foundRows = eTable.FindMatchRows(matchTable, TdTextSelector);

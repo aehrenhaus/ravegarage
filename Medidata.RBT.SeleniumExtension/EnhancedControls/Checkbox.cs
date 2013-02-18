@@ -27,15 +27,14 @@ namespace Medidata.RBT.SeleniumExtension
 
 		public void Check()
 		{
-			if (!this.Selected)
-				this.Click();
-
+            if (!this.Selected)
+                this.Click();
 		}
 
 		public void Uncheck()
 		{
-			if (this.Selected)
-				this.Click();
+            if (this.Selected)
+                this.Click();
 		}
 
 		public void Toggle()

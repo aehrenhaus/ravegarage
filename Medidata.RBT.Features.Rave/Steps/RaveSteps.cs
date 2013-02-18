@@ -5,6 +5,8 @@ using TechTalk.SpecFlow;
 using Medidata.RBT.PageObjects.Rave;
 using TechTalk.SpecFlow.Assist;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Medidata.RBT.SharedRaveObjects;
+using Medidata.RBT.PageObjects.Rave.SharedRaveObjects;
 using System.Text.RegularExpressions;
 
 namespace Medidata.RBT.Features.Rave
