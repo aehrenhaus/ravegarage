@@ -6,7 +6,7 @@ namespace Medidata.RBT
 	public interface IVerifyRowsExist
 	{
 
-		bool VerifyTableRowsExist(string tableIdentifier, Table matchTable);
+		bool VerifyTableRowsExist(string tableIdentifier, Table matchTable, int? amountOfTimes = null);
 
 	}
 }

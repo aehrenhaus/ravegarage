@@ -63,7 +63,7 @@ namespace Medidata.RBT.PageObjects.Rave.Lab
 
         #region ICanVerifyExist
 
-        public bool VerifyTableRowsExist(string tableIdentifier, Table matchTable)
+        public bool VerifyTableRowsExist(string tableIdentifier, Table matchTable, int? amountOfTimes = null)
         {
             throw new NotImplementedException();
         }

@@ -457,7 +457,7 @@ namespace Medidata.RBT.Features.Rave
         [StepDefinition(@"I select link ""([^""]*)"" located in ""([^""]*)""")]
         public void ISelectLink____LocatedIn____(string logForm, string leftNav)
         {
-            if (logForm == "Monitor Visits")
+            if (logForm.Equals("Monitor Visits", StringComparison.InvariantCultureIgnoreCase))
                 CurrentPage = CurrentPage.As<HomePage>().SelectForm(logForm);
             else if (logForm.Equals("Copy to Draft", StringComparison.InvariantCultureIgnoreCase))
                 CurrentPage = CurrentPage.As<ArchitectCRFDraftPage>().ClickLink("Copy to Draft");

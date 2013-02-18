@@ -529,7 +529,7 @@ namespace Medidata.RBT.PageObjects.Rave
             return result;
         }
 
-        bool IVerifyRowsExist.VerifyTableRowsExist(string tableIdentifier, Table matchTable)
+        bool IVerifyRowsExist.VerifyTableRowsExist(string tableIdentifier, Table matchTable, int? amountOfTimes)
         {
 			var result = true;
 			var args = matchTable.CreateSet<QueryAuditReportSearchModel>();

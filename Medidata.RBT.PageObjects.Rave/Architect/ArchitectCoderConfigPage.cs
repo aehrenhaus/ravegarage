@@ -239,12 +239,6 @@ namespace Medidata.RBT.PageObjects.Rave
                 return VerifyCodingLevelExists(identifier);
             else if (areaIdentifier.Equals("Priority", StringComparison.InvariantCultureIgnoreCase))
                 return VerifyPriority(identifier);
-            else if (areaIdentifier.Equals("Component Terms", StringComparison.InvariantCultureIgnoreCase))
-                return VerifyComponentTermExists(identifier, amountOfTimes);
-            else if (areaIdentifier.Equals("Supplemental Terms", StringComparison.InvariantCultureIgnoreCase))
-                return VerifySupplementalTermExists(identifier, amountOfTimes);
-            else if (areaIdentifier.Equals("Component Terms Component Name", StringComparison.InvariantCultureIgnoreCase))
-                return VerifyComponentNameExists(identifier);
             //Support for verifying existing text, for verifying anything else the if else statement should be extended
             else if (type.Equals("text", StringComparison.InvariantCultureIgnoreCase))
                 return VerifyTextExist(areaIdentifier, identifier);
@@ -266,32 +260,6 @@ namespace Medidata.RBT.PageObjects.Rave
             Textbox priorityTextBox = Browser.TryFindElementByPartialID("PriorityTXT").EnhanceAs<Textbox>();
             return priorityTextBox.GetText().Equals(priorityLevel, StringComparison.InvariantCultureIgnoreCase);
         }
-
-        private bool VerifyComponentNameExists(string componentName)
-        {
-            IWebElement componentGrid = Browser.TryFindElementByPartialID("ComponentGrid");
-            IWebElement componentNameTD = componentGrid.TryFindElementBy(By.XPath("tbody/tr/td[2][contains(text(), '" + componentName + "')]"));
-            return componentNameTD != null;
-        }
-
-        private bool VerifyComponentTermExists(string name, int? amountOfTimes = null)
-        {
-            IWebElement componentGrid = Browser.TryFindElementByPartialID("ComponentGrid");
-            ReadOnlyCollection<IWebElement> nameTDs = componentGrid.TryFindElementsBy(By.XPath("tbody/tr/td[1][contains(text(), '" + name + "')]"));
-            if (amountOfTimes == null)
-                return (nameTDs != null);
-            return (nameTDs != null && nameTDs.Count.Equals(amountOfTimes));
-        }
-
-        private bool VerifySupplementalTermExists(string name, int? amountOfTimes = null)
-        {
-            IWebElement supplementalGrid = Browser.TryFindElementByPartialID("SupplementalGrid");
-            ReadOnlyCollection<IWebElement> nameTDs = supplementalGrid.TryFindElementsBy(By.XPath("tbody/tr/td[1][contains(text(), '" + name + "')]"));
-            if (amountOfTimes == null)
-                return (nameTDs != null);
-            return (nameTDs != null && nameTDs.Count.Equals(amountOfTimes));
-        }
-
         #endregion
 
         #region IVerifyRowsExist
@@ -301,14 +269,17 @@ namespace Medidata.RBT.PageObjects.Rave
         /// <param name="tableIdentifier"></param>
         /// <param name="matchTable"></param>
         /// <returns></returns>
-        public bool VerifyTableRowsExist(string tableIdentifier, Table matchTable)
+        public bool VerifyTableRowsExist(string tableIdentifier, Table matchTable, int? amountOfTimes = null)
         {
             string tableId = GetTableIdFromTableName(tableIdentifier);
 
             HtmlTable htmlTable = Browser.TryFindElementById(tableId).EnhanceAs<HtmlTable>();
-            var matchTrs = htmlTable.FindMatchRows(matchTable);
+            ReadOnlyCollection<IWebElement> matchTrs = htmlTable.FindMatchRows(matchTable);
 
-            return matchTrs.Count == matchTable.Rows.Count;
+            if (amountOfTimes.HasValue)
+                return matchTrs.Count.Equals(matchTable.Rows.Count * amountOfTimes);
+            else
+                return matchTrs.Count == matchTable.Rows.Count;
         }
         #endregion
 

@@ -18,7 +18,7 @@ Background:
 		| MCC-42706A | MCC42706CodingDictionary |
 		| MCC-42706B | MCC42706CodingDictionary |
 		| MCC-42706C | MCC42706CodingDictionary |
-	
+	   
 	Given I login to Rave with user "SUPER USER 1"
 	Given xml draft "MCC42706ASource.xml" is Uploaded
 	Given xml draft "MCC42706ATarget.xml" is Uploaded
@@ -67,7 +67,7 @@ Scenario: When I copy a form from draft that contains Coder settings to a Archit
 	And I select "Draft" link "Target A"
 	And I select link "Copy to Draft" located in "Left Nav"
 	And I expand "Projects"
-	And I expand "Project" "MCC-42706A" 
+	And I expand "Project" "MCC-42706A"
 	And I expand "Drafts"
 	And I check "Source" in "Drafts"
 	And I click button "Next"
@@ -109,11 +109,18 @@ Scenario: When I copy a form from draft that contains Coder settings to a Archit
 	When I click button "Coder Configuration"
 	Then I verify text "CC1" exists in "Coding Level"
 	And I verify text "2" exists in "Priority"
-	And I verify text "LOGSUPPFIELD2" exists in "Supplemental Terms"
-	And I verify text "STDSUPPFIELD4" does not exist in "Supplemental Terms"
-	And I verify text "LOGCOMPFIELD1" exists in "Component Terms"
-	And I verify text "STDCOMPFIELD3" does not exist in "Component Terms"
-	And I verify text "CLCL1" exists in "Component Terms Component Name"
+	And I verify rows exist in "Supplemental Terms" table
+		| Name          |
+		| LOGSUPPFIELD2 |
+	And I verify rows do not exist in "Supplemental Terms" table
+		| Name          |
+		| STDSUPPFIELD4 |
+	And I verify rows exist in "Component Terms" table
+		| Name          | Component Name |
+		| LOGCOMPFIELD1 | CLCL1          |
+	And I verify rows do not exist in "Supplemental Terms" table
+		| Name          |
+		| STDSUPPFIELD4 |
 	And I take a screenshot
 
 @Release2013.1.0
@@ -155,11 +162,18 @@ Scenario: When I copy a form from versions that contains Coder settings to anoth
 	When I click button "Coder Configuration"
 	Then I verify text "CC1" exists in "Coding Level"
 	And I verify text "2" exists in "Priority"
-	And I verify text "LOGSUPPFIELD2" exists in "Supplemental Terms"
-	And I verify text "STDSUPPFIELD4" does not exist in "Supplemental Terms"
-	And I verify text "LOGCOMPFIELD1" exists in "Component Terms"
-	And I verify text "STDCOMPFIELD3" does not exist in "Component Terms"
-	And I verify text "CLCL1" exists in "Component Terms Component Name"
+	And I verify rows exist in "Supplemental Terms" table
+		| Name          |
+		| LOGSUPPFIELD2 |
+	And I verify rows do not exist in "Supplemental Terms" table
+		| Name          |
+		| STDSUPPFIELD4 |
+	And I verify rows exist in "Component Terms" table
+		| Name          | Component Name |
+		| LOGCOMPFIELD1 | CLCL1          |
+	And I verify rows do not exist in "Supplemental Terms" table
+		| Name          |
+		| STDSUPPFIELD4 |
 	And I take a screenshot
 	
 @Release2013.1.0
@@ -185,10 +199,10 @@ Scenario: When I search and copy a form that contains Coder settings to a Archit
 	And I expand "Drafts"
 	And I check "Source" in "Drafts"
 	And I click button "Next"
-	And I enter value "CoderField2 (CODERFIELD2)" in "Search" textbox
+	And I enter value "CoderField2 (CODERFIELD2)" in "Search" "textbox"
 	And I click button "Search"
 	And I check "CoderField2 (CODERFIELD2)"
-	And I enter value "" in "Search" textbox
+	And I enter value "" in "Search" "textbox"
 	And I click button "Search"
 	And I expand "ETE2 (ETE2)"
 	And I verify "LogCompField1 (LOGCOMPFIELD1)" is checked
@@ -213,11 +227,18 @@ Scenario: When I search and copy a form that contains Coder settings to a Archit
 	When I click button "Coder Configuration"
 	Then I verify text "CC1" exists in "Coding Level"
 	And I verify text "2" exists in "Priority"
-	And I verify text "LOGSUPPFIELD2" exists in "Supplemental Terms"
-	And I verify text "STDSUPPFIELD4" does not exist in "Supplemental Terms"
-	And I verify text "LOGCOMPFIELD1" exists in "Component Terms"
-	And I verify text "STDCOMPFIELD3" does not exist in "Component Terms"
-	And I verify text "CLCL1" exists in "Component Terms Component Name"
+	And I verify rows exist in "Supplemental Terms" table
+		| Name          |
+		| LOGSUPPFIELD2 |
+	And I verify rows do not exist in "Supplemental Terms" table
+		| Name          |
+		| STDSUPPFIELD4 |
+	And I verify rows exist in "Component Terms" table
+		| Name          | Component Name |
+		| LOGCOMPFIELD1 | CLCL1          |
+	And I verify rows do not exist in "Supplemental Terms" table
+		| Name          |
+		| STDSUPPFIELD4 |
 	And I take a screenshot	
 
 @Release2013.1.0
@@ -259,11 +280,18 @@ Scenario: When I copy a form that contains Coder settings to another Architect P
 	When I click button "Coder Configuration"
 	Then I verify text "CC1" exists in "Coding Level"
 	And I verify text "2" exists in "Priority"
-	And I verify text "LOGSUPPFIELD2" exists in "Supplemental Terms"
-	And I verify text "STDSUPPFIELD4" does not exist in "Supplemental Terms"
-	And I verify text "LOGCOMPFIELD1" exists in "Component Terms"
-	And I verify text "STDCOMPFIELD3" does not exist in "Component Terms"
-	And I verify text "CLCL1" exists in "Component Terms Component Name"
+	And I verify rows exist in "Supplemental Terms" table
+		| Name          |
+		| LOGSUPPFIELD2 |
+	And I verify rows do not exist in "Supplemental Terms" table
+		| Name          |
+		| STDSUPPFIELD4 |
+	And I verify rows exist in "Component Terms" table
+		| Name          | Component Name |
+		| LOGCOMPFIELD1 | CLCL1          |
+	And I verify rows do not exist in "Supplemental Terms" table
+		| Name          |
+		| STDSUPPFIELD4 |
 	And I take a screenshot
 	
 @Release2013.1.0
@@ -292,7 +320,7 @@ Scenario: When I copy a form that contains Coder settings to a Architect Project
 	And I select link "ETE2 (ETE2)"
 	And I expand "ETE2 (ETE2) details"
 	And I select link "Change OID in source"
-	And I enter value "ETE22" in "Change OID in source" textbox
+	And I enter value "ETE22" in "Change OID in source" "textbox"
 	And I click button "Accept"
 	And I expand "ETE2 (ETE22)" in area "Right"
 	And I check "CoderField2 (CODERFIELD2)"
@@ -332,11 +360,18 @@ Scenario: When I copy a form that contains Coder settings to a Architect Project
 	When I click button "Coder Configuration"
 	Then I verify text "CC1" exists in "Coding Level"
 	And I verify text "2" exists in "Priority"
-	And I verify text "LOGSUPPFIELD2" exists in "Supplemental Terms"
-	And I verify text "STDSUPPFIELD4" does not exist in "Supplemental Terms"
-	And I verify text "LOGCOMPFIELD1" exists in "Component Terms"
-	And I verify text "STDCOMPFIELD3" does not exist in "Component Terms"
-	And I verify text "CLCL1" exists in "Component Terms Component Name"
+	And I verify rows exist in "Supplemental Terms" table
+		| Name          |
+		| LOGSUPPFIELD2 |
+	And I verify rows do not exist in "Supplemental Terms" table
+		| Name          |
+		| STDSUPPFIELD4 |
+	And I verify rows exist in "Component Terms" table
+		| Name          | Component Name |
+		| LOGCOMPFIELD1 | CLCL1          |
+	And I verify rows do not exist in "Supplemental Terms" table
+		| Name          |
+		| STDSUPPFIELD4 |
 	And I take a screenshot
 	
 @Release2013.1.0
@@ -388,8 +423,8 @@ Scenario: When I copy a form from an Architect Project that contains Coder setti
 	And I verify "StdSuppField4 (STDSUPPFIELD4)" is enabled
 	And I take a screenshot
 	And I click button "Next"
-	And I enter value "Proposal006" in "Proposal Name" textbox
-	And I enter value "ProposalDescription006" in "Proposal Description" textbox
+	And I enter value "Proposal006" in "Proposal Name" "textbox"
+	And I enter value "ProposalDescription006" in "Proposal Description" "textbox"
 	And I click button "Finish"
 	And I navigate to "Architect" module
 	And I select "Proposal" link "Proposal006" in "Proposed Global Library Volumes"
@@ -601,11 +636,18 @@ Scenario: When I copy a form that contains Coder settings to a Architect Project
 	When I click button "Coder Configuration"
 	Then I verify text "CC1" exists in "Coding Level"
 	And I verify text "2" exists in "Priority"
-	And I verify text "LOGSUPPFIELD2" exists in "Supplemental Terms"
-	And I verify text "STDSUPPFIELD4" does not exist in "Supplemental Terms"
-	And I verify text "LOGCOMPFIELD1" exists in "Component Terms"
-	And I verify text "STDCOMPFIELD3" does not exist in "Component Terms"
-	And I verify text "CLCL1" exists in "Component Terms Component Name"
+	And I verify rows exist in "Supplemental Terms" table
+		| Name          |
+		| LOGSUPPFIELD2 |
+	And I verify rows do not exist in "Supplemental Terms" table
+		| Name          |
+		| STDSUPPFIELD4 |
+	And I verify rows exist in "Component Terms" table
+		| Name          | Component Name |
+		| LOGCOMPFIELD1 | CLCL1          |
+	And I verify rows do not exist in "Supplemental Terms" table
+		| Name          |
+		| STDSUPPFIELD4 |
 	And I take a screenshot
 	And I navigate to "Architect" module
 	And I select "Project" link "MCC-42706C" in "Active Projects"
@@ -623,7 +665,7 @@ Scenario: When I copy a form that contains Coder settings to a Architect Project
 	And I select link "CoderField2 (CODERFIELD2)"
 	And I expand "CoderField2 (CODERFIELD2) details"
 	And I select link "Change OID in source"
-	And I enter value "CoderField22" in "Change OID in source" textbox
+	And I enter value "CoderField22" in "Change OID in source" "textbox"
 	And I click button "Accept"
 	And I check "CoderField2 (CODERFIELD22)"
 	And I take a screenshot
@@ -642,9 +684,16 @@ Scenario: When I copy a form that contains Coder settings to a Architect Project
 	When I click button "Coder Configuration"
 	Then I verify text "CC1" exists in "Coding Level"
 	And I verify text "2" exists in "Priority"
-	And I verify text "LOGSUPPFIELD2" exists "1" time(s) in "Supplemental Terms"
-	And I verify text "STDSUPPFIELD4" does not exist in "Supplemental Terms"
-	And I verify text "LOGCOMPFIELD1" exists "1" time(s) in "Component Terms"
-	And I verify text "STDCOMPFIELD3" does not exist in "Component Terms"
-	And I verify text "CLCL1" exists in "Component Terms Component Name"
+	And I verify rows exist in "Supplemental Terms" table "1" time(s)
+		| Name          |
+		| LOGSUPPFIELD2 |
+	And I verify rows do not exist in "Supplemental Terms" table
+		| Name          |
+		| STDSUPPFIELD4 |
+	And I verify rows exist in "Component Terms" table "1" time(s)
+		| Name          | Component Name |
+		| LOGCOMPFIELD1 | CLCL1          |
+	And I verify rows do not exist in "Supplemental Terms" table
+		| Name          |
+		| STDSUPPFIELD4 |
 	And I take a screenshot

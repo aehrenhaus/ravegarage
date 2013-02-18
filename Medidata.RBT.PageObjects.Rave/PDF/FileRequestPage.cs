@@ -262,9 +262,9 @@ namespace Medidata.RBT.PageObjects.Rave
             Browser.TryFindElementBy(By.XPath(".//div[contains(@id, 'CombineLogLinesFrms_div') and contains(@style, 'block')]"), true, 30);
         }
 
-     
 
-		bool IVerifyRowsExist.VerifyTableRowsExist(string tableIdentifier, Table matchTable)
+
+        bool IVerifyRowsExist.VerifyTableRowsExist(string tableIdentifier, Table matchTable, int? amountOfTimes)
 		{
 			bool allExists = false;
 			if (tableIdentifier == "Display multiple log lines per page")
