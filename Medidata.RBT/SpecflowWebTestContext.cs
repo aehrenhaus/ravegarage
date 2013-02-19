@@ -130,7 +130,7 @@ namespace Medidata.RBT
 		{
 			string backend = null;
 			string suppress = null;
-			bool enable = false;
+			bool enable = true;
 			bool hasSettings = false;
 
 			foreach (var featureTag in FeatureContext.Current.FeatureInfo.Tags)
@@ -139,6 +139,7 @@ namespace Medidata.RBT
 				if (parts.Length != 2)
 					continue;
 
+                parts[1] = parts[1].Trim(' ', '\"');
 				if (parts[0] == "SeedFromBackendClasses")
 				{
 					backend = parts[1];
