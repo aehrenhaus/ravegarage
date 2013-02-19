@@ -42,12 +42,13 @@ namespace Medidata.RBT.Objects.Integration.Helpers
             }
         }
 
-        public static void CreateRaveSite(string siteNumber)
+        public static void CreateRaveSite(string siteNumber, string siteName = "SiteName")
         {
             var site = new Site(SystemInteraction.Use())
                            {
                                Active = true,
                                Number = siteNumber,
+                               Name = siteName,
                                ExternalSystem = ExternalSystem.GetByID(1),
                                Uuid = Guid.NewGuid().ToString()
                            };

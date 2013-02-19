@@ -23,15 +23,27 @@ namespace Medidata.RBT.Features.Integration.Steps
         public void ThenIShouldSeeTheStudySiteInTheRaveDatabase()
         {
             var study = ScenarioContext.Current.Get<Study>("study");
-            var siteUuid = ScenarioContext.Current.Get<String>("siteUuid");
-
-            var site = Site.FindByUuid(siteUuid, 1, SystemInteraction.Use());
+            var site = Site.FindByUuid(ScenarioContext.Current.Get<string>("siteUuid"), 1, SystemInteraction.Use());
 
             var studySite = StudySite.FindByStudyIDandSiteID(study.ID, site.ID, SystemInteraction.Use());
 
             Assert.IsNotNull(studySite);
-            ScenarioContext.Current.Add("studySite", studySite);
+            ScenarioContext.Current.Set(studySite, "studySite");
         }
+
+        [Then(@"I should not see the studysite in the Rave database")]
+        public void ThenIShouldNotSeeTheStudysiteInTheRaveDatabase()
+        {
+            var study = ScenarioContext.Current.Get<Study>("study");
+            var site = ScenarioContext.Current.ContainsKey("site")
+                           ? ScenarioContext.Current.Get<Site>("site")
+                           : Site.FindByUuid(ScenarioContext.Current.Get<string>("siteUuid"), 1, SystemInteraction.Use());
+
+            var studySite = StudySite.FindByStudyIDandSiteID(study.ID, site.ID, SystemInteraction.Use());
+
+            Assert.IsTrue(studySite == null || studySite.Active);
+        }
+
 
         [Then(@"the studysite should have the StudySiteId ""(.*)""")]
         public void ThenTheStudysiteShouldHaveTheStudySiteId____(int studySiteId)
@@ -87,6 +99,29 @@ namespace Medidata.RBT.Features.Integration.Steps
             var studySite = ScenarioContext.Current.Get<StudySite>("studySite");
 
             Assert.AreEqual(false, studySite.Active);
+        }
+
+        [Then(@"the studysite should have the source iMedidata")]
+        public void ThenTheStudysiteShouldHaveTheSourceIMedidata()
+        {
+            var studySite = ScenarioContext.Current.Get<StudySite>("studySite");
+
+            Assert.AreEqual(1, studySite.ExternalSystem.ID);
+        }
+
+        [Given(@"the studysite exists with the study site number ""(.*)"" and the given study and site")]
+        public void GivenTheStudysiteExistsWithTheStudySiteNumber____AndTheGivenStudyAndSite(string number)
+        {
+            var study = ScenarioContext.Current.Get<Study>("study");
+            var site = ScenarioContext.Current.Get<Site>("site");
+
+            var studySite = new StudySite(study, site, SystemInteraction.Use())
+                                {
+                                    StudySiteNumber = number,
+                                    Uuid = Guid.NewGuid().ToString()
+                                };
+            
+            ScenarioContext.Current.Add("studySite", studySite);
         }
 
     }
