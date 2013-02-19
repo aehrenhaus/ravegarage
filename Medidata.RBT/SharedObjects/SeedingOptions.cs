@@ -22,11 +22,11 @@ namespace Medidata.RBT.SharedObjects
 
 			_enableSeeding = enableSeeding;
 
-			if(seedFromBackendClasses!=null)
+			if(!string.IsNullOrWhiteSpace(seedFromBackendClasses))
 				foreach (var b in seedFromBackendClasses.Split(','))
 					_backEndNames.Add(b.Trim());
 
-			if (suppressSeedingClasses != null)
+			if (!string.IsNullOrWhiteSpace(suppressSeedingClasses))
 				foreach (var b in suppressSeedingClasses.Split(','))
 				_suppressSeedingNames.Add(b.Trim());
 		}
