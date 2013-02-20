@@ -37,7 +37,7 @@ namespace Medidata.RBT.Features.Integration.Steps
         {
             var numVisibleMessages = IntegrationTestContext.SqsWrapper.GetApproxNumberOfMessages(IntegrationTestContext.SqsQueueUrl, true);
             var numInvisibleMessages = IntegrationTestContext.SqsWrapper.GetApproxNumberOfMessages(IntegrationTestContext.SqsQueueUrl, false);
-            Thread.Sleep(10000);
+            Thread.Sleep(15000);
             var endTime = DateTime.Now.AddSeconds(30);
 
             while(numVisibleMessages > 0 || numInvisibleMessages > 0)
