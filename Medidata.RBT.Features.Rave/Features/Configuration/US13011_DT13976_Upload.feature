@@ -4,7 +4,7 @@
 Feature: US13011
 	When the Configuration Settings are Uploaded, they should include Coder Configuration details.
 	As a Rave Administrator
-	When I am oMonitoring Groupn the Configuration Loader page
+	When I am on the Configuration Loader page
 	And I Upload Configuration File
 	Then the Core Configuration specification contains Coder Configuration details
 
