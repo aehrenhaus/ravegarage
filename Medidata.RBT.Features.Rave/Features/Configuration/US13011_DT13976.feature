@@ -37,24 +37,24 @@ Scenario: @PB_US11101_01 As a Data Manager, when I am on the Configuration Loade
 	And I navigate to "Coder Configuration"
 	And I enter data in "Coder Configuration" and save
 		| Review Marking Group | Requires Response |
-		| site from system     | True              |
+		| Site                 | True              |
 	And I select link "Configuration Loader"
 	And I click the "Get File" button to download
 	And I verify "Coder Configuration" spreadsheet data
-		| Version | Coder Manual Queries  | Setting          | Instructions/Comments                                                                                                                                                                 |
-		|         | Review Marking Group  | site from system | Marking Groups enable queries to be opened by Coder and directed to specific roles.  These roles will be able to take action against the query as long as the role action permits it. |
+		| Version | Coder Manual Queries | Setting | Instructions/Comments |
+		|         | Review Marking Group | Site    | Marking Groups enable queries to be opened by Coder and directed to specific roles.  These roles will be able to take action against the query as long as the role action permits it. |
 	And I navigate to "Configuration"
 	And I navigate to "Other Settings"
 	And I navigate to "Coder Configuration"
 	And I enter data in "Coder Configuration" and save
 		| Review Marking Group | Requires Response |
-		| Marking Group 2      | False             |
+		| Monitoring Group     | False             |
 	And I navigate to "Other Settings"
 	And I navigate to "Configuration Loader"
 	And I click the "Get File" button to download
 	And I verify "Coder Configuration" spreadsheet data
-		| Version | Coder Manual Queries | Setting         | Instructions/Comments                                                                                                                                                                 |
-		|         | Review Marking Group | Marking Group 2 | Marking Groups enable queries to be opened by Coder and directed to specific roles.  These roles will be able to take action against the query as long as the role action permits it. |
+		| Version | Coder Manual Queries | Setting          | Instructions/Comments |
+		|         | Review Marking Group | Monitoring Group | Marking Groups enable queries to be opened by Coder and directed to specific roles.  These roles will be able to take action against the query as long as the role action permits it. |
 	
 #----------------------------------------------------------------------------------------------------------------------------------------
 @release_2013.1.0
