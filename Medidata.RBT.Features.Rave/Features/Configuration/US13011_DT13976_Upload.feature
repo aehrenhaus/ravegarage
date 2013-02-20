@@ -4,7 +4,7 @@
 Feature: US13011
 	When the Configuration Settings are Uploaded, they should include Coder Configuration details.
 	As a Rave Administrator
-	When I am on the Configuration Loader page
+	When I am oMonitoring Groupn the Configuration Loader page
 	And I Upload Configuration File
 	Then the Core Configuration specification contains Coder Configuration details
 
@@ -78,7 +78,7 @@ Scenario: PB_US13011_DT13976_Upload_05 As a Data Manager, When I update existing
 	And I click "Upload" to upload "configureation settings" file "RaveCoreConfig3.xml" and wait until I see "Save successful"
 	And I navigate to "Other Settings"
 	And I navigate to "Coder Configuration"
-	Then I should see "Marking Group 5" in "Review Marking Group dropdown" 
+	Then I should see "Monitoring Group" in "Review Marking Group dropdown" 
 	And I should see "Requires Response checked" 
 	And I take a screenshot
 #----------------------------------------------------------------------------------------------------------------------------------------	
