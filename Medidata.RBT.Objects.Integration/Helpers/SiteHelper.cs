@@ -36,7 +36,7 @@ namespace Medidata.RBT.Objects.Integration.Helpers
                         {
                             config.Uuid = ScenarioContext.Current.Keys.Contains("siteUuid") ?
                                       new Guid(ScenarioContext.Current.Get<String>("siteUuid")) : //site was created via post message
-                                      new Guid(ScenarioContext.Current.Get<Site>("site").Uuid);  //site existence was a given
+                                      new Guid(ScenarioContext.Current.Get<Site>("site").Uuid);  //site was seeded in Rave
                         }
                         else
                         {

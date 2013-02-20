@@ -23,7 +23,7 @@ namespace Medidata.RBT.Features.Integration.Steps
         {
             var siteUuid = ScenarioContext.Current.Keys.Contains("siteUuid") ?
                            ScenarioContext.Current.Get<String>("siteUuid") : //site was created via post message
-                           ScenarioContext.Current.Get<Site>("site").Uuid;  //site existence was a given
+                           ScenarioContext.Current.Get<Site>("site").Uuid;  //site was seeded in Rave
 
             var site = Site.FindByUuid(siteUuid, 1, SystemInteraction.Use());
 

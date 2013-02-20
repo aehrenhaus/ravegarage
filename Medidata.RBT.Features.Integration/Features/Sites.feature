@@ -72,8 +72,7 @@ Scenario: If I have a linked site in iMedidata, and I change the site number in 
 
 @PB2.5.9.46-01
 Scenario: If I have a linked site in iMedidata, and I change the site name in iMedidata, when Rave receives the updated site,
-             Rave will update the site name to match with the iMedidata site name.
-	
+             Rave will update the site name to match with the iMedidata site name.	
 	Given the Site with site number "8" exists in the Rave database
 	Given I send the following Site message to SQS
 	| EventType | Name      | Number | Timestamp           |
