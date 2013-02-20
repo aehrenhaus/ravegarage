@@ -37,24 +37,26 @@ Scenario: @PB_US11101_01 As a Data Manager, when I am on the Configuration Loade
 	And I navigate to "Coder Configuration"
 	And I enter data in "Coder Configuration" and save
 		| Review Marking Group | Requires Response |
-		| site from system     | True              |
+		| Site                 | True              |
 	And I select link "Configuration Loader"
 	And I click the "Get File" button to download
 	And I verify "Coder Configuration" spreadsheet data
-		| Version | Coder Manual Queries  | Setting          | Instructions/Comments                                                                                                                                                                 |
-		|         | Review Marking Group  | site from system | Marking Groups enable queries to be opened by Coder and directed to specific roles.  These roles will be able to take action against the query as long as the role action permits it. |
+		| Version | Coder Manual Queries | Setting | Instructions/Comments                                                                                                                                                                 |
+		|         | Review Marking Group | Site    | Marking Groups enable queries to be opened by Coder and directed to specific roles.  These roles will be able to take action against the query as long as the role action permits it. |
+		|         | Requires Response    | True    | A response by the user role the query has been opened against is needed.  True = a response is required.  False = No response is required and query text will just be displayed.      |  
 	And I navigate to "Configuration"
 	And I navigate to "Other Settings"
 	And I navigate to "Coder Configuration"
 	And I enter data in "Coder Configuration" and save
 		| Review Marking Group | Requires Response |
-		| Marking Group 2      | False             |
+		| Monitoring Group     | False             |
 	And I navigate to "Other Settings"
 	And I navigate to "Configuration Loader"
 	And I click the "Get File" button to download
 	And I verify "Coder Configuration" spreadsheet data
-		| Version | Coder Manual Queries | Setting         | Instructions/Comments                                                                                                                                                                 |
-		|         | Review Marking Group | Marking Group 2 | Marking Groups enable queries to be opened by Coder and directed to specific roles.  These roles will be able to take action against the query as long as the role action permits it. |
+		| Version | Coder Manual Queries | Setting          | Instructions/Comments                                                                                                                                                                 |
+		|         | Review Marking Group | Monitoring Group | Marking Groups enable queries to be opened by Coder and directed to specific roles.  These roles will be able to take action against the query as long as the role action permits it. |
+		|         | Requires Response    | False            | A response by the user role the query has been opened against is needed.  True = a response is required.  False = No response is required and query text will just be displayed.      |
 	
 #----------------------------------------------------------------------------------------------------------------------------------------
 @release_2013.1.0
@@ -69,5 +71,6 @@ Scenario:@PB_US11101_02  As a Data Manager, when I am on the Configuration Loade
 	And I take a screenshot
 	And I click the "Get File" button to download
 	Then I verify "Coder Configuration" spreadsheet data
-		| Version | Coder Manual Queries  | Setting | Instructions/Comments                                                                                                                                                                 |
-		|         | Review Marking Group  |			| Marking Groups enable queries to be opened by Coder and directed to specific roles.  These roles will be able to take action against the query as long as the role action permits it. |
+		| Version | Coder Manual Queries | Setting | Instructions/Comments                                                                                                                                                                 |
+		|         | Review Marking Group |         | Marking Groups enable queries to be opened by Coder and directed to specific roles.  These roles will be able to take action against the query as long as the role action permits it. |
+		|         | Requires Response    |         | A response by the user role the query has been opened against is needed.  True = a response is required.  False = No response is required and query text will just be displayed.      |
