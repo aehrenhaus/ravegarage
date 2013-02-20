@@ -1,4 +1,4 @@
-﻿@FT_@MCC-42701DL
+﻿@FT_MCC-42701DL
 
 Feature: MCC-42701DL Architect download will contain Coder settings and Architect upload will save Coder settings when a URL that has Coder registered
 
