@@ -8,7 +8,7 @@ using Medidata.RBT.PageObjects.Rave.SharedRaveObjects;
 using System.Collections.ObjectModel;
 namespace Medidata.RBT.PageObjects.Rave
 {
-	public class ArchitectFormDesignerPage : ArchitectBasePage, IActivatePage, IVerifySomethingExists
+	public class ArchitectFormDesignerPage : ArchitectBasePage, IActivatePage, IVerifySomethingExists, IExpand
 	{
 		#region IActivatePage
 
@@ -56,7 +56,7 @@ namespace Medidata.RBT.PageObjects.Rave
         }
 
     
-        public IPage ExpandEditChecks(string field = "")
+        private IPage ExpandEditChecks(string field = "")
         {
             if (!field.Equals(""))
                 ClickEditForField(field);
@@ -353,5 +353,23 @@ namespace Medidata.RBT.PageObjects.Rave
         {
             return Browser.TryFindElementByPartialID("ddlCodingDictionary").Text.Equals(codingDictionary, StringComparison.InvariantCultureIgnoreCase) != null;
         }
+
+        #region IExpand_interface
+        /// <summary>
+        /// Use this method to expand any control on Architect Form Designer page
+        /// Relevant support should be added based on need.
+        /// </summary>
+        /// <param name="objectToExpand"></param>
+        /// <param name="areaIdentifier"></param>
+        public void Expand(string objectToExpand, string areaIdentifier = null)
+        {
+            if (objectToExpand.Equals("Field Edit Checks", StringComparison.InvariantCultureIgnoreCase))
+            {
+                ExpandEditChecks();
+            }
+            else
+                throw new NotImplementedException(string.Format("Method currently does not support expand for {0}", objectToExpand));
+        }
+        #endregion
     }
 }

@@ -57,16 +57,6 @@ namespace Medidata.RBT.Features.Rave.Steps
         }
 
         /// <summary>
-        /// Expand field checks
-        /// This is an old method, refrain from doing expands this way as it is not extensible
-        /// </summary>
-        [StepDefinition(@"I expand ""Field Edit Checks""")]
-        public void IExpandFieldEditChecks()
-        {
-            CurrentPage = CurrentPage.As<ArchitectFormDesignerPage>().ExpandEditChecks();
-        }
-
-        /// <summary>
         /// Expand a header in Task Summary area on Subject page.
         /// This is an old method, refrain from doing expands this way as it is not extensible
         /// </summary>
