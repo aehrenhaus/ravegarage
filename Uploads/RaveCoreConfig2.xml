@@ -28,8 +28,8 @@
   <WindowTopX>-15</WindowTopX>
   <WindowTopY>-15</WindowTopY>
   <TabRatio>767</TabRatio>
-  <ActiveSheet>29</ActiveSheet>
-  <FirstVisibleSheet>28</FirstVisibleSheet>
+  <ActiveSheet>14</ActiveSheet>
+  <FirstVisibleSheet>11</FirstVisibleSheet>
   <RefModeR1C1/>
   <ProtectStructure>False</ProtectStructure>
   <ProtectWindows>False</ProtectWindows>
@@ -43,7 +43,7 @@
    <NumberFormat/>
    <Protection/>
   </Style>
-  <Style ss:ID="m58139968">
+  <Style ss:ID="m76627008">
    <Alignment ss:Vertical="Top" ss:WrapText="1"/>
    <Borders>
     <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"
@@ -57,7 +57,7 @@
    </Borders>
    <Font ss:FontName="Arial" x:Family="Swiss"/>
   </Style>
-  <Style ss:ID="m58141760">
+  <Style ss:ID="m109122432">
    <Alignment ss:Horizontal="Left" ss:Vertical="Top" ss:WrapText="1"/>
    <Borders>
     <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"
@@ -72,7 +72,7 @@
    <Font ss:FontName="Verdana" x:Family="Swiss"/>
    <Protection/>
   </Style>
-  <Style ss:ID="m84513664">
+  <Style ss:ID="m109124224">
    <Alignment ss:Horizontal="Left" ss:Vertical="Top" ss:WrapText="1"/>
    <Borders>
     <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"
@@ -86,7 +86,7 @@
    </Borders>
    <Font ss:FontName="Verdana" x:Family="Swiss"/>
   </Style>
-  <Style ss:ID="m84515232">
+  <Style ss:ID="m109158624">
    <Alignment ss:Horizontal="Center" ss:Vertical="Center" ss:VerticalText="1"/>
    <Borders>
     <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="2"
@@ -100,7 +100,7 @@
    </Borders>
    <Font ss:FontName="Verdana" x:Family="Swiss" ss:Bold="1"/>
   </Style>
-  <Style ss:ID="m84515292">
+  <Style ss:ID="m109158684">
    <Alignment ss:Horizontal="Center" ss:Vertical="Center" ss:VerticalText="1"/>
    <Borders>
     <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="2"
@@ -114,7 +114,7 @@
    </Borders>
    <Font ss:FontName="Verdana" x:Family="Swiss" ss:Bold="1"/>
   </Style>
-  <Style ss:ID="m84515312">
+  <Style ss:ID="m109158704">
    <Alignment ss:Horizontal="Center" ss:Vertical="Center" ss:VerticalText="1"/>
    <Borders>
     <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="2"
@@ -128,7 +128,7 @@
    </Borders>
    <Font ss:FontName="Verdana" x:Family="Swiss" ss:Bold="1"/>
   </Style>
-  <Style ss:ID="m84515332">
+  <Style ss:ID="m109158724">
    <Alignment ss:Horizontal="Center" ss:Vertical="Center" ss:VerticalText="1"/>
    <Borders>
     <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="2"
@@ -140,7 +140,7 @@
    </Borders>
    <Font ss:FontName="Verdana" x:Family="Swiss" ss:Bold="1"/>
   </Style>
-  <Style ss:ID="m84515008">
+  <Style ss:ID="m109158400">
    <Alignment ss:Horizontal="Center" ss:Vertical="Center" ss:VerticalText="1"/>
    <Borders>
     <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="2"
@@ -154,7 +154,7 @@
    </Borders>
    <Font ss:FontName="Verdana" x:Family="Swiss" ss:Bold="1"/>
   </Style>
-  <Style ss:ID="m84515068">
+  <Style ss:ID="m109158460">
    <Alignment ss:Horizontal="Center" ss:Vertical="Center" ss:VerticalText="1"/>
    <Borders>
     <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="2"
@@ -168,7 +168,7 @@
    </Borders>
    <Font ss:FontName="Verdana" x:Family="Swiss" ss:Bold="1"/>
   </Style>
-  <Style ss:ID="m84515088">
+  <Style ss:ID="m109158480">
    <Alignment ss:Horizontal="Center" ss:Vertical="Center" ss:VerticalText="1"/>
    <Borders>
     <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="2"
@@ -182,7 +182,7 @@
    </Borders>
    <Font ss:FontName="Verdana" x:Family="Swiss" ss:Bold="1"/>
   </Style>
-  <Style ss:ID="m84515108">
+  <Style ss:ID="m109158500">
    <Alignment ss:Horizontal="Center" ss:Vertical="Center" ss:VerticalText="1"/>
    <Borders>
     <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="2"
@@ -194,7 +194,7 @@
    </Borders>
    <Font ss:FontName="Verdana" x:Family="Swiss" ss:Bold="1"/>
   </Style>
-  <Style ss:ID="m84514784">
+  <Style ss:ID="m109125344">
    <Alignment ss:Horizontal="Center" ss:Vertical="Center" ss:VerticalText="1"/>
    <Borders>
     <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="2"
@@ -208,7 +208,7 @@
    </Borders>
    <Font ss:FontName="Verdana" x:Family="Swiss" ss:Bold="1"/>
   </Style>
-  <Style ss:ID="m84514844">
+  <Style ss:ID="m109125404">
    <Alignment ss:Horizontal="Center" ss:Vertical="Center" ss:VerticalText="1"/>
    <Borders>
     <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="2"
@@ -222,7 +222,7 @@
    </Borders>
    <Font ss:FontName="Verdana" x:Family="Swiss" ss:Bold="1"/>
   </Style>
-  <Style ss:ID="m84514864">
+  <Style ss:ID="m109125424">
    <Alignment ss:Horizontal="Center" ss:Vertical="Center" ss:VerticalText="1"/>
    <Borders>
     <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="2"
@@ -236,7 +236,7 @@
    </Borders>
    <Font ss:FontName="Verdana" x:Family="Swiss" ss:Bold="1"/>
   </Style>
-  <Style ss:ID="m84514884">
+  <Style ss:ID="m109125444">
    <Alignment ss:Horizontal="Center" ss:Vertical="Center" ss:VerticalText="1"/>
    <Borders>
     <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="2"
@@ -248,7 +248,7 @@
    </Borders>
    <Font ss:FontName="Verdana" x:Family="Swiss" ss:Bold="1"/>
   </Style>
-  <Style ss:ID="m84514560">
+  <Style ss:ID="m109125120">
    <Alignment ss:Horizontal="Center" ss:Vertical="Center" ss:VerticalText="1"/>
    <Borders>
     <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="2"
@@ -262,7 +262,7 @@
    </Borders>
    <Font ss:FontName="Verdana" x:Family="Swiss" ss:Bold="1"/>
   </Style>
-  <Style ss:ID="m84514620">
+  <Style ss:ID="m109125180">
    <Alignment ss:Horizontal="Center" ss:Vertical="Center" ss:VerticalText="1"/>
    <Borders>
     <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="2"
@@ -276,7 +276,7 @@
    </Borders>
    <Font ss:FontName="Verdana" x:Family="Swiss" ss:Bold="1"/>
   </Style>
-  <Style ss:ID="m84514640">
+  <Style ss:ID="m109125200">
    <Alignment ss:Horizontal="Center" ss:Vertical="Center" ss:VerticalText="1"/>
    <Borders>
     <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="2"
@@ -290,7 +290,7 @@
    </Borders>
    <Font ss:FontName="Verdana" x:Family="Swiss" ss:Bold="1"/>
   </Style>
-  <Style ss:ID="m84514660">
+  <Style ss:ID="m109125220">
    <Alignment ss:Horizontal="Center" ss:Vertical="Center" ss:VerticalText="1"/>
    <Borders>
     <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="2"
@@ -302,7 +302,7 @@
    </Borders>
    <Font ss:FontName="Verdana" x:Family="Swiss" ss:Bold="1"/>
   </Style>
-  <Style ss:ID="m84514336">
+  <Style ss:ID="m109124896">
    <Alignment ss:Horizontal="Center" ss:Vertical="Center" ss:VerticalText="1"/>
    <Borders>
     <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="2"
@@ -316,7 +316,7 @@
    </Borders>
    <Font ss:FontName="Verdana" x:Family="Swiss" ss:Bold="1"/>
   </Style>
-  <Style ss:ID="m84514396">
+  <Style ss:ID="m109124956">
    <Alignment ss:Horizontal="Center" ss:Vertical="Center" ss:VerticalText="1"/>
    <Borders>
     <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="2"
@@ -330,7 +330,7 @@
    </Borders>
    <Font ss:FontName="Verdana" x:Family="Swiss" ss:Bold="1"/>
   </Style>
-  <Style ss:ID="m84514416">
+  <Style ss:ID="m109124976">
    <Alignment ss:Horizontal="Center" ss:Vertical="Center" ss:VerticalText="1"/>
    <Borders>
     <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="2"
@@ -344,7 +344,7 @@
    </Borders>
    <Font ss:FontName="Verdana" x:Family="Swiss" ss:Bold="1"/>
   </Style>
-  <Style ss:ID="m84514436">
+  <Style ss:ID="m109124996">
    <Alignment ss:Horizontal="Center" ss:Vertical="Center" ss:VerticalText="1"/>
    <Borders>
     <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="2"
@@ -356,7 +356,7 @@
    </Borders>
    <Font ss:FontName="Verdana" x:Family="Swiss" ss:Bold="1"/>
   </Style>
-  <Style ss:ID="m84516352">
+  <Style ss:ID="m109159968">
    <Alignment ss:Horizontal="Left" ss:Vertical="Top" ss:WrapText="1"/>
    <Borders>
     <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"
@@ -371,7 +371,7 @@
    <Font ss:FontName="Verdana" x:Family="Swiss"/>
    <Protection/>
   </Style>
-  <Style ss:ID="m109290144">
+  <Style ss:ID="m109161088">
    <Alignment ss:Horizontal="Center" ss:Vertical="Top"/>
    <Borders>
     <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"
@@ -385,7 +385,7 @@
    </Borders>
    <Font ss:FontName="Verdana" x:Family="Swiss" ss:Bold="1"/>
   </Style>
-  <Style ss:ID="m110764256">
+  <Style ss:ID="m110487520">
    <Alignment ss:Horizontal="Left" ss:Vertical="Top" ss:WrapText="1"/>
    <Borders>
     <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"
@@ -400,7 +400,7 @@
    <Font ss:FontName="Verdana" x:Family="Swiss"/>
    <Protection/>
   </Style>
-  <Style ss:ID="m110764276">
+  <Style ss:ID="m110487540">
    <Alignment ss:Horizontal="Left" ss:Vertical="Top" ss:WrapText="1"/>
    <Borders>
     <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"
@@ -415,7 +415,7 @@
    <Font ss:FontName="Verdana" x:Family="Swiss"/>
    <Protection/>
   </Style>
-  <Style ss:ID="m110764296">
+  <Style ss:ID="m110487560">
    <Alignment ss:Horizontal="Left" ss:Vertical="Top" ss:WrapText="1"/>
    <Borders>
     <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"
@@ -430,7 +430,7 @@
    <Font ss:FontName="Verdana" x:Family="Swiss" ss:Italic="1"/>
    <Protection/>
   </Style>
-  <Style ss:ID="m109627584">
+  <Style ss:ID="m110473216">
    <Alignment ss:Horizontal="Left" ss:Vertical="Top" ss:WrapText="1"/>
    <Borders>
     <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"
@@ -445,7 +445,7 @@
    <Font ss:FontName="Verdana" x:Family="Swiss"/>
    <Protection/>
   </Style>
-  <Style ss:ID="m109627604">
+  <Style ss:ID="m110473236">
    <Alignment ss:Horizontal="Left" ss:Vertical="Top" ss:WrapText="1"/>
    <Borders>
     <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"
@@ -460,7 +460,7 @@
    <Font ss:FontName="Verdana" x:Family="Swiss"/>
    <Protection/>
   </Style>
-  <Style ss:ID="m109627624">
+  <Style ss:ID="m110473256">
    <Alignment ss:Horizontal="Left" ss:Vertical="Top" ss:WrapText="1"/>
    <Borders>
     <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"
@@ -475,7 +475,7 @@
    <Font ss:FontName="Verdana" x:Family="Swiss"/>
    <Protection/>
   </Style>
-  <Style ss:ID="m109627644">
+  <Style ss:ID="m110473276">
    <Alignment ss:Horizontal="Left" ss:Vertical="Top" ss:WrapText="1"/>
    <Borders>
     <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"
@@ -490,7 +490,7 @@
    <Font ss:FontName="Verdana" x:Family="Swiss"/>
    <Protection/>
   </Style>
-  <Style ss:ID="m109627664">
+  <Style ss:ID="m110473296">
    <Alignment ss:Horizontal="Left" ss:Vertical="Top" ss:WrapText="1"/>
    <Borders>
     <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"
@@ -505,7 +505,7 @@
    <Font ss:FontName="Verdana" x:Family="Swiss"/>
    <Protection/>
   </Style>
-  <Style ss:ID="m109627684">
+  <Style ss:ID="m110473316">
    <Alignment ss:Horizontal="Left" ss:Vertical="Top" ss:WrapText="1"/>
    <Borders>
     <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"
@@ -520,7 +520,7 @@
    <Font ss:FontName="Verdana" x:Family="Swiss"/>
    <Protection/>
   </Style>
-  <Style ss:ID="m110876640">
+  <Style ss:ID="m110669536">
    <Alignment ss:Horizontal="Left" ss:Vertical="Top" ss:WrapText="1"/>
    <Borders>
     <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="2"
@@ -534,7 +534,7 @@
    </Borders>
    <Font ss:FontName="Verdana" x:Family="Swiss"/>
   </Style>
-  <Style ss:ID="m110877984">
+  <Style ss:ID="m111748192">
    <Alignment ss:Horizontal="Left" ss:Vertical="Top" ss:WrapText="1"/>
    <Borders>
     <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"
@@ -548,7 +548,7 @@
    </Borders>
    <Font ss:FontName="Verdana" x:Family="Swiss"/>
   </Style>
-  <Style ss:ID="m110882816">
+  <Style ss:ID="m111748864">
    <Alignment ss:Horizontal="Left" ss:Vertical="Top" ss:WrapText="1"/>
    <Borders>
     <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"
@@ -562,7 +562,7 @@
    </Borders>
    <Font ss:FontName="Verdana" x:Family="Swiss"/>
   </Style>
-  <Style ss:ID="m110883488">
+  <Style ss:ID="m111749536">
    <Alignment ss:Horizontal="Left" ss:Vertical="Top" ss:WrapText="1"/>
    <Borders>
     <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"
@@ -576,7 +576,7 @@
    </Borders>
    <Font ss:FontName="Verdana" x:Family="Swiss"/>
   </Style>
-  <Style ss:ID="m110884384">
+  <Style ss:ID="m111750432">
    <Alignment ss:Horizontal="Left" ss:Vertical="Top" ss:WrapText="1"/>
    <Borders>
     <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"
@@ -590,7 +590,7 @@
    </Borders>
    <Font ss:FontName="Verdana" x:Family="Swiss"/>
   </Style>
-  <Style ss:ID="m110884404">
+  <Style ss:ID="m111750452">
    <Alignment ss:Horizontal="Left" ss:Vertical="Top" ss:WrapText="1"/>
    <Borders>
     <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"
@@ -604,7 +604,7 @@
    </Borders>
    <Font ss:FontName="Verdana" x:Family="Swiss"/>
   </Style>
-  <Style ss:ID="m110884424">
+  <Style ss:ID="m111750472">
    <Alignment ss:Horizontal="Left" ss:Vertical="Top" ss:WrapText="1"/>
    <Borders>
     <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"
@@ -618,7 +618,7 @@
    </Borders>
    <Font ss:FontName="Verdana" x:Family="Swiss"/>
   </Style>
-  <Style ss:ID="m110884444">
+  <Style ss:ID="m111750492">
    <Alignment ss:Horizontal="Left" ss:Vertical="Top" ss:WrapText="1"/>
    <Borders>
     <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"
@@ -632,7 +632,7 @@
    </Borders>
    <Font ss:FontName="Verdana" x:Family="Swiss"/>
   </Style>
-  <Style ss:ID="m110884464">
+  <Style ss:ID="m111750512">
    <Alignment ss:Horizontal="Left" ss:Vertical="Top" ss:WrapText="1"/>
    <Borders>
     <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"
@@ -646,7 +646,7 @@
    </Borders>
    <Font ss:FontName="Verdana" x:Family="Swiss"/>
   </Style>
-  <Style ss:ID="m110884484">
+  <Style ss:ID="m111750532">
    <Alignment ss:Horizontal="Left" ss:Vertical="Top" ss:WrapText="1"/>
    <Borders>
     <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"
@@ -660,7 +660,7 @@
    </Borders>
    <Font ss:FontName="Verdana" x:Family="Swiss"/>
   </Style>
-  <Style ss:ID="m110885728">
+  <Style ss:ID="m113066656">
    <Alignment ss:Horizontal="Left" ss:Vertical="Top" ss:WrapText="1"/>
    <Borders>
     <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"
@@ -674,7 +674,7 @@
    </Borders>
    <Font ss:FontName="Verdana" x:Family="Swiss"/>
   </Style>
-  <Style ss:ID="m110886624">
+  <Style ss:ID="m113067552">
    <Alignment ss:Horizontal="Left" ss:Vertical="Top" ss:WrapText="1"/>
    <Borders>
     <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"
@@ -688,7 +688,7 @@
    </Borders>
    <Font ss:FontName="Verdana" x:Family="Swiss"/>
   </Style>
-  <Style ss:ID="m111596416">
+  <Style ss:ID="m113068672">
    <Alignment ss:Horizontal="Left" ss:Vertical="Top" ss:WrapText="1"/>
    <Borders>
     <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"
@@ -702,7 +702,7 @@
    </Borders>
    <Font ss:FontName="Verdana" x:Family="Swiss"/>
   </Style>
-  <Style ss:ID="m111597536">
+  <Style ss:ID="m113069792">
    <Alignment ss:Horizontal="Left" ss:Vertical="Top" ss:WrapText="1"/>
    <Borders>
     <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"
@@ -716,7 +716,7 @@
    </Borders>
    <Font ss:FontName="Verdana" x:Family="Swiss"/>
   </Style>
-  <Style ss:ID="m111599104">
+  <Style ss:ID="m113202496">
    <Alignment ss:Horizontal="Left" ss:Vertical="Top" ss:WrapText="1"/>
    <Borders>
     <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"
@@ -4622,7 +4622,7 @@
     <Cell ss:StyleID="s143"><NamedCell ss:Name="Print_Area"/></Cell>
     <Cell ss:StyleID="s143"><NamedCell ss:Name="Print_Area"/></Cell>
     <Cell ss:StyleID="s143"><NamedCell ss:Name="Print_Area"/></Cell>
-    <Cell ss:MergeDown="21" ss:StyleID="m58139968"><Data ss:Type="String">The Clinical View functionality for Coding Settings in Rave enables users to specify full coding dictionary hierarchy in the clinical views. For example, a user can specify, the term, the code for the System Organ Class (SOC), and the high level term (HLT) from the MedDRA Coding Dictionary to show in the Clinical Views. If a suffix is specified, the corresponding column will appear in the clinical views.</Data><NamedCell
+    <Cell ss:MergeDown="21" ss:StyleID="m76627008"><Data ss:Type="String">The Clinical View functionality for Coding Settings in Rave enables users to specify full coding dictionary hierarchy in the clinical views. For example, a user can specify, the term, the code for the System Organ Class (SOC), and the high level term (HLT) from the MedDRA Coding Dictionary to show in the Clinical Views. If a suffix is specified, the corresponding column will appear in the clinical views.</Data><NamedCell
       ss:Name="Print_Area"/></Cell>
     <Cell ss:Index="16"><Data ss:Type="String">AZDD Version:Coder</Data></Cell>
     <Cell><Data ss:Type="String">ATC</Data></Cell>
@@ -5526,7 +5526,7 @@
     <Cell><Data ss:Type="String">dd MMM yyyy</Data><NamedCell ss:Name="Print_Area"/></Cell>
     <Cell><Data ss:Type="String">dd MMM yyyy HH:nn:ss</Data><NamedCell
       ss:Name="Print_Area"/></Cell>
-    <Cell ss:MergeDown="13" ss:StyleID="m58141760"><ss:Data ss:Type="String"
+    <Cell ss:MergeDown="13" ss:StyleID="m109122432"><ss:Data ss:Type="String"
       xmlns="http://www.w3.org/TR/REC-html40">       Fill in the configuration data for the locales which will be used in your system.  To configure each locale, set up the following: <B>Locale Code</B><Font> - Enter the 3-leter language code for the locale. A list of all standard codes can be found on http://www.loc.gov/standards/iso639-2/englangn.html#cd </Font><B>Based On</B><Font> - Enter an existing language on which you wish to base the new locale. The initial strings for the new locale will be copied from that language. </Font><B>Description</B><Font> - Enter description text for the locale. </Font><B>Help Folder</B><Font> - Specify the folder path, if any, which contains localized help for this locale. This folder path (e.g., Chinese\Mandarine) will have to exist in the Rave web server path under MedidataRAVE\Help in order for the users to view localized help. </Font><B>Submit on Enter</B><Font> - Select 'FALSE' to allow users to use the ENTER key as part of typing in text in Rave fields. This is required for data entry in certain asian languages. Select 'TRUE' to use the ENTER key for sumitting the screen. [Default: TRUE] </Font><B>Name Format</B><Font> - Specify which elements of the user name you want the system to display and in which order to display them.  Use any of the following: * {FNAME} = First Name * {LNAME} = Last Name * {TITLE} = Title * {MNAME} = Middle Name * {SAL} = Salutation * {CRED} = Credentials </Font><B>Date Format</B><Font> -  Specify the date format which will be displayed by Rave.  </Font><B>Date/Time Format</B><Font> - Specify the date and time  format which will be displayed by Rave whenever  both date and time are used.            </Font></ss:Data><NamedCell
       ss:Name="Print_Area"/></Cell>
    </Row>
@@ -6417,7 +6417,7 @@
     <Cell ss:Index="2"><Data ss:Type="String">test</Data><NamedCell
       ss:Name="Print_Area"/></Cell>
     <Cell><Data ss:Type="String">TRUE</Data><NamedCell ss:Name="Print_Area"/></Cell>
-    <Cell ss:MergeDown="4" ss:StyleID="m84513664"><ss:Data ss:Type="String"
+    <Cell ss:MergeDown="4" ss:StyleID="m109124224"><ss:Data ss:Type="String"
       xmlns="http://www.w3.org/TR/REC-html40">       List the PDF Profiles which are going to be used to generate PDFs in the PDF Generator. Only one profile can be marked as primary.The primary profile is the default profile selected for all new PDF File Request jobs.  To set up PDF Profiles, fill in the following: <B>Profile Name</B><Font> - Enter the name of the PDF Profile. </Font><B>Primary</B><Font> - Select 'TRUE' if the corresponding Profile should serve as the default.  Otherwise, leave settings as 'FALSE'            </Font></ss:Data><NamedCell
       ss:Name="Print_Area"/></Cell>
    </Row>
@@ -6509,7 +6509,7 @@
       ss:Name="Print_Area"/></Cell>
     <Cell ss:StyleID="s246"><Data ss:Type="String">TRUE = Include inactivated records by default when a PDF file request is executed. FALSE = Do not include inactivated records. [Default: FALSE]</Data><NamedCell
       ss:Name="Print_Area"/></Cell>
-    <Cell ss:MergeDown="4" ss:StyleID="m84514336"><Data ss:Type="String">Data Selection</Data><NamedCell
+    <Cell ss:MergeDown="4" ss:StyleID="m109124896"><Data ss:Type="String">Data Selection</Data><NamedCell
       ss:Name="Print_Area"/></Cell>
     <Cell ss:Index="8"><Data ss:Type="String">All</Data></Cell>
     <Cell ss:Index="12"
@@ -6831,7 +6831,7 @@
       ss:Name="Print_Area"/></Cell>
     <Cell ss:StyleID="s268"><Data ss:Type="String">Select the type of font to be used when generating the PDF. The list includes fonts supported by the standard Acrobat® product. [Default: Helvetica]</Data><NamedCell
       ss:Name="Print_Area"/></Cell>
-    <Cell ss:MergeDown="11" ss:StyleID="m84514396"><Data ss:Type="String">Formatting Properties</Data><NamedCell
+    <Cell ss:MergeDown="11" ss:StyleID="m109124956"><Data ss:Type="String">Formatting Properties</Data><NamedCell
       ss:Name="Print_Area"/></Cell>
     <Cell ss:Index="12"
      ss:Formula="=IF(LEN('PDF Profiles'!RC[-10])&gt;0,'PDF Profiles'!RC[-10],&quot;&quot;)"><Data
@@ -7005,7 +7005,7 @@
       ss:Name="Print_Area"/></Cell>
     <Cell ss:StyleID="s257"><Data ss:Type="String">TRUE = The PDF will include a cover page. FALSE = No cover page will be created for the PDF. [Default: TRUE]</Data><NamedCell
       ss:Name="Print_Area"/></Cell>
-    <Cell ss:MergeDown="28" ss:StyleID="m84514416"><Data ss:Type="String">Document Properties</Data><NamedCell
+    <Cell ss:MergeDown="28" ss:StyleID="m109124976"><Data ss:Type="String">Document Properties</Data><NamedCell
       ss:Name="Print_Area"/></Cell>
     <Cell ss:Index="12"
      ss:Formula="=IF(LEN('PDF Profiles'!RC[-10])&gt;0,'PDF Profiles'!RC[-10],&quot;&quot;)"><Data
@@ -7413,7 +7413,7 @@
     <Cell ss:StyleID="s257"><ss:Data ss:Type="String"
       xmlns="http://www.w3.org/TR/REC-html40">       Field Label - Include the field's label in the annotation page when generating a blank annotated PDF. <I>Note: only 5 out of the 6 annotations may be set to 'TRUE'.</I></ss:Data><NamedCell
       ss:Name="Print_Area"/></Cell>
-    <Cell ss:MergeDown="7" ss:StyleID="m84514436"><Data ss:Type="String">Annotations</Data><NamedCell
+    <Cell ss:MergeDown="7" ss:StyleID="m109124996"><Data ss:Type="String">Annotations</Data><NamedCell
       ss:Name="Print_Area"/></Cell>
     <Cell ss:Index="12"
      ss:Formula="=IF(LEN('PDF Profiles'!RC[-10])&gt;0,'PDF Profiles'!RC[-10],&quot;&quot;)"><Data
@@ -7545,7 +7545,7 @@
     <Cell ss:StyleID="s111"><NamedCell ss:Name="Print_Area"/></Cell>
     <Cell ss:StyleID="s246"><Data ss:Type="String">TRUE = Include inactivated records by default when a PDF file request is executed. FALSE = Do not include inactivated records. [Default: FALSE]</Data><NamedCell
       ss:Name="Print_Area"/></Cell>
-    <Cell ss:MergeDown="4" ss:StyleID="m84514560"><Data ss:Type="String">Data Selection</Data><NamedCell
+    <Cell ss:MergeDown="4" ss:StyleID="m109125120"><Data ss:Type="String">Data Selection</Data><NamedCell
       ss:Name="Print_Area"/></Cell>
     <Cell ss:Index="8"><Data ss:Type="String">All</Data></Cell>
     <Cell ss:Index="12"
@@ -7826,7 +7826,7 @@
     <Cell ss:StyleID="s152"><NamedCell ss:Name="Print_Area"/></Cell>
     <Cell ss:StyleID="s268"><Data ss:Type="String">Select the type of font to be used when generating the PDF. The list includes fonts supported by the standard Acrobat® product. [Default: Helvetica]</Data><NamedCell
       ss:Name="Print_Area"/></Cell>
-    <Cell ss:MergeDown="11" ss:StyleID="m84514620"><Data ss:Type="String">Formatting Properties</Data><NamedCell
+    <Cell ss:MergeDown="11" ss:StyleID="m109125180"><Data ss:Type="String">Formatting Properties</Data><NamedCell
       ss:Name="Print_Area"/></Cell>
     <Cell ss:Index="12"
      ss:Formula="=IF(LEN('PDF Profiles'!RC[-10])&gt;0,'PDF Profiles'!RC[-10],&quot;&quot;)"><Data
@@ -7976,7 +7976,7 @@
     <Cell ss:StyleID="s107"><NamedCell ss:Name="Print_Area"/></Cell>
     <Cell ss:StyleID="s257"><Data ss:Type="String">TRUE = The PDF will include a cover page. FALSE = No cover page will be created for the PDF. [Default: TRUE]</Data><NamedCell
       ss:Name="Print_Area"/></Cell>
-    <Cell ss:MergeDown="28" ss:StyleID="m84514640"><Data ss:Type="String">Document Properties</Data><NamedCell
+    <Cell ss:MergeDown="28" ss:StyleID="m109125200"><Data ss:Type="String">Document Properties</Data><NamedCell
       ss:Name="Print_Area"/></Cell>
     <Cell ss:Index="12"
      ss:Formula="=IF(LEN('PDF Profiles'!RC[-10])&gt;0,'PDF Profiles'!RC[-10],&quot;&quot;)"><Data
@@ -8330,7 +8330,7 @@
     <Cell ss:StyleID="s257"><ss:Data ss:Type="String"
       xmlns="http://www.w3.org/TR/REC-html40">       Field Label - Include the field's label in the annotation page when generating a blank annotated PDF. <I>Note: only 5 out of the 6 annotations may be set to 'TRUE'.</I></ss:Data><NamedCell
       ss:Name="Print_Area"/></Cell>
-    <Cell ss:MergeDown="7" ss:StyleID="m84514660"><Data ss:Type="String">Annotations</Data><NamedCell
+    <Cell ss:MergeDown="7" ss:StyleID="m109125220"><Data ss:Type="String">Annotations</Data><NamedCell
       ss:Name="Print_Area"/></Cell>
     <Cell ss:Index="12"
      ss:Formula="=IF(LEN('PDF Profiles'!RC[-10])&gt;0,'PDF Profiles'!RC[-10],&quot;&quot;)"><Data
@@ -8448,7 +8448,7 @@
     <Cell ss:StyleID="s111"><NamedCell ss:Name="Print_Area"/></Cell>
     <Cell ss:StyleID="s246"><Data ss:Type="String">TRUE = Include inactivated records by default when a PDF file request is executed. FALSE = Do not include inactivated records. [Default: FALSE]</Data><NamedCell
       ss:Name="Print_Area"/></Cell>
-    <Cell ss:MergeDown="4" ss:StyleID="m84514784"><Data ss:Type="String">Data Selection</Data><NamedCell
+    <Cell ss:MergeDown="4" ss:StyleID="m109125344"><Data ss:Type="String">Data Selection</Data><NamedCell
       ss:Name="Print_Area"/></Cell>
     <Cell ss:Index="8"><Data ss:Type="String">All</Data></Cell>
     <Cell ss:Index="12"
@@ -8729,7 +8729,7 @@
     <Cell ss:StyleID="s152"><NamedCell ss:Name="Print_Area"/></Cell>
     <Cell ss:StyleID="s268"><Data ss:Type="String">Select the type of font to be used when generating the PDF. The list includes fonts supported by the standard Acrobat® product. [Default: Helvetica]</Data><NamedCell
       ss:Name="Print_Area"/></Cell>
-    <Cell ss:MergeDown="11" ss:StyleID="m84514844"><Data ss:Type="String">Formatting Properties</Data><NamedCell
+    <Cell ss:MergeDown="11" ss:StyleID="m109125404"><Data ss:Type="String">Formatting Properties</Data><NamedCell
       ss:Name="Print_Area"/></Cell>
     <Cell ss:Index="12"
      ss:Formula="=IF(LEN('PDF Profiles'!RC[-10])&gt;0,'PDF Profiles'!RC[-10],&quot;&quot;)"><Data
@@ -8879,7 +8879,7 @@
     <Cell ss:StyleID="s107"><NamedCell ss:Name="Print_Area"/></Cell>
     <Cell ss:StyleID="s257"><Data ss:Type="String">TRUE = The PDF will include a cover page. FALSE = No cover page will be created for the PDF. [Default: TRUE]</Data><NamedCell
       ss:Name="Print_Area"/></Cell>
-    <Cell ss:MergeDown="28" ss:StyleID="m84514864"><Data ss:Type="String">Document Properties</Data><NamedCell
+    <Cell ss:MergeDown="28" ss:StyleID="m109125424"><Data ss:Type="String">Document Properties</Data><NamedCell
       ss:Name="Print_Area"/></Cell>
     <Cell ss:Index="12"
      ss:Formula="=IF(LEN('PDF Profiles'!RC[-10])&gt;0,'PDF Profiles'!RC[-10],&quot;&quot;)"><Data
@@ -9233,7 +9233,7 @@
     <Cell ss:StyleID="s257"><ss:Data ss:Type="String"
       xmlns="http://www.w3.org/TR/REC-html40">       Field Label - Include the field's label in the annotation page when generating a blank annotated PDF. <I>Note: only 5 out of the 6 annotations may be set to 'TRUE'.</I></ss:Data><NamedCell
       ss:Name="Print_Area"/></Cell>
-    <Cell ss:MergeDown="7" ss:StyleID="m84514884"><Data ss:Type="String">Annotations</Data><NamedCell
+    <Cell ss:MergeDown="7" ss:StyleID="m109125444"><Data ss:Type="String">Annotations</Data><NamedCell
       ss:Name="Print_Area"/></Cell>
     <Cell ss:Index="12"
      ss:Formula="=IF(LEN('PDF Profiles'!RC[-10])&gt;0,'PDF Profiles'!RC[-10],&quot;&quot;)"><Data
@@ -9351,7 +9351,7 @@
     <Cell ss:StyleID="s111"><NamedCell ss:Name="Print_Area"/></Cell>
     <Cell ss:StyleID="s246"><Data ss:Type="String">TRUE = Include inactivated records by default when a PDF file request is executed. FALSE = Do not include inactivated records. [Default: FALSE]</Data><NamedCell
       ss:Name="Print_Area"/></Cell>
-    <Cell ss:MergeDown="4" ss:StyleID="m84515008"><Data ss:Type="String">Data Selection</Data><NamedCell
+    <Cell ss:MergeDown="4" ss:StyleID="m109158400"><Data ss:Type="String">Data Selection</Data><NamedCell
       ss:Name="Print_Area"/></Cell>
     <Cell ss:Index="8"><Data ss:Type="String">All</Data></Cell>
     <Cell ss:Index="12"
@@ -9632,7 +9632,7 @@
     <Cell ss:StyleID="s152"><NamedCell ss:Name="Print_Area"/></Cell>
     <Cell ss:StyleID="s268"><Data ss:Type="String">Select the type of font to be used when generating the PDF. The list includes fonts supported by the standard Acrobat® product. [Default: Helvetica]</Data><NamedCell
       ss:Name="Print_Area"/></Cell>
-    <Cell ss:MergeDown="11" ss:StyleID="m84515068"><Data ss:Type="String">Formatting Properties</Data><NamedCell
+    <Cell ss:MergeDown="11" ss:StyleID="m109158460"><Data ss:Type="String">Formatting Properties</Data><NamedCell
       ss:Name="Print_Area"/></Cell>
     <Cell ss:Index="12"
      ss:Formula="=IF(LEN('PDF Profiles'!RC[-10])&gt;0,'PDF Profiles'!RC[-10],&quot;&quot;)"><Data
@@ -9782,7 +9782,7 @@
     <Cell ss:StyleID="s107"><NamedCell ss:Name="Print_Area"/></Cell>
     <Cell ss:StyleID="s257"><Data ss:Type="String">TRUE = The PDF will include a cover page. FALSE = No cover page will be created for the PDF. [Default: TRUE]</Data><NamedCell
       ss:Name="Print_Area"/></Cell>
-    <Cell ss:MergeDown="28" ss:StyleID="m84515088"><Data ss:Type="String">Document Properties</Data><NamedCell
+    <Cell ss:MergeDown="28" ss:StyleID="m109158480"><Data ss:Type="String">Document Properties</Data><NamedCell
       ss:Name="Print_Area"/></Cell>
     <Cell ss:Index="12"
      ss:Formula="=IF(LEN('PDF Profiles'!RC[-10])&gt;0,'PDF Profiles'!RC[-10],&quot;&quot;)"><Data
@@ -10136,7 +10136,7 @@
     <Cell ss:StyleID="s257"><ss:Data ss:Type="String"
       xmlns="http://www.w3.org/TR/REC-html40">       Field Label - Include the field's label in the annotation page when generating a blank annotated PDF. <I>Note: only 5 out of the 6 annotations may be set to 'TRUE'.</I></ss:Data><NamedCell
       ss:Name="Print_Area"/></Cell>
-    <Cell ss:MergeDown="7" ss:StyleID="m84515108"><Data ss:Type="String">Annotations</Data><NamedCell
+    <Cell ss:MergeDown="7" ss:StyleID="m109158500"><Data ss:Type="String">Annotations</Data><NamedCell
       ss:Name="Print_Area"/></Cell>
     <Cell ss:Index="12"
      ss:Formula="=IF(LEN('PDF Profiles'!RC[-10])&gt;0,'PDF Profiles'!RC[-10],&quot;&quot;)"><Data
@@ -10254,7 +10254,7 @@
     <Cell ss:StyleID="s111"><NamedCell ss:Name="Print_Area"/></Cell>
     <Cell ss:StyleID="s246"><Data ss:Type="String">TRUE = Include inactivated records by default when a PDF file request is executed. FALSE = Do not include inactivated records. [Default: FALSE]</Data><NamedCell
       ss:Name="Print_Area"/></Cell>
-    <Cell ss:MergeDown="4" ss:StyleID="m84515232"><Data ss:Type="String">Data Selection</Data><NamedCell
+    <Cell ss:MergeDown="4" ss:StyleID="m109158624"><Data ss:Type="String">Data Selection</Data><NamedCell
       ss:Name="Print_Area"/></Cell>
     <Cell ss:Index="8"><Data ss:Type="String">All</Data></Cell>
     <Cell ss:Index="12"
@@ -10535,7 +10535,7 @@
     <Cell ss:StyleID="s152"><NamedCell ss:Name="Print_Area"/></Cell>
     <Cell ss:StyleID="s268"><Data ss:Type="String">Select the type of font to be used when generating the PDF. The list includes fonts supported by the standard Acrobat® product. [Default: Helvetica]</Data><NamedCell
       ss:Name="Print_Area"/></Cell>
-    <Cell ss:MergeDown="11" ss:StyleID="m84515292"><Data ss:Type="String">Formatting Properties</Data><NamedCell
+    <Cell ss:MergeDown="11" ss:StyleID="m109158684"><Data ss:Type="String">Formatting Properties</Data><NamedCell
       ss:Name="Print_Area"/></Cell>
     <Cell ss:Index="12"
      ss:Formula="=IF(LEN('PDF Profiles'!RC[-10])&gt;0,'PDF Profiles'!RC[-10],&quot;&quot;)"><Data
@@ -10685,7 +10685,7 @@
     <Cell ss:StyleID="s107"><NamedCell ss:Name="Print_Area"/></Cell>
     <Cell ss:StyleID="s257"><Data ss:Type="String">TRUE = The PDF will include a cover page. FALSE = No cover page will be created for the PDF. [Default: TRUE]</Data><NamedCell
       ss:Name="Print_Area"/></Cell>
-    <Cell ss:MergeDown="28" ss:StyleID="m84515312"><Data ss:Type="String">Document Properties</Data><NamedCell
+    <Cell ss:MergeDown="28" ss:StyleID="m109158704"><Data ss:Type="String">Document Properties</Data><NamedCell
       ss:Name="Print_Area"/></Cell>
     <Cell ss:Index="12"
      ss:Formula="=IF(LEN('PDF Profiles'!RC[-10])&gt;0,'PDF Profiles'!RC[-10],&quot;&quot;)"><Data
@@ -11039,7 +11039,7 @@
     <Cell ss:StyleID="s257"><ss:Data ss:Type="String"
       xmlns="http://www.w3.org/TR/REC-html40">       Field Label - Include the field's label in the annotation page when generating a blank annotated PDF. <I>Note: only 5 out of the 6 annotations may be set to 'TRUE'.</I></ss:Data><NamedCell
       ss:Name="Print_Area"/></Cell>
-    <Cell ss:MergeDown="7" ss:StyleID="m84515332"><Data ss:Type="String">Annotations</Data><NamedCell
+    <Cell ss:MergeDown="7" ss:StyleID="m109158724"><Data ss:Type="String">Annotations</Data><NamedCell
       ss:Name="Print_Area"/></Cell>
     <Cell ss:Index="12"
      ss:Formula="=IF(LEN('PDF Profiles'!RC[-10])&gt;0,'PDF Profiles'!RC[-10],&quot;&quot;)"><Data
@@ -12083,7 +12083,7 @@
    <Row ss:AutoFitHeight="0" ss:Height="21.75">
     <Cell ss:Index="2"><Data ss:Type="String">Upgraded Users from pre-5.6 Installations</Data><NamedCell
       ss:Name="Print_Area"/></Cell>
-    <Cell ss:MergeDown="4" ss:StyleID="m84516352"><ss:Data ss:Type="String"
+    <Cell ss:MergeDown="4" ss:StyleID="m109159968"><ss:Data ss:Type="String"
       xmlns="http://www.w3.org/TR/REC-html40">       List of Security Groups. A Security Group is a collections of Security Roles, which define permission for Architect activities. <I>See Security Roles worksheet</I><Font>.            </Font></ss:Data><NamedCell
       ss:Name="Print_Area"/></Cell>
    </Row>
@@ -12193,7 +12193,7 @@
       ss:Type="String"></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="138">
-    <Cell ss:Index="2" ss:MergeDown="147" ss:StyleID="m109290144"><NamedCell
+    <Cell ss:Index="2" ss:MergeDown="147" ss:StyleID="m109161088"><NamedCell
       ss:Name="Print_Area"/></Cell>
     <Cell><Data ss:Type="String">Architect Project</Data><NamedCell
       ss:Name="Print_Area"/></Cell>
@@ -12301,19 +12301,12 @@
       ss:Type="String"></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="76.5">
-    <Cell ss:Index="3"><Data ss:Type="String">[SafetyGatewayMapping]</Data><NamedCell
-      ss:Name="Print_Area"/></Cell>
-    <Cell><Data ss:Type="String">Admin</Data><NamedCell ss:Name="Print_Area"/></Cell>
-    <Cell><Data ss:Type="String">Read,Update</Data><NamedCell ss:Name="Print_Area"/></Cell>
-    <Cell><ss:Data ss:Type="String" xmlns="http://www.w3.org/TR/REC-html40">             <B>Lock CRF Version</B><Font>                                 : When checked, the system will allow the selected Role to lock a published CRF version. Having this permission implies a Publish permission.                                  </Font><B>Unlock CRF Version</B><Font>                                 : When checked, the system will allow the selected Role to unlock a published CRF version. Having this permission implies a Publish permission.                            </Font></ss:Data><NamedCell
+    <Cell ss:Index="6"><ss:Data ss:Type="String"
+      xmlns="http://www.w3.org/TR/REC-html40">             <B>Lock CRF Version</B><Font>                                 : When checked, the system will allow the selected Role to lock a published CRF version. Having this permission implies a Publish permission.                                  </Font><B>Unlock CRF Version</B><Font>                                 : When checked, the system will allow the selected Role to unlock a published CRF version. Having this permission implies a Publish permission.                            </Font></ss:Data><NamedCell
       ss:Name="Print_Area"/></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="89.25">
-    <Cell ss:Index="3"><Data ss:Type="String">[SafetyGatewayMapping]</Data><NamedCell
-      ss:Name="Print_Area"/></Cell>
-    <Cell><Data ss:Type="String">Edit</Data><NamedCell ss:Name="Print_Area"/></Cell>
-    <Cell><Data ss:Type="String">Read,Update</Data><NamedCell ss:Name="Print_Area"/></Cell>
-    <Cell ss:StyleID="s312"><ss:Data ss:Type="String"
+    <Cell ss:Index="6" ss:StyleID="s312"><ss:Data ss:Type="String"
       xmlns="http://www.w3.org/TR/REC-html40">             <B>Edit variables in use</B><Font>                          : When checked, the system will allow the selected Role to edit variables that are referenced by edit checks and derivations.                           </Font><B>Set Does not participate in Signature</B><Font>                          : When checked, the system will allow a user with this role to set the Does not Participate in Signature flag for an EDC form field in Architect Form Designer.                      </Font></ss:Data><NamedCell
       ss:Name="Print_Area"/></Cell>
     <Cell ss:Index="13"
@@ -12324,11 +12317,8 @@
       ss:Type="String"></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="38.25">
-    <Cell ss:Index="3"><Data ss:Type="String">[SafetyGatewayMapping]</Data><NamedCell
-      ss:Name="Print_Area"/></Cell>
-    <Cell><Data ss:Type="String">View</Data><NamedCell ss:Name="Print_Area"/></Cell>
-    <Cell><Data ss:Type="String">Read</Data><NamedCell ss:Name="Print_Area"/></Cell>
-    <Cell><ss:Data ss:Type="String" xmlns="http://www.w3.org/TR/REC-html40">       Provide the Role and Role Actions for working with Architect Global Libraries.  <I>For Role Actions, refer to the list of actions below.</I></ss:Data><NamedCell
+    <Cell ss:Index="6"><ss:Data ss:Type="String"
+      xmlns="http://www.w3.org/TR/REC-html40">       Provide the Role and Role Actions for working with Architect Global Libraries.  <I>For Role Actions, refer to the list of actions below.</I></ss:Data><NamedCell
       ss:Name="Print_Area"/></Cell>
     <Cell ss:Index="13"
      ss:Formula="=IF(EXACT('Security Roles'!R[2]C[-10],&quot;Architect Project&quot;),'Security Roles'!R[2]C[-9],&quot;&quot;)"><Data
@@ -12338,12 +12328,7 @@
       ss:Type="String"></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="36">
-    <Cell ss:Index="3"><Data ss:Type="String">[SafetyGatewayManagement]</Data><NamedCell
-      ss:Name="Print_Area"/></Cell>
-    <Cell><Data ss:Type="String">Admin</Data><NamedCell ss:Name="Print_Area"/></Cell>
-    <Cell><Data ss:Type="String">Read,Review,Publish</Data><NamedCell
-      ss:Name="Print_Area"/></Cell>
-    <Cell ss:StyleID="s313"><NamedCell ss:Name="Print_Area"/></Cell>
+    <Cell ss:Index="6" ss:StyleID="s313"><NamedCell ss:Name="Print_Area"/></Cell>
     <Cell ss:Index="13"
      ss:Formula="=IF(EXACT('Security Roles'!R[2]C[-10],&quot;Architect Project&quot;),'Security Roles'!R[2]C[-9],&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
@@ -12352,12 +12337,8 @@
       ss:Type="String"></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="55.5">
-    <Cell ss:Index="3"><Data ss:Type="String">[SafetyGatewayManagement]</Data><NamedCell
-      ss:Name="Print_Area"/></Cell>
-    <Cell><Data ss:Type="String">Full</Data><NamedCell ss:Name="Print_Area"/></Cell>
-    <Cell><Data ss:Type="String">Read,Review,Publish</Data><NamedCell
-      ss:Name="Print_Area"/></Cell>
-    <Cell><ss:Data ss:Type="String" xmlns="http://www.w3.org/TR/REC-html40">             <B>               <U>Role Actions for Architect Global Library Roles</U><Font>                                           </Font></B><Font>                                       </Font><B>Read:</B><Font>                                         permission to view Global Library Volumes                                         </Font><B>Update:</B><Font>                                         permission to modify Global Library Volumes (implies Read permission)                                  </Font></ss:Data><NamedCell
+    <Cell ss:Index="6"><ss:Data ss:Type="String"
+      xmlns="http://www.w3.org/TR/REC-html40">             <B>               <U>Role Actions for Architect Global Library Roles</U><Font>                                           </Font></B><Font>                                       </Font><B>Read:</B><Font>                                         permission to view Global Library Volumes                                         </Font><B>Update:</B><Font>                                         permission to modify Global Library Volumes (implies Read permission)                                  </Font></ss:Data><NamedCell
       ss:Name="Print_Area"/></Cell>
     <Cell ss:Index="13"
      ss:Formula="=IF(EXACT('Security Roles'!R[2]C[-10],&quot;Architect Project&quot;),'Security Roles'!R[2]C[-9],&quot;&quot;)"><Data
@@ -12367,11 +12348,8 @@
       ss:Type="String"></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="38.25">
-    <Cell ss:Index="3"><Data ss:Type="String">[SafetyGatewayManagement]</Data><NamedCell
-      ss:Name="Print_Area"/></Cell>
-    <Cell><Data ss:Type="String">Review</Data><NamedCell ss:Name="Print_Area"/></Cell>
-    <Cell><Data ss:Type="String">Read,Review</Data><NamedCell ss:Name="Print_Area"/></Cell>
-    <Cell><ss:Data ss:Type="String" xmlns="http://www.w3.org/TR/REC-html40">             <B>Publish</B><Font>                                        : permission to publish a Global Library draft to a version. (implies Read permission)                                   </Font></ss:Data><NamedCell
+    <Cell ss:Index="6"><ss:Data ss:Type="String"
+      xmlns="http://www.w3.org/TR/REC-html40">             <B>Publish</B><Font>                                        : permission to publish a Global Library draft to a version. (implies Read permission)                                   </Font></ss:Data><NamedCell
       ss:Name="Print_Area"/></Cell>
     <Cell ss:Index="13"
      ss:Formula="=IF(EXACT('Security Roles'!R[2]C[-10],&quot;Architect Project&quot;),'Security Roles'!R[2]C[-9],&quot;&quot;)"><Data
@@ -12381,11 +12359,8 @@
       ss:Type="String"></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="38.25">
-    <Cell ss:Index="3"><Data ss:Type="String">[SafetyGatewayManagement]</Data><NamedCell
-      ss:Name="Print_Area"/></Cell>
-    <Cell><Data ss:Type="String">Transmit</Data><NamedCell ss:Name="Print_Area"/></Cell>
-    <Cell><Data ss:Type="String">Read,Publish</Data><NamedCell ss:Name="Print_Area"/></Cell>
-    <Cell><ss:Data ss:Type="String" xmlns="http://www.w3.org/TR/REC-html40">             <B>Define Copy Sources</B><Font>                                        : permission to define copy sources (other  Global Library Volumes or Projects) for a Global Library Volume (implies Read permission)                                  </Font></ss:Data><NamedCell
+    <Cell ss:Index="6"><ss:Data ss:Type="String"
+      xmlns="http://www.w3.org/TR/REC-html40">             <B>Define Copy Sources</B><Font>                                        : permission to define copy sources (other  Global Library Volumes or Projects) for a Global Library Volume (implies Read permission)                                  </Font></ss:Data><NamedCell
       ss:Name="Print_Area"/></Cell>
     <Cell ss:Index="13"
      ss:Formula="=IF(EXACT('Security Roles'!R[2]C[-10],&quot;Architect Project&quot;),'Security Roles'!R[2]C[-9],&quot;&quot;)"><Data
@@ -12395,11 +12370,8 @@
       ss:Type="String"></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="38.25">
-    <Cell ss:Index="3"><Data ss:Type="String">[SafetyGatewayManagement]</Data><NamedCell
-      ss:Name="Print_Area"/></Cell>
-    <Cell><Data ss:Type="String">View</Data><NamedCell ss:Name="Print_Area"/></Cell>
-    <Cell><Data ss:Type="String">Read</Data><NamedCell ss:Name="Print_Area"/></Cell>
-    <Cell><ss:Data ss:Type="String" xmlns="http://www.w3.org/TR/REC-html40">             <B>Download Draft</B><Font>                                        : permission to download Global Library drafts into spreadsheets                                   </Font></ss:Data><NamedCell
+    <Cell ss:Index="6"><ss:Data ss:Type="String"
+      xmlns="http://www.w3.org/TR/REC-html40">             <B>Download Draft</B><Font>                                        : permission to download Global Library drafts into spreadsheets                                   </Font></ss:Data><NamedCell
       ss:Name="Print_Area"/></Cell>
     <Cell ss:Index="13"
      ss:Formula="=IF(EXACT('Security Roles'!R[2]C[-10],&quot;Architect Project&quot;),'Security Roles'!R[2]C[-9],&quot;&quot;)"><Data
@@ -13506,7 +13478,8 @@
     <Pane>
      <Number>2</Number>
      <ActiveRow>10</ActiveRow>
-     <ActiveCol>4</ActiveCol>
+     <ActiveCol>2</ActiveCol>
+     <RangeSelection>R11C3:R18C5</RangeSelection>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -13581,7 +13554,7 @@
       ss:Name="Print_Area"/></Cell>
     <Cell><Data ss:Type="String">Project Admin Default</Data><NamedCell
       ss:Name="Print_Area"/></Cell>
-    <Cell ss:MergeDown="1" ss:StyleID="m109627584"><Data ss:Type="String">Associate Groups with Architect Project Roles, and grant access on specific Architect Projects or 'All Projects'. </Data><NamedCell
+    <Cell ss:MergeDown="1" ss:StyleID="m110473216"><Data ss:Type="String">Associate Groups with Architect Project Roles, and grant access on specific Architect Projects or 'All Projects'. </Data><NamedCell
       ss:Name="Print_Area"/></Cell>
     <Cell ss:Index="11"
      ss:Formula="=IF(EXACT('Security Roles'!R[2]C[-8],&quot;Architect Project&quot;),'Security Roles'!R[2]C[-7],&quot;&quot;)"><Data
@@ -13619,7 +13592,7 @@
       ss:Type="String"></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="21.75">
-    <Cell ss:Index="6" ss:MergeDown="1" ss:StyleID="m109627604"><ss:Data
+    <Cell ss:Index="6" ss:MergeDown="1" ss:StyleID="m110473236"><ss:Data
       ss:Type="String" xmlns="http://www.w3.org/TR/REC-html40">             <B>Grant Access On</B><Font>                                         - enter the Project name for which access is being granted, or specify 'All Projects' to grant access on all projects.                                  </Font></ss:Data><NamedCell
       ss:Name="Print_Area"/></Cell>
     <Cell ss:Index="11"
@@ -13650,7 +13623,7 @@
       ss:Type="String"></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="21.75">
-    <Cell ss:Index="6" ss:MergeDown="1" ss:StyleID="m109627624"><ss:Data
+    <Cell ss:Index="6" ss:MergeDown="1" ss:StyleID="m110473256"><ss:Data
       ss:Type="String" xmlns="http://www.w3.org/TR/REC-html40">             <B>To Group</B><Font>                                         - Select the Security Group which will be granted access to the corresponding Project.                                         </Font><I>See also Security Groups worksheet.</I><Font>                                     </Font></ss:Data><NamedCell
       ss:Name="Print_Area"/></Cell>
     <Cell ss:Index="11"
@@ -13681,7 +13654,7 @@
       ss:Type="String"></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="21.75">
-    <Cell ss:Index="6" ss:MergeDown="2" ss:StyleID="m109627644"><ss:Data
+    <Cell ss:Index="6" ss:MergeDown="2" ss:StyleID="m110473276"><ss:Data
       ss:Type="String" xmlns="http://www.w3.org/TR/REC-html40">             <B>With Role</B><Font>                                         - Select the Architect Project Role which specifies the set of permissions (Role Actions) the Group will use for the corresponding Project.                                         </Font><I>See also Security Roles worksheet.</I><Font>                                     </Font></ss:Data><NamedCell
       ss:Name="Print_Area"/></Cell>
     <Cell ss:Index="11"
@@ -13726,7 +13699,7 @@
       ss:Type="String"></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="21.75">
-    <Cell ss:Index="6" ss:MergeDown="1" ss:StyleID="m109627664"><Data
+    <Cell ss:Index="6" ss:MergeDown="1" ss:StyleID="m110473296"><Data
       ss:Type="String">Associate Groups with Architect Global Library Roles, and grant access on specific Architect Global Library Volumes or 'All Global Library Volumes'. </Data><NamedCell
       ss:Name="Print_Area"/></Cell>
     <Cell ss:Index="11"
@@ -13757,7 +13730,7 @@
       ss:Type="String"></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="21.75">
-    <Cell ss:Index="6" ss:MergeDown="1" ss:StyleID="m109627684"><ss:Data
+    <Cell ss:Index="6" ss:MergeDown="1" ss:StyleID="m110473316"><ss:Data
       ss:Type="String" xmlns="http://www.w3.org/TR/REC-html40">             <B>Grant Access On</B><Font>                                         - enter the Global Library name for which access is being granted, or specify 'All Global Library Volumes' to grant access on all.                                  </Font></ss:Data><NamedCell
       ss:Name="Print_Area"/></Cell>
     <Cell ss:Index="11"
@@ -13788,7 +13761,7 @@
       ss:Type="String"></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="21.75">
-    <Cell ss:Index="6" ss:MergeDown="1" ss:StyleID="m110764256"><ss:Data
+    <Cell ss:Index="6" ss:MergeDown="1" ss:StyleID="m110487520"><ss:Data
       ss:Type="String" xmlns="http://www.w3.org/TR/REC-html40">             <B>To Group</B><Font>                                         - Select the Security Group which will be granted access to the corresponding Global Library Volume.                                         </Font><I>See also Security Groups worksheet.</I><Font>                                     </Font></ss:Data><NamedCell
       ss:Name="Print_Area"/></Cell>
     <Cell ss:Index="11"
@@ -13819,7 +13792,7 @@
       ss:Type="String"></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="21.75">
-    <Cell ss:Index="6" ss:MergeDown="2" ss:StyleID="m110764276"><ss:Data
+    <Cell ss:Index="6" ss:MergeDown="2" ss:StyleID="m110487540"><ss:Data
       ss:Type="String" xmlns="http://www.w3.org/TR/REC-html40">             <B>With Role</B><Font>                                         - Select the Architect Global Library Role which specifies the set of permissions (Role Actions) the Group will use for the corresponding Global Library Volume.                                         </Font><I>See also Security Roles worksheet.</I><Font>                                     </Font></ss:Data><NamedCell
       ss:Name="Print_Area"/></Cell>
     <Cell ss:Index="11"
@@ -14108,7 +14081,7 @@
       ss:Type="String"></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="21.75">
-    <Cell ss:Index="6" ss:MergeDown="1" ss:StyleID="m110764296"/>
+    <Cell ss:Index="6" ss:MergeDown="1" ss:StyleID="m110487560"/>
     <Cell ss:Index="11"
      ss:Formula="=IF(EXACT('Security Roles'!R[3]C[-8],&quot;Architect Project&quot;),'Security Roles'!R[3]C[-7],&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
@@ -16632,7 +16605,7 @@
       ss:Name="Print_Area"/></Cell>
     <Cell ss:StyleID="s111"><Data ss:Type="String">FALSE</Data><NamedCell
       ss:Name="Print_Area"/></Cell>
-    <Cell ss:MergeDown="9" ss:StyleID="m110876640"><ss:Data ss:Type="String"
+    <Cell ss:MergeDown="9" ss:StyleID="m110669536"><ss:Data ss:Type="String"
       xmlns="http://www.w3.org/TR/REC-html40">       Review Groups are set up to review specific data within the EDC module. Each Review Group has different review capabilities.  For example, Review Group 1 may have permission to review particular forms within a folder, while Review Group 2 may have permission to review the entire folder.  Permission can be specified down to the field level via the role in the Roles section of the Workflow<I> (see Roles worksheet) </I><Font> Modify the name of the Review Groups in the Group Name column, then set the Active column to 'TRUE' to activate it. [Default: Review Group 1, Review Group 2, … Review Group 10]  </Font><I>Note: You can create up to 10 Review Groups.</I></ss:Data><NamedCell
       ss:Name="Print_Area"/></Cell>
    </Row>
@@ -17167,6 +17140,7 @@
     <VerticalResolution>1200</VerticalResolution>
    </Print>
    <PageBreakZoom>60</PageBreakZoom>
+   <Selected/>
    <FreezePanes/>
    <FrozenNoSplit/>
    <SplitHorizontal>1</SplitHorizontal>
@@ -17178,8 +17152,8 @@
     </Pane>
     <Pane>
      <Number>2</Number>
+     <ActiveRow>14</ActiveRow>
      <ActiveCol>2</ActiveCol>
-     <RangeSelection>R2C3:R11C5</RangeSelection>
     </Pane>
    </Panes>
    <ProtectObjects>True</ProtectObjects>
@@ -17245,7 +17219,7 @@
       ss:Name="Print_Area"/></Cell>
     <Cell><Data ss:Type="String">Enrolled, Screened, Terminated, Discontinued study, Completed study, Randomized, failed screening, Screening, Screen Failed, Early Terminated, Completed</Data><NamedCell
       ss:Name="Print_Area"/></Cell>
-    <Cell ss:MergeDown="1" ss:StyleID="m110877984"><ss:Data ss:Type="String"
+    <Cell ss:MergeDown="1" ss:StyleID="m111748192"><ss:Data ss:Type="String"
       xmlns="http://www.w3.org/TR/REC-html40">       A Role in Rave is a set of User Permissions, given to a user for a specific Study. The permissions allow the user to perform certain Actions. These Actions can be further restricted by different Pre-conditions. To define a Role, set up the following: <B>Name</B><Font> - Enter the Role name </Font><B>Active</B><Font> - Select 'TRUE' to make the Role active and available for use. Select 'FALSE' to inactivate a Role. </Font><B>Change Codes</B><Font> - List all the Change Codes which will be available for the user, separated by a comma </Font><I>(see list in Change Codes worksheet)</I><B>Permissions</B><Font> - List the Permissions given to a user for this Role. Separate each permission by a comma. </Font><I>(see list below)</I><B>Subject Status</B><Font> - Select one or more Subject Statuses which a user with this Role will be allowed to view. </Font><I> Note: At least 1 Subject Status MUST be selected.</I><Font> Separate the list with commas</Font><I> (see list in Subject Status worksheet)Note: The Permission 'View Subject With Any Status' implies that all Subject Statues are allowed.</I></ss:Data><NamedCell
       ss:Name="Print_Area"/></Cell>
    </Row>
@@ -17440,84 +17414,27 @@
     <Cell ss:Index="11"><Data ss:Type="String">           </Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="254.0625">
-    <Cell ss:Index="2"><Data ss:Type="String">SUPERROLE</Data><NamedCell
-      ss:Name="Print_Area"/></Cell>
-    <Cell><Data ss:Type="String">TRUE</Data><NamedCell ss:Name="Print_Area"/></Cell>
-    <Cell ss:Index="5"><Data ss:Type="String">CanBatchSign, CanInactivateForm, CanModifyTemplates, CanReactivateForm, CanUseTemplates, CanViewStudyGrid, CreateSubject, ModifyPrimaryRecord, Pass1DataEntry, Pass2DataEntry, Reconcile, SeeAudits, SetClinicalSignificance, ShareSubject, SubjectAdmin, UseLabMaintenance, UsePrimarySubjectName, ViewAllSitesInSiteGroup, ViewSubjectsWithAnyStatus</Data><NamedCell
-      ss:Name="Print_Area"/></Cell>
-    <Cell><Data ss:Type="String">Enrolled, Screened, Terminated, Discontinued study, Completed study, Randomized, failed screening, Screening, Screen Failed, Early Terminated, Completed</Data><NamedCell
-      ss:Name="Print_Area"/></Cell>
     <Cell ss:Index="11"><Data ss:Type="String">           </Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="254.0625">
-    <Cell ss:Index="2"><Data ss:Type="String">SUPERROLE#1/16/2013 4@35@33 PM##6</Data><NamedCell
-      ss:Name="Print_Area"/></Cell>
-    <Cell><Data ss:Type="String">TRUE</Data><NamedCell ss:Name="Print_Area"/></Cell>
-    <Cell ss:Index="5"><Data ss:Type="String">CanBatchSign, CanInactivateForm, CanModifyTemplates, CanReactivateForm, CanUseTemplates, CanViewStudyGrid, CreateSubject, ModifyPrimaryRecord, Pass1DataEntry, Pass2DataEntry, Reconcile, SeeAudits, SetClinicalSignificance, ShareSubject, SubjectAdmin, UseLabMaintenance, UsePrimarySubjectName, ViewAllSitesInSiteGroup, ViewSubjectsWithAnyStatus</Data><NamedCell
-      ss:Name="Print_Area"/></Cell>
-    <Cell><Data ss:Type="String">Enrolled, Screened, Terminated, Discontinued study, Completed study, Randomized, failed screening, Screening, Screen Failed, Early Terminated, Completed</Data><NamedCell
-      ss:Name="Print_Area"/></Cell>
     <Cell ss:Index="11"><Data ss:Type="String">           </Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="254.0625">
-    <Cell ss:Index="2"><Data ss:Type="String">SUPERROLE#1/16/2013 4@37@50 PM##6</Data><NamedCell
-      ss:Name="Print_Area"/></Cell>
-    <Cell><Data ss:Type="String">TRUE</Data><NamedCell ss:Name="Print_Area"/></Cell>
-    <Cell ss:Index="5"><Data ss:Type="String">CanBatchSign, CanInactivateForm, CanModifyTemplates, CanReactivateForm, CanUseTemplates, CanViewStudyGrid, CreateSubject, ModifyPrimaryRecord, Pass1DataEntry, Pass2DataEntry, Reconcile, SeeAudits, SetClinicalSignificance, ShareSubject, SubjectAdmin, UseLabMaintenance, UsePrimarySubjectName, ViewAllSitesInSiteGroup, ViewSubjectsWithAnyStatus</Data><NamedCell
-      ss:Name="Print_Area"/></Cell>
-    <Cell><Data ss:Type="String">Enrolled, Screened, Terminated, Discontinued study, Completed study, Randomized, failed screening, Screening, Screen Failed, Early Terminated, Completed</Data><NamedCell
-      ss:Name="Print_Area"/></Cell>
     <Cell ss:Index="11"><Data ss:Type="String">           </Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="254.0625">
-    <Cell ss:Index="2"><Data ss:Type="String">SUPERROLE#1/16/2013 5@17@40 PM##6</Data><NamedCell
-      ss:Name="Print_Area"/></Cell>
-    <Cell><Data ss:Type="String">TRUE</Data><NamedCell ss:Name="Print_Area"/></Cell>
-    <Cell ss:Index="5"><Data ss:Type="String">CanBatchSign, CanInactivateForm, CanModifyTemplates, CanReactivateForm, CanUseTemplates, CanViewStudyGrid, CreateSubject, ModifyPrimaryRecord, Pass1DataEntry, Pass2DataEntry, Reconcile, SeeAudits, SetClinicalSignificance, ShareSubject, SubjectAdmin, UseLabMaintenance, UsePrimarySubjectName, ViewAllSitesInSiteGroup, ViewSubjectsWithAnyStatus</Data><NamedCell
-      ss:Name="Print_Area"/></Cell>
-    <Cell><Data ss:Type="String">Enrolled, Screened, Terminated, Discontinued study, Completed study, Randomized, failed screening, Screening, Screen Failed, Early Terminated, Completed</Data><NamedCell
-      ss:Name="Print_Area"/></Cell>
     <Cell ss:Index="11"><Data ss:Type="String">           </Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="254.0625">
-    <Cell ss:Index="2"><Data ss:Type="String">SUPERROLE#1/16/2013 7@11@06 PM##5</Data><NamedCell
-      ss:Name="Print_Area"/></Cell>
-    <Cell><Data ss:Type="String">TRUE</Data><NamedCell ss:Name="Print_Area"/></Cell>
-    <Cell ss:Index="5"><Data ss:Type="String">CanBatchSign, CanInactivateForm, CanModifyTemplates, CanReactivateForm, CanUseTemplates, CanViewStudyGrid, CreateSubject, ModifyPrimaryRecord, Pass1DataEntry, Pass2DataEntry, Reconcile, SeeAudits, SetClinicalSignificance, ShareSubject, SubjectAdmin, UseLabMaintenance, UsePrimarySubjectName, ViewAllSitesInSiteGroup, ViewSubjectsWithAnyStatus</Data><NamedCell
-      ss:Name="Print_Area"/></Cell>
-    <Cell><Data ss:Type="String">Enrolled, Screened, Terminated, Discontinued study, Completed study, Randomized, failed screening, Screening, Screen Failed, Early Terminated, Completed</Data><NamedCell
-      ss:Name="Print_Area"/></Cell>
     <Cell ss:Index="11"><Data ss:Type="String">           </Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="254.0625">
-    <Cell ss:Index="2"><Data ss:Type="String">SUPERROLE#1/16/2013 9@07@28 PM##6</Data><NamedCell
-      ss:Name="Print_Area"/></Cell>
-    <Cell><Data ss:Type="String">TRUE</Data><NamedCell ss:Name="Print_Area"/></Cell>
-    <Cell ss:Index="5"><Data ss:Type="String">CanBatchSign, CanInactivateForm, CanModifyTemplates, CanReactivateForm, CanUseTemplates, CanViewStudyGrid, CreateSubject, ModifyPrimaryRecord, Pass1DataEntry, Pass2DataEntry, Reconcile, SeeAudits, SetClinicalSignificance, ShareSubject, SubjectAdmin, UseLabMaintenance, UsePrimarySubjectName, ViewAllSitesInSiteGroup, ViewSubjectsWithAnyStatus</Data><NamedCell
-      ss:Name="Print_Area"/></Cell>
-    <Cell><Data ss:Type="String">Enrolled, Screened, Terminated, Discontinued study, Completed study, Randomized, failed screening, Screening, Screen Failed, Early Terminated, Completed</Data><NamedCell
-      ss:Name="Print_Area"/></Cell>
     <Cell ss:Index="11"><Data ss:Type="String">           </Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="254.0625">
-    <Cell ss:Index="2"><Data ss:Type="String">SUPERROLE#1/16/2013 9@19@22 PM##6</Data><NamedCell
-      ss:Name="Print_Area"/></Cell>
-    <Cell><Data ss:Type="String">TRUE</Data><NamedCell ss:Name="Print_Area"/></Cell>
-    <Cell ss:Index="5"><Data ss:Type="String">CanBatchSign, CanInactivateForm, CanModifyTemplates, CanReactivateForm, CanUseTemplates, CanViewStudyGrid, CreateSubject, ModifyPrimaryRecord, Pass1DataEntry, Pass2DataEntry, Reconcile, SeeAudits, SetClinicalSignificance, ShareSubject, SubjectAdmin, UseLabMaintenance, UsePrimarySubjectName, ViewAllSitesInSiteGroup, ViewSubjectsWithAnyStatus</Data><NamedCell
-      ss:Name="Print_Area"/></Cell>
-    <Cell><Data ss:Type="String">Enrolled, Screened, Terminated, Discontinued study, Completed study, Randomized, failed screening, Screening, Screen Failed, Early Terminated, Completed</Data><NamedCell
-      ss:Name="Print_Area"/></Cell>
     <Cell ss:Index="11"><Data ss:Type="String">           </Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="210.9375">
-    <Cell ss:Index="2"><Data ss:Type="String">Zcdm1</Data><NamedCell
-      ss:Name="Print_Area"/></Cell>
-    <Cell><Data ss:Type="String">TRUE</Data><NamedCell ss:Name="Print_Area"/></Cell>
-    <Cell><Data ss:Type="String">Entry Error</Data><NamedCell ss:Name="Print_Area"/></Cell>
-    <Cell><Data ss:Type="String">CanBatchSign, CanInactivateForm, CanModifyTemplates, CanReactivateForm, CanUseTemplates, CanViewStudyGrid, CreateSubject, ModifyPrimaryRecord, SeeAudits, ShareSubject, SubjectAdmin, UsePatientDashboard, UsePrimarySubjectName, ViewAllSitesInSiteGroup, ViewSubjectsWithAnyStatus</Data><NamedCell
-      ss:Name="Print_Area"/></Cell>
-    <Cell><Data ss:Type="String">Enrolled, Screened, Terminated, Discontinued study, Completed study, Randomized, failed screening, Screening, Screen Failed, Early Terminated, Completed</Data><NamedCell
-      ss:Name="Print_Area"/></Cell>
     <Cell ss:Index="11"><Data ss:Type="String">           </Data></Cell>
    </Row>
   </Table>
@@ -17538,7 +17455,7 @@
    <FreezePanes/>
    <FrozenNoSplit/>
    <SplitHorizontal>1</SplitHorizontal>
-   <TopRowBottomPane>19</TopRowBottomPane>
+   <TopRowBottomPane>18</TopRowBottomPane>
    <ActivePane>2</ActivePane>
    <Panes>
     <Pane>
@@ -17546,8 +17463,8 @@
     </Pane>
     <Pane>
      <Number>2</Number>
-     <ActiveRow>9</ActiveRow>
-     <ActiveCol>3</ActiveCol>
+     <ActiveRow>19</ActiveRow>
+     <ActiveCol>1</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -17608,7 +17525,7 @@
     <Cell ss:Index="11"><Data ss:Type="String">Roles</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="21.9375">
-    <Cell ss:Index="6" ss:MergeDown="9" ss:StyleID="m110882816"><ss:Data
+    <Cell ss:Index="6" ss:MergeDown="9" ss:StyleID="m111748864"><ss:Data
       ss:Type="String" xmlns="http://www.w3.org/TR/REC-html40">       During a study, data may not always be available for entry into all required fields. When this occurs, a user who belongs to a Role that has been configured for Missing Codes can enter a valid code for the missing data.  This missing code will replace the actual data value to indicate that the field was left empty on purpose. To set up a Missing Code for a Role, fill in: <B>Role</B><Font> - Select the Role for which the Missing Code is valid </Font><B>Missing Code</B><Font> - Enter the text which will serve to indicate a missing code </Font><B>Description</B><Font> - Enter a description of the Missing Code </Font><B>Active</B><Font> - Select 'TRUE' to make the Missing Code avaialble for use, or 'FALSE' to remove it from the avaialble list of Missing Codes            </Font></ss:Data><NamedCell
       ss:Name="Print_Area"/></Cell>
     <Cell ss:Index="11"
@@ -17708,42 +17625,42 @@
    <Row ss:AutoFitHeight="0">
     <Cell ss:Index="11"
      ss:Formula="=IF(LEN('EDC Roles'!RC[-9])&gt;0,'EDC Roles'!RC[-9],&quot;&quot;)"><Data
-      ss:Type="String">SUPERROLE</Data></Cell>
+      ss:Type="String"></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:Index="11"
      ss:Formula="=IF(LEN('EDC Roles'!RC[-9])&gt;0,'EDC Roles'!RC[-9],&quot;&quot;)"><Data
-      ss:Type="String">SUPERROLE#1/16/2013 4@35@33 PM##6</Data></Cell>
+      ss:Type="String"></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:Index="11"
      ss:Formula="=IF(LEN('EDC Roles'!RC[-9])&gt;0,'EDC Roles'!RC[-9],&quot;&quot;)"><Data
-      ss:Type="String">SUPERROLE#1/16/2013 4@37@50 PM##6</Data></Cell>
+      ss:Type="String"></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:Index="11"
      ss:Formula="=IF(LEN('EDC Roles'!RC[-9])&gt;0,'EDC Roles'!RC[-9],&quot;&quot;)"><Data
-      ss:Type="String">SUPERROLE#1/16/2013 5@17@40 PM##6</Data></Cell>
+      ss:Type="String"></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:Index="11"
      ss:Formula="=IF(LEN('EDC Roles'!RC[-9])&gt;0,'EDC Roles'!RC[-9],&quot;&quot;)"><Data
-      ss:Type="String">SUPERROLE#1/16/2013 7@11@06 PM##5</Data></Cell>
+      ss:Type="String"></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:Index="11"
      ss:Formula="=IF(LEN('EDC Roles'!RC[-9])&gt;0,'EDC Roles'!RC[-9],&quot;&quot;)"><Data
-      ss:Type="String">SUPERROLE#1/16/2013 9@07@28 PM##6</Data></Cell>
+      ss:Type="String"></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:Index="11"
      ss:Formula="=IF(LEN('EDC Roles'!RC[-9])&gt;0,'EDC Roles'!RC[-9],&quot;&quot;)"><Data
-      ss:Type="String">SUPERROLE#1/16/2013 9@19@22 PM##6</Data></Cell>
+      ss:Type="String"></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:Index="11"
      ss:Formula="=IF(LEN('EDC Roles'!RC[-9])&gt;0,'EDC Roles'!RC[-9],&quot;&quot;)"><Data
-      ss:Type="String">Zcdm1</Data></Cell>
+      ss:Type="String"></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:Index="11"
@@ -17949,7 +17866,7 @@
     <Cell ss:Index="11"><Data ss:Type="String">Roles</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
-    <Cell ss:Index="7" ss:MergeDown="7" ss:StyleID="m110883488"><ss:Data
+    <Cell ss:Index="7" ss:MergeDown="7" ss:StyleID="m111749536"><ss:Data
       ss:Type="String" xmlns="http://www.w3.org/TR/REC-html40">       A user with Role permission 'Can Inactivate Form' or 'Can Reactivate Form' can inactivate/reactivate any form for a subject (except for Primary Form). When activating/inactivating a form, the system prompts the user to select a Reason Code for the activation/inactivation. The list of Reason Codes is configured per Role. To configure Reason Codes, set up the following: <B>Role</B><Font> - Select the Role for which the Reason Code is valid </Font><B>Reason Code</B><Font> - Enter the text which will be used as a Reason Code </Font><B>Description</B><Font> - Enter a description of the Reason Code </Font><B>Reason Type</B><Font> - Select whether the Reason Code should be used for activations of inactivations </Font><B>Active</B><Font> - Select 'TRUE' to make the Reason Code avaialble for use, or 'FALSE' to remove it from the avaialble list of Reason Codes            </Font></ss:Data><NamedCell
       ss:Name="Print_Area"/></Cell>
     <Cell ss:Index="11"
@@ -18054,49 +17971,49 @@
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell ss:Index="11"
      ss:Formula="=IF(LEN('EDC Roles'!RC[-9])&gt;0,'EDC Roles'!RC[-9],&quot;&quot;)"><Data
-      ss:Type="String">SUPERROLE</Data></Cell>
+      ss:Type="String"></Data></Cell>
     <Cell><Data ss:Type="String">           </Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell ss:Index="11"
      ss:Formula="=IF(LEN('EDC Roles'!RC[-9])&gt;0,'EDC Roles'!RC[-9],&quot;&quot;)"><Data
-      ss:Type="String">SUPERROLE#1/16/2013 4@35@33 PM##6</Data></Cell>
+      ss:Type="String"></Data></Cell>
     <Cell><Data ss:Type="String">           </Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell ss:Index="11"
      ss:Formula="=IF(LEN('EDC Roles'!RC[-9])&gt;0,'EDC Roles'!RC[-9],&quot;&quot;)"><Data
-      ss:Type="String">SUPERROLE#1/16/2013 4@37@50 PM##6</Data></Cell>
+      ss:Type="String"></Data></Cell>
     <Cell><Data ss:Type="String">           </Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell ss:Index="11"
      ss:Formula="=IF(LEN('EDC Roles'!RC[-9])&gt;0,'EDC Roles'!RC[-9],&quot;&quot;)"><Data
-      ss:Type="String">SUPERROLE#1/16/2013 5@17@40 PM##6</Data></Cell>
+      ss:Type="String"></Data></Cell>
     <Cell><Data ss:Type="String">           </Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell ss:Index="11"
      ss:Formula="=IF(LEN('EDC Roles'!RC[-9])&gt;0,'EDC Roles'!RC[-9],&quot;&quot;)"><Data
-      ss:Type="String">SUPERROLE#1/16/2013 7@11@06 PM##5</Data></Cell>
+      ss:Type="String"></Data></Cell>
     <Cell><Data ss:Type="String">           </Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell ss:Index="11"
      ss:Formula="=IF(LEN('EDC Roles'!RC[-9])&gt;0,'EDC Roles'!RC[-9],&quot;&quot;)"><Data
-      ss:Type="String">SUPERROLE#1/16/2013 9@07@28 PM##6</Data></Cell>
+      ss:Type="String"></Data></Cell>
     <Cell><Data ss:Type="String">           </Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell ss:Index="11"
      ss:Formula="=IF(LEN('EDC Roles'!RC[-9])&gt;0,'EDC Roles'!RC[-9],&quot;&quot;)"><Data
-      ss:Type="String">SUPERROLE#1/16/2013 9@19@22 PM##6</Data></Cell>
+      ss:Type="String"></Data></Cell>
     <Cell><Data ss:Type="String">           </Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell ss:Index="11"
      ss:Formula="=IF(LEN('EDC Roles'!RC[-9])&gt;0,'EDC Roles'!RC[-9],&quot;&quot;)"><Data
-      ss:Type="String">Zcdm1</Data></Cell>
+      ss:Type="String"></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:Index="11"
@@ -18297,7 +18214,7 @@
       ss:Name="Print_Area"/></Cell>
     <Cell><Data ss:Type="String">Entry(),See Entry(),Code(),Translate(),See Translation()</Data><NamedCell
       ss:Name="Print_Area"/></Cell>
-    <Cell ss:MergeDown="1" ss:StyleID="m110884384"><ss:Data ss:Type="String"
+    <Cell ss:MergeDown="1" ss:StyleID="m111750432"><ss:Data ss:Type="String"
       xmlns="http://www.w3.org/TR/REC-html40">       Role Actions define the action which a specific Role is allowed to perform. To configure the Role Actions, set up the following: <B>Role</B><Font> - Select the desired Role in the Role column (</Font><I>Roles are defined on the Roles worksheet</I><Font>) </Font><B>Role Action</B><Font> - List the Role Actions assigned to the selected Role. Separate each permission by a delimiter (e.g., comma). (</Font><I>see explanations below) </I><B>(PreCondition-STATUS)</B><Font> - List pairs of pre-conditions and their status for each Role Action in parenthesis, following the action. Each pre-condition should be followed by it's Status. Set status to TRUE if the pre-condition should be true for permission to be granted. Set it to FALSE if the pre-condition should NOT be true for permission to be granted. E.g., Freeze(IsReviewed=TRUE, RequiresCoding=FALSE) </Font><I>Note: A pre-condition needs to be on the list in order to take effect. i.e., empty pre-condition lists imply no pre-conditions.</I></ss:Data><NamedCell
       ss:Name="Print_Area"/></Cell>
     <Cell ss:Index="7"
@@ -18314,53 +18231,33 @@
       ss:Type="String">CDM1_SJ</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="254.0625">
-    <Cell ss:Index="2"><Data ss:Type="String">CDM1FF1002</Data><NamedCell
-      ss:Name="Print_Area"/></Cell>
-    <Cell><Data ss:Type="String">Entry(),Second Pass(),Verify(),Review 1(),Review 2(),Freeze(),Unfreeze(),Lock(),Unlock(),Open Query 1(),Open Query 2(),Open Query 3(),Open Query 4(),Open Query 10(),Answer Query 1(),Answer Query 2(),Answer Query 10(),Cancel Query 1(),Cancel Query 2(),Cancel Query 10(),Place Sticky 1(),Place Sticky 2(),Place Sticky 3(),Acknowledge Sticky 1(),Acknowledge Sticky 2(),Acknowledge Sticky 3(),UnVerify(),UnReview 1(),Close Query 1(),Close Query 2(),Close Query 10(),Add Protocol Deviation(),Edit Protocol Deviation(),Remove Protocol Deviation(),Add Comment(),Edit Comment(),Remove Comment(),See Open Query 1(),See Open Query 2(),See Open Query 10(),See Answered Query 1(),See Answered Query 2(),See Answered Query 3(),See Answered Query 10(),See Verify(),See Review 1(),See Close Query 1(),See Close Query 2(),See Close Query 10(),See Sticky 1(),See Sticky 2(),See Sticky 3(),See Entry(),See Protocol Deviation(),Sign(),Code(),See Coding(),Translate(),See Translation(),First Pass(),Forward Query()</Data><NamedCell
-      ss:Name="Print_Area"/></Cell>
-    <Cell ss:MergeDown="1" ss:StyleID="m110884404"><ss:Data ss:Type="String"
-      xmlns="http://www.w3.org/TR/REC-html40">             <B>               <U>Data Interaction Role Actions</U><Font>                                           </Font></B><Font>                                       </Font><B>Entry:</B><Font>                                         allows users with this role to enter and edit data.                                         </Font><B>See Entry:</B><Font>                                         allows users with this role to view data in fields.                                         </Font><I>Note: This is implicit in most actions, but must be specially enabled for Read Only Role </I><Font>                                       </Font><B>Freeze:</B><Font>                                         allows users with this role to freeze fields and forms, thereby preventing new data from being entered but allowing the data workflow to continue.  For example, queries may be answered and existing data may be edited.                                         </Font><B>Unfreeze:</B><Font>                                         allows users with this role to unfreeze fields and forms, thereby allowing new data to be entered.                                         </Font><B>Lock:</B><Font>                                         allows users with this role to hard lock fields and forms, thereby preventing any further changes to those fields.                                        </Font><I>             </I><Font>                                       </Font><B>Unlock:</B><Font>                                         allows users with this role to unlock fields, thereby allowing data to be entered or edited.                                  </Font></ss:Data><NamedCell
+    <Cell ss:Index="4" ss:MergeDown="1" ss:StyleID="m111750452"><ss:Data
+      ss:Type="String" xmlns="http://www.w3.org/TR/REC-html40">             <B>               <U>Data Interaction Role Actions</U><Font>                                           </Font></B><Font>                                       </Font><B>Entry:</B><Font>                                         allows users with this role to enter and edit data.                                         </Font><B>See Entry:</B><Font>                                         allows users with this role to view data in fields.                                         </Font><I>Note: This is implicit in most actions, but must be specially enabled for Read Only Role </I><Font>                                       </Font><B>Freeze:</B><Font>                                         allows users with this role to freeze fields and forms, thereby preventing new data from being entered but allowing the data workflow to continue.  For example, queries may be answered and existing data may be edited.                                         </Font><B>Unfreeze:</B><Font>                                         allows users with this role to unfreeze fields and forms, thereby allowing new data to be entered.                                         </Font><B>Lock:</B><Font>                                         allows users with this role to hard lock fields and forms, thereby preventing any further changes to those fields.                                        </Font><I>             </I><Font>                                       </Font><B>Unlock:</B><Font>                                         allows users with this role to unlock fields, thereby allowing data to be entered or edited.                                  </Font></ss:Data><NamedCell
       ss:Name="OLE_LINK6"/><NamedCell ss:Name="Print_Area"/></Cell>
     <Cell ss:Index="7"
      ss:Formula="=IF(LEN('EDC Roles'!RC[-5])&gt;0,'EDC Roles'!RC[-5],&quot;&quot;)"><Data
       ss:Type="String">CDM1FF1002</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="254.0625">
-    <Cell ss:Index="2"><Data ss:Type="String">CDM1IE1002</Data><NamedCell
-      ss:Name="Print_Area"/></Cell>
-    <Cell><Data ss:Type="String">Entry(),Second Pass(),Verify(),Review 1(),Review 2(),Freeze(),Unfreeze(),Lock(),Unlock(),Open Query 1(),Open Query 2(),Open Query 3(),Open Query 4(),Open Query 10(),Answer Query 1(),Answer Query 2(),Answer Query 10(),Cancel Query 1(),Cancel Query 2(),Cancel Query 10(),Place Sticky 1(),Place Sticky 2(),Place Sticky 3(),Acknowledge Sticky 1(),Acknowledge Sticky 2(),Acknowledge Sticky 3(),UnVerify(),UnReview 1(),Close Query 1(),Close Query 2(),Close Query 10(),Add Protocol Deviation(),Edit Protocol Deviation(),Remove Protocol Deviation(),Add Comment(),Edit Comment(),Remove Comment(),See Open Query 1(),See Open Query 2(),See Open Query 10(),See Answered Query 1(),See Answered Query 2(),See Answered Query 3(),See Answered Query 10(),See Verify(),See Review 1(),See Close Query 1(),See Close Query 2(),See Close Query 10(),See Sticky 1(),See Sticky 2(),See Sticky 3(),See Entry(),See Protocol Deviation(),Sign(),Code(),See Coding(),Translate(),See Translation(),First Pass(),Forward Query()</Data><NamedCell
-      ss:Name="Print_Area"/></Cell>
     <Cell ss:Index="7"
      ss:Formula="=IF(LEN('EDC Roles'!RC[-5])&gt;0,'EDC Roles'!RC[-5],&quot;&quot;)"><Data
       ss:Type="String">CDM1IE1002</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="195">
-    <Cell ss:Index="2"><Data ss:Type="String">Coder Import Role</Data><NamedCell
-      ss:Name="Print_Area"/></Cell>
-    <Cell><Data ss:Type="String">Entry(),Open Query 1(),Open Query 2(),Open Query 3(),Open Query 4(),Open Query 5(),Open Query 6(),Open Query 7(),Open Query 8(),Open Query 9(),Open Query 10(),Answer Query 1(),Answer Query 2(),Answer Query 3(),Answer Query 4(),Answer Query 5(),Answer Query 6(),Answer Query 7(),Answer Query 8(),Answer Query 9(),Answer Query 10(),Cancel Query 1(),Cancel Query 2(),Cancel Query 3(),Cancel Query 4(),Cancel Query 5(),Cancel Query 6(),Cancel Query 7(),Cancel Query 8(),Cancel Query 9(),Cancel Query 10(),Close Query 1(),Close Query 2(),Close Query 3(),Close Query 4(),Close Query 5(),Close Query 6(),Close Query 7(),Close Query 8(),Close Query 9(),Close Query 10(),See Entry(),Code(),Translate()</Data><NamedCell
-      ss:Name="Print_Area"/></Cell>
-    <Cell ss:MergeDown="1" ss:StyleID="m110884424"><ss:Data ss:Type="String"
-      xmlns="http://www.w3.org/TR/REC-html40">             <B>               <U>Marking Group Actions (Queries and Stickies)</U><Font>                                               Open Query to MG                                              </Font><I>n</I><Font>                                              :                                         </Font></B><Font>                                        allows users with this role to open queries into Marking Group                                         </Font><B>               <I>n</I><Font>                                           </Font></B><Font>                                         (where                                         </Font><B>               <I>n</I><Font>                                           </Font></B><Font>                                         is a number corresponding with the Marking Group name in the Marking Groups Table).                                         </Font><B>        See Open Query in MG<I>n</I><Font>:              </Font></B><Font>                                         allows users with this role to view open queries that have been opened into Marking Group                                         </Font><B>               <I>n</I><Font>                                           </Font></B><Font>                                       </Font><I>.</I><Font>                                       </Font><B>        Answer Query in MG<I>n</I><Font>:              </Font></B><Font>                                         allows users with this role to answer queries that have been opened into Marking Group                                         </Font><B>               <I>n</I><Font>                                           </Font></B><Font>                                        .                                         </Font><B>        See Answered Query in MG<I>n</I><Font>:              </Font></B><Font>                                         When enabled, this role action allows users with this role to view answered queries that have been opened into Marking Group                                         </Font><B>               <I>n</I><Font>                                           </Font></B><Font>                                        .                                         </Font><B>        Cancel Query in MG<I>n</I><Font>:              </Font></B><Font>                                         allows users with this role to cancel queries that have been opened into Marking Group                                         </Font><B>               <I>n</I><Font>                                           </Font></B><Font>                                        .                                         </Font><B>        Close Query in MG<I>n</I><Font>:              </Font></B><Font>                                         allows users with this role to close queries that have been opened into Marking Group                                         </Font><B>               <I>n</I><Font>                                           </Font></B><Font>                                        .                                         </Font><B>        See Closed Query in MG<I>n</I><Font>:              </Font></B><Font>                                         When enabled, this role action allows users with this role to view closed queries that have been opened into Marking Group                                         </Font><B>               <I>n</I><Font>                                           </Font></B><Font>                                        .                                         </Font><B>        See Closed Query in MG<I>n</I><Font>:              </Font></B><Font>                                         When enabled, this role action allows users with this role to view closed queries that have been opened into Marking Group                                         </Font><B>               <I>n</I><Font>                                           </Font></B><Font>                                        .       Forward Query:  When checked, the Forward Query functionality will be available to users with the corresponding EDC Role.                            </Font></ss:Data><NamedCell
+    <Cell ss:Index="4" ss:MergeDown="1" ss:StyleID="m111750472"><ss:Data
+      ss:Type="String" xmlns="http://www.w3.org/TR/REC-html40">             <B>               <U>Marking Group Actions (Queries and Stickies)</U><Font>                                               Open Query to MG                                              </Font><I>n</I><Font>                                              :                                         </Font></B><Font>                                        allows users with this role to open queries into Marking Group                                         </Font><B>               <I>n</I><Font>                                           </Font></B><Font>                                         (where                                         </Font><B>               <I>n</I><Font>                                           </Font></B><Font>                                         is a number corresponding with the Marking Group name in the Marking Groups Table).                                         </Font><B>        See Open Query in MG<I>n</I><Font>:              </Font></B><Font>                                         allows users with this role to view open queries that have been opened into Marking Group                                         </Font><B>               <I>n</I><Font>                                           </Font></B><Font>                                       </Font><I>.</I><Font>                                       </Font><B>        Answer Query in MG<I>n</I><Font>:              </Font></B><Font>                                         allows users with this role to answer queries that have been opened into Marking Group                                         </Font><B>               <I>n</I><Font>                                           </Font></B><Font>                                        .                                         </Font><B>        See Answered Query in MG<I>n</I><Font>:              </Font></B><Font>                                         When enabled, this role action allows users with this role to view answered queries that have been opened into Marking Group                                         </Font><B>               <I>n</I><Font>                                           </Font></B><Font>                                        .                                         </Font><B>        Cancel Query in MG<I>n</I><Font>:              </Font></B><Font>                                         allows users with this role to cancel queries that have been opened into Marking Group                                         </Font><B>               <I>n</I><Font>                                           </Font></B><Font>                                        .                                         </Font><B>        Close Query in MG<I>n</I><Font>:              </Font></B><Font>                                         allows users with this role to close queries that have been opened into Marking Group                                         </Font><B>               <I>n</I><Font>                                           </Font></B><Font>                                        .                                         </Font><B>        See Closed Query in MG<I>n</I><Font>:              </Font></B><Font>                                         When enabled, this role action allows users with this role to view closed queries that have been opened into Marking Group                                         </Font><B>               <I>n</I><Font>                                           </Font></B><Font>                                        .                                         </Font><B>        See Closed Query in MG<I>n</I><Font>:              </Font></B><Font>                                         When enabled, this role action allows users with this role to view closed queries that have been opened into Marking Group                                         </Font><B>               <I>n</I><Font>                                           </Font></B><Font>                                        .       Forward Query:  When checked, the Forward Query functionality will be available to users with the corresponding EDC Role.                            </Font></ss:Data><NamedCell
       ss:Name="Print_Area"/></Cell>
     <Cell ss:Index="7"
      ss:Formula="=IF(LEN('EDC Roles'!RC[-5])&gt;0,'EDC Roles'!RC[-5],&quot;&quot;)"><Data
       ss:Type="String">Coder Import Role</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="255">
-    <Cell ss:Index="2"><Data ss:Type="String">CRAFF10021</Data><NamedCell
-      ss:Name="Print_Area"/></Cell>
-    <Cell><Data ss:Type="String">Verify(),Review 1(),Freeze(),Lock(),Open Query 1(),Answer Query 1(),Place Sticky 1(),Acknowledge Sticky 1(),See Review 1(),See Protocol Deviation()</Data><NamedCell
-      ss:Name="Print_Area"/></Cell>
     <Cell ss:Index="7"
      ss:Formula="=IF(LEN('EDC Roles'!RC[-5])&gt;0,'EDC Roles'!RC[-5],&quot;&quot;)"><Data
       ss:Type="String">CRAFF10021</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="121.5">
-    <Cell ss:Index="2"><Data ss:Type="String">CRAIE10021</Data><NamedCell
-      ss:Name="Print_Area"/></Cell>
-    <Cell><Data ss:Type="String">Verify(),Review 1(),Freeze(),Lock(),Open Query 1(),Answer Query 1(),Place Sticky 1(),Acknowledge Sticky 1(),See Review 1(),See Protocol Deviation()</Data><NamedCell
-      ss:Name="Print_Area"/></Cell>
-    <Cell ss:StyleID="s306"><ss:Data ss:Type="String"
+    <Cell ss:Index="4" ss:StyleID="s306"><ss:Data ss:Type="String"
       xmlns="http://www.w3.org/TR/REC-html40">             <B>        Place Sticky in MG<I>n</I><Font>:               </Font></B><Font>                                        allows users with this role to open sticky notes into Marking Group                                         </Font><B>               <I>n</I><Font>                                           </Font></B><Font>                                        .                                         </Font><B>        See Sticky in MG<I>n</I><Font>:               </Font></B><Font>                                        allows users with this role to view sticky notes that have been opened into Marking Group                                        </Font><I>             </I><Font>                                       </Font><B>               <I>n</I><Font>                                           </Font></B><Font>                                        .                                         </Font><B>        Acknowledge Sticky in MG<I>n</I><Font>:              </Font></B><Font>                                         allows users with this role to acknowledge (thus removing) sticky notes that have been opened into Marking Group                                         </Font><B>               <I>n</I><Font>                                           </Font></B><Font>                                        .                                  </Font></ss:Data><NamedCell
       ss:Name="Print_Area"/></Cell>
     <Cell ss:Index="7"
@@ -18368,33 +18265,23 @@
       ss:Type="String">CRAIE10021</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="56.25">
-    <Cell ss:Index="2"><Data ss:Type="String">CRCFF10021</Data><NamedCell
-      ss:Name="Print_Area"/></Cell>
-    <Cell><Data ss:Type="String">Entry(),Answer Query 1(),Place Sticky 1(),Acknowledge Sticky 1(),Add Comment(),Edit Comment(),Remove Comment()</Data><NamedCell
-      ss:Name="Print_Area"/></Cell>
-    <Cell ss:MergeDown="1" ss:StyleID="m110884444"><ss:Data ss:Type="String"
-      xmlns="http://www.w3.org/TR/REC-html40">             <B>               <U>Protocol Deviation and Comments Actions</U><Font>                                           </Font></B><Font>                                       </Font><B>Add Protocol Deviation:</B><Font>                                         allows users with this role to add a protocol deviation to fields.                                         </Font><B>See Protocol Deviation:</B><Font>                                         allows users with this role to view existing protocol deviations, but not to add, edit, or remove them.                                         </Font><B>Edit Protocol Deviation:</B><Font>                                         allows users with this role to edit protocol deviations on fields.                                         </Font><B>Remove Protocol Deviations:</B><Font>                                         allows users with this role to remove protocol deviations from fields.                                         </Font><B>Add Comment:</B><Font>                                         allows users with this role to add comments/annotations to fields.                                         </Font><B>Edit Comment:</B><Font>                                         allows users with this role to edit comments/annotations to fields.                                         </Font><B>Remove Comment: </B><Font>                                        allows users with this role to remove comments/annotations from fields.                                   </Font></ss:Data><NamedCell
+    <Cell ss:Index="4" ss:MergeDown="1" ss:StyleID="m111750492"><ss:Data
+      ss:Type="String" xmlns="http://www.w3.org/TR/REC-html40">             <B>               <U>Protocol Deviation and Comments Actions</U><Font>                                           </Font></B><Font>                                       </Font><B>Add Protocol Deviation:</B><Font>                                         allows users with this role to add a protocol deviation to fields.                                         </Font><B>See Protocol Deviation:</B><Font>                                         allows users with this role to view existing protocol deviations, but not to add, edit, or remove them.                                         </Font><B>Edit Protocol Deviation:</B><Font>                                         allows users with this role to edit protocol deviations on fields.                                         </Font><B>Remove Protocol Deviations:</B><Font>                                         allows users with this role to remove protocol deviations from fields.                                         </Font><B>Add Comment:</B><Font>                                         allows users with this role to add comments/annotations to fields.                                         </Font><B>Edit Comment:</B><Font>                                         allows users with this role to edit comments/annotations to fields.                                         </Font><B>Remove Comment: </B><Font>                                        allows users with this role to remove comments/annotations from fields.                                   </Font></ss:Data><NamedCell
       ss:Name="Print_Area"/></Cell>
     <Cell ss:Index="7"
      ss:Formula="=IF(LEN('EDC Roles'!RC[-5])&gt;0,'EDC Roles'!RC[-5],&quot;&quot;)"><Data
       ss:Type="String">CRCFF10021</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="154.5">
-    <Cell ss:Index="2"><Data ss:Type="String">CRCIE10021</Data><NamedCell
-      ss:Name="Print_Area"/></Cell>
-    <Cell><Data ss:Type="String">Entry(),Answer Query 1(),Place Sticky 1(),Acknowledge Sticky 1(),Add Comment(),Edit Comment(),Remove Comment()</Data><NamedCell
-      ss:Name="Print_Area"/></Cell>
     <Cell ss:Index="7"
      ss:Formula="=IF(LEN('EDC Roles'!RC[-5])&gt;0,'EDC Roles'!RC[-5],&quot;&quot;)"><Data
       ss:Type="String">CRCIE10021</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="146.25" ss:StyleID="s295">
     <Cell ss:StyleID="s183"><NamedCell ss:Name="Print_Area"/></Cell>
-    <Cell ss:StyleID="s111"><Data ss:Type="String">DMFF10021</Data><NamedCell
-      ss:Name="Print_Area"/></Cell>
-    <Cell ss:StyleID="s111"><Data ss:Type="String">Review 1()</Data><NamedCell
-      ss:Name="Print_Area"/></Cell>
-    <Cell ss:MergeDown="1" ss:StyleID="m110884464"><ss:Data ss:Type="String"
+    <Cell ss:StyleID="s111"><NamedCell ss:Name="Print_Area"/></Cell>
+    <Cell ss:StyleID="s111"><NamedCell ss:Name="Print_Area"/></Cell>
+    <Cell ss:MergeDown="1" ss:StyleID="m111750512"><ss:Data ss:Type="String"
       xmlns="http://www.w3.org/TR/REC-html40">             <B>               <U>SDV and Manual Review Role Actions</U><Font>                                           </Font></B><Font>                                       </Font><B>Verify: </B><Font>                                        allows users with this role to verify fields requiring SDV.                                         </Font><B>See Verify:</B><Font>                                         allows users with this role to view fields that have been verified.                                         </Font><B>Unverify:</B><Font>                                         allows users with this role to mark verified fields as &quot;Not Verified&quot;.                                         </Font><B>        Review RG<I>n</I></B><Font>                                        : allows users with this role to manually review fields that require review by Review Group                                         </Font><B>               <I>n</I><Font>                                           </Font></B><Font>                                         (where                                         </Font><B>               <I>n</I><Font>                                           </Font></B><Font>                                         is a number corresponding with the Review Group name in the Review Groups Table).                                         </Font><B>        See Review RG<I>n</I><Font>:              </Font></B><Font>                                         allows users with this role to see fields that have been reviewed by Review Group                                         </Font><B>               <I>n</I><Font>                                           </Font></B><Font>                                         (where                                         </Font><B>               <I>n</I><Font>                                           </Font></B><Font>                                         is a number corresponding with the Review Group name in the Review Groups Table).                                         </Font><B>        Unreview RG<I>n</I><Font>:              </Font></B><Font>                                         allows users with this role to mark as &quot;Not Reviewed&quot; fields that have been reviewed by Review Group                                         </Font><B>               <I>n</I><Font>                                           </Font></B><Font>                                         (where                                         </Font><B>               <I>n</I><Font>                                           </Font></B><Font>                                         is a number corresponding with the Review Group name in the Review Groups Table).                                  </Font></ss:Data><NamedCell
       ss:Name="Print_Area"/></Cell>
     <Cell ss:Index="7" ss:StyleID="s220"
@@ -18402,148 +18289,87 @@
       ss:Type="String">DMFF10021</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="158.25">
-    <Cell ss:Index="2"><Data ss:Type="String">DMIE10021</Data><NamedCell
-      ss:Name="Print_Area"/></Cell>
-    <Cell><Data ss:Type="String">Review 1()</Data><NamedCell ss:Name="Print_Area"/></Cell>
     <Cell ss:Index="7"
      ss:Formula="=IF(LEN('EDC Roles'!RC[-5])&gt;0,'EDC Roles'!RC[-5],&quot;&quot;)"><Data
       ss:Type="String">DMIE10021</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="180.9375">
-    <Cell ss:Index="2"><Data ss:Type="String">Power User</Data><NamedCell
-      ss:Name="Print_Area"/></Cell>
-    <Cell><Data ss:Type="String">Entry(),Second Pass(),Verify(),Freeze(),Unfreeze(),Lock(),Unlock(),Open Query 1(),Open Query 2(),Open Query 3(),Answer Query 1(),Answer Query 2(),Answer Query 3(),Cancel Query 1(),Cancel Query 2(),Cancel Query 3(),UnVerify(),Reconcile(),Close Query 1(),Close Query 2(),Close Query 3(),Add Comment(),Edit Comment(),Remove Comment(),See Open Query 1(),See Open Query 2(),See Open Query 3(),See Answered Query 1(),See Answered Query 2(),See Answered Query 3(),Reserved_2(),See Verify(),Reserved_1(),See Close Query 1(),See Close Query 2(),See Close Query 3(),See Entry(),Sign(),Code(),See Coding(),Translate(),See Translation(),First Pass(),Forward Query(),Reactivate Log Lines()</Data><NamedCell
-      ss:Name="Print_Area"/></Cell>
-    <Cell ss:MergeDown="1" ss:StyleID="m110884484"><ss:Data ss:Type="String"
-      xmlns="http://www.w3.org/TR/REC-html40">             <B>               <U>Special Actions</U><Font>                                           </Font></B><Font>                                       </Font><B>Sign:</B><Font>                                         allows users with this role to electronically sign forms, that is, enter a password on fields that are configured as signature fields.                                         </Font><B>Code:</B><Font>                                         allows users with this role to code user entered data using coding dictionaries on fields that have been associated with coding dictionaries.                                         </Font><B>See Coding:</B><Font>                                         allows users with this role to view user entered data and the associated coded data from coding dictionaries.                                         </Font><B>Translate:</B><Font>                                         allows users with this role to translate user entered data into a different language.                                         </Font><B>See Translation:</B><Font>                                         allows users with this role to view user entered data and the associated translation.                                         </Font><B>First Pass:</B><Font>                                         allows users with this role to view and enter data for first pass in Double Data Entry (DDE).                                         </Font><B>Second Pass:</B><Font>                                         allows users with this role to view and enter data for Second pass in Double Data Entry (DDE).                                         </Font><B>Reconcile:</B><Font>                                         allows users with this role to view and resolve differences between first pass and second pass data entries in Double Data Entry (DDE).                                  </Font></ss:Data><NamedCell
+    <Cell ss:Index="4" ss:MergeDown="1" ss:StyleID="m111750532"><ss:Data
+      ss:Type="String" xmlns="http://www.w3.org/TR/REC-html40">             <B>               <U>Special Actions</U><Font>                                           </Font></B><Font>                                       </Font><B>Sign:</B><Font>                                         allows users with this role to electronically sign forms, that is, enter a password on fields that are configured as signature fields.                                         </Font><B>Code:</B><Font>                                         allows users with this role to code user entered data using coding dictionaries on fields that have been associated with coding dictionaries.                                         </Font><B>See Coding:</B><Font>                                         allows users with this role to view user entered data and the associated coded data from coding dictionaries.                                         </Font><B>Translate:</B><Font>                                         allows users with this role to translate user entered data into a different language.                                         </Font><B>See Translation:</B><Font>                                         allows users with this role to view user entered data and the associated translation.                                         </Font><B>First Pass:</B><Font>                                         allows users with this role to view and enter data for first pass in Double Data Entry (DDE).                                         </Font><B>Second Pass:</B><Font>                                         allows users with this role to view and enter data for Second pass in Double Data Entry (DDE).                                         </Font><B>Reconcile:</B><Font>                                         allows users with this role to view and resolve differences between first pass and second pass data entries in Double Data Entry (DDE).                                  </Font></ss:Data><NamedCell
       ss:Name="Print_Area"/></Cell>
     <Cell ss:Index="7"
      ss:Formula="=IF(LEN('EDC Roles'!RC[-5])&gt;0,'EDC Roles'!RC[-5],&quot;&quot;)"><Data
       ss:Type="String">Power User</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="157.5">
-    <Cell ss:Index="2"><Data ss:Type="String">Role047051</Data><NamedCell
-      ss:Name="Print_Area"/></Cell>
-    <Cell><Data ss:Type="String">Entry(),Verify(),Lock(),See Entry()</Data><NamedCell
-      ss:Name="Print_Area"/></Cell>
     <Cell ss:Index="7"
      ss:Formula="=IF(LEN('EDC Roles'!RC[-5])&gt;0,'EDC Roles'!RC[-5],&quot;&quot;)"><Data
       ss:Type="String">Role047051</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="18">
-    <Cell ss:Index="2"><Data ss:Type="String">Role225557</Data><NamedCell
-      ss:Name="Print_Area"/></Cell>
-    <Cell><Data ss:Type="String">Entry(),Verify(),Lock(),See Entry()</Data><NamedCell
-      ss:Name="Print_Area"/></Cell>
     <Cell ss:Index="7"
      ss:Formula="=IF(LEN('EDC Roles'!RC[-5])&gt;0,'EDC Roles'!RC[-5],&quot;&quot;)"><Data
       ss:Type="String">Role225557</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="18">
-    <Cell ss:Index="2"><Data ss:Type="String">Role349118</Data><NamedCell
-      ss:Name="Print_Area"/></Cell>
-    <Cell><Data ss:Type="String">Entry(),Verify(),Lock(),See Entry()</Data><NamedCell
-      ss:Name="Print_Area"/></Cell>
     <Cell ss:Index="7"
      ss:Formula="=IF(LEN('EDC Roles'!RC[-5])&gt;0,'EDC Roles'!RC[-5],&quot;&quot;)"><Data
       ss:Type="String">Role349118</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="18">
-    <Cell ss:Index="2"><Data ss:Type="String">Role622191</Data><NamedCell
-      ss:Name="Print_Area"/></Cell>
-    <Cell><Data ss:Type="String">Entry(),Verify(),Lock(),See Entry()</Data><NamedCell
-      ss:Name="Print_Area"/></Cell>
     <Cell ss:Index="7"
      ss:Formula="=IF(LEN('EDC Roles'!RC[-5])&gt;0,'EDC Roles'!RC[-5],&quot;&quot;)"><Data
       ss:Type="String">Role622191</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="18">
-    <Cell ss:Index="2"><Data ss:Type="String">Role895717</Data><NamedCell
-      ss:Name="Print_Area"/></Cell>
-    <Cell><Data ss:Type="String">Entry(),Verify(),Lock(),See Entry()</Data><NamedCell
-      ss:Name="Print_Area"/></Cell>
     <Cell ss:Index="7"
      ss:Formula="=IF(LEN('EDC Roles'!RC[-5])&gt;0,'EDC Roles'!RC[-5],&quot;&quot;)"><Data
       ss:Type="String">Role895717</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="18">
-    <Cell ss:Index="2"><Data ss:Type="String">Safety</Data><NamedCell
-      ss:Name="Print_Area"/></Cell>
     <Cell ss:Index="7"
      ss:Formula="=IF(LEN('EDC Roles'!RC[-5])&gt;0,'EDC Roles'!RC[-5],&quot;&quot;)"><Data
       ss:Type="String">Safety</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="282.9375">
-    <Cell ss:Index="2"><Data ss:Type="String">SUPERROLE</Data><NamedCell
-      ss:Name="Print_Area"/></Cell>
-    <Cell><Data ss:Type="String">Entry(),Second Pass(),Verify(),Review 1(),Review 2(),Freeze(),Unfreeze(),Lock(),Unlock(),Open Query 1(),Open Query 2(),Open Query 3(),Open Query 4(),Open Query 10(),Answer Query 1(),Answer Query 2(),Answer Query 10(),Cancel Query 1(),Cancel Query 2(),Cancel Query 10(),Place Sticky 1(),Place Sticky 2(),Place Sticky 3(),Place Sticky 10(),Acknowledge Sticky 1(),Acknowledge Sticky 2(),Acknowledge Sticky 3(),Acknowledge Sticky 10(),UnVerify(),UnReview 1(),Close Query 1(),Close Query 2(),Close Query 10(),Add Protocol Deviation(),Edit Protocol Deviation(),Remove Protocol Deviation(),Add Comment(),Edit Comment(),Remove Comment(),See Open Query 1(),See Open Query 2(),See Open Query 10(),See Answered Query 1(),See Answered Query 2(),See Answered Query 3(),See Answered Query 10(),See Verify(),See Review 1(),See Close Query 1(),See Close Query 2(),See Close Query 10(),See Sticky 1(),See Sticky 2(),See Sticky 3(),See Sticky 10(),See Entry(),See Protocol Deviation(),Sign(),Code(),See Coding(),Translate(),See Translation(),First Pass(),Forward Query(),Reactivate Log Lines()</Data><NamedCell
-      ss:Name="Print_Area"/></Cell>
     <Cell ss:Index="7"
      ss:Formula="=IF(LEN('EDC Roles'!RC[-5])&gt;0,'EDC Roles'!RC[-5],&quot;&quot;)"><Data
-      ss:Type="String">SUPERROLE</Data></Cell>
+      ss:Type="String"></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="282.9375">
-    <Cell ss:Index="2"><Data ss:Type="String">SUPERROLE#1/16/2013 4@35@33 PM##6</Data><NamedCell
-      ss:Name="Print_Area"/></Cell>
-    <Cell><Data ss:Type="String">Entry(),Second Pass(),Verify(),Review 1(),Review 2(),Freeze(),Unfreeze(),Lock(),Unlock(),Open Query 1(),Open Query 2(),Open Query 3(),Open Query 4(),Open Query 10(),Answer Query 1(),Answer Query 2(),Answer Query 10(),Cancel Query 1(),Cancel Query 2(),Cancel Query 10(),Place Sticky 1(),Place Sticky 2(),Place Sticky 3(),Place Sticky 10(),Acknowledge Sticky 1(),Acknowledge Sticky 2(),Acknowledge Sticky 3(),Acknowledge Sticky 10(),UnVerify(),UnReview 1(),Close Query 1(),Close Query 2(),Close Query 10(),Add Protocol Deviation(),Edit Protocol Deviation(),Remove Protocol Deviation(),Add Comment(),Edit Comment(),Remove Comment(),See Open Query 1(),See Open Query 2(),See Open Query 10(),See Answered Query 1(),See Answered Query 2(),See Answered Query 3(),See Answered Query 10(),See Verify(),See Review 1(),See Close Query 1(),See Close Query 2(),See Close Query 10(),See Sticky 1(),See Sticky 2(),See Sticky 3(),See Sticky 10(),See Entry(),See Protocol Deviation(),Sign(),Code(),See Coding(),Translate(),See Translation(),First Pass(),Forward Query(),Reactivate Log Lines()</Data><NamedCell
-      ss:Name="Print_Area"/></Cell>
     <Cell ss:Index="7"
      ss:Formula="=IF(LEN('EDC Roles'!RC[-5])&gt;0,'EDC Roles'!RC[-5],&quot;&quot;)"><Data
-      ss:Type="String">SUPERROLE#1/16/2013 4@35@33 PM##6</Data></Cell>
+      ss:Type="String"></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="282.9375">
-    <Cell ss:Index="2"><Data ss:Type="String">SUPERROLE#1/16/2013 4@37@50 PM##6</Data><NamedCell
-      ss:Name="Print_Area"/></Cell>
-    <Cell><Data ss:Type="String">Entry(),Second Pass(),Verify(),Review 1(),Review 2(),Freeze(),Unfreeze(),Lock(),Unlock(),Open Query 1(),Open Query 2(),Open Query 3(),Open Query 4(),Open Query 10(),Answer Query 1(),Answer Query 2(),Answer Query 10(),Cancel Query 1(),Cancel Query 2(),Cancel Query 10(),Place Sticky 1(),Place Sticky 2(),Place Sticky 3(),Place Sticky 10(),Acknowledge Sticky 1(),Acknowledge Sticky 2(),Acknowledge Sticky 3(),Acknowledge Sticky 10(),UnVerify(),UnReview 1(),Close Query 1(),Close Query 2(),Close Query 10(),Add Protocol Deviation(),Edit Protocol Deviation(),Remove Protocol Deviation(),Add Comment(),Edit Comment(),Remove Comment(),See Open Query 1(),See Open Query 2(),See Open Query 10(),See Answered Query 1(),See Answered Query 2(),See Answered Query 3(),See Answered Query 10(),See Verify(),See Review 1(),See Close Query 1(),See Close Query 2(),See Close Query 10(),See Sticky 1(),See Sticky 2(),See Sticky 3(),See Sticky 10(),See Entry(),See Protocol Deviation(),Sign(),Code(),See Coding(),Translate(),See Translation(),First Pass(),Forward Query(),Reactivate Log Lines()</Data><NamedCell
-      ss:Name="Print_Area"/></Cell>
     <Cell ss:Index="7"
      ss:Formula="=IF(LEN('EDC Roles'!RC[-5])&gt;0,'EDC Roles'!RC[-5],&quot;&quot;)"><Data
-      ss:Type="String">SUPERROLE#1/16/2013 4@37@50 PM##6</Data></Cell>
+      ss:Type="String"></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="282.9375">
-    <Cell ss:Index="2"><Data ss:Type="String">SUPERROLE#1/16/2013 5@17@40 PM##6</Data><NamedCell
-      ss:Name="Print_Area"/></Cell>
-    <Cell><Data ss:Type="String">Entry(),Second Pass(),Verify(),Review 1(),Review 2(),Freeze(),Unfreeze(),Lock(),Unlock(),Open Query 1(),Open Query 2(),Open Query 3(),Open Query 4(),Open Query 10(),Answer Query 1(),Answer Query 2(),Answer Query 10(),Cancel Query 1(),Cancel Query 2(),Cancel Query 10(),Place Sticky 1(),Place Sticky 2(),Place Sticky 3(),Place Sticky 10(),Acknowledge Sticky 1(),Acknowledge Sticky 2(),Acknowledge Sticky 3(),Acknowledge Sticky 10(),UnVerify(),UnReview 1(),Close Query 1(),Close Query 2(),Close Query 10(),Add Protocol Deviation(),Edit Protocol Deviation(),Remove Protocol Deviation(),Add Comment(),Edit Comment(),Remove Comment(),See Open Query 1(),See Open Query 2(),See Open Query 10(),See Answered Query 1(),See Answered Query 2(),See Answered Query 3(),See Answered Query 10(),See Verify(),See Review 1(),See Close Query 1(),See Close Query 2(),See Close Query 10(),See Sticky 1(),See Sticky 2(),See Sticky 3(),See Sticky 10(),See Entry(),See Protocol Deviation(),Sign(),Code(),See Coding(),Translate(),See Translation(),First Pass(),Forward Query(),Reactivate Log Lines()</Data><NamedCell
-      ss:Name="Print_Area"/></Cell>
     <Cell ss:Index="7"
      ss:Formula="=IF(LEN('EDC Roles'!RC[-5])&gt;0,'EDC Roles'!RC[-5],&quot;&quot;)"><Data
-      ss:Type="String">SUPERROLE#1/16/2013 5@17@40 PM##6</Data></Cell>
+      ss:Type="String"></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="282.9375">
-    <Cell ss:Index="2"><Data ss:Type="String">SUPERROLE#1/16/2013 7@11@06 PM##5</Data><NamedCell
-      ss:Name="Print_Area"/></Cell>
-    <Cell><Data ss:Type="String">Entry(),Second Pass(),Verify(),Review 1(),Review 2(),Freeze(),Unfreeze(),Lock(),Unlock(),Open Query 1(),Open Query 2(),Open Query 3(),Open Query 4(),Open Query 10(),Answer Query 1(),Answer Query 2(),Answer Query 10(),Cancel Query 1(),Cancel Query 2(),Cancel Query 10(),Place Sticky 1(),Place Sticky 2(),Place Sticky 3(),Place Sticky 10(),Acknowledge Sticky 1(),Acknowledge Sticky 2(),Acknowledge Sticky 3(),Acknowledge Sticky 10(),UnVerify(),UnReview 1(),Close Query 1(),Close Query 2(),Close Query 10(),Add Protocol Deviation(),Edit Protocol Deviation(),Remove Protocol Deviation(),Add Comment(),Edit Comment(),Remove Comment(),See Open Query 1(),See Open Query 2(),See Open Query 10(),See Answered Query 1(),See Answered Query 2(),See Answered Query 3(),See Answered Query 10(),See Verify(),See Review 1(),See Close Query 1(),See Close Query 2(),See Close Query 10(),See Sticky 1(),See Sticky 2(),See Sticky 3(),See Sticky 10(),See Entry(),See Protocol Deviation(),Sign(),Code(),See Coding(),Translate(),See Translation(),First Pass(),Forward Query(),Reactivate Log Lines()</Data><NamedCell
-      ss:Name="Print_Area"/></Cell>
     <Cell ss:Index="7"
      ss:Formula="=IF(LEN('EDC Roles'!RC[-5])&gt;0,'EDC Roles'!RC[-5],&quot;&quot;)"><Data
-      ss:Type="String">SUPERROLE#1/16/2013 7@11@06 PM##5</Data></Cell>
+      ss:Type="String"></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="282.9375">
-    <Cell ss:Index="2"><Data ss:Type="String">SUPERROLE#1/16/2013 9@07@28 PM##6</Data><NamedCell
-      ss:Name="Print_Area"/></Cell>
-    <Cell><Data ss:Type="String">Entry(),Second Pass(),Verify(),Review 1(),Review 2(),Freeze(),Unfreeze(),Lock(),Unlock(),Open Query 1(),Open Query 2(),Open Query 3(),Open Query 4(),Open Query 10(),Answer Query 1(),Answer Query 2(),Answer Query 10(),Cancel Query 1(),Cancel Query 2(),Cancel Query 10(),Place Sticky 1(),Place Sticky 2(),Place Sticky 3(),Place Sticky 10(),Acknowledge Sticky 1(),Acknowledge Sticky 2(),Acknowledge Sticky 3(),Acknowledge Sticky 10(),UnVerify(),UnReview 1(),Close Query 1(),Close Query 2(),Close Query 10(),Add Protocol Deviation(),Edit Protocol Deviation(),Remove Protocol Deviation(),Add Comment(),Edit Comment(),Remove Comment(),See Open Query 1(),See Open Query 2(),See Open Query 10(),See Answered Query 1(),See Answered Query 2(),See Answered Query 3(),See Answered Query 10(),See Verify(),See Review 1(),See Close Query 1(),See Close Query 2(),See Close Query 10(),See Sticky 1(),See Sticky 2(),See Sticky 3(),See Sticky 10(),See Entry(),See Protocol Deviation(),Sign(),Code(),See Coding(),Translate(),See Translation(),First Pass(),Forward Query(),Reactivate Log Lines()</Data><NamedCell
-      ss:Name="Print_Area"/></Cell>
     <Cell ss:Index="7"
      ss:Formula="=IF(LEN('EDC Roles'!RC[-5])&gt;0,'EDC Roles'!RC[-5],&quot;&quot;)"><Data
-      ss:Type="String">SUPERROLE#1/16/2013 9@07@28 PM##6</Data></Cell>
+      ss:Type="String"></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="282.9375">
-    <Cell ss:Index="2"><Data ss:Type="String">SUPERROLE#1/16/2013 9@19@22 PM##6</Data><NamedCell
-      ss:Name="Print_Area"/></Cell>
-    <Cell><Data ss:Type="String">Entry(),Second Pass(),Verify(),Review 1(),Review 2(),Freeze(),Unfreeze(),Lock(),Unlock(),Open Query 1(),Open Query 2(),Open Query 3(),Open Query 4(),Open Query 10(),Answer Query 1(),Answer Query 2(),Answer Query 10(),Cancel Query 1(),Cancel Query 2(),Cancel Query 10(),Place Sticky 1(),Place Sticky 2(),Place Sticky 3(),Place Sticky 10(),Acknowledge Sticky 1(),Acknowledge Sticky 2(),Acknowledge Sticky 3(),Acknowledge Sticky 10(),UnVerify(),UnReview 1(),Close Query 1(),Close Query 2(),Close Query 10(),Add Protocol Deviation(),Edit Protocol Deviation(),Remove Protocol Deviation(),Add Comment(),Edit Comment(),Remove Comment(),See Open Query 1(),See Open Query 2(),See Open Query 10(),See Answered Query 1(),See Answered Query 2(),See Answered Query 3(),See Answered Query 10(),See Verify(),See Review 1(),See Close Query 1(),See Close Query 2(),See Close Query 10(),See Sticky 1(),See Sticky 2(),See Sticky 3(),See Sticky 10(),See Entry(),See Protocol Deviation(),Sign(),Code(),See Coding(),Translate(),See Translation(),First Pass(),Forward Query(),Reactivate Log Lines()</Data><NamedCell
-      ss:Name="Print_Area"/></Cell>
     <Cell ss:Index="7"
      ss:Formula="=IF(LEN('EDC Roles'!RC[-5])&gt;0,'EDC Roles'!RC[-5],&quot;&quot;)"><Data
-      ss:Type="String">SUPERROLE#1/16/2013 9@19@22 PM##6</Data></Cell>
+      ss:Type="String"></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="18">
-    <Cell ss:Index="2"><Data ss:Type="String">Zcdm1</Data><NamedCell
-      ss:Name="Print_Area"/></Cell>
-    <Cell><Data ss:Type="String">Entry(),See Entry(),Sign(),Reactivate Log Lines()</Data><NamedCell
-      ss:Name="Print_Area"/></Cell>
     <Cell ss:Index="7"
      ss:Formula="=IF(LEN('EDC Roles'!RC[-5])&gt;0,'EDC Roles'!RC[-5],&quot;&quot;)"><Data
-      ss:Type="String">Zcdm1</Data></Cell>
+      ss:Type="String"></Data></Cell>
    </Row>
    <Row>
     <Cell ss:Index="7"
@@ -18686,7 +18512,7 @@
     </Pane>
     <Pane>
      <Number>2</Number>
-     <ActiveRow>0</ActiveRow>
+     <ActiveCol>1</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>True</ProtectObjects>
@@ -19250,7 +19076,7 @@
    <Row ss:AutoFitHeight="0" ss:Height="18">
     <Cell ss:Index="2"><Data ss:Type="String">Entry Error</Data><NamedCell
       ss:Name="Print_Area"/></Cell>
-    <Cell ss:MergeDown="5" ss:StyleID="m110885728"><ss:Data ss:Type="String"
+    <Cell ss:MergeDown="5" ss:StyleID="m113066656"><ss:Data ss:Type="String"
       xmlns="http://www.w3.org/TR/REC-html40">       List the change codes available to users when they attempt to change data on fields, eg. when data is edited in response to a query, and the user wants to provide a reason for this change.  The change codes are  tracked on the audit trail of each field.  Change codes are available on a role-by-role basis, eg. an investigator may have change codes that are not available to a coordinator. <I>Note: Change codes are required for GLP, but optional for GCP</I></ss:Data><NamedCell
       ss:Name="Print_Area"/></Cell>
    </Row>
@@ -19327,7 +19153,7 @@
     <Cell ss:Index="2"><Data ss:Type="String">Enrolled</Data><NamedCell
       ss:Name="Print_Area"/></Cell>
     <Cell><Data ss:Type="String">Enrolled</Data><NamedCell ss:Name="Print_Area"/></Cell>
-    <Cell ss:MergeDown="4" ss:StyleID="m110886624"><Data ss:Type="String">           Each subject may be assigned a subject status. The subject status is set using edit checks when certain criteria are met. These edit checks are built for each project in the Architect module.  For example, subject status is set to &quot;Randomized&quot; when a user enters a randomization date.  All subjects are marked &quot;Screening&quot; by default. To add a new subject status, select a subject status category from the Category drop down list. Available categories are: Screening, ScreenFailed, Enrolled, EarlyTerminated, and Completed.</Data></Cell>
+    <Cell ss:MergeDown="4" ss:StyleID="m113067552"><Data ss:Type="String">           Each subject may be assigned a subject status. The subject status is set using edit checks when certain criteria are met. These edit checks are built for each project in the Architect module.  For example, subject status is set to &quot;Randomized&quot; when a user enters a randomization date.  All subjects are marked &quot;Screening&quot; by default. To add a new subject status, select a subject status category from the Category drop down list. Available categories are: Screening, ScreenFailed, Enrolled, EarlyTerminated, and Completed.</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="18">
     <Cell ss:Index="2"><Data ss:Type="String">Screened</Data><NamedCell
@@ -19786,7 +19612,7 @@
     <Cell ss:Index="2"><Data ss:Type="String">10</Data><NamedCell
       ss:Name="Print_Area"/></Cell>
     <Cell><Data ss:Type="String">A</Data><NamedCell ss:Name="Print_Area"/></Cell>
-    <Cell ss:MergeDown="4" ss:StyleID="m111596416"><Data ss:Type="String">Protocol Deviations may be added to individual fields as required and include a class, code, and a free-text box. In the 'Deviation Classes' column, please list all the Protocol Deviation Classes that will be required. In the 'Deviation Codes' column, please list all the Protocol Deviation Codes that will be required</Data><NamedCell
+    <Cell ss:MergeDown="4" ss:StyleID="m113068672"><Data ss:Type="String">Protocol Deviations may be added to individual fields as required and include a class, code, and a free-text box. In the 'Deviation Classes' column, please list all the Protocol Deviation Classes that will be required. In the 'Deviation Codes' column, please list all the Protocol Deviation Codes that will be required</Data><NamedCell
       ss:Name="Print_Area"/></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="18">
@@ -20279,7 +20105,7 @@
       ss:Name="Print_Area"/></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="19.5">
-    <Cell ss:Index="5" ss:MergeDown="1" ss:StyleID="m111597536"><Data
+    <Cell ss:Index="5" ss:MergeDown="1" ss:StyleID="m113069792"><Data
       ss:Type="String">The resources (ie. external links) listed here will be displayed in the sidebar of the homepage. Add as many resources as you need.</Data><NamedCell
       ss:Name="Print_Area"/></Cell>
    </Row>
@@ -21139,7 +20965,7 @@
       ss:Name="Print_Area"/></Cell>
     <Cell ss:StyleID="s424"><Data ss:Type="String">Globe</Data><NamedCell
       ss:Name="Print_Area"/></Cell>
-    <Cell ss:MergeDown="5" ss:StyleID="m111599104"><ss:Data ss:Type="String"
+    <Cell ss:MergeDown="5" ss:StyleID="m113202496"><ss:Data ss:Type="String"
       xmlns="http://www.w3.org/TR/REC-html40">       The section to the left lists the icons which were downloaded. For each icon,  you can change the description prior to uploading. <I>Note: In order to upload new icons, please use the Architect Object Icons screen (Configuration -&gt; Other Settings -&gt; Architect Object Icons). Icons must be graphic files of type: </I><B><I>.bmp</I></B><I>, </I><B><I>.jpg</I></B><I>, .</I><B><I>gif</I></B><I>, or .</I><B><I>png</I></B><I> and must not exceed 4 kb.</I></ss:Data><NamedCell
       ss:Name="Print_Area"/></Cell>
    </Row>
@@ -21536,7 +21362,6 @@
     <Footer x:Margin="0.3"/>
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
-   <Selected/>
    <LeftColumnVisible>4</LeftColumnVisible>
    <Panes>
     <Pane>
