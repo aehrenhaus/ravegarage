@@ -49,10 +49,10 @@ namespace Medidata.RBT.Features.Integration.Steps
             var roleNames = table.CreateSet<RoleNameModel>().ToList();
             var roles = Roles.GetAllRoles(); // get existing roles
 
-            var user = ScenarioContext.Current.Get<User>("user");
-
             foreach (var roleNameObject in roleNames)
             {
+                var user = ScenarioContext.Current.Get<User>("user");
+
                 var role = roles.FindByName(roleNameObject.RoleName);
                 if (role == null) // create role that doesn't exist
                 {
@@ -68,7 +68,6 @@ namespace Medidata.RBT.Features.Integration.Steps
                 else
                 {
                     UserHelper.CreateRaveUser(externalUser.Login, role);
-                    user = ScenarioContext.Current.Get<User>("user");
                 }
 
                 ExternalUserRole.StudySave(1, externalUser.ID, study.ExternalID, study.Uuid, role.ID, DateTime.MinValue);
