@@ -33,10 +33,10 @@ Scenario: When a Site PUT message gets put onto the queue, and the site already 
 @PB2.5.9.27-01
 Scenario: If I create a site in iMedidata, and an unlinked site in Rave (that is not linked to the iMedidata site),
            when Rave receives the site it will link it to the iMedidata site, matching it based on UUID first.
-	Given the Site with site number "4" exists in the Rave database
+	Given the Site with site number "4a" exists in the Rave database
 	And I send the following Site message to SQS
 	| EventType | Address1    | City       | State | PostalCode | Country | Phone   | Name      | Number | Id |
-	| PUT       | 111 5th Ave | New Jersey | NJ    | 10004      | USB     | 1234567 | TestSite4 | 4      | 4  |
+	| POST      | 111 5th Ave | New Jersey | NJ    | 10004      | USB     | 1234567 | TestSite4 | 4      | 4  |
 	When the message is successfully processed
 	Then I should see the site in the Rave database
     And the site should have the ExternalId "4"
@@ -45,16 +45,16 @@ Scenario: If I create a site in iMedidata, and an unlinked site in Rave (that is
 @PB2.5.9.27-02
 Scenario: If I create a site in iMedidata, and an unlinked site in Rave (that is not linked to the iMedidata site), when Rave receives
           the site it will link it to the iMedidata site, matching it based on UUID first, and failing that site number.
-	Given I send the following Site message to SQS
+	Given the Site with site number "5" exists in the Rave database
+	And I send the following Site message to SQS
 	| EventType | Name      | Number | Id | Uuid                                 | Timestamp           |
-	| POST      | TestSite5 | 5      | 0  | 2fc5e4a8-f117-11e1-b0ce-12313940032z | 2013-02-02 12:00:00 |
-	| PUT       | TestSite6 | 5      | 6  | 2fc5e4a8-f117-11e1-b0ce-12313940032d | 2013-02-02 13:00:00 |
+	| POST      | TestSite5 | 5      | 6  | 2fc5e4a8-f117-11e1-b0ce-12313940032d | 2013-02-02 12:00:00 |
 	When the message is successfully processed
 	Then I should see the site in the Rave database
 	And the site should have the UUID "2fc5e4a8-f117-11e1-b0ce-12313940032d"
     And the site should have the ExternalId "6"
 	And and the site should have ExternalSystemName "iMedidata"
-	And the site should have a LastExternalUpdateDate "2013-02-02 13:00:00"
+	And the site should have a LastExternalUpdateDate "2013-02-02 12:00:00"
 
 @PB2.5.9.43-01
 Scenario: If I have a linked site in iMedidata, and I change the site number in iMedidata, when Rave receives the updated site,
@@ -77,7 +77,7 @@ Scenario: If I have a linked site in iMedidata, and I change the site name in iM
 	Given I send the following Site message to SQS
 	| EventType | Name      | Number | Timestamp           |
 	| POST      | TestSite8 | 8      | 2013-02-02 12:00:00 |
-	| PUT       | TestSite9 | 9      | 2013-02-02 13:00:00 |
+	| PUT       | TestSite9 | 8      | 2013-02-02 13:00:00 |
 	When the message is successfully processed
 	Then I should see the site in the Rave database
 	And the site should have the name "TestSite9"
@@ -100,9 +100,7 @@ Scenario: If I update a site in iMedidata, when Rave receives the site it will c
 	And and the site should have ExternalSystemName "iMedidata"
 
 @PB2.5.8.28-04B
-Scenario: Operations on studies, sites, studysites, users, study assignments, studysite assignments must be audited in the 'name' 
-          of the user that did the original action in iMedidata.
-
+Scenario: Operations on studies, sites, studysites, users, study assignments, studysite assignments must be audited by System User
 	Given I send the following Site message to SQS
 	| EventType | Name       | Number | Timestamp           |
 	| POST      | TestSite11 | 11     | 2013-02-02 12:00:00 |

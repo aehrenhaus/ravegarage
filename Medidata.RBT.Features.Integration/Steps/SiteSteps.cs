@@ -33,7 +33,7 @@ namespace Medidata.RBT.Features.Integration.Steps
         }
 
         [Then(@"the site should have Address1 ""(.*)""")]
-        public void ThenTheSiteShouldHaveAddress1(string address1)
+        public void ThenTheSiteShouldHaveAddress1____(string address1)
         {
             var site = ScenarioContext.Current.Get<Site>("site");
 
@@ -42,7 +42,7 @@ namespace Medidata.RBT.Features.Integration.Steps
 
 
         [Then(@"the site should have the ExternalId ""(.*)""")]
-        public void ThenTheSiteShouldHaveTheExternalId(int externalId)
+        public void ThenTheSiteShouldHaveTheExternalId____(int externalId)
         {
             var site = ScenarioContext.Current.Get<Site>("site");
 
@@ -50,7 +50,7 @@ namespace Medidata.RBT.Features.Integration.Steps
         }
 
         [Then(@"the site should have the name ""(.*)""")]
-        public void ThenTheSiteShouldHaveTheName(string siteName)
+        public void ThenTheSiteShouldHaveTheName____(string siteName)
         {
             var site = ScenarioContext.Current.Get<Site>("site");
 
@@ -58,7 +58,7 @@ namespace Medidata.RBT.Features.Integration.Steps
         }
 
         [Then(@"the site should have the SiteNumber ""(.*)""")]
-        public void ThenTheSiteShouldHaveTheSiteNumber(string siteNumber)
+        public void ThenTheSiteShouldHaveTheSiteNumber____(string siteNumber)
         {
             var site = ScenarioContext.Current.Get<Site>("site");
 
@@ -66,7 +66,7 @@ namespace Medidata.RBT.Features.Integration.Steps
         }
 
         [Then(@"the site should have a LastExternalUpdateDate ""(.*)""")]
-        public void ThenTheSiteShouldHaveALastExternalUpdateDate(DateTime lastExternalUpdateDate)
+        public void ThenTheSiteShouldHaveALastExternalUpdateDate____(DateTime lastExternalUpdateDate)
         {
             var site = ScenarioContext.Current.Get<Site>("site");
 
@@ -74,7 +74,7 @@ namespace Medidata.RBT.Features.Integration.Steps
         }
 
         [Then(@"the site should have City ""(.*)""")]
-        public void ThenTheSiteShouldHaveCity(string city)
+        public void ThenTheSiteShouldHaveCity____(string city)
         {
             var site = ScenarioContext.Current.Get<Site>("site");
 
@@ -82,7 +82,7 @@ namespace Medidata.RBT.Features.Integration.Steps
         }
 
         [Then(@"the site should have State ""(.*)""")]
-        public void ThenTheSiteShouldHaveState(string state)
+        public void ThenTheSiteShouldHaveState____(string state)
         {
             var site = ScenarioContext.Current.Get<Site>("site");
 
@@ -90,7 +90,7 @@ namespace Medidata.RBT.Features.Integration.Steps
         }
 
         [Then(@"the site should have PostalCode ""(.*)""")]
-        public void ThenTheSiteShouldHavePostalCode(string postalCode)
+        public void ThenTheSiteShouldHavePostalCode____(string postalCode)
         {
             var site = ScenarioContext.Current.Get<Site>("site");
 
@@ -99,7 +99,7 @@ namespace Medidata.RBT.Features.Integration.Steps
 
 
         [Then(@"the site should have Country ""(.*)""")]
-        public void ThenTheSiteShouldHaveCountry(string country)
+        public void ThenTheSiteShouldHaveCountry____(string country)
         {
             var site = ScenarioContext.Current.Get<Site>("site");
 
@@ -107,7 +107,7 @@ namespace Medidata.RBT.Features.Integration.Steps
         }
 
         [Then(@"the site should have Telephone ""(.*)""")]
-        public void ThenTheSiteShouldHaveTelephone(string telephone)
+        public void ThenTheSiteShouldHaveTelephone____(string telephone)
         {
             var site = ScenarioContext.Current.Get<Site>("site");
 
@@ -115,7 +115,7 @@ namespace Medidata.RBT.Features.Integration.Steps
         }
 
         [Then(@"and the site should have ExternalSystemName ""(.*)""")]
-        public void AndTheSiteShouldHaveExternalSystemName(string externalSystemName)
+        public void AndTheSiteShouldHaveExternalSystemName____(string externalSystemName)
         {
             var site = ScenarioContext.Current.Get<Site>("site");
 
@@ -123,7 +123,7 @@ namespace Medidata.RBT.Features.Integration.Steps
         }
 
         [Then(@"the site should have the UUID ""(.*)""")]
-        public void ThenTheSiteShouldHaveTheUUID(string uuid)
+        public void ThenTheSiteShouldHaveTheUUID____(string uuid)
         {
             var site = ScenarioContext.Current.Get<Site>("site");
 
@@ -142,7 +142,7 @@ namespace Medidata.RBT.Features.Integration.Steps
         }
 
         [Then(@"I should see the audits were performed by user ""(.*)""")]
-        public void ThenIShouldSeeTheAuditsWerePerformedBy(string userType)
+        public void ThenIShouldSeeTheAuditsWerePerformedBy____(string userType)
         {
             var siteAudits = ScenarioContext.Current.Get<Audits>("siteAudits");
 
@@ -151,7 +151,7 @@ namespace Medidata.RBT.Features.Integration.Steps
 
 
         [Then(@"I should see the audit action type ""(.*)""")]
-        public void ThenIShouldSeeTheAuditActionType(string auditActionType)
+        public void ThenIShouldSeeTheAuditActionType____(string auditActionType)
         {
             var siteAudits = ScenarioContext.Current.Get<Audits>("siteAudits");
 
@@ -159,7 +159,7 @@ namespace Medidata.RBT.Features.Integration.Steps
         }
 
         [Then(@"I should see the audit action ""(.*)""")]
-        public void ThenIShouldSeeTheAuditAction(string auditAction)
+        public void ThenIShouldSeeTheAuditAction____(string auditAction)
         {
             var siteAudits = ScenarioContext.Current.Get<Audits>("siteAudits");
 
