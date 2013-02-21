@@ -51,6 +51,7 @@ Scenario: When a StudySite DELETE message gets put onto the queue, the studysite
 	When the messages are successfully processed
 	Then I should see the site in the Rave database
 	And I should see the studysite in the Rave database
+	And the studysite should have the source iMedidata
 	And the studysite should be inactive
 
 
