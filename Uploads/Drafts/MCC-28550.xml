@@ -29968,12 +29968,11 @@
       ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">SERIOUSCD</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:Index="12"><Data ss:Type="String">SendMessage</Data><NamedCell
+    <Cell ss:Index="12"><Data ss:Type="String">OpenQuery</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">A SAE has occured for sbuejct &quot;&lt;core:link text='subject.name' formoid='AE' fieldoid='SERIOUSCD' /&gt;&quot; in site &quot;&lt;core:link text='site.name' formoid='AE' fieldoid='SERIOUSCD' /&gt;&quot; for the &quot;&lt;core:link text='study.name' formoid='AE' fieldoid='SERIOUSCD' /&gt;&quot; study.  The descriptoin for the SAE is &quot;&lt;core:link text='datapoint.standardvalue' formoid='AE' fieldoid='AEVERB' /&gt;&quot; and was entered at &lt;core:link text='datetime.user' formoid='AE' fieldoid='SERIOUSCD' /&gt;.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell><Data ss:Type="String">Role=CDM1,Urgency=High</Data><NamedCell
-      ss:Name="_FilterDatabase"/></Cell>
+    <Cell><Data ss:Type="String">Site</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:Index="16" ss:StyleID="s64"><Data ss:Type="String">AddDeviation</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Fields!RC2)&gt;0,Fields!RC2,&quot;&quot;)"><Data
@@ -34092,7 +34091,7 @@
    <FreezePanes/>
    <FrozenNoSplit/>
    <SplitHorizontal>1</SplitHorizontal>
-   <TopRowBottomPane>27</TopRowBottomPane>
+   <TopRowBottomPane>19</TopRowBottomPane>
    <SplitVertical>1</SplitVertical>
    <LeftColumnRightPane>9</LeftColumnRightPane>
    <ActivePane>0</ActivePane>
@@ -34112,9 +34111,7 @@
     </Pane>
     <Pane>
      <Number>0</Number>
-     <ActiveRow>30</ActiveRow>
-     <ActiveCol>0</ActiveCol>
-     <RangeSelection>R31</RangeSelection>
+     <ActiveRow>6</ActiveRow>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
