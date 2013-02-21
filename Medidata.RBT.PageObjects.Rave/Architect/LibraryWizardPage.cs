@@ -195,14 +195,29 @@ namespace Medidata.RBT.PageObjects.Rave.Architect
 
             //Need to use because AJAX checks the checkbox, 
             //and a normal TryFindByElement it loads the checkbox before this is checked, the "Checked" property will be wrong
-            IWebElement checkedMatchingPassedInBool = context.TryFindElementBy(b =>
+            IWebElement checkedMatchingPassedInBool = null;
+            if (isChecked)
             {
-                Checkbox checkbox = context.FindElement(By.XPath(".//a[contains(text(), '" + identifier + "')]/../input")).EnhanceAs<Checkbox>();
-                if (checkbox != null && checkbox.Checked == isChecked)
-                   return checkbox;
+                checkedMatchingPassedInBool = context.TryFindElementBy(b =>
+                {
+                    Checkbox checkbox = context.FindElement(By.XPath(".//a[contains(text(), '" + identifier + "')]/../input")).EnhanceAs<Checkbox>();
+                    if (checkbox != null && checkbox.Checked == true)
+                        return checkbox;
 
-                return null;
-            });
+                    return null;
+                });
+            }
+            else
+            {
+                checkedMatchingPassedInBool = context.TryFindElementBy(b =>
+                {
+                    Checkbox checkbox = context.FindElement(By.XPath(".//a[contains(text(), '" + identifier + "')]/../input")).EnhanceAs<Checkbox>();
+                    if (checkbox != null && checkbox.Checked == false)
+                        return checkbox;
+
+                    return null;
+                });
+            }
 
             return checkedMatchingPassedInBool != null;
         }
