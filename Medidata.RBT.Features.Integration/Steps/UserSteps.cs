@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using Medidata.Core.Common.Utilities;
 using Medidata.Core.Objects;
 using Medidata.RBT.Objects.Integration.Helpers;
@@ -21,12 +22,14 @@ namespace Medidata.RBT.Features.Integration.Steps
         [Then(@"I should see the user in the Rave database")]
         public void ThenIShouldSeeTheUserInTheRaveDatabase()
         {
-            var externalUser = ExternalUser.Fetch(ScenarioContext.Current.Get<int>("externalUserID"));
+            var externalUser = ExternalUser.GetByExternalUUID(ScenarioContext.Current.Get<string>("externalUserUUID"), 1);
+           
             Assert.IsNotNull(externalUser);
 
             var users = Users.FindByExternalUserID(externalUser.ID, SystemInteraction.Use());
 
-            var user = users.FirstOrDefault(x => x.EdcRole == null);
+            //var user = users.FirstOrDefault(x => x.EdcRole == null);
+            var user = users.FirstOrDefault();
 
             Assert.IsNotNull(user);
 

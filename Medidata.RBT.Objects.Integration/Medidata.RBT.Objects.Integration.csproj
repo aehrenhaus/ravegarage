@@ -47,7 +47,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Configuration\Models\RoleModel.cs" />
+    <Compile Include="Configuration\Models\AppAssignmentModel.cs" />
+    <Compile Include="Configuration\Models\RoleNameModel.cs" />
     <Compile Include="Configuration\Models\SiteMessageModel.cs" />
+    <Compile Include="Configuration\Models\StudyInvitationMessageModel.cs" />
     <Compile Include="Configuration\Models\StudyMessageModel.cs" />
     <Compile Include="Configuration\Models\StudySiteMessageModel.cs" />
     <Compile Include="Configuration\Models\UserMessageModel.cs" />
@@ -55,11 +59,13 @@
     <Compile Include="Configuration\ResourceNames.cs" />
     <Compile Include="Configuration\Templates\SiteTemplates.cs" />
     <Compile Include="Configuration\Templates\StudySiteTemplates.cs" />
+    <Compile Include="Configuration\Templates\StudyInvitationTemplates.cs" />
     <Compile Include="Configuration\Templates\StudyTemplates.cs" />
     <Compile Include="Configuration\IntegrationTestContext.cs" />
     <Compile Include="Configuration\Templates\UserStudySiteTemplates.cs" />
     <Compile Include="Configuration\Templates\UserTemplates.cs" />
     <Compile Include="Helpers\RoleHelper.cs" />
+    <Compile Include="Helpers\StudyInvitationHelper.cs" />
     <Compile Include="Helpers\DbHelper.cs" />
     <Compile Include="Helpers\SiteHelper.cs" />
     <Compile Include="Helpers\SQSHelper.cs" />
