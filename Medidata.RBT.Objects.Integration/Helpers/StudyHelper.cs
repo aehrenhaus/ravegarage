@@ -16,6 +16,8 @@ namespace Medidata.RBT.Objects.Integration.Helpers
         public static void StudyMessageHandler(Table table)
         {
             var messageConfigs = table.CreateSet<StudyMessageModel>().ToList();
+            ScenarioContext.Current.Set(messageConfigs.Count, "messageCount");
+
             foreach (var config in messageConfigs)
             {
                 var message = string.Empty;
@@ -26,7 +28,7 @@ namespace Medidata.RBT.Objects.Integration.Helpers
                 {
                     case "post":
                         config.UUID = Guid.NewGuid();
-                        ScenarioContext.Current.Add("studyUuid", config.UUID.ToString());
+                        ScenarioContext.Current.Set(config.UUID.ToString(), "studyUuid");
                         Console.WriteLine("Study UUID: {0}", config.UUID);
                         message = Render.StringToString(StudyTemplates.STUDY_POST_TEMPLATE, new { config });
                         break;
@@ -40,7 +42,7 @@ namespace Medidata.RBT.Objects.Integration.Helpers
             }
         }
 
-        public static void CreateStudy(string name, string environment, int externalId)
+        public static void CreateStudy(string name, string environment, int externalId, string uuid=null, bool internalStudy=false)
         {
             var project = new Project(SystemInteraction.Use())
                               {
@@ -52,12 +54,14 @@ namespace Medidata.RBT.Objects.Integration.Helpers
 
             var study = new Study(environment, false, project, SystemInteraction.Use())
                             {
-                                ExternalID = externalId,
-                                ExternalSystem = ExternalSystem.GetByID(1),
-                                Uuid = Guid.NewGuid().ToString()
+                                ExternalID = internalStudy ? 0 : externalId,
+                                ExternalSystem = internalStudy ? null :ExternalSystem.GetByID(1),
+                                Uuid = uuid ?? Guid.NewGuid().ToString(),
+                                TestStudy = environment.ToLowerInvariant() != "prod"
                             };
             study.Save();
-            ScenarioContext.Current.Add("study", study);
+            ScenarioContext.Current.Set(study.Uuid, internalStudy ? "internalStudyUuid" : "studyUuid");
+            ScenarioContext.Current.Set(study, "study");
         }
     }
 }

@@ -16,6 +16,24 @@ namespace Medidata.RBT.Features.Integration.Steps
         {
             StudyHelper.CreateStudy(name, environment, externalStudyId);
         }
+
+        [Given(@"the study with name ""(.*)"" and environment ""(.*)"" with UUID ""(.*)"" exists in the Rave database")]
+        public void GivenTheStudyWithNameAndEnvironmentWithUUIDExistsInTheRaveDatabase(string name, string environment, string uuid)
+        {
+            StudyHelper.CreateStudy(name, environment, new Random().Next(int.MaxValue), uuid);
+        }
+
+        [Given(@"the iMedidata study with name ""(.*)"" and environment ""(.*)"" with UUID ""(.*)"" exists in the Rave database")]
+        public void GivenTheIMedidataStudyWithNameAndEnvironmentWithUUIDExistsInTheRaveDatabase(string name, string environment, string uuid)
+        {
+            GivenTheStudyWithNameAndEnvironmentWithUUIDExistsInTheRaveDatabase(name, environment, uuid);
+        }
+
+        [Given(@"the internal study with name ""(.*)"" and environment ""(.*)"" exists")]
+        public void GivenTheInternalStudyWithNameExists(string name, string environment)
+        {
+            StudyHelper.CreateStudy(name, environment, new Random().Next(int.MaxValue), Guid.NewGuid().ToString(), true);
+        }
         
         [Then(@"I should see the study in the Rave database")]
         public void ThenIShouldSeeTheStudyInTheRaveDatabase()

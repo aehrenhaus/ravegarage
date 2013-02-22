@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -16,6 +17,8 @@ namespace Medidata.RBT.Features.Integration.Steps
     [Binding]
     public class RoleSteps : BaseClassSteps
     {
+        private const string locale = "eng";
+
         [Given(@"the current User is assigned to the current Study with current Role")]
         public void CurrentUserAssignedToCurrentStudyWithCurrentRole()
         {
@@ -158,12 +161,11 @@ namespace Medidata.RBT.Features.Integration.Steps
 
             foreach (var roleNameObject in roleNames)
             {
-                var securityGroup = securityGroups.FirstOrDefault(x => x.Name == roleNameObject.RoleName);
-                Assert.IsNotNull(securityGroup);
+                Assert.IsNotNull(RoleHelper.IsUserAssignedToSecurityGroup(securityGroups, roleNameObject.RoleName));
             }
         }
 
-        [Then(@"the user should be assigned to the following UserGroups? the study")]
+        [Then(@"the user should be assigned to the following UserGroups? on the study")]
         public void ThenTheUserShouldBeAssignedToTheFollowingUserGroupsOnTheStudy(Table table)
         {
             var externalUser = ExternalUser.GetByExternalUUID(ScenarioContext.Current.Get<string>("externalUserUUID"), 1);
@@ -173,7 +175,7 @@ namespace Medidata.RBT.Features.Integration.Steps
             var roleNames = table.CreateSet<RoleNameModel>().ToList();
             foreach (var roleNameObject in roleNames)
             {
-                var userGroup = UserGroup.FetchByName(roleNameObject.RoleName, "eng");
+                var userGroup = UserGroup.FetchByName(roleNameObject.RoleName, locale);
                 var userGroupsForStudy = externalUser.GetUserGroupForStudy(study.Uuid, true);
                 Assert.IsTrue(userGroupsForStudy.Contains(userGroup.ID));
             }
@@ -193,8 +195,8 @@ namespace Medidata.RBT.Features.Integration.Steps
             Assert.IsFalse(user.Active);
         }
 
-        [Given(@"the user is assigned to the following Security Group\(s\) on the study")]
-        public void GivenTheUserIsAssignedToTheFollowingSecurityGroupSOnTheStudy(Table table)
+        [Given(@"the user is assigned to the following Security Groups? on the study")]
+        public void GivenTheUserIsAssignedToTheFollowingSecurityGroupsOnTheStudy(Table table)
         {
             var externalUserUuid = ScenarioContext.Current.Get<string>("externalUserUUID");
             var externalUser = ExternalUser.GetByExternalUUID(externalUserUuid, 1);
@@ -253,10 +255,130 @@ namespace Medidata.RBT.Features.Integration.Steps
             var roleNames = table.CreateSet<RoleNameModel>().ToList();
             foreach (var roleNameObject in roleNames)
             {
-                var userGroup = UserGroup.FetchByName(roleNameObject.RoleName, "eng");
+                var userGroup = UserGroup.FetchByName(roleNameObject.RoleName, locale);
                 var userGroupsForStudy = externalUser.GetUserGroupForStudy(study.Uuid, true);
                 Assert.IsFalse(userGroupsForStudy.Contains(userGroup.ID));
             }
+        }
+
+        [Then(@"the user with EDC Role ""(.*)"" should be assigned to the following studies")]
+        public void ThenTheUserWithEDCRoleShouldBeAssignedToTheFollowingStudies(string roleName, Table table)
+        {
+            var externalUser = ExternalUser.GetByExternalUUID(ScenarioContext.Current.Get<string>("externalUserUUID"), 1);
+            var role = Roles.GetAllRoles().FindByName(roleName);
+            var user = User.FindByRoleAndExternalID(role, externalUser.ExternalID, 1, SystemInteraction.Use());
+
+            var studies = table.CreateSet<StudyModel>().ToList();
+            foreach (var studyModel in studies)
+            {
+                var study = Study.FindByUuid(studyModel.Uuid, 1, SystemInteraction.Use());
+                Assert.IsTrue(user.IsUserAssociatedWithStudy(study));
+            }
+        }
+
+        [Then(@"the user with EDC Role ""(.*)"" should not be assigned to the following studies")]
+        public void ThenTheUserWithEDCRoleShouldNotBeAssignedToTheFollowingStudies(string roleName, Table table)
+        {
+            var externalUser = ExternalUser.GetByExternalUUID(ScenarioContext.Current.Get<string>("externalUserUUID"), 1);
+            var role = Roles.GetAllRoles().FindByName(roleName);
+            var users = Users.FindByExternalUserID(externalUser.ID, SystemInteraction.Use());
+            var user = users.First(x => x.EdcRole == role && x.ID != externalUser.ConnectedRaveUserID);
+
+            var studies = table.CreateSet<StudyModel>().ToList();
+            foreach (var studyModel in studies)
+            {
+                var study = Study.FindByUuid(studyModel.Uuid, 1, SystemInteraction.Use());
+                Assert.IsFalse(user.IsUserAssociatedWithStudy(study));
+            }
+        }
+
+        [Then(@"the user with EDC Role ""(.*)"" should not be assigned to the following internal studies")]
+        public void ThenTheUserWithEDCRoleShouldNotBeAssignedToTheFollowingInternalStudies(string roleName, Table table)
+        {
+            var externalUser = ExternalUser.GetByExternalUUID(ScenarioContext.Current.Get<string>("externalUserUUID"), 1);
+            var role = Roles.GetAllRoles().FindByName(roleName);
+            var users = Users.FindByExternalUserID(externalUser.ID, SystemInteraction.Use());
+            var user = users.First(x => x.EdcRole == role && x.ID != externalUser.ConnectedRaveUserID);
+            //var user = User.FindByRoleAndExternalID(role, externalUser.ExternalID, 1, SystemInteraction.Use());
+
+            var studies = table.CreateSet<StudyModel>().ToList();
+            foreach (var studyModel in studies)
+            {
+                var studyId = Study.GetIDByNameAndEnvironment(studyModel.StudyName, studyModel.Environment, locale,
+                                                            SystemInteraction.Use());
+                var study = Study.Fetch(studyId, SystemInteraction.Use());
+                Assert.IsFalse(user.IsUserAssociatedWithStudy(study));
+            }
+        }
+
+        [Then(@"the user with EDC Role ""(.*)"" should be assigned to the following SecurityGroups?")]
+        public void ThenTheUserWithEDCRoleShouldBeAssignedToTheFollowingSecurityGroups(string roleName, Table table)
+        {
+            var externalUser = ExternalUser.GetByExternalUUID(ScenarioContext.Current.Get<string>("externalUserUUID"), 1);
+            var role = Roles.GetAllRoles().FindByName(roleName);
+            var user = User.FindByRoleAndExternalID(role, externalUser.ExternalID, 1, SystemInteraction.Use());
+
+            var roleNames = table.CreateSet<RoleNameModel>().ToList();
+
+            ///// only necessary for calling LoadSecurityGroupIDsByExternalUserID - not actually used.
+            var externalUserSecurityGroupIDsBySecurityGroupID = new Dictionary<int, Int64>();
+            var externalUserSecurityGroupIDs = new List<Int64>();
+            /////
+            
+            var securityGroupIds = ExternalUserSecurityGroup.LoadSecurityGroupIDsByExternalUserID(externalUser.ID,
+                                                                                                  out externalUserSecurityGroupIDsBySecurityGroupID,
+                                                                                                  out externalUserSecurityGroupIDs);
+
+            var securityGroups =
+                securityGroupIds.Select(securityGroupId => SecurityGroup.Fetch(securityGroupId, SystemInteraction.Use()))
+                    .ToList();
+                
+            foreach (var roleNameObject in roleNames)
+            {
+                Assert.IsTrue(RoleHelper.IsUserAssignedToSecurityGroup(securityGroups, roleNameObject.RoleName));
+            }
+        }
+
+        [Then(@"the user with EDC Role ""(.*)"" should be assigned to the following UserGroups?")]
+        public void ThenTheUserWithEDCRoleShouldBeAssignedToTheFollowingUserGroups(string roleName, Table table)
+        {
+            var externalUser = ExternalUser.GetByExternalUUID(ScenarioContext.Current.Get<string>("externalUserUUID"), 1);
+            var role = Roles.GetAllRoles().FindByName(roleName);
+            var user = User.FindByRoleAndExternalID(role, externalUser.ExternalID, 1, SystemInteraction.Use());
+
+            var roleNames = table.CreateSet<RoleNameModel>().ToList();
+            foreach (var roleNameObject in roleNames)
+            {
+                var userGroup = UserGroup.FetchByName(roleNameObject.RoleName, locale);
+                Assert.AreEqual(user.UserGroupID, userGroup.ID);
+            }
+        }
+
+        [Given(@"a UserGroup Role with Name ""(.*)"" and Architect permissions exists in the Rave database")]
+        public void GivenAUserGroupRoleWithNameAndArchitectPermissionsExistsInTheRaveDatabase(string userGroupName)
+        {
+            RoleHelper.AddUserGroupToDB(userGroupName, true);
+        }
+        
+        [Then(@"the user should have the default architect security role assigned")]
+        public void ThenTheUserShouldHaveTheDefaultArchitectSecurityRoleAssigned()
+        {
+            var externalUser = ExternalUser.GetByExternalUUID(ScenarioContext.Current.Get<string>("externalUserUUID"), 1);
+            var study = ScenarioContext.Current.Get<Study>("study");
+            var projectCreatorDefaultRole = Configuration.GetProjectCreatorDefaultRole();
+
+            var roles = ExternalUserRole.LoadRoleIDsByExternalUserID(externalUser.ID, study.Uuid, true);
+            Assert.IsTrue(roles.Any(x => x == projectCreatorDefaultRole));
+        }
+
+        [Then(@"an internal user with role ""(.*)"" exists")]
+        public void ThenAnInternalUserWithRoleExists(string roleName)
+        {
+            var externalUser = ExternalUser.GetByExternalUUID(ScenarioContext.Current.Get<string>("externalUserUUID"), 1);
+            var role = Roles.GetAllRoles().FindByName(roleName);
+            var user = User.FindByRoleAndExternalID(role, externalUser.ExternalID, 1, SystemInteraction.Use());
+            Assert.IsNotNull(user);
+            ScenarioContext.Current.Set(user, "user");
         }
 
     }

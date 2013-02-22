@@ -18,6 +18,12 @@ namespace Medidata.RBT.Features.Integration.Steps
             SiteHelper.CreateRaveSite(siteNumber);
         }
 
+        [Given(@"the Site with name ""(.*)"" and site number ""(.*)"" exists in the Rave database")]
+        public void TheSiteWithName____AndSiteNumber____ExistsInTheRaveDatabase(string siteName, string siteNumber)
+        {
+            SiteHelper.CreateRaveSite(siteNumber, siteName);
+        }
+
         [Then(@"I should see the site in the Rave database")]
         public void ThenIShouldSeeTheSiteInTheRaveDatabase()
         {

@@ -19,6 +19,12 @@ namespace Medidata.RBT.Features.Integration.Steps
             UserHelper.CreateRaveUser(login);
         }
 
+        [Given(@"the internal User with login ""(.*)"" exists in the Rave database")]
+        public void GivenTheInternalUserWithLoginExistsInTheRaveDatabase(string login)
+        {
+            UserHelper.CreateInternalRaveUser(login);
+        }
+
         [Then(@"I should see the user in the Rave database")]
         public void ThenIShouldSeeTheUserInTheRaveDatabase()
         {
@@ -28,12 +34,17 @@ namespace Medidata.RBT.Features.Integration.Steps
 
             var users = Users.FindByExternalUserID(externalUser.ID, SystemInteraction.Use());
 
-            //var user = users.FirstOrDefault(x => x.EdcRole == null);
             var user = users.FirstOrDefault();
 
             Assert.IsNotNull(user);
 
             ScenarioContext.Current.Set(user, "user"); //updates the user in the context to reflect updates made by RISS
+        }
+
+        [Then(@"I should see the iMedidata user in the Rave database")]
+        public void ThenIShouldSeeTheIMedidataUserInTheRaveDatabase()
+        {
+            ThenIShouldSeeTheUserInTheRaveDatabase();
         }
 
         [StepDefinition(@"the user should have Email ""(.*)""")]
@@ -126,6 +137,29 @@ namespace Medidata.RBT.Features.Integration.Steps
             var user = ScenarioContext.Current.Get<User>("user");
             var userTimeZone = Timezone.Fetch(user.TimeZone);
             Assert.IsTrue(userTimeZone.TimezoneDisplay.Contains(timeZone));
+        }
+
+        [Then(@"the user should have the ExternalSystem iMedidata")]
+        public void ThenTheUserShouldHaveTheExternalSystemIMedidata()
+        {
+            var user = ScenarioContext.Current.Get<User>("user");
+            Assert.AreEqual(ExternalSystem.GetByID(1), user.ExternalSystem);
+        }
+
+        [Then(@"there should be (.*) active internal user for the external user")]
+        public void ThenThereShouldBeInternalUserForTheExternalUser(int userCount)
+        {
+            var externalUser = ExternalUser.GetByExternalUUID(ScenarioContext.Current.Get<string>("externalUserUUID"), 1);
+            var users = Users.FindByExternalUserID(externalUser.ID, SystemInteraction.Use());
+            Assert.AreEqual(userCount, users.Count(x => x.Active));
+        }
+
+        [When(@"the iMedidata user links their account to the Rave User")]
+        public void WhenTheIMedidataUserLinksTheirAccountToTheRaveUser()
+        {
+            var user = ScenarioContext.Current.Get<User>("user");
+            var externalUser = ExternalUser.GetByExternalUUID(ScenarioContext.Current.Get<string>("externalUserUUID"), 1);
+            UserHelper.LinkAccount(externalUser, user);
         }
 
         [Then(@"the user should have Title ""(.*)""")]

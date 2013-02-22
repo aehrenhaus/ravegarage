@@ -19,6 +19,8 @@ namespace Medidata.RBT.Objects.Integration.Helpers
         public static void MessageHandler(Table table)
         {
             var messageConfigs = table.CreateSet<StudySiteMessageModel>().ToList();
+            ScenarioContext.Current.Set(messageConfigs.Count, "messageCount");
+
             foreach (var config in messageConfigs)
             {
                 var message = string.Empty;

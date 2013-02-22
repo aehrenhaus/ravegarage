@@ -6,7 +6,9 @@ namespace Medidata.RBT.Objects.Integration.Configuration.Models
     public class StudyInvitationMessageModel
     {
         public string EventType { get; set; }
+        public string Resource { get; set; }
         public Guid StudyUuid { get; set; }
+        public string ObjectType { get; set; }
         public string InvitationType { get; set; }
         public DateTime Timestamp { get; set; }
         public Guid MessageId { get; set; }
