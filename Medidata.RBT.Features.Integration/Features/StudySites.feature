@@ -81,7 +81,7 @@ Scenario:  When a Site is added back to a Study in iMedidata, the studysite in R
 	And the studysite should be inactive
 	When I send the following StudySite message to SQS
 	| EventType | StudySiteId | StudySiteName        | StudySiteNumber | StudyId | SiteId | SiteName         | SiteNumber | Timestamp           |
-	| POST      | 40          | TestDELETE StudySite | 123456          | 100     | 10     | Test Delete Site | 329843432  | 2012-10-12 13:00:00 |
+	| POST      | 40          | TestDELETE StudySite | 123456          | 100     | 10     | Test Delete Site | delete001  | 2012-10-12 14:00:00 |
 	And the message is successfully processed
 	Then I should see the studysite in the Rave database
 	And the studysite should have the source iMedidata
