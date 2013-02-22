@@ -141,6 +141,7 @@
     <Compile Include="Lab\UnitConversionsPage.cs" />
     <Compile Include="EDC\SignatureBox.cs" />
     <Compile Include="OtherPages\ActivatePage.cs" />
+    <Compile Include="OtherPages\CacheFlushPage.cs" />
     <Compile Include="OtherPages\LoginSession.cs" />
     <Compile Include="OtherPages\LogoutPage.cs" />
     <Compile Include="OtherPages\PasswordChangedPage.cs" />
