@@ -35,12 +35,13 @@ Scenario: If I create a site in iMedidata, and an unlinked site in Rave (that is
            when Rave receives the site it will link it to the iMedidata site, matching it based on UUID first.
 	Given the Site with site number "4a" exists in the Rave database
 	And I send the following Site message to SQS
-	| EventType | Address1    | City       | State | PostalCode | Country | Phone   | Name      | Number | Id |
-	| POST      | 111 5th Ave | New Jersey | NJ    | 10004      | USB     | 1234567 | TestSite4 | 4      | 4  |
+	| EventType | Address1    | City       | State | PostalCode | Country | Phone   | Name      | Number | Id | Timestamp           |
+	| POST      | 111 5th Ave | New Jersey | NJ    | 10004      | USB     | 1234567 | TestSite4 | 4      | 4  | 2013-02-02 12:00:00 |
 	When the message is successfully processed
 	Then I should see the site in the Rave database
     And the site should have the ExternalId "4"
 	And and the site should have ExternalSystemName "iMedidata"
+	And the site should have a LastExternalUpdateDate "2013-02-02 12:00:00"
 
 @PB2.5.9.27-02
 Scenario: If I create a site in iMedidata, and an unlinked site in Rave (that is not linked to the iMedidata site), when Rave receives
