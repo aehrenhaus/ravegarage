@@ -12,7 +12,7 @@ namespace Medidata.RBT.Features.Rave.Steps
     /// Steps pertaining to expanding or collapsing areas
     /// </summary>
     [Binding]
-    public class ExpandCollapseSteps : RaveSteps
+    public class ExpandCollapseSteps : BrowserStepsBase
     {
         /// <summary>
         /// Expand an element on a page
