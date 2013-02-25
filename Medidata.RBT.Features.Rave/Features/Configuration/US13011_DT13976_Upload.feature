@@ -1,6 +1,7 @@
 ﻿# Configuration Loader specification should include Coder Configuration.
 
 @FT_US13011_DT13976_Upload
+@ignore
 Feature: US13011
 	When the Configuration Settings are Uploaded, they should include Coder Configuration details.
 	As a Rave Administrator
