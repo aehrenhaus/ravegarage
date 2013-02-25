@@ -78,7 +78,7 @@ namespace Medidata.RBT.PageObjects.Rave
 			if(folderLink==null)
 				throw new Exception("Folder not found:"+folderName);
 			folderLink.Click();
-			return this;
+			return this.WaitForPageLoads().As<BaseEDCPage>();
 		}
 
         /// <summary>
@@ -89,9 +89,8 @@ namespace Medidata.RBT.PageObjects.Rave
 		public virtual RavePageBase SelectForm(string formName)
 		{
 			IWebElement formFolderTable = Browser.TryFindElementById("_ctl0_LeftNav_EDCTaskList_TblTaskItems", true);
-			formFolderTable.FindElement(By.LinkText(formName)).Click();
-            Context.CurrentPage = new CRFPage();
-            return Context.CurrentPage.As<CRFPage>();
+			formFolderTable.TryFindElementBy(By.LinkText(formName)).Click();
+            return this.WaitForPageLoads().As<RavePageBase>();
 		}
 
 
