@@ -3,6 +3,10 @@ using OpenQA.Selenium;
 using TechTalk.SpecFlow;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Medidata.RBT.SeleniumExtension;
+using Medidata.RBT.PageObjects.Rave;
+using TechTalk.SpecFlow.Assist;
+using System.Collections.Generic;
+using Medidata.RBT.SharedObjects;
 
 
 namespace Medidata.RBT.Common.Steps
@@ -145,7 +149,21 @@ namespace Medidata.RBT.Common.Steps
 			Assert.IsTrue(exist, String.Format("Text does not exist :{0}", text));
 		}
 
-		/// <summary>
+        /// <summary>
+        /// This step should be used when original text to be verified contains seeded element
+        /// Step checks that text does exist
+        /// </summary>
+        /// <param name="text"></param>
+        /// <param name="seededDataTable"></param>
+        [StepDefinition(@"I verify text ""(.*)"" exists with seeded")]
+        public void IVerifyTextExistsWithSeeded(string text, Table seededDataTable)
+        {
+            string seededText = GetTextWithSeededObjectName(text, seededDataTable);
+
+            IVerifyText____Exists(seededText);
+        }
+
+        /// <summary>
 		/// 
 		/// </summary>
 		/// <param name="text"></param>
@@ -155,6 +173,21 @@ namespace Medidata.RBT.Common.Steps
 			bool exist = CurrentPage.As<IVerifySomethingExists>().VerifySomethingExist(null,"text",text);
 			Assert.IsFalse(exist, String.Format("Text does exist :{0}", text));
 		}
+
+        /// <summary>
+        /// This step should be used when original text to be verified contains seeded element
+        /// Step checks that text does not exist
+        /// </summary>
+        /// <param name="text"></param>
+        /// <param name="seededDataTable"></param>
+        [StepDefinition(@"I verify text ""(.*)"" does not exist with seeded")]
+        public void ThenIVerifyTextDoesNotExistWithSeeded(string text, Table seededDataTable)
+        {
+            string seededText = GetTextWithSeededObjectName(text, seededDataTable);
+
+            IVerifyText____DoesNotExist(seededText);
+        }
+
 
 		/// <summary>
 		/// 
@@ -273,5 +306,29 @@ namespace Medidata.RBT.Common.Steps
             bool visible = CurrentPage.As<IVerifySomethingExists>().VerifySomethingExist(null, "button", buttonName);
             Assert.IsTrue(visible, String.Format("Is not visible :[{0}] button", buttonName));
         }
-	}
+
+        #region Helper methods
+
+        /// <summary>
+        /// Replace original names with unique names in the text
+        /// </summary>
+        /// <returns></returns>
+        private string GetTextWithSeededObjectName(string originaltext, Table seededDataTable)
+        {
+            string seededText = originaltext;
+            IEnumerable<GenericDataModel<string>> seededObjectNameList = seededDataTable.CreateSet<GenericDataModel<string>>();
+
+            foreach (GenericDataModel<string> seededObjectName in seededObjectNameList)
+            {
+                string seededObjectUniqueName = SeedingContext.GetExistingFeatureObjectOrMakeNew<ISeedableObject>(seededObjectName.Data, () =>
+                { throw new Exception(string.Format("The ISeedableObject [{0}] does not exist in seedable objects list.", seededObjectName.Data)); }).UniqueName;
+
+                seededText = seededText.Replace(seededObjectName.Data, seededObjectUniqueName);
+            }
+
+            return seededText;
+        }
+
+        #endregion
+    }
 }

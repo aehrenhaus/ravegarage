@@ -379,7 +379,7 @@ Scenario: When I copy a form that contains Coder settings to a Architect Project
 @VER2013.1.0
 @VR23.Jan.2013
 @Draft
-Scenario: When I copy a form from an Architect Project that contains Coder settings to a Propose Objects, then coder settings does not get copied to the new form.
+Scenario: When I copy a form from an Architect Project that contains Coder settings to a Propose Objects, then the field that has coder settings does not get copied to the new form.
 
 #Given I have a project that has Coder active and registered
 #When I copy a form to Propose objects
@@ -395,7 +395,9 @@ Scenario: When I copy a form from an Architect Project that contains Coder setti
 	And I select link "Propose Objects" located in "Left Nav"
 	And I expand "ETE2 (ETE2)"
 	When I check "CoderField2 (CODERFIELD2)"
-	Then I verify text "Invalid Selection. Target is not registered with Coding Dictionary - " exists
+	Then I verify text "Invalid selection. Proposal is not registered with Coder coding dictionary MCC42706CodingDictionary" exists with seeded
+	| Data                     |
+	| MCC42706CodingDictionary |
 	And I take a screenshot
 	And I verify "CoderField2 (CODERFIELD2)" is unchecked
 	And I verify "LogCompField1 (LOGCOMPFIELD1)" is unchecked
@@ -408,7 +410,9 @@ Scenario: When I copy a form from an Architect Project that contains Coder setti
 	And I verify "StdCompField3 (STDCOMPFIELD3)" is enabled
 	And I verify "StdSuppField4 (STDSUPPFIELD4)" is enabled
 	When I uncheck "ETE2 (ETE2)"
-	Then I verify text "Invalid Selection. Target is not registered with Coding Dictionary - " does not exist
+	Then I verify text "Invalid selection. Proposal is not registered with Coder coding dictionary MCC42706CodingDictionary" does not exist with seeded
+	| Data                     |
+	| MCC42706CodingDictionary |
 	And I take a screenshot
 	When I check "ETE2 (ETE2)"
 	And I verify "CoderField2 (CODERFIELD2)" is unchecked
@@ -475,7 +479,9 @@ Scenario: When I copy a form from an Architect Project that contains Coder setti
     And I click button "Next"
     And I expand "ETE2 (ETE2)"
     When I check "ETE2 (ETE2)"
-    Then I verify text "Invalid Selection. Target is not registered with Coding Dictionary -" does not exist
+    Then I verify text "Invalid selection. Project is not registered with Coder coding dictionary MCC42706CodingDictionary" does not exist with seeded
+	| Data                     |
+	| MCC42706CodingDictionary |
     And I take a screenshot
     And I verify "CoderField2 (CODERFIELD2)" is checked
     And I verify "LogCompField1 (LOGCOMPFIELD1)" is checked
@@ -488,7 +494,9 @@ Scenario: When I copy a form from an Architect Project that contains Coder setti
     And I verify "StdCompField3 (STDCOMPFIELD3)" is enabled
     And I verify "StdSuppField4 (STDSUPPFIELD4)" is enabled
     When I uncheck "ETE2 (ETE2)"
-    Then I verify text "Invalid Selection. Target is not registered with Coding Dictionary -" does not exist
+    Then I verify text "Invalid selection. Project is not registered with Coder coding dictionary MCC42706CodingDictionary" does not exist with seeded
+	| Data                     |
+	| MCC42706CodingDictionary |
     And I take a screenshot
     When I check "CoderField2 (CODERFIELD2)"
     And I verify "CoderField2 (CODERFIELD2)" is checked	
@@ -530,7 +538,7 @@ Scenario: When I copy a form from an Architect Project that contains Coder setti
 @VER2013.1.0
 @VR23.Jan.2013
 @Draft	
-Scenario: When I copy a form from an Architect Project that contains Coder settings to a project that does not contains Coder settings, then coder settings does not get copied to the new form.
+Scenario: When I copy a form from an Architect Project that contains Coder settings to a project that does not contains Coder settings, then the field and the coder settings does not get copied to the new form.
 
 #Given I have a project that has Coder active and registered
 #When I copy a form to a project that does not contain coder settings
@@ -551,7 +559,9 @@ Scenario: When I copy a form from an Architect Project that contains Coder setti
 	And I click button "Next"
 	And I expand "ETE2 (ETE2)"
 	When I check "CoderField2 (CODERFIELD2)"
-	Then I verify text "Invalid Selection. Target is not registered with Coding Dictionary - " exists
+	Then I verify text "Invalid selection. Project is not registered with Coder coding dictionary MCC42706CodingDictionary" exists with seeded
+	| Data                     |
+	| MCC42706CodingDictionary |
 	And I take a screenshot
 	And I verify "CoderField2 (CODERFIELD2)" is unchecked
 	And I verify "LogCompField1 (LOGCOMPFIELD1)" is unchecked
@@ -564,7 +574,9 @@ Scenario: When I copy a form from an Architect Project that contains Coder setti
 	And I verify "StdCompField3 (STDCOMPFIELD3)" is enabled
 	And I verify "StdSuppField4 (STDSUPPFIELD4)" is enabled
 	When I uncheck "ETE2 (ETE2)"
-	Then I verify text "Invalid Selection. Target is not registered with Coding Dictionary - " does not exist
+	Then I verify text "Invalid selection. Project is not registered with Coder coding dictionary MCC42706CodingDictionary" does not exist with seeded
+	| Data                     |
+	| MCC42706CodingDictionary |
 	And I take a screenshot
 	When I check "ETE2 (ETE2)"
 	And I verify "CoderField2 (CODERFIELD2)" is unchecked
