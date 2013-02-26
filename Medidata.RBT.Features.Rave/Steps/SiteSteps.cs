@@ -34,6 +34,18 @@ namespace Medidata.RBT.Features.Rave.Steps.Seeding
             var siteObject = SeedingContext.GetExistingFeatureObjectOrMakeNew(site, () => new Site(site));
             DbHelper.EnableDDEForSiteAndStudy(siteObject.UniqueName);
         }
+
+        /// <summary>
+        /// Turn on Units Only for a site
+        /// </summary>
+        /// <param name="site">Site to turn on Units Only for</param>
+        [Given(@"Site ""([^""]*)"" is Units-Only-enabled")]
+        public void GivenSiteForStudyIsUnitsOnlyEnabled(string site)
+        {
+            var siteObject = SeedingContext.GetExistingFeatureObjectOrMakeNew(site, () => new Site(site));
+            DbHelper.EnableUnitsOnlyForSiteAndStudy(siteObject.UniqueName);
+        }
+
         /// <summary>
         /// Create a site if none already exists.
         /// </summary>
