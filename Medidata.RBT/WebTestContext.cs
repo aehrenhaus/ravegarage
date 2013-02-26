@@ -17,6 +17,7 @@ using Medidata.RBT.SharedObjects;
 using System.Reflection;
 using System.Drawing;
 using System.Collections;
+using O2S.Components.PDF4NET;
 
 
 namespace Medidata.RBT
@@ -42,6 +43,8 @@ namespace Medidata.RBT
 		}
 
 		public FileInfo LastDownloadedFile { get; set; }
+
+        public PDF LastLoadedPDF { get; set; }
 
 		public FileInfo FileToUpload
 		{

@@ -41,6 +41,10 @@
     <Reference Include="Newtonsoft.Json">
       <HintPath>..\ExternalDlls\Newtonsoft.Json.dll</HintPath>
     </Reference>
+    <Reference Include="O2S.Components.PDF4NET, Version=4.4.0.0, Culture=neutral, PublicKeyToken=80d03dd9e5b85317, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\ExternalDlls\O2S.Components.PDF4NET.dll</HintPath>
+    </Reference>
     <Reference Include="Selenium.WebDriverBackedSelenium">
       <HintPath>..\ExternalDlls\Selenium.WebDriverBackedSelenium.dll</HintPath>
     </Reference>
@@ -52,6 +56,10 @@
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
+    <Reference Include="TallComponents.PDF.Controls.WinForms, Version=2.0.52.1, Culture=neutral, PublicKeyToken=76bf2dedaa68ccb5, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\ExternalDlls\TallComponents.PDF.Controls.WinForms.dll</HintPath>
+    </Reference>
     <Reference Include="TechTalk.SpecFlow">
       <HintPath>..\ExternalDlls\SpecflowModified\TechTalk.SpecFlow.dll</HintPath>
     </Reference>
@@ -221,6 +229,8 @@
     <Compile Include="TableModels\CoderLocaleTable.cs" />
     <Compile Include="TableModels\CoderTermModel.cs" />
     <Compile Include="TableModels\CoderWorkflowVariableModel.cs" />
+    <Compile Include="TableModels\PDFFormattingModel.cs" />
+    <Compile Include="TableModels\PDFParseModel.cs" />
     <Compile Include="TableModels\GenericDataModel.cs" />
     <Compile Include="TableModels\ReportMatrixAssignmentModel.cs" />
     <Compile Include="TableModels\LabUnitDictionaryModel.cs" />

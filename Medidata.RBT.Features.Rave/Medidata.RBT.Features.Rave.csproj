@@ -331,6 +331,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>MCC46591.feature</DependentUpon>
     </Compile>
+    <Compile Include="Features\PDF\PDFParserTest.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PDFParserTest.feature</DependentUpon>
+    </Compile>
     <Compile Include="Features\PDF\US12175_DT8545_lessthangreaterthaninPDF.feature.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -681,6 +686,10 @@
     <None Include="Features\PDF\MCC46591.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>MCC46591.feature.cs</LastGenOutput>
+    </None>
+    <None Include="Features\PDF\PDFParserTest.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>PDFParserTest.feature.cs</LastGenOutput>
     </None>
     <None Include="Features\PDF\US12175_DT8545_lessthangreaterthaninPDF.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
