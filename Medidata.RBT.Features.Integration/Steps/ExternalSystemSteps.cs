@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Medidata.Core.Objects;
+using Medidata.RBT.Objects.Integration.Configuration;
 using Medidata.RBT.Objects.Integration.Helpers;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using TechTalk.SpecFlow;
@@ -19,7 +20,7 @@ namespace Medidata.RBT.Features.Integration.Steps
         {
             var site = ScenarioContext.Current.Get<Site>("site");
 
-            Assert.AreEqual("iMedidata", site.ExternalSystem.Name);
+            Assert.AreEqual(ExternalSystemNames.IMEDIDATA, site.ExternalSystem.Name);
         }
 
         [Then(@"the studysite should have the source iMedidata")]
@@ -27,7 +28,7 @@ namespace Medidata.RBT.Features.Integration.Steps
         {
             var studySite = ScenarioContext.Current.Get<StudySite>("studySite");
 
-            Assert.AreEqual("iMedidata", studySite.ExternalSystem.Name);
+            Assert.AreEqual(ExternalSystemNames.IMEDIDATA, studySite.ExternalSystem.Name);
         }
     }
 }
