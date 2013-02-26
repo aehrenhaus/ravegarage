@@ -40,7 +40,7 @@ Scenario: If I create a site in iMedidata, and an unlinked site in Rave (that is
 	When the message is successfully processed
 	Then I should see the site in the Rave database
     And the site should have the ExternalId "4"
-	And and the site should have ExternalSystemName "iMedidata"
+	And the site should have the source iMedidata
 	And the site should have a LastExternalUpdateDate "2013-02-02 12:00:00"
 
 @PB2.5.9.27-02
@@ -54,7 +54,7 @@ Scenario: If I create a site in iMedidata, and an unlinked site in Rave (that is
 	Then I should see the site in the Rave database
 	And the site should have the UUID "2fc5e4a8-f117-11e1-b0ce-12313940032d"
     And the site should have the ExternalId "6"
-	And and the site should have ExternalSystemName "iMedidata"
+	And the site should have the source iMedidata
 	And the site should have a LastExternalUpdateDate "2013-02-02 12:00:00"
 
 @PB2.5.9.43-01
@@ -68,7 +68,7 @@ Scenario: If I have a linked site in iMedidata, and I change the site number in 
 	When the message is successfully processed
 	Then I should see the site in the Rave database
 	And the site should have the SiteNumber "7"
-	And and the site should have ExternalSystemName "iMedidata"
+	And the site should have the source iMedidata
 	And the site should have a LastExternalUpdateDate "2013-02-02 13:00:00"
 
 @PB2.5.9.46-01
@@ -82,7 +82,7 @@ Scenario: If I have a linked site in iMedidata, and I change the site name in iM
 	When the message is successfully processed
 	Then I should see the site in the Rave database
 	And the site should have the name "TestSite9"
-	And and the site should have ExternalSystemName "iMedidata"
+	And the site should have the source iMedidata
 	And the site should have a LastExternalUpdateDate "2013-02-02 13:00:00"
 
 @PB2.5.9.42-02
@@ -98,7 +98,7 @@ Scenario: If I update a site in iMedidata, when Rave receives the site it will c
 	And the site should have City "New Jersey"
 	And the site should have PostalCode "10004"
 	And the site should have Country "USB"
-	And and the site should have ExternalSystemName "iMedidata"
+	And the site should have the source iMedidata
 
 @PB2.5.8.28-04B
 Scenario: Operations on studies, sites, studysites, users, study assignments, studysite assignments must be audited by System User

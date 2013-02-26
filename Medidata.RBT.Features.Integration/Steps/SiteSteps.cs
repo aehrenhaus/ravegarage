@@ -114,14 +114,6 @@ namespace Medidata.RBT.Features.Integration.Steps
             Assert.AreEqual(telephone, site.Telephone);
         }
 
-        [Then(@"and the site should have ExternalSystemName ""(.*)""")]
-        public void AndTheSiteShouldHaveExternalSystemName____(string externalSystemName)
-        {
-            var site = ScenarioContext.Current.Get<Site>("site");
-
-            Assert.AreEqual(externalSystemName, site.ExternalSystem.Name);
-        }
-
         [Then(@"the site should have the UUID ""(.*)""")]
         public void ThenTheSiteShouldHaveTheUUID____(string uuid)
         {
