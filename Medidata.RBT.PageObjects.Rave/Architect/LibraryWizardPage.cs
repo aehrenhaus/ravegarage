@@ -42,6 +42,8 @@ namespace Medidata.RBT.PageObjects.Rave.Architect
                 + " or contains(text(), '" + objectToExpand + "')]" //anchor tag
                 + "/../a/img[contains(@src,'plus.gif')]"));
 
+            IWebElement expandedElement = null;
+
             //If the element is not expandable on the tree on the left, try to expand the arrow that appears after selecting a form or field
             if (expandableElement == null)
             {
@@ -52,10 +54,21 @@ namespace Medidata.RBT.PageObjects.Rave.Architect
                 if (expandableElement != null)
                 {
                     expandableElement.Click();
+
+                    //To verify that element has expanded try to look for the expandable element with updated image
+                    expandedElement = context.TryFindElementBy(By.XPath(".//a[contains(text(), '" + objectToExpand + "')]" //anchor tag
+                        + "/../img[contains(@src,'arrow_small_down.gif')]"));
                 }
             }
             else
+            {
                 expandableElement.Click();
+
+                //To verify that element has expanded try to look for the expandable element with updated image
+                expandedElement = context.TryFindElementBy(By.XPath(".//a[b[contains(text(),'" + objectToExpand + "')]" // bold tag
+                    + " or contains(text(), '" + objectToExpand + "')]" //anchor tag
+                    + "/../a/img[contains(@src,'minus.gif')]"));
+            }
         }
 
         /// <summary>
