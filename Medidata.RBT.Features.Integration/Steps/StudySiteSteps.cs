@@ -86,13 +86,5 @@ namespace Medidata.RBT.Features.Integration.Steps
 
             Assert.AreEqual(false, studySite.Active);
         }
-
-        [Then(@"the studysite should have the source iMedidata")]
-        public void ThenTheStudysiteShouldHaveTheSourceIMedidata()
-        {
-            var studySite = ScenarioContext.Current.Get<StudySite>("studySite");
-
-            Assert.AreEqual(1, studySite.ExternalSystem.ID);
-        }
     }
 }

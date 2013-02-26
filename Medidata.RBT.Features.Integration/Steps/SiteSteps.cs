@@ -21,16 +21,19 @@ namespace Medidata.RBT.Features.Integration.Steps
         [Then(@"I should see the site in the Rave database")]
         public void ThenIShouldSeeTheSiteInTheRaveDatabase()
         {
-            var siteUuid = ScenarioContext.Current.Get<String>("siteUuid");
+            var siteUuid = ScenarioContext.Current.Keys.Contains("siteUuid") ?
+                           ScenarioContext.Current.Get<String>("siteUuid") : //site was created via post message
+                           ScenarioContext.Current.Get<Site>("site").Uuid;  //site was seeded in Rave
 
             var site = Site.FindByUuid(siteUuid, 1, SystemInteraction.Use());
 
             Assert.IsNotNull(site);
-            ScenarioContext.Current.Add("site", site);
+
+            ScenarioContext.Current.Set(site, "site");
         }
 
         [Then(@"the site should have Address1 ""(.*)""")]
-        public void ThenTheSiteShouldHaveAddress1(string address1)
+        public void ThenTheSiteShouldHaveAddress1____(string address1)
         {
             var site = ScenarioContext.Current.Get<Site>("site");
 
@@ -39,7 +42,7 @@ namespace Medidata.RBT.Features.Integration.Steps
 
 
         [Then(@"the site should have the ExternalId ""(.*)""")]
-        public void ThenTheSiteShouldHaveTheExternalId(int externalId)
+        public void ThenTheSiteShouldHaveTheExternalId____(int externalId)
         {
             var site = ScenarioContext.Current.Get<Site>("site");
 
@@ -47,7 +50,7 @@ namespace Medidata.RBT.Features.Integration.Steps
         }
 
         [Then(@"the site should have the name ""(.*)""")]
-        public void ThenTheSiteShouldHaveTheName(string siteName)
+        public void ThenTheSiteShouldHaveTheName____(string siteName)
         {
             var site = ScenarioContext.Current.Get<Site>("site");
 
@@ -55,7 +58,7 @@ namespace Medidata.RBT.Features.Integration.Steps
         }
 
         [Then(@"the site should have the SiteNumber ""(.*)""")]
-        public void ThenTheSiteShouldHaveTheSiteNumber(string siteNumber)
+        public void ThenTheSiteShouldHaveTheSiteNumber____(string siteNumber)
         {
             var site = ScenarioContext.Current.Get<Site>("site");
 
@@ -63,7 +66,7 @@ namespace Medidata.RBT.Features.Integration.Steps
         }
 
         [Then(@"the site should have a LastExternalUpdateDate ""(.*)""")]
-        public void ThenTheSiteShouldHaveALastExternalUpdateDate(DateTime lastExternalUpdateDate)
+        public void ThenTheSiteShouldHaveALastExternalUpdateDate____(DateTime lastExternalUpdateDate)
         {
             var site = ScenarioContext.Current.Get<Site>("site");
 
@@ -71,7 +74,7 @@ namespace Medidata.RBT.Features.Integration.Steps
         }
 
         [Then(@"the site should have City ""(.*)""")]
-        public void ThenTheSiteShouldHaveCity(string city)
+        public void ThenTheSiteShouldHaveCity____(string city)
         {
             var site = ScenarioContext.Current.Get<Site>("site");
 
@@ -79,7 +82,7 @@ namespace Medidata.RBT.Features.Integration.Steps
         }
 
         [Then(@"the site should have State ""(.*)""")]
-        public void ThenTheSiteShouldHaveState(string state)
+        public void ThenTheSiteShouldHaveState____(string state)
         {
             var site = ScenarioContext.Current.Get<Site>("site");
 
@@ -87,7 +90,7 @@ namespace Medidata.RBT.Features.Integration.Steps
         }
 
         [Then(@"the site should have PostalCode ""(.*)""")]
-        public void ThenTheSiteShouldHavePostalCode(string postalCode)
+        public void ThenTheSiteShouldHavePostalCode____(string postalCode)
         {
             var site = ScenarioContext.Current.Get<Site>("site");
 
@@ -96,7 +99,7 @@ namespace Medidata.RBT.Features.Integration.Steps
 
 
         [Then(@"the site should have Country ""(.*)""")]
-        public void ThenTheSiteShouldHaveCountry(string country)
+        public void ThenTheSiteShouldHaveCountry____(string country)
         {
             var site = ScenarioContext.Current.Get<Site>("site");
 
@@ -104,11 +107,55 @@ namespace Medidata.RBT.Features.Integration.Steps
         }
 
         [Then(@"the site should have Telephone ""(.*)""")]
-        public void ThenTheSiteShouldHaveTelephone(string telephone)
+        public void ThenTheSiteShouldHaveTelephone____(string telephone)
         {
             var site = ScenarioContext.Current.Get<Site>("site");
 
             Assert.AreEqual(telephone, site.Telephone);
+        }
+
+        [Then(@"the site should have the UUID ""(.*)""")]
+        public void ThenTheSiteShouldHaveTheUUID____(string uuid)
+        {
+            var site = ScenarioContext.Current.Get<Site>("site");
+
+            Assert.AreEqual(uuid, site.Uuid);
+        }
+
+        [Then(@"I should see the site has audits in the Rave database")]
+        public void ThenIShouldSeeTheSiteHasAuditsInTheRaveDatabase()
+        {
+            var site = ScenarioContext.Current.Get<Site>("site");
+
+            Audits siteAudits = Audits.Load(site);
+            Assert.IsTrue(siteAudits.Count > 0);
+
+            ScenarioContext.Current.Add("siteAudits", siteAudits);
+        }
+
+        [Then(@"I should see the audits were performed by user ""(.*)""")]
+        public void ThenIShouldSeeTheAuditsWerePerformedBy____(string userType)
+        {
+            var siteAudits = ScenarioContext.Current.Get<Audits>("siteAudits");
+
+            Assert.AreEqual(siteAudits[siteAudits.Count - 1].AuditUser, userType);
+        }
+
+
+        [Then(@"I should see the audit action type ""(.*)""")]
+        public void ThenIShouldSeeTheAuditActionType____(string auditActionType)
+        {
+            var siteAudits = ScenarioContext.Current.Get<Audits>("siteAudits");
+
+            Assert.AreEqual(siteAudits[siteAudits.Count - 1].SubCategory.ToString(), auditActionType);
+        }
+
+        [Then(@"I should see the audit action ""(.*)""")]
+        public void ThenIShouldSeeTheAuditAction____(string auditAction)
+        {
+            var siteAudits = ScenarioContext.Current.Get<Audits>("siteAudits");
+
+            Assert.AreEqual(siteAudits[siteAudits.Count - 1].Readable, auditAction);
         }
 
     }
