@@ -12,5 +12,6 @@ namespace Medidata.RBT.Objects.Integration.Configuration
 		public const string STUDY_SITE = "studysite";
 		public const string USER_STUDY_SITE = "userstudysite";
 		public const string USER = "user";
+        public const string STUDY_INVITATION = "studyinvitation";
     }
 }
