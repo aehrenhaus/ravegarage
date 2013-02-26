@@ -13,6 +13,13 @@ namespace Medidata.RBT.Features.Integration.Steps
     [Binding]
     public class UserStudySiteSteps
     {
+        [Given(@"the current User is assigned to the the current StudySite")]
+        public void GivenTheCurrentUserIsAssignedToTheTheCurrentStudySite()
+        {
+            UserStudySiteHelper.CreateUserStudySiteAssignment();
+        }
+
+
         [Then(@"I should see the UserStudySite assignment in the Rave database")]
         public void ThenIShouldSeeTheUserStudySiteAssignmentInTheRaveDatabase()
         {

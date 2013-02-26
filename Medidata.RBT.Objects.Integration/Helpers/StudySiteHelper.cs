@@ -73,6 +73,7 @@ namespace Medidata.RBT.Objects.Integration.Helpers
                                     ExternalSystem = ExternalSystem.GetByID(1)
                                 };
             studySite.Save();
-        }
+		    ScenarioContext.Current.Add("studySite", studySite);
+		}
     }
 }
