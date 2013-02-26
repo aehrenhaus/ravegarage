@@ -7,7 +7,7 @@ using OpenQA.Selenium.Support.UI;
 using Medidata.RBT.SeleniumExtension;
 using TechTalk.SpecFlow;
 
-namespace Medidata.RBT
+namespace Medidata.RBT.PageObjects.Rave
 {
     /// <summary>
     /// Methods to verify table order

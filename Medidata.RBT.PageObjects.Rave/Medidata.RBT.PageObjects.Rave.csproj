@@ -124,6 +124,7 @@
     <Compile Include="EDC\PortraitLogField.cs" />
     <Compile Include="EDC\TaskSummary.cs" />
     <Compile Include="EDC\TaskSummaryItem.cs" />
+    <Compile Include="Helpers\DefaultPOInterfaceImplementation.cs" />
     <Compile Include="Lab\AnalytesPage.cs" />
     <Compile Include="Lab\CentralLabsPage.cs" />
     <Compile Include="Lab\LabUnitsPage.cs" />
@@ -271,10 +272,6 @@
     <Compile Include="EDC\SubjectPage.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Medidata.RBT.Common.Steps\Medidata.RBT.Common.Steps.csproj">
-      <Project>{45796EAF-4C33-4410-A85E-D5EF7EBE7EFE}</Project>
-      <Name>Medidata.RBT.Common.Steps</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Medidata.RBT.SeleniumExtension\Medidata.RBT.SeleniumExtension.csproj">
       <Project>{22945718-331A-4CC1-A98A-A7E7500FAF76}</Project>
       <Name>Medidata.RBT.SeleniumExtension</Name>
