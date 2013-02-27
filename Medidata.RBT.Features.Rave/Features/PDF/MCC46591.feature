@@ -1,5 +1,6 @@
-﻿@MCC-46591
+@MCC-46591
 @ignore
+
 Feature: MCC-46591 Log Lines in Blank/Blank Annotated PDFs are not displayed.
 
 #Note: Known DT12954 - Annotated PDFs cannot display all dictionary entries for Dictionaries with a large Number of Entries
@@ -38,7 +39,7 @@ Given I publish and push eCRF "BlankPDF Study.xml" to "Version 1"
 @Release_2013.1.0
 @PBMCC46591-001
 @RR24.JAN.2013
-@Draft
+@Validation
 Scenario: MCC46591-001 Verify log form without default values in Landscape direction display all log lines on blank PDF with default PDF Configuration Profile (MCC46591PDF1).
 
 #Given I have a log form without default values in Landscape direction
@@ -77,7 +78,7 @@ Then the text should contain "<Symbol>"
 @Release_2013.1.0
 @PBMCC46591-002
 @RR24.JAN.2013
-@Draft
+@Validation
 Scenario: MCC46591-002 Verify log form without default values in Portrait direction display all log lines on blank PDF with default PDF Configuration Profile (MCC46591PDF1).
 
 #Given I have a log form without default values in Portrait direction
@@ -116,7 +117,7 @@ Then the text should contain "<Symbol>"
 @Release_2013.1.0
 @PBMCC46591-003
 @RR24.JAN.2013
-@Draft
+@Validation
 Scenario: MCC46591-003 Verify mixed form without default values in Landscape direction display all fields standard and log on blank PDF with default PDF Configuration Profile (MCC46591PDF1).
 
 #Given I have a mixed form without default values in Landscape direction
@@ -148,7 +149,7 @@ Then the text should contain "<Symbol>"
 @Release_2013.1.0
 @PBMCC46591-004
 @RR24.JAN.2013
-@Draft
+@Validation
 Scenario: MCC46591-004 Verify mixed form without default values in Portrait direction display all fields standard and log on blank PDF with default PDF Configuration Profile (MCC46591PDF1).
 
 #Given I have a mixed form without default values in Portrait direction
@@ -180,7 +181,7 @@ Then the text should contain "<Symbol>"
 @Release_2013.1.0
 @PBMCC46591-005
 @RR24.JAN.2013
-@Draft
+@Validation
 Scenario: MCC46591-005 Verify standard form without default values display all fields on blank PDF with default PDF Configuration Profile (MCC46591PDF1).
 
 #Given I have a standard form
@@ -207,7 +208,7 @@ Then the text should contain "<Symbol>"
 @Release_2013.1.0
 @PBMCC46591-006
 @RR24.JAN.2013
-@Draft
+@Validation
 Scenario: MCC46591-006 Verify log form without default values in Landscape direction display all log lines on blank PDF with Annotated PDF Configuration Profile (MCC46591PDF2).
 
 #Given I have a log form without default values in Landscape direction
@@ -269,7 +270,7 @@ Then the text should contain "<Symbol>"
 @Release_2013.1.0
 @PBMCC46591-007
 @RR24.JAN.2013
-@Draft
+@Validation
 Scenario: MCC46591-007 Verify log form without default values in Portrait direction display all log lines on blank PDF with Annotated PDF Configuration Profile (MCC46591PDF2).
 
 #Given I have a log form without default values in Portrait direction
@@ -331,7 +332,7 @@ Then the text should contain "<Symbol>"
 @Release_2013.1.0
 @PBMCC46591-008
 @RR24.JAN.2013
-@Draft
+@Validation
 Scenario: MCC46591-008 Verify mixed form without default values in Landscape direction display all fields standard and log on blank PDF with Annotated PDF Configuration Profile (MCC46591PDF2).
 
 #Given I have a mixed form without default values in Landscape direction
@@ -379,7 +380,7 @@ Then the text should contain "<Symbol>"
 @Release_2013.1.0
 @PBMCC46591-009
 @RR24.JAN.2013
-@Draft
+@Validation
 Scenario: MCC46591-009 Verify mixed form without default values in Portrait direction display all fields standard and log on blank PDF with Annotated PDF Configuration Profile (MCC46591PDF2).
 
 #Given I have a mixed form without default values in Portrait direction
@@ -427,7 +428,7 @@ Then the text should contain "<Symbol>"
 @Release_2013.1.0
 @PBMCC46591-010
 @RR24.JAN.2013
-@Draft
+@Validation
 Scenario: MCC46591-010 Verify standard form without default values display all fields on blank PDF with Annotated PDF Configuration Profile (MCC46591PDF2).
 
 #Given I have a standard form
@@ -465,7 +466,7 @@ Then the text should contain "<Symbol>"
 @Release_2013.1.0
 @PBMCC46591-011
 @RR24.JAN.2013
-@Draft
+@Validation
 Scenario: MCC46591-011 Verify log form without default values in Landscape direction display all log lines on blank PDF with Annotated PDF Configuration Profile (MCC46591PDF3).
 
 #Given I have a log form without default values in Landscape direction
@@ -527,7 +528,7 @@ Then the text should contain "<Symbol>"
 @Release_2013.1.0
 @PBMCC46591-012
 @RR24.JAN.2013
-@Draft
+@Validation
 Scenario: MCC46591-012 Verify log form without default values in Portrait direction display all log lines on blank PDF with Annotated PDF Configuration Profile (MCC46591PDF3).
 
 #Given I have a log form without default values in Portrait direction
@@ -589,7 +590,7 @@ Then the text should contain "<Symbol>"
 @Release_2013.1.0
 @PBMCC46591-013
 @RR24.JAN.2013
-@Draft
+@Validation
 Scenario: MCC46591-013 Verify mixed form without default values in Landscape direction display all fields standard and log on blank PDF with Annotated PDF Configuration Profile (MCC46591PDF3).
 
 #Given I have a mixed form without default values in Landscape direction
@@ -637,7 +638,7 @@ Then the text should contain "<Symbol>"
 @Release_2013.1.0
 @PBMCC46591-014
 @RR24.JAN.2013
-@Draft
+@Validation
 Scenario: MCC46591-014 Verify mixed form without default values in Portrait direction display all fields standard and log on blank PDF with Annotated PDF Configuration Profile (MCC46591PDF3).
 
 #Given I have a mixed form without default values in Portrait direction
@@ -685,7 +686,7 @@ Then the text should contain "<Symbol>"
 @Release_2013.1.0
 @PBMCC46591-015
 @RR24.JAN.2013
-@Draft
+@Validation
 Scenario: MCC46591-015 Verify standard form without default values display all fields on blank PDF with Annotated PDF Configuration Profile (MCC46591PDF3).
 
 #Given I have a standard form
@@ -723,7 +724,7 @@ Then the text should contain "<Symbol>"
 @Release_2013.1.0
 @PBMCC46591-016
 @RR24.JAN.2013
-@Draft
+@Validation
 Scenario: MCC46591-016 Verify log form with default values in Portrait direction display all log lines with default values on blank PDF with default PDF Configuration Profile (MCC46591PDF1).
 
 #Given I have a log form with default values in Portrait direction
@@ -781,7 +782,7 @@ Then the text should contain "<Symbol>"
 @Release_2013.1.0
 @PBMCC46591-017
 @RR24.JAN.2013
-@Draft
+@Validation
 Scenario: MCC46591-017 Verify log form with default values in Landscape direction display all log lines with default values on blank PDF with default PDF Configuration Profile (MCC46591PDF1).
 
 #Given I have a log form with default values in Landscape direction
@@ -839,7 +840,7 @@ Then the text should contain "<Symbol>"
 @Release_2013.1.0
 @PBMCC46591-018
 @RR24.JAN.2013
-@Draft
+@Validation
 Scenario: MCC46591-018 Verify log form with default values in Portrait direction display all log lines with default values on blank PDF with Annotated PDF Configuration Profile (MCC46591PDF2).
 
 #Given I have a log form with default values in Portrait direction
@@ -904,7 +905,7 @@ Then the text should contain "<Symbol>"
 @Release_2013.1.0
 @PBMCC46591-019
 @RR24.JAN.2013
-@Draft
+@Validation
 Scenario: MCC46591-019 Verify log form with default values in Landscape direction display all log lines with default values on blank PDF with Annotated PDF Configuration Profile (MCC46591PDF2).
 
 #Given I have a log form with default values in Landscape direction
@@ -969,7 +970,7 @@ Then the text should contain "<Symbol>"
 @Release_2013.1.0
 @PBMCC46591-020
 @RR24.JAN.2013
-@Draft
+@Validation
 Scenario: MCC46591-020 Verify log form with default values in Portrait direction display all log lines with default values on blank PDF with Annotated PDF Configuration Profile (MCC46591PDF3).
 
 #Given I have a log form with default values in Portrait direction
@@ -1034,7 +1035,7 @@ Then the text should contain "<Symbol>"
 @Release_2013.1.0
 @PBMCC46591-021
 @RR24.JAN.2013
-@Draft
+@Validation
 Scenario: MCC46591-021 Verify log form with default values in Landscape direction display all log lines with default values on blank PDF with Annotated PDF Configuration Profile (MCC46591PDF3).
 
 #Given I have a log form with default values in Landscape direction
@@ -1099,7 +1100,7 @@ Then the text should contain "<Symbol>"
 @Release_2013.1.0
 @PBMCC46591-022
 @RR24.JAN.2013
-@Draft
+@Validation
 Scenario: MCC46591-022 Verify mixed form with default values in Portrait direction display all fields standard and log with default values on blank PDF with default PDF Configuration Profile (MCC46591PDF1).
 
 #Given I have a mixed form with default values in Portrait direction
@@ -1157,7 +1158,7 @@ Then the text should contain "<Symbol>"
 @Release_2013.1.0
 @PBMCC46591-023
 @RR24.JAN.2013
-@Draft
+@Validation
 Scenario: MCC46591-023 Verify mixed form with default values in Landscape direction display all fields standard and log with default values on blank PDF with default PDF Configuration Profile (MCC46591PDF1).
 
 #Given I have a mixed form with default values in Landscape direction
@@ -1215,7 +1216,7 @@ Then the text should contain "<Symbol>"
 @Release_2013.1.0
 @PBMCC46591-024
 @RR24.JAN.2013
-@Draft
+@Validation
 Scenario: MCC46591-024 Verify mixed form with default values in Portrait direction display all fields standard and log with default values on blank PDF with Annotated PDF Configuration Profile (MCC46591PDF2).
 
 #Given I have a mixed form with default values in Portrait direction
@@ -1280,7 +1281,7 @@ Then the text should contain "<Symbol>"
 @Release_2013.1.0
 @PBMCC46591-025
 @RR24.JAN.2013
-@Draft
+@Validation
 Scenario: MCC46591-025 Verify mixed form with default values in Landscape direction display all fields standard and log with default values on blank PDF with Annotated PDF Configuration Profile (MCC46591PDF2).
 
 #Given I have a mixed form with default values in Landscape direction
@@ -1345,7 +1346,7 @@ Then the text should contain "<Symbol>"
 @Release_2013.1.0
 @PBMCC46591-026
 @RR24.JAN.2013
-@Draft
+@Validation
 Scenario: MCC46591-026 Verify mixed form with default values in Portrait direction display all fields standard and log with default values on blank PDF with Annotated PDF Configuration Profile (MCC46591PDF3).
 
 #Given I have a mixed form with default values in Portrait direction
@@ -1410,7 +1411,7 @@ Then the text should contain "<Symbol>"
 @Release_2013.1.0
 @PBMCC46591-027
 @RR24.JAN.2013
-@Draft
+@Validation
 Scenario: MCC46591-027 Verify mixed form with default values in Landscape direction display all fields standard and log with default values on blank PDF with Annotated PDF Configuration Profile (MCC46591PDF3).
 
 #Given I have a mixed form with default values in Landscape direction
@@ -1475,7 +1476,7 @@ Then the text should contain "<Symbol>"
 @Release_2013.1.0
 @PBMCC46591-028
 @RR24.JAN.2013
-@Draft
+@Validation
 Scenario: MCC46591-028 Verify standard form with default values display all fields on blank PDF with default PDF Configuration Profile (MCC46591PDF1).
 
 #Given I have a standard form with default values
@@ -1504,7 +1505,7 @@ Then the text should contain "<Symbol>"
 @Release_2013.1.0
 @PBMCC46591-029
 @RR24.JAN.2013
-@Draft
+@Validation
 Scenario: MCC46591-029 Verify standard form with default values display all fields on blank PDF with Annotated PDF Configuration Profile (MCC46591PDF2).
 
 #Given I have a standard form with default values
@@ -1540,7 +1541,7 @@ Then the text should contain "<Symbol>"
 @Release_2013.1.0
 @PBMCC46591-030
 @RR24.JAN.2013
-@Draft
+@Validation
 Scenario: MCC46591-030 Verify standard form with default values display all fields on blank PDF with Annotated PDF Configuration Profile (MCC46591PDF3).
 
 #Given I have a standard form with default values
