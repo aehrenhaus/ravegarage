@@ -49,11 +49,11 @@ Background:
 #Note: Global Library Project "MCC-42706A GL" does not contain Coder settings
 
 @Release2013.1.0
-@PBMCC41510-001
+@PBMCC42706-001
 @VER2013.1.0
 @VR23.Jan.2013
-@Draft
-Scenario: When I copy a form from draft that contains Coder settings to a Architect Project that has the Coder settings, then coder settings get copied to the new form.
+@Validation
+Scenario: PBMCC42706-001 When I copy a form from draft that contains Coder settings to a Architect Project that has the Coder settings, then coder settings get copied to the new form.
 
 #Given I have 1 project that has Coder active and registered
 #When I copy a form that has Coder settings configured
@@ -124,11 +124,11 @@ Scenario: When I copy a form from draft that contains Coder settings to a Archit
 	And I take a screenshot
 
 @Release2013.1.0
-@PBMCC41510-002
+@PBMCC42706-002
 @VER2013.1.0
 @VR23.Jan.2013
-@Draft
-Scenario: When I copy a form from versions that contains Coder settings to another Architect Project that has the Coder settings, then coder settings get copied to the new form.
+@Validation
+Scenario: PBMCC42706-002 When I copy a form from versions that contains Coder settings to another Architect Project that has the Coder settings, then coder settings get copied to the new form.
 
 #Given I have 2 project that has Coder active and registered
 #When I copy a form one project to another that has Coder settings configured
@@ -177,11 +177,11 @@ Scenario: When I copy a form from versions that contains Coder settings to anoth
 	And I take a screenshot
 	
 @Release2013.1.0
-@PBMCC41510-003
+@PBMCC42706-003
 @VER2013.1.0
 @VR23.Jan.2013
-@Draft
-Scenario: When I search and copy a form that contains Coder settings to a Architect Project that has the Coder settings, then coder settings get copied to the new form.
+@Validation
+Scenario: PBMCC42706-003 When I search and copy a form that contains Coder settings to a Architect Project that has the Coder settings, then coder settings get copied to the new form.
 
 #Given I have 1 project that has Coder active and registered
 #When I copy a form that has Coder settings configured
@@ -242,11 +242,11 @@ Scenario: When I search and copy a form that contains Coder settings to a Archit
 	And I take a screenshot	
 
 @Release2013.1.0
-@PBMCC41510-004
+@PBMCC42706-004
 @VER2013.1.0
 @VR23.Jan.2013
-@Draft
-Scenario: When I copy a form that contains Coder settings to another Architect Project that has the Coder settings, then coder settings get copied to the new form.
+@Validation
+Scenario: PBMCC42706-004 When I copy a form that contains Coder settings to another Architect Project that has the Coder settings, then coder settings get copied to the new form.
 
 #Given I have 2 project that has Coder active and registered
 #When I copy a form one project to another that has Coder settings configured
@@ -295,11 +295,11 @@ Scenario: When I copy a form that contains Coder settings to another Architect P
 	And I take a screenshot
 	
 @Release2013.1.0
-@PBMCC41510-005
+@PBMCC42706-005
 @VER2013.1.0
 @VR23.Jan.2013
-@Draft
-Scenario: When I copy a form that contains Coder settings to a Architect Project with change OID, that has the Coder settings, then coder settings get copied to the new form.
+@Validation
+Scenario: PBMCC42706-005 When I copy a form that contains Coder settings to a Architect Project with change OID, that has the Coder settings, then coder settings get copied to the new form.
 
 #Given I have 2 project that has Coder active and registered
 #When I copy a form with OID change that has Coder settings configured
@@ -375,11 +375,11 @@ Scenario: When I copy a form that contains Coder settings to a Architect Project
 	And I take a screenshot
 	
 @Release2013.1.0
-@PBMCC41510-006
+@PBMCC42706-006
 @VER2013.1.0
 @VR23.Jan.2013
-@Draft
-Scenario: When I copy a form from an Architect Project that contains Coder settings to a Propose Objects, then the field that has coder settings does not get copied to the new form.
+@Validation
+Scenario: PBMCC42706-006 When I copy a form from an Architect Project that contains Coder settings to a Propose Objects, then the field that has coder settings does not get copied to the new form.
 
 #Given I have a project that has Coder active and registered
 #When I copy a form to Propose objects
@@ -454,11 +454,11 @@ Scenario: When I copy a form from an Architect Project that contains Coder setti
 	And I take a screenshot
 
 @Release2013.1.0
-@PBMCC41510-007
+@PBMCC42706-007
 @VER2013.1.0
 @VR23.Jan.2013
-@Draft    
-Scenario: When I copy a form from an Architect Project that contains Coder settings to a Global Library Volume, then coder settings does not get copied to the field on new form.
+@Validation    
+Scenario: PBMCC42706-007 When I copy a form from an Architect Project that contains Coder settings to a Global Library Volume, then coder settings does not get copied to the field on new form.
 
 #Given I have a project that has Coder active and registered
 #When I copy a form to Global Library Volume
@@ -534,11 +534,11 @@ Scenario: When I copy a form from an Architect Project that contains Coder setti
 	And I take a screenshot
 	
 @Release2013.1.0
-@PBMCC41510-008
+@PBMCC42706-008
 @VER2013.1.0
 @VR23.Jan.2013
-@Draft	
-Scenario: When I copy a form from an Architect Project that contains Coder settings to a project that does not contains Coder settings, then the field and the coder settings does not get copied to the new form.
+@Validation	
+Scenario: PBMCC42706-008 When I copy a form from an Architect Project that contains Coder settings to a project that does not contains Coder settings, then the field and the coder settings does not get copied to the new form.
 
 #Given I have a project that has Coder active and registered
 #When I copy a form to a project that does not contain coder settings
@@ -614,11 +614,11 @@ Scenario: When I copy a form from an Architect Project that contains Coder setti
 	And I take a screenshot
 	
 @Release2013.1.0
-@PBMCC41510-009
+@PBMCC42706-009
 @VER2013.1.0
 @VR23.Jan.2013
-@Draft
-Scenario: When I copy a form that contains Coder settings to a Architect Project with change OID, that has the Coder settings, then coder settings get copied to the new form and I should not see duplicate terms on Coder Configuration page.
+@Validation
+Scenario: PBMCC42706-009 When I copy a form that contains Coder settings to a Architect Project with change OID, that has the Coder settings, then coder settings get copied to the new form and I should not see duplicate terms on Coder Configuration page.
 
 	And I navigate to "Architect" module
 	And I select "Project" link "MCC-42706C" in "Active Projects"
