@@ -110,6 +110,8 @@ namespace Medidata.RBT.PageObjects.Rave.Architect
                 element = Browser.TryFindElementById("SearchBtn");
             else if (identifier.Equals("Accept", StringComparison.InvariantCultureIgnoreCase))
                 element = Browser.TryFindElementById("SaveOID");
+            else if (identifier.Equals("Next", StringComparison.InvariantCultureIgnoreCase))
+                element = Browser.TryFindElementBy(By.XPath(".//input[@id='ButtonNext' and @type='submit' and not(@disabled)]"));
 
             if (element != null)
             {
@@ -187,7 +189,7 @@ namespace Medidata.RBT.PageObjects.Rave.Architect
                 });
             }
 
-            return this;
+            return this.WaitForPageLoads();
         }
 
         /// <summary>
