@@ -29,4 +29,4 @@ Scenario: When a UserStudySite delete message gets put onto the queue, and the a
 	| POST      | 2012-10-12 12:00:00 |
 	| DELETE    | 2012-10-12 13:00:00 |
 	When the message is successfully processed
-	Then The user should not have a UserStudySite assignment in the Rave database
+	Then the user should not have a UserStudySite assignment in the Rave database
