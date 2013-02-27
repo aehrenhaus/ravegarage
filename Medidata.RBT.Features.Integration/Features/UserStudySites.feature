@@ -30,21 +30,3 @@ Scenario: When a UserStudySite delete message gets put onto the queue, and the a
 	| DELETE    | 2012-10-12 13:00:00 |
 	When the message is successfully processed
 	Then The user should not have a UserStudySite assignment in the Rave database
-
-@PB2.5.9.29-03
-Scenario: If the user has access to study in Rave that is linked with the study on iMedidata and if the user is unassigned to the site for the study on iMedidata then that site will be accessible in Rave, provided the user has role that has  "ViewAllSitesinSitegroup" action role checked
-
-Given the User with login "testStudySiteUser3" exists in the Rave database
-And the study with name "testStudy3" and environment "prod" with ExternalId "3" exists in the Rave database
-And an EDC Role with Name "testRole3" and ViewAllSites permission exists in the Rave database
-And the Site with site number "3" exists in the Rave database
-And the StudySite with ExternalId "3" exists in the Rave database
-And the current User is assigned to the current Study with current Role
-And the current User is assigned to the the current StudySite
-And I send the following UserStudySite message to SQS	
-| EventType | Timestamp           |
-| DELETE    | 2013-10-12 13:00:00 |
-When the message is successfully processed
-Then The user should not have a UserStudySite assignment in the Rave database
-And the user should have an EDC Role with ViewAllSites permission
-

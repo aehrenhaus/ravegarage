@@ -30,7 +30,7 @@ namespace Medidata.RBT.Objects.Integration.Helpers
                 if(viewAllSites)
                 {
                     var user = ScenarioContext.Current.Get<User>("user");
-                    role.SetPermissions(new ArrayList(){RolePermissionsEnum.ViewAllSites}, user.ID);
+                    role.SetPermissions(new ArrayList(){ RolePermissionsEnum.ViewAllSites }, user.ID);
                 }
                 
                 role.Save();    

@@ -87,7 +87,7 @@ Scenario:  When a Site is added back to a Study in iMedidata, the studysite in R
 	And the studysite should have the source iMedidata
 
 @PB2.5.9.37-01
-Scenario: If I have a linked site in iMedidata, and I delete a studysite in iMedidata that is linked to that site, when Rave receives the updated studysite, it will remove the studysite assignment in Rave.
+Scenario: If I have a linked site in iMedidata, and I delete a studysite in iMedidata that is linked to that site, when Rave receives the updated studysite, it will inactivate the studysite in Rave.
 	Given the study with name "Study A" and environment "Prod" with ExternalId "100" exists in the Rave database
 	And I send the following StudySite messages to SQS
 	| EventType | StudySiteId | StudySiteName     | StudySiteNumber | StudyId | SiteId | SiteName         | SiteNumber | Timestamp           |
