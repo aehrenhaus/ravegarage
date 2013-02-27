@@ -48,26 +48,3 @@ When the message is successfully processed
 Then The user should not have a UserStudySite assignment in the Rave database
 And the user should have an EDC Role with ViewAllSites permission
 
-@PB2.5.9.35-01
-Scenario: If an externally authenticated user does not have access to a particular site in Rave, but has been invited to a Role in Rave that permits them access to all sites, that user will see the sites in Rave in accordance with these Role settings, regardless of the site access set in iMedidata.
-
-Given the User with login "testStudySiteUser4" exists in the Rave database
-
-And the study with name "testStudy4" and environment "prod" with ExternalId "4" exists in the Rave database
-And the iMedidata Study named"<Study C>" has Sites "<Site C1>" "<Site C2>" "<Site C3>"
-And there is a Rave Study named "<Study C>"
-And the Site with site number "4" exists in the Rave database
-And the StudySite with ExternalId "4" exists in the Rave database
-
-And I have an assignment to the iMedidata Study named "<Study C>" for the App named "<EDC App>" and the Role "<EDC Role 1>"
-And I have an assignment to the iMedidata site named "<Site C1>" for the iMedidata study named "<Study C>"
-And I follow "<EDC App>" for "<Study C>"
-And I see Rave Home page for "<Site C1>"
-And I follow Home Icon
-And I should not see "<Site C2>" "<Site C3>"
-
-And I have change Role assignment to the iMedidata Study named "<Study C>" for the App named "<EDC App>"  Role "<EDC Role 4>"
-When I follow "<EDC App>" for "<Study C>"
-Then I should be on Rave Study Home page for "<Study C>"
-And I should see "<Site C1>" 
-And I should see "<Site C2>" "<Site C3>"

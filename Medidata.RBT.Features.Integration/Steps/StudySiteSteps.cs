@@ -86,5 +86,13 @@ namespace Medidata.RBT.Features.Integration.Steps
 
             Assert.AreEqual(false, studySite.Active);
         }
+
+        [Then(@"the studysite should be active")]
+        public void ThenTheStudysiteShouldBeActive()
+        {
+            var studySite = ScenarioContext.Current.Get<StudySite>("studySite");
+
+            Assert.AreEqual(true, studySite.Active);
+        }
     }
 }
