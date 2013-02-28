@@ -1,5 +1,5 @@
 ﻿# Configuration Loader specification should include Coder Configuration.
-#@ignore
+
 @FT_US13011_DT13976
 Feature: US13011_DT13976_1
 	When the Configuration Settings are downloaded, they should include Coder Configuration details.
@@ -29,7 +29,7 @@ Background:
 #----------------------------------------------------------------------------------------------------------------------------------------
 @release_2013.1.0
 @PB_US11101_01
-@Draft
+@Validation
 Scenario: @PB_US11101_01 As a Data Manager, when I am on the Configuration Loader page, and I select Get File, and the Core Configuration specification is downloaded, and I open it, then I see Coder Configuration details.
 	
 	Given I navigate to "Configuration"
@@ -61,7 +61,7 @@ Scenario: @PB_US11101_01 As a Data Manager, when I am on the Configuration Loade
 #----------------------------------------------------------------------------------------------------------------------------------------
 @release_2013.1.0
 @PB_US11101_02
-@Draft
+@Validation
 Scenario:@PB_US11101_02  As a Data Manager, when I am on the Configuration Loader page, and I select Template Only, and I select Get File, and the Core Configuration specification is downloaded, and I open it, then I see Coder Configuration details.
 	
 	And I navigate to "Configuration"
