@@ -614,7 +614,10 @@ namespace Medidata.RBT.Features.Rave
         public void ISelectLab_____(string labName)
         {
             CRFPage page = CurrentPage.As<CRFPage>();
-            page.SelectLabValue(SeedingContext.GetExistingFeatureObjectOrMakeNew<Lab>(labName, () => new Lab(labName)).UniqueName);
+            if (labName.ToUpper().Equals("UNITS ONLY")) //this is a setting, not a lab name, so this will never be seeded.
+                page.SelectLabValue(labName);
+            else
+                page.SelectLabValue(SeedingContext.GetExistingFeatureObjectOrMakeNew<Lab>(labName, () => new Lab(labName)).UniqueName);
         }
 
         /// <summary>

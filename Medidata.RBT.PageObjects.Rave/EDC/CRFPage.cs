@@ -12,7 +12,7 @@ namespace Medidata.RBT.PageObjects.Rave
         public CRFPage SelectUnitsForFields(IEnumerable<LabRangeModel> units)
         {
             foreach (var unit in units)
-                FindField(unit.Field, "Unit").EnterData(unit.Unit, EnumHelper.GetEnumByDescription<ControlType>("dropdownlist"));
+                FindField(unit.Field, "Unit").EnterData(unit.Unit, EnumHelper.GetEnumByDescription<ControlType>("dropdown"));
 
             return this;
         }
