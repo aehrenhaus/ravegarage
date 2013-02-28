@@ -17,7 +17,7 @@ Feature: US13011
 	#	| defuser | Jennicilin | Prod        | Data Manager | ABC Hospital | 12333       | Administrator |
 
 #----------------------------------------------------------------------------------------------------------------------------------------
-@release_564_2012.1.0	
+@release_2013.1.0	
 @PB_US13011_DT13976_Upload_01
 @Validation
 Scenario: PB_US13011_DT13976_Upload_01, As a Data Manager, When merging configuration settings via Configuration Loader and upload is successful, then 'Coder Configuration' is displayed with complete icon.
@@ -29,7 +29,7 @@ Scenario: PB_US13011_DT13976_Upload_01, As a Data Manager, When merging configur
 	And I should see "Complete icon for Coder Configuration"
 	And I take a screenshot
 #----------------------------------------------------------------------------------------------------------------------------------------
-@release_564_2012.1.0	
+@release_2013.1.0	
 @PB_US13011_DT13976_Upload_02
 @Validation
 Scenario: PB_US13011_DT13976_Upload_02, As a Data Manager, When overwriting exisiting configuration settings via Configuration Loader and upload is successful, then 'Coder Configuration' is displayed with complete icon.
@@ -43,7 +43,7 @@ Scenario: PB_US13011_DT13976_Upload_02, As a Data Manager, When overwriting exis
 	And I should see "Complete icon for Coder Configuration"
 	And I take a screenshot
 #----------------------------------------------------------------------------------------------------------------------------------------
-@release_564_2012.1.0	
+@release_2013.1.0	
 @PB_US13011_DT13976_Upload_03
 @Validation
 Scenario: PB_US13011_DT13976_Upload_03, As a Data Manager, When merging configuration settings via Configuration Loader, if no Review Marking Group has been specified in the template, then the system will display a message stating that the Review Marking Group is a required field.
@@ -55,7 +55,7 @@ Scenario: PB_US13011_DT13976_Upload_03, As a Data Manager, When merging configur
 	And I should see "Marking group: not found or blank" in "Coder Configuration errors"
 	And I take a screenshot
 #----------------------------------------------------------------------------------------------------------------------------------------
-@release_564_2012.1.0	
+@release_2013.1.0	
 @PB_US13011_DT13976_Upload_04
 @Validation
 Scenario: PB_US13011_DT13976_Upload_04, As a Data Manager, When overwriting existing configuration settings via Configuration Loader, if no Review Marking Group has been specified in the template, then the system will display a message stating that the Review Marking Group is a required field.
@@ -69,7 +69,7 @@ Scenario: PB_US13011_DT13976_Upload_04, As a Data Manager, When overwriting exis
 	And I should see "Marking group: not found or blank" in "Coder Configuration errors"
 	And I take a screenshot
 #----------------------------------------------------------------------------------------------------------------------------------------	
-@release_564_2012.1.0	
+@release_2013.1.0	
 @PB_US13011_DT13976_Upload_05
 @Validation
 Scenario: PB_US13011_DT13976_Upload_05 As a Data Manager, When I update existing configuration settings via Configuration Loader and upload is successful, then the system will display updates in Coder Configuration page.
@@ -83,7 +83,7 @@ Scenario: PB_US13011_DT13976_Upload_05 As a Data Manager, When I update existing
 	And I should see "Requires Response checked" 
 	And I take a screenshot
 #----------------------------------------------------------------------------------------------------------------------------------------	
-@release_564_2012.1.0	
+@release_2013.1.0	
 @PB_US13011_DT13976_Upload_06
 @Validation
 Scenario: PB_US13011_DT13976_Upload_06 As a Data Manager, When I update existing configuration settings via Configuration Loader and upload is successful, then the system will display updates in Coder Configuration page.
