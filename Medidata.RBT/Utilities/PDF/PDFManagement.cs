@@ -20,7 +20,7 @@ namespace Medidata.RBT.Utilities
         {
             using (FileStream fileIn = new FileStream(fileLocation, FileMode.Open, FileAccess.Read))
             {
-                webTestContext.LastLoadedPDF = new RBT.PDF("tempPDF", fileLocation);
+                webTestContext.LastLoadedPDF = new RBT.PDF("tempPDF", fileLocation, fileIn);
             }
         }
 
@@ -175,6 +175,11 @@ namespace Medidata.RBT.Utilities
             }
 
             return textResultOverlaps;
+        }
+
+        public static string GetPDFText(WebTestContext webTestContext)
+        {
+            return webTestContext.LastLoadedPDF.Text;
         }
     }
 }

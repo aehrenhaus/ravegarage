@@ -332,7 +332,7 @@ namespace Medidata.RBT
         }
 
         /// <summary>
-        /// Delete all files created since the feature file began running
+        /// Delete all files created by previous scenarios
         /// </summary>
         /// <returns></returns>
 		public void ClearDownloads()
@@ -340,16 +340,15 @@ namespace Medidata.RBT
 			try
 			{
 				var downloadDir = new DirectoryInfo(RBTConfiguration.Default.DownloadPath);
+                foreach (var sub in downloadDir.GetDirectories())
+                {
+                    sub.Delete(true);
+                }
 				foreach (var file in downloadDir.GetFiles())
 				{
 					if (file.Name != "placeholder.txt")
 						file.Delete();
 				}
-				foreach (var sub in downloadDir.GetDirectories())
-				{
-					sub.Delete(true);
-				}
-
 			}
 			catch
 			{

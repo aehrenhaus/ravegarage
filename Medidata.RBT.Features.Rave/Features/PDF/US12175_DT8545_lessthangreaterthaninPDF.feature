@@ -83,8 +83,8 @@ And I generate Blank PDF "Blank PDF A{Var(num2)}"
 And I wait for PDF "Blank PDF A{Var(num2)}" to complete
 And I take a screenshot
 When I View Blank PDF "Blank PDF A{Var(num2)}"
-Then the text should not contain "<Symbol>"
-| Symbol                |
+Then the PDF text should not contain
+| Text                  |
 | &lt                   |
 | &lt;                  |
 | &gt                   |
@@ -102,10 +102,10 @@ Then the text should not contain "<Symbol>"
 | <b>                   |
 | Test1=Test2=Test3=    |
 | Test1==Test2==Test3== |
-And the text should contain "<Symbol>"
-| Symbol |
-| <      |
-| >      |
+And the PDF text should contain
+| Text |
+| <    |
+| >    |
 
 @release_2012.1.0
 @PB_US12175_DT8545_B
@@ -124,8 +124,8 @@ And I generate Blank PDF "Blank PDF B{Var(num3)}"
 And I wait for PDF "Blank PDF B{Var(num3)}" to complete
 And I take a screenshot
 When I View Blank PDF "Blank PDF B{Var(num3)}"
-Then the text should not contain "<Symbol>"
-| Symbol                |
+Then the PDF text should not contain
+| Text                  |
 | &lt                   |
 | &lt;                  |
 | &gt                   |
@@ -143,10 +143,10 @@ Then the text should not contain "<Symbol>"
 | <b>                   |
 | Test1=Test2=Test3=    |
 | Test1==Test2==Test3== |
-And the text should contain "<Symbol>"
-| Symbol |
-| <      |
-| >      |
+And the PDF text should contain
+| Text |
+| <    |
+| >    |
 
 @release_2012.1.0
 @PB_US12175_DT8545_C
@@ -165,8 +165,8 @@ And I generate Blank PDF "Blank PDF C{Var(num4)}"
 And I wait for PDF "Blank PDF C{Var(num4)}" to complete
 And I take a screenshot
 When I View Blank PDF "Blank PDF C{Var(num4)}"
-Then the text should not contain "<Symbol>"
-| Symbol                |
+Then the PDF text should not contain
+| Text                  |
 | &lt                   |
 | &lt;                  |
 | &gt                   |
@@ -184,10 +184,10 @@ Then the text should not contain "<Symbol>"
 | <b>                   |
 | Test1=Test2=Test3=    |
 | Test1==Test2==Test3== |
-And the text should contain "<Symbol>"
-| Symbol |
-| <      |
-| >      |
+And the PDF text should contain
+| Text |
+| <    |
+| >    |
 
 @release_2012.1.0
 @PB_US12175_DT8545_D
@@ -206,8 +206,8 @@ And I generate Blank PDF "Blank PDF D{Var(num5)}"
 And I wait for PDF "Blank PDF D{Var(num5)}" to complete
 And I take a screenshot
 When I View Blank PDF "Blank PDF D{Var(num5)}"
-Then the text should not contain "<Symbol>"
-| Symbol                |
+Then the PDF text should not contain
+| Text                  |
 | &lt                   |
 | &lt;                  |
 | &gt                   |
@@ -225,10 +225,10 @@ Then the text should not contain "<Symbol>"
 | <b>                   |
 | Test1=Test2=Test3=    |
 | Test1==Test2==Test3== |
-And the text should contain "<Symbol>"
-| Symbol |
-| <      |
-| >      |
+And the PDF text should contain
+| Text |
+| <    |
+| >    |
 
 @release_2012.1.0
 @PB_US12175_DT8545_E
@@ -247,8 +247,8 @@ And I generate Blank PDF "Blank PDF E{Var(num6)}"
 And I wait for PDF "Blank PDF E{Var(num6)}" to complete
 And I take a screenshot
 When I View Blank PDF "Blank PDF E{Var(num6)}"
-Then the text should not contain "<Symbol>"
-| Symbol                |
+Then the PDF text should not contain
+| Text                  |
 | &lt                   |
 | &lt;                  |
 | &gt                   |
@@ -266,10 +266,10 @@ Then the text should not contain "<Symbol>"
 | <b>                   |
 | Test1=Test2=Test3=    |
 | Test1==Test2==Test3== |
-And the text should contain "<Symbol>"
-| Symbol |
-| <      |
-| >      |
+And the PDF text should contain
+| Text |
+| <    |
+| >    |
 
 @release_2012.1.0
 @PB_US12175_DT8545_F
@@ -357,8 +357,8 @@ And I generate Data PDF "Data PDF A{Var(num7)}"
 And I wait for PDF "Data PDF A{Var(num7)}" to complete
 And I take a screenshot
 When I View Data PDF "Data PDF A{Var(num7)}"
-Then the text should not contain "<Symbol>"
-| Symbol                |
+Then the PDF text should not contain
+| Text                  |
 | &lt                   |
 | &lt;                  |
 | &gt                   |
@@ -376,10 +376,10 @@ Then the text should not contain "<Symbol>"
 | <b>                   |
 | Test1=Test2=Test3=    |
 | Test1==Test2==Test3== |
-And the text should contain "<Symbol>"
-| Symbol |
-| <      |
-| >      |
+And the PDF text should contain
+| Text |
+| <    |
+| >    |
 
 
 @release_2012.1.0
@@ -468,8 +468,8 @@ And I generate Data PDF "Data PDF B{Var(num8)}"
 And I wait for PDF "Data PDF B{Var(num8)}" to complete
 And I take a screenshot
 When I View Data PDF "Data PDF B{Var(num8)}"
-Then the text should not contain "<Symbol>"
-| Symbol                |
+Then the PDF text should not contain
+| Text                  |
 | &lt                   |
 | &lt;                  |
 | &gt                   |
@@ -487,10 +487,10 @@ Then the text should not contain "<Symbol>"
 | <b>                   |
 | Test1=Test2=Test3=    |
 | Test1==Test2==Test3== |
-And the text should contain "<Symbol>"
-| Symbol |
-| <      |
-| >      |
+And the PDF text should contain
+| Text |
+| <    |
+| >    |
 
 @release_2012.1.0
 @PB_US12175_DT8545_H
@@ -579,8 +579,8 @@ And I generate Data PDF "Data PDF C{Var(num9)}"
 And I wait for PDF "Data PDF C{Var(num9)}" to complete
 And I take a screenshot
 When I View Data PDF "Data PDF C{Var(num9)}"
-Then the text should not contain "<Symbol>"
-| Symbol                |
+Then the PDF text should not contain
+| Text                  |
 | &lt                   |
 | &lt;                  |
 | &gt                   |
@@ -598,10 +598,10 @@ Then the text should not contain "<Symbol>"
 | <b>                   |
 | Test1=Test2=Test3=    |
 | Test1==Test2==Test3== |
-And the text should contain "<Symbol>"
-| Symbol |
-| <      |
-| >      |
+And the PDF text should contain
+| Text |
+| <    |
+| >    |
 
 @release_2012.1.0
 @PB_US12175_DT8545_I
@@ -689,8 +689,8 @@ And I generate Data PDF "Data PDF D{Var(num10)}"
 And I wait for PDF "Data PDF D{Var(num10)}" to complete
 And I take a screenshot
 When I View Data PDF "Data PDF D{Var(num10)}"
-Then the text should not contain "<Symbol>"
-| Symbol                |
+Then the PDF text should not contain
+| Text                  |
 | &lt                   |
 | &lt;                  |
 | &gt                   |
@@ -708,10 +708,10 @@ Then the text should not contain "<Symbol>"
 | <b>                   |
 | Test1=Test2=Test3=    |
 | Test1==Test2==Test3== |
-And the text should contain "<Symbol>"
-| Symbol |
-| <      |
-| >      |
+And the PDF text should contain
+| Text |
+| <    |
+| >    |
 
 @release_2012.1.0
 @PB_US12175_DT8545_J
@@ -799,8 +799,8 @@ And I generate Data PDF "Data PDF E{Var(num11)}"
 And I wait for PDF "Data PDF E{Var(num11)}" to complete
 And I take a screenshot
 When I View Data PDF "Data PDF E{Var(num11)}"
-Then the text should not contain "<Symbol>"
-| Symbol                |
+Then the PDF text should not contain
+| Text                  |
 | &lt                   |
 | &lt;                  |
 | &gt                   |
@@ -818,10 +818,10 @@ Then the text should not contain "<Symbol>"
 | <b>                   |
 | Test1=Test2=Test3=    |
 | Test1==Test2==Test3== |
-And the text should contain "<Symbol>"
-| Symbol |
-| <      |
-| >      |
+And the PDF text should contain
+| Text |
+| <    |
+| >    |
 
 @release_2012.1.0
 @PB_US12175_DT8545_K
@@ -908,8 +908,8 @@ And I generate Data PDF "Data PDF F{Var(num12)}"
 And I wait for PDF "Data PDF F{Var(num12)}" to complete
 And I take a screenshot
 When I View Data PDF "Data PDF F{Var(num12)}"
-Then the text should not contain "<Symbol>"
-| Symbol                |
+Then the PDF text should not contain
+| Text                  |
 | &lt                   |
 | &lt;                  |
 | &gt                   |
@@ -927,7 +927,7 @@ Then the text should not contain "<Symbol>"
 | <b>                   |
 | Test1=Test2=Test3=    |
 | Test1==Test2==Test3== |
-And the text should contain "<Symbol>"
-| Symbol |
-| <      |
-| >      |
+And the PDF text should contain
+| Text |
+| <    |
+| >    |

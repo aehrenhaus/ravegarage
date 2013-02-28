@@ -186,8 +186,8 @@ namespace Medidata.RBT
             Name = name;
         }
 
-        public PDF(string name, string fileLocation)
-            : base(new FileStream(fileLocation, FileMode.Open, FileAccess.Read))
+        public PDF(string name, string fileLocation, FileStream fs)
+            : base(fs)
         {
             Name = name;
             FileLocation = fileLocation;

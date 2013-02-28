@@ -19,7 +19,7 @@ namespace Medidata.RBT.PageObjects.Rave
         /// </summary>
         /// <param name="pdf">The name of the pdf of be viewed</param>
         /// <returns></returns>
-		public void ViewPDF(string pdfName)
+        public void ViewPDF(WebTestContext webTestContext, string pdfName)
 		{
 			var table = Browser.Table("_ctl0_Content_Results");
 			Table dt = new Table("Name");
@@ -35,13 +35,14 @@ namespace Medidata.RBT.PageObjects.Rave
 			tr.FindImagebuttons()[0].Click();
             List<String> extractedFilePaths = Misc.UnzipAllDownloads();
 
-            StringBuilder sb = new StringBuilder();
-
             foreach (string filePath in extractedFilePaths)
-                if(filePath.ToLower().EndsWith(".pdf"))
-                    sb.Append(new Medidata.RBT.PDF(pdfName, filePath).Text);
-
-			Context.Storage["TripReports"] = sb.ToString();
+                if (filePath.ToLower().EndsWith(".pdf"))
+                {
+                    using (FileStream fs = new FileStream(filePath, FileMode.Open, FileAccess.Read))
+                    {
+                        webTestContext.LastLoadedPDF = new Medidata.RBT.PDF(pdfName, filePath, fs);
+                    }
+                }
 		}
 
         public override string URL

@@ -19,6 +19,7 @@ Scenario: Testing out the PDF Parsers
 	| DATA          |
 	| REVIEW        |
 	Then I verify link "SUBJINI" on page "77" goes to page "2"
+	#Then I verify link "SUBJINI" on page "Subject ID" goes to page "SUBJINI"
 	Then I verify PDF properties on page "2"
 	| Font      | Font Size | Top Margin | Bottom Margin | Left Margin | Right Margin | Page Number |
 	| Helvetica | 8         | 1          | 1             | 1.5         | 1.5          | 1 of 164    |

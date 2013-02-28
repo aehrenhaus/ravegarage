@@ -215,13 +215,13 @@ namespace Medidata.RBT.PageObjects.Rave
         /// </summary>
         /// <param name="pdf">The name of the pdf of be viewed</param>
         /// <returns></returns>
-        public void ViewPDF(string pdf)
+        public void ViewPDF(WebTestContext webTestContext, string pdf)
         {
             IWebElement pdfLink = Browser.TryFindElementByXPath(".//a[contains(text(), 'My PDF Files') or contains(text(), 'LMy PDF Files')]");
             pdfLink.Click();
 
             FileRequestViewPage page = new FileRequestViewPage();
-            page.ViewPDF(pdf);
+            page.ViewPDF(webTestContext, pdf);
         }
 
         public override IWebElement GetElementByName(string identifier, string areaIdentifier = null, string listItem = null)

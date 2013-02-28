@@ -10,6 +10,7 @@ using System.Collections.ObjectModel;
 using System.Threading;
 using Medidata.RBT.SeleniumExtension;
 using Medidata.RBT.PageObjects.Rave.SharedRaveObjects;
+using System.IO;
 
 
 namespace Medidata.RBT.PageObjects.Rave
@@ -186,7 +187,7 @@ namespace Medidata.RBT.PageObjects.Rave
         /// </summary>
         /// <param name="visits">The name of the pdf file request to delete</param>
         /// <returns></returns>
-        public void GenerateReport()
+        public void GenerateReport(WebTestContext webTestContext)
         {
             ClickButton("PromptsBox_iid_ShowHideBtn");
             Thread.Sleep(2000);
@@ -207,9 +208,10 @@ namespace Medidata.RBT.PageObjects.Rave
 
             foreach (string filePath in extractedFilePaths)
                 if (filePath.ToLower().EndsWith(".pdf"))
-                    sb.Append(new Medidata.RBT.PDF("TripReports", filePath).Text);
-
-			Context.Storage["TripReports"] = sb.ToString();
+                    using (FileStream fs = new FileStream(filePath, FileMode.Open, FileAccess.Read))
+                    {
+                        webTestContext.LastLoadedPDF = new Medidata.RBT.PDF("PromptsPageReport", filePath, fs);
+                    }
         }
 		#region Pagination
 		public int CurrentPageNumber { get; private set; }

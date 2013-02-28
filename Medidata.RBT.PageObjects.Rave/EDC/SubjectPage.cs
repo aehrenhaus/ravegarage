@@ -141,10 +141,10 @@ namespace Medidata.RBT.PageObjects.Rave
         /// Generate a pdf report. Extract the downloaded pdf, and save its contents in ScenarioText to be used later.
         /// </summary>
         /// <returns></returns>
-        public void GeneratePDFReport()
+        public void GeneratePDFReport(WebTestContext webTestContext)
         {
             ClickLink("PDF Report");
-            new PromptsPage().GenerateReport();
+            new PromptsPage().GenerateReport(webTestContext);
         }
         public IPage ClickPrimaryRecordLink()
         {

@@ -45,7 +45,6 @@ namespace Medidata.RBT
 
 			//do clean up both before and after test run :)
 			WebTestContext.ClearTempFiles();
-			WebTestContext.ClearDownloads();
 
 			WebTestContext.OpenBrowser();
 
@@ -77,7 +76,6 @@ namespace Medidata.RBT
 			base.AfterFeature();
 			SeedingContext.FeatureSeedingOption = null;
 			Factory.DeleteObjectsMarkedForFeatureDeletion();
-			WebTestContext.ClearDownloads();
 			SeedingContext.SeedableObjects.Clear();
 		}
 
@@ -87,6 +85,7 @@ namespace Medidata.RBT
 			WebTestContext.CurrentUser = null;
 
 			Storage.Clear();
+            WebTestContext.ClearDownloads();
 
 			//start time
 			CurrentScenarioStartTime = DateTime.Now;

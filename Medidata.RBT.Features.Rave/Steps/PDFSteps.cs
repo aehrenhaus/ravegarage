@@ -5,6 +5,9 @@ using Medidata.RBT.PageObjects.Rave.SharedRaveObjects;
 using System.Collections.Generic;
 using Medidata.RBT.Utilities;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System;
+using System.Linq;
+using System.Text.RegularExpressions;
 
 namespace Medidata.RBT.Features.Rave
 {
@@ -68,7 +71,7 @@ namespace Medidata.RBT.Features.Rave
         [StepDefinition(@"I View PDF ""([^""]*)""")]
 		public void IViewDataPDF____(string pdfName)
 		{
-			CurrentPage.As<FileRequestPage>().ViewPDF(SpecialStringHelper.Replace(pdfName));
+			CurrentPage.As<FileRequestPage>().ViewPDF(WebTestContext, SpecialStringHelper.Replace(pdfName));
 		}
 
         /// <summary>
@@ -104,6 +107,52 @@ namespace Medidata.RBT.Features.Rave
         public void ILoadPdfAtLocation____(string pdfLocation)
         {
             PDFManagement.LoadDocumentFromLocation(WebTestContext, pdfLocation);
+        }
+
+        /// <summary>
+        /// Step definition to check if a the text stored in the scenario text contains all the listed symbols. Succeeds if it does.
+        /// </summary>
+        /// <param name="table">The list of characters to look for</param>
+        /// <returns></returns>
+        [StepDefinition(@"the PDF text should contain")]
+        public void TheTextShouldContainSymbol(Table table)
+        {
+            string str = PDFManagement.GetPDFText(WebTestContext);
+            Assert.IsFalse(String.IsNullOrEmpty(str));
+            string noWhitespacePDFtext = Regex.Replace(str, @"\s", "");
+
+            if (ConvertToStringList(table).Any(s => !noWhitespacePDFtext.Contains(Regex.Replace(s, @"\s", ""))))
+                Assert.Fail();
+        }
+
+        /// <summary>
+        /// Step definition to check if a the text stored in the scenario text contains the listed symbols. Fails if it does.
+        /// </summary>
+        /// <param name="table">The list of characters to look for</param>
+        /// <returns></returns>
+        [StepDefinition(@"the PDF text should not contain")]
+        public void TheTextShouldNotContainSymbol(Table table)
+        {
+            string str = PDFManagement.GetPDFText(WebTestContext);
+            Assert.IsFalse(String.IsNullOrEmpty(str));
+
+            if (ConvertToStringList(table).Any(s => str.Contains(s)))
+                Assert.Fail();
+        }
+
+        /// <summary>
+        /// Create the symbols table using the passed in table from the feature file
+        /// </summary>
+        /// <param name="table">Table from the feature file</param>
+        /// <returns>All the strings in the symbol table</returns>
+        private List<String> ConvertToStringList(Table table)
+        {
+            List<String> symbols = new List<string>();
+            
+            foreach (TableRow tableRow in table.Rows)
+                symbols.Add(tableRow[0]);
+
+            return symbols;
         }
 
         /// <summary>
