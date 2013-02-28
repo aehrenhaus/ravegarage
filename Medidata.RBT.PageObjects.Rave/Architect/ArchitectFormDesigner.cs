@@ -6,6 +6,8 @@ using TechTalk.SpecFlow;
 using OpenQA.Selenium;
 using Medidata.RBT.PageObjects.Rave.SharedRaveObjects;
 using System.Collections.ObjectModel;
+using OpenQA.Selenium.Support.UI;
+using Medidata.RBT.SharedObjects;
 namespace Medidata.RBT.PageObjects.Rave
 {
 	public class ArchitectFormDesignerPage : ArchitectBasePage, IActivatePage, IVerifySomethingExists, IExpand
@@ -351,7 +353,11 @@ namespace Medidata.RBT.PageObjects.Rave
         /// <returns>True if the coding dictionary is in the coding dictionary dropdown, false otherwise</returns>
         public bool VerifyCodingDictionary(string codingDictionary)
         {
-            return Browser.TryFindElementByPartialID("ddlCodingDictionary").Text.Equals(codingDictionary, StringComparison.InvariantCultureIgnoreCase) != null;
+            SelectElement selectedCodingDictionaryElement = new SelectElement(Browser.TryFindElementByPartialID("ddlCodingDictionary"));
+            string uniqueCodingDictionaryName = SeedingContext.GetExistingFeatureObjectOrMakeNew<ISeedableObject>(codingDictionary,
+                () => { throw new Exception(string.Format("Specified coding dictionary [{0}] is not available in seeded object", codingDictionary)); }).UniqueName;
+
+            return selectedCodingDictionaryElement.SelectedOption.Text.Contains(uniqueCodingDictionaryName);
         }
 
         #region IExpand_interface
