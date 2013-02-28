@@ -21,6 +21,7 @@ namespace Medidata.RBT.Common.Steps
         /// </summary>
         /// <param name="valueToEnter">Value to enter</param>
         /// <param name="identifier">Identifier for textbox</param>
+        /// <param name="typeOfObject"></param>
         [StepDefinition(@"I enter value ""(.*)"" in ""(.*)"" ""(.*)""")]
         public void GivenIEnterValue____In____Textbox(string valueToEnter, string identifier, string typeOfObject)
         {

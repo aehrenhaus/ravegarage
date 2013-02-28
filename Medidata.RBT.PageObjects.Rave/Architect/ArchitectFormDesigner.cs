@@ -262,7 +262,7 @@ namespace Medidata.RBT.PageObjects.Rave
                 }
 
                 dropDownElem.EnhanceAs<Dropdown>().SelectByText(text);
-                return GetPageByCurrentUrlIfNoAlert();
+                return WaitForPageLoads();
             }
             else
                 return base.ChooseFromDropdown(identifier, text, objectType, areaIdentifier);

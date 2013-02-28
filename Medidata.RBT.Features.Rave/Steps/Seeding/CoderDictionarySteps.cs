@@ -36,6 +36,7 @@ namespace Medidata.RBT.Features.Rave.Steps.Seeding
 		/// </summary>
 		/// <param name="codingDictionary">DictionaryName</param>
 		/// <param name="dictionaryVersion">DictionaryVersion</param>
+        /// <param name="codingColumnTable"></param>
         [StepDefinition(@"coding dictionary ""([^""]*)"" version ""([^""]*)"" exists with following coding columns")]
 		public void GivenCodingDictionary____Version____ExistsWithFollowingCodingColumns____(string codingDictionary, string dictionaryVersion, Table codingColumnTable)
 		{

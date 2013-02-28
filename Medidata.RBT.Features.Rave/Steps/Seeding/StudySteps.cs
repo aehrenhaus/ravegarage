@@ -126,7 +126,7 @@ namespace Medidata.RBT.Features.Rave
         /// <param name="uploadName">UploadDraft name, should have been created prior in the feature file</param>
         /// <param name="crfVersionName">The name that the crfVersion is referred to as in the feature file</param>
         /// <param name="studyEnvName">Environment name</param>
-        /// <param name="siteName">Site selection</param>
+        /// <param name="siteSelection">Site selection</param>
         [StepDefinition(@"I publish and push eCRF ""([^""]*)"" to ""([^""]*)"" with study environment ""([^""]*)"" for site ""([^""]*)""")]
         public void IPublishAndPushECRF____To____WithStudyEnvironment____ForSite____(string uploadName, string crfVersionName, string studyEnvName, string siteSelection)
         {

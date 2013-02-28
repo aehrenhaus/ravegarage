@@ -101,7 +101,7 @@ namespace Medidata.RBT.PageObjects.Rave
             //SearchList_PickListBoxItem_Hover
 
          //   element.Parent().Textbox("DropButton").Click();
-            return GetPageByCurrentUrlIfNoAlert();
+            return WaitForPageLoads();
         }
 
 
@@ -117,7 +117,7 @@ namespace Medidata.RBT.PageObjects.Rave
             string[] dateParts = Regex.Split(text, @"\W+");
             this.Type(identifierText, dateParts[0]);
             this.ChooseFromDropdown(identifierDDL, dateParts[1]);
-            return GetPageByCurrentUrlIfNoAlert();
+            return WaitForPageLoads();
         }
 
         /// <summary>
@@ -145,7 +145,7 @@ namespace Medidata.RBT.PageObjects.Rave
             textboxes[1].SetText(dateParts[2]);
             
             // element.SetText(text);
-            return GetPageByCurrentUrlIfNoAlert();
+            return WaitForPageLoads();
         }
 
 

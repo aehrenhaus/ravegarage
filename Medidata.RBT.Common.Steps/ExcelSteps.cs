@@ -162,6 +162,7 @@ namespace Medidata.RBT.Common.Steps
 		/// Clear the spreadsheet's content from the X line on, in the last downloaded excel file.
 		/// </summary>
 		/// <param name="name"></param>
+        /// <param name="startLine"></param>
 		[StepDefinition(@"I clear ""([^""]*)"" spreadsheet data from line (\d+)")]
 		public void IClear___SpreadsheetData(string name, int startLine)
 		{

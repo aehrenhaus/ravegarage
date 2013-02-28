@@ -152,7 +152,7 @@ namespace Medidata.RBT.PageObjects.Rave
             if (element != null)
                 element.Click();
 
-            return GetPageByCurrentUrlIfNoAlert();
+            return WaitForPageLoads();
         }
 
 		#region ICanVerifyInOrder
@@ -183,7 +183,10 @@ namespace Medidata.RBT.PageObjects.Rave
         /// New method to be used to verify if a control exist
         /// for ex: I can see control xyz
         /// </summary>
+        /// <param name="areaIdentifier"></param>
+        /// <param name="type"></param>
         /// <param name="identifier"></param>
+        /// <param name="exactMatch"></param>
         /// <returns></returns>
 		public new bool VerifySomethingExist(string areaIdentifier,string type, string identifier, bool exactMatch = false)
 		{
