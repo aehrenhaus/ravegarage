@@ -61,7 +61,7 @@ namespace Medidata.RBT.PageObjects.Rave
 
 			Context.CurrentUser = userName;
 			Context.CurrentUserPassword = password;
-			return (HomePage)base.GetPageByCurrentUrlIfNoAlert();
+			return (HomePage)base.WaitForPageLoads();
 		}
 
 

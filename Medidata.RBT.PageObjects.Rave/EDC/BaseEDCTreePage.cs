@@ -196,7 +196,7 @@ namespace Medidata.RBT.PageObjects.Rave
             if (element != null)
                 element.Click();
 
-            return GetPageByCurrentUrlIfNoAlert();
+            return WaitForPageLoads();
 
         }
         #endregion

@@ -67,7 +67,7 @@ namespace Medidata.RBT.PageObjects.Rave
                 throw new Exception("Can't find button:" + identifier);
             element.Click();
 
-            return GetPageByCurrentUrlIfNoAlert();
+            return WaitForPageLoads();
         }
 
 		public override IWebElement GetElementByName(string identifier, string areaIdentifier = null, string listItem = null)

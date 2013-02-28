@@ -200,7 +200,7 @@ namespace Medidata.RBT.PageObjects.Rave
 			link.Click();
 
 
-			return GetPageByCurrentUrlIfNoAlert();
+			return WaitForPageLoads();
 		}
 
 		/// <summary>

@@ -174,24 +174,46 @@ namespace Medidata.RBT.Common.Steps
 			System.Threading.Thread.Sleep(timeValue * 60000);
 		}        
 
+        /// <summary>
+        /// Do an operation in a area
+        /// This will only look for element by its name on the current page
+        /// </summary>
+        /// <param name="area"></param>
 		[StepDefinition(@"I do the following operations in ""(.*)""")]
 		public void IDoTheFollowingOperationsIn____(string area)
 		{
 			CurrentPage.SearchContext = CurrentPage.GetElementByName(area);
 		}
 
+        /// <summary>
+        /// Do an operation in a row of a table
+        /// This will only look for a row in an html table based on table identifier
+        /// </summary>
+        /// <param name="tableIdentifier"></param>
+        /// <param name="row"></param>
 		[StepDefinition(@"I do the following operations in table ""(.*)"", row (.+)")]
 		public void IDoTheFollowingOperationsIn____TableRowColumn(string tableIdentifier, int row)
 		{
 			CurrentPage.SearchContext = CurrentPage.GetElementByName(tableIdentifier).EnhanceAs<HtmlTable>().Rows()[row] ;
 		}
 
+        /// <summary>
+        /// Do an operation in a cell of a table
+        /// This will only look for a cell in an html table based on table identifier
+        /// </summary>
+        /// <param name="tableIdentifier"></param>
+        /// <param name="row"></param>
+        /// <param name="columnName"></param>
 		[StepDefinition(@"I do the following operations in table ""(.*)"", row (.+), ""(.*)"" column")]
 		public void IDoTheFollowingOperationsIn____TableRowColumn(string tableIdentifier, int row, string columnName)
 		{
 			CurrentPage.SearchContext = CurrentPage.GetElementByName(tableIdentifier).EnhanceAs<HtmlTable>().Cell(row,columnName);
 		}
 
+        /// <summary>
+        /// do an operation in the browser
+        /// This currently only return the remote web driver
+        /// </summary>
 		[StepDefinition(@"I do the following operations in whole browser")]
 		public void IDoTheFollowingOperationsInWholeBrowser()
 		{

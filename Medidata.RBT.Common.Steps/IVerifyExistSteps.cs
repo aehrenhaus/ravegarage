@@ -214,7 +214,7 @@ namespace Medidata.RBT.Common.Steps
         /// Verify field with the passed in name and OID exists
         /// </summary>
         /// <param name="identifier">The field name to verify</param>
-        /// <param name="identifier">The field OID to verify</param>
+        /// <param name="fieldOID">The field OID to verify</param>
         [StepDefinition(@"I verify field ""([^""]*)"" with field OID ""([^""]*)"" exists")]
         public void IVerifyField____Exists(string identifier, string fieldOID)
         {

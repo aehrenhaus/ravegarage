@@ -17,6 +17,9 @@ namespace Medidata.RBT.Features.Rave
 	[Binding]
 	public class RaveSteps : BrowserStepsBase
 	{
+        /// <summary>
+        /// key used to store data in webtestcontect storage hashtable
+        /// </summary>
 		public const string TripReports = "TripReports";
         /// <summary>
         /// Step definition to check if a the text stored in the scenario text contains the listed symbols. Fails if it does.
