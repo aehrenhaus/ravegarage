@@ -28,7 +28,6 @@ namespace Medidata.RBT.PageObjects.Rave
 			return base.GetElementByName(identifier,areaIdentifier,listItem);
 		}
 
-
 		public override string URL
 		{
 			get
@@ -36,28 +35,6 @@ namespace Medidata.RBT.PageObjects.Rave
 				return "DataListingsReport.aspx";
 			}
 		}
-
-        public override string BaseURL
-        {
-            get
-            {
-                try
-                {
-                    string[] reportUrls = RaveConfiguration.Default.ReportURL.Split(',');
-                    if (!string.IsNullOrEmpty(Browser.Url))
-                    {
-                        foreach (string reportUrl in reportUrls)
-                        {
-                            if (Browser.Url.StartsWith(reportUrl, StringComparison.InvariantCultureIgnoreCase))
-                                return reportUrl;
-                        }
-                    }
-                }
-                catch { }
-
-                return base.BaseURL;
-            }
-        }
 
         #region ICanVerifyExist
 
