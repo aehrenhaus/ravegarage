@@ -404,6 +404,23 @@ namespace Medidata.RBT.Features.Rave
 		}
 
         /// <summary>
+        /// Verify audit exists
+        /// </summary>
+        /// <param name="table"></param>
+        [StepDefinition(@"I verify exact Audit texts exist")]
+        public void IVerifyExactAuditsExist(Table table)
+        {
+            var audits = table.CreateSet<AuditModel>();
+            int position = 1;
+            foreach (var a in audits)
+            {
+                bool exist = CurrentPage.As<AuditsPage>().ExactAuditExist(a, position);
+                Assert.IsTrue(exist, string.Format("Audit {0} does not exist", a.Audit));
+                position++;
+            }
+        }
+
+        /// <summary>
         /// Click audit icon on a lab field on CRF page
         /// </summary>
         /// <param name="fieldName">The name of the field to audit against</param>

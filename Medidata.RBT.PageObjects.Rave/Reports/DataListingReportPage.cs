@@ -37,6 +37,28 @@ namespace Medidata.RBT.PageObjects.Rave
 			}
 		}
 
+        public override string BaseURL
+        {
+            get
+            {
+                try
+                {
+                    string[] reportUrls = RaveConfiguration.Default.ReportURL.Split(',');
+                    if (!string.IsNullOrEmpty(Browser.Url))
+                    {
+                        foreach (string reportUrl in reportUrls)
+                        {
+                            if (Browser.Url.StartsWith(reportUrl, StringComparison.InvariantCultureIgnoreCase))
+                                return reportUrl;
+                        }
+                    }
+                }
+                catch { }
+
+                return base.BaseURL;
+            }
+        }
+
         #region ICanVerifyExist
 
         bool IVerifyRowsExist.VerifyTableRowsExist(string tableIdentifier, Table matchTable, int? amountOfTimes)
