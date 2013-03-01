@@ -1,6 +1,5 @@
 ﻿# When a user selects  Dynamic Allocation Randomization Block algorithm , subject assignment satisfies a specified allocation and ratio is random for all blocks.
 @EnableSeeding=true
-@ignore
 @FT_US18812
 #SecurityRole
 Feature: US18812 When a user selects  Dynamic Allocation Randomization Block algorithm , subject assignment satisfies a specified allocation and ratio is random for all blocks.
@@ -9,6 +8,10 @@ Feature: US18812 When a user selects  Dynamic Allocation Randomization Block alg
 	And subject assignment is random for all blocks
 
 Background:
+	Given TSDV is enabled
+	Given I login to Rave with user "defuser"
+	Given I perform cache flush
+
 	Given xml draft "US18812.xml" is Uploaded with Environment name "Dev"
 	Given Site "Site 1" with Site Group "Asia" exists
 	Given Site "Site 2" with Site Group "Europe" exists
@@ -508,4 +511,7 @@ Scenario: PB_US18812_01 Enroll 50 subjects in a study to verify that TSDV has ra
 	And I select link(partial) "Site 3"
 	And I inactivate the plan
 	And I switch to the second window
+
+	And TSDV is disabled
+	And I perform cache flush
 	

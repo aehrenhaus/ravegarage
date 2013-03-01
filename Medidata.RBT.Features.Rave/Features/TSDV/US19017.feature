@@ -1,6 +1,5 @@
 ﻿# As a user, I can choose between two randomization types and change randomization types for non-Production plans
 @EnableSeeding=true
-@ignore
 @FT_US19017
 Feature: US19017 As a user, I can choose between two randomization types and change randomization types for non-Production plans
 	When user selects Targeted SDV Configuration report

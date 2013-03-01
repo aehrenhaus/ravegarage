@@ -22,5 +22,7 @@ namespace Medidata.RBT.PageObjects.Rave
             cacheFlushPage.NavigateToSelf();
             context.CurrentPage = new LoginPage();
         }
+
+		protected override double PageNavigationTimeoutSeconds { get { return 300;/*5 mins*/ } }
     }
 }
