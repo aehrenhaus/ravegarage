@@ -20,19 +20,16 @@ if($args.Count -eq 1)
 rd "TestResults" -force -recurse 
 md "TestResults"
 
-
+if (Test-Path $OutputBuildDir\flags\$_.success)	{
+	Remove-Item $OutputBuildDir\flags\FT*.success
+}
+	
+if (Test-Path $OutputBuildDir\flags\$_.failure) {
+	Remove-Item $OutputBuildDir\flags\FT*.failure
+}
+	
 $categories | %{
   
-    if (Test-Path $OutputBuildDir\flags\$_.success)
-	{
-		Remove-Item $OutputBuildDir\flags\$_.success
-	}
-	
-	if (Test-Path $OutputBuildDir\flags\$_.failure)
-	{
-		Remove-Item $OutputBuildDir\flags\$_.failure
-	}
-	
     Write-Host "Running $_"
     Set-Alias mstest "C:\Program Files (x86)\Microsoft Visual Studio 10.0\Common7\IDE\mstest.exe"
 
