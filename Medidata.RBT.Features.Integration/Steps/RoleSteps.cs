@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Medidata.Core.Common.Utilities;
 using Medidata.Core.Objects;
 using Medidata.Core.Objects.Security;
 using Medidata.RBT.Objects.Integration.Configuration.Models;
@@ -25,6 +26,21 @@ namespace Medidata.RBT.Features.Integration.Steps
         public static void AnEdcRoleWithName____Exists(string name)
         {
             RoleHelper.AddRoleToDB(name);
+        }
+
+        [Then(@"the user should have an EDC Role with ViewAllSites permission")]
+        public void ThenTheUserShouldHaveAnEDCRoleWithViewAllSitesPermission()
+        {
+            var user = ScenarioContext.Current.Get<User>("user");
+            var role = Role.Fetch(user.EdcRole.ID);
+            Assert.AreEqual(role.PermissionsList[0], RolePermissionsEnum.ViewAllSites);
+        }
+
+
+        [Given(@"an EDC Role with Name ""(.*)"" and ViewAllSites permission exists in the Rave database")]
+        public static void AnEdcRoleWithName____AndViewAllSitesPermissionExists(string name)
+        {
+            RoleHelper.AddRoleToDB(name, true);
         }
 
         [Given(@"a SecurityGroup Role with Name ""(.*)"" exists in the Rave database")]

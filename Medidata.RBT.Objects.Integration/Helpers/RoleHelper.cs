@@ -1,5 +1,7 @@
 ﻿
 using System;
+using System.Collections;
+using Medidata.Core.Common.Utilities;
 using Medidata.Core.Objects;
 using Medidata.Core.Objects.Security;
 using TechTalk.SpecFlow;
@@ -10,7 +12,7 @@ namespace Medidata.RBT.Objects.Integration.Helpers
     {
         private const string locale = "eng";
 
-        public static void AddRoleToDB(string name)
+        public static void AddRoleToDB(string name, bool viewAllSites = false)
         {
             Role role;
             if (!Role.IsRoleNameUnique(name))
@@ -22,8 +24,15 @@ namespace Medidata.RBT.Objects.Integration.Helpers
                 role = new Role
                            {
                                RoleName = name,
-                               IsActive = true
+                               IsActive = true                              
                            };
+
+                if(viewAllSites)
+                {
+                    var user = ScenarioContext.Current.Get<User>("user");
+                    role.SetPermissions(new ArrayList(){ RolePermissionsEnum.ViewAllSites }, user.ID);
+                }
+                
                 role.Save();    
             }
             ScenarioContext.Current.Set(role, "role");

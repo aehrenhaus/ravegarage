@@ -39,7 +39,7 @@ namespace Medidata.RBT.Features.Integration.Steps
             Assert.AreEqual(studySiteId, studySite.ID);
         }
 
-        [Then(@"the studysite should have the StudySiteName ""(.*)""")]
+        [Then(@"the studysite should have the StudySiteName \(same as SiteName\) ""(.*)""")]
         public void ThenTheStudysiteShouldHaveTheStudySiteName____(string studySiteName)
         {
             var studySite = ScenarioContext.Current.Get<StudySite>("studySite");
@@ -85,6 +85,14 @@ namespace Medidata.RBT.Features.Integration.Steps
             var studySite = ScenarioContext.Current.Get<StudySite>("studySite");
 
             Assert.AreEqual(false, studySite.Active);
+        }
+
+        [Then(@"the studysite should be active")]
+        public void ThenTheStudysiteShouldBeActive()
+        {
+            var studySite = ScenarioContext.Current.Get<StudySite>("studySite");
+
+            Assert.AreEqual(true, studySite.Active);
         }
     }
 }

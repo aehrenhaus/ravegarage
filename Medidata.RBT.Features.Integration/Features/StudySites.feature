@@ -16,7 +16,7 @@ Scenario: When a StudySite POST message gets put onto the queue, the studysite i
 	And the site should have the SiteNumber "post001"
 	And the site should have a LastExternalUpdateDate "2012-10-12 12:00:00"
 	And the studysite should have ExternalID "33"
-	And the studysite should have the StudySiteName "TestSiteName"
+	And the studysite should have the StudySiteName (same as SiteName) "TestSiteName"
 	And the studysite should have the StudySiteNumber "5243534"
 	And the studysite should have the ExternalStudyId "6"
 	And the studysite should have a LastExternalUpdateDate "2012-10-12 12:00:00"
@@ -36,7 +36,7 @@ Scenario: When a StudySite PUT message gets put onto the queue, the studysite is
 	And the site should have the SiteNumber "put001updated"
 	And the site should have a LastExternalUpdateDate "2012-10-12 13:00:00"
 	And the studysite should have ExternalID "33"
-	And the studysite should have the StudySiteName "TestSiteNameUpdated"
+	And the studysite should have the StudySiteName (same as SiteName) "TestSiteNameUpdated"
 	And the studysite should have the StudySiteNumber "5243534updated"
 	And the studysite should have the ExternalStudyId "6"
 	And the studysite should have a LastExternalUpdateDate "2012-10-12 13:00:00"
@@ -85,3 +85,21 @@ Scenario:  When a Site is added back to a Study in iMedidata, the studysite in R
 	And the message is successfully processed
 	Then I should see the studysite in the Rave database
 	And the studysite should have the source iMedidata
+
+@PB2.5.9.37-01
+Scenario: If I have a linked site in iMedidata, and I delete a studysite in iMedidata that is linked to that site, when Rave receives the updated studysite, it will inactivate the studysite in Rave.
+	Given the study with name "Study A" and environment "Prod" with ExternalId "100" exists in the Rave database
+	And I send the following StudySite messages to SQS
+	| EventType | StudySiteId | StudySiteName     | StudySiteNumber | StudyId | SiteId | SiteName         | SiteNumber | Timestamp           |
+	| POST      | 33          | TestStudySiteName | 5243534         | 100     | 10     | Test Delete Site | delete002  | 2012-10-12 12:00:00 |
+	When the messages are successfully processed
+	Then I should see the site in the Rave database
+	And I should see the studysite in the Rave database
+	And the studysite should be active
+	When I send the following StudySite message to SQS
+	| EventType | StudySiteId | StudySiteName     | StudySiteNumber | StudyId | SiteId | SiteName         | SiteNumber | Timestamp           |
+	| DELETE    |             |                   |                 |         |        |                  | delete002  | 2012-10-12 13:00:00 |
+	And the messages are successfully processed
+	Then I should see the site in the Rave database
+	And I should see the studysite in the Rave database
+	And the studysite should be inactive

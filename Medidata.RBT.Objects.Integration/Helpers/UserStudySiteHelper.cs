@@ -25,16 +25,13 @@ namespace Medidata.RBT.Objects.Integration.Helpers
                 switch (config.EventType.ToLowerInvariant())
                 {
                     case "post":
-                        config.UUID = Guid.NewGuid();
                         config.SiteUUID = new Guid(ScenarioContext.Current.Get<Site>("site").Uuid);
                         config.StudyUUID = new Guid(ScenarioContext.Current.Get<Study>("study").Uuid);
                         config.UserUUID = new Guid(ScenarioContext.Current.Get<String>("externalUserUUID"));
 
-                        ScenarioContext.Current.Add("userStudySiteUuid", config.UUID);
                         message = Render.StringToString(UserStudySiteTemplates.USERSTUDYSITE_POST_TEMPLATE, new { config });
                         break;
                     case "delete":
-                        config.UUID = ScenarioContext.Current.Get<Guid>("userStudySiteUuid");
                         config.SiteUUID = new Guid(ScenarioContext.Current.Get<Site>("site").Uuid);
                         config.StudyUUID = new Guid(ScenarioContext.Current.Get<Study>("study").Uuid);
                         config.UserUUID = new Guid(ScenarioContext.Current.Get<String>("externalUserUUID"));
@@ -45,6 +42,13 @@ namespace Medidata.RBT.Objects.Integration.Helpers
                 if (!string.IsNullOrWhiteSpace(message))
                     IntegrationTestContext.SqsWrapper.SendMessage(IntegrationTestContext.SqsQueueUrl, message);
             }
+        }
+
+        public static void CreateUserStudySiteAssignment()
+        {
+            var user = ScenarioContext.Current.Get<User>("user");
+            var studySite = ScenarioContext.Current.Get<StudySite>("studySite");
+            user.AddUserToStudySite(studySite, null, false, DateTime.Now);
         }
     }
 }
