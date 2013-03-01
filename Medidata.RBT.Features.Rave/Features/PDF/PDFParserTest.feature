@@ -1,7 +1,7 @@
 ﻿Feature: PDFParserTest
 	This is a feature file to demonstrate what we can do with the PDF parser
 
-@mytag
+@ignore
 Scenario: Testing out the PDF Parsers
 	Given I load PDF at location "..\..\..\Mediflex Prod\131231-Allegheny University Hospitals\1122 PAA.pdf"
 	Then I verify PDF properties
@@ -18,8 +18,7 @@ Scenario: Testing out the PDF Parsers
 	| Bookmark Text |
 	| DATA          |
 	| REVIEW        |
-	Then I verify link "SUBJINI" on page "77" goes to page "2"
-	#Then I verify link "SUBJINI" on page "Subject ID" goes to page "SUBJINI"
+	Then I verify link "SUBJINI" on page "SUBJINI" goes to page "Subject ID"
 	Then I verify PDF properties on page "2"
 	| Font      | Font Size | Top Margin | Bottom Margin | Left Margin | Right Margin | Page Number |
 	| Helvetica | 8         | 1          | 1             | 1.5         | 1.5          | 1 of 164    |

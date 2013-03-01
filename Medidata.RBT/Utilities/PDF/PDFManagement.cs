@@ -11,6 +11,7 @@ using O2S.Components.PDF4NET.Text;
 using O2S.Components.PDF4NET.Annotations;
 using O2S.Components.PDF4NET.Actions;
 using Medidata.RBT.SharedObjects;
+using O2S.Components.PDF4NET.PDFFile;
 
 namespace Medidata.RBT.Utilities
 {
@@ -63,10 +64,11 @@ namespace Medidata.RBT.Utilities
             return true;
         }
 
-        public static bool VerifyLinkGoesToPage(WebTestContext webTestContext, string linkText, int linkSourcePageNumber, int linkTargetPageNumber)
+        public static bool VerifyLinkGoesToPage(WebTestContext webTestContext, string linkText, string linkSourcePage, string linkTargetPage)
         {
             RBT.PDF pdf = webTestContext.LastLoadedPDF;
-            RBTPage sourcePage = pdf.Pages[linkSourcePageNumber - 1];
+            PDFBookmark pdfSourceBookmark = pdf.FirstMatchingBookmarkNodeInBookmarkCollection(linkSourcePage);
+            RBTPage sourcePage = new RBTPage(((PDFImportedPage)((PDFGoToAction)pdfSourceBookmark.Action).Destination.Page));
 
             //Find text matching the passed in text on page source bookmark goes to
             PDFSearchTextResultCollection linksWithTextThatMatchPassedInLinkTextOnSourcePage = sourcePage.BasePage.SearchText(linkText);
@@ -75,7 +77,8 @@ namespace Medidata.RBT.Utilities
             List<PDFLinkAnnotation> linksOnSourcePage = sourcePage.BasePage.Annotations.ToList().ConvertAll(x => (PDFLinkAnnotation)x);
 
             //See if any of those links go to the linkTargetPage
-            RBTPage targetPage = pdf.Pages[linkTargetPageNumber - 1];
+            PDFBookmark pdfTargetBookmark = pdf.FirstMatchingBookmarkNodeInBookmarkCollection(linkTargetPage);
+            RBTPage targetPage = new RBTPage(((PDFImportedPage)((PDFGoToAction)pdfTargetBookmark.Action).Destination.Page));
 
             List<PDFLinkAnnotation> linksWhichGoToTheTargetPage = new List<PDFLinkAnnotation>();
             foreach (PDFLinkAnnotation link in linksOnSourcePage)

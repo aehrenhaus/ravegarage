@@ -193,9 +193,9 @@ namespace Medidata.RBT.Features.Rave
         /// <param name="linkSourcePageNumber">The page number of the source page</param>
         /// <param name="linkDestinationPageNumber">The page number of the target page</param>
         [StepDefinition(@"I verify link ""(.*)"" on page ""(.*)"" goes to page ""(.*)""")]
-        public void ThenIVerifyLinkOnPageGoesToPage(string linkText, int linkSourcePageNumber, int linkDestinationPageNumber)
+        public void ThenIVerifyLinkOnPageGoesToPage(string linkText, string linkSourcePage, string linkDestinationPage)
         {
-            Assert.IsTrue(PDFManagement.VerifyLinkGoesToPage(WebTestContext, linkText, linkSourcePageNumber, linkDestinationPageNumber));
+            Assert.IsTrue(PDFManagement.VerifyLinkGoesToPage(WebTestContext, linkText, linkSourcePage, linkDestinationPage));
         }
 
         /// <summary>
