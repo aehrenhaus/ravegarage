@@ -4,6 +4,7 @@ $scriptpath
 Set-Location $scriptpath
 $resultPath ="./TestResults/"
 
+$OutputBuildDir = "D:\CI_Specflow_SQA\SpecflowSeeding_SQA_Testing\Output"
 $testDll = "Medidata.RBT.Features.Rave\bin\Debug\Medidata.RBT.Features.Rave.dll"
 
 .\GetTestList.exe "$testDll" > testList.txt
@@ -13,16 +14,8 @@ $categories = cat testList.txt
 
 if($args.Count -eq 1)
 {
-    $filter = $args[0];
+    $OutputBuildDir = $args[0];
 }
-
-
-if($args.Count -eq 1)
-{
-    $filter = $filter.Split(',');
-    $categories = $categories | ?{ $filter.Contains($_) }
-}
-
 
 rd "TestResults" -force -recurse 
 md "TestResults"
@@ -30,11 +23,28 @@ md "TestResults"
 
 $categories | %{
   
+    if (Test-Path $OutputBuildDir\flags\$_.success)
+	{
+		Remove-Item $OutputBuildDir\flags\$_.success
+	}
+	
+	if (Test-Path $OutputBuildDir\flags\$_.failure)
+	{
+		Remove-Item $OutputBuildDir\flags\$_.failure
+	}
+	
     Write-Host "Running $_"
     Set-Alias mstest "C:\Program Files (x86)\Microsoft Visual Studio 10.0\Common7\IDE\mstest.exe"
 
     mstest /testcontainer:"$testDll" /resultsfile:"TestResults\$_.trx" /category:$_
-
+    
+	if ($?) {
+		Write-Host "FF passed"
+		New-Item $OutputBuildDir\flags\$_.success -type file -force
+	} else {
+		Write-Host "FF failed"
+		New-Item $OutputBuildDir\flags\$_.failure -type file -force
+	}
     $resultPath ="./TestResults/"
     $lastTrx = $resultPath + (Get-ChildItem -path  $resultPath -filter *.trx |sort LastWriteTime | select -last 1 ).name
     $lastTrxFolder = $resultPath + (Get-ChildItem -path  $resultPath |sort LastWriteTime |?{$_.PSIsContainer }| select -last 1 ).name
