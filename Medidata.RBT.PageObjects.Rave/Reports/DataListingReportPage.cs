@@ -28,7 +28,6 @@ namespace Medidata.RBT.PageObjects.Rave
 			return base.GetElementByName(identifier,areaIdentifier,listItem);
 		}
 
-
 		public override string URL
 		{
 			get

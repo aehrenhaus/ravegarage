@@ -15,6 +15,11 @@ namespace Medidata.RBT.PageObjects.Rave
 	{
         private static readonly string[] s_sysUsers = new[] { "System", "LSystem" };
 
+        public bool ExactAuditExist(AuditModel audit, int? position = null)
+        {
+            return AuditExist(audit.Audit, audit.User, audit.Time, position);
+        }
+
 		//TODO: support wild char or regex
 		public bool AuditExist(AuditModel audit, int? position = null)
 		{
