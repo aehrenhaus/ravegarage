@@ -10,7 +10,7 @@
                                                         "\"full_description\": \"{{Description}}\",\r\n" +
                                                         "\"uuid\": \"{{UUID}}\",\r\n" +
                                                         "\"id\": \"{{ID}}\",\r\n" +
-                                                        "\"enrollment_target\": \"\",\r\n" +
+                                                        "\"enrollment_target\": \"{{EnrollmentTarget}}\",\r\n" +
                                                         "\"parent\": {\r\n" +
                                                             "\"uuid\": \"6bf09b9e-548e-11df-1234-002608fffe99\"\r\n" +
                                                         "}\r\n" +
@@ -43,7 +43,7 @@
                                                         "},\r\n" +
                                                         "\"name\": \"{{Name}}\",\r\n" +
                                                         "\"updated_at\": \"2012-08-01T09:40:06-04:00\",\r\n" +
-                                                        "\"enrollment_target\": \"\",\r\n" +
+                                                        "\"enrollment_target\": \"{{EnrollmentTarget}}\",\r\n" +
                                                         "\"full_description\": \"{{Description}}\",\r\n" +
                                                         "\"is_production\": {{IsProd}}\r\n" +
                                                     "}\r\n" +

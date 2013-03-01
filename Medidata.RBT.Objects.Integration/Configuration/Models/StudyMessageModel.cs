@@ -12,5 +12,6 @@ namespace Medidata.RBT.Objects.Integration.Configuration.Models
         public Guid UUID { get; set; }
         public DateTime Timestamp { get; set; }
         public Guid MessageId { get; set; }
+        public int EnrollmentTarget { get; set; }
     }
 }
