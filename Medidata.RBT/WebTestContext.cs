@@ -174,15 +174,14 @@ namespace Medidata.RBT
 				else
 				{
 					//Wait untill the final downloaded file is fully converted from .part file by firefox
-					while (File.Exists(partial))
+					Func<bool> check = () => !File.Exists(partial);
+					var timeout = RBTConfiguration.Default.DownloadTimeout * 1000;	//Timeput in milliseconds
+					if (this.Wait(check, timeout, 100))
 					{
-						Thread.Sleep(500);
+						_lastDownloadedFile = new FileInfo(e.FullPath);
+						(sender as FileSystemWatcher).Dispose();
 					}
 				}
-				
-
-				_lastDownloadedFile = new FileInfo(e.FullPath);
-				(sender as FileSystemWatcher).Dispose();
 			}
 
 			private FileInfo WaitForDownloadFinish()
@@ -190,14 +189,30 @@ namespace Medidata.RBT
 				if (_watchingForDownload == false)
 					return null;
 
-				while (_lastDownloadedFile == null)
-				{
-					Thread.Sleep(500);
-				}
+				var timeout = RBTConfiguration.Default.DownloadTimeout * 1000;	//Timeput in milliseconds
+				if (!this.Wait(() => _lastDownloadedFile != null, timeout, 100))
+					throw new TimeoutException("File download is taking too long");
 
 				_watchingForDownload = false;
 				context.LastDownloadedFile = _lastDownloadedFile;
 				return _lastDownloadedFile;
+			}
+
+			private bool Wait(Func<bool> action, int timeout, int tries)
+			{
+				timeout = timeout < tries ? tries : timeout;
+				var interval = (int)Math.Round((double)timeout / tries, 0);
+
+				var counter = 0;
+				var result = action();
+				while (!result && counter <= timeout)
+				{
+					result = action();
+					Thread.Sleep(interval);
+					counter += interval;
+				}
+
+				return result;
 			}
 		
 		}
