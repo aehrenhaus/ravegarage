@@ -30,9 +30,7 @@ namespace Medidata.RBT.Features.Integration.Steps
         [Then(@"the study with ExternalId ""(.*)"" should not be in the Rave database")]
         public void ThenTheStudyWithExternalId____ShouldNotBeInTheRaveDatabase(int externalId)
         {
-            var study = Study.FindByExternalID(externalId, 1, SystemInteraction.Use());
-
-            Assert.IsNull(study);
+            Assert.IsNull(Study.FindByExternalID(externalId, 1, SystemInteraction.Use()));
         }
 
         [Then(@"I should see a study named ""(.*)"" with Project Name ""(.*)"" environment ""(.*)"" and ExternalId ""(.*)"" in the Rave database")]
@@ -46,9 +44,8 @@ namespace Medidata.RBT.Features.Integration.Steps
             Assert.AreEqual(study.Environment, environment);
         }
 
-
         [Then(@"the study should have Name ""(.*)""")]
-       public void ThenTheStudyShouldHaveName____(string name)
+        public void ThenTheStudyShouldHaveName____(string name)
         {
             var study = ScenarioContext.Current.Get<Study>("study");
 

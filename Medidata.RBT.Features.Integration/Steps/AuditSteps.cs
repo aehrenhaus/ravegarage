@@ -18,7 +18,7 @@ namespace Medidata.RBT.Features.Integration.Steps
         {
             var site = ScenarioContext.Current.Get<Site>("site");
 
-            Audits audits = Audits.Load(site);
+            var audits = Audits.Load(site);
             Assert.IsTrue(audits.Count > 0);
 
             ScenarioContext.Current.Set(audits, "audits");
@@ -29,7 +29,7 @@ namespace Medidata.RBT.Features.Integration.Steps
         {
             var study = ScenarioContext.Current.Get<Study>("study");
 
-            Audits audits = Audits.Load(study);
+            var audits = Audits.Load(study);
             Assert.IsTrue(audits.Count > 0);
 
             ScenarioContext.Current.Set(audits, "audits");
@@ -50,7 +50,7 @@ namespace Medidata.RBT.Features.Integration.Steps
         {
             var audits = ScenarioContext.Current.Get<Audits>("audits");
             bool auditMatch = false;
-
+            
             for (int i = 0; i < audits.Count; i++)
             {
                 if (audits[i].SubCategory.ToString() != auditActionType) continue;

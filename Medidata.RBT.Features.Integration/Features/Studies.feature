@@ -31,23 +31,16 @@ Scenario: When a Study PUT message gets put onto the queue, the study is updated
 	And the study should have ExternalID "1253"
 	And the study should have EnrollmentTarget "2"
 
-@PB2.5.8.7-01
-Scenario: An iMedidata user can create a study in Rave.  This study creation is messaged to Rave which creates a matching, linked study if the project does not already exist. THIS IS THE FUNCTIONAL EQUIVALENT OF THE POST SCENARIO!
-
-@PB2.5.8.9-01
-Scenario: An iMedidata user can update a study in Rave. The following attributes are updated. EQUIVALENT OF THE PUT SCENARIO! UPDATED WITH
-ENROLLMENT TARGET CHECK TO MATCH ORIGINAL SCENARIO!
-
 @PB2.5.8.20-01
 Scenario: If I have a project + environment in Rave that is not linked to a study in iMedidata . When the study is created in iMedidata, Rave should link that Project and Environment.
 	
-	Given the study with name "TestSqsStudy31" and environment "TestEnvironment" with ExternalId "-117" exists in the Rave database
+	Given the study with name "TestSqsStudy31" and environment "TestEnvironment" with ExternalId "0" exists in the Rave database
 	And I send the following Study messages to SQS
 	| EventType | Name                             | IsProd | Description     | ID   | EnrollmentTarget | Timestamp           |
 	| POST      | TestSqsStudy31 (TestEnvironment) | false  | TestDescription | 1254 | 3                | 2012-10-12 12:00:00 |
 	When the message is successfully processed
 	Then I should see the study in the Rave database
-	And the study with ExternalId "-117" should not be in the Rave database
+	And the study with ExternalId "0" should not be in the Rave database
 	And the study should have Name "TestSqsStudy31"
 	And the study should have Environment "TestEnvironment"
 	And the study should have Description "TestDescription"
@@ -56,7 +49,9 @@ Scenario: If I have a project + environment in Rave that is not linked to a stud
 	And the study should have EnrollmentTarget "3"
 
 @PB2.5.8.16-01
-Scenario: If I have an unlinked study in iMedidata, when the study is created in iMedidata, Rave should do a UUID match, and failing that a name match against the iMedidata study and, on a match against only the project name, link the found project and create the new environment that maps to that study.
+Scenario: If I have an unlinked study in iMedidata, when the study is created in iMedidata, Rave should do a UUID match, 
+			and failing that a name match against the iMedidata study and, on a match against only the project name, 
+			link the found project and create the new environment that maps to that study.
 
 	Given the study with name "TestSqsStudy32" and environment "TestEnvironment1" with ExternalId "117" exists in the Rave database
 	And I send the following Study messages to SQS
