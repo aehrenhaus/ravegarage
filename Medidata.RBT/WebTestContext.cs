@@ -159,11 +159,28 @@ namespace Medidata.RBT
 
 			private void watcher_Created(object sender, FileSystemEventArgs e)
 			{
+				const string partExt = ".part";
+
+				var ext = Path.GetExtension(e.FullPath);
+				var partial = ext.Equals(partExt)
+					? e.FullPath
+					: e.FullPath + partExt;
+
 				//ignore this temp file created by firefox
-				if (Path.GetExtension(e.FullPath) == ".part")
+				if (ext == partExt)
 				{
 					return;
 				}
+				else
+				{
+					//Wait untill the final downloaded file is fully converted from .part file by firefox
+					while (File.Exists(partial))
+					{
+						Thread.Sleep(500);
+					}
+				}
+				
+
 				_lastDownloadedFile = new FileInfo(e.FullPath);
 				(sender as FileSystemWatcher).Dispose();
 			}
