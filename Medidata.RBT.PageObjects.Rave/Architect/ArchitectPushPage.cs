@@ -42,10 +42,10 @@ namespace Medidata.RBT.PageObjects.Rave
 
         public IPage PushToSelectedSite(string env, string site)
         {
-            Browser.DropdownById("StudyDDL").SelectByText(env);
-            Browser.WaitForDocumentLoad();
             ChooseFromRadiobuttons(null, "_ctl0_Content_SelectSitesRB");
-            IWebElement listbox = Browser.TryFindElementById("_ctl0_Content_DestinationLB");
+            Browser.WaitForDocumentLoad();
+            Browser.DropdownById("StudyDDL").SelectByText(env);
+            IWebElement listbox = Browser.TryFindElementBy(By.XPath(".//select[@id ='_ctl0_Content_DestinationLB' and not(@disabled)]"));
             listbox.FindElement(By.XPath("//option[contains(text(),'" + site + "')]")).Click();
             this.ClickButton("PushBTN");
             Browser.TryFindElementBy(b =>
