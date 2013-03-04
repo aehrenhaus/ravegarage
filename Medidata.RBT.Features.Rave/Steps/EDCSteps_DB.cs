@@ -128,6 +128,22 @@ namespace Medidata.RBT.Features.Rave
             Assert.IsTrue((int)isPropagated == 1, "Propagation did not occured");
         }
 
+        /// <summary>
+        /// Clinical Views exist for a particular project
+        /// </summary>
+        /// <param name="project"></param>
+        public static bool ClinicalViewsExistForProject(string project)
+        {
+            var projectUniqueName = SeedingContext.GetExistingFeatureObjectOrMakeNew(project, () => new Project(project)).UniqueName;
+            var sql = ClinicalViewsScripts.GenerateSQLForNumberOfCVProjects(projectUniqueName);
+            System.Data.DataTable dataTable;
+
+            dataTable = DbHelper.ExecuteDataSet(sql).Tables[0]; // run backend query to check whether clinical views project exists
+            if ((int)dataTable.Rows[0][0] > 0)
+                return true;
+            return false;
+        }
+
 		private string GenerateSQLQueryForColumnName(string column, int datapageID)
 		{
 			if (column.Equals("AltCodedValue"))
@@ -212,7 +228,18 @@ namespace Medidata.RBT.Features.Rave
 			{
 				return "select count(labUpdateQueueID) from labUpdateQueue";
             }
-            
+
+
+            /// <summary>
+            /// Generate SQL for number of CV Projects for a project name
+            /// </summary>
+            /// <param name="projectName">The name of the project for which Clinical Views exist</param>
+            /// <returns>The number of CV Projects matching project name</returns>
+            public static string GenerateSQLForNumberOfCVProjects(string projectName)
+            {
+                return CountOfCVProjects(projectName);
+            }
+
             /// <summary>
             /// Generate SQL for number of records that need CV refreshing
             /// </summary>
@@ -243,6 +270,16 @@ namespace Medidata.RBT.Features.Rave
 		                                        and dbo.fnlocaldefault(projectName) = '{0}'
                                     ", project);
 			}
+
+            private static string CountOfCVProjects(string project)
+            {
+                return String.Format(@"     select count(p.projectID) 
+                                            from clinicalviewProjects cvp
+	                                            join projects p
+		                                            on p.projectID = cvp.projectID
+                                            where dbo.fnlocaldefault(projectName) = '{0}'
+                                    ", project);
+            }
 		}
 	}
 }

@@ -220,10 +220,9 @@ namespace Medidata.RBT.Features.Rave.Steps
         public void ClinicalViewsExistForProject____(string projectName)
         {
             Project project = SeedingContext.GetExistingFeatureObjectOrMakeNew(projectName, () => new Project(projectName));
-            WebTestContext.CurrentPage = new ConfigurationClinicalViewsPage().NavigateToSelf();
-            bool hasClinicalViews = CurrentPage.Browser.FindElementByTagName("body").Text.Contains(project.UniqueName);
-            if (!hasClinicalViews)
+            if (!EDCSteps.ClinicalViewsExistForProject(project.UniqueName))
             {
+                WebTestContext.CurrentPage = new ConfigurationClinicalViewsPage().NavigateToSelf();
                 WebTestContext.CurrentPage.As<ConfigurationClinicalViewsPage>().BuildClinicalViews(project.UniqueName);
             }
         }
