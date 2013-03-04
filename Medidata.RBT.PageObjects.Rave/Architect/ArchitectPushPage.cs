@@ -8,6 +8,7 @@ using OpenQA.Selenium.Remote;
 using Medidata.RBT.SeleniumExtension;
 using TechTalk.SpecFlow;
 using System.Threading;
+using OpenQA.Selenium.Support.UI;
 namespace Medidata.RBT.PageObjects.Rave
 {
 	public class ArchitectPushPage :  RavePageBase
@@ -46,7 +47,8 @@ namespace Medidata.RBT.PageObjects.Rave
             Browser.WaitForDocumentLoad();
             Browser.DropdownById("StudyDDL").SelectByText(env);
             IWebElement listbox = Browser.TryFindElementBy(By.XPath(".//select[@id ='_ctl0_Content_DestinationLB' and not(@disabled)]"));
-            listbox.FindElement(By.XPath("//option[contains(text(),'" + site + "')]")).Click();
+            SelectElement selectElement = new SelectElement(listbox);
+            selectElement.SelectByText(site);
             this.ClickButton("PushBTN");
             Browser.TryFindElementBy(b =>
             {
