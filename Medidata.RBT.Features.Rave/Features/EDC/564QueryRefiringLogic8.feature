@@ -1,5 +1,4 @@
 @FT_564QueryRefiringLogic8
-@ignore
 Feature: US12940_564QueryRefiringLogic8 Edit Checks refire with require response and require manual close.
 	As a Rave user
 	I want to change data
@@ -312,11 +311,10 @@ Scenario: PB_8.2.1 As an EDC user, Task Summary Verification for query re-firing
 	    | Original Axis Number | 10          |
 	    | Current Axis Number  | 18          |
 	And I save the CRF page
-	#And I select a Subject "sub{Var(num3)}"
-		
+	And I select link "sub{Var(num4)}" in "Header"	
 	When I expand "Open Queries" in Task Summary
-	Then I should see "Screening-Concomitant Medications" in "Open Queries"
-	And I select link "Screening-Concomitant Medications" in "Open Queries"
+	Then I verify text "Screening-Concomitant Medications" exists
+	And I select link "Screening-Concomitant Medications"
 	When I open log line 1
 	Then I verify Query is displayed
 		| Field               | Query Message                                                                                                 | Answered | Closed |
@@ -324,11 +322,11 @@ Scenario: PB_8.2.1 As an EDC user, Task Summary Verification for query re-firing
 		| Current Axis Number | Informed Consent 'Current Distribution Number' is not equal to Concomitant Medications 'Current Axis Number'. | false    | false  |
 	And I take a screenshot
 	And I navigate to "Home"
-	And I select Study "Edit Check Study 3" and Site "Edit Check Site 8"
+	And I select Study "Edit Check Study 3" and Site "Edit Check Site 2"
     And I select a Subject "sub{Var(num4)}"
 	When I expand "Cancel Queries" in Task Summary
-	Then I should see "Screening-Concomitant Medications" in "Cancel Queries"
-	And I select link "Screening-Concomitant Medications" in "Cancel Queries"
+	Then I verify text "Screening-Concomitant Medications" exists
+	And I select link "Screening-Concomitant Medications"
 	When I open log line 1
 	Then I verify Query is displayed
 		| Field               | Query Message                                                                                                 | Answered | Closed |
@@ -377,8 +375,8 @@ Scenario: PB_8.3.1 As an EDC user, Query Management Verification for query re-fi
 	And I navigate to "Query Management"
 	And I choose "Edit Check Study 3 (Prod)" from "Study"
 	And I choose "World" from "Site Group"
-	And I choose "Edit Check Site 8" from "Site"
-	And I select a Subject "sub{Var(num5)}" 
+	And I choose "Edit Check Site 2" from "Site"
+	And I choose "sub{Var(num5)}" from "Subject"
 	And I click button "Advanced Search"
 	And I select link "Concomitant Medications" in "Search Result"
 	When I open log line 1
