@@ -60,13 +60,12 @@ Scenario: If I have an unlinked study in iMedidata, when the study is created in
 	When the message is successfully processed
 	Then I should see the study in the Rave database
 	And the study should have Name "TestSqsStudy32"
-	And the study should have Project Name "TestSqsStudy32"
 	And the study should have Environment "TestEnvironment2"
 	And the study should have Description "TestDescription"
 	And the study should have LastExternalUpdateDate "2012-10-12 12:00:00"
 	And the study should have ExternalID "1255"
 	And the study should have EnrollmentTarget "4"
-	And I should see a study named "TestSqsStudy32" with Project Name "TestSqsStudy32" environment "TestEnvironment1" and ExternalId "117" in the Rave database
+	And I should see a study named "TestSqsStudy32" with environment "TestEnvironment1" and ExternalId "117" in the Rave database
 
 @PB2.5.8.28-04B
 Scenario: Operations on studies, sites, studysites, users, study assignments, studysite assignments must be audited in the 'name' 

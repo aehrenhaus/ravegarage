@@ -33,14 +33,13 @@ namespace Medidata.RBT.Features.Integration.Steps
             Assert.IsNull(Study.FindByExternalID(externalId, 1, SystemInteraction.Use()));
         }
 
-        [Then(@"I should see a study named ""(.*)"" with Project Name ""(.*)"" environment ""(.*)"" and ExternalId ""(.*)"" in the Rave database")]
-        public void ThenIShouldSeeAStudyNamed____WithProjectName____Environment____AndExternalId____InTheRaveDatabase(string name, string projectName, string environment, int externalId)
+        [Then(@"I should see a study named ""(.*)"" with environment ""(.*)"" and ExternalId ""(.*)"" in the Rave database")]
+        public void ThenIShouldSeeAStudyNamed____WithProjectName____Environment____AndExternalId____InTheRaveDatabase(string name, string environment, int externalId)
         {
             var study = Study.FindByExternalID(externalId, 1, SystemInteraction.Use());
 
             Assert.IsNotNull(study);
             Assert.AreEqual(study.Name, name);
-            Assert.AreEqual(study.Project.Name, projectName);
             Assert.AreEqual(study.Environment, environment);
         }
 
