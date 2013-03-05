@@ -221,6 +221,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>US19302_DT14205.feature</DependentUpon>
     </Compile>
+    <Compile Include="Features\Labs\MCC-50622.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MCC-50622.feature</DependentUpon>
+    </Compile>
     <Compile Include="Features\Labs\US18087_DT14073.feature.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -612,6 +617,10 @@
     <None Include="Features\EDC\US19302_DT14205.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>US19302_DT14205.feature.cs</LastGenOutput>
+    </None>
+    <None Include="Features\Labs\MCC-50622.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>MCC-50622.feature.cs</LastGenOutput>
     </None>
     <None Include="Features\Labs\US18087_DT14073.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
