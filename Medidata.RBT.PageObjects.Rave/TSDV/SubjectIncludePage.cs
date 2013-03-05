@@ -33,7 +33,7 @@ namespace Medidata.RBT.PageObjects.Rave
 				int countToCheckThisTime = Math.Min(checks.Count - 1, num - selectedCount);
 				for(int i =1;i<=countToCheckThisTime;i++)
 					checks[i].Check();
-				this.ClickSpanLink("Include Subjects");
+				this.ClickLink("Include Subjects");
 				Browser.GetAlertWindow().Accept();
 				selectedCount += countToCheckThisTime;
 
@@ -47,7 +47,7 @@ namespace Medidata.RBT.PageObjects.Rave
 
 		public ICanPaginate GetPaginationControl(string areaIdentifier)
 		{
-			var pageTable = TestContext.Browser.TryFindElementById("_ctl0_Content_TblPage").Children()[1];
+			var pageTable = Context.Browser.TryFindElementById("_ctl0_Content_TblPage").Children()[1];
 			var pager = new RavePaginationControl_CurrentPageNotLink(this, pageTable);
 			return pager;
 		}

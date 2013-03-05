@@ -26,7 +26,7 @@ namespace Medidata.RBT.PageObjects.Rave
             if (name.Contains(environment))
             {
                 newName = name.Replace(environment, "");
-                Project projectObject = TestContext.GetExistingFeatureObjectOrMakeNew(newName, () => new Project(newName));
+                Project projectObject = SeedingContext.GetExistingFeatureObjectOrMakeNew(newName, () => new Project(newName));
                 return projectObject.UniqueName + environment;
             }
             return name;
@@ -67,7 +67,7 @@ namespace Medidata.RBT.PageObjects.Rave
                 throw new Exception("Can't find button:" + identifier);
             element.Click();
 
-            return GetPageByCurrentUrlIfNoAlert();
+            return WaitForPageLoads();
         }
 
 		public override IWebElement GetElementByName(string identifier, string areaIdentifier = null, string listItem = null)

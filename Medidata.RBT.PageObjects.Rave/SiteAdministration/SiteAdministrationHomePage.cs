@@ -27,7 +27,7 @@ namespace Medidata.RBT.PageObjects.Rave.SiteAdministration
         {
             Browser.TryFindElementById("_ctl0_Content_SiteNameBox").EnhanceAs<Textbox>().SetText(siteName);
             Browser.TryFindElementById("_ctl0_Content_FilterButton").Click();
-            TestContext.CurrentPage = new SiteAdministrationHomePage();
+            Context.CurrentPage = new SiteAdministrationHomePage();
         }
 
         /// <summary>
@@ -52,7 +52,7 @@ namespace Medidata.RBT.PageObjects.Rave.SiteAdministration
 
             siteLink.Click();
             var page = new SiteAdministrationDetailsPage();
-			TestContext.CurrentPage = page;
+			Context.CurrentPage = page;
 			return page;
         }
 
@@ -66,7 +66,7 @@ namespace Medidata.RBT.PageObjects.Rave.SiteAdministration
 		}
         public bool GoNextPage(string areaIdentifier)
         {
-            var pageTable = TestContext.Browser.TryFindElementById("_ctl0_Content_DisplayGrid").TryFindElementBy(By.XPath("./tbody/tr[last()]"));
+            var pageTable = Context.Browser.TryFindElementById("_ctl0_Content_DisplayGrid").TryFindElementBy(By.XPath("./tbody/tr[last()]"));
 
             var pageLinks = pageTable.FindElements(By.XPath(".//a"));
 

@@ -21,6 +21,8 @@ namespace Medidata.RBT.SeleniumExtension
 
 		public static T EnhanceAs<T>(this IWebElement ele) where T : EnhancedElement, new() 
 		{
+			if (ele == null)
+				throw new Exception("Element not found:" + typeof(T).Name);
 			if (ele is T)
 				return ele as T;
 

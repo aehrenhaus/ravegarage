@@ -4,9 +4,13 @@ using System.IO;
 
 namespace Medidata.RBT.Common.Steps
 {
+    /// <summary>
+    /// Steps that require direct contact with the DB
+    /// </summary>
 	[Binding]
 	public class DatabaseSteps : BrowserStepsBase
 	{
+		private const string LastSqlResultTable = "LastSqlResultTable";
 
 		//[StepDefinition(@"I restore to snapshot ""([^""]*)""")]
 		//public void IRestoreToSnapshot____(string snapshotName)
@@ -22,9 +26,9 @@ namespace Medidata.RBT.Common.Steps
 		//}
 
 		/// <summary>
-		/// test
+		/// Run a sql script by name
 		/// </summary>
-		/// <param name="scriptName"></param>
+		/// <param name="scriptName">The name of the sql script to run</param>
 		[StepDefinition(@"I run SQL Script ""([^""]*)""")]
 		public void IRunSQLScript____(string scriptName)
 		{
@@ -32,40 +36,37 @@ namespace Medidata.RBT.Common.Steps
 			var dataTable = DbHelper.ExecuteDataSet(sql).Tables[0];
 
 			SaveDataTable(dataTable);
-			Storage.SetScenarioLevelValue(LastSqlResultTable, dataTable);
+		
+			SpecflowContext.Storage[LastSqlResultTable] = dataTable;
 		}
 
 
-
+        /// <summary>
+        /// Verify the result of a sql command
+        /// </summary>
+        /// <param name="table">The result you should see</param>
 		[StepDefinition(@"I should see SQL result")]
 		public void IShouldSeeResult(Table table)
 		{
-			var dataTable = Storage.GetScenarioLevelValue<System.Data.DataTable>(LastSqlResultTable);
+			var dataTable = SpecflowContext.Storage[LastSqlResultTable] as System.Data.DataTable;
 			AssertAreSameTable(dataTable, table);
 
 		}
 
+        /// <summary>
+        /// Verify the result of a sql command that you should not see
+        /// </summary>
+        /// <param name="table">The result you should not see</param>
 		[StepDefinition(@"I should NOT see SQL result")]
 		public void IShouldNOTSeeResult(Table table)
 		{
-			var dataTable = Storage.GetScenarioLevelValue<System.Data.DataTable>(LastSqlResultTable);
+			var dataTable = SpecflowContext.Storage[LastSqlResultTable] as System.Data.DataTable;
 			AssertAreNOTSameTable(dataTable, table);
 		}
 
-        [StepDefinition(@"I verify the log message for query not opening event for Project ""([^""]*)"" and Site ""([^""]*)""")]
-        public void IVerifyTheLogMessagesForQueryNotOpeningEventsForProjectEditCheckStudy3AndSiteEditCheckSite3(string projectName, string siteName)
-        {
-            var sql = "spVerifyQueryLog";
-			var dataTable = DbHelper.ExecuteDataSet(sql, new object[] { projectName, siteName }).Tables[0];
-
-            SaveDataTable(dataTable);
-            Storage.SetScenarioLevelValue(LastSqlResultTable, dataTable);
-        }
-
-
 		#region Private
 
-		private const string LastSqlResultTable = "LastSqlResultTable";
+		
 
 		private void AssertAreSameTable(System.Data.DataTable dataTable, Table table)
 		{
@@ -104,7 +105,7 @@ namespace Medidata.RBT.Common.Steps
 
 		private void SaveDataTable(System.Data.DataTable dataTable)
 		{
-			string resultPath = TestContext.GetTestResultPath();
+			string resultPath = RBTConfiguration.Default.TestResultPath;
 			Directory.CreateDirectory(resultPath);
 			File.WriteAllText(Path.Combine(resultPath, "a.txt"), DateTime.Now.ToString());
 		}

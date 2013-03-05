@@ -59,9 +59,8 @@
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
-    <Reference Include="TechTalk.SpecFlow, Version=1.8.1.0, Culture=neutral, PublicKeyToken=0778194805d6db41, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\SpecFlow.1.9.0\lib\net35\TechTalk.SpecFlow.dll</HintPath>
+    <Reference Include="TechTalk.SpecFlow">
+      <HintPath>..\ExternalDlls\SpecflowModified\TechTalk.SpecFlow.dll</HintPath>
     </Reference>
     <Reference Include="ThoughtWorks.Selenium.Core">
       <HintPath>..\ExternalDlls\ThoughtWorks.Selenium.Core.dll</HintPath>
@@ -84,12 +83,17 @@
     <Compile Include="Helpers\FilteredConsoleWriter.cs" />
     <Compile Include="Helpers\MultipleStreamWriter.cs" />
     <Compile Include="PageObjectInterfaces\AbstractPaginationControl.cs" />
-    <Compile Include="PageObjectInterfaces\IVerifyControlDisabled.cs" />
+    <Compile Include="PageObjectInterfaces\IExpand.cs" />
+    <Compile Include="PageObjectInterfaces\IEnterValues.cs" />
+    <Compile Include="PageObjectInterfaces\IVerifyState.cs" />
+    <Compile Include="PageObjectInterfaces\StateVerificationInterfaces\IVerifyCheckboxState.cs" />
+    <Compile Include="PageObjectInterfaces\StateVerificationInterfaces\IVerifyControlEnabledState.cs" />
     <Compile Include="PageObjectInterfaces\IVerifyRowsExist.cs" />
     <Compile Include="PageObjectInterfaces\GeneralPage.cs" />
-    <Compile Include="Misc.cs" />
-    <Compile Include="Factory.cs" />
+    <Compile Include="Utilities\Misc.cs" />
+    <Compile Include="Utilities\Factory.cs" />
     <Compile Include="PageObjectInterfaces\IHavePaginationControl.cs" />
+    <Compile Include="SeedingContext.cs" />
     <Compile Include="SharedObjects\IRemoveableObject.cs" />
     <Compile Include="PageObjectInterfaces\ControlBase.cs" />
     <Compile Include="Helpers\DbHelper.cs" />
@@ -102,11 +106,15 @@
     <Compile Include="PageObjectInterfaces\IPage.cs" />
     <Compile Include="PageObjectInterfaces\ICanPaginate.cs" />
     <Compile Include="PageObjectInterfaces\PageObjectFactory.cs" />
-    <Compile Include="PDF.cs" />
+    <Compile Include="Utilities\PDF.cs" />
     <Compile Include="RBTConfiguration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SharedObjects\ISeedableObject.cs" />
     <Compile Include="SharedObjects\SeedingOptions.cs" />
+    <Compile Include="SpecflowContextBase.cs" />
+    <Compile Include="SpecflowStaticBindings.cs" />
+    <Compile Include="SpecflowWebTestContext.cs" />
+    <Compile Include="StringReplacement\RndRangeNumReplace.cs" />
     <Compile Include="StringReplacement\InreaseNumReplace.cs" />
     <Compile Include="StringReplacement\DateFReplace.cs" />
     <Compile Include="StringReplacement\DateReplace.cs" />
@@ -114,8 +122,8 @@
     <Compile Include="StringReplacement\VarReplace.cs" />
     <Compile Include="StringReplacement\SpecialStringHelper.cs" />
     <Compile Include="StringReplacement\IStringReplace.cs" />
-    <Compile Include="TemporalID.cs" />
-    <Compile Include="TestContext.cs" />
+    <Compile Include="SharedObjects\TemporalID.cs" />
+    <Compile Include="WebTestContext.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Medidata.RBT.SeleniumExtension\Medidata.RBT.SeleniumExtension.csproj">

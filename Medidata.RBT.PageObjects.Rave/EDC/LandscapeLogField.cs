@@ -105,10 +105,10 @@ namespace Medidata.RBT.PageObjects.Rave
 		public override bool IsElementFocused(ControlType type, int position) 
         {
             var element = GetElementInColumnByRowIDColumnID(type, position);
-            IWebElement currentElement = TestContext.Browser.TryFindElementBy(b =>
+            IWebElement currentElement = Page.Browser.TryFindElementBy(b =>
             {
-                return TestContext.CurrentPage.GetFocusElement().FindElement(By.XPath(".[@id != '']"));
-            });
+				return Page.GetFocusElement().FindElement(By.XPath(".[@id != '']"));
+            }, true, 30);
             var actualId = currentElement.GetAttribute("ID");
             var expectedId = element.GetAttribute("ID");
             Console.WriteLine(string.Format(
@@ -137,13 +137,13 @@ namespace Medidata.RBT.PageObjects.Rave
                 suffix.Append(ControlTypeInformation.GetSuffixByControlType(type));
             return GetElementBySuffixColumn(type, suffix.ToString());
         }
-        private static IWebElement GetElementBySuffixColumn(ControlType type, string suffix)
+        private IWebElement GetElementBySuffixColumn(ControlType type, string suffix)
         {
             var attr = ControlType.RadioButton == type
                 || ControlType.RadioButtonVertical == type
                    ? "id"
                    : "name";
-            var result = TestContext.Browser.TryFindElementBy(By.XPath
+			var result = Page.Browser.TryFindElementBy(By.XPath
                 ("//*['"
                 + suffix +
                 "' = substring(@" + attr + ", string-length(@" + attr + ") - string-length('"
@@ -218,7 +218,7 @@ namespace Medidata.RBT.PageObjects.Rave
         #endregion
 
         #region INTERFACE IEDCFieldControl
-        public AuditsPage ClickAudit() { throw new NotImplementedException(); }
+        public override AuditsPage ClickAudit() { throw new NotImplementedException(); }
 	
         public override void EnterData(string text, ControlType controlType, string additionalData = "") {
             switch (controlType)
@@ -241,14 +241,14 @@ namespace Medidata.RBT.PageObjects.Rave
             }
         
         }
-        public bool HasDataEntered(string text) { throw new NotImplementedException(); }
-        public OpenQA.Selenium.IWebElement FindQuery(QuerySearchModel filter) { throw new NotImplementedException(); }
-        public void AnswerQuery(QuerySearchModel filter) { throw new NotImplementedException(); }
-        public void CloseQuery(QuerySearchModel filter) { throw new NotImplementedException(); }
-        public void CancelQuery(QuerySearchModel filter) { throw new NotImplementedException(); }
-        public void Check(string checkName) { throw new NotImplementedException(); }
-        public void Uncheck(string checkName) { throw new NotImplementedException(); }
-        public string StatusIconPathLookup(string lookupIcon) { throw new NotImplementedException(); }
+        public override bool HasDataEntered(string text) { throw new NotImplementedException(); }
+        public override OpenQA.Selenium.IWebElement FindQuery(QuerySearchModel filter) { throw new NotImplementedException(); }
+        public override void AnswerQuery(QuerySearchModel filter) { throw new NotImplementedException(); }
+        public override void CloseQuery(QuerySearchModel filter) { throw new NotImplementedException(); }
+        public override void CancelQuery(QuerySearchModel filter) { throw new NotImplementedException(); }
+        public override void Check(string checkName) { throw new NotImplementedException(); }
+        public override void Uncheck(string checkName) { throw new NotImplementedException(); }
+        public override string StatusIconPathLookup(string lookupIcon) { throw new NotImplementedException(); }
         #endregion
 
 

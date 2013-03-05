@@ -17,17 +17,24 @@ namespace Medidata.RBT.SeleniumExtension
 		{
 		}
 
+		public bool Checked
+		{
+			get
+			{
+				return Element.GetAttribute("checked") == "true";
+			}
+		}
+
 		public void Check()
 		{
-			if (!this.Selected)
-				this.Click();
-
+            if (!this.Selected)
+                this.Click();
 		}
 
 		public void Uncheck()
 		{
-			if (this.Selected)
-				this.Click();
+            if (this.Selected)
+                this.Click();
 		}
 
 		public void Toggle()

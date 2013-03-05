@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Medidata.RBT.PageObjects.Rave.Configuration.Models;
+using Medidata.RBT.SeleniumExtension;
 
 namespace Medidata.RBT.PageObjects.Rave.Configuration
 {
-    public class CoderConfigurationPage : ConfigurationBasePage
+    public class CoderConfigurationPage : ConfigurationBasePage, IVerifySomethingExists
     {
         public void FillData(IEnumerable<CoderConfigurationModel> createSet)
         {
@@ -15,8 +16,8 @@ namespace Medidata.RBT.PageObjects.Rave.Configuration
 
             CoderConfigurationModel model = coderConfigurationModel.First();
             base.ChooseFromDropdown("_ctl0_Content_coderMarkingGroup", model.ReviewMarkingGroup);
-            base.ChooseFromCheckboxes("_ctl0_Content_chkReqResponse", model.RequiresResponse == "True");
-            base.ChooseFromCheckboxes("_ctl0_Content_chkReqManualClose", model.RequiresManualClose == "True");
+
+			base.ChooseFromCheckboxes("_ctl0_Content_chkReqResponse", model.RequiresResponse == "True");
         }
 
         public IPage Save()
@@ -28,5 +29,36 @@ namespace Medidata.RBT.PageObjects.Rave.Configuration
         {
             get { return "Modules/Configuration/CoderConfiguration.aspx"; }
         }
+
+        public bool VerifySomethingExist(string areaIdentifier, string type, string identifier, bool exactMatch = false, int? amountOfTimes = null)
+		{
+			if (identifier == "Requires Response checked")
+			{
+				var checkbox = Browser.CheckboxByID("_ctl0_Content_chkReqResponse");
+				return checkbox.Checked;
+			} 
+			
+			if (identifier == "Requires Response unchecked")
+			{
+				var checkbox = Browser.CheckboxByID("_ctl0_Content_chkReqResponse");
+				return !checkbox.Checked;
+			}
+			
+
+			if (areaIdentifier == "Review Marking Group dropdown")
+			{
+				var dropdown = Browser.DropdownById("_ctl0_Content_coderMarkingGroup");
+
+				return dropdown.SelectedText == identifier;
+			}
+
+            if (!string.IsNullOrWhiteSpace(type) && type.Equals("text", StringComparison.InvariantCultureIgnoreCase))
+            {
+                if (!exactMatch && Browser.PageSource.Contains(identifier))
+                    return true;
+            }
+
+			return false;
+		}
     }
 }

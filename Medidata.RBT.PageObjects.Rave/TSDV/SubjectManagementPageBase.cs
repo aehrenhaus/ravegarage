@@ -18,7 +18,7 @@ namespace Medidata.RBT.PageObjects.Rave
         public IPage FilterBySite(string sitename)
         {
  
-            Site site = TestContext.GetExistingFeatureObjectOrMakeNew(sitename, () => new Site(sitename));
+            Site site = SeedingContext.GetExistingFeatureObjectOrMakeNew(sitename, () => new Site(sitename));
             ChooseFromDropdown("Select Site", site.UniqueName);
            
            
@@ -60,7 +60,7 @@ namespace Medidata.RBT.PageObjects.Rave
         public IPage FilterBySiteGroup(string siteGroupName)
         {
             if (!(siteGroupName.ToLower().Equals("world") || siteGroupName.ToLower().Equals("all site groups")))
-                siteGroupName = TestContext.GetExistingFeatureObjectOrMakeNew(siteGroupName, () => new SiteGroup(siteGroupName)).UniqueName;
+                siteGroupName = SeedingContext.GetExistingFeatureObjectOrMakeNew(siteGroupName, () => new SiteGroup(siteGroupName)).UniqueName;
 
             ChooseFromDropdown("Select Site Group", siteGroupName);
           

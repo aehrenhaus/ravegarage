@@ -9,7 +9,7 @@ namespace Medidata.RBT.PageObjects.Rave
 	{
 		public LoginPage()
 		{
-			PageFactory.InitElements(Browser, this);
+			//PageFactory.InitElements(Browser, this);
 		}
 
 		public override IWebElement GetElementByName(string identifier, string areaIdentifier = null, string listItem = null)
@@ -18,29 +18,29 @@ namespace Medidata.RBT.PageObjects.Rave
 		}
 
 
-		[FindsBy(How = How.Id, Using = "LoginButton")] private IWebElement LoginButton;
+		[FindsBy(How = How.Id, Using = "LoginButton")] IWebElement LoginButton { get; set; }
 
 		/// <summary>
 		/// Login the default user from any page.
 		/// </summary>
-		public static void LoginToHomePageIfNotAlready(string userName = null, string password = null)
+		public static void LoginToHomePageIfNotAlready(WebTestContext context, string userName = null, string password = null)
 		{
 			//user default if not assigned
 			userName = userName ?? RaveConfiguration.Default.DefaultUser;
 			password = password ?? RaveConfiguration.Default.DefaultUserPassword;
 
 			//if not the user
-			if (TestContext.CurrentUser != userName)
+			if (context.CurrentUser != userName)
 			{
 				var loginPage = new LoginPage();
 				loginPage.NavigateToSelf();
 				var homePage = loginPage.Login(userName, password);
-				TestContext.CurrentPage = homePage;
+				context.CurrentPage = homePage;
 			}
 
-			if (!(TestContext.CurrentPage is HomePage))
+			if (!(context.CurrentPage is HomePage))
 			{
-				TestContext.CurrentPage = new HomePage().NavigateToSelf();
+				context.CurrentPage = new HomePage().NavigateToSelf();
 			}
 
 		}
@@ -59,9 +59,9 @@ namespace Medidata.RBT.PageObjects.Rave
 			PasswordBox.EnhanceAs<Textbox>().SetText(password);
 			LoginButton.Click();
 
-			TestContext.CurrentUser = userName;
-			TestContext.CurrentUserPassword = password;
-			return (HomePage)base.GetPageByCurrentUrlIfNoAlert();
+			Context.CurrentUser = userName;
+			Context.CurrentUserPassword = password;
+			return (HomePage)base.WaitForPageLoads();
 		}
 
 
@@ -71,23 +71,6 @@ namespace Medidata.RBT.PageObjects.Rave
 		}
 	}
 
-	public class LoginSession : IDisposable
-	{
-		string previousUser = TestContext.CurrentUser;
-		string previousPassword = TestContext.CurrentUserPassword;
-        public bool RedirectOnDispose { get; set; }
 
-		public LoginSession(string username = null, string passowrd = null, bool redirectOnDispose = true)
-		{
-            RedirectOnDispose = redirectOnDispose;
-			LoginPage.LoginToHomePageIfNotAlready(username,passowrd);
-		}
-
-		public void Dispose()
-		{
-            if (previousUser != null && RedirectOnDispose) // for some tests, we dont' want to go back to homepage.
-				LoginPage.LoginToHomePageIfNotAlready(previousUser, previousPassword);
-		}
-	}
 }
 

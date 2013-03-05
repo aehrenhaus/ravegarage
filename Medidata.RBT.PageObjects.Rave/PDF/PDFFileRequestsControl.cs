@@ -33,7 +33,7 @@ namespace Medidata.RBT.PageObjects.Rave
 
             IWebElement pdfTr = this.FindInPaginatedList("", () =>
             {
-                HtmlTable table = TestContext.Browser.TryFindElementByPartialID("_ctl0_Content_Results").EnhanceAs<HtmlTable>();
+				HtmlTable table = Page.Browser.TryFindElementByPartialID("_ctl0_Content_Results").EnhanceAs<HtmlTable>();
                 return table.FindMatchRows(dt).FirstOrDefault();
             }, out foundOnPage);
 
@@ -55,7 +55,7 @@ namespace Medidata.RBT.PageObjects.Rave
 		public int CurrentPageNumber { get; private set; }
         public bool GoNextPage(string areaIdentifer)
         {
-			HtmlTable table = TestContext.Browser.TryFindElementByPartialID("Content_Results").EnhanceAs<HtmlTable>();
+			HtmlTable table = Page.Browser.TryFindElementByPartialID("Content_Results").EnhanceAs<HtmlTable>();
             IWebElement pageTable = table.FindElement(By.XPath(".//tr[@align='center']"));
             ReadOnlyCollection<IWebElement> pageLinks = pageTable.FindElements(By.XPath(".//a|.//span"));
 

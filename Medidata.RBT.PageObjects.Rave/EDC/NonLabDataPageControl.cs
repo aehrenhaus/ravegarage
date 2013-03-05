@@ -56,7 +56,7 @@ namespace Medidata.RBT.PageObjects.Rave
         }
 		public IEDCFieldControl FindField(string fieldName)
 		{
-            var leftSideTds = TestContext.Browser.TryFindElementsBy(By.XPath("//td[@class='crf_rowLeftSide']"))
+            var leftSideTds = Page.Browser.TryFindElementsBy(By.XPath("//td[@class='crf_rowLeftSide']"))
                 ?? new ReadOnlyCollection<IWebElement>(new List<IWebElement>());
             var area = leftSideTds.FirstOrDefault(x =>
                 {
@@ -81,7 +81,7 @@ namespace Medidata.RBT.PageObjects.Rave
 
         public void FindFieldByText(string fieldText)
         {
-            var el = TestContext.Browser.FindElementById("_ctl0_Content_R");
+            var el = Page.Browser.FindElementById("_ctl0_Content_R");
         }
 	}
 }

@@ -50,12 +50,11 @@ namespace Medidata.RBT.PageObjects.Rave
             foreach (var dictionary in dictionaries)
             {
                 found = false;
-                foreach (var row in Browser.TryFindElementById("_ctl0_Content_LabUnitDictionaryGrid").EnhanceAs<HtmlTable>().Rows().Skip(1))
-                    if (row.Children()[0].Text.Equals(dictionary.Name))
-                    {
-                        found = true;
-                        break;
-                    }
+
+                if (Browser.TryFindElementBy(By.XPath(".//*[@id = '_ctl0_Content_LabUnitDictionaryGrid']/tbody/tr/td[1][contains(text(), '"
+                    + dictionary.Name + "')]")) != null)
+                    found = true;
+
                 if (!found)
                 {
                     return LabUnitDictionariesExistWithNames(dictionaries, page + 1);
@@ -128,7 +127,7 @@ namespace Medidata.RBT.PageObjects.Rave
 
         #region ICanVerifyExist
 
-		bool IVerifySomethingExists.VerifySomethingExist(string areaIdentifier, string type,string identifier, bool exactMatch)
+        bool IVerifySomethingExists.VerifySomethingExist(string areaIdentifier, string type, string identifier, bool exactMatch, int? amountOfTimes)
         {
 			if (areaIdentifier == null)
             {

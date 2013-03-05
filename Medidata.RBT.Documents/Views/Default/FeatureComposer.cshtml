@@ -1,0 +1,112 @@
+﻿@{
+	ViewBag.Title = "Feature Composer";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+   
+@section styles
+{
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.9.2/themes/base/jquery-ui.css" />
+	@Styles.Render("~/Content/FeatureComposer.css")
+}
+
+
+@section scripts
+{    
+
+	@Scripts.Render("~/zeroclipboard/ZeroClipboard.js")
+	<script>
+
+		var siteURL = '@HttpContext.Current.Request.Url.Scheme://@HttpContext.Current.Request.Url.Authority@Url.Content("~")';
+		var relURL = '@Url.Content("~")';
+	</script>
+
+	<script  type="text/javascript" src="http://code.jquery.com/ui/1.9.2/jquery-ui.js"></script>
+	@Scripts.Render("~/Scripts/knockout-2.2.0.js")
+	@Scripts.Render("~/Scripts/knockout-sortable.min.js")
+	
+	@Scripts.Render("~/Scripts/Site/FeatureComposer.js")
+
+}
+<h2>Feature Composer</h2>
+<table data-bind="foreach: StepDefCategories">
+
+	
+	<tr>
+		<td data-bind="text:Name"></td>
+		<td>
+			<ul class="toogleStepClass" data-bind="foreach: StepDefClasses">
+				<li data-bind=" event:{mousedown: toggleVisible}, css:{disabled:!Visible()}"><span data-bind="text: Name"></span></li>
+			</ul>
+		</td>
+	</tr>
+	
+</table>
+
+<table width="100%">
+
+	<tr>
+		
+		<td style="vertical-align:top; width:360px">
+			<span data-bind="visible:!$root.ToolsLoaded()">Loading tools ...<img src="@Url.Content("~/Content/Images/loading.gif")" alt="loading" /> </span>
+			
+			
+@*		This accordion view is a candidate UI, don't remove it.	
+		
+			<div class="accordionCate" data-bind="foreach: StepDefCategories">
+				<h3 data-bind="text: Name, visible:Visible" ></h3>
+				<div class="accordion" data-bind="foreach: StepDefClasses, visible:Visible">
+					<h3 data-bind="text: Name,visible:Visible"></h3>
+					<ul class="stepDefs" data-bind="foreach: StepDefs,visible:Visible">
+						<li title="">
+							<div>
+								<p data-bind="text: Regex"></p> 
+								<p class="comment" data-bind="text: Comment"></p>
+							</div>
+							<span class="regex" data-bind="text: Name"></span>
+				
+						</li>
+					</ul>
+				</div>
+
+			</div>*@
+
+			<!-- ko foreach: StepDefCategories -->
+		
+			<div class="accordion" data-bind="foreach: StepDefClasses, visible:Visible">
+				<h3 data-bind="text: Name,visible:Visible"></h3>
+				<ul class="stepDefs" data-bind="foreach: StepDefs,visible:Visible">
+					<li title="">
+						<div>
+							<p data-bind="text: Regex"></p> 
+							<p class="comment" data-bind="text: Comment"></p>
+						</div>
+						<span class="regex" data-bind="text: Name"></span>
+				
+					</li>
+				</ul>
+			</div>
+
+
+			<!-- /ko -->
+		</td>
+		<td style="vertical-align:top;">
+		
+			<div id="d_clip_button" class="my_clip_button"><b>Copy To Clipboard...</b></div>
+
+			<ul id="sortable" data-bind="sortable: Steps">
+				<li class="ui-state-default" title="">
+					<div>
+						<p class="comment" data-bind="html: Comment"></p>
+					</div>
+					<span class="ui-icon ui-icon-arrowthick-2-n-s"></span>
+					<span data-bind="text: Step"></span>
+					<span class="removeStep" data-bind="click: $root.RemoveStep">X</span>
+				</li>
+			</ul>
+ 
+
+
+		
+		</td>
+	</tr>
+</table>

@@ -15,6 +15,11 @@ namespace Medidata.RBT.PageObjects.Rave
 	{
         private static readonly string[] s_sysUsers = new[] { "System", "LSystem" };
 
+        public bool ExactAuditExist(AuditModel audit, int? position = null)
+        {
+            return AuditExist(audit.Audit, audit.User, audit.Time, position);
+        }
+
 		//TODO: support wild char or regex
 		public bool AuditExist(AuditModel audit, int? position = null)
 		{
@@ -25,12 +30,12 @@ namespace Medidata.RBT.PageObjects.Rave
 
             else if (audit.AuditType == "Signature Succeeded")
             {
-                return AuditExist_SignatureSucceeded(position);
+                return AuditExist_SignatureSucceeded(audit.User, audit.Time, position);
             }
 
             else if (audit.AuditType == "Signature Broken")
             {
-                return AuditExist_SignatureBroken(position);
+                return AuditExist_SignatureBroken(audit.User, audit.Time, position);
             }
 
             else if (audit.AuditType == "User entered")
@@ -112,7 +117,7 @@ namespace Medidata.RBT.PageObjects.Rave
                     
                     if (td != null)
                     {
-                        auditPosition = auditTDs.IndexOf(td) + 1;
+                        auditPosition = auditTDs.IndexOf(td) + 2;
                     }
 
                     isSpecifiedData = (td != null);
@@ -142,7 +147,7 @@ namespace Medidata.RBT.PageObjects.Rave
 
                     string specifiedLogin = specifiedUserDetail[1].Split('-')[1].TrimStart(' ');
                     //Get the unique user object created during seeding
-                    User spUser = TestContext.GetExistingFeatureObjectOrMakeNew(specifiedLogin, () => new User(specifiedLogin));
+                    User spUser = SeedingContext.GetExistingFeatureObjectOrMakeNew(specifiedLogin, () => new User(specifiedLogin));
 
                     string actualLogin = actualUserDetail[1].Split('-')[1].TrimStart(' ');
                     isSpecifiedData = actualLogin.Equals(spUser.UniqueName);
@@ -209,14 +214,14 @@ namespace Medidata.RBT.PageObjects.Rave
             return AuditExist(string.Format("Query '{0}' canceled", query), user, timeFormat, position);
 		}
 
-        public bool AuditExist_SignatureSucceeded(int? position = null)
+        public bool AuditExist_SignatureSucceeded(string user, string timeFormat, int? position = null)
         {
-            return AuditExist("User signature succeeded.", null, null, position);
+            return AuditExist("User signature succeeded.", user, timeFormat, position);
         }
 
-        public bool AuditExist_SignatureBroken(int? position = null)
+        public bool AuditExist_SignatureBroken(string user, string timeFormat, int? position = null)
         {
-            return AuditExist("Signature has been broken.", null, null, position);
+            return AuditExist("Signature has been broken.", user, timeFormat, position);
         }
 
         public bool AuditExist_UserEntered(string userInput,string user, string timeFormat, int? position = null)

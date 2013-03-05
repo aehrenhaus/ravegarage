@@ -13,22 +13,22 @@ using Medidata.RBT.PageObjects.Rave.SharedRaveObjects;
 using Medidata.RBT.PageObjects.Rave.UserAdministrator;
 namespace Medidata.RBT.PageObjects.Rave
 {
-	public  class UserAdministrationPage : RavePageBase, IHavePaginationControl
+	public class UserAdministrationPage : RavePageBase, IHavePaginationControl
 	{
-		[FindsBy(How = How.Id, Using = "_ctl0_Content_AuthenticatorDDL")]
-		IWebElement Authenticator;
+        [FindsBy(How = How.Id, Using = "_ctl0_Content_AuthenticatorDDL")]
+        IWebElement Authenticator { get; set; }
 
 		[FindsBy(How = How.Id, Using = "_ctl0_Content_LastNameBox")]
-		IWebElement LastName;
+        IWebElement LastName { get; set; }
 
 		[FindsBy(How = How.Id, Using = "_ctl0_Content_SiteFilterBox")]
-		IWebElement Site;
+        IWebElement Site { get; set; }
 
 		[FindsBy(How = How.Id, Using = "_ctl0_Content_RoleDDL")]
-		IWebElement Role;
+        IWebElement Role { get; set; }
 
 		[FindsBy(How = How.Id, Using = "_ctl0_Content_StudyDDL")]
-		IWebElement Study;
+        IWebElement Study { get; set; }
 
 		
 
@@ -85,7 +85,7 @@ namespace Medidata.RBT.PageObjects.Rave
 
 		public ICanPaginate GetPaginationControl(string areaIdentifier)
 		{
-			var pageTable = TestContext.Browser.TryFindElementById("_ctl0_Content_UserGrid").TryFindElementBy(By.XPath("./tbody/tr[last()]"));
+			var pageTable = Context.Browser.TryFindElementById("_ctl0_Content_UserGrid").TryFindElementBy(By.XPath("./tbody/tr[last()]"));
 			var pager = new RavePaginationControl_CurrentPageNotLink(this, pageTable);
 			return pager;
 		}

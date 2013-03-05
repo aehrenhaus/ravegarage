@@ -105,6 +105,31 @@ alter database {0} set multi_user with rollback immediate",
             cmd.Connection.Close();
         }
 
+        public static void EnableUnitsOnlyForSiteAndStudy(string site)
+        {
+            var builder = new System.Data.SqlClient.SqlConnectionStringBuilder();
+            builder.ConnectionString = System.Configuration.ConfigurationManager.ConnectionStrings[RBTConfiguration.Default.DatabaseConnection].ConnectionString;
+            string catalog = builder.InitialCatalog;
+            var UnitsOnlySiteQuery = String.Format(
+            @"
+            update ss
+            set ss.AllowUnitsOnly = 1
+            from studySites ss
+	            join studies st
+		            on st.studyID = ss.studyID
+	            join projects p
+		            on p.projectID = st.projectID
+	            join sites si
+		            on si.siteID = ss.siteID
+            where dbo.fnlocaldefault(siteNameID) = '{0}'",
+                                                         site);
+
+            SqlCommand cmd = new SqlCommand(UnitsOnlySiteQuery, new SqlConnection(builder.ToString()));
+            cmd.Connection.Open();
+            cmd.ExecuteNonQuery();
+            cmd.Connection.Close();
+        }
+
         public static void SetDatabaseToOffline()
         {
             var builder = new System.Data.SqlClient.SqlConnectionStringBuilder();
@@ -201,5 +226,27 @@ ALTER DATABASE {0} SET ONLINE WITH ROLLBACK IMMEDIATE ",
             }
         }
 
+		/// <summary>
+		/// Helper method that returns the first DataRow in the first DataTable of a given DataSet.
+		/// Will return null if
+		///		1.	There are 0 DataTables in given DataSet
+		///		2.	There are 0 DataRows in the first DataTable
+		/// </summary>
+		/// <param name="set">DataSet instance for which to return the first DataRow</param>
+		/// <returns>The first DataRow of the parameter DataSet 'set'</returns>
+		public static DataRow GetFirstRow(this DataSet set)
+		{
+			var result = set.Tables.Count > 0 && set.Tables[0].Rows.Count > 0
+				? set.Tables[0].Rows[0]
+				: null;
+			return result;
+		}
+
+		public static string GetSqlString(string val)
+		{
+			return val == null
+				? "null"
+				: string.Format("'{0}'", val);
+		}
 	}
 }

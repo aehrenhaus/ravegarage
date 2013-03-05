@@ -38,7 +38,7 @@ namespace Medidata.RBT.PageObjects.Rave
 
             link.Click();
             string className = poClassMapping[name];
-            return TestContext.POFactory.GetPage(className);
+            return Context.POFactory.GetPage(className);
         }
 
         /// <summary>
@@ -49,7 +49,7 @@ namespace Medidata.RBT.PageObjects.Rave
         /// <returns></returns>
         public IWebElement FindLab(string labName, string type)
         {
-            KeyValuePair<string, ISeedableObject> kvpSeedable = TestContext.SeedableObjects.FirstOrDefault(x => x.Key == labName);
+            KeyValuePair<string, ISeedableObject> kvpSeedable = SeedingContext.SeedableObjects.FirstOrDefault(x => x.Key == labName);
             if (kvpSeedable.Value != null)
                 labName = kvpSeedable.Value.UniqueName;
 
@@ -76,7 +76,7 @@ namespace Medidata.RBT.PageObjects.Rave
         /// <summary>
         /// Select Range for Lab
         /// </summary>
-        public void SelectLabRange(IWebElement row)
+        public virtual void SelectLabRange(IWebElement row)
         {
             EnhancedElement checkButton = row.FindImagebuttons().FirstOrDefault(img => img.GetAttribute("id").EndsWith("_ImgBtnLabRanges"));
             checkButton.Click();
@@ -88,11 +88,11 @@ namespace Medidata.RBT.PageObjects.Rave
         /// <param name="type">The type.</param>
         public void AddNewLab(string labName, string type, string rangeType = null)
         {
-            TestContext.CurrentPage.ClickLink("Add New Lab");
+            Context.CurrentPage.ClickLink("Add New Lab");
 
             //table.Dropdown("_ddlLabType").SendKeys(type);
             ChooseFromDropdown("_ddlLabType", type);
-            if (!String.IsNullOrEmpty(rangeType)) ChooseFromDropdown("_ddlRangeType", TestContext.GetExistingFeatureObjectOrMakeNew<RangeType>(rangeType, () => new RangeType(rangeType)).UniqueName);
+            if (!String.IsNullOrEmpty(rangeType)) ChooseFromDropdown("_ddlRangeType", SeedingContext.GetExistingFeatureObjectOrMakeNew<RangeType>(rangeType, () => new RangeType(rangeType)).UniqueName);
 
             HtmlTable table = Browser.TryFindElementByPartialID("LabsGrid").EnhanceAs<HtmlTable>();
             var currentRow = table.TextboxById("_txtName").Parent().Parent();
@@ -110,9 +110,9 @@ namespace Medidata.RBT.PageObjects.Rave
         int pageIndex = 0;
         int count = 0;
         int lastValue = -1;
-		public int CurrentPageNumber { get; private set; }
+        public virtual int CurrentPageNumber { get; set; }
 
-        public bool GoNextPage(string areaIdentifer)
+        public virtual bool GoNextPage(string areaIdentifer)
         {
             var pageTable = Browser.TryFindElementByPartialID("_LabsGrid").TryFindElementBy(By.XPath("./tbody/tr[last()]"));
 
@@ -141,17 +141,17 @@ namespace Medidata.RBT.PageObjects.Rave
             return true;
         }
 
-        public bool GoPreviousPage(string areaIdentifer)
+        public virtual bool GoPreviousPage(string areaIdentifer)
         {
             throw new NotImplementedException();
         }
 
-        public bool GoToPage(string areaIdentifer, int page)
+        public virtual bool GoToPage(string areaIdentifer, int page)
         {
             throw new NotImplementedException();
         }
 
-        public bool CanPaginate(string areaIdentifier)
+        public virtual bool CanPaginate(string areaIdentifier)
         {
             return true;
         }

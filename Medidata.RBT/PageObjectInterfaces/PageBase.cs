@@ -24,12 +24,34 @@ namespace Medidata.RBT
 	/// </summary>
     public abstract class PageBase : IPage
     {
+		/// <summary>
+		/// WARNING:
+		/// TODO:
+		/// 
+		/// This constructor uses static member of SpecflowStaticBindings class to get the WebTestContext object,
+		/// this breaks the separation of web test and specflow test.
+		/// 
+		/// I add this constructor just for convenience.
+		/// Ideally , every PO classes should accept a WebTestContext object in the constructor
+		/// </summary>
+		public PageBase()
+			: this((SpecflowStaticBindings.Current as SpecflowWebTestContext).WebTestContext)
+		{
+		}
+
+
         #region .ctor and initialization
 
 
-        public PageBase()
+		public PageBase(WebTestContext context)
         {
+			//TODO: this line should be removed too when the parameterless constructor (demon contract) get removed.
+			if (context == null)
+				return;
+
+			this.Context = context;
 			PageFactory.InitElements(Browser, this);
+			this.SearchContext = Browser;
         }
 
 
@@ -38,10 +60,20 @@ namespace Medidata.RBT
   
         #region IPage
 
+		/// <summary>
+		/// See IPage interface
+		/// </summary>
+		public WebTestContext Context { get; set; }
+
         /// <summary>
 		/// See IPage interface
         /// </summary>
-		public RemoteWebDriver Browser { get { return TestContext.Browser; } }
+		public RemoteWebDriver Browser { get { return Context.Browser; } }
+
+		/// <summary>
+		/// 
+		/// </summary>
+		public ISearchContext SearchContext { get; set; }
 
 		/// <summary>
 		/// See IPage interface
@@ -58,23 +90,23 @@ namespace Medidata.RBT
 		/// </summary>
         public TPage As<TPage>() where TPage : class
         {
-            var page = this as TPage;
-            if (page == null)
-            {
-                TestContext.CurrentPage = TestContext.POFactory.GetPageByUrl(new Uri(Browser.Url));
-                IPage currentpage = TestContext.CurrentPage as TPage as IPage;
-                if (currentpage == null)
-                {
-                    IWebElement fakeEle = TestContext.Browser.CheckURLIsCorrect(b => CheckCurrentPage<TPage>(Browser));
+			var page = this as TPage;
+			if (page == null)
+			{
+				Context.CurrentPage = Context.POFactory.GetPageByUrl(new Uri(Browser.Url));
+				IPage currentpage = Context.CurrentPage as TPage as IPage;
+				if (currentpage == null)
+				{
+					IWebElement fakeEle = Context.Browser.CheckURLIsCorrect(b => CheckCurrentPage<TPage>(Browser));
 
-                    if(fakeEle != null)
-                        currentpage = TestContext.POFactory.GetPageByUrl(new Uri(Browser.Url)) as TPage as IPage;
-                    else
-					    throw new Exception("Expect current page to be " + typeof(TPage).Name + ", but it's " + (TestContext.CurrentPage==null?"null":TestContext.CurrentPage.GetType().Name));
-                }
-                return (TPage)currentpage;
-            }
-            return page;
+					if (fakeEle != null)
+						currentpage = Context.POFactory.GetPageByUrl(new Uri(Browser.Url)) as TPage as IPage;
+					else
+						throw new Exception("Expect current page to be " + typeof(TPage).Name + ", but it's " + (Context.CurrentPage == null ? "null" : Context.CurrentPage.GetType().Name));
+				}
+				return (TPage)currentpage;
+			}
+			return page;
         }
 
         /// <summary>
@@ -82,24 +114,24 @@ namespace Medidata.RBT
         /// </summary>
         /// <param name="expectedPageUrl">The url of the page we expect to be here</param>
         /// <returns>Returns an empty textbox if the page matches the expected page, a null if the page doesn't</returns>
-        private static IWebElement CheckCurrentPage<TPage>(RemoteWebDriver pageBaseBrowser) where TPage : class
-        {
-            TestContext.CurrentPage = TestContext.POFactory.GetPageByUrl(new Uri(pageBaseBrowser.Url));
-            IPage currentpage = TestContext.CurrentPage as TPage as IPage;
+		private IWebElement CheckCurrentPage<TPage>(RemoteWebDriver pageBaseBrowser) where TPage : class
+		{
+			this.Context.CurrentPage = Context.POFactory.GetPageByUrl(new Uri(pageBaseBrowser.Url));
+			IPage currentpage = Context.CurrentPage as TPage as IPage;
 
-            if (currentpage is TPage)
-                return new Textbox();
-            return null;
-        }
+			if (currentpage is TPage)
+				return new Textbox();
+			return null;
+		}
 
 		/// <summary>
 		/// See IPage interface
 		/// </summary>
         public virtual IPage ClickButton(string identifier)
         {
-            var element = Browser.ButtonByText(identifier, true, false);
+			var element = SearchContext.ButtonByText(identifier, true, false);
             if (element == null)
-                element = Browser.ButtonByID(identifier, true, false);
+				element = SearchContext.ButtonByID(identifier, true, false);
 			if (element == null)
 				element = TryGetElementByName(identifier, null, null);
             if (element == null)
@@ -107,9 +139,25 @@ namespace Medidata.RBT
 
             element.Click();
 
-			return GetPageByCurrentUrlIfNoAlert();
+			return this.WaitForPageLoads();
         }
-		
+
+		public IPage WaitForPageLoads()
+		{
+			try
+			{
+				var alert = Browser.SwitchTo().Alert();
+			}
+			catch
+			{
+
+			}
+
+			Browser.WaitForDocumentLoad();
+			var uri = new Uri(Browser.Url);
+			return Context.POFactory.GetPageByUrl(uri);
+		}
+
         /// <summary>
         /// Will try to press a key in two attempts.
         /// It has been observed that Selenium throws an ambiguous "a is null" exception on occasions
@@ -145,40 +193,18 @@ namespace Medidata.RBT
             return result;
         }
 		
-		/// <summary>
-		/// See IPage interface
-		/// </summary>
-		protected IPage GetPageByCurrentUrlIfNoAlert()
-		{
-			try
-			{
-				//if alert presents , return current page object
-				var alert = Browser.SwitchTo().Alert();
-			}
-			catch
-			{
-				//if no alert window, wait and return the new page
-				Browser.WaitForDocumentLoad();
-				var uri = new Uri(Browser.Url);
 
-				return TestContext.POFactory.GetPageByUrl(uri);
-
-			}
-			return this;
-	
-	
-		}
         /// <summary>
         /// See IPage interface
         /// </summary>
 		public virtual IPage ClickLink(string linkText, string objectType = null, string areaIdentifier = null, bool partial = false)
         {
-			ISearchContext context = string.IsNullOrEmpty(areaIdentifier) ? Browser as ISearchContext : this.GetElementByName(areaIdentifier, null);
+			ISearchContext context = string.IsNullOrEmpty(areaIdentifier) ? SearchContext : this.GetElementByName(areaIdentifier, null);
 
 			IWebElement link = partial ? context.TryFindElementBy(By.PartialLinkText(linkText)) : context.TryFindElementBy(By.LinkText(linkText));
 			link.Click();
  
-            return GetPageByCurrentUrlIfNoAlert();
+            return this.WaitForPageLoads();
         }
 
 
@@ -187,11 +213,11 @@ namespace Medidata.RBT
         /// </summary>
         public virtual IPage NavigateTo(string identifier)
         {
-			var link = Browser.Link(identifier);
+			var link = SearchContext.Link(identifier);
 			if (link != null)
 			{
 				link.Click();
-				return GetPageByCurrentUrlIfNoAlert();
+				return this.WaitForPageLoads();
 			}
 
             throw new Exception("Don't know how to navigate to "+identifier);
@@ -217,7 +243,7 @@ namespace Medidata.RBT
 
 			ele.EnhanceAs<Dropdown>().SelectByText(text);
 
-			return GetPageByCurrentUrlIfNoAlert();
+			return this.WaitForPageLoads();
         }
 
         /// <summary>
@@ -229,7 +255,7 @@ namespace Medidata.RBT
 
             ele.EnhanceAs<Dropdown>().SelectByPartialText(text);
 
-            return GetPageByCurrentUrlIfNoAlert();
+            return this.WaitForPageLoads();
         }
 
 		/// <summary>
@@ -246,7 +272,7 @@ namespace Medidata.RBT
             else
 				element.EnhanceAs<Checkbox>().Uncheck();
 
-			return GetPageByCurrentUrlIfNoAlert();
+			return this;
         }
 
 		/// <summary>
@@ -295,7 +321,7 @@ namespace Medidata.RBT
         /// </summary>
 		public virtual IPage NavigateToSelf(NameValueCollection parameters = null)
         {
-            string contextSessionIdstring = Storage.GetScenarioLevelValue<string>("UrlSessionID");
+			string contextSessionIdstring = Context.Storage["UrlSessionID"] as string;
             string url = string.Format("{0}{1}{2}", BaseURL, string.IsNullOrEmpty(contextSessionIdstring) ? string.Empty : contextSessionIdstring + "/", URL);
             string querystring = string.Empty;
 
@@ -319,12 +345,14 @@ namespace Medidata.RBT
                 url = url + "?" + querystring;
 
             Browser.Url = url;
+            Browser.WaitForPageToBeReady();
+            
             string modifiedUrl = Browser.Url;
             if (modifiedUrl.Contains("S(") && string.IsNullOrEmpty(contextSessionIdstring))
             {
                 int sessionidstart = modifiedUrl.IndexOf("(S(");
                 string sessionIdstring = modifiedUrl.Substring(sessionidstart, (modifiedUrl.IndexOf("/", sessionidstart) - sessionidstart));
-                Storage.SetScenarioLevelValue("UrlSessionID", sessionIdstring);
+				Context.Storage["UrlSessionID"] = sessionIdstring;
             }
 
             
@@ -344,7 +372,6 @@ namespace Medidata.RBT
 		public virtual IWebElement GetElementByName(string identifier, string areaIdentifier = null, string listItemIdentifier = null)
 		{
 			throw new Exception(string.Format("This page ({0}) does not provide information about element: {1}", this.GetType().Name, identifier));
-		
 		}
 
 		//Don't make this virtual , override GetElementByName in base classes
@@ -366,7 +393,7 @@ namespace Medidata.RBT
 		//Don't make this public. This method is only a lines saver inside PageBase
 		private IWebElement FindElementDelayedWait(string identifier, string areaIdentifier)
 		{
-			ISearchContext context = string.IsNullOrEmpty(areaIdentifier) ? Browser as ISearchContext : this.GetElementByName(null, areaIdentifier, null);
+			ISearchContext context = string.IsNullOrEmpty(areaIdentifier) ? SearchContext : this.GetElementByName(null, areaIdentifier, null);
 
 			var ele = context.TryFindElementById(identifier, false);
 			if (ele == null)
@@ -396,6 +423,36 @@ namespace Medidata.RBT
 			return Browser.SwitchTo().ActiveElement();
 		}
 
+        /// <summary>
+        /// Get a string based key value pair dictionary that has Url querystring's field as key and 
+        /// value as value
+        /// </summary>
+        /// <returns></returns>
+        public virtual Dictionary<string, string> GetUrlQueryStringFieldValuePair()
+        {
+            Dictionary<string, string> queryStringFieldValuePair = null;
+            Uri pageUri = new Uri(Browser.Url);
 
+            string queryString = pageUri.Query;
+
+            if (!string.IsNullOrEmpty(queryString) && queryString.StartsWith("?"))
+            {
+                queryStringFieldValuePair = new Dictionary<string, string>();
+                queryString = queryString.TrimStart('?');
+                string[] queries = queryString.Split('&');
+
+                foreach (string query in queries)
+                {
+                    string[] fieldValuePair = query.Split('=');
+
+                    if (fieldValuePair.Length == 2)
+                        queryStringFieldValuePair.Add(fieldValuePair[0], fieldValuePair[1]);
+                    else
+                        throw new Exception("The field value pair for the query string is not in the expected format <field>=<Value>.");       
+                }
+            }
+
+            return queryStringFieldValuePair;
+        }
 	}
 }

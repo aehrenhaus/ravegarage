@@ -130,8 +130,8 @@ namespace Medidata.RBT.PageObjects.Rave
 
 		public PromptsPage SetParameter(string name, string value)
         {
-            if ("Study".Equals(name)) { value = TestContext.GetExistingFeatureObjectOrMakeNew(value, () => new Project(value)).UniqueName; }
-            else if ("Sites".Equals(name)) { value = TestContext.GetExistingFeatureObjectOrMakeNew(value, () => new Site(value)).UniqueName; }
+            if ("Study".Equals(name)) { value = SeedingContext.GetExistingFeatureObjectOrMakeNew(value, () => new Project(value)).UniqueName; }
+            else if ("Sites".Equals(name)) { value = SeedingContext.GetExistingFeatureObjectOrMakeNew(value, () => new Site(value)).UniqueName; }
 
             var paraTR = FindParameterTr(name);
             var textbox = paraTR.Textboxes()[0];
@@ -209,7 +209,7 @@ namespace Medidata.RBT.PageObjects.Rave
                 if (filePath.ToLower().EndsWith(".pdf"))
                     sb.Append(new Medidata.RBT.PDF("TripReports", filePath).Text);
 
-            TestContext.ScenarioText = sb.ToString();
+			Context.Storage["TripReports"] = sb.ToString();
         }
 		#region Pagination
 		public int CurrentPageNumber { get; private set; }
@@ -219,9 +219,9 @@ namespace Medidata.RBT.PageObjects.Rave
             IWebElement nextLink = null;
 
             if (areaIdentifier=="Subjects")
-                nextLink = TestContext.Browser.TryFindElementById("PromptsBox_su_PageLink:Next");
+                nextLink = Context.Browser.TryFindElementById("PromptsBox_su_PageLink:Next");
             else
-                nextLink = TestContext.Browser.TryFindElementById("PromptsBox_st_PageLink:Next");
+                nextLink = Context.Browser.TryFindElementById("PromptsBox_st_PageLink:Next");
 
             if (nextLink != null)
                 nextLink.Click();
@@ -233,7 +233,7 @@ namespace Medidata.RBT.PageObjects.Rave
 
         public bool GoPreviousPage(string areaIdentifier)
         {
-            var previousLink = TestContext.Browser.TryFindElementById("PromptsBox_st_PageLink:Prev");
+            var previousLink = Context.Browser.TryFindElementById("PromptsBox_st_PageLink:Prev");
             if (previousLink != null)
                 previousLink.Click();
             else

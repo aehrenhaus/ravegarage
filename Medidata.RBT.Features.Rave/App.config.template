@@ -32,9 +32,11 @@
 		ScenarioNamePrefix="PB_" 
 		AutoSaveMimeTypes="application/zip;application/pdf;application/octet-stream"
 		EnableSeeding ="True"
-		SeedFromBackendClasses =""
+		SeedFromBackendClasses="ClassicCodingDictionary,CodingDictionary,ProjectCoderRegistration,CodingColumn,CoderDictLevelComponent,CoderLocale,ExternalSystem"
 		SuppressSeeding=""
 		POAssembly="Medidata.RBT.PageObjects.Rave.dll"
+		UploadTimeout="400"
+		DownloadTimeout="400"
 		>
 	
 	</RBTConfiguration>
@@ -42,9 +44,10 @@
 	<RaveConfiguration
 		RaveURL ="http://rave564nycdev02a.mdsol.com/MedidataRAVE/"
 		RWSURL=""
-    ReportURL="http://rave564nycdev02a.mdsol.com/RaveCrystalViewer/"
+		ReportURL="http://rave564nycdev02a.mdsol.com/RaveCrystalViewer/"
 		DefaultUser="defuser"
 		DefaultUserPassword="password"
+		
 		/>
 
 	<specFlow>

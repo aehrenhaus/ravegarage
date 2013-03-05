@@ -78,7 +78,7 @@ namespace Medidata.RBT.PageObjects.Rave
 			if(folderLink==null)
 				throw new Exception("Folder not found:"+folderName);
 			folderLink.Click();
-			return this;
+			return this.WaitForPageLoads().As<BaseEDCPage>();
 		}
 
         /// <summary>
@@ -86,12 +86,11 @@ namespace Medidata.RBT.PageObjects.Rave
         /// </summary>
         /// <param name="formName">The form to select</param>
         /// <returns>The current CRFPage</returns>
-		public CRFPage SelectForm(string formName)
+		public virtual RavePageBase SelectForm(string formName)
 		{
 			IWebElement formFolderTable = Browser.TryFindElementById("_ctl0_LeftNav_EDCTaskList_TblTaskItems", true);
-			formFolderTable.FindElement(By.LinkText(formName)).Click();
-            TestContext.CurrentPage = new CRFPage();
-            return TestContext.CurrentPage.As<CRFPage>();
+			formFolderTable.TryFindElementBy(By.LinkText(formName)).Click();
+            return this.WaitForPageLoads().As<RavePageBase>();
 		}
 
 
@@ -116,7 +115,7 @@ namespace Medidata.RBT.PageObjects.Rave
 
 		#region IVerifySomethingExists
 
-		public bool VerifySomethingExist(string areaIdentifier, string type, string identifier, bool exactMatch = false)
+        public bool VerifySomethingExist(string areaIdentifier, string type, string identifier, bool exactMatch = false, int? amountOfTimes = null)
 		{        
             if (areaIdentifier == null)
             {
@@ -193,11 +192,11 @@ namespace Medidata.RBT.PageObjects.Rave
 
 		public IPage ClickAuditOnFormLevel()
         {
-            IWebElement element = Browser.TryFindElementById("_ctl0_Content_CRFRenderer_header_SG_DataStatusHyperlink");
+            IWebElement element = Browser.TryFindElementByPartialID("_header_SG_DataStatusHyperlink");
             if (element != null)
                 element.Click();
 
-            return GetPageByCurrentUrlIfNoAlert();
+            return WaitForPageLoads();
 
         }
         #endregion

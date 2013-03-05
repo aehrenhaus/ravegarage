@@ -102,6 +102,24 @@ namespace Medidata.RBT.PageObjects.Rave
 			return base.GetInfomation(identifier);
 		}
 
+        public override IPage ClickLink(string linkText, string objectType = null, string areaIdentifier = null, bool partial = false)
+        {
+            if (!string.IsNullOrEmpty(areaIdentifier) && string.Equals(areaIdentifier, "Grid View", StringComparison.InvariantCultureIgnoreCase))
+            {
+                IWebElement elem = Browser.TryFindElementById("Table1");
+                if (elem != null)
+                {
+                    IWebElement link = elem.TryFindElementBy(By.XPath(".//a[text()='" + linkText + "'] | .//span[text()='" + linkText + "']"));
+                    link.Click();
+
+                    return this.WaitForPageLoads();
+                }
+                    
+            }
+
+            return base.ClickLink(linkText, objectType, areaIdentifier, partial);
+        }
+
 		public string GetCRFVersion()
 		{
 			var trs = Browser.Table("Table1").Children()[0].Children();
@@ -134,7 +152,7 @@ namespace Medidata.RBT.PageObjects.Rave
             if (element != null)
                 element.Click();
 
-            return GetPageByCurrentUrlIfNoAlert();
+            return WaitForPageLoads();
         }
 
 		#region ICanVerifyInOrder
@@ -165,7 +183,10 @@ namespace Medidata.RBT.PageObjects.Rave
         /// New method to be used to verify if a control exist
         /// for ex: I can see control xyz
         /// </summary>
+        /// <param name="areaIdentifier"></param>
+        /// <param name="type"></param>
         /// <param name="identifier"></param>
+        /// <param name="exactMatch"></param>
         /// <returns></returns>
 		public new bool VerifySomethingExist(string areaIdentifier,string type, string identifier, bool exactMatch = false)
 		{

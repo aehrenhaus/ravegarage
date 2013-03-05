@@ -52,6 +52,8 @@ namespace Medidata.RBT.PageObjects.Rave
             set { this["RWSURL"] = value; }
         }
 
+
+
         [ConfigurationProperty("ReportURL", DefaultValue = "", IsRequired = true)]
         public String ReportURL
         {

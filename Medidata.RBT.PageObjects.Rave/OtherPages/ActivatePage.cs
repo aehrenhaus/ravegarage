@@ -19,7 +19,7 @@ namespace Medidata.RBT.PageObjects.Rave
         
         public ActivatePage()
 		{
-			PageFactory.InitElements(Browser, this);
+			//PageFactory.InitElements(Browser, this);
 		}
 
         public override string URL{ get { return "Activate.aspx"; }}

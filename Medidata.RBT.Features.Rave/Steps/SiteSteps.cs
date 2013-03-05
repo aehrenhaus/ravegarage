@@ -21,37 +21,54 @@ namespace Medidata.RBT.Features.Rave.Steps.Seeding
         [StepDefinition(@"Site ""([^""]*)"" exists")]
         public void Site____Exists(string siteName)
         {
-            TestContext.GetExistingFeatureObjectOrMakeNew(siteName, () => new Site(siteName, ""));
+            SeedingContext.GetExistingFeatureObjectOrMakeNew(siteName, () => new Site(siteName, ""));
         }
 
         /// <summary>
         /// Turn on DDE for a site
         /// </summary>
-        /// <param name="p0"></param>
-        /// <param name="p1"></param>
+        /// <param name="site">Site to turn on DDE for</param>
         [Given(@"Site ""([^""]*)"" is DDE-enabled")]
         public void GivenSiteForStudyIsDDEEnabled(string site)
         {
-            var siteObject = TestContext.GetExistingFeatureObjectOrMakeNew(site, () => new Site(site));
+            var siteObject = SeedingContext.GetExistingFeatureObjectOrMakeNew(site, () => new Site(site));
             DbHelper.EnableDDEForSiteAndStudy(siteObject.UniqueName);
         }
+
+        /// <summary>
+        /// Turn on Units Only for a site
+        /// </summary>
+        /// <param name="site">Site to turn on Units Only for</param>
+        [Given(@"Site ""([^""]*)"" is Units-Only-enabled")]
+        public void GivenSiteForStudyIsUnitsOnlyEnabled(string site)
+        {
+            var siteObject = SeedingContext.GetExistingFeatureObjectOrMakeNew(site, () => new Site(site));
+            DbHelper.EnableUnitsOnlyForSiteAndStudy(siteObject.UniqueName);
+        }
+
         /// <summary>
         /// Create a site if none already exists.
         /// </summary>
         /// <param name="siteName">The name that the site is referred to as in the feature file</param>
-        /// <param name=siteGroup">The name that the site group is referred to as in the feature file</param>
+        /// <param name="siteGroup">The name that the site group is referred to as in the feature file</param>
         [StepDefinition(@"Site ""([^""]*)"" with Site Group ""([^""]*)"" exists")]
         public void Site____WithSiteGroup____Exists(string siteName, string siteGroup)
         {
-            SiteGroup sg = TestContext.GetExistingFeatureObjectOrMakeNew(siteGroup, () => new SiteGroup(siteGroup));
-            var site = TestContext.GetExistingFeatureObjectOrMakeNew(siteName, () => new Site(siteName, sg.UniqueName));
+            SiteGroup sg = SeedingContext.GetExistingFeatureObjectOrMakeNew(siteGroup, () => new SiteGroup(siteGroup));
+            var site = SeedingContext.GetExistingFeatureObjectOrMakeNew(siteName, () => new Site(siteName, sg.UniqueName));
         }
 
+        /// <summary>
+        /// Unused step
+        /// </summary>
+        /// <param name="siteName"></param>
+        /// <param name="siteNumber"></param>
+        /// <param name="siteGroup"></param>
 		[StepDefinition(@"Site ""(.*)"" with number \((.*)\) and Site Group ""(.*)"" exists")]
 		public void Site____WithNumber____AndSiteGroup____Exists(string siteName, string siteNumber, string siteGroup)
 		{
-			SiteGroup sg = TestContext.GetExistingFeatureObjectOrMakeNew(siteGroup, () => new SiteGroup(siteGroup));
-			var site = TestContext.GetExistingFeatureObjectOrMakeNew(siteName, () => new Site(siteName, sg.UniqueName, siteNumber));
+			SiteGroup sg = SeedingContext.GetExistingFeatureObjectOrMakeNew(siteGroup, () => new SiteGroup(siteGroup));
+			var site = SeedingContext.GetExistingFeatureObjectOrMakeNew(siteName, () => new Site(siteName, sg.UniqueName, siteNumber));
 		}
 
 
@@ -75,8 +92,8 @@ namespace Medidata.RBT.Features.Rave.Steps.Seeding
         [StepDefinition(@"study ""([^""]*)"" is assigned to Site ""([^""]*)"" with study environment ""([^""]*)""")]
         public void Study____IsAssignedToSite____WithStudyEnvironment____(string studyName, string siteName, string studyEnvName)
         {
-            Site site = TestContext.GetExistingFeatureObjectOrMakeNew(siteName, () => new Site(siteName));
-			Project project = TestContext.GetExistingFeatureObjectOrMakeNew(studyName, () => new Project(studyName));
+            Site site = SeedingContext.GetExistingFeatureObjectOrMakeNew(siteName, () => new Site(siteName));
+			Project project = SeedingContext.GetExistingFeatureObjectOrMakeNew(studyName, () => new Project(studyName));
 
 			if (!site.StudySites.Any(x=>x.ProjectName == project.UniqueName && x.Environment == studyEnvName))
             {
@@ -100,7 +117,7 @@ namespace Medidata.RBT.Features.Rave.Steps.Seeding
         public void ISearchForSite__(string siteName)
         {
             var currentPage  = CurrentPage.As<SiteAdministrationHomePage>();
-            currentPage.SearchForSite(TestContext.GetExistingFeatureObjectOrMakeNew<Site>(siteName, () => new Site(siteName)).UniqueName);            
+            currentPage.SearchForSite(SeedingContext.GetExistingFeatureObjectOrMakeNew<Site>(siteName, () => new Site(siteName)).UniqueName);            
         }
 
         /// <summary>
@@ -110,7 +127,7 @@ namespace Medidata.RBT.Features.Rave.Steps.Seeding
         public void ISelectSiteDetailsForSite__(string siteName)
         {
             var currentPage = CurrentPage.As<SiteAdministrationHomePage>();
-            currentPage.ClickSite(TestContext.GetExistingFeatureObjectOrMakeNew<Site>(siteName, () => new Site(siteName)).UniqueName);
+            currentPage.ClickSite(SeedingContext.GetExistingFeatureObjectOrMakeNew<Site>(siteName, () => new Site(siteName)).UniqueName);
         }
 
 
@@ -121,7 +138,7 @@ namespace Medidata.RBT.Features.Rave.Steps.Seeding
         public void ISelect__ForStudy__inEnvironment__(string elementName, string studyName, string environment)
         {
             var currentPage = CurrentPage.As<SiteAdministrationDetailsPage>();
-            currentPage.SelectElementInStudySite(elementName, TestContext.GetExistingFeatureObjectOrMakeNew<Project>(studyName, () => new Project(studyName)).UniqueName, environment);
+            currentPage.SelectElementInStudySite(elementName, SeedingContext.GetExistingFeatureObjectOrMakeNew<Project>(studyName, () => new Project(studyName)).UniqueName, environment);
 
         }
 

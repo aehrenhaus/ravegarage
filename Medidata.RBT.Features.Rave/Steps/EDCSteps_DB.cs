@@ -34,9 +34,6 @@ namespace Medidata.RBT.Features.Rave
             DbHelper.SetDatabaseToOnline();
         }
 
-
-
-
 		/// <summary>
 		/// Based on the column name, we call an appropriate method and assert true/false whether or not column in table datapoints propagates
 		/// </summary>
@@ -65,7 +62,12 @@ namespace Medidata.RBT.Features.Rave
             Assert.IsTrue(dataTable.Rows[0][0].ToString() == value.ToString(), "Data doesn't propagate into Reporting Records correctly");
         }
 
-		[When(@"I verify the log message for query not opening event for Project ""([^""]*)"" and Site ""([^""]*)""")]
+        /// <summary>
+        /// Verify the log message for query not opening event for a specific Project and Site
+        /// </summary>
+        /// <param name="projectName">The project to verify</param>
+        /// <param name="siteName">The site to verify</param>
+        [StepDefinition(@"I verify the log message for query not opening event for Project ""([^""]*)"" and Site ""([^""]*)""")]
 		public void WhenIVerifyTheLogMessagesForQueryNotOpeningEventsForProjectEditCheckStudy3AndSiteEditCheckSite3(string projectName, string siteName)
 		{
 			var sql = "spVerifyQueryLog";
@@ -76,7 +78,6 @@ namespace Medidata.RBT.Features.Rave
 			throw new NotImplementedException();
 		}
 
-
 		/// <summary>
 		/// Wait for CV refresh to finish
 		/// </summary>
@@ -84,7 +85,7 @@ namespace Medidata.RBT.Features.Rave
 		[StepDefinition(@"I wait for Clinical View refresh to complete for project ""([^""]*)""")]
 		public void IWaitForClinicalViewRefreshToCompleteForProject____(string project)
 		{
-            var projectUniqueName = TestContext.GetExistingFeatureObjectOrMakeNew(project, () => new Project(project)).UniqueName;
+            var projectUniqueName = SeedingContext.GetExistingFeatureObjectOrMakeNew(project, () => new Project(project)).UniqueName;
             var sql = ClinicalViewsScripts.GenerateSQLForNumberOfRecordsThatNeedCVRefresh(projectUniqueName);
 			System.Data.DataTable dataTable;
 			do
@@ -93,7 +94,6 @@ namespace Medidata.RBT.Features.Rave
 				dataTable = DbHelper.ExecuteDataSet(sql).Tables[0]; //run backend query to count records needing cv refresh.
 			}
 			while (((int)dataTable.Rows[0][0] != 0));
-
 		}
 
         /// <summary>
@@ -110,14 +110,14 @@ namespace Medidata.RBT.Features.Rave
                 dataTable = DbHelper.ExecuteDataSet(sql).Tables[0]; //run backend query to count records in lab update queue
             }
             while (((int)dataTable.Rows[0][0] != 0));
-
         }
 
 
-        // <summary>
+        /// <summary>
         /// Wait for CV refresh to finish
         /// </summary>
-        /// <param name="project"></param>
+        /// <param name="status">The status of the field</param>
+        /// <param name="fieldOid">The fieldOid of the field</param>
         [StepDefinition(@"I verify ""([^""]*)"" status for field ""([^""]*)"" has been propaged on logline")]
         public void IVerify__StatusForField__HasBeenPropaged(string status, string fieldOid)
         {
@@ -128,13 +128,28 @@ namespace Medidata.RBT.Features.Rave
             Assert.IsTrue((int)isPropagated == 1, "Propagation did not occured");
         }
 
+        /// <summary>
+        /// Clinical Views exist for a particular project
+        /// </summary>
+        /// <param name="project"></param>
+        public static bool ClinicalViewsExistForProject(string project)
+        {
+            var projectUniqueName = SeedingContext.GetExistingFeatureObjectOrMakeNew(project, () => new Project(project)).UniqueName;
+            var sql = ClinicalViewsScripts.GenerateSQLForNumberOfCVProjects(projectUniqueName);
+            System.Data.DataTable dataTable;
+
+            dataTable = DbHelper.ExecuteDataSet(sql).Tables[0]; // run backend query to check whether clinical views project exists
+            if ((int)dataTable.Rows[0][0] > 0)
+                return true;
+            return false;
+        }
+
 		private string GenerateSQLQueryForColumnName(string column, int datapageID)
 		{
 			if (column.Equals("AltCodedValue"))
 				return AltCodedValuePropagateForDatapageIDScript(datapageID);
 			else
 				throw new NotImplementedException("Propagation verificaiton for " + column + " not implemented");
-
 		}
 
 		private string AltCodedValuePropagateForDatapageIDScript(int datapageID)
@@ -159,8 +174,6 @@ namespace Medidata.RBT.Features.Rave
                                                                 and dL.deleted <> 1
                                                     where r.datapageID = {0} 
                                     ", datapageID);
-
-
 		}
 
         private string CheckDataPointStatusPropagate(int datapageID, string fieldOID, string status)
@@ -195,13 +208,17 @@ namespace Medidata.RBT.Features.Rave
                                         else
 	                                        select 0
                                     ", datapageID, fieldOID, status);
-
         }
 
-
+        /// <summary>
+        /// Scripts pertaining to clinical views
+        /// </summary>
 		public class ClinicalViewsScripts
 		{
-
+            /// <summary>
+            /// Generate SQL for number of records in lab update queue
+            /// </summary>
+            /// <returns>The number of records in the lab update queue</returns>
             public static string GenerateSQLForNumberOfRecordsInLabUpdateQueue()
             {
                 return CountOfRecordsInLabUpdateQueue();
@@ -212,10 +229,27 @@ namespace Medidata.RBT.Features.Rave
 				return "select count(labUpdateQueueID) from labUpdateQueue";
             }
 
+
+            /// <summary>
+            /// Generate SQL for number of CV Projects for a project name
+            /// </summary>
+            /// <param name="projectName">The name of the project for which Clinical Views exist</param>
+            /// <returns>The number of CV Projects matching project name</returns>
+            public static string GenerateSQLForNumberOfCVProjects(string projectName)
+            {
+                return CountOfCVProjects(projectName);
+            }
+
+            /// <summary>
+            /// Generate SQL for number of records that need CV refreshing
+            /// </summary>
+            /// <param name="projectName">The name of the project to check the Clinical Views that need refreshing</param>
+            /// <returns>The number of records that need CV refreshing</returns>
 			public static string GenerateSQLForNumberOfRecordsThatNeedCVRefresh(string projectName)
 			{
 				return CountOfRecordsRequiringCVRefreshForProject(projectName);
 			}
+
 			private static string CountOfRecordsRequiringCVRefreshForProject(string project)
 			{
 				return String.Format(@"     select count(r.recordID)
@@ -235,9 +269,17 @@ namespace Medidata.RBT.Features.Rave
 		                                        and r.deleted <> 1
 		                                        and dbo.fnlocaldefault(projectName) = '{0}'
                                     ", project);
-
-
 			}
+
+            private static string CountOfCVProjects(string project)
+            {
+                return String.Format(@"     select count(p.projectID) 
+                                            from clinicalviewProjects cvp
+	                                            join projects p
+		                                            on p.projectID = cvp.projectID
+                                            where dbo.fnlocaldefault(projectName) = '{0}'
+                                    ", project);
+            }
 		}
 	}
 }

@@ -7,6 +7,9 @@ namespace Medidata.RBT.PageObjects.Rave
 	{
 		public SignatureBox()
 		{
+			if (Context == null)
+				return;
+
             UsernameBox = Browser.TryFindElementById("TwoPart");
             PasswordBox = Browser.TryFindElementById("SignatureBox");
             ValidateSignAndSave = Browser.TryFindElementById("ValidateSignAndSave");

@@ -68,10 +68,7 @@ namespace Medidata.RBT.PageObjects.Rave
 			{
 				nextLink.Click();
 				return true ;
-			}
-
-			return false;
-			
+			}		
 		}
 	}
 }

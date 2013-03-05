@@ -12,6 +12,7 @@ using System.Xml;
 using System.Reflection;
 using Medidata.RBT.SharedObjects;
 using Medidata.RBT.SharedRaveObjects;
+using System.Text.RegularExpressions;
 
 namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
 {
@@ -25,22 +26,27 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
         public Project Project { get; set; }
         public Draft Draft { get; set; }
 
+
         /// <summary>
         ///The uploaded draft constructor
         ///</summary>
         ///<param name="name">The feature defined name of the UploadedDraft</param>
-		public UploadedDraft(string name)
+		public UploadedDraft(string name, bool redirectAfterSeed = true)
         {
 			UniqueName = name;
+			this.RedirectAfterSeed = redirectAfterSeed;
         }
+
 
         /// <summary>
         /// Navigate to the upload draft page.
         /// </summary>
 		protected override void NavigateToSeedPage()
         {
-            TestContext.CurrentPage.As<HomePage>().ClickLink("Architect");
-            TestContext.CurrentPage.As<ArchitectPage>().ClickLink("Upload Draft");
+            WebTestContext.CurrentPage.As<HomePage>().ClickLink("Architect");
+            WebTestContext.Browser.WaitForPageToBeReady();
+            WebTestContext.CurrentPage.As<ArchitectPage>().ClickLink("Upload Draft");
+            WebTestContext.Browser.WaitForPageToBeReady();
         }
 
         /// <summary>
@@ -48,7 +54,7 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
         /// </summary>
 		protected override void CreateObject()
         {
-            TestContext.CurrentPage.As<UploadDraftPage>().UploadFile(UniqueFileLocation);
+            WebTestContext.CurrentPage.As<UploadDraftPage>().UploadFile(UniqueFileLocation);
             Factory.FeatureObjectsForDeletion.Add(this);
         }
 
@@ -71,7 +77,7 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
 				//project 
 				var projectName = draftTable[1, "ProjectName"].ToString();
                 if (Project == null)
-                    Project = TestContext.GetExistingFeatureObjectOrMakeNew(projectName, () => new Project(projectName, true));
+					Project = SeedingContext.GetExistingFeatureObjectOrMakeNew(projectName, () => new Project(projectName, true));
 
 				draftTable[1, "ProjectName"] = Project.UniqueName;
 
@@ -82,7 +88,7 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
 
                     if (!string.IsNullOrEmpty(labStandardGroupName))
                     {
-                        StandardGroup labStandardGroup = TestContext.GetExistingFeatureObjectOrMakeNew(labStandardGroupName, () => new StandardGroup(labStandardGroupName));
+						StandardGroup labStandardGroup = SeedingContext.GetExistingFeatureObjectOrMakeNew(labStandardGroupName, () => new StandardGroup(labStandardGroupName));
                         draftTable[1, "LabStandardGroup"] = labStandardGroup.UniqueName;
                     }
                 }
@@ -95,7 +101,7 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
 
                     if (!string.IsNullOrEmpty(referenceLabName))
                     {
-                        Lab referenceLabsGroup = TestContext.GetExistingFeatureObjectOrMakeNew(referenceLabName, () => new Lab(referenceLabName));
+						Lab referenceLabsGroup = SeedingContext.GetExistingFeatureObjectOrMakeNew(referenceLabName, () => new Lab(referenceLabName));
                         draftTable[1, "ReferenceLabs"] = referenceLabsGroup.UniqueName;
                     }
                 }
@@ -108,7 +114,7 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
 
                     if (!string.IsNullOrEmpty(alertLabName))
                     {
-                        Lab alertLabsGroup = TestContext.GetExistingFeatureObjectOrMakeNew(alertLabName, () => new Lab(alertLabName));
+						Lab alertLabsGroup = SeedingContext.GetExistingFeatureObjectOrMakeNew(alertLabName, () => new Lab(alertLabName));
                         draftTable[1, "AlertLabs"] = alertLabsGroup.UniqueName;
                     }
                 }
@@ -116,7 +122,7 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
 
 				//draft
 				var oldDraftName = draftTable[1, "DraftName"].ToString();
-				Draft = TestContext.GetExistingFeatureObjectOrMakeNew(oldDraftName, () => new Draft(oldDraftName));
+				Draft = SeedingContext.GetExistingFeatureObjectOrMakeNew(oldDraftName, () => new Draft(oldDraftName));
 
 				for (int row = 1; row <= fieldsTable.RowsCount; row++)
 				{
@@ -125,6 +131,9 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
 
                     //Analytes
                     ReplaceAnalytesWithUniqueAnalytes(fieldsTable, row);
+
+					//Coding Dictionaries
+					ReplaceCodingDictionariesWithUniqueCodingDictionaries(fieldsTable, row);
 				}
 
 				//Create a unique version of the file to upload
@@ -149,7 +158,7 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
                 StringBuilder uniqueEntryRestrictions = new StringBuilder();
                 foreach (string entryRestriction in entryRestrictions)
                 {
-                    Role role = TestContext.GetExistingFeatureObjectOrMakeNew<Role>(entryRestriction.Trim(), () => new Role(entryRestriction.Trim()));
+					Role role = SeedingContext.GetExistingFeatureObjectOrMakeNew<Role>(entryRestriction.Trim(), () => new Role(entryRestriction.Trim()));
                     uniqueEntryRestrictions.Append(role.UniqueName + ",");
                 }
 
@@ -168,10 +177,40 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
 
             if (!String.IsNullOrEmpty(analyteString))
             {
-                Analyte analyte = TestContext.GetExistingFeatureObjectOrMakeNew<Analyte>(analyteString.Trim(), () => new Analyte(analyteString));
+				Analyte analyte = SeedingContext.GetExistingFeatureObjectOrMakeNew<Analyte>(analyteString.Trim(), () => new Analyte(analyteString));
                 fieldsTable[currentRow, "AnalyteName"] = analyte.UniqueName.ToString();
             }
         }
+
+		/// <summary>
+		/// Replaces any coding dictionary assignments with seeded coding dictionaries.
+		/// The coding dictionary mus have already been seeded othervise an exception is thrown.
+		/// The version component will be replaced by the seeded version if the two versions don't match.
+		/// </summary>
+		/// <param name="fieldsTable">The excel table containing the fields</param>
+		/// <param name="currentRow">The current row in the fields table</param>
+		private void ReplaceCodingDictionariesWithUniqueCodingDictionaries(ExcelTable fieldsTable, int currentRow)
+		{
+			string codingDictionaryString = fieldsTable[currentRow, "CodingDictionary"] as string;
+
+			if (!string.IsNullOrEmpty(codingDictionaryString))
+			{
+				var match = Regex.Match(codingDictionaryString, @"(?<VERSION>\(.*?\))");
+				var version = match.Groups["VERSION"].Value;
+
+				codingDictionaryString = codingDictionaryString
+					.Replace(version, string.Empty).Trim();
+
+                BaseCodingDictionary cd = SeedingContext.GetExistingFeatureObjectOrMakeNew<BaseCodingDictionary>(codingDictionaryString,
+                        () => { throw new Exception(string.Format("Coding Dictionary [{0}] not found", codingDictionaryString)); });
+              
+
+				codingDictionaryString = string.Format("{0} {1}", 
+					cd.UniqueName,
+                    version);	//Keep the version that is part of the draft (version is not seeded, the registered version if not same as draft should result in error)
+				fieldsTable[currentRow, "CodingDictionary"] = codingDictionaryString;
+			}
+		}
 
 
         /// <summary>

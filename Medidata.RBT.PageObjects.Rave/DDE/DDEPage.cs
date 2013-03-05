@@ -48,7 +48,7 @@ namespace Medidata.RBT.PageObjects.Rave
             if (element == null)
                 throw new Exception("Can't find button:" + identifier);
             element.Click();
-            return GetPageByCurrentUrlIfNoAlert();
+            return WaitForPageLoads();
         }
 
         public override IPage Type(string name, string text)

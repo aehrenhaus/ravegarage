@@ -11,22 +11,28 @@ using OpenQA.Selenium;
 
 namespace Medidata.RBT.Features.Rave
 {
+    /// <summary>
+    /// Steps pertaining to EDC
+    /// </summary>
     [Binding]
     public partial class EDCSteps : BrowserStepsBase
     {
+        /// <summary>
+        /// Select a study with a particular environment
+        /// </summary>
+        /// <param name="studyName">Study to select</param>
+        /// <param name="environment">Environment to select</param>
 		[StepDefinition(@"I select Study ""([^""]*)"" \([^\)]*\)")]
 		public void ISelectStudy____AndSite____Env____(string studyName,string environment)
 		{
 			CurrentPage = CurrentPage.As<HomePage>()
-				.SelectStudy(TestContext.GetExistingFeatureObjectOrMakeNew(studyName, () => new Project(studyName)).UniqueName,environment);
+				.SelectStudy(SeedingContext.GetExistingFeatureObjectOrMakeNew(studyName, () => new Project(studyName)).UniqueName,environment);
 		}
 
-
         /// <summary>
-        /// Select study and site on Home page
+        /// Select study on Home page
         /// </summary>
-        /// <param name="studyName"></param>
-        /// <param name="siteName"></param>
+        /// <param name="studyName">Study to select</param>
         [StepDefinition(@"I select Study ""([^""]*)""")]
         public void ISelectStudy____AndSite____(string studyName)
         {
@@ -36,21 +42,27 @@ namespace Medidata.RBT.Features.Rave
         /// <summary>
         /// Select study and site on Home page
         /// </summary>
-        /// <param name="studyName"></param>
-        /// <param name="siteName"></param>
+        /// <param name="studyName">Study to select</param>
+        /// <param name="siteName">Site to select</param>
         [StepDefinition(@"I select Study ""([^""]*)"" and Site ""([^""]*)""")]
         public void ISelectStudy____AndSite____(string studyName, string siteName)
         {
             CurrentPage = CurrentPage.As<HomePage>()
-                .SelectStudy(TestContext.GetExistingFeatureObjectOrMakeNew(studyName, () => new Project(studyName)).UniqueName)
-                .SelectSite(TestContext.GetExistingFeatureObjectOrMakeNew(siteName, () => new Site(siteName)).UniqueName);
+                .SelectStudy(SeedingContext.GetExistingFeatureObjectOrMakeNew(studyName, () => new Project(studyName)).UniqueName)
+                .SelectSite(SeedingContext.GetExistingFeatureObjectOrMakeNew(siteName, () => new Site(siteName)).UniqueName);
         }
 
+        /// <summary>
+        /// Create a certain number of random subjects in a specified location
+        /// </summary>
+        /// <param name="subjectCount">Amount of subjects to create</param>
+        /// <param name="subjectName">The initials of the subjects to create</param>
+        /// <param name="studyName">The study to create the subjects in</param>
+        /// <param name="environment">The environment to create the subjects in</param>
+        /// <param name="siteName">The site to create the subjects in</param>
 		[StepDefinition(@"I create ([^""]*) random Subjects with name ""([^""]*)"" in Study ""([^""]*)"" \(([^\)]*)\) in Site ""([^""]*)""")]
 		public void ICreate____RandomSubjectsWithName____inStudy____Env____inSite____(int subjectCount, string subjectName, string studyName,string environment, string siteName)
 		{
-
-			// var subjectNameTemplate = String.Concat(subjectName, " {RndNum<num1>(5)}");
 			for (int i = 0; i < subjectCount; i++)
 			{
 				var page = CurrentPage.As<HomePage>().SelectStudy(studyName,environment).SelectSite(siteName);
@@ -360,12 +372,18 @@ namespace Medidata.RBT.Features.Rave
                 .SelectForm(formName);
         }
 
+        /// <summary>
+        /// Select primary record form
+        /// </summary>
         [StepDefinition(@"I select primary record form")]
         public void ISelectPrimaryRecordForm()
         {
             CurrentPage = CurrentPage.As<SubjectPage>().ClickPrimaryRecordLink();
         }
 
+        /// <summary>
+        /// Click audit on the form level
+        /// </summary>
         [StepDefinition(@"I click audit on form level")]
         public void IClickAuditOnFormLevel()
         {
@@ -384,6 +402,23 @@ namespace Medidata.RBT.Features.Rave
 				.FindField(fieldName)
 				.ClickAudit();
 		}
+
+        /// <summary>
+        /// Verify audit exists
+        /// </summary>
+        /// <param name="table"></param>
+        [StepDefinition(@"I verify exact Audit texts exist")]
+        public void IVerifyExactAuditsExist(Table table)
+        {
+            var audits = table.CreateSet<AuditModel>();
+            int position = 1;
+            foreach (var a in audits)
+            {
+                bool exist = CurrentPage.As<AuditsPage>().ExactAuditExist(a, position);
+                Assert.IsTrue(exist, string.Format("Audit {0} does not exist", a.Audit));
+                position++;
+            }
+        }
 
         /// <summary>
         /// Click audit icon on a lab field on CRF page
@@ -414,7 +449,7 @@ namespace Medidata.RBT.Features.Rave
 		}
 
         /// <summary>
-        /// Verify audit exists
+        /// Verify the last audit exists matches the table
         /// </summary>
         /// <param name="table"></param>
         [StepDefinition(@"I verify last audit exist")]
@@ -430,15 +465,35 @@ namespace Medidata.RBT.Features.Rave
             }
         }
 
+        /// <summary>
+        /// This step definition does not match the actual functionality of the step.
+        /// Refactor in a further commit.
+        /// </summary>
+        /// <param name="logForm"></param>
+        /// <param name="leftNav"></param>
         [StepDefinition(@"I select link ""([^""]*)"" located in ""([^""]*)""")]
         public void ISelectLink____LocatedIn____(string logForm, string leftNav)
         {
-            if (logForm == "Monitor Visits")
+            if (logForm.Equals("Monitor Visits", StringComparison.InvariantCultureIgnoreCase))
                 CurrentPage = CurrentPage.As<HomePage>().SelectForm(logForm);
+            else if (logForm.Equals("Copy to Draft", StringComparison.InvariantCultureIgnoreCase))
+                CurrentPage = CurrentPage.As<ArchitectCRFDraftPage>().ClickLink("Copy to Draft");
+            else if (logForm.Equals("Propose Objects", StringComparison.InvariantCultureIgnoreCase))
+                CurrentPage = CurrentPage.As<ArchitectCRFDraftPage>().ClickLink("Propose Objects");
+            else if (logForm.Equals("Forms", StringComparison.InvariantCultureIgnoreCase))
+                CurrentPage = CurrentPage.As<ArchitectCRFDraftPage>().ClickLink("Forms");
             else
                 CurrentPage.As<SubjectPage>().SelectForm(logForm);
         }
 
+        /// <summary>
+        /// Check that the cursor is or is not focused on the given element in a column
+        /// </summary>
+        /// <param name="not">If the word not is used, check that the cursor focus is not on the element specified</param>
+        /// <param name="controlType">The control type of the element</param>
+        /// <param name="fieldName">The name of the field</param>
+        /// <param name="positionText">The position from left to right that the element is located, 1 indexed</param>
+        /// <param name="rowText">The row from top to bottom that the element is located, 1 indexed</param>
         [StepDefinition(@"the cursor focus is ([^""]*)located on ""([^""]*)"" in the column labeled ""([^""]*)"" in the ""([^""]*)"" position in the ""([^""]*)"" row")]
         public void TheCursorFocusIs____LocatedOn____InTheColumnLabeled____InThe____RowAndThe____PositionInThatRow(string not, string controlType, string fieldName, string positionText, string rowText)
         {
@@ -456,6 +511,13 @@ namespace Medidata.RBT.Features.Rave
                     .IsElementFocused(type, position));
         }
 
+        /// <summary>
+        /// Check that the cursor is or is not focused on the given element in a row
+        /// </summary>
+        /// <param name="not">If the word not is used, check that the cursor focus is not on the element specified</param>
+        /// <param name="controlType">The control type of the element</param>
+        /// <param name="fieldName">The name of the field</param>
+        /// <param name="positionText">The position in the row from left to right that the element is located, 1 indexed</param>
         [StepDefinition(@"the cursor focus is ([^""]*)located on ""([^""]*)"" in the row labeled ""([^""]*)"" in the ""([^""]*)"" position in the row")]
         public void TheCursorFocusIs____LocatedOn____InTheRowLabeled____InThe____PositionInThatRow(string not, string controlType, string fieldName, string positionText)
         {
@@ -472,18 +534,31 @@ namespace Medidata.RBT.Features.Rave
                     .IsElementFocused(type, position));
         }
 
+        /// <summary>
+        /// Check that the X offset of the page is non-zero (I.E. the browser window has moved right)
+        /// </summary>
         [StepDefinition(@"the browser scrolls to the right")]
         public void TheBrowserScrollsToTheRight()
         {
 			Assert.AreNotEqual(0, Browser.GetPageOffsetX());
         }
 
+        /// <summary>
+        /// Check that the Y offset of the page is non-zero (I.E. the browser window has moved down)
+        /// </summary>
         [StepDefinition(@"the browser scrolls down")]
         public void TheBrowserScrollsDown()
         {
 			Assert.AreNotEqual(0, Browser.GetPageOffsetY());
         }
 
+        /// <summary>
+        /// Move the cursor to the given element in a row
+        /// </summary>
+        /// <param name="controlType">The control type of the element</param>
+        /// <param name="fieldName">The name of the field</param>
+        /// <param name="positionText">The position from left to right that the element is located, 1 indexed</param>
+        /// <param name="rowText">The row from top to bottom that the element is located, 1 indexed</param>
         [StepDefinition(@"move cursor focus to ""([^""]*)"" in the column labeled ""([^""]*)"" in the ""([^""]*)"" position in the ""([^""]*)"" row")]
         public void MoveCursorFocusTo____InTheColumnLabeled____InThe____RowAndThe____PositionInThatRow
             (string controlType, string fieldName, string positionText, string rowText)
@@ -497,6 +572,12 @@ namespace Medidata.RBT.Features.Rave
                 .FocusElement(type, position);
         }
 
+        /// <summary>
+        /// Move the cursor to the given element in a row. Whent there is only 1 row, so you do not need to specify row
+        /// </summary>
+        /// <param name="controlType">The control type of the element</param>
+        /// <param name="fieldName">The name of the field</param>
+        /// <param name="positionText">The position from left to right that the element is located, 1 indexed</param>
         [StepDefinition(@"move cursor focus to ""([^""]*)"" in the row labeled ""([^""]*)"" in the ""([^""]*)"" position in the row")]
         public void MoveCursorFocusTo____InTheRowLabeled____InThe____PositionInThatRow(string controlType, string fieldName, string positionText)
         {
@@ -508,6 +589,11 @@ namespace Medidata.RBT.Features.Rave
                 .FocusElement(type, position);
         }
 
+        /// <summary>
+        /// Check that the cursor focus is on an element of a specific control type and value
+        /// </summary>
+        /// <param name="controlTypeString">The control type of the element</param>
+        /// <param name="value">The value of the element</param>
         [StepDefinition(@"the cursor focus is on ""([^""]*)"" labeled ""([^""]*)""")]
         public void IShouldSeeTheCursorFocusOn____Labeled____(string controlTypeString, string value)
         {
@@ -515,6 +601,10 @@ namespace Medidata.RBT.Features.Rave
             Assert.IsTrue(CurrentPage.As<CRFPage>().IsElementFocused(type, value));
         }
 
+        /// <summary>
+        /// Verify lab ranges against the passed in table
+        /// </summary>
+        /// <param name="table">What the lab ranges should be</param>
         [StepDefinition(@"I verify lab ranges")]
         public void IVerifyLabRanges(Table table)
         {
@@ -522,6 +612,10 @@ namespace Medidata.RBT.Features.Rave
             Assert.IsTrue(page.VerifyLabDataPoints(table.CreateSet<LabRangeModel>()), "Lab Data points don't match");
         }
 
+        /// <summary>
+        /// Select units in a lab
+        /// </summary>
+        /// <param name="table">The units to select in a lab</param>
         [StepDefinition(@"I select Unit")]
         public void ISelectUnit(Table table)
         {
@@ -529,59 +623,60 @@ namespace Medidata.RBT.Features.Rave
             page.SelectUnitsForFields(table.CreateSet<LabRangeModel>());
         }
 
-
-        //[StepDefinition(@"I verify ""([^""]*)"" is ""([^""]*)"" on ""([^""]*)""")]
-        //public void IVerify____Is____(string checkBoxName, string checkStatus, string fieldName)
-        //{
-        //    bool result = false;
-        //    CRFPage page = CurrentPage.As<CRFPage>();
-
-        //    result = (page.FindField(fieldName) as LabFieldControl).VerifyCheck(checkBoxName, checkStatus);
-
-        //    Assert.IsTrue(result, String.Format("The check {0} is not {1}", checkBoxName, checkStatus));
-        //}
-
+        /// <summary>
+        /// Select the passed in lab
+        /// </summary>
+        /// <param name="labName">The name of the lab to select</param>
         [StepDefinition(@"I select Lab ""([^""]*)""")]
         public void ISelectLab_____(string labName)
         {
             CRFPage page = CurrentPage.As<CRFPage>();
-            page.SelectLabValue(TestContext.GetExistingFeatureObjectOrMakeNew<Lab>(labName, () => new Lab(labName)).UniqueName);
+            if (labName.ToUpper().Equals("UNITS ONLY")) //this is a setting, not a lab name, so this will never be seeded.
+                page.SelectLabValue(labName);
+            else
+                page.SelectLabValue(SeedingContext.GetExistingFeatureObjectOrMakeNew<Lab>(labName, () => new Lab(labName)).UniqueName);
         }
 
-        [StepDefinition(@"I sign the form with username ""([^""]*)"" and password ""([^""]*)""")]
-        public void ISignTheFormWithUsername____AndPassword____(string username, string password)
-        {
-            new SignatureBox().Sign(username, password);
-        }
-
+        /// <summary>
+        /// Sign the form with a username. Will also provide the matching password for that username.
+        /// </summary>
+        /// <param name="userName">The username to sign the form with.</param>
         [StepDefinition(@"I sign the form with username ""([^""]*)""")]
         public void ISignTheFormWithUsername____(string userName)
         {
-            User user = TestContext.GetExistingFeatureObjectOrMakeNew(
+            User user = SeedingContext.GetExistingFeatureObjectOrMakeNew(
                 userName, () => new User(userName));
             new SignatureBox().Sign(user.UniqueName, user.Password);
         }
 
+        /// <summary>
+        /// Verify text on a page, replacing the username in the text with the unique version of that username exists.
+        /// </summary>
+        /// <param name="text">The text to verify</param>
+        /// <param name="userName">The feature-level version of that username</param>
         [StepDefinition(@"I verify text ""([^""]*)"" with username ""([^""]*)"" exists")]
         public void IVerifyText____WithUsername____Exists(string text, string userName)
         {
-            User user = TestContext.GetExistingFeatureObjectOrMakeNew(
+            User user = SeedingContext.GetExistingFeatureObjectOrMakeNew(
                 userName, () => new User(userName));
             text = text.Replace(userName, user.UniqueName);
             bool exist = CurrentPage.As<IVerifySomethingExists>().VerifySomethingExist(null, "text", text);
             Assert.IsTrue(exist, String.Format("Text does not exist :{0}", text));
-
         }
 
+        /// <summary>
+        /// Verify text on a page, replacing the username in the text with the unique version of that username does not exist.
+        /// </summary>
+        /// <param name="text">The text to verify</param>
+        /// <param name="userName">The feature-level version of that username</param>
         [StepDefinition(@"I verify text ""([^""]*)"" with username ""([^""]*)"" does not exist")]
         public void IVerifyText____WithUsername____DoesNotExists(string text, string userName)
         {
-            User user = TestContext.GetExistingFeatureObjectOrMakeNew(
+            User user = SeedingContext.GetExistingFeatureObjectOrMakeNew(
                 userName, () => new User(userName));
             text = text.Replace(userName, user.UniqueName);
             bool exist = CurrentPage.As<IVerifySomethingExists>().VerifySomethingExist(null, "text", text);
             Assert.IsFalse(exist, String.Format("Text exist :{0}", text));
-
         }
 
         /// <summary>
@@ -673,21 +768,14 @@ namespace Medidata.RBT.Features.Rave
         }
 
         /// <summary>
-        /// Expand a header in Task Summary area on Subject page.
+        /// Verify that a form only appears the specified amount of times
         /// </summary>
-        /// <param name="header"></param>
-        [StepDefinition(@"I expand ""([^""]*)"" in Task Summary")]
-        public void IExpand____InTaskSummary(string header)
-        {
-            CurrentPage.As<SubjectPage>().ExpandTask(header);
-        }
-
+        /// <param name="formCount">The amount of times the form must appear</param>
+        /// <param name="formName">The name of the form</param>
 		[StepDefinition(@"I verify only ""(.*)"" Form ""(.*)"" is displayed")]
 		public void IVerifyOnly____Form____IsDisplayed(int formCount, string formName)
 		{
 			CurrentPage.As<CRFPage>().CheckFormCount(formName, formCount);
 		}
-
-
     }
 }

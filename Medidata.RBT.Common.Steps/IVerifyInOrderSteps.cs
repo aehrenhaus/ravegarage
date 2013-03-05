@@ -4,6 +4,9 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Medidata.RBT.Common.Steps
 {
+    /// <summary>
+    /// Steps to verify order
+    /// </summary>
     [Binding]
     public class IVerifyInOrderSteps : BrowserStepsBase
     {
@@ -20,7 +23,7 @@ namespace Medidata.RBT.Common.Steps
 		}
 
 		/// <summary>
-		///  1 column is in descendent alphabetical order 
+		///  1 column is in alphabetical order 
 		/// </summary>
 		/// <param name="columnHeader"></param>
 		/// <param name="tableIdentifier"></param>
@@ -29,32 +32,35 @@ namespace Medidata.RBT.Common.Steps
 		{
 			bool inorder = CurrentPage.As<ICanVerifyInOrder>().VerifyTableColumnInAphabeticalOrder(tableIdentifier, columnHeader, true);
 			Assert.IsTrue(inorder, String.Format("Column {0} in table {1} is not in alphabetical order", columnHeader, tableIdentifier));
-
 		}
 
+        /// <summary>
+        /// 1 column is in descendent alphabetical order 
+        /// </summary>
+        /// <param name="columnHeader"></param>
+        /// <param name="tableIdentifier"></param>
 		[StepDefinition(@"I verify column ""([^""]*)"" in table ""([^""]*)"" is in descendent alphabetical order")]
 		public void IVerifyColumn____InTable____IsInDescendentAlphabeticalOrder(string columnHeader, string tableIdentifier)
 		{
 			bool inorder = CurrentPage.As<ICanVerifyInOrder>().VerifyTableColumnInAphabeticalOrder(tableIdentifier, columnHeader, false);
 			Assert.IsTrue(inorder, String.Format("Column {0} in table {1} is not in descendent alphabetical order", columnHeader, tableIdentifier));
-
 		}
-
 
 		/// <summary>
 		/// 
 		/// </summary>
 		/// <param name="tableIdentifier"></param>
-		/// <param name="descendent"></param>
 		[StepDefinition(@"I verify table ""([^""]*)"" is in alphabetical order")]
 		public void IVerifyTable____IsInAlphabeticalOrder(string tableIdentifier)
 		{
-
 			bool inorder = CurrentPage.As<ICanVerifyInOrder>().VerifyTableInAphabeticalOrder(tableIdentifier, false, true);
 			Assert.IsTrue(inorder, String.Format("Table {0} is not in alphabetical order",  tableIdentifier));
-		
 		}
 
+        /// <summary>
+        /// Verify table is in descendent alphabetical order
+        /// </summary>
+        /// <param name="tableIdentifier">The table to verify</param>
 		[StepDefinition(@"I verify table ""([^""]*)"" is in descendent alphabetical order")]
 		public void IVerifyTable____IsInDescendentAlphabeticalOrder(string tableIdentifier)
 		{
@@ -62,7 +68,6 @@ namespace Medidata.RBT.Common.Steps
 			Assert.IsTrue(inorder, String.Format("Table {0} is not in descendent alphabetical order", tableIdentifier));
 		
 		}
-
 
 		/// <summary>
 		/// Things in order, the meaning of this method will depend on concrete page.

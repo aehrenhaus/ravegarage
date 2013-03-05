@@ -8,6 +8,7 @@ using OpenQA.Selenium.Remote;
 using TechTalk.SpecFlow;
 using Medidata.RBT.SeleniumExtension;
 using System.IO;
+using System.Collections.ObjectModel;
 
 namespace Medidata.RBT.PageObjects.Rave
 {
@@ -23,7 +24,14 @@ namespace Medidata.RBT.PageObjects.Rave
 			var table = Browser.Table("_ctl0_Content_Results");
 			Table dt = new Table("Name");
             dt.AddRow(pdfName);
-			var tr = table.FindMatchRows(dt).FirstOrDefault();
+            ReadOnlyCollection<IWebElement> matchingRows = table.FindMatchRows(dt);
+            if (matchingRows == null || matchingRows.Count == 0)
+            {
+                dt = new Table("LName");
+                dt.AddRow(pdfName);
+                matchingRows = table.FindMatchRows(dt);
+            }
+            var tr = matchingRows.FirstOrDefault();
 			tr.FindImagebuttons()[0].Click();
             List<String> extractedFilePaths = Misc.UnzipAllDownloads();
 
@@ -33,7 +41,7 @@ namespace Medidata.RBT.PageObjects.Rave
                 if(filePath.ToLower().EndsWith(".pdf"))
                     sb.Append(new Medidata.RBT.PDF(pdfName, filePath).Text);
 
-            TestContext.ScenarioText = sb.ToString();
+			Context.Storage["TripReports"] = sb.ToString();
 		}
 
         public override string URL

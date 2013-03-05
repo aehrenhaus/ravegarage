@@ -5,6 +5,9 @@ using OpenQA.Selenium;
 
 namespace Medidata.RBT.Common.Steps
 {
+    /// <summary>
+    /// Steps pertaining to all pages
+    /// </summary>
 	[Binding]
 	public class IPageSteps : BrowserStepsBase
 	{
@@ -20,6 +23,12 @@ namespace Medidata.RBT.Common.Steps
 			CurrentPage = CurrentPage.ChooseFromDropdown(identifier, text);
 		}
 
+        /// <summary>
+        /// Unused step
+        /// </summary>
+        /// <param name="objectType"></param>
+        /// <param name="text"></param>
+        /// <param name="identifier"></param>
 		[StepDefinition(@"I choose ([^""]*) ""([^""]*)"" from ""([^""]*)""")]
 		public void IChoose________From____(string objectType, string text, string identifier)
 		{
@@ -46,73 +55,6 @@ namespace Medidata.RBT.Common.Steps
 		public void IPick____In____(string identifier, string areaName)
 		{
 			CurrentPage.ChooseFromRadiobuttons(areaName, identifier);
-		}
-
-		/// <summary>
-		/// I uncheck "locked" in "Study1"
-		/// </summary>
-		/// <param name="identifier"></param>
-		/// <param name="areaName"></param>
-		[StepDefinition(@"I check ""([^""]*)"" in ""([^""]*)""")]
-		public void ICheck____In____(string identifier, string areaName)
-		{
-			CurrentPage.ChooseFromCheckboxes(identifier, true, areaName);
-		}
-
-		/// <summary>
-		/// I check "locked" on "Study1" in "Studies"
-		/// </summary>
-		/// <param name="identifier"></param>
-		/// <param name="listItem"></param>
-		/// <param name="listIdentifier"></param>
-		[StepDefinition(@"I check ""([^""]*)"" on ""([^""]*)"" in ""([^""]*)""")]
-		public void ICheck____On___In____(string identifier, string listItem, string listIdentifier)
-		{
-			CurrentPage.ChooseFromCheckboxes( identifier, true, listIdentifier, listItem);
-		}
-
-
-		/// <summary>
-		/// Check a check box
-		/// </summary>
-		/// <param name="identifier"></param>
-		[StepDefinition(@"I check ""([^""]*)""")]
-		public void ICheck____(string identifier)
-		{
-			CurrentPage = CurrentPage.ChooseFromCheckboxes(identifier,true);
-		}
-
-		/// <summary>
-		/// I uncheck "locked" in "Study1"
-		/// </summary>
-		/// <param name="identifier"></param>
-		/// <param name="areaIdentifier"></param>
-		[StepDefinition(@"I uncheck ""([^""]*)"" in ""([^""]*)""")]
-		public void IUncheck____In____(string identifier, string areaIdentifier)
-		{
-			CurrentPage.ChooseFromCheckboxes(identifier, false, areaIdentifier);
-		}
-
-		/// <summary>
-		/// I uncheck "locked" on "Study1" in "Studies"
-		/// </summary>
-		/// <param name="identifier"></param>
-		/// <param name="listItem"></param>
-		/// <param name="areaIdentifier"></param>
-		[StepDefinition(@"I uncheck ""([^""]*)"" on ""([^""]*)"" in ""([^""]*)""")]
-		public void IUncheck____On____In____(string identifier, string listItem, string areaIdentifier)
-		{
-			CurrentPage.ChooseFromCheckboxes(identifier, false, areaIdentifier, listItem);
-		}
-
-		/// <summary>
-		/// Uncheck a checkbox from a group
-		/// </summary>
-		/// <param name="identifier"></param>
-		[StepDefinition(@"I uncheck ""([^""]*)""")]
-		public void IUncheck____(string identifier)
-		{
-			CurrentPage = CurrentPage.ChooseFromCheckboxes(identifier, false);
 		}
 
 		/// <summary>
@@ -157,8 +99,11 @@ namespace Medidata.RBT.Common.Steps
 
 		}
 
-
-
+        /// <summary>
+        /// Unused step
+        /// </summary>
+        /// <param name="objectType"></param>
+        /// <param name="linkText"></param>
 		[StepDefinition(@"I select (.+) link ""([^""]*)""")]
 		public void ISelect____Type____Link____(string objectType, string linkText)
 		{
@@ -169,10 +114,7 @@ namespace Medidata.RBT.Common.Steps
 
 			linkText = SpecialStringHelper.Replace(linkText);
 			CurrentPage = CurrentPage.ClickLink(linkText, objectType);
-
 		}
-
-
 
 		/// <summary>
 		/// I select link(partial) "Mediflex" in "Header"
@@ -182,9 +124,7 @@ namespace Medidata.RBT.Common.Steps
 		{
 			linkText = SpecialStringHelper.Replace(linkText);
 			CurrentPage = CurrentPage.ClickLink(linkText, null, areaName, true);
-
 		}
-
 
 		/// <summary>
 		/// I select "Study" link "Mediflex" in "Header"
@@ -198,11 +138,7 @@ namespace Medidata.RBT.Common.Steps
 			}
 			linkText = SpecialStringHelper.Replace(linkText);
 			CurrentPage = CurrentPage.ClickLink(linkText, objectType, areaName);
-
 		}
-
-
-
 
 		/// <summary>
 		/// Navigate to an other page.
@@ -231,8 +167,6 @@ namespace Medidata.RBT.Common.Steps
 			text = SpecialStringHelper.Replace(text);
 			CurrentPage.Type(identifier, text);
 		}
-
-
 
 		/// <summary>
 		/// Simulates the key stroke to the browser

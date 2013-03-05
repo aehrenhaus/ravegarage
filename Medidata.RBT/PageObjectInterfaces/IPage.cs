@@ -15,10 +15,20 @@ namespace Medidata.RBT
 	/// </summary>
 	public interface IPage
 	{
+		WebTestContext Context { get; set; }
+
 		/// <summary>
 		/// The browser driver. Represents the browser
 		/// </summary>
 		RemoteWebDriver Browser { get; }
+
+		/// <summary>
+		/// SearchContext, 
+		/// operations on the page should be restricted in SearchContext , not Browser,
+		/// although it's more likely in most cases SearchContext is the Browser.
+		/// 
+		/// </summary>
+		ISearchContext SearchContext { get; set; }
 
 		/// <summary>
 		/// Cast current object to a child type, just to support stream lined code style
@@ -156,5 +166,11 @@ namespace Medidata.RBT
 		IWebElement GetElementByName(string identifier, string areaIdentifier= null, string listItemIdentifier = null);
 
 		IWebElement TryGetElementByName(string identifier, string areaIdentifier = null, string listItemIdentifier = null);
+
+        /// <summary>
+        /// This method can be used to retrieve the current Url's query string as a dictionary with key as field and value as value
+        /// </summary>
+        /// <returns></returns>
+        Dictionary<string, string> GetUrlQueryStringFieldValuePair();
 	}
 }

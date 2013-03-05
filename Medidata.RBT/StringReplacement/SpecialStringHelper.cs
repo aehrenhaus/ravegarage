@@ -7,6 +7,7 @@ using System.Text.RegularExpressions;
 
 using TechTalk.SpecFlow;
 using System.Reflection;
+using System.Collections.Specialized;
 
 namespace Medidata.RBT
 {
@@ -17,12 +18,17 @@ namespace Medidata.RBT
 	/// </summary>
     public class SpecialStringHelper
     {
+
+		public static NameValueCollection StringReplacementVars { get; set; }
+
+
 		public static event Action<string, string> Replaced;
 
 		static Dictionary<string, IStringReplace> allReplaces = new Dictionary<string, IStringReplace>();
 
         static SpecialStringHelper()
         {
+			StringReplacementVars = new NameValueCollection();
 	        foreach (var assembly in Directory.GetFiles(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location),"*.dll"))
 	        {
 				RegisterStringReplaceAssembly(Assembly.LoadFile(assembly));
@@ -99,7 +105,7 @@ namespace Medidata.RBT
 
 					if (!string.IsNullOrWhiteSpace(var))
 					{
-						TestContext.Vars[var] = replaced;
+						StringReplacementVars[var] = replaced;
 					}
 					return replaced;
 				});
@@ -115,7 +121,7 @@ namespace Medidata.RBT
 
 		public static void SetVar(string varName, string value)
 		{
-			TestContext.Vars[varName] = value;
+			SpecialStringHelper.StringReplacementVars[varName] = value;
 		}
 
 		public static Table ReplaceTable(Table table)

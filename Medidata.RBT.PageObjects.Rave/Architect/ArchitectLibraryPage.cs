@@ -20,8 +20,8 @@ namespace Medidata.RBT.PageObjects.Rave
             IWebElement push = row.FindElement(By.XPath("td/a[text() = 'Push']"));
 			push.Click();
 			Browser.WaitForDocumentLoad();
-            TestContext.CurrentPage = new ArchitectPushPage();
-            TestContext.CurrentPage.As<ArchitectPushPage>().PushToSites(env, sites);
+            Context.CurrentPage = new ArchitectPushPage();
+            Context.CurrentPage.As<ArchitectPushPage>().PushToSites(env, sites);
 			//
 			//go back to study
             ClickLink( studyName,null, "Header");
@@ -45,8 +45,8 @@ namespace Medidata.RBT.PageObjects.Rave
         public IPage ClickDraft(string draftName)
         {
             base.ClickLink(draftName);
-            TestContext.CurrentPage = new ArchitectCRFDraftPage();
-            return TestContext.CurrentPage;
+            Context.CurrentPage = new ArchitectCRFDraftPage();
+            return Context.CurrentPage;
         }
 
 		public ArchitectCRFDraftPage CreateDraftFromProject(string draftName, string project, string version)
@@ -105,5 +105,21 @@ namespace Medidata.RBT.PageObjects.Rave
 				return "Modules/Architect/LibraryPage.aspx";
 			}
 		}
-	}
+
+        /// <summary>
+        /// Select the CRF versin from architect library page from version grid
+        /// based on the version name specified
+        /// </summary>
+        /// <param name="versionName"></param>
+        /// <returns></returns>
+        public IPage SelectCrfVersion(string versionName)
+        {
+            IWebElement versionsTable = Browser.TryFindElementBy(By.Id("_ctl0_Content_VersionsGrid"));
+            IWebElement versionLink = versionsTable.TryFindElementBy(
+                By.XPath(string.Format("//a[contains(@id,'_LinkVersion') and contains(text(),'{0}')]", versionName)));
+
+            versionLink.Click();
+            return this.WaitForPageLoads();
+        }
+    }
 }

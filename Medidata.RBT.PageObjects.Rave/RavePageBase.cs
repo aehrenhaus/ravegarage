@@ -7,7 +7,7 @@ using Medidata.RBT.PageObjects;
 using Medidata.RBT.PageObjects.Rave.SharedRaveObjects;
 using OpenQA.Selenium.Support.PageObjects;
 using OpenQA.Selenium;
-
+using System.Text.RegularExpressions;
 using System.Collections.Specialized;
 using TechTalk.SpecFlow;
 using Medidata.RBT.SeleniumExtension;
@@ -17,6 +17,15 @@ namespace Medidata.RBT.PageObjects.Rave
 {
 	public abstract class RavePageBase : PageBase
 	{
+		public RavePageBase()
+		{
+		}
+
+		public RavePageBase(WebTestContext context)
+			: base(context)
+		{
+		}
+
 		public override IPage NavigateTo(string name)
 		{
 			if (new string[] {
@@ -30,8 +39,8 @@ namespace Medidata.RBT.PageObjects.Rave
 				"EED",
 				"Translation Workbench","PDF Generator","DCF","Query Management","Welcome Message"}.Contains(name))
 			{
-				if (!(TestContext.CurrentPage is HomePage))
-					TestContext.CurrentPage = new HomePage().NavigateToSelf();
+				if (!(Context.CurrentPage is HomePage))
+					Context.CurrentPage = new HomePage().NavigateToSelf();
 			}
 
 			if (name == "Home")
@@ -45,7 +54,7 @@ namespace Medidata.RBT.PageObjects.Rave
 		public override IWebElement GetElementByName(string identifier, string areaIdentifier = null, string listItem = null)
 		{
 			if (identifier == "Header")
-				return Browser.Table("_ctl0_PgHeader_TabTable");
+				return SearchContext.Table("_ctl0_PgHeader_TabTable");
 			return base.GetElementByName(identifier,areaIdentifier,listItem);
 		}
 
@@ -63,11 +72,11 @@ namespace Medidata.RBT.PageObjects.Rave
         {
             if (controlType == ControlType.Button)
             {
-                return TestContext.Browser.TryFindElementBy(By.XPath("//input[contains(@value, '" + value + "')]"));
+				return SearchContext.TryFindElementBy(By.XPath("//input[contains(@value, '" + value + "')]"));
             }
             else if (controlType == ControlType.Link)
             {
-                return TestContext.Browser.TryFindElementBy(By.XPath("//a[text() = '" + value + "']"));
+				return SearchContext.TryFindElementBy(By.XPath("//a[text() = '" + value + "']"));
             }
             else
                 return null;
@@ -76,7 +85,7 @@ namespace Medidata.RBT.PageObjects.Rave
 		public IPage GoBack()
 		{
 			Browser.Navigate().Back();
-			return  TestContext.POFactory.GetPageByUrl(new Uri(Browser.Url));
+			return  Context.POFactory.GetPageByUrl(new Uri(Browser.Url));
 		}
 
 		public override IPage ChooseFromDropdown(string identifier, string text, string objectType = null, string areaIdentifier = null)
@@ -90,45 +99,56 @@ namespace Medidata.RBT.PageObjects.Rave
                 return base.ChooseFromDropdown(identifier, ReplaceSeedableObjectName(objectType, text), objectType, areaIdentifier);
 		}
 
-		private string ReplaceSeedableObjectName(string type, string name)
+        /// <summary>
+        /// Replace a seedable object's feature name with its unique name
+        /// </summary>
+        /// <param name="type">The type of the object (eg. Project, User, etc.)</param>
+        /// <param name="name">The feature name of the object</param>
+        /// <returns>The unique name of the seedable object</returns>
+		public static string ReplaceSeedableObjectName(string type, string name)
 		{
 			if (type != null) type = type.Replace(" ", "");
 			if (string.Equals(type,"Study", StringComparison.InvariantCultureIgnoreCase))
 			{
-				Project project = TestContext.GetExistingFeatureObjectOrMakeNew(name, () => new Project(name));
+				Project project = SeedingContext.GetExistingFeatureObjectOrMakeNew(name, () => new Project(name));
 				name = project.UniqueName;
 			}
 			else if (string.Equals(type, "Site", StringComparison.InvariantCultureIgnoreCase))
 			{
-				Site site = TestContext.GetExistingFeatureObjectOrMakeNew(name, () => new Site(name));
+				Site site = SeedingContext.GetExistingFeatureObjectOrMakeNew(name, () => new Site(name));
 				name = site.UniqueName;
 			}
 			else if (string.Equals(type, "Role", StringComparison.InvariantCultureIgnoreCase))
 			{
-				Role role = TestContext.GetExistingFeatureObjectOrMakeNew(name, () => new Role(name));
+				Role role = SeedingContext.GetExistingFeatureObjectOrMakeNew(name, () => new Role(name));
 				name = role.UniqueName;
 			}
 			else if (string.Equals(type, "User", StringComparison.InvariantCultureIgnoreCase))
 			{
-				User user = TestContext.GetExistingFeatureObjectOrMakeNew(name, () => new User(name));
+				User user = SeedingContext.GetExistingFeatureObjectOrMakeNew(name, () => new User(name));
 				name = user.UniqueName;
 			}
 			else if (string.Equals(type, "Project", StringComparison.InvariantCultureIgnoreCase))
 			{
-				Project project = TestContext.GetExistingFeatureObjectOrMakeNew(name, () => new Project(name));
+				Project project = SeedingContext.GetExistingFeatureObjectOrMakeNew(name, () => new Project(name));
 				name = project.UniqueName;
 			}
-				else if (type == "Lab")
-				{
-					SharedRaveObjects.Lab lab = TestContext.GetExistingFeatureObjectOrMakeNew(name, () =>new SharedRaveObjects.Lab(name));
-					name = lab.UniqueName;
-				}
-				else if (type != null && type.ToUpper().Contains("CRF"))
-                {
-                    CrfVersion crf = TestContext.GetExistingFeatureObjectOrMakeNew<CrfVersion>(name, () => null);
-					if(crf!=null)
-						name = crf.UniqueName;
-                }
+			else if (type == "Lab")
+			{
+				SharedRaveObjects.Lab lab = SeedingContext.GetExistingFeatureObjectOrMakeNew(name, () =>new SharedRaveObjects.Lab(name));
+				name = lab.UniqueName;
+			}
+            else if (string.Equals(type, "Proposal", StringComparison.InvariantCultureIgnoreCase))
+            {
+                Proposal proposal = SeedingContext.GetExistingFeatureObjectOrMakeNew(name, () => new Proposal(name));
+                name = proposal.UniqueName;
+            }
+			else if (type != null && type.ToUpper().Contains("CRF"))
+            {
+                CrfVersion crf = SeedingContext.GetExistingFeatureObjectOrMakeNew<CrfVersion>(name, () => null);
+				if(crf!=null)
+					name = crf.UniqueName;
+            }
 			return name;
 		}
 		/// <summary>
@@ -138,7 +158,7 @@ namespace Medidata.RBT.PageObjects.Rave
 		/// <returns></returns>
 		private string GetSeededProjectName(string name)
 		{
-			Project projectObject = TestContext.GetExistingFeatureObjectOrMakeNew(name, () => new Project(name));
+			Project projectObject = SeedingContext.GetExistingFeatureObjectOrMakeNew(name, () => new Project(name));
 			return projectObject.UniqueName;
 		}
 		public override IPage ClickLink(string linkText, string objectType = null, string areaIdentifier = null, bool partial = false)
@@ -160,7 +180,7 @@ namespace Medidata.RBT.PageObjects.Rave
 
 
 			linkText = ReplaceSeedableObjectName(objectType, linkText);
-			ISearchContext  context = string.IsNullOrEmpty(areaIdentifier) ? Browser as ISearchContext : this.GetElementByName(areaIdentifier, null);
+			ISearchContext context = string.IsNullOrEmpty(areaIdentifier) ? SearchContext : this.GetElementByName(areaIdentifier, null);
 			IWebElement link = null;
 			if(linkText.Contains("•"))
                 link = ISearchContextExtend.FindLinkWithBulletPoint(context, linkText);
@@ -180,7 +200,17 @@ namespace Medidata.RBT.PageObjects.Rave
 			link.Click();
 
 
-			return base.GetPageByCurrentUrlIfNoAlert();
+			return WaitForPageLoads();
+		}
+
+		/// <summary>
+		/// Should call WebTestContext.WaitForPageLoads() directly instead of this
+		/// </summary>
+		/// <returns></returns>
+		[Obsolete]
+		protected IPage GetPageByCurrentUrlIfNoAlert()
+		{
+			return this.WaitForPageLoads();
 		}
 
         public virtual IEDCFieldControl FindLandscapeLogField(string fieldName, int rowIndex, ControlType controlType = ControlType.Default)
@@ -202,21 +232,59 @@ namespace Medidata.RBT.PageObjects.Rave
             }
         }
 
+        /// <summary>
+        /// This method can be used to modify the Url of current page followed by setting the 
+        /// new Url on Browser
+        /// </summary>
+        /// <param name="page"></param>
+        /// <param name="queryNames"></param>
+        public void ModifyUrl(string page, IEnumerable<string> queryNames)
+        {
+            string newUrl = Browser.Url;
 
-		/// <summary>
-		/// Clicks the link that is created as a span with an onclick event.  
-		/// </summary>
-		/// <param name="linkText">The link text.</param>
-		/// <returns></returns>
-		public virtual IPage ClickSpanLink(string linkText)
-		{
-			IWebElement item = Browser.TryFindElementByLinkText(linkText);
-			if (item != null)
-				item.Click();
-			else
-				throw new Exception("Can't find link by text:" + linkText);
+            //if new page is specified replace the existing page with the new page
+            if (!string.IsNullOrWhiteSpace(page))
+                newUrl = Regex.Replace(newUrl, @"/{1}([^/\?""]*\.aspx)", string.Format("/{0}", page));
 
-			return GetPageByCurrentUrlIfNoAlert();
-		}
+            //if any query is specified then append this new query to the exist query string of the Url
+            if (queryNames.Count() > 0)
+            {
+                StringBuilder sb = new StringBuilder(newUrl);
+
+                foreach (string queryName in queryNames)
+                {
+                    if (!string.IsNullOrWhiteSpace(queryName))
+                    {
+                        sb.Append(string.Format("&{0}={1}", 
+                            queryName, Context.Storage[queryName]) as string);
+                    }
+                }
+
+                newUrl = sb.ToString();
+            }
+
+            Browser.Url = newUrl;
+        }
+
+        /// <summary>
+        /// save the query string's field value pair from the Url based on query name specified
+        /// to the WebTestContext's Storage hashtable
+        /// </summary>
+        /// <param name="queryName"></param>
+        public void StoreQueryString(string queryName)
+        {
+            Dictionary<string, string> queryStringFieldValuePair = this.GetUrlQueryStringFieldValuePair();
+
+            KeyValuePair<string, string> fieldValuePair = queryStringFieldValuePair.FirstOrDefault((p) => p.Key.Equals(queryName));
+
+            if (!fieldValuePair.Equals(default(KeyValuePair<string, string>)))
+            {
+                Context.Storage[fieldValuePair.Key] = fieldValuePair.Value;
+            }
+            else
+                throw new InvalidOperationException(
+                    string.Format("Specified query string field name [{0}] does not exist in the current Url", queryName));
+        }
+
 	}
 }

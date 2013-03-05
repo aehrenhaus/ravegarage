@@ -43,7 +43,7 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
         /// </summary>
         protected override void CreateObject()
         {
-            TestContext.CurrentPage.As<RangeTypesPage>().AddRangeType(UniqueName);
+            WebTestContext.CurrentPage.As<RangeTypesPage>().AddRangeType(UniqueName);
         }
 
         /// <summary>

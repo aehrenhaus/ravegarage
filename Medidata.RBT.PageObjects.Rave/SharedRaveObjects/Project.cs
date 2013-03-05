@@ -23,6 +23,7 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
         public string Number { get; set; }
         public bool SkipUpload { get; set; }
         public List<MatrixAssignment> MatrixAssignments { get; set; }
+        public ExternalSystem ExternalSystem { get; set; } //External sytem associated with this project
 
         /// <summary>
         /// Create a Project if it is not already in the dictionary of projects in FeatureObject
@@ -50,8 +51,11 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
         /// </summary>
         protected override void NavigateToSeedPage()
         {
-            if(!SkipUpload)
-                new ArchitectPage().NavigateToSelf();
+            if (!SkipUpload)
+            {
+                WebTestContext.CurrentPage.As<HomePage>().ClickLink("Architect");
+                WebTestContext.CurrentPage = new ArchitectPage();
+            }
         }
 
         /// <summary>
@@ -63,9 +67,51 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
         {
             if (!SkipUpload)
             {
-                TestContext.Browser.TryFindElementByPartialID("NewProjectName").EnhanceAs<Textbox>().SetText(UniqueName);
-                TestContext.CurrentPage.ClickLink("Add Project");
+                WebTestContext.Browser.TryFindElementByPartialID("NewProjectName").EnhanceAs<Textbox>().SetText(UniqueName);
+                WebTestContext.CurrentPage.ClickLink("Add Project");
             }
         }
+
+        /// <summary>
+        /// Assign an external system to this project and study in the DB
+        /// </summary>
+        /// <param name="externalSystem">The external system to associate</param>
+        private void AssignExternalSystemToDB(ExternalSystem externalSystem)
+        {
+            string sql = string.Format(Project.ASSIGN_EXTERNAL_SYSTEM_PROJECT_SQL, externalSystem.ExternalSystemID, UniqueName, "eng");
+            int projectID = (int)DbHelper.ExecuteDataSet(sql).GetFirstRow()["ProjectID"];
+            sql = string.Format(Project.ASSIGN_EXTERNAL_SYSTEM_STUDY_SQL, externalSystem.ExternalSystemID, projectID);
+            DbHelper.ExecuteDataSet(sql);
+        }
+
+        /// <summary>
+        /// Assign an external system to this project and study both in the DB and by object reference
+        /// </summary>
+        /// <param name="externalSystem">The external system to associate</param>
+        public void AssignExternalSystem(string externalSystemString)
+        {
+            if (externalSystemString != null && !externalSystemString.Trim().Equals(""))
+            {
+                ExternalSystem externalSystem = SeedingContext.GetExistingFeatureObjectOrMakeNew(externalSystemString,
+                    () => new ExternalSystem(externalSystemString));
+
+                AssignExternalSystemToDB(externalSystem);
+                ExternalSystem = externalSystem;
+            }
+        }
+
+        #region sqlStrings
+        private const string ASSIGN_EXTERNAL_SYSTEM_PROJECT_SQL =
+            @"
+                declare @stringID int;
+                set @stringID = (select StringID from LocalizedDataStrings where String = '{1}' and Locale = '{2}');
+                update Projects set ExternalID = {0} where ProjectName = @stringID;
+                select ProjectID from Projects where ProjectName = @stringID;
+            ";
+        private const string ASSIGN_EXTERNAL_SYSTEM_STUDY_SQL =
+            @"
+                update Studies set ExternalID = {0} where ProjectID = {1};
+            ";
+        #endregion
     }
 }

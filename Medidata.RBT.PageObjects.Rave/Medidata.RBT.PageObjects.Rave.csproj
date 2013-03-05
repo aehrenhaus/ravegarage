@@ -52,9 +52,8 @@
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
-    <Reference Include="TechTalk.SpecFlow, Version=1.9.0.77, Culture=neutral, PublicKeyToken=0778194805d6db41, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\SpecFlow.1.9.0\lib\net35\TechTalk.SpecFlow.dll</HintPath>
+    <Reference Include="TechTalk.SpecFlow">
+      <HintPath>..\ExternalDlls\SpecflowModified\TechTalk.SpecFlow.dll</HintPath>
     </Reference>
     <Reference Include="ThoughtWorks.Selenium.Core">
       <HintPath>..\ExternalDlls\ThoughtWorks.Selenium.Core.dll</HintPath>
@@ -75,12 +74,16 @@
     <Compile Include="AmendmentManager\MigrationObjectHierarchyEditPage.cs" />
     <Compile Include="AmendmentManager\MigrationObjectHierarchy.cs" />
     <Compile Include="AmendmentManager\MigrationModel.cs" />
+    <Compile Include="Architect\ArchitectCoderConfigPage.cs" />
     <Compile Include="Architect\ArchitectEnvironmentSetupPage.cs" />
     <Compile Include="Architect\ArchitectPushPage.cs" />
     <Compile Include="Architect\ArchitectFormsPage.cs" />
     <Compile Include="Architect\ArchitectFormDesigner.cs" />
     <Compile Include="Architect\ArchitectRestrictionsPage.cs" />
+    <Compile Include="Architect\DefineCopySourcesPage.cs" />
     <Compile Include="Architect\EditChecksItem.cs" />
+    <Compile Include="Architect\LibraryWizardPage.cs" />
+    <Compile Include="Architect\Models\ProjectCodingDictionaryModel.cs" />
     <Compile Include="Architect\PublishChecksEditChecksControl.cs" />
     <Compile Include="Architect\UploadDraftPage.cs" />
     <Compile Include="Architect\PublishChecksHomePage.cs" />
@@ -89,6 +92,8 @@
     <Compile Include="Configuration\ConfigurationClinicalViewsPage.cs" />
     <Compile Include="Configuration\ConfigurationCreationModel.cs" />
     <Compile Include="Configuration\ConfigurationLoaderPage.cs" />
+    <Compile Include="Configuration\CodingColumnSettingPage.cs" />
+    <Compile Include="Configuration\Models\CodingColumnModel.cs" />
     <Compile Include="Configuration\RoleActionsConfigPage.cs" />
     <Compile Include="Configuration\ConfigurationSettingsPage.cs" />
     <Compile Include="Configuration\Models\ConfigurationSettingsModel.cs" />
@@ -119,6 +124,7 @@
     <Compile Include="EDC\PortraitLogField.cs" />
     <Compile Include="EDC\TaskSummary.cs" />
     <Compile Include="EDC\TaskSummaryItem.cs" />
+    <Compile Include="Helpers\DefaultPOInterfaceImplementation.cs" />
     <Compile Include="Lab\AnalytesPage.cs" />
     <Compile Include="Lab\CentralLabsPage.cs" />
     <Compile Include="Lab\LabUnitsPage.cs" />
@@ -136,6 +142,8 @@
     <Compile Include="Lab\UnitConversionsPage.cs" />
     <Compile Include="EDC\SignatureBox.cs" />
     <Compile Include="OtherPages\ActivatePage.cs" />
+    <Compile Include="OtherPages\CacheFlushPage.cs" />
+    <Compile Include="OtherPages\LoginSession.cs" />
     <Compile Include="OtherPages\LogoutPage.cs" />
     <Compile Include="OtherPages\PasswordChangedPage.cs" />
     <Compile Include="OtherPages\PasswordPage.cs" />
@@ -156,7 +164,20 @@
     <Compile Include="ReportAdmin\ReportAssignmentPage.cs" />
     <Compile Include="Reports\CrystalReportPageBase.cs" />
     <Compile Include="SharedRaveObjects\Analyte.cs" />
+    <Compile Include="SharedRaveObjects\BaseCodingDictionary.cs" />
+    <Compile Include="SharedRaveObjects\ClassicCodingDictionary.cs" />
+    <Compile Include="SharedRaveObjects\CoderDictLevelComponent.cs" />
+    <Compile Include="SharedRaveObjects\CoderWorkFlow.cs" />
+    <Compile Include="SharedRaveObjects\CoderWorkFlowData.cs" />
+    <Compile Include="SharedRaveObjects\CodingColumn.cs" />
+    <Compile Include="SharedRaveObjects\CodingDictionary.cs" />
+    <Compile Include="SharedRaveObjects\CoderLocale.cs" />
+    <Compile Include="SharedRaveObjects\LocalizedDataStringManagement.cs" />
+    <Compile Include="SharedRaveObjects\Proposal.cs" />
+    <Compile Include="SharedRaveObjects\ExternalSystem.cs" />
     <Compile Include="SharedRaveObjects\MatrixAssignment.cs" />
+    <Compile Include="SharedRaveObjects\ProjectCoderRegistration.cs" />
+    <Compile Include="SharedRaveObjects\ProjectCoderRegistrationWorkFlow.cs" />
     <Compile Include="SharedRaveObjects\UserGroup.cs" />
     <Compile Include="SharedRaveObjects\StandardGroups.cs" />
     <Compile Include="SharedRaveObjects\StudySite.cs" />
@@ -196,6 +217,11 @@
     <Compile Include="TableModels\AnalyteRangeModel.cs" />
     <Compile Include="TableModels\ArchitectObjectModel.cs" />
     <Compile Include="TableModels\AuditModel.cs" />
+    <Compile Include="TableModels\ArchitectCoderConfigurationModel.cs" />
+    <Compile Include="TableModels\CoderLocaleTable.cs" />
+    <Compile Include="TableModels\CoderTermModel.cs" />
+    <Compile Include="TableModels\CoderWorkflowVariableModel.cs" />
+    <Compile Include="TableModels\GenericDataModel.cs" />
     <Compile Include="TableModels\ReportMatrixAssignmentModel.cs" />
     <Compile Include="TableModels\LabUnitDictionaryModel.cs" />
     <Compile Include="TableModels\AnalyteModel.cs" />
@@ -246,10 +272,6 @@
     <Compile Include="EDC\SubjectPage.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Medidata.RBT.Common.Steps\Medidata.RBT.Common.Steps.csproj">
-      <Project>{45796EAF-4C33-4410-A85E-D5EF7EBE7EFE}</Project>
-      <Name>Medidata.RBT.Common.Steps</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Medidata.RBT.SeleniumExtension\Medidata.RBT.SeleniumExtension.csproj">
       <Project>{22945718-331A-4CC1-A98A-A7E7500FAF76}</Project>
       <Name>Medidata.RBT.SeleniumExtension</Name>

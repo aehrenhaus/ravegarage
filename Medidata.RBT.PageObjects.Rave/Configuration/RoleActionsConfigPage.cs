@@ -15,14 +15,14 @@ namespace Medidata.RBT.PageObjects.Rave.Configuration
         public bool ClickEditFromRoleActionGridAndCheckState(string ActionName)
         {
             //FindTable
-            IWebElement edcRoleActionsTable = TestContext.Browser.TryFindElementByPartialID("RoleActionsGrid");
+            IWebElement edcRoleActionsTable = Context.Browser.TryFindElementByPartialID("RoleActionsGrid");
             //FindRow
             IWebElement edcRoleActionRow = edcRoleActionsTable.TryFindElementBy(By.XPath("//td[normalize-space(text())='" + ActionName + "']")).Parent();
             //Click Link
             edcRoleActionRow.TryFindElementBy(By.XPath("td/a")).Click();
             //now entered into edit mode
             //FindTable
-            edcRoleActionsTable = TestContext.Browser.TryFindElementByPartialID("RoleActionsGrid");
+            edcRoleActionsTable = Context.Browser.TryFindElementByPartialID("RoleActionsGrid");
             //FindRow
             edcRoleActionRow = edcRoleActionsTable.TryFindElementBy(By.XPath("//td[normalize-space(text())='" + ActionName + "']")).Parent();
             //check whether checkbox is ticked or not

@@ -14,15 +14,33 @@ namespace Medidata.RBT
 {
 	public class BrowserStepsBase
 	{
+		public SpecflowWebTestContext SpecflowContext
+		{
+			get
+			{
+				return (SpecflowStaticBindings.Current as SpecflowWebTestContext);
+			}
+
+		}
+
+		public WebTestContext WebTestContext
+		{
+			get
+			{
+				return SpecflowContext.WebTestContext;
+			}
+	
+		}
+
 		public RemoteWebDriver Browser
 		{
 			get
 			{
-				return TestContext.Browser;
+				return WebTestContext.Browser;
 			}
 			set
 			{
-				TestContext.Browser = value;
+				WebTestContext.Browser = value;
 			}
 		}
 
@@ -30,11 +48,11 @@ namespace Medidata.RBT
 		{
 			get
 			{
-				return TestContext.CurrentPage;
+				return WebTestContext.CurrentPage;
 			}
 			set
 			{
-				TestContext.CurrentPage= value;
+				WebTestContext.CurrentPage= value;
 			}
 		}
 
@@ -42,11 +60,11 @@ namespace Medidata.RBT
         {
             get
             {
-                return TestContext.CurrentUser;
+                return WebTestContext.CurrentUser;
             }
             set
             {
-                TestContext.CurrentUser = value;
+                WebTestContext.CurrentUser = value;
             }
         }
 	}

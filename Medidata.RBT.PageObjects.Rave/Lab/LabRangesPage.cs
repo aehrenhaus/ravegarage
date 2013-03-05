@@ -28,7 +28,7 @@ namespace Medidata.RBT.PageObjects.Rave
         /// </summary>
         public void AddNewVersion(string analyteName)
         {
-            var analyte = TestContext.GetExistingFeatureObjectOrMakeNew<Analyte>(analyteName,
+            var analyte = SeedingContext.GetExistingFeatureObjectOrMakeNew<Analyte>(analyteName,
                     () => new Analyte(analyteName));
             this.FindLabRange(analyte.UniqueName).TryFindElementByPartialID("_ImgBtnNewVer").Click();
         }
@@ -39,7 +39,7 @@ namespace Medidata.RBT.PageObjects.Rave
         /// </summary>
         public void AddNewRange(string rangeName)
         {
-            TestContext.CurrentPage.ClickLink("Add New Range");
+            Context.CurrentPage.ClickLink("Add New Range");
         }
 
         /// <summary>
@@ -48,6 +48,11 @@ namespace Medidata.RBT.PageObjects.Rave
         /// <param name="model">The model.</param>
         public void AddNewAnalyteRange(AnalyteRangeModel model)
         {
+            //This element is not visible the first time and hence null check is required
+            IWebElement addRangeElem = Browser.TryFindElementByPartialID("_LnkBtnAddRange", false);
+            if (addRangeElem != null)
+                addRangeElem.Click();
+
             ModifyRangeAndUpdate(model);
         }
 
@@ -55,7 +60,7 @@ namespace Medidata.RBT.PageObjects.Rave
         /// <summary>
         /// Select Range for Lab
         /// </summary>
-        public void SelectLabRange(IWebElement row)
+        public override void SelectLabRange(IWebElement row)
         {
             var checkButton = row.ImageBySrc("../../Img/i_cdrill.gif");
             checkButton.Click();
@@ -63,14 +68,15 @@ namespace Medidata.RBT.PageObjects.Rave
 
         private void ModifyRangeAndUpdate(AnalyteRangeModel model)
         {
-            var analyte = TestContext.GetExistingFeatureObjectOrMakeNew<Analyte>(model.Analyte,
+            var analyte = SeedingContext.GetExistingFeatureObjectOrMakeNew<Analyte>(model.Analyte,
                     () => new Analyte(model.Analyte));
             this.ChooseFromDynamicSearchListText("slLabAnalyte_TxtBx", analyte.UniqueName);
             this.ChooseFromDateTime("ldcFromDate", model.FromDate);
             this.ChooseFromDateTime("ldcToDate", model.ToDate);
             this.ChooseAge("Textbox1", "DropdownlistUnit1", model.FromAge);
             this.ChooseAge("Textbox2", "DropdownlistUnit2", model.ToAge);
-            this.ChooseFromDropdown("Dropdownlist4", model.Sex);
+            if (!string.IsNullOrEmpty(model.Sex))
+                this.ChooseFromDropdown("Dropdownlist4", model.Sex);
             this.Type("_txtLowRange", model.LowValue);
             this.Type("_txtHighRange", model.HighValue);
             this.ChooseFromDropdown("_ddlLabUnits", model.Units);
@@ -95,7 +101,7 @@ namespace Medidata.RBT.PageObjects.Rave
             //SearchList_PickListBoxItem_Hover
 
          //   element.Parent().Textbox("DropButton").Click();
-            return GetPageByCurrentUrlIfNoAlert();
+            return WaitForPageLoads();
         }
 
 
@@ -111,7 +117,7 @@ namespace Medidata.RBT.PageObjects.Rave
             string[] dateParts = Regex.Split(text, @"\W+");
             this.Type(identifierText, dateParts[0]);
             this.ChooseFromDropdown(identifierDDL, dateParts[1]);
-            return GetPageByCurrentUrlIfNoAlert();
+            return WaitForPageLoads();
         }
 
         /// <summary>
@@ -139,7 +145,7 @@ namespace Medidata.RBT.PageObjects.Rave
             textboxes[1].SetText(dateParts[2]);
             
             // element.SetText(text);
-            return GetPageByCurrentUrlIfNoAlert();
+            return WaitForPageLoads();
         }
 
 
@@ -169,8 +175,8 @@ namespace Medidata.RBT.PageObjects.Rave
         int pageIndex = 0;
         int count = 0;
         int lastValue = -1;
-		public int CurrentPageNumber { get; private set; }
-        public bool GoNextPage(string areaIdentifer)
+		public override int CurrentPageNumber { get; set; }
+        public override bool GoNextPage(string areaIdentifer)
         {
             var pageTable = Browser.TryFindElementByPartialID("_LabRangesGrid").TryFindElementBy(By.XPath("./tbody/tr[last()]"));
 
@@ -199,17 +205,17 @@ namespace Medidata.RBT.PageObjects.Rave
             return true;
         }
 
-        public bool GoPreviousPage(string areaIdentifer)
+        public override bool GoPreviousPage(string areaIdentifer)
         {
             throw new NotImplementedException();
         }
 
-        public bool GoToPage(string areaIdentifer, int page)
+        public override bool GoToPage(string areaIdentifer, int page)
         {
             throw new NotImplementedException();
         }
 
-        public bool CanPaginate(string areaIdentifier)
+        public override bool CanPaginate(string areaIdentifier)
         {
             return true;
         }

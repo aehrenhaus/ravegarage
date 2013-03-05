@@ -9,10 +9,12 @@ using Medidata.RBT.SeleniumExtension;
 using TechTalk.SpecFlow;
 using OpenQA.Selenium.Support.UI;
 using Medidata.RBT.PageObjects.Rave.SharedRaveObjects;
+using System.Threading;
+using Medidata.RBT.StateVerificationInterfaces;
 
 namespace Medidata.RBT.PageObjects.Rave
 {
-	public abstract class BlockPlansPageBase : RavePageBase, IVerifySomethingExists,IVerifyConstrolDisabled
+    public abstract class BlockPlansPageBase : RavePageBase, IVerifySomethingExists, IVerifyControlEnabledState
     {
 		public override IWebElement GetElementByName(string identifier, string areaIdentifier = null, string listItem = null)
 		{
@@ -45,6 +47,7 @@ namespace Medidata.RBT.PageObjects.Rave
             if (elem != null)
             {
                 elem.Click();
+				Thread.Sleep(1000);
 				Browser.GetAlertWindow().Accept();
             }
             return this;
@@ -67,7 +70,7 @@ namespace Medidata.RBT.PageObjects.Rave
                 planNameTextbox.Clear();
                 planNameTextbox.SetText(planName);
 
-                Role role = TestContext.GetExistingFeatureObjectOrMakeNew(dataEntryRole, () => new Role(dataEntryRole));
+                Role role = SeedingContext.GetExistingFeatureObjectOrMakeNew(dataEntryRole, () => new Role(dataEntryRole));
                 if (role != null)
                 {
 					ChooseFromDropdown("_ctl0_Content__ctl0_NewRoleDDL", role.UniqueName);
@@ -183,7 +186,7 @@ namespace Medidata.RBT.PageObjects.Rave
 
 		#region VerifyExist
 
-		bool IVerifySomethingExists.VerifySomethingExist(string areaIdentifier, string type, string identifier, bool exactMatch)
+        bool IVerifySomethingExists.VerifySomethingExist(string areaIdentifier, string type, string identifier, bool exactMatch, int? amountOfTimes)
 		{
 			var area = Browser.TryFindElementById("_ctl0_Content__ctl0_dgProjectBlockPlan");
             return !exactMatch && area.Text.Contains(identifier);
@@ -193,12 +196,15 @@ namespace Medidata.RBT.PageObjects.Rave
 
 		#endregion
 
-		public bool IsControlEnabled(string controlName)
+        public bool VerifyControlEnabledState(string identifier, bool isEnabled, string areaIdentifier)
 		{
-			if (controlName == "Randomization Type")
+            if (identifier == "Randomization Type")
 			{
 				var ele = Browser.TryFindElementById("_ctl0_Content__ctl0_dgProjectBlockPlan__ctl2_ddl_RandomizationType");
-				return ele.EnhanceAs<EnhancedElement>().Disabled;
+                if(isEnabled)
+				    return ele.EnhanceAs<EnhancedElement>().Enabled;
+                else
+                    return ele.EnhanceAs<EnhancedElement>().Disabled;
 			}
 			throw new NotImplementedException();
 		}

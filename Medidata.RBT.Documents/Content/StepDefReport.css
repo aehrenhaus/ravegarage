@@ -1,0 +1,37 @@
+﻿
+li
+{
+	list-style: none;
+}
+li.method
+{
+	margin: 5px;
+	padding: 5px;
+	border-bottom: 1px solid #ddd;
+}
+
+.comment
+{
+	color: #008000;
+	font-size: 12px;
+}
+
+.nocomment
+{
+	color: orange;
+}
+.page
+{
+	font-weight: bold;
+}
+
+.regex
+{
+	color: gray;
+	size: 10px;
+	float: right;
+}
+.unused
+{
+	color: red;
+}

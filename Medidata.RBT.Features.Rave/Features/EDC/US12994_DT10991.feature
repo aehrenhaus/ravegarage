@@ -6,7 +6,6 @@
 # Also, these is a lab form with sample date = 2010-01-04
 # Now, when system do Lab range searching, system will try to use the Age in Visit 1 which is the closest mapped variable because of subject date.
 # To fix: we need to remove subject date from order by so that subject date will not affect search order. Also we need to keep all lab variable datapoints in search targets, it is to say when record date, datapage date and instance date is null for an Age datapoint, but if it is the only one in subject, it will be fetched.
-@ignore
 @FT_US12994_DT10991
 Feature: US12994_DT10991 Remove Subject Date from order by statement in searching Lab Variable Mapping Value
 	Remove Subject Date from order by statement in searching Lab Variable Mapping Value
@@ -18,57 +17,38 @@ Feature: US12994_DT10991 Remove Subject Date from order by statement in searchin
 
 Background:
     Given I login to Rave with user "defuser" and password "password"
-	#And following Project assignments exist
-	#	| User    | Project         | Environment | Role | Site                                   | Site Number |
-	#	| Defuser | US12994_DT10991 | Prod        | CDM1 | Latest Date Site                       | LDS1        |
-	#	| Defuser | US12994_DT10991 | Prod        | CDM1 | Earliest Date Site                     | EDS1        |
-	#	| Defuser | US12994_DT10991 | Prod        | CDM1 | Closest in Time to Lab Date Site       | CTLDS1      |
-	#	| Defuser | US12994_DT10991 | Prod        | CDM1 | Closest in Time Prior to Lab Date Site | CTPLDV1     |
-	#And Project "US12994_DT10991" has Draft "Earliest Date Draft"
-	#And Project "US12994_DT10991" has Draft "Latest Date Draft"
-	#And Project "US12994_DT10991" has Draft "Closest in Time to Lab Date Draft"
-	#And Project "US12994_DT10991" has Draft "Closest in Time Prior to Lab Date Draft"
-	#And Draft has "Default" Matrix with "FolderForms"
-	#	| Folder  | Form       |
-	#	| Visit 1 | Visit Date |
-	#	| Visit 2 | Visit Date |
-	#And Draft "Earliest Date Draft, Latest Date Draft, Closest in Time to Lab Date Draft, Closest in Time Prior to Lab Date Draft" has Form "Visit Date" with fields
-	#	| FieldOID | Field Label       | Control Type | Data Format | IsVisible | Observation Date of Form |
-	#	| Missing  | Visit is missing? | Checkbox     | 1           | True      | False                    |
-	#	| VISDT    | Visit Date        | DateTime     | dd MMM yyyy | True      | True                     |
-	#	| Age      | Age               | Text         | 3           | True      | False                    |
-	#And Draft "Earliest Date Draft, Latest Date Draft, Closest in Time to Lab Date Draft, Closest in Time Prior to Lab Date Draft" has Form "Hematology" with fields
-	#	| FieldOID | Field Label | Control Type | Data Format | IsVisible | Lab Analyte | Observation Date of Form |
-	#	| SampleDT | Sample Date | DateTime     | dd MMM yyyy | True      |             | True                     |
-	#	| WBC      | WBC         | Text         | 5.1         | True      | WBC         | False                    |
-	#And Draft has "Lab Settings" with "Range Types"
-	#	| Range Types    |
-	#	| StandardREGAQT |
-	#And "Range Types" with "Lab Variable Mapping"
-	#	| Draft                                   | Variable  | Form       | Field | Location                          |
-	#	| Earliest Date Draft                     | AgeREGAQT | Visit Date | Age   | Earliest Date                     |
-	#	| Latest Date Draft                       | AgeREGAQT | Visit Date | Age   | Latest Date                       |
-	#	| Closest in Time to Lab Date Draft       | AgeREGAQT | Visit Date | Age   | Closest in Time to Lab Date       |
-	#	| Closest in Time Prior to Lab Date Draft | AgeREGAQT | Visit Date | Age   | Closest in Time Prior to Lab Date |
-	#And I publish and push CRF Version "CRF Version<RANDOMNUMBER>" of Draft "Earliest Date Draft" to site "Earliest Date Site" in Project "US12994_DT10991" for Enviroment "Prod"
-	#And I publish and push CRF Version "CRF Version<RANDOMNUMBER>" of Draft "Latest Date Draft" to site "Latest Date Site" in Project "US12994_DT10991" for Enviroment "Prod"
-	#And I publish and push CRF Version "CRF Version<RANDOMNUMBER>" of Draft "Closest in Time to Lab Date Draft" to site "Closest in Time to Lab Date Site" in Project "US12994_DT10991" for Enviroment "Prod"	
-	#And I publish and push CRF Version "CRF Version<RANDOMNUMBER>" of Draft "Closest in Time Prior to Lab Date Draft" to site "Closest in Time Prior to Lab Date Site" in Project "US12994_DT10991" for Enviroment "Prod"
-	#And the Local Lab "US12994_DT10991 Central Lab" exists
-	#And the following Lab assignment exists
-	#	 | Project         | Environment | Site                                   | Lab         |
-	#	 | US12994_DT10991 | Prod        | Earliest Date Site                     | Local Lab 1 |
-	#	 | US12994_DT10991 | Prod        | Latest Date Site                       | Local Lab 1 |
-	#	 | US12994_DT10991 | Prod        | Closest in Time to Lab Date Site       | Local Lab 1 |
-	#	 | US12994_DT10991 | Prod        | Closest in Time Prior to Lab Date Site | Local Lab 1 |
+    And study "US12994_DT10991" is assigned to Site "EDS1"
+    And study "US12994_DT10991" is assigned to Site "LDS1"
+    And study "US12994_DT10991" is assigned to Site "CTLDS1"
+    And study "US12994_DT10991" is assigned to Site "CTPLDV1"
+	And I navigate to "Lab Administration"
+	And xml Lab Configuration "All_US12994.xml" is uploaded
+	And xml draft "US12994_DT10991_Earliest_Date_Draft.xml" is Uploaded with Environment name "Prod"
+	And xml draft "US12994_DT10991_Latest_Date_Draft.xml" is Uploaded with Environment name "Prod"
+	And xml draft "US12994_DT10991_Closest_in_Time_to_Lab_Date_Draft.xml" is Uploaded with Environment name "Prod"
+    And xml draft "US12994_DT10991_Closest_in_Time_Prior_to_Lab_Date_Draft.xml" is Uploaded with Environment name "Prod"
+	And I publish and push eCRF "US12994_DT10991_Earliest_Date_Draft.xml" to "CRF Earliest Date Site" with study environment "Prod" for site "EDS1"
+	And I publish and push eCRF "US12994_DT10991_Latest_Date_Draft.xml" to "CRF Latest Date Site" with study environment "Prod" for site "LDS1"
+	And I publish and push eCRF "US12994_DT10991_Closest_in_Time_Prior_to_Lab_Date_Draft.xml" to "CRF Closest in Time Prior to Lab Date Site" with study environment "Prod" for site "CTPLDV1"
+	And I publish and push eCRF "US12994_DT10991_Closest_in_Time_to_Lab_Date_Draft.xml" to "CRF Closest in Time to Lab Date Site" with study environment "Prod" for site "CTLDS1"
+	And study "US12994_DT10991" is assigned to Site "EDS1" with study environment "Live: Prod"
+    And study "US12994_DT10991" is assigned to Site "LDS1" with study environment "Live: Prod"
+	And study "US12994_DT10991" is assigned to Site "CTLDS1" with study environment "Live: Prod"
+    And study "US12994_DT10991" is assigned to Site "CTPLDV1" with study environment "Live: Prod"
+	And following Project assignments exist
+		| User			| Project			| Environment	| Role			|  Site     |SecurityRole			|
+		| SUPER USER 1	| US12994_DT10991	| Live: Prod    | SUPER ROLE 1	| EDS1      |Project Admin Default	|
+		| SUPER USER 1	| US12994_DT10991	| Live: Prod    | SUPER ROLE 1	| LDS1      |Project Admin Default	|
+		| SUPER USER 1	| US12994_DT10991	| Live: Prod    | SUPER ROLE 1	| CTLDS1    |Project Admin Default	|
+		| SUPER USER 1	| US12994_DT10991	| Live: Prod    | SUPER ROLE 1	| CTPLDV1	|Project Admin Default	|
+	And I login to Rave with user "SUPER USER 1"
 
 #----------------------------------------------------------------------------------------------------------------------------------------
 @release_564_2012.1.0
 @PB_US12994_DT10991_01
 @Validation		
 Scenario: PB_US12994_DT10991_01 As an EDC user, when I enter a missing date in the first Visit Date, a valid date in the second Visit Date, and a Lab Date after the second Visit Date and the lab Age variable is mapped to the Earliest date, then I should see lab ranges.
-	
-	And I select Study "US12994_DT10991" and Site "Earliest Date Site"
+	When I select Site link "EDS1"
 	And I create a Subject
 		| Field      | Data                  | Control Type |
 		| Subject ID | SUB {RndNum<num1>(5)} | textbox      |
@@ -79,18 +59,18 @@ Scenario: PB_US12994_DT10991_01 As an EDC user, when I enter a missing date in t
 	And I select Form "Visit Date" in Folder "Visit 2"
 	And I enter data in CRF and save
 		| Field      | Data        | Control Type |
-		| Visit Date | 01 Feb 2011 | datetime     |
+		| Visit Date | 01 Feb 2099 | datetime     |
 		| Age        | 20          | textbox      |
 	And I take a screenshot
 	And I select link "SUB {Var(num1)}"
 	And I select Form "Hematology"
 	And I select Lab "Local Lab 1"
-	When I enter data in CRF and save
-		|Field		|Data		|Control Type |
-		|Sample Date|02 Feb 2011|datetime     | 
+	And I enter data in CRF and save
+	  | Field | Data |
+	  | WBC   |      |
 	Then I verify lab ranges
-		| Field | Data | Range Status | Range | Unit   | Status Icon |
-		| WBC   |      |              | 2 - 8 | 10^9/L | Complete    |
+		| Field | Data | Range Status | Range	| Unit					| Status Icon |
+		| WBC   |      |              | 10 - 20 | *10E6/ulREG_US12994	| Complete    |
 	And I take a screenshot
 
 #----------------------------------------------------------------------------------------------------------------------------------------
@@ -98,12 +78,14 @@ Scenario: PB_US12994_DT10991_01 As an EDC user, when I enter a missing date in t
 @PB_US12994_DT10991_02
 @Validation
 Scenario: PB_US12994_DT10991_02 As an EDC user, when I enter a missing date in the first Visit Date, a valid date in the second Visit Date, and a Lab Date after the second Visit Date and the lab Age variable is mapped to the Latest date, then I should see lab ranges.
-	
-	And I select Study "US12994_DT10991" and Site "Latest Date Site"
+    When I select Site link "LDS1"
 	And I create a Subject
 		| Field      | Data                  | Control Type |
 		| Subject ID | SUB {RndNum<num1>(5)} | textbox      |
 	And I select link "SUB {Var(num1)}"
+	And I select Form "Visit Date" in Folder "Visit 1"
+	And I save the CRF page
+	And I take a screenshot
 	And I select Form "Visit Date" in Folder "Visit 2"
 	And I enter data in CRF and save
 		| Field      | Data        | Control Type |
@@ -113,12 +95,12 @@ Scenario: PB_US12994_DT10991_02 As an EDC user, when I enter a missing date in t
 	And I select link "SUB {Var(num1)}"
 	And I select Form "Hematology"
 	And I select Lab "Local Lab 1"
-	When I enter data in CRF and save
-		|Field		|Data		|Control Type |
-		|Sample Date|02 Feb 2011|datetime     | 
+	And I enter data in CRF and save
+	  | Field | Data |
+	  | WBC   |      |
 	Then I verify lab ranges
-		| Field | Data | Range Status | Range | Unit   | Status Icon |
-		| WBC   |      |              | 2 - 8 | 10^9/L | Complete    |
+		| Field | Data | Range Status | Range	| Unit					| Status Icon |
+		| WBC   |      |              | 10 - 20 | *10E6/ulREG_US12994	| Complete    |
 	And I take a screenshot
 
 #----------------------------------------------------------------------------------------------------------------------------------------
@@ -126,12 +108,14 @@ Scenario: PB_US12994_DT10991_02 As an EDC user, when I enter a missing date in t
 @PB_US12994_DT10991_03
 @Validation
 Scenario: PB_US12994_DT10991_03 As an EDC user, when I enter a missing date in the first Visit Date, a valid date in the second Visit Date, and a Lab Date after the second Visit Date and the lab Age variable is mapped to the Closest in time to the lab date, then I should see lab ranges.
-	
-	And I select Study "US12994_DT10991" and Site "Closest in Time to Lab Date Site"
+    When I select Site link "CTLDS1"
 	And I create a Subject
 		| Field      | Data                  | Control Type |
 		| Subject ID | SUB {RndNum<num1>(5)} | textbox      |
 	And I select link "SUB {Var(num1)}"
+	And I select Form "Visit Date" in Folder "Visit 1"
+	And I save the CRF page
+	And I take a screenshot
 	And I select Form "Visit Date" in Folder "Visit 2"
 	And I enter data in CRF and save
 		| Field      | Data        | Control Type |
@@ -141,12 +125,12 @@ Scenario: PB_US12994_DT10991_03 As an EDC user, when I enter a missing date in t
 	And I select link "SUB {Var(num1)}"
 	And I select Form "Hematology"
 	And I select Lab "Local Lab 1"
-	When I enter data in CRF and save
-		|Field		|Data		|Control Type |
-		|Sample Date|02 Feb 2011|datetime     | 
+	And I enter data in CRF and save
+	  | Field | Data |
+	  | WBC   |      |
 	Then I verify lab ranges
-		| Field | Data | Range Status | Range | Unit   | Status Icon |
-		| WBC   |      |              | 2 - 8 | 10^9/L | Complete    |
+		| Field | Data | Range Status | Range	| Unit					| Status Icon |
+		| WBC   |      |              | 10 - 20 | *10E6/ulREG_US12994	| Complete    |
 	And I take a screenshot
 
 #----------------------------------------------------------------------------------------------------------------------------------------
@@ -154,12 +138,14 @@ Scenario: PB_US12994_DT10991_03 As an EDC user, when I enter a missing date in t
 @PB_US12994_DT10991_04
 @Validation
 Scenario: PB_US12994_DT10991_04 As an EDC user, when I enter a missing date in the first Visit Date, a valid date in the second Visit Date, and a Lab Date after the second Visit Date and the lab Age variable is mapped to the Closest in time prior to lab date, then I should see lab ranges.
-	
-	And I select Study "US12994_DT10991" and Site "Closest in Time Prior to Lab Date Site"
+    When I select Site link "CTPLDV1"
 	And I create a Subject
 		| Field      | Data                  | Control Type |
 		| Subject ID | SUB {RndNum<num1>(5)} | textbox      |
 	And I select link "SUB {Var(num1)}"
+	And I select Form "Visit Date" in Folder "Visit 1"
+	And I save the CRF page
+	And I take a screenshot
 	And I select Form "Visit Date" in Folder "Visit 2"
 	And I enter data in CRF and save
 		| Field      | Data        | Control Type |
@@ -169,11 +155,10 @@ Scenario: PB_US12994_DT10991_04 As an EDC user, when I enter a missing date in t
 	And I select link "SUB {Var(num1)}"
 	And I select Form "Hematology"
 	And I select Lab "Local Lab 1"
-	When I enter data in CRF and save
-		|Field		|Data		|Control Type |
-		|Sample Date|02 Feb 2011|datetime     | 
+	And I enter data in CRF and save
+	  | Field | Data |
+	  | WBC   |      |
 	Then I verify lab ranges
-		| Field | Data | Range Status | Range | Unit   | Status Icon |
-		| WBC   |      |              | 2 - 8 | 10^9/L | Complete    |
+		| Field | Data | Range Status | Range	| Unit					| Status Icon |
+		| WBC   |      |              | 10 - 20 | *10E6/ulREG_US12994	| Complete    |
 	And I take a screenshot
-

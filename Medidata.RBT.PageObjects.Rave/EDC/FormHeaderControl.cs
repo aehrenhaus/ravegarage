@@ -26,7 +26,7 @@ namespace Medidata.RBT.PageObjects.Rave
         /// <returns>True if the checkbox is enabled, false if it is not</returns>
         public bool IsReviewRequired()
         {
-            IWebElement headerReviewGroupBox = TestContext.Browser.TryFindElementByPartialID("header_SG_ReviewGroupBox");
+            IWebElement headerReviewGroupBox = Page.Browser.TryFindElementByPartialID("header_SG_ReviewGroupBox");
             return headerReviewGroupBox.EnhanceAs<Checkbox>().Enabled;
         }
     }

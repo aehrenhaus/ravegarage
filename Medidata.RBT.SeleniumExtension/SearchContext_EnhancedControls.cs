@@ -62,7 +62,10 @@ namespace Medidata.RBT.SeleniumExtension
 		{
 			return SelectExtendElementByPartialID<Textbox>(context,"input", partialID, nullable);
 		}
-
+		public static Textbox TextareaById(this ISearchContext context, string partialID, bool nullable = false)
+		{
+			return SelectExtendElementByPartialID<Textbox>(context, "textarea", partialID, nullable);
+		}
         /// <summary>
         /// Select a textbox by the type
         /// </summary>
@@ -75,10 +78,10 @@ namespace Medidata.RBT.SeleniumExtension
             return context.FindElement(By.XPath(".//input[@type='" + type + "']")).EnhanceAs<Textbox>();
         }
 
-		public static ReadOnlyCollection<Textbox> Textboxes(this ISearchContext context, bool allLevel = true)
+		public static ReadOnlyCollection<Textbox> Textboxes(this ISearchContext context, bool allLevel = true, bool? isWait = null)
 		{
 			string xpath = allLevel ? ".//input[@type='text'] | .//textarea" : "./input[@type='text'] | ./textarea";
-            var result = context.TryFindElementsBy(By.XPath(xpath))
+			var result = context.TryFindElementsBy(By.XPath(xpath), isWait)
                 ?? new ReadOnlyCollection<IWebElement>(new List<IWebElement>());
             return result.CastReadOnlyCollection<Textbox>();
 		}
@@ -193,8 +196,12 @@ namespace Medidata.RBT.SeleniumExtension
             if (linktext.Contains("•"))
                 ele = FindLinkWithBulletPoint(context, linktext);
             else
-			    ele = context.TryFindElementBy(By.LinkText(linktext));
+				ele = context.TryFindElementBy(By.LinkText(linktext));
 
+			if (ele == null)
+				ele = context.TryFindElementBy(By.XPath("//span[normalize-space(text())='" + linktext + "']"));
+
+			//DOTO: !!!!!! This 2 lines should not be here, this is a great performance drop and make no sense to treat a div as a link
             if(ele == null)
                 ele = context.TryFindElementBy(By.XPath("//div[normalize-space(text())='" + linktext + "']"));
 
@@ -349,9 +356,9 @@ namespace Medidata.RBT.SeleniumExtension
 
 
 
-		public static EnhancedElement ImageBySrc(this ISearchContext context, string src)
+		public static EnhancedElement ImageBySrc(this ISearchContext context, string src, bool? isWait = null)
 		{
-			return context.TryFindElementBy(By.XPath(".//img[@src='" + src + "']")).EnhanceAs < EnhancedElement>();
+			return context.TryFindElementBy(By.XPath(".//img[contains(@src,'" + src  + "')]"), isWait).EnhanceAs<EnhancedElement>();
 		}
 
 
@@ -461,7 +468,17 @@ namespace Medidata.RBT.SeleniumExtension
             return context.FindElements(By.XPath(".//input[@type='image']")).CastReadOnlyCollection<EnhancedElement>();
 		}
 
-
+        /// <summary>
+        /// Returns imagebutton as EnhancedElement based on partial ID
+        /// </summary>
+        /// <param name="context"></param>
+        /// <param name="partialID"></param>
+        /// <returns></returns>
+        public static EnhancedElement FindImagebuttonByPartialId(this ISearchContext context, string partialID)
+        {
+            return context.TryFindElementBy(By.XPath(
+                string.Format(".//input[@type='image' and contains(@id, '{0}')]", partialID))).EnhanceAs<EnhancedElement>();
+        }
 		
 
         /// <summary>

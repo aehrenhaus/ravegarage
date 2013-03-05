@@ -40,6 +40,7 @@ Scenario: PB_US19302_DT14205_01 As a Study Coordinator, when I submit 'Standard 
 		| Number 1       | 10                   | textbox      |
 		| Number 2       | 5                    | textbox      |
 		| Date Of Birth  | 01 Jan 1975          | dateTime     |
+		| Today's Date   | 01 Jan 2012          | dateTime     |
 	And I save the CRF page
 	Then I verify data on Fields in CRF
 		| Field             | Data                 |

@@ -8,17 +8,12 @@ using System;
 
 namespace Medidata.RBT.Features.Rave
 {
+    /// <summary>
+    /// Steps pertaining to reports
+    /// </summary>
 	[Binding]
 	public class ReportSteps : BrowserStepsBase
 	{
-
-
-        [StepDefinition(@"I verify text")]
-        [Obsolete("Use step definitions from Medidata.RBT.Common.Steps.IVerifyExistSteps")]
-        public void IVerifyText(Table table)
-        {
-        }
-
 		/// <summary>
 		/// Select report by name on Report page
 		/// </summary>
@@ -46,7 +41,7 @@ namespace Medidata.RBT.Features.Rave
             {
                 string studyName = "";
                 tabRow.TryGetValue(headers[0], out studyName);
-                Project project = TestContext.GetExistingFeatureObjectOrMakeNew(studyName, () => new Project(studyName));
+                Project project = SeedingContext.GetExistingFeatureObjectOrMakeNew(studyName, () => new Project(studyName));
                 string envName = "";
                 tabRow.TryGetValue(headers[1], out envName);
                 newTable.AddRow(project.UniqueName, envName);
@@ -111,6 +106,5 @@ namespace Medidata.RBT.Features.Rave
             bool result = CurrentPage.As<CrystalReportPage>().VerifyDuplicateRecordsAreNotDisplayed();
             Assert.IsTrue(result);
         }
-
 	}
 }

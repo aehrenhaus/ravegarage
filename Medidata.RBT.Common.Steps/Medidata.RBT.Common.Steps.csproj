@@ -54,9 +54,8 @@
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
-    <Reference Include="TechTalk.SpecFlow, Version=1.8.1.0, Culture=neutral, PublicKeyToken=0778194805d6db41, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\SpecFlow.1.9.0\lib\net35\TechTalk.SpecFlow.dll</HintPath>
+    <Reference Include="TechTalk.SpecFlow">
+      <HintPath>..\ExternalDlls\SpecflowModified\TechTalk.SpecFlow.dll</HintPath>
     </Reference>
     <Reference Include="ThoughtWorks.Selenium.Core">
       <HintPath>..\ExternalDlls\ThoughtWorks.Selenium.Core.dll</HintPath>
@@ -69,7 +68,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DownloadAndExcelSteps.cs" />
+    <Compile Include="EnableDisableSteps.cs" />
+    <Compile Include="CheckboxSteps.cs" />
+    <Compile Include="DataEntrySteps.cs" />
+    <Compile Include="DownloadSteps.cs" />
+    <Compile Include="ExcelSteps.cs" />
     <Compile Include="IActivateSteps.cs" />
     <Compile Include="IVerifyInOrderSteps.cs" />
     <Compile Include="IVerifyExistSteps.cs" />
@@ -77,9 +80,12 @@
     <Compile Include="DatabaseSteps.cs" />
     <Compile Include="MiscSteps.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="DefaultPOInterfaceImplementation.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Medidata.RBT.PageObjects.Rave\Medidata.RBT.PageObjects.Rave.csproj">
+      <Project>{14989202-B55D-4273-85E2-1BFD95A4BB80}</Project>
+      <Name>Medidata.RBT.PageObjects.Rave</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Medidata.RBT.SeleniumExtension\Medidata.RBT.SeleniumExtension.csproj">
       <Project>{22945718-331A-4CC1-A98A-A7E7500FAF76}</Project>
       <Name>Medidata.RBT.SeleniumExtension</Name>

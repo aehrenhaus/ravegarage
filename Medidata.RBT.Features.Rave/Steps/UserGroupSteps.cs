@@ -9,6 +9,9 @@ using System.Linq;
 
 namespace Medidata.RBT.Features.Rave
 {
+    /// <summary>
+    /// Stepts pertaining to user groups
+    /// </summary>
     [Binding]
     public partial class UserGroupSteps : BrowserStepsBase
     {
@@ -19,7 +22,7 @@ namespace Medidata.RBT.Features.Rave
         [StepDefinition(@"xml User Group Configuration ""([^""]*)"" is uploaded")]
         public void XmlDraft____IsUploaded(string configName)
         {
-            TestContext.GetExistingFeatureObjectOrMakeNew<UserGroupConfiguration>(configName, () => new UserGroupConfiguration(configName));
+            SeedingContext.GetExistingFeatureObjectOrMakeNew<UserGroupConfiguration>(configName, () => new UserGroupConfiguration(configName));
         }
     }
 }

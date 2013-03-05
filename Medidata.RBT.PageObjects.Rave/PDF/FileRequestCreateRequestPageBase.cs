@@ -26,7 +26,16 @@ namespace Medidata.RBT.PageObjects.Rave
             SelectStudy(args.Study, args.Environment);
             SelectLocale(args.Locale);
             SelectRole(args.Role);
+            PerformPDFSpecificSelections(args);
+            if(args.FormExclusions != null)
+                SelectFormExclusions(args.FormExclusions.Split(',').ToList());
         }
+
+        /// <summary>
+        /// Perform specific PDF selections that are only viable for either data PDF or blank PDF
+        /// </summary>
+        /// <param name="args">The PDF arguments you want to select</param>
+        public abstract void PerformPDFSpecificSelections(PDFCreationModel args);
 
         /// <summary>
         /// Enter the desired pdf name in the textbox
@@ -46,7 +55,7 @@ namespace Medidata.RBT.PageObjects.Rave
         {
             if (!string.IsNullOrEmpty(pName))
             {
-                string profileName = TestContext.GetExistingFeatureObjectOrMakeNew
+                string profileName = SeedingContext.GetExistingFeatureObjectOrMakeNew
                     ( pName, () => new PdfProfile(pName)).UniqueName;
 
                 ChooseFromDropdown("_ctl0_Content_FileRequestForm_ConfigProfileID", profileName);
@@ -63,7 +72,7 @@ namespace Medidata.RBT.PageObjects.Rave
         {
             if (!string.IsNullOrEmpty(sName))
             {
-                string studyName = TestContext.GetExistingFeatureObjectOrMakeNew
+                string studyName = SeedingContext.GetExistingFeatureObjectOrMakeNew
                     (sName, () => new Project(sName)).UniqueName;
                 if (envName != null)
                 {
@@ -99,10 +108,25 @@ namespace Medidata.RBT.PageObjects.Rave
                 var dlRole = Browser.FindElementById("Role");
                 Thread.Sleep(1000);
 
-                string roleName = TestContext.GetExistingFeatureObjectOrMakeNew
+                string roleName = SeedingContext.GetExistingFeatureObjectOrMakeNew
                     (role, () => new Role(role)).UniqueName;
 
                 ChooseFromDropdown("Role", roleName);
+            }
+        }
+
+        /// <summary>
+        /// Select the form exclusions for the pdf generator
+        /// </summary>
+        /// <param name="formExclusions">List of forms to exclude</param>
+        public void SelectFormExclusions(List<string> formExclusions)
+        {
+            //Open Form Exclusions box if it isn't already open
+            IWebElement formsDiv = Browser.TryShowArea("Forms_div", "Forms_ShowHideBtn");
+            foreach (string formToExclude in formExclusions)
+            {
+                //get checkbox next to form and check it
+                formsDiv.TryFindElementBy(By.XPath(".//td[contains(text(), '" + formToExclude.Trim() + "')]/../td/input")).EnhanceAs<Checkbox>().Check();
             }
         }
 

@@ -35,8 +35,8 @@ namespace Medidata.RBT.PageObjects.Rave
         public IPage ClickProject(string projectName)
         {
             base.ClickLink(projectName);
-            TestContext.CurrentPage = new ArchitectLibraryPage();
-            return TestContext.CurrentPage;
+            Context.CurrentPage = new ArchitectLibraryPage();
+            return Context.CurrentPage;
         }
 
 		public override string URL
@@ -46,5 +46,22 @@ namespace Medidata.RBT.PageObjects.Rave
 				return "Modules/Architect/Architect.aspx";
 			}
 		}
+
+        /// <summary>
+        /// Click link on the page
+        /// </summary>
+        /// <param name="linkText">The text of the link to click</param>
+        /// <param name="objectType">The object type to click</param>
+        /// <param name="areaIdentifier">The area to click in</param>
+        /// <param name="partial">Whether or not to allow partial matches</param>
+        /// <returns>The current page</returns>
+        public override IPage ClickLink(string linkText, string objectType = null, string areaIdentifier = null, bool partial = false)
+        {
+            //Since proposals have the date of the proposal on the end in their element we want to only click by partial match
+            if (objectType != null && objectType.Equals("Proposal", StringComparison.InvariantCultureIgnoreCase))
+                return base.ClickLink(linkText, objectType, areaIdentifier, true);
+            else
+                return base.ClickLink(linkText, objectType, areaIdentifier, partial);
+        }
 	}
 }

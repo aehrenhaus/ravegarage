@@ -1,0 +1,122 @@
+﻿#sortable
+{
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	width: 100%;
+	float: left;
+}
+#sortable li
+{
+	margin: 0 3px 3px 3px;
+	padding: 0.4em;
+	padding-left: 1.5em;
+	font-size: 14px;
+	height: 18px;
+}
+#sortable li span
+{
+	position: absolute;
+}
+#sortable li span.ui-icon
+{
+	margin-left: -1.3em;
+}
+#sortable li span.removeStep
+{
+	margin-right: 10px;
+	margin-top: 0;
+	float: right;
+	position: inherit;
+	padding: 3px;
+}
+#sortable li span.removeStep:hover
+{
+	background: #f99;
+	cursor: pointer;
+}
+.ui-accordion .ui-accordion-content
+{
+	padding: 10px;
+}
+ul#sortable input
+{
+	background: none;
+	border: none;
+	border-bottom: 1px solid gray;
+	color: Green;
+	width: 90px;
+}
+ul.stepDefs
+{
+	width:350px;
+}
+
+ul.stepDefs li
+{
+	margin: 5px;
+	overflow: hidden;
+	white-space: nowrap;
+	padding: 5px;
+}
+
+
+ul.stepDefs li:hover
+{
+	background-color: #ded;
+}
+
+
+ul.stepDefs div
+{
+	display: none;
+}
+
+.accordionCate
+{
+	width: 400px;
+	float: left;
+	margin-right: 30px;
+}
+
+.comment
+{
+	color: #008000;
+	font-size: 12px;
+}
+ul#sortable li div
+{
+	display: none;
+}
+
+
+
+ul.toogleStepClass li
+{
+ display:inline;
+ padding:5px;
+ background:#FFD17E;
+ border:1px solid gray;
+ float:left;
+ margin:5px;
+  cursor:pointer;
+ 
+}
+
+ul.toogleStepClass li.disabled
+{
+	 background:#eee;
+}
+ ul.toogleStepClass li:hover.disabled
+{
+	background:#f5f5f5;
+}
+
+ul.toogleStepClass li:hover
+{
+	background:orange;
+}
+ul.toogleStepClass
+{
+	margin:0;
+}

@@ -1,6 +1,8 @@
 ﻿using TechTalk.SpecFlow;
 using Medidata.RBT.PageObjects.Rave;
 using Medidata.RBT.PageObjects.Rave.SharedRaveObjects;
+using System;
+using Medidata.RBT.SeleniumExtension;
 
 
 namespace Medidata.RBT.Features.Rave
@@ -22,20 +24,16 @@ namespace Medidata.RBT.Features.Rave
 			LoginPage page = new LoginPage();
 			page.NavigateToSelf();
             CurrentPage = page.Login(username, password);
-			
 		}
 
 		/// <summary>
-		/// 
+		/// Login to Rave with default account
 		/// </summary>
-        [StepDefinition(@"I am logged in to Rave with default account")]
-		[StepDefinition(@"I login to Rave with default account")]
         public void ILoginToRaveWithDefaultAccount()
         {
             ILoginToRaveWithUsername____AndPassword____(RaveConfiguration.Default.DefaultUser,
                                             RaveConfiguration.Default.DefaultUserPassword);
         }
-
 
 		/// <summary>
 		/// Login to rave with the username and password in configuration
@@ -50,8 +48,8 @@ namespace Medidata.RBT.Features.Rave
             }
             else
             {
-                User user = TestContext.GetExistingFeatureObjectOrMakeNew(userName, () => new User(userName));
-                LoginPage.LoginToHomePageIfNotAlready(user.UniqueName, user.Password);
+                User user = SeedingContext.GetExistingFeatureObjectOrMakeNew(userName, () => new User(userName));
+				LoginPage.LoginToHomePageIfNotAlready(WebTestContext, user.UniqueName, user.Password);
             }
 		}
 
@@ -61,7 +59,7 @@ namespace Medidata.RBT.Features.Rave
         [StepDefinition(@"I log out of Rave")]
         public void ILogOutOfRave()
         {
-            CurrentPage.ClickLink("Logout");
+            CurrentPage.Browser.TryFindElementByPartialID("LogoutLink").Click();
         }
 	}
 }

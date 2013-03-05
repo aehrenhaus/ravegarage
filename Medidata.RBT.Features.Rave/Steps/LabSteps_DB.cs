@@ -10,6 +10,9 @@ using Medidata.RBT.SharedObjects;
 
 namespace Medidata.RBT.Features.Rave.Steps
 {
+    /// <summary>
+    /// The steps pertaining to manipulating or verifying labs via the database
+    /// </summary>
     [Binding]
     public partial class LabSteps_DB : BrowserStepsBase
     {
@@ -27,7 +30,7 @@ namespace Medidata.RBT.Features.Rave.Steps
                 default:
                     throw new NotImplementedException(String.Format("Unknown Object Name: {0}", model.ObjectName));
             }
-            KeyValuePair<string, ISeedableObject> kvpSeedable = TestContext.SeedableObjects.FirstOrDefault(x => x.Key == model.Lab);
+            KeyValuePair<string, ISeedableObject> kvpSeedable = SeedingContext.SeedableObjects.FirstOrDefault(x => x.Key == model.Lab);
             if (kvpSeedable.Value != null)
                 model.Lab = kvpSeedable.Value.UniqueName;
 
@@ -44,7 +47,7 @@ namespace Medidata.RBT.Features.Rave.Steps
                                        "  join analytes an on an.analyteid = ar.analyteid " +
                                        "  join labs lb on lb.labid = ar.labid " +
                                        "where dbo.fnlocaldefault(lb.labnameid) = @LabName and lb.Active = 1 and ar.Active = 1 and ad.AuditSubCategoryId = @AuditSubCategoryId", 
-                                       TestContext.GetExistingFeatureObjectOrMakeNew<Analyte>(model.Analyte, () => new Analyte(model.Analyte)).UniqueName,
+                                       SeedingContext.GetExistingFeatureObjectOrMakeNew<Analyte>(model.Analyte, () => new Analyte(model.Analyte)).UniqueName,
                                        model.Lab
                                        , 
                                        objectTypeName, 
@@ -66,7 +69,5 @@ namespace Medidata.RBT.Features.Rave.Steps
         }
 
         #endregion LabAnalyteAudit
-
-       
     }
 }

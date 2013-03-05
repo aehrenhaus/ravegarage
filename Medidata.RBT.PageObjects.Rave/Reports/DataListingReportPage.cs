@@ -28,7 +28,6 @@ namespace Medidata.RBT.PageObjects.Rave
 			return base.GetElementByName(identifier,areaIdentifier,listItem);
 		}
 
-
 		public override string URL
 		{
 			get
@@ -39,7 +38,7 @@ namespace Medidata.RBT.PageObjects.Rave
 
         #region ICanVerifyExist
 
-		bool IVerifyRowsExist.VerifyTableRowsExist(string tableIdentifier, Table matchTable)
+        bool IVerifyRowsExist.VerifyTableRowsExist(string tableIdentifier, Table matchTable, int? amountOfTimes)
 		{
 			SpecialStringHelper.ReplaceTableColumn(matchTable, "Subject");
 			return this.VerifyTableRowsExist_Default(tableIdentifier, matchTable);
@@ -52,7 +51,6 @@ namespace Medidata.RBT.PageObjects.Rave
 
 		public int CurrentPageNumber { get; private set; }
 
-        int lastValue = -1;
         public bool GoNextPage(string areaIdentifier)
         {
             int pageIndex = 0;
@@ -62,7 +60,7 @@ namespace Medidata.RBT.PageObjects.Rave
             HtmlTable htmlTable = GetElementByName(areaIdentifier).EnhanceAs<HtmlTable>();
             var trs = htmlTable.FindElements(By.XPath("./tbody/tr"));
             numberOfRows = trs.Count;
-            var pageTable = TestContext.Browser.FindElementByXPath(String.Format("/html/body/form/table[3]/tbody/tr/td/table/tbody/tr[{0}]/td", numberOfRows.ToString()));
+            var pageTable = Context.Browser.FindElementByXPath(String.Format("/html/body/form/table[3]/tbody/tr/td/table/tbody/tr[{0}]/td", numberOfRows.ToString()));
             var current = pageTable.FindElement(By.XPath(".//span"));
             var pageLinks = pageTable.FindElements(By.XPath(".//a"));
 

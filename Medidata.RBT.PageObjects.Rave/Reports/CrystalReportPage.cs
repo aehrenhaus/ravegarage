@@ -209,7 +209,7 @@ namespace Medidata.RBT.PageObjects.Rave
         /// <returns>True only if at least one match exists</returns>
         private bool VerifyTableRowsExist(QueryAuditReportSearchModel model)
         {
-            model.Site = TestContext.GetExistingFeatureObjectOrMakeNew(model.Site, 
+            model.Site = SeedingContext.GetExistingFeatureObjectOrMakeNew(model.Site, 
                 () => new Site(model.Site)).UniqueName;
 
             try
@@ -250,7 +250,7 @@ namespace Medidata.RBT.PageObjects.Rave
 
                 return exists;
             }
-            catch (Exception ex)
+            catch
             { 
                 return false; 
             }
@@ -529,7 +529,7 @@ namespace Medidata.RBT.PageObjects.Rave
             return result;
         }
 
-        bool IVerifyRowsExist.VerifyTableRowsExist(string tableIdentifier, Table matchTable)
+        bool IVerifyRowsExist.VerifyTableRowsExist(string tableIdentifier, Table matchTable, int? amountOfTimes)
         {
 			var result = true;
 			var args = matchTable.CreateSet<QueryAuditReportSearchModel>();

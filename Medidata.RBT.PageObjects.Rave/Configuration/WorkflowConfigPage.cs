@@ -17,12 +17,12 @@ namespace Medidata.RBT.PageObjects.Rave.Configuration
         /// <param name="isActive">isActive is true if you want it to be active and false for inactive</param>
         public void SetReviewGroup(int reviewGroupNumber, bool isActive)
         {
-            IWebElement reviewGroupTable = TestContext.Browser.TryFindElementByPartialID("ReviewGroupsGrid");
+            IWebElement reviewGroupTable = Context.Browser.TryFindElementByPartialID("ReviewGroupsGrid");
             IWebElement reviewGroupRow = reviewGroupTable.TryFindElementBy(By.XPath("//td[normalize-space(text())='" + reviewGroupNumber + "']")).Parent();
             //Click the edit button
             reviewGroupRow.TryFindElementBy(By.XPath("td/a")).Click();
             //Might need to reload the row here
-            reviewGroupTable = TestContext.Browser.TryFindElementByPartialID("ReviewGroupsGrid");
+            reviewGroupTable = Context.Browser.TryFindElementByPartialID("ReviewGroupsGrid");
             reviewGroupRow = reviewGroupTable.TryFindElementBy(By.XPath("//td[normalize-space(text())='" + reviewGroupNumber + "']")).Parent();
             Checkbox isActiveCheckbox = reviewGroupRow.TryFindElementBy(By.XPath("td/input[contains(@id,'ReviewGroupActive')]")).EnhanceAs<Checkbox>();
             if (isActive)
@@ -39,13 +39,13 @@ namespace Medidata.RBT.PageObjects.Rave.Configuration
         public void ClickActionsLinkForGivenRole(string RoleName)
         {
             //FindTable
-            IWebElement rolesTable = TestContext.Browser.TryFindElementByPartialID("RolesTable");
+            IWebElement rolesTable = Context.Browser.TryFindElementByPartialID("RolesTable");
             //FindRow
             rolesTable.TryFindElementByPartialID("TxtFilter").EnhanceAs<Textbox>().SetText(RoleName);
             rolesTable.TryFindElementByPartialID("LnkBtnSearch").Click();
 
             //FindTable
-            IWebElement edcRolesTable = TestContext.Browser.TryFindElementByPartialID("RolesGrid");
+            IWebElement edcRolesTable = Context.Browser.TryFindElementByPartialID("RolesGrid");
             //FindRow
             IWebElement edcRoleRow = edcRolesTable.TryFindElementBy(By.XPath("//td[normalize-space(text())='" + RoleName + "']")).Parent();
             //click action link

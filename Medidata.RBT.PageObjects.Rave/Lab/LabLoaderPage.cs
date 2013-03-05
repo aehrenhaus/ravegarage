@@ -19,7 +19,7 @@ namespace Medidata.RBT.PageObjects.Rave.Lab
     {
         public LabLoaderPage()
         {
-            PageFactory.InitElements(Browser, this);
+            //PageFactory.InitElements(Browser, this);
         }
 
         /// <summary>
@@ -29,7 +29,7 @@ namespace Medidata.RBT.PageObjects.Rave.Lab
         /// <param name="stayOnPage">stay on this page afterwards</param>
         public void UploadFile(string filepath)
         {
-            TestContext.Browser.FindElementById("_ctl0_Content_FileUpload").SendKeys(filepath);
+            Context.Browser.FindElementById("_ctl0_Content_FileUpload").SendKeys(filepath);
             ClickButton("Upload");
             WaitForUploadToComplete();
         }
@@ -63,7 +63,7 @@ namespace Medidata.RBT.PageObjects.Rave.Lab
 
         #region ICanVerifyExist
 
-        public bool VerifyTableRowsExist(string tableIdentifier, Table matchTable)
+        public bool VerifyTableRowsExist(string tableIdentifier, Table matchTable, int? amountOfTimes = null)
         {
             throw new NotImplementedException();
         }
@@ -73,7 +73,7 @@ namespace Medidata.RBT.PageObjects.Rave.Lab
             throw new NotImplementedException();
         }
 
-		bool IVerifySomethingExists.VerifySomethingExist(string areaIdentifier, string type, string identifier, bool exactMatch)
+        bool IVerifySomethingExists.VerifySomethingExist(string areaIdentifier, string type, string identifier, bool exactMatch, int? amountOfTimes)
 		{
 			if (identifier != null)
 			{

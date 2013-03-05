@@ -28,7 +28,7 @@ namespace Medidata.RBT
 
 		public string Replace(string[] args)
         {
-			return TestContext.Vars[args[0]];
+			return SpecialStringHelper.StringReplacementVars[args[0]];
         }
 
 
@@ -39,7 +39,7 @@ namespace Medidata.RBT
 
 				return new string[1] {
 				"Variable name"
-			};
+			}; 
 			}
 		}
        

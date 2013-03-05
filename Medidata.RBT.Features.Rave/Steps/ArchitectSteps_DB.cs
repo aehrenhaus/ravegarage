@@ -17,13 +17,21 @@ namespace Medidata.RBT.Features.Rave
     /// </summary>
     public partial class EDCSteps
     {
-        
+        /// <summary>
+        /// Verify that global unit or data dictionary with the specified OID exists
+        /// </summary>
+        /// <param name="tableName">The name of the table to search</param>
+        /// <param name="table">The values to search for</param>
         [StepDefinition(@"I verify Global ([^""]*) with OID exist")]
         public void IVerifyTableEntriesWithOIDExist(string tableName, Table table)
         {
             VerifyTableEntriesWithOIDExist(tableName, table);
         }
 
+        /// <summary>
+        /// Verify that global unit or data dictionary does not have duplicate OIDs
+        /// </summary>
+        /// <param name="tableName">The table to verify</param>
         [StepDefinition(@"I verify Global ([^""]*) do not have duplicate OIDs")]
         public void IVerifyTableEntriesWithOIDExistWithNoDuplicates(string tableName)
         {
@@ -45,7 +53,6 @@ namespace Medidata.RBT.Features.Rave
             dataTable = DbHelper.ExecuteDataSet(sql).Tables[0];
             return dataTable.Rows.Count;
         }
-
 
         private static void VerifyTableEntriesWithOIDExist(string tableName, Table table)
         {

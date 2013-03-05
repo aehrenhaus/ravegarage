@@ -28,10 +28,10 @@ namespace Medidata.RBT.PageObjects.Rave
         #region INTERFACE IEDCLogFieldControl
         public override bool IsElementFocused(ControlType type, int position) 
         {
-            IWebElement currentElement = TestContext.Browser.TryFindElementBy(b =>
+            IWebElement currentElement = Page.Browser.TryFindElementBy(b =>
                 {
-                    return TestContext.CurrentPage.GetFocusElement().FindElement(By.XPath(".[@id != '']"));
-                });
+					return Page.GetFocusElement().FindElement(By.XPath(".[@id != '']"));
+                }, true, 30);
             IWebElement element = GetElementInRowByLabel(type, position);
 
             return currentElement.GetAttribute("ID") == element.GetAttribute("ID");
@@ -64,14 +64,14 @@ namespace Medidata.RBT.PageObjects.Rave
             
             return GetElementBySuffixRow(this.m_fieldName, suffix, altSuffix);
         }
-        private static IWebElement GetElementBySuffixRow(string label, params string[] suffixParams)
+        private IWebElement GetElementBySuffixRow(string label, params string[] suffixParams)
         {
             //Filter out any null suffixes
             suffixParams = suffixParams
                 .Where(item => !string.IsNullOrEmpty(item))
                 .ToArray();
 
-            var leftSideTd = TestContext.Browser.TryFindElementBy(w => {
+            var leftSideTd = Page.Browser.TryFindElementBy(w => {
                 var tDs = w.FindElements(By.XPath("//td[@class='crf_rowLeftSide']"));
                 var tD = tDs.FirstOrDefault(x =>
                     x.Text.Split(new [] { "\r\n" }, StringSplitOptions.None)[0] == label);
