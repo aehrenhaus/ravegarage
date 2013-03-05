@@ -46,6 +46,7 @@ namespace Medidata.RBT.PageObjects.Rave
             ChooseFromRadiobuttons(null, "_ctl0_Content_SelectSitesRB");
             Browser.WaitForDocumentLoad();
             Browser.DropdownById("StudyDDL").SelectByText(env);
+            Thread.Sleep(1000);
             IWebElement listbox = Browser.TryFindElementBy(By.XPath(".//select[@id ='_ctl0_Content_DestinationLB' and not(@disabled)]"));
             SelectElement selectElement = new SelectElement(listbox);
             selectElement.SelectByText(site);
