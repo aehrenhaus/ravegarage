@@ -53,11 +53,12 @@ Background:
 			# |Custom Function Threshold	|0		|
 	# And I do cacheflush
 	# And I select Study "Edit Check Study 3" and Site "Edit Check Site 8"
-	
+	 
 #----------------------------------------------------------------------------------------------------------------------------------------	
 @release_564_Patch11
 @PB_8.1.1
 @Validation
+
 Scenario: PB_8.1.1 As an EDC user, Data setup and verification for query re-firing. Folder "Screening" enter and save data on forms "Informed Consent" and "Concomitant Medications"
 	
 	Given I login to Rave with user "SUPER USER 1"
@@ -65,7 +66,6 @@ Scenario: PB_8.1.1 As an EDC user, Data setup and verification for query re-firi
 	And I select link "First Pass"
 	And I select link "New Batch"
 	And I choose "Edit Check Study 3" from "Study"
-	#And I choose "Prod" from "Environment"
 	And I choose "Edit Check Site 8" from "Site"
 	And I type "sub {RndNum<num1>(5)}" in "Subject"
 	And I choose "Subject Identification" from "Form"
@@ -95,8 +95,6 @@ Scenario: PB_8.1.1 As an EDC user, Data setup and verification for query re-firi
 	Given I login to Rave with user "SUPER USER 2"
 	And I navigate to "DDE"
 	And I select link "Second Pass"
-	#And I choose "Edit Check Study 3" from "Study"
-	#And I choose "Prod" from "Environment"
 	And I choose "Edit Check Site 8" from "Site"
 	And I choose "sub {Var(num1)}" from "Subject"
 	And I choose "Subject Identification" from "Form"
@@ -168,17 +166,30 @@ Scenario: PB_8.1.1 As an EDC user, Data setup and verification for query re-firi
 @PB_8.1.2
 @Validation
 Scenario: PB_8.1.2 As an EDC user, Data verification for closed query re-firing. Folder "Screening" enter and save data on forms "Informed Consent" and "Concomitant Medications"
-	Given I login to Rave with user "SUPER USER 2"
-    And I select Study "Edit Check Study 3" and Site "Edit Check Site 8"
-    And I select a Subject "sub{Var(num1)}"
+	
+	Given I login to Rave with user "SUPER USER 1"
+	And I select Study "Edit Check Study 3" and Site "Edit Check Site 2"
+	And I create a Subject
+		| Field            | Data              |
+		| Subject Number   | {RndNum<num2>(5)} |
+		| Subject Initials | sub               |
+	And I select Form "Informed Consent" in Folder "Screening"
+	And I enter data in CRF
+	    | Field                        | Data        |
+	    | Date Informed Consent Signed | 09 Jan 2000 |
+	    | End Date                     | 10 Jan 2000 |
+	    | Original Distribution Number | 10          |
+	    | Current Distribution Number  | 19          |
+	And I save the CRF page	
 	And I select Form "Concomitant Medications" in Folder "Screening"
-	And I enter data in CRF on a new log line and save
+	And I enter data in CRF
 	    | Field                | Data        |
 	    | Start Date           | 07 Jan 2000 |
 	    | End Date             | 12 Jan 2000 |
 	    | Original Axis Number | 10          |
 	    | Current Axis Number  | 18          |
-	When I open log line 2
+	And I save the CRF page		
+	When I open log line 1
 	Then I verify Query is displayed
 		| Field               | Query Message                                                                                                 | Answered | Closed |
 		| Start Date          | 'Date Informed Consent Signed' is greater. Please revise.                                                     | false    | false  |
@@ -187,7 +198,7 @@ Scenario: PB_8.1.2 As an EDC user, Data verification for closed query re-firing.
 	And I answer the Query "'Date Informed Consent Signed' is greater. Please revise." on Field "Start Date" with "{answer}"
 	And I answer the Query "Informed Consent 'Current Distribution Number' is not equal to Concomitant Medications 'Current Axis Number'." on Field "Current Axis Number" with "{answer}"
 	And I save the CRF page
-	And I open log line 2
+	And I open log line 1
 	And I close the Query "'Date Informed Consent Signed' is greater. Please revise." on Field "Start Date"
 	And I close the Query "Informed Consent 'Current Distribution Number' is not equal to Concomitant Medications 'Current Axis Number'." on Field "Current Axis Number"
 	And I enter data in CRF
@@ -196,7 +207,7 @@ Scenario: PB_8.1.2 As an EDC user, Data verification for closed query re-firing.
 		| Current Axis Number | 19          |
 	And I save the CRF page
 	And I take a screenshot
-	When I open log line 2
+	When I open log line 1
 	Then I verify Query is displayed
 		| Field               | Query Message                                                                                                 | Answered | Closed |
 		| Start Date          | 'Date Informed Consent Signed' is greater. Please revise.                                                     | true     | true   |
@@ -206,7 +217,7 @@ Scenario: PB_8.1.2 As an EDC user, Data verification for closed query re-firing.
 		| Field               | Data        |
 		| Start Date          | 07 Jan 2000 |
 		| Current Axis Number | 18          |
-	And I open log line 2
+	And I open log line 1
 	Then I verify Query is displayed
 		| Field               | Query Message                                                                                                 | Answered | Closed |
 		| Start Date          | 'Date Informed Consent Signed' is greater. Please revise.                                                     | true     | true   |
@@ -219,17 +230,29 @@ Scenario: PB_8.1.2 As an EDC user, Data verification for closed query re-firing.
 @Validation
 Scenario: PB_8.1.3 As an EDC user, Data verification for canceled query re-firing. Folder "Screening" enter and save data on forms "Informed Consent" and "Concomitant Medications"
 	
-	Given I login to Rave with user "SUPER USER 2"
-    And I select Study "Edit Check Study 3" and Site "Edit Check Site 8"
-    And I select a Subject "sub{Var(num1)}"
+	Given I login to Rave with user "SUPER USER 1"
+	And I select Study "Edit Check Study 3" and Site "Edit Check Site 2"
+	And I create a Subject
+		| Field            | Data              |
+		| Subject Number   | {RndNum<num3>(5)} |
+		| Subject Initials | sub               |
+	And I select Form "Informed Consent" in Folder "Screening"
+	And I enter data in CRF
+	    | Field                        | Data        |
+	    | Date Informed Consent Signed | 09 Jan 2000 |
+	    | End Date                     | 10 Jan 2000 |
+	    | Original Distribution Number | 10          |
+	    | Current Distribution Number  | 19          |
+	And I save the CRF page	             
 	And I select Form "Concomitant Medications" in Folder "Screening"
-	And I enter data in CRF on a new log line and save
+	And I enter data in CRF
 	    | Field                | Data        |
 	    | Start Date           | 07 Jan 2000 |
 	    | End Date             | 12 Jan 2000 |
 	    | Original Axis Number | 10          |
 	    | Current Axis Number  | 18          |
-	When I open log line 3
+	And I save the CRF page		
+	When I open log line 1
 	Then I verify Query is displayed
 		| Field               | Query Message                                                                                                 | Answered | Closed |
 		| Start Date          | 'Date Informed Consent Signed' is greater. Please revise.                                                     | false    | false  |
@@ -243,7 +266,7 @@ Scenario: PB_8.1.3 As an EDC user, Data verification for canceled query re-firin
 		| Current Axis Number | 19          |
 	And I save the CRF page
 	And I take a screenshot
-	When I open log line 3
+	When I open log line 1
 	Then I verify Query is not displayed
 		| Field               | Query Message                                                                                                 | Answered | Closed |
 		| Start Date          | 'Date Informed Consent Signed' is greater. Please revise.                                                     | false    | false  |
@@ -253,7 +276,7 @@ Scenario: PB_8.1.3 As an EDC user, Data verification for canceled query re-firin
 		| Field               | Data        |
 		| Start Date          | 07 Jan 2000 |
 		| Current Axis Number | 18          |
-	And I open log line 3
+	And I open log line 1
 	Then I verify Query is displayed
 		| Field               | Query Message                                                                                                 |
 		| Start Date          | 'Date Informed Consent Signed' is greater. Please revise.                                                     |
@@ -266,25 +289,45 @@ Scenario: PB_8.1.3 As an EDC user, Data verification for canceled query re-firin
 @Validation
 Scenario: PB_8.2.1 As an EDC user, Task Summary Verification for query re-firing in . Folder "Screening" enter and save data on forms "Informed Consent" and "Concomitant Medications"
 
-	Given I login to Rave with user "SUPER USER 2"
-	And I select Study "Edit Check Study 3" and Site "Edit Check Site 8"
-    And I select a Subject "sub{Var(num1)}"
+	Given I login to Rave with user "SUPER USER 1"
+	And I select Study "Edit Check Study 3" and Site "Edit Check Site 2"
+	And I create a Subject
+		| Field            | Data              |
+		| Subject Number   | {RndNum<num4>(5)} |
+		| Subject Initials | sub               |
+	And I select Form "Informed Consent" in Folder "Screening"
+	And I enter data in CRF
+	    | Field                        | Data        |
+	    | Date Informed Consent Signed | 09 Jan 2000 |
+	    | End Date                     | 10 Jan 2000 |
+	    | Original Distribution Number | 10          |
+	    | Current Distribution Number  | 19          |
+	And I save the CRF page	             	
+	And I select Form "Concomitant Medications" in Folder "Screening"		
+	And I enter data in CRF
+	    | Field                | Data        |
+	    | Start Date           | 07 Jan 2000 |
+	    | End Date             | 12 Jan 2000 |
+	    | Original Axis Number | 10          |
+	    | Current Axis Number  | 18          |
+	And I save the CRF page
+	And I select link "sub{Var(num4)}" in "Header"	
 	When I expand "Open Queries" in Task Summary
-	Then I should see "Screening-Concomitant Medications" in "Open Queries"
-	And I select link "Screening-Concomitant Medications" in "Open Queries"
-	When I open log line 3
+	Then I verify text "Screening-Concomitant Medications" exists
+	And I select link "Screening-Concomitant Medications"
+	When I open log line 1
 	Then I verify Query is displayed
 		| Field               | Query Message                                                                                                 | Answered | Closed |
 		| Start Date          | 'Date Informed Consent Signed' is greater. Please revise.                                                     | false    | false  |
 		| Current Axis Number | Informed Consent 'Current Distribution Number' is not equal to Concomitant Medications 'Current Axis Number'. | false    | false  |
 	And I take a screenshot
 	And I navigate to "Home"
-	And I select Study "Edit Check Study 3" and Site "Edit Check Site 8"
-    And I select a Subject "sub{Var(num1)}"
+	And I select Study "Edit Check Study 3" and Site "Edit Check Site 2"
+    And I select a Subject "sub{Var(num4)}"
 	When I expand "Cancel Queries" in Task Summary
-	Then I should see "Screening-Concomitant Medications" in "Cancel Queries"
-	And I select link "Screening-Concomitant Medications" in "Cancel Queries"
-	When I open log line 3
+	Then I verify text "Screening-Concomitant Medications" exists
+	And I select link "Screening-Concomitant Medications"
+	When I open log line 1
 	Then I verify Query is displayed
 		| Field               | Query Message                                                                                                 | Answered | Closed |
 		| Start Date          | 'Date Informed Consent Signed' is greater. Please revise.                                                     | false    | false  |
@@ -297,22 +340,53 @@ Scenario: PB_8.2.1 As an EDC user, Task Summary Verification for query re-firing
 @Validation
 Scenario: PB_8.3.1 As an EDC user, Query Management Verification for query re-firing in . Folder "Screening" enter and save data on forms "Informed Consent" and "Concomitant Medications"
 
-	Given I login to Rave with user "SUPER USER 2"
+	Given I login to Rave with user "SUPER USER 1"
+	And I select Study "Edit Check Study 3" and Site "Edit Check Site 2"
+	And I create a Subject
+		| Field            | Data              |
+		| Subject Number   | {RndNum<num5>(5)} |
+		| Subject Initials | sub               |
+	And I select Form "Informed Consent" in Folder "Screening"
+	And I enter data in CRF
+	    | Field                        | Data        |
+	    | Date Informed Consent Signed | 09 Jan 2000 |
+	    | End Date                     | 10 Jan 2000 |
+	    | Original Distribution Number | 10          |
+	    | Current Distribution Number  | 19          |
+	And I save the CRF page	               	
+	And I select Form "Concomitant Medications" in Folder "Screening"		
+	And I enter data in CRF
+	    | Field                | Data        |
+	    | Start Date           | 07 Jan 2000 |
+	    | End Date             | 12 Jan 2000 |
+	    | Original Axis Number | 10          |
+	    | Current Axis Number  | 18          |
+	And I save the CRF page
+	And I take a screenshot	
+	And I add a new log line
+	And I enter data in CRF
+		 | Field                | Data        |
+		 | Start Date           | 07 Jan 2000 |
+		 | End Date             | 12 Jan 2000 |
+		 | Original Axis Number | 10          |
+		 | Current Axis Number  | 18          |
+	And I save the CRF page	
+	And I navigate to "Home"
 	And I navigate to "Query Management"
 	And I choose "Edit Check Study 3 (Prod)" from "Study"
 	And I choose "World" from "Site Group"
-	And I choose "Edit Check Site 8" from "Site"
-	And I choose "sub{Var(num1)}" from "Subject"
+	And I choose "Edit Check Site 2" from "Site"
+	And I choose "sub{Var(num5)}" from "Subject"
 	And I click button "Advanced Search"
 	And I select link "Concomitant Medications" in "Search Result"
-	When I open log line 2
+	When I open log line 1
 	Then I verify Query is displayed
 		| Field               | Query Message                                                                                                 | Answered | Closed |
 		| Start Date          | 'Date Informed Consent Signed' is greater. Please revise.                                                     | false    | false  |
 		| Current Axis Number | Informed Consent 'Current Distribution Number' is not equal to Concomitant Medications 'Current Axis Number'. | false    | false  |  
 	And I take a screenshot
 	And I click button "Cancel"
-	When I open log line 3
+	When I open log line 1
 	Then I verify Query is displayed
 		| Field               | Query Message                                                                                                 | Answered | Closed |
 		| Start Date          | 'Date Informed Consent Signed' is greater. Please revise.                                                     | false    | false  |
@@ -362,12 +436,35 @@ Scenario: PB_8.3.1 As an EDC user, Query Management Verification for query re-fi
 # Failing due to DT 14230
 Scenario: PB_8.3.2 As an EDC user, Query Management Verification for query re-firing in . Folder "Screening" enter and save data on forms "Informed Consent" and "Concomitant Medications"
 
-	Given I login to Rave with user "SUPER USER 2"
+	Given I login to Rave with user "SUPER USER 1"
+	And I select Study "Edit Check Study 3" and Site "Edit Check Site 2"
+	And I create a Subject
+		| Field            | Data              |
+		| Subject Number   | {RndNum<num6>(5)} |
+		| Subject Initials | sub               |
+	And I select Form "Informed Consent" in Folder "Screening"
+	And I enter data in CRF
+	    | Field                        | Data        |
+	    | Date Informed Consent Signed | 09 Jan 2000 |
+	    | End Date                     | 10 Jan 2000 |
+	    | Original Distribution Number | 10          |
+	    | Current Distribution Number  | 19          |
+	And I save the CRF page	
+	And I select Form "Concomitant Medications" in Folder "Screening"		
+	And I enter data in CRF
+	    | Field                | Data        |
+	    | Start Date           | 07 Jan 2000 |
+	    | End Date             | 12 Jan 2000 |
+	    | Original Axis Number | 10          |
+	    | Current Axis Number  | 18          |
+	And I save the CRF page
+	And I take a screenshot
+	And I navigate to "Home"	
 	And I navigate to "Query Management"
 	And I choose "Edit Check Study 3 (Prod)" from "Study"
 	And I choose "World" from "Site Group"
 	And I choose "Edit Check Site 8" from "Site"
-	And I choose "sub{Var(num1)}" from "Subject"
+	And I select a Subject "sub{Var(num6)}"
 	And I click button "Advanced Search"
 	And I select link "Concomitant Medications" in "search result"
 	And I enter data in CRF on a new log line and save and reopen
@@ -426,7 +523,7 @@ Scenario: PB_8.4.1 As an EDC user, Migrating Subject Verification for query re-f
 	And I select Study "AM Edit Check Study" and Site "AM Edit Site"
 	And I create a Subject
 	| Field            | Data              |
-	| Subject Number   | {RndNum<num2>(5)} |
+	| Subject Number   | {RndNum<num7>(5)} |
 	| Subject Initials | sub               |
 	And I note down "crfversion" to "ver#"
 	And I select Form "Mixed Form"
@@ -450,7 +547,7 @@ Scenario: PB_8.4.1 As an EDC user, Migrating Subject Verification for query re-f
 	And I select Study "AM Edit Check Study" and Site "AM Edit Site"
     And I create a Subject
 		| Field            | Data              |
-		| Subject Number   | {RndNum<num3>(5)} |
+		| Subject Number   | {RndNum<num8>(5)} |
 		| Subject Initials | sub               |
 	And I select Form "Mixed Form"
 	And I enter data in CRF and save
@@ -497,7 +594,7 @@ Scenario: PB_8.4.1 As an EDC user, Migrating Subject Verification for query re-f
 	And I take a screenshot	
 	And I navigate to "Home"
 	And I select Study "AM Edit Check Study" and Site "AM Edit Site"
-    And I select a Subject "sub{Var(num2)}"
+    And I select a Subject "sub{Var(num7)}"
 	And I select Form "Mixed Form"
 	And I open the last log line
 	When I enter data in CRF and save
@@ -521,7 +618,7 @@ Scenario: PB_8.4.1 As an EDC user, Migrating Subject Verification for query re-f
 	And I take a screenshot	
 	And I navigate to "Home"
 	And I select Study "AM Edit Check Study" and Site "AM Edit Site"
-    And I select a Subject "sub{Var(num3)}"
+    And I select a Subject "sub{Var(num8)}"
 	And I select Form "Mixed Form"
 	And I open the last log line
 	When I enter data in CRF and save
@@ -564,7 +661,7 @@ Scenario: PB_8.4.1 As an EDC user, Migrating Subject Verification for query re-f
 	And I take a screenshot	
 	And I navigate to "Home"
 	And I select Study "AM Edit Check Study" and Site "AM Edit Site"
-    And I select a Subject "sub{Var(num2)}"
+    And I select a Subject "sub{Var(num7)}"
 	And I select Form "Mixed Form"
 	When I open log line 1
 	Then I verify Query is displayed
@@ -579,7 +676,7 @@ Scenario: PB_8.4.1 As an EDC user, Migrating Subject Verification for query re-f
 	And I take a screenshot	
 	And I navigate to "Home"
 	And I select Study "AM Edit Check Study" and Site "AM Edit Site"
-    And I select a Subject "sub{Var(num3)}"
+    And I select a Subject "sub{Var(num8)}"
 	And I select Form "Mixed Form"
 	When I open log line 1
 	Then I verify Query is displayed
@@ -618,7 +715,7 @@ Scenario: PB_8.5.1 As an EDC user, Publish Checks Verification for query re-firi
 	And I select Study "AM Edit Check Study" and Site "AM Edit Site"
     And I create a Subject
 		| Field            | Data              |
-		| Subject Number   | {RndNum<num4>(5)} |
+		| Subject Number   | {RndNum<num9>(5)} |
 		| Subject Initials | sub               |
 	And I note down "crfversion" to "ver#"
 	And I select Form "Mixed Form"
@@ -656,7 +753,7 @@ Scenario: PB_8.5.1 As an EDC user, Publish Checks Verification for query re-firi
 	And I take a screenshot	
 	And I navigate to "Home"
 	And I select Study "AM Edit Check Study" and Site "AM Edit Site"
-    And I select a Subject "sub{Var(num4)}"
+    And I select a Subject "sub{Var(num9)}"
 	And I select Form "Mixed Form"
 	And I enter data in CRF and save
 		|Field       |Data |
@@ -683,7 +780,7 @@ Scenario: PB_8.5.1 As an EDC user, Publish Checks Verification for query re-firi
 	And I take a screenshot
 	And I navigate to "Home"
 	And I select Study "AM Edit Check Study" and Site "AM Edit Site"
-    And I select a Subject "sub{Var(num4)}"
+    And I select a Subject "sub{Var(num9)}"
 	And I select Form "Mixed Form"
 	When I open the last log line
 	Then I verify Query with message "Query Opened on Log Field 1" is displayed on Field "Log Field 1"
@@ -707,9 +804,9 @@ Scenario: PB_8.6.1 Queries verification on data points with Freeze, Hard lock an
 	Given I login to Rave with user "SUPER USER 1"
 	And I select Study "Edit Check Study 3" and Site "Edit Check Site 2"
     And I create a Subject
-		| Field            | Data              |
-		| Subject Number   | {RndNum<num1>(5)} |
-		| Subject Initials | sub               |
+		| Field            | Data               |
+		| Subject Number   | {RndNum<num10>(5)} |
+		| Subject Initials | sub                |
 	And I select Form "Mixed Form"
 	And I enter data in CRF and save
 	    |Field       |Data |
@@ -732,6 +829,7 @@ Scenario: PB_8.6.1 Queries verification on data points with Freeze, Hard lock an
 	And I open the last log line
 	And I take a screenshot
 	And I check "Freeze" in "Log Field 1"
+	
 	And I save the CRF page
 	And I open the last log line
 	And I take a screenshot
