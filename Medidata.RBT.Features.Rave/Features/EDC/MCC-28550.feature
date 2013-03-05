@@ -1854,11 +1854,13 @@ Scenario: PBMCC28550-033 Verify Signature is icon exists and audit is broken whe
    		| Field     | Data    | Control Type |
    		| Field One | TestOne | textbox      |
 	And I verify data on Fields in CRF
-	| Field     | Data    | Requires Signature |
-	| Field One | TestOne | True               |
+		| Field     | Data    | Requires Signature |
+		| Field One | TestOne | True               |
 	And I take a screenshot
 	And I click button "Sign and Save"
 	And I sign the form with username "SUPER USER 1"
+	And I verify text "Please Sign the Data Page - Default User" exists
+	And I wait for 1 minute
 	And I click audit on form level
    	Then I verify Audits exist
 		| Audit Type          | User                               | Time                 |
@@ -1959,3 +1961,899 @@ Scenario: PBMCC28550-034 Verify Signature is not broken in audit when a field ha
 		| Audit Type          | User                               | Time                 |
 		| Signature Succeeded | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |	
 	And I take a screenshot
+
+
+
+
+@Release_2013.1.0
+@PBMCC28550-035
+@SJ05.MAR.2013
+@Validation
+
+
+Scenario: PBMCC28550-035 Verify Sign and Save is not visible after Signing on subject level on calendar view.
+
+	When I login to Rave with user "SUPER USER 1"
+	And I create a Subject
+		| Field            | Data               |
+		| Subject Initials | SUB                |
+		| Subject Number   | {RndNum<num35>(4)} |
+	And I take a screenshot
+	And I click button "Sign and Save"
+	And I sign the form with username "SUPER USER 1"
+	And I verify text "Signature attempt was successful" exists 
+	And I verify button "Sign and Save" is not visible
+	And I take a screenshot
+	And I select link "Screening"
+	And I select link "Medical History"
+	And I verify text "Default User" exists
+	And I take a screenshot
+	And I click audit on form level
+	Then I verify Audits exist
+		| Audit Type          | User                               | Time                 |
+		| Signature Succeeded | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |
+	And I take a screenshot
+	And I navigate to "Home"
+	And I select a Subject "{Var(num35)}"	
+	And I select link "Baseline"
+	And I select link "Medical History"
+	And I verify text "Default User" exists
+	And I take a screenshot
+	And I click audit on form level
+	Then I verify Audits exist
+		| Audit Type          | User                               | Time                 |
+		| Signature Succeeded | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |
+	And I take a screenshot
+
+
+
+@Release_2013.1.0
+@PBMCC28550-036
+@SJ05.MAR.2013
+@Validation
+
+
+Scenario: PBMCC28550-036 Verify Sign and Save is not visible after Signing on subject level on grid view.
+
+	When I login to Rave with user "SUPER USER 1"
+	And I create a Subject
+		| Field            | Data               |
+		| Subject Initials | SUB                |
+		| Subject Number   | {RndNum<num36>(4)} |
+	And I take a screenshot
+	And I select link "Grid View"
+	And I select link "All"
+	And I click button "Sign and Save"
+	And I sign the form with username "SUPER USER 1"
+	And I verify text "Signature attempt was successful" exists 
+	And I verify button "Sign and Save" is not visible
+	And I select link "Calendar View"
+	And I select link "Grid View"
+	And I select link "All"
+	And I verify button "Sign and Save" is not visible
+	And I take a screenshot
+	And I select link "Screening"
+	And I select link "Medical History"
+	And I verify text "Default User" exists
+	And I take a screenshot
+	And I click audit on form level
+	Then I verify Audits exist
+		| Audit Type          | User                               | Time                 |
+		| Signature Succeeded | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |
+	And I take a screenshot
+	And I navigate to "Home"
+	And I select a Subject "{Var(num36)}"	
+	And I verify button "Sign and Save" is not visible
+	And I take a screenshot
+	And I select link "Baseline"
+	And I select link "Medical History"
+	And I verify text "Default User" exists
+	And I take a screenshot
+	And I click audit on form level
+	Then I verify Audits exist
+		| Audit Type          | User                               | Time                 |
+		| Signature Succeeded | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |
+	And I take a screenshot
+
+
+
+@Release_2013.1.0
+@PBMCC28550-037
+@SJ05.MAR.2013
+@Validation
+
+
+Scenario: PBMCC28550-037 Verify Signature audit for each form after Signing on subject level on calendar view.
+
+
+	When I login to Rave with user "SUPER USER 1"
+	And I create a Subject
+		| Field            | Data               |
+		| Subject Initials | SUB                |
+		| Subject Number   | {RndNum<num37>(4)} |
+	And I take a screenshot
+	And I click button "Sign and Save"
+	And I sign the form with username "SUPER USER 1"
+	And I verify text "Signature attempt was successful" exists 
+	And I verify button "Sign and Save" is not visible
+	And I take a screenshot
+	And I select link "Screening"
+	And I select link "Standard Form"
+	And I verify text "Default User" exists
+	And I take a screenshot
+	And I click audit on form level
+	Then I verify Audits exist
+		| Audit Type          | User                               | Time                 |
+		| Signature Succeeded | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |
+	And I take a screenshot
+
+	And I navigate to "Home"
+	And I select a Subject "{Var(num37)}"
+	And I select link "Screening"
+	And I select link "Standard Form 1"
+	And I verify text "eSigFolder - Default User" exists 
+   	And I take a screenshot
+	And I click audit on form level
+	Then I verify Audits exist
+		| Audit Type          | User                               | Time                 |
+		| Signature Succeeded | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |
+	And I take a screenshot
+
+	And I navigate to "Home"
+	And I select a Subject "{Var(num37)}"
+	And I select link "Screening"
+	And I select link "Log Form"
+	And I verify text "Default User" exists
+	And I take a screenshot
+	And I click audit on form level
+	Then I verify Audits exist
+		| Audit Type          | User                               | Time                 |
+		| Signature Succeeded | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |
+
+	And I navigate to "Home"
+	And I select a Subject "{Var(num37)}"
+	And I select link "Screening"
+	And I select link "Log Form 1"
+	And I verify text "eSigFolder - Default User" exists 
+   	And I take a screenshot
+	And I click audit on form level
+	Then I verify Audits exist
+		| Audit Type          | User                               | Time                 |
+		| Signature Succeeded | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |
+	And I take a screenshot
+
+	And I navigate to "Home"
+	And I select a Subject "{Var(num37)}"
+	And I select link "Screening"
+	And I select link "Mixed Form"
+	And I verify text "Default User" exists
+	And I take a screenshot
+	And I click audit on form level
+	Then I verify Audits exist
+		| Audit Type          | User                               | Time                 |
+		| Signature Succeeded | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |
+	And I take a screenshot
+
+	And I navigate to "Home"
+	And I select a Subject "{Var(num37)}"
+	And I select link "Screening"
+	And I select link "Mixed Form 1"
+	And I verify text "eSigFolder - Default User" exists 
+   	And I take a screenshot
+	And I click audit on form level
+	Then I verify Audits exist
+		| Audit Type          | User                               | Time                 |
+		| Signature Succeeded | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |
+	And I take a screenshot
+
+
+	And I navigate to "Home"
+	And I select a Subject "{Var(num37)}"
+	And I select link "Screening"
+	And I select link "Set Secondary Name"
+	And I click audit on form level
+	Then I verify Audits exist
+		| Audit Type          | User                               | Time                 |
+		| Signature Succeeded | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |
+	And I take a screenshot
+
+	And I navigate to "Home"
+	And I select a Subject "{Var(num37)}"
+	And I select link "Screening"
+	And I select link "LONG"
+	And I click audit on form level
+	Then I verify Audits exist
+		| Audit Type          | User                               | Time                 |
+		| Signature Succeeded | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |
+	And I take a screenshot
+
+	And I navigate to "Home"
+	And I select a Subject "{Var(num37)}"
+	And I select link "Screening"
+	And I select link "SHORT"
+	And I click audit on form level
+	Then I verify Audits exist
+		| Audit Type          | User                               | Time                 |
+		| Signature Succeeded | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |
+	And I take a screenshot
+
+	And I navigate to "Home"
+	And I select a Subject "{Var(num37)}"
+	And I select link "Screening"
+	And I select link "NEWLOG"
+	And I click audit on form level
+	Then I verify Audits exist
+		| Audit Type          | User                               | Time                 |
+		| Signature Succeeded | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |
+	And I take a screenshot
+
+	And I navigate to "Home"
+	And I select a Subject "{Var(num37)}"
+	And I select link "Screening"
+	And I select link "Break signature"
+	And I verify text "Default User" exists
+	And I take a screenshot
+	And I click audit on form level
+	Then I verify Audits exist
+		| Audit Type          | User                               | Time                 |
+		| Signature Succeeded | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |
+	And I take a screenshot
+
+	And I navigate to "Home"
+	And I select a Subject "{Var(num37)}"
+	And I select link "Screening"
+	And I select link "Enrollment"
+	And I verify text "Default User" exists
+	And I take a screenshot
+	And I click audit on form level
+	Then I verify Audits exist
+		| Audit Type          | User                               | Time                 |
+		| Signature Succeeded | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |
+	And I take a screenshot
+
+	And I navigate to "Home"
+	And I select a Subject "{Var(num37)}"
+	And I select link "Screening"
+	And I select link "Demographics"
+	And I click audit on form level
+	Then I verify Audits exist
+		| Audit Type          | User                               | Time                 |
+		| Signature Succeeded | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |
+	And I take a screenshot
+
+	And I navigate to "Home"
+	And I select a Subject "{Var(num37)}"
+	And I select link "Screening"
+	And I select link "Inclusion and Exclusion Criteria"
+	And I click audit on form level
+	Then I verify Audits exist
+		| Audit Type          | User                               | Time                 |
+		| Signature Succeeded | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |
+	And I take a screenshot
+
+	And I navigate to "Home"
+	And I select a Subject "{Var(num37)}"
+	And I select link "Screening"
+	And I select link "Vitals"
+	And I verify text "Default User" exists
+	And I take a screenshot
+	And I click audit on form level
+	Then I verify Audits exist
+		| Audit Type          | User                               | Time                 |
+		| Signature Succeeded | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |
+	And I take a screenshot
+
+	And I navigate to "Home"
+	And I select a Subject "{Var(num37)}"
+	And I select link "Screening"
+	And I select link "Visit Date"
+	And I click audit on form level
+	Then I verify Audits exist
+		| Audit Type          | User                               | Time                 |
+		| Signature Succeeded | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |
+	And I take a screenshot
+
+	And I navigate to "Home"
+	And I select a Subject "{Var(num37)}"
+	And I select link "Screening"
+	And I select link "Occlusion"
+	And I click audit on form level
+	Then I verify Audits exist
+		| Audit Type          | User                               | Time                 |
+		| Signature Succeeded | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |
+	And I take a screenshot
+
+	And I navigate to "Home"
+	And I select a Subject "{Var(num37)}"
+	And I select link "Screening"
+	And I select link "Medical History"
+	And I verify text "Default User" exists
+	And I take a screenshot
+	And I click audit on form level
+	Then I verify Audits exist
+		| Audit Type          | User                               | Time                 |
+		| Signature Succeeded | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |
+	And I take a screenshot
+
+	And I navigate to "Home"
+	And I select a Subject "{Var(num37)}"
+	And I select link "Baseline"
+	And I select link "SHORT"
+	And I click audit on form level
+	Then I verify Audits exist
+		| Audit Type          | User                               | Time                 |
+		| Signature Succeeded | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |
+	And I take a screenshot
+
+	And I navigate to "Home"
+	And I select a Subject "{Var(num37)}"
+	And I select link "Baseline"
+	And I select link "Physical Examination"
+	And I click audit on form level
+	Then I verify Audits exist
+		| Audit Type          | User                               | Time                 |
+		| Signature Succeeded | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |
+	And I take a screenshot
+
+	And I navigate to "Home"
+	And I select a Subject "{Var(num37)}"
+	And I select link "Baseline"
+	And I select link "Visit Date"
+	And I click audit on form level
+	Then I verify Audits exist
+		| Audit Type          | User                               | Time                 |
+		| Signature Succeeded | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |
+	And I take a screenshot
+
+	And I navigate to "Home"
+	And I select a Subject "{Var(num37)}"
+	And I select link "Baseline"
+	And I select link "Occlusion"
+	And I click audit on form level
+	Then I verify Audits exist
+		| Audit Type          | User                               | Time                 |
+		| Signature Succeeded | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |
+	And I take a screenshot
+
+
+	And I navigate to "Home"
+	And I select a Subject "{Var(num37)}"
+	And I select link "Baseline"
+	And I select link "Medical History"
+	And I click audit on form level
+	Then I verify Audits exist
+		| Audit Type          | User                               | Time                 |
+		| Signature Succeeded | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |
+	And I take a screenshot
+
+	And I navigate to "Home"
+	And I select a Subject "{Var(num37)}"
+	And I select link "MCC28550"
+	And I click audit on form level
+	Then I verify Audits exist
+		| Audit Type          | User                               | Time                 |
+		| Signature Succeeded | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |
+	And I take a screenshot
+	And I navigate to "Home"
+	And I select a Subject "{Var(num37)}"
+
+
+	And I select link "Standard Form"
+	And I verify text "Default User" exists
+	And I take a screenshot
+	And I click audit on form level
+	Then I verify Audits exist
+		| Audit Type          | User                               | Time                 |
+		| Signature Succeeded | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |
+	And I take a screenshot
+
+	And I navigate to "Home"
+	And I select a Subject "{Var(num37)}"
+	And I select link "Standard Form 1"
+	And I verify text "Please Sign the Data Page - Default User" exists 
+   	And I take a screenshot
+	And I click audit on form level
+	Then I verify Audits exist
+		| Audit Type          | User                               | Time                 |
+		| Signature Succeeded | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |
+	And I take a screenshot
+
+	And I navigate to "Home"
+	And I select a Subject "{Var(num37)}"
+	And I select link "Log Form"
+	And I verify text "Default User" exists
+	And I take a screenshot
+	And I click audit on form level
+	Then I verify Audits exist
+		| Audit Type          | User                               | Time                 |
+		| Signature Succeeded | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |
+	And I take a screenshot
+
+	And I navigate to "Home"
+	And I select a Subject "{Var(num37)}"
+	And I select link "Log Form 1"
+	And I verify text "Please Sign the Data Page - Default User" exists 
+   	And I take a screenshot
+	And I click audit on form level
+	Then I verify Audits exist
+		| Audit Type          | User                               | Time                 |
+		| Signature Succeeded | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |
+	And I take a screenshot
+
+	And I navigate to "Home"
+	And I select a Subject "{Var(num37)}"
+	And I select link "Mixed Form"
+	And I verify text "Default User" exists
+	And I take a screenshot
+	And I click audit on form level
+	Then I verify Audits exist
+		| Audit Type          | User                               | Time                 |
+		| Signature Succeeded | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |
+	And I take a screenshot
+
+	And I navigate to "Home"
+	And I select a Subject "{Var(num37)}"
+	And I select link "Mixed Form 1"
+	And I verify text "Please Sign the Data Page - Default User" exists 
+   	And I take a screenshot
+	And I click audit on form level
+	Then I verify Audits exist
+		| Audit Type          | User                               | Time                 |
+		| Signature Succeeded | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |
+	And I take a screenshot
+
+	And I navigate to "Home"
+	And I select a Subject "{Var(num37)}"
+	And I select link "NEWLOG"
+	And I click audit on form level
+	Then I verify Audits exist
+		| Audit Type          | User                               | Time                 |
+		| Signature Succeeded | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |
+	And I take a screenshot
+
+	And I navigate to "Home"
+	And I select a Subject "{Var(num37)}"
+	And I select link "Demographics"
+	And I click audit on form level
+	Then I verify Audits exist
+		| Audit Type          | User                               | Time                 |
+		| Signature Succeeded | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |
+	And I take a screenshot
+
+	And I navigate to "Home"
+	And I select a Subject "{Var(num37)}"
+	And I select link "Lab Demographics"
+	And I click audit on form level
+	Then I verify Audits exist
+		| Audit Type          | User                               | Time                 |
+		| Signature Succeeded | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |
+	And I take a screenshot
+
+	And I navigate to "Home"
+	And I select a Subject "{Var(num37)}"
+	And I select link "Lab Form"
+	And I verify text "Default User" exists
+	And I take a screenshot
+	And I click audit on form level
+	Then I verify Audits exist
+		| Audit Type          | User                               | Time                 |
+		| Signature Succeeded | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |
+	And I take a screenshot
+
+	And I navigate to "Home"
+	And I select a Subject "{Var(num37)}"
+	And I select link "Lab Form 1"
+	And I verify text "Please Sign the Data Page - Default User" exists 
+   	And I take a screenshot
+	And I click audit on form level
+	Then I verify Audits exist
+		| Audit Type          | User                               | Time                 |
+		| Signature Succeeded | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |
+	And I take a screenshot
+
+
+
+@Release_2013.1.0
+@PBMCC28550-038
+@SJ05.MAR.2013
+@Validation
+
+
+Scenario: PBMCC28550-038 Verify Signature audit for each form after Signing on subject level on grid view.
+
+
+	When I login to Rave with user "SUPER USER 1"
+	And I create a Subject
+		| Field            | Data               |
+		| Subject Initials | SUB                |
+		| Subject Number   | {RndNum<num38>(4)} |
+	And I take a screenshot
+	And I select link "Grid View"
+	And I select link "All"
+	And I click button "Sign and Save"
+	And I sign the form with username "SUPER USER 1"
+	
+	And I verify text "Signature attempt was successful" exists 
+	And I verify button "Sign and Save" is not visible
+	And I take a screenshot
+	And I select link "Calendar View"
+	And I select link "Grid View"
+	And I select link "All"
+	And I verify button "Sign and Save" is not visible
+	And I take a screenshot
+
+	And I select link "Screening"
+	And I select link "Standard Form"
+	And I verify text "Default User" exists
+	And I take a screenshot
+	And I click audit on form level
+	Then I verify Audits exist
+		| Audit Type          | User                               | Time                 |
+		| Signature Succeeded | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |
+	And I take a screenshot
+
+	And I navigate to "Home"
+	And I select a Subject "{Var(num38)}"
+	And I select link "Screening"
+	And I select link "Standard Form 1"
+	And I verify text "eSigFolder - Default User" exists 
+   	And I take a screenshot
+	And I click audit on form level
+	Then I verify Audits exist
+		| Audit Type          | User                               | Time                 |
+		| Signature Succeeded | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |
+	And I take a screenshot
+
+	And I navigate to "Home"
+	And I select a Subject "{Var(num38)}"
+	And I select link "Screening"
+	And I select link "Log Form"
+	And I verify text "Default User" exists
+	And I take a screenshot
+	And I click audit on form level
+	Then I verify Audits exist
+		| Audit Type          | User                               | Time                 |
+		| Signature Succeeded | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |
+
+	And I navigate to "Home"
+	And I select a Subject "{Var(num38)}"
+	And I select link "Screening"
+	And I select link "Log Form 1"
+	And I verify text "eSigFolder - Default User" exists 
+   	And I take a screenshot
+	And I click audit on form level
+	Then I verify Audits exist
+		| Audit Type          | User                               | Time                 |
+		| Signature Succeeded | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |
+	And I take a screenshot
+
+	And I navigate to "Home"
+	And I select a Subject "{Var(num38)}"
+	And I select link "Screening"
+	And I select link "Mixed Form"
+	And I verify text "Default User" exists
+	And I take a screenshot
+	And I click audit on form level
+	Then I verify Audits exist
+		| Audit Type          | User                               | Time                 |
+		| Signature Succeeded | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |
+	And I take a screenshot
+
+	And I navigate to "Home"
+	And I select a Subject "{Var(num38)}"
+	And I select link "Screening"
+	And I select link "Mixed Form 1"
+	And I verify text "eSigFolder - Default User" exists 
+   	And I take a screenshot
+	And I click audit on form level
+	Then I verify Audits exist
+		| Audit Type          | User                               | Time                 |
+		| Signature Succeeded | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |
+	And I take a screenshot
+
+
+	And I navigate to "Home"
+	And I select a Subject "{Var(num38)}"
+	And I select link "Screening"
+	And I select link "Set Secondary Name"
+	And I click audit on form level
+	Then I verify Audits exist
+		| Audit Type          | User                               | Time                 |
+		| Signature Succeeded | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |
+	And I take a screenshot
+
+	And I navigate to "Home"
+	And I select a Subject "{Var(num38)}"
+	And I select link "Screening"
+	And I select link "LONG"
+	And I click audit on form level
+	Then I verify Audits exist
+		| Audit Type          | User                               | Time                 |
+		| Signature Succeeded | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |
+	And I take a screenshot
+
+	And I navigate to "Home"
+	And I select a Subject "{Var(num38)}"
+	And I select link "Screening"
+	And I select link "SHORT"
+	And I click audit on form level
+	Then I verify Audits exist
+		| Audit Type          | User                               | Time                 |
+		| Signature Succeeded | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |
+	And I take a screenshot
+
+	And I navigate to "Home"
+	And I select a Subject "{Var(num38)}"
+	And I select link "Screening"
+	And I select link "NEWLOG"
+	And I click audit on form level
+	Then I verify Audits exist
+		| Audit Type          | User                               | Time                 |
+		| Signature Succeeded | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |
+	And I take a screenshot
+
+	And I navigate to "Home"
+	And I select a Subject "{Var(num38)}"
+	And I select link "Screening"
+	And I select link "Break signature"
+	And I verify text "Default User" exists
+	And I take a screenshot
+	And I click audit on form level
+	Then I verify Audits exist
+		| Audit Type          | User                               | Time                 |
+		| Signature Succeeded | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |
+	And I take a screenshot
+
+	And I navigate to "Home"
+	And I select a Subject "{Var(num38)}"
+	And I select link "Screening"
+	And I select link "Enrollment"
+	And I verify text "Default User" exists
+	And I take a screenshot
+	And I click audit on form level
+	Then I verify Audits exist
+		| Audit Type          | User                               | Time                 |
+		| Signature Succeeded | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |
+	And I take a screenshot
+
+	And I navigate to "Home"
+	And I select a Subject "{Var(num38)}"
+	And I select link "Screening"
+	And I select link "Demographics"
+	And I click audit on form level
+	Then I verify Audits exist
+		| Audit Type          | User                               | Time                 |
+		| Signature Succeeded | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |
+	And I take a screenshot
+
+	And I navigate to "Home"
+	And I select a Subject "{Var(num38)}"
+	And I select link "Screening"
+	And I select link "Inclusion and Exclusion Criteria"
+	And I click audit on form level
+	Then I verify Audits exist
+		| Audit Type          | User                               | Time                 |
+		| Signature Succeeded | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |
+	And I take a screenshot
+
+	And I navigate to "Home"
+	And I select a Subject "{Var(num38)}"
+	And I select link "Screening"
+	And I select link "Vitals"
+	And I verify text "Default User" exists
+	And I take a screenshot
+	And I click audit on form level
+	Then I verify Audits exist
+		| Audit Type          | User                               | Time                 |
+		| Signature Succeeded | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |
+	And I take a screenshot
+
+	And I navigate to "Home"
+	And I select a Subject "{Var(num38)}"
+	And I select link "Screening"
+	And I select link "Visit Date"
+	And I click audit on form level
+	Then I verify Audits exist
+		| Audit Type          | User                               | Time                 |
+		| Signature Succeeded | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |
+	And I take a screenshot
+
+	And I navigate to "Home"
+	And I select a Subject "{Var(num38)}"
+	And I select link "Screening"
+	And I select link "Occlusion"
+	And I click audit on form level
+	Then I verify Audits exist
+		| Audit Type          | User                               | Time                 |
+		| Signature Succeeded | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |
+	And I take a screenshot
+
+	And I navigate to "Home"
+	And I select a Subject "{Var(num38)}"
+	And I select link "Screening"
+	And I select link "Medical History"
+	And I verify text "Default User" exists
+	And I take a screenshot
+	And I click audit on form level
+	Then I verify Audits exist
+		| Audit Type          | User                               | Time                 |
+		| Signature Succeeded | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |
+	And I take a screenshot
+
+	And I navigate to "Home"
+	And I select a Subject "{Var(num38)}"
+	And I select link "Baseline"
+	And I select link "SHORT"
+	And I click audit on form level
+	Then I verify Audits exist
+		| Audit Type          | User                               | Time                 |
+		| Signature Succeeded | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |
+	And I take a screenshot
+
+	And I navigate to "Home"
+	And I select a Subject "{Var(num38)}"
+	And I select link "Baseline"
+	And I select link "Physical Examination"
+	And I click audit on form level
+	Then I verify Audits exist
+		| Audit Type          | User                               | Time                 |
+		| Signature Succeeded | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |
+	And I take a screenshot
+
+	And I navigate to "Home"
+	And I select a Subject "{Var(num38)}"
+	And I select link "Baseline"
+	And I select link "Visit Date"
+	And I click audit on form level
+	Then I verify Audits exist
+		| Audit Type          | User                               | Time                 |
+		| Signature Succeeded | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |
+	And I take a screenshot
+
+	And I navigate to "Home"
+	And I select a Subject "{Var(num38)}"
+	And I select link "Baseline"
+	And I select link "Occlusion"
+	And I click audit on form level
+	Then I verify Audits exist
+		| Audit Type          | User                               | Time                 |
+		| Signature Succeeded | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |
+	And I take a screenshot
+
+
+	And I navigate to "Home"
+	And I select a Subject "{Var(num38)}"
+	And I select link "Baseline"
+	And I select link "Medical History"
+	And I verify text "Default User" exists
+	And I take a screenshot
+	And I click audit on form level
+	Then I verify Audits exist
+		| Audit Type          | User                               | Time                 |
+		| Signature Succeeded | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |
+	And I take a screenshot
+
+	And I navigate to "Home"
+	And I select a Subject "{Var(num38)}"
+	And I select link "MCC28550"
+	And I click audit on form level
+	Then I verify Audits exist
+		| Audit Type          | User                               | Time                 |
+		| Signature Succeeded | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |
+	And I take a screenshot
+	And I navigate to "Home"
+	And I select a Subject "{Var(num38)}"
+
+	And I select link "Standard Form"
+	And I verify text "Default User" exists
+	And I take a screenshot
+	And I click audit on form level
+	Then I verify Audits exist
+		| Audit Type          | User                               | Time                 |
+		| Signature Succeeded | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |
+	And I take a screenshot
+
+	And I navigate to "Home"
+	And I select a Subject "{Var(num38)}"
+	And I select link "Standard Form 1"
+	And I verify text "Please Sign the Data Page - Default User" exists 
+   	And I take a screenshot
+	And I click audit on form level
+	Then I verify Audits exist
+		| Audit Type          | User                               | Time                 |
+		| Signature Succeeded | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |
+	And I take a screenshot
+
+	And I navigate to "Home"
+	And I select a Subject "{Var(num38)}"
+	And I select link "Log Form"
+	And I verify text "Default User" exists
+	And I take a screenshot
+	And I click audit on form level
+	Then I verify Audits exist
+		| Audit Type          | User                               | Time                 |
+		| Signature Succeeded | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |
+	And I take a screenshot
+
+	And I navigate to "Home"
+	And I select a Subject "{Var(num38)}"
+	And I select link "Log Form 1"
+	And I verify text "Please Sign the Data Page - Default User" exists 
+   	And I take a screenshot
+	And I click audit on form level
+	Then I verify Audits exist
+		| Audit Type          | User                               | Time                 |
+		| Signature Succeeded | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |
+	And I take a screenshot
+
+	And I navigate to "Home"
+	And I select a Subject "{Var(num38)}"
+	And I select link "Mixed Form"
+	And I verify text "Default User" exists
+	And I take a screenshot
+	And I click audit on form level
+	Then I verify Audits exist
+		| Audit Type          | User                               | Time                 |
+		| Signature Succeeded | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |
+	And I take a screenshot
+
+	And I navigate to "Home"
+	And I select a Subject "{Var(num38)}"
+	And I select link "Mixed Form 1"
+	And I verify text "Please Sign the Data Page - Default User" exists 
+   	And I take a screenshot
+	And I click audit on form level
+	Then I verify Audits exist
+		| Audit Type          | User                               | Time                 |
+		| Signature Succeeded | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |
+	And I take a screenshot
+
+	And I navigate to "Home"
+	And I select a Subject "{Var(num38)}"
+	And I select link "NEWLOG"
+	And I click audit on form level
+	Then I verify Audits exist
+		| Audit Type          | User                               | Time                 |
+		| Signature Succeeded | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |
+	And I take a screenshot
+
+	And I navigate to "Home"
+	And I select a Subject "{Var(num38)}"
+	And I select link "Demographics"
+	And I click audit on form level
+	Then I verify Audits exist
+		| Audit Type          | User                               | Time                 |
+		| Signature Succeeded | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |
+	And I take a screenshot
+
+	And I navigate to "Home"
+	And I select a Subject "{Var(num38)}"
+	And I select link "Lab Demographics"
+	And I click audit on form level
+	Then I verify Audits exist
+		| Audit Type          | User                               | Time                 |
+		| Signature Succeeded | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |
+	And I take a screenshot
+
+	And I navigate to "Home"
+	And I select a Subject "{Var(num38)}"
+	And I select link "Lab Form"
+	And I verify text "Default User" exists
+	And I take a screenshot
+	And I click audit on form level
+	Then I verify Audits exist
+		| Audit Type          | User                               | Time                 |
+		| Signature Succeeded | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |
+	And I take a screenshot
+
+	And I navigate to "Home"
+	And I select a Subject "{Var(num38)}"
+	And I select link "Lab Form 1"
+	And I verify text "Please Sign the Data Page - Default User" exists 
+   	And I take a screenshot
+	And I click audit on form level
+	Then I verify Audits exist
+		| Audit Type          | User                               | Time                 |
+		| Signature Succeeded | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |
+	And I take a screenshot
+
