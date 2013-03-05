@@ -280,12 +280,20 @@ namespace Medidata.RBT.SeleniumExtension
         /// <returns>A string that matches the format returned from ReplaceTagsWithEscapedCharacters</returns>
         public static string ReplaceSpecialCharactersWithEscapeCharacters(string originalString)
         {
-            Regex re = new Regex("&|<|>|\\\\r|\\\\br", RegexOptions.IgnoreCase);
+            Regex re = new Regex("&|\\\\<|\\\\>|<|>|\\\\r|\\\\br", RegexOptions.IgnoreCase);
 
             string convertedString = re.Replace(originalString, delegate(Match m)
             {
                 string value = m.Value;
 
+                //if (value.Equals("\\<", StringComparison.OrdinalIgnoreCase))
+                //{
+                //    return "<";
+                //}
+                //else if (value.Equals("\\>", StringComparison.OrdinalIgnoreCase))
+                //{
+                //    return ">";
+                //}
                 if (value.Equals("&", StringComparison.OrdinalIgnoreCase))
                 {
                     return "&amp;";

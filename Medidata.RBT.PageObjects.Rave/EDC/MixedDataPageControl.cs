@@ -49,7 +49,10 @@ namespace Medidata.RBT.PageObjects.Rave
             if (area != null)
             {
                 ReadOnlyCollection<IWebElement> tds = area.Parent().Children();
-                return new NonLabFieldControl(Page, area, tds[tds.Count - 1]);
+                return new NonLabFieldControl(Page, area, tds[tds.Count - 1])
+                {
+                    FieldName = fieldName
+                };
             }
             //If it wasn't found as a non-lab field, then look for the field as a lab field
             else
@@ -60,7 +63,10 @@ namespace Medidata.RBT.PageObjects.Rave
                 if (area != null)
                 {
                     ReadOnlyCollection<IWebElement> tds = area.Parent().Children();
-                    return new LabFieldControl(Page, area, tds[tds.Count - 1]);
+                    return new LabFieldControl(Page, area, tds[tds.Count - 1])
+                    {
+                        FieldName = fieldName
+                    };
                 }
             }
 

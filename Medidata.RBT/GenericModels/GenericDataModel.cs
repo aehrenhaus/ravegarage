@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Medidata.RBT.PageObjects.Rave
+namespace Medidata.RBT.GenericModels
 {
     /// <summary>
     /// This is a generic model that can be used for 

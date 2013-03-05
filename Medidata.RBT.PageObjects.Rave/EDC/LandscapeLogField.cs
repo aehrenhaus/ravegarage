@@ -124,6 +124,14 @@ namespace Medidata.RBT.PageObjects.Rave
         }
         #endregion
 
+        /// <summary>
+        /// Refresh the control on a page after a change has been made to invalidate it.
+        /// </summary>
+        public override void RefreshControl()
+        {
+            throw new NotImplementedException("Refresh control not implemented yet");
+        }
+
         private IWebElement GetElementInColumnByRowIDColumnID(ControlType type, int position)
         {
             StringBuilder suffix = new StringBuilder(m_columnId + "_" + m_rowId);
@@ -243,6 +251,10 @@ namespace Medidata.RBT.PageObjects.Rave
         }
         public override bool HasDataEntered(string text) { throw new NotImplementedException(); }
         public override OpenQA.Selenium.IWebElement FindQuery(QuerySearchModel filter) { throw new NotImplementedException(); }
+        public override void PlaceSticky(string responder, string text)
+        {
+            throw new NotImplementedException();
+        }
         public override void AnswerQuery(QuerySearchModel filter) { throw new NotImplementedException(); }
         public override void CloseQuery(QuerySearchModel filter) { throw new NotImplementedException(); }
         public override void CancelQuery(QuerySearchModel filter) { throw new NotImplementedException(); }

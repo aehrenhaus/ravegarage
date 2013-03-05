@@ -17,18 +17,20 @@ namespace Medidata.RBT.PageObjects.Rave
         /// <summary>
         /// Open the generated pdf and load its text into ScenarioText.
         /// </summary>
+        /// <param name="webTestContext">The current web test context</param>
         /// <param name="pdf">The name of the pdf of be viewed</param>
-        /// <returns></returns>
-        public void ViewPDF(WebTestContext webTestContext, string pdfName)
+        /// <param name="requestName">The name of the request which generated the pdf</param>
+        public void ViewPDF(WebTestContext webTestContext, string pdfName, string requestName)
 		{
+            webTestContext.LastLoadedPDF = null;
 			var table = Browser.Table("_ctl0_Content_Results");
 			Table dt = new Table("Name");
-            dt.AddRow(pdfName);
+            dt.AddRow(requestName);
             ReadOnlyCollection<IWebElement> matchingRows = table.FindMatchRows(dt);
             if (matchingRows == null || matchingRows.Count == 0)
             {
                 dt = new Table("LName");
-                dt.AddRow(pdfName);
+                dt.AddRow(requestName);
                 matchingRows = table.FindMatchRows(dt);
             }
             var tr = matchingRows.FirstOrDefault();
@@ -40,7 +42,8 @@ namespace Medidata.RBT.PageObjects.Rave
                 {
                     using (FileStream fs = new FileStream(filePath, FileMode.Open, FileAccess.Read))
                     {
-                        webTestContext.LastLoadedPDF = new Medidata.RBT.PDF(pdfName, filePath, fs);
+                        if(Path.GetFileName(filePath).Equals(pdfName, StringComparison.InvariantCulture))
+                            webTestContext.LastLoadedPDF = new Medidata.RBT.BaseEnhancedPDF(pdfName, filePath, fs);
                     }
                 }
 		}

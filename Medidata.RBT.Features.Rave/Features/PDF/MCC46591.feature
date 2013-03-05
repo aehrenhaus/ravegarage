@@ -53,9 +53,9 @@ And I take a screenshot
 And I generate Blank PDF "MCC46591BlankA{Var(num2)}"
 And I wait for PDF "MCC46591BlankA{Var(num2)}" to complete
 And I take a screenshot
-When I View Blank PDF "MCC46591BlankA{Var(num2)}"
-Then the PDF text should contain
-| Text                           |
+When I view blank PDF "BASE.pdf" from request "MCC46591BlankA{Var(num2)}"
+Then I verify the PDF text contains
+| Data                           |
 | Were there any adverse events? |
 | Adverse Event Description      |
 | Start Date                     |
@@ -94,9 +94,9 @@ And I take a screenshot
 And I generate Blank PDF "MCC46591BlankB{Var(num3)}"
 And I wait for PDF "MCC46591BlankB{Var(num3)}" to complete
 And I take a screenshot
-When I View Blank PDF "MCC46591BlankB{Var(num3)}"
-Then the PDF text should contain
-| Text                           |
+When I view blank PDF "BASE.pdf" from request "MCC46591BlankB{Var(num3)}"
+Then I verify the PDF text contains
+| Data                           |
 | Were there any adverse events? |
 | Adverse Event Description      |
 | Start Date                     |
@@ -135,9 +135,9 @@ And I take a screenshot
 And I generate Blank PDF "MCC46591BlankC{Var(num4)}"
 And I wait for PDF "MCC46591BlankC{Var(num4)}" to complete
 And I take a screenshot
-When I View Blank PDF "MCC46591BlankC{Var(num4)}"
-Then the PDF text should contain
-| Text                           |
+When I view blank PDF "BASE.pdf" from request "MCC46591BlankC{Var(num4)}"
+Then I verify the PDF text contains
+| Data                           |
 | Were there any adverse events? |
 | Adverse Event Description      |
 | Start Date                     |
@@ -169,9 +169,9 @@ And I take a screenshot
 And I generate Blank PDF "MCC46591BlankD{Var(num5)}"
 And I wait for PDF "MCC46591BlankD{Var(num5)}" to complete
 And I take a screenshot
-When I View Blank PDF "MCC46591BlankD{Var(num5)}"
-Then the PDF text should contain
-| Text                           |
+When I view blank PDF "BASE.pdf" from request "MCC46591BlankD{Var(num5)}"
+Then I verify the PDF text contains
+| Data                           |
 | Were there any adverse events? |
 | Adverse Event Description      |
 | Start Date                     |
@@ -203,9 +203,9 @@ And I take a screenshot
 And I generate Blank PDF "MCC46591BlankE{Var(num6)}"
 And I wait for PDF "MCC46591BlankE{Var(num6)}" to complete
 And I take a screenshot
-When I View Blank PDF "MCC46591BlankE{Var(num6)}"
-Then the PDF text should contain
-| Text          |
+When I view blank PDF "BASE.pdf" from request "MCC46591BlankE{Var(num6)}"
+Then I verify the PDF text contains
+| Data          |
 | Date of Birth |
 | Ethnicity     |
 | Specify race  |
@@ -231,9 +231,9 @@ And I take a screenshot
 And I generate Blank PDF "MCC46591BlankF{Var(num7)}"
 And I wait for PDF "MCC46591BlankF{Var(num7)}" to complete
 And I take a screenshot
-When I View Blank PDF "MCC46591BlankF{Var(num7)}"
-Then the PDF text should contain
-| Text                           |
+When I view blank PDF "BASE.pdf" from request "MCC46591BlankF{Var(num7)}"
+Then I verify the PDF text contains
+| Data                           |
 | Were there any adverse events? |
 | Adverse Event Description      |
 | Start Date                     |
@@ -295,9 +295,9 @@ And I take a screenshot
 And I generate Blank PDF "MCC46591BlankG{Var(num8)}"
 And I wait for PDF "MCC46591BlankG{Var(num8)}" to complete
 And I take a screenshot
-When I View Blank PDF "MCC46591BlankG{Var(num8)}"
-Then the PDF text should contain
-| Text                           |
+When I view blank PDF "BASE.pdf" from request "MCC46591BlankG{Var(num8)}"
+Then I verify the PDF text contains
+| Data                           |
 | Were there any adverse events? |
 | Adverse Event Description      |
 | Start Date                     |
@@ -359,9 +359,9 @@ And I take a screenshot
 And I generate Blank PDF "MCC46591BlankH{Var(num9)}"
 And I wait for PDF "MCC46591BlankH{Var(num9)}" to complete
 And I take a screenshot
-When I View Blank PDF "MCC46591BlankH{Var(num9)}"
-Then the PDF text should contain
-| Text                           |
+When I view blank PDF "BASE.pdf" from request "MCC46591BlankH{Var(num9)}"
+Then I verify the PDF text contains
+| Data                           |
 | Were there any adverse events? |
 | Adverse Event Description      |
 | Start Date                     |
@@ -409,9 +409,9 @@ And I take a screenshot
 And I generate Blank PDF "MCC46591BlankI{Var(num10)}"
 And I wait for PDF "MCC46591BlankI{Var(num10)}" to complete
 And I take a screenshot
-When I View Blank PDF "MCC46591BlankI{Var(num10)}"
-Then the PDF text should contain
-| Text                           |
+When I view blank PDF "BASE.pdf" from request "MCC46591BlankI{Var(num10)}"
+Then I verify the PDF text contains
+| Data                           |
 | Were there any adverse events? |
 | Adverse Event Description      |
 | Start Date                     |
@@ -459,9 +459,9 @@ And I take a screenshot
 And I generate Blank PDF "MCC46591BlankJ{Var(num11)}"
 And I wait for PDF "MCC46591BlankJ{Var(num11)}" to complete
 And I take a screenshot
-When I View Blank PDF "MCC46591BlankJ{Var(num11)}"
-Then the PDF text should contain
-| Text              |
+When I view blank PDF "BASE.pdf" from request "MCC46591BlankJ{Var(num11)}"
+Then I verify the PDF text contains
+| Data              |
 | Date of Birth     |
 | Ethnicity         |
 | Specify race      |
@@ -499,9 +499,9 @@ And I take a screenshot
 And I generate Blank PDF "MCC46591BlankK{Var(num12)}"
 And I wait for PDF "MCC46591BlankK{Var(num12)}" to complete
 And I take a screenshot
-When I View Blank PDF "MCC46591BlankK{Var(num12)}"
-Then the PDF text should contain
-| Text                           |
+When I view blank PDF "BASE.pdf" from request "MCC46591BlankK{Var(num12)}"
+Then I verify the PDF text contains
+| Data                           |
 | Were there any adverse events? |
 | Adverse Event Description      |
 | Start Date                     |
@@ -563,9 +563,9 @@ And I take a screenshot
 And I generate Blank PDF "MCC46591BlankL{Var(num13)}"
 And I wait for PDF "MCC46591BlankL{Var(num13)}" to complete
 And I take a screenshot
-When I View Blank PDF "MCC46591BlankL{Var(num13)}"
-Then the PDF text should contain
-| Text                           |
+When I view blank PDF "BASE.pdf" from request "MCC46591BlankL{Var(num13)}"
+Then I verify the PDF text contains
+| Data                           |
 | Were there any adverse events? |
 | Adverse Event Description      |
 | Start Date                     |
@@ -627,9 +627,9 @@ And I take a screenshot
 And I generate Blank PDF "MCC46591BlankM{Var(num14)}"
 And I wait for PDF "MCC46591BlankM{Var(num14)}" to complete
 And I take a screenshot
-When I View Blank PDF "MCC46591BlankM{Var(num14)}"
-Then the PDF text should contain
-| Text                           |
+When I view blank PDF "BASE.pdf" from request "MCC46591BlankM{Var(num14)}"
+Then I verify the PDF text contains
+| Data                           |
 | Were there any adverse events? |
 | Adverse Event Description      |
 | Start Date                     |
@@ -677,9 +677,9 @@ And I take a screenshot
 And I generate Blank PDF "MCC46591BlankN{Var(num15)}"
 And I wait for PDF "MCC46591BlankN{Var(num15)}" to complete
 And I take a screenshot
-When I View Blank PDF "MCC46591BlankN{Var(num15)}"
-Then the PDF text should contain
-| Text                           |
+When I view blank PDF "BASE.pdf" from request "MCC46591BlankN{Var(num15)}"
+Then I verify the PDF text contains
+| Data                           |
 | Were there any adverse events? |
 | Adverse Event Description      |
 | Start Date                     |
@@ -727,9 +727,9 @@ And I take a screenshot
 And I generate Blank PDF "MCC46591BlankO{Var(num16)}"
 And I wait for PDF "MCC46591BlankO{Var(num16)}" to complete
 And I take a screenshot
-When I View Blank PDF "MCC46591BlankO{Var(num16)}"
-Then the PDF text should contain
-| Text              |
+When I view blank PDF "BASE.pdf" from request "MCC46591BlankO{Var(num16)}"
+Then I verify the PDF text contains
+| Data              |
 | Date of Birth     |
 | Ethnicity         |
 | Specify race      |
@@ -785,9 +785,9 @@ And I take a screenshot
 And I generate Blank PDF "MCC46591BlankP{Var(num17)}"
 And I wait for PDF "MCC46591BlankP{Var(num17)}" to complete
 And I take a screenshot
-When I View Blank PDF "MCC46591BlankP{Var(num17)}"
-Then the PDF text should contain
-| Text                  |
+When I view blank PDF "BASE.pdf" from request "MCC46591BlankP{Var(num17)}"
+Then I verify the PDF text contains
+| Data                  |
 | Visit Date:           |
 | Gender                |
 | Body System:          |
@@ -845,9 +845,9 @@ And I take a screenshot
 And I generate Blank PDF "MCC46591BlankQ{Var(num18)}"
 And I wait for PDF "MCC46591BlankQ{Var(num18)}" to complete
 And I take a screenshot
-When I View Blank PDF "MCC46591BlankQ{Var(num18)}"
-Then the PDF text should contain
-| Text                  |
+When I view blank PDF "BASE.pdf" from request "MCC46591BlankQ{Var(num18)}"
+Then I verify the PDF text contains
+| Data                  |
 | Visit Date:           |
 | Gender                |
 | Body System:          |
@@ -905,9 +905,9 @@ And I take a screenshot
 And I generate Blank PDF "MCC46591BlankR{Var(num19)}"
 And I wait for PDF "MCC46591BlankR{Var(num19)}" to complete
 And I take a screenshot
-When I View Blank PDF "MCC46591BlankR{Var(num19)}"
-Then the PDF text should contain
-| Text                  |
+When I view blank PDF "BASE.pdf" from request "MCC46591BlankR{Var(num19)}"
+Then I verify the PDF text contains
+| Data                  |
 | Visit Date:           |
 | Gender                |
 | Body System:          |
@@ -972,9 +972,9 @@ And I take a screenshot
 And I generate Blank PDF "MCC46591BlankS{Var(num20)}"
 And I wait for PDF "MCC46591BlankS{Var(num20)}" to complete
 And I take a screenshot
-When I View Blank PDF "MCC46591BlankS{Var(num20)}"
-Then the PDF text should contain
-| Text                  |
+When I view blank PDF "BASE.pdf" from request "MCC46591BlankS{Var(num20)}"
+Then I verify the PDF text contains
+| Data                  |
 | Visit Date:           |
 | Gender                |
 | Body System:          |
@@ -1039,9 +1039,9 @@ And I take a screenshot
 And I generate Blank PDF "MCC46591BlankT{Var(num21)}"
 And I wait for PDF "MCC46591BlankT{Var(num21)}" to complete
 And I take a screenshot
-When I View Blank PDF "MCC46591BlankT{Var(num21)}"
-Then the PDF text should contain
-| Text                  |
+When I view blank PDF "BASE.pdf" from request "MCC46591BlankT{Var(num21)}"
+Then I verify the PDF text contains
+| Data                  |
 | Visit Date:           |
 | Gender                |
 | Body System:          |
@@ -1106,9 +1106,9 @@ And I take a screenshot
 And I generate Blank PDF "MCC46591BlankU{Var(num22)}"
 And I wait for PDF "MCC46591BlankU{Var(num22)}" to complete
 And I take a screenshot
-When I View Blank PDF "MCC46591BlankU{Var(num22)}"
-Then the PDF text should contain
-| Text                  |
+When I view blank PDF "BASE.pdf" from request "MCC46591BlankU{Var(num22)}"
+Then I verify the PDF text contains
+| Data                  |
 | Visit Date:           |
 | Gender                |
 | Body System:          |
@@ -1173,9 +1173,9 @@ And I take a screenshot
 And I generate Blank PDF "MCC46591BlankV{Var(num23)}"
 And I wait for PDF "MCC46591BlankV{Var(num23)}" to complete
 And I take a screenshot
-When I View Blank PDF "MCC46591BlankV{Var(num23)}"
-Then the PDF text should contain
-| Text                  |
+When I view blank PDF "BASE.pdf" from request "MCC46591BlankV{Var(num23)}"
+Then I verify the PDF text contains
+| Data                  |
 | Visit Date:           |
 | Gender                |
 | Body System:          |
@@ -1233,9 +1233,9 @@ And I take a screenshot
 And I generate Blank PDF "MCC46591BlankW{Var(num24)}"
 And I wait for PDF "MCC46591BlankW{Var(num24)}" to complete
 And I take a screenshot
-When I View Blank PDF "MCC46591BlankW{Var(num24)}"
-Then the PDF text should contain
-| Text                  |
+When I view blank PDF "BASE.pdf" from request "MCC46591BlankW{Var(num24)}"
+Then I verify the PDF text contains
+| Data                  |
 | Visit Date:           |
 | Gender                |
 | Body System:          |
@@ -1293,9 +1293,9 @@ And I take a screenshot
 And I generate Blank PDF "MCC46591BlankX{Var(num25)}"
 And I wait for PDF "MCC46591BlankX{Var(num25)}" to complete
 And I take a screenshot
-When I View Blank PDF "MCC46591BlankX{Var(num25)}"
-Then the PDF text should contain
-| Text                  |
+When I view blank PDF "BASE.pdf" from request "MCC46591BlankX{Var(num25)}"
+Then I verify the PDF text contains
+| Data                  |
 | Visit Date:           |
 | Gender                |
 | Body System:          |
@@ -1360,9 +1360,9 @@ And I take a screenshot
 And I generate Blank PDF "MCC46591BlankY{Var(num26)}"
 And I wait for PDF "MCC46591BlankY{Var(num26)}" to complete
 And I take a screenshot
-When I View Blank PDF "MCC46591BlankY{Var(num26)}"
-Then the PDF text should contain
-| Text                  |
+When I view blank PDF "BASE.pdf" from request "MCC46591BlankY{Var(num26)}"
+Then I verify the PDF text contains
+| Data                  |
 | Visit Date:           |
 | Gender                |
 | Body System:          |
@@ -1427,9 +1427,9 @@ And I take a screenshot
 And I generate Blank PDF "MCC46591BlankZ{Var(num26)}"
 And I wait for PDF "MCC46591BlankZ{Var(num26)}" to complete
 And I take a screenshot
-When I View Blank PDF "MCC46591BlankZ{Var(num26)}"
-Then the PDF text should contain
-| Text                  |
+When I view blank PDF "BASE.pdf" from request "MCC46591BlankZ{Var(num26)}"
+Then I verify the PDF text contains
+| Data                  |
 | Visit Date:           |
 | Gender                |
 | Body System:          |
@@ -1494,9 +1494,9 @@ And I take a screenshot
 And I generate Blank PDF "MCC46591BlankZa{Var(num27)}"
 And I wait for PDF "MCC46591BlankZa{Var(num27)}" to complete
 And I take a screenshot
-When I View Blank PDF "MCC46591BlankZa{Var(num27)}"
-Then the PDF text should contain
-| Text                  |
+When I view blank PDF "BASE.pdf" from request "MCC46591BlankZa{Var(num27)}"
+Then I verify the PDF text contains
+| Data                  |
 | Visit Date:           |
 | Gender                |
 | Body System:          |
@@ -1561,9 +1561,9 @@ And I take a screenshot
 And I generate Blank PDF "MCC46591BlankZb{Var(num31)}"
 And I wait for PDF "MCC46591BlankZb{Var(num31)}" to complete
 And I take a screenshot
-When I View Blank PDF "MCC46591BlankZb{Var(num31)}"
-Then the PDF text should contain
-| Text          |
+When I view blank PDF "BASE.pdf" from request "MCC46591BlankZb{Var(num31)}"
+Then I verify the PDF text contains
+| Data          |
 | Date of Birth |
 | Ethnicity     |
 | Specify race  |
@@ -1592,9 +1592,9 @@ And I take a screenshot
 And I generate Blank PDF "MCC46591BlankZc{Var(num32)}"
 And I wait for PDF "MCC46591BlankZc{Var(num32)}" to complete
 And I take a screenshot
-When I View Blank PDF "MCC46591BlankZc{Var(num32)}"
-Then the PDF text should contain
-| Text              |
+When I view blank PDF "BASE.pdf" from request "MCC46591BlankZc{Var(num32)}"
+Then I verify the PDF text contains
+| Data              |
 | Date of Birth     |
 | Ethnicity         |
 | Specify race      |
@@ -1630,9 +1630,9 @@ And I take a screenshot
 And I generate Blank PDF "MCC46591BlankZd{Var(num33)}"
 And I wait for PDF "MCC46591BlankZd{Var(num33)}" to complete
 And I take a screenshot
-When I View Blank PDF "MCC46591BlankZd{Var(num33)}"
-Then the PDF text should contain
-| Text              |
+When I view blank PDF "BASE.pdf" from request "MCC46591BlankZd{Var(num33)}"
+Then I verify the PDF text contains
+| Data              |
 | Date of Birth     |
 | Ethnicity         |
 | Specify race      |

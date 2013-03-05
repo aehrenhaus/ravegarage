@@ -26,7 +26,7 @@ namespace Medidata.RBT.PageObjects.Rave
 		private EnhancedElement LeftSideTD;
 		private EnhancedElement RightSideTD;
 
-		public string FieldName { get; private set; }
+		public string FieldName { get; set; }
 	
 		#region IEDCFieldControl
 
@@ -186,7 +186,6 @@ namespace Medidata.RBT.PageObjects.Rave
 			FindQuery(filter).Textboxes()[0].SetText(answer);
 		}
 
-
 		public override void CloseQuery(QuerySearchModel filter)
 		{
 			FindQuery(filter).Dropdowns()[0].SelectByText("Close Query");
@@ -197,6 +196,29 @@ namespace Medidata.RBT.PageObjects.Rave
 		{
 			FindQuery(filter).Checkboxes()[0].Check();
 		}
+
+        public override void PlaceSticky(string responder, string text)
+        {
+            IWebElement markingButton = RightSideTD.TryFindElementByPartialID("MarkingButton");
+            markingButton.Click();
+
+            RefreshControl();
+            LeftSideTD.TryFindElementsBy(By.XPath(".//select"))[0].EnhanceAs<Dropdown>().SelectByText("Place Sticky");
+            RefreshControl();
+            LeftSideTD.TryFindElementsBy(By.XPath(".//select"))[1].EnhanceAs<Dropdown>().SelectByText(responder);
+            RefreshControl();
+            LeftSideTD.TryFindElementBy(By.XPath(".//textarea")).EnhanceAs<Textbox>().SetText(text);
+        }
+
+        /// <summary>
+        /// Refresh the control on a page after a change has been made to invalidate it.
+        /// </summary>
+        public override void RefreshControl()
+        {
+            NonLabFieldControl nonLabFieldControl = (NonLabFieldControl)Page.As<CRFPage>().FindField(FieldName + "\br\br");
+            LeftSideTD = nonLabFieldControl.LeftSideTD;
+            RightSideTD = nonLabFieldControl.RightSideTD;
+        }
 
 		#endregion
 

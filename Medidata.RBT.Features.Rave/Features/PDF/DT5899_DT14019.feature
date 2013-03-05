@@ -109,7 +109,7 @@ Feature: US15841_US17279_US17414_DT5899_DT14019 Blank PDF files that are generat
 	#And I generate Blank PDF "Blank PDF 1A{Var(num)}"
 	#And I wait for PDF "Blank PDF 1A{Var(num)}" to complete
 	#And I take a screenshot
-	#When I View Blank PDF "Blank PDF 1A{Var(num)}"
+	#When I view blank PDF "BASE.pdf"
 	#Then I should not see a blank page in PDF
     #And I take a screenshot
 	#When I click on link "Medical History" on the PDF in the left side
@@ -138,7 +138,7 @@ Feature: US15841_US17279_US17414_DT5899_DT14019 Blank PDF files that are generat
 	#And I generate Blank PDF "Blank PDF 2A{Var(num)}"
 	#And I wait for PDF "Blank PDF 2A{Var(num)}" to complete
 	#And I take a screenshot
-	#When I View Blank PDF "Blank PDF 2A{Var(num)}"
+	#When I view blank PDF "BASE.pdf"
 	#Then I should not see a blank page in PDF
 	#Then I should see all the prefilled values in one page on "Medical History" form
 	#And I take a screenshot

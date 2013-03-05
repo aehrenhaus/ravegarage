@@ -21,11 +21,21 @@ namespace Medidata.RBT.PageObjects.Rave
 			this.FieldControlContainer = MainTR.Parent();
 		}
 
+        /// <summary>
+        /// Refresh the control on a page after a change has been made to invalidate it.
+        /// </summary>
+        public override void RefreshControl()
+        {
+            throw new NotImplementedException("Refresh control not implemented yet");
+        }
+
 		/// <summary>
 		/// This is the TD that has class 'crf_rowLeftSide'
 		/// </summary>
 		private EnhancedElement MainTR;
 		private EnhancedElement QueriesTR;
+
+        public string FieldName { get; set; }
 
 		public override IWebElement FindQuery(QuerySearchModel filter)
 		{

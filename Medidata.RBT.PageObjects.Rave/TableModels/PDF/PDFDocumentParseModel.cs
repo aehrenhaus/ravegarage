@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Medidata.RBT.PageObjects.Rave
+namespace Medidata.RBT.PageObjects.Rave.TableModels.PDF
 {
     /// <summary>
     /// This model is to configure pdf settings
@@ -14,5 +14,8 @@ namespace Medidata.RBT.PageObjects.Rave
         /// Name to be used to create pdf
         /// </summary>
         public string ProfileName { get; set; }
+
+        public string CoverPageLogo { get; set; }
+        public string HeaderImage { get; set; }
     }
 }

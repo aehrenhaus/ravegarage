@@ -44,7 +44,7 @@ namespace Medidata.RBT
 
 		public FileInfo LastDownloadedFile { get; set; }
 
-        public PDF LastLoadedPDF { get; set; }
+        public RBT.BaseEnhancedPDF LastLoadedPDF { get; set; }
 
 		public FileInfo FileToUpload
 		{

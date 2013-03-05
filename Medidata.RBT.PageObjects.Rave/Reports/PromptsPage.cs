@@ -210,7 +210,7 @@ namespace Medidata.RBT.PageObjects.Rave
                 if (filePath.ToLower().EndsWith(".pdf"))
                     using (FileStream fs = new FileStream(filePath, FileMode.Open, FileAccess.Read))
                     {
-                        webTestContext.LastLoadedPDF = new Medidata.RBT.PDF("PromptsPageReport", filePath, fs);
+                        webTestContext.LastLoadedPDF = new Medidata.RBT.BaseEnhancedPDF("PromptsPageReport", filePath, fs);
                     }
         }
 		#region Pagination

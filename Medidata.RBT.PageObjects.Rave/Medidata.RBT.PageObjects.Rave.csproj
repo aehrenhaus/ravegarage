@@ -51,6 +51,7 @@
     <Reference Include="System" />
     <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -72,6 +73,7 @@
     <Reference Include="WebDriver.Support">
       <HintPath>..\ExternalDlls\WebDriver.Support.dll</HintPath>
     </Reference>
+    <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AmendmentManager\AMMigrationExecutePage.cs" />
@@ -88,6 +90,8 @@
     <Compile Include="Architect\ArchitectFormsPage.cs" />
     <Compile Include="Architect\ArchitectFormDesigner.cs" />
     <Compile Include="Architect\ArchitectRestrictionsPage.cs" />
+    <Compile Include="Architect\ArchitectMatrixPage.cs" />
+    <Compile Include="Architect\ArchitectFolderFormsPage.cs" />
     <Compile Include="Architect\DefineCopySourcesPage.cs" />
     <Compile Include="Architect\EditChecksItem.cs" />
     <Compile Include="Architect\LibraryWizardPage.cs" />
@@ -95,6 +99,8 @@
     <Compile Include="Architect\PublishChecksEditChecksControl.cs" />
     <Compile Include="Architect\UploadDraftPage.cs" />
     <Compile Include="Architect\PublishChecksHomePage.cs" />
+    <Compile Include="Audits\AuditManagement.cs" />
+    <Compile Include="Audits\IVerifyAudits.cs" />
     <Compile Include="Configuration\CoderConfigurationPage.cs" />
     <Compile Include="Configuration\ConfigurationBasePage.cs" />
     <Compile Include="Configuration\ConfigurationClinicalViewsPage.cs" />
@@ -123,6 +129,7 @@
     <Compile Include="EDC\MixedDataPageControl.cs" />
     <Compile Include="EDC\ITaskSummaryContainer.cs" />
     <Compile Include="EDC\LandscapeLogField.cs" />
+    <Compile Include="EDC\Models\CodeDataPointModel.cs" />
     <Compile Include="EDC\NonLabDataPageControl.cs" />
     <Compile Include="EDC\LabDataPageControl.cs" />
     <Compile Include="EDC\IEDCDataPageControl.cs" />
@@ -155,8 +162,12 @@
     <Compile Include="OtherPages\LogoutPage.cs" />
     <Compile Include="OtherPages\PasswordChangedPage.cs" />
     <Compile Include="OtherPages\PasswordPage.cs" />
+    <Compile Include="PDF\EnhancedPDF.cs" />
+    <Compile Include="PDF\PDFManagement.cs" />
+    <Compile Include="PDF\EnhancedPDFPage.cs" />
     <Compile Include="PDF\DisplayMultipleLogLinesControl.cs" />
     <Compile Include="PDF\FileRequestCreateRequestPageBase.cs" />
+    <Compile Include="PDF\PDFConfigPage.cs" />
     <Compile Include="PDF\PDFConfigProfilesPage.cs" />
     <Compile Include="PDF\PDFFileRequestsControl.cs" />
     <Compile Include="PDF\FileRequestCreateBlankRequestPage.cs" />
@@ -172,6 +183,7 @@
     <Compile Include="ReportAdmin\ReportAssignmentPage.cs" />
     <Compile Include="Reports\CrystalReportPageBase.cs" />
     <Compile Include="SharedRaveObjects\Analyte.cs" />
+    <Compile Include="SharedRaveObjects\Audit.cs" />
     <Compile Include="SharedRaveObjects\BaseCodingDictionary.cs" />
     <Compile Include="SharedRaveObjects\ClassicCodingDictionary.cs" />
     <Compile Include="SharedRaveObjects\CoderDictLevelComponent.cs" />
@@ -180,6 +192,11 @@
     <Compile Include="SharedRaveObjects\CodingColumn.cs" />
     <Compile Include="SharedRaveObjects\CodingDictionary.cs" />
     <Compile Include="SharedRaveObjects\CoderLocale.cs" />
+    <Compile Include="SharedRaveObjects\CoderManagement.cs" />
+    <Compile Include="SharedRaveObjects\StatusManagement.cs" />
+    <Compile Include="SharedRaveObjects\Record.cs" />
+    <Compile Include="SharedRaveObjects\DataPage.cs" />
+    <Compile Include="SharedRaveObjects\DataPoint.cs" />
     <Compile Include="SharedRaveObjects\LocalizedDataStringManagement.cs" />
     <Compile Include="SharedRaveObjects\Proposal.cs" />
     <Compile Include="SharedRaveObjects\ExternalSystem.cs" />
@@ -229,9 +246,10 @@
     <Compile Include="TableModels\CoderLocaleTable.cs" />
     <Compile Include="TableModels\CoderTermModel.cs" />
     <Compile Include="TableModels\CoderWorkflowVariableModel.cs" />
-    <Compile Include="TableModels\PDFFormattingModel.cs" />
-    <Compile Include="TableModels\PDFParseModel.cs" />
-    <Compile Include="TableModels\GenericDataModel.cs" />
+    <Compile Include="TableModels\PDF\PDFTextAndTextStyleModel.cs" />
+    <Compile Include="TableModels\StickyModel.cs" />
+    <Compile Include="TableModels\PDF\PDFPageParseModel.cs" />
+    <Compile Include="TableModels\PDF\PDFParseModel.cs" />
     <Compile Include="TableModels\ReportMatrixAssignmentModel.cs" />
     <Compile Include="TableModels\LabUnitDictionaryModel.cs" />
     <Compile Include="TableModels\AnalyteModel.cs" />
@@ -239,8 +257,8 @@
     <Compile Include="TableModels\NameObject.cs" />
     <Compile Include="TableModels\RangeTypeModel.cs" />
     <Compile Include="TableModels\FormModel.cs" />
-    <Compile Include="TableModels\PDFCreationModel.cs" />
-    <Compile Include="TableModels\PdfProfileModel.cs" />
+    <Compile Include="TableModels\PDF\PDFCreationModel.cs" />
+    <Compile Include="TableModels\PDF\PDFDocumentParseModel.cs" />
     <Compile Include="TableModels\TSDVObjectModel.cs" />
     <Compile Include="TableModels\CustomTierModel.cs" />
     <Compile Include="TableModels\IFieldModel.cs" />

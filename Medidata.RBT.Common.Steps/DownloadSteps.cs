@@ -16,7 +16,6 @@ namespace Medidata.RBT.Common.Steps
 	[Binding]
 	public class DownloadSteps : BrowserStepsBase
 	{
-
         /// <summary>
         /// Click a button to download a file
         /// </summary>
@@ -36,6 +35,24 @@ namespace Medidata.RBT.Common.Steps
 			}
 		}
 
+        /// <summary>
+        /// Verify that a file exists in the download folder
+        /// </summary>
+        /// <param name="fileName">Name of the file to find</param>
+        [StepDefinition(@"I verify file ""(.*)"" was downloaded")]
+        public void ThenIVerifyFile____WasDownloaded(string fileName)
+        {
+            try
+            {
+                DirectoryInfo downloadDir = new DirectoryInfo(RBTConfiguration.Default.DownloadPath);
+                FileInfo[] matchingFiles = downloadDir.GetFiles(fileName, SearchOption.AllDirectories);
 
+                Assert.IsTrue(matchingFiles != null && matchingFiles.Count() > 0, String.Format("File {0} was not found in the downloads folder", fileName));
+            }
+            catch
+            {
+                Console.WriteLine("-> Find file failed");
+            }
+        }
 	}
 }

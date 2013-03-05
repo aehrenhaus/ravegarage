@@ -82,9 +82,9 @@ And I take a screenshot
 And I generate Blank PDF "Blank PDF A{Var(num2)}"
 And I wait for PDF "Blank PDF A{Var(num2)}" to complete
 And I take a screenshot
-When I View Blank PDF "Blank PDF A{Var(num2)}"
-Then the PDF text should not contain
-| Text                  |
+When I view blank PDF "BASE.pdf" from request "Blank PDF A{Var(num2)}"
+Then I verify the PDF text does not contain
+| Data                  |
 | &lt                   |
 | &lt;                  |
 | &gt                   |
@@ -102,8 +102,8 @@ Then the PDF text should not contain
 | <b>                   |
 | Test1=Test2=Test3=    |
 | Test1==Test2==Test3== |
-And the PDF text should contain
-| Text |
+And I verify the PDF text contains
+| Data |
 | <    |
 | >    |
 
@@ -123,9 +123,9 @@ And I take a screenshot
 And I generate Blank PDF "Blank PDF B{Var(num3)}"
 And I wait for PDF "Blank PDF B{Var(num3)}" to complete
 And I take a screenshot
-When I View Blank PDF "Blank PDF B{Var(num3)}"
-Then the PDF text should not contain
-| Text                  |
+When I view blank PDF "BASE.pdf" from request "Blank PDF B{Var(num3)}"
+Then I verify the PDF text does not contain
+| Data                  |
 | &lt                   |
 | &lt;                  |
 | &gt                   |
@@ -143,8 +143,8 @@ Then the PDF text should not contain
 | <b>                   |
 | Test1=Test2=Test3=    |
 | Test1==Test2==Test3== |
-And the PDF text should contain
-| Text |
+And I verify the PDF text contains
+| Data |
 | <    |
 | >    |
 
@@ -164,9 +164,9 @@ And I take a screenshot
 And I generate Blank PDF "Blank PDF C{Var(num4)}"
 And I wait for PDF "Blank PDF C{Var(num4)}" to complete
 And I take a screenshot
-When I View Blank PDF "Blank PDF C{Var(num4)}"
-Then the PDF text should not contain
-| Text                  |
+When I view blank PDF "BASE.pdf" from request "Blank PDF C{Var(num4)}"
+Then I verify the PDF text does not contain
+| Data                  |
 | &lt                   |
 | &lt;                  |
 | &gt                   |
@@ -184,8 +184,8 @@ Then the PDF text should not contain
 | <b>                   |
 | Test1=Test2=Test3=    |
 | Test1==Test2==Test3== |
-And the PDF text should contain
-| Text |
+And I verify the PDF text contains
+| Data |
 | <    |
 | >    |
 
@@ -205,9 +205,9 @@ And I take a screenshot
 And I generate Blank PDF "Blank PDF D{Var(num5)}"
 And I wait for PDF "Blank PDF D{Var(num5)}" to complete
 And I take a screenshot
-When I View Blank PDF "Blank PDF D{Var(num5)}"
-Then the PDF text should not contain
-| Text                  |
+When I view blank PDF "BASE.pdf" from request "Blank PDF D{Var(num5)}"
+Then I verify the PDF text does not contain
+| Data                  |
 | &lt                   |
 | &lt;                  |
 | &gt                   |
@@ -225,8 +225,8 @@ Then the PDF text should not contain
 | <b>                   |
 | Test1=Test2=Test3=    |
 | Test1==Test2==Test3== |
-And the PDF text should contain
-| Text |
+And I verify the PDF text contains
+| Data |
 | <    |
 | >    |
 
@@ -246,9 +246,9 @@ And I take a screenshot
 And I generate Blank PDF "Blank PDF E{Var(num6)}"
 And I wait for PDF "Blank PDF E{Var(num6)}" to complete
 And I take a screenshot
-When I View Blank PDF "Blank PDF E{Var(num6)}"
-Then the PDF text should not contain
-| Text                  |
+When I view blank PDF "BASE.pdf" from request "Blank PDF E{Var(num6)}"
+Then I verify the PDF text does not contain
+| Data                  |
 | &lt                   |
 | &lt;                  |
 | &gt                   |
@@ -266,8 +266,8 @@ Then the PDF text should not contain
 | <b>                   |
 | Test1=Test2=Test3=    |
 | Test1==Test2==Test3== |
-And the PDF text should contain
-| Text |
+And I verify the PDF text contains
+| Data |
 | <    |
 | >    |
 
@@ -356,9 +356,9 @@ And I take a screenshot
 And I generate Data PDF "Data PDF A{Var(num7)}"
 And I wait for PDF "Data PDF A{Var(num7)}" to complete
 And I take a screenshot
-When I View Data PDF "Data PDF A{Var(num7)}"
-Then the PDF text should not contain
-| Text                  |
+When I view data PDF "S{Var(num1)}.pdf" from request "Data PDF A{Var(num7)}"
+Then I verify the PDF text does not contain
+| Data                  |
 | &lt                   |
 | &lt;                  |
 | &gt                   |
@@ -376,8 +376,8 @@ Then the PDF text should not contain
 | <b>                   |
 | Test1=Test2=Test3=    |
 | Test1==Test2==Test3== |
-And the PDF text should contain
-| Text |
+And I verify the PDF text contains
+| Data |
 | <    |
 | >    |
 
@@ -467,9 +467,9 @@ And I take a screenshot
 And I generate Data PDF "Data PDF B{Var(num8)}"
 And I wait for PDF "Data PDF B{Var(num8)}" to complete
 And I take a screenshot
-When I View Data PDF "Data PDF B{Var(num8)}"
-Then the PDF text should not contain
-| Text                  |
+When I view data PDF "S{Var(num1)}.pdf" from request "Data PDF B{Var(num8)}"
+Then I verify the PDF text does not contain
+| Data                  |
 | &lt                   |
 | &lt;                  |
 | &gt                   |
@@ -487,8 +487,8 @@ Then the PDF text should not contain
 | <b>                   |
 | Test1=Test2=Test3=    |
 | Test1==Test2==Test3== |
-And the PDF text should contain
-| Text |
+And I verify the PDF text contains
+| Data |
 | <    |
 | >    |
 
@@ -578,9 +578,9 @@ And I take a screenshot
 And I generate Data PDF "Data PDF C{Var(num9)}"
 And I wait for PDF "Data PDF C{Var(num9)}" to complete
 And I take a screenshot
-When I View Data PDF "Data PDF C{Var(num9)}"
-Then the PDF text should not contain
-| Text                  |
+When I view data PDF "S{Var(num1)}.pdf" from request "Data PDF C{Var(num9)}"
+Then I verify the PDF text does not contain
+| Data                  |
 | &lt                   |
 | &lt;                  |
 | &gt                   |
@@ -598,8 +598,8 @@ Then the PDF text should not contain
 | <b>                   |
 | Test1=Test2=Test3=    |
 | Test1==Test2==Test3== |
-And the PDF text should contain
-| Text |
+And I verify the PDF text contains
+| Data |
 | <    |
 | >    |
 
@@ -688,9 +688,9 @@ And I take a screenshot
 And I generate Data PDF "Data PDF D{Var(num10)}"
 And I wait for PDF "Data PDF D{Var(num10)}" to complete
 And I take a screenshot
-When I View Data PDF "Data PDF D{Var(num10)}"
-Then the PDF text should not contain
-| Text                  |
+When I view data PDF "S{Var(num1)}.pdf" from request "Data PDF D{Var(num10)}"
+Then I verify the PDF text does not contain
+| Data                  |
 | &lt                   |
 | &lt;                  |
 | &gt                   |
@@ -708,8 +708,8 @@ Then the PDF text should not contain
 | <b>                   |
 | Test1=Test2=Test3=    |
 | Test1==Test2==Test3== |
-And the PDF text should contain
-| Text |
+And I verify the PDF text contains
+| Data |
 | <    |
 | >    |
 
@@ -798,9 +798,9 @@ And I take a screenshot
 And I generate Data PDF "Data PDF E{Var(num11)}"
 And I wait for PDF "Data PDF E{Var(num11)}" to complete
 And I take a screenshot
-When I View Data PDF "Data PDF E{Var(num11)}"
-Then the PDF text should not contain
-| Text                  |
+When I view data PDF "S{Var(num1)}.pdf" from request "Data PDF E{Var(num11)}"
+Then I verify the PDF text does not contain
+| Data                  |
 | &lt                   |
 | &lt;                  |
 | &gt                   |
@@ -818,8 +818,8 @@ Then the PDF text should not contain
 | <b>                   |
 | Test1=Test2=Test3=    |
 | Test1==Test2==Test3== |
-And the PDF text should contain
-| Text |
+And I verify the PDF text contains
+| Data |
 | <    |
 | >    |
 
@@ -907,9 +907,9 @@ And I take a screenshot
 And I generate Data PDF "Data PDF F{Var(num12)}"
 And I wait for PDF "Data PDF F{Var(num12)}" to complete
 And I take a screenshot
-When I View Data PDF "Data PDF F{Var(num12)}"
-Then the PDF text should not contain
-| Text                  |
+When I view data PDF "S{Var(num1)}.pdf" from request "Data PDF F{Var(num12)}"
+Then I verify the PDF text does not contain
+| Data                  |
 | &lt                   |
 | &lt;                  |
 | &gt                   |
@@ -927,7 +927,7 @@ Then the PDF text should not contain
 | <b>                   |
 | Test1=Test2=Test3=    |
 | Test1==Test2==Test3== |
-And the PDF text should contain
-| Text |
+And I verify the PDF text contains
+| Data |
 | <    |
 | >    |

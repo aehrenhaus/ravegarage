@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Medidata.RBT.PageObjects.Rave
+namespace Medidata.RBT.PageObjects.Rave.TableModels.PDF
 {
     public class PDFCreationModel
     {
@@ -12,11 +12,12 @@ namespace Medidata.RBT.PageObjects.Rave
         public string Study { get; set; }
         public string Environment { get; set; }
         public string Role { get; set; }
-        public string SiteGroup { get; set; }
-        public string Site { get; set; }
-        public string Subject { get; set; }
+        public string SiteGroups { get; set; }
+        public string Sites { get; set; }
+        public string Subjects { get; set; }
         public string Locale { get; set; }
         public string CRFVersion { get; set; }
         public string FormExclusions { get; set; }
+        public string FolderExclusions { get; set; }
     }
 }

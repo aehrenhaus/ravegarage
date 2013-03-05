@@ -4,6 +4,7 @@ using System.Linq;
 using OpenQA.Selenium;
 using Medidata.RBT.SeleniumExtension;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Medidata.RBT.PageObjects.Rave.TableModels;
 
 namespace Medidata.RBT.PageObjects.Rave
 {
@@ -65,7 +66,9 @@ namespace Medidata.RBT.PageObjects.Rave
 
 		public override IPage ChooseFromCheckboxes(string identifier, bool isChecked, string areaIdentifier = null, string listItem = null)
 		{
-            if (areaIdentifier.ToLower().Equals("form level"))
+            if(identifier.Equals("Confirm"))
+                Browser.TryFindElementByPartialID("INA_INACB").EnhanceAs<Checkbox>().Check();
+            else if (areaIdentifier.ToLower().Equals("form level"))
                 ClickCheckBoxOnForm(identifier);
             else
             {
@@ -98,7 +101,11 @@ namespace Medidata.RBT.PageObjects.Rave
 
                 var contentR = Context.Browser.TryFindElementByPartialID("Content_R");
                 var labDropdown = contentR.TryFindElementByPartialID("LOC_DropDown", false);
-                bool isLabform = labDropdown != null;
+                //If the page is inactive the lab dropdown won't be there
+                //still need the lab dropdown as an indictator that it is a lab page if there is no data
+                //The only page without a preText class is the lab page
+                IWebElement preText = Context.Browser.TryFindElementByXPath(".//*[@class = 'crf_preText']", false);
+                bool isLabform = labDropdown != null || preText == null;
                 return isLabform;
             }
         }
@@ -328,5 +335,27 @@ namespace Medidata.RBT.PageObjects.Rave
 
 			Assert.AreEqual(formCount, formLinks.Count, string.Format("There are {0} forms ,expect {1}", formLinks.Count,formCount));
 		}
+
+        /// <summary>
+        /// Place stickes against fields on the page
+        /// </summary>
+        /// <param name="stickies">The stickies to place</param>
+        public void PlaceStickies(List<StickyModel> stickies)
+        {
+            foreach (StickyModel sticky in stickies)
+                PlaceSticky(sticky.Field, sticky.Responder, sticky.Text);
+        }
+
+        /// <summary>
+        /// Place a sticky against a field on the page
+        /// </summary>
+        /// <param name="fieldName">The name of the field to place the sticky against</param>
+        /// <param name="responder">Who should respond to the sticky</param>
+        /// <param name="text">The text of the sticky</param>
+        public void PlaceSticky(string fieldName, string responder, string text)
+        {
+            IEDCFieldControl fieldControl = FindField(fieldName);
+            fieldControl.PlaceSticky(responder, text);
+        }
     }
 }

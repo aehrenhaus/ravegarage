@@ -188,7 +188,7 @@ namespace Medidata.RBT.PageObjects.Rave
         /// <param name="identifier"></param>
         /// <param name="exactMatch"></param>
         /// <returns></returns>
-		public new bool VerifySomethingExist(string areaIdentifier,string type, string identifier, bool exactMatch = false)
+		public bool VerifySomethingExist(string areaIdentifier,string type, string identifier, bool exactMatch = false)
 		{
 			if (identifier == "Add Event lock icon")
 				return Browser.TryFindElementById("_ctl0_Content_SubjectAddEvent_DisableMatrixImage") != null;

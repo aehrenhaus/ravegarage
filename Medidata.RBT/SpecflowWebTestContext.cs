@@ -67,6 +67,7 @@ namespace Medidata.RBT
 			Storage.Clear();
 			HandleFeatureTags();
 			CurrentFeatureStartTime = DateTime.Now;
+            WebTestContext.LastLoadedPDF = null;
 			DraftCounter.ResetCounter();
 			
 		}

@@ -9,9 +9,11 @@ using Medidata.RBT.SeleniumExtension;
 using System.Collections.Specialized;
 using System.Reflection;
 using Medidata.RBT.PageObjects.Rave.SharedRaveObjects;
+using Medidata.RBT.PageObjects.Rave.Audits;
+
 namespace Medidata.RBT.PageObjects.Rave
 {
-	public class AuditsPage : RavePageBase
+    public class AuditsPage : RavePageBase, IVerifyAudits
 	{
         private static readonly string[] s_sysUsers = new[] { "System", "LSystem" };
 
@@ -20,64 +22,11 @@ namespace Medidata.RBT.PageObjects.Rave
             return AuditExist(audit.Audit, audit.User, audit.Time, position);
         }
 
-		//TODO: support wild char or regex
-		public bool AuditExist(AuditModel audit, int? position = null)
-		{
-			if (audit.AuditType == "Query Canceled")
-			{
-				return AuditExist_CancelQuery(audit.QueryMessage, audit.User, audit.Time, position);
-			}
-
-            else if (audit.AuditType == "Signature Succeeded")
-            {
-                return AuditExist_SignatureSucceeded(audit.User, audit.Time, position);
-            }
-
-            else if (audit.AuditType == "Signature Broken")
-            {
-                return AuditExist_SignatureBroken(audit.User, audit.Time, position);
-            }
-
-            else if (audit.AuditType == "User entered")
-            {
-                return AuditExist_UserEntered(audit.QueryMessage, audit.User, audit.Time, position);
-            }
-
-            else if (audit.AuditType == "DataPoint")
-            {
-                return AuditExist_DataPoint(audit.QueryMessage, audit.User, audit.Time, position);
-            }
-
-            else if (audit.AuditType == "Add Events" || audit.AuditType == "LAdd Events")
-            {
-                return AuditExist_AddEvents(audit, audit.User, audit.Time, position);
-            }
-
-            else if (audit.AuditType == "Record")
-            {
-                return AuditExist_Record(audit.QueryMessage, audit.User, audit.Time, position);
-            }
-
-            else if (audit.AuditType.ToLower().Equals("reviewed"))
-            {
-                return AuditExist_Reviewed(audit.QueryMessage, audit.User, audit.Time, position);
-            }
-
-            else if (audit.AuditType.ToLower().Equals("un-reviewed"))
-            {
-                return AuditExist_UnReviewed(audit.QueryMessage, audit.User, audit.Time, position);
-            }
-            else if (audit.AuditType == "Amendment Manager" || audit.AuditType == "LAmendment Manager")
-            {
-                return AuditExist(
-                    string.Format("{0}: {1}",
-                        audit.AuditType,
-                        audit.QueryMessage),
-                    audit.User, audit.Time, position);
-            }
-
-			throw new Exception("Invalid audit type " + audit.AuditType);
-		}
+        //TODO: support wild char or regex
+        public bool AuditExist(AuditModel audit, int? position = null)
+        {
+            return AuditExist(AuditManagement.GetAuditMessage(audit.AuditType, audit.QueryMessage), audit.User, audit.Time, position);
+        }
         
         /// <summary>
         /// Checks if the specified audit exists in the audit trail
@@ -203,89 +152,7 @@ namespace Medidata.RBT.PageObjects.Rave
             else 
                 return false;	
 		}
-        
-		public bool AuditExist_OpenQuery(string query, string user, string timeFormat, int? position = null)
-		{
-            return AuditExist(string.Format("User opened query '{0}'", query), user, timeFormat, position);
-		}
-
-		public bool AuditExist_CancelQuery(string query, string user, string timeFormat, int? position = null)
-		{
-            return AuditExist(string.Format("Query '{0}' canceled", query), user, timeFormat, position);
-		}
-
-        public bool AuditExist_SignatureSucceeded(string user, string timeFormat, int? position = null)
-        {
-            return AuditExist("User signature succeeded.", user, timeFormat, position);
-        }
-
-        public bool AuditExist_SignatureBroken(string user, string timeFormat, int? position = null)
-        {
-            return AuditExist("Signature has been broken.", user, timeFormat, position);
-        }
-
-        public bool AuditExist_UserEntered(string userInput,string user, string timeFormat, int? position = null)
-        {
-            return AuditExist(string.Format("User entered {0}", userInput), user, timeFormat, position); 
-        }
-
-        public bool AuditExist_DataPoint(string query, string user, string timeFormat, int? position = null)
-        {
-            return AuditExist(string.Format("DataPoint {0}", query), user, timeFormat, position);
-        }
-
-        /// <summary>
-        /// Check if the specified audit exists against a record
-        /// </summary>
-        /// <param name="query">The words that come after record</param>
-        /// <param name="user">The user who made the audit</param>
-        /// <param name="timeFormat">The format that the time is in</param>
-        /// <param name="position"></param>
-        /// <returns></returns>
-        public bool AuditExist_Record(string query, string user, string timeFormat, int? position = null)
-        {
-            return AuditExist(string.Format("Record {0}", query), user, timeFormat, position);
-        }
-
-        private bool AuditExist_AddEvents(AuditModel audit, string user, string timeFormat, int? position)
-        {
-            if (audit.AuditType.Equals("Add Events"))
-                return AuditExist(string.Format("Add events {0}", audit.QueryMessage), user, timeFormat, position);
-            else if (audit.AuditType.Equals("LAdd Events"))
-                return AuditExist(string.Format("LAdd events {0}", audit.QueryMessage), user, timeFormat, position);
-            else
-                return false;
-        }
-
-        /// <summary>
-        /// Check if the specified audit exists against a point which has been reviewed
-        /// </summary>
-        /// <param name="query">The review group which has been reviewed</param>
-        /// <param name="user">The user who made the audit</param>
-        /// <param name="timeFormat">The format that the time is i</param>
-        /// <param name="position">The position of the audit in the audit logs</param>
-        /// <returns>true if the audit exists, false if it doesn't</returns>
-        private bool AuditExist_Reviewed(string query, string user, string timeFormat, int? position)
-        {
-            return AuditExist(string.Format("Reviewed for {0}.", query), user, timeFormat, position);
-        }
-
-        /// <summary>
-        /// Check if the specified audit exists against a point which has been un-reviewed
-        /// </summary>
-        /// <param name="query">The review group which has been un-reviewed</param>
-        /// <param name="user">The user who made the audit</param>
-        /// <param name="timeFormat">The format that the time is i</param>
-        /// <param name="position">The position of the audit in the audit logs</param>
-        /// <returns>true if the audit exists, false if it doesn't</returns>
-        private bool AuditExist_UnReviewed(string query, string user, string timeFormat, int? position)
-        {
-            return AuditExist(string.Format("Un-reviewed for {0}.", query), user, timeFormat, position);
-        }
 
         public override string URL { get { return "Modules/EDC/AuditsPage.aspx"; } }
-
-
-
     }
 }

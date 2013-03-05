@@ -9,6 +9,7 @@ using Medidata.RBT.SharedRaveObjects;
 using Medidata.RBT.PageObjects.Rave.SharedRaveObjects;
 using System.Text.RegularExpressions;
 using Medidata.RBT.Utilities;
+using Medidata.RBT.GenericModels;
 
 namespace Medidata.RBT.Features.Rave
 {

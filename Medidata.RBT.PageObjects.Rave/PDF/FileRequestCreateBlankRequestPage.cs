@@ -9,6 +9,7 @@ using TechTalk.SpecFlow;
 using Medidata.RBT.SeleniumExtension;
 using System.Threading;
 using Medidata.RBT.PageObjects.Rave.SharedRaveObjects;
+using Medidata.RBT.PageObjects.Rave.TableModels.PDF;
 
 namespace Medidata.RBT.PageObjects.Rave
 {

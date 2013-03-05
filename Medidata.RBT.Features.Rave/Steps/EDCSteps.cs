@@ -482,6 +482,8 @@ namespace Medidata.RBT.Features.Rave
                 CurrentPage = CurrentPage.As<ArchitectCRFDraftPage>().ClickLink("Propose Objects");
             else if (logForm.Equals("Forms", StringComparison.InvariantCultureIgnoreCase))
                 CurrentPage = CurrentPage.As<ArchitectCRFDraftPage>().ClickLink("Forms");
+            else if (logForm.Equals("Matrices", StringComparison.InvariantCultureIgnoreCase))
+                CurrentPage = CurrentPage.As<ArchitectCRFDraftPage>().ClickLink("Matrices");
             else
                 CurrentPage.As<SubjectPage>().SelectForm(logForm);
         }

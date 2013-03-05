@@ -7,6 +7,7 @@ using Medidata.RBT.PageObjects.Rave;
 using TechTalk.SpecFlow.Assist;
 using System.Collections.Generic;
 using Medidata.RBT.SharedObjects;
+using Medidata.RBT.GenericModels;
 
 
 namespace Medidata.RBT.Common.Steps

@@ -44,7 +44,13 @@ namespace Medidata.RBT.PageObjects.Rave
         }
         #endregion
 
-
+        /// <summary>
+        /// Refresh the control on a page after a change has been made to invalidate it.
+        /// </summary>
+        public override void RefreshControl()
+        {
+            throw new NotImplementedException("Refresh control not implemented yet");
+        }
 
         private IWebElement GetElementInRowByLabel(ControlType type, int position)
         {

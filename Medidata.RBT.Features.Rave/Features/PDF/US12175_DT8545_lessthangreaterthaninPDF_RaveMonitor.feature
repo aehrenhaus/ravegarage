@@ -76,8 +76,8 @@ This should be tested with all 3 forms (Standard, log and mixed forms)
 	When I select Study "test15"
 	And I select link "Monitor Visits" located in "Left Nav"
 	When I generate PDF for all visits
-	Then the PDF text should not contain
-        | Text        |
+	Then I verify the PDF text does not contain
+        | Data        |
         | &gt         |
         | &ge         |
         | &ge;        |
@@ -125,8 +125,8 @@ This should be tested with all 3 forms (Standard, log and mixed forms)
     #  | Date Resolved                               | 25 Feb 2012                                                       |
     #  | Resolution Comments                         | aaa555&lt&gt&ge&ge;&le&le;bullet points&lt;li&gt;&lt;br/&gt;break |
 	When I generate PDF for all visits
-	Then the PDF text should not contain
-        | Text        |
+	Then I verify the PDF text does not contain
+        | Data        |
         | &gt         |
         | &ge         |
         | &ge;        |

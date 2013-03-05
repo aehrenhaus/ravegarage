@@ -12,6 +12,7 @@ using System.Text.RegularExpressions;
 using Medidata.RBT.Utilities.PDF;
 using O2S.Components.PDF4NET.Text;
 using O2S.Components.PDF4NET.Graphics.Fonts;
+using Medidata.RBT.Utilities;
 
 namespace Medidata.RBT
 {
@@ -21,23 +22,32 @@ namespace Medidata.RBT
     ///So it becomes sort of a hybrid, if you want functionality from the PDFImportedPage call the BasePage property.
     ///If you want the new functionality call the properties here.
     ///</summary>
-    public class RBTPage
+    public class BaseEnhancedPDFPage
     {
         #region Variables
         private double? m_TopMostGlyph;
         private double? m_LeftMostGlyph;
         private double? m_RightMostGlyph;
         private double? m_BottomMostGlyph;
+        private double? m_TopMargin;
+        private double? m_BottomMargin;
+        private double? m_LeftMargin;
+        private double? m_RightMargin;
         private StringBuilder m_Text = new StringBuilder();
         private Dictionary<string, double> m_FontsUsedToFontSize;
-        private const int POINTS_IN_AN_INCH = 72;
         #endregion
 
-        public RBTPage(PDFImportedPage page)
+        #region Constuctors
+        public BaseEnhancedPDFPage()
+        {
+        }
+
+        public BaseEnhancedPDFPage(PDFImportedPage page)
         {
             this.BasePage = page;
             SetExtraInformation();
         }
+        #endregion
 
         private void SetExtraInformation()
         {
@@ -51,7 +61,7 @@ namespace Medidata.RBT
 
         private void SetText(PDFTextRun pdfTextRun)
         {
-            m_Text = m_Text.Append(pdfTextRun.Text);
+            m_Text = m_Text.AppendLine(pdfTextRun.Text);
         }
 
         private void SetMargins(PDFTextRun pdfTextRun)
@@ -66,11 +76,17 @@ namespace Medidata.RBT
             if (!bottomMostGlyphOld.HasValue || (bottomMostGlyphOld.Value != BottomMostGlyph))
             {
                 //Some loss of precision here
-                PageNumberArea
+                BottomRightOfPage
+                    = new System.Drawing.Rectangle(Convert.ToInt32(BasePage.Width) / 2,
+                        Convert.ToInt32(BottomMostGlyph.Value),
+                        Convert.ToInt32(BasePage.Width) / 2,
+                        Convert.ToInt32(pdfTextRun.FontSize) * 2); //There can up to two lines on the bottom of the screen
+
+                BottomLeftOfPage
                     = new System.Drawing.Rectangle(0,
                         Convert.ToInt32(BottomMostGlyph.Value),
-                        Convert.ToInt32(BasePage.Width),
-                        Convert.ToInt32(pdfTextRun.FontSize));
+                        Convert.ToInt32(BasePage.Width) / 2,
+                        Convert.ToInt32(pdfTextRun.FontSize) * 2); //There can up to two lines on the bottom of the screen
             }
             RightMostGlyph = pdfRectangle.LLX + pdfRectangle.Width;
         }
@@ -154,11 +170,17 @@ namespace Medidata.RBT
         /// Round to the nearest .5 inch because our method for the margins on a page is imprecise.
         /// We use the difference between the position of the glyph on the edge of the page and the edge of the page
         /// </summary>
-        public double TopMargin
+        public double? TopMargin
         {
             get
             {
-                return Math.Round(((this.BasePage.Height - TopMostGlyph.Value) / POINTS_IN_AN_INCH) * 2, MidpointRounding.AwayFromZero) / 2;
+                if(!m_TopMargin.HasValue)
+                    m_TopMargin = Math.Round(((this.BasePage.Height - TopMostGlyph.Value) / BasePDFManagement.POINTS_IN_AN_INCH) * 2, MidpointRounding.AwayFromZero) / 2;
+                return m_TopMargin;
+            }
+            set
+            {
+                m_TopMargin = value;
             }
         }
 
@@ -166,11 +188,17 @@ namespace Medidata.RBT
         /// Round to the nearest .5 inch because our method for the margins on a page is imprecise.
         /// We use the difference between the position of the glyph on the edge of the page and the edge of the page
         /// </summary>
-        public double LeftMargin
+        public double? LeftMargin
         {
             get
             {
-                return Math.Round((LeftMostGlyph.Value / POINTS_IN_AN_INCH) * 2, MidpointRounding.AwayFromZero) / 2;
+                if (!m_LeftMargin.HasValue)
+                    m_LeftMargin = Math.Round((LeftMostGlyph.Value / BasePDFManagement.POINTS_IN_AN_INCH) * 2, MidpointRounding.AwayFromZero) / 2;
+                return m_LeftMargin;
+            }
+            set
+            {
+                m_LeftMargin = value;
             }
         }
 
@@ -178,11 +206,17 @@ namespace Medidata.RBT
         /// Round to the nearest .5 inch because our method for the margins on a page is imprecise.
         /// We use the difference between the position of the glyph on the edge of the page and the edge of the page
         /// </summary>
-        public double RightMargin
+        public double? RightMargin
         {
             get
             {
-                return Math.Round(((this.BasePage.Width - RightMostGlyph.Value) / POINTS_IN_AN_INCH) * 2, MidpointRounding.AwayFromZero) / 2;
+                if (!m_RightMargin.HasValue)
+                    m_RightMargin = Math.Round(((this.BasePage.Width - RightMostGlyph.Value) / BasePDFManagement.POINTS_IN_AN_INCH) * 2, MidpointRounding.AwayFromZero) / 2;
+                return m_RightMargin;
+            }
+            set
+            {
+                m_RightMargin = value;
             }
         }
 
@@ -190,20 +224,31 @@ namespace Medidata.RBT
         /// Round to the nearest .5 inch because our method for the margins on a page is imprecise.
         /// We use the difference between the position of the glyph on the edge of the page and the edge of the page
         /// </summary>
-        public double BottomMargin
+        public double? BottomMargin
         {
             get
             {
-                return Math.Round(((BottomMostGlyph.Value) / POINTS_IN_AN_INCH) * 2, MidpointRounding.AwayFromZero) / 2;
+                if (!m_BottomMargin.HasValue)
+                    m_BottomMargin = Math.Round(((BottomMostGlyph.Value) / BasePDFManagement.POINTS_IN_AN_INCH) * 2, MidpointRounding.AwayFromZero) / 2;
+                return m_BottomMargin;
+            }
+            set
+            {
+                m_BottomMargin = value;
             }
         }
 
-        public System.Drawing.Rectangle PageNumberArea { get; set; }
+        public System.Drawing.Rectangle BottomRightOfPage { get; set; }
+        public System.Drawing.Rectangle BottomLeftOfPage { get; set; }
         public string Text
         {
             get
             {
                 return m_Text.ToString();
+            }
+            set
+            {
+                m_Text = new StringBuilder(value);
             }
         }
         public Dictionary<string, double> FontsUsedToFontSize

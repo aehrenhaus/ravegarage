@@ -9,6 +9,7 @@ using TechTalk.SpecFlow;
 using Medidata.RBT.SeleniumExtension;
 using System.Threading;
 using Medidata.RBT.PageObjects.Rave.SharedRaveObjects;
+using Medidata.RBT.PageObjects.Rave.TableModels.PDF;
 
 namespace Medidata.RBT.PageObjects.Rave
 {
@@ -29,6 +30,8 @@ namespace Medidata.RBT.PageObjects.Rave
             PerformPDFSpecificSelections(args);
             if(args.FormExclusions != null)
                 SelectFormExclusions(args.FormExclusions.Split(',').ToList());
+            if (args.FolderExclusions != null)
+                SelectFolderExclusions(args.FolderExclusions.Split(',').ToList());
         }
 
         /// <summary>
@@ -127,6 +130,21 @@ namespace Medidata.RBT.PageObjects.Rave
             {
                 //get checkbox next to form and check it
                 formsDiv.TryFindElementBy(By.XPath(".//td[contains(text(), '" + formToExclude.Trim() + "')]/../td/input")).EnhanceAs<Checkbox>().Check();
+            }
+        }
+
+        /// <summary>
+        /// Select the folder exclusions for the pdf generator
+        /// </summary>
+        /// <param name="folderExclusions">List of forms to exclude</param>
+        public void SelectFolderExclusions(List<string> folderExclusions)
+        {
+            //Open Form Exclusions box if it isn't already open
+            IWebElement formsDiv = Browser.TryShowArea("Folders_div", "Folders_ShowHideBtn");
+            foreach (string folderToExclude in folderExclusions)
+            {
+                //get checkbox next to form and check it
+                formsDiv.TryFindElementBy(By.XPath(".//td[contains(text(), '" + folderToExclude.Trim() + "')]/../td/input")).EnhanceAs<Checkbox>().Check();
             }
         }
 

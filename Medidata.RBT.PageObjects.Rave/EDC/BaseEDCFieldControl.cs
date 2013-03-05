@@ -19,6 +19,11 @@ namespace Medidata.RBT.PageObjects.Rave
 		{
 		}
 
+         /// <summary>
+        /// Refresh the control on a page after a change has been made to invalidate it.
+        /// </summary>
+        public abstract void RefreshControl();
+
         public virtual bool HasDataEntered(string text)
         {
             return text.Equals(FieldControlContainer.Text);
@@ -315,6 +320,10 @@ namespace Medidata.RBT.PageObjects.Rave
 			return new AuditsPage();
 		}
 
+        public virtual void PlaceSticky(string responder, string text)
+        {
+            throw new NotImplementedException();
+        }
 
 		public virtual IWebElement FindQuery(QuerySearchModel filter)
 		{

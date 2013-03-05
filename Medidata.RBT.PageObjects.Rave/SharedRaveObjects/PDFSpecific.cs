@@ -14,7 +14,7 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
     /// <summary>
     ///This is a rave specific PDF object, it represents the rave level functionality of the pdf, such as the ability to be deleted.
     ///</summary>
-    public class PDFSpecific : Medidata.RBT.PDF, IRemoveableObject
+    public class PDFSpecific : Medidata.RBT.BaseEnhancedPDF, IRemoveableObject
     {
         public PDFSpecific(string name)
         {
