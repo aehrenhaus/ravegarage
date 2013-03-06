@@ -121,42 +121,5 @@ namespace Medidata.RBT.Features.Integration.Steps
 
             Assert.AreEqual(uuid, site.Uuid);
         }
-
-        [Then(@"I should see the site has audits in the Rave database")]
-        public void ThenIShouldSeeTheSiteHasAuditsInTheRaveDatabase()
-        {
-            var site = ScenarioContext.Current.Get<Site>("site");
-
-            Audits siteAudits = Audits.Load(site);
-            Assert.IsTrue(siteAudits.Count > 0);
-
-            ScenarioContext.Current.Add("siteAudits", siteAudits);
-        }
-
-        [Then(@"I should see the audits were performed by user ""(.*)""")]
-        public void ThenIShouldSeeTheAuditsWerePerformedBy____(string userType)
-        {
-            var siteAudits = ScenarioContext.Current.Get<Audits>("siteAudits");
-
-            Assert.AreEqual(siteAudits[siteAudits.Count - 1].AuditUser, userType);
-        }
-
-
-        [Then(@"I should see the audit action type ""(.*)""")]
-        public void ThenIShouldSeeTheAuditActionType____(string auditActionType)
-        {
-            var siteAudits = ScenarioContext.Current.Get<Audits>("siteAudits");
-
-            Assert.AreEqual(siteAudits[siteAudits.Count - 1].SubCategory.ToString(), auditActionType);
-        }
-
-        [Then(@"I should see the audit action ""(.*)""")]
-        public void ThenIShouldSeeTheAuditAction____(string auditAction)
-        {
-            var siteAudits = ScenarioContext.Current.Get<Audits>("siteAudits");
-
-            Assert.AreEqual(siteAudits[siteAudits.Count - 1].Readable, auditAction);
-        }
-
     }
 }

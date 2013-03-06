@@ -24,16 +24,41 @@ namespace Medidata.RBT.Features.Integration.Steps
             var study = Study.FindByUuid(uuid, 1, SystemInteraction.Use());
 
             Assert.IsNotNull(study);
-            ScenarioContext.Current.Add("study", study);
+            ScenarioContext.Current.Set(study, "study");
+        }
+
+        [Then(@"the study with ExternalId ""(.*)"" should not be in the Rave database")]
+        public void ThenTheStudyWithExternalId____ShouldNotBeInTheRaveDatabase(int externalId)
+        {
+            Assert.IsNull(Study.FindByExternalID(externalId, 1, SystemInteraction.Use()));
+        }
+
+        [Then(@"I should see a study named ""(.*)"" with environment ""(.*)"" and ExternalId ""(.*)"" in the Rave database")]
+        public void ThenIShouldSeeAStudyNamed____WithProjectName____Environment____AndExternalId____InTheRaveDatabase(string name, string environment, int externalId)
+        {
+            var study = Study.FindByExternalID(externalId, 1, SystemInteraction.Use());
+
+            Assert.IsNotNull(study);
+            Assert.AreEqual(study.Name, name);
+            Assert.AreEqual(study.Environment, environment);
         }
 
         [Then(@"the study should have Name ""(.*)""")]
-       public void ThenTheStudyShouldHaveName____(string name)
+        public void ThenTheStudyShouldHaveName____(string name)
         {
             var study = ScenarioContext.Current.Get<Study>("study");
 
             Assert.AreEqual(name, study.Name);
         }
+
+        [Then(@"the study should have Project Name ""(.*)""")]
+        public void ThenTheStudyShouldHaveProjectName____(string projectName)
+        {
+            var study = ScenarioContext.Current.Get<Study>("study");
+
+            Assert.AreEqual(projectName, study.Project.Name);
+        }
+
 
         [Then(@"the study should have Environment ""(.*)""")]
         public void ThenTheStudyShouldHaveEnvironment____(string environment)
@@ -75,5 +100,12 @@ namespace Medidata.RBT.Features.Integration.Steps
             Assert.AreEqual(externalId, study.ExternalID);
         }
 
+        [Then(@"the study should have EnrollmentTarget ""(.*)""")]
+        public void ThenTheStudyShouldHaveEnrollmentTarget____(int enrollmentTarget)
+        {
+            var study = ScenarioContext.Current.Get<Study>("study");
+            
+            Assert.AreEqual(enrollmentTarget, study.EnrollmentTarget);
+        }
     }
 }
