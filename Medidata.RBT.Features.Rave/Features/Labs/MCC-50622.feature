@@ -153,9 +153,8 @@ Scenario: PBMCC50622-002 verify Data Listing Report does not contain NULL values
 	And I take a screenshot
 	And I navigate to "Home"
 	And I navigate to "Reporter"
-	And I wait for 1 minute
+	And I wait for Clinical View refresh to complete for project "MCC-50622"
 	And I select Report "Data Listing"
-	And I wait for 1 minute
 	And I set report parameter "Study" with table
 		| Name      | Environment |
 		| MCC-50622 | Prod        |
@@ -261,7 +260,7 @@ Scenario: PBMCC50622-003 verify audit Trail does not contain extra activity and 
 	And I take a screenshot
 	And I navigate to "Home"
 	And I navigate to "Reporter"
-	And I wait for 1 minute
+	And I wait for Clinical View refresh to complete for project "MCC-50622"
 	And I select Report "Data Listing"
 	And I set report parameter "Study" with table
 		| Name      | Environment |
