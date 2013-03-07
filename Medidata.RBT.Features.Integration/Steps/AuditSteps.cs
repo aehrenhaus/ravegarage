@@ -35,6 +35,16 @@ namespace Medidata.RBT.Features.Integration.Steps
             ScenarioContext.Current.Set(audits, "audits");
         }
 
+        [Then(@"I should see the user has audits in the Rave database")]
+        public void ThenIShouldSeeTheUserHasAuditsInTheRaveDatabase()
+        {
+            var user = ScenarioContext.Current.Get<User>("user");
+
+            var audits = Audits.Load(user);
+            Assert.IsTrue(audits.Count > 0);
+
+            ScenarioContext.Current.Set(audits, "audits");
+        }
 
         [Then(@"I should see the audits were performed by user ""(.*)""")]
         public void ThenIShouldSeeTheAuditsWerePerformedBy____(string userType)

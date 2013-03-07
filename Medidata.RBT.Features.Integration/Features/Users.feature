@@ -31,3 +31,17 @@ Scenario: When a User message gets put onto the queue, and the user already exis
 	And the user should have Address3 "10003"
 	And the user should have Fax "444-555-6666"
 	And the user should have LastExternalUpdateDate "2012-10-12 12:00:00"
+
+@PB2.5.8.28-04B
+Scenario: Operations on studies, sites, studysites, users, study assignments, studysite assignments must be audited in the 'name' 
+          of the system user.
+	Given the User with login "testUser1" exists in the Rave database
+	And I send the following User message to SQS
+	| Email            | Login     | FirstName | LastName | Address1      | City     | State | PostalCode | Country | Telephone  | Locale | TimeZone  | Telephone  | Timestamp           |
+	| testUser@test.cx | testUser1 | Test      | User     | 79 5th Avenue | New York | NY    | 10003      | USA     | 1234567890 | eng    | New Delhi | 1234567890 | 2012-10-12 12:00:00 |
+	When the message is successfully processed
+	Then I should see the user in the Rave database
+	And I should see the user has audits in the Rave database
+	And I should see the audits were performed by user "System"
+	And I should see the audit action type "Created"
+	And I should see the audit action "User created."
