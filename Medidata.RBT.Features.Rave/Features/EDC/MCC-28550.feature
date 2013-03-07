@@ -2091,7 +2091,7 @@ Scenario: PBMCC28550-037 Verify Signature audit for each form after Signing on s
 	And I select a Subject "{Var(num37)}"
 	And I select link "Screening"
 	And I select link "Standard Form 1"
-	And I verify text "eSigFolder - Default User" exists 
+	And I verify text "Default User" exists 
    	And I take a screenshot
 	And I click audit on form level
 	Then I verify Audits exist
@@ -2114,7 +2114,7 @@ Scenario: PBMCC28550-037 Verify Signature audit for each form after Signing on s
 	And I select a Subject "{Var(num37)}"
 	And I select link "Screening"
 	And I select link "Log Form 1"
-	And I verify text "eSigFolder - Default User" exists 
+	And I verify text "Default User" exists 
    	And I take a screenshot
 	And I click audit on form level
 	Then I verify Audits exist
@@ -2138,7 +2138,7 @@ Scenario: PBMCC28550-037 Verify Signature audit for each form after Signing on s
 	And I select a Subject "{Var(num37)}"
 	And I select link "Screening"
 	And I select link "Mixed Form 1"
-	And I verify text "eSigFolder - Default User" exists 
+	And I verify text "Default User" exists 
    	And I take a screenshot
 	And I click audit on form level
 	Then I verify Audits exist
@@ -2496,7 +2496,7 @@ Scenario: PBMCC28550-038 Verify Signature audit for each form after Signing on s
 	And I select a Subject "{Var(num38)}"
 	And I select link "Screening"
 	And I select link "Standard Form 1"
-	And I verify text "eSigFolder - Default User" exists 
+	And I verify text "Default User" exists 
    	And I take a screenshot
 	And I click audit on form level
 	Then I verify Audits exist
@@ -2519,7 +2519,7 @@ Scenario: PBMCC28550-038 Verify Signature audit for each form after Signing on s
 	And I select a Subject "{Var(num38)}"
 	And I select link "Screening"
 	And I select link "Log Form 1"
-	And I verify text "eSigFolder - Default User" exists 
+	And I verify text "Default User" exists 
    	And I take a screenshot
 	And I click audit on form level
 	Then I verify Audits exist
@@ -2543,7 +2543,7 @@ Scenario: PBMCC28550-038 Verify Signature audit for each form after Signing on s
 	And I select a Subject "{Var(num38)}"
 	And I select link "Screening"
 	And I select link "Mixed Form 1"
-	And I verify text "eSigFolder - Default User" exists 
+	And I verify text "Default User" exists 
    	And I take a screenshot
 	And I click audit on form level
 	Then I verify Audits exist
@@ -2834,7 +2834,6 @@ Scenario: PBMCC28550-038 Verify Signature audit for each form after Signing on s
 		| Audit Type          | User                               | Time                 |
 		| Signature Succeeded | Default User ([id] - SUPER USER 1) | dd MMM yyyy HH:mm:ss |
 	And I take a screenshot
-
 	And I navigate to "Home"
 	And I select a Subject "{Var(num38)}"
 	And I select link "Lab Form"
