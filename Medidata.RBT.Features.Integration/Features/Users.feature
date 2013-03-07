@@ -7,7 +7,7 @@ Scenario: When a User message gets put onto the queue, and the user already exis
 	Given the User with login "testUser" exists in the Rave database
 	And I send the following User message to SQS
 
-	| Email            | Login    | FirstName | MiddleName | LastName | Address1      | City     | State | PostalCode | Country | Telephone  | Locale | TimeZone  | Title | Address2     | Address3 | Institution        | Telephone    | Fax          | Timestamp           |
+	| Email            | Login    | FirstName | MiddleName | LastName | Address1      | City     | State | PostalCode | Country | Telephone  | Locale | TimeZone  | Title | Address2     | Address3 | Institution        | Telephone  | Fax          | Timestamp           |
 	| testUser@test.cx | testUser | Test      | J          | User     | 79 5th Avenue | New York | NY    | 10003      | USA     | 1234567890 | eng    | New Delhi | Lord  | New York, NY | 10003    | Beekman University | 1234567890 | 444-555-6666 | 2012-10-12 12:00:00 |
 
 	When the message is successfully processed
