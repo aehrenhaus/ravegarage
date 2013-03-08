@@ -33,8 +33,11 @@ namespace Medidata.RBT.PageObjects.Rave
 				int countToCheckThisTime = Math.Min(checks.Count - 1, num - selectedCount);
 				for(int i =1;i<=countToCheckThisTime;i++)
 					checks[i].Check();
-				this.ClickLink("Include Subjects");
-				Browser.GetAlertWindow().Accept();
+				
+                IWebElement includeSubElem = Browser.TryFindElementByLinkText("Include Subjects");
+                includeSubElem.Click(); //cannot call clicklink as wait for document to load can hang due to alert window.
+
+                Browser.GetAlertWindow().Accept();
 				selectedCount += countToCheckThisTime;
 
 				Browser.WaitForDocumentLoad();
