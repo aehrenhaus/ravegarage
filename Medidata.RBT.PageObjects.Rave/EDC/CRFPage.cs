@@ -306,6 +306,7 @@ namespace Medidata.RBT.PageObjects.Rave
         {
             Dropdown dropDown = Browser.DropdownById("LOC_DropDown");
             dropDown.SelectByText(labName);
+            WaitForPageLoads();
         }
 
 
