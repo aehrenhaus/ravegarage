@@ -119,7 +119,7 @@ namespace Medidata.RBT.PageObjects.Rave
             {
                 SearchBox.EnhanceAs<Textbox>().SetText(subjectName);
                 SearchButton.Click();
-                return new SubjectPage();
+                return this.WaitForPageLoads() as SubjectPage;
             }
             throw new Exception("Subject name cannot be null");
         }
