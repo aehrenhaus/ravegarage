@@ -748,7 +748,13 @@ namespace Medidata.RBT.Features.Rave
         [StepDefinition(@"I click drop button on dynamic search list ""([^""]*)""")]
         public void IClickDropButtonOnDynamicSearchList____(string fieldName)
         {
-            if (CurrentPage is CRFPage)
+            if (CurrentPage is DDEPage)
+            {
+                RavePageBase page = CurrentPage.As<DDEPage>();
+                //IEDCFieldControl fieldControl = page.;
+                //fieldControl.Click();
+            }
+            else if (CurrentPage is CRFPage)
             {
                 CRFPage page = CurrentPage.As<CRFPage>();
                 IEDCFieldControl fieldControl = page.FindField(fieldName);
@@ -756,7 +762,7 @@ namespace Medidata.RBT.Features.Rave
             }
             else
             {
-                throw new Exception(String.Format("Method IClickDropButtonOnDynamicSearchList____(string fieldName) is not implemented for page {0}", CurrentPage.GetType().Name));
+                throw new Exception("Not supported other pages");
             }
         }
 
@@ -797,7 +803,11 @@ namespace Medidata.RBT.Features.Rave
         {
             bool result = false;
 
-            if (CurrentPage is CRFPage)
+            if (CurrentPage is DDEPage)
+            {
+                RavePageBase page = CurrentPage.As<DDEPage>();
+            }
+            else if (CurrentPage is CRFPage)
             {
                 CRFPage page = CurrentPage.As<CRFPage>();
                 IEDCFieldControl fieldControl = page.FindField(fieldName);
@@ -805,7 +815,7 @@ namespace Medidata.RBT.Features.Rave
             }
             else
             {
-                throw new Exception(String.Format("Method ThenIShouldSeeDynamicSearchList____Open(string fieldName) is not implemented for page {0}", CurrentPage.GetType().Name));
+                throw new Exception("Not supported other pages");
             }
             Assert.IsTrue(result, String.Format("The dynamic search list {0} has not been opened", fieldName));
         }

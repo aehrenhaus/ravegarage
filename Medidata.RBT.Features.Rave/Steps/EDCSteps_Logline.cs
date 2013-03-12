@@ -52,6 +52,18 @@ namespace Medidata.RBT.Features.Rave
         /// </summary>
         /// <param name="line"></param>
         /// <param name="table"></param>
+        [StepDefinition(@"I enter data in CRF on log line (\d+)")]
+        public void IEnterDataInCRFOnLogLine____(int line, Table table)
+        {
+            IOpenLogLine____(line);
+            IEnterDataInCRF(table);
+        }
+
+        /// <summary>
+        /// line# enter save
+        /// </summary>
+        /// <param name="line"></param>
+        /// <param name="table"></param>
 		[StepDefinition(@"I enter data in CRF on log line (\d+) and save")]
 		public void IEnterDataInCRFOnLogLine____AndSave(int line, Table table)
 		{
