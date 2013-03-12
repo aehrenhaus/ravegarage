@@ -715,6 +715,31 @@ namespace Medidata.RBT.Features.Rave
         }
 
         /// <summary>
+        /// Click drop button on a standard field on CRF page
+        /// </summary>
+        /// <param name="fieldName"></param>
+        [StepDefinition(@"I click drop button on dynamic search list ""([^""]*)""")]
+        public void IClickDropButtonOnDynamicSearchList____(string fieldName)
+        {
+            if (CurrentPage is DDEPage)
+            {
+                RavePageBase page = CurrentPage.As<DDEPage>();
+                //IEDCFieldControl fieldControl = page.;
+                //fieldControl.Click();
+            }
+            else if (CurrentPage is CRFPage)
+            {
+                CRFPage page = CurrentPage.As<CRFPage>();
+                IEDCFieldControl fieldControl = page.FindField(fieldName);
+                fieldControl.FieldControlContainer.TryFindElementBy(By.ClassName("SearchList_DropButton")).Click();
+            }
+            else
+            {
+                throw new Exception("Not supported other pages");
+            }
+        }
+
+        /// <summary>
         /// Verifies that dynamic search list is open
         /// </summary>
         /// <param name="fieldName"></param>
@@ -746,9 +771,35 @@ namespace Medidata.RBT.Features.Rave
             Assert.IsTrue(result, String.Format("The dynamic search list {0} in log line {1} has not been opened", fieldName, lineNum));
         }
 
+        /// <summary>
+        /// Verifies that dynamic search list is open on a standard field
+        /// </summary>
+        /// <param name="fieldName"></param>
+        [Then(@"I should see dynamic search list ""([^""]*)"" open")]
+        public void ThenIShouldSeeDynamicSearchList____Open(string fieldName)
+        {
+            bool result = false;
+
+            if (CurrentPage is DDEPage)
+            {
+                RavePageBase page = CurrentPage.As<DDEPage>();
+            }
+            else if (CurrentPage is CRFPage)
+            {
+                CRFPage page = CurrentPage.As<CRFPage>();
+                IEDCFieldControl fieldControl = page.FindField(fieldName);
+                result = fieldControl.FieldControlContainer.TryFindElementBy(By.ClassName("SearchList_PickListBox")).Displayed;
+            }
+            else
+            {
+                throw new Exception("Not supported other pages");
+            }
+            Assert.IsTrue(result, String.Format("The dynamic search list {0} has not been opened", fieldName));
+        }
+
 
         /// <summary>
-        /// Enter data on dynamic search list adverse event grade in log line.
+        /// Enter data on dynamic search list in log line.
         /// </summary>
         /// <param name="data">The data.</param>
         /// <param name="fieldName">Name of the field.</param>
@@ -758,6 +809,20 @@ namespace Medidata.RBT.Features.Rave
         {
             var controlType = ControlType.DynamicSearchList;
             IEDCFieldControl fieldControl = CurrentPage.As<CRFPage>().FindLandscapeLogField(fieldName, lineNum, controlType);
+            fieldControl.EnterData(data, controlType);
+        }
+
+        /// <summary>
+        /// Enter data to dynamic search list on a standard field
+        /// </summary>
+        /// <param name="data">The data.</param>
+        /// <param name="fieldName">Name of the field.</param>
+        [StepDefinition(@"I enter ""([^""]*)"" on dynamic search list ""([^""]*)""")]
+        public void WhenIEnter__OnDynamicSearchList__(string data, string fieldName)
+        {
+            var controlType = ControlType.DynamicSearchList;
+            CRFPage page = CurrentPage.As<CRFPage>();
+            IEDCFieldControl fieldControl = page.FindField(fieldName);
             fieldControl.EnterData(data, controlType);
         }
 
