@@ -23,8 +23,20 @@ namespace Medidata.RBT.Utilities
     /// Helper class to manage pdf operations, these should NOT be rave-specific.
     /// Other pdf operations should be in BasePDFManagement
     /// </summary>
-    public static class BasePDFManagement
+    public sealed class BasePDFManagement
     {
+        private static readonly Lazy<BasePDFManagement> m_Instance = new Lazy<BasePDFManagement>(() => new BasePDFManagement());
+
+        private BasePDFManagement() { }
+
+        public static BasePDFManagement Instance
+        {
+            get
+            {
+                return m_Instance.Value;
+            }
+        }
+
         public const int POINTS_IN_AN_INCH = 72;
         /// <summary>
         /// Find the x or y distance between two strings
@@ -34,7 +46,7 @@ namespace Medidata.RBT.Utilities
         /// <param name="stringToFind2">The second string to compare</param>
         /// <param name="page">The page on which to search for the strings</param>
         /// <returns>The distance between the two strings on either the "x" or "y" plane</returns>
-        public static double DistanceBetweenText(string xOrYCoodinates, string stringToFind1, string stringToFind2, BaseEnhancedPDFPage page)
+        public double DistanceBetweenText(string xOrYCoodinates, string stringToFind1, string stringToFind2, BaseEnhancedPDFPage page)
         {
             BaseEnhancedPDFSearchTextResult searchTextResult1 = FirstEnhancedPDFSearchTextResult(page.BasePage, stringToFind1);
             BaseEnhancedPDFSearchTextResult searchTextResult2 = FirstEnhancedPDFSearchTextResult(page.BasePage, stringToFind2);
@@ -60,7 +72,7 @@ namespace Medidata.RBT.Utilities
         /// <param name="page">The page to search for the string</param>
         /// <param name="stringToFind">The string to search for</param>
         /// <returns>The first BaseEnhancedPDFSearchTextResult when searching for the string</returns>
-        public static BaseEnhancedPDFSearchTextResult FirstEnhancedPDFSearchTextResult(PDFImportedPage page, string stringToFind)
+        public BaseEnhancedPDFSearchTextResult FirstEnhancedPDFSearchTextResult(PDFImportedPage page, string stringToFind)
         {
             List<BaseEnhancedPDFSearchTextResult> pdfSearchTextResults = page.SearchText(stringToFind).ToList().ConvertAll(x => new BaseEnhancedPDFSearchTextResult(x));
             if (pdfSearchTextResults == null)
@@ -90,7 +102,7 @@ namespace Medidata.RBT.Utilities
         /// <param name="pdf">The current BaseEnhancedPDF</param>
         /// <param name="pageSize">The expected pageSize</param>
         /// <returns>An error message if something doesn't match the expected value, null if there is no issues</returns>
-        public static string VerifyPDFProperties(
+        public string VerifyPDFProperties(
             RBT.BaseEnhancedPDF pdf,
             string pageSize
             )
@@ -112,7 +124,7 @@ namespace Medidata.RBT.Utilities
         /// Basically somewhere in the depth first search underneath the parent bookmark.</param>
         /// <param name="directChild">If true, the bookmark in the table must be a child of the parent bookmark. Cannot be a grandchild or more.</param>
         /// <returns></returns>
-        public static bool VerifyBookmarks(
+        public bool VerifyBookmarks(
             RBT.BaseEnhancedPDF pdf,
             Table table, 
             bool shouldContainBookmarks,
@@ -150,7 +162,7 @@ namespace Medidata.RBT.Utilities
         /// <param name="imageName">The name of the image, should be in the Images folder</param>
         /// <param name="pageName">The name of the page to look in</param>
         /// <returns>True if the image exists on the page, false if it does not</returns>
-        public static bool VerifyImageExists(RBT.BaseEnhancedPDF pdf, string imageName, string pageName)
+        public bool VerifyImageExists(RBT.BaseEnhancedPDF pdf, string imageName, string pageName)
         {
             Image imageInImageFolder = null;
             using (FileStream fs = new FileStream(RBTConfiguration.Default.UploadPath + @"\Images\" + imageName, FileMode.Open))
@@ -186,7 +198,7 @@ namespace Medidata.RBT.Utilities
         /// <param name="pdf">The pdf to search</param>
         /// <param name="bookmarkText">The bookmark to check its child bookmarks</param>
         /// <returns>True if the bookmark has no child bookmarks, false if it has child bookmarks</returns>
-        public static bool BookmarkHasNoChildren(RBT.BaseEnhancedPDF pdf, string bookmarkText)
+        public bool BookmarkHasNoChildren(RBT.BaseEnhancedPDF pdf, string bookmarkText)
         {
             PDFBookmarkCollection pdfBookmarkCollection = pdf.FirstMatchingBookmarkNodeInBookmarkCollection(bookmarkText).Bookmarks;
             return (pdfBookmarkCollection == null || pdfBookmarkCollection.Count == 0);
@@ -200,7 +212,7 @@ namespace Medidata.RBT.Utilities
         /// <param name="linkSourcePage">The page the link is on</param>
         /// <param name="linkTargetPage">The page the link goes to</param>
         /// <returns>True if it goes to the target page, false if it does not</returns>
-        public static bool VerifyLinkGoesToPage(RBT.BaseEnhancedPDF pdf, string linkText, string linkSourcePage, string linkTargetPage)
+        public bool VerifyLinkGoesToPage(RBT.BaseEnhancedPDF pdf, string linkText, string linkSourcePage, string linkTargetPage)
         {
             BaseEnhancedPDFPage sourcePage = GetPageFromFirstMatchingBookmark(pdf, linkSourcePage);
 
@@ -235,7 +247,7 @@ namespace Medidata.RBT.Utilities
         /// <param name="pdf">The pdf to search</param>
         /// <param name="bookmarkText">The text of the bookmark in the tree</param>
         /// <returns>The page where the bookmark goes to</returns>
-        public static BaseEnhancedPDFPage GetPageFromFirstMatchingBookmark(RBT.BaseEnhancedPDF pdf, string bookmarkText)
+        public BaseEnhancedPDFPage GetPageFromFirstMatchingBookmark(RBT.BaseEnhancedPDF pdf, string bookmarkText)
         {
             PDFBookmark bookmarkMatchingText = pdf.FirstMatchingBookmarkNodeInBookmarkCollection(bookmarkText);
             return new BaseEnhancedPDFPage(((PDFImportedPage)((PDFGoToAction)bookmarkMatchingText.Action).Destination.Page));
@@ -247,7 +259,7 @@ namespace Medidata.RBT.Utilities
         /// <param name="pdfRectangle1">The first rectangle</param>
         /// <param name="pdfRectangle2">The second rectangle</param>
         /// <returns>True if the two rectangles overlap, false if they do not</returns>
-        public static bool AreasOverlap(PDFRectangle pdfRectangle1, PDFRectangle pdfRectangle2)
+        public bool AreasOverlap(PDFRectangle pdfRectangle1, PDFRectangle pdfRectangle2)
         {
             //Losing precision here in the conversion from double to int be careful!
             DoubleRectangle doubleRectangle1 = new DoubleRectangle(
@@ -269,7 +281,7 @@ namespace Medidata.RBT.Utilities
         /// <param name="systemRectangle">The first rectangle</param>
         /// <param name="pdfRectangle">The second rectangle</param>
         /// <returns>True if the two rectangles overlap, false if they do not</returns>
-        public static bool AreasOverlap(System.Drawing.Rectangle systemRectangle, PDFRectangle pdfRectangle)
+        public bool AreasOverlap(System.Drawing.Rectangle systemRectangle, PDFRectangle pdfRectangle)
         {
             //Losing precision here in the conversion from double to int be careful!
             DoubleRectangle linkRectangle = new DoubleRectangle(
@@ -294,7 +306,7 @@ namespace Medidata.RBT.Utilities
         /// <param name="exists">True if the text should exist in the pdf, false if it should not</param>
         /// <param name="pageName">Use when you want to search a specific page, not the entire PDF</param>
         /// <returns>An error message if the any of the strings are not on the page. Null if there are no error messages.</returns>
-        public static string VerifyPDFText(
+        public string VerifyPDFText(
             BaseEnhancedPDF pdf, 
             List<GenericDataModel<string>> stringsToSearchFor, 
             bool exists, 
@@ -323,7 +335,7 @@ namespace Medidata.RBT.Utilities
         /// <param name="pageName">The name of the page to search for the text on</param>
         /// <param name="bold">The text searched for is bold</param>
         /// <returns>An error message if the text is not on the page. Null if there are no error messages.</returns>
-        public static string VerifyText(
+        public string VerifyText(
             RBT.BaseEnhancedPDF pdf,
             string text,
             bool exists,
@@ -360,7 +372,7 @@ namespace Medidata.RBT.Utilities
         /// <param name="leftMargin">The size of the left margin of the page</param>
         /// <param name="rightMargin">The size of the right margin of the page</param>
         /// <returns>An error message corresponding to the issue with the pdf, or null if there are no errors</returns>
-        public static string VerifyPageProperties(
+        public string VerifyPageProperties(
             RBT.BaseEnhancedPDF pdf,
             string pageName,
             string font,
@@ -394,12 +406,45 @@ namespace Medidata.RBT.Utilities
         /// <param name="pdf">The pdf to get the text from</param>
         /// <param name="pageName">The page to get the text from</param>
         /// <returns>The text on the pdf or pdf page if pageName was not null</returns>
-        public static string GetPDFText(RBT.BaseEnhancedPDF pdf, string pageName = null)
+        public string GetPDFText(RBT.BaseEnhancedPDF pdf, string pageName = null)
         {
             if (!String.IsNullOrEmpty(pageName))
                 return GetPageFromFirstMatchingBookmark(pdf, pageName).Text;
 
             return pdf.Text;
+        }
+
+        /// <summary>
+        /// Verify if text exists in a certain area of a page (useful to check the footer)
+        /// </summary>
+        /// <param name="page">The page to verify</param>
+        /// <param name="textToSearchFor">The text to search for</param>
+        /// <param name="areaToSearch">The area of the page to search</param>
+        /// <returns></returns>
+        public bool TextExistsInArea(BaseEnhancedPDFPage page, string textToSearchFor, string areaToSearch)
+        {
+            PDFSearchTextResultCollection matchingTextOnPage = page.BasePage.SearchText(textToSearchFor);
+            bool textResultOverlaps = false;
+
+            Rectangle? pageArea = null;
+            if (areaToSearch.Equals("BottomRight"))
+                pageArea = page.BottomRightOfPage;
+            if (areaToSearch.Equals("BottomLeft"))
+                pageArea = page.BottomLeftOfPage;
+
+            foreach (PDFSearchTextResult pdfSearchTextResult in matchingTextOnPage)
+            {
+                foreach (PDFTextRun textMatch in pdfSearchTextResult.TextRuns)
+                {
+                    if (BasePDFManagement.Instance.AreasOverlap(pageArea.Value, textMatch.PDFBounds))
+                    {
+                        textResultOverlaps = true;
+                        break;
+                    }
+                }
+            }
+
+            return textResultOverlaps;
         }
     }
 }

@@ -5,15 +5,27 @@ using System.Text;
 
 namespace Medidata.RBT.PageObjects.Rave.Audits
 {
-    public static class AuditManagement
+    public sealed class AuditManagement
     {
+        private static readonly AuditManagement m_instance = new AuditManagement();
+
+        private AuditManagement() { }
+
+        public static AuditManagement Instance
+        {
+            get
+            {
+                return m_instance;
+            }
+        }
+
         /// <summary>
         /// Get the audit message to look for by the audit type and the query information
         /// </summary>
         /// <param name="auditType">The type of the audit made</param>
         /// <param name="auditQueryMessage">The information included in the audit</param>
         /// <returns>The audit message that is created using these pieces of information</returns>
-        public static string GetAuditMessage(
+        public string GetAuditMessage(
             string auditType,
             string auditQueryMessage
             )

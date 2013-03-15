@@ -24,8 +24,20 @@ namespace Medidata.RBT.Utilities
     /// Helper class to manage pdf operations, these should be rave-specific.
     /// Other pdf operations should be in BasePDFManagement
     /// </summary>
-    public static class PDFManagement
+    public sealed class PDFManagement
     {
+        private static readonly Lazy<PDFManagement> m_Instance = new Lazy<PDFManagement>(() => new PDFManagement());
+
+        private PDFManagement() { }
+
+        public static PDFManagement Instance
+        {
+            get
+            {
+                return m_Instance.Value;
+            }
+        }
+
         /// <summary>
         /// Verify properties on the pdf
         /// </summary>
@@ -35,7 +47,7 @@ namespace Medidata.RBT.Utilities
         /// <param name="sites">The sites, located on the cover page of the pdf</param>
         /// <param name="pageSize">The default page size for the pdf</param>
         /// <returns>An error message corresponding to the issue with the pdf, or null if there are no errors</returns>
-        public static string VerifyPDFProperties(
+        public string VerifyPDFProperties(
             RBT.EnhancedPDF pdf,
             string study,
             string locale,
@@ -53,7 +65,7 @@ namespace Medidata.RBT.Utilities
                     if (!pdf.Sites.ToString().Contains(site))
                         return "Sites groups and sites don't match pdf";
             }
-            string baseRet = BasePDFManagement.VerifyPDFProperties(pdf, pageSize);
+            string baseRet = BasePDFManagement.Instance.VerifyPDFProperties(pdf, pageSize);
             if (!String.IsNullOrEmpty(baseRet))
                 return baseRet;
             else
@@ -66,9 +78,9 @@ namespace Medidata.RBT.Utilities
         /// <param name="page">The page to verify</param>
         /// <param name="crfVersion">The expected CRFVersion</param>
         /// <returns>True if it is matches the expected version and exists in the bottom left of the page, false if not</returns>
-        public static bool VerifyCRFVersion(BaseEnhancedPDFPage page, string crfVersion)
+        public bool VerifyCRFVersion(BaseEnhancedPDFPage page, string crfVersion)
         {
-            return TextExistsInArea(page, crfVersion, "BottomLeft");
+            return BasePDFManagement.Instance.TextExistsInArea(page, crfVersion, "BottomLeft");
         }
 
         /// <summary>
@@ -77,43 +89,11 @@ namespace Medidata.RBT.Utilities
         /// <param name="page">The page to verify</param>
         /// <param name="crfVersion">The expected page number</param>
         /// <returns>True if it is matches the expected page number and exists in the bottom right of the page, false if not</returns>
-        public static bool VerifyPageNumber(BaseEnhancedPDFPage page, string pageNumber)
+        public bool VerifyPageNumber(BaseEnhancedPDFPage page, string pageNumber)
         {
-            return TextExistsInArea(page, pageNumber, "BottomRight");
+            return BasePDFManagement.Instance.TextExistsInArea(page, pageNumber, "BottomRight");
         }
 
-        /// <summary>
-        /// Verify if text exists in a certain area of a page (useful to check the footer)
-        /// </summary>
-        /// <param name="page">The page to verify</param>
-        /// <param name="textToSearchFor">The text to search for</param>
-        /// <param name="areaToSearch">The area of the page to search</param>
-        /// <returns></returns>
-        public static bool TextExistsInArea(BaseEnhancedPDFPage page, string textToSearchFor, string areaToSearch)
-        {
-            PDFSearchTextResultCollection matchingTextOnPage = page.BasePage.SearchText(textToSearchFor);
-            bool textResultOverlaps = false;
-
-            Rectangle? pageArea = null;
-            if (areaToSearch.Equals("BottomRight"))
-                pageArea = page.BottomRightOfPage;
-            if (areaToSearch.Equals("BottomLeft"))
-                pageArea = page.BottomLeftOfPage;
-
-            foreach (PDFSearchTextResult pdfSearchTextResult in matchingTextOnPage)
-            {
-                foreach (PDFTextRun textMatch in pdfSearchTextResult.TextRuns)
-                {
-                    if (BasePDFManagement.AreasOverlap(pageArea.Value, textMatch.PDFBounds))
-                    {
-                        textResultOverlaps = true;
-                        break;
-                    }
-                }
-            }
-
-            return textResultOverlaps;
-        }
         /// <summary>
         /// Get the first page object that matches the passed in bookmark text. 
         /// Does a depth-first search on the bookmark tree to accomplish that.
@@ -121,7 +101,7 @@ namespace Medidata.RBT.Utilities
         /// <param name="pdf">The pdf to look through</param>
         /// <param name="bookmarkText">The text of the bookmark</param>
         /// <returns>The page linked to by the bookmark</returns>
-        public static EnhancedPDFPage GetPageFromFirstMatchingBookmark(RBT.EnhancedPDF pdf, string bookmarkText)
+        public EnhancedPDFPage GetPageFromFirstMatchingBookmark(RBT.EnhancedPDF pdf, string bookmarkText)
         {
             PDFBookmark bookmarkMatchingText = pdf.FirstMatchingBookmarkNodeInBookmarkCollection(bookmarkText);
             return pdf.Pages.FirstOrDefault(x => x.BasePage == ((PDFImportedPage)((PDFGoToAction)bookmarkMatchingText.Action).Destination.Page));
@@ -137,8 +117,10 @@ namespace Medidata.RBT.Utilities
         /// <param name="user">The user who made the audit</param>
         /// <param name="position">The position of the audit in the list of audits</param>
         /// <returns></returns>
-        public static bool VerifyAuditExists(EnhancedPDFPage page, string auditType, string queryMessage, string timeFormat, string user, int? position)
+        public bool VerifyAuditExists(EnhancedPDFPage page, string auditType, string queryMessage, string timeFormat, string user, int? position)
         {
+            if (user == null)
+                throw new Exception("Audit user cannot be null!");
             string name = user.Split('(').FirstOrDefault().TrimEnd(' ');
             string userLoginNonUnique = user.Split('-')[1].Trim().TrimEnd(')');
             string uniqueName = SeedingContext.GetExistingFeatureObjectOrMakeNew<User>(userLoginNonUnique, null).UniqueName;
@@ -147,7 +129,7 @@ namespace Medidata.RBT.Utilities
             if (!page.UsersRegex.Contains(userRegex))
                 page.UsersRegex.Add(userRegex);
             page.TimeFormat = timeFormat;
-            return page.AuditExist(AuditManagement.GetAuditMessage(auditType, queryMessage), userRegex, timeFormat, position);
+            return page.AuditExist(AuditManagement.Instance.GetAuditMessage(auditType, queryMessage), userRegex, timeFormat, position);
         }
 
         /// <summary>
@@ -166,7 +148,7 @@ namespace Medidata.RBT.Utilities
         /// <param name="folder">The folder the form exists in (this information is in the header)</param>
         /// <param name="crfVersion">The crf version (this information is in the footer)</param>
         /// <returns>An error message corresponding to the issue with the pdf, or null if there are no errors</returns>
-        public static string VerifyPageProperties(
+        public string VerifyPageProperties(
             RBT.EnhancedPDF pdf,
             string pageName,
             string font,
@@ -183,17 +165,17 @@ namespace Medidata.RBT.Utilities
         {
             EnhancedPDFPage page = GetPageFromFirstMatchingBookmark(pdf, pageName);
 
-            string baseRet = BasePDFManagement.VerifyPageProperties(pdf, pageName, font, fontSize, topMargin, bottomMargin, leftMargin, rightMargin);
+            string baseRet = BasePDFManagement.Instance.VerifyPageProperties(pdf, pageName, font, fontSize, topMargin, bottomMargin, leftMargin, rightMargin);
             if (!String.IsNullOrEmpty(baseRet))
                 return baseRet;
             
-            if (!String.IsNullOrEmpty(pageNumber) && !PDFManagement.VerifyPageNumber(page, pageNumber))
+            if (!String.IsNullOrEmpty(pageNumber) && !VerifyPageNumber(page, pageNumber))
                 return "Page number does not exist on the page in the page number area.";
             if (generatedOn != null && DateTime.Parse(page.GeneratedOnString).ToString(generatedOn) != page.GeneratedOnString)
                 return "Generated on does not exist or does not match format";
             if (folder != null && folder != page.Folder)
                 return "Folder does not exist or does not match passed in folder name";
-            if (crfVersion != null && !PDFManagement.VerifyCRFVersion(page, crfVersion))
+            if (crfVersion != null && !VerifyCRFVersion(page, crfVersion))
                 return "CRF Version does not match page CRF Version";
 
             return null;

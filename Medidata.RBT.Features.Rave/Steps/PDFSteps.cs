@@ -144,7 +144,7 @@ namespace Medidata.RBT.Features.Rave
         [StepDefinition(@"I verify the PDF text contains")]
         public void IVerifyThePDFTextContains(Table table)
         {
-            string error = BasePDFManagement.VerifyPDFText(WebTestContext.LastLoadedPDF, table.CreateSet<GenericDataModel<string>>().ToList(), true);
+            string error = BasePDFManagement.Instance.VerifyPDFText(WebTestContext.LastLoadedPDF, table.CreateSet<GenericDataModel<string>>().ToList(), true);
             Assert.IsNull(error, error); 
         }
 
@@ -155,7 +155,7 @@ namespace Medidata.RBT.Features.Rave
         [StepDefinition(@"I verify the PDF text does not contain")]
         public void IVerifyThePDFTextDoesNotContain(Table table)
         {
-            string error = BasePDFManagement.VerifyPDFText(WebTestContext.LastLoadedPDF, table.CreateSet<GenericDataModel<string>>().ToList(), false);
+            string error = BasePDFManagement.Instance.VerifyPDFText(WebTestContext.LastLoadedPDF, table.CreateSet<GenericDataModel<string>>().ToList(), false);
             Assert.IsNull(error, error); 
         }
         
@@ -169,7 +169,7 @@ namespace Medidata.RBT.Features.Rave
         public void ThenIVerifyImage____ExitsOnPDFPage____(string imageName, string pageName)
         {
             Assert.IsTrue(
-                BasePDFManagement.VerifyImageExists(WebTestContext.LastLoadedPDF, imageName, SpecialStringHelper.Replace(pageName)), 
+                BasePDFManagement.Instance.VerifyImageExists(WebTestContext.LastLoadedPDF, imageName, SpecialStringHelper.Replace(pageName)), 
                 String.Format("Image {0} not on page {1}.", imageName, pageName));
         }
 
@@ -180,7 +180,7 @@ namespace Medidata.RBT.Features.Rave
         [StepDefinition(@"I verify PDF bookmarks don't exist")]
         public void ThenIVerifyPDFBookmarksDontContain(Table bookmarkText)
         {
-            Assert.IsTrue(BasePDFManagement.VerifyBookmarks(WebTestContext.LastLoadedPDF, SpecialStringHelper.ReplaceTableColumn(bookmarkText, "Bookmark Text"), false));
+            Assert.IsTrue(BasePDFManagement.Instance.VerifyBookmarks(WebTestContext.LastLoadedPDF, SpecialStringHelper.ReplaceTableColumn(bookmarkText, "Bookmark Text"), false));
         }
 
         /// <summary>
@@ -190,7 +190,7 @@ namespace Medidata.RBT.Features.Rave
         [StepDefinition(@"I verify PDF bookmarks exist")]
         public void IVerifyPDFBookmarksExist(Table bookmarkText)
         {
-            Assert.IsTrue(BasePDFManagement.VerifyBookmarks(WebTestContext.LastLoadedPDF, SpecialStringHelper.ReplaceTableColumn(bookmarkText, "Bookmark Text"), true));
+            Assert.IsTrue(BasePDFManagement.Instance.VerifyBookmarks(WebTestContext.LastLoadedPDF, SpecialStringHelper.ReplaceTableColumn(bookmarkText, "Bookmark Text"), true));
         }
 
         /// <summary>
@@ -202,7 +202,7 @@ namespace Medidata.RBT.Features.Rave
         [StepDefinition(@"I verify PDF bookmarks exist somewhere under parent bookmark ""([^""]*)""")]
         public void IVerifyPDFBookmarksExistSomewhereUnderParentBookmark____(string parentBookmark, Table bookmarkText)
         {
-            Assert.IsTrue(BasePDFManagement.VerifyBookmarks(WebTestContext.LastLoadedPDF, SpecialStringHelper.ReplaceTableColumn(bookmarkText, "Bookmark Text"), true, parentBookmark));
+            Assert.IsTrue(BasePDFManagement.Instance.VerifyBookmarks(WebTestContext.LastLoadedPDF, SpecialStringHelper.ReplaceTableColumn(bookmarkText, "Bookmark Text"), true, parentBookmark));
         }
 
         /// <summary>
@@ -215,7 +215,7 @@ namespace Medidata.RBT.Features.Rave
         public void IVerifyPDFBookmarksExistDirectlyUnderParentBookmark____(string parentBookmark, Table bookmarkText)
         {
             Assert.IsTrue(
-                BasePDFManagement.VerifyBookmarks(
+                BasePDFManagement.Instance.VerifyBookmarks(
                 WebTestContext.LastLoadedPDF, 
                 SpecialStringHelper.ReplaceTableColumn(bookmarkText, "Bookmark Text"), 
                 true, 
@@ -234,7 +234,7 @@ namespace Medidata.RBT.Features.Rave
         public void IVerifyPDFBookmarksExistDirectlyUnderParentBookmark____InTheFollowingOrder(string parentBookmark, Table bookmarkText)
         {
             Assert.IsTrue(
-                BasePDFManagement.VerifyBookmarks(
+                BasePDFManagement.Instance.VerifyBookmarks(
                 WebTestContext.LastLoadedPDF,
                 SpecialStringHelper.ReplaceTableColumn(bookmarkText, "Bookmark Text"),
                 true,
@@ -252,7 +252,7 @@ namespace Medidata.RBT.Features.Rave
         public void ThenIVerifyPDFBookmarksDonTExistUnderBookmark____(string bookmarkName)
         {
             Assert.IsTrue(
-                BasePDFManagement.BookmarkHasNoChildren(WebTestContext.LastLoadedPDF, SpecialStringHelper.Replace(bookmarkName))
+                BasePDFManagement.Instance.BookmarkHasNoChildren(WebTestContext.LastLoadedPDF, SpecialStringHelper.Replace(bookmarkName))
                 );
         }
 
@@ -265,7 +265,7 @@ namespace Medidata.RBT.Features.Rave
         [StepDefinition(@"I verify link ""(.*)"" on page ""(.*)"" goes to page ""(.*)""")]
         public void ThenIVerifyLink____OnPage____GoesToPage____(string linkText, string linkSourcePage, string linkDestinationPage)
         {
-            Assert.IsTrue(BasePDFManagement.VerifyLinkGoesToPage(WebTestContext.LastLoadedPDF, linkText, linkSourcePage, linkDestinationPage));
+            Assert.IsTrue(BasePDFManagement.Instance.VerifyLinkGoesToPage(WebTestContext.LastLoadedPDF, linkText, linkSourcePage, linkDestinationPage));
         }
 
         /// <summary>
@@ -281,7 +281,7 @@ namespace Medidata.RBT.Features.Rave
                 sites[i] = SeedingContext.GetExistingFeatureObjectOrMakeNew<Site>(sites[i], null).UniqueName;
 
 
-            string errorMessage = PDFManagement.VerifyPDFProperties(EnhancedPDF.ConvertToEnhancedPDF(WebTestContext.LastLoadedPDF),
+            string errorMessage = PDFManagement.Instance.VerifyPDFProperties(EnhancedPDF.ConvertToEnhancedPDF(WebTestContext.LastLoadedPDF),
                 args.Study != null ? SeedingContext.GetExistingFeatureObjectOrMakeNew<Project>(args.Study, null).UniqueName : null,
                 args.Locale,
                 args.Sites != null ? sites : null,
@@ -299,7 +299,7 @@ namespace Medidata.RBT.Features.Rave
         {
             PDFPageParseModel args = propertiesToVerify.CreateInstance<PDFPageParseModel>();
 
-            string errorMessage = PDFManagement.VerifyPageProperties(
+            string errorMessage = PDFManagement.Instance.VerifyPageProperties(
                 EnhancedPDF.ConvertToEnhancedPDF(WebTestContext.LastLoadedPDF),
                 pageName,
                 args.Font,
@@ -329,7 +329,7 @@ namespace Medidata.RBT.Features.Rave
 
             foreach (PDFTextAndTextStyleModel stringToCheck in stringsToCheck)
             {
-                string errorMessage = BasePDFManagement.VerifyText(
+                string errorMessage = BasePDFManagement.Instance.VerifyText(
                     WebTestContext.LastLoadedPDF,
                     stringToCheck.Text,
                     true,
@@ -351,10 +351,10 @@ namespace Medidata.RBT.Features.Rave
         {
             List<AuditModel> audits = (List<AuditModel>)auditsTable.CreateSet<AuditModel>();
             int position = 0;
-            EnhancedPDFPage page = PDFManagement.GetPageFromFirstMatchingBookmark(EnhancedPDF.ConvertToEnhancedPDF(WebTestContext.LastLoadedPDF), pageName);
+            EnhancedPDFPage page = PDFManagement.Instance.GetPageFromFirstMatchingBookmark(EnhancedPDF.ConvertToEnhancedPDF(WebTestContext.LastLoadedPDF), pageName);
             foreach (AuditModel audit in audits)
             {
-                Assert.IsTrue(PDFManagement.VerifyAuditExists(
+                Assert.IsTrue(PDFManagement.Instance.VerifyAuditExists(
                     page,
                     audit.AuditType,
                     audit.QueryMessage,
@@ -376,7 +376,7 @@ namespace Medidata.RBT.Features.Rave
         [StepDefinition(@"I verify the ""(.*)"" distance between ""(.*)"" and ""(.*)"" on PDF page ""(.*)"" is greater than ""(.*)""")]
         public void ThenIVerifyThe____DistanceBetween____And____OnForm____IsGreaterThan____(string xOrYCoodinates, string stringToFind1, string stringToFind2, string pageName, double amount)
         {
-            Assert.IsTrue(BasePDFManagement.DistanceBetweenText(xOrYCoodinates, stringToFind1, stringToFind2, BasePDFManagement.GetPageFromFirstMatchingBookmark(WebTestContext.LastLoadedPDF, pageName)) > amount);
+            Assert.IsTrue(BasePDFManagement.Instance.DistanceBetweenText(xOrYCoodinates, stringToFind1, stringToFind2, BasePDFManagement.Instance.GetPageFromFirstMatchingBookmark(WebTestContext.LastLoadedPDF, pageName)) > amount);
         }
 	}
 }

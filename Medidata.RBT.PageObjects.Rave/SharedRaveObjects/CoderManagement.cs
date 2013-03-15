@@ -9,8 +9,8 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
     /// <summary>
     /// Used to perform additional functionality that coder normally does
     /// </summary>
-    public static class CoderManagement
-    {      
+    public sealed class CoderManagement
+    {
         /// <summary>
         /// Audit a coder coding
         /// </summary>
