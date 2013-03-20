@@ -86,5 +86,42 @@ namespace Medidata.RBT.Features.Integration.Steps
 
             Assert.IsTrue(auditMatch);
         }
+
+        [Then(@"I should see the following audits?")]
+        public void ThenIShouldSeeAnAuditForPropertyWithValue(Table table)
+        {
+            var audits = ScenarioContext.Current.Get<Audits>("audits");
+
+            foreach (var row in table.Rows)
+            {
+                var property = row["Property"];
+                var value = row["Value"];
+                var type = row["ActionType"];
+
+                var auditMatch = false;
+                var auditValue = string.Format("{0}|{1}", property, value);
+
+                for (var i = 0; i < audits.Count; i++)
+                {
+                    if (audits[i].Value != auditValue
+                        || audits[i].SubCategory.ToString() != type)
+                    {
+                        if (!audits[i].Value.StartsWith("LastExternalUpdateDate|") ||
+                            !property.Equals("LastExternalUpdateDate")) continue;
+
+                        var dbTime = DateTime.Parse(audits[i].Value.Split('|')[1]);
+                        var scenarioTime = DateTime.Parse(value);
+                        if (!dbTime.Equals(scenarioTime)) continue;
+                    }
+
+                    auditMatch = true;
+                    break;
+                }
+
+                Assert.IsTrue(auditMatch, "Property: '{0}' - Value: '{1}' - Action Type: '{2}' not found",
+                    property, value, type);
+            }
+        }
+
     }
 }
