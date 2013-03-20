@@ -127,5 +127,47 @@ namespace Medidata.RBT.Features.Integration.Steps
             var userTimeZone = Timezone.Fetch(user.TimeZone);
             Assert.IsTrue(userTimeZone.TimezoneDisplay.Contains(timeZone));
         }
+
+        [Then(@"the user should have Title ""(.*)""")]
+        public void ThenTheUserShouldHaveTitle____(string title)
+        {
+            var user = ScenarioContext.Current.Get<User>("user");
+            Assert.AreEqual(title, user.Title);
+        }
+
+        [Then(@"the user should have Institution ""(.*)""")]
+        public void ThenTheUserShouldHaveInstitutionBeekmanUniversity(string institution)
+        {
+            var user = ScenarioContext.Current.Get<User>("user");
+            Assert.AreEqual(institution, user.InstitutionName);
+        }
+
+        [StepDefinition(@"the user should have Address2 ""(.*)""")]
+        public void TheUserShouldHaveAddress2____(string address2)
+        {
+            var user = ScenarioContext.Current.Get<User>("user");
+            Assert.AreEqual(address2, user.AddressLine2);
+        }
+
+        [StepDefinition(@"the user should have Address3 ""(.*)""")]
+        public void TheUserShouldHaveAddress3____(string address3)
+        {
+            var user = ScenarioContext.Current.Get<User>("user");
+            Assert.AreEqual(address3, user.AddressLine3);
+        }
+
+        [Then(@"the user should have Fax ""(.*)""")]
+        public void ThenTheUserShouldHaveFax____(string fax)
+        {
+            var user = ScenarioContext.Current.Get<User>("user");
+            Assert.AreEqual(fax, user.Facsimile);
+        }
+
+        [Then(@"the user should have LastExternalUpdateDate ""(.*)""")]
+        public void ThenTheUserShouldHaveLastExternalUpdateDate____(DateTime lastExternalUpdateDate)
+        {
+            var user = ScenarioContext.Current.Get<User>("user");
+            Assert.AreEqual(lastExternalUpdateDate, user.LastExternalUpdateDate);
+        }
     }
 }
