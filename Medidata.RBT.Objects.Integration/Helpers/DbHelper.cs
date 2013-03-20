@@ -74,8 +74,7 @@ ALTER DATABASE {0} SET MULTI_USER WITH ROLLBACK IMMEDIATE",
 
         public static void RunDbMigration()
         {
-            var environmentVariables = Environment.GetEnvironmentVariables();
-            var ravePath = environmentVariables["RAVE_PATH"].ToString();
+            var ravePath = ConfigurationManager.AppSettings["RavePath"];
             var dbScriptsPath = Path.Combine(new[] { ravePath, "Medidata 5 RAVE Database Project", "Rave_Viper_Lucy_Merged_DB_Scripts", "Developer Helper scripts" });
 
             var builder = new SqlConnectionStringBuilder(DataSettings.Settings.ConnectionSettings.ResolveDataSourceHint(Agent.DefaultHint).ConnectionString);
