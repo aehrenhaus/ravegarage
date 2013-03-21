@@ -130,6 +130,11 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
+    <Compile Include="Features\BU\MCC54371.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MCC54371.feature</DependentUpon>
+    </Compile>
     <Compile Include="Features\Configuration\MCC-427034.feature.cs">
       <DependentUpon>MCC-427034.feature</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -452,6 +457,7 @@
     </Compile>
     <Compile Include="ReferenceFix.cs" />
     <Compile Include="Steps\ArchitectSteps_DB.cs" />
+    <Compile Include="Steps\BUSteps.cs" />
     <Compile Include="Steps\CacheFlushSteps.cs" />
     <Compile Include="Steps\ConfigurationSteps.cs" />
     <Compile Include="Steps\CoderSteps.cs" />
@@ -556,6 +562,10 @@
     <None Include="Features\Architect\US17446.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>US17446.feature.cs</LastGenOutput>
+    </None>
+    <None Include="Features\BU\MCC54371.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>MCC54371.feature.cs</LastGenOutput>
     </None>
     <None Include="Features\Configuration\MCC-427034.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>

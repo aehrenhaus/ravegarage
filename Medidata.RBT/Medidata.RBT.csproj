@@ -55,6 +55,8 @@
     <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.SqlXml" />
+    <Reference Include="System.DirectoryServices" />
+    <Reference Include="System.DirectoryServices.AccountManagement" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Xaml" />
     <Reference Include="System.Xml.Linq" />
@@ -79,6 +81,7 @@
   <ItemGroup>
     <Compile Include="BrowserStepsBase.cs" />
     <Compile Include="Helpers\RegexHelper.cs" />
+    <Compile Include="Helpers\BuUploadFileHelper.cs" />
     <Compile Include="Helpers\ConsoleWriterSetup.cs" />
     <Compile Include="Helpers\Constants.cs" />
     <Compile Include="Helpers\EnumHelper.cs" />
