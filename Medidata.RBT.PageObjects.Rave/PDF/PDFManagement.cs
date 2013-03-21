@@ -26,6 +26,7 @@ namespace Medidata.RBT.Utilities
     /// </summary>
     public sealed class PDFManagement
     {
+        private static readonly List<string> s_sysUsers = new List<string> () { "System", "LSystem" };
         private static readonly Lazy<PDFManagement> m_Instance = new Lazy<PDFManagement>(() => new PDFManagement());
 
         private PDFManagement() { }
@@ -112,22 +113,30 @@ namespace Medidata.RBT.Utilities
         /// </summary>
         /// <param name="page">The page to verify</param>
         /// <param name="auditType">The type of audit</param>
-        /// <param name="queryMessage">The message in the audit</param>
+        /// <param name="queryMessage">The message in the audit (can comma separated list if there are multiple variables in the audit)</param>
         /// <param name="timeFormat">The time format of the audit</param>
         /// <param name="user">The user who made the audit</param>
         /// <param name="position">The position of the audit in the list of audits</param>
-        /// <returns></returns>
-        public bool VerifyAuditExists(EnhancedPDFPage page, string auditType, string queryMessage, string timeFormat, string user, int? position)
+        /// <returns>True if the audit exists, false if it does not</returns>
+        public bool VerifyAuditExists(EnhancedPDFPage page, string auditType, List<string> queryMessage, string timeFormat, string user, int? position)
         {
             if (user == null)
                 throw new Exception("Audit user cannot be null!");
-            string name = user.Split('(').FirstOrDefault().TrimEnd(' ');
-            string userLoginNonUnique = user.Split('-')[1].Trim().TrimEnd(')');
-            string uniqueName = SeedingContext.GetExistingFeatureObjectOrMakeNew<User>(userLoginNonUnique, null).UniqueName;
-            string userRegex = name + @"  \([0-9]* -" + uniqueName + @"\)";
+
+            string userRegex = null;
+            if (s_sysUsers.Contains(user))
+                userRegex = user;
+            else
+            {
+                string name = user.Split('(').FirstOrDefault().TrimEnd(' ');
+                string userLoginNonUnique = user.Split('-')[1].Trim().TrimEnd(')');
+                string uniqueName = SeedingContext.GetExistingFeatureObjectOrMakeNew<User>(userLoginNonUnique, null).UniqueName;
+                userRegex = name + @"  \([0-9]* -" + uniqueName + @"\)";
+            }
 
             if (!page.UsersRegex.Contains(userRegex))
                 page.UsersRegex.Add(userRegex);
+
             page.TimeFormat = timeFormat;
             return page.AuditExist(AuditManagement.Instance.GetAuditMessage(auditType, queryMessage), userRegex, timeFormat, position);
         }

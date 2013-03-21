@@ -286,14 +286,6 @@ namespace Medidata.RBT.SeleniumExtension
             {
                 string value = m.Value;
 
-                //if (value.Equals("\\<", StringComparison.OrdinalIgnoreCase))
-                //{
-                //    return "<";
-                //}
-                //else if (value.Equals("\\>", StringComparison.OrdinalIgnoreCase))
-                //{
-                //    return ">";
-                //}
                 if (value.Equals("&", StringComparison.OrdinalIgnoreCase))
                 {
                     return "&amp;";

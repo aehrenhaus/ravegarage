@@ -19,6 +19,7 @@ using Medidata.RBT.Helpers;
 using Medidata.RBT.PageObjects.Rave.SharedRaveObjects;
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
+using Medidata.RBT.Utilities;
 
 namespace Medidata.RBT
 {
@@ -171,19 +172,24 @@ namespace Medidata.RBT
                     return m_Audits;
 
                 double leftBoundOfTimeString = TimeInAuditBarTextRun.DisplayBounds.Left;
-                List<PDFTextRun> timeTextRuns = GetAuditTimeTextRuns(leftBoundOfTimeString);
-                List<BaseEnhancedPDFSearchTextResult> userTextRuns = GetAuditUserTextRuns(leftBoundOfTimeString);
+                List<BaseEnhancedPDFSearchTextResult> timeTextRuns = GetAuditTimeTextRuns(leftBoundOfTimeString);
+                List<BaseEnhancedPDFSearchTextResult> userTextRuns = GetAuditUserSearchTextResults(leftBoundOfTimeString);
 
                 //Combine the user with the time to make a list of audits
                 List<PDFAudit> audits = new List<PDFAudit>();
 
-                foreach(PDFTextRun timeTextRun in timeTextRuns)
+                for(int i = 0; i < timeTextRuns.Count; i++)
                 {
+                    BaseEnhancedPDFSearchTextResult timeTextRun = timeTextRuns[i];
+                    BaseEnhancedPDFSearchTextResult nextTimeTextRun = timeTextRuns.Count - 1 != i ? timeTextRuns[i + 1] : null;
+
                     audits.Add(new PDFAudit()
                     {
                         Time = timeTextRun,
                         User = userTextRuns.FirstOrDefault(x => Math.Round(x.DisplayBounds.Top) == Math.Round(timeTextRun.DisplayBounds.Top)),
-                        Message = BasePage.ExtractTextRuns().FirstOrDefault(x => Math.Round(x.DisplayBounds.Top) == Math.Round(timeTextRun.DisplayBounds.Top)),
+                        Message = GetAuditMessage(timeTextRun.DisplayBounds.Top,
+                            nextTimeTextRun != null ? nextTimeTextRun.DisplayBounds.Top : BasePage.Height - (BottomLeftOfPage.Top + BottomLeftOfPage.Height), 
+                            userTextRuns.FirstOrDefault().DisplayBounds.Left),
                     });
                 }
 
@@ -211,16 +217,41 @@ namespace Medidata.RBT
         #endregion
 
         #region Methods
-        private List<PDFTextRun> GetAuditTimeTextRuns(double leftBoundOfTimeString)
+        /// <summary>
+        /// Get the audit message
+        /// </summary>
+        /// <param name="currentTimeTextRunTopBound">The top bound of the current audit time row.</param>
+        /// <param name="nextTimeTextRunTopBound">The top bound of the next audit time row. If there is no next audit, Use the bottom of the page</param>
+        /// <param name="leftBoundOfUserAudits">The left bound of the user audits, the message should be to the left of this</param>
+        /// <returns>The audit message in the current audit row</returns>
+        private string GetAuditMessage(double currentTimeTextRunTopBound, double nextTimeTextRunTopBound, double leftBoundOfUserAudits)
+        {
+            StringBuilder messageSB = new StringBuilder();
+            
+            List<PDFTextRun> allTextRuns = BasePage.ExtractTextRuns().ToList();
+            foreach (PDFTextRun textRun in allTextRuns)
+                if (Math.Round(textRun.DisplayBounds.Top) >= Math.Round(currentTimeTextRunTopBound) 
+                    && Math.Round(textRun.DisplayBounds.Top) < Math.Round(nextTimeTextRunTopBound)
+                    && textRun.DisplayBounds.Left < leftBoundOfUserAudits)
+                    messageSB.Append(textRun.Text + " ");
+
+            return messageSB.ToString();
+        }
+
+        private List<BaseEnhancedPDFSearchTextResult> GetAuditTimeTextRuns(double leftBoundOfTimeString)
         {
             string timeRegex = RegexHelper.GetRegexFromDateTimeFormat(TimeFormat);
 
             //Get all of the matching time strings
             MatchCollection allTimeStringsOnThePageInTimeFormat = Regex.Matches(Text, timeRegex);
-            List<PDFTextRun> timeTextRuns = new List<PDFTextRun>();
+            List<BaseEnhancedPDFSearchTextResult> timeTextRuns = new List<BaseEnhancedPDFSearchTextResult>();
             foreach (Match differentTimeString in allTimeStringsOnThePageInTimeFormat)
                 foreach (PDFSearchTextResult timeString in BasePage.SearchText(differentTimeString.Value))
-                    timeTextRuns.AddRange(timeString.TextRuns);
+                {
+                    BaseEnhancedPDFSearchTextResult timeStringEnhanced = new BaseEnhancedPDFSearchTextResult(timeString);
+                    if (timeTextRuns.FirstOrDefault(x => BasePDFManagement.Instance.AreasOverlap(x.DisplayBounds, timeStringEnhanced.DisplayBounds)) == null)
+                        timeTextRuns.Add(timeStringEnhanced);
+                }
 
             //We now have all of the text runs of time, so we can compare their location with the header and figure out their order
             //First, eliminate ones to the left of the left bound of the time cell in the header, because they appear somewhere else on the page
@@ -232,9 +263,9 @@ namespace Medidata.RBT
             return timeTextRuns;
         }
 
-        private List<BaseEnhancedPDFSearchTextResult> GetAuditUserTextRuns(double leftBoundOfTimeString)
+        private List<BaseEnhancedPDFSearchTextResult> GetAuditUserSearchTextResults(double leftBoundOfTimeString)
         {
-            List<BaseEnhancedPDFSearchTextResult> userTextRuns = new List<BaseEnhancedPDFSearchTextResult>();
+            List<BaseEnhancedPDFSearchTextResult> userSearchTextResults = new List<BaseEnhancedPDFSearchTextResult>();
             foreach (string userRegex in UsersRegex)
             {
                 MatchCollection allUserStringsOnThePageInUserFormat = Regex.Matches(Text.Replace("\r\n", ""), userRegex);
@@ -242,18 +273,18 @@ namespace Medidata.RBT
 
                 foreach (string differentUserString in uniqueUserRegex)
                     foreach (PDFSearchTextResult userString in BasePage.SearchText(differentUserString))
-                        userTextRuns.Add(new BaseEnhancedPDFSearchTextResult(userString));
+                        userSearchTextResults.Add(new BaseEnhancedPDFSearchTextResult(userString));
             }
 
             //Eliminate ones to the left of the left bound of the user cell in the header and ones to the right of left bound of "Time(GMT)",
             //because they appear somewhere else on the page
-            userTextRuns.RemoveAll(x => x.DisplayBounds.Left < UserInAuditBarTextRun.DisplayBounds.Left
+            userSearchTextResults.RemoveAll(x => x.DisplayBounds.Left < UserInAuditBarTextRun.DisplayBounds.Left
                 && (x.DisplayBounds.Left + x.DisplayBounds.Width) > leftBoundOfTimeString);
 
             //Then, sort them by how high up they are in the page, this gives us the order.
-            userTextRuns.OrderBy(x => x.DisplayBounds.Top);
+            userSearchTextResults.OrderBy(x => x.DisplayBounds.Top);
 
-            return userTextRuns;
+            return userSearchTextResults;
         }
 
         private static HashSet<string> RemoveDuplicates(MatchCollection matchCollection)
@@ -282,7 +313,7 @@ namespace Medidata.RBT
 
             foreach (PDFAudit audit in auditsToTest)
             {
-                if (!String.IsNullOrEmpty(message) && (audit.Message == null || audit.Message.Text != message))
+                if (!String.IsNullOrEmpty(message) && (audit.Message == null || audit.Message.Trim() != message))
                     return false;
                 if (!String.IsNullOrEmpty(userRegex) && (audit.User == null || Regex.Match(audit.User.Text, userRegex).Success == false))
                     return false;

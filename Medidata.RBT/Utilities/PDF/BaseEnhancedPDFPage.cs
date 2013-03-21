@@ -93,7 +93,7 @@ namespace Medidata.RBT
 
         public override bool Equals(object obj)
         {
-            if (obj.GetType() != typeof(PDFImportedPage))
+            if (!(obj is PDFImportedPage))
                 return base.Equals(obj);
             else
             {

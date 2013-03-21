@@ -22,7 +22,10 @@ namespace Medidata.RBT.PageObjects.Rave
          /// <summary>
         /// Refresh the control on a page after a change has been made to invalidate it.
         /// </summary>
-        public abstract void RefreshControl();
+        public virtual void RefreshControl()
+        {
+            throw new NotImplementedException("Refresh control not implemented yet");
+        }
 
         public virtual bool HasDataEntered(string text)
         {

@@ -54,5 +54,25 @@ namespace Medidata.RBT.Common.Steps
                 Console.WriteLine("-> Find file failed");
             }
         }
+
+        /// <summary>
+        /// Verify that a file does not exist in the download folder
+        /// </summary>
+        /// <param name="fileName">Name of the file to look for</param>
+        [StepDefinition(@"I verify file ""(.*)"" was not downloaded")]
+        public void ThenIVerifyFile____WasNotDownloaded(string fileName)
+        {
+            try
+            {
+                DirectoryInfo downloadDir = new DirectoryInfo(RBTConfiguration.Default.DownloadPath);
+                FileInfo[] matchingFiles = downloadDir.GetFiles(fileName, SearchOption.AllDirectories);
+
+                Assert.IsTrue(matchingFiles != null || matchingFiles.Count() == 0, String.Format("File {0} was found in the downloads folder", fileName));
+            }
+            catch
+            {
+                Console.WriteLine("-> Find file failed");
+            }
+        }
 	}
 }

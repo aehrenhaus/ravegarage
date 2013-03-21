@@ -11,6 +11,7 @@ using TechTalk.SpecFlow.Assist;
 using Medidata.RBT.PageObjects.Rave;
 using Medidata.RBT.PageObjects.Rave.SharedRaveObjects;
 using Medidata.RBT.SeleniumExtension;
+using Medidata.RBT.PageObjects.Rave.TableModels;
 
 
 namespace Medidata.RBT.Features.Rave.Steps
@@ -29,6 +30,19 @@ namespace Medidata.RBT.Features.Rave.Steps
         {
             bool isCoderEnabled = DbHelper.ExecuteStoredProcedureRetBool("spUrlUsingCoder");
             Assert.IsTrue(isCoderEnabled);
+        }
+
+        /// <summary>
+        /// Step definition to create the specified pdf configuration if it doesn't exist
+        /// </summary>
+        /// <param name="table">The PDF configuration profiles to create</param>
+        [StepDefinition(@"following Global Configurations exist")]
+        public void FollowingPDFConfigurationProfileSettingsExist(Table table)
+        {
+            IEnumerable<GlobalConfigurationModel> globalConfigurationList = table.CreateSet<GlobalConfigurationModel>();
+
+            foreach (GlobalConfigurationModel globalConfigurationModel in globalConfigurationList)
+                SeedingContext.GetExistingFeatureObjectOrMakeNew(globalConfigurationModel.Name, () => new GlobalConfiguration(globalConfigurationModel.Name));
         }
 
         /// <summary>

@@ -105,8 +105,8 @@ namespace Medidata.RBT.Features.Rave
             List<PdfProfileModel> pdfProfiles = table.CreateSet<PdfProfileModel>().ToList();
             foreach (PdfProfileModel pdfProfile in pdfProfiles)
             {
-                string pdfProfileUniqueName = SeedingContext.GetExistingFeatureObjectOrMakeNew(pdfProfile.ProfileName,
-                    () => new PdfProfile(pdfProfile.ProfileName)).UniqueName;
+                string pdfProfileUniqueName = SeedingContext.GetExistingFeatureObjectOrMakeNew<PdfProfile>(pdfProfile.ProfileName,
+                    () => { throw new Exception("PDF profile is not seeded"); }).UniqueName;
 
                 CurrentPage = new PDFConfigProfilesPage().NavigateToSelf();
                 CurrentPage.As<PDFConfigProfilesPage>().EditPdfProfile(pdfProfileUniqueName);
@@ -144,8 +144,7 @@ namespace Medidata.RBT.Features.Rave
         [StepDefinition(@"I verify the PDF text contains")]
         public void IVerifyThePDFTextContains(Table table)
         {
-            string error = BasePDFManagement.Instance.VerifyPDFText(WebTestContext.LastLoadedPDF, table.CreateSet<GenericDataModel<string>>().ToList(), true);
-            Assert.IsNull(error, error); 
+            Assert.IsTrue(BasePDFManagement.Instance.VerifySomethingExist(null, "text", table.CreateSet<GenericDataModel<string>>().ToList().ConvertAll<string>(x => x.Data), pdf: WebTestContext.LastLoadedPDF));
         }
 
         /// <summary>
@@ -155,8 +154,7 @@ namespace Medidata.RBT.Features.Rave
         [StepDefinition(@"I verify the PDF text does not contain")]
         public void IVerifyThePDFTextDoesNotContain(Table table)
         {
-            string error = BasePDFManagement.Instance.VerifyPDFText(WebTestContext.LastLoadedPDF, table.CreateSet<GenericDataModel<string>>().ToList(), false);
-            Assert.IsNull(error, error); 
+            Assert.IsFalse(BasePDFManagement.Instance.VerifySomethingExist(null, "text", table.CreateSet<GenericDataModel<string>>().ToList().ConvertAll<string>(x => x.Data), pdf:WebTestContext.LastLoadedPDF));
         }
         
 
@@ -169,7 +167,7 @@ namespace Medidata.RBT.Features.Rave
         public void ThenIVerifyImage____ExitsOnPDFPage____(string imageName, string pageName)
         {
             Assert.IsTrue(
-                BasePDFManagement.Instance.VerifyImageExists(WebTestContext.LastLoadedPDF, imageName, SpecialStringHelper.Replace(pageName)), 
+                BasePDFManagement.Instance.VerifySomethingExist(SpecialStringHelper.Replace(pageName), "image", imageName, pdf: WebTestContext.LastLoadedPDF), 
                 String.Format("Image {0} not on page {1}.", imageName, pageName));
         }
 
@@ -278,7 +276,7 @@ namespace Medidata.RBT.Features.Rave
             PDFParseModel args = propertiesToVerify.CreateInstance<PDFParseModel>();
             List<string> sites = args.Sites != null ? args.Sites.Split(',').ToList() : new List<string>();
             for(int i = 0; i < sites.Count; i ++)
-                sites[i] = SeedingContext.GetExistingFeatureObjectOrMakeNew<Site>(sites[i], null).UniqueName;
+                sites[i] = SeedingContext.GetExistingFeatureObjectOrMakeNew<Site>(sites[i], () => { throw new Exception("Site is not seeded"); }).UniqueName;
 
 
             string errorMessage = PDFManagement.Instance.VerifyPDFProperties(EnhancedPDF.ConvertToEnhancedPDF(WebTestContext.LastLoadedPDF),
@@ -329,15 +327,12 @@ namespace Medidata.RBT.Features.Rave
 
             foreach (PDFTextAndTextStyleModel stringToCheck in stringsToCheck)
             {
-                string errorMessage = BasePDFManagement.Instance.VerifyText(
-                    WebTestContext.LastLoadedPDF,
-                    stringToCheck.Text,
-                    true,
+                Assert.IsTrue(BasePDFManagement.Instance.VerifySomethingExist(
                     SpecialStringHelper.Replace(pageName),
-                    stringToCheck.Bold
-                    );
-
-                Assert.IsNull(errorMessage, errorMessage);
+                    "text",
+                    stringToCheck.Text,
+                    pdf: WebTestContext.LastLoadedPDF,
+                    bold: stringToCheck.Bold));
             }
         }
 
@@ -357,7 +352,7 @@ namespace Medidata.RBT.Features.Rave
                 Assert.IsTrue(PDFManagement.Instance.VerifyAuditExists(
                     page,
                     audit.AuditType,
-                    audit.QueryMessage,
+                    audit.QueryMessage.Split(',').ToList(),
                     audit.Time,
                     audit.User,
                     position), string.Format("Audit {0} does not exist", audit.AuditType));

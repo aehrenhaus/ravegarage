@@ -44,11 +44,11 @@ namespace Medidata.RBT.Helpers
         /// <returns>True if small rectangle is entirely contained within the larger rectangle, false otherwise</returns>
         private static bool ContainedWithin(DoubleRectangle largerRectangle, DoubleRectangle smallerRectangle)
         {
-            bool lowerLeftCheck = largerRectangle.LL.X < smallerRectangle.LL.X && largerRectangle.LL.Y < smallerRectangle.LL.Y;
-            bool upperLeftCheck = largerRectangle.UL.X < smallerRectangle.UL.X && largerRectangle.UL.Y > smallerRectangle.UL.Y;
+            bool lowerLeftCheck = largerRectangle.LowerLeft.X < smallerRectangle.LowerLeft.X && largerRectangle.LowerLeft.Y < smallerRectangle.LowerLeft.Y;
+            bool upperLeftCheck = largerRectangle.UpperLeft.X < smallerRectangle.UpperLeft.X && largerRectangle.UpperLeft.Y > smallerRectangle.UpperLeft.Y;
 
-            bool lowerRightCheck = largerRectangle.LR.X > smallerRectangle.LR.X && largerRectangle.LR.Y < smallerRectangle.LR.Y;
-            bool upperRightCheck = largerRectangle.UR.X > smallerRectangle.UR.X && largerRectangle.UR.Y > smallerRectangle.UR.Y;
+            bool lowerRightCheck = largerRectangle.LowerRight.X > smallerRectangle.LowerRight.X && largerRectangle.LowerRight.Y < smallerRectangle.LowerRight.Y;
+            bool upperRightCheck = largerRectangle.UpperRight.X > smallerRectangle.UpperRight.X && largerRectangle.UpperRight.Y > smallerRectangle.UpperRight.Y;
 
             return lowerLeftCheck && upperLeftCheck && lowerRightCheck && upperRightCheck;
         }

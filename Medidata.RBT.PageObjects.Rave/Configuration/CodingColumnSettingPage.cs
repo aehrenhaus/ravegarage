@@ -39,7 +39,7 @@ namespace Medidata.RBT.PageObjects.Rave.Configuration
             }
         }
 
-        public bool VerifySomethingExist(string areaIdentifier, string type, string identifier, bool exactMatch = false, int? amountOfTimes = null)
+        public bool VerifySomethingExist(string areaIdentifier, string type, string identifier, bool exactMatch = false, int? amountOfTimes = null, RBT.BaseEnhancedPDF pdf = null, bool? bold = null)
 		{
 			if (type == "text")
 			{
@@ -49,6 +49,15 @@ namespace Medidata.RBT.PageObjects.Rave.Configuration
 
 			return false;
 		}
+
+        public bool VerifySomethingExist(string areaIdentifier, string type, List<string> identifiers, bool exactMatch, int? amountOfTimes, RBT.BaseEnhancedPDF pdf, bool? bold)
+        {
+            foreach (string identifier in identifiers)
+                if (VerifySomethingExist(areaIdentifier, type, identifier, exactMatch, amountOfTimes, pdf, bold) == false)
+                    return false;
+
+            return true;
+        }
 
 		public bool VerifyTableRowsExist(string tableIdentifier, TechTalk.SpecFlow.Table matchTable, int? amountOfTimes = null)
 		{

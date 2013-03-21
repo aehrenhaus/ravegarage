@@ -11,8 +11,8 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
     /// </summary>
     public class PDFAudit
     {
-        public PDFTextRun Time { get; set; }
+        public BaseEnhancedPDFSearchTextResult Time { get; set; }
         public BaseEnhancedPDFSearchTextResult User { get; set; }
-        public PDFTextRun Message { get; set; }
+        public string Message { get; set; }
     }
 }

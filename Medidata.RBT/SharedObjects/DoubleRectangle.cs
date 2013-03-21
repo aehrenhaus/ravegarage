@@ -26,7 +26,7 @@ namespace Medidata.RBT.SharedObjects
         public double Width { get; set; }
         public double Height { get; set; }
 
-        public Point UL
+        public Point UpperLeft
         {
             get
             {
@@ -34,7 +34,7 @@ namespace Medidata.RBT.SharedObjects
             }
         }
 
-        public Point LL
+        public Point LowerLeft
         {
             get
             {
@@ -42,7 +42,7 @@ namespace Medidata.RBT.SharedObjects
             }
         }
 
-        public Point UR
+        public Point UpperRight
         {
             get
             {
@@ -50,7 +50,7 @@ namespace Medidata.RBT.SharedObjects
             }
         }
 
-        public Point LR
+        public Point LowerRight
         {
             get
             {

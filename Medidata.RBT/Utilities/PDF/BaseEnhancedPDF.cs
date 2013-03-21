@@ -133,7 +133,7 @@ namespace Medidata.RBT
             PDFBookmark retBookmark = null;
 
             if (parentBookmark != null && !directChild)
-                retBookmark = FirstMatchingBookmarkNodeInBookmark(textToFind, parentBookmark);
+                retBookmark = FirstMatchingBookmarkNodeInBookmark(textToFind, parentBookmark, positionUnderParentBookmark: positionUnderParentBookmarkExpected);
             else
             {
                 for (int i = 0; i < BaseDocument.Bookmarks.Count; i++)
@@ -142,7 +142,7 @@ namespace Medidata.RBT
                     if (retBookmark != null)
                         break;
 
-                    retBookmark = FirstMatchingBookmarkNodeInBookmark(textToFind, bookmark, directChild ? parentBookmarkText : null);
+                    retBookmark = FirstMatchingBookmarkNodeInBookmark(textToFind, bookmark, directChild ? parentBookmarkText : null, positionUnderParentBookmarkExpected);
                 }
             }
             return retBookmark;

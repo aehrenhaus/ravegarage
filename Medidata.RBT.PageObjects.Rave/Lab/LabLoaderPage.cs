@@ -73,7 +73,7 @@ namespace Medidata.RBT.PageObjects.Rave.Lab
             throw new NotImplementedException();
         }
 
-        bool IVerifySomethingExists.VerifySomethingExist(string areaIdentifier, string type, string identifier, bool exactMatch, int? amountOfTimes)
+        public bool VerifySomethingExist(string areaIdentifier, string type, string identifier, bool exactMatch, int? amountOfTimes, RBT.BaseEnhancedPDF pdf = null, bool? bold = null)
 		{
 			if (identifier != null)
 			{
@@ -84,6 +84,15 @@ namespace Medidata.RBT.PageObjects.Rave.Lab
 			}
 			throw new NotImplementedException();
 		}
+
+        public bool VerifySomethingExist(string areaIdentifier, string type, List<string> identifiers, bool exactMatch, int? amountOfTimes, RBT.BaseEnhancedPDF pdf, bool? bold)
+        {
+            foreach (string identifier in identifiers)
+                if (VerifySomethingExist(areaIdentifier, type, identifier, exactMatch, amountOfTimes, pdf, bold) == false)
+                    return false;
+
+            return true;
+        }
 
         #endregion
     }

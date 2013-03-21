@@ -23,7 +23,7 @@ namespace Medidata.RBT.Utilities
     /// Helper class to manage pdf operations, these should NOT be rave-specific.
     /// Other pdf operations should be in BasePDFManagement
     /// </summary>
-    public sealed class BasePDFManagement
+    public sealed class BasePDFManagement : IVerifySomethingExists
     {
         private static readonly Lazy<BasePDFManagement> m_Instance = new Lazy<BasePDFManagement>(() => new BasePDFManagement());
 
@@ -63,7 +63,7 @@ namespace Medidata.RBT.Utilities
                 double bottom2Top1 = (searchTextResult2.DisplayBounds.Top - searchTextResult2.DisplayBounds.Height - searchTextResult1.DisplayBounds.Top) / BasePDFManagement.POINTS_IN_AN_INCH;
                 return Math.Max(bottom1Top2, bottom2Top1);
             }
-            throw new Exception("Coordinate system incorreclt specified");
+            throw new Exception("Coordinate system incorrectly specified");
         }
 
         /// <summary>
@@ -107,7 +107,7 @@ namespace Medidata.RBT.Utilities
             string pageSize
             )
         {
-            if (pageSize != null && pageSize != null && !pdf.BaseDocument.PageSize.Equals((PDFPageSize)Enum.Parse(typeof(PDFPageSize), pageSize, true)))
+            if (pageSize != null && !pdf.BaseDocument.PageSize.Equals((PDFPageSize)Enum.Parse(typeof(PDFPageSize), pageSize, true)))
                 return "Page size doesn't match pdf";
             else
                 return null;
@@ -155,6 +155,30 @@ namespace Medidata.RBT.Utilities
             return true;
         }
 
+        public bool VerifySomethingExist(string areaIdentifier, 
+            string type, 
+            string identifier, 
+            bool exactMatch = false, 
+            int? amountOfTimes = null, 
+            RBT.BaseEnhancedPDF pdf = null,
+            bool? bold = null)
+        {
+            if (type.Equals("image", StringComparison.InvariantCultureIgnoreCase))
+                return VerifyImageExists(pdf, identifier, areaIdentifier);
+            if (type.Equals("text", StringComparison.InvariantCultureIgnoreCase))
+                return VerifyPDFText(pdf, identifier, true, areaIdentifier, bold) == null;
+
+            throw new Exception("Unknown verification type");
+        }
+
+        public bool VerifySomethingExist(string areaIdentifier, string type, List<string> identifiers, bool exactMatch = false, int? amountOfTimes = null, RBT.BaseEnhancedPDF pdf = null, bool? bold = null)
+        {
+            if (type.Equals("text", StringComparison.InvariantCultureIgnoreCase))
+                return VerifyPDFText(pdf, identifiers, true, areaIdentifier) == null;
+
+            throw new Exception("Unknown verification type");
+        }
+
         /// <summary>
         /// Verify that an image exists in a page in the pdf
         /// </summary>
@@ -162,7 +186,7 @@ namespace Medidata.RBT.Utilities
         /// <param name="imageName">The name of the image, should be in the Images folder</param>
         /// <param name="pageName">The name of the page to look in</param>
         /// <returns>True if the image exists on the page, false if it does not</returns>
-        public bool VerifyImageExists(RBT.BaseEnhancedPDF pdf, string imageName, string pageName)
+        private bool VerifyImageExists(RBT.BaseEnhancedPDF pdf, string imageName, string pageName)
         {
             Image imageInImageFolder = null;
             using (FileStream fs = new FileStream(RBTConfiguration.Default.UploadPath + @"\Images\" + imageName, FileMode.Open))
@@ -227,7 +251,7 @@ namespace Medidata.RBT.Utilities
 
             List<PDFLinkAnnotation> linksWhichGoToTheTargetPage = new List<PDFLinkAnnotation>();
             foreach (PDFLinkAnnotation link in linksOnSourcePage)
-                if (targetPage.Equals(((PDFGoToAction)link.Action).Destination.Page))
+                if (targetPage.BasePage.Equals((PDFImportedPage)((PDFGoToAction)link.Action).Destination.Page))
                     linksWhichGoToTheTargetPage.Add(link);
 
             //See if any of the links that go to the link target page overlap the area of the linkText
@@ -278,6 +302,28 @@ namespace Medidata.RBT.Utilities
         /// <summary>
         /// True if the two rectangles overlap, false if they do not
         /// </summary>
+        /// <param name="pdfRectangle1">The first rectangle</param>
+        /// <param name="pdfRectangle2">The second rectangle</param>
+        /// <returns>True if the two rectangles overlap, false if they do not</returns>
+        public bool AreasOverlap(DisplayRectangle pdfRectangle1, DisplayRectangle pdfRectangle2)
+        {
+            //Losing precision here in the conversion from double to int be careful!
+            DoubleRectangle doubleRectangle1 = new DoubleRectangle(
+                pdfRectangle1.Left,
+                pdfRectangle1.Top - pdfRectangle1.Height,
+                pdfRectangle1.Width,
+                pdfRectangle1.Height);
+            DoubleRectangle doubleRectangle2 = new DoubleRectangle(
+                pdfRectangle2.Left,
+                pdfRectangle2.Top - pdfRectangle1.Height,
+                pdfRectangle2.Width,
+                pdfRectangle2.Height);
+            return Medidata.RBT.Helpers.MathHelper.TwoDoubleRectanglesOverlap(doubleRectangle1, doubleRectangle2);
+        }
+
+        /// <summary>
+        /// True if the two rectangles overlap, false if they do not
+        /// </summary>
         /// <param name="systemRectangle">The first rectangle</param>
         /// <param name="pdfRectangle">The second rectangle</param>
         /// <returns>True if the two rectangles overlap, false if they do not</returns>
@@ -297,7 +343,6 @@ namespace Medidata.RBT.Utilities
             return Medidata.RBT.Helpers.MathHelper.TwoDoubleRectanglesOverlap(linkRectangle, textRectangle);
         }
 
-
         /// <summary>
         /// Verify that a list of strings exist in the pdf text.
         /// </summary>
@@ -306,9 +351,9 @@ namespace Medidata.RBT.Utilities
         /// <param name="exists">True if the text should exist in the pdf, false if it should not</param>
         /// <param name="pageName">Use when you want to search a specific page, not the entire PDF</param>
         /// <returns>An error message if the any of the strings are not on the page. Null if there are no error messages.</returns>
-        public string VerifyPDFText(
+        private string VerifyPDFText(
             BaseEnhancedPDF pdf, 
-            List<GenericDataModel<string>> stringsToSearchFor, 
+            List<string> stringsToSearchFor, 
             bool exists, 
             string pageName = null)
         {
@@ -316,10 +361,10 @@ namespace Medidata.RBT.Utilities
             string noWhitespacePDFtext = Regex.Replace(pdf.Text, @"\s", "");
 
             string ret = null;
-            foreach (GenericDataModel<string> stringToVerifyGDM in stringsToSearchFor)
+            foreach (string stringToVerifyGDM in stringsToSearchFor)
             {
-                string stringToVerify = Regex.Replace(stringToVerifyGDM.Data, @"\s", "");
-                ret = VerifyText(pdf, stringToVerify, exists, pageName);
+                string stringToVerify = Regex.Replace(stringToVerifyGDM, @"\s", "");
+                ret = VerifyPDFText(pdf, stringToVerify, exists, pageName);
                 if (ret != null)
                     return ret;
             }
@@ -335,7 +380,7 @@ namespace Medidata.RBT.Utilities
         /// <param name="pageName">The name of the page to search for the text on</param>
         /// <param name="bold">The text searched for is bold</param>
         /// <returns>An error message if the text is not on the page. Null if there are no error messages.</returns>
-        public string VerifyText(
+        private string VerifyPDFText(
             RBT.BaseEnhancedPDF pdf,
             string text,
             bool exists,

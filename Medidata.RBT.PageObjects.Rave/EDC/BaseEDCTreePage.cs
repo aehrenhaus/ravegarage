@@ -115,7 +115,7 @@ namespace Medidata.RBT.PageObjects.Rave
 
 		#region IVerifySomethingExists
 
-        public bool VerifySomethingExist(string areaIdentifier, string type, string identifier, bool exactMatch = false, int? amountOfTimes = null)
+        public bool VerifySomethingExist(string areaIdentifier, string type, string identifier, bool exactMatch = false, int? amountOfTimes = null, BaseEnhancedPDF pdf = null, bool? bold = null)
 		{        
             if (areaIdentifier == null)
             {
@@ -166,6 +166,15 @@ namespace Medidata.RBT.PageObjects.Rave
 
             return result != null;
 		}
+
+        public bool VerifySomethingExist(string areaIdentifier, string type, List<string> identifiers, bool exactMatch, int? amountOfTimes, RBT.BaseEnhancedPDF pdf, bool? bold)
+        {
+            foreach (string identifier in identifiers)
+                if (VerifySomethingExist(areaIdentifier, type, identifier, exactMatch, amountOfTimes, pdf, bold) == false)
+                    return false;
+
+            return true;
+        }
 
 		public override IWebElement GetElementByName(string identifier, string areaIdentifier = null, string listItem = null)
 		{

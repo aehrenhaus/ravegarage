@@ -182,6 +182,7 @@
     <Compile Include="ReportAdmin\ReportManagerPage.cs" />
     <Compile Include="ReportAdmin\ReportAssignmentPage.cs" />
     <Compile Include="Reports\CrystalReportPageBase.cs" />
+    <Compile Include="SharedControls\DivPaginationControl.cs" />
     <Compile Include="SharedRaveObjects\Analyte.cs" />
     <Compile Include="SharedRaveObjects\Audit.cs" />
     <Compile Include="SharedRaveObjects\BaseCodingDictionary.cs" />
@@ -193,6 +194,7 @@
     <Compile Include="SharedRaveObjects\CodingDictionary.cs" />
     <Compile Include="SharedRaveObjects\CoderLocale.cs" />
     <Compile Include="SharedRaveObjects\CoderManagement.cs" />
+    <Compile Include="SharedRaveObjects\GlobalConfiguration.cs" />
     <Compile Include="SharedRaveObjects\StatusManagement.cs" />
     <Compile Include="SharedRaveObjects\Record.cs" />
     <Compile Include="SharedRaveObjects\DataPage.cs" />
@@ -246,6 +248,7 @@
     <Compile Include="TableModels\CoderLocaleTable.cs" />
     <Compile Include="TableModels\CoderTermModel.cs" />
     <Compile Include="TableModels\CoderWorkflowVariableModel.cs" />
+    <Compile Include="TableModels\GlobalConfigurationModel.cs" />
     <Compile Include="TableModels\PDF\PDFTextAndTextStyleModel.cs" />
     <Compile Include="TableModels\StickyModel.cs" />
     <Compile Include="TableModels\PDF\PDFPageParseModel.cs" />

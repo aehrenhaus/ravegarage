@@ -37,10 +37,10 @@ namespace Medidata.RBT.Features.Rave
             List<CodeDataPointModel> dataPointModels = table.CreateSet<CodeDataPointModel>().ToList();
             foreach (CodeDataPointModel dpm in dataPointModels)
             {
-                Project proj = SeedingContext.GetExistingFeatureObjectOrMakeNew<Project>(dpm.Project, () => new Project(dpm.Project, true));
+                Project proj = SeedingContext.GetExistingFeatureObjectOrMakeNew<Project>(dpm.Project, () => { throw new Exception("Project is not seeded"); });
                 CodingDictionary codingDictionary = SeedingContext.GetExistingFeatureObjectOrMakeNew<CodingDictionary>(dpm.CodingDictionary, ()
                     => new CodingDictionary(dpm.CodingDictionary, dpm.CodingDictionaryVersion));
-                User currentUser = SeedingContext.GetExistingFeatureObjectOrMakeNew<User>(dpm.CurrentUser, null);
+                User currentUser = SeedingContext.GetExistingFeatureObjectOrMakeNew<User>(dpm.CurrentUser, () => { throw new Exception("User is not seeded"); });
 
                 DataPoint dp = new DataPoint(proj.UniqueName, SpecialStringHelper.Replace(dpm.Subject), dpm.Field, dpm.UncodedData, "eng");
                 dp.CodeDataPoint(dpm.CodedData, codingDictionary.DictionaryVersion, currentUser.UserID, currentUser.UniqueName);
