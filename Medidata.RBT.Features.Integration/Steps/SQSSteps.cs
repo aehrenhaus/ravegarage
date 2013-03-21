@@ -53,7 +53,7 @@ namespace Medidata.RBT.Features.Integration.Steps
             
             var threadSleepOffset = 5000 * ScenarioContext.Current.Get<int>("messageCount");
             Thread.Sleep(15000 + threadSleepOffset);
-            var endTime = DateTime.Now.AddSeconds(30);
+            var endTime = DateTime.Now.AddSeconds(100);
 
             while(numVisibleMessages > 0 || numInvisibleMessages > 0)
             {

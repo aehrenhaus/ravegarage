@@ -721,7 +721,7 @@ Scenario: As a Rave user I complete an eLearning course and my account is merged
     | POST      | StudyInvitation | FF1DDBF2-7661-4471-B521-41C75A35283C | pb2517692user@test.cx | pb2517692 | 7692   | Test      | J          | User     | 79 5th Avenue | New York | NY    | 10003      | USA     | 1234567890 | eng    | New Delhi | 2013-01-01 12:00PM |  
     When the message is successfully processed
     And the iMedidata user links their account to the Rave User
-    Then the iMedidata user with EDC Role "PB2517692 EDC Role " should be assigned to the eLearning Course
+    Then the iMedidata user with EDC Role "PB2517692 EDC Role 1" should be assigned to the eLearning Course
     And the course should be marked as "Completed" for the iMedidata user
 
 @PB2.5.1.76-93
@@ -741,7 +741,7 @@ Scenario: If Internal Rave user has not completed an eLearning course and accoun
     | POST      | StudyInvitation | 6DC4FEA8-F783-44D0-9668-D806A25D23E2 | pb2517693user@test.cx | pb2517693 | 7693   | Test      | J          | User     | 79 5th Avenue | New York | NY    | 10003      | USA     | 1234567890 | eng    | New Delhi | 2013-01-01 12:00PM |  
     When the message is successfully processed
     And the iMedidata user links their account to the Rave User
-    Then the iMedidata user with EDC Role "PB2517693 EDC Role " should be assigned to the eLearning Course
+    Then the iMedidata user with EDC Role "PB2517693 EDC Role 1" should be assigned to the eLearning Course
 	
 @PB2.5.1.76-94
 Scenario: If internal Rave user does not start an eLearning course and account is merged with iMedidata,
@@ -761,7 +761,7 @@ Scenario: If internal Rave user does not start an eLearning course and account i
     | POST      | StudyInvitation | 6FFCC5D7-D2D7-4602-AA97-865FAF48E42A | pb2517694user@test.cx | pb2517694 | 7694   | Test      | J          | User     | 79 5th Avenue | New York | NY    | 10003      | USA     | 1234567890 | eng    | New Delhi | 2013-01-01 12:00PM |  
     When the message is successfully processed
     And the iMedidata user links their account to the Rave User
-    Then the iMedidata user with EDC Role "PB2517694 EDC Role " should be assigned to the eLearning Course
+    Then the iMedidata user with EDC Role "PB2517694 EDC Role 1" should be assigned to the eLearning Course
     And the course should be marked as "Not Started" for the iMedidata user
    
 @PB2.5.1.76-95
@@ -808,7 +808,8 @@ Scenario: If internal Rave user has not started eLearning course and the course 
     | POST      | StudyInvitation | A01A0BA9-2B88-430F-9FC8-1D9C9903F8F2 | pb2517696user@test.cx | pb2517696 | 7696   | Test      | J          | User     | 79 5th Avenue | New York | NY    | 10003      | USA     | 1234567890 | eng    | New Delhi | 2013-01-01 12:00PM |  
     When the message is successfully processed
     And the iMedidata user links their account to the Rave User
-    Then the iMedidata user with EDC Role "PB2517696 EDC Role 1" should not be assigned to the eLearning Course
+    Then the iMedidata user with EDC Role "PB2517696 EDC Role 1" should be assigned to the eLearning Course
+	And the course should be marked as "Overridden" for the iMedidata user
    
 @PB2.5.1.76-97
 Scenario: If Internal Rave user has not completed (Incomplete) an eLearning course and override the course,when account is merged
@@ -831,7 +832,7 @@ Scenario: If Internal Rave user has not completed (Incomplete) an eLearning cour
     And the iMedidata user links their account to the Rave User
     Then the iMedidata user with EDC Role "PB2517697 EDC Role 1" should be assigned to the eLearning Course
     And the course should be marked as "Incomplete" for the iMedidata user
-    And the course should be marked overridden
+    And the course should be marked as "Overridden" for the iMedidata user
 
 @PB2.5.8.29-01wip
 Scenario: When a user in iMedidata has multiple accounts in Rave and is assigned to a security group in iMedidata,

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Data;
+using System.Linq;
 using System.Web;
 using Medidata.Core.Common.Utilities;
 using Medidata.Core.Objects;
@@ -84,61 +85,67 @@ namespace Medidata.RBT.Features.Integration.Steps
         public void ThenTheIMedidataUserWithEDCRole____ShouldBeAssignedToTheELearningCourse(string roleName)
         {
             var role = Roles.GetAllRoles().FindByName(roleName);
+            ScenarioContext.Current.Set(role, "courseRole");
+
             var externalUser = ExternalUser.GetByExternalUUID(ScenarioContext.Current.Get<string>("externalUserUUID"), 1);
-            var users = Users.FindByExternalUserID(externalUser.ID, SystemInteraction.Use());
+            var users = Users.FindByExternalUserID(externalUser.ID, SystemInteraction.Use())
+                .Where(x => (x.ID != externalUser.ConnectedRaveUserID)
+                            && (x.EdcRole == role));
             var course = ScenarioContext.Current.Get<Course>("course");
 
-            foreach (var user in users)
-            {
-                if (user.ID == externalUser.ConnectedRaveUserID) continue;
-                if (role != null && user.EdcRole != role) continue;
+            var courses = CourseCollection.GetCoursesForUser(users.First(), SystemInteraction.Use(), false, false);
 
-                Assert.IsNotNull(UserCourse.FetchByUserAndCourse(user.ID, course.ID, SystemInteraction.Use()));
-            }
+            Assert.IsNotNull(courses.GetById(course.ID));
         }
         
         [Then(@"the iMedidata user with EDC Role ""(.*)"" should not be assigned to the eLearning Course")]
         public void ThenTheIMedidataUserWithEDCRole____ShouldNotBeAssignedToTheELearningCourse(string roleName)
         {
             var role = Roles.GetAllRoles().FindByName(roleName);
+            ScenarioContext.Current.Set(role, "courseRole");
+
             var externalUser = ExternalUser.GetByExternalUUID(ScenarioContext.Current.Get<string>("externalUserUUID"), 1);
-            var users = Users.FindByExternalUserID(externalUser.ID, SystemInteraction.Use());
+            var users = Users.FindByExternalUserID(externalUser.ID, SystemInteraction.Use())
+                .Where(x => (x.ID != externalUser.ConnectedRaveUserID)
+                            && (x.EdcRole == role));
+            Assert.AreEqual(users.Count(), 1);
+
             var course = ScenarioContext.Current.Get<Course>("course");
 
-            foreach (var user in users)
-            {
-                if (user.ID == externalUser.ConnectedRaveUserID) continue;
-                if (role != null && user.EdcRole != role) continue;
+            var courses = CourseCollection.GetCoursesForUser(users.First(), SystemInteraction.Use(), false, false);
 
-                Assert.IsNull(UserCourse.FetchByUserAndCourse(user.ID, course.ID, SystemInteraction.Use()));
-            }
+            Assert.IsNull(courses.GetById(course.ID));
         }
 
         [Then(@"the course should be marked as ""(.*)"" for the iMedidata user")]
         public void ThenTheCourseShouldBeMarkedAs____ForTheIMedidataUser(string courseStatus)
         {
+            var role = ScenarioContext.Current.Get<Role>("courseRole");
             var externalUser = ExternalUser.GetByExternalUUID(ScenarioContext.Current.Get<string>("externalUserUUID"), 1);
-            var users = Users.FindByExternalUserID(externalUser.ID, SystemInteraction.Use());
+            var users = Users.FindByExternalUserID(externalUser.ID, SystemInteraction.Use())
+                .Where(x => (x.ID != externalUser.ConnectedRaveUserID)
+                            && (x.EdcRole == role));
+            Assert.AreEqual(users.Count(), 1);
+
             var course = ScenarioContext.Current.Get<Course>("course");
 
-            foreach (var user in users)
+            var userCourse = UserCourse.FetchByUserAndCourse(users.First().ID, course.ID, SystemInteraction.Use());
+
+            switch(courseStatus.ToLowerInvariant())
             {
-                if (user.ID == externalUser.ConnectedRaveUserID) continue;
-                var userCourse = UserCourse.FetchByUserAndCourse(user.ID, course.ID, SystemInteraction.Use());
-                if (userCourse == null) continue;
-                switch(courseStatus.ToLowerInvariant())
-                {
-                    case "completed":
-                        Assert.IsTrue(userCourse.CourseStatus == CourseStatusEnum.Completed);
-                        break;
-                    case "not started":
-                        Assert.IsTrue(userCourse.CourseStatus == CourseStatusEnum.NotStarted);
-                        break;
-                    case "incomplete":
-                        Assert.IsTrue(userCourse.CourseStatus == CourseStatusEnum.Incomplete);
-                        break;
-                }  
-            }
+                case "completed":
+                    Assert.IsTrue(userCourse.CourseStatus == CourseStatusEnum.Completed);
+                    break;
+                case "not started":
+                    Assert.IsTrue(userCourse == null || userCourse.CourseStatus == CourseStatusEnum.NotStarted);
+                    break;
+                case "incomplete":
+                    Assert.IsTrue(userCourse.CourseStatus == CourseStatusEnum.Incomplete);
+                    break;
+                case "overridden":
+                    Assert.IsTrue(userCourse.Override);
+                    break;
+            }  
         }
 
         [Given(@"the eLearning course assignment is overridden")]
