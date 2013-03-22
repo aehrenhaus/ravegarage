@@ -33,7 +33,7 @@ $categories | %{
     Write-Host "Running $_"
     Set-Alias mstest "C:\Program Files (x86)\Microsoft Visual Studio 10.0\Common7\IDE\mstest.exe"
 
-    mstest /testcontainer:"$testDll" /resultsfile:"TestResults\$_.trx" /category:$_
+    mstest /testcontainer:"$testDll" /runconfig:Default.testsettings /resultsfile:"TestResults\$_.trx" /category:$_
     
 	if ($?) {
 		Write-Host "FF passed"
