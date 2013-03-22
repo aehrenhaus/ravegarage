@@ -5,6 +5,8 @@ using System.Reflection;
 using System.ServiceProcess;
 using Medidata.AmazonSimpleServices;
 using Medidata.RBT.Objects.Integration.Helpers;
+using Microsoft.Practices.Unity;
+using Microsoft.Practices.Unity.Configuration;
 using TechTalk.SpecFlow;
 using Medidata.RBT.Objects.Integration.Configuration;
 
@@ -18,9 +20,15 @@ namespace Medidata.RBT.Features.Integration.Hooks
         [BeforeTestRun]
         public static void BeforeTestRun()
         {
-            Objects.Integration.Helpers.DbHelper.RestoreDatabase();
+            DbHelper.RestoreDatabase();
 
             IntegrationTestContext.TestFailed = false;
+
+            if (!ConfigurationManager.AppSettings[AppSettingsTags.MessageDeliveryType]
+                     .Equals(MessageDeliveryTypes.SQS))
+            {
+                return;
+            }
 
             var accessKey = ConfigurationManager.AppSettings["AwsAccessKey"];
             var secretKey = ConfigurationManager.AppSettings["AwsSecretKey"];
@@ -60,8 +68,12 @@ namespace Medidata.RBT.Features.Integration.Hooks
         [AfterTestRun]
         public static void AfterTestRun()
         {
-            IntegrationTestContext.SqsWrapper.DeleteQueue(IntegrationTestContext.SqsQueueUrl);
-            
+            if (ConfigurationManager.AppSettings[AppSettingsTags.MessageDeliveryType]
+                     .Equals(MessageDeliveryTypes.SQS))
+            {
+                IntegrationTestContext.SqsWrapper.DeleteQueue(IntegrationTestContext.SqsQueueUrl);
+            }
+
             if(IntegrationTestContext.TestFailed)
             {
                 

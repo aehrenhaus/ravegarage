@@ -21,5 +21,7 @@
     <add key="AwsConfigXmlFilePath" value="%%%AwsConfgiXmlFilePath%%%"/>
     <add key="RaveBackupLocation" value="%%%RaveBackupLocation%%%"/>
     <add key="RavePath" value="%%%PathToRaveRepo%%%"/>
+    <add key="MessageDeliveryType" value="Broker"/>
+    <add key="log4net.Config" value="log4net.config" />
   </appSettings>
 </configuration>
