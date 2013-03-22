@@ -160,7 +160,7 @@ namespace Medidata.RBT.Features.Rave
 		[StepDefinition(@"TSDV is enabled")]
 		public void TsdvIsEnabled()
 		{
-			TsdvDao.EnableTsdv();
+            TsdvDao.Instance.TSDVEnabled = true;
 		}
 
 		/// <summary>
@@ -169,7 +169,7 @@ namespace Medidata.RBT.Features.Rave
 		[StepDefinition(@"TSDV is disabled")]
 		public void TsdvIsDisabled()
 		{
-			TsdvDao.DisableTsdv();
+            TsdvDao.Instance.TSDVEnabled = false;
 		}
 
     }

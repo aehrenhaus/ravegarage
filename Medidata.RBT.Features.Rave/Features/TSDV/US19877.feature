@@ -10,7 +10,8 @@ Feature: US19877 TSDV will regenerate a new randomization permutation when a TSD
 	And each randomization permutation has an equal probability of being selected
 	
 Background:
-	#Given I am logged in to Rave with username "defuser" and password "password"
+	Given TSDV is enabled
+	Given I perform cache flush of "Medidata.Core.Objects.Configuration"
 	Given xml draft "US19877.xml" is Uploaded with Environment name "Dev"
 
 	Given Site "Site 1" with Site Group "World" exists

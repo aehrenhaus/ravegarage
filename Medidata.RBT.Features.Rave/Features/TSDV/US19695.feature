@@ -11,7 +11,8 @@ Feature: US19695 When using Subject Include feature, Subjects are enrolled per s
 	Then subject assignment satisfies a specified allocation ratio
 
 Background:
-	#Given I am logged in to Rave with username "defuser" and password "password"
+	Given TSDV is enabled
+	Given I perform cache flush of "Medidata.Core.Objects.Configuration"
 	Given xml draft "US19695.xml" is Uploaded with Environment name "Dev"
 	Given Site "Site 1" with Site Group "Asia" exists
 	Given Site "Site 2" with Site Group "Europe" exists

@@ -9,8 +9,7 @@ Feature: US18689 When a user selects Permuted Block Randomization, subject assig
 
 Background:
 	Given TSDV is enabled
-	Given I login to Rave with user "defuser"
-	Given I perform cache flush
+	Given I perform cache flush of "Medidata.Core.Objects.Configuration"
 
 	Given xml draft "US18689.xml" is Uploaded with Environment name "Dev"
 	Given Site "Site 1" with Site Group "Asia" exists
@@ -476,6 +475,3 @@ Scenario: PB_US18689_01 As a Rave user, when I select Permuted Block Randomizati
 	And I select Site link "Site 4"
 	And I inactivate the plan
 	And I switch to the second window
-	
-	And TSDV is disabled
-	And I perform cache flush

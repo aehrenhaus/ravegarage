@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Collections.Specialized;
 
 namespace Medidata.RBT.PageObjects.Rave
 {
@@ -15,12 +16,26 @@ namespace Medidata.RBT.PageObjects.Rave
         /// <summary>
         /// Perform cached flush followed by setting webtestcontext to login page post cacheflush
         /// </summary>
-        /// <param name="context"></param>
-        public static void PerformCacheFlush(WebTestContext context)
+        /// <param name="typeToFlush">The type of object to flush</param>
+        public static void PerformCacheFlush(string typeToFlush = null)
         {
             CacheFlushPage cacheFlushPage = new CacheFlushPage();
-            cacheFlushPage.NavigateToSelf();
-            context.CurrentPage = new LoginPage();
+            if (typeToFlush == null)
+                cacheFlushPage.NavigateToSelf();
+            else
+                cacheFlushPage.NavigateToSelf(new NameValueCollection() { { "type", typeToFlush } });
+
+        }
+        /// <summary>
+        /// Perform cached flush followed by setting webtestcontext to login page post cacheflush
+        /// </summary>
+        /// <param name="context">The current web test context</param>
+        /// <param name="typeToFlush">The type of object to flush</param>
+        public static void PerformCacheFlush(WebTestContext context, string typeToFlush = null)
+        {
+            PerformCacheFlush(typeToFlush);
+            if(typeToFlush == null)
+                context.CurrentPage = new LoginPage();
         }
 
 		protected override double PageNavigationTimeoutSeconds { get { return 300;/*5 mins*/ } }

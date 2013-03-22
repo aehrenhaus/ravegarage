@@ -9,8 +9,7 @@ Feature: US18812 When a user selects  Dynamic Allocation Randomization Block alg
 
 Background:
 	Given TSDV is enabled
-	Given I login to Rave with user "defuser"
-	Given I perform cache flush
+	Given I perform cache flush of "Medidata.Core.Objects.Configuration"
 
 	Given xml draft "US18812.xml" is Uploaded with Environment name "Dev"
 	Given Site "Site 1" with Site Group "Asia" exists
@@ -511,7 +510,4 @@ Scenario: PB_US18812_01 Enroll 50 subjects in a study to verify that TSDV has ra
 	And I select link(partial) "Site 3"
 	And I inactivate the plan
 	And I switch to the second window
-
-	And TSDV is disabled
-	And I perform cache flush
 	
