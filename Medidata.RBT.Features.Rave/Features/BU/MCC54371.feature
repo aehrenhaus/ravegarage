@@ -42,45 +42,51 @@ Scenario: PB_MCC54371_01 As an EDC user, ..... This demonstrates zipping files f
 
 #@release_2013.2.0 
 @PB_MCC54371_02
-#@ignore
-Scenario: PB_MCC54371_02 As an EDC user, ..... This demonstrates using file copy with login user credentials to copy to network drive, and confirm it is processed afterwards
+@ignore
+Scenario: PB_MCC54371_02 As an EDC user, 
+...
+I would like to copy the files from a given local directory to a given network directory
+and verify that batch uploader processed it and the file disappears from the network drive
+using login credentials
+
 #
-	When I drop files from source directory "k2" to target directory "\\DL5RL8FV1\k2\Input\" using logged in user
-	Then I confirm file "KS_TEST-Prod-S-D-Full-20121003.txt" from network path "\\DL5RL8FV1\k2\Input\" is processed within 10 minutes
+	When I drop files from source directory "MCC54371_02" to target directory "\\DL5RL8FV1\BuShare\Input\" using logged in user
+	Then I confirm file "KS_TEST-Prod-S-D-Full-20120201.txt" from network path "\\DL5RL8FV1\BuShare\Input\" is processed within 10 minutes
 	And I take a screenshot
-
-
-
-
 
 
 #@release_2013.2.0 
 @PB_MCC54371_03
 @ignore
-Scenario: PB_MCC54371_03 As an EDC user, intention is to use ftp to transfer file to network drive and confirm using impersonation
+Scenario: PB_MCC54371_03 As an EDC user, 
+I would like to copy the files from a given local directory to a given ftp directory
+and verify that batch uploader processed it and the file disappears from the network drive
+using ftp and login credentials
+
 #
-	When I transfer the files "KS_TEST-Prod-S-D-Full-20121003.txt,KS_TEST-Prod-S-D-Full-20121004.txt" from source directory "k2" to ftp directory "K2Input" on ftp server "10.97.11.47" using ftp user name "anonymous" and password "password" and file transfer mode "binary"
-	Then I confirm file "KS_TEST-Prod-S-D-Full-20121003.txt" from network path "\\DL5RL8FV1\k2\Input\" is processed within 10 minutes
+	When I transfer the files "KS_TEST-Prod-S-D-Full-20120301.txt,KS_TEST-Prod-S-D-Full-20120302.txt" from source directory "MCC54371_03" to ftp directory "Input" on ftp server "10.97.30.31" using ftp user name "anonymous" and password "password" and file transfer mode "binary"
+	Then I confirm file "KS_TEST-Prod-S-D-Full-20120301.txt" from network path "\\DL5RL8FV1\BuShare\Input\" is processed within 10 minutes
 	And I take a screenshot
-
-
-
-
-
-
 
 
 #@release_2013.2.0 
 @PB_MCC54371_04
-@ignore
-Scenario: PB_MCC54371_04 As an EDC user, intention is to check whether file is processed by BU service when dropped with user impersonation
+#@ignore
+Scenario: PB_MCC54371_04 As an EDC user, 
+I would like to copy the files from a given local directory to a given network directory
+and verify that batch uploader processed it and the file disappears from the network drive
+using user impersonation
+
 #
 
-#   When I drop files from sourceDirectory "k2" to target directory "\\hdc505lbiswv001.lab1.hdc.mdsol.com\ftp\rave564conlabtesting7\k2" using user name "spigot0matic" and password "spigot$2010" on domain "HDC"
-#	When I drop files from sourceDirectory "k2" to target directory "\\hdc501pradmv007.hdc.mdsol.com\ftp\rave564conlabtesting7\k2" using user name "spigot0matic" and password "spigot$2010" on domain "HDC"
+#   When I drop files from sourceDirectory "k2" to target directory "\\hdc505lbiswv001.lab1.hdc.mdsol.com\ftp\rave564conlabtesting7\k2" 
+#   using user name "spigot0matic" and password "spigot$2010" on domain "HDC"
 
-    When I drop files from source directory "k2" to target directory "\\hdc505lbiswv001.lab1.hdc.mdsol.com\ftp\rave564conlabtesting7\k2" using user name "kiritharan.sandraseg" and password "xyz" on domain "HDC"
-	Then I confirm file "KS_TEST-Prod-S-D-Full-20121003.txt" from network path "\\hdc505lbiswv001.lab1.hdc.mdsol.com\ftp\rave564conlabtesting7\k2" is processed within 10 minutes using user name "kiritharan.sandraseg" and password "xyz" on domain "HDC"
+#	When I drop files from sourceDirectory "k2" to target directory "\\hdc501pradmv007.hdc.mdsol.com\ftp\rave564conlabtesting7\k2" 
+#   using user name "spigot0matic" and password "spigot$2010" on domain "HDC"
+
+    When I drop files from source directory "MCC54371_04" to target directory "\\hdc505lbiswv001.lab1.hdc.mdsol.com\ftp\rave564conlabtesting7\k2" using user name "kiritharan.sandraseg" and password "KirisPassword" on domain "HDC"
+	Then I confirm file "KS_TEST-Prod-S-D-Full-20120401.txt" from network path "\\hdc505lbiswv001.lab1.hdc.mdsol.com\ftp\rave564conlabtesting7\k2" is processed within 10 minutes using user name "kiritharan.sandraseg" and password "KirisPassword" on domain "HDC"
 	And I take a screenshot
 
 
