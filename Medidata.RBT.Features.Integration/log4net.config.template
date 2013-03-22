@@ -3,7 +3,7 @@
 	<appender name="DatabaseAppender" type="log4net.Appender.ADONetAppender">
 		<bufferSize value="1" />
 		<connectionType value="System.Data.SqlClient.SqlConnection, System.Data, Version=1.0.5000.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-		<connectionString value="data source=DANVM2012;initial catalog=SpecflowService;integrated security=false;persist security info=True;User ID=sa;Password=password*8" />
+		<connectionString value="data source=[Server];initial catalog=[Database];integrated security=false;persist security info=True;User ID=[User];Password=[Password]" />
 
 		<commandType value="Text" />
 		<commandText value="insert into LogMessages (Thread, [Level], Logger, Message, Exception) VALUES (@Thread, @Level, @LoggerName, @Message, @Exception)" />
