@@ -179,7 +179,7 @@ ALTER DATABASE {0} SET ONLINE WITH ROLLBACK IMMEDIATE ",
             return ds;
         }
 
-        public static bool ExecuteStoredProcedureRetBool(string spName, object[] args = null)
+        public static bool ExecuteStoredProcedureRetBool(string spName, IDictionary<string, object> args = null)
         {
             object obj = ExecuteScalarStoredProcedure(spName, args);
             string objString;
@@ -198,28 +198,23 @@ ALTER DATABASE {0} SET ONLINE WITH ROLLBACK IMMEDIATE ",
             return returnResult;
         }
 
-        public static object ExecuteScalarStoredProcedure(string spName, object[] args = null)
+		public static object ExecuteScalarStoredProcedure(string spName, IDictionary<string, object> args = null)
         {
-            //using (SqlConn)
-            //{
-            //    SqlConn.Open();
-            //    SqlCommand comm = new SqlCommand(spName, SqlConn);
-            //    comm.CommandType = CommandType.StoredProcedure;
-            //    object returnObject = comm.ExecuteScalar();
-            //    SqlConn.Close();
-            //    return returnObject;
-
-            //}
             return ExecuteScalar(spName, CommandType.StoredProcedure, args);
         }
 
-		public static object ExecuteScalar(string sqlString, CommandType commandType, object[] args = null)
+		public static object ExecuteScalar(string sqlString, CommandType commandType, IDictionary<string, object> args = null)
         {
 			using (var conn = new SqlConnection(_sqlConnString))
 			{
 				conn.Open();
 				SqlCommand comm = new SqlCommand(sqlString, conn);
                 comm.CommandType = commandType;
+				
+				if(args != null && args.Any())
+					foreach(var kvp in args)
+						comm.Parameters.Add(new SqlParameter(kvp.Key, kvp.Value));
+
                 object returnObject = comm.ExecuteScalar();
             
                 return returnObject;

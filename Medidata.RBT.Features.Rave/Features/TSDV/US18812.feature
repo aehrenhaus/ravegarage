@@ -1,6 +1,5 @@
 ﻿# When a user selects  Dynamic Allocation Randomization Block algorithm , subject assignment satisfies a specified allocation and ratio is random for all blocks.
 @EnableSeeding=true
-@ignore
 @FT_US18812
 #SecurityRole
 Feature: US18812 When a user selects  Dynamic Allocation Randomization Block algorithm , subject assignment satisfies a specified allocation and ratio is random for all blocks.
@@ -9,6 +8,9 @@ Feature: US18812 When a user selects  Dynamic Allocation Randomization Block alg
 	And subject assignment is random for all blocks
 
 Background:
+	Given TSDV is enabled
+	Given I perform cache flush of "Medidata.Core.Objects.Configuration"
+
 	Given xml draft "US18812.xml" is Uploaded with Environment name "Dev"
 	Given Site "Site 1" with Site Group "Asia" exists
 	Given Site "Site 2" with Site Group "Europe" exists

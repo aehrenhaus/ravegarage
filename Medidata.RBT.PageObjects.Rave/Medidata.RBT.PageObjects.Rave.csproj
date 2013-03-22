@@ -258,6 +258,7 @@
     <Compile Include="Reports\ReportsPage.cs" />
     <Compile Include="RavePageBase.cs" />
     <Compile Include="DDE\DDEPage.cs" />
+    <Compile Include="TSDV\TsdvDao.cs" />
     <Compile Include="UserAdministrator\UserActivationPage.cs" />
     <Compile Include="UserAdministrator\UploadUserPage.cs" />
     <Compile Include="UserAdministrator\UserEditPage.cs" />

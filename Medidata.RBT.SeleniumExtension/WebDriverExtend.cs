@@ -103,9 +103,9 @@ namespace Medidata.RBT.SeleniumExtension
 			wait.Until(driver1 => ((IJavaScriptExecutor)driver).ExecuteScript("return document.readyState").Equals("complete"));
 		}
 
-        public static void WaitForPageToBeReady(this RemoteWebDriver driver)
+        public static void WaitForPageToBeReady(this RemoteWebDriver driver, double timeoutSeconds = 180)
         {
-            WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(180));
+            WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(timeoutSeconds));
             wait.Until(driver1 => ((IJavaScriptExecutor)driver).ExecuteScript("return window.location.protocol").Equals("http:")
                 || ((IJavaScriptExecutor)driver).ExecuteScript("return window.location.protocol").Equals("https:"));
         }

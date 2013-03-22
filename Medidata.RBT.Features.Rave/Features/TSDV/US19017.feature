@@ -1,6 +1,5 @@
 ﻿# As a user, I can choose between two randomization types and change randomization types for non-Production plans
 @EnableSeeding=true
-@ignore
 @FT_US19017
 Feature: US19017 As a user, I can choose between two randomization types and change randomization types for non-Production plans
 	When user selects Targeted SDV Configuration report
@@ -10,7 +9,8 @@ Feature: US19017 As a user, I can choose between two randomization types and cha
 	And subject assignment is random for all blocks
 	
 Background:
-
+	Given TSDV is enabled
+	Given I perform cache flush of "Medidata.Core.Objects.Configuration"
 	Given xml draft "US19017.xml" is Uploaded with Environments
 		| Name |
 		| Dev  |

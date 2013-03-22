@@ -1,6 +1,5 @@
 ﻿# When a user selects Permuted Block Randomization, subject assignment satisfies a specified allocation and ratio is random for all blocks.
 @EnableSeeding=true
-@ignore
 @FT_US18689
 Feature: US18689 When a user selects Permuted Block Randomization, subject assignment satisfies a specified allocation and ratio is random for all blocks.
 	When user selects Permuted Block Randomization
@@ -9,6 +8,9 @@ Feature: US18689 When a user selects Permuted Block Randomization, subject assig
 	And each randomization permutation has an equal probability of being selected
 
 Background:
+	Given TSDV is enabled
+	Given I perform cache flush of "Medidata.Core.Objects.Configuration"
+
 	Given xml draft "US18689.xml" is Uploaded with Environment name "Dev"
 	Given Site "Site 1" with Site Group "Asia" exists
 	Given Site "Site 2" with Site Group "Europe" exists
@@ -77,11 +79,11 @@ Background:
 
 
 
-
 @release_2012.1.0 
 @PB_US18689_01
 @Validation
 Scenario: PB_US18689_01 As a Rave user, when I select Permuted Block Randomization and I Enroll 50 subjects in study then subject assignment satisfies the specified ratio and is random for all blocks in study level.
+	
 	Given I login to Rave with user "SUPER USER 1"
 	And I navigate to "Home"
 	And I navigate to "Reporter"

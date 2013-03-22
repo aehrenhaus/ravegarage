@@ -86,6 +86,11 @@ namespace Medidata.RBT
         public virtual string BaseURL { get; protected set; }
 
 		/// <summary>
+		/// Determines how long to wait for a loading page
+		/// </summary>
+		protected virtual double PageNavigationTimeoutSeconds { get { return 180; } }
+
+		/// <summary>
 		/// See IPage interface
 		/// </summary>
         public TPage As<TPage>() where TPage : class
@@ -344,8 +349,9 @@ namespace Medidata.RBT
             if (!string.IsNullOrEmpty(querystring))
                 url = url + "?" + querystring;
 
-            Browser.Url = url;
-            Browser.WaitForPageToBeReady();
+			Browser.Url = url;
+			Browser.WaitForPageToBeReady(
+				this.PageNavigationTimeoutSeconds);
             
             string modifiedUrl = Browser.Url;
             if (modifiedUrl.Contains("S(") && string.IsNullOrEmpty(contextSessionIdstring))

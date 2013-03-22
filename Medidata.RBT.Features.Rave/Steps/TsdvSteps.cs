@@ -2,6 +2,7 @@
 using Medidata.RBT.PageObjects.Rave;
 using TechTalk.SpecFlow.Assist;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Medidata.RBT.PageObjects.Rave.TSDV;
 
 namespace Medidata.RBT.Features.Rave
 {
@@ -152,5 +153,24 @@ namespace Medidata.RBT.Features.Rave
         {
               CurrentPage.As<BlockPlansPageBase>().CreateNewBlockPlan(planName, dataEntryRole);
         }
+
+		/// <summary>
+		/// Enables TSDV by calling spTSDVGlobalSwitch
+		/// </summary>
+		[StepDefinition(@"TSDV is enabled")]
+		public void TsdvIsEnabled()
+		{
+            TsdvDao.Instance.TSDVEnabled = true;
+		}
+
+		/// <summary>
+		/// Disables TSDV by calling spTSDVGlobalSwitch
+		/// </summary>
+		[StepDefinition(@"TSDV is disabled")]
+		public void TsdvIsDisabled()
+		{
+            TsdvDao.Instance.TSDVEnabled = false;
+		}
+
     }
 }
