@@ -145,9 +145,6 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="packages.config" />
-    <None Include="unity.config">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Medidata.AmazonSimpleServices\Medidata.AmazonSimpleServices\Medidata.AmazonSimpleServices.csproj">
