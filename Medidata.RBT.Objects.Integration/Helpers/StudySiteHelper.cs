@@ -57,8 +57,7 @@ namespace Medidata.RBT.Objects.Integration.Helpers
                         break;
                 }
 
-                if (!string.IsNullOrWhiteSpace(message))
-                    IntegrationTestContext.SqsWrapper.SendMessage(IntegrationTestContext.SqsQueueUrl, message);
+                SQSHelper.SendMessage(message);
             }
         }
 

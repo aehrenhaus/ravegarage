@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Configuration;
 using System.Threading;
 using Medidata.RBT.Objects.Integration.Configuration;
 using Medidata.RBT.Objects.Integration.Helpers;
@@ -38,6 +39,12 @@ namespace Medidata.RBT.Features.Integration.Steps
         [When(@"the messages? (?:is|are) successfully processed")]
         public void WhenTheMessageIsSuccessfullyProcessed()
         {
+            if (!ConfigurationManager.AppSettings[AppSettingsTags.MessageDeliveryType]
+                     .Equals(MessageDeliveryTypes.SQS))
+            {
+                return;
+            }
+
             var numVisibleMessages = IntegrationTestContext.SqsWrapper.GetApproxNumberOfMessages(IntegrationTestContext.SqsQueueUrl, true);
             var numInvisibleMessages = IntegrationTestContext.SqsWrapper.GetApproxNumberOfMessages(IntegrationTestContext.SqsQueueUrl, false);
             Thread.Sleep(15000);
