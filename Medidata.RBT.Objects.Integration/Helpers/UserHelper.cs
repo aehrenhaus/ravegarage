@@ -25,8 +25,7 @@ namespace Medidata.RBT.Objects.Integration.Helpers
 
                 message = Render.StringToString(UserTemplates.USER_PUT_TEMPLATE, new {config});
 
-                if (!string.IsNullOrWhiteSpace(message))
-                    IntegrationTestContext.SqsWrapper.SendMessage(IntegrationTestContext.SqsQueueUrl, message);
+                SQSHelper.SendMessage(message);
             }
         }
 
