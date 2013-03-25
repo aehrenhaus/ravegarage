@@ -103,10 +103,6 @@ namespace Medidata.RBT
             {
                 return m_UsersRegex;
             }
-            set
-            {
-                m_UsersRegex = value;
-            }
         }
 
         /// <summary>
@@ -168,6 +164,9 @@ namespace Medidata.RBT
         {
             get
             {
+                if (UsersRegex == null || UsersRegex.Count == 0 || String.IsNullOrEmpty(TimeFormat))
+                    throw new Exception("Please set users and time format before checking that audits exist");
+
                 if(m_Audits != null && !m_AuditUsersChanged)
                     return m_Audits;
 
@@ -289,8 +288,6 @@ namespace Medidata.RBT
 
         private static HashSet<string> RemoveDuplicates(MatchCollection matchCollection)
         {
-            Match[] matchArray = new Match[matchCollection.Count];
-            matchCollection.CopyTo(matchArray, 0);
             HashSet<string> uniqueUserRegex = new HashSet<string>();
             foreach (Match match in matchCollection)
                 uniqueUserRegex.Add(match.Value);
@@ -300,9 +297,6 @@ namespace Medidata.RBT
 
         public bool AuditExist(string message, string userRegex, string timeFormat, int? position = null)
         {
-            if(UsersRegex == null || UsersRegex.Count == 0 || String.IsNullOrEmpty(TimeFormat))
-                throw new Exception("Please set users and time format before checking that audits exist");
-
             List<PDFAudit> auditsToTest = null;
             List<PDFAudit> validAudits = new List<PDFAudit>();
 
