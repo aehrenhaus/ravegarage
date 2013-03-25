@@ -5,6 +5,7 @@ using System.Text;
 using Medidata.RBT.SeleniumExtension;
 using OpenQA.Selenium;
 using System.Collections.ObjectModel;
+using TechTalk.SpecFlow;
 
 namespace Medidata.RBT.PageObjects.Rave.PDF
 {
@@ -12,7 +13,7 @@ namespace Medidata.RBT.PageObjects.Rave.PDF
     /// PDFConfigProfilesPage object to manage Rave pdf configuration
     /// related functionality
     /// </summary>
-    class PDFConfigProfilesPage : RavePageBase, ICanPaginate
+    public class PDFConfigProfilesPage : RavePageBase, ICanPaginate
     {
         /// <summary>
         /// url for pdf config profiles page
@@ -90,6 +91,26 @@ namespace Medidata.RBT.PageObjects.Rave.PDF
             profileNameBox.SetText(profileName);
 
             this.ClickLink("Save");
+        }
+
+        /// <summary>
+        /// Edit an existing pdf profile
+        /// </summary>
+        /// <param name="profileName">The name of the profile to edit</param>
+        public void EditPdfProfile(string profileName)
+        {
+            int foundOnPage;
+            Table dt = new Table("Name");
+            dt.AddRow(profileName);
+
+            IWebElement pdfTr = this.FindInPaginatedList("", () =>
+            {
+                HtmlTable table = Browser.TryFindElementByPartialID("_ctl0_Content_Results").EnhanceAs<HtmlTable>();
+                return table.FindMatchRows(dt).FirstOrDefault();
+            }, out foundOnPage);
+
+            IWebElement editButton = pdfTr.TryFindElementByPartialID("_Edit");
+            editButton.Click();
         }
     }
 }

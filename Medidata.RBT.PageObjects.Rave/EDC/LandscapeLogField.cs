@@ -243,6 +243,10 @@ namespace Medidata.RBT.PageObjects.Rave
         }
         public override bool HasDataEntered(string text) { throw new NotImplementedException(); }
         public override OpenQA.Selenium.IWebElement FindQuery(QuerySearchModel filter) { throw new NotImplementedException(); }
+        public override void PlaceSticky(string responder, string text)
+        {
+            throw new NotImplementedException();
+        }
         public override void AnswerQuery(QuerySearchModel filter) { throw new NotImplementedException(); }
         public override void CloseQuery(QuerySearchModel filter) { throw new NotImplementedException(); }
         public override void CancelQuery(QuerySearchModel filter) { throw new NotImplementedException(); }

@@ -23,7 +23,7 @@ namespace Medidata.RBT.PageObjects.Rave
                 try
                 {
                     string[] reportUrls = RaveConfiguration.Default.ReportURL.Split(',');
-                    if (!string.IsNullOrEmpty(Browser.Url))
+                    if (Browser != null && !string.IsNullOrEmpty(Browser.Url))
                     {
                         foreach (string reportUrl in reportUrls)
                         {

@@ -285,7 +285,7 @@ so that I can minimize the number of pages generated in the PDF if I choose to d
 #	And I generate Data PDF "DataPDFA{Var(num)}"
 #	And I wait for PDF "DataPDFA{Var(num)}" to complete
 #	And I take a screenshot
-#	When I View Data PDF "DataPDFA{Var(num)}"
+#	When I view data PDF "Sub{Var(num1)}.pdf" from request "DataPDFA{Var(num)}"
 #	Then I should see continuous list of all records/loglines on "Medical History2" form with default values
 #	And I should see all fields correctly on one page (depending on the fields) on "Adverse Events1", "Adverse Events2" and "Medical History1" forms without default values
 #	And I take a screenshot
@@ -307,7 +307,7 @@ so that I can minimize the number of pages generated in the PDF if I choose to d
 #	And I generate Data PDF "DataPDFB{Var(num)}"
 #	And I wait for PDF "DataPDFB{Var(num)}" to complete
 #	And I take a screenshot
-#    When I View Data PDF "DataPDFB{Var(num)}"
+#   When I view data PDF "Sub{Var(num1)}.pdf" from request "DataPDFB{Var(num)}"
 #   	Then I should see a page break after each individual record/logline on "Medical History2" form with default values
 #	And I should see all fields correctly on one page (depending on the fields) on "Adverse Events1", "Adverse Events2" and "Medical History1" forms without default values
 #    And I take a screenshot
@@ -329,7 +329,7 @@ so that I can minimize the number of pages generated in the PDF if I choose to d
 #	And I generate Data PDF "DataPDFC{Var(num)}"
 #	And I wait for PDF "DataPDFC{Var(num)}" to complete
 #	And I take a screenshot
-#	When I View Data PDF "DataPDFC{Var(num)}"
+#	When I view data PDF "Sub{Var(num1)}.pdf" from request "DataPDFC{Var(num)}"
 #	Then I should see continuous list of all records/loglines on "Medical History2" form with default values
 #	And I should see all fields correctly on one page (depending on the fields) on "Adverse Events1", "Adverse Events2" and "Medical History1" forms without default values
 #	And I take a screenshot
@@ -351,7 +351,7 @@ so that I can minimize the number of pages generated in the PDF if I choose to d
 #	And I generate Data PDF "LDataPDFG{Var(num)}"
 #	And I wait for PDF "LDataPDFG{Var(num)}" to complete
 #	And I take a screenshot
-#	When I View Data PDF "LDataPDFG{Var(num)}"
+#	When I view data PDF "Sub{Var(num1)}.pdf" from request "LDataPDFG{Var(num)}"
 #	Then I should see continuous list of all records/loglines with "L" locale on "LMedical History2" form with default values
 #	And I should see all fields correctly on one page (depending on the fields) with "L" locale on "LAdverse Events1", "LAdverse Events2" and "LMedical History1" forms without default values
 #	And I take a screenshot
@@ -373,7 +373,7 @@ so that I can minimize the number of pages generated in the PDF if I choose to d
 #	And I generate Data PDF "LDataPDFH{Var(num)}"
 #	And I wait for PDF "LDataPDFH{Var(num)}" to complete
 #	And I take a screenshot
-#	When I View Data PDF "LDataPDFH{Var(num)}"
+#	When I view data PDF "Sub{Var(num1)}.pdf" from request "LDataPDFH{Var(num)}"
 #	Then I should see a page break after each individual record/logline with "L" locale on "LMedical History2" form with default values
 #	And I should see all fields correctly on one page (depending on the fields) with "L" locale on "LAdverse Events1", "LAdverse Events2" and "LMedical History1" forms without default values
 #	And I take a screenshot

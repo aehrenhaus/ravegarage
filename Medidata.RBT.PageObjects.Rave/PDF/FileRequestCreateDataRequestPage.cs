@@ -9,6 +9,7 @@ using TechTalk.SpecFlow;
 using Medidata.RBT.SeleniumExtension;
 using System.Threading;
 using Medidata.RBT.PageObjects.Rave.SharedRaveObjects;
+using Medidata.RBT.PageObjects.Rave.TableModels.PDF;
 
 namespace Medidata.RBT.PageObjects.Rave
 {
@@ -48,23 +49,26 @@ namespace Medidata.RBT.PageObjects.Rave
         /// <param name="args">The PDF arguments you want to select</param>
         public override void PerformPDFSpecificSelections(PDFCreationModel args)
         {
-            SelectSiteGroup(args.SiteGroup);
-            SelectSite(args.Site);
-            SelectSubject(args.Subject);
+            SelectSiteGroups(!string.IsNullOrEmpty(args.SiteGroups) ? args.SiteGroups.Split(',').ToList() : null);
+            SelectSites(!string.IsNullOrEmpty(args.SiteGroups) ? args.Sites.Split(',').ToList() : null);
+            SelectSubjects(!string.IsNullOrEmpty(args.SiteGroups) ? args.Subjects.Split(',').ToList() : null);
         }
 
         /// <summary>
         /// Select the site group from the checkbox span for pdf generator
         /// </summary>
         /// <param name="siteGroup"></param>
-        public void SelectSiteGroup(string siteGroup)
+        public void SelectSiteGroups(List<string> siteGroups)
         {
-            if (!string.IsNullOrEmpty(siteGroup))
+            if (siteGroups != null)
             {
-                IWebElement div = Browser.TryFindElementById("SitesSitegroups");
-                IWebElement span = Browser.TryFindElementBy(b => div.Spans().FirstOrDefault(x => x.Text == siteGroup));
+                foreach (string siteGroup in siteGroups)
+                {
+                    IWebElement div = Browser.TryFindElementById("SitesSitegroups");
+                    IWebElement span = Browser.TryFindElementBy(b => div.Spans().FirstOrDefault(x => x.Text == siteGroup));
 
-                span.Checkboxes()[0].EnhanceAs<Checkbox>().Check();
+                    span.Checkboxes()[0].EnhanceAs<Checkbox>().Check();
+                }
             }
         }
 
@@ -72,21 +76,24 @@ namespace Medidata.RBT.PageObjects.Rave
         /// Select the site name form the dropdown checkboxes for pdf generator
         /// </summary>
         /// <param name="sName"></param>
-        public void SelectSite(string sName)
+        public void SelectSites(List<string> sites)
         {
-            if (!string.IsNullOrEmpty(sName))
+            if (sites != null)
             {
-                IWebElement expandSite = Browser.FindElementById("ISitesSitegroups_SG_1");
-                if (expandSite.GetAttribute("src").Contains("plus"))
-                    expandSite.Click();
+                foreach (string site in sites)
+                {
+                    IWebElement expandSite = Browser.FindElementById("ISitesSitegroups_SG_1");
+                    if (expandSite.GetAttribute("src").Contains("plus"))
+                        expandSite.Click();
 
-                IWebElement div = Browser.TryFindElementById("DSitesSitegroups_SG_1");
+                    IWebElement div = Browser.TryFindElementById("DSitesSitegroups_SG_1");
 
-                string siteName = SeedingContext.GetExistingFeatureObjectOrMakeNew
-                    (sName, () => new Site(sName)).UniqueName;
+                    string siteName = SeedingContext.GetExistingFeatureObjectOrMakeNew
+                        (site, () => new Site(site)).UniqueName;
 
-                IWebElement span = Browser.TryFindElementBy(b => div.Spans().FirstOrDefault(x => x.Text == siteName));
-                span.Checkboxes()[0].EnhanceAs<Checkbox>().Check();
+                    IWebElement span = Browser.TryFindElementBy(b => div.Spans().FirstOrDefault(x => x.Text == siteName));
+                    span.Checkboxes()[0].EnhanceAs<Checkbox>().Check();
+                }
             }
         }
 
@@ -94,16 +101,21 @@ namespace Medidata.RBT.PageObjects.Rave
         /// Select the subject from the checkboxes for pdf generator
         /// </summary>
         /// <param name="subject"></param>
-        public void SelectSubject(string subject)
+        public void SelectSubjects(List<string> subjects)
         {
-            if (!string.IsNullOrEmpty(subject))
+            if (subjects != null)
             {
-                IWebElement expandBtn = Browser.FindElementById("Subjects_ShowHideBtn");
-                expandBtn.Click();
+                foreach (string subject in subjects)
+                {
 
-                IWebElement tr = Browser.TryFindElementBy(b => b.FindElements(By.XPath("//table[@id='Subjects_FrontEndCBList']/tbody/tr")).FirstOrDefault(x => x.Text == subject));
+                    IWebElement expandBtn = Browser.FindElementById("Subjects_ShowHideBtn");
+                    expandBtn.Click();
 
-                tr.Checkboxes()[0].Click();
+                    IWebElement tr = Browser.TryFindElementBy(b => b.FindElements(By.XPath("//table[@id='Subjects_FrontEndCBList']/tbody/tr"))
+                        .FirstOrDefault(x => x.Text == subject));
+
+                    tr.Checkboxes()[0].Click();
+                }
             }
         }
 

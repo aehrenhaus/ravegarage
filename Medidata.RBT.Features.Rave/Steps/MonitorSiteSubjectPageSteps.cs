@@ -16,7 +16,7 @@ namespace Medidata.RBT.Features.Rave
         [StepDefinition(@"I generate PDF for all visits")]
         public void IGeneratePDFForAllVisits()
         {
-            CurrentPage.As<SubjectPage>().GeneratePDFReport();
+            CurrentPage.As<SubjectPage>().GeneratePDFReport(WebTestContext);
         }
     }
 }

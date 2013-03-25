@@ -48,7 +48,7 @@ namespace Medidata.RBT.PageObjects.Rave.SiteAdministration
             }, out foundOnPage);
 
             if (siteLink == null)
-                throw new Exception("User not found in result table: " + siteName);
+                throw new Exception("Site not found in result table: " + siteName);
 
             siteLink.Click();
             var page = new SiteAdministrationDetailsPage();

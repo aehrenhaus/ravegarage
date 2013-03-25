@@ -45,6 +45,10 @@
     <Reference Include="Newtonsoft.Json">
       <HintPath>..\ExternalDlls\Newtonsoft.Json.dll</HintPath>
     </Reference>
+    <Reference Include="O2S.Components.PDF4NET, Version=4.4.0.0, Culture=neutral, PublicKeyToken=80d03dd9e5b85317, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\ExternalDlls\O2S.Components.PDF4NET.dll</HintPath>
+    </Reference>
     <Reference Include="Selenium.WebDriverBackedSelenium">
       <HintPath>..\ExternalDlls\Selenium.WebDriverBackedSelenium.dll</HintPath>
     </Reference>
@@ -311,6 +315,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>US18358_DT14073.feature</DependentUpon>
     </Compile>
+    <Compile Include="Features\PDF\R55_PDF_GLOBAL1_V4.feature.cs">
+      <DependentUpon>R55_PDF_GLOBAL1_V4.feature</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Include="Features\PDF\DT11249_US12607_US19066_DataPDF_Automated.feature.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -445,6 +454,8 @@
     <Compile Include="Steps\ArchitectSteps_DB.cs" />
     <Compile Include="Steps\CacheFlushSteps.cs" />
     <Compile Include="Steps\ConfigurationSteps.cs" />
+    <Compile Include="Steps\CoderSteps.cs" />
+    <Compile Include="Steps\EDCSteps_Sticky.cs" />
     <Compile Include="Steps\ExpandCollapseSteps.cs" />
     <Compile Include="Steps\Seeding\CoderDictionarySteps.cs" />
     <Compile Include="Steps\UserGroupSteps.cs" />
@@ -665,6 +676,10 @@
     <None Include="Features\Labs\US18358_DT14073.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>US18358_DT14073.feature.cs</LastGenOutput>
+    </None>
+    <None Include="Features\PDF\R55_PDF_GLOBAL1_V4.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>R55_PDF_GLOBAL1_V4.feature.cs</LastGenOutput>
     </None>
     <None Include="Features\PDF\DT11249_US12607_US19066_DataPDF_Automated.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>

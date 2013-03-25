@@ -1,6 +1,5 @@
-@MCC-46591
+﻿@MCC-46591
 @ignore
-
 Feature: MCC-46591 Log Lines in Blank/Blank Annotated PDFs are not displayed.
 
 #Note: Known DT12954 - Annotated PDFs cannot display all dictionary entries for Dictionaries with a large Number of Entries
@@ -11,10 +10,10 @@ Given I login to Rave with user "SUPER USER 1"
 Given xml draft "BlankPDF Study.xml" is Uploaded
 Given study "BlankPDF Study" is assigned to Site "SiteA"
 Given following PDF Configuration Profile Settings exist
-	|Profile Name  |
-	|MCC46591PDF1  |
-	|MCC46591PDF2  |
-	|MCC46591PDF3  |
+	| Profile Name |
+	| MCC46591PDF1 |
+	| MCC46591PDF2 |
+	| MCC46591PDF3 |
 Given following Project assignments exist
 | User             | Project        | Environment | Role            | Site  | SecurityRole          |
 | SUPER USER 1     | BlankPDF Study | Live: Prod  | SUPER ROLE 1    | SiteA | Project Admin Default |
@@ -54,26 +53,28 @@ And I take a screenshot
 And I generate Blank PDF "MCC46591BlankA{Var(num2)}"
 And I wait for PDF "MCC46591BlankA{Var(num2)}" to complete
 And I take a screenshot
-When I View Blank PDF "MCC46591BlankA{Var(num2)}"
-Then the text should contain "<Symbol>"
-| Symbol                            |
-|Adverse Events1                    |
-|Were there any adverse events?     |
-|Adverse Event Description          |
-|Start Date                         |
-|Stop Date                          |
-|Continuing?                        |
-|Serious adverse event?             |
-|Related to study drug?             |
-|Action taken (1)                   |
-|Action taken (2)                   |
-|Action taken (3)                   |
-|Action taken (4)                   |
-|Action taken (5)                   |
-|Action taken (6)                   |
-|Action taken (7)                   |
-|Action taken (8)                   |
-|Duration                           |
+When I view blank PDF "BASE.pdf" from request "MCC46591BlankA{Var(num2)}"
+Then I verify the PDF text contains
+| Data                           |
+| Were there any adverse events? |
+| Adverse Event Description      |
+| Start Date                     |
+| Stop Date                      |
+| Continuing?                    |
+| Serious adverse event?         |
+| Related to study drug?         |
+| Action taken (1)               |
+| Action taken (2)               |
+| Action taken (3)               |
+| Action taken (4)               |
+| Action taken (5)               |
+| Action taken (6)               |
+| Action taken (7)               |
+| Action taken (8)               |
+| Duration                       |
+Then I verify PDF bookmarks exist
+| Bookmark Text   |
+| Adverse Events1 |
 
 @Release_2013.1.0
 @PBMCC46591-002
@@ -93,26 +94,28 @@ And I take a screenshot
 And I generate Blank PDF "MCC46591BlankB{Var(num3)}"
 And I wait for PDF "MCC46591BlankB{Var(num3)}" to complete
 And I take a screenshot
-When I View Blank PDF "MCC46591BlankB{Var(num3)}"
-Then the text should contain "<Symbol>"
-| Symbol                            |
-|Adverse Events2                    |
-|Were there any adverse events?     |
-|Adverse Event Description          |
-|Start Date                         |
-|Stop Date                          |
-|Continuing?                        |
-|Serious adverse event?             |
-|Related to study drug?             |
-|Action taken (1)                   |
-|Action taken (2)                   |
-|Action taken (3)                   |
-|Action taken (4)                   |
-|Action taken (5)                   |
-|Action taken (6)                   |
-|Action taken (7)                   |
-|Action taken (8)                   |
-|Duration                           |
+When I view blank PDF "BASE.pdf" from request "MCC46591BlankB{Var(num3)}"
+Then I verify the PDF text contains
+| Data                           |
+| Were there any adverse events? |
+| Adverse Event Description      |
+| Start Date                     |
+| Stop Date                      |
+| Continuing?                    |
+| Serious adverse event?         |
+| Related to study drug?         |
+| Action taken (1)               |
+| Action taken (2)               |
+| Action taken (3)               |
+| Action taken (4)               |
+| Action taken (5)               |
+| Action taken (6)               |
+| Action taken (7)               |
+| Action taken (8)               |
+| Duration                       |
+Then I verify PDF bookmarks exist
+| Bookmark Text   |
+| Adverse Events2 |
 
 @Release_2013.1.0
 @PBMCC46591-003
@@ -132,19 +135,21 @@ And I take a screenshot
 And I generate Blank PDF "MCC46591BlankC{Var(num4)}"
 And I wait for PDF "MCC46591BlankC{Var(num4)}" to complete
 And I take a screenshot
-When I View Blank PDF "MCC46591BlankC{Var(num4)}"
-Then the text should contain "<Symbol>"
-| Symbol                            |
-|Adverse Events3                    |
-|Were there any adverse events?     |
-|Adverse Event Description          |
-|Start Date                         |
-|Stop Date                          |
-|Continuing?                        |
-|Serious adverse event?             |
-|Related to study drug?             |
-|Action taken                       |
-|Duration                           |
+When I view blank PDF "BASE.pdf" from request "MCC46591BlankC{Var(num4)}"
+Then I verify the PDF text contains
+| Data                           |
+| Were there any adverse events? |
+| Adverse Event Description      |
+| Start Date                     |
+| Stop Date                      |
+| Continuing?                    |
+| Serious adverse event?         |
+| Related to study drug?         |
+| Action taken                   |
+| Duration                       |
+Then I verify PDF bookmarks exist
+| Bookmark Text   |
+| Adverse Events3 |
 
 @Release_2013.1.0
 @PBMCC46591-004
@@ -164,19 +169,21 @@ And I take a screenshot
 And I generate Blank PDF "MCC46591BlankD{Var(num5)}"
 And I wait for PDF "MCC46591BlankD{Var(num5)}" to complete
 And I take a screenshot
-When I View Blank PDF "MCC46591BlankD{Var(num5)}"
-Then the text should contain "<Symbol>"
-| Symbol                            |
-|Adverse Events4                    |
-|Were there any adverse events?     |
-|Adverse Event Description          |
-|Start Date                         |
-|Stop Date                          |
-|Continuing?                        |
-|Serious adverse event?             |
-|Related to study drug?             |
-|Action taken                       |
-|Duration                           |
+When I view blank PDF "BASE.pdf" from request "MCC46591BlankD{Var(num5)}"
+Then I verify the PDF text contains
+| Data                           |
+| Were there any adverse events? |
+| Adverse Event Description      |
+| Start Date                     |
+| Stop Date                      |
+| Continuing?                    |
+| Serious adverse event?         |
+| Related to study drug?         |
+| Action taken                   |
+| Duration                       |
+Then I verify PDF bookmarks exist
+| Bookmark Text   |
+| Adverse Events4 |
 
 @Release_2013.1.0
 @PBMCC46591-005
@@ -196,19 +203,20 @@ And I take a screenshot
 And I generate Blank PDF "MCC46591BlankE{Var(num6)}"
 And I wait for PDF "MCC46591BlankE{Var(num6)}" to complete
 And I take a screenshot
-When I View Blank PDF "MCC46591BlankE{Var(num6)}"
-Then the text should contain "<Symbol>"
-| Symbol       |
-|Demographics1 |
-|Date of Birth |
-|Ethnicity     |
-|Specify race  |
-|Gender        |
+When I view blank PDF "BASE.pdf" from request "MCC46591BlankE{Var(num6)}"
+Then I verify the PDF text contains
+| Data          |
+| Date of Birth |
+| Ethnicity     |
+| Specify race  |
+| Gender        |
+Then I verify PDF bookmarks exist
+| Bookmark Text |
+| Demographics1 |
 
 @Release_2013.1.0
 @PBMCC46591-006
 @RR24.JAN.2013
-@Validation
 Scenario: MCC46591-006 Verify log form without default values in Landscape direction display all log lines on blank PDF with Annotated PDF Configuration Profile (MCC46591PDF2).
 
 #Given I have a log form without default values in Landscape direction
@@ -223,10 +231,9 @@ And I take a screenshot
 And I generate Blank PDF "MCC46591BlankF{Var(num7)}"
 And I wait for PDF "MCC46591BlankF{Var(num7)}" to complete
 And I take a screenshot
-When I View Blank PDF "MCC46591BlankF{Var(num7)}"
-Then the text should contain "<Symbol>"
-| Symbol                         |
-| Adverse Events1                |
+When I view blank PDF "BASE.pdf" from request "MCC46591BlankF{Var(num7)}"
+Then I verify the PDF text contains
+| Data                           |
 | Were there any adverse events? |
 | Adverse Event Description      |
 | Start Date                     |
@@ -243,7 +250,6 @@ Then the text should contain "<Symbol>"
 | Action taken (7)               |
 | Action taken (8)               |
 | Duration                       |
-| Annotations                    |
 | Field Name                     |
 | Data Type                      |
 | Field Label                    |
@@ -265,7 +271,11 @@ Then the text should contain "<Symbol>"
 | ACTIONCD6                      |
 | ACTIONCD7                      |
 | ACTIONCD8                      |
-| AE_DURATION                    |                    
+| AE_DURATION                    |
+Then I verify PDF bookmarks exist
+| Bookmark Text   |
+| Adverse Events1 |
+| Annotations     |
 
 @Release_2013.1.0
 @PBMCC46591-007
@@ -285,49 +295,51 @@ And I take a screenshot
 And I generate Blank PDF "MCC46591BlankG{Var(num8)}"
 And I wait for PDF "MCC46591BlankG{Var(num8)}" to complete
 And I take a screenshot
-When I View Blank PDF "MCC46591BlankG{Var(num8)}"
-Then the text should contain "<Symbol>"
-| Symbol                              |
-|Adverse Events2                      |
-|Were there any adverse events?       |
-|Adverse Event Description            |
-|Start Date                           |
-|Stop Date                            |
-|Continuing?                          |
-|Serious adverse event?               |
-|Related to study drug?               |
-|Action taken (1)                     |
-|Action taken (2)                     |
-|Action taken (3)                     |
-|Action taken (4)                     |
-|Action taken (5)                     |
-|Action taken (6)                     |
-|Action taken (7)                     |
-|Action taken (8)                     |
-|Duration                             |
-|Annotations                          |
-|Field Name                           |
-|Data Type                            |
-|Field Label                          |
-|Values                               |
-|Pre-Filled Values                    |
-|Include Field OID                    |
-|AE_INDIC2                            |
-|AEVERB2                              |
-|STARTDT2                             |
-|STOPDT2                              |
-|CONTINUE2                            |
-|SERIOUSCD2                           |
-|RELATEDCD2                           |
-|ACTIONCD1A                           |
-|ACTIONCD2A                           |
-|ACTIONCD3A                           |
-|ACTIONCD4A                           |
-|ACTIONCD5A                           |
-|ACTIONCD6A                           |
-|ACTIONCD7A                           |
-|ACTIONCD8A                           |
-|AE_DURATION2                         |
+When I view blank PDF "BASE.pdf" from request "MCC46591BlankG{Var(num8)}"
+Then I verify the PDF text contains
+| Data                           |
+| Were there any adverse events? |
+| Adverse Event Description      |
+| Start Date                     |
+| Stop Date                      |
+| Continuing?                    |
+| Serious adverse event?         |
+| Related to study drug?         |
+| Action taken (1)               |
+| Action taken (2)               |
+| Action taken (3)               |
+| Action taken (4)               |
+| Action taken (5)               |
+| Action taken (6)               |
+| Action taken (7)               |
+| Action taken (8)               |
+| Duration                       |
+| Field Name                     |
+| Data Type                      |
+| Field Label                    |
+| Values                         |
+| Pre-Filled Values              |
+| Include Field OID              |
+| AE_INDIC2                      |
+| AEVERB2                        |
+| STARTDT2                       |
+| STOPDT2                        |
+| CONTINUE2                      |
+| SERIOUSCD2                     |
+| RELATEDCD2                     |
+| ACTIONCD1A                     |
+| ACTIONCD2A                     |
+| ACTIONCD3A                     |
+| ACTIONCD4A                     |
+| ACTIONCD5A                     |
+| ACTIONCD6A                     |
+| ACTIONCD7A                     |
+| ACTIONCD8A                     |
+| AE_DURATION2                   |
+Then I verify PDF bookmarks exist
+| Bookmark Text   |
+| Adverse Events2 |
+| Annotations     |
 
 @Release_2013.1.0
 @PBMCC46591-008
@@ -347,35 +359,37 @@ And I take a screenshot
 And I generate Blank PDF "MCC46591BlankH{Var(num9)}"
 And I wait for PDF "MCC46591BlankH{Var(num9)}" to complete
 And I take a screenshot
-When I View Blank PDF "MCC46591BlankH{Var(num9)}"
-Then the text should contain "<Symbol>"
-| Symbol                          |
-|Adverse Events3                  |
-|Were there any adverse events?   |
-|Adverse Event Description        |
-|Start Date                       |
-|Stop Date                        |
-|Continuing?                      |
-|Serious adverse event?           |
-|Related to study drug?           |
-|Action taken                     |
-|Duration                         |
-|Annotations                      |
-|Field Name                       |
-|Data Type                        |
-|Field Label                      |
-|Values                           |
-|Pre-Filled Values                |
-|Include Field OID                |
-|AE_INDIC3                        |
-|AEVERB3                          |
-|STARTDT3                         |
-|STOPDT3                          |
-|CONTINUE3                        |
-|SERIOUSCD3                       |
-|RELATEDCD3                       |
-|ACTIONCD                         |
-|AE_DURATION3                     |
+When I view blank PDF "BASE.pdf" from request "MCC46591BlankH{Var(num9)}"
+Then I verify the PDF text contains
+| Data                           |
+| Were there any adverse events? |
+| Adverse Event Description      |
+| Start Date                     |
+| Stop Date                      |
+| Continuing?                    |
+| Serious adverse event?         |
+| Related to study drug?         |
+| Action taken                   |
+| Duration                       |
+| Field Name                     |
+| Data Type                      |
+| Field Label                    |
+| Values                         |
+| Pre-Filled Values              |
+| Include Field OID              |
+| AE_INDIC3                      |
+| AEVERB3                        |
+| STARTDT3                       |
+| STOPDT3                        |
+| CONTINUE3                      |
+| SERIOUSCD3                     |
+| RELATEDCD3                     |
+| ACTIONCD                       |
+| AE_DURATION3                   |
+Then I verify PDF bookmarks exist
+| Bookmark Text   |
+| Adverse Events3 |
+| Annotations     |
 
 @Release_2013.1.0
 @PBMCC46591-009
@@ -395,35 +409,37 @@ And I take a screenshot
 And I generate Blank PDF "MCC46591BlankI{Var(num10)}"
 And I wait for PDF "MCC46591BlankI{Var(num10)}" to complete
 And I take a screenshot
-When I View Blank PDF "MCC46591BlankI{Var(num10)}"
-Then the text should contain "<Symbol>"
-| Symbol                          |
-|Adverse Events4                  |
-|Were there any adverse events?   |
-|Adverse Event Description        |
-|Start Date                       |
-|Stop Date                        |
-|Continuing?                      |
-|Serious adverse event?           |
-|Related to study drug?           |
-|Action taken                     |
-|Duration                         |
-|Annotations                      |
-|Field Name                       |
-|Data Type                        |
-|Field Label                      |
-|Values                           |
-|Pre-Filled Values                |
-|Include Field OID                |
-|AE_INDIC4                        |
-|AEVERB4                          |
-|STARTDT4                         |
-|STOPDT4                          |
-|CONTINUE4                        |
-|SERIOUSCD4                       |
-|RELATEDCD4                       |
-|ACTIONCDA                        |
-|AE_DURATION4                     |
+When I view blank PDF "BASE.pdf" from request "MCC46591BlankI{Var(num10)}"
+Then I verify the PDF text contains
+| Data                           |
+| Were there any adverse events? |
+| Adverse Event Description      |
+| Start Date                     |
+| Stop Date                      |
+| Continuing?                    |
+| Serious adverse event?         |
+| Related to study drug?         |
+| Action taken                   |
+| Duration                       |
+| Field Name                     |
+| Data Type                      |
+| Field Label                    |
+| Values                         |
+| Pre-Filled Values              |
+| Include Field OID              |
+| AE_INDIC4                      |
+| AEVERB4                        |
+| STARTDT4                       |
+| STOPDT4                        |
+| CONTINUE4                      |
+| SERIOUSCD4                     |
+| RELATEDCD4                     |
+| ACTIONCDA                      |
+| AE_DURATION4                   |
+Then I verify PDF bookmarks exist
+| Bookmark Text   |
+| Adverse Events4 |
+| Annotations     |
 
 @Release_2013.1.0
 @PBMCC46591-010
@@ -443,25 +459,27 @@ And I take a screenshot
 And I generate Blank PDF "MCC46591BlankJ{Var(num11)}"
 And I wait for PDF "MCC46591BlankJ{Var(num11)}" to complete
 And I take a screenshot
-When I View Blank PDF "MCC46591BlankJ{Var(num11)}"
-Then the text should contain "<Symbol>"
-| Symbol             |
-|Demographics1       |
-|Date of Birth       |
-|Ethnicity           |
-|Specify race        |
-|Gender              |
-|Annotations         |
-|Field Name          |
-|Data Type           |
-|Field Label         |
-|Values              |
-|Pre-Filled Values   |
-|Include Field OID   |
-|BIRTHDT             |
-|RACE1               |
-|SPECIFY             |
-|GENDER3             |
+When I view blank PDF "BASE.pdf" from request "MCC46591BlankJ{Var(num11)}"
+Then I verify the PDF text contains
+| Data              |
+| Date of Birth     |
+| Ethnicity         |
+| Specify race      |
+| Gender            |
+| Field Name        |
+| Data Type         |
+| Field Label       |
+| Values            |
+| Pre-Filled Values |
+| Include Field OID |
+| BIRTHDT           |
+| RACE1             |
+| SPECIFY           |
+| GENDER3           |
+Then I verify PDF bookmarks exist
+| Bookmark Text |
+| Demographics1 |
+| Annotations   |
 
 @Release_2013.1.0
 @PBMCC46591-011
@@ -481,49 +499,51 @@ And I take a screenshot
 And I generate Blank PDF "MCC46591BlankK{Var(num12)}"
 And I wait for PDF "MCC46591BlankK{Var(num12)}" to complete
 And I take a screenshot
-When I View Blank PDF "MCC46591BlankK{Var(num12)}"
-Then the text should contain "<Symbol>"
-| Symbol                             |
-|Adverse Events1                     |
-|Were there any adverse events?      |
-|Adverse Event Description           |
-|Start Date                          |
-|Stop Date                           |
-|Continuing?                         |
-|Serious adverse event?              |
-|Related to study drug?              |
-|Action taken (1)                    |
-|Action taken (2)                    |
-|Action taken (3)                    |
-|Action taken (4)                    |
-|Action taken (5)                    |
-|Action taken (6)                    |
-|Action taken (7)                    |
-|Action taken (8)                    |
-|Duration                            |
-|Annotations                         |
-|Field Name                          |
-|Field Label                         |
-|Units                               |
-|Values                              |
-|Pre-Filled Values                   |
-|Include Field OID                   |
-|AE_INDIC                            |
-|AEVERB                              |
-|STARTDT                             |
-|STOPDT                              |
-|CONTINUE                            |
-|SERIOUSCD                           |
-|RELATEDCD                           |
-|ACTIONCD1                           |
-|ACTIONCD2                           |
-|ACTIONCD3                           |
-|ACTIONCD4                           |
-|ACTIONCD5                           |
-|ACTIONCD6                           |
-|ACTIONCD7                           |
-|ACTIONCD8                           |
-|AE_DURATION                         |
+When I view blank PDF "BASE.pdf" from request "MCC46591BlankK{Var(num12)}"
+Then I verify the PDF text contains
+| Data                           |
+| Were there any adverse events? |
+| Adverse Event Description      |
+| Start Date                     |
+| Stop Date                      |
+| Continuing?                    |
+| Serious adverse event?         |
+| Related to study drug?         |
+| Action taken (1)               |
+| Action taken (2)               |
+| Action taken (3)               |
+| Action taken (4)               |
+| Action taken (5)               |
+| Action taken (6)               |
+| Action taken (7)               |
+| Action taken (8)               |
+| Duration                       |
+| Field Name                     |
+| Field Label                    |
+| Units                          |
+| Values                         |
+| Pre-Filled Values              |
+| Include Field OID              |
+| AE_INDIC                       |
+| AEVERB                         |
+| STARTDT                        |
+| STOPDT                         |
+| CONTINUE                       |
+| SERIOUSCD                      |
+| RELATEDCD                      |
+| ACTIONCD1                      |
+| ACTIONCD2                      |
+| ACTIONCD3                      |
+| ACTIONCD4                      |
+| ACTIONCD5                      |
+| ACTIONCD6                      |
+| ACTIONCD7                      |
+| ACTIONCD8                      |
+| AE_DURATION                    |
+Then I verify PDF bookmarks exist
+| Bookmark Text   |
+| Adverse Events1 |
+| Annotations     |
 
 @Release_2013.1.0
 @PBMCC46591-012
@@ -543,49 +563,51 @@ And I take a screenshot
 And I generate Blank PDF "MCC46591BlankL{Var(num13)}"
 And I wait for PDF "MCC46591BlankL{Var(num13)}" to complete
 And I take a screenshot
-When I View Blank PDF "MCC46591BlankL{Var(num13)}"
-Then the text should contain "<Symbol>"
-| Symbol                              |
-|Adverse Events2                      |
-|Were there any adverse events?       |
-|Adverse Event Description            |
-|Start Date                           |
-|Stop Date                            |
-|Continuing?                          |
-|Serious adverse event?               |
-|Related to study drug?               |
-|Action taken (1)                     |
-|Action taken (2)                     |
-|Action taken (3)                     |
-|Action taken (4)                     |
-|Action taken (5)                     |
-|Action taken (6)                     |
-|Action taken (7)                     |
-|Action taken (8)                     |
-|Duration                             |
-|Annotations                          |
-|Field Name                           |
-|Field Label                          |
-|Units                                |
-|Values                               |
-|Pre-Filled Values                    |
-|Include Field OID                    |
-|AE_INDIC2                            |
-|AEVERB2                              |
-|STARTDT2                             |
-|STOPDT2                              |
-|CONTINUE2                            |
-|SERIOUSCD2                           |
-|RELATEDCD2                           |
-|ACTIONCD1A                           |
-|ACTIONCD2A                           |
-|ACTIONCD3A                           |
-|ACTIONCD4A                           |
-|ACTIONCD5A                           |
-|ACTIONCD6A                           |
-|ACTIONCD7A                           |
-|ACTIONCD8A                           |
-|AE_DURATION2                         |
+When I view blank PDF "BASE.pdf" from request "MCC46591BlankL{Var(num13)}"
+Then I verify the PDF text contains
+| Data                           |
+| Were there any adverse events? |
+| Adverse Event Description      |
+| Start Date                     |
+| Stop Date                      |
+| Continuing?                    |
+| Serious adverse event?         |
+| Related to study drug?         |
+| Action taken (1)               |
+| Action taken (2)               |
+| Action taken (3)               |
+| Action taken (4)               |
+| Action taken (5)               |
+| Action taken (6)               |
+| Action taken (7)               |
+| Action taken (8)               |
+| Duration                       |
+| Field Name                     |
+| Field Label                    |
+| Units                          |
+| Values                         |
+| Pre-Filled Values              |
+| Include Field OID              |
+| AE_INDIC2                      |
+| AEVERB2                        |
+| STARTDT2                       |
+| STOPDT2                        |
+| CONTINUE2                      |
+| SERIOUSCD2                     |
+| RELATEDCD2                     |
+| ACTIONCD1A                     |
+| ACTIONCD2A                     |
+| ACTIONCD3A                     |
+| ACTIONCD4A                     |
+| ACTIONCD5A                     |
+| ACTIONCD6A                     |
+| ACTIONCD7A                     |
+| ACTIONCD8A                     |
+| AE_DURATION2                   |
+Then I verify PDF bookmarks exist
+| Bookmark Text   |
+| Adverse Events2 |
+| Annotations     |
 
 @Release_2013.1.0
 @PBMCC46591-013
@@ -605,35 +627,37 @@ And I take a screenshot
 And I generate Blank PDF "MCC46591BlankM{Var(num14)}"
 And I wait for PDF "MCC46591BlankM{Var(num14)}" to complete
 And I take a screenshot
-When I View Blank PDF "MCC46591BlankM{Var(num14)}"
-Then the text should contain "<Symbol>"
-| Symbol                          |
-|Adverse Events3                  |
-|Were there any adverse events?   |
-|Adverse Event Description        |
-|Start Date                       |
-|Stop Date                        |
-|Continuing?                      |
-|Serious adverse event?           |
-|Related to study drug?           |
-|Action taken                     |
-|Duration                         |
-|Annotations                      |
-|Field Name                       |
-|Field Label                      |
-|Units                            |
-|Values                           |
-|Pre-Filled Values                |
-|Include Field OID                |
-|AE_INDIC3                        |
-|AEVERB3                          |
-|STARTDT3                         |
-|STOPDT3                          |
-|CONTINUE3                        |
-|SERIOUSCD3                       |
-|RELATEDCD3                       |
-|ACTIONCD                         |
-|AE_DURATION3                     |
+When I view blank PDF "BASE.pdf" from request "MCC46591BlankM{Var(num14)}"
+Then I verify the PDF text contains
+| Data                           |
+| Were there any adverse events? |
+| Adverse Event Description      |
+| Start Date                     |
+| Stop Date                      |
+| Continuing?                    |
+| Serious adverse event?         |
+| Related to study drug?         |
+| Action taken                   |
+| Duration                       |
+| Field Name                     |
+| Field Label                    |
+| Units                          |
+| Values                         |
+| Pre-Filled Values              |
+| Include Field OID              |
+| AE_INDIC3                      |
+| AEVERB3                        |
+| STARTDT3                       |
+| STOPDT3                        |
+| CONTINUE3                      |
+| SERIOUSCD3                     |
+| RELATEDCD3                     |
+| ACTIONCD                       |
+| AE_DURATION3                   |
+Then I verify PDF bookmarks exist
+| Bookmark Text   |
+| Adverse Events3 |
+| Annotations     |
 
 @Release_2013.1.0
 @PBMCC46591-014
@@ -653,35 +677,37 @@ And I take a screenshot
 And I generate Blank PDF "MCC46591BlankN{Var(num15)}"
 And I wait for PDF "MCC46591BlankN{Var(num15)}" to complete
 And I take a screenshot
-When I View Blank PDF "MCC46591BlankN{Var(num15)}"
-Then the text should contain "<Symbol>"
-| Symbol                          |
-|Adverse Events4                  |
-|Were there any adverse events?   |
-|Adverse Event Description        |
-|Start Date                       |
-|Stop Date                        |
-|Continuing?                      |
-|Serious adverse event?           |
-|Related to study drug?           |
-|Action taken                     |
-|Duration                         |
-|Annotations                      |
-|Field Name                       |
-|Field Label                      |
-|Units                            |
-|Values                           |
-|Pre-Filled Values                |
-|Include Field OID                |
-|AE_INDIC4                        |
-|AEVERB4                          |
-|STARTDT4                         |
-|STOPDT4                          |
-|CONTINUE4                        |
-|SERIOUSCD4                       |
-|RELATEDCD4                       |
-|ACTIONCDA                        |
-|AE_DURATION4                     |
+When I view blank PDF "BASE.pdf" from request "MCC46591BlankN{Var(num15)}"
+Then I verify the PDF text contains
+| Data                           |
+| Were there any adverse events? |
+| Adverse Event Description      |
+| Start Date                     |
+| Stop Date                      |
+| Continuing?                    |
+| Serious adverse event?         |
+| Related to study drug?         |
+| Action taken                   |
+| Duration                       |
+| Field Name                     |
+| Field Label                    |
+| Units                          |
+| Values                         |
+| Pre-Filled Values              |
+| Include Field OID              |
+| AE_INDIC4                      |
+| AEVERB4                        |
+| STARTDT4                       |
+| STOPDT4                        |
+| CONTINUE4                      |
+| SERIOUSCD4                     |
+| RELATEDCD4                     |
+| ACTIONCDA                      |
+| AE_DURATION4                   |
+Then I verify PDF bookmarks exist
+| Bookmark Text   |
+| Adverse Events4 |
+| Annotations     |
 
 @Release_2013.1.0
 @PBMCC46591-015
@@ -701,25 +727,45 @@ And I take a screenshot
 And I generate Blank PDF "MCC46591BlankO{Var(num16)}"
 And I wait for PDF "MCC46591BlankO{Var(num16)}" to complete
 And I take a screenshot
-When I View Blank PDF "MCC46591BlankO{Var(num16)}"
-Then the text should contain "<Symbol>"
-| Symbol             |
-|Demographics1       |
-|Date of Birth       |
-|Ethnicity           |
-|Specify race        |
-|Gender              |
-|Annotations         |
-|Field Name          |
-|Field Label         |
-|Units               |
-|Values              |
-|Pre-Filled Values   |
-|Include Field OID   |
-|BIRTHDT             |
-|RACE1               |
-|SPECIFY             |
-|GENDER3             |
+When I view blank PDF "BASE.pdf" from request "MCC46591BlankO{Var(num16)}"
+Then I verify the PDF text contains
+| Data              |
+| Date of Birth     |
+| Ethnicity         |
+| Specify race      |
+| Gender            |
+| Field Name        |
+| Field Label       |
+| Units             |
+| Values            |
+| Pre-Filled Values |
+| Include Field OID |
+| BIRTHDT           |
+| RACE1             |
+| SPECIFY           |
+| GENDER3           |
+Then I verify PDF bookmarks exist
+| Bookmark Text |
+| Demographics1 |
+| Annotations   |
+#Then the PDF page "6" contains
+#| Text          |
+#| Date of Birth |
+#| Ethnicity     |
+#| Specify race  |
+#| Gender        |
+#Then the PDF page "7" contains
+#| Text              |
+#| Field Name        |
+#| Field Label       |
+#| Units             |
+#| Values            |
+#| Pre-Filled Values |
+#| Include Field OID |
+#| BIRTHDT           |
+#| RACE1             |
+#| SPECIFY           |
+#| GENDER3           |
 
 @Release_2013.1.0
 @PBMCC46591-016
@@ -739,45 +785,47 @@ And I take a screenshot
 And I generate Blank PDF "MCC46591BlankP{Var(num17)}"
 And I wait for PDF "MCC46591BlankP{Var(num17)}" to complete
 And I take a screenshot
-When I View Blank PDF "MCC46591BlankP{Var(num17)}"
-Then the text should contain "<Symbol>"
-| Symbol                |
-|Medical History1       |
-|Visit Date:            |
-|Gender                 |
-|Body System:           |
-|Result:                |
-|Description:           |
-|HEENT                  |
-|Cardiovascular         |
-|Respiratory            |
-|Gastrointestinal       |
-|Genitourinary          |
-|Skin                   |
-|Endocrine              |
-|Hepatic                |
-|Musculoskeletal        |
-|SpecialSenses          |
-|Renal                  |
-|Hemotologic            |
-|Neurologic             |
-|Dermatologic           |
-|Immunologic            |
-|Metabolic              |
-|Biliary                |
-|Reproductive           |
-|Lymphatic              |
-|Psychiatric            |
-|Surgery                |
-|Binary                 |
-|Sensation              |
-|Glands                 |
-|Pulmonary              |
-|Aortic                 |
-|Atrium                 |
-|Aorta                  |
-|Mitral                 |
-|Other(please specify)  |
+When I view blank PDF "BASE.pdf" from request "MCC46591BlankP{Var(num17)}"
+Then I verify the PDF text contains
+| Data                  |
+| Visit Date:           |
+| Gender                |
+| Body System:          |
+| Result:               |
+| Description:          |
+| HEENT                 |
+| Cardiovascular        |
+| Respiratory           |
+| Gastrointestinal      |
+| Genitourinary         |
+| Skin                  |
+| Endocrine             |
+| Hepatic               |
+| Musculoskeletal       |
+| SpecialSenses         |
+| Renal                 |
+| Hemotologic           |
+| Neurologic            |
+| Dermatologic          |
+| Immunologic           |
+| Metabolic             |
+| Biliary               |
+| Reproductive          |
+| Lymphatic             |
+| Psychiatric           |
+| Surgery               |
+| Binary                |
+| Sensation             |
+| Glands                |
+| Pulmonary             |
+| Aortic                |
+| Atrium                |
+| Aorta                 |
+| Mitral                |
+| Other(please specify) |
+Then I verify PDF bookmarks exist
+| Bookmark Text    |
+| Medical History1 |
 
 @Release_2013.1.0
 @PBMCC46591-017
@@ -797,45 +845,47 @@ And I take a screenshot
 And I generate Blank PDF "MCC46591BlankQ{Var(num18)}"
 And I wait for PDF "MCC46591BlankQ{Var(num18)}" to complete
 And I take a screenshot
-When I View Blank PDF "MCC46591BlankQ{Var(num18)}"
-Then the text should contain "<Symbol>"
-| Symbol                |
-|Medical History2       |
-|Visit Date:            |
-|Gender                 |
-|Body System:           |
-|Result:                |
-|Description:           |
-|HEENT                  |
-|Cardiovascular         |
-|Respiratory            |
-|Gastrointestinal       |
-|Genitourinary          |
-|Skin                   |
-|Endocrine              |
-|Hepatic                |
-|Musculoskeletal        |
-|SpecialSenses          |
-|Renal                  |
-|Hemotologic            |
-|Neurologic             |
-|Dermatologic           |
-|Immunologic            |
-|Metabolic              |
-|Biliary                |
-|Reproductive           |
-|Lymphatic              |
-|Psychiatric            |
-|Surgery                |
-|Binary                 |
-|Sensation              |
-|Glands                 |
-|Pulmonary              |
-|Aortic                 |
-|Atrium                 |
-|Aorta                  |
-|Mitral                 |
-|Other(please specify)  |
+When I view blank PDF "BASE.pdf" from request "MCC46591BlankQ{Var(num18)}"
+Then I verify the PDF text contains
+| Data                  |
+| Visit Date:           |
+| Gender                |
+| Body System:          |
+| Result:               |
+| Description:          |
+| HEENT                 |
+| Cardiovascular        |
+| Respiratory           |
+| Gastrointestinal      |
+| Genitourinary         |
+| Skin                  |
+| Endocrine             |
+| Hepatic               |
+| Musculoskeletal       |
+| SpecialSenses         |
+| Renal                 |
+| Hemotologic           |
+| Neurologic            |
+| Dermatologic          |
+| Immunologic           |
+| Metabolic             |
+| Biliary               |
+| Reproductive          |
+| Lymphatic             |
+| Psychiatric           |
+| Surgery               |
+| Binary                |
+| Sensation             |
+| Glands                |
+| Pulmonary             |
+| Aortic                |
+| Atrium                |
+| Aorta                 |
+| Mitral                |
+| Other(please specify) |
+Then I verify PDF bookmarks exist
+| Bookmark Text    |
+| Medical History2 |
 
 @Release_2013.1.0
 @PBMCC46591-018
@@ -855,52 +905,54 @@ And I take a screenshot
 And I generate Blank PDF "MCC46591BlankR{Var(num19)}"
 And I wait for PDF "MCC46591BlankR{Var(num19)}" to complete
 And I take a screenshot
-When I View Blank PDF "MCC46591BlankR{Var(num19)}"
-Then the text should contain "<Symbol>"
-| Symbol                |
-|Medical History1       |
-|Visit Date:            |
-|Gender                 |
-|Body System:           |
-|Result:                |
-|Description:           |
-|Annotations            |
-|Field Name             |
-|Data Type              |
-|Field Label            |
-|Values                 |
-|Pre-Filled Values      |
-|Include Field OID      |
-|HEENT                  |
-|Cardiovascular         |
-|Respiratory            |
-|Gastrointestinal       |
-|Genitourinary          |
-|Skin                   |
-|Endocrine              |
-|Hepatic                |
-|Musculoskeletal        |
-|SpecialSenses          |
-|Renal                  |
-|Hemotologic            |
-|Neurologic             |
-|Dermatologic           |
-|Immunologic            |
-|Metabolic              |
-|Biliary                |
-|Reproductive           |
-|Lymphatic              |
-|Psychiatric            |
-|Surgery                |
-|Binary                 |
-|Sensation              |
-|Glands                 |
-|Pulmonary              |
-|Aortic                 |
-|Atrium                 |
-|Aorta                  |
-|Mitral                 |
-|Other(please specify)  |
+When I view blank PDF "BASE.pdf" from request "MCC46591BlankR{Var(num19)}"
+Then I verify the PDF text contains
+| Data                  |
+| Visit Date:           |
+| Gender                |
+| Body System:          |
+| Result:               |
+| Description:          |
+| Field Name            |
+| Data Type             |
+| Field Label           |
+| Values                |
+| Pre-Filled Values     |
+| Include Field OID     |
+| HEENT                 |
+| Cardiovascular        |
+| Respiratory           |
+| Gastrointestinal      |
+| Genitourinary         |
+| Skin                  |
+| Endocrine             |
+| Hepatic               |
+| Musculoskeletal       |
+| SpecialSenses         |
+| Renal                 |
+| Hemotologic           |
+| Neurologic            |
+| Dermatologic          |
+| Immunologic           |
+| Metabolic             |
+| Biliary               |
+| Reproductive          |
+| Lymphatic             |
+| Psychiatric           |
+| Surgery               |
+| Binary                |
+| Sensation             |
+| Glands                |
+| Pulmonary             |
+| Aortic                |
+| Atrium                |
+| Aorta                 |
+| Mitral                |
+| Other(please specify) |
+Then I verify PDF bookmarks exist
+| Bookmark Text    |
+| Medical History1 |
+| Annotations      |
 
 @Release_2013.1.0
 @PBMCC46591-019
@@ -920,52 +972,54 @@ And I take a screenshot
 And I generate Blank PDF "MCC46591BlankS{Var(num20)}"
 And I wait for PDF "MCC46591BlankS{Var(num20)}" to complete
 And I take a screenshot
-When I View Blank PDF "MCC46591BlankS{Var(num20)}"
-Then the text should contain "<Symbol>"
-| Symbol                |
-|Medical History2       |
-|Visit Date:            |
-|Gender                 |
-|Body System:           |
-|Result:                |
-|Description:           |
-|Annotations            |
-|Field Name             |
-|Data Type              |
-|Field Label            |
-|Values                 |
-|Pre-Filled Values      |
-|Include Field OID      |
-|HEENT                  |
-|Cardiovascular         |
-|Respiratory            |
-|Gastrointestinal       |
-|Genitourinary          |
-|Skin                   |
-|Endocrine              |
-|Hepatic                |
-|Musculoskeletal        |
-|SpecialSenses          |
-|Renal                  |
-|Hemotologic            |
-|Neurologic             |
-|Dermatologic           |
-|Immunologic            |
-|Metabolic              |
-|Biliary                |
-|Reproductive           |
-|Lymphatic              |
-|Psychiatric            |
-|Surgery                |
-|Binary                 |
-|Sensation              |
-|Glands                 |
-|Pulmonary              |
-|Aortic                 |
-|Atrium                 |
-|Aorta                  |
-|Mitral                 |
-|Other(please specify)  |
+When I view blank PDF "BASE.pdf" from request "MCC46591BlankS{Var(num20)}"
+Then I verify the PDF text contains
+| Data                  |
+| Visit Date:           |
+| Gender                |
+| Body System:          |
+| Result:               |
+| Description:          |
+| Field Name            |
+| Data Type             |
+| Field Label           |
+| Values                |
+| Pre-Filled Values     |
+| Include Field OID     |
+| HEENT                 |
+| Cardiovascular        |
+| Respiratory           |
+| Gastrointestinal      |
+| Genitourinary         |
+| Skin                  |
+| Endocrine             |
+| Hepatic               |
+| Musculoskeletal       |
+| SpecialSenses         |
+| Renal                 |
+| Hemotologic           |
+| Neurologic            |
+| Dermatologic          |
+| Immunologic           |
+| Metabolic             |
+| Biliary               |
+| Reproductive          |
+| Lymphatic             |
+| Psychiatric           |
+| Surgery               |
+| Binary                |
+| Sensation             |
+| Glands                |
+| Pulmonary             |
+| Aortic                |
+| Atrium                |
+| Aorta                 |
+| Mitral                |
+| Other(please specify) |
+Then I verify PDF bookmarks exist
+| Bookmark Text    |
+| Medical History2 |
+| Annotations      |
 
 @Release_2013.1.0
 @PBMCC46591-020
@@ -985,52 +1039,54 @@ And I take a screenshot
 And I generate Blank PDF "MCC46591BlankT{Var(num21)}"
 And I wait for PDF "MCC46591BlankT{Var(num21)}" to complete
 And I take a screenshot
-When I View Blank PDF "MCC46591BlankT{Var(num21)}"
-Then the text should contain "<Symbol>"
-| Symbol                |
-|Medical History1       |
-|Visit Date:            |
-|Gender                 |
-|Body System:           |
-|Result:                |
-|Description:           |
-|Annotations            |
-|Field Name             |
-|Field Label            |
-|Units                  |
-|Values                 |
-|Pre-Filled Values      |
-|Include Field OID      |
-|HEENT                  |
-|Cardiovascular         |
-|Respiratory            |
-|Gastrointestinal       |
-|Genitourinary          |
-|Skin                   |
-|Endocrine              |
-|Hepatic                |
-|Musculoskeletal        |
-|SpecialSenses          |
-|Renal                  |
-|Hemotologic            |
-|Neurologic             |
-|Dermatologic           |
-|Immunologic            |
-|Metabolic              |
-|Biliary                |
-|Reproductive           |
-|Lymphatic              |
-|Psychiatric            |
-|Surgery                |
-|Binary                 |
-|Sensation              |
-|Glands                 |
-|Pulmonary              |
-|Aortic                 |
-|Atrium                 |
-|Aorta                  |
-|Mitral                 |
-|Other(please specify)  |
+When I view blank PDF "BASE.pdf" from request "MCC46591BlankT{Var(num21)}"
+Then I verify the PDF text contains
+| Data                  |
+| Visit Date:           |
+| Gender                |
+| Body System:          |
+| Result:               |
+| Description:          |
+| Field Name            |
+| Field Label           |
+| Units                 |
+| Values                |
+| Pre-Filled Values     |
+| Include Field OID     |
+| HEENT                 |
+| Cardiovascular        |
+| Respiratory           |
+| Gastrointestinal      |
+| Genitourinary         |
+| Skin                  |
+| Endocrine             |
+| Hepatic               |
+| Musculoskeletal       |
+| SpecialSenses         |
+| Renal                 |
+| Hemotologic           |
+| Neurologic            |
+| Dermatologic          |
+| Immunologic           |
+| Metabolic             |
+| Biliary               |
+| Reproductive          |
+| Lymphatic             |
+| Psychiatric           |
+| Surgery               |
+| Binary                |
+| Sensation             |
+| Glands                |
+| Pulmonary             |
+| Aortic                |
+| Atrium                |
+| Aorta                 |
+| Mitral                |
+| Other(please specify) |
+Then I verify PDF bookmarks exist
+| Bookmark Text    |
+| Medical History1 |
+| Annotations      |
 
 @Release_2013.1.0
 @PBMCC46591-021
@@ -1050,52 +1106,54 @@ And I take a screenshot
 And I generate Blank PDF "MCC46591BlankU{Var(num22)}"
 And I wait for PDF "MCC46591BlankU{Var(num22)}" to complete
 And I take a screenshot
-When I View Blank PDF "MCC46591BlankU{Var(num22)}"
-Then the text should contain "<Symbol>"
-| Symbol                |
-|Medical History2       |
-|Visit Date:            |
-|Gender                 |
-|Body System:           |
-|Result:                |
-|Description:           |
-|Annotations            |
-|Field Name             |
-|Field Label            |
-|Units                  |
-|Values                 |
-|Pre-Filled Values      |
-|Include Field OID      |
-|HEENT                  |
-|Cardiovascular         |
-|Respiratory            |
-|Gastrointestinal       |
-|Genitourinary          |
-|Skin                   |
-|Endocrine              |
-|Hepatic                |
-|Musculoskeletal        |
-|SpecialSenses          |
-|Renal                  |
-|Hemotologic            |
-|Neurologic             |
-|Dermatologic           |
-|Immunologic            |
-|Metabolic              |
-|Biliary                |
-|Reproductive           |
-|Lymphatic              |
-|Psychiatric            |
-|Surgery                |
-|Binary                 |
-|Sensation              |
-|Glands                 |
-|Pulmonary              |
-|Aortic                 |
-|Atrium                 |
-|Aorta                  |
-|Mitral                 |
-|Other(please specify)  |
+When I view blank PDF "BASE.pdf" from request "MCC46591BlankU{Var(num22)}"
+Then I verify the PDF text contains
+| Data                  |
+| Visit Date:           |
+| Gender                |
+| Body System:          |
+| Result:               |
+| Description:          |
+| Field Name            |
+| Field Label           |
+| Units                 |
+| Values                |
+| Pre-Filled Values     |
+| Include Field OID     |
+| HEENT                 |
+| Cardiovascular        |
+| Respiratory           |
+| Gastrointestinal      |
+| Genitourinary         |
+| Skin                  |
+| Endocrine             |
+| Hepatic               |
+| Musculoskeletal       |
+| SpecialSenses         |
+| Renal                 |
+| Hemotologic           |
+| Neurologic            |
+| Dermatologic          |
+| Immunologic           |
+| Metabolic             |
+| Biliary               |
+| Reproductive          |
+| Lymphatic             |
+| Psychiatric           |
+| Surgery               |
+| Binary                |
+| Sensation             |
+| Glands                |
+| Pulmonary             |
+| Aortic                |
+| Atrium                |
+| Aorta                 |
+| Mitral                |
+| Other(please specify) |
+Then I verify PDF bookmarks exist
+| Bookmark Text    |
+| Medical History2 |
+| Annotations      |
 
 @Release_2013.1.0
 @PBMCC46591-022
@@ -1115,45 +1173,47 @@ And I take a screenshot
 And I generate Blank PDF "MCC46591BlankV{Var(num23)}"
 And I wait for PDF "MCC46591BlankV{Var(num23)}" to complete
 And I take a screenshot
-When I View Blank PDF "MCC46591BlankV{Var(num23)}"
-Then the text should contain "<Symbol>"
-| Symbol                |
-|Medical History3       |
-|Visit Date:            |
-|Gender                 |
-|Body System:           |
-|Result:                |
-|Description:           |
-|HEENT                  |
-|Cardiovascular         |
-|Respiratory            |
-|Gastrointestinal       |
-|Genitourinary          |
-|Skin                   |
-|Endocrine              |
-|Hepatic                |
-|Musculoskeletal        |
-|SpecialSenses          |
-|Renal                  |
-|Hemotologic            |
-|Neurologic             |
-|Dermatologic           |
-|Immunologic            |
-|Metabolic              |
-|Biliary                |
-|Reproductive           |
-|Lymphatic              |
-|Psychiatric            |
-|Surgery                |
-|Binary                 |
-|Sensation              |
-|Glands                 |
-|Pulmonary              |
-|Aortic                 |
-|Atrium                 |
-|Aorta                  |
-|Mitral                 |
-|Other(please specify)  |
+When I view blank PDF "BASE.pdf" from request "MCC46591BlankV{Var(num23)}"
+Then I verify the PDF text contains
+| Data                  |
+| Visit Date:           |
+| Gender                |
+| Body System:          |
+| Result:               |
+| Description:          |
+| HEENT                 |
+| Cardiovascular        |
+| Respiratory           |
+| Gastrointestinal      |
+| Genitourinary         |
+| Skin                  |
+| Endocrine             |
+| Hepatic               |
+| Musculoskeletal       |
+| SpecialSenses         |
+| Renal                 |
+| Hemotologic           |
+| Neurologic            |
+| Dermatologic          |
+| Immunologic           |
+| Metabolic             |
+| Biliary               |
+| Reproductive          |
+| Lymphatic             |
+| Psychiatric           |
+| Surgery               |
+| Binary                |
+| Sensation             |
+| Glands                |
+| Pulmonary             |
+| Aortic                |
+| Atrium                |
+| Aorta                 |
+| Mitral                |
+| Other(please specify) |
+Then I verify PDF bookmarks exist
+| Bookmark Text    |
+| Medical History3 |
 
 @Release_2013.1.0
 @PBMCC46591-023
@@ -1173,45 +1233,47 @@ And I take a screenshot
 And I generate Blank PDF "MCC46591BlankW{Var(num24)}"
 And I wait for PDF "MCC46591BlankW{Var(num24)}" to complete
 And I take a screenshot
-When I View Blank PDF "MCC46591BlankW{Var(num24)}"
-Then the text should contain "<Symbol>"
-| Symbol                |
-|Medical History4       |
-|Visit Date:            |
-|Gender                 |
-|Body System:           |
-|Result:                |
-|Description:           |
-|HEENT                  |
-|Cardiovascular         |
-|Respiratory            |
-|Gastrointestinal       |
-|Genitourinary          |
-|Skin                   |
-|Endocrine              |
-|Hepatic                |
-|Musculoskeletal        |
-|SpecialSenses          |
-|Renal                  |
-|Hemotologic            |
-|Neurologic             |
-|Dermatologic           |
-|Immunologic            |
-|Metabolic              |
-|Biliary                |
-|Reproductive           |
-|Lymphatic              |
-|Psychiatric            |
-|Surgery                |
-|Binary                 |
-|Sensation              |
-|Glands                 |
-|Pulmonary              |
-|Aortic                 |
-|Atrium                 |
-|Aorta                  |
-|Mitral                 |
-|Other(please specify)  |
+When I view blank PDF "BASE.pdf" from request "MCC46591BlankW{Var(num24)}"
+Then I verify the PDF text contains
+| Data                  |
+| Visit Date:           |
+| Gender                |
+| Body System:          |
+| Result:               |
+| Description:          |
+| HEENT                 |
+| Cardiovascular        |
+| Respiratory           |
+| Gastrointestinal      |
+| Genitourinary         |
+| Skin                  |
+| Endocrine             |
+| Hepatic               |
+| Musculoskeletal       |
+| SpecialSenses         |
+| Renal                 |
+| Hemotologic           |
+| Neurologic            |
+| Dermatologic          |
+| Immunologic           |
+| Metabolic             |
+| Biliary               |
+| Reproductive          |
+| Lymphatic             |
+| Psychiatric           |
+| Surgery               |
+| Binary                |
+| Sensation             |
+| Glands                |
+| Pulmonary             |
+| Aortic                |
+| Atrium                |
+| Aorta                 |
+| Mitral                |
+| Other(please specify) |
+Then I verify PDF bookmarks exist
+| Bookmark Text    |
+| Medical History4 |
 
 @Release_2013.1.0
 @PBMCC46591-024
@@ -1231,52 +1293,54 @@ And I take a screenshot
 And I generate Blank PDF "MCC46591BlankX{Var(num25)}"
 And I wait for PDF "MCC46591BlankX{Var(num25)}" to complete
 And I take a screenshot
-When I View Blank PDF "MCC46591BlankX{Var(num25)}"
-Then the text should contain "<Symbol>"
-| Symbol                |
-|Medical History1       |
-|Visit Date:            |
-|Gender                 |
-|Body System:           |
-|Result:                |
-|Description:           |
-|Annotations            |
-|Field Name             |
-|Data Type              |
-|Field Label            |
-|Values                 |
-|Pre-Filled Values      |
-|Include Field OID      |
-|HEENT                  |
-|Cardiovascular         |
-|Respiratory            |
-|Gastrointestinal       |
-|Genitourinary          |
-|Skin                   |
-|Endocrine              |
-|Hepatic                |
-|Musculoskeletal        |
-|SpecialSenses          |
-|Renal                  |
-|Hemotologic            |
-|Neurologic             |
-|Dermatologic           |
-|Immunologic            |
-|Metabolic              |
-|Biliary                |
-|Reproductive           |
-|Lymphatic              |
-|Psychiatric            |
-|Surgery                |
-|Binary                 |
-|Sensation              |
-|Glands                 |
-|Pulmonary              |
-|Aortic                 |
-|Atrium                 |
-|Aorta                  |
-|Mitral                 |
-|Other(please specify)  |
+When I view blank PDF "BASE.pdf" from request "MCC46591BlankX{Var(num25)}"
+Then I verify the PDF text contains
+| Data                  |
+| Visit Date:           |
+| Gender                |
+| Body System:          |
+| Result:               |
+| Description:          |
+| Field Name            |
+| Data Type             |
+| Field Label           |
+| Values                |
+| Pre-Filled Values     |
+| Include Field OID     |
+| HEENT                 |
+| Cardiovascular        |
+| Respiratory           |
+| Gastrointestinal      |
+| Genitourinary         |
+| Skin                  |
+| Endocrine             |
+| Hepatic               |
+| Musculoskeletal       |
+| SpecialSenses         |
+| Renal                 |
+| Hemotologic           |
+| Neurologic            |
+| Dermatologic          |
+| Immunologic           |
+| Metabolic             |
+| Biliary               |
+| Reproductive          |
+| Lymphatic             |
+| Psychiatric           |
+| Surgery               |
+| Binary                |
+| Sensation             |
+| Glands                |
+| Pulmonary             |
+| Aortic                |
+| Atrium                |
+| Aorta                 |
+| Mitral                |
+| Other(please specify) |
+Then I verify PDF bookmarks exist
+| Bookmark Text    |
+| Medical History1 |
+| Annotations      |
 
 @Release_2013.1.0
 @PBMCC46591-025
@@ -1296,52 +1360,54 @@ And I take a screenshot
 And I generate Blank PDF "MCC46591BlankY{Var(num26)}"
 And I wait for PDF "MCC46591BlankY{Var(num26)}" to complete
 And I take a screenshot
-When I View Blank PDF "MCC46591BlankY{Var(num26)}"
-Then the text should contain "<Symbol>"
-| Symbol                |
-|Medical History2       |
-|Visit Date:            |
-|Gender                 |
-|Body System:           |
-|Result:                |
-|Description:           |
-|Annotations            |
-|Field Name             |
-|Data Type              |
-|Field Label            |
-|Values                 |
-|Pre-Filled Values      |
-|Include Field OID      |
-|HEENT                  |
-|Cardiovascular         |
-|Respiratory            |
-|Gastrointestinal       |
-|Genitourinary          |
-|Skin                   |
-|Endocrine              |
-|Hepatic                |
-|Musculoskeletal        |
-|SpecialSenses          |
-|Renal                  |
-|Hemotologic            |
-|Neurologic             |
-|Dermatologic           |
-|Immunologic            |
-|Metabolic              |
-|Biliary                |
-|Reproductive           |
-|Lymphatic              |
-|Psychiatric            |
-|Surgery                |
-|Binary                 |
-|Sensation              |
-|Glands                 |
-|Pulmonary              |
-|Aortic                 |
-|Atrium                 |
-|Aorta                  |
-|Mitral                 |
-|Other(please specify)  |
+When I view blank PDF "BASE.pdf" from request "MCC46591BlankY{Var(num26)}"
+Then I verify the PDF text contains
+| Data                  |
+| Visit Date:           |
+| Gender                |
+| Body System:          |
+| Result:               |
+| Description:          |
+| Field Name            |
+| Data Type             |
+| Field Label           |
+| Values                |
+| Pre-Filled Values     |
+| Include Field OID     |
+| HEENT                 |
+| Cardiovascular        |
+| Respiratory           |
+| Gastrointestinal      |
+| Genitourinary         |
+| Skin                  |
+| Endocrine             |
+| Hepatic               |
+| Musculoskeletal       |
+| SpecialSenses         |
+| Renal                 |
+| Hemotologic           |
+| Neurologic            |
+| Dermatologic          |
+| Immunologic           |
+| Metabolic             |
+| Biliary               |
+| Reproductive          |
+| Lymphatic             |
+| Psychiatric           |
+| Surgery               |
+| Binary                |
+| Sensation             |
+| Glands                |
+| Pulmonary             |
+| Aortic                |
+| Atrium                |
+| Aorta                 |
+| Mitral                |
+| Other(please specify) |
+Then I verify PDF bookmarks exist
+| Bookmark Text    |
+| Medical History2 |
+| Annotations      |
 
 @Release_2013.1.0
 @PBMCC46591-026
@@ -1361,52 +1427,54 @@ And I take a screenshot
 And I generate Blank PDF "MCC46591BlankZ{Var(num26)}"
 And I wait for PDF "MCC46591BlankZ{Var(num26)}" to complete
 And I take a screenshot
-When I View Blank PDF "MCC46591BlankZ{Var(num26)}"
-Then the text should contain "<Symbol>"
-| Symbol                |
-|Medical History1       |
-|Visit Date:            |
-|Gender                 |
-|Body System:           |
-|Result:                |
-|Description:           |
-|Annotations            |
-|Field Name             |
-|Field Label            |
-|Units                  |
-|Values                 |
-|Pre-Filled Values      |
-|Include Field OID      |
-|HEENT                  |
-|Cardiovascular         |
-|Respiratory            |
-|Gastrointestinal       |
-|Genitourinary          |
-|Skin                   |
-|Endocrine              |
-|Hepatic                |
-|Musculoskeletal        |
-|SpecialSenses          |
-|Renal                  |
-|Hemotologic            |
-|Neurologic             |
-|Dermatologic           |
-|Immunologic            |
-|Metabolic              |
-|Biliary                |
-|Reproductive           |
-|Lymphatic              |
-|Psychiatric            |
-|Surgery                |
-|Binary                 |
-|Sensation              |
-|Glands                 |
-|Pulmonary              |
-|Aortic                 |
-|Atrium                 |
-|Aorta                  |
-|Mitral                 |
-|Other(please specify)  |
+When I view blank PDF "BASE.pdf" from request "MCC46591BlankZ{Var(num26)}"
+Then I verify the PDF text contains
+| Data                  |
+| Visit Date:           |
+| Gender                |
+| Body System:          |
+| Result:               |
+| Description:          |
+| Field Name            |
+| Field Label           |
+| Units                 |
+| Values                |
+| Pre-Filled Values     |
+| Include Field OID     |
+| HEENT                 |
+| Cardiovascular        |
+| Respiratory           |
+| Gastrointestinal      |
+| Genitourinary         |
+| Skin                  |
+| Endocrine             |
+| Hepatic               |
+| Musculoskeletal       |
+| SpecialSenses         |
+| Renal                 |
+| Hemotologic           |
+| Neurologic            |
+| Dermatologic          |
+| Immunologic           |
+| Metabolic             |
+| Biliary               |
+| Reproductive          |
+| Lymphatic             |
+| Psychiatric           |
+| Surgery               |
+| Binary                |
+| Sensation             |
+| Glands                |
+| Pulmonary             |
+| Aortic                |
+| Atrium                |
+| Aorta                 |
+| Mitral                |
+| Other(please specify) |
+Then I verify PDF bookmarks exist
+| Bookmark Text    |
+| Medical History1 |
+| Annotations      |
 
 @Release_2013.1.0
 @PBMCC46591-027
@@ -1426,52 +1494,54 @@ And I take a screenshot
 And I generate Blank PDF "MCC46591BlankZa{Var(num27)}"
 And I wait for PDF "MCC46591BlankZa{Var(num27)}" to complete
 And I take a screenshot
-When I View Blank PDF "MCC46591BlankZa{Var(num27)}"
-Then the text should contain "<Symbol>"
-| Symbol                |
-|Medical History2       |
-|Visit Date:            |
-|Gender                 |
-|Body System:           |
-|Result:                |
-|Description:           |
-|Annotations            |
-|Field Name             |
-|Field Label            |
-|Units                  |
-|Values                 |
-|Pre-Filled Values      |
-|Include Field OID      |
-|HEENT                  |
-|Cardiovascular         |
-|Respiratory            |
-|Gastrointestinal       |
-|Genitourinary          |
-|Skin                   |
-|Endocrine              |
-|Hepatic                |
-|Musculoskeletal        |
-|SpecialSenses          |
-|Renal                  |
-|Hemotologic            |
-|Neurologic             |
-|Dermatologic           |
-|Immunologic            |
-|Metabolic              |
-|Biliary                |
-|Reproductive           |
-|Lymphatic              |
-|Psychiatric            |
-|Surgery                |
-|Binary                 |
-|Sensation              |
-|Glands                 |
-|Pulmonary              |
-|Aortic                 |
-|Atrium                 |
-|Aorta                  |
-|Mitral                 |
-|Other(please specify)  |
+When I view blank PDF "BASE.pdf" from request "MCC46591BlankZa{Var(num27)}"
+Then I verify the PDF text contains
+| Data                  |
+| Visit Date:           |
+| Gender                |
+| Body System:          |
+| Result:               |
+| Description:          |
+| Field Name            |
+| Field Label           |
+| Units                 |
+| Values                |
+| Pre-Filled Values     |
+| Include Field OID     |
+| HEENT                 |
+| Cardiovascular        |
+| Respiratory           |
+| Gastrointestinal      |
+| Genitourinary         |
+| Skin                  |
+| Endocrine             |
+| Hepatic               |
+| Musculoskeletal       |
+| SpecialSenses         |
+| Renal                 |
+| Hemotologic           |
+| Neurologic            |
+| Dermatologic          |
+| Immunologic           |
+| Metabolic             |
+| Biliary               |
+| Reproductive          |
+| Lymphatic             |
+| Psychiatric           |
+| Surgery               |
+| Binary                |
+| Sensation             |
+| Glands                |
+| Pulmonary             |
+| Aortic                |
+| Atrium                |
+| Aorta                 |
+| Mitral                |
+| Other(please specify) |
+Then I verify PDF bookmarks exist
+| Bookmark Text    |
+| Medical History2 |
+| Annotations      |
 
 @Release_2013.1.0
 @PBMCC46591-028
@@ -1491,16 +1561,18 @@ And I take a screenshot
 And I generate Blank PDF "MCC46591BlankZb{Var(num31)}"
 And I wait for PDF "MCC46591BlankZb{Var(num31)}" to complete
 And I take a screenshot
-When I View Blank PDF "MCC46591BlankZb{Var(num31)}"
-Then the text should contain "<Symbol>"
-| Symbol         |
-|Demographics2   |
-|Date of Birth   |
-|Ethnicity       |
-|Specify race    |
-|Gender          |
-|Asian           |
-|Female          |
+When I view blank PDF "BASE.pdf" from request "MCC46591BlankZb{Var(num31)}"
+Then I verify the PDF text contains
+| Data          |
+| Date of Birth |
+| Ethnicity     |
+| Specify race  |
+| Gender        |
+| Asian         |
+| Female        |
+Then I verify PDF bookmarks exist
+| Bookmark Text |
+| Demographics2 |
 
 @Release_2013.1.0
 @PBMCC46591-029
@@ -1520,23 +1592,25 @@ And I take a screenshot
 And I generate Blank PDF "MCC46591BlankZc{Var(num32)}"
 And I wait for PDF "MCC46591BlankZc{Var(num32)}" to complete
 And I take a screenshot
-When I View Blank PDF "MCC46591BlankZc{Var(num32)}"
-Then the text should contain "<Symbol>"
-| Symbol              |
-|Demographics2        |
-|Date of Birth        |
-|Ethnicity            |
-|Specify race         |
-|Gender               |
-|Annotations          |
-|Field Name           |
-|Data Type            |
-|Field Label          |
-|Values               |
-|Pre-Filled Values    |
-|Include Field OID    |
-|Asian                |
-|Female               |
+When I view blank PDF "BASE.pdf" from request "MCC46591BlankZc{Var(num32)}"
+Then I verify the PDF text contains
+| Data              |
+| Date of Birth     |
+| Ethnicity         |
+| Specify race      |
+| Gender            |
+| Field Name        |
+| Data Type         |
+| Field Label       |
+| Values            |
+| Pre-Filled Values |
+| Include Field OID |
+| Asian             |
+| Female            |
+Then I verify PDF bookmarks exist
+| Bookmark Text |
+| Demographics2 |
+| Annotations   |
 
 @Release_2013.1.0
 @PBMCC46591-030
@@ -1556,20 +1630,22 @@ And I take a screenshot
 And I generate Blank PDF "MCC46591BlankZd{Var(num33)}"
 And I wait for PDF "MCC46591BlankZd{Var(num33)}" to complete
 And I take a screenshot
-When I View Blank PDF "MCC46591BlankZd{Var(num33)}"
-Then the text should contain "<Symbol>"
-| Symbol              |
-|Demographics2        |
-|Date of Birth        |
-|Ethnicity            |
-|Specify race         |
-|Gender               |
-|Annotations          |
-|Field Name           |
-|Field Label          |
-|Units                |
-|Values               |
-|Pre-Filled Values    |
-|Include Field OID    |
-|Asian                |
-|Female               |
+When I view blank PDF "BASE.pdf" from request "MCC46591BlankZd{Var(num33)}"
+Then I verify the PDF text contains
+| Data              |
+| Date of Birth     |
+| Ethnicity         |
+| Specify race      |
+| Gender            |
+| Field Name        |
+| Field Label       |
+| Units             |
+| Values            |
+| Pre-Filled Values |
+| Include Field OID |
+| Asian             |
+| Female            |
+Then I verify PDF bookmarks exist
+| Bookmark Text |
+| Demographics2 |
+| Annotations   |

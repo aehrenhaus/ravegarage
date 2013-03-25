@@ -269,12 +269,21 @@ namespace Medidata.RBT.PageObjects.Rave.Architect
             }) != null;
         }
 
-        public bool VerifySomethingExist(string areaIdentifier, string type, string identifier, bool exactMatch, int? amountOfTimes)
+        public bool VerifySomethingExist(string areaIdentifier, string type, string identifier, bool exactMatch, int? amountOfTimes, RBT.BaseEnhancedPDF pdf, bool? bold)
         {
             if (type.Equals("text", StringComparison.InvariantCultureIgnoreCase))
                 return Browser.FindElementByTagName("body").Text.Contains(identifier);
             else
                 return false;
+        }
+
+        public bool VerifySomethingExist(string areaIdentifier, string type, List<string> identifiers, bool exactMatch = false, int? amountOfTimes = null, RBT.BaseEnhancedPDF pdf = null, bool? bold = null)
+        {
+            foreach (string identifier in identifiers)
+                if (VerifySomethingExist(areaIdentifier, type, identifier, exactMatch, amountOfTimes, pdf, bold) == false)
+                    return false;
+
+            return true;
         }
     }
 }

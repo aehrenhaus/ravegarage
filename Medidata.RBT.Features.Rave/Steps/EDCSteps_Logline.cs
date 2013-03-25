@@ -31,6 +31,7 @@ namespace Medidata.RBT.Features.Rave
         /// </summary>
         /// <param name="lineNum">Log line to open</param>
 		[StepDefinition(@"I open log line ([^""]*)")]
+        [StepDefinition(@"I open log line ([^""]*) for edit")]
 		public void IOpenLogLine____(int lineNum)
 		{
 			CurrentPage.As<CRFPage>().OpenLogline(lineNum);
@@ -44,17 +45,6 @@ namespace Medidata.RBT.Features.Rave
 		{
 			CurrentPage.As<CRFPage>().OpenLastLogline();
 		}
-
-        /// <summary>
-        /// Open log line with the number passed in for edit
-        /// </summary>
-        /// <param name="lineNum">Log line to open</param>
-		[StepDefinition(@"I open log line ([^""]*) for edit")]
-		public void IOpenLogLine____ForEdit(int lineNum)
-		{
-			CurrentPage.As<CRFPage>().OpenLogline(lineNum);
-		}
-
 		#region combinations
 
         /// <summary>

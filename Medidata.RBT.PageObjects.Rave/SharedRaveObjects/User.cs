@@ -24,10 +24,24 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
         private string FileName { get; set; }
         private string ActivationCode { get; set; }
         private string UniquePin { get; set; }
+        private int? m_UserID;
+
         public List<StudyAssignment> StudyAssignments { get; set; }
         public List<ModuleAssignment> ModuleAssignments { get; set; }
         public List<ReportAssignment> ReportAssignments { get; set; }
         public string Password { get; private set; }
+        public int UserID
+        {
+            get
+            {
+                if (m_UserID == null)
+                {
+                    //Get it from the user that matches that name in the DB
+                    m_UserID = GetUserID(UniqueName);
+                }
+                return m_UserID.Value;
+            }
+        }
 
         /// <summary>
         /// The uploaded user constructor. This uploads users using the user uploader.
@@ -205,5 +219,21 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
                 return false;
         }
 
+        #region SQL STRINGS
+
+        private static int GetUserID(string login)
+        {
+            string sql = string.Format(User.GET_USER_FROM_DB, login);
+
+            return (int)DbHelper.ExecuteDataSet(sql).GetFirstRow()["UserID"];
+        }
+
+        #region GET_USER_FROM_DB
+        private const string GET_USER_FROM_DB =
+            @"
+            select * from Users where Login = '{0}'
+            ";
+        #endregion
+        #endregion
     }
 }

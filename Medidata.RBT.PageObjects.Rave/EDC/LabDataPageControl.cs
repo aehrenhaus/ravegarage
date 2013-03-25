@@ -69,7 +69,10 @@ namespace Medidata.RBT.PageObjects.Rave
             if (area != null)
             {
                 ReadOnlyCollection<IWebElement> tds = area.Parent().Children();
-                return new NonLabFieldControl(Page, area, tds[tds.Count - 1]);
+                return new NonLabFieldControl(Page, area, tds[tds.Count - 1])
+                {
+                    FieldName = fieldText
+                };
             }
             else
             {
@@ -89,7 +92,10 @@ namespace Medidata.RBT.PageObjects.Rave
                 IWebElement fieldTR = fieldTRs[i];
                 IWebElement fieldTRQueries = fieldTRs[i + 1];
 
-                return new LabFieldControl(Page, fieldTR.Children()[1], fieldTRQueries);
+                return new LabFieldControl(Page, fieldTR.Children()[1], fieldTRQueries)
+                {
+                    FieldName = fieldText
+                };
             }
 
 		}
@@ -102,7 +108,10 @@ namespace Medidata.RBT.PageObjects.Rave
             if (area == null)
                 throw new Exception("Can't find field area:" + fieldText);
             var tds = area.Parent().Children();
-            return new LabFieldControl(Page, area, tds[tds.Count - 3]);
+            return new LabFieldControl(Page, area, tds[tds.Count - 3])
+            {
+                FieldName = fieldText
+            };
 
         }
 	}

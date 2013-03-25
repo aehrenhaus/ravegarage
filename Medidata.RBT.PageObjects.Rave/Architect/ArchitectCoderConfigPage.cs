@@ -233,7 +233,7 @@ namespace Medidata.RBT.PageObjects.Rave
         /// <param name="identifier"></param>
         /// <param name="exactMatch"></param>
         /// <returns></returns>
-        public bool VerifySomethingExist(string areaIdentifier, string type, string identifier, bool exactMatch = true, int? amountOfTimes = null)
+        public bool VerifySomethingExist(string areaIdentifier, string type, string identifier, bool exactMatch = true, int? amountOfTimes = null, BaseEnhancedPDF pdf = null, bool? bold = null)
         {
             if (areaIdentifier.Equals("Coding Level", StringComparison.InvariantCultureIgnoreCase))
                 return VerifyCodingLevelExists(identifier);
@@ -247,6 +247,15 @@ namespace Medidata.RBT.PageObjects.Rave
                 //if specified type does not exist then throw not implemented exception
                 throw new NotImplementedException(string.Format("No implementation exist for type {0}", type));
             }
+        }
+
+        public bool VerifySomethingExist(string areaIdentifier, string type, List<string> identifiers, bool exactMatch = false, int? amountOfTimes = null, RBT.BaseEnhancedPDF pdf = null, bool? bold = null)
+        {
+            foreach (string identifier in identifiers)
+                if (VerifySomethingExist(areaIdentifier, type, identifier, exactMatch, amountOfTimes, pdf, bold) == false)
+                    return false;
+
+            return true;
         }
 
         private bool VerifyCodingLevelExists(string codingLevel)

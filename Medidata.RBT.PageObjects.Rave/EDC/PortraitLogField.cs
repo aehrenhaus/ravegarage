@@ -44,8 +44,6 @@ namespace Medidata.RBT.PageObjects.Rave
         }
         #endregion
 
-
-
         private IWebElement GetElementInRowByLabel(ControlType type, int position)
         {
             string suffix, altSuffix = null;

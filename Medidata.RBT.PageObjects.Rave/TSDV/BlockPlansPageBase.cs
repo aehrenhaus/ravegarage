@@ -186,13 +186,20 @@ namespace Medidata.RBT.PageObjects.Rave
 
 		#region VerifyExist
 
-        bool IVerifySomethingExists.VerifySomethingExist(string areaIdentifier, string type, string identifier, bool exactMatch, int? amountOfTimes)
+        public bool VerifySomethingExist(string areaIdentifier, string type, string identifier, bool exactMatch, int? amountOfTimes, RBT.BaseEnhancedPDF pdf, bool? bold)
 		{
 			var area = Browser.TryFindElementById("_ctl0_Content__ctl0_dgProjectBlockPlan");
             return !exactMatch && area.Text.Contains(identifier);
 		}
 
+        public bool VerifySomethingExist(string areaIdentifier, string type, List<string> identifiers, bool exactMatch, int? amountOfTimes, RBT.BaseEnhancedPDF pdf, bool? bold)
+        {
+            foreach (string identifier in identifiers)
+                if (VerifySomethingExist(areaIdentifier, type, identifier, exactMatch, amountOfTimes, pdf, bold) == false)
+                    return false;
 
+            return true;
+        }
 
 		#endregion
 

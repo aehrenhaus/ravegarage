@@ -38,28 +38,31 @@ namespace Medidata.RBT
 			{
 				using (ZipInputStream zipInputStream = new ZipInputStream(fileStreamIn))
 				{
-					ZipEntry currentEntry = zipInputStream.GetNextEntry();
-					String fullZipToPath = "";
-					if (RBTConfiguration.Default.DownloadPath.EndsWith("\\"))
-						fullZipToPath = RBTConfiguration.Default.DownloadPath + currentEntry.Name.Replace("/", "\\");
-					else
-						fullZipToPath = RBTConfiguration.Default.DownloadPath + "\\" + currentEntry.Name.Replace("/", "\\");
+                    ZipEntry currentEntry = null;
+                    while((currentEntry = zipInputStream.GetNextEntry()) != null)
+                    {
+                        String fullZipToPath = "";
+                        if (RBTConfiguration.Default.DownloadPath.EndsWith("\\"))
+                            fullZipToPath = RBTConfiguration.Default.DownloadPath + currentEntry.Name.Replace("/", "\\");
+                        else
+                            fullZipToPath = RBTConfiguration.Default.DownloadPath + "\\" + currentEntry.Name.Replace("/", "\\");
 
-					string directoryName = Path.GetDirectoryName(fullZipToPath);
-					if (directoryName.Length > 0)
-						Directory.CreateDirectory(directoryName);
+                        string directoryName = Path.GetDirectoryName(fullZipToPath);
+                        if (directoryName.Length > 0)
+                            Directory.CreateDirectory(directoryName);
 
-					using (FileStream fileStreamOut = new FileStream(fullZipToPath, FileMode.Create, FileAccess.Write))
-					{
-						int size;
-						byte[] buffer = new byte[4096];
-						do
-						{
-							size = zipInputStream.Read(buffer, 0, buffer.Length);
-							fileStreamOut.Write(buffer, 0, size);
-						} while (size > 0);
-					}
-					extractedFilePaths.Add(fullZipToPath);
+                        using (FileStream fileStreamOut = new FileStream(fullZipToPath, FileMode.Create, FileAccess.Write))
+                        {
+                            int size;
+                            byte[] buffer = new byte[4096];
+                            do
+                            {
+                                size = zipInputStream.Read(buffer, 0, buffer.Length);
+                                fileStreamOut.Write(buffer, 0, size);
+                            } while (size > 0);
+                        }
+                        extractedFilePaths.Add(fullZipToPath);
+                    }
 				}
 			}
 

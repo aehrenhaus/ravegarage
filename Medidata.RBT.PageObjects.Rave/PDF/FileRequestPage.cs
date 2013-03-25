@@ -11,6 +11,7 @@ using System.Threading;
 using System.Collections.ObjectModel;
 using Medidata.RBT.PageObjects.Rave.SharedRaveObjects;
 using TechTalk.SpecFlow.Assist;
+using Medidata.RBT.PageObjects.Rave.TableModels.PDF;
 
 namespace Medidata.RBT.PageObjects.Rave
 {
@@ -213,15 +214,16 @@ namespace Medidata.RBT.PageObjects.Rave
         /// <summary>
         /// Open the generated pdf and load its text into ScenarioText.
         /// </summary>
+        /// <param name="webTestContext">The current web test context</param>
         /// <param name="pdf">The name of the pdf of be viewed</param>
-        /// <returns></returns>
-        public void ViewPDF(string pdf)
+        /// <param name="requestName">The name of the request which generated the pdf</param>
+        public void ViewPDF(WebTestContext webTestContext, string pdf, string requestName)
         {
             IWebElement pdfLink = Browser.TryFindElementByXPath(".//a[contains(text(), 'My PDF Files') or contains(text(), 'LMy PDF Files')]");
             pdfLink.Click();
 
             FileRequestViewPage page = new FileRequestViewPage();
-            page.ViewPDF(pdf);
+            page.ViewPDF(webTestContext, pdf, requestName);
         }
 
         public override IWebElement GetElementByName(string identifier, string areaIdentifier = null, string listItem = null)
@@ -283,7 +285,7 @@ namespace Medidata.RBT.PageObjects.Rave
 			throw new NotImplementedException();
 		}
 
-        bool IVerifySomethingExists.VerifySomethingExist(string areaIdentifier, string type, string identifier, bool exactMatch, int? amountOfTimes)
+        public bool VerifySomethingExist(string areaIdentifier, string type, string identifier, bool exactMatch, int? amountOfTimes, RBT.BaseEnhancedPDF pdf = null, bool? bold = null)
 		{
 			if (areaIdentifier == null)
 			{
@@ -294,6 +296,15 @@ namespace Medidata.RBT.PageObjects.Rave
 			}
 			throw new NotImplementedException();
 		}
+
+        public bool VerifySomethingExist(string areaIdentifier, string type, List<string> identifiers, bool exactMatch, int? amountOfTimes, RBT.BaseEnhancedPDF pdf, bool? bold)
+        {
+            foreach (string identifier in identifiers)
+                if (VerifySomethingExist(areaIdentifier, type, identifier, exactMatch, amountOfTimes, pdf, bold) == false)
+                    return false;
+
+            return true;
+        }
 
 	    #region helper methods
         private bool VerifyDisplayLogLinesFormExist(string formName, bool? isChecked)

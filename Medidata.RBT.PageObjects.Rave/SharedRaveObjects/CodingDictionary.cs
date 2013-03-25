@@ -26,7 +26,6 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
 			this.CodingColumns = new CodingColumnList();
 		}
 
-
 		public CodingColumn GetCodingColumn(string codingColumnName) 
 		{ 
 			return this.CodingColumns

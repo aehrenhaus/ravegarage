@@ -153,7 +153,7 @@ Scenario: PB_8.1.1.1 As an user, When I Generate Data PDFs and view Data PDF, th
 		| pdf{RndNum<num>(3)} | GLOBAL1 | Edit Check Study 3 (Prod) | CDM1 | World     | Edit Check Site 8 | sub{Var(num1)} |
 	And I generate Data PDF "pdf{Var(num)}"
 	And I wait for PDF "pdf{Var(num)}" to complete
-	When I View Data PDF "pdf{Var(num)}" 
+	When I view data PDF "sub{Var(num1)}.pdf" from request "pdf{Var(num)}"
 	Then I should see "Query Data" in Audits
 	And I take a screenshot 
 

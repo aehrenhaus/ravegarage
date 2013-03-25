@@ -25,6 +25,8 @@ namespace Medidata.RBT.PageObjects.Rave
 		/// </summary>
 		IWebElement FieldControlContainer { get; }
 
+        void PlaceSticky(string responder, string text);
+
 		void AnswerQuery(QuerySearchModel filter);
 
 		void CloseQuery(QuerySearchModel filter);
@@ -40,6 +42,11 @@ namespace Medidata.RBT.PageObjects.Rave
         void Click();
 
         bool IsDroppedDown();
+
+         /// <summary>
+        /// Refresh the control on a page after a change has been made to invalidate it.
+        /// </summary>
+        void RefreshControl();
 
 		/// <summary>
 		/// Determines whether or not a high level Rave EDC element, defined by ControlType enum,

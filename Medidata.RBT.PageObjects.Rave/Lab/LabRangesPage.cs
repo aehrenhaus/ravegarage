@@ -58,7 +58,7 @@ namespace Medidata.RBT.PageObjects.Rave
 
 
         /// <summary>
-        /// Select Range for Lab
+        /// Select Range for LabEX
         /// </summary>
         public override void SelectLabRange(IWebElement row)
         {

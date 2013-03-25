@@ -27,6 +27,8 @@ namespace Medidata.RBT.PageObjects.Rave
 		private EnhancedElement MainTR;
 		private EnhancedElement QueriesTR;
 
+        public string FieldName { get; set; }
+
 		public override IWebElement FindQuery(QuerySearchModel filter)
 		{
 		
