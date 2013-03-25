@@ -34,7 +34,7 @@ Background:
 	| SUPER USER 1 | US19017 | Live: Prod  | SUPER ROLE 1 | Site 2 | Project Admin Default | 
 	| SUPER USER 1 | US19017 | Aux: Dev    | SUPER ROLE 1 | Site 2 | Project Admin Default | 
 	
-	And Role "SUPER ROLE 1" has Action "Entry"
+	#And Role "SUPER ROLE 1" has Action "Entry"
 	Given following Report assignments exist
 	| User         | Report                                                            |
 	| SUPER USER 1 | Targeted SDV Configuration - Targeted SDV Configuration           |
