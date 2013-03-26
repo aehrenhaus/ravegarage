@@ -55,15 +55,15 @@ Given following PDF Configuration Profile Settings exist
 Given PDF configuration profile has properties
 | Profile Name      | Cover Page Logo | Header Image |
 | R55_GLOBAL1_DATA3 | 3d brain.jpg    | H_Brain1.jpg |
-#End of Step 71
-Given following PDF Configuration Profile Settings exist
-| Profile Name      |
-| R55_GLOBAL1_DATA4 |
-#Step 86
-Given PDF configuration profile has properties
-| Profile Name      | Cover Page Logo | Header Image |
-| R55_GLOBAL1_DATA4 | 3d brain.jpg    | H_Brain1.jpg |
-#End of Step 86
+##End of Step 71
+#Given following PDF Configuration Profile Settings exist
+#| Profile Name      |
+#| R55_GLOBAL1_DATA4 |
+##Step 86
+#Given PDF configuration profile has properties
+#| Profile Name      | Cover Page Logo | Header Image |
+#| R55_GLOBAL1_DATA4 | 3d brain.jpg    | H_Brain1.jpg |
+##End of Step 86
 Given following Global Configurations exist
 | Name                      |
 | R55_GLOBAL1_Configuration |
