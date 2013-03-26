@@ -189,5 +189,47 @@ namespace Medidata.RBT
 			set { this["DownloadTimeout"] = value; }
 		}
 
+		[ConfigurationProperty("ImpersonationDomain", DefaultValue = "HDC")]
+		public string ImpersonationDomain
+		{
+			get { return (string)this["ImpersonationDomain"]; }
+			set { this["ImpersonationDomain"] = value; }
+		}
+
+		[ConfigurationProperty("ImpersonationUserName", DefaultValue = "anonymous")]
+		public string ImpersonationUserName
+		{
+			get { return (string)this["ImpersonationUserName"]; }
+			set { this["ImpersonationUserName"] = value; }
+		}
+
+		[ConfigurationProperty("ImpersonationPassword", DefaultValue = "password")]
+		public string ImpersonationPassword
+		{
+			get { return (string)this["ImpersonationPassword"]; }
+			set { this["ImpersonationPassword"] = value; }
+		}
+
+		[ConfigurationProperty("FtpServer", DefaultValue = "0.0.0.0")]
+		public string FtpServer
+		{
+			get { return (string)this["FtpServer"]; }
+			set { this["FtpServer"] = value; }
+		}
+
+		[ConfigurationProperty("FtpUserName", DefaultValue = "anonymous")]
+		public string FtpUserName
+		{
+			get { return (string)this["FtpUserName"]; }
+			set { this["FtpUserName"] = value; }
+		}
+
+		[ConfigurationProperty("FtpPassword", DefaultValue = "password")]
+		public string FtpPassword
+		{
+			get { return (string)this["FtpPassword"]; }
+			set { this["FtpPassword"] = value; }
+		}
+
     }
 }

@@ -1,0 +1,79 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<configuration>
+	<configSections>
+		<section name="specFlow" type="TechTalk.SpecFlow.Configuration.ConfigurationSectionHandler,TechTalk.SpecFlow" />
+		<section name="RBTConfiguration" type="Medidata.RBT.RBTConfiguration, Medidata.RBT" />
+    <section name="BatchUploaderConfiguration" type="Medidata.RBT.Features.BatchUploader.BatchUploaderConfiguration, Medidata.RBT.Features.BatchUploader" />
+    <section name="RaveConfiguration" type="Medidata.RBT.PageObjects.Rave.RaveConfiguration, Medidata.RBT.PageObjects.Rave" />
+		<section name="SeleniumConfiguration" type="Medidata.RBT.SeleniumExtension.SeleniumConfiguration, Medidata.RBT.SeleniumExtension" />
+		<section name="dataConfiguration" type="Microsoft.Practices.EnterpriseLibrary.Data.Configuration.DatabaseSettings, Microsoft.Practices.EnterpriseLibrary.Data, Version=5.0.414.0, Culture=neutral, PublicKeyToken=null" requirePermission="true" />
+	</configSections>
+
+
+	<SeleniumConfiguration
+		WaitElementTimeout="10"
+		WaitByDefault="true"
+		/>
+	
+	<!--DownloadPath SHOULD NOT be used for anything else and SHOULD NOT contain other files. 
+		It should be an empty folder, and be the same as your browser's download folder. -->
+	<RBTConfiguration
+		TestResultPath="Output"	
+		AutoCloseBrowser ="False"
+		TakeScreenShotsEveryStep ="False" 
+		SqlScriptsPath="C:\"
+		BrowserName="firefox"
+		BrowserPath="..\..\..\Firefox\firefox.exe"
+		FirefoxProfilePath="..\..\..\Firefox\FFProfile"
+		WebDriverPath="..\..\..\ExternalDlls\WebDrivers\"
+		SnapshotName="UAT_Snap"
+		DatabaseConnection="RaveConnection"
+		GenerateReportAfterTest="true"
+		ScenarioNamePrefix="PB_" 
+		AutoSaveMimeTypes="application/zip;application/pdf;application/octet-stream"
+		EnableSeeding ="True"
+		SeedFromBackendClasses="ClassicCodingDictionary,CodingDictionary,ProjectCoderRegistration,CodingColumn,CoderDictLevelComponent,CoderLocale,ExternalSystem"
+		SuppressSeeding=""
+		POAssembly="Medidata.RBT.PageObjects.Rave.dll"
+		UploadTimeout="400"
+		DownloadTimeout="400"
+    FtpServer="1.1.1.1"
+    FtpUserName="anonymous"
+    FtpPassword="password"
+    ImpersonationDomain="HDC"
+    ImpersonationUserName="xxxxx"
+    ImpersonationPassword="xxxxx"
+		>
+		</RBTConfiguration>
+
+  <BatchUploaderConfiguration
+    BatchUploadMaxWaitTime="10">
+  </BatchUploaderConfiguration>
+  
+  <RaveConfiguration
+		RaveURL ="http://rave564nycdev02a.mdsol.com/MedidataRAVE/"
+		RWSURL=""
+		ReportURL="http://rave564nycdev02a.mdsol.com/RaveCrystalViewer/"
+		DefaultUser="defuser"
+		DefaultUserPassword="password"
+		/>
+
+	<specFlow>
+		<language feature="en-US" tool="" />
+		<unitTestProvider name="MsTest.2010" />
+		<stepAssemblies>
+			<stepAssembly assembly="Medidata.RBT" />
+			<stepAssembly assembly="Medidata.RBT.Common.Steps" />
+		</stepAssemblies>
+	</specFlow>
+
+  <appSettings>
+	</appSettings>
+  
+	<dataConfiguration defaultDatabase="Connection String" />
+	
+  <connectionStrings>
+		<add name="RaveConnection" connectionString="Server=ny1501dvdbs01v.lbm.mdsol.com;Database=rave564package_clean;uid=rave564package_clean;pwd=;" providerName="System.Data.SqlClient" />
+	</connectionStrings>
+
+</configuration>
