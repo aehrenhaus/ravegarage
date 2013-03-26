@@ -1,4 +1,5 @@
-﻿Feature: R55_PDF_GLOBAL1_V4
+﻿@FT_R55_PDF_GLOBAL1_V4
+Feature: R55_PDF_GLOBAL1_V4
 	This is a feature file to demonstrate what we can do with the PDF parser
 
 Background:
