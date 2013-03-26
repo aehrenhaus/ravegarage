@@ -30,7 +30,7 @@ namespace Medidata.RBT.Features.Rave
         {
             PDFCreationModel args = table.CreateInstance<PDFCreationModel>();
             args.Name = SpecialStringHelper.Replace(args.Name);
-            args.Subjects = SpecialStringHelper.Replace(args.Subjects);
+            args.Subjects = args.Subjects != null ? SpecialStringHelper.Replace(args.Subjects) : null;
             CurrentPage = CurrentPage.As<FileRequestPage>().CreateDataPDF(args);
         }
 
