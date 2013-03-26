@@ -25,7 +25,9 @@ namespace Medidata.RBT.PageObjects.Rave
         //TODO: support wild char or regex
         public bool AuditExist(AuditModel audit, int? position = null)
         {
-            return AuditExist(AuditManagement.Instance.GetAuditMessage(audit.AuditType, audit.QueryMessage.Split(',').ToList()), audit.User, audit.Time, position);
+            return AuditExist(AuditManagement.Instance.GetAuditMessage(audit.AuditType,
+                audit.QueryMessage != null ? audit.QueryMessage.Split(',').ToList() : null), 
+            audit.User, audit.Time, position);
         }
         
         /// <summary>
