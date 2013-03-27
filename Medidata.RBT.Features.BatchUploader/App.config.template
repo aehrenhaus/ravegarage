@@ -47,7 +47,9 @@
 		</RBTConfiguration>
 
   <BatchUploaderConfiguration
-    BatchUploadMaxWaitTime="10">
+    BatchUploadMaxWaitMinutes="10"
+    BatchUploadMaxFileAgeDays="10"
+    >
   </BatchUploaderConfiguration>
   
   <RaveConfiguration

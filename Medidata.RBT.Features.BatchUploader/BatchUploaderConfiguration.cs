@@ -15,11 +15,18 @@ namespace Medidata.RBT.Features.BatchUploader
 			Default = (BatchUploaderConfiguration)System.Configuration.ConfigurationManager.GetSection("BatchUploaderConfiguration");
         }
 
-		[ConfigurationProperty("BatchUploadMaxWaitTime", DefaultValue = "10")]
-		public int BatchUploadMaxWaitTime
+		[ConfigurationProperty("BatchUploadMaxWaitMinutes", DefaultValue = "10")]
+		public int BatchUploadMaxWaitMinutes
 		{
-			get { return (int)this["BatchUploadMaxWaitTime"]; }
-			set { this["BatchUploadMaxWaitTime"] = value; }
+			get { return (int)this["BatchUploadMaxWaitMinutes"]; }
+			set { this["BatchUploadMaxWaitMinutes"] = value; }
+		}
+
+		[ConfigurationProperty("BatchUploadMaxFileAgeDays", DefaultValue = "10")]
+		public int BatchUploadMaxFileAgeDays
+		{
+			get { return (int)this["BatchUploadMaxFileAgeDays"]; }
+			set { this["BatchUploadMaxFileAgeDays"] = value; }
 		}
 	}
 }

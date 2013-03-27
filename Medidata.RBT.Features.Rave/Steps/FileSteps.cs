@@ -10,7 +10,7 @@ using TechTalk.SpecFlow.Assist;
 namespace Medidata.RBT.Features.Rave.Steps
 {
 	/// <summary>
-	/// 
+	/// Generic File related steps including zip/unzip, ftp, and file copy with/out impersonation.
 	/// </summary>
 	[Binding]
 	public partial class FileSteps : BrowserStepsBase
@@ -18,7 +18,7 @@ namespace Medidata.RBT.Features.Rave.Steps
 
 		private string ComposeFullPath(string path)
 		{
-			//if not a full network path, or a full local path, assume it is from development path
+			//if not a fully qualified network path, or a fully qualified local path, assume it is from relative development path
 			if (path!=null && !path.StartsWith("\\\\") && !path.Contains(":"))
 			{
 				path = string.Format("{0}\\{1}", RBTConfiguration.Default.UploadPath, path);
@@ -28,7 +28,7 @@ namespace Medidata.RBT.Features.Rave.Steps
 		}
 
 		/// <summary>
-		/// 
+		/// use file copy to transfer files from a local directory to another directory
 		/// </summary>
 		/// <param name="sourceDirectoryName"></param>
 		/// <param name="targetDirectoryName"></param>
@@ -41,7 +41,8 @@ namespace Medidata.RBT.Features.Rave.Steps
 		}
 
 		/// <summary>
-		/// 
+		/// use file copy to transfer files from a local directory to another directory
+		/// use impersonated credentials from configuration file to access target file system.
 		/// </summary>
 		/// <param name="sourceDirectoryName"></param>
 		/// <param name="targetDirectoryName"></param>
@@ -58,7 +59,7 @@ namespace Medidata.RBT.Features.Rave.Steps
 		}
 
 		/// <summary>
-		/// 
+		/// Zips files from given directory. Zip file would be named as the directoryName.zip.
 		/// </summary>
 		/// <param name="directoryName"></param>
 		[StepDefinition(@"I zip the files from Directory ""(.*)""")]
@@ -70,7 +71,7 @@ namespace Medidata.RBT.Features.Rave.Steps
 
 
 		/// <summary>
-		/// 
+		/// Unzips the zipFile found in the Directory
 		/// </summary>
 		/// <param name="fileLoc"></param>
 		/// <param name="directoryName"></param>
@@ -83,7 +84,7 @@ namespace Medidata.RBT.Features.Rave.Steps
 		}
 
 		/// <summary>
-		/// 
+		/// use ftp credencials from configuration file to transfer given fils from local directory to ftp directory using specific ftp mode
 		/// </summary>
 		/// <param name="table"></param>
 		[StepDefinition(@"I transfer")]

@@ -343,6 +343,95 @@ namespace Medidata.RBT
 			return found;
 		}
 
+		public static void DeleteOldFilesInDirectory(string directoryName, int daysOld)
+		{
+			try
+			{
+				DirectoryInfo directory = new DirectoryInfo(directoryName);
+				FileInfo[] fileInfos = directory.GetFiles();
+				if (fileInfos != null)
+				{
+					DateTime deleteDate = DateTime.UtcNow.AddDays(-1 * daysOld);
+					foreach (FileInfo fileInfo in fileInfos)
+					{
+						try
+						{
+							if (fileInfo.CreationTimeUtc < deleteDate)
+							{
+								fileInfo.Delete();
+							}
+						}
+						catch (Exception ex)
+						{
+							ex.Data["fileName"] = fileInfo.Name;
+							ex.Data["targetDirectoryName"] = directoryName;
+							//best effort only,don't throw
+							//throw;
+						}
+					}
+				}
+			}
+			catch(Exception ex)
+			{
+				ex.Data["directoryName"] = directoryName;
+				//best effort only,don't throw
+				//throw;
+			}
+		}
+
+		public static bool CheckFileDisappearsFromTargetDirectory(string fileName, string targetDirectoryName, int timeout)
+		{
+			DateTime dtExpiry = DateTime.Now.AddMinutes(timeout);
+			bool found = false;
+
+			while (DateTime.Now < dtExpiry)
+			{
+				found = FileHelper.FileExistsInDirectory(fileName, targetDirectoryName);
+				if (found)
+				{
+					System.Threading.Thread.Sleep(60000);
+				}
+				else
+				{
+					break;
+				}
+			}
+			return !found;
+		}
+
+
+
+
+		//note: userName, password, and domain in plain text; dangerous******************
+		public static bool CheckFileDisappearsFromTargetDirectoryWithImpersonation(string fileName, string targetDirectoryName, int timeout, string username, string password, string domain)
+		{
+			IntPtr tokenHandle = IntPtr.Zero;
+			IntPtr duplicateTokenHandle = IntPtr.Zero;
+
+			bool processed = false;
+			try
+			{
+				WindowsIdentity identity = FileHelper.ImpersonateUser(username, password, domain, out tokenHandle, out duplicateTokenHandle);
+				using (WindowsImpersonationContext context = identity.Impersonate())
+				{
+					processed = CheckFileDisappearsFromTargetDirectory(fileName, targetDirectoryName, timeout);
+				}
+				identity.Dispose();
+			}
+			catch (Exception ex)
+			{
+				ex.Data["targetDirectoryName"] = targetDirectoryName;
+				throw;
+			}
+			finally
+			{
+				FileHelper.CleanUpImpersonation(tokenHandle, duplicateTokenHandle);
+			}
+			return processed;
+
+		}
+
+
 		public static void CleanUpImpersonation(IntPtr tokenHandle, IntPtr duplicateTokenHandle)
 		{
 			if (tokenHandle != IntPtr.Zero)

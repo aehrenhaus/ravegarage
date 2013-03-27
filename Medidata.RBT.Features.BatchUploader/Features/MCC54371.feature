@@ -3,6 +3,7 @@
 # This ...
 #@ignore
 @FT_MCC54371
+@BatchUploader
 Feature: MCC54371 ......
 	As a Rave user with BU capability
 	Given I drop a file in BU configured network path
