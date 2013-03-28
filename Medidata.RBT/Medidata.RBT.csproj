@@ -81,7 +81,6 @@
   <ItemGroup>
     <Compile Include="BrowserStepsBase.cs" />
     <Compile Include="Helpers\RegexHelper.cs" />
-    <Compile Include="Helpers\BuUploadFileHelper.cs" />
     <Compile Include="Helpers\ConsoleWriterSetup.cs" />
     <Compile Include="Helpers\Constants.cs" />
     <Compile Include="Helpers\EnumHelper.cs" />
