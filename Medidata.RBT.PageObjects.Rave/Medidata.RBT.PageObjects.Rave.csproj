@@ -253,6 +253,7 @@
     <Compile Include="TableModels\StickyModel.cs" />
     <Compile Include="TableModels\PDF\PDFPageParseModel.cs" />
     <Compile Include="TableModels\PDF\PDFParseModel.cs" />
+    <Compile Include="TableModels\FtpModel.cs" />
     <Compile Include="TableModels\ReportMatrixAssignmentModel.cs" />
     <Compile Include="TableModels\LabUnitDictionaryModel.cs" />
     <Compile Include="TableModels\AnalyteModel.cs" />

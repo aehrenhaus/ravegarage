@@ -59,6 +59,7 @@
     </Reference>
     <Reference Include="System.Data" />
     <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="TechTalk.SpecFlow">
@@ -452,6 +453,7 @@
     </Compile>
     <Compile Include="ReferenceFix.cs" />
     <Compile Include="Steps\ArchitectSteps_DB.cs" />
+    <Compile Include="Steps\FileSteps.cs" />
     <Compile Include="Steps\CacheFlushSteps.cs" />
     <Compile Include="Steps\ConfigurationSteps.cs" />
     <Compile Include="Steps\CoderSteps.cs" />
