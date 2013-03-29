@@ -1854,8 +1854,8 @@ Scenario: PBMCC28550-033 Verify Signature is icon exists and audit is broken whe
    		| Field     | Data    | Control Type |
    		| Field One | TestOne | textbox      |
 	And I verify data on Fields in CRF
-		| Field     | Data    | Requires Signature |
-		| Field One | TestOne | True               |
+		| Field     | Data    | Status Icon        |
+		| Field One | TestOne | Requires Signature |
 	And I take a screenshot
 	And I click button "Sign and Save"
 	And I sign the form with username "SUPER USER 1"

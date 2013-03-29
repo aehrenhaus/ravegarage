@@ -48,9 +48,9 @@ Scenario: PB_US10242_DT13576_01 As an EDC user, when I have an edit check that s
     |Age        |20             |textbox      |
     |Visit Date |01 Jan 2012    |datetime     |
   And I verify data on Fields in CRF
-	|Field      |Data         |Requires Signature |
-	|Age        |20           |False              |
-	|Visit Date |01 Jan 2012  |False              |
+	| Field      | Data        | Status Icon |
+	| Age        | 20          | Complete    |
+	| Visit Date | 01 Jan 2012 | Complete    |
   And I can not see "Sign and Save" button
   And I take a screenshot
   And I select link "SUB {Var(num1)}"
@@ -66,9 +66,9 @@ Scenario: PB_US10242_DT13576_01 As an EDC user, when I have an edit check that s
     |Field      |Data           |Control Type |
     |Age        |17             |textbox      |
   And I verify data on Fields in CRF
-	|Field      |Data         |Requires Signature |
-	|Age        |17           |True               |
-	|Visit Date |01 Jan 2012  |True               |
+	| Field      | Data        | Status Icon        |
+	| Age        | 17          | Requires Signature |
+	| Visit Date | 01 Jan 2012 | Requires Signature |
   And I can see "Sign and Save" button	
   And I take a screenshot	
 
@@ -95,9 +95,9 @@ Scenario: PB_US10242_DT13576_01 As an EDC user, when I have an edit check that s
     |Field      |Data           |Control Type |
     |Age        |21             |textbox      |	
   And I verify data on Fields in CRF
-	|Field      |Data		  |Requires Signature |
-	|Age        |21           |False              |
-	|Visit Date |01 Jan 2012  |False              |
+	| Field      | Data        | Status Icon |
+	| Age        | 21          | Complete    |
+	| Visit Date | 01 Jan 2012 | Complete    |
   And I can not see "Sign and Save" button	
   And I take a screenshot
   
@@ -136,8 +136,8 @@ Scenario: PB_US10242_DT13576_02 As an EDC user, when I have an edit check associ
     |Field                                                                           |Data    |Control Type   |
     |Does the subject have a known history of an abnormality, disease or surgery?    |No      |dropdownlist   |
   And I verify data on Fields in CRF
-	|Field                                                                           |Data   |Requires Signature |
-    |Does the subject have a known history of an abnormality, disease or surgery?    |No     |False              |
+	| Field                                                                        | Data | Status Icon |
+	| Does the subject have a known history of an abnormality, disease or surgery? | No   | Complete    |
   And I can not see "Sign and Save" button
   And I take a screenshot
 
@@ -154,8 +154,8 @@ Scenario: PB_US10242_DT13576_02 As an EDC user, when I have an edit check associ
     |Field                                                                           |Data   |Control Type   |
     |Does the subject have a known history of an abnormality, disease or surgery?    |Yes    |dropdownlist   |
   And I verify data on Fields in CRF
-	|Field                                                                           |Data  |Requires Signature |
-    |Does the subject have a known history of an abnormality, disease or surgery?    |Yes   |True               |
+	| Field                                                                        | Data | Status Icon        |
+	| Does the subject have a known history of an abnormality, disease or surgery? | Yes  | Requires Signature |
   And I can see "Sign and Save" button	
   And I take a screenshot	
 
@@ -182,8 +182,8 @@ Scenario: PB_US10242_DT13576_02 As an EDC user, when I have an edit check associ
     |Field                                                                           |Data   |Control Type   |
     |Does the subject have a known history of an abnormality, disease or surgery?    |No     |dropdownlist   |
   And I verify data on Fields in CRF
-	|Field                                                                           |Data   |Requires Signature |
-    |Does the subject have a known history of an abnormality, disease or surgery?    |No     |False              |
+	| Field                                                                        | Data | Status Icon |
+	| Does the subject have a known history of an abnormality, disease or surgery? | No   | Complete    |
   And I can not see "Sign and Save" button	
   And I take a screenshot
 
@@ -223,9 +223,9 @@ Scenario: PB_US10242_DT13576_03 As an EDC user, when I have an edit check that s
     |Age        |17             |textbox      |
     |Visit Date |01 Jan 2012    |datetime     |
   And I verify data on Fields in CRF
-	|Field      |Data         |Requires Signature |
-	|Age        |17           |True               |
-	|Visit Date |01 Jan 2012  |True               |
+	| Field      | Data        | Status Icon        |
+	| Age        | 17          | Requires Signature |
+	| Visit Date | 01 Jan 2012 | Requires Signature |
   And I can see "Sign and Save" button
   And I take a screenshot
   And I select link "SUB {Var(num1)}"
@@ -252,9 +252,9 @@ Scenario: PB_US10242_DT13576_03 As an EDC user, when I have an edit check that s
     |Field      |Data           |Control Type |
     |Age        |21             |textbox      |
   And I verify data on Fields in CRF
-	|Field      |Data         |Requires Signature  |
-	|Age        |21           |False               |
-	|Visit Date |01 Jan 2012  |False               |
+	| Field      | Data        | Status Icon |
+	| Age        | 21          | Complete    |
+	| Visit Date | 01 Jan 2012 | Complete    |
   And I can not see "Sign and Save" button	
   And I take a screenshot	
 
@@ -273,9 +273,9 @@ Scenario: PB_US10242_DT13576_03 As an EDC user, when I have an edit check that s
     |Age        |15             |textbox      |
 	|Visit Date |02 Jan 2012    |datetime     |	
   And I verify data on Fields in CRF
-	|Field      |Data		  |Requires Signature |
-	|Age        |15           |True               |
-	|Visit Date |02 Jan 2012  |True               |
+	| Field      | Data        | Status Icon        |
+	| Age        | 15          | Requires Signature |
+	| Visit Date | 02 Jan 2012 | Requires Signature |
   And I can see "Sign and Save" button	
   And I take a screenshot
   
@@ -305,8 +305,8 @@ Scenario: PB_US10242_DT13576_04 As an EDC user, when I have an edit check that s
     |Field                  |Data           |Control Type |
     |Enrollment Date        |01 Jan 2012    |datetime     |
   And I verify data on Fields in CRF
-	|Field                  |Data           |Requires Signature |
-	|Enrollment Date        |01 Jan 2012    |False              |
+	| Field           | Data        | Status Icon |
+	| Enrollment Date | 01 Jan 2012 | Complete    |
   And I can not see "Sign and Save" button
   And I take a screenshot
   
@@ -318,10 +318,10 @@ Scenario: PB_US10242_DT13576_04 As an EDC user, when I have an edit check that s
     |Start Date             |05 Jan 2012      |datetime        |
 	|Stop Date              |25 Jan 2012      |datetime        |
   And I verify data on Fields in CRF
-	|Field                  |Data          |Requires Signature |
-    |Was there any AE's?    |Yes           |True               |
-	|Start Date             |05 Jan 2012   |True               |
-	|Stop Date              |25 Jan 2012   |True               |
+	| Field               | Data        | Status Icon        |
+	| Was there any AE's? | Yes         | Requires Signature |
+	| Start Date          | 05 Jan 2012 | Requires Signature |
+	| Stop Date           | 25 Jan 2012 | Requires Signature |
   
   And I can see "Sign and Save" button
   And I take a screenshot
@@ -339,8 +339,8 @@ Scenario: PB_US10242_DT13576_04 As an EDC user, when I have an edit check that s
     |Field                  |Data           |Control Type    |
     |Enrollment Date        |               |datetime        |
   And I verify data on Fields in CRF
-	|Field                  |Data           |Requires Signature |
-	|Enrollment Date        |               |True               |
+	| Field           | Data | Status Icon        |
+	| Enrollment Date |      | Requires Signature |
   And I can see "Sign and Save" button
   And I take a screenshot
   
@@ -358,10 +358,10 @@ Scenario: PB_US10242_DT13576_04 As an EDC user, when I have an edit check that s
     |Field                  |Data             |Control Type    |
 	|Stop Date              |                 |datetime        |
   And I verify data on Fields in CRF
-	|Field                  |Data          |Requires Signature |
-    |Was there any AE's?    |Yes           |False              |
-	|Start Date             |05 Jan 2012   |False              |
-    |Stop Date              |              |False              |
+	| Field               | Data        | Status Icon |
+	| Was there any AE's? | Yes         | Complete    |
+	| Start Date          | 05 Jan 2012 | Complete    |
+	| Stop Date           |             | Complete    |
   And I can not see "Sign and Save" button
   And I take a screenshot
   

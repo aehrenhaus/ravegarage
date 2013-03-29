@@ -13,18 +13,24 @@ namespace Medidata.RBT.PageObjects.Rave
 {
 	public class NonLabFieldControl : BaseEDCFieldControl
 	{
-		public NonLabFieldControl(IPage page, IWebElement LeftSideTD, IWebElement RightSideTD)
+        /// <summary>
+        /// Create a NonLabFieldControl which will contain the information about any non-lab field
+        /// </summary>
+        /// <param name="page">The current page</param>
+        /// <param name="LeftSideOrTopTD">The TD containing the field name</param>
+        /// <param name="RightSideOrBottomTD">The TD containing the field data</param>
+		public NonLabFieldControl(IPage page, IWebElement LeftSideOrTopTD, IWebElement RightSideOrBottomTD)
 			: base(page)
 		{
-			this.LeftSideTD = LeftSideTD.EnhanceAs < EnhancedElement>();
-			this.RightSideTD = RightSideTD.EnhanceAs<EnhancedElement>();
-			this.FieldControlContainer = LeftSideTD.TryFindElementBy(By.XPath("./../td[@class='crf_rowRightSide']//table[@class='crf_dataPointInternal']"));
+			this.FieldInformationTD = LeftSideOrTopTD.EnhanceAs<EnhancedElement>();
+			this.FieldDataTD = RightSideOrBottomTD.EnhanceAs<EnhancedElement>();
+            this.FieldControlContainer = RightSideOrBottomTD.TryFindElementBy(By.XPath(".//td[@style='padding-left:4px;']"));
 
 			FieldName = "";
 		}
 
-		private EnhancedElement LeftSideTD;
-		private EnhancedElement RightSideTD;
+		private EnhancedElement FieldInformationTD;
+		private EnhancedElement FieldDataTD;
 
 		public string FieldName { get; set; }
 	
@@ -32,7 +38,7 @@ namespace Medidata.RBT.PageObjects.Rave
 
 		public override AuditsPage ClickAudit()
 		{
-			var auditButton = RightSideTD.TryFindElementByPartialID("DataStatusHyperlink");
+			var auditButton = FieldDataTD.TryFindElementByPartialID("DataStatusHyperlink");
 			auditButton.Click();
 			return new AuditsPage();
 		}
@@ -47,7 +53,7 @@ namespace Medidata.RBT.PageObjects.Rave
 
             if (partialID.Length > 0)
             {     
-                Checkbox checkbox = RightSideTD.CheckboxByID(partialID);
+                Checkbox checkbox = FieldDataTD.CheckboxByID(partialID);
                 checkbox.Check();
             }
         }
@@ -62,7 +68,7 @@ namespace Medidata.RBT.PageObjects.Rave
 
             if (partialID.Length > 0)
             {
-                Checkbox checkbox = RightSideTD.CheckboxByID(partialID);
+                Checkbox checkbox = FieldDataTD.CheckboxByID(partialID);
                 checkbox.Uncheck();
             }
         }
@@ -73,7 +79,7 @@ namespace Medidata.RBT.PageObjects.Rave
         /// <returns></returns>
         public override bool IsVerificationRequired()
         {
-            return (RightSideTD.CheckboxByID("VerifyBox") as Checkbox).Enabled;
+            return (FieldDataTD.CheckboxByID("VerifyBox") as Checkbox).Enabled;
         }
 
         /// <summary>
@@ -82,7 +88,7 @@ namespace Medidata.RBT.PageObjects.Rave
         /// <returns>True if review checkbox is there, False if it is not there.</returns>
         public override bool IsReviewRequired()
         {
-            return RightSideTD.CheckboxByID("ReviewGroupBox").EnhanceAs<Checkbox>().Enabled;
+            return FieldDataTD.CheckboxByID("ReviewGroupBox").EnhanceAs<Checkbox>().Enabled;
         }
 
         /// <summary>
@@ -92,7 +98,7 @@ namespace Medidata.RBT.PageObjects.Rave
         /// <returns>True if inactive, false if active</returns>
         public override bool IsInactive(string text = "")
         {
-            IWebElement strikeoutElement = RightSideTD.TryFindElementBy(By.XPath("//s"));
+            IWebElement strikeoutElement = FieldDataTD.TryFindElementBy(By.XPath("//s"));
             return !(strikeoutElement == null);
         }
 
@@ -101,13 +107,13 @@ namespace Medidata.RBT.PageObjects.Rave
         /// </summary>
         public override void CheckReview()
         {
-            RightSideTD.CheckboxByID("ReviewGroupBox").EnhanceAs<Checkbox>().Check();
+            FieldDataTD.CheckboxByID("ReviewGroupBox").EnhanceAs<Checkbox>().Check();
         }
 
 		public override IWebElement FindQuery(QuerySearchModel filter)
 		{
 
-			var queryTables = LeftSideTD.FindElements(
+			var queryTables = FieldInformationTD.FindElements(
 					By.XPath(".//td[@class='crf_preText']/table"));
 			
 			IWebElement queryTable = null;
@@ -199,15 +205,15 @@ namespace Medidata.RBT.PageObjects.Rave
 
         public override void PlaceSticky(string responder, string text)
         {
-            IWebElement markingButton = RightSideTD.TryFindElementByPartialID("MarkingButton");
+            IWebElement markingButton = FieldDataTD.TryFindElementByPartialID("MarkingButton");
             markingButton.Click();
 
             RefreshControl();
-            LeftSideTD.TryFindElementsBy(By.XPath(".//select"))[0].EnhanceAs<Dropdown>().SelectByText("Place Sticky");
+            FieldInformationTD.TryFindElementsBy(By.XPath(".//select"))[0].EnhanceAs<Dropdown>().SelectByText("Place Sticky");
             RefreshControl();
-            LeftSideTD.TryFindElementsBy(By.XPath(".//select"))[1].EnhanceAs<Dropdown>().SelectByText(responder);
+            FieldInformationTD.TryFindElementsBy(By.XPath(".//select"))[1].EnhanceAs<Dropdown>().SelectByText(responder);
             RefreshControl();
-            LeftSideTD.TryFindElementBy(By.XPath(".//textarea")).EnhanceAs<Textbox>().SetText(text);
+            FieldInformationTD.TryFindElementBy(By.XPath(".//textarea")).EnhanceAs<Textbox>().SetText(text);
         }
 
         /// <summary>
@@ -216,12 +222,10 @@ namespace Medidata.RBT.PageObjects.Rave
         public override void RefreshControl()
         {
             NonLabFieldControl nonLabFieldControl = (NonLabFieldControl)Page.As<CRFPage>().FindField(FieldName + "\br\br");
-            LeftSideTD = nonLabFieldControl.LeftSideTD;
-            RightSideTD = nonLabFieldControl.RightSideTD;
+            FieldInformationTD = nonLabFieldControl.FieldInformationTD;
+            FieldDataTD = nonLabFieldControl.FieldDataTD;
         }
-
 		#endregion
-
 
         public bool VerifyData(LabRangeModel field)
         {
