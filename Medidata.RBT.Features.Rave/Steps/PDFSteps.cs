@@ -78,7 +78,7 @@ namespace Medidata.RBT.Features.Rave
         [StepDefinition(@"I view blank PDF ""([^""]*)"" from request ""([^""]*)""")]
 		public void IViewPDF____FromRequest____(string pdfName, string requestName)
 		{
-            CurrentPage.As<FileRequestPage>().ViewPDF(WebTestContext, SpecialStringHelper.Replace(pdfName), SpecialStringHelper.Replace(requestName));
+            CurrentPage.As<FileRequestPage>().ViewPDF(WebTestContext, SpecflowContext, SpecialStringHelper.Replace(pdfName), SpecialStringHelper.Replace(requestName));
 		}
 
         /// <summary>
