@@ -74,10 +74,16 @@ namespace Medidata.RBT
 
 		public override void AfterFeature()
 		{
-			base.AfterFeature();
-			SeedingContext.FeatureSeedingOption = null;
-			Factory.DeleteObjectsMarkedForFeatureDeletion();
-			SeedingContext.SeedableObjects.Clear();
+            try
+            {
+                base.AfterFeature();
+                SeedingContext.FeatureSeedingOption = null;
+            }
+            finally
+            {
+                Factory.DeleteObjectsMarkedForFeatureDeletion();
+                SeedingContext.SeedableObjects.Clear();
+            }
 		}
 
 		public override void BeforeScenario()

@@ -217,13 +217,13 @@ namespace Medidata.RBT.PageObjects.Rave
         /// <param name="webTestContext">The current web test context</param>
         /// <param name="pdf">The name of the pdf of be viewed</param>
         /// <param name="requestName">The name of the request which generated the pdf</param>
-        public void ViewPDF(WebTestContext webTestContext, string pdf, string requestName)
+        public void ViewPDF(WebTestContext webTestContext, SpecflowWebTestContext specflowContext, string pdf, string requestName)
         {
             IWebElement pdfLink = Browser.TryFindElementByXPath(".//a[contains(text(), 'My PDF Files') or contains(text(), 'LMy PDF Files')]");
             pdfLink.Click();
 
             FileRequestViewPage page = new FileRequestViewPage();
-            page.ViewPDF(webTestContext, pdf, requestName);
+            page.ViewPDF(webTestContext, specflowContext, pdf, requestName);
         }
 
         public override IWebElement GetElementByName(string identifier, string areaIdentifier = null, string listItem = null)

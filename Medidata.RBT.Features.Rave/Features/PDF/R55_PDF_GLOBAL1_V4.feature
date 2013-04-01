@@ -56,6 +56,7 @@ Given following PDF Configuration Profile Settings exist
 Given PDF configuration profile has properties
 | Profile Name      | Cover Page Logo | Header Image |
 | R55_GLOBAL1_DATA3 | 3d brain.jpg    | H_Brain1.jpg |
+#Ignored until https://medidata.atlassian.net/browse/MCC-56272 is fixed
 ##End of Step 71
 #Given following PDF Configuration Profile Settings exist
 #| Profile Name      |
@@ -68,6 +69,7 @@ Given PDF configuration profile has properties
 Given following Global Configurations exist
 | Name                      |
 | R55_GLOBAL1_Configuration |
+Then I perform cache flush of "Medidata.Core.Objects.Configuration"
 Then I navigate to "Architect" module
 And I select "Project" link "Mediflex" in "Active Projects"
 And I select Draft "PDF Primary Draft"
@@ -325,6 +327,7 @@ And I wait for PDF "GLOBAL1_DATA1{Var(num3)}" to complete
 And I take a screenshot
 #SUBSTEP (Step 45): Subjects	Subject created with initials “PAA”.
 When I view data PDF "{Var(num1)} PAA.pdf" from request "GLOBAL1_DATA1{Var(num3)}"
+#When we view the data pdf, this automatically moves the generated pdf to the test results folder, we do this instead of screenshots
 
 #This is where the pdf parsing steps begin
 #Step 45
@@ -391,8 +394,6 @@ Then I verify PDF Audits exist on page "REVIEW"
 Then I verify link "Subject Initials" on page "Subject ID" goes to page "SUBJINI"
 #SUBSTEP: Nest Audit Bookmarks below relevant fields UNCHECK
 Then I verify PDF bookmarks don't exist under bookmark "Subject ID"
-#Printscreen 13 of 22
-#TODO: !!!Find a printscreen alternative
 
 #Step 48
 #SUBSTEP: Bookmark Hierarchy	Folder->Form
@@ -471,8 +472,6 @@ Then I verify the "x" distance between "Height" and "Action Taken" on PDF page "
 
 #SUBSTEP: Include Site Information File	CHECK (titled InvestigatorInformation.txt)
 Then I verify file "InvestigatorInformation.txt" was downloaded
-#Printscreen 13 of 22
-#TODO: !!!Find a printscreen alternative
 
 
 Scenario: Generate and test R55_GLOBAL1_DATA2
@@ -496,6 +495,7 @@ And I wait for PDF "GLOBAL1_DATA2{Var(num4)}" to complete
 And I take a screenshot
 #SUBSTEP (Step 60): Subjects	Subject created with initials “PAA”.
 When I view data PDF "{Var(num1)} PAA.pdf" from request "GLOBAL1_DATA2{Var(num4)}"
+#When we view the data pdf, this automatically moves the generated pdf to the test results folder, we do this instead of screenshots
 
 #Step 60
 #SUBSTEP: Study 	Mediflex (Verified through Document Properties in file menu)
@@ -517,6 +517,7 @@ Then I verify PDF bookmarks don't exist
 
 #Step 61
 #SUBSTEP: Include Inactivate Records 	CHECK
+#SUBSTEP: Include Inactive Records if Audit Category Exists Sticky
 Then I verify PDF bookmarks exist directly under parent bookmark "Screening"
 | Bookmark Text               |
 | VIEW_TEST - Inactive        |
@@ -526,9 +527,6 @@ Then I verify PDF bookmarks exist directly under parent bookmark "{Var(num1)} PA
 | Bookmark Text               |
 | VIEW_TEST - Inactive        |
 | VIEW_TESTLOG (2) - Inactive |
-
-#SUBSTEP: Include Inactive Records if Audit Category Exists Sticky
-#Already verified by seeing the inactive records exist
 
 #SUBSTEP: Maximum Data Dictionary Entries
 #Don't need to test this since no data dictionaries have more than 20 entries in this pdf
@@ -564,8 +562,6 @@ Then I verify PDF Audits exist on page "REVIEW"
 Then I verify link "Subject Initials" on page "Subject ID" goes to page "SUBJINI"
 #SUBSTEP: Nest Audit Bookmarks below relevant fields UNCHECK
 Then I verify PDF bookmarks don't exist under bookmark "Subject ID"
-#Printscreen 16 of 22
-#TODO: !!!Find a printscreen alternative
 
 #Step 63
 #SUBSTEP: Bookmark Hierarchy	Folder->Form
@@ -644,8 +640,6 @@ Then I verify the "x" distance between "Height" and "Action Taken" on PDF page "
 
 #SUBSTEP: Include Site Information File	CHECK (titled InvestigatorInformation.txt)
 Then I verify file "InvestigatorInformation.txt" was downloaded 
-#Printscreen 13 of 22
-#TODO: !!!Find a printscreen alternative
 
 Scenario: Generate and test R55_GLOBAL1_DATA3
 #Step 66
@@ -668,6 +662,8 @@ And I wait for PDF "GLOBAL1_DATA3{Var(num5)}" to complete
 And I take a screenshot
 #SUBSTEP (Step 75): Subjects	Subject created with initials “PAA”.
 When I view data PDF "{Var(num2)} PAB.pdf" from request "GLOBAL1_DATA3{Var(num5)}"
+#When we view the data pdf, this automatically moves the generated pdf to the test results folder, we do this instead of screenshots
+
 #Step 75
 #SUBSTEP: Study 	Mediflex (Verified through Document Properties in file menu)
 #SUBSTEP: Select Role	CDM1 (only users with this role should be able to download and open the PDF)
@@ -688,6 +684,7 @@ Then I verify PDF bookmarks don't exist
 
 #Step 76
 #SUBSTEP: Include Inactivate Records 	CHECK
+#SUBSTEP: Include Inactive Records if Audit Category Exists Coding
 Then I verify PDF bookmarks exist directly under parent bookmark "Screening"
 | Bookmark Text               |
 | VIEW_TEST - Inactive        |
@@ -697,9 +694,6 @@ Then I verify PDF bookmarks exist directly under parent bookmark "{Var(num2)} PA
 | Bookmark Text               |
 | VIEW_TEST - Inactive        |
 | VIEW_TESTLOG (1) - Inactive |
-
-#SUBSTEP: Include Inactive Records if Audit Category Exists Coding
-#Already verified by seeing the inactive records exist
 
 #SUBSTEP: Maximum Data Dictionary Entries
 #Don't need to test this since no data dictionaries have more than 20 entries in this pdf
@@ -734,8 +728,6 @@ Then I verify PDF Audits exist on page "CODE1 CODE"
 Then I verify link "Subject Initials" on page "Subject ID" goes to page "SUBJINI Subject Initials"
 #SUBSTEP: Nest Audit Bookmarks below relevant fields UNCHECK
 Then I verify PDF bookmarks don't exist under bookmark "Subject ID"
-#Printscreen 16 of 22
-#TODO: !!!Find a printscreen alternative
 
 #Step 78
 #SUBSTEP: Bookmark Hierarchy	Folder->Form
@@ -813,9 +805,8 @@ Then I verify the "x" distance between "Height" and "Action Taken" on PDF page "
 
 #SUBSTEP: Include Site Information File	CHECK (titled InvestigatorInformation.txt)
 Then I verify file "InvestigatorInformation.txt" was not downloaded 
-#Printscreen 13 of 22
-#TODO: !!!Find a printscreen alternative
 
+#Ignored until https://medidata.atlassian.net/browse/MCC-56272 is fixed
 @ignore
 Scenario: Generate and test R55_GLOBAL1_DATA4
 #Step 81
@@ -838,6 +829,8 @@ And I wait for PDF "GLOBAL1_DATA4{Var(num6)}" to complete
 And I take a screenshot
 #SUBSTEP (Step 90): Subjects	Subject created with initials “PAA”.
 When I view data PDF "{Var(num2)} PAB.pdf" from request "GLOBAL1_DATA4{Var(num6)}"
+#When we view the data pdf, this automatically moves the generated pdf to the test results folder, we do this instead of screenshots
+
 #Step 90
 #SUBSTEP: Study 	Mediflex (Verified through Document Properties in file menu)
 #SUBSTEP: Select Role	CDM1 (only users with this role should be able to download and open the PDF)
@@ -857,12 +850,10 @@ Then I verify PDF bookmarks don't exist
 
 #Step 91
 #SUBSTEP: Include Inactivate Records 	CHECK
+#SUBSTEP: Include Inactive Records if Audit Category Exists Labs
 Then I verify PDF bookmarks exist directly under parent bookmark "{Var(num2)} PAB"
 | Bookmark Text       |
 | Lab Form - Inactive |
-
-#SUBSTEP: Include Inactive Records if Audit Category Exists Labs
-#Already verified by seeing the inactive records exist
 
 #SUBSTEP: Maximum Data Dictionary Entries
 #Don't need to test this since no data dictionaries have more than 20 entries in this pdf
@@ -900,8 +891,6 @@ Then I verify PDF Audits exist on page "WBC WBC"
 Then I verify link "Subject Initials" on page "Subject ID" goes to page "SUBJINI Subject Initials"
 #SUBSTEP: Nest Audit Bookmarks below relevant fields UNCHECK
 Then I verify PDF bookmarks don't exist under bookmark "Subject ID"
-#Printscreen 16 of 22
-#TODO: !!!Find a printscreen alternative
 
 #Step 93
 #SUBSTEP: Bookmark Hierarchy	Folder->Form
@@ -979,8 +968,6 @@ Then I verify the "x" distance between "Height" and "Action Taken" on PDF page "
 
 #SUBSTEP: Include Site Information File	CHECK (titled InvestigatorInformation.txt)
 Then I verify file "InvestigatorInformation.txt" was not downloaded 
-#Printscreen 13 of 22
-#TODO: !!!Find a printscreen alternative
 
 #Step 96
 Then I log out of Rave

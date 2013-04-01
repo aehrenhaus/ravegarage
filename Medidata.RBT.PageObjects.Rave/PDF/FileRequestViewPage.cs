@@ -20,7 +20,7 @@ namespace Medidata.RBT.PageObjects.Rave
         /// <param name="webTestContext">The current web test context</param>
         /// <param name="pdf">The name of the pdf of be viewed</param>
         /// <param name="requestName">The name of the request which generated the pdf</param>
-        public void ViewPDF(WebTestContext webTestContext, string pdfName, string requestName)
+        public void ViewPDF(WebTestContext webTestContext, SpecflowWebTestContext specflowContext, string pdfName, string requestName)
 		{
             webTestContext.LastLoadedPDF = null;
 			var table = Browser.Table("_ctl0_Content_Results");
@@ -42,8 +42,13 @@ namespace Medidata.RBT.PageObjects.Rave
                 {
                     using (FileStream fs = new FileStream(filePath, FileMode.Open, FileAccess.Read))
                     {
-                        if(Path.GetFileName(filePath).Equals(pdfName, StringComparison.InvariantCulture))
+                        if (Path.GetFileName(filePath).Equals(pdfName, StringComparison.InvariantCulture))
+                        {
                             webTestContext.LastLoadedPDF = new Medidata.RBT.BaseEnhancedPDF(pdfName, filePath, fs);
+                            string pdfCopyPath = Path.Combine(RBTConfiguration.Default.TestResultPath, specflowContext.CurrentScenarioName + "_" + pdfName);
+
+                            File.Copy(filePath, pdfCopyPath);
+                        }
                     }
                 }
 		}

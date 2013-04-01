@@ -36,6 +36,8 @@ namespace Medidata.RBT.PageObjects.Rave
             PerformCacheFlush(typeToFlush);
             if(typeToFlush == null)
                 context.CurrentPage = new LoginPage();
+            else
+                context.CurrentPage = new CacheFlushPage();
         }
 
 		protected override double PageNavigationTimeoutSeconds { get { return 300;/*5 mins*/ } }

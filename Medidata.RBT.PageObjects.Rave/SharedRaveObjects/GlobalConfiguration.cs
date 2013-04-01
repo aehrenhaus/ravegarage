@@ -19,11 +19,15 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
     /// <summary>
     /// Class used to upload global configuration settings
     /// </summary>
-    public class GlobalConfiguration : BaseRaveSeedableObject
+    public class GlobalConfiguration : BaseRaveSeedableObject, IRemoveableObject
     {
+
+        private const string DEFAULT_CONFIGURATION = "DEFAULTCONFIGURATION";
+
         /// <summary>
         /// Contructor for global configuration object
         /// </summary>
+        /// <param name="testContext">The current webTestContext</param>
         /// <param name="configurationName">Name by which new configuration should be created</param>
         public GlobalConfiguration(string configurationName)
         {
@@ -65,6 +69,18 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
         protected override void CreateObject()
         {
             WebTestContext.CurrentPage.As<ConfigurationLoaderPage>().UploadFile(UniqueFileLocation);
+            if (!UniqueName.StartsWith(DEFAULT_CONFIGURATION))
+                Factory.FeatureObjectsForDeletion.Add(this);
+        }
+
+        /// <summary>
+        /// Delete the unique UploadDraft created by seeding
+        /// </summary>
+        public void DeleteSelf()
+        {
+            File.Delete(UniqueFileLocation);
+            GlobalConfiguration clearedConfig = SeedingContext.GetExistingFeatureObjectOrMakeNew<GlobalConfiguration>(DEFAULT_CONFIGURATION, () => new GlobalConfiguration(DEFAULT_CONFIGURATION));
+            File.Delete(clearedConfig.UniqueFileLocation);
         }
     }
 }
