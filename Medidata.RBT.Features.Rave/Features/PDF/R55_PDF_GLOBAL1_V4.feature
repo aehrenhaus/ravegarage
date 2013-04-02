@@ -70,6 +70,7 @@ Given following Global Configurations exist
 | Name                      |
 | R55_GLOBAL1_Configuration |
 Then I perform cache flush of "Medidata.Core.Objects.Configuration"
+Then I wait for 2 minutes
 Then I navigate to "Architect" module
 And I select "Project" link "Mediflex" in "Active Projects"
 And I select Draft "PDF Primary Draft"
