@@ -1,7 +1,10 @@
 ﻿using System;
 using System.Linq;
+using System.Collections.Generic;
 using Medidata.RBT.SeleniumExtension;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using TechTalk.SpecFlow;
+using OpenQA.Selenium;
 namespace Medidata.RBT.PageObjects.Rave
 {
 	public class ArchitectChecksPage : ArchitectBasePage, IActivatePage
@@ -50,7 +53,49 @@ namespace Medidata.RBT.PageObjects.Rave
 			rows[0].Link("  Update").Click();
 		}
 
-		#endregion
+        #endregion
+
+        /// <summary>
+        /// Method to add a new Edit Check(s)
+        /// </summary>
+        /// <param name="editChecks"></param>
+        public void AddEditCheck(IEnumerable<EditCheckModel> editChecks)
+        {
+            foreach (var ec in editChecks)
+            {
+                IWebElement eTable = this.Browser.TryFindElementById("_ctl0_Content_DisplayGrid");
+                IWebElement eName = eTable.TryFindElementsBy(By.TagName("input"))[0];
+                eName.EnhanceAs<Textbox>().SetText(ec.Name);
+                IWebElement eBypassDuringMigration = eTable.TryFindElementsBy(By.TagName("input"))[1];
+                if (ec.BypassDuringMigration)
+                    eBypassDuringMigration.EnhanceAs<Checkbox>().Check();
+                else
+                    eBypassDuringMigration.EnhanceAs<Checkbox>().Uncheck();
+                IWebElement eActive = eTable.TryFindElementsBy(By.TagName("input"))[2];
+                if (ec.Active)
+                    eActive.EnhanceAs<Checkbox>().Check();
+                else
+                    eActive.EnhanceAs<Checkbox>().Uncheck();
+                IWebElement eUpdate = eTable.TryFindElementBy(By.PartialLinkText("Update"));
+                eUpdate.Click();
+             }
+        }
+
+        /// <summary>
+        /// Method to edit Edit Check
+        /// </summary>
+        /// <param name="iconName"></param>
+        ///  <param name="editCheckName"></param>
+        public void EditEditCheck(string iconName, string editCheckName)
+        {
+            IWebElement eRow = this.Browser.TryFindElementById("_ctl0_Content_DisplayGrid").TryFindElementByXPath(string.Format("//*[contains(text(),'{0}')]/..",editCheckName));
+            IWebElement eEdit = eRow.TryFindElementBy(By.PartialLinkText("javascript:__doPostBack"));
+            IWebElement eCheckSteps = eRow.TryFindElementByPartialID("_CheckDetailsLink");
+            if (iconName == "Edit")
+                eEdit.Click();
+            if (iconName == "Check Steps")
+                eCheckSteps.Click();
+        }
 
 		public override string URL
 		{

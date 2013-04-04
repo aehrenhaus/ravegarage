@@ -84,6 +84,7 @@
     <Compile Include="AmendmentManager\MigrationObjectHierarchyEditPage.cs" />
     <Compile Include="AmendmentManager\MigrationObjectHierarchy.cs" />
     <Compile Include="AmendmentManager\MigrationModel.cs" />
+    <Compile Include="Architect\ArchitectCheckPage.cs" />
     <Compile Include="Architect\ArchitectCoderConfigPage.cs" />
     <Compile Include="Architect\ArchitectEnvironmentSetupPage.cs" />
     <Compile Include="Architect\ArchitectPushPage.cs" />
@@ -93,8 +94,8 @@
     <Compile Include="Architect\ArchitectMatrixPage.cs" />
     <Compile Include="Architect\ArchitectFolderFormsPage.cs" />
     <Compile Include="Architect\DefineCopySourcesPage.cs" />
-    <Compile Include="Architect\EditChecksItem.cs" />
-    <Compile Include="Architect\LibraryWizardPage.cs" />
+    <Compile Include="Architect\CheckQuickEditPage.cs" />
+    <Compile Include="Architect\EditChecksItem.cs" />    <Compile Include="Architect\LibraryWizardPage.cs" />
     <Compile Include="Architect\Models\ProjectCodingDictionaryModel.cs" />
     <Compile Include="Architect\PublishChecksEditChecksControl.cs" />
     <Compile Include="Architect\UploadDraftPage.cs" />
@@ -254,8 +255,9 @@
     <Compile Include="TableModels\PDF\PDFPageParseModel.cs" />
     <Compile Include="TableModels\PDF\PDFParseModel.cs" />
     <Compile Include="TableModels\FtpModel.cs" />
-    <Compile Include="TableModels\ReportMatrixAssignmentModel.cs" />
-    <Compile Include="TableModels\LabUnitDictionaryModel.cs" />
+    <Compile Include="TableModels\GenericDataModel.cs" />
+    <Compile Include="TableModels\EditCheckModel.cs" />
+    <Compile Include="TableModels\ReportMatrixAssignmentModel.cs" />    <Compile Include="TableModels\LabUnitDictionaryModel.cs" />
     <Compile Include="TableModels\AnalyteModel.cs" />
     <Compile Include="TableModels\LabUnitModel.cs" />
     <Compile Include="TableModels\NameObject.cs" />
