@@ -72,7 +72,7 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
 			{
 				ExcelTable draftTable = excel.OpenTableForEdit("CRFDraft");
 				ExcelTable fieldsTable = excel.OpenTableForEdit("Fields");
-
+                ExcelTable formsTable = excel.OpenTableForEdit("Forms");
 
 				//project 
 				var projectName = draftTable[1, "ProjectName"].ToString();
@@ -136,7 +136,13 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
 					ReplaceCodingDictionariesWithUniqueCodingDictionaries(fieldsTable, row);
 				}
 
-				//Create a unique version of the file to upload
+
+			    for (int row = 1; row <= formsTable.RowsCount; row++)
+			    {
+                    ReplaceViewRestrictionsWithUniqueRolesOnFormLevel(formsTable, row);
+			    }
+
+			    //Create a unique version of the file to upload
 				UniqueFileLocation = MakeFileLocationUnique(FileLocation);
 
 				excel.SaveAs(UniqueFileLocation);
@@ -165,6 +171,26 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
                 fieldsTable[currentRow, "EntryRestrictions"] = uniqueEntryRestrictions.ToString().Substring(0, uniqueEntryRestrictions.Length - 1);
             }
         }
+
+       
+        private void ReplaceViewRestrictionsWithUniqueRolesOnFormLevel(ExcelTable formsTable, int currentRow)
+        {
+            string rolesCommaSeparated = formsTable[currentRow, "ViewRestrictions"] as string;
+
+            if (rolesCommaSeparated != null)
+            {
+                List<string> viewRestrictions = rolesCommaSeparated.Split(',').ToList();
+                StringBuilder uniqueViewRestrictions = new StringBuilder();
+                foreach (string viewRestriction in viewRestrictions)
+                {
+                    Role role = SeedingContext.GetExistingFeatureObjectOrMakeNew<Role>(viewRestriction.Trim(), () => new Role(viewRestriction.Trim()));
+                    uniqueViewRestrictions.Append(role.UniqueName + ",");
+                }
+
+                formsTable[currentRow, "ViewRestrictions"] = uniqueViewRestrictions.ToString().Substring(0, uniqueViewRestrictions.Length - 1);
+            }
+        }
+
 
         /// <summary>
         /// If there are lab analytes used for specifc roles, use analytes that were created in a previous step def
