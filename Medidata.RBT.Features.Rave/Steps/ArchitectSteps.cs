@@ -237,8 +237,7 @@ namespace Medidata.RBT.Features.Rave
             }
         }
 
-        /// <summary>
-        /// Step to select the CRF version from the architect library page
+        /// <summary>        /// Step to select the CRF version from the architect library page
         /// </summary>
         /// <param name="versionName"></param>
         [StepDefinition(@"I select CRF version ""([^""]*)""")]
@@ -247,6 +246,45 @@ namespace Medidata.RBT.Features.Rave
             CurrentPage.As<ArchitectLibraryPage>().SelectCrfVersion(versionName);
         }
 
+        /// <summary>
+        /// Step to create a new Edit Check
+        /// </summary>
+        /// <param name="table"></param>
+        [StepDefinition(@"I create Edit Check")]
+        public void ICreateEditCheck(Table table)
+        {
+            CurrentPage.As<ArchitectChecksPage>().AddEditCheck(table.CreateSet<EditCheckModel>());
+        }
 
+        /// <summary>
+        /// Step to click on icon (Edit/CheckSteps) for Edit Check
+        /// </summary>
+        /// <param name="iconName"></param>
+        /// <param name="editCheckName"></param>
+        [StepDefinition(@"I click on icon ""([^""]*)"" for Edit Check ""([^""]*)""")]
+        public void IClickIcon____EditCheck____(string iconName, string editCheckName)
+        {
+            CurrentPage.As<ArchitectChecksPage>().EditEditCheck(iconName, editCheckName);
+        }
+
+        /// <summary>
+        /// Step to verify tab name for Edit Check
+        /// </summary>
+        /// <param name="editCheckName"></param>
+        [StepDefinition(@"I verify tab name ""([^""]*)""")]
+        public void IVerifyTabName____(string editCheckName)
+        {
+            CurrentPage.As<ArchitectCheckPage>().VerifyTabName(editCheckName);
+        }
+
+        /// <summary>
+        /// Step to enter text into Quick Edit
+        /// </summary>
+        /// <param name="text"></param>
+        [StepDefinition(@"I enter into Quick Edit ""([^""]*)""")]
+        public void IEnterIntoQuickEdit____(string text)
+        {
+             CurrentPage.As<CheckQuickEditPage>().EnterIntoQuickEdit(text);
+        }
 	}
 }
