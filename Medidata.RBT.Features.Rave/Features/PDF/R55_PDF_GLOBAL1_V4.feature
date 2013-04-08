@@ -70,7 +70,6 @@ Given following Global Configurations exist
 | Name                      |
 | R55_GLOBAL1_Configuration |
 Then I perform cache flush of "Medidata.Core.Objects.Configuration"
-Then I wait for 2 minutes
 Then I navigate to "Architect" module
 And I select "Project" link "Mediflex" in "Active Projects"
 And I select Draft "PDF Primary Draft"
@@ -98,6 +97,12 @@ And I edit checkboxes for fields
 | Field  | Review |
 | REVIEW | True   |
 Then I click button "Save"
+And I take a screenshot
+Then I click audit on Field "REVIEW"
+Then I verify Audits exist
+| Audit Type | Query Message  |
+| reviewed   | Review Group 1 |
+And I select link "VIEW_TEST" in "Header"
 #Step 5
 And I select link "Inactivate Page"
 And I check "Confirm"
