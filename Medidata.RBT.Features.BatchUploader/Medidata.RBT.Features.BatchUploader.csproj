@@ -95,7 +95,7 @@
     <None Include="App.config.template" />
     <None Include="Features\MCC54371.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
-      <LastGenOutput>MCC543711.feature.cs</LastGenOutput>
+      <LastGenOutput>MCC54371.feature.cs</LastGenOutput>
     </None>
     <None Include="packages.config" />
   </ItemGroup>
