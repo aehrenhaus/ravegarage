@@ -68,6 +68,12 @@ namespace Medidata.RBT.PageObjects.Rave
                 case "Requires Verification":
                     result += "dp_ru.gif";
                     break;
+                case "Requires Signature":
+                    result += "dp_sg.gif";
+                    break;
+                case "Inactive":
+                    result += "dp_ia.gif";
+                    break;
                 default:
                     throw new InvalidOperationException("Status: " + lookupIcon + " not yet implemented in StatusIconPathLookup(string lookupIcon)");
             }

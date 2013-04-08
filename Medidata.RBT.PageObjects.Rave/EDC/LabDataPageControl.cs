@@ -8,6 +8,7 @@ using OpenQA.Selenium.Remote;
 using Medidata.RBT.SeleniumExtension;
 using System.Collections.Specialized;
 using System.Collections.ObjectModel;
+using Medidata.RBT.PageObjects.Rave.EDC;
 
 namespace Medidata.RBT.PageObjects.Rave
 {
@@ -17,11 +18,7 @@ namespace Medidata.RBT.PageObjects.Rave
 			: base(page)
 		{
 			//set Element here
-			//Element = TestContext.Browser.TryFindElementBy(
 		}
-
-
-
 
 		//-----------STRUCTURE Lab form:
 		//span id="_ctl0_Content_R"
@@ -47,15 +44,15 @@ namespace Medidata.RBT.PageObjects.Rave
 		//				tr2
 		//					td2 answer <br> dropdown answer textbox
 		//			table(other query)
-		public IEDCFieldControl FindField(string fieldText)
+        public IEDCFieldControl FindField(string fieldName)
 		{
-            fieldText = ISearchContextExtend.ReplaceSpecialCharactersWithEscapeCharacters(fieldText);
+            fieldName = ISearchContextExtend.ReplaceSpecialCharactersWithEscapeCharacters(fieldName);
             //First, look for the field as a non-lab field
             IEnumerable<IWebElement> leftSideTds = Page.Browser.FindElements(By.XPath("//td[@class='crf_rowLeftSide']"));
             IWebElement area = leftSideTds.FirstOrDefault(x =>
             {
                 return ISearchContextExtend.ReplaceTagsWithEscapedCharacters(x.FindElement(By.XPath(".//td[@class='crf_preText']")).GetInnerHtml())
-                       .Split(new string[] { "<" }, StringSplitOptions.None)[0].Trim() == fieldText;
+                       .Split(new string[] { "<" }, StringSplitOptions.None)[0].Trim() == fieldName;
             });
 
             if (area == null) //bringing back original code to locate area, if the the area is not found.
@@ -63,7 +60,7 @@ namespace Medidata.RBT.PageObjects.Rave
                 area = leftSideTds.FirstOrDefault(x =>
                 {
                     return x.FindElement(By.XPath(".//td[@class='crf_preText']")).GetInnerHtml()
-                        .Split(new string[] { "\r\n", "<" }, StringSplitOptions.None)[0].Trim() == fieldText;
+                        .Split(new string[] { "\r\n", "<" }, StringSplitOptions.None)[0].Trim() == fieldName;
                 });
             }
             if (area != null)
@@ -71,13 +68,13 @@ namespace Medidata.RBT.PageObjects.Rave
                 ReadOnlyCollection<IWebElement> tds = area.Parent().Children();
                 return new NonLabFieldControl(Page, area, tds[tds.Count - 1])
                 {
-                    FieldName = fieldText
+                    FieldName = fieldName
                 };
             }
             else
             {
                 IWebElement el = Page.Browser.FindElements(By.XPath("//span[contains(@id,'Content_R')]")).FirstOrDefault();
-                area = el.FindElementsByText<IWebElement>(fieldText).FirstOrDefault();
+                area = el.FindElementsByText<IWebElement>(fieldName).FirstOrDefault();
 
                 var fieldTRs = area.FindElements(By.XPath("./../../tr"));
 
@@ -85,7 +82,7 @@ namespace Medidata.RBT.PageObjects.Rave
                 for (i = 0; i < fieldTRs.Count; i++)
                 {
                     if (ISearchContextExtend.ReplaceTagsWithEscapedCharacters(fieldTRs[i].Children()[1].GetInnerHtml())
-                            .Split(new string[] { "<" }, StringSplitOptions.None)[0].Trim() == fieldText)
+                            .Split(new string[] { "<" }, StringSplitOptions.None)[0].Trim() == fieldName)
                         break;
                 }
 
@@ -94,10 +91,9 @@ namespace Medidata.RBT.PageObjects.Rave
 
                 return new LabFieldControl(Page, fieldTR.Children()[1], fieldTRQueries)
                 {
-                    FieldName = fieldText
+                    FieldName = fieldName
                 };
             }
-
 		}
 
         public IEDCFieldControl FindUnitDropdown(string fieldText)
@@ -112,7 +108,6 @@ namespace Medidata.RBT.PageObjects.Rave
             {
                 FieldName = fieldText
             };
-
         }
 	}
 }

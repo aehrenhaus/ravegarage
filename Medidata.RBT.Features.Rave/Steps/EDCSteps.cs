@@ -186,6 +186,18 @@ namespace Medidata.RBT.Features.Rave
         }
 
         /// <summary>
+        /// Click audit on a record position for a landscape log page.
+        /// </summary>
+        /// <param name="recordPosition">The record position to click audit on</param>
+        [StepDefinition(@"I click audit on record position ""(.*)""")]
+        public void IClickAuditOnRecordPosition____(int recordPosition)
+        {
+            CRFPage page = CurrentPage.As<CRFPage>();
+
+            CurrentPage = page.ClickAuditOnRecord(recordPosition);
+        }
+
+        /// <summary>
         /// A more generic implementation for EDC field verification
         /// This step definition will let user verify all the field
         /// steps from single method
@@ -228,13 +240,6 @@ namespace Medidata.RBT.Features.Rave
                 if (field.StatusIcon != null && field.StatusIcon.Length > 0)
                     Assert.AreNotEqual(0, fieldControl.StatusIconPathLookup(field.StatusIcon).Length,
                                        "Status Icon not found");
-                if (field.RequiresSignature.HasValue)
-                {
-                    bool signatureRequired = fieldControl.IsSignatureRequired();
-
-                    Assert.AreEqual(field.RequiresSignature.Value, signatureRequired,
-                                    "Signature Required doesn't match on Fields in CRF");
-                }
             }
         }
 
@@ -268,16 +273,31 @@ namespace Medidata.RBT.Features.Rave
             CRFPage page = CurrentPage.As<CRFPage>();
             List<FormModel> forms = table.CreateSet<FormModel>().ToList();
 
-            if (forms.Count != 1)
-                throw new Exception("Too many or too few forms to be just the current form");
+            bool recordVerification = false;
+            if (forms.FirstOrDefault().Record.HasValue)
+                recordVerification = true;
 
-            FormModel formInfo = forms.FirstOrDefault();
-            FormHeaderControl headerControl = page.FindHeader();
-            if (formInfo.RequiresReview.HasValue)
+            if (recordVerification)
             {
-                bool reviewRequired = headerControl.IsReviewRequired();
+                foreach (FormModel record in forms.Where(x => x.Record.HasValue))
+                {
+                    LandscapeLogField edcFieldControl = (LandscapeLogField)page.FindLandscapeLogField(record.Record.Value);
+                    if (edcFieldControl.VerifyStatus(record.StatusIcon) == false)
+                        Assert.Fail(String.Format("Status on record {0} doesn't match icon {1}", record.Record.Value, record.StatusIcon));
+                }
+            }
+            else
+            {
+                if (forms.Count != 1)
+                    throw new Exception("Too many or too few forms to be just the current form");
 
-                Assert.AreEqual(formInfo.RequiresReview.Value, reviewRequired, "Review Required doesn't match on Form in CRF");
+                FormModel formInfo = forms.FirstOrDefault();
+                FormHeaderControl headerControl = page.FindHeader();
+                if (!String.IsNullOrEmpty(formInfo.StatusIcon) && formInfo.StatusIcon.Equals("Requires Review"))
+                {
+                    bool reviewRequired = headerControl.IsReviewRequired();
+                    Assert.AreEqual(true, reviewRequired, "Review Required doesn't match on Form in CRF");
+                }
             }
         }
 

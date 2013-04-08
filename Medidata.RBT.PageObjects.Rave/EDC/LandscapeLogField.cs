@@ -17,7 +17,24 @@ namespace Medidata.RBT.PageObjects.Rave
         private readonly ControlType m_controlType;
         #endregion
 
+        #region Properties
+        public IWebElement RecordRow { get; set; }
+        #endregion
+
         #region CONSTRUCTORS
+        public LandscapeLogField(IPage page, int recordNumber)
+            : base(page)
+        {
+            m_controlType = ControlType.Default;
+
+            IWebElement logTable = page.Browser.TryFindElementById("log");
+            RecordRow = logTable.TryFindElementByXPath("tbody/tr[@class='evenRow' or @class='oddRow']/td[position() = 1 and contains(text(), '"
+                + recordNumber + "')]/..", false);
+            if(RecordRow == null)
+                RecordRow = logTable.TryFindElementByXPath("tbody/tr[@class='evenRow' or @class='oddRow']/td[position() = 1]/s[contains(text(), '"
+                + recordNumber + "')]/../..", false);
+        }
+
         public LandscapeLogField(IPage page, string fieldName, int index)
             : base(page)
         {
@@ -252,7 +269,12 @@ namespace Medidata.RBT.PageObjects.Rave
         public override void CancelQuery(QuerySearchModel filter) { throw new NotImplementedException(); }
         public override void Check(string checkName) { throw new NotImplementedException(); }
         public override void Uncheck(string checkName) { throw new NotImplementedException(); }
-        public override string StatusIconPathLookup(string lookupIcon) { throw new NotImplementedException(); }
+
+        public bool VerifyStatus(string statusText)
+        {
+            IWebElement statusIcon = RecordRow.TryFindElementByPartialID("DataStatusHyperlink");
+            return statusIcon.GetInnerHtml().Contains(StatusIconPathLookup(statusText));
+        }
         #endregion
 
 

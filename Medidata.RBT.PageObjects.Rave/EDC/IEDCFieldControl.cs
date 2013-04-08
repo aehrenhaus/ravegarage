@@ -84,6 +84,5 @@ namespace Medidata.RBT.PageObjects.Rave
         /// <param name="text">The text of the field to check</param>
         /// <returns>True if inactive, false if active</returns>
         bool IsInactive(string text);
-        bool IsSignatureRequired();
     }
 }

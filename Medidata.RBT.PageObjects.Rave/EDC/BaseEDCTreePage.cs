@@ -206,7 +206,6 @@ namespace Medidata.RBT.PageObjects.Rave
                 element.Click();
 
             return WaitForPageLoads();
-
         }
         #endregion
 

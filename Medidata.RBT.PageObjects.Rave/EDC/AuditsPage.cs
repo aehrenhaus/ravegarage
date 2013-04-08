@@ -29,6 +29,22 @@ namespace Medidata.RBT.PageObjects.Rave
                 audit.QueryMessage != null ? audit.QueryMessage.Split(',').ToList() : null), 
             audit.User, audit.Time, position);
         }
+
+        /// <summary>
+        /// Overriding ChooseFromDropdown to find the dropdown based on field name, if drop down selected fails then fall back to base implementation
+        /// </summary>
+        /// <param name="identifier">Dropdown identifier</param>
+        /// <param name="text">Text to select in the dropdown</param>
+        /// <param name="objectType">Object type of dropdown</param>
+        /// <param name="areaIdentifier">Area the dropdown exists in</param>
+        /// <returns></returns>
+        public override IPage ChooseFromDropdown(string identifier, string text, string objectType = null, string areaIdentifier = null)
+        {
+            if(identifier.Equals("Siblings Dropdown", StringComparison.InvariantCultureIgnoreCase))
+                return base.ChooseFromDropdown("_ctl0_Content_AuditSelector_Children", text, objectType, areaIdentifier);
+
+            return base.ChooseFromDropdown(identifier, text, objectType, areaIdentifier);
+        }
         
         /// <summary>
         /// Checks if the specified audit exists in the audit trail

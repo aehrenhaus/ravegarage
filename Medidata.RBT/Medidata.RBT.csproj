@@ -100,6 +100,7 @@
     <Compile Include="PageObjectInterfaces\GeneralPage.cs" />
     <Compile Include="SharedObjects\DoubleRectangle.cs" />
     <Compile Include="GenericModels\GenericDataModel.cs" />
+    <Compile Include="SharedObjects\ElementWithIndex.cs" />
     <Compile Include="Utilities\Misc.cs" />
     <Compile Include="Utilities\Factory.cs" />
     <Compile Include="PageObjectInterfaces\IHavePaginationControl.cs" />

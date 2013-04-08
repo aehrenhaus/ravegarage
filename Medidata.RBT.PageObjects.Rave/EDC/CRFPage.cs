@@ -8,7 +8,7 @@ using Medidata.RBT.PageObjects.Rave.TableModels;
 
 namespace Medidata.RBT.PageObjects.Rave
 {
-    public class CRFPage : BaseEDCPage
+    public class CRFPage : BaseEDCPage, IVerifySomethingExists
     {
         public CRFPage SelectUnitsForFields(IEnumerable<LabRangeModel> units)
         {
@@ -91,7 +91,13 @@ namespace Medidata.RBT.PageObjects.Rave
 			return this;
 		}
 
+        public new bool VerifySomethingExist(string areaIdentifier, string type, string identifier, bool exactMatch = false, int? amountOfTimes = null, RBT.BaseEnhancedPDF pdf = null, bool? bold = null)
+        {
+            if(identifier.Equals("Save", StringComparison.InvariantCultureIgnoreCase) && type.Equals("control", StringComparison.InvariantCultureIgnoreCase))
+                return base.VerifySomethingExist(areaIdentifier, type, "_ctl0_Content_R_footer_SB", exactMatch, amountOfTimes, pdf, bold);
 
+            return base.VerifySomethingExist(areaIdentifier, type, identifier, exactMatch, amountOfTimes, pdf, bold);
+        }
 
         #region Query related
         public AuditsPage ClickAuditOnField(string fieldName)
@@ -110,9 +116,9 @@ namespace Medidata.RBT.PageObjects.Rave
                 var labDropdown = contentR.TryFindElementByPartialID("LOC_DropDown", false);
                 //If the page is inactive the lab dropdown won't be there
                 //still need the lab dropdown as an indictator that it is a lab page if there is no data
-                //The only page without a preText class is the lab page
-                IWebElement preText = Context.Browser.TryFindElementByXPath(".//*[@class = 'crf_preText']", false);
-                bool isLabform = labDropdown != null || preText == null;
+                //The only page without a breaker class is the lab page
+                IWebElement breaker = Context.Browser.TryFindElementByXPath(".//*[@class = 'breaker']", false);
+                bool isLabform = labDropdown != null || breaker == null;
                 return isLabform;
             }
         }
@@ -127,8 +133,8 @@ namespace Medidata.RBT.PageObjects.Rave
                 if (URL.Equals("Modules/EDC/PrimaryRecordPage.aspx"))
                     return false;
 
-                IWebElement logTable = Context.Browser.TryFindElementById("log",false);
-                IWebElement rowLeftSide = Context.Browser.TryFindElementBy(By.XPath("*//td[@class='crf_rowLeftSide']"));
+                IWebElement logTable = Context.Browser.TryFindElementById("log", false);
+                IWebElement rowLeftSide = Context.Browser.TryFindElementBy(By.XPath("*//td[@class='crf_rowLeftSide']"), false);
                 if (logTable != null && rowLeftSide != null)
                     return true;
                 return false;
@@ -177,8 +183,6 @@ namespace Medidata.RBT.PageObjects.Rave
             {
                 if (IsLabForm)
                     return new LabDataPageControl(this).FindField(fieldName);
-                else if (IsMixedForm)
-                    return new MixedDataPageControl(this).FindField(fieldName);
                 else
                     return new NonLabDataPageControl(this).FindField(fieldName);
             }
@@ -220,6 +224,35 @@ namespace Medidata.RBT.PageObjects.Rave
             }
             return true;
         }
+
+        /// <summary>
+        /// Click audit on a record in a log form
+        /// </summary>
+        /// <param name="recordPosition">1 indexed record position, should be passed down directly from the step</param>
+        /// <returns>The current page</returns>
+        public IPage ClickAuditOnRecord(int recordPosition)
+        {
+            List<IWebElement> rows = Browser.FindElements(By.XPath("//tr[@class='evenRow' or @class='oddRow']")).OrderBy(x => x.Location.Y).ToList();
+            IWebElement row = rows[recordPosition - 1]; //Change it to be zero indexed
+            IWebElement element = row.TryFindElementByPartialID("DataStatusHyperlink");
+            if (element == null)
+                throw new Exception(String.Format("Record at position \"{0}\" does not exist", recordPosition));
+
+            element.Click();
+
+            return WaitForPageLoads();
+        }
+
+        /// <summary>
+        /// Find a landscape log field by record number
+        /// </summary>
+        /// <param name="recordNumber">Number of the record</param>
+        /// <returns>The LandscapeLogField corresponding to the passed in record number</returns>
+        public IEDCFieldControl FindLandscapeLogField(int recordNumber)
+        {
+            return new LandscapeLogField(this, recordNumber);
+        }
+
         public IEDCFieldControl FindLandscapeLogField(string fieldName, int rowIndex) 
         {
             return new LandscapeLogField(this, 
