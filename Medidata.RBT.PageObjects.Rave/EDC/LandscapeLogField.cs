@@ -235,7 +235,7 @@ namespace Medidata.RBT.PageObjects.Rave
         #endregion
 
         #region INTERFACE IEDCFieldControl
-        public override AuditsPage ClickAudit() { throw new NotImplementedException(); }
+        public override AuditsPage ClickAudit(bool isRecord = false) { throw new NotImplementedException(); }
 	
         public override void EnterData(string text, ControlType controlType, string additionalData = "") {
             switch (controlType)

@@ -186,18 +186,6 @@ namespace Medidata.RBT.Features.Rave
         }
 
         /// <summary>
-        /// Click audit on a record position for a landscape log page.
-        /// </summary>
-        /// <param name="recordPosition">The record position to click audit on</param>
-        [StepDefinition(@"I click audit on record position ""(.*)""")]
-        public void IClickAuditOnRecordPosition____(int recordPosition)
-        {
-            CRFPage page = CurrentPage.As<CRFPage>();
-
-            CurrentPage = page.ClickAuditOnRecord(recordPosition);
-        }
-
-        /// <summary>
         /// A more generic implementation for EDC field verification
         /// This step definition will let user verify all the field
         /// steps from single method
@@ -212,7 +200,7 @@ namespace Medidata.RBT.Features.Rave
 
             foreach (FieldModel field in fields)
             {
-                IEDCFieldControl fieldControl = page.FindField(field.Field);
+                IEDCFieldControl fieldControl = page.FindField(field.Field, record: field.Record);
                 if (field.Data != null && field.Data.Length > 0)
                 {
                     bool dataExists = fieldControl.HasDataEntered(field.Data);
@@ -273,31 +261,15 @@ namespace Medidata.RBT.Features.Rave
             CRFPage page = CurrentPage.As<CRFPage>();
             List<FormModel> forms = table.CreateSet<FormModel>().ToList();
 
-            bool recordVerification = false;
-            if (forms.FirstOrDefault().Record.HasValue)
-                recordVerification = true;
+            if (forms.Count != 1)
+                throw new Exception("Too many or too few forms to be just the current form");
 
-            if (recordVerification)
+            FormModel formInfo = forms.FirstOrDefault();
+            FormHeaderControl headerControl = page.FindHeader();
+            if (!String.IsNullOrEmpty(formInfo.StatusIcon) && formInfo.StatusIcon.Equals("Requires Review"))
             {
-                foreach (FormModel record in forms.Where(x => x.Record.HasValue))
-                {
-                    LandscapeLogField edcFieldControl = (LandscapeLogField)page.FindLandscapeLogField(record.Record.Value);
-                    if (edcFieldControl.VerifyStatus(record.StatusIcon) == false)
-                        Assert.Fail(String.Format("Status on record {0} doesn't match icon {1}", record.Record.Value, record.StatusIcon));
-                }
-            }
-            else
-            {
-                if (forms.Count != 1)
-                    throw new Exception("Too many or too few forms to be just the current form");
-
-                FormModel formInfo = forms.FirstOrDefault();
-                FormHeaderControl headerControl = page.FindHeader();
-                if (!String.IsNullOrEmpty(formInfo.StatusIcon) && formInfo.StatusIcon.Equals("Requires Review"))
-                {
-                    bool reviewRequired = headerControl.IsReviewRequired();
-                    Assert.AreEqual(true, reviewRequired, "Review Required doesn't match on Form in CRF");
-                }
+                bool reviewRequired = headerControl.IsReviewRequired();
+                Assert.AreEqual(true, reviewRequired, "Review Required doesn't match on Form in CRF");
             }
         }
 
@@ -448,7 +420,7 @@ namespace Medidata.RBT.Features.Rave
         [StepDefinition(@"I click audit on Field ""([^""]*)"" log line ""([^""]*)""")]
         public void ThenIClickAuditOnField____LogLine____(string fieldName, int logLine)
         {
-            CurrentPage = ((LabFieldControl)CurrentPage.As<CRFPage>().FindField(fieldName)).ClickAudit(logLine);
+            CurrentPage = ((NonLabFieldControl)CurrentPage.As<CRFPage>().FindField(fieldName, record: logLine)).ClickAudit(true);
         }
 
 		/// <summary>

@@ -12,6 +12,6 @@ namespace Medidata.RBT.PageObjects.Rave
 {
 	public interface IEDCDataPageControl : IControl
 	{
-		IEDCFieldControl FindField(string fieldName);
+		IEDCFieldControl FindField(string fieldName, int? record);
 	}
 }

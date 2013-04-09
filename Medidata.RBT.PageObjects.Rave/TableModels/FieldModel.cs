@@ -20,5 +20,6 @@ namespace Medidata.RBT.PageObjects.Rave
         public bool? RequiresSignature { get; set; }
         public string StatusIcon { set; get; }
         public bool? Review { set; get; }
+        public int? Record { set; get; }
 	}
 }

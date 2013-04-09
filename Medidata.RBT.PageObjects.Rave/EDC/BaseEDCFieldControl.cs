@@ -304,25 +304,19 @@ namespace Medidata.RBT.PageObjects.Rave
 	
 		}
 
-
 		protected virtual void EnterDropdownValue(string val)
 		{
-
 			var dropdowns = FieldControlContainer.FindElements(By.TagName("select")).ToList();
-
 			new SelectElement(dropdowns[0]).SelectByText(val);
 		}
 
 		protected virtual void EnterDynamicSearchListValue(string val)
 		{
-
-			var dslContainer = FieldControlContainer.TryFindElementBy(By.XPath(".//td[@style='padding-left:4px;']"));
-			var dsl = new CompositeDropdown(this.Page, "DSL", dslContainer);
-
+            CompositeDropdown dsl = new CompositeDropdown(this.Page, "DSL", FieldControlContainer);
 			dsl.TypeAndSelect(val);
 		}
 
-		public virtual AuditsPage ClickAudit()
+        public virtual AuditsPage ClickAudit(bool isRecord = false)
 		{
 			var auditButton = FieldControlContainer.TryFindElementByPartialID("DataStatusHyperlink");
 			auditButton.Click();
