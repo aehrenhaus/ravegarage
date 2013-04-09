@@ -1,6 +1,6 @@
-@MCC-41854
+@FT_MCC-41854
 
-Feature: MCC-50826 Signature break from log line inactivation not audited record positions >1
+Feature: MCC-41854 Signature break from log line inactivation not audited record positions >1
 
 Background:
 
