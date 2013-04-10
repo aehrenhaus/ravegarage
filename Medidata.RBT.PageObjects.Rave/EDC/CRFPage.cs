@@ -176,15 +176,16 @@ namespace Medidata.RBT.PageObjects.Rave
 		/// </summary>
 		/// <param name="fieldName"></param>
 		/// <param name="attribute"></param>
+        /// <param name="record">The record position (ie. log line number)</param>
 		/// <returns></returns>
-        public IEDCFieldControl FindField(string fieldName, string attribute = "Field")
+        public IEDCFieldControl FindField(string fieldName, string attribute = "Field", int? record = null)
         {
             if (attribute.Equals("Field"))
             {
                 if (IsLabForm)
                     return new LabDataPageControl(this).FindField(fieldName);
                 else
-                    return new NonLabDataPageControl(this).FindField(fieldName);
+                    return new NonLabDataPageControl(this).FindField(fieldName, record);
             }
             else if (attribute.Equals("Unit"))
             {

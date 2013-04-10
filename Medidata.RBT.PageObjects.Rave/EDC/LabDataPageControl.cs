@@ -44,7 +44,7 @@ namespace Medidata.RBT.PageObjects.Rave
 		//				tr2
 		//					td2 answer <br> dropdown answer textbox
 		//			table(other query)
-        public IEDCFieldControl FindField(string fieldName)
+        public IEDCFieldControl FindField(string fieldName, int? record = null)
 		{
             fieldName = ISearchContextExtend.ReplaceSpecialCharactersWithEscapeCharacters(fieldName);
             //First, look for the field as a non-lab field

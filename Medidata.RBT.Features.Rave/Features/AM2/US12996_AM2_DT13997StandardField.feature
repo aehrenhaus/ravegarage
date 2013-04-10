@@ -81,7 +81,7 @@ Then "Field A" has "<Values>" in order
 	| Gastrointestinal    |
 	| Abdomen and Viscera |
 And I verify data on Fields in CRF
-| Field   | Data                | Inactive |
-| Field A | Gastrointestinal    | False    |
-| Field A | Abdomen and Viscera | False    |
+| Field   | Record | Data                | Inactive |
+| Field A | 1      | Gastrointestinal    | False    |
+| Field A | 2      | Abdomen and Viscera | False    |
 And I take a screenshot

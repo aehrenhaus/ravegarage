@@ -158,17 +158,6 @@ namespace Medidata.RBT.PageObjects.Rave
                 VerifyData(MainTR, field.Range, "Range");
         }
 
-        public AuditsPage ClickAudit(int logLine)
-        {
-            IWebElement logTable = FieldControlContainer.Parent().Parent().Parent();
-            IWebElement logLineTd = logTable.FindElement(By.XPath("//td[text() = '" + logLine + "'] | //td/s[text() = '" + logLine + "']"));
-            if (logLineTd.TagName.Equals("s"))
-                logLineTd = logLineTd.Parent();
-            IWebElement auditButton = logLineTd.Parent().TryFindElementByPartialID("DataStatusHyperlink");
-            auditButton.Click();
-            return new AuditsPage();
-        }
-
         private bool VerifyData(EnhancedElement MainTR, string text, string verificationType)
         {
             int elementIndex;

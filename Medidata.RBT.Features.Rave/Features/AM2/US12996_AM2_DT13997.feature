@@ -311,8 +311,8 @@ Then "Field A" has "<Values>" in order
 	| Renal                     |
 	| Endocrine/Metabolic       |
 And I verify data on Fields in CRF
-| Field   | Data             | Inactive |
-| Field A | Gastrointestinal | True     |
+| Field   | Record | Data             | Inactive |
+| Field A | 4      | Gastrointestinal | True     |
 And I take a screenshot
 And I click audit on Field "Field A" log line "4"
 And I verify Audits exist
@@ -358,8 +358,8 @@ Then "Field A" has "<Values>" in order
 	| Renal                     |
 	| Endocrine/Metabolic       |
 And I verify data on Fields in CRF
-| Field   | Data             | Inactive |
-| Field A | Gastrointestinal | True     |
+| Field   | Record | Data             | Inactive |
+| Field A | 4      | Gastrointestinal | True     |
 And I take a screenshot
 And I click audit on Field "Field A" log line "4"
 And I verify Audits exist

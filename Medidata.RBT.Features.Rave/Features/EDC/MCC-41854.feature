@@ -69,39 +69,39 @@ And I enter data in CRF on a new log line and save
   |Actual date  |05 Jan 2011  |datetime      |
   |Actual time  |10 14        |datetime      |
   |Test name    |test5        |textbox       |     	
-  |Result       |1.5	      |textbox       |  
-And I verify data on current CRF
-  |Record |Status Icon        |
-  |1      |Requires Signature |
-  |2      |Requires Signature |
-  |3      |Requires Signature |
-  |4      |Requires Signature |
-  |5      |Requires Signature |
+  |Result       |1.5	      |textbox       |
+And I verify data on Fields in CRF
+  | Field       | Record | Status Icon        |
+  | Actual date | 1      | Requires Signature |
+  | Actual date | 2      | Requires Signature |
+  | Actual date | 3      | Requires Signature |
+  | Actual date | 4      | Requires Signature |
+  | Actual date | 5      | Requires Signature |
 And I take a screenshot
 And I click button "Sign and Save"
 And I sign the form with username "SUPER USER 1"
 And I verify text "Please Sign - Default User  (SUPER USER 1)" with username "SUPER USER 1" exists
-And I verify data on current CRF
-  |Record |Status Icon |
-  |1      |Complete    |
-  |2      |Complete    |
-  |3      |Complete    |
-  |4      |Complete    |
-  |5      |Complete    |
+And I verify data on Fields in CRF
+  | Field       | Record | Status Icon |
+  | Actual date | 1      | Complete    |
+  | Actual date | 2      | Complete    |
+  | Actual date | 3      | Complete    |
+  | Actual date | 4      | Complete    |
+  | Actual date | 5      | Complete    |
 And I take a screenshot  
 And I select link "Inactivate"
 And I choose "5" from "Inactivate"
 When I click button "Inactivate"
-Then I verify data on current CRF
-  |Record |Status Icon |
-  |1      |Complete    |
-  |2      |Complete    |
-  |3      |Complete    |
-  |4      |Complete    |
-  |5      |Inactive    |
+And I verify data on Fields in CRF
+  | Field       | Record | Status Icon |
+  | Actual date | 1      | Complete    |
+  | Actual date | 2      | Complete    |
+  | Actual date | 3      | Complete    |
+  | Actual date | 4      | Complete    |
+  | Actual date | 5      | Inactive    |
 And I can see "Sign and Save" button
 And I take a screenshot
-When I click audit on record position "1"
+And I click audit on Field "Actual date" log line "1"
 And I choose "Data Point - Actual date" from "Siblings Dropdown"
 Then I verify Audits exist
   |Audit Type           |Query Message |User                               |Time                 |
@@ -127,7 +127,7 @@ And I verify Audits exist
  |User entered        |'1.1'         |Default User ([id] - SUPER USER 1) |dd MMM yyyy HH:mm:ss |
 And I take a screenshot
 And I select link "ECGLogLandscape" in "Header"
-When I click audit on record position "5"
+And I click audit on Field "Actual date" log line "5"
 And I choose "Data Point - Actual date" from "Siblings Dropdown"
 Then I verify Audits exist
  |Audit Type          |Query Message |User                               |Time                 |
@@ -213,38 +213,38 @@ And I enter data in CRF on a new log line and save
   |Actual time  |11 14        |datetime      |
   |Test name    |test10       |textbox       |     	
   |Result       |1.10	      |textbox       |  
-And I verify data on current CRF
-  |Record |Status Icon        |
-  |1      |Requires Signature |
-  |2      |Requires Signature |
-  |3      |Requires Signature |
-  |4      |Requires Signature |
-  |5      |Requires Signature |
+And I verify data on Fields in CRF
+  | Field       | Record | Status Icon        |
+  | Actual date | 1      | Requires Signature |
+  | Actual date | 2      | Requires Signature |
+  | Actual date | 3      | Requires Signature |
+  | Actual date | 4      | Requires Signature |
+  | Actual date | 5      | Requires Signature |
 And I take a screenshot
 And I click button "Sign and Save"
 And I sign the form with username "SUPER USER 1"
 And I verify text "Please Sign - Default User  (SUPER USER 1)" with username "SUPER USER 1" exists
-And I verify data on current CRF
-  |Record |Status Icon |
-  |1      |Complete    |
-  |2      |Complete    |
-  |3      |Complete    |
-  |4      |Complete    |
-  |5      |Complete    |
+And I verify data on Fields in CRF
+  | Field       | Record | Status Icon |
+  | Actual date | 1      | Complete    |
+  | Actual date | 2      | Complete    |
+  | Actual date | 3      | Complete    |
+  | Actual date | 4      | Complete    |
+  | Actual date | 5      | Complete    |
 And I take a screenshot  
 And I select link "Inactivate"
 And I choose "4" from "Inactivate"
 When I click button "Inactivate"
-Then I verify data on current CRF
-  |Record |Status Icon |
-  |1      |Complete    |
-  |2      |Complete    |
-  |3      |Complete    |
-  |4      |Inactive    |
-  |5      |Complete    |
+And I verify data on Fields in CRF
+  | Field       | Record | Status Icon |
+  | Actual date | 1      | Complete    |
+  | Actual date | 2      | Complete    |
+  | Actual date | 3      | Complete    |
+  | Actual date | 4      | Inactive    |
+  | Actual date | 5      | Complete    |
 And I can see "Sign and Save" button
 And I take a screenshot
-When I click audit on record position "1"
+And I click audit on Field "Actual date" log line "1"
 And I choose "Data Point - Actual date" from "Siblings Dropdown"
 Then I verify Audits exist
   |Audit Type           |Query Message |User                               |Time                 |
@@ -270,7 +270,7 @@ And I verify Audits exist
  |User entered        |'1.6'         |Default User ([id] - SUPER USER 1) |dd MMM yyyy HH:mm:ss |
 And I take a screenshot
 And I select link "ECGLogPortrait" in "Header"
-When I click audit on record position "4"
+And I click audit on Field "Actual date" log line "4"
 And I choose "Data Point - Actual date" from "Siblings Dropdown"
 Then I verify Audits exist
  |Audit Type          |Query Message |User                               |Time                 |
@@ -362,13 +362,13 @@ And I enter data in CRF on a new log line and save
 And I verify data on Fields in CRF
   | Field  | Data | Status Icon        |
   | Number | 1    | Requires Signature |
-And I verify data on current CRF
-  |Record |Status Icon        |
-  |1      |Requires Signature |
-  |2      |Requires Signature |
-  |3      |Requires Signature |
-  |4      |Requires Signature |
-  |5      |Requires Signature |
+And I verify data on Fields in CRF
+  | Field       | Record | Status Icon        |
+  | Actual date | 1      | Requires Signature |
+  | Actual date | 2      | Requires Signature |
+  | Actual date | 3      | Requires Signature |
+  | Actual date | 4      | Requires Signature |
+  | Actual date | 5      | Requires Signature |
 And I take a screenshot
 And I click button "Sign and Save"
 And I sign the form with username "SUPER USER 1"
@@ -376,13 +376,13 @@ And I verify text "Please Sign - Default User  (SUPER USER 1)" with username "SU
 And I verify data on Fields in CRF
   | Field  | Data | Status Icon        |
   | Number | 1    | Requires Signature |
-And I verify data on current CRF
-  |Record |Status Icon |
-  |1      |Complete    |
-  |2      |Complete    |
-  |3      |Complete    |
-  |4      |Complete    |
-  |5      |Complete    |
+And I verify data on Fields in CRF
+  | Field       | Record | Status Icon |
+  | Actual date | 1      | Complete    |
+  | Actual date | 2      | Complete    |
+  | Actual date | 3      | Complete    |
+  | Actual date | 4      | Complete    |
+  | Actual date | 5      | Complete    |
 And I take a screenshot  
 And I select link "Inactivate"
 And I choose "5" from "Inactivate"
@@ -390,13 +390,13 @@ When I click button "Inactivate"
 Then I verify data on Fields in CRF
   | Field  | Data | Status Icon        |
   | Number | 1    | Requires Signature |  
-And I verify data on current CRF
-  |Record |Status Icon |
-  |1      |Complete    |
-  |2      |Complete    |
-  |3      |Complete    |
-  |4      |Complete    |
-  |5      |Inactive    |
+And I verify data on Fields in CRF
+  | Field       | Record | Status Icon |
+  | Actual date | 1      | Complete    |
+  | Actual date | 2      | Complete    |
+  | Actual date | 3      | Complete    |
+  | Actual date | 4      | Complete    |
+  | Actual date | 5      | Inactive    |
 And I can see "Sign and Save" button
 And I take a screenshot  
 And I select link "Inactivate"
@@ -405,13 +405,13 @@ When I click button "Inactivate"
 Then I verify data on Fields in CRF
   | Field  | Data | Status Icon        |
   | Number | 1    | Requires Signature |
-And I verify data on current CRF
-  |Record |Status Icon |
-  |1      |Complete    |
-  |2      |Complete    |
-  |3      |Inactive    |
-  |4      |Complete    |
-  |5      |Inactive    |  
+And I verify data on Fields in CRF
+  | Field       | Record | Status Icon |
+  | Actual date | 1      | Complete    |
+  | Actual date | 2      | Complete    |
+  | Actual date | 3      | Inactive    |
+  | Actual date | 4      | Complete    |
+  | Actual date | 5      | Inactive    |
 And I can see "Sign and Save" button
 And I take a screenshot
 And I click audit on Field "Number"
@@ -420,7 +420,7 @@ Then I verify Audits exist
  |Signature Succeeded |              |Default User ([id] - SUPER USER 1) |dd MMM yyyy HH:mm:ss |
  |User entered        |'1'           |Default User ([id] - SUPER USER 1) |dd MMM yyyy HH:mm:ss |
 And I select link "ECGMixedLandscape" in "Header"
-When I click audit on record position "1"
+And I click audit on Field "Actual date" log line "1"
 And I choose "Data Point - Actual date" from "Siblings Dropdown"
 Then I verify Audits exist
   |Audit Type           |Query Message |User                               |Time                 |
@@ -446,7 +446,7 @@ And I verify Audits exist
  |User entered        |'2.1'         |Default User ([id] - SUPER USER 1) |dd MMM yyyy HH:mm:ss |
 And I take a screenshot
 And I select link "ECGMixedLandscape" in "Header"
-When I click audit on record position "3"
+And I click audit on Field "Actual date" log line "3"
 And I choose "Data Point - Actual date" from "Siblings Dropdown"
 Then I verify Audits exist
  |Audit Type          |Query Message |User                               |Time                 |
@@ -480,7 +480,7 @@ And I verify Audits exist
  |User entered        |'2.3'         |Default User ([id] - SUPER USER 1) |dd MMM yyyy HH:mm:ss |
 And I take a screenshot
 And I select link "ECGMixedLandscape" in "Header"
-When I click audit on record position "5"
+And I click audit on Field "Actual date" log line "5"
 And I choose "Data Point - Actual date" from "Siblings Dropdown"
 Then I verify Audits exist
  |Audit Type          |Query Message |User                               |Time                 |
@@ -572,13 +572,13 @@ And I enter data in CRF on a new log line and save
 And I verify data on Fields in CRF
   | Field  | Data | Status Icon        |
   | Number | 2    | Requires Signature |
-And I verify data on current CRF
-  |Record |Status Icon        |
-  |1      |Requires Signature |
-  |2      |Requires Signature |
-  |3      |Requires Signature |
-  |4      |Requires Signature |
-  |5      |Requires Signature |
+And I verify data on Fields in CRF
+  | Field       | Record | Status Icon        |
+  | Actual date | 1      | Requires Signature |
+  | Actual date | 2      | Requires Signature |
+  | Actual date | 3      | Requires Signature |
+  | Actual date | 4      | Requires Signature |
+  | Actual date | 5      | Requires Signature |
 And I take a screenshot
 And I click button "Sign and Save"
 And I sign the form with username "SUPER USER 1"
@@ -586,13 +586,13 @@ And I verify text "Please Sign - Default User  (SUPER USER 1)" with username "SU
 And I verify data on Fields in CRF
   | Field  | Data | Status Icon        |
   | Number | 2    | Requires Signature |
-And I verify data on current CRF
-  |Record |Status Icon |
-  |1      |Complete    |
-  |2      |Complete    |
-  |3      |Complete    |
-  |4      |Complete    |
-  |5      |Complete    |
+And I verify data on Fields in CRF
+  | Field       | Record | Status Icon |
+  | Actual date | 1      | Complete    |
+  | Actual date | 2      | Complete    |
+  | Actual date | 3      | Complete    |
+  | Actual date | 4      | Complete    |
+  | Actual date | 5      | Complete    |
 And I take a screenshot  
 And I select link "Inactivate"
 And I choose "5" from "Inactivate"
@@ -600,13 +600,13 @@ When I click button "Inactivate"
 Then I verify data on Fields in CRF
   | Field  | Data | Status Icon        |
   | Number | 2    | Requires Signature | 
-And I verify data on current CRF
-  |Record |Status Icon |
-  |1      |Complete    |
-  |2      |Complete    |
-  |3      |Complete    |
-  |4      |Complete    |
-  |5      |Inactive    |
+And I verify data on Fields in CRF
+  | Field       | Record | Status Icon |
+  | Actual date | 1      | Complete    |
+  | Actual date | 2      | Complete    |
+  | Actual date | 3      | Complete    |
+  | Actual date | 4      | Complete    |
+  | Actual date | 5      | Inactive    |
 And I can see "Sign and Save" button
 And I take a screenshot  
 And I select link "Inactivate"
@@ -615,13 +615,13 @@ When I click button "Inactivate"
 Then I verify data on Fields in CRF
   | Field  | Data | Status Icon        |
   | Number | 2    | Requires Signature |
-And I verify data on current CRF
-  |Record |Status Icon |
-  |1      |Complete    |
-  |2      |Inactive    |
-  |3      |Complete    |
-  |4      |Complete    |
-  |5      |Inactive    |  
+And I verify data on Fields in CRF
+  | Field       | Record | Status Icon |
+  | Actual date | 1      | Complete    |
+  | Actual date | 2      | Inactive    |
+  | Actual date | 3      | Complete    |
+  | Actual date | 4      | Complete    |
+  | Actual date | 5      | Inactive    |
 And I can see "Sign and Save" button
 And I take a screenshot
 When I click audit on Field "Number"
@@ -630,7 +630,7 @@ Then I verify Audits exist
   |Signature Succeeded  |             |Default User ([id] - SUPER USER 1) |dd MMM yyyy HH:mm:ss |
   |User entered         |'2'          |Default User ([id] - SUPER USER 1) |dd MMM yyyy HH:mm:ss |
 And I select link "ECGMixedPortrait" in "Header"
-When I click audit on record position "1"
+And I click audit on Field "Actual date" log line "1"
 And I choose "Data Point - Actual date" from "Siblings Dropdown"
 Then I verify Audits exist
   |Audit Type           |Query Message |User                               |Time                 |
@@ -656,7 +656,7 @@ And I verify Audits exist
  |User entered        |'2.6'         |Default User ([id] - SUPER USER 1) |dd MMM yyyy HH:mm:ss |
 And I take a screenshot
 And I select link "ECGMixedPortrait" in "Header"
-When I click audit on record position "2"
+And I click audit on Field "Actual date" log line "2"
 And I choose "Data Point - Actual date" from "Siblings Dropdown"
 Then I verify Audits exist
  |Audit Type          |Query Message |User                               |Time                 |
@@ -690,7 +690,7 @@ And I verify Audits exist
  |User entered        |'2.7'         |Default User ([id] - SUPER USER 1) |dd MMM yyyy HH:mm:ss |
 And I take a screenshot
 And I select link "ECGMixedPortrait" in "Header"
-When I click audit on record position "5"
+And I click audit on Field "Actual date" log line "5"
 And I choose "Data Point - Actual date" from "Siblings Dropdown"
 Then I verify Audits exist
  |Audit Type          |Query Message |User                               |Time                 |
@@ -777,50 +777,50 @@ And I enter data in CRF on a new log line and save
   |Actual time  |10 19        |datetime      |
   |Test name    |test24       |textbox       |     	
   |Result       |3.5	      |textbox       |  
-And I verify data on current CRF
-  |Record |Status Icon        |
-  |1      |Requires Signature |
-  |2      |Requires Signature |
-  |3      |Requires Signature |
-  |4      |Requires Signature |
-  |5      |Requires Signature |
+And I verify data on Fields in CRF
+  | Field       | Record | Status Icon        |
+  | Actual date | 1      | Requires Signature |
+  | Actual date | 2      | Requires Signature |
+  | Actual date | 3      | Requires Signature |
+  | Actual date | 4      | Requires Signature |
+  | Actual date | 5      | Requires Signature |
 And I take a screenshot
 And I click button "Sign and Save"
 And I sign the form with username "SUPER USER 1"
 And I verify text "Please Sign - Default User  (SUPER USER 1)" with username "SUPER USER 1" exists
-And I verify data on current CRF
-  |Record |Status Icon |
-  |1      |Complete    |
-  |2      |Complete    |
-  |3      |Complete    |
-  |4      |Complete    |
-  |5      |Complete    |
+And I verify data on Fields in CRF
+  | Field       | Record | Status Icon |
+  | Actual date | 1      | Complete    |
+  | Actual date | 2      | Complete    |
+  | Actual date | 3      | Complete    |
+  | Actual date | 4      | Complete    |
+  | Actual date | 5      | Complete    |
 And I take a screenshot  
 And I select link "Inactivate"
 And I choose "5" from "Inactivate"
 When I click button "Inactivate"
-Then I verify data on current CRF
-  |Record |Status Icon |
-  |1      |Complete    |
-  |2      |Complete    |
-  |3      |Complete    |
-  |4      |Complete    |
-  |5      |Inactive    |
+And I verify data on Fields in CRF
+  | Field       | Record | Status Icon |
+  | Actual date | 1      | Complete    |
+  | Actual date | 2      | Complete    |
+  | Actual date | 3      | Complete    |
+  | Actual date | 4      | Complete    |
+  | Actual date | 5      | Inactive    |
 And I can see "Sign and Save" button
 And I take a screenshot
 And I select link "Reactivate"
 And I choose "5" from "Reactivate"
 When I click button "Reactivate"
-Then I verify data on current CRF
-  | Record | Status Icon        |
-  | 1      | Complete           |
-  | 2      | Complete           |
-  | 3      | Complete           |
-  | 4      | Complete           |
-  | 5      | Requires Signature |
+And I verify data on Fields in CRF
+  | Field       | Record | Status Icon        |
+  | Actual date | 1      | Complete           |
+  | Actual date | 2      | Complete           |
+  | Actual date | 3      | Complete           |
+  | Actual date | 4      | Complete           |
+  | Actual date | 5      | Requires Signature |
 And I can see "Sign and Save" button
 And I take a screenshot
-When I click audit on record position "5"
+And I click audit on Field "Actual date" log line "5"
 And I choose "Data Point - Actual date" from "Siblings Dropdown"
 Then I verify Audits exist
  |Audit Type          |Query Message |User                               |Time                 |
@@ -883,50 +883,50 @@ And I enter data in CRF on a new log line and save
   |Actual time  |11 19        |datetime      |
   |Test name    |test29       |textbox       |     	
   |Result       |3.10	      |textbox       |  
-And I verify data on current CRF
-  |Record |Status Icon        |
-  |1      |Requires Signature |
-  |2      |Requires Signature |
-  |3      |Requires Signature |
-  |4      |Requires Signature |
-  |5      |Requires Signature |
+And I verify data on Fields in CRF
+  | Field       | Record | Status Icon        |
+  | Actual date | 1      | Requires Signature |
+  | Actual date | 2      | Requires Signature |
+  | Actual date | 3      | Requires Signature |
+  | Actual date | 4      | Requires Signature |
+  | Actual date | 5      | Requires Signature |
 And I take a screenshot
 And I click button "Sign and Save"
 And I sign the form with username "SUPER USER 1"
 And I verify text "Please Sign - Default User  (SUPER USER 1)" with username "SUPER USER 1" exists
-And I verify data on current CRF
-  |Record |Status Icon |
-  |1      |Complete    |
-  |2      |Complete    |
-  |3      |Complete    |
-  |4      |Complete    |
-  |5      |Complete    |
+And I verify data on Fields in CRF
+  | Field       | Record | Status Icon |
+  | Actual date | 1      | Complete    |
+  | Actual date | 2      | Complete    |
+  | Actual date | 3      | Complete    |
+  | Actual date | 4      | Complete    |
+  | Actual date | 5      | Complete    |
 And I take a screenshot  
 And I select link "Inactivate"
 And I choose "3" from "Inactivate"
 When I click button "Inactivate"
-Then I verify data on current CRF
-  |Record |Status Icon |
-  |1      |Complete    |
-  |2      |Complete    |
-  |3      |Inactive    |
-  |4      |Complete    |
-  |5      |Complete    |
+And I verify data on Fields in CRF
+  | Field       | Record | Status Icon |
+  | Actual date | 1      | Complete    |
+  | Actual date | 2      | Complete    |
+  | Actual date | 3      | Inactive    |
+  | Actual date | 4      | Complete    |
+  | Actual date | 5      | Complete    |
 And I can see "Sign and Save" button
 And I take a screenshot
 And I select link "Reactivate"
 And I choose "3" from "Reactivate"
 When I click button "Reactivate"
-Then I verify data on current CRF
-  | Record | Status Icon        |
-  | 1      | Complete           |
-  | 2      | Complete           |
-  | 3      | Requires Signature |
-  | 4      | Complete           |
-  | 5      | Complete           |
+And I verify data on Fields in CRF
+  | Field       | Record | Status Icon        |
+  | Actual date | 1      | Complete           |
+  | Actual date | 2      | Complete           |
+  | Actual date | 3      | Requires Signature |
+  | Actual date | 4      | Complete           |
+  | Actual date | 5      | Complete           |
 And I can see "Sign and Save" button
 And I take a screenshot
-When I click audit on record position "3"
+And I click audit on Field "Actual date" log line "3"
 And I choose "Data Point - Actual time" from "Siblings Dropdown"
 Then I verify Audits exist
  |Audit Type          |Query Message |User                               |Time                 |
@@ -996,13 +996,13 @@ And I enter data in CRF on a new log line and save
 And I verify data on Fields in CRF
   | Field  | Data | Status Icon        |
   | Number | 3    | Requires Signature |
-And I verify data on current CRF
-  |Record |Status Icon        |
-  |1      |Requires Signature |
-  |2      |Requires Signature |
-  |3      |Requires Signature |
-  |4      |Requires Signature |
-  |5      |Requires Signature |
+And I verify data on Fields in CRF
+  | Field       | Record | Status Icon        |
+  | Actual date | 1      | Requires Signature |
+  | Actual date | 2      | Requires Signature |
+  | Actual date | 3      | Requires Signature |
+  | Actual date | 4      | Requires Signature |
+  | Actual date | 5      | Requires Signature |
 And I take a screenshot
 And I click button "Sign and Save"
 And I sign the form with username "SUPER USER 1"
@@ -1010,13 +1010,13 @@ And I verify text "Please Sign - Default User  (SUPER USER 1)" with username "SU
 And I verify data on Fields in CRF
   | Field  | Data | Status Icon        |
   | Number | 3    | Requires Signature |
-And I verify data on current CRF
-  |Record |Status Icon |
-  |1      |Complete    |
-  |2      |Complete    |
-  |3      |Complete    |
-  |4      |Complete    |
-  |5      |Complete    |
+And I verify data on Fields in CRF
+  | Field       | Record | Status Icon |
+  | Actual date | 1      | Complete    |
+  | Actual date | 2      | Complete    |
+  | Actual date | 3      | Complete    |
+  | Actual date | 4      | Complete    |
+  | Actual date | 5      | Complete    |
 And I take a screenshot  
 And I select link "Inactivate"
 And I choose "5" from "Inactivate"
@@ -1024,13 +1024,13 @@ When I click button "Inactivate"
 Then I verify data on Fields in CRF
   | Field  | Data | Status Icon        |
   | Number | 3    | Requires Signature |
-And I verify data on current CRF
-  |Record |Status Icon |
-  |1      |Complete    |
-  |2      |Complete    |
-  |3      |Complete    |
-  |4      |Complete    |
-  |5      |Inactive    |
+And I verify data on Fields in CRF
+  | Field       | Record | Status Icon |
+  | Actual date | 1      | Complete    |
+  | Actual date | 2      | Complete    |
+  | Actual date | 3      | Complete    |
+  | Actual date | 4      | Complete    |
+  | Actual date | 5      | Inactive    |
 And I can see "Sign and Save" button
 And I take a screenshot  
 And I select link "Inactivate"
@@ -1039,13 +1039,13 @@ When I click button "Inactivate"
 Then I verify data on Fields in CRF
   | Field  | Data | Status Icon        |
   | Number | 3    | Requires Signature |
-And I verify data on current CRF
-  |Record |Status Icon |
-  |1      |Complete    |
-  |2      |Complete    |
-  |3      |Complete    |
-  |4      |Inactive    |
-  |5      |Inactive    |  
+And I verify data on Fields in CRF
+  | Field       | Record | Status Icon |
+  | Actual date | 1      | Complete    |
+  | Actual date | 2      | Complete    |
+  | Actual date | 3      | Complete    |
+  | Actual date | 4      | Inactive    |
+  | Actual date | 5      | Inactive    |
 And I can see "Sign and Save" button
 And I take a screenshot
 And I select link "Reactivate"
@@ -1057,16 +1057,16 @@ When I click button "Reactivate"
 Then I verify data on Fields in CRF
   | Field  | Data | Status Icon        |
   | Number | 3    | Requires Signature |
-And I verify data on current CRF
-  | Record | Status Icon        |
-  | 1      | Complete           |
-  | 2      | Complete           |
-  | 3      | Complete           |
-  | 4      | Requires Signature |
-  | 5      | Requires Signature |
+And I verify data on Fields in CRF
+  | Field       | Record | Status Icon        |
+  | Actual date | 1      | Complete           |
+  | Actual date | 2      | Complete           |
+  | Actual date | 3      | Complete           |
+  | Actual date | 4      | Requires Signature |
+  | Actual date | 5      | Requires Signature |
 And I can see "Sign and Save" button
 And I take a screenshot
-When I click audit on record position "4"
+And I click audit on Field "Actual date" log line "4"
 And I choose "Data Point - Test name" from "Siblings Dropdown"
 Then I verify Audits exist
  |Audit Type          |Query Message |User                               |Time                 |
@@ -1137,13 +1137,13 @@ And I enter data in CRF on a new log line and save
 And I verify data on Fields in CRF
   | Field  | Data | Status Icon        |
   | Number | 4    | Requires Signature |
-And I verify data on current CRF
-  |Record |Status Icon        |
-  |1      |Requires Signature |
-  |2      |Requires Signature |
-  |3      |Requires Signature |
-  |4      |Requires Signature |
-  |5      |Requires Signature |
+And I verify data on Fields in CRF
+  | Field       | Record | Status Icon        |
+  | Actual date | 1      | Requires Signature |
+  | Actual date | 2      | Requires Signature |
+  | Actual date | 3      | Requires Signature |
+  | Actual date | 4      | Requires Signature |
+  | Actual date | 5      | Requires Signature |
 And I take a screenshot
 And I click button "Sign and Save"
 And I sign the form with username "SUPER USER 1"
@@ -1151,13 +1151,13 @@ And I verify text "Please Sign - Default User  (SUPER USER 1)" with username "SU
 And I verify data on Fields in CRF
   | Field  | Data | Status Icon        |
   | Number | 4    | Requires Signature |
-And I verify data on current CRF
-  |Record |Status Icon |
-  |1      |Complete    |
-  |2      |Complete    |
-  |3      |Complete    |
-  |4      |Complete    |
-  |5      |Complete    |
+And I verify data on Fields in CRF
+  | Field       | Record | Status Icon |
+  | Actual date | 1      | Complete    |
+  | Actual date | 2      | Complete    |
+  | Actual date | 3      | Complete    |
+  | Actual date | 4      | Complete    |
+  | Actual date | 5      | Complete    |
 And I take a screenshot  
 And I select link "Inactivate"
 And I choose "5" from "Inactivate"
@@ -1165,13 +1165,13 @@ When I click button "Inactivate"
 Then I verify data on Fields in CRF
   | Field  | Data | Status Icon        |
   | Number | 4    | Requires Signature |
-And I verify data on current CRF
-  |Record |Status Icon |
-  |1      |Complete    |
-  |2      |Complete    |
-  |3      |Complete    |
-  |4      |Complete    |
-  |5      |Inactive    |
+And I verify data on Fields in CRF
+  | Field       | Record | Status Icon |
+  | Actual date | 1      | Complete    |
+  | Actual date | 2      | Complete    |
+  | Actual date | 3      | Complete    |
+  | Actual date | 4      | Complete    |
+  | Actual date | 5      | Inactive    |
 And I can see "Sign and Save" button
 And I take a screenshot  
 And I select link "Inactivate"
@@ -1180,13 +1180,13 @@ When I click button "Inactivate"
 Then I verify data on Fields in CRF
   | Field  | Data | Status Icon        |
   | Number | 4    | Requires Signature |
-And I verify data on current CRF
-  |Record |Status Icon |
-  |1      |Complete    |
-  |2      |Inactive    |
-  |3      |Complete    |
-  |4      |Complete    |
-  |5      |Inactive    |  
+And I verify data on Fields in CRF
+  | Field       | Record | Status Icon |
+  | Actual date | 1      | Complete    |
+  | Actual date | 2      | Inactive    |
+  | Actual date | 3      | Complete    |
+  | Actual date | 4      | Complete    |
+  | Actual date | 5      | Inactive    |
 And I can see "Sign and Save" button
 And I take a screenshot
 And I select link "Reactivate"
@@ -1198,16 +1198,16 @@ When I click button "Reactivate"
 Then I verify data on Fields in CRF
   | Field  | Data | Status Icon        |
   | Number | 4    | Requires Signature |
-And I verify data on current CRF
-  | Record | Status Icon        |
-  | 1      | Complete           |
-  | 2      | Requires Signature |
-  | 3      | Complete           |
-  | 4      | Complete           |
-  | 5      | Requires Signature |
+And I verify data on Fields in CRF
+  | Field       | Record | Status Icon        |
+  | Actual date | 1      | Complete           |
+  | Actual date | 2      | Requires Signature |
+  | Actual date | 3      | Complete           |
+  | Actual date | 4      | Complete           |
+  | Actual date | 5      | Requires Signature |
 And I can see "Sign and Save" button
 And I take a screenshot
-When I click audit on record position "2"
+And I click audit on Field "Actual date" log line "2"
 And I choose "Data Point - Result" from "Siblings Dropdown"
 Then I verify Audits exist
  |Audit Type          |Query Message |User                               |Time                 |
@@ -1274,49 +1274,49 @@ And I enter data in CRF on a new log line and save
   |Actual time  |10 05        |datetime      |
   |Test name    |t5           |textbox       |     	
   |Result       |5.5	      |textbox       |  
-And I verify data on current CRF
-  |Record |Status Icon        |
-  |1      |Requires Signature |
-  |2      |Requires Signature |
-  |3      |Requires Signature |
-  |4      |Requires Signature |
-  |5      |Requires Signature |
+And I verify data on Fields in CRF
+  | Field       | Record | Status Icon        |
+  | Actual date | 1      | Requires Signature |
+  | Actual date | 2      | Requires Signature |
+  | Actual date | 3      | Requires Signature |
+  | Actual date | 4      | Requires Signature |
+  | Actual date | 5      | Requires Signature |
 And I take a screenshot
 And I select link "Inactivate"
 And I choose "5" from "Inactivate"
 When I click button "Inactivate"
-Then I verify data on current CRF
-  |Record |Status Icon        |
-  |1      |Requires Signature |
-  |2      |Requires Signature |
-  |3      |Requires Signature |
-  |4      |Requires Signature |
-  |5      |Inactive           |
+And I verify data on Fields in CRF
+  | Field       | Record | Status Icon        |
+  | Actual date | 1      | Requires Signature |
+  | Actual date | 2      | Requires Signature |
+  | Actual date | 3      | Requires Signature |
+  | Actual date | 4      | Requires Signature |
+  | Actual date | 5      | Inactive           |
 And I can see "Sign and Save" button
 And I click button "Sign and Save"
 And I sign the form with username "SUPER USER 1"
 And I verify text "Please Sign - Default User  (SUPER USER 1)" with username "SUPER USER 1" exists
-And I verify data on current CRF
-  |Record |Status Icon |
-  |1      |Complete    |
-  |2      |Complete    |
-  |3      |Complete    |
-  |4      |Complete    |
-  |5      |Inactive    |
+And I verify data on Fields in CRF
+  | Field       | Record | Status Icon |
+  | Actual date | 1      | Complete    |
+  | Actual date | 2      | Complete    |
+  | Actual date | 3      | Complete    |
+  | Actual date | 4      | Complete    |
+  | Actual date | 5      | Inactive    |
 And I take a screenshot  
 And I select link "Reactivate"
 And I choose "5" from "Reactivate"
 When I click button "Reactivate"
-Then I verify data on current CRF
-  | Record | Status Icon        |
-  | 1      | Complete           |
-  | 2      | Complete           |
-  | 3      | Complete           |
-  | 4      | Complete           |
-  | 5      | Requires Signature |
+And I verify data on Fields in CRF
+  | Field       | Record | Status Icon        |
+  | Actual date | 1      | Complete           |
+  | Actual date | 2      | Complete           |
+  | Actual date | 3      | Complete           |
+  | Actual date | 4      | Complete           |
+  | Actual date | 5      | Requires Signature |
 And I can see "Sign and Save" button
 And I take a screenshot
-When I click audit on record position "5"
+And I click audit on Field "Actual date" log line "5"
 And I choose "Data Point - Actual date" from "Siblings Dropdown"
 Then I verify Audits exist
   |Audit Type          |Query Message |User                               |Time                 |
@@ -1383,49 +1383,49 @@ And I enter data in CRF on a new log line and save
   |Actual time  |10 30        |datetime      |
   |Test name    |t10          |textbox       |     	
   |Result       |5.10	      |textbox       |  
-And I verify data on current CRF
-  |Record |Status Icon        |
-  |1      |Requires Signature |
-  |2      |Requires Signature |
-  |3      |Requires Signature |
-  |4      |Requires Signature |
-  |5      |Requires Signature |
+And I verify data on Fields in CRF
+  | Field       | Record | Status Icon        |
+  | Actual date | 1      | Requires Signature |
+  | Actual date | 2      | Requires Signature |
+  | Actual date | 3      | Requires Signature |
+  | Actual date | 4      | Requires Signature |
+  | Actual date | 5      | Requires Signature |
 And I take a screenshot
 And I select link "Inactivate"
 And I choose "4" from "Inactivate"
 When I click button "Inactivate"
-Then I verify data on current CRF
-  |Record |Status Icon        |
-  |1      |Requires Signature |
-  |2      |Requires Signature |
-  |3      |Requires Signature |
-  |4      |Inactive           |
-  |5      |Requires Signature |
+And I verify data on Fields in CRF
+  | Field       | Record | Status Icon        |
+  | Actual date | 1      | Requires Signature |
+  | Actual date | 2      | Requires Signature |
+  | Actual date | 3      | Requires Signature |
+  | Actual date | 4      | Inactive           |
+  | Actual date | 5      | Requires Signature |
 And I can see "Sign and Save" button
 And I click button "Sign and Save"
 And I sign the form with username "SUPER USER 1"
 And I verify text "Please Sign - Default User  (SUPER USER 1)" with username "SUPER USER 1" exists
-And I verify data on current CRF
-  |Record |Status Icon |
-  |1      |Complete    |
-  |2      |Complete    |
-  |3      |Complete    |
-  |4      |Inactive    |
-  |5      |Complete    |
+And I verify data on Fields in CRF
+  | Field       | Record | Status Icon |
+  | Actual date | 1      | Complete    |
+  | Actual date | 2      | Complete    |
+  | Actual date | 3      | Complete    |
+  | Actual date | 4      | Inactive    |
+  | Actual date | 5      | Complete    |
 And I take a screenshot  
 And I select link "Reactivate"
 And I choose "4" from "Reactivate"
 When I click button "Reactivate"
-Then I verify data on current CRF
-  | Record | Status Icon        |
-  | 1      | Complete           |
-  | 2      | Complete           |
-  | 3      | Complete           |
-  | 4      | Requires Signature |
-  | 5      | Complete           |
+And I verify data on Fields in CRF
+  | Field       | Record | Status Icon        |
+  | Actual date | 1      | Complete           |
+  | Actual date | 2      | Complete           |
+  | Actual date | 3      | Complete           |
+  | Actual date | 4      | Requires Signature |
+  | Actual date | 5      | Complete           |
 And I can see "Sign and Save" button
 And I take a screenshot
-When I click audit on record position "4"
+And I click audit on Field "Actual date" log line "4"
 And I choose "Data Point - Actual time" from "Siblings Dropdown"
 Then I verify Audits exist
  |Audit Type          |Query Message |User                               |Time                 |
@@ -1496,13 +1496,13 @@ And I enter data in CRF on a new log line and save
 And I verify data on Fields in CRF
   | Field  | Data | Status Icon        |
   | Number | 5    | Requires Signature |
-And I verify data on current CRF
-  |Record |Status Icon        |
-  |1      |Requires Signature |
-  |2      |Requires Signature |
-  |3      |Requires Signature |
-  |4      |Requires Signature |
-  |5      |Requires Signature |
+And I verify data on Fields in CRF
+  | Field       | Record | Status Icon        |
+  | Actual date | 1      | Requires Signature |
+  | Actual date | 2      | Requires Signature |
+  | Actual date | 3      | Requires Signature |
+  | Actual date | 4      | Requires Signature |
+  | Actual date | 5      | Requires Signature |
 And I take a screenshot
 And I select link "Inactivate"
 And I choose "5" from "Inactivate"
@@ -1510,13 +1510,13 @@ And I click button "Inactivate"
 And I select link "Inactivate"
 And I choose "4" from "Inactivate"
 When I click button "Inactivate"
-Then I verify data on current CRF
-  |Record |Status Icon        |
-  |1      |Requires Signature |
-  |2      |Requires Signature |
-  |3      |Requires Signature |
-  |4      |Inactive           |
-  |5      |Inactive           |
+And I verify data on Fields in CRF
+  | Field       | Record | Status Icon        |
+  | Actual date | 1      | Requires Signature |
+  | Actual date | 2      | Requires Signature |
+  | Actual date | 3      | Requires Signature |
+  | Actual date | 4      | Inactive           |
+  | Actual date | 5      | Inactive           |
 And I can see "Sign and Save" button
 And I click button "Sign and Save"
 And I sign the form with username "SUPER USER 1"
@@ -1527,16 +1527,16 @@ When I click button "Reactivate"
 And I select link "Reactivate"
 And I choose "4" from "Reactivate"
 When I click button "Reactivate"
-Then I verify data on current CRF
-  | Record | Status Icon        |
-  | 1      | Complete           |
-  | 2      | Complete           |
-  | 3      | Complete           |
-  | 4      | Requires Signature |
-  | 5      | Requires Signature |
+And I verify data on Fields in CRF
+  | Field       | Record | Status Icon        |
+  | Actual date | 1      | Complete           |
+  | Actual date | 2      | Complete           |
+  | Actual date | 3      | Complete           |
+  | Actual date | 4      | Requires Signature |
+  | Actual date | 5      | Requires Signature |
 And I can see "Sign and Save" button
 And I take a screenshot
-When I click audit on record position "4"
+And I click audit on Field "Actual date" log line "4"
 And I choose "Data Point - Test name" from "Siblings Dropdown"
 Then I verify Audits exist
  |Audit Type          |Query Message |User                               |Time                 |
@@ -1607,13 +1607,13 @@ And I enter data in CRF on a new log line and save
 And I verify data on Fields in CRF
   | Field  | Data | Status Icon        |
   | Number | 6    | Requires Signature |
-And I verify data on current CRF
-  |Record |Status Icon        |
-  |1      |Requires Signature |
-  |2      |Requires Signature |
-  |3      |Requires Signature |
-  |4      |Requires Signature |
-  |5      |Requires Signature |
+And I verify data on Fields in CRF
+  | Field       | Record | Status Icon        |
+  | Actual date | 1      | Requires Signature |
+  | Actual date | 2      | Requires Signature |
+  | Actual date | 3      | Requires Signature |
+  | Actual date | 4      | Requires Signature |
+  | Actual date | 5      | Requires Signature |
 And I take a screenshot
 And I select link "Inactivate"
 And I choose "5" from "Inactivate"
@@ -1621,13 +1621,13 @@ And I click button "Inactivate"
 And I select link "Inactivate"
 And I choose "2" from "Inactivate"
 When I click button "Inactivate"
-Then I verify data on current CRF
-  |Record |Status Icon           |
-  |1      |Requires Signature    |
-  |2      |Inactive              |
-  |3      |Requires Signature    |
-  |4      |Requires Signature    |
-  |5      |Inactive              |
+And I verify data on Fields in CRF
+  | Field       | Record | Status Icon        |
+  | Actual date | 1      | Requires Signature |
+  | Actual date | 2      | Inactive           |
+  | Actual date | 3      | Requires Signature |
+  | Actual date | 4      | Requires Signature |
+  | Actual date | 5      | Inactive           |
 And I can see "Sign and Save" button
 And I click button "Sign and Save"
 And I sign the form with username "SUPER USER 1"
@@ -1638,16 +1638,16 @@ When I click button "Reactivate"
 And I select link "Reactivate"
 And I choose "2" from "Reactivate"
 When I click button "Reactivate"
-Then I verify data on current CRF
-  | Record | Status Icon        |
-  | 1      | Complete           |
-  | 2      | Requires Signature |
-  | 3      | Complete           |
-  | 4      | Complete           |
-  | 5      | Requires Signature |
+And I verify data on Fields in CRF
+  | Field       | Record | Status Icon        |
+  | Actual date | 1      | Complete           |
+  | Actual date | 2      | Requires Signature |
+  | Actual date | 3      | Complete           |
+  | Actual date | 4      | Complete           |
+  | Actual date | 5      | Requires Signature |
 And I can see "Sign and Save" button
 And I take a screenshot
-When I click audit on record position "2"
+And I click audit on Field "Actual date" log line "2"
 And I choose "Data Point - Result" from "Siblings Dropdown"
 Then I verify Audits exist
  |Audit Type          |Query Message |User                               |Time                 |
@@ -1710,24 +1710,24 @@ And I enter data in CRF on a new log line and save
   |Actual time  |11 24        |datetime      |
   |Test name    |test48       |textbox       |     	
   |Result       |8.5	      |textbox       |  
-And I verify data on current CRF
-  |Record |Status Icon        |
-  |1      |Requires Signature |
-  |2      |Requires Signature |
-  |3      |Requires Signature |
-  |4      |Requires Signature |
-  |5      |Requires Signature |
+And I verify data on Fields in CRF
+  | Field       | Record | Status Icon        |
+  | Actual date | 1      | Requires Signature |
+  | Actual date | 2      | Requires Signature |
+  | Actual date | 3      | Requires Signature |
+  | Actual date | 4      | Requires Signature |
+  | Actual date | 5      | Requires Signature |
 And I take a screenshot
 And I click button "Sign and Save"
 And I sign the form with username "SUPER USER 1"
 And I verify text "Please Sign - Default User  (SUPER USER 1)" with username "SUPER USER 1" exists
-And I verify data on current CRF
-  |Record |Status Icon |
-  |1      |Complete    |
-  |2      |Complete    |
-  |3      |Complete    |
-  |4      |Complete    |
-  |5      |Complete    |
+And I verify data on Fields in CRF
+  | Field       | Record | Status Icon |
+  | Actual date | 1      | Complete    |
+  | Actual date | 2      | Complete    |
+  | Actual date | 3      | Complete    |
+  | Actual date | 4      | Complete    |
+  | Actual date | 5      | Complete    |
 And I take a screenshot  
 And I select link "Inactivate"
 And I choose "5" from "Inactivate"
@@ -1744,16 +1744,16 @@ When I click button "Inactivate"
 And I select link "Inactivate"
 And I choose "1" from "Inactivate"
 When I click button "Inactivate"
-Then I verify data on current CRF
-  |Record |Status Icon |
-  |1      |Inactive    |
-  |2      |Inactive    |
-  |3      |Inactive    |
-  |4      |Inactive    |
-  |5      |Inactive    |
+And I verify data on Fields in CRF
+  | Field       | Record | Status Icon |
+  | Actual date | 1      | Inactive    |
+  | Actual date | 2      | Inactive    |
+  | Actual date | 3      | Inactive    |
+  | Actual date | 4      | Inactive    |
+  | Actual date | 5      | Inactive    |
 And I can see "Sign and Save" button
 And I take a screenshot
-When I click audit on record position "1"
+And I click audit on Field "Actual date" log line "1"
 And I choose "Data Point - Actual date" from "Siblings Dropdown"
 Then I verify Audits exist
   |Audit Type           |Query Message |User                               |Time                 |

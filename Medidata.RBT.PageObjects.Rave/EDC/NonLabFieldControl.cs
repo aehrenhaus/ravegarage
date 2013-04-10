@@ -24,7 +24,8 @@ namespace Medidata.RBT.PageObjects.Rave
 		{
 			this.FieldInformationTD = LeftSideOrTopTD.EnhanceAs<EnhancedElement>();
 			this.FieldDataTD = RightSideOrBottomTD.EnhanceAs<EnhancedElement>();
-            this.FieldControlContainer = RightSideOrBottomTD.TryFindElementBy(By.XPath(".//td[@style='padding-left:4px;']"));
+            this.FieldControlContainer = RightSideOrBottomTD.GetAttribute("style").Contains("padding-left:4px;") ?
+                RightSideOrBottomTD : RightSideOrBottomTD.TryFindElementBy(By.XPath(".//td[@style='padding-left:4px;']"), false);
 
 			FieldName = "";
 		}
@@ -36,9 +37,13 @@ namespace Medidata.RBT.PageObjects.Rave
 	
 		#region IEDCFieldControl
 
-		public override AuditsPage ClickAudit()
+		public override AuditsPage ClickAudit(bool isRecord = false)
 		{
-			var auditButton = FieldDataTD.TryFindElementByPartialID("DataStatusHyperlink");
+            IWebElement auditButton = null;
+            if(isRecord)
+                auditButton = FieldDataTD.Parent().TryFindElementByPartialID("DataStatusHyperlink");
+            else
+                auditButton = FieldDataTD.TryFindElementByPartialID("DataStatusHyperlink");
 			auditButton.Click();
 			return new AuditsPage();
 		}

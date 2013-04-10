@@ -12,7 +12,7 @@ namespace Medidata.RBT.PageObjects.Rave
 {
 	public interface IEDCFieldControl : IControl
 	{
-		AuditsPage ClickAudit();
+		AuditsPage ClickAudit(bool isRecord = false);
 
 		void EnterData(string text, ControlType controlType, string additionalData = "");
 

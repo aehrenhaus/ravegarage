@@ -58,7 +58,7 @@ namespace Medidata.RBT.PageObjects.Rave
         /// </summary>
         /// <param name="fieldName">The name of the field to find</param>
         /// <returns>The non-lab field that was found</returns>
-        public IEDCFieldControl FindField(string fieldName)
+        public IEDCFieldControl FindField(string fieldName, int? record = null)
 		{
             SearchableTDs searchableTds = GetSearchableTDs(Page, false);
             //If there are still no searchable tds, maybe we need to wait
@@ -89,10 +89,26 @@ namespace Medidata.RBT.PageObjects.Rave
             //It is a landscape field
             else
             {
-                //Get the last log row
+                IWebElement tableRow = null;
                 ReadOnlyCollection<IWebElement> tableRows = area.Element.TryFindElementsBy(By.XPath(@"./../../tr"));
-                //Subtract by two because array is zero-indexed and the last row is "Add a new Log Line" row
-                IWebElement tableRow = tableRows[tableRows.Count - 2];
+                if (record.HasValue)
+                {
+                    foreach (IWebElement possibleTableRow in tableRows)
+                    {
+                        IWebElement recordNumberTD = possibleTableRow.TryFindElementBy(By.XPath("td[1]"));
+                        if (recordNumberTD != null && recordNumberTD.Text.Equals(record.Value.ToString()))
+                        {
+                            tableRow = possibleTableRow;
+                            break;
+                        }
+                    }
+                }
+                else
+                {
+                    //Get the last log row
+                    //Subtract by two because array is zero-indexed and the last row is "Add a new Log Line" row
+                    tableRow = tableRows[tableRows.Count - 2];
+                }
 
                 contentTD = tableRow.TryFindElementBy(By.XPath("td[" + (area.Index + 1) + "]")); //Need to add 1 to translate 0 index to 1 index
             }
