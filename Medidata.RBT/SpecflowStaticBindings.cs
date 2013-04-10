@@ -65,7 +65,11 @@ namespace Medidata.RBT
                 {
                     Assert.Fail(String.Format("Feature setup scenario \"{0}\" failed with the message: {1}", featureSetupMethod, e.InnerException.Message));
                 }
-                AfterScenario();
+                finally
+                {
+                    AfterScenario();
+                    ((MethodInfo)fixtureType.GetMethods().FirstOrDefault(mi => mi.Name.Equals("ScenarioTearDown"))).Invoke(fixtureInstance, null);
+                }
             }
 
             FeatureContext.Current["BeforeFeatureExecution"] = false;
