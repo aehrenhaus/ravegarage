@@ -25,13 +25,13 @@ Given following coding dictionary assignments exist
 Given study "Mediflex" is assigned to Site "Allegheny University"
 Given study "Mediflex" is assigned to Site "Shady Grove"
 Given xml Lab Configuration "R55_PDF_GLOBAL1_V4_US.xml" is uploaded
-Given xml draft "R55_PDF_GLOBAL1_V4_Mediflex.xml" is Uploaded
 Given following Project assignments exist
 | User         | Project  | Environment | Role                   | Site                 | SecurityRole          | ExternalSystem |
 | SUPER USER 1 | Mediflex | Live: Prod  | R55_PDF_GLOBAL1V4_Role | Allegheny University | Project Admin Default | iMedidata      |
 Given following Project assignments exist
 | User         | Project  | Environment | Role                   | Site        | SecurityRole          | ExternalSystem |
 | SUPER USER 1 | Mediflex | Live: Prod  | R55_PDF_GLOBAL1V4_Role | Shady Grove | Project Admin Default | iMedidata      |
+Given xml draft "R55_PDF_GLOBAL1_V4_Mediflex.xml" is Uploaded
 Given I publish and push eCRF "R55_PDF_GLOBAL1_V4_Mediflex.xml" to "Version 1"
 Given following PDF Configuration Profile Settings exist
 | Profile Name      |
