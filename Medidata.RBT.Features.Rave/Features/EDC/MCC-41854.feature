@@ -1,3 +1,4 @@
+@ignore
 @FT_MCC-41854
 
 Feature: MCC-41854 Signature break from log line inactivation not audited record positions >1
