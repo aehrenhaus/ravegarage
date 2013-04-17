@@ -39,5 +39,12 @@ namespace Medidata.RBT.PageObjects.Rave
 			}
 		}
 
+        public SubjectPage ReenterSubjectPrimaryPage(IEnumerable<FieldModel> dps)
+        {
+            var prp = new PrimaryRecordPage();
+            SubjectPage subPage = prp.FillNameAndSave(dps);
+            return subPage;
+        }
+
 	}
 }

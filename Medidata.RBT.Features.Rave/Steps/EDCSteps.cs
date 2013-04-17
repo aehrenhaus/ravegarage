@@ -111,6 +111,18 @@ namespace Medidata.RBT.Features.Rave
             SpecialStringHelper.ReplaceTableColumn(table, "Data");
             CurrentPage = CurrentPage.As<HomePage>().CreateSubject(table.CreateSet<FieldModel>());
         }
+    
+        /// <summary>
+        /// Re eneter subject and fill the primary form.
+        /// </summary>
+        /// <param name="table"></param>
+        [StepDefinition(@"I enter data on Primary Form")]
+        public void IReenterASubjectOnPrimaryPage(Table table)
+        {
+            SpecialStringHelper.ReplaceTableColumn(table, "Data");
+            CurrentPage = CurrentPage.As<PrimaryRecordPage>().ReenterSubjectPrimaryPage(table.CreateSet<FieldModel>());
+        }
+
 
         /// <summary>
         /// Select forlder on DEC page
