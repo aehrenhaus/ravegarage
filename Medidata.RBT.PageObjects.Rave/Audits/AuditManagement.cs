@@ -70,7 +70,9 @@ namespace Medidata.RBT.PageObjects.Rave.Audits
                 case "lab range status changed":
                     return string.Format("Lab Range Status Changed from {0} to {1}.", auditQueryMessage.FirstOrDefault().Trim(), auditQueryMessage[1].Trim());
                 case "analyte range set":
-                    return string.Format("Analyte Range Set to {0}.", auditQueryMessage.FirstOrDefault());    
+                    return string.Format("Analyte Range Set to {0}.", auditQueryMessage.FirstOrDefault());
+                case "subject assigned to tsdv":
+                    return string.Format("Subject assigned to '{0}' in Targeted SDV.", auditQueryMessage.FirstOrDefault().Trim());
             }
 
             throw new Exception("Invalid audit type " + auditType);
