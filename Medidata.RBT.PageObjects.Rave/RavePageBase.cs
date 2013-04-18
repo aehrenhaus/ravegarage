@@ -224,7 +224,7 @@ namespace Medidata.RBT.PageObjects.Rave
                 //case ControlType.Datetime:
                 //case ControlType.RadioButton:
                 //case ControlType.RadioButtonVertical:
-                //case ControlType.DropDownList:
+                case ControlType.DropDownList:
                 case ControlType.DynamicSearchList:
                     return new LandscapeLogField(this, fieldName, rowIndex, controlType);
                 default:

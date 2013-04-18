@@ -161,6 +161,21 @@ namespace Medidata.RBT.Features.Rave
         }
 
         /// <summary>
+        /// Fill the CRF on a log line in landscape mode
+        /// This step will click modify button if it's not in edit view.
+        /// </summary>
+        /// <param name="line"></param>
+        /// <param name="table"></param>
+        [StepDefinition(@"I enter data in CRF on log line (\d+)")]
+        public void IEnterDataInCRFOnLogLine____(int line, Table table)
+        {
+            var page = CurrentPage.As<BaseEDCPage>();
+            page.ClickModify();
+
+            page.FillDataPoints(table.CreateSet<FieldModel>(), line);
+        }
+
+        /// <summary>
         /// Verifies data exists in the datapa/record we are already in
         /// </summary>
         /// <param name="table"></param>
