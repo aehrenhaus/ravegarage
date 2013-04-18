@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<configuration>
+  <configSections>
+    <section name="specFlow" type="TechTalk.SpecFlow.Configuration.ConfigurationSectionHandler,TechTalk.SpecFlow" />
+    <section name="DataSettings" type="Medidata.Utilities.XmlSectionHandler, Medidata.Utilities"/>
+  </configSections>
+
+  <specFlow>
+    <language feature="en-US" tool="" />
+    <unitTestProvider name="MsTest.2010" />
+  </specFlow>
+
+  <DataSettings configSource="connections.config" />
+  
+  <appSettings>
+    <add key="AwsAccessKey" value="%%%AwsAccessKey%%%"/>
+    <add key="AwsSecretKey" value="%%%AwsSecretKey%%%"/>
+    <add key="AwsRegion" value="%%%AwsRegion%%%"/>
+    <add key="RunCleaningEngineInProcess" value="True" />
+    <add key="ServiceName" value="%%%ServiceName%%%"/>
+    <add key="AwsConfigXmlFilePath" value="%%%AwsConfgiXmlFilePath%%%"/>
+    <add key="RaveBackupLocation" value="%%%RaveBackupLocation%%%"/>
+    <add key="RavePath" value="%%%PathToRaveRepo%%%"/>
+
+    <!-- MessageDeliveryType can be set to "Broker" or "SQS" -->
+    <add key="MessageDeliveryType" value="Broker"/>
+
+    <add key="log4net.Config" value="log4net.config" />
+  </appSettings>
+</configuration>

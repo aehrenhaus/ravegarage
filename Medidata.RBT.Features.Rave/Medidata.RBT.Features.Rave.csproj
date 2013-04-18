@@ -14,6 +14,8 @@
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -45,10 +47,6 @@
     <Reference Include="Newtonsoft.Json">
       <HintPath>..\ExternalDlls\Newtonsoft.Json.dll</HintPath>
     </Reference>
-    <Reference Include="O2S.Components.PDF4NET, Version=4.4.0.0, Culture=neutral, PublicKeyToken=80d03dd9e5b85317, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\ExternalDlls\O2S.Components.PDF4NET.dll</HintPath>
-    </Reference>
     <Reference Include="Selenium.WebDriverBackedSelenium">
       <HintPath>..\ExternalDlls\Selenium.WebDriverBackedSelenium.dll</HintPath>
     </Reference>
@@ -59,11 +57,11 @@
     </Reference>
     <Reference Include="System.Data" />
     <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Xml.Linq" />
-    <Reference Include="TechTalk.SpecFlow">
-      <HintPath>..\ExternalDlls\SpecflowModified\TechTalk.SpecFlow.dll</HintPath>
+    <Reference Include="TechTalk.SpecFlow, Version=1.9.0.77, Culture=neutral, PublicKeyToken=0778194805d6db41, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\SpecFlow.1.9.0\lib\net35\TechTalk.SpecFlow.dll</HintPath>
     </Reference>
     <Reference Include="ThoughtWorks.Selenium.Core">
       <HintPath>..\ExternalDlls\ThoughtWorks.Selenium.Core.dll</HintPath>
@@ -106,45 +104,10 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>US18531_AM2_DT13626.feature</DependentUpon>
     </Compile>
-    <Compile Include="Features\Architect\MCC-42701DL.feature.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>MCC-42701DL.feature</DependentUpon>
-    </Compile>
-    <Compile Include="Features\Architect\MCC-42706.feature.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>MCC-42706.feature</DependentUpon>
-    </Compile>
-    <Compile Include="Features\Architect\MCC-42707.feature.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>MCC-42707.feature</DependentUpon>
-    </Compile>
-    <Compile Include="Features\Architect\MCC-46558.feature.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>MCC-46558.feature</DependentUpon>
-    </Compile>
-    <Compile Include="Features\Architect\MCC-46594.feature.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>MCC-46594.feature</DependentUpon>
-    </Compile>
     <Compile Include="Features\Architect\US17446.feature.cs">
       <DependentUpon>US17446.feature</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-    </Compile>
-    <Compile Include="Features\Configuration\MCC-427034.feature.cs">
-      <DependentUpon>MCC-427034.feature</DependentUpon>
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-    </Compile>
-    <Compile Include="Features\Configuration\MCC-46558DisableCoder.feature.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>MCC-46558DisableCoder.feature</DependentUpon>
     </Compile>
     <Compile Include="Features\Configuration\US13011_DT13976_Upload.feature.cs">
       <AutoGen>True</AutoGen>
@@ -171,25 +134,10 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DT_10991.feature</DependentUpon>
     </Compile>
-    <Compile Include="Features\Architect\MCC-42701UL.feature.cs">
+    <Compile Include="Features\EDC\DT_12797.feature.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>MCC-42701UL.feature</DependentUpon>
-    </Compile>
-    <Compile Include="Features\EDC\MCC-28550.feature.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>MCC-28550.feature</DependentUpon>
-    </Compile>
-    <Compile Include="Features\EDC\MCC-41854.feature.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>MCC-41854.feature</DependentUpon>
-    </Compile>
-    <Compile Include="Features\EDC\US10241_DT12797.feature.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>US10241_DT12797.feature</DependentUpon>
+      <DependentUpon>DT_12797.feature</DependentUpon>
     </Compile>
     <Compile Include="Features\EDC\DT_13622_TSDV_Off.feature.cs">
       <AutoGen>True</AutoGen>
@@ -236,11 +184,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>US19302_DT14205.feature</DependentUpon>
     </Compile>
-    <Compile Include="Features\Labs\MCC-50622.feature.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>MCC-50622.feature</DependentUpon>
-    </Compile>
     <Compile Include="Features\Labs\US18087_DT14073.feature.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -250,6 +193,11 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>US13011_DT13976.feature</DependentUpon>
+    </Compile>
+    <Compile Include="Features\Configuration\US13011_DT13976_AddCoderToConfigurationLoaderSpec.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>US13011_DT13976_AddCoderToConfigurationLoaderSpec.feature</DependentUpon>
     </Compile>
     <Compile Include="Features\EDC\564 QueryRefiringLogic2.feature.cs">
       <AutoGen>True</AutoGen>
@@ -326,11 +274,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>US18358_DT14073.feature</DependentUpon>
     </Compile>
-    <Compile Include="Features\PDF\R55_PDF_GLOBAL1_V4.feature.cs">
-      <DependentUpon>R55_PDF_GLOBAL1_V4.feature</DependentUpon>
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-    </Compile>
     <Compile Include="Features\PDF\DT11249_US12607_US19066_DataPDF_Automated.feature.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -345,12 +288,6 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>DT5899_DT14019.feature</DependentUpon>
-    </Compile>
-    <Compile Include="Features\PDF\MCC46591.feature.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>MCC46591.feature</DependentUpon>
-    </Compile>
     <Compile Include="Features\PDF\US12175_DT8545_lessthangreaterthaninPDF.feature.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -365,6 +302,11 @@
       <DependentUpon>Temp.feature</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Features\test.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>test.feature</DependentUpon>
     </Compile>
     <Compile Include="Features\TSDV\US19017.feature.cs">
       <AutoGen>True</AutoGen>
@@ -385,11 +327,6 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>US18689.feature</DependentUpon>
-    </Compile>
-    <Compile Include="Features\test.feature.cs">
-      <DependentUpon>test.feature</DependentUpon>
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
     </Compile>
     <Compile Include="Features\EDC\564QueryRefiringLogic5_LabForm_2FldEC.feature.cs">
       <AutoGen>True</AutoGen>
@@ -463,13 +400,7 @@
     </Compile>
     <Compile Include="ReferenceFix.cs" />
     <Compile Include="Steps\ArchitectSteps_DB.cs" />
-    <Compile Include="Steps\FileSteps.cs" />
-    <Compile Include="Steps\CacheFlushSteps.cs" />
     <Compile Include="Steps\ConfigurationSteps.cs" />
-    <Compile Include="Steps\CoderSteps.cs" />
-    <Compile Include="Steps\EDCSteps_Sticky.cs" />
-    <Compile Include="Steps\ExpandCollapseSteps.cs" />
-    <Compile Include="Steps\Seeding\CoderDictionarySteps.cs" />
     <Compile Include="Steps\UserGroupSteps.cs" />
     <Compile Include="Steps\ReportAdminSteps.cs" />
     <Compile Include="Steps\LabUnitConversionSteps.cs" />
@@ -490,6 +421,7 @@
     <Compile Include="Steps\ReportSteps.cs" />
     <Compile Include="Steps\UserAdministrationSteps.cs" />
     <Compile Include="Steps\LoginSteps.cs" />
+    <Compile Include="Steps\Seeding\MarkingSteps.cs" />
     <Compile Include="Steps\Seeding\StudySteps.cs" />
     <Compile Include="Steps\ArchitectSteps.cs" />
     <Compile Include="Steps\Seeding\RoleSteps.cs" />
@@ -549,37 +481,9 @@
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>US18531_AM2_DT13626.feature.cs</LastGenOutput>
     </None>
-    <None Include="Features\Architect\MCC-42701DL.feature">
-      <Generator>SpecFlowSingleFileGenerator</Generator>
-      <LastGenOutput>MCC-42701DL.feature.cs</LastGenOutput>
-    </None>
-    <None Include="Features\Architect\MCC-42706.feature">
-      <Generator>SpecFlowSingleFileGenerator</Generator>
-      <LastGenOutput>MCC-42706.feature.cs</LastGenOutput>
-    </None>
-    <None Include="Features\Architect\MCC-42707.feature">
-      <Generator>SpecFlowSingleFileGenerator</Generator>
-      <LastGenOutput>MCC-42707.feature.cs</LastGenOutput>
-    </None>
-    <None Include="Features\Architect\MCC-46558.feature">
-      <Generator>SpecFlowSingleFileGenerator</Generator>
-      <LastGenOutput>MCC-46558.feature.cs</LastGenOutput>
-    </None>
-    <None Include="Features\Architect\MCC-46594.feature">
-      <Generator>SpecFlowSingleFileGenerator</Generator>
-      <LastGenOutput>MCC-46594.feature.cs</LastGenOutput>
-    </None>
     <None Include="Features\Architect\US17446.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>US17446.feature.cs</LastGenOutput>
-    </None>
-    <None Include="Features\Configuration\MCC-427034.feature">
-      <Generator>SpecFlowSingleFileGenerator</Generator>
-      <LastGenOutput>MCC-427034.feature.cs</LastGenOutput>
-    </None>
-    <None Include="Features\Configuration\MCC-46558DisableCoder.feature">
-      <Generator>SpecFlowSingleFileGenerator</Generator>
-      <LastGenOutput>MCC-46558DisableCoder.feature.cs</LastGenOutput>
     </None>
     <None Include="Features\Configuration\US13011_DT13976_Upload.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
@@ -597,21 +501,9 @@
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>DT_10991.feature.cs</LastGenOutput>
     </None>
-    <None Include="Features\Architect\MCC-42701UL.feature">
+    <None Include="Features\EDC\DT_12797.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
-      <LastGenOutput>MCC-42701UL.feature.cs</LastGenOutput>
-    </None>
-    <None Include="Features\EDC\MCC-28550.feature">
-      <Generator>SpecFlowSingleFileGenerator</Generator>
-      <LastGenOutput>MCC-28550.feature.cs</LastGenOutput>
-    </None>
-    <None Include="Features\EDC\MCC-41854.feature">
-      <Generator>SpecFlowSingleFileGenerator</Generator>
-      <LastGenOutput>MCC-41854.feature.cs</LastGenOutput>
-    </None>
-    <None Include="Features\EDC\US10241_DT12797.feature">
-      <Generator>SpecFlowSingleFileGenerator</Generator>
-      <LastGenOutput>US10241_DT12797.feature.cs</LastGenOutput>
+      <LastGenOutput>DT_12797.feature.cs</LastGenOutput>
     </None>
     <None Include="Features\EDC\DT_13622_TSDV_Off.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
@@ -649,10 +541,6 @@
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>US19302_DT14205.feature.cs</LastGenOutput>
     </None>
-    <None Include="Features\Labs\MCC-50622.feature">
-      <Generator>SpecFlowSingleFileGenerator</Generator>
-      <LastGenOutput>MCC-50622.feature.cs</LastGenOutput>
-    </None>
     <None Include="Features\Labs\US18087_DT14073.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>US18087_DT14073.feature.cs</LastGenOutput>
@@ -660,6 +548,10 @@
     <None Include="Features\Configuration\US13011_DT13976.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>US13011_DT13976.feature.cs</LastGenOutput>
+    </None>
+    <None Include="Features\Configuration\US13011_DT13976_AddCoderToConfigurationLoaderSpec.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>US13011_DT13976_AddCoderToConfigurationLoaderSpec.feature.cs</LastGenOutput>
     </None>
     <None Include="Features\EDC\US13021_DT12734.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
@@ -697,10 +589,6 @@
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>US18358_DT14073.feature.cs</LastGenOutput>
     </None>
-    <None Include="Features\PDF\R55_PDF_GLOBAL1_V4.feature">
-      <Generator>SpecFlowSingleFileGenerator</Generator>
-      <LastGenOutput>R55_PDF_GLOBAL1_V4.feature.cs</LastGenOutput>
-    </None>
     <None Include="Features\PDF\DT11249_US12607_US19066_DataPDF_Automated.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>DT11249_US12607_US19066_DataPDF_Automated.feature.cs</LastGenOutput>
@@ -712,10 +600,6 @@
     <None Include="Features\PDF\DT5899_DT14019.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>DT5899_DT14019.feature.cs</LastGenOutput>
-    </None>
-    <None Include="Features\PDF\MCC46591.feature">
-      <Generator>SpecFlowSingleFileGenerator</Generator>
-      <LastGenOutput>MCC46591.feature.cs</LastGenOutput>
     </None>
     <None Include="Features\PDF\US12175_DT8545_lessthangreaterthaninPDF.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
@@ -849,6 +733,7 @@
     <PreBuildEvent>
     </PreBuildEvent>
   </PropertyGroup>
+  <Import Project="$(SolutionDir)\.nuget\nuget.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

@@ -1,0 +1,7 @@
+﻿<DataSettings Type="Medidata.Data.Configuration.DataSettings, Medidata.Data">
+  <Caching TimeOut="20"/>
+  <DefaultHint Value="SqsTesting"/>
+  <ConnectionSettings>
+    <ConnectionSetting DataSourceHint="SqsTesting" ConnectionString="Server=%%%SqlServer%%%;Database=%%%SqlDb%%%;uid=%%%SqlUser%%%;pwd=%%%SqlPwd%%%;Connection Timeout=600" ProviderType="SqlClient"/>
+  </ConnectionSettings>
+</DataSettings>
