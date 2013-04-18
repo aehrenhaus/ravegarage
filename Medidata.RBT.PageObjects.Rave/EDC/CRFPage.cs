@@ -230,8 +230,6 @@ namespace Medidata.RBT.PageObjects.Rave
             {
                 if (IsLabForm)
                     return new LabDataPageControl(this).FindField(fieldName);
-                else if (IsMixedForm)
-                    return new MixedDataPageControl(this).FindField(fieldName);
                 else if (IsLandscapeLogForm)
                     return new CRFPage().FindLandscapeLogField(fieldName, line, controlType);
                 else
