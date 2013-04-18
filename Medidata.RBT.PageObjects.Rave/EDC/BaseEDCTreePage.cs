@@ -15,6 +15,12 @@ namespace Medidata.RBT.PageObjects.Rave
 			throw new NotImplementedException();
 		}
 
+        public virtual IEDCFieldControl FindField(string fieldName, string attribute, int line, ControlType controlType)
+        {
+            throw new NotImplementedException();
+        }
+
+
 		public IWebElement GetTaskSummaryArea(string header)
 		{
 			var TRs = Browser.FindElementsByXPath("//span[@id='_ctl0_Content_TsBox_CBoxC']/table/tbody/tr[position()>1]");
@@ -42,6 +48,14 @@ namespace Medidata.RBT.PageObjects.Rave
 
 			return this;
 		}
+
+        public BaseEDCPage FillDataPoints(IEnumerable<FieldModel> fields, int line)
+        {
+            foreach (var field in fields)
+                FindField(field.Field, "Field", line, EnumHelper.GetEnumByDescription<ControlType>(field.ControlType)).EnterData(field.Data, EnumHelper.GetEnumByDescription<ControlType>(field.ControlType), field.AdditionalData);
+
+            return this;
+        }
 
 		public BaseEDCPage CancelForm()
 		{
