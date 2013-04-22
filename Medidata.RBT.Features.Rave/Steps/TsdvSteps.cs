@@ -3,6 +3,8 @@ using Medidata.RBT.PageObjects.Rave;
 using TechTalk.SpecFlow.Assist;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Medidata.RBT.PageObjects.Rave.TSDV;
+using System.Collections.Generic;
+using Medidata.RBT.PageObjects.Rave.TableModels;
 
 namespace Medidata.RBT.Features.Rave
 {
@@ -171,6 +173,34 @@ namespace Medidata.RBT.Features.Rave
 		{
             TsdvDao.Instance.TSDVEnabled = false;
 		}
+
+        /// <summary>
+        /// Select fields for custom tier
+        /// </summary>
+        /// <param name="table"></param>
+        [StepDefinition(@"I select fields in Custom Tier and save")]
+        public void ISelectFieldsInCustomTierAndSave(Table table)
+        {
+            IEnumerable<TSDVFormFieldsModel> fields = table.CreateSet<TSDVFormFieldsModel>();
+
+            CurrentPage.As<CustomTierDraftPage>().SelectFieldsCustomTierDraft(fields, true);
+
+        }
+
+        /// <summary>
+        /// Is the verify custom tier included field.
+        /// </summary>
+        /// <param name="table">The table.</param>
+        [StepDefinition(@"I verify Custom Tier Field")]
+        public void IVerifyCustomTierIncludedField(Table table)
+        {
+            IEnumerable<TSDVFormFieldsModel> fields = table.CreateSet<TSDVFormFieldsModel>();
+
+            bool isIncluded = CurrentPage.As<CustomTierPage>().SelectFieldsCustomTierDraft(fields, false);
+
+            Assert.AreEqual(true, isIncluded, "Field(s) not included in TSDV Custom Tier");
+        }
+
 
     }
 }

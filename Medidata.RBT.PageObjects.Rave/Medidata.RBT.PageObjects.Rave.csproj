@@ -265,6 +265,7 @@
     <Compile Include="TableModels\FormModel.cs" />
     <Compile Include="TableModels\PDF\PDFCreationModel.cs" />
     <Compile Include="TableModels\PDF\PDFDocumentParseModel.cs" />
+    <Compile Include="TableModels\TSDVFormFieldsModel.cs" />
     <Compile Include="TableModels\TSDVObjectModel.cs" />
     <Compile Include="TableModels\CustomTierModel.cs" />
     <Compile Include="TableModels\IFieldModel.cs" />
@@ -280,6 +281,7 @@
     <Compile Include="TableModels\TSDV\Permutations.cs" />
     <Compile Include="TableModels\UnitConversionModel.cs" />
     <Compile Include="TSDV\BlockPlansPageBase.cs" />
+    <Compile Include="TSDV\CustomTierPage.cs" />
     <Compile Include="TSDV\TiersPage.cs" />
     <Compile Include="TSDV\CustomTierDraftPage.cs" />
     <Compile Include="TSDV\SiteGroupBlockPlansPage.cs" />

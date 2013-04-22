@@ -8,10 +8,12 @@ using OpenQA.Selenium.Remote;
 using Medidata.RBT.SeleniumExtension;
 using TechTalk.SpecFlow;
 using OpenQA.Selenium.Support.UI;
+using Medidata.RBT.PageObjects.Rave.TableModels;
+using Medidata.RBT.PageObjects.Rave.TSDV;
 
 namespace Medidata.RBT.PageObjects.Rave
 {
-    public class CustomTierDraftPage : BlockPlansPageBase
+    public class CustomTierDraftPage : CustomTierPage
     {
 
         public override string URL
