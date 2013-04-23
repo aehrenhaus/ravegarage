@@ -22,12 +22,15 @@ namespace Medidata.RBT.PageObjects.Rave.TSDV
                 return "Modules/Reporting/TSDV/CustomTier.aspx";
             }
         }
+
         /// <summary>
         /// Selects the fields custom tier draft.
         /// </summary>
-        /// <param name="formFieldsModel">The TSDV form fields model.</param>
+        /// <param name="formFieldsModel">The form fields model.</param>
+        /// <param name="verify">if set to <c>true</c> [verify].</param>
+        /// <param name="publish">if set to <c>true</c> [publish].</param>
         /// <returns></returns>
-        public bool SelectFieldsCustomTierDraft(IEnumerable<TSDVFormFieldsModel> formFieldsModel, bool saveAndPublish = false)
+        public bool SelectFieldsCustomTierDraft(IEnumerable<TSDVFormFieldsModel> formFieldsModel, bool verify = false,  bool publish = false)
         {
             bool returnSelection = true;
             foreach (var model in formFieldsModel)
@@ -42,11 +45,11 @@ namespace Medidata.RBT.PageObjects.Rave.TSDV
                     var elemSpan = fieldFormsTable.FindElementsByPartialId("_FormNameLabel")
                                                   .FirstOrDefault(
                                                       el =>
-                                                      {
-                                                          bool foundForm = false;
-                                                          foundForm = el.Text == model.Form;
-                                                          return foundForm;
-                                                      });
+                                                          {
+                                                              bool foundForm = false;
+                                                              foundForm = el.Text == model.Form;
+                                                              return foundForm;
+                                                          });
                     if (elemSpan != null)
                     {
                         var idElements = elemSpan.Id.Split('_');
@@ -74,7 +77,7 @@ namespace Medidata.RBT.PageObjects.Rave.TSDV
                                 {
                                     if (row.Children().FirstOrDefault(r => r.Text == model.Field) != null)
                                     {
-                                        el = (IWebElement)row;
+                                        el = (IWebElement) row;
                                         break;
                                     }
                                 }
@@ -82,9 +85,9 @@ namespace Medidata.RBT.PageObjects.Rave.TSDV
                             }
 
                             var ch = el.Checkboxes()[0].EnhanceAs<Checkbox>();
-                            if (saveAndPublish)
+                            if (!verify)
                             {
-                                if ((bool)model.Selected.Value == true)
+                                if ((bool) model.Selected.Value == true)
                                 {
                                     ch.Check();
                                 }
@@ -95,23 +98,29 @@ namespace Medidata.RBT.PageObjects.Rave.TSDV
                             }
                             else
                             {
-                                if (returnSelection) returnSelection = model.Selected  == ch.Checked;
+                                if (returnSelection) returnSelection = model.Selected == ch.Checked;
                             }
                         }
 
                     }
-                };
+                }
+                ;
 
-                if (saveAndPublish)
+                if (!verify)
                 {
                     this.ClickButton("SaveForms");
+                }
+
+                if (publish)
+                {
+
                     Browser.TryFindElementBy(b =>
-                    {
-                        var pubBtn = Browser.TryFindElementById("PublishButton");
-                        if (pubBtn == null || !pubBtn.Enabled)
-                            return null;
-                        return pubBtn;
-                    });
+                        {
+                            var pubBtn = Browser.TryFindElementById("PublishButton");
+                            if (pubBtn == null || !pubBtn.Enabled)
+                                return null;
+                            return pubBtn;
+                        });
                     this.ClickButton("PublishButton");
                     //confirmation to publish the draft
                     Browser.TryFindElementByPartialID("_ctl0_Content__ctl10_PublishDraft");
@@ -119,6 +128,7 @@ namespace Medidata.RBT.PageObjects.Rave.TSDV
                     this.ClickButton("_ctl0_Content__ctl10_PublishDraft");
                 }
             }
+
             return returnSelection;
         }
     }
