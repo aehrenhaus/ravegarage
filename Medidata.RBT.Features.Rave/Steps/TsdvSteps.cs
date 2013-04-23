@@ -183,7 +183,20 @@ namespace Medidata.RBT.Features.Rave
         {
             IEnumerable<TSDVFormFieldsModel> fields = table.CreateSet<TSDVFormFieldsModel>();
 
-            CurrentPage.As<CustomTierDraftPage>().SelectFieldsCustomTierDraft(fields, true);
+            CurrentPage.As<CustomTierDraftPage>().SelectFieldsCustomTierDraft(fields, false, true);
+
+        }
+
+        /// <summary>
+        /// Select fields for custom tier without publish
+        /// </summary>
+        /// <param name="table"></param>
+        [StepDefinition(@"I select fields in Custom Tier")]
+        public void ISelectFieldsInCustomTier(Table table)
+        {
+            IEnumerable<TSDVFormFieldsModel> fields = table.CreateSet<TSDVFormFieldsModel>();
+
+            CurrentPage.As<CustomTierDraftPage>().SelectFieldsCustomTierDraft(fields, false, false);
 
         }
 
@@ -196,9 +209,9 @@ namespace Medidata.RBT.Features.Rave
         {
             IEnumerable<TSDVFormFieldsModel> fields = table.CreateSet<TSDVFormFieldsModel>();
 
-            bool isIncluded = CurrentPage.As<CustomTierPage>().SelectFieldsCustomTierDraft(fields, false);
+            bool actual = CurrentPage.As<CustomTierPage>().SelectFieldsCustomTierDraft(fields, true, false);
 
-            Assert.AreEqual(true, isIncluded, "Field(s) not included in TSDV Custom Tier");
+            Assert.AreEqual(true, actual, "Field(s) not included in TSDV Custom Tier");
         }
 
 
