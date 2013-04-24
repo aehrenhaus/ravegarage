@@ -311,7 +311,7 @@ namespace Medidata.RBT.PageObjects.Rave
         /// Method to fill the Architect field setting related data points
         /// </summary>
         /// <param name="fieldModels"></param>
-        public void FillDataPoints(IEnumerable<FieldModel> fieldModels)
+        public void FillFieldProperties(IEnumerable<FieldModel> fieldModels, bool save =true)
         {
             //This method support filling dropdowns and textbox data so far and should be extended in future if 
             //support for other control type is needed.
@@ -337,10 +337,13 @@ namespace Medidata.RBT.PageObjects.Rave
                         }
                 }
             }
-
-            //save the setting after filling the data points and wait for document load to finish before returning
-            this.ClickLink("Save");
-            Browser.WaitForDocumentLoad();
+            if (save)
+            {
+                //save the setting after filling the data points and wait for document load to finish before returning
+                this.ClickLink("Save");
+                Browser.WaitForDocumentLoad();
+            }
+            
         }
 
         /// <summary>
@@ -367,6 +370,19 @@ namespace Medidata.RBT.PageObjects.Rave
                 () => { throw new Exception(string.Format("Specified coding dictionary [{0}] is not available in seeded object", codingDictionary)); }).UniqueName;
 
             return selectedCodingDictionaryElement.SelectedOption.Text.Contains(uniqueCodingDictionaryName);
+        }
+
+        public override IPage ChooseFromCheckboxes(string identifier, bool isChecked = true, string areaIdentifier = null, string listItem = null)
+        {
+            IPage result = null;
+
+            if ("Auto-Query for non-conformant data".Equals(identifier))
+            {
+                result = base.ChooseFromCheckboxes(
+                    "_chkNonConform", isChecked);
+            }
+
+            return result;
         }
 
         #region IExpand_interface

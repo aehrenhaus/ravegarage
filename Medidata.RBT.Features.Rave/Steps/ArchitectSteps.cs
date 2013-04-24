@@ -218,7 +218,17 @@ namespace Medidata.RBT.Features.Rave
         [StepDefinition(@"I enter data in Architect Field and save")]
         public void IEnterDataInArchitectFieldAndSave(Table table)
         {
-            CurrentPage.As<ArchitectFormDesignerPage>().FillDataPoints(table.CreateSet<FieldModel>());
+            CurrentPage.As<ArchitectFormDesignerPage>().FillFieldProperties(table.CreateSet<FieldModel>());
+        }
+
+        /// <summary>
+        /// Step to enter architect field setting related data
+        /// </summary>
+        /// <param name="table"></param>
+        [StepDefinition(@"I enter data in Architect Field")]
+        public void IEnterDataInArchitectField(Table table)
+        {
+            CurrentPage.As<ArchitectFormDesignerPage>().FillFieldProperties(table.CreateSet<FieldModel>(), false);
         }
 
         /// <summary>
