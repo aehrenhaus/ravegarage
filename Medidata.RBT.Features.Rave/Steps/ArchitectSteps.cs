@@ -222,6 +222,16 @@ namespace Medidata.RBT.Features.Rave
         }
 
         /// <summary>
+        /// Step to enter architect field setting related data
+        /// </summary>
+        /// <param name="table"></param>
+        [StepDefinition(@"I enter data in Architect Field")]
+        public void IEnterDataInArchitectField(Table table)
+        {
+            CurrentPage.As<ArchitectFormDesignerPage>().FillDataPoints(table.CreateSet<FieldModel>(), false);
+        }
+
+        /// <summary>
         /// Step to let deleted the coder configuration supplemental or component terms
         /// </summary>
         /// <param name="termName"></param>
