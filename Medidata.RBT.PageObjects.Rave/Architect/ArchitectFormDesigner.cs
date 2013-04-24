@@ -311,7 +311,7 @@ namespace Medidata.RBT.PageObjects.Rave
         /// Method to fill the Architect field setting related data points
         /// </summary>
         /// <param name="fieldModels"></param>
-        public void FillDataPoints(IEnumerable<FieldModel> fieldModels, bool save =true)
+        public void FillFieldProperties(IEnumerable<FieldModel> fieldModels, bool save =true)
         {
             //This method support filling dropdowns and textbox data so far and should be extended in future if 
             //support for other control type is needed.
