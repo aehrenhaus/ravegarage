@@ -117,8 +117,8 @@ namespace Medidata.RBT
                 return (new DirectoryInfo(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"..\..\..\Downloads"))).FullName;
             }
         }
-				
-		[ConfigurationProperty("AutoSaveMimeTypes", DefaultValue = "application/zip;application/pdf;application/octet-stream", IsRequired = true)]
+
+        [ConfigurationProperty("AutoSaveMimeTypes", DefaultValue = "application/zip;application/pdf;application/octet-stream;text/xml", IsRequired = true)]
         public String AutoSaveMimeTypes
         {
             get { return (String)this["AutoSaveMimeTypes"]; }

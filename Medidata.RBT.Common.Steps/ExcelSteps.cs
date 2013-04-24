@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Medidata.RBT.PageObjects.Rave.SharedRaveObjects;
 using Medidata.RBT.SeleniumExtension;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using TechTalk.SpecFlow;
@@ -120,6 +121,12 @@ namespace Medidata.RBT.Common.Steps
 					{
 						string expected = row[column]??"";
 						string actual = sheet[rowIndex, column] as string??"";
+
+                        if (String.Compare(column, "Project" ,StringComparison.CurrentCultureIgnoreCase) == 0)
+                        {
+                            Project project = SeedingContext.GetExistingFeatureObjectOrMakeNew(expected, () => new Project(expected));
+                            expected = project.UniqueName;
+                        }
 
 						if (actual != null && expected.Trim()!=actual.Trim())
 							throw new Exception(string.Format(
