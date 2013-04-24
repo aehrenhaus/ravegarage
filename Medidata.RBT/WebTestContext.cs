@@ -32,9 +32,7 @@ namespace Medidata.RBT
 		{
 			Storage = new Hashtable();
 			POFactory = new PageObjectFactory(this);
-            //var raveConfig = (Medidata.RBT.PageObjects.Rave.RaveConfiguration)ConfigurationManager.GetSection("RaveConfiguration");
-            //= Path.Combine(AppDomain.CurrentDomain.BaseDirectory, RBTConfiguration.Default.POAssembly);
-		    var assem = Assembly.Load(RBTConfiguration.Default.POAssembly);
+            var assem = Assembly.Load(RBTConfiguration.Default.POAssembly);
 			POFactory.AddAssembly(assem);
 			
 		}
