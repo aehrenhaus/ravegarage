@@ -1,23 +1,19 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using TechTalk.SpecFlow;
-using OpenQA.Selenium.Remote;
-using OpenQA.Selenium;
-using System.IO;
-using System.Drawing.Imaging;
-using System.Collections.Specialized;
-using System.Threading;
-using OpenQA.Selenium.Firefox;
-using OpenQA.Selenium.Chrome;
-using OpenQA.Selenium.IE;
-using Medidata.RBT.SeleniumExtension;
-using Medidata.RBT.SharedObjects;
-using System.Reflection;
-using System.Drawing;
 using System.Collections;
-using O2S.Components.PDF4NET;
+using System.Collections.Generic;
+using System.Configuration;
+using System.Drawing;
+using System.IO;
+using System.Linq;
+using System.Reflection;
+using System.Threading;
+using Medidata.RBT.SeleniumExtension;
+
+using OpenQA.Selenium;
+using OpenQA.Selenium.Chrome;
+using OpenQA.Selenium.Firefox;
+using OpenQA.Selenium.IE;
+using OpenQA.Selenium.Remote;
 
 
 namespace Medidata.RBT
@@ -36,8 +32,9 @@ namespace Medidata.RBT
 		{
 			Storage = new Hashtable();
 			POFactory = new PageObjectFactory(this);
-			string assemPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, RBTConfiguration.Default.POAssembly);
-			var assem = Assembly.LoadFile( assemPath);
+            //var raveConfig = (Medidata.RBT.PageObjects.Rave.RaveConfiguration)ConfigurationManager.GetSection("RaveConfiguration");
+            //= Path.Combine(AppDomain.CurrentDomain.BaseDirectory, RBTConfiguration.Default.POAssembly);
+		    var assem = Assembly.Load(RBTConfiguration.Default.POAssembly);
 			POFactory.AddAssembly(assem);
 			
 		}

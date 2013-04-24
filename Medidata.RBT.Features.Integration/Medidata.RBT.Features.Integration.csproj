@@ -51,9 +51,6 @@
       <HintPath>..\packages\Unity.2.1.505.2\lib\NET35\Microsoft.Practices.Unity.Configuration.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
-    <Reference Include="Newtonsoft.Json">
-      <HintPath>..\packages\Newtonsoft.Json.4.5.11\lib\net40\Newtonsoft.Json.dll</HintPath>
-    </Reference>
     <Reference Include="Nustache.Core">
       <HintPath>..\packages\Nustache.1.12.4.29\lib\net20\Nustache.Core.dll</HintPath>
     </Reference>
@@ -194,10 +191,6 @@
     <ProjectReference Include="..\..\Medidata.Rave.Integration\Medidata.Rave.Integration.Service\Medidata.Rave.Integration.Service.csproj">
       <Project>{16DD2687-9732-40EE-8506-0E5F19FF5FD5}</Project>
       <Name>Medidata.Rave.Integration.Service</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\Medidata.Rave.Integration\Medidata.Rave.Integration.Utilities\Medidata.Rave.Integration.Utilities.csproj">
-      <Project>{4DADAD14-BCC2-4B1C-8280-AD6D1440FAAF}</Project>
-      <Name>Medidata.Rave.Integration.Utilities</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\Medidata.Utilities\Medidata.Utilities.csproj">
       <Project>{CF46277D-7473-44E6-8472-2B6DFAEC3601}</Project>
