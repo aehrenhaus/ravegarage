@@ -1,0 +1,213 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{F2412C15-9328-41D5-B71C-26C66C00C601}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Medidata.RBT.Features.Integration</RootNamespace>
+    <AssemblyName>Medidata.RBT.Features.Integration</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="BouncyCastle.Crypto">
+      <HintPath>..\packages\BouncyCastle.1.7.0\lib\Net40-Client\BouncyCastle.Crypto.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net, Version=1.2.10.0, Culture=neutral, PublicKeyToken=1b44e1d426115821, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\ExternalAssemblies\log4net.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Practices.ServiceLocation, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\CommonServiceLocator.1.0\lib\NET35\Microsoft.Practices.ServiceLocation.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity, Version=2.1.505.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Unity.2.1.505.2\lib\NET35\Microsoft.Practices.Unity.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity.Configuration, Version=2.1.505.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Unity.2.1.505.2\lib\NET35\Microsoft.Practices.Unity.Configuration.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="Nustache.Core">
+      <HintPath>..\packages\Nustache.1.12.4.29\lib\net20\Nustache.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.ServiceProcess" />
+    <Reference Include="TechTalk.SpecFlow">
+      <HintPath>..\packages\SpecFlow.1.9.0\lib\net35\TechTalk.SpecFlow.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Features\Sites.feature.cs">
+      <DependentUpon>Sites.feature</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Features\Studies.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Studies.feature</DependentUpon>
+    </Compile>
+    <Compile Include="Features\StudyInvitation.feature.cs">
+      <DependentUpon>StudyInvitation.feature</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Features\StudySites.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>StudySites.feature</DependentUpon>
+    </Compile>
+    <Compile Include="Features\Users.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Users.feature</DependentUpon>
+    </Compile>
+    <Compile Include="Features\UserStudySites.feature.cs">
+      <DependentUpon>UserStudySites.feature</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Hooks\IntegrationTestRunHooks.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Steps\AuditSteps.cs" />
+    <Compile Include="Steps\ExternalSystemSteps.cs" />
+    <Compile Include="Steps\RoleSteps.cs" />
+    <Compile Include="Steps\SiteSteps.cs" />
+    <Compile Include="Steps\SQSSteps.cs" />
+    <Compile Include="Steps\StudySiteSteps.cs" />
+    <Compile Include="Steps\StudyInvitationSteps.cs" />
+    <Compile Include="Steps\StudySteps.cs" />
+    <Compile Include="Steps\UserSteps.cs" />
+    <Compile Include="Steps\UserStudySiteSteps.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="connections.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Features\Sites.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>Sites.feature.cs</LastGenOutput>
+    </None>
+    <None Include="Features\Studies.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>Studies.feature.cs</LastGenOutput>
+    </None>
+    <None Include="Features\StudyInvitation.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>StudyInvitation.feature.cs</LastGenOutput>
+    </None>
+    <None Include="Features\StudySites.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>StudySites.feature.cs</LastGenOutput>
+    </None>
+    <None Include="Features\Users.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>Users.feature.cs</LastGenOutput>
+    </None>
+    <None Include="Features\UserStudySites.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>UserStudySites.feature.cs</LastGenOutput>
+    </None>
+    <None Include="log4net.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Medidata.AmazonSimpleServices\Medidata.AmazonSimpleServices\Medidata.AmazonSimpleServices.csproj">
+      <Project>{E7B6D8DA-C944-44BE-9F39-453E4C0E86C7}</Project>
+      <Name>Medidata.AmazonSimpleServices</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Medidata.Core\Medidata.Core.Common\Medidata.Core.Common.csproj">
+      <Project>{88DB8DE5-1545-46BB-A6E9-168393EE4F78}</Project>
+      <Name>Medidata.Core.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Medidata.Core\Medidata.Core.Objects\Medidata.Core.Objects.csproj">
+      <Project>{D593442C-DC75-4279-B3D5-B203D292C9B4}</Project>
+      <Name>Medidata.Core.Objects</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Medidata.Data\Medidata.Data.csproj">
+      <Project>{9AF5B9A2-B80E-4D99-87F7-343C4E932539}</Project>
+      <Name>Medidata.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Medidata.ExternalSystems.iMedidata\Medidata.ExternalSystems.iMedidata.csproj">
+      <Project>{60A94FE2-5789-4857-A70D-BF348C2B86FC}</Project>
+      <Name>Medidata.ExternalSystems.iMedidata</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Medidata.Rave.Authentication\Medidata.Rave.Authentication.csproj">
+      <Project>{701BBDEA-EC65-4235-97DD-5E5AC1075688}</Project>
+      <Name>Medidata.Rave.Authentication</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Medidata.Rave.Integration\Medidata.Rave.Integration.Common\Medidata.Rave.Integration.Common.csproj">
+      <Project>{D6B792F2-087C-4D79-88BE-9A1A05D74EE6}</Project>
+      <Name>Medidata.Rave.Integration.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Medidata.Rave.Integration\Medidata.Rave.Integration.Interfaces\Medidata.Rave.Integration.Interfaces.csproj">
+      <Project>{F220CA74-11EC-40B3-8F8A-B96EC82DC9CE}</Project>
+      <Name>Medidata.Rave.Integration.Interfaces</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Medidata.Rave.Integration\Medidata.Rave.Integration.Logging\Medidata.Rave.Integration.Logging.csproj">
+      <Project>{38EF2313-2CA7-411F-93DC-C7ECFF6D04C7}</Project>
+      <Name>Medidata.Rave.Integration.Logging</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Medidata.Rave.Integration\Medidata.Rave.Integration.Objects\Medidata.Rave.Integration.Objects.csproj">
+      <Project>{FC7B0754-46C3-41AD-BAA2-A0367B5E0FF4}</Project>
+      <Name>Medidata.Rave.Integration.Objects</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Medidata.Rave.Integration\Medidata.Rave.Integration.ServiceLibrary\Medidata.Rave.Integration.ServiceLibrary.csproj">
+      <Project>{3B5FF04C-A0C9-45F7-AEEF-29C769391BB3}</Project>
+      <Name>Medidata.Rave.Integration.ServiceLibrary</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Medidata.Rave.Integration\Medidata.Rave.Integration.Service\Medidata.Rave.Integration.Service.csproj">
+      <Project>{16DD2687-9732-40EE-8506-0E5F19FF5FD5}</Project>
+      <Name>Medidata.Rave.Integration.Service</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Medidata.Utilities\Medidata.Utilities.csproj">
+      <Project>{CF46277D-7473-44E6-8472-2B6DFAEC3601}</Project>
+      <Name>Medidata.Utilities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Medidata.RBT.Objects.Integration\Medidata.RBT.Objects.Integration.csproj">
+      <Project>{63CCCE89-9E7D-4F5A-B7CA-0BEE1297B902}</Project>
+      <Name>Medidata.RBT.Objects.Integration</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(SolutionDir)\.nuget\nuget.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -16,3 +16,7 @@ Metrics.*
 /Medidata.RBT.Features.Rave/App.config
 /Medidata.RBT.Features.BatchUploader/App.config
 /_ReSharper.Medidata.RBT/
+App.config
+connections.config
+packages/*
+/Medidata.RBT.Features.Integration/log4net.config
