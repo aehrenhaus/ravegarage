@@ -34,7 +34,7 @@
 		EnableSeeding ="True"
 		SeedFromBackendClasses="ClassicCodingDictionary,CodingDictionary,ProjectCoderRegistration,CodingColumn,CoderDictLevelComponent,CoderLocale,ExternalSystem"
 		SuppressSeeding=""
-		POAssembly="Medidata.RBT.PageObjects.Rave.dll"
+		POAssembly="Medidata.RBT.PageObjects.Rave, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null"
 		UploadTimeout="400"
 		DownloadTimeout="400"
 		>
