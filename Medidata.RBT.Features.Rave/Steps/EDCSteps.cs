@@ -777,7 +777,7 @@ namespace Medidata.RBT.Features.Rave
             }
             else
             {
-                throw new Exception("Not supported other pages");
+                throw new Exception(String.Format("Method IClickDropButtonOnDynamicSearchList____(string fieldName) is not implemented for page {0}", CurrentPage.GetType().Name));
             }
         }
 
@@ -830,7 +830,7 @@ namespace Medidata.RBT.Features.Rave
             }
             else
             {
-                throw new Exception("Not supported other pages");
+                throw new Exception(String.Format("Method ThenIShouldSeeDynamicSearchList____Open(string fieldName) is not implemented for page {0}", CurrentPage.GetType().Name));
             }
             Assert.IsTrue(result, String.Format("The dynamic search list {0} has not been opened", fieldName));
         }
