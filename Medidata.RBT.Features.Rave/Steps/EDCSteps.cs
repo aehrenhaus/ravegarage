@@ -161,21 +161,6 @@ namespace Medidata.RBT.Features.Rave
         }
 
         /// <summary>
-        /// Fill the CRF on a log line in landscape mode
-        /// This step will click modify button if it's not in edit view.
-        /// </summary>
-        /// <param name="line"></param>
-        /// <param name="table"></param>
-        [StepDefinition(@"I enter data in CRF on log line (\d+)")]
-        public void IEnterDataInCRFOnLogLine____(int line, Table table)
-        {
-            var page = CurrentPage.As<BaseEDCPage>();
-            page.ClickModify();
-
-            page.FillDataPoints(table.CreateSet<FieldModel>(), line);
-        }
-
-        /// <summary>
         /// Verifies data exists in the datapa/record we are already in
         /// </summary>
         /// <param name="table"></param>
@@ -712,11 +697,7 @@ namespace Medidata.RBT.Features.Rave
 
             RavePageBase page = null;
 
-            if (CurrentPage is DDEPage)
-            {
-                page = CurrentPage.As<DDEPage>();
-            }
-            else if (CurrentPage is CRFPage)
+            if (CurrentPage is CRFPage)
             {
                 page = CurrentPage.As<CRFPage>();
             }
@@ -736,13 +717,7 @@ namespace Medidata.RBT.Features.Rave
         [StepDefinition(@"I click drop button on dynamic search list ""([^""]*)""")]
         public void IClickDropButtonOnDynamicSearchList____(string fieldName)
         {
-            if (CurrentPage is DDEPage)
-            {
-                RavePageBase page = CurrentPage.As<DDEPage>();
-                //IEDCFieldControl fieldControl = page.;
-                //fieldControl.Click();
-            }
-            else if (CurrentPage is CRFPage)
+            if (CurrentPage is CRFPage)
             {
                 CRFPage page = CurrentPage.As<CRFPage>();
                 IEDCFieldControl fieldControl = page.FindField(fieldName);
@@ -767,11 +742,7 @@ namespace Medidata.RBT.Features.Rave
 
             RavePageBase page = null;
 
-            if (CurrentPage is DDEPage)
-            {
-                page = CurrentPage.As<DDEPage>();
-            }
-            else if (CurrentPage is CRFPage)
+            if (CurrentPage is CRFPage)
             {
                 page = CurrentPage.As<CRFPage>();
             }
@@ -795,11 +766,7 @@ namespace Medidata.RBT.Features.Rave
         {
             bool result = false;
 
-            if (CurrentPage is DDEPage)
-            {
-                RavePageBase page = CurrentPage.As<DDEPage>();
-            }
-            else if (CurrentPage is CRFPage)
+            if (CurrentPage is CRFPage)
             {
                 CRFPage page = CurrentPage.As<CRFPage>();
                 IEDCFieldControl fieldControl = page.FindField(fieldName);
