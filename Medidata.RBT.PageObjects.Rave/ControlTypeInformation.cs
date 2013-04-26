@@ -59,7 +59,10 @@ namespace Medidata.RBT.PageObjects.Rave
 		ESigPage,
 
 		[Description("button"), Suffix("")] //TODO : Check Suffix on this type if used in future implementation
-		Button
+		Button,
+
+        [Description("textarea"), Suffix("")]
+        TextArea
 	}
 
 

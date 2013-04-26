@@ -331,6 +331,16 @@ namespace Medidata.RBT.PageObjects.Rave
                             ChooseFromDropdown(fm.Field, fm.Data);
                             break;
                         }
+                    case  ControlType.TextArea:
+                        {
+                            if (String.Compare(fm.Field, "Field Label", StringComparison.CurrentCultureIgnoreCase) == 0)
+                            {
+                                var txt = Browser.TextareaById("txtFieldLabel");
+                                txt.SetText(fm.Data);
+                                break;
+                            }
+                            throw new NotSupportedException("Not supported control type:" + controlType);
+                        }
                     default:
                         {
                             throw new NotSupportedException("Not supported control type:" + controlType);
