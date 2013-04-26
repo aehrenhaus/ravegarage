@@ -141,24 +141,6 @@ namespace Medidata.RBT.PageObjects.Rave
             }
         }
 
-        /// <summary>
-        /// If this form a log form in the landscape mode, returns true, otherwise returns false.
-        /// </summary>
-        public bool IsLandscapeLogForm
-        {
-            get
-            {
-                if (URL.Equals("Modules/EDC/PrimaryRecordPage.aspx"))
-                    return false;
-
-                IWebElement logTable = Context.Browser.TryFindElementById("log", false);
-                IWebElement rowLeftSide = Context.Browser.TryFindElementBy(By.XPath("*//td[@class='crf_rowLeftSide']"));
-                if (logTable != null && rowLeftSide == null)
-                    return true;
-                return false;
-            }
-        }
-
 		/// <summary>
 		/// TODO: please refactor this method. Make it a method on IEDCField, not on CRFPage
 		/// </summary>
@@ -204,36 +186,6 @@ namespace Medidata.RBT.PageObjects.Rave
                     return new LabDataPageControl(this).FindField(fieldName);
                 else
                     return new NonLabDataPageControl(this).FindField(fieldName, record);
-            }
-            else if (attribute.Equals("Unit"))
-            {
-                if (IsLabForm)
-                    return new LabDataPageControl(this).FindUnitDropdown(fieldName);
-            }
-            else
-                throw new NotImplementedException("FindField method in CRFPage.cs doesn't support attribute: " + attribute);
-
-            return null;
-        }
-
-		/// <summary>
-		/// Find a field in the landscape mode
-		/// </summary>
-		/// <param name="fieldName"></param>
-		/// <param name="attribute"></param>
-        /// <param name="line"></param>
-        /// <param name="controlType"></param>
-		/// <returns></returns>
-        public override IEDCFieldControl FindField(string fieldName, string attribute, int line, ControlType controlType)
-        {
-            if (attribute.Equals("Field"))
-            {
-                if (IsLabForm)
-                    return new LabDataPageControl(this).FindField(fieldName);
-                else if (IsLandscapeLogForm)
-                    return new CRFPage().FindLandscapeLogField(fieldName, line, controlType);
-                else
-                    return new NonLabDataPageControl(this).FindField(fieldName);
             }
             else if (attribute.Equals("Unit"))
             {
