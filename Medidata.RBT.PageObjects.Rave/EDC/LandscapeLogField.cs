@@ -77,11 +77,11 @@ namespace Medidata.RBT.PageObjects.Rave
                 case ControlType.Datetime:
                 case ControlType.RadioButton:
                 case ControlType.RadioButtonVertical:
-                case ControlType.DropDownList:
                     throw new NotImplementedException("Not implemented yet for :" + m_controlType);
+                case ControlType.DropDownList:
                 case ControlType.DynamicSearchList:
                     IWebElement topRowCell = this.Page.Browser.TryFindElementBy(
-                        By.XPath("//tr[@class='breaker']//td//*[contains(text(),'" + fieldName + "')]/../.."));
+                        By.XPath("//tr[@class='breaker']//td//*[contains(text(),'" + fieldName + "')]"));
                     if (topRowCell == null)
                         throw new Exception(
                             string.Format("Cannot find top row cell for fieldName [{0}]", fieldName));
@@ -224,7 +224,6 @@ namespace Medidata.RBT.PageObjects.Rave
                 case ControlType.DropDownList:
                     throw new NotImplementedException("Not implemented yet for :" + m_controlType);
                 case ControlType.DynamicSearchList:
-                    //_ctl0_Content_dde1_log_log_CF67041_27853_C_CRFSL_PickListBox
                     string contolId = String.Format("_ctl0_Content_{0}_log_log_CF{1}_{2}_C_CRFSL_PickListBox", prefix, m_columnId.ToString(), m_rowId.ToString()); 
                     IWebElement tableCell = this.Page.Browser.FindElementById(contolId);
                     return tableCell.Displayed;
@@ -238,6 +237,7 @@ namespace Medidata.RBT.PageObjects.Rave
         public override AuditsPage ClickAudit(bool isRecord = false) { throw new NotImplementedException(); }
 	
         public override void EnterData(string text, ControlType controlType, string additionalData = "") {
+            IWebElement tableCell = null;
             switch (controlType)
             {
                 case ControlType.Default:
@@ -246,12 +246,16 @@ namespace Medidata.RBT.PageObjects.Rave
                 case ControlType.Datetime:
                 case ControlType.RadioButton:
                 case ControlType.RadioButtonVertical:
-                case ControlType.DropDownList:
                     throw new NotImplementedException("Not implemented yet for :" + m_controlType);
+                case ControlType.DropDownList:
+                    tableCell = this.Page.Browser.TryFindElementByPartialID("_ctl0_Content_R_log_log_CF" + m_columnId.ToString() + "_" + m_rowId.ToString());
+                    tableCell.EnhanceAs<Dropdown>().SelectByText(text);
+                    break;
                 case ControlType.DynamicSearchList:
-                    IWebElement tableCell = this.Page.Browser.FindElementById("_ctl0_Content_R_log_log_CF" + m_columnId.ToString() + "_" + m_rowId.ToString() + "_C_CRFSL");                 
-                    tableCell.Textboxes()[0].SetText(text);
-			     //   tableCell.FindElement(By.ClassName("SearchList_DropButton")).Click();
+                    tableCell = this.Page.Browser.TryFindElementById("_ctl0_Content_R_log_log_CF" + m_columnId.ToString() + "_" + m_rowId.ToString() + "_C_CRFSL");
+                    //tableCell.Textboxes()[0].SetText(text);
+                    IWebElement optionElement = tableCell.FindElement(By.XPath("//div[@class='SearchList_PickListBoxItem']//span[contains(text(),'" + text + "')]"));
+                    optionElement.EnhanceAs<Option>().Select();
                     break;
                 default:
                     throw new NotImplementedException("Unknown control type:" + m_controlType);
