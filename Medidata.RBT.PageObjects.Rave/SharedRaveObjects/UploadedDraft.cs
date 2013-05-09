@@ -127,7 +127,7 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
 				for (int row = 1; row <= fieldsTable.RowsCount; row++)
 				{
                     //Entry restrictions
-                    ReplaceEntryRestrictionsWithUniqueRoles(fieldsTable, row);
+                    ReplaceEntryAndViewRestrictionsWithUniqueRoles(fieldsTable, row);
 
                     //Analytes
                     ReplaceAnalytesWithUniqueAnalytes(fieldsTable, row);
@@ -139,7 +139,7 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
 
 			    for (int row = 1; row <= formsTable.RowsCount; row++)
 			    {
-                    ReplaceViewRestrictionsWithUniqueRolesOnFormLevel(formsTable, row);
+                    ReplaceEntryAndViewRestrictionsWithUniqueRolesOnFormLevel(formsTable, row);
 			    }
 
 			    //Create a unique version of the file to upload
@@ -154,13 +154,13 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
         /// </summary>
         /// <param name="fieldsTable">The excel table containing the fields</param>
         /// <param name="currentRow">The current row in the fields table</param>
-        private void ReplaceEntryRestrictionsWithUniqueRoles(ExcelTable fieldsTable, int currentRow)
+        private void ReplaceEntryAndViewRestrictionsWithUniqueRoles(ExcelTable fieldsTable, int currentRow)
         {
-            string entryRestrictionsCommaSeparated = fieldsTable[currentRow, "EntryRestrictions"] as string;
+            string rolesCommaSeparated = fieldsTable[currentRow, "EntryRestrictions"] as string;
 
-            if (entryRestrictionsCommaSeparated != null)
+            if (rolesCommaSeparated != null)
             {
-                List<string> entryRestrictions = entryRestrictionsCommaSeparated.Split(',').ToList();
+                List<string> entryRestrictions = rolesCommaSeparated.Split(',').ToList();
                 StringBuilder uniqueEntryRestrictions = new StringBuilder();
                 foreach (string entryRestriction in entryRestrictions)
                 {
@@ -170,10 +170,25 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
 
                 fieldsTable[currentRow, "EntryRestrictions"] = uniqueEntryRestrictions.ToString().Substring(0, uniqueEntryRestrictions.Length - 1);
             }
+
+            rolesCommaSeparated = fieldsTable[currentRow, "ViewRestrictions"] as string;
+
+            if (rolesCommaSeparated != null)
+            {
+                List<string> entryRestrictions = rolesCommaSeparated.Split(',').ToList();
+                StringBuilder uniqueEntryRestrictions = new StringBuilder();
+                foreach (string entryRestriction in entryRestrictions)
+                {
+                    Role role = SeedingContext.GetExistingFeatureObjectOrMakeNew<Role>(entryRestriction.Trim(), () => new Role(entryRestriction.Trim()));
+                    uniqueEntryRestrictions.Append(role.UniqueName + ",");
+                }
+
+                fieldsTable[currentRow, "ViewRestrictions"] = uniqueEntryRestrictions.ToString().Substring(0, uniqueEntryRestrictions.Length - 1);
+            }
         }
 
-       
-        private void ReplaceViewRestrictionsWithUniqueRolesOnFormLevel(ExcelTable formsTable, int currentRow)
+
+        private void ReplaceEntryAndViewRestrictionsWithUniqueRolesOnFormLevel(ExcelTable formsTable, int currentRow)
         {
             string rolesCommaSeparated = formsTable[currentRow, "ViewRestrictions"] as string;
 
@@ -188,6 +203,21 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
                 }
 
                 formsTable[currentRow, "ViewRestrictions"] = uniqueViewRestrictions.ToString().Substring(0, uniqueViewRestrictions.Length - 1);
+            }
+
+            rolesCommaSeparated = formsTable[currentRow, "EntryRestrictions"] as string;
+
+            if (rolesCommaSeparated != null)
+            {
+                List<string> viewRestrictions = rolesCommaSeparated.Split(',').ToList();
+                StringBuilder uniqueViewRestrictions = new StringBuilder();
+                foreach (string viewRestriction in viewRestrictions)
+                {
+                    Role role = SeedingContext.GetExistingFeatureObjectOrMakeNew<Role>(viewRestriction.Trim(), () => new Role(viewRestriction.Trim()));
+                    uniqueViewRestrictions.Append(role.UniqueName + ",");
+                }
+
+                formsTable[currentRow, "EntryRestrictions"] = uniqueViewRestrictions.ToString().Substring(0, uniqueViewRestrictions.Length - 1);
             }
         }
 

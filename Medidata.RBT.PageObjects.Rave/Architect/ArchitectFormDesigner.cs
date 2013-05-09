@@ -67,6 +67,23 @@ namespace Medidata.RBT.PageObjects.Rave
             return this;
         }
 
+        private IPage ExpandViewRestrictions(string field = "")
+        {
+            if (!field.Equals(""))
+                ClickEditForField(field);
+
+            ClickExpandViewRestrictions();
+            return this;
+        }
+
+        private IPage ExpandEntryRestrictions(string field = "")
+        {
+            if (!field.Equals(""))
+                ClickEditForField(field);
+
+            ClickExpandEntryRestrictions();
+            return this;
+        }
 
         private bool VerifyFieldEditCheckRanges(string editCheckType, string lowValue, string highValue)
         {
@@ -130,7 +147,16 @@ namespace Medidata.RBT.PageObjects.Rave
         {
             Browser.Tables()[30].FindImagebuttons()[0].Click();
         }
+        
+        private void ClickExpandViewRestrictions()
+        {
+            Browser.Tables()[38].FindImagebuttons()[0].Click();
+        }
 
+        private void ClickExpandEntryRestrictions()
+        {
+            Browser.Tables()[43].FindImagebuttons()[0].Click();
+        }
 
 		private void Activate(string identifier, bool activate)
 		{
@@ -395,6 +421,68 @@ namespace Medidata.RBT.PageObjects.Rave
             return result;
         }
 
+
+        public void SetFieldEntryRestriction(string role, bool selected)
+        {
+            Checkbox roleCheckbox = new Checkbox();
+            var table = Browser.FindElement(By.XPath("//table[@id = '_ctl0_Content_ERC_cblEntryRestrictions']")).Children()[0];
+            foreach (var tableRow in table.Children())
+            {
+                if (tableRow.Children()[0].Children()[1].Text.Equals(role))
+                {
+                    roleCheckbox = tableRow.Children()[0].Children()[0].EnhanceAs<Checkbox>();
+                    break;
+                }
+
+                else if (tableRow.Children()[1].Children()[1].Text.Equals(role))
+                {
+                    roleCheckbox = tableRow.Children()[1].Children()[0].EnhanceAs<Checkbox>();
+                    break;
+                }
+
+                else if (tableRow.Children()[2].Children()[1].Text.Equals(role))
+                {
+                    roleCheckbox = tableRow.Children()[2].Children()[0].EnhanceAs<Checkbox>();
+                    break;
+                }
+            }
+            if (selected)
+                roleCheckbox.EnhanceAs<Checkbox>().Check();
+            else
+                roleCheckbox.EnhanceAs<Checkbox>().Uncheck();
+        }
+
+        public void SetFieldViewRestriction(string role, bool selected)
+        {
+            Checkbox roleCheckbox = new Checkbox();
+            var table = Browser.FindElement(By.XPath("//table[@id = '_ctl0_Content_ERC_cblViewRestrictions']")).Children()[0];
+            foreach (var tableRow in table.Children())
+            {
+                if (tableRow.Children()[0].Children()[1].Text.Equals(role))
+                {
+                    roleCheckbox = tableRow.Children()[0].Children()[0].EnhanceAs<Checkbox>();
+                    break;
+                }
+
+                else if (tableRow.Children()[1].Children()[1].Text.Equals(role))
+                {
+                    roleCheckbox = tableRow.Children()[1].Children()[0].EnhanceAs<Checkbox>();
+                    break;
+                }
+
+                else if (tableRow.Children()[2].Children()[1].Text.Equals(role))
+                {
+                    roleCheckbox = tableRow.Children()[2].Children()[0].EnhanceAs<Checkbox>();
+                    break;
+                }
+            }
+
+            if (selected)
+                roleCheckbox.EnhanceAs<Checkbox>().Check();
+            else
+                roleCheckbox.EnhanceAs<Checkbox>().Uncheck();
+        }
+
         #region IExpand_interface
         /// <summary>
         /// Use this method to expand any control on Architect Form Designer page
@@ -407,6 +495,14 @@ namespace Medidata.RBT.PageObjects.Rave
             if (objectToExpand.Equals("Field Edit Checks", StringComparison.InvariantCultureIgnoreCase))
             {
                 ExpandEditChecks();
+            }
+            else if (objectToExpand.Equals("Entry Restrictions", StringComparison.InvariantCultureIgnoreCase))
+            {
+                ExpandEntryRestrictions();
+            }
+            else if (objectToExpand.Equals("View Restrictions", StringComparison.InvariantCultureIgnoreCase))
+            {
+                ExpandViewRestrictions();
             }
             else
                 throw new NotImplementedException(string.Format("Method currently does not support expand for {0}", objectToExpand));

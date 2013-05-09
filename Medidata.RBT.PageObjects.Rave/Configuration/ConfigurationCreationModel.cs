@@ -19,5 +19,6 @@ namespace Medidata.RBT.PageObjects.Rave.Configuration
         public int LinesPerPage { get; set; }
         public string GlobalLibraryRole { get; set; }
         public string ExternalSystem { get; set; }
+        public bool Selected { get; set; }
     }
 }

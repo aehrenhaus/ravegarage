@@ -64,7 +64,105 @@ namespace Medidata.RBT.Features.Rave
                 WebTestContext.CurrentPage.As<ArchitectLibraryPage>().ClickDraft(draft.UniqueName);
                 WebTestContext.CurrentPage.As<ArchitectCRFDraftPage>().ClickLink("Restrictions");
                 Role role = SeedingContext.GetExistingFeatureObjectOrMakeNew(roleName, () => new Role(roleName));
-                WebTestContext.CurrentPage.As<ArchitectRestrictionsPage>().SetEntryRestriction(config.Form, config.Field, role.UniqueName);
+                WebTestContext.CurrentPage.As<ArchitectRestrictionsPage>().SetFieldEntryRestriction(config.Form, config.Field, role.UniqueName, true);
+            }
+        }
+        
+        /// <summary>
+        /// Set field entry restrictions for the role
+        /// </summary>
+        /// <param name="table">The location of the restriction</param>
+        [StepDefinition(@"I update field Entry Restriction for role")]
+        public void UpdateFieldEntryRestriction____In(Table table)
+        {
+            List<ConfigurationCreationModel> configurations = table.CreateSet<ConfigurationCreationModel>().ToList();
+            foreach (ConfigurationCreationModel config in configurations)
+            {
+                Role role = SeedingContext.GetExistingFeatureObjectOrMakeNew(config.Role, () => new Role(config.Role));
+                if (WebTestContext.CurrentPage.GetType() == typeof(ArchitectRestrictionsPage))
+                    WebTestContext.CurrentPage.As<ArchitectRestrictionsPage>().SetFieldEntryRestriction(config.Form, config.Field, role.UniqueName, config.Selected);
+                else
+                    WebTestContext.CurrentPage.As<ArchitectFormDesignerPage>().SetFieldEntryRestriction(role.UniqueName, config.Selected); 
+            }
+        }
+
+
+        /// <summary>
+        /// Set field view restrictions for the role
+        /// </summary>
+        /// <param name="table">The location of the restriction</param>
+        [StepDefinition(@"I update field View Restriction for role")]
+        public void UpdateFieldViewRestriction____In(Table table)
+        {
+            List<ConfigurationCreationModel> configurations = table.CreateSet<ConfigurationCreationModel>().ToList();
+            foreach (ConfigurationCreationModel config in configurations)
+            {
+                Role role = SeedingContext.GetExistingFeatureObjectOrMakeNew(config.Role, () => new Role(config.Role));
+                if (WebTestContext.CurrentPage.GetType() == typeof(ArchitectRestrictionsPage))
+                    WebTestContext.CurrentPage.As<ArchitectRestrictionsPage>().SetFieldViewRestriction(config.Form, config.Field, role.UniqueName, config.Selected);
+                else
+                    WebTestContext.CurrentPage.As<ArchitectFormDesignerPage>().SetFieldViewRestriction(role.UniqueName, config.Selected); 
+            }
+        }
+
+        /// <summary>
+        /// Set form view restrictions for the role
+        /// </summary>
+        /// <param name="table">The location of the restriction</param>
+        [StepDefinition(@"I update form View Restriction for role")]
+        public void UpdateViewRestrictedIsSetForRole____In(Table table)
+        {
+            List<ConfigurationCreationModel> configurations = table.CreateSet<ConfigurationCreationModel>().ToList();
+            foreach (ConfigurationCreationModel config in configurations)
+            {
+                Role role = SeedingContext.GetExistingFeatureObjectOrMakeNew(config.Role, () => new Role(config.Role));
+                WebTestContext.CurrentPage.As<ArchitectRestrictionsPage>().SetFormViewRestriction(config.Form, role.UniqueName, config.Selected);
+            }
+        }
+
+        /// <summary>
+        /// Set form entry restrictions for the role
+        /// </summary>
+        /// <param name="table">The location of the restriction</param>
+        [StepDefinition(@"I update form Entry Restriction for role")]
+        public void UpdateEntryRestrictedIsSetForRole____In(Table table)
+        {
+            List<ConfigurationCreationModel> configurations = table.CreateSet<ConfigurationCreationModel>().ToList();
+            foreach (ConfigurationCreationModel config in configurations)
+            {
+                Role role = SeedingContext.GetExistingFeatureObjectOrMakeNew(config.Role, () => new Role(config.Role));
+                WebTestContext.CurrentPage.As<ArchitectRestrictionsPage>().SetFormEntryRestriction(config.Form, role.UniqueName, config.Selected);
+            }
+        }
+
+
+        /// <summary>
+        /// Set global view restrictions for the role 
+        /// </summary>
+        /// <param name="table">The location of the restriction</param>
+        [StepDefinition(@"I update Global View Restrictions for role")]
+        public void UpdateGlobalViewRestrictedIsSetForRole____In(Table table)
+        {
+            List<ConfigurationCreationModel> configurations = table.CreateSet<ConfigurationCreationModel>().ToList();
+            foreach (ConfigurationCreationModel config in configurations)
+            {
+                Role role = SeedingContext.GetExistingFeatureObjectOrMakeNew(config.Role, () => new Role(config.Role));
+                WebTestContext.CurrentPage.As<ArchitectRestrictionsPage>().SetGlobalFormViewRestriction(config.Form, role.UniqueName, config.Selected);
+            }
+        }
+
+        /// <summary>
+        /// Set global entry restrictions for the role
+        /// </summary>
+        /// <param name="table">The location of the restriction</param>
+        [StepDefinition(@"I update Global Entry Restrictions for role")]
+        public void UpdateGlobalEntryRestrictedIsSetForRole____In(Table table)
+        {
+            List<ConfigurationCreationModel> configurations = table.CreateSet<ConfigurationCreationModel>().ToList();
+            foreach (ConfigurationCreationModel config in configurations)
+            {
+                Role role = SeedingContext.GetExistingFeatureObjectOrMakeNew(config.Role, () => new Role(config.Role));
+                WebTestContext.CurrentPage.As<ArchitectRestrictionsPage>().SetGlobalFormEntryRestriction(config.Form, role.UniqueName, config.Selected);
             }
         }
 	}

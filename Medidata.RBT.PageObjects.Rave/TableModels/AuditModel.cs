@@ -11,6 +11,8 @@ namespace Medidata.RBT.PageObjects.Rave
         public string Audit { set; get; }
 		public string QueryMessage { set; get; }
         public string User { set; get; }
+        public string AuditSubCategory { set; get; }
+        public string Property { set; get; }
         public string Time { set; get; }
 	}
 }
