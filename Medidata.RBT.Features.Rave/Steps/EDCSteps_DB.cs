@@ -17,6 +17,53 @@ namespace Medidata.RBT.Features.Rave
     {
 
         /// <summary>
+        /// Verify if Architect audits exist in the database.
+        /// </summary>
+        /// <param name="username">user, for whom audits exist</param>    
+        /// <param name="projectName">project name</param>
+        /// <param name="draftName">draft name</param>
+        /// <param name="table">audits to find</param>
+        [StepDefinition(@"I verify the following Architect audits exist for user ""([^""]*)"", project ""([^""]*)"", draft ""([^""]*)""")]
+        public void IVerify__Architect__Audit__Exists(string username, string projectName, string draftName, Table table)
+        {
+            var user = SeedingContext.GetExistingFeatureObjectOrMakeNew(username, () => new User(username));
+            var project = SeedingContext.GetExistingFeatureObjectOrMakeNew(projectName, () => new Project(projectName));
+
+
+            var audits = table.CreateSet<AuditModel>();
+            string sql;
+            bool auditFound = false;
+            System.Data.DataTable dataTable;
+
+            foreach (AuditModel audit in audits)
+            {
+                sql = DBScripts.GenerateArchitectAudits(audit.Audit, user.UniqueName, project.UniqueName, 
+                                                                draftName, audit.AuditSubCategory, audit.Property);
+                dataTable = DbHelper.ExecuteDataSet(sql).Tables[0];
+                if (dataTable.Rows.Count > 0)
+                    auditFound = true;
+                else
+                {
+                    auditFound = false;
+                    return;
+                }                    
+            }
+            Assert.IsTrue(auditFound, "Audit not Found.");
+        }
+
+
+        /// <summary>
+        /// Delete all Architect audits in the database.
+        /// </summary>
+        /// <param name="username">user, for whom audits exist</param>
+        [StepDefinition(@"I delete Architect Audits for user ""([^""]*)""")]
+        public void IDelete__Architect__Audits(string username)
+        {
+            var user = SeedingContext.GetExistingFeatureObjectOrMakeNew(username, () => new User(username));
+            DbHelper.ExecuteScalar(DBScripts.GenerateDeleteAllArchitectAudits(user.UniqueName), System.Data.CommandType.Text);
+        }
+
+        /// <summary>
         /// sets the database to "offline", so nobody can access it
         /// </summary>
         [StepDefinition(@"I set the database to offline")]
@@ -86,7 +133,7 @@ namespace Medidata.RBT.Features.Rave
 		public void IWaitForClinicalViewRefreshToCompleteForProject____(string project)
 		{
             var projectUniqueName = SeedingContext.GetExistingFeatureObjectOrMakeNew(project, () => new Project(project)).UniqueName;
-            var sql = ClinicalViewsScripts.GenerateSQLForNumberOfRecordsThatNeedCVRefresh(projectUniqueName);
+            var sql = DBScripts.GenerateSQLForNumberOfRecordsThatNeedCVRefresh(projectUniqueName);
 			System.Data.DataTable dataTable;
 			do
 			{
@@ -102,7 +149,7 @@ namespace Medidata.RBT.Features.Rave
         [StepDefinition(@"I wait for lab update queue to be processed")]
         public void IWaitForLabUpdateQueueToBeProcessed()
         {
-            var sql = ClinicalViewsScripts.GenerateSQLForNumberOfRecordsInLabUpdateQueue();
+            var sql = DBScripts.GenerateSQLForNumberOfRecordsInLabUpdateQueue();
             System.Data.DataTable dataTable;
             do
             {
@@ -135,7 +182,7 @@ namespace Medidata.RBT.Features.Rave
         public static bool ClinicalViewsExistForProject(string project)
         {
             var projectUniqueName = SeedingContext.GetExistingFeatureObjectOrMakeNew(project, () => new Project(project)).UniqueName;
-            var sql = ClinicalViewsScripts.GenerateSQLForNumberOfCVProjects(projectUniqueName);
+            var sql = DBScripts.GenerateSQLForNumberOfCVProjects(projectUniqueName);
             System.Data.DataTable dataTable;
 
             dataTable = DbHelper.ExecuteDataSet(sql).Tables[0]; // run backend query to check whether clinical views project exists
@@ -213,7 +260,7 @@ namespace Medidata.RBT.Features.Rave
         /// <summary>
         /// Scripts pertaining to clinical views
         /// </summary>
-		public class ClinicalViewsScripts
+		public class DBScripts
 		{
             /// <summary>
             /// Generate SQL for number of records in lab update queue
@@ -279,6 +326,58 @@ namespace Medidata.RBT.Features.Rave
 		                                            on p.projectID = cvp.projectID
                                             where dbo.fnlocaldefault(projectName) = '{0}'
                                     ", project);
+            }
+            
+            /// <summary>
+            /// generates SQL to verify existence of architect audits
+            /// </summary>
+            /// <param name="audit">audit message</param>
+            /// <param name="user">user</param>
+            /// <param name="projectName">project name</param>
+            /// <param name="draftName">draft name</param>
+            /// <param name="auditSubCategory">audit sub-category</param>
+            /// <param name="property">property value in audits</param>
+            /// <returns></returns>
+            public static string GenerateArchitectAudits(string audit, string user, string projectName, 
+                                            string draftName, string auditSubCategory, string property)
+            {
+                return String.Format(@"     
+                                            select top 1 null 
+                                            from vaudits va
+                                                join users u
+                                                    on u.userID = va.auditUserID
+                                                join crfDrafts crf
+                                                    on crf.crfDraftID = va.objectID
+                                                join projects p
+                                                    on p.projectID = crf.projectID
+												join auditSubCategoryR r
+                                                    on r.ID = va.auditSubCategoryID
+                                            where locale = 'eng' 
+	                                            and objectTypeID = 108
+	                                            and readable like '{0}'
+                                                and login = '{1}'
+                                                and dbo.fnlocaldefault(projectName) = '{2}'
+                                                and dbo.fnlocaldefault(crfDraftNameID) = '{3}'
+                                                and r.name = '{4}'
+                                                and va.property = '{5}'
+                                             ", audit, user, projectName, draftName, auditSubCategory, property);
+            }
+
+            /// <summary>
+            /// Generate sql to delete all architect audits
+            /// </summary>
+            /// <param name="user">username of user, for whom to delete audits</param>
+            /// <returns></returns>
+            public static string GenerateDeleteAllArchitectAudits(string user)
+            {
+                return String.Format(@"     delete a
+                                            from audits a
+	                                            join users u
+		                                            on u.userID = a.auditUserID
+                                            where objectTypeID = 108
+                                                and login = '{0}'
+                                             ", user);
+                   
             }
 		}
 	}
