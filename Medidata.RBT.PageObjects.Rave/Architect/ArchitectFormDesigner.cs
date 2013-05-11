@@ -455,7 +455,7 @@ namespace Medidata.RBT.PageObjects.Rave
         public void SetFieldViewRestriction(string role, bool selected)
         {
             Checkbox roleCheckbox = new Checkbox();
-            var table = Browser.FindElement(By.XPath("//table[@id = '_ctl0_Content_ERC_cblViewRestrictions']")).Children()[0];
+            var table = Browser.FindElement(By.XPath("//table[@id = '_ctl0_Content_VRC_cblViewRestrictions']")).Children()[0];
             foreach (var tableRow in table.Children())
             {
                 if (tableRow.Children()[0].Children()[1].Text.Equals(role))

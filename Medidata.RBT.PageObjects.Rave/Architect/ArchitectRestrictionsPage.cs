@@ -117,6 +117,7 @@ namespace Medidata.RBT.PageObjects.Rave
         
         public void SetEntryRoleRestrictionToForm(string role, bool selected)
         {
+            Browser.FindElementById("_ctl0_Content_EditImgLnk").Click();
 
             Checkbox roleCheckbox = new Checkbox() ;
             var table = Browser.FindElement(By.XPath("//table[@id = '_ctl0_Content_Entries']")).Children()[0];
