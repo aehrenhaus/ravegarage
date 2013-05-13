@@ -1188,7 +1188,7 @@ Scenario: MCC-41782-029 When multiple users take actions to restrict view and en
 	And I delete Architect Audits for user "SUPER USER 1"
 	Given I login to Rave with user "MCC41782_SUPERUSER"
 	When I navigate to "Architect"
-	And I select "Project" link "MCC-41782" in "Active Projects"
+	And I select "Project" link "MCC-41782" in "Active Global Library Volumes"
 	And I select Draft "Draft 1"
 	And I navigate to "Restrictions"
 	And I delete Architect Audits for user "SUPER USER 2"
