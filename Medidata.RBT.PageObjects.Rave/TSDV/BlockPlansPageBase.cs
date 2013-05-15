@@ -91,11 +91,38 @@ namespace Medidata.RBT.PageObjects.Rave
             return this;
         }
 
-        public void ModifyBlock(string tierName, int subjectCount = -1)
+        public IPage AddBlocks(IEnumerable<TSDVBlockModel> blocks)
+        {
+            foreach (var block in blocks)
+            {
+                this.ClickLink("New Block");
+                AddBlock(block.Name, block.SubjectCount, block.Repeated);
+
+                Browser.TryFindElementByPartialID("_Content_BlockPlanDetailCtrl_SaveNewDiv").Click();
+         
+            }
+            Browser.TryFindElementByPartialID("_BlockPlanDetailCtrl_AddNewBlockLabel");
+            return this;
+        }
+
+        private void LinkByID(string p)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void AddBlock(string blockName, int subjectCount, bool repeated)
+        {
+            var textBoxes = Browser.Textboxes();
+            textBoxes.FirstOrDefault(b => b.Id.Contains("BlockPlanDetailCtrl_NewBlockName")).EnhanceAs<Textbox>().SetText(blockName);;
+            textBoxes.FirstOrDefault(b => b.Id.Contains("BlockPlanDetailCtrl_NewBlockSize")).EnhanceAs<Textbox>().SetText(subjectCount.ToString());
+            if (repeated) Browser.TryFindElementByPartialID("_BlockPlanDetailCtrl_NewBlockIsRepeatedCheckbox").EnhanceAs<Checkbox>().Check();
+        }
+
+        public void ModifyBlock(string blockName, int subjectCount = -1)
         {
 			var container = Browser.TryFindElementByLinkText("Architect Defined").Parent().Parent();
 			container.Images()[0].Click();
-            Browser.TryFindElementByPartialID("EditBlockNameTextBox").EnhanceAs<Textbox>().SetText(tierName);
+            Browser.TryFindElementByPartialID("EditBlockNameTextBox").EnhanceAs<Textbox>().SetText(blockName);
 			Browser.TryFindElementByPartialID("EditBlockSizeTextBox").EnhanceAs<Textbox>().SetText(subjectCount.ToString());
 			Browser.TryFindElementByPartialID("EditBlockSizeTextBox").Parent().Parent().Parent().Images()[2].Click();
         }
@@ -135,21 +162,33 @@ namespace Medidata.RBT.PageObjects.Rave
 			return this;
 		}
 
-		/// <summary>
-		/// Pass the tier name and subject count to this method.
-		/// It will apply the tier name if it exist in the dropdown list
-		/// Also, it will apply the required subject count
-		/// </summary>
-		/// <param name="tierName"></param>
-		/// <param name="subjectCount"></param>
-		/// <returns></returns>
-		public IPage ApplyTierWithSubjectCount(string tierName, string subjectCount)
+
+        /// <summary>
+        /// Applies the tier with subject count.
+        /// </summary>
+        /// <param name="tierName">Name of the tier.</param>
+        /// <param name="subjectCount">The subject count.</param>
+        /// <param name="areaIndentifier">The area indentifier.</param>
+        /// <returns></returns>
+        public IPage ApplyTierWithSubjectCount(string tierName, string subjectCount, string areaIndentifier = null)
 		{
-			IWebElement elem = Browser.TryFindElementByLinkText("Link Tier");
-			if (elem != null)
+            IWebElement elem = null;
+            IWebElement context = null;
+            if (!string.IsNullOrEmpty(areaIndentifier))
+            {
+                context = Browser.TryFindElementByLinkText(areaIndentifier).Parent().Parent();
+                elem = context.TryFindElementBySpanLinktext("Link Tier");
+            }
+                       
+			if(elem == null)
+            {
+                elem = Browser.TryFindElementByLinkText("Link Tier");
+            }
+            
+            if (elem != null)
 			{
 				elem.Click();
-				IWebElement tierElement = Browser.TryFindElementByPartialID("TierToSelect");
+                IWebElement tierElement = context == null ? Browser.TryFindElementByPartialID("TierToSelect") : context.TryFindElementByPartialID("TierToSelect");
 				if (tierElement != null)
 				{
 					//dropdown to select the element by name of the tier
@@ -165,6 +204,32 @@ namespace Medidata.RBT.PageObjects.Rave
 			}
 			return this;
 		}
+
+        public IPage UpdateTierWithSubjectCount(string tierName, string subjectCount, string areaIndentifier = null)
+        {
+            IWebElement elem = null;
+            IWebElement context = null;
+            if (!string.IsNullOrEmpty(areaIndentifier))
+            {
+                context = Browser.TryFindElementByLinkText(areaIndentifier).Parent().Parent();
+                elem = context.TryFindElementByPartialID("__ctl0_TierEdit");
+            }
+
+            if (elem == null)
+            {
+                elem = Browser.TryFindElementByLinkText("__ctl0_TierEdit");
+            }
+
+            if (elem != null)
+            {
+                elem.Click();
+                context.TryFindElementByPartialID("__ctl0_EditTierSizeTextBox").EnhanceAs<Textbox>().SetText(subjectCount.ToString());
+                var saveBtn = context.TryFindElementByPartialID("__ctl0_TierEditEndSaveDiv");
+                saveBtn.Click();                
+            }
+            return this;
+        }
+
 
 		#region helper methods
 		private string GetFullTierName(string tierName)

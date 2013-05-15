@@ -249,6 +249,7 @@
     <Compile Include="TableModels\CoderLocaleTable.cs" />
     <Compile Include="TableModels\CoderTermModel.cs" />
     <Compile Include="TableModels\CoderWorkflowVariableModel.cs" />
+    <Compile Include="TableModels\TSDVBlockModel.cs" />
     <Compile Include="TableModels\GlobalConfigurationModel.cs" />
     <Compile Include="TableModels\PDF\PDFTextAndTextStyleModel.cs" />
     <Compile Include="TableModels\StickyModel.cs" />

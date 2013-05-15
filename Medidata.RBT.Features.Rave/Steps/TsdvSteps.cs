@@ -25,6 +25,15 @@ namespace Medidata.RBT.Features.Rave
             Assert.IsTrue(isSubjectRandomized, "Subjects enrolled sequentially");
         }
 
+        [StepDefinition(@"I verify that Tiers in subject override table are in the following order")]
+        public void ThenIVerifyThatTiersInSubjectOverrideTableAreInTheFollowingOrder(Table table)
+        {
+            bool isSubjectRandomized = CurrentPage.As<SubjectOverridePage>().VerifyTableRowsExist(table);
+            Assert.IsTrue(isSubjectRandomized, "Subjects enrolled to wrong tiers");
+        }
+
+
+
         /// <summary>
         /// Verify that there is not a repeating pattern in every rowsTotal rows in a list of rowsTotal amount of rows
         /// </summary>
@@ -119,7 +128,20 @@ namespace Medidata.RBT.Features.Rave
         [StepDefinition(@"I select the tier ""([^""]*)"" and Subject Count ""([^""]*)""")]
         public void ISelectTier____AndSubjectCount____(string tierName, string subjectCount)
         {
-			CurrentPage.As<BlockPlansPageBase>().ApplyTierWithSubjectCount(tierName, subjectCount);
+			CurrentPage.As<BlockPlansPageBase>().ApplyTierWithSubjectCount(tierName, subjectCount, null);
+        }
+
+      
+        [StepDefinition(@"I select the tier ""(.*)"" and Subject Count ""(.*)"" for ""(.*)""")]
+        public void ISelectTier____AndSubjectCount____For___(string tierName, string subjectCount, string areaIndentifier)
+        {
+            CurrentPage.As<BlockPlansPageBase>().ApplyTierWithSubjectCount(tierName, subjectCount, areaIndentifier);
+        }
+
+        [StepDefinition(@"I update the tier ""(.*)"" and Subject Count ""(.*)"" for ""(.*)""")]
+        public void IUpdateTier____AndSubjectCount____For___(string tierName, string subjectCount, string areaIndentifier)
+        {
+            CurrentPage.As<BlockPlansPageBase>().UpdateTierWithSubjectCount(tierName, subjectCount, areaIndentifier);
         }
 
         /// <summary>
@@ -214,6 +236,15 @@ namespace Medidata.RBT.Features.Rave
             Assert.AreEqual(true, actual, "Field(s) not included in TSDV Custom Tier");
         }
 
+        /// <summary>
+        /// Method used to edit blocks, with the supplied information
+        /// </summary>
+        /// <param name="table">all attributes for each TSDV Block</param>
+        [StepDefinition(@"I create a new block and save")]
+        public void ICreateANewBlockAndSave(Table table)
+        {
+           CurrentPage.As<BlockPlansPageBase>().AddBlocks(table.CreateSet<TSDVBlockModel>());
+        }
 
     }
 }
