@@ -1,6 +1,6 @@
 ﻿@FT_MCC-46647
 
-Feature: MCC-46647 As a TSDV user, If a Block Subject Count is changed after production subjects are entered in a DEV (AUX) Environment, changes should be effected and new subject should be assigned per updated block count
+Feature: MCC-46647 As a TSDV user, If a Block Subject Count is changed after subjects are entered in a DEV, UAT, AUX or any non Prod Environment, changes should be effected and new subject should be assigned per updated block count
 
 
 Background:
@@ -27,7 +27,7 @@ Background:
 @SJ15.MAY.2013
 @Validation
 
-Scenario: MCC46647-001 Block Subject Count is changed after production subjects are entered in a DEV (AUX) Environment, changes should be effected and new subject should be assigned per updated block count
+Scenario: MCC46647-001 Block Subject Count changes can be made to non-Production environments, and new subjects are assigned to Blocks/Tiers per the new Subject Counts.
 
 	Given I login to Rave with user "SUPER USER 1"
 	And I navigate to "Reporter"
