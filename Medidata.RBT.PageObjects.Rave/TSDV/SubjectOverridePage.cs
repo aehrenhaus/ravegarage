@@ -74,22 +74,34 @@ namespace Medidata.RBT.PageObjects.Rave
         {
             bool rowsExist = true;
             var subjectsDiv = Browser.TryFindElementBy(By.Id("SubjectOverrideDiv"));
+            var tables = subjectsDiv.Tables().Where(t => t.Id.Contains("_SubjectOverrideItemsTable"));
+
             
-            for (int i = 0; i < matchTable.Rows.Count; i++)
+            foreach (TableRow row in matchTable.Rows)
             {
-                TableRow row = matchTable.Rows[i];
-                IWebElement rowTable = subjectsDiv.TryFindElementByPartialID(String.Format("_ctl{0}_SubjectOverrideItemsTable", i + 1));
-                if (rowTable != null)
+                var subjectNameToMatch = SpecialStringHelper.Replace(row[0]);
+                var tierNameToMatch = row[1];
+
+                bool rowFound = false;
+                int i = 0;
+                foreach (var table in tables)
                 {
-                    var subjectName = rowTable.TryFindElementByPartialID(String.Format("__ctl{0}_SubjectNameLabel", i + 1)).Text;
-                    var tierName = rowTable.TryFindElementByPartialID(String.Format("__ctl{0}_OriginalBlockTierIdLable", i + 1)).Text;
-                    if (subjectName != row[0] || tierName != row[1])
+                    var subjectName = table.TryFindElementByPartialID(String.Format("__ctl{0}_SubjectNameLabel", i + 1)).Text;
+                    var tierName = table.TryFindElementByPartialID(String.Format("__ctl{0}_OriginalBlockTierIdLable", i + 1)).Text;
+                    if (subjectName == subjectNameToMatch && tierName == tierNameToMatch)
                     {
-                        rowsExist = false;
+                        rowFound = true;
                         break;
                     }
+                    i++;
+                }
+                if (!rowFound)
+                {
+                    rowsExist = false;
+                    break;
                 }
             }
+
             return rowsExist;
         }
 
