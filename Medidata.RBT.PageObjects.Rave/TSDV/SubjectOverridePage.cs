@@ -65,6 +65,34 @@ namespace Medidata.RBT.PageObjects.Rave
             return IsSubjectsRandomized;
         }
 
+        /// <summary>
+        /// Verifies the table rows exist.
+        /// </summary>
+        /// <param name="matchTable">The match table.</param>
+        /// <returns></returns>
+        public bool VerifyTableRowsExist(Table matchTable)
+        {
+            bool rowsExist = true;
+            var subjectsDiv = Browser.TryFindElementBy(By.Id("SubjectOverrideDiv"));
+            
+            for (int i = 0; i < matchTable.Rows.Count; i++)
+            {
+                TableRow row = matchTable.Rows[i];
+                IWebElement rowTable = subjectsDiv.TryFindElementByPartialID(String.Format("_ctl{0}_SubjectOverrideItemsTable", i + 1));
+                if (rowTable != null)
+                {
+                    var subjectName = rowTable.TryFindElementByPartialID(String.Format("__ctl{0}_SubjectNameLabel", i + 1)).Text;
+                    var tierName = rowTable.TryFindElementByPartialID(String.Format("__ctl{0}_OriginalBlockTierIdLable", i + 1)).Text;
+                    if (subjectName != row[0] || tierName != row[1])
+                    {
+                        rowsExist = false;
+                        break;
+                    }
+                }
+            }
+            return rowsExist;
+        }
+
 		private List<string> GetTierNames(string subjectNameStartsWith = null)
 	    {
 
