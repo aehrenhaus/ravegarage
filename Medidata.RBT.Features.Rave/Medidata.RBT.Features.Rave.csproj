@@ -168,11 +168,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>564QueryRefiringLogic8.feature</DependentUpon>
     </Compile>
-    <Compile Include="Features\EDC\DT 12651 Scenario.feature.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>DT 12651 Scenario.feature</DependentUpon>
-    </Compile>
     <Compile Include="Features\EDC\DT_10991.feature.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -293,11 +288,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>US15417_DT13905.feature</DependentUpon>
     </Compile>
-    <Compile Include="Features\EDC\DT14341.feature.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>DT14341.feature</DependentUpon>
-    </Compile>
     <Compile Include="Features\EDC\US17743_DT12513.feature.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -367,11 +357,6 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>US12175_DT8545_lessthangreaterthaninPDF_RaveMonitor.feature</DependentUpon>
-    </Compile>
-    <Compile Include="Features\ReportAdmin\Temp.feature.cs">
-      <DependentUpon>Temp.feature</DependentUpon>
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
     </Compile>
     <Compile Include="Features\TSDV\MCC-46640.feature.cs">
       <AutoGen>True</AutoGen>
@@ -443,11 +428,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>QueryRefiringLogic_StdForm_2FldEC.feature</DependentUpon>
     </Compile>
-    <Compile Include="Features\EDC\SpecFlowFeature1.feature.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>SpecFlowFeature1.feature</DependentUpon>
-    </Compile>
     <Compile Include="Features\EDC\US11305_DT10514.feature.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -472,11 +452,6 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>US18812.feature</DependentUpon>
-    </Compile>
-    <Compile Include="Features\UserAdministration\DT14168.feature.cs">
-      <DependentUpon>DT14168.feature</DependentUpon>
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
     </Compile>
     <Compile Include="ReferenceFix.cs" />
     <Compile Include="Steps\ArchitectSteps_DB.cs" />
@@ -610,10 +585,6 @@
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>564QueryRefiringLogging8_M.feature.cs</LastGenOutput>
     </None>
-    <None Include="Features\EDC\DT 12651 Scenario.feature">
-      <Generator>SpecFlowSingleFileGenerator</Generator>
-      <LastGenOutput>DT 12651 Scenario.feature.cs</LastGenOutput>
-    </None>
     <None Include="Features\EDC\DT_10991.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>DT_10991.feature.cs</LastGenOutput>
@@ -686,10 +657,6 @@
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>US13021_DT12734.feature.cs</LastGenOutput>
     </None>
-    <None Include="Features\EDC\DT14341.feature">
-      <Generator>SpecFlowSingleFileGenerator</Generator>
-      <LastGenOutput>DT14341.feature.cs</LastGenOutput>
-    </None>
     <None Include="Features\EDC\US17743_DT12513.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>US17743_DT12513.feature.cs</LastGenOutput>
@@ -745,10 +712,6 @@
     <None Include="Features\PDF\US12175_DT8545_lessthangreaterthaninPDF_RaveMonitor.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>US12175_DT8545_lessthangreaterthaninPDF_RaveMonitor.feature.cs</LastGenOutput>
-    </None>
-    <None Include="Features\ReportAdmin\Temp.feature">
-      <Generator>SpecFlowSingleFileGenerator</Generator>
-      <LastGenOutput>Temp.feature.cs</LastGenOutput>
     </None>
     <None Include="Features\TSDV\MCC-46640.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
@@ -846,10 +809,6 @@
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>QueryRefiringLogic_StdForm_2FldEC.feature.cs</LastGenOutput>
     </None>
-    <None Include="Features\EDC\SpecFlowFeature1.feature">
-      <Generator>SpecFlowSingleFileGenerator</Generator>
-      <LastGenOutput>SpecFlowFeature1.feature.cs</LastGenOutput>
-    </None>
     <None Include="Features\EDC\US11305_DT10514.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>US11305_DT10514.feature.cs</LastGenOutput>
@@ -862,15 +821,13 @@
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>US18812.feature.cs</LastGenOutput>
     </None>
-    <None Include="Features\UserAdministration\DT14168.feature">
-      <Generator>SpecFlowSingleFileGenerator</Generator>
-      <LastGenOutput>DT14168.feature.cs</LastGenOutput>
-    </None>
     <None Include="packages.config">
       <SubType>Designer</SubType>
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Features\ReportAdmin\" />
+    <Folder Include="Features\UserAdministration\" />
     <Folder Include="TableModels\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
