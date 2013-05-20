@@ -42,9 +42,9 @@ Background:
 	Given I publish and push eCRF "MCC-62856_UnLock.xml" to "Version 5" with study environment "Prod"
 	Given I publish and push eCRF "MCC-62856_UnLk_Pre.xml" to "Version 6" with study environment "Prod"
 				
-@Release_2013.2.0
+@release_2013.2.0
 @PB_MCC_62856_MCC_53994_001
-@Draft
+@Validation
 Scenario: PB_MCC_62856_MCC_53994_001, As an Rave user, When the Add Events enabled, the user with entry permission can see the Add Events dropdown and Add button on subject page and grid view page.
 
 	Given I login to Rave with user "SUPER USER 1"
@@ -66,9 +66,9 @@ Scenario: PB_MCC_62856_MCC_53994_001, As an Rave user, When the Add Events enabl
 	And I can see "Disabled" radio button
 	And I take a screenshot
 	
-@Release_2013.2.0
+@release_2013.2.0
 @PB_MCC_62856_MCC_53994_002
-@Draft
+@Validation
 Scenario: PB_MCC_62856_MCC_53994_002, As an Rave user, When the Add Events enabled, the user with entry and lock permission can see the Add Events dropdown, Add button, Disabled radio button on subject page and grid view page.
 
 	Given I login to Rave with user "SUPER USER 1"
@@ -90,9 +90,9 @@ Scenario: PB_MCC_62856_MCC_53994_002, As an Rave user, When the Add Events enabl
 	And I can see "Disabled" radio button
 	And I take a screenshot	
 
-@Release_2013.2.0
+@release_2013.2.0
 @PB_MCC_62856_MCC_53994_003
-@Draft
+@Validation
 Scenario: PB_MCC_62856_MCC_53994_003, As an Rave user, When the Add Events enabled, the user with entry and unlock permission can see the Add Events dropdown, Add button, Enabled radio button on subject page and grid view page.
 
 	Given I login to Rave with user "SUPER USER 1"
@@ -121,9 +121,9 @@ Scenario: PB_MCC_62856_MCC_53994_003, As an Rave user, When the Add Events enabl
 	And I can not see "Disabled" radio button
 	And I take a screenshot	
 
-@Release_2013.2.0
+@release_2013.2.0
 @PB_MCC_62856_MCC_53994_004
-@Draft
+@Validation
 Scenario: PB_MCC_62856_MCC_53994_004, As an Rave user, When the Add Events enabled, the user with entry and lock permission with pre-condition can see the Add Events dropdown, Add button, Disabled radio button on subject page and grid view page.
 
 	Given I login to Rave with user "SUPER USER 1"
@@ -145,9 +145,9 @@ Scenario: PB_MCC_62856_MCC_53994_004, As an Rave user, When the Add Events enabl
 	And I can see "Disabled" radio button
 	And I take a screenshot		
 	
-@Release_2013.2.0
+@release_2013.2.0
 @PB_MCC_62856_MCC_53994_005
-@Draft
+@Validation
 Scenario: PB_MCC_62856_MCC_53994_005, As an Rave user, When the Add Events enabled, the user with entry and unlock permission can see the Add Events dropdown, Add button, Enabled radio button on subject page and grid view page.
 
 	Given I login to Rave with user "SUPER USER 1"
@@ -176,9 +176,9 @@ Scenario: PB_MCC_62856_MCC_53994_005, As an Rave user, When the Add Events enabl
 	And I can not see "Disabled" radio button
 	And I take a screenshot	
 	
-@Release_2013.2.0
+@release_2013.2.0
 @PB_MCC_62856_MCC_53994_006
-@Draft
+@Validation
 Scenario: PB_MCC_62856_MCC_53994_006, As an Rave user, When the Add Events enabled, the user with entry, lock, unlock permissions with pre-conditions on lock and unlock can see the Add Events dropdown and Add button on subject page and grid view page.
 
 	Given I login to Rave with user "SUPER USER 1"
