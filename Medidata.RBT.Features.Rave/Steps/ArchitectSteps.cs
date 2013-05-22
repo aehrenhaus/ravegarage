@@ -296,5 +296,14 @@ namespace Medidata.RBT.Features.Rave
         {
              CurrentPage.As<CheckQuickEditPage>().EnterIntoQuickEdit(text);
         }
+
+        /// <summary>
+        /// Click a hyperlink Preview
+        /// </summary>
+        [StepDefinition(@"I select link Preview in FormDesigner")]
+        public void ISelectPreview____()
+        {
+            CurrentPage = CurrentPage.As<ArchitectFormDesignerPage>().ClickPreview();
+        }
 	}
 }

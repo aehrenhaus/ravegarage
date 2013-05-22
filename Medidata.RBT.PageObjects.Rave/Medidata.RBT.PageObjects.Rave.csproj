@@ -93,6 +93,7 @@
     <Compile Include="Architect\ArchitectRestrictionsPage.cs" />
     <Compile Include="Architect\ArchitectMatrixPage.cs" />
     <Compile Include="Architect\ArchitectFolderFormsPage.cs" />
+    <Compile Include="Architect\FormPreview.cs" />
     <Compile Include="Architect\DefineCopySourcesPage.cs" />
     <Compile Include="Architect\CheckQuickEditPage.cs" />
     <Compile Include="Architect\EditChecksItem.cs" />

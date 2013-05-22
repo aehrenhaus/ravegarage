@@ -260,6 +260,20 @@ namespace Medidata.RBT.PageObjects.Rave
         }
 
 		#endregion
+
+
+        /// <summary>
+        /// Clicks the preview.
+        /// </summary>
+        /// <returns></returns>
+        public IPage ClickPreview()
+        {
+            IWebElement link = SearchContext.TryFindElementById("_ctl0_Content_PreviewLnk");
+            link.Click();
+            return this;  
+        }
+
+
         /// <summary>
         /// Overriding ChooseFromDropdown to find the dropdown based on field name, if drop down selected fails then fall back to base implementation
         /// </summary>
