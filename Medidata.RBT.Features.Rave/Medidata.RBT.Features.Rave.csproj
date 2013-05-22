@@ -490,6 +490,7 @@
     </Compile>
     <Compile Include="ReferenceFix.cs" />
     <Compile Include="Steps\ArchitectSteps_DB.cs" />
+    <Compile Include="Steps\AuditPageSteps.cs" />
     <Compile Include="Steps\EDCSteps_ProtocolDeviation.cs" />
     <Compile Include="Steps\FileSteps.cs" />
     <Compile Include="Steps\CacheFlushSteps.cs" />
@@ -498,6 +499,7 @@
     <Compile Include="Steps\EDCSteps_Sticky.cs" />
     <Compile Include="Steps\ExpandCollapseSteps.cs" />
     <Compile Include="Steps\Seeding\CoderDictionarySteps.cs" />
+    <Compile Include="Steps\SubjectAdminPageSteps.cs" />
     <Compile Include="Steps\UserGroupSteps.cs" />
     <Compile Include="Steps\ReportAdminSteps.cs" />
     <Compile Include="Steps\LabUnitConversionSteps.cs" />
