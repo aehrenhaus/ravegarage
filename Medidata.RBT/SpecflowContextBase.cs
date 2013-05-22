@@ -49,8 +49,10 @@ namespace Medidata.RBT
 
 
 		public virtual void BeforeScenario()
-		{
+		{ 
+            #if DEBUG
 			SetOutput();
+            #endif
 		}
 
 
