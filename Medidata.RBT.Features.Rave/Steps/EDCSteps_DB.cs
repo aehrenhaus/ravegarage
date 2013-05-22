@@ -51,6 +51,21 @@ namespace Medidata.RBT.Features.Rave
             Assert.IsTrue(auditFound, "Audit not Found.");
         }
 
+        /// <summary>
+        /// Bulk signatures are applied successfully (nothing in the bulk status update queue)
+        /// </summary>
+        [StepDefinition(@"I wait for signature to be applied")]
+        public void IWaitForSignatureToBeApplied()
+        {
+            var sql = DBScripts.GenerateSQLForBulkSignaturesThatAreCurrentlyProcessed();
+            System.Data.DataTable dataTable;
+            do
+            {
+                System.Threading.Thread.Sleep(1000); //wait a second
+                dataTable = DbHelper.ExecuteDataSet(sql).Tables[0]; //run backend query to count records in queue
+            }
+            while (((int)dataTable.Rows[0][0] != 0));
+        }
 
         /// <summary>
         /// Delete all Architect audits in the database.
@@ -296,6 +311,20 @@ namespace Medidata.RBT.Features.Rave
 			{
 				return CountOfRecordsRequiringCVRefreshForProject(projectName);
 			}
+
+            /// <summary>
+            /// Generate SQL for number of subjects that need to be signed through core service
+            /// </summary>
+            /// <returns>SQL string for number of subjects that need to be signed through core service</returns>
+            public static string GenerateSQLForBulkSignaturesThatAreCurrentlyProcessed()
+            {
+                return String.Format(@" 
+                                        select count(subjectID)
+                                        from bulkstatusupdatequeue 
+                                    ");
+            }
+
+
 
 			private static string CountOfRecordsRequiringCVRefreshForProject(string project)
 			{
