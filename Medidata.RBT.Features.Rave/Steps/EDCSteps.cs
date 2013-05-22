@@ -8,6 +8,7 @@ using TechTalk.SpecFlow.Assist;
 using Medidata.RBT.PageObjects.Rave.SharedRaveObjects;
 using System.Linq;
 using OpenQA.Selenium;
+using Medidata.RBT.PageObjects.Rave.TableModels;
 
 namespace Medidata.RBT.Features.Rave
 {
@@ -321,6 +322,26 @@ namespace Medidata.RBT.Features.Rave
             IEnterDataInCRF(table);
             ISaveCRF();
         }
+
+        /// <summary>
+        /// Checking that data entry doesn't work
+        /// </summary>
+        /// <param name="table"></param>
+        [StepDefinition(@"I cannot enter data in CRF and save")]
+        public void ICannotEnterDataInCRFAndSave(Table table)
+        {
+            try
+            {
+                IEnterDataInCRFAndSave(table);
+                Assert.IsTrue(false); // if we got here, data entry was successful, therefore method fails.
+            }
+            catch // if exception is caught, data entry wasn't successful, therefore method passes
+            {
+                Assert.IsTrue(true);
+            }
+
+        }
+
 
         /// <summary>
         /// Select Folder and Form
@@ -656,6 +677,16 @@ namespace Medidata.RBT.Features.Rave
         }
 
         /// <summary>
+        /// Sign the subject with a username. Will also provide the matching password for that username.
+        /// </summary>
+        /// <param name="userName">The username to sign the form with.</param>
+        [StepDefinition(@"I sign the subject with username ""([^""]*)""")]
+        public void ISignTheSubjectWithUsername____(string userName)
+        {
+            ISignTheFormWithUsername____(userName);
+        }
+
+        /// <summary>
         /// Verify text on a page, replacing the username in the text with the unique version of that username exists.
         /// </summary>
         /// <param name="text">The text to verify</param>
@@ -830,5 +861,66 @@ namespace Medidata.RBT.Features.Rave
 		{
 			CurrentPage.As<CRFPage>().CheckFormCount(formName, formCount);
 		}
+
+        /// <summary>
+        /// Verifies various controls are disabled
+        /// </summary>
+        /// <param name="table"></param>
+        [StepDefinition(@"I verify EDC controls are disabled")]
+        public void ThenIVerifyEDCControlsAreDisabled(Table table)
+        {
+            var models = table.CreateSet<ControlTypeModel>();
+            IWebElement element;
+            bool allDisabled = true;
+
+            foreach (var model in models)
+            {
+                try
+                {
+                    element = CurrentPage.As<CRFPage>().GetElementByName(model.Name);
+                }
+                catch // exception in this case means element is not found, so that's "good"
+                {
+                    continue;
+                }
+                if (element != null && element.Enabled) // if it's null, still "good"
+                {
+                    allDisabled = false;  // we found an enabled control, so we are done, failing method
+                    break;
+                }
+            }
+            Assert.IsTrue(allDisabled);
+        }
+
+        /// <summary>
+        /// Verifies various controls are enabled
+        /// </summary>
+        /// <param name="table"></param>
+        [StepDefinition(@"I verify EDC controls are enabled")]
+        public void ThenIVerifyEDCControlsAreEnabled(Table table)
+        {
+            var models = table.CreateSet<ControlTypeModel>();
+            IWebElement element;
+            bool allEnabled = true;
+
+            foreach (var model in models)
+            {
+                try
+                {
+                    element = CurrentPage.As<CRFPage>().GetElementByName(model.Name);
+                }
+                catch // exception means control not found
+                {
+                    allEnabled = false;
+                    break;
+                }
+                if (element != null && !element.Enabled) // null means control not found
+                {
+                    allEnabled = false;
+                    break;
+                }
+            }
+            Assert.IsTrue(allEnabled);
+        }
     }
 }

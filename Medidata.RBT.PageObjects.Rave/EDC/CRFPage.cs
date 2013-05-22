@@ -334,16 +334,23 @@ namespace Medidata.RBT.PageObjects.Rave
 
 		public override IWebElement GetElementByName(string identifier, string areaIdentifier = null, string listItem = null)
         {
-            if (identifier == "Inactivate")
+            if (identifier == "Save" || identifier == "LSave")
+                return base.Browser.TryFindElementById("_ctl0_Content_R_footer_SB");
+            else if (identifier == "Cancel" || identifier == "LCancel")
+                return base.Browser.TryFindElementById("_ctl0_Content_R_footer_CB");
+            else if (identifier == "Add New Log Line" || identifier == "LAdd New Log Line")
+                return base.Browser.TryFindElementById("_ctl0_Content_R_log_log_AddLine");
+            else if (identifier == "Modify Templates" || identifier == "LModify Templates")
+                return base.Browser.TryFindElementById("_ctl0_Content_R_header_TEM_EditLink");
+            else if (identifier == "Marking" || identifier == "LMarking")
+                return base.Browser.TryFindElementByPartialID("MarkingButton");
+            else if (identifier == "Inactivate")
                 return Browser.DropdownById("R_log_log_RP");
-
-            if (identifier == "Reactivate")
+            else if (identifier == "Reactivate")
                 return Browser.DropdownById("R_log_log_IRP");
-
-            if (identifier == "Clinical Significance")
+            else if (identifier == "Clinical Significance")
                 return Browser.DropdownById("dropdown");
-
-            if (identifier == "Lab")
+            else if (identifier == "Lab")
                 return Browser.DropdownById("LOC_DropDown");
 
             return base.GetElementByName(identifier,areaIdentifier,listItem);
