@@ -27,6 +27,8 @@ namespace Medidata.RBT.PageObjects.Rave
 
         void PlaceSticky(string responder, string text);
 
+        void AddProtocolDeviation(string pdClass, string pdCode, string text);
+
 		void AnswerQuery(QuerySearchModel filter);
 
 		void CloseQuery(QuerySearchModel filter);

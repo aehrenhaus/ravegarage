@@ -328,6 +328,11 @@ namespace Medidata.RBT.PageObjects.Rave
             throw new NotImplementedException();
         }
 
+        public virtual void AddProtocolDeviation(string pdClass, string pdCode, string text)
+        {
+            throw new NotImplementedException();
+        }
+
 		public virtual IWebElement FindQuery(QuerySearchModel filter)
 		{
 			throw new NotImplementedException();

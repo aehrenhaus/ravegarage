@@ -110,6 +110,7 @@
     <Compile Include="Configuration\ConfigurationCreationModel.cs" />
     <Compile Include="Configuration\ConfigurationLoaderPage.cs" />
     <Compile Include="Configuration\CodingColumnSettingPage.cs" />
+    <Compile Include="Configuration\DeviationPage.cs" />
     <Compile Include="Configuration\Models\CodingColumnModel.cs" />
     <Compile Include="Configuration\RoleActionsConfigPage.cs" />
     <Compile Include="Configuration\ConfigurationSettingsPage.cs" />
@@ -253,6 +254,8 @@
     <Compile Include="TableModels\TSDVBlockModel.cs" />
     <Compile Include="TableModels\GlobalConfigurationModel.cs" />
     <Compile Include="TableModels\PDF\PDFTextAndTextStyleModel.cs" />
+    <Compile Include="TableModels\ProtocolDeviationAuditModel.cs" />
+    <Compile Include="TableModels\ProtocolDeviationModel.cs" />
     <Compile Include="TableModels\StickyModel.cs" />
     <Compile Include="TableModels\PDF\PDFPageParseModel.cs" />
     <Compile Include="TableModels\PDF\PDFParseModel.cs" />

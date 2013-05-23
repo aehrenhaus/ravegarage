@@ -268,6 +268,10 @@ namespace Medidata.RBT.PageObjects.Rave
         {
             throw new NotImplementedException();
         }
+        public override void AddProtocolDeviation(string pdClass, string pdCode, string text)
+        {
+            throw new NotImplementedException();
+        }
         public override void AnswerQuery(QuerySearchModel filter) { throw new NotImplementedException(); }
         public override void CloseQuery(QuerySearchModel filter) { throw new NotImplementedException(); }
         public override void CancelQuery(QuerySearchModel filter) { throw new NotImplementedException(); }

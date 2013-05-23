@@ -240,5 +240,135 @@ namespace Medidata.RBT.Features.Rave.Steps
                 WebTestContext.CurrentPage.As<ConfigurationClinicalViewsPage>().BuildClinicalViews(project.UniqueName);
             }
         }
-	}
+
+        /// <summary>
+        /// Verify the column name
+        /// </summary>
+        /// <param name="value">The column name</param>
+        /// <param name="area">The configuration page area</param>
+        [StepDefinition(@"I verify ""([^""]*)"" column name for ""([^""]*)""")]
+        public void IVerifyColumnNameFor(string value, string area)
+        {
+            Assert.IsTrue(CurrentPage.As<DeviationPage>().VerifySomethingExist(area, value));
+        }
+
+        /// <summary>
+        /// Select the edit icon
+        /// </summary>
+        /// <param name="rowIdentifier">The configuration setting value to edit</param>
+        /// <param name="area">The configuration page area</param>
+        [StepDefinition(@"I select edit for ""([^""]*)"" in ""([^""]*)""")]
+        public void ISelectEditFor(string rowIdentifier, string area)
+        {
+            CurrentPage.As<DeviationPage>().RowSelectedForEdit(rowIdentifier, area);
+        }
+
+        /// <summary>
+        /// Verify the checkbox status
+        /// </summary>
+        /// <param name="value">The checkbox name</param>
+        /// <param name="rowIdentifier">The configuration setting value to edit</param>
+        /// <param name="area">The configuration page area</param>
+        [StepDefinition(@"I verify checkbox ""([^""]*)"" checked for ""([^""]*)"" in ""([^""]*)""")]
+        public void IVerifyCheckedFor(string columnIdentifier, string rowIdentifier, string area)
+        {
+            Assert.IsTrue(CurrentPage.As<DeviationPage>().VerifyRowChecked(columnIdentifier, rowIdentifier, area));
+        }
+
+
+        /// <summary>
+        /// Verify the inactive deviation class or code does not exist
+        /// </summary>
+        /// <param name="columnIdentifier">The protocol deviation setting (class or code)</param>
+        /// <param name="rowIdentifier">The setting's value</param>
+        [StepDefinition(@"I verify inactive deviation ""([^""]*)"" with value ""([^""]*)"" does not exists")]
+        public void IVerifyInactiveDeviation(string columnIdentifier, string rowIdentifier)
+        {
+            Assert.IsTrue(CurrentPage.As<ArchitectCheckPage>().VerifyDeviation(columnIdentifier, rowIdentifier, false));
+        }
+
+        /// <summary>
+        /// Revert a value of the flag Active for PD class or code
+        /// </summary>
+        /// <param name="type">deviation class/deviation code</param>
+        /// <param name="identifier">The configuration setting value</param>
+        /// <param name="action">Active/Inactive</param>
+        [StepDefinition(@"I clean ""(.*)"" ""(.*)"" to ""(.*)""")]
+        public void ICleanDeviationClass(string type, string identifier, string action)
+        {
+            CurrentPage = CurrentPage.NavigateTo("Home");
+            CurrentPage = CurrentPage.NavigateTo("Configuration");
+            CurrentPage = CurrentPage.NavigateTo("Other Settings");
+            CurrentPage = CurrentPage.NavigateTo("Deviations");
+            if (String.Compare(action, "active", StringComparison.CurrentCultureIgnoreCase) == 0)
+            {
+                CurrentPage.As<DeviationPage>().Activate(type, identifier);
+            }
+            else
+            {
+                CurrentPage.As<DeviationPage>().Inactivate(type, identifier);
+            }
+        }
+
+        #region Steps pertaining to manipulating or verifying the configuration settings via database
+
+        /// <summary>
+        /// Verify that analyterange audit exists.
+        /// </summary>
+        /// <param name="table">The table.</param>
+        [StepDefinition(@"I verify Protocol Deviation configuration audits exist")]
+        public void IVerifyProtocolDeviationConfigurationAuditsExist__(Table table)
+        {
+            //SpecialStringHelper.ReplaceTableColumn(table, "ProtocolDeviation");
+            string sql = GetProtocolDeviationConfigurationAuditSql(table.CreateInstance<ProtocolDeviationAuditModel>());
+            var dataTable = DbHelper.ExecuteDataSet(sql).Tables[0];
+            Assert.IsTrue((int)dataTable.Rows.Count > 0, "Protocol Deviation Configuration Audit does not exist");
+        }
+
+        private static string GetProtocolDeviationConfigurationAuditSql(ProtocolDeviationAuditModel model)  //string ObjectName, string ObjectType, string AuditName
+        {
+            string objectType = String.Empty;
+
+            switch (model.ObjectType)
+            {
+                case "Class":
+                    objectType = "Medidata.Core.Objects.ProtocolDeviationClassR";
+                    break;
+                case "Code":
+                    objectType = "Medidata.Core.Objects.ProtocolDeviationCodeR";
+                    break;
+                default:
+                    throw new NotImplementedException(String.Format("Unknown Object Type: {0}", model.ObjectType));
+            }
+
+            return String.Format("declare @ObjectName nvarchar(2000) = '{0}' " +
+                                "declare @ObjectType varchar(100) = '{1}' " +
+                                "declare @AuditName nvarchar(100) = '{2}' " +
+                                "select a1.AuditID " +
+                                "from (	select a.AuditID, a.ObjectTypeID, a.ObjectID " +
+                                "		from Audits a " +
+                                "		inner join ObjectTypeR ot on ot.ObjectTypeID = a.ObjectTypeID " +
+                                "		inner join AuditSubCategoryR sc on sc.ID = a.AuditSubCategoryID " +
+                                "		left join ProtocolDeviationClassR class on class.ProtocolDeviationClass = a.ObjectID " +
+                                "		left join ProtocolDeviationCodeR code on code.ProtocolDeviationCode = a.ObjectID " +
+                                "		where ot.ObjectName = @ObjectType " +
+                                "			and ((@ObjectType = 'Medidata.Core.Objects.ProtocolDeviationClassR' and dbo.fnLDS(class.ClassValueID,'eng') = @ObjectName) " +
+                                "				or (@ObjectType = 'Medidata.Core.Objects.ProtocolDeviationCodeR' and dbo.fnLDS(code.CodeValueID,'eng') = @ObjectName)) " +
+                                "			and sc.Name = @AuditName) a1 " +
+                                "inner join (select top 1 a.AuditID, a.ObjectTypeID, a.ObjectID " +
+                                "			from Audits a " +
+                                "			inner join ObjectTypeR ot on ot.ObjectTypeID = a.ObjectTypeID " +
+                                "			left join ProtocolDeviationClassR class on class.ProtocolDeviationClass = a.ObjectID " +
+                                "			left join ProtocolDeviationCodeR code on code.ProtocolDeviationCode = a.ObjectID " +
+                                "			where ot.ObjectName = @ObjectType " +
+                                "				and ((@ObjectType = 'Medidata.Core.Objects.ProtocolDeviationClassR' and dbo.fnLDS(class.ClassValueID,'eng') = @ObjectName) " +
+                                "					or (@ObjectType = 'Medidata.Core.Objects.ProtocolDeviationCodeR' and dbo.fnLDS(code.CodeValueID,'eng') = @ObjectName)) " +
+                                "			order by a.AuditID desc) a2 on a2.AuditID = a1.AuditID",
+                                model.ObjectName,
+                                objectType,
+                                model.AuditName);
+        }
+
+        #endregion Steps pertaining to manipulating or verifying the configuration settings via database
+    }
 }
