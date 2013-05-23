@@ -183,10 +183,10 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>MCC-42701UL.feature</DependentUpon>
     </Compile>
-    <Compile Include="Features\EDC\MCC-28550.feature.cs">
+    <Compile Include="Features\EDC\MCC-28550_1.feature.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>MCC-28550.feature</DependentUpon>
+      <DependentUpon>MCC-28550_1.feature</DependentUpon>
     </Compile>
     <Compile Include="Features\EDC\MCC-41854.feature.cs">
       <AutoGen>True</AutoGen>
@@ -197,6 +197,11 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>MCC-53645_Manual.feature</DependentUpon>
+    </Compile>
+    <Compile Include="Features\EDC\MCC-28550_2.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MCC-28550_2.feature</DependentUpon>
     </Compile>
     <Compile Include="Features\EDC\US10241_DT12797.feature.cs">
       <AutoGen>True</AutoGen>
@@ -627,9 +632,9 @@
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>MCC-42701UL.feature.cs</LastGenOutput>
     </None>
-    <None Include="Features\EDC\MCC-28550.feature">
+    <None Include="Features\EDC\MCC-28550_1.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
-      <LastGenOutput>MCC-28550.feature.cs</LastGenOutput>
+      <LastGenOutput>MCC-28550_1.feature.cs</LastGenOutput>
     </None>
     <None Include="Features\EDC\MCC-41854.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
@@ -638,6 +643,10 @@
     <None Include="Features\EDC\MCC-53645_Manual.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>MCC-53645_Manual.feature.cs</LastGenOutput>
+    </None>
+    <None Include="Features\EDC\MCC-28550_2.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>MCC-28550_2.feature.cs</LastGenOutput>
     </None>
     <None Include="Features\EDC\US10241_DT12797.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
