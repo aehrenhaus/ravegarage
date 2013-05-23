@@ -188,6 +188,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>MCC-28550.feature</DependentUpon>
     </Compile>
+    <Compile Include="Features\EDC\MCC-41785_AddLabError.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MCC-41785_AddLabError.feature</DependentUpon>
+    </Compile>
     <Compile Include="Features\EDC\MCC-41854.feature.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -630,6 +635,10 @@
     <None Include="Features\EDC\MCC-28550.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>MCC-28550.feature.cs</LastGenOutput>
+    </None>
+    <None Include="Features\EDC\MCC-41785_AddLabError.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>MCC-41785_AddLabError.feature.cs</LastGenOutput>
     </None>
     <None Include="Features\EDC\MCC-41854.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
