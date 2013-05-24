@@ -222,6 +222,34 @@ namespace Medidata.RBT.PageObjects.Rave
         }
 
         /// <summary>
+        /// Add a Protocol Deviation
+        /// </summary>
+        /// <param name="pdClass">Protocol Deviation class</param>
+        /// <param name="pdCode">Protocol Deviation code</param>
+        /// <param name="text">Protocol Deviation text</param>
+        public override void AddProtocolDeviation(string pdClass, string pdCode, string text)
+        {
+            if (FieldDataTD.Class != string.Empty)
+            {
+                IWebElement markingButton = FieldDataTD.TryFindElementByPartialID("MarkingButton");
+                markingButton.Click();
+                Page.Browser.TryFindElementsBy(By.XPath(".//select"))[0].EnhanceAs<Dropdown>().SelectByText("Protocol Deviation");
+                Page.Browser.TryFindElementBy(By.XPath(".//textarea")).EnhanceAs<Textbox>().SetText(text);
+                Page.Browser.TryFindElementsBy(By.XPath(".//select"))[1].EnhanceAs<Dropdown>().SelectByText(pdCode);
+                Page.Browser.TryFindElementsBy(By.XPath(".//select"))[2].EnhanceAs<Dropdown>().SelectByText(pdClass);
+             }
+            else
+            {
+                IWebElement markingLoglineButton = FieldDataTD.Ancestor("tbody").Children()[1].TryFindElementByPartialID("MarkingButton");
+                markingLoglineButton.Click();
+                Page.Browser.TryFindElementsBy(By.XPath(".//select"))[1].EnhanceAs<Dropdown>().SelectByText("Protocol Deviation");
+                Page.Browser.TryFindElementBy(By.XPath(".//textarea")).EnhanceAs<Textbox>().SetText(text);
+                Page.Browser.TryFindElementsBy(By.XPath(".//select"))[2].EnhanceAs<Dropdown>().SelectByText(pdCode);
+                Page.Browser.TryFindElementsBy(By.XPath(".//select"))[3].EnhanceAs<Dropdown>().SelectByText(pdClass);
+            }
+        }
+
+        /// <summary>
         /// Refresh the control on a page after a change has been made to invalidate it.
         /// </summary>
         public override void RefreshControl()

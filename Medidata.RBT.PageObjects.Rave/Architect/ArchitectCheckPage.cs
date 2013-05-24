@@ -32,5 +32,37 @@ namespace Medidata.RBT.PageObjects.Rave
                 return "Modules/Architect/Check.aspx";
             }
         }
+
+        /// <summary>
+        /// Verifies the deviation.
+        /// </summary>
+        /// <param name="columnIdentifier">The column identifier.</param>
+        /// <param name="rowIdentifier">The row identifier.</param>
+        /// <param name="exists">if set to <c>true</c> [exists].</param>
+        /// <returns></returns>
+        public bool VerifyDeviation(string columnIdentifier, string rowIdentifier, bool exists)
+        {
+            bool isExists = true;
+            var dropdown = Browser.TryFindElementByPartialID("ActionTypeDDL").EnhanceAs<Dropdown>();
+            dropdown.SelectByText("Add Deviation");
+
+            string areaIdentifier =
+                String.Compare(columnIdentifier, "class", StringComparison.CurrentCultureIgnoreCase) == 0
+                    ? "DropDownTwo"
+                    : "DropDownOne";
+
+            dropdown = Browser.TryFindElementByPartialID(areaIdentifier).EnhanceAs<Dropdown>();
+
+            if (exists)
+            {
+                isExists = dropdown.VerifyByText(rowIdentifier) == true;
+            }
+            else
+            {
+                isExists = dropdown.VerifyByText(rowIdentifier) == false;
+            }
+
+            return isExists;
+        }
     }
 }
