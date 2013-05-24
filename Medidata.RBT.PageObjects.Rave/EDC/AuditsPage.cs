@@ -172,5 +172,25 @@ namespace Medidata.RBT.PageObjects.Rave
 		}
 
         public override string URL { get { return "Modules/EDC/AuditsPage.aspx"; } }
+
+        public override IWebElement GetElementByName(string identifier, string areaIdentifier = null, string listItem = null)
+        {
+            IWebElement element;
+            string id = "";
+
+            if (identifier == "Submit " || identifier == "LSubmit ")
+                id = "_ctl0_Content_SubmitBut";
+            
+            try
+            {
+                element = base.Browser.TryFindElementById(id);
+            }
+            catch
+            {
+                element = null;
+            }
+
+            return element;
+        }
     }
 }

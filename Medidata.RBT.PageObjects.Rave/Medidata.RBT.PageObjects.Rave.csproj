@@ -129,6 +129,7 @@
     <Compile Include="Architect\ArchitectBasePage.cs" />
     <Compile Include="AmendmentManager\AMMigrationHomePage.cs" />
     <Compile Include="EDC\AuditsPage.cs" />
+    <Compile Include="EDC\SubjectAdminPage.cs" />
     <Compile Include="EDC\FormHeaderControl.cs" />
     <Compile Include="EDC\ITaskSummaryContainer.cs" />
     <Compile Include="EDC\LandscapeLogField.cs" />
@@ -251,6 +252,7 @@
     <Compile Include="TableModels\CoderLocaleTable.cs" />
     <Compile Include="TableModels\CoderTermModel.cs" />
     <Compile Include="TableModels\CoderWorkflowVariableModel.cs" />
+    <Compile Include="TableModels\ControlTypeModel.cs" />
     <Compile Include="TableModels\TSDVBlockModel.cs" />
     <Compile Include="TableModels\GlobalConfigurationModel.cs" />
     <Compile Include="TableModels\PDF\PDFTextAndTextStyleModel.cs" />
