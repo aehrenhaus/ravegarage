@@ -1,8 +1,8 @@
-﻿@FT_MCC-28550_1
+﻿@FT_MCC-28550-1
 
 
 
-Feature: MCC-28550_1 Signatures on the data page and in the audit trail are handled in one transaction. End-user signature functionality should remain the same. 
+Feature: MCC-28550-1 Signatures on the data page and in the audit trail are handled in one transaction. End-user signature functionality should remain the same. 
 
 
 Background:

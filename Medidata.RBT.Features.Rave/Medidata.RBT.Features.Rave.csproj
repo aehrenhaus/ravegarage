@@ -183,10 +183,10 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>MCC-42701UL.feature</DependentUpon>
     </Compile>
-    <Compile Include="Features\EDC\MCC-28550_1.feature.cs">
+    <Compile Include="Features\EDC\MCC-28550-1.feature.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>MCC-28550_1.feature</DependentUpon>
+      <DependentUpon>MCC-28550-1.feature</DependentUpon>
     </Compile>
     <Compile Include="Features\EDC\MCC-41854.feature.cs">
       <AutoGen>True</AutoGen>
@@ -198,10 +198,10 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>MCC-53645_Manual.feature</DependentUpon>
     </Compile>
-    <Compile Include="Features\EDC\MCC-28550_2.feature.cs">
+    <Compile Include="Features\EDC\MCC-28550-2.feature.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>MCC-28550_2.feature</DependentUpon>
+      <DependentUpon>MCC-28550-2.feature</DependentUpon>
     </Compile>
     <Compile Include="Features\EDC\MCC_55695.feature.cs">
       <AutoGen>True</AutoGen>
@@ -640,9 +640,9 @@
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>MCC-42701UL.feature.cs</LastGenOutput>
     </None>
-    <None Include="Features\EDC\MCC-28550_1.feature">
+    <None Include="Features\EDC\MCC-28550-1.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
-      <LastGenOutput>MCC-28550_1.feature.cs</LastGenOutput>
+      <LastGenOutput>MCC-28550-1.feature.cs</LastGenOutput>
     </None>
     <None Include="Features\EDC\MCC-41854.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
@@ -652,9 +652,9 @@
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>MCC-53645_Manual.feature.cs</LastGenOutput>
     </None>
-    <None Include="Features\EDC\MCC-28550_2.feature">
+    <None Include="Features\EDC\MCC-28550-2.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
-      <LastGenOutput>MCC-28550_2.feature.cs</LastGenOutput>
+      <LastGenOutput>MCC-28550-2.feature.cs</LastGenOutput>
     </None>
     <None Include="Features\EDC\MCC_55695.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
