@@ -579,10 +579,6 @@
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>US18531_AM2_DT13626.feature.cs</LastGenOutput>
     </None>
-    <None Include="Features\Architect\FT_MCC_55695.feature">
-      <Generator>SpecFlowSingleFileGenerator</Generator>
-      <LastGenOutput>FT_MCC_55695.feature.cs</LastGenOutput>
-    </None>
     <None Include="Features\Architect\MCC-42701DL.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>MCC-42701DL.feature.cs</LastGenOutput>
