@@ -2,20 +2,30 @@
 $scriptpath 
 
 Set-Location $scriptpath
-$resultPath ="./TestResults/"
 
+$resultPath ="./TestResults/"
+$mode = "Debug"
 $OutputBuildDir = "D:\CI_Specflow_SQA\SpecflowSeeding_SQA_Testing\Output"
-$testDll = "Medidata.RBT.Features.Rave\bin\Debug\Medidata.RBT.Features.Rave.dll"
+
+if($args.Count -eq 1)
+{
+    $OutputBuildDir = $args[0];
+}
+
+if($args.Count -eq 2)
+{
+    $OutputBuildDir = $args[0];
+	$mode = $args[1];
+}
+
+$testDll = "Medidata.RBT.Features.Rave\bin\$mode\Medidata.RBT.Features.Rave.dll"
 
 .\GetTestList.exe "$testDll" > testList.txt
 
 $categories = cat testList.txt
 
 
-if($args.Count -eq 1)
-{
-    $OutputBuildDir = $args[0];
-}
+
 
 rd "TestResults" -force -recurse 
 md "TestResults"
