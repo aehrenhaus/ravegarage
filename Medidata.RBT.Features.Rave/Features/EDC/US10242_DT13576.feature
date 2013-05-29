@@ -30,7 +30,7 @@ Given following Project assignments exist
 #Note: Study "13576 Study A" is set up with an edit check "If Does the subject have a known history of an abnormality, disease or surgery? field in Medical History with record position 0 IsEqualTo Yes then set Subject to Requires Signature" 
 #Note: Study "13576 Study B" is set up with an edit check "If Enrollment Date field in Enrollment form IsNotEmpty Or Stop Date field in AE form IsNotEmpty then set Subject to Requires Signature"
 
-@Release_2012.1.0
+@Release_2012.2.0
 @PB_US10242_DT13576_01
 @Validation
 Scenario: PB_US10242_DT13576_01 As an EDC user, when I have an edit check that sets a subject to require signature, and I sign, and I change data such that the subject no longer requires signature, then I should not see a task that requires signature for the subject in the task summary.
@@ -55,7 +55,6 @@ Scenario: PB_US10242_DT13576_01 As an EDC user, when I have an edit check that s
   And I take a screenshot
   And I select link "SUB {Var(num1)}"
   And I can not see "Sign and Save" button
-
   And I expand Task Summary
   And I verify the task summary
 	|Task                   |Page Count |
@@ -71,20 +70,18 @@ Scenario: PB_US10242_DT13576_01 As an EDC user, when I have an edit check that s
 	| Visit Date | 01 Jan 2012 | Requires Signature |
   And I can see "Sign and Save" button	
   And I take a screenshot	
-
   And I select link "SUB {Var(num1)}"
   And I can see "Sign and Save" button		
-
   And I expand Task Summary
   And I verify the task summary
 	|Task   				|Page Count |
 	|Requiring Signature    |2			|
   And I take a screenshot
-
   And I click button "Sign and Save"
   And I sign the form with username "SUPER USER 1"
-  And I verify text "Signature attempt was successful" exists
-
+  And I verify text "Your signature is being applied. You may continue working on other subjects." exists
+  And I wait for signature to be applied 
+  And I select link "SUB {Var(num1)}"
   And I expand Task Summary
   And I verify the task summary
 	|Task   				|Page Count |
@@ -100,26 +97,22 @@ Scenario: PB_US10242_DT13576_01 As an EDC user, when I have an edit check that s
 	| Visit Date | 01 Jan 2012 | Complete    |
   And I can not see "Sign and Save" button	
   And I take a screenshot
-  
   And I select link "SUB {Var(num1)}"
   And I can not see "Sign and Save" button
-
   And I expand Task Summary
   And I verify the task summary
 	|Task    				|Page Count |
 	|Requiring Signature    |0			|
   And I take a screenshot	
-  
   And I navigate to "Home"
   And I select Study "13576 Study A" and Site "Site_A"
-
   And I expand Task Summary
   And I verify the task summary
 	|Task                   |Page Count |
 	|Requiring Signature    |0			|
   And I take a screenshot
 
-@Release_2012.1.0
+@Release_2012.2.0
 @PB_US10242_DT13576_02
 @Validation
 Scenario: PB_US10242_DT13576_02 As an EDC user, when I have an edit check associated to data dictionary that sets a subject to require signature, and I sign, and I change data such that the subject no longer requires signature, then I should not see a task that requires signature for the subject in the task summary. 
@@ -133,17 +126,15 @@ Scenario: PB_US10242_DT13576_02 As an EDC user, when I have an edit check associ
     |Subject ID 	     |SUB {Var(num1)}   |textbox      |
   And I select Form "Medical History"
   And I enter data in CRF and save
-    |Field                                                                           |Data    |Control Type   |
-    |Does the subject have a known history of an abnormality, disease or surgery?    |No      |dropdownlist   |
+    | Field                                                                        | Data | Control Type |
+    | Does the subject have a known history of an abnormality, disease or surgery? | No   | dropdownlist |
   And I verify data on Fields in CRF
 	| Field                                                                        | Data | Status Icon |
 	| Does the subject have a known history of an abnormality, disease or surgery? | No   | Complete    |
   And I can not see "Sign and Save" button
   And I take a screenshot
-
   And I select link "SUB {Var(num1)}"
   And I can not see "Sign and Save" button
-
   And I expand Task Summary
   And I verify the task summary
 	|Task                   |Page Count |
@@ -151,27 +142,25 @@ Scenario: PB_US10242_DT13576_02 As an EDC user, when I have an edit check associ
   And I take a screenshot	
   And I select Form "Medical History" 
   And I enter data in CRF and save
-    |Field                                                                           |Data   |Control Type   |
-    |Does the subject have a known history of an abnormality, disease or surgery?    |Yes    |dropdownlist   |
+    | Field                                                                        | Data | Control Type |
+    | Does the subject have a known history of an abnormality, disease or surgery? | Yes  | dropdownlist |
   And I verify data on Fields in CRF
 	| Field                                                                        | Data | Status Icon        |
 	| Does the subject have a known history of an abnormality, disease or surgery? | Yes  | Requires Signature |
   And I can see "Sign and Save" button	
   And I take a screenshot	
-
   And I select link "SUB {Var(num1)}"
   And I can see "Sign and Save" button		
-
   And I expand Task Summary
   And I verify the task summary
 	|Task                   |Page Count |
 	|Requiring Signature    |2			|
   And I take a screenshot
-
   And I click button "Sign and Save"
   And I sign the form with username "SUPER USER 1"
-  And I verify text "Signature attempt was successful" exists
-
+  And I verify text "Your signature is being applied. You may continue working on other subjects." exists
+  And I wait for signature to be applied 
+  And I select link "SUB {Var(num1)}"
   And I expand Task Summary	
   And I verify the task summary
 	|Task                   |Page Count |
@@ -179,33 +168,29 @@ Scenario: PB_US10242_DT13576_02 As an EDC user, when I have an edit check associ
   And I take a screenshot 
   And I select Form "Medical History" 
   And I enter data in CRF and save
-    |Field                                                                           |Data   |Control Type   |
-    |Does the subject have a known history of an abnormality, disease or surgery?    |No     |dropdownlist   |
+    | Field                                                                        | Data | Control Type |
+    | Does the subject have a known history of an abnormality, disease or surgery? | No   | dropdownlist |
   And I verify data on Fields in CRF
 	| Field                                                                        | Data | Status Icon |
 	| Does the subject have a known history of an abnormality, disease or surgery? | No   | Complete    |
   And I can not see "Sign and Save" button	
   And I take a screenshot
-
   And I select link "SUB {Var(num1)}"
   And I can not see "Sign and Save" button
-
   And I expand Task Summary
   And I verify the task summary
 	|Task                   |Page Count |
 	|Requiring Signature    |0			|
   And I take a screenshot	
-  
   And I navigate to "Home"
   And I select Study "13576 Study A" and Site "Site_A"
-
   And I expand Task Summary
   And I verify the task summary
 	|Task                   |Page Count	|
 	|Requiring Signature    |0			|
   And I take a screenshot 
   
-@Release_2012.1.0
+@Release_2012.2.0
 @PB_US10242_DT13576_03
 @Validation
 Scenario: PB_US10242_DT13576_03 As an EDC user, when I have an edit check that sets a subject to require signature, and I sign, and I change data such that the subject no longer requires signature, and change back to data where the subject requires signature then I should see a task that requires signature for the subject in the task summary.
@@ -230,23 +215,21 @@ Scenario: PB_US10242_DT13576_03 As an EDC user, when I have an edit check that s
   And I take a screenshot
   And I select link "SUB {Var(num1)}"
   And I can see "Sign and Save" button
-
   And I expand Task Summary
   And I verify the task summary
 	|Task                   |Page Count |
 	|Requiring Signature    |2			|
   And I take a screenshot
-  
   And I click button "Sign and Save"
   And I sign the form with username "SUPER USER 1"
-  And I verify text "Signature attempt was successful" exists
-  
+  And I verify text "Your signature is being applied. You may continue working on other subjects." exists
+  And I wait for signature to be applied 
+  And I select link "SUB {Var(num1)}"
   And I expand Task Summary
   And I verify the task summary
 	|Task   				|Page Count |
 	|Requiring Signature    |0			|
   And I take a screenshot 
-  
   And I select Form "Demographics" 
   And I enter data in CRF and save
     |Field      |Data           |Control Type |
@@ -257,16 +240,13 @@ Scenario: PB_US10242_DT13576_03 As an EDC user, when I have an edit check that s
 	| Visit Date | 01 Jan 2012 | Complete    |
   And I can not see "Sign and Save" button	
   And I take a screenshot	
-
   And I select link "SUB {Var(num1)}"
   And I can not see "Sign and Save" button		
-
   And I expand Task Summary
   And I verify the task summary
 	|Task   				|Page Count |
 	|Requiring Signature    |0			|
   And I take a screenshot
-
   And I select Form "Demographics" 
   And I enter data in CRF and save
     |Field      |Data           |Control Type |
@@ -278,17 +258,15 @@ Scenario: PB_US10242_DT13576_03 As an EDC user, when I have an edit check that s
 	| Visit Date | 02 Jan 2012 | Requires Signature |
   And I can see "Sign and Save" button	
   And I take a screenshot
-  
   And I select link "SUB {Var(num1)}"
   And I can see "Sign and Save" button
-
   And I expand Task Summary
   And I verify the task summary
 	|Task    				|Page Count |
 	|Requiring Signature    |1			|
   And I take a screenshot
 
-@Release_2012.1.0
+@Release_2012.2.0
 @PB_US10242_DT13576_04
 @Validation
 Scenario: PB_US10242_DT13576_04 As an EDC user, when I have an edit check that sets a subject to require signature on two forms and I change data such that the subject no longer requires signature on first form, then I should see a task that requires signature on both forms for the subject in the task summary.
@@ -309,7 +287,6 @@ Scenario: PB_US10242_DT13576_04 As an EDC user, when I have an edit check that s
 	| Enrollment Date | 01 Jan 2012 | Complete    |
   And I can not see "Sign and Save" button
   And I take a screenshot
-  
   And I select link "SUB {Var(num1)}"
   And I select Form "AE"
   And I enter data in CRF and save
@@ -322,13 +299,10 @@ Scenario: PB_US10242_DT13576_04 As an EDC user, when I have an edit check that s
 	| Was there any AE's? | Yes         | Requires Signature |
 	| Start Date          | 05 Jan 2012 | Requires Signature |
 	| Stop Date           | 25 Jan 2012 | Requires Signature |
-  
   And I can see "Sign and Save" button
   And I take a screenshot
-  
   And I select link "SUB {Var(num1)}"
   And I can see "Sign and Save" button
-
   And I expand Task Summary
   And I verify the task summary
 	|Task                   |Page Count |
@@ -343,16 +317,13 @@ Scenario: PB_US10242_DT13576_04 As an EDC user, when I have an edit check that s
 	| Enrollment Date |      | Requires Signature |
   And I can see "Sign and Save" button
   And I take a screenshot
-  
   And I select link "SUB {Var(num1)}"
   And I can see "Sign and Save" button
-
   And I expand Task Summary
   And I verify the task summary
 	|Task                   |Page Count |
 	|Requiring Signature    |3			|
   And I take a screenshot
-  
   And I select Form "AE"
   And I enter data in CRF and save
     |Field                  |Data             |Control Type    |
@@ -364,16 +335,13 @@ Scenario: PB_US10242_DT13576_04 As an EDC user, when I have an edit check that s
 	| Stop Date           |             | Complete    |
   And I can not see "Sign and Save" button
   And I take a screenshot
-  
   And I select link "SUB {Var(num1)}"
   And I can not see "Sign and Save" button
- 
   And I expand Task Summary
   And I verify the task summary
 	|Task                   |Page Count |
 	|Requiring Signature    |0			|
   And I take a screenshot 
-  
   And I select Form "Enrollment"
   And I enter data in CRF and save
     |Field                  |Data           |Control Type |
@@ -391,12 +359,10 @@ Scenario: PB_US10242_DT13576_04 As an EDC user, when I have an edit check that s
     |Stop Date              |              |True               |
   And I can see "Sign and Save" button
   And I take a screenshot
-
   And I select link "SUB {Var(num1)}"
   And I can see "Sign and Save" button
-
   And I expand Task Summary
   And I verify the task summary
 	|Task                   |Page Count |
 	|Requiring Signature    |3			|
- And I take a screenshot
+  And I take a screenshot
