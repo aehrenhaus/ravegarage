@@ -53,7 +53,10 @@ namespace Medidata.RBT.Common.Steps
 			var uploadControl = CurrentPage.GetElementByName(uploadControlIdentifier);
 			var fileInfo = new FileInfo(Path.Combine(RBTConfiguration.Default.UploadPath, fileName));
 			uploadControl.SendKeys(fileInfo.FullName);
-			CurrentPage.ClickButton(buttonName);
+            if (fileInfo.Exists)
+			    CurrentPage.ClickButton(buttonName);
+            else
+                throw new Exception("The file " + fileName + " is not found in " + RBTConfiguration.Default.UploadPath);
 
 			var sign = Browser.TryFindElementBy((b) => CurrentPage.GetElementByName(finishSignal, "upload result"),true, RBTConfiguration.Default.UploadTimeout);
 			if (sign == null)
