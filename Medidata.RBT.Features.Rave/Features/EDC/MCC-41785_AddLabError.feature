@@ -1,4 +1,3 @@
-@ignore
 @FT_MCC41785
 Feature: (DT13823) Error message appears when adding a new lab from within a lab form
 	As a Rave user
