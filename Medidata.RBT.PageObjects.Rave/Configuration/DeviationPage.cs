@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Medidata.RBT.PageObjects.Rave.Configuration.Models;
+using Medidata.RBT.PageObjects.Rave.TableModels;
 using Medidata.RBT.SeleniumExtension;
 using TechTalk.SpecFlow;
 using OpenQA.Selenium;
@@ -124,6 +125,60 @@ namespace Medidata.RBT.PageObjects.Rave.Configuration
             updateButton = row.TryFindElementByXPath(".//img[contains(@src, 'i_ccheck.gif')]");
             updateButton.Click();
             return this;
+        }
+
+        /// <summary>
+        /// Add Protocol Deviation Classes
+        /// </summary>
+        /// <param name="pdClasses">Protocol Deviation Classes to add</param>
+        public void AddDeviationClasses(List<ProtocolDeviationClassModel> pdClasses)
+        {
+            foreach (ProtocolDeviationClassModel pdClass in pdClasses)
+                AddDeviationClass(pdClass.ClassValue, pdClass.Active);
+        }
+
+        /// <summary>
+        /// Add a Protocol Deviation Class
+        /// </summary>
+        /// <param name="classValue">Protocol Deviation Class value</param>
+        /// <param name="active">Active</param>
+        public void AddDeviationClass(string classValue, bool active)
+        {
+            Browser.TryFindElementBy(By.XPath(".//a[text()='Add Deviation Class']")).Click();
+            Browser.TryFindElementBy(By.XPath(".//input[contains(@id,'ClassValue')]")).EnhanceAs<Textbox>().SetText(classValue);
+            var elActive = Browser.TryFindElementBy(By.XPath(".//input[contains(@id,'ClassActive')]")).EnhanceAs<Checkbox>();
+            if (active)
+                elActive.Check();
+            else
+                elActive.Uncheck();
+            Browser.TryFindElementBy(By.XPath(".//img[contains(@src,'../../Img/i_ccheck.gif')]")).Click();
+        }
+
+        /// <summary>
+        /// Add Protocol Deviation Codes
+        /// </summary>
+        /// <param name="pdCodes">Protocol Deviation Codes to add</param>
+        public void AddDeviationCodes(List<ProtocolDeviationCodeModel> pdCodes)
+        {
+            foreach (ProtocolDeviationCodeModel pdCode in pdCodes)
+                AddDeviationCode(pdCode.CodeValue, pdCode.Active);
+        }
+
+        /// <summary>
+        /// Add a Protocol Deviation Code
+        /// </summary>
+        /// <param name="codeValue">Protocol Deviation Code value</param>
+        /// <param name="active">Active</param>
+        public void AddDeviationCode(string codeValue, bool active)
+        {
+            Browser.TryFindElementBy(By.XPath(".//a[text()='Add Deviation Code']")).Click();
+            Browser.TryFindElementBy(By.XPath(".//input[contains(@id,'CodeValue')]")).EnhanceAs<Textbox>().SetText(codeValue);
+            var elActive = Browser.TryFindElementBy(By.XPath(".//input[contains(@id,'CodeActive')]")).EnhanceAs<Checkbox>();
+            if (active)
+                elActive.Check();
+            else
+                elActive.Uncheck();
+            Browser.TryFindElementBy(By.XPath(".//img[contains(@src,'../../Img/i_ccheck.gif')]")).Click();
         }
         #endregion
 

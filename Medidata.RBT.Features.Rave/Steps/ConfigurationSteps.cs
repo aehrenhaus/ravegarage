@@ -310,6 +310,28 @@ namespace Medidata.RBT.Features.Rave.Steps
             }
         }
 
+        /// <summary>
+        /// Add a Deviation Class
+        /// </summary>
+        /// <param name="table">The Protocol Deviation Class information</param>
+        [StepDefinition(@"I add Deviation Class")]
+        public void IAddDeviationClass(Table table)
+        {
+            List<ProtocolDeviationClassModel> pdInfo = table.CreateSet<ProtocolDeviationClassModel>().ToList();
+            CurrentPage.As<DeviationPage>().AddDeviationClasses(pdInfo);
+        }
+
+        /// <summary>
+        /// Add a Deviation Code
+        /// </summary>
+        /// <param name="table">The Protocol Deviation Code information</param>
+        [StepDefinition(@"I add Deviation Code")]
+        public void IAddDeviationCode(Table table)
+        {
+            List<ProtocolDeviationCodeModel> pdInfo = table.CreateSet<ProtocolDeviationCodeModel>().ToList();
+            CurrentPage.As<DeviationPage>().AddDeviationCodes(pdInfo);
+        }
+
         #region Steps pertaining to manipulating or verifying the configuration settings via database
 
         /// <summary>
