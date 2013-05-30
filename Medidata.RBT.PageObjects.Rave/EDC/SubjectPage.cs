@@ -40,7 +40,15 @@ namespace Medidata.RBT.PageObjects.Rave
 				return table;
 			}
 
-            if (identifier == "Add Event" || identifier == "LAdd Event")
+            if (identifier == "Save" || identifier == "LSave")
+                id = "_ctl0_Content__ctl0_SBT_Save";
+            else if (identifier == "Cancel" || identifier == "LCancel")
+                id = "ctl0_Content__ctl0_SBT_Cancel";
+            else if (identifier == "Enabled" || identifier == "LEnabled")
+                id = "_ctl0_Content_SubjectAddEvent_AddEventRadBtnList_1";
+            else if (identifier == "Disabled" || identifier == "LDisabled")
+                id = "_ctl0_Content_SubjectAddEvent_AddEventRadBtnList_0";
+            else if (identifier == "Add Event" || identifier == "LAdd Event")
                 id = "_ctl0_Content_SubjectAddEvent_MatrixList";
             else if (identifier == "Add" || identifier == "LAdd")
                 id = "_ctl0_Content_SubjectAddEvent_SaveBtn";

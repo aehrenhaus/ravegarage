@@ -334,16 +334,63 @@ namespace Medidata.RBT.PageObjects.Rave
 
 		public override IWebElement GetElementByName(string identifier, string areaIdentifier = null, string listItem = null)
         {
-            if (identifier == "Inactivate")
-                return Browser.DropdownById("R_log_log_RP");
-
-            if (identifier == "Reactivate")
-                return Browser.DropdownById("R_log_log_IRP");
-
-            if (identifier == "Clinical Significance")
+            if (identifier == "Save" || identifier == "LSave")
+                return base.Browser.TryFindElementById("_ctl0_Content_R_footer_SB");
+            else if (identifier == "Cancel" || identifier == "LCancel")
+                return base.Browser.TryFindElementById("_ctl0_Content_R_footer_CB");
+            else if (identifier == "Add a new Log line" || identifier == "LAdd a new Log line")
+            {
+                var element = base.Browser.TryFindElementById("_ctl0_Content_R_log_log_AddLine");
+                if (element.GetDisabled() != null && element.GetDisabled().ToLower() == "true") // if disabled control, it's unusable, so return null
+                    return null;
+                else
+                    return element;
+            }
+            else if (identifier == "Modify Templates" || identifier == "LModify Templates")
+            {
+                var element = base.Browser.TryFindElementById("_ctl0_Content_R_header_TEM_EditLink");
+                if (element.GetDisabled() != null && element.GetDisabled().ToLower() == "true")
+                    return null;
+                else
+                    return element;
+            }
+            else if (identifier == "Marking" || identifier == "LMarking")
+                return base.Browser.TryFindElementByPartialID("MarkingButton");
+            else if (identifier == "Inactivate")
+            {
+                var element = Browser.DropdownById("R_log_log_RP");
+                if (element.GetDisabled() != null && element.GetDisabled().ToLower() == "true")
+                    return null;
+                else
+                    return element;
+            }
+            else if (identifier == "Inactivate Link")
+            {
+                var element = base.Browser.TryFindElementById("_ctl0_Content_R_log_log_Inactivate");
+                if (element.GetDisabled() != null && element.GetDisabled().ToLower() == "true")
+                    return null;
+                else
+                    return element;
+            }
+            else if (identifier == "Reactivate")
+            {
+                var element = Browser.DropdownById("R_log_log_IRP");
+                if (element.GetDisabled() != null && element.GetDisabled().ToLower() == "true")
+                    return null;
+                else
+                    return element;
+            }
+            else if (identifier == "Reactivate Link")
+            {
+                var element = base.Browser.TryFindElementById("_ctl0_Content_R_log_log_Activate");
+                if (element.GetDisabled() != null && element.GetDisabled().ToLower() == "true")
+                    return null;
+                else
+                    return element;
+            }
+            else if (identifier == "Clinical Significance")
                 return Browser.DropdownById("dropdown");
-
-            if (identifier == "Lab")
+            else if (identifier == "Lab")
                 return Browser.DropdownById("LOC_DropDown");
 
             return base.GetElementByName(identifier,areaIdentifier,listItem);
@@ -397,6 +444,57 @@ namespace Medidata.RBT.PageObjects.Rave
         {
             IEDCFieldControl fieldControl = FindField(fieldName);
             fieldControl.PlaceSticky(responder, text);
+        }
+
+        /// <summary>
+        /// Add Protocol Deviations on the fields on the page
+        /// </summary>
+        /// <param name="pds">Protocol Deviations to add</param>
+        public void AddProtocolDeviations(List<ProtocolDeviationModel> pds)
+        {
+            foreach (ProtocolDeviationModel pd in pds)
+                AddProtocolDeviation(pd.Field, pd.Class, pd.Code, pd.Text, pd.Record);
+        }
+
+        /// <summary>
+        /// Add a Protocol Deviation on the field
+        /// </summary>
+        /// <param name="fieldName">The field the Protocol Deviation to create on</param>
+        /// <param name="pdClass">Protocol Deviation Class value</param>
+        /// <param name="pdCode">Protocol Deviation Code value</param>
+        /// <param name="text">The text of the Protocol Deviation</param>
+        public void AddProtocolDeviation(string fieldName, string pdClass, string pdCode, string text, int? record)
+        {
+            IEDCFieldControl fieldControl = record == null ? FindField(fieldName) : FindField(fieldName, "Field", record);
+            fieldControl.AddProtocolDeviation(pdClass, pdCode, text);
+        }
+
+        /// <summary>
+        /// Verifies the deviation.
+        /// </summary>
+        /// <param name="pdComponent">Protocol Deviation component (class/code)</param>
+        /// <param name="value">Value of the Protocol Deviation component (class/code value)</param>
+        /// <param name="exists">if set to <c>true</c> [exists]</param>
+        /// <returns></returns>
+        public bool VerifyDeviation(string pdComponent, string value, bool exists)
+        {
+            bool isExists = true;
+
+            var dropdownCode = Browser.TryFindElementBy(By.XPath("//*[contains(text(),'Protocol Deviation')]/../..")).TryFindElementsBy(By.XPath(".//select"))[1].EnhanceAs<Dropdown>();
+            var dropdownClass = Browser.TryFindElementBy(By.XPath("//*[contains(text(),'Protocol Deviation')]/../..")).TryFindElementsBy(By.XPath(".//select"))[2].EnhanceAs<Dropdown>();
+
+            var dropdown = String.Compare(pdComponent, "class", StringComparison.CurrentCultureIgnoreCase) == 0 ? dropdownClass : dropdownCode;
+
+            if (exists)
+            {
+                isExists = dropdown.VerifyByText(value) == true;
+            }
+            else
+            {
+                isExists = dropdown.VerifyByText(value) == false;
+            }
+
+            return isExists;
         }
     }
 }

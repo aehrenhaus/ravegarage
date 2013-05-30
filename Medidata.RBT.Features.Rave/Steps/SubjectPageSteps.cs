@@ -181,5 +181,70 @@ namespace Medidata.RBT.Features.Rave
                 Assert.AreEqual(model.PageCount, item.PageCount);
             }
         }
+
+
+        /// <summary>
+        /// Verifies various controls are disabled
+        /// </summary>
+        /// <param name="table"></param>
+        [StepDefinition(@"I verify Subject Calendar controls are disabled")]
+        [StepDefinition(@"I verify Grid View controls are disabled")]
+        public void ThenIVerifySubjectCalendarControlsAreDisabled(Table table)
+        {
+            var models = table.CreateSet<ControlTypeModel>();
+            IWebElement element; 
+            bool allDisabled = true;
+
+            foreach (var model in models)
+            {
+                try
+                {
+                    element = CurrentPage.As<SubjectPage>().GetElementByName(model.Name);
+                }
+                catch // exception in this case means element is not found, so that's "good"
+                {
+                    continue;
+                }
+                if (element != null && element.Enabled) // if it's null, still "good"
+                {
+                    allDisabled = false;  // we found an enabled control, so we are done, failing method
+                    break;
+                }
+            }
+            Assert.IsTrue(allDisabled);
+        }
+
+        /// <summary>
+        /// Verifies various controls are enabled
+        /// </summary>
+        /// <param name="table"></param>
+        [StepDefinition(@"I verify Subject Calendar controls are enabled")]
+        [StepDefinition(@"I verify Grid View controls are enabled")]
+        public void ThenIVerifySubjectCalendarControlsAreEnabled(Table table)
+        {
+            var models = table.CreateSet<ControlTypeModel>();
+            IWebElement element;
+            bool allEnabled = true;
+
+            foreach (var model in models)
+            {
+                try
+                {
+                    element = CurrentPage.As<SubjectPage>().GetElementByName(model.Name);
+                }
+                catch // exception means control not found
+                {
+                    allEnabled = false;
+                    break;
+                }
+                if (element != null && !element.Enabled) // null means control not found
+                {
+                    allEnabled = false;  
+                    break;
+                }
+            }
+            Assert.IsTrue(allEnabled);
+        }
+
     }
 }

@@ -183,10 +183,10 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>MCC-42701UL.feature</DependentUpon>
     </Compile>
-    <Compile Include="Features\EDC\MCC-28550.feature.cs">
+    <Compile Include="Features\EDC\MCC-28550-1.feature.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>MCC-28550.feature</DependentUpon>
+      <DependentUpon>MCC-28550-1.feature</DependentUpon>
     </Compile>
     <Compile Include="Features\EDC\MCC-41785_AddLabError.feature.cs">
       <AutoGen>True</AutoGen>
@@ -202,6 +202,16 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>MCC-53645_Manual.feature</DependentUpon>
+    </Compile>
+    <Compile Include="Features\EDC\MCC-28550-2.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MCC-28550-2.feature</DependentUpon>
+    </Compile>
+    <Compile Include="Features\EDC\MCC_55695.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MCC_55695.feature</DependentUpon>
     </Compile>
     <Compile Include="Features\EDC\US10241_DT12797.feature.cs">
       <AutoGen>True</AutoGen>
@@ -490,6 +500,8 @@
     </Compile>
     <Compile Include="ReferenceFix.cs" />
     <Compile Include="Steps\ArchitectSteps_DB.cs" />
+    <Compile Include="Steps\AuditPageSteps.cs" />
+    <Compile Include="Steps\EDCSteps_ProtocolDeviation.cs" />
     <Compile Include="Steps\FileSteps.cs" />
     <Compile Include="Steps\CacheFlushSteps.cs" />
     <Compile Include="Steps\ConfigurationSteps.cs" />
@@ -497,6 +509,7 @@
     <Compile Include="Steps\EDCSteps_Sticky.cs" />
     <Compile Include="Steps\ExpandCollapseSteps.cs" />
     <Compile Include="Steps\Seeding\CoderDictionarySteps.cs" />
+    <Compile Include="Steps\SubjectAdminPageSteps.cs" />
     <Compile Include="Steps\UserGroupSteps.cs" />
     <Compile Include="Steps\ReportAdminSteps.cs" />
     <Compile Include="Steps\LabUnitConversionSteps.cs" />
@@ -632,9 +645,9 @@
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>MCC-42701UL.feature.cs</LastGenOutput>
     </None>
-    <None Include="Features\EDC\MCC-28550.feature">
+    <None Include="Features\EDC\MCC-28550-1.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
-      <LastGenOutput>MCC-28550.feature.cs</LastGenOutput>
+      <LastGenOutput>MCC-28550-1.feature.cs</LastGenOutput>
     </None>
     <None Include="Features\EDC\MCC-41785_AddLabError.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
@@ -647,6 +660,14 @@
     <None Include="Features\EDC\MCC-53645_Manual.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>MCC-53645_Manual.feature.cs</LastGenOutput>
+    </None>
+    <None Include="Features\EDC\MCC-28550-2.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>MCC-28550-2.feature.cs</LastGenOutput>
+    </None>
+    <None Include="Features\EDC\MCC_55695.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>MCC_55695.feature.cs</LastGenOutput>
     </None>
     <None Include="Features\EDC\US10241_DT12797.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
