@@ -23,13 +23,17 @@
   <ConfigloaderVersion dt:dt="string">1.2.0.0</ConfigloaderVersion>
  </CustomDocumentProperties>
  <ExcelWorkbook xmlns="urn:schemas-microsoft-com:office:excel">
+  <SupBook>
+   <Path> </Path>
+   <SheetName> </SheetName>
+  </SupBook>
   <WindowHeight>11565</WindowHeight>
   <WindowWidth>9600</WindowWidth>
   <WindowTopX>-15</WindowTopX>
   <WindowTopY>-15</WindowTopY>
   <TabRatio>672</TabRatio>
-  <ActiveSheet>8</ActiveSheet>
-  <FirstVisibleSheet>5</FirstVisibleSheet>
+  <ActiveSheet>23</ActiveSheet>
+  <FirstVisibleSheet>17</FirstVisibleSheet>
   <RefModeR1C1/>
   <ProtectStructure>False</ProtectStructure>
   <ProtectWindows>False</ProtectWindows>
@@ -43,7 +47,7 @@
    <NumberFormat/>
    <Protection/>
   </Style>
-  <Style ss:ID="m76609952">
+  <Style ss:ID="m80627680">
    <Alignment ss:Vertical="Top" ss:WrapText="1"/>
    <Borders>
     <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"
@@ -57,7 +61,7 @@
    </Borders>
    <Font ss:FontName="Arial" x:Family="Swiss"/>
   </Style>
-  <Style ss:ID="m38165344">
+  <Style ss:ID="m80629472">
    <Alignment ss:Horizontal="Left" ss:Vertical="Top" ss:WrapText="1"/>
    <Borders>
     <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"
@@ -72,7 +76,7 @@
    <Font ss:FontName="Verdana" x:Family="Swiss"/>
    <Protection/>
   </Style>
-  <Style ss:ID="m76571296">
+  <Style ss:ID="m87565856">
    <Alignment ss:Horizontal="Left" ss:Vertical="Top" ss:WrapText="1"/>
    <Borders>
     <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"
@@ -86,7 +90,7 @@
    </Borders>
    <Font ss:FontName="Verdana" x:Family="Swiss"/>
   </Style>
-  <Style ss:ID="m76573536">
+  <Style ss:ID="m87567200">
    <Alignment ss:Horizontal="Center" ss:Vertical="Center" ss:VerticalText="1"/>
    <Borders>
     <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="2"
@@ -100,7 +104,7 @@
    </Borders>
    <Font ss:FontName="Verdana" x:Family="Swiss" ss:Bold="1"/>
   </Style>
-  <Style ss:ID="m76573596">
+  <Style ss:ID="m87567260">
    <Alignment ss:Horizontal="Center" ss:Vertical="Center" ss:VerticalText="1"/>
    <Borders>
     <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="2"
@@ -114,7 +118,7 @@
    </Borders>
    <Font ss:FontName="Verdana" x:Family="Swiss" ss:Bold="1"/>
   </Style>
-  <Style ss:ID="m76573616">
+  <Style ss:ID="m87567280">
    <Alignment ss:Horizontal="Center" ss:Vertical="Center" ss:VerticalText="1"/>
    <Borders>
     <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="2"
@@ -128,7 +132,7 @@
    </Borders>
    <Font ss:FontName="Verdana" x:Family="Swiss" ss:Bold="1"/>
   </Style>
-  <Style ss:ID="m76573636">
+  <Style ss:ID="m87567300">
    <Alignment ss:Horizontal="Center" ss:Vertical="Center" ss:VerticalText="1"/>
    <Borders>
     <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="2"
@@ -140,7 +144,7 @@
    </Borders>
    <Font ss:FontName="Verdana" x:Family="Swiss" ss:Bold="1"/>
   </Style>
-  <Style ss:ID="m76573312">
+  <Style ss:ID="m87566976">
    <Alignment ss:Horizontal="Center" ss:Vertical="Center" ss:VerticalText="1"/>
    <Borders>
     <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="2"
@@ -154,7 +158,7 @@
    </Borders>
    <Font ss:FontName="Verdana" x:Family="Swiss" ss:Bold="1"/>
   </Style>
-  <Style ss:ID="m76573372">
+  <Style ss:ID="m87567036">
    <Alignment ss:Horizontal="Center" ss:Vertical="Center" ss:VerticalText="1"/>
    <Borders>
     <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="2"
@@ -168,7 +172,7 @@
    </Borders>
    <Font ss:FontName="Verdana" x:Family="Swiss" ss:Bold="1"/>
   </Style>
-  <Style ss:ID="m76573392">
+  <Style ss:ID="m87567056">
    <Alignment ss:Horizontal="Center" ss:Vertical="Center" ss:VerticalText="1"/>
    <Borders>
     <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="2"
@@ -182,7 +186,7 @@
    </Borders>
    <Font ss:FontName="Verdana" x:Family="Swiss" ss:Bold="1"/>
   </Style>
-  <Style ss:ID="m76573412">
+  <Style ss:ID="m87567076">
    <Alignment ss:Horizontal="Center" ss:Vertical="Center" ss:VerticalText="1"/>
    <Borders>
     <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="2"
@@ -194,7 +198,7 @@
    </Borders>
    <Font ss:FontName="Verdana" x:Family="Swiss" ss:Bold="1"/>
   </Style>
-  <Style ss:ID="m76573088">
+  <Style ss:ID="m87566752">
    <Alignment ss:Horizontal="Center" ss:Vertical="Center" ss:VerticalText="1"/>
    <Borders>
     <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="2"
@@ -208,7 +212,7 @@
    </Borders>
    <Font ss:FontName="Verdana" x:Family="Swiss" ss:Bold="1"/>
   </Style>
-  <Style ss:ID="m76573148">
+  <Style ss:ID="m87566812">
    <Alignment ss:Horizontal="Center" ss:Vertical="Center" ss:VerticalText="1"/>
    <Borders>
     <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="2"
@@ -222,7 +226,7 @@
    </Borders>
    <Font ss:FontName="Verdana" x:Family="Swiss" ss:Bold="1"/>
   </Style>
-  <Style ss:ID="m76573168">
+  <Style ss:ID="m87566832">
    <Alignment ss:Horizontal="Center" ss:Vertical="Center" ss:VerticalText="1"/>
    <Borders>
     <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="2"
@@ -236,7 +240,7 @@
    </Borders>
    <Font ss:FontName="Verdana" x:Family="Swiss" ss:Bold="1"/>
   </Style>
-  <Style ss:ID="m76573188">
+  <Style ss:ID="m87566852">
    <Alignment ss:Horizontal="Center" ss:Vertical="Center" ss:VerticalText="1"/>
    <Borders>
     <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="2"
@@ -248,7 +252,7 @@
    </Borders>
    <Font ss:FontName="Verdana" x:Family="Swiss" ss:Bold="1"/>
   </Style>
-  <Style ss:ID="m76572192">
+  <Style ss:ID="m87566528">
    <Alignment ss:Horizontal="Center" ss:Vertical="Center" ss:VerticalText="1"/>
    <Borders>
     <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="2"
@@ -262,7 +266,7 @@
    </Borders>
    <Font ss:FontName="Verdana" x:Family="Swiss" ss:Bold="1"/>
   </Style>
-  <Style ss:ID="m76572252">
+  <Style ss:ID="m87566588">
    <Alignment ss:Horizontal="Center" ss:Vertical="Center" ss:VerticalText="1"/>
    <Borders>
     <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="2"
@@ -276,7 +280,7 @@
    </Borders>
    <Font ss:FontName="Verdana" x:Family="Swiss" ss:Bold="1"/>
   </Style>
-  <Style ss:ID="m76572272">
+  <Style ss:ID="m87566608">
    <Alignment ss:Horizontal="Center" ss:Vertical="Center" ss:VerticalText="1"/>
    <Borders>
     <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="2"
@@ -290,7 +294,7 @@
    </Borders>
    <Font ss:FontName="Verdana" x:Family="Swiss" ss:Bold="1"/>
   </Style>
-  <Style ss:ID="m76572292">
+  <Style ss:ID="m87566628">
    <Alignment ss:Horizontal="Center" ss:Vertical="Center" ss:VerticalText="1"/>
    <Borders>
     <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="2"
@@ -302,7 +306,7 @@
    </Borders>
    <Font ss:FontName="Verdana" x:Family="Swiss" ss:Bold="1"/>
   </Style>
-  <Style ss:ID="m76607488">
+  <Style ss:ID="m88318176">
    <Alignment ss:Horizontal="Left" ss:Vertical="Top" ss:WrapText="1"/>
    <Borders>
     <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"
@@ -317,7 +321,7 @@
    <Font ss:FontName="Verdana" x:Family="Swiss"/>
    <Protection/>
   </Style>
-  <Style ss:ID="m76609728">
+  <Style ss:ID="m88319296">
    <Alignment ss:Horizontal="Center" ss:Vertical="Top"/>
    <Borders>
     <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"
@@ -331,7 +335,7 @@
    </Borders>
    <Font ss:FontName="Verdana" x:Family="Swiss" ss:Bold="1"/>
   </Style>
-  <Style ss:ID="m77007936">
+  <Style ss:ID="m88810144">
    <Alignment ss:Horizontal="Left" ss:Vertical="Top" ss:WrapText="1"/>
    <Borders>
     <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"
@@ -346,7 +350,7 @@
    <Font ss:FontName="Verdana" x:Family="Swiss"/>
    <Protection/>
   </Style>
-  <Style ss:ID="m77007956">
+  <Style ss:ID="m88810164">
    <Alignment ss:Horizontal="Left" ss:Vertical="Top" ss:WrapText="1"/>
    <Borders>
     <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"
@@ -361,7 +365,7 @@
    <Font ss:FontName="Verdana" x:Family="Swiss"/>
    <Protection/>
   </Style>
-  <Style ss:ID="m77007976">
+  <Style ss:ID="m88810184">
    <Alignment ss:Horizontal="Left" ss:Vertical="Top" ss:WrapText="1"/>
    <Borders>
     <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"
@@ -376,7 +380,7 @@
    <Font ss:FontName="Verdana" x:Family="Swiss" ss:Italic="1"/>
    <Protection/>
   </Style>
-  <Style ss:ID="m76997728">
+  <Style ss:ID="m88455808">
    <Alignment ss:Horizontal="Left" ss:Vertical="Top" ss:WrapText="1"/>
    <Borders>
     <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"
@@ -391,7 +395,7 @@
    <Font ss:FontName="Verdana" x:Family="Swiss"/>
    <Protection/>
   </Style>
-  <Style ss:ID="m76997748">
+  <Style ss:ID="m88455828">
    <Alignment ss:Horizontal="Left" ss:Vertical="Top" ss:WrapText="1"/>
    <Borders>
     <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"
@@ -406,7 +410,7 @@
    <Font ss:FontName="Verdana" x:Family="Swiss"/>
    <Protection/>
   </Style>
-  <Style ss:ID="m76997768">
+  <Style ss:ID="m88455848">
    <Alignment ss:Horizontal="Left" ss:Vertical="Top" ss:WrapText="1"/>
    <Borders>
     <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"
@@ -421,7 +425,7 @@
    <Font ss:FontName="Verdana" x:Family="Swiss"/>
    <Protection/>
   </Style>
-  <Style ss:ID="m76997788">
+  <Style ss:ID="m88455868">
    <Alignment ss:Horizontal="Left" ss:Vertical="Top" ss:WrapText="1"/>
    <Borders>
     <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"
@@ -436,7 +440,7 @@
    <Font ss:FontName="Verdana" x:Family="Swiss"/>
    <Protection/>
   </Style>
-  <Style ss:ID="m76997808">
+  <Style ss:ID="m88455888">
    <Alignment ss:Horizontal="Left" ss:Vertical="Top" ss:WrapText="1"/>
    <Borders>
     <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"
@@ -451,7 +455,7 @@
    <Font ss:FontName="Verdana" x:Family="Swiss"/>
    <Protection/>
   </Style>
-  <Style ss:ID="m76997828">
+  <Style ss:ID="m88455908">
    <Alignment ss:Horizontal="Left" ss:Vertical="Top" ss:WrapText="1"/>
    <Borders>
     <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"
@@ -466,7 +470,7 @@
    <Font ss:FontName="Verdana" x:Family="Swiss"/>
    <Protection/>
   </Style>
-  <Style ss:ID="m78377856">
+  <Style ss:ID="m89020832">
    <Alignment ss:Horizontal="Left" ss:Vertical="Top" ss:WrapText="1"/>
    <Borders>
     <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="2"
@@ -480,7 +484,7 @@
    </Borders>
    <Font ss:FontName="Verdana" x:Family="Swiss"/>
   </Style>
-  <Style ss:ID="m78378528">
+  <Style ss:ID="m89021504">
    <Alignment ss:Horizontal="Left" ss:Vertical="Top" ss:WrapText="1"/>
    <Borders>
     <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="2"
@@ -494,7 +498,7 @@
    </Borders>
    <Font ss:FontName="Verdana" x:Family="Swiss"/>
   </Style>
-  <Style ss:ID="m78379200">
+  <Style ss:ID="m89022176">
    <Alignment ss:Horizontal="Left" ss:Vertical="Top" ss:WrapText="1"/>
    <Borders>
     <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"
@@ -508,7 +512,7 @@
    </Borders>
    <Font ss:FontName="Verdana" x:Family="Swiss"/>
   </Style>
-  <Style ss:ID="m78379872">
+  <Style ss:ID="m89055680">
    <Alignment ss:Horizontal="Left" ss:Vertical="Top" ss:WrapText="1"/>
    <Borders>
     <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"
@@ -522,7 +526,7 @@
    </Borders>
    <Font ss:FontName="Verdana" x:Family="Swiss"/>
   </Style>
-  <Style ss:ID="m78380544">
+  <Style ss:ID="m89056352">
    <Alignment ss:Horizontal="Left" ss:Vertical="Top" ss:WrapText="1"/>
    <Borders>
     <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"
@@ -536,7 +540,7 @@
    </Borders>
    <Font ss:FontName="Verdana" x:Family="Swiss"/>
   </Style>
-  <Style ss:ID="m79843776">
+  <Style ss:ID="m89057248">
    <Alignment ss:Horizontal="Left" ss:Vertical="Top" ss:WrapText="1"/>
    <Borders>
     <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"
@@ -550,7 +554,7 @@
    </Borders>
    <Font ss:FontName="Verdana" x:Family="Swiss"/>
   </Style>
-  <Style ss:ID="m79843796">
+  <Style ss:ID="m89057268">
    <Alignment ss:Horizontal="Left" ss:Vertical="Top" ss:WrapText="1"/>
    <Borders>
     <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"
@@ -564,7 +568,7 @@
    </Borders>
    <Font ss:FontName="Verdana" x:Family="Swiss"/>
   </Style>
-  <Style ss:ID="m79843816">
+  <Style ss:ID="m89057288">
    <Alignment ss:Horizontal="Left" ss:Vertical="Top" ss:WrapText="1"/>
    <Borders>
     <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"
@@ -578,7 +582,7 @@
    </Borders>
    <Font ss:FontName="Verdana" x:Family="Swiss"/>
   </Style>
-  <Style ss:ID="m79843836">
+  <Style ss:ID="m89057308">
    <Alignment ss:Horizontal="Left" ss:Vertical="Top" ss:WrapText="1"/>
    <Borders>
     <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"
@@ -592,7 +596,7 @@
    </Borders>
    <Font ss:FontName="Verdana" x:Family="Swiss"/>
   </Style>
-  <Style ss:ID="m79843856">
+  <Style ss:ID="m89057328">
    <Alignment ss:Horizontal="Left" ss:Vertical="Top" ss:WrapText="1"/>
    <Borders>
     <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"
@@ -606,7 +610,7 @@
    </Borders>
    <Font ss:FontName="Verdana" x:Family="Swiss"/>
   </Style>
-  <Style ss:ID="m79843876">
+  <Style ss:ID="m89057348">
    <Alignment ss:Horizontal="Left" ss:Vertical="Top" ss:WrapText="1"/>
    <Borders>
     <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"
@@ -620,7 +624,7 @@
    </Borders>
    <Font ss:FontName="Verdana" x:Family="Swiss"/>
   </Style>
-  <Style ss:ID="m79845120">
+  <Style ss:ID="m89058592">
    <Alignment ss:Horizontal="Left" ss:Vertical="Top" ss:WrapText="1"/>
    <Borders>
     <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"
@@ -634,7 +638,7 @@
    </Borders>
    <Font ss:FontName="Verdana" x:Family="Swiss"/>
   </Style>
-  <Style ss:ID="m79846016">
+  <Style ss:ID="m89243872">
    <Alignment ss:Horizontal="Left" ss:Vertical="Top" ss:WrapText="1"/>
    <Borders>
     <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"
@@ -648,7 +652,19 @@
    </Borders>
    <Font ss:FontName="Verdana" x:Family="Swiss"/>
   </Style>
-  <Style ss:ID="m79847136">
+  <Style ss:ID="m89244992">
+   <Alignment ss:Horizontal="Left" ss:Vertical="Top" ss:WrapText="1"/>
+   <Borders>
+    <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#000000"/>
+    <Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="2"
+     ss:Color="#000000"/>
+    <Border ss:Position="Top" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#000000"/>
+   </Borders>
+   <Font ss:FontName="Verdana" x:Family="Swiss"/>
+  </Style>
+  <Style ss:ID="m89246112">
    <Alignment ss:Horizontal="Left" ss:Vertical="Top" ss:WrapText="1"/>
    <Borders>
     <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"
@@ -662,21 +678,7 @@
    </Borders>
    <Font ss:FontName="Verdana" x:Family="Swiss"/>
   </Style>
-  <Style ss:ID="m80139136">
-   <Alignment ss:Horizontal="Left" ss:Vertical="Top" ss:WrapText="1"/>
-   <Borders>
-    <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"
-     ss:Color="#000000"/>
-    <Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="1"
-     ss:Color="#000000"/>
-    <Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="2"
-     ss:Color="#000000"/>
-    <Border ss:Position="Top" ss:LineStyle="Continuous" ss:Weight="1"
-     ss:Color="#000000"/>
-   </Borders>
-   <Font ss:FontName="Verdana" x:Family="Swiss"/>
-  </Style>
-  <Style ss:ID="m80140704">
+  <Style ss:ID="m89579520">
    <Alignment ss:Horizontal="Left" ss:Vertical="Top" ss:WrapText="1"/>
    <Borders>
     <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"
@@ -3938,6 +3940,44 @@
    <Interior ss:Color="#CCFFFF" ss:Pattern="Solid"/>
    <Protection ss:Protected="0"/>
   </Style>
+  <Style ss:ID="s442">
+   <Alignment ss:Horizontal="Left" ss:Vertical="Top" ss:WrapText="1"/>
+   <Borders>
+    <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#000000"/>
+    <Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#000000"/>
+    <Border ss:Position="Top" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#000000"/>
+   </Borders>
+   <Font ss:FontName="Verdana" x:Family="Swiss"/>
+   <Interior ss:Color="#FFFF99" ss:Pattern="Solid"/>
+   <Protection ss:Protected="0"/>
+  </Style>
+  <Style ss:ID="s445">
+   <Alignment ss:Horizontal="Left" ss:Vertical="Center" ss:WrapText="1"/>
+   <Borders>
+    <Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#000000"/>
+    <Border ss:Position="Top" ss:LineStyle="Continuous" ss:Weight="2"
+     ss:Color="#000000"/>
+   </Borders>
+   <Font ss:FontName="Verdana" x:Family="Swiss" ss:Size="11" ss:Bold="1"/>
+   <Interior ss:Color="#C0C0C0" ss:Pattern="Solid"/>
+   <Protection/>
+  </Style>
+  <Style ss:ID="s448">
+   <Alignment ss:Horizontal="Left" ss:Vertical="Top" ss:WrapText="1"/>
+   <Borders>
+    <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"/>
+    <Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="1"/>
+    <Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="1"/>
+    <Border ss:Position="Top" ss:LineStyle="Continuous" ss:Weight="1"/>
+   </Borders>
+   <Font ss:FontName="Verdana" x:Family="Swiss"/>
+   <Interior ss:Color="#FFFF99" ss:Pattern="Solid"/>
+   <Protection ss:Protected="0"/>
+  </Style>
  </Styles>
  <Names>
   <NamedRange ss:Name="Roles" ss:RefersTo="=#REF!"/>
@@ -4825,7 +4865,7 @@
     <Cell ss:StyleID="s143"><NamedCell ss:Name="Print_Area"/></Cell>
     <Cell ss:StyleID="s143"><NamedCell ss:Name="Print_Area"/></Cell>
     <Cell ss:StyleID="s143"><NamedCell ss:Name="Print_Area"/></Cell>
-    <Cell ss:MergeDown="21" ss:StyleID="m76609952"><Data ss:Type="String">The Clinical View functionality for Coding Settings in Rave enables users to specify full coding dictionary hierarchy in the clinical views. For example, a user can specify, the term, the code for the System Organ Class (SOC), and the high level term (HLT) from the MedDRA Coding Dictionary to show in the Clinical Views. If a suffix is specified, the corresponding column will appear in the clinical views.</Data><NamedCell
+    <Cell ss:MergeDown="21" ss:StyleID="m80627680"><Data ss:Type="String">The Clinical View functionality for Coding Settings in Rave enables users to specify full coding dictionary hierarchy in the clinical views. For example, a user can specify, the term, the code for the System Organ Class (SOC), and the high level term (HLT) from the MedDRA Coding Dictionary to show in the Clinical Views. If a suffix is specified, the corresponding column will appear in the clinical views.</Data><NamedCell
       ss:Name="Print_Area"/></Cell>
    </Row>
   </Table>
@@ -5512,7 +5552,7 @@
     <Cell><Data ss:Type="String">dd MMM yyyy</Data><NamedCell ss:Name="Print_Area"/></Cell>
     <Cell><Data ss:Type="String">dd MMM yyyy HH:nn:ss</Data><NamedCell
       ss:Name="Print_Area"/></Cell>
-    <Cell ss:MergeDown="13" ss:StyleID="m38165344"><ss:Data ss:Type="String"
+    <Cell ss:MergeDown="13" ss:StyleID="m80629472"><ss:Data ss:Type="String"
       xmlns="http://www.w3.org/TR/REC-html40">       Fill in the configuration data for the locales which will be used in your system.  To configure each locale, set up the following: <B>Locale Code</B><Font> - Enter the 3-leter language code for the locale. A list of all standard codes can be found on http://www.loc.gov/standards/iso639-2/englangn.html#cd </Font><B>Based On</B><Font> - Enter an existing language on which you wish to base the new locale. The initial strings for the new locale will be copied from that language. </Font><B>Description</B><Font> - Enter description text for the locale. </Font><B>Help Folder</B><Font> - Specify the folder path, if any, which contains localized help for this locale. This folder path (e.g., Chinese\Mandarine) will have to exist in the Rave web server path under MedidataRAVE\Help in order for the users to view localized help. </Font><B>Submit on Enter</B><Font> - Select 'FALSE' to allow users to use the ENTER key as part of typing in text in Rave fields. This is required for data entry in certain asian languages. Select 'TRUE' to use the ENTER key for sumitting the screen. [Default: TRUE] </Font><B>Name Format</B><Font> - Specify which elements of the user name you want the system to display and in which order to display them.  Use any of the following: * {FNAME} = First Name * {LNAME} = Last Name * {TITLE} = Title * {MNAME} = Middle Name * {SAL} = Salutation * {CRED} = Credentials </Font><B>Date Format</B><Font> -  Specify the date format which will be displayed by Rave.  </Font><B>Date/Time Format</B><Font> - Specify the date and time  format which will be displayed by Rave whenever  both date and time are used.            </Font></ss:Data><NamedCell
       ss:Name="Print_Area"/></Cell>
    </Row>
@@ -6382,7 +6422,7 @@
     <Cell ss:Index="2"><Data ss:Type="String">SUPERPDFPROFILE</Data><NamedCell
       ss:Name="Print_Area"/></Cell>
     <Cell><Data ss:Type="Boolean">0</Data><NamedCell ss:Name="Print_Area"/></Cell>
-    <Cell ss:MergeDown="4" ss:StyleID="m76571296"><ss:Data ss:Type="String"
+    <Cell ss:MergeDown="4" ss:StyleID="m87565856"><ss:Data ss:Type="String"
       xmlns="http://www.w3.org/TR/REC-html40">       List the PDF Profiles which are going to be used to generate PDFs in the PDF Generator. Only one profile can be marked as primary.The primary profile is the default profile selected for all new PDF File Request jobs.  To set up PDF Profiles, fill in the following: <B>Profile Name</B><Font> - Enter the name of the PDF Profile. </Font><B>Primary</B><Font> - Select 'TRUE' if the corresponding Profile should serve as the default.  Otherwise, leave settings as 'FALSE'            </Font></ss:Data><NamedCell
       ss:Name="Print_Area"/></Cell>
    </Row>
@@ -6473,7 +6513,7 @@
     <Cell ss:StyleID="s111"><NamedCell ss:Name="Print_Area"/></Cell>
     <Cell ss:StyleID="s246"><Data ss:Type="String">TRUE = Include inactivated records by default when a PDF file request is executed. FALSE = Do not include inactivated records. [Default: FALSE]</Data><NamedCell
       ss:Name="Print_Area"/></Cell>
-    <Cell ss:MergeDown="4" ss:StyleID="m76572192"><Data ss:Type="String">Data Selection</Data><NamedCell
+    <Cell ss:MergeDown="4" ss:StyleID="m87566528"><Data ss:Type="String">Data Selection</Data><NamedCell
       ss:Name="Print_Area"/></Cell>
     <Cell ss:Index="8"><Data ss:Type="String">All</Data></Cell>
     <Cell ss:Index="12"
@@ -6754,7 +6794,7 @@
     <Cell ss:StyleID="s152"><NamedCell ss:Name="Print_Area"/></Cell>
     <Cell ss:StyleID="s268"><Data ss:Type="String">Select the type of font to be used when generating the PDF. The list includes fonts supported by the standard Acrobat® product. [Default: Helvetica]</Data><NamedCell
       ss:Name="Print_Area"/></Cell>
-    <Cell ss:MergeDown="11" ss:StyleID="m76572252"><Data ss:Type="String">Formatting Properties</Data><NamedCell
+    <Cell ss:MergeDown="11" ss:StyleID="m87566588"><Data ss:Type="String">Formatting Properties</Data><NamedCell
       ss:Name="Print_Area"/></Cell>
     <Cell ss:Index="12"
      ss:Formula="=IF(LEN('PDF Profiles'!RC[-10])&gt;0,'PDF Profiles'!RC[-10],&quot;&quot;)"><Data
@@ -6904,7 +6944,7 @@
     <Cell ss:StyleID="s107"><NamedCell ss:Name="Print_Area"/></Cell>
     <Cell ss:StyleID="s257"><Data ss:Type="String">TRUE = The PDF will include a cover page. FALSE = No cover page will be created for the PDF. [Default: TRUE]</Data><NamedCell
       ss:Name="Print_Area"/></Cell>
-    <Cell ss:MergeDown="28" ss:StyleID="m76572272"><Data ss:Type="String">Document Properties</Data><NamedCell
+    <Cell ss:MergeDown="28" ss:StyleID="m87566608"><Data ss:Type="String">Document Properties</Data><NamedCell
       ss:Name="Print_Area"/></Cell>
     <Cell ss:Index="12"
      ss:Formula="=IF(LEN('PDF Profiles'!RC[-10])&gt;0,'PDF Profiles'!RC[-10],&quot;&quot;)"><Data
@@ -7258,7 +7298,7 @@
     <Cell ss:StyleID="s257"><ss:Data ss:Type="String"
       xmlns="http://www.w3.org/TR/REC-html40">       Field Label - Include the field's label in the annotation page when generating a blank annotated PDF. <I>Note: only 5 out of the 6 annotations may be set to 'TRUE'.</I></ss:Data><NamedCell
       ss:Name="Print_Area"/></Cell>
-    <Cell ss:MergeDown="7" ss:StyleID="m76572292"><Data ss:Type="String">Annotations</Data><NamedCell
+    <Cell ss:MergeDown="7" ss:StyleID="m87566628"><Data ss:Type="String">Annotations</Data><NamedCell
       ss:Name="Print_Area"/></Cell>
     <Cell ss:Index="12"
      ss:Formula="=IF(LEN('PDF Profiles'!RC[-10])&gt;0,'PDF Profiles'!RC[-10],&quot;&quot;)"><Data
@@ -7376,7 +7416,7 @@
     <Cell ss:StyleID="s111"><NamedCell ss:Name="Print_Area"/></Cell>
     <Cell ss:StyleID="s246"><Data ss:Type="String">TRUE = Include inactivated records by default when a PDF file request is executed. FALSE = Do not include inactivated records. [Default: FALSE]</Data><NamedCell
       ss:Name="Print_Area"/></Cell>
-    <Cell ss:MergeDown="4" ss:StyleID="m76573088"><Data ss:Type="String">Data Selection</Data><NamedCell
+    <Cell ss:MergeDown="4" ss:StyleID="m87566752"><Data ss:Type="String">Data Selection</Data><NamedCell
       ss:Name="Print_Area"/></Cell>
     <Cell ss:Index="8"><Data ss:Type="String">All</Data></Cell>
     <Cell ss:Index="12"
@@ -7657,7 +7697,7 @@
     <Cell ss:StyleID="s152"><NamedCell ss:Name="Print_Area"/></Cell>
     <Cell ss:StyleID="s268"><Data ss:Type="String">Select the type of font to be used when generating the PDF. The list includes fonts supported by the standard Acrobat® product. [Default: Helvetica]</Data><NamedCell
       ss:Name="Print_Area"/></Cell>
-    <Cell ss:MergeDown="11" ss:StyleID="m76573148"><Data ss:Type="String">Formatting Properties</Data><NamedCell
+    <Cell ss:MergeDown="11" ss:StyleID="m87566812"><Data ss:Type="String">Formatting Properties</Data><NamedCell
       ss:Name="Print_Area"/></Cell>
     <Cell ss:Index="12"
      ss:Formula="=IF(LEN('PDF Profiles'!RC[-10])&gt;0,'PDF Profiles'!RC[-10],&quot;&quot;)"><Data
@@ -7807,7 +7847,7 @@
     <Cell ss:StyleID="s107"><NamedCell ss:Name="Print_Area"/></Cell>
     <Cell ss:StyleID="s257"><Data ss:Type="String">TRUE = The PDF will include a cover page. FALSE = No cover page will be created for the PDF. [Default: TRUE]</Data><NamedCell
       ss:Name="Print_Area"/></Cell>
-    <Cell ss:MergeDown="28" ss:StyleID="m76573168"><Data ss:Type="String">Document Properties</Data><NamedCell
+    <Cell ss:MergeDown="28" ss:StyleID="m87566832"><Data ss:Type="String">Document Properties</Data><NamedCell
       ss:Name="Print_Area"/></Cell>
     <Cell ss:Index="12"
      ss:Formula="=IF(LEN('PDF Profiles'!RC[-10])&gt;0,'PDF Profiles'!RC[-10],&quot;&quot;)"><Data
@@ -8161,7 +8201,7 @@
     <Cell ss:StyleID="s257"><ss:Data ss:Type="String"
       xmlns="http://www.w3.org/TR/REC-html40">       Field Label - Include the field's label in the annotation page when generating a blank annotated PDF. <I>Note: only 5 out of the 6 annotations may be set to 'TRUE'.</I></ss:Data><NamedCell
       ss:Name="Print_Area"/></Cell>
-    <Cell ss:MergeDown="7" ss:StyleID="m76573188"><Data ss:Type="String">Annotations</Data><NamedCell
+    <Cell ss:MergeDown="7" ss:StyleID="m87566852"><Data ss:Type="String">Annotations</Data><NamedCell
       ss:Name="Print_Area"/></Cell>
     <Cell ss:Index="12"
      ss:Formula="=IF(LEN('PDF Profiles'!RC[-10])&gt;0,'PDF Profiles'!RC[-10],&quot;&quot;)"><Data
@@ -8279,7 +8319,7 @@
     <Cell ss:StyleID="s111"><NamedCell ss:Name="Print_Area"/></Cell>
     <Cell ss:StyleID="s246"><Data ss:Type="String">TRUE = Include inactivated records by default when a PDF file request is executed. FALSE = Do not include inactivated records. [Default: FALSE]</Data><NamedCell
       ss:Name="Print_Area"/></Cell>
-    <Cell ss:MergeDown="4" ss:StyleID="m76573312"><Data ss:Type="String">Data Selection</Data><NamedCell
+    <Cell ss:MergeDown="4" ss:StyleID="m87566976"><Data ss:Type="String">Data Selection</Data><NamedCell
       ss:Name="Print_Area"/></Cell>
     <Cell ss:Index="8"><Data ss:Type="String">All</Data></Cell>
     <Cell ss:Index="12"
@@ -8560,7 +8600,7 @@
     <Cell ss:StyleID="s152"><NamedCell ss:Name="Print_Area"/></Cell>
     <Cell ss:StyleID="s268"><Data ss:Type="String">Select the type of font to be used when generating the PDF. The list includes fonts supported by the standard Acrobat® product. [Default: Helvetica]</Data><NamedCell
       ss:Name="Print_Area"/></Cell>
-    <Cell ss:MergeDown="11" ss:StyleID="m76573372"><Data ss:Type="String">Formatting Properties</Data><NamedCell
+    <Cell ss:MergeDown="11" ss:StyleID="m87567036"><Data ss:Type="String">Formatting Properties</Data><NamedCell
       ss:Name="Print_Area"/></Cell>
     <Cell ss:Index="12"
      ss:Formula="=IF(LEN('PDF Profiles'!RC[-10])&gt;0,'PDF Profiles'!RC[-10],&quot;&quot;)"><Data
@@ -8710,7 +8750,7 @@
     <Cell ss:StyleID="s107"><NamedCell ss:Name="Print_Area"/></Cell>
     <Cell ss:StyleID="s257"><Data ss:Type="String">TRUE = The PDF will include a cover page. FALSE = No cover page will be created for the PDF. [Default: TRUE]</Data><NamedCell
       ss:Name="Print_Area"/></Cell>
-    <Cell ss:MergeDown="28" ss:StyleID="m76573392"><Data ss:Type="String">Document Properties</Data><NamedCell
+    <Cell ss:MergeDown="28" ss:StyleID="m87567056"><Data ss:Type="String">Document Properties</Data><NamedCell
       ss:Name="Print_Area"/></Cell>
     <Cell ss:Index="12"
      ss:Formula="=IF(LEN('PDF Profiles'!RC[-10])&gt;0,'PDF Profiles'!RC[-10],&quot;&quot;)"><Data
@@ -9064,7 +9104,7 @@
     <Cell ss:StyleID="s257"><ss:Data ss:Type="String"
       xmlns="http://www.w3.org/TR/REC-html40">       Field Label - Include the field's label in the annotation page when generating a blank annotated PDF. <I>Note: only 5 out of the 6 annotations may be set to 'TRUE'.</I></ss:Data><NamedCell
       ss:Name="Print_Area"/></Cell>
-    <Cell ss:MergeDown="7" ss:StyleID="m76573412"><Data ss:Type="String">Annotations</Data><NamedCell
+    <Cell ss:MergeDown="7" ss:StyleID="m87567076"><Data ss:Type="String">Annotations</Data><NamedCell
       ss:Name="Print_Area"/></Cell>
     <Cell ss:Index="12"
      ss:Formula="=IF(LEN('PDF Profiles'!RC[-10])&gt;0,'PDF Profiles'!RC[-10],&quot;&quot;)"><Data
@@ -9182,7 +9222,7 @@
     <Cell ss:StyleID="s111"><NamedCell ss:Name="Print_Area"/></Cell>
     <Cell ss:StyleID="s246"><Data ss:Type="String">TRUE = Include inactivated records by default when a PDF file request is executed. FALSE = Do not include inactivated records. [Default: FALSE]</Data><NamedCell
       ss:Name="Print_Area"/></Cell>
-    <Cell ss:MergeDown="4" ss:StyleID="m76573536"><Data ss:Type="String">Data Selection</Data><NamedCell
+    <Cell ss:MergeDown="4" ss:StyleID="m87567200"><Data ss:Type="String">Data Selection</Data><NamedCell
       ss:Name="Print_Area"/></Cell>
     <Cell ss:Index="8"><Data ss:Type="String">All</Data></Cell>
     <Cell ss:Index="12"
@@ -9463,7 +9503,7 @@
     <Cell ss:StyleID="s152"><NamedCell ss:Name="Print_Area"/></Cell>
     <Cell ss:StyleID="s268"><Data ss:Type="String">Select the type of font to be used when generating the PDF. The list includes fonts supported by the standard Acrobat® product. [Default: Helvetica]</Data><NamedCell
       ss:Name="Print_Area"/></Cell>
-    <Cell ss:MergeDown="11" ss:StyleID="m76573596"><Data ss:Type="String">Formatting Properties</Data><NamedCell
+    <Cell ss:MergeDown="11" ss:StyleID="m87567260"><Data ss:Type="String">Formatting Properties</Data><NamedCell
       ss:Name="Print_Area"/></Cell>
     <Cell ss:Index="12"
      ss:Formula="=IF(LEN('PDF Profiles'!RC[-10])&gt;0,'PDF Profiles'!RC[-10],&quot;&quot;)"><Data
@@ -9613,7 +9653,7 @@
     <Cell ss:StyleID="s107"><NamedCell ss:Name="Print_Area"/></Cell>
     <Cell ss:StyleID="s257"><Data ss:Type="String">TRUE = The PDF will include a cover page. FALSE = No cover page will be created for the PDF. [Default: TRUE]</Data><NamedCell
       ss:Name="Print_Area"/></Cell>
-    <Cell ss:MergeDown="28" ss:StyleID="m76573616"><Data ss:Type="String">Document Properties</Data><NamedCell
+    <Cell ss:MergeDown="28" ss:StyleID="m87567280"><Data ss:Type="String">Document Properties</Data><NamedCell
       ss:Name="Print_Area"/></Cell>
     <Cell ss:Index="12"
      ss:Formula="=IF(LEN('PDF Profiles'!RC[-10])&gt;0,'PDF Profiles'!RC[-10],&quot;&quot;)"><Data
@@ -9967,7 +10007,7 @@
     <Cell ss:StyleID="s257"><ss:Data ss:Type="String"
       xmlns="http://www.w3.org/TR/REC-html40">       Field Label - Include the field's label in the annotation page when generating a blank annotated PDF. <I>Note: only 5 out of the 6 annotations may be set to 'TRUE'.</I></ss:Data><NamedCell
       ss:Name="Print_Area"/></Cell>
-    <Cell ss:MergeDown="7" ss:StyleID="m76573636"><Data ss:Type="String">Annotations</Data><NamedCell
+    <Cell ss:MergeDown="7" ss:StyleID="m87567300"><Data ss:Type="String">Annotations</Data><NamedCell
       ss:Name="Print_Area"/></Cell>
     <Cell ss:Index="12"
      ss:Formula="=IF(LEN('PDF Profiles'!RC[-10])&gt;0,'PDF Profiles'!RC[-10],&quot;&quot;)"><Data
@@ -10868,7 +10908,6 @@
     <VerticalResolution>600</VerticalResolution>
    </Print>
    <PageBreakZoom>60</PageBreakZoom>
-   <Selected/>
    <FreezePanes/>
    <FrozenNoSplit/>
    <SplitHorizontal>1</SplitHorizontal>
@@ -11014,7 +11053,7 @@
    <Row ss:AutoFitHeight="0" ss:Height="21.75">
     <Cell ss:Index="2"><Data ss:Type="String">Upgraded Users from pre-5.6 Installations</Data><NamedCell
       ss:Name="Print_Area"/></Cell>
-    <Cell ss:MergeDown="4" ss:StyleID="m76607488"><ss:Data ss:Type="String"
+    <Cell ss:MergeDown="4" ss:StyleID="m88318176"><ss:Data ss:Type="String"
       xmlns="http://www.w3.org/TR/REC-html40">       List of Security Groups. A Security Group is a collections of Security Roles, which define permission for Architect activities. <I>See Security Roles worksheet</I><Font>.            </Font></ss:Data><NamedCell
       ss:Name="Print_Area"/></Cell>
    </Row>
@@ -11121,7 +11160,7 @@
       ss:Type="String">Global Library Admin Default</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="123">
-    <Cell ss:Index="2" ss:MergeDown="147" ss:StyleID="m76609728"><NamedCell
+    <Cell ss:Index="2" ss:MergeDown="147" ss:StyleID="m88319296"><NamedCell
       ss:Name="Print_Area"/></Cell>
     <Cell><Data ss:Type="String">Architect Project</Data><NamedCell
       ss:Name="Print_Area"/></Cell>
@@ -12460,7 +12499,7 @@
       ss:Name="Print_Area"/></Cell>
     <Cell><Data ss:Type="String">Project Admin Default</Data><NamedCell
       ss:Name="Print_Area"/></Cell>
-    <Cell ss:MergeDown="1" ss:StyleID="m76997728"><Data ss:Type="String">Associate Groups with Architect Project Roles, and grant access on specific Architect Projects or 'All Projects'. </Data><NamedCell
+    <Cell ss:MergeDown="1" ss:StyleID="m88455808"><Data ss:Type="String">Associate Groups with Architect Project Roles, and grant access on specific Architect Projects or 'All Projects'. </Data><NamedCell
       ss:Name="Print_Area"/></Cell>
     <Cell ss:Index="11"
      ss:Formula="=IF(EXACT('Security Roles'!R[2]C[-8],&quot;Architect Project&quot;),'Security Roles'!R[2]C[-7],&quot;&quot;)"><Data
@@ -12498,7 +12537,7 @@
       ss:Type="String"></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="21.75">
-    <Cell ss:Index="6" ss:MergeDown="1" ss:StyleID="m76997748"><ss:Data
+    <Cell ss:Index="6" ss:MergeDown="1" ss:StyleID="m88455828"><ss:Data
       ss:Type="String" xmlns="http://www.w3.org/TR/REC-html40">             <B>Grant Access On</B><Font>                                                      - enter the Project name for which access is being granted, or specify 'All Projects' to grant access on all projects.                                             </Font></ss:Data><NamedCell
       ss:Name="Print_Area"/></Cell>
     <Cell ss:Index="11"
@@ -12529,7 +12568,7 @@
       ss:Type="String"></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="21.75">
-    <Cell ss:Index="6" ss:MergeDown="1" ss:StyleID="m76997768"><ss:Data
+    <Cell ss:Index="6" ss:MergeDown="1" ss:StyleID="m88455848"><ss:Data
       ss:Type="String" xmlns="http://www.w3.org/TR/REC-html40">             <B>To Group</B><Font>                                                      - Select the Security Group which will be granted access to the corresponding Project.                                                      </Font><I>See also Security Groups worksheet.</I><Font>                                     </Font></ss:Data><NamedCell
       ss:Name="Print_Area"/></Cell>
     <Cell ss:Index="11"
@@ -12560,7 +12599,7 @@
       ss:Type="String"></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="21.75">
-    <Cell ss:Index="6" ss:MergeDown="2" ss:StyleID="m76997788"><ss:Data
+    <Cell ss:Index="6" ss:MergeDown="2" ss:StyleID="m88455868"><ss:Data
       ss:Type="String" xmlns="http://www.w3.org/TR/REC-html40">             <B>With Role</B><Font>                                                      - Select the Architect Project Role which specifies the set of permissions (Role Actions) the Group will use for the corresponding Project.                                                      </Font><I>See also Security Roles worksheet.</I><Font>                                     </Font></ss:Data><NamedCell
       ss:Name="Print_Area"/></Cell>
     <Cell ss:Index="11"
@@ -12605,7 +12644,7 @@
       ss:Type="String"></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="21.75">
-    <Cell ss:Index="6" ss:MergeDown="1" ss:StyleID="m76997808"><Data
+    <Cell ss:Index="6" ss:MergeDown="1" ss:StyleID="m88455888"><Data
       ss:Type="String">Associate Groups with Architect Global Library Roles, and grant access on specific Architect Global Library Volumes or 'All Global Library Volumes'. </Data><NamedCell
       ss:Name="Print_Area"/></Cell>
     <Cell ss:Index="11"
@@ -12636,7 +12675,7 @@
       ss:Type="String"></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="21.75">
-    <Cell ss:Index="6" ss:MergeDown="1" ss:StyleID="m76997828"><ss:Data
+    <Cell ss:Index="6" ss:MergeDown="1" ss:StyleID="m88455908"><ss:Data
       ss:Type="String" xmlns="http://www.w3.org/TR/REC-html40">             <B>Grant Access On</B><Font>                                                      - enter the Global Library name for which access is being granted, or specify 'All Global Library Volumes' to grant access on all.                                             </Font></ss:Data><NamedCell
       ss:Name="Print_Area"/></Cell>
     <Cell ss:Index="11"
@@ -12667,7 +12706,7 @@
       ss:Type="String"></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="21.75">
-    <Cell ss:Index="6" ss:MergeDown="1" ss:StyleID="m77007936"><ss:Data
+    <Cell ss:Index="6" ss:MergeDown="1" ss:StyleID="m88810144"><ss:Data
       ss:Type="String" xmlns="http://www.w3.org/TR/REC-html40">             <B>To Group</B><Font>                                                      - Select the Security Group which will be granted access to the corresponding Global Library Volume.                                                      </Font><I>See also Security Groups worksheet.</I><Font>                                     </Font></ss:Data><NamedCell
       ss:Name="Print_Area"/></Cell>
     <Cell ss:Index="11"
@@ -12698,7 +12737,7 @@
       ss:Type="String"></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="21.75">
-    <Cell ss:Index="6" ss:MergeDown="2" ss:StyleID="m77007956"><ss:Data
+    <Cell ss:Index="6" ss:MergeDown="2" ss:StyleID="m88810164"><ss:Data
       ss:Type="String" xmlns="http://www.w3.org/TR/REC-html40">             <B>With Role</B><Font>                                                      - Select the Architect Global Library Role which specifies the set of permissions (Role Actions) the Group will use for the corresponding Global Library Volume.                                                      </Font><I>See also Security Roles worksheet.</I><Font>                                     </Font></ss:Data><NamedCell
       ss:Name="Print_Area"/></Cell>
     <Cell ss:Index="11"
@@ -12987,7 +13026,7 @@
       ss:Type="String"></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="21.75">
-    <Cell ss:Index="6" ss:MergeDown="1" ss:StyleID="m77007976"/>
+    <Cell ss:Index="6" ss:MergeDown="1" ss:StyleID="m88810184"/>
     <Cell ss:Index="11"
      ss:Formula="=IF(EXACT('Security Roles'!R[3]C[-8],&quot;Architect Project&quot;),'Security Roles'!R[3]C[-7],&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
@@ -15509,7 +15548,7 @@
       ss:Name="Print_Area"/></Cell>
     <Cell ss:StyleID="s111"><NamedCell ss:Name="Print_Area"/></Cell>
     <Cell ss:StyleID="s111"><NamedCell ss:Name="Print_Area"/></Cell>
-    <Cell ss:MergeDown="9" ss:StyleID="m78377856"><ss:Data ss:Type="String"
+    <Cell ss:MergeDown="9" ss:StyleID="m89020832"><ss:Data ss:Type="String"
       xmlns="http://www.w3.org/TR/REC-html40">       Review Groups are set up to review specific data within the EDC module. Each Review Group has different review capabilities.  For example, Review Group 1 may have permission to review particular forms within a folder, while Review Group 2 may have permission to review the entire folder.  Permission can be specified down to the field level via the role in the Roles section of the Workflow<I> (see Roles worksheet) </I><Font> Modify the name of the Review Groups in the Group Name column, then set the Active column to 'TRUE' to activate it. [Default: Review Group 1, Review Group 2, … Review Group 10]  </Font><I>Note: You can create up to 10 Review Groups.</I></ss:Data><NamedCell
       ss:Name="Print_Area"/></Cell>
    </Row>
@@ -15754,7 +15793,7 @@
     <Cell ss:StyleID="s111"><NamedCell ss:Name="Print_Area"/></Cell>
     <Cell ss:StyleID="s111"><NamedCell ss:Name="Print_Area"/></Cell>
     <Cell ss:StyleID="s111"><NamedCell ss:Name="Print_Area"/></Cell>
-    <Cell ss:MergeDown="9" ss:StyleID="m78378528"><ss:Data ss:Type="String"
+    <Cell ss:MergeDown="9" ss:StyleID="m89021504"><ss:Data ss:Type="String"
       xmlns="http://www.w3.org/TR/REC-html40">       Markings Groups enable markings, such as queries, to be directed to specific Roles.  For example, a query created by one Marking group can be directed to any Marking group that the role action permits, for a response. The Marking Group to be used by each role is defined in the Roles section of the Workflow<I> (see Roles worksheet).  Modify the name of the Marking Group in the Group Name column, then set Active column to 'TRUE' to activate it. [Default: Marking Group 1, Marking Group 2, … Marking Group 10]  Note: You can create up to 29 Marking Groups. Each of the Marking Groups must be associated with a standard Marking Group Category from the Category dropdown list. Available categories are: QueryFromDataManagementToSite, QueryFromDictionaryCodingToSite, QueryFromSafetyReviewerToSite, QueryFromSiteMonitorToSite, AutoQueryToSite, QueryFromOtherToSite, NonSiteQuery, Stickies.</I></ss:Data><NamedCell
       ss:Name="Print_Area"/></Cell>
    </Row>
@@ -16091,7 +16130,7 @@
       ss:Name="Print_Area"/></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="312">
-    <Cell ss:Index="7" ss:MergeDown="1" ss:StyleID="m78379200"><ss:Data
+    <Cell ss:Index="7" ss:MergeDown="1" ss:StyleID="m89022176"><ss:Data
       ss:Type="String" xmlns="http://www.w3.org/TR/REC-html40">       A Role in Rave is a set of User Permissions, given to a user for a specific Study. The permissions allow the user to perform certain Actions. These Actions can be further restricted by different Pre-conditions. To define a Role, set up the following: <B>Name</B><Font> - Enter the Role name </Font><B>Active</B><Font> - Select 'TRUE' to make the Role active and available for use. Select 'FALSE' to inactivate a Role. </Font><B>Change Codes</B><Font> - List all the Change Codes which will be available for the user, separated by a comma </Font><I>(see list in Change Codes worksheet)</I><B>Permissions</B><Font> - List the Permissions given to a user for this Role. Separate each permission by a comma. </Font><I>(see list below)</I><B>Subject Status</B><Font> - Select one or more Subject Statuses which a user with this Role will be allowed to view. </Font><I> Note: At least 1 Subject Status MUST be selected.</I><Font> Separate the list with commas</Font><I> (see list in Subject Status worksheet)Note: The Permission 'View Subject With Any Status' implies that all Subject Statues are allowed.</I></ss:Data><NamedCell
       ss:Name="Print_Area"/></Cell>
    </Row>
@@ -16273,7 +16312,7 @@
     <Cell ss:Index="11"><Data ss:Type="String">Roles</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="21.9375">
-    <Cell ss:Index="6" ss:MergeDown="9" ss:StyleID="m78379872"><ss:Data
+    <Cell ss:Index="6" ss:MergeDown="9" ss:StyleID="m89055680"><ss:Data
       ss:Type="String" xmlns="http://www.w3.org/TR/REC-html40">       During a study, data may not always be available for entry into all required fields. When this occurs, a user who belongs to a Role that has been configured for Missing Codes can enter a valid code for the missing data.  This missing code will replace the actual data value to indicate that the field was left empty on purpose. To set up a Missing Code for a Role, fill in: <B>Role</B><Font> - Select the Role for which the Missing Code is valid </Font><B>Missing Code</B><Font> - Enter the text which will serve to indicate a missing code </Font><B>Description</B><Font> - Enter a description of the Missing Code </Font><B>Active</B><Font> - Select 'TRUE' to make the Missing Code avaialble for use, or 'FALSE' to remove it from the avaialble list of Missing Codes            </Font></ss:Data><NamedCell
       ss:Name="Print_Area"/></Cell>
     <Cell ss:Index="11"
@@ -16614,7 +16653,7 @@
     <Cell ss:Index="11"><Data ss:Type="String">Roles</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
-    <Cell ss:Index="7" ss:MergeDown="7" ss:StyleID="m78380544"><ss:Data
+    <Cell ss:Index="7" ss:MergeDown="7" ss:StyleID="m89056352"><ss:Data
       ss:Type="String" xmlns="http://www.w3.org/TR/REC-html40">       A user with Role permission 'Can Inactivate Form' or 'Can Reactivate Form' can inactivate/reactivate any form for a subject (except for Primary Form). When activating/inactivating a form, the system prompts the user to select a Reason Code for the activation/inactivation. The list of Reason Codes is configured per Role. To configure Reason Codes, set up the following: <B>Role</B><Font> - Select the Role for which the Reason Code is valid </Font><B>Reason Code</B><Font> - Enter the text which will be used as a Reason Code </Font><B>Description</B><Font> - Enter a description of the Reason Code </Font><B>Reason Type</B><Font> - Select whether the Reason Code should be used for activations of inactivations </Font><B>Active</B><Font> - Select 'TRUE' to make the Reason Code avaialble for use, or 'FALSE' to remove it from the avaialble list of Reason Codes            </Font></ss:Data><NamedCell
       ss:Name="Print_Area"/></Cell>
     <Cell ss:Index="11"
@@ -16959,7 +16998,7 @@
     <Cell ss:Index="7"><Data ss:Type="String">Roles</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="129">
-    <Cell ss:Index="4" ss:MergeDown="1" ss:StyleID="m79843776"><ss:Data
+    <Cell ss:Index="4" ss:MergeDown="1" ss:StyleID="m89057248"><ss:Data
       ss:Type="String" xmlns="http://www.w3.org/TR/REC-html40">       Role Actions define the action which a specific Role is allowed to perform. To configure the Role Actions, set up the following: <B>Role</B><Font> - Select the desired Role in the Role column (</Font><I>Roles are defined on the Roles worksheet</I><Font>) </Font><B>Role Action</B><Font> - List the Role Actions assigned to the selected Role. Separate each permission by a delimiter (e.g., comma). (</Font><I>see explanations below) </I><B>(PreCondition-STATUS)</B><Font> - List pairs of pre-conditions and their status for each Role Action in parenthesis, following the action. Each pre-condition should be followed by it's Status. Set status to TRUE if the pre-condition should be true for permission to be granted. Set it to FALSE if the pre-condition should NOT be true for permission to be granted. E.g., Freeze(IsReviewed=TRUE, RequiresCoding=FALSE) </Font><I>Note: A pre-condition needs to be on the list in order to take effect. i.e., empty pre-condition lists imply no pre-conditions.</I></ss:Data><NamedCell
       ss:Name="Print_Area"/></Cell>
     <Cell ss:Index="7"
@@ -16972,7 +17011,7 @@
       ss:Type="String"></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="123">
-    <Cell ss:Index="4" ss:MergeDown="1" ss:StyleID="m79843796"><ss:Data
+    <Cell ss:Index="4" ss:MergeDown="1" ss:StyleID="m89057268"><ss:Data
       ss:Type="String" xmlns="http://www.w3.org/TR/REC-html40">             <B>               <U>Data Interaction Role Actions</U><Font>                                           </Font></B><Font>                                       </Font><B>Entry:</B><Font>                                                      allows users with this role to enter and edit data.                                                      </Font><B>See Entry:</B><Font>                                                      allows users with this role to view data in fields.                                                      </Font><I>Note: This is implicit in most actions, but must be specially enabled for Read Only Role </I><Font>                                       </Font><B>Freeze:</B><Font>                                                      allows users with this role to freeze fields and forms, thereby preventing new data from being entered but allowing the data workflow to continue.  For example, queries may be answered and existing data may be edited.                                                      </Font><B>Unfreeze:</B><Font>                                                      allows users with this role to unfreeze fields and forms, thereby allowing new data to be entered.                                                      </Font><B>Lock:</B><Font>                                                      allows users with this role to hard lock fields and forms, thereby preventing any further changes to those fields.                                                     </Font><I>             </I><Font>                                       </Font><B>Unlock:</B><Font>                                                      allows users with this role to unlock fields, thereby allowing data to be entered or edited.                                             </Font></ss:Data><NamedCell
       ss:Name="OLE_LINK6"/><NamedCell ss:Name="Print_Area"/></Cell>
     <Cell ss:Index="7"
@@ -16985,7 +17024,7 @@
       ss:Type="String"></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="107.25">
-    <Cell ss:Index="4" ss:MergeDown="1" ss:StyleID="m79843816"><ss:Data
+    <Cell ss:Index="4" ss:MergeDown="1" ss:StyleID="m89057288"><ss:Data
       ss:Type="String" xmlns="http://www.w3.org/TR/REC-html40">             <B>               <U>Marking Group Actions (Queries and Stickies)</U><Font>                                                              Open Query to MG                                                             </Font><I>n</I><Font>                                                             :                                                      </Font></B><Font>                                                     allows users with this role to open queries into Marking Group                                                      </Font><B>               <I>n</I><Font>                                           </Font></B><Font>                                                      (where                                                      </Font><B>               <I>n</I><Font>                                           </Font></B><Font>                                                      is a number corresponding with the Marking Group name in the Marking Groups Table).                                                      </Font><B>        See Open Query in MG<I>n</I><Font>:              </Font></B><Font>                                                      allows users with this role to view open queries that have been opened into Marking Group                                                      </Font><B>               <I>n</I><Font>                                           </Font></B><Font>                                       </Font><I>.</I><Font>                                       </Font><B>        Answer Query in MG<I>n</I><Font>:              </Font></B><Font>                                                      allows users with this role to answer queries that have been opened into Marking Group                                                      </Font><B>               <I>n</I><Font>                                           </Font></B><Font>                                                     .                                                      </Font><B>        See Answered Query in MG<I>n</I><Font>:              </Font></B><Font>                                                      When enabled, this role action allows users with this role to view answered queries that have been opened into Marking Group                                                      </Font><B>               <I>n</I><Font>                                           </Font></B><Font>                                                     .                                                      </Font><B>        Cancel Query in MG<I>n</I><Font>:              </Font></B><Font>                                                      allows users with this role to cancel queries that have been opened into Marking Group                                                      </Font><B>               <I>n</I><Font>                                           </Font></B><Font>                                                     .                                                      </Font><B>        Close Query in MG<I>n</I><Font>:              </Font></B><Font>                                                      allows users with this role to close queries that have been opened into Marking Group                                                      </Font><B>               <I>n</I><Font>                                           </Font></B><Font>                                                     .                                                      </Font><B>        See Closed Query in MG<I>n</I><Font>:              </Font></B><Font>                                                      When enabled, this role action allows users with this role to view closed queries that have been opened into Marking Group                                                      </Font><B>               <I>n</I><Font>                                           </Font></B><Font>                                                     .                                                      </Font><B>        See Closed Query in MG<I>n</I><Font>:              </Font></B><Font>                                                      When enabled, this role action allows users with this role to view closed queries that have been opened into Marking Group                                                      </Font><B>               <I>n</I><Font>                                           </Font></B><Font>                                                     .       Forward Query:  When checked, the Forward Query functionality will be available to users with the corresponding EDC Role.                                       </Font></ss:Data><NamedCell
       ss:Name="Print_Area"/></Cell>
     <Cell ss:Index="7"
@@ -17006,7 +17045,7 @@
       ss:Type="String"></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="56.25">
-    <Cell ss:Index="4" ss:MergeDown="1" ss:StyleID="m79843836"><ss:Data
+    <Cell ss:Index="4" ss:MergeDown="1" ss:StyleID="m89057308"><ss:Data
       ss:Type="String" xmlns="http://www.w3.org/TR/REC-html40">             <B>               <U>Protocol Deviation and Comments Actions</U><Font>                                           </Font></B><Font>                                       </Font><B>Add Protocol Deviation:</B><Font>                                                      allows users with this role to add a protocol deviation to fields.                                                      </Font><B>See Protocol Deviation:</B><Font>                                                      allows users with this role to view existing protocol deviations, but not to add, edit, or remove them.                                                      </Font><B>Edit Protocol Deviation:</B><Font>                                                      allows users with this role to edit protocol deviations on fields.                                                      </Font><B>Remove Protocol Deviations:</B><Font>                                                      allows users with this role to remove protocol deviations from fields.                                                      </Font><B>Add Comment:</B><Font>                                                      allows users with this role to add comments/annotations to fields.                                                      </Font><B>Edit Comment:</B><Font>                                                      allows users with this role to edit comments/annotations to fields.                                                      </Font><B>Remove Comment: </B><Font>                                                     allows users with this role to remove comments/annotations from fields.                                              </Font></ss:Data><NamedCell
       ss:Name="Print_Area"/></Cell>
     <Cell ss:Index="7"
@@ -17022,7 +17061,7 @@
     <Cell ss:StyleID="s183"><NamedCell ss:Name="Print_Area"/></Cell>
     <Cell ss:StyleID="s111"><NamedCell ss:Name="Print_Area"/></Cell>
     <Cell ss:StyleID="s111"><NamedCell ss:Name="Print_Area"/></Cell>
-    <Cell ss:MergeDown="1" ss:StyleID="m79843856"><ss:Data ss:Type="String"
+    <Cell ss:MergeDown="1" ss:StyleID="m89057328"><ss:Data ss:Type="String"
       xmlns="http://www.w3.org/TR/REC-html40">             <B>               <U>SDV and Manual Review Role Actions</U><Font>                                           </Font></B><Font>                                       </Font><B>Verify: </B><Font>                                                     allows users with this role to verify fields requiring SDV.                                                      </Font><B>See Verify:</B><Font>                                                      allows users with this role to view fields that have been verified.                                                      </Font><B>Unverify:</B><Font>                                                      allows users with this role to mark verified fields as &quot;Not Verified&quot;.                                                      </Font><B>        Review RG<I>n</I></B><Font>                                                     : allows users with this role to manually review fields that require review by Review Group                                                      </Font><B>               <I>n</I><Font>                                           </Font></B><Font>                                                      (where                                                      </Font><B>               <I>n</I><Font>                                           </Font></B><Font>                                                      is a number corresponding with the Review Group name in the Review Groups Table).                                                      </Font><B>        See Review RG<I>n</I><Font>:              </Font></B><Font>                                                      allows users with this role to see fields that have been reviewed by Review Group                                                      </Font><B>               <I>n</I><Font>                                           </Font></B><Font>                                                      (where                                                      </Font><B>               <I>n</I><Font>                                           </Font></B><Font>                                                      is a number corresponding with the Review Group name in the Review Groups Table).                                                      </Font><B>        Unreview RG<I>n</I><Font>:              </Font></B><Font>                                                      allows users with this role to mark as &quot;Not Reviewed&quot; fields that have been reviewed by Review Group                                                      </Font><B>               <I>n</I><Font>                                           </Font></B><Font>                                                      (where                                                      </Font><B>               <I>n</I><Font>                                           </Font></B><Font>                                                      is a number corresponding with the Review Group name in the Review Groups Table).                                             </Font></ss:Data><NamedCell
       ss:Name="Print_Area"/></Cell>
     <Cell ss:Index="7" ss:StyleID="s220"
@@ -17035,7 +17074,7 @@
       ss:Type="String"></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="161.25">
-    <Cell ss:Index="4" ss:MergeDown="1" ss:StyleID="m79843876"><ss:Data
+    <Cell ss:Index="4" ss:MergeDown="1" ss:StyleID="m89057348"><ss:Data
       ss:Type="String" xmlns="http://www.w3.org/TR/REC-html40">             <B>               <U>Special Actions</U><Font>                                           </Font></B><Font>                                       </Font><B>Sign:</B><Font>                                                      allows users with this role to electronically sign forms, that is, enter a password on fields that are configured as signature fields.                                                      </Font><B>Code:</B><Font>                                                      allows users with this role to code user entered data using coding dictionaries on fields that have been associated with coding dictionaries.                                                      </Font><B>See Coding:</B><Font>                                                      allows users with this role to view user entered data and the associated coded data from coding dictionaries.                                                      </Font><B>Translate:</B><Font>                                                      allows users with this role to translate user entered data into a different language.                                                      </Font><B>See Translation:</B><Font>                                                      allows users with this role to view user entered data and the associated translation.                                                      </Font><B>First Pass:</B><Font>                                                      allows users with this role to view and enter data for first pass in Double Data Entry (DDE).                                                      </Font><B>Second Pass:</B><Font>                                                      allows users with this role to view and enter data for Second pass in Double Data Entry (DDE).                                                      </Font><B>Reconcile:</B><Font>                                                      allows users with this role to view and resolve differences between first pass and second pass data entries in Double Data Entry (DDE).                                             </Font></ss:Data><NamedCell
       ss:Name="Print_Area"/></Cell>
     <Cell ss:Index="7"
@@ -17814,7 +17853,7 @@
    <Row ss:AutoFitHeight="0" ss:Height="18">
     <Cell ss:Index="2"><Data ss:Type="String">Entry Error</Data><NamedCell
       ss:Name="Print_Area"/></Cell>
-    <Cell ss:MergeDown="5" ss:StyleID="m79845120"><ss:Data ss:Type="String"
+    <Cell ss:MergeDown="5" ss:StyleID="m89058592"><ss:Data ss:Type="String"
       xmlns="http://www.w3.org/TR/REC-html40">       List the change codes available to users when they attempt to change data on fields, eg. when data is edited in response to a query, and the user wants to provide a reason for this change.  The change codes are  tracked on the audit trail of each field.  Change codes are available on a role-by-role basis, eg. an investigator may have change codes that are not available to a coordinator. <I>Note: Change codes are required for GLP, but optional for GCP</I></ss:Data><NamedCell
       ss:Name="Print_Area"/></Cell>
    </Row>
@@ -17884,7 +17923,7 @@
     <Cell ss:Index="2"><Data ss:Type="String">Screening</Data><NamedCell
       ss:Name="Print_Area"/></Cell>
     <Cell><Data ss:Type="String">Screening</Data><NamedCell ss:Name="Print_Area"/></Cell>
-    <Cell ss:MergeDown="4" ss:StyleID="m79846016"><Data ss:Type="String">            Each subject may be assigned a subject status. The subject status is set using edit checks when certain criteria are met. These edit checks are built for each project in the Architect module.  For example, subject status is set to &quot;Randomized&quot; when a user enters a randomization date.  All subjects are marked &quot;Screening&quot; by default. To add a new subject status, select a subject status category from the Category drop down list. Available categories are: Screening, ScreenFailed, Enrolled, EarlyTerminated, and Completed.</Data></Cell>
+    <Cell ss:MergeDown="4" ss:StyleID="m89243872"><Data ss:Type="String">            Each subject may be assigned a subject status. The subject status is set using edit checks when certain criteria are met. These edit checks are built for each project in the Architect module.  For example, subject status is set to &quot;Randomized&quot; when a user enters a randomization date.  All subjects are marked &quot;Screening&quot; by default. To add a new subject status, select a subject status category from the Category drop down list. Available categories are: Screening, ScreenFailed, Enrolled, EarlyTerminated, and Completed.</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="18">
     <Cell ss:Index="2"><Data ss:Type="String">Screen Failed</Data><NamedCell
@@ -18196,22 +18235,27 @@
    <Value>&quot;TRUE, FALSE&quot;</Value>
   </DataValidation>
  </Worksheet>
- <Worksheet ss:Name="Protocol Deviations" ss:Protected="1">
+ <Worksheet ss:Name="Protocol Deviations">
   <Names>
-   <NamedRange ss:Name="Print_Area" ss:RefersTo="='Protocol Deviations'!R1C1:R6C4"/>
+   <NamedRange ss:Name="Print_Area" ss:RefersTo="='Protocol Deviations'!R1C1:R6C6"/>
   </Names>
-  <Table ss:ExpandedColumnCount="4" ss:ExpandedRowCount="6" x:FullColumns="1"
+  <Table ss:ExpandedColumnCount="6" ss:ExpandedRowCount="6" x:FullColumns="1"
    x:FullRows="1" ss:StyleID="s220" ss:DefaultRowHeight="20.0625">
    <Column ss:StyleID="s183" ss:AutoFitWidth="0" ss:Width="52.5"/>
-   <Column ss:StyleID="s111" ss:AutoFitWidth="0" ss:Width="150.75"/>
-   <Column ss:StyleID="s111" ss:AutoFitWidth="0" ss:Width="164.25"/>
+   <Column ss:StyleID="s111" ss:AutoFitWidth="0" ss:Width="150.75" ss:Span="1"/>
+   <Column ss:Index="4" ss:StyleID="s111" ss:AutoFitWidth="0" ss:Width="164.25"/>
+   <Column ss:StyleID="s442" ss:AutoFitWidth="0" ss:Width="164.25"/>
    <Column ss:StyleID="s221" ss:AutoFitWidth="0" ss:Width="455.25"/>
    <Row ss:AutoFitHeight="0" ss:Height="18" ss:StyleID="s350">
     <Cell ss:StyleID="s188"><Data ss:Type="String">Version</Data><NamedCell
       ss:Name="Print_Area"/></Cell>
     <Cell ss:StyleID="s226"><Data ss:Type="String">Deviation Classes</Data><NamedCell
       ss:Name="Print_Area"/></Cell>
+    <Cell ss:StyleID="s226"><Data ss:Type="String">Class Active</Data><NamedCell
+      ss:Name="Print_Area"/></Cell>
     <Cell ss:StyleID="s226"><Data ss:Type="String">Deviation Codes</Data><NamedCell
+      ss:Name="Print_Area"/></Cell>
+    <Cell ss:StyleID="s445"><Data ss:Type="String">Code Active</Data><NamedCell
       ss:Name="Print_Area"/></Cell>
     <Cell ss:StyleID="s300"><Data ss:Type="String">Instructions/Comments</Data><NamedCell
       ss:Name="Print_Area"/></Cell>
@@ -18219,16 +18263,33 @@
    <Row ss:AutoFitHeight="0" ss:Height="18">
     <Cell ss:Index="2"><Data ss:Type="String">10</Data><NamedCell
       ss:Name="Print_Area"/></Cell>
+    <Cell><Data ss:Type="Boolean">1</Data><NamedCell ss:Name="Print_Area"/></Cell>
     <Cell><Data ss:Type="String">A</Data><NamedCell ss:Name="Print_Area"/></Cell>
-    <Cell ss:MergeDown="4" ss:StyleID="m79847136"><Data ss:Type="String">Protocol Deviations may be added to individual fields as required and include a class, code, and a free-text box. In the 'Deviation Classes' column, please list all the Protocol Deviation Classes that will be required. In the 'Deviation Codes' column, please list all the Protocol Deviation Codes that will be required</Data><NamedCell
+    <Cell ss:StyleID="s111"><Data ss:Type="Boolean">1</Data><NamedCell
+      ss:Name="Print_Area"/></Cell>
+    <Cell ss:MergeDown="4" ss:StyleID="m89244992"><Data ss:Type="String">Protocol Deviations may be added to individual fields as required and include a class, code, and a free-text box. In the 'Deviation Classes' column, please list all the Protocol Deviation Classes that will be required. In the 'Class Active' column, please specify is the Protocol Deviation Class active. In the 'Deviation Codes' column, please list all the Protocol Deviation Codes that will be required. In the 'Code Active' column, please specify is the Protocol Deviation Code active.</Data><NamedCell
       ss:Name="Print_Area"/></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="18">
     <Cell ss:Index="2"><Data ss:Type="String">20</Data><NamedCell
       ss:Name="Print_Area"/></Cell>
+    <Cell><Data ss:Type="Boolean">1</Data><NamedCell ss:Name="Print_Area"/></Cell>
     <Cell><Data ss:Type="String">B</Data><NamedCell ss:Name="Print_Area"/></Cell>
+    <Cell ss:StyleID="s117"><Data ss:Type="Boolean">1</Data><NamedCell
+      ss:Name="Print_Area"/></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Span="2"/>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:Index="4" ss:StyleID="s442"><NamedCell ss:Name="Print_Area"/></Cell>
+    <Cell ss:StyleID="s448"><NamedCell ss:Name="Print_Area"/></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:Index="4" ss:StyleID="s442"><NamedCell ss:Name="Print_Area"/></Cell>
+    <Cell ss:StyleID="s448"><NamedCell ss:Name="Print_Area"/></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:Index="4" ss:StyleID="s442"><NamedCell ss:Name="Print_Area"/></Cell>
+    <Cell ss:StyleID="s448"><NamedCell ss:Name="Print_Area"/></Cell>
+   </Row>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
    <PageSetup>
@@ -18245,6 +18306,7 @@
     <VerticalResolution>600</VerticalResolution>
    </Print>
    <PageBreakZoom>60</PageBreakZoom>
+   <Selected/>
    <FreezePanes/>
    <FrozenNoSplit/>
    <SplitHorizontal>1</SplitHorizontal>
@@ -18257,10 +18319,12 @@
     <Pane>
      <Number>2</Number>
      <ActiveRow>0</ActiveRow>
+     <ActiveCol>2</ActiveCol>
+     <RangeSelection>R1C3:R6C6</RangeSelection>
     </Pane>
    </Panes>
-   <ProtectObjects>True</ProtectObjects>
-   <ProtectScenarios>True</ProtectScenarios>
+   <ProtectObjects>False</ProtectObjects>
+   <ProtectScenarios>False</ProtectScenarios>
    <AllowSizeCols/>
    <AllowSizeRows/>
    <AllowInsertCols/>
@@ -18597,7 +18661,7 @@
       ss:Name="Print_Area"/></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="19.5">
-    <Cell ss:Index="5" ss:MergeDown="1" ss:StyleID="m80139136"><Data
+    <Cell ss:Index="5" ss:MergeDown="1" ss:StyleID="m89246112"><Data
       ss:Type="String">The resources (ie. external links) listed here will be displayed in the sidebar of the homepage. Add as many resources as you need.</Data><NamedCell
       ss:Name="Print_Area"/></Cell>
    </Row>
@@ -19400,7 +19464,7 @@
       ss:Name="Print_Area"/></Cell>
     <Cell ss:StyleID="s417"><Data ss:Type="String">Globe</Data><NamedCell
       ss:Name="Print_Area"/></Cell>
-    <Cell ss:MergeDown="5" ss:StyleID="m80140704"><ss:Data ss:Type="String"
+    <Cell ss:MergeDown="5" ss:StyleID="m89579520"><ss:Data ss:Type="String"
       xmlns="http://www.w3.org/TR/REC-html40">       The section to the left lists the icons which were downloaded. For each icon,  you can change the description prior to uploading. <I>Note: In order to upload new icons, please use the Architect Object Icons screen (Configuration -&gt; Other Settings -&gt; Architect Object Icons). Icons must be graphic files of type: </I><B><I>.bmp</I></B><I>, </I><B><I>.jpg</I></B><I>, .</I><B><I>gif</I></B><I>, or .</I><B><I>png</I></B><I> and must not exceed 4 kb.</I></ss:Data><NamedCell
       ss:Name="Print_Area"/></Cell>
    </Row>
