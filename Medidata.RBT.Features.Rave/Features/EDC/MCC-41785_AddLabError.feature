@@ -2,7 +2,7 @@
 Feature: (DT13823) Error message appears when adding a new lab from within a lab form
 	As a Rave user
 	Given my Role has UseLabMaintainance permission
-	And my UserGroup has access to LabAdmin module
+	And my UserGroup does not have Lab Administration module assigned to it
 	When I Add new Lab on Datapage
 	Then I expect to see new lab page
 	So that I can use the Rave lab features
@@ -22,15 +22,19 @@ Background:
 @release_2013.2.0 
 @PB_MCC41785_01
 @Validation
-Scenario: User should be able to add new lab when its Role has UseLabMaintainance permission and UserGroup has Lab Administration module assigned
+Scenario: User should be able to add new lab when its Role has UseLabMaintainance permission and UserGroup does not have Lab Administration module assigned
 	When I create a Subject
 	| Field            | Data               |
 	| Subject Initials | SUB                |
 	| Subject number   | {RndNum<num1>(3)}  |
 	| Age              | 20                 |
 	| Subject Date     | 01 Feb 2011        |	
-	And I take a screenshot
 	And I select link "Hematology"
 	And I choose lab "Add New" from "Lab"
-	Then I verify link "Add New Lab" exists
+	Then I verify link "Add New Lab" exists	
+	And I take a screenshot
+	And I log out of Rave
+
+
+
 
