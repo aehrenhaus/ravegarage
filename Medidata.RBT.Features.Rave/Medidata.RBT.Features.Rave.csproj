@@ -213,6 +213,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>MCC_55695.feature</DependentUpon>
     </Compile>
+    <Compile Include="Features\EDC\MCC-52880_Manual.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MCC-52880_Manual.feature</DependentUpon>
+    </Compile>
     <Compile Include="Features\EDC\US10241_DT12797.feature.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -668,6 +673,10 @@
     <None Include="Features\EDC\MCC_55695.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>MCC_55695.feature.cs</LastGenOutput>
+    </None>
+    <None Include="Features\EDC\MCC-52880_Manual.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>MCC-52880_Manual.feature.cs</LastGenOutput>
     </None>
     <None Include="Features\EDC\US10241_DT12797.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
