@@ -33,16 +33,12 @@ namespace Medidata.RBT.PageObjects.Rave
             else  if (identifier == "Add Folder" || identifier == "LAdd Folder")
                 id = "_ctl0_Content_AddFolder1_SubmitButton";
             else  if (identifier == "Save" || identifier == "LSave")
-                id = "_ctl0_Content_ActivateList1_btnSave";            
+                id = "_ctl0_Content_ActivateList1_btnSave";
 
-            try
-            {
-                element = base.Browser.TryFindElementById(id);
-            }
-            catch
-            {
-                element = null;
-            }
+            if (string.IsNullOrWhiteSpace(id))
+                element = base.GetElementByName(identifier, areaIdentifier, listItem);
+            else
+                element = Browser.TryFindElementById(id);
 
             return element;
         }

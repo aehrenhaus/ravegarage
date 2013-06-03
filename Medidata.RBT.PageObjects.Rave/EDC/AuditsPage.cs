@@ -180,15 +180,11 @@ namespace Medidata.RBT.PageObjects.Rave
 
             if (identifier == "Submit " || identifier == "LSubmit ")
                 id = "_ctl0_Content_SubmitBut";
-            
-            try
-            {
-                element = base.Browser.TryFindElementById(id);
-            }
-            catch
-            {
-                element = null;
-            }
+
+            if (string.IsNullOrWhiteSpace(id))
+                element = base.GetElementByName(identifier, areaIdentifier, listItem);
+            else
+                element = Browser.TryFindElementById(id);
 
             return element;
         }
