@@ -1,5 +1,4 @@
 @FT_MCC_55695
-@ignore
 #Disable input controls on all forms for subject during the signature process (Parent MCC-55695)
 
 Feature: MCC_55695_MCC_59261 Disable input controls on all forms for subject during the signature process.
