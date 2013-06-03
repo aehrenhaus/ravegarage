@@ -338,56 +338,20 @@ namespace Medidata.RBT.PageObjects.Rave
                 return base.Browser.TryFindElementById("_ctl0_Content_R_footer_SB");
             else if (identifier == "Cancel" || identifier == "LCancel")
                 return base.Browser.TryFindElementById("_ctl0_Content_R_footer_CB");
-            else if (identifier == "Add a new Log line" || identifier == "LAdd a new Log line")
-            {
-                var element = base.Browser.TryFindElementById("_ctl0_Content_R_log_log_AddLine");
-                if (element.GetDisabled() != null && element.GetDisabled().ToLower() == "true") // if disabled control, it's unusable, so return null
-                    return null;
-                else
-                    return element;
-            }
+            else if (identifier == "Add a new Log line" || identifier == "LAdd a new Log line") 
+                return base.Browser.TryFindElementById("_ctl0_Content_R_log_log_AddLine");
             else if (identifier == "Modify Templates" || identifier == "LModify Templates")
-            {
-                var element = base.Browser.TryFindElementById("_ctl0_Content_R_header_TEM_EditLink");
-                if (element.GetDisabled() != null && element.GetDisabled().ToLower() == "true")
-                    return null;
-                else
-                    return element;
-            }
+                return base.Browser.TryFindElementById("_ctl0_Content_R_header_TEM_EditLink");
             else if (identifier == "Marking" || identifier == "LMarking")
                 return base.Browser.TryFindElementByPartialID("MarkingButton");
             else if (identifier == "Inactivate")
-            {
-                var element = Browser.DropdownById("R_log_log_RP");
-                if (element.GetDisabled() != null && element.GetDisabled().ToLower() == "true")
-                    return null;
-                else
-                    return element;
-            }
+                return Browser.DropdownById("R_log_log_RP");
             else if (identifier == "Inactivate Link")
-            {
-                var element = base.Browser.TryFindElementById("_ctl0_Content_R_log_log_Inactivate");
-                if (element.GetDisabled() != null && element.GetDisabled().ToLower() == "true")
-                    return null;
-                else
-                    return element;
-            }
+                return base.Browser.TryFindElementById("_ctl0_Content_R_log_log_Inactivate");
             else if (identifier == "Reactivate")
-            {
-                var element = Browser.DropdownById("R_log_log_IRP");
-                if (element.GetDisabled() != null && element.GetDisabled().ToLower() == "true")
-                    return null;
-                else
-                    return element;
-            }
+                return Browser.DropdownById("R_log_log_IRP");
             else if (identifier == "Reactivate Link")
-            {
-                var element = base.Browser.TryFindElementById("_ctl0_Content_R_log_log_Activate");
-                if (element.GetDisabled() != null && element.GetDisabled().ToLower() == "true")
-                    return null;
-                else
-                    return element;
-            }
+                return base.Browser.TryFindElementById("_ctl0_Content_R_log_log_Activate");
             else if (identifier == "Clinical Significance")
                 return Browser.DropdownById("dropdown");
             else if (identifier == "Lab")

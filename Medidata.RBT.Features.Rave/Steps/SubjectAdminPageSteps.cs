@@ -42,7 +42,7 @@ namespace Medidata.RBT.Features.Rave
                 }
             }
             Assert.IsTrue(allDisabled);
-        } 
+        }
 
         /// <summary>
         /// Verifies various controls are enabled
