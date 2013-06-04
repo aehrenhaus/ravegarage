@@ -226,11 +226,7 @@ namespace Medidata.RBT
 			//Close browser
 			if (Browser != null)
 			{
-                foreach (string winHandle in Browser.WindowHandles)
-                {
-                    IWebDriver window = Browser.SwitchTo().Window(winHandle);
-                    window.Close();
-                }
+                Browser.Quit(); //close all the open windows and calls dispose so temp profile is deleted
                 Browser = null;
 			}
 		}
