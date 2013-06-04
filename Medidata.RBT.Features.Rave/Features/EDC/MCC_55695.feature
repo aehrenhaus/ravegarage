@@ -116,7 +116,6 @@ Scenario:  MCC_55695_MCC_59261_04 As an Investigator, when I do batch sign on Su
 	Then I verify Subject Administration controls are disabled
 		| name   |
 		| Save   |
-		| Cancel |
 	And I take a screenshot	
 
 	And I wait for signature to be applied
@@ -554,7 +553,6 @@ Scenario:  MCC_55695_MCC_59261_17 As an Investigator, when I do batch sign on Gr
 	Then I verify Subject Administration controls are disabled
 		| name             |
 		| Save             |
-		| Cancel           |
 	And I take a screenshot	
 
 	And I wait for signature to be applied

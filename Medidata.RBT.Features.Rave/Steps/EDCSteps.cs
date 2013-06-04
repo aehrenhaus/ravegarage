@@ -919,6 +919,11 @@ namespace Medidata.RBT.Features.Rave
                     allEnabled = false;
                     break;
                 }
+                else if (element == null)
+                {
+                    allEnabled = false;
+                    break;
+                }
             }
             Assert.IsTrue(allEnabled);
         }

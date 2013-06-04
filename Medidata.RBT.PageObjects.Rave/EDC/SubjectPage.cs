@@ -43,7 +43,7 @@ namespace Medidata.RBT.PageObjects.Rave
             if (identifier == "Save" || identifier == "LSave")
                 id = "_ctl0_Content__ctl0_SBT_Save";
             else if (identifier == "Cancel" || identifier == "LCancel")
-                id = "ctl0_Content__ctl0_SBT_Cancel";
+                id = "_ctl0_Content__ctl0_SBT_Cancel";
             else if (identifier == "Enabled" || identifier == "LEnabled")
                 id = "_ctl0_Content_SubjectAddEvent_AddEventRadBtnList_1";
             else if (identifier == "Disabled" || identifier == "LDisabled")

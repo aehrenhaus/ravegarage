@@ -30,10 +30,12 @@ namespace Medidata.RBT.PageObjects.Rave
 
             if (identifier == "Add Form" || identifier == "LAdd Form")
                 id = "_ctl0_Content_AddForm1_SubmitButton";
-            else  if (identifier == "Add Folder" || identifier == "LAdd Folder")
+            else if (identifier == "Add Folder" || identifier == "LAdd Folder")
                 id = "_ctl0_Content_AddFolder1_SubmitButton";
-            else  if (identifier == "Save" || identifier == "LSave")
+            else if (identifier == "Save" || identifier == "LSave")
                 id = "_ctl0_Content_ActivateList1_btnSave";
+            else if (identifier == "Cancel" || identifier == "LCancel")
+                id = "_ctl0_Content_ActivateList1_btnCancel";
 
             if (string.IsNullOrWhiteSpace(id))
                 element = base.GetElementByName(identifier, areaIdentifier, listItem);
