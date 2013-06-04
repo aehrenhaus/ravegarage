@@ -178,7 +178,7 @@ namespace Medidata.RBT.PageObjects.Rave
             IWebElement element;
             string id = "";
 
-            if (identifier == "Submit " || identifier == "LSubmit ")
+            if (identifier.Trim() == "Submit" || identifier.Trim() == "LSubmit")
                 id = "_ctl0_Content_SubmitBut";
 
             if (string.IsNullOrWhiteSpace(id))

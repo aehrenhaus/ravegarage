@@ -24,7 +24,7 @@ namespace Medidata.RBT.SeleniumExtension
 				if (nullable)
 					return null;
 				else
-					throw new Exception("Can't find element by partialID:" + partialID);
+					throw new NoSuchElementException("Can't find element by partialID:" + partialID);
 			}
 			return ele.EnhanceAs<T>();
 		}

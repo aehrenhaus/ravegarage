@@ -877,9 +877,9 @@ namespace Medidata.RBT.Features.Rave
             {
                 try
                 {
-                    element = CurrentPage.As<CRFPage>().GetElementByName(model.Name);
+                    element = FilterOutDisabledControls(CurrentPage.As<CRFPage>().GetElementByName(model.Name));
                 }
-                catch // exception in this case means element is not found, so that's "good"
+                catch(NoSuchElementException) // exception in this case means element is not found, so that's "good"
                 {
                     continue;
                 }
@@ -907,9 +907,9 @@ namespace Medidata.RBT.Features.Rave
             {
                 try
                 {
-                    element = CurrentPage.As<CRFPage>().GetElementByName(model.Name);
+                    element = FilterOutDisabledControls(CurrentPage.As<CRFPage>().GetElementByName(model.Name));
                 }
-                catch // exception means control not found
+                catch(NoSuchElementException) // exception means control not found
                 {
                     allEnabled = false;
                     break;
@@ -919,8 +919,25 @@ namespace Medidata.RBT.Features.Rave
                     allEnabled = false;
                     break;
                 }
+                else if (element == null)
+                {
+                    allEnabled = false;
+                    break;
+                }
             }
             Assert.IsTrue(allEnabled);
+        }
+
+
+        private IWebElement FilterOutDisabledControls(IWebElement element)
+        {
+            if (element == null)
+                return null;
+            else if (element.GetDisabled() != null && element.GetDisabled().ToLower() == "true") // if disabled control, it's unusable, so return null
+                return null;
+            else
+                return element;
+         
         }
     }
 }

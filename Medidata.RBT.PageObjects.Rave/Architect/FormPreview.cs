@@ -51,14 +51,18 @@ namespace Medidata.RBT.PageObjects.Rave
         /// <returns>True if the field is there, false if it is not</returns>
         private bool CheckFields(string fieldName, string fieldOID)
         {
-            ReadOnlyCollection<IWebElement> fieldRowsAtStart = Browser.TryFindElementByPartialID("FieldsGrid").TryFindElementsBy(By.XPath(".//td/span[contains(text(), '" + fieldName +"')]/../.."));
-
-            //Cant use foreach here because the Click method causes stale element reference, must get the rows each time
-            for (int i = 0; i < fieldRowsAtStart.Count; i++)
+            var fieldsGrid = Browser.TryFindElementByPartialID("FieldsGrid");
+            if (fieldsGrid != null)
             {
-                ReadOnlyCollection<IWebElement> fieldRowsRefresh = Browser.TryFindElementByPartialID("FieldsGrid").TryFindElementsBy(By.XPath(".//td/span[contains(text(), '" + fieldName + "')]/../.."));
-                if (CheckFieldHasOID(fieldRowsRefresh[i], fieldOID))
-                    return true;
+                ReadOnlyCollection<IWebElement> fieldRowsAtStart = fieldsGrid.TryFindElementsBy(By.XPath(".//td/span[contains(text(), '" + fieldName + "')]/../.."));
+
+                //Cant use foreach here because the Click method causes stale element reference, must get the rows each time
+                for (int i = 0; i < fieldRowsAtStart.Count; i++)
+                {
+                    ReadOnlyCollection<IWebElement> fieldRowsRefresh = fieldsGrid.TryFindElementsBy(By.XPath(".//td/span[contains(text(), '" + fieldName + "')]/../.."));
+                    if (CheckFieldHasOID(fieldRowsRefresh[i], fieldOID))
+                        return true;
+                }
             }
 
             return false;
@@ -74,7 +78,11 @@ namespace Medidata.RBT.PageObjects.Rave
         {
             //Click edit button, can't use existing method because that would click the first edit button on a field matching the name (there could be multiples in this case)
             fieldRow.TryFindElementByPartialID("ImgBtnSelect").Click();
-            return Browser.TryFindElementById("FDC_txtFieldOID").GetAttribute("value").Trim().Equals(fieldOID.Trim());
+            var txtFieldOID = Browser.TryFindElementById("FDC_txtFieldOID");
+            if (txtFieldOID != null)
+                return txtFieldOID.GetAttribute("value").Trim().Equals(fieldOID.Trim());
+            else
+                return false;
         }
 
 		#endregion
