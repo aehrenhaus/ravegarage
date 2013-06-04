@@ -31,7 +31,7 @@ namespace Medidata.RBT.Features.Rave
                 {
                     element = CurrentPage.As<SubjectAdminPage>().GetElementByName(model.Name);
                 }
-                catch // exception in this case means element is not found, so that's "good"
+                catch (NoSuchElementException)// exception in this case means element is not found, so that's "good"
                 {
                     continue;
                 }
@@ -61,7 +61,7 @@ namespace Medidata.RBT.Features.Rave
                 {
                     element = CurrentPage.As<SubjectAdminPage>().GetElementByName(model.Name);
                 }
-                catch // exception means control not found
+                catch (NoSuchElementException)// exception means control not found
                 {
                     allEnabled = false;
                     break;
