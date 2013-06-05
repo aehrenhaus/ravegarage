@@ -264,17 +264,28 @@ namespace Medidata.RBT.Features.Rave.Steps
         }
 
         /// <summary>
-        /// Verify the checkbox status
+        /// Verify the checkbox checked
         /// </summary>
-        /// <param name="value">The checkbox name</param>
+        /// <param name="cbName">The checkbox name</param>
         /// <param name="rowIdentifier">The configuration setting value to edit</param>
         /// <param name="area">The configuration page area</param>
         [StepDefinition(@"I verify checkbox ""([^""]*)"" checked for ""([^""]*)"" in ""([^""]*)""")]
-        public void IVerifyCheckedFor(string columnIdentifier, string rowIdentifier, string area)
+        public void IVerifyCheckedFor(string cbName, string rowIdentifier, string area)
         {
-            Assert.IsTrue(CurrentPage.As<DeviationPage>().VerifyRowChecked(columnIdentifier, rowIdentifier, area));
+            Assert.IsTrue(CurrentPage.As<DeviationPage>().VerifyRowChecked(cbName, rowIdentifier, area));
         }
 
+        /// <summary>
+        /// Verify the checkbox unchecked
+        /// </summary>
+        /// <param name="cbName">The checkbox name</param>
+        /// <param name="rowIdentifier">The configuration setting value to edit</param>
+        /// <param name="area">The configuration page area</param>
+        [StepDefinition(@"I verify checkbox ""([^""]*)"" unchecked for ""([^""]*)"" in ""([^""]*)""")]
+        public void IVerifyUncheckedFor(string cbName, string rowIdentifier, string area)
+        {
+            Assert.IsFalse(CurrentPage.As<DeviationPage>().VerifyRowChecked(cbName, rowIdentifier, area));
+        }
 
         /// <summary>
         /// Verify the inactive deviation class or code does not exist
