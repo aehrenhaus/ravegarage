@@ -109,7 +109,12 @@ namespace Medidata.RBT.PageObjects.Rave.Configuration
 				return eleMessage.Text.Contains(identifier);
 			}
 
-
+            if (identifier.Equals("Complete icon for ProtocolDeviations", StringComparison.InvariantCultureIgnoreCase))
+            {
+                var img = Browser.TryFindElementById("_ctl0_Content_Label_ProtocolDeviations").Parent().Parent().Children()[0].ImageBySrc("dp_ok.gif", false);
+                bool exist = img.GetCssValue("display") != "none";
+                return exist;
+            }
 
 			return false;
 		}
