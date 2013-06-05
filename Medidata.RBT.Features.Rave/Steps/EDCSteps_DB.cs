@@ -101,19 +101,46 @@ namespace Medidata.RBT.Features.Rave
             DbHelper.SetDatabaseToOnline();
         }
 
-		/// <summary>
-		/// Based on the column name, we call an appropriate method and assert true/false whether or not column in table datapoints propagates
-		/// </summary>
-		/// <param name="columnName"></param>
-		[StepDefinition(@"""([^""]*)"" propagates correctly")]
-		public void IVerifyDatapointColumnPropagates____(string columnName)
-		{
-			Uri tempUri = new Uri(Browser.Url);
-			var sql = GenerateSQLQueryForColumnName(columnName, int.Parse(tempUri.Query.Replace("?DP=", "")));
+        /// <summary>
+        /// Set current subject to disabled indefinitely, due to signature being applied 
+        /// </summary>
+        [StepDefinition(@"I set subject to disable controls")]
+        public void ISetSubjectToDisableControls____()
+        {
+            Uri tempUri = new Uri(Browser.Url);
+            string query = tempUri.Query;
+            query = query.Replace("?STUDY_GRID=", "");
+            query = query.Substring(query.IndexOf("ID="));
 
-			var dataTable = DbHelper.ExecuteDataSet(sql).Tables[0];
-			Assert.IsTrue((int)dataTable.Rows[0][0] == 0, "Data doesn't propagate correctly");
-		}
+            var sql = GenerateSQLToDisableSubjectByModifyingSproc(int.Parse(query.Replace("ID=", "")));
+            var dataTable = DbHelper.ExecuteDataSet(sql);
+        }
+
+
+        /// <summary>
+        /// All subjects will be displayed enabled/disabled as usual
+        /// </summary>
+        [StepDefinition(@"I set subject to enable controls")]
+        public void ISetSubjectToEnableControls____()
+        {
+            var sql = GenerateSQLToEnableSubjectByModifyingSproc();
+
+            var dataTable = DbHelper.ExecuteDataSet(sql);
+        }
+
+        /// <summary>
+        /// Based on the column name, we call an appropriate method and assert true/false whether or not column in table datapoints propagates
+        /// </summary>
+        /// <param name="columnName"></param>
+        [StepDefinition(@"""([^""]*)"" propagates correctly")]
+        public void IVerifyDatapointColumnPropagates____(string columnName)
+        {
+            Uri tempUri = new Uri(Browser.Url);
+            var sql = GenerateSQLQueryForColumnName(columnName, int.Parse(tempUri.Query.Replace("?DP=", "")));
+
+            var dataTable = DbHelper.ExecuteDataSet(sql).Tables[0];
+            Assert.IsTrue((int)dataTable.Rows[0][0] == 0, "Data doesn't propagate correctly");
+        }
 
         /// <summary>
         /// Compares the passed EDC value with the value of the corresponding column in the table ReportingRecords
@@ -209,6 +236,34 @@ namespace Medidata.RBT.Features.Rave
             if ((int)dataTable.Rows[0][0] > 0)
                 return true;
             return false;
+        }
+
+        private string GenerateSQLToDisableSubjectByModifyingSproc(int subjectID)
+        {
+            return String.Format(@" 
+                                        alter proc spBulkStatusUpdateIsSubjectAvailable @SubjectID int
+                                        as
+	                                        if exists(select null from BulkStatusUpdateQueue where subjectID = @subjectID) OR ({0} = @subjectID)
+		                                        select cast(0 as bit) as Available
+	                                        else
+		                                        select cast(1 as bit) as Available
+	
+
+                                    ", subjectID.ToString());
+        }
+
+        private string GenerateSQLToEnableSubjectByModifyingSproc()
+        {
+            return String.Format(@" 
+                                        alter proc spBulkStatusUpdateIsSubjectAvailable @SubjectID int
+                                        as
+	                                        if exists(select null from BulkStatusUpdateQueue where subjectID = @subjectID)
+		                                        select cast(0 as bit) as Available
+	                                        else
+		                                        select cast(1 as bit) as Available
+	
+
+                                    ");
         }
 
 		private string GenerateSQLQueryForColumnName(string column, int datapageID)
@@ -328,7 +383,6 @@ namespace Medidata.RBT.Features.Rave
                                         from bulkstatusupdatequeue 
                                     ");
             }
-
 
 
 			private static string CountOfRecordsRequiringCVRefreshForProject(string project)
