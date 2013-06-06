@@ -1,5 +1,4 @@
 # When an Edit Check sets Datapoint XYZ to require verification, if the verification is broken on XYZ by a data change, this is not audited.
-@ignore
 @FT_DT_13622
 Feature: US10244_DT13622 When an Edit Check sets Datapoint XYZ to require verification, if the verification is broken on XYZ by a data change, this is not audited.
 	As a Rave user
@@ -9,26 +8,30 @@ Feature: US10244_DT13622 When an Edit Check sets Datapoint XYZ to require verifi
 	Then I should see an audit for the unverification
 
 Background:
-    Given I login to Rave with user "defuser" and password "password"
+
+	Given TSDV is enabled
+	Given I perform cache flush of "Medidata.Core.Objects.Configuration"
 	Given xml draft "DT13622 Mediflex.xml" is Uploaded with Environment name "Dev"
 	Given Site "MediflexDTSite" exists
 	Given study "Mediflex" is assigned to Site "MediflexDTSite" with study environment "Aux: Dev"
 	Given I publish and push eCRF "DT13622 Mediflex.xml" to "Version 1" with study environment "Dev"
 	Given following Project assignments exist
-	| User | Project | Environment | Role | Site | SecurityRole |
-	| SUPER USER 1 | Mediflex | Aux: Dev | SUPER ROLE 1 | MediflexDTSite | Project Admin Default |
+	| User         | Project  | Environment | Role         | Site           | SecurityRole          |
+	| SUPER USER 1 | Mediflex | Aux: Dev    | SUPER ROLE 1 | MediflexDTSite | Project Admin Default |
 	Given following Report assignments exist
-	| User | Report |
-	| SUPER USER 1 | Targeted SDV Configuration - Targeted SDV Configuration | 
-	#And I select Study "Mediflex" and Site "MediflexDTSite"
-	#And following Project assignments exist
-	#|User	|Project	|Environment	|Role |Site	  |Site Number	|
-	#|User 1 |Mediflex	|Prod			|cdm1 |Site 1 |S100			|
-    #And Role "cdm1" has Action "Entry"
-	#And Role "cdm1" has Action "Verify"
-	#And Project "Mediflex" has Draft "<Draft1>"
-	#And I publish and push CRF Version "CRF Version<RANDOMNUMBER>" of Draft "<Draft1>" to site "Site 1" in Project "Mediflex" for Enviroment "Prod"
-	#And I select Study "Mediflex20120710040626 (Dev)" and Site "MediflexDTSite"
+	| User         | Report                                                  |
+	| SUPER USER 1 | Targeted SDV Configuration - Targeted SDV Configuration |
+
+
+	# And I select Study "Mediflex" and Site "MediflexDTSite"
+	# And following Project assignments exist
+	# |User	|Project	|Environment	|Role |Site	  |Site Number	|
+	# |User 1 |Mediflex	|Prod			|cdm1 |Site 1 |S100			|
+    # And Role "cdm1" has Action "Entry"
+	# And Role "cdm1" has Action "Verify"
+	# And Project "Mediflex" has Draft "<Draft1>"
+	# And I publish and push CRF Version "CRF Version<RANDOMNUMBER>" of Draft "<Draft1>" to site "Site 1" in Project "Mediflex" for Enviroment "Prod"
+	# And I select Study "Mediflex20120710040626 (Dev)" and Site "MediflexDTSite"
 	# Edit check exists to set field Visit Date on form Visit Date to require verification if field Age has a value less than 18.
 	# Edit check exists to set field Field 1 on form Form 1 to require verification if field Field 1 has a value other than 20.
 	# Edit check exists to set field DOB on form Form 2 to require verification if field Age has a value less than 18.
@@ -37,7 +40,7 @@ Background:
 	# TSDV is turned ON on Database.
 	# An active Block plan exists in TSDV for study Mediflex with No Forms tier and 1 Custom Tier that has Form 2 excluded from verification.
 
-@release_2012.1.0 
+@release_2012.2.0 
 @PB_US10244_DT13622_01
 @Validation
 Scenario: PB_US10244_DT13622_01 As an EDC user, when I have an edit check fired on one field that sets another field to require verification, and I verify the data for the field, and I change the data, and the verification is broken, then I should see an audit recorded for the unverification.
@@ -86,7 +89,7 @@ Scenario: PB_US10244_DT13622_01 As an EDC user, when I have an edit check fired 
 	| User entered | '01 Feb 2011' |
 	And I take a screenshot
 
-@release_2012.1.0
+@release_2012.2.0
 @PB_US10244_DT13622_02
 @Validation
 Scenario: PB_US10244_DT13622_02 As an EDC user, when I have an edit check fired on one field that sets another field to require verification, and I verify the data for the form, and I change the data, and the verification is broken, then I should see an audit recorded for the unverification.
@@ -135,7 +138,7 @@ Scenario: PB_US10244_DT13622_02 As an EDC user, when I have an edit check fired 
 	| User entered | '01 Feb 2011' |
 	And I take a screenshot
 
-@release_2012.1.0
+@release_2012.2.0
 @PB_US10244_DT13622_03
 @Validation
 Scenario: PB_US10244_DT13622_03 As an EDC user, when I have an edit check that sets a field to require verification, and I verify the data for the field, and I change the data, and the verification is broken, then I should see an audit recorded for the unverification.
@@ -173,7 +176,7 @@ Scenario: PB_US10244_DT13622_03 As an EDC user, when I have an edit check that s
 	| User entered | '19'          |
 	And I take a screenshot
 
-@release_2012.1.0
+@release_2012.2.0
 @PB_US10244_DT13622_04
 @Validation
 Scenario: PB_US10244_DT13622_04 As an EDC user, when I have an edit check that sets a field to require verification, and I verify the data for the form, and I change the data, and the verification is broken, then I should see an audit recorded for the unverification.
@@ -211,7 +214,7 @@ Scenario: PB_US10244_DT13622_04 As an EDC user, when I have an edit check that s
 	| User entered | '19'          |
 	And I take a screenshot
 
-@release_2012.1.0
+@release_2012.2.0
 @PB_US10244_DT13622_05
 @Validation
 Scenario: PB_US10244_DT13622_05 As an EDC user, when I have an edit check fired on a field that is derived to sets another field to require verification, and I verify the data for the field, and I change the data, and the verification is broken, then I should see an audit recorded for the unverification.
@@ -254,7 +257,7 @@ Scenario: PB_US10244_DT13622_05 As an EDC user, when I have an edit check fired 
 	| User entered | '05 Mar 1995' |
 	And I take a screenshot
 
-@release_2012.1.0
+@release_2012.2.0
 @PB_US10244_DT13622_06
 @Validation
 Scenario: PB_US10244_DT13622_06 As an EDC user, when I have an edit check fired on a field that is derived to sets another field to require verification, and I verify the data for the form, and I change the data, and the verification is broken, then I should see an audit recorded for the unverification.
@@ -297,7 +300,7 @@ Scenario: PB_US10244_DT13622_06 As an EDC user, when I have an edit check fired 
 	| User entered | '05 Mar 1995' |
 	And I take a screenshot
 
-@release_2012.1.0
+@release_2012.2.0
 @PB_US10244_DT13622_07
 @Validation
 Scenario: PB_US10244_DT13622_07 As an EDC user, when I have TSDV turned off for a form, when I have an edit check that sets a field to require verification, and I verify the data for the field, and I change the data, and the verification is broken, then I should see an audit recorded for the unverification.
@@ -306,8 +309,8 @@ Scenario: PB_US10244_DT13622_07 As an EDC user, when I have TSDV turned off for 
 	Given I navigate to "Reporter"
 	And I select Report "Targeted SDV Configuration"
 	And I set report parameter "Study" with table
-		| Name                   | Environment |
-		| Mediflex                | Dev         |
+		| Name     | Environment |
+		| Mediflex | Dev         |
 	And I click button "Submit Report"
 	And I switch to "Targeted SDV Study Plan" window
 	And I create a new block plan named "Block Plan 1" with Data entry Role "SUPER ROLE 1"
@@ -355,11 +358,11 @@ Scenario: PB_US10244_DT13622_07 As an EDC user, when I have TSDV turned off for 
 	| User entered | '19'          |
 	And I take a screenshot
 	And I switch to "Targeted SDV Study Plan" window
-	And I delete the tier "Custom Tier 101" from plan
 	And I inactivate the plan
+	And I delete the tier "Custom Tier 101" from plan
 	And I switch to "Audits" window
 
-@release_2012.1.0
+@release_2012.2.0
 @PB_US10244_DT13622_08
 @Validation
 Scenario: PB_US10244_DT13622_08 As an EDC user, when I have TSDV turned off for a form, and I have an edit check that sets a field to require verification, and I verify the data for the form, and I change the data, and the verification is broken, then I should see an audit recorded for the unverification.
@@ -417,11 +420,11 @@ Scenario: PB_US10244_DT13622_08 As an EDC user, when I have TSDV turned off for 
 	| User entered | '19'          |
 	And I take a screenshot
 	And I switch to "Targeted SDV Study Plan" window
-	And I delete the tier "Custom Tier 102" from plan
 	And I inactivate the plan
+	And I delete the tier "Custom Tier 102" from plan
 	And I switch to "Audits" window
 
-@release_2012.1.0 
+@release_2012.2.0 
 @PB_US10244_DT13622_09 
 @Validation
 Scenario: PB_US10244_DT13622_09 As an EDC user, when I have a No Forms TSDV tier and I have an edit check that sets a field to require verification, and I verify the data for the field, and I change the data, and the verification is broken, then I should see an audit recorded for the unverification. 
@@ -465,13 +468,13 @@ Scenario: PB_US10244_DT13622_09 As an EDC user, when I have a No Forms TSDV tier
 	And I take a screenshot 
 	And I click audit on Field "Field 2" 
 	Then I verify Audits exist 
-	| Audit Type | Query Message | 
-	| User entered | '18' | 
-	| DataPoint | Un-verified. | 
-	| DataPoint | Verified.  |
-	| User entered | '19' | 
+	| Audit Type   | Query Message |
+	| User entered | '18'          |
+	| DataPoint    | Un-verified.  |
+	| DataPoint    | Verified.     |
+	| User entered | '19'          | 
 	And I take a screenshot
 	And I switch to "Targeted SDV Study Plan" window
-	And I delete the tier "No Forms" from plan
 	And I inactivate the plan
+	And I delete the tier "No Forms" from plan
 	And I switch to "Audits" window
