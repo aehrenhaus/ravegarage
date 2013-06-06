@@ -46,17 +46,31 @@ namespace Medidata.RBT.SeleniumExtension
 		{
 			driver.WaitForDocumentLoad();
 			bool found = false;
+
 			IWebDriver window = null;
+            int sleepTime = 100;
+            int timeoutInMsec;
 			foreach (var handle in driver.WindowHandles)
 			{
 				window = driver.SwitchTo().Window(handle);
+
+                //sometimes we query window before the title is updated resulting in this step to fail
+                //wait to see if the title has updated then proceed
+                //timeout in 10 seconds
+                timeoutInMsec = 10000;
+                while ("untitled".Equals(window.Title, StringComparison.InvariantCultureIgnoreCase) && timeoutInMsec > 0)
+                {
+                    Thread.Sleep(sleepTime);
+                    timeoutInMsec = timeoutInMsec - sleepTime;
+                }
+
 				if (window.Title == windowName)
 				{
 					found = true;
 					break;
 				}
 			}
-			if (!found) throw new Exception(string.Format("window {0} not found", windowName));
+			if (!found) throw new NoSuchWindowException(string.Format("window {0} not found", windowName));
 			while (driver.Url == "about:blank")
 				Thread.Sleep(500);
 
