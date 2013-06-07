@@ -58,7 +58,7 @@ namespace Medidata.RBT.SeleniumExtension
                 //wait to see if the title has updated then proceed
                 //timeout in 10 seconds
                 timeoutInMsec = 10000;
-                while ("untitled".Equals(window.Title, StringComparison.InvariantCultureIgnoreCase) && timeoutInMsec > 0)
+                while ((string.IsNullOrWhiteSpace(window.Title) || "untitled".Equals(window.Title, StringComparison.InvariantCultureIgnoreCase)) && timeoutInMsec > 0)
                 {
                     Thread.Sleep(sleepTime);
                     timeoutInMsec = timeoutInMsec - sleepTime;
