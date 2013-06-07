@@ -241,6 +241,7 @@ namespace Medidata.RBT.PageObjects.Rave
                 //Cant use foreach here because the Click method causes stale element reference, must get the rows each time
                 for (int i = 0; i < fieldRowsAtStart.Count; i++)
                 {
+                    fieldsGrid = Browser.TryFindElementByPartialID("FieldsGrid");
                     ReadOnlyCollection<IWebElement> fieldRowsRefresh = fieldsGrid.TryFindElementsBy(By.XPath(".//td/span[contains(text(), '" + fieldName + "')]/../.."));
                     if (CheckFieldHasOID(fieldRowsRefresh[i], fieldOID))
                         return true;
