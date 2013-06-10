@@ -122,9 +122,22 @@ namespace Medidata.RBT.PageObjects.Rave.TSDV
                             return pubBtn;
                         });
                     this.ClickButton("PublishButton");
-                    //confirmation to publish the draft
-                    Browser.TryFindElementByPartialID("_ctl0_Content__ctl10_PublishDraft");
+                    
+                    //make sure that dialog box has loaded before attempting to click publish button
+                    Browser.TryFindElementBy(b =>
+                        {
+                            IWebElement pubDialog = b.TryFindElementById("dialog");
 
+                            if (pubDialog != null && pubDialog.GetCssValue("opacity").Equals("1") &&
+                                pubDialog.GetCssValue("display").Equals("block"))
+                            {
+                                return pubDialog;
+                            }
+
+                            return null;
+                        });
+        
+                    //confirmation to publish the draft
                     this.ClickButton("_ctl0_Content__ctl10_PublishDraft");
                 }
             }
