@@ -233,6 +233,21 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>MCC-53994.feature</DependentUpon>
     </Compile>
+    <Compile Include="Features\EDC\564QueryRefiringLogic5_LabForm_2FldEC_part2.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>564QueryRefiringLogic5_LabForm_2FldEC_part2.feature</DependentUpon>
+    </Compile>
+    <Compile Include="Features\EDC\564QueryRefiringLogic5_LabForm_2FldEC_part3.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>564QueryRefiringLogic5_LabForm_2FldEC_part3.feature</DependentUpon>
+    </Compile>
+    <Compile Include="Features\EDC\564QueryRefiringLogic5_LabForm_2FldEC_part4.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>564QueryRefiringLogic5_LabForm_2FldEC_part4.feature</DependentUpon>
+    </Compile>
     <Compile Include="Features\EDC\US10241_DT12797.feature.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -458,10 +473,10 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="Features\EDC\564QueryRefiringLogic5_LabForm_2FldEC.feature.cs">
+    <Compile Include="Features\EDC\564QueryRefiringLogic5_LabForm_2FldEC_part1.feature.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>564QueryRefiringLogic5_LabForm_2FldEC.feature</DependentUpon>
+      <DependentUpon>564QueryRefiringLogic5_LabForm_2FldEC_part1.feature</DependentUpon>
     </Compile>
     <Compile Include="Features\EDC\US13002_DT13919.feature.cs">
       <AutoGen>True</AutoGen>
@@ -705,6 +720,18 @@
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>MCC-53994.feature.cs</LastGenOutput>
     </None>
+    <None Include="Features\EDC\564QueryRefiringLogic5_LabForm_2FldEC_part2.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>564QueryRefiringLogic5_LabForm_2FldEC_part2.feature.cs</LastGenOutput>
+    </None>
+    <None Include="Features\EDC\564QueryRefiringLogic5_LabForm_2FldEC_part3.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>564QueryRefiringLogic5_LabForm_2FldEC_part3.feature.cs</LastGenOutput>
+    </None>
+    <None Include="Features\EDC\564QueryRefiringLogic5_LabForm_2FldEC_part4.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>564QueryRefiringLogic5_LabForm_2FldEC_part4.feature.cs</LastGenOutput>
+    </None>
     <None Include="Features\EDC\US10241_DT12797.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>US10241_DT12797.feature.cs</LastGenOutput>
@@ -869,9 +896,9 @@
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>564 QueryRefiringLogic4.feature.cs</LastGenOutput>
     </None>
-    <None Include="Features\EDC\564QueryRefiringLogic5_LabForm_2FldEC.feature">
+    <None Include="Features\EDC\564QueryRefiringLogic5_LabForm_2FldEC_part1.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
-      <LastGenOutput>564QueryRefiringLogic5_LabForm_2FldEC.feature.cs</LastGenOutput>
+      <LastGenOutput>564QueryRefiringLogic5_LabForm_2FldEC_part1.feature.cs</LastGenOutput>
     </None>
     <None Include="Features\EDC\564QueryRefiringLogic8.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
