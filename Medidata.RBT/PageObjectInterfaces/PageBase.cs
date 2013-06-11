@@ -349,9 +349,12 @@ namespace Medidata.RBT
             if (!string.IsNullOrEmpty(querystring))
                 url = url + "?" + querystring;
 
-			Browser.Url = url;
-			Browser.WaitForPageToBeReady(
-				this.PageNavigationTimeoutSeconds);
+            AttemptSetBrowserUrl(() =>
+            {
+                Browser.Url = url;
+                Browser.WaitForPageToBeReady(
+                    this.PageNavigationTimeoutSeconds);
+            });
             
             string modifiedUrl = Browser.Url;
             if (modifiedUrl.Contains("S(") && string.IsNullOrEmpty(contextSessionIdstring))
@@ -460,5 +463,34 @@ namespace Medidata.RBT
 
             return queryStringFieldValuePair;
         }
+
+        /// <summary>
+        /// Tries to set the browser url, since sometimes this can fail, we retry
+        /// </summary>
+        /// <param name="setBrowserUrl"> Action delegate that handles the logic of setting up the url </param>
+        /// <param name="numAttempts"> number of attempts to set the url before giving up, default is 5 attempts</param>
+        private void AttemptSetBrowserUrl(Action setBrowserUrl, int numAttempts = 5)
+        {
+            bool success = false;
+
+            for (int i = 1; i <= numAttempts; i++)
+            {
+                try
+                {
+                    setBrowserUrl();
+                    success = true;
+                }
+                catch (WebDriverException) 
+                {
+                    success = false;
+
+                    if (i == numAttempts)
+                        throw;
+                }
+
+                if (success)
+                    break;
+            }
+        } 
 	}
 }
