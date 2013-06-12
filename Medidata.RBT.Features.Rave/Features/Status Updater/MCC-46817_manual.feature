@@ -17,7 +17,7 @@ Background:
 		|{Study A}	|{Site A1}	|{Env 1}		|{StudySiteNo1}	|{Crf Ver 1}	|
 		|{Study A}	|{Site A1}	|{Env 1}		|{StudySiteNo1}	|{Crf Ver 2}	|
 
-	Crf Ver 1 consists of the following Forms
+	And Crf Ver 1 consists of the following Forms
 	And there exists a form "<Form1>" with form OID "<FormOid1>"
 	And there exists a standard field "<Field1A>" with field OID "<FieldOid1A>"
 	And there exists a standard field "<Field2A>" with field OID "<FieldOid2A>"
@@ -29,18 +29,18 @@ Background:
 	And there exists a form "<PrimaryForm>" with form OID "<PrimaryForm>"
 	And there exists a standard field "<SubName>" with field OID "<NameOid>" and a standard field "<SubNumber>" with field OID "<NumberOID>"
 	
-	Crf Ver 1 consist of the following Folders
+	And Crf Ver 1 consist of the following Folders
 	And there exist a folder "<FolderA>" with folder OID "<FolderA>"
 	And there exist a folder "<FolderB>" with folder OID "<FolderB>"
 	And there exist a folder "<Subject>" 
 	
-	CRF Ver 1 consist of the following Matrix
+	And CRF Ver 1 consist of the following Matrix
 	And there exits a matrix "<Base>" with matrix OID "<BaseOid>"
 	And there exits "<Form1>" and "<Form2>" with folder "<Subject>" combination
 	And there exits "<Form1>" and "<Form2>" with folder "<FolderA>" combination
 	And there exits "<Form2>" with folder "<FolderB>" combination
 	
-	CRF Ver 2 consists of the following Forms	
+	And CRF Ver 2 consists of the following Forms	
 	And there exists a form "<Form1>" with form OID "<FormOid1>"
 	And there exists a standard field "<Field1A>" with field OID "<FieldOid1A>"
 	And there exists a standard field "<Field2A>" with field OID "<FieldOid2A>"
@@ -59,13 +59,13 @@ Background:
 	And there exists a form "<PrimaryForm>" with form OID "<PrimaryForm>"
 	And there exists a standard field "<SubName>" with field OID "<NameOid>" and a standard field "<SubNumber>" with field OID "<NumberOID>"
 	
-	CRF Ver 2 consist of the following Folders
+	And CRF Ver 2 consist of the following Folders
 	And there exist a folder "<FolderA>" with folder OID "<FolderA>"
 	And there exist a folder "<FolderB>" with folder OID "<FolderB>"
 	And there exist a folder "<FolderC>" with folder OID "<FolderC>"
 	And there exist a folder "<Subject>" 
 	
-	CRF Ver 2 consist of the following Matrix
+	And CRF Ver 2 consist of the following Matrix
 	And there exits a matrix "<Base>" with matrix OID "<Base>"
 	And there exits "<Form1>" "<Form2>" "<Form3>" and "<Form4>" with folder "<Subject>" combination
 	And there exits "<Form1>" "<Form2>" "<Form3>" and "<Form4>" with folder "<FolderA>" combination
@@ -82,10 +82,11 @@ Background:
 	And CRF Ver 1 has been pushed to "<Site A1>"
 	 
 #-------------------------------------------------------------------------------------------------------------------------
-@Release 2013.1.0
+@Release_2013.1.0
 @PBMCC-46817-01
 @HR_6.Feb.2013
 @Validation
+@manual
 
 Scenario: MCC-46817-01 Status Updater lists all possible folders/forms, correctly even if subjects are in different crf versions. 
 
@@ -235,10 +236,11 @@ And I see row in Folders/Forms pane with Folder Name "<Folder C>", Form Name "<F
 And I take a screenshot
 
 #-----------------------------------------------------------------------------------------------------------------------------------
-@Release 2013.1.0
+@Release_2013.1.0
 @PBMCC-46817-02
 @HR_6.Feb.2013
 @Validation
+@manual
 
 Scenario: MCC-46817_002 Status Updater lists all possible folders/forms, correctly even if subjects are in different crf versions. 
 
