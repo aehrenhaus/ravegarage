@@ -1,7 +1,7 @@
 @MCC-65923
 @ignore
 
-Feature: MCC-65923 User who previously had their cookies disabled and got the error on login page, cannot log in to the existing session once they have enabled cookies.
+Feature: MCC-65923 User who previously had their cookies disabled and got an error on login page, cannot log in to the existing session once they have enabled cookies.
 
 
 @Release_2013.2.0
