@@ -1,5 +1,5 @@
 @FT_MCC-52165
-@ignore
+
 Feature: MCC-52165 Answered query incorrectly linked to user action and not System action.
 	As a Rave user
 	I want to change data on the step field
@@ -783,7 +783,7 @@ Scenario: PPB_MCC_52165_018 As an EDC user, when I entered bad data in lab field
 @release_564_Patch12_CMP
 @PPB_MCC_52165_019
 @Draft
-Scenario: PPB_MCC_52165_019 As an EDC user, when I entered bad data in lab field A and lab field B that resulted in the system opening a query on lab field B, and I entered good data in lab field A, then the system should display a query on lab field B.
+Scenario: PPB_MCC_52165_019 As an EDC user, when I entered bad data in lab field A and lab field B that resulted in the system opening a query on lab field B, and I entered good data in lab field A, then the system should not display a query on lab field B.
 #Query with requires response = true and requires manual close = true.
 
  	Given I login to Rave with user "SUPER USER 1"
@@ -805,7 +805,7 @@ Scenario: PPB_MCC_52165_019 As an EDC user, when I entered bad data in lab field
 	When I enter data in CRF and save
 		  | Field                                        | Data |
 		  | Lab Field 1 - NEUTROPHILS - rr = T ; rmc = T | 2    |
-	Then I verify Query is displayed
+	Then I verify Query is not displayed
 		  |Field		                                |Query Message  												|
 		  |Lab Field 2 - WBC - rr = T ; rmc = T      	|Lab Field 2 must be greater than Lab Field 1. Please verify.	|
 	And I take a screenshot
@@ -852,7 +852,7 @@ Scenario: PPB_MCC_52165_020 As an EDC user, when I entered bad data in lab field
 @release_564_Patch12_CMP
 @PPB_MCC_52165_021
 @Draft
-Scenario: PPB_MCC_52165_021 As an EDC user, when I entered bad data in log field A and log field B that resulted in the system opening a query on log field B, and I entered good data in log field A, then the system should display a query on log field B.
+Scenario: PPB_MCC_52165_021 As an EDC user, when I entered bad data in log field A and log field B that resulted in the system opening a query on log field B, and I entered good data in log field A, then the system should not display a query on log field B.
 #Query with requires response = true and requires manual close = true.
 
  	Given I login to Rave with user "SUPER USER 1"
@@ -877,7 +877,7 @@ Scenario: PPB_MCC_52165_021 As an EDC user, when I entered bad data in log field
 		  | Field       | Data  |
 		  | Log Field 1 | data1 |
 	And I open log line 1 
-	Then I verify Query is displayed
+	Then I verify Query is not displayed
 		  | Field       | Message                                 |
 		  | Log Field 3 | Answer must be provided. Please review. |
 	And I take a screenshot
@@ -886,7 +886,7 @@ Scenario: PPB_MCC_52165_021 As an EDC user, when I entered bad data in log field
 @release_564_Patch12_CMP
 @PPB_MCC_52165_022
 @Draft
-Scenario: PPB_MCC_52165_022 As an EDC user, when I entered bad data in log field A and log field B that resulted in the system opening a query on log field B, and I entered good data in log field A, then the system should display a query on log field B.
+Scenario: PPB_MCC_52165_022 As an EDC user, when I entered bad data in log field A and log field B that resulted in the system opening a query on log field B, and I entered good data in log field A, then the system should not display a query on log field B.
 #Query with requires response = true and requires manual close = false.
 
  	Given I login to Rave with user "SUPER USER 1"
@@ -911,7 +911,7 @@ Scenario: PPB_MCC_52165_022 As an EDC user, when I entered bad data in log field
 		  | Field       | Data  |
 		  | Log Field 7 | data7 |
 	And I open log line 1  
-	And I verify Query is displayed
+	And I verify Query is not displayed
       | Field       | Query Message                           |
       | Log Field 9 | Answer must be provided. Please review. |
 	And I take a screenshot
@@ -920,7 +920,7 @@ Scenario: PPB_MCC_52165_022 As an EDC user, when I entered bad data in log field
 @release_564_Patch12_CMP
 @PPB_MCC_52165_023
 @Draft
-Scenario: PPB_MCC_52165_023 As an EDC user, when I entered bad data in field A that resulted in the system opening a query on field A, and I entered good data in field A, then the system should display a query on field A.
+Scenario: PPB_MCC_52165_023 As an EDC user, when I entered bad data in field A that resulted in the system opening a query on field A, and I entered good data in field A, then the system should not display a query on field A.
 #Query with requires response = true and requires manual close = true.
 
  	Given I login to Rave with user "SUPER USER 1"
@@ -941,7 +941,7 @@ Scenario: PPB_MCC_52165_023 As an EDC user, when I entered bad data in field A t
 	When I enter data in CRF and save
 		  |Field		|Data  	|
 		  |Age 1		|20		|
-	Then I verify Query is displayed
+	Then I verify Query is not displayed
 		| Field | Query Message                                                                        | 
 		| Age 1 | Age must be greater than or equal to 18 and less than or equal to 65. Please verify. |
 	And I take a screenshot
@@ -950,7 +950,7 @@ Scenario: PPB_MCC_52165_023 As an EDC user, when I entered bad data in field A t
 @release_564_Patch12_CMP
 @PPB_MCC_52165_024
 @Draft
-Scenario: PPB_MCC_52165_024 As an EDC user, when I entered bad data in field A that resulted in the system opening a query on field A, and I entered different bad data in field A, if I then entered the good data in field A, then the system should display a query on field A.
+Scenario: PPB_MCC_52165_024 As an EDC user, when I entered bad data in field A that resulted in the system opening a query on field A, and I entered different bad data in field A, if I then entered the good data in field A, then the system should not display a query on field A.
 #Query with requires response = true and requires manual close = false.
 
  	Given I login to Rave with user "SUPER USER 1"
@@ -978,7 +978,7 @@ Scenario: PPB_MCC_52165_024 As an EDC user, when I entered bad data in field A t
 	When I enter data in CRF and save
 		  |Field		|Data	 |
 		  |Age 3		|22		 |			  
-	Then I verify Query is displayed
+	Then I verify Query is not displayed
 		  | Field | Query Message                                                                        | 
 		  | Age 3 | Age must be greater than or equal to 18 and less than or equal to 65. Please verify. |
 	And I take a screenshot	  
