@@ -23,10 +23,11 @@ Background:
 		|{Rave URL 1}	|
 		
 #-------------------------------------------------------------------------------------------------------------------------
-@Release 2013.1.0
+@Release_2013.1.0
 @PBMCC-52790-01
 @BG_26.Feb.2013
 @Validation
+@manual
 
 Scenario: MCC-52790-01 Status Updater Reviews a form the Review checkboxe for that form are checked and theaudit trail is updated
 
@@ -93,5 +94,5 @@ Then I see checkbox for "<Review Group 1>" is checked
 And I take a Screenshot
 
 When I select audit icon for field
-ThenI see audit entry "Reviewed for Review Group 1".
+Then I see audit entry "Reviewed for Review Group 1".
 And I take a Screenshot
