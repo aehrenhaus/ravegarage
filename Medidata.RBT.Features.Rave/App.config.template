@@ -23,8 +23,6 @@
 		TakeScreenShotsEveryStep ="False" 
 		SqlScriptsPath="C:\"
 		BrowserName="firefox"
-		BrowserPath="..\..\..\Firefox\firefox.exe"
-		FirefoxProfilePath="..\..\..\Firefox\FFProfile"
 		WebDriverPath="..\..\..\ExternalDlls\WebDrivers\"
 		SnapshotName="UAT_Snap"
 		DatabaseConnection="RaveConnection"
