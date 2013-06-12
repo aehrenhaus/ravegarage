@@ -1,5 +1,5 @@
 @FT_MCC-52165
-@ignore
+
 Feature: MCC-52165 Answered query incorrectly linked to user action and not System action.
 	As a Rave user
 	I want to change data on the step field
@@ -47,7 +47,7 @@ Background:
 #----------------------------------------------------------------------------------------------------------------------------------
 @release_564_Patch12_CMP
 @PB_MCC_52165_01
-@Draft
+@Validation
 Scenario: PB_MCC_52165_01 As an EDC user, On a Cross Forms - Standard form to log form, when a query has been auto answered and auto closed with the same data, then queries are not displayed. 
 #Query with requires response = false and requires manual close = False.
 	
@@ -94,7 +94,7 @@ Scenario: PB_MCC_52165_01 As an EDC user, On a Cross Forms - Standard form to lo
 #----------------------------------------------------------------------------------------------------------------------------------------	
 @release_564_Patch12_CMP
 @PB_MCC_52165_02
-@Draft
+@Validation
 Scenario: PB_MCC_52165_02 As an EDC user, when I entered bad data in field A that resulted in the system opening a query on field A, then queries are not displayed.
 #requires response = false and requires manual close = true
 
@@ -125,7 +125,7 @@ Scenario: PB_MCC_52165_02 As an EDC user, when I entered bad data in field A tha
 #----------------------------------------------------------------------------------------------------------------------------------------	
 @release_564_Patch12_CMP
 @PB_MCC_52165_03
-@Draft
+@Validation
 Scenario: PB_MCC_52165_03 As an EDC user, On a Cross Folders - Standard form to log form, when a query has been auto answered and auto closed with the same data, then queries are not displayed.
 #Query with requires response = false and requires manual close = False.
 
@@ -173,7 +173,7 @@ Scenario: PB_MCC_52165_03 As an EDC user, On a Cross Folders - Standard form to 
 #----------------------------------------------------------------------------------------------------------------------------------------	
 @release_564_Patch12_CMP
 @PB_MCC_52165_04
-@Draft
+@Validation
 Scenario: PB_MCC_52165_04 As an EDC user, On a Cross Forms - log form, when a query has been auto answered and auto closed with the same data, then queries are not displayed. 
 #Query with requires response = false and requires manual close = False.
     
@@ -210,7 +210,7 @@ Scenario: PB_MCC_52165_04 As an EDC user, On a Cross Forms - log form, when a qu
 #----------------------------------------------------------------------------------------------------------------------------------------	
 @release_564_Patch12_CMP
 @PB_MCC_52165_05
-@Draft
+@Validation
 Scenario: PB_MCC_52165_05 As and EDC user, On a Cross Forms - log form to log form, when a query has been auto answered and auto closed with the same data, then queries are not displayed. 
 #Query with requires response = false and requires manual close = False.
 			  
@@ -271,7 +271,7 @@ Scenario: PB_MCC_52165_05 As and EDC user, On a Cross Forms - log form to log fo
 #----------------------------------------------------------------------------------------------------------------------------------------
 @release_564_Patch12_CMP
 @PB_MCC_52165_06
-@Draft
+@Validation
 Scenario: PB_MCC_52165_06 As an EDC user, On a Cross Forms Standard form to log form, when a query has been auto answered and closed with the same data, then queries are not displayed.
 #Query with requires response = false and requires manual close = True.
 
@@ -319,7 +319,7 @@ Scenario: PB_MCC_52165_06 As an EDC user, On a Cross Forms Standard form to log 
 #----------------------------------------------------------------------------------------------------------------------------------------	
 @release_564_Patch12_CMP
 @PB_MCC_52165_07
-@Draft
+@Validation
 Scenario: PB_MCC_52165_07 As an EDC user, On a Cross Folders - Standard form to log form, when a query has been auto answered and closed with the same data and I enter the same data that originally opened the query, then queries are not displayed.
 #Query with requires response = false and requires manual close = True.
 
@@ -367,7 +367,7 @@ Scenario: PB_MCC_52165_07 As an EDC user, On a Cross Folders - Standard form to 
 #----------------------------------------------------------------------------------------------------------------------------------------	
 @release_564_Patch12_CMP
 @PB_MCC_52165_08
-@Draft
+@Validation
 Scenario: PB_MCC_52165_08 As an EDC user, Cross Forms - log form to log form , when a query has been auto answered and closed with the same data and I enter the same data that originally opened the query, then queries are not displayed.
 #Query with requires response = false and requires manual close = True.
 
@@ -428,7 +428,7 @@ Scenario: PB_MCC_52165_08 As an EDC user, Cross Forms - log form to log form , w
 #----------------------------------------------------------------------------------------------------------------------------------------	
 @release_564_Patch12_CMP
 @PPB_MCC_52165_09
-@Draft
+@Validation
 Scenario: PB_MCC_52165_09 As an EDC user, when I entered bad data in log field A and log field B that resulted in the system opening a query on log field B, and I changed the data in log field A to another bad data, if I entered good data in log field A, then query is not displayed on log field B. 
 #Query with requires response = false and requires manual close = false.
 
@@ -472,7 +472,7 @@ Scenario: PB_MCC_52165_09 As an EDC user, when I entered bad data in log field A
 #----------------------------------------------------------------------------------------------------------------------------------------	
 @release_564_Patch12_CMP
 @PPB_MCC_52165_010
-@Draft
+@Validation
 Scenario: PPB_MCC_52165_010	As an EDC user, when I entered bad data in log field A and log field B that resulted in the system opening a query on log field B, and I changed the data in log field A to another bad data, if I entered good data in log field A, then query is not displayed on log field B.
 #Query with requires response = false and requires manual close = false.
 	
@@ -515,7 +515,7 @@ Scenario: PPB_MCC_52165_010	As an EDC user, when I entered bad data in log field
 #----------------------------------------------------------------------------------------------------------------------------------------	
 @release_564_Patch12_CMP
 @PPB_MCC_52165_011
-@Draft
+@Validation
 Scenario: PPB_MCC_52165_011 As an EDC user, when I entered bad data in log field A and log field B that resulted in the system opening a query on log field B, and I changed the data in log field A to another bad data, if I entered good data in log field A, then query is not displayed on log field B.
 #Query with requires response = false and requires manual close = false.
 	
@@ -559,7 +559,7 @@ Scenario: PPB_MCC_52165_011 As an EDC user, when I entered bad data in log field
 #----------------------------------------------------------------------------------------------------------------------------------------	
 @release_564_Patch12_CMP
 @PPB_MCC_52165_012
-@Draft
+@Validation
 Scenario: PPB_MCC_52165_012 As an EDC user, when I entered bad data in field A that resulted in the system opening a query on field A, and I entered good data in field A, then the system should not fire a query on field A. 
 #Query with requires response = false and requires manual close = false.
     
@@ -589,7 +589,7 @@ Scenario: PPB_MCC_52165_012 As an EDC user, when I entered bad data in field A t
 #----------------------------------------------------------------------------------------------------------------------------------------	
 @release_564_Patch12_CMP
 @PPB_MCC_52165_013
-@Draft
+@Validation
 Scenario: PPB_MCC_52165_013 As an EDC user, when I entered bad data in field A that resulted in the system opening a query on field A, if I then entered new bad data in field A, then the system should not fire a query on field A. 
 #Query with requires response = false and requires manual close = false.
  
@@ -619,7 +619,7 @@ Scenario: PPB_MCC_52165_013 As an EDC user, when I entered bad data in field A t
 #----------------------------------------------------------------------------------------------------------------------------------------
 @release_564_Patch12_CMP
 @PPB_MCC_52165_014
-@Draft
+@Validation
 Scenario: PPB_MCC_52165_014 As an EDC user, when I entered bad data in lab field A and lab field B that resulted in the system opening a query on lab field B, and I entered good data in lab field A, then the system should not display a query on lab field B. 
 #Query with requires response = false and requires manual close = false.
 
@@ -650,7 +650,7 @@ Scenario: PPB_MCC_52165_014 As an EDC user, when I entered bad data in lab field
 #----------------------------------------------------------------------------------------------------------------------------------------
 @release_564_Patch12_CMP
 @PPB_MCC_52165_015
-@Draft
+@Validation
 Scenario: PPB_MCC_52165_015 As an EDC user, when I entered bad data in lab field A and lab field B that resulted in the system opening a query on lab field B, and I entered good data in lab field A, then the system should not display a query on lab field B.
 #Query with requires response = false and requires manual close = false. 
 	
@@ -681,7 +681,7 @@ Scenario: PPB_MCC_52165_015 As an EDC user, when I entered bad data in lab field
 #----------------------------------------------------------------------------------------------------------------------------------------
 @release_564_Patch12_CMP
 @PPB_MCC_52165_016
-@Draft
+@Validation
 Scenario: PPB_MCC_52165_016 As an EDC user, when I entered bad data in log field A and log field B that resulted in the system opening a query on log field B, and I entered good data in log field A, then the system should not display a query on lab field B.
 #Query with requires response = false and requires manual close = false.
 
@@ -715,7 +715,7 @@ Scenario: PPB_MCC_52165_016 As an EDC user, when I entered bad data in log field
 #----------------------------------------------------------------------------------------------------------------------------------------
 @release_564_Patch12_CMP
 @PPB_MCC_52165_017
-@Draft
+@Validation
 Scenario: PPB_MCC_52165_017 As an EDC user, when I entered bad data in log field A and log field B that resulted in the system opening a query on log field B, and I entered good data in log field A, then the system should is display a query on log field B.
 #Query with requires response = false and requires manual close = true.
 	
@@ -751,7 +751,7 @@ Scenario: PPB_MCC_52165_017 As an EDC user, when I entered bad data in log field
 #----------------------------------------------------------------------------------------------------------------------------------------
 @release_564_Patch12_CMP
 @PPB_MCC_52165_018
-@Draft
+@Validation
 Scenario: PPB_MCC_52165_018 As an EDC user, when I entered bad data in lab field A and lab field B that resulted in the system opening a query on lab field B, and I entered good data in lab field A, then the system should not display a query on lab field B.
 #Query with requires response = false and requires manual close = true.
 
@@ -782,8 +782,8 @@ Scenario: PPB_MCC_52165_018 As an EDC user, when I entered bad data in lab field
 #----------------------------------------------------------------------------------------------------------------------------------------
 @release_564_Patch12_CMP
 @PPB_MCC_52165_019
-@Draft
-Scenario: PPB_MCC_52165_019 As an EDC user, when I entered bad data in lab field A and lab field B that resulted in the system opening a query on lab field B, and I entered good data in lab field A, then the system should display a query on lab field B.
+@Validation
+Scenario: PPB_MCC_52165_019 As an EDC user, when I entered bad data in lab field A and lab field B that resulted in the system opening a query on lab field B, and I entered good data in lab field A, then the system should not display a query on lab field B.
 #Query with requires response = true and requires manual close = true.
 
  	Given I login to Rave with user "SUPER USER 1"
@@ -805,7 +805,7 @@ Scenario: PPB_MCC_52165_019 As an EDC user, when I entered bad data in lab field
 	When I enter data in CRF and save
 		  | Field                                        | Data |
 		  | Lab Field 1 - NEUTROPHILS - rr = T ; rmc = T | 2    |
-	Then I verify Query is displayed
+	Then I verify Query is not displayed
 		  |Field		                                |Query Message  												|
 		  |Lab Field 2 - WBC - rr = T ; rmc = T      	|Lab Field 2 must be greater than Lab Field 1. Please verify.	|
 	And I take a screenshot
@@ -813,7 +813,7 @@ Scenario: PPB_MCC_52165_019 As an EDC user, when I entered bad data in lab field
 #----------------------------------------------------------------------------------------------------------------------------------------
 @release_564_Patch12_CMP
 @PPB_MCC_52165_020
-@Draft
+@Validation
 Scenario: PPB_MCC_52165_020 As an EDC user, when I entered bad data in lab field A and lab field B that resulted in the system opening a query on lab field B, if I then entered the differnt bad data in lab field A, and I entered good data in lab field A, then the system should not display a query on lab field B.
 #Query with requires response = true and requires manual close = false.
 
@@ -851,8 +851,8 @@ Scenario: PPB_MCC_52165_020 As an EDC user, when I entered bad data in lab field
 #----------------------------------------------------------------------------------------------------------------------------------------
 @release_564_Patch12_CMP
 @PPB_MCC_52165_021
-@Draft
-Scenario: PPB_MCC_52165_021 As an EDC user, when I entered bad data in log field A and log field B that resulted in the system opening a query on log field B, and I entered good data in log field A, then the system should display a query on log field B.
+@Validation
+Scenario: PPB_MCC_52165_021 As an EDC user, when I entered bad data in log field A and log field B that resulted in the system opening a query on log field B, and I entered good data in log field A, then the system should not display a query on log field B.
 #Query with requires response = true and requires manual close = true.
 
  	Given I login to Rave with user "SUPER USER 1"
@@ -877,7 +877,7 @@ Scenario: PPB_MCC_52165_021 As an EDC user, when I entered bad data in log field
 		  | Field       | Data  |
 		  | Log Field 1 | data1 |
 	And I open log line 1 
-	Then I verify Query is displayed
+	Then I verify Query is not displayed
 		  | Field       | Message                                 |
 		  | Log Field 3 | Answer must be provided. Please review. |
 	And I take a screenshot
@@ -885,8 +885,8 @@ Scenario: PPB_MCC_52165_021 As an EDC user, when I entered bad data in log field
 #----------------------------------------------------------------------------------------------------------------------------------------
 @release_564_Patch12_CMP
 @PPB_MCC_52165_022
-@Draft
-Scenario: PPB_MCC_52165_022 As an EDC user, when I entered bad data in log field A and log field B that resulted in the system opening a query on log field B, and I entered good data in log field A, then the system should display a query on log field B.
+@Validation
+Scenario: PPB_MCC_52165_022 As an EDC user, when I entered bad data in log field A and log field B that resulted in the system opening a query on log field B, and I entered good data in log field A, then the system should not display a query on log field B.
 #Query with requires response = true and requires manual close = false.
 
  	Given I login to Rave with user "SUPER USER 1"
@@ -911,7 +911,7 @@ Scenario: PPB_MCC_52165_022 As an EDC user, when I entered bad data in log field
 		  | Field       | Data  |
 		  | Log Field 7 | data7 |
 	And I open log line 1  
-	And I verify Query is displayed
+	And I verify Query is not displayed
       | Field       | Query Message                           |
       | Log Field 9 | Answer must be provided. Please review. |
 	And I take a screenshot
@@ -919,8 +919,8 @@ Scenario: PPB_MCC_52165_022 As an EDC user, when I entered bad data in log field
 #----------------------------------------------------------------------------------------------------------------------------------------
 @release_564_Patch12_CMP
 @PPB_MCC_52165_023
-@Draft
-Scenario: PPB_MCC_52165_023 As an EDC user, when I entered bad data in field A that resulted in the system opening a query on field A, and I entered good data in field A, then the system should display a query on field A.
+@Validation
+Scenario: PPB_MCC_52165_023 As an EDC user, when I entered bad data in field A that resulted in the system opening a query on field A, and I entered good data in field A, then the system should not display a query on field A.
 #Query with requires response = true and requires manual close = true.
 
  	Given I login to Rave with user "SUPER USER 1"
@@ -941,7 +941,7 @@ Scenario: PPB_MCC_52165_023 As an EDC user, when I entered bad data in field A t
 	When I enter data in CRF and save
 		  |Field		|Data  	|
 		  |Age 1		|20		|
-	Then I verify Query is displayed
+	Then I verify Query is not displayed
 		| Field | Query Message                                                                        | 
 		| Age 1 | Age must be greater than or equal to 18 and less than or equal to 65. Please verify. |
 	And I take a screenshot
@@ -949,8 +949,8 @@ Scenario: PPB_MCC_52165_023 As an EDC user, when I entered bad data in field A t
 #----------------------------------------------------------------------------------------------------------------------------------------
 @release_564_Patch12_CMP
 @PPB_MCC_52165_024
-@Draft
-Scenario: PPB_MCC_52165_024 As an EDC user, when I entered bad data in field A that resulted in the system opening a query on field A, and I entered different bad data in field A, if I then entered the good data in field A, then the system should display a query on field A.
+@Validation
+Scenario: PPB_MCC_52165_024 As an EDC user, when I entered bad data in field A that resulted in the system opening a query on field A, and I entered different bad data in field A, if I then entered the good data in field A, then the system should not display a query on field A.
 #Query with requires response = true and requires manual close = false.
 
  	Given I login to Rave with user "SUPER USER 1"
@@ -978,7 +978,7 @@ Scenario: PPB_MCC_52165_024 As an EDC user, when I entered bad data in field A t
 	When I enter data in CRF and save
 		  |Field		|Data	 |
 		  |Age 3		|22		 |			  
-	Then I verify Query is displayed
+	Then I verify Query is not displayed
 		  | Field | Query Message                                                                        | 
 		  | Age 3 | Age must be greater than or equal to 18 and less than or equal to 65. Please verify. |
 	And I take a screenshot	  

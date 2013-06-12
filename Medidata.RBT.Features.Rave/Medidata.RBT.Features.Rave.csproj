@@ -184,6 +184,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>MCC-42701UL.feature</DependentUpon>
     </Compile>
+    <Compile Include="Features\EDC\MCC-52165.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MCC-52165.feature</DependentUpon>
+    </Compile>
     <Compile Include="Features\EDC\MCC-62856.feature.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -700,6 +705,10 @@
     <None Include="Features\Architect\MCC-42701UL.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>MCC-42701UL.feature.cs</LastGenOutput>
+    </None>
+    <None Include="Features\EDC\MCC-52165.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>MCC-52165.feature.cs</LastGenOutput>
     </None>
     <None Include="Features\EDC\MCC-62856.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
