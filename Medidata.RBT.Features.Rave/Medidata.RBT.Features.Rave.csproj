@@ -199,6 +199,16 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>MCC-41854.feature</DependentUpon>
     </Compile>
+    <Compile Include="Features\EDC\MCC-50826.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MCC-50826.feature</DependentUpon>
+    </Compile>
+    <Compile Include="Features\EDC\MCC-50826_manual.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MCC-50826_manual.feature</DependentUpon>
+    </Compile>
     <Compile Include="Features\EDC\MCC-53645_Manual.feature.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -233,6 +243,26 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>MCC-58254.feature</DependentUpon>
+    </Compile>
+     <Compile Include="Features\EDC\MCC-53994.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MCC-53994.feature</DependentUpon>
+    </Compile>
+    <Compile Include="Features\EDC\564QueryRefiringLogic5_LabForm_2FldEC_part2.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>564QueryRefiringLogic5_LabForm_2FldEC_part2.feature</DependentUpon>
+    </Compile>
+    <Compile Include="Features\EDC\564QueryRefiringLogic5_LabForm_2FldEC_part3.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>564QueryRefiringLogic5_LabForm_2FldEC_part3.feature</DependentUpon>
+    </Compile>
+    <Compile Include="Features\EDC\564QueryRefiringLogic5_LabForm_2FldEC_part4.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>564QueryRefiringLogic5_LabForm_2FldEC_part4.feature</DependentUpon>
     </Compile>
     <Compile Include="Features\EDC\US10241_DT12797.feature.cs">
       <AutoGen>True</AutoGen>
@@ -458,6 +488,11 @@
       <DependentUpon>test.feature</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Features\EDC\564QueryRefiringLogic5_LabForm_2FldEC_part1.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>564QueryRefiringLogic5_LabForm_2FldEC_part1.feature</DependentUpon>
     </Compile>
     <Compile Include="Features\EDC\US13002_DT13919.feature.cs">
       <AutoGen>True</AutoGen>
