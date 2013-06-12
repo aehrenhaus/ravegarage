@@ -1,5 +1,4 @@
 @FT_MCC-62856
-@ignore
 Feature: MCC-62856_MCC-53994 Update Enable/Disable Add Events Permissions.
 
 Background:
