@@ -78,6 +78,8 @@ namespace Medidata.RBT
             set { this["BrowserName"] = value; }
         }
 
+
+
 		[ConfigurationProperty("WebDriverPath", DefaultValue = "", IsRequired = true)]
         public String WebDriverPath
         {
@@ -92,6 +94,22 @@ namespace Medidata.RBT
             set { this["GenerateReportAfterTest"] = value; }
         }
 
+		[ConfigurationProperty("BrowserPath", DefaultValue = "", IsRequired = true)]
+        public String BrowserPath
+        {
+            get { return (String)this["BrowserPath"]; }
+            set { this["BrowserPath"] = value; }
+        }
+
+
+		[ConfigurationProperty("FirefoxProfilePath", DefaultValue = "", IsRequired = true)]
+        public String FirefoxProfilePath
+        {
+            get { return (String)this["FirefoxProfilePath"]; }
+            set { this["FirefoxProfilePath"] = value; }
+        }
+
+ 
         public String DownloadPath
         {
             get
