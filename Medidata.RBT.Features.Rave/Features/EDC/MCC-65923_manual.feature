@@ -16,11 +16,11 @@ And I disable cookies
 And I delete all existing cookies
 And I restart my browser
 And I open the Rave login page
-And the error is displayed "In orded to log in, cookies should be allowed by your browser. Click the Help icon for more information."
+And the error is displayed "In order to log in, cookies should be allowed by your browser. Click the Help icon for more information."
 And I take a screenshot
 And I enable cookies
 And I reload login page
-And the error is not displayed "In orded to log in, cookies should be allowed by your browser. Click the Help icon for more information."
+And the error is not displayed "In order to log in, cookies should be allowed by your browser. Click the Help icon for more information."
 And I take a screenshot
 And I enter "defuser" in field User Name 
 And I enter "password" in field Password
