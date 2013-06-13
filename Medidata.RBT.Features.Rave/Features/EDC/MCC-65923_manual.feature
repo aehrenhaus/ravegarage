@@ -27,3 +27,21 @@ And I enter "password" in field Password
 When I click "Enter" button
 Then I should see the Rave home page
 And I take a screenshot
+
+
+@Release_2013.2.0
+@PBMCC65923-002
+@VY12.JUN.2013
+@Manual
+@Validation
+Scenario: MCC65923-002 Verify that a user gets an error message if they open the login page than disable cookies and try to log in
+
+Given I open my browser
+And I open the Rave login page
+And I take a screenshot
+And I disable cookies
+And I enter "defuser" in field User Name 
+And I enter "password" in field Password
+When I click "Enter" button
+Then I should see the Rave login page with error message "In order to log in, cookies should be allowed by your browser. Click the Help icon for more information." displayed
+And I take a screenshot
