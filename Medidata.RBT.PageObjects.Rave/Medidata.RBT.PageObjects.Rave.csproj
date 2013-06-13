@@ -257,7 +257,7 @@
     <Compile Include="TableModels\CoderWorkflowVariableModel.cs" />
     <Compile Include="TableModels\ControlTypeModel.cs" />
     <Compile Include="TableModels\ProtocolDeviationClassModel.cs" />
-    <Compile Include="TableModels\ProtocolDeviationCodeValue.cs" />
+    <Compile Include="TableModels\ProtocolDeviationCodeModel.cs" />
     <Compile Include="TableModels\TSDVBlockModel.cs" />
     <Compile Include="TableModels\GlobalConfigurationModel.cs" />
     <Compile Include="TableModels\PDF\PDFTextAndTextStyleModel.cs" />

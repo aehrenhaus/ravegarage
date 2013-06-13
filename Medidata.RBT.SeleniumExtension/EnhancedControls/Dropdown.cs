@@ -22,7 +22,8 @@ namespace Medidata.RBT.SeleniumExtension
         /// <returns>Returns true if the text exists in the dropdown, otherwise returns false</returns>
         public bool VerifyByText(string text)
         {
-            return (this.TryFindElementBy(By.XPath("option[contains(., '" + text + "')]")) != null);
+            //return (this.TryFindElementBy(By.XPath("option[contains(., '" + text + "')]")) != null);
+            return (this.TryFindElementsBy(By.XPath("option[text()='" + text + "']")) != null);
         }
 
 		public string SelectedText
