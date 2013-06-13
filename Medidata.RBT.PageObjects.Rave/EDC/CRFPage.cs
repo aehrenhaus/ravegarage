@@ -44,7 +44,7 @@ namespace Medidata.RBT.PageObjects.Rave
                     "Last Log line cannot be opened becuase no log lines were found");
 
             editButtons[editButtons.Count - 1].Click();
-            return this;
+            return this.WaitForPageLoads() as CRFPage;
         }
 
         public CRFPage OpenLogline(int lineNum)
@@ -61,7 +61,7 @@ namespace Medidata.RBT.PageObjects.Rave
                         lineNum));
 
             editButtons[lineNum - 1].Click();
-            return this;
+            return this.WaitForPageLoads() as CRFPage;
         }
 
 		public override IPage ChooseFromCheckboxes(string identifier, bool isChecked, string areaIdentifier = null, string listItem = null)

@@ -62,7 +62,7 @@ namespace Medidata.RBT.PageObjects.Rave
 			if (btn == null)
 				throw new Exception("Can not find the Save button");
 			btn.Click();
-			return this;
+			return this.WaitForPageLoads() as BaseEDCPage;
 		}
 
 		public BaseEDCPage SelectFolder(string folderName)
