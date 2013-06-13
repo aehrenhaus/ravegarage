@@ -43,5 +43,5 @@ And I disable cookies
 And I enter "defuser" in field User Name 
 And I enter "password" in field Password
 When I click "Enter" button
-Then I should see the Rave login page with error message "In order to log in, cookies should be allowed by your browser. Click the Help icon for more information." displayed
+Then I should see the Rave login page with an error message "In order to log in, cookies should be allowed by your browser. Click the Help icon for more information." displayed
 And I take a screenshot
