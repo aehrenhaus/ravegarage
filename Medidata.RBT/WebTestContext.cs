@@ -250,12 +250,14 @@ namespace Medidata.RBT
 				switch (RBTConfiguration.Default.BrowserName.ToLower())
 				{
 					case "firefox":
-						FirefoxProfile p = new FirefoxProfile();
+						FirefoxProfile p = new FirefoxProfile(RBTConfiguration.Default.FirefoxProfilePath, true);
+						FirefoxBinary bin = new FirefoxBinary(RBTConfiguration.Default.BrowserPath);
 						p.SetPreference("browser.download.folderList", 2);
 						p.SetPreference("browser.download.manager.showWhenStarting", false);
 						p.SetPreference("browser.download.dir", RBTConfiguration.Default.DownloadPath.ToUpper());
 						p.SetPreference("browser.helperApps.neverAsk.saveToDisk", RBTConfiguration.Default.AutoSaveMimeTypes);
-                        _webdriver = new FirefoxDriver(new FirefoxBinary(), p, TimeSpan.FromMinutes(2));
+
+						_webdriver = new FirefoxDriver(bin, p);
 						break;
 
 
