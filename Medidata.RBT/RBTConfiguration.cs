@@ -100,15 +100,6 @@ namespace Medidata.RBT
             get { return (String)this["BrowserPath"]; }
             set { this["BrowserPath"] = value; }
         }
-
-
-		[ConfigurationProperty("FirefoxProfilePath", DefaultValue = "", IsRequired = true)]
-        public String FirefoxProfilePath
-        {
-            get { return (String)this["FirefoxProfilePath"]; }
-            set { this["FirefoxProfilePath"] = value; }
-        }
-
  
         public String DownloadPath
         {
