@@ -229,6 +229,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>MCC-28550-2.feature</DependentUpon>
     </Compile>
+    <Compile Include="Features\EDC\MCC-65923_manual.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MCC-65923_manual.feature</DependentUpon>
+    </Compile>
     <Compile Include="Features\EDC\MCC_55695.feature.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -766,6 +771,10 @@
     <None Include="Features\EDC\MCC-28550-2.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>MCC-28550-2.feature.cs</LastGenOutput>
+    </None>
+    <None Include="Features\EDC\MCC-65923_manual.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>MCC-65923_manual.feature.cs</LastGenOutput>
     </None>
     <None Include="Features\EDC\MCC_55695.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
