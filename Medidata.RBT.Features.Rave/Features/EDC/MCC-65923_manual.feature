@@ -37,6 +37,7 @@ And I take a screenshot
 Scenario: MCC65923-002 Verify that a user gets an error message if they open the login page than disable cookies and try to log in
 
 Given I open my browser
+And the browser cookies are enabled
 And I open the Rave login page
 And I take a screenshot
 And I disable cookies
