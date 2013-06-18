@@ -32,6 +32,7 @@ namespace Medidata.RBT.PageObjects.Rave
 			//if not the user
 			if (context.CurrentUser != userName)
 			{
+                context.Storage["UrlSessionID"] = ""; //cleanup the url session id save in the hash table as new login will generate new session id
 				var loginPage = new LoginPage();
 				loginPage.NavigateToSelf();
 				var homePage = loginPage.Login(userName, password);
