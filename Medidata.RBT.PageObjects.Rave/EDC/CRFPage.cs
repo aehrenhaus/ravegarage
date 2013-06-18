@@ -444,8 +444,10 @@ namespace Medidata.RBT.PageObjects.Rave
         {
             bool isExists = true;
 
-            var dropdownCode = Browser.TryFindElementBy(By.XPath("//*[contains(text(),'Protocol Deviation')]/../..")).TryFindElementsBy(By.XPath(".//select"))[1].EnhanceAs<Dropdown>();
-            var dropdownClass = Browser.TryFindElementBy(By.XPath("//*[contains(text(),'Protocol Deviation')]/../..")).TryFindElementsBy(By.XPath(".//select"))[2].EnhanceAs<Dropdown>();
+            var elSelects = Browser.TryFindElementBy(By.XPath("//*[contains(text(),'Protocol Deviation')]/../..")).TryFindElementsBy(By.XPath(".//select"));
+            int i = elSelects.Count;
+            var dropdownCode = elSelects[i - 2].EnhanceAs<Dropdown>();
+            var dropdownClass = elSelects[i - 1].EnhanceAs<Dropdown>();
 
             var dropdown = String.Compare(pdComponent, "class", StringComparison.CurrentCultureIgnoreCase) == 0 ? dropdownClass : dropdownCode;
 

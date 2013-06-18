@@ -123,7 +123,7 @@ namespace Medidata.RBT.PageObjects.Rave
             }
             else
             {
-                if (Browser.TryFindElementsBy(By.XPath(string.Format(".//td/span[text()='{0}']", identifier))).Count > 0)
+                if (Browser.TryFindElementsBy(By.XPath(string.Format(".//td/span[text()='{0}']", identifier))) != null)
                     textExists = true;
                 return textExists;
             }

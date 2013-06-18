@@ -288,14 +288,25 @@ namespace Medidata.RBT.Features.Rave.Steps
         }
 
         /// <summary>
-        /// Verify the inactive deviation class or code does not exist
+        /// Verify the deviation class or code does not exist
         /// </summary>
         /// <param name="columnIdentifier">The protocol deviation setting (class or code)</param>
         /// <param name="rowIdentifier">The setting's value</param>
-        [StepDefinition(@"I verify inactive deviation ""([^""]*)"" with value ""([^""]*)"" does not exists")]
-        public void IVerifyInactiveDeviation(string columnIdentifier, string rowIdentifier)
+        [StepDefinition(@"I verify deviation ""([^""]*)"" with value ""([^""]*)"" does not exist")]
+        public void IVerifyDeviation____DoesNotExist(string columnIdentifier, string rowIdentifier)
         {
             Assert.IsTrue(CurrentPage.As<ArchitectCheckPage>().VerifyDeviation(columnIdentifier, rowIdentifier, false));
+        }
+
+        /// <summary>
+        /// Verify the deviation class or code does not exist
+        /// </summary>
+        /// <param name="columnIdentifier">The protocol deviation setting (class or code)</param>
+        /// <param name="rowIdentifier">The setting's value</param>
+        [StepDefinition(@"I verify deviation ""([^""]*)"" with value ""([^""]*)"" exists")]
+        public void IVerifyDeviation____Exists(string columnIdentifier, string rowIdentifier)
+        {
+            Assert.IsTrue(CurrentPage.As<ArchitectCheckPage>().VerifyDeviation(columnIdentifier, rowIdentifier, true));
         }
 
         /// <summary>
@@ -333,6 +344,16 @@ namespace Medidata.RBT.Features.Rave.Steps
         }
 
         /// <summary>
+        /// Delete the Deviation Class
+        /// </summary>
+        /// <param name="pdClass">The Protocol Deviation Class value</param>
+        [StepDefinition(@"I delete Deviation Class ""([^""]*)""")]
+        public void IDeleteDeviationClass____(string pdClass)
+        {
+            CurrentPage.As<DeviationPage>().DeleteDeviationClass(pdClass);
+        }
+
+        /// <summary>
         /// Add a Deviation Code
         /// </summary>
         /// <param name="table">The Protocol Deviation Code information</param>
@@ -341,6 +362,16 @@ namespace Medidata.RBT.Features.Rave.Steps
         {
             List<ProtocolDeviationCodeModel> pdInfo = table.CreateSet<ProtocolDeviationCodeModel>().ToList();
             CurrentPage.As<DeviationPage>().AddDeviationCodes(pdInfo);
+        }
+
+        /// <summary>
+        /// Delete the Deviation Code
+        /// </summary>
+        /// <param name="pdCode">The Protocol Deviation Code value</param>
+        [StepDefinition(@"I delete Deviation Code ""([^""]*)""")]
+        public void IDeleteDeviationCode____(string pdCode)
+        {
+            CurrentPage.As<DeviationPage>().DeleteDeviationCode(pdCode);
         }
 
         #region Steps pertaining to manipulating or verifying the configuration settings via database

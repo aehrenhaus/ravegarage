@@ -96,14 +96,9 @@ namespace Medidata.RBT.PageObjects.Rave.Configuration
         public IPage Activate(string type, string identifierToActivate) 
         {
             string areaIdentifier = type == "deviation code" ? "Code" : "Class";
-            var row = GetRow(identifierToActivate, areaIdentifier, false);
-            IWebElement updateButton = row.TryFindElementByXPath(".//img[contains(@src, 'i_cedit.gif')]");
-            updateButton.Click();
-            row = GetRow(identifierToActivate, areaIdentifier, true);
-            GetCheckBox(row, areaIdentifier + "Active").Check();
-
-            updateButton = row.TryFindElementByXPath(".//img[contains(@src, 'i_ccheck.gif')]");
-            updateButton.Click();
+            Browser.TryFindElementBy(By.XPath(".//table[@id='_ctl0_Content_" + areaIdentifier + "Grid']/.//td[contains(text(),'" + identifierToActivate + "')]/../td/a/img[contains(@src,'../../Img/i_cedit.gif')]")).Click();
+            Browser.TryFindElementBy(By.XPath(".//table[@id='_ctl0_Content_" + areaIdentifier + "Grid']/.//td/input[@value='" + identifierToActivate + "']/../../td/input[contains(@id,'" + areaIdentifier + "Active')]")).EnhanceAs<Checkbox>().Check();
+            Browser.TryFindElementBy(By.XPath(".//img[contains(@src,'../../Img/i_ccheck.gif')]")).Click();
             return this;
         }
 
@@ -116,14 +111,9 @@ namespace Medidata.RBT.PageObjects.Rave.Configuration
         public IPage Inactivate(string type, string identifierToInactivate)
         {
             string areaIdentifier = type == "deviation code" ? "Code" : "Class";
-            var row = GetRow(identifierToInactivate, areaIdentifier, false);
-            IWebElement updateButton = row.TryFindElementByXPath(".//img[contains(@src, 'i_cedit.gif')]");
-            updateButton.Click();
-            row = GetRow(identifierToInactivate, areaIdentifier, true);
-            GetCheckBox(row, areaIdentifier + "Active").Uncheck();
-
-            updateButton = row.TryFindElementByXPath(".//img[contains(@src, 'i_ccheck.gif')]");
-            updateButton.Click();
+            Browser.TryFindElementBy(By.XPath(".//table[@id='_ctl0_Content_" + areaIdentifier + "Grid']/.//td[contains(text(),'" + identifierToInactivate + "')]/../td/a/img[contains(@src,'../../Img/i_cedit.gif')]")).Click();
+            Browser.TryFindElementBy(By.XPath(".//table[@id='_ctl0_Content_" + areaIdentifier + "Grid']/.//td/input[@value='" + identifierToInactivate + "']/../../td/input[contains(@id,'" + areaIdentifier + "Active')]")).EnhanceAs<Checkbox>().Uncheck();
+            Browser.TryFindElementBy(By.XPath(".//img[contains(@src,'../../Img/i_ccheck.gif')]")).Click();
             return this;
         }
 
@@ -145,12 +135,24 @@ namespace Medidata.RBT.PageObjects.Rave.Configuration
         public void AddDeviationClass(string classValue, bool active)
         {
             Browser.TryFindElementBy(By.XPath(".//a[text()='Add Deviation Class']")).Click();
-            Browser.TryFindElementBy(By.XPath(".//input[contains(@id,'ClassValue')]")).EnhanceAs<Textbox>().SetText(classValue);
-            var elActive = Browser.TryFindElementBy(By.XPath(".//input[contains(@id,'ClassActive')]")).EnhanceAs<Checkbox>();
+            var elClassValue = Browser.TryFindElementBy(By.XPath(".//input[contains(@id,'ClassValue')]")).EnhanceAs<Textbox>();
+            elClassValue.SetText(classValue);
+            var elActive = elClassValue.TryFindElementBy(By.XPath("../../td/input[contains(@id,'ClassActive')]")).EnhanceAs<Checkbox>();
             if (active)
                 elActive.Check();
             else
                 elActive.Uncheck();
+            Browser.TryFindElementBy(By.XPath(".//img[contains(@src,'../../Img/i_ccheck.gif')]")).Click();
+        }
+
+        /// <summary>
+        /// Delete the Protocol Deviation Class
+        /// </summary>
+        /// <param name="classValue">Protocol Deviation Class value</param>
+        public void DeleteDeviationClass(string classValue)
+        {
+            Browser.TryFindElementBy(By.XPath(".//table[@id='_ctl0_Content_ClassGrid']/.//td[contains(text(),'" + classValue + "')]/../td/a/img[contains(@src,'../../Img/i_cedit.gif')]")).Click();
+            Browser.TryFindElementByPartialID("DeleteClass").EnhanceAs<Checkbox>().Check();
             Browser.TryFindElementBy(By.XPath(".//img[contains(@src,'../../Img/i_ccheck.gif')]")).Click();
         }
 
@@ -172,12 +174,24 @@ namespace Medidata.RBT.PageObjects.Rave.Configuration
         public void AddDeviationCode(string codeValue, bool active)
         {
             Browser.TryFindElementBy(By.XPath(".//a[text()='Add Deviation Code']")).Click();
-            Browser.TryFindElementBy(By.XPath(".//input[contains(@id,'CodeValue')]")).EnhanceAs<Textbox>().SetText(codeValue);
-            var elActive = Browser.TryFindElementBy(By.XPath(".//input[contains(@id,'CodeActive')]")).EnhanceAs<Checkbox>();
+            var elCodeValue = Browser.TryFindElementBy(By.XPath(".//input[contains(@id,'CodeValue')]")).EnhanceAs<Textbox>();
+            elCodeValue.SetText(codeValue);
+            var elActive = elCodeValue.TryFindElementBy(By.XPath("../../td/input[contains(@id,'CodeActive')]")).EnhanceAs<Checkbox>();
             if (active)
                 elActive.Check();
             else
                 elActive.Uncheck();
+            Browser.TryFindElementBy(By.XPath(".//img[contains(@src,'../../Img/i_ccheck.gif')]")).Click();
+        }
+
+        /// <summary>
+        /// Delete the Protocol Deviation Code
+        /// </summary>
+        /// <param name="codeValue">Protocol Deviation Code value</param>
+        public void DeleteDeviationCode(string codeValue)
+        {
+            Browser.TryFindElementBy(By.XPath(".//table[@id='_ctl0_Content_CodeGrid']/.//td[contains(text(),'" + codeValue + "')]/../td/a/img[contains(@src,'../../Img/i_cedit.gif')]")).Click();
+            Browser.TryFindElementByPartialID("DeleteCode").EnhanceAs<Checkbox>().Check();
             Browser.TryFindElementBy(By.XPath(".//img[contains(@src,'../../Img/i_ccheck.gif')]")).Click();
         }
         #endregion
@@ -197,28 +211,6 @@ namespace Medidata.RBT.PageObjects.Rave.Configuration
                 parentArea = Browser.TryFindElementById("_ctl0_Content_CodeGrid").EnhanceAs<HtmlTable>();
             }
             return parentArea;
-        }
-
-        private IWebElement GetRow(string identifierToInactivate, string areaIdentifier, bool editMode)
-        {
-            IWebElement row = null;
-            HtmlTable parentArea = SelectDeviationTable(areaIdentifier);
-            if (parentArea != null)
-            {
-                if (!editMode)
-                {
-                    var matchTable = new Table(areaIdentifier + " Value");
-                    matchTable.AddRow(identifierToInactivate);
-                    row = GetMatchingRow(parentArea, matchTable);
-                }
-                else
-                {
-                    row = parentArea.Rows().Skip(1).FirstOrDefault(rw => rw.FindElementsByPartialId(areaIdentifier + "Value") != null);
-                }
-
-            }
-
-            return row;
         }
 
         private IWebElement GetMatchingRow(HtmlTable parentArea, Table tableToMatch)
