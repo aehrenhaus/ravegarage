@@ -197,13 +197,8 @@ namespace Medidata.RBT.Utilities
 
             bool matchFound = false;
 
-
-            Bitmap[] bitmaps = ExtractGenericObject<Bitmap[]>(() =>
-                {
-                    BaseEnhancedPDFPage page = GetPageFromFirstMatchingBookmark(pdf, pageName);
-                    return page.BasePage.ExtractImages();
-                }
-            );
+            //extract bitmaps
+            Bitmap[] bitmaps = ExtractPageBitmaps(pdf, pageName, 10);
 
             foreach (Bitmap bitmap in bitmaps)
             {
@@ -240,6 +235,22 @@ namespace Medidata.RBT.Utilities
         }
 
         /// <summary>
+        /// Method the extract the bitmaps from specified pdf and a specified page
+        /// </summary>
+        /// <param name="pdf">pdf object to extract bitmaps from</param>
+        /// <param name="pageName">name of the page on the pdf to check for bitmaps</param>
+        /// <param name="timeoutSeconds">if retries are required then timeout in seconds should be specified, default is no timeout</param>
+        /// <returns></returns>
+        public Bitmap[] ExtractPageBitmaps(RBT.BaseEnhancedPDF pdf, string pageName, int timeoutSeconds = 0)
+        {
+            return ExtractGenericObject<Bitmap[]>(() =>
+            {
+                BaseEnhancedPDFPage page = GetPageFromFirstMatchingBookmark(pdf, pageName);
+                return page.BasePage.ExtractImages();
+            }, timeoutSeconds);
+        }
+
+        /// <summary>
         /// This generic method can be used to extract ICollections with re-attempts when returned 
         /// collection from extraction logic is null or has count 0
         /// </summary>
@@ -251,16 +262,12 @@ namespace Medidata.RBT.Utilities
         {
             T1 result;
 
-            result = extractor();
-
-            while ((result == null || result.Count < 1) && timeoutSeconds >= 0)
+            for (result = extractor(); (result == null || result.Count < 1) && timeoutSeconds > 0; timeoutSeconds--)
             {
                 System.Threading.Thread.Sleep(1000);
-                timeoutSeconds--;
-                result = extractor(); 
+                result = extractor();
             }
             
-
             return result;
         }
 
