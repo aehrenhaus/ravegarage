@@ -116,8 +116,6 @@ namespace Medidata.RBT
 			TrySaveScreenShot();
 
 			Factory.DeleteObjectsMarkedForScenarioDeletion();
-            //cleanup the url session id save in the hash table as new login will generate new session id
-            WebTestContext.Storage["UrlSessionID"] = ""; 
 		}
 
 		public override void AfterStep()
