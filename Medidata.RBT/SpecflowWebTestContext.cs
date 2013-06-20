@@ -112,12 +112,12 @@ namespace Medidata.RBT
 		public override void AfterScenario()
 		{
 			base.AfterScenario();
-            WebTestContext.Storage["UrlSessionID"] = ""; //cleanup the url session id save in the hash table as new login will generate new session id
 			//take a snapshot after every scenario
 			TrySaveScreenShot();
 
 			Factory.DeleteObjectsMarkedForScenarioDeletion();
-	
+            //cleanup the url session id save in the hash table as new login will generate new session id
+            WebTestContext.Storage["UrlSessionID"] = ""; 
 		}
 
 		public override void AfterStep()
