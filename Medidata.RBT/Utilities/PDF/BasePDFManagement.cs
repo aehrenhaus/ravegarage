@@ -16,6 +16,7 @@ using System.Drawing;
 using O2S.Components.PDF4NET.Converters;
 using System.Text.RegularExpressions;
 using Medidata.RBT.GenericModels;
+using System.Collections;
 
 namespace Medidata.RBT.Utilities
 {
@@ -195,25 +196,72 @@ namespace Medidata.RBT.Utilities
             }
 
             bool matchFound = false;
-            
-            BaseEnhancedPDFPage page = GetPageFromFirstMatchingBookmark(pdf, pageName);
-            foreach(Bitmap bitmap in page.BasePage.ExtractImages())
+
+
+            Bitmap[] bitmaps = ExtractGenericObject<Bitmap[]>(() =>
+                {
+                    BaseEnhancedPDFPage page = GetPageFromFirstMatchingBookmark(pdf, pageName);
+                    return page.BasePage.ExtractImages();
+                }
+            );
+
+            foreach (Bitmap bitmap in bitmaps)
             {
-                if (bitmap.Size != imageInImageFolder.Size)
-                    continue;
-                if (bitmap.FrameDimensionsList.FirstOrDefault() != imageInImageFolder.FrameDimensionsList.FirstOrDefault())
-                    continue;
-                if (bitmap.Palette.Flags != imageInImageFolder.Palette.Flags)
-                    continue;
-                if (bitmap.PixelFormat != imageInImageFolder.PixelFormat)
-                    continue;
-                if (bitmap.RawFormat.Guid != imageInImageFolder.RawFormat.Guid)
+                Console.WriteLine(string.Format("-> Size --> Actual: {0} --> Expected: {1}", 
+                    bitmap.Size, imageInImageFolder.Size));
+                if (bitmap.Size != imageInImageFolder.Size) 
                     continue;
 
+                Console.WriteLine(string.Format("-> FrameDimensionsList --> Actual: {0} --> Expected: {1}", 
+                    bitmap.FrameDimensionsList.FirstOrDefault(), imageInImageFolder.FrameDimensionsList.FirstOrDefault()));
+                if (bitmap.FrameDimensionsList.FirstOrDefault() != imageInImageFolder.FrameDimensionsList.FirstOrDefault())
+                    continue;
+
+                Console.WriteLine(string.Format("-> Palette.Flags --> Actual: {0} --> Expected: {1}", 
+                    bitmap.Palette.Flags, imageInImageFolder.Palette.Flags));
+                if (bitmap.Palette.Flags != imageInImageFolder.Palette.Flags)
+                    continue;
+
+                Console.WriteLine(string.Format("-> PixelFormat --> Actual: {0} --> Expected: {1}", 
+                    bitmap.PixelFormat, imageInImageFolder.PixelFormat));
+                if (bitmap.PixelFormat != imageInImageFolder.PixelFormat) 
+                    continue;
+
+                Console.WriteLine(string.Format("-> RawFormat.Guid --> Actual: {0} --> Expected: {1}", 
+                    bitmap.RawFormat.Guid, imageInImageFolder.RawFormat.Guid));
+                if (bitmap.RawFormat.Guid != imageInImageFolder.RawFormat.Guid)
+                    continue;
+                
                 matchFound = true;
+                break;
             }
 
             return matchFound;
+        }
+
+        /// <summary>
+        /// This generic method can be used to extract ICollections with re-attempts when returned 
+        /// collection from extraction logic is null or has count 0
+        /// </summary>
+        /// <typeparam name="T1">Any type that inherits from ICollection</typeparam>
+        /// <param name="extractor">Delegate to method with logic to extractor type T1</param>
+        /// <param name="timeoutSeconds">Optional parameter to indicate how much time to try extracting, default is 10 seconds</param>
+        /// <returns>returns the extracted type derived from ICollection</returns>
+        private T1 ExtractGenericObject<T1>(Func<T1> extractor, int timeoutSeconds = 10) where T1 : ICollection
+        {
+            T1 result;
+
+            result = extractor();
+
+            while ((result == null || result.Count < 1) && timeoutSeconds >= 0)
+            {
+                System.Threading.Thread.Sleep(1000);
+                timeoutSeconds--;
+                result = extractor(); 
+            }
+            
+
+            return result;
         }
 
         /// <summary>
