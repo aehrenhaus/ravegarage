@@ -36,8 +36,8 @@ namespace Medidata.RBT.Features.Rave
         [StepDefinition(@"I can (not )?see ""([^""]*)"" radio button")]
         public void ICanSee____Button(string not, string btnValue)
         {
-            bool canSee = CurrentPage.As<IVerifySomethingExists>()
-                .VerifySomethingExist(null, "control", btnValue, true);
+            bool canSee = CurrentPage.As<IVerifyObjectExistence>()
+                .VerifyObjectExistence(null, "control", btnValue, true);
 
             if (not.ToLower().Equals("not "))
                 Assert.IsFalse(canSee);
@@ -134,7 +134,7 @@ namespace Medidata.RBT.Features.Rave
         [StepDefinition(@"I can (not )?see the label ""([^""]*)""")]
         public void ICanSeeLink(string not, string label)
         {
-			bool result = CurrentPage.As<IVerifySomethingExists>().VerifySomethingExist(null,null,label);
+			bool result = CurrentPage.As<IVerifyObjectExistence>().VerifyObjectExistence(null,null,label);
 
             if (not.ToLower().Equals("not "))
                 Assert.IsFalse(result);

@@ -11,7 +11,7 @@ using TechTalk.SpecFlow;
 
 namespace Medidata.RBT.PageObjects.Rave
 {
-    public class SubjectPage : BaseEDCPage, ICanVerifyInOrder, IVerifySomethingExists, ITaskSummaryContainer
+    public class SubjectPage : BaseEDCPage, ICanVerifyInOrder, IVerifyObjectExistence, ITaskSummaryContainer
 	{
 
 		public SubjectPage ExpandTask(string header)
@@ -221,7 +221,7 @@ namespace Medidata.RBT.PageObjects.Rave
 							var ele = Browser.TryFindElementByXPath(string.Format("//*[text()='{0}']", identifier));
 							result = ele == null;
 						}
-                        else if(base.VerifySomethingExist(areaIdentifier, type, identifier, exactMatch))
+                        else if(base.VerifyObjectExistence(areaIdentifier, type, identifier, exactMatch))
                         {
                             result = true;
                         }

@@ -7,7 +7,7 @@ using Medidata.RBT.SeleniumExtension;
 
 namespace Medidata.RBT.PageObjects.Rave.Configuration
 {
-    public class CoderConfigurationPage : ConfigurationBasePage, IVerifySomethingExists
+    public class CoderConfigurationPage : ConfigurationBasePage, IVerifyObjectExistence
     {
         public void FillData(IEnumerable<CoderConfigurationModel> createSet)
         {
@@ -30,7 +30,16 @@ namespace Medidata.RBT.PageObjects.Rave.Configuration
             get { return "Modules/Configuration/CoderConfiguration.aspx"; }
         }
 
-        public bool VerifySomethingExist(string areaIdentifier, string type, string identifier, bool exactMatch = false, int? amountOfTimes = null, RBT.BaseEnhancedPDF pdf = null, bool? bold = null)
+        public bool VerifyObjectExistence(
+            string areaIdentifier, 
+            string type, 
+            string identifier, 
+            bool exactMatch = false, 
+            int? amountOfTimes = null, 
+            RBT.BaseEnhancedPDF pdf = null, 
+            bool? bold = null,
+            bool shouldExist = true
+            )
 		{
 			if (identifier == "Requires Response checked")
 			{
@@ -61,10 +70,18 @@ namespace Medidata.RBT.PageObjects.Rave.Configuration
 			return false;
 		}
 
-        public bool VerifySomethingExist(string areaIdentifier, string type, List<string> identifiers, bool exactMatch, int? amountOfTimes, RBT.BaseEnhancedPDF pdf, bool? bold)
+        public bool VerifyObjectExistence(
+            string areaIdentifier, 
+            string type, 
+            List<string> identifiers, 
+            bool exactMatch, 
+            int? amountOfTimes, 
+            RBT.BaseEnhancedPDF pdf, 
+            bool? bold,
+            bool shouldExist = true)
         {
             foreach (string identifier in identifiers)
-                if (VerifySomethingExist(areaIdentifier, type, identifier, exactMatch, amountOfTimes, pdf, bold) == false)
+                if (VerifyObjectExistence(areaIdentifier, type, identifier, exactMatch, amountOfTimes, pdf, bold) == false)
                     return false;
 
             return true;

@@ -11,7 +11,7 @@ using TechTalk.SpecFlow;
 
 namespace Medidata.RBT.PageObjects.Rave
 {
-    public class ArchitectCRFDraftPage : ArchitectBasePage, IVerifySomethingExists
+    public class ArchitectCRFDraftPage : ArchitectBasePage, IVerifyObjectExistence
 	{
         /// <summary>
         /// Publish a crf
@@ -140,7 +140,15 @@ namespace Medidata.RBT.PageObjects.Rave
         /// <param name="identifier"></param>
         /// <param name="exactMatch"></param>
         /// <returns></returns>
-        public bool VerifySomethingExist(string areaIdentifier, string type, string identifier, bool exactMatch = true, int? amountOfTimes = null, BaseEnhancedPDF pdf = null, bool? bold = null)
+        public bool VerifyObjectExistence(
+            string areaIdentifier,
+            string type,
+            string identifier,
+            bool exactMatch = true,
+            int? amountOfTimes = null,
+            BaseEnhancedPDF pdf = null,
+            bool? bold = null,
+            bool shouldExist = true)
         {
             if (type.Equals("text", StringComparison.InvariantCultureIgnoreCase))
                 return VerifyTextExist(areaIdentifier, identifier);
@@ -159,10 +167,17 @@ namespace Medidata.RBT.PageObjects.Rave
         /// <param name="identifiers">List of identifiers</param>
         /// <param name="exactMatch"></param>
         /// <returns></returns>
-        public bool VerifySomethingExist(string areaIdentifier, string type, List<string> identifiers, bool exactMatch = false, int? amountOfTimes = null, RBT.BaseEnhancedPDF pdf = null, bool? bold = null)
+        public bool VerifyObjectExistence(string areaIdentifier,
+            string type,
+            List<string> identifiers,
+            bool exactMatch = false,
+            int? amountOfTimes = null,
+            RBT.BaseEnhancedPDF pdf = null,
+            bool? bold = null,
+            bool shouldExist = true)
         {
             foreach (string identifier in identifiers)
-                if (VerifySomethingExist(areaIdentifier, type, identifier, exactMatch, amountOfTimes, pdf, bold) == false)
+                if (VerifyObjectExistence(areaIdentifier, type, identifier, exactMatch, amountOfTimes, pdf, bold) == false)
                     return false;
             return true;
         }

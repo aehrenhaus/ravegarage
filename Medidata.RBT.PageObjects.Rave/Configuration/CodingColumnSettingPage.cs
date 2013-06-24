@@ -9,7 +9,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace Medidata.RBT.PageObjects.Rave.Configuration
 {
 
-	public class CodingColumnSettingPage : ConfigurationBasePage, IVerifySomethingExists, IVerifyRowsExist
+	public class CodingColumnSettingPage : ConfigurationBasePage, IVerifyObjectExistence, IVerifyRowsExist
     {
 		public void EnterData(IEnumerable<CodingColumnModel> model)
 		{
@@ -39,7 +39,15 @@ namespace Medidata.RBT.PageObjects.Rave.Configuration
             }
         }
 
-        public bool VerifySomethingExist(string areaIdentifier, string type, string identifier, bool exactMatch = false, int? amountOfTimes = null, RBT.BaseEnhancedPDF pdf = null, bool? bold = null)
+        public bool VerifyObjectExistence(
+            string areaIdentifier,
+            string type,
+            string identifier,
+            bool exactMatch = false,
+            int? amountOfTimes = null,
+            RBT.BaseEnhancedPDF pdf = null,
+            bool? bold = null,
+            bool shouldExist = true)
 		{
 			if (type == "text")
 			{
@@ -50,10 +58,18 @@ namespace Medidata.RBT.PageObjects.Rave.Configuration
 			return false;
 		}
 
-        public bool VerifySomethingExist(string areaIdentifier, string type, List<string> identifiers, bool exactMatch, int? amountOfTimes, RBT.BaseEnhancedPDF pdf, bool? bold)
+        public bool VerifyObjectExistence(
+            string areaIdentifier,
+            string type,
+            List<string> identifiers,
+            bool exactMatch,
+            int? amountOfTimes,
+            RBT.BaseEnhancedPDF pdf,
+            bool? bold,
+            bool shouldExist = true)
         {
             foreach (string identifier in identifiers)
-                if (VerifySomethingExist(areaIdentifier, type, identifier, exactMatch, amountOfTimes, pdf, bold) == false)
+                if (VerifyObjectExistence(areaIdentifier, type, identifier, exactMatch, amountOfTimes, pdf, bold) == false)
                     return false;
 
             return true;
