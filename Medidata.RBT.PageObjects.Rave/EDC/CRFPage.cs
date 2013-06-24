@@ -8,7 +8,7 @@ using Medidata.RBT.PageObjects.Rave.TableModels;
 
 namespace Medidata.RBT.PageObjects.Rave
 {
-    public class CRFPage : BaseEDCPage, IVerifySomethingExists
+    public class CRFPage : BaseEDCPage, IVerifyObjectExistence
     {
         public CRFPage SelectUnitsForFields(IEnumerable<LabRangeModel> units)
         {
@@ -91,12 +91,20 @@ namespace Medidata.RBT.PageObjects.Rave
 			return this;
 		}
 
-        public new bool VerifySomethingExist(string areaIdentifier, string type, string identifier, bool exactMatch = false, int? amountOfTimes = null, RBT.BaseEnhancedPDF pdf = null, bool? bold = null)
+        public new bool VerifyObjectExistence(
+            string areaIdentifier,
+            string type,
+            string identifier,
+            bool exactMatch = false,
+            int? amountOfTimes = null,
+            RBT.BaseEnhancedPDF pdf = null,
+            bool? bold = null,
+            bool shouldExist = true)
         {
             if(identifier.Equals("Save", StringComparison.InvariantCultureIgnoreCase) && type.Equals("control", StringComparison.InvariantCultureIgnoreCase))
-                return base.VerifySomethingExist(areaIdentifier, type, "_ctl0_Content_R_footer_SB", exactMatch, amountOfTimes, pdf, bold);
+                return base.VerifyObjectExistence(areaIdentifier, type, "_ctl0_Content_R_footer_SB", exactMatch, amountOfTimes, pdf, bold);
 
-            return base.VerifySomethingExist(areaIdentifier, type, identifier, exactMatch, amountOfTimes, pdf, bold);
+            return base.VerifyObjectExistence(areaIdentifier, type, identifier, exactMatch, amountOfTimes, pdf, bold);
         }
 
         #region Query related

@@ -97,7 +97,7 @@ namespace Medidata.RBT.Common.Steps
 		[StepDefinition(@"I verify control ""([^""]*)"" exists")]
 		public void IVerifyControl____Exist(string identifier)
 		{
-			bool exist = CurrentPage.As<IVerifySomethingExists>().VerifySomethingExist(null,"control",identifier);
+			bool exist = CurrentPage.As<IVerifyObjectExistence>().VerifyObjectExistence(null,"control",identifier);
 			Assert.IsTrue(exist, String.Format("Control does not exist :{0}", identifier));
 		}
 
@@ -110,7 +110,7 @@ namespace Medidata.RBT.Common.Steps
         [StepDefinition(@"I verify text ""(.*)"" exists ""(.*)"" time\(s\) in ""(.*)""")]
         public void ThenIVerifyText____Exists_____TimeSIn____(string text, string amountOfTimes, string areaIdentifier)
         {
-            bool exist = CurrentPage.As<IVerifySomethingExists>().VerifySomethingExist(
+            bool exist = CurrentPage.As<IVerifyObjectExistence>().VerifyObjectExistence(
                 areaIdentifier, "text", text, amountOfTimes: Convert.ToInt32(amountOfTimes));
             Assert.IsTrue(exist, String.Format("Text does not exist :{0}", text));
         }
@@ -123,7 +123,7 @@ namespace Medidata.RBT.Common.Steps
 		[StepDefinition(@"I verify text ""([^""]*)"" exists in ""([^""]*)""")]
 		public void IVerifyText____ExistsIn____(string text, string areaIdentifier)
 		{
-			bool exist = CurrentPage.As<IVerifySomethingExists>().VerifySomethingExist(areaIdentifier,"text",text);
+			bool exist = CurrentPage.As<IVerifyObjectExistence>().VerifyObjectExistence(areaIdentifier,"text",text);
 			Assert.IsTrue(exist, String.Format("Text does not exist :{0}", text));
 		}
 
@@ -135,7 +135,7 @@ namespace Medidata.RBT.Common.Steps
         [StepDefinition(@"I verify text ""([^""]*)"" does not exist in ""([^""]*)""")]
         public void IVerifyText____DoesNotExistIn____(string text, string areaIdentifier)
         {
-            bool exist = CurrentPage.As<IVerifySomethingExists>().VerifySomethingExist(areaIdentifier, "text", text);
+            bool exist = CurrentPage.As<IVerifyObjectExistence>().VerifyObjectExistence(areaIdentifier, "text", text);
             Assert.IsFalse(exist, String.Format("Text does not exist :{0}", text));
         }
 
@@ -146,7 +146,7 @@ namespace Medidata.RBT.Common.Steps
 		[StepDefinition(@"I verify text ""([^""]*)"" exists")]
 		public void IVerifyText____Exists(string text)
 		{
-			bool exist = CurrentPage.As<IVerifySomethingExists>().VerifySomethingExist(null,"text",text);
+			bool exist = CurrentPage.As<IVerifyObjectExistence>().VerifyObjectExistence(null,"text",text);
 			Assert.IsTrue(exist, String.Format("Text does not exist :{0}", text));
 		}
 
@@ -171,7 +171,7 @@ namespace Medidata.RBT.Common.Steps
 		[StepDefinition(@"I verify text ""([^""]*)"" does not exist")]
 		public void IVerifyText____DoesNotExist(string text)
 		{
-			bool exist = CurrentPage.As<IVerifySomethingExists>().VerifySomethingExist(null,"text",text);
+			bool exist = CurrentPage.As<IVerifyObjectExistence>().VerifyObjectExistence(null,"text",text);
 			Assert.IsFalse(exist, String.Format("Text does exist :{0}", text));
 		}
 
@@ -208,7 +208,7 @@ namespace Medidata.RBT.Common.Steps
         [StepDefinition(@"I verify field ""([^""]*)"" exists")]
 		public void IVerifyField____Exists(string identifier)
 		{
-            Assert.IsTrue(CurrentPage.As<IVerifySomethingExists>().VerifySomethingExist(null, "field", identifier));
+            Assert.IsTrue(CurrentPage.As<IVerifyObjectExistence>().VerifyObjectExistence(null, "field", identifier));
 		}
 
         /// <summary>
@@ -219,7 +219,7 @@ namespace Medidata.RBT.Common.Steps
         [StepDefinition(@"I verify field ""([^""]*)"" with field OID ""([^""]*)"" exists")]
         public void IVerifyField____Exists(string identifier, string fieldOID)
         {
-            Assert.IsTrue(CurrentPage.As<IVerifySomethingExists>().VerifySomethingExist(fieldOID, "field", identifier));
+            Assert.IsTrue(CurrentPage.As<IVerifyObjectExistence>().VerifyObjectExistence(fieldOID, "field", identifier));
         }
 
         /// <summary>
@@ -229,7 +229,7 @@ namespace Medidata.RBT.Common.Steps
         [StepDefinition(@"I verify field ""([^""]*)"" does not exist")]
         public void IVerifyField____DoesNotExist(string identifier)
         {
-            Assert.IsFalse(CurrentPage.As<IVerifySomethingExists>().VerifySomethingExist(null, "field", identifier));
+            Assert.IsFalse(CurrentPage.As<IVerifyObjectExistence>().VerifyObjectExistence(null, "field", identifier));
         }
 
         /// <summary>
@@ -239,7 +239,7 @@ namespace Medidata.RBT.Common.Steps
         [StepDefinition(@"I verify button ""([^""]*)"" exists")]
         public void IVerifyButton____Exists(string identifier)
         {
-            Assert.IsTrue(CurrentPage.As<IVerifySomethingExists>().VerifySomethingExist(null, "button", identifier));
+            Assert.IsTrue(CurrentPage.As<IVerifyObjectExistence>().VerifyObjectExistence(null, "button", identifier));
         }
 
         /// <summary>
@@ -249,7 +249,7 @@ namespace Medidata.RBT.Common.Steps
         [StepDefinition(@"I verify button ""([^""]*)"" does not exist")]
         public void IVerifyButton____DoesNotExist(string identifier)
         {
-            Assert.IsFalse(CurrentPage.As<IVerifySomethingExists>().VerifySomethingExist(null, "button", identifier));
+            Assert.IsFalse(CurrentPage.As<IVerifyObjectExistence>().VerifyObjectExistence(null, "button", identifier));
         }
 
         /// <summary>
@@ -271,7 +271,7 @@ namespace Medidata.RBT.Common.Steps
 		[StepDefinition(@"I should see ""([^""]*)"" in ""([^""]*)""")]
 		public void IShouldSee____In____(string identifier,string areaIdentifer)
 		{
-			bool exist = CurrentPage.As<IVerifySomethingExists>().VerifySomethingExist(areaIdentifer, null, identifier);
+			bool exist = CurrentPage.As<IVerifyObjectExistence>().VerifyObjectExistence(areaIdentifer, null, identifier);
 			Assert.IsTrue(exist, String.Format("Does exist :{0}", identifier));
 		}
 
@@ -282,7 +282,7 @@ namespace Medidata.RBT.Common.Steps
 		[StepDefinition(@"I should see ""([^""]*)""")]
 		public void IShouldSee____(string identifier)
 		{
-			bool exist = CurrentPage.As<IVerifySomethingExists>().VerifySomethingExist(null, null, identifier);
+			bool exist = CurrentPage.As<IVerifyObjectExistence>().VerifyObjectExistence(null, null, identifier);
 			Assert.IsTrue(exist, String.Format("Does exist :{0}", identifier));
 		}
 
@@ -293,7 +293,7 @@ namespace Medidata.RBT.Common.Steps
         [StepDefinition(@"I verify button ""([^""]*)"" is not visible")]
         public void IVerifyButton____IsNotVisible(string buttonName)
         {
-            bool visible = CurrentPage.As<IVerifySomethingExists>().VerifySomethingExist(null, "button", buttonName);
+            bool visible = CurrentPage.As<IVerifyObjectExistence>().VerifyObjectExistence(null, "button", buttonName);
             Assert.IsFalse(visible, String.Format("Is visible :[{0}] button", buttonName));
         }
 
@@ -304,7 +304,7 @@ namespace Medidata.RBT.Common.Steps
         [StepDefinition(@"I verify button ""([^""]*)"" is visible")]
         public void IVerifyButton____IsVisible(string buttonName)
         {
-            bool visible = CurrentPage.As<IVerifySomethingExists>().VerifySomethingExist(null, "button", buttonName);
+            bool visible = CurrentPage.As<IVerifyObjectExistence>().VerifyObjectExistence(null, "button", buttonName);
             Assert.IsTrue(visible, String.Format("Is not visible :[{0}] button", buttonName));
         }
 

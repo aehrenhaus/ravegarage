@@ -697,7 +697,7 @@ namespace Medidata.RBT.Features.Rave
             User user = SeedingContext.GetExistingFeatureObjectOrMakeNew(
                 userName, () => new User(userName));
             text = text.Replace(userName, user.UniqueName);
-            bool exist = CurrentPage.As<IVerifySomethingExists>().VerifySomethingExist(null, "text", text);
+            bool exist = CurrentPage.As<IVerifyObjectExistence>().VerifyObjectExistence(null, "text", text);
             Assert.IsTrue(exist, String.Format("Text does not exist :{0}", text));
         }
 
@@ -712,7 +712,7 @@ namespace Medidata.RBT.Features.Rave
             User user = SeedingContext.GetExistingFeatureObjectOrMakeNew(
                 userName, () => new User(userName));
             text = text.Replace(userName, user.UniqueName);
-            bool exist = CurrentPage.As<IVerifySomethingExists>().VerifySomethingExist(null, "text", text);
+            bool exist = CurrentPage.As<IVerifyObjectExistence>().VerifyObjectExistence(null, "text", text);
             Assert.IsFalse(exist, String.Format("Text exist :{0}", text));
         }
 

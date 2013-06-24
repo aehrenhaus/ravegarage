@@ -14,7 +14,7 @@ namespace Medidata.RBT.PageObjects.Rave
 {
 	public class UploadDraftPage : 
 		ArchitectBasePage, 
-		IVerifySomethingExists
+		IVerifyObjectExistence
 	{
         /// <summary>
         /// Upload a UploadDraft
@@ -53,7 +53,15 @@ namespace Medidata.RBT.PageObjects.Rave
 			}
 		}
 
-        public bool VerifySomethingExist(string areaIdentifier, string type, string identifier, bool exactMatch, int? amountOfTimes, RBT.BaseEnhancedPDF pdf = null, bool? bold = null)
+        public bool VerifyObjectExistence(
+            string areaIdentifier,
+            string type,
+            string identifier,
+            bool exactMatch,
+            int? amountOfTimes,
+            RBT.BaseEnhancedPDF pdf = null,
+            bool? bold = null,
+            bool shouldExist = true)
 		{
 			if (identifier != null)
 			{
@@ -77,10 +85,18 @@ namespace Medidata.RBT.PageObjects.Rave
 			throw new ArgumentNullException("identifier cannot be null");
 		}
 
-        public bool VerifySomethingExist(string areaIdentifier, string type, List<string> identifiers, bool exactMatch, int? amountOfTimes, RBT.BaseEnhancedPDF pdf, bool? bold)
+        public bool VerifyObjectExistence(
+            string areaIdentifier,
+            string type,
+            List<string> identifiers,
+            bool exactMatch,
+            int? amountOfTimes,
+            RBT.BaseEnhancedPDF pdf,
+            bool? bold,
+            bool shouldExist = true)
         {
             foreach (string identifier in identifiers)
-                if (VerifySomethingExist(areaIdentifier, type, identifier, exactMatch, amountOfTimes, pdf, bold) == false)
+                if (VerifyObjectExistence(areaIdentifier, type, identifier, exactMatch, amountOfTimes, pdf, bold) == false)
                     return false;
 
             return true;

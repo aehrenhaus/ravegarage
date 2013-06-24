@@ -144,7 +144,7 @@ namespace Medidata.RBT.Features.Rave
         [StepDefinition(@"I verify the PDF text contains")]
         public void IVerifyThePDFTextContains(Table table)
         {
-            Assert.IsTrue(BasePDFManagement.Instance.VerifySomethingExist(null, "text", table.CreateSet<GenericDataModel<string>>().ToList().ConvertAll<string>(x => x.Data), pdf: WebTestContext.LastLoadedPDF));
+            Assert.IsTrue(BasePDFManagement.Instance.VerifyObjectExistence(null, "text", table.CreateSet<GenericDataModel<string>>().ToList().ConvertAll<string>(x => x.Data), pdf: WebTestContext.LastLoadedPDF));
         }
 
         /// <summary>
@@ -154,7 +154,11 @@ namespace Medidata.RBT.Features.Rave
         [StepDefinition(@"I verify the PDF text does not contain")]
         public void IVerifyThePDFTextDoesNotContain(Table table)
         {
-            Assert.IsFalse(BasePDFManagement.Instance.VerifySomethingExist(null, "text", table.CreateSet<GenericDataModel<string>>().ToList().ConvertAll<string>(x => x.Data), pdf:WebTestContext.LastLoadedPDF));
+            Assert.IsTrue(BasePDFManagement.Instance.VerifyObjectExistence(null,
+                "text",
+                table.CreateSet<GenericDataModel<string>>().ToList().ConvertAll<string>(x => x.Data),
+                pdf: WebTestContext.LastLoadedPDF,
+                shouldExist: false));
         }
         
 
@@ -166,9 +170,7 @@ namespace Medidata.RBT.Features.Rave
         [StepDefinition(@"I verify image ""(.*)"" exits on PDF page ""(.*)""")]
         public void ThenIVerifyImage____ExitsOnPDFPage____(string imageName, string pageName)
         {
-            Assert.IsTrue(
-                BasePDFManagement.Instance.VerifySomethingExist(SpecialStringHelper.Replace(pageName), "image", imageName, pdf: WebTestContext.LastLoadedPDF), 
-                String.Format("Image {0} not on page {1}.", imageName, pageName));
+            Assert.IsTrue(BasePDFManagement.Instance.VerifyObjectExistence(SpecialStringHelper.Replace(pageName), "image", imageName, pdf: WebTestContext.LastLoadedPDF));
         }
 
         /// <summary>
@@ -327,7 +329,7 @@ namespace Medidata.RBT.Features.Rave
 
             foreach (PDFTextAndTextStyleModel stringToCheck in stringsToCheck)
             {
-                Assert.IsTrue(BasePDFManagement.Instance.VerifySomethingExist(
+                Assert.IsTrue(BasePDFManagement.Instance.VerifyObjectExistence(
                     SpecialStringHelper.Replace(pageName),
                     "text",
                     stringToCheck.Text,

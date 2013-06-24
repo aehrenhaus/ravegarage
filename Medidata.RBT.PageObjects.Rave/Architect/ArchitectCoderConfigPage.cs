@@ -12,7 +12,7 @@ using System.Collections.ObjectModel;
 
 namespace Medidata.RBT.PageObjects.Rave
 {
-    public class ArchitectCoderConfigPage : ArchitectBasePage, IVerifySomethingExists, IVerifyRowsExist
+    public class ArchitectCoderConfigPage : ArchitectBasePage, IVerifyObjectExistence, IVerifyRowsExist
     {
         public override string URL
         {
@@ -233,7 +233,15 @@ namespace Medidata.RBT.PageObjects.Rave
         /// <param name="identifier"></param>
         /// <param name="exactMatch"></param>
         /// <returns></returns>
-        public bool VerifySomethingExist(string areaIdentifier, string type, string identifier, bool exactMatch = true, int? amountOfTimes = null, BaseEnhancedPDF pdf = null, bool? bold = null)
+        public bool VerifyObjectExistence(
+            string areaIdentifier,
+            string type,
+            string identifier,
+            bool exactMatch = true,
+            int? amountOfTimes = null,
+            BaseEnhancedPDF pdf = null,
+            bool? bold = null,
+            bool shouldExist = true)
         {
             if (areaIdentifier.Equals("Coding Level", StringComparison.InvariantCultureIgnoreCase))
                 return VerifyCodingLevelExists(identifier);
@@ -249,10 +257,18 @@ namespace Medidata.RBT.PageObjects.Rave
             }
         }
 
-        public bool VerifySomethingExist(string areaIdentifier, string type, List<string> identifiers, bool exactMatch = false, int? amountOfTimes = null, RBT.BaseEnhancedPDF pdf = null, bool? bold = null)
+        public bool VerifyObjectExistence(
+            string areaIdentifier,
+            string type,
+            List<string> identifiers,
+            bool exactMatch = false,
+            int? amountOfTimes = null,
+            RBT.BaseEnhancedPDF pdf = null,
+            bool? bold = null,
+            bool shouldExist = true)
         {
             foreach (string identifier in identifiers)
-                if (VerifySomethingExist(areaIdentifier, type, identifier, exactMatch, amountOfTimes, pdf, bold) == false)
+                if (VerifyObjectExistence(areaIdentifier, type, identifier, exactMatch, amountOfTimes, pdf, bold) == false)
                     return false;
 
             return true;

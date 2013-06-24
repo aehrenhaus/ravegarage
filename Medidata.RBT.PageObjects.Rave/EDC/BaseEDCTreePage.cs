@@ -8,7 +8,7 @@ using System.Linq;
 
 namespace Medidata.RBT.PageObjects.Rave
 {
-	public abstract class BaseEDCPage : RavePageBase, IVerifySomethingExists
+	public abstract class BaseEDCPage : RavePageBase, IVerifyObjectExistence
 	{
 		public virtual IEDCFieldControl FindField(string fieldName)
 		{
@@ -113,7 +113,15 @@ namespace Medidata.RBT.PageObjects.Rave
 
 		#region IVerifySomethingExists
 
-        public bool VerifySomethingExist(string areaIdentifier, string type, string identifier, bool exactMatch = false, int? amountOfTimes = null, BaseEnhancedPDF pdf = null, bool? bold = null)
+        public bool VerifyObjectExistence(
+            string areaIdentifier,
+            string type,
+            string identifier,
+            bool exactMatch = false,
+            int? amountOfTimes = null,
+            BaseEnhancedPDF pdf = null,
+            bool? bold = null,
+            bool shouldExist = true)
 		{        
             if (areaIdentifier == null)
             {
@@ -165,10 +173,18 @@ namespace Medidata.RBT.PageObjects.Rave
             return result != null;
 		}
 
-        public bool VerifySomethingExist(string areaIdentifier, string type, List<string> identifiers, bool exactMatch, int? amountOfTimes, RBT.BaseEnhancedPDF pdf, bool? bold)
+        public bool VerifyObjectExistence(
+            string areaIdentifier,
+            string type,
+            List<string> identifiers,
+            bool exactMatch,
+            int? amountOfTimes,
+            RBT.BaseEnhancedPDF pdf,
+            bool? bold,
+            bool shouldExist = true)
         {
             foreach (string identifier in identifiers)
-                if (VerifySomethingExist(areaIdentifier, type, identifier, exactMatch, amountOfTimes, pdf, bold) == false)
+                if (VerifyObjectExistence(areaIdentifier, type, identifier, exactMatch, amountOfTimes, pdf, bold) == false)
                     return false;
 
             return true;

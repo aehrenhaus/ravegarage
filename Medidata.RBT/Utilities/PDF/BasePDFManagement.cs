@@ -24,7 +24,7 @@ namespace Medidata.RBT.Utilities
     /// Helper class to manage pdf operations, these should NOT be rave-specific.
     /// Other pdf operations should be in BasePDFManagement
     /// </summary>
-    public sealed class BasePDFManagement : IVerifySomethingExists
+    public sealed class BasePDFManagement : IVerifyObjectExistence
     {
         private static readonly Lazy<BasePDFManagement> m_Instance = new Lazy<BasePDFManagement>(() => new BasePDFManagement());
 
@@ -156,26 +156,38 @@ namespace Medidata.RBT.Utilities
             return true;
         }
 
-        public bool VerifySomethingExist(string areaIdentifier, 
+        public bool VerifyObjectExistence(
+            string areaIdentifier, 
             string type, 
             string identifier, 
             bool exactMatch = false, 
             int? amountOfTimes = null, 
             RBT.BaseEnhancedPDF pdf = null,
-            bool? bold = null)
+            bool? bold = null,
+            bool shouldExist = true
+            )
         {
             if (type.Equals("image", StringComparison.InvariantCultureIgnoreCase))
                 return VerifyImageExists(pdf, identifier, areaIdentifier);
             if (type.Equals("text", StringComparison.InvariantCultureIgnoreCase))
-                return VerifyPDFText(pdf, identifier, areaIdentifier, bold) == null;
+                return VerifyPDFText(pdf, identifier, shouldExist, areaIdentifier, bold) == null;
 
             throw new Exception("Unknown verification type");
         }
 
-        public bool VerifySomethingExist(string areaIdentifier, string type, List<string> identifiers, bool exactMatch = false, int? amountOfTimes = null, RBT.BaseEnhancedPDF pdf = null, bool? bold = null)
+        public bool VerifyObjectExistence(
+            string areaIdentifier, 
+            string type, 
+            List<string> identifiers, 
+            bool exactMatch = false, 
+            int? amountOfTimes = null, 
+            RBT.BaseEnhancedPDF pdf = null, 
+            bool? bold = null,
+            bool shouldExist = true
+            )
         {
             if (type.Equals("text", StringComparison.InvariantCultureIgnoreCase))
-                return VerifyPDFText(pdf, identifiers, areaIdentifier) == null;
+                return VerifyPDFText(pdf, identifiers, shouldExist, areaIdentifier) == null;
 
             throw new Exception("Unknown verification type");
         }
@@ -403,11 +415,15 @@ namespace Medidata.RBT.Utilities
         /// </summary>
         /// <param name="pdf">The current pdf</param>
         /// <param name="stringsToSearchFor">The strings to search the pdf text for</param>
+        /// <param name="shouldExist">True if the text should exist in the pdf, false if it should not</param>
         /// <param name="pageName">Use when you want to search a specific page, not the entire PDF</param>
-        /// <returns>An error message if the any of the strings are not on the page. Null if there are no error messages.</returns>
+        /// <returns>An error message if the any of the strings are not on the page and they should be.
+        /// An error message, if the any of the strings are on the page and they should not be.
+        /// Null if there are no error messages.</returns>
         private string VerifyPDFText(
             BaseEnhancedPDF pdf, 
-            List<string> stringsToSearchFor, 
+            List<string> stringsToSearchFor,
+            bool shouldExist, 
             string pageName = null)
         {
             Assert.IsFalse(String.IsNullOrEmpty(pdf.Text));
@@ -417,7 +433,7 @@ namespace Medidata.RBT.Utilities
             foreach (string stringToVerifyGDM in stringsToSearchFor)
             {
                 string stringToVerify = Regex.Replace(stringToVerifyGDM, @"\s", "");
-                ret = VerifyPDFText(pdf, stringToVerify, pageName);
+                ret = VerifyPDFText(pdf, stringToVerify, shouldExist, pageName);
                 if (ret != null)
                     return ret;
             }
@@ -430,12 +446,14 @@ namespace Medidata.RBT.Utilities
         /// </summary>
         /// <param name="pdf">The pdf to use for searching</param>
         /// <param name="text">The text to search for</param>
+        /// <param name="shouldExist">True if the text should exist. False if the text should not exist.</param>
         /// <param name="pageName">The name of the page to search for the text on</param>
         /// <param name="bold">The text searched for is bold</param>
         /// <returns>An error message if the text is not on the page. Null if there are no error messages.</returns>
         private string VerifyPDFText(
             RBT.BaseEnhancedPDF pdf,
             string text,
+            bool shouldExist,
             string pageName = null,
             bool? bold = null
             )
@@ -446,10 +464,20 @@ namespace Medidata.RBT.Utilities
                 BaseEnhancedPDFPage page = GetPageFromFirstMatchingBookmark(pdf, pageName);
                 pdfSearchTextResultCollection = page.BasePage.SearchText(text);
             }
-            if ((pageName != null && (pdfSearchTextResultCollection == null || pdfSearchTextResultCollection.Count == 0))
-                || (pageName == null && !pdf.Text.Contains(text))
-                )
-                return String.Format("Text {0} not found on page and it should be.", text);
+            if (shouldExist)
+            {
+                if ((pageName != null && (pdfSearchTextResultCollection == null || pdfSearchTextResultCollection.Count == 0))
+                    || (pageName == null && !pdf.Text.Contains(text))
+                    )
+                    return String.Format("Text {0} not found in pdf and it should be.", text);
+            }
+            else
+            {
+                if ((pageName != null && (pdfSearchTextResultCollection != null || pdfSearchTextResultCollection.Count > 0))
+                    || (pageName == null && pdf.Text.Contains(text))
+                    )
+                    return String.Format("Text {0} found in pdf and it should not be.", text);
+            }
 
             if(bold.HasValue)
                 return VerifyBoldText(pdfSearchTextResultCollection, text, pageName, bold);
