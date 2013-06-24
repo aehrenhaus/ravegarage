@@ -93,6 +93,7 @@
     <Compile Include="Helpers\FilteredConsoleWriter.cs" />
     <Compile Include="Helpers\MathHelper.cs" />
     <Compile Include="Helpers\MultipleStreamWriter.cs" />
+    <Compile Include="PageObjectInterfaces\IVerifyObjectExistence.cs" />
     <Compile Include="PageObjectInterfaces\AbstractPaginationControl.cs" />
     <Compile Include="PageObjectInterfaces\IExpand.cs" />
     <Compile Include="PageObjectInterfaces\IEnterValues.cs" />
@@ -116,7 +117,6 @@
     <Compile Include="PageObjectInterfaces\PageBase.cs" />
     <Compile Include="PageObjectInterfaces\IControl.cs" />
     <Compile Include="PageObjectInterfaces\IActivatePage.cs" />
-    <Compile Include="PageObjectInterfaces\IVerifySomethingExists.cs" />
     <Compile Include="PageObjectInterfaces\IPage.cs" />
     <Compile Include="PageObjectInterfaces\ICanPaginate.cs" />
     <Compile Include="PageObjectInterfaces\PageObjectFactory.cs" />
