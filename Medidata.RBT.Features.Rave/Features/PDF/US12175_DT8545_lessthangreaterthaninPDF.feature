@@ -4,7 +4,6 @@
 # When a PDF form is generated special character such as "<" ">" "≤" "≥" "•" should be displayed properly
 # Carriage return should display correctly on the generated data PDF when Bold font is used in Field Label.
 @FT_US12175_DT8545_lessthangreaterthaninPDF
-@Ignore
 Feature: US12175_DT8545 When an EDC form contains special characters such as "<" ">" "≤" "≥" the PDF file should display the special characters appropriately.
 #Rave architect allows for characters that the PDF generator does support. The PDF generator should convert the special characters so that they are displayed appropriately as follows:
 #|Rave Architect |Symbol in PDF |
@@ -82,7 +81,7 @@ And I take a screenshot
 And I generate Blank PDF "Blank PDF A{Var(num2)}"
 And I wait for PDF "Blank PDF A{Var(num2)}" to complete
 And I take a screenshot
-When I view blank PDF "BASE.pdf" from request "Blank PDF A{Var(num2)}"
+When I view blank PDF "Baseline.pdf" from request "Blank PDF A{Var(num2)}"
 Then I verify the PDF text does not contain
 | Data                  |
 | &lt                   |
@@ -123,7 +122,7 @@ And I take a screenshot
 And I generate Blank PDF "Blank PDF B{Var(num3)}"
 And I wait for PDF "Blank PDF B{Var(num3)}" to complete
 And I take a screenshot
-When I view blank PDF "BASE.pdf" from request "Blank PDF B{Var(num3)}"
+When I view blank PDF "Baseline.pdf" from request "Blank PDF B{Var(num3)}"
 Then I verify the PDF text does not contain
 | Data                  |
 | &lt                   |
@@ -164,7 +163,7 @@ And I take a screenshot
 And I generate Blank PDF "Blank PDF C{Var(num4)}"
 And I wait for PDF "Blank PDF C{Var(num4)}" to complete
 And I take a screenshot
-When I view blank PDF "BASE.pdf" from request "Blank PDF C{Var(num4)}"
+When I view blank PDF "Baseline.pdf" from request "Blank PDF C{Var(num4)}"
 Then I verify the PDF text does not contain
 | Data                  |
 | &lt                   |
@@ -205,7 +204,7 @@ And I take a screenshot
 And I generate Blank PDF "Blank PDF D{Var(num5)}"
 And I wait for PDF "Blank PDF D{Var(num5)}" to complete
 And I take a screenshot
-When I view blank PDF "BASE.pdf" from request "Blank PDF D{Var(num5)}"
+When I view blank PDF "Baseline.pdf" from request "Blank PDF D{Var(num5)}"
 Then I verify the PDF text does not contain
 | Data                  |
 | &lt                   |
@@ -246,7 +245,7 @@ And I take a screenshot
 And I generate Blank PDF "Blank PDF E{Var(num6)}"
 And I wait for PDF "Blank PDF E{Var(num6)}" to complete
 And I take a screenshot
-When I view blank PDF "BASE.pdf" from request "Blank PDF E{Var(num6)}"
+When I view blank PDF "Baseline.pdf" from request "Blank PDF E{Var(num6)}"
 Then I verify the PDF text does not contain
 | Data                  |
 | &lt                   |
@@ -300,7 +299,7 @@ And I enter data in CRF and save
 | < < > > ≤ ≥ •\br Radio Button Vertical\rField&le &ge | < < > > ≤ ≥ •DD1&le &ge                                            |                                                 | RadioButton Vertical |
 | &le &geSearch\rField< < > > ≤ ≥ •\br                 | <>≤ ≥DD2                                                           |                                                 | Search List          |
 | < < > > ≤ ≥ •\br CheckBox\rField1&le &ge             | true                                                               |                                                 | CheckBox             |
-| < < > > ≤ ≥ •\br Signature\rField&le &ge             | SUPER USER 1                                                       |                                         | Signature            |
+| < < > > ≤ ≥ •\br Signature\rField&le &ge             | SUPER USER 1                                                       |                                                 | Signature            |
 And I select link "< < > > ≤ ≥ •\brPDF Log Form &le &ge"
 And I enter data in CRF and save
 | Field                                                | Data                                                               | AdditionalData                                  | Control Type         |
@@ -318,7 +317,7 @@ And I enter data in CRF and save
 | < < > > ≤ ≥ •\br Radio Button Vertical\rField&le &ge | <>≤ ≥DD2                                                           |                                                 | RadioButton Vertical |
 | &le &ge\br Search\rField< < > > ≤ ≥ •                | &lt &lt; &gt &gt; &le; &ge; <li></li>DD1&le &ge                    |                                                 | Search List          |
 | < < > > ≤ ≥ •\br CheckBox\rField1&le &ge             | true                                                               |                                                 | CheckBox             |
-| < < > > ≤ ≥ •\br Signature\rField&le &ge             | SUPER USER 1                                                       |                                         | Signature            |
+| < < > > ≤ ≥ •\br Signature\rField&le &ge             | SUPER USER 1                                                       |                                                 | Signature            |
 And I select link "< < > > ≤ ≥ •\brPDF Mixed Form &le &ge"
 And I enter data in CRF and save
 | Field                                                | Data                                                               | AdditionalData                                  | Control Type         |
@@ -336,7 +335,7 @@ And I enter data in CRF and save
 | < < > > ≤ ≥ •\br Radio Button Vertical\rField&le &ge | <>≤ ≥DD2                                                           |                                                 | RadioButton Vertical |
 | &le &ge\br Search\rField< < > > ≤ ≥ •                | &lt &lt; &gt &gt; &le; &ge; <li></li>DD1&le &ge                    |                                                 | Search List          |
 | < < > > ≤ ≥ •\br CheckBox\rField1&le &ge             | true                                                               |                                                 | CheckBox             |
-| < < > > ≤ ≥ •\br Signature\rField&le &ge             | SUPER USER 1                                                       |                                         | Signature            |
+| < < > > ≤ ≥ •\br Signature\rField&le &ge             | SUPER USER 1                                                       |                                                 | Signature            |
 And I select link "PDF Unbold Form"
 And I enter data in CRF and save
 | Field     | Data                                                               | Control Type |
@@ -350,8 +349,8 @@ And I enter data in CRF and save
 | < < > > ≤ ≥•\brNEUTROPHILS&le&ge | 45   | textbox      |
 And I navigate to "PDF Generator" module
 When I create Data PDF
-| Name                        | Profile     | Study          | Role         | Locale  | Site Groups | Sites           | Subjects     |
-| Data PDF A{RndNum<num7>(3)} | US12175PDF6 | PDF Font Study | SUPER ROLE 1 | English | World       | PDF Font Site 1 | S{Var(num1)} |
+| Name                        | Profile     | Study          | Role         | Locale  | Site Groups | Sites    | Subjects     |
+| Data PDF A{RndNum<num7>(3)} | US12175PDF6 | PDF Font Study | SUPER ROLE 1 | English | World       | Site_001 | S{Var(num1)} |
 And I take a screenshot
 And I generate Data PDF "Data PDF A{Var(num7)}"
 And I wait for PDF "Data PDF A{Var(num7)}" to complete
@@ -461,8 +460,8 @@ And I enter data in CRF and save
 | < < > > ≤ ≥•\brNEUTROPHILS&le&ge | 45   | textbox      |
 And I navigate to "PDF Generator" module
 When I create Data PDF
-| Name                        | Profile     | Study          | Role         | Locale  | Site Groups | Sites           | Subjects     |
-| Data PDF B{RndNum<num8>(3)} | US12175PDF2 | PDF Font Study | SUPER ROLE 1 | English | World       | PDF Font Site 1 | S{Var(num1)} |
+| Name                        | Profile     | Study          | Role         | Locale  | Site Groups | Sites    | Subjects     |
+| Data PDF B{RndNum<num8>(3)} | US12175PDF2 | PDF Font Study | SUPER ROLE 1 | English | World       | Site_001 | S{Var(num1)} |
 And I take a screenshot
 And I generate Data PDF "Data PDF B{Var(num8)}"
 And I wait for PDF "Data PDF B{Var(num8)}" to complete
@@ -572,8 +571,8 @@ And I enter data in CRF and save
 | < < > > ≤ ≥•\brNEUTROPHILS&le&ge | 45   | textbox      |
 And I navigate to "PDF Generator" module
 When I create Data PDF
-| Name                        | Profile     | Study          | Role         | Locale  | Site Groups | Sites           | Subjects     |
-| Data PDF C{RndNum<num9>(3)} | US12175PDF3 | PDF Font Study | SUPER ROLE 1 | English | World       | PDF Font Site 1 | S{Var(num1)} |
+| Name                        | Profile     | Study          | Role         | Locale  | Site Groups | Sites    | Subjects     |
+| Data PDF C{RndNum<num9>(3)} | US12175PDF3 | PDF Font Study | SUPER ROLE 1 | English | World       | Site_001 | S{Var(num1)} |
 And I take a screenshot
 And I generate Data PDF "Data PDF C{Var(num9)}"
 And I wait for PDF "Data PDF C{Var(num9)}" to complete
@@ -682,8 +681,8 @@ And I enter data in CRF and save
 | < < > > ≤ ≥•\brNEUTROPHILS&le&ge | 45   | textbox      |
 And I navigate to "PDF Generator" module
 When I create Data PDF
-| Name                         | Profile     | Study          | Role         | Locale   | Site Groups | Sites           | Subjects     |
-| Data PDF D{RndNum<num10>(3)} | US12175PDF4 | PDF Font Study | SUPER ROLE 1 | Japanese | World       | PDF Font Site 1 | S{Var(num1)} |
+| Name                         | Profile     | Study          | Role         | Locale   | Site Groups | Sites    | Subjects     |
+| Data PDF D{RndNum<num10>(3)} | US12175PDF4 | PDF Font Study | SUPER ROLE 1 | Japanese | World       | Site_001 | S{Var(num1)} |
 And I take a screenshot
 And I generate Data PDF "Data PDF D{Var(num10)}"
 And I wait for PDF "Data PDF D{Var(num10)}" to complete
@@ -792,8 +791,8 @@ And I enter data in CRF and save
 | < < > > ≤ ≥•\brNEUTROPHILS&le&ge | 45   | textbox      |
 And I navigate to "PDF Generator" module
 When I create Data PDF
-| Name                         | Profile     | Study          | Role         | Locale   | Site Groups | Sites           | Subjects     |
-| Data PDF E{RndNum<num11>(3)} | US12175PDF5 | PDF Font Study | SUPER ROLE 1 | Japanese | World       | PDF Font Site 1 | S{Var(num1)} |
+| Name                         | Profile     | Study          | Role         | Locale   | Site Groups | Sites    | Subjects     |
+| Data PDF E{RndNum<num11>(3)} | US12175PDF5 | PDF Font Study | SUPER ROLE 1 | Japanese | World       | Site_001 | S{Var(num1)} |
 And I take a screenshot
 And I generate Data PDF "Data PDF E{Var(num11)}"
 And I wait for PDF "Data PDF E{Var(num11)}" to complete
@@ -901,8 +900,8 @@ And I enter data in CRF and save
 | < < > > ≤ ≥•\brNEUTROPHILS&le&ge | 45   | textbox      |
 And I navigate to "PDF Generator" module
 When I create Data PDF
-| Name                         | Profile     | Study          | Role         | Locale  | Site Groups | Sites           | Subjects     |
-| Data PDF F{RndNum<num12>(3)} | US12175PDF6 | PDF Font Study | SUPER ROLE 1 | English | World       | PDF Font Site 1 | S{Var(num1)} |
+| Name                         | Profile     | Study          | Role         | Locale  | Site Groups | Sites    | Subjects     |
+| Data PDF F{RndNum<num12>(3)} | US12175PDF6 | PDF Font Study | SUPER ROLE 1 | English | World       | Site_001 | S{Var(num1)} |
 And I take a screenshot
 And I generate Data PDF "Data PDF F{Var(num12)}"
 And I wait for PDF "Data PDF F{Var(num12)}" to complete

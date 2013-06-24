@@ -67,7 +67,7 @@ namespace Medidata.RBT.PageObjects.Rave
                 pdfTr = SearchContentResultsTable(dt, pdfName);
             }
 
-            ChooseFromCheckboxes("Live Status Update", true);
+            ChooseFromCheckboxes("LiveStatusUpdate", true);
             
             EnhancedElement genButton = pdfTr.FindImagebuttons().FirstOrDefault(x => x.GetAttribute("id").EndsWith("imgGenerateNow"));
 

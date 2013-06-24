@@ -29,20 +29,14 @@ namespace Medidata.RBT.PageObjects.Rave.Lab
         public void AddRangeType(string rangeTypeName)
         {
             this.ClickLink("Add New");
-            ReadOnlyCollection<IWebElement> rows = Browser.TryFindElementBy(By.XPath("//table[@id = '_ctl0_Content_MainDataGrid']"))
-                .EnhanceAs<HtmlTable>().Rows();
 
-            foreach (IWebElement row in rows.Reverse<IWebElement>())
+            IWebElement nameInput = Browser.TryFindElementBy(By.XPath("//table[@id = '_ctl0_Content_MainDataGrid']//input"));
+            if (nameInput != null)
             {
-                IWebElement nameInput = row.TryFindElementByPartialID("Name");
-                if (nameInput != null)
-                {
-                    nameInput.EnhanceAs<Textbox>().SetText(rangeTypeName);
-                    IWebElement tr = nameInput.Parent().Parent();
-                    IWebElement acceptButton = tr.FindElements(By.XPath(".//img")).FirstOrDefault(x => x.GetAttribute("src").EndsWith("i_ccheck.gif"));
-                    acceptButton.Click();
-                    break;
-                }
+                nameInput.EnhanceAs<Textbox>().SetText(rangeTypeName);
+                IWebElement tr = nameInput.Parent().Parent();
+                IWebElement acceptButton = tr.FindElements(By.XPath(".//img")).FirstOrDefault(x => x.GetAttribute("src").EndsWith("i_ccheck.gif"));
+                acceptButton.Click();
             }
         }
     }

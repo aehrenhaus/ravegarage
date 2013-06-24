@@ -112,14 +112,13 @@ namespace Medidata.RBT.PageObjects.Rave
                 if (URL.Equals("Modules/EDC/PrimaryRecordPage.aspx"))
                     return false;
 
-                var contentR = Context.Browser.TryFindElementByPartialID("Content_R");
-                var labDropdown = contentR.TryFindElementByPartialID("LOC_DropDown", false);
-                //If the page is inactive the lab dropdown won't be there
-                //still need the lab dropdown as an indictator that it is a lab page if there is no data
-                //The only page without a breaker class is the lab page
-                IWebElement breaker = Context.Browser.TryFindElementByXPath(".//*[@class = 'breaker']", false);
-                bool isLabform = labDropdown != null || breaker == null;
-                return isLabform;
+                //A lab form must contain a row with Range Status, Unit, and Range.
+                //We cannot use the lab dropdown as an indicator, because this is removed on an inactive page
+                IWebElement labHeaderRow = Context.Browser.TryFindElementByXPath("*//table/tbody/tr/td[text() = 'Range Status']/../td[text() = 'Unit']/../td[text() = 'Range']", false);
+                if (labHeaderRow == null)
+                    return false;
+                else
+                    return true;
             }
         }
 

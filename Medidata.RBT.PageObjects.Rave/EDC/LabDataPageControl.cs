@@ -9,96 +9,116 @@ using Medidata.RBT.SeleniumExtension;
 using System.Collections.Specialized;
 using System.Collections.ObjectModel;
 using Medidata.RBT.PageObjects.Rave.EDC;
+using Medidata.RBT.SharedObjects;
+using System.Text.RegularExpressions;
 
 namespace Medidata.RBT.PageObjects.Rave
 {
-	public class LabDataPageControl:ControlBase, IEDCDataPageControl
+    public class LabDataPageControl : ControlBase, IControl
 	{
 		public LabDataPageControl(IPage page)
 			: base(page)
 		{
-			//set Element here
 		}
+        private static readonly Regex s_fieldNameExtractor = new Regex(@"^(?<FIELD>.*?)(<\s*br\s*/*\s*>\s*<\s*table.*?>.*)*$",
+            RegexOptions.Singleline | RegexOptions.IgnoreCase);
 
-		//-----------STRUCTURE Lab form:
-		//span id="_ctl0_Content_R"
-		//table 1 lab dropdown
-		//table 2
-		//   tr class="evenRow" width="100%
-		//        td 2 Label
-		//        td 4 
-		//            table
-		//                td 1 
-		//                    input
+        /// <summary>
+        /// Find the lab field matching the passed in fieldName.
+        /// </summary>
+        /// <param name="fieldName">The name of the field to find</param>
+        /// <returns>The lab field that was found</returns>
+        public IEDCFieldControl FindField(string fieldName)
+        {
+            SearchableTDs searchableTds = GetSearchableTDs(Page, false);
+            //If there are still no searchable tds, maybe we need to wait
+            if (searchableTds.LabSearchableTDs.Count == 0)
+                searchableTds = GetSearchableTDs(Page, true);
 
-		//        td 5 Range status
-		//        td 6 Unit
-		//        td 7 Range
-		//        td 8
-		//            table (pen and other action controls)
-		//	tr(next to the above)
-		//		td2
-		//			table
-		//				tr1
-		//					td 2 Query message<br>....,cancel box
-		//				tr2
-		//					td2 answer <br> dropdown answer textbox
-		//			table(other query)
-        public IEDCFieldControl FindField(string fieldName, int? record = null)
-		{
-            fieldName = ISearchContextExtend.ReplaceSpecialCharactersWithEscapeCharacters(fieldName);
-            //First, look for the field as a non-lab field
-            IEnumerable<IWebElement> leftSideTds = Page.Browser.FindElements(By.XPath("//td[@class='crf_rowLeftSide']"));
-            IWebElement area = leftSideTds.FirstOrDefault(x =>
+            //Then check the lab searchable tds
+            IWebElement nameTD = GetTDContainingFieldName(fieldName, searchableTds);
+
+            if (nameTD == null)
+                throw new Exception("Can't find field area:" + fieldName);
+
+            //Get content td
+            IWebElement elementTR = nameTD.Parent();
+
+            LabFieldControl field = new LabFieldControl(Page, nameTD, elementTR.TryFindElementBy(By.XPath("//following-sibling::tr")))
             {
-                return ISearchContextExtend.ReplaceTagsWithEscapedCharacters(x.FindElement(By.XPath(".//td[@class='crf_preText']")).GetInnerHtml())
-                       .Split(new string[] { "<" }, StringSplitOptions.None)[0].Trim() == fieldName;
-            });
+                FieldName = fieldName
+            };
+            if (field != null)
+                return field;
 
-            if (area == null) //bringing back original code to locate area, if the the area is not found.
+            throw new Exception("Can't find field area:" + fieldName);
+        }
+
+        /// <summary>
+        /// Get all of the TDs on a page which may contain the field name.
+        /// </summary>
+        /// <param name="currentPage">The current page</param>
+        /// <param name="wait">
+        /// Whether we want to wait for timeout or not when searching for the TDs.
+        /// Should not wait the first use and wait the second so that we don't have to wait for both types until the second go around.
+        /// If we do not do this, it will wait for both portrait and landscape fields the first time, which usually won't be necessary.
+        /// </param>
+        /// <returns>All of the TDs on a page which may contain the field name</returns>
+        private SearchableTDs GetSearchableTDs(IPage currentPage, bool wait)
+        {
+            return new SearchableTDs()
             {
-                area = leftSideTds.FirstOrDefault(x =>
-                {
-                    return x.FindElement(By.XPath(".//td[@class='crf_preText']")).GetInnerHtml()
-                        .Split(new string[] { "\r\n", "<" }, StringSplitOptions.None)[0].Trim() == fieldName;
-                });
+                LabSearchableTDs = new List<IWebElement>(currentPage.Browser.TryFindElementsBy(By.XPath("//tr[@class='evenRow' or @class='oddRow']/td[2]"), wait))
+            };
+        }
+
+        /// <summary>
+        /// Get the TD area containing the name of the field passed in
+        /// </summary>
+        /// <param name="fieldName">The name of the field to search for</param>
+        /// <param name="searchableTDs">All of the possible tds which may contain the field on the page</param>
+        /// <returns>The td containing the field with the name passed in and the index of that element in the searchable TDs</returns>
+        private IWebElement GetTDContainingFieldName(string fieldName, SearchableTDs searchableTDs)
+        {
+            string escFieldName = ISearchContextExtend.ReplaceSpecialCharactersWithEscapeCharacters(fieldName);
+            foreach (IWebElement searchableTD in searchableTDs.LabSearchableTDs)
+            {
+                if (escFieldName.Equals(GetEscapedFieldString(searchableTD), StringComparison.InvariantCulture))
+                    return searchableTD;
             }
-            if (area != null)
-            {
-                ReadOnlyCollection<IWebElement> tds = area.Parent().Children();
-                return new NonLabFieldControl(Page, area, tds[tds.Count - 1])
-                {
-                    FieldName = fieldName
-                };
-            }
-            else
-            {
-                IWebElement el = Page.Browser.FindElements(By.XPath("//span[contains(@id,'Content_R')]")).FirstOrDefault();
-                area = el.FindElementsByText<IWebElement>(fieldName).FirstOrDefault();
 
-                var fieldTRs = area.FindElements(By.XPath("./../../tr"));
+            return null;
+        }
 
-                int i;
-                for (i = 0; i < fieldTRs.Count; i++)
-                {
-                    if (ISearchContextExtend.ReplaceTagsWithEscapedCharacters(fieldTRs[i].Children()[1].GetInnerHtml())
-                            .Split(new string[] { "<" }, StringSplitOptions.None)[0].Trim() == fieldName)
-                        break;
-                }
+        private string GetEscapedFieldString(IWebElement ele)
+        {
+            string escFieldString = ISearchContextExtend.ReplaceTagsWithEscapedCharacters(MatchFieldString(ele));
 
-                IWebElement fieldTR = fieldTRs[i];
-                IWebElement fieldTRQueries = fieldTRs[i + 1];
+            //This should be already caught in the regex (s_fieldNameExtractor) but just 
+            //leaving it here for the time being - it should be transient
+            escFieldString = escFieldString
+                .Split(new string[] { "<" },
+                    StringSplitOptions.None)[0]
+                .Trim();
 
-                return new LabFieldControl(Page, fieldTR.Children()[1], fieldTRQueries)
-                {
-                    FieldName = fieldName
-                };
-            }
-		}
+            return escFieldString;
+        }
+
+        private string MatchFieldString(IWebElement element)
+        {
+            string html = element.GetInnerHtml();
+
+            Match M = s_fieldNameExtractor.Match(html);
+            var field = M.Success
+                ? M.Groups["FIELD"].Value
+                : html;
+
+            return field;
+        }
 
         public IEDCFieldControl FindUnitDropdown(string fieldText)
         {
-			IWebElement el = Page.Browser.FindElements(By.XPath("//span[contains(@id,'Content_R')]")).FirstOrDefault();
+            IWebElement el = Page.Browser.FindElements(By.XPath("//span[contains(@id,'Content_R')]")).FirstOrDefault();
             var area = el.FindElementsByText<IWebElement>(fieldText).FirstOrDefault();
 
             if (area == null)
