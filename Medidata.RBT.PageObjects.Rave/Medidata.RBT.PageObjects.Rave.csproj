@@ -133,6 +133,7 @@
     <Compile Include="Architect\ArchitectBasePage.cs" />
     <Compile Include="AmendmentManager\AMMigrationHomePage.cs" />
     <Compile Include="EDC\AuditsPage.cs" />
+    <Compile Include="EDC\SearchableTDs.cs" />
     <Compile Include="EDC\SubjectAdminPage.cs" />
     <Compile Include="EDC\FormHeaderControl.cs" />
     <Compile Include="EDC\ITaskSummaryContainer.cs" />
@@ -140,7 +141,6 @@
     <Compile Include="EDC\Models\CodeDataPointModel.cs" />
     <Compile Include="EDC\NonLabDataPageControl.cs" />
     <Compile Include="EDC\LabDataPageControl.cs" />
-    <Compile Include="EDC\IEDCDataPageControl.cs" />
     <Compile Include="EDC\NonLabFieldControl.cs" />
     <Compile Include="EDC\LabFieldControl.cs" />
     <Compile Include="EDC\IEDCFieldControl.cs" />

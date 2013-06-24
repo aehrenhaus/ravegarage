@@ -13,18 +13,18 @@ namespace Medidata.RBT.PageObjects.Rave
 {
     public class LabFieldControl : BaseEDCFieldControl
 	{
-		public LabFieldControl(IPage page, IWebElement MainTR, IWebElement QueriesTR)
+		public LabFieldControl(IPage page, IWebElement MainTD, IWebElement queriesTR)
 			: base(page)
 		{
-			this.MainTR = MainTR.EnhanceAs < EnhancedElement>();
-			this.QueriesTR = QueriesTR.EnhanceAs<EnhancedElement>();
-			this.FieldControlContainer = MainTR.Parent();
+			this.MainTD = MainTD.EnhanceAs<EnhancedElement>();
+            this.QueriesTR = queriesTR.EnhanceAs<EnhancedElement>();
+			this.FieldControlContainer = MainTD.Parent();
 		}
 
 		/// <summary>
 		/// This is the TD that has class 'crf_rowLeftSide'
 		/// </summary>
-		private EnhancedElement MainTR;
+		private EnhancedElement MainTD;
 		private EnhancedElement QueriesTR;
 
         public string FieldName { get; set; }
@@ -151,14 +151,14 @@ namespace Medidata.RBT.PageObjects.Rave
 
         internal bool VerifyData(LabRangeModel field)
         {
-            return VerifyData(MainTR, field.Data, "Data") &&
-                VerifyData(MainTR, field.Unit, "Unit") &&
-                VerifyData(MainTR, field.RangeStatus, "RangeStatus") &&
-                VerifyData(MainTR, field.StatusIcon, "StatusIcon") &&
-                VerifyData(MainTR, field.Range, "Range");
+            return VerifyData(MainTD, field.Data, "Data") &&
+                VerifyData(MainTD, field.Unit, "Unit") &&
+                VerifyData(MainTD, field.RangeStatus, "RangeStatus") &&
+                VerifyData(MainTD, field.StatusIcon, "StatusIcon") &&
+                VerifyData(MainTD, field.Range, "Range");
         }
 
-        private bool VerifyData(EnhancedElement MainTR, string text, string verificationType)
+        private bool VerifyData(EnhancedElement MainTD, string text, string verificationType)
         {
             int elementIndex;
             switch (verificationType)
@@ -173,9 +173,9 @@ namespace Medidata.RBT.PageObjects.Rave
                     elementIndex = 6;
                     break;
                 case "RangeStatus":
-                    return VerifyRangeStatus(MainTR, text);
+                    return VerifyRangeStatus(MainTD, text);
                 case "StatusIcon":
-                    return VerifyStatus(MainTR, text);
+                    return VerifyStatus(MainTD, text);
                 default:
                     elementIndex = 0;
                     break;
@@ -189,16 +189,16 @@ namespace Medidata.RBT.PageObjects.Rave
             return (el.Text.Trim().Equals(text.Trim()));
         }
 
-        private bool VerifyRangeStatus(EnhancedElement MainTR, string statusText)
+        private bool VerifyRangeStatus(EnhancedElement MainTD, string statusText)
         {
             if (statusText.Equals(""))
-                return !(MainTR.Parent().FindElements(By.XPath("./td"))[4].GetInnerHtml().Contains("/Img/") &&(MainTR.Parent().FindElements(By.XPath("./td"))[4].GetInnerHtml().Contains(".gif"))) ;
-            return MainTR.Parent().FindElements(By.XPath("./td"))[4].GetInnerHtml().Contains(StatusIconPathLookup(statusText));
+                return !(FieldControlContainer.FindElements(By.XPath("./td"))[4].GetInnerHtml().Contains("/Img/") && (FieldControlContainer.FindElements(By.XPath("./td"))[4].GetInnerHtml().Contains(".gif")));
+            return FieldControlContainer.FindElements(By.XPath("./td"))[4].GetInnerHtml().Contains(StatusIconPathLookup(statusText));
         }
 
-        private bool VerifyStatus(EnhancedElement MainTR, string statusText)
-        {  
-            return MainTR.Parent().FindElements(By.XPath("./td"))[7].GetInnerHtml().Contains(StatusIconPathLookup(statusText));
+        private bool VerifyStatus(EnhancedElement MainTD, string statusText)
+        {
+            return FieldControlContainer.FindElements(By.XPath("./td"))[7].GetInnerHtml().Contains(StatusIconPathLookup(statusText));
         }
 
     }

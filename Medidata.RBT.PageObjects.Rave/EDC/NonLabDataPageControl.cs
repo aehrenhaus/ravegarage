@@ -15,40 +15,14 @@ using Medidata.RBT.SharedObjects;
 namespace Medidata.RBT.PageObjects.Rave
 {
     /// <summary>
-    /// All of the searchable TDs on a page, separated into portrait or landscape. 
-    /// This will work for both standard and log fields. 
-    /// You do not need to separate those out.
-    /// </summary>
-    internal class SearchableTDs
-    {
-        public List<IWebElement> PortraitSearchableTDs { get; set; }
-        public List<IWebElement> LandscapeSearchableTDs { get; set; }
-    }
-
-    /// <summary>
     /// The data page control for non lab forms
     /// </summary>
-	public class NonLabDataPageControl: ControlBase, IEDCDataPageControl
+    public class NonLabDataPageControl : ControlBase, IControl
 	{
         public NonLabDataPageControl(IPage page)
             : base(page)
         {
         }
-		//-------------STRUCTURE for non-lab form
-		//span id="_ctl0_Content_R"
-		//    table 1 summary
-		//    table 2 
-		//        tr 1 class=breaker herader
-		//        tr 2+
-		//            td
-		//                table class=evenWarning width=100%
-		//                    tr
-		//                        td 1 class="crf_rowLeftSide
-		//                            tab;e
-		//                                tr
-		//                                    td crf_preText
-		//                                        Message and <br> table
-		//                        td 3 class=crf_rowRightSide
         private static readonly Regex s_fieldNameExtractor = new Regex(@"^(?<FIELD>.*?)(<\s*br\s*/*\s*>\s*<\s*table.*?>.*)*$",
             RegexOptions.Singleline | RegexOptions.IgnoreCase);
 

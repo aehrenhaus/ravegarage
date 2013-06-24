@@ -167,7 +167,7 @@ namespace Medidata.RBT.Utilities
             if (type.Equals("image", StringComparison.InvariantCultureIgnoreCase))
                 return VerifyImageExists(pdf, identifier, areaIdentifier);
             if (type.Equals("text", StringComparison.InvariantCultureIgnoreCase))
-                return VerifyPDFText(pdf, identifier, true, areaIdentifier, bold) == null;
+                return VerifyPDFText(pdf, identifier, areaIdentifier, bold) == null;
 
             throw new Exception("Unknown verification type");
         }
@@ -175,7 +175,7 @@ namespace Medidata.RBT.Utilities
         public bool VerifySomethingExist(string areaIdentifier, string type, List<string> identifiers, bool exactMatch = false, int? amountOfTimes = null, RBT.BaseEnhancedPDF pdf = null, bool? bold = null)
         {
             if (type.Equals("text", StringComparison.InvariantCultureIgnoreCase))
-                return VerifyPDFText(pdf, identifiers, true, areaIdentifier) == null;
+                return VerifyPDFText(pdf, identifiers, areaIdentifier) == null;
 
             throw new Exception("Unknown verification type");
         }
@@ -403,13 +403,11 @@ namespace Medidata.RBT.Utilities
         /// </summary>
         /// <param name="pdf">The current pdf</param>
         /// <param name="stringsToSearchFor">The strings to search the pdf text for</param>
-        /// <param name="exists">True if the text should exist in the pdf, false if it should not</param>
         /// <param name="pageName">Use when you want to search a specific page, not the entire PDF</param>
         /// <returns>An error message if the any of the strings are not on the page. Null if there are no error messages.</returns>
         private string VerifyPDFText(
             BaseEnhancedPDF pdf, 
             List<string> stringsToSearchFor, 
-            bool exists, 
             string pageName = null)
         {
             Assert.IsFalse(String.IsNullOrEmpty(pdf.Text));
@@ -419,13 +417,13 @@ namespace Medidata.RBT.Utilities
             foreach (string stringToVerifyGDM in stringsToSearchFor)
             {
                 string stringToVerify = Regex.Replace(stringToVerifyGDM, @"\s", "");
-                ret = VerifyPDFText(pdf, stringToVerify, exists, pageName);
+                ret = VerifyPDFText(pdf, stringToVerify, pageName);
                 if (ret != null)
                     return ret;
             }
-
+            
             return null;
-        } 
+        }
 
         /// <summary>
         /// Verify that text exists on a page with any passed in style information
@@ -438,25 +436,51 @@ namespace Medidata.RBT.Utilities
         private string VerifyPDFText(
             RBT.BaseEnhancedPDF pdf,
             string text,
-            bool exists,
             string pageName = null,
             bool? bold = null
             )
         {
-            BaseEnhancedPDFPage page = GetPageFromFirstMatchingBookmark(pdf, pageName);
-            PDFSearchTextResultCollection pdfSearchTextResultCollection = page.BasePage.SearchText(text);
-            if (exists && pdfSearchTextResultCollection == null || pdfSearchTextResultCollection.Count == 0)
+            PDFSearchTextResultCollection pdfSearchTextResultCollection = null;
+            if(pageName != null)
+            {
+                BaseEnhancedPDFPage page = GetPageFromFirstMatchingBookmark(pdf, pageName);
+                pdfSearchTextResultCollection = page.BasePage.SearchText(text);
+            }
+            if ((pageName != null && (pdfSearchTextResultCollection == null || pdfSearchTextResultCollection.Count == 0))
+                || (pageName == null && !pdf.Text.Contains(text))
+                )
                 return String.Format("Text {0} not found on page and it should be.", text);
-            else if (!exists && (pdfSearchTextResultCollection == null || pdfSearchTextResultCollection.Count == 0))
-                return null;
+
+            if(bold.HasValue)
+                return VerifyBoldText(pdfSearchTextResultCollection, text, pageName, bold);
+
+            return null;
+        }
+
+        /// <summary>
+        /// Verify that font on a page is correctly bold.
+        /// </summary>
+        /// <param name="pdfSearchTextResultCollection">The pdfSearchTextResultCollection to search through</param>
+        /// <param name="text">The text to verify that it is bold</param>
+        /// <param name="pageName">The name of the page the text exists on</param>
+        /// <param name="bold">True if the text should be bold, false if it should not be.</param>
+        /// <returns>An error message if the text is not on the page. Null if there are no error messages.</returns>
+        private string VerifyBoldText(
+            PDFSearchTextResultCollection pdfSearchTextResultCollection,
+            string text,
+            string pageName = null, 
+            bool? bold = null)
+        {
+            if (pageName == null)
+                return null; //TODO: Add in support for verifying bold text on an entire PDF has not been added yet.
 
             PDFTextRun ptr = pdfSearchTextResultCollection.FirstOrDefault().TextRuns.FirstOrDefault();
 
-            if (bold.HasValue &&
-                ((bold.Value && !ptr.FontName.EndsWith("bold", true, System.Globalization.CultureInfo.InvariantCulture))
-                || (!bold.Value && ptr.FontName.EndsWith("bold", true, System.Globalization.CultureInfo.InvariantCulture)))
+            if ((bold.Value && !ptr.FontName.EndsWith("bold", true, System.Globalization.CultureInfo.InvariantCulture))
+                || (!bold.Value && ptr.FontName.EndsWith("bold", true, System.Globalization.CultureInfo.InvariantCulture))
             )
                 return String.Format("Text {0} is not bold when it should be bold, or is bold when it should not be", text);
+
             return null;
         }
 
